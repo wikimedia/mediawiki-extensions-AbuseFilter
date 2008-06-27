@@ -62,7 +62,7 @@ class AbuseFilterHooks {
 		$vars['SUMMARY'] = $reason;
 		$vars['ACTION'] = 'delete';
 		
-		$filter_result = AbuseFilter::filterAction( $vars, $user );
+		$filter_result = AbuseFilter::filterAction( $vars, $article->mTitle );
 		
 		$error = "BLAH\n$filter_result";
 		
@@ -75,7 +75,7 @@ class AbuseFilterHooks {
 		$vars['ACTION'] = 'createaccount';
 		$vars['ACCOUNTNAME'] = $username;
 		
-		$filter_result = AbuseFilter::filterAction( $vars, $user );
+		$filter_result = AbuseFilter::filterAction( $vars, SpecialPage::getTitleFor( 'Userlogin' ) );
 		
 		$error = "BLAH\n$filter_result";
 		
