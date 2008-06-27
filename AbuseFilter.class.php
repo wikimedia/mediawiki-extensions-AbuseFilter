@@ -123,7 +123,6 @@ class AbuseFilter {
 				return self::checkOperator( $thisWord, $value, $parameters );
 			}
 		} else {
-			print "Word $thisWord is not a variable (".implode(',', array_keys($vars)).")\n";
 		}
 	}
 	

@@ -73,7 +73,7 @@ class AbuseFilterHooks {
 		$vars = array();
 		
 		$vars['ACTION'] = 'createaccount';
-		$vars['ACCOUNTNAME'] = $username;
+		$vars['ACCOUNTNAME'] = $vars['USER_NAME'] = $username;
 		
 		$filter_result = AbuseFilter::filterAction( $vars, SpecialPage::getTitleFor( 'Userlogin' ) );
 		
