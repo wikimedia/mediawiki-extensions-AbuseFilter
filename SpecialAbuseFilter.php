@@ -45,7 +45,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		$filter = $this->mFilter;
 		
 		$editToken = $wgRequest->getVal( 'wpEditToken' );
-		$didEdit = $filter && $this->canEdit() && $wgUser->matchEditToken( $editToken, array( 'abusefilter', $filter ) );
+		$didEdit = $this->canEdit() && $wgUser->matchEditToken( $editToken, array( 'abusefilter', $filter ) );
 		
 		if ($didEdit) {
 			$dbw = wfGetDB( DB_MASTER );
@@ -104,7 +104,7 @@ class SpecialAbuseFilter extends SpecialPage {
 			// Do the update
 			
 			$dbw->begin();
-			$dbw->update( 'abuse_filter', $newRow, array( 'af_id' => $filter ), __METHOD__ );
+			$dbw->replace( 'abuse_filter', array( 'af_id' ), $newRow, __METHOD__ );
 			$dbw->delete( 'abuse_filter_action', array( 'afa_filter' => $filter, 'afa_consequence' => $deadActions ), __METHOD__ );
 			$dbw->replace( 'abuse_filter_action', array( array( 'afa_filter', 'afa_consequence' ) ), $actionsRows, __METHOD__ );
 			$dbw->commit();
@@ -119,7 +119,7 @@ class SpecialAbuseFilter extends SpecialPage {
 	}
 	
 	function buildFilterEditor(  ) {
-		if (!is_numeric($this->mFilter) || $this->mFilter<=0) {
+		if (!is_numeric($this->mFilter) && $this->mFilter != 'new') {
 			return false;
 		}
 		
@@ -130,6 +130,10 @@ class SpecialAbuseFilter extends SpecialPage {
 		
 		list ($row, $actions) = $this->loadFilterData();
 		
+		if (!$row && $this->mFilter !== 'new') {
+			return false;
+		}
+		
 		if ($row->af_hidden && !$this->canEdit()) {
 			return wfMsg( 'abusefilter-edit-hidden' );
 		}
@@ -137,11 +141,11 @@ class SpecialAbuseFilter extends SpecialPage {
 		$output = '';
 		$fields = array();
 		
-		$fields['abusefilter-edit-id'] = $this->mFilter;
+		$fields['abusefilter-edit-id'] = $this->mFilter == 'new' ? wfMsg( 'abusefilter-edit-new' ) : $this->mFilter;
 		$fields['abusefilter-edit-description'] = Xml::input( 'wpFilterDescription', 20, $row->af_public_comments );
 
 		// Hit count display
-		$count = $row->af_hit_count;
+		$count = (int)$row->af_hit_count;
 		$count_display = wfMsgExt( 'abusefilter-hitcount', array( 'parseinline' ), array( $count ) );
 		$hitCount = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'AbuseLog' ), $count_display, 'wpSearchFilter='.$row->af_id );
 		
@@ -165,9 +169,11 @@ class SpecialAbuseFilter extends SpecialPage {
 		}
 		$fields['abusefilter-edit-flags'] = $flags;
 		
-		// Last modification details
-		$fields['abusefilter-edit-lastmod'] = $wgLang->timeanddate( $row->af_timestamp );
-		$fields['abusefilter-edit-lastuser'] = $sk->userLink( $row->af_user, $row->af_user_text ) . $sk->userToolLinks( $row->af_user, $row->af_user_text );
+		if ($this->mFilter != 'new') {
+			// Last modification details
+			$fields['abusefilter-edit-lastmod'] = $wgLang->timeanddate( $row->af_timestamp );
+			$fields['abusefilter-edit-lastuser'] = $sk->userLink( $row->af_user, $row->af_user_text ) . $sk->userToolLinks( $row->af_user, $row->af_user_text );
+		}
 		
 		$form = Xml::buildForm( $fields );
 		$form = Xml::fieldset( wfMsg( 'abusefilter-edit-main' ), $form );
@@ -265,10 +271,10 @@ class SpecialAbuseFilter extends SpecialPage {
 		
 		$filter = $subpage;
 		
-		if (!is_numeric($filter)) {
+		if (!is_numeric($filter) && $subpage != 'new') {
 			$filter = $wgRequest->getIntOrNull( 'wpFilter' );
 			
-			if (!$filter) {
+			if ($filter === null && $filter != 'new') {
 				return;
 			}
 		}
@@ -287,9 +293,9 @@ class SpecialAbuseFilter extends SpecialPage {
 	}
 	
 	function showList() {
-		global $wgOut,$wgUser;;
+		global $wgOut,$wgUser;
 		
-		$this->mSkin = $wgUser->getSkin();
+		$sk = $this->mSkin = $wgUser->getSkin();
 		
 		$output = '';
 		
@@ -315,6 +321,10 @@ class SpecialAbuseFilter extends SpecialPage {
 		}
 		
 		$output .= Xml::tags( 'table', array( 'class' => 'wikitable' ), Xml::tags( 'tbody', null, $list ) );
+		
+		if ($this->canEdit()) {
+			$output .= $sk->makeKnownLinkObj( $this->getTitle( 'new' ), wfMsg( 'abusefilter-list-new' ) );
+		}
 		
 		$wgOut->addHTML( $output );
 	}

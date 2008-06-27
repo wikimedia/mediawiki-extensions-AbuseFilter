@@ -61,9 +61,11 @@ $messages['en'] = array(
 	'abusefilter-enabled' => 'Enabled',
 	'abusefilter-disabled' => 'Disabled',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|hit|hits}}',
+	'abusefilter-list-new' => 'New filter',
 	
 	// The edit screen
 	'abusefilter-edit-subtitle' => 'Editing filter $1',
+	'abusefilter-edit-new' => 'New filter',
 	'abusefilter-edit-save' => 'Save Filter',
 	'abusefilter-edit-id' => 'Filter ID:',
 	'abusefilter-edit-description' => "Description:\n:''(publicly viewable)''",
