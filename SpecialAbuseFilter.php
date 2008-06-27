@@ -5,6 +5,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
 class SpecialAbuseFilter extends SpecialPage {
 
 	var $mSkin;
+	var $mmFilter = null;
 
 	function __construct() {
 		wfLoadExtensionMessages('AbuseFilter');
@@ -31,7 +32,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		
 		$this->mSkin = $wgUser->getSkin();
 		
-		if ($output = $this->doEdit(  )) {
+		if ($output = $this->doEdit()) {
 			$wgOut->addHtml( $output );
 		} else {
 			// Show list of filters.
@@ -107,7 +108,7 @@ class SpecialAbuseFilter extends SpecialPage {
 			}
 			
 			// Do the update
-			
+
 			$dbw->begin();
 			$dbw->replace( 'abuse_filter', array( 'af_id' ), $newRow, __METHOD__ );
 			$dbw->delete( 'abuse_filter_action', array( 'afa_filter' => $filter, 'afa_consequence' => $deadActions ), __METHOD__ );
@@ -124,7 +125,7 @@ class SpecialAbuseFilter extends SpecialPage {
 	}
 	
 	function buildFilterEditor(  ) {
-		if (!is_numeric($this->mFilter) && $this->mFilter != 'new') {
+		if( $this->mFilter === null ) {
 			return false;
 		}
 		
@@ -133,31 +134,40 @@ class SpecialAbuseFilter extends SpecialPage {
 		$sk = $this->mSkin;
 		$wgOut->setSubtitle( wfMsg( 'abusefilter-edit-subtitle', $this->mFilter ) );
 		
-		list ($row, $actions) = $this->loadFilterData();
-		
-		if (!$row && $this->mFilter !== 'new') {
-			return false;
-		}
-		
-		if ($row->af_hidden && !$this->canEdit()) {
-			return wfMsg( 'abusefilter-edit-hidden' );
+		if( $this->mFilter !== 'new' ){
+			list ($row, $actions) = $this->loadFilterData();
+
+			if( !$row ) {
+				return false;
+			}
+
+			if ($row->af_hidden && !$this->canEdit()) {
+				return wfMsg( 'abusefilter-edit-hidden' );
+			}
+		} else {
+			$row = new stdClass();
+			$actions = array();
 		}
 		
 		$output = '';
 		$fields = array();
 		
 		$fields['abusefilter-edit-id'] = $this->mFilter == 'new' ? wfMsg( 'abusefilter-edit-new' ) : $this->mFilter;
-		$fields['abusefilter-edit-description'] = Xml::input( 'wpFilterDescription', 20, $row->af_public_comments );
+		$fields['abusefilter-edit-description'] = Xml::input( 'wpFilterDescription', 20, isset( $row->af_public_comments ) ? $row->af_public_comments : '' );
 
 		// Hit count display
-		$count = (int)$row->af_hit_count;
-		$count_display = wfMsgExt( 'abusefilter-hitcount', array( 'parseinline' ), array( $count ) );
-		$hitCount = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'AbuseLog' ), $count_display, 'wpSearchFilter='.$row->af_id );
+		if( $this->mFilter !== 'new' ){
+			$count = (int)$row->af_hit_count;
+			$count_display = wfMsgExt( 'abusefilter-hitcount', array( 'parseinline' ), array( $count ) );
+			$hitCount = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'AbuseLog' ), $count_display, 'wpSearchFilter='.$row->af_id );
 		
-		$fields['abusefilter-edit-hitcount'] = $hitCount;
+			$fields['abusefilter-edit-hitcount'] = $hitCount;
+		} else {
+			$fields['abusefilter-edit-hitcount'] = '';
+		}
 
-		$fields['abusefilter-edit-rules'] = Xml::textarea( 'wpFilterRules', $row->af_pattern . "\n" );
-		$fields['abusefilter-edit-notes'] = Xml::textarea( 'wpFilterNotes', $row->af_comments ."\n" );
+		$fields['abusefilter-edit-rules'] = Xml::textarea( 'wpFilterRules', ( isset( $row->af_pattern ) ? $row->af_pattern : '' ) );
+		$fields['abusefilter-edit-notes'] = Xml::textarea( 'wpFilterNotes', ( isset( $row->af_comments ) ? $row->af_comments : '' ) );
 		
 		
 		// Build checkboxen
@@ -168,7 +178,7 @@ class SpecialAbuseFilter extends SpecialPage {
 			$dbField = "af_$checkboxId";
 			$postVar = "wpFilter".ucfirst($checkboxId);
 			
-			$checkbox = Xml::checkLabel( wfMsg( $message ), $postVar, $postVar, $row->$dbField );
+			$checkbox = Xml::checkLabel( wfMsg( $message ), $postVar, $postVar, isset( $row->$dbField ) ? $row->$dbField : false );
 			$checkbox = Xml::tags( 'p', null, $checkbox );
 			$flags .= $checkbox;
 		}
@@ -200,7 +210,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		global $wgAbuseFilterAvailableActions;
 		$setActions = array();
 		foreach( $wgAbuseFilterAvailableActions as $action ) {
-			$setActions[$action] = in_array( $action, array_keys( $actions ) );
+			$setActions[$action] = array_key_exists( $action, $actions );
 		}
 		
 		$output = '';
@@ -272,16 +282,12 @@ class SpecialAbuseFilter extends SpecialPage {
 	}
 	
 	function loadParameters( $subpage ) {
-		global $wgRequest,$wgUser;
+		global $wgRequest;
 		
 		$filter = $subpage;
 		
-		if (!is_numeric($filter) && $subpage != 'new') {
+		if (!is_numeric($filter) && $filter != 'new') {
 			$filter = $wgRequest->getIntOrNull( 'wpFilter' );
-			
-			if ($filter === null && $filter != 'new') {
-				return;
-			}
 		}
 		$this->mFilter = $filter;
 	}
@@ -335,7 +341,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		$wgOut->addHTML( $output );
 	}
 	
-	function shortFormatFilter ( $row ) {
+	function shortFormatFilter( $row ) {
 		global $wgOut;
 		
 		$sk = $this->mSkin;

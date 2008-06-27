@@ -18,9 +18,9 @@ class AbuseFilterHooks {
 // 		// Include added/removed lines in the vars.
 
 		$filter_result = AbuseFilter::filterAction( $vars, $editor->mTitle );
-		
-		$error = $filter_result;
-		
+		if( $filter_result !== true ){
+			$error = $filter_result;
+		}
 		return true;
 	}
 	
