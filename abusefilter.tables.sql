@@ -32,6 +32,7 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter_log (
 	afl_user_text varchar(255) binary NOT NULL,
 	afl_ip varchar(255) not null,
 	afl_action varbinary(255) not null,
+	afl_actions varbinary(255) not null,
 	afl_var_dump BLOB NOT NULL,
 	afl_timestamp binary(14) NOT NULL,
 	afl_namespace tinyint NOT NULL,
