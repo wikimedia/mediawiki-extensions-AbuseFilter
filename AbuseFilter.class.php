@@ -41,7 +41,7 @@ class AbuseFilter {
 
 	public static function checkConditions( $conds, $vars ) {
 		$modifierWords = array( 'norm', 'supernorm', 'lcase', 'length' );
-		$operatorWords = array( 'eq', 'neq', 'gt', 'lt', 'regex' );
+		$operatorWords = array( 'eq', 'neq', 'gt', 'lt', 'regex', 'contains' );
 		$validJoinConditions = array( '!', '|', '&' );
 	
 		// Remove leading/trailing spaces
@@ -211,7 +211,7 @@ class AbuseFilter {
 		} elseif ($operator == 'regex') {
 			return preg_match( $parameters, $value );
 		} elseif ($operator == 'contains') {
-			return strpos(  $value, $parameters );
+			return strpos(  $value, $parameters ) !== false;
 		} else {
 			return false;
 		}
