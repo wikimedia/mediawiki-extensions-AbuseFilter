@@ -68,7 +68,7 @@ class AbuseFilter {
 			
 				if (trim($thisCond)=='') {
 					// Ignore it
-					$result = true;
+					continue;
 				} else {
 					$result = self::checkConditions( $thisCond, $vars );
 				}
@@ -103,7 +103,7 @@ class AbuseFilter {
 			$thisWord = $thisWord[$wordNum];
 		}
 		
-		if ( in_array( $thisWord, array_keys($vars ) ) ) {
+		if ( in_array( $thisWord, array_keys($vars) ) ) {
 		
 			$value = $vars[$thisWord];
 			if ($modifier) {
