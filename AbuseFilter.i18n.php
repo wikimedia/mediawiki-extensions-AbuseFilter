@@ -11,6 +11,10 @@ $messages = array();
  * @author Andrew Garrett
  */
 $messages['en'] = array(
+	// Special pages
+	'abusefilter' => 'Abuse Filter Configuration',
+	'abuselog' => 'Abuse Log',
+	
 	// Hooks
 	'abusefilter-warning' => "<big>'''Warning'''</big>: This action has been automatically identified as harmful. Unconstructive edits will be quickly reverted, and egregious or repeated unconstructive editing will result in your account or computer being blocked. If you believe this edit to be constructive, you may click Submit again to confirm it.",
 	'abusefilter-disallowed' => "This action has been automatically identified as harmful, and therefore disallowed. If you believe your edit was constructive, please contact an administrator, and inform them of what you were trying to do.\n",
