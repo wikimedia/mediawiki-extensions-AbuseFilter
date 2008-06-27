@@ -131,15 +131,17 @@ class SpecialAbuseLog extends SpecialPage {
 		
 		$output .= Xml::closeElement( 'tbody' ) . Xml::closeElement( 'table' );
 		
-		// Private stuff, like IPs.
-		$output .= Xml::element( 'h3', null, wfMsg( 'abusefilter-log-details-private' ) );
-		$output .= Xml::openElement( 'table', array( 'class' => 'wikitable' ) ) . Xml::openElement( 'tbody' );
-		$output .= $header;
-		
-		// IP address
-		$output .= Xml::tags( 'tr', null, Xml::element( 'td', null, wfMsg('abusefilter-log-details-ip' ) ) . Xml::element( 'td', null, $row->afl_ip ) );
-		
-		$output .= Xml::closeElement( 'tbody' ) . Xml::closeElement( 'table' );
+		if ($this->canSeePrivate()) {
+			// Private stuff, like IPs.
+			$output .= Xml::element( 'h3', null, wfMsg( 'abusefilter-log-details-private' ) );
+			$output .= Xml::openElement( 'table', array( 'class' => 'wikitable' ) ) . Xml::openElement( 'tbody' );
+			$output .= $header;
+			
+			// IP address
+			$output .= Xml::tags( 'tr', null, Xml::element( 'td', null, wfMsg('abusefilter-log-details-ip' ) ) . Xml::element( 'td', null, $row->afl_ip ) );
+			
+			$output .= Xml::closeElement( 'tbody' ) . Xml::closeElement( 'table' );
+		}
 		
 		$output = Xml::tags( 'fieldset', null, $output );
 		
@@ -150,6 +152,11 @@ class SpecialAbuseLog extends SpecialPage {
 	function canSeeDetails() {
 		global $wgUser;
 		return !count($this->getTitle()->getUserPermissionsErrors( 'abusefilter-log-detail', $wgUser, true, array( 'ns-specialprotected' ) ));
+	}
+	
+	function canSeePrivate() {
+		global $wgUser;
+		return !count($this->getTitle()->getUserPermissionsErrors( 'abusefilter-private', $wgUser, true, array( 'ns-specialprotected' ) ));
 	}
 	
 	function formatRow( $row ) {
