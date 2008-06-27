@@ -8,7 +8,7 @@ require_once ( getenv('MW_INSTALL_PATH') !== false
 	? getenv('MW_INSTALL_PATH')."/maintenance/commandLine.inc"
 	: dirname( __FILE__ ) . '/../../maintenance/commandLine.inc' );
 
-//dbsource( dirname( __FILE__ ) . '/abusefilter.tables.sql' );
+dbsource( dirname( __FILE__ ) . '/abusefilter.tables.sql' );
 
 // Create the Abuse Filter user.
 wfLoadExtensionMessages( 'AbuseFilter' );
