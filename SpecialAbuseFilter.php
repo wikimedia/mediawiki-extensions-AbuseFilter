@@ -313,7 +313,8 @@ class SpecialAbuseFilter extends SpecialPage {
 		
 		// We shouldn't have more than 100 filters, so don't bother paging.
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( array('abuse_filter', 'abuse_filter_action'), 'abuse_filter.*,group_concat(afa_consequence) AS consequences', array(  ), __METHOD__, array( 'LIMIT' => 100, 'GROUP BY' => 'af_id' ),
+		$abuse_filter = $dbr->tableName( 'abuse_filter' );
+		$res = $dbr->select( array('abuse_filter', 'abuse_filter_action'), $abuse_filter.'.*,group_concat(afa_consequence) AS consequences', array(  ), __METHOD__, array( 'LIMIT' => 100, 'GROUP BY' => 'af_id' ),
 			array( 'abuse_filter_action' => array('LEFT OUTER JOIN', 'afa_filter=af_id' ) ) );
 		$list = '';
 		$editLabel = $this->canEdit() ? 'abusefilter-list-edit' : 'abusefilter-list-details';
