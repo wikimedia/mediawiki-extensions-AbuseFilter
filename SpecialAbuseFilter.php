@@ -165,8 +165,8 @@ class SpecialAbuseFilter extends SpecialPage {
 			$fields['abusefilter-edit-hitcount'] = '';
 		}
 
-		$fields['abusefilter-edit-rules'] = Xml::textarea( 'wpFilterRules', ( isset( $row->af_pattern ) ? $row->af_pattern : '' ) );
-		$fields['abusefilter-edit-notes'] = Xml::textarea( 'wpFilterNotes', ( isset( $row->af_comments ) ? $row->af_comments : '' ) );
+		$fields['abusefilter-edit-rules'] = Xml::textarea( 'wpFilterRules', ( isset( $row->af_pattern ) ? $row->af_pattern"\n" : "\n" ) );
+		$fields['abusefilter-edit-notes'] = Xml::textarea( 'wpFilterNotes', ( isset( $row->af_comments ) ? $row->af_comments."\n" : "\n" ) );
 		
 		
 		// Build checkboxen
