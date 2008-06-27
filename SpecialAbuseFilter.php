@@ -5,7 +5,6 @@ if ( ! defined( 'MEDIAWIKI' ) )
 class SpecialAbuseFilter extends SpecialPage {
 
 	var $mSkin;
-	var $mmFilter = null;
 
 	function __construct() {
 		wfLoadExtensionMessages('AbuseFilter');
