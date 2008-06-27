@@ -21,7 +21,7 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter_action (
 	afa_consequence varchar(255) NOT NULL,
 	afa_parameters TINYBLOB NOT NULL,
 	
-	PRIMARY KEY (afa_filter),
+	PRIMARY KEY (afa_filter,afa_consequence),
 	KEY (afa_consequence)
 ) /*$wgDBTableOptions*/;
 

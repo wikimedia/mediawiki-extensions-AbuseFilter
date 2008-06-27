@@ -70,6 +70,11 @@ class AbuseFilterHooks {
 	}
 	
 	function onAbortNewAccount( $username, &$message ) {
+		wfLoadExtensionMessages( 'AbuseFilter' );
+		if ($username == wfMsgForContent( 'abusefilter-blocker' )) {
+			$message = wfMsg( 'abusefilter-accountreserved' );
+			return false;
+		}
 		$vars = array();
 		
 		$vars['ACTION'] = 'createaccount';

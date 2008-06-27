@@ -401,7 +401,7 @@ class AbuseFilter {
 					$wgUser->removeGroup( $group );
 				}
 				
-				$display = wfMsg( 'abusefilter-degrouped' );
+				$display .= wfMsg( 'abusefilter-degrouped' );
 				
 				break;
 			case 'blockautopromote':
@@ -412,7 +412,7 @@ class AbuseFilter {
 				$blockPeriod = (int)mt_rand( 3*86400, 7*86400 ); // Block for 3-7 days.
 				$wgMemc->set( self::autoPromoteBlockKey( $wgUser ), true, $blockPeriod );
 				
-				$display = wfMsg( 'abusefilter-autopromote-blocked' );
+				$display .= wfMsg( 'abusefilter-autopromote-blocked' );
 				
 				break;
 

@@ -20,6 +20,8 @@ $messages['en'] = array(
 	'abusefilter-blocker' => 'Abuse Filter',
 	'abusefilter-blockreason' => 'Automatically blocked for attempting to make edits identified as harmful.',
 	
+	'abusefilter-accountreserved' => 'This account name is reserved for use by the abuse filter.',
+	
 	// Permissions
 	'right-abusefilter-modify' => 'Modify abuse filters',
 	'right-abusefilter-view' => 'View abuse filters',
