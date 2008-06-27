@@ -68,6 +68,11 @@ class SpecialAbuseFilter extends SpecialPage {
 			$newRow['af_user'] = $wgUser->getId();
 			$newRow['af_user_text'] = $wgUser->getName();
 			
+			// ID
+			if ($filter != 'new') {
+				$newRow['af_id'] = $filter;
+			}
+			
 			// Actions
 			global $wgAbuseFilterAvailableActions;
 			$enabledActions = array();
@@ -303,7 +308,8 @@ class SpecialAbuseFilter extends SpecialPage {
 		
 		// We shouldn't have more than 100 filters, so don't bother paging.
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( array('abuse_filter','abuse_filter_action'), '*,group_concat(afa_consequence) AS consequences', array( 'afa_filter=af_id' ), __METHOD__, array( 'LIMIT' => 100, 'GROUP BY' => 'af_id' ) );
+		$res = $dbr->select( array('abuse_filter', 'abuse_filter_action'), 'abuse_filter.*,group_concat(afa_consequence) AS consequences', array(  ), __METHOD__, array( 'LIMIT' => 100, 'GROUP BY' => 'af_id' ),
+			array( 'abuse_filter_action' => array('LEFT OUTER JOIN', 'afa_filter=af_id' ) ) );
 		$list = '';
 		$editLabel = $this->canEdit() ? 'abusefilter-list-edit' : 'abusefilter-list-details';
 		
@@ -352,7 +358,9 @@ class SpecialAbuseFilter extends SpecialPage {
 		
 		$editLink = $sk->makeKnownLinkObj( $this->getTitle( $row->af_id ), wfMsg( $editLabel ) );
 		
-		$values = array( $row->af_id, $wgOut->parse($row->af_public_comments), wfEscapeWikitext($row->consequences), $status, $visibility, $hitCount, $editLink );
+		$consequences = wfEscapeWikitext($row->consequences);
+		
+		$values = array( $row->af_id, $wgOut->parse($row->af_public_comments), $consequences, $status, $visibility, $hitCount, $editLink );
 		
 		foreach( $values as $value ) {
 			$trow .= Xml::tags( 'td', null, $value );
