@@ -42,5 +42,5 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter_log (
 	KEY (afl_user),
 	KEY (afl_timestamp),
 	KEY (afl_namespace, afl_title)
-	KEY (afl_ip),
+	KEY (afl_ip)
 ) /*$wgDBTableOptions*/;
