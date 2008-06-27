@@ -48,9 +48,9 @@ class AbuseFilterHooks {
 		
 		$filter_result = AbuseFilter::filterAction( $vars, $oldTitle );
 		
-		$error = "BLAH\n$filter_result";
+		$error = $filter_result;
 		
-		return $filter_result == '';
+		return $filter_result == '' || $filter_result == true;
 	}
 	
 	function onArticleDelete( &$article, &$user, &$reason, &$error ) {
@@ -64,9 +64,9 @@ class AbuseFilterHooks {
 		
 		$filter_result = AbuseFilter::filterAction( $vars, $article->mTitle );
 		
-		$error = "BLAH\n$filter_result";
+		$error = $filter_result;
 		
-		return $filter_result == '';
+		return $filter_result == '' || $filter_result == true;
 	}
 	
 	function onAbortNewAccount( $username, &$message ) {
@@ -77,8 +77,8 @@ class AbuseFilterHooks {
 		
 		$filter_result = AbuseFilter::filterAction( $vars, SpecialPage::getTitleFor( 'Userlogin' ) );
 		
-		$error = "BLAH\n$filter_result";
+		$message = $filter_result;
 		
-		return $filter_result == '';
+		return $filter_result == '' || $filter_result == true;
 	}
 }
