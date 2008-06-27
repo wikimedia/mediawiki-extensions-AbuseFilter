@@ -363,6 +363,7 @@ class AbuseFilter {
 				$block = new Block;
 				$block->mAddress = $wgUser->getName();
 				$block->mUser = $wgUser->getId();
+				$block->mBy = User::idFromName( wfMsgForContent( 'abusefilter-blocker' ) ); // Let's say the site owner blocked them
 				$block->mByName = wfMsgForContent( 'abusefilter-blocker' );
 				$block->mReason = wfMsgForContent( 'abusefilter-blockreason' );
 				$block->mTimestamp = wfTimestampNow();
