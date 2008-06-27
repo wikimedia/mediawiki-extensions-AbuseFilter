@@ -210,6 +210,8 @@ class AbuseFilter {
 			return $value < $parameters;
 		} elseif ($operator == 'regex') {
 			return preg_match( $parameters, $value );
+		} elseif ($operator == 'contains') {
+			return strpos(  $value, $parameters );
 		} else {
 			return false;
 		}
