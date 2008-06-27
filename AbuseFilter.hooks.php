@@ -50,7 +50,7 @@ class AbuseFilterHooks {
 		
 		$error = $filter_result;
 		
-		return $filter_result == '' || $filter_result == true;
+		return $filter_result == '' || $filter_result === true;
 	}
 	
 	function onArticleDelete( &$article, &$user, &$reason, &$error ) {
@@ -66,7 +66,7 @@ class AbuseFilterHooks {
 		
 		$error = $filter_result;
 		
-		return $filter_result == '' || $filter_result == true;
+		return $filter_result == '' || $filter_result === true;
 	}
 	
 	function onAbortNewAccount( $username, &$message ) {
@@ -79,6 +79,6 @@ class AbuseFilterHooks {
 		
 		$message = $filter_result;
 		
-		return $filter_result == '' || $filter_result == true;
+		return $filter_result == '' || $filter_result === true;
 	}
 }
