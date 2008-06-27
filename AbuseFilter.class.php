@@ -40,7 +40,7 @@ class AbuseFilter {
 	}
 
 	public static function checkConditions( $conds, $vars ) {
-		$modifierWords = array( 'norm', 'supernorm', 'lcase', 'length' );
+		$modifierWords = array( 'norm', 'supernorm', 'lcase', 'length', 'specialratio' );
 		$operatorWords = array( 'eq', 'neq', 'gt', 'lt', 'regex', 'contains' );
 		$validJoinConditions = array( '!', '|', '&' );
 	
