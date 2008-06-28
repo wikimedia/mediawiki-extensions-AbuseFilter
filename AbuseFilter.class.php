@@ -173,7 +173,7 @@ class AbuseFilter {
 			}
 			
 			// Ignore whitespace.
-			if ($char != ' ') {
+			if ($char != ' ' && $char != "\n" && $char != "\t") {
 				$lastChar = $char;
 			}
 		}
