@@ -281,8 +281,8 @@ class AbuseFilter {
 		}
 		
 		// Retrieve the consequences.
-		$res = $dbr->select( 'abuse_filter_action', '*', array( 'afa_filter' => array_keys( $blocking_filters ) ), __METHOD__, array( "ORDER BY" => " (afa_consequence in ('throttle','warn')) desc" ) );
-		// We want throttles, warnings first, as they have a bit of a special treatment.
+		$res = $dbr->select( 'abuse_filter_action', '*', array( 'afa_filter' => array_keys( $blocking_filters ) ), __METHOD__, array( "ORDER BY" => " (afa_consequence in ('throttle','warn'))-(afa_consequence in ('disallow')) desc" ) );
+		// We want throttles, warnings first, as they have a bit of a special treatment. We want disallow last.
 		
 		$actions_done = array();
 		$throttled_filters = array();
@@ -290,15 +290,33 @@ class AbuseFilter {
 		$display = '';
 		
 		while ( $row = $dbr->fetchObject( $res ) ) {
+			// Don't do the same action-parameters twice
 			$action_key = md5( $row->afa_consequence . $row->afa_parameters );
-			if (!in_array( $action_key, $actions_done ) && !in_array( $row->afa_filter, $throttled_filters ) ) {
+			
+			// Skip if we've already done this action-parameter, or a passive action has sufficed.
+			$skipAction = ( in_array( $action_key, $actions_done ) || in_array( $row->afa_filter, $throttled_filters ) );
+			
+			// Don't disallow if we've already done something active. It produces two messages, where one would suffice.
+			if ($row->afa_consequence == 'disallow' && !$skipAction) {
+				$doneActiveActions = array_diff( $doneActionsByFilter[$row->afa_filter], array( 'throttle', 'warn' /* passive actions */ ) );
+				$skipAction = (bool)count($doneActiveActions);
+			}
+			
+			if ( !$skipAction ) {
+				// Unpack parameters
 				$parameters = explode( "\n", $row->afa_parameters );
-				$result = self::takeConsequenceAction( $row->afa_consequence, $parameters, $title, $vars, &$display, &$continue );
+				
+				// Take the action.
+				$result = self::takeConsequenceAction( $row->afa_consequence, $parameters, $title, $vars, &$display, &$continue, $blocking_filters[$row->afa_filter]->af_public_comments );
+				
+				// Don't do it twice.
 				$doneActionsByFilter[$row->afa_filter][] = $row->afa_consequence;
-				if (!$result) {
-					$throttled_filters[] = $row->afa_filter; // Only execute other actions for a filter if that filter's rate limiter has been tripped.
-				}
 				$actions_done[] = $action_key;
+				
+				// Only execute other actions for a filter if that filter's rate limiter has been tripped.
+				if (!$result) {
+					$throttled_filters[] = $row->afa_filter;
+				}
 			} else {
 				// Ignore it, until we hit the rate limit.
 			}
@@ -319,7 +337,7 @@ class AbuseFilter {
 		return $display;
 	}
 	
-	public static function takeConsequenceAction( $action, $parameters, $title, $vars, &$display, &$continue ) {
+	public static function takeConsequenceAction( $action, $parameters, $title, $vars, &$display, &$continue, $rule_desc ) {
 		switch ($action) {
 			case 'warn':
 				wfLoadExtensionMessages( 'AbuseFilter' );
@@ -332,7 +350,7 @@ class AbuseFilter {
 						$display .= call_user_func_array( 'wfMsg', $parameters ) . "\n";
 					} else {
 						// Generic message.
-						$display .= wfMsg( 'abusefilter-warning' );
+						$display .= wfMsg( 'abusefilter-warning', $rule_desc ) ."<br />\n";
 					}
 					
 					return false; // Don't apply the other stuff yet.
@@ -350,7 +368,7 @@ class AbuseFilter {
 					$display .= call_user_func_array( 'wfMsg', $parameters ) . "\n";
 				} else {
 					// Generic message.
-					$display .= wfMsg( 'abusefilter-disallowed' );
+					$display .= wfMsg( 'abusefilter-disallowed', $rule_desc ) ."<br />\n";
 				}
 				break;
 				
@@ -365,7 +383,7 @@ class AbuseFilter {
 				$block->mUser = $wgUser->getId();
 				$block->mBy = User::idFromName( wfMsgForContent( 'abusefilter-blocker' ) ); // Let's say the site owner blocked them
 				$block->mByName = wfMsgForContent( 'abusefilter-blocker' );
-				$block->mReason = wfMsgForContent( 'abusefilter-blockreason' );
+				$block->mReason = wfMsgForContent( 'abusefilter-blockreason', $rule_desc );
 				$block->mTimestamp = wfTimestampNow();
 				$block->mEnableAutoblock = 1;
 				$block->mAngryAutoblock = 1; // Block lots of IPs
@@ -374,7 +392,7 @@ class AbuseFilter {
 
 				$block->insert();
 				
-				$display .= wfMsg( 'abusefilter-blocked-display' );
+				$display .= wfMsg( 'abusefilter-blocked-display', $rule_desc ) ."<br />\n";
 				break;
 			case 'throttle':
 				$throttleId = array_shift( $parameters );
@@ -401,7 +419,7 @@ class AbuseFilter {
 					$wgUser->removeGroup( $group );
 				}
 				
-				$display .= wfMsg( 'abusefilter-degrouped' );
+				$display .= wfMsg( 'abusefilter-degrouped', $rule_desc ) ."<br />\n";
 				
 				break;
 			case 'blockautopromote':
@@ -412,7 +430,7 @@ class AbuseFilter {
 				$blockPeriod = (int)mt_rand( 3*86400, 7*86400 ); // Block for 3-7 days.
 				$wgMemc->set( self::autoPromoteBlockKey( $wgUser ), true, $blockPeriod );
 				
-				$display .= wfMsg( 'abusefilter-autopromote-blocked' );
+				$display .= wfMsg( 'abusefilter-autopromote-blocked', $rule_desc ) ."<br />\n";
 				
 				break;
 

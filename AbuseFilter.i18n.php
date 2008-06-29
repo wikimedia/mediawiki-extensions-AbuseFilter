@@ -16,13 +16,13 @@ $messages['en'] = array(
 	'abuselog' => 'Abuse Log',
 	
 	// Hooks
-	'abusefilter-warning' => "<big>'''Warning'''</big>: This action has been automatically identified as harmful. Unconstructive edits will be quickly reverted, and egregious or repeated unconstructive editing will result in your account or computer being blocked. If you believe this edit to be constructive, you may click Submit again to confirm it.",
-	'abusefilter-disallowed' => "This action has been automatically identified as harmful, and therefore disallowed. If you believe your edit was constructive, please contact an administrator, and inform them of what you were trying to do.\n",
-	'abusefilter-blocked-display' => "This action has been automatically identified as harmful, and you have been prevented from executing it. In addition, to protect {{SITENAME}}, your user account and all associated IP addresses have been blocked from editing. If this has occurred in error, please contact an administrator.",
-	'abusefilter-degrouped' => "This action has been automatically identified as harmful. Consequently, it has been disallowed, and, since your account is suspected of being compromised, all rights have been revoked. If you believe this to have been in error, please contact a bureaucrat with an explanation of this action, and your rights may be restored.",
-	'abusefilter-autopromote-blocked' => "This action has been automatically identified as harmful, and it has been disallowed. In addition, as a security measure, some privileges routinely granted to established accounts have been temporarily revoked from your account.",
+	'abusefilter-warning' => "<big>'''Warning'''</big>: This action has been automatically identified as harmful. Unconstructive edits will be quickly reverted, and egregious or repeated unconstructive editing will result in your account or computer being blocked. If you believe this edit to be constructive, you may click Submit again to confirm it. A brief description of the abuse rule which your action matched is: $1",
+	'abusefilter-disallowed' => "This action has been automatically identified as harmful, and therefore disallowed. If you believe your edit was constructive, please contact an administrator, and inform them of what you were trying to do. A brief description of the abuse rule which your action matched is: $1",
+	'abusefilter-blocked-display' => "This action has been automatically identified as harmful, and you have been prevented from executing it. In addition, to protect {{SITENAME}}, your user account and all associated IP addresses have been blocked from editing. If this has occurred in error, please contact an administrator. A brief description of the abuse rule which your action matched is: $1",
+	'abusefilter-degrouped' => "This action has been automatically identified as harmful. Consequently, it has been disallowed, and, since your account is suspected of being compromised, all rights have been revoked. If you believe this to have been in error, please contact a bureaucrat with an explanation of this action, and your rights may be restored. A brief description of the abuse rule which your action matched is: $1",
+	'abusefilter-autopromote-blocked' => "This action has been automatically identified as harmful, and it has been disallowed. In addition, as a security measure, some privileges routinely granted to established accounts have been temporarily revoked from your account. A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-blocker' => 'Abuse Filter',
-	'abusefilter-blockreason' => 'Automatically blocked for attempting to make edits identified as harmful.',
+	'abusefilter-blockreason' => 'Automatically blocked by abuse filter. Rule description: $1',
 	
 	'abusefilter-accountreserved' => 'This account name is reserved for use by the abuse filter.',
 	
