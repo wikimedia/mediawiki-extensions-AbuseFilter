@@ -347,10 +347,10 @@ class AbuseFilter {
 					
 					// Threaten them a little bit
 					if (strlen($parameters[0])) {
-						$display .= call_user_func_array( 'wfMsg', $parameters ) . "\n";
+						$display .= call_user_func_array( 'wfMsgNoTrans', $parameters ) . "\n";
 					} else {
 						// Generic message.
-						$display .= wfMsg( 'abusefilter-warning', $rule_desc ) ."<br />\n";
+						$display .= wfMsgNoTrans( 'abusefilter-warning', $rule_desc ) ."<br />\n";
 					}
 					
 					return false; // Don't apply the other stuff yet.
@@ -365,10 +365,10 @@ class AbuseFilter {
 				
 				// Don't let them do it
 				if (strlen($parameters[0])) {
-					$display .= call_user_func_array( 'wfMsg', $parameters ) . "\n";
+					$display .= call_user_func_array( 'wfMsgNoTrans', $parameters ) . "\n";
 				} else {
 					// Generic message.
-					$display .= wfMsg( 'abusefilter-disallowed', $rule_desc ) ."<br />\n";
+					$display .= wfMsgNoTrans( 'abusefilter-disallowed', $rule_desc ) ."<br />\n";
 				}
 				break;
 				
@@ -392,7 +392,7 @@ class AbuseFilter {
 
 				$block->insert();
 				
-				$display .= wfMsg( 'abusefilter-blocked-display', $rule_desc ) ."<br />\n";
+				$display .= wfMsgNoTrans( 'abusefilter-blocked-display', $rule_desc ) ."<br />\n";
 				break;
 			case 'throttle':
 				$throttleId = array_shift( $parameters );
@@ -419,7 +419,7 @@ class AbuseFilter {
 					$wgUser->removeGroup( $group );
 				}
 				
-				$display .= wfMsg( 'abusefilter-degrouped', $rule_desc ) ."<br />\n";
+				$display .= wfMsgNoTrans( 'abusefilter-degrouped', $rule_desc ) ."<br />\n";
 				
 				break;
 			case 'blockautopromote':
@@ -430,7 +430,7 @@ class AbuseFilter {
 				$blockPeriod = (int)mt_rand( 3*86400, 7*86400 ); // Block for 3-7 days.
 				$wgMemc->set( self::autoPromoteBlockKey( $wgUser ), true, $blockPeriod );
 				
-				$display .= wfMsg( 'abusefilter-autopromote-blocked', $rule_desc ) ."<br />\n";
+				$display .= wfMsgNoTrans( 'abusefilter-autopromote-blocked', $rule_desc ) ."<br />\n";
 				
 				break;
 
