@@ -69,7 +69,7 @@ class AbuseFilterHooks {
 		return $filter_result == '' || $filter_result === true;
 	}
 	
-	function onAbortNewAccount( $username, &$message ) {
+	function onAbortNewAccount( $user, &$message ) {
 		wfLoadExtensionMessages( 'AbuseFilter' );
 		if ($username == wfMsgForContent( 'abusefilter-blocker' )) {
 			$message = wfMsg( 'abusefilter-accountreserved' );
@@ -78,7 +78,7 @@ class AbuseFilterHooks {
 		$vars = array();
 		
 		$vars['ACTION'] = 'createaccount';
-		$vars['ACCOUNTNAME'] = $vars['USER_NAME'] = $username;
+		$vars['ACCOUNTNAME'] = $vars['USER_NAME'] = $user->getName();
 		
 		$filter_result = AbuseFilter::filterAction( $vars, SpecialPage::getTitleFor( 'Userlogin' ) );
 		
