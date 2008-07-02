@@ -120,6 +120,13 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-edit-done' => "You have successfully saved your changes to the filter.\n\n[[Special:AbuseFilter|Return]]",
 );
 
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'abusefilter-log-search-submit' => 'Kumi',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -137,49 +144,54 @@ $messages['bg'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'abusefilter-desc'                => 'Aplikas aŭtomatan heŭristikon al redaktoj.',
-	'abusefilter'                     => 'Konfiguri filtrilon de misuzado',
-	'abuselog'                        => 'Protokolo pri misuzado',
-	'abusefilter-warning'             => "<big>'''Averto'''</big>: Ĉi tiu ago estis aŭtomate identigita kiel misuzema.
+	'abusefilter-desc'                  => 'Aplikas aŭtomatan heŭristikon al redaktoj.',
+	'abusefilter'                       => 'Konfiguri filtrilon de misuzado',
+	'abuselog'                          => 'Protokolo pri misuzado',
+	'abusefilter-warning'               => "<big>'''Averto'''</big>: Ĉi tiu ago estis aŭtomate identigita kiel misuzema.
 Malkonstruktivaj redaktoj rapide estos malfaritaj,
 kaj ĉi tia ega aŭ ripetita redaktado rezultos, ke via konto aŭ komputilo estos forbarita.
 Se vi kredas ke ĉi tiu redakto estas ja konstruktiva, vi povas klaki Konservi denove por konfirmi ĝin.
 Mallonga priskribo pri la regulo de misuzo kiun via ago kongruis estas: $1",
-	'abusefilter-blocker'             => 'Filtrilo de misuzo',
-	'right-abusefilter-modify'        => 'Modifi filtrilojn de misuzo',
-	'right-abusefilter-view'          => 'Rigardi filtrilojn de misuzo',
-	'right-abusefilter-log'           => 'Rigardi la protokolon de misuzo',
-	'right-abusefilter-log-detail'    => 'Rigardi detalojn en la protokolo de misuzo',
-	'right-abusefilter-private'       => 'Rigardi privatajn datenojn en la protokolo de misuzo',
-	'abusefilter-log'                 => 'Protokolo pri Filtrilo de Misuzo',
-	'abusefilter-log-search'          => 'Serĉi la protokolon de misuzo',
-	'abusefilter-log-search-user'     => 'Uzanto',
-	'abusefilter-log-search-filter'   => 'Identigo de filtrilo:',
-	'abusefilter-log-search-title'    => 'Titolo:',
-	'abusefilter-log-search-submit'   => 'Serĉi',
-	'abusefilter-log-detailslink'     => 'detaloj',
-	'abusefilter-log-details-legend'  => 'Detaloj por protokola listano $1',
-	'abusefilter-log-details-val'     => 'Valuto',
-	'abusefilter-log-details-vars'    => 'Parametroj de ago',
-	'abusefilter-log-details-private' => 'Privataj datenoj',
-	'abusefilter-log-details-ip'      => 'Originala IP-adreso',
-	'abusefilter-log-noactions'       => 'neniu',
-	'abusefilter-management'          => 'Administrado de filtriloj de misuzo',
-	'abusefilter-list'                => 'Ĉiuj filtriloj',
-	'abusefilter-list-id'             => 'Identigo de Filtrilo',
-	'abusefilter-list-status'         => 'Statuso',
-	'abusefilter-list-public'         => 'Publika priskribo',
-	'abusefilter-list-consequences'   => 'Konsekvencoj',
-	'abusefilter-list-visibility'     => 'Videbleco',
-	'abusefilter-list-edit'           => 'Redakti',
-	'abusefilter-hidden'              => 'Privata',
-	'abusefilter-unhidden'            => 'Publika',
-	'abusefilter-hitcount'            => '$1 {{PLURAL:$1|trovo|trovoj}}',
-	'abusefilter-list-new'            => 'Nova filtrilo',
-	'abusefilter-edit-new'            => 'Nova filtrilo',
-	'abusefilter-edit-save'           => 'Konservi filtrilon',
-	'abusefilter-edit-done-subtitle'  => 'Filtrilo redaktita',
-	'abusefilter-edit-done'           => 'Vi sukcese konservis viajn ŝanĝojn al la filtrilo.
+	'abusefilter-blocker'               => 'Filtrilo de misuzo',
+	'right-abusefilter-modify'          => 'Modifi filtrilojn de misuzo',
+	'right-abusefilter-view'            => 'Rigardi filtrilojn de misuzo',
+	'right-abusefilter-log'             => 'Rigardi la protokolon de misuzo',
+	'right-abusefilter-log-detail'      => 'Rigardi detalojn en la protokolo de misuzo',
+	'right-abusefilter-private'         => 'Rigardi privatajn datenojn en la protokolo de misuzo',
+	'abusefilter-log'                   => 'Protokolo pri Filtrilo de Misuzo',
+	'abusefilter-log-search'            => 'Serĉi la protokolon de misuzo',
+	'abusefilter-log-search-user'       => 'Uzanto',
+	'abusefilter-log-search-filter'     => 'Identigo de filtrilo:',
+	'abusefilter-log-search-title'      => 'Titolo:',
+	'abusefilter-log-search-submit'     => 'Serĉi',
+	'abusefilter-log-detailslink'       => 'detaloj',
+	'abusefilter-log-details-legend'    => 'Detaloj por protokola listano $1',
+	'abusefilter-log-details-val'       => 'Valuto',
+	'abusefilter-log-details-vars'      => 'Parametroj de ago',
+	'abusefilter-log-details-private'   => 'Privataj datenoj',
+	'abusefilter-log-details-ip'        => 'Originala IP-adreso',
+	'abusefilter-log-noactions'         => 'neniu',
+	'abusefilter-management'            => 'Administrado de filtriloj de misuzo',
+	'abusefilter-list'                  => 'Ĉiuj filtriloj',
+	'abusefilter-list-id'               => 'Identigo de Filtrilo',
+	'abusefilter-list-status'           => 'Statuso',
+	'abusefilter-list-public'           => 'Publika priskribo',
+	'abusefilter-list-consequences'     => 'Konsekvencoj',
+	'abusefilter-list-visibility'       => 'Videbleco',
+	'abusefilter-list-edit'             => 'Redakti',
+	'abusefilter-hidden'                => 'Privata',
+	'abusefilter-unhidden'              => 'Publika',
+	'abusefilter-hitcount'              => '$1 {{PLURAL:$1|trovo|trovoj}}',
+	'abusefilter-list-new'              => 'Nova filtrilo',
+	'abusefilter-edit-new'              => 'Nova filtrilo',
+	'abusefilter-edit-save'             => 'Konservi filtrilon',
+	'abusefilter-edit-notes'            => "Notoj:
+:''(privata)",
+	'abusefilter-edit-lastuser'         => 'Lasta uzanto modifanta ĉi tiun filtrilon:',
+	'abusefilter-edit-throttle-seconds' => '$1 sekundoj',
+	'abusefilter-edit-main'             => 'Filtraj parametroj',
+	'abusefilter-edit-done-subtitle'    => 'Filtrilo redaktita',
+	'abusefilter-edit-done'             => 'Vi sukcese konservis viajn ŝanĝojn al la filtrilo.
 
 [[Special:AbuseFilter|Reiri]]',
 );
@@ -458,13 +470,6 @@ $messages['lb'] = array(
 $messages['lt'] = array(
 	'abusefilter-log-search-user'   => 'Naudotojas:',
 	'abusefilter-log-search-submit' => 'Ieškoti',
-);
-
-/** Niuean (native name missing)
- * @author Jose77
- */
-$messages['niu'] = array(
-	'abusefilter-log-search-submit' => 'Kumi',
 );
 
 /** Dutch (Nederlands)
