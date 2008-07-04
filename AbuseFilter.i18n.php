@@ -120,6 +120,21 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-edit-done' => "You have successfully saved your changes to the filter.\n\n[[Special:AbuseFilter|Return]]",
 );
 
+/** Faeag Rotuma (Faeag Rotuma)
+ * @author Jose77
+ */
+$messages['rtm'] = array(
+	'abusefilter-list-edit' => "A'tū'ạki",
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'abusefilter-log-search-submit' => 'Tarzzut',
+	'abusefilter-list-edit'         => 'Arri',
+);
+
 /** Niuean (native name missing)
  * @author Jose77
  */
@@ -131,13 +146,21 @@ $messages['niu'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'abusefilter-log-search-user'   => 'Потребител:',
-	'abusefilter-log-search-title'  => 'Заглавие:',
-	'abusefilter-log-search-submit' => 'Търсене',
-	'abusefilter-log-detailslink'   => 'детайли',
-	'abusefilter-list-status'       => 'Статут',
-	'abusefilter-list-public'       => 'Публично описание',
-	'abusefilter-list-edit'         => 'Редактиране',
+	'abusefilter-log-search-user'       => 'Потребител:',
+	'abusefilter-log-search-title'      => 'Заглавие:',
+	'abusefilter-log-search-submit'     => 'Търсене',
+	'abusefilter-log-detailslink'       => 'детайли',
+	'abusefilter-list'                  => 'Всички филтри',
+	'abusefilter-list-status'           => 'Статут',
+	'abusefilter-list-public'           => 'Публично описание',
+	'abusefilter-list-edit'             => 'Редактиране',
+	'abusefilter-list-details'          => 'Детайли',
+	'abusefilter-list-new'              => 'Нов филтър',
+	'abusefilter-edit-subtitle'         => 'Редактиране на филтър $1',
+	'abusefilter-edit-new'              => 'Нов филтър',
+	'abusefilter-edit-save'             => 'Съхраняване на филтъра',
+	'abusefilter-edit-throttle-period'  => 'Период от време:',
+	'abusefilter-edit-throttle-seconds' => '$1 секунди',
 );
 
 /** Esperanto (Esperanto)
@@ -747,6 +770,218 @@ $messages['oc'] = array(
 [[Special:AbuseFilter|Retorn]]',
 );
 
+/** Polish (Polski)
+ * @author Airwolf
+ */
+$messages['pl'] = array(
+	'abusefilter-log-search-user' => 'Użytkownik:',
+	'abusefilter-log-detailslink' => 'szczegóły',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'abusefilter-desc'                         => 'Применяет к правкам автоматические эвристики.',
+	'abusefilter'                              => 'Настройка фильтра злоупотреблений',
+	'abuselog'                                 => 'Журнал злоупотреблений',
+	'abusefilter-warning'                      => "<big>'''Внимание'''</big>. Данное действие было автоматически определено как вредоносное.
+Неконструктивные правки будут быстро отменены,
+грубые или неоднократные неконструктивную правки приведут к блокировке вашей учётной записи или компьютера.
+Если вы уверены, что это конструктивная правка, вы можете нажать «Отправить» ещё раз, подтвердив тем самым правку.
+Краткое описание злоупотребления, с которым определено соответствие вашего действия: $1",
+	'abusefilter-disallowed'                   => 'Данное действие было автоматически определено как вредоносное?
+и потому запрещено.
+Если вы уверены, что это конструктивная правка, пожалуйста, обратитесь к администратору и расскажите что вы собирались сделать.
+Краткое описание злоупотребления, с которым определено соответствие вашего действия: $1',
+	'abusefilter-blocked-display'              => 'Данное действие было автоматически определено как вредоносное,
+вам было запрещено его выполнение.
+Кроме того, в целях защиты проекта {{SITENAME}}, ваша учётная запись и связанные с ней IP-адреса были заблокированы.
+Если вы видите в этом ошибку, пожалуйста, свяжитесь с администратором.
+Краткое описание злоупотребления, с которым определено соответствие вашего действия: $1',
+	'abusefilter-degrouped'                    => 'Данное действие было автоматически определено как вредоносное.
+Таким образом, действие не было выполнено, ваша учётная запись считается скомпрометированный, с неё сняты все права.
+Если вы считаете, что это ошибка, пожалуйста, свяжитесь с бюрократом и объясните ему ваши действия, тогда ваши права будут восстановлены.
+Краткое описание злоупотребления, с которым определено соответствие вашего действия: $1',
+	'abusefilter-autopromote-blocked'          => 'Данное действие было автоматически определено как вредоносное, и потому запрещено.
+Кроме того, в целях безопасности, с вашей учётной записи сняты некоторые привилегии, обычно предоставляемые зарегистрированным учётным записям.
+Краткое описание злоупотребления, с которым определено соответствие вашего действия: $1',
+	'abusefilter-blocker'                      => 'Фильтр злоупотреблений',
+	'abusefilter-blockreason'                  => 'Автоматически заблокирован фильтром злоупотреблений. Описание правила: $1',
+	'abusefilter-accountreserved'              => 'Эта учётная запись зарезервирована для использования фильтром злоупотреблений.',
+	'right-abusefilter-modify'                 => 'Изменить фильтры злоупотреблений',
+	'right-abusefilter-view'                   => 'Просмотреть фильтры злоупотреблений',
+	'right-abusefilter-log'                    => 'Просмотреть журнал злоупотреблений',
+	'right-abusefilter-log-detail'             => 'Просмотреть подробнее записи журнала злоупотреблений',
+	'right-abusefilter-private'                => 'Просмотреть приватные данные в журнале злоупотреблений',
+	'abusefilter-log'                          => 'Журнал фильтра злоупотреблений',
+	'abusefilter-log-search'                   => 'Поиск в журнале злоупотреблений',
+	'abusefilter-log-search-user'              => 'Участник:',
+	'abusefilter-log-search-filter'            => 'ИД фильтра:',
+	'abusefilter-log-search-title'             => 'Заголовок:',
+	'abusefilter-log-search-submit'            => 'Найти',
+	'abusefilter-log-entry'                    => '$1: $2 вызвал срабатывание фильтра злоупотреблений, действие «$3» на странице «$4». Принятые меры: $5; описание фильтра: $6',
+	'abusefilter-log-detailedentry'            => '$1: $2 вызвал срабатывание фильтра $3, действие «$4» на странице «$5». Принятые меры: $6; описание фильтра: $7 ($8)',
+	'abusefilter-log-detailslink'              => 'подробности',
+	'abusefilter-log-details-legend'           => 'Подробности записи журнала $1',
+	'abusefilter-log-details-var'              => 'Переменная',
+	'abusefilter-log-details-val'              => 'Значение',
+	'abusefilter-log-details-vars'             => 'Параметры действия',
+	'abusefilter-log-details-private'          => 'Приватные данные',
+	'abusefilter-log-details-ip'               => 'Исходящий IP-адрес',
+	'abusefilter-log-noactions'                => 'нет',
+	'abusefilter-management'                   => 'Управление фильтром злоупотреблений',
+	'abusefilter-list'                         => 'Все фильтры',
+	'abusefilter-list-id'                      => 'ИД фильтра',
+	'abusefilter-list-status'                  => 'Состояние',
+	'abusefilter-list-public'                  => 'Общедоступное описание',
+	'abusefilter-list-consequences'            => 'Последствия',
+	'abusefilter-list-visibility'              => 'Видимость',
+	'abusefilter-list-hitcount'                => 'Срабатываний',
+	'abusefilter-list-edit'                    => 'Править',
+	'abusefilter-list-details'                 => 'Подробности',
+	'abusefilter-hidden'                       => 'Личное',
+	'abusefilter-unhidden'                     => 'Общедоступное',
+	'abusefilter-enabled'                      => 'Включён',
+	'abusefilter-disabled'                     => 'Выключен',
+	'abusefilter-hitcount'                     => '$1 {{PLURAL:$1|срабатывание|срабатывания|срабатываний}}',
+	'abusefilter-list-new'                     => 'Новый фильтр',
+	'abusefilter-edit-subtitle'                => 'Изменение фильтра $1',
+	'abusefilter-edit-new'                     => 'Новый фильтр',
+	'abusefilter-edit-save'                    => 'Сохранить фильтр',
+	'abusefilter-edit-id'                      => 'ИД фильтра:',
+	'abusefilter-edit-description'             => "Описание:
+:''(общедоступное)''",
+	'abusefilter-edit-flags'                   => 'Флаги:',
+	'abusefilter-edit-enabled'                 => 'Включить этот фильтр',
+	'abusefilter-edit-hidden'                  => 'Скрыть подробности этого фильтра от обычных участников',
+	'abusefilter-edit-rules'                   => 'Набор правил:',
+	'abusefilter-edit-notes'                   => "Примечания:
+:''(приватные)",
+	'abusefilter-edit-lastmod'                 => 'Последнее изменение фильтра:',
+	'abusefilter-edit-lastuser'                => 'Участник, последним изменивший фильтр:',
+	'abusefilter-edit-hitcount'                => 'Срабатываний фильтра:',
+	'abusefilter-edit-consequences'            => 'Принятых по срабатыванию мер',
+	'abusefilter-edit-action-warn'             => 'Принимать эти меры после предупреждения участника',
+	'abusefilter-edit-action-disallow'         => 'Запретить действие',
+	'abusefilter-edit-action-flag'             => 'Отметить правку в журнале злоупотреблений',
+	'abusefilter-edit-action-blockautopromote' => 'Снять с участника статус автоподтверждения',
+	'abusefilter-edit-action-degroup'          => 'Исключить участника из всех привилегированных групп',
+	'abusefilter-edit-action-block'            => 'Заблокировать участника',
+	'abusefilter-edit-action-throttle'         => 'Применять меры только если участник превышает предел',
+	'abusefilter-edit-throttle-count'          => 'Количество разрешённых действий:',
+	'abusefilter-edit-throttle-period'         => 'Отрезок времени:',
+	'abusefilter-edit-throttle-seconds'        => '$1 секунд',
+	'abusefilter-edit-throttle-groups'         => "Группа сжатая:
+:''(по одной на строке, в сочетании с запятыми)''",
+	'abusefilter-edit-denied'                  => 'Вы не можете просмотреть подробную информацию об этом фильтре, так как она скрыта от обычных участников.',
+	'abusefilter-edit-main'                    => 'Параметры фильтра',
+	'abusefilter-edit-done-subtitle'           => 'Фильтр исправлен',
+	'abusefilter-edit-done'                    => 'Вы успешно сохранили изменения в фильтре.
+
+[[Special:AbuseFilter|Вернуться]]',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'abusefilter-desc'                         => 'Vykonáva automatickú heuristiku úprav.',
+	'abusefilter'                              => 'Nastavenie filtra zneužití',
+	'abuselog'                                 => 'Záznam zneužití',
+	'abusefilter-warning'                      => "<big>'''Upozornenie'''</big>: Táto činnosť bola automaticky identifikovaná ako škodlivá.
+Nekonštruktívne úpravy budú rýchlo vrátené a zjavné alebo opakované nekonštruktívne zásahy budú mať za následok zablokovanie vášho účtu alebo počítača. Ak veríte, že je táto úprava konštruktívna, môžete znova kliknúť na Uložiť, čím ju potvrdíte.
+Stručný popis pravidla zneužitia, ktoré zachytilo vašu úpravu, je: $1",
+	'abusefilter-disallowed'                   => 'Táto činnosť bola automaticky identifikovaná ako škodlivá a preto bola odmietnutá.
+Ak veríte, že je táto úprava konštruktívna, kontaktujte prosím správcu a oznámte im, čo ste sa pokúšali urobiť.
+Stručný popis pravidla zneužitia, ktoré zachytilo vašu úpravu, je: $1',
+	'abusefilter-blocked-display'              => 'Táto činnosť bola automaticky identifikovaná ako škodlivá a preto bola odmietnutá.
+Naviac, na ochranu {{GRAMMAR:genitív|{{SITENAME}}}} boli zablokované úpravy z vášho používateľského účtu a všetkých príslušných IP adries.
+Ak veríte, že to je omyl, kontaktujte prosím správcu.
+Stručný popis pravidla zneužitia, ktoré zachytilo vašu úpravu, je: $1',
+	'abusefilter-degrouped'                    => 'Táto činnosť bola automaticky identifikovaná ako škodlivá.
+Následne bola odmietnutá a pretože existuje podozrenie, že váš účet bol zneužitý, všetky práva mu boli odobrané.
+Ak veríte, že to je omyl, kontaktujte prosím byrokrata, vysvetlite mu, čo ste sa pokúšali urobiť a môže obnoviť vaše práva.
+Stručný popis pravidla zneužitia, ktoré zachytilo vašu úpravu, je: $1',
+	'abusefilter-autopromote-blocked'          => 'Táto činnosť bola automaticky identifikovaná ako škodlivá a preto bola odmietnutá.
+Naviac, ako bezpečnostné opatrenie, boli vášmu účtu dočasne odobrané niektoré oprávnenia, ktoré sa bežne prideľujú dôveryhodným účtom.
+Stručný popis pravidla zneužitia, ktoré zachytilo vašu úpravu, je: $1',
+	'abusefilter-blocker'                      => 'Filter zneužití',
+	'abusefilter-blockreason'                  => 'Automaticky zachytené filtrom zneužití. Popis pravidla: $1',
+	'abusefilter-accountreserved'              => 'Tento názov účtu je vyhradený pre použitie filtrom zneužití.',
+	'right-abusefilter-modify'                 => 'Zmeniť filtre zneužití',
+	'right-abusefilter-view'                   => 'Zobraziť filtre zneužití',
+	'right-abusefilter-log'                    => 'Zobraziť záznam zneužití',
+	'right-abusefilter-log-detail'             => 'Zobraziť podrobnosti položiek záznamu zneužití',
+	'right-abusefilter-private'                => 'Zobraziť osobné údaje v zázname zneužití',
+	'abusefilter-log'                          => 'Záznam filtra zneužití',
+	'abusefilter-log-search'                   => 'Hľadať v zázname filtra zneužití',
+	'abusefilter-log-search-user'              => 'Používateľ:',
+	'abusefilter-log-search-filter'            => 'ID filtra:',
+	'abusefilter-log-search-title'             => 'Názov:',
+	'abusefilter-log-search-submit'            => 'Hľadať',
+	'abusefilter-log-entry'                    => '$1: $2 spustil filter zneužití, pri vykonávaní $3 na $4. Opatrenia: $5; Popis filtra: $6',
+	'abusefilter-log-detailedentry'            => '$1: $2 spustil filter $3, pri vykonávaní $4 na $5. Opatrenia: $6; Popis filtra: $7 ($8)',
+	'abusefilter-log-detailslink'              => 'podrobnosti',
+	'abusefilter-log-details-legend'           => 'Podrobnosti položky záznamu $1',
+	'abusefilter-log-details-var'              => 'Premenná',
+	'abusefilter-log-details-val'              => 'Hodnota',
+	'abusefilter-log-details-vars'             => 'Parametre operácie',
+	'abusefilter-log-details-private'          => 'Osobné údaje',
+	'abusefilter-log-details-ip'               => 'Zdrojová IP adresa',
+	'abusefilter-log-noactions'                => 'žiadne',
+	'abusefilter-management'                   => 'Správa filtra zneužití',
+	'abusefilter-list'                         => 'Všetky filtre',
+	'abusefilter-list-id'                      => 'ID filtra',
+	'abusefilter-list-status'                  => 'Stav',
+	'abusefilter-list-public'                  => 'Verejný popis',
+	'abusefilter-list-consequences'            => 'Následky',
+	'abusefilter-list-visibility'              => 'Viditeľnosť',
+	'abusefilter-list-hitcount'                => 'Počet zásahov',
+	'abusefilter-list-edit'                    => 'upraviť',
+	'abusefilter-list-details'                 => 'Podrobnosti',
+	'abusefilter-hidden'                       => 'Súkromné',
+	'abusefilter-unhidden'                     => 'Verejné',
+	'abusefilter-enabled'                      => 'Zapnuté',
+	'abusefilter-disabled'                     => 'Vypnuté',
+	'abusefilter-hitcount'                     => '$1 {{PLURAL:$1|zásah|zásahov}}',
+	'abusefilter-list-new'                     => 'Nový filter',
+	'abusefilter-edit-subtitle'                => 'Úprava filtra $1',
+	'abusefilter-edit-new'                     => 'Nový filter',
+	'abusefilter-edit-save'                    => 'Uložiť filter',
+	'abusefilter-edit-id'                      => 'ID filtra:',
+	'abusefilter-edit-description'             => "Popis:
+:''(verejne viditeľný)''",
+	'abusefilter-edit-flags'                   => 'Príznaky:',
+	'abusefilter-edit-enabled'                 => 'Zapnúť tento filter',
+	'abusefilter-edit-hidden'                  => 'Skryť verejné zobrazovanie podrobností filtra',
+	'abusefilter-edit-rules'                   => 'Pravidlá:',
+	'abusefilter-edit-notes'                   => "Poznámky:
+:''(súkromný)''",
+	'abusefilter-edit-lastmod'                 => 'Posledná zmena filtra:',
+	'abusefilter-edit-lastuser'                => 'Poslednú zmenu filtra vykonal:',
+	'abusefilter-edit-hitcount'                => 'Počet zásahov filtra:',
+	'abusefilter-edit-consequences'            => 'Opatrenia vykonané pri zásahu',
+	'abusefilter-edit-action-warn'             => 'Spustiť tieto operácie po varovaní používateľa',
+	'abusefilter-edit-action-disallow'         => 'Zamietnuť operáciu',
+	'abusefilter-edit-action-flag'             => 'Označiť úpravu v zázname zneužití',
+	'abusefilter-edit-action-blockautopromote' => 'Odobrať používateľovi stav „zaregistrovaný”',
+	'abusefilter-edit-action-degroup'          => 'Odstrániť používateľa zo všetkých privilegovaných skupín',
+	'abusefilter-edit-action-block'            => 'Zablokovať používateľa',
+	'abusefilter-edit-action-throttle'         => 'Spustiť operáciu iba ak používateľ dosiahne limit rýchlosti úprav',
+	'abusefilter-edit-throttle-count'          => 'Počet povolených operácií:',
+	'abusefilter-edit-throttle-period'         => 'Časový interval:',
+	'abusefilter-edit-throttle-seconds'        => '$1 sekúnd',
+	'abusefilter-edit-throttle-groups'         => "Obmedzenie rýchlosti úprav skupiny:
+:''(jedna na riadok, viaceré oddelené čiarkami)''",
+	'abusefilter-edit-denied'                  => 'Nemôžete zobraziť podrobnosti toho filtra, pretože jeho verejné zobrazovanie je vypnuté',
+	'abusefilter-edit-main'                    => 'Parametre filtra',
+	'abusefilter-edit-done-subtitle'           => 'Filter bol upravený',
+	'abusefilter-edit-done'                    => 'Úspešne ste uložili zmeny filtra.
+
+[[Special:AbuseFilter|Vrátiť sa späť]]',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Boivie
@@ -862,7 +1097,15 @@ $messages['te'] = array(
 	'abusefilter-log-detailslink'       => 'వివరాలు',
 	'abusefilter-log-details-val'       => 'విలువ',
 	'abusefilter-list-status'           => 'స్థితి',
+	'abusefilter-list-consequences'     => 'పరిణామాలు',
+	'abusefilter-list-edit'             => 'మార్చు',
 	'abusefilter-list-details'          => 'వివరాలు',
+	'abusefilter-hidden'                => 'అంతరంగికం',
+	'abusefilter-unhidden'              => 'బహిరంగం',
+	'abusefilter-edit-description'      => "వివరణ:
+:''(బహిరంగంగా కనిపిస్తుంది)''",
+	'abusefilter-edit-notes'            => "గమనికలు:
+:''(అంతరంగికం)",
 	'abusefilter-edit-throttle-seconds' => '$1 క్షణాలు',
 );
 
