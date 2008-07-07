@@ -127,19 +127,18 @@ $messages['rtm'] = array(
 	'abusefilter-list-edit' => "A'tū'ạki",
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$messages['rif'] = array(
-	'abusefilter-log-search-submit' => 'Tarzzut',
-	'abusefilter-list-edit'         => 'Arri',
-);
-
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(
 	'abusefilter-log-search-submit' => 'Kumi',
+);
+
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis1978
+ */
+$messages['arz'] = array(
+	'abusefilter-log-search-user' => 'يوزر:',
 );
 
 /** Bulgarian (Български)
@@ -147,10 +146,18 @@ $messages['niu'] = array(
  */
 $messages['bg'] = array(
 	'abuselog'                          => 'Дневник на злоупотребите',
+	'abusefilter-accountreserved'       => 'Това име на сметка е запазено за употреба от филтъра за злоупотреби.',
+	'right-abusefilter-modify'          => 'Променяне на филтрите за злоупотреби',
+	'right-abusefilter-view'            => 'Преглеждане на филтрите за злоупотреби',
+	'right-abusefilter-log'             => 'Преглеждане на дневника със злоупотребите',
+	'right-abusefilter-log-detail'      => 'Преглеждане на подробни записи в дневника за злоупотребите',
+	'right-abusefilter-private'         => 'Преглеждане на личните данни в дневника със злоупотребите',
+	'abusefilter-log-search'            => 'Търсене в дневника със злоупотреби',
 	'abusefilter-log-search-user'       => 'Потребител:',
 	'abusefilter-log-search-title'      => 'Заглавие:',
 	'abusefilter-log-search-submit'     => 'Търсене',
 	'abusefilter-log-detailslink'       => 'детайли',
+	'abusefilter-log-details-var'       => 'Променлива',
 	'abusefilter-log-details-val'       => 'Стойност',
 	'abusefilter-log-noactions'         => 'няма',
 	'abusefilter-list'                  => 'Всички филтри',
@@ -790,6 +797,14 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'abusefilter-log-search-user' => 'Użytkownik:',
 	'abusefilter-log-detailslink' => 'szczegóły',
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'abusefilter-log-search-submit' => 'Tarzzut',
+	'abusefilter-list-edit'         => 'Arri',
 );
 
 /** Russian (Русский)
