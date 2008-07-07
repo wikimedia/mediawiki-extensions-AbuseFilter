@@ -467,6 +467,7 @@ $messages['lb'] = array(
 	'abusefilter-list'                  => 'All Filteren',
 	'abusefilter-list-id'               => 'Nummer(ID) vum Filter',
 	'abusefilter-list-status'           => 'Statut',
+	'abusefilter-list-public'           => 'Ëffentlech Beschreiwung',
 	'abusefilter-list-consequences'     => 'Konsequenzen',
 	'abusefilter-list-edit'             => 'Änneren',
 	'abusefilter-list-details'          => 'Dteailer',
@@ -481,7 +482,9 @@ $messages['lb'] = array(
 	'abusefilter-edit-id'               => 'Nummer (ID) vum Filter:',
 	'abusefilter-edit-description'      => "Beschreiwung:
 :''(ëffentlech)''",
+	'abusefilter-edit-flags'            => 'Fändelen:',
 	'abusefilter-edit-enabled'          => 'Dëse Filter aktivéieren',
+	'abusefilter-edit-hidden'           => "Verstop d'Detailer vun dësem Filter virun der Ëffentlechkeet",
 	'abusefilter-edit-notes'            => "Notizen:
 :''(privat)''",
 	'abusefilter-edit-lastmod'          => "De Filter gouf fir d'lescht geännert",
@@ -490,6 +493,7 @@ $messages['lb'] = array(
 	'abusefilter-edit-action-block'     => 'De Benotzer fir Ännerunge spären',
 	'abusefilter-edit-throttle-period'  => 'Zäitraum:',
 	'abusefilter-edit-throttle-seconds' => '$1 Sekonnen',
+	'abusefilter-edit-denied'           => 'Dir kënnt Detailer vun dësem Filter net gesinn, well se virum Public verstoppr sinn',
 	'abusefilter-edit-main'             => 'Parametere vum Filter',
 	'abusefilter-edit-done-subtitle'    => 'Filter geännert',
 	'abusefilter-edit-done'             => 'Dir hutt är Ännerunge vum Filter ofgespäichert.
