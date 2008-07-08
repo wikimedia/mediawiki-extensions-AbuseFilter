@@ -15,8 +15,8 @@ $messages['en'] = array(
 	'abusefilter-desc' => 'Applies automatic heuristics to edits.',
 
 	// Special pages
-	'abusefilter' => 'Abuse Filter Configuration',
-	'abuselog' => 'Abuse Log',
+	'abusefilter' => 'Abuse filter configuration',
+	'abuselog' => 'Abuse log',
 	
 	// Hooks
 	'abusefilter-warning' => "<big>'''Warning'''</big>: This action has been automatically identified as harmful.
@@ -40,7 +40,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-autopromote-blocked' => "This action has been automatically identified as harmful, and it has been disallowed.
 In addition, as a security measure, some privileges routinely granted to established accounts have been temporarily revoked from your account.
 A brief description of the abuse rule which your action matched is: $1",
-	'abusefilter-blocker' => 'Abuse Filter',
+	'abusefilter-blocker' => 'Abuse filter',
 	'abusefilter-blockreason' => 'Automatically blocked by abuse filter. Rule description: $1',
 	
 	'abusefilter-accountreserved' => 'This account name is reserved for use by the abuse filter.',
@@ -53,7 +53,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	'right-abusefilter-private' => 'View private data in the abuse log',
 	
 	// Abuse Log
-	'abusefilter-log' => 'Abuse Filter Log',
+	'abusefilter-log' => 'Abuse filter log',
 	'abusefilter-log-search' => 'Search the abuse log',
 	'abusefilter-log-search-user' => 'User:',
 	'abusefilter-log-search-filter' => 'Filter ID:',
@@ -71,7 +71,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-log-noactions' => 'none',
 	
 	// Abuse filter management
-	'abusefilter-management' => 'Abuse Filter Management',
+	'abusefilter-management' => 'Abuse filter management',
 	'abusefilter-list' => 'All filters',
 	'abusefilter-list-id' => 'Filter ID',
 	'abusefilter-list-status' => 'Status',
@@ -91,7 +91,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	// The edit screen
 	'abusefilter-edit-subtitle' => 'Editing filter $1',
 	'abusefilter-edit-new' => 'New filter',
-	'abusefilter-edit-save' => 'Save Filter',
+	'abusefilter-edit-save' => 'Save filter',
 	'abusefilter-edit-id' => 'Filter ID:',
 	'abusefilter-edit-description' => "Description:\n:''(publicly viewable)''",
 	'abusefilter-edit-flags' => 'Flags:',
