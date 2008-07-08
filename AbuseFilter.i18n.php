@@ -141,6 +141,18 @@ $messages['arz'] = array(
 	'abusefilter-log-search-user' => 'يوزر:',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Red Winged Duck
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'abusefilter-desc'    => 'Прыстасоўвае аўтаматычную эўрыстыку да рэдагаваньняў.',
+	'abusefilter'         => 'Наладка фільтра злоўжываньняў',
+	'abuselog'            => 'Журнал злоўжываньняў',
+	'abusefilter-warning' => "<big>'''Увага'''</big>: Гэтае дзеяньне будзе аўтаматычна лічыцца шкодным. Неканструктыўныя рэдагаваньні будуць адмененыя, і значныя ці неаднаразовыя неканструктыўныя рэдагаваньні прывядуць да блякаваньня Вашага рахунка ці кампутара. Калі Вы лічыце гэтае рэдагаваньне канструктыўным, Вам неабходна націснуць «Адправіць» яшчэ раз каб яго пацьвердзіць.
+Кароткі сьпіс злоўжываньняў, зь якімі суадносіцца Вашае дзеяньне тут: $1",
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -218,10 +230,18 @@ Mallonga priskribo pri la regulo de misuzo kiun via ago kongruis estas: $1",
 	'abusefilter-list-new'              => 'Nova filtrilo',
 	'abusefilter-edit-new'              => 'Nova filtrilo',
 	'abusefilter-edit-save'             => 'Konservi filtrilon',
+	'abusefilter-edit-enabled'          => 'Ebligi ĉi tiun filtrilon',
+	'abusefilter-edit-hidden'           => 'Kaŝi detalojn pri ĉi tiu filtrilo de publika vido',
+	'abusefilter-edit-rules'            => 'Regularo:',
 	'abusefilter-edit-notes'            => "Notoj:
 :''(privata)",
+	'abusefilter-edit-lastmod'          => 'Filtri laste modifitajn:',
 	'abusefilter-edit-lastuser'         => 'Lasta uzanto modifanta ĉi tiun filtrilon:',
+	'abusefilter-edit-action-disallow'  => 'Malpermesi la agon',
+	'abusefilter-edit-action-block'     => 'Forbari la uzanton de redaktado',
+	'abusefilter-edit-throttle-period'  => 'Tempdaŭro:',
 	'abusefilter-edit-throttle-seconds' => '$1 sekundoj',
+	'abusefilter-edit-denied'           => 'Vi ne rajtas vidi detalojn pri ĉi tiu filtrilo, ĉar ĝi estas kaŝita de publika vido',
 	'abusefilter-edit-main'             => 'Filtraj parametroj',
 	'abusefilter-edit-done-subtitle'    => 'Filtrilo redaktita',
 	'abusefilter-edit-done'             => 'Vi sukcese konservis viajn ŝanĝojn al la filtrilo.
@@ -625,13 +645,18 @@ $messages['no'] = array(
 	'abusefilter-desc'                         => 'Legger automatisk til heuristikk til redigeringer.',
 	'abusefilter'                              => 'Konfigurasjon av misbruksfilter',
 	'abuselog'                                 => 'Misbrukslogg',
-	'abusefilter-warning'                      => "<big>'''Advarsel:'''</big> Handlingen har automatisk blitt identifisert som skadelig. Ikke-konstruktive redigeringer blir raskt tilbakestilt, og langvarig forstyrrende redigering vil føre til at din konto eller datamaskin blir blokkert. Om du mener dette er en konstruktiv redigering, klikk «Lagre» igjen for å bekrefte.",
-	'abusefilter-disallowed'                   => 'Denne handlingen har automatisk blitt identifisert som skadelig, og tillates ikke. Om du mener redigeringen var konstruktiv, kontakt en administrator og informer ham eller henne om hva du prøvde å få til.',
-	'abusefilter-blocked-display'              => 'Denne handlingen har automatisk blitt identifisert som skadelig, og du har blitt hindret fra å gjennomføre den. I tillegg har kontoen din og alle IP-adresser assosiert med denne blitt blokkert fra å redigere {{SITENAME}}. Om dette var en feil, kontakt en administrator.',
-	'abusefilter-degrouped'                    => 'Denne handlingen har automatisk blitt identifisert som skadelig. Derfor ble den ikke tillatt, og på grunn av mistanke om misbruk har kontoen din mistet alle rettigheter. Om du mener dette er en feil, kontakt en byråkrat med en forklaring på hva du gjorde, og rettighetene dine kan bli gjenopprettet.',
+	'abusefilter-warning'                      => "<big>'''Advarsel:'''</big> Handlingen har automatisk blitt identifisert som skadelig.
+Ikke-konstruktive redigeringer blir raskt tilbakestilt, og langvarig forstyrrende redigering vil føre til at din konto eller datamaskin blir blokkert. Om du mener dette er en konstruktiv redigering, klikk «Lagre» igjen for å bekrefte.
+En kortfattet beskrivelse av misbruksregelen som din handling utløste er: $1",
+	'abusefilter-disallowed'                   => 'Denne handlingen har automatisk blitt identifisert som skadelig, og tillates ikke. Om du mener redigeringen var konstruktiv, kontakt en administrator og informer ham eller henne om hva du prøvde å få til.
+En kortfattet beskrivelse av misbruksregelen som din handling utløste er: $1',
+	'abusefilter-blocked-display'              => 'Denne handlingen har automatisk blitt identifisert som skadelig, og du har blitt hindret fra å gjennomføre den. I tillegg har kontoen din og alle IP-adresser assosiert med denne blitt blokkert fra å redigere {{SITENAME}}. Om dette var en feil, kontakt en administrator.
+En kortfattet beskrivelse av misbruksregelen som din handling utløste er: $1',
+	'abusefilter-degrouped'                    => 'Denne handlingen har automatisk blitt identifisert som skadelig. Derfor ble den ikke tillatt, og på grunn av mistanke om misbruk har kontoen din mistet alle rettigheter. Om du mener dette er en feil, kontakt en byråkrat med en forklaring på hva du gjorde, og rettighetene dine kan bli gjenopprettet.
+En kortfattet beskrivelse av misbruksregelen som din handling utløste er: $1',
 	'abusefilter-autopromote-blocked'          => 'Denne handlingen har automatisk blitt identifisert som skadelig, og ble ikke tillatt. I tillegg ble noen av rettighetene kontoen din hadde fjernet midlertidig.',
 	'abusefilter-blocker'                      => 'Misbruksfilter',
-	'abusefilter-blockreason'                  => 'Automatisk blokkert for å utføre skadelige redigeringer.',
+	'abusefilter-blockreason'                  => 'Automatisk blokkert for å utføre skadelige redigeringer. Regelbeskrivelse: $1',
 	'abusefilter-accountreserved'              => 'Denne kontoen er reservert for bruk av misbruksfilteret.',
 	'right-abusefilter-modify'                 => 'Endre misbruksfiltere',
 	'right-abusefilter-view'                   => 'Vise misbruksfiltere',
@@ -793,9 +818,10 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Airwolf
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'abusefilter-log-search-user' => 'Użytkownik:',
+	'abusefilter-log-search-user' => 'Użytkownik',
 	'abusefilter-log-detailslink' => 'szczegóły',
 );
 
