@@ -17,6 +17,10 @@ $user = User::newFromName( wfMsgForContent( 'abusefilter-blocker' ) );
 if (!$user->getId()) {
 	$user->addToDatabase();
 	$user->saveSettings();
+} else {
+	// Sorry dude, we need this account.
+	$user->setPassword( null );
+	$user->saveSettings();
 }
 
 # Promote user so it doesn't look too crazy.
