@@ -376,6 +376,7 @@ class AbuseFilter {
 				wfLoadExtensionMessages( 'AbuseFilter' );
 				
 				global $wgUser;
+				$filterUser = AbuseFilter::getFilterUser();
 
 				// Create a block.
 				$block = new Block;
@@ -391,6 +392,16 @@ class AbuseFilter {
 				$block->mExpiry = 'infinity';
 
 				$block->insert();
+				
+				// Log it
+				# Prepare log parameters
+				$logParams = array();
+				$logParams[] = 'indefinite';
+				$logParams[] = 'nocreate, angry-autoblock';
+	
+				$log = new LogPage( 'block' );
+				$log->addEntry( 'block', Title::makeTitle( NS_USER, $wgUser->getName() ),
+					wfMsgForContent( 'abusefilter-blockreason', $rule_desc ), $logParams, self::getFilterUser() );
 				
 				$display .= wfMsgNoTrans( 'abusefilter-blocked-display', $rule_desc ) ."<br />\n";
 				break;
@@ -420,6 +431,18 @@ class AbuseFilter {
 				}
 				
 				$display .= wfMsgNoTrans( 'abusefilter-degrouped', $rule_desc ) ."<br />\n";
+				
+				// Log it.
+				$log = new LogPage( 'rights' );
+		
+				$log->addEntry( 'rights',
+					$wgUser->getUserPage(),
+					wfMsgForContent( 'abusefilter-degroupreason', $rule_desc ),
+					array(
+						implode( ', ', $groups ),
+						wfMsgForContent( 'rightsnone' )
+					)
+				, self::getFilterUser() );
 				
 				break;
 			case 'blockautopromote':
@@ -512,5 +535,37 @@ class AbuseFilter {
 	
 	public static function autoPromoteBlockKey( $user ) {
 		return wfMemcKey( 'abusefilter', 'block-autopromote', $user->getId() );
+	}
+	
+	public static function getFilterUser() {
+		wfLoadExtensionMessages( 'AbuseFilter' );
+		
+		$user = User::newFromName( wfMsgForContent( 'abusefilter-blocker' ) );
+		$user->load();
+		if ($user->getId() && $user->mPassword == '') {
+			// Already set up.
+			return $user;
+		}
+		
+		// Not set up. Create it.
+		
+		if (!$user->getId()) {
+			$user->addToDatabase();
+			$user->saveSettings();
+		} else {
+			// Take over the account
+			$user->setPassword( null );
+			$user->setEmail( null );
+			$user->saveSettings();
+		}
+		
+		# Promote user so it doesn't look too crazy.
+		$user->addGroup( 'sysop' );
+		
+		# Increment site_stats.ss_users
+		$ssu = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
+		$ssu->doUpdate();
+		
+		return $user;
 	}
 }

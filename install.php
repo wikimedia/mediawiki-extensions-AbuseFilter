@@ -20,6 +20,7 @@ if (!$user->getId()) {
 } else {
 	// Sorry dude, we need this account.
 	$user->setPassword( null );
+	$user->setEmail( null );
 	$user->saveSettings();
 }
 

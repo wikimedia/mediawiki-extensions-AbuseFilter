@@ -40,8 +40,10 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-autopromote-blocked' => "This action has been automatically identified as harmful, and it has been disallowed.
 In addition, as a security measure, some privileges routinely granted to established accounts have been temporarily revoked from your account.
 A brief description of the abuse rule which your action matched is: $1",
+
 	'abusefilter-blocker' => 'Abuse filter',
 	'abusefilter-blockreason' => 'Automatically blocked by abuse filter. Rule description: $1',
+	'abusefilter-degroupreason' => 'Rights automatically stripped by abuse filter. Rule description: $1',
 	
 	'abusefilter-accountreserved' => 'This account name is reserved for use by the abuse filter.',
 	
