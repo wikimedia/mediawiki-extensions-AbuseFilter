@@ -136,6 +136,14 @@ $messages['niu'] = array(
 	'abusefilter-log-search-submit' => 'Kumi',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'abusefilter' => 'ضبط فلتر الإساءة',
+	'abuselog'    => 'سجل الإساءة',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ramsis1978
  */
@@ -213,6 +221,7 @@ Mallonga priskribo pri la regulo de misuzo kiun via ago kongruis estas: $1",
 	'abusefilter-log-search-submit'     => 'Serĉi',
 	'abusefilter-log-detailslink'       => 'detaloj',
 	'abusefilter-log-details-legend'    => 'Detaloj por protokola listano $1',
+	'abusefilter-log-details-var'       => 'Variablo',
 	'abusefilter-log-details-val'       => 'Valuto',
 	'abusefilter-log-details-vars'      => 'Parametroj de ago',
 	'abusefilter-log-details-private'   => 'Privataj datenoj',
@@ -228,8 +237,10 @@ Mallonga priskribo pri la regulo de misuzo kiun via ago kongruis estas: $1",
 	'abusefilter-list-edit'             => 'Redakti',
 	'abusefilter-hidden'                => 'Privata',
 	'abusefilter-unhidden'              => 'Publika',
+	'abusefilter-disabled'              => 'Malebligita',
 	'abusefilter-hitcount'              => '$1 {{PLURAL:$1|trovo|trovoj}}',
 	'abusefilter-list-new'              => 'Nova filtrilo',
+	'abusefilter-edit-subtitle'         => 'Redaktis filtrilon $1',
 	'abusefilter-edit-new'              => 'Nova filtrilo',
 	'abusefilter-edit-save'             => 'Konservi filtrilon',
 	'abusefilter-edit-enabled'          => 'Ebligi ĉi tiun filtrilon',
@@ -275,6 +286,7 @@ Voici la courte description de la règle de l’abus qui a détecté votre actio
 	'abusefilter-autopromote-blocked'          => 'Cette action a été automatiquement identifié comme nuisible, et elle a été non permise. En conséquence, à titre de mesure de sécurité, quelques privilèges accordés d’habitude pour les comptes établis ont été révoqués temporairement de votre compte.',
 	'abusefilter-blocker'                      => 'Filtre des abus',
 	'abusefilter-blockreason'                  => 'Bloqué automatiquement pour avoir tenté d’avoir fait des modifications identifiées comme nuisibles. Description de la règle : $1',
+	'abusefilter-degroupreason'                => 'Droits automatiquement retirés par le filtre des abus. Description de la règle : $1',
 	'abusefilter-accountreserved'              => 'Le nom de ce compte est révervé pour l’usage par le filtre des abus.',
 	'right-abusefilter-modify'                 => 'Modifier les filtres des abus',
 	'right-abusefilter-view'                   => 'Voir les filtres des abus',
@@ -377,6 +389,7 @@ Unha breve descrición da regra de abuso coa que a súa acción coincide é: $1'
 	'abusefilter-autopromote-blocked'          => 'Esta acción foi identificada automaticamente como dañina e non está permitida. Ademais, como medida de seguridade, fóronlle revogados temporalmente da súa conta algúns privilexios que habitualmente son concedidos ás contas establecidas.',
 	'abusefilter-blocker'                      => 'Filtro de abusos',
 	'abusefilter-blockreason'                  => 'Bloqueado automaticamente polo filtro de abusos. Descrición da regra: $1',
+	'abusefilter-degroupreason'                => 'Os dereitos foron retirados automaticamente polo filtro de abusos. Descrición da regra: $1',
 	'abusefilter-accountreserved'              => 'Este nome de conta está reservado para ser usado polo filtro de abusos.',
 	'right-abusefilter-modify'                 => 'Modificar os filtros de abuso',
 	'right-abusefilter-view'                   => 'Ver os filtros de abuso',
@@ -473,6 +486,19 @@ $messages['ia'] = array(
 	'abusefilter-list-edit' => 'Modificar',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'abusefilter-log-search-user'       => 'អ្នកប្រើប្រាស់:',
+	'abusefilter-log-search-title'      => 'ចំនងជើង:',
+	'abusefilter-log-search-submit'     => 'ស្វែងរក',
+	'abusefilter-log-noactions'         => 'ទទេ',
+	'abusefilter-list-edit'             => 'កែប្រែ',
+	'abusefilter-edit-throttle-period'  => 'រយៈពេល:',
+	'abusefilter-edit-throttle-seconds' => '$1វិនាទី',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -566,6 +592,7 @@ Als aanvullende veiligheidsmaatregel zijn een aantal automatisch toegekende rech
 Een korte beschrijving van de regel op basis waarvan uw bewerking is tegengehouden volgt nu: $1',
 	'abusefilter-blocker'                      => 'Misbruikfilter',
 	'abusefilter-blockreason'                  => 'Automatisch geblokeerd door misbruikfilter. Regelbeschrijving: $1',
+	'abusefilter-degroupreason'                => 'Rechten zijn automatisch verwijderd door het misbruikfilter. Regelbeschrijving: $1',
 	'abusefilter-accountreserved'              => 'Deze gebruiker is gereserveerd voor de misbruikfilter.',
 	'right-abusefilter-modify'                 => 'Misbruikfilters wijzigen',
 	'right-abusefilter-view'                   => 'Misbruikfilters bekijken',
@@ -866,6 +893,7 @@ $messages['ru'] = array(
 Краткое описание злоупотребления, с которым определено соответствие вашего действия: $1',
 	'abusefilter-blocker'                      => 'Фильтр злоупотреблений',
 	'abusefilter-blockreason'                  => 'Автоматически заблокирован фильтром злоупотреблений. Описание правила: $1',
+	'abusefilter-degroupreason'                => 'Фильтр злоупотреблений автоматически отобрал права. Описание правила: $1',
 	'abusefilter-accountreserved'              => 'Эта учётная запись зарезервирована для использования фильтром злоупотреблений.',
 	'right-abusefilter-modify'                 => 'Изменить фильтры злоупотреблений',
 	'right-abusefilter-view'                   => 'Просмотреть фильтры злоупотреблений',
@@ -966,6 +994,7 @@ Naviac, ako bezpečnostné opatrenie, boli vášmu účtu dočasne odobrané nie
 Stručný popis pravidla zneužitia, ktoré zachytilo vašu úpravu, je: $1',
 	'abusefilter-blocker'                      => 'Filter zneužití',
 	'abusefilter-blockreason'                  => 'Automaticky zachytené filtrom zneužití. Popis pravidla: $1',
+	'abusefilter-degroupreason'                => 'Práva automaticky odobral filter zneužívania. Popis pravidla: $1',
 	'abusefilter-accountreserved'              => 'Tento názov účtu je vyhradený pre použitie filtrom zneužití.',
 	'right-abusefilter-modify'                 => 'Zmeniť filtre zneužití',
 	'right-abusefilter-view'                   => 'Zobraziť filtre zneužití',
@@ -1071,6 +1100,7 @@ I tillägg blev några av ditt kontos rättigheter borttagna temporärt.
 En kortfattad beskrivning av missbruksregler som din handling matchar med är: $1',
 	'abusefilter-blocker'                      => 'Missbruksfilter',
 	'abusefilter-blockreason'                  => 'Automatiskt blockerad av missbruksfiltret. Regelbeskrivning: $1',
+	'abusefilter-degroupreason'                => 'Behörigheter borttagna automatisk av missbruksfilter. Regelbeskrivning: $1',
 	'abusefilter-accountreserved'              => 'Detta kontot är reserverat för användning av missbruksfiltret.',
 	'right-abusefilter-modify'                 => 'Ändra missbruksfilter',
 	'right-abusefilter-view'                   => 'Visa missbruksfilter',
@@ -1172,27 +1202,42 @@ $messages['te'] = array(
  * @author AS
  */
 $messages['uk'] = array(
-	'abusefilter-desc'            => 'Застосовує до редагувань автоматичні евристики.',
-	'abusefilter'                 => 'Налаштування фільтра зловживань',
-	'abuselog'                    => 'Журнал зловживань',
-	'abusefilter-warning'         => "<big>'''Увага'''</big>: Ця дія була автоматично визначена як шкідлива.
+	'abusefilter-desc'                => 'Застосовує до редагувань автоматичні евристики.',
+	'abusefilter'                     => 'Налаштування фільтра зловживань',
+	'abuselog'                        => 'Журнал зловживань',
+	'abusefilter-warning'             => "<big>'''Увага'''</big>: Ця дія була автоматично визначена як шкідлива.
 Неконструктивні редагування будуть швидко скасовані,
 а грубі або неодноразові неконструктивні редагування призведуть до блокування вашого облікового запису або комп'ютера.
 Якщо ви вважаєте, що це редагування конструктивне, то ви можете ще раз натиснути «Зберегти сторінку», щоб підтвердити редагування.
 Короткий опис зловживання, яке пов'язане з вашою дією: $1",
-	'abusefilter-disallowed'      => "Ця дія автоматично визначена як шкідлива,
+	'abusefilter-disallowed'          => "Ця дія автоматично визначена як шкідлива,
 і тому заборонена.
 Якщо ви вважаєте, що це редагування конструктивне, будь ласка, зверніться до адміністратора і розкажіть йому, що ви хотіли зробити.
 Короткий опис зловживання, яке пов'язане з вашою дією: $1",
-	'abusefilter-blocked-display' => "Ця дію була автоматично визначена як шкідлива,
+	'abusefilter-blocked-display'     => "Ця дію була автоматично визначена як шкідлива,
 і тому її виконання заборонене.
 Окрім того, для захисту проекту {{SITENAME}} ваш обліковий запис і пов'язані з ним IP-адреси були заблоковані.
 Якщо ви вважаєте це помилковим, то зв'яжіться з адміністратором.
 Короткий опис зловживання, яке пов'язане з вашою дією: $1",
-	'abusefilter-degrouped'       => "Ця дія була автоматично визначена як шкідлива.
+	'abusefilter-degrouped'           => "Ця дія була автоматично визначена як шкідлива.
 Таким чином, дія була скасована, ваш обліковий запис вважається скомпрометованим і в нього відібрано всі права.
 Якщо ви вважаєте це помилковим, будь ласка, зв'яжіться з бюрократом і поясніть йому ваші дії, тоді ваші права будуть відновлені.
 Короткий опис зловживання, яке пов'язане з вашою дією: $1",
+	'abusefilter-autopromote-blocked' => "Цю дію автоматично визначено, як шкідливу, і тому заборонено.
+Крім того, як захід безпеки, у вашого облікового запису тимчасово відібрано деякі привілеї, які звичаєво надаються зареєстрованим обліковим записам.
+Короткий опис зловживання, яке пов'язали з вашою дією: $1",
+	'abusefilter-blocker'             => 'Фільтр зловживань',
+	'abusefilter-blockreason'         => 'Автоматично заблокований фільтром зловживань. Опис правила: $1',
+	'abusefilter-degroupreason'       => 'Права автоматично відібрані фільтром зловживань. Опис правила: $1',
+	'abusefilter-accountreserved'     => 'Цей обліковий запис є зарезервованим для використання фільтром зловживань.',
+	'right-abusefilter-modify'        => 'Налаштувати фільтр зловживань',
+	'right-abusefilter-view'          => 'Переглянути фільтр зловживань',
+	'right-abusefilter-log'           => 'Переглянути журнал зловживань',
+	'right-abusefilter-log-detail'    => 'Переглянути деталізовані записи журналу зловживань',
+	'right-abusefilter-private'       => 'Переглянути приватні дані у журналі зловживань',
+	'abusefilter-log'                 => 'Журнал фільтру зловживань',
+	'abusefilter-log-search'          => 'Пошук в журналі зловживань',
+	'abusefilter-log-search-user'     => 'Користувач:',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
