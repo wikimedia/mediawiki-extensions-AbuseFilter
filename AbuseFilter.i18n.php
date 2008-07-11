@@ -140,8 +140,16 @@ $messages['niu'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'abusefilter' => 'ضبط فلتر الإساءة',
-	'abuselog'    => 'سجل الإساءة',
+	'abusefilter'                   => 'ضبط فلتر الإساءة',
+	'abuselog'                      => 'سجل الإساءة',
+	'abusefilter-blocker'           => 'فلتر الإساءة',
+	'right-abusefilter-view'        => 'عرض فلترات الإساءة',
+	'right-abusefilter-log'         => 'عرض سجل الإساءة',
+	'right-abusefilter-log-detail'  => 'عرض مدخلات سجل الإساءة المفصلة',
+	'abusefilter-log'               => 'سجل فلتر الإساءة',
+	'abusefilter-log-search'        => 'بحث سجل الإساءة',
+	'abusefilter-log-search-user'   => 'المستخدم:',
+	'abusefilter-log-search-filter' => 'رقم الفلتر:',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
