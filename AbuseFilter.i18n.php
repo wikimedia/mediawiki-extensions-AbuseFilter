@@ -140,16 +140,83 @@ $messages['niu'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'abusefilter'                   => 'ضبط فلتر الإساءة',
-	'abuselog'                      => 'سجل الإساءة',
-	'abusefilter-blocker'           => 'فلتر الإساءة',
-	'right-abusefilter-view'        => 'عرض فلترات الإساءة',
-	'right-abusefilter-log'         => 'عرض سجل الإساءة',
-	'right-abusefilter-log-detail'  => 'عرض مدخلات سجل الإساءة المفصلة',
-	'abusefilter-log'               => 'سجل فلتر الإساءة',
-	'abusefilter-log-search'        => 'بحث سجل الإساءة',
-	'abusefilter-log-search-user'   => 'المستخدم:',
-	'abusefilter-log-search-filter' => 'رقم الفلتر:',
+	'abusefilter'                              => 'ضبط فلتر الإساءة',
+	'abuselog'                                 => 'سجل الإساءة',
+	'abusefilter-blocker'                      => 'فلتر الإساءة',
+	'abusefilter-blockreason'                  => 'ممنوع تلقائيا بواسطة فلتر الإساءة. وصف القاعدة: $1',
+	'abusefilter-degroupreason'                => 'الصلاحيات تمت إزالتها تلقائيا بواسطة فلتر الإساءة. وصف القاعدة: $1',
+	'abusefilter-accountreserved'              => 'اسم الحساب هذا محجوز للاستخدام بواسطة فلتر الإساءة.',
+	'right-abusefilter-modify'                 => 'تعديل فلترات الإساءة',
+	'right-abusefilter-view'                   => 'عرض فلترات الإساءة',
+	'right-abusefilter-log'                    => 'عرض سجل الإساءة',
+	'right-abusefilter-log-detail'             => 'عرض مدخلات سجل الإساءة المفصلة',
+	'right-abusefilter-private'                => 'عرض البيانات السرية في سجل الإساءة',
+	'abusefilter-log'                          => 'سجل فلتر الإساءة',
+	'abusefilter-log-search'                   => 'بحث سجل الإساءة',
+	'abusefilter-log-search-user'              => 'المستخدم:',
+	'abusefilter-log-search-filter'            => 'رقم الفلتر:',
+	'abusefilter-log-search-title'             => 'العنوان:',
+	'abusefilter-log-search-submit'            => 'بحث',
+	'abusefilter-log-entry'                    => '$1: $2 فعل فلتر إساءة، فاعلا $3 في $4. الأفعال المتخذة: $5؛ وصف الفلتر: $6',
+	'abusefilter-log-detailedentry'            => '$1: $2 فعل الفلتر $3، فاعلا $4 في $5. الأفعال المتخذة: $6؛ وصف الفلتر: $7 ($8)',
+	'abusefilter-log-detailslink'              => 'التفاصيل',
+	'abusefilter-log-details-legend'           => 'التفاصيل لمدخلة السجل $1',
+	'abusefilter-log-details-var'              => 'متغير',
+	'abusefilter-log-details-val'              => 'قيمة',
+	'abusefilter-log-details-vars'             => 'محددات الفعل',
+	'abusefilter-log-details-private'          => 'بيانات سرية',
+	'abusefilter-log-details-ip'               => 'عنوان الأيبي المصدر',
+	'abusefilter-log-noactions'                => 'لا شيء',
+	'abusefilter-management'                   => 'التحكم بفلتر الإساءة',
+	'abusefilter-list'                         => 'كل الفلاتر',
+	'abusefilter-list-id'                      => 'رقم الفلتر',
+	'abusefilter-list-status'                  => 'الحالة',
+	'abusefilter-list-public'                  => 'وصف علني',
+	'abusefilter-list-consequences'            => 'العواقب',
+	'abusefilter-list-visibility'              => 'رؤية',
+	'abusefilter-list-hitcount'                => 'عدد الضربات',
+	'abusefilter-list-edit'                    => 'تعديل',
+	'abusefilter-list-details'                 => 'التفاصيل',
+	'abusefilter-hidden'                       => 'سري',
+	'abusefilter-unhidden'                     => 'علني',
+	'abusefilter-enabled'                      => 'مفعل',
+	'abusefilter-disabled'                     => 'معطل',
+	'abusefilter-hitcount'                     => '$1 {{PLURAL:$1|ضربة|ضربة}}',
+	'abusefilter-list-new'                     => 'فلتر جديد',
+	'abusefilter-edit-subtitle'                => 'تعديل الفلتر $1',
+	'abusefilter-edit-new'                     => 'فلتر جديد',
+	'abusefilter-edit-save'                    => 'حفظ الفلتر',
+	'abusefilter-edit-id'                      => 'رقم الفلتر:',
+	'abusefilter-edit-description'             => "الوصف:
+:''(معروض علنيا)''",
+	'abusefilter-edit-flags'                   => 'الأعلام:',
+	'abusefilter-edit-enabled'                 => 'تفعيل هذا الفلتر',
+	'abusefilter-edit-hidden'                  => 'إخفاء تفاصيل هذا الفلتر من العرض العلني',
+	'abusefilter-edit-rules'                   => 'مجموعة القاعدة:',
+	'abusefilter-edit-notes'                   => "ملاحظات:
+:''(سرية)",
+	'abusefilter-edit-lastmod'                 => 'فلتر المعدل آخرا',
+	'abusefilter-edit-lastuser'                => 'آخر مستخدم عدل هذا الفلتر:',
+	'abusefilter-edit-hitcount'                => 'ضربات الفلتر:',
+	'abusefilter-edit-consequences'            => 'الأفعال المتخذة عند الضرب',
+	'abusefilter-edit-action-warn'             => 'نفذ هذه الأفعال بعد إعطاء المستخدم تحذيرا',
+	'abusefilter-edit-action-disallow'         => 'منع الفعل',
+	'abusefilter-edit-action-flag'             => 'علم على التعديل في سجل الإساءة',
+	'abusefilter-edit-action-blockautopromote' => 'اسحب حالة التأكيد التلقائي من المستخدم',
+	'abusefilter-edit-action-degroup'          => 'أزل كل المجموعات المميزة من المستخدم',
+	'abusefilter-edit-action-block'            => 'امنع المستخدم من التحرير',
+	'abusefilter-edit-action-throttle'         => 'نفذ الأفعال فقط إذا ما تجاوز المستخدم حد المعدل',
+	'abusefilter-edit-throttle-count'          => 'عدد الأفعال المسموح بها:',
+	'abusefilter-edit-throttle-period'         => 'فترة من الزمن:',
+	'abusefilter-edit-throttle-seconds'        => '$1 ثانية',
+	'abusefilter-edit-throttle-groups'         => "حد المجموعة بواسطة:
+:''(واحدة لكل سطر، ادمج بالفاصلات)''",
+	'abusefilter-edit-denied'                  => 'أنت لا يمكنك رؤية تفاصيل هذا الفلتر، لأنه مخفي من العرض العلني',
+	'abusefilter-edit-main'                    => 'محددات الفلتر',
+	'abusefilter-edit-done-subtitle'           => 'الفلتر تم تعديله',
+	'abusefilter-edit-done'                    => 'أنت حفظت تغييراتك للفلتر بنجاح.
+
+[[Special:AbuseFilter|رجوع]]',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -201,6 +268,21 @@ $messages['bg'] = array(
 	'abusefilter-edit-save'             => 'Съхраняване на филтъра',
 	'abusefilter-edit-throttle-period'  => 'Период от време:',
 	'abusefilter-edit-throttle-seconds' => '$1 секунди',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'abusefilter-blocker'          => 'Filter znjewužywanja',
+	'abusefilter-blockreason'      => 'Awtomatiski pśez filter znjewužywanja blokěrowany. Wopisanje pšawidła: $1',
+	'abusefilter-degroupreason'    => 'Pšawa awtomatiski pśez fitler znjewužywanja zajmjone. Wopisanje pšawidła: $1',
+	'abusefilter-accountreserved'  => 'Toś to kontowe mě jo za wužywanje pśez filter znjewužywanja wuměnjone.',
+	'right-abusefilter-modify'     => 'Filtry znjewužywanja změniś',
+	'right-abusefilter-view'       => 'Filtry znjewužywanja zwobrazniś',
+	'right-abusefilter-log'        => 'Protokol znjewužywanja zwobrazniś',
+	'right-abusefilter-log-detail' => 'Detailěrowane zapiski protokola znjewužywanja zwbrazniś',
+	'right-abusefilter-private'    => 'Priwatne daty w protokolu znjewužywanja zwobrazniś',
 );
 
 /** Esperanto (Esperanto)
@@ -514,6 +596,7 @@ $messages['lb'] = array(
 	'abusefilter'                       => 'Astellung vum Mëssbrauchsfilter',
 	'abuselog'                          => 'Lëscht vum Mëssbrauch',
 	'abusefilter-blocker'               => 'Filter vum Mëssbrauch',
+	'abusefilter-blockreason'           => 'Automtesch gespaart duerch de Mëssbrauchsfilter. Beschreiwung vun der Regel: $1',
 	'abusefilter-accountreserved'       => 'Dëse Numm fir e Benotzerkont ass reservéiert fir vum Mëssbrauchs-filer benotzt ze ginn.',
 	'right-abusefilter-modify'          => "D'filtere vum Mëssbrauch änneren",
 	'right-abusefilter-view'            => 'Mëssbrauchs-Filtere weisen',
@@ -527,6 +610,7 @@ $messages['lb'] = array(
 	'abusefilter-log-detailslink'       => 'Detailer',
 	'abusefilter-log-details-var'       => 'Variabel',
 	'abusefilter-log-noactions'         => 'keen',
+	'abusefilter-management'            => 'Gestioun vum Mëssbrauchsfilter',
 	'abusefilter-list'                  => 'All Filteren',
 	'abusefilter-list-id'               => 'Nummer(ID) vum Filter',
 	'abusefilter-list-status'           => 'Statut',
@@ -553,6 +637,7 @@ $messages['lb'] = array(
 	'abusefilter-edit-lastmod'          => "De Filter gouf fir d'lescht geännert",
 	'abusefilter-edit-lastuser'         => 'Leschte Benotzer deen dëse Filter geännert huet:',
 	'abusefilter-edit-action-disallow'  => 'Dës Aktioun net erlaben',
+	'abusefilter-edit-action-flag'      => "D'Ännerung am Mëssbrauchslog markéieren",
 	'abusefilter-edit-action-block'     => 'De Benotzer fir Ännerunge spären',
 	'abusefilter-edit-throttle-period'  => 'Zäitraum:',
 	'abusefilter-edit-throttle-seconds' => '$1 Sekonnen',
@@ -1185,23 +1270,40 @@ En kortfattad beskrivning av missbruksregler som din handling matchar med är: $
 
 /** Telugu (తెలుగు)
  * @author Veeven
+ * @author వైజాసత్య
  */
 $messages['te'] = array(
+	'abuselog'                          => 'దురుపయోగాల చర్యానివేదిక',
+	'abusefilter-blocker'               => 'దురుపయోగాల జల్లెడ',
 	'abusefilter-log-search-user'       => 'వాడుకరి:',
 	'abusefilter-log-search-title'      => 'శీర్షిక:',
 	'abusefilter-log-search-submit'     => 'అన్వేషణ',
 	'abusefilter-log-detailslink'       => 'వివరాలు',
 	'abusefilter-log-details-val'       => 'విలువ',
+	'abusefilter-log-details-ip'        => 'ఉద్భవించిన ఐ.పీ.చిరునామా',
 	'abusefilter-list-status'           => 'స్థితి',
 	'abusefilter-list-consequences'     => 'పరిణామాలు',
+	'abusefilter-list-hitcount'         => 'హిట్ల లెక్క',
 	'abusefilter-list-edit'             => 'మార్చు',
 	'abusefilter-list-details'          => 'వివరాలు',
 	'abusefilter-hidden'                => 'అంతరంగికం',
 	'abusefilter-unhidden'              => 'బహిరంగం',
+	'abusefilter-enabled'               => 'సచేతనం',
+	'abusefilter-disabled'              => 'అచేతనం',
+	'abusefilter-list-new'              => 'కొత్త జల్లెడ',
+	'abusefilter-edit-subtitle'         => '$1 జల్లెడను దిద్దుతున్నారు',
+	'abusefilter-edit-new'              => 'కొత్త జల్లెడ',
+	'abusefilter-edit-save'             => 'జల్లెడ భద్రపరచు',
+	'abusefilter-edit-id'               => 'జల్లెడ ఐ.డీ:',
 	'abusefilter-edit-description'      => "వివరణ:
 :''(బహిరంగంగా కనిపిస్తుంది)''",
+	'abusefilter-edit-rules'            => 'నియమావళి:',
 	'abusefilter-edit-notes'            => "గమనికలు:
 :''(అంతరంగికం)",
+	'abusefilter-edit-hitcount'         => 'జల్లెడ హిట్లు:',
+	'abusefilter-edit-consequences'     => 'హిట్‌పై తీసుకున్న చర్యలు',
+	'abusefilter-edit-action-disallow'  => 'ఈ చర్యను నిరాకరించు',
+	'abusefilter-edit-action-block'     => 'ఈ వాడుకరిని దిద్దుబాట్లు చేయకుండా నిషేధించు',
 	'abusefilter-edit-throttle-seconds' => '$1 క్షణాలు',
 );
 
@@ -1246,6 +1348,17 @@ $messages['uk'] = array(
 	'abusefilter-log'                 => 'Журнал фільтру зловживань',
 	'abusefilter-log-search'          => 'Пошук в журналі зловживань',
 	'abusefilter-log-search-user'     => 'Користувач:',
+	'abusefilter-log-search-title'    => 'Заголовок:',
+	'abusefilter-log-search-submit'   => 'Знайти',
+	'abusefilter-log-entry'           => '$1: $2 запустив фільтр зловживань, виконуючи "$3" на сторінці "$4". Прийняті заходи: $5; опис фільтру: $6',
+	'abusefilter-log-detailedentry'   => '$1: $2 запустив фільтр $3, виконуючи "$4" на сторінці "$5". Прийняті заходи: $6; опис фільтру: $7 ($8)',
+	'abusefilter-log-detailslink'     => 'деталі',
+	'abusefilter-log-details-legend'  => 'Деталі журнального запису $1',
+	'abusefilter-log-details-var'     => 'Змінна',
+	'abusefilter-log-details-val'     => 'Значення',
+	'abusefilter-log-details-vars'    => 'Параметри дії',
+	'abusefilter-log-details-private' => 'Приватні дані',
+	'abusefilter-log-details-ip'      => 'Вихідна IP-адреса',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
