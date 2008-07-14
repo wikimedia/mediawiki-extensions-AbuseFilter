@@ -769,6 +769,7 @@ $messages['lb'] = array(
 	'abusefilter-log-search-submit'     => 'Sichen',
 	'abusefilter-log-detailslink'       => 'Detailer',
 	'abusefilter-log-details-var'       => 'Variabel',
+	'abusefilter-log-details-val'       => 'Wert',
 	'abusefilter-log-noactions'         => 'keen',
 	'abusefilter-management'            => 'Gestioun vum Mëssbrauchsfilter',
 	'abusefilter-list'                  => 'All Filteren',
@@ -798,6 +799,7 @@ $messages['lb'] = array(
 	'abusefilter-edit-lastuser'         => 'Leschte Benotzer deen dëse Filter geännert huet:',
 	'abusefilter-edit-action-disallow'  => 'Dës Aktioun net erlaben',
 	'abusefilter-edit-action-flag'      => "D'Ännerung am Mëssbrauchslog markéieren",
+	'abusefilter-edit-action-degroup'   => 'Dem Benotzer all priviligéiert Gruppen ewechhuelen',
 	'abusefilter-edit-action-block'     => 'De Benotzer fir Ännerunge spären',
 	'abusefilter-edit-throttle-period'  => 'Zäitraum:',
 	'abusefilter-edit-throttle-seconds' => '$1 Sekonnen',
@@ -1015,15 +1017,29 @@ En kortfattet beskrivelse av misbruksregelen som din handling utløste er: $1',
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'abusefilter-desc'                         => "Aplica d'euristicas automaticas a las modificacions",
 	'abusefilter'                              => 'Configuracion del filtre dels abuses',
 	'abuselog'                                 => 'Jornal dels abuses',
-	'abusefilter-warning'                      => "<big>'''Avertiment'''</big> : Aquesta accion es estada identificada automaticament coma nusibla. Las edicions que son pas constructivas seràn rapidament anullada, e la repeticion de las asinadas del meteis genre provocarà lo blocatge de vòstre compte. Se sètz convençut(uda) que vòstra modificacion es constructiva, la podètz la sometre un còp de mai per la validar.",
-	'abusefilter-disallowed'                   => "Aquesta modificacion es estada automaticament idenficada coma nusibla e, per via de consequéncia, pas permesa. Se sètz convençut(uda) que vòstra modificacion èra constructiva, contactatz un administrator, e informatz-lo de çò qu'eratz a far.",
-	'abusefilter-blocked-display'              => "Aquesta accion es estada automaticament identifcada coma nusibla, e ja sètz estat(ada) empachat(ada) de l’executar. En consequéncia, per protegir {{SITENAME}}, vòstre compte d'utilizaire e totas las adreças IP son estadas blocadas en escritura. Se aquò es degut a una error, contactatz un administrator.",
-	'abusefilter-degrouped'                    => "Aquesta accion es estada automaticament identificada coma nusibla. En consequéncia, es pas estada permesa, tre alara, vòstre compte es suspectat de compromission, totes vòstres dreches son estats levats. Se sètz convençut(uda) qu'aquò es degut a una error, contactatz un burocrata amb una explicacion d'aquesta accion, e totes vòstres dreches poiràn èsser restablits.",
+	'abusefilter-warning'                      => "<big>'''Avertiment'''</big> : Aquesta accion es estada identificada automaticament coma nusibla.
+Las edicions que son pas constructivas seràn rapidament anullada,
+e la repeticion de las asinadas del meteis genre provocarà lo blocatge de vòstre compte.
+Se sètz convençut(uda) que vòstra modificacion es constructiva, la podètz la sometre un còp de mai per la validar.
+Vaquí la descripcion brèva de la règla de l’abús qu'a detectat vòstra accion : $1",
+	'abusefilter-disallowed'                   => 'Aquesta modificacion es estada automaticament idenficada coma nusibla e, per via de consequéncia, pas permesa.
+Se sètz convençut(uda) que vòstra modificacion èra constructiva, contactatz un administrator, e informatz-lo de quina accion eratz a far : $1',
+	'abusefilter-blocked-display'              => "Aquesta accion es estada identifcada coma nusibla automaticament, e ja sètz estat(ada) empachat(ada) de l’executar.
+En consequéncia, per protegir {{SITENAME}}, vòstre compte d'utilizaire e totas las adreças IP son estadas blocadas en escritura.
+S'aquò es degut a una error, contactatz un administrator.
+Vaquí la descripcion brèva de la règla de l’abús qu'a detectat vòstra accion : $1",
+	'abusefilter-degrouped'                    => "Aquesta accion es estada identificada coma nusibla automaticament.
+En consequéncia, es pas estada permesa, tre alara, vòstre compte es suspectat de compromission, totes vòstres dreches son estats levats.
+Se sètz convençut(uda) qu'aquò es degut a una error, contactatz un burocrata amb una explicacion d'aquesta accion, e totes vòstres dreches poiràn èsser restablits.
+Vaquí la descripcion brèva de la règla de l’abús qu'a detectat vòstra accion : $1",
 	'abusefilter-autopromote-blocked'          => 'Aquesta accion es estada automaticament identificada coma nusibla, e es pas estada permesa. En consequéncia, a títol de mesura de seguretat, qualques privilègis acordats de costum pels comptes establits son estats revocats temporàriament de vòstre compte.',
 	'abusefilter-blocker'                      => 'Filtre dels abuses',
-	'abusefilter-blockreason'                  => 'Blocat automaticament per aver temptat de far de modificacions identificadas coma nusiblas.',
+	'abusefilter-blockreason'                  => 'Blocat automaticament per aver temptat de far de modificacions identificadas coma nusiblas.
+Descripcion de la règla : $1',
+	'abusefilter-degroupreason'                => 'Dreches levats automaticament pel filtre dels abuses. Descripcion de la règla : $1',
 	'abusefilter-accountreserved'              => "Lo nom d'aqueste compte es reservat per l’usatge pel filtre dels abuses.",
 	'right-abusefilter-modify'                 => 'Modificar los filtres dels abuses',
 	'right-abusefilter-view'                   => 'Veire los filtres dels abuses',
