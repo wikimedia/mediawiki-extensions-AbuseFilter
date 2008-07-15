@@ -4,6 +4,10 @@ if ( ! defined( 'MEDIAWIKI' ) )
 
 class AbuseFilter {
 
+	public static $condCount = 0;
+	public static $condCheckCount = array();
+	public static $condMatchCount = array();
+
 	public static function generateUserVars( $user ) {
 		$vars = array();
 		
@@ -40,12 +44,16 @@ class AbuseFilter {
 	}
 
 	public static function checkConditions( $conds, $vars ) {
+		$fname = __METHOD__;
 		$modifierWords = array( 'norm', 'supernorm', 'lcase', 'length', 'specialratio' );
 		$operatorWords = array( 'eq', 'neq', 'gt', 'lt', 'regex', 'contains' );
 		$validJoinConditions = array( '!', '|', '&' );
 	
 		// Remove leading/trailing spaces
 		$conds = trim($conds);
+		
+		self::$condCount++;
+		self::$condCheckCount[$conds]++;
 		
 		// Is it a set?
 		if (substr( $conds, 0, 1 ) == '(' && substr( $conds, -1, 1 ) == ')' ) {
@@ -76,19 +84,26 @@ class AbuseFilter {
 				// Need we short-circuit?
 				if ($setJoinCondition == '|' && $result) {
 					// Definite yes.
+// 					print "Short-circuit YES for condition $conds, as $thisCond is TRUE\n";
+					self::$condMatchCount[$conds]++;
 					return true;
 				} elseif ($setJoinCondition == '&' && !$result) {
+// 					print "Short-circuit NO for condition $conds, as $thisCond is FALSE\n";
 					// Definite no.
 					return false;
 				} elseif ($setJoinCondition == '!' && $result) {
+// 					print "Short-circuit NO for condition $conds, as $thisCond is TRUE\n";
 					// Definite no.
 					return false;
 				}
 			}
-			
+			if ($setJoinCondition != '|')
+				self::$condMatchCount[$conds]++;
 			// Return the default result.
 			return ($setJoinCondition != '|'); // Only OR returns false after checking all conditions.
 		}
+		
+		wfProfileIn( "$fname-evaluate" );
 	
 		// Grab the first word.
 		list ($thisWord) = explode( ' ', $conds );
@@ -118,15 +133,29 @@ class AbuseFilter {
 			if ( in_array( $thisWord, $operatorWords ) ) {
 				// Get the rest of the string after the operator.
 				$parameters = explode( ' ', $conds, $wordNum+2);
-				$parameters = $parameters[$wordNum+1];
+				$parameters = trim($parameters[$wordNum+1]);
 				
-				return self::checkOperator( $thisWord, $value, $parameters );
+				if (in_array( $parameters, array_keys( $vars ) )) {
+					$parameters = $vars[$parameters];
+				}
+				
+				wfProfileOut( "$fname-evaluate");
+				
+				$result = self::checkOperator( $thisWord, $value, $parameters );
+				
+				if ($result)
+					self::$condMatchCount[$conds]++;
+				
+				return $result;
 			}
 		} else {
+// 			print "Unknown var $thisWord\n";
 		}
+		wfProfileOut( "$fname-evaluate");
 	}
 	
 	public static function tokeniseList( $list ) {
+		wfProfileIn( __METHOD__ );
 		// Parse it, character by character.
 		$escapeNext = false;
 		$listLevel = 0;
@@ -180,6 +209,8 @@ class AbuseFilter {
 		
 		// Put any leftovers in
 		$allTokens[] = $thisToken;
+		
+		wfProfileOut( __METHOD__ );
 		
 		return $allTokens;
 	}

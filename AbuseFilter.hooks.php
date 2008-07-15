@@ -13,9 +13,9 @@ class AbuseFilterHooks {
 		$vars = array_merge( $vars, AbuseFilter::generateTitleVars( $editor->mTitle , 'ARTICLE' ));
 		$vars['ACTION'] = 'edit';
 		$vars['SUMMARY'] = $summary;
-		
-		// TODO:
-// 		// Include added/removed lines in the vars.
+		$vars['EDIT_DELTA'] = strlen($editor->textbox1) - strlen($editor->getBaseRevision()->getText());
+		$vars['OLD_SIZE'] = strlen($editor->getBaseRevision()->getText());
+		$vars['NEW_SIZE'] = strlen($editor->textbox1);
 
 		$filter_result = AbuseFilter::filterAction( $vars, $editor->mTitle );
 		if( $filter_result !== true ){
