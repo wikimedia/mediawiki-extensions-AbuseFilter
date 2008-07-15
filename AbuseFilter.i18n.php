@@ -140,8 +140,15 @@ $messages['niu'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
-	'abusefilter-log-search-user'  => 'Gebruiker:',
-	'abusefilter-log-search-title' => 'Titel:',
+	'abuselog'                      => 'Misbruiklogboek',
+	'abusefilter-blocker'           => 'Misbruikfilter',
+	'abusefilter-log-search-user'   => 'Gebruiker:',
+	'abusefilter-log-search-title'  => 'Titel:',
+	'abusefilter-log-search-submit' => 'Soek',
+	'abusefilter-log-detailslink'   => 'details',
+	'abusefilter-log-details-var'   => 'Veranderlike',
+	'abusefilter-log-details-val'   => 'Waarde',
+	'abusefilter-log-noactions'     => 'geen',
 );
 
 /** Arabic (العربية)
@@ -276,6 +283,21 @@ $messages['bg'] = array(
 	'abusefilter-edit-save'             => 'Съхраняване на филтъра',
 	'abusefilter-edit-throttle-period'  => 'Период от време:',
 	'abusefilter-edit-throttle-seconds' => '$1 секунди',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'abusefilter-log-search-user'       => 'Implijer :',
+	'abusefilter-log-search-submit'     => 'Klask',
+	'abusefilter-list-details'          => 'Munudoù',
+	'abusefilter-hidden'                => 'Prevez',
+	'abusefilter-unhidden'              => 'Foran',
+	'abusefilter-edit-new'              => 'Sil nevez',
+	'abusefilter-edit-save'             => 'Enrollañ ar sil',
+	'abusefilter-edit-throttle-period'  => 'Prantad amzer :',
+	'abusefilter-edit-throttle-seconds' => '$1 eilenn',
 );
 
 /** Lower Sorbian (Dolnoserbski)
