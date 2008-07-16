@@ -153,6 +153,7 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author Alnokta
  */
 $messages['ar'] = array(
 	'abusefilter'                              => 'ضبط فلتر الإساءة',
@@ -190,7 +191,7 @@ $messages['ar'] = array(
 	'abusefilter-list-consequences'            => 'العواقب',
 	'abusefilter-list-visibility'              => 'رؤية',
 	'abusefilter-list-hitcount'                => 'عدد الضربات',
-	'abusefilter-list-edit'                    => 'تعديل',
+	'abusefilter-list-edit'                    => 'عدل',
 	'abusefilter-list-details'                 => 'التفاصيل',
 	'abusefilter-hidden'                       => 'سري',
 	'abusefilter-unhidden'                     => 'علني',
