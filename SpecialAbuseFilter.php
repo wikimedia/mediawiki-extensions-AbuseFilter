@@ -35,8 +35,28 @@ class SpecialAbuseFilter extends SpecialPage {
 			$wgOut->addHtml( $output );
 		} else {
 			// Show list of filters.
+			$this->showStatus();
+			
 			$this->showList();
 		}
+	}
+	
+	function showStatus() {
+		global $wgMemc,$wgAbuseFilterConditionLimit,$wgOut;
+		
+		$overflow_count = (int)$wgMemc->get( AbuseFilter::filterLimitReachedKey() );
+		$match_count = (int) $wgMemc->get( AbuseFilter::filterMatchesKey() );
+		$total_count = (int)$wgMemc->get( AbuseFilter::filterUsedKey() );
+		
+		if ($total_count>0) {
+			$overflow_percent = sprintf( "%.2f", 100 * $overflow_count / $total_count );
+			$match_percent = sprintf( "%.2f", 100 * $match_count / $total_count );
+
+			$status .= wfMsg( 'abusefilter-status', $total_count, $overflow_count, $overflow_percent, $wgAbuseFilterConditionLimit, $match_count, $match_percent );
+		}
+		
+		$status = Xml::tags( 'div', array( 'class' => 'mw-abusefilter-status' ), $status );
+		$wgOut->addHTML( $status );
 	}
 	
 	function doEdit() {
@@ -67,6 +87,10 @@ class SpecialAbuseFilter extends SpecialPage {
 			$newRow['af_timestamp'] = $dbw->timestamp( wfTimestampNow() );
 			$newRow['af_user'] = $wgUser->getId();
 			$newRow['af_user_text'] = $wgUser->getName();
+			
+			
+			// Reset the af_throttled thing
+			$newRow['af_throttled'] = false;
 			
 			// ID
 			if ($filter != 'new') {
@@ -164,14 +188,32 @@ class SpecialAbuseFilter extends SpecialPage {
 		} else {
 			$fields['abusefilter-edit-hitcount'] = '';
 		}
+		
+		if ($this->mFilter !== 'new') {
+			// Statistics
+			global $wgMemc;
+			$matches_count = $wgMemc->get( AbuseFilter::filterMatchesKey( $this->mFilter ) );
+			$total = $wgMemc->get( AbuseFilter::filterUsedKey() );
+			
+			if ($total > 0) {
+				$matches_percent = sprintf( '%.2f', 100 * $matches_count / $total );
+				$fields['abusefilter-edit-status-label'] = wfMsgHtml( 'abusefilter-edit-status', $total, $matches_count, $matches_percent );
+			}
+		}
 
 		$fields['abusefilter-edit-rules'] = Xml::textarea( 'wpFilterRules', ( isset( $row->af_pattern ) ? $row->af_pattern."\n" : "\n" ) );
 		$fields['abusefilter-edit-notes'] = Xml::textarea( 'wpFilterNotes', ( isset( $row->af_comments ) ? $row->af_comments."\n" : "\n" ) );
 		
-		
 		// Build checkboxen
 		$checkboxes = array( 'hidden', 'enabled' );
 		$flags = '';
+		
+		if (isset($row->af_throttled) && $row->af_throttled) {
+			global $wgAbuseFilterEmergencyDisableThreshold;
+			$threshold_percent = sprintf( '%.2f', $wgAbuseFilterEmergencyDisableThreshold * 100 );
+			$flags .= $wgOut->parse( wfMsg( 'abusefilter-edit-throttled', $threshold_percent ) );
+		}
+		
 		foreach( $checkboxes as $checkboxId ) {
 			$message = "abusefilter-edit-$checkboxId";
 			$dbField = "af_$checkboxId";

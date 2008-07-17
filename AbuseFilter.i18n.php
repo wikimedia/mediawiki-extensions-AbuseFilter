@@ -90,8 +90,14 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|hit|hits}}',
 	'abusefilter-list-new' => 'New filter',
 	
+	// Abuse filter status
+	'abusefilter-status' => "Of the last $1 actions, $2 ($3%) have reached the condition limit of $4. $5 ($6%) have matched one of the filters currently enabled.",
+	
 	// The edit screen
 	'abusefilter-edit-subtitle' => 'Editing filter $1',
+	'abusefilter-edit-status-label' => 'Statistics',
+	'abusefilter-edit-status' => 'Of the last $1 actions, this filter has matched $2 ($3%).',
+	'abusefilter-edit-throttled' => "'''Warning''': This filter was automatically disabled as a safety measure. It reached the limit of matching more than $1% of actions.",
 	'abusefilter-edit-new' => 'New filter',
 	'abusefilter-edit-save' => 'Save filter',
 	'abusefilter-edit-id' => 'Filter ID:',

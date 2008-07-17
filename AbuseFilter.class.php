@@ -7,6 +7,7 @@ class AbuseFilter {
 	public static $condCount = 0;
 	public static $condCheckCount = array();
 	public static $condMatchCount = array();
+	public static $statsStoragePeriod = 86400;
 
 	public static function generateUserVars( $user ) {
 		$vars = array();
@@ -48,6 +49,11 @@ class AbuseFilter {
 		$modifierWords = array( 'norm', 'supernorm', 'lcase', 'length', 'specialratio' );
 		$operatorWords = array( 'eq', 'neq', 'gt', 'lt', 'regex', 'contains' );
 		$validJoinConditions = array( '!', '|', '&' );
+		
+		global $wgAbuseFilterConditionLimit;
+		if (self::$condCount > $wgAbuseFilterConditionLimit) {
+			return false;
+		}
 	
 		// Remove leading/trailing spaces
 		$conds = trim($conds);
@@ -79,6 +85,11 @@ class AbuseFilter {
 					continue;
 				} else {
 					$result = self::checkConditions( $thisCond, $vars );
+				}
+				
+				// We've hit the limit.
+				if (self::$condCount > $wgAbuseFilterConditionLimit) {
+					return false;
 				}
 				
 				// Need we short-circuit?
@@ -292,6 +303,7 @@ class AbuseFilter {
 					'afl_var_dump' => serialize( $vars ), 'afl_timestamp' => $dbr->timestamp(wfTimestampNow()),
 					'afl_namespace' => $title->getNamespace(), 'afl_title' => $title->getDbKey(), 'afl_ip' => wfGetIp() );
 		$doneActionsByFilter = array();
+		$filter_matched = array();
 		
 		while ( $row = $dbr->fetchObject( $res ) ) {
 			if ( self::checkConditions( $row->af_pattern, $vars ) ) {
@@ -303,8 +315,13 @@ class AbuseFilter {
 				$log_entries[] = $newLog;
 				
 				$doneActionsByFilter[$row->af_id] = array();
+				$filter_matched[$row->af_id] = true;
+			} else {
+				$filter_matched[$row->af_id] = false;
 			}
 		}
+		
+		self::recordStats( $filter_matched );
 		
 		if (count($blocking_filters) == 0 ) {
 			// No problems.
@@ -566,6 +583,95 @@ class AbuseFilter {
 	
 	public static function autoPromoteBlockKey( $user ) {
 		return wfMemcKey( 'abusefilter', 'block-autopromote', $user->getId() );
+	}
+	
+	public static function recordStats( $filters ) {
+		global $wgAbuseFilterConditionLimit,$wgMemc;
+		
+		$overflow_triggered = (self::$condCount > $wgAbuseFilterConditionLimit);
+		$filter_triggered = count($blocking_filters);
+		
+		$overflow_key = self::filterLimitReachedKey();
+		
+		$total_key = self::filterUsedKey();
+		$total = $wgMemc->get( $total_key );
+
+		$storage_period = self::$statsStoragePeriod; // One day.
+		
+		if (!$total || $total > 1000) {
+			$wgMemc->set( $total_key, 1, $storage_period );
+			
+			if ($overflow_triggered) {
+				$wgMemc->set( $overflow_key, 1, $storage_period );
+			} else {
+				$wgMemc->set( $overflow_key, 0, $storage_period );
+			}
+			
+			$anyMatch = false;
+			
+			foreach( $filters as $filter => $matched ) {
+				$filter_key = self::filterMatchesKey( $filter );
+				if ($matched) {
+					$anyMatch = true;
+					$wgMemc->set( $filter_key, 1, $storage_period );
+				} else {
+					$wgMemc->set( $filter_key, 0, $storage_period );
+				}
+			}
+			
+			if ($anyMatch) {
+				$wgMemc->set( self::filterMatchesKey(), 1, $storage_period );
+			} else {
+				$wgMemc->set( self::filterMatchesKey(), 0, $storage_period );
+			}
+			
+			return;
+		}
+		
+		$wgMemc->incr( $total_key );
+		
+		if ($overflow_triggered) {
+			$wgMemc->incr( $overflow_key );
+		}
+		
+		$anyMatch = false;
+		
+		global $wgAbuseFilterEmergencyDisableThreshold, $wgAbuseFilterEmergencyDisableCount;
+		
+		foreach( $filters as $filter => $matched ) {
+			if ($matched) {
+				$anyMatch = true;
+				$match_count = $wgMemc->get( self::filterMatchesKey( $filter ) );
+				
+				if ($match_count > 0) {
+					$wgMemc->incr( self::filterMatchesKey( $filter ) );
+				} else {
+					$wgMemc->set( self::filterMatchesKey( $filter ), 1, self::$statsStoragePeriod );
+				}
+				
+				if ($match_count > $wgAbuseFilterEmergencyDisableCount && ($match_count / $total) > $wgAbuseFilterEmergencyDisableThreshold) {
+					// More than X matches, constituting more than Y% of last Z edits. Disable it.
+					$dbw = wfGetDB( DB_MASTER );
+					$dbw->update( 'abuse_filter', array( 'af_enabled' => 0, 'af_throttled' => 1 ), array( 'af_id' => $filter ), __METHOD__ );
+				}
+			}
+		}
+		
+		if ($anyMatch) {
+			$wgMemc->incr( self::filterMatchesKey() );
+		}
+	}
+	
+	public static function filterLimitReachedKey() {
+		return wfMemcKey( 'abusefilter', 'stats', 'overflow' );
+	}
+	
+	public static function filterUsedKey() {
+		return wfMemcKey( 'abusefilter', 'stats', 'total' );
+	}
+	
+	public static function filterMatchesKey( $filter = null ) {
+		return wfMemcKey( 'abusefilter', 'stats', 'matches', $filter );
 	}
 	
 	public static function getFilterUser() {
