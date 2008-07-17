@@ -89,6 +89,14 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-disabled' => 'Disabled',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|hit|hits}}',
 	'abusefilter-list-new' => 'New filter',
+	'abusefilter-tools-modifiertest-submit' => 'Test',
+	
+	// Abuse filter tools
+	'abusefilter-tools' => 'Some [[Special:AbuseFilter/tools|tools]] are available to assist in formulating and debugging abuse filters.',
+	'abusefilter-tools-modifiertest' => 'Test modifiers',
+	'abusefilter-tools-modifier' => 'Modifier:',
+	'abusefilter-tools-value' => 'Value to test:',
+	'abusefilter-tools-result' => 'Result:',
 	
 	// Abuse filter status
 	'abusefilter-status' => "Of the last $1 actions, $2 ($3%) have reached the condition limit of $4. $5 ($6%) have matched one of the filters currently enabled.",

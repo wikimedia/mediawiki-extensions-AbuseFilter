@@ -8,6 +8,9 @@ class AbuseFilter {
 	public static $condCheckCount = array();
 	public static $condMatchCount = array();
 	public static $statsStoragePeriod = 86400;
+	public static $modifierWords = array( 'norm', 'supernorm', 'lcase', 'length', 'specialratio', 'htmldecode', 'htmlencode', 'urlencode', 'urldecode' );
+	public static $operatorWords = array( 'eq', 'neq', 'gt', 'lt', 'regex', 'contains' );
+	public static $validJoinConditions = array( '!', '|', '&' );
 
 	public static function generateUserVars( $user ) {
 		$vars = array();
@@ -46,9 +49,6 @@ class AbuseFilter {
 
 	public static function checkConditions( $conds, $vars ) {
 		$fname = __METHOD__;
-		$modifierWords = array( 'norm', 'supernorm', 'lcase', 'length', 'specialratio' );
-		$operatorWords = array( 'eq', 'neq', 'gt', 'lt', 'regex', 'contains' );
-		$validJoinConditions = array( '!', '|', '&' );
 		
 		global $wgAbuseFilterConditionLimit;
 		if (self::$condCount > $wgAbuseFilterConditionLimit) {
@@ -70,7 +70,7 @@ class AbuseFilter {
 			list($setJoinCondition,$conditionList) = explode(':', $setInternal, 2 );
 			$setJoinCondition = trim($setJoinCondition);
 			
-			if (!in_array( $setJoinCondition, $validJoinConditions )) {
+			if (!in_array( $setJoinCondition, self::$validJoinConditions )) {
 				// Bad join condition
 				return false;
 			}
@@ -122,7 +122,7 @@ class AbuseFilter {
 		
 		// Check for modifiers
 		$modifier = '';
-		if (in_array( $thisWord, $modifierWords ) ) {
+		if (in_array( $thisWord, self::$modifierWords ) ) {
 			$modifier = $thisWord;
 			$wordNum++;
 			$thisWord = explode( ' ', $conds );
@@ -141,7 +141,7 @@ class AbuseFilter {
 			$thisWord = explode( ' ', $conds );
 			$thisWord = $thisWord[$wordNum];
 			
-			if ( in_array( $thisWord, $operatorWords ) ) {
+			if ( in_array( $thisWord, self::$operatorWords ) ) {
 				// Get the rest of the string after the operator.
 				$parameters = explode( ' ', $conds, $wordNum+2);
 				$parameters = trim($parameters[$wordNum+1]);
@@ -238,6 +238,14 @@ class AbuseFilter {
 		} elseif ($modifier == 'specialratio') {
 			$specialsonly = preg_replace('/\w/', '', $value );
 			return (strlen($specialsonly) / strlen($value));
+		} elseif ($modifier == 'htmlencode') {
+			return htmlspecialchars($value);
+		} elseif ($modifier == 'htmldecode') {
+			return htmlspecialchars_decode($value);
+		} elseif ($modifier == 'urlencode') {
+			return urlencode($value);
+		} elseif ($modifier == 'urldecode') {
+			return urldecode($value);
 		}
 	}
 	

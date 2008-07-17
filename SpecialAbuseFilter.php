@@ -31,14 +31,52 @@ class SpecialAbuseFilter extends SpecialPage {
 		
 		$this->mSkin = $wgUser->getSkin();
 		
+		if ($subpage == 'tools') {
+			// Some useful tools
+			$this->doTools();
+			return;
+		}
+		
 		if ($output = $this->doEdit()) {
 			$wgOut->addHtml( $output );
 		} else {
+			$wgOut->addWikiMsg( 'abusefilter-tools' );
 			// Show list of filters.
 			$this->showStatus();
 			
 			$this->showList();
 		}
+	}
+	
+	function doTools() {
+		// Modifier test.
+		global $wgRequest,$wgOut;
+		
+		$modify_test_output = '';
+		
+		$modifier = $wgRequest->getText( 'wpModifier' );
+		$value = $wgRequest->getText( 'wpValue' );
+		
+		$modifierSelector = '';
+		foreach( AbuseFilter::$modifierWords as $mod ) {
+			$modifierSelector .= Xml::option( $mod,  $mod, ($mod == $modifier) );
+		}
+		$fields['abusefilter-tools-modifier'] = Xml::tags( 'select', array( 'name' => 'wpModifier' ), $modifierSelector );
+		
+		$fields['abusefilter-tools-value'] = Xml::textarea( 'wpValue', $value );
+		
+		if ($modifier && $value) {
+			$result = AbuseFilter::modifyValue( $modifier, $value );
+			
+			$fields['abusefilter-tools-result'] = Xml::textarea( 'modifier_test_result', $result, 40, 5, array( 'readonly' => 1 ) );
+		}
+		
+		$modify_test_output = Xml::buildForm( $fields, 'abusefilter-tools-modifiertest-submit' );
+		$modify_test_output .= Xml::hidden( 'title', $this->getTitleFor( 'AbuseFilter', 'tools' )->getPrefixedText() );
+		$modify_test_output = Xml::tags( 'form', array( 'method' => 'post', 'action' => $this->getTitleFor( 'AbuseFilter', 'tools' )->getLocalUrl() ), $modify_test_output );
+		$modify_test_output = Xml::fieldset( wfMsg( 'abusefilter-tools-modifiertest' ), $modify_test_output );
+		
+		$wgOut->addHtml( $modify_test_output );
 	}
 	
 	function showStatus() {

@@ -13,9 +13,28 @@ class AbuseFilterHooks {
 		$vars = array_merge( $vars, AbuseFilter::generateTitleVars( $editor->mTitle , 'ARTICLE' ));
 		$vars['ACTION'] = 'edit';
 		$vars['SUMMARY'] = $summary;
-		$vars['EDIT_DELTA'] = strlen($editor->textbox1) - strlen($editor->getBaseRevision()->getText());
-		$vars['OLD_SIZE'] = strlen($editor->getBaseRevision()->getText());
-		$vars['NEW_SIZE'] = strlen($editor->textbox1);
+		
+		$old_text = $editor->getBaseRevision() ? $editor->getBaseRevision()->getText() : '';
+		$new_text = $editor->textbox1;
+		
+		$vars['EDIT_DELTA'] = strlen($new_text) - strlen($old_text);
+		$vars['OLD_SIZE'] = strlen($old_text);
+		$vars['EDIT_DIFF'] = $diff = wfDiff( $old_text, $new_text );
+		$vars['NEW_SIZE'] = strlen($new_text);
+		
+		// Some more specific/useful details about the changes.
+		$diff_lines = explode( "\n", $diff );
+		$added_lines = array();
+		$removed_lines = array();
+		foreach( $diff_lines as $line ) {
+			if (strpos( $line, '-' )===0) {
+				$removed_lines[] = substr($line,1);
+			} elseif (strpos( $line, '+' )===0) {
+				$added_lines[] = substr($line,1);
+			}
+		}
+		$vars['ADDED_LINES'] = implode( "\n", $added_lines );
+		$vars['REMOVED_LINES'] = implode( "\n", $removed_lines );
 
 		$filter_result = AbuseFilter::filterAction( $vars, $editor->mTitle );
 		if( $filter_result !== true ){

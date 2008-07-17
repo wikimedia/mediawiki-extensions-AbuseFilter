@@ -117,16 +117,15 @@ class SpecialAbuseLog extends SpecialPage {
 		// Build a table.
 		$vars = unserialize( $row->afl_var_dump );
 		
-		$output .= Xml::openElement( 'table', array( 'class' => 'wikitable' ) ) . Xml::openElement( 'tbody' );
+		$output .= Xml::openElement( 'table', array( 'class' => 'wikitable mw-abuselog-details', 'style' => "width: 80%;" ) ) . Xml::openElement( 'tbody' );
 		
 		$header = Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-var' ) ) . Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-val' ) );
 		$output .= Xml::tags( 'tr', null, $header );
 		
 		// Now, build the body of the table.
-		
 		foreach( $vars as $key => $value ) {
-			$trow = Xml::element( 'td', null, $key ) . Xml::element( 'td', null, $value );
-			$output .= Xml::tags( 'tr', null, $trow );
+			$trow = Xml::element( 'td', array( 'class' => 'mw-abuselog-var', 'style' => 'width: 30%;' ), $key ) . Xml::element( 'td', array( 'class' => 'mw-abuselog-var-value', 'style' => "white-space: pre; font-family: monospace;" ), $value );
+			$output .= Xml::tags( 'tr', array( 'class' => "mw-abuselog-details-$key" ), $trow );
 		}
 		
 		$output .= Xml::closeElement( 'tbody' ) . Xml::closeElement( 'table' );
@@ -134,11 +133,11 @@ class SpecialAbuseLog extends SpecialPage {
 		if ($this->canSeePrivate()) {
 			// Private stuff, like IPs.
 			$output .= Xml::element( 'h3', null, wfMsg( 'abusefilter-log-details-private' ) );
-			$output .= Xml::openElement( 'table', array( 'class' => 'wikitable' ) ) . Xml::openElement( 'tbody' );
+			$output .= Xml::openElement( 'table', array( 'class' => 'wikitable mw-abuselog-private', 'style' => "width: 80%;" ) ) . Xml::openElement( 'tbody' );
 			$output .= $header;
 			
 			// IP address
-			$output .= Xml::tags( 'tr', null, Xml::element( 'td', null, wfMsg('abusefilter-log-details-ip' ) ) . Xml::element( 'td', null, $row->afl_ip ) );
+			$output .= Xml::tags( 'tr', null, Xml::element( 'td', array( 'style' => 'width: 30%;' ), wfMsg('abusefilter-log-details-ip' ) ) . Xml::element( 'td', null, $row->afl_ip ) );
 			
 			$output .= Xml::closeElement( 'tbody' ) . Xml::closeElement( 'table' );
 		}
