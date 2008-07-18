@@ -178,12 +178,11 @@ class AbuseFilter {
 	}
 	
 	public static function tokeniseList( $list ) {
-		wfProfileIn( __METHOD__ );
-
-
 		if (isset(self::$tokenCache[$list])) {
 			return self::$tokenCache[$list];
 		}
+		
+		wfProfileIn( __METHOD__ );
 
 		// Parse it, character by character.
 		$escapeNext = false;
@@ -239,7 +238,10 @@ class AbuseFilter {
 		// Put any leftovers in
 		$allTokens[] = $thisToken;
 
-		self::$tokenCache[$list] = $allTokens;
+		// Don't let it fill up.
+		if (count(self::$tokenCache)<=1000) {
+			self::$tokenCache[$list] = $allTokens;
+		}
 		
 		wfProfileOut( __METHOD__ );
 		
@@ -250,6 +252,8 @@ class AbuseFilter {
 		if (isset(self::$modifyCache[$modifier][$value]))
 			return self::$modifyCache[$modifier][$value];
 
+		wfProfileIn( __METHOD__ );
+		wfProfileIn( __METHOD__.'-'.$modifier );
 
 		if ($modifier == 'norm') {
 			$val = self::normalise( $value );
@@ -280,39 +284,53 @@ class AbuseFilter {
 		if (count(self::$modifyCache[$modifier][$value]) > 1000) {
 			self::$modifyCache = array();
 		}
+		
+		wfProfileOut( __METHOD__.'-'.$modifier );
+		wfProfileOut( __METHOD__ );
 
 		return self::$modifyCache[$modifier][$value] = $val;
 	}
 	
-	public static function checkOperator( $operator, $value, $parameters ) {
+	public static function checkOperator( $operator, $value, $parameters ) {		
+		wfProfileIn( __METHOD__ );
+		wfProfileIn( __METHOD__.'-'.$operator );
+		
 		if ($operator == 'eq') {
-			return $value == $parameters;
+			$val = $value == $parameters;
 		} elseif ($operator == 'neq') {
-			return $value != $parameters;
+			$val = $value != $parameters;
 		} elseif ($operator == 'gt') {
-			return $value > $parameters;
+			$val = $value > $parameters;
 		} elseif ($operator == 'lt') {
-			return $value < $parameters;
+			$val = $value < $parameters;
 		} elseif ($operator == 'regex') {
-			return preg_match( $parameters, $value );
+			$val = preg_match( $parameters, $value );
 		} elseif ($operator == 'contains') {
-			return strpos(  $value, $parameters ) !== false;
+			$val = strpos(  $value, $parameters ) !== false;
 		} else {
-			return false;
+			$val = false;
 		}
+		
+		wfProfileOut( __METHOD__.'-'.$operator );
+		wfProfileOut( __METHOD__ );
+		
+		return $val;
 	}
 	
 	public static function superNormalise( $text ) {
+		wfProfileIn( __METHOD__ );
 		$text = self::normalise( $text );
 		$text = AntiSpoof::stringToList($text); // Split to a char array.
 		sort($text);
 		$text = array_unique( $text ); // Remove duplicate characters.
 		$text = AntiSpoof::listToString( $text );
+		wfProfileOut( __METHOD__ );
 		
 		return $text;
 	}
 	
 	public static function normalise( $text ) {
+		wfProfileIn( __METHOD__ );
 		$old_text = $text;
 		$text = strtolower($text);
 		$text = AntiSpoof::stringToList( $text );
@@ -331,11 +349,24 @@ class AbuseFilter {
 
 		$text = preg_replace( '/\W/', '', $text ); // Remove any special characters.
 		
+		wfProfileOut( __METHOD__ );
+		
 		return $text;
 	}
 	
+	public static function tokenCacheKey() {
+		return wfMemcKey( 'abusefilter', 'tokencache' );
+	}
+	
 	public static function filterAction( $vars, $title ) {
-		global $wgUser;
+		global $wgUser,$wgMemc;
+		
+		// Pick up cached data
+		if (!count(self::$tokenCache)) {
+			self::$tokenCache = $wgMemc->get( self::tokenCacheKey() );
+		}
+		
+		$tokenCacheCount_orig = count( self::$tokenCache );
 		
 		// Fetch from the database.
 		$dbr = wfGetDB( DB_SLAVE );
@@ -364,11 +395,25 @@ class AbuseFilter {
 				$filter_matched[$row->af_id] = false;
 			}
 		}
+		
+		//// Clean up from checking all the filters
 	
 		// Don't store stats if the cond limit is disabled.
-		// It's probably a batch process or similar.	
+		// It's probably a batch process or similar.
 		if (!self::$condLimitEnabled)
 			self::recordStats( $filter_matched );
+			
+		// Store the token list in memcached for future use.
+		
+		if (count(self::$tokenCache) > $tokenCacheCount_orig) {
+			if (count(self::$tokenCache) > 750) {
+				// slice the first quarter off.
+				// This way, out-of-date stuff eventually goes away.
+				self::$tokenCache = array_slice( self::$tokenCache, 250, 500, true /* preserve keys */ );
+			}
+		
+			$wgMemc->set( self::tokenCacheKey(), self::$tokenCache, 86400 );
+		}
 		
 		if (count($blocking_filters) == 0 ) {
 			// No problems.
