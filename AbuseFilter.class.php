@@ -8,9 +8,12 @@ class AbuseFilter {
 	public static $condCheckCount = array();
 	public static $condMatchCount = array();
 	public static $statsStoragePeriod = 86400;
-	public static $modifierWords = array( 'norm', 'supernorm', 'lcase', 'length', 'specialratio', 'htmldecode', 'htmlencode', 'urlencode', 'urldecode' );
+	public static $modifierWords = array( 'norm', 'supernorm', 'lcase', 'length', 'specialratio', 'htmldecode', 'htmlencode', 'urlencode', 'urldecode', 'htmlfullencode' );
 	public static $operatorWords = array( 'eq', 'neq', 'gt', 'lt', 'regex', 'contains' );
 	public static $validJoinConditions = array( '!', '|', '&' );
+	public static $condLimitEnabled = true;
+	public static $tokenCache = array();
+	public static $modifyCache = array();
 
 	public static function generateUserVars( $user ) {
 		$vars = array();
@@ -27,6 +30,11 @@ class AbuseFilter {
 		// More to come
 		
 		return $vars;
+	}
+
+	public static function disableConditionLimit() {
+		// For use in batch scripts and the like
+		self::$condLimitEnabled = false;
 	}
 	
 	public static function generateTitleVars( $title, $prefix ) {
@@ -51,7 +59,7 @@ class AbuseFilter {
 		$fname = __METHOD__;
 		
 		global $wgAbuseFilterConditionLimit;
-		if (self::$condCount > $wgAbuseFilterConditionLimit) {
+		if (self::$condCount > $wgAbuseFilterConditionLimit && self::$condLimitEnabled) {
 			return false;
 		}
 	
@@ -88,7 +96,7 @@ class AbuseFilter {
 				}
 				
 				// We've hit the limit.
-				if (self::$condCount > $wgAbuseFilterConditionLimit) {
+				if (self::$condCount > $wgAbuseFilterConditionLimit && self::$condLimitEnabled) {
 					return false;
 				}
 				
@@ -145,8 +153,12 @@ class AbuseFilter {
 				// Get the rest of the string after the operator.
 				$parameters = explode( ' ', $conds, $wordNum+2);
 				$parameters = trim($parameters[$wordNum+1]);
-				
-				if (in_array( $parameters, array_keys( $vars ) )) {
+
+				list($firstWord,$rest) = explode( ' ', $parameters, 2 );
+				if (in_array( $firstWord, self::$modifierWords ) && in_array( $rest, array_keys($vars))) {
+					// Allow the compare target to be modified, too.
+					$parameters = self::modifyValue( $firstWord, $vars[$rest] );					
+				} elseif (in_array( $parameters, array_keys( $vars ) )) {
 					$parameters = $vars[$parameters];
 				}
 				
@@ -167,6 +179,12 @@ class AbuseFilter {
 	
 	public static function tokeniseList( $list ) {
 		wfProfileIn( __METHOD__ );
+
+
+		if (isset(self::$tokenCache[$list])) {
+			return self::$tokenCache[$list];
+		}
+
 		// Parse it, character by character.
 		$escapeNext = false;
 		$listLevel = 0;
@@ -220,6 +238,8 @@ class AbuseFilter {
 		
 		// Put any leftovers in
 		$allTokens[] = $thisToken;
+
+		self::$tokenCache[$list] = $allTokens;
 		
 		wfProfileOut( __METHOD__ );
 		
@@ -227,26 +247,41 @@ class AbuseFilter {
 	}
 	
 	public static function modifyValue( $modifier, $value ) {
+		if (isset(self::$modifyCache[$modifier][$value]))
+			return self::$modifyCache[$modifier][$value];
+
+
 		if ($modifier == 'norm') {
-			return self::normalise( $value );
+			$val = self::normalise( $value );
 		} elseif ($modifier == 'supernorm') {
-			return self::superNormalise( $value );
+			$val = self::superNormalise( $value );
 		} elseif ($modifier == 'lcase') {
-			return strtolower($value);
+			$val = strtolower($value);
 		} elseif ($modifier == 'length') {
-			return strlen($value);
+			$val = strlen($value);
 		} elseif ($modifier == 'specialratio') {
 			$specialsonly = preg_replace('/\w/', '', $value );
-			return (strlen($specialsonly) / strlen($value));
+			$val = (strlen($specialsonly) / strlen($value));
 		} elseif ($modifier == 'htmlencode') {
-			return htmlspecialchars($value);
+			$val = htmlspecialchars($value);
 		} elseif ($modifier == 'htmldecode') {
-			return htmlspecialchars_decode($value);
+			$val = htmlspecialchars_decode($value);
 		} elseif ($modifier == 'urlencode') {
-			return urlencode($value);
+			$val = urlencode($value);
 		} elseif ($modifier == 'urldecode') {
-			return urldecode($value);
+			$val = urldecode($value);
+		} elseif ($modifier == 'htmlfullencode') {
+			$val = htmlentities( $value );
+		} elseif ($modifier == 'simplenorm') {
+			$val = preg_replace( '/[\d\W]+/', '', $value );
+			$val = strtolower( $value );
 		}
+
+		if (count(self::$modifyCache[$modifier][$value]) > 1000) {
+			self::$modifyCache = array();
+		}
+
+		return self::$modifyCache[$modifier][$value] = $val;
 	}
 	
 	public static function checkOperator( $operator, $value, $parameters ) {
@@ -269,19 +304,18 @@ class AbuseFilter {
 	
 	public static function superNormalise( $text ) {
 		$text = self::normalise( $text );
-		$text = preg_split( '//', $text, -1, PREG_SPLIT_NO_EMPTY ); // Split to a char array.
+		$text = AntiSpoof::stringToList($text); // Split to a char array.
 		sort($text);
 		$text = array_unique( $text ); // Remove duplicate characters.
-		$text = implode( '', $text );
+		$text = AntiSpoof::listToString( $text );
 		
 		return $text;
 	}
 	
 	public static function normalise( $text ) {
 		$old_text = $text;
-		$text = preg_replace( '/\W/', '', $text ); // Remove any special characters.
 		$text = strtolower($text);
-		$text = preg_split( '//', $text, -1, PREG_SPLIT_NO_EMPTY ); // Split to a char array.
+		$text = AntiSpoof::stringToList( $text );
 		$text = AntiSpoof::equivString( $text ); // Normalise
 		
 		// Remove repeated characters, but not all duplicates.
@@ -293,7 +327,9 @@ class AbuseFilter {
 			}
 		}
 		
-		$text = implode('', $text ); // Sort in alphabetical order, put back as it was.
+		$text = AntiSpoof::listToString( $text ); // Sort in alphabetical order, put back as it was.
+
+		$text = preg_replace( '/\W/', '', $text ); // Remove any special characters.
 		
 		return $text;
 	}
@@ -328,8 +364,11 @@ class AbuseFilter {
 				$filter_matched[$row->af_id] = false;
 			}
 		}
-		
-		self::recordStats( $filter_matched );
+	
+		// Don't store stats if the cond limit is disabled.
+		// It's probably a batch process or similar.	
+		if (!self::$condLimitEnabled)
+			self::recordStats( $filter_matched );
 		
 		if (count($blocking_filters) == 0 ) {
 			// No problems.
