@@ -8,7 +8,11 @@ require_once ( getenv('MW_INSTALL_PATH') !== false
 	? getenv('MW_INSTALL_PATH')."/maintenance/commandLine.inc"
 	: dirname( __FILE__ ) . '/../../maintenance/commandLine.inc' );
 
-dbsource( dirname( __FILE__ ) . '/abusefilter.tables.sql' );
+$sqlfile = '/abusefilter.tables.sql';
+if ($wgDBtype == 'postgres')
+	 $sqlfile = '/abusefilter.tables.pg.sql';
+
+dbsource( dirname( __FILE__ ) . $sqlfile );
 
 // Create the Abuse Filter user.
 wfLoadExtensionMessages( 'AbuseFilter' );
