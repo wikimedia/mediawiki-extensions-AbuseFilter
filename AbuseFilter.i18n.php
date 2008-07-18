@@ -569,6 +569,14 @@ Voici la courte description de la règle de l’abus qui a détecté votre actio
 [[Special:AbuseFilter|Retour]]',
 );
 
+/** Western Frisian (Frysk)
+ * @author Pyt
+ */
+$messages['fy'] = array(
+	'abusefilter-desc' => 'Fiert automatyske heuristyske analyse út op bewurkings',
+	'abusefilter'      => 'Misbrûkfilterkonfiguraasje',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -594,7 +602,9 @@ Unha breve descrición da regra de abuso coa que a súa acción coincide é: $1'
 Como consecuencia, non está perminita e, desde que se sospeita que a súa conta está comprometida, todos os seus dereitos foron revogados.
 Se cre que isto foi un erro, por favor, contacte cun burócrata cunha explicación desta acción e os seus dereitos serán restaurados.
 Unha breve descrición da regra de abuso coa que a súa acción coincide é: $1',
-	'abusefilter-autopromote-blocked'          => 'Esta acción foi identificada automaticamente como dañina e non está permitida. Ademais, como medida de seguridade, fóronlle revogados temporalmente da súa conta algúns privilexios que habitualmente son concedidos ás contas establecidas.',
+	'abusefilter-autopromote-blocked'          => 'Esta acción foi identificada automaticamente como dañina e non está permitida.
+Ademais, como medida de seguridade, fóronlle revogados temporalmente da súa conta algúns privilexios que habitualmente son concedidos ás contas establecidas.
+Unha breve descrición da regra de abuso coa que a súa acción coincide é: $1',
 	'abusefilter-blocker'                      => 'Filtro de abusos',
 	'abusefilter-blockreason'                  => 'Bloqueado automaticamente polo filtro de abusos. Descrición da regra: $1',
 	'abusefilter-degroupreason'                => 'Os dereitos foron retirados automaticamente polo filtro de abusos. Descrición da regra: $1',
@@ -912,7 +922,7 @@ Een korte beschrijving van de regel op basis waarvan uw bewerking is tegengehoud
 	'abusefilter-log-search-title'             => 'Titel:',
 	'abusefilter-log-search-submit'            => 'Zoeken',
 	'abusefilter-log-entry'                    => '$1: $2 deed een misbruikfilter afgaan bij het doen van een $3 op $4. Genomen actie: $5. Filterbeschrijving: $6',
-	'abusefilter-log-detailedentry'            => '$1: $2 deed misbruikfilter $3 afgaan bij het doen van een $3 op $4. Genomen acties: $6. Filterbeschrijving: $7 ($8)',
+	'abusefilter-log-detailedentry'            => '$1: $2 liet misbruikfilter $3 afgaan bij het uitvoeren van een $4 op $5. Genomen acties: $6. Filterbeschrijving: $7 ($8)',
 	'abusefilter-log-detailslink'              => 'details',
 	'abusefilter-log-details-legend'           => 'Details voor logboekitem $1',
 	'abusefilter-log-details-var'              => 'Variabele',
@@ -937,7 +947,17 @@ Een korte beschrijving van de regel op basis waarvan uw bewerking is tegengehoud
 	'abusefilter-disabled'                     => 'Uitgeschakeld',
 	'abusefilter-hitcount'                     => '$1 {{PLURAL:$1|hit|hits}}',
 	'abusefilter-list-new'                     => 'Nieuwe filter',
+	'abusefilter-tools-modifiertest-submit'    => 'Testen',
+	'abusefilter-tools'                        => 'Er zijn een aantal [[Special:AbuseFilter/tools|hulpmiddelen]] beschikbaar voor het maken en testen van misbruikfilters.',
+	'abusefilter-tools-modifiertest'           => 'Testmodifiers',
+	'abusefilter-tools-modifier'               => 'Modifier:',
+	'abusefilter-tools-value'                  => 'Te testen waarde:',
+	'abusefilter-tools-result'                 => 'Resultaat:',
+	'abusefilter-status'                       => 'Van de laatste $1 acties, hebben er $2 ($3%) de conditielimiet van $4 gehaald. $5 ($6%) voldeden aan een van de actieve filters.',
 	'abusefilter-edit-subtitle'                => 'Bezig met het bewerken van filter $1',
+	'abusefilter-edit-status-label'            => 'Statistieken',
+	'abusefilter-edit-status'                  => 'Van de laatste $1 acties voldeden er $2 aan deze filter ($3%).',
+	'abusefilter-edit-throttled'               => "'''Waarschuwing''': deze filter is als veiligheidsmaatregel automatisch uitgeschakeld. De limiet van voldoen aan meer dan $1% van de handelingen is bereikt.",
 	'abusefilter-edit-new'                     => 'Nieuwe filter',
 	'abusefilter-edit-save'                    => 'Filter opslaan',
 	'abusefilter-edit-id'                      => 'Filternummer:',
@@ -1369,7 +1389,17 @@ Stručný popis pravidla zneužitia, ktoré zachytilo vašu úpravu, je: $1',
 	'abusefilter-disabled'                     => 'Vypnuté',
 	'abusefilter-hitcount'                     => '$1 {{PLURAL:$1|zásah|zásahov}}',
 	'abusefilter-list-new'                     => 'Nový filter',
+	'abusefilter-tools-modifiertest-submit'    => 'Otestovať',
+	'abusefilter-tools'                        => 'Sú dostupné [[Special:AbuseFilter/tools|nástroje]] pomáhajúce pri tvorbe a ladení filtrov zneužití.',
+	'abusefilter-tools-modifiertest'           => 'Otestovať modifikátory',
+	'abusefilter-tools-modifier'               => 'Modifikátor:',
+	'abusefilter-tools-value'                  => 'Otestovať hodnotu:',
+	'abusefilter-tools-result'                 => 'Výsledok:',
+	'abusefilter-status'                       => 'Z posledných $1 operácií $2 ($3%) dosialho hraničnú podmienku $4. $5 ($6%) zodpovedalo momentálne zapnutým filtrom.',
 	'abusefilter-edit-subtitle'                => 'Úprava filtra $1',
+	'abusefilter-edit-status-label'            => 'Štatistika',
+	'abusefilter-edit-status'                  => 'Z posledných $1 operácii tomuto filtru zodpovedalo $2 ($3 %).',
+	'abusefilter-edit-throttled'               => "'''Upozornenie''': V rámci bezpečnostných opatrení bol tento filter automaticky vypnutý. Dosiahol hodnotu obmedzenia $1 % operácií, ktoré mu zodpovedajú.",
 	'abusefilter-edit-new'                     => 'Nový filter',
 	'abusefilter-edit-save'                    => 'Uložiť filter',
 	'abusefilter-edit-id'                      => 'ID filtra:',
