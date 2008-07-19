@@ -154,15 +154,28 @@ $messages['niu'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
-	'abuselog'                      => 'Misbruiklogboek',
-	'abusefilter-blocker'           => 'Misbruikfilter',
-	'abusefilter-log-search-user'   => 'Gebruiker:',
-	'abusefilter-log-search-title'  => 'Titel:',
-	'abusefilter-log-search-submit' => 'Soek',
-	'abusefilter-log-detailslink'   => 'details',
-	'abusefilter-log-details-var'   => 'Veranderlike',
-	'abusefilter-log-details-val'   => 'Waarde',
-	'abusefilter-log-noactions'     => 'geen',
+	'abuselog'                              => 'Misbruiklogboek',
+	'abusefilter-blocker'                   => 'Misbruikfilter',
+	'abusefilter-log-search-user'           => 'Gebruiker:',
+	'abusefilter-log-search-title'          => 'Titel:',
+	'abusefilter-log-search-submit'         => 'Soek',
+	'abusefilter-log-detailslink'           => 'details',
+	'abusefilter-log-details-var'           => 'Veranderlike',
+	'abusefilter-log-details-val'           => 'Waarde',
+	'abusefilter-log-noactions'             => 'geen',
+	'abusefilter-list-status'               => 'Status',
+	'abusefilter-list-public'               => 'Publieke beskrywing',
+	'abusefilter-list-consequences'         => 'Gevolge',
+	'abusefilter-list-visibility'           => 'Sigbaarheid',
+	'abusefilter-list-edit'                 => 'Wysig',
+	'abusefilter-list-details'              => 'Details',
+	'abusefilter-hidden'                    => 'Privaat',
+	'abusefilter-unhidden'                  => 'Publiek',
+	'abusefilter-tools-modifiertest-submit' => 'Toets',
+	'abusefilter-tools-value'               => 'Waarde om te toets:',
+	'abusefilter-tools-result'              => 'Resultaat:',
+	'abusefilter-edit-status-label'         => 'Statistieke',
+	'abusefilter-edit-throttle-seconds'     => '$1 sekondes',
 );
 
 /** Arabic (العربية)
@@ -487,7 +500,9 @@ Voici la courte description de la règle de l’abus qui a détecté votre actio
 En conséquence, elle a été non permise, dès lors, votre compte est suspecté de compromission, tous vos droits ont été enlevés.
 Si vous êtes convaincu que cela est dû à une erreur, veuillez contacter un bureaucrate avec une explication de cette action, et tous vos droits pourront être rétablis.
 Voici la courte description de la règle de l’abus qui a détecté votre action : $1',
-	'abusefilter-autopromote-blocked'          => 'Cette action a été automatiquement identifié comme nuisible, et elle a été non permise. En conséquence, à titre de mesure de sécurité, quelques privilèges accordés d’habitude pour les comptes établis ont été révoqués temporairement de votre compte.',
+	'abusefilter-autopromote-blocked'          => 'Cette action a été automatiquement identifié comme nuisible, et elle a été non permise.
+En conséquence, à titre de mesure de sécurité, quelques privilèges accordés d’habitude pour les comptes établis ont été révoqués temporairement de votre compte.
+Une brève description de la règle d’abus que votre action a déclenchée est : $1',
 	'abusefilter-blocker'                      => 'Filtre des abus',
 	'abusefilter-blockreason'                  => 'Bloqué automatiquement pour avoir tenté d’avoir fait des modifications identifiées comme nuisibles. Description de la règle : $1',
 	'abusefilter-degroupreason'                => 'Droits automatiquement retirés par le filtre des abus. Description de la règle : $1',
@@ -529,6 +544,12 @@ Voici la courte description de la règle de l’abus qui a détecté votre actio
 	'abusefilter-disabled'                     => 'Désactivé',
 	'abusefilter-hitcount'                     => '$1 {{PLURAL:$1|visite|visites}}',
 	'abusefilter-list-new'                     => 'Nouveau filtre',
+	'abusefilter-tools-modifiertest-submit'    => 'Test',
+	'abusefilter-tools'                        => 'Quelques [[Special:AbuseFilter/tools|outils]] sont disponibles pour aider à la formulation et au déboggage des filtres des abus.',
+	'abusefilter-tools-modifiertest'           => 'Modifier le test',
+	'abusefilter-tools-modifier'               => 'Modifier :',
+	'abusefilter-tools-value'                  => 'Valeur à tester :',
+	'abusefilter-tools-result'                 => 'Résultat :',
 	'abusefilter-status'                       => 'Des $1 dernières actions, $2 ($3 %) ont atteint la limite de la condition définie par $4. $5 ($6 %) correspondent à l’un de ces filtres actuellement en service.',
 	'abusefilter-edit-subtitle'                => 'Modification du filtre $1',
 	'abusefilter-edit-status-label'            => 'Statistiques',
@@ -880,6 +901,22 @@ $messages['lt'] = array(
 	'abusefilter-log-search-submit' => 'Ieškoti',
 );
 
+/** Maltese (Malti)
+ * @author Giangian15
+ */
+$messages['mt'] = array(
+	'abusefilter-log-search-user'   => 'Utent:',
+	'abusefilter-log-search-filter' => 'ID tal-Filtru:',
+);
+
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'abusefilter-log-search-submit' => 'Tlatēmoāz',
+	'abusefilter-list-edit'         => 'Ticpatlāz',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -1009,9 +1046,12 @@ En kortfattet beskrivelse av misbruksregelen som din handling utløste er: $1',
 En kortfattet beskrivelse av misbruksregelen som din handling utløste er: $1',
 	'abusefilter-degrouped'                    => 'Denne handlingen har automatisk blitt identifisert som skadelig. Derfor ble den ikke tillatt, og på grunn av mistanke om misbruk har kontoen din mistet alle rettigheter. Om du mener dette er en feil, kontakt en byråkrat med en forklaring på hva du gjorde, og rettighetene dine kan bli gjenopprettet.
 En kortfattet beskrivelse av misbruksregelen som din handling utløste er: $1',
-	'abusefilter-autopromote-blocked'          => 'Denne handlingen har automatisk blitt identifisert som skadelig, og ble ikke tillatt. I tillegg ble noen av rettighetene kontoen din hadde fjernet midlertidig.',
+	'abusefilter-autopromote-blocked'          => 'Denne handlingen har automatisk blitt identifisert som skadelig, og ble ikke tillatt.
+I tillegg ble noen av rettighetene kontoen din hadde fjernet midlertidig, av sikkerhetsmessige grunner.
+En kort beskrivelse av misbruksregelen handlingen din brøt er: $1',
 	'abusefilter-blocker'                      => 'Misbruksfilter',
 	'abusefilter-blockreason'                  => 'Automatisk blokkert for å utføre skadelige redigeringer. Regelbeskrivelse: $1',
+	'abusefilter-degroupreason'                => 'Rettigheter fjernet automatisk av misbruksfilter. Regelbeskrivelse: $1',
 	'abusefilter-accountreserved'              => 'Denne kontoen er reservert for bruk av misbruksfilteret.',
 	'right-abusefilter-modify'                 => 'Endre misbruksfiltere',
 	'right-abusefilter-view'                   => 'Vise misbruksfiltere',
@@ -1050,7 +1090,17 @@ En kortfattet beskrivelse av misbruksregelen som din handling utløste er: $1',
 	'abusefilter-disabled'                     => 'Slått av',
 	'abusefilter-hitcount'                     => '$1 {{PLURAL:$1|treff|treff}}',
 	'abusefilter-list-new'                     => 'Nytt filter',
+	'abusefilter-tools-modifiertest-submit'    => 'Test',
+	'abusefilter-tools'                        => 'Noen [[Special:AbuseFilter/tools|verktøy]] er tilgjengelig til hjelp med formulering og feilsøking i forbindelse med misbruksfiltere.',
+	'abusefilter-tools-modifiertest'           => 'Testalternativer',
+	'abusefilter-tools-modifier'               => 'Parameter:',
+	'abusefilter-tools-value'                  => 'Verdi å teste:',
+	'abusefilter-tools-result'                 => 'Resultat:',
+	'abusefilter-status'                       => 'Av de siste $1 handlingene har $2 ($3&nbsp;%) nådd grenseverdien $4. $5 ($6&nbsp;%) har passet med en av de påslåtte filterne.',
 	'abusefilter-edit-subtitle'                => 'Redigerer filteret $1',
+	'abusefilter-edit-status-label'            => 'Statistikk',
+	'abusefilter-edit-status'                  => 'Av de siste $1 handlinger har dette filteret passet med $2 ($3&nbsp;%).',
+	'abusefilter-edit-throttled'               => "'''Advarsel:''' Dette filteret ble automatisk slått av av sikkerhetsårsaker. Det nådde grensen på $1&nbsp;% av alle handlinger.",
 	'abusefilter-edit-new'                     => 'Nytt filter',
 	'abusefilter-edit-save'                    => 'Lagre filter',
 	'abusefilter-edit-id'                      => 'Filter-ID:',
@@ -1192,9 +1242,14 @@ Descripcion de la règla : $1',
  */
 $messages['pl'] = array(
 	'abusefilter-log-search-user'       => 'Użytkownik',
+	'abusefilter-log-search-title'      => 'Tytuł:',
 	'abusefilter-log-search-submit'     => 'Szukaj',
 	'abusefilter-log-detailslink'       => 'szczegóły',
+	'abusefilter-log-details-legend'    => 'Szczegóły: $1',
 	'abusefilter-list-edit'             => 'Edytuj',
+	'abusefilter-list-details'          => 'Szczegóły',
+	'abusefilter-tools-result'          => 'Wynik:',
+	'abusefilter-edit-status-label'     => 'Statystyki',
 	'abusefilter-edit-flags'            => 'Flagi:',
 	'abusefilter-edit-action-block'     => 'Zablokuj użytkownikowi możliwość edycji',
 	'abusefilter-edit-throttle-seconds' => '$1 sekund',
@@ -1204,10 +1259,18 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'abusefilter-warning' => "<big>'''ګواښنه'''</big>: همدا کړنه په اتوماتيک ډول زيانمنه وپېژندل شوه.
+	'abusefilter-warning'           => "<big>'''ګواښنه'''</big>: همدا کړنه په اتوماتيک ډول زيانمنه وپېژندل شوه.
 نارغوونکې سمونې به ډېر ژر پر شا خپلې پخوانۍ بڼې ته واوړي، ورانکاري او په بيا بيا د نارغوونکې سمونې په ترسره کولو سره به ستاسو په کارن-حساب او يا هم کمپيوټر باندې بنديزونه ولګېږي.
 که چېرته تاسو په دې ډاډه ياست چې همدا يوه رغوونکې سمونه ده، نو تاسو کولای شی چې پر «سپارل» وټوکۍ ترڅو ستاسو د کړنې پخلی وشي.
 د ناوړو کړنو د کړنلارې يوه لنډه څرګندونه چې ستاسو د کړنې همډوله وه، په دې توګه ده: $1",
+	'abusefilter-log-search-user'   => 'کارونکی:',
+	'abusefilter-log-search-title'  => 'سرليک:',
+	'abusefilter-log-search-submit' => 'پلټل',
+	'abusefilter-list'              => 'ټول چاڼګران',
+	'abusefilter-tools-result'      => 'پايلې؛',
+	'abusefilter-edit-flags'        => 'بېرغونه:',
+	'abusefilter-edit-notes'        => "يادونې:
+:''(شخصي)",
 );
 
 /** Tarifit (Tarifit)
@@ -1218,9 +1281,17 @@ $messages['rif'] = array(
 	'abusefilter-list-edit'         => 'Arri',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'abusefilter-log-search-submit' => 'Caută',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  * @author Ahonc
+ * @author MaxSem
  */
 $messages['ru'] = array(
 	'abusefilter-desc'                         => 'Применяет к правкам автоматические эвристики.',
@@ -1289,6 +1360,7 @@ $messages['ru'] = array(
 	'abusefilter-hitcount'                     => '$1 {{PLURAL:$1|срабатывание|срабатывания|срабатываний}}',
 	'abusefilter-list-new'                     => 'Новый фильтр',
 	'abusefilter-edit-subtitle'                => 'Изменение фильтра $1',
+	'abusefilter-edit-status-label'            => 'Статистика',
 	'abusefilter-edit-new'                     => 'Новый фильтр',
 	'abusefilter-edit-save'                    => 'Сохранить фильтр',
 	'abusefilter-edit-id'                      => 'ИД фильтра:',
