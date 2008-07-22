@@ -183,6 +183,7 @@ $messages['af'] = array(
  * @author Alnokta
  */
 $messages['ar'] = array(
+	'abusefilter-desc'                         => 'يطبق قواعد أوتوماتيكية على التعديلات.',
 	'abusefilter'                              => 'ضبط فلتر الإساءة',
 	'abuselog'                                 => 'سجل الإساءة',
 	'abusefilter-blocker'                      => 'فلتر الإساءة',
@@ -226,7 +227,16 @@ $messages['ar'] = array(
 	'abusefilter-disabled'                     => 'معطل',
 	'abusefilter-hitcount'                     => '$1 {{PLURAL:$1|ضربة|ضربة}}',
 	'abusefilter-list-new'                     => 'فلتر جديد',
+	'abusefilter-tools-modifiertest-submit'    => 'اختبار',
+	'abusefilter-tools'                        => 'بعض [[Special:AbuseFilter/tools|الأدوات]] متوفرة للمساعدة في صياغة وتصحيح فلترات الإساءة.',
+	'abusefilter-tools-modifiertest'           => 'معدلات الاختبار',
+	'abusefilter-tools-modifier'               => 'المعدل:',
+	'abusefilter-tools-value'                  => 'القيمة ليتم اختبارها:',
+	'abusefilter-tools-result'                 => 'النتيجة:',
 	'abusefilter-edit-subtitle'                => 'تعديل الفلتر $1',
+	'abusefilter-edit-status-label'            => 'إحصاءات',
+	'abusefilter-edit-status'                  => 'من آخر $1 تعديل، الفلتر طابق $2 ($3%).',
+	'abusefilter-edit-throttled'               => "'''تحذير''': هذا الفلتر تم تعطيله تلقائيا كإجراء أمني. لقد وصل إلى حد مطابقة أكثر من $1% من الأفعال.",
 	'abusefilter-edit-new'                     => 'فلتر جديد',
 	'abusefilter-edit-save'                    => 'حفظ الفلتر',
 	'abusefilter-edit-id'                      => 'رقم الفلتر:',
@@ -266,7 +276,16 @@ $messages['ar'] = array(
  * @author Ramsis1978
  */
 $messages['arz'] = array(
-	'abusefilter-log-search-user' => 'يوزر:',
+	'abusefilter-log-search-user'              => 'يوزر:',
+	'abusefilter-edit-action-disallow'         => 'منع الفعل',
+	'abusefilter-edit-action-flag'             => 'علم على التعديل في سجل الإساءة',
+	'abusefilter-edit-action-blockautopromote' => 'اسحب حالة التأكيد الأوتوماتيكي من اليوزر',
+	'abusefilter-edit-action-degroup'          => 'شيل كل المجموعات المميزة من اليوزر',
+	'abusefilter-edit-action-block'            => 'إمنع اليوزر من التحرير',
+	'abusefilter-edit-action-throttle'         => 'نفذ الأفعال بس لو اليوزر اتجاوز حد المعدل',
+	'abusefilter-edit-throttle-count'          => 'عدد الأفعال المسموح بيها:',
+	'abusefilter-edit-throttle-period'         => 'مدة من الزمن:',
+	'abusefilter-edit-throttle-seconds'        => '$1 ثواني',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -306,6 +325,7 @@ $messages['bg'] = array(
 	'abusefilter-list-edit'             => 'Редактиране',
 	'abusefilter-list-details'          => 'Детайли',
 	'abusefilter-list-new'              => 'Нов филтър',
+	'abusefilter-tools-result'          => 'Резултат:',
 	'abusefilter-edit-subtitle'         => 'Редактиране на филтър $1',
 	'abusefilter-edit-new'              => 'Нов филтър',
 	'abusefilter-edit-save'             => 'Съхраняване на филтъра',
@@ -814,6 +834,18 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'abusefilter-desc'              => 'Applica heuristicas automatic al modificationes.',
+	'abusefilter'                   => 'Configuration del filtro contra abuso',
+	'abuselog'                      => 'Registro de abusos',
+	'abusefilter-warning'           => "<big>'''Advertimento:'''</big> Iste action ha essite automaticamente identificate como damnose.
+Tote modificationes non constructive essera rapidemente revertite,
+e le repetition flagrante de modificationes non constructive resultara in le blocada de tu conto o computator.
+Si tu crede que iste modification sia constructive, tu pote cliccar Submitter de novo pro confirmar lo.
+Un breve description del regula de abuso correspondente a tu action es: $1",
+	'abusefilter-disallowed'        => 'Iste action ha essite automaticamente identificate como damnose,
+e per consequente es prohibite.
+Si tu crede que tu modification esseva constructive, per favor contacta un administrator, e informa le/la de lo que tu tentava facer.
+Un breve description del regula de abuso correspondente a tu action es: $1',
 	'abusefilter-log-search-submit' => 'Cercar',
 	'abusefilter-list-edit'         => 'Modificar',
 );
@@ -831,64 +863,79 @@ $messages['km'] = array(
 	'abusefilter-edit-throttle-seconds' => '$1វិនាទី',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'abusefilter-list-edit' => 'Ändere',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
-	'abusefilter'                       => 'Astellung vum Mëssbrauchsfilter',
-	'abuselog'                          => 'Lëscht vum Mëssbrauch',
-	'abusefilter-blocker'               => 'Filter vum Mëssbrauch',
-	'abusefilter-blockreason'           => 'Automtesch gespaart duerch de Mëssbrauchsfilter. Beschreiwung vun der Regel: $1',
-	'abusefilter-accountreserved'       => 'Dëse Numm fir e Benotzerkont ass reservéiert fir vum Mëssbrauchs-filer benotzt ze ginn.',
-	'right-abusefilter-modify'          => "D'filtere vum Mëssbrauch änneren",
-	'right-abusefilter-view'            => 'Mëssbrauchs-Filtere weisen',
-	'right-abusefilter-log'             => 'Lëscht vum Mëssbrauch weisen',
-	'abusefilter-log'                   => 'Lëscht vun de Mëssbrauchs-Filteren',
-	'abusefilter-log-search'            => 'D?Lëscht vum Mëssbrauch duerchsichen',
-	'abusefilter-log-search-user'       => 'Benotzer:',
-	'abusefilter-log-search-filter'     => 'Nummer(ID) vum Filter:',
-	'abusefilter-log-search-title'      => 'Titel:',
-	'abusefilter-log-search-submit'     => 'Sichen',
-	'abusefilter-log-detailslink'       => 'Detailer',
-	'abusefilter-log-details-var'       => 'Variabel',
-	'abusefilter-log-details-val'       => 'Wert',
-	'abusefilter-log-noactions'         => 'keen',
-	'abusefilter-management'            => 'Gestioun vum Mëssbrauchsfilter',
-	'abusefilter-list'                  => 'All Filteren',
-	'abusefilter-list-id'               => 'Nummer(ID) vum Filter',
-	'abusefilter-list-status'           => 'Statut',
-	'abusefilter-list-public'           => 'Ëffentlech Beschreiwung',
-	'abusefilter-list-consequences'     => 'Konsequenzen',
-	'abusefilter-list-edit'             => 'Änneren',
-	'abusefilter-list-details'          => 'Dteailer',
-	'abusefilter-hidden'                => 'Privat',
-	'abusefilter-unhidden'              => 'Ëffentlech',
-	'abusefilter-enabled'               => 'Aktivéiert',
-	'abusefilter-disabled'              => 'Desaktivéiert',
-	'abusefilter-list-new'              => 'Neie Filter',
-	'abusefilter-edit-subtitle'         => 'Änner vum Filter $1',
-	'abusefilter-edit-new'              => 'Neie Filter',
-	'abusefilter-edit-save'             => 'Filter späicheren',
-	'abusefilter-edit-id'               => 'Nummer (ID) vum Filter:',
-	'abusefilter-edit-description'      => "Beschreiwung:
+	'abusefilter'                           => 'Astellung vum Mëssbrauchsfilter',
+	'abuselog'                              => 'Lëscht vum Mëssbrauch',
+	'abusefilter-blocker'                   => 'Filter vum Mëssbrauch',
+	'abusefilter-blockreason'               => 'Automtesch gespaart duerch de Mëssbrauchsfilter. Beschreiwung vun der Regel: $1',
+	'abusefilter-degroupreason'             => 'Rechter goufen atomatesch duerch de Mëssbrauchsfilter ewechgeholl. Beschreiwung vun der Regel: $1',
+	'abusefilter-accountreserved'           => 'Dëse Numm fir e Benotzerkont ass reservéiert fir vum Mëssbrauchs-filer benotzt ze ginn.',
+	'right-abusefilter-modify'              => "D'filtere vum Mëssbrauch änneren",
+	'right-abusefilter-view'                => 'Mëssbrauchs-Filtere weisen',
+	'right-abusefilter-log'                 => 'Lëscht vum Mëssbrauch weisen',
+	'abusefilter-log'                       => 'Lëscht vun de Mëssbrauchs-Filteren',
+	'abusefilter-log-search'                => 'D?Lëscht vum Mëssbrauch duerchsichen',
+	'abusefilter-log-search-user'           => 'Benotzer:',
+	'abusefilter-log-search-filter'         => 'Nummer(ID) vum Filter:',
+	'abusefilter-log-search-title'          => 'Titel:',
+	'abusefilter-log-search-submit'         => 'Sichen',
+	'abusefilter-log-detailslink'           => 'Detailer',
+	'abusefilter-log-details-legend'        => "Detailer fir d'Rubrique am Logbuch $1",
+	'abusefilter-log-details-var'           => 'Variabel',
+	'abusefilter-log-details-val'           => 'Wert',
+	'abusefilter-log-details-ip'            => 'IP-Adress déi bnotzt gouf',
+	'abusefilter-log-noactions'             => 'keen',
+	'abusefilter-management'                => 'Gestioun vum Mëssbrauchsfilter',
+	'abusefilter-list'                      => 'All Filteren',
+	'abusefilter-list-id'                   => 'Nummer(ID) vum Filter',
+	'abusefilter-list-status'               => 'Statut',
+	'abusefilter-list-public'               => 'Ëffentlech Beschreiwung',
+	'abusefilter-list-consequences'         => 'Konsequenzen',
+	'abusefilter-list-visibility'           => 'Visibilitéit',
+	'abusefilter-list-edit'                 => 'Änneren',
+	'abusefilter-list-details'              => 'Dteailer',
+	'abusefilter-hidden'                    => 'Privat',
+	'abusefilter-unhidden'                  => 'Ëffentlech',
+	'abusefilter-enabled'                   => 'Aktivéiert',
+	'abusefilter-disabled'                  => 'Desaktivéiert',
+	'abusefilter-list-new'                  => 'Neie Filter',
+	'abusefilter-tools-modifiertest-submit' => 'Test',
+	'abusefilter-tools-modifier'            => 'Änneren:',
+	'abusefilter-tools-result'              => 'Resultat:',
+	'abusefilter-edit-subtitle'             => 'Änner vum Filter $1',
+	'abusefilter-edit-status-label'         => 'Statistiken',
+	'abusefilter-edit-new'                  => 'Neie Filter',
+	'abusefilter-edit-save'                 => 'Filter späicheren',
+	'abusefilter-edit-id'                   => 'Nummer (ID) vum Filter:',
+	'abusefilter-edit-description'          => "Beschreiwung:
 :''(ëffentlech)''",
-	'abusefilter-edit-flags'            => 'Fändelen:',
-	'abusefilter-edit-enabled'          => 'Dëse Filter aktivéieren',
-	'abusefilter-edit-hidden'           => "Verstop d'Detailer vun dësem Filter virun der Ëffentlechkeet",
-	'abusefilter-edit-notes'            => "Notizen:
+	'abusefilter-edit-flags'                => 'Fändelen:',
+	'abusefilter-edit-enabled'              => 'Dëse Filter aktivéieren',
+	'abusefilter-edit-hidden'               => "Verstop d'Detailer vun dësem Filter virun der Ëffentlechkeet",
+	'abusefilter-edit-notes'                => "Notizen:
 :''(privat)''",
-	'abusefilter-edit-lastmod'          => "De Filter gouf fir d'lescht geännert",
-	'abusefilter-edit-lastuser'         => 'Leschte Benotzer deen dëse Filter geännert huet:',
-	'abusefilter-edit-action-disallow'  => 'Dës Aktioun net erlaben',
-	'abusefilter-edit-action-flag'      => "D'Ännerung am Mëssbrauchslog markéieren",
-	'abusefilter-edit-action-degroup'   => 'Dem Benotzer all priviligéiert Gruppen ewechhuelen',
-	'abusefilter-edit-action-block'     => 'De Benotzer fir Ännerunge spären',
-	'abusefilter-edit-throttle-period'  => 'Zäitraum:',
-	'abusefilter-edit-throttle-seconds' => '$1 Sekonnen',
-	'abusefilter-edit-denied'           => 'Dir kënnt Detailer vun dësem Filter net gesinn, well se virum Public verstoppr sinn',
-	'abusefilter-edit-main'             => 'Parametere vum Filter',
-	'abusefilter-edit-done-subtitle'    => 'Filter geännert',
-	'abusefilter-edit-done'             => 'Dir hutt är Ännerunge vum Filter ofgespäichert.
+	'abusefilter-edit-lastmod'              => "De Filter gouf fir d'lescht geännert",
+	'abusefilter-edit-lastuser'             => 'Leschte Benotzer deen dëse Filter geännert huet:',
+	'abusefilter-edit-action-disallow'      => 'Dës Aktioun net erlaben',
+	'abusefilter-edit-action-flag'          => "D'Ännerung am Mëssbrauchslog markéieren",
+	'abusefilter-edit-action-degroup'       => 'Dem Benotzer all priviligéiert Gruppen ewechhuelen',
+	'abusefilter-edit-action-block'         => 'De Benotzer fir Ännerunge spären',
+	'abusefilter-edit-throttle-period'      => 'Zäitraum:',
+	'abusefilter-edit-throttle-seconds'     => '$1 Sekonnen',
+	'abusefilter-edit-denied'               => 'Dir kënnt Detailer vun dësem Filter net gesinn, well se virum Public verstoppr sinn',
+	'abusefilter-edit-main'                 => 'Parametere vum Filter',
+	'abusefilter-edit-done-subtitle'        => 'Filter geännert',
+	'abusefilter-edit-done'                 => 'Dir hutt är Ännerunge vum Filter ofgespäichert.
 
 [[Special:AbuseFilter|Zréck]]',
 );
@@ -913,8 +960,11 @@ $messages['mt'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'abusefilter-log-search-submit' => 'Tlatēmoāz',
-	'abusefilter-list-edit'         => 'Ticpatlāz',
+	'abusefilter-log-search-user'      => 'Tlatēquitiltilīlli:',
+	'abusefilter-log-search-title'     => 'Tōcāitl:',
+	'abusefilter-log-search-submit'    => 'Tlatēmoāz',
+	'abusefilter-list-edit'            => 'Ticpatlāz',
+	'abusefilter-edit-throttle-period' => 'Cāhuitl:',
 );
 
 /** Dutch (Nederlands)
@@ -1285,7 +1335,39 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'abusefilter-log-search-submit' => 'Caută',
+	'abusefilter-desc'                      => 'Aplică euristică automată modificărilor.',
+	'abusefilter-log-search-user'           => 'Utilizator:',
+	'abusefilter-log-search-filter'         => 'ID filtru:',
+	'abusefilter-log-search-title'          => 'Titlu:',
+	'abusefilter-log-search-submit'         => 'Caută',
+	'abusefilter-log-detailslink'           => 'detalii',
+	'abusefilter-log-details-var'           => 'Variabilă',
+	'abusefilter-log-details-val'           => 'Valoare',
+	'abusefilter-log-details-private'       => 'Date private',
+	'abusefilter-list'                      => 'Toate filtrele',
+	'abusefilter-list-id'                   => 'ID filtru',
+	'abusefilter-list-public'               => 'Descriere publică',
+	'abusefilter-list-visibility'           => 'Vizibilitate',
+	'abusefilter-list-edit'                 => 'Modifică',
+	'abusefilter-list-details'              => 'Detalii',
+	'abusefilter-hidden'                    => 'Privat',
+	'abusefilter-unhidden'                  => 'Public',
+	'abusefilter-enabled'                   => 'Activat',
+	'abusefilter-disabled'                  => 'Dezactivat',
+	'abusefilter-list-new'                  => 'Filtru nou',
+	'abusefilter-tools-modifiertest-submit' => 'Test',
+	'abusefilter-tools-result'              => 'Rezultat:',
+	'abusefilter-edit-subtitle'             => 'Modificare filtru $1',
+	'abusefilter-edit-status-label'         => 'Statistici',
+	'abusefilter-edit-new'                  => 'Filtru nou',
+	'abusefilter-edit-save'                 => 'Salvează filtru',
+	'abusefilter-edit-enabled'              => 'Activează acest filtru',
+	'abusefilter-edit-action-disallow'      => 'Nu permite acţiunea',
+	'abusefilter-edit-throttle-count'       => 'Număr de acţiuni permise:',
+	'abusefilter-edit-throttle-period'      => 'Perioadă de timp:',
+	'abusefilter-edit-throttle-seconds'     => '$1 secunde',
+	'abusefilter-edit-main'                 => 'Parametrii filtrului',
+	'abusefilter-edit-done-subtitle'        => 'Filtru modificat',
 );
 
 /** Russian (Русский)
