@@ -186,6 +186,27 @@ $messages['ar'] = array(
 	'abusefilter-desc'                         => 'يطبق قواعد أوتوماتيكية على التعديلات.',
 	'abusefilter'                              => 'ضبط فلتر الإساءة',
 	'abuselog'                                 => 'سجل الإساءة',
+	'abusefilter-warning'                      => "<big>'''تحذير'''</big>: هذا الفعل تم التعرف عليه تلقائيا كضار.
+التعديلات غير البناءة سيتم استرجاعها سريعا،
+والتعديل غير البناء المتكرر أو المستمر سيؤدي إلى منع حسابك أو حاسوبك.
+لو كنت تعتقد أن هذا التعديل بناء، يمكنك أن تضغط تنفيذ مرة أخرى لتأكيده.
+وصف مختصر لقاعدة الإساءة التي طابقها فعلك هو: $1",
+	'abusefilter-disallowed'                   => 'هذا الفعل تم التعرف عليه تلقائيا كضار،
+ولذا تم منعه.
+لو كنت تعتقد أن تعديلك بناء، من فضلك اتصل بإداري، وأخبره بما كنت تحاول أن تفعل.
+وصف مختصر لقاعدة الإساءة التي طابقها فعلك هو: $1',
+	'abusefilter-blocked-display'              => 'هذا الفعل تم التعرف عليه تلقائيا كضار،
+وأنت تم منعك من تنفيذه.
+بالإضافة إلى ذلك، لحماية {{SITENAME}}، حسابك وكل عناوين الأيبي الملحقة تم منعها من التحرير.
+لو أن هذا حدث بطريق الخطأ، من فضلك اتصل بإداري.
+وصف مختصر لقاعدة الإساءة التي طابقها فعلك هو: $1',
+	'abusefilter-degrouped'                    => 'هذا الفعل تم التعرف عليه تلقائيا كضار.
+وبالتالي، تم منعه، و، بما أن حسابك مشكوك في أنه قد تم اختراقه، كل الصلاحيات تم سحبها.
+لو أنك تعتقد أن هذا خطأ، من فضلك اتصل ببيروقراط بتفسير لهذا الفعل، وصلاحياتك ربما تتم استعادتها.
+وصف مختصر لقاعدة الإساءة التي طابقها فعلك هو: $1',
+	'abusefilter-autopromote-blocked'          => 'هذا الفعل تم التعرف عليه تلقائيا كضار، وتم منعه.
+بالإضافة إلى ذلك، كإجراء أمني، بعض المميزات التي يتم منحها روتينيا للحسابات تمت إزالتها مؤقتا من حسابك.
+وصف مختصر لقاعدة الإساءة التي طابقها فعلك هو: $1',
 	'abusefilter-blocker'                      => 'فلتر الإساءة',
 	'abusefilter-blockreason'                  => 'ممنوع تلقائيا بواسطة فلتر الإساءة. وصف القاعدة: $1',
 	'abusefilter-degroupreason'                => 'الصلاحيات تمت إزالتها تلقائيا بواسطة فلتر الإساءة. وصف القاعدة: $1',
@@ -233,6 +254,7 @@ $messages['ar'] = array(
 	'abusefilter-tools-modifier'               => 'المعدل:',
 	'abusefilter-tools-value'                  => 'القيمة ليتم اختبارها:',
 	'abusefilter-tools-result'                 => 'النتيجة:',
+	'abusefilter-status'                       => 'من آخر $1 فعل، $2 ($3%) وصلت لحد الحالة ل$4. $5 ($6%) طابقت واحدا من الفلترات المفعلة حاليا.',
 	'abusefilter-edit-subtitle'                => 'تعديل الفلتر $1',
 	'abusefilter-edit-status-label'            => 'إحصاءات',
 	'abusefilter-edit-status'                  => 'من آخر $1 تعديل، الفلتر طابق $2 ($3%).',
@@ -1343,10 +1365,14 @@ $messages['ro'] = array(
 	'abusefilter-log-detailslink'           => 'detalii',
 	'abusefilter-log-details-var'           => 'Variabilă',
 	'abusefilter-log-details-val'           => 'Valoare',
+	'abusefilter-log-details-vars'          => 'Parametrii acţiunii',
 	'abusefilter-log-details-private'       => 'Date private',
+	'abusefilter-log-details-ip'            => 'Adresa IP de origine',
 	'abusefilter-list'                      => 'Toate filtrele',
 	'abusefilter-list-id'                   => 'ID filtru',
+	'abusefilter-list-status'               => 'Statut',
 	'abusefilter-list-public'               => 'Descriere publică',
+	'abusefilter-list-consequences'         => 'Consecinţe',
 	'abusefilter-list-visibility'           => 'Vizibilitate',
 	'abusefilter-list-edit'                 => 'Modifică',
 	'abusefilter-list-details'              => 'Detalii',
@@ -1361,8 +1387,12 @@ $messages['ro'] = array(
 	'abusefilter-edit-status-label'         => 'Statistici',
 	'abusefilter-edit-new'                  => 'Filtru nou',
 	'abusefilter-edit-save'                 => 'Salvează filtru',
+	'abusefilter-edit-description'          => "Descriere:
+:''(publică)''",
 	'abusefilter-edit-enabled'              => 'Activează acest filtru',
+	'abusefilter-edit-lastuser'             => 'Ultimul utilizator care a modificat acest filtru:',
 	'abusefilter-edit-action-disallow'      => 'Nu permite acţiunea',
+	'abusefilter-edit-action-block'         => 'Blochează utilizatorul la modificare',
 	'abusefilter-edit-throttle-count'       => 'Număr de acţiuni permise:',
 	'abusefilter-edit-throttle-period'      => 'Perioadă de timp:',
 	'abusefilter-edit-throttle-seconds'     => '$1 secunde',
