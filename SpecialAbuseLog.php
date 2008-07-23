@@ -16,7 +16,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$this->loadParameters();
 
 		$wgOut->setPageTitle( wfMsg( 'abusefilter-log' ) );
-		$wgOut->setRobotPolicy( "noindex,nofollow" );
+		$wgOut->setRobotpolicy( "noindex,nofollow" );
 		$wgOut->setArticleRelated( false );
 		$wgOut->enableClientCache( false );
 		

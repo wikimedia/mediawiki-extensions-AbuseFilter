@@ -18,7 +18,7 @@ class SpecialAbuseFilter extends SpecialPage {
 
 		$this->loadParameters( $subpage );
 		$wgOut->setPageTitle( wfMsg( 'abusefilter-management' ) );
-		$wgOut->setRobotPolicy( "noindex,nofollow" );
+		$wgOut->setRobotpolicy( "noindex,nofollow" );
 		$wgOut->setArticleRelated( false );
 		$wgOut->enableClientCache( false );
 		
