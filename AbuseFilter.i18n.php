@@ -299,6 +299,33 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'abusefilter-log-search-user'              => 'يوزر:',
+	'abusefilter-log-search-title'             => 'العنوان:',
+	'abusefilter-log-search-submit'            => 'دور',
+	'abusefilter-log-detailslink'              => 'التفاصيل:',
+	'abusefilter-log-details-legend'           => 'التفاصيل بتاعة مدخلة السجل $1',
+	'abusefilter-log-details-var'              => 'متغير',
+	'abusefilter-log-details-val'              => 'القيمة',
+	'abusefilter-log-details-vars'             => 'محددات الفعل',
+	'abusefilter-log-details-private'          => 'معلومات سرية',
+	'abusefilter-log-details-ip'               => 'العنوان بتاع الآي بي الأصلي',
+	'abusefilter-log-noactions'                => 'مافيش',
+	'abusefilter-management'                   => 'إدارة الفلتر بتاع الإساءة',
+	'abusefilter-list'                         => 'كل الفلاتر',
+	'abusefilter-list-id'                      => 'رقم الفلتر',
+	'abusefilter-list-status'                  => 'الحالة',
+	'abusefilter-list-public'                  => 'وصف عام',
+	'abusefilter-list-consequences'            => 'العواقب',
+	'abusefilter-list-visibility'              => 'الرؤية',
+	'abusefilter-list-hitcount'                => 'عدد الضربات',
+	'abusefilter-list-edit'                    => 'تعديل',
+	'abusefilter-list-details'                 => 'التفاصيل',
+	'abusefilter-hidden'                       => 'خصوصي',
+	'abusefilter-unhidden'                     => 'عام',
+	'abusefilter-enabled'                      => 'متفعل',
+	'abusefilter-disabled'                     => 'متعطل',
+	'abusefilter-hitcount'                     => '$1 {{PLURAL:$1|ضربة|ضربة}}',
+	'abusefilter-list-new'                     => 'فلتر جديد',
+	'abusefilter-tools-modifiertest-submit'    => 'اختبار',
 	'abusefilter-edit-action-disallow'         => 'منع الفعل',
 	'abusefilter-edit-action-flag'             => 'علم على التعديل في سجل الإساءة',
 	'abusefilter-edit-action-blockautopromote' => 'اسحب حالة التأكيد الأوتوماتيكي من اليوزر',
@@ -349,10 +376,19 @@ $messages['bg'] = array(
 	'abusefilter-list-new'              => 'Нов филтър',
 	'abusefilter-tools-result'          => 'Резултат:',
 	'abusefilter-edit-subtitle'         => 'Редактиране на филтър $1',
+	'abusefilter-edit-status-label'     => 'Статистики',
 	'abusefilter-edit-new'              => 'Нов филтър',
 	'abusefilter-edit-save'             => 'Съхраняване на филтъра',
+	'abusefilter-edit-description'      => "Описание:
+:''(видимо публично)''",
+	'abusefilter-edit-enabled'          => 'Включване на този филтър',
 	'abusefilter-edit-throttle-period'  => 'Период от време:',
 	'abusefilter-edit-throttle-seconds' => '$1 секунди',
+	'abusefilter-edit-main'             => 'Параметри на филтъра',
+	'abusefilter-edit-done-subtitle'    => 'Филтърът беше редактиран',
+	'abusefilter-edit-done'             => 'Промените във филтъра са съхранени успешно.
+
+[[Special:AbuseFilter|Връщане]]',
 );
 
 /** Breton (Brezhoneg)
@@ -982,7 +1018,7 @@ $messages['mt'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'abusefilter-log-search-user'      => 'Tlatēquitiltilīlli:',
+	'abusefilter-log-search-user'      => 'Tlatequitiltilīlli:',
 	'abusefilter-log-search-title'     => 'Tōcāitl:',
 	'abusefilter-log-search-submit'    => 'Tlatēmoāz',
 	'abusefilter-list-edit'            => 'Ticpatlāz',
