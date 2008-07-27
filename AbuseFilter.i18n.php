@@ -503,6 +503,8 @@ kaj ĉi tia ega aŭ ripetita redaktado rezultos, ke via konto aŭ komputilo esto
 Se vi kredas ke ĉi tiu redakto estas ja konstruktiva, vi povas klaki Konservi denove por konfirmi ĝin.
 Mallonga priskribo pri la regulo de misuzo kiun via ago kongruis estas: $1",
 	'abusefilter-blocker'                   => 'Filtrilo de misuzo',
+	'abusefilter-blockreason'               => 'Aŭtomate blokita de la misuzada filtrilo. Regula priskribo: $1',
+	'abusefilter-accountreserved'           => 'Ĉi tiu konta nomo estas rezervita por uzo de la misuzada filtrilo.',
 	'right-abusefilter-modify'              => 'Modifi filtrilojn de misuzo',
 	'right-abusefilter-view'                => 'Rigardi filtrilojn de misuzo',
 	'right-abusefilter-log'                 => 'Rigardi la protokolon de misuzo',
@@ -538,6 +540,7 @@ Mallonga priskribo pri la regulo de misuzo kiun via ago kongruis estas: $1",
 	'abusefilter-hitcount'                  => '$1 {{PLURAL:$1|trovo|trovoj}}',
 	'abusefilter-list-new'                  => 'Nova filtrilo',
 	'abusefilter-tools-modifiertest-submit' => 'Testo',
+	'abusefilter-tools-modifier'            => 'Modifilo:',
 	'abusefilter-tools-result'              => 'Rezulto:',
 	'abusefilter-edit-subtitle'             => 'Redaktis filtrilon $1',
 	'abusefilter-edit-status-label'         => 'Statistikoj',
@@ -678,10 +681,12 @@ Une brève description de la règle d’abus que votre action a déclenchée est
 
 /** Western Frisian (Frysk)
  * @author Pyt
+ * @author Snakesteuben
  */
 $messages['fy'] = array(
-	'abusefilter-desc' => 'Fiert automatyske heuristyske analyse út op bewurkings',
-	'abusefilter'      => 'Misbrûkfilterkonfiguraasje',
+	'abusefilter-desc'      => 'Fiert automatyske heuristyske analyse út op bewurkings',
+	'abusefilter'           => 'Misbrûkfilterkonfiguraasje',
+	'abusefilter-list-edit' => 'Wizigje',
 );
 
 /** Galician (Galego)
@@ -1011,6 +1016,13 @@ Un breve description del regula anti-abuso correspondente con tu action es: $1',
 [[Special:AbuseFilter|Retornar]]',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'abusefilter-log-search-submit' => 'Ricerca',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */
@@ -1124,6 +1136,7 @@ $messages['nah'] = array(
 	'abusefilter-log-search-user'      => 'Tlatequitiltilīlli:',
 	'abusefilter-log-search-title'     => 'Tōcāitl:',
 	'abusefilter-log-search-submit'    => 'Tlatēmōz',
+	'abusefilter-log-noactions'        => 'ahtlein',
 	'abusefilter-list-edit'            => 'Ticpatlāz',
 	'abusefilter-edit-throttle-period' => 'Cāhuitl:',
 );
