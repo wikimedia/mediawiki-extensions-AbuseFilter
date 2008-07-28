@@ -406,6 +406,14 @@ $messages['br'] = array(
 	'abusefilter-edit-throttle-seconds' => '$1 eilenn',
 );
 
+/** German (Deutsch)
+ * @author Pill
+ */
+$messages['de'] = array(
+	'abusefilter-edit-throttle-period'  => 'Zeitraum:',
+	'abusefilter-edit-throttle-seconds' => '$1 Sekunden',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -684,9 +692,11 @@ Une brève description de la règle d’abus que votre action a déclenchée est
  * @author Snakesteuben
  */
 $messages['fy'] = array(
-	'abusefilter-desc'      => 'Fiert automatyske heuristyske analyse út op bewurkings',
-	'abusefilter'           => 'Misbrûkfilterkonfiguraasje',
-	'abusefilter-list-edit' => 'Wizigje',
+	'abusefilter-desc'              => 'Fiert automatyske heuristyske analyse út op bewurkings',
+	'abusefilter'                   => 'Misbrûkfilterkonfiguraasje',
+	'abusefilter-log-search-submit' => 'Sykje',
+	'abusefilter-log-noactions'     => 'gjin',
+	'abusefilter-list-edit'         => 'Wizigje',
 );
 
 /** Galician (Galego)
@@ -802,6 +812,15 @@ Unha breve descrición da regra de abuso coa que a súa acción coincide é: $1'
 	'abusefilter-edit-done'                    => 'Gardou con éxito os seus cambios no filtro.
 
 [[Special:AbuseFilter|Voltar]]',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author LeighvsOptimvsMaximvs
+ */
+$messages['grc'] = array(
+	'abuselog'                  => 'Κατάλογος ὕβρεων',
+	'abusefilter-log-noactions' => 'οὐδέν',
+	'abusefilter-list-edit'     => 'Μεταγράφειν',
 );
 
 /** Hebrew (עברית)
@@ -1027,13 +1046,19 @@ $messages['it'] = array(
  * @author Lovekhmer
  */
 $messages['km'] = array(
-	'abusefilter-log-search-user'       => 'អ្នកប្រើប្រាស់:',
-	'abusefilter-log-search-title'      => 'ចំនងជើង:',
-	'abusefilter-log-search-submit'     => 'ស្វែងរក',
-	'abusefilter-log-noactions'         => 'ទទេ',
-	'abusefilter-list-edit'             => 'កែប្រែ',
-	'abusefilter-edit-throttle-period'  => 'រយៈពេល:',
-	'abusefilter-edit-throttle-seconds' => '$1វិនាទី',
+	'abusefilter-log-search-user'           => 'អ្នកប្រើប្រាស់:',
+	'abusefilter-log-search-title'          => 'ចំនងជើង:',
+	'abusefilter-log-search-submit'         => 'ស្វែងរក',
+	'abusefilter-log-detailslink'           => 'សេក្តីលំអិត',
+	'abusefilter-log-noactions'             => 'ទទេ',
+	'abusefilter-list-edit'                 => 'កែប្រែ',
+	'abusefilter-list-details'              => 'សេចក្តីលំអិត',
+	'abusefilter-tools-modifiertest-submit' => 'សាកល្បង',
+	'abusefilter-tools-result'              => 'លទ្ធផល:',
+	'abusefilter-edit-status-label'         => 'ស្ថិតិ',
+	'abusefilter-edit-action-block'         => 'ហាមឃាត់អ្នកប្រើប្រាស់ពីការកែប្រែ',
+	'abusefilter-edit-throttle-period'      => 'រយៈពេល:',
+	'abusefilter-edit-throttle-seconds'     => '$1វិនាទី',
 );
 
 /** Ripoarisch (Ripoarisch)
