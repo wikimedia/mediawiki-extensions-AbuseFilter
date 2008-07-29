@@ -5,6 +5,7 @@
 #include <ios>
 #include <iostream>
 #include <ctype.h>
+#include <unicode/unistr.h>
 
 #define EQUIVSET_LOC "equivset.txt"
 
@@ -86,8 +87,9 @@ AFPData af_length( vector<AFPData> args ) {
 	if (!args.size()) {
 		throw new AFPException( "Not enough arguments to lcase" );
 	}
-	
-	return AFPData( (long int)args[0].toString().size() );
+
+	UnicodeString ustr = UnicodeString( (UChar*)args[0].toString().c_str() );
+	return AFPData( (long int)ustr.length() );
 }
 
 AFPData af_lcase( vector<AFPData> args ) {
@@ -95,11 +97,13 @@ AFPData af_lcase( vector<AFPData> args ) {
 		throw new AFPException( "Not enough arguments to lcase" );
 	}
 	
-	string s = args[0].toString();
+	int initlen = args[0].toString().length();
+	UnicodeString us = UnicodeString( args[0].toString().c_str() );
+	us = us.toLower();
+	char* result = (char*)malloc(initlen);
+	us.extract(0, us.length(), result);
 	
-	transform( s.begin(), s.end(), s.begin(), (int(*)(int)) tolower );
-	
-	return AFPData(s);
+	return AFPData(string(result));
 }
 
 string confusable_character_normalise( string orig ) {
