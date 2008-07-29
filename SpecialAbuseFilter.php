@@ -80,7 +80,7 @@ class SpecialAbuseFilter extends SpecialPage {
 	}
 	
 	function showStatus() {
-		global $wgMemc,$wgAbuseFilterConditionLimit,$wgOut;
+		global $wgMemc,$wgAbuseFilterConditionLimit,$wgOut, $wgLang;
 		
 		$overflow_count = (int)$wgMemc->get( AbuseFilter::filterLimitReachedKey() );
 		$match_count = (int) $wgMemc->get( AbuseFilter::filterMatchesKey() );
@@ -90,7 +90,14 @@ class SpecialAbuseFilter extends SpecialPage {
 			$overflow_percent = sprintf( "%.2f", 100 * $overflow_count / $total_count );
 			$match_percent = sprintf( "%.2f", 100 * $match_count / $total_count );
 
-			$status .= wfMsg( 'abusefilter-status', $total_count, $overflow_count, $overflow_percent, $wgAbuseFilterConditionLimit, $match_count, $match_percent );
+			$status = wfMsgExt( 'abusefilter-status', array( 'parsemag', 'escape' ),
+				$wgLang->formatNum($total_count),
+				$wgLang->formatNum($overflow_count),
+				$wgLang->formatNum($overflow_percent),
+				$wgLang->formatNum($wgAbuseFilterConditionLimit),
+				$wgLang->formatNum($match_count),
+				$wgLang->formatNum($match_percent)
+			);
 		}
 		
 		$status = Xml::tags( 'div', array( 'class' => 'mw-abusefilter-status' ), $status );
@@ -219,7 +226,9 @@ class SpecialAbuseFilter extends SpecialPage {
 		// Hit count display
 		if( $this->mFilter !== 'new' ){
 			$count = (int)$row->af_hit_count;
-			$count_display = wfMsgExt( 'abusefilter-hitcount', array( 'parseinline' ), array( $count ) );
+			$count_display = wfMsgExt( 'abusefilter-hitcount', array( 'parseinline' ),
+				$wgLang->formatNum( $count )
+			);
 			$hitCount = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'AbuseLog' ), $count_display, 'wpSearchFilter='.$row->af_id );
 		
 			$fields['abusefilter-edit-hitcount'] = $hitCount;
@@ -229,13 +238,18 @@ class SpecialAbuseFilter extends SpecialPage {
 		
 		if ($this->mFilter !== 'new') {
 			// Statistics
-			global $wgMemc;
+			global $wgMemc, $wgLang;
 			$matches_count = $wgMemc->get( AbuseFilter::filterMatchesKey( $this->mFilter ) );
 			$total = $wgMemc->get( AbuseFilter::filterUsedKey() );
 			
 			if ($total > 0) {
 				$matches_percent = sprintf( '%.2f', 100 * $matches_count / $total );
-				$fields['abusefilter-edit-status-label'] = wfMsgHtml( 'abusefilter-edit-status', $total, $matches_count, $matches_percent );
+				$fields['abusefilter-edit-status-label'] =
+					wfMsgExt( 'abusefilter-edit-status', array( 'parsemag', 'escape' ),
+						$wgLang->formatNum($total),
+						$wgLang->formatNum($matches_count),
+						$wgLang->formatNum($matches_percent)
+					);
 			}
 		}
 
@@ -249,7 +263,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		if (isset($row->af_throttled) && $row->af_throttled) {
 			global $wgAbuseFilterEmergencyDisableThreshold;
 			$threshold_percent = sprintf( '%.2f', $wgAbuseFilterEmergencyDisableThreshold * 100 );
-			$flags .= $wgOut->parse( wfMsg( 'abusefilter-edit-throttled', $threshold_percent ) );
+			$flags .= $wgOut->parse( wfMsg( 'abusefilter-edit-throttled', $wgLang->formatNum( $threshold_percent ) ) );
 		}
 		
 		foreach( $checkboxes as $checkboxId ) {
@@ -415,14 +429,14 @@ class SpecialAbuseFilter extends SpecialPage {
 		$output .= Xml::tags( 'table', array( 'class' => 'wikitable' ), Xml::tags( 'tbody', null, $list ) );
 		
 		if ($this->canEdit()) {
-			$output .= $sk->makeKnownLinkObj( $this->getTitle( 'new' ), wfMsg( 'abusefilter-list-new' ) );
+			$output .= $sk->makeKnownLinkObj( $this->getTitle( 'new' ), wfMsgHtml( 'abusefilter-list-new' ) );
 		}
 		
 		$wgOut->addHTML( $output );
 	}
 	
 	function shortFormatFilter( $row ) {
-		global $wgOut;
+		global $wgOut, $wgLang;
 		
 		$sk = $this->mSkin;
 		
@@ -439,10 +453,10 @@ class SpecialAbuseFilter extends SpecialPage {
 		
 		// Hit count
 		$count = $row->af_hit_count;
-		$count_display = wfMsgExt( 'abusefilter-hitcount', array( 'parseinline' ), array( $count ) );
+		$count_display = wfMsgExt( 'abusefilter-hitcount', array( 'parseinline' ), $wgLang->formatNum( $count ) );
 		$hitCount = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'AbuseLog' ), $count_display, 'wpSearchFilter='.$row->af_id );
 		
-		$editLink = $sk->makeKnownLinkObj( $this->getTitle( $row->af_id ), wfMsg( $editLabel ) );
+		$editLink = $sk->makeKnownLinkObj( $this->getTitle( $row->af_id ), wfMsgHtml( $editLabel ) );
 		
 		$consequences = wfEscapeWikitext($row->consequences);
 		
