@@ -1405,7 +1405,9 @@ Vaquí la descripcion brèva de la règla de l’abús qu'a detectat vòstra acc
 En consequéncia, es pas estada permesa, tre alara, vòstre compte es suspectat de compromission, totes vòstres dreches son estats levats.
 Se sètz convençut(uda) qu'aquò es degut a una error, contactatz un burocrata amb una explicacion d'aquesta accion, e totes vòstres dreches poiràn èsser restablits.
 Vaquí la descripcion brèva de la règla de l’abús qu'a detectat vòstra accion : $1",
-	'abusefilter-autopromote-blocked'          => 'Aquesta accion es estada automaticament identificada coma nusibla, e es pas estada permesa. En consequéncia, a títol de mesura de seguretat, qualques privilègis acordats de costum pels comptes establits son estats revocats temporàriament de vòstre compte.',
+	'abusefilter-autopromote-blocked'          => 'Aquesta accion es estada automaticament identificada coma nusibla, e es pas estada permesa.
+En consequéncia, a títol de mesura de seguretat, qualques privilègis acordats de costuma pels comptes establits son estats revocats temporàriament de vòstre compte.
+Una descripcion brèva de la règla d’abús que vòstra accion a desenclavat es : $1',
 	'abusefilter-blocker'                      => 'Filtre dels abuses',
 	'abusefilter-blockreason'                  => 'Blocat automaticament per aver temptat de far de modificacions identificadas coma nusiblas.
 Descripcion de la règla : $1',
@@ -1448,7 +1450,17 @@ Descripcion de la règla : $1',
 	'abusefilter-disabled'                     => 'Desactivat',
 	'abusefilter-hitcount'                     => '$1 {{PLURAL:$1|visita|visitas}}',
 	'abusefilter-list-new'                     => 'Filtre novèl',
+	'abusefilter-tools-modifiertest-submit'    => 'Tèst',
+	'abusefilter-tools'                        => 'Qualques [[Special:AbuseFilter/tools|espleches]] son disponibles per ajudar a la formulacion e al debogatge dels filtres dels abuses.',
+	'abusefilter-tools-modifiertest'           => 'Modificar lo tèst',
+	'abusefilter-tools-modifier'               => 'Modificar :',
+	'abusefilter-tools-value'                  => 'Valor de testar :',
+	'abusefilter-tools-result'                 => 'Resultat :',
+	'abusefilter-status'                       => "De las $1 darrièras accions, $2 ($3 %) an atench lo limit de la condicion definida per $4. $5 ($6 %) correspondon a un d'aquestes filtres actualament en servici.",
 	'abusefilter-edit-subtitle'                => 'Modificacion del filtre $1',
+	'abusefilter-edit-status-label'            => 'Estatisticas',
+	'abusefilter-edit-status'                  => 'De las $1 darrièras accions, aqueste filtre a atench $2 ($3 %).',
+	'abusefilter-edit-throttled'               => "'''Avertiment''' : Aqueste filtre es estat desactivat automaticament per mesura de seguretat. A atench lo limit de correspondéncia a mai de $1 % de las accions.",
 	'abusefilter-edit-new'                     => 'Filtre novèl',
 	'abusefilter-edit-save'                    => 'Salvar lo filtre',
 	'abusefilter-edit-id'                      => 'Filtre ID :',
