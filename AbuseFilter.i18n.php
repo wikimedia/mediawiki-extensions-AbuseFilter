@@ -99,12 +99,12 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-tools-result' => 'Result:',
 	
 	// Abuse filter status
-	'abusefilter-status' => "Of the last $1 actions, $2 ($3%) have reached the condition limit of $4. $5 ($6%) have matched one of the filters currently enabled.",
+	'abusefilter-status' => "Of the last $1 {{PLURAL:$1|action|actions}}, $2 ($3%) {{PLURAL:$2|has|have}} reached the condition limit of $4. $5 ($6%) {{PLURAL:$5|has|have}} matched one of the filters currently enabled.",
 	
 	// The edit screen
 	'abusefilter-edit-subtitle' => 'Editing filter $1',
 	'abusefilter-edit-status-label' => 'Statistics',
-	'abusefilter-edit-status' => 'Of the last $1 actions, this filter has matched $2 ($3%).',
+	'abusefilter-edit-status' => 'Of the last $1 {{PLURAL:$1|action|actions}}, this filter has matched $2 ($3%).',
 	'abusefilter-edit-throttled' => "'''Warning''': This filter was automatically disabled as a safety measure. It reached the limit of matching more than $1% of actions.",
 	'abusefilter-edit-new' => 'New filter',
 	'abusefilter-edit-save' => 'Save filter',
@@ -122,7 +122,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-edit-action-warn' => 'Trigger these actions after giving the user a warning',
 	'abusefilter-edit-action-disallow' => 'Disallow the action',
 	'abusefilter-edit-action-flag' => 'Flag the edit in the abuse log',
-	'abusefilter-edit-action-blockautopromote' => "Revoke the users' autoconfirmed status",
+	'abusefilter-edit-action-blockautopromote' => "Revoke the user's autoconfirmed status",
 	'abusefilter-edit-action-degroup' => 'Remove all privileged groups from the user',
 	'abusefilter-edit-action-block' => 'Block the user from editing',
 	'abusefilter-edit-action-throttle' => 'Trigger actions only if the user trips a rate limit',

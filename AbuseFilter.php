@@ -27,6 +27,7 @@ $wgExtensionCredits['other'][] = array(
 $wgExtensionMessagesFiles['AbuseFilter'] =  "$dir/AbuseFilter.i18n.php";
 
 $wgAutoloadClasses[ 'AbuseFilter' ] = "$dir/AbuseFilter.class.php";
+$wgAutoloadClasses[ 'AbuseFilterParser' ] = "$dir/AbuseFilter.parser.php";
 $wgAutoloadClasses[ 'AbuseFilterHooks' ] = "$dir/AbuseFilter.hooks.php";
 $wgAutoloadClasses['SpecialAbuseLog'] = "$dir/SpecialAbuseLog.php";
 $wgAutoloadClasses['SpecialAbuseFilter'] = "$dir/SpecialAbuseFilter.php";
