@@ -254,10 +254,10 @@ $messages['ar'] = array(
 	'abusefilter-tools-modifier'               => 'المعدل:',
 	'abusefilter-tools-value'                  => 'القيمة ليتم اختبارها:',
 	'abusefilter-tools-result'                 => 'النتيجة:',
-	'abusefilter-status'                       => 'من آخر $1 فعل، $2 ($3%) وصلت لحد الحالة ل$4. $5 ($6%) طابقت واحدا من الفلترات المفعلة حاليا.',
+	'abusefilter-status'                       => 'من آخر $1 {{PLURAL:$1|فعل|فعل}}، $2 ($3%) {{PLURAL:$2|وصل|وصل}} إلى حد الحالة ل$4. $5 ($6%) {{PLURAL:$5|طابق|طابق}} واحدا من الفلترات المفعلة حاليا.',
 	'abusefilter-edit-subtitle'                => 'تعديل الفلتر $1',
 	'abusefilter-edit-status-label'            => 'إحصاءات',
-	'abusefilter-edit-status'                  => 'من آخر $1 تعديل، الفلتر طابق $2 ($3%).',
+	'abusefilter-edit-status'                  => 'من آخر $1 {{PLURAL:$1|تعديل|تعديل}}، هذا الفلتر طابق $2 ($3%).',
 	'abusefilter-edit-throttled'               => "'''تحذير''': هذا الفلتر تم تعطيله تلقائيا كإجراء أمني. لقد وصل إلى حد مطابقة أكثر من $1% من الأفعال.",
 	'abusefilter-edit-new'                     => 'فلتر جديد',
 	'abusefilter-edit-save'                    => 'حفظ الفلتر',
@@ -408,8 +408,11 @@ $messages['br'] = array(
 
 /** German (Deutsch)
  * @author Pill
+ * @author Leithian
  */
 $messages['de'] = array(
+	'abusefilter-log-details-var'       => 'Variable',
+	'abusefilter-log-details-val'       => 'Wert',
 	'abusefilter-edit-throttle-period'  => 'Zeitraum:',
 	'abusefilter-edit-throttle-seconds' => '$1 Sekunden',
 );
@@ -510,6 +513,9 @@ Malkonstruktivaj redaktoj rapide estos malfaritaj,
 kaj ĉi tia ega aŭ ripetita redaktado rezultos, ke via konto aŭ komputilo estos forbarita.
 Se vi kredas ke ĉi tiu redakto estas ja konstruktiva, vi povas klaki Konservi denove por konfirmi ĝin.
 Mallonga priskribo pri la regulo de misuzo kiun via ago kongruis estas: $1",
+	'abusefilter-disallowed'                => 'Ĉi tiu ago estis aŭtomate identigita kiel damaĝa, kaj do estis malpermesita.
+Se vi kredas ke via redakto estis utila, bonvolu kontakti administranton, kaj informi ilin pri kion vi volis fari.
+Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1',
 	'abusefilter-blocker'                   => 'Filtrilo de misuzo',
 	'abusefilter-blockreason'               => 'Aŭtomate blokita de la misuzada filtrilo. Regula priskribo: $1',
 	'abusefilter-accountreserved'           => 'Ĉi tiu konta nomo estas rezervita por uzo de la misuzada filtrilo.',
@@ -549,6 +555,7 @@ Mallonga priskribo pri la regulo de misuzo kiun via ago kongruis estas: $1",
 	'abusefilter-list-new'                  => 'Nova filtrilo',
 	'abusefilter-tools-modifiertest-submit' => 'Testo',
 	'abusefilter-tools-modifier'            => 'Modifilo:',
+	'abusefilter-tools-value'               => 'Valuto por testi:',
 	'abusefilter-tools-result'              => 'Rezulto:',
 	'abusefilter-edit-subtitle'             => 'Redaktis filtrilon $1',
 	'abusefilter-edit-status-label'         => 'Statistikoj',
@@ -647,10 +654,10 @@ Une brève description de la règle d’abus que votre action a déclenchée est
 	'abusefilter-tools-modifier'               => 'Modifier :',
 	'abusefilter-tools-value'                  => 'Valeur à tester :',
 	'abusefilter-tools-result'                 => 'Résultat :',
-	'abusefilter-status'                       => 'Des $1 dernières actions, $2 ($3 %) ont atteint la limite de la condition définie par $4. $5 ($6 %) correspondent à l’un de ces filtres actuellement en service.',
+	'abusefilter-status'                       => '{{PLURAL:$1|De la dernière action|des $1 dernières actions}}, $2 ($3 %) {{PLURAL:$2|a|ont}} atteint la limite de la condition définie par $4. $5 ($6 %) {{PLURAL:$5|correspondait|correspondaient}} à l’un de ces filtres actuellement en service.',
 	'abusefilter-edit-subtitle'                => 'Modification du filtre $1',
 	'abusefilter-edit-status-label'            => 'Statistiques',
-	'abusefilter-edit-status'                  => 'Des $1 dernières actions, ce filtre a atteint $2 ($3 %).',
+	'abusefilter-edit-status'                  => '{{PLURAL:$1|De la dernière action|des $1 dernières actions}}, ce filtre a atteint $2 ($3 %).',
 	'abusefilter-edit-throttled'               => "'''Avertissement''' : Ce filtre a été désactivé automatiquement par mesure de sécurité. Il a atteint la limite de correspondance à plus de $1 % des actions.",
 	'abusefilter-edit-new'                     => 'Nouveau filtre',
 	'abusefilter-edit-save'                    => 'Sauvegarder le filtre',
@@ -920,6 +927,15 @@ $messages['hsb'] = array(
 [[Special:AbuseFilter|Wróćo]]',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdamokos
+ */
+$messages['hu'] = array(
+	'abusefilter-desc' => 'Automatikus heurisztikát alkalmaz a szerkesztésekre.',
+	'abusefilter'      => 'Visszaélési szűrő beállítása',
+	'abuselog'         => 'Visszaélési-napló',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -1091,6 +1107,7 @@ $messages['lb'] = array(
 	'abusefilter-log-details-legend'        => "Detailer fir d'Rubrique am Logbuch $1",
 	'abusefilter-log-details-var'           => 'Variabel',
 	'abusefilter-log-details-val'           => 'Wert',
+	'abusefilter-log-details-private'       => 'Privat Donnéeën',
 	'abusefilter-log-details-ip'            => 'IP-Adress déi bnotzt gouf',
 	'abusefilter-log-noactions'             => 'keen',
 	'abusefilter-management'                => 'Gestioun vum Mëssbrauchsfilter',
@@ -1108,6 +1125,7 @@ $messages['lb'] = array(
 	'abusefilter-disabled'                  => 'Desaktivéiert',
 	'abusefilter-list-new'                  => 'Neie Filter',
 	'abusefilter-tools-modifiertest-submit' => 'Test',
+	'abusefilter-tools-modifiertest'        => 'Testännerungen',
 	'abusefilter-tools-modifier'            => 'Änneren:',
 	'abusefilter-tools-result'              => 'Resultat:',
 	'abusefilter-edit-subtitle'             => 'Änner vum Filter $1',
@@ -1768,10 +1786,10 @@ Stručný popis pravidla zneužitia, ktoré zachytilo vašu úpravu, je: $1',
 	'abusefilter-tools-modifier'               => 'Modifikátor:',
 	'abusefilter-tools-value'                  => 'Otestovať hodnotu:',
 	'abusefilter-tools-result'                 => 'Výsledok:',
-	'abusefilter-status'                       => 'Z posledných $1 operácií $2 ($3%) dosialho hraničnú podmienku $4. $5 ($6%) zodpovedalo momentálne zapnutým filtrom.',
+	'abusefilter-status'                       => '{{PLURAL:$1|Posledná $1 operácia|Z posledných $1 operácií}} $2 ($3 %) {{PLURAL:$4|dosiahla|dosiahli|dosiahlo}} hraničnú podmienku $4. $5 ($6 %) {{PLURAL:$5|zodpovedala|zodpovedali|zodpovedalo}} momentálne zapnutým filtrom.',
 	'abusefilter-edit-subtitle'                => 'Úprava filtra $1',
 	'abusefilter-edit-status-label'            => 'Štatistika',
-	'abusefilter-edit-status'                  => 'Z posledných $1 operácii tomuto filtru zodpovedalo $2 ($3 %).',
+	'abusefilter-edit-status'                  => '{{PLURAL:$1|Z poslednej $1 operácie|Z posledných $1 operácií}} tomuto filtru {{PLURAL:$2|zodpovedala|zodpovedali|zodpovedalo}} $2 ($3 %).',
 	'abusefilter-edit-throttled'               => "'''Upozornenie''': V rámci bezpečnostných opatrení bol tento filter automaticky vypnutý. Dosiahol hodnotu obmedzenia $1 % operácií, ktoré mu zodpovedajú.",
 	'abusefilter-edit-new'                     => 'Nový filter',
 	'abusefilter-edit-save'                    => 'Uložiť filter',
@@ -2004,6 +2022,7 @@ $messages['uk'] = array(
 	'abusefilter-log'                          => 'Журнал фільтру зловживань',
 	'abusefilter-log-search'                   => 'Пошук в журналі зловживань',
 	'abusefilter-log-search-user'              => 'Користувач:',
+	'abusefilter-log-search-filter'            => 'Ідентифікатор фільтра:',
 	'abusefilter-log-search-title'             => 'Заголовок:',
 	'abusefilter-log-search-submit'            => 'Знайти',
 	'abusefilter-log-entry'                    => '$1: $2 запустив фільтр зловживань, виконуючи "$3" на сторінці "$4". Прийняті заходи: $5; опис фільтру: $6',
@@ -2015,6 +2034,7 @@ $messages['uk'] = array(
 	'abusefilter-log-details-vars'             => 'Параметри дії',
 	'abusefilter-log-details-private'          => 'Приватні дані',
 	'abusefilter-log-details-ip'               => 'Вихідна IP-адреса',
+	'abusefilter-log-noactions'                => 'нема',
 	'abusefilter-management'                   => 'Управління фільтром зловживань',
 	'abusefilter-list'                         => 'Усі фільтри',
 	'abusefilter-list-id'                      => 'ІД фільтра',
@@ -2031,6 +2051,7 @@ $messages['uk'] = array(
 	'abusefilter-disabled'                     => 'Вимкнений',
 	'abusefilter-hitcount'                     => '$1 {{PLURAL:$1|спрацьовування|спрацьовування|спрацьовувань}}',
 	'abusefilter-list-new'                     => 'Новий фільтр',
+	'abusefilter-tools-modifiertest-submit'    => 'Тест',
 	'abusefilter-edit-subtitle'                => 'Редагування фільтру $1',
 	'abusefilter-edit-new'                     => 'Новий фільтр',
 	'abusefilter-edit-save'                    => 'Зберегти фільтр',
