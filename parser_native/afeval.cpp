@@ -7,6 +7,7 @@ void FilterEvaluator::reset() {
 	this->cur = AFPToken();
 	this->pos = 0;
 	this->code = "";
+	this->forceResult = false;
 }
 
 void FilterEvaluator::setVar( string key, AFPData value ) {
@@ -21,8 +22,18 @@ void FilterEvaluator::setVars( map<string,AFPData> values ) {
 
 bool FilterEvaluator::evaluateFilter( string code ) {
 	this->code = code;
-	this->tokens = af_parse( code );
 	this->pos = 0;
+	
+	if (this->tokenCache.find(code) != this->tokenCache.end()) {
+		this->tokens = this->tokenCache[code];
+	} else {
+		this->tokenCache[code] = this->tokens = af_parse( code );
+	}
+	
+	if (this->tokenCache.size() > 100) {
+		this->tokenCache.clear();
+	}
+
 	this->cur = this->tokens[0];
 	
 	AFPData result;
@@ -50,7 +61,7 @@ void FilterEvaluator::doLevelEntry( AFPData* result ) {
 	this->doLevelSet( result );
 	
 	if (this->cur.type != T_NONE) {
-		throw new AFPException( "Unexpected tokens at end." );
+		throw AFPException( "Unexpected tokens at end." );
 	}
 }
 
@@ -116,6 +127,8 @@ vector<string> getOpsForType( string type ) {
 }
 
 void FilterEvaluator::doLevelBoolOps( AFPData* result ) {
+	bool setForce = false;
+	
 	this->doLevelCompares( result );
 	
 	vector<string> ops = getOpsForType( "bool" );
@@ -124,9 +137,27 @@ void FilterEvaluator::doLevelBoolOps( AFPData* result ) {
 		string op = this->cur.value;
 		this->move();
 		AFPData r2;
+		
+		if (!this->forceResult && op == "&" && !result->toBool()) {
+			setForce = true;
+			this->forceResult = true;
+		} else if (!this->forceResult && op == "|" && result->toBool()) {
+			setForce = true;
+			this->forceResult = true;
+		}
+		
 		this->doLevelCompares( &r2 );
-		*result = af_boolOp( result, r2, op );
+		
+		if (!this->forceResult) {
+			*result = af_boolOp( *result, r2, op );
+		} else if (setForce) {
+			setForce = false;
+			this->forceResult = false;
+		}
 	}
+	
+	if (setForce)
+		this->forceResult = false;
 }
 
 void FilterEvaluator::doLevelCompares( AFPData* result ) {
@@ -140,7 +171,8 @@ void FilterEvaluator::doLevelCompares( AFPData* result ) {
 		
 		this->doLevelMulRels( &r2 );
 		
-		*result = af_compareOp( *result, r2, op );
+		if (!this->forceResult)
+			*result = af_compareOp( *result, r2, op );
 	}
 }
 
@@ -154,7 +186,9 @@ void FilterEvaluator::doLevelMulRels( AFPData* result ) {
 		AFPData r2;
 		
 		this->doLevelSumRels( &r2 );
-		*result = af_mulRel( *result, r2, op );
+		
+		if (!this->forceResult)
+			*result = af_mulRel( *result, r2, op );
 	}
 }
 
@@ -168,10 +202,13 @@ void FilterEvaluator::doLevelSumRels( AFPData* result ) {
 		AFPData r2;
 		
 		this->doLevelPow( &r2 );
+		
 		if (op == "+") {
-			*result = af_sum( *result, r2 );
+			if (!this->forceResult)
+				*result = af_sum( *result, r2 );
 		} else if (op == "-") {
-			*result = af_sub( *result, r2 );
+			if (!this->forceResult)
+				*result = af_sub( *result, r2 );
 		}
 	}
 }	
@@ -184,15 +221,18 @@ void FilterEvaluator::doLevelPow( AFPData* result ) {
 		AFPData exp;
 		
 		this->doLevelBoolInvert( &exp );
-		*result = af_pow( *result, exp );
+		
+		if (!this->forceResult)
+			*result = af_pow( *result, exp );
 	}
 }
 
 void FilterEvaluator::doLevelBoolInvert( AFPData* result ) {
-	if (this->cur.type == T_KEYWORD && this->cur.value == "!") {
+	if (this->cur.type == T_OP && this->cur.value == "!") {
 		this->move();
 		this->doLevelSpecialWords( result );
-		*result = af_boolInvert( *result );
+		if (!this->forceResult)
+			*result = af_boolInvert( *result );
 	} else {
 		this->doLevelSpecialWords( result );
 	}
@@ -209,7 +249,8 @@ void FilterEvaluator::doLevelSpecialWords( AFPData* result ) {
 		AFPData r2 = AFPData();
 		this->doLevelUnarys( &r2 );
 		
-		*result = af_keyword( keyword, *result, r2 );
+		if (!this->forceResult)
+			*result = af_keyword( keyword, *result, r2 );
 	}
 }
 
@@ -218,7 +259,8 @@ void FilterEvaluator::doLevelUnarys( AFPData* result ) {
 		this->move();
 		this->doLevelBraces( result );
 		if (this->cur.value == "-") {
-			*result = af_unaryMinus( *result );
+			if (!this->forceResult)
+				*result = af_unaryMinus( *result );
 		}
 	} else {
 		this->doLevelBraces( result );
@@ -231,7 +273,7 @@ void FilterEvaluator::doLevelBraces( AFPData* result ) {
 		this->doLevelSet( result );
 		
 		if ( !(this->cur.type == T_BRACE && this->cur.value == ")") ) {
-			throw new AFPException( "Expected ')'" );
+			throw AFPException( "Expected ')' at pos %d", this->cur.pos );
 		}
 		this->move();
 	} else {
@@ -245,7 +287,7 @@ void FilterEvaluator::doLevelFunction( AFPData* result ) {
 		this->move();
 		
 		if (this->cur.type != T_BRACE || this->cur.value != "(") {
-			throw new AFPException( "Expected (" );
+			throw AFPException( "Expected (" );
 		}
 		this->move();
 		
@@ -261,7 +303,8 @@ void FilterEvaluator::doLevelFunction( AFPData* result ) {
 			} while (this->cur.type == T_COMMA );
 		}
 		
-		*result = callFunction( func, args );
+		if (!this->forceResult)
+			*result = callFunction( func, args );
 		this->move();
 	} else {
 		this->doLevelAtom( result );
@@ -291,7 +334,7 @@ void FilterEvaluator::doLevelAtom( AFPData* result ) {
 			} else if (tok == "null") {
 				*result = AFPData();
 			} else {
-				throw new AFPException( "Unidentifiable keyword" );
+				throw AFPException( "Unidentifiable keyword" );
 			}
 			break;
 		case T_BRACE:
@@ -301,7 +344,8 @@ void FilterEvaluator::doLevelAtom( AFPData* result ) {
 			break;
 		case T_COMMA:
 			return;
-		default: throw new AFPException( "Unexpected token" );
+			break;
+		default: throw AFPException( "Unexpected token value %s", this->cur.value.c_str() );
 	}
 	
 	this->move();

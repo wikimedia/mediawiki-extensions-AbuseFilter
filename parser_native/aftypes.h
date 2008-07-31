@@ -40,22 +40,27 @@ class AFPData {
 		AFPData( AFPData oldData, unsigned int newType );
 		AFPData( const AFPData & oldData );
 		
+		// Assignment operator
+		AFPData & operator = (const AFPData & other);
+		
 		// Specific type constructors
 		AFPData( long int var );
 		AFPData( double var );
 		AFPData( bool var );
-		
-		unsigned int type;
-		void* value;
-		size_t size;
 
 		bool toBool();
 		string toString();
 		long int toInt();
 		double toFloat();
+		unsigned int getType();
 		
 	protected:
-		void makeData( unsigned int type, void* value, size_t size );
+		void makeData( unsigned int type, void* value, size_t size, string source );
+		
+		unsigned int type;
+		void* value;
+		size_t size;
+		string source;
 };
 
 class AFPException :exception {

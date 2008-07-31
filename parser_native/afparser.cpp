@@ -114,7 +114,7 @@ bool af_nextToken( ParseStatus* ps ) {
 			}
 		}
 		
-		throw new AFPException( "Unclosed string" );
+		throw AFPException( "Unclosed string" );
 	}
 	
 	// Operators
@@ -127,7 +127,7 @@ bool af_nextToken( ParseStatus* ps ) {
 		}
 		
 		if (!isValidOp( s )) {
-			throw new AFPException( "Invalid operator %s", s );
+			throw AFPException( "Invalid operator %s", s );
 		}
 		
 		tok = AFPToken( T_OP, s, pos );
@@ -167,7 +167,7 @@ bool af_nextToken( ParseStatus* ps ) {
 		return true;
 	}
 	
-	throw new AFPException( "Unrecognised token" );
+	throw AFPException( "Unrecognised token" );
 }
 
 bool isDigitOrDot( char chr ) {

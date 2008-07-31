@@ -46,7 +46,7 @@ AFPData af_boolOp( AFPData a, AFPData b, string op ) {
 		return AFPData( (v1 || v2) && !(v1 && v2) );
 	}
 	
-	throw new AFPException( "Invalid boolean operation." );
+	throw AFPException( "Invalid boolean operation." );
 }
 
 AFPData af_compareOp( AFPData a, AFPData b, string op ) {
@@ -56,8 +56,8 @@ AFPData af_compareOp( AFPData a, AFPData b, string op ) {
 	float f1 = a.toFloat();
 	float f2 = b.toFloat();
 	
-	unsigned int t1 = a.type;
-	unsigned int t2 = b.type;
+	unsigned int t1 = a.getType();
+	unsigned int t2 = b.getType();
 	
 	if (op == "==") {
 		return AFPData( s1 == s2 );
@@ -76,7 +76,7 @@ AFPData af_compareOp( AFPData a, AFPData b, string op ) {
 	} else if (op == "<=") {
 		return AFPData( f1 <= f2 );
 	}
-	throw new AFPException( "Invalid comparison type" );
+	throw AFPException( "Invalid comparison type" );
 }
 
 AFPData af_mulRel( AFPData a, AFPData b, string op ) {
@@ -94,11 +94,11 @@ AFPData af_mulRel( AFPData a, AFPData b, string op ) {
 		return AFPData( (double)(i1 % i2) );
 	}
 	
-	throw new AFPException( "Invalid multiplication-related operator" );
+	throw AFPException( "Invalid multiplication-related operator" );
 }
 
 AFPData af_sum( AFPData a, AFPData b ) {
-	if (a.type == D_STRING || b.type == D_STRING) {
+	if (a.getType() == D_STRING || b.getType() == D_STRING) {
 		return AFPData( a.toString() + b.toString() );
 	} else {
 		return AFPData( a.toFloat() * b.toFloat() );
@@ -135,5 +135,5 @@ AFPData af_keyword( string keyword, AFPData a, AFPData b ) {
 		return AFPData( result );
 	}
 	
-	throw new AFPException( "Unknown keyword %s", keyword );
+	throw AFPException( "Unknown keyword %s", keyword );
 }

@@ -5,17 +5,19 @@
 #include <ios>
 #include <iostream>
 #include <ctype.h>
-#include <unicode/unistr.h>
 
 #define EQUIVSET_LOC "equivset.txt"
 
 map<string,AFPFunction> af_functions;
+map<string,AFPData> functionResultCache;
 
 AFPData af_length( vector<AFPData> args );
 AFPData af_lcase( vector<AFPData> args );
 AFPData af_ccnorm( vector<AFPData> args );
 AFPData af_rmdoubles( vector<AFPData> args );
 AFPData af_specialratio( vector<AFPData> args );
+AFPData af_rmspecials( vector<AFPData> args );
+AFPData af_norm( vector<AFPData> args );
 
 void af_registerfunction( string name, AFPFunction method ) {
 	af_functions[name] = method;
@@ -27,45 +29,41 @@ void registerBuiltinFunctions() {
 	af_registerfunction( "ccnorm", (AFPFunction) &af_ccnorm );
 	af_registerfunction( "rmdoubles", (AFPFunction) &af_rmdoubles );
 	af_registerfunction( "specialratio", (AFPFunction) &af_specialratio );
+	af_registerfunction( "rmspecials", (AFPFunction) &af_rmspecials );
+	af_registerfunction( "norm", (AFPFunction) &af_norm );
 }
 
-AFPData af_specialratio( vector<AFPData> args ) {
+AFPData af_norm( vector<AFPData> args ) {
 	if (!args.size()) {
-		throw new AFPException( "Not enough arguments to specialratio" );
+		throw AFPException( "Not enough arguments to norm" );
 	}
 	
 	string orig = args[0].toString();
+	
 	string::const_iterator p, charStart, end;
-	int chr,lastchr = 0;
-	int specialcount = 0;
+	int chr = 0,lastchr = 0;
+	map<int,int> equivSet = getEquivSet();
+	string result;
 	
 	p = orig.begin();
 	end = orig.end();
+	
 	while (chr = next_utf8_char( p, charStart, end )) {
-		if (!isalnum(chr)) {
-			specialcount++;
+		if (equivSet.find(chr) != equivSet.end()) {
+			chr = equivSet[chr];
 		}
-	}
-	
-	double ratio = (float)(specialcount) / (float)(orig.size());
 		
-	return AFPData(ratio);	
-}
-
-AFPData af_ccnorm( vector<AFPData> args ) {
-	if (!args.size()) {
-		throw new AFPException( "Not enough arguments to ccnorm" );
+		if (chr != lastchr && isalnum(chr)) {
+			result.append(codepointToUtf8(chr));
+		}
+		
+		lastchr = chr;
 	}
 	
-	return AFPData( confusable_character_normalise( args[0].toString() ) );
+	return AFPData(result);
 }
 
-AFPData af_rmdoubles( vector<AFPData> args ) {
-	if (!args.size()) {
-		throw new AFPException( "Not enough arguments to rmdoubles" );
-	}
-	
-	string orig = args[0].toString();
+string rmdoubles( string orig ) {
 	string::const_iterator p, charStart, end;
 	int chr,lastchr = 0;
 	string result;
@@ -83,27 +81,138 @@ AFPData af_rmdoubles( vector<AFPData> args ) {
 	return result;
 }
 
+vector<AFPData> makeFuncArgList( AFPData arg ) {
+	vector<AFPData> ret;
+	
+	ret.push_back( arg );
+	
+	return ret;
+}
+
+AFPData callFunction( string name, vector<AFPData> args ) {
+	string cacheKey;
+	bool doCache = false;
+	if (args.size() == 1) {
+		doCache = true;
+		cacheKey = name + args[0].toString();
+		
+		if (functionResultCache.find(cacheKey) != functionResultCache.end()) {
+			// found a result
+			return functionResultCache[cacheKey];
+		}
+	}
+	
+	if (functionResultCache.size() > 100) {
+		functionResultCache.clear();
+	}
+	
+	AFPData result;
+
+	if ( af_functions.find( name ) != af_functions.end() ) {
+		// Found the function
+		AFPFunction func = af_functions[name];
+		result = func(args);
+		
+		if (doCache) {
+			functionResultCache[cacheKey] = result;
+		}
+		
+		return result;
+	}
+}
+
+AFPData callFunction( string name, AFPData arg ) {
+	vector<AFPData> arglist = makeFuncArgList( arg );
+	
+	return callFunction( name, arglist );
+}
+
+AFPData af_specialratio( vector<AFPData> args ) {
+	if (!args.size()) {
+		throw AFPException( "Not enough arguments to specialratio" );
+	}
+	
+	string orig = args[0].toString();
+	string::const_iterator p, charStart, end;
+	int chr,lastchr = 0;
+	int specialcount = 0;
+	
+	p = orig.begin();
+	end = orig.end();
+	while (chr = next_utf8_char( p, charStart, end )) {
+		if (!isalnum(chr)) {
+			specialcount++;
+		}
+	}
+	
+	double ratio = (float)(specialcount) / (float)(orig.size());
+		
+	return AFPData(ratio);
+}
+
+AFPData af_rmspecials( vector<AFPData> args ) {
+	if (!args.size()) {
+		throw AFPException( "Not enough arguments to rmspecials" );
+	}
+	
+	string orig = args[0].toString();
+	string result = rmspecials(orig);
+	
+	return AFPData(result);
+}
+
+string rmspecials( string orig ) {
+	string::const_iterator p, charStart, end;
+	int chr = 0;
+	string result;
+	
+	p = orig.begin();
+	end = orig.end();
+	while (chr = next_utf8_char( p, charStart, end )) {
+		if (isalnum(chr)) {
+			result.append(codepointToUtf8(chr));
+		}
+	}
+	
+	return result;
+}
+
+AFPData af_ccnorm( vector<AFPData> args ) {
+	if (!args.size()) {
+		throw AFPException( "Not enough arguments to ccnorm" );
+	}
+	
+	return AFPData( confusable_character_normalise( args[0].toString() ) );
+}
+
+AFPData af_rmdoubles( vector<AFPData> args ) {
+	if (!args.size()) {
+		throw AFPException( "Not enough arguments to rmdoubles" );
+	}
+	
+	string result = rmdoubles( args[0].toString() );
+	
+	return AFPData(result);
+}
+
 AFPData af_length( vector<AFPData> args ) {
 	if (!args.size()) {
-		throw new AFPException( "Not enough arguments to lcase" );
+		throw AFPException( "Not enough arguments to lcase" );
 	}
-
-	UnicodeString ustr = UnicodeString( (UChar*)args[0].toString().c_str() );
-	return AFPData( (long int)ustr.length() );
+	
+	return AFPData( (long int)args[0].toString().size() );
 }
 
 AFPData af_lcase( vector<AFPData> args ) {
 	if (!args.size()) {
-		throw new AFPException( "Not enough arguments to lcase" );
+		throw AFPException( "Not enough arguments to lcase" );
 	}
 	
-	int initlen = args[0].toString().length();
-	UnicodeString us = UnicodeString( args[0].toString().c_str() );
-	us = us.toLower();
-	char* result = (char*)malloc(initlen);
-	us.extract(0, us.length(), result);
+	string s = args[0].toString();
 	
-	return AFPData(string(result));
+	transform( s.begin(), s.end(), s.begin(), (int(*)(int)) tolower );
+	
+	return AFPData(s);
 }
 
 string confusable_character_normalise( string orig ) {
@@ -126,14 +235,6 @@ string confusable_character_normalise( string orig ) {
 	return result;
 }
 
-AFPData callFunction( string name, vector<AFPData> args ) {
-	if ( af_functions.find( name ) != af_functions.end() ) {
-		// Found the function
-		AFPFunction func = af_functions[name];
-		return func(args);
-	}
-}
-
 bool isFunction( string name ) {
 	return af_functions.find(name) != af_functions.end();
 }
@@ -146,7 +247,7 @@ map<int,int> getEquivSet() {
 		ifstream eqsFile( EQUIVSET_LOC );
 		
 		if (!eqsFile) {
-			throw new AFPException( "Unable to open equivalence sets!" );
+			throw AFPException( "Unable to open equivalence sets!" );
 		}
 		
 		string line;
@@ -250,5 +351,5 @@ string codepointToUtf8( int codepoint ) {
 		return ret;
 	}
 
-	throw new AFPException("Asked for code outside of range ($codepoint)\n");
+	throw AFPException("Asked for code outside of range ($codepoint)\n");
 }

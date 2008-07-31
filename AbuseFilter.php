@@ -28,6 +28,7 @@ $wgExtensionMessagesFiles['AbuseFilter'] =  "$dir/AbuseFilter.i18n.php";
 
 $wgAutoloadClasses[ 'AbuseFilter' ] = "$dir/AbuseFilter.class.php";
 $wgAutoloadClasses[ 'AbuseFilterParser' ] = "$dir/AbuseFilter.parser.php";
+$wgAutoloadClasses[ 'AbuseFilterParserNative' ] = "$dir/AbuseFilter.nativeparser.php";
 $wgAutoloadClasses[ 'AbuseFilterHooks' ] = "$dir/AbuseFilter.hooks.php";
 $wgAutoloadClasses['SpecialAbuseLog'] = "$dir/SpecialAbuseLog.php";
 $wgAutoloadClasses['SpecialAbuseFilter'] = "$dir/SpecialAbuseFilter.php";
@@ -55,3 +56,7 @@ $wgAbuseFilterConditionLimit = 1000;
 // Disable filters if they match more than X edits, constituting more than Y% of the last Z edits
 $wgAbuseFilterEmergencyDisableThreshold = 0.05;
 $wgAbuseFilterEmergencyDisableCount = 5;
+
+// Abuse filter parser class
+$wgAbuseFilterParserClass = 'AbuseFilterParserNative';
+$wgAbuseFilterNativeParser = "$dir/parser_native/af_parser";
