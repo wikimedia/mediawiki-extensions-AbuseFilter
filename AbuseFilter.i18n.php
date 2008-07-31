@@ -340,13 +340,18 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Red Winged Duck
  * @author Jim-by
+ * @author Cesco
+ * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
-	'abusefilter-desc'    => 'Прыстасоўвае аўтаматычную эўрыстыку да рэдагаваньняў.',
-	'abusefilter'         => 'Наладка фільтра злоўжываньняў',
-	'abuselog'            => 'Журнал злоўжываньняў',
-	'abusefilter-warning' => "<big>'''Увага'''</big>: Гэтае дзеяньне будзе аўтаматычна лічыцца шкодным. Неканструктыўныя рэдагаваньні будуць адмененыя, і значныя ці неаднаразовыя неканструктыўныя рэдагаваньні прывядуць да блякаваньня Вашага рахунка ці кампутара. Калі Вы лічыце гэтае рэдагаваньне канструктыўным, Вам неабходна націснуць «Адправіць» яшчэ раз каб яго пацьвердзіць.
+	'abusefilter-desc'                      => 'Прыстасоўвае аўтаматычную эўрыстыку да рэдагаваньняў.',
+	'abusefilter'                           => 'Наладка фільтра злоўжываньняў',
+	'abuselog'                              => 'Журнал злоўжываньняў',
+	'abusefilter-warning'                   => "<big>'''Увага'''</big>: Гэтае дзеяньне будзе аўтаматычна лічыцца шкодным. Неканструктыўныя рэдагаваньні будуць адмененыя, і значныя ці неаднаразовыя неканструктыўныя рэдагаваньні прывядуць да блякаваньня Вашага рахунка ці кампутара. Калі Вы лічыце гэтае рэдагаваньне канструктыўным, Вам неабходна націснуць «Адправіць» яшчэ раз каб яго пацьвердзіць.
 Кароткі сьпіс злоўжываньняў, зь якімі суадносіцца Вашае дзеяньне тут: $1",
+	'abusefilter-log-search-filter'         => 'Ідэнтыфікатар фільтру:',
+	'abusefilter-log-noactions'             => 'няма',
+	'abusefilter-tools-modifiertest-submit' => 'Тэст',
 );
 
 /** Bulgarian (Български)
@@ -409,12 +414,114 @@ $messages['br'] = array(
 /** German (Deutsch)
  * @author Pill
  * @author Leithian
+ * @author ChrisiPK
+ * @author Revolus
+ * @author Raymond
  */
 $messages['de'] = array(
-	'abusefilter-log-details-var'       => 'Variable',
-	'abusefilter-log-details-val'       => 'Wert',
-	'abusefilter-edit-throttle-period'  => 'Zeitraum:',
-	'abusefilter-edit-throttle-seconds' => '$1 Sekunden',
+	'abusefilter-desc'                         => 'Wendet automatische Heuristiken auf Änderungen an.',
+	'abusefilter'                              => 'Missbrauchsfilter-Einstellungen',
+	'abuselog'                                 => 'Missbrauchs-Logbuch',
+	'abusefilter-warning'                      => "<big>'''Achtung'''</big>: Diese Aktion wurde automatisch als schädlich erkannt.
+Unkonstruktive Beiträge werden meist sehr schnell entfernt. In wiederholten und besonders schlimmen Fällen wird dein Account bzw. deine IP-Adresse gesperrt.
+Wenn du denkst, dass deine Änderung konstruktiv war, kannst du sie jedoch mit einem erneuten Klick auf „{{int:savearticle}}“ bestätigen.
+
+Kurzbeschreibung der verletzten Regel: $1",
+	'abusefilter-disallowed'                   => 'Diese Aktion wurde automatisch als schädlich erkannt und deshalb nicht durchgeführt.
+Wenn du denkst, dass dein Beitrag konstruktiv war, wende dich bitte an einen Administrator und schildere ihm, was du versucht hast beizutragen.
+
+Kurzbeschreibung der verletzten Regel: $1',
+	'abusefilter-blocked-display'              => 'Diese Aktion wurde automatisch als schädlich erkannt und nicht ausgeführt.
+Ferner wurde dein Benutzeraccount und alle zugehörigen IP-Adressen gesperrt.
+Wenn du denkst, dass es sich hierbei um einen Fehler handelt, wende dich bitte an einen Administrator.
+
+Kurzbeschreibung der verletzten Regel: $1',
+	'abusefilter-degrouped'                    => 'Diese Aktion wurde als schädlich erkannt und nicht ausgeführt.
+Da es möglich ist, dass dein Benutzeraccount kompromittiert wurde, wurden dir alle gewährten Rechte genommen.
+Wenn du denkst, dass es sich hierbei um einen Fehler handelt, so wende dich bitte an einen Bürokraten und schildere ihm, was du gerade getan hast, damit deine Rechte wiederhergestellt werden können.
+
+Kurzbeschreibung der verletzten Regel: $1',
+	'abusefilter-autopromote-blocked'          => 'Diese Aktion wurde als schädlich erkannt und nicht ausgeführt.
+Zusätzlich wurden dir als eine Sicherheitsmaßnahme einige automatisch vergebenen Rechte kurzzeitig genommen.
+
+Kurzbeschreibung der verletzten Regel: $1',
+	'abusefilter-blocker'                      => 'Missbrauchsfilter',
+	'abusefilter-blockreason'                  => 'Du wurdest vom Missbrauchsfilter automatisch gesperrt. Beschreibung der Regel: $1',
+	'abusefilter-degroupreason'                => 'Deine Berechtigungen wurden vom Missbrauchsfilter automatisch beschränkt. Beschreibung der Regel: $1',
+	'abusefilter-accountreserved'              => 'Dieser Benutzername ist für den Missbrauchsfilter reserviert.',
+	'right-abusefilter-modify'                 => 'Missbrauchsfilter bearbeiten',
+	'right-abusefilter-view'                   => 'Missbrauchsfilter ansehen',
+	'right-abusefilter-log'                    => 'Missbrauchs-Logbuch einsehen',
+	'right-abusefilter-log-detail'             => 'Detailliertes Missbrauchs-Logbuch einsehen',
+	'right-abusefilter-private'                => 'Private Daten im Missbrauchs-Logbuch einsehen',
+	'abusefilter-log'                          => 'Missbrauchsfilter-Logbuch',
+	'abusefilter-log-search'                   => 'Missbrauchs-Logbuch durchsuchen',
+	'abusefilter-log-search-user'              => 'Benutzer:',
+	'abusefilter-log-search-filter'            => 'Filter-ID:',
+	'abusefilter-log-search-title'             => 'Titel:',
+	'abusefilter-log-search-submit'            => 'Suchen',
+	'abusefilter-log-detailslink'              => 'Details',
+	'abusefilter-log-details-legend'           => 'Details für den Logbuch-Eintrag $1',
+	'abusefilter-log-details-var'              => 'Variable',
+	'abusefilter-log-details-val'              => 'Wert',
+	'abusefilter-log-details-vars'             => 'Aktionsparameter',
+	'abusefilter-log-details-private'          => 'Private Daten',
+	'abusefilter-log-details-ip'               => 'IP-Adresse des Verursachers',
+	'abusefilter-log-noactions'                => 'keine',
+	'abusefilter-management'                   => 'Missbrauchsfilter-Verwaltung',
+	'abusefilter-list'                         => 'Alle Filter',
+	'abusefilter-list-id'                      => 'Filter-ID',
+	'abusefilter-list-status'                  => 'Status',
+	'abusefilter-list-public'                  => 'Öffentliche Beschreibung',
+	'abusefilter-list-consequences'            => 'Folgen',
+	'abusefilter-list-visibility'              => 'Sichtbarkeit',
+	'abusefilter-list-hitcount'                => 'Trefferzähler',
+	'abusefilter-list-edit'                    => 'Bearbeiten',
+	'abusefilter-list-details'                 => 'Details',
+	'abusefilter-hidden'                       => 'Privat',
+	'abusefilter-unhidden'                     => 'Öffentlich',
+	'abusefilter-enabled'                      => 'Aktiviert',
+	'abusefilter-disabled'                     => 'Deaktiviert',
+	'abusefilter-hitcount'                     => '{{PLURAL:$1|1 Treffer|$1 Treffer}}',
+	'abusefilter-list-new'                     => 'Neuer Filter',
+	'abusefilter-tools-modifiertest-submit'    => 'Test',
+	'abusefilter-tools'                        => 'Es existieren [[{{ns:special}}:AbuseFilter/tools|Werkzeuge]], die dich beim Erstellen und Debuggen von Filtern unterstützen.',
+	'abusefilter-tools-value'                  => 'Wert zur Überprüfung:',
+	'abusefilter-tools-result'                 => 'Ergebnis:',
+	'abusefilter-status'                       => 'Von {{PLURAL:$1|der|den}} letzten {{PLURAL:$1|Aktion|$1 Aktionen}} {{PLURAL:$2|hat eine|haben $2}} ($3 %) den Grenzwert von $4 erreicht. $5 ($6 %) {{PLURAL:$5|wurde|wurden}} von einem der momentan aktivierten Filter erkannt.',
+	'abusefilter-edit-subtitle'                => 'Bearbeite Filter $1',
+	'abusefilter-edit-status-label'            => 'Statistiken',
+	'abusefilter-edit-status'                  => 'Von {{PLURAL:$1|der|den}} letzten {{PLURAL:$1|Aktion|$1 Aktionen}} {{PLURAL:$2|wurde|wurden}} $2 ($ 3%) von diesem Filter erkannt.',
+	'abusefilter-edit-throttled'               => "'''Warnung''': Dieser Filter wurde sicherheitshalber automatisch deaktiviert. Er hat mehr als die definierte Obergrenze von $1 % der Aktionen erkannt.",
+	'abusefilter-edit-new'                     => 'Neuer Filter',
+	'abusefilter-edit-save'                    => 'Filter speichern',
+	'abusefilter-edit-id'                      => 'Filter-ID:',
+	'abusefilter-edit-description'             => "Beschreibung:
+:''(öffentlich sichtbar)''",
+	'abusefilter-edit-enabled'                 => 'Diesen Filter aktivieren',
+	'abusefilter-edit-hidden'                  => 'Details dieses Filters nicht öffentlich anzeigen',
+	'abusefilter-edit-notes'                   => "Notizen:
+:''(privat)",
+	'abusefilter-edit-lastmod'                 => 'Letzte Bearbeitung des Filters:',
+	'abusefilter-edit-lastuser'                => 'Letzte Bearbeitung des Filters durch:',
+	'abusefilter-edit-hitcount'                => 'Treffer des Filters:',
+	'abusefilter-edit-consequences'            => 'Bei Treffer auszuführende Aktionen',
+	'abusefilter-edit-action-warn'             => 'Aktionen nach Warnung des Benutzers ausführen',
+	'abusefilter-edit-action-disallow'         => 'Aktion verhindern',
+	'abusefilter-edit-action-flag'             => 'Bearbeitung im Missbrauchs-Log markieren',
+	'abusefilter-edit-action-blockautopromote' => '„Bestätiger Benutzer“-Status entziehen',
+	'abusefilter-edit-action-degroup'          => 'Benutzer aus allen Gruppen mit Sonderrechten entfernen',
+	'abusefilter-edit-action-block'            => 'Benutzer sperren',
+	'abusefilter-edit-action-throttle'         => 'Aktion nur auslösen, wenn der Benutzer eine ein bestimmtes Limit erreicht hat',
+	'abusefilter-edit-throttle-count'          => 'Anzahl erlaubter Aktionen:',
+	'abusefilter-edit-throttle-period'         => 'Zeitraum:',
+	'abusefilter-edit-throttle-seconds'        => '$1 Sekunden',
+	'abusefilter-edit-denied'                  => 'Du kannst die Details dieses Filters nicht einsehen, weil sie versteckt sind',
+	'abusefilter-edit-main'                    => 'Filterparameter',
+	'abusefilter-edit-done-subtitle'           => 'Filter bearbeitet',
+	'abusefilter-edit-done'                    => 'Deine Änderungen am Filter wurden erfolgreich gespeichert.
+
+[[{{ns:special}}:AbuseFilter|Zurück]]',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -559,9 +666,12 @@ Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1',
 	'abusefilter-tools-result'              => 'Rezulto:',
 	'abusefilter-edit-subtitle'             => 'Redaktis filtrilon $1',
 	'abusefilter-edit-status-label'         => 'Statistikoj',
+	'abusefilter-edit-throttled'            => "'''Averto''': Ĉi tiu filtrilo aŭtomate malebligiĝis pro sekureco. Ĝi atingis la limo kontruanta pli ol $1% de agoj.",
 	'abusefilter-edit-new'                  => 'Nova filtrilo',
 	'abusefilter-edit-save'                 => 'Konservi filtrilon',
 	'abusefilter-edit-id'                   => 'Identigo de filtrilo:',
+	'abusefilter-edit-description'          => "Priskribo:
+:''(publike videbla)''",
 	'abusefilter-edit-enabled'              => 'Ebligi ĉi tiun filtrilon',
 	'abusefilter-edit-hidden'               => 'Kaŝi detalojn pri ĉi tiu filtrilo de publika vido',
 	'abusefilter-edit-rules'                => 'Regularo:',
@@ -1056,6 +1166,7 @@ Un breve description del regula anti-abuso correspondente con tu action es: $1',
  */
 $messages['it'] = array(
 	'abusefilter-log-search-submit' => 'Ricerca',
+	'abusefilter-log-details-val'   => 'Valore',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1257,10 +1368,11 @@ Een korte beschrijving van de regel op basis waarvan uw bewerking is tegengehoud
 	'abusefilter-tools-modifier'               => 'Modifier:',
 	'abusefilter-tools-value'                  => 'Te testen waarde:',
 	'abusefilter-tools-result'                 => 'Resultaat:',
-	'abusefilter-status'                       => 'Van de laatste $1 acties, hebben er $2 ($3%) de conditielimiet van $4 gehaald. $5 ($6%) voldeden aan een van de actieve filters.',
+	'abusefilter-status'                       => 'Van de laatste {{PLURAL:$1|actie|$1 acties}}, {{PLURAL:$2|heeft|hebben}} er $2 ($3%) de conditielimiet van $4 gehaald.
+$5 ($6%) {{PLURAL:$5|voldeed|voldeden}} aan een van de actieve filters.',
 	'abusefilter-edit-subtitle'                => 'Bezig met het bewerken van filter $1',
 	'abusefilter-edit-status-label'            => 'Statistieken',
-	'abusefilter-edit-status'                  => 'Van de laatste $1 acties voldeden er $2 aan deze filter ($3%).',
+	'abusefilter-edit-status'                  => '{{PLURAL:$1|De laatste actie voldeed|Van de laatste $1 acties voldeden er $2}} aan deze filter ($3%).',
 	'abusefilter-edit-throttled'               => "'''Waarschuwing''': deze filter is als veiligheidsmaatregel automatisch uitgeschakeld. De limiet van voldoen aan meer dan $1% van de handelingen is bereikt.",
 	'abusefilter-edit-new'                     => 'Nieuwe filter',
 	'abusefilter-edit-save'                    => 'Filter opslaan',
@@ -1363,10 +1475,10 @@ En kort beskrivelse av misbruksregelen handlingen din brøt er: $1',
 	'abusefilter-tools-modifier'               => 'Parameter:',
 	'abusefilter-tools-value'                  => 'Verdi å teste:',
 	'abusefilter-tools-result'                 => 'Resultat:',
-	'abusefilter-status'                       => 'Av de siste $1 handlingene har $2 ($3&nbsp;%) nådd grenseverdien $4. $5 ($6&nbsp;%) har passet med en av de påslåtte filterne.',
+	'abusefilter-status'                       => 'Av {{PLURAL:$1|den siste handlingen|de siste $1 handlingene}} har $2 ($3&nbsp;%) nådd grenseverdien $4. $5 ($6&nbsp;%) passet med en av de påslåtte filterne.',
 	'abusefilter-edit-subtitle'                => 'Redigerer filteret $1',
 	'abusefilter-edit-status-label'            => 'Statistikk',
-	'abusefilter-edit-status'                  => 'Av de siste $1 handlinger har dette filteret passet med $2 ($3&nbsp;%).',
+	'abusefilter-edit-status'                  => 'Av {{PLURAL:$|den siste handlingen|de siste $1 handlingene}} har dette filteret passet med $2 ($3&nbsp;%).',
 	'abusefilter-edit-throttled'               => "'''Advarsel:''' Dette filteret ble automatisk slått av av sikkerhetsårsaker. Det nådde grensen på $1&nbsp;% av alle handlinger.",
 	'abusefilter-edit-new'                     => 'Nytt filter',
 	'abusefilter-edit-save'                    => 'Lagre filter',
