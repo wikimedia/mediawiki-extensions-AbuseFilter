@@ -488,10 +488,10 @@ Kurzbeschreibung der verletzten Regel: $1',
 	'abusefilter-tools'                        => 'Es existieren [[{{ns:special}}:AbuseFilter/tools|Werkzeuge]], die dich beim Erstellen und Debuggen von Filtern unterstützen.',
 	'abusefilter-tools-value'                  => 'Wert zur Überprüfung:',
 	'abusefilter-tools-result'                 => 'Ergebnis:',
-	'abusefilter-status'                       => 'Von {{PLURAL:$1|der|den}} letzten {{PLURAL:$1|Aktion|$1 Aktionen}} {{PLURAL:$2|hat eine|haben $2}} ($3 %) den Grenzwert von $4 erreicht. $5 ($6 %) {{PLURAL:$5|wurde|wurden}} von einem der momentan aktivierten Filter erkannt.',
+	'abusefilter-status'                       => 'Von {{PLURAL:$1|der letzten Aktion|den letzten $1 Aktionen}} {{PLURAL:$2|hat eine|haben $2}} ($3 %) den Grenzwert von $4 erreicht. $5 ($6 %) {{PLURAL:$5|wurde|wurden}} von einem der momentan aktivierten Filter erkannt.',
 	'abusefilter-edit-subtitle'                => 'Bearbeite Filter $1',
 	'abusefilter-edit-status-label'            => 'Statistiken',
-	'abusefilter-edit-status'                  => 'Von {{PLURAL:$1|der|den}} letzten {{PLURAL:$1|Aktion|$1 Aktionen}} {{PLURAL:$2|wurde|wurden}} $2 ($ 3%) von diesem Filter erkannt.',
+	'abusefilter-edit-status'                  => 'Von {{PLURAL:$1|der|den}} letzten {{PLURAL:$1|Aktion|$1 Aktionen}} {{PLURAL:$2|wurde|wurden}} $2 ($3 %) von diesem Filter erkannt.',
 	'abusefilter-edit-throttled'               => "'''Warnung''': Dieser Filter wurde sicherheitshalber automatisch deaktiviert. Er hat mehr als die definierte Obergrenze von $1 % der Aktionen erkannt.",
 	'abusefilter-edit-new'                     => 'Neuer Filter',
 	'abusefilter-edit-save'                    => 'Filter speichern',
@@ -508,11 +508,11 @@ Kurzbeschreibung der verletzten Regel: $1',
 	'abusefilter-edit-consequences'            => 'Bei Treffer auszuführende Aktionen',
 	'abusefilter-edit-action-warn'             => 'Aktionen nach Warnung des Benutzers ausführen',
 	'abusefilter-edit-action-disallow'         => 'Aktion verhindern',
-	'abusefilter-edit-action-flag'             => 'Bearbeitung im Missbrauchs-Log markieren',
+	'abusefilter-edit-action-flag'             => 'Bearbeitung im Missbrauchs-Logbuch markieren',
 	'abusefilter-edit-action-blockautopromote' => '„Bestätiger Benutzer“-Status entziehen',
 	'abusefilter-edit-action-degroup'          => 'Benutzer aus allen Gruppen mit Sonderrechten entfernen',
 	'abusefilter-edit-action-block'            => 'Benutzer sperren',
-	'abusefilter-edit-action-throttle'         => 'Aktion nur auslösen, wenn der Benutzer eine ein bestimmtes Limit erreicht hat',
+	'abusefilter-edit-action-throttle'         => 'Aktion nur auslösen, wenn der Benutzer ein bestimmtes Limit erreicht hat',
 	'abusefilter-edit-throttle-count'          => 'Anzahl erlaubter Aktionen:',
 	'abusefilter-edit-throttle-period'         => 'Zeitraum:',
 	'abusefilter-edit-throttle-seconds'        => '$1 Sekunden',
@@ -606,6 +606,20 @@ $messages['dsb'] = array(
 	'abusefilter-edit-done'                    => 'Sy swóje změny na filtrach wuspěšnje składł.
 
 [[Special:AbuseFilter|Slědk]]',
+);
+
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'abusefilter-log-search-user'       => 'Χρήστης:',
+	'abusefilter-log-search-title'      => 'Τίτλος:',
+	'abusefilter-log-detailslink'       => 'λεπτομέρειες',
+	'abusefilter-list-details'          => 'Λεπτομέρειες',
+	'abusefilter-tools-modifier'        => 'Τροποποίησης:',
+	'abusefilter-tools-result'          => 'Αποτέλεσμα:',
+	'abusefilter-edit-status-label'     => 'Στατιστικά',
+	'abusefilter-edit-throttle-seconds' => '$1 δευτερόλεπτα',
 );
 
 /** Esperanto (Esperanto)
@@ -2091,6 +2105,18 @@ $messages['te'] = array(
 	'abusefilter-edit-action-disallow'  => 'ఈ చర్యను నిరాకరించు',
 	'abusefilter-edit-action-block'     => 'ఈ వాడుకరిని దిద్దుబాట్లు చేయకుండా నిషేధించు',
 	'abusefilter-edit-throttle-seconds' => '$1 క్షణాలు',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'abusefilter-log-search-user'   => 'Корбар:',
+	'abusefilter-log-search-title'  => 'Унвон:',
+	'abusefilter-log-search-submit' => 'Ҷустуҷӯ',
+	'abusefilter-log-details-val'   => 'Қимат',
+	'abusefilter-list-edit'         => 'Вироиш',
+	'abusefilter-tools-result'      => 'Натиҷа:',
 );
 
 /** Ukrainian (Українська)
