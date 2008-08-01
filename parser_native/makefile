@@ -3,7 +3,7 @@ all: check af_parser
 af_parser: afeval.o affunctions.o afparser.o aftypes.o afutils.o main.o
 	g++ -g -o af_parser afeval.o affunctions.o afparser.o aftypes.o afutils.o main.o -lboost_regex -lxml++-2.6 -lxml2 -lglibmm-2.4 -lgobject-2.0 -lsigc-2.0 -lglib-2.0
 
-check: afeval.o affunctions.o afparser.o aftypes.o afutils.o main.o
+check: afeval.o affunctions.o afparser.o aftypes.o afutils.o check.o
 	g++ -g -o check -lboost_regex afeval.o affunctions.o afparser.o aftypes.o afutils.o check.o
 
 .cpp.o:
