@@ -14,6 +14,5 @@ AFPData af_mulRel( AFPData a, AFPData b, string op );
 AFPData af_sum( AFPData a, AFPData b );
 AFPData af_sub( AFPData a, AFPData b );
 AFPData af_keyword( string keyword, AFPData a, AFPData b );
-bool isInVector( string needle, vector<string> haystack );
 
 #endif

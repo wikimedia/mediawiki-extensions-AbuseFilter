@@ -5,6 +5,7 @@
 #include <ios>
 #include <iostream>
 #include <ctype.h>
+#include <glibmm/ustring.h>
 
 #define EQUIVSET_LOC "equivset.txt"
 
@@ -18,6 +19,7 @@ AFPData af_rmdoubles( vector<AFPData> args );
 AFPData af_specialratio( vector<AFPData> args );
 AFPData af_rmspecials( vector<AFPData> args );
 AFPData af_norm( vector<AFPData> args );
+AFPData af_count( vector<AFPData> args );
 
 void af_registerfunction( string name, AFPFunction method ) {
 	af_functions[name] = method;
@@ -31,6 +33,38 @@ void registerBuiltinFunctions() {
 	af_registerfunction( "specialratio", (AFPFunction) &af_specialratio );
 	af_registerfunction( "rmspecials", (AFPFunction) &af_rmspecials );
 	af_registerfunction( "norm", (AFPFunction) &af_norm );
+	af_registerfunction( "count", (AFPFunction) &af_count );
+}
+
+AFPData af_count( vector<AFPData> args ) {
+	if (!args.size()) {
+		throw AFPException( "Not enough arguments to count" );
+	}
+	
+	string needle,haystack;
+	
+	if (args.size() < 2) {
+		needle = ",";
+		haystack = args[0].toString();
+	} else {
+		needle = args[0].toString();
+		haystack = args[1].toString();
+	}
+	
+	size_t last_pos = 0;
+	unsigned int count = 0;
+	
+	while (last_pos != haystack.npos) {
+		count++;
+		last_pos = haystack.find( needle, last_pos );
+	}
+	
+	// One extra was added, but one extra is needed if only one arg was supplied.
+	if (args.size() >= 2) {
+		count--;
+	}
+	
+	return AFPData((long int)count);
 }
 
 AFPData af_norm( vector<AFPData> args ) {
@@ -145,7 +179,7 @@ AFPData af_specialratio( vector<AFPData> args ) {
 		}
 	}
 	
-	double ratio = (float)(specialcount) / (float)(orig.size());
+	double ratio = (float)(specialcount) / (float)(((Glib::ustring)orig).size());
 		
 	return AFPData(ratio);
 }
@@ -200,7 +234,7 @@ AFPData af_length( vector<AFPData> args ) {
 		throw AFPException( "Not enough arguments to lcase" );
 	}
 	
-	return AFPData( (long int)args[0].toString().size() );
+	return AFPData( (long int)((Glib::ustring)args[0].toString()).size() );
 }
 
 AFPData af_lcase( vector<AFPData> args ) {
@@ -208,9 +242,8 @@ AFPData af_lcase( vector<AFPData> args ) {
 		throw AFPException( "Not enough arguments to lcase" );
 	}
 	
-	string s = args[0].toString();
-	
-	transform( s.begin(), s.end(), s.begin(), (int(*)(int)) tolower );
+	Glib::ustring s = args[0].toString();
+	string s2 = s.lowercase();
 	
 	return AFPData(s);
 }

@@ -60,3 +60,4 @@ $wgAbuseFilterEmergencyDisableCount = 5;
 // Abuse filter parser class
 $wgAbuseFilterParserClass = 'AbuseFilterParserNative';
 $wgAbuseFilterNativeParser = "$dir/parser_native/af_parser";
+$wgAbuseFilterNativeSyntaxCheck = "$dir/parser_native/syntax_check";

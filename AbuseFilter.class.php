@@ -4,16 +4,11 @@ if ( ! defined( 'MEDIAWIKI' ) )
 
 class AbuseFilter {
 
-	public static $condCount = 0;
-	public static $condCheckCount = array();
-	public static $condMatchCount = array();
 	public static $statsStoragePeriod = 86400;
-	public static $modifierWords = array( 'norm', 'supernorm', 'lcase', 'length', 'specialratio', 'htmldecode', 'htmlencode', 'urlencode', 'urldecode', 'htmlfullencode' );
-	public static $operatorWords = array( 'eq', 'neq', 'gt', 'lt', 'regex', 'contains' );
-	public static $validJoinConditions = array( '!', '|', '&' );
-	public static $condLimitEnabled = true;
 	public static $tokenCache = array();
 	public static $modifyCache = array();
+	public static $condLimitEnabled = true;
+	public static $condCount = 0;
 
 	public static function generateUserVars( $user ) {
 		$vars = array();
@@ -40,6 +35,7 @@ class AbuseFilter {
 	public static function generateTitleVars( $title, $prefix ) {
 		$vars = array();
 		
+		$vars[$prefix."_EXISTS"] = $title->exists();
 		$vars[$prefix."_NAMESPACE"] = $title->getNamespace();
 		$vars[$prefix."_TEXT"] = $title->getText();
 		$vars[$prefix."_PREFIXEDTEXT"] = $title->getPrefixedText();
@@ -52,321 +48,35 @@ class AbuseFilter {
 			}
 		}
 		
+		// Find last 5 authors
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'revision', 'distinct rev_user_text', array('rev_page' => $title->getArticleId() ), __METHOD__, array( 'order by' => 'rev_timestamp desc', 'limit' => 10 ) );
+		$users = array();
+		while ($user = $dbr->fetchRow($res)) {
+			$users[] = $user[0];
+		}
+		$vars[$prefix."_RECENT_CONTRIBUTORS"] = implode(',', $users);
+		
 		return $vars;
 	}
 
 	public static function checkConditions( $conds, $vars ) {
-		$fname = __METHOD__;
-		
-		global $wgAbuseFilterConditionLimit;
-		if (self::$condCount > $wgAbuseFilterConditionLimit && self::$condLimitEnabled) {
-			return false;
-		}
-	
-		// Remove leading/trailing spaces
-		$conds = trim($conds);
-		
-		self::$condCount++;
-		self::$condCheckCount[$conds]++;
-		
-		// Is it a set?
-		if (substr( $conds, 0, 1 ) == '(' && substr( $conds, -1, 1 ) == ')' ) {
-			// We should have a set here.
-			$setInternal = substr($conds,1,-1);
-			
-			// Get the join condition ( &, | or ! )
-			list($setJoinCondition,$conditionList) = explode(':', $setInternal, 2 );
-			$setJoinCondition = trim($setJoinCondition);
-			
-			if (!in_array( $setJoinCondition, self::$validJoinConditions )) {
-				// Bad join condition
-				return false;
-			}
-			
-			// Tokenise.
-			$allConditions = self::tokeniseList( $conditionList );
-			
-			foreach( $allConditions as $thisCond ) {
-			
-				if (trim($thisCond)=='') {
-					// Ignore it
-					continue;
-				} else {
-					$result = self::checkConditions( $thisCond, $vars );
-				}
-				
-				// We've hit the limit.
-				if (self::$condCount > $wgAbuseFilterConditionLimit && self::$condLimitEnabled) {
-					return false;
-				}
-				
-				// Need we short-circuit?
-				if ($setJoinCondition == '|' && $result) {
-					// Definite yes.
-// 					print "Short-circuit YES for condition $conds, as $thisCond is TRUE\n";
-					self::$condMatchCount[$conds]++;
-					return true;
-				} elseif ($setJoinCondition == '&' && !$result) {
-// 					print "Short-circuit NO for condition $conds, as $thisCond is FALSE\n";
-					// Definite no.
-					return false;
-				} elseif ($setJoinCondition == '!' && $result) {
-// 					print "Short-circuit NO for condition $conds, as $thisCond is TRUE\n";
-					// Definite no.
-					return false;
-				}
-			}
-			if ($setJoinCondition != '|')
-				self::$condMatchCount[$conds]++;
-			// Return the default result.
-			return ($setJoinCondition != '|'); // Only OR returns false after checking all conditions.
-		}
-		
-		wfProfileIn( "$fname-evaluate" );
-	
-		// Grab the first word.
-		list ($thisWord) = explode( ' ', $conds );
-		$wordNum = 0;
-		
-		// Check for modifiers
-		$modifier = '';
-		if (in_array( $thisWord, self::$modifierWords ) ) {
-			$modifier = $thisWord;
-			$wordNum++;
-			$thisWord = explode( ' ', $conds );
-			$thisWord = $thisWord[$wordNum];
-		}
-		
-		if ( in_array( $thisWord, array_keys($vars) ) ) {
-		
-			$value = $vars[$thisWord];
-			if ($modifier) {
-				$value = self::modifyValue( $modifier, $value );
-			}
-			
-			// We have a variable. Now read the next word to see what we're doing with it.
-			$wordNum++;
-			$thisWord = explode( ' ', $conds );
-			$thisWord = $thisWord[$wordNum];
-			
-			if ( in_array( $thisWord, self::$operatorWords ) ) {
-				// Get the rest of the string after the operator.
-				$parameters = explode( ' ', $conds, $wordNum+2);
-				$parameters = trim($parameters[$wordNum+1]);
-
-				list($firstWord,$rest) = explode( ' ', $parameters, 2 );
-				if (in_array( $firstWord, self::$modifierWords ) && in_array( $rest, array_keys($vars))) {
-					// Allow the compare target to be modified, too.
-					$parameters = self::modifyValue( $firstWord, $vars[$rest] );					
-				} elseif (in_array( $parameters, array_keys( $vars ) )) {
-					$parameters = $vars[$parameters];
-				}
-				
-				wfProfileOut( "$fname-evaluate");
-				
-				$result = self::checkOperator( $thisWord, $value, $parameters );
-				
-				if ($result)
-					self::$condMatchCount[$conds]++;
-				
-				return $result;
-			}
-		} else {
-// 			print "Unknown var $thisWord\n";
-		}
-		wfProfileOut( "$fname-evaluate");
-	}
-	
-	public static function tokeniseList( $list ) {
-		if (isset(self::$tokenCache[$list])) {
-			return self::$tokenCache[$list];
-		}
+		global $wgAbuseFilterParserClass;
 		
 		wfProfileIn( __METHOD__ );
-
-		// Parse it, character by character.
-		$escapeNext = false;
-		$listLevel = 0;
-		$thisToken = '';
-		$allTokens = array();
-		for( $i=0;$i<strlen($list);$i++ ) {
-			$char = substr( $list, $i, 1 );
-			
-			$suppressAdd = false;
-			
-			// We don't care about semicolons and so on unless it's 
-			if ($listLevel == 0) {
-				if ($char == "\\") {
-					if ($escapeNext) { // Escaped backslash
-						$escapeNext = false;
-					} else {
-						$escapeNext = true;
-						$suppressAdd = true;
-					}
-				} elseif ($char == ';') {
-					if ($escapeNext) {
-						$escapeNext = false; // Escaped semicolon
-					} else { // Next token, plz
-						$escapeNext = false;
-						$allTokens[] = $thisToken;
-						$thisToken = '';
-						$suppressAdd = true;
-					}
-				} elseif ($escapeNext) {
-					$escapeNext = false;
-					$thisToken .= "\\"; // The backslash wasn't intended to escape.
-				}
-			}
-			
-			if ($char == '(' && $lastChar == ';') {
-				// A list!
-				$listLevel++;
-			} elseif ($char == ')' && ($lastChar == ';' || $lastChar == ')' || $lastChar = '') ) {
-				$listLevel--; // End of a list.
-			}
-			
-			if (!$suppressAdd) {
-				$thisToken .= $char;
-			}
-			
-			// Ignore whitespace.
-			if ($char != ' ' && $char != "\n" && $char != "\t") {
-				$lastChar = $char;
-			}
-		}
 		
-		// Put any leftovers in
-		$allTokens[] = $thisToken;
-
-		// Don't let it fill up.
-		if (count(self::$tokenCache)<=1000) {
-			self::$tokenCache[$list] = $allTokens;
-		}
+		$parser = new $wgAbuseFilterParserClass;
+		
+		$parser->setVars( $vars );
+		$result = $parser->parse( $conds, &self::$condCount );
 		
 		wfProfileOut( __METHOD__ );
 		
-		return $allTokens;
-	}
-	
-	public static function modifyValue( $modifier, $value ) {
-		if (isset(self::$modifyCache[$modifier][$value]))
-			return self::$modifyCache[$modifier][$value];
-
-		wfProfileIn( __METHOD__ );
-		wfProfileIn( __METHOD__.'-'.$modifier );
-
-		if ($modifier == 'norm') {
-			$val = self::normalise( $value );
-		} elseif ($modifier == 'supernorm') {
-			$val = self::superNormalise( $value );
-		} elseif ($modifier == 'lcase') {
-			$val = strtolower($value);
-		} elseif ($modifier == 'length') {
-			$val = strlen($value);
-		} elseif ($modifier == 'specialratio') {
-			$specialsonly = preg_replace('/\w/', '', $value );
-			$val = (strlen($specialsonly) / strlen($value));
-		} elseif ($modifier == 'htmlencode') {
-			$val = htmlspecialchars($value);
-		} elseif ($modifier == 'htmldecode') {
-			$val = htmlspecialchars_decode($value);
-		} elseif ($modifier == 'urlencode') {
-			$val = urlencode($value);
-		} elseif ($modifier == 'urldecode') {
-			$val = urldecode($value);
-		} elseif ($modifier == 'htmlfullencode') {
-			$val = htmlentities( $value );
-		} elseif ($modifier == 'simplenorm') {
-			$val = preg_replace( '/[\d\W]+/', '', $value );
-			$val = strtolower( $value );
-		}
-
-		if (count(self::$modifyCache[$modifier][$value]) > 1000) {
-			self::$modifyCache = array();
-		}
-		
-		wfProfileOut( __METHOD__.'-'.$modifier );
-		wfProfileOut( __METHOD__ );
-
-		return self::$modifyCache[$modifier][$value] = $val;
-	}
-	
-	public static function checkOperator( $operator, $value, $parameters ) {		
-		wfProfileIn( __METHOD__ );
-		wfProfileIn( __METHOD__.'-'.$operator );
-		
-		if ($operator == 'eq') {
-			$val = $value == $parameters;
-		} elseif ($operator == 'neq') {
-			$val = $value != $parameters;
-		} elseif ($operator == 'gt') {
-			$val = $value > $parameters;
-		} elseif ($operator == 'lt') {
-			$val = $value < $parameters;
-		} elseif ($operator == 'regex') {
-			$val = preg_match( $parameters, $value );
-		} elseif ($operator == 'contains') {
-			$val = strpos(  $value, $parameters ) !== false;
-		} else {
-			$val = false;
-		}
-		
-		wfProfileOut( __METHOD__.'-'.$operator );
-		wfProfileOut( __METHOD__ );
-		
-		return $val;
-	}
-	
-	public static function superNormalise( $text ) {
-		wfProfileIn( __METHOD__ );
-		$text = self::normalise( $text );
-		$text = AntiSpoof::stringToList($text); // Split to a char array.
-		sort($text);
-		$text = array_unique( $text ); // Remove duplicate characters.
-		$text = AntiSpoof::listToString( $text );
-		wfProfileOut( __METHOD__ );
-		
-		return $text;
-	}
-	
-	public static function normalise( $text ) {
-		wfProfileIn( __METHOD__ );
-		$old_text = $text;
-		$text = strtolower($text);
-		$text = AntiSpoof::stringToList( $text );
-		$text = AntiSpoof::equivString( $text ); // Normalise
-		
-		// Remove repeated characters, but not all duplicates.
-		$oldText = $text;
-		$text = array($oldText[0]);
-		for ($i=1;$i<count($oldText);$i++) {
-			if ($oldText[$i] != $oldText[$i-1]) {
-				$text[] = $oldText[$i];
-			}
-		}
-		
-		$text = AntiSpoof::listToString( $text ); // Sort in alphabetical order, put back as it was.
-
-		$text = preg_replace( '/\W/', '', $text ); // Remove any special characters.
-		
-		wfProfileOut( __METHOD__ );
-		
-		return $text;
-	}
-	
-	public static function tokenCacheKey() {
-		return wfMemcKey( 'abusefilter', 'tokencache' );
+		return $result;
 	}
 	
 	public static function filterAction( $vars, $title ) {
 		global $wgUser,$wgMemc;
-		
-		// Pick up cached data
-		if (!count(self::$tokenCache)) {
-			self::$tokenCache = $wgMemc->get( self::tokenCacheKey() );
-		}
-		
-		$tokenCacheCount_orig = count( self::$tokenCache );
 		
 		// Fetch from the database.
 		$dbr = wfGetDB( DB_SLAVE );
@@ -402,18 +112,6 @@ class AbuseFilter {
 		// It's probably a batch process or similar.
 		if (!self::$condLimitEnabled)
 			self::recordStats( $filter_matched );
-			
-		// Store the token list in memcached for future use.
-		
-		if (count(self::$tokenCache) > $tokenCacheCount_orig) {
-			if (count(self::$tokenCache) > 750) {
-				// slice the first quarter off.
-				// This way, out-of-date stuff eventually goes away.
-				self::$tokenCache = array_slice( self::$tokenCache, 250, 500, true /* preserve keys */ );
-			}
-		
-			$wgMemc->set( self::tokenCacheKey(), self::$tokenCache, 86400 );
-		}
 		
 		if (count($blocking_filters) == 0 ) {
 			// No problems.

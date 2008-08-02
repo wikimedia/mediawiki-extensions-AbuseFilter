@@ -1,4 +1,5 @@
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -74,5 +75,7 @@ class AFPException :exception {
 	private:
 		const char* s;
 };
+
+bool isInVector( string needle, vector<string> haystack );
 
 #endif

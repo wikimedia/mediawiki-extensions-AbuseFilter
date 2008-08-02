@@ -118,7 +118,8 @@ bool af_nextToken( ParseStatus* ps ) {
 	}
 	
 	// Operators
-	if (ispunct( code[0] ) ) {
+	// Parens and commas have special meanings.
+	if (ispunct( code[0] ) && code[0] != '(' && code[0] != ',' ) {
 		string s = "";
 		
 		while ( code.length() > 0 && ispunct(code[0]) ) {

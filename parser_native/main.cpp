@@ -16,17 +16,17 @@ int main( int argc, char** argv ) {
 	registerBuiltinFunctions();
 	
 	while (true) {
-		e.reset();
-		
-		if (!loadRequest())
-			continue;
-		
 		bool result;
 		
 		try {
+			e.reset();
+			if (!loadRequest())
+				continue;
+				
 			e.setVars( vars );
 			result = e.evaluateFilter( filter );
 		} catch (AFPException excep) {
+			cout << "EXCEPTION: " << excep.what() << endl;
 			cerr << "EXCEPTION: " << excep.what() << endl;
 		}
 		

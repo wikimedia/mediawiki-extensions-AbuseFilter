@@ -296,3 +296,12 @@ AFPData & AFPData::operator= (const AFPData & oldData) {
 	
 	return *this;
 }
+
+bool isInVector( string needle, vector<string> haystack ) {
+	for( vector<string>::iterator it=haystack.begin(); it!=haystack.end(); ++it ) {
+		string test = *it;
+		if (test == needle.c_str()) { return true; }
+	}
+	
+	return false;
+}

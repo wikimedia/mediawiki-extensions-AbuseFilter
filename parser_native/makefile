@@ -1,13 +1,19 @@
-all: check af_parser
+all: check af_parser syntax_check
 
 af_parser: afeval.o affunctions.o afparser.o aftypes.o afutils.o main.o
 	g++ -g -o af_parser afeval.o affunctions.o afparser.o aftypes.o afutils.o main.o -lboost_regex -lxml++-2.6 -lxml2 -lglibmm-2.4 -lgobject-2.0 -lsigc-2.0 -lglib-2.0
 
 check: afeval.o affunctions.o afparser.o aftypes.o afutils.o check.o
-	g++ -g -o check -lboost_regex afeval.o affunctions.o afparser.o aftypes.o afutils.o check.o
+	g++ -g -o check -lboost_regex afeval.o affunctions.o afparser.o aftypes.o afutils.o check.o -lglibmm-2.4
+	
+syntax_check: afeval.o affunctions.o afparser.o aftypes.o afutils.o syntax_check.o
+	g++ -g -o syntax_check afeval.o affunctions.o afparser.o aftypes.o afutils.o syntax_check.o -lboost_regex -lglibmm-2.4
 
 .cpp.o:
 	g++ -g -c $< -I/usr/include/libxml++-2.6 -I/usr/lib/libxml++-2.6/include -I/usr/include/libxml2 -I/usr/include/glibmm-2.4 -I/usr/lib/glibmm-2.4/include -I/usr/include/sigc++-2.0 -I/usr/lib/sigc++-2.0/include -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include
 	
 clean:
-	rm -f *.o check
+	rm -f *.o check af_parser syntax_check
+
+clean-final:
+	rm -f check af_parser syntax_check

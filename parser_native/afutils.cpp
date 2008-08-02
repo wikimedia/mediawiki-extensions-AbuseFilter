@@ -1,6 +1,7 @@
 #include "afutils.h"
 #include <math.h>
 #include <boost/regex.hpp>
+#include <boost/regex/icu.hpp>
 
 AFPData af_boolInvert( AFPData value ) {
 	bool bVal = !value.toBool();
@@ -109,15 +110,6 @@ AFPData af_sub( AFPData a, AFPData b ) {
 	return AFPData( a.toFloat() - b.toFloat() );
 }
 
-bool isInVector( string needle, vector<string> haystack ) {
-	for( vector<string>::iterator it=haystack.begin(); it!=haystack.end(); ++it ) {
-		string test = *it;
-		if (test == needle.c_str()) { return true; }
-	}
-	
-	return false;
-}
-
 AFPData af_keyword( string keyword, AFPData a, AFPData b ) {
 	if (keyword == "in") {
 		string needle = a.toString();
@@ -127,10 +119,10 @@ AFPData af_keyword( string keyword, AFPData a, AFPData b ) {
 		
 		return AFPData( result );
 	} else if (keyword == "like") {
-		boost::regex rx( b.toString() );
+		boost::u32regex rx = boost::make_u32regex( UnicodeString(b.toString().c_str()) );
 		string test = a.toString();
 		
-		bool result = regex_match( test, rx );
+		bool result = boost::u32regex_match( test, rx );
 		
 		return AFPData( result );
 	}
