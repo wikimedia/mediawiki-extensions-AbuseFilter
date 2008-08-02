@@ -40,7 +40,7 @@ class AbuseFilterParserNative {
 					1 => array( 'pipe', 'w' )
 				);
 				
-			$this->mProcess = proc_open( $wgAbuseFilterNativeParser, $descriptorspec, &$this->mPipes );
+			$this->mProcess = proc_open( $wgAbuseFilterNativeParser, $descriptorspec, $this->mPipes );
 			
 			if (!is_resource($this->mProcess)) {
 				throw new MWException( "Error using native parser" );
@@ -62,7 +62,7 @@ class AbuseFilterParserNative {
 				1 => array( 'pipe', 'w' )
 			);
 		
-		$proc = proc_open( $wgAbuseFilterNativeSyntaxCheck, $descriptorspec, &$pipes );
+		$proc = proc_open( $wgAbuseFilterNativeSyntaxCheck, $descriptorspec, $pipes );
 		
 		if (!is_resource( $proc )) {
 			throw new MWException( "Unable to check syntax of filter." );

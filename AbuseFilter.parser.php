@@ -213,11 +213,11 @@ class AbuseFilterParser {
         static $mFunctions = array(
                 'lcase' => 'funcLc',
                 'length' => 'funcLen',
-                'norm' => 'funcNorm',
-                'ccnorm' => 'funcSimpleNorm',
-                'specialratio' => 'funcSpecialRatio',
-                'rmspecials' => 'funcRmSpecials',
-                'count' => 'funcCount'
+//                 'norm' => 'funcNorm',
+//                 'ccnorm' => 'funcSimpleNorm',
+//                 'specialratio' => 'funcSpecialRatio',
+//                 'rmspecials' => 'funcRmSpecials',
+//                 'count' => 'funcCount'
         );
         static $mOps = array(
                 '!', '*', '**', '/', '+', '-', '%', '&', '|', '^',

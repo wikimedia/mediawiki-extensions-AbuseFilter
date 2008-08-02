@@ -35,7 +35,7 @@ class AbuseFilter {
 	public static function generateTitleVars( $title, $prefix ) {
 		$vars = array();
 		
-		$vars[$prefix."_EXISTS"] = $title->exists();
+		$vars[$prefix."_ARTICLEID"] = $title->getArticleId();
 		$vars[$prefix."_NAMESPACE"] = $title->getNamespace();
 		$vars[$prefix."_TEXT"] = $title->getText();
 		$vars[$prefix."_PREFIXEDTEXT"] = $title->getPrefixedText();
@@ -68,7 +68,7 @@ class AbuseFilter {
 		$parser = new $wgAbuseFilterParserClass;
 		
 		$parser->setVars( $vars );
-		$result = $parser->parse( $conds, &self::$condCount );
+		$result = $parser->parse( $conds, self::$condCount );
 		
 		wfProfileOut( __METHOD__ );
 		
@@ -145,7 +145,7 @@ class AbuseFilter {
 				$parameters = explode( "\n", $row->afa_parameters );
 				
 				// Take the action.
-				$result = self::takeConsequenceAction( $row->afa_consequence, $parameters, $title, $vars, &$display, &$continue, $blocking_filters[$row->afa_filter]->af_public_comments );
+				$result = self::takeConsequenceAction( $row->afa_consequence, $parameters, $title, $vars, $display, $continue, $blocking_filters[$row->afa_filter]->af_public_comments );
 				
 				// Don't do it twice.
 				$doneActionsByFilter[$row->afa_filter][] = $row->afa_consequence;
@@ -260,39 +260,40 @@ class AbuseFilter {
 				wfLoadExtensionMessages( 'AbuseFilter' );
 				
 				global $wgUser;
-				
-				// Remove all groups from the user. Ouch.
-				$groups = $wgUser->getGroups();
-				
-				foreach( $groups as $group ) {
-					$wgUser->removeGroup( $group );
+				if (!$wgUser->isAnon()) {
+					// Remove all groups from the user. Ouch.
+					$groups = $wgUser->getGroups();
+					
+					foreach( $groups as $group ) {
+						$wgUser->removeGroup( $group );
+					}
+					
+					$display .= wfMsgNoTrans( 'abusefilter-degrouped', $rule_desc ) ."<br />\n";
+					
+					// Log it.
+					$log = new LogPage( 'rights' );
+			
+					$log->addEntry( 'rights',
+						$wgUser->getUserPage(),
+						wfMsgForContent( 'abusefilter-degroupreason', $rule_desc ),
+						array(
+							implode( ', ', $groups ),
+							wfMsgForContent( 'rightsnone' )
+						)
+					, self::getFilterUser() );
 				}
-				
-				$display .= wfMsgNoTrans( 'abusefilter-degrouped', $rule_desc ) ."<br />\n";
-				
-				// Log it.
-				$log = new LogPage( 'rights' );
-		
-				$log->addEntry( 'rights',
-					$wgUser->getUserPage(),
-					wfMsgForContent( 'abusefilter-degroupreason', $rule_desc ),
-					array(
-						implode( ', ', $groups ),
-						wfMsgForContent( 'rightsnone' )
-					)
-				, self::getFilterUser() );
 				
 				break;
 			case 'blockautopromote':
-				wfLoadExtensionMessages( 'AbuseFilter' );
-				
 				global $wgUser, $wgMemc;
-				
-				$blockPeriod = (int)mt_rand( 3*86400, 7*86400 ); // Block for 3-7 days.
-				$wgMemc->set( self::autoPromoteBlockKey( $wgUser ), true, $blockPeriod );
-				
-				$display .= wfMsgNoTrans( 'abusefilter-autopromote-blocked', $rule_desc ) ."<br />\n";
-				
+				if (!$wgUser->isAnon()) {
+					wfLoadExtensionMessages( 'AbuseFilter' );
+					
+					$blockPeriod = (int)mt_rand( 3*86400, 7*86400 ); // Block for 3-7 days.
+					$wgMemc->set( self::autoPromoteBlockKey( $wgUser ), true, $blockPeriod );
+					
+					$display .= wfMsgNoTrans( 'abusefilter-autopromote-blocked', $rule_desc ) ."<br />\n";
+				}
 				break;
 
 			case 'flag':
