@@ -209,12 +209,15 @@ class AFPException extends MWException {}
 class AbuseFilterParser {
         var $mParams, $mVars, $mCode, $mTokens, $mPos, $mCur;
  
+	// length,lcase,ccnorm,rmdoubles,specialratio,rmspecials,norm,count
         static $mFunctions = array(
-                'lc' => 'funcLc',
-                'len' => 'funcLen',
+                'lcase' => 'funcLc',
+                'length' => 'funcLen',
                 'norm' => 'funcNorm',
-                'simplenorm' => 'funcSimpleNorm',
+                'ccnorm' => 'funcSimpleNorm',
                 'specialratio' => 'funcSpecialRatio',
+                'rmspecials' => 'funcRmSpecials',
+                'count' => 'funcCount'
         );
         static $mOps = array(
                 '!', '*', '**', '/', '+', '-', '%', '&', '|', '^',
@@ -320,7 +323,7 @@ class AbuseFilterParser {
         }
  
         protected function doLevelCompares( &$result ) {
-                $this->doLevelMulRels( &$result );
+                $this->doLevelMulRels( $result );
                 $ops = array( '==', '===', '!=', '!==', '<', '>', '<=', '>=' );
                 while( $this->mCur->type == AFPToken::TOp && in_array( $this->mCur->value, $ops ) ) {
                         $op = $this->mCur->value;
@@ -334,7 +337,7 @@ class AbuseFilterParser {
         }
  
         protected function doLevelMulRels( &$result ) {
-                $this->doLevelSumRels( &$result );
+                $this->doLevelSumRels( $result );
 		wfProfileIn( __METHOD__ );
                 $ops = array( '*', '/', '%' );
                 while( $this->mCur->type == AFPToken::TOp && in_array( $this->mCur->value, $ops ) ) {
@@ -348,7 +351,7 @@ class AbuseFilterParser {
         }
  
         protected function doLevelSumRels( &$result ) {
-                $this->doLevelPow( &$result );
+                $this->doLevelPow( $result );
 		wfProfileIn( __METHOD__ );
                 $ops = array( '+', '-' );
                 while( $this->mCur->type == AFPToken::TOp && in_array( $this->mCur->value, $ops ) ) {
