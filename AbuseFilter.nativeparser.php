@@ -74,7 +74,12 @@ class AbuseFilterParserNative {
 		
 		$response = trim(fgets( $pipes[1] ) );
 		
-		
+		if ($response == "SUCCESS") {
+			return true;
+		} else {
+			list ($discard,$error) = explode( ":", $response, 2 );
+			return $error;
+		}
 	}
 	
 	public function parse( $filter ) {

@@ -242,6 +242,15 @@ class AbuseFilterParser {
                 $this->mVars = array();
                 $this->mPos = 0;
         }
+        
+        public function checkSyntax( $filter ) {
+        	try {
+        		$this->parse($filter);
+        	} catch (AFPException excep) {
+        		return excep->getMessage();
+        	}
+        	return true;
+        }
  
         public function setVar( $name, $var ) {
                 $this->mVars[$name] = AFPData::newFromPHPVar( $var );

@@ -37,20 +37,67 @@ class SpecialAbuseFilter extends SpecialPage {
 			return;
 		}
 		
+		if ($subpage == 'history' && $this->showHistory()) {
+			return;
+		}
+		
 		if ($output = $this->doEdit()) {
 			$wgOut->addHtml( $output );
-		} else {
-			$wgOut->addWikiMsg( 'abusefilter-tools' );
-			// Show list of filters.
-			$this->showStatus();
-			
-			$this->showList();
+			return;
 		}
+		
+		
+		$wgOut->addWikiMsg( 'abusefilter-tools' );
+		// Show list of filters.
+		$this->showStatus();
+		
+		$this->showList();
+	}
+	
+	function showHistory() {
+		global $wgRequest,$wgOut;
+		
+		$filter = $wgRequest->getIntOrNull( 'filter' );
+		if (!$filter) {
+			return false;
+		}
+		
+		global $wgUser;
+		$sk = $wgUser->getSkin();
+		$wgOut->setPageTitle( wfMsg( 'abusefilter-history', $filter ) );
+		$backToFilter_label = wfMsgExt( 'abusefilter-history-backedit', array('parseinline') );
+		$backToList_label = wfMsgExt( 'abusefilter-history-backlist', array('parseinline') );
+		$backlinks = $sk->makeKnownLinkObj( $this->getTitle( $filter ), $backToFilter_label ) . '&nbsp;&bull;&nbsp;' .
+				$sk->makeKnownLinkObj( $this->getTitle( ), $backToList_label );
+		$wgOut->addHTML( Xml::tags( 'p', null, $backlinks ) );
+		
+		// Produce table
+		$table = '';
+		
+		$headers = array( 'abusefilter-history-timestamp', 'abusefilter-history-user', 'abusefilter-history-public', 'abusefilter-history-flags', 'abusefilter-history-filter', 'abusefilter-history-comments', 'abusefilter-history-actions' );
+		$header_row = '';
+		foreach( $headers as $header ) {
+			$label = wfMsgExt( $header, array( 'parseinline' ) );
+			$header_row .= Xml::tags( 'th', null, $label );
+		}
+		$table .= Xml::tags( 'tr', null, $header_row );
+		
+		$pager = new AbuseFilterHistoryPager( $filter );
+		$table .= $pager->getBody();
+		
+		$table = "<table class=\"wikitable\"><tbody>$table</table></tbody>";
+		
+		$wgOut->addHTML( $pager->getNavigationBar() . $table . $pager->getNavigationBar() );
+		
+		return true;
 	}
 	
 	function doTools() {
-		// Modifier test.
 		global $wgRequest,$wgOut;
+		$wgOut->addWikiText( "NOT IMPLEMENTED YET" );
+		return;
+		
+		// Modifier test.
 		
 		$modify_test_output = '';
 		
@@ -113,71 +160,78 @@ class SpecialAbuseFilter extends SpecialPage {
 		$didEdit = $this->canEdit() && $wgUser->matchEditToken( $editToken, array( 'abusefilter', $filter ) );
 		
 		if ($didEdit) {
+			// Check syntax
+			$syntaxerr = AbuseFilter::checkSyntax( $wgRequest->getVal( 'wpFilterRules' ) );
+			if ($syntaxerr !== true ) {
+				return $this->buildFilterEditor( wfMsgExt( 'abusefilter-edit-badsyntax', array( 'parseinline' ), array( $syntaxerr ) ) );
+			}
+		
 			$dbw = wfGetDB( DB_MASTER );
-			$newRow = array();
 			
-			// Load the toggles which go straight into the DB
-			$dbToggles = array( 'enabled', 'hidden' );
-			foreach( $dbToggles as $toggle ) {
-				$newRow['af_'.$toggle] = $wgRequest->getBool( 'wpFilter'.ucfirst($toggle) );
-			}
+			list ($newRow, $actions) = $this->loadRequest();
 			
-			// Text which can go straight into the DB
-			$dbText = array( 'wpFilterDescription' => 'af_public_comments', 'wpFilterRules' => 'af_pattern', 'wpFilterNotes' => 'af_comments' );
-			foreach( $dbText as $key => $value ) {
-				$newRow[$value] = trim($wgRequest->getText( $key ));
-			}
+			$newRow = get_object_vars($newRow); // Convert from object to array
 			
-			// Last modified details
+			// Set last modifier.
 			$newRow['af_timestamp'] = $dbw->timestamp( wfTimestampNow() );
 			$newRow['af_user'] = $wgUser->getId();
 			$newRow['af_user_text'] = $wgUser->getName();
 			
+			$dbw->begin();
 			
-			// Reset the af_throttled thing
-			$newRow['af_throttled'] = false;
-			
-			// ID
-			if ($filter != 'new') {
-				$newRow['af_id'] = $filter;
+			if ($filter == 'new') {
+				$new_id = $dbw->selectField( 'abuse_filter', 'max(af_id)', array(), __METHOD__ );
+			} else {
+				$new_id = $this->mFilter;
 			}
 			
 			// Actions
 			global $wgAbuseFilterAvailableActions;
-			$enabledActions = array();
 			$deadActions = array();
 			$actionsRows = array();
 			foreach( $wgAbuseFilterAvailableActions as $action ) {
 				// Check if it's set
-				$enabled = $wgRequest->getBool( 'wpFilterAction'.ucfirst($action) );
-				
-				if (!$enabled) {
-					$deadActions[] = $action;
-				}
+				$enabled = (bool)$actions[$action];
 				
 				if ($enabled) {
-					$parameters = array();
+					$parameters = $actions[$action]['parameters'];
 					
-					if ($action == 'throttle') {
-						// Grumble grumble.
-						// We need to load the parameters
-						$throttleCount = $wgRequest->getIntOrNull( 'wpFilterThrottleCount' );
-						$throttlePeriod = $wgRequest->getIntOrNull( 'wpFilterThrottlePeriod' );
-						$throttleGroups = explode("\n", trim( $wgRequest->getText( 'wpFilterThrottleGroups' ) ) );
-						
-						$parameters[0] = $filter; // For now, anyway
-						$parameters[1] = "$throttleCount,$throttlePeriod";
-						$parameters = array_merge( $parameters, $throttleGroups );
-					}
-					
-					$thisRow = array( 'afa_filter' => $filter, 'afa_consequence' => $action, 'afa_parameters' => implode( "\n", $parameters ) );
+					$thisRow = array( 'afa_filter' => $new_id, 'afa_consequence' => $action, 'afa_parameters' => implode( "\n", $parameters ) );
 					$actionsRows[] = $thisRow;
+				} else {
+					$deadActions[] = $action;
 				}
 			}
 			
-			// Do the update
-
-			$dbw->begin();
+			// Create a history row
+			$history_mappings = array( 'af_pattern' => 'afh_pattern', 'af_user' => 'afh_user', 'af_user_text' => 'afh_user_text', 'af_timestamp' => 'afh_timestamp', 'af_comments' => 'afh_comments', 'af_public_comments' => 'afh_public_comments' );
+			
+			$afh_row = array();
+			
+			foreach( $history_mappings as $af_col => $afh_col ) {
+				$afh_row[$afh_col] = $newRow[$af_col];
+			}
+			
+			// Actions
+			$displayActions = array();
+			foreach( $actions as $action ) {
+				$displayActions[$action['action']] = $action['parameters'];
+			}
+			$afh_row['afh_actions'] = serialize($displayActions);
+			
+			// Flags
+			$flags = array();
+			if ($newRow['af_hidden'])
+				$flags[] = wfMsgForContent( 'abusefilter-history-hidden' );
+			if ($newRow['af_enabled'])
+				$flags[] = wfMsgForContent( 'abusefilter-history-enabled' );
+				
+			$afh_row['afh_flags'] = implode( ",", $flags );
+				
+			$afh_row['afh_filter'] = $new_id;
+			
+			// Do the update			
+			$dbw->insert( 'abuse_filter_history', $afh_row, __METHOD__ );
 			$dbw->replace( 'abuse_filter', array( 'af_id' ), $newRow, __METHOD__ );
 			$dbw->delete( 'abuse_filter_action', array( 'afa_filter' => $filter, 'afa_consequence' => $deadActions ), __METHOD__ );
 			$dbw->replace( 'abuse_filter_action', array( array( 'afa_filter', 'afa_consequence' ) ), $actionsRows, __METHOD__ );
@@ -192,7 +246,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		}
 	}
 	
-	function buildFilterEditor(  ) {
+	function buildFilterEditor( $error = ''  ) {
 		if( $this->mFilter === null ) {
 			return false;
 		}
@@ -203,7 +257,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		$wgOut->setSubtitle( wfMsg( 'abusefilter-edit-subtitle', $this->mFilter ) );
 		
 		if( $this->mFilter !== 'new' ){
-			list ($row, $actions) = $this->loadFilterData();
+			list ($row, $actions) = $this->loadRequest();
 
 			if( !$row ) {
 				return false;
@@ -218,6 +272,10 @@ class SpecialAbuseFilter extends SpecialPage {
 		}
 		
 		$output = '';
+		if ($error) {
+			$wgOut->addHTML( "<span class=\"error\">$error</span>" );
+		}
+		
 		$fields = array();
 		
 		$fields['abusefilter-edit-id'] = $this->mFilter == 'new' ? wfMsg( 'abusefilter-edit-new' ) : $this->mFilter;
@@ -281,6 +339,8 @@ class SpecialAbuseFilter extends SpecialPage {
 			// Last modification details
 			$fields['abusefilter-edit-lastmod'] = $wgLang->timeanddate( $row->af_timestamp );
 			$fields['abusefilter-edit-lastuser'] = $sk->userLink( $row->af_user, $row->af_user_text ) . $sk->userToolLinks( $row->af_user, $row->af_user_text );
+			$history_display = wfMsgExt( 'abusefilter-edit-viewhistory', array( 'parseinline' ) );
+			$fields['abusefilter-edit-history'] = $sk->makeKnownLinkObj( $this->getTitle( 'history' ), $history_display, "filter=".$this->mFilter );
 		}
 		
 		$form = Xml::buildForm( $fields );
@@ -385,6 +445,59 @@ class SpecialAbuseFilter extends SpecialPage {
 		$this->mFilter = $filter;
 	}
 	
+	function loadRequest() {
+		static $row = null;
+		static $actions = null;
+		global $wgRequest;
+		
+		if (!is_null($actions) && !is_null($row)) {
+			return array($row,$actions);
+		} elseif ( !$wgRequest->wasPosted() ) {
+			return $this->loadFilterData();
+		}
+		
+		// We need some details like last editor
+		list($row) = $this->loadFilterData();
+		
+		$textLoads = array( 'af_public_comments' => 'wpFilterDescription', 'af_pattern' => 'wpFilterRules', 'af_comments' => 'wpFilterNotes' );
+		
+		foreach( $textLoads as $col => $field ) {
+			$row->$col = $wgRequest->getVal( $field );
+		}
+		
+		$row->af_enabled = $wgRequest->getBool( 'wpFilterEnabled' );
+		$row->af_hidden = $wgRequest->getBool( 'wpFilterHidden' );
+		
+		// Actions
+		global $wgAbuseFilterAvailableActions;
+		$actions = array();
+		foreach( $wgAbuseFilterAvailableActions as $action ) {
+			// Check if it's set
+			$enabled = $wgRequest->getBool( 'wpFilterAction'.ucfirst($action) );
+			
+			if ($enabled) {
+				$parameters = array();
+				
+				if ($action == 'throttle') {
+					// Grumble grumble.
+					// We need to load the parameters
+					$throttleCount = $wgRequest->getIntOrNull( 'wpFilterThrottleCount' );
+					$throttlePeriod = $wgRequest->getIntOrNull( 'wpFilterThrottlePeriod' );
+					$throttleGroups = explode("\n", trim( $wgRequest->getText( 'wpFilterThrottleGroups' ) ) );
+					
+					$parameters[0] = $this->mFilter; // For now, anyway
+					$parameters[1] = "$throttleCount,$throttlePeriod";
+					$parameters = array_merge( $parameters, $throttleGroups );
+				}
+				
+				$thisAction = array( 'action' => $action, 'parameters' => $parameters );
+				$actions[$action] = $thisAction;
+			}
+		}
+		
+		return array( $row, $actions );
+	}
+	
 	function canEdit() {
 		global $wgUser;
 		static $canEdit = 'unset';
@@ -469,5 +582,58 @@ class SpecialAbuseFilter extends SpecialPage {
 		$trow = Xml::tags( 'tr', null, $trow );
 		
 		return $trow;
+	}
+}
+
+class AbuseFilterHistoryPager extends ReverseChronologicalPager {
+
+	function __construct( $filter ) {
+		$this->mFilter = $filter;
+		parent::__construct();
+	}
+
+	function formatRow( $row ) {
+		static $sk=null;
+		
+		if (is_null($sk)) {
+			global $wgUser;
+			$sk = $wgUser->getSkin();
+		}
+	
+		global $wgLang;
+		
+		$tr = '';
+		
+		$tr .= Xml::element( 'td', null, $wgLang->timeanddate( $row->afh_timestamp ) );
+		$tr .= Xml::tags( 'td', null, $sk->userLink( $row->afh_user, $row->afh_user_text ) . $sk->userToolLinks( $row->afh_user, $row->afh_user_text ) );
+		$tr .= Xml::element( 'td', null, $row->afh_public_comments );
+		$tr .= Xml::element( 'td', null, $row->afh_flags );
+		$tr .= Xml::element( 'td', null, $row->afh_pattern );
+		$tr .= Xml::element( 'td', null, $row->afh_comments );
+		
+		// Build actions
+		$actions = unserialize($row->afh_actions);
+		$display_actions = '';
+		
+		foreach( $actions as $action => $parameters ) {
+			$display_actions .= Xml::tags( 'li', null, wfMsgExt( 'abusefilter-history-action', array( 'parseinline' ), array($action, implode(';', $parameters)) ) );
+		}
+		$display_actions = Xml::tags( 'ul', null, $display_actions );
+		
+		$tr .= Xml::tags( 'td', null, $display_actions );
+		
+		return Xml::tags( 'tr', null, $tr );
+	}
+	
+	function getQueryInfo() {
+		return array(
+			'tables' => 'abuse_filter_history',
+			'fields' => '*',
+			'conds' => array( 'afh_filter' => $this->mFilter ),
+		);
+	}
+	
+	function getIndexField() {
+		return 'afh_timestamp';
 	}
 }

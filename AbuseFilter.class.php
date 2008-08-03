@@ -59,16 +59,29 @@ class AbuseFilter {
 		
 		return $vars;
 	}
+	
+	public static function checkSyntax( $filter ) {
+		global $wgAbuseFilterParserClass;
+		
+		$parser = new $wgAbuseFilterParserClass;
+		
+		return $parser->checkSyntax( $filter );
+	}
 
 	public static function checkConditions( $conds, $vars ) {
 		global $wgAbuseFilterParserClass;
 		
 		wfProfileIn( __METHOD__ );
 		
-		$parser = new $wgAbuseFilterParserClass;
-		
-		$parser->setVars( $vars );
-		$result = $parser->parse( $conds, self::$condCount );
+		try {
+			$parser = new $wgAbuseFilterParserClass;
+			
+			$parser->setVars( $vars );
+			$result = $parser->parse( $conds, self::$condCount );
+		} catch (Exception $excep) {
+			// Sigh.
+			$result = false;
+		}
 		
 		wfProfileOut( __METHOD__ );
 		
