@@ -350,8 +350,15 @@ $messages['be-tarask'] = array(
 	'abusefilter-warning'                   => "<big>'''Увага'''</big>: Гэтае дзеяньне будзе аўтаматычна лічыцца шкодным. Неканструктыўныя рэдагаваньні будуць адмененыя, і значныя ці неаднаразовыя неканструктыўныя рэдагаваньні прывядуць да блякаваньня Вашага рахунка ці кампутара. Калі Вы лічыце гэтае рэдагаваньне канструктыўным, Вам неабходна націснуць «Адправіць» яшчэ раз каб яго пацьвердзіць.
 Кароткі сьпіс злоўжываньняў, зь якімі суадносіцца Вашае дзеяньне тут: $1",
 	'abusefilter-log-search-filter'         => 'Ідэнтыфікатар фільтру:',
+	'abusefilter-log-detailslink'           => 'падрабязнасьці',
 	'abusefilter-log-noactions'             => 'няма',
+	'abusefilter-list'                      => 'Усе фільтры',
+	'abusefilter-list-edit'                 => 'Рэдагаваць',
+	'abusefilter-list-details'              => 'Падрабязнасьці',
 	'abusefilter-tools-modifiertest-submit' => 'Тэст',
+	'abusefilter-tools-result'              => 'Вынік:',
+	'abusefilter-edit-status-label'         => 'Статыстыка',
+	'abusefilter-edit-new'                  => 'Новы фільтар',
 );
 
 /** Bulgarian (Български)
@@ -2190,6 +2197,12 @@ $messages['uk'] = array(
 	'abusefilter-hitcount'                     => '$1 {{PLURAL:$1|спрацьовування|спрацьовування|спрацьовувань}}',
 	'abusefilter-list-new'                     => 'Новий фільтр',
 	'abusefilter-tools-modifiertest-submit'    => 'Тест',
+	'abusefilter-tools'                        => 'Для допомоги при формулюванні та налагодженні фільтру зловживань є [[Special:AbuseFilter/tools|певні засоби]].',
+	'abusefilter-tools-modifiertest'           => 'Випробувальні модифікатори',
+	'abusefilter-tools-modifier'               => 'Модифікатор:',
+	'abusefilter-tools-value'                  => 'Значення для перевірки:',
+	'abusefilter-tools-result'                 => 'Результат:',
+	'abusefilter-status'                       => 'Серед $1 {{PLURAL:$1|дії|дій}}, $2 ($3%) {{PLURAL:$2|досягла|досягли}} межі $4. $5 ($6%) {{PLURAL:$5|has|have}} matched one of the filters currently enabled.',
 	'abusefilter-edit-subtitle'                => 'Редагування фільтру $1',
 	'abusefilter-edit-new'                     => 'Новий фільтр',
 	'abusefilter-edit-save'                    => 'Зберегти фільтр',
