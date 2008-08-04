@@ -20,6 +20,29 @@ void FilterEvaluator::setVars( map<string,AFPData> values ) {
 	}
 }
 
+string FilterEvaluator::evaluateExpression( string code ) {
+	this->code = code;
+	this->pos = 0;
+	
+	if (this->tokenCache.find(code) != this->tokenCache.end()) {
+		this->tokens = this->tokenCache[code];
+	} else {
+		this->tokenCache[code] = this->tokens = af_parse( code );
+	}
+	
+	if (this->tokenCache.size() > 100) {
+		this->tokenCache.clear();
+	}
+
+	this->cur = this->tokens[0];
+	
+	AFPData result;
+	
+	this->doLevelEntry( &result );
+	
+	return result.toString();
+}
+
 bool FilterEvaluator::evaluateFilter( string code ) {
 	this->code = code;
 	this->pos = 0;

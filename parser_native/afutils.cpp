@@ -102,7 +102,7 @@ AFPData af_sum( AFPData a, AFPData b ) {
 	if (a.getType() == D_STRING || b.getType() == D_STRING) {
 		return AFPData( a.toString() + b.toString() );
 	} else {
-		return AFPData( a.toFloat() * b.toFloat() );
+		return AFPData( a.toFloat() + b.toFloat() );
 	}
 }
 

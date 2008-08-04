@@ -93,10 +93,10 @@ A brief description of the abuse rule which your action matched is: $1",
 	
 	// Abuse filter tools
 	'abusefilter-tools' => 'Some [[Special:AbuseFilter/tools|tools]] are available to assist in formulating and debugging abuse filters.',
-	'abusefilter-tools-modifiertest' => 'Test modifiers',
-	'abusefilter-tools-modifier' => 'Modifier:',
-	'abusefilter-tools-value' => 'Value to test:',
-	'abusefilter-tools-result' => 'Result:',
+	'abusefilter-tools-subtitle' => 'Tools',
+	'abusefilter-tools-text' => 'Here are some tools which may be useful in formulating and debugging abuse filters. [[Special:AbuseFilter|Return to main menu]]',
+	'abusefilter-tools-expr' => 'Expression tester',
+	'abusefilter-tools-submitexpr' => 'Evaluate',
 	
 	// Abuse filter status
 	'abusefilter-status' => "Of the last $1 {{PLURAL:$1|action|actions}}, $2 ($3%) {{PLURAL:$2|has|have}} reached the condition limit of $4. $5 ($6%) {{PLURAL:$5|has|have}} matched one of the filters currently enabled.",

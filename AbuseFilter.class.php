@@ -79,6 +79,20 @@ class AbuseFilter {
 		
 		return $parser->checkSyntax( $filter );
 	}
+	
+	public static function evaluateExpression( $expr, $vars = array() ) {
+		global $wgAbuseFilterParserClass;
+		
+		$parser = new $wgAbuseFilterParserClass;
+		
+		$parser->setVars( $vars );
+		
+		return $parser->evaluateExpression( $expr );
+	}
+	
+	public static function ajaxEvaluateExpression( $expr ) {
+		return self::evaluateExpression( $expr );
+	}
 
 	public static function checkConditions( $conds, $vars ) {
 		global $wgAbuseFilterParserClass;

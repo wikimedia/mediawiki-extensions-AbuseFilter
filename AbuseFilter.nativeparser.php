@@ -8,6 +8,10 @@ class AbuseFilterParserNative {
 	var $mVars;
 	var $mProcess,$mPipes;
 	
+	public function __construct() {
+		$this->mVars = array();
+	}
+	
 	public function __destruct() {
 		if (is_array($this->mPipes)) {
 			foreach( $this->mPipes as $pipe ) {
@@ -83,13 +87,12 @@ class AbuseFilterParserNative {
 	}
 	
 	public function parse( $filter ) {
-		$request = $this->generateXMLRequest( $filter );
+		$request = $this->generateRequest( $filter );
 		
 		$pipes = $this->getNativeParser();
 		
 		if (is_array($pipes)) {
 			fwrite($pipes[0], $request);
-			fwrite($pipes[0], "\x04");
 			fflush($pipes[0]);
 
 			// Get response
@@ -107,17 +110,45 @@ class AbuseFilterParserNative {
 		}
 	}
 	
-	protected function generateXMLRequest( $filter ) {
-		// Write vars
-		$vars = '';
-		foreach( $this->mVars as $key => $value ) {
-			$vars .= Xml::element( 'var', array( 'key' => $key ), utf8_encode($value) );
+	public function evaluateExpression( $filter ) {
+		$request = $this->generateRequest( $filter );
+		
+		global $wgAbuseFilterNativeExpressionEvaluator;
+		
+		// Check the syntax of $filter
+		$pipes = array();
+		$descriptorspec = array(
+				0 => array( 'pipe', 'r' ),
+				1 => array( 'pipe', 'w' )
+			);
+		
+		$proc = proc_open( $wgAbuseFilterNativeExpressionEvaluator, $descriptorspec, $pipes );
+		
+		if (!is_resource( $proc )) {
+			throw new MWException( "Unable to evaluate expression." );
 		}
-		$vars = Xml::tags( 'vars', null, $vars );
 		
-		$code = Xml::element( 'rule', null, utf8_encode($filter) );
+		fwrite( $pipes[0], $request );
+		fflush( $pipes[0] );
+		fclose( $pipes[0] );
 		
-		$request = Xml::tags( 'request', null, $vars . $code );
+		$response = trim(stream_get_line( $pipes[1], 4096, "\0" ) );
+		
+		return $response;
+	}
+	
+	protected function generateRequest( $filter ) {
+		// Write vars
+		$request = '';
+		$request .= $filter;
+		$request .= "\0";
+		
+		// Key-value pairs
+		foreach( $this->mVars as $key => $value ) {
+			$request .= "$key\0$value\0";
+		}
+		
+		$request .= "\0";
 		
 		return $request;
 	}

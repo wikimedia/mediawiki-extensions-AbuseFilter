@@ -9,6 +9,7 @@ class FilterEvaluator {
 		void setVar( string key, AFPData value );
 		void setVars( map<string,AFPData> values );
 		bool evaluateFilter( string code );
+		string evaluateExpression( string code );
 	protected:
 		bool move();
 		bool move( int shift );

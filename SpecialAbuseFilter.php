@@ -94,36 +94,36 @@ class SpecialAbuseFilter extends SpecialPage {
 	
 	function doTools() {
 		global $wgRequest,$wgOut;
-		$wgOut->addWikiText( "NOT IMPLEMENTED YET" );
-		return;
 		
-		// Modifier test.
+		// Header
+		$wgOut->setSubTitle( wfMsg( 'abusefilter-tools-subtitle' ) );
+		$wgOut->addWikiMsg( 'abusefilter-tools-text' );
+
+		// Expression evaluator
+		$eval = '';
+		$eval .= Xml::textarea( 'wpTestExpr', "" );
+		$eval .= Xml::tags( 'p', null, Xml::element( 'input', array( 'type' => 'button', 'id' => 'mw-abusefilter-submitexpr', 'onclick' => 'doExprSubmit();', 'value' => wfMsg( 'abusefilter-tools-submitexpr' ) ) ) );
+		$eval .= Xml::element( 'p', array( 'id' => 'mw-abusefilter-expr-result' ), ' ' );
+		$eval = Xml::fieldset( wfMsg( 'abusefilter-tools-expr' ), $eval );
+		$wgOut->addHtml( $eval );
 		
-		$modify_test_output = '';
-		
-		$modifier = $wgRequest->getText( 'wpModifier' );
-		$value = $wgRequest->getText( 'wpValue' );
-		
-		$modifierSelector = '';
-		foreach( AbuseFilter::$modifierWords as $mod ) {
-			$modifierSelector .= Xml::option( $mod,  $mod, ($mod == $modifier) );
+		// Associated script
+		$exprScript = "function doExprSubmit()
+		{
+			var expr = document.getElementById('wpTestExpr').value;
+			injectSpinner( document.getElementById( 'mw-abusefilter-submitexpr' ), 'abusefilter-expr' );
+			sajax_do_call( 'AbuseFilter::ajaxEvaluateExpression', [expr], processExprResult );
 		}
-		$fields['abusefilter-tools-modifier'] = Xml::tags( 'select', array( 'name' => 'wpModifier' ), $modifierSelector );
-		
-		$fields['abusefilter-tools-value'] = Xml::textarea( 'wpValue', $value );
-		
-		if ($modifier && $value) {
-			$result = AbuseFilter::modifyValue( $modifier, $value );
+		function processExprResult( request ) {
+			var response = request.responseText;
 			
-			$fields['abusefilter-tools-result'] = Xml::textarea( 'modifier_test_result', $result, 40, 5, array( 'readonly' => 1 ) );
-		}
+			removeSpinner( 'abusefilter-expr' );
+			
+			var el = document.getElementById( 'mw-abusefilter-expr-result' );
+			changeText( el, response );
+		}";
 		
-		$modify_test_output = Xml::buildForm( $fields, 'abusefilter-tools-modifiertest-submit' );
-		$modify_test_output .= Xml::hidden( 'title', $this->getTitleFor( 'AbuseFilter', 'tools' )->getPrefixedText() );
-		$modify_test_output = Xml::tags( 'form', array( 'method' => 'post', 'action' => $this->getTitleFor( 'AbuseFilter', 'tools' )->getLocalUrl() ), $modify_test_output );
-		$modify_test_output = Xml::fieldset( wfMsg( 'abusefilter-tools-modifiertest' ), $modify_test_output );
-		
-		$wgOut->addHtml( $modify_test_output );
+		$wgOut->addInlineScript( $exprScript );
 	}
 	
 	function showStatus() {
@@ -145,10 +145,10 @@ class SpecialAbuseFilter extends SpecialPage {
 				$wgLang->formatNum($match_count),
 				$wgLang->formatNum($match_percent)
 			);
+			
+			$status = Xml::tags( 'div', array( 'class' => 'mw-abusefilter-status' ), $status );
+			$wgOut->addHTML( $status );
 		}
-		
-		$status = Xml::tags( 'div', array( 'class' => 'mw-abusefilter-status' ), $status );
-		$wgOut->addHTML( $status );
 	}
 	
 	function doEdit() {
@@ -181,6 +181,7 @@ class SpecialAbuseFilter extends SpecialPage {
 			
 			if ($filter == 'new') {
 				$new_id = $dbw->selectField( 'abuse_filter', 'max(af_id)', array(), __METHOD__ );
+				$new_id++;
 			} else {
 				$new_id = $this->mFilter;
 			}
@@ -256,19 +257,14 @@ class SpecialAbuseFilter extends SpecialPage {
 		$sk = $this->mSkin;
 		$wgOut->setSubtitle( wfMsg( 'abusefilter-edit-subtitle', $this->mFilter ) );
 		
-		if( $this->mFilter !== 'new' ){
-			list ($row, $actions) = $this->loadRequest();
+		list ($row, $actions) = $this->loadRequest();
 
-			if( !$row ) {
-				return false;
-			}
+		if( !$row ) {
+			return false;
+		}
 
-			if ($row->af_hidden && !$this->canEdit()) {
-				return wfMsg( 'abusefilter-edit-denied' );
-			}
-		} else {
-			$row = new stdClass();
-			$actions = array();
+		if ($row->af_hidden && !$this->canEdit()) {
+			return wfMsg( 'abusefilter-edit-denied' );
 		}
 		
 		$output = '';
@@ -324,7 +320,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		function processSyntaxResult( request ) {
 			var response = request.responseText;
 			
-			removeSpinner( 'mw-abusefilter-syntaxcheck-spinner' );
+			removeSpinner( 'abusefilter-syntaxcheck' );
 			
 			if (response.match( /OK/ )) {
 				// Successful
@@ -445,6 +441,9 @@ class SpecialAbuseFilter extends SpecialPage {
 		
 		// Load the main row
 		$row = $dbr->selectRow( 'abuse_filter', '*', array( 'af_id' => $id ), __METHOD__ );
+		
+		if (!is_array($row))
+			return array( new stdClass,array() );
 		
 		// Load the actions
 		$actions = array();

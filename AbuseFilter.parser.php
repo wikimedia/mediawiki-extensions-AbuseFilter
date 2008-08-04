@@ -288,6 +288,18 @@ class AbuseFilterParser {
                 wfProfileOut( __METHOD__ );
                 return $result->toBool();
         }
+        
+        public function evaluateExpression( $filter ) {
+        	wfProfileIn( __METHOD__ );
+                $this->mCode = $code;
+                $this->mTokens = self::parseTokens( $code );
+                $this->mPos = 0;
+                $this->mCur = $this->mTokens[0];
+                $result = new AFPData();
+                $this->doLevelEntry( $result );
+                wfProfileOut( __METHOD__ );
+                return $result->toString();
+        }
  
         /* Levels */
  

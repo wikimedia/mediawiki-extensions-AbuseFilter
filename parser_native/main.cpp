@@ -1,6 +1,5 @@
 #include "afeval.h"
 #include "affunctions.h"
-#include <libxml++/libxml++.h>
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -10,6 +9,7 @@ string filter;
 map<string,AFPData> vars;
 
 bool loadRequest();
+void clearNulls();
 
 int main( int argc, char** argv ) {
 	FilterEvaluator e;
@@ -31,75 +31,45 @@ int main( int argc, char** argv ) {
 		}
 		
 		cout << ( result ? "MATCH\n" : "NOMATCH\n" );
-// 		exit(result ? 1 : 0); // Exit 0 means OK, exit 1 means match
 	}
 }
 
-/* REQUEST FORMAT:
-<request>
-	<vars>
-		<var key="varname">value</var>
-	</vars>
-	<rule> RULE CONTENT </rule>
-</request> */
+// Protocol:
+// code NULL <key> NULL <value> NULL ... <value> NULL NULL
 
 bool loadRequest() {
-	// Parse the XML.
-	xmlpp::DomParser parser;
-	parser.set_substitute_entities();
-
-	stringbuf sb(ios::out | ios::in);
-	cin.get( sb, '\x04' );
+	stringbuf codesb(ios::out | ios::in);
+	
+	// Load the code
+	cin.get( codesb, '\0' );
 	cin.get();
+	filter = codesb.str();
 	
-	string text = sb.str();
-	
-	// Remove the NULL
-	for( string::iterator it = text.begin(); it!=text.end(); ++it ) {
-		if (*it == '\x04') { text.erase(it); }
-	}
-	
-	if (text.size() < 2) {
-		return false;
-	}
-	
-	istringstream ss(text);
-	parser.parse_stream( ss );
-// 	parser.parse_file( "xml.test" );
-	xmlpp::Node* rootNode = parser.get_document()->get_root_node();
-	
-	// Get vars
-	xmlpp::Node::NodeList varNodes = rootNode->get_children( "vars" );
-	
-	if (varNodes.begin() == varNodes.end()) {
-		throw AFPException( "Request did not contain any vars" );	
-	}
-	
-	xmlpp::Node::Node* varNode = *(varNodes.begin()); // Get the <vars> element
-	varNodes = varNode->get_children( "var" ); // Iterate through <var> child nodes
-	for (xmlpp::Node::NodeList::const_iterator it = varNodes.begin(); it!=varNodes.end(); ++it) {
-		xmlpp::Element* n = dynamic_cast<xmlpp::Element*>(*it);
+	while (true) {
+		stringbuf keysb(ios::out | ios::in);
+		stringbuf valsb(ios::out | ios::in);
 		
-		string attName = n->get_attribute( "key" )->get_value();
-		if (n->has_child_text()) {
-			string attValue = n->get_child_text()->get_content();
-			vars[attName] = AFPData(attValue);
-		} else {
-			vars[attName] = "";
+		// Double NULL = end
+		if (cin.peek() == 0) {
+			cin.get();
+			break;
+		} else if (cin.peek() == -1) {
+			exit(-1);
 		}
+	
+		cin.get( keysb, '\0' );
+		cin.get();
+		
+		if (cin.peek() == 0) {
+			cin.get();
+			// Leave blank.
+		} else {
+			cin.get( valsb, '\0' );
+			cin.get();
+		}
+		
+		vars[keysb.str()] = AFPData( valsb.str() );
 	}
-	
-	//Get code.
-	xmlpp::Node::NodeList codeNodes = rootNode->get_children( "rule" );
-	
-	if (codeNodes.begin() == codeNodes.end()) {
-		throw new AFPException( "Request did not contain any filter" );	
-	}
-	
-	xmlpp::Node* codeNode = *(codeNodes.begin());
-	xmlpp::Element* codeElement = dynamic_cast<xmlpp::Element*>(codeNode);
-	
-	filter = codeElement->get_child_text()->get_content();
 	
 	return true;
 }
