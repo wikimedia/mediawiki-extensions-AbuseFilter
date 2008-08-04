@@ -137,7 +137,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-edit-badsyntax' => "There is a syntax error in the filter you specified. The output from the parser was: <pre>$1</pre>",
 	'abusefilter-edit-viewhistory' => "View this filter's history",
 	'abusefilter-edit-history' => 'History',
-	'abusefilter-edit-check' => 'Check Syntax',
+	'abusefilter-edit-check' => 'Check syntax',
 	
 	// Filter history
 	'abusefilter-history' => 'History for filter $1',
