@@ -61,3 +61,5 @@ $wgAbuseFilterEmergencyDisableCount = 5;
 $wgAbuseFilterParserClass = 'AbuseFilterParserNative';
 $wgAbuseFilterNativeParser = "$dir/parser_native/af_parser";
 $wgAbuseFilterNativeSyntaxCheck = "$dir/parser_native/syntax_check";
+
+$wgAjaxExportList[] = 'AbuseFilter::ajaxCheckSyntax';

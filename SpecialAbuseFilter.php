@@ -310,8 +310,34 @@ class SpecialAbuseFilter extends SpecialPage {
 					);
 			}
 		}
+		
+		$rules = Xml::textarea( 'wpFilterRules', ( isset( $row->af_pattern ) ? $row->af_pattern."\n" : "\n" ) );
+		$rules .= Xml::element( 'input', array( 'type' => 'button', 'onclick' => 'doSyntaxCheck()', 'value' => wfMsg( 'abusefilter-edit-check' ), 'id' => 'mw-abusefilter-syntaxcheck' ) );
+		
+		// Add syntax-checking script
+		$scScript = "function doSyntaxCheck()
+		{
+			var filter = document.getElementById('wpFilterRules').value;
+			injectSpinner( document.getElementById( 'mw-abusefilter-syntaxcheck' ), 'abusefilter-syntaxcheck' );
+			sajax_do_call( 'AbuseFilter::ajaxCheckSyntax', [filter], processSyntaxResult );
+		}
+		function processSyntaxResult( request ) {
+			var response = request.responseText;
+			
+			removeSpinner( 'mw-abusefilter-syntaxcheck-spinner' );
+			
+			if (response.match( /OK/ )) {
+				// Successful
+				jsMsg( 'No syntax errors.', 'mw-abusefilter-syntaxresult' );
+			} else {
+				var error = response.substr(4);
+				jsMsg( 'Syntax error: '+error, 'mw-abusefilter-syntaxresult' );
+			}
+		}";
+		
+		$wgOut->addInlineScript( $scScript );
 
-		$fields['abusefilter-edit-rules'] = Xml::textarea( 'wpFilterRules', ( isset( $row->af_pattern ) ? $row->af_pattern."\n" : "\n" ) );
+		$fields['abusefilter-edit-rules'] = $rules;
 		$fields['abusefilter-edit-notes'] = Xml::textarea( 'wpFilterNotes', ( isset( $row->af_comments ) ? $row->af_comments."\n" : "\n" ) );
 		
 		// Build checkboxen

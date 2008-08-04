@@ -26,6 +26,18 @@ class AbuseFilter {
 		
 		return $vars;
 	}
+	
+	public static function ajaxCheckSyntax( $filter ) {
+		$result = self::checkSyntax( $filter );
+		
+		$ok = ($result === true);
+		
+		if ($ok) {
+			return "OK";
+		} else {
+			return "ERR: $result";
+		}
+	}
 
 	public static function disableConditionLimit() {
 		// For use in batch scripts and the like
