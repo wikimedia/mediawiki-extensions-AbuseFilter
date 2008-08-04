@@ -246,8 +246,8 @@ class AbuseFilterParser {
         public function checkSyntax( $filter ) {
         	try {
         		$this->parse($filter);
-        	} catch (AFPException excep) {
-        		return excep->getMessage();
+        	} catch (AFPException $excep) {
+        		return $excep->getMessage();
         	}
         	return true;
         }
