@@ -264,7 +264,7 @@ class SpecialAbuseFilter extends SpecialPage {
 			}
 
 			if ($row->af_hidden && !$this->canEdit()) {
-				return wfMsg( 'abusefilter-edit-hidden' );
+				return wfMsg( 'abusefilter-edit-denied' );
 			}
 		} else {
 			$row = new stdClass();
