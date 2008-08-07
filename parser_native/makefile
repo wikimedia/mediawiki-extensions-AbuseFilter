@@ -20,3 +20,5 @@ clean:
 
 clean-final:
 	rm -f check af_parser syntax_check
+
+.SUFFIXES: .cpp .o
