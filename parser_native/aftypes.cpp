@@ -144,7 +144,9 @@ AFPData::AFPData( AFPData old, unsigned int newType ) {
 
 AFPData::AFPData() { this->source = "empty constructor"; this->makeData( 0, NULL, 0, "empty constructor" );}
 
-AFPData::~AFPData() {
+AFPData::~AFPData() { this->release(); }
+
+void AFPData::release() {
 	if (this->value == 0x0) {
 		return;
 	} else if (this->type > DATATYPE_MAX) {
@@ -170,6 +172,7 @@ AFPData::~AFPData() {
 	}
 	
 	this->value = 0x0;
+	this->type = D_NULL;
 }
 
 AFPData::AFPData( const AFPData & oldData ) {
@@ -264,6 +267,9 @@ AFPData & AFPData::operator= (const AFPData & oldData) {
 	if (this == &oldData) {
 		return *this;
 	}
+	
+	// Clear it.
+	this->release();
 	
 	// NULLs and INVALID data types need no deep copy
 	if (oldData.type > DATATYPE_MAX || oldData.type == D_NULL) {

@@ -127,7 +127,7 @@ AFPData callFunction( string name, vector<AFPData> args ) {
 	string cacheKey;
 	bool doCache = false;
 	if (args.size() == 1) {
-		doCache = true;
+ 		doCache = true;
 		cacheKey = name + args[0].toString();
 		
 		if (functionResultCache.find(cacheKey) != functionResultCache.end()) {

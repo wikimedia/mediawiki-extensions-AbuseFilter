@@ -442,7 +442,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		// Load the main row
 		$row = $dbr->selectRow( 'abuse_filter', '*', array( 'af_id' => $id ), __METHOD__ );
 		
-		if (!is_array($row))
+		if (!$row->af_id)
 			return array( new stdClass,array() );
 		
 		// Load the actions

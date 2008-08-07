@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <fstream>
 #include <map>
 
 string filter;
@@ -19,7 +20,11 @@ int main( int argc, char** argv ) {
 		bool result;
 		
 		try {
+			// Reset
 			e.reset();
+			vars.clear();
+			filter = "";
+			
 			if (!loadRequest())
 				continue;
 				

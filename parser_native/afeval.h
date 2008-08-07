@@ -31,7 +31,6 @@ class FilterEvaluator {
 		vector<AFPToken> tokens;
 		map<string, vector<AFPToken> > tokenCache;
 		unsigned int pos;
-		string code;
 		map<string,AFPData> vars;
 		bool forceResult;
 };

@@ -6,7 +6,6 @@ void FilterEvaluator::reset() {
 	this->tokens.clear();
 	this->cur = AFPToken();
 	this->pos = 0;
-	this->code = "";
 	this->forceResult = false;
 }
 
@@ -21,7 +20,6 @@ void FilterEvaluator::setVars( map<string,AFPData> values ) {
 }
 
 string FilterEvaluator::evaluateExpression( string code ) {
-	this->code = code;
 	this->pos = 0;
 	
 	if (this->tokenCache.find(code) != this->tokenCache.end()) {
@@ -43,8 +41,9 @@ string FilterEvaluator::evaluateExpression( string code ) {
 	return result.toString();
 }
 
+// TODO: Merge these two functions
+
 bool FilterEvaluator::evaluateFilter( string code ) {
-	this->code = code;
 	this->pos = 0;
 	
 	if (this->tokenCache.find(code) != this->tokenCache.end()) {
@@ -320,7 +319,7 @@ void FilterEvaluator::doLevelFunction( AFPData* result ) {
 			this->move(-1);
 			do {
 				this->move();
-				AFPData r = new AFPData();
+				AFPData r = AFPData();
 				this->doLevelSet( &r );
 				args.push_back( r );
 			} while (this->cur.type == T_COMMA );

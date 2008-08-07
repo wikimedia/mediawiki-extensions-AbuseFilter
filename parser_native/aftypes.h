@@ -57,6 +57,7 @@ class AFPData {
 		
 	protected:
 		void makeData( unsigned int type, void* value, size_t size, string source );
+		void release();
 		
 		unsigned int type;
 		void* value;

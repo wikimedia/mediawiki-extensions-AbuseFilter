@@ -55,7 +55,7 @@ class AbuseFilterHooks {
 		return true;
 	}
 	
-	function onAbortMove( $oldTitle, $newTitle, $user, &$error, $reason ) {
+	public static function onAbortMove( $oldTitle, $newTitle, $user, &$error, $reason ) {
 		$vars = array();
 		
 		global $wgUser;
@@ -72,7 +72,7 @@ class AbuseFilterHooks {
 		return $filter_result == '' || $filter_result === true;
 	}
 	
-	function onArticleDelete( &$article, &$user, &$reason, &$error ) {
+	public static function onArticleDelete( &$article, &$user, &$reason, &$error ) {
 		$vars = array();
 		
 		global $wgUser;
@@ -88,7 +88,7 @@ class AbuseFilterHooks {
 		return $filter_result == '' || $filter_result === true;
 	}
 	
-	function onAbortNewAccount( $user, &$message ) {
+	public static function onAbortNewAccount( $user, &$message ) {
 		wfLoadExtensionMessages( 'AbuseFilter' );
 		if ($username == wfMsgForContent( 'abusefilter-blocker' )) {
 			$message = wfMsg( 'abusefilter-accountreserved' );
