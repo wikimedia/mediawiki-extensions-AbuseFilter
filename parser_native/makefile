@@ -2,11 +2,6 @@ include makefile.config
 
 CXX		= g++
 CXXFLAGS	= -O3 -W -Wall
-BOOST_INCLUDES	= /opt/boost/include/boost-1_35
-BOOST_LIBS	= /opt/boost/lib
-BOOST_TAG	= -gcc34-mt
-ICU_INCLUDES	= /opt/icu/include
-ICU_LIBS	= /opt/icu/lib
 
 CPPFLAGS	= $(EXTRA_CPPFLAGS)
 LDFLAGS		= $(EXTRA_LDFLAGS)
