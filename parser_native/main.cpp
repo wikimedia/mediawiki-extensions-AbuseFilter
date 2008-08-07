@@ -6,11 +6,15 @@
 #include <sstream>
 #include <fstream>
 #include <map>
+#include <cerrno>
+#include <cstring>
+
+#include <boost/format.hpp>
 
 string filter;
 map<string,AFPData> vars;
 
-bool loadRequest();
+bool loadRequest(std::istream &);
 void clearNulls();
 
 int main( int argc, char** argv ) {
@@ -26,12 +30,24 @@ int main( int argc, char** argv ) {
 			vars.clear();
 			filter = "";
 			
-			if (!loadRequest())
-				continue;
-				
+			if (argv[1]) {
+				std::ifstream inf(argv[1]);
+				if (!inf) {
+					std::cerr << boost::format("%s: %s: %s\n")
+						% argv[0] % argv[1] % std::strerror(errno);
+					return 1;
+				}
+
+				if (!loadRequest(inf))
+					continue;
+			} else {
+				if (!loadRequest(std::cin))
+					continue;
+			}	
+
 			e.setVars( vars );
 			result = e.evaluateFilter( filter );
-		} catch (AFPException excep) {
+		} catch (AFPException &excep) {
 			cout << "EXCEPTION: " << excep.what() << endl;
 			cerr << "EXCEPTION: " << excep.what() << endl;
 		}
@@ -43,7 +59,7 @@ int main( int argc, char** argv ) {
 // Protocol:
 // code NULL <key> NULL <value> NULL ... <value> NULL NULL
 
-bool loadRequest() {
+bool loadRequest(std::istream &inp) {
 	stringbuf codesb(ios::out | ios::in);
 	
 	// Load the code
