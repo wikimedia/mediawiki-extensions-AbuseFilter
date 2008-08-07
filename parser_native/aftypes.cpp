@@ -2,6 +2,7 @@
 #include <sstream>
 #include <ios>
 #include <iostream>
+#include <boost/lexical_cast.hpp>
 
 AFPToken::AFPToken(unsigned int new_type, string new_value, unsigned int new_pos) {
 	type = new_type;
@@ -28,33 +29,28 @@ void AFPData::makeData( unsigned int new_type, void* new_value, size_t new_size,
 }
 
 AFPData::AFPData( string var ) {
-	const char* c_str = var.c_str();
-	long int intval;
-	double fval;
-	char* last_char;
-	istringstream ss(var);
-	
 	this->source = "string constructor";
 	
 	// Try integer	
-	if (!!(ss >> intval) && intval != 0) { // 0.25 converts to 0, otherwise.
+	try {
+		long int intval = boost::lexical_cast<long int>(var);
 		// Valid conversion
 		long int* val = new long int( intval );
 		this->makeData( D_INTEGER, (void*)val, sizeof(long int), "string constructor" );
 		return;
+	} catch (boost::bad_lexical_cast &e) {
+		try {
+			double fval = boost::lexical_cast<double>(var);
+			double* val = new double(fval);
+			this->makeData( D_FLOAT, (void*)val, sizeof(double), "string constructor" );
+			return;
+		} catch (boost::bad_lexical_cast &e) {
+			// Last resort
+			// Duplicate the string.
+			string* s = new string(var);
+			this->makeData( D_STRING, (void*)s, sizeof(string), "string constructor" );
+		}
 	}
-	
-	if (!!(ss >> fval)) {
-		double* val = new double(fval);
-		this->makeData( D_FLOAT, (void*)val, sizeof(double), "string constructor" );
-		return;
-	}
-	
-	// Last resort
-	// Duplicate the string.
-	string* s = new string(var);
-	this->makeData( D_STRING, (void*)s, sizeof(string), "string constructor" );
-	return;
 }
 
 AFPData::AFPData( AFPData old, unsigned int newType ) {
@@ -64,7 +60,7 @@ AFPData::AFPData( AFPData old, unsigned int newType ) {
 	}
 
 	if (old.type == newType) {
-		void* newVal;
+		void* newVal = 0;
 		
 		// Duplicate the contents.
 		if (old.type == D_STRING) {
@@ -77,6 +73,8 @@ AFPData::AFPData( AFPData old, unsigned int newType ) {
 			newVal = (void*) new double(old.toFloat());
 		}
 		
+		assert(newVal);
+
 		this->makeData( old.type, newVal, old.size, "cast constructor (copy)" );
 	} else if (newType == 0) {
 		this->makeData( D_NULL, NULL, 0, "cast constructor - null" );
@@ -185,7 +183,7 @@ AFPData::AFPData( const AFPData & oldData ) {
 	}
 	
 	// Duplicate the inner data
-	void* newVal;
+	void* newVal = 0;
 	
 	if (oldData.type == D_STRING) {
 		string* ival = new string();
@@ -279,7 +277,7 @@ AFPData & AFPData::operator= (const AFPData & oldData) {
 	
 	// Otherwise, do a proper copy.
 	// Duplicate the inner data
-	void* newVal;
+	void* newVal = 0;
 	if (oldData.type == D_STRING) {
 		string* ival = new string();
 		*ival = *(string*)oldData.value;
@@ -304,10 +302,5 @@ AFPData & AFPData::operator= (const AFPData & oldData) {
 }
 
 bool isInVector( string needle, vector<string> haystack ) {
-	for( vector<string>::iterator it=haystack.begin(); it!=haystack.end(); ++it ) {
-		string test = *it;
-		if (test == needle.c_str()) { return true; }
-	}
-	
-	return false;
+	return std::find(haystack.begin(), haystack.end(), needle) != haystack.end();
 }
