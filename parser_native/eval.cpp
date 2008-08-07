@@ -1,6 +1,5 @@
 #include "afeval.h"
 #include "affunctions.h"
-#include <libxml++/libxml++.h>
 #include <iostream>
 #include <string>
 #include <sstream>

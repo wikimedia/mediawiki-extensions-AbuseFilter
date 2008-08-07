@@ -5,7 +5,9 @@
 #include <ios>
 #include <iostream>
 #include <ctype.h>
-#include <glibmm/ustring.h>
+
+#include <unicode/utf8.h>
+#include <unicode/ustring.h>
 
 #define EQUIVSET_LOC "equivset.txt"
 
@@ -179,7 +181,7 @@ AFPData af_specialratio( vector<AFPData> args ) {
 		}
 	}
 	
-	double ratio = (float)(specialcount) / (float)(((Glib::ustring)orig).size());
+	double ratio = (float)(specialcount) / (float)(utf8_strlen(orig));
 		
 	return AFPData(ratio);
 }
@@ -234,7 +236,7 @@ AFPData af_length( vector<AFPData> args ) {
 		throw AFPException( "Not enough arguments to lcase" );
 	}
 	
-	return AFPData( (long int)((Glib::ustring)args[0].toString()).size() );
+	return AFPData( (long int)utf8_strlen(args[0].toString()) );
 }
 
 AFPData af_lcase( vector<AFPData> args ) {
@@ -242,10 +244,7 @@ AFPData af_lcase( vector<AFPData> args ) {
 		throw AFPException( "Not enough arguments to lcase" );
 	}
 	
-	Glib::ustring s = args[0].toString();
-	string s2 = s.lowercase();
-	
-	return AFPData(s);
+	return AFPData(utf8_tolower(args[0].toString()));
 }
 
 string confusable_character_normalise( string orig ) {
@@ -352,6 +351,66 @@ int next_utf8_char(std::string::const_iterator & p, std::string::const_iterator 
 		++p;
 	} while (bytes && p != end);
 	return c;
+}
+
+std::size_t
+utf8_strlen(std::string const &s)
+{
+std::size_t	ret = 0;
+	for (std::string::const_iterator it = s.begin(), end = s.end();
+		it < end; ++it)
+	{
+	int	skip = 1;
+
+		skip = U8_LENGTH(*it);
+#if 0
+		if (*it >= 0xc0) {
+			if (*it < 0xe0)
+				skip = 1;
+			else if (*it < 0xf0)
+				skip = 2;
+			else
+				skip = 3;
+		} else
+			skip = 1;
+#endif
+			
+		if (it + skip >= end)
+			return ret;	/* end of string */
+				
+		it += skip;
+	}
+
+	return ret;
+}
+
+/*
+ * This could almost certainly be done in a nicer way.
+ */
+std::string utf8_tolower(std::string const &s)
+{
+	std::vector<UChar> ustring;
+	UErrorCode error = U_ZERO_ERROR;
+
+	for (int i = 0; i < s.size(); ) {
+		UChar32 c;
+		U8_NEXT(s.data(), i, s.size(), c);
+		ustring.push_back(c);
+	}
+
+	std::vector<UChar> dest;
+	u_strToLower(&dest[0], dest.size(), &ustring[0], ustring.size(),
+			NULL, &error);
+	
+	if (U_FAILURE(error))
+		return s;
+
+	std::vector<unsigned char> u8string;
+	int i, j;
+	for (i = 0, j = 0; i < dest.size(); j++) {
+		U8_APPEND_UNSAFE(&u8string[0], i, dest[j]);
+	}
+	return std::string(u8string.begin(), u8string.begin() + i);
 }
 
 // Ported from MediaWiki core function in PHP.

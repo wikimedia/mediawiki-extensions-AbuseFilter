@@ -1,3 +1,6 @@
+#ifndef AFFUNCTIONS_H
+#define AFFUNCTIONS_H
+
 #include "aftypes.h"
 #include <map>
 #include <vector>
@@ -18,3 +21,7 @@ vector<AFPData> makeFuncArgList( AFPData arg );
 AFPData callFunction( string name, AFPData arg );
 string rmdoubles( string orig );
 string rmspecials( string orig );
+std::size_t utf8_strlen(std::string const &s);
+std::string utf8_tolower(std::string const &s);
+
+#endif	/* !AFFUNCTIONS_H */
