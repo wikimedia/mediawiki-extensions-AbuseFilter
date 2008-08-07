@@ -1,3 +1,5 @@
+include makefile.config
+
 CXX		= g++
 CXXFLAGS	= -O3 -W -Wall
 BOOST_INCLUDES	= /opt/boost/include/boost-1_35
@@ -6,8 +8,8 @@ BOOST_TAG	= -gcc34-mt
 ICU_INCLUDES	= /opt/icu/include
 ICU_LIBS	= /opt/icu/lib
 
-CPPFLAGS	= -I$(BOOST_INCLUDES) -I$(ICU_INCLUDES)
-LDFLAGS		= -L$(BOOST_LIBS) -L$(ICU_LIBS) -R$(ICU_LIBS) -R$(BOOST_LIBS)
+CPPFLAGS	= $(EXTRA_CPPFLAGS)
+LDFLAGS		= $(EXTRA_LDFLAGS)
 
 LIBS		= -lboost_regex$(BOOST_TAG) -licuuc -licui18n -licudata -licui18n
 

@@ -1,0 +1,16 @@
+# The C++ compiler
+CXX		= g++
+
+# Flags for the compiler.
+CXXFLAGS	= -O3 -W -Wall
+
+# Set this to the 'tag' your Boost libraries were built with,
+# or the empty string if none.
+#BOOST_TAG	= -gcc34-mt
+BOOST_TAG	=
+
+# Extra linker flags - if libraries are in strange places
+EXTRA_LDFLAGS	= -L/opt/icu/lib -L/opt/boost/lib -R/opt/icu/lib:/opt/boost/lib
+
+# Extra preprocessor flags
+EXTRA_CPPFLAGS	= -I/opt/boost/include/boost-1_35 -I/opt/icu/include
