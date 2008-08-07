@@ -2,6 +2,7 @@
 #include <sstream>
 #include <ios>
 #include <iostream>
+#include <cassert>
 #include <boost/lexical_cast.hpp>
 
 AFPToken::AFPToken(unsigned int new_type, string new_value, unsigned int new_pos) {
