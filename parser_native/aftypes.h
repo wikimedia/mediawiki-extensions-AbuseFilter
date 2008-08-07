@@ -1,9 +1,10 @@
+#ifndef AFTYPES_H
+#define AFTYPES_H
+
 #include <string>
 #include <vector>
 
 using namespace std;
-
-#ifndef T_NONE
 
 #define T_NONE 0
 #define T_ID 1
@@ -79,4 +80,4 @@ class AFPException :exception {
 
 bool isInVector( string needle, vector<string> haystack );
 
-#endif
+#endif	/* !AFTYPES_H */

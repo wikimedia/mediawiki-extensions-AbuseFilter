@@ -1,8 +1,8 @@
+#ifndef AFUTILS_H
+#define AFUTILS_H
+
 #include "aftypes.h"
 #include <vector>
-
-#ifndef UTILS
-#define UTILS
 
 AFPData af_boolInvert( AFPData value );
 AFPData af_pow( AFPData base, AFPData exponent );
@@ -15,4 +15,4 @@ AFPData af_sum( AFPData a, AFPData b );
 AFPData af_sub( AFPData a, AFPData b );
 AFPData af_keyword( string keyword, AFPData a, AFPData b );
 
-#endif
+#endif	/* !AFUTILS_H */

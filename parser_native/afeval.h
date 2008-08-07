@@ -1,3 +1,6 @@
+#ifndef AFEVAL_H
+#define AFEVAL_H
+
 #include "afparser.h"
 #include "afutils.h"
 // #include "aftypes.h"
@@ -38,3 +41,5 @@ class FilterEvaluator {
 // typedef AFPData (*AFPFunction) (vector<AFPData>);
 
 vector<string> getOpsForType( string type );
+
+#endif	/* !AFEVAL_H */
