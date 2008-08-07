@@ -315,7 +315,7 @@ map<int,int> getEquivSet() {
 int next_utf8_char(std::string::const_iterator & p, std::string::const_iterator & charStart, 
 		std::string::const_iterator end)
 {
-	int c;
+	int c=0;
 	unsigned char byte;
 	int bytes = 0;
 	charStart = p;
