@@ -1,5 +1,6 @@
 #include "afeval.h"
 #include "affunctions.h"
+#include <cstdlib>
 #include <iostream>
 #include <string>
 #include <sstream>

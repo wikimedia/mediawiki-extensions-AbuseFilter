@@ -1,4 +1,5 @@
 #include "afeval.h"
+#include <cstdlib>
 #include <string>
 #include <sstream>
 #include <iostream>
