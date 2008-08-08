@@ -1,3 +1,5 @@
+#include	<boost/optional.hpp>
+
 #include	"request.h"
 
 namespace afp {
@@ -10,64 +12,77 @@ static const int MAX_VALUE_LEN = 1024 * 256; /* 256 KB */
 // Protocol:
 // code NULL <key> NULL <value> NULL ... <value> NULL NULL
 
+template<typename charT, typename Traits>
+struct basic_nul_terminated_string_reader {
+	typedef std::istream_iterator<charT> iterator_t;
+	typedef std::basic_istream<charT, Traits> stream_t;
+	typedef std::basic_string<charT, Traits> string_t;
+
+	basic_nul_terminated_string_reader(stream_t &stream)
+		: stream_(stream)
+		, it_(stream)
+		, first_(true)
+	{
+	}
+
+	boost::optional<string_t> read(std::size_t max_len = 0) {
+		string_t ret;
+
+		if (first_)
+			first_ = false;
+		else
+			++it_;
+
+		for (; it_ != end_; ++it_) {
+			if (*it_ == stream_.widen('\0')) {
+				return ret;
+			}
+
+			if (max_len && (ret.size() > max_len))
+				return boost::optional<string_t>();
+
+			ret += *it_;
+		}
+
+		return boost::optional<string_t>();
+	}
+
+private:
+	stream_t &stream_;
+	iterator_t it_, end_;
+	bool first_;
+};
+
+typedef basic_nul_terminated_string_reader<char, std::char_traits<char> > 
+	nul_terminated_string_reader;
+
 bool 
 request::load(std::istream &inp) {
 	inp.unsetf(std::ios_base::skipws);
 
-	std::istream_iterator<char> it(inp), p, end;
+	nul_terminated_string_reader reader(inp);
+	boost::optional<std::string> str;
 
-	std::pair<std::istream_iterator<char>, std::istream_iterator<char> >
-		iters;
-
-	filter.erase();
-	for (; it != end; ++it) {
-		if (*it == '\0')
-			break;
-		if (filter.size() > MAX_FILTER_LEN)
-			return false;
-
-		filter.push_back(*it);
-	}
-
-	if (it == end)
+	if (!(str = reader.read(MAX_FILTER_LEN)))
 		return false;
+	filter = *str;
 
-	it++;
-
-	while (true) {
+	for (;;) {
 		std::string key, value;
 
 		/* read the key */
-		for (; it != end; ++it) {
-			if (*it == '\0')
-				break;
-			if (key.size() > MAX_VARNAME_LEN)
-				return false;
-			key.push_back(*it);
-		}
-
-		if (it == end)
+		if (!(str = reader.read(MAX_VARNAME_LEN)))
 			return false;
+		key = *str;
 
 		if (key.empty()) 
 			/*  empty string means end of input */
 			return true;
 
-		it++;
-
 		/* read the value */
-		for (; it != end; ++it) {
-			if (*it == '\0')
-				break;
-			if (value.size() > MAX_VALUE_LEN)
-				return false;
-			value.push_back(*it);
-		}
-
-		if (it == end)
+		if (!(str = reader.read(MAX_VALUE_LEN)))
 			return false;
-
-		it++;
+		value = *str;
 
 		f.add_variable(key, datum(value));
 	}
