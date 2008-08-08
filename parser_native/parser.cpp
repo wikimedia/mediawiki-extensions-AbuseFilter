@@ -182,9 +182,9 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 			bool_expr =
 				  eq2_expr[bool_expr.val = arg1]
 				>> *( 
-					  '&' >> eq_expr[bool_expr.val = bool_expr.val && arg1]
-					| '|' >> eq_expr[bool_expr.val = bool_expr.val || arg1]
-					| '^' >> eq_expr[bool_expr.val = 
+					  '&' >> eq2_expr[bool_expr.val = bool_expr.val && arg1]
+					| '|' >> eq2_expr[bool_expr.val = bool_expr.val || arg1]
+					| '^' >> eq2_expr[bool_expr.val = 
 							((bool_expr.val || arg1)
 							  && !(bool_expr.val && arg1)) ]
 				    )
