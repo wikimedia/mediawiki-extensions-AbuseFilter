@@ -1,13 +1,14 @@
-#include "affunctions.h"
-#include <algorithm>
-#include <fstream>
-#include <sstream>
-#include <ios>
-#include <iostream>
-#include <ctype.h>
+#include	<algorithm>
+#include	<fstream>
+#include	<sstream>
+#include	<ios>
+#include	<iostream>
 
-#include "utf8.h"
-#include "equiv.h"
+#include	"utf8.h"
+#include	"equiv.h"
+#include	"affunctions.h"
+
+#include	<unicode/uchar.h>
 
 namespace afp {
 
@@ -60,7 +61,7 @@ af_norm(std::vector<datum> const &args) {
 	for (; it != end; ++it) {
 		int chr = equivs.get(*it);
 		
-		if (chr != lastchr && isalnum(chr))
+		if (chr != lastchr && u_isalnum(chr))
 			result.append(utf8::codepoint_to_utf8(chr));
 		
 		lastchr = chr;
@@ -97,7 +98,7 @@ af_specialratio(std::vector<datum> const &args) {
 	utf8::utf8_iterator<std::string::const_iterator> it(orig.begin(), orig.end()), end;
 	for (; it != end; ++it) {
 		len++;
-		if (!isalnum(*it))
+		if (!u_isalnum(*it))
 			specialcount++;
 	}
 	
@@ -121,7 +122,7 @@ rmspecials(std::string const &orig) {
 	
 	utf8::utf8_iterator<std::string::const_iterator> it(orig.begin(), orig.end()), end;
 	for (; it != end; ++it) {
-		if (isalnum(*it))
+		if (u_isalnum(*it))
 			result.append(utf8::codepoint_to_utf8(*it));
 	}
 	
