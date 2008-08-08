@@ -3,7 +3,7 @@ include makefile.config
 CPPFLAGS	= $(EXTRA_CPPFLAGS)
 LDFLAGS		= $(EXTRA_LDFLAGS)
 
-LIBS		= -lboost_regex$(BOOST_TAG) -licuuc -licui18n -licudata -licui18n
+LIBS		= -lboost_regex$(BOOST_TAG) -licuuc -licui18n -licudata
 
 expr: CPPFLAGS+=-DTEST_PARSER
 

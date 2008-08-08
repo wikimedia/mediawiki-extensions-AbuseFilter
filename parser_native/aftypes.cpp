@@ -361,6 +361,14 @@ AFPData::compare(AFPData const &other) const {
 }
 
 bool
+AFPData::compare_with_type(AFPData const &other) const {
+	if (value_.which() != other.value_.which())
+		return false;
+
+	return boost::apply_visitor(compare_visitor<std::equal_to>(), value_, other.value_);
+}
+
+bool
 AFPData::less_than(AFPData const &other) const {
 	return boost::apply_visitor(arith_compare_visitor<std::less>(), value_, other.value_);
 }

@@ -111,6 +111,7 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 			/* a sequence of uppercase letters is a variable */
 			variable = 
 				  self.variables[variable.val = arg1]
+				| (+upper_p)[variable.val = ""]
 				;
 
 			/* func(value) */
@@ -171,8 +172,10 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 				>> *( 
 					  "=="  >> eq_expr[eq2_expr.val = eq2_expr.val == arg1]
 					| "!="  >> eq_expr[eq2_expr.val = eq2_expr.val != arg1]
-					| "===" >> eq_expr[eq2_expr.val = eq2_expr.val == arg1]
-					| "!==" >> eq_expr[eq2_expr.val = eq2_expr.val != arg1]
+					| "===" >> eq_expr[eq2_expr.val = 
+							bind(&AFPData::compare_with_type)(eq2_expr.val, arg1)]
+					| "!==" >> eq_expr[eq2_expr.val = 
+							!bind(&AFPData::compare_with_type)(eq2_expr.val, arg1)]
 				    )
 				;
 
