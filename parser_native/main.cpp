@@ -1,7 +1,6 @@
-#include "afeval.h"
-#include "affunctions.h"
 #include <cstdlib>
 #include <iostream>
+#include <iterator>
 #include <string>
 #include <sstream>
 #include <fstream>
@@ -10,45 +9,33 @@
 #include <cstring>
 
 #include <boost/format.hpp>
+#include <boost/next_prior.hpp>
 
-string filter;
-map<string,AFPData> vars;
-
-bool loadRequest(std::istream &);
-void clearNulls();
+#include "request.h"
 
 int main( int argc, char** argv ) {
-	FilterEvaluator e;
-	registerBuiltinFunctions();
-	
 	while (true) {
-		bool result;
+		request r;
+		bool result = false;
 		
 		try {
-			// Reset
-			e.reset();
-			vars.clear();
-			filter = "";
-			
 			if (argv[1]) {
 				std::ifstream inf(argv[1]);
 				if (!inf) {
 					std::cerr << boost::format("%s: %s: %s\n")
 						% argv[0] % argv[1] % std::strerror(errno);
-					return 1;
+					return 0;
 				}
 
-				if (!loadRequest(inf))
-					continue;
+				if (!r.load(inf))
+					return 0;
 			} else {
-				if (!loadRequest(std::cin))
-					continue;
+				if (!r.load(std::cin))
+					return 0;
 			}	
 
-			e.setVars( vars );
-			result = e.evaluateFilter( filter );
+			result = r.evaluate();
 		} catch (AFPException &excep) {
-			cout << "EXCEPTION: " << excep.what() << endl;
 			cerr << "EXCEPTION: " << excep.what() << endl;
 		}
 		
@@ -56,42 +43,3 @@ int main( int argc, char** argv ) {
 	}
 }
 
-// Protocol:
-// code NULL <key> NULL <value> NULL ... <value> NULL NULL
-
-bool loadRequest(std::istream &inp) {
-	stringbuf codesb(ios::out | ios::in);
-	
-	// Load the code
-	cin.get( codesb, '\0' );
-	cin.get();
-	filter = codesb.str();
-	
-	while (true) {
-		stringbuf keysb(ios::out | ios::in);
-		stringbuf valsb(ios::out | ios::in);
-		
-		// Double NULL = end
-		if (cin.peek() == 0) {
-			cin.get();
-			break;
-		} else if (cin.peek() == -1) {
-			exit(-1);
-		}
-	
-		cin.get( keysb, '\0' );
-		cin.get();
-		
-		if (cin.peek() == 0) {
-			cin.get();
-			// Leave blank.
-		} else {
-			cin.get( valsb, '\0' );
-			cin.get();
-		}
-		
-		vars[keysb.str()] = AFPData( valsb.str() );
-	}
-	
-	return true;
-}

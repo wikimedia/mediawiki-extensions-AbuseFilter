@@ -5,15 +5,16 @@
 #include <map>
 #include <vector>
 
-typedef AFPData(*AFPFunction)(vector<AFPData>);
+AFPData af_length(std::vector<AFPData> args);
+AFPData af_lcase(std::vector<AFPData> args);
+AFPData af_ccnorm(std::vector<AFPData> args);
+AFPData af_rmdoubles(std::vector<AFPData> args);
+AFPData af_specialratio(std::vector<AFPData> args);
+AFPData af_rmspecials(std::vector<AFPData> args);
+AFPData af_norm(std::vector<AFPData> args);
+AFPData af_count(std::vector<AFPData> args);
 
-extern map<string,AFPFunction> af_functions;
-
-void af_registerfunction( string name, AFPFunction method );
-void registerBuiltinFunctions();
-AFPData callFunction( string name, vector<AFPData> args );
-bool isFunction( string name );
-map<int,int> getEquivSet();
+map<int,int> &getEquivSet();
 int next_utf8_char(std::string::const_iterator & p, std::string::const_iterator & charStart, std::string::const_iterator end);
 string codepointToUtf8( int codepoint );
 string confusable_character_normalise( string orig );

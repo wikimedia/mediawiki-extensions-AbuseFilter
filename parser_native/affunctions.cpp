@@ -11,33 +11,6 @@
 
 #define EQUIVSET_LOC "equivset.txt"
 
-map<string,AFPFunction> af_functions;
-map<string,AFPData> functionResultCache;
-
-AFPData af_length( vector<AFPData> args );
-AFPData af_lcase( vector<AFPData> args );
-AFPData af_ccnorm( vector<AFPData> args );
-AFPData af_rmdoubles( vector<AFPData> args );
-AFPData af_specialratio( vector<AFPData> args );
-AFPData af_rmspecials( vector<AFPData> args );
-AFPData af_norm( vector<AFPData> args );
-AFPData af_count( vector<AFPData> args );
-
-void af_registerfunction( string name, AFPFunction method ) {
-	af_functions[name] = method;
-}
-
-void registerBuiltinFunctions() {
-	af_registerfunction( "length", (AFPFunction) &af_length);
-	af_registerfunction( "lcase", (AFPFunction) &af_lcase );
-	af_registerfunction( "ccnorm", (AFPFunction) &af_ccnorm );
-	af_registerfunction( "rmdoubles", (AFPFunction) &af_rmdoubles );
-	af_registerfunction( "specialratio", (AFPFunction) &af_specialratio );
-	af_registerfunction( "rmspecials", (AFPFunction) &af_rmspecials );
-	af_registerfunction( "norm", (AFPFunction) &af_norm );
-	af_registerfunction( "count", (AFPFunction) &af_count );
-}
-
 AFPData af_count( vector<AFPData> args ) {
 	if (!args.size()) {
 		throw AFPException( "Not enough arguments to count" );
@@ -78,7 +51,7 @@ AFPData af_norm( vector<AFPData> args ) {
 	
 	string::const_iterator p, charStart, end;
 	int chr = 0,lastchr = 0;
-	map<int,int> equivSet = getEquivSet();
+	map<int,int> &equivSet = getEquivSet();
 	string result;
 	
 	p = orig.begin();
@@ -115,52 +88,6 @@ string rmdoubles( string orig ) {
 	}
 	
 	return result;
-}
-
-vector<AFPData> makeFuncArgList( AFPData arg ) {
-	vector<AFPData> ret;
-	
-	ret.push_back( arg );
-	
-	return ret;
-}
-
-AFPData callFunction( string name, vector<AFPData> args ) {
-	string cacheKey;
-	bool doCache = false;
-	if (args.size() == 1) {
- 		doCache = true;
-		cacheKey = name + args[0].toString();
-		
-		if (functionResultCache.find(cacheKey) != functionResultCache.end()) {
-			// found a result
-			return functionResultCache[cacheKey];
-		}
-	}
-	
-	if (functionResultCache.size() > 100) {
-		functionResultCache.clear();
-	}
-	
-	AFPData result;
-
-	if ( af_functions.find( name ) != af_functions.end() ) {
-		// Found the function
-		AFPFunction func = af_functions[name];
-		result = func(args);
-		
-		if (doCache) {
-			functionResultCache[cacheKey] = result;
-		}
-		
-		return result;
-	}
-}
-
-AFPData callFunction( string name, AFPData arg ) {
-	vector<AFPData> arglist = makeFuncArgList( arg );
-	
-	return callFunction( name, arglist );
 }
 
 AFPData af_specialratio( vector<AFPData> args ) {
@@ -250,7 +177,7 @@ AFPData af_lcase( vector<AFPData> args ) {
 string confusable_character_normalise( string orig ) {
 	string::const_iterator p, charStart, end;
 	int chr;
-	map<int,int> equivSet = getEquivSet();
+	map<int,int> &equivSet = getEquivSet();
 	string result;
 	
 	p = orig.begin();
@@ -267,11 +194,8 @@ string confusable_character_normalise( string orig ) {
 	return result;
 }
 
-bool isFunction( string name ) {
-	return af_functions.find(name) != af_functions.end();
-}
-
-map<int,int> getEquivSet() {
+map<int,int> &
+getEquivSet() {
 	static map<int,int> equivSet;
 	// Map of codepoint:codepoint
 	
@@ -284,7 +208,7 @@ map<int,int> getEquivSet() {
 		
 		string line;
 		
-		while (!! getline(eqsFile,line)) {			
+		while (getline(eqsFile,line)) {			
 			size_t pos = line.find_first_of( ":", 0 );
 			
 			if (pos != line.npos) {
