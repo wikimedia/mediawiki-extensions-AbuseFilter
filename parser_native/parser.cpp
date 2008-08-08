@@ -278,7 +278,8 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 			in_expr = 
 				  basic[in_expr.val = arg1]
 				>> *(
-					  "in" >> basic[in_expr.val = bind(&f_in)(in_expr.val, arg1)]
+					  "in"       >> basic[in_expr.val = bind(&f_in)(in_expr.val, arg1)]
+					| "contains" >> basic[in_expr.val = bind(&f_in)(arg1, in_expr.val)]
 				    )
 				;
 
@@ -336,8 +337,10 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 			eq_expr =
 				  ord_expr[eq_expr.val = arg1]
 				>> *( 
-					  "=="  >> eq_expr[eq_expr.val = eq_expr.val == arg1]
+					  "="   >> eq_expr[eq_expr.val = eq_expr.val == arg1]
+					| "=="  >> eq_expr[eq_expr.val = eq_expr.val == arg1]
 					| "!="  >> eq_expr[eq_expr.val = eq_expr.val != arg1]
+					| "/="  >> eq_expr[eq_expr.val = eq_expr.val != arg1]
 					| "===" >> eq_expr[eq_expr.val = 
 							bind(&datum::compare_with_type)(eq_expr.val, arg1)]
 					| "!==" >> eq_expr[eq_expr.val = 
