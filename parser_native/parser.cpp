@@ -367,6 +367,11 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 expressor::expressor()
 	: grammar_(new parser_grammar)
 {
+	/*
+	 * We provide a couple of standard variables everyone wants.
+	 */
+	add_variable("true", afp::datum(true));
+	add_variable("false", afp::datum(false));
 }
 
 expressor::~expressor()
