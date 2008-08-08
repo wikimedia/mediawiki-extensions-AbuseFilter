@@ -214,8 +214,8 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 				   bool_expr[tern_expr.val = arg1]
 				>> !(
 					(
-						   "?" >> bool_expr[tern_expr.iftrue = arg1]
-						>> ":" >> bool_expr[tern_expr.iffalse = arg1]
+						   "?" >> tern_expr[tern_expr.iftrue = arg1]
+						>> ":" >> tern_expr[tern_expr.iffalse = arg1]
 					)[tern_expr.val =
 						bind(f_ternary)(tern_expr.val, tern_expr.iftrue, tern_expr.iffalse)]
 				   )
