@@ -759,13 +759,18 @@ $messages['dsb'] = array(
  * @author Consta
  */
 $messages['el'] = array(
-	'abusefilter-log-search-user'       => 'Χρήστης:',
-	'abusefilter-log-search-title'      => 'Τίτλος:',
-	'abusefilter-log-search-submit'     => 'Αναζήτηση',
-	'abusefilter-log-detailslink'       => 'λεπτομέρειες',
-	'abusefilter-list-details'          => 'Λεπτομέρειες',
-	'abusefilter-edit-status-label'     => 'Στατιστικά',
-	'abusefilter-edit-throttle-seconds' => '$1 δευτερόλεπτα',
+	'abusefilter-log-search-user'           => 'Χρήστης:',
+	'abusefilter-log-search-title'          => 'Τίτλος:',
+	'abusefilter-log-search-submit'         => 'Αναζήτηση',
+	'abusefilter-log-detailslink'           => 'λεπτομέρειες',
+	'abusefilter-list-details'              => 'Λεπτομέρειες',
+	'abusefilter-tools-modifiertest-submit' => 'Δοκιμή',
+	'abusefilter-tools-subtitle'            => 'Εργαλεία',
+	'abusefilter-edit-status-label'         => 'Στατιστικά',
+	'abusefilter-edit-rules'                => 'Συνθήκες:',
+	'abusefilter-edit-throttle-seconds'     => '$1 δευτερόλεπτα',
+	'abusefilter-history-user'              => 'Χρήστης',
+	'abusefilter-history-comments'          => 'Σχόλια',
 );
 
 /** Esperanto (Esperanto)
@@ -1500,6 +1505,7 @@ $messages['lb'] = array(
 	'abusefilter-edit-flags'                => 'Fändelen:',
 	'abusefilter-edit-enabled'              => 'Dëse Filter aktivéieren',
 	'abusefilter-edit-hidden'               => "Verstop d'Detailer vun dësem Filter virun der Ëffentlechkeet",
+	'abusefilter-edit-rules'                => 'Conditiounen:',
 	'abusefilter-edit-notes'                => "Notizen:
 :''(privat)''",
 	'abusefilter-edit-lastmod'              => "De Filter gouf fir d'lescht geännert",
@@ -1516,10 +1522,14 @@ $messages['lb'] = array(
 	'abusefilter-edit-done'                 => 'Dir hutt är Ännerunge vum Filter ofgespäichert.
 
 [[Special:AbuseFilter|Zréck]]',
+	'abusefilter-edit-history'              => 'Versiounen',
+	'abusefilter-edit-check'                => 'Syntax iwwerpréifen',
 	'abusefilter-history-hidden'            => 'verstoppt',
+	'abusefilter-history-enabled'           => 'ageschalt',
 	'abusefilter-history-timestamp'         => 'Zäit',
 	'abusefilter-history-user'              => 'Benotzer',
 	'abusefilter-history-comments'          => 'Bemierkungen',
+	'abusefilter-history-actions'           => 'Aktiounen',
 );
 
 /** Lithuanian (Lietuvių)
@@ -2180,6 +2190,11 @@ Stručný popis pravidla zneužitia, ktoré zachytilo vašu úpravu, je: $1',
 	'abusefilter-list-new'                     => 'Nový filter',
 	'abusefilter-tools-modifiertest-submit'    => 'Otestovať',
 	'abusefilter-tools'                        => 'Sú dostupné [[Special:AbuseFilter/tools|nástroje]] pomáhajúce pri tvorbe a ladení filtrov zneužití.',
+	'abusefilter-tools-subtitle'               => 'Nástroje',
+	'abusefilter-tools-text'                   => 'Tu sa nachádzajú niektoré nástroje, ktoré možno využiť pri tvorbe a ladení filtrov zneužitia.
+[[Special:AbuseFilter|Návrat do hlavnej ponuky]]',
+	'abusefilter-tools-expr'                   => 'Tester výrazov',
+	'abusefilter-tools-submitexpr'             => 'Vyhodnotiť',
 	'abusefilter-status'                       => '{{PLURAL:$1|Posledná $1 operácia|Z posledných $1 operácií}} $2 ($3 %) {{PLURAL:$4|dosiahla|dosiahli|dosiahlo}} hraničnú podmienku $4. $5 ($6 %) {{PLURAL:$5|zodpovedala|zodpovedali|zodpovedalo}} momentálne zapnutým filtrom.',
 	'abusefilter-edit-subtitle'                => 'Úprava filtra $1',
 	'abusefilter-edit-status-label'            => 'Štatistika',
@@ -2201,11 +2216,11 @@ Stručný popis pravidla zneužitia, ktoré zachytilo vašu úpravu, je: $1',
 	'abusefilter-edit-hitcount'                => 'Počet zásahov filtra:',
 	'abusefilter-edit-consequences'            => 'Opatrenia vykonané pri zásahu',
 	'abusefilter-edit-action-warn'             => 'Spustiť tieto operácie po varovaní používateľa',
-	'abusefilter-edit-action-disallow'         => 'Zamietnuť operáciu',
+	'abusefilter-edit-action-disallow'         => 'Zamietnuť používateľovi vykonať operáciu',
 	'abusefilter-edit-action-flag'             => 'Označiť úpravu v zázname zneužití',
 	'abusefilter-edit-action-blockautopromote' => 'Odobrať používateľovi stav „zaregistrovaný”',
 	'abusefilter-edit-action-degroup'          => 'Odstrániť používateľa zo všetkých privilegovaných skupín',
-	'abusefilter-edit-action-block'            => 'Zablokovať používateľa',
+	'abusefilter-edit-action-block'            => 'Zablokovať úpravy používateľa a/alebo IP adresy',
 	'abusefilter-edit-action-throttle'         => 'Spustiť operáciu iba ak používateľ dosiahne limit rýchlosti úprav',
 	'abusefilter-edit-throttle-count'          => 'Počet povolených operácií:',
 	'abusefilter-edit-throttle-period'         => 'Časový interval:',
@@ -2218,6 +2233,22 @@ Stručný popis pravidla zneužitia, ktoré zachytilo vašu úpravu, je: $1',
 	'abusefilter-edit-done'                    => 'Úspešne ste uložili zmeny filtra.
 
 [[Special:AbuseFilter|Vrátiť sa späť]]',
+	'abusefilter-edit-badsyntax'               => 'Filter, ktorý ste zadali, obsahuje syntaktickú chybu. Výstup syntaktického analyzátora: <pre>$1</pre>',
+	'abusefilter-edit-viewhistory'             => 'Zobraziť históriu tohto filtra',
+	'abusefilter-edit-history'                 => 'História',
+	'abusefilter-edit-check'                   => 'Skontrolovať syntax',
+	'abusefilter-history'                      => 'História filtra $1',
+	'abusefilter-history-hidden'               => 'skrytý',
+	'abusefilter-history-enabled'              => 'zapnutý',
+	'abusefilter-history-timestamp'            => 'Čas',
+	'abusefilter-history-user'                 => 'Používateľ',
+	'abusefilter-history-public'               => 'Verejný popis filtra',
+	'abusefilter-history-flags'                => 'Príznaky',
+	'abusefilter-history-filter'               => 'Pravidlo filtra',
+	'abusefilter-history-comments'             => 'Komentáre',
+	'abusefilter-history-actions'              => 'Operácie',
+	'abusefilter-history-backedit'             => 'Späť do editora filtrov',
+	'abusefilter-history-backlist'             => 'Späť na zoznam filtrov',
 );
 
 /** Swedish (Svenska)
@@ -2340,8 +2371,16 @@ En kortfattad beskrivning av missbruksregler som din handling matchar med är: $
 	'abusefilter-edit-check'                   => 'Kontrollera syntax',
 	'abusefilter-history'                      => 'Historik för filtret $1',
 	'abusefilter-history-hidden'               => 'dold',
+	'abusefilter-history-enabled'              => 'aktiverad',
+	'abusefilter-history-timestamp'            => 'Tid',
 	'abusefilter-history-user'                 => 'Användare',
+	'abusefilter-history-public'               => 'Offentlig filterbeskrivning',
+	'abusefilter-history-flags'                => 'Flaggor',
+	'abusefilter-history-filter'               => 'Filterregel',
 	'abusefilter-history-comments'             => 'Kommentarer',
+	'abusefilter-history-actions'              => 'Handlingar',
+	'abusefilter-history-backedit'             => 'Tillbaka till filterredigering',
+	'abusefilter-history-backlist'             => 'Tillbaka till filterlista',
 );
 
 /** Telugu (తెలుగు)
