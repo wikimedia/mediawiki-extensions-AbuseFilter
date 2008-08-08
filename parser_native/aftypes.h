@@ -10,6 +10,32 @@
 
 namespace afp {
 
+/*
+ *                ABUSEFILTER VARIABLE STORAGE
+ *                ============================
+ *
+ * datum is the AFP variable type.  It is runtime polymorphic, storing objects
+ * of string, integer or floating point type.  It provides the usual operator
+ * overloads, except that operator>>(istream, datum) is not provided.
+ *
+ * A datum automatically converts between types as required, using the
+ * following rules:
+ *
+ *   - arithmetic operations convert arguments to doubles if either argument is
+ *     a double, otherwise to ints.
+ *   - converting a string to a numeric type attempts to parse the string as an
+ *     integer.  if this is not possible, the value 0 is used.
+ *   - type-blind compare (operator==, compare()) does a lexical comparison if
+ *     both arguments are strings, otherwise an arithmetic comparison.
+ *   - type-sensitive compare always returns false if the types are different;
+ *     otherwise, it is identical to a type-blind compare.
+ *   - ordinal comparisons always convert their arguments to arithmetic types,
+ *     even if both are strings.
+ *
+ * Internally, datum is implemented using a boost:variant object.  This is
+ * entirely stack-based, avoiding memory allocation overhead when manipulating
+ * datum objects.
+ */
 class datum {
 public:
 	datum();
