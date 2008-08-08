@@ -85,7 +85,8 @@ struct parser_closure : boost::spirit::closure<parser_closure, datum>
 
 namespace {
 
-datum f_in(datum const &a, datum const &b)
+datum
+f_in(datum const &a, datum const &b)
 {
 	std::string sa = a, sb = b;
 	return datum(std::search(sb.begin(), sb.end(), sa.begin(), sa.end()) != sb.end());
@@ -95,6 +96,33 @@ datum
 f_ternary(datum const &v, datum const &iftrue, datum const &iffalse)
 {
 	return (bool)v ? iftrue : iffalse;
+}
+
+datum
+f_int(std::vector<datum> const &args)
+{
+	if (args.size() != 1)
+		throw parse_error("wrong number of arguments to int() (expected 1)");
+
+	return datum::from_int(args[0].toInt());
+}
+
+datum
+f_string(std::vector<datum> const &args)
+{
+	if (args.size() != 1)
+		throw parse_error("wrong number of arguments to string() (expected 1)");
+
+	return datum::from_string(args[0].toString());
+}
+
+datum
+f_float(std::vector<datum> const &args)
+{
+	if (args.size() != 1)
+		throw parse_error("wrong number of arguments to float() (expected 1)");
+
+	return datum::from_double(args[0].toFloat());
 }
 
 }
@@ -372,6 +400,13 @@ expressor::expressor()
 	 */
 	add_variable("true", afp::datum(true));
 	add_variable("false", afp::datum(false));
+
+	/*
+	 * The cast functions.
+	 */
+	add_function("int", &f_int);
+	add_function("string", &f_string);
+	add_function("float", &f_float);
 }
 
 expressor::~expressor()
