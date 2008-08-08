@@ -200,10 +200,10 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 			 * pointer number or an integer.
 			 */
 			value = 
-				  strict_real_p[value.val = arg1]
-				| int_p[value.val = arg1]
+				  strict_real_p[value.val = bind(&datum::from_double)(arg1)]
+				| int_p[value.val = bind(&datum::from_int)(arg1)]
 				| confix_p('"', *c_escape_ch_p, '"')[
-					value.val = construct_<std::string>(arg1 + 1, arg2 - 1)
+					value.val = bind(&datum::from_string)(construct_<std::string>(arg1 + 1, arg2 - 1))
 				]
 				;
 

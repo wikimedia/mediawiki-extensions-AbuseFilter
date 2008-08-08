@@ -64,6 +64,30 @@ datum::datum(bool var)
 {
 }
 
+datum
+datum::from_string(std::string const &v)
+{
+	datum d;
+	d.value_ = v;
+	return d;
+}
+
+datum
+datum::from_int(long int v)
+{
+	datum d;
+	d.value_ = v;
+	return d;
+}
+
+datum
+datum::from_double(double v)
+{
+	datum d;
+	d.value_ = v;
+	return d;
+}
+
 datum & datum::operator= (datum const &other) {
 	// Protect against self-assignment
 	if (this == &other) {
@@ -288,6 +312,15 @@ struct arith_compare_visitor : boost::static_visitor<datum> {
 datum &
 datum::operator+=(datum const &other)
 {
+	/*
+	 * If either argument is a string, convert both to string.  After discussion
+	 * on #mediawiki, this seems to be the least confusing option.
+	 */
+	if (value_.which() == 0 || other.value_.which() == 0) {
+		value_ = toString() + other.toString();
+		return *this;
+	}
+
 	datum result = boost::apply_visitor(arith_visitor<std::plus>(), value_, other.value_);
 	*this = result;
 	return *this;

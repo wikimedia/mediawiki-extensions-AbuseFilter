@@ -59,6 +59,11 @@ public:
 
 	datum( const datum & oldData );
 		
+	// Type forcing helpers
+	static datum from_string(std::string const &v);
+	static datum from_int(long int v);
+	static datum from_double(double v);
+	
 	// Assignment operator
 	datum &operator= (const datum & other);
 		
