@@ -352,7 +352,7 @@ operator%(datum const &a, datum const &b) {
 
 datum
 pow(datum const &a, datum const &b) {
-	datum result = datum(pow(a.toFloat(),b.toFloat()));
+	datum result = datum(std::pow(a.toFloat(),b.toFloat()));
 	
 	return result;
 }
