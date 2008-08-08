@@ -201,6 +201,13 @@ struct afpmodulus<double> {
 	}
 };
 
+template<typename T>
+struct afppower {
+	T operator() (T const &a, T const &b) const {
+		return std::pow(a,b);
+	}
+};
+
 /*
  * A visitor that performs an arithmetic operation on its arguments,
  * after doing appropriate int->double promotion.
@@ -341,6 +348,13 @@ operator/(datum const &a, datum const &b) {
 datum
 operator%(datum const &a, datum const &b) {
 	return datum(a) %= b;
+}
+
+datum
+pow(datum const &a, datum const &b) {
+	datum result = datum(pow(a.toFloat(),b.toFloat()));
+	
+	return result;
 }
 
 bool

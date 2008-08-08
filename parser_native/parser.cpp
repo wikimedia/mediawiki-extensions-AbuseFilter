@@ -166,6 +166,7 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 					  '*' >> in_expr[mult_expr.val *= arg1] 
 					| '/' >> in_expr[mult_expr.val /= arg1] 
 					| '%' >> in_expr[mult_expr.val %= arg1] 
+					| "**" >> in_expr[mult_expr.val = bind(&afp::pow)(mult_expr.val,arg1)]
 				    )
 				;
 

@@ -110,6 +110,8 @@ bool operator>(datum const &a, datum const &b);
 bool operator<=(datum const &a, datum const &b);
 bool operator>=(datum const &a, datum const &b);
 
+datum pow(datum const &a, datum const &b);
+
 template<typename char_type, typename traits>
 std::basic_ostream<char_type, traits> &
 operator<<(std::basic_ostream<char_type, traits> &s, datum const &d) {
