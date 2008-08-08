@@ -37,6 +37,12 @@ datum f_in(datum const &a, datum const &b)
 	return datum(std::search(sb.begin(), sb.end(), sa.begin(), sa.end()) != sb.end());
 }
 
+datum
+f_ternary(datum const &v, datum const &iftrue, datum const &iffalse)
+{
+	return (bool)v ? iftrue : iffalse;
+}
+
 }
 
 struct function_closure : boost::spirit::closure<
@@ -48,6 +54,17 @@ struct function_closure : boost::spirit::closure<
 	member1 val;
 	member2 func;
 	member3 args;
+};
+
+struct ternary_closure : boost::spirit::closure<
+			 ternary_closure,
+			 datum,
+			 datum,
+			 datum>
+{
+	member1 val;
+	member2 iftrue;
+	member3 iffalse;
 };
 
 struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t>
@@ -122,14 +139,14 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 				  (
 					   self.functions[function.func = arg1]
 					>> '('
-					>> ( bool_expr[push_back(function.args, arg1)] % ',' )
+					>> ( tern_expr[push_back(function.args, arg1)] % ',' )
 					>> ')'
 				  ) [function.val = call_function(function.func, function.args)]
 				;
 
 			basic =
-				  ( '(' >> bool_expr[basic.val = arg1] >> ')' )
-				| ch_p('!') >> bool_expr[basic.val = !arg1] 
+				  ( '(' >> tern_expr[basic.val = arg1] >> ')' )
+				| ch_p('!') >> tern_expr[basic.val = !arg1] 
 				| variable[basic.val = arg1]
 				| function[basic.val = arg1]
 				| value[basic.val = arg1]
@@ -193,7 +210,18 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 				    )
 				;
 
-			expr = bool_expr[self.val = arg1];
+			tern_expr =
+				   bool_expr[tern_expr.val = arg1]
+				>> !(
+					(
+						   "?" >> bool_expr[tern_expr.iftrue = arg1]
+						>> ":" >> bool_expr[tern_expr.iffalse = arg1]
+					)[tern_expr.val =
+						bind(f_ternary)(tern_expr.val, tern_expr.iftrue, tern_expr.iffalse)]
+				   )
+				;
+
+			expr = tern_expr[self.val = arg1];
 		}
 
 		rule_t const &start() const {
@@ -203,6 +231,7 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 		rule_t value, variable, basic, bool_expr,
 		       eq_expr, eq2_expr, mult_expr, plus_expr, in_expr, expr;
 		rule<ScannerT, function_closure::context_t> function;
+		rule<ScannerT, ternary_closure::context_t> tern_expr;
 	};
 };
 

@@ -14,9 +14,8 @@ namespace afp {
 
 datum 
 af_count(std::vector<datum> const &args) {
-	if (!args.size()) {
+	if (args.empty())
 		throw exception( "Not enough arguments to count" );
-	}
 	
 	std::string needle, haystack;
 	
@@ -37,16 +36,15 @@ af_count(std::vector<datum> const &args) {
 	}
 	
 	// One extra was added, but one extra is needed if only one arg was supplied.
-	if (args.size() >= 2) {
+	if (args.size() >= 2)
 		count--;
-	}
 	
 	return datum((long int)count);
 }
 
 datum
 af_norm(std::vector<datum> const &args) {
-	if (!args.size())
+	if (args.empty())
 		throw exception( "Not enough arguments to norm" );
 	
 	std::string orig = args[0].toString();
@@ -88,7 +86,7 @@ rmdoubles(std::string const &orig) {
 
 datum
 af_specialratio(std::vector<datum> const &args) {
-	if (!args.size())
+	if (args.empty())
 		throw exception( "Not enough arguments to specialratio" );
 	
 	std::string orig = args[0].toString();
@@ -109,9 +107,8 @@ af_specialratio(std::vector<datum> const &args) {
 
 datum
 af_rmspecials(std::vector<datum> const &args) {
-	if (!args.size()) {
+	if (args.empty())
 		throw exception( "Not enough arguments to rmspecials" );
-	}
 	
 	return datum(rmspecials(args[0].toString()));
 }
@@ -131,36 +128,32 @@ rmspecials(std::string const &orig) {
 
 datum
 af_ccnorm(std::vector<datum> const &args) {
-	if (!args.size()) {
+	if (args.empty())
 		throw exception( "Not enough arguments to ccnorm" );
-	}
 	
 	return datum( confusable_character_normalise( args[0].toString() ) );
 }
 
 datum 
 af_rmdoubles(std::vector<datum> const &args) {
-	if (!args.size()) {
+	if (args.empty())
 		throw exception( "Not enough arguments to rmdoubles" );
-	}
 	
 	return datum(rmdoubles(args[0].toString()));
 }
 
 datum
 af_length(std::vector<datum> const &args) {
-	if (!args.size()) {
+	if (args.empty())
 		throw exception( "Not enough arguments to lcase" );
-	}
 	
 	return datum( (long int)utf8::utf8_strlen(args[0].toString()) );
 }
 
 datum
 af_lcase(std::vector<datum> const &args) {
-	if (!args.size()) {
+	if (args.empty())
 		throw exception( "Not enough arguments to lcase" );
-	}
 	
 	return datum(utf8::utf8_tolower(args[0].toString()));
 }
@@ -171,10 +164,8 @@ confusable_character_normalise(std::string const &orig) {
 	std::string result;
 	
 	utf8::utf8_iterator<std::string::const_iterator> it(orig.begin(), orig.end()), end;
-	for (; it != end; ++it) {
-		int chr = equivs.get(*it);
-		result.append(utf8::codepoint_to_utf8(chr));
-	}
+	for (; it != end; ++it)
+		result += utf8::codepoint_to_utf8(equivs.get(*it));
 	
 	return result;
 }
