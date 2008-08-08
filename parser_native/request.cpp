@@ -2,6 +2,11 @@
 
 namespace afp {
 
+/* Perhaps, these should be configurable */
+static const int MAX_FILTER_LEN = 1024 * 10; /* 10 KB */
+static const int MAX_VARNAME_LEN = 255;
+static const int MAX_VALUE_LEN = 1024 * 256; /* 256 KB */
+
 // Protocol:
 // code NULL <key> NULL <value> NULL ... <value> NULL NULL
 
@@ -18,6 +23,9 @@ request::load(std::istream &inp) {
 	for (; it != end; ++it) {
 		if (*it == '\0')
 			break;
+		if (filter.size() > MAX_FILTER_LEN)
+			return false;
+
 		filter.push_back(*it);
 	}
 
@@ -33,6 +41,8 @@ request::load(std::istream &inp) {
 		for (; it != end; ++it) {
 			if (*it == '\0')
 				break;
+			if (key.size() > MAX_VARNAME_LEN)
+				return false;
 			key.push_back(*it);
 		}
 
@@ -49,6 +59,8 @@ request::load(std::istream &inp) {
 		for (; it != end; ++it) {
 			if (*it == '\0')
 				break;
+			if (value.size() > MAX_VALUE_LEN)
+				return false;
 			value.push_back(*it);
 		}
 
