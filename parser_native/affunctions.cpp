@@ -45,22 +45,20 @@ af_count(std::vector<datum> const &args) {
 
 datum
 af_norm(std::vector<datum> const &args) {
-	if (!args.size()) {
+	if (!args.size())
 		throw exception( "Not enough arguments to norm" );
-	}
 	
 	std::string orig = args[0].toString();
 	
-	std::string::const_iterator p, charStart, end;
-	int chr = 0, lastchr = 0;
+	int lastchr = 0;
 	equiv_set const &equivs = equiv_set::instance();
 	std::string result;
 	
-	p = orig.begin();
-	end = orig.end();
-	
-	while (chr = utf8::next_utf8_char( p, charStart, end )) {
-		chr = equivs.get(chr);
+	utf8::utf8_iterator<std::string::const_iterator>
+	       	it(orig.begin(), orig.end()), end;
+
+	for (; it != end; ++it) {
+		int chr = equivs.get(*it);
 		
 		if (chr != lastchr && isalnum(chr))
 			result.append(utf8::codepoint_to_utf8(chr));
@@ -73,18 +71,15 @@ af_norm(std::vector<datum> const &args) {
 
 std::string 
 rmdoubles(std::string const &orig) {
-	std::string::const_iterator p, charStart, end;
-	int chr,lastchr = 0;
+	int lastchr = 0;
 	std::string result;
 	
-	p = orig.begin();
-	end = orig.end();
-	while (chr = utf8::next_utf8_char( p, charStart, end )) {
-		if (chr != lastchr) {
-			result.append(utf8::codepoint_to_utf8(chr));
-		}
+	utf8::utf8_iterator<std::string::const_iterator> it(orig.begin(), orig.end()), end;
+	for (; it != end; ++it) {
+		if (*it != lastchr)
+			result.append(utf8::codepoint_to_utf8(*it));
 		
-		lastchr = chr;
+		lastchr = *it;
 	}
 	
 	return result;
@@ -92,24 +87,21 @@ rmdoubles(std::string const &orig) {
 
 datum
 af_specialratio(std::vector<datum> const &args) {
-	if (!args.size()) {
+	if (!args.size())
 		throw exception( "Not enough arguments to specialratio" );
-	}
 	
 	std::string orig = args[0].toString();
-	std::string::const_iterator p, charStart, end;
-	int chr;
+	int len = 0;
 	int specialcount = 0;
 	
-	p = orig.begin();
-	end = orig.end();
-	while (chr = utf8::next_utf8_char( p, charStart, end )) {
-		if (!isalnum(chr)) {
+	utf8::utf8_iterator<std::string::const_iterator> it(orig.begin(), orig.end()), end;
+	for (; it != end; ++it) {
+		len++;
+		if (!isalnum(*it))
 			specialcount++;
-		}
 	}
 	
-	double ratio = (float)(specialcount) / (float)(utf8::utf8_strlen(orig));
+	double ratio = (float)specialcount / len;
 		
 	return datum(ratio);
 }
@@ -125,16 +117,12 @@ af_rmspecials(std::vector<datum> const &args) {
 
 std::string 
 rmspecials(std::string const &orig) {
-	std::string::const_iterator p, charStart, end;
-	int chr = 0;
 	std::string result;
 	
-	p = orig.begin();
-	end = orig.end();
-	while (chr = utf8::next_utf8_char( p, charStart, end )) {
-		if (isalnum(chr)) {
-			result.append(utf8::codepoint_to_utf8(chr));
-		}
+	utf8::utf8_iterator<std::string::const_iterator> it(orig.begin(), orig.end()), end;
+	for (; it != end; ++it) {
+		if (isalnum(*it))
+			result.append(utf8::codepoint_to_utf8(*it));
 	}
 	
 	return result;
@@ -178,16 +166,12 @@ af_lcase(std::vector<datum> const &args) {
 
 std::string 
 confusable_character_normalise(std::string const &orig) {
-	std::string::const_iterator p, charStart, end;
-	int chr;
 	equiv_set const &equivs = equiv_set::instance();
 	std::string result;
 	
-	p = orig.begin();
-	end = orig.end();
-	
-	while (chr = utf8::next_utf8_char( p, charStart, end )) {
-		chr = equivs.get(chr);
+	utf8::utf8_iterator<std::string::const_iterator> it(orig.begin(), orig.end()), end;
+	for (; it != end; ++it) {
+		int chr = equivs.get(*it);
 		result.append(utf8::codepoint_to_utf8(chr));
 	}
 	
