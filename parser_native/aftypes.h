@@ -140,6 +140,6 @@ operator<<(std::basic_ostream<char_type, traits> &s, AFPData const &d) {
 	return s;
 }
 
-bool isInVector( string needle, vector<string> haystack );
+bool isInVector(std::string const &needle, std::vector<std::string> const &haystack);
 
 #endif	/* !AFTYPES_H */

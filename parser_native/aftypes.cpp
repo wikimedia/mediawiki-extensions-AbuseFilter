@@ -77,7 +77,7 @@ AFPData & AFPData::operator= (AFPData const &other) {
 	return *this;
 }
 
-bool isInVector( string needle, vector<string> haystack ) {
+bool isInVector(std::string const &needle, std::vector<std::string> const &haystack) {
 	return std::find(haystack.begin(), haystack.end(), needle) != haystack.end();
 }
 

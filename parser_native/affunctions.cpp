@@ -11,12 +11,13 @@
 
 #define EQUIVSET_LOC "equivset.txt"
 
-AFPData af_count( vector<AFPData> args ) {
+AFPData 
+af_count(std::vector<AFPData> const &args) {
 	if (!args.size()) {
 		throw AFPException( "Not enough arguments to count" );
 	}
 	
-	string needle,haystack;
+	string needle, haystack;
 	
 	if (args.size() < 2) {
 		needle = ",";
@@ -31,7 +32,7 @@ AFPData af_count( vector<AFPData> args ) {
 	
 	while (last_pos != haystack.npos) {
 		count++;
-		last_pos = haystack.find( needle, last_pos );
+		last_pos = haystack.find(needle, last_pos);
 	}
 	
 	// One extra was added, but one extra is needed if only one arg was supplied.
@@ -42,7 +43,8 @@ AFPData af_count( vector<AFPData> args ) {
 	return AFPData((long int)count);
 }
 
-AFPData af_norm( vector<AFPData> args ) {
+AFPData
+af_norm(vector<AFPData> const &args) {
 	if (!args.size()) {
 		throw AFPException( "Not enough arguments to norm" );
 	}
@@ -51,15 +53,16 @@ AFPData af_norm( vector<AFPData> args ) {
 	
 	string::const_iterator p, charStart, end;
 	int chr = 0,lastchr = 0;
-	map<int,int> &equivSet = getEquivSet();
+	map<int,int> const &equivSet = getEquivSet();
 	string result;
 	
 	p = orig.begin();
 	end = orig.end();
 	
 	while (chr = next_utf8_char( p, charStart, end )) {
-		if (equivSet.find(chr) != equivSet.end()) {
-			chr = equivSet[chr];
+		std::map<int, int>::const_iterator it;
+		if ((it = equivSet.find(chr)) != equivSet.end()) {
+			chr = it->second;
 		}
 		
 		if (chr != lastchr && isalnum(chr)) {
@@ -72,7 +75,8 @@ AFPData af_norm( vector<AFPData> args ) {
 	return AFPData(result);
 }
 
-string rmdoubles( string orig ) {
+string 
+rmdoubles(std::string const &orig) {
 	string::const_iterator p, charStart, end;
 	int chr,lastchr = 0;
 	string result;
@@ -90,7 +94,8 @@ string rmdoubles( string orig ) {
 	return result;
 }
 
-AFPData af_specialratio( vector<AFPData> args ) {
+AFPData
+af_specialratio(std::vector<AFPData> const &args) {
 	if (!args.size()) {
 		throw AFPException( "Not enough arguments to specialratio" );
 	}
@@ -113,18 +118,17 @@ AFPData af_specialratio( vector<AFPData> args ) {
 	return AFPData(ratio);
 }
 
-AFPData af_rmspecials( vector<AFPData> args ) {
+AFPData
+af_rmspecials(std::vector<AFPData> const &args) {
 	if (!args.size()) {
 		throw AFPException( "Not enough arguments to rmspecials" );
 	}
 	
-	string orig = args[0].toString();
-	string result = rmspecials(orig);
-	
-	return AFPData(result);
+	return AFPData(rmspecials(args[0].toString()));
 }
 
-string rmspecials( string orig ) {
+std::string 
+rmspecials(std::string const &orig) {
 	string::const_iterator p, charStart, end;
 	int chr = 0;
 	string result;
@@ -140,7 +144,8 @@ string rmspecials( string orig ) {
 	return result;
 }
 
-AFPData af_ccnorm( vector<AFPData> args ) {
+AFPData
+af_ccnorm(std::vector<AFPData> const &args) {
 	if (!args.size()) {
 		throw AFPException( "Not enough arguments to ccnorm" );
 	}
@@ -148,17 +153,17 @@ AFPData af_ccnorm( vector<AFPData> args ) {
 	return AFPData( confusable_character_normalise( args[0].toString() ) );
 }
 
-AFPData af_rmdoubles( vector<AFPData> args ) {
+AFPData 
+af_rmdoubles(std::vector<AFPData> const &args) {
 	if (!args.size()) {
 		throw AFPException( "Not enough arguments to rmdoubles" );
 	}
 	
-	string result = rmdoubles( args[0].toString() );
-	
-	return AFPData(result);
+	return AFPData(rmdoubles(args[0].toString()));
 }
 
-AFPData af_length( vector<AFPData> args ) {
+AFPData
+af_length(std::vector<AFPData> const &args) {
 	if (!args.size()) {
 		throw AFPException( "Not enough arguments to lcase" );
 	}
@@ -166,7 +171,8 @@ AFPData af_length( vector<AFPData> args ) {
 	return AFPData( (long int)utf8_strlen(args[0].toString()) );
 }
 
-AFPData af_lcase( vector<AFPData> args ) {
+AFPData
+af_lcase(std::vector<AFPData> const &args) {
 	if (!args.size()) {
 		throw AFPException( "Not enough arguments to lcase" );
 	}
@@ -174,18 +180,20 @@ AFPData af_lcase( vector<AFPData> args ) {
 	return AFPData(utf8_tolower(args[0].toString()));
 }
 
-string confusable_character_normalise( string orig ) {
+std::string 
+confusable_character_normalise(std::string const &orig) {
 	string::const_iterator p, charStart, end;
 	int chr;
-	map<int,int> &equivSet = getEquivSet();
+	map<int,int> const &equivSet = getEquivSet();
 	string result;
 	
 	p = orig.begin();
 	end = orig.end();
 	
 	while (chr = next_utf8_char( p, charStart, end )) {
-		if (equivSet.find(chr) != equivSet.end()) {
-			chr = equivSet[chr];
+		map<int, int>::const_iterator it;
+		if ((it = equivSet.find(chr)) != equivSet.end()) {
+			chr = it->second;
 		}
 		
 		result.append(codepointToUtf8(chr));
@@ -194,7 +202,7 @@ string confusable_character_normalise( string orig ) {
 	return result;
 }
 
-map<int,int> &
+map<int,int> const &
 getEquivSet() {
 	static map<int,int> equivSet;
 	// Map of codepoint:codepoint
@@ -236,7 +244,8 @@ getEquivSet() {
 // Weak UTF-8 decoder
 // Will return garbage on invalid input (overshort sequences, overlong sequences, etc.)
 // Stolen from wikidiff2 extension by Tim Starling (no point in reinventing the wheel)
-int next_utf8_char(std::string::const_iterator & p, std::string::const_iterator & charStart, 
+int
+next_utf8_char(std::string::const_iterator & p, std::string::const_iterator & charStart, 
 		std::string::const_iterator end)
 {
 	int c=0;
@@ -287,18 +296,6 @@ std::size_t	ret = 0;
 	int	skip = 1;
 
 		skip = U8_LENGTH(*it);
-#if 0
-		if (*it >= 0xc0) {
-			if (*it < 0xe0)
-				skip = 1;
-			else if (*it < 0xf0)
-				skip = 2;
-			else
-				skip = 3;
-		} else
-			skip = 1;
-#endif
-			
 		if (it + skip >= end)
 			return ret;	/* end of string */
 				
@@ -311,7 +308,8 @@ std::size_t	ret = 0;
 /*
  * This could almost certainly be done in a nicer way.
  */
-std::string utf8_tolower(std::string const &s)
+std::string
+utf8_tolower(std::string const &s)
 {
 	std::vector<UChar> ustring;
 	UErrorCode error = U_ZERO_ERROR;
@@ -338,7 +336,8 @@ std::string utf8_tolower(std::string const &s)
 }
 
 // Ported from MediaWiki core function in PHP.
-string codepointToUtf8( int codepoint ) {
+string
+codepointToUtf8(int codepoint) {
 	string ret;
 	
 	if(codepoint < 0x80) {
