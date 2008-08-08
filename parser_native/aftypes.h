@@ -8,71 +8,46 @@
 #include <boost/variant.hpp>
 #include <boost/lexical_cast.hpp>
 
-using namespace std;
+namespace afp {
 
-#define T_NONE 0
-#define T_ID 1
-#define T_KEYWORD 2
-#define T_STRING 3
-#define T_NUMBER 4
-#define T_OP 5
-#define T_BRACE 6
-#define T_COMMA 7
-
-#define D_NULL 0
-#define D_INTEGER 1
-#define D_FLOAT 2
-#define D_STRING 3
-
-#define DATATYPE_MAX 3
-
-class AFPToken {
+class datum {
 public:
-	AFPToken() {}
-	AFPToken(unsigned int type, string value, unsigned int pos);
-	unsigned int type;
-	string value;
-	unsigned int pos;
-};
-
-class AFPData {
-public:
-	AFPData();
+	datum();
 
 	/*
 	 * Generic ctor tries to convert to an int.
 	 */
 	template<typename T>
-	AFPData(T const &v)
+	datum(T const &v)
 		: value_(boost::lexical_cast<long int>(v))
 	{
 	}
 
 	// Specific type constructors
-	AFPData( std::string const &var );
-	AFPData( char const *var );
-	AFPData( long int var );
-	AFPData( float var );
-	AFPData( double var );
-	AFPData( bool var );
+	datum( std::string const &var );
+	datum( char const *var );
+	datum( long int var );
+	datum( float var );
+	datum( double var );
+	datum( bool var );
 
-	AFPData( const AFPData & oldData );
+	datum( const datum & oldData );
 		
 	// Assignment operator
-	AFPData &operator= (const AFPData & other);
+	datum &operator= (const datum & other);
 		
-	AFPData &operator+=(AFPData const &other);
-	AFPData &operator-=(AFPData const &other);
-	AFPData &operator*=(AFPData const &other);
-	AFPData &operator/=(AFPData const &other);
-	AFPData &operator%=(AFPData const &other);
+	datum &operator+=(datum const &other);
+	datum &operator-=(datum const &other);
+	datum &operator*=(datum const &other);
+	datum &operator/=(datum const &other);
+	datum &operator%=(datum const &other);
 	bool operator!() const;
 
-	bool compare(AFPData const &other) const;
-	bool compare_with_type(AFPData const &other) const;
-	bool less_than(AFPData const &other) const;
+	bool compare(datum const &other) const;
+	bool compare_with_type(datum const &other) const;
+	bool less_than(datum const &other) const;
 
-	string toString() const;
+	std::string toString() const;
 	long int toInt() const;
 	double toFloat() const;
 	bool toBool() const {
@@ -108,38 +83,40 @@ protected:
 	valuetype value_;
 };
 
-class AFPException :exception {
-	public:
-		const char* what() {return this->s;}
-		AFPException( const char* str ) {s = str;}
-		AFPException( string str, string var ) { char* s1 = new char[1024]; sprintf( s1, str.c_str(), var.c_str() ); s = s1; }
-		AFPException( string str, int var ) { char* s1 = new char[1024]; sprintf( s1, str.c_str(), var ); s = s1; }
-		AFPException( string str, string svar, int ivar ) { char* s1 = new char[1024]; sprintf( s1, str.c_str(), ivar, svar.c_str() ); s = s1; }
-		
-	private:
-		const char* s;
+class exception : std::exception {
+public:
+	exception(std::string const &what) 
+		: what_(what) {}
+	~exception() throw() {}
+
+	char const *what() const throw() {
+		return what_.c_str();
+	}
+
+private:
+	std::string what_;
 };
 
-AFPData operator+(AFPData const &a, AFPData const &b);
-AFPData operator-(AFPData const &a, AFPData const &b);
-AFPData operator*(AFPData const &a, AFPData const &b);
-AFPData operator/(AFPData const &a, AFPData const &b);
-AFPData operator%(AFPData const &a, AFPData const &b);
+datum operator+(datum const &a, datum const &b);
+datum operator-(datum const &a, datum const &b);
+datum operator*(datum const &a, datum const &b);
+datum operator/(datum const &a, datum const &b);
+datum operator%(datum const &a, datum const &b);
 
-bool operator==(AFPData const &a, AFPData const &b);
-bool operator!=(AFPData const &a, AFPData const &b);
-bool operator<(AFPData const &a, AFPData const &b);
-bool operator>(AFPData const &a, AFPData const &b);
-bool operator<=(AFPData const &a, AFPData const &b);
-bool operator>=(AFPData const &a, AFPData const &b);
+bool operator==(datum const &a, datum const &b);
+bool operator!=(datum const &a, datum const &b);
+bool operator<(datum const &a, datum const &b);
+bool operator>(datum const &a, datum const &b);
+bool operator<=(datum const &a, datum const &b);
+bool operator>=(datum const &a, datum const &b);
 
 template<typename char_type, typename traits>
 std::basic_ostream<char_type, traits> &
-operator<<(std::basic_ostream<char_type, traits> &s, AFPData const &d) {
+operator<<(std::basic_ostream<char_type, traits> &s, datum const &d) {
 	d.print_to(s);
 	return s;
 }
 
-bool isInVector(std::string const &needle, std::vector<std::string> const &haystack);
+} // namespace afp
 
 #endif	/* !AFTYPES_H */

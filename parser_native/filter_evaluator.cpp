@@ -2,6 +2,8 @@
 #include	"parser.h"
 #include	"affunctions.h"
 
+namespace afp {
+
 filter_evaluator::filter_evaluator()
 {
 	e.add_function("length", af_length);
@@ -26,8 +28,9 @@ filter_evaluator::evaluate(std::string const &filter) const
 }
 
 void
-filter_evaluator::add_variable(std::string const &key, AFPData value)
+filter_evaluator::add_variable(std::string const &key, datum value)
 {
 	e.add_variable(key, value);
 }
 
+} // namespace afp

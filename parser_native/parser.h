@@ -9,21 +9,25 @@
 
 #include	"aftypes.h"
 
+namespace afp {
+
 struct parser_grammar;
 
 struct expressor : boost::noncopyable {
-	typedef boost::function<AFPData (std::vector<AFPData>)> func_t;
+	typedef boost::function<datum (std::vector<datum>)> func_t;
 
 	expressor();
 	~expressor();
 
-	AFPData evaluate(std::string const &expr) const;
+	datum evaluate(std::string const &expr) const;
 
-	void add_variable(std::string const &name, AFPData value);
+	void add_variable(std::string const &name, datum value);
 	void add_function(std::string const &name, func_t value);
 
 private:
 	parser_grammar *grammar_;
 };
+
+} // namespace afp
 
 #endif	/* !EXPRESSOR_H */

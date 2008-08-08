@@ -15,7 +15,7 @@
 
 int main( int argc, char** argv ) {
 	while (true) {
-		request r;
+		afp::request r;
 		bool result = false;
 		
 		try {
@@ -35,11 +35,11 @@ int main( int argc, char** argv ) {
 			}	
 
 			result = r.evaluate();
-		} catch (AFPException &excep) {
-			cerr << "EXCEPTION: " << excep.what() << endl;
+		} catch (afp::exception &excep) {
+			std::cerr << "EXCEPTION: " << excep.what() << std::endl;
 		}
 		
-		cout << ( result ? "MATCH\n" : "NOMATCH\n" );
+		std::cout << ( result ? "MATCH\n" : "NOMATCH\n" );
 	}
 }
 

@@ -1,11 +1,13 @@
 #include	"request.h"
 
+namespace afp {
+
 // Protocol:
 // code NULL <key> NULL <value> NULL ... <value> NULL NULL
 
 bool 
 request::load(std::istream &inp) {
-	inp.unsetf(ios_base::skipws);
+	inp.unsetf(std::ios_base::skipws);
 
 	std::istream_iterator<char> it(inp), p, end;
 
@@ -55,7 +57,7 @@ request::load(std::istream &inp) {
 
 		it++;
 
-		f.add_variable(key, AFPData(value));
+		f.add_variable(key, datum(value));
 	}
 	
 	return true;
@@ -67,3 +69,4 @@ request::evaluate()
 	return f.evaluate(filter);
 }
 
+} // namespace afp

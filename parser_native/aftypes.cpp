@@ -1,30 +1,27 @@
-#include "aftypes.h"
 #include <sstream>
 #include <ios>
 #include <iostream>
 #include <cassert>
 #include <algorithm>
 #include <cmath>
+
 #include <boost/lexical_cast.hpp>
 
-AFPToken::AFPToken(unsigned int new_type, string new_value, unsigned int new_pos) {
-	type = new_type;
-	value = new_value;
-	pos = new_pos;
-}
+#include "aftypes.h"
 
+namespace afp {
 
-AFPData::AFPData(std::string const &var) {
+datum::datum(std::string const &var) {
 	_init_from_string(var);
 }
 
-AFPData::AFPData(char const *var)
+datum::datum(char const *var)
 {
 	_init_from_string(var);
 }
 
 void
-AFPData::_init_from_string(std::string const &var)
+datum::_init_from_string(std::string const &var)
 {
 	// Try integer	
 	try {
@@ -39,35 +36,35 @@ AFPData::_init_from_string(std::string const &var)
 	}
 }
 
-AFPData::AFPData() {
+datum::datum() {
 }
 
-AFPData::AFPData(AFPData const &other) 
+datum::datum(datum const &other) 
 	: value_(other.value_)
 {
 }
 
-AFPData::AFPData(long int var)
+datum::datum(long int var)
 	: value_(var)
 {
 }
 
-AFPData::AFPData(double var)
+datum::datum(double var)
 	: value_(var)
 {
 }
 
-AFPData::AFPData(float var)
+datum::datum(float var)
 	: value_(var)
 {
 }
 
-AFPData::AFPData(bool var)
+datum::datum(bool var)
 	: value_((long int) var)
 {
 }
 
-AFPData & AFPData::operator= (AFPData const &other) {
+datum & datum::operator= (datum const &other) {
 	// Protect against self-assignment
 	if (this == &other) {
 		return *this;
@@ -75,10 +72,6 @@ AFPData & AFPData::operator= (AFPData const &other) {
 	
 	value_ = other.value_;
 	return *this;
-}
-
-bool isInVector(std::string const &needle, std::vector<std::string> const &haystack) {
-	return std::find(haystack.begin(), haystack.end(), needle) != haystack.end();
 }
 
 /*
@@ -108,7 +101,7 @@ struct from_string_converter<std::string> {
 };
 
 /*
- * Conversions from AFPData to other types.
+ * Conversions from datum to other types.
  */
 struct to_string_visitor : boost::static_visitor<std::string> {
 	std::string operator() (std::string const &v) const {
@@ -156,17 +149,17 @@ struct to_double_visitor : boost::static_visitor<double> {
 };
 
 std::string
-AFPData::toString() const {
+datum::toString() const {
 	return boost::apply_visitor(to_string_visitor(), value_);
 }
 
 long int
-AFPData::toInt() const {
+datum::toInt() const {
 	return boost::apply_visitor(to_int_visitor(), value_);
 }
 
 double
-AFPData::toFloat() const {
+datum::toFloat() const {
 	return boost::apply_visitor(to_double_visitor(), value_);
 }
 
@@ -213,13 +206,13 @@ struct afpmodulus<double> {
  * after doing appropriate int->double promotion.
  */
 template<template<typename V> class Operator>
-struct arith_visitor : boost::static_visitor<AFPData> {
+struct arith_visitor : boost::static_visitor<datum> {
 	/*
 	 * Anything involving a double returns a double.
 	 * Otherwise, int is returned.
 	 */
 	template<typename T, typename U>
-	AFPData operator() (T const &a, U const &b) const {
+	datum operator() (T const &a, U const &b) const {
 		typedef typename from_string_converter<T>::type a_type;
 		typedef typename from_string_converter<U>::type b_type;
 
@@ -272,7 +265,7 @@ struct compare_visitor : boost::static_visitor<bool> {
  * For comparisons that only work on integers - strings will be converted.
  */
 template<template<typename V> class Operator>
-struct arith_compare_visitor : boost::static_visitor<AFPData> {
+struct arith_compare_visitor : boost::static_visitor<datum> {
 	template<typename T, typename U>
 	bool operator() (T const &a, U const &b) const {
 		typedef typename from_string_converter<T>::type a_type;
@@ -285,83 +278,83 @@ struct arith_compare_visitor : boost::static_visitor<AFPData> {
 	}
 };
 
-AFPData &
-AFPData::operator+=(AFPData const &other)
+datum &
+datum::operator+=(datum const &other)
 {
-	AFPData result = boost::apply_visitor(arith_visitor<std::plus>(), value_, other.value_);
+	datum result = boost::apply_visitor(arith_visitor<std::plus>(), value_, other.value_);
 	*this = result;
 	return *this;
 }
 
-AFPData &
-AFPData::operator-=(AFPData const &other)
+datum &
+datum::operator-=(datum const &other)
 {
-	AFPData result = boost::apply_visitor(arith_visitor<std::minus>(), value_, other.value_);
+	datum result = boost::apply_visitor(arith_visitor<std::minus>(), value_, other.value_);
 	*this = result;
 	return *this;
 }
 
-AFPData &
-AFPData::operator*=(AFPData const &other)
+datum &
+datum::operator*=(datum const &other)
 {
-	AFPData result = boost::apply_visitor(arith_visitor<std::multiplies>(), value_, other.value_);
+	datum result = boost::apply_visitor(arith_visitor<std::multiplies>(), value_, other.value_);
 	*this = result;
 	return *this;
 }
 	
-AFPData&
-AFPData::operator/=(AFPData const &other)
+datum&
+datum::operator/=(datum const &other)
 {
-	AFPData result = boost::apply_visitor(arith_visitor<std::divides>(), value_, other.value_);
+	datum result = boost::apply_visitor(arith_visitor<std::divides>(), value_, other.value_);
 	*this = result;
 	return *this;
 }
 
-AFPData&
-AFPData::operator%=(AFPData const &other)
+datum&
+datum::operator%=(datum const &other)
 {
-	AFPData result = boost::apply_visitor(arith_visitor<afpmodulus>(), value_, other.value_);
+	datum result = boost::apply_visitor(arith_visitor<afpmodulus>(), value_, other.value_);
 	*this = result;
 	return *this;
 }
 
-AFPData
-operator+(AFPData const &a, AFPData const &b) {
-	return AFPData(a) += b;
+datum
+operator+(datum const &a, datum const &b) {
+	return datum(a) += b;
 }
 
-AFPData
-operator-(AFPData const &a, AFPData const &b) {
-	return AFPData(a) -= b;
+datum
+operator-(datum const &a, datum const &b) {
+	return datum(a) -= b;
 }
 
-AFPData
-operator*(AFPData const &a, AFPData const &b) {
-	return AFPData(a) *= b;
+datum
+operator*(datum const &a, datum const &b) {
+	return datum(a) *= b;
 }
 
-AFPData
-operator/(AFPData const &a, AFPData const &b) {
-	return AFPData(a) /= b;
+datum
+operator/(datum const &a, datum const &b) {
+	return datum(a) /= b;
 }
 
-AFPData
-operator%(AFPData const &a, AFPData const &b) {
-	return AFPData(a) %= b;
+datum
+operator%(datum const &a, datum const &b) {
+	return datum(a) %= b;
 }
 
 bool
-operator==(AFPData const &a, AFPData const &b) {
+operator==(datum const &a, datum const &b) {
 	return a.compare(b);
 }
 
 bool
-AFPData::compare(AFPData const &other) const {
+datum::compare(datum const &other) const {
 	return boost::apply_visitor(compare_visitor<std::equal_to>(), value_, other.value_);
 }
 
 bool
-AFPData::compare_with_type(AFPData const &other) const {
+datum::compare_with_type(datum const &other) const {
 	if (value_.which() != other.value_.which())
 		return false;
 
@@ -369,36 +362,38 @@ AFPData::compare_with_type(AFPData const &other) const {
 }
 
 bool
-AFPData::less_than(AFPData const &other) const {
+datum::less_than(datum const &other) const {
 	return boost::apply_visitor(arith_compare_visitor<std::less>(), value_, other.value_);
 }
 
 bool
-operator< (AFPData const &a, AFPData const &b) {
+operator< (datum const &a, datum const &b) {
 	return a.less_than(b);
 }
 
 bool
-operator<= (AFPData const &a, AFPData const &b) {
+operator<= (datum const &a, datum const &b) {
 	return a.less_than(b) || a == b;
 }
 
 bool
-operator> (AFPData const &a, AFPData const &b) {
+operator> (datum const &a, datum const &b) {
 	return !(a <= b);
 }
 
 bool
-operator>= (AFPData const &a, AFPData const &b) {
+operator>= (datum const &a, datum const &b) {
 	return !(a < b);
 }
 
 bool
-operator!= (AFPData const &a, AFPData const &b) {
+operator!= (datum const &a, datum const &b) {
 	return !(a == b);
 }
 
 bool
-AFPData::operator! () const {
+datum::operator! () const {
 	return !(int) *this;
 }
+
+} // namespace afp

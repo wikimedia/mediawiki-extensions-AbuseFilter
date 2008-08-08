@@ -1,25 +1,24 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
-#include <sstream>
-#include <map>
 
 #include "filter_evaluator.h"
 #include "request.h"
 
-int main( int argc, char** argv ) {
-	request r;	
-	string result;
+int main(int argc, char** argv)
+{
+	afp::request r;	
+	std::string result;
 	
 	try {
 		if (!r.load(std::cin))
 			return 1;
 			
 		result = r.evaluate();
-	} catch (AFPException excep) {
-		cout << "EXCEPTION: " << excep.what() << endl;
-		cerr << "EXCEPTION: " << excep.what() << endl;
+	} catch (afp::exception &excep) {
+		std::cout << "EXCEPTION: " << excep.what() << std::endl;
+		std::cerr << "EXCEPTION: " << excep.what() << std::endl;
 	}
 	
-	cout << result << "\0";
+	std::cout << result << "\0";
 }

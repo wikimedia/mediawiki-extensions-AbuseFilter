@@ -8,6 +8,7 @@
 #include	<boost/spirit/phoenix/operators.hpp>
 #include	<boost/function.hpp>
 #include	<boost/noncopyable.hpp>
+#include	<boost/format.hpp>
 
 #include	"aftypes.h"
 #include	"parser.h"
@@ -17,30 +18,32 @@ using namespace phoenix;
 
 namespace px = phoenix;
 
+namespace afp {
+
 struct parse_error : std::runtime_error {
 	parse_error(char const *what) : std::runtime_error(what) {}
 };
 
-struct parser_closure : boost::spirit::closure<parser_closure, AFPData>
+struct parser_closure : boost::spirit::closure<parser_closure, datum>
 {
 	member1 val;
 };
 
 namespace {
 
-AFPData f_in(AFPData const &a, AFPData const &b)
+datum f_in(datum const &a, datum const &b)
 {
 	std::string sa = a, sb = b;
-	return AFPData(std::search(sb.begin(), sb.end(), sa.begin(), sa.end()) != sb.end());
+	return datum(std::search(sb.begin(), sb.end(), sa.begin(), sa.end()) != sb.end());
 }
 
 }
 
 struct function_closure : boost::spirit::closure<
 			  	function_closure,
-				AFPData,
-				boost::function<AFPData (std::vector<AFPData>)>,
-				std::vector<AFPData> >
+				datum,
+				boost::function<datum (std::vector<datum>)>,
+				std::vector<datum> >
 {
 	member1 val;
 	member2 func;
@@ -49,14 +52,14 @@ struct function_closure : boost::spirit::closure<
 
 struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t>
 {
-	symbols<AFPData> variables;
-	symbols<boost::function<AFPData (std::vector<AFPData>)> > functions;
+	symbols<datum> variables;
+	symbols<boost::function<datum (std::vector<datum>)> > functions;
 
-	void add_variable(std::string const &name, AFPData const &value) {
+	void add_variable(std::string const &name, datum const &value) {
 		variables.add(name.c_str(), value);
 	}
 
-	void add_function(std::string const &name, boost::function<AFPData (std::vector<AFPData>)> func) {
+	void add_function(std::string const &name, boost::function<datum (std::vector<datum>)> func) {
 		functions.add(name.c_str(), func);
 	}
 
@@ -84,11 +87,11 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 		struct call_function_impl {
 			template<typename F, typename A>
 			struct result {
-				typedef AFPData type;
+				typedef datum type;
 			};
 
 			template<typename F, typename A>
-			AFPData operator() (F const &func, A const &args) const {
+			datum operator() (F const &func, A const &args) const {
 				return func(args);
 			}
 		};
@@ -173,9 +176,9 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 					  "=="  >> eq_expr[eq2_expr.val = eq2_expr.val == arg1]
 					| "!="  >> eq_expr[eq2_expr.val = eq2_expr.val != arg1]
 					| "===" >> eq_expr[eq2_expr.val = 
-							bind(&AFPData::compare_with_type)(eq2_expr.val, arg1)]
+							bind(&datum::compare_with_type)(eq2_expr.val, arg1)]
 					| "!==" >> eq_expr[eq2_expr.val = 
-							!bind(&AFPData::compare_with_type)(eq2_expr.val, arg1)]
+							!bind(&datum::compare_with_type)(eq2_expr.val, arg1)]
 				    )
 				;
 
@@ -198,7 +201,7 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 		}
 
 		rule_t value, variable, basic, bool_expr,
-		       eq_expr, eq2_expr, mult_expr, plus_expr, in_expr, not_expr, expr;
+		       eq_expr, eq2_expr, mult_expr, plus_expr, in_expr, expr;
 		rule<ScannerT, function_closure::context_t> function;
 	};
 };
@@ -213,12 +216,13 @@ expressor::~expressor()
 	delete grammar_;
 }
 
-AFPData
+datum
 expressor::evaluate(std::string const &filter) const
 {
-	AFPData ret;
+	datum ret;
 	parse_info<std::string::const_iterator> info = 
-		parse(filter.begin(), filter.end(), (*grammar_)[var(ret) = arg1], space_p);
+		parse(filter.begin(), filter.end(), (*grammar_)[var(ret) = arg1],
+				comment_p("/*", "*/") | chset<>("\n\t "));
 	if (info.full) {
 		return ret;
 	} else {
@@ -228,7 +232,7 @@ expressor::evaluate(std::string const &filter) const
 }
 
 void
-expressor::add_variable(std::string const &name, AFPData value)
+expressor::add_variable(std::string const &name, datum value)
 {
 	grammar_->add_variable(name, value);
 }
@@ -239,13 +243,17 @@ expressor::add_function(std::string const &name, func_t value)
 	grammar_->add_function(name, value);
 }
 
+} // namespace afp
+
 #ifdef TEST_PARSER
-AFPData f_add(std::vector<AFPData> const &args)
+afp::datum 
+f_add(std::vector<afp::datum> const &args)
 {
 	return args[0] + args[1];
 }
 
-AFPData f_norm(std::vector<AFPData> const &args)
+afp::datum 
+f_norm(std::vector<afp::datum> const &args)
 {
 	return args[0];
 }
@@ -253,7 +261,13 @@ AFPData f_norm(std::vector<AFPData> const &args)
 int
 main(int argc, char **argv)
 {
-	expressor e;
+	if (argc != 2) {
+		std::cerr << boost::format("usage: %s <expr>\n")
+				% argv[0];
+		return 1;
+	}
+
+	afp::expressor e;
 	e.add_variable("ONE", 1);
 	e.add_variable("TWO", 2);
 	e.add_variable("THREE", 3);

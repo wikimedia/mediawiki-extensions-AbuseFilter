@@ -13,6 +13,8 @@ af_expr_objs = \
 	af_expr-parser.o		\
 	af_expr-filter_evaluator.o	\
 	af_expr-eval.o			\
+	af_expr-utf8.o			\
+	af_expr-equiv.o			\
 	af_expr-request.o
 
 af_parser_objs = \
@@ -21,6 +23,8 @@ af_parser_objs = \
 	af_parser-main.o		\
 	af_parser-parser.o		\
 	af_parser-request.o		\
+	af_parser-utf8.o		\
+	af_parser-equiv.o		\
 	af_parser-filter_evaluator.o
 
 check_objs = \
@@ -28,6 +32,8 @@ check_objs = \
 	check-aftypes.o		\
 	check-check.o		\
 	check-parser.o		\
+	check-utf8.o		\
+	check-equiv.o		\
 	check-filter_evaluator.o
 
 syntax_check_objs = \
@@ -35,6 +41,8 @@ syntax_check_objs = \
 	syntax_check-aftypes.o		\
 	syntax_check-filter_evaluator.o	\
 	syntax_check-parser.o		\
+	syntax_check-utf8.o		\
+	syntax_check-equiv.o		\
 	syntax_check-syntax_check.o
 
 expr_objs = \

@@ -5,21 +5,22 @@
 
 #include "filter_evaluator.h"
 
-int main( int argc, char** argv ) {
-	stringbuf ss( ios::in | ios::out );
+int main(int argc, char** argv)
+{
+	std::stringbuf ss( std::ios::in | std::ios::out );
 	
 	// Fill the stringstream
-	cin.get(ss,'\x04');
+	std::cin.get(ss,'\x04');
 	
-	string filter = ss.str();
+	std::string filter = ss.str();
 	
 	try {
-		filter_evaluator f;
+		afp::filter_evaluator f;
 		f.evaluate(filter);
-	} catch (AFPException excep) {
-		cout << "PARSERR: " << excep.what() << endl;
-		exit(0);
+	} catch (afp::exception &excep) {
+		std::cout << "PARSERR: " << excep.what() << std::endl;
+		std::exit(0);
 	}
 	
-	cout << "SUCCESS" << endl;
+	std::cout << "SUCCESS" << std::endl;
 }
