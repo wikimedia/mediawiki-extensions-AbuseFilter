@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2008 Andrew Garrett.
+ * Copyright (c) 2008 River Tarnell <river@wikimedia.org>
+ * Derived from public domain code contributed by Victor Vasiliev.
+ *
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely. This software is provided 'as-is', without any express or
+ * implied warranty.
+ */
 #include	<stdexcept>
 #include	<iostream>
 
@@ -9,6 +19,7 @@
 #include	<boost/function.hpp>
 #include	<boost/noncopyable.hpp>
 #include	<boost/format.hpp>
+#include	<boost/regex/icu.hpp>
 
 #include	"aftypes.h"
 #include	"parser.h"
@@ -98,6 +109,13 @@ datum
 f_like(datum const &str, datum const &pattern)
 {
 	return datum::from_int(match(str.toString().c_str(), pattern.toString().c_str()));
+}
+
+datum
+f_regex(datum const &str, datum const &pattern)
+{
+	boost::u32regex r = boost::make_u32regex(pattern.toString());
+	return boost::u32regex_match(str.toString(), r);
 }
 
 datum
@@ -289,7 +307,9 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 					  "in"       >> basic[in_expr.val = bind(&f_in)(in_expr.val, arg1)]
 					| "contains" >> basic[in_expr.val = bind(&f_in)(arg1, in_expr.val)]
 					| "like"     >> basic[in_expr.val = bind(&f_like)(arg1, in_expr.val)]
-					| "matches"     >> basic[in_expr.val = bind(&f_like)(arg1, in_expr.val)]
+					| "matches"  >> basic[in_expr.val = bind(&f_like)(arg1, in_expr.val)]
+					| "rlike"    >> basic[in_expr.val = bind(&f_regex)(in_expr.val, arg1)]
+					| "regex"    >> basic[in_expr.val = bind(&f_regex)(in_expr.val, arg1)]
 				    )
 				;
 
