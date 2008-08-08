@@ -14,13 +14,17 @@ $aliases['en'] = array(
 	'AbuseFilter' => array( 'AbuseFilter' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'AbuseLog'    => array( 'سجل_الإساءة' ),
 	'AbuseFilter' => array( 'فلتر_الإساءة' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'AbuseLog'    => array( 'سجل_الإساءة' ),
 	'AbuseFilter' => array( 'فلتر_الإساءة' ),
