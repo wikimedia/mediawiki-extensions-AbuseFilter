@@ -13,22 +13,24 @@
 #include "affunctions.h"
 
 int main( int argc, char** argv ) {
-	afp::filter_evaluator f;
-
+	afp::u32filter_evaluator f;
 	bool result = false;
 	
 	for(int i=0;i<=100;i++) {
 		try {
-			f.add_variable("foo", afp::datum::from_string("love"));
-			result = f.evaluate( "specialratio('foo;') == 0.25" );
+			f.add_variable(
+				make_u32string("foo"), 
+				afp::u32datum::from_string(
+					make_u32string("love")));
+			result = f.evaluate(make_u32string("specialratio(\"foo;\") == 0.25"));
 		} catch (afp::exception* excep) {
 			printf( "Exception: %s\n", excep->what() );
 		}
 	}
 	
 	if (result) {
-		printf("Success!\n");
+		std::cout << "success\n";
 	} else {
-		printf("OH NOES!\n");
+		std::cout << "failed\n";
 	}
 }
