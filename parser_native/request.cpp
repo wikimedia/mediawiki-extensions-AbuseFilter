@@ -76,7 +76,7 @@ request::load(std::istream &inp) {
 
 	if (!(str = reader.read(MAX_FILTER_LEN)))
 		return false;
-	filter = *str;
+	filter = make_u32string(*str);
 
 	for (;;) {
 		std::string key, value;
@@ -95,7 +95,9 @@ request::load(std::istream &inp) {
 			return false;
 		value = *str;
 
-		f.add_variable(key, datum::from_string_convert(value));
+		f.add_variable(	make_u32string(key),
+				u32datum::from_string_convert(
+					make_u32string(value)));
 	}
 	
 	return true;

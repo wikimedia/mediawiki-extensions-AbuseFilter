@@ -18,23 +18,19 @@ expr: CPPFLAGS+=-DTEST_PARSER
 
 af_expr_objs = \
 	af_expr-eval.o			\
-	af_expr-utf8.o			\
 	af_expr-equiv.o			\
 	af_expr-request.o
 
 af_parser_objs = \
 	af_parser-main.o		\
 	af_parser-request.o		\
-	af_parser-utf8.o		\
 	af_parser-equiv.o
 
 check_objs = \
 	check-check.o		\
-	check-utf8.o		\
 	check-equiv.o
 
 syntax_check_objs = \
-	syntax_check-utf8.o		\
 	syntax_check-equiv.o		\
 	syntax_check-syntax_check.o
 

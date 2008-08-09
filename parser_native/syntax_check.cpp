@@ -26,8 +26,8 @@ int main(int argc, char** argv)
 	std::string filter = ss.str();
 	
 	try {
-		afp::filter_evaluator f;
-		f.evaluate(filter);
+		afp::u32filter_evaluator f;
+		f.evaluate(make_u32string(filter));
 	} catch (afp::exception &excep) {
 		std::cout << "PARSERR: " << excep.what() << std::endl;
 		std::exit(0);

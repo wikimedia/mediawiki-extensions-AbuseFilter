@@ -109,7 +109,7 @@ af_count(std::vector<basic_datum<charT> > const &args) {
 	std::basic_string<charT> needle, haystack;
 	
 	if (args.size() < 2) {
-		needle = ",";
+		needle = make_astring<charT, char>(",");
 		haystack = args[0].toString();
 	} else {
 		needle = args[0].toString();

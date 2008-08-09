@@ -43,14 +43,14 @@ typedef basic_filter_evaluator<UChar32> u32filter_evaluator;
 template<typename charT>
 basic_filter_evaluator<charT>::basic_filter_evaluator()
 {
-	e.add_function("length", af_length<charT>);
-	e.add_function("lcase", af_lcase<charT>);
-	e.add_function("ccnorm", af_ccnorm<charT>);
-	e.add_function("rmdoubles", af_rmdoubles<charT>);
-	e.add_function("specialratio", af_specialratio<charT>);
-	e.add_function("rmspecials", af_rmspecials<charT>);
-	e.add_function("norm", af_norm<charT>);
-	e.add_function("count", af_count<charT>);
+	e.add_function(make_astring<charT, char>("length"), af_length<charT>);
+	e.add_function(make_astring<charT, char>("lcase"), af_lcase<charT>);
+	e.add_function(make_astring<charT, char>("ccnorm"), af_ccnorm<charT>);
+	e.add_function(make_astring<charT, char>("rmdoubles"), af_rmdoubles<charT>);
+	e.add_function(make_astring<charT, char>("specialratio"), af_specialratio<charT>);
+	e.add_function(make_astring<charT, char>("rmspecials"), af_rmspecials<charT>);
+	e.add_function(make_astring<charT, char>("norm"), af_norm<charT>);
+	e.add_function(make_astring<charT, char>("count"), af_count<charT>);
 }
 
 template<typename charT>

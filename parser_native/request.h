@@ -16,6 +16,7 @@
 #include	<istream>
 
 #include	"filter_evaluator.h"
+#include	"afstring.h"
 
 namespace afp {
 
@@ -24,8 +25,8 @@ struct request {
 	bool evaluate(void);
 
 private:
-	filter_evaluator f;
-	std::string filter;
+	u32filter_evaluator f;
+	u32string filter;
 };
 
 } // namespace afp
