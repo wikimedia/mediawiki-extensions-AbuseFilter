@@ -32,6 +32,7 @@
 #include	<unicode/uchar.h>
 
 #include	"aftypes.h"
+#include	"afstring.h"
 
 namespace afp {
 
@@ -54,7 +55,7 @@ private:
 };
 
 typedef basic_expressor<char> expressor;
-typedef basic_expressor<UChar> u32expressor;
+typedef basic_expressor<UChar32> u32expressor;
 
 using namespace boost::spirit;
 using namespace phoenix;
@@ -134,7 +135,7 @@ template<typename charT>
 basic_datum<charT>
 f_in(basic_datum<charT> const &a, basic_datum<charT> const &b)
 {
-	std::string sa = a.toString(), sb = b.toString();
+	std::basic_string<charT> sa = a.toString(), sb = b.toString();
 	return basic_datum<charT>::from_int(std::search(sb.begin(), sb.end(), sa.begin(), sa.end()) != sb.end());
 }
 
@@ -150,7 +151,9 @@ basic_datum<charT>
 f_regex(basic_datum<charT> const &str, basic_datum<charT> const &pattern)
 {
 	boost::u32regex r = boost::make_u32regex(pattern.toString());
-	return basic_datum<charT>::from_int(boost::u32regex_match(str.toString(), r));
+	std::basic_string<charT> s = str.toString();
+	return basic_datum<charT>::from_int(boost::u32regex_match(
+				s.begin(), s.end(), r));
 }
 
 template<typename charT>
@@ -192,7 +195,7 @@ f_float(std::vector<basic_datum<charT> > const &args)
 
 template<typename charT>
 basic_datum<charT>
-f_append(basic_datum<charT> const &a, char b)
+f_append(basic_datum<charT> const &a, charT b)
 {
 	return basic_datum<charT>::from_string(a.toString() + b);
 }
@@ -201,7 +204,7 @@ template<typename charT>
 basic_datum<charT>
 f_strip_last(basic_datum<charT> const &a)
 {
-	std::string s(a.toString());
+	std::basic_string<charT> s(a.toString());
 	s.resize(s.size() - 1);
 	return basic_datum<charT>::from_string(s);
 }
@@ -277,14 +280,16 @@ struct parser_grammar : public grammar<parser_grammar<charT>, typename parser_cl
 	/* User-defined variables. */
 	symbols<basic_datum<charT> > variables;
 
-	void add_variable(std::string const &name, basic_datum<charT> const &value) {
+	void add_variable(std::basic_string<charT> const &name, basic_datum<charT> const &value) {
 		variables.add(name.c_str(), value);
 	}
 
 	/* User-defined functions. */
 	symbols<boost::function<basic_datum<charT> (std::vector<basic_datum<charT> >)> > functions;
 
-	void add_function(std::string const &name, boost::function<basic_datum<charT> (std::vector<basic_datum<charT> >)> func) {
+	void add_function(
+			std::basic_string<charT> const &name, 
+			boost::function<basic_datum<charT> (std::vector<basic_datum<charT> >)> func) {
 		functions.add(name.c_str(), func);
 	}
 
@@ -355,7 +360,7 @@ struct parser_grammar : public grammar<parser_grammar<charT>, typename parser_cl
 				 */
 				| (
 					   ch_p(charT('"'))[value.val = bind(&basic_datum<charT>::from_string)(empty_string)]
-					>> *((c_escape_ch_p[value.val = bind(&f_append<charT>)(value.val, arg1)] - charT('"')))
+					>> *((c_escape_ch_p[value.val = bind(&f_append<charT>)(value.val, arg1)] - '"'))
 					>> ch_p(charT('"'))[value.val = bind(&f_strip_last<charT>)(value.val)]
 				  )
 				;
@@ -535,15 +540,15 @@ basic_expressor<charT>::basic_expressor()
 	/*
 	 * We provide a couple of standard variables everyone wants.
 	 */
-	add_variable("true", afp::basic_datum<charT>::from_int(true));
-	add_variable("false", afp::basic_datum<charT>::from_int(false));
+	add_variable(make_astring<charT>("true"), afp::basic_datum<charT>::from_int(true));
+	add_variable(make_astring<charT>("false"), afp::basic_datum<charT>::from_int(false));
 
 	/*
 	 * The cast functions.
 	 */
-	add_function("int", &f_int<charT>);
-	add_function("string", &f_string<charT>);
-	add_function("float", &f_float<charT>);
+	add_function(make_astring<charT>("int"), &f_int<charT>);
+	add_function(make_astring<charT>("string"), &f_string<charT>);
+	add_function(make_astring<charT>("float"), &f_float<charT>);
 }
 
 template<typename charT>
@@ -571,7 +576,7 @@ basic_expressor<charT>::evaluate(std::basic_string<charT> const &filter) const
 	if (info.full) {
 		return ret;
 	} else {
-		std::cerr << "stopped at: [" << std::basic_string<charT>(info.stop, filter.end()) << "]\n";
+		//std::cerr << "stopped at: [" << std::basic_string<charT>(info.stop, filter.end()) << "]\n";
 		throw parse_error("parsing failed");
 	}
 }

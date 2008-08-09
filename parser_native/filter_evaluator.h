@@ -38,7 +38,7 @@ private:
 };
 
 typedef basic_filter_evaluator<char> filter_evaluator;
-typedef basic_filter_evaluator<UChar> u32filter_evaluator;
+typedef basic_filter_evaluator<UChar32> u32filter_evaluator;
 
 template<typename charT>
 basic_filter_evaluator<charT>::basic_filter_evaluator()

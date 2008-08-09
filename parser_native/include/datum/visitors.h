@@ -13,6 +13,7 @@
 #define DATUM_VISITORS_H
 
 #include	"datum/create.h"
+#include	"afstring.h"
 
 namespace afp {
 namespace datum_impl {
@@ -58,8 +59,8 @@ struct from_string_converter<charT, std::basic_string<charT> > {
 	template<typename T>
 	static type convert(T const &v) {
 		try {
-			return boost::lexical_cast<type>(v);
-		} catch (boost::bad_lexical_cast &e) {
+			return u32lexical_cast<charT, type>(v);
+		} catch (bad_u32lexical_cast &e) {
 			return 0;
 		}
 	}
@@ -76,7 +77,7 @@ struct to_string_visitor : boost::static_visitor<std::basic_string<charT> > {
 
 	template<typename T>
 	std::basic_string<charT> operator() (T const &v) const {
-		return boost::lexical_cast<std::basic_string<charT> >(v);
+		return u32lexical_cast<charT, std::basic_string<charT> >(v);
 	}
 };
 
@@ -84,8 +85,8 @@ template<typename charT>
 struct to_int_visitor : boost::static_visitor<long int> {
 	long int operator() (std::basic_string<charT> const &v) const {
 		try {
-			return boost::lexical_cast<long int>(v);
-		} catch (boost::bad_lexical_cast &e) {
+			return u32lexical_cast<charT, long int>(v);
+		} catch (bad_u32lexical_cast &e) {
 			return 0;
 		}
 	}
@@ -104,8 +105,8 @@ template<typename charT>
 struct to_double_visitor : boost::static_visitor<double> {
 	double operator() (std::basic_string<charT> const &v) const {
 		try {
-			return boost::lexical_cast<double>(v);
-		} catch (boost::bad_lexical_cast &e) {
+			return u32lexical_cast<charT, double>(v);
+		} catch (bad_u32lexical_cast &e) {
 			return 0;
 		}
 	}

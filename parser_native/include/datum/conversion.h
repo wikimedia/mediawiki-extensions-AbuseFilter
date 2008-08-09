@@ -22,11 +22,11 @@ basic_datum<charT>::from_string_convert(basic_datum<charT>::string_t const &var)
 {
 	// Try integer	
 	try {
-		return from_int(boost::lexical_cast<long int>(var));
-	} catch (boost::bad_lexical_cast &e) {
+		return from_int(u32lexical_cast<charT, long int>(var));
+	} catch (bad_u32lexical_cast &e) {
 		try {
-			return from_double(boost::lexical_cast<double>(var));
-		} catch (boost::bad_lexical_cast &e) {
+			return from_double(u32lexical_cast<charT, double>(var));
+		} catch (bad_u32lexical_cast &e) {
 			/* If it's nothing else, it's a string */
 			return from_string(var);
 		}

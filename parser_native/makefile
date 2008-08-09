@@ -9,7 +9,7 @@
 
 include makefile.config
 
-CPPFLAGS	= -Iinclude $(EXTRA_CPPFLAGS)
+CPPFLAGS	= -I. -Iinclude $(EXTRA_CPPFLAGS)
 LDFLAGS		= $(EXTRA_LDFLAGS)
 
 LIBS		= -lboost_regex$(BOOST_TAG) -licuuc -licui18n -licudata

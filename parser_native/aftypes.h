@@ -159,7 +159,7 @@ basic_datum<charT>::less_than(basic_datum<charT> const &other) const {
 }
 
 typedef basic_datum<char> datum;
-typedef basic_datum<UChar> u32datum;
+typedef basic_datum<UChar32> u32datum;
 
 } // namespace afp
 
