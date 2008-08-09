@@ -18,7 +18,6 @@ expr: CPPFLAGS+=-DTEST_PARSER
 
 af_expr_objs = \
 	af_expr-affunctions.o		\
-	af_expr-parser.o		\
 	af_expr-filter_evaluator.o	\
 	af_expr-eval.o			\
 	af_expr-utf8.o			\
@@ -28,7 +27,6 @@ af_expr_objs = \
 af_parser_objs = \
 	af_parser-affunctions.o		\
 	af_parser-main.o		\
-	af_parser-parser.o		\
 	af_parser-request.o		\
 	af_parser-utf8.o		\
 	af_parser-equiv.o		\
@@ -37,7 +35,6 @@ af_parser_objs = \
 check_objs = \
 	check-affunctions.o	\
 	check-check.o		\
-	check-parser.o		\
 	check-utf8.o		\
 	check-equiv.o		\
 	check-filter_evaluator.o
@@ -45,13 +42,12 @@ check_objs = \
 syntax_check_objs = \
 	syntax_check-affunctions.o	\
 	syntax_check-filter_evaluator.o	\
-	syntax_check-parser.o		\
 	syntax_check-utf8.o		\
 	syntax_check-equiv.o		\
 	syntax_check-syntax_check.o
 
 expr_objs = \
-	expr-parser.o
+	expr-expr.o
 
 progs = check af_parser syntax_check af_expr expr
 
