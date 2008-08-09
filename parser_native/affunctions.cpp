@@ -83,7 +83,7 @@ af_count(std::vector<datum> const &args) {
 	if (args.size() >= 2)
 		count--;
 	
-	return datum((long int)count);
+	return datum::from_int((long int)count);
 }
 
 datum
@@ -108,7 +108,7 @@ af_norm(std::vector<datum> const &args) {
 		lastchr = chr;
 	}
 	
-	return datum(result);
+	return datum::from_string(result);
 }
 
 std::string 
@@ -144,13 +144,13 @@ af_specialratio(std::vector<datum> const &args) {
 	
 	double ratio = (float)specialcount / len;
 		
-	return datum(ratio);
+	return datum::from_double(ratio);
 }
 
 datum
 af_rmspecials(std::vector<datum> const &args) {
 	check_args("rmspecials", args.size(), 1);
-	return datum(rmspecials(args[0].toString()));
+	return datum::from_string(rmspecials(args[0].toString()));
 }
 
 std::string 
@@ -169,25 +169,25 @@ rmspecials(std::string const &orig) {
 datum
 af_ccnorm(std::vector<datum> const &args) {
 	check_args("ccnorm", args.size(), 1);
-	return datum( confusable_character_normalise( args[0].toString() ) );
+	return datum::from_string(confusable_character_normalise( args[0].toString()));
 }
 
 datum 
 af_rmdoubles(std::vector<datum> const &args) {
 	check_args("ccnorm", args.size(), 1);
-	return datum(rmdoubles(args[0].toString()));
+	return datum::from_string(rmdoubles(args[0].toString()));
 }
 
 datum
 af_length(std::vector<datum> const &args) {
 	check_args("ccnorm", args.size(), 1);
-	return datum( (long int)utf8::utf8_strlen(args[0].toString()) );
+	return datum::from_int((long int)utf8::utf8_strlen(args[0].toString()));
 }
 
 datum
 af_lcase(std::vector<datum> const &args) {
 	check_args("ccnorm", args.size(), 1);
-	return datum(utf8::utf8_tolower(args[0].toString()));
+	return datum::from_string(utf8::utf8_tolower(args[0].toString()));
 }
 
 std::string 

@@ -50,31 +50,22 @@ namespace afp {
 class datum {
 public:
 	datum();
-
-	/*
-	 * Generic ctor tries to convert to an int.
-	 */
-	template<typename T>
-	datum(T const &v)
-		: value_(boost::lexical_cast<long int>(v))
-	{
-	}
-
-	// Specific type constructors
-	datum( std::string const &var );
-	datum( char const *var );
-	datum( long int var );
-	datum( float var );
-	datum( double var );
-	datum( bool var );
-
-	datum( const datum & oldData );
+	datum(datum const &oldData);
 		
-	// Type forcing helpers
+	// Type forcing construction functions
 	static datum from_string(std::string const &v);
+	static datum from_string_convert(std::string const &v);
 	static datum from_int(long int v);
 	static datum from_double(double v);
 	
+	/*
+	 * Template versions of the above.  See below for the actual
+	 * implementations.
+	 */
+	template<typename T> static datum from(T const &v) {
+		return from_int(0);
+	}
+
 	// Assignment operator
 	datum &operator= (const datum & other);
 		
@@ -98,22 +89,6 @@ public:
 		return (bool) toInt();
 	}
 		
-	operator long int(void) const {
-		return toInt();
-	}
-
-	operator double(void) const {
-		return toFloat();
-	}
-
-	operator std::string(void) const {
-		return toString();
-	}
-
-	operator bool(void) const {
-		return (bool) toInt();
-	}
-
 	template<typename char_type, typename traits>
 	void
 	print_to(std::basic_ostream<char_type, traits> &s) const {
@@ -140,6 +115,11 @@ public:
 private:
 	std::string what_;
 };
+
+
+template<> datum datum::from<std::string>(std::string const &v);
+template<> datum datum::from<long int>(long int const &v);
+template<> datum datum::from<long int>(long int const &v);
 
 datum operator+(datum const &a, datum const &b);
 datum operator-(datum const &a, datum const &b);

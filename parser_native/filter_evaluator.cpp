@@ -31,7 +31,7 @@ bool
 filter_evaluator::evaluate(std::string const &filter) const
 {
 	try {
-		return (bool) e.evaluate(filter);
+		return e.evaluate(filter).toBool();
 	} catch (std::exception &e) {
 		std::cerr << "can't evaluate filter: " << e.what() << '\n';
 		return false;

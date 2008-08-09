@@ -101,8 +101,8 @@ int match(char const *, char const *);
 datum
 f_in(datum const &a, datum const &b)
 {
-	std::string sa = a, sb = b;
-	return datum(std::search(sb.begin(), sb.end(), sa.begin(), sa.end()) != sb.end());
+	std::string sa = a.toString(), sb = b.toString();
+	return datum::from_int(std::search(sb.begin(), sb.end(), sa.begin(), sa.end()) != sb.end());
 }
 
 datum
@@ -115,13 +115,13 @@ datum
 f_regex(datum const &str, datum const &pattern)
 {
 	boost::u32regex r = boost::make_u32regex(pattern.toString());
-	return boost::u32regex_match(str.toString(), r);
+	return datum::from_int(boost::u32regex_match(str.toString(), r));
 }
 
 datum
 f_ternary(datum const &v, datum const &iftrue, datum const &iffalse)
 {
-	return (bool)v ? iftrue : iffalse;
+	return v.toInt() ? iftrue : iffalse;
 }
 
 datum
@@ -163,6 +163,30 @@ f_strip_last(datum const &a)
 	std::string s(a.toString());
 	s.resize(s.size() - 1);
 	return datum::from_string(s);
+}
+
+datum
+datum_and(datum const &a, datum const &b)
+{
+	return datum::from_int(a.toInt() && b.toInt());
+}
+
+datum
+datum_or(datum const &a, datum const &b)
+{
+	return datum::from_int(a.toInt() || b.toInt());
+}
+
+datum
+datum_xor(datum const &a, datum const &b)
+{
+	return datum::from_int((bool)a.toInt() ^ (bool)b.toInt());
+}
+
+datum
+datum_negate(datum const &a)
+{
+	return datum::from_int(!(a.toBool()));
 }
 
 }
@@ -280,7 +304,7 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 				 * *(c_escape_ch_p[x]) into (*c_escape_ch_p)[x]
 				 */
 				| (
-					   ch_p('"')[value.val = ""]
+					   ch_p('"')[value.val = bind(&datum::from_string)("")]
 					>> *((c_escape_ch_p[value.val = bind(&f_append)(value.val, arg1)] - '"'))
 					>> ch_p('"')[value.val = bind(&f_strip_last)(value.val)]
 				  )
@@ -295,7 +319,7 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 			 */
 			variable = 
 				  self.variables[variable.val = arg1]
-				| (+ (upper_p | '_') )[variable.val = ""]
+				| (+ (upper_p | '_') )[variable.val = bind(&datum::from_string)("")]
 				;
 
 			/*
@@ -317,7 +341,7 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 			 */
 			basic =
 				  ( '(' >> tern_expr[basic.val = arg1] >> ')' )
-				| ch_p('!') >> tern_expr[basic.val = !arg1] 
+				| ch_p('!') >> tern_expr[basic.val = bind(&datum_negate)(arg1)]
 				| ch_p('+') >> tern_expr[basic.val = arg1] 
 				| ch_p('-') >> tern_expr[basic.val = -arg1] 
 				| value[basic.val = arg1]
@@ -381,10 +405,10 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 			ord_expr  =
 				  plus_expr[ord_expr.val = arg1]
 				>> *( 
-					  "<"  >> plus_expr[ord_expr.val = ord_expr.val < arg1]
-					| ">"  >> plus_expr[ord_expr.val = ord_expr.val > arg1]
-					| "<=" >> plus_expr[ord_expr.val = ord_expr.val <= arg1]
-					| ">=" >> plus_expr[ord_expr.val = ord_expr.val >= arg1]
+					  "<"  >> plus_expr[ord_expr.val = bind(&datum::from_int)(ord_expr.val < arg1)]
+					| "<=" >> plus_expr[ord_expr.val = bind(&datum::from_int)(ord_expr.val <= arg1)]
+					| ">"  >> plus_expr[ord_expr.val = bind(&datum::from_int)(ord_expr.val > arg1)]
+					| ">=" >> plus_expr[ord_expr.val = bind(&datum::from_int)(ord_expr.val >= arg1)]
 				    )
 				;
 
@@ -394,14 +418,14 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 			eq_expr =
 				  ord_expr[eq_expr.val = arg1]
 				>> *( 
-					  "="   >> eq_expr[eq_expr.val = eq_expr.val == arg1]
-					| "=="  >> eq_expr[eq_expr.val = eq_expr.val == arg1]
-					| "!="  >> eq_expr[eq_expr.val = eq_expr.val != arg1]
-					| "/="  >> eq_expr[eq_expr.val = eq_expr.val != arg1]
+					  "="   >> eq_expr[eq_expr.val = bind(&datum::from_int)(eq_expr.val == arg1)]
+					| "=="  >> eq_expr[eq_expr.val = bind(&datum::from_int)(eq_expr.val == arg1)]
+					| "!="  >> eq_expr[eq_expr.val = bind(&datum::from_int)(eq_expr.val != arg1)]
+					| "/="  >> eq_expr[eq_expr.val = bind(&datum::from_int)(eq_expr.val != arg1)]
 					| "===" >> eq_expr[eq_expr.val = 
-							bind(&datum::compare_with_type)(eq_expr.val, arg1)]
+							bind(&datum::from_int)(bind(&datum::compare_with_type)(eq_expr.val, arg1))]
 					| "!==" >> eq_expr[eq_expr.val = 
-							!bind(&datum::compare_with_type)(eq_expr.val, arg1)]
+							bind(&datum::from_int)(!bind(&datum::compare_with_type)(eq_expr.val, arg1))]
 				    )
 				;
 
@@ -411,11 +435,9 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 			bool_expr =
 				  eq_expr[bool_expr.val = arg1]
 				>> *( 
-					  '&' >> eq_expr[bool_expr.val = bool_expr.val && arg1]
-					| '|' >> eq_expr[bool_expr.val = bool_expr.val || arg1]
-					| '^' >> eq_expr[bool_expr.val = 
-							((bool_expr.val || arg1)
-							  && !(bool_expr.val && arg1)) ]
+					  '&' >> eq_expr[bool_expr.val = bind(datum_and)(bool_expr.val, arg1)]
+					| '|' >> eq_expr[bool_expr.val = bind(datum_or)(bool_expr.val, arg1)]
+					| '^' >> eq_expr[bool_expr.val = bind(datum_xor)(bool_expr.val, arg1)]
 				    )
 				;
 
@@ -458,8 +480,8 @@ expressor::expressor()
 	/*
 	 * We provide a couple of standard variables everyone wants.
 	 */
-	add_variable("true", afp::datum(true));
-	add_variable("false", afp::datum(false));
+	add_variable("true", afp::datum::from_int(true));
+	add_variable("false", afp::datum::from_int(false));
 
 	/*
 	 * The cast functions.
@@ -672,9 +694,9 @@ main(int argc, char **argv)
 	}
 
 	afp::expressor e;
-	e.add_variable("ONE", 1);
-	e.add_variable("TWO", 2);
-	e.add_variable("THREE", 3);
+	e.add_variable("ONE", afp::datum::from_int(1));
+	e.add_variable("TWO", afp::datum::from_int(2));
+	e.add_variable("THREE", afp::datum::from_int(3));
 	e.add_function("add", f_add);
 	e.add_function("norm", f_norm);
 

@@ -22,57 +22,28 @@
 
 namespace afp {
 
-datum::datum(std::string const &var) {
-	_init_from_string(var);
-}
-
-datum::datum(char const *var)
-{
-	_init_from_string(var);
-}
-
-void
-datum::_init_from_string(std::string const &var)
-{
-	// Try integer	
-	try {
-		value_ = boost::lexical_cast<long int>(var);
-	} catch (boost::bad_lexical_cast &e) {
-		try {
-			value_ = boost::lexical_cast<double>(var);
-		} catch (boost::bad_lexical_cast &e) {
-			/* If it's nothing else, it's a string */
-			value_ = var;
-		}
-	}
-}
-
 datum::datum() {
 }
 
-datum::datum(datum const &other) 
+datum::datum(datum const &other)
 	: value_(other.value_)
 {
 }
 
-datum::datum(long int var)
-	: value_(var)
+datum
+datum::from_string_convert(std::string const &var)
 {
-}
-
-datum::datum(double var)
-	: value_(var)
-{
-}
-
-datum::datum(float var)
-	: value_(var)
-{
-}
-
-datum::datum(bool var)
-	: value_((long int) var)
-{
+	// Try integer	
+	try {
+		return from_int(boost::lexical_cast<long int>(var));
+	} catch (boost::bad_lexical_cast &e) {
+		try {
+			return from_double(boost::lexical_cast<double>(var));
+		} catch (boost::bad_lexical_cast &e) {
+			/* If it's nothing else, it's a string */
+			return from_string(var);
+		}
+	}
 }
 
 datum
@@ -97,6 +68,18 @@ datum::from_double(double v)
 	datum d;
 	d.value_ = v;
 	return d;
+}
+
+template<> datum datum::from<std::string>(std::string const &v) {
+	return from_string(v);
+}
+
+template<> datum datum::from<long int>(long int const &v) {
+	return from_int(v);
+}
+
+template<> datum datum::from<double>(double const &v) {
+	return from_double(v);
 }
 
 datum & datum::operator= (datum const &other) {
@@ -259,9 +242,9 @@ struct arith_visitor : boost::static_visitor<datum> {
 		typedef typename from_string_converter<U>::type b_type;
 
 		Operator<typename preferred_type<a_type, b_type>::type> op;
-		return op(
+		return datum::from<typename preferred_type<a_type, b_type>::type>(op(
 			from_string_converter<T>::convert(a), 
-			from_string_converter<U>::convert(b));
+			from_string_converter<U>::convert(b)));
 	}
 
 	/*
@@ -272,7 +255,8 @@ struct arith_visitor : boost::static_visitor<datum> {
 		typedef typename from_string_converter<T>::type a_type;
 
 		Operator<typename preferred_type<a_type, a_type>::type> op;
-		return op(from_string_converter<T>::convert(a));
+		return datum::from<typename preferred_type<a_type, a_type>::type>(
+				op(from_string_converter<T>::convert(a)));
 	}
 
 };
@@ -319,7 +303,7 @@ struct compare_visitor : boost::static_visitor<bool> {
  * For comparisons that only work on integers - strings will be converted.
  */
 template<template<typename V> class Operator>
-struct arith_compare_visitor : boost::static_visitor<datum> {
+struct arith_compare_visitor : boost::static_visitor<bool> {
 	template<typename T, typename U>
 	bool operator() (T const &a, U const &b) const {
 		typedef typename from_string_converter<T>::type a_type;
@@ -420,7 +404,7 @@ operator%(datum const &a, datum const &b) {
 
 datum
 pow(datum const &a, datum const &b) {
-	datum result = datum(std::pow(a.toFloat(),b.toFloat()));
+	datum result = datum::from_double(std::pow(a.toFloat(),b.toFloat()));
 	
 	return result;
 }
@@ -475,7 +459,7 @@ operator!= (datum const &a, datum const &b) {
 
 bool
 datum::operator! () const {
-	return !(int) *this;
+	return !toBool();
 }
 
 } // namespace afp

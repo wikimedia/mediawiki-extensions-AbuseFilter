@@ -95,7 +95,7 @@ request::load(std::istream &inp) {
 			return false;
 		value = *str;
 
-		f.add_variable(key, datum(value));
+		f.add_variable(key, datum::from_string_convert(value));
 	}
 	
 	return true;

@@ -19,7 +19,7 @@ int main( int argc, char** argv ) {
 	
 	for(int i=0;i<=100;i++) {
 		try {
-			f.add_variable("foo", afp::datum("love"));
+			f.add_variable("foo", afp::datum::from_string("love"));
 			result = f.evaluate( "specialratio('foo;') == 0.25" );
 		} catch (afp::exception* excep) {
 			printf( "Exception: %s\n", excep->what() );
