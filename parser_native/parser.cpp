@@ -151,6 +151,20 @@ f_float(std::vector<datum> const &args)
 	return datum::from_double(args[0].toFloat());
 }
 
+datum
+f_append(datum const &a, char b)
+{
+	return datum::from_string(a.toString() + b);
+}
+
+datum
+f_strip_last(datum const &a)
+{
+	std::string s(a.toString());
+	s.resize(s.size() - 1);
+	return datum::from_string(s);
+}
+
 }
 
 /*
@@ -261,9 +275,15 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 					| bin_p[value.val = bind(&datum::from_int)(arg1)] >> 'b'
 					| int_p[value.val = bind(&datum::from_int)(arg1)]
 				]
-				| confix_p('"', *c_escape_ch_p, '"')[
-					value.val = bind(&datum::from_string)(construct_<std::string>(arg1 + 1, arg2 - 1))
-				]
+				/*
+				 * config_p can't be used here, because it will rewrite
+				 * *(c_escape_ch_p[x]) into (*c_escape_ch_p)[x]
+				 */
+				| (
+					   ch_p('"')[value.val = ""]
+					>> *((c_escape_ch_p[value.val = bind(&f_append)(value.val, arg1)] - '"'))
+					>> ch_p('"')[value.val = bind(&f_strip_last)(value.val)]
+				  )
 				;
 
 			/*
