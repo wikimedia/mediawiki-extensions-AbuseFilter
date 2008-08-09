@@ -255,16 +255,12 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 			 */
 			value = 
 				  strict_real_p[value.val = bind(&datum::from_double)(arg1)]
-#if 0
-				| oct_p[value.val = bind(f_from_str)(arg1, 8)] >> 'o'
-				| hex_p[value.val = bind(f_from_str)(arg1, 16)] >> 'x'
-				| bin_p[value.val = bind(f_from_str)(arg1, 2)] >> 'b'
-				| int_p[value.val = bind(&datum::from_int)(arg1)]
-#endif
-				| oct_p[value.val = bind(&datum::from_int)(arg1)] >> 'o'
-				| hex_p[value.val = bind(&datum::from_int)(arg1)] >> 'x'
-				| bin_p[value.val = bind(&datum::from_int)(arg1)] >> 'b'
-				| int_p[value.val = bind(&datum::from_int)(arg1)]
+				| as_lower_d[
+					  oct_p[value.val = bind(&datum::from_int)(arg1)] >> 'o'
+					| hex_p[value.val = bind(&datum::from_int)(arg1)] >> 'x'
+					| bin_p[value.val = bind(&datum::from_int)(arg1)] >> 'b'
+					| int_p[value.val = bind(&datum::from_int)(arg1)]
+				]
 				| confix_p('"', *c_escape_ch_p, '"')[
 					value.val = bind(&datum::from_string)(construct_<std::string>(arg1 + 1, arg2 - 1))
 				]
@@ -304,9 +300,9 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 				| ch_p('!') >> tern_expr[basic.val = !arg1] 
 				| ch_p('+') >> tern_expr[basic.val = arg1] 
 				| ch_p('-') >> tern_expr[basic.val = -arg1] 
+				| value[basic.val = arg1]
 				| variable[basic.val = arg1]
 				| function[basic.val = arg1]
-				| value[basic.val = arg1]
 				;
 
 			/*
