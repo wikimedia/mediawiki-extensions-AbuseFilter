@@ -18,7 +18,7 @@ $aliases['en'] = array(
  * @author Meno25
  */
 $aliases['ar'] = array(
-	'AbuseLog'    => array( 'سجل_الإساءة' ),
+	'AbuseLog' => array( 'سجل_الإساءة' ),
 	'AbuseFilter' => array( 'فلتر_الإساءة' ),
 );
 
@@ -26,13 +26,19 @@ $aliases['ar'] = array(
  * @author Meno25
  */
 $aliases['arz'] = array(
-	'AbuseLog'    => array( 'سجل_الإساءة' ),
+	'AbuseLog' => array( 'سجل_الإساءة' ),
 	'AbuseFilter' => array( 'فلتر_الإساءة' ),
 );
 
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'AbuseLog'    => array( 'Misbruiklogboek' ),
+	'AbuseLog' => array( 'Misbruiklogboek' ),
 	'AbuseFilter' => array( 'Misbruikfilter' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'AbuseLog' => array( 'Misbrukslogg' ),
+	'AbuseFilter' => array( 'Misbruksfilter' ),
 );
 
