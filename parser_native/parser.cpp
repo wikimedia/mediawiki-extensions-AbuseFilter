@@ -293,6 +293,8 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 			basic =
 				  ( '(' >> tern_expr[basic.val = arg1] >> ')' )
 				| ch_p('!') >> tern_expr[basic.val = !arg1] 
+				| ch_p('+') >> tern_expr[basic.val = arg1] 
+				| ch_p('-') >> tern_expr[basic.val = -arg1] 
 				| variable[basic.val = arg1]
 				| function[basic.val = arg1]
 				| value[basic.val = arg1]

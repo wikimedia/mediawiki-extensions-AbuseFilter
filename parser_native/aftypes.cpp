@@ -263,6 +263,18 @@ struct arith_visitor : boost::static_visitor<datum> {
 			from_string_converter<T>::convert(a), 
 			from_string_converter<U>::convert(b));
 	}
+
+	/*
+	 * Unary version.
+	 */
+	template<typename T>
+	datum operator() (T const &a) const {
+		typedef typename from_string_converter<T>::type a_type;
+
+		Operator<typename preferred_type<a_type, a_type>::type> op;
+		return op(from_string_converter<T>::convert(a));
+	}
+
 };
 
 /*
@@ -367,6 +379,18 @@ datum::operator%=(datum const &other)
 	datum result = boost::apply_visitor(arith_visitor<afpmodulus>(), value_, other.value_);
 	*this = result;
 	return *this;
+}
+
+datum
+datum::operator+() const
+{
+	return *this;
+}
+
+datum
+datum::operator-() const
+{
+	return boost::apply_visitor(arith_visitor<std::negate>(), value_);
 }
 
 datum

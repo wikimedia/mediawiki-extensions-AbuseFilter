@@ -84,6 +84,8 @@ public:
 	datum &operator/=(datum const &other);
 	datum &operator%=(datum const &other);
 	bool operator!() const;
+	datum operator+() const;
+	datum operator-() const;
 
 	bool compare(datum const &other) const;
 	bool compare_with_type(datum const &other) const;
