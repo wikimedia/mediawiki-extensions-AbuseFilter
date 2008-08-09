@@ -9,7 +9,7 @@
 
 include makefile.config
 
-CPPFLAGS	= $(EXTRA_CPPFLAGS)
+CPPFLAGS	= -Iinclude $(EXTRA_CPPFLAGS)
 LDFLAGS		= $(EXTRA_LDFLAGS)
 
 LIBS		= -lboost_regex$(BOOST_TAG) -licuuc -licui18n -licudata
@@ -18,7 +18,6 @@ expr: CPPFLAGS+=-DTEST_PARSER
 
 af_expr_objs = \
 	af_expr-affunctions.o		\
-	af_expr-aftypes.o		\
 	af_expr-parser.o		\
 	af_expr-filter_evaluator.o	\
 	af_expr-eval.o			\
@@ -28,7 +27,6 @@ af_expr_objs = \
 
 af_parser_objs = \
 	af_parser-affunctions.o		\
-	af_parser-aftypes.o		\
 	af_parser-main.o		\
 	af_parser-parser.o		\
 	af_parser-request.o		\
@@ -38,7 +36,6 @@ af_parser_objs = \
 
 check_objs = \
 	check-affunctions.o	\
-	check-aftypes.o		\
 	check-check.o		\
 	check-parser.o		\
 	check-utf8.o		\
@@ -47,7 +44,6 @@ check_objs = \
 
 syntax_check_objs = \
 	syntax_check-affunctions.o	\
-	syntax_check-aftypes.o		\
 	syntax_check-filter_evaluator.o	\
 	syntax_check-parser.o		\
 	syntax_check-utf8.o		\
@@ -55,7 +51,6 @@ syntax_check_objs = \
 	syntax_check-syntax_check.o
 
 expr_objs = \
-	expr-aftypes.o	\
 	expr-parser.o
 
 progs = check af_parser syntax_check af_expr expr

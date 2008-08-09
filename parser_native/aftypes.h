@@ -12,12 +12,20 @@
 #ifndef AFTYPES_H
 #define AFTYPES_H
 
-#include <string>
-#include <vector>
-#include <iostream>
+#include	<string>
+#include	<vector>
+#include	<iostream>
+#include	<sstream>
+#include	<ios>
+#include	<iostream>
+#include	<cassert>
+#include	<algorithm>
+#include	<cmath>
 
-#include <boost/variant.hpp>
-#include <boost/lexical_cast.hpp>
+#include	<boost/lexical_cast.hpp>
+#include	<boost/variant.hpp>
+
+#include	<unicode/uchar.h>
 
 namespace afp {
 
@@ -47,58 +55,53 @@ namespace afp {
  * entirely stack-based, avoiding memory allocation overhead when manipulating
  * datum objects.
  */
-class datum {
-public:
-	datum();
-	datum(datum const &oldData);
+
+template<typename charT>
+struct basic_datum {
+	typedef std::basic_string<charT> string_t;
+
+	basic_datum();
+	basic_datum(basic_datum<charT> const &oldData);
 		
 	// Type forcing construction functions
-	static datum from_string(std::string const &v);
-	static datum from_string_convert(std::string const &v);
-	static datum from_int(long int v);
-	static datum from_double(double v);
+	static basic_datum<charT> from_string(string_t const &v);
+	static basic_datum<charT> from_string_convert(std::basic_string<charT> const &v);
+	static basic_datum<charT> from_int(long int v);
+	static basic_datum<charT> from_double(double v);
 	
-	/*
-	 * Template versions of the above.  See below for the actual
-	 * implementations.
-	 */
-	template<typename T> static datum from(T const &v) {
-		return from_int(0);
-	}
-
 	// Assignment operator
-	datum &operator= (const datum & other);
+	basic_datum<charT> &operator= (const basic_datum<charT> & other);
 		
-	datum &operator+=(datum const &other);
-	datum &operator-=(datum const &other);
-	datum &operator*=(datum const &other);
-	datum &operator/=(datum const &other);
-	datum &operator%=(datum const &other);
+	basic_datum<charT> &operator+=(basic_datum<charT> const &other);
+	basic_datum<charT> &operator-=(basic_datum<charT> const &other);
+	basic_datum<charT> &operator*=(basic_datum<charT> const &other);
+	basic_datum<charT> &operator/=(basic_datum<charT> const &other);
+	basic_datum<charT> &operator%=(basic_datum<charT> const &other);
 	bool operator!() const;
-	datum operator+() const;
-	datum operator-() const;
+	basic_datum<charT> operator+() const;
+	basic_datum<charT> operator-() const;
 
-	bool compare(datum const &other) const;
-	bool compare_with_type(datum const &other) const;
-	bool less_than(datum const &other) const;
+	bool compare(basic_datum<charT> const &other) const;
+	bool compare_with_type(basic_datum<charT> const &other) const;
+	bool less_than(basic_datum<charT> const &other) const;
 
-	std::string toString() const;
+	string_t toString() const;
 	long int toInt() const;
 	double toFloat() const;
 	bool toBool() const {
 		return (bool) toInt();
 	}
 		
-	template<typename char_type, typename traits>
+	template<typename traits>
 	void
-	print_to(std::basic_ostream<char_type, traits> &s) const {
+	print_to(std::basic_ostream<charT, traits> &s) const {
 		s << value_;
 	}
 
 protected:
-	void _init_from_string(std::string const &);	
+	void _init_from_string(string_t const &);	
 
-	typedef boost::variant<std::string, long int, double> valuetype;
+	typedef boost::variant<string_t, long int, double> valuetype;
 	valuetype value_;
 };
 
@@ -116,32 +119,47 @@ private:
 	std::string what_;
 };
 
-
-template<> datum datum::from<std::string>(std::string const &v);
-template<> datum datum::from<long int>(long int const &v);
-template<> datum datum::from<long int>(long int const &v);
-
-datum operator+(datum const &a, datum const &b);
-datum operator-(datum const &a, datum const &b);
-datum operator*(datum const &a, datum const &b);
-datum operator/(datum const &a, datum const &b);
-datum operator%(datum const &a, datum const &b);
-
-bool operator==(datum const &a, datum const &b);
-bool operator!=(datum const &a, datum const &b);
-bool operator<(datum const &a, datum const &b);
-bool operator>(datum const &a, datum const &b);
-bool operator<=(datum const &a, datum const &b);
-bool operator>=(datum const &a, datum const &b);
-
-datum pow(datum const &a, datum const &b);
-
-template<typename char_type, typename traits>
-std::basic_ostream<char_type, traits> &
-operator<<(std::basic_ostream<char_type, traits> &s, datum const &d) {
-	d.print_to(s);
-	return s;
 }
+
+#include	"datum/create.h"
+#include	"datum/conversion.h"
+#include	"datum/operators.h"
+
+namespace afp {
+
+template<typename charT>
+basic_datum<charT>::basic_datum() {
+}
+
+template<typename charT>
+basic_datum<charT>::basic_datum(basic_datum<charT> const &other)
+	: value_(other.value_)
+{
+}
+
+template<typename charT>
+bool
+basic_datum<charT>::compare(basic_datum<charT> const &other) const {
+	return boost::apply_visitor(datum_impl::compare_visitor<charT, std::equal_to>(), value_, other.value_);
+}
+
+template<typename charT>
+bool
+basic_datum<charT>::compare_with_type(basic_datum<charT> const &other) const {
+	if (value_.which() != other.value_.which())
+		return false;
+
+	return boost::apply_visitor(datum_impl::compare_visitor<charT, std::equal_to>(), value_, other.value_);
+}
+
+template<typename charT>
+bool
+basic_datum<charT>::less_than(basic_datum<charT> const &other) const {
+	return boost::apply_visitor(datum_impl::arith_compare_visitor<charT, std::less>(), value_, other.value_);
+}
+
+typedef basic_datum<char> datum;
+typedef basic_datum<UChar> u32datum;
 
 } // namespace afp
 

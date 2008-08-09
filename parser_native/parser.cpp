@@ -370,7 +370,7 @@ struct parser_grammar : public grammar<parser_grammar, parser_closure::context_t
 			pow_expr =
 				   in_expr[pow_expr.val = arg1]
 				>> !(
-					"**" >> pow_expr[pow_expr.val = bind(&afp::pow)(pow_expr.val, arg1)]
+					"**" >> pow_expr[pow_expr.val = bind(&afp::pow<char>)(pow_expr.val, arg1)]
 				    )
 				;
 
