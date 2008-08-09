@@ -15,18 +15,51 @@
 #include	<ios>
 #include	<iostream>
 
+#include	<unicode/uchar.h>
+
+#include	<boost/format.hpp>
+
 #include	"utf8.h"
 #include	"equiv.h"
 #include	"affunctions.h"
 
-#include	<unicode/uchar.h>
+namespace {
+
+struct too_many_arguments_exception : afp::exception {
+	too_many_arguments_exception(char const *what) 
+		: afp::exception(what) {}
+};
+
+struct too_few_arguments_exception : afp::exception {
+	too_few_arguments_exception(char const *what) 
+		: afp::exception(what) {}
+};
+
+void
+check_args(std::string const &fname, int args, int min, int max = 0)
+{
+	if (max == 0)
+		max = min;
+	if (args < min) {
+		std::string s = str(boost::format(
+			"too few arguments for function %s (got %d, expected %d)")
+				% fname % args % min);
+		throw too_few_arguments_exception(s.c_str());
+	} else if (args > max) {
+		std::string s = str(boost::format(
+			"too many arguments for function %s (got %d, expected %d)")
+				% fname % args % min);
+		throw too_many_arguments_exception(s.c_str());
+	}
+}
+
+} // anonymous namespace
 
 namespace afp {
 
 datum 
 af_count(std::vector<datum> const &args) {
-	if (args.empty())
-		throw exception( "Not enough arguments to count" );
+	check_args("count", args.size(), 1, 2);
 	
 	std::string needle, haystack;
 	
@@ -55,8 +88,7 @@ af_count(std::vector<datum> const &args) {
 
 datum
 af_norm(std::vector<datum> const &args) {
-	if (args.empty())
-		throw exception( "Not enough arguments to norm" );
+	check_args("norm", args.size(), 1);
 	
 	std::string orig = args[0].toString();
 	
@@ -97,8 +129,7 @@ rmdoubles(std::string const &orig) {
 
 datum
 af_specialratio(std::vector<datum> const &args) {
-	if (args.empty())
-		throw exception( "Not enough arguments to specialratio" );
+	check_args("specialratio", args.size(), 1);
 	
 	std::string orig = args[0].toString();
 	int len = 0;
@@ -118,9 +149,7 @@ af_specialratio(std::vector<datum> const &args) {
 
 datum
 af_rmspecials(std::vector<datum> const &args) {
-	if (args.empty())
-		throw exception( "Not enough arguments to rmspecials" );
-	
+	check_args("rmspecials", args.size(), 1);
 	return datum(rmspecials(args[0].toString()));
 }
 
@@ -139,33 +168,25 @@ rmspecials(std::string const &orig) {
 
 datum
 af_ccnorm(std::vector<datum> const &args) {
-	if (args.empty())
-		throw exception( "Not enough arguments to ccnorm" );
-	
+	check_args("ccnorm", args.size(), 1);
 	return datum( confusable_character_normalise( args[0].toString() ) );
 }
 
 datum 
 af_rmdoubles(std::vector<datum> const &args) {
-	if (args.empty())
-		throw exception( "Not enough arguments to rmdoubles" );
-	
+	check_args("ccnorm", args.size(), 1);
 	return datum(rmdoubles(args[0].toString()));
 }
 
 datum
 af_length(std::vector<datum> const &args) {
-	if (args.empty())
-		throw exception( "Not enough arguments to lcase" );
-	
+	check_args("ccnorm", args.size(), 1);
 	return datum( (long int)utf8::utf8_strlen(args[0].toString()) );
 }
 
 datum
 af_lcase(std::vector<datum> const &args) {
-	if (args.empty())
-		throw exception( "Not enough arguments to lcase" );
-	
+	check_args("ccnorm", args.size(), 1);
 	return datum(utf8::utf8_tolower(args[0].toString()));
 }
 
