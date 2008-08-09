@@ -37,7 +37,11 @@ syntax_check_objs = \
 expr_objs = \
 	expr-expr.o
 
-progs = check af_parser syntax_check af_expr expr
+evaluate_objs = \
+	evaluate-equiv.o		\
+	evaluate-evaluate.o
+
+progs = check af_parser syntax_check af_expr expr evaluate
 
 all: $(progs)
 
@@ -51,6 +55,8 @@ syntax_check: $(syntax_check_objs)
 	$(CXX) $(CXXFLAGS) -o $@ $(syntax_check_objs) $(LDFLAGS) $(LIBS)
 expr: $(expr_objs)
 	$(CXX) $(CXXFLAGS) -o $@ $(expr_objs) $(LDFLAGS) $(LIBS)
+evaluate: $(evaluate_objs)
+	$(CXX) $(CXXFLAGS) -o $@ $(evaluate_objs) $(LDFLAGS) $(LIBS)
 
 $(af_expr_objs): af_expr-%.o: %.cpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ -c $(@:af_expr-%.o=%.cpp)
@@ -66,6 +72,9 @@ $(syntax_check_objs): syntax_check-%.o: %.cpp
 
 $(expr_objs): expr-%.o: %.cpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ -c $(@:expr-%.o=%.cpp)
+
+$(evaluate_objs): evaluate-%.o: %.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ -c $(@:evaluate-%.o=%.cpp)
 
 clean:
 	rm -f *.o $(progs)
