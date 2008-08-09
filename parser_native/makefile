@@ -17,31 +17,23 @@ LIBS		= -lboost_regex$(BOOST_TAG) -licuuc -licui18n -licudata
 expr: CPPFLAGS+=-DTEST_PARSER
 
 af_expr_objs = \
-	af_expr-affunctions.o		\
-	af_expr-filter_evaluator.o	\
 	af_expr-eval.o			\
 	af_expr-utf8.o			\
 	af_expr-equiv.o			\
 	af_expr-request.o
 
 af_parser_objs = \
-	af_parser-affunctions.o		\
 	af_parser-main.o		\
 	af_parser-request.o		\
 	af_parser-utf8.o		\
-	af_parser-equiv.o		\
-	af_parser-filter_evaluator.o
+	af_parser-equiv.o
 
 check_objs = \
-	check-affunctions.o	\
 	check-check.o		\
 	check-utf8.o		\
-	check-equiv.o		\
-	check-filter_evaluator.o
+	check-equiv.o
 
 syntax_check_objs = \
-	syntax_check-affunctions.o	\
-	syntax_check-filter_evaluator.o	\
 	syntax_check-utf8.o		\
 	syntax_check-equiv.o		\
 	syntax_check-syntax_check.o
