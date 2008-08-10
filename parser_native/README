@@ -1,0 +1,14 @@
+This is the AbuseFilter native expression parser.  It improves the performance 
+of the filter by using a C++ program to parse the expression.
+
+parser_native has been tested on these platforms:
+
+* Solaris 10 with GCC 3.4.3
+* Solaris 10 with Sun Studio 12 (C++ patch 124864-04)
+* Debian Linux with GCC 4.3.1
+
+parser_filter requires Boost (www.boost.org) 1.35.0 or higher.  Earlier versions
+will generate a parser which does not work.
+
+To compile it, copy makefile.config.example to makefile.config, edit it, and
+run 'make'.  (GNU make is required.)

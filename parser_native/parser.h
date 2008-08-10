@@ -434,19 +434,19 @@ basic_expressor<charT>::print_xml(std::ostream &strm, basic_fray<charT> const &f
 
 	if (info.full) {
 		std::map<parser_id, std::string> rule_names;
-		rule_names[parser_grammar<charT>::id_value] = "value";
-		rule_names[parser_grammar<charT>::id_variable] = "variable";
-		rule_names[parser_grammar<charT>::id_basic] = "basic";
-		rule_names[parser_grammar<charT>::id_bool_expr] = "bool_expr";
-		rule_names[parser_grammar<charT>::id_ord_expr] = "ord_expr";
-		rule_names[parser_grammar<charT>::id_eq_expr] = "eq_expr";
-		rule_names[parser_grammar<charT>::id_pow_expr] = "pow_expr";
-		rule_names[parser_grammar<charT>::id_mult_expr] = "mult_expr";
-		rule_names[parser_grammar<charT>::id_plus_expr] = "plus_expr";
-		rule_names[parser_grammar<charT>::id_in_expr] = "in_expr";
-		rule_names[parser_grammar<charT>::id_function] = "function";
-		rule_names[parser_grammar<charT>::id_tern_expr] = "tern_expr";
-		rule_names[parser_grammar<charT>::id_string] = "string";
+		rule_names[pid_value] = "value";
+		rule_names[pid_variable] = "variable";
+		rule_names[pid_basic] = "basic";
+		rule_names[pid_bool_expr] = "bool_expr";
+		rule_names[pid_ord_expr] = "ord_expr";
+		rule_names[pid_eq_expr] = "eq_expr";
+		rule_names[pid_pow_expr] = "pow_expr";
+		rule_names[pid_mult_expr] = "mult_expr";
+		rule_names[pid_plus_expr] = "plus_expr";
+		rule_names[pid_in_expr] = "in_expr";
+		rule_names[pid_function] = "function";
+		rule_names[pid_tern_expr] = "tern_expr";
+		rule_names[pid_string] = "string";
 		tree_to_xml(strm, info.trees, "", rule_names);
 	} else {
 		throw parse_error("parsing failed");
