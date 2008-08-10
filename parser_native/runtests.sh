@@ -5,9 +5,9 @@ nfail=0
 ntotal=0
 
 for test in *.t; do
-	echo "$test \c"
+	printf "%-20s " "$test"
 	filter=$(head -1 $test)
-	vars=$(tail +2 $test)
+	vars=$(tail -n +2 $test)
 	expect=$(cat ${test%.t}.r)
 	result=$(../maketest "$filter" $vars | (cd ..; ./af_parser))
 	if [ "$expect" = "$result" ]; then

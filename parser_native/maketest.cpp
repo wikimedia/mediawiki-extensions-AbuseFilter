@@ -14,6 +14,7 @@
  * Usage: maketest <filter> [VAR=value] [VAR=value...]
  */
 
+#include	<cstring>
 #include	<iostream>
 
 #include	<boost/format.hpp>
@@ -28,14 +29,14 @@ main(int argc, char **argv)
 		return 1;
 	}
 
-	std::cout.write(argv[1], strlen(argv[1]));
+	std::cout.write(argv[1], std::strlen(argv[1]));
 	std::cout.write(&zero, 1);
 
 	argc -= 2;
 	argv += 2;
 
 	while (argc) {
-		char *s = strchr(*argv, '=');
+		char *s = std::strchr(*argv, '=');
 		if (s == NULL) {
 			std::cerr << "error: variable with no value: " << *argv << '\n';
 			return 1;
@@ -44,7 +45,7 @@ main(int argc, char **argv)
 		std::cout.write(*argv, s - *argv);
 		std::cout.write(&zero, 1);
 		*s++ = '\0';
-		std::cout.write(s, strlen(s));
+		std::cout.write(s, std::strlen(s));
 		std::cout.write(&zero, 1);
 
 		argc--;
