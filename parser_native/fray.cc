@@ -315,7 +315,7 @@ basic_fray<ch, tr, alloc>::find(
 {
 ch const	*found, *b = _begin + pos;
 	found = std::search(b, _end, s.begin(), s.end());
-	if (found == NULL)
+	if (found == _end)
 		return npos;
 
 	return found - _begin;

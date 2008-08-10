@@ -44,6 +44,7 @@ main(int argc, char **argv)
 	e.add_variable(make_u32fray("THREE"), afp::u32datum::from_int(3));
 	e.add_function(make_u32fray("add"), f_add<UChar32>);
 	e.add_function(make_u32fray("norm"), afp::af_norm<UChar32>);
+	e.add_function(make_u32fray("count"), afp::af_count<UChar32>);
 	e.add_function(make_u32fray("length"), f_length<UChar32>);
 
 	try {

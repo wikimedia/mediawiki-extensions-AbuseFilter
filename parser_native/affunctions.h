@@ -124,7 +124,7 @@ af_count(std::vector<basic_datum<charT> > const &args) {
 	
 	while (last_pos != haystack.npos) {
 		count++;
-		last_pos = haystack.find(needle, last_pos);
+		last_pos = haystack.find(needle, last_pos + needle.size());
 	}
 	
 	// One extra was added, but one extra is needed if only one arg was supplied.
