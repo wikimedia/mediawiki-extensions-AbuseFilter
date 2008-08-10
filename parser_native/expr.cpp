@@ -13,19 +13,13 @@
 
 #include	"parser.h"
 #include	"afstring.h"
+#include	"affunctions.h"
 
 template<typename charT>
 afp::basic_datum<charT> 
 f_add(std::vector<afp::basic_datum<charT> > const &args)
 {
 	return args[0] + args[1];
-}
-
-template<typename charT>
-afp::basic_datum<charT> 
-f_norm(std::vector<afp::basic_datum<charT> > const &args)
-{
-	return args[0];
 }
 
 template<typename charT>
@@ -49,7 +43,7 @@ main(int argc, char **argv)
 	e.add_variable(make_u32fray("TWO"), afp::u32datum::from_int(2));
 	e.add_variable(make_u32fray("THREE"), afp::u32datum::from_int(3));
 	e.add_function(make_u32fray("add"), f_add<UChar32>);
-	e.add_function(make_u32fray("norm"), f_norm<UChar32>);
+	e.add_function(make_u32fray("norm"), afp::af_norm<UChar32>);
 	e.add_function(make_u32fray("length"), f_length<UChar32>);
 
 	try {

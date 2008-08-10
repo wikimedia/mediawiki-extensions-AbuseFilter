@@ -243,7 +243,7 @@ struct parser_grammar : public grammar<parser_grammar<charT> >
 			 * letters and underscore only) are returned as the
 			 * empty string.
 			 */
-			variable = leaf_node_d[ +(upper_p | '_') ]
+			variable = reduced_node_d[ +(upper_p | '_') ]
 				;
 
 			/*
@@ -251,7 +251,7 @@ struct parser_grammar : public grammar<parser_grammar<charT> >
 			 */
 			function = 
 				  (
-					   root_node_d[ leaf_node_d[
+					   root_node_d[ reduced_node_d[
 					   	+(lower_p | '_')
 					   ] ]
 					>> inner_node_d[

@@ -35,6 +35,7 @@ syntax_check_objs = \
 	syntax_check-syntax_check.o
 
 expr_objs = \
+	expr-equiv.o		\
 	expr-expr.o
 
 xml_objs = \
@@ -44,7 +45,10 @@ evaluate_objs = \
 	evaluate-equiv.o		\
 	evaluate-evaluate.o
 
-progs = check af_parser syntax_check af_expr expr evaluate xml
+maketest_objs = \
+	maketest-maketest.o
+
+progs = check af_parser syntax_check af_expr expr evaluate xml maketest
 
 all: $(progs)
 
@@ -62,6 +66,8 @@ evaluate: $(evaluate_objs)
 	$(CXX) $(CXXFLAGS) -o $@ $(evaluate_objs) $(LDFLAGS) $(LIBS)
 xml: $(xml_objs)
 	$(CXX) $(CXXFLAGS) -o $@ $(xml_objs) $(LDFLAGS) $(LIBS)
+maketest: $(maketest_objs)
+	$(CXX) $(CXXFLAGS) -o $@ $(maketest_objs) $(LDFLAGS)
 
 $(af_expr_objs): af_expr-%.o: %.cpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ -c $(@:af_expr-%.o=%.cpp)
@@ -83,6 +89,12 @@ $(evaluate_objs): evaluate-%.o: %.cpp
 
 $(xml_objs): xml-%.o: %.cpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ -c $(@:xml-%.o=%.cpp)
+
+$(maketest_objs): maketest-%.o: %.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ -c $(@:maketest-%.o=%.cpp)
+
+test: maketest af_parser
+	cd tests && ../runtests.sh
 
 clean:
 	rm -f *.o $(progs)
