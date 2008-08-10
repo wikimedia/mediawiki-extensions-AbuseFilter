@@ -30,6 +30,9 @@
 namespace afp {
 
 template<typename charT>
+int match(char const *, char const *);
+
+template<typename charT>
 basic_datum<charT> 
 af_length (std::vector<basic_datum<charT> > const &args);
 
@@ -259,6 +262,198 @@ confusable_character_normalise(basic_fray<charT> const &orig) {
 		result.push_back(equivs.get(orig[i]));
 	
 	return basic_fray<charT>(&result[0], result.size());
+}
+
+template<typename charT>
+basic_datum<charT>
+f_in(basic_datum<charT> const &a, basic_datum<charT> const &b)
+{
+	basic_fray<charT> sa = a.toString(), sb = b.toString();
+	return basic_datum<charT>::from_int(std::search(sb.begin(), sb.end(), sa.begin(), sa.end()) != sb.end());
+}
+
+template<typename charT>
+basic_datum<charT>
+f_like(basic_datum<charT> const &str, basic_datum<charT> const &pattern)
+{
+	return basic_datum<charT>::from_int(match(pattern.toString().c_str(), str.toString().c_str()));
+}
+
+template<typename charT>
+basic_datum<charT>
+f_regex(basic_datum<charT> const &str, basic_datum<charT> const &pattern)
+{
+	basic_fray<charT> f = pattern.toString();
+	boost::u32regex r = boost::make_u32regex(f.begin(), f.end(),
+				boost::regex_constants::perl);
+	basic_fray<charT> s = str.toString();
+	return basic_datum<charT>::from_int(boost::u32regex_match(
+				s.begin(), s.end(), r));
+}
+
+template<typename charT>
+basic_datum<charT>
+f_int(std::vector<basic_datum<charT> > const &args)
+{
+	check_args("int", args.size(), 1);
+	return basic_datum<charT>::from_int(args[0].toInt());
+}
+
+template<typename charT>
+basic_datum<charT>
+f_string(std::vector<basic_datum<charT> > const &args)
+{
+	check_args("string", args.size(), 1);
+	return basic_datum<charT>::from_string(args[0].toString());
+}
+
+template<typename charT>
+basic_datum<charT>
+f_float(std::vector<basic_datum<charT> > const &args)
+{
+	check_args("float", args.size(), 1);
+	return basic_datum<charT>::from_double(args[0].toFloat());
+}
+
+/*	$NetBSD: fnmatch.c,v 1.21 2005/12/24 21:11:16 perry Exp $	*/
+
+/*
+ * Copyright (c) 1989, 1993, 1994
+ *	The Regents of the University of California.  All rights reserved.
+ *
+ * This code is derived from software contributed to Berkeley by
+ * Guido van Rossum.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 3. Neither the name of the University nor the names of its contributors
+ *    may be used to endorse or promote products derived from this software
+ *    without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ */
+
+/*
+ * Function fnmatch() as specified in POSIX 1003.2-1992, section B.6.
+ * Compares a filename or pathname to a pattern.
+ */
+
+#include <ctype.h>
+#include <string.h>
+
+#define	EOS	'\0'
+
+template<typename charT>
+const charT *rangematch(const charT *, int);
+
+template<typename charT>
+int
+match(charT const *pattern, charT const *string)
+{
+	const charT *stringstart;
+	charT c, test;
+
+	for (stringstart = string;;)
+		switch (c = *pattern++) {
+		case EOS:
+			return (*string == EOS ? 1 : 0);
+		case '?':
+			if (*string == EOS)
+				return (0);
+			++string;
+			break;
+		case '*':
+			c = *pattern;
+			/* Collapse multiple stars. */
+			while (c == '*')
+				c = *++pattern;
+
+			/* Optimize for pattern with * at end or before /. */
+			if (c == EOS) {
+				return (1);
+			}
+
+			/* General case, use recursion. */
+			while ((test = *string) != EOS) {
+				if (match(pattern, string))
+					return (1);
+				++string;
+			}
+			return (0);
+		case '[':
+			if (*string == EOS)
+				return (0);
+			if ((pattern =
+			    rangematch(pattern, *string)) == NULL)
+				return (0);
+			++string;
+			break;
+		case '\\':
+			if ((c = *pattern++) == EOS) {
+				c = '\\';
+				--pattern;
+			}
+			/* FALLTHROUGH */
+		default:
+			if (c != *string++)
+				return (0);
+			break;
+		}
+	/* NOTREACHED */
+}
+
+template<typename charT>
+const charT *
+rangematch(charT const *pattern, int test)
+{
+	int negate, ok;
+	charT c, c2;
+
+	/*
+	 * A bracket expression starting with an unquoted circumflex
+	 * character produces unspecified results (IEEE 1003.2-1992,
+	 * 3.13.2).  This implementation treats it like '!', for
+	 * consistency with the regular expression syntax.
+	 * J.T. Conklin (conklin@ngai.kaleida.com)
+	 */
+	if ((negate = (*pattern == '!' || *pattern == '^')) != 0)
+		++pattern;
+	
+	for (ok = 0; (c = *pattern++) != ']';) {
+		if (c == '\\')
+			c = *pattern++;
+		if (c == EOS)
+			return (NULL);
+		if (*pattern == '-' 
+		    && (c2 = (*(pattern+1))) != EOS &&
+		        c2 != ']') {
+			pattern += 2;
+			if (c2 == '\\')
+				c2 = *pattern++;
+			if (c2 == EOS)
+				return (NULL);
+			if (c <= test && test <= c2)
+				ok = 1;
+		} else if (c == test)
+			ok = 1;
+	}
+	return (ok == negate ? NULL : pattern);
 }
 
 } // namespace afp
