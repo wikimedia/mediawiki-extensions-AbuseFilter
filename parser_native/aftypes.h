@@ -27,6 +27,8 @@
 
 #include	<unicode/uchar.h>
 
+#include	"fray.h"
+
 namespace afp {
 
 /*
@@ -58,14 +60,14 @@ namespace afp {
 
 template<typename charT>
 struct basic_datum {
-	typedef std::basic_string<charT> string_t;
+	typedef basic_fray<charT> string_t;
 
 	basic_datum();
 	basic_datum(basic_datum<charT> const &oldData);
 		
 	// Type forcing construction functions
 	static basic_datum<charT> from_string(string_t const &v);
-	static basic_datum<charT> from_string_convert(std::basic_string<charT> const &v);
+	static basic_datum<charT> from_string_convert(string_t const &v);
 	static basic_datum<charT> from_int(long int v);
 	static basic_datum<charT> from_double(double v);
 	
@@ -99,9 +101,11 @@ struct basic_datum {
 	}
 
 protected:
-	void _init_from_string(string_t const &);	
+	explicit basic_datum(long int);
+	explicit basic_datum(double);
+	explicit basic_datum(string_t const &);
 
-	typedef boost::variant<string_t, long int, double> valuetype;
+	typedef boost::variant<long int, string_t, double> valuetype;
 	valuetype value_;
 };
 
@@ -134,6 +138,24 @@ basic_datum<charT>::basic_datum() {
 template<typename charT>
 basic_datum<charT>::basic_datum(basic_datum<charT> const &other)
 	: value_(other.value_)
+{
+}
+
+template<typename charT>
+basic_datum<charT>::basic_datum(long int i)
+	: value_(i)
+{
+}
+
+template<typename charT>
+basic_datum<charT>::basic_datum(double d)
+	: value_(d)
+{
+}
+
+template<typename charT>
+basic_datum<charT>::basic_datum(typename basic_datum<charT>::string_t const &v)
+	: value_(v)
 {
 }
 

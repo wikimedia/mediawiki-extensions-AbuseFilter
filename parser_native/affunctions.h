@@ -58,16 +58,16 @@ basic_datum<charT>
 af_count (std::vector<basic_datum<charT> > const &args);
 
 template<typename charT> 
-std::basic_string<charT> 
-confusable_character_normalise(std::basic_string<charT> const &orig);
+basic_fray<charT> 
+confusable_character_normalise(basic_fray<charT> const &orig);
 
 template<typename charT> 
-std::basic_string<charT> 
-rmdoubles(std::basic_string<charT> const &orig);
+basic_fray<charT> 
+rmdoubles(basic_fray<charT> const &orig);
 
 template<typename charT> 
-std::basic_string<charT> 
-rmspecials(std::basic_string<charT> const &orig);
+basic_fray<charT> 
+rmspecials(basic_fray<charT> const &orig);
 
 struct too_many_arguments_exception : afp::exception {
 	too_many_arguments_exception(char const *what) 
@@ -106,7 +106,7 @@ basic_datum<charT>
 af_count(std::vector<basic_datum<charT> > const &args) {
 	check_args("count", args.size(), 1, 2);
 	
-	std::basic_string<charT> needle, haystack;
+	basic_fray<charT> needle, haystack;
 	
 	if (args.size() < 2) {
 		needle = make_astring<charT, char>(",");
@@ -136,38 +136,40 @@ basic_datum<charT>
 af_norm(std::vector<basic_datum<charT> > const &args) {
 	check_args("norm", args.size(), 1);
 	
-	std::basic_string<charT> orig = args[0].toString();
+	basic_fray<charT> orig = args[0].toString();
 	
 	int lastchr = 0;
 	equiv_set const &equivs = equiv_set::instance();
-	std::basic_string<charT> result;
+	std::vector<charT> result;
+	result.reserve(orig.size());
 	
 	for (std::size_t i = 0; i < orig.size(); ++i) {
 		int chr = equivs.get(orig[i]);
 		
 		if (chr != lastchr && u_isalnum(chr))
-			result += chr;
+			result.push_back(chr);
 		
 		lastchr = chr;
 	}
 	
-	return basic_datum<charT>::from_string(result);
+	return basic_datum<charT>::from_string(basic_fray<charT>(&result[0], result.size()));
 }
 
 template<typename charT>
-std::basic_string<charT>
-rmdoubles(std::basic_string<charT> const &orig) {
+basic_fray<charT>
+rmdoubles(basic_fray<charT> const &orig) {
 	int lastchr = 0;
-	std::basic_string<charT> result;
+	std::vector<charT> result;
+	result.reserve(orig.size());
 	
 	for (std::size_t i = 0; i < orig.size(); ++i) {
 		if (orig[i] != lastchr)
-			result += orig[i];
+			result.push_back(orig[i]);
 		
 		lastchr = orig[i];
 	}
 	
-	return result;
+	return basic_fray<charT>(&result[0], result.size());
 }
 
 template<typename charT>
@@ -175,7 +177,7 @@ basic_datum<charT>
 af_specialratio(std::vector<basic_datum<charT> > const &args) {
 	check_args("specialratio", args.size(), 1);
 	
-	std::basic_string<charT> orig = args[0].toString();
+	basic_fray<charT> orig = args[0].toString();
 	int len = 0;
 	int specialcount = 0;
 	
@@ -198,16 +200,17 @@ af_rmspecials(std::vector<basic_datum<charT> > const &args) {
 }
 
 template<typename charT>
-std::basic_string<charT> 
-rmspecials(std::basic_string<charT> const &orig) {
-	std::basic_string<charT> result;
+basic_fray<charT> 
+rmspecials(basic_fray<charT> const &orig) {
+	std::vector<charT> result;
+	result.reserve(orig.size());
 	
 	for (std::size_t i = 0; i < orig.size(); ++i) {
 		if (u_isalnum(orig[i]))
-			result += orig[i];
+			result.push_back(orig[i]);
 	}
 	
-	return result;
+	return basic_fray<charT>(&result[0], result.size());
 }
 
 template<typename charT>
@@ -235,25 +238,27 @@ template<typename charT>
 basic_datum<charT>
 af_lcase(std::vector<basic_datum<charT> > const &args) {
 	check_args("ccnorm", args.size(), 1);
-	std::basic_string<charT> result;
-	std::basic_string<charT> const orig = args[0].toString();
+	std::vector<charT> result;
+	basic_fray<charT> const orig = args[0].toString();
+	result.reserve(orig.size());
 
 	for (std::size_t i = 0; i < orig.size(); ++i)
-		result += u_tolower(orig[i]);
+		result.push_back(u_tolower(orig[i]));
 
-	return basic_datum<charT>::from_string(result);
+	return basic_datum<charT>::from_string(basic_fray<charT>(&result[0], result.size()));
 }
 
 template<typename charT>
-std::basic_string<charT> 
-confusable_character_normalise(std::basic_string<charT> const &orig) {
+basic_fray<charT> 
+confusable_character_normalise(basic_fray<charT> const &orig) {
 	equiv_set const &equivs = equiv_set::instance();
-	std::basic_string<charT> result;
+	std::vector<charT> result;
+	result.reserve(orig.size());
 	
 	for (std::size_t i = 0; i < orig.size(); ++i)
-		result += equivs.get(orig[i]);
+		result.push_back(equivs.get(orig[i]));
 	
-	return result;
+	return basic_fray<charT>(&result[0], result.size());
 }
 
 } // namespace afp

@@ -9,8 +9,9 @@
  * implied warranty.
  */
 
-#include "filter_evaluator.h"
-#include "affunctions.h"
+#include	"filter_evaluator.h"
+#include	"affunctions.h"
+#include	"afstring.h"
 
 int main( int argc, char** argv ) {
 	afp::u32filter_evaluator f;
@@ -19,10 +20,10 @@ int main( int argc, char** argv ) {
 	for(int i=0;i<=100;i++) {
 		try {
 			f.add_variable(
-				make_u32string("foo"), 
+				make_u32fray("foo"), 
 				afp::u32datum::from_string(
-					make_u32string("love")));
-			result = f.evaluate(make_u32string("specialratio(\"foo;\") == 0.25"));
+					make_u32fray("love")));
+			result = f.evaluate(make_u32fray("specialratio(\"foo;\") == 0.25"));
 		} catch (afp::exception* excep) {
 			printf( "Exception: %s\n", excep->what() );
 		}

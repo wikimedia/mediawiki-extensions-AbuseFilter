@@ -18,24 +18,24 @@ namespace afp {
 
 template<typename charT>
 basic_datum<charT>
-basic_datum<charT>::from_string_convert(basic_datum<charT>::string_t const &var)
+basic_datum<charT>::from_string_convert(typename basic_datum<charT>::string_t const &var)
 {
 	// Try integer	
 	try {
-		return from_int(u32lexical_cast<charT, long int>(var));
+		return basic_datum<charT>(u32lexical_cast<charT, long int>(var));
 	} catch (bad_u32lexical_cast &e) {
 		try {
-			return from_double(u32lexical_cast<charT, double>(var));
+			return basic_datum<charT>(u32lexical_cast<charT, double>(var));
 		} catch (bad_u32lexical_cast &e) {
 			/* If it's nothing else, it's a string */
-			return from_string(var);
+			return basic_datum<charT>(var);
 		}
 	}
 }
 
 template<typename charT>
 basic_datum<charT>
-basic_datum<charT>::from_string(basic_datum<charT>::string_t const &v)
+basic_datum<charT>::from_string(typename basic_datum<charT>::string_t const &v)
 {
 	basic_datum<charT> d;
 	d.value_ = v;
@@ -61,7 +61,7 @@ basic_datum<charT>::from_double(double v)
 }
 
 template<typename charT>
-std::basic_string<charT>
+typename basic_datum<charT>::string_t
 basic_datum<charT>::toString() const {
 	return boost::apply_visitor(datum_impl::to_string_visitor<charT>(), value_);
 }

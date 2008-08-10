@@ -53,7 +53,7 @@ struct from_string_converter {
 };
 
 template<typename charT>
-struct from_string_converter<charT, std::basic_string<charT> > {
+struct from_string_converter<charT, basic_fray<charT> > {
 	typedef long int type;
 
 	template<typename T>
@@ -70,20 +70,20 @@ struct from_string_converter<charT, std::basic_string<charT> > {
  * Conversions from datum to other types.
  */
 template<typename charT>
-struct to_string_visitor : boost::static_visitor<std::basic_string<charT> > {
-	std::basic_string<charT> operator() (std::basic_string<charT> const &v) const {
+struct to_string_visitor : boost::static_visitor<basic_fray<charT> > {
+	basic_fray<charT> operator() (basic_fray<charT> const &v) const {
 		return v;
 	}
 
 	template<typename T>
-	std::basic_string<charT> operator() (T const &v) const {
-		return u32lexical_cast<charT, std::basic_string<charT> >(v);
+	basic_fray<charT> operator() (T const &v) const {
+		return u32lexical_cast<charT, basic_fray<charT> >(v);
 	}
 };
 
 template<typename charT>
 struct to_int_visitor : boost::static_visitor<long int> {
-	long int operator() (std::basic_string<charT> const &v) const {
+	long int operator() (basic_fray<charT> const &v) const {
 		try {
 			return u32lexical_cast<charT, long int>(v);
 		} catch (bad_u32lexical_cast &e) {
@@ -103,7 +103,7 @@ struct to_int_visitor : boost::static_visitor<long int> {
 
 template<typename charT>
 struct to_double_visitor : boost::static_visitor<double> {
-	double operator() (std::basic_string<charT> const &v) const {
+	double operator() (basic_fray<charT> const &v) const {
 		try {
 			return u32lexical_cast<charT, double>(v);
 		} catch (bad_u32lexical_cast &e) {
@@ -182,12 +182,12 @@ template<typename charT, template<typename V> class Operator>
 struct compare_visitor_impl<
 		charT, 
 		Operator, 
-		std::basic_string<charT>, 
-		std::basic_string<charT> 
+		basic_fray<charT>, 
+		basic_fray<charT> 
 	> : boost::static_visitor<bool> {
 
-	bool operator() (std::basic_string<charT> const &a, std::basic_string<charT> const &b) const {
-		Operator<std::basic_string<charT> > op;
+	bool operator() (basic_fray<charT> const &a, basic_fray<charT> const &b) const {
+		Operator<basic_fray<charT> > op;
 		return op(a, b);
 	}
 };

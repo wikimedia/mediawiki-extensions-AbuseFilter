@@ -9,12 +9,12 @@
  * implied warranty.
  */
 
-#include <cstdlib>
-#include <string>
-#include <sstream>
-#include <iostream>
+#include	<cstdlib>
+#include	<string>
+#include	<sstream>
+#include	<iostream>
 
-#include "filter_evaluator.h"
+#include	"filter_evaluator.h"
 
 int main(int argc, char** argv)
 {
@@ -23,11 +23,11 @@ int main(int argc, char** argv)
 	// Fill the stringstream
 	std::cin.get(ss,'\x04');
 	
-	std::string filter = ss.str();
+	fray filter(ss.str());
 	
 	try {
 		afp::u32filter_evaluator f;
-		f.evaluate(make_u32string(filter));
+		f.evaluate(make_u32fray(filter));
 	} catch (afp::exception &excep) {
 		std::cout << "PARSERR: " << excep.what() << std::endl;
 		std::exit(0);

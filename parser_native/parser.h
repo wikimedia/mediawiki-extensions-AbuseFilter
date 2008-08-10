@@ -19,11 +19,13 @@
 
 #include	<boost/noncopyable.hpp>
 #include	<boost/function.hpp>
-#include	<boost/spirit.hpp>
-#include	<boost/spirit/phoenix.hpp>
-#include	<boost/spirit/phoenix/composite.hpp>
-#include	<boost/spirit/phoenix/functions.hpp>
-#include	<boost/spirit/phoenix/operators.hpp>
+#include	<boost/spirit/core.hpp>
+#include	<boost/spirit/utility/confix.hpp>
+#include	<boost/spirit/utility/chset.hpp>
+#include	<boost/spirit/tree/ast.hpp>
+#include	<boost/spirit/tree/tree_to_xml.hpp>
+#include	<boost/spirit/symbols.hpp>
+#include	<boost/spirit/utility/escape_char.hpp>
 #include	<boost/function.hpp>
 #include	<boost/noncopyable.hpp>
 #include	<boost/format.hpp>
@@ -33,6 +35,7 @@
 
 #include	"aftypes.h"
 #include	"afstring.h"
+#include	"fray.h"
 
 namespace afp {
 
@@ -45,10 +48,15 @@ struct basic_expressor : boost::noncopyable {
 	basic_expressor();
 	~basic_expressor();
 
-	basic_datum<charT> evaluate(std::basic_string<charT> const &expr) const;
+	basic_datum<charT> evaluate(basic_fray<charT> const &expr) const;
+	void print_xml(std::ostream &strm, basic_fray<charT> const &expr) const;
 
-	void add_variable(std::basic_string<charT> const &name, basic_datum<charT> const &value);
-	void add_function(std::basic_string<charT> const &name, func_t value);
+	void add_variable(basic_fray<charT> const &name, basic_datum<charT> const &value);
+	void add_function(basic_fray<charT> const &name, func_t value);
+
+	void clear();
+	void clear_functions();
+	void clear_variables();
 
 private:
 	parser_grammar<charT> *grammar_;
@@ -58,7 +66,6 @@ typedef basic_expressor<char> expressor;
 typedef basic_expressor<UChar32> u32expressor;
 
 using namespace boost::spirit;
-using namespace phoenix;
 
 /*
  *                    ABUSEFILTER EXPRESSION PARSER
@@ -110,20 +117,8 @@ using namespace phoenix;
  * strings, ints and floats, with automatic conversion between types.
  */
 
-namespace px = phoenix;
-
 struct parse_error : std::runtime_error {
 	parse_error(char const *what) : std::runtime_error(what) {}
-};
-
-/*
- * The parser stores the result of each grammar rule in a closure.  Most rules
- * use the parser_closure, which simply stores a single value.
- */
-template<typename charT>
-struct parser_closure : boost::spirit::closure<parser_closure<charT>, basic_datum<charT> >
-{
-	typename parser_closure<charT>::member1 val;
 };
 
 namespace {
@@ -135,7 +130,7 @@ template<typename charT>
 basic_datum<charT>
 f_in(basic_datum<charT> const &a, basic_datum<charT> const &b)
 {
-	std::basic_string<charT> sa = a.toString(), sb = b.toString();
+	basic_fray<charT> sa = a.toString(), sb = b.toString();
 	return basic_datum<charT>::from_int(std::search(sb.begin(), sb.end(), sa.begin(), sa.end()) != sb.end());
 }
 
@@ -143,24 +138,19 @@ template<typename charT>
 basic_datum<charT>
 f_like(basic_datum<charT> const &str, basic_datum<charT> const &pattern)
 {
-	return basic_datum<charT>::from_int(match(str.toString().c_str(), pattern.toString().c_str()));
+	return basic_datum<charT>::from_int(match(pattern.toString().c_str(), str.toString().c_str()));
 }
 
 template<typename charT>
 basic_datum<charT>
 f_regex(basic_datum<charT> const &str, basic_datum<charT> const &pattern)
 {
-	boost::u32regex r = boost::make_u32regex(pattern.toString());
-	std::basic_string<charT> s = str.toString();
+	basic_fray<charT> f = pattern.toString();
+	boost::u32regex r = boost::make_u32regex(f.begin(), f.end(),
+				boost::regex_constants::perl);
+	basic_fray<charT> s = str.toString();
 	return basic_datum<charT>::from_int(boost::u32regex_match(
 				s.begin(), s.end(), r));
-}
-
-template<typename charT>
-basic_datum<charT>
-f_ternary(basic_datum<charT> const &v, basic_datum<charT> const &iftrue, basic_datum<charT> const &iffalse)
-{
-	return v.toInt() ? iftrue : iffalse;
 }
 
 template<typename charT>
@@ -193,176 +183,105 @@ f_float(std::vector<basic_datum<charT> > const &args)
 	return basic_datum<charT>::from_double(args[0].toFloat());
 }
 
-template<typename charT>
-basic_datum<charT>
-f_append(basic_datum<charT> const &a, charT b)
-{
-	return basic_datum<charT>::from_string(a.toString() + b);
-}
-
-template<typename charT>
-basic_datum<charT>
-f_strip_last(basic_datum<charT> const &a)
-{
-	std::basic_string<charT> s(a.toString());
-	s.resize(s.size() - 1);
-	return basic_datum<charT>::from_string(s);
-}
-
-template<typename charT>
-basic_datum<charT>
-datum_and(basic_datum<charT> const &a, basic_datum<charT> const &b)
-{
-	return basic_datum<charT>::from_int(a.toInt() && b.toInt());
-}
-
-template<typename charT>
-basic_datum<charT>
-datum_or(basic_datum<charT> const &a, basic_datum<charT> const &b)
-{
-	return basic_datum<charT>::from_int(a.toInt() || b.toInt());
-}
-
-template<typename charT>
-basic_datum<charT>
-datum_xor(basic_datum<charT> const &a, basic_datum<charT> const &b)
-{
-	return basic_datum<charT>::from_int((bool)a.toInt() ^ (bool)b.toInt());
-}
-
-template<typename charT>
-basic_datum<charT>
-datum_negate(basic_datum<charT> const &a)
-{
-	return basic_datum<charT>::from_int(!(a.toBool()));
-}
-
 } // anonymous namespace
-
-/*
- * This is the closure types for functions.  'val' stores the final result of
- * the function call; func and args store the function object and the parsed
- * arguments.
- */
-template<typename charT>
-struct function_closure : boost::spirit::closure<
-			  	function_closure<charT>,
-				basic_datum<charT>,
-				boost::function<basic_datum<charT> (std::vector<basic_datum<charT> >)>,
-				std::vector<basic_datum<charT> > >
-{
-	typename function_closure<charT>::member1 val;
-	typename function_closure<charT>::member2 func;
-	typename function_closure<charT>::member3 args;
-};
-
-/*
- * The closure for the ?: operator.  Parsed as expr ? iftrue : iffalse.
- */
-template<typename charT>
-struct ternary_closure : boost::spirit::closure<
-			 ternary_closure<charT>,
-			 basic_datum<charT>,
-			 basic_datum<charT>,
-			 basic_datum<charT> >
-{
-	typename ternary_closure<charT>::member1 val;
-	typename ternary_closure<charT>::member2 iftrue;
-	typename ternary_closure<charT>::member3 iffalse;
-};
 
 /*
  * The grammar itself.
  */
 template<typename charT>
-struct parser_grammar : public grammar<parser_grammar<charT>, typename parser_closure<charT>::context_t >
+struct parser_grammar : public grammar<parser_grammar<charT> >
 {
-	/* User-defined variables. */
-	symbols<basic_datum<charT> > variables;
+	static const int id_value = 1;
+	static const int id_variable = 2;
+	static const int id_basic = 3;
+	static const int id_bool_expr = 4;
+	static const int id_ord_expr = 5;
+	static const int id_eq_expr = 6;
+	static const int id_pow_expr = 7;
+	static const int id_mult_expr = 8;
+	static const int id_plus_expr = 9;
+	static const int id_in_expr = 10;
+	static const int id_function = 12;
+	static const int id_tern_expr = 13;
+	static const int id_string = 14;
 
-	void add_variable(std::basic_string<charT> const &name, basic_datum<charT> const &value) {
+	/* User-defined variables. */
+	symbols<basic_datum<charT>, charT > variables;
+
+	void add_variable(basic_fray<charT> const &name, basic_datum<charT> const &value) {
 		variables.add(name.c_str(), value);
 	}
 
 	/* User-defined functions. */
-	symbols<boost::function<basic_datum<charT> (std::vector<basic_datum<charT> >)> > functions;
+	symbols<boost::function<basic_datum<charT> (std::vector<basic_datum<charT> >)>, charT > functions;
 
 	void add_function(
-			std::basic_string<charT> const &name, 
+			basic_fray<charT> const &name, 
 			boost::function<basic_datum<charT> (std::vector<basic_datum<charT> >)> func) {
 		functions.add(name.c_str(), func);
+	}
+
+	symbols<int, charT> eq_opers, ord_opers, plus_opers, mult_opers, in_opers, bool_opers;
+
+	parser_grammar() {
+		eq_opers.add("=", 0);
+		eq_opers.add("==", 0);
+		eq_opers.add("===", 0);
+		eq_opers.add("!=", 0);
+		eq_opers.add("!==", 0);
+		eq_opers.add("/=", 0);
+		ord_opers.add("<", 0);
+		ord_opers.add("<=", 0);
+		ord_opers.add(">", 0);
+		ord_opers.add(">=", 0);
+		plus_opers.add("+", 0);
+		plus_opers.add("-", 0);
+		mult_opers.add("*", 0);
+		mult_opers.add("/", 0);
+		mult_opers.add("%", 0);
+		bool_opers.add("&", 0);
+		bool_opers.add("|", 0);
+		bool_opers.add("^", 0);
+		in_opers.add("in", 0);
+		in_opers.add("contains", 0);
+		in_opers.add("matches", 0);
+		in_opers.add("like", 0);
+		in_opers.add("rlike", 0);
+		in_opers.add("regex", 0);
 	}
 
 	template<typename ScannerT>
 	struct definition
 	{
-		typedef rule<ScannerT, typename parser_closure<charT>::context_t > rule_t;
-
 		parser_grammar const &self_;
  
-		/*
-		 * A phoenix actor to append its argument to a container.
-		 */
-		struct push_back_impl {
-			template<typename C, typename I>
-			struct result {
-				typedef void type;
-			};
-
-			template<typename C, typename I>
-			void operator() (C &c, I const &i) const {
-				c.push_back(i);
-			}
-		};
-
-		phoenix::function<push_back_impl> const push_back;
-
-		/*
-		 * A phoenix actor to call a user-defined function given the
-		 * function object and arguments.
-		 */
-		struct call_function_impl {
-			template<typename F, typename A>
-			struct result {
-				typedef basic_datum<charT> type;
-			};
-
-			template<typename F, typename A>
-			basic_datum<charT> operator() (F const &func, A const &args) const {
-				return func(args);
-			}
-		};
-
-		phoenix::function<call_function_impl> const call_function;
-
 		definition(parser_grammar const &self) 
 		: self_(self)
-		, push_back(push_back_impl())
-	        , call_function(call_function_impl())
 		{
-			std::basic_string<charT> empty_string;
-
 			/*
 			 * A literal value.  Either a string, a floating
 			 * pointer number or an integer.
 			 */
 			value = 
-				  strict_real_p[value.val = bind(&basic_datum<charT>::from_double)(arg1)]
-				| as_lower_d[
-					  oct_p[value.val = bind(&basic_datum<charT>::from_int)(arg1)] >> 'o'
-					| hex_p[value.val = bind(&basic_datum<charT>::from_int)(arg1)] >> 'x'
-					| bin_p[value.val = bind(&basic_datum<charT>::from_int)(arg1)] >> 'b'
-					| int_p[value.val = bind(&basic_datum<charT>::from_int)(arg1)]
+				  strict_real_p
+				| as_lower_d[ leaf_node_d[
+					  oct_p >> 'o'
+					| hex_p >> 'x'
+					| bin_p >> 'b'
+					| int_p
+				] ]
+				| string
+				;
+
+			/*
+			 * config_p can't be used here, because it will rewrite
+			 * *(c_escape_ch_p[x]) into (*c_escape_ch_p)[x]
+			 */
+			string = inner_node_d[
+					   '"'
+					>> leaf_node_d[ *(lex_escape_ch_p - '"') ]
+					>> '"'
 				]
-				/*
-				 * config_p can't be used here, because it will rewrite
-				 * *(c_escape_ch_p[x]) into (*c_escape_ch_p)[x]
-				 */
-				| (
-					   ch_p(charT('"'))[value.val = bind(&basic_datum<charT>::from_string)(empty_string)]
-					>> *((c_escape_ch_p[value.val = bind(&f_append<charT>)(value.val, arg1)] - '"'))
-					>> ch_p(charT('"'))[value.val = bind(&f_strip_last<charT>)(value.val)]
-				  )
 				;
 
 			/*
@@ -372,9 +291,10 @@ struct parser_grammar : public grammar<parser_grammar<charT>, typename parser_cl
 			 * letters and underscore only) are returned as the
 			 * empty string.
 			 */
-			variable = 
-				  self.variables[variable.val = arg1]
-				| (+ (upper_p | '_') )[variable.val = bind(&basic_datum<charT>::from_string)(empty_string)]
+			variable = longest_d[
+					  self.variables
+					| leaf_node_d[ (+ (upper_p | '_') ) ]
+				   ]
 				;
 
 			/*
@@ -382,11 +302,13 @@ struct parser_grammar : public grammar<parser_grammar<charT>, typename parser_cl
 			 */
 			function = 
 				  (
-					   self.functions[function.func = arg1]
-					>> '('
-					>> ( tern_expr[push_back(function.args, arg1)] % ',' )
-					>> ')'
-				  ) [function.val = call_function(function.func, function.args)]
+					   root_node_d[self.functions]
+					>> inner_node_d[
+						   '('
+						>> ( tern_expr % discard_node_d[ch_p(',')] )
+						>> ')'
+					   ]
+				  )
 				;
 
 			/*
@@ -395,38 +317,29 @@ struct parser_grammar : public grammar<parser_grammar<charT>, typename parser_cl
 			 * parenthesised expression (a).
 			 */
 			basic =
-				  ( '(' >> tern_expr[basic.val = arg1] >> ')' )
-				| ch_p('!') >> tern_expr[basic.val = bind(&datum_negate<charT>)(arg1)]
-				| ch_p('+') >> tern_expr[basic.val = arg1] 
-				| ch_p('-') >> tern_expr[basic.val = -arg1] 
-				| value[basic.val = arg1]
-				| variable[basic.val = arg1]
-				| function[basic.val = arg1]
+				  value
+				| variable
+				| function
+				| inner_node_d[ '(' >> tern_expr >> ')' ]
+				| root_node_d[ch_p('!')] >> tern_expr
+				| root_node_d[ch_p('+')] >> tern_expr 
+				| root_node_d[ch_p('-')] >> tern_expr
 				;
 
 			/*
 			 * "a in b" operator
 			 */
 			in_expr = 
-				  basic[in_expr.val = arg1]
-				>> *(
-					  "in"       >> basic[in_expr.val = bind(&f_in<charT>)(in_expr.val, arg1)]
-					| "contains" >> basic[in_expr.val = bind(&f_in<charT>)(arg1, in_expr.val)]
-					| "like"     >> basic[in_expr.val = bind(&f_like<charT>)(arg1, in_expr.val)]
-					| "matches"  >> basic[in_expr.val = bind(&f_like<charT>)(arg1, in_expr.val)]
-					| "rlike"    >> basic[in_expr.val = bind(&f_regex<charT>)(in_expr.val, arg1)]
-					| "regex"    >> basic[in_expr.val = bind(&f_regex<charT>)(in_expr.val, arg1)]
-				    )
+				  basic
+				>> *( root_node_d[ self.in_opers ] >> basic )
 				;
 
 			/*
 			 * power-of.  This is right-associative. 
 			 */
 			pow_expr =
-				   in_expr[pow_expr.val = arg1]
-				>> !(
-					"**" >> pow_expr[pow_expr.val = bind(&::afp::pow<charT>)(pow_expr.val, arg1)]
-				    )
+				   in_expr
+				>> !( root_node_d[ str_p("**") ] >> pow_expr )
 				;
 
 			/*
@@ -434,23 +347,16 @@ struct parser_grammar : public grammar<parser_grammar<charT>, typename parser_cl
 			 * precedence.
 			 */
 			mult_expr =
-				  pow_expr[mult_expr.val = arg1]
-				>> *( 
-					  '*' >> pow_expr[mult_expr.val *= arg1] 
-					| '/' >> pow_expr[mult_expr.val /= arg1] 
-					| '%' >> pow_expr[mult_expr.val %= arg1] 
-				    )
+				   pow_expr
+				>> *( root_node_d[ self.mult_opers ] >> pow_expr )
 				;
 
 			/*
 			 * Additional and operators with the same precedence.
 			 */
 			plus_expr =
-				  mult_expr[plus_expr.val = arg1]
-				>> *( 
-					  '+' >> mult_expr[plus_expr.val += arg1] 
-					| '-' >> mult_expr[plus_expr.val -= arg1] 
-				    )
+				   mult_expr
+				>> *( root_node_d[ self.plus_opers ] >> mult_expr )
 				;
 
 			/*
@@ -458,46 +364,24 @@ struct parser_grammar : public grammar<parser_grammar<charT>, typename parser_cl
 			 * precedence.
 			 */
 			ord_expr  =
-				  plus_expr[ord_expr.val = arg1]
-				>> *( 
-						/* don't remove the () from (ord_expr.val) - for some reason it confuses
-						   gcc into thinkins the < begins a template list */
-					  "<"  >> plus_expr[ord_expr.val = bind(&basic_datum<charT>::from_int)((ord_expr.val) < arg1)]
-					| "<=" >> plus_expr[ord_expr.val = bind(&basic_datum<charT>::from_int)(ord_expr.val <= arg1)]
-					| ">"  >> plus_expr[ord_expr.val = bind(&basic_datum<charT>::from_int)(ord_expr.val > arg1)]
-					| ">=" >> plus_expr[ord_expr.val = bind(&basic_datum<charT>::from_int)(ord_expr.val >= arg1)]
-				    )
+				   plus_expr
+				>> *( root_node_d[ self.ord_opers ] >> plus_expr )
 				;
 
 			/*
 			 * Equality comparisons.
 			 */
 			eq_expr =
-				  ord_expr[eq_expr.val = arg1]
-				>> *( 
-					  "="   >> eq_expr[eq_expr.val = bind(&basic_datum<charT>::from_int)(eq_expr.val == arg1)]
-					| "=="  >> eq_expr[eq_expr.val = bind(&basic_datum<charT>::from_int)(eq_expr.val == arg1)]
-					| "!="  >> eq_expr[eq_expr.val = bind(&basic_datum<charT>::from_int)(eq_expr.val != arg1)]
-					| "/="  >> eq_expr[eq_expr.val = bind(&basic_datum<charT>::from_int)(eq_expr.val != arg1)]
-					| "===" >> eq_expr[eq_expr.val = 
-							bind(&basic_datum<charT>::from_int)(
-								bind(&basic_datum<charT>::compare_with_type)(eq_expr.val, arg1))]
-					| "!==" >> eq_expr[eq_expr.val = 
-							bind(&basic_datum<charT>::from_int)(
-								!bind(&basic_datum<charT>::compare_with_type)(eq_expr.val, arg1))]
-				    )
+				   ord_expr
+				>> *( root_node_d[ self.eq_opers ] >> ord_expr )
 				;
 
 			/*
 			 * Boolean expressions.
 			 */
 			bool_expr =
-				  eq_expr[bool_expr.val = arg1]
-				>> *( 
-					  '&' >> eq_expr[bool_expr.val = bind(datum_and<charT>)(bool_expr.val, arg1)]
-					| '|' >> eq_expr[bool_expr.val = bind(datum_or<charT>)(bool_expr.val, arg1)]
-					| '^' >> eq_expr[bool_expr.val = bind(datum_xor<charT>)(bool_expr.val, arg1)]
-				    )
+				  eq_expr
+				>> *( root_node_d[ self.bool_opers ] >> eq_expr )
 				;
 
 			/*
@@ -506,30 +390,33 @@ struct parser_grammar : public grammar<parser_grammar<charT>, typename parser_cl
 			 * is supported.
 			 */
 			tern_expr =
-				   bool_expr[tern_expr.val = arg1]
+				   bool_expr
 				>> !(
-					(
-						   "?" >> tern_expr[tern_expr.iftrue = arg1]
-						>> ":" >> tern_expr[tern_expr.iffalse = arg1]
-					)[tern_expr.val =
-						bind(f_ternary<charT>)(tern_expr.val, tern_expr.iftrue, tern_expr.iffalse)]
+					   root_node_d[ch_p('?')] >> tern_expr
+					>> discard_node_d[ch_p(':')] >> tern_expr
 				   )
 				;
-
-			/*
-			 * The root expression type.
-			 */
-			expr = tern_expr[self.val = arg1];
 		}
 
-		rule_t const &start() const {
-			return expr;
+		rule<ScannerT, parser_context<>, parser_tag<id_tern_expr> >
+		const &start() const {
+			return tern_expr;
 		}
 
-		rule_t value, variable, basic, bool_expr,
-		       ord_expr, eq_expr, pow_expr, mult_expr, plus_expr, in_expr, expr;
-		rule<ScannerT, typename function_closure<charT>::context_t > function;
-		rule<ScannerT, typename ternary_closure<charT>::context_t > tern_expr;
+		rule<ScannerT, parser_context<>, parser_tag<id_value> > value;
+		rule<ScannerT, parser_context<>, parser_tag<id_variable> > variable;
+		rule<ScannerT, parser_context<>, parser_tag<id_basic> > basic;
+		rule<ScannerT, parser_context<>, parser_tag<id_bool_expr> > bool_expr;
+		rule<ScannerT, parser_context<>, parser_tag<id_ord_expr> > ord_expr;
+		rule<ScannerT, parser_context<>, parser_tag<id_eq_expr> > eq_expr;
+		rule<ScannerT, parser_context<>, parser_tag<id_pow_expr> > pow_expr;
+		rule<ScannerT, parser_context<>, parser_tag<id_mult_expr> > mult_expr;
+		rule<ScannerT, parser_context<>, parser_tag<id_plus_expr> > plus_expr;
+		rule<ScannerT, parser_context<>, parser_tag<id_in_expr> > in_expr;
+
+		rule<ScannerT, parser_context<>, parser_tag<id_function> > function;
+		rule<ScannerT, parser_context<>, parser_tag<id_tern_expr> > tern_expr;
+		rule<ScannerT, parser_context<>, parser_tag<id_string> > string;
 	};
 };
 
@@ -557,40 +444,438 @@ basic_expressor<charT>::~basic_expressor()
 	delete grammar_;
 }
 
+template<typename charT>
+struct ast_evaluator {
+	typedef typename tree_match<typename basic_fray<charT>::const_iterator>::tree_iterator astiter_t;
+	parser_grammar<charT> const &grammar_;
+
+	ast_evaluator(parser_grammar<charT> const &grammar)
+		: grammar_(grammar)
+	{
+	}
+
+	basic_datum<charT>
+	ast_eval_in(charT oper, astiter_t const &a, astiter_t const &b)
+	{
+		switch (oper) {
+		case 'i':
+			return f_in(tree_eval(a), tree_eval(b));
+		case 'c':
+			return f_in(tree_eval(b), tree_eval(a));
+		case 'l':
+		case 'm':
+			return f_like(tree_eval(a), tree_eval(b));
+		case 'r':
+			return f_regex(tree_eval(a), tree_eval(b));
+		default:
+			abort();
+		}
+	}
+
+	basic_datum<charT>
+	ast_eval_bool(charT oper, astiter_t const &a, astiter_t const &b)
+	{
+		switch (oper) {
+		case '&':
+			if (tree_eval(a).toBool())
+				if (tree_eval(b).toBool())
+					return basic_datum<charT>::from_int(1);
+			return basic_datum<charT>::from_int(0);
+		
+		case '|':
+			if (tree_eval(a).toBool())
+				return basic_datum<charT>::from_int(1);
+			else
+				if (tree_eval(b).toBool())
+					return basic_datum<charT>::from_int(1);
+			return basic_datum<charT>::from_int(0);
+
+		case '^': 
+			{
+				int va = tree_eval(a).toBool(), vb = tree_eval(b).toBool();
+				if ((va && !vb) || (!va && vb))
+					return basic_datum<charT>::from_int(1);
+				return basic_datum<charT>::from_int(0);
+			}
+		}
+
+		abort();
+	}
+				
+	basic_datum<charT>
+	ast_eval_plus(charT oper, astiter_t const &a, astiter_t const &b)
+	{
+		switch (oper) {
+		case '+':
+			return tree_eval(a) + tree_eval(b);
+
+		case '-':
+			return tree_eval(a) - tree_eval(b);
+
+		default:
+			abort();
+		}
+	}
+
+	basic_datum<charT>
+	ast_eval_mult(charT oper, astiter_t const &a, astiter_t const &b)
+	{
+		switch (oper) {
+		case '*':
+			return tree_eval(a) * tree_eval(b);
+		case '/':
+			return tree_eval(a) / tree_eval(b);
+		case '%':
+			return tree_eval(a) % tree_eval(b);
+		default:
+			abort();
+		}
+	}
+
+	basic_datum<charT>
+	ast_eval_ord(basic_fray<charT> const &oper, astiter_t const &a, astiter_t const &b)
+	{
+		switch (oper.size()) {
+		case 1:
+			switch (oper[0]) {
+			case '<':
+				return basic_datum<charT>::from_int(tree_eval(a) < tree_eval(b));
+			case '>':
+				return basic_datum<charT>::from_int(tree_eval(a) > tree_eval(b));
+			default:
+				abort();
+			}
+
+		case 2:
+			switch(oper[0]) {
+			case '<':
+				return basic_datum<charT>::from_int(tree_eval(a) <= tree_eval(b));
+			case '>':
+				return basic_datum<charT>::from_int(tree_eval(a) >= tree_eval(b));
+			default:
+				abort();
+			}
+
+		default:
+			abort();
+		}
+	}
+
+	basic_datum<charT>
+	ast_eval_eq(basic_fray<charT> const &oper, astiter_t const &a, astiter_t const &b)
+	{
+		switch (oper.size()) {
+		case 1: /* = */
+			return basic_datum<charT>::from_int(tree_eval(a) == tree_eval(b));
+		case 2: /* != /= == */
+			switch (oper[0]) {
+			case '!':
+			case '/':
+				return basic_datum<charT>::from_int(tree_eval(a) != tree_eval(b));
+			case '=':
+				return basic_datum<charT>::from_int(tree_eval(a) == tree_eval(b));
+			default:
+				abort();
+			}
+		case 3: /* === !== */
+			switch (oper[0]) {
+			case '=':
+				return basic_datum<charT>::from_int(tree_eval(a).compare_with_type(tree_eval(b)));
+			case '!':
+				return basic_datum<charT>::from_int(!tree_eval(a).compare_with_type(tree_eval(b)));
+			default:
+				abort();
+			}
+		default:
+			abort();
+		}
+	}
+
+	basic_datum<charT>
+	ast_eval_pow(astiter_t const &a, astiter_t const &b)
+	{
+		return pow(tree_eval(a), tree_eval(b));
+	}
+
+	basic_datum<charT>
+	ast_eval_string(basic_fray<charT> const &s)
+	{
+		std::vector<charT> ret;
+		ret.reserve(int(s.size() * 1.2));
+
+		for (std::size_t i = 0, end = s.size(); i < end; ++i) {
+			if (s[i] != '\\') {
+				ret.push_back(s[i]);
+				continue;
+			}
+
+			if (i+1 == end)
+				break;
+
+			switch (s[i + 1]) {
+			case 't':
+				ret.push_back('\t');
+				break;
+			case 'n':
+				ret.push_back('\n');
+				break;
+			case 'r':
+				ret.push_back('\r');
+				break;
+			case 'b':
+				ret.push_back('\b');
+				break;
+			case 'a':
+				ret.push_back('\a');
+				break;
+			case 'f':
+				ret.push_back('\f');
+				break;
+			case 'v':
+				ret.push_back('\v');
+				break;
+			default:
+				ret.push_back(s[i + 1]);
+				break;
+			}
+
+			i++;
+		}
+
+		return basic_datum<charT>::from_string(basic_fray<charT>(ret.begin(), ret.end()));
+	}
+
+	basic_datum<charT>
+	ast_eval_tern(astiter_t const &cond, astiter_t const &iftrue, astiter_t const &iffalse)
+	{
+		if (tree_eval(cond).toBool())
+			return tree_eval(iftrue);
+		else
+			return tree_eval(iffalse);
+	}
+
+	basic_datum<charT>
+	ast_eval_num(basic_fray<charT> const &s)
+	{
+		if (s.find('.') != basic_fray<charT>::npos)
+			return basic_datum<charT>::from_double(std::strtod(make_u8fray(s).c_str(), 0));
+
+		int base;
+		switch (s[s.size() - 1]) {
+		case 'x':
+			base = 16;
+			break;
+		case 'o':
+			base = 8;
+			break;
+		case 'b':
+			base = 2;
+			break;
+		default:
+			base = 10;
+			break;
+		}
+
+		return basic_datum<charT>::from_int(std::strtol(make_u8fray(s).c_str(), 0, base));
+	}
+
+	basic_datum<charT>
+	ast_eval_function(basic_fray<charT> const &f, astiter_t abegin, astiter_t const &aend)
+	{
+		std::vector<basic_datum<charT> > args;
+
+		for (; abegin != aend; ++abegin)
+			args.push_back(tree_eval(abegin));
+
+		boost::function<basic_datum<charT> (std::vector<basic_datum<charT> >)> *fptr;
+		if ((fptr = find(grammar_.functions, f.c_str())) == NULL)
+			return basic_datum<charT>::from_string(basic_fray<charT>());
+		else
+			return (*fptr)(args);
+	}
+
+	basic_datum<charT>
+	ast_eval_basic(charT op, astiter_t const &val)
+	{
+		switch (op) {
+		case '!':
+			if (tree_eval(val).toBool())
+				return basic_datum<charT>::from_int(0);
+			else
+				return basic_datum<charT>::from_int(1);
+
+		case '-':
+			return -tree_eval(val);
+
+		case '+':
+			return tree_eval(val);
+		default:
+			abort();
+		}
+	}
+
+	basic_datum<charT>
+	ast_eval_variable(basic_fray<charT> const &v)
+	{
+		basic_datum<charT> const *var;
+		if ((var = find(grammar_.variables, v.c_str())) == NULL)
+			return basic_datum<charT>::from_string(basic_fray<charT>());
+		else
+			return *var;
+	}
+
+	basic_datum<charT>
+	tree_eval(astiter_t const &i)
+	{
+		switch (i->value.id().to_long()) {
+		case parser_grammar<charT>::id_value:
+			return ast_eval_num(
+				basic_fray<charT>(i->value.begin(), i->value.end()));
+
+		case parser_grammar<charT>::id_string:
+			return ast_eval_string(basic_fray<charT>(i->value.begin(), i->value.end()));
+
+		case parser_grammar<charT>::id_basic:
+			return ast_eval_basic(*i->value.begin(), i->children.begin());
+
+		case parser_grammar<charT>::id_variable:
+			return ast_eval_variable(basic_fray<charT>(i->value.begin(), i->value.end()));
+
+		case parser_grammar<charT>::id_function:
+			return ast_eval_function(
+					basic_fray<charT>(i->value.begin(), i->value.end()),
+					i->children.begin(), i->children.end());
+
+		case parser_grammar<charT>::id_in_expr:
+			return ast_eval_in(*i->value.begin(), i->children.begin(), i->children.begin() + 1);
+
+		case parser_grammar<charT>::id_bool_expr:
+			return ast_eval_bool(*i->value.begin(), i->children.begin(), i->children.begin() + 1);
+
+		case parser_grammar<charT>::id_plus_expr:
+			return ast_eval_plus(*i->value.begin(), i->children.begin(), i->children.begin() + 1);
+
+		case parser_grammar<charT>::id_mult_expr:
+			return ast_eval_mult(*i->value.begin(), i->children.begin(), i->children.begin() + 1);
+
+		case parser_grammar<charT>::id_pow_expr:
+			return ast_eval_pow(i->children.begin(), i->children.begin() + 1);
+
+		case parser_grammar<charT>::id_ord_expr:
+			return ast_eval_ord(
+				basic_fray<charT>(i->value.begin(), i->value.end()),
+				i->children.begin(), i->children.begin() + 1);
+
+		case parser_grammar<charT>::id_eq_expr:
+			return ast_eval_eq(
+				basic_fray<charT>(i->value.begin(), i->value.end()),
+				i->children.begin(), i->children.begin() + 1);
+
+		case parser_grammar<charT>::id_tern_expr:
+			return ast_eval_tern(
+					i->children.begin(),
+					i->children.begin() + 1,
+					i->children.begin() + 2);
+
+		default:
+			std::cerr << "warning: unmatched expr type " << i->value.id().to_long() << "\n";
+			return basic_datum<charT>::from_int(0);
+		}
+	}
+};
+
 /*
  * The user interface to evaluate an expression.  It returns the result, or
  * throws an exception if an error occurs.
  */
 template<typename charT>
 basic_datum<charT>
-basic_expressor<charT>::evaluate(std::basic_string<charT> const &filter) const
+basic_expressor<charT>::evaluate(basic_fray<charT> const &filter) const
 {
 	using namespace boost::spirit;
 
-	typedef typename std::basic_string<charT>::const_iterator iterator_t;
+	typedef typename basic_fray<charT>::const_iterator iterator_t;
 
 	basic_datum<charT> ret;
-	parse_info<iterator_t> info = 
-		parse(filter.begin(), filter.end(), (*grammar_)[var(ret) = arg1],
-				comment_p("/*", "*/") | chset<>("\n\t "));
+
+	tree_parse_info<iterator_t> info = ast_parse(filter.begin(), filter.end(), *grammar_,
+			+chset<>("\n\t ") | comment_p("/*", "*/"));
+
 	if (info.full) {
-		return ret;
+		ast_evaluator<charT> ae(*grammar_);
+		return ae.tree_eval(info.trees.begin());
 	} else {
-		//std::cerr << "stopped at: [" << std::basic_string<charT>(info.stop, filter.end()) << "]\n";
+		//std::cerr << "stopped at: [" << basic_fray<charT>(info.stop, filter.end()) << "]\n";
 		throw parse_error("parsing failed");
 	}
 }
 
 template<typename charT>
 void
-basic_expressor<charT>::add_variable(std::basic_string<charT> const &name, basic_datum<charT> const &value)
+basic_expressor<charT>::print_xml(std::ostream &strm, basic_fray<charT> const &filter) const
+{
+	using namespace boost::spirit;
+
+	typedef typename basic_fray<charT>::const_iterator iterator_t;
+
+	tree_parse_info<iterator_t> info = ast_parse(filter.begin(), filter.end(), *grammar_,
+			+chset<>("\n\t ") | comment_p("/*", "*/"));
+
+	if (info.full) {
+		std::map<parser_id, std::string> rule_names;
+		rule_names[parser_grammar<charT>::id_value] = "value";
+		rule_names[parser_grammar<charT>::id_variable] = "variable";
+		rule_names[parser_grammar<charT>::id_basic] = "basic";
+		rule_names[parser_grammar<charT>::id_bool_expr] = "bool_expr";
+		rule_names[parser_grammar<charT>::id_ord_expr] = "ord_expr";
+		rule_names[parser_grammar<charT>::id_eq_expr] = "eq_expr";
+		rule_names[parser_grammar<charT>::id_pow_expr] = "pow_expr";
+		rule_names[parser_grammar<charT>::id_mult_expr] = "mult_expr";
+		rule_names[parser_grammar<charT>::id_plus_expr] = "plus_expr";
+		rule_names[parser_grammar<charT>::id_in_expr] = "in_expr";
+		rule_names[parser_grammar<charT>::id_function] = "function";
+		rule_names[parser_grammar<charT>::id_tern_expr] = "tern_expr";
+		rule_names[parser_grammar<charT>::id_string] = "string";
+		tree_to_xml(strm, info.trees, "", rule_names);
+	} else {
+		throw parse_error("parsing failed");
+	}
+}
+
+template<typename charT>
+void
+basic_expressor<charT>::clear()
+{
+	clear_variables();
+	clear_functions();
+}
+
+template<typename charT>
+void
+basic_expressor<charT>::clear_variables()
+{
+	symbols<basic_datum<charT>, charT > variables;
+	grammar_->variables = variables;
+}
+
+template<typename charT>
+void
+basic_expressor<charT>::clear_functions()
+{
+	symbols<boost::function<basic_datum<charT> (std::vector<basic_datum<charT> >)>, charT > functions;
+	grammar_->functions = functions;
+}
+
+template<typename charT>
+void
+basic_expressor<charT>::add_variable(basic_fray<charT> const &name, basic_datum<charT> const &value)
 {
 	grammar_->add_variable(name, value);
 }
 
 template<typename charT>
 void
-basic_expressor<charT>::add_function(std::basic_string<charT> const &name, func_t value)
+basic_expressor<charT>::add_function(basic_fray<charT> const &name, func_t value)
 {
 	grammar_->add_function(name, value);
 }

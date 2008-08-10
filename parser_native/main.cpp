@@ -25,8 +25,9 @@
 #include "request.h"
 
 int main( int argc, char** argv ) {
+	afp::request r;
+
 	while (true) {
-		afp::request r;
 		bool result = false;
 		
 		try {

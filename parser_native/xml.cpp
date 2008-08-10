@@ -53,7 +53,7 @@ main(int argc, char **argv)
 	e.add_function(make_u32fray("length"), f_length<UChar32>);
 
 	try {
-		std::cout << make_u8fray(e.evaluate(make_u32fray(argv[1])).toString()) << '\n';
+		e.print_xml(std::cout, make_u32fray(argv[1]));
 	} catch (std::exception &e) {
 		std::cout << "parsing failed: " << e.what() << '\n';
 	}

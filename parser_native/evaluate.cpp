@@ -9,13 +9,18 @@
  * implied warranty.
  */
 
-#include "filter_evaluator.h"
+#include	"filter_evaluator.h"
 
 int main(int argc, char** argv) {
 	afp::u32filter_evaluator f;
 	
+	if (argc != 2) {
+		std::cerr << "usage: " << argv[0] << " <filter>\n";
+		return 1;
+	}
+
 	try {
-		std::cout << f.evaluate(make_u32string(argv[1])) << '\n';
+		std::cout << f.evaluate(make_u32fray(argv[1])) << '\n';
 	} catch (std::exception &e) {
 		std::cerr << "exception: " << e.what() << '\n';
 	}

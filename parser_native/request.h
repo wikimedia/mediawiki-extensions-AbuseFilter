@@ -26,7 +26,7 @@ struct request {
 
 private:
 	u32filter_evaluator f;
-	u32string filter;
+	u32fray filter;
 };
 
 } // namespace afp

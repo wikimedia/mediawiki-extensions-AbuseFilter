@@ -27,11 +27,13 @@ template<typename charT>
 struct basic_filter_evaluator {
 	basic_filter_evaluator();
 
-	bool evaluate(std::basic_string<charT> const &filter) const;
+	bool evaluate(basic_fray<charT> const &filter) const;
 
 	void add_variable(
-		std::basic_string<charT> const &key, 
+		basic_fray<charT> const &key, 
 		basic_datum<charT> value);
+
+	void clear_variables();
 
 private:
 	basic_expressor<charT> e;
@@ -54,9 +56,16 @@ basic_filter_evaluator<charT>::basic_filter_evaluator()
 }
 
 template<typename charT>
+void
+basic_filter_evaluator<charT>::clear_variables()
+{
+	e.clear_variables();
+}
+
+template<typename charT>
 bool
 basic_filter_evaluator<charT>::evaluate(
-		std::basic_string<charT> const &filter) const
+		basic_fray<charT> const &filter) const
 {
 	try {
 		return e.evaluate(filter).toBool();
@@ -69,7 +78,7 @@ basic_filter_evaluator<charT>::evaluate(
 template<typename charT>
 void
 basic_filter_evaluator<charT>::add_variable(
-		std::basic_string<charT> const &key, 
+		basic_fray<charT> const &key, 
 		basic_datum<charT> value)
 {
 	e.add_variable(key, value);

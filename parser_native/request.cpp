@@ -9,9 +9,13 @@
  * implied warranty.
  */
 
+#include	<string>
+#include	<istream>
+
 #include	<boost/optional.hpp>
 
 #include	"request.h"
+#include	"fray.h"
 
 namespace afp {
 
@@ -27,7 +31,7 @@ template<typename charT, typename Traits>
 struct basic_nul_terminated_string_reader {
 	typedef std::istream_iterator<charT> iterator_t;
 	typedef std::basic_istream<charT, Traits> stream_t;
-	typedef std::basic_string<charT, Traits> string_t;
+	typedef basic_fray<charT, Traits> string_t;
 
 	basic_nul_terminated_string_reader(stream_t &stream)
 		: stream_(stream)
@@ -37,7 +41,8 @@ struct basic_nul_terminated_string_reader {
 	}
 
 	boost::optional<string_t> read(std::size_t max_len = 0) {
-		string_t ret;
+		std::vector<char, boost::pool_allocator<char> > ret;
+		ret.reserve(1024); /* probably enough for most inputs */
 
 		if (first_)
 			first_ = false;
@@ -46,13 +51,13 @@ struct basic_nul_terminated_string_reader {
 
 		for (; it_ != end_; ++it_) {
 			if (*it_ == stream_.widen('\0')) {
-				return ret;
+				return basic_fray<charT>(&ret[0], ret.size());
 			}
 
 			if (max_len && (ret.size() > max_len))
 				return boost::optional<string_t>();
 
-			ret += *it_;
+			ret.push_back(*it_);
 		}
 
 		return boost::optional<string_t>();
@@ -69,17 +74,19 @@ typedef basic_nul_terminated_string_reader<char, std::char_traits<char> >
 
 bool 
 request::load(std::istream &inp) {
+	f.clear_variables();
+
 	inp.unsetf(std::ios_base::skipws);
 
 	nul_terminated_string_reader reader(inp);
-	boost::optional<std::string> str;
+	boost::optional<fray> str;
 
 	if (!(str = reader.read(MAX_FILTER_LEN)))
 		return false;
-	filter = make_u32string(*str);
+	filter = make_u32fray(*str);
 
 	for (;;) {
-		std::string key, value;
+		fray key, value;
 
 		/* read the key */
 		if (!(str = reader.read(MAX_VARNAME_LEN)))
@@ -95,9 +102,9 @@ request::load(std::istream &inp) {
 			return false;
 		value = *str;
 
-		f.add_variable(	make_u32string(key),
+		f.add_variable(	make_u32fray(key),
 				u32datum::from_string_convert(
-					make_u32string(value)));
+					make_u32fray(value)));
 	}
 	
 	return true;

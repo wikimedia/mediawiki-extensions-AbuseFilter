@@ -93,7 +93,7 @@ basic_datum<charT>::operator+=(basic_datum<charT> const &other)
 	 * If either argument is a string, convert both to string.  After discussion
 	 * on #mediawiki, this seems to be the least confusing option.
 	 */
-	if (value_.which() == 0 || other.value_.which() == 0) {
+	if (value_.which() == 1 || other.value_.which() == 1) {
 		value_ = toString() + other.toString();
 		return *this;
 	}
