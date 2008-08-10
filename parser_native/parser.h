@@ -410,7 +410,7 @@ basic_expressor<charT>::evaluate(basic_fray<charT> const &filter) const
 
 	basic_datum<charT> ret;
 
-	tree_parse_info<iterator_t> info = ast_parse(filter.begin(), filter.end(), *grammar_,
+	tree_parse_info<iterator_t> info = ast_parse(filter.begin(), filter.end(), *grammar_ >> end_p,
 			chset<>("\r\n\t ") | comment_p("/*", "*/"));
 
 	if (info.full) {
@@ -429,7 +429,7 @@ basic_expressor<charT>::print_xml(std::ostream &strm, basic_fray<charT> const &f
 
 	typedef typename basic_fray<charT>::const_iterator iterator_t;
 
-	tree_parse_info<iterator_t> info = ast_parse(filter.begin(), filter.end(), *grammar_,
+	tree_parse_info<iterator_t> info = ast_parse(filter.begin(), filter.end(), *grammar_ >> end_p,
 			+chset<>("\n\t ") | comment_p("/*", "*/"));
 
 	if (info.full) {
