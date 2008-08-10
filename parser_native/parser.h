@@ -39,6 +39,7 @@
 #include	"affunctions.h"
 #include	"fray.h"
 #include	"ast.h"
+#include	"parserdefs.h"
 
 namespace afp {
 
@@ -82,11 +83,12 @@ using namespace boost::spirit;
  *
  *   expressor e;
  *   e.add_variable("ONE", 1);
+ *   e.add_function("f", myfunc);
  *   e.evaluate("ONE + 2");     -- returns 3 
  * 
  * Custom functions should have the following prototype:
  *
- *   datum (std::vector<afp::datum) const &args);
+ *   afp::basic_datum<charT> (std::vector<afp::basic_datum<charT>) const &args);
  *
  * Functions must return a value; they cannot be void.  The arguments passed to
  * the function are stored in the 'args' array in left-to-right order.
@@ -94,35 +96,45 @@ using namespace boost::spirit;
  * The parser implements a C-like grammar with some differences.  The following
  * operators are available:
  *
- *   a & b	true if a and b are both true
- *   a | b	true if either a or b is true
- *   a ^ b	true if either a or b is true, but not if both are true
- *   a + b	arithmetic
+ *   a & b		true if a and b are both true
+ *   a | b		true if either a or b is true
+ *   a ^ b		true if either a or b is true, but not if both are true
+ *   a + b		arithmetic
  *   a - b
  *   a * b
  *   a / b
  *   a % b
- *   a ** b	power-of (a^b)
- *   a in b	true if the string "b" contains the substring "a"
- *   !a		true if a is false
- *   (a)	same value as a
- *   a ? b : c	if a is true, returns the value of b, otherwise c
- *   a == b	comparison operators
+ *   a ** b		power-of (a^b)
+ *   a in b		true if the string "b" contains the substring "a"
+ *   a contains b	true if b contains the string a
+ *   a like b		true if a matches the Unix glob b
+ *   a matches b	'' ''
+ *   a rlike b		true if a matches the Perl regex b
+ *   a regex b		'' ''
+ *   !a			true if a is false
+ *   (a)		same value as a
+ *   a ? b : c		if a is true, returns the value of b, otherwise c
+ *   a == b		comparison operators
  *   a != b
  *   a < b
  *   a <= b
  *   a > b
  *   a >= b
- *   a === b	returns true if a==b and both are the same type
- *   a !== b	return true if a != b or they are different types
+ *   a === b		returns true if a==b and both are the same type
+ *   a !== b		return true if a != b or they are different types
  *
  * The parser uses afp::datum for its variables.  This means it supports
  * strings, ints and floats, with automatic conversion between types.
+ *
+ * String constants are C-style.  The standard C escapes \a \b \f \t \r \n \v are
+ * supported.  \xHH encodes a 1-byte Unicode character, \uHHHH encodes a 2-byte
+ * Unicode characters, and \UHHHHHHHH encodes a 4-byte Unicode character.
+ *
+ * Numeric constants can be integers (e.g. 1), or floating pointers (e.g.
+ * 1., .1, 1.2).
+ *
+ * Function calls are f(arg1, arg2, ...).  
  */
-
-struct parse_error : std::runtime_error {
-	parse_error(char const *what) : std::runtime_error(what) {}
-};
 
 /*
  * The grammar itself.
@@ -130,20 +142,6 @@ struct parse_error : std::runtime_error {
 template<typename charT>
 struct parser_grammar : public grammar<parser_grammar<charT> >
 {
-	static const int id_value = 1;
-	static const int id_variable = 2;
-	static const int id_basic = 3;
-	static const int id_bool_expr = 4;
-	static const int id_ord_expr = 5;
-	static const int id_eq_expr = 6;
-	static const int id_pow_expr = 7;
-	static const int id_mult_expr = 8;
-	static const int id_plus_expr = 9;
-	static const int id_in_expr = 10;
-	static const int id_function = 12;
-	static const int id_tern_expr = 13;
-	static const int id_string = 14;
-
 	/* User-defined variables. */
 	symbols<basic_datum<charT>, charT > variables;
 
@@ -245,10 +243,7 @@ struct parser_grammar : public grammar<parser_grammar<charT> >
 			 * letters and underscore only) are returned as the
 			 * empty string.
 			 */
-			variable = longest_d[
-					  self.variables
-					| leaf_node_d[ (+ (upper_p | '_') ) ]
-				   ]
+			variable = leaf_node_d[ +(upper_p | '_') ]
 				;
 
 			/*
@@ -256,7 +251,9 @@ struct parser_grammar : public grammar<parser_grammar<charT> >
 			 */
 			function = 
 				  (
-					   root_node_d[self.functions]
+					   root_node_d[ leaf_node_d[
+					   	+(lower_p | '_')
+					   ] ]
 					>> inner_node_d[
 						   '('
 						>> ( tern_expr % discard_node_d[ch_p(',')] )
@@ -352,26 +349,26 @@ struct parser_grammar : public grammar<parser_grammar<charT> >
 				;
 		}
 
-		rule<ScannerT, parser_context<>, parser_tag<id_tern_expr> >
+		rule<ScannerT, parser_context<>, parser_tag<pid_tern_expr> >
 		const &start() const {
 			return tern_expr;
 		}
 
 		rule<ScannerT> c_string_char, hexchar, octchar;
-		rule<ScannerT, parser_context<>, parser_tag<id_value> > value;
-		rule<ScannerT, parser_context<>, parser_tag<id_variable> > variable;
-		rule<ScannerT, parser_context<>, parser_tag<id_basic> > basic;
-		rule<ScannerT, parser_context<>, parser_tag<id_bool_expr> > bool_expr;
-		rule<ScannerT, parser_context<>, parser_tag<id_ord_expr> > ord_expr;
-		rule<ScannerT, parser_context<>, parser_tag<id_eq_expr> > eq_expr;
-		rule<ScannerT, parser_context<>, parser_tag<id_pow_expr> > pow_expr;
-		rule<ScannerT, parser_context<>, parser_tag<id_mult_expr> > mult_expr;
-		rule<ScannerT, parser_context<>, parser_tag<id_plus_expr> > plus_expr;
-		rule<ScannerT, parser_context<>, parser_tag<id_in_expr> > in_expr;
+		rule<ScannerT, parser_context<>, parser_tag<pid_value> > value;
+		rule<ScannerT, parser_context<>, parser_tag<pid_variable> > variable;
+		rule<ScannerT, parser_context<>, parser_tag<pid_basic> > basic;
+		rule<ScannerT, parser_context<>, parser_tag<pid_bool_expr> > bool_expr;
+		rule<ScannerT, parser_context<>, parser_tag<pid_ord_expr> > ord_expr;
+		rule<ScannerT, parser_context<>, parser_tag<pid_eq_expr> > eq_expr;
+		rule<ScannerT, parser_context<>, parser_tag<pid_pow_expr> > pow_expr;
+		rule<ScannerT, parser_context<>, parser_tag<pid_mult_expr> > mult_expr;
+		rule<ScannerT, parser_context<>, parser_tag<pid_plus_expr> > plus_expr;
+		rule<ScannerT, parser_context<>, parser_tag<pid_in_expr> > in_expr;
 
-		rule<ScannerT, parser_context<>, parser_tag<id_function> > function;
-		rule<ScannerT, parser_context<>, parser_tag<id_tern_expr> > tern_expr;
-		rule<ScannerT, parser_context<>, parser_tag<id_string> > string;
+		rule<ScannerT, parser_context<>, parser_tag<pid_function> > function;
+		rule<ScannerT, parser_context<>, parser_tag<pid_tern_expr> > tern_expr;
+		rule<ScannerT, parser_context<>, parser_tag<pid_string> > string;
 	};
 };
 
@@ -414,7 +411,7 @@ basic_expressor<charT>::evaluate(basic_fray<charT> const &filter) const
 	basic_datum<charT> ret;
 
 	tree_parse_info<iterator_t> info = ast_parse(filter.begin(), filter.end(), *grammar_,
-			+chset<>("\n\t ") | comment_p("/*", "*/"));
+			chset<>("\r\n\t ") | comment_p("/*", "*/"));
 
 	if (info.full) {
 		ast_evaluator<charT, typename tree_match<iterator_t>::tree_iterator> ae(*grammar_);

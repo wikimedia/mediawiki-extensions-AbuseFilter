@@ -12,6 +12,8 @@
 #ifndef AST_H
 #define AST_H
 
+#include	"parserdefs.h"
+
 namespace {
 
 template<typename charT>
@@ -32,7 +34,6 @@ hex2int(charT const *str, int ndigits)
 		str++;
 	}
 
-	std::cerr << "hex2int: " << ret << '\n';
 	return ret;
 }
 
@@ -381,58 +382,58 @@ basic_datum<charT>
 ast_evaluator<charT, iterator>::tree_eval(iterator const &i)
 {
 	switch (i->value.id().to_long()) {
-	case parser_grammar<charT>::id_value:
+	case pid_value:
 		return ast_eval_num(
 			basic_fray<charT>(i->value.begin(), i->value.end()));
 
-	case parser_grammar<charT>::id_string:
+	case pid_string:
 		return ast_eval_string(basic_fray<charT>(i->value.begin(), i->value.end()));
 
-	case parser_grammar<charT>::id_basic:
+	case pid_basic:
 		return ast_eval_basic(*i->value.begin(), i->children.begin());
 
-	case parser_grammar<charT>::id_variable:
+	case pid_variable:
 		return ast_eval_variable(basic_fray<charT>(i->value.begin(), i->value.end()));
 
-	case parser_grammar<charT>::id_function:
+	case pid_function:
 		return ast_eval_function(
 				basic_fray<charT>(i->value.begin(), i->value.end()),
 				i->children.begin(), i->children.end());
 
-	case parser_grammar<charT>::id_in_expr:
+	case pid_in_expr:
 		return ast_eval_in(*i->value.begin(), i->children.begin(), i->children.begin() + 1);
 
-	case parser_grammar<charT>::id_bool_expr:
+	case pid_bool_expr:
 		return ast_eval_bool(*i->value.begin(), i->children.begin(), i->children.begin() + 1);
 
-	case parser_grammar<charT>::id_plus_expr:
+	case pid_plus_expr:
 		return ast_eval_plus(*i->value.begin(), i->children.begin(), i->children.begin() + 1);
 
-	case parser_grammar<charT>::id_mult_expr:
+	case pid_mult_expr:
 		return ast_eval_mult(*i->value.begin(), i->children.begin(), i->children.begin() + 1);
 
-	case parser_grammar<charT>::id_pow_expr:
+	case pid_pow_expr:
 		return ast_eval_pow(i->children.begin(), i->children.begin() + 1);
 
-	case parser_grammar<charT>::id_ord_expr:
+	case pid_ord_expr:
 		return ast_eval_ord(
 			basic_fray<charT>(i->value.begin(), i->value.end()),
 			i->children.begin(), i->children.begin() + 1);
 
-	case parser_grammar<charT>::id_eq_expr:
+	case pid_eq_expr:
 		return ast_eval_eq(
 			basic_fray<charT>(i->value.begin(), i->value.end()),
 			i->children.begin(), i->children.begin() + 1);
 
-	case parser_grammar<charT>::id_tern_expr:
+	case pid_tern_expr:
 		return ast_eval_tern(
 				i->children.begin(),
 				i->children.begin() + 1,
 				i->children.begin() + 2);
 
 	default:
-		std::cerr << "warning: unmatched expr type " << i->value.id().to_long() << "\n";
-		return basic_datum<charT>::from_int(0);
+		throw parse_error(
+			str(boost::format("internal error: unmatched expr type %d") % i->value.id().to_long()));
 	}
 }
 
