@@ -1,5 +1,7 @@
 #! /bin/ksh
 
+PATH=/usr/xpg4/bin:$PATH
+
 npass=0
 nfail=0
 ntotal=0
