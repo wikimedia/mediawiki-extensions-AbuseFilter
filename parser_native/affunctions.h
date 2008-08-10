@@ -30,7 +30,7 @@
 namespace afp {
 
 template<typename charT>
-int match(char const *, char const *);
+int match(charT const *, charT const *);
 
 template<typename charT>
 basic_datum<charT> 
