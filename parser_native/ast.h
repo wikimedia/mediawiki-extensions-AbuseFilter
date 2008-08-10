@@ -12,6 +12,32 @@
 #ifndef AST_H
 #define AST_H
 
+namespace {
+
+template<typename charT>
+int
+hex2int(charT const *str, int ndigits)
+{
+	int ret = 0;
+
+	while (ndigits--) {
+		ret *= 0x10;
+		if (*str >= 'a' && *str <= 'f')
+			ret += 10 + int(*str - 'a');
+		else if (*str >= 'A' && *str <= 'F')
+			ret += 10 + int(*str - 'A');
+		else if (*str >= '0' && *str <= '9')
+			ret += int(*str - '0');
+
+		str++;
+	}
+
+	std::cerr << "hex2int: " << ret << '\n';
+	return ret;
+}
+
+}
+
 namespace afp {
 
 template<typename T> struct parser_grammar;
@@ -234,6 +260,27 @@ ast_evaluator<charT, iterator>::ast_eval_string(basic_fray<charT> const &s)
 		case 'v':
 			ret.push_back('\v');
 			break;
+		case 'x':
+			if (i + 3 >= end)
+				break;
+			ret.push_back(hex2int(s.data() + i + 2, 2));
+			i += 2;
+			break;
+
+		case 'u':
+			if (i + 5 >= end)
+				break;
+			ret.push_back(hex2int(s.data() + i + 2, 4));
+			i += 4;
+			break;
+
+		case 'U':
+			if (i + 9 >= end)
+				break;
+			ret.push_back(hex2int(s.data() + i + 2, 8));
+			i += 8;
+			break;
+
 		default:
 			ret.push_back(s[i + 1]);
 			break;

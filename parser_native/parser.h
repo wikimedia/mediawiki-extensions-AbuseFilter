@@ -22,6 +22,7 @@
 #include	<boost/spirit/core.hpp>
 #include	<boost/spirit/utility/confix.hpp>
 #include	<boost/spirit/utility/chset.hpp>
+#include	<boost/spirit/utility/loops.hpp>
 #include	<boost/spirit/tree/ast.hpp>
 #include	<boost/spirit/tree/tree_to_xml.hpp>
 #include	<boost/spirit/symbols.hpp>
@@ -211,13 +212,28 @@ struct parser_grammar : public grammar<parser_grammar<charT> >
 				| string
 				;
 
+			hexchar = chset<>("a-fA-F0-9")
+				;
+
+			octchar = chset<>("0-7")
+				;
+
+			c_string_char =
+				  "\\x" >> hexchar >> hexchar
+				| "\\u" >> repeat_p(4)[hexchar]
+				| "\\U" >> repeat_p(8)[hexchar]
+				| "\\o" >> octchar >> octchar >> octchar
+				| "\\" >> anychar_p - (ch_p('x') | 'u' | 'o')
+				| anychar_p - (ch_p('"') | '\\')
+				;
+
 			/*
 			 * config_p can't be used here, because it will rewrite
 			 * *(c_escape_ch_p[x]) into (*c_escape_ch_p)[x]
 			 */
 			string = inner_node_d[
 					   '"'
-					>> leaf_node_d[ *(lex_escape_ch_p - '"') ]
+					>> leaf_node_d[ *(c_string_char) ]
 					>> '"'
 				]
 				;
@@ -341,6 +357,7 @@ struct parser_grammar : public grammar<parser_grammar<charT> >
 			return tern_expr;
 		}
 
+		rule<ScannerT> c_string_char, hexchar, octchar;
 		rule<ScannerT, parser_context<>, parser_tag<id_value> > value;
 		rule<ScannerT, parser_context<>, parser_tag<id_variable> > variable;
 		rule<ScannerT, parser_context<>, parser_tag<id_basic> > basic;
