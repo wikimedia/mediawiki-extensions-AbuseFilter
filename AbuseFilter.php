@@ -16,7 +16,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
 $dir = dirname(__FILE__);
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'Abuse Filter',
-	'author'         => 'Andrew Garrett',
+	'author'         => array('Andrew Garrett','River Tarnell'),
 	'svn-date'       => '$LastChangedDate: 2008-06-08 20:48:19 +1000 (Sun, 08 Jun 2008) $',
 	'svn-revision'   => '$LastChangedRevision: 36018 $',
 	'description'    => 'Applies automatic heuristics to edits.',
