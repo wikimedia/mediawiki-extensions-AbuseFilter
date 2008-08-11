@@ -25,18 +25,18 @@ struct preferred_type {
 };
 
 template<typename T>
-struct preferred_type<double, T> {
-	typedef double type;
+struct preferred_type<mpf_class, T> {
+	typedef mpf_class type;
 };
 
 template<typename T>
-struct preferred_type<T, double> {
-	typedef double type;
+struct preferred_type<T, mpf_class> {
+	typedef mpf_class type;
 };
 
 template<>
-struct preferred_type<double, double> {
-	typedef double type;
+struct preferred_type<mpf_class, mpf_class> {
+	typedef mpf_class type;
 };
 
 
@@ -54,7 +54,7 @@ struct from_string_converter {
 
 template<typename charT>
 struct from_string_converter<charT, basic_fray<charT> > {
-	typedef long int type;
+	typedef typename basic_datum<charT>::integer_t type;
 
 	template<typename T>
 	static type convert(T const &v) {
@@ -82,37 +82,42 @@ struct to_string_visitor : boost::static_visitor<basic_fray<charT> > {
 };
 
 template<typename charT>
-struct to_int_visitor : boost::static_visitor<long int> {
-	long int operator() (basic_fray<charT> const &v) const {
+struct to_int_visitor : boost::static_visitor<typename basic_datum<charT>::integer_t > {
+	typename basic_datum<charT>::integer_t operator() (basic_fray<charT> const &v) const {
 		try {
-			return u32lexical_cast<charT, long int>(v);
+			return u32lexical_cast<charT, typename basic_datum<charT>::integer_t>(v);
 		} catch (bad_u32lexical_cast &e) {
 			return 0;
 		}
 	}
 
-	long int operator() (double o) const {
-		return (long int) o;
+	typename basic_datum<charT>::integer_t operator() (
+			typename basic_datum<charT>::float_t const &o) const {
+		return typename basic_datum<charT>::integer_t(o);
 	}
 
 	template<typename T>
-	long int operator() (T const &v) const {
+	typename basic_datum<charT>::integer_t operator() (T const &v) const {
 		return v;
 	}
 };
 
 template<typename charT>
-struct to_double_visitor : boost::static_visitor<double> {
-	double operator() (basic_fray<charT> const &v) const {
+struct to_double_visitor : boost::static_visitor<typename basic_datum<charT>::float_t> {
+	typename basic_datum<charT>::float_t operator() (basic_fray<charT> const &v) const {
 		try {
-			return u32lexical_cast<charT, double>(v);
+			return u32lexical_cast<charT, typename basic_datum<charT>::float_t>(v);
 		} catch (bad_u32lexical_cast &e) {
 			return 0;
 		}
 	}
 
+	typename basic_datum<charT>::float_t operator() (typename basic_datum<charT>::integer_t const &v) const {
+		return v.get_si();
+	}
+
 	template<typename T>
-	double operator() (T const &v) const {
+	typename basic_datum<charT>::float_t operator() (T const &v) const {
 		return v;
 	}
 };

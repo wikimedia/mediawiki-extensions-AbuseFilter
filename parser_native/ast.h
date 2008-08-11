@@ -307,10 +307,14 @@ template<typename charT, typename iterator>
 basic_datum<charT>
 ast_evaluator<charT, iterator>::ast_eval_num(basic_fray<charT> const &s)
 {
-	if (s.find('.') != basic_fray<charT>::npos)
-		return basic_datum<charT>::from_double(std::strtod(make_u8fray(s).c_str(), 0));
+	if (s.find('.') != basic_fray<charT>::npos) {
+		return basic_datum<charT>::from_double(
+				typename basic_datum<charT>::float_t(
+					make_u8fray(s).c_str()));
+	}
 
 	int base;
+	int trim = 1;
 	switch (s[s.size() - 1]) {
 	case 'x':
 		base = 16;
@@ -323,10 +327,14 @@ ast_evaluator<charT, iterator>::ast_eval_num(basic_fray<charT> const &s)
 		break;
 	default:
 		base = 10;
+		trim = 0;
 		break;
 	}
 
-	return basic_datum<charT>::from_int(std::strtol(make_u8fray(s).c_str(), 0, base));
+	fray t(make_u8fray(s));
+	std::string str(t.begin(), t.end() - trim);
+	return basic_datum<charT>::from_int(
+			typename basic_datum<charT>::integer_t(str, base));
 }
 
 template<typename charT, typename iterator>

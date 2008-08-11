@@ -29,9 +29,10 @@ struct afpmodulus {
 };
 
 template<>
-struct afpmodulus<double> {
-	double operator() (double const &a, double const &b) const {
-		return std::fmod(a, b);
+struct afpmodulus<mpf_class> {
+	double operator() (mpf_class const &a, mpf_class const &b) const {
+		/* this is less than ideal */
+		return std::fmod(a.get_d(), b.get_d());
 	}
 };
 
@@ -187,8 +188,13 @@ operator%(basic_datum<charT> const &a, basic_datum<charT> const &b) {
 template<typename charT>
 basic_datum<charT>
 pow(basic_datum<charT> const &a, basic_datum<charT> const &b) {
-	basic_datum<charT> result = basic_datum<charT>::from_double(std::pow(a.toFloat(),b.toFloat()));
-	
+	mpf_t res;
+	mpf_init(res);
+	mpf_pow_ui(res, a.toFloat().get_mpf_t(), 
+			b.toInt().get_ui());
+	basic_datum<charT> result = basic_datum<charT>::from_double(
+			mpf_class(res));
+	mpf_clear(res);
 	return result;
 }
 

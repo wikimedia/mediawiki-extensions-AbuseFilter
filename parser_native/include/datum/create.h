@@ -18,15 +18,15 @@ template<typename charT, typename T>
 struct create_datum;
 
 template<typename charT>
-struct create_datum<charT, long int> {
-	static basic_datum<charT> create(long int v) {
+struct create_datum<charT, typename basic_datum<charT>::integer_t> {
+	static basic_datum<charT> create(typename basic_datum<charT>::integer_t const &v) {
 		return basic_datum<charT>::from_int(v);
 	}
 };
 
 template<typename charT>
-struct create_datum<charT, double> {
-	static basic_datum<charT> create(double v) {
+struct create_datum<charT, typename basic_datum<charT>::float_t> {
+	static basic_datum<charT> create(typename basic_datum<charT>::float_t const &v) {
 		return basic_datum<charT>::from_double(v);
 	}
 };

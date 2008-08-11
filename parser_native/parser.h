@@ -200,12 +200,25 @@ struct parser_grammar : public grammar<parser_grammar<charT> >
 			 * pointer number or an integer.
 			 */
 			value = 
+#if 0
 				  strict_real_p
 				| as_lower_d[ leaf_node_d[
 					  oct_p >> 'o'
 					| hex_p >> 'x'
 					| bin_p >> 'b'
 					| int_p
+				] ]
+#endif
+				  reduced_node_d[ lexeme_d[
+				  	  (+chset<>("0-9") >> '.' >> +chset<>("0-9"))
+					| (                   '.' >> +chset<>("0-9"))
+					| (+chset<>("0-9") >> '.'                   )
+				  ] ]
+				| as_lower_d[ leaf_node_d[
+					  +chset<>("0-7") >> 'o'
+					| +chset<>("0-9a-f") >> 'x'
+					| +chset<>("0-1") >> 'b'
+					| +chset<>("0-9")
 				] ]
 				| string
 				;

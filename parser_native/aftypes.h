@@ -27,6 +27,8 @@
 
 #include	<unicode/uchar.h>
 
+#include	<gmpxx.h>
+
 #include	"fray.h"
 
 namespace afp {
@@ -61,6 +63,8 @@ namespace afp {
 template<typename charT>
 struct basic_datum {
 	typedef basic_fray<charT> string_t;
+	typedef mpz_class integer_t;
+	typedef mpf_class float_t;
 
 	basic_datum();
 	basic_datum(basic_datum<charT> const &oldData);
@@ -68,8 +72,8 @@ struct basic_datum {
 	// Type forcing construction functions
 	static basic_datum<charT> from_string(string_t const &v);
 	static basic_datum<charT> from_string_convert(string_t const &v);
-	static basic_datum<charT> from_int(long int v);
-	static basic_datum<charT> from_double(double v);
+	static basic_datum<charT> from_int(integer_t const &v);
+	static basic_datum<charT> from_double(float_t const &v);
 	
 	// Assignment operator
 	basic_datum<charT> &operator= (const basic_datum<charT> & other);
@@ -88,10 +92,10 @@ struct basic_datum {
 	bool less_than(basic_datum<charT> const &other) const;
 
 	string_t toString() const;
-	long int toInt() const;
-	double toFloat() const;
+	integer_t toInt() const;
+	float_t toFloat() const;
 	bool toBool() const {
-		return (bool) toInt();
+		return !!toInt().get_si();
 	}
 		
 	template<typename traits>
@@ -101,11 +105,11 @@ struct basic_datum {
 	}
 
 protected:
-	explicit basic_datum(long int);
-	explicit basic_datum(double);
+	explicit basic_datum(integer_t const &);
+	explicit basic_datum(float_t const &);
 	explicit basic_datum(string_t const &);
 
-	typedef boost::variant<long int, string_t, double> valuetype;
+	typedef boost::variant<integer_t, string_t, float_t> valuetype;
 	valuetype value_;
 };
 
@@ -142,13 +146,13 @@ basic_datum<charT>::basic_datum(basic_datum<charT> const &other)
 }
 
 template<typename charT>
-basic_datum<charT>::basic_datum(long int i)
+basic_datum<charT>::basic_datum(integer_t const &i)
 	: value_(i)
 {
 }
 
 template<typename charT>
-basic_datum<charT>::basic_datum(double d)
+basic_datum<charT>::basic_datum(float_t const &d)
 	: value_(d)
 {
 }

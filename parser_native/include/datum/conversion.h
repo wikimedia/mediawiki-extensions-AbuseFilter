@@ -22,10 +22,10 @@ basic_datum<charT>::from_string_convert(typename basic_datum<charT>::string_t co
 {
 	// Try integer	
 	try {
-		return basic_datum<charT>(u32lexical_cast<charT, long int>(var));
+		return basic_datum<charT>(u32lexical_cast<charT, integer_t>(var));
 	} catch (bad_u32lexical_cast &e) {
 		try {
-			return basic_datum<charT>(u32lexical_cast<charT, double>(var));
+			return basic_datum<charT>(u32lexical_cast<charT, float_t>(var));
 		} catch (bad_u32lexical_cast &e) {
 			/* If it's nothing else, it's a string */
 			return basic_datum<charT>(var);
@@ -37,27 +37,21 @@ template<typename charT>
 basic_datum<charT>
 basic_datum<charT>::from_string(typename basic_datum<charT>::string_t const &v)
 {
-	basic_datum<charT> d;
-	d.value_ = v;
-	return d;
+	return basic_datum<charT>(v);
 }
 
 template<typename charT>
 basic_datum<charT>
-basic_datum<charT>::from_int(long int v)
+basic_datum<charT>::from_int(typename basic_datum<charT>::integer_t const &v)
 {
-	basic_datum<charT> d;
-	d.value_ = v;
-	return d;
+	return basic_datum<charT>(v);
 }
 
 template<typename charT>
 basic_datum<charT>
-basic_datum<charT>::from_double(double v)
+basic_datum<charT>::from_double(typename basic_datum<charT>::float_t const &v)
 {
-	basic_datum<charT> d;
-	d.value_ = v;
-	return d;
+	return basic_datum<charT>(v);
 }
 
 template<typename charT>
@@ -67,13 +61,13 @@ basic_datum<charT>::toString() const {
 }
 
 template<typename charT>
-long int
+typename basic_datum<charT>::integer_t
 basic_datum<charT>::toInt() const {
 	return boost::apply_visitor(datum_impl::to_int_visitor<charT>(), value_);
 }
 
 template<typename charT>
-double
+typename basic_datum<charT>::float_t
 basic_datum<charT>::toFloat() const {
 	return boost::apply_visitor(datum_impl::to_double_visitor<charT>(), value_);
 }
