@@ -12,6 +12,8 @@
 #ifndef AST_H
 #define AST_H
 
+#include	<boost/date_time/date_parsing.hpp>
+
 #include	"parserdefs.h"
 
 namespace {
@@ -59,11 +61,14 @@ struct ast_evaluator {
 	basic_datum<charT> ast_eval_mult(charT, iterator const &, iterator const &);
 	basic_datum<charT> ast_eval_pow(iterator const &, iterator const &);
 	basic_datum<charT> ast_eval_string(basic_fray<charT> const &);
+	basic_datum<charT> ast_eval_date(basic_fray<charT> const &);
 	basic_datum<charT> ast_eval_num(basic_fray<charT> const &);
 	basic_datum<charT> ast_eval_ord(basic_fray<charT> const &, iterator const &, iterator const &);
 	basic_datum<charT> ast_eval_eq(basic_fray<charT> const &, iterator const &, iterator const &);
 	basic_datum<charT> ast_eval_tern(iterator const &, iterator const &, iterator const &);
 	basic_datum<charT> ast_eval_function(basic_fray<charT> const &, iterator, iterator const &);
+	basic_datum<charT> ast_eval_time_unit(basic_fray<charT> const &, iterator const &);
+	basic_datum<charT> ast_eval_comma(iterator const &, iterator const &);
 
 };
 
@@ -71,6 +76,26 @@ template<typename charT, typename iterator>
 ast_evaluator<charT, iterator>::ast_evaluator(parser_grammar<charT> const &grammar)
 	: grammar_(grammar)
 {
+}
+
+template<typename charT, typename iterator>
+basic_datum<charT>
+ast_evaluator<charT, iterator>::ast_eval_time_unit(
+		basic_fray<charT> const &value,
+		iterator const &child)
+{
+	int mult = *find(grammar_.time_units, value.c_str());
+	return basic_datum<charT>::from_interval(
+			boost::posix_time::seconds(mult)
+			* tree_eval(child).toInt().get_si());
+}
+
+template<typename charT, typename iterator>
+basic_datum<charT>
+ast_evaluator<charT, iterator>::ast_eval_comma(
+		iterator const &a, iterator const &b)
+{
+	return tree_eval(a) + tree_eval(b);
 }
 
 template<typename charT, typename iterator>
@@ -387,6 +412,15 @@ ast_evaluator<charT, iterator>::ast_eval_variable(basic_fray<charT> const &v)
 
 template<typename charT, typename iterator>
 basic_datum<charT>
+ast_evaluator<charT, iterator>::ast_eval_date(basic_fray<charT> const &v)
+{
+	using namespace boost::posix_time;
+	return basic_datum<charT>::from_date(ptime(time_from_string(std::string(v.begin(), v.end()))));
+}
+
+
+template<typename charT, typename iterator>
+basic_datum<charT>
 ast_evaluator<charT, iterator>::tree_eval(iterator const &i)
 {
 	switch (i->value.id().to_long()) {
@@ -396,6 +430,9 @@ ast_evaluator<charT, iterator>::tree_eval(iterator const &i)
 
 	case pid_string:
 		return ast_eval_string(basic_fray<charT>(i->value.begin(), i->value.end()));
+
+	case pid_date:
+		return ast_eval_date(basic_fray<charT>(i->value.begin(), i->value.end()));
 
 	case pid_basic:
 		return ast_eval_basic(*i->value.begin(), i->children.begin());
@@ -438,6 +475,16 @@ ast_evaluator<charT, iterator>::tree_eval(iterator const &i)
 				i->children.begin(),
 				i->children.begin() + 1,
 				i->children.begin() + 2);
+
+	case pid_comma_expr:
+		return ast_eval_comma(
+				i->children.begin(),
+				i->children.begin() + 1);
+
+	case pid_time_unit:
+		return ast_eval_time_unit(
+				basic_fray<charT>(i->value.begin(), i->value.end()),
+				i->children.begin());
 
 	default:
 		throw parse_error(

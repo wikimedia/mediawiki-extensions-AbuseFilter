@@ -142,6 +142,8 @@ using namespace boost::spirit;
 template<typename charT>
 struct parser_grammar : public grammar<parser_grammar<charT> >
 {
+	symbols<int, charT> time_units;
+
 	/* User-defined variables. */
 	symbols<basic_datum<charT>, charT > variables;
 
@@ -185,6 +187,12 @@ struct parser_grammar : public grammar<parser_grammar<charT> >
 		in_opers.add("like", 0);
 		in_opers.add("rlike", 0);
 		in_opers.add("regex", 0);
+		time_units.add("seconds", 1);
+		time_units.add("minutes", 60);
+		time_units.add("hours", 60 * 60);
+		time_units.add("days", 24 * 60 * 60);
+		time_units.add("weeks", 7 * 24 * 60 * 60);
+		time_units.add("years", 365 * 24 * 60 * 60);
 	}
 
 	template<typename ScannerT>
@@ -200,15 +208,6 @@ struct parser_grammar : public grammar<parser_grammar<charT> >
 			 * pointer number or an integer.
 			 */
 			value = 
-#if 0
-				  strict_real_p
-				| as_lower_d[ leaf_node_d[
-					  oct_p >> 'o'
-					| hex_p >> 'x'
-					| bin_p >> 'b'
-					| int_p
-				] ]
-#endif
 				  reduced_node_d[ lexeme_d[
 				  	  (+chset<>("0-9") >> '.' >> +chset<>("0-9"))
 					| (                   '.' >> +chset<>("0-9"))
@@ -220,6 +219,7 @@ struct parser_grammar : public grammar<parser_grammar<charT> >
 					| +chset<>("0-1") >> 'b'
 					| +chset<>("0-9")
 				] ]
+				| date
 				| string
 				;
 
@@ -249,6 +249,21 @@ struct parser_grammar : public grammar<parser_grammar<charT> >
 				]
 				;
 
+			date =
+				inner_node_d[
+					   '"'
+					>> leaf_node_d[ *(anychar_p - '"') ]
+					>> "\"d"
+				]
+				;
+
+#if 0
+			time_unit =
+				   bool_expr 
+				>> root_node_d[ self.time_units ]
+				;
+#endif
+
 			/*
 			 * A variable.  If the variable is found in the
 			 * user-supplied variable list, we use that.
@@ -275,6 +290,7 @@ struct parser_grammar : public grammar<parser_grammar<charT> >
 				  )
 				;
 
+
 			/*
 			 * A basic atomic value.  Either a variable, function
 			 * or literal, or a negated expression !a, or a
@@ -290,12 +306,17 @@ struct parser_grammar : public grammar<parser_grammar<charT> >
 				| root_node_d[ch_p('-')] >> tern_expr
 				;
 
+			time_unit =
+				   basic
+				>> !( root_node_d[ self.time_units ] )
+				;
+
 			/*
 			 * "a in b" operator
 			 */
 			in_expr = 
-				  basic
-				>> *( root_node_d[ self.in_opers ] >> basic )
+				  time_unit
+				>> *( root_node_d[ self.in_opers ] >> time_unit )
 				;
 
 			/*
@@ -348,13 +369,18 @@ struct parser_grammar : public grammar<parser_grammar<charT> >
 				>> *( root_node_d[ self.bool_opers ] >> eq_expr )
 				;
 
+			comma_expr =
+				   bool_expr
+				>> *( root_node_d[ str_p(",") ] >> bool_expr )
+				;
+
 			/*
 			 * The ternary operator.  Notice this is
 			 * right-associative: a ? b ? c : d : e
 			 * is supported.
 			 */
 			tern_expr =
-				   bool_expr
+				   comma_expr
 				>> !(
 					   root_node_d[ch_p('?')] >> tern_expr
 					>> discard_node_d[ch_p(':')] >> tern_expr
@@ -378,6 +404,9 @@ struct parser_grammar : public grammar<parser_grammar<charT> >
 		rule<ScannerT, parser_context<>, parser_tag<pid_mult_expr> > mult_expr;
 		rule<ScannerT, parser_context<>, parser_tag<pid_plus_expr> > plus_expr;
 		rule<ScannerT, parser_context<>, parser_tag<pid_in_expr> > in_expr;
+		rule<ScannerT, parser_context<>, parser_tag<pid_date> > date;
+		rule<ScannerT, parser_context<>, parser_tag<pid_time_unit> > time_unit;
+		rule<ScannerT, parser_context<>, parser_tag<pid_comma_expr> > comma_expr;
 
 		rule<ScannerT, parser_context<>, parser_tag<pid_function> > function;
 		rule<ScannerT, parser_context<>, parser_tag<pid_tern_expr> > tern_expr;
@@ -460,6 +489,9 @@ basic_expressor<charT>::print_xml(std::ostream &strm, basic_fray<charT> const &f
 		rule_names[pid_function] = "function";
 		rule_names[pid_tern_expr] = "tern_expr";
 		rule_names[pid_string] = "string";
+		rule_names[pid_date] = "date";
+		rule_names[pid_time_unit] = "time_unit";
+		rule_names[pid_comma_expr] = "comma_expr";
 		tree_to_xml(strm, info.trees, "", rule_names);
 	} else {
 		throw parse_error("parsing failed");

@@ -25,6 +25,9 @@
 #define pid_function	12
 #define pid_tern_expr	13
 #define pid_string	14
+#define pid_date	15
+#define pid_time_unit	16
+#define pid_comma_expr	17
 
 namespace afp {
 

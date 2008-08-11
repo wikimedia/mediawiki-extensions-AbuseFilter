@@ -38,6 +38,20 @@ struct create_datum<charT, std::string> {
 	}
 };
 
+template<typename charT>
+struct create_datum<charT, typename basic_datum<charT>::datetime_t> {
+	static basic_datum<charT> create(typename basic_datum<charT>::datetime_t const &v) {
+		return basic_datum<charT>::from_date(v);
+	}
+};
+
+template<typename charT>
+struct create_datum<charT, typename basic_datum<charT>::interval_t> {
+	static basic_datum<charT> create(typename basic_datum<charT>::interval_t const &v) {
+		return basic_datum<charT>::from_interval(v);
+	}
+};
+
 }
 
 #endif	/* !DATUM_CREATE_H */

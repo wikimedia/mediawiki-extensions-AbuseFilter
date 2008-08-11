@@ -24,6 +24,7 @@
 
 #include	<boost/lexical_cast.hpp>
 #include	<boost/variant.hpp>
+#include	<boost/date_time/posix_time/posix_time.hpp>
 
 #include	<unicode/uchar.h>
 
@@ -60,11 +61,17 @@ namespace afp {
  * datum objects.
  */
 
+struct type_error : std::runtime_error {
+	type_error(char const *what) : std::runtime_error(what) {}
+};
+
 template<typename charT>
 struct basic_datum {
 	typedef basic_fray<charT> string_t;
 	typedef mpz_class integer_t;
 	typedef mpf_class float_t;
+	typedef boost::posix_time::ptime datetime_t;
+	typedef boost::posix_time::time_duration interval_t;
 
 	basic_datum();
 	basic_datum(basic_datum<charT> const &oldData);
@@ -74,6 +81,8 @@ struct basic_datum {
 	static basic_datum<charT> from_string_convert(string_t const &v);
 	static basic_datum<charT> from_int(integer_t const &v);
 	static basic_datum<charT> from_double(float_t const &v);
+	static basic_datum<charT> from_date(datetime_t const &v);
+	static basic_datum<charT> from_interval(interval_t const &v);
 	
 	// Assignment operator
 	basic_datum<charT> &operator= (const basic_datum<charT> & other);
@@ -108,8 +117,15 @@ protected:
 	explicit basic_datum(integer_t const &);
 	explicit basic_datum(float_t const &);
 	explicit basic_datum(string_t const &);
+	explicit basic_datum(datetime_t const &);
+	explicit basic_datum(interval_t const &);
 
-	typedef boost::variant<integer_t, string_t, float_t> valuetype;
+	typedef boost::variant<
+		integer_t, 
+		string_t, 
+		float_t, 
+		datetime_t,
+		interval_t> valuetype;
 	valuetype value_;
 };
 
@@ -158,7 +174,19 @@ basic_datum<charT>::basic_datum(float_t const &d)
 }
 
 template<typename charT>
-basic_datum<charT>::basic_datum(typename basic_datum<charT>::string_t const &v)
+basic_datum<charT>::basic_datum(datetime_t const &d)
+	: value_(d)
+{
+}
+
+template<typename charT>
+basic_datum<charT>::basic_datum(interval_t const &i)
+	: value_(i)
+{
+}
+
+template<typename charT>
+basic_datum<charT>::basic_datum(string_t const &v)
 	: value_(v)
 {
 }
@@ -166,7 +194,7 @@ basic_datum<charT>::basic_datum(typename basic_datum<charT>::string_t const &v)
 template<typename charT>
 bool
 basic_datum<charT>::compare(basic_datum<charT> const &other) const {
-	return boost::apply_visitor(datum_impl::compare_visitor<charT, std::equal_to>(), value_, other.value_);
+	return boost::apply_visitor(datum_impl::compare_visitor<charT, datum_impl::afpequal_to>(), value_, other.value_);
 }
 
 template<typename charT>
@@ -175,13 +203,13 @@ basic_datum<charT>::compare_with_type(basic_datum<charT> const &other) const {
 	if (value_.which() != other.value_.which())
 		return false;
 
-	return boost::apply_visitor(datum_impl::compare_visitor<charT, std::equal_to>(), value_, other.value_);
+	return boost::apply_visitor(datum_impl::compare_visitor<charT, datum_impl::afpequal_to>(), value_, other.value_);
 }
 
 template<typename charT>
 bool
 basic_datum<charT>::less_than(basic_datum<charT> const &other) const {
-	return boost::apply_visitor(datum_impl::arith_compare_visitor<charT, std::less>(), value_, other.value_);
+	return boost::apply_visitor(datum_impl::arith_compare_visitor<charT, datum_impl::afpless>(), value_, other.value_);
 }
 
 typedef basic_datum<char> datum;

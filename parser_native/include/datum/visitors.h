@@ -12,6 +12,8 @@
 #ifndef DATUM_VISITORS_H
 #define DATUM_VISITORS_H
 
+#include	<boost/date_time/time_facet.hpp>
+
 #include	"datum/create.h"
 #include	"afstring.h"
 
@@ -79,6 +81,19 @@ struct to_string_visitor : boost::static_visitor<basic_fray<charT> > {
 	basic_fray<charT> operator() (T const &v) const {
 		return u32lexical_cast<charT, basic_fray<charT> >(v);
 	}
+
+	basic_fray<charT> operator() (typename basic_datum<charT>::datetime_t const &v) const {
+		//return make_u32fray(('"' + to_simple_string(v) + "\"d").c_str());
+		using namespace boost::date_time;
+		using namespace boost::posix_time;
+		typedef boost::date_time::time_facet<typename basic_datum<charT>::datetime_t, char> facet_t;
+		facet_t *output_facet = new facet_t();
+		std::ostringstream strm;
+		strm.imbue(std::locale(std::locale::classic(), output_facet));
+		output_facet->format("%Y-%m-%d %H:%M:%S");
+		strm << v;
+		return make_u32fray(('"' + strm.str() + "\"d").c_str());
+	}
 };
 
 template<typename charT>
@@ -94,6 +109,14 @@ struct to_int_visitor : boost::static_visitor<typename basic_datum<charT>::integ
 	typename basic_datum<charT>::integer_t operator() (
 			typename basic_datum<charT>::float_t const &o) const {
 		return typename basic_datum<charT>::integer_t(o);
+	}
+
+	typename basic_datum<charT>::integer_t operator() (typename basic_datum<charT>::datetime_t const &) const {
+		throw type_error("cannot coerce types: datetime_t not compatible with integer_t");
+	}
+
+	typename basic_datum<charT>::integer_t operator() (typename basic_datum<charT>::interval_t const &) const {
+		throw type_error("cannot coerce types: interval_t not compatible with integer_t");
 	}
 
 	template<typename T>
@@ -116,6 +139,14 @@ struct to_double_visitor : boost::static_visitor<typename basic_datum<charT>::fl
 		return v.get_si();
 	}
 
+	typename basic_datum<charT>::float_t operator() (typename basic_datum<charT>::datetime_t const &) const {
+		throw type_error("cannot coerce types: datetime_t not compatible with float_t");
+	}
+
+	typename basic_datum<charT>::float_t operator() (typename basic_datum<charT>::interval_t const &) const {
+		throw type_error("cannot coerce types: interval_t not compatible with float_t");
+	}
+
 	template<typename T>
 	typename basic_datum<charT>::float_t operator() (T const &v) const {
 		return v;
@@ -128,6 +159,9 @@ struct to_double_visitor : boost::static_visitor<typename basic_datum<charT>::fl
  */
 template<typename charT, template<typename V> class Operator>
 struct arith_visitor : boost::static_visitor<basic_datum<charT> > {
+	typedef typename basic_datum<charT>::datetime_t datetime_t;
+	typedef typename basic_datum<charT>::interval_t interval_t;
+
 	/*
 	 * Anything involving a double returns a double.
 	 * Otherwise, int is returned.
@@ -157,6 +191,58 @@ struct arith_visitor : boost::static_visitor<basic_datum<charT> > {
 				op(from_string_converter<charT, T>::convert(a)));
 	}
 
+	/*
+	 * There are no binary options applicable to datetime_t except
+	 * + and - with interval_t.
+	 * 
+	 */
+	template<typename T>
+	basic_datum<charT> operator() (T const &, datetime_t const &) const {
+		throw type_error("operation not applicable to datetime_t");
+	}
+
+	template<typename T>
+	basic_datum<charT> operator() (datetime_t const &, T const &) const {
+		throw type_error("operation not applicable to datetime_t");
+	}
+
+	basic_datum<charT> operator() (
+			typename basic_datum<charT>::datetime_t const &,
+			typename basic_datum<charT>::datetime_t const &) const {
+		throw type_error("operation not applicable to datetime_t");
+	}
+
+	basic_datum<charT> operator() (datetime_t const &) const {
+		throw type_error("operation not applicable to datetime_t");
+	}
+
+	/*
+	 * interval_t
+	 */
+	template<typename T>
+	basic_datum<charT> operator() (T const &, interval_t const &) const {
+		throw type_error("operation not applicable to interval_t");
+	}
+
+	template<typename T>
+	basic_datum<charT> operator() (interval_t const &, T const &) const {
+		throw type_error("operation not applicable to interval_t");
+	}
+
+	basic_datum<charT> operator() (interval_t const &a, datetime_t const &b) const {
+		return basic_datum<charT>::from_date(Operator<datetime_t>() (a, b));
+	}
+
+	basic_datum<charT> operator() (interval_t const &a, interval_t const &b) const {
+#if 0
+		throw type_error("operation not applicable to interval_t");
+#endif
+		return basic_datum<charT>::from_interval(a + b);
+	}
+
+	basic_datum<charT> operator() (datetime_t const &a, interval_t const &b) const {
+		return basic_datum<charT>::from_date(Operator<datetime_t>() (a, b));
+	}
 };
 
 /*
@@ -203,6 +289,22 @@ struct compare_visitor : boost::static_visitor<bool> {
 	bool operator() (T const &a, U const &b) const {
 		return compare_visitor_impl<charT, Operator, T, U>()(a, b);
 	}
+
+	template<typename T>
+	bool operator() (T const &, typename basic_datum<charT>::datetime_t const &) const {
+		throw type_error("operation not applicable to datetime_t");
+	}
+
+	template<typename T>
+	bool operator() (typename basic_datum<charT>::datetime_t const &, T const &) const {
+		throw type_error("operation not applicable to datetime_t");
+	}
+
+	bool operator() (
+			typename basic_datum<charT>::datetime_t const &a,
+			typename basic_datum<charT>::datetime_t const &b) const {
+		return Operator<typename basic_datum<charT>::datetime_t>() (a, b);
+	}
 };
 
 /*
@@ -220,6 +322,22 @@ struct arith_compare_visitor : boost::static_visitor<bool> {
 		return op(
 			from_string_converter<charT, T>::convert(a), 
 			from_string_converter<charT, U>::convert(b));
+	}
+
+	template<typename T>
+	bool operator() (T const &, typename basic_datum<charT>::datetime_t const &) const {
+		throw type_error("operation not applicable to datetime_t");
+	}
+
+	template<typename T>
+	bool operator() (typename basic_datum<charT>::datetime_t const &, T const &) const {
+		throw type_error("operation not applicable to datetime_t");
+	}
+
+	bool operator() (
+			typename basic_datum<charT>::datetime_t const &a,
+			typename basic_datum<charT>::datetime_t const &b) const {
+		return Operator<typename basic_datum<charT>::datetime_t>() (a, b);
 	}
 };
 
