@@ -26,7 +26,7 @@ int main(int argc, char** argv)
 	fray filter(ss.str());
 	
 	try {
-		afp::u32filter_evaluator f;
+		afp::filter_evaluator f;
 		f.evaluate(make_u32fray(filter));
 	} catch (afp::exception &excep) {
 		std::cout << "PARSERR: " << excep.what() << std::endl;

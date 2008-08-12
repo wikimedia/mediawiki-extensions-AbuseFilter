@@ -23,6 +23,8 @@
 #include	<unicode/uchar.h>
 
 #include	<boost/format.hpp>
+#include	<boost/regex.hpp>
+#include	<boost/regex/icu.hpp>
 
 #include	"aftypes.h"
 #include	"equiv.h"

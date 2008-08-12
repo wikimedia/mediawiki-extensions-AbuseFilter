@@ -38,6 +38,13 @@
 
 namespace afp {
 
+struct parser_state {
+	boost::spirit::symbols<int, UChar32> time_units;
+	boost::spirit::symbols<u32datum, UChar32> variables;
+	/* User-defined functions. */
+	boost::spirit::symbols<boost::function<u32datum (std::vector<u32datum>)>, UChar32> functions;
+};
+
 struct parse_error : std::exception {
 	parse_error(std::string const &what) 
 		: what_(what)

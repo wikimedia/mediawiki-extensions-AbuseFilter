@@ -25,7 +25,7 @@ struct request {
 	bool evaluate(void);
 
 private:
-	u32filter_evaluator f;
+	filter_evaluator f;
 	u32fray filter;
 };
 

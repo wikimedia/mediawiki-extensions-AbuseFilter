@@ -12,7 +12,7 @@
 #include	"filter_evaluator.h"
 
 int main(int argc, char** argv) {
-	afp::u32filter_evaluator f;
+	afp::filter_evaluator f;
 	
 	if (argc != 2) {
 		std::cerr << "usage: " << argv[0] << " <filter>\n";
