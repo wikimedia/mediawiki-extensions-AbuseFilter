@@ -14,7 +14,6 @@
 
 #include	<cassert>
 #include	<boost/functional/hash/hash.hpp>
-#include	<boost/pool/pool_alloc.hpp>
 
 /*
  * A fray is a refcounted immutable string providing copy-free (constant time)
@@ -87,7 +86,7 @@ struct fray_root {
  */
 template<typename ch, 
 	typename traits = std::char_traits<ch>, 
-	typename alloc = boost::pool_allocator<ch>
+	typename alloc = std::allocator<ch>
 >
 struct fray_iterator {
 	typedef typename alloc::size_type size_type;
@@ -204,7 +203,7 @@ bool operator>= (fray_iterator<ch, tr, alloc> const &a, fray_iterator<ch, tr, al
  */
 template<typename ch, 
 	typename traits = std::char_traits<ch>, 
-	typename alloc = boost::pool_allocator<ch>
+	typename alloc = std::allocator<ch>
 >
 struct basic_fray {
 	typedef ch value_type;

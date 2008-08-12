@@ -41,7 +41,7 @@ struct basic_nul_terminated_string_reader {
 	}
 
 	boost::optional<string_t> read(std::size_t max_len = 0) {
-		std::vector<char, boost::pool_allocator<char> > ret;
+		std::vector<char, std::allocator<char> > ret;
 		ret.reserve(1024); /* probably enough for most inputs */
 
 		if (first_)
