@@ -61,8 +61,13 @@ namespace afp {
  * datum objects.
  */
 
-struct type_error : std::runtime_error {
-	type_error(char const *what) : std::runtime_error(what) {}
+struct type_error : std::exception {
+	std::string what_;
+	type_error(std::string const &what) : what_(what) {}
+	~type_error() throw() {}
+	char const *what(void) const throw() {
+		return what_.c_str();
+	}
 };
 
 template<typename charT>
@@ -194,7 +199,7 @@ basic_datum<charT>::basic_datum(string_t const &v)
 template<typename charT>
 bool
 basic_datum<charT>::compare(basic_datum<charT> const &other) const {
-	return boost::apply_visitor(datum_impl::compare_visitor<charT, datum_impl::afpequal_to>(), value_, other.value_);
+	return boost::apply_visitor(datum_impl::compare_visitor<charT, functor::equal>(), value_, other.value_);
 }
 
 template<typename charT>
@@ -203,13 +208,13 @@ basic_datum<charT>::compare_with_type(basic_datum<charT> const &other) const {
 	if (value_.which() != other.value_.which())
 		return false;
 
-	return boost::apply_visitor(datum_impl::compare_visitor<charT, datum_impl::afpequal_to>(), value_, other.value_);
+	return boost::apply_visitor(datum_impl::compare_visitor<charT, functor::equal>(), value_, other.value_);
 }
 
 template<typename charT>
 bool
 basic_datum<charT>::less_than(basic_datum<charT> const &other) const {
-	return boost::apply_visitor(datum_impl::arith_compare_visitor<charT, datum_impl::afpless>(), value_, other.value_);
+	return boost::apply_visitor(datum_impl::arith_compare_visitor<charT, functor::less>(), value_, other.value_);
 }
 
 typedef basic_datum<char> datum;

@@ -29,6 +29,13 @@
 #define pid_time_unit	16
 #define pid_comma_expr	17
 
+#define tval_seconds    1
+#define tval_minutes    2
+#define tval_hours      3
+#define tval_days       4
+#define tval_weeks      5
+#define tval_years      6
+
 namespace afp {
 
 struct parse_error : std::exception {

@@ -84,10 +84,31 @@ ast_evaluator<charT, iterator>::ast_eval_time_unit(
 		basic_fray<charT> const &value,
 		iterator const &child)
 {
-	int mult = *find(grammar_.time_units, value.c_str());
-	return basic_datum<charT>::from_interval(
-			boost::posix_time::seconds(mult)
-			* tree_eval(child).toInt().get_si());
+	int mult = tree_eval(child).toInt().get_si();
+	int type = *find(grammar_.time_units, value.c_str());
+
+	switch (type) {
+	case tval_seconds:
+		return basic_datum<charT>::from_interval(
+			boost::posix_time::seconds(mult));
+	case tval_minutes:
+		return basic_datum<charT>::from_interval(
+			boost::posix_time::minutes(mult));
+	case tval_hours:
+		return basic_datum<charT>::from_interval(
+			boost::posix_time::hours(mult));
+	case tval_days:
+		return basic_datum<charT>::from_interval(
+			boost::posix_time::hours(mult * 24));
+	case tval_weeks:
+		return basic_datum<charT>::from_interval(
+			boost::posix_time::hours(mult * 24 * 7));
+	case tval_years:
+		return basic_datum<charT>::from_interval(
+			boost::posix_time::hours(mult * 24 * 7 * 365));
+	default:
+		throw parse_error("internal error: unrecognised time unit");
+	}
 }
 
 template<typename charT, typename iterator>

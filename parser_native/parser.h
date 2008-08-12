@@ -187,12 +187,12 @@ struct parser_grammar : public grammar<parser_grammar<charT> >
 		in_opers.add("like", 0);
 		in_opers.add("rlike", 0);
 		in_opers.add("regex", 0);
-		time_units.add("seconds", 1);
-		time_units.add("minutes", 60);
-		time_units.add("hours", 60 * 60);
-		time_units.add("days", 24 * 60 * 60);
-		time_units.add("weeks", 7 * 24 * 60 * 60);
-		time_units.add("years", 365 * 24 * 60 * 60);
+		time_units.add("seconds", tval_seconds);
+		time_units.add("minutes", tval_minutes);
+		time_units.add("hours", tval_hours);
+		time_units.add("days", tval_days);
+		time_units.add("weeks", tval_weeks);
+		time_units.add("years", tval_years);
 	}
 
 	template<typename ScannerT>

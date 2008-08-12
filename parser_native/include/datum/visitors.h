@@ -16,6 +16,7 @@
 
 #include	"datum/create.h"
 #include	"afstring.h"
+#include	"functors.h"
 
 namespace afp {
 namespace datum_impl {
@@ -157,7 +158,7 @@ struct to_double_visitor : boost::static_visitor<typename basic_datum<charT>::fl
  * A visitor that performs an arithmetic operation on its arguments,
  * after doing appropriate int->double promotion.
  */
-template<typename charT, template<typename V> class Operator>
+template<typename charT, template<typename V, typename W> class Operator>
 struct arith_visitor : boost::static_visitor<basic_datum<charT> > {
 	typedef typename basic_datum<charT>::datetime_t datetime_t;
 	typedef typename basic_datum<charT>::interval_t interval_t;
@@ -170,78 +171,26 @@ struct arith_visitor : boost::static_visitor<basic_datum<charT> > {
 	basic_datum<charT> operator() (T const &a, U const &b) const {
 		typedef typename from_string_converter<charT, T>::type a_type;
 		typedef typename from_string_converter<charT, U>::type b_type;
-		typedef typename preferred_type<a_type, b_type>::type preferred_type;
+		//typedef typename preferred_type<a_type, b_type>::type preferred_type;
+		typedef typename functor::return_type<a_type, b_type>::type return_type;
 
-		Operator<preferred_type> op;
-		return create_datum<charT, preferred_type>::create(op(
+		Operator<a_type, b_type> op;
+		return create_datum<charT, return_type>::create(op(
 			from_string_converter<charT, T>::convert(a), 
 			from_string_converter<charT, U>::convert(b)));
 	}
+};
 
-	/*
-	 * Unary version.
-	 */
+template<typename charT, template<typename V> class Operator>
+struct unary_arith_visitor : boost::static_visitor<basic_datum<charT> > {
 	template<typename T>
 	basic_datum<charT> operator() (T const &a) const {
 		typedef typename from_string_converter<charT, T>::type a_type;
 		typedef typename preferred_type<a_type, a_type>::type preferred_type;
 
-		Operator<preferred_type> op;
+		Operator<a_type> op;
 		return create_datum<charT, preferred_type>::create(
 				op(from_string_converter<charT, T>::convert(a)));
-	}
-
-	/*
-	 * There are no binary options applicable to datetime_t except
-	 * + and - with interval_t.
-	 * 
-	 */
-	template<typename T>
-	basic_datum<charT> operator() (T const &, datetime_t const &) const {
-		throw type_error("operation not applicable to datetime_t");
-	}
-
-	template<typename T>
-	basic_datum<charT> operator() (datetime_t const &, T const &) const {
-		throw type_error("operation not applicable to datetime_t");
-	}
-
-	basic_datum<charT> operator() (
-			typename basic_datum<charT>::datetime_t const &,
-			typename basic_datum<charT>::datetime_t const &) const {
-		throw type_error("operation not applicable to datetime_t");
-	}
-
-	basic_datum<charT> operator() (datetime_t const &) const {
-		throw type_error("operation not applicable to datetime_t");
-	}
-
-	/*
-	 * interval_t
-	 */
-	template<typename T>
-	basic_datum<charT> operator() (T const &, interval_t const &) const {
-		throw type_error("operation not applicable to interval_t");
-	}
-
-	template<typename T>
-	basic_datum<charT> operator() (interval_t const &, T const &) const {
-		throw type_error("operation not applicable to interval_t");
-	}
-
-	basic_datum<charT> operator() (interval_t const &a, datetime_t const &b) const {
-		return basic_datum<charT>::from_date(Operator<datetime_t>() (a, b));
-	}
-
-	basic_datum<charT> operator() (interval_t const &a, interval_t const &b) const {
-#if 0
-		throw type_error("operation not applicable to interval_t");
-#endif
-		return basic_datum<charT>::from_interval(a + b);
-	}
-
-	basic_datum<charT> operator() (datetime_t const &a, interval_t const &b) const {
-		return basic_datum<charT>::from_date(Operator<datetime_t>() (a, b));
 	}
 };
 
@@ -250,7 +199,7 @@ struct arith_visitor : boost::static_visitor<basic_datum<charT> > {
  */
 template<
 	typename charT,
-	template<typename V> class Operator,
+	template<typename V, typename W> class Operator,
 	typename T,
 	typename U>
 struct compare_visitor_impl {
@@ -259,7 +208,7 @@ struct compare_visitor_impl {
 		typedef typename from_string_converter<charT, U>::type b_type;
 		typedef typename preferred_type<a_type, b_type>::type preferred_type;
 
-		Operator<preferred_type> op;
+		Operator<a_type, b_type> op;
 		return op(
 			from_string_converter<charT, T>::convert(a), 
 			from_string_converter<charT, U>::convert(b));
@@ -269,7 +218,7 @@ struct compare_visitor_impl {
 /*
  * Specialise for string<>string comparisons
  */
-template<typename charT, template<typename V> class Operator>
+template<typename charT, template<typename V, typename W> class Operator>
 struct compare_visitor_impl<
 		charT, 
 		Operator, 
@@ -278,66 +227,34 @@ struct compare_visitor_impl<
 	> : boost::static_visitor<bool> {
 
 	bool operator() (basic_fray<charT> const &a, basic_fray<charT> const &b) const {
-		Operator<basic_fray<charT> > op;
+		Operator<basic_fray<charT>, basic_fray<charT> > op;
 		return op(a, b);
 	}
 };
 
-template<typename charT, template<typename V> class Operator>
+template<typename charT, template<typename V, typename W> class Operator>
 struct compare_visitor : boost::static_visitor<bool> {
 	template<typename T, typename U> 
 	bool operator() (T const &a, U const &b) const {
 		return compare_visitor_impl<charT, Operator, T, U>()(a, b);
-	}
-
-	template<typename T>
-	bool operator() (T const &, typename basic_datum<charT>::datetime_t const &) const {
-		throw type_error("operation not applicable to datetime_t");
-	}
-
-	template<typename T>
-	bool operator() (typename basic_datum<charT>::datetime_t const &, T const &) const {
-		throw type_error("operation not applicable to datetime_t");
-	}
-
-	bool operator() (
-			typename basic_datum<charT>::datetime_t const &a,
-			typename basic_datum<charT>::datetime_t const &b) const {
-		return Operator<typename basic_datum<charT>::datetime_t>() (a, b);
 	}
 };
 
 /*
  * For comparisons that only work on integers - strings will be converted.
  */
-template<typename charT, template<typename V> class Operator>
+template<typename charT, template<typename V, typename W> class Operator>
 struct arith_compare_visitor : boost::static_visitor<bool> {
 	template<typename T, typename U>
 	bool operator() (T const &a, U const &b) const {
 		typedef typename from_string_converter<charT, T>::type a_type;
 		typedef typename from_string_converter<charT, U>::type b_type;
-		typedef typename preferred_type<a_type, b_type>::type preferred_type;
+		//typedef typename preferred_type<a_type, b_type>::type preferred_type;
 
-		Operator<preferred_type> op;
+		Operator<a_type, b_type> op;
 		return op(
 			from_string_converter<charT, T>::convert(a), 
 			from_string_converter<charT, U>::convert(b));
-	}
-
-	template<typename T>
-	bool operator() (T const &, typename basic_datum<charT>::datetime_t const &) const {
-		throw type_error("operation not applicable to datetime_t");
-	}
-
-	template<typename T>
-	bool operator() (typename basic_datum<charT>::datetime_t const &, T const &) const {
-		throw type_error("operation not applicable to datetime_t");
-	}
-
-	bool operator() (
-			typename basic_datum<charT>::datetime_t const &a,
-			typename basic_datum<charT>::datetime_t const &b) const {
-		return Operator<typename basic_datum<charT>::datetime_t>() (a, b);
 	}
 };
 

@@ -13,223 +13,12 @@
 #define DATUM_OPERATORS_H
 
 #include	"datum/visitors.h"
+#include	"functors.h"
 
 namespace afp {
 
 namespace datum_impl {
 
-/*
- * std::modulus doesn't work with double, so we provide our own.
- */
-template<typename T>
-struct afpmodulus {
-	T operator() (T const &a, T const &b) const {
-		return a % b;
-	}
-};
-
-template<>
-struct afpmodulus<mpf_class> {
-	double operator() (mpf_class const &a, mpf_class const &b) const {
-		/* this is less than ideal */
-		return std::fmod(a.get_d(), b.get_d());
-	}
-};
-
-template<>
-struct afpmodulus<boost::posix_time::ptime> {
-	template<typename T, typename U>
-	boost::posix_time::ptime operator() (T a, U b) const {
-		throw type_error("operator % not applicable to datetime_t");
-	}
-};
-
-template<typename T>
-struct afppower {
-	T operator() (T const &a, T const &b) const {
-		return std::pow(a,b);
-	}
-};
-
-template<typename T>
-struct afpnegate {
-	T operator() (T const &arg) const {
-		return std::negate<T>()(arg);
-	}
-};
-
-template<>
-struct afpnegate<boost::posix_time::ptime> {
-	boost::posix_time::ptime operator() (boost::posix_time::ptime const &) const {
-		throw type_error("operator unary - not applicable to datetime_t");
-	}
-};
-
-template<typename T>
-struct afpplus {
-	T operator() (T const &a, T const &b) const {
-		return a + b;
-	}
-};
-
-template<>
-struct afpplus<boost::posix_time::ptime> {
-	boost::posix_time::ptime operator() (
-			boost::posix_time::ptime const &t,
-			boost::posix_time::time_duration const &i) const {
-		return t + i;
-	}
-
-	boost::posix_time::ptime operator() (
-			boost::posix_time::time_duration const &i,
-			boost::posix_time::ptime const &t) const {
-		return t + i;
-	}
-};
-
-template<>
-struct afpplus<boost::posix_time::time_duration> {
-	boost::posix_time::ptime operator() (
-			boost::posix_time::time_duration const &i,
-			boost::posix_time::ptime const &t) const {
-		return t + i;
-	}
-};
-
-template<typename T>
-struct afpminus {
-	T operator() (T const &a, T const &b) const {
-		return a - b;
-	}
-};
-
-template<>
-struct afpminus<boost::posix_time::ptime> {
-	boost::posix_time::ptime operator() (
-			boost::posix_time::ptime const &t,
-			boost::posix_time::time_duration const &i) const {
-		return t - i;
-	}
-	
-	boost::posix_time::ptime operator() (
-			boost::posix_time::time_duration const &i,
-			boost::posix_time::ptime const &t) const {
-		throw type_error("operator- not applicable to (interval_t, datetime_t)");
-	}
-};
-
-template<>
-struct afpminus<boost::posix_time::time_duration> {
-	boost::posix_time::ptime operator() (
-			boost::posix_time::time_duration const &i,
-			boost::posix_time::ptime const &t) const {
-		return t - i;
-	}
-};
-
-template<typename T>
-struct afpmultiplies {
-	T operator() (T const &a, T const &b) const {
-		return a * b;
-	}
-};
-
-template<>
-struct afpmultiplies<boost::posix_time::ptime> {
-	template<typename T, typename U>
-	boost::posix_time::ptime operator() (T a, U b) const {
-		throw type_error("operator * not applicable to datetime_t");
-	}
-};
-
-template<>
-struct afpmultiplies<boost::posix_time::time_duration> {
-	template<typename U>
-	boost::posix_time::time_duration operator() (boost::posix_time::time_duration const &a, U b) const {
-		return a * b;
-	}
-
-	template<typename T, typename U>
-	boost::posix_time::time_duration operator() (T a, U b) const {
-		throw type_error("operator * not applicable to operands");
-	}
-};
-
-template<typename T>
-struct afpdivides {
-	T operator() (T const &a, T const &b) const {
-		return a / b;
-	}
-};
-
-template<>
-struct afpdivides<boost::posix_time::ptime> {
-	template<typename T, typename U>
-	boost::posix_time::ptime operator() (T a, U b) const {
-		throw type_error("operator / not applicable to datetime_t");
-	}
-};
-
-template<>
-struct afpdivides<boost::posix_time::time_duration> {
-	template<typename U>
-	boost::posix_time::time_duration operator() (boost::posix_time::time_duration const &a, U b) const {
-		return a / b;
-	}
-
-	template<typename T, typename U>
-	boost::posix_time::time_duration operator() (T a, U b) const {
-		throw type_error("operator / not applicable to operands");
-	}
-};
-
-template<typename T>
-struct afpequal_to {
-	template<typename U>
-	bool operator() (T a, U b) const {
-		return a == b;
-	}
-
-	bool operator() (T, boost::posix_time::ptime const &) const {
-		throw type_error("operator < not applicable to these types");
-	}
-		
-	bool operator() (boost::posix_time::ptime const &, T) const {
-		throw type_error("operator < not applicable to these types");
-	}
-
-	bool operator() (T, boost::posix_time::time_duration const &) const {
-		throw type_error("operator < not applicable to these types");
-	}
-
-	bool operator() (boost::posix_time::time_duration const &, T) const {
-		throw type_error("operator < not applicable to these types");
-	}
-};
-
-template<>
-struct afpequal_to<boost::posix_time::ptime> {
-	template<typename U>
-	bool operator() (boost::posix_time::ptime const &, U const &b) const {
-		throw type_error("operator == not applicable to these types");
-	}
-
-	bool operator() (boost::posix_time::ptime const &a, boost::posix_time::ptime const &b) const {
-		return a == b;
-	}
-};
-
-template<>
-struct afpequal_to<boost::posix_time::time_duration> {
-	template<typename U>
-	bool operator() (boost::posix_time::time_duration const &, U const &b) const {
-		throw type_error("operator == not applicable to these types");
-	}
-
-	bool operator() (boost::posix_time::time_duration const &a, boost::posix_time::time_duration const &b) const {
-		return a == b;
-	}
-};
 
 template<typename T>
 struct afpless {
@@ -336,7 +125,7 @@ basic_datum<charT>::operator+=(basic_datum<charT> const &other)
 	}
 
 	basic_datum<charT> result = boost::apply_visitor(
-			datum_impl::arith_visitor<charT, datum_impl::afpplus>(), value_, other.value_);
+			datum_impl::arith_visitor<charT, functor::plus>(), value_, other.value_);
 	*this = result;
 	return *this;
 }
@@ -346,7 +135,7 @@ basic_datum<charT> &
 basic_datum<charT>::operator-=(basic_datum<charT> const &other)
 {
 	basic_datum<charT> result = boost::apply_visitor(
-			datum_impl::arith_visitor<charT, datum_impl::afpminus>(), value_, other.value_);
+			datum_impl::arith_visitor<charT, functor::minus>(), value_, other.value_);
 	*this = result;
 	return *this;
 }
@@ -356,7 +145,7 @@ basic_datum<charT> &
 basic_datum<charT>::operator*=(basic_datum<charT> const &other)
 {
 	basic_datum<charT> result = boost::apply_visitor(
-			datum_impl::arith_visitor<charT, datum_impl::afpmultiplies>(), value_, other.value_);
+			datum_impl::arith_visitor<charT, functor::multiply>(), value_, other.value_);
 	*this = result;
 	return *this;
 }
@@ -366,7 +155,7 @@ basic_datum<charT>&
 basic_datum<charT>::operator/=(basic_datum<charT> const &other)
 {
 	basic_datum<charT> result = boost::apply_visitor(
-			datum_impl::arith_visitor<charT, datum_impl::afpdivides>(), value_, other.value_);
+			datum_impl::arith_visitor<charT, functor::divide>(), value_, other.value_);
 	*this = result;
 	return *this;
 }
@@ -376,7 +165,7 @@ basic_datum<charT>&
 basic_datum<charT>::operator%=(basic_datum<charT> const &other)
 {
 	basic_datum<charT> result = boost::apply_visitor(
-			datum_impl::arith_visitor<charT, datum_impl::afpmodulus>(), value_, other.value_);
+			datum_impl::arith_visitor<charT, functor::modulus>(), value_, other.value_);
 	*this = result;
 	return *this;
 }
@@ -392,7 +181,7 @@ template<typename charT>
 basic_datum<charT>
 basic_datum<charT>::operator-() const
 {
-	return boost::apply_visitor(datum_impl::arith_visitor<charT, datum_impl::afpnegate>(), value_);
+	return boost::apply_visitor(datum_impl::unary_arith_visitor<charT, functor::negate>(), value_);
 }
 
 template<typename charT>
