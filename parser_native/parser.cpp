@@ -195,10 +195,6 @@ struct parser_grammar : public grammar<parser_grammar>
 				| anychar_p - (ch_p('"') | '\\')
 				;
 
-			/*
-			 * config_p can't be used here, because it will rewrite
-			 * *(c_escape_ch_p[x]) into (*c_escape_ch_p)[x]
-			 */
 			string = inner_node_d[
 					   '"'
 					>> leaf_node_d[ *(c_string_char) ]
@@ -240,6 +236,15 @@ struct parser_grammar : public grammar<parser_grammar>
 				  )
 				;
 
+			if_then_expr =
+				   root_node_d[ str_p("if") ]
+				>> tern_expr
+				>> discard_node_d[ str_p("then") ]
+				>> tern_expr
+				>> discard_node_d[ str_p("else") ]
+				>> tern_expr
+				>> discard_node_d[ str_p("end") ]
+				;
 
 			/*
 			 * A basic atomic value.  Either a variable, function
@@ -250,6 +255,7 @@ struct parser_grammar : public grammar<parser_grammar>
 				  value
 				| variable
 				| function
+				| if_then_expr
 				| inner_node_d[ '(' >> tern_expr >> ')' ]
 				| root_node_d[ch_p('!')] >> tern_expr
 				| root_node_d[ch_p('+')] >> tern_expr 
@@ -336,6 +342,8 @@ struct parser_grammar : public grammar<parser_grammar>
 					>> discard_node_d[ch_p(':')] >> tern_expr
 				   )
 				;
+
+
 		}
 
 		rule<ScannerT, parser_context<>, parser_tag<pid_tern_expr> >
@@ -357,6 +365,7 @@ struct parser_grammar : public grammar<parser_grammar>
 		rule<ScannerT, parser_context<>, parser_tag<pid_date> > date;
 		rule<ScannerT, parser_context<>, parser_tag<pid_time_unit> > time_unit;
 		rule<ScannerT, parser_context<>, parser_tag<pid_comma_expr> > comma_expr;
+		rule<ScannerT, parser_context<>, parser_tag<pid_ifthen> > if_then_expr;
 
 		rule<ScannerT, parser_context<>, parser_tag<pid_function> > function;
 		rule<ScannerT, parser_context<>, parser_tag<pid_tern_expr> > tern_expr;
@@ -438,6 +447,7 @@ expressor::print_xml(std::ostream &strm, u32fray const &filter) const
 		rule_names[pid_date] = "date";
 		rule_names[pid_time_unit] = "time_unit";
 		rule_names[pid_comma_expr] = "comma_expr";
+		rule_names[pid_ifthen] = "if_then_expr";
 		tree_to_xml(strm, info.trees, "", rule_names);
 	} else {
 		throw parse_error("parsing failed");

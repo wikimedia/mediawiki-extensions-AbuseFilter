@@ -443,6 +443,7 @@ ast_evaluator::tree_eval(iterator_t const &i)
 			i->children.begin(), i->children.begin() + 1);
 
 	case pid_tern_expr:
+	case pid_ifthen:
 		return ast_eval_tern(
 				i->children.begin(),
 				i->children.begin() + 1,

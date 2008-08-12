@@ -28,6 +28,7 @@
 #define pid_date	15
 #define pid_time_unit	16
 #define pid_comma_expr	17
+#define pid_ifthen	18
 
 #define tval_seconds    1
 #define tval_minutes    2

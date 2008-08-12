@@ -14,8 +14,6 @@ LDFLAGS		= $(EXTRA_LDFLAGS)
 
 LIBS		= -lboost_regex$(BOOST_TAG) -lboost_date_time$(BOOST_TAG) -lgmp -lgmpxx -licuuc -licui18n -licudata
 
-expr: CPPFLAGS+=-DTEST_PARSER
-
 af_expr_objs =				\
 	af_expr-eval.o			\
 	af_expr-parser.o		\
