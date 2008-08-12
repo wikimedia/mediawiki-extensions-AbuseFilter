@@ -193,6 +193,12 @@ struct parser_grammar : public grammar<parser_grammar<charT> >
 		time_units.add("days", tval_days);
 		time_units.add("weeks", tval_weeks);
 		time_units.add("years", tval_years);
+		time_units.add("second", tval_seconds);
+		time_units.add("minute", tval_minutes);
+		time_units.add("hour", tval_hours);
+		time_units.add("day", tval_days);
+		time_units.add("week", tval_weeks);
+		time_units.add("year", tval_years);
 	}
 
 	template<typename ScannerT>

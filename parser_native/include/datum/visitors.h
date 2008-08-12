@@ -84,7 +84,6 @@ struct to_string_visitor : boost::static_visitor<basic_fray<charT> > {
 	}
 
 	basic_fray<charT> operator() (typename basic_datum<charT>::datetime_t const &v) const {
-		//return make_u32fray(('"' + to_simple_string(v) + "\"d").c_str());
 		using namespace boost::date_time;
 		using namespace boost::posix_time;
 		typedef boost::date_time::time_facet<typename basic_datum<charT>::datetime_t, char> facet_t;
