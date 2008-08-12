@@ -30,6 +30,12 @@ $aliases['arz'] = array(
 	'AbuseFilter' => array( 'فلتر_الإساءة' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'AbuseLog' => array( 'Missbrauchfilter-Logbuch' ),
+	'AbuseFilter' => array( 'Missbrauchfilter' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'AbuseLog' => array( 'Misbruiklogboek' ),

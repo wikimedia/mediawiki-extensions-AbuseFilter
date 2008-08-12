@@ -739,6 +739,7 @@ $messages['br'] = array(
  * @author Leithian
  * @author Pill
  * @author Revolus
+ * @author W (aka Wuzur)
  */
 $messages['de'] = array(
 	'abusefilter-desc' => 'Wendet automatische Heuristiken auf Änderungen an.',
@@ -782,6 +783,7 @@ Kurzbeschreibung der verletzten Regel: $1',
 	'abusefilter-log-search-filter' => 'Filter-ID:',
 	'abusefilter-log-search-title' => 'Titel:',
 	'abusefilter-log-search-submit' => 'Suchen',
+	'abusefilter-log-entry' => '$1: $2 löste einen Abuse Filter aus, indem er $3 auf $4 machte. Aktion: $5; Filterbeschreibung: $6',
 	'abusefilter-log-detailslink' => 'Details',
 	'abusefilter-log-details-legend' => 'Details für den Logbuch-Eintrag $1',
 	'abusefilter-log-details-var' => 'Variable',
@@ -1436,6 +1438,7 @@ $messages['hi'] = array(
  */
 $messages['hr'] = array(
 	'abusefilter-log-noactions' => 'ništa',
+	'abusefilter-history-comments' => 'Komentari',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1511,6 +1514,15 @@ $messages['hsb'] = array(
 	'abusefilter-edit-done' => 'Sy swoje změny na filtrje wuspěšnje składował.
 
 [[Special:AbuseFilter|Wróćo]]',
+);
+
+/** Haitian (Kreyòl ayisyen)
+ * @author Masterches
+ */
+$messages['ht'] = array(
+	'abusefilter-desc' => 'Aplike avètisman otomatik lè genyen modifikasyon',
+	'abusefilter' => 'Konfigirasyon filt tout abi yo',
+	'abuselog' => 'Jounal pou abi yo',
 );
 
 /** Hungarian (Magyar)
@@ -2470,48 +2482,171 @@ $messages['rif'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $messages['ro'] = array(
 	'abusefilter-desc' => 'Aplică euristică automată modificărilor.',
+	'abusefilter' => 'Configuraţie filtru abuz',
+	'abuselog' => 'Jurnal abuz',
+	'abusefilter-warning' => "<big>'''Atenţie'''</big>: Această acţiune a fost identificată automat ca fiind periculoasă.
+Modificările neconstructive vor fi rapid înlăturate,
+iar cele evident neconstructive şi repetate vor fi adăugate în jurnalul contului tău; se poate merge până la blocarea contului.
+Dacă eşti sigur că această modificare este constructivă, apasă pe Aplică din nou pentru a confirma.
+O descriere sumară a regulii abuzului care se potriveşte cu acţiunea ta este: $1",
+	'abusefilter-disallowed' => 'Această acţiune a fost identificată automat ca fiind periculoasă,
+din acest motiv a fost refuzată.
+Dacă eşti convins că modificarea ta a fost constructivă, te rog contactează un administrator, şi informează-l despre ce doreşti să faci.
+O descriere sumară a regulii abuzului care se potriveşte cu acţiunea ta este: $1',
+	'abusefilter-blocked-display' => 'Această acţiune a fost identificată automat ca fiind periculoasă,
+şi ai ai fost împiedicat să o execuţi.
+În plus, pentru a proteja {{SITENAME}}, contul tău şi toate adresele IP asociate contului fost blocate la modifcare.
+Dacă blocarea este o eroare, te rog contactează un administrator.
+O descriere sumară a regulii abuzului care se potriveşte cu acţiunea ta este: $1',
+	'abusefilter-degrouped' => 'Această acţiune a fost identificată automat ca fiind periculoasă.
+În consecinţă, acţiunea a fost refuzată, iar deoarece contul pare a fi compromis, toate drepturile au fost revocate.
+Dacă consideri această acţiune o eroare, te rog contactează un birocrat şi explică-i ce s-a întâmplat, iar drepturile tale s-ar putea să fie restaurate.
+O descriere sumară a regulii abuzului care se potriveşte cu acţiunea ta este: $1',
+	'abusefilter-autopromote-blocked' => 'Această acţiune a fost identificată automat ca fiind periculoasă şi a fost interzisă.
+În plus, ca o măsură de securitate, unele privilegii pe care le ai, în ceea ce priveşte deschiderea de conturi, au fost revocate.
+O descriere sumară a regulii abuzului care se potriveşte cu acţiunea ta este: $1',
+	'abusefilter-blocker' => 'Filtru abuz',
+	'abusefilter-blockreason' => 'Blocare automată de filtrul abuz. Descrierea regulii: $1',
+	'abusefilter-degroupreason' => 'Drepturi automat suspendate de către filtrul abuz. Descrierea regulii: $1',
+	'abusefilter-accountreserved' => 'Acest nume de cont este rezervat pentru a fi folosit de către filtrul abuz.',
+	'right-abusefilter-modify' => 'Modifică filtrele abuz',
+	'right-abusefilter-view' => 'Vezi filtrele abuz',
+	'right-abusefilter-log' => 'Vezi jurnalul abuz',
+	'right-abusefilter-log-detail' => 'Vezi intrările detaliate din jurnalul abuz',
+	'right-abusefilter-private' => 'Vezi datele private din jurnalul abuz',
+	'abusefilter-log' => 'Jurnal filtru abuz',
+	'abusefilter-log-search' => 'Căutare jurnal abuz',
 	'abusefilter-log-search-user' => 'Utilizator:',
 	'abusefilter-log-search-filter' => 'ID filtru:',
 	'abusefilter-log-search-title' => 'Titlu:',
 	'abusefilter-log-search-submit' => 'Caută',
+	'abusefilter-log-entry' => '$1: $2 a declanşat un filtru abuz, executând $3 asupra $4. Măsura luată: $5; Descrierea filtrului: $6',
+	'abusefilter-log-detailedentry' => '$1: $2 a declanşat filtru $3, executând $4 asupra $5. Măsura luată: $6; Descrierea filtrului: $7 ($8)',
 	'abusefilter-log-detailslink' => 'detalii',
+	'abusefilter-log-details-legend' => 'Detalii pentru intrarea $1 din jurnal',
 	'abusefilter-log-details-var' => 'Variabilă',
 	'abusefilter-log-details-val' => 'Valoare',
 	'abusefilter-log-details-vars' => 'Parametrii acţiunii',
 	'abusefilter-log-details-private' => 'Date private',
 	'abusefilter-log-details-ip' => 'Adresa IP de origine',
+	'abusefilter-log-noactions' => 'nimic',
+	'abusefilter-management' => 'Administrarea filtrului abuz',
 	'abusefilter-list' => 'Toate filtrele',
 	'abusefilter-list-id' => 'ID filtru',
 	'abusefilter-list-status' => 'Statut',
 	'abusefilter-list-public' => 'Descriere publică',
 	'abusefilter-list-consequences' => 'Consecinţe',
 	'abusefilter-list-visibility' => 'Vizibilitate',
+	'abusefilter-list-hitcount' => 'Număr conectări',
 	'abusefilter-list-edit' => 'Modifică',
 	'abusefilter-list-details' => 'Detalii',
 	'abusefilter-hidden' => 'Privat',
 	'abusefilter-unhidden' => 'Public',
 	'abusefilter-enabled' => 'Activat',
 	'abusefilter-disabled' => 'Dezactivat',
+	'abusefilter-hitcount' => '$1 {{PLURAL:$1|conectare|conectări}}',
 	'abusefilter-list-new' => 'Filtru nou',
 	'abusefilter-tools-modifiertest-submit' => 'Test',
+	'abusefilter-tools' => 'Unele [[Special:AbuseFilter/tools|unelte]] sunt disponibile pentru a te asista în formularea şi depanarea filtrelor abuz',
+	'abusefilter-tools-subtitle' => 'Unelte',
+	'abusefilter-tools-text' => 'Aici sunt câteva unelte care pot fi utile în formularea şi depanarea filtrelor abuz. [[Special:AbuseFilter|Înapoi la meniul principal]]',
+	'abusefilter-tools-expr' => 'Expresii test',
+	'abusefilter-tools-submitexpr' => 'Evaluare',
+	'abusefilter-status' => 'Din {{PLURAL:$1|ultima acţiune|ultimele acţiuni}} $1, $2 ($3%) {{PLURAL:$2|a|au}} atins condiţia limită a $4. $5 ($6%)',
 	'abusefilter-edit-subtitle' => 'Modificare filtru $1',
 	'abusefilter-edit-status-label' => 'Statistici',
+	'abusefilter-edit-status' => 'Din ultimele $1 {{PLURAL:$1|acţiune|acţiuni}}, acest filtru a găsit $2 ($3%).',
+	'abusefilter-edit-throttled' => "'''Atenţie''': Acest filtru a fost dezactivat automat ca o măsură de siguranţă. A atins limita de potrivire la mai mult de $1% din acţiuni.",
 	'abusefilter-edit-new' => 'Filtru nou',
 	'abusefilter-edit-save' => 'Salvează filtru',
+	'abusefilter-edit-id' => 'Filtru ID:',
 	'abusefilter-edit-description' => "Descriere:
 :''(publică)''",
+	'abusefilter-edit-flags' => 'Steaguri:',
 	'abusefilter-edit-enabled' => 'Activează acest filtru',
+	'abusefilter-edit-hidden' => 'Ascunde publicului detaliile acestui filtru',
+	'abusefilter-edit-rules' => 'Condiţii:',
+	'abusefilter-edit-notes' => "Note:
+:''(private)",
+	'abusefilter-edit-lastmod' => 'Ultima modificare filtru:',
 	'abusefilter-edit-lastuser' => 'Ultimul utilizator care a modificat acest filtru:',
-	'abusefilter-edit-action-disallow' => 'Nu permite acţiunea',
-	'abusefilter-edit-action-block' => 'Blochează utilizatorul la modificare',
+	'abusefilter-edit-hitcount' => 'Conectări filtru:',
+	'abusefilter-edit-consequences' => 'Acţiuni efectuate la conectare',
+	'abusefilter-edit-action-warn' => 'Declanşează aceste acţiuni după ce ai avertizat utilizatorul',
+	'abusefilter-edit-action-disallow' => 'Nu permite utilizatorului efectuarea acestei acţiuni',
+	'abusefilter-edit-action-flag' => 'Semnalizează modificarea în jurnalul abuz',
+	'abusefilter-edit-action-blockautopromote' => 'Revocă statutul autoconfirmat al utilizatorului',
+	'abusefilter-edit-action-degroup' => 'Elimină utilizatorul din toate grupurile cu privilegii',
+	'abusefilter-edit-action-block' => 'Blochează utilizatorul şi/sau adresa IP la modificare',
+	'abusefilter-edit-action-throttle' => 'Declanşează acţiunile doar dacă utilizatorul a depăşit limita impusă',
 	'abusefilter-edit-throttle-count' => 'Număr de acţiuni permise:',
 	'abusefilter-edit-throttle-period' => 'Perioadă de timp:',
 	'abusefilter-edit-throttle-seconds' => '$1 secunde',
+	'abusefilter-edit-throttle-groups' => "Grupează ?throttle? după:
+:''(una pe linie, despărţite prin virgule)''",
+	'abusefilter-edit-denied' => 'S-ar putea să nu vezi detaliile acestui filtru, deoarece a fost ascuns publicului',
 	'abusefilter-edit-main' => 'Parametrii filtrului',
 	'abusefilter-edit-done-subtitle' => 'Filtru modificat',
+	'abusefilter-edit-done' => 'Schimbările tale aplicate filtrului au fost salvate cu succes.
+
+[[Special:AbuseFilter|Înapoi]]',
+	'abusefilter-edit-badsyntax' => 'Există o eroare de sintaxă în filtrul specificat. Analizatorul a întors eroarea: <pre>$1</pre>',
+	'abusefilter-edit-viewhistory' => 'Vezi istoricul filtrului',
+	'abusefilter-edit-history' => 'Istoric',
+	'abusefilter-edit-check' => 'Verificare sintaxă',
+	'abusefilter-edit-builder-select' => 'Selectează opţiunea care să fie adăugată la cursor',
+	'abusefilter-edit-builder-group-op-arithmetic' => 'Operatori aritmetici',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adunare (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Scădere (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Înmulţire (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'Împărţire (/)',
+	'abusefilter-edit-builder-op-arithmetic-modulo' => 'Modulo (%)',
+	'abusefilter-edit-builder-op-arithmetic-pow' => 'Putere (**)',
+	'abusefilter-edit-builder-group-op-comparison' => 'Operatori comparativi',
+	'abusefilter-edit-builder-op-comparison-equal' => 'Egal cu (==)',
+	'abusefilter-edit-builder-op-comparison-notequal' => 'Inegal cu (!=)',
+	'abusefilter-edit-builder-op-comparison-lt' => 'Mai mic decât (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'Mai mare decât (>)',
+	'abusefilter-edit-builder-op-comparison-lte' => 'Mai mic sau egal cu (<=)',
+	'abusefilter-edit-builder-op-comparison-gte' => 'Mai mare sau egal cu (>=)',
+	'abusefilter-edit-builder-group-op-bool' => 'Operatori booleani',
+	'abusefilter-edit-builder-op-bool-not' => 'Nu (!)',
+	'abusefilter-edit-builder-op-bool-and' => 'Şi (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'Sau (|)',
+	'abusefilter-edit-builder-group-misc' => 'Diverse',
+	'abusefilter-edit-builder-misc-ternary' => 'Operatori ternari (1 ? 2 : 3)',
+	'abusefilter-edit-builder-misc-like' => 'Potriviri regex (like)',
+	'abusefilter-edit-builder-group-funcs' => 'Funcţii',
+	'abusefilter-edit-builder-funcs-length' => 'Lungimea şirului (lungime)',
+	'abusefilter-edit-builder-funcs-lcase' => 'În majuscule (lcase)',
+	'abusefilter-edit-builder-vars-accountname' => 'Numele contului (la crearea contului)',
+	'abusefilter-edit-builder-vars-action' => 'Acţiune',
+	'abusefilter-edit-builder-vars-addedlines' => 'Linii adăugate în urma modificării',
+	'abusefilter-edit-builder-vars-newsize' => 'Mărimea paginii noi',
+	'abusefilter-edit-builder-vars-oldsize' => 'Mărimea paginii vechi',
+	'abusefilter-edit-builder-vars-removedlines' => 'Linii eliminate în urma modificării',
+	'abusefilter-edit-builder-vars-summary' => 'Sumar modificare/motivare',
+	'abusefilter-edit-builder-vars-article-id' => 'ID articol',
+	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Titlul complet al articolului',
+	'abusefilter-edit-builder-vars-user-editcount' => 'Numărul modificărilor utilizatorului',
+	'abusefilter-edit-builder-vars-user-age' => 'Vârsta contului utilizatorului',
+	'abusefilter-edit-builder-vars-user-name' => 'Numele contului de utilizator',
+	'abusefilter-history' => 'Istoricul pentru filtru $1',
+	'abusefilter-history-hidden' => 'ascuns',
+	'abusefilter-history-enabled' => 'activat',
+	'abusefilter-history-timestamp' => 'Dată',
+	'abusefilter-history-user' => 'Utilizator',
+	'abusefilter-history-public' => 'Descrierea publică a filtrului',
+	'abusefilter-history-flags' => 'Steaguri',
+	'abusefilter-history-filter' => 'Regulă filtru',
+	'abusefilter-history-comments' => 'Comentarii',
+	'abusefilter-history-actions' => 'Acţiuni',
+	'abusefilter-history-backedit' => 'Înapoi la modificarea filtrului',
+	'abusefilter-history-backlist' => 'Înapoi la lista filtrelor',
 );
 
 /** Russian (Русский)
@@ -2966,6 +3101,10 @@ En kortfattad beskrivning av missbruksregler som din handling matchar med är: $
 	'abusefilter-edit-builder-vars-diff' => 'Enhetlig skillnad av ändringar i redigering',
 	'abusefilter-edit-builder-vars-newsize' => 'Ny sidstorlek',
 	'abusefilter-edit-builder-vars-oldsize' => 'Gammal sidstorlek',
+	'abusefilter-edit-builder-vars-removedlines' => 'Borttagna linjer i redigering',
+	'abusefilter-edit-builder-vars-summary' => 'Redigeringssammanfattning',
+	'abusefilter-edit-builder-vars-article-id' => 'Artikel-ID',
+	'abusefilter-edit-builder-vars-article-ns' => 'Artikelnamnrymd',
 	'abusefilter-history' => 'Historik för filtret $1',
 	'abusefilter-history-hidden' => 'dold',
 	'abusefilter-history-enabled' => 'aktiverad',
