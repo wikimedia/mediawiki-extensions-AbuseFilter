@@ -15,6 +15,7 @@
 #include	<boost/format.hpp>
 
 #include	"return_type.h"
+#include	"type_name.h"
 
 /*
  * Various functors used for datums.  Unlike the standard functor, these are
@@ -88,7 +89,7 @@ struct invalid_binary_operator {
 	operator() (T, U) const {
 		std::string s(str(boost::format(
 			"operator %s cannot be applied to the types ('%s', '%s')")
-			% opname_ % typeid(T).name() % typeid(U).name()));
+			% opname_ % type_name<T>::name() % type_name<U>::name()));
 
 		throw type_error(s);
 	}
