@@ -104,7 +104,7 @@ struct invalid_unary_operator {
 	T operator() (T) const {
 		std::string s(str(boost::format(
 			"operator %s cannot be applied to the type '%s'")
-			% opname_ % typeid(T).name()));
+			% opname_ % type_name<T>::name()));
 
 		throw type_error(s);
 	}
