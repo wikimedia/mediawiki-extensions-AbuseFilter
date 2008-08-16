@@ -28,7 +28,6 @@ $wgExtensionMessagesFiles['AbuseFilter'] =  "$dir/AbuseFilter.i18n.php";
 $wgExtensionAliasesFiles['AbuseFilter'] = "$dir/AbuseFilter.alias.php";
 
 $wgAutoloadClasses[ 'AbuseFilter' ] = "$dir/AbuseFilter.class.php";
-$wgAutoloadClasses[ 'AbuseFilterParser' ] = "$dir/AbuseFilter.parser.php";
 $wgAutoloadClasses[ 'AbuseFilterParserNative' ] = "$dir/AbuseFilter.nativeparser.php";
 $wgAutoloadClasses[ 'AbuseFilterHooks' ] = "$dir/AbuseFilter.hooks.php";
 $wgAutoloadClasses['SpecialAbuseLog'] = "$dir/SpecialAbuseLog.php";
