@@ -674,7 +674,7 @@ $messages['bg'] = array(
 	'abusefilter-edit-action-throttle' => 'Изпълнение на действията само ако потребителят превиши определена честота на редакциите',
 	'abusefilter-edit-throttle-count' => 'Брой позволени действия:',
 	'abusefilter-edit-throttle-period' => 'Период от време:',
-	'abusefilter-edit-throttle-seconds' => '$1 секунди',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|секунда|секунди}}',
 	'abusefilter-edit-denied' => 'Не можете да видите детайлите на този филтър, защото не са общодостъпни',
 	'abusefilter-edit-main' => 'Параметри на филтъра',
 	'abusefilter-edit-done-subtitle' => 'Филтърът беше редактиран',
@@ -1645,7 +1645,7 @@ Un breve description del regula anti-abuso correspondente con tu action es: $1',
 	'abusefilter-edit-action-throttle' => 'Interprender actiones solmente si le usator excede un limite de frequentia',
 	'abusefilter-edit-throttle-count' => 'Numero de actiones a permitter:',
 	'abusefilter-edit-throttle-period' => 'Periodo de tempore:',
-	'abusefilter-edit-throttle-seconds' => '$1 secundas',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|secunda|secundas}}',
 	'abusefilter-edit-throttle-groups' => "Gruppar le limites de frequentia per:
 :''(un per linea; combinar los con commas)''",
 	'abusefilter-edit-denied' => 'Tu non pote vider le detalios de iste filtro, proque illo es celate del publico',
@@ -1827,6 +1827,36 @@ $messages['ksh'] = array(
 	'abusefilter-edit-lastmod' => 'Zoletz jeändert:',
 	'abusefilter-edit-lastuser' => 'Metmaacher, dä zoletz jeändert hät:',
 	'abusefilter-edit-hitcount' => 'Treffer:',
+	'abusefilter-edit-builder-group-op-arithmetic' => 'Zom Räschne',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'zosamme zälle (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'afftrecke (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'molnämme (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'deile (/)',
+	'abusefilter-edit-builder-op-arithmetic-modulo' => 'der Rääß bem Deile (%)',
+	'abusefilter-edit-builder-op-arithmetic-pow' => 'huhnämme, pottenzeere (**)',
+	'abusefilter-edit-builder-group-op-comparison' => 'zom Verjlische',
+	'abusefilter-edit-builder-op-comparison-equal' => 'ejaal met, jlisch (==)',
+	'abusefilter-edit-builder-op-comparison-notequal' => 'unejaal, nit jlisch (!=)',
+	'abusefilter-edit-builder-op-comparison-lt' => 'äsch kleiner wie … (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'ääsch jrüßer wie … (>)',
+	'abusefilter-edit-builder-op-comparison-lte' => 'kleiner wi … odder et sellve (<=)',
+	'abusefilter-edit-builder-op-comparison-gte' => 'jrüßer wi … odder et sellve (>=)',
+	'abusefilter-edit-builder-group-op-bool' => 'zom Äntscheide (Jo/Nä, <i lang="en">Bool</i>sche Rääschnerei)',
+	'abusefilter-edit-builder-op-bool-not' => 'nit, et Jäjedeil (!)',
+	'abusefilter-edit-builder-op-bool-and' => 'un, „beeds“ (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'ov, udder, „et ein, udder et ander, udder beeds“ (|)',
+	'abusefilter-edit-builder-op-bool-xor' => 'XOR, exklusief-udder, „et ein, udder et ander, ävver nit beeds“ (^)',
+	'abusefilter-edit-builder-group-misc' => 'Söns jet',
+	'abusefilter-edit-builder-misc-ternary' => 'wann-dann-söns (1 ? 2 : 3)',
+	'abusefilter-edit-builder-misc-in' => 'en dä Bochstave-Reih enthallde (in)',
+	'abusefilter-edit-builder-misc-like' => 'paß op de <i lang="en">regular expression</i> (like)',
+	'abusefilter-edit-builder-group-funcs' => 'Funxjuhne',
+	'abusefilter-edit-builder-funcs-length' => 'de Aanzahl Bochstave en de Bochstave-Reih (length)',
+	'abusefilter-edit-builder-funcs-lcase' => 'dat sellve nur en Kleinbochstave (lcase)',
+	'abusefilter-edit-builder-funcs-ccnorm' => 'dat sellve nur de verwähßelba/miehdeutijje Bochstave nommaleseet (ccnorm)',
+	'abusefilter-edit-builder-funcs-rmdoubles' => 'dat sellve nur de dubbel-Bochstave us dä Reih en eifache ömjetuusch (rmdoubles)',
+	'abusefilter-edit-builder-funcs-specialratio' => 'de Aanzahl Sönderzeiche jedeilt dorsch de jesamp Zahl Zeische (specialratio)',
+	'abusefilter-edit-builder-funcs-norm' => 'de Bochstave nommaliseet (norm)',
 	'abusefilter-history-user' => 'Metmaacher',
 	'abusefilter-history-public' => 'Öffentlesch Beschrevve',
 	'abusefilter-history-flags' => 'Fähnsche',
@@ -2441,6 +2471,14 @@ Descripcion de la règla : $1',
 	'abusefilter-edit-done' => 'Avètz salvadas vòstras modificacions amb succès dins lo filtre.
 
 [[Special:AbuseFilter|Retorn]]',
+);
+
+/** Plautdietsch (Plautdietsch)
+ * @author Slomox
+ */
+$messages['pdt'] = array(
+	'abusefilter-log-search-user' => 'Brucker:',
+	'abusefilter-history-user' => 'Brucker',
 );
 
 /** Polish (Polski)
