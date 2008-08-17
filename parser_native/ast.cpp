@@ -310,9 +310,7 @@ u32datum
 ast_evaluator::ast_eval_num(u32fray const &s)
 {
 	if (s.find('.') != u32fray::npos) {
-		return u32datum::from_double(
-				typename u32datum::float_t(
-					make_u8fray(s).c_str()));
+		return u32datum::from_double(u32datum::float_t(make_u8fray(s).c_str()));
 	}
 
 	int base;
@@ -335,8 +333,7 @@ ast_evaluator::ast_eval_num(u32fray const &s)
 
 	fray t(make_u8fray(s));
 	std::string str(t.begin(), t.end() - trim);
-	return u32datum::from_int(
-			typename u32datum::integer_t(str, base));
+	return u32datum::from_int(u32datum::integer_t(str, base));
 }
 
 u32datum
