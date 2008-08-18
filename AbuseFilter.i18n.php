@@ -735,6 +735,7 @@ $messages['br'] = array(
 );
 
 /** German (Deutsch)
+ * @author Cedric31
  * @author ChrisiPK
  * @author Leithian
  * @author Pill
@@ -1755,6 +1756,20 @@ $messages['it'] = array(
 	'abusefilter-history-comments' => 'Commenti',
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'abusefilter-warning' => "<big>'''警告'''</big>: 行われた操作は自動的に有害と判断されました。建設的でない編集は速やかに差し戻されます。被害程度の大きい破壊的編集や頻繁な破壊行為はあなたのアカウントまたはコンピューターのブロックにつながります。あなたの行った編集が確かに建設的なものであるならば、「投稿」ボタンを再度クリックしてください。あなたの操作が方針に違反している点の概略は次の通りです。$1",
+	'abusefilter-disallowed' => '行われた操作は自動的に有害と判断されたため実行できませんでした。あなたの行った編集が確かに建設的なものであるならば、管理者に連絡をしてあなたの行おうとしていた操作について知らせてください。あなたの操作が方針に違反している点の概略は次の通りです。$1',
+	'abusefilter-blocked-display' => '行われた操作は自動的に有害と判断されたため、実行が中断されました。同時に{{SITENAME}}を保護するためにあなたの利用者アカウントと関連するすべてのIPアドレスが投稿ブロックされました。この措置が誤りであるならば、管理者に連絡してください。あなたの操作が方針に違反している点の概略は次の通りです。$1',
+	'abusefilter-degrouped' => '行われた操作は自動的に有害と判断されました。そのため操作は実行されず、またあなたのアカウントが乗っ取られていると判断し、すべての権限をはく奪しました。この措置が誤りであるならば、この操作についての説明を添えてビューロクラットに連絡し、権限の復帰を依頼してください。あなたの操作が方針に違反している点の概略は次の通りです。$1',
+	'abusefilter-autopromote-blocked' => '行われた操作は自動的に有害と判断されたため、実行が中断されました。同時にサイトの安全を守るため、承認されたアカウントに付与されている権限の一部が一時的にあなたのアカウントからはく奪されました。あなたの操作が方針に違反している点の概略は次の通りです。$1',
+	'abusefilter-blocker' => '荒らしフィルター',
+	'abusefilter-blockreason' => '荒らしフィルターによって自動的にブロック。ルールの説明: $1',
+	'abusefilter-degroupreason' => '荒らしフィルターによって自動的に権限はく奪。ルールの説明: $1',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */
@@ -1967,6 +1982,15 @@ $messages['lb'] = array(
 $messages['lt'] = array(
 	'abusefilter-log-search-user' => 'Naudotojas:',
 	'abusefilter-log-search-submit' => 'Ieškoti',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Izzudin
+ */
+$messages['ms'] = array(
+	'abusefilter-desc' => 'Mengenakan heuristik automatik kepada suntingan.',
+	'abusefilter' => 'Konfigurasi penapis penyalahgunaan',
+	'abuselog' => 'Log penyalahgunaan',
 );
 
 /** Maltese (Malti)
@@ -2433,6 +2457,10 @@ Descripcion de la règla : $1',
 	'abusefilter-list-new' => 'Filtre novèl',
 	'abusefilter-tools-modifiertest-submit' => 'Tèst',
 	'abusefilter-tools' => 'Qualques [[Special:AbuseFilter/tools|espleches]] son disponibles per ajudar a la formulacion e al debogatge dels filtres dels abuses.',
+	'abusefilter-tools-subtitle' => 'Espleches',
+	'abusefilter-tools-text' => 'Vaquí qualques espleches que pòdon èsser utils dins la formulacion o lo debogatge dels filtres d’abús. [[Special:AbuseFilter|Retorn al menut principal]]',
+	'abusefilter-tools-expr' => "Tèst d'expression",
+	'abusefilter-tools-submitexpr' => 'Evaluar',
 	'abusefilter-status' => "{{PLURAL:$1|De la darrièra accion|De las $1 darrièras accions}}, $2 ($3 %) an atench lo limit de la condicion definida per $4. $5 ($6 %) {{PLURAL:$5|correspondiá|correspondián}} a un d'aquestes filtres actualament en servici.",
 	'abusefilter-edit-subtitle' => 'Modificacion del filtre $1',
 	'abusefilter-edit-status-label' => 'Estatisticas',
@@ -2454,15 +2482,15 @@ Descripcion de la règla : $1',
 	'abusefilter-edit-hitcount' => 'Visitas del filtre :',
 	'abusefilter-edit-consequences' => 'Accions entrepresas al moment de la visita',
 	'abusefilter-edit-action-warn' => 'Desenclavar aquestas accions aprèp aver balhat un avertiment a l’utilizaire',
-	'abusefilter-edit-action-disallow' => 'Permetre pas l’accion',
+	'abusefilter-edit-action-disallow' => 'Permetre pas a l’utilizaire d’efectuar l’accion en question',
 	'abusefilter-edit-action-flag' => 'Marcar la modificacion dins lo jornal dels abuses',
 	'abusefilter-edit-action-blockautopromote' => "Revocar l'estatut de compte automaticament confirmat de l’utilizaire",
 	'abusefilter-edit-action-degroup' => 'Levar a l’utilizaire totes los gropes privilegiats',
-	'abusefilter-edit-action-block' => 'Blocar l’utilizaire en escritura',
+	'abusefilter-edit-action-block' => 'Blocar l’utilizaire e/o l’adreça IP en escritura',
 	'abusefilter-edit-action-throttle' => 'Desenclavar las accions unicament se l’utilizaire a depassat los limits',
 	'abusefilter-edit-throttle-count' => "Nombre d’accions d'autorizar :",
 	'abusefilter-edit-throttle-period' => 'Periòde de temps :',
-	'abusefilter-edit-throttle-seconds' => '$1 segondas',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|segonda|segondas}}',
 	'abusefilter-edit-throttle-groups' => "Grop detengut per :
 :''(un per linha, separat per de virgulas)''",
 	'abusefilter-edit-denied' => "Podètz pas veire los detalhs d'aqueste filtre perque es amagat a la vista del public",
@@ -2471,6 +2499,79 @@ Descripcion de la règla : $1',
 	'abusefilter-edit-done' => 'Avètz salvadas vòstras modificacions amb succès dins lo filtre.
 
 [[Special:AbuseFilter|Retorn]]',
+	'abusefilter-edit-badsyntax' => "I a una error de sintaxi dins lo filtre qu'avètz especificat. Lo resultat del parser èra : <pre>$1</pre>",
+	'abusefilter-edit-viewhistory' => "Veire l’istoric d'aqueste filtre",
+	'abusefilter-edit-history' => 'Istoric',
+	'abusefilter-edit-check' => 'Verificar la sintaxi',
+	'abusefilter-edit-builder-select' => 'Seleccionar una opcion per l’apondre cap al cursor',
+	'abusefilter-edit-builder-group-op-arithmetic' => 'Operators aritmetics',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adicion (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Sostraccion (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Multiplicacion (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'Division (/)',
+	'abusefilter-edit-builder-op-arithmetic-modulo' => 'Modulo (%)',
+	'abusefilter-edit-builder-op-arithmetic-pow' => 'Poténcia (**)',
+	'abusefilter-edit-builder-group-op-comparison' => 'Operators de comparason',
+	'abusefilter-edit-builder-op-comparison-equal' => 'Egal a (==)',
+	'abusefilter-edit-builder-op-comparison-notequal' => 'Diferent de (!=)',
+	'abusefilter-edit-builder-op-comparison-lt' => 'Inferior a (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'Superior a (<)',
+	'abusefilter-edit-builder-op-comparison-lte' => 'Inferior o egal a (<=)',
+	'abusefilter-edit-builder-op-comparison-gte' => 'Superior o egal a (<=)',
+	'abusefilter-edit-builder-group-op-bool' => 'Operators booleans',
+	'abusefilter-edit-builder-op-bool-not' => 'Non (!)',
+	'abusefilter-edit-builder-op-bool-and' => 'E (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'O (|)',
+	'abusefilter-edit-builder-group-misc' => 'Divèrs',
+	'abusefilter-edit-builder-misc-ternary' => 'Operator ternari (1 ? 2 : 3)',
+	'abusefilter-edit-builder-misc-in' => 'contengut dins la cadena de caractèrs (in)',
+	'abusefilter-edit-builder-misc-like' => 'Conten l’expression regulara (like)',
+	'abusefilter-edit-builder-group-funcs' => 'Foncions',
+	'abusefilter-edit-builder-funcs-length' => 'Longor de la cadena de caractèrs (length)',
+	'abusefilter-edit-builder-funcs-lcase' => 'Cap als caractèrs minusculs (lcase)',
+	'abusefilter-edit-builder-funcs-ccnorm' => 'Normaliza los caractèrs que pòdon enganar (ccnorm)',
+	'abusefilter-edit-builder-funcs-rmdoubles' => 'Lèva los caractèrs dobles (rmdoubles)',
+	'abusefilter-edit-builder-funcs-specialratio' => 'Caractèrs especials / Total dels caractèrs (specialratio)',
+	'abusefilter-edit-builder-funcs-norm' => 'Normaliza (norm)',
+	'abusefilter-edit-builder-funcs-count' => 'Nombre de còps que la cadena de caractèrs X apareis dins la cadena Y (count)',
+	'abusefilter-edit-builder-group-vars' => 'Variablas',
+	'abusefilter-edit-builder-vars-accountname' => 'Nom del compte (al moment de la creacion del compte)',
+	'abusefilter-edit-builder-vars-action' => 'Accion',
+	'abusefilter-edit-builder-vars-addedlines' => 'Linhas apondudas al moment de la modificacion',
+	'abusefilter-edit-builder-vars-delta' => 'Talha modificada al moment de la modificacion',
+	'abusefilter-edit-builder-vars-diff' => 'Diffs unificats dels cambiaments faches al moment de la modificacion',
+	'abusefilter-edit-builder-vars-newsize' => 'Talha de la pagina novèla',
+	'abusefilter-edit-builder-vars-oldsize' => 'Talha de la pagina anciana',
+	'abusefilter-edit-builder-vars-removedlines' => 'Linhas suprimidas al moment de la modificacion',
+	'abusefilter-edit-builder-vars-summary' => 'Ensenhador, motiu de la modificacion',
+	'abusefilter-edit-builder-vars-article-id' => 'ID de l’article',
+	'abusefilter-edit-builder-vars-article-ns' => 'Espaci de noms de la pagina',
+	'abusefilter-edit-builder-vars-article-text' => 'Títol de la pagina (sens lo nom de l’espaci)',
+	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Títol de l’article entièr',
+	'abusefilter-edit-builder-vars-movedfrom-id' => "ID de l'article del cambiament de nom de la pagina d’origina",
+	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Nom d’espaci de nomenatge del cambiament de nom de la pagina d’origina.',
+	'abusefilter-edit-builder-vars-movedfrom-text' => 'Títol del desplaçament de la pagina d’origina',
+	'abusefilter-edit-builder-vars-movedfrom-prefixedtext' => 'Títol entièr de la pagina d’origina',
+	'abusefilter-edit-builder-vars-movedto-id' => 'ID de l’article del cambiament de nom de la pagina de destinacion',
+	'abusefilter-edit-builder-vars-movedto-ns' => 'Nom de l’espaci de nom del cambiament de nom de la pagina de destinacion',
+	'abusefilter-edit-builder-vars-movedto-text' => 'Títol del cambiament de nom de la pagina de destinacion',
+	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Títol entièr del cambiament de nom de la pagina de destinacion',
+	'abusefilter-edit-builder-vars-user-editcount' => 'Comptador d’edicion de l’utilizaire',
+	'abusefilter-edit-builder-vars-user-age' => "Atge del compte d'utilizaire",
+	'abusefilter-edit-builder-vars-user-name' => "Nom del compte d'utilizaire",
+	'abusefilter-edit-builder-vars-user-groups' => "Gropes (qu'incluisson los que son implicits) de l'utilizaire dins",
+	'abusefilter-edit-builder-vars-user-emailconfirm' => "L’ora de l'adreça del corrièr electronic es estada confirmada",
+	'abusefilter-history' => 'Istoric del filtre $1',
+	'abusefilter-history-hidden' => 'amagat',
+	'abusefilter-history-enabled' => 'activat',
+	'abusefilter-history-timestamp' => 'Ora',
+	'abusefilter-history-user' => 'Utilizaire',
+	'abusefilter-history-public' => 'Descripcion publica del filtre',
+	'abusefilter-history-filter' => 'Règla del filtre',
+	'abusefilter-history-comments' => 'Comentaris',
+	'abusefilter-history-actions' => 'Accions',
+	'abusefilter-history-backedit' => 'Retorn a l’edicion del filtre',
+	'abusefilter-history-backlist' => 'Retorn a la tièra dels filtres',
 );
 
 /** Plautdietsch (Plautdietsch)
@@ -2792,7 +2893,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-action-throttle' => 'Применять меры только если участник превышает предел',
 	'abusefilter-edit-throttle-count' => 'Количество разрешённых действий:',
 	'abusefilter-edit-throttle-period' => 'Отрезок времени:',
-	'abusefilter-edit-throttle-seconds' => '$1 секунд',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|секунда|секунды|секунд}}',
 	'abusefilter-edit-throttle-groups' => "Группа сжатая:
 :''(по одной на строке, в сочетании с запятыми)''",
 	'abusefilter-edit-denied' => 'Вы не можете просмотреть подробную информацию об этом фильтре, так как она скрыта от обычных участников.',
@@ -2996,6 +3097,9 @@ $messages['stq'] = array(
 	'abusefilter-desc' => 'Woant automatiske Heuristike ap Annerengen an.',
 	'abusefilter' => 'Misbruukssieuwe-Ienstaalengen',
 	'abuselog' => 'Misbruuks-Logbouk',
+	'abusefilter-blocker' => 'Misbruukssieuwe',
+	'abusefilter-blockreason' => 'Du wuudst fon ju Misbruukssieuwe automatisk speerd. Beschrieuwenge fon ju Riege: $1',
+	'abusefilter-degroupreason' => 'Dien Begjuchtigengen wuuden fon ju Misbruukssieuwe automatisk beschranked. Beschrieuwenge fon ju Riege: $1',
 	'abusefilter-log-search-title' => 'Tittel:',
 	'abusefilter-log-search-submit' => 'Säike',
 	'abusefilter-log-detailslink' => 'Eenpeldhaide',
@@ -3079,6 +3183,7 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Leo Johannes
  * @author M.M.S.
  */
 $messages['sv'] = array(
@@ -3238,6 +3343,11 @@ En kortfattad beskrivning av missbruksregler som din handling matchar med är: $
 	'abusefilter-edit-builder-vars-summary' => 'Redigeringssammanfattning',
 	'abusefilter-edit-builder-vars-article-id' => 'Artikel-ID',
 	'abusefilter-edit-builder-vars-article-ns' => 'Artikelnamnrymd',
+	'abusefilter-edit-builder-vars-article-text' => 'Artikeltitel (utan namnrymd)',
+	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Hela artikeltiteln',
+	'abusefilter-edit-builder-vars-user-editcount' => 'Användarens redigeringsantal',
+	'abusefilter-edit-builder-vars-user-age' => 'Användarkontots ålder',
+	'abusefilter-edit-builder-vars-user-name' => 'Användarkontots namn',
 	'abusefilter-history' => 'Historik för filtret $1',
 	'abusefilter-history-hidden' => 'dold',
 	'abusefilter-history-enabled' => 'aktiverad',
