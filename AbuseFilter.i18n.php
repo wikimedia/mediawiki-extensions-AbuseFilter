@@ -2088,10 +2088,11 @@ $messages['lt'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Aviator
  * @author Izzudin
  */
 $messages['ms'] = array(
-	'abusefilter-desc' => 'Mengenakan heuristik automatik kepada suntingan.',
+	'abusefilter-desc' => 'Mengenakan heuristik automatik pada suntingan.',
 	'abusefilter' => 'Konfigurasi penapis penyalahgunaan',
 	'abuselog' => 'Log penyalahgunaan',
 	'abusefilter-warning' => "<big>'''Amaran'''</big>: Tindakan ini telah dikenalpasti secara automatik sebagai berbahaya.
