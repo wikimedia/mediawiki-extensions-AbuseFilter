@@ -1848,6 +1848,7 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Muttley
  */
 $messages['ja'] = array(
 	'abusefilter-warning' => "<big>'''警告'''</big>: 行われた操作は自動的に有害と判断されました。建設的でない編集は速やかに差し戻されます。被害程度の大きい破壊的編集や頻繁な破壊行為はあなたのアカウントまたはコンピューターのブロックにつながります。あなたの行った編集が確かに建設的なものであるならば、「投稿」ボタンを再度クリックしてください。あなたの操作が方針に違反している点の概略は次の通りです。$1",
@@ -1858,6 +1859,11 @@ $messages['ja'] = array(
 	'abusefilter-blocker' => '荒らしフィルター',
 	'abusefilter-blockreason' => '荒らしフィルターによって自動的にブロック。ルールの説明: $1',
 	'abusefilter-degroupreason' => '荒らしフィルターによって自動的に権限はく奪。ルールの説明: $1',
+	'abusefilter-list-hitcount' => '適用回数',
+	'abusefilter-list-edit' => '編集する',
+	'abusefilter-list-details' => '詳細',
+	'abusefilter-hidden' => '非公開',
+	'abusefilter-unhidden' => '公開',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -2904,6 +2910,7 @@ O descriere sumară a regulii abuzului care se potriveşte cu acţiunea ta este:
 
 /** Russian (Русский)
  * @author Ahonc
+ * @author Aleksandrit
  * @author MaxSem
  * @author VasilievVV
  * @author Александр Сигачёв
@@ -3016,6 +3023,15 @@ $messages['ru'] = array(
 
 [[Special:AbuseFilter|Вернуться]]',
 	'abusefilter-edit-history' => 'История',
+	'abusefilter-edit-check' => 'Проверьте синтаксис',
+	'abusefilter-edit-builder-group-op-arithmetic' => 'Арифметические операторы',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Сложение (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Вычитание (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Умножение (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'Деление (/)',
+	'abusefilter-edit-builder-group-op-comparison' => 'Сравнение операторов',
+	'abusefilter-edit-builder-op-comparison-lt' => 'Менее чем (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'Более чем (>)',
 );
 
 /** Slovak (Slovenčina)

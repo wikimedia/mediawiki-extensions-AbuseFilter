@@ -54,3 +54,9 @@ $aliases['no'] = array(
 	'AbuseFilter' => array( 'Misbruksfilter' ),
 );
 
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'AbuseLog' => array( 'Missbrukslogg' ),
+	'AbuseFilter' => array( 'Missbruksfilter' ),
+);
+
