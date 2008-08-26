@@ -36,6 +36,12 @@ $aliases['de'] = array(
 	'AbuseFilter' => array( 'Missbrauchfilter' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'AbuseLog' => array( 'Lëscht vum Mëssbrauch' ),
+	'AbuseFilter' => array( 'Mëssbrauchsfilter' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'AbuseLog' => array( 'Misbruuklogboek' ),

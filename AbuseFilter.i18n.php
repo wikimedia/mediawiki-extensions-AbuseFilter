@@ -1149,6 +1149,8 @@ Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1',
 	'abusefilter-history-filter' => 'Filtrila regulo',
 	'abusefilter-history-comments' => 'Komentoj',
 	'abusefilter-history-actions' => 'Agoj',
+	'abusefilter-history-backedit' => 'Reiri al filtrila redaktilo',
+	'abusefilter-history-backlist' => 'Reiri al listo de filtriloj',
 );
 
 /** Spanish (Español)
@@ -2049,6 +2051,7 @@ $messages['lb'] = array(
 	'abusefilter-edit-done' => 'Dir hutt är Ännerunge vum Filter ofgespäichert.
 
 [[Special:AbuseFilter|Zréck]]',
+	'abusefilter-edit-viewhistory' => "D'Versioune vun dësem Filter gesinn",
 	'abusefilter-edit-history' => 'Versiounen',
 	'abusefilter-edit-check' => 'Syntax iwwerpréifen',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Additioun (+)',
@@ -2058,6 +2061,7 @@ $messages['lb'] = array(
 	'abusefilter-edit-builder-op-comparison-notequal' => 'Verschidde vun (!=)',
 	'abusefilter-edit-builder-op-comparison-lt' => 'Manner wéi (<)',
 	'abusefilter-edit-builder-op-comparison-gt' => 'Méi grouss wéi (>)',
+	'abusefilter-edit-builder-op-comparison-gte' => "Méi grouss oder d'selwëscht wéi (>=)",
 	'abusefilter-edit-builder-op-bool-not' => 'Net (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'An (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Oder (|)',
@@ -2066,8 +2070,15 @@ $messages['lb'] = array(
 	'abusefilter-edit-builder-group-vars' => 'Variabelen',
 	'abusefilter-edit-builder-vars-action' => 'Aktioun',
 	'abusefilter-edit-builder-vars-addedlines' => 'Innen déi bäi der Ännerung derbäigesat goufen',
+	'abusefilter-edit-builder-vars-newsize' => 'Nei Säitegréisst',
+	'abusefilter-edit-builder-vars-oldsize' => 'Al Säitegréisst',
 	'abusefilter-edit-builder-vars-summary' => 'Resumé/Grond vun der Ännerung',
 	'abusefilter-edit-builder-vars-article-id' => 'ID (Nummer) vum Artikel',
+	'abusefilter-edit-builder-vars-article-ns' => 'Nummraum vum Artikel',
+	'abusefilter-edit-builder-vars-article-text' => 'Titel vum Artikel (ouni Nummraum)',
+	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Ganzen Titel vum Artikel',
+	'abusefilter-edit-builder-vars-user-editcount' => 'Compteur vun den Ännerunge vum Benotzer',
+	'abusefilter-edit-builder-vars-user-age' => 'Alter vum Benotzerkont',
 	'abusefilter-edit-builder-vars-user-name' => 'Numm vum Benotzerkont',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => "Wéini d'E-Mailadress confirméiert gouf",
 	'abusefilter-history' => 'Versioune vum Filter $1',
@@ -2075,8 +2086,12 @@ $messages['lb'] = array(
 	'abusefilter-history-enabled' => 'ageschalt',
 	'abusefilter-history-timestamp' => 'Zäit',
 	'abusefilter-history-user' => 'Benotzer',
+	'abusefilter-history-flags' => 'Fändelen',
+	'abusefilter-history-filter' => 'Regel vum Filter',
 	'abusefilter-history-comments' => 'Bemierkungen',
 	'abusefilter-history-actions' => 'Aktiounen',
+	'abusefilter-history-backedit' => "Zréck op d'Ännerungssäit vun de Filteren",
+	'abusefilter-history-backlist' => "Zréck op d'Lëscht vun de Filteren",
 );
 
 /** Lithuanian (Lietuvių)
@@ -2118,6 +2133,13 @@ $messages['mt'] = array(
 	'abusefilter-log-search-title' => 'Titlu:',
 	'abusefilter-log-search-submit' => 'Fittex',
 	'abusefilter-history-comments' => 'Kummenti',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'abuselog' => 'Аволь истя тевс нолдамодо тешкстамот',
 );
 
 /** Nahuatl (Nāhuatl)
@@ -3024,13 +3046,13 @@ $messages['ru'] = array(
 
 [[Special:AbuseFilter|Вернуться]]',
 	'abusefilter-edit-history' => 'История',
-	'abusefilter-edit-check' => 'Проверьте синтаксис',
+	'abusefilter-edit-check' => 'Проверить синтаксис',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Арифметические операторы',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Сложение (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Вычитание (-)',
 	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Умножение (*)',
 	'abusefilter-edit-builder-op-arithmetic-divide' => 'Деление (/)',
-	'abusefilter-edit-builder-group-op-comparison' => 'Сравнение операторов',
+	'abusefilter-edit-builder-group-op-comparison' => 'Операторы сравнения',
 	'abusefilter-edit-builder-op-comparison-lt' => 'Менее чем (<)',
 	'abusefilter-edit-builder-op-comparison-gt' => 'Более чем (>)',
 );
