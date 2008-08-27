@@ -42,6 +42,12 @@ $aliases['lb'] = array(
 	'AbuseFilter' => array( 'Mëssbrauchsfilter' ),
 );
 
+/** Erzya (Эрзянь) */
+$aliases['myv'] = array(
+	'AbuseLog' => array( 'АТевсНолдамодо' ),
+	'AbuseFilter' => array( 'АТевсНолдамоньФильтра' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'AbuseLog' => array( 'Misbruuklogboek' ),

@@ -734,6 +734,12 @@ $messages['br'] = array(
 	'abusefilter-edit-throttle-seconds' => '$1 eilenn',
 );
 
+/** Corsican (Corsu) */
+$messages['co'] = array(
+	'abusefilter-log-search-user' => 'Utilizatore:',
+	'abusefilter-history-user' => 'Utilizatore',
+);
+
 /** German (Deutsch)
  * @author Cedric31
  * @author ChrisiPK
@@ -1164,6 +1170,7 @@ $messages['es'] = array(
  * @author Grondin
  * @author IAlex
  * @author McDutchie
+ * @author Zetud
  */
 $messages['fr'] = array(
 	'abusefilter-desc' => 'Applique des heuristiques automatiques aux modifications',
@@ -1183,7 +1190,7 @@ Voici la courte description de la règle de l’abus qui a détecté votre actio
 En conséquence, elle a été non permise, dès lors, votre compte est suspecté de compromission, tous vos droits ont été enlevés.
 Si vous êtes convaincu que cela est dû à une erreur, veuillez contacter un bureaucrate avec une explication de cette action, et tous vos droits pourront être rétablis.
 Voici la courte description de la règle de l’abus qui a détecté votre action : $1',
-	'abusefilter-autopromote-blocked' => 'Cette action a été automatiquement identifié comme nuisible, et elle a été non permise.
+	'abusefilter-autopromote-blocked' => 'Cette action a été automatiquement identifiée comme nuisible, et elle a été non permise.
 En conséquence, à titre de mesure de sécurité, quelques privilèges accordés d’habitude pour les comptes établis ont été révoqués temporairement de votre compte.
 Une brève description de la règle d’abus que votre action a déclenchée est : $1',
 	'abusefilter-blocker' => 'Filtre des abus',
@@ -2061,22 +2068,28 @@ $messages['lb'] = array(
 	'abusefilter-edit-builder-op-comparison-notequal' => 'Verschidde vun (!=)',
 	'abusefilter-edit-builder-op-comparison-lt' => 'Manner wéi (<)',
 	'abusefilter-edit-builder-op-comparison-gt' => 'Méi grouss wéi (>)',
+	'abusefilter-edit-builder-op-comparison-lte' => "Méi kleng oder d'selwescht wéi (<=)",
 	'abusefilter-edit-builder-op-comparison-gte' => "Méi grouss oder d'selwëscht wéi (>=)",
 	'abusefilter-edit-builder-op-bool-not' => 'Net (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'An (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Oder (|)',
 	'abusefilter-edit-builder-group-misc' => 'Verschiddenes',
 	'abusefilter-edit-builder-group-funcs' => 'Fonctiounen',
+	'abusefilter-edit-builder-funcs-lcase' => 'A kleng Buchstawen ëmwandelen (lcase)',
 	'abusefilter-edit-builder-group-vars' => 'Variabelen',
+	'abusefilter-edit-builder-vars-accountname' => 'Numm vum Benotzerkont (beim Uleeë vum Benotzerkont)',
 	'abusefilter-edit-builder-vars-action' => 'Aktioun',
 	'abusefilter-edit-builder-vars-addedlines' => 'Innen déi bäi der Ännerung derbäigesat goufen',
+	'abusefilter-edit-builder-vars-delta' => 'Ännerung vun der Gréisst vun der Säit bäi der Ännerung',
 	'abusefilter-edit-builder-vars-newsize' => 'Nei Säitegréisst',
 	'abusefilter-edit-builder-vars-oldsize' => 'Al Säitegréisst',
+	'abusefilter-edit-builder-vars-removedlines' => 'Linnen déi der Ännerung ewechgeholl goufen',
 	'abusefilter-edit-builder-vars-summary' => 'Resumé/Grond vun der Ännerung',
 	'abusefilter-edit-builder-vars-article-id' => 'ID (Nummer) vum Artikel',
 	'abusefilter-edit-builder-vars-article-ns' => 'Nummraum vum Artikel',
 	'abusefilter-edit-builder-vars-article-text' => 'Titel vum Artikel (ouni Nummraum)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Ganzen Titel vum Artikel',
+	'abusefilter-edit-builder-vars-movedto-ns' => 'Nummraum vun der Säit op déi eng Säit geréckelt gëtt',
 	'abusefilter-edit-builder-vars-user-editcount' => 'Compteur vun den Ännerunge vum Benotzer',
 	'abusefilter-edit-builder-vars-user-age' => 'Alter vum Benotzerkont',
 	'abusefilter-edit-builder-vars-user-name' => 'Numm vum Benotzerkont',
@@ -2086,6 +2099,7 @@ $messages['lb'] = array(
 	'abusefilter-history-enabled' => 'ageschalt',
 	'abusefilter-history-timestamp' => 'Zäit',
 	'abusefilter-history-user' => 'Benotzer',
+	'abusefilter-history-public' => 'Ëffentlech Beschreiwung vum Filter',
 	'abusefilter-history-flags' => 'Fändelen',
 	'abusefilter-history-filter' => 'Regel vum Filter',
 	'abusefilter-history-comments' => 'Bemierkungen',
@@ -3250,22 +3264,58 @@ $messages['stq'] = array(
 	'abusefilter-desc' => 'Woant automatiske Heuristike ap Annerengen an.',
 	'abusefilter' => 'Misbruukssieuwe-Ienstaalengen',
 	'abuselog' => 'Misbruuks-Logbouk',
+	'abusefilter-warning' => "<big>'''Woarschauenge'''</big>: Disse Aktion wuud automatisk as schoadelk ärkoand.
+Uunkonstruktive Biedraage wäide maast gjucht gau wächhoald. In wierhoalde un besunners läipe Falle wäd dien Account blw. dien IP-Adresse speerd.
+Wan du toankst, dät dien Annerenge konstruktiv waas, koast du ju oawers mäd n näien Klik ap „{{int:savearticle}}“ bestäätigje.
+
+Kuute Beschrieuwenge fon ju nit beoachtede Räägel: $1",
+	'abusefilter-disallowed' => 'Disse Aktion wuud automatisk as schoadelk ärkoand un deeruum nit truchfierd.
+Wan du toankst, dät dien Biedraach konstruktiv waas, weende die dan an n Administrator un schilderje him, wät du fersoacht hääst bietoudreegen.
+
+Kuute Beschrieuwenge fon ju nit beoachtede Räägel: $1',
+	'abusefilter-blocked-display' => 'Disse Aktion wuud automatisk as schoadelk ärkoand un nit uutfierd.
+Fääre wuud dien Benutseraccount un aal touheerige IP-Adressen speerd.
+Wan du toankst, dät et sik hierbie uum n Failer honnelt, weende die dan an n Administrator.
+
+Kuute Beschrieuwenge fon ju nit beoachtede Räägel: $1',
+	'abusefilter-degrouped' => 'Disse Aktion wuud as schoadelk ärkoand un nit uutfierd.
+Deer et muugelk is, dät dien Benutseraccount kompromittierd wuude, wuuden die aal gewäärde Gjuchte nuumen.
+Wan du toankst, dät et sik hierbie uum n Failer honnelt, dan weende die an n Bürokroat un schillerje him, wät du juust däin hääst, deermäd dien Gjuchte wierhäärstoald wäide konnen.
+
+Kuute Beschrieuwenge fon ju nit beoachtede Räägel: $1',
+	'abusefilter-autopromote-blocked' => 'Disse Aktion wuud as schoadelk ärkoand un nit uutfierd.
+Buppedät wuuden die uut Sicherhaid eenige automatisk ferroate Gjuchte kuuttiedich nuumen.
+
+Kuute Beschrieuwenge fon ju nit beoachtede Räägel: $1',
 	'abusefilter-blocker' => 'Misbruukssieuwe',
 	'abusefilter-blockreason' => 'Du wuudst fon ju Misbruukssieuwe automatisk speerd. Beschrieuwenge fon ju Riege: $1',
 	'abusefilter-degroupreason' => 'Dien Begjuchtigengen wuuden fon ju Misbruukssieuwe automatisk beschranked. Beschrieuwenge fon ju Riege: $1',
+	'abusefilter-accountreserved' => 'Dissen Benutsernoome is foar ju Misbruukssieuwe reservierd.',
+	'right-abusefilter-modify' => 'Misbruukssieuwen beoarbaidje',
+	'right-abusefilter-view' => 'Misbruukssieuwen bekiekje',
+	'right-abusefilter-log' => 'Misbruuks-Logbouk ienkiekje',
+	'right-abusefilter-log-detail' => 'Detaillierd Misbruuks-Logbouk ienkiekje',
+	'right-abusefilter-private' => 'Privoate Doaten in dät Misbruuks-Logbouk ienkiekje',
+	'abusefilter-log' => 'Misbruukssieuwe-Logbouk',
+	'abusefilter-log-search' => 'Misbruuks-Logbouk truchsäike',
+	'abusefilter-log-search-user' => 'Benutser:',
+	'abusefilter-log-search-filter' => 'Sieuwe-ID:',
 	'abusefilter-log-search-title' => 'Tittel:',
 	'abusefilter-log-search-submit' => 'Säike',
+	'abusefilter-log-entry' => '$1: $2 löösde ne Misbruuks-Sieuwe uut, truch dät hie $3 ap $4 moakede. Aktion: $5; Sieuwe-Beschrieuwenge: $6',
 	'abusefilter-log-detailslink' => 'Eenpeldhaide',
 	'abusefilter-log-details-legend' => 'Eenpeldhaide foar dän Logbouk-Iendraach $1',
 	'abusefilter-log-details-var' => 'Variable',
 	'abusefilter-log-details-val' => 'Wäid',
 	'abusefilter-log-details-vars' => 'Aktionsparametere',
 	'abusefilter-log-details-private' => 'Privoate Doaten',
+	'abusefilter-log-details-ip' => 'IP-Adresse fon dän Feruurseeker',
 	'abusefilter-log-noactions' => 'neen',
 	'abusefilter-management' => 'Misbruukssieuwe-Ferwaltenge',
 	'abusefilter-list' => 'Aal Sieuwen',
 	'abusefilter-list-id' => 'Sieuwe-ID',
 	'abusefilter-list-status' => 'Stoatus',
+	'abusefilter-list-public' => 'Eepentelke Beschrieuwenge',
 	'abusefilter-list-consequences' => 'Foulgen',
 	'abusefilter-list-visibility' => 'Sichtboarkaid',
 	'abusefilter-list-hitcount' => 'Träffertäller',
@@ -3278,11 +3328,16 @@ $messages['stq'] = array(
 	'abusefilter-hitcount' => '{{PLURAL:$1|1 Träffer|$1 Träffere}}',
 	'abusefilter-list-new' => 'Näie Sieuwe',
 	'abusefilter-tools-modifiertest-submit' => 'Test',
+	'abusefilter-tools' => 'Der existierje [[Special:AbuseFilter/tools|Reewen]], do die bie dät Moakjen un Debuggen fon Sieuwen unnerstutsje.',
 	'abusefilter-tools-subtitle' => 'Reewen',
+	'abusefilter-tools-text' => 'Hier sunt wäkke Reewen, do hälpe konnen bie dät Formulierjen un bie ju Failersäike fon Misbruukssieuwen. [[Special:AbuseFilter|Tourääch tou dät Misbruukssieuwe-Haudmenü.]]',
 	'abusefilter-tools-expr' => 'Expression-Tester',
 	'abusefilter-tools-submitexpr' => 'Wröigje',
+	'abusefilter-status' => 'Fon {{PLURAL:$1|ju lääste Aktion|do lääste $1 Aktione}} {{PLURAL:$2|häd een|hääbe $2}} ($3 %) dän Gränswäid fon $4 beloanged. $5 ($6 %) {{PLURAL:$5|wuud|wuude}} fon een fon do apstuuns aktivierde Sieuwe wierkoand.',
 	'abusefilter-edit-subtitle' => 'Beoarbaidje Sieuwe $1',
 	'abusefilter-edit-status-label' => 'Statistike',
+	'abusefilter-edit-status' => 'Fon {{PLURAL:$1|ju|do}} lääste {{PLURAL:$1|Aktion|$1 Aktione}} {{PLURAL:$2|wuud|wuuden}} $2 ($3 %) fon disse Sieuwe wierkoand.',
+	'abusefilter-edit-throttled' => "'''Woarschauenge''': Disse Sieuwe wuud sicherhaidshoolwe automatisk deaktivierd. Ju häd moor as dät definierde Buppescheed fon $1 % fon do Aktione ärkoand.",
 	'abusefilter-edit-new' => 'Näie Sieuwe',
 	'abusefilter-edit-save' => 'Sieuwe spiekerje',
 	'abusefilter-edit-id' => 'Sieuwe-ID:',
@@ -3304,6 +3359,21 @@ $messages['stq'] = array(
 	'abusefilter-edit-action-blockautopromote' => '„Bestäätiger Benutser“-Stoatus äntluuke',
 	'abusefilter-edit-action-degroup' => 'Benutser uut aal Gruppen mäd Sunnergjuchte wächhoalje',
 	'abusefilter-edit-action-block' => 'Benutser/IP-Adrässe speere',
+	'abusefilter-edit-action-throttle' => 'Aktion bloot uutlööse, wan die Benutser n bestimd Limit beloanged häd',
+	'abusefilter-edit-throttle-count' => 'Antaal toulätte Aktione:',
+	'abusefilter-edit-throttle-period' => 'Tiedruum:',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|Sekunde|Sekunden}}',
+	'abusefilter-edit-denied' => 'Du koast do Details fon disse Sieuwe nit ienkiekje, deeruum dät do ferstopped sunt',
+	'abusefilter-edit-main' => 'Sieuweparametere',
+	'abusefilter-edit-done-subtitle' => 'Sieuwe beoarbaided',
+	'abusefilter-edit-done' => 'Dien Annerengen an ju Sieuwe wuuden mäd Ärfoulch spiekerd.
+
+[[Special:AbuseFilter|Tourääch]]',
+	'abusefilter-edit-badsyntax' => 'Ju fon die spezifizierde Sieuwe änthaalt n Syntaxfailer. Ju Parseruutgoawe lutte: <pre>$1</pre>',
+	'abusefilter-edit-viewhistory' => 'Versionsgeschichte fon ju Sieuwe ankiekje',
+	'abusefilter-edit-history' => 'Versionsgeschichte',
+	'abusefilter-edit-check' => 'Syntaxwröich',
+	'abusefilter-edit-builder-select' => 'Wääl ne Option uut, uum ju an n Cursor ientouföigjen',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Arithmetiske Operatore',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Addition (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Subtraktion (-)',
@@ -3332,6 +3402,39 @@ $messages['stq'] = array(
 	'abusefilter-edit-builder-funcs-lcase' => 'In Littikbouksteeuwen konvertierje (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Fertuusjene Teekene normalisierje (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Dubbelde Teekene wächhoalje (rmdoubles)',
+	'abusefilter-edit-builder-funcs-specialratio' => 'Spezialteekene / Teekene aaltouhoope (specialratio)',
+	'abusefilter-edit-builder-funcs-norm' => 'Normalisierje (norm)',
+	'abusefilter-edit-builder-funcs-count' => 'Antaal foan do Foarkuumnisse fon ju Teekenfoulge X in ju Teekenfoulge Y (count)',
+	'abusefilter-edit-builder-group-vars' => 'Variablen',
+	'abusefilter-edit-builder-vars-accountname' => 'Benutsernoome (on account creation)',
+	'abusefilter-edit-builder-vars-action' => 'Aktion',
+	'abusefilter-edit-builder-vars-addedlines' => 'Riegen bie ju Beoarbaidenge bietouföiged',
+	'abusefilter-edit-builder-vars-delta' => 'Grööte bie ju Beoarbaidenge annerd',
+	'abusefilter-edit-builder-vars-newsize' => 'Näie Siedengrööte',
+	'abusefilter-edit-builder-vars-oldsize' => 'Oolde Siedengrööte',
+	'abusefilter-edit-builder-vars-removedlines' => 'Riegen bie ju Beoarbaidenge wächhoald',
+	'abusefilter-edit-builder-vars-summary' => 'Touhoopefoatenge',
+	'abusefilter-edit-builder-vars-article-id' => 'Artikkel-ID',
+	'abusefilter-edit-builder-vars-article-ns' => 'Noomensruumte fon dän Artikkel',
+	'abusefilter-edit-builder-vars-article-text' => 'Tittel fon dän Artikkel (sunner Noomensruumte)',
+	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Fullen Tittel fon dän Artikkel',
+	'abusefilter-edit-builder-vars-user-editcount' => 'Biedraachställenge fon dän Benutser',
+	'abusefilter-edit-builder-vars-user-age' => 'Oaler fon Benutserkonto',
+	'abusefilter-edit-builder-vars-user-name' => 'Noome fon dät Benutserkonto',
+	'abusefilter-edit-builder-vars-user-groups' => 'Gruppen (uk implizite), in do die Benutser Meeglid is.',
+	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Tiedpunkt, an dän ju E-Mail-Adresse bestäätiged wuude',
+	'abusefilter-history' => 'Versionsgeschichte foar Sieuwe $1',
+	'abusefilter-history-hidden' => 'ferstopped',
+	'abusefilter-history-enabled' => 'aktivierd',
+	'abusefilter-history-timestamp' => 'Tied',
+	'abusefilter-history-user' => 'Benutser',
+	'abusefilter-history-public' => 'Eepentelke Sieuwe-Beschrieuwenge',
+	'abusefilter-history-flags' => 'Flags',
+	'abusefilter-history-filter' => 'Sieuweräägel',
+	'abusefilter-history-comments' => 'Kommentoare',
+	'abusefilter-history-actions' => 'Aktione',
+	'abusefilter-history-backedit' => 'Tourääch tou Sieuwe-Editor',
+	'abusefilter-history-backlist' => 'Tourääch tou Sieuwe-Lieste',
 );
 
 /** Swedish (Svenska)
