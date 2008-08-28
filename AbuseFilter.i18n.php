@@ -503,6 +503,7 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
@@ -515,7 +516,7 @@ $messages['arz'] = array(
 	'abusefilter-log-details-val' => 'القيمة',
 	'abusefilter-log-details-vars' => 'محددات الفعل',
 	'abusefilter-log-details-private' => 'معلومات سرية',
-	'abusefilter-log-details-ip' => 'العنوان بتاع الآي بي الأصلي',
+	'abusefilter-log-details-ip' => 'العنوان بتاع الآى بى الأصلي',
 	'abusefilter-log-noactions' => 'مافيش',
 	'abusefilter-management' => 'إدارة الفلتر بتاع الإساءة',
 	'abusefilter-list' => 'كل الفلاتر',
@@ -535,8 +536,8 @@ $messages['arz'] = array(
 	'abusefilter-list-new' => 'فلتر جديد',
 	'abusefilter-tools-modifiertest-submit' => 'اختبار',
 	'abusefilter-edit-action-disallow' => 'منع الفعل',
-	'abusefilter-edit-action-flag' => 'علم على التعديل في سجل الإساءة',
-	'abusefilter-edit-action-blockautopromote' => 'اسحب حالة التأكيد الأوتوماتيكي من اليوزر',
+	'abusefilter-edit-action-flag' => 'علم على التعديل فى سجل الإساءة',
+	'abusefilter-edit-action-blockautopromote' => 'اسحب حالة التأكيد الأوتوماتيكى من اليوزر',
 	'abusefilter-edit-action-degroup' => 'شيل كل المجموعات المميزة من اليوزر',
 	'abusefilter-edit-action-block' => 'إمنع اليوزر من التحرير',
 	'abusefilter-edit-action-throttle' => 'نفذ الأفعال بس لو اليوزر اتجاوز حد المعدل',
@@ -1164,6 +1165,7 @@ Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1',
  */
 $messages['es'] = array(
 	'abusefilter-log-noactions' => 'ninguna',
+	'abusefilter-list-edit' => 'Editar',
 );
 
 /** French (Français)
