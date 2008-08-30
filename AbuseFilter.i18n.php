@@ -1363,9 +1363,11 @@ Une brève description de la règle d’abus que votre action a déclenchée est
 $messages['fy'] = array(
 	'abusefilter-desc' => 'Fiert automatyske heuristyske analyse út op bewurkings',
 	'abusefilter' => 'Misbrûkfilterkonfiguraasje',
+	'abusefilter-log-search-user' => 'Meidogger:',
 	'abusefilter-log-search-submit' => 'Sykje',
 	'abusefilter-log-noactions' => 'gjin',
 	'abusefilter-list-edit' => 'Wizigje',
+	'abusefilter-history-user' => 'Meidogger',
 );
 
 /** Galician (Galego)
