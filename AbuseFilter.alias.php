@@ -36,6 +36,12 @@ $aliases['de'] = array(
 	'AbuseFilter' => array( 'Missbrauchfilter' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'AbuseLog' => array( 'Log penyalahgunaan' ),
+	'AbuseFilter' => array( 'Filter penyalahgunaan' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'AbuseLog' => array( 'Lëscht vum Mëssbrauch' ),
