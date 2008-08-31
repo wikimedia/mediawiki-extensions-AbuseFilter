@@ -90,7 +90,7 @@ class AbuseFilterHooks {
 	
 	public static function onAbortNewAccount( $user, &$message ) {
 		wfLoadExtensionMessages( 'AbuseFilter' );
-		if ($username == wfMsgForContent( 'abusefilter-blocker' )) {
+		if ($user->getName() == wfMsgForContent( 'abusefilter-blocker' )) {
 			$message = wfMsg( 'abusefilter-accountreserved' );
 			return false;
 		}
