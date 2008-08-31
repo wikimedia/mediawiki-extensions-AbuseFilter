@@ -263,7 +263,7 @@ class SpecialAbuseFilter extends SpecialPage {
 			return false;
 		}
 
-		if ($row->af_hidden && !$this->canEdit()) {
+		if (isset($row->af_hidden) && $row->af_hidden && !$this->canEdit()) {
 			return wfMsg( 'abusefilter-edit-denied' );
 		}
 		
@@ -458,7 +458,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		// Load the main row
 		$row = $dbr->selectRow( 'abuse_filter', '*', array( 'af_id' => $id ), __METHOD__ );
 		
-		if (!$row->af_id)
+		if (!isset($row) || !isset($row->af_id) || !$row->af_id)
 			return array( new stdClass,array() );
 		
 		// Load the actions
