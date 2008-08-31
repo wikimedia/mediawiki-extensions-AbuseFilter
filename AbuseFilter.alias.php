@@ -72,6 +72,12 @@ $aliases['no'] = array(
 	'AbuseFilter' => array( 'Misbruksfilter' ),
 );
 
+/** Romanian (Română) */
+$aliases['ro'] = array(
+	'AbuseLog' => array( 'Jurnal abuzuri' ),
+	'AbuseFilter' => array( 'Filtru abuzuri' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'AbuseLog' => array( 'Missbrukslogg' ),

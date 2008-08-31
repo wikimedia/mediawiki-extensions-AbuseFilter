@@ -543,7 +543,7 @@ $messages['arz'] = array(
 	'abusefilter-edit-action-throttle' => 'نفذ الأفعال بس لو اليوزر اتجاوز حد المعدل',
 	'abusefilter-edit-throttle-count' => 'عدد الأفعال المسموح بيها:',
 	'abusefilter-edit-throttle-period' => 'مدة من الزمن:',
-	'abusefilter-edit-throttle-seconds' => '$1 ثواني',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|ثانية|ثانية}}',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -1967,6 +1967,7 @@ $messages['km'] = array(
 	'abusefilter-edit-builder-group-misc' => 'ផ្សេងៗ',
 	'abusefilter-edit-builder-group-funcs' => 'អនុគមន៍',
 	'abusefilter-edit-builder-funcs-norm' => 'ធ្វើអោយទៅជាធម្មតា(norm)',
+	'abusefilter-edit-builder-group-vars' => 'អថេរ',
 	'abusefilter-edit-builder-vars-accountname' => 'ឈ្មោះគណនី(នៅលើការបង្កើតគណនី)',
 	'abusefilter-edit-builder-vars-action' => 'សកម្មភាព',
 	'abusefilter-edit-builder-vars-addedlines' => 'បន្ទាត់ត្រូវបានបន្ថែមទៅក្នុងកំនែប្រែ',
@@ -1974,6 +1975,8 @@ $messages['km'] = array(
 	'abusefilter-edit-builder-vars-oldsize' => 'ទំហំទំព័រចាស់',
 	'abusefilter-edit-builder-vars-removedlines' => 'បន្ទាត់ដែលត្រូវបានយកចេញក្នុងកំនែប្រែ',
 	'abusefilter-edit-builder-vars-summary' => 'កែប្រែសេចក្តីសង្ខេប/ហេតុផល',
+	'abusefilter-edit-builder-vars-article-id' => 'ID អត្ថបទ',
+	'abusefilter-edit-builder-vars-article-ns' => 'លំហឈ្មោះអត្ថបទ',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'ចំនងជើងអត្ថបទពេញ',
 	'abusefilter-edit-builder-vars-user-editcount' => 'កែប្រែចំនួនអ្នកប្រើប្រាស់',
 	'abusefilter-edit-builder-vars-user-age' => 'អាយុកាលគណនីអ្នកប្រើប្រាស់',
