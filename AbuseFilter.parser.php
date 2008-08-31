@@ -16,7 +16,7 @@ Types of token:
 * T_ID - identifier
 
 Levels of parsing:
-* Set (S) - ==, +=, etc.
+* Conditionls (IF) - if-then-else-end, cond ? a :b
 * BoolOps (BO) - &, |, ^
 * CompOps (CO) - ==, !=, ===, !==, >, <, >=, <=
 * SumRel (SR) - +, -
@@ -288,11 +288,12 @@ class AbuseFilterParser {
 	'count' => 'funcCount'
 	);
 	static $mOps = array(
-	'!', '*', '**', '/', '+', '-', '%', '&', '|', '^',
-	'<', '>', '>=', '<=', '==', '!=', '=',  '===', '!==',
+	'!', '*', '**', '/', '+', '-', '%', '&', '|', '^', '?',
+	'<', '>', '>=', '<=', '==', '!=', '=',  '===', '!==', ':',
 	);
 	static $mKeywords = array(
-	'in', 'like', 'true', 'false', 'null', 'contains', 'matches', 'rlike', 'regex'
+	'in', 'like', 'true', 'false', 'null', 'contains', 'matches',
+	'rlike', 'regex', 'if', 'then', 'else', 'end',
 	);
 	
 	static $parserCache = array();
@@ -377,9 +378,51 @@ class AbuseFilterParser {
 	
 	/** Handles "=" operator */
 	protected function doLevelSet( &$result ) {
-		$this->doLevelBoolOps( $result );
+		$this->doLevelConditions( $result );
 	}
-	
+
+	protected function doLevelConditions( &$result ) {
+		if( $this->mCur->type == AFPToken::TKeyword && $this->mCur->value == 'if' ) {
+			$this->move();
+			$this->doLevelBoolOps( $result );
+			if( !($this->mCur->type == AFPToken::TKeyword && $this->mCur->value == 'then') )
+				throw new AFPException( "Excepted \"then\" at char {$this->mCur->pos}" );
+			$this->move();
+			$r1 = new AFPData();
+			$r2 = new AFPData();
+			$this->doLevelConditions( $r1 );
+			if( !($this->mCur->type == AFPToken::TKeyword && $this->mCur->value == 'else') )
+				throw new AFPException( "Excepted \"else\" at char {$this->mCur->pos}" );
+			$this->move();
+			$this->doLevelConditions( $r2 );
+			if( $result->toBool() ) {
+				$result = $r1;
+			} else {
+				$result = $r2;
+			}
+			if( !($this->mCur->type == AFPToken::TKeyword && $this->mCur->value == 'end') )
+				throw new AFPException( "Excepted \"else\" at char {$this->mCur->pos}" );
+			$this->move();
+		} else {
+			$this->doLevelBoolOps( $result );
+			if( $this->mCur->type == AFPToken::TOp && $this->mCur->value == '?' ) {
+				$this->move();
+				$r1 = new AFPData();
+				$r2 = new AFPData();
+				$this->doLevelConditions( $r1 );
+				if( !($this->mCur->type == AFPToken::TOp && $this->mCur->value == ':') )
+					throw new AFPException( "Excepted \":\" at char {$this->mCur->pos}" );
+				$this->move();
+				$this->doLevelConditions( $r2 );
+				if( $result->toBool() ) {
+					$result = $r1;
+				} else {
+					$result = $r2;
+				}
+			}
+		}
+	}
+
 	protected function doLevelBoolOps( &$result ) {
 		$this->doLevelCompares( $result );
 		$ops = array( '&', '|', '^' );
@@ -395,42 +438,28 @@ class AbuseFilterParser {
 	}
 	
 	protected function doLevelCompares( &$result ) {
-		$this->doLevelMulRels( $result );
+		$this->doLevelSumRels( $result );
 		$ops = array( '==', '===', '!=', '!==', '<', '>', '<=', '>=', '=' );
 		while( $this->mCur->type == AFPToken::TOp && in_array( $this->mCur->value, $ops ) ) {
 			$op = $this->mCur->value;
 			$this->move();
 			$r2 = new AFPData();
-			$this->doLevelMulRels( $r2 );
+			$this->doLevelSumRels( $r2 );
 			wfProfileIn( __METHOD__ );
 			$result = AFPData::compareOp( $result, $r2, $op );
 			wfProfileOut( __METHOD__ );
 		}
 	}
 	
-	protected function doLevelMulRels( &$result ) {
-		$this->doLevelSumRels( $result );
-		wfProfileIn( __METHOD__ );
-		$ops = array( '*', '/', '%' );
-		while( $this->mCur->type == AFPToken::TOp && in_array( $this->mCur->value, $ops ) ) {
-			$op = $this->mCur->value;
-			$this->move();
-			$r2 = new AFPData();
-			$this->doLevelSumRels( $r2 );
-			$result = AFPData::mulRel( $result, $r2, $op );
-		}
-		wfProfileOut( __METHOD__ );
-	}
-	
 	protected function doLevelSumRels( &$result ) {
-		$this->doLevelPow( $result );
+		$this->doLevelMulRels( $result );
 		wfProfileIn( __METHOD__ );
 		$ops = array( '+', '-' );
 		while( $this->mCur->type == AFPToken::TOp && in_array( $this->mCur->value, $ops ) ) {
 			$op = $this->mCur->value;
 			$this->move();
 			$r2 = new AFPData();
-			$this->doLevelPow( $r2 );
+			$this->doLevelMulRels( $r2 );
 			if( $op == '+' )
 				$result = AFPData::sum( $result, $r2 );
 			if( $op == '-' )
@@ -438,7 +467,21 @@ class AbuseFilterParser {
 		}
 		wfProfileOut( __METHOD__ );
 	}
-	
+
+	protected function doLevelMulRels( &$result ) {
+		$this->doLevelPow( $result );
+		wfProfileIn( __METHOD__ );
+		$ops = array( '*', '/', '%' );
+		while( $this->mCur->type == AFPToken::TOp && in_array( $this->mCur->value, $ops ) ) {
+			$op = $this->mCur->value;
+			$this->move();
+			$r2 = new AFPData();
+			$this->doLevelPow( $r2 );
+			$result = AFPData::mulRel( $result, $r2, $op );
+		}
+		wfProfileOut( __METHOD__ );
+	}
+
 	protected function doLevelPow( &$result ) {
 		$this->doLevelBoolInvert( $result );
 		wfProfileIn( __METHOD__ );
@@ -697,7 +740,7 @@ class AbuseFilterParser {
 				$code = substr( $code, 1 );
 			}
 			
-			if ($base && $bases[$base] ) {
+			if ($base && isset($bases[$base]) ) {
 				$tok = substr( $tok, 0, -1 );
 				
 				$base = $bases[$base];

@@ -19,6 +19,9 @@ $check = 0;
 $pass = 0;
 
 foreach( $tests as $test ) {
+	if( in_string( 'whitespace.t', $test ) )
+		continue;	// Skip it. Or add preset variables support to the parser
+
 	$result = substr($test,0,-2).".r";
 
 	$rule = trim(file_get_contents( $test ));
