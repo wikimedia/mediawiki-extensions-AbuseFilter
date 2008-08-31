@@ -690,6 +690,8 @@ class AbuseFilterParser {
 			$tok .= $code[0];
 			$code = substr( $code, 1 );
 			
+			$base = '';
+			
 			while( strlen( $code ) != 0 && self::isDigitOrDot( $code[0] ) ) {
 				$tok .= $base = $code[0];
 				$code = substr( $code, 1 );
