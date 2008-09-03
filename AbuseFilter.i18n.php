@@ -1508,6 +1508,8 @@ Unha breve descrición da regra de abuso coa que a súa acción coincide é: $1'
 	'abusefilter-edit-builder-group-vars' => 'Variables',
 	'abusefilter-edit-builder-vars-action' => 'Acción',
 	'abusefilter-edit-builder-vars-summary' => 'Resumo da edición/motivo',
+	'abusefilter-edit-builder-vars-article-id' => 'ID do artigo',
+	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Título completo do artigo',
 	'abusefilter-history' => 'Historial do filtro "$1"',
 	'abusefilter-history-hidden' => 'agochado',
 	'abusefilter-history-enabled' => 'permitido',
@@ -1605,16 +1607,16 @@ $messages['hsb'] = array(
 	'abusefilter-edit-flags' => 'Chorhojčka:',
 	'abusefilter-edit-enabled' => 'Tutón filter zmóžnić',
 	'abusefilter-edit-hidden' => 'Podrobnosće před zjawnym wobhldanjom schować',
-	'abusefilter-edit-rules' => 'Sadźba prawidłow:',
+	'abusefilter-edit-rules' => 'Wuměnjenja:',
 	'abusefilter-edit-notes' => "Přispomnjenki:
 :''(priwatne)",
 	'abusefilter-edit-lastmod' => 'Filter posledni raz změnjeny:',
 	'abusefilter-edit-lastuser' => 'Posledni wužiwar, kotryž je tutón filter změnił:',
 	'abusefilter-edit-action-warn' => 'Tute akcije po warnowanje wužiwarjej zahibać',
-	'abusefilter-edit-action-disallow' => 'Akciju zakazać',
+	'abusefilter-edit-action-disallow' => 'Wujwedźenju dateje akcije přeu wužiwarja zadźěwać',
 	'abusefilter-edit-action-blockautopromote' => 'Wužiwarjej awtomatisce wobkrućeny status zebrać',
-	'abusefilter-edit-action-degroup' => 'Wužiwarja z priwilegowanych skupinow wotstronić',
-	'abusefilter-edit-action-block' => 'Wobdźěłanjam wužiwarja zadźěwać',
+	'abusefilter-edit-action-degroup' => 'Wužiwarja ze wšěch  priwilegowanych skupinow wotstronić',
+	'abusefilter-edit-action-block' => 'Wužiwarja a/abo IP-adresu přećiwo změnjenju blokować',
 	'abusefilter-edit-action-throttle' => 'Akcije jenož zahibać, jeli wužiwar prohowu hódnotu překročuje',
 	'abusefilter-edit-throttle-count' => 'Ličba dowolenych akcijow',
 	'abusefilter-edit-throttle-period' => 'Časowy interwal',
@@ -2198,6 +2200,24 @@ $messages['lb'] = array(
 	'abusefilter-history-backlist' => "Zréck op d'Lëscht vun de Filteren",
 );
 
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'abusefilter-log-search-user' => 'Usor:',
+	'abusefilter-log-search-title' => 'Titulo:',
+	'abusefilter-log-search-submit' => 'Xerca',
+	'abusefilter-edit-status-label' => 'Statistica',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|secondo|secondos}}',
+	'abusefilter-edit-history' => 'Istoria',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Soma (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Sutrae (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Multiplia (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'Divide (/)',
+	'abusefilter-edit-builder-group-funcs' => 'Funsiones',
+	'abusefilter-history-user' => 'Usor',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Tomasdd
  */
@@ -2244,6 +2264,39 @@ $messages['mt'] = array(
  */
 $messages['myv'] = array(
 	'abuselog' => 'Аволь истя тевс нолдамодо тешкстамот',
+	'abusefilter-log-search-user' => 'Теицясь:',
+	'abusefilter-log-search-title' => 'Коняксось:',
+	'abusefilter-log-search-submit' => 'Вешнэмс',
+	'abusefilter-list' => 'Весе сувтеметь',
+	'abusefilter-list-id' => 'Сувтемень ID',
+	'abusefilter-list-hitcount' => 'Зяроксть вастневи',
+	'abusefilter-list-edit' => 'Витнемензэ-петнемензэ',
+	'abusefilter-unhidden' => 'Весень туртов',
+	'abusefilter-list-new' => 'Од сувтеме',
+	'abusefilter-tools-subtitle' => 'Кедьйонкст',
+	'abusefilter-edit-new' => 'Од сувтеме',
+	'abusefilter-edit-save' => 'Ванстомс сувтеме',
+	'abusefilter-edit-flags' => 'Флагтнэ:',
+	'abusefilter-edit-enabled' => 'Тевс нолдавозо сувтемесь',
+	'abusefilter-edit-main' => 'Сувтемень параметратне',
+	'abusefilter-edit-history' => 'Путовксонзо-юронзо',
+	'abusefilter-edit-builder-group-op-arithmetic' => 'Арифметикань операторт',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Путомась (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Саемась (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Ламокстамось (*)',
+	'abusefilter-edit-builder-op-bool-not' => 'Аволь (!)',
+	'abusefilter-edit-builder-group-misc' => 'Минень-сюнонь',
+	'abusefilter-edit-builder-group-funcs' => 'Функцият',
+	'abusefilter-edit-builder-vars-newsize' => 'Лопанть од покшолмазо',
+	'abusefilter-edit-builder-vars-oldsize' => 'Лопанть икелень покшолмазо',
+	'abusefilter-edit-builder-vars-article-ns' => 'Сёрмадовксонь лем потмо',
+	'abusefilter-history' => '"$1" сувтементь путовксонзо-юронзо',
+	'abusefilter-history-hidden' => 'кекшезь',
+	'abusefilter-history-enabled' => 'тевс нолдавиця',
+	'abusefilter-history-timestamp' => 'Шказо',
+	'abusefilter-history-user' => 'Теиця',
+	'abusefilter-history-public' => 'Весень туртов сувтемеде ёвтамо-сёрмадовкс',
+	'abusefilter-history-flags' => 'Флагт',
 );
 
 /** Nahuatl (Nāhuatl)
@@ -2856,6 +2909,37 @@ $messages['ps'] = array(
 	'abusefilter-edit-flags' => 'بېرغونه:',
 	'abusefilter-edit-notes' => "يادونې:
 :''(شخصي)",
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'abusefilter-log-search-user' => 'Utilizador:',
+	'abusefilter-log-search-title' => 'Título:',
+	'abusefilter-log-details-var' => 'Variável',
+	'abusefilter-log-details-val' => 'Valor',
+	'abusefilter-list-visibility' => 'Visibilidade',
+	'abusefilter-list-new' => 'Novo filtro',
+	'abusefilter-tools-subtitle' => 'Ferramentas',
+	'abusefilter-edit-status-label' => 'Estatísticas',
+	'abusefilter-edit-new' => 'Novo filtro',
+	'abusefilter-edit-save' => 'Gravar filtro',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|segundo|segundos}}',
+	'abusefilter-edit-check' => 'Verificar sintaxe',
+	'abusefilter-edit-builder-group-op-arithmetic' => 'Operadores aritméticos',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adição (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Subtracção (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Multiplicação (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'Divisão (/)',
+	'abusefilter-edit-builder-op-arithmetic-modulo' => 'Módulo (%)',
+	'abusefilter-edit-builder-op-arithmetic-pow' => 'Potência (**)',
+	'abusefilter-edit-builder-group-op-comparison' => 'Operadores de comparação',
+	'abusefilter-edit-builder-op-comparison-equal' => 'Igual a (==)',
+	'abusefilter-edit-builder-op-comparison-notequal' => 'Diferente de (!=)',
+	'abusefilter-edit-builder-op-comparison-lt' => 'Menor que (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'Maior que (>)',
+	'abusefilter-edit-builder-op-comparison-lte' => 'Menor ou igual a (<=)',
 );
 
 /** Tarifit (Tarifit)
@@ -3760,6 +3844,13 @@ $messages['tg-cyrl'] = array(
 	'abusefilter-list-edit' => 'Вироиш',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'abusefilter-log-search-submit' => 'ค้นหา',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
@@ -3916,6 +4007,13 @@ $messages['vi'] = array(
 	'abusefilter-edit-builder-misc-like' => 'Trùng với biểu thức chính quy (like)',
 	'abusefilter-edit-builder-funcs-length' => 'Độ dài chuỗi (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Đổi thành chữ thường (lcase)',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'abusefilter-edit-status-label' => 'Statits',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
