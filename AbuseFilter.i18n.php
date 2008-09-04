@@ -1507,12 +1507,21 @@ Unha breve descrición da regra de abuso coa que a súa acción coincide é: $1'
 	'abusefilter-edit-builder-group-funcs' => 'Funcións',
 	'abusefilter-edit-builder-group-vars' => 'Variables',
 	'abusefilter-edit-builder-vars-action' => 'Acción',
+	'abusefilter-edit-builder-vars-addedlines' => 'Liñas engadidas na edición',
+	'abusefilter-edit-builder-vars-delta' => 'Cambio do tamaño na edición',
+	'abusefilter-edit-builder-vars-newsize' => 'Tamaño novo da páxina',
+	'abusefilter-edit-builder-vars-oldsize' => 'Tamaño vello da páxina',
+	'abusefilter-edit-builder-vars-removedlines' => 'Liñas eliminadas na edición',
 	'abusefilter-edit-builder-vars-summary' => 'Resumo da edición/motivo',
 	'abusefilter-edit-builder-vars-article-id' => 'ID do artigo',
+	'abusefilter-edit-builder-vars-article-ns' => 'Espazo de nomes do artigo',
+	'abusefilter-edit-builder-vars-article-text' => 'Título do artigo (sen o espazo de nomes)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Título completo do artigo',
+	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Hora á que o enderezo de correo electrónico foi confirmado',
 	'abusefilter-history' => 'Historial do filtro "$1"',
 	'abusefilter-history-hidden' => 'agochado',
 	'abusefilter-history-enabled' => 'permitido',
+	'abusefilter-history-timestamp' => 'Hora',
 	'abusefilter-history-user' => 'Usuario',
 	'abusefilter-history-public' => 'Descrición pública do filtro',
 	'abusefilter-history-filter' => 'Regra do filtro',
@@ -1857,8 +1866,39 @@ $messages['it'] = array(
 	'abusefilter-edit-rules' => 'Condizioni:',
 	'abusefilter-edit-notes' => "Note:
 :''(private)''",
+	'abusefilter-edit-throttle-period' => 'Periodo di tempo:',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|secondo|secondi}}',
+	'abusefilter-edit-history' => 'Cronologia',
+	'abusefilter-edit-builder-group-op-arithmetic' => 'Operatori aritmetici',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Addizione (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Sottrazione (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Moltiplicazione (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'Divisione (/)',
+	'abusefilter-edit-builder-op-arithmetic-pow' => 'Potenza (**)',
+	'abusefilter-edit-builder-group-op-comparison' => 'Operatori di confronto',
+	'abusefilter-edit-builder-op-comparison-equal' => 'Uguale a (==)',
+	'abusefilter-edit-builder-op-comparison-notequal' => 'Diverso da (!=)',
+	'abusefilter-edit-builder-op-comparison-lt' => 'Minore di (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'Maggiore di (>)',
+	'abusefilter-edit-builder-op-comparison-lte' => 'Minore di o uguale a (<=)',
+	'abusefilter-edit-builder-op-comparison-gte' => 'Maggiore di o uguale a (>=)',
+	'abusefilter-edit-builder-group-op-bool' => 'Operatori booleani',
+	'abusefilter-edit-builder-op-bool-not' => 'No (!)',
+	'abusefilter-edit-builder-op-bool-and' => 'E (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'O (|)',
+	'abusefilter-edit-builder-op-bool-xor' => 'O esclusivo (^)',
+	'abusefilter-edit-builder-group-misc' => 'Varie',
+	'abusefilter-edit-builder-misc-ternary' => 'Operatore ternario (1 ? 2 : 3)',
+	'abusefilter-edit-builder-misc-in' => 'contenuto nella stringa (in)',
+	'abusefilter-edit-builder-group-funcs' => 'Funzioni',
+	'abusefilter-edit-builder-funcs-length' => 'Lunghezza stringa (length)',
+	'abusefilter-edit-builder-group-vars' => 'Variabili',
+	'abusefilter-edit-builder-vars-accountname' => 'Nome account (on account creation)',
+	'abusefilter-edit-builder-vars-action' => 'Azione',
+	'abusefilter-history-hidden' => 'nascosto',
 	'abusefilter-history-user' => 'Utente',
 	'abusefilter-history-comments' => 'Commenti',
+	'abusefilter-history-actions' => 'Azioni',
 );
 
 /** Japanese (日本語)
@@ -1879,6 +1919,16 @@ $messages['ja'] = array(
 	'abusefilter-list-details' => '詳細',
 	'abusefilter-hidden' => '非公開',
 	'abusefilter-unhidden' => '公開',
+);
+
+/** Georgian (ქართული)
+ * @author Malafaya
+ */
+$messages['ka'] = array(
+	'abusefilter-log-search-user' => 'მომხმარებელი:',
+	'abusefilter-edit-throttle-seconds' => '$1 სეკუნდი',
+	'abusefilter-edit-history' => 'ისტორია',
+	'abusefilter-history-user' => 'მომხმარებელი',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -2915,10 +2965,16 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'abuselog' => 'Registo de abusos',
+	'abusefilter-blocker' => 'Filtro de abusos',
 	'abusefilter-log-search-user' => 'Utilizador:',
 	'abusefilter-log-search-title' => 'Título:',
+	'abusefilter-log-detailslink' => 'detalhes',
 	'abusefilter-log-details-var' => 'Variável',
 	'abusefilter-log-details-val' => 'Valor',
+	'abusefilter-log-details-ip' => 'Endereço IP origem',
+	'abusefilter-management' => 'Gestão do filtro de abusos',
+	'abusefilter-list' => 'Todos os filtros',
 	'abusefilter-list-visibility' => 'Visibilidade',
 	'abusefilter-list-new' => 'Novo filtro',
 	'abusefilter-tools-subtitle' => 'Ferramentas',
@@ -3055,7 +3111,7 @@ O descriere sumară a regulii abuzului care se potriveşte cu acţiunea ta este:
 	'abusefilter-edit-action-throttle' => 'Declanşează acţiunile doar dacă utilizatorul a depăşit limita impusă',
 	'abusefilter-edit-throttle-count' => 'Număr de acţiuni permise:',
 	'abusefilter-edit-throttle-period' => 'Perioadă de timp:',
-	'abusefilter-edit-throttle-seconds' => '$1 secunde',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|secundă|secunde}}',
 	'abusefilter-edit-throttle-groups' => "Grupează ?throttle? după:
 :''(una pe linie, despărţite prin virgule)''",
 	'abusefilter-edit-denied' => 'S-ar putea să nu vezi detaliile acestui filtru, deoarece a fost ascuns publicului',
@@ -3093,6 +3149,7 @@ O descriere sumară a regulii abuzului care se potriveşte cu acţiunea ta este:
 	'abusefilter-edit-builder-group-funcs' => 'Funcţii',
 	'abusefilter-edit-builder-funcs-length' => 'Lungimea şirului (lungime)',
 	'abusefilter-edit-builder-funcs-lcase' => 'În majuscule (lcase)',
+	'abusefilter-edit-builder-group-vars' => 'Variabile',
 	'abusefilter-edit-builder-vars-accountname' => 'Numele contului (la crearea contului)',
 	'abusefilter-edit-builder-vars-action' => 'Acţiune',
 	'abusefilter-edit-builder-vars-addedlines' => 'Linii adăugate în urma modificării',
