@@ -105,4 +105,19 @@ class AbuseFilterHooks {
 		
 		return $filter_result == '' || $filter_result === true;
 	}
+	
+	public static function onSchemaUpdate() {
+		global $wgDatabase;
+		
+		if ( !$wgDatabase->tableExists( 'abuse_filter' ) ) {
+			// Full tables
+			dbsource( dirname(__FILE__).'/abusefilter.tables.sql', $wgDatabase );
+		}
+		
+		if ( ! $wgDatabase->fieldExists( 'abuse_filter', 'af_deleted' ) ) {
+			dbsource( dirname( __FILE__ ) . '/db_patches/patch-af_deleted.sql' );
+		}
+		
+		return true;
+	}
 }

@@ -752,7 +752,8 @@ class AbuseFilterParser {
 			
 			$float = in_string( '.', $tok );
 			
-			return array( $float ? doubleval( $tok ) : intval( $tok ), $float ? AFPToken::TFloat : AFPToken::TInt, $code, $pos );
+			if (strlen($tok))
+				return array( $float ? doubleval( $tok ) : intval( $tok ), $float ? AFPToken::TFloat : AFPToken::TInt, $code, $pos );
 		}
 		
 		if( ctype_punct( $code[0] ) ) {

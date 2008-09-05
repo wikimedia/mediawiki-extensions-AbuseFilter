@@ -23,9 +23,9 @@ class SpecialAbuseFilter extends SpecialPage {
 		$wgOut->enableClientCache( false );
 		
 		// Are we allowed?
-		if ( count( $errors = $this->getTitle()->getUserPermissionsErrors( 'abusefilter-view', $wgUser, true, array( 'ns-specialprotected' ) ) ) ) {
+		if ( !$wgUser->isAllowed( 'abusefilter-view' ) ) {
 			// Go away.
-			$wgOut->showPermissionsErrorPage( $errors, 'abusefilter-view' );
+			$this->displayRestrictionError();
 			return;
 		}
 		
@@ -46,12 +46,43 @@ class SpecialAbuseFilter extends SpecialPage {
 			return;
 		}
 		
-		
-		$wgOut->addWikiMsg( 'abusefilter-tools' );
 		// Show list of filters.
 		$this->showStatus();
 		
+		// Quick links
+		$wgOut->addWikiMsg( 'abusefilter-links' );
+		$lists = array( 'active', 'deleted', 'all', 'tools' );
+		$links = '';
+		$sk = $wgUser->getSkin();
+		foreach( $lists as $list ) {
+			$title = $this->getTitle( $list );
+			
+			$link = $sk->link( $title, wfMsg( "abusefilter-show-$list" ) );
+			$links .= Xml::tags( 'li', null, $link ) . "\n";
+		}
+		$links .= Xml::tags( 'li', null, $sk->link( SpecialPage::getTitleFor( 'AbuseLog' ), wfMsg( 'abusefilter-loglink' ) ) );
+		$links = Xml::tags( 'ul', null, $links );
+		$wgOut->addHTML( $links );
+		
+		if ($subpage == 'deleted') {
+			$this->showDeleted();
+			return;
+		}
+		
+		if ($subpage == 'active') {
+			$this->showActive();
+			return;
+		}
+		
 		$this->showList();
+	}
+	
+	function showDeleted() {
+		$this->showList( array( 'af_deleted' => 1 ) );
+	}
+	
+	function showActive() {
+		$this->showList( array( 'af_deleted' => 0, 'af_enabled' => 1 ) );
 	}
 	
 	function showHistory() {
@@ -192,7 +223,7 @@ class SpecialAbuseFilter extends SpecialPage {
 			$actionsRows = array();
 			foreach( $wgAbuseFilterAvailableActions as $action ) {
 				// Check if it's set
-				$enabled = (bool)$actions[$action];
+				$enabled = isset($actions[$action]) && (bool)$actions[$action];
 				
 				if ($enabled) {
 					$parameters = $actions[$action]['parameters'];
@@ -205,7 +236,7 @@ class SpecialAbuseFilter extends SpecialPage {
 			}
 			
 			// Create a history row
-			$history_mappings = array( 'af_pattern' => 'afh_pattern', 'af_user' => 'afh_user', 'af_user_text' => 'afh_user_text', 'af_timestamp' => 'afh_timestamp', 'af_comments' => 'afh_comments', 'af_public_comments' => 'afh_public_comments' );
+			$history_mappings = array( 'af_pattern' => 'afh_pattern', 'af_user' => 'afh_user', 'af_user_text' => 'afh_user_text', 'af_timestamp' => 'afh_timestamp', 'af_comments' => 'afh_comments', 'af_public_comments' => 'afh_public_comments', 'af_deleted' => 'afh_deleted' );
 			
 			$afh_row = array();
 			
@@ -226,6 +257,8 @@ class SpecialAbuseFilter extends SpecialPage {
 				$flags[] = wfMsgForContent( 'abusefilter-history-hidden' );
 			if ($newRow['af_enabled'])
 				$flags[] = wfMsgForContent( 'abusefilter-history-enabled' );
+			if ($newRow['af_deleted'])
+				$flags[] = wfMsgForContent( 'abusefilter-history-deleted' );
 				
 			$afh_row['afh_flags'] = implode( ",", $flags );
 				
@@ -311,7 +344,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		$fields['abusefilter-edit-notes'] = Xml::textarea( 'wpFilterNotes', ( isset( $row->af_comments ) ? $row->af_comments."\n" : "\n" ) );
 		
 		// Build checkboxen
-		$checkboxes = array( 'hidden', 'enabled' );
+		$checkboxes = array( 'hidden', 'enabled', 'deleted' );
 		$flags = '';
 		
 		if (isset($row->af_throttled) && $row->af_throttled) {
@@ -506,7 +539,8 @@ class SpecialAbuseFilter extends SpecialPage {
 			$row->$col = $wgRequest->getVal( $field );
 		}
 		
-		$row->af_enabled = $wgRequest->getBool( 'wpFilterEnabled' );
+		$row->af_deleted = $wgRequest->getBool( 'wpFilterDeleted' );
+		$row->af_enabled = $wgRequest->getBool( 'wpFilterEnabled' ) && !$row->af_deleted;
 		$row->af_hidden = $wgRequest->getBool( 'wpFilterHidden' );
 		
 		// Actions
@@ -550,7 +584,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		return $canEdit;
 	}
 	
-	function showList() {
+	function showList( $conds = array( 'af_deleted' => 0 )) {
 		global $wgOut,$wgUser;
 		
 		$sk = $this->mSkin = $wgUser->getSkin();
@@ -562,7 +596,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		// We shouldn't have more than 100 filters, so don't bother paging.
 		$dbr = wfGetDB( DB_SLAVE );
 		$abuse_filter = $dbr->tableName( 'abuse_filter' );
-		$res = $dbr->select( array('abuse_filter', 'abuse_filter_action'), $abuse_filter.'.*,group_concat(afa_consequence) AS consequences', array(  ), __METHOD__, array( 'LIMIT' => 100, 'GROUP BY' => 'af_id' ),
+		$res = $dbr->select( array('abuse_filter', 'abuse_filter_action'), $abuse_filter.'.*,group_concat(afa_consequence) AS consequences', $conds, __METHOD__, array( 'LIMIT' => 100, 'GROUP BY' => 'af_id' ),
 			array( 'abuse_filter_action' => array('LEFT OUTER JOIN', 'afa_filter=af_id' ) ) );
 		$list = '';
 		$editLabel = $this->canEdit() ? 'abusefilter-list-edit' : 'abusefilter-list-details';
@@ -599,8 +633,12 @@ class SpecialAbuseFilter extends SpecialPage {
 		// Build a table row
 		$trow = '';
 		
-		$status = $row->af_enabled ? 'abusefilter-enabled' : 'abusefilter-disabled';
-		$status = wfMsgExt( $status, array( 'parseinline' ) );
+		if ($row->af_deleted) {
+			$status = wfMsgExt( 'abusefilter-deleted', array( 'parseinline' ) );
+		} else {
+			$status = $row->af_enabled ? 'abusefilter-enabled' : 'abusefilter-disabled';
+			$status = wfMsgExt( $status, array( 'parseinline' ) );
+		}
 		
 		$visibility = $row->af_hidden ? 'abusefilter-hidden' : 'abusefilter-unhidden';
 		$visibility = wfMsgExt( $visibility, array( 'parseinline' ) );

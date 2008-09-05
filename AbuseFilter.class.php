@@ -119,7 +119,7 @@ class AbuseFilter {
 		
 		// Fetch from the database.
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'abuse_filter', '*', array( 'af_enabled' => 1 ) );
+		$res = $dbr->select( 'abuse_filter', '*', array( 'af_enabled' => 1, 'af_deleted' => 0 ) );
 		
 		$blocking_filters = array();
 		$log_entries = array();
