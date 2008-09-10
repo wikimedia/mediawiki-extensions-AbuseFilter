@@ -1678,6 +1678,7 @@ Unha breve descrición da regra de abuso coa que a súa acción coincide é: $1'
 	'abusefilter-edit-done' => 'Gardou con éxito os seus cambios no filtro.
 
 [[Special:AbuseFilter|Voltar]]',
+	'abusefilter-edit-badsyntax' => 'Hai un erro de sintaxe no filtro que especificou. A función analítica de saída foi: <pre>$1</pre>',
 	'abusefilter-edit-viewhistory' => 'Ver o historial deste filtro',
 	'abusefilter-edit-history' => 'Historial',
 	'abusefilter-edit-check' => 'Comprobar a sintaxe',
@@ -1701,11 +1702,23 @@ Unha breve descrición da regra de abuso coa que a súa acción coincide é: $1'
 	'abusefilter-edit-builder-op-bool-and' => 'E (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Ou (|)',
 	'abusefilter-edit-builder-group-misc' => 'Varios',
+	'abusefilter-edit-builder-misc-ternary' => 'Operador ternario (1 ? 2 : 3)',
+	'abusefilter-edit-builder-misc-in' => 'contido na corda (in)',
+	'abusefilter-edit-builder-misc-like' => 'Coincidencias regex (like)',
 	'abusefilter-edit-builder-group-funcs' => 'Funcións',
+	'abusefilter-edit-builder-funcs-length' => 'Lonxitude da corda (length)',
+	'abusefilter-edit-builder-funcs-lcase' => 'Caracteres máis pequenos (lcase)',
+	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalizar os caracteres confusos (ccnorm)',
+	'abusefilter-edit-builder-funcs-rmdoubles' => 'Eliminar os caracteres dobres (rmdoubles)',
+	'abusefilter-edit-builder-funcs-specialratio' => 'Caracteres especiais / caracteres totais (specialratio)',
+	'abusefilter-edit-builder-funcs-norm' => 'Normalizar (norm)',
+	'abusefilter-edit-builder-funcs-count' => 'Número de veces que a corda X aparece na Y (count)',
 	'abusefilter-edit-builder-group-vars' => 'Variables',
+	'abusefilter-edit-builder-vars-accountname' => 'Nome da conta (on account creation)',
 	'abusefilter-edit-builder-vars-action' => 'Acción',
 	'abusefilter-edit-builder-vars-addedlines' => 'Liñas engadidas na edición',
 	'abusefilter-edit-builder-vars-delta' => 'Cambio do tamaño na edición',
+	'abusefilter-edit-builder-vars-diff' => 'Diferenzas unificadas dos cambios feitos por edición',
 	'abusefilter-edit-builder-vars-newsize' => 'Tamaño novo da páxina',
 	'abusefilter-edit-builder-vars-oldsize' => 'Tamaño vello da páxina',
 	'abusefilter-edit-builder-vars-removedlines' => 'Liñas eliminadas na edición',
@@ -1714,6 +1727,18 @@ Unha breve descrición da regra de abuso coa que a súa acción coincide é: $1'
 	'abusefilter-edit-builder-vars-article-ns' => 'Espazo de nomes do artigo',
 	'abusefilter-edit-builder-vars-article-text' => 'Título do artigo (sen o espazo de nomes)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Título completo do artigo',
+	'abusefilter-edit-builder-vars-movedfrom-id' => 'O ID do artigo da páxina que vai ser movida',
+	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Espazo de nomes da páxina que non vai ser movida',
+	'abusefilter-edit-builder-vars-movedfrom-text' => 'Título da páxina que vai ser movida',
+	'abusefilter-edit-builder-vars-movedfrom-prefixedtext' => 'Nome completo da páxina que vai ser movida',
+	'abusefilter-edit-builder-vars-movedto-id' => 'ID da páxina do destino da páxina que vai ser movida',
+	'abusefilter-edit-builder-vars-movedto-ns' => 'Espazo de nomes do destino da páxina que vai ser movida',
+	'abusefilter-edit-builder-vars-movedto-text' => 'Nome do destino da páxina que vai ser movida',
+	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Nome completo do destino da páxina que vai ser movida',
+	'abusefilter-edit-builder-vars-user-editcount' => 'Contador de edicións do usuario',
+	'abusefilter-edit-builder-vars-user-age' => 'Idade da conta de usuario',
+	'abusefilter-edit-builder-vars-user-name' => 'Nome da conta de usuario',
+	'abusefilter-edit-builder-vars-user-groups' => 'Grupos (incluíndo os implícitos) nos que o usuario está',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Hora á que o enderezo de correo electrónico foi confirmado',
 	'abusefilter-history' => 'Historial do filtro "$1"',
 	'abusefilter-history-hidden' => 'agochado',
@@ -1721,11 +1746,13 @@ Unha breve descrición da regra de abuso coa que a súa acción coincide é: $1'
 	'abusefilter-history-timestamp' => 'Hora',
 	'abusefilter-history-user' => 'Usuario',
 	'abusefilter-history-public' => 'Descrición pública do filtro',
+	'abusefilter-history-flags' => 'Marcas',
 	'abusefilter-history-filter' => 'Regra do filtro',
 	'abusefilter-history-comments' => 'Comentarios',
 	'abusefilter-history-actions' => 'Accións',
 	'abusefilter-history-backedit' => 'Voltar ao editor do filtro',
 	'abusefilter-history-backlist' => 'Voltar á lista de filtros',
+	'abusefilter-history-deleted' => 'Borrado',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1735,6 +1762,13 @@ $messages['grc'] = array(
 	'abuselog' => 'Κατάλογος ὕβρεων',
 	'abusefilter-log-noactions' => 'οὐδέν',
 	'abusefilter-list-edit' => 'Μεταγράφειν',
+);
+
+/** Swiss German (Alemannisch)
+ * @author J. 'mach' wust
+ */
+$messages['gsw'] = array(
+	'abusefilter-log-search-title' => 'Titel:',
 );
 
 /** Hebrew (עברית)
@@ -2357,6 +2391,7 @@ $messages['lb'] = array(
 	'right-abusefilter-modify' => "D'filtere vum Mëssbrauch änneren",
 	'right-abusefilter-view' => 'Mëssbrauchs-Filtere weisen',
 	'right-abusefilter-log' => 'Lëscht vum Mëssbrauch weisen',
+	'right-abusefilter-log-detail' => 'Detailléiert Versioun vum Mëssbrauchslog weisen',
 	'abusefilter-log' => 'Lëscht vun de Mëssbrauchs-Filteren',
 	'abusefilter-log-search' => 'D?Lëscht vum Mëssbrauch duerchsichen',
 	'abusefilter-log-search-user' => 'Benotzer:',
@@ -2388,6 +2423,7 @@ $messages['lb'] = array(
 	'abusefilter-links' => 'Nëtzlech Linken:',
 	'abusefilter-tools-modifiertest-submit' => 'Test',
 	'abusefilter-show-deleted' => 'Geläschte Filtere weisen',
+	'abusefilter-show-all' => 'Weis all restauréiert Filteren',
 	'abusefilter-show-active' => 'Geläschte Filtere verstoppen',
 	'abusefilter-tools-subtitle' => 'Geschir (Tools)',
 	'abusefilter-tools-submitexpr' => 'Bewerten',
@@ -2422,6 +2458,7 @@ $messages['lb'] = array(
 	'abusefilter-edit-viewhistory' => "D'Versioune vun dësem Filter gesinn",
 	'abusefilter-edit-history' => 'Versiounen',
 	'abusefilter-edit-check' => 'Syntax iwwerpréifen',
+	'abusefilter-edit-builder-group-op-arithmetic' => 'Arithmetesch Operateuren',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Additioun (+)',
 	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Multiplikatioun (*)',
 	'abusefilter-edit-builder-op-arithmetic-divide' => 'Divisioun (/)',
@@ -2452,6 +2489,8 @@ $messages['lb'] = array(
 	'abusefilter-edit-builder-vars-article-text' => 'Titel vum Artikel (ouni Nummraum)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Ganzen Titel vum Artikel',
 	'abusefilter-edit-builder-vars-movedto-ns' => 'Nummraum vun der Säit op déi eng Säit geréckelt gëtt',
+	'abusefilter-edit-builder-vars-movedto-text' => "Titel vun der Säit op déi d'Säit geréckelt gëtt",
+	'abusefilter-edit-builder-vars-movedto-prefixedtext' => "Ganzen Titel vun der Säit op déi d'Säit geréckelt gëtt",
 	'abusefilter-edit-builder-vars-user-editcount' => 'Compteur vun den Ännerunge vum Benotzer',
 	'abusefilter-edit-builder-vars-user-age' => 'Alter vum Benotzerkont',
 	'abusefilter-edit-builder-vars-user-name' => 'Numm vum Benotzerkont',
@@ -2487,6 +2526,17 @@ $messages['lfn'] = array(
 	'abusefilter-edit-builder-op-arithmetic-divide' => 'Divide (/)',
 	'abusefilter-edit-builder-group-funcs' => 'Funsiones',
 	'abusefilter-history-user' => 'Usor',
+);
+
+/** Lumbaart (Lumbaart)
+ * @author Sprüngli
+ */
+$messages['lmo'] = array(
+	'abusefilter-desc' => "L'aplica de l'heuristega automatega a li edizion",
+	'abusefilter' => "Configuration del filter d'abus",
+	'abuselog' => "Diari d'abus",
+	'abusefilter-warning' => "Chetsa azion a l'è staida automatigament identifiada en tant che dagnousa.
+Li edizion miga construtivi i sarà revertid à bott, e grand o repetud edizion mia constructivi i resultarà end al cost cunt o ordenadour blocad. Se cas che creghée che chesta edizion la sighi construtiva, a podée clicar Sotmet de nœuv per confirmar-la. Una curta descripzion de la regula d'abus che la vosta edizion l'ha rencontrad a l'è: $1",
 );
 
 /** Lithuanian (Lietuvių)
