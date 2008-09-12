@@ -36,6 +36,12 @@ $aliases['de'] = array(
 	'AbuseFilter' => array( 'Missbrauchfilter' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'AbuseLog' => array( 'Journal des abus', 'JournalDesAbus' ),
+	'AbuseFilter' => array( "Filtre d'abus", 'FiltredAbus', 'FilterAbus' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'AbuseLog' => array( 'Log penyalahgunaan' ),

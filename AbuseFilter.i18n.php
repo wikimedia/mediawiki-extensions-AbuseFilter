@@ -288,6 +288,13 @@ $messages['rtm'] = array(
 	'abusefilter-list-edit' => "A'tū'ạki",
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'abusefilter-edit-history' => 'Историй',
+);
+
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
@@ -987,11 +994,12 @@ Kurzbeschreibung der verletzten Regel: $1',
 	'abusefilter-hidden' => 'Privat',
 	'abusefilter-unhidden' => 'Öffentlich',
 	'abusefilter-enabled' => 'Aktiviert',
+	'abusefilter-deleted' => 'Gelöscht',
 	'abusefilter-disabled' => 'Deaktiviert',
 	'abusefilter-hitcount' => '{{PLURAL:$1|1 Treffer|$1 Treffer}}',
 	'abusefilter-list-new' => 'Neuer Filter',
 	'abusefilter-tools-modifiertest-submit' => 'Test',
-	'abusefilter-tools' => 'Es existieren [[Special:AbuseFilter/tools|Werkzeuge]], die dich beim Erstellen und Debuggen von Filtern unterstützen.',
+	'abusefilter-show-deleted' => 'Gelöschte Filter ansehen',
 	'abusefilter-tools-subtitle' => 'Werkzeuge',
 	'abusefilter-tools-text' => 'Hier sind einige Werkzeuge, die hilfreich sein können beim Formulieren und bei der Fehlersuche von Missbrauchsfiltern. [[Special:AbuseFilter|Zurück zum Missbrauchsfilter-Hauptmenü.]]',
 	'abusefilter-tools-expr' => 'Expression-Tester',
@@ -1007,6 +1015,7 @@ Kurzbeschreibung der verletzten Regel: $1',
 	'abusefilter-edit-description' => "Beschreibung:
 :''(öffentlich sichtbar)''",
 	'abusefilter-edit-enabled' => 'Diesen Filter aktivieren',
+	'abusefilter-edit-deleted' => 'Als gelöscht markieren',
 	'abusefilter-edit-hidden' => 'Details dieses Filters nicht öffentlich anzeigen',
 	'abusefilter-edit-rules' => 'Konditionen:',
 	'abusefilter-edit-notes' => "Notizen:
@@ -1096,6 +1105,7 @@ Kurzbeschreibung der verletzten Regel: $1',
 	'abusefilter-history-actions' => 'Aktionen',
 	'abusefilter-history-backedit' => 'Zurück zur Filtereditor',
 	'abusefilter-history-backlist' => 'Zurück zur Filterliste',
+	'abusefilter-history-deleted' => 'Gelöscht',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -2097,6 +2107,7 @@ $messages['it'] = array(
 	'abusefilter-log-noactions' => 'nessuna',
 	'abusefilter-list-status' => 'Stato',
 	'abusefilter-list-public' => 'Descrizione pubblica',
+	'abusefilter-list-visibility' => 'Visibilità',
 	'abusefilter-list-edit' => 'Modifica',
 	'abusefilter-list-details' => 'Dettagli',
 	'abusefilter-enabled' => 'Attivato',
@@ -2888,11 +2899,17 @@ En kort beskrivelse av misbruksregelen handlingen din brøt er: $1',
 	'abusefilter-hidden' => 'Privat',
 	'abusefilter-unhidden' => 'Offentlig',
 	'abusefilter-enabled' => 'Slått på',
+	'abusefilter-deleted' => 'Slettet',
 	'abusefilter-disabled' => 'Slått av',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|treff|treff}}',
 	'abusefilter-list-new' => 'Nytt filter',
+	'abusefilter-links' => 'Nyttige lenker:',
 	'abusefilter-tools-modifiertest-submit' => 'Test',
-	'abusefilter-tools' => 'Noen [[Special:AbuseFilter/tools|verktøy]] er tilgjengelig til hjelp med formulering og feilsøking i forbindelse med misbruksfiltere.',
+	'abusefilter-show-deleted' => 'Vis slettede filtere',
+	'abusefilter-show-all' => 'Vis alle gjenopprettede filtere',
+	'abusefilter-show-active' => 'Skjul inaktive filtere',
+	'abusefilter-show-tools' => 'Misbruksfilterverktøy',
+	'abusefilter-loglink' => 'Vis misbruksloggen',
 	'abusefilter-tools-subtitle' => 'Verktøy',
 	'abusefilter-tools-text' => 'Her er noen verktøy som kan være nyttige for å formulere og feilsøking i misbruksfiltere. [[Special:AbuseFilter|Tilbake til hovedmeny]]',
 	'abusefilter-tools-expr' => 'Uttrykkstester',
@@ -2908,6 +2925,7 @@ En kort beskrivelse av misbruksregelen handlingen din brøt er: $1',
 	'abusefilter-edit-description' => ":''(vises offentlig)''",
 	'abusefilter-edit-flags' => 'Flagg:',
 	'abusefilter-edit-enabled' => 'Slå på dette filteret',
+	'abusefilter-edit-deleted' => 'Merk som slettet',
 	'abusefilter-edit-hidden' => 'Skjul detaljer om dette filteret',
 	'abusefilter-edit-rules' => 'Regelverk:',
 	'abusefilter-edit-notes' => ":''(privat)''",
@@ -3007,6 +3025,7 @@ En kort beskrivelse av misbruksregelen handlingen din brøt er: $1',
 	'abusefilter-history-actions' => 'Handlinger',
 	'abusefilter-history-backedit' => 'Tilbake til filterredigering',
 	'abusefilter-history-backlist' => 'Tilbake til filterliste',
+	'abusefilter-history-deleted' => 'Slettet',
 );
 
 /** Occitan (Occitan)
@@ -3214,6 +3233,7 @@ $messages['pdt'] = array(
 
 /** Polish (Polski)
  * @author Airwolf
+ * @author Derbeth
  * @author Maikking
  * @author Sp5uhe
  */
@@ -3228,7 +3248,7 @@ $messages['pl'] = array(
 	'abusefilter-edit-status-label' => 'Statystyki',
 	'abusefilter-edit-flags' => 'Flagi:',
 	'abusefilter-edit-action-block' => 'Zablokuj użytkownikowi możliwość edycji',
-	'abusefilter-edit-throttle-seconds' => '$1 sekund',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|sekunda|sekundy|sekund}}',
 );
 
 /** Pashto (پښتو)
@@ -3461,6 +3481,14 @@ O descriere sumară a regulii abuzului care se potriveşte cu acţiunea ta este:
 	'abusefilter-history-actions' => 'Acţiuni',
 	'abusefilter-history-backedit' => 'Înapoi la modificarea filtrului',
 	'abusefilter-history-backlist' => 'Înapoi la lista filtrelor',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'abusefilter-log-search-user' => 'Utende:',
+	'abusefilter-log-search-submit' => 'Cirche',
 );
 
 /** Russian (Русский)
