@@ -822,6 +822,7 @@ $messages['bg'] = array(
 	'abusefilter-list-new' => 'Нов филтър',
 	'abusefilter-links' => 'Полезни препратки:',
 	'abusefilter-tools-modifiertest-submit' => 'тест',
+	'abusefilter-show-deleted' => 'Преглеждане на изтритите филтри',
 	'abusefilter-show-active' => 'Скриване на изключените филтри',
 	'abusefilter-tools-subtitle' => 'Инструменти',
 	'abusefilter-tools-text' => 'Тук има някои инструменти, които може да са полезни за създаване или поправяне на защитни филтри.  [[Special:AbuseFilter|Назад към главното меню]]',
@@ -1278,6 +1279,7 @@ Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1',
 	'abusefilter-edit-description' => "Priskribo:
 :''(publike videbla)''",
 	'abusefilter-edit-enabled' => 'Ebligi ĉi tiun filtrilon',
+	'abusefilter-edit-deleted' => 'Marki kiel forigitan',
 	'abusefilter-edit-hidden' => 'Kaŝi detalojn pri ĉi tiu filtrilo de publika vido',
 	'abusefilter-edit-rules' => 'Kondiĉoj:',
 	'abusefilter-edit-notes' => "Notoj:
@@ -3234,6 +3236,7 @@ $messages['pdt'] = array(
 /** Polish (Polski)
  * @author Airwolf
  * @author Derbeth
+ * @author Jwitos
  * @author Maikking
  * @author Sp5uhe
  */
@@ -3245,10 +3248,21 @@ $messages['pl'] = array(
 	'abusefilter-log-details-legend' => 'Szczegóły: $1',
 	'abusefilter-list-edit' => 'Edytuj',
 	'abusefilter-list-details' => 'Szczegóły',
+	'abusefilter-list-new' => 'Nowy filtr',
+	'abusefilter-links' => 'Przydatne linki:',
 	'abusefilter-edit-status-label' => 'Statystyki',
+	'abusefilter-edit-new' => 'Nowy filtr',
+	'abusefilter-edit-save' => 'Zapisz filtr',
 	'abusefilter-edit-flags' => 'Flagi:',
 	'abusefilter-edit-action-block' => 'Zablokuj użytkownikowi możliwość edycji',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|sekunda|sekundy|sekund}}',
+	'abusefilter-edit-history' => 'Historia',
+	'abusefilter-edit-builder-op-comparison-lt' => 'Mniej niż (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'Więcej niż (>)',
+	'abusefilter-edit-builder-op-bool-and' => 'Oraz (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'Lub (|)',
+	'abusefilter-edit-builder-vars-newsize' => 'Nowy rozmiar strony',
+	'abusefilter-edit-builder-vars-oldsize' => 'Stary rozmiar strony',
 );
 
 /** Pashto (پښتو)
