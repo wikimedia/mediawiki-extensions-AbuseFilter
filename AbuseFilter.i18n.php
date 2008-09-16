@@ -1768,12 +1768,14 @@ Unha breve descrición da regra de abuso coa que a súa acción coincide é: $1'
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author LeighvsOptimvsMaximvs
  */
 $messages['grc'] = array(
 	'abuselog' => 'Κατάλογος ὕβρεων',
 	'abusefilter-log-noactions' => 'οὐδέν',
 	'abusefilter-list-edit' => 'Μεταγράφειν',
+	'abusefilter-history-user' => 'χρήστης',
 );
 
 /** Swiss German (Alemannisch)
@@ -2577,6 +2579,25 @@ Sebuah penerangan ringkas tentang penyalahgunaan peraturan yang berkaitan tindak
 dan dengan itu tidak dibenarkan.
 Jika anda percaya suntingan ini berkonstruk, sila hubungi penyelia, dan beritahu mereka mengenai perkara yang anda cuba lakukan.
 Sebuah penerangan ringkas tentang penyalahgunaan peraturan yang berkaitan tindakan anda ialah: $1',
+	'abusefilter-blocked-display' => 'Tindakan ini secara automatik telah dikenalpasti sebagai berbahaya,
+dan anda telah dilarang dari meneruskannya.
+Sebagai tambahan, untuk melindungi {{SITENAME}}, akaun pengguna anda, dan semua alamat IP berkaitan telah disekat daripada menyunting.
+Jika terdapat kesalahan, sila hubungi penyelia.
+Penerangan ringkas mengenai penyalahan peraturan yang anda lakukan ialah: $1',
+	'abusefilter-degrouped' => 'Tindakan ini secara automatik telah dikenalpasti sebagai berbahaya.
+Akibatnya, ia telah dilarang, dan, memandangkan akaun anda disyaki sebagai berkompromi, segala hak anda dimansuhkan.
+Jika terdapat apa-apa kesilapan, sila hubungi para birokrat bersama penerangan berkenaan tindakan ini, dan hak anda akan dipulihkan.
+Penerangan ringkas mengenai penyalahan peraturan yang anda lakukan ialah: $1',
+	'abusefilter-autopromote-blocked' => 'Tindakan ini secara automatik telah dikenalpasti sebagai berbahaya, dan telah dilarang.
+Sebagai tindakan keselamatan, beberapa keistimewaan yang diluluskan secara rutin untuk membuat akaun telah dimansuhkan buat sementara dari akaun anda.
+Keterangan ringkas tentang penyalahan peraturan yang anda lakukan ialah: &1',
+	'abusefilter-blocker' => 'Penapis penyalahan',
+	'abusefilter-blockreason' => 'Disekat secara automatik oleh penapis penyalahan. Keterangan peraturan: &1',
+	'abusefilter-degroupreason' => 'Hak telah digugurkan secara automatik oleh penapis penyalahan. Keterangan peraturan: $1',
+	'abusefilter-accountreserved' => 'Nama akaun ini telah disimpan untuk kegunaan penapis penyalahan.',
+	'right-abusefilter-modify' => 'Ubahsuai penapis penyalahan',
+	'right-abusefilter-view' => 'Lihat penapis penyalahan.',
+	'right-abusefilter-log' => 'Lihat log kesalahan',
 );
 
 /** Maltese (Malti)
