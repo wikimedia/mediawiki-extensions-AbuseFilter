@@ -448,6 +448,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		$throttleFields = array();
 		
 		if ($setActions['throttle']) {
+			array_shift( $actions['throttle']['parameters'] );
 			$throttleRate = explode(',',$actions['throttle']['parameters'][0]);
 			$throttleCount = $throttleRate[0];
 			$throttlePeriod = $throttleRate[1];
