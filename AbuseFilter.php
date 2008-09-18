@@ -43,6 +43,7 @@ $wgHooks['AbortMove'][] = 'AbuseFilterHooks::onAbortMove';
 $wgHooks['AbortNewAccount'][] = 'AbuseFilterHooks::onAbortNewAccount';
 $wgHooks['ArticleDelete'][] = 'AbuseFilterHooks::onArticleDelete';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'AbuseFilterHooks::onSchemaUpdate';
+$wgHooks['AbortDeleteQueueNominate'][] = 'AbuseFilterHooks::onAbortDeleteQueueNominate';
 
 $wgAvailableRights[] = 'abusefilter-modify';
 $wgAvailableRights[] = 'abusefilter-log-detail';

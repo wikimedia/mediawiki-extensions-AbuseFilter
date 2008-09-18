@@ -76,9 +76,9 @@ class SpecialAbuseLog extends SpecialPage {
 		// Generate conditions list.
 		$conds = array();
 		
-		if ($this->mSearchUser)
+		if (!empty($this->mSearchUser))
 			$conds['afl_user_text'] = $this->mSearchUser;
-		if ($this->mSearchFilter)
+		if (!empty($this->mSearchFilter))
 			$conds['afl_filter'] = $this->mSearchFilter;
 			
 		$searchTitle = Title::newFromText( $this->mSearchTitle );

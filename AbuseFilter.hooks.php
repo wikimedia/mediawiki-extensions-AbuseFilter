@@ -120,4 +120,18 @@ class AbuseFilterHooks {
 		
 		return true;
 	}
+	
+	public static function onAbortDeleteQueueNominate( $user, $article, $queue, $reason, &$error ) {
+		$vars = array();
+		
+		$vars = array_merge( $vars, AbuseFilter::generateUserVars( $user ), AbuseFilter::generateTitleVars( $article->mTitle, 'ARTICLE' ) );
+		$vars['SUMMARY'] = $reason;
+		$vars['ACTION'] = 'delnom';
+		$vars['QUEUE'] = $queue;
+		
+		$filter_result = AbuseFilter::filterAction( $vars, $article->mTitle );
+		$error = $filter_result;
+		
+		return $filter_result == '' || $filter_result === true;
+	}
 }

@@ -318,7 +318,7 @@ class AbuseFilter {
 				$logParams[] = 'nocreate, angry-autoblock';
 	
 				$log = new LogPage( 'block' );
-				$log->addEntry( 'block', SpecialPage::getTitleFor( 'Contributions', $range ),
+				$log->addEntry( 'block', Title::makeTitle( NS_USER, $range ),
 					wfMsgForContent( 'abusefilter-blockreason', $rule_desc ), $logParams, self::getFilterUser() );
 				
 				$display .= wfMsgNoTrans( 'abusefilter-blocked-display', $rule_desc ) ."<br />\n";
