@@ -9,6 +9,7 @@ class AbuseFilter {
 	public static $modifyCache = array();
 	public static $condLimitEnabled = true;
 	public static $condCount = 0;
+	public static $filters = array();
 
 	public static function generateUserVars( $user ) {
 		$vars = array();
@@ -130,6 +131,7 @@ class AbuseFilter {
 		$filter_matched = array();
 		
 		while ( $row = $dbr->fetchObject( $res ) ) {
+			self::$filters[$row->af_id] = $row;
 			if ( self::checkConditions( $row->af_pattern, $vars ) ) {
 				$blocking_filters[$row->af_id] = $row;
 				
@@ -219,7 +221,7 @@ class AbuseFilter {
 			case 'warn':
 				wfLoadExtensionMessages( 'AbuseFilter' );
 				
-				if (!$_SESSION['abusefilter-warned']) {
+				if (!isset($_SESSION['abusefilter-warned']) || !$_SESSION['abusefilter-warned']) {
 					$_SESSION['abusefilter-warned'] = true;
 					
 					// Threaten them a little bit
@@ -259,12 +261,11 @@ class AbuseFilter {
 				$block = new Block;
 				$block->mAddress = $wgUser->getName();
 				$block->mUser = $wgUser->getId();
-				$block->mBy = User::idFromName( wfMsgForContent( 'abusefilter-blocker' ) ); // Let's say the site owner blocked them
-				$block->mByName = wfMsgForContent( 'abusefilter-blocker' );
+				$block->mBy = $filterUser->getId();
+				$block->mByName = $filterUser->getName();
 				$block->mReason = wfMsgForContent( 'abusefilter-blockreason', $rule_desc );
 				$block->mTimestamp = wfTimestampNow();
-				$block->mEnableAutoblock = 1;
-				$block->mAngryAutoblock = 1; // Block lots of IPs
+				$block->mAnonOnly = 1;
 				$block->mCreateAccount = 1;
 				$block->mExpiry = 'infinity';
 
@@ -282,6 +283,47 @@ class AbuseFilter {
 				
 				$display .= wfMsgNoTrans( 'abusefilter-blocked-display', $rule_desc ) ."<br />\n";
 				break;
+			case 'rangeblock':
+				wfLoadExtensionMessages( 'AbuseFilter' );
+				
+				global $wgUser;
+				$filterUser = AbuseFilter::getFilterUser();
+				
+				$range = IP::toHex( wfGetIP() );
+				$range = substr( $range, 0, 4 ) . '0000';
+				$range = long2ip( hexdec( $range ) );
+				$range .= "/16";
+				$range = Block::normaliseRange( $range );
+
+				// Create a block.
+				$block = new Block;
+				$block->mAddress = $range;
+				$block->mUser = 0;
+				$block->mBy = $filterUser->getId();
+				$block->mByName = $filterUser->getName();
+				$block->mReason = wfMsgForContent( 'abusefilter-blockreason', $rule_desc );
+				$block->mTimestamp = wfTimestampNow();
+				$block->mAnonOnly = 0;
+				$block->mCreateAccount = 1;
+				$block->mExpiry = Block::parseExpiryInput( '1 week' );
+				
+				$block->initialiseRange();
+
+				$block->insert();
+				
+				// Log it
+				# Prepare log parameters
+				$logParams = array();
+				$logParams[] = 'indefinite';
+				$logParams[] = 'nocreate, angry-autoblock';
+	
+				$log = new LogPage( 'block' );
+				$log->addEntry( 'block', SpecialPage::getTitleFor( 'Contributions', $range ),
+					wfMsgForContent( 'abusefilter-blockreason', $rule_desc ), $logParams, self::getFilterUser() );
+				
+				$display .= wfMsgNoTrans( 'abusefilter-blocked-display', $rule_desc ) ."<br />\n";
+				break;
+			
 			case 'throttle':
 				$throttleId = array_shift( $parameters );
 				list( $rateCount, $ratePeriod ) = explode( ',', array_shift( $parameters ) );
@@ -466,7 +508,7 @@ class AbuseFilter {
 		
 		$anyMatch = false;
 		
-		global $wgAbuseFilterEmergencyDisableThreshold, $wgAbuseFilterEmergencyDisableCount;
+		global $wgAbuseFilterEmergencyDisableThreshold, $wgAbuseFilterEmergencyDisableCount, $wgAbuseFilterEmergencyDisableAge;
 		
 		foreach( $filters as $filter => $matched ) {
 			if ($matched) {
@@ -479,7 +521,10 @@ class AbuseFilter {
 					$wgMemc->set( self::filterMatchesKey( $filter ), 1, self::$statsStoragePeriod );
 				}
 				
-				if ($match_count > $wgAbuseFilterEmergencyDisableCount && ($match_count / $total) > $wgAbuseFilterEmergencyDisableThreshold) {
+				$filter_age = wfTimestamp( TS_UNIX, self::$filters[$filter]['af_timestamp'] );
+				$throttle_exempt_time = $filter_age + $wgAbuseFilterEmergencyDisableAge;
+				
+				if ($throttle_exempt_time > time() && $match_count > $wgAbuseFilterEmergencyDisableCount && ($match_count / $total) > $wgAbuseFilterEmergencyDisableThreshold) {
 					// More than X matches, constituting more than Y% of last Z edits. Disable it.
 					$dbw = wfGetDB( DB_MASTER );
 					$dbw->update( 'abuse_filter', array( 'af_enabled' => 0, 'af_throttled' => 1 ), array( 'af_id' => $filter ), __METHOD__ );
