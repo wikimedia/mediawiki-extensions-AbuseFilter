@@ -833,6 +833,8 @@ class AbuseFilterParser {
 	protected function funcCount( $args ) {
 		if( count( $args ) < 1 )
 			throw new AFPExpection( "No params passed to ".__METHOD__ );
+			
+		$offset = -1;
 		
 		if (count($args) == 1) {
 			$count = count( explode( ",", $args[0]->toString() ) );
@@ -841,7 +843,7 @@ class AbuseFilterParser {
 			$haystack = $args[1]->toString();
 			
 			$count = 0;
-			while ( ($offset = strpos( $haystack, $needle, $offset )) !== false ) {
+			while ( ($offset = strpos( $haystack, $needle, $offset + 1 )) !== false ) {
 				$count++;
 			}
 		}
