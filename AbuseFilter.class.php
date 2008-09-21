@@ -205,10 +205,19 @@ class AbuseFilter {
 		
 		// Log it
 		foreach( $log_entries as $index => $entry ) {
-			$log_entries[$index]['afl_actions'] = implode( ',', $doneActionsByFilter[$entry['afl_filter']] );
+			$actions = $log_entries[$index]['afl_actions'] = implode( ',', $doneActionsByFilter[$entry['afl_filter']] );
+			
+			if ($actions == 'throttle') {
+				// Just a throttle, don't record it.
+				unset($log_entries[$index]);
+			}
 			
 			// Increment the hit counter
 			$dbw->update( 'abuse_filter', array( 'af_hit_count=af_hit_count+1' ), array( 'af_id' => $entry['afl_filter'] ), __METHOD__ );
+		}
+		
+		if (!count($log_entries)) {
+			return;
 		}
 		
 		$dbw->insert( 'abuse_filter_log', $log_entries, __METHOD__ );
