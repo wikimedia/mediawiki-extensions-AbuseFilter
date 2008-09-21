@@ -403,7 +403,6 @@ class AbuseFilter {
 		if ($count > 0) {
 			$wgMemc->incr( $key );
 			if ($count > $rateCount) {
-				//die( "Hit rate limiter: $count actions, against limit of $rateCount actions in $ratePeriod seconds (key is $key).\n" );
 				$wgMemc->delete( $key );
 				return true; // THROTTLED
 			}
