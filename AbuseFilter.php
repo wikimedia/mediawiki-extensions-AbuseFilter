@@ -58,7 +58,7 @@ $wgAbuseFilterAvailableActions = array( 'flag', 'throttle', 'warn', 'disallow', 
 // $wgAbuseFilterConditionLimit = 1000;
 
 // Disable filters if they match more than X edits, constituting more than Y% of the last Z edits, if they have been changed in the last S seconds
-$wgAbuseFilterEmergencyDisableThreshold = 0.50;
+$wgAbuseFilterEmergencyDisableThreshold = 0.05;
 $wgAbuseFilterEmergencyDisableCount = 2;
 $wgAbuseFilterEmergencyDisableAge = 86400; // One day.
 
