@@ -923,6 +923,7 @@ class AbuseFilterParser {
 		
 		$s = $this->ccnorm($s);
 		$s = $this->rmdoubles( $s );
+		$s = $this->rmspecials( $s );
 		
 		return new AFPData( AFPData::DString, $s );
 	}
