@@ -59,7 +59,6 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter_history (
 	afh_flags TINYBLOB NOT NULL,
 	afh_public_comments TINYBLOB,
 	afh_actions BLOB,
-	afh_deleted tinyint(1) NOT NULL DEFAULT 0,
 	
 	PRIMARY KEY (afh_id),
 	KEY (afh_filter),

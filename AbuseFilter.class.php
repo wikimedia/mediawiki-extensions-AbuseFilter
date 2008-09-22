@@ -91,14 +91,6 @@ class AbuseFilter {
 		return $parser->evaluateExpression( $expr );
 	}
 	
-	public static function ajaxReAutoconfirm( $username ) {
-		$u = User::newFromName( $username );
-		
-		global $wgMemc;
-		$k = AbuseFilter::autoPromoteBlockKey($u);
-		$wgMemc->delete( $k );
-	}
-	
 	public static function ajaxEvaluateExpression( $expr ) {
 		return self::evaluateExpression( $expr );
 	}
