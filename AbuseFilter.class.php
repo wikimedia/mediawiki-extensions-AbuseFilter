@@ -235,7 +235,7 @@ class AbuseFilter {
 					
 					// Threaten them a little bit
 					if (strlen($parameters[0])) {
-						$display .= call_user_func_array( 'wfMsgNoTrans', $parameters ) . "\n";
+						$display .= wfMsgNoTrans( $parameters[0], $rule_desc ) . "\n";
 					} else {
 						// Generic message.
 						$display .= wfMsgNoTrans( 'abusefilter-warning', $rule_desc ) ."<br />\n";
@@ -253,7 +253,7 @@ class AbuseFilter {
 				
 				// Don't let them do it
 				if (strlen($parameters[0])) {
-					$display .= call_user_func_array( 'wfMsgNoTrans', $parameters ) . "\n";
+					$display .= wfMsgNoTrans( $parameters[0], $rule_desc ) . "\n";
 				} else {
 					// Generic message.
 					$display .= wfMsgNoTrans( 'abusefilter-disallowed', $rule_desc ) ."<br />\n";

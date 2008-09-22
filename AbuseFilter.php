@@ -54,7 +54,8 @@ $wgAvailableRights[] = 'abusefilter-private';
 $wgAbuseFilterAvailableActions = array( 'flag', 'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'degroup', 'rangeblock' );
 
 // Conditions take about 4ms to check, so 100 conditions would take 400ms
-$wgAbuseFilterConditionLimit = 1000;
+// Currently, has no effect.
+// $wgAbuseFilterConditionLimit = 1000;
 
 // Disable filters if they match more than X edits, constituting more than Y% of the last Z edits, if they have been changed in the last S seconds
 $wgAbuseFilterEmergencyDisableThreshold = 0.50;
