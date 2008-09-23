@@ -3889,6 +3889,25 @@ Stručný popis pravidla zneužitia, ktoré zachytilo vašu úpravu, je: $1',
 	'abusefilter-history-deleted' => 'Zmazané',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'abusefilter-log-search-user' => 'Корисник:',
+	'abusefilter-log-search-title' => 'Наслов:',
+	'abusefilter-log-search-submit' => 'Претрага',
+	'abusefilter-log-noactions' => 'ништа',
+	'abusefilter-list-details' => 'Детаљи',
+	'abusefilter-hidden' => 'Приватно',
+	'abusefilter-unhidden' => 'Јавно',
+	'abusefilter-enabled' => 'Омогућено',
+	'abusefilter-deleted' => 'Обрисано',
+	'abusefilter-disabled' => 'Онемогућено',
+	'abusefilter-edit-status-label' => 'Статистике',
+	'abusefilter-edit-new' => 'Нови филтер',
+	'abusefilter-edit-save' => 'Сними филтер',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
