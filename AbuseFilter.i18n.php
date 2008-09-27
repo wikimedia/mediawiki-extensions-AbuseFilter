@@ -233,9 +233,11 @@ A brief description of the abuse rule which your action matched is: $1",
  * @author EugeneZelenko
  * @author Jon Harald Søby
  * @author Meno25
+ * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
+	'abusefilter-desc' => 'Short description of the Abusefilter extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'right-abusefilter-modify' => '{{doc-right}}',
 	'right-abusefilter-view' => '{{doc-right}}',
 	'right-abusefilter-log' => '{{doc-right}}',
@@ -294,7 +296,9 @@ $messages['rtm'] = array(
  * @author Сай
  */
 $messages['mhr'] = array(
+	'abusefilter-log-search-user' => 'Пайдаланыше:',
 	'abusefilter-edit-history' => 'Историй',
+	'abusefilter-history-user' => 'Пайдаланыше',
 );
 
 /** Niuean (ko e vagahau Niuē)
@@ -1297,6 +1301,7 @@ Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1',
 	'abusefilter-show-tools' => 'Iloj por filtri misuzadon',
 	'abusefilter-loglink' => 'Vidi la protokolon pri misuzado',
 	'abusefilter-tools-subtitle' => 'Iloj',
+	'abusefilter-tools-submitexpr' => 'Taksi',
 	'abusefilter-edit-subtitle' => 'Redaktis filtrilon $1',
 	'abusefilter-edit-status-label' => 'Statistikoj',
 	'abusefilter-edit-throttled' => "'''Averto''': Ĉi tiu filtrilo aŭtomate malebligiĝis pro sekureco. Ĝi atingis la limo kontruanta pli ol $1% de agoj.",
@@ -1366,6 +1371,7 @@ Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1',
 	'abusefilter-edit-builder-vars-article-ns' => 'Artikola nomspaco',
 	'abusefilter-edit-builder-vars-article-text' => 'Artikola titolo (sen nomspaco)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Plena titolo de artikolo',
+	'abusefilter-edit-builder-vars-user-editcount' => 'Redakto-kontado de uzanto',
 	'abusefilter-history' => 'Historio por filtrilo $1',
 	'abusefilter-history-hidden' => 'kaŝita',
 	'abusefilter-history-enabled' => 'ebligita',
@@ -1380,11 +1386,26 @@ Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1',
 );
 
 /** Spanish (Español)
+ * @author Alvaro qc
  * @author Sanbec
  */
 $messages['es'] = array(
+	'abusefilter-log-search-submit' => 'Buscar',
+	'abusefilter-log-detailslink' => 'detalles',
 	'abusefilter-log-noactions' => 'ninguna',
 	'abusefilter-list-edit' => 'Editar',
+	'abusefilter-edit-history' => 'Historial',
+);
+
+/** Basque (Euskara)
+ * @author Unai Fdz. de Betoño
+ */
+$messages['eu'] = array(
+	'abusefilter-log-search-submit' => 'Bilatu',
+	'abusefilter-hidden' => 'Pribatua',
+	'abusefilter-unhidden' => 'Publikoa',
+	'abusefilter-deleted' => 'Ezabatuta',
+	'abusefilter-tools-subtitle' => 'Tresnak',
 );
 
 /** French (Français)
@@ -3566,11 +3587,19 @@ O descriere sumară a regulii abuzului care se potriveşte cu acţiunea ta este:
 $messages['roa-tara'] = array(
 	'abusefilter-log-search-user' => 'Utende:',
 	'abusefilter-log-search-submit' => 'Cirche',
+	'abusefilter-hidden' => 'Privete',
+	'abusefilter-unhidden' => 'Pubbleche',
+	'abusefilter-deleted' => 'Scangillete',
+	'abusefilter-edit-new' => 'Filtre nueve',
+	'abusefilter-edit-builder-group-op-comparison' => 'Operatore de combronde',
+	'abusefilter-history-timestamp' => 'Orarie',
+	'abusefilter-history-user' => 'Utende',
 );
 
 /** Russian (Русский)
  * @author Ahonc
  * @author Aleksandrit
+ * @author Ferrer
  * @author MaxSem
  * @author VasilievVV
  * @author Александр Сигачёв
@@ -3601,7 +3630,7 @@ $messages['ru'] = array(
 Кроме того, в целях безопасности, с вашей учётной записи сняты некоторые привилегии, обычно предоставляемые зарегистрированным учётным записям.
 Краткое описание злоупотребления, с которым определено соответствие вашего действия: $1',
 	'abusefilter-blocker' => 'Фильтр злоупотреблений',
-	'abusefilter-blockreason' => 'Автоматически заблокирован фильтром злоупотреблений. Описание правила: $1',
+	'abusefilter-blockreason' => 'Автоматически заблокирован фильтром злоупотреблений. Описание соответствующего правила: $1',
 	'abusefilter-degroupreason' => 'Фильтр злоупотреблений автоматически отобрал права. Описание правила: $1',
 	'abusefilter-accountreserved' => 'Эта учётная запись зарезервирована для использования фильтром злоупотреблений.',
 	'right-abusefilter-modify' => 'Изменить фильтры злоупотреблений',
@@ -3638,10 +3667,17 @@ $messages['ru'] = array(
 	'abusefilter-hidden' => 'Личное',
 	'abusefilter-unhidden' => 'Общедоступное',
 	'abusefilter-enabled' => 'Включён',
+	'abusefilter-deleted' => 'Удалён',
 	'abusefilter-disabled' => 'Выключен',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|срабатывание|срабатывания|срабатываний}}',
 	'abusefilter-list-new' => 'Новый фильтр',
+	'abusefilter-links' => 'Полезные ссылки:',
 	'abusefilter-tools-modifiertest-submit' => 'Проверить',
+	'abusefilter-show-deleted' => 'Просмотреть удалённые фильтры',
+	'abusefilter-show-all' => 'Показать все неудалённые фильтры',
+	'abusefilter-show-active' => 'Скрыть выключенные фильтры',
+	'abusefilter-show-tools' => 'Инструменты фильтра злоуполтреблений',
+	'abusefilter-loglink' => 'Показать журнал злоупотреблений',
 	'abusefilter-tools-subtitle' => 'Инструменты',
 	'abusefilter-tools-text' => 'Здесь располагаются инструменты, которые могут помочь в формулировании и отладке фильтров злоупотреблений. [[Special:AbuseFilter|Возврат в главное меню]]',
 	'abusefilter-tools-expr' => 'Проверка выражения',
@@ -3655,6 +3691,7 @@ $messages['ru'] = array(
 :''(общедоступное)''",
 	'abusefilter-edit-flags' => 'Флаги:',
 	'abusefilter-edit-enabled' => 'Включить этот фильтр',
+	'abusefilter-edit-deleted' => 'Отметить как удалённый',
 	'abusefilter-edit-hidden' => 'Скрыть подробности этого фильтра от обычных участников',
 	'abusefilter-edit-rules' => 'Условия:',
 	'abusefilter-edit-notes' => "Примечания:
@@ -3681,6 +3718,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-done' => 'Вы успешно сохранили изменения в фильтре.
 
 [[Special:AbuseFilter|Вернуться]]',
+	'abusefilter-edit-viewhistory' => 'Показать историю этого фильтра',
 	'abusefilter-edit-history' => 'История',
 	'abusefilter-edit-check' => 'Проверить синтаксис',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Арифметические операторы',
@@ -3691,6 +3729,13 @@ $messages['ru'] = array(
 	'abusefilter-edit-builder-group-op-comparison' => 'Операторы сравнения',
 	'abusefilter-edit-builder-op-comparison-lt' => 'Менее чем (<)',
 	'abusefilter-edit-builder-op-comparison-gt' => 'Более чем (>)',
+	'abusefilter-edit-builder-vars-article-id' => 'ID статьи',
+	'abusefilter-history' => 'История для фильтра $1',
+	'abusefilter-history-user' => 'Участник',
+	'abusefilter-history-flags' => 'Флаги',
+	'abusefilter-history-comments' => 'Комментарии',
+	'abusefilter-history-actions' => 'Действия',
+	'abusefilter-history-deleted' => 'Удалено',
 );
 
 /** Slovak (Slovenčina)
