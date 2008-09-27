@@ -2358,6 +2358,15 @@ $messages['km'] = array(
 	'abusefilter-history-deleted' => 'បានលុប',
 );
 
+/** Krio (Krio)
+ * @author Jose77
+ */
+$messages['kri'] = array(
+	'abusefilter-log-search-submit' => 'Luk foh am',
+	'abusefilter-list-edit' => 'Chenj',
+	'abusefilter-edit-history' => 'Istri',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
