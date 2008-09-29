@@ -2253,7 +2253,7 @@ $messages['km'] = array(
 	'abusefilter' => 'ការកំនត់រចនាសំព័ន្ឋ​តំរងការបំពានច្បាប់',
 	'abuselog' => 'កំនត់ហេតុ​នៃ​ការបំពានច្បាប់',
 	'abusefilter-blocker' => 'តំរង​ការបំពានច្បាប់',
-	'abusefilter-blockreason' => 'រាំងខ្ទបជាស្វ័យប្រវត្តិ​ដោយតំរងការបំពានច្បាប់។ ច្បាប់ចែងថា៖ $1',
+	'abusefilter-blockreason' => 'ត្រូវបានរាំងខ្ទប់ជាស្វ័យប្រវត្តិ​ដោយតំរងការបំពានច្បាប់។ ច្បាប់ចែងថា៖ $1',
 	'abusefilter-degroupreason' => 'សិទ្ឋិ​ដែលត្រូវបានដកហូតជាស្វ័យប្រវត្តិ​ដោយតំរងការបំពានច្បាប់។ ច្បាប់ចែងថា៖ $1',
 	'abusefilter-accountreserved' => 'ឈ្មោះគណនីនេះ​ត្រូវបានរក្សាទុកសំរាប់អោយតំរងការបំពានច្បាប់​ប្រើប្រាស់។',
 	'right-abusefilter-modify' => 'កែប្រែតំរងការបំពានច្បាប់',
@@ -2296,6 +2296,8 @@ $messages['km'] = array(
 	'abusefilter-edit-id' => 'ID តំរង:',
 	'abusefilter-edit-description' => "ពណ៌នា:
 :''(អាចមើលបានជាសាធារណៈ)''",
+	'abusefilter-edit-enabled' => 'បើកអោយប្រើតំរងនេះ',
+	'abusefilter-edit-deleted' => 'កត់ចំនាំថាបានលុបចោល',
 	'abusefilter-edit-hidden' => 'លាក់ពត៌មានលំអិតអំពី​តំរងនេះ មិនអោយមើលជាសាធារណៈ',
 	'abusefilter-edit-rules' => 'លក្ខខណ្ឌ:',
 	'abusefilter-edit-notes' => "សំគាល់:
