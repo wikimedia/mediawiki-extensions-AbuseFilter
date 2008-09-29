@@ -103,6 +103,11 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-tools-text' => 'Here are some tools which may be useful in formulating and debugging abuse filters. [[Special:AbuseFilter|Return to main menu]]',
 	'abusefilter-tools-expr' => 'Expression tester',
 	'abusefilter-tools-submitexpr' => 'Evaluate',
+	'abusefilter-tools-reautoconfirm' => 'Restore autoconfirmed status',
+	'abusefilter-tools-reautoconfirm-user' => 'User',
+	'abusefilter-tools-reautoconfirm-submit' => 'Re-autoconfirm',
+	'abusefilter-reautoconfirm-none' => 'That user has not had their autoconfirmed status suspended.',
+	'abusefilter-reautoconfirm-notallowed' => 'You are not allowed to restore autoconfirmed status.',
 	
 	// Abuse filter status
 	'abusefilter-status' => "Of the last $1 {{PLURAL:$1|action|actions}}, $2 ($3%) {{PLURAL:$2|has|have}} reached the condition limit of $4. $5 ($6%) {{PLURAL:$5|has|have}} matched one of the filters currently enabled.",

@@ -91,6 +91,25 @@ class AbuseFilter {
 		return $parser->evaluateExpression( $expr );
 	}
 	
+	public static function ajaxReAutoconfirm( $username ) {
+	
+		if (!$wgUser->isAllowed('abusefilter-modify')) {
+			// Don't allow it.
+			return wfMsg( 'abusefilter-reautoconfirm-notallowed' );
+		}
+	
+		$u = User::newFromName( $username );
+		
+		global $wgMemc;
+		$k = AbuseFilter::autoPromoteBlockKey($u);
+		
+		if (!$wgMemc->get( $k ) ) {
+			return wfMsg( 'abusefilter-reautoconfirm-none' );
+		}
+		
+		$wgMemc->delete( $k );
+	}
+	
 	public static function ajaxEvaluateExpression( $expr ) {
 		return self::evaluateExpression( $expr );
 	}

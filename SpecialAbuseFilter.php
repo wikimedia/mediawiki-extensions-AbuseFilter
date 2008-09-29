@@ -152,9 +152,32 @@ class SpecialAbuseFilter extends SpecialPage {
 			
 			var el = document.getElementById( 'mw-abusefilter-expr-result' );
 			changeText( el, response );
-		}";
+		}
+		function doReautoSubmit()
+		{
+			var name = document.getElementById('reautoconfirm-user').value;
+			injectSpinner( document.getElementById( 'mw-abusefilter-reautoconfirmsubmit' ), 'abusefilter-reautoconfirm' );
+			sajax_do_call( 'AbuseFilter::ajaxReAutoconfirm', [name], processReautoconfirm );
+		}
+		function processReautoconfirm( request ) {
+			var response = request.responseText;
+			
+			if (strlen(response)) {
+				jsMsg( response );
+			}
+			
+			removeSpinner( 'abusefilter-reautoconfirm' );
+		}
+		";
 		
 		$wgOut->addInlineScript( $exprScript );
+		
+		// Hacky little box to re-enable autoconfirmed if it got disabled
+		$rac = '';
+		$rac .= Xml::inputLabel( wfMsg( 'abusefilter-tools-reautoconfirm-user' ), 'wpReAutoconfirmUser', 'reautoconfirm-user', 45 );
+		$rac .= Xml::element( 'input', array( 'type' => 'button', 'id' => 'mw-abusefilter-reautoconfirmsubmit', 'onclick' => 'doReautoSubmit();', 'value' => wfMsg( 'abusefilter-tools-reautoconfirm-submit' ) ) );
+		$rac = Xml::fieldset( wfMsg( 'abusefilter-tools-reautoconfirm' ), $rac );
+		$wgOut->addHtml( $rac );
 	}
 	
 	function showStatus() {
