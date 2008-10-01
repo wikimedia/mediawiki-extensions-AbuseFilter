@@ -751,6 +751,13 @@ $messages['arz'] = array(
 	'abusefilter-history-deleted' => 'محذوف',
 );
 
+/** Assamese (অসমীয়া)
+ * @author Chaipau
+ */
+$messages['as'] = array(
+	'abusefilter-log-search-submit' => 'সন্ধান',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Cesco
  * @author EugeneZelenko
@@ -952,6 +959,12 @@ $messages['ca'] = array(
 	'abusefilter-edit-save' => 'Desa filtre',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|segon|segons}}',
 	'abusefilter-edit-history' => 'Historial',
+	'abusefilter-edit-builder-group-op-arithmetic' => 'Operadors aritmètics',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Suma (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Resta (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Multiplicació (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'Divisió (/)',
+	'abusefilter-edit-builder-op-arithmetic-pow' => 'Potència (**)',
 );
 
 /** Corsican (Corsu) */
@@ -1503,6 +1516,11 @@ Une brève description de la règle d’abus que votre action a déclenchée est
 	'abusefilter-tools-text' => 'Voici quelques outils qui peuvent être utiles dans la formulation ou le déboggage des filtres d’abus. [[Special:AbuseFilter|Retour au menu principal]]',
 	'abusefilter-tools-expr' => "Test d'expression",
 	'abusefilter-tools-submitexpr' => 'Evaluer',
+	'abusefilter-tools-reautoconfirm' => 'Restaure le statut autoconfirmé',
+	'abusefilter-tools-reautoconfirm-user' => 'Utilisateur',
+	'abusefilter-tools-reautoconfirm-submit' => 'Autoconfirmer à nouveau',
+	'abusefilter-reautoconfirm-none' => 'Cet utilisateur n’a pas son statut d’autoconfirmé suspendu.',
+	'abusefilter-reautoconfirm-notallowed' => 'Vous n’êtes pas autorisé de restaurer le statut d’autoconfirmé.',
 	'abusefilter-status' => '{{PLURAL:$1|De la dernière action|des $1 dernières actions}}, $2 ($3 %) {{PLURAL:$2|a|ont}} atteint la limite de la condition définie par $4. $5 ($6 %) {{PLURAL:$5|correspondait|correspondaient}} à l’un de ces filtres actuellement en service.',
 	'abusefilter-edit-subtitle' => 'Modification du filtre $1',
 	'abusefilter-edit-status-label' => 'Statistiques',
@@ -2033,7 +2051,7 @@ Un breve description del regula anti-abuso correspondente con tu action es: $1',
 	'abusefilter-list-public' => 'Description public',
 	'abusefilter-list-consequences' => 'Consequentias',
 	'abusefilter-list-visibility' => 'Visibilitate',
-	'abusefilter-list-hitcount' => 'Computo de accessos',
+	'abusefilter-list-hitcount' => 'Contator de accessos',
 	'abusefilter-list-edit' => 'Modificar',
 	'abusefilter-list-details' => 'Detalios',
 	'abusefilter-hidden' => 'Private',
@@ -2054,6 +2072,11 @@ Un breve description del regula anti-abuso correspondente con tu action es: $1',
 	'abusefilter-tools-text' => 'Ecce alcun instrumentos utile pro formular e corriger le filtros antiabuso. [[Special:AbuseFilter|Retornar al menu principal]]',
 	'abusefilter-tools-expr' => 'Verificator de expressiones',
 	'abusefilter-tools-submitexpr' => 'Evalutar',
+	'abusefilter-tools-reautoconfirm' => 'Restaurar le stato autoconfirmate',
+	'abusefilter-tools-reautoconfirm-user' => 'Usator',
+	'abusefilter-tools-reautoconfirm-submit' => 'Re-autoconfirmar',
+	'abusefilter-reautoconfirm-none' => 'Iste usator non ha su stato autoconfirmate suspendite.',
+	'abusefilter-reautoconfirm-notallowed' => 'Tu non es autorisate a restaurar le stato autonconfirmate.',
 	'abusefilter-status' => 'Del ultime $1 {{PLURAL:$1|action|actiones}}, $2 ($3%) ha attingite le limite de condition definite per $4. $5 ($6%) ha correspondite a un del filtros actualmente active.',
 	'abusefilter-edit-subtitle' => 'Modification del filtro $1',
 	'abusefilter-edit-status-label' => 'Statisticas',
@@ -2078,7 +2101,7 @@ Un breve description del regula anti-abuso correspondente con tu action es: $1',
 	'abusefilter-edit-action-warn' => 'Interprender iste actiones post haber date un advertimento al usator',
 	'abusefilter-edit-action-disallow' => 'Impedir que le usator executa le action in question',
 	'abusefilter-edit-action-flag' => 'Marcar le modification in le registro de abusos',
-	'abusefilter-edit-action-blockautopromote' => 'Revocar le stato de conto automaticamente confirmate del usator',
+	'abusefilter-edit-action-blockautopromote' => 'Revocar le stato autoconfirmate del usator',
 	'abusefilter-edit-action-degroup' => 'Remover le usator de tote le gruppos privilegiate',
 	'abusefilter-edit-action-block' => 'Blocar le usator e/o adresse IP de facer modificationes',
 	'abusefilter-edit-action-throttle' => 'Interprender actiones solmente si le usator excede un limite de frequentia',
@@ -2152,7 +2175,7 @@ Un breve description del regula anti-abuso correspondente con tu action es: $1',
 	'abusefilter-edit-builder-vars-movedto-ns' => 'Spatio de nomines del pagina de destination pro le renomination',
 	'abusefilter-edit-builder-vars-movedto-text' => 'Titulo de destination pro le renomination',
 	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Titulo integre de destination',
-	'abusefilter-edit-builder-vars-user-editcount' => 'Computo de modificationes del usator',
+	'abusefilter-edit-builder-vars-user-editcount' => 'Numero de modificationes del usator',
 	'abusefilter-edit-builder-vars-user-age' => 'Etate del conto de usator',
 	'abusefilter-edit-builder-vars-user-name' => 'Nomine del conto de usator',
 	'abusefilter-edit-builder-vars-user-groups' => 'Le gruppos (includente gruppos implicite) del quales le usator es membro',
@@ -2528,6 +2551,7 @@ $messages['lb'] = array(
 	'abusefilter-loglink' => 'Lëscht vum Mëssbrauch weisen',
 	'abusefilter-tools-subtitle' => 'Geschir (Tools)',
 	'abusefilter-tools-submitexpr' => 'Bewerten',
+	'abusefilter-tools-reautoconfirm-user' => 'Benotzer',
 	'abusefilter-edit-subtitle' => 'Änner vum Filter $1',
 	'abusefilter-edit-status-label' => 'Statistiken',
 	'abusefilter-edit-new' => 'Neie Filter',
@@ -3222,6 +3246,11 @@ Una descripcion brèva de la règla d’abús que vòstra accion a desenclavat e
 	'abusefilter-tools-text' => 'Vaquí qualques espleches que pòdon èsser utils dins la formulacion o lo debogatge dels filtres d’abús. [[Special:AbuseFilter|Retorn al menut principal]]',
 	'abusefilter-tools-expr' => "Tèst d'expression",
 	'abusefilter-tools-submitexpr' => 'Evaluar',
+	'abusefilter-tools-reautoconfirm' => "Restablís l'estatut autoconfirmat",
+	'abusefilter-tools-reautoconfirm-user' => 'Utilizaire',
+	'abusefilter-tools-reautoconfirm-submit' => 'Autoconfirmar tornamai',
+	'abusefilter-reautoconfirm-none' => 'Aqueste utilizaire a pas son estatut d’autoconfirmat suspendut.',
+	'abusefilter-reautoconfirm-notallowed' => "Sètz pas autorizat(ada) a restablir l'estatut d’autoconfirmat.",
 	'abusefilter-status' => "{{PLURAL:$1|De la darrièra accion|De las $1 darrièras accions}}, $2 ($3 %) an atench lo limit de la condicion definida per $4. $5 ($6 %) {{PLURAL:$5|correspondiá|correspondián}} a un d'aquestes filtres actualament en servici.",
 	'abusefilter-edit-subtitle' => 'Modificacion del filtre $1',
 	'abusefilter-edit-status-label' => 'Estatisticas',
