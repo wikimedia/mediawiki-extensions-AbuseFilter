@@ -2675,6 +2675,7 @@ $messages['lt'] = array(
 /** Malay (Bahasa Melayu)
  * @author Aviator
  * @author Izzudin
+ * @author Kurniasan
  */
 $messages['ms'] = array(
 	'abusefilter-desc' => 'Mengenakan heuristik automatik pada suntingan.',
@@ -2708,6 +2709,9 @@ Keterangan ringkas tentang penyalahan peraturan yang anda lakukan ialah: &1',
 	'right-abusefilter-modify' => 'Ubahsuai penapis penyalahan',
 	'right-abusefilter-view' => 'Lihat penapis penyalahan.',
 	'right-abusefilter-log' => 'Lihat log kesalahan',
+	'abusefilter-log-search-user' => 'Pengguna:',
+	'abusefilter-log-search-filter' => 'ID penapis:',
+	'abusefilter-log-search-title' => 'Tajuk:',
 );
 
 /** Maltese (Malti)
@@ -4453,7 +4457,9 @@ $messages['te'] = array(
 	'abusefilter-enabled' => 'సచేతనం',
 	'abusefilter-disabled' => 'అచేతనం',
 	'abusefilter-list-new' => 'కొత్త జల్లెడ',
+	'abusefilter-tools-subtitle' => 'పనిముట్లు',
 	'abusefilter-edit-subtitle' => '$1 జల్లెడను దిద్దుతున్నారు',
+	'abusefilter-edit-status-label' => 'గణాంకాలు',
 	'abusefilter-edit-new' => 'కొత్త జల్లెడ',
 	'abusefilter-edit-save' => 'జల్లెడ భద్రపరచు',
 	'abusefilter-edit-id' => 'జల్లెడ ఐ.డీ:',
@@ -4466,7 +4472,9 @@ $messages['te'] = array(
 	'abusefilter-edit-consequences' => 'హిట్‌పై తీసుకున్న చర్యలు',
 	'abusefilter-edit-action-disallow' => 'ఈ చర్యను నిరాకరించు',
 	'abusefilter-edit-action-block' => 'ఈ వాడుకరిని దిద్దుబాట్లు చేయకుండా నిషేధించు',
-	'abusefilter-edit-throttle-seconds' => '$1 క్షణాలు',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|క్షణం|క్షణాలు}}',
+	'abusefilter-history-comments' => 'వ్యాఖ్యలు',
+	'abusefilter-history-actions' => 'చర్యలు',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
