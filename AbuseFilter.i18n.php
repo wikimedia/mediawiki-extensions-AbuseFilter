@@ -243,6 +243,8 @@ A brief description of the abuse rule which your action matched is: $1",
  */
 $messages['qqq'] = array(
 	'abusefilter-desc' => 'Short description of the Abusefilter extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'abusefilter' => 'Name of Special:AbuseFilter in Special:SpecialPages.',
+	'abuselog' => 'Name of Special:AbuseLog in Special:SpecialPages.',
 	'right-abusefilter-modify' => '{{doc-right}}',
 	'right-abusefilter-view' => '{{doc-right}}',
 	'right-abusefilter-log' => '{{doc-right}}',
@@ -2199,6 +2201,10 @@ Un breve description del regula anti-abuso correspondente con tu action es: $1',
  * @author Darth Kule
  */
 $messages['it'] = array(
+	'abusefilter-desc' => "Applica un'euristica automatica agli edit.",
+	'abusefilter' => 'Configurazione filtro abusi',
+	'abuselog' => 'Registro abusi',
+	'abusefilter-degroupreason' => 'Diritti rimossi automaticamente dal filtro abusi. Descrizione della regola: $1',
 	'abusefilter-log-search-user' => 'Utente:',
 	'abusefilter-log-search-title' => 'Titolo:',
 	'abusefilter-log-search-submit' => 'Ricerca',
@@ -2220,6 +2226,7 @@ $messages['it'] = array(
 	'abusefilter-edit-rules' => 'Condizioni:',
 	'abusefilter-edit-notes' => "Note:
 :''(private)''",
+	'abusefilter-edit-action-degroup' => "Rimuovi l'utente da tutti i gruppi privilegiati",
 	'abusefilter-edit-throttle-period' => 'Periodo di tempo:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|secondo|secondi}}',
 	'abusefilter-edit-history' => 'Cronologia',
@@ -2600,6 +2607,7 @@ $messages['lb'] = array(
 	'abusefilter-edit-builder-group-funcs' => 'Fonctiounen',
 	'abusefilter-edit-builder-funcs-lcase' => 'A kleng Buchstawen ëmwandelen (lcase)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Duebel-Buchstawen ewechhuelen (rmdoubles)',
+	'abusefilter-edit-builder-funcs-norm' => 'Normaliséieren (norm)',
 	'abusefilter-edit-builder-group-vars' => 'Variabelen',
 	'abusefilter-edit-builder-vars-accountname' => 'Numm vum Benotzerkont (beim Uleeë vum Benotzerkont)',
 	'abusefilter-edit-builder-vars-action' => 'Aktioun',
@@ -3673,6 +3681,7 @@ O descriere sumară a regulii abuzului care se potriveşte cu acţiunea ta este:
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'abuselog' => "Archivie de l'abusaminde",
 	'abusefilter-log-search-user' => 'Utende:',
 	'abusefilter-log-search-title' => 'Titele:',
 	'abusefilter-log-search-submit' => 'Cirche',
@@ -3686,7 +3695,10 @@ $messages['roa-tara'] = array(
 	'abusefilter-tools-subtitle' => 'Struminde',
 	'abusefilter-edit-status-label' => 'Statisteche',
 	'abusefilter-edit-new' => 'Filtre nueve',
+	'abusefilter-edit-throttle-seconds' => "$1 {{PLURAL:$1|'u seconde|le seconde}}",
 	'abusefilter-edit-builder-group-op-comparison' => 'Operatore de combronde',
+	'abusefilter-edit-builder-op-comparison-lt' => 'Cchiù peccinne de (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'Cchiù granne de (>)',
 	'abusefilter-history-timestamp' => 'Orarie',
 	'abusefilter-history-user' => 'Utende',
 	'abusefilter-history-deleted' => 'Scangillete',
