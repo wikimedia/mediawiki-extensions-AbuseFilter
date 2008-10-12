@@ -980,6 +980,13 @@ $messages['co'] = array(
 	'abusefilter-history-user' => 'Utilizatore',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'abusefilter-list-edit' => 'Golygu',
+);
+
 /** German (Deutsch)
  * @author Cedric31
  * @author ChrisiPK
