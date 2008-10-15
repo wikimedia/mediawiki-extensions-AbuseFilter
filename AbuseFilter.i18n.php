@@ -867,6 +867,7 @@ $messages['bg'] = array(
 	'abusefilter-tools-text' => 'Тук има някои инструменти, които може да са полезни за създаване или поправяне на защитни филтри.  [[Special:AbuseFilter|Назад към главното меню]]',
 	'abusefilter-tools-expr' => 'Проверка на изрази',
 	'abusefilter-tools-submitexpr' => 'Проверка',
+	'abusefilter-tools-reautoconfirm-user' => 'Потребител',
 	'abusefilter-status' => 'От {{PLURAL:$1|последното едно действие|последните $1 действия}}, $2 ($3%) {{PLURAL:$2|достигна|достигнаха}} условната граница от $4. $5 ($6%) от тях {{PLURAL:$5|съвпада|съвпадат}} с някой от текущо включените филтри.',
 	'abusefilter-edit-subtitle' => 'Редактиране на филтър $1',
 	'abusefilter-edit-status-label' => 'Статистики',
@@ -1299,7 +1300,7 @@ Mallonga priskribo pri la regulo de misuzo kiun via ago kongruis estas: $1",
 Se vi kredas ke via redakto estis utila, bonvolu kontakti administranton, kaj informi ilin pri kion vi volis fari.
 Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1',
 	'abusefilter-blocker' => 'Filtrilo de misuzo',
-	'abusefilter-blockreason' => 'Aŭtomate blokita de la misuzada filtrilo. Regula priskribo: $1',
+	'abusefilter-blockreason' => 'Aŭtomate blokita de la misuzada filtrilo. Resumo de kongrua regulo: $1',
 	'abusefilter-accountreserved' => 'Ĉi tiu konta nomo estas rezervita por uzo de la misuzada filtrilo.',
 	'right-abusefilter-modify' => 'Modifi filtrilojn de misuzo',
 	'right-abusefilter-view' => 'Rigardi filtrilojn de misuzo',
@@ -1345,6 +1346,7 @@ Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1',
 	'abusefilter-loglink' => 'Vidi la protokolon pri misuzado',
 	'abusefilter-tools-subtitle' => 'Iloj',
 	'abusefilter-tools-submitexpr' => 'Taksi',
+	'abusefilter-tools-reautoconfirm-user' => 'Uzanto',
 	'abusefilter-edit-subtitle' => 'Redaktis filtrilon $1',
 	'abusefilter-edit-status-label' => 'Statistikoj',
 	'abusefilter-edit-throttled' => "'''Averto''': Ĉi tiu filtrilo aŭtomate malebligiĝis pro sekureco. Ĝi atingis la limo kontruanta pli ol $1% de agoj.",
@@ -2210,6 +2212,14 @@ Un breve description del regula anti-abuso correspondente con tu action es: $1',
 	'abusefilter-history-deleted' => 'Delite',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'abusefilter-log-search-title' => 'Judul:',
+	'abusefilter-log-search-submit' => 'Cari',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -2764,8 +2774,12 @@ $messages['mt'] = array(
  */
 $messages['myv'] = array(
 	'abuselog' => 'Аволь истя тевс нолдамодо тешкстамот',
+	'abusefilter-blocker' => 'А тевде сувтеме',
+	'right-abusefilter-view' => 'Ванномс а тевде сувтеметнень',
+	'abusefilter-log' => 'А тевде сувтемень тешкстамот',
+	'abusefilter-log-search' => 'Вешнемс а тевде сувтемень тешкстамотнестэ',
 	'abusefilter-log-search-user' => 'Теицясь:',
-	'abusefilter-log-search-title' => 'Коняксось:',
+	'abusefilter-log-search-title' => 'Коняксозо:',
 	'abusefilter-log-search-submit' => 'Вешнэмс',
 	'abusefilter-list' => 'Весе сувтеметь',
 	'abusefilter-list-id' => 'Сувтемень ID',
@@ -2773,23 +2787,43 @@ $messages['myv'] = array(
 	'abusefilter-list-edit' => 'Витнемензэ-петнемензэ',
 	'abusefilter-unhidden' => 'Весень туртов',
 	'abusefilter-list-new' => 'Од сувтеме',
+	'abusefilter-links' => 'Лезэв сюлмавома пенеть:',
+	'abusefilter-show-tools' => 'А тевде сувтемень кедьйонкст',
+	'abusefilter-loglink' => 'Ванномс а тевде сувтемень тешкстамотнень',
 	'abusefilter-tools-subtitle' => 'Кедьйонкст',
+	'abusefilter-tools-reautoconfirm-user' => 'Теиця',
+	'abusefilter-edit-status-label' => 'Статистика',
 	'abusefilter-edit-new' => 'Од сувтеме',
 	'abusefilter-edit-save' => 'Ванстомс сувтеме',
 	'abusefilter-edit-flags' => 'Флагтнэ:',
 	'abusefilter-edit-enabled' => 'Тевс нолдавозо сувтемесь',
+	'abusefilter-edit-deleted' => 'Тешкстамс нардазекс',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|секунда|секундат}}',
 	'abusefilter-edit-main' => 'Сувтемень параметратне',
+	'abusefilter-edit-done-subtitle' => 'Сувтемесь витнезь-петнезь',
+	'abusefilter-edit-viewhistory' => 'Ванномс те сувтементь юронзо-путовксонзо',
 	'abusefilter-edit-history' => 'Путовксонзо-юронзо',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Арифметикань операторт',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Путомась (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Саемась (-)',
 	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Ламокстамось (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'Явомась (/)',
+	'abusefilter-edit-builder-group-op-comparison' => 'Карадо-каршо аравтомань оператортнэ',
+	'abusefilter-edit-builder-op-comparison-equal' => 'Вейкетстяви (==)',
+	'abusefilter-edit-builder-op-comparison-notequal' => 'А вейкетстяви (!=)',
 	'abusefilter-edit-builder-op-bool-not' => 'Аволь (!)',
+	'abusefilter-edit-builder-op-bool-and' => 'Марто (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'Эли (|)',
 	'abusefilter-edit-builder-group-misc' => 'Минень-сюнонь',
 	'abusefilter-edit-builder-group-funcs' => 'Функцият',
+	'abusefilter-edit-builder-vars-action' => 'Тев теема',
 	'abusefilter-edit-builder-vars-newsize' => 'Лопанть од покшолмазо',
 	'abusefilter-edit-builder-vars-oldsize' => 'Лопанть икелень покшолмазо',
+	'abusefilter-edit-builder-vars-article-id' => 'Сёрмадовкс ID',
 	'abusefilter-edit-builder-vars-article-ns' => 'Сёрмадовксонь лем потмо',
+	'abusefilter-edit-builder-vars-article-text' => 'Сёрмадовкс конякс (лем потмовтомо)',
+	'abusefilter-edit-builder-vars-user-age' => 'Совамо тарканть шказо',
+	'abusefilter-edit-builder-vars-user-name' => 'Совамо тарканть лемезэ',
 	'abusefilter-history' => '"$1" сувтементь путовксонзо-юронзо',
 	'abusefilter-history-hidden' => 'кекшезь',
 	'abusefilter-history-enabled' => 'тевс нолдавиця',
@@ -2797,6 +2831,8 @@ $messages['myv'] = array(
 	'abusefilter-history-user' => 'Теиця',
 	'abusefilter-history-public' => 'Весень туртов сувтемеде ёвтамо-сёрмадовкс',
 	'abusefilter-history-flags' => 'Флагт',
+	'abusefilter-history-comments' => 'Мельть-арьсемат',
+	'abusefilter-history-deleted' => 'Нардазь',
 );
 
 /** Nahuatl (Nāhuatl)
