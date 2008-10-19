@@ -304,15 +304,6 @@ $messages['rtm'] = array(
 	'abusefilter-list-edit' => "A'tū'ạki",
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'abusefilter-log-search-user' => 'Пайдаланыше:',
-	'abusefilter-edit-history' => 'Историй',
-	'abusefilter-history-user' => 'Пайдаланыше',
-);
-
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
@@ -1190,7 +1181,7 @@ $messages['dsb'] = array(
 	'abusefilter' => 'Konfiguracija filtra znjewužywanja',
 	'abuselog' => 'Protokol znjewužywanjow',
 	'abusefilter-blocker' => 'Filter znjewužywanja',
-	'abusefilter-blockreason' => 'Awtomatiski pśez filter znjewužywanja blokěrowany. Wopisanje pšawidła: $1',
+	'abusefilter-blockreason' => 'Awtomatiski pśez filter znjewužywanja zablokěrowany. Wopisanje pśitrjefjecego pšawidła: $1',
 	'abusefilter-degroupreason' => 'Pšawa awtomatiski pśez fitler znjewužywanja zajmjone. Wopisanje pšawidła: $1',
 	'abusefilter-accountreserved' => 'Toś to kontowe mě jo za wužywanje pśez filter znjewužywanja wuměnjone.',
 	'right-abusefilter-modify' => 'Filtry znjewužywanja změniś',
@@ -1239,7 +1230,7 @@ $messages['dsb'] = array(
 	'abusefilter-edit-flags' => 'Wobznamjenja:',
 	'abusefilter-edit-enabled' => 'Toś ten filter zmóžniś',
 	'abusefilter-edit-hidden' => 'Drobnosći toś togo filtra pśed zjawnym zwobraznjenim schowaś',
-	'abusefilter-edit-rules' => 'Sajźba pšawidłow:',
+	'abusefilter-edit-rules' => 'Wuměnjenja::',
 	'abusefilter-edit-notes' => "Pśipomnjeś:
 :'' (priwatny)",
 	'abusefilter-edit-lastmod' => 'filter slědny raz změnjony:',
@@ -1247,11 +1238,11 @@ $messages['dsb'] = array(
 	'abusefilter-edit-hitcount' => 'Licba filtrowych trefarjow:',
 	'abusefilter-edit-consequences' => 'Akcije wuwjeźone pśi trjefarju',
 	'abusefilter-edit-action-warn' => 'Toś te akcije pó warnowanju do wužiwarja zapušćiś',
-	'abusefilter-edit-action-disallow' => 'Akciju zakazaś',
+	'abusefilter-edit-action-disallow' => 'Wužywarjeju wugbanje daneje akcije zawobaraś',
 	'abusefilter-edit-action-flag' => 'Změnu w protokolu znjewužywanjow wobznamjeniś',
 	'abusefilter-edit-action-blockautopromote' => 'Wužywarjeju awtomatiski wobkšuśony status zajmjeś',
 	'abusefilter-edit-action-degroup' => 'Wužywarja ze wšych priwilegěrowanych kupkow wótwónoźeś',
-	'abusefilter-edit-action-block' => 'Wobźełanje pśez wužywarja blokěrowaś',
+	'abusefilter-edit-action-block' => 'Wužywarjeju a/abo IP wobźěłanje zawobaraś',
 	'abusefilter-edit-action-throttle' => 'Akcije jano zapušćiś, jolic wužywaŕ pśekšaca progowy gódnotu',
 	'abusefilter-edit-throttle-count' => 'Licba dowólonych akcijow:',
 	'abusefilter-edit-throttle-period' => 'Casowy interwal:',
@@ -1877,12 +1868,49 @@ Unha breve descrición da regra de abuso coa que a súa acción coincide é: $1'
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
  * @author LeighvsOptimvsMaximvs
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'abuselog' => 'Κατάλογος ὕβρεων',
+	'abusefilter-log-search-user' => 'Χρώμενος:',
+	'abusefilter-log-search-title' => 'Ἐπιγραφή:',
+	'abusefilter-log-search-submit' => 'Ζητεῖν',
+	'abusefilter-log-detailslink' => 'λεπτομέρειαι',
+	'abusefilter-log-details-var' => 'Μεταβλητή',
+	'abusefilter-log-details-val' => 'Τιμή',
+	'abusefilter-log-details-private' => 'Ἰδιωτικὰ δεδομένα',
 	'abusefilter-log-noactions' => 'οὐδέν',
+	'abusefilter-list' => 'Ἅπαντα τὰ διηθητήρια',
+	'abusefilter-list-status' => 'Καθεστώς',
+	'abusefilter-list-visibility' => 'Ὁρατότης',
 	'abusefilter-list-edit' => 'Μεταγράφειν',
+	'abusefilter-list-details' => 'Λεπτομέρειαι',
+	'abusefilter-hidden' => 'Ἰδιωτική',
+	'abusefilter-unhidden' => 'Δημοσία',
+	'abusefilter-list-new' => 'Νέον διηθητήριον',
+	'abusefilter-tools-modifiertest-submit' => 'Δοκιμή',
+	'abusefilter-tools-reautoconfirm-user' => 'Χρώμενος',
+	'abusefilter-edit-flags' => 'Σημαῖαι:',
+	'abusefilter-edit-rules' => 'Συνθῆκαι:',
+	'abusefilter-edit-notes' => "Σημειώσεις:
+:''(ἰδιωτικόν)",
+	'abusefilter-edit-history' => 'Ἱστορία',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Πρόσθεσις (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Ἀφαίρεσις (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Πολλαπλασίασις (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'Διαίρεσις (/)',
+	'abusefilter-edit-builder-op-arithmetic-modulo' => 'Κατὰ μέτρον (%)',
+	'abusefilter-edit-builder-op-arithmetic-pow' => 'Δύναμις (**)',
+	'abusefilter-edit-builder-group-op-comparison' => 'Τελεσταὶ συγκρίσεως',
+	'abusefilter-edit-builder-op-bool-not' => 'Οὐ (!)',
+	'abusefilter-edit-builder-op-bool-and' => 'Καί (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'Ἤ (|)',
+	'abusefilter-edit-builder-group-funcs' => 'Τελέσεις',
+	'abusefilter-edit-builder-vars-action' => 'Δρᾶσις',
+	'abusefilter-history-timestamp' => 'Χρόνος',
 	'abusefilter-history-user' => 'Χρώμενος',
+	'abusefilter-history-flags' => 'Σημαῖαι',
+	'abusefilter-history-deleted' => 'Διεγραμμένη',
 );
 
 /** Swiss German (Alemannisch)
@@ -1892,11 +1920,37 @@ $messages['gsw'] = array(
 	'abusefilter-log-search-title' => 'Titel:',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'abusefilter-log-search-user' => 'Ymmydeyr:',
+	'abusefilter-list-status' => 'Stayd',
+);
+
 /** Hebrew (עברית)
  * @author StuB
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'abusefilter-log-search-user' => 'משתמש:',
+	'abusefilter-edit-throttled' => "'''אזהרה''': מסנן זה בוטל אוטומטית כחלק מנקיטת צעדי בטיחות. המסנן הגיע למגבלה התואמת ללמעלה מ־$1% פעולות.",
+	'abusefilter-edit-new' => 'מסנן חדש',
+	'abusefilter-edit-save' => 'שמור מסנן',
+	'abusefilter-edit-id' => 'מזהה המסנן:',
+	'abusefilter-edit-description' => "תיאור:
+:''(ניתן לצפייה ציבורית)''",
+	'abusefilter-edit-flags' => 'דגלונים:',
+	'abusefilter-edit-enabled' => 'החל מסנן זה',
+	'abusefilter-edit-deleted' => 'סמן כמחוק',
+	'abusefilter-edit-hidden' => 'הסתר את פרטי מסנן זה מצפייה ציבורית',
+	'abusefilter-edit-rules' => 'תנאים:',
+	'abusefilter-edit-notes' => "הערות:
+:''(פרטי)",
+	'abusefilter-edit-lastmod' => 'המסנן שונה לאחרונה:',
+	'abusefilter-edit-lastuser' => 'המשתמש האחרון ששינה מסנן זה:',
+	'abusefilter-edit-throttle-count' => 'מספר פעולות להרשאה:',
+	'abusefilter-edit-throttle-period' => 'משך הזמן:',
 );
 
 /** Hindi (हिन्दी)
@@ -2216,8 +2270,156 @@ Un breve description del regula anti-abuso correspondente con tu action es: $1',
  * @author Rex
  */
 $messages['id'] = array(
+	'abusefilter-desc' => 'Memberlakukan pemeriksaan heuristik otomatis atas kontribusi pengguna.',
+	'abusefilter' => 'Konfigurasi filter penyalahgunaan',
+	'abuselog' => 'Log penyalahgunaan',
+	'abusefilter-warning' => "<big>'''Peringatan'''</big>: Tindakan ini telah diidentifikasikan secara otomatis sebagai tindakan yang merusak.
+Suntingan yang tidak berguna akan segera dikembalikan,
+dan kontribusi tidak berguna yang buruk dan berulang-ulang akan berakibat pada terblokirnya akun atau komputer Anda.
+Jika Anda yakin bahwa suntingan Anda adalah suntingan yang sah, Anda bisa mengklik Kirim lagi untuk mengkonfirmasinya.
+Keterangan singkat tentang peraturan penyalahgunaan yang berkaitan dengan tindakan Anda adalah: $1",
+	'abusefilter-disallowed' => 'Tindakan ini telah diidentifikasikan secara otomatis sebagai tindakan yang merusak,
+dan karenanya ditolak.
+Jika Anda yakin bahwa suntingan Anda adalah suntingan yang sah, silakan hubungi pengurus, dan informasikan apa yang sedang Anda lakukan.
+Keterangan singkat tentang peraturan penyalahgunaan yang berkaitan dengan tindakan Anda adalah: $1',
+	'abusefilter-blocked-display' => 'Tindakan ini telah diidentifikasikan secara otomatis sebagai tindakan yang merusak,
+dan sistem telah mencegah tindakan Anda.
+Sebagai tambahan, untuk melindungi {{SITENAME}}, akun pengguna Anda dan semua alamat IP terkait telah diblokir.
+Jika menurut Anda ini adalah kesalahan, silakan hubungi pengurus.
+Keterangan singkat tentang peraturan penyalahgunaan yang berkaitan dengan tindakan Anda adalah: $1',
+	'abusefilter-degrouped' => 'Tindakan ini telah diidentifikasikan secara otomatis sebagai tindakan yang merusak.
+Konsekuensinya, tindakan ini telah ditolak, dan, karena akun Anda dianggap mencurigakan, semua hak akses Anda telah dicabut.
+Jika Anda yakin bahwa ini adalah kesalahan, silakan hubungi birokrat untuk menjelaskan tindakan Anda, untuk meminta hak-hak Anda dipulihkan.
+Keterangan singkat tentang peraturan penyalahgunaan yang berkaitan dengan tindakan Anda adalah: $1',
+	'abusefilter-autopromote-blocked' => 'Tindakan ini telah diidentifikasikan secara otomatis sebagai tindakan yang merusak, dan telah ditolak.
+Sebagai tambahan, sebagai langkah keamanan, beberapa privilese yang biasanya diberikan bagi suatu akun mapan telah dibatalkan dari akun Anda.
+Keterangan singkat tentang peraturan penyalahgunaan yang berkaitan dengan tindakan Anda adalah: $1',
+	'abusefilter-blocker' => 'Filter penyalahgunaan',
+	'abusefilter-blockreason' => 'Diblokir secara otomatis oleh filter penyalahgunaan.
+Keterangan mengenai peraturan terkait: $1',
+	'abusefilter-degroupreason' => 'Hak akses telah dicabut secara otomatis oleh filter penyalahgunaan.
+Keterangan mengenai peraturan terkait: $1',
+	'abusefilter-accountreserved' => 'Nama akun ini telah dicadangkan untuk digunakan oleh filter penyalahgunaan.',
+	'right-abusefilter-modify' => 'Memodifikasi filter penyalahgunaan',
+	'right-abusefilter-view' => 'Menampilkan filter penyalahgunaan',
+	'right-abusefilter-log' => 'Menampilkan log penyalahgunaan',
+	'right-abusefilter-log-detail' => 'Menampilkan entri log penyalahgunaan secara rinci',
+	'right-abusefilter-private' => 'Menampilkan data pribadi dalam log penyalahgunaan',
+	'abusefilter-log' => 'Log filter penyalahgunaan',
+	'abusefilter-log-search' => 'Pencarian log penyalahgunaan',
+	'abusefilter-log-search-user' => 'Pengguna:',
+	'abusefilter-log-search-filter' => 'ID filter:',
 	'abusefilter-log-search-title' => 'Judul:',
 	'abusefilter-log-search-submit' => 'Cari',
+	'abusefilter-log-entry' => '$1: $2 memicu filter penyalahgunaan, melakukan $3 pada $4. Tindakan yang diambil: $5; Keterangan filter: $6',
+	'abusefilter-log-detailedentry' => '$1: $2 memicu filter penyalahgunaan $3, melakukan $4 pada $5. Tindakan yang diambil: $6; Keterangan filter: $7 ($8)',
+	'abusefilter-log-detailslink' => 'rincian',
+	'abusefilter-log-details-legend' => 'Rincian untuk entri log $1',
+	'abusefilter-log-details-var' => 'Variable',
+	'abusefilter-log-details-val' => 'Nilai',
+	'abusefilter-log-details-vars' => 'Parameter tindakan',
+	'abusefilter-log-details-private' => 'Data pribadi',
+	'abusefilter-log-details-ip' => 'Alamat IP asal',
+	'abusefilter-log-noactions' => 'tidak ada',
+	'abusefilter-management' => 'Manajemen filter penyalahgunaan',
+	'abusefilter-list' => 'Semua filter',
+	'abusefilter-list-id' => 'ID filter',
+	'abusefilter-list-status' => 'Status',
+	'abusefilter-list-public' => 'Keterangan publik',
+	'abusefilter-list-consequences' => 'Konsekuensi',
+	'abusefilter-list-visibility' => 'Visibilitas',
+	'abusefilter-list-hitcount' => 'Jumlah',
+	'abusefilter-list-edit' => 'Sunting',
+	'abusefilter-list-details' => 'Rincian',
+	'abusefilter-hidden' => 'Pribadi',
+	'abusefilter-unhidden' => 'Publik',
+	'abusefilter-enabled' => 'Diaktifkan',
+	'abusefilter-deleted' => 'Dihapus',
+	'abusefilter-disabled' => 'Dinonaktifkan',
+	'abusefilter-hitcount' => '$1 {{PLURAL:$1|kali|kali}}',
+	'abusefilter-list-new' => 'Filter baru',
+	'abusefilter-links' => 'Pranala berguna:',
+	'abusefilter-tools-modifiertest-submit' => 'Coba',
+	'abusefilter-show-deleted' => 'Lihat filter yang telah dihapus',
+	'abusefilter-show-all' => 'Tampilkan semua filter yang batal dihapus',
+	'abusefilter-show-active' => 'Sembunyikan filter yang dinonaktifkan',
+	'abusefilter-show-tools' => 'Peralatan filter penyalahgunaan',
+	'abusefilter-loglink' => 'Lihat log penyalahgunaan',
+	'abusefilter-tools-subtitle' => 'Peralatan',
+	'abusefilter-tools-text' => 'Di sini terdapat beberapa peralatan yang mungkin berguna untuk merumuskan dan menguji coba filter penyalahgunaan. [[Special:AbuseFilter|Kembali ke menu utama]]',
+	'abusefilter-tools-expr' => 'Penguji ekspresi',
+	'abusefilter-tools-submitexpr' => 'Evaluasi',
+	'abusefilter-tools-reautoconfirm' => 'Mengembalikan status konfirmasi otomatis',
+	'abusefilter-tools-reautoconfirm-user' => 'Pengguna',
+	'abusefilter-tools-reautoconfirm-submit' => 'Konfirmasi otomatis kembali',
+	'abusefilter-reautoconfirm-none' => 'Status konfirmasi otomatis pengguna tersebut tidak pernah dicabut.',
+	'abusefilter-reautoconfirm-notallowed' => 'Anda tidak memiliki hak untuk mengembalikan status konfirmasi otomatis.',
+	'abusefilter-status' => 'Dari $1 {{PLURAL:$1|tindakan|tindakan}} terakhir, $2 (%3%) {{PLURAL:$2|telah|telah}} mencapai batasan kondisi $4. $5 ($6%) {{PLURAL:$5|sesuai|sesuai}} dengan salah satu filter yang aktif.',
+	'abusefilter-edit-subtitle' => 'Menyunting filter $1',
+	'abusefilter-edit-status-label' => 'Statistik',
+	'abusefilter-edit-status' => 'Dari $1 {{PLURAL:$1|tindakan|tindakan}} terakhir, terdapat $2 ($3%) kecocokan dengan filter ini.',
+	'abusefilter-edit-throttled' => "'''Peringatan''': Filter ini telah dinonaktifkan secara otomatis untuk alasan keamanan. Terdapat lebih dari $1% tindakan yang cocok dan mencapai batasan filter ini.",
+	'abusefilter-edit-new' => 'Filter baru',
+	'abusefilter-edit-save' => 'Simpan filter',
+	'abusefilter-edit-id' => 'ID Filter:',
+	'abusefilter-edit-description' => "Keterangan:
+:''(dapat dilihat secara publik)''",
+	'abusefilter-edit-flags' => 'Tanda:',
+	'abusefilter-edit-enabled' => 'Aktifkan filter ini',
+	'abusefilter-edit-deleted' => 'Tandai sebagai telah dihapus',
+	'abusefilter-edit-hidden' => 'Sembunyikan rincian filter ini dari publik',
+	'abusefilter-edit-rules' => 'Kondisi:',
+	'abusefilter-edit-notes' => "Catatan:
+:''(pribadi)",
+	'abusefilter-edit-lastmod' => 'Filter terakhir diubah:',
+	'abusefilter-edit-lastuser' => 'Filter terakhir diubah oleh:',
+	'abusefilter-edit-hitcount' => 'Filter mengenai sasaran:',
+	'abusefilter-edit-consequences' => 'Tindakan yang diambil ketika mengenai sasaran',
+	'abusefilter-edit-action-warn' => 'Picu tindakan ini setelah memberikan peringatan kepada pengguna',
+	'abusefilter-edit-action-disallow' => 'Cegah pengguna melakukan tindakan yang meragukan',
+	'abusefilter-edit-action-flag' => 'Tandai suntingan ini dalam log penyalahgunaan',
+	'abusefilter-edit-action-blockautopromote' => 'Cabut status konfirmasi otomatis pengguna tersebut',
+	'abusefilter-edit-action-degroup' => 'Cabut semua kelompok privilese dari pengguna tersebut',
+	'abusefilter-edit-action-block' => 'Blokir pengguna dan alamat IP dari menyunting',
+	'abusefilter-edit-action-throttle' => 'Picu tindakan hanya jika pengguna melampaui batasan tertentu',
+	'abusefilter-edit-action-rangeblock' => 'Blokir selebar /16 dari asal pengguna',
+	'abusefilter-edit-throttle-count' => 'Jumlah tindakan yang diizinkan:',
+	'abusefilter-edit-throttle-period' => 'Periode waktu:',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|detik|detik}}',
+	'abusefilter-edit-throttle-groups' => "Kelompokkan katup menurut:
+:''(satu per baris, kombinasi dengan koma)''",
+	'abusefilter-edit-denied' => 'Anda tidak dapat melihat rincian filter ini, karena rincian filter telah disembunyikan dari publik',
+	'abusefilter-edit-main' => 'Parameter filter',
+	'abusefilter-edit-done-subtitle' => 'Filter telah disunting',
+	'abusefilter-edit-done' => 'Anda berhasil menyimpan perubahan filter.
+
+[[Special:AbuseFilter|Kembali]]',
+	'abusefilter-edit-badsyntax' => 'Terdapat kesalahan sintaksis dalam filter yang Anda masukkan. Hasil dari parser adalah:
+<pre>$1</pre>',
+	'abusefilter-edit-viewhistory' => 'Lihat sejarah filter ini',
+	'abusefilter-edit-history' => 'Sejarah',
+	'abusefilter-edit-check' => 'Periksa sintaksis',
+	'abusefilter-edit-builder-select' => 'Pilih sebuah opsi untuk menambahkannya pada kursor',
+	'abusefilter-edit-builder-group-op-arithmetic' => 'Operator aritmatika',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Penambahan (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Pengurangan (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Pengalian (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'Pembagian (/)',
+	'abusefilter-edit-builder-op-arithmetic-modulo' => 'Modulo (%)',
+	'abusefilter-edit-builder-op-arithmetic-pow' => 'Pangkat (**)',
+	'abusefilter-edit-builder-group-op-comparison' => 'Operator perbandingan',
+	'abusefilter-edit-builder-op-comparison-equal' => 'Sama dengan (==)',
+	'abusefilter-edit-builder-op-comparison-notequal' => 'Tidak sama dengan (!=)',
+	'abusefilter-edit-builder-op-comparison-lt' => 'Kurang dari (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'Lebih besar dari (>)',
+	'abusefilter-edit-builder-op-comparison-lte' => 'Kurang dari atau sama dengan (<=)',
+	'abusefilter-edit-builder-op-comparison-gte' => 'Lebih besar atau sama dengan (>=)',
+	'abusefilter-edit-builder-group-op-bool' => 'Operator boolean',
+	'abusefilter-edit-builder-op-bool-not' => 'Bukan (!)',
+	'abusefilter-edit-builder-op-bool-and' => 'Dan (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'Atau (|)',
+	'abusefilter-edit-builder-group-misc' => 'Lainnya',
+	'abusefilter-edit-builder-misc-ternary' => 'Operator ternary (1 ? 2 : 3)',
 );
 
 /** Italian (Italiano)
@@ -2713,6 +2915,46 @@ $messages['lt'] = array(
 	'abusefilter-log-search-submit' => 'Ieškoti',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'abusefilter-log-search-user' => 'Пайдаланыше:',
+	'abusefilter-edit-history' => 'Историй',
+	'abusefilter-history-user' => 'Пайдаланыше',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'abusefilter-log-search-user' => 'Корисник:',
+	'abusefilter-log-search-filter' => 'Идентификатор на филтер:',
+	'abusefilter-log-search-title' => 'Наслов:',
+	'abusefilter-log-search-submit' => 'Барај',
+	'abusefilter-log-details-val' => 'Вредност',
+	'abusefilter-list-status' => 'Статус',
+	'abusefilter-list-public' => 'Опис достапен за јавноста',
+	'abusefilter-list-consequences' => 'Консеквенци',
+	'abusefilter-list-visibility' => 'Видливост',
+	'abusefilter-edit-history' => 'Историја',
+	'abusefilter-edit-check' => 'Проверка на синтакса',
+	'abusefilter-edit-builder-op-arithmetic-modulo' => 'Модул (%)',
+	'abusefilter-edit-builder-op-arithmetic-pow' => 'Степен (**)',
+	'abusefilter-edit-builder-group-op-comparison' => 'Оператори за споредба',
+	'abusefilter-edit-builder-op-comparison-equal' => 'Еднакво со (==)',
+	'abusefilter-edit-builder-op-comparison-notequal' => 'Не е еднакво со (!=)',
+	'abusefilter-edit-builder-op-comparison-lt' => 'Помало од (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'Поголемо од (>)',
+	'abusefilter-edit-builder-op-comparison-lte' => 'Помало или еднакво со (<=)',
+	'abusefilter-edit-builder-op-comparison-gte' => 'Поголемо или еднакво со (>=)',
+	'abusefilter-edit-builder-group-op-bool' => 'Булови оператори',
+	'abusefilter-edit-builder-op-bool-not' => 'Not (!)',
+	'abusefilter-edit-builder-op-bool-and' => 'И (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'Или (|)',
+	'abusefilter-edit-builder-op-bool-xor' => 'XOR (^)',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  * @author Izzudin
@@ -2971,7 +3213,7 @@ $5 ($6%) {{PLURAL:$5|voldeed|voldeden}} aan een van de actieve filters.',
 	'abusefilter-edit-denied' => 'U mag de details van deze filter niet bekijken, omdat het verborgen is voor het publiek',
 	'abusefilter-edit-main' => 'Filterparameters',
 	'abusefilter-edit-done-subtitle' => 'Filter bewerkt',
-	'abusefilter-edit-done' => 'U hebt uw wijzigingen aan de filter successvol opgeslagen.
+	'abusefilter-edit-done' => 'U hebt uw wijzigingen aan de filter opgeslagen.
 
 [[Special:AbuseFilter|Terugkeren]]',
 	'abusefilter-edit-badsyntax' => 'Er zit een syntaxisfout in de opgegeven filter.
