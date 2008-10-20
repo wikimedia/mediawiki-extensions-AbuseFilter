@@ -78,6 +78,12 @@ $aliases['no'] = array(
 	'AbuseFilter' => array( 'Misbruksfilter' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'AbuseLog' => array( 'Jornal dels abuses', 'JornalDelsAbuses' ),
+	'AbuseFilter' => array( "Filtre d'abuses", 'FiltredAbuses', 'FilterAbus' ),
+);
+
 /** Romanian (Română) */
 $aliases['ro'] = array(
 	'AbuseLog' => array( 'Jurnal abuzuri' ),
