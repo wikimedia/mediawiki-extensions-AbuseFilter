@@ -5,6 +5,8 @@ if ( ! defined( 'MEDIAWIKI' ) )
 class SpecialAbuseFilter extends SpecialPage {
 
 	var $mSkin;
+	
+	static $history_mappings = array( 'af_pattern' => 'afh_pattern', 'af_user' => 'afh_user', 'af_user_text' => 'afh_user_text', 'af_timestamp' => 'afh_timestamp', 'af_comments' => 'afh_comments', 'af_public_comments' => 'afh_public_comments', 'af_deleted' => 'afh_deleted', 'af_id' => 'afh_filter' );
 
 	function __construct() {
 		wfLoadExtensionMessages('AbuseFilter');
@@ -31,14 +33,28 @@ class SpecialAbuseFilter extends SpecialPage {
 		
 		$this->mSkin = $wgUser->getSkin();
 		
+		$params = array_filter( explode( '/', $subpage ) );
+		
 		if ($subpage == 'tools') {
 			// Some useful tools
 			$this->doTools();
 			return;
 		}
 		
-		if ($subpage == 'history' && $this->showHistory()) {
-			return;
+		if (!empty($params[0]) && $params[0] == 'history') {
+			if (count($params) == 1) {
+				// ... useless?
+			} elseif (count($params) == 2) {
+				## Second param is a filter ID
+				$this->showHistory($params[1]);
+				return;
+			} elseif (count($params) == 4 && $params[2] == 'item') {
+				$wgOut->addWikiMsg( 'abusefilter-edit-oldwarning', $params[3], $params[1] );
+				$out = $this->buildFilterEditor( null, $params[1], $params[3] );
+				$wgOut->addHTML( $out );
+				$wgOut->addWikiMsg( 'abusefilter-edit-oldwarning', $params[3], $params[1] );
+				return;
+			}
 		}
 		
 		if ($output = $this->doEdit()) {
@@ -106,13 +122,8 @@ class SpecialAbuseFilter extends SpecialPage {
 		$this->showList( array( 'af_deleted' => 0, 'af_enabled' => 1 ) );
 	}
 	
-	function showHistory() {
+	function showHistory( $filter ) {
 		global $wgRequest,$wgOut;
-		
-		$filter = $wgRequest->getIntOrNull( 'filter' );
-		if (!$filter) {
-			return false;
-		}
 		
 		global $wgUser;
 		$sk = $wgUser->getSkin();
@@ -230,7 +241,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		}
 	}
 	
-	function doEdit() {
+	function doEdit( $history_id = null ) {
 		global $wgRequest, $wgUser;
 		
 		$filter = $this->mFilter;
@@ -247,7 +258,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		
 			$dbw = wfGetDB( DB_MASTER );
 			
-			list ($newRow, $actions) = $this->loadRequest();
+			list ($newRow, $actions) = $this->loadRequest($filter);
 			
 			$newRow = get_object_vars($newRow); // Convert from object to array
 			
@@ -292,12 +303,10 @@ class SpecialAbuseFilter extends SpecialPage {
 				}
 			}
 			
-			// Create a history row
-			$history_mappings = array( 'af_pattern' => 'afh_pattern', 'af_user' => 'afh_user', 'af_user_text' => 'afh_user_text', 'af_timestamp' => 'afh_timestamp', 'af_comments' => 'afh_comments', 'af_public_comments' => 'afh_public_comments', 'af_deleted' => 'afh_deleted' );
-			
+			// Create a history row			
 			$afh_row = array();
 			
-			foreach( $history_mappings as $af_col => $afh_col ) {
+			foreach( self::$history_mappings as $af_col => $afh_col ) {
 				$afh_row[$afh_col] = $newRow[$af_col];
 			}
 			
@@ -311,11 +320,11 @@ class SpecialAbuseFilter extends SpecialPage {
 			// Flags
 			$flags = array();
 			if ($newRow['af_hidden'])
-				$flags[] = wfMsgForContent( 'abusefilter-history-hidden' );
+				$flags[] = 'hidden';
 			if ($newRow['af_enabled'])
-				$flags[] = wfMsgForContent( 'abusefilter-history-enabled' );
+				$flags[] = 'enabled';
 			if ($newRow['af_deleted'])
-				$flags[] = wfMsgForContent( 'abusefilter-history-deleted' );
+				$flags[] = 'deleted';
 				
 			$afh_row['afh_flags'] = implode( ",", $flags );
 				
@@ -333,21 +342,21 @@ class SpecialAbuseFilter extends SpecialPage {
 			$wgOut->setSubtitle( wfMsg('abusefilter-edit-done-subtitle' ) );
 			return wfMsgExt( 'abusefilter-edit-done', array( 'parse' ) );
 		} else {
-			return $this->buildFilterEditor();
+			return $this->buildFilterEditor( null, $filter, $history_id );
 		}
 	}
 	
-	function buildFilterEditor( $error = ''  ) {
-		if( $this->mFilter === null ) {
+	function buildFilterEditor( $error = '', $filter, $history_id=null ) {
+		if( $filter === null ) {
 			return false;
 		}
 		
 		// Build the edit form
 		global $wgOut,$wgLang,$wgUser;
 		$sk = $this->mSkin;
-		$wgOut->setSubtitle( wfMsg( 'abusefilter-edit-subtitle', $this->mFilter ) );
+		$wgOut->setSubtitle( wfMsg( 'abusefilter-edit-subtitle', $filter, $history_id ) );
 		
-		list ($row, $actions) = $this->loadRequest();
+		list ($row, $actions) = $this->loadRequest($filter, $history_id);
 
 		if( !$row ) {
 			return false;
@@ -364,11 +373,11 @@ class SpecialAbuseFilter extends SpecialPage {
 		
 		$fields = array();
 		
-		$fields['abusefilter-edit-id'] = $this->mFilter == 'new' ? wfMsg( 'abusefilter-edit-new' ) : $this->mFilter;
+		$fields['abusefilter-edit-id'] = $this->mFilter == 'new' ? wfMsg( 'abusefilter-edit-new' ) : $filter;
 		$fields['abusefilter-edit-description'] = Xml::input( 'wpFilterDescription', 45, isset( $row->af_public_comments ) ? $row->af_public_comments : '' );
 
 		// Hit count display
-		if( $this->mFilter !== 'new' ){
+		if( !empty($row->af_hit_count) ){
 			$count = (int)$row->af_hit_count;
 			$count_display = wfMsgExt( 'abusefilter-hitcount', array( 'parseinline' ),
 				$wgLang->formatNum( $count )
@@ -376,14 +385,12 @@ class SpecialAbuseFilter extends SpecialPage {
 			$hitCount = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'AbuseLog' ), $count_display, 'wpSearchFilter='.$row->af_id );
 		
 			$fields['abusefilter-edit-hitcount'] = $hitCount;
-		} else {
-			$fields['abusefilter-edit-hitcount'] = '';
 		}
 		
-		if ($this->mFilter !== 'new') {
+		if ($filter !== 'new') {
 			// Statistics
 			global $wgMemc, $wgLang;
-			$matches_count = $wgMemc->get( AbuseFilter::filterMatchesKey( $this->mFilter ) );
+			$matches_count = $wgMemc->get( AbuseFilter::filterMatchesKey( $filter ) );
 			$total = $wgMemc->get( AbuseFilter::filterUsedKey() );
 			
 			if ($total > 0) {
@@ -421,12 +428,12 @@ class SpecialAbuseFilter extends SpecialPage {
 		}
 		$fields['abusefilter-edit-flags'] = $flags;
 		
-		if ($this->mFilter != 'new') {
+		if ($filter != 'new') {
 			// Last modification details
 			$user = $sk->userLink( $row->af_user, $row->af_user_text ) . $sk->userToolLinks( $row->af_user, $row->af_user_text );
 			$fields['abusefilter-edit-lastmod'] = wfMsgExt( 'abusefilter-edit-lastmod-text', array( 'parseinline', 'replaceafter' ), array( $wgLang->timeanddate( $row->af_timestamp ), $user ) );
 			$history_display = wfMsgExt( 'abusefilter-edit-viewhistory', array( 'parseinline' ) );
-			$fields['abusefilter-edit-history'] = $sk->makeKnownLinkObj( $this->getTitle( 'history' ), $history_display, "filter=".$this->mFilter );
+			$fields['abusefilter-edit-history'] = $sk->makeKnownLinkObj( $this->getTitle( 'history/'.$filter ), $history_display );
 		}
 		
 		$form = Xml::buildForm( $fields );
@@ -435,10 +442,10 @@ class SpecialAbuseFilter extends SpecialPage {
 		
 		if ($this->canEdit()) {
 			$form .= Xml::submitButton( wfMsg( 'abusefilter-edit-save' ) );
-			$form .= Xml::hidden( 'wpEditToken', $wgUser->editToken( array( 'abusefilter', $this->mFilter )) );
+			$form .= Xml::hidden( 'wpEditToken', $wgUser->editToken( array( 'abusefilter', $filter )) );
 		}
 		
-		$form = Xml::tags( 'form', array( 'action' => $this->getTitle( $this->mFilter )->getFullURL(), 'method' => 'POST' ), $form );
+		$form = Xml::tags( 'form', array( 'action' => $this->getTitle( $filter )->getFullURL(), 'method' => 'POST' ), $form );
 		
 		$output .= $form;
 		
@@ -549,9 +556,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		return $output;
 	}
 	
-	function loadFilterData() {
-		$id = $this->mFilter;
-		
+	function loadFilterData( $id ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		
 		// Load the main row
@@ -574,6 +579,43 @@ class SpecialAbuseFilter extends SpecialPage {
 		return array( $row, $actions );
 	}
 	
+	function loadHistoryItem( $id ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		
+		// Load the row.
+		$row = $dbr->selectRow( 'abuse_filter_history', '*', array( 'afh_id' => $id ), __METHOD__ );
+		
+		## Translate into an abuse_filter row with some black magic. This is ever so slightly evil!
+		$af_row = new StdClass;
+		
+		foreach (self::$history_mappings as $af_col => $afh_col ) {
+			$af_row->$af_col = $row->$afh_col;
+		}
+		
+		## Process flags
+		
+		$af_row->af_deleted = 0;
+		$af_row->af_hidden = 0;
+		$af_row->af_enabled = 0;
+		
+		$flags = explode(',', $row->afh_flags );
+		foreach( $flags as $flag ) {
+			$col_name = "af_$flag";
+			$af_row->$col_name = 1;
+		}
+		
+		## Process actions
+		$actions_raw = unserialize($row->afh_actions);
+		$actions_output = array();
+		
+		foreach( $actions_raw as $action => $parameters ) {
+			$actions_output[$action] = array( 'action' => $action, 'parameters' => $parameters );
+		}
+		
+		
+		return array( $af_row, $actions_output );
+	}
+	
 	function loadParameters( $subpage ) {
 		global $wgRequest;
 		
@@ -585,15 +627,19 @@ class SpecialAbuseFilter extends SpecialPage {
 		$this->mFilter = $filter;
 	}
 	
-	function loadRequest() {
+	function loadRequest( $filter, $history_id = null ) {
 		static $row = null;
 		static $actions = null;
 		global $wgRequest;
 		
 		if (!is_null($actions) && !is_null($row)) {
 			return array($row,$actions);
-		} elseif ( !$wgRequest->wasPosted() ) {
-			return $this->loadFilterData();
+		} elseif ($wgRequest->wasPosted()) {
+			## Nothing, we do it all later
+		} elseif ( $history_id ) {
+			return $this->loadHistoryItem( $history_id );
+		} else {
+			return $this->loadFilterData( $filter );
 		}
 		
 		// We need some details like last editor
@@ -751,12 +797,25 @@ class AbuseFilterHistoryPager extends ReverseChronologicalPager {
 		
 		$tr = '';
 		
-		$tr .= Xml::element( 'td', null, $wgLang->timeanddate( $row->afh_timestamp ) );
+		$title = SpecialPage::getTitleFor( 'AbuseFilter', 'history/'.$this->mFilter.'/item/'.$row->afh_id );
+		$link = $sk->link( $title, $wgLang->timeanddate( $row->afh_timestamp ) );
+		
+		$flags = array_filter(explode( ',', $row->afh_flags ));
+		$display_flags = array();
+		foreach( $flags as $flag ) {
+			$display_flags[] = wfMsgForContent( "abusefilter-history-$flag" );
+		}
+		
+		$comments = $wgLang->truncate( $row->afh_public_comments, 50, '...' );
+		$pattern = $wgLang->truncate( $row->afh_pattern, 200, '...' );
+		$notes = $wgLang->truncate( $row->afh_comments, 200, '...' );
+		
+		$tr .= Xml::tags( 'td', null, $link );
 		$tr .= Xml::tags( 'td', null, $sk->userLink( $row->afh_user, $row->afh_user_text ) . $sk->userToolLinks( $row->afh_user, $row->afh_user_text ) );
-		$tr .= Xml::element( 'td', null, $row->afh_public_comments );
-		$tr .= Xml::element( 'td', null, $row->afh_flags );
-		$tr .= Xml::element( 'td', null, $row->afh_pattern );
-		$tr .= Xml::element( 'td', null, $row->afh_comments );
+		$tr .= Xml::element( 'td', null, $comments );
+		$tr .= Xml::element( 'td', null, implode( ', ', $display_flags ) );
+		$tr .= Xml::element( 'td', null, $pattern );
+		$tr .= Xml::element( 'td', null, $notes );
 		
 		// Build actions
 		$actions = unserialize($row->afh_actions);

@@ -109,9 +109,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$output = '';
 		
 		$output .= Xml::element( 'legend', null, wfMsg( 'abusefilter-log-details-legend', $id ) );
-		
-		$output .= Xml::tags( 'p', null, $this->formatRow( $row ) );
-		
+		$output .= Xml::tags( 'p', null, $this->formatRow( $row, false ) );
 		$output .= Xml::element( 'h3', null, wfMsg( 'abusefilter-log-details-vars' ) );
 		
 		// Build a table.
@@ -158,7 +156,7 @@ class SpecialAbuseLog extends SpecialPage {
 		return !count($this->getTitle()->getUserPermissionsErrors( 'abusefilter-private', $wgUser, true, array( 'ns-specialprotected' ) ));
 	}
 	
-	function formatRow( $row ) {
+	function formatRow( $row, $li = true ) {
 		global $wgLang,$wgUser;
 		
 		## One-time setup
@@ -190,7 +188,7 @@ class SpecialAbuseLog extends SpecialPage {
 			$description = wfMsgExt( 'abusefilter-log-entry', array( 'parseinline', 'replaceafter' ), array( $timestamp, $user, $row->afl_action, $sk->makeKnownLinkObj( $title ), $actions_taken, $row->af_public_comments ) );
 		}
 		
-		return Xml::tags( 'li', null, $description );
+		return $li ? Xml::tags( 'li', null, $description ) : $description;
 	}
 	
 }
