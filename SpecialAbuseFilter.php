@@ -51,7 +51,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		
 		// Quick links
 		$wgOut->addWikiMsg( 'abusefilter-links' );
-		$lists = array( 'active', 'deleted', 'all', 'tools' );
+		$lists = array( 'tools' );
 		$links = '';
 		$sk = $wgUser->getSkin();
 		foreach( $lists as $list ) {
@@ -64,17 +64,38 @@ class SpecialAbuseFilter extends SpecialPage {
 		$links = Xml::tags( 'ul', null, $links );
 		$wgOut->addHTML( $links );
 		
-		if ($subpage == 'deleted') {
-			$this->showDeleted();
-			return;
+		// Options.
+		$conds = array();
+		$deleted = $wgRequest->getVal( 'deletedfilters' );
+		$hidedisabled = $wgRequest->getBool( 'hidedisabled' );
+		if ($deleted == 'show') {
+			## Nothing
+		} elseif ($deleted == 'only') {
+			$conds['af_deleted'] = 1;
+		} else { ## hide, or anything else.
+			$conds['af_deleted'] = 0;
+			$deleted = 'hide';
+		}
+		if ($hidedisabled) {
+			$conds['af_deleted'] = 0;
+			$conds['af_enabled'] = 1;
 		}
 		
-		if ($subpage == 'active') {
-			$this->showActive();
-			return;
-		}
+		$options = '';
+		$fields = array();
+		$fields['abusefilter-list-options-deleted'] = Xml::radioLabel( wfMsg( 'abusefilter-list-options-deleted-show' ), 'deletedfilters', 'show', 'mw-abusefilter-deletedfilters-show', $deleted == 'show' );
+		$fields['abusefilter-list-options-deleted'] .= Xml::radioLabel( wfMsg( 'abusefilter-list-options-deleted-hide' ), 'deletedfilters', 'hide', 'mw-abusefilter-deletedfilters-hide', $deleted == 'hide' );
+		$fields['abusefilter-list-options-deleted'] .= Xml::radioLabel( wfMsg( 'abusefilter-list-options-deleted-only' ), 'deletedfilters', 'only', 'mw-abusefilter-deletedfilters-only', $deleted == 'only' );
+		$fields['abusefilter-list-options-disabled'] = Xml::checkLabel( wfMsg( 'abusefilter-list-options-hidedisabled' ), 'hidedisabled', 'mw-abusefilter-disabledfilters-hide', $hidedisabled );
 		
-		$this->showList();
+		$options = Xml::buildForm( $fields, 'abusefilter-list-options-submit' );
+		$options .= Xml::hidden( 'title', $this->getTitle()->getPrefixedText() );
+		$options = Xml::tags( 'form', array( 'method' => 'get', 'action' => $this->getTitle()->getFullURL() ), $options );
+		$options = Xml::fieldset( wfMsg( 'abusefilter-list-options' ), $options );
+		
+		$wgOut->addHTML( $options );
+		
+		$this->showList( $conds );
 	}
 	
 	function showDeleted() {
@@ -172,12 +193,16 @@ class SpecialAbuseFilter extends SpecialPage {
 		
 		$wgOut->addInlineScript( $exprScript );
 		
-		// Hacky little box to re-enable autoconfirmed if it got disabled
-		$rac = '';
-		$rac .= Xml::inputLabel( wfMsg( 'abusefilter-tools-reautoconfirm-user' ), 'wpReAutoconfirmUser', 'reautoconfirm-user', 45 );
-		$rac .= Xml::element( 'input', array( 'type' => 'button', 'id' => 'mw-abusefilter-reautoconfirmsubmit', 'onclick' => 'doReautoSubmit();', 'value' => wfMsg( 'abusefilter-tools-reautoconfirm-submit' ) ) );
-		$rac = Xml::fieldset( wfMsg( 'abusefilter-tools-reautoconfirm' ), $rac );
-		$wgOut->addHtml( $rac );
+		global $wgUser;
+		
+		if ($wgUser->isAllowed( 'abusefilter-modify' )) {
+			// Hacky little box to re-enable autoconfirmed if it got disabled
+			$rac = '';
+			$rac .= Xml::inputLabel( wfMsg( 'abusefilter-tools-reautoconfirm-user' ), 'wpReAutoconfirmUser', 'reautoconfirm-user', 45 );
+			$rac .= Xml::element( 'input', array( 'type' => 'button', 'id' => 'mw-abusefilter-reautoconfirmsubmit', 'onclick' => 'doReautoSubmit();', 'value' => wfMsg( 'abusefilter-tools-reautoconfirm-submit' ) ) );
+			$rac = Xml::fieldset( wfMsg( 'abusefilter-tools-reautoconfirm' ), $rac );
+			$wgOut->addHtml( $rac );
+		}
 	}
 	
 	function showStatus() {

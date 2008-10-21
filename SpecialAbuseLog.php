@@ -185,9 +185,9 @@ class SpecialAbuseLog extends SpecialPage {
 		if ($this->canSeeDetails()) {
 			$detailsLink = $sk->makeKnownLinkObj( $this->getTitle(  ), wfMsg( 'abusefilter-log-detailslink' ), 'details='.$row->afl_id );
 			
-			$description = wfMsg( 'abusefilter-log-detailedentry', $timestamp, $user, $row->afl_filter, $row->afl_action, $sk->makeKnownLinkObj( $title ), $actions_taken, $row->af_public_comments, $detailsLink );
+			$description = wfMsgExt( 'abusefilter-log-detailedentry', array( 'parseinline', 'replaceafter' ), array( $timestamp, $user, $row->afl_filter, $row->afl_action, $sk->makeKnownLinkObj( $title ), $actions_taken, $row->af_public_comments, $detailsLink ) );
 		} else {
-			$description = wfMsg( 'abusefilter-log-entry', $timestamp, $user, $row->afl_action, $sk->makeKnownLinkObj( $title ), $actions_taken, $row->af_public_comments );
+			$description = wfMsgExt( 'abusefilter-log-entry', array( 'parseinline', 'replaceafter' ), array( $timestamp, $user, $row->afl_action, $sk->makeKnownLinkObj( $title ), $actions_taken, $row->af_public_comments ) );
 		}
 		
 		return Xml::tags( 'li', null, $description );
