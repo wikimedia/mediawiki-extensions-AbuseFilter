@@ -253,12 +253,8 @@ class AbuseFilter {
 					$_SESSION['abusefilter-warned'] = true;
 					
 					// Threaten them a little bit
-					if (strlen($parameters[0])) {
-						$display .= wfMsgNoTrans( $parameters[0], $rule_desc ) . "\n";
-					} else {
-						// Generic message.
-						$display .= wfMsgNoTrans( 'abusefilter-warning', $rule_desc ) ."<br />\n";
-					}
+					$msg = ( !empty($parameters[0]) && strlen($parameters[0]) ) ? $parameters[0] : 'abusefilter-warning';
+					$display .= wfMsgNoTrans( $msg, $rule_desc ) . "<br />\n";
 					
 					return false; // Don't apply the other stuff yet.
 				} else {

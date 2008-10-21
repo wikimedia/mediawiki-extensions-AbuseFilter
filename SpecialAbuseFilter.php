@@ -423,8 +423,8 @@ class SpecialAbuseFilter extends SpecialPage {
 		
 		if ($this->mFilter != 'new') {
 			// Last modification details
-			$fields['abusefilter-edit-lastmod'] = $wgLang->timeanddate( $row->af_timestamp );
-			$fields['abusefilter-edit-lastuser'] = $sk->userLink( $row->af_user, $row->af_user_text ) . $sk->userToolLinks( $row->af_user, $row->af_user_text );
+			$user = $sk->userLink( $row->af_user, $row->af_user_text ) . $sk->userToolLinks( $row->af_user, $row->af_user_text );
+			$fields['abusefilter-edit-lastmod'] = wfMsgExt( 'abusefilter-edit-lastmod-text', array( 'parseinline', 'replaceafter' ), array( $wgLang->timeanddate( $row->af_timestamp ), $user ) );
 			$history_display = wfMsgExt( 'abusefilter-edit-viewhistory', array( 'parseinline' ) );
 			$fields['abusefilter-edit-history'] = $sk->makeKnownLinkObj( $this->getTitle( 'history' ), $history_display, "filter=".$this->mFilter );
 		}
@@ -524,8 +524,16 @@ class SpecialAbuseFilter extends SpecialPage {
 		$throttleSettings .= Xml::buildForm( $throttleFields );
 		$output .= Xml::tags( 'p', null, $throttleSettings );
 		
+		// Special case: Warning
+		$checkbox = Xml::checkLabel( wfMsg( 'abusefilter-edit-action-warn' ), 'wpFilterActionWarn', 'wpFilterActionWarn', $setActions['warn'] );
+		$output .= Xml::tags( 'p', null, $checkbox );
+		
+		$warnMsg = empty($setActions['warn']) ? 'abusefilter-warning' : $actions['warn']['parameters'][0];
+		$warnFields['abusefilter-edit-warn-message'] = Xml::input( 'wpFilterWarnMessage', 45, $warnMsg );
+		$output .= Xml::tags( 'p', null, Xml::buildForm( $warnFields ) );
+		
 		// The remainder are just toggles
-		$remainingActions = array_diff( $wgAbuseFilterAvailableActions, array( 'flag', 'throttle' ) );
+		$remainingActions = array_diff( $wgAbuseFilterAvailableActions, array( 'flag', 'throttle', 'warn' ) );
 		
 		foreach( $remainingActions as $action ) {
 			$message = 'abusefilter-edit-action-'.$action;
@@ -621,6 +629,8 @@ class SpecialAbuseFilter extends SpecialPage {
 					$parameters[0] = $this->mFilter; // For now, anyway
 					$parameters[1] = "$throttleCount,$throttlePeriod";
 					$parameters = array_merge( $parameters, $throttleGroups );
+				} elseif ($action == 'warn') {
+					$parameters[0] = $wgRequest->getVal( 'wpFilterWarnMessage' );
 				}
 				
 				$thisAction = array( 'action' => $action, 'parameters' => $parameters );
