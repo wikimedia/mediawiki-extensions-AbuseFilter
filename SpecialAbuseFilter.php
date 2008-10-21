@@ -234,10 +234,19 @@ class SpecialAbuseFilter extends SpecialPage {
 			$dbw->begin();
 			
 			if ($filter == 'new') {
-				$new_id = $dbw->selectField( 'abuse_filter', 'max(af_id)', array(), __METHOD__ );
-				$new_id++;
+				$new_id = $dbw->nextSequenceValue( 'abuse_filter_af_id_seq' );
+				$is_new = true;
 			} else {
 				$new_id = $this->mFilter;
+				$is_new = false;
+			}
+			
+			$newRow['af_id'] = $new_id;
+			
+			$dbw->replace( 'abuse_filter', array( 'af_id' ), $newRow, __METHOD__ );
+			
+			if ($is_new) {
+				$new_id = $dbw->insertId();
 			}
 			
 			// Actions
@@ -289,9 +298,9 @@ class SpecialAbuseFilter extends SpecialPage {
 			
 			// Do the update			
 			$dbw->insert( 'abuse_filter_history', $afh_row, __METHOD__ );
-			$dbw->replace( 'abuse_filter', array( 'af_id' ), $newRow, __METHOD__ );
 			$dbw->delete( 'abuse_filter_action', array( 'afa_filter' => $filter, 'afa_consequence' => $deadActions ), __METHOD__ );
 			$dbw->replace( 'abuse_filter_action', array( array( 'afa_filter', 'afa_consequence' ) ), $actionsRows, __METHOD__ );
+			
 			$dbw->commit();
 			
 			global $wgOut;
@@ -331,7 +340,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		$fields = array();
 		
 		$fields['abusefilter-edit-id'] = $this->mFilter == 'new' ? wfMsg( 'abusefilter-edit-new' ) : $this->mFilter;
-		$fields['abusefilter-edit-description'] = Xml::input( 'wpFilterDescription', 20, isset( $row->af_public_comments ) ? $row->af_public_comments : '' );
+		$fields['abusefilter-edit-description'] = Xml::input( 'wpFilterDescription', 45, isset( $row->af_public_comments ) ? $row->af_public_comments : '' );
 
 		// Hit count display
 		if( $this->mFilter !== 'new' ){
