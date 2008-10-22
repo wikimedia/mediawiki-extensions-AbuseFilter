@@ -629,12 +629,12 @@ class SpecialAbuseFilter extends SpecialPage {
 		}
 		
 		// We need some details like last editor
-		list($row) = $this->loadFilterData();
+		list($row) = $this->loadFilterData( $filter );
 		
 		$textLoads = array( 'af_public_comments' => 'wpFilterDescription', 'af_pattern' => 'wpFilterRules', 'af_comments' => 'wpFilterNotes' );
 		
 		foreach( $textLoads as $col => $field ) {
-			$row->$col = $wgRequest->getVal( $field );
+			$row->$col = trim($wgRequest->getVal( $field ));
 		}
 		
 		$row->af_deleted = $wgRequest->getBool( 'wpFilterDeleted' );
