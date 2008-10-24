@@ -151,7 +151,8 @@ class AbuseFilter {
 		
 		while ( $row = $dbr->fetchObject( $res ) ) {
 			self::$filters[$row->af_id] = $row;
-			if ( self::checkConditions( $row->af_pattern, $vars ) ) {
+			$pattern = trim($row->af_pattern);
+			if ( self::checkConditions( $pattern, $vars ) ) {
 				$blocking_filters[$row->af_id] = $row;
 				
 				$newLog = $log_template;
@@ -161,17 +162,16 @@ class AbuseFilter {
 				
 				$doneActionsByFilter[$row->af_id] = array();
 				$filter_matched[$row->af_id] = true;
+				print "\n*** MATCH ***\n";
 			} else {
+				print "\n*** NO MATCH***\n";
 				$filter_matched[$row->af_id] = false;
 			}
 		}
 		
 		//// Clean up from checking all the filters
 	
-		// Don't store stats if the cond limit is disabled.
-		// It's probably a batch process or similar.
-		if (!self::$condLimitEnabled)
-			self::recordStats( $filter_matched );
+		self::recordStats( $filter_matched );
 		
 		if (count($blocking_filters) == 0 ) {
 			// No problems.
@@ -483,6 +483,8 @@ class AbuseFilter {
 	public static function recordStats( $filters ) {
 		global $wgAbuseFilterConditionLimit,$wgMemc;
 		
+		$blocking_filters = array_keys( array_filter( $filters ) );
+		
 		$overflow_triggered = (self::$condCount > $wgAbuseFilterConditionLimit);
 		$filter_triggered = count($blocking_filters);
 		
@@ -544,7 +546,7 @@ class AbuseFilter {
 					$wgMemc->set( self::filterMatchesKey( $filter ), 1, self::$statsStoragePeriod );
 				}
 				
-				$filter_age = wfTimestamp( TS_UNIX, self::$filters[$filter]['af_timestamp'] );
+				$filter_age = wfTimestamp( TS_UNIX, self::$filters[$filter]->af_timestamp );
 				$throttle_exempt_time = $filter_age + $wgAbuseFilterEmergencyDisableAge;
 				
 				if ($throttle_exempt_time > time() && $match_count > $wgAbuseFilterEmergencyDisableCount && ($match_count / $total) > $wgAbuseFilterEmergencyDisableThreshold) {

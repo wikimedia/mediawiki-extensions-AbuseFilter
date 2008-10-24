@@ -35,12 +35,37 @@ class AbuseFilterHooks {
 		}
 		$vars['ADDED_LINES'] = implode( "\n", $added_lines );
 		$vars['REMOVED_LINES'] = implode( "\n", $removed_lines );
+		
+		// Added links...
+		$oldLinks = self::getOldLinks( $editor->mTitle );
+		$editInfo = $editor->mArticle->prepareTextForEdit( $text );
+		$newLinks = array_keys( $editInfo->output->getExternalLinks() );
+		$vars['ALL_LINKS'] = implode( "\n", $newLinks );
+		$vars['ADDED_LINKS'] = implode( "\n", array_diff( $newLinks, array_intersect( $newLinks, $oldLinks ) ) );
+		$vars['REMOVED_LINKS'] = implode( "\n", array_diff( $oldLinks, array_intersect( $newLinks, $oldLinks ) ) );
 
 		$filter_result = AbuseFilter::filterAction( $vars, $editor->mTitle );
+
 		if( $filter_result !== true ){
 			$error = $filter_result;
 		}
 		return true;
+	}
+	
+	/**
+	 * Load external links from the externallinks table
+	 * Stolen from ConfirmEdit
+	 */
+	static function getOldLinks( $title ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		$id = $title->getArticleId(); // should be zero queries
+		$res = $dbr->select( 'externallinks', array( 'el_to' ), 
+			array( 'el_from' => $id ), __METHOD__ );
+		$links = array();
+		while ( $row = $dbr->fetchObject( $res ) ) {
+			$links[] = $row->el_to;
+		}
+		return $links;
 	}
 	
 	public static function onGetAutoPromoteGroups( $user, &$promote ) {

@@ -68,12 +68,14 @@ class SpecialAbuseFilter extends SpecialPage {
 		// Quick links
 		$wgOut->addWikiMsg( 'abusefilter-links' );
 		$lists = array( 'tools' );
+		if ($this->canEdit())
+			$lists[] = 'new';
 		$links = '';
 		$sk = $wgUser->getSkin();
 		foreach( $lists as $list ) {
 			$title = $this->getTitle( $list );
 			
-			$link = $sk->link( $title, wfMsg( "abusefilter-show-$list" ) );
+			$link = $sk->link( $title, wfMsg( "abusefilter-$list" ) );
 			$links .= Xml::tags( 'li', null, $link ) . "\n";
 		}
 		$links .= Xml::tags( 'li', null, $sk->link( SpecialPage::getTitleFor( 'AbuseLog' ), wfMsg( 'abusefilter-loglink' ) ) );
@@ -717,10 +719,6 @@ class SpecialAbuseFilter extends SpecialPage {
 			$pager->getBody() . 
 			$pager->getNavigationBar();
 		
-		if ($this->canEdit()) {
-			$output .= $sk->makeKnownLinkObj( $this->getTitle( 'new' ), wfMsgHtml( 'abusefilter-list-new' ) );
-		}
-		
 		$wgOut->addHTML( $output );
 	}
 }
@@ -735,11 +733,13 @@ class AbuseFilterPager extends TablePager {
 	
 	function getQueryInfo() {
 		$dbr = wfGetDB( DB_SLAVE );
+		#$this->mConds[] = 'afa_filter=af_id';
 		$abuse_filter = $dbr->tableName( 'abuse_filter' );
 		return array( 'tables' => array('abuse_filter', 'abuse_filter_action'),
 			'fields' => array( 'af_id', '(af_enabled | af_deleted << 1) AS status', 'af_public_comments', 'af_hidden', 'af_hit_count', 'af_timestamp', 'af_user_text', 'af_user', 'group_concat(afa_consequence) AS consequences' ),
 			'conds' => $this->mConds,
-			'options' => array( 'GROUP BY' => 'af_id' ) );
+			'options' => array( 'GROUP BY' => 'af_id' ),
+			'join_conds' => array( 'abuse_filter_action' => array( 'LEFT JOIN', 'afa_filter=af_id' ) ) );
 	}
 	
 	function getIndexField() {
