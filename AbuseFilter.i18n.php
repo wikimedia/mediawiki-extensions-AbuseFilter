@@ -2138,11 +2138,21 @@ $messages['ht'] = array(
 
 /** Hungarian (Magyar)
  * @author Bdamokos
+ * @author Dani
  */
 $messages['hu'] = array(
 	'abusefilter-desc' => 'Automatikus heurisztikát alkalmaz a szerkesztésekre.',
 	'abusefilter' => 'Visszaélési szűrő beállítása',
 	'abuselog' => 'Visszaélési-napló',
+	'abusefilter-warning' => "<big>'''Figyelmeztetés'''</big>: ez a művelet veszélyesnek minősül.
+A nem építő jellegű szerkesztések gyorsan vissza lesznek vonva,
+a többszörös ilyen jellegű szerkesztés a felhasználói fiók vagy a számítógép blokkolását vonja maga után.
+Ha biztos, hogy ez a szerkesztés építő jellegű, kattints az Elküld gombra.
+A visszaélési szabály rövid leírása, amelynek az általad végzett művelet megfelel: $1",
+	'abusefilter-disallowed' => 'Ez a művelet veszélyesnek minősül, így
+nem hajtható végre.
+Ha úgy gondolod, hogy a szerkesztés építő jellegű volt, lépj kapcsolatba egy adminisztrátorral, és jelezd neki, hogy mit szerettél volna csinálni.
+A visszaélési szabály rövid leírása, amelynek az általad végzett művelet megfelel: $1',
 );
 
 /** Interlingua (Interlingua)
@@ -3674,6 +3684,8 @@ Una descripcion brèva de la règla d’abús que vòstra accion a desenclavat e
 	'abusefilter-list-hitcount' => 'Aviar lo comptador',
 	'abusefilter-list-edit' => 'Modificar',
 	'abusefilter-list-details' => 'Detalhs',
+	'abusefilter-list-limit' => 'Nombre per pagina :',
+	'abusefilter-list-lastmodified' => 'Modificat en darrièr',
 	'abusefilter-hidden' => 'Privat',
 	'abusefilter-unhidden' => 'Public',
 	'abusefilter-enabled' => 'Activat',
