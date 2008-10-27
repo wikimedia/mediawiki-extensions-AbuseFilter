@@ -960,3 +960,14 @@ class AbuseFilterParser {
 		return new AFPData( AFPData::DBool, (bool)($val->data) );
 	}
 }
+
+ ## Taken from http://au2.php.net/manual/en/function.fnmatch.php#71725
+ ### Attribution: jk at ricochetsolutions dot com
+
+if(!function_exists('fnmatch')) {
+
+    function fnmatch($pattern, $string) {
+        return preg_match("#^".strtr(preg_quote($pattern, '#'), array('\*' => '.*', '\?' => '.'))."$#i", $string);
+    } // end
+
+} // end if

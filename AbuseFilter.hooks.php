@@ -19,7 +19,9 @@ class AbuseFilterHooks {
 		
 		$vars['EDIT_DELTA'] = strlen($new_text) - strlen($old_text);
 		$vars['OLD_SIZE'] = strlen($old_text);
-		$vars['EDIT_DIFF'] = $diff = wfDiff( $old_text, $new_text );
+		$diff = wfDiff( $old_text, $new_text );
+		$diff = trim( str_replace( '\No newline at end of file', '', $diff ) );
+		$vars['EDIT_DIFF'] = $diff;
 		$vars['NEW_SIZE'] = strlen($new_text);
 		
 		// Some more specific/useful details about the changes.
