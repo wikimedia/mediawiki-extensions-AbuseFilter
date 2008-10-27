@@ -36,6 +36,12 @@ $aliases['de'] = array(
 	'AbuseFilter' => array( 'Missbrauchfilter' ),
 );
 
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'AbuseLog' => array( 'Protokolo pri misuzado' ),
+	'AbuseFilter' => array( 'Filtrilo kontraŭ misuzado' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'AbuseLog' => array( 'Journal des abus', 'JournalDesAbus' ),

@@ -882,6 +882,14 @@ $messages['bg'] = array(
 	'abusefilter-links' => 'Полезни препратки:',
 	'abusefilter-tools-modifiertest-submit' => 'тест',
 	'abusefilter-tools' => 'Има помощни инструменти за съставяне и поправяне на защитни филтри.',
+	'abusefilter-list-options' => 'Настройки',
+	'abusefilter-list-options-deleted' => 'Изтрити филтри:',
+	'abusefilter-list-options-deleted-only' => 'Показване само на изтритите филтри',
+	'abusefilter-list-options-deleted-hide' => 'Скриване на изтритите филтри',
+	'abusefilter-list-options-deleted-show' => 'Включване на изтритите филтри',
+	'abusefilter-list-options-disabled' => 'Изключени филтри:',
+	'abusefilter-list-options-hidedisabled' => 'Скриване на изключените филтри',
+	'abusefilter-list-options-submit' => 'Обновяване',
 	'abusefilter-tools-subtitle' => 'Инструменти',
 	'abusefilter-tools-text' => 'Тук има някои инструменти, които може да са полезни за създаване или поправяне на защитни филтри.  [[Special:AbuseFilter|Назад към главното меню]]',
 	'abusefilter-tools-expr' => 'Проверка на изрази',
@@ -940,6 +948,7 @@ $messages['bg'] = array(
 	'abusefilter-edit-builder-vars-action' => 'Действие',
 	'abusefilter-edit-builder-vars-newsize' => 'Нов размер на страницата',
 	'abusefilter-edit-builder-vars-oldsize' => 'Стар размер на страницата',
+	'abusefilter-edit-builder-vars-summary' => 'Редактиране на резюмето/причината',
 	'abusefilter-edit-builder-vars-article-ns' => 'Именно пространство на статията',
 	'abusefilter-edit-builder-vars-article-text' => 'Заглавие на статията (без именно пространство)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Пълно заглавие на статията',
@@ -1369,6 +1378,7 @@ Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1',
 	'abusefilter-list-visibility' => 'Videbleco',
 	'abusefilter-list-edit' => 'Redakti',
 	'abusefilter-list-details' => 'Detaloj',
+	'abusefilter-list-lastmodified' => 'Laste ŝanĝita',
 	'abusefilter-hidden' => 'Privata',
 	'abusefilter-unhidden' => 'Publika',
 	'abusefilter-enabled' => 'Ebligita',
@@ -1380,6 +1390,11 @@ Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1',
 	'abusefilter-tools-modifiertest-submit' => 'Testo',
 	'abusefilter-tools' => 'Iloj por filtri misuzadon',
 	'abusefilter-loglink' => 'Vidi la protokolon pri misuzado',
+	'abusefilter-list-options' => 'Opcioj',
+	'abusefilter-list-options-deleted' => 'Forigitaj filtriloj:',
+	'abusefilter-list-options-deleted-only' => 'Montri nur forigitajn filtrilojn',
+	'abusefilter-list-options-deleted-hide' => 'Kaŝi forigitajn filtrilojn',
+	'abusefilter-list-options-submit' => 'Ĝisdatigi',
 	'abusefilter-tools-subtitle' => 'Iloj',
 	'abusefilter-tools-submitexpr' => 'Taksi',
 	'abusefilter-tools-reautoconfirm-user' => 'Uzanto',
@@ -1996,6 +2011,30 @@ $messages['gv'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
+	'abusefilter-desc' => 'ההרחבה סורקת את העריכות אחר השחתה פוטנציאלית.',
+	'abusefilter' => 'תצורת מסנן ההשחתה',
+	'abuselog' => 'יומן השחתה',
+	'abusefilter-warning' => "<big>'''אזהרה'''</big>: פעולה זו זוהתה כמזיקה.
+עריכות שאינן מועילות ישוחזרו מיידית,
+ועריכות שערוריתיות או חוזרות שאינן מועילות יגרמו לחסימת המחשב או החשבון שלכם.
+אם הנכם סבורים כי עריכה זו מועילה, תוכלו ללחוץ על שמירה שוב כדי לאמת אותה.
+תיאור קצר של כלל ההשחתה אותו הפרה עריכתכם: $1",
+	'abusefilter-disallowed' => 'פעולה זו זוהתה כמזיקה באופן אוטומטי,
+ולכן נחסמה.
+אם הנכם מאמינים כי עריכתכם היתה מועילה, אנא צרו קשר עם המנהלים, וידעו אותם במעלליכם.
+תיאור קצר של כלל ההשחתה אותו הפרה הודעתכם: $1',
+	'abusefilter-blocked-display' => 'פעולה זו זוהתה כמזיקה באופן אוטומטי,
+והפעלתה נמנעה על ידכם.
+בנוסף, על מנת להגן על {{SITENAME}}, חשבון המשתמש שלכם וכל כתובות ה־IP המשוייכות נחסמו לעריכה.
+אם פעולתכם ארעה בטעות, אנא צרו קשר עם המנהל.
+תיאור קצר של כלל השחתה אותו הפרה עריכתכם: $1',
+	'abusefilter-degrouped' => 'פעולה זו זוהתה כמזיקה באופן אוטומטי.
+עקב כך, נחסמה, ומאחר וחשבונכם חשוד בכך שנפרץ לצורכי הונאה, כל זכויותיכם נשללו.
+אם הנכם מאמינים כי זוהי שגיאה, אנא צרו קשר עם בירוקרט והסבירו לו פעולה זו, יתכן כי הרשאותיכם יוחזרו לכם.
+תיאור קצר של כלל ההשתחתה אותו הפרה עריכתכם: $1',
+	'abusefilter-autopromote-blocked' => 'פעולה זו זוהתה כמזיקה באופן אוטומטי, ולכן נחסמה.
+בנוסף, ננקט צעד בטיחות, כמה מההרשאות שניתנות לחשבונות חדשים שנוצרים נשללו באופן זמני מחשבונכם.
+תיאור קצר של כלל ההשחתה אותו הפרה עריכתכם:',
 	'abusefilter-log-search-user' => 'משתמש:',
 	'abusefilter-log-detailslink' => 'פרטים',
 	'abusefilter-log-details-legend' => 'פרטים עבור פריט היומן $1',
@@ -3619,7 +3658,10 @@ En kort beskrivelse av misbruksregelen handlingen din brøt er: $1',
  */
 $messages['nso'] = array(
 	'abusefilter-log-search-user' => 'Mošomiši:',
+	'abusefilter-log-search-title' => 'Thaetlele:',
 	'abusefilter-log-search-submit' => 'Fetleka',
+	'abusefilter-list-status' => 'Leemo',
+	'abusefilter-edit-lastmod-text' => '$1 ke $2',
 	'abusefilter-history-timestamp' => 'Nako',
 	'abusefilter-history-user' => 'Mošumiši',
 );
