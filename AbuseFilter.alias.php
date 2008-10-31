@@ -96,6 +96,12 @@ $aliases['ro'] = array(
 	'AbuseFilter' => array( 'Filtru abuzuri' ),
 );
 
+/** Sinhala (සිංහල) */
+$aliases['si'] = array(
+	'AbuseLog' => array( 'අපයෙදුම් ලඝු-සටහන' ),
+	'AbuseFilter' => array( 'අපයෙදුම් පෙරහන' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'AbuseLog' => array( 'Missbrukslogg' ),
