@@ -1503,6 +1503,19 @@ $messages['eu'] = array(
 	'abusefilter-tools-subtitle' => 'Tresnak',
 );
 
+/** Finnish (Suomi)
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'abusefilter-edit-builder-op-comparison-lt' => 'Pienempi kuin (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'Suurempi kuin (>)',
+	'abusefilter-edit-builder-op-comparison-lte' => 'Pienempi tai yhtä suuri kuin (<=)',
+	'abusefilter-edit-builder-op-comparison-gte' => 'Suurempi tai yhtä suuri kuin (>=)',
+	'abusefilter-edit-builder-op-bool-not' => 'Ei (!)',
+	'abusefilter-edit-builder-op-bool-and' => 'Ja (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'Tai (|)',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex
@@ -2134,6 +2147,8 @@ $messages['he'] = array(
 	'abusefilter-edit-throttle-count' => 'מספר פעולות שניתן לבצע:',
 	'abusefilter-edit-throttle-period' => 'משך הזמן:',
 	'abusefilter-edit-throttle-seconds' => '{{PLURAL:$1|שנייה אחת|$1 שניות}}',
+	'abusefilter-edit-throttle-groups' => "הגבלות פעילות לפי קבוצה:
+:''(אחד בשורה, יש לשלב עם פסיקים)''",
 	'abusefilter-edit-warn-message' => 'הודעת המערכת המשמשת לאזהרה:',
 	'abusefilter-edit-denied' => 'אינכם יכולים לצפות בפרטים של מסנן זה, כיוון שהוא מוסתר מעיני הציבור.',
 	'abusefilter-edit-main' => 'הפרמטרים של המסנן',
