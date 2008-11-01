@@ -12,7 +12,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	// Description message
-	'abusefilter-desc' => 'Applies automatic heuristics to edits.',
+	'abusefilter-desc' => 'Applies automatic heuristics to edits',
 
 	// Special pages
 	'abusefilter' => 'Abuse filter configuration',
