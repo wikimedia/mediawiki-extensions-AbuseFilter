@@ -2018,6 +2018,13 @@ $messages['gv'] = array(
 	'abusefilter-list-status' => 'Stayd',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'abusefilter-edit-status-label' => 'Papa helu',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author StuB
