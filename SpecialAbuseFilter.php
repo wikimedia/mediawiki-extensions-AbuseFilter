@@ -58,7 +58,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		}
 		
 		if ($output = $this->doEdit()) {
-			$wgOut->addHtml( $output );
+			$wgOut->addHTML( $output );
 			return;
 		}
 		
@@ -156,7 +156,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		$eval .= Xml::tags( 'p', null, Xml::element( 'input', array( 'type' => 'button', 'id' => 'mw-abusefilter-submitexpr', 'onclick' => 'doExprSubmit();', 'value' => wfMsg( 'abusefilter-tools-submitexpr' ) ) ) );
 		$eval .= Xml::element( 'p', array( 'id' => 'mw-abusefilter-expr-result' ), ' ' );
 		$eval = Xml::fieldset( wfMsg( 'abusefilter-tools-expr' ), $eval );
-		$wgOut->addHtml( $eval );
+		$wgOut->addHTML( $eval );
 		
 		// Associated script
 		$exprScript = "function doExprSubmit()
@@ -200,7 +200,7 @@ class SpecialAbuseFilter extends SpecialPage {
 			$rac .= Xml::inputLabel( wfMsg( 'abusefilter-tools-reautoconfirm-user' ), 'wpReAutoconfirmUser', 'reautoconfirm-user', 45 );
 			$rac .= Xml::element( 'input', array( 'type' => 'button', 'id' => 'mw-abusefilter-reautoconfirmsubmit', 'onclick' => 'doReautoSubmit();', 'value' => wfMsg( 'abusefilter-tools-reautoconfirm-submit' ) ) );
 			$rac = Xml::fieldset( wfMsg( 'abusefilter-tools-reautoconfirm' ), $rac );
-			$wgOut->addHtml( $rac );
+			$wgOut->addHTML( $rac );
 		}
 	}
 	

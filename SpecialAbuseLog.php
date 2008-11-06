@@ -67,7 +67,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$output .= Xml::tags( 'form', array( 'method' => 'GET', 'action' => $this->getTitle()->getLocalURL() ), $form );
 		$output = Xml::tags( 'fieldset', null, $output );
 		
-		$wgOut->addHtml( $output );
+		$wgOut->addHTML( $output );
 	}
 	
 	function showList() {
@@ -89,7 +89,7 @@ class SpecialAbuseLog extends SpecialPage {
 		
 		$pager = new AbuseLogPager( $this, $conds );
 		
-		$wgOut->addHtml( $pager->getNavigationBar() .
+		$wgOut->addHTML( $pager->getNavigationBar() .
 				Xml::tags( 'ul', null, $pager->getBody() ) .
 				$pager->getNavigationBar() );
 	}
