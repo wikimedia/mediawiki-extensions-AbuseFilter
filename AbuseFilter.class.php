@@ -145,7 +145,7 @@ class AbuseFilter {
 		$log_entries = array();
 		$log_template = array( 'afl_user' => $wgUser->getId(), 'afl_user_text' => $wgUser->getName(),
 					'afl_var_dump' => serialize( $vars ), 'afl_timestamp' => $dbr->timestamp(wfTimestampNow()),
-					'afl_namespace' => $title->getNamespace(), 'afl_title' => $title->getDbKey(), 'afl_ip' => wfGetIp() );
+					'afl_namespace' => $title->getNamespace(), 'afl_title' => $title->getDBKey(), 'afl_ip' => wfGetIp() );
 		$doneActionsByFilter = array();
 		$filter_matched = array();
 		

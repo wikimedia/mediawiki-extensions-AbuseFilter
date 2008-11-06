@@ -84,7 +84,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$searchTitle = Title::newFromText( $this->mSearchTitle );
 		if ($this->mSearchTitle && $searchTitle) {
 			$conds['afl_namespace'] = $searchTitle->getNamespace();
-			$conds['afl_title'] = $searchTitle->getDbKey();
+			$conds['afl_title'] = $searchTitle->getDBKey();
 		}
 		
 		$pager = new AbuseLogPager( $this, $conds );
