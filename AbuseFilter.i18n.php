@@ -985,6 +985,13 @@ $messages['br'] = array(
 	'abusefilter-edit-throttle-seconds' => '$1 eilenn',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'abusefilter-edit-history' => 'Historija',
+);
+
 /** Catalan (Català)
  * @author Aleator
  */
