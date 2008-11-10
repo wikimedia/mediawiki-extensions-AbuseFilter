@@ -48,6 +48,12 @@ $aliases['fr'] = array(
 	'AbuseFilter' => array( "Filtre d'abus", 'FiltredAbus', 'FilterAbus' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'AbuseLog' => array( 'Rexistro de abusos' ),
+	'AbuseFilter' => array( 'Filtro de abusos' ),
+);
+
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
 	'AbuseLog' => array( 'RegistroDeAbusos' ),

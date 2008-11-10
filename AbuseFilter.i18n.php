@@ -898,6 +898,7 @@ $messages['bg'] = array(
 	'abusefilter-tools-reautoconfirm-user' => 'Потребител',
 	'abusefilter-status' => 'От {{PLURAL:$1|последното едно действие|последните $1 действия}}, $2 ($3%) {{PLURAL:$2|достигна|достигнаха}} условната граница от $4. $5 ($6%) от тях {{PLURAL:$5|съвпада|съвпадат}} с някой от текущо включените филтри.',
 	'abusefilter-edit-subtitle' => 'Редактиране на филтър $1',
+	'abusefilter-edit-oldwarning' => '<strong>Редактирате остаряла версия на този филтър. Посочените статистики са за последната версия на филтъра. Ако съхраните промените си, ще отмените всички промени, направени след версията, която редактирате.</strong> &bull; [[Special:AbuseFilter/history/$2|Връщане към историята на филтъра]]',
 	'abusefilter-edit-status-label' => 'Статистики',
 	'abusefilter-edit-status' => 'От {{PLURAL:$1|последното едно действие|последните $1 действия}}, този филтър съвпадна с $2 от тях ($3%).',
 	'abusefilter-edit-throttled' => "'''Внимание''': Този филтър беше автоматично изключен, тъй като съвпада с над $1% от всички действия.  Това е направено като предпазна мярка.",
@@ -913,6 +914,7 @@ $messages['bg'] = array(
 	'abusefilter-edit-notes' => "Забележки:
 :''(скрит)",
 	'abusefilter-edit-lastmod' => 'Последна промяна на филтъра:',
+	'abusefilter-edit-lastmod-text' => '$1 от $2',
 	'abusefilter-edit-hitcount' => 'Съвпадения на филтъра:',
 	'abusefilter-edit-consequences' => 'Действия след съвпадение',
 	'abusefilter-edit-action-warn' => 'Извършване на тези действия след предупреждение на потребителя',
@@ -925,6 +927,7 @@ $messages['bg'] = array(
 	'abusefilter-edit-throttle-count' => 'Брой позволени действия:',
 	'abusefilter-edit-throttle-period' => 'Период от време:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|секунда|секунди}}',
+	'abusefilter-edit-warn-message' => 'Използвано системно съобщение за предупреждение:',
 	'abusefilter-edit-denied' => 'Не можете да видите детайлите на този филтър, защото не са общодостъпни',
 	'abusefilter-edit-main' => 'Параметри на филтъра',
 	'abusefilter-edit-done-subtitle' => 'Филтърът беше редактиран',
@@ -941,6 +944,11 @@ $messages['bg'] = array(
 	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Умножение (*)',
 	'abusefilter-edit-builder-op-arithmetic-divide' => 'Деление (/)',
 	'abusefilter-edit-builder-group-op-comparison' => 'Оператори за сравнение',
+	'abusefilter-edit-builder-op-comparison-lt' => 'По-малко от (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'По-голямо от (>)',
+	'abusefilter-edit-builder-op-comparison-lte' => 'По-малко или равно на (<=)',
+	'abusefilter-edit-builder-op-comparison-gte' => 'По-голямо или равно на (>=)',
+	'abusefilter-edit-builder-group-op-bool' => 'Булеви оператори',
 	'abusefilter-edit-builder-op-bool-not' => 'Не (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'И (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Или (|)',
@@ -989,6 +997,7 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'abusefilter-list-edit' => 'Uredi',
 	'abusefilter-edit-history' => 'Historija',
 );
 
