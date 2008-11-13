@@ -997,6 +997,7 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'abusefilter-log-search-submit' => 'Traži',
 	'abusefilter-list-edit' => 'Uredi',
 	'abusefilter-edit-history' => 'Historija',
 );
@@ -2033,6 +2034,13 @@ $messages['gsw'] = array(
 $messages['gv'] = array(
 	'abusefilter-log-search-user' => 'Ymmydeyr:',
 	'abusefilter-list-status' => 'Stayd',
+);
+
+/** Hakka (Hak-kâ-fa)
+ * @author Hakka
+ */
+$messages['hak'] = array(
+	'abusefilter-list-edit' => 'Piên-sip',
 );
 
 /** Hawaiian (Hawai`i)
