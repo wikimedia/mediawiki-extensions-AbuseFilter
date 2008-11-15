@@ -162,9 +162,7 @@ class AbuseFilter {
 				
 				$doneActionsByFilter[$row->af_id] = array();
 				$filter_matched[$row->af_id] = true;
-				print "\n*** MATCH ***\n";
 			} else {
-				print "\n*** NO MATCH***\n";
 				$filter_matched[$row->af_id] = false;
 			}
 		}
