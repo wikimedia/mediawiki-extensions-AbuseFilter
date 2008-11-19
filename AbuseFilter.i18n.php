@@ -1002,9 +1002,17 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'abusefilter-disallowed' => 'Ova akcija je automatski identificirana kao štetna, i kao takva onemogućena.
+Ako vjerujete da je Vaša izmjena konstruktivna, molimo Vas da kontaktirate administratora, i da ga obavijestite o onome šta namjeravate uraditi.
+Kratki opis pravila ponašanja koje ogovara Vašoj akciji je: $1',
+	'abusefilter-blocker' => 'Filter zloupotreba',
+	'abusefilter-log-search-user' => 'Korisnik:',
+	'abusefilter-log-search-title' => 'Naslov:',
 	'abusefilter-log-search-submit' => 'Traži',
 	'abusefilter-list-edit' => 'Uredi',
+	'abusefilter-tools-reautoconfirm-user' => 'Korisnik',
 	'abusefilter-edit-history' => 'Historija',
+	'abusefilter-history-timestamp' => 'Vrijeme',
 );
 
 /** Catalan (Català)
@@ -5085,6 +5093,8 @@ En kortfattad beskrivning av missbruksregler som din handling matchar med är: $
 	'abusefilter-list-options-deleted-only' => 'Visa endast raderade filter',
 	'abusefilter-list-options-deleted-hide' => 'Dölj raderade filter',
 	'abusefilter-list-options-deleted-show' => 'Inkludera raderade filter',
+	'abusefilter-list-options-disabled' => 'Avaktiverade filter:',
+	'abusefilter-list-options-hidedisabled' => 'Göm avaktiverade filter',
 	'abusefilter-list-options-submit' => 'Uppdatera',
 	'abusefilter-tools-subtitle' => 'Verktyg',
 	'abusefilter-tools-text' => 'Här är några verktyg som kan vara användbara för att formulera och felsöka i missbruksfilter. [[Special:AbuseFilter|Tillbaka till huvudmenyn]]',
@@ -5097,6 +5107,7 @@ En kortfattad beskrivning av missbruksregler som din handling matchar med är: $
 	'abusefilter-reautoconfirm-notallowed' => 'Du är inte tillåten att återställa status som automatiskt bekräftad.',
 	'abusefilter-status' => 'Av {{PLURAL:$1|den senaste handlingen|de $1 senaste handlingarna}} har $2 ($3%) nått gränsvärdet $4. $5 ($6%) har matchat ett av de filter som för närvarande är påslagna.',
 	'abusefilter-edit-subtitle' => 'Redigerar filtret $1',
+	'abusefilter-edit-oldwarning' => '<strong>Du redigerar en gammal version av detta filter. Den angivna statistiken gäller den senaste versionen av filtret. Om du sparar dina ändringar kommer du att skriva över alla ändringar som gjorts efter den version du redigerar. </strong> &bull; [[Special:AbuseFilter/history/$2|Återvänd till detta filters historik]]',
 	'abusefilter-edit-status-label' => 'Statistik',
 	'abusefilter-edit-status' => 'Av {{PLURAL:$1|den senaste handlingen|de senaste $1 handlingarna}}, så har detta filter matchat $2 ($3%).',
 	'abusefilter-edit-throttled' => "'''Varning''': Detta filter slogs av automatiskt, som en säkerhetsåtgärd. Det nådde gränsen av att matcha mer än $1% av handlingarna.",
@@ -5113,8 +5124,9 @@ En kortfattad beskrivning av missbruksregler som din handling matchar med är: $
 	'abusefilter-edit-notes' => "Noteringar:
 :''(privat)",
 	'abusefilter-edit-lastmod' => 'Filter senast ändrat:',
+	'abusefilter-edit-lastmod-text' => '$1 av $2',
 	'abusefilter-edit-hitcount' => 'Filterträffar:',
-	'abusefilter-edit-consequences' => 'Handlingar som tas vid träff',
+	'abusefilter-edit-consequences' => 'Handlingar tagna vid träff',
 	'abusefilter-edit-action-warn' => 'Gör dessa handlingar efter att använaren fått en varning',
 	'abusefilter-edit-action-disallow' => 'Hindra användaren från att utföra handlingen',
 	'abusefilter-edit-action-flag' => 'Flagga redigeringen i missbruksloggen',
@@ -5128,6 +5140,7 @@ En kortfattad beskrivning av missbruksregler som din handling matchar med är: $
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|sekund|sekunder}}',
 	'abusefilter-edit-throttle-groups' => "Gruppbegränsning på:
 :''(en per rad, kombinera med komman)''",
+	'abusefilter-edit-warn-message' => 'Systemmeddelande att använda för varning:',
 	'abusefilter-edit-denied' => 'Du kan inte se detta filters detaljer, för de är dolda',
 	'abusefilter-edit-main' => 'Filterparametrar',
 	'abusefilter-edit-done-subtitle' => 'Filter redigerat',
