@@ -4081,6 +4081,16 @@ Una descripcion brèva de la règla d’abús que vòstra accion a desenclavat e
 	'abusefilter-history-deleted' => 'Suprimit',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'abusefilter-log-search-user' => 'Архайæг:',
+	'abusefilter-log-search-title' => 'Сæргонд:',
+	'abusefilter-log-noactions' => 'нæй',
+	'abusefilter-list-status' => 'Статус',
+);
+
 /** Plautdietsch (Plautdietsch)
  * @author Slomox
  */
