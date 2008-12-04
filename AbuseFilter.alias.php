@@ -102,6 +102,12 @@ $aliases['oc'] = array(
 	'AbuseFilter' => array( "Filtre d'abuses", 'FiltredAbuses', 'FilterAbus' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'AbuseLog' => array( 'Rejestr nadużyć' ),
+	'AbuseFilter' => array( 'Filtr nadużyć' ),
+);
+
 /** Romanian (Română) */
 $aliases['ro'] = array(
 	'AbuseLog' => array( 'Jurnal abuzuri' ),

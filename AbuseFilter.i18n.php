@@ -245,6 +245,7 @@ A brief description of the abuse rule which your action matched is: $1",
 );
 
 /** Message documentation (Message documentation)
+ * @author Aotake
  * @author Darth Kule
  * @author EugeneZelenko
  * @author Jon Harald Søby
@@ -256,6 +257,7 @@ $messages['qqq'] = array(
 	'abusefilter-desc' => 'Short description of the Abusefilter extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'abusefilter' => 'Name of Special:AbuseFilter in Special:SpecialPages.',
 	'abuselog' => 'Name of Special:AbuseLog in Special:SpecialPages.',
+	'abusefilter-warning' => '{{Identical|Revert}}',
 	'abusefilter-degroupreason' => 'Reason of removal of the user from all privileged groups performed by Abuse filter.',
 	'right-abusefilter-modify' => '{{doc-right}}',
 	'right-abusefilter-view' => '{{doc-right}}',
@@ -293,7 +295,7 @@ $messages['qqq'] = array(
 	'abusefilter-edit-builder-funcs-norm' => "Do not translate \"'''(norm)'''\"",
 	'abusefilter-edit-builder-funcs-count' => "Do not translate \"'''(count)'''\"",
 	'abusefilter-edit-builder-vars-accountname' => "Do not translate \"'''(on account creation)'''\"",
-	'abusefilter-edit-builder-vars-movedfrom-id' => 'Paraphrase: The page ID of the page to be moved',
+	'abusefilter-edit-builder-vars-movedfrom-id' => 'Paraphrase: The article ID of the page to be moved',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Paraphrase: Namespace of the page that is to be moved',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Paraphrase: Name of the page that is to be moved',
 	'abusefilter-edit-builder-vars-movedfrom-prefixedtext' => 'Paraphrase: Full name of the page that is to be moved',
@@ -1062,6 +1064,7 @@ $messages['cy'] = array(
  * @author Metalhead64
  * @author Pill
  * @author Revolus
+ * @author Umherirrender
  * @author W (aka Wuzur)
  */
 $messages['de'] = array(
@@ -1158,6 +1161,7 @@ Kurzbeschreibung der verletzten Regel: $1',
 	'abusefilter-reautoconfirm-notallowed' => 'Du bist nicht berechtigt, Benutzer wieder zu bestätigten Benutzern zu machen.',
 	'abusefilter-status' => 'Von {{PLURAL:$1|der letzten Aktion|den letzten $1 Aktionen}} {{PLURAL:$2|hat eine|haben $2}} ($3 %) den Grenzwert von $4 erreicht. $5 ($6 %) {{PLURAL:$5|wurde|wurden}} von einem der momentan aktivierten Filter erkannt.',
 	'abusefilter-edit-subtitle' => 'Bearbeite Filter $1',
+	'abusefilter-edit-oldwarning' => '<strong>Du bearbeitest nicht die aktuelle, sondern eine ältere Version dieses Filters. Die Statistik gilt nur für die letzte Version des Filters. Wenn du speicherst, wird diese als aktuelle Version neu gespeichert. </strong> &bull; [[Special:AbuseFilter/history/$2|Zurück zur Versionsgeschichte des Filters]]',
 	'abusefilter-edit-status-label' => 'Statistiken',
 	'abusefilter-edit-status' => 'Von {{PLURAL:$1|der|den}} letzten {{PLURAL:$1|Aktion|$1 Aktionen}} {{PLURAL:$2|wurde|wurden}} $2 ($3 %) von diesem Filter erkannt.',
 	'abusefilter-edit-throttled' => "'''Warnung''': Dieser Filter wurde sicherheitshalber automatisch deaktiviert. Er hat mehr als die definierte Obergrenze von $1 % der Aktionen erkannt.",
@@ -4529,6 +4533,9 @@ $messages['ru'] = array(
 	'abusefilter-tools-submitexpr' => 'Опробовать',
 	'abusefilter-tools-reautoconfirm' => 'Восстановить статус «autoconfirmed»',
 	'abusefilter-tools-reautoconfirm-user' => 'Участник',
+	'abusefilter-tools-reautoconfirm-submit' => 'Переавтоподтверждение',
+	'abusefilter-reautoconfirm-none' => 'У этого участника не отключён статус автоподтверждения',
+	'abusefilter-reautoconfirm-notallowed' => 'Вам не разрешено восстанавливать статус автоподтверждения.',
 	'abusefilter-edit-subtitle' => 'Изменение фильтра $1',
 	'abusefilter-edit-status-label' => 'Статистика',
 	'abusefilter-edit-status' => 'Из последних $1 {{PLURAL:$1|действия|действий}}, этот фильтр соответствует $2 ($3%).',
@@ -4546,7 +4553,7 @@ $messages['ru'] = array(
 :''(приватные)",
 	'abusefilter-edit-lastmod' => 'Последнее изменение фильтра:',
 	'abusefilter-edit-hitcount' => 'Срабатываний фильтра:',
-	'abusefilter-edit-consequences' => 'Принятых по срабатыванию мер',
+	'abusefilter-edit-consequences' => 'Принимаемые меры',
 	'abusefilter-edit-action-warn' => 'Принимать эти меры после предупреждения участника',
 	'abusefilter-edit-action-disallow' => 'Запретить участнику выполнить запрашиваемое действие',
 	'abusefilter-edit-action-flag' => 'Отметить правку в журнале злоупотреблений',
@@ -4596,10 +4603,10 @@ $messages['ru'] = array(
 	'abusefilter-edit-builder-vars-newsize' => 'Новый размер страницы',
 	'abusefilter-edit-builder-vars-oldsize' => 'Старый размер страницы',
 	'abusefilter-edit-builder-vars-summary' => 'Редактировать описание/причину',
-	'abusefilter-edit-builder-vars-article-id' => 'ID статьи',
-	'abusefilter-edit-builder-vars-article-ns' => 'Пространство имён статьи',
-	'abusefilter-edit-builder-vars-article-text' => 'Название статьи (без пространства имён)',
-	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Полное название статьи',
+	'abusefilter-edit-builder-vars-article-id' => 'ID страницы',
+	'abusefilter-edit-builder-vars-article-ns' => 'Пространство имён страницы',
+	'abusefilter-edit-builder-vars-article-text' => 'Название страницы (без пространства имён)',
+	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Полное название страницы',
 	'abusefilter-edit-builder-vars-user-editcount' => 'Число правок участника',
 	'abusefilter-edit-builder-vars-user-age' => 'Возраст учётной записи',
 	'abusefilter-edit-builder-vars-user-name' => 'Имя учётной записи',
