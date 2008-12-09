@@ -4108,6 +4108,7 @@ Una descripcion brèva de la règla d’abús que vòstra accion a desenclavat e
 $messages['os'] = array(
 	'abusefilter-log-search-user' => 'Архайæг:',
 	'abusefilter-log-search-title' => 'Сæргонд:',
+	'abusefilter-log-search-submit' => 'Агур',
 	'abusefilter-log-noactions' => 'нæй',
 	'abusefilter-list-status' => 'Статус',
 );
