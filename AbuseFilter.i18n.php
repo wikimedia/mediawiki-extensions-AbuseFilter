@@ -3352,7 +3352,7 @@ $messages['mk'] = array(
  */
 $messages['ms'] = array(
 	'abusefilter-desc' => 'Mengenakan heuristik automatik pada suntingan.',
-	'abusefilter' => 'Konfigurasi penapis penyalahgunaan',
+	'abusefilter' => 'Tatarajah penapis penyalahgunaan',
 	'abuselog' => 'Log penyalahgunaan',
 	'abusefilter-warning' => "<big>'''Amaran'''</big>: Tindakan ini telah dikenalpasti secara automatik sebagai berbahaya.
 Suntingan tidak berkonstruk akan dibalikkan secepat mungkin,

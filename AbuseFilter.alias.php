@@ -54,6 +54,12 @@ $aliases['gl'] = array(
 	'AbuseFilter' => array( 'Filtro de abusos' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'AbuseLog' => array( 'Missbrachfilter-Logbuech' ),
+	'AbuseFilter' => array( 'Missbruchfilter' ),
+);
+
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
 	'AbuseLog' => array( 'RegistroDeAbusos' ),
