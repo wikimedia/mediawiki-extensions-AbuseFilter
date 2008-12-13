@@ -241,7 +241,7 @@ class SpecialAbuseFilter extends SpecialPage {
 			// Check syntax
 			$syntaxerr = AbuseFilter::checkSyntax( $wgRequest->getVal( 'wpFilterRules' ) );
 			if ($syntaxerr !== true ) {
-				return $this->buildFilterEditor( wfMsgExt( 'abusefilter-edit-badsyntax', array( 'parseinline' ), array( $syntaxerr ) ) );
+				return $this->buildFilterEditor( wfMsgExt( 'abusefilter-edit-badsyntax', array( 'parseinline' ), array( $syntaxerr ) ), $filter, $history_id );
 			}
 		
 			$dbw = wfGetDB( DB_MASTER );
