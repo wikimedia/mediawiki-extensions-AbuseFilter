@@ -342,13 +342,14 @@ class SpecialAbuseFilter extends SpecialPage {
 		// Build the edit form
 		global $wgOut,$wgLang,$wgUser;
 		$sk = $this->mSkin;
-		$wgOut->setSubtitle( wfMsg( 'abusefilter-edit-subtitle', $filter, $history_id ) );
 		
 		list ($row, $actions) = $this->loadRequest($filter, $history_id);
 
 		if( !$row ) {
 			return false;
 		}
+		
+		$wgOut->setSubtitle( wfMsg( 'abusefilter-edit-subtitle', $filter, $history_id ) );
 
 		if (isset($row->af_hidden) && $row->af_hidden && !$this->canEdit()) {
 			return wfMsg( 'abusefilter-edit-denied' );
@@ -545,13 +546,18 @@ class SpecialAbuseFilter extends SpecialPage {
 	}
 	
 	function loadFilterData( $id ) {
+	
+		if ($id == 'new') {
+			return array( new StdClass, array() );
+		}
+		
 		$dbr = wfGetDB( DB_SLAVE );
 		
 		// Load the main row
 		$row = $dbr->selectRow( 'abuse_filter', '*', array( 'af_id' => $id ), __METHOD__ );
 		
 		if (!isset($row) || !isset($row->af_id) || !$row->af_id)
-			return array( new stdClass,array() );
+			return null;
 		
 		// Load the actions
 		$actions = array();
