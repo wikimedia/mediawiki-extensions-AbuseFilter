@@ -680,7 +680,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		static $canEdit = 'unset';
 		
 		if ($canEdit == 'unset') {
-			$canEdit = !count( $errors = $this->getTitle()->getUserPermissionsErrors( 'abusefilter-modify', $wgUser, true, array( 'ns-specialprotected' ) ) );
+			$canEdit = $wgUser->isAllowed( 'abusefilter-modify' );
 		}
 		
 		return $canEdit;
