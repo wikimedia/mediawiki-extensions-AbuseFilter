@@ -2028,9 +2028,11 @@ $messages['grc'] = array(
 	'abusefilter-list-details' => 'Λεπτομέρειαι',
 	'abusefilter-hidden' => 'Ἰδιωτική',
 	'abusefilter-unhidden' => 'Δημοσία',
+	'abusefilter-deleted' => 'Διεγραμμένη',
 	'abusefilter-new' => 'Νέον διηθητήριον',
 	'abusefilter-tools-modifiertest-submit' => 'Δοκιμή',
 	'abusefilter-tools-reautoconfirm-user' => 'Χρώμενος',
+	'abusefilter-edit-new' => 'Νέον διηθητήριον',
 	'abusefilter-edit-flags' => 'Σημαῖαι:',
 	'abusefilter-edit-rules' => 'Συνθῆκαι:',
 	'abusefilter-edit-notes' => "Σημειώσεις:
@@ -2051,6 +2053,7 @@ $messages['grc'] = array(
 	'abusefilter-history-timestamp' => 'Χρόνος',
 	'abusefilter-history-user' => 'Χρώμενος',
 	'abusefilter-history-flags' => 'Σημαῖαι',
+	'abusefilter-history-comments' => 'Σχόλια',
 	'abusefilter-history-deleted' => 'Διεγραμμένη',
 );
 
