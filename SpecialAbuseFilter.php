@@ -122,21 +122,8 @@ class SpecialAbuseFilter extends SpecialPage {
 				$sk->makeKnownLinkObj( $this->getTitle( ), $backToList_label );
 		$wgOut->addHTML( Xml::tags( 'p', null, $backlinks ) );
 		
-		// Produce table
-		$table = '';
-		
-		$headers = array( 'abusefilter-history-timestamp', 'abusefilter-history-user', 'abusefilter-history-public', 'abusefilter-history-flags', 'abusefilter-history-filter', 'abusefilter-history-comments', 'abusefilter-history-actions' );
-		$header_row = '';
-		foreach( $headers as $header ) {
-			$label = wfMsgExt( $header, array( 'parseinline' ) );
-			$header_row .= Xml::tags( 'th', null, $label );
-		}
-		$table .= Xml::tags( 'tr', null, $header_row );
-		
-		$pager = new AbuseFilterHistoryPager( $filter );
-		$table .= $pager->getBody();
-		
-		$table = "<table class=\"wikitable\"><tbody>$table</table></tbody>";
+		$pager = new AbuseFilterHistoryPager( $filter, $this );
+		$table = $pager->getBody();
 		
 		$wgOut->addHTML( $pager->getNavigationBar() . $table . $pager->getNavigationBar() );
 		
@@ -359,6 +346,8 @@ class SpecialAbuseFilter extends SpecialPage {
 		if ($error) {
 			$wgOut->addHTML( "<span class=\"error\">$error</span>" );
 		}
+		
+		$wgOut->addHTML( $sk->link( $this->getTitle(), wfMsg( 'abusefilter-history-backlist' ) ) );
 		
 		$fields = array();
 		
@@ -758,10 +747,8 @@ class AbuseFilterPager extends TablePager {
 		if (!empty($headers)) {
 			return $headers;
 		}
-		
-		$editLabel = $this->mPage->canEdit() ? 'abusefilter-list-edit' : 'abusefilter-list-details';
 	
-		$headers = array( 'af_id' => 'abusefilter-list-id', 'af_public_comments' => 'abusefilter-list-public', 'consequences' => 'abusefilter-list-consequences', 'status' => 'abusefilter-list-status', 'af_timestamp' => 'abusefilter-list-lastmodified', 'af_hidden' => 'abusefilter-list-visibility', 'af_hit_count' => 'abusefilter-list-hitcount', 'edit' => $editLabel );
+		$headers = array( 'af_id' => 'abusefilter-list-id', 'af_public_comments' => 'abusefilter-list-public', 'consequences' => 'abusefilter-list-consequences', 'status' => 'abusefilter-list-status', 'af_timestamp' => 'abusefilter-list-lastmodified', 'af_hidden' => 'abusefilter-list-visibility', 'af_hit_count' => 'abusefilter-list-hitcount' );
 		
 		$headers = array_map( 'wfMsg', $headers );
 		
@@ -780,11 +767,9 @@ class AbuseFilterPager extends TablePager {
 		
 		$row = $this->mCurrentRow;
 		
-		$editLabel = $this->mPage->canEdit() ? 'abusefilter-list-edit' : 'abusefilter-list-details';
-		
 		switch($name) {
 			case 'af_id':
-				return intval($value);
+				return $sk->link( SpecialPage::getTitleFor( 'AbuseFilter', intval($value) ), intval($value) );
 			case 'af_public_comments':
 				return $wgOut->parse( $value );
 			case 'consequences':
@@ -802,9 +787,6 @@ class AbuseFilterPager extends TablePager {
 			case 'af_hit_count':
 				$count_display = wfMsgExt( 'abusefilter-hitcount', array( 'parseinline' ), $wgLang->formatNum( $value ) );
 				$link = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'AbuseLog' ), $count_display, 'wpSearchFilter='.$row->af_id );
-				return $link;
-			case 'edit':
-				$link = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'AbuseFilter', $row->af_id ), wfMsgHtml( $editLabel ) );
 				return $link;
 			case 'af_timestamp':
 				$userLink = $sk->userLink( $row->af_user, $row->af_user_text ) . $sk->userToolLinks( $row->af_user, $row->af_user_text );
@@ -826,66 +808,101 @@ class AbuseFilterPager extends TablePager {
 
 class AbuseFilterHistoryPager extends TablePager {
 
-	function __construct( $filter ) {
+	function __construct( $filter, $page ) {
 		$this->mFilter = $filter;
+		$this->mPage = $page;
+		$this->mDefaultDirection = true;
 		parent::__construct();
 	}
-
-	function formatRowOld( $row ) {
+	
+	function getFieldNames() {
+		static $headers = null;
+		
+		if (!empty($headers)) {
+			return $headers;
+		}
+	
+		$headers = array( 'afh_timestamp' => 'abusefilter-history-timestamp', 'afh_user_text' => 'abusefilter-history-user', 'afh_public_comments' => 'abusefilter-history-public',
+					'afh_flags' => 'abusefilter-history-flags', 'afh_pattern' => 'abusefilter-history-filter', 'afh_comments' => 'abusefilter-history-comments', 'afh_actions' => 'abusefilter-history-actions' );
+		
+		$headers = array_map( 'wfMsg', $headers );
+		
+		return $headers;
+	}
+	
+	function formatValue( $name, $value ) {
+		global $wgOut,$wgLang;
+		
 		static $sk=null;
 		
-		if (is_null($sk)) {
+		if (empty($sk)) {
 			global $wgUser;
 			$sk = $wgUser->getSkin();
 		}
-	
-		global $wgLang;
 		
-		$tr = '';
+		$row = $this->mCurrentRow;
 		
-		$title = SpecialPage::getTitleFor( 'AbuseFilter', 'history/'.$this->mFilter.'/item/'.$row->afh_id );
-		$link = $sk->link( $title, $wgLang->timeanddate( $row->afh_timestamp ) );
-		
-		$flags = array_filter(explode( ',', $row->afh_flags ));
-		$display_flags = array();
-		foreach( $flags as $flag ) {
-			$display_flags[] = wfMsgForContent( "abusefilter-history-$flag" );
+		switch($name) {
+			case 'afh_timestamp':
+				$title = SpecialPage::getTitleFor( 'AbuseFilter', 'history/'.$this->mFilter.'/item/'.$row->afh_id );
+				return $sk->link( $title, $wgLang->timeanddate( $row->afh_timestamp ) );
+			case 'afh_user_text':
+				return $sk->userLink( $row->afh_user, $row->afh_user_text ) . ' ' . $sk->userToolLinks( $row->afh_user, $row->afh_user_text );
+			case 'afh_public_comments':
+				return $wgOut->parse( $value );
+			case 'afh_flags':
+				$flags = array_filter( explode( ',', $value ) );
+				$flags_display = array();
+				foreach( $flags as $flag ) {
+					$flags_display[] = wfMsg( "abusefilter-history-$flag" );
+				}
+				return implode( ', ', $flags_display );
+			case 'afh_pattern':
+				return htmlspecialchars( $wgLang->truncate( $value, 200, '...' ) );
+			case 'afh_comments':
+				return htmlspecialchars( $wgLang->truncate( $value, 200, '...' ) );
+			case 'afh_actions':
+				$actions = unserialize( $value );
+				
+				$display_actions = '';
+				
+				foreach( $actions as $action => $parameters ) {
+					$display_actions .= Xml::tags( 'li', null, wfMsgExt( 'abusefilter-history-action', array( 'parseinline' ), array($action, implode(';', $parameters)) ) );
+				}
+				$display_actions = Xml::tags( 'ul', null, $display_actions );
+				
+				return $display_actions;
 		}
 		
-		$comments = $wgLang->truncate( $row->afh_public_comments, 50, '...' );
-		$pattern = $wgLang->truncate( $row->afh_pattern, 200, '...' );
-		$notes = $wgLang->truncate( $row->afh_comments, 200, '...' );
-		
-		$tr .= Xml::tags( 'td', null, $link );
-		$tr .= Xml::tags( 'td', null, $sk->userLink( $row->afh_user, $row->afh_user_text ) . $sk->userToolLinks( $row->afh_user, $row->afh_user_text ) );
-		$tr .= Xml::element( 'td', null, $comments );
-		$tr .= Xml::element( 'td', null, implode( ', ', $display_flags ) );
-		$tr .= Xml::element( 'td', null, $pattern );
-		$tr .= Xml::element( 'td', null, $notes );
-		
-		// Build actions
-		$actions = unserialize($row->afh_actions);
-		$display_actions = '';
-		
-		foreach( $actions as $action => $parameters ) {
-			$display_actions .= Xml::tags( 'li', null, wfMsgExt( 'abusefilter-history-action', array( 'parseinline' ), array($action, implode(';', $parameters)) ) );
-		}
-		$display_actions = Xml::tags( 'ul', null, $display_actions );
-		
-		$tr .= Xml::tags( 'td', null, $display_actions );
-		
-		return Xml::tags( 'tr', null, $tr );
+		return "Unable to format name $name\n";
 	}
 	
 	function getQueryInfo() {
 		return array(
 			'tables' => 'abuse_filter_history',
-			'fields' => '*',
+			'fields' => array( 'afh_timestamp', 'afh_user_text', 'afh_public_comments', 'afh_flags', 'afh_pattern', 'afh_comments', 'afh_actions', 'afh_id', 'afh_user' ),
 			'conds' => array( 'afh_filter' => $this->mFilter ),
 		);
 	}
 	
 	function getIndexField() {
 		return 'afh_timestamp';
+	}
+	
+	function getDefaultSort() {
+		return 'afh_timestamp';
+	}
+	
+	function isFieldSortable($name) {
+		$sortable_fields = array( 'afh_timestamp', 'afh_user_text' );
+		return in_array( $name, $sortable_fields );
+	}
+	
+	/**
+	 * Title used for self-links. Override this if you want to be able to
+	 * use a title other than $wgTitle
+	 */
+	function getTitle() {
+		return $this->mPage->getTitle( "history/".$this->mFilter );
 	}
 }
