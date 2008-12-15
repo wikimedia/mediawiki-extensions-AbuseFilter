@@ -328,8 +328,6 @@ class AbuseFilter {
 				$block->mAnonOnly = 0;
 				$block->mCreateAccount = 1;
 				$block->mExpiry = Block::parseExpiryInput( '1 week' );
-				
-				$block->initialiseRange();
 
 				$block->insert();
 				

@@ -824,14 +824,14 @@ class AbuseFilterPager extends TablePager {
 	}
 }
 
-class AbuseFilterHistoryPager extends ReverseChronologicalPager {
+class AbuseFilterHistoryPager extends TablePager {
 
 	function __construct( $filter ) {
 		$this->mFilter = $filter;
 		parent::__construct();
 	}
 
-	function formatRow( $row ) {
+	function formatRowOld( $row ) {
 		static $sk=null;
 		
 		if (is_null($sk)) {
