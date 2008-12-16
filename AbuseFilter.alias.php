@@ -30,6 +30,12 @@ $aliases['arz'] = array(
 	'AbuseFilter' => array( 'فلتر_الإساءة' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'AbuseLog' => array( 'ZapisUznemiravanja' ),
+	'AbuseFilter' => array( 'FilterUznemiravanja' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'AbuseLog' => array( 'Missbrauchfilter-Logbuch' ),
