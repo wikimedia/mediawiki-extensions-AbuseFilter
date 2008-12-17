@@ -62,8 +62,8 @@ $aliases['gl'] = array(
 
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
-	'AbuseLog' => array( 'Missbrachfilter-Logbuech' ),
-	'AbuseFilter' => array( 'Missbruchfilter' ),
+	'AbuseLog' => array( 'Missbruchsfilter-Logbuech' ),
+	'AbuseFilter' => array( 'Missbruchsfilter' ),
 );
 
 /** Interlingua (Interlingua) */
