@@ -248,6 +248,7 @@ A brief description of the abuse rule which your action matched is: $1",
  * @author Aotake
  * @author Darth Kule
  * @author EugeneZelenko
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Meno25
  * @author Purodha
@@ -278,6 +279,7 @@ $messages['qqq'] = array(
 {{Identical|Edit}}',
 	'abusefilter-list-details' => '{{Identical|Details}}',
 	'abusefilter-hidden' => '{{Identical|Private}}',
+	'abusefilter-enabled' => '{{Identical/Enabled}}',
 	'abusefilter-deleted' => '{{Identical|Deleted}}',
 	'abusefilter-new' => '{{Identical|New filter}}',
 	'abusefilter-tools-reautoconfirm-user' => '{{Identical|User}}',
@@ -303,6 +305,7 @@ $messages['qqq'] = array(
 	'abusefilter-edit-builder-vars-movedto-ns' => 'Paraphrased: Namespace of the destination of the page that is to be moved',
 	'abusefilter-edit-builder-vars-movedto-text' => 'Paraphrased: Name of the destination of the page that is to be moved',
 	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Paraphrased: Full name of the destination of the page that is to be moved',
+	'abusefilter-history-enabled' => '{{Identical/Enabled}}',
 	'abusefilter-history-timestamp' => 'Used in history page of a filter.
 
 {{Identical|Time}}',
@@ -2420,6 +2423,8 @@ A visszaélési szabály rövid leírása, amelynek az általad végzett művele
 nem hajtható végre.
 Ha úgy gondolod, hogy a szerkesztés építő jellegű volt, lépj kapcsolatba egy adminisztrátorral, és jelezd neki, hogy mit szerettél volna csinálni.
 A visszaélési szabály rövid leírása, amelynek az általad végzett művelet megfelel: $1',
+	'abusefilter-edit-status-label' => 'Statisztika',
+	'abusefilter-history-comments' => 'Megjegyzések',
 );
 
 /** Interlingua (Interlingua)
@@ -2853,22 +2858,112 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  * @author Muttley
  */
 $messages['ja'] = array(
+	'abusefilter-desc' => '編集に対して自動的なヒューリスティクスを適用する',
+	'abusefilter' => '不正利用フィルター構成',
+	'abuselog' => '不正利用ログ',
 	'abusefilter-warning' => "<big>'''警告'''</big>: 行われた操作は自動的に有害と判断されました。建設的でない編集は速やかに差し戻されます。被害程度の大きい破壊的編集や頻繁な破壊行為はあなたのアカウントまたはコンピューターのブロックにつながります。あなたの行った編集が確かに建設的なものであるならば、「投稿」ボタンを再度クリックしてください。あなたの操作が方針に違反している点の概略は次の通りです。$1",
 	'abusefilter-disallowed' => '行われた操作は自動的に有害と判断されたため実行できませんでした。あなたの行った編集が確かに建設的なものであるならば、管理者に連絡をしてあなたの行おうとしていた操作について知らせてください。あなたの操作が方針に違反している点の概略は次の通りです。$1',
 	'abusefilter-blocked-display' => '行われた操作は自動的に有害と判断されたため、実行が中断されました。同時に{{SITENAME}}を保護するためにあなたの利用者アカウントと関連するすべてのIPアドレスが投稿ブロックされました。この措置が誤りであるならば、管理者に連絡してください。あなたの操作が方針に違反している点の概略は次の通りです。$1',
 	'abusefilter-degrouped' => '行われた操作は自動的に有害と判断されました。そのため操作は実行されず、またあなたのアカウントが乗っ取られていると判断し、すべての権限をはく奪しました。この措置が誤りであるならば、この操作についての説明を添えてビューロクラットに連絡し、権限の復帰を依頼してください。あなたの操作が方針に違反している点の概略は次の通りです。$1',
 	'abusefilter-autopromote-blocked' => '行われた操作は自動的に有害と判断されたため、実行が中断されました。同時にサイトの安全を守るため、承認されたアカウントに付与されている権限の一部が一時的にあなたのアカウントからはく奪されました。あなたの操作が方針に違反している点の概略は次の通りです。$1',
-	'abusefilter-blocker' => '荒らしフィルター',
-	'abusefilter-blockreason' => '荒らしフィルターによって自動的にブロック。ルールの説明: $1',
-	'abusefilter-degroupreason' => '荒らしフィルターによって自動的に権限はく奪。ルールの説明: $1',
+	'abusefilter-blocker' => '不正利用フィルター',
+	'abusefilter-blockreason' => '不正利用フィルターによって自動的にブロック。マッチした規則の説明: $1',
+	'abusefilter-degroupreason' => '不正利用フィルターによって自動的に権限剥奪。規則の説明: $1',
+	'abusefilter-accountreserved' => 'このアカウントは不正利用フィルターによる使用のため予約されています。',
+	'right-abusefilter-modify' => '不正利用フィルターを変更する',
+	'right-abusefilter-view' => '不正利用フィルターを閲覧する',
+	'right-abusefilter-log' => '不正利用ログを閲覧する',
+	'right-abusefilter-log-detail' => '不正利用ログの詳細項目を閲覧する',
+	'right-abusefilter-private' => '不正利用ログ中の個人データを閲覧する',
+	'abusefilter-log' => '不正利用フィルターログ',
+	'abusefilter-log-search' => '不正利用ログを検索',
+	'abusefilter-log-search-user' => '利用者:',
+	'abusefilter-log-search-filter' => 'フィルターID:',
+	'abusefilter-log-search-title' => 'タイトル:',
+	'abusefilter-log-search-submit' => '検索',
+	'abusefilter-log-detailslink' => '詳細',
+	'abusefilter-log-details-legend' => 'ログ項目 $1 の詳細',
+	'abusefilter-log-details-var' => '変数',
+	'abusefilter-log-details-val' => '値',
+	'abusefilter-log-details-vars' => '行動パラメータ',
+	'abusefilter-log-details-private' => '個人データ',
+	'abusefilter-log-details-ip' => '発信元のIPアドレス',
+	'abusefilter-log-noactions' => 'なし',
+	'abusefilter-management' => '不正利用フィルター管理',
+	'abusefilter-list' => 'すべてのフィルター',
+	'abusefilter-list-id' => 'フィルターID',
+	'abusefilter-list-status' => '状況',
+	'abusefilter-list-public' => '公開解説',
+	'abusefilter-list-visibility' => '可視性',
 	'abusefilter-list-hitcount' => '適用回数',
-	'abusefilter-list-edit' => '編集する',
+	'abusefilter-list-edit' => '編集',
 	'abusefilter-list-details' => '詳細',
+	'abusefilter-list-limit' => 'ページごとの数:',
+	'abusefilter-list-lastmodified' => '最終変更',
 	'abusefilter-hidden' => '非公開',
 	'abusefilter-unhidden' => '公開',
+	'abusefilter-enabled' => '有効',
+	'abusefilter-deleted' => '削除',
+	'abusefilter-disabled' => '無効',
+	'abusefilter-hitcount' => '$1件のヒット',
+	'abusefilter-new' => '新しいフィルター',
+	'abusefilter-links' => '有用なリンク:',
+	'abusefilter-tools-modifiertest-submit' => 'テスト',
+	'abusefilter-tools' => '不正利用フィルターツール',
+	'abusefilter-loglink' => '不正利用ログを閲覧',
+	'abusefilter-list-options' => 'オプション',
+	'abusefilter-list-options-deleted' => '削除されたフィルター:',
+	'abusefilter-list-options-deleted-only' => '削除されたフィルターのみ表示する',
+	'abusefilter-list-options-deleted-hide' => '削除されたフィルターを隠す',
+	'abusefilter-list-options-deleted-show' => '削除されたフィルターを含める',
+	'abusefilter-list-options-disabled' => '無効化されたフィルター:',
+	'abusefilter-list-options-hidedisabled' => '無効化されたフィルターを隠す',
+	'abusefilter-list-options-submit' => '更新',
+	'abusefilter-tools-subtitle' => 'ツール',
+	'abusefilter-tools-text' => 'これらのツールは不正利用フィルターの作成およびデバッグにおそらく有用です。[[Special:AbuseFilter|メインメニューに戻る]]',
+	'abusefilter-tools-expr' => '式試験器',
+	'abusefilter-tools-submitexpr' => '評価',
+	'abusefilter-tools-reautoconfirm' => '自動承認ステータスを復元',
+	'abusefilter-tools-reautoconfirm-user' => '利用者',
+	'abusefilter-tools-reautoconfirm-submit' => '再自動承認',
+	'abusefilter-reautoconfirm-none' => 'その利用者は自動承認ステータスを停止されていません。',
+	'abusefilter-reautoconfirm-notallowed' => 'あなたは自動承認ステータスを復元することが許可されていません。',
+	'abusefilter-edit-subtitle' => 'フィルター $1 を編集中',
+	'abusefilter-edit-oldwarning' => '<strong>あなたはこのフィルターの古い版を編集しています。引用されている統計は最新版のフィルターのものです。あなたの変更を保存すると、あなたが編集している版以降の変更をすべて上書きしてしまいます。</strong> &bull; [[Special:AbuseFilter/history/$2|このフィルターの履歴に戻る]]',
+	'abusefilter-edit-status-label' => '統計',
+	'abusefilter-edit-status' => '最終の $1 行動のうち、このフィルターは $2 ($3%) にマッチしました。',
+	'abusefilter-edit-throttled' => "'''警告''': このフィルターは安全基準により自動的に無効化されました。アクションの$1%以上にマッチするという制限に達しました。",
+	'abusefilter-edit-new' => '新しいフィルター',
+	'abusefilter-edit-save' => 'フィルターを保存',
+	'abusefilter-edit-id' => 'フィルターID:',
+	'abusefilter-edit-description' => "説明:
+:''(公開)''",
+	'abusefilter-edit-flags' => 'フラグ:',
+	'abusefilter-edit-enabled' => 'このフィルターを有効にする',
+	'abusefilter-edit-deleted' => '削除する',
+	'abusefilter-edit-hidden' => 'このフィルターの詳細を公開しない',
+	'abusefilter-edit-rules' => '条件:',
+	'abusefilter-edit-notes' => "注釈:
+:''(非公開)",
+	'abusefilter-edit-lastmod' => 'フィルターの最終変更:',
+	'abusefilter-edit-hitcount' => 'フィルターのヒット件数:',
+	'abusefilter-edit-consequences' => 'マッチしたときに取る行動',
+	'abusefilter-edit-action-warn' => '利用者に警告を与えてからこれらの行動を開始する',
+	'abusefilter-edit-action-disallow' => '利用者が問題となっている行動を取るのを防ぐ',
+	'abusefilter-edit-action-flag' => '不正利用ログでこの編集のフラグをたてる',
+	'abusefilter-edit-action-blockautopromote' => '利用者の自動承認ステータスを取り消す',
+	'abusefilter-edit-action-degroup' => '利用者をすべての特権グループから除く',
+	'abusefilter-edit-action-block' => '利用者および/またはIPアドレスを編集ブロックする',
+	'abusefilter-edit-action-throttle' => '利用者が比率制限を破った場合にのみ行動を開始する',
+	'abusefilter-edit-action-rangeblock' => '利用者の発信元 /16 レンジをブロックします。',
+	'abusefilter-edit-throttle-count' => '許される行動数:',
+	'abusefilter-edit-throttle-period' => '期間:',
+	'abusefilter-edit-throttle-seconds' => '$1秒',
+	'abusefilter-history-user' => '利用者',
 );
 
 /** Georgian (ქართული)
@@ -4183,6 +4278,7 @@ $messages['ps'] = array(
 	'abusefilter-log-search-title' => 'سرليک:',
 	'abusefilter-log-search-submit' => 'پلټل',
 	'abusefilter-list' => 'ټول چاڼګران',
+	'abusefilter-list-status' => 'دريځ',
 	'abusefilter-edit-flags' => 'بېرغونه:',
 	'abusefilter-edit-notes' => "يادونې:
 :''(شخصي)",

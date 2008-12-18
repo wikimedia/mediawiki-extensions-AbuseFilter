@@ -78,6 +78,12 @@ $aliases['id'] = array(
 	'AbuseFilter' => array( 'Filter penyalahgunaan' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'AbuseLog' => array( '不正利用ログ' ),
+	'AbuseFilter' => array( '不正利用フィルター' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'AbuseLog' => array( 'Lëscht vum Mëssbrauch' ),
