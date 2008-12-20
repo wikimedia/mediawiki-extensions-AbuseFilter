@@ -56,10 +56,10 @@ class SpecialAbuseLog extends SpecialPage {
 		$fields = array();
 		
 		// Search conditions
-		$fields['abusefilter-log-search-user'] = wfInput( 'wpSearchUser', 45, $this->mSearchUser );
+		$fields['abusefilter-log-search-user'] = Xml::input( 'wpSearchUser', 45, $this->mSearchUser );
 		if ($this->canSeeDetails())
-			$fields['abusefilter-log-search-filter'] = wfInput( 'wpSearchFilter', 45, $this->mSearchFilter );
-		$fields['abusefilter-log-search-title'] = wfInput( 'wpSearchTitle', 45, $this->mSearchTitle );
+			$fields['abusefilter-log-search-filter'] = Xml::input( 'wpSearchFilter', 45, $this->mSearchFilter );
+		$fields['abusefilter-log-search-title'] = Xml::input( 'wpSearchTitle', 45, $this->mSearchTitle );
 		
 		$form = Xml::hidden( 'title', $this->getTitle()->getPrefixedText() );
 		
