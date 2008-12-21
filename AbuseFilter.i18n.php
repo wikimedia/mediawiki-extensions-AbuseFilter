@@ -1469,6 +1469,8 @@ Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1',
 	'abusefilter-list-options-deleted' => 'Forigitaj filtriloj:',
 	'abusefilter-list-options-deleted-only' => 'Montri nur forigitajn filtrilojn',
 	'abusefilter-list-options-deleted-hide' => 'Kaŝi forigitajn filtrilojn',
+	'abusefilter-list-options-disabled' => 'Malŝaltitaj filtriloj:',
+	'abusefilter-list-options-hidedisabled' => 'Kaŝi malŝaltitajn filtrilojn',
 	'abusefilter-list-options-submit' => 'Ĝisdatigi',
 	'abusefilter-tools-subtitle' => 'Iloj',
 	'abusefilter-tools-submitexpr' => 'Taksi',
@@ -1537,11 +1539,12 @@ Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1',
 	'abusefilter-edit-builder-vars-oldsize' => 'Malnova grandeco de paĝo',
 	'abusefilter-edit-builder-vars-removedlines' => 'Linioj forigitaj en redakto',
 	'abusefilter-edit-builder-vars-summary' => 'Redakta resumo/kialo',
-	'abusefilter-edit-builder-vars-article-id' => 'Artikola identigo',
-	'abusefilter-edit-builder-vars-article-ns' => 'Artikola nomspaco',
-	'abusefilter-edit-builder-vars-article-text' => 'Artikola titolo (sen nomspaco)',
-	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Plena titolo de artikolo',
+	'abusefilter-edit-builder-vars-article-id' => 'Paĝa identigo',
+	'abusefilter-edit-builder-vars-article-ns' => 'Paĝa nomspaco',
+	'abusefilter-edit-builder-vars-article-text' => 'Paĝa titolo (sen nomspaco)',
+	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Plena paĝa titolo',
 	'abusefilter-edit-builder-vars-user-editcount' => 'Redakto-kontado de uzanto',
+	'abusefilter-edit-builder-vars-user-name' => 'Nomo de uzula konto',
 	'abusefilter-history' => 'Historio por filtrilo $1',
 	'abusefilter-history-hidden' => 'kaŝita',
 	'abusefilter-history-enabled' => 'ebligita',
@@ -1557,6 +1560,7 @@ Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1',
 
 /** Spanish (Español)
  * @author Alvaro qc
+ * @author Remember the dot
  * @author Sanbec
  */
 $messages['es'] = array(
@@ -1565,6 +1569,7 @@ $messages['es'] = array(
 	'abusefilter-log-noactions' => 'ninguna',
 	'abusefilter-list-edit' => 'Editar',
 	'abusefilter-edit-history' => 'Historial',
+	'abusefilter-history-comments' => 'Comentarios',
 );
 
 /** Basque (Euskara)
@@ -1798,6 +1803,7 @@ Une brève description de la règle d’abus que votre action a déclenchée est
 	'abusefilter-history-filter' => 'Règle du filtre',
 	'abusefilter-history-comments' => 'Commentaire',
 	'abusefilter-history-actions' => 'Actions',
+	'abusefilter-history-action' => '$1 : $2',
 	'abusefilter-history-backedit' => 'Retour à l’édition du filtre',
 	'abusefilter-history-backlist' => 'Retour à la liste des filtres',
 	'abusefilter-history-deleted' => 'Supprimé',
@@ -3903,6 +3909,16 @@ De uitvoer van de parser was: <pre>$1</pre>',
 	'abusefilter-history-backedit' => 'Terug naar filters bewerken',
 	'abusefilter-history-backlist' => 'Terug naar filterlijst',
 	'abusefilter-history-deleted' => 'Verwijderd',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'abuselog' => 'Misbrukslogg',
+	'abusefilter-blocker' => 'Misbruksfilter',
+	'abusefilter-list-edit' => 'Endra',
+	'abusefilter-tools-reautoconfirm-user' => 'Brukar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
