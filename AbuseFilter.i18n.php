@@ -1584,9 +1584,59 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Ilaiho
+ * @author Nike
  * @author Silvonen
  */
 $messages['fi'] = array(
+	'abusefilter-desc' => 'Suodattaa muokkaukset automaattisella heuristiikalla',
+	'abusefilter' => 'Väärinkäyttösuodattimen asetukset',
+	'abuselog' => 'Väärinkäyttöloki',
+	'abusefilter-warning' => "<big>'''Varoitus'''</big>: Tämä muokkaus on automaattisesti tunnistettu haitalliseksi.
+Epäasialliset muokkaukset kumotaan nopeasti ja törkeä tai toistuva häiriköinti johtaa tunnuksesi tai IP-osoitteesi estämiseen.
+Jos muokkauksesi on mielestäsi asiallinen, napsauta Tallenna-painiketta uudelleen.
+Syy: $1",
+	'abusefilter-disallowed' => 'Muokkauksesi on tunnistettu automaattisesti haitalliseksi
+ja sen tallentaminen on estetty.
+Jos uskot muokkauksesi olevan asiallinen, ota yhteyttä ylläpitäjään ja kerro, mitä yritit tehdä.
+Syy: $1',
+	'abusefilter-blocked-display' => 'Muokkauksesi on automaattisesti tunnistettu haitalliseksi
+ja sen suorittaminen on estetty.
+{{GRAMMAR:genitive|{{SITENAME}}}} suojelemiseksi muokkaaminen on estetty tunnukseltasi ja kaikilta siihen liittyviltä IP-osoitteilta.
+Ota yhteyttä ylläpitäjään mikäli on tapahtunut virhe.
+Syy: $1',
+	'abusefilter-blocker' => 'Väärinkäyttösuodatin',
+	'abusefilter-blockreason' => 'Automaattisen väärinkäyttösuodattimen estämä. Syy:',
+	'right-abusefilter-modify' => 'Muokata väärinkäyttösuodattimia',
+	'abusefilter-log-search-user' => 'Käyttäjä:',
+	'abusefilter-log-search-title' => 'Otsikko:',
+	'abusefilter-log-search-submit' => 'Etsi',
+	'abusefilter-log-detailslink' => 'tiedot',
+	'abusefilter-log-details-var' => 'Muuttuja',
+	'abusefilter-log-details-val' => 'Arvo',
+	'abusefilter-log-noactions' => 'ei mitään',
+	'abusefilter-list' => 'Kaikki suodattimet',
+	'abusefilter-list-status' => 'Tila',
+	'abusefilter-list-hitcount' => 'Osumia',
+	'abusefilter-list-edit' => 'Muokkaa',
+	'abusefilter-list-details' => 'Tiedot',
+	'abusefilter-unhidden' => 'Julkinen',
+	'abusefilter-enabled' => 'Käytössä',
+	'abusefilter-deleted' => 'Poistettu',
+	'abusefilter-disabled' => 'Pois käytöstä',
+	'abusefilter-new' => 'Luo suodatin',
+	'abusefilter-tools-modifiertest-submit' => 'Testaa',
+	'abusefilter-list-options-submit' => 'Päivitä',
+	'abusefilter-tools-subtitle' => 'Työkalut',
+	'abusefilter-tools-reautoconfirm-user' => 'Käyttäjä',
+	'abusefilter-edit-status-label' => 'Tilastot',
+	'abusefilter-edit-new' => 'Luo suodatin',
+	'abusefilter-edit-flags' => 'Merkinnät:',
+	'abusefilter-edit-done-subtitle' => 'Suodatinta muokattu',
+	'abusefilter-edit-history' => 'Historia',
+	'abusefilter-edit-check' => 'Tarkista syntaksi',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Lisäys (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Vähennys (-)',
 	'abusefilter-edit-builder-op-comparison-lt' => 'Pienempi kuin (<)',
 	'abusefilter-edit-builder-op-comparison-gt' => 'Suurempi kuin (>)',
 	'abusefilter-edit-builder-op-comparison-lte' => 'Pienempi tai yhtä suuri kuin (<=)',
@@ -2451,6 +2501,7 @@ nem hajtható végre.
 Ha úgy gondolod, hogy a szerkesztés építő jellegű volt, lépj kapcsolatba egy adminisztrátorral, és jelezd neki, hogy mit szerettél volna csinálni.
 A visszaélési szabály rövid leírása, amelynek az általad végzett művelet megfelel: $1',
 	'abusefilter-edit-status-label' => 'Statisztika',
+	'abusefilter-edit-history' => 'Történet',
 	'abusefilter-history-comments' => 'Megjegyzések',
 );
 
@@ -4502,6 +4553,7 @@ $messages['rif'] = array(
 /** Romanian (Română)
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Silviubogan
  */
 $messages['ro'] = array(
 	'abusefilter-desc' => 'Aplică euristică automată modificărilor.',
@@ -4583,6 +4635,7 @@ O descriere sumară a regulii abuzului care se potriveşte cu acţiunea ta este:
 	'abusefilter-list-options-deleted-show' => 'Include filtrele şterse',
 	'abusefilter-list-options-disabled' => 'Filtre dezactivate:',
 	'abusefilter-list-options-hidedisabled' => 'Ascunde filtrele dezactivate',
+	'abusefilter-list-options-submit' => 'Actualizează',
 	'abusefilter-tools-subtitle' => 'Unelte',
 	'abusefilter-tools-text' => 'Aici sunt câteva unelte care pot fi utile în formularea şi depanarea filtrelor abuz. [[Special:AbuseFilter|Înapoi la meniul principal]]',
 	'abusefilter-tools-expr' => 'Expresii test',
