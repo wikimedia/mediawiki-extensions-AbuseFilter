@@ -380,6 +380,7 @@ $messages['af'] = array(
  * @author Codex Sinaiticus
  */
 $messages['am'] = array(
+	'abusefilter-log-search-title' => 'አርዕስት፡',
 	'abusefilter-list-edit' => 'አርም',
 	'abusefilter-edit-history' => 'ታሪክ',
 );
@@ -387,6 +388,7 @@ $messages['am'] = array(
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'abusefilter-desc' => 'يطبق قواعد أوتوماتيكية على التعديلات.',
@@ -567,15 +569,15 @@ $messages['ar'] = array(
 	'abusefilter-edit-builder-vars-oldsize' => 'حجم الصفحة القديم',
 	'abusefilter-edit-builder-vars-removedlines' => 'السطور المزالة في التعديل',
 	'abusefilter-edit-builder-vars-summary' => 'ملخص التعديل/السبب',
-	'abusefilter-edit-builder-vars-article-id' => 'رقم المقالة',
-	'abusefilter-edit-builder-vars-article-ns' => 'نطاق المقالة',
-	'abusefilter-edit-builder-vars-article-text' => 'عنوان المقالة (بدون النطاق)',
-	'abusefilter-edit-builder-vars-article-prefixedtext' => 'عنوان المقالة الكامل',
-	'abusefilter-edit-builder-vars-movedfrom-id' => 'رقم المقالة للصفحة المصدر للنقل',
+	'abusefilter-edit-builder-vars-article-id' => 'هوية الصفحة',
+	'abusefilter-edit-builder-vars-article-ns' => 'نطاق الصفحة',
+	'abusefilter-edit-builder-vars-article-text' => 'عنوان الصفحة (بدون نطاق)',
+	'abusefilter-edit-builder-vars-article-prefixedtext' => 'عنوان الصفحة الكامل',
+	'abusefilter-edit-builder-vars-movedfrom-id' => 'هوية الصفحة لنقل صفحة المصدر',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'نطاق الصفحة المصدر للنقل',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'عنوان الصفحة المصدر للنقل',
 	'abusefilter-edit-builder-vars-movedfrom-prefixedtext' => 'العنوان الكامل للصفحة المصدر للنقل',
-	'abusefilter-edit-builder-vars-movedto-id' => 'رقم المقالة للصفحة الهدف للنقل',
+	'abusefilter-edit-builder-vars-movedto-id' => 'هوية الصفحة لنقل صفحة الهدف',
 	'abusefilter-edit-builder-vars-movedto-ns' => 'نطاق الصفحة الهدف للنقل',
 	'abusefilter-edit-builder-vars-movedto-text' => 'عنوان الصفحة الهدف للنقل',
 	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'العنوان الكامل للصفحة الهدف للنقل',
@@ -834,6 +836,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-warning' => "<big>'''Увага'''</big>: Гэтае дзеяньне будзе аўтаматычна лічыцца шкодным. Неканструктыўныя рэдагаваньні будуць адмененыя, і значныя ці неаднаразовыя неканструктыўныя рэдагаваньні прывядуць да блякаваньня Вашага рахунка ці кампутара. Калі Вы лічыце гэтае рэдагаваньне канструктыўным, Вам неабходна націснуць «Адправіць» яшчэ раз каб яго пацьвердзіць.
 Кароткі сьпіс злоўжываньняў, зь якімі суадносіцца Вашае дзеяньне тут: $1",
 	'abusefilter-log-search-filter' => 'Ідэнтыфікатар фільтру:',
+	'abusefilter-log-search-title' => 'Назва:',
 	'abusefilter-log-detailslink' => 'падрабязнасьці',
 	'abusefilter-log-noactions' => 'няма',
 	'abusefilter-list' => 'Усе фільтры',
@@ -1050,6 +1053,18 @@ Opis pravila zloupotrebe koje ste možda izmjenom prekršili je vidljiv ovdje: $
 	'abusefilter-disallowed' => 'Ova akcija je automatski identificirana kao štetna, i kao takva onemogućena.
 Ako vjerujete da je Vaša izmjena konstruktivna, molimo Vas da kontaktirate administratora, i da ga obavijestite o onome šta namjeravate uraditi.
 Kratki opis pravila ponašanja koje ogovara Vašoj akciji je: $1',
+	'abusefilter-blocked-display' => 'Ova akcija je automatski identificirana kao opasna,
+i kao takva onemogućena da se izvrši.
+Dodatno, da bi se zaštitio {{SITENAME}}, Vaš korisnički račun i sve pripadajuće IP adrese su blokirane za uređivanje.
+Ako se desila greška, molimo da kontaktirate administratora.
+Kratki opis prekršenih pravila koja odgovaraju Vašoj akciji je: $1',
+	'abusefilter-degrouped' => 'Ova akcija je automatski prepoznata kao štetna.
+U skladu s tim je onemogućena, a sumnja se da je Vaš račun kompromitovan, sva Vaša prava su povučena.
+Ako mislite da je ovo greška, molimo da kontaktirate birokratu sa objašnjenjem ove akcije te će tada Vaša prava biti vraćena.
+Kratki opis kršenja pravila koja su prekršena Vašom akcijom je: $1',
+	'abusefilter-autopromote-blocked' => 'Ova akcija je automatski identificirana kao opasna i onemogućena je.
+Dodatno, kao mjera zaštite, neke privilegije, koje su obično date potvrđenim računima su privremeno oduzete za Vaš račun.
+Kratki opis prekršenih pravila koje se odnose na Vašu akciju je: $1',
 	'abusefilter-blocker' => 'Filter zloupotreba',
 	'abusefilter-blockreason' => 'Utomatski blokirano od strane filtera za zloupoterbu. Opis povrijeđenog pravila: $1',
 	'abusefilter-degroupreason' => 'Prava su automatski oduzeta od strane filtera za zloupotrebu. Opis pravila: $1',
@@ -1136,31 +1151,107 @@ Kratki opis pravila ponašanja koje ogovara Vašoj akciji je: $1',
 :''(privatno)",
 	'abusefilter-edit-lastmod' => 'Filter zadnji put modificiran:',
 	'abusefilter-edit-lastmod-text' => '$1 od strane $2',
+	'abusefilter-edit-hitcount' => 'Pogotci filtera:',
 	'abusefilter-edit-consequences' => 'Akcije koje se poduzimaju pri slaganju',
 	'abusefilter-edit-action-warn' => 'Pokreću se ove akcije nakon upozorenja korisniku',
 	'abusefilter-edit-action-disallow' => 'Zabranjuje korisniku od pokretanja zahtijevanih akcija',
+	'abusefilter-edit-action-flag' => 'Označi izmjenu u logu zloupotrebe',
+	'abusefilter-edit-action-blockautopromote' => 'Povrati korisnikov automatski potvrđen status',
 	'abusefilter-edit-action-degroup' => 'Ukloni korisnika iz svih privilegovanih grupa',
+	'abusefilter-edit-action-block' => 'Blokiraj korisnika i/ili IP adresu od izmjenjivanja',
+	'abusefilter-edit-action-throttle' => 'Povuci akcije ako je korisnik prešao limit učestalosti',
+	'abusefilter-edit-action-rangeblock' => 'Blokiraj /16 dio u kojem je korisnik izvorno.',
+	'abusefilter-edit-throttle-count' => 'Broja akcija za dozvolu:',
 	'abusefilter-edit-throttle-period' => 'Vremenski period:',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|sekunda|sekunde}}',
+	'abusefilter-edit-throttle-groups' => "Grupa ukočena kod:
+:''(jedan po liniji, kombiniran sa zarezima)''",
 	'abusefilter-edit-warn-message' => 'Sistemska poruka koja se koristi za upozorenje:',
+	'abusefilter-edit-denied' => 'Možda nećete vidjeti detalje ovog filtera, zato što je sakriven za javni pregled',
 	'abusefilter-edit-main' => 'Parametri filtera',
+	'abusefilter-edit-done-subtitle' => 'Filter izmjenjen',
+	'abusefilter-edit-done' => 'Vi ste uspješno sačuvali Vaše izmjene na filteru.
+
+[[Special:AbuseFilter|Vrati se]]',
+	'abusefilter-edit-badsyntax' => 'Sintaksna greška u filteru koji ste označili. Zadnji izgled gramatičke definicije je bio:
+<pre>$1</pre>',
 	'abusefilter-edit-viewhistory' => 'Pogledajte historiju ovog filtera',
 	'abusefilter-edit-history' => 'Historija',
+	'abusefilter-edit-check' => 'Provjeri sintaksu',
+	'abusefilter-edit-builder-select' => 'Izaberite jednu opciju da biste je dodali na kursor',
+	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetički operatori',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Sabiranje (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Oduzimanje (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Množenje (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'Dijeljenje (/)',
+	'abusefilter-edit-builder-op-arithmetic-modulo' => 'Proračun pocenata (%)',
+	'abusefilter-edit-builder-op-arithmetic-pow' => 'Snaga (**)',
+	'abusefilter-edit-builder-group-op-comparison' => 'Operatori poređenja',
 	'abusefilter-edit-builder-op-comparison-equal' => 'Jednako (==)',
+	'abusefilter-edit-builder-op-comparison-notequal' => 'Nije jednako sa (!=)',
+	'abusefilter-edit-builder-op-comparison-lt' => 'Manje nego (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'Veće nego (>)',
+	'abusefilter-edit-builder-op-comparison-lte' => 'Manje ili jednako sa (<=)',
+	'abusefilter-edit-builder-op-comparison-gte' => 'Veće ili jednako sa (>=)',
+	'abusefilter-edit-builder-group-op-bool' => 'Bulovi operatori (Boolean)',
 	'abusefilter-edit-builder-op-bool-not' => 'Ne (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'I (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'Ili (|)',
+	'abusefilter-edit-builder-op-bool-xor' => 'Više/ili (^)',
+	'abusefilter-edit-builder-group-misc' => 'Različito',
+	'abusefilter-edit-builder-misc-ternary' => 'Trostruki operator (1 ? 2 : 3)',
+	'abusefilter-edit-builder-misc-in' => 'Nalazi se u liniji (in)',
+	'abusefilter-edit-builder-misc-like' => 'Sastavi regex (kao)',
+	'abusefilter-edit-builder-misc-stringlit' => 'Linija riječi ("")',
 	'abusefilter-edit-builder-group-funcs' => 'funkcije',
+	'abusefilter-edit-builder-funcs-length' => 'Dužina linije (dužina)',
+	'abusefilter-edit-builder-funcs-lcase' => 'Za niži slučaj (lcase)',
+	'abusefilter-edit-builder-funcs-ccnorm' => 'Normaliziraj zbunjujuće karaktere (ccnorm)',
+	'abusefilter-edit-builder-funcs-rmdoubles' => 'Skloni duple karaktere (rmdoubles)',
+	'abusefilter-edit-builder-funcs-specialratio' => 'Specijalni karakteri/ svi karakteri (specialratio)',
+	'abusefilter-edit-builder-funcs-norm' => 'Normaliziraj (norm)',
+	'abusefilter-edit-builder-funcs-count' => 'Broj vremenske linije X dodaje u liniju Y (count)',
 	'abusefilter-edit-builder-group-vars' => 'Promijenjive',
+	'abusefilter-edit-builder-vars-accountname' => 'Broj računa (on account creation)',
 	'abusefilter-edit-builder-vars-action' => 'akcija',
+	'abusefilter-edit-builder-vars-addedlines' => 'Linije dodane u izmjeni',
+	'abusefilter-edit-builder-vars-delta' => 'Veličina promjenjena pri izmjeni',
+	'abusefilter-edit-builder-vars-diff' => 'Sastavi razlike promjena pri izmjeni',
 	'abusefilter-edit-builder-vars-newsize' => 'Veličina nove stranice',
 	'abusefilter-edit-builder-vars-oldsize' => 'Veličina stare stranice',
+	'abusefilter-edit-builder-vars-removedlines' => 'Linije sklonjene pri izmjeni',
+	'abusefilter-edit-builder-vars-summary' => 'Suma izmjena/razlog',
 	'abusefilter-edit-builder-vars-article-id' => 'ID stranice',
+	'abusefilter-edit-builder-vars-article-ns' => 'Imenski prostor stranice',
+	'abusefilter-edit-builder-vars-article-text' => 'Naslov stanice (without namespace)',
+	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Puni naslov stranice',
+	'abusefilter-edit-builder-vars-movedfrom-id' => 'ID preusmjerene izvorne stranice',
+	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Imenski prostor izvorne stranice',
+	'abusefilter-edit-builder-vars-movedfrom-text' => 'Naslov preusmjerene izvorne stranice',
 	'abusefilter-edit-builder-vars-movedfrom-prefixedtext' => 'Puni naslov izvorne stranice koja se premješta',
+	'abusefilter-edit-builder-vars-movedto-id' => 'ID stranice na koju se premješta',
+	'abusefilter-edit-builder-vars-movedto-ns' => 'Imenski prostor stranice na koju se premješta',
+	'abusefilter-edit-builder-vars-movedto-text' => 'Naslov stranice na koju se premješta',
+	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Puni naslov stranice na koju se premješta',
 	'abusefilter-edit-builder-vars-user-editcount' => 'Brojač izmjena korisnika',
+	'abusefilter-edit-builder-vars-user-age' => 'Starost korisničkog računa',
+	'abusefilter-edit-builder-vars-user-name' => 'Ime korisničkog računa',
+	'abusefilter-edit-builder-vars-user-groups' => 'Grupiraj (including implicit) korisnike u',
+	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Vrijeme u kojem je e-mail adresa bila potvrđena',
 	'abusefilter-history' => 'Historija za filter $1',
+	'abusefilter-history-hidden' => 'sakriveno',
+	'abusefilter-history-enabled' => 'uključeno',
 	'abusefilter-history-timestamp' => 'Vrijeme',
 	'abusefilter-history-user' => 'Korisnik',
+	'abusefilter-history-public' => 'Javni opis filtera',
+	'abusefilter-history-flags' => 'Zastave/oznake',
+	'abusefilter-history-filter' => 'Pravila filtera',
 	'abusefilter-history-comments' => 'Komentari',
 	'abusefilter-history-actions' => 'Akcije',
+	'abusefilter-history-action' => '$1: $2',
+	'abusefilter-history-backedit' => 'Vrati se stranici za izmjenu filtera',
+	'abusefilter-history-backlist' => 'Vrati se na listu filtera',
+	'abusefilter-history-deleted' => 'Obrisano',
 );
 
 /** Catalan (Català)
@@ -1696,6 +1787,7 @@ $messages['eu'] = array(
  * @author Ilaiho
  * @author Nike
  * @author Silvonen
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'abusefilter-desc' => 'Suodattaa muokkaukset automaattisella heuristiikalla',
@@ -1741,6 +1833,7 @@ Syy: $1',
 	'abusefilter-edit-status-label' => 'Tilastot',
 	'abusefilter-edit-new' => 'Luo suodatin',
 	'abusefilter-edit-flags' => 'Merkinnät:',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|sekunti|sekuntia}}',
 	'abusefilter-edit-done-subtitle' => 'Suodatinta muokattu',
 	'abusefilter-edit-history' => 'Historia',
 	'abusefilter-edit-check' => 'Tarkista syntaksi',
@@ -1753,6 +1846,9 @@ Syy: $1',
 	'abusefilter-edit-builder-op-bool-not' => 'Ei (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'Ja (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Tai (|)',
+	'abusefilter-history-flags' => 'Liput',
+	'abusefilter-history-backlist' => 'Takaisin suodatinlistaan',
+	'abusefilter-history-deleted' => 'Poistettu',
 );
 
 /** French (Français)
@@ -4843,7 +4939,7 @@ O descriere sumară a regulii abuzului care se potriveşte cu acţiunea ta este:
 	'abusefilter-history' => 'Istoricul pentru filtru $1',
 	'abusefilter-history-hidden' => 'ascuns',
 	'abusefilter-history-enabled' => 'activat',
-	'abusefilter-history-timestamp' => 'Dată',
+	'abusefilter-history-timestamp' => 'Timp',
 	'abusefilter-history-user' => 'Utilizator',
 	'abusefilter-history-public' => 'Descrierea publică a filtrului',
 	'abusefilter-history-flags' => 'Steaguri',
@@ -6125,9 +6221,17 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenzw
+ * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
 	'abusefilter-log-search-user' => '用户：',
+	'abusefilter-log-search-title' => '标题：',
+	'abusefilter-edit-builder-vars-article-prefixedtext' => '完整页面标题',
+	'abusefilter-edit-builder-vars-user-editcount' => '用户的编辑次数',
+	'abusefilter-history-hidden' => '隐藏',
+	'abusefilter-history-timestamp' => '时间',
+	'abusefilter-history-user' => '用户',
+	'abusefilter-history-deleted' => '已删除',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
