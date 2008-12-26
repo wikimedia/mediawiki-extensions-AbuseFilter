@@ -376,6 +376,14 @@ $messages['af'] = array(
 	'abusefilter-history-comments' => 'Opmerkings',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'abusefilter-list-edit' => 'አርም',
+	'abusefilter-edit-history' => 'ታሪክ',
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25
@@ -1028,30 +1036,131 @@ $messages['br'] = array(
 
 /** Bosnian (Bosanski)
  * @author CERminator
+ * @author Seha
  */
 $messages['bs'] = array(
+	'abusefilter-desc' => 'Dodaje automatske heuristike izmjenama.',
+	'abusefilter' => 'Konfiguracija filtera za zloupotrebu',
+	'abuselog' => 'Log zloupotrebe',
+	'abusefilter-warning' => "<big>'''Upozorenje'''</big>: Ova je akcija automatski identificirana kao opasna.
+Izmjene sa lošim namjerama će biti brzo uklonjene,
+i zlonamjerne i destruktivne izmjene rezultiraju blokiranjem Vašeg korisničkog računa ili Vašeg računara.
+Ako mislite da je ovo konstruktivna izmjena, onda je još jednom sačuvajte da bi bila dodana.
+Opis pravila zloupotrebe koje ste možda izmjenom prekršili je vidljiv ovdje: $1",
 	'abusefilter-disallowed' => 'Ova akcija je automatski identificirana kao štetna, i kao takva onemogućena.
 Ako vjerujete da je Vaša izmjena konstruktivna, molimo Vas da kontaktirate administratora, i da ga obavijestite o onome šta namjeravate uraditi.
 Kratki opis pravila ponašanja koje ogovara Vašoj akciji je: $1',
 	'abusefilter-blocker' => 'Filter zloupotreba',
+	'abusefilter-blockreason' => 'Utomatski blokirano od strane filtera za zloupoterbu. Opis povrijeđenog pravila: $1',
+	'abusefilter-degroupreason' => 'Prava su automatski oduzeta od strane filtera za zloupotrebu. Opis pravila: $1',
+	'abusefilter-accountreserved' => 'Ovaj korisnički račun je rezervisan za upotrebu od strane filtera za zloupotrebu.',
+	'right-abusefilter-modify' => 'Modificiraj filtere za zloupotrebu',
+	'right-abusefilter-view' => 'Pogledaj filtere za zloupotrebu',
+	'right-abusefilter-log' => 'Pogledaj log zloupotrebe',
+	'right-abusefilter-log-detail' => 'Pogledaj detaljne podatke u logu zloupotrebe',
+	'right-abusefilter-private' => 'Pogledaj privatne podatke u logu zloupotrebe.',
+	'abusefilter-log' => 'Log filtera zloupotrebe',
+	'abusefilter-log-search' => 'Pretraži log zloupotrebe',
 	'abusefilter-log-search-user' => 'Korisnik:',
+	'abusefilter-log-search-filter' => 'Filtriraj ID:',
 	'abusefilter-log-search-title' => 'Naslov:',
 	'abusefilter-log-search-submit' => 'Traži',
+	'abusefilter-log-entry' => '$1: $2 je pokrenulo jedan filter za zloupotrebu, napravivši $3 na $4. Npravljena akcija: $5; Opis filtera: $6',
+	'abusefilter-log-detailedentry' => '$1: $2 pokrenulo [[Special:AbuseFilter/$3|filter $3]], napravivši $4 na $5. Napravljena akcija: $6; Opis filtera: $7 ($8)',
 	'abusefilter-log-detailslink' => 'detalji',
+	'abusefilter-log-details-legend' => 'Detalji podataka u logu $1',
+	'abusefilter-log-details-var' => 'Varijabla (promjenjiva)',
+	'abusefilter-log-details-val' => 'Vrijednost',
+	'abusefilter-log-details-vars' => 'Parametri akcije',
+	'abusefilter-log-details-private' => 'Privatni podaci',
+	'abusefilter-log-details-ip' => 'Izvorna IP adresa',
 	'abusefilter-log-noactions' => 'ništa',
+	'abusefilter-management' => 'Podešavanje filtera za zloupotrebu',
+	'abusefilter-list' => 'Svi filteri',
+	'abusefilter-list-id' => 'ID filtera',
 	'abusefilter-list-status' => 'Stanje',
+	'abusefilter-list-public' => 'Javni opis',
+	'abusefilter-list-consequences' => 'Posljedice',
+	'abusefilter-list-visibility' => 'Vidljivost',
+	'abusefilter-list-hitcount' => 'Brojač pogodaka',
 	'abusefilter-list-edit' => 'Uredi',
 	'abusefilter-list-details' => 'Detalji',
+	'abusefilter-list-limit' => 'Broj po stranici:',
+	'abusefilter-list-lastmodified' => 'Zadnja modifikacija',
 	'abusefilter-hidden' => 'Privatno',
+	'abusefilter-unhidden' => 'Javno',
+	'abusefilter-enabled' => 'Uključen/a',
+	'abusefilter-deleted' => 'Obrisan/a',
+	'abusefilter-disabled' => 'Isključen/a',
+	'abusefilter-hitcount' => '$1 {{PLURAL:$1|pogodak|pogotci}}',
+	'abusefilter-new' => 'Novi filter',
+	'abusefilter-links' => 'Korisni linkovi:',
+	'abusefilter-tools-modifiertest-submit' => 'Test',
+	'abusefilter-tools' => 'Alati filtera za zloupotrebe',
+	'abusefilter-loglink' => 'Pogledaj log zloupotrebe',
+	'abusefilter-list-options' => 'Opcije',
+	'abusefilter-list-options-deleted' => 'Obrisani filteri:',
 	'abusefilter-list-options-deleted-only' => 'Pokaži samo obrisane filtere',
+	'abusefilter-list-options-deleted-hide' => 'Sakrij obrisane filtere',
+	'abusefilter-list-options-deleted-show' => 'Pripoji i obrisane filtere',
+	'abusefilter-list-options-disabled' => 'Isključeni filteri:',
+	'abusefilter-list-options-hidedisabled' => 'Sakrij isključene filtere',
 	'abusefilter-list-options-submit' => 'Ažuriraj',
 	'abusefilter-tools-subtitle' => 'Alati',
+	'abusefilter-tools-text' => 'Ovdje imate neke alate koji su korisni za formuliranje i prepravku filtera za zloupotrebu.
+[[Special:AbuseFilter|Vrati na glavni pregled]]',
+	'abusefilter-tools-expr' => 'Tester širenja',
+	'abusefilter-tools-submitexpr' => 'Odmjerite',
+	'abusefilter-tools-reautoconfirm' => 'Povrati automatski potvrđen status',
 	'abusefilter-tools-reautoconfirm-user' => 'Korisnik',
+	'abusefilter-tools-reautoconfirm-submit' => 'Revert automatski potvrđenog',
+	'abusefilter-reautoconfirm-none' => 'Ovaj korisnik nije privremeno odustao od automatski potvrđenog statusa.',
+	'abusefilter-reautoconfirm-notallowed' => 'Vi nemate ovlašćenje da povratite automatski potvrđen status.',
+	'abusefilter-status' => 'Zadnja/e $1 {{PLURAL:$1|akcija|akcije}}, $2 ($3%) {{PLURAL:$2|je|su}} dovele do ograničenja limita od $4. $5 ($6%) {{PLURAL:$5|je|su}} pogodila/e jedan od trenutno uključenih filtera.',
+	'abusefilter-edit-subtitle' => 'Uredi filter $1',
+	'abusefilter-edit-oldwarning' => '<strong>Mijenjate jednu staru varijantu ovog filtera. Pokazane statistike su za najviše aktivne filtere. Ako sačuvate izmjenu izbrisaćete sve izmjene napravljene od reverta koji pravite.</strong> &bull; [[Special:AbuseFilter/history/$2|Vrati se na historiju ovog filtera]]',
 	'abusefilter-edit-status-label' => 'Statistike',
+	'abusefilter-edit-status' => 'Od zadnjih $1 {{PLURAL:$1|akcija|akcija}}, ovaj filter je pogođen $2 ($3%).',
+	'abusefilter-edit-throttled' => "'''Upozorenje''': Ovaj filter je automatski isključen iz sigurnosnih razloga. Dostigao je limit od $1% pogođenih akcija.",
 	'abusefilter-edit-new' => 'Novi filter',
+	'abusefilter-edit-save' => 'Sačuvaj filter',
+	'abusefilter-edit-id' => 'ID filtera:',
+	'abusefilter-edit-description' => "Opis:
+:''(javno vidljiv)''",
+	'abusefilter-edit-flags' => 'Zastave:',
+	'abusefilter-edit-enabled' => 'Uključi ovaj filter',
+	'abusefilter-edit-deleted' => 'Markiraj kao obrisano',
+	'abusefilter-edit-hidden' => 'Sakrij detalje ovog filter za javne preglede',
 	'abusefilter-edit-rules' => 'Uslovi:',
+	'abusefilter-edit-notes' => "Notiraj:
+:''(privatno)",
+	'abusefilter-edit-lastmod' => 'Filter zadnji put modificiran:',
+	'abusefilter-edit-lastmod-text' => '$1 od strane $2',
+	'abusefilter-edit-consequences' => 'Akcije koje se poduzimaju pri slaganju',
+	'abusefilter-edit-action-warn' => 'Pokreću se ove akcije nakon upozorenja korisniku',
+	'abusefilter-edit-action-disallow' => 'Zabranjuje korisniku od pokretanja zahtijevanih akcija',
+	'abusefilter-edit-action-degroup' => 'Ukloni korisnika iz svih privilegovanih grupa',
+	'abusefilter-edit-throttle-period' => 'Vremenski period:',
+	'abusefilter-edit-warn-message' => 'Sistemska poruka koja se koristi za upozorenje:',
+	'abusefilter-edit-main' => 'Parametri filtera',
+	'abusefilter-edit-viewhistory' => 'Pogledajte historiju ovog filtera',
 	'abusefilter-edit-history' => 'Historija',
+	'abusefilter-edit-builder-op-comparison-equal' => 'Jednako (==)',
+	'abusefilter-edit-builder-op-bool-not' => 'Ne (!)',
+	'abusefilter-edit-builder-op-bool-and' => 'I (&)',
+	'abusefilter-edit-builder-group-funcs' => 'funkcije',
+	'abusefilter-edit-builder-group-vars' => 'Promijenjive',
+	'abusefilter-edit-builder-vars-action' => 'akcija',
+	'abusefilter-edit-builder-vars-newsize' => 'Veličina nove stranice',
+	'abusefilter-edit-builder-vars-oldsize' => 'Veličina stare stranice',
+	'abusefilter-edit-builder-vars-article-id' => 'ID stranice',
+	'abusefilter-edit-builder-vars-movedfrom-prefixedtext' => 'Puni naslov izvorne stranice koja se premješta',
+	'abusefilter-edit-builder-vars-user-editcount' => 'Brojač izmjena korisnika',
+	'abusefilter-history' => 'Historija za filter $1',
 	'abusefilter-history-timestamp' => 'Vrijeme',
+	'abusefilter-history-user' => 'Korisnik',
+	'abusefilter-history-comments' => 'Komentari',
+	'abusefilter-history-actions' => 'Akcije',
 );
 
 /** Catalan (Català)
@@ -6019,5 +6128,23 @@ $messages['vo'] = array(
  */
 $messages['zh-hans'] = array(
 	'abusefilter-log-search-user' => '用户：',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'abuselog' => '濫用記錄',
+	'right-abusefilter-log' => '檢視濫用記錄',
+	'abusefilter-log-search-user' => '使用者：',
+	'abusefilter-log-search-title' => '標題：',
+	'abusefilter-log-search-submit' => '搜尋',
+	'abusefilter-log-details-var' => '變數',
+	'abusefilter-edit-builder-vars-article-prefixedtext' => '完整頁面標題',
+	'abusefilter-edit-builder-vars-user-editcount' => '使用者的編輯次數',
+	'abusefilter-history-hidden' => '隱藏',
+	'abusefilter-history-timestamp' => '時間',
+	'abusefilter-history-user' => '使用者',
+	'abusefilter-history-deleted' => '已刪除',
 );
 
