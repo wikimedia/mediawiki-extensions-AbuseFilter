@@ -32,8 +32,8 @@ $aliases['arz'] = array(
 
 /** Bosnian (Bosanski) */
 $aliases['bs'] = array(
-	'AbuseLog' => array( 'ZapisUznemiravanja' ),
-	'AbuseFilter' => array( 'FilterUznemiravanja' ),
+	'AbuseLog' => array( 'ZapisZloupotrebe' ),
+	'AbuseFilter' => array( 'FilterZloupotrebe' ),
 );
 
 /** German (Deutsch) */

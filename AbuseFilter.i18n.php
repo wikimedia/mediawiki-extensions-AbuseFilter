@@ -1760,16 +1760,26 @@ Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1',
 
 /** Spanish (Español)
  * @author Alvaro qc
+ * @author Imre
  * @author Remember the dot
  * @author Sanbec
  */
 $messages['es'] = array(
+	'abusefilter-log-search-user' => 'Usuario:',
+	'abusefilter-log-search-title' => 'Título:',
 	'abusefilter-log-search-submit' => 'Buscar',
 	'abusefilter-log-detailslink' => 'detalles',
 	'abusefilter-log-noactions' => 'ninguna',
+	'abusefilter-list-status' => 'Estatus',
 	'abusefilter-list-edit' => 'Editar',
+	'abusefilter-list-details' => 'Detalles',
+	'abusefilter-hidden' => 'Privado',
+	'abusefilter-deleted' => 'Borrado',
+	'abusefilter-tools-reautoconfirm-user' => 'Usuario',
 	'abusefilter-edit-history' => 'Historial',
+	'abusefilter-history-user' => 'Usuario',
 	'abusefilter-history-comments' => 'Comentarios',
+	'abusefilter-history-deleted' => 'Borrado',
 );
 
 /** Basque (Euskara)
@@ -1788,6 +1798,7 @@ $messages['eu'] = array(
  * @author Nike
  * @author Silvonen
  * @author Str4nd
+ * @author Vililikku
  */
 $messages['fi'] = array(
 	'abusefilter-desc' => 'Suodattaa muokkaukset automaattisella heuristiikalla',
@@ -1818,21 +1829,36 @@ Syy: $1',
 	'abusefilter-log-noactions' => 'ei mitään',
 	'abusefilter-list' => 'Kaikki suodattimet',
 	'abusefilter-list-status' => 'Tila',
+	'abusefilter-list-visibility' => 'Näkyvyys',
 	'abusefilter-list-hitcount' => 'Osumia',
 	'abusefilter-list-edit' => 'Muokkaa',
 	'abusefilter-list-details' => 'Tiedot',
+	'abusefilter-list-lastmodified' => 'Viimeksi muokattu',
+	'abusefilter-hidden' => 'Yksityinen',
 	'abusefilter-unhidden' => 'Julkinen',
 	'abusefilter-enabled' => 'Käytössä',
 	'abusefilter-deleted' => 'Poistettu',
 	'abusefilter-disabled' => 'Pois käytöstä',
+	'abusefilter-hitcount' => '$1 {{PLURAL:$1|osuma|osumaa}}',
 	'abusefilter-new' => 'Luo suodatin',
+	'abusefilter-links' => 'Hyödyllisiä linkkejä:',
 	'abusefilter-tools-modifiertest-submit' => 'Testaa',
+	'abusefilter-list-options' => 'Valinnat',
+	'abusefilter-list-options-deleted' => 'Poistetut suodattimet:',
+	'abusefilter-list-options-deleted-only' => 'Näytä vain poistetut suodattimet',
+	'abusefilter-list-options-deleted-hide' => 'Piilota poistetut suodattimet',
+	'abusefilter-list-options-deleted-show' => 'Sisällytä poistetut suodattimet',
+	'abusefilter-list-options-disabled' => 'Epäaktiiviset suodattimet:',
+	'abusefilter-list-options-hidedisabled' => 'Piilota epäaktiiviset suodattimet',
 	'abusefilter-list-options-submit' => 'Päivitä',
 	'abusefilter-tools-subtitle' => 'Työkalut',
 	'abusefilter-tools-reautoconfirm-user' => 'Käyttäjä',
 	'abusefilter-edit-status-label' => 'Tilastot',
 	'abusefilter-edit-new' => 'Luo suodatin',
+	'abusefilter-edit-save' => 'Tallenna suodatin',
 	'abusefilter-edit-flags' => 'Merkinnät:',
+	'abusefilter-edit-enabled' => 'Käytä tätä suodatinta',
+	'abusefilter-edit-deleted' => 'Merkitse poistetuksi',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|sekunti|sekuntia}}',
 	'abusefilter-edit-done-subtitle' => 'Suodatinta muokattu',
 	'abusefilter-edit-history' => 'Historia',
@@ -1846,6 +1872,8 @@ Syy: $1',
 	'abusefilter-edit-builder-op-bool-not' => 'Ei (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'Ja (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Tai (|)',
+	'abusefilter-edit-builder-vars-action' => 'Toiminto',
+	'abusefilter-edit-builder-vars-article-id' => 'Sivun tunniste',
 	'abusefilter-history-flags' => 'Liput',
 	'abusefilter-history-backlist' => 'Takaisin suodatinlistaan',
 	'abusefilter-history-deleted' => 'Poistettu',
@@ -3638,6 +3666,7 @@ Hei ass eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi är Akioun pass
 	'abusefilter-list-public' => 'Ëffentlech Beschreiwung',
 	'abusefilter-list-consequences' => 'Konsequenzen',
 	'abusefilter-list-visibility' => 'Visibilitéit',
+	'abusefilter-list-hitcount' => 'Compteur vun den Treffer',
 	'abusefilter-list-edit' => 'Änneren',
 	'abusefilter-list-details' => 'Dteailer',
 	'abusefilter-list-limit' => 'Zuel pro Säit:',
@@ -3678,6 +3707,7 @@ Hei ass eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi är Akioun pass
 	'abusefilter-edit-notes' => "Notizen:
 :''(privat)''",
 	'abusefilter-edit-lastmod' => "De Filter gouf fir d'lescht geännert",
+	'abusefilter-edit-hitcount' => 'Teffer vum Filter:',
 	'abusefilter-edit-action-disallow' => 'Dem Benotzer dës Aktioun net erlaben',
 	'abusefilter-edit-action-flag' => "D'Ännerung am Mëssbrauchslog markéieren",
 	'abusefilter-edit-action-degroup' => 'De Benotzer aus alle priviligéierte Gruppen eraushuelen',
@@ -3711,6 +3741,7 @@ Hei ass eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi är Akioun pass
 	'abusefilter-edit-builder-group-funcs' => 'Fonctiounen',
 	'abusefilter-edit-builder-funcs-lcase' => 'A kleng Buchstawen ëmwandelen (lcase)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Duebel-Buchstawen ewechhuelen (rmdoubles)',
+	'abusefilter-edit-builder-funcs-specialratio' => 'Spezalbuchstawen / Total vun de Buchstawen(Zeechen) (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Normaliséieren (norm)',
 	'abusefilter-edit-builder-group-vars' => 'Variabelen',
 	'abusefilter-edit-builder-vars-accountname' => 'Numm vum Benotzerkont (beim Uleeë vum Benotzerkont)',
