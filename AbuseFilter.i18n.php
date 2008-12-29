@@ -1794,6 +1794,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Ilaiho
  * @author Nike
  * @author Silvonen
@@ -1873,8 +1874,13 @@ Syy: $1',
 	'abusefilter-edit-builder-op-bool-and' => 'Ja (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Tai (|)',
 	'abusefilter-edit-builder-vars-action' => 'Toiminto',
+	'abusefilter-edit-builder-vars-newsize' => 'Uuden sivun koko',
+	'abusefilter-edit-builder-vars-oldsize' => 'Vanhan sivun koko',
 	'abusefilter-edit-builder-vars-article-id' => 'Sivun tunniste',
+	'abusefilter-history-timestamp' => 'Aika',
+	'abusefilter-history-user' => 'Käyttäjä',
 	'abusefilter-history-flags' => 'Liput',
+	'abusefilter-history-comments' => 'Kommentit',
 	'abusefilter-history-backlist' => 'Takaisin suodatinlistaan',
 	'abusefilter-history-deleted' => 'Poistettu',
 );
