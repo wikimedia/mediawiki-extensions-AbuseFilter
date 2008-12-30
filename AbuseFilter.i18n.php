@@ -381,6 +381,7 @@ $messages['af'] = array(
  */
 $messages['am'] = array(
 	'abusefilter-log-search-title' => 'አርዕስት፡',
+	'abusefilter-log-search-submit' => 'ፍለጋ',
 	'abusefilter-list-edit' => 'አርም',
 	'abusefilter-edit-history' => 'ታሪክ',
 );
@@ -4856,11 +4857,52 @@ Krótki opis reguły nadużycia, do której Twoja akcji została dopasowana: $1'
 	'abusefilter-edit-builder-misc-like' => 'Dopasowanie wyrażenia regularnego (like)',
 	'abusefilter-edit-builder-misc-stringlit' => 'Łańcuch znaków ("")',
 	'abusefilter-edit-builder-group-funcs' => 'Funkcje',
+	'abusefilter-edit-builder-funcs-length' => 'Długość ciągu znaków (length)',
+	'abusefilter-edit-builder-funcs-lcase' => 'Na małe litery (lcase)',
+	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalizacja kłopotliwych znaków (ccnorm)',
+	'abusefilter-edit-builder-funcs-rmdoubles' => 'Usuwanie powtarzających się znaków (rmdoubles)',
+	'abusefilter-edit-builder-funcs-specialratio' => 'Znaki specjalne / suma znaków (specialratio)',
+	'abusefilter-edit-builder-funcs-norm' => 'Normalizacja (norm)',
+	'abusefilter-edit-builder-funcs-count' => 'Ile razy ciąg znaków X wystąpił w ciągu znaków Y (count)',
+	'abusefilter-edit-builder-group-vars' => 'Zmienne',
+	'abusefilter-edit-builder-vars-accountname' => 'Nazwa konta (on account creation)',
+	'abusefilter-edit-builder-vars-action' => 'Akcja',
+	'abusefilter-edit-builder-vars-addedlines' => 'Linie dodane podczas edycji',
+	'abusefilter-edit-builder-vars-delta' => 'Rozmiar zmiany podczas edycji',
+	'abusefilter-edit-builder-vars-diff' => 'Diff wszystkich zmian dokonanych podczas edycji',
 	'abusefilter-edit-builder-vars-newsize' => 'Nowy rozmiar strony',
 	'abusefilter-edit-builder-vars-oldsize' => 'Stary rozmiar strony',
+	'abusefilter-edit-builder-vars-removedlines' => 'Linie usunięte podczas edycji',
+	'abusefilter-edit-builder-vars-summary' => 'Streszczenie/powód edycji',
+	'abusefilter-edit-builder-vars-article-id' => 'ID strony',
+	'abusefilter-edit-builder-vars-article-ns' => 'Przestrzeń nazw strony',
+	'abusefilter-edit-builder-vars-article-text' => 'Tytuł strony (bez przestrzeni nazw)',
+	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Pełny tytuł strony',
+	'abusefilter-edit-builder-vars-movedfrom-id' => 'ID źródła przenoszonej strony',
+	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Przestrzeń nazw źródła przenoszonej strony',
+	'abusefilter-edit-builder-vars-movedfrom-text' => 'Tytuł źródła przenoszonej strony',
+	'abusefilter-edit-builder-vars-movedfrom-prefixedtext' => 'Pełny tytuł źródła przenoszonej strony',
+	'abusefilter-edit-builder-vars-movedto-id' => 'ID przeznaczenia przenoszonej strony',
+	'abusefilter-edit-builder-vars-movedto-ns' => 'Przestrzeń nazw przeznaczenia przenoszonej strony',
+	'abusefilter-edit-builder-vars-movedto-text' => 'Tytuł przeznaczenia przenoszonej strony',
+	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Pełny tytuł przeznaczenia przenoszonej strony',
+	'abusefilter-edit-builder-vars-user-editcount' => 'Liczba edycji użytkownika',
+	'abusefilter-edit-builder-vars-user-age' => 'Wiek konta użytkownika',
+	'abusefilter-edit-builder-vars-user-name' => 'Nazwa konta użytkownika',
+	'abusefilter-edit-builder-vars-user-groups' => 'Grupy (w tym ukryte), do których należy użytkownik',
+	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Czas zatwierdzenia adresu e-mail',
+	'abusefilter-history' => 'Historia dla filtrów $1',
 	'abusefilter-history-hidden' => 'ukryte',
+	'abusefilter-history-enabled' => 'włączona',
+	'abusefilter-history-timestamp' => 'Czas',
 	'abusefilter-history-user' => 'Użytkownik',
+	'abusefilter-history-public' => 'Publiczny opis filtra',
+	'abusefilter-history-flags' => 'Flagi',
+	'abusefilter-history-filter' => 'Reguły filtra',
 	'abusefilter-history-comments' => 'Komentarze',
+	'abusefilter-history-actions' => 'Akcje',
+	'abusefilter-history-backedit' => 'Powrót do edytora filtrów',
+	'abusefilter-history-backlist' => 'Powrót do listy filtrów',
 	'abusefilter-history-deleted' => 'Usunięte',
 );
 
@@ -4884,6 +4926,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author MF-Warburg
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -4901,6 +4944,7 @@ $messages['pt'] = array(
 	'abusefilter-list' => 'Todos os filtros',
 	'abusefilter-list-consequences' => 'Consequências',
 	'abusefilter-list-visibility' => 'Visibilidade',
+	'abusefilter-list-edit' => 'Editar',
 	'abusefilter-hidden' => 'Privado',
 	'abusefilter-unhidden' => 'Público',
 	'abusefilter-new' => 'Novo filtro',
@@ -4911,6 +4955,7 @@ $messages['pt'] = array(
 	'abusefilter-edit-save' => 'Gravar filtro',
 	'abusefilter-edit-rules' => 'Condições:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|segundo|segundos}}',
+	'abusefilter-edit-history' => 'História',
 	'abusefilter-edit-check' => 'Verificar sintaxe',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operadores aritméticos',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adição (+)',
@@ -5157,6 +5202,7 @@ $messages['roa-tara'] = array(
 	'abusefilter-history-hidden' => 'scunne',
 	'abusefilter-history-timestamp' => 'Orarie',
 	'abusefilter-history-user' => 'Utende',
+	'abusefilter-history-actions' => 'Aziune',
 	'abusefilter-history-deleted' => 'Scangillete',
 );
 
@@ -6037,6 +6083,15 @@ $messages['te'] = array(
 	'abusefilter-history-actions' => 'చర్యలు',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'abusefilter-log-search-title' => 'Títulu:',
+	'abusefilter-list-edit' => 'Edita',
+	'abusefilter-edit-history' => 'Istória',
+);
+
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
@@ -6401,12 +6456,72 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenzw
+ * @author Gaoxuewei
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
 	'abusefilter-log-search-user' => '用户：',
 	'abusefilter-log-search-title' => '标题：',
+	'abusefilter-log-search-submit' => '搜索',
+	'abusefilter-log-details-ip' => '原始IP地址',
+	'abusefilter-list-status' => '状态',
+	'abusefilter-list-hitcount' => '点击数',
+	'abusefilter-list-edit' => '编辑',
+	'abusefilter-enabled' => '启用',
+	'abusefilter-deleted' => '删除',
+	'abusefilter-disabled' => '禁用',
+	'abusefilter-tools-modifiertest-submit' => '测试',
+	'abusefilter-list-options' => '选项',
+	'abusefilter-list-options-submit' => '更新',
+	'abusefilter-tools-subtitle' => '工具',
+	'abusefilter-tools-submitexpr' => '评估',
+	'abusefilter-tools-reautoconfirm-user' => '用户',
+	'abusefilter-edit-status-label' => '统计信息',
+	'abusefilter-edit-deleted' => '标记为删除',
+	'abusefilter-edit-rules' => '条件：',
+	'abusefilter-edit-action-block' => '阻止用户 和/或 IP地址进行编辑',
+	'abusefilter-edit-history' => '历史',
+	'abusefilter-edit-check' => '检查语法',
+	'abusefilter-edit-builder-group-op-comparison' => '比较符',
+	'abusefilter-edit-builder-op-comparison-equal' => '等于（==）',
+	'abusefilter-edit-builder-op-comparison-notequal' => '不等于（!=）',
+	'abusefilter-edit-builder-op-comparison-lt' => '小于（<）',
+	'abusefilter-edit-builder-op-comparison-gt' => '大于（>）',
+	'abusefilter-edit-builder-op-comparison-lte' => '小于等于（<=）',
+	'abusefilter-edit-builder-op-comparison-gte' => '大于等于（>=）',
+	'abusefilter-edit-builder-group-op-bool' => '布尔操作符',
+	'abusefilter-edit-builder-op-bool-not' => '非（!）',
+	'abusefilter-edit-builder-op-bool-and' => '与（&）',
+	'abusefilter-edit-builder-op-bool-or' => '或（|）',
+	'abusefilter-edit-builder-op-bool-xor' => '异或（^）',
+	'abusefilter-edit-builder-group-misc' => '杂项',
+	'abusefilter-edit-builder-misc-ternary' => '三元运算符（1 ? 2 : 3）',
+	'abusefilter-edit-builder-misc-in' => '包含字符串（in）',
+	'abusefilter-edit-builder-misc-like' => '匹配正则表达式（like）',
+	'abusefilter-edit-builder-misc-stringlit' => '字符串（""）',
+	'abusefilter-edit-builder-group-funcs' => '函数',
+	'abusefilter-edit-builder-funcs-length' => '字符串长度（length）',
+	'abusefilter-edit-builder-funcs-lcase' => '改为小写（lcase）',
+	'abusefilter-edit-builder-funcs-ccnorm' => '修正混淆字符（ccnorm）',
+	'abusefilter-edit-builder-funcs-rmdoubles' => '去除双字符（rmdoubles）',
+	'abusefilter-edit-builder-funcs-specialratio' => '特殊字符占比（specialratio）',
+	'abusefilter-edit-builder-funcs-norm' => '正常化（norm）',
+	'abusefilter-edit-builder-funcs-count' => '字符串 X 在字符串 Y 中出现的次数（count）',
+	'abusefilter-edit-builder-group-vars' => '变量',
+	'abusefilter-edit-builder-vars-accountname' => '账户名（on account creation）',
+	'abusefilter-edit-builder-vars-addedlines' => '编辑增加了行数',
+	'abusefilter-edit-builder-vars-delta' => '编辑改变了大小',
+	'abusefilter-edit-builder-vars-diff' => '编辑造成了统一的变化',
+	'abusefilter-edit-builder-vars-newsize' => '新页面大小',
+	'abusefilter-edit-builder-vars-oldsize' => '旧页面大小',
+	'abusefilter-edit-builder-vars-removedlines' => '编辑减少了行数',
+	'abusefilter-edit-builder-vars-summary' => '编辑汇总/原因',
+	'abusefilter-edit-builder-vars-article-id' => '页面ID',
+	'abusefilter-edit-builder-vars-article-ns' => '页面名称空间',
+	'abusefilter-edit-builder-vars-article-text' => '页面标题（没有名称空间）',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => '完整页面标题',
+	'abusefilter-edit-builder-vars-movedfrom-id' => '要移动的源页面页面ID',
+	'abusefilter-edit-builder-vars-movedfrom-ns' => '要移动的源名称空间',
 	'abusefilter-edit-builder-vars-user-editcount' => '用户的编辑次数',
 	'abusefilter-history-hidden' => '隐藏',
 	'abusefilter-history-timestamp' => '时间',
