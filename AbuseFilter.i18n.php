@@ -1794,9 +1794,20 @@ $messages['es'] = array(
 );
 
 /** Basque (Euskara)
+ * @author Theklan
  * @author Unai Fdz. de Betoño
  */
 $messages['eu'] = array(
+	'right-abusefilter-modify' => 'Gehiegikeria iragazkiak aldatu',
+	'right-abusefilter-view' => 'Gehiegikeria iragazkiak ikusi',
+	'right-abusefilter-log' => 'Gehiegikeria loga ikusi',
+	'right-abusefilter-log-detail' => 'Gehiegikeria log sarrera detailatua ikusi',
+	'right-abusefilter-private' => 'Ikusi datu pribatuak gehiegikeria logean',
+	'abusefilter-log' => 'Gehiegikeria iragazki loga',
+	'abusefilter-log-search' => 'Bilatu gehiegikeria loga',
+	'abusefilter-log-search-user' => 'Lankide:',
+	'abusefilter-log-search-filter' => 'ID iragazkia:',
+	'abusefilter-log-search-title' => 'Izenburua:',
 	'abusefilter-log-search-submit' => 'Bilatu',
 	'abusefilter-hidden' => 'Pribatua',
 	'abusefilter-unhidden' => 'Publikoa',
@@ -4928,6 +4939,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author MF-Warburg
  * @author Malafaya
+ * @author 555
  */
 $messages['pt'] = array(
 	'abusefilter-desc' => 'Aplica heurísticas automáticas às edições.',
@@ -4955,7 +4967,7 @@ $messages['pt'] = array(
 	'abusefilter-edit-save' => 'Gravar filtro',
 	'abusefilter-edit-rules' => 'Condições:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|segundo|segundos}}',
-	'abusefilter-edit-history' => 'História',
+	'abusefilter-edit-history' => 'Histórico',
 	'abusefilter-edit-check' => 'Verificar sintaxe',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operadores aritméticos',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adição (+)',
@@ -6454,15 +6466,29 @@ $messages['vo'] = array(
 	'abusefilter-edit-status-label' => 'Statits',
 );
 
+/** Chinese (China) (‪中文(中国大陆)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-cn'] = array(
+	'abusefilter-edit-builder-vars-article-id' => '页面ID',
+	'abusefilter-edit-builder-vars-article-ns' => '页面名字空间',
+	'abusefilter-edit-builder-vars-article-text' => '页面标题（没有名字空间）',
+	'abusefilter-edit-builder-vars-movedfrom-id' => '要移动的源页面页面ID',
+	'abusefilter-edit-builder-vars-movedfrom-ns' => '要移动的源名字空间',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenzw
  * @author Gaoxuewei
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
+	'abuselog' => '滥用日志',
+	'right-abusefilter-log' => '查看滥用日志',
 	'abusefilter-log-search-user' => '用户：',
 	'abusefilter-log-search-title' => '标题：',
 	'abusefilter-log-search-submit' => '搜索',
+	'abusefilter-log-details-var' => '变数',
 	'abusefilter-log-details-ip' => '原始IP地址',
 	'abusefilter-list-status' => '状态',
 	'abusefilter-list-hitcount' => '点击数',
@@ -6517,11 +6543,11 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-builder-vars-removedlines' => '编辑减少了行数',
 	'abusefilter-edit-builder-vars-summary' => '编辑汇总/原因',
 	'abusefilter-edit-builder-vars-article-id' => '页面ID',
-	'abusefilter-edit-builder-vars-article-ns' => '页面名称空间',
-	'abusefilter-edit-builder-vars-article-text' => '页面标题（没有名称空间）',
+	'abusefilter-edit-builder-vars-article-ns' => '页面名字空间',
+	'abusefilter-edit-builder-vars-article-text' => '页面标题（没有名字空间）',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => '完整页面标题',
 	'abusefilter-edit-builder-vars-movedfrom-id' => '要移动的源页面页面ID',
-	'abusefilter-edit-builder-vars-movedfrom-ns' => '要移动的源名称空间',
+	'abusefilter-edit-builder-vars-movedfrom-ns' => '要移动的源名字空间',
 	'abusefilter-edit-builder-vars-user-editcount' => '用户的编辑次数',
 	'abusefilter-history-hidden' => '隐藏',
 	'abusefilter-history-timestamp' => '时间',
@@ -6530,6 +6556,7 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -6539,11 +6566,56 @@ $messages['zh-hant'] = array(
 	'abusefilter-log-search-title' => '標題：',
 	'abusefilter-log-search-submit' => '搜尋',
 	'abusefilter-log-details-var' => '變數',
+	'abusefilter-edit-builder-funcs-norm' => '正常化（norm）',
+	'abusefilter-edit-builder-group-vars' => '變量',
+	'abusefilter-edit-builder-vars-accountname' => '帳號名稱（on account creation）',
+	'abusefilter-edit-builder-vars-addedlines' => '編輯增加了行數',
+	'abusefilter-edit-builder-vars-delta' => '編輯改變了大小',
+	'abusefilter-edit-builder-vars-diff' => '編輯造成了統一的變化',
+	'abusefilter-edit-builder-vars-newsize' => '新頁面大小',
+	'abusefilter-edit-builder-vars-oldsize' => '舊頁面大小',
+	'abusefilter-edit-builder-vars-article-id' => '頁面ID',
+	'abusefilter-edit-builder-vars-article-ns' => '頁面名字空間',
+	'abusefilter-edit-builder-vars-article-text' => '頁面標題（沒有名字空間）',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => '完整頁面標題',
+	'abusefilter-edit-builder-vars-movedfrom-id' => '要移動的源頁面頁面ID',
+	'abusefilter-edit-builder-vars-movedfrom-ns' => '要移動的源名字空間',
 	'abusefilter-edit-builder-vars-user-editcount' => '使用者的編輯次數',
 	'abusefilter-history-hidden' => '隱藏',
 	'abusefilter-history-timestamp' => '時間',
 	'abusefilter-history-user' => '使用者',
 	'abusefilter-history-deleted' => '已刪除',
+);
+
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hk'] = array(
+	'abusefilter-edit-builder-vars-addedlines' => '編輯增加了行數',
+	'abusefilter-edit-builder-vars-delta' => '編輯改變了大小',
+	'abusefilter-edit-builder-vars-diff' => '編輯造成了統一的變化',
+	'abusefilter-edit-builder-vars-newsize' => '新頁面大小',
+	'abusefilter-edit-builder-vars-oldsize' => '舊頁面大小',
+	'abusefilter-edit-builder-vars-article-id' => '頁面ID',
+	'abusefilter-edit-builder-vars-article-ns' => '頁面名字空間',
+	'abusefilter-edit-builder-vars-article-text' => '頁面標題（沒有名字空間）',
+	'abusefilter-edit-builder-vars-movedfrom-id' => '要移動的源頁面頁面ID',
+	'abusefilter-edit-builder-vars-movedfrom-ns' => '要移動的源名字空間',
+);
+
+/** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-tw'] = array(
+	'abusefilter-edit-builder-vars-addedlines' => '編輯增加了行數',
+	'abusefilter-edit-builder-vars-delta' => '編輯改變了大小',
+	'abusefilter-edit-builder-vars-diff' => '編輯造成了統一的變化',
+	'abusefilter-edit-builder-vars-newsize' => '新頁面大小',
+	'abusefilter-edit-builder-vars-oldsize' => '舊頁面大小',
+	'abusefilter-edit-builder-vars-article-id' => '頁面ID',
+	'abusefilter-edit-builder-vars-article-ns' => '頁面名字空間',
+	'abusefilter-edit-builder-vars-article-text' => '頁面標題（沒有名字空間）',
+	'abusefilter-edit-builder-vars-movedfrom-id' => '要移動的源頁面頁面ID',
+	'abusefilter-edit-builder-vars-movedfrom-ns' => '要移動的源名字空間',
 );
 
