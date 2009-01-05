@@ -90,6 +90,12 @@ $aliases['lb'] = array(
 	'AbuseFilter' => array( 'Mëssbrauchsfilter' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'AbuseLog' => array( 'LogAbbuż' ),
+	'AbuseFilter' => array( 'FiltruAbbuż' ),
+);
+
 /** Erzya (Эрзянь) */
 $aliases['myv'] = array(
 	'AbuseLog' => array( 'АТевсНолдамодо' ),
