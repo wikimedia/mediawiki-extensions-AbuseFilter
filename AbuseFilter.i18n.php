@@ -119,7 +119,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-reautoconfirm-notallowed' => 'You are not allowed to restore autoconfirmed status.',
 	
 	// Abuse filter status
-	'abusefilter-status' => "Of the last $1 {{PLURAL:$1|action|actions}}, $2 ($3%) {{PLURAL:$2|has|have}} reached the condition limit of $4. $5 ($6%) {{PLURAL:$5|has|have}} matched one of the filters currently enabled.",
+	'abusefilter-status' => "Of the last $1 {{PLURAL:$1|action|actions}}, $5 ($6%) {{PLURAL:$5|has|have}} matched one of the filters currently enabled.", // $2 ($3%) {{PLURAL:$2|has|have}} reached the condition limit of $4.
 	
 	// The edit screen
 	'abusefilter-edit-subtitle' => 'Editing filter $1',
