@@ -14,7 +14,9 @@ class SpecialAbuseFilter extends SpecialPage {
 	}
 	
 	function execute( $subpage ) {
-		global $wgUser,$wgOut,$wgRequest;
+		global $wgUser,$wgOut,$wgRequest, $wgAbuseFilterStyleVersion, $wgScriptPath;
+
+		$wgOut->addExtensionStyle( "{$wgScriptPath}/extensions/AbuseFilter/abusefilter.css?{$wgAbuseFilterStyleVersion}" );
 
 		$this->setHeaders();
 
@@ -463,11 +465,10 @@ class SpecialAbuseFilter extends SpecialPage {
 		
 		// Add syntax checking
 		$rules .= Xml::element( 'input', array( 'type' => 'button', 'onclick' => 'doSyntaxCheck()', 'value' => wfMsg( 'abusefilter-edit-check' ), 'id' => 'mw-abusefilter-syntaxcheck' ) );
+		$rules .= Xml::element( 'div', array( 'id' => 'mw-abusefilter-syntaxresult', 'style' => 'display: none;' ), '&nbsp;' );
 		
 		// Add script
-		$scScript = file_get_contents(dirname(__FILE__)."/edit.js");
-		
-		$wgOut->addInlineScript( $scScript );
+		$wgOut->addInlineScript( file_get_contents(dirname(__FILE__)."/edit.js") );
 		
 		return $rules;
 	}

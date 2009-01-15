@@ -224,8 +224,6 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-edit-builder-vars-user-name' => 'Name of user account',
 	'abusefilter-edit-builder-vars-user-groups' => 'Groups (including implicit) user is in',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Time email address was confirmed',
-
-
 	
 	// Filter history
 	'abusefilter-history' => 'History for filter $1',

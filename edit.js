@@ -8,13 +8,16 @@ function processSyntaxResult( request ) {
 	var response = request.responseText;
 	
 	removeSpinner( 'abusefilter-syntaxcheck' );
+
+	var el = document.getElementById( 'mw-abusefilter-syntaxresult' );
+	el.style.display = 'block';
 	
 	if (response.match( /OK/ )) {
 		// Successful
-		jsMsg( 'No syntax errors.', 'mw-abusefilter-syntaxresult' );
+		changeText( el, 'No syntax errors.' );
 	} else {
 		var error = response.substr(4);
-		jsMsg( 'Syntax error: '+error, 'mw-abusefilter-syntaxresult' );
+		changeText( el, 'Syntax error: '+error );
 	}
 }
 function addText() {
@@ -22,7 +25,7 @@ function addText() {
 		return;
 	}
 	
-	insertAtCursor(document.getElementById('wpFilterRules'), document.getElementById('wpFilterBuilder').value);
+	insertAtCursor(document.getElementById('wpFilterRules'), document.getElementById('wpFilterBuilder').value + " ");
 	document.getElementById('wpFilterBuilder').selectedIndex = 0;
 }
 
@@ -45,3 +48,9 @@ function insertAtCursor(myField, myValue) {
 		myField.value += myValue;
 	}
 }
+
+addOnloadHook( function() {
+	addHandler( document.getElementById( 'wpFilterRules' ), 'keyup', function() {
+		document.getElementById( 'mw-abusefilter-syntaxresult' ).style.display = 'none';
+	} );
+} );

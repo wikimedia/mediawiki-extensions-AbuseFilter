@@ -71,3 +71,6 @@ $wgAbuseFilterNativeExpressionEvaluator = "$dir/parser_native/af_expr";
 $wgAjaxExportList[] = 'AbuseFilter::ajaxCheckSyntax';
 $wgAjaxExportList[] = 'AbuseFilter::ajaxEvaluateExpression';
 $wgAjaxExportList[] = 'AbuseFilter::ajaxReAutoconfirm';
+
+## Style version
+$wgAbuseFilterStyleVersion = 1;
