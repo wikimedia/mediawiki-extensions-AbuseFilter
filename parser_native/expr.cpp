@@ -37,7 +37,7 @@ main(int argc, char **argv)
 		return 1;
 	}
 
-	afp::expressor e;
+	afp::u32expressor e;
 
 	e.add_variable(make_u32fray("ONE"), afp::u32datum::from_int(1));
 	e.add_variable(make_u32fray("TWO"), afp::u32datum::from_int(2));

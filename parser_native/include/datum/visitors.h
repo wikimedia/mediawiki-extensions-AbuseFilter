@@ -12,11 +12,8 @@
 #ifndef DATUM_VISITORS_H
 #define DATUM_VISITORS_H
 
-#include	<boost/date_time/time_facet.hpp>
-
 #include	"datum/create.h"
 #include	"afstring.h"
-#include	"functors.h"
 
 namespace afp {
 namespace datum_impl {
@@ -82,18 +79,6 @@ struct to_string_visitor : boost::static_visitor<basic_fray<charT> > {
 	basic_fray<charT> operator() (T const &v) const {
 		return u32lexical_cast<charT, basic_fray<charT> >(v);
 	}
-
-	basic_fray<charT> operator() (typename basic_datum<charT>::datetime_t const &v) const {
-		using namespace boost::date_time;
-		using namespace boost::posix_time;
-		typedef boost::date_time::time_facet<typename basic_datum<charT>::datetime_t, char> facet_t;
-		facet_t *output_facet = new facet_t();
-		std::ostringstream strm;
-		strm.imbue(std::locale(std::locale::classic(), output_facet));
-		output_facet->format("%Y-%m-%d %H:%M:%S");
-		strm << v;
-		return make_u32fray(('"' + strm.str() + "\"d").c_str());
-	}
 };
 
 template<typename charT>
@@ -109,14 +94,6 @@ struct to_int_visitor : boost::static_visitor<typename basic_datum<charT>::integ
 	typename basic_datum<charT>::integer_t operator() (
 			typename basic_datum<charT>::float_t const &o) const {
 		return typename basic_datum<charT>::integer_t(o);
-	}
-
-	typename basic_datum<charT>::integer_t operator() (typename basic_datum<charT>::datetime_t const &) const {
-		throw type_error("cannot coerce types: datetime_t not compatible with integer_t");
-	}
-
-	typename basic_datum<charT>::integer_t operator() (typename basic_datum<charT>::interval_t const &) const {
-		throw type_error("cannot coerce types: interval_t not compatible with integer_t");
 	}
 
 	template<typename T>
@@ -139,14 +116,6 @@ struct to_double_visitor : boost::static_visitor<typename basic_datum<charT>::fl
 		return v.get_si();
 	}
 
-	typename basic_datum<charT>::float_t operator() (typename basic_datum<charT>::datetime_t const &) const {
-		throw type_error("cannot coerce types: datetime_t not compatible with float_t");
-	}
-
-	typename basic_datum<charT>::float_t operator() (typename basic_datum<charT>::interval_t const &) const {
-		throw type_error("cannot coerce types: interval_t not compatible with float_t");
-	}
-
 	template<typename T>
 	typename basic_datum<charT>::float_t operator() (T const &v) const {
 		return v;
@@ -157,11 +126,8 @@ struct to_double_visitor : boost::static_visitor<typename basic_datum<charT>::fl
  * A visitor that performs an arithmetic operation on its arguments,
  * after doing appropriate int->double promotion.
  */
-template<typename charT, template<typename V, typename W> class Operator>
+template<typename charT, template<typename V> class Operator>
 struct arith_visitor : boost::static_visitor<basic_datum<charT> > {
-	typedef typename basic_datum<charT>::datetime_t datetime_t;
-	typedef typename basic_datum<charT>::interval_t interval_t;
-
 	/*
 	 * Anything involving a double returns a double.
 	 * Otherwise, int is returned.
@@ -170,27 +136,27 @@ struct arith_visitor : boost::static_visitor<basic_datum<charT> > {
 	basic_datum<charT> operator() (T const &a, U const &b) const {
 		typedef typename from_string_converter<charT, T>::type a_type;
 		typedef typename from_string_converter<charT, U>::type b_type;
-		//typedef typename preferred_type<a_type, b_type>::type preferred_type;
-		typedef typename functor::return_type<a_type, b_type>::type return_type;
+		typedef typename preferred_type<a_type, b_type>::type preferred_type;
 
-		Operator<a_type, b_type> op;
-		return create_datum<charT, return_type>::create(op(
+		Operator<preferred_type> op;
+		return create_datum<charT, preferred_type>::create(op(
 			from_string_converter<charT, T>::convert(a), 
 			from_string_converter<charT, U>::convert(b)));
 	}
-};
 
-template<typename charT, template<typename V> class Operator>
-struct unary_arith_visitor : boost::static_visitor<basic_datum<charT> > {
+	/*
+	 * Unary version.
+	 */
 	template<typename T>
 	basic_datum<charT> operator() (T const &a) const {
 		typedef typename from_string_converter<charT, T>::type a_type;
 		typedef typename preferred_type<a_type, a_type>::type preferred_type;
 
-		Operator<a_type> op;
+		Operator<preferred_type> op;
 		return create_datum<charT, preferred_type>::create(
 				op(from_string_converter<charT, T>::convert(a)));
 	}
+
 };
 
 /*
@@ -198,7 +164,7 @@ struct unary_arith_visitor : boost::static_visitor<basic_datum<charT> > {
  */
 template<
 	typename charT,
-	template<typename V, typename W> class Operator,
+	template<typename V> class Operator,
 	typename T,
 	typename U>
 struct compare_visitor_impl {
@@ -207,7 +173,7 @@ struct compare_visitor_impl {
 		typedef typename from_string_converter<charT, U>::type b_type;
 		typedef typename preferred_type<a_type, b_type>::type preferred_type;
 
-		Operator<a_type, b_type> op;
+		Operator<preferred_type> op;
 		return op(
 			from_string_converter<charT, T>::convert(a), 
 			from_string_converter<charT, U>::convert(b));
@@ -217,7 +183,7 @@ struct compare_visitor_impl {
 /*
  * Specialise for string<>string comparisons
  */
-template<typename charT, template<typename V, typename W> class Operator>
+template<typename charT, template<typename V> class Operator>
 struct compare_visitor_impl<
 		charT, 
 		Operator, 
@@ -226,12 +192,12 @@ struct compare_visitor_impl<
 	> : boost::static_visitor<bool> {
 
 	bool operator() (basic_fray<charT> const &a, basic_fray<charT> const &b) const {
-		Operator<basic_fray<charT>, basic_fray<charT> > op;
+		Operator<basic_fray<charT> > op;
 		return op(a, b);
 	}
 };
 
-template<typename charT, template<typename V, typename W> class Operator>
+template<typename charT, template<typename V> class Operator>
 struct compare_visitor : boost::static_visitor<bool> {
 	template<typename T, typename U> 
 	bool operator() (T const &a, U const &b) const {
@@ -242,15 +208,15 @@ struct compare_visitor : boost::static_visitor<bool> {
 /*
  * For comparisons that only work on integers - strings will be converted.
  */
-template<typename charT, template<typename V, typename W> class Operator>
+template<typename charT, template<typename V> class Operator>
 struct arith_compare_visitor : boost::static_visitor<bool> {
 	template<typename T, typename U>
 	bool operator() (T const &a, U const &b) const {
 		typedef typename from_string_converter<charT, T>::type a_type;
 		typedef typename from_string_converter<charT, U>::type b_type;
-		//typedef typename preferred_type<a_type, b_type>::type preferred_type;
+		typedef typename preferred_type<a_type, b_type>::type preferred_type;
 
-		Operator<a_type, b_type> op;
+		Operator<preferred_type> op;
 		return op(
 			from_string_converter<charT, T>::convert(a), 
 			from_string_converter<charT, U>::convert(b));

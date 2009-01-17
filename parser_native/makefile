@@ -9,60 +9,43 @@
 
 include makefile.config
 
-CPPFLAGS	= -Iinclude $(EXTRA_CPPFLAGS)
+CPPFLAGS	= -I. -Iinclude $(EXTRA_CPPFLAGS)
 LDFLAGS		= $(EXTRA_LDFLAGS)
 
-LIBS		= -lboost_regex$(BOOST_TAG) -lboost_date_time$(BOOST_TAG) -lgmp -lgmpxx -licuuc -licui18n -licudata
+LIBS		= -lboost_regex$(BOOST_TAG) -lgmp -lgmpxx -licuuc -licui18n -licudata
 
-af_expr_objs =				\
+expr: CPPFLAGS+=-DTEST_PARSER
+
+af_expr_objs = \
 	af_expr-eval.o			\
-	af_expr-parser.o		\
-	af_expr-ast.o			\
-	af_expr-filter_evaluator.o	\
 	af_expr-equiv.o			\
 	af_expr-request.o
 
-af_parser_objs =			\
+af_parser_objs = \
 	af_parser-main.o		\
 	af_parser-request.o		\
-	af_parser-parser.o		\
-	af_parser-ast.o			\
-	af_parser-filter_evaluator.o	\
 	af_parser-equiv.o
 
-check_objs = 				\
-	check-check.o			\
-	check-parser.o			\
-	check-ast.o			\
-	check-filter_evaluator.o	\
+check_objs = \
+	check-check.o		\
 	check-equiv.o
 
-syntax_check_objs = 			\
+syntax_check_objs = \
 	syntax_check-equiv.o		\
-	syntax_check-parser.o		\
-	syntax_check-ast.o		\
-	syntax_check-filter_evaluator.o	\
 	syntax_check-syntax_check.o
 
-expr_objs = 				\
-	expr-equiv.o			\
-	expr-parser.o			\
-	expr-ast.o			\
+expr_objs = \
+	expr-equiv.o		\
 	expr-expr.o
 
-xml_objs = 				\
-	xml-parser.o			\
-	xml-ast.o			\
+xml_objs = \
 	xml-xml.o
 
-evaluate_objs = 			\
+evaluate_objs = \
 	evaluate-equiv.o		\
-	evaluate-parser.o		\
-	evaluate-ast.o			\
-	evaluate-filter_evaluator.o	\
 	evaluate-evaluate.o
 
-maketest_objs = 			\
+maketest_objs = \
 	maketest-maketest.o
 
 progs = check af_parser syntax_check af_expr expr evaluate xml maketest

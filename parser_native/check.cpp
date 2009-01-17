@@ -14,7 +14,7 @@
 #include	"afstring.h"
 
 int main( int argc, char** argv ) {
-	afp::filter_evaluator f;
+	afp::u32filter_evaluator f;
 	bool result = false;
 	
 	for(int i=0;i<=100;i++) {

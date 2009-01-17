@@ -13,58 +13,33 @@
 #define DATUM_OPERATORS_H
 
 #include	"datum/visitors.h"
-#include	"functors.h"
 
 namespace afp {
 
 namespace datum_impl {
 
+/*
+ * std::modulus doesn't work with double, so we provide our own.
+ */
+template<typename T>
+struct afpmodulus {
+	T operator() (T const &a, T const &b) const {
+		return a % b;
+	}
+};
+
+template<>
+struct afpmodulus<mpf_class> {
+	double operator() (mpf_class const &a, mpf_class const &b) const {
+		/* this is less than ideal */
+		return std::fmod(a.get_d(), b.get_d());
+	}
+};
 
 template<typename T>
-struct afpless {
-	template<typename U>
-	bool operator() (T a, U b) const {
-		return a < b;
-	}
-
-	bool operator() (T, boost::posix_time::ptime const &) const {
-		throw type_error("operator < not applicable to these types");
-	}
-		
-	bool operator() (boost::posix_time::ptime const &, T) const {
-		throw type_error("operator < not applicable to these types");
-	}
-
-	bool operator() (T, boost::posix_time::time_duration const &) const {
-		throw type_error("operator < not applicable to these types");
-	}
-
-	bool operator() (boost::posix_time::time_duration const &, T) const {
-		throw type_error("operator < not applicable to these types");
-	}
-};
-
-template<>
-struct afpless<boost::posix_time::ptime> {
-	template<typename U>
-	bool operator() (boost::posix_time::ptime const &, U const &b) const {
-		throw type_error("operator < not applicable to these types");
-	}
-
-	bool operator() (boost::posix_time::ptime const &a, boost::posix_time::ptime const &b) const {
-		return a < b;
-	}
-};
-
-template<>
-struct afpless<boost::posix_time::time_duration> {
-	template<typename U>
-	bool operator() (boost::posix_time::time_duration const &, U const &b) const {
-		throw type_error("operator < not applicable to these types");
-	}
-
-	bool operator() (boost::posix_time::time_duration const &a, boost::posix_time::time_duration const &b) const {
-		return a < b;
+struct afppower {
+	T operator() (T const &a, T const &b) const {
+		return std::pow(a,b);
 	}
 };
 
@@ -124,8 +99,7 @@ basic_datum<charT>::operator+=(basic_datum<charT> const &other)
 		return *this;
 	}
 
-	basic_datum<charT> result = boost::apply_visitor(
-			datum_impl::arith_visitor<charT, functor::plus>(), value_, other.value_);
+	basic_datum<charT> result = boost::apply_visitor(datum_impl::arith_visitor<charT, std::plus>(), value_, other.value_);
 	*this = result;
 	return *this;
 }
@@ -134,8 +108,7 @@ template<typename charT>
 basic_datum<charT> &
 basic_datum<charT>::operator-=(basic_datum<charT> const &other)
 {
-	basic_datum<charT> result = boost::apply_visitor(
-			datum_impl::arith_visitor<charT, functor::minus>(), value_, other.value_);
+	basic_datum<charT> result = boost::apply_visitor(datum_impl::arith_visitor<charT, std::minus>(), value_, other.value_);
 	*this = result;
 	return *this;
 }
@@ -144,8 +117,7 @@ template<typename charT>
 basic_datum<charT> &
 basic_datum<charT>::operator*=(basic_datum<charT> const &other)
 {
-	basic_datum<charT> result = boost::apply_visitor(
-			datum_impl::arith_visitor<charT, functor::multiply>(), value_, other.value_);
+	basic_datum<charT> result = boost::apply_visitor(datum_impl::arith_visitor<charT, std::multiplies>(), value_, other.value_);
 	*this = result;
 	return *this;
 }
@@ -154,8 +126,7 @@ template<typename charT>
 basic_datum<charT>&
 basic_datum<charT>::operator/=(basic_datum<charT> const &other)
 {
-	basic_datum<charT> result = boost::apply_visitor(
-			datum_impl::arith_visitor<charT, functor::divide>(), value_, other.value_);
+	basic_datum<charT> result = boost::apply_visitor(datum_impl::arith_visitor<charT, std::divides>(), value_, other.value_);
 	*this = result;
 	return *this;
 }
@@ -165,7 +136,7 @@ basic_datum<charT>&
 basic_datum<charT>::operator%=(basic_datum<charT> const &other)
 {
 	basic_datum<charT> result = boost::apply_visitor(
-			datum_impl::arith_visitor<charT, functor::modulus>(), value_, other.value_);
+			datum_impl::arith_visitor<charT, datum_impl::afpmodulus>(), value_, other.value_);
 	*this = result;
 	return *this;
 }
@@ -181,7 +152,7 @@ template<typename charT>
 basic_datum<charT>
 basic_datum<charT>::operator-() const
 {
-	return boost::apply_visitor(datum_impl::unary_arith_visitor<charT, functor::negate>(), value_);
+	return boost::apply_visitor(datum_impl::arith_visitor<charT, std::negate>(), value_);
 }
 
 template<typename charT>

@@ -9,19 +9,26 @@
  * implied warranty.
  */
 
-#include	"filter_evaluator.h"
+#ifndef EQUIV_H
+#define EQUIV_H
 
-int main(int argc, char** argv) {
-	afp::u32filter_evaluator f;
-	
-	if (argc != 2) {
-		std::cerr << "usage: " << argv[0] << " <filter>\n";
-		return 1;
-	}
+#include	<map>
 
-	try {
-		std::cout << f.evaluate(make_u32fray(argv[1])) << '\n';
-	} catch (std::exception &e) {
-		std::cerr << "exception: " << e.what() << '\n';
-	}
-}
+#include	<boost/noncopyable.hpp>
+
+namespace afp {
+
+struct equiv_set : boost::noncopyable {
+	static equiv_set const &instance();
+
+	int get(int) const;
+
+private:
+	equiv_set();
+
+	std::map<int, int> equivs_;
+};
+
+} // namespace afp
+
+#endif	/* !EQUIV_H */

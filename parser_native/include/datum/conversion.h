@@ -55,20 +55,6 @@ basic_datum<charT>::from_double(typename basic_datum<charT>::float_t const &v)
 }
 
 template<typename charT>
-basic_datum<charT>
-basic_datum<charT>::from_date(typename basic_datum<charT>::datetime_t const &v)
-{
-	return basic_datum<charT>(v);
-}
-
-template<typename charT>
-basic_datum<charT>
-basic_datum<charT>::from_interval(typename basic_datum<charT>::interval_t const &v)
-{
-	return basic_datum<charT>(v);
-}
-
-template<typename charT>
 typename basic_datum<charT>::string_t
 basic_datum<charT>::toString() const {
 	return boost::apply_visitor(datum_impl::to_string_visitor<charT>(), value_);

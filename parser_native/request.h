@@ -9,29 +9,26 @@
  * implied warranty.
  */
 
-#include	<cstdlib>
+#ifndef REQUEST_H
+#define REQUEST_H
+
 #include	<string>
-#include	<sstream>
-#include	<iostream>
+#include	<istream>
 
 #include	"filter_evaluator.h"
+#include	"afstring.h"
 
-int main(int argc, char** argv)
-{
-	std::stringbuf ss( std::ios::in | std::ios::out );
-	
-	// Fill the stringstream
-	std::cin.get(ss,'\x04');
-	
-	fray filter(ss.str());
-	
-	try {
-		afp::u32filter_evaluator f;
-		f.evaluate(make_u32fray(filter));
-	} catch (afp::exception &excep) {
-		std::cout << "PARSERR: " << excep.what() << std::endl;
-		std::exit(0);
-	}
-	
-	std::cout << "SUCCESS" << std::endl;
-}
+namespace afp {
+
+struct request {
+	bool load(std::istream &);
+	bool evaluate(void);
+
+private:
+	u32filter_evaluator f;
+	u32fray filter;
+};
+
+} // namespace afp
+
+#endif	/* !REQUEST_H */
