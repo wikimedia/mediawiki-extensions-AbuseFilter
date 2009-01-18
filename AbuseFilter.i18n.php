@@ -1131,7 +1131,7 @@ Kratki opis prekršenih pravila koje se odnose na Vašu akciju je: $1',
 	'abusefilter-tools-reautoconfirm-submit' => 'Revert automatski potvrđenog',
 	'abusefilter-reautoconfirm-none' => 'Ovaj korisnik nije privremeno odustao od automatski potvrđenog statusa.',
 	'abusefilter-reautoconfirm-notallowed' => 'Vi nemate ovlašćenje da povratite automatski potvrđen status.',
-	'abusefilter-status' => 'Zadnja/e $1 {{PLURAL:$1|akcija|akcije}}, $2 ($3%) {{PLURAL:$2|je|su}} dovele do ograničenja limita od $4. $5 ($6%) {{PLURAL:$5|je|su}} pogodila/e jedan od trenutno uključenih filtera.',
+	'abusefilter-status' => 'Zadnja/e $1 {{PLURAL:$1|akcija|akcije}}, $5 ($6%) {{PLURAL:$5|je pogodila|su pogodile}} jedan od trenutno uključenih filtera.',
 	'abusefilter-edit-subtitle' => 'Uredi filter $1',
 	'abusefilter-edit-oldwarning' => '<strong>Mijenjate jednu staru varijantu ovog filtera. Pokazane statistike su za najviše aktivne filtere. Ako sačuvate izmjenu izbrisaćete sve izmjene napravljene od reverta koji pravite.</strong> &bull; [[Special:AbuseFilter/history/$2|Vrati se na historiju ovog filtera]]',
 	'abusefilter-edit-status-label' => 'Statistike',
@@ -1256,6 +1256,7 @@ Kratki opis prekršenih pravila koje se odnose na Vašu akciju je: $1',
 
 /** Catalan (Català)
  * @author Aleator
+ * @author Loupeter
  */
 $messages['ca'] = array(
 	'abusefilter-edit-status-label' => 'Estadístiques',
@@ -1269,6 +1270,7 @@ $messages['ca'] = array(
 	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Multiplicació (*)',
 	'abusefilter-edit-builder-op-arithmetic-divide' => 'Divisió (/)',
 	'abusefilter-edit-builder-op-arithmetic-pow' => 'Potència (**)',
+	'abusefilter-history-comments' => 'Comentaris',
 );
 
 /** Corsican (Corsu) */
@@ -1386,7 +1388,7 @@ Kurzbeschreibung der verletzten Regel: $1',
 	'abusefilter-tools-reautoconfirm-submit' => 'Wieder zum bestätigten Benutzer machen',
 	'abusefilter-reautoconfirm-none' => 'Diesem Benutzer ist der bestätigter Benutzer-Status nicht entzogen worden.',
 	'abusefilter-reautoconfirm-notallowed' => 'Du bist nicht berechtigt, Benutzer wieder zu bestätigten Benutzern zu machen.',
-	'abusefilter-status' => 'Von {{PLURAL:$1|der letzten Aktion|den letzten $1 Aktionen}} {{PLURAL:$2|hat eine|haben $2}} ($3 %) den Grenzwert von $4 erreicht. $5 ($6 %) {{PLURAL:$5|wurde|wurden}} von einem der momentan aktivierten Filter erkannt.',
+	'abusefilter-status' => 'Von {{PLURAL:$1|der letzten Aktion|den letzten $1 Aktionen}}, {{PLURAL:$5|wurde|wurden}} $5 ($6 %) von einem der momentan aktivierten Filter erkannt.',
 	'abusefilter-edit-subtitle' => 'Bearbeite Filter $1',
 	'abusefilter-edit-oldwarning' => '<strong>Du bearbeitest nicht die aktuelle, sondern eine ältere Version dieses Filters. Die Statistik gilt nur für die letzte Version des Filters. Wenn du speicherst, wird diese als aktuelle Version neu gespeichert. </strong> &bull; [[Special:AbuseFilter/history/$2|Zurück zur Versionsgeschichte des Filters]]',
 	'abusefilter-edit-status-label' => 'Statistiken',
@@ -1854,6 +1856,8 @@ $messages['eu'] = array(
 	'abusefilter-tools-reautoconfirm' => 'Berrezarri autokonfirmazio egoera',
 	'abusefilter-tools-reautoconfirm-user' => 'Lankidea',
 	'abusefilter-tools-reautoconfirm-submit' => 'Berriro autokonfirmatu',
+	'abusefilter-edit-subtitle' => '$1 iragazkia editatzen',
+	'abusefilter-edit-status-label' => 'Estatistikak',
 	'abusefilter-edit-new' => 'Iragazki berria',
 	'abusefilter-edit-save' => 'Iragazkia gorde',
 	'abusefilter-edit-id' => 'Iragazkiaren identifikazioa (ID):',
@@ -2080,7 +2084,7 @@ Une brève description de la règle d’abus que votre action a déclenchée est
 	'abusefilter-tools-reautoconfirm-submit' => 'Autoconfirmer à nouveau',
 	'abusefilter-reautoconfirm-none' => 'Cet utilisateur n’a pas son statut d’autoconfirmé suspendu.',
 	'abusefilter-reautoconfirm-notallowed' => 'Vous n’êtes pas autorisé à restaurer le statut d’autoconfirmé.',
-	'abusefilter-status' => '{{PLURAL:$1|De la dernière action|des $1 dernières actions}}, $2 ($3 %) {{PLURAL:$2|a|ont}} atteint la limite de la condition définie par $4. $5 ($6 %) {{PLURAL:$5|correspondait|correspondaient}} à l’un de ces filtres actuellement en service.',
+	'abusefilter-status' => '{{PLURAL:$1|De la dernière action|des $1 dernières actions}}, $5 ($6 %) {{PLURAL:$5|correspondait|correspondaient}} à l’un de ces filtres actuellement en service.',
 	'abusefilter-edit-subtitle' => 'Modification du filtre $1',
 	'abusefilter-edit-oldwarning' => "<strong>Vous êtes en train de modifier une ancienne version du filtre. Les statistiques affichés sont pour la version courante de celui-ci. Si vous sauvegardez vos modifications, ils vont supprimer les modifications effectuées ultérieurement.</strong> &bull; [[Special:AbuseFilter/history/$2|Revenir à l'historique de ce filtre]]",
 	'abusefilter-edit-status-label' => 'Statistiques',
@@ -2308,7 +2312,7 @@ Unha breve descrición da regra de abuso coa que a súa acción coincide é: $1'
 	'abusefilter-tools-reautoconfirm-submit' => 'Volver autoconfirmar',
 	'abusefilter-reautoconfirm-none' => 'Ese usuario non tivo o seu status de autoconfirmación suspendido.',
 	'abusefilter-reautoconfirm-notallowed' => 'Non ten os permisos necesarios para restaurar o status de autoconfirmación.',
-	'abusefilter-status' => '{{PLURAL:$1|Da última acción|Das $1 últimas accións}}, $2 ($3%) acadaron a condición límite de $4. {{PLURAL:$1|Un ($6%) coincidiu|$5 ($6%) coincidiron}} cun dos filtros permitidos actualmente.',
+	'abusefilter-status' => '{{PLURAL:$1|Da última acción|Das $1 últimas accións}}, $5 ($6%) {{PLURAL:$5|coincidiu|coincidiron}} cun dos filtros actualmente activados.',
 	'abusefilter-edit-subtitle' => 'Editando o filtro $1',
 	'abusefilter-edit-oldwarning' => '<strong>Está a editar unha versión vella deste filtro. As estatísticas citadas son da versión máis recente do filtro. Se garda os seus cambios, sobreescribirá todos os cambios desde a revisión que está editando.</strong> &bull; [[Special:AbuseFilter/history/$2|Voltar ao historial deste filtro]]',
 	'abusefilter-edit-status-label' => 'Estatísticas',
@@ -3201,11 +3205,27 @@ Keterangan mengenai peraturan terkait: $1',
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Gianfranco
  */
 $messages['it'] = array(
 	'abusefilter-desc' => "Applica un'euristica automatica agli edit.",
 	'abusefilter' => 'Configurazione filtro abusi',
 	'abuselog' => 'Registro abusi',
+	'abusefilter-warning' => "<big>'''Attenzione'''</big>: Questa azione è stata automaticamente riconosciuta come potenzialmente pericolosa. 
+Gli edit non costruttivi verranno immediatamente annullati, ed edit gravemente o ripetutamente non costruttivi daranno luogo al blocco della tua utenza o del tuo computer.
+Se ritieni che questo edit sia costruttivo, puoi cliccare nuovamente il tasto Invia per confermarlo.
+Questa è una breve descrizione della regola di sicurezza che la tua azione ha violato: $1",
+	'abusefilter-disallowed' => 'Questa azione è stata automaticamente riconosciuta come potenzialmente pericolosa e perciò non permessa. 
+Se ritieni che questo edit sia costruttivo, puoi contattare un amministratore ed informarlo di cosa stavi cercando di fare.
+Questa è una breve descrizione della regola di sicurezza che la tua azione ha violato: $1',
+	'abusefilter-blocked-display' => 'Questa azione è stata automaticamente riconosciuta come potenzialmente pericolosa e ti è stato impedito di eseguirla. 
+In più, per proteggere {{SITENAME}}, la tua utenza e tutti gli indirizzi IP ad essa associati sono stati bloccati e non possono più editare.
+Se ritieni che vi sia stato un errore, per favore contatta un amministratore.
+Questa è una breve descrizione della regola di sicurezza che la tua azione ha violato: $1',
+	'abusefilter-degrouped' => "Questa azione è stata automaticamente riconosciuta come potenzialmente pericolosa. 
+Conseguentemente, l'azione non è stata permessa e, dato il rischio che la tua utenza sia stata compromessa, tutti i diritti sono stati revocati.
+Se ritieni che vi sia stato un errore, per favore contatta un burocrate formendogli una spiegazione di questa azione, e i tuoi diritti potrebbero essere ripristinati. 
+Questa è una breve descrizione della regola di sicurezza che la tua azione ha violato: $1",
 	'abusefilter-degroupreason' => 'Diritti rimossi automaticamente dal filtro abusi. Descrizione della regola: $1',
 	'abusefilter-accountreserved' => 'Questo account è riservato al filtro abusi.',
 	'abusefilter-log-search-user' => 'Utente:',
@@ -3355,7 +3375,7 @@ $messages['ja'] = array(
 	'abusefilter-tools-reautoconfirm-submit' => '再自動承認',
 	'abusefilter-reautoconfirm-none' => 'その利用者は自動承認ステータスを停止されていません。',
 	'abusefilter-reautoconfirm-notallowed' => 'あなたは自動承認ステータスを復元することが許可されていません。',
-	'abusefilter-status' => '最終の$1操作のうち、$2 ($3%) が $4 の条件制限に達しました。$5 ($6%) は現在有効なフィルターの1つにマッチしました。',
+	'abusefilter-status' => '最終の$1操作のうち、$5 ($6%) が現在有効なフィルターの1つにマッチしました。',
 	'abusefilter-edit-subtitle' => 'フィルター $1 を編集中',
 	'abusefilter-edit-oldwarning' => '<strong>あなたはこのフィルターの古い版を編集しています。引用されている統計は最新版のフィルターのものです。あなたの変更を保存すると、あなたが編集している版以降の変更をすべて上書きしてしまいます。</strong> &bull; [[Special:AbuseFilter/history/$2|このフィルターの履歴に戻る]]',
 	'abusefilter-edit-status-label' => '統計',
@@ -3663,6 +3683,7 @@ $messages['ksh'] = array(
 	'abusefilter-tools-reautoconfirm-user' => 'Metmaacher',
 	'abusefilter-edit-subtitle' => 'Filter-Räjel $1 beärbeide',
 	'abusefilter-edit-status-label' => 'Zahle un Statistike',
+	'abusefilter-edit-status' => '{{PLURAL:$1|De letzte Axjuhn woodt|Unger de letzte $1 Axjuhne {{PLURAL:$2|woor_er ein, die|woore $2, die|wood kein}}|Kein Axjuhn woodt}} vun dämm Felter hee opjejreff{{PLURAL:$1|e|{{PLURAL:$2|e wood|e woode|e}}|e}}, dat sinn_er $3% jewääse.',
 	'abusefilter-edit-new' => 'Neu Filter-Räjel',
 	'abusefilter-edit-save' => 'Faßhallde',
 	'abusefilter-edit-id' => 'Filter-Räjel:',
@@ -4150,6 +4171,7 @@ $messages['nah'] = array(
  * @author Annabel
  * @author SPQRobin
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
 	'abusefilter-desc' => 'Voert automatisch heuristische analyse uit op bewerkingen',
@@ -4239,8 +4261,7 @@ Een korte beschrijving van de regel op basis waarvan uw bewerking is tegengehoud
 	'abusefilter-tools-reautoconfirm-submit' => 'Opnieuw automatisch bevestigd',
 	'abusefilter-reautoconfirm-none' => 'Voor die gebruiker is de automatisch bevestigde status niet ingetrokken.',
 	'abusefilter-reautoconfirm-notallowed' => 'U hebt geen rechten om de automatisch bevestigde status opnieuw in te stellen.',
-	'abusefilter-status' => 'Van de laatste {{PLURAL:$1|actie|$1 acties}}, {{PLURAL:$2|heeft|hebben}} er $2 ($3%) de conditielimiet van $4 gehaald.
-$5 ($6%) {{PLURAL:$5|voldeed|voldeden}} aan een van de actieve filters.',
+	'abusefilter-status' => 'Van de laatste $1 {{PLURAL:$1|actie|acties}} {{PLURAL:$5|past|passen}} $5 ($6%) bij één van de huidige ingeschakelde filters.',
 	'abusefilter-edit-subtitle' => 'Bezig met het bewerken van filter $1',
 	'abusefilter-edit-oldwarning' => '<strong>U bent een oude versie van deze filter aan het bewerken.
 De weergegeven statistieken gelden voor de meest recente versie van het filter.
@@ -4971,6 +4992,14 @@ Una descripcion brèva de la règla d’abús que vòstra accion a desenclavat e
 	'abusefilter-history-deleted' => 'Suprimit',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Jose77
+ */
+$messages['or'] = array(
+	'abusefilter-log-search-submit' => 'ସନ୍ଧାନ',
+	'abusefilter-edit-history' => 'ଇତିହାସ',
+);
+
 /** Ossetic (Иронау)
  * @author Amikeco
  */
@@ -4980,6 +5009,8 @@ $messages['os'] = array(
 	'abusefilter-log-search-submit' => 'Агур',
 	'abusefilter-log-noactions' => 'нæй',
 	'abusefilter-list-status' => 'Статус',
+	'abusefilter-tools-reautoconfirm-user' => 'Архайæг',
+	'abusefilter-history-user' => 'Архайæг',
 );
 
 /** Plautdietsch (Plautdietsch)
@@ -4996,6 +5027,7 @@ $messages['pdt'] = array(
  * @author Jwitos
  * @author Leinad
  * @author Maikking
+ * @author Matma Rex
  * @author Sp5uhe
  */
 $messages['pl'] = array(
@@ -5088,7 +5120,7 @@ Krótki opis reguły nadużycia, do której Twoja akcji została dopasowana: $1'
 	'abusefilter-tools-reautoconfirm-submit' => 'Ponowne automatyczne zatwierdzenie',
 	'abusefilter-reautoconfirm-none' => 'Ten użytkownik nie posiada zawieszonego statusu automatycznie zatwierdzonego.',
 	'abusefilter-reautoconfirm-notallowed' => 'Nie masz uprawnień, aby przywrócić statusu automatycznie zatwierdzonego.',
-	'abusefilter-status' => 'Z {{PLURAL:$1|ostatniej $1 akcji|ostatnich $1 akcji}}, $2 ($3%) {{PLURAL:$2|osiągnęła|osiągnęły|osiągnęło}} stan limitu $4. $5 ($6%) {{PLURAL:$5|pasował|pasowały|pasowało}} do jednego z obecnie włączonych filtrów.',
+	'abusefilter-status' => 'Z {{PLURAL:$1|ostatniej akcji|ostatnich $1 akcji}} $5 ($6%) {{PLURAL:$5|pasował|pasowały|pasowało}} do jednego z obecnie włączonych filtrów.',
 	'abusefilter-edit-subtitle' => 'Edytowanie filtru $1',
 	'abusefilter-edit-oldwarning' => '<strong>Edytujesz starą wersję tego filtru. Statystyka są notowane dla najnowszej wersji filtru. Jeśli zapiszesz zmiany, zostaną nadpisane wszystkie późniejsze wersje niż ta, którą edytujesz.</strong> &bull; [[Special:AbuseFilter/history/$2|Powrót do historii filtru]]',
 	'abusefilter-edit-status-label' => 'Statystyki',
@@ -5223,41 +5255,60 @@ $messages['ps'] = array(
 	'abusefilter-log-noactions' => 'هېڅ',
 	'abusefilter-list' => 'ټول چاڼګران',
 	'abusefilter-list-status' => 'دريځ',
+	'abusefilter-list-edit' => 'سمون',
+	'abusefilter-tools-reautoconfirm-user' => 'کارونکی',
 	'abusefilter-edit-flags' => 'بېرغونه:',
 	'abusefilter-edit-notes' => "يادونې:
 :''(شخصي)",
+	'abusefilter-history-user' => 'کارونکی',
 );
 
 /** Portuguese (Português)
+ * @author 555
  * @author MF-Warburg
  * @author Malafaya
- * @author 555
  */
 $messages['pt'] = array(
 	'abusefilter-desc' => 'Aplica heurísticas automáticas às edições.',
 	'abusefilter' => 'Configuração do filtro de abuso',
 	'abuselog' => 'Registo de abusos',
 	'abusefilter-blocker' => 'Filtro de abusos',
+	'right-abusefilter-modify' => 'Modificar filtros de abuso',
 	'abusefilter-log-search-user' => 'Utilizador:',
 	'abusefilter-log-search-title' => 'Título:',
+	'abusefilter-log-search-submit' => 'Pesquisar',
 	'abusefilter-log-detailslink' => 'detalhes',
 	'abusefilter-log-details-var' => 'Variável',
 	'abusefilter-log-details-val' => 'Valor',
 	'abusefilter-log-details-ip' => 'Endereço IP origem',
 	'abusefilter-management' => 'Gestão do filtro de abusos',
 	'abusefilter-list' => 'Todos os filtros',
+	'abusefilter-list-status' => 'Estado',
+	'abusefilter-list-public' => 'Descrição pública',
 	'abusefilter-list-consequences' => 'Consequências',
 	'abusefilter-list-visibility' => 'Visibilidade',
 	'abusefilter-list-edit' => 'Editar',
+	'abusefilter-list-details' => 'Detalhes',
+	'abusefilter-list-lastmodified' => 'Última modificação',
 	'abusefilter-hidden' => 'Privado',
 	'abusefilter-unhidden' => 'Público',
+	'abusefilter-hitcount' => '$1 {{PLURAL:$1|resultado|resultados}}',
 	'abusefilter-new' => 'Novo filtro',
+	'abusefilter-links' => 'Ligações úteis:',
+	'abusefilter-tools-modifiertest-submit' => 'Testar',
+	'abusefilter-tools' => 'Ferramentas de filtro de abuso',
+	'abusefilter-list-options' => 'Opções',
+	'abusefilter-list-options-submit' => 'Atualizar',
 	'abusefilter-tools-subtitle' => 'Ferramentas',
 	'abusefilter-tools-reautoconfirm-user' => 'Utilizador',
 	'abusefilter-edit-status-label' => 'Estatísticas',
 	'abusefilter-edit-new' => 'Novo filtro',
 	'abusefilter-edit-save' => 'Gravar filtro',
+	'abusefilter-edit-enabled' => 'Ativar este filtro',
 	'abusefilter-edit-rules' => 'Condições:',
+	'abusefilter-edit-lastmod-text' => '$1 por $2',
+	'abusefilter-edit-throttle-count' => 'Número de ações a permitir:',
+	'abusefilter-edit-throttle-period' => 'Período de tempo:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|segundo|segundos}}',
 	'abusefilter-edit-history' => 'Histórico',
 	'abusefilter-edit-check' => 'Verificar sintaxe',
@@ -5274,6 +5325,16 @@ $messages['pt'] = array(
 	'abusefilter-edit-builder-op-comparison-lt' => 'Menor que (<)',
 	'abusefilter-edit-builder-op-comparison-gt' => 'Maior que (>)',
 	'abusefilter-edit-builder-op-comparison-lte' => 'Menor ou igual a (<=)',
+	'abusefilter-edit-builder-group-funcs' => 'Funções',
+	'abusefilter-edit-builder-group-vars' => 'Variáveis',
+	'abusefilter-edit-builder-vars-accountname' => 'Nome de conta (on account creation)',
+	'abusefilter-edit-builder-vars-action' => 'Ação',
+	'abusefilter-edit-builder-vars-newsize' => 'Novo tamanho de página',
+	'abusefilter-edit-builder-vars-oldsize' => 'Antigo tamanho de página',
+	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Título completo da página',
+	'abusefilter-edit-builder-vars-user-age' => 'Idade da conta de utilizador',
+	'abusefilter-edit-builder-vars-user-name' => 'Nome da conta de utilizador',
+	'abusefilter-history-user' => 'Utilizador',
 );
 
 /** Tarifit (Tarifit)
@@ -5788,7 +5849,7 @@ Stručný popis pravidla zneužitia, ktoré zachytilo vašu úpravu, je: $1',
 	'abusefilter-tools-reautoconfirm-submit' => 'Potvrdiť zaregistrovanie',
 	'abusefilter-reautoconfirm-none' => 'Používateľ nemal vypnutý stav „registrovaný”.',
 	'abusefilter-reautoconfirm-notallowed' => 'Nemáte oprávnenie obnoviť stav „registrovaný”.',
-	'abusefilter-status' => '{{PLURAL:$1|Posledná $1 operácia|Z posledných $1 operácií}} $2 ($3 %) {{PLURAL:$4|dosiahla|dosiahli|dosiahlo}} hraničnú podmienku $4. $5 ($6 %) {{PLURAL:$5|zodpovedala|zodpovedali|zodpovedalo}} momentálne zapnutým filtrom.',
+	'abusefilter-status' => '{{PLURAL:$1|Posledná $1 operácia|Z posledných $1 operácií}} $5 ($6 %) {{PLURAL:$5|zodpovedala|zodpovedali|zodpovedalo}} momentálne zapnutým filtrom.',
 	'abusefilter-edit-subtitle' => 'Úprava filtra $1',
 	'abusefilter-edit-oldwarning' => '<strong>Upravujete starú verziu tohto filtra. Uvedené štatistiky sa týkajú najnovšej verzie filtra. Ak svoje zmeny uložíte, prepíšete všetky zmeny od revízie, ktorú upravujete.</strong> &bull; [[Special:AbuseFilter/history/$2|Vrátiť sa na históriu tohto filtra]]',
 	'abusefilter-edit-status-label' => 'Štatistika',
@@ -5971,9 +6032,9 @@ Kuute Beschrieuwenge fon ju nit beoachtede Räägel: $1',
 	'abusefilter-log-search-user' => 'Benutser:',
 	'abusefilter-log-search-filter' => 'Sieuwe-ID:',
 	'abusefilter-log-search-title' => 'Tittel:',
-	'abusefilter-log-search-submit' => 'Säike',
+	'abusefilter-log-search-submit' => 'Säike (uk ap Düütsk5)',
 	'abusefilter-log-entry' => '$1: $2 löösde ne Misbruuks-Sieuwe uut, truch dät hie $3 ap $4 moakede. Aktion: $5; Sieuwe-Beschrieuwenge: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 häd ju Sieuwe $3 uutlöösd, wät n $4 ap $5 feruurseeked. Ärgriepene Mäitenoamen: $6; Sieuwebeschrieuwenge: $7 ($8)',
+	'abusefilter-log-detailedentry' => '$1: $2 häd ju [[Special:AbuseFilter/$3|Sieuwe $3]] uutlöösd, wät n $4 ap $5 feruurseeked. Ärgriepene Mäitenoamen: $6; Sieuwebeschrieuwenge: $7 ($8)',
 	'abusefilter-log-detailslink' => 'Eenpeldhaide',
 	'abusefilter-log-details-legend' => 'Eenpeldhaide foar dän Logbouk-Iendraach $1',
 	'abusefilter-log-details-var' => 'Variable',
@@ -5992,6 +6053,8 @@ Kuute Beschrieuwenge fon ju nit beoachtede Räägel: $1',
 	'abusefilter-list-hitcount' => 'Träffertäller',
 	'abusefilter-list-edit' => 'Beoarbaidje',
 	'abusefilter-list-details' => 'Eenpeldhaide',
+	'abusefilter-list-limit' => 'Antaal pro Siede:',
+	'abusefilter-list-lastmodified' => 'Toulääst annerd',
 	'abusefilter-hidden' => 'Privoat',
 	'abusefilter-unhidden' => 'Eepentelk',
 	'abusefilter-enabled' => 'Aktivierd',
@@ -6003,12 +6066,26 @@ Kuute Beschrieuwenge fon ju nit beoachtede Räägel: $1',
 	'abusefilter-tools-modifiertest-submit' => 'Test',
 	'abusefilter-tools' => 'Reewen fon ju Misbruukssieuwe',
 	'abusefilter-loglink' => 'Misbruukslogbouk bekiekje',
+	'abusefilter-list-options' => 'Optione',
+	'abusefilter-list-options-deleted' => 'Läskede Sieuwen:',
+	'abusefilter-list-options-deleted-only' => 'Bloot läskede Sieuwen bekiekje',
+	'abusefilter-list-options-deleted-hide' => 'Läskede Sieuwen fersteete',
+	'abusefilter-list-options-deleted-show' => 'Läskede Sieuwen ienbeluuke',
+	'abusefilter-list-options-disabled' => 'Deaktivierde Sieuwen',
+	'abusefilter-list-options-hidedisabled' => 'Deaktivierde Sieuwen fersteete',
+	'abusefilter-list-options-submit' => 'Spiekerje',
 	'abusefilter-tools-subtitle' => 'Reewen',
 	'abusefilter-tools-text' => 'Hier sunt wäkke Reewen, do hälpe konnen bie dät Formulierjen un bie ju Failersäike fon Misbruukssieuwen. [[Special:AbuseFilter|Tourääch tou dät Misbruukssieuwe-Haudmenü.]]',
 	'abusefilter-tools-expr' => 'Expression-Tester',
 	'abusefilter-tools-submitexpr' => 'Wröigje',
+	'abusefilter-tools-reautoconfirm' => 'Bestäätigeden Benutser-Stoatus wier moakje',
+	'abusefilter-tools-reautoconfirm-user' => 'Benutser',
+	'abusefilter-tools-reautoconfirm-submit' => 'Wier toun bestäätigeden Benutser moakje',
+	'abusefilter-reautoconfirm-none' => 'Dissen Bruuker is die bestäätigede Benutserstoatus nit äntleeken wuuden.',
+	'abusefilter-reautoconfirm-notallowed' => 'Du bäst nit begjuchtiged, Benutsere wier tou bestäätigde Benutsere tou moakjen.',
 	'abusefilter-status' => 'Fon {{PLURAL:$1|ju lääste Aktion|do lääste $1 Aktione}} {{PLURAL:$2|häd een|hääbe $2}} ($3 %) dän Gränswäid fon $4 beloanged. $5 ($6 %) {{PLURAL:$5|wuud|wuude}} fon een fon do apstuuns aktivierde Sieuwe wierkoand.',
 	'abusefilter-edit-subtitle' => 'Beoarbaidje Sieuwe $1',
+	'abusefilter-edit-oldwarning' => '<strong>Du beoarbaidest nit ju aktuelle, man ne allere Version fon disse Sieuwe. Ju Statistik jält bloot foar ju lääste Version fon ju Sieuwe. Wan du spiekerst, wäd ju oolde as aktuelle Version näi spiekerd. </strong> &bull; [[Special:AbuseFilter/history/$2|Tourääch tou ju Versionsgeschichte fon ju Sieuwe]]',
 	'abusefilter-edit-status-label' => 'Statistike',
 	'abusefilter-edit-status' => 'Fon {{PLURAL:$1|ju|do}} lääste {{PLURAL:$1|Aktion|$1 Aktione}} {{PLURAL:$2|wuud|wuuden}} $2 ($3 %) fon disse Sieuwe wierkoand.',
 	'abusefilter-edit-throttled' => "'''Woarschauenge''': Disse Sieuwe wuud sicherhaidshoolwe automatisk deaktivierd. Ju häd moor as dät definierde Buppescheed fon $1 % fon do Aktione ärkoand.",
@@ -6025,8 +6102,9 @@ Kuute Beschrieuwenge fon ju nit beoachtede Räägel: $1',
 	'abusefilter-edit-notes' => "Notize:
 :''(privoat)",
 	'abusefilter-edit-lastmod' => 'Lääste Beoarbaidenge fon ju Sieuwe:',
+	'abusefilter-edit-lastmod-text' => '$1 fon $2',
 	'abusefilter-edit-hitcount' => 'Träffere fon ju Sieuwe:',
-	'abusefilter-edit-consequences' => 'Bie Träffer uuttoufierende Aktione',
+	'abusefilter-edit-consequences' => 'Bie Träffere uuttoufierende Aktione',
 	'abusefilter-edit-action-warn' => 'Aktione ätter Woarschauenge fon dän Benutser uutfiere',
 	'abusefilter-edit-action-disallow' => 'Unnerbint ju fon dän Benutser foarsäine Aktion',
 	'abusefilter-edit-action-flag' => 'Beoarbaidenge in dät Misbruuks-Logbouk markierje',
@@ -6034,9 +6112,13 @@ Kuute Beschrieuwenge fon ju nit beoachtede Räägel: $1',
 	'abusefilter-edit-action-degroup' => 'Benutser uut aal Gruppen mäd Sunnergjuchte wächhoalje',
 	'abusefilter-edit-action-block' => 'Benutser/IP-Adrässe speere',
 	'abusefilter-edit-action-throttle' => 'Aktion bloot uutlööse, wan die Benutser n bestimd Limit beloanged häd',
+	'abusefilter-edit-action-rangeblock' => '/16-Range speere, uut dän die Benutser stamt.',
 	'abusefilter-edit-throttle-count' => 'Antaal toulätte Aktione:',
 	'abusefilter-edit-throttle-period' => 'Tiedruum:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|Sekunde|Sekunden}}',
+	'abusefilter-edit-throttle-groups' => "Räägele foar ju Gruppendröisel:
+:''(een pro Riege, ferbiende mäd Kommata)''",
+	'abusefilter-edit-warn-message' => 'Systemättergjucht foar ju Woarschauenge:',
 	'abusefilter-edit-denied' => 'Du koast do Details fon disse Sieuwe nit ienkiekje, deeruum dät do ferstopped sunt',
 	'abusefilter-edit-main' => 'Sieuweparametere',
 	'abusefilter-edit-done-subtitle' => 'Sieuwe beoarbaided',
@@ -6071,6 +6153,7 @@ Kuute Beschrieuwenge fon ju nit beoachtede Räägel: $1',
 	'abusefilter-edit-builder-misc-ternary' => 'Ternäroperator (1 ? 2 : 3)',
 	'abusefilter-edit-builder-misc-in' => 'äntheelden in Teekenfoulge (in)',
 	'abusefilter-edit-builder-misc-like' => 'Paaset tou regulären Uutdruk (like)',
+	'abusefilter-edit-builder-misc-stringlit' => 'Woudwoudelken String ("")',
 	'abusefilter-edit-builder-group-funcs' => 'Funktione',
 	'abusefilter-edit-builder-funcs-length' => 'Laangte fon ju Teekenfoulge (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'In Littikbouksteeuwen konvertierje (lcase)',
@@ -6084,14 +6167,23 @@ Kuute Beschrieuwenge fon ju nit beoachtede Räägel: $1',
 	'abusefilter-edit-builder-vars-action' => 'Aktion',
 	'abusefilter-edit-builder-vars-addedlines' => 'Riegen bie ju Beoarbaidenge bietouföiged',
 	'abusefilter-edit-builder-vars-delta' => 'Grööte bie ju Beoarbaidenge annerd',
+	'abusefilter-edit-builder-vars-diff' => 'Fereenigden Versionsunnerscheed fon ju Beoarbaidenge',
 	'abusefilter-edit-builder-vars-newsize' => 'Näie Siedengrööte',
 	'abusefilter-edit-builder-vars-oldsize' => 'Oolde Siedengrööte',
 	'abusefilter-edit-builder-vars-removedlines' => 'Riegen bie ju Beoarbaidenge wächhoald',
 	'abusefilter-edit-builder-vars-summary' => 'Touhoopefoatenge',
-	'abusefilter-edit-builder-vars-article-id' => 'Artikkel-ID',
-	'abusefilter-edit-builder-vars-article-ns' => 'Noomensruumte fon dän Artikkel',
-	'abusefilter-edit-builder-vars-article-text' => 'Tittel fon dän Artikkel (sunner Noomensruumte)',
-	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Fullen Tittel fon dän Artikkel',
+	'abusefilter-edit-builder-vars-article-id' => 'Sieden-ID',
+	'abusefilter-edit-builder-vars-article-ns' => 'Noomensruumte fon ju Siede',
+	'abusefilter-edit-builder-vars-article-text' => 'Tittel fon ju Siede (sunner Noomensruumte)',
+	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Fullen Siedennoome',
+	'abusefilter-edit-builder-vars-movedfrom-id' => 'Artikkel-ID fon ju Wällesiede',
+	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Noomensruum fon ju Wällesiede',
+	'abusefilter-edit-builder-vars-movedfrom-text' => 'Tittel fon ju Wällesiede',
+	'abusefilter-edit-builder-vars-movedfrom-prefixedtext' => 'Fulboodigen Tittel fon ju Wällesiede',
+	'abusefilter-edit-builder-vars-movedto-id' => 'Artikkel-ID fon ju Sielsiede',
+	'abusefilter-edit-builder-vars-movedto-ns' => 'Noomensruum fon ju Sielsiede',
+	'abusefilter-edit-builder-vars-movedto-text' => 'Tittel fon ju Sielsiede',
+	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Fulboodigen Tittel fon ju Sielsiede',
 	'abusefilter-edit-builder-vars-user-editcount' => 'Biedraachställenge fon dän Benutser',
 	'abusefilter-edit-builder-vars-user-age' => 'Oaler fon Benutserkonto',
 	'abusefilter-edit-builder-vars-user-name' => 'Noome fon dät Benutserkonto',
@@ -6474,7 +6566,7 @@ $messages['uk'] = array(
 	'abusefilter-log-search-title' => 'Заголовок:',
 	'abusefilter-log-search-submit' => 'Знайти',
 	'abusefilter-log-entry' => '$1: $2 запустив фільтр зловживань, виконуючи "$3" на сторінці "$4". Прийняті заходи: $5; опис фільтру: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 запустив фільтр $3, виконуючи "$4" на сторінці "$5". Прийняті заходи: $6; опис фільтру: $7 ($8)',
+	'abusefilter-log-detailedentry' => '$1: $2 запустив [[Special:AbuseFilter/$3|фільтр $3]], виконуючи "$4" на сторінці "$5". Вжиті заходи: $6; опис фільтру: $7 ($8)',
 	'abusefilter-log-detailslink' => 'деталі',
 	'abusefilter-log-details-legend' => 'Деталі журнального запису $1',
 	'abusefilter-log-details-var' => 'Змінна',
@@ -6499,10 +6591,30 @@ $messages['uk'] = array(
 	'abusefilter-disabled' => 'Вимкнений',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|спрацьовування|спрацьовування|спрацьовувань}}',
 	'abusefilter-new' => 'Новий фільтр',
+	'abusefilter-links' => 'Корисні посилання:',
 	'abusefilter-tools-modifiertest-submit' => 'Тест',
 	'abusefilter-tools' => 'Для допомоги при формулюванні та налагодженні фільтру зловживань є певні засоби.',
+	'abusefilter-loglink' => 'Показати журнал зловживань',
+	'abusefilter-list-options' => 'Налштування',
+	'abusefilter-list-options-deleted' => 'Вилучені фільтри:',
+	'abusefilter-list-options-deleted-only' => 'Показати лише вилучені фільтри',
+	'abusefilter-list-options-deleted-hide' => 'Приховати вилучені фільтри',
+	'abusefilter-list-options-deleted-show' => 'Включити вилучені фільтри',
+	'abusefilter-list-options-disabled' => 'Відключені фільтри:',
+	'abusefilter-list-options-hidedisabled' => 'Приховати відключені фільтри:',
+	'abusefilter-list-options-submit' => 'Оновити',
+	'abusefilter-tools-subtitle' => 'Засоби',
+	'abusefilter-tools-text' => 'Тут є деякі засоби, які можуть пригодитися у формулюванні і налагодженні фільтрів зловживань. [[Special:AbuseFilter|Повернутися до головного меню]]',
+	'abusefilter-tools-expr' => 'Випробувач виразів',
+	'abusefilter-tools-submitexpr' => 'Випробувати',
+	'abusefilter-tools-reautoconfirm' => 'Відновити статус автопідтвердження',
+	'abusefilter-tools-reautoconfirm-user' => 'Користувач',
+	'abusefilter-tools-reautoconfirm-submit' => 'Повторне автопідтвердження',
+	'abusefilter-reautoconfirm-none' => 'Цей користувач не має відключеного статусу автопідтвердження.',
+	'abusefilter-reautoconfirm-notallowed' => 'Вам не дозволено відновлювати статус автопідтвердження.',
 	'abusefilter-status' => 'Серед $1 {{PLURAL:$1|дії|дій}}, $2 ($3%) {{PLURAL:$2|досягла|досягли}} межі $4. $5 ($6%) {{PLURAL:$5|активізувала|активізували}} один з ввімкнених фільтрів.',
 	'abusefilter-edit-subtitle' => 'Редагування фільтру $1',
+	'abusefilter-edit-oldwarning' => '<strong>Ви редагуєте стару версію цього фільтра. Статистика наведена для найновішої версії фільтра. Якщо ви збережете свої зміни, ви перезапишете усі редагування починаючи з версії, яку ви редагуєте.</strong> &bull; [[Special:AbuseFilter/history/$2|Повернутися до історії цього фільтру]]',
 	'abusefilter-edit-status-label' => 'Статистика',
 	'abusefilter-edit-status' => 'З $1 {{PLURAL:$1|останньої дії|останніх дій}} цей фільтр знайшов $2 ($3%) співпадінь.',
 	'abusefilter-edit-throttled' => "'''Попередження''': цей фільтр був автоматично вимкнений у заходах безпеки. Він досяг межі співпадінь у $1% дій.",
@@ -6513,13 +6625,15 @@ $messages['uk'] = array(
 :''(загальнодоступне) ''",
 	'abusefilter-edit-flags' => 'Прапорці:',
 	'abusefilter-edit-enabled' => 'Увімкнути цей фільтр',
+	'abusefilter-edit-deleted' => 'Позначити як вилучений',
 	'abusefilter-edit-hidden' => 'Приховати деталі цього фільтру від загальнодоступного огляду',
 	'abusefilter-edit-rules' => 'Умови:',
 	'abusefilter-edit-notes' => "Примітки:
 :''(приватні)",
 	'abusefilter-edit-lastmod' => 'Остання зміна фільтру:',
+	'abusefilter-edit-lastmod-text' => '$1 користувачем $2',
 	'abusefilter-edit-hitcount' => 'Спрацьовувань фільтру:',
-	'abusefilter-edit-consequences' => 'Прийнятих після спрацьовування мір',
+	'abusefilter-edit-consequences' => 'Заходи, що вживаються при спрацьовуванні',
 	'abusefilter-edit-action-warn' => 'Приймати ці заходи після попередження користувача',
 	'abusefilter-edit-action-disallow' => 'Заборонити користувачеві виконувати дію в питанні',
 	'abusefilter-edit-action-flag' => 'Позначити редагування в журналі зловживань',
@@ -6754,10 +6868,15 @@ Miêu tả ngắn về quy luật lạm dụng mà tác vụ của bạn gặp p
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
 	'abusefilter-log-search-user' => 'Geban:',
 	'abusefilter-log-search-title' => 'Tiäd:',
+	'abusefilter-log-search-submit' => 'Sukön',
+	'abusefilter-log-detailslink' => 'pats',
+	'abusefilter-list-details' => 'Pats',
+	'abusefilter-tools-reautoconfirm-user' => 'Geban',
 	'abusefilter-edit-status-label' => 'Statits',
 );
 

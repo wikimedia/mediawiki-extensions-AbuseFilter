@@ -138,6 +138,12 @@ $aliases['ro'] = array(
 	'AbuseFilter' => array( 'Filtru abuzuri' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'AbuseLog' => array( 'दुरुपयोगअङ्कन' ),
+	'AbuseFilter' => array( 'दुरुपयोगशोधबन्धन' ),
+);
+
 /** Sinhala (සිංහල) */
 $aliases['si'] = array(
 	'AbuseLog' => array( 'අපයෙදුම් ලඝු-සටහන' ),
