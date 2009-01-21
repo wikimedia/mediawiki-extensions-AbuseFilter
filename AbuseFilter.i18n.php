@@ -4872,7 +4872,7 @@ Una descripcion brèva de la règla d’abús que vòstra accion a desenclavat e
 	'abusefilter-tools-reautoconfirm-submit' => 'Autoconfirmar tornamai',
 	'abusefilter-reautoconfirm-none' => 'Aqueste utilizaire a pas son estatut d’autoconfirmat suspendut.',
 	'abusefilter-reautoconfirm-notallowed' => "Sètz pas autorizat(ada) a restablir l'estatut d’autoconfirmat.",
-	'abusefilter-status' => "{{PLURAL:$1|De la darrièra accion|De las $1 darrièras accions}}, $2 ($3 %) an atench lo limit de la condicion definida per $4. $5 ($6 %) {{PLURAL:$5|correspondiá|correspondián}} a un d'aquestes filtres actualament en servici.",
+	'abusefilter-status' => "{{PLURAL:$1|De la darrièra accion|De las $1 darrièras accions}}, $2 ($3 %)  {{PLURAL:$5|correspondiá|correspondián}} a un d'aquestes filtres actualament en servici.",
 	'abusefilter-edit-subtitle' => 'Modificacion del filtre $1',
 	'abusefilter-edit-oldwarning' => "<strong>Sètz a modificar una version anciana del filtre. Las estatisticas afichadas son per la version correnta d'aqueste. Se  salvatz vòstras modificacions, van suprimir las modificacions efectuadas ulteriorament.</strong> &bull; [[Special:AbuseFilter/history/$2|Tornar a l'istoric d'aqueste filtre]]",
 	'abusefilter-edit-status-label' => 'Estatisticas',
