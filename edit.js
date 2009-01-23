@@ -28,10 +28,15 @@ function processSyntaxResult( request ) {
 			var position = charArray[1];
 			var textArea = document.getElementById( wgFilterBoxName );
 
-			if (textArea.selectionStart && textArea.selectionEnd) {
+			textArea.focus();
+			if (document.selection) {
+				var sel = document.selection.createRange();
+				sel.moveStart( 'character', -textArea.value.length );
+				sel.moveStart( 'character', position );
+				sel.select();
+			} else if (textArea.selectionStart && textArea.selectionEnd) {
 				textArea.selectionStart = position;
 				textArea.selectionEnd = position;
-				textArea.focus();
 			}
 		}
 	}
