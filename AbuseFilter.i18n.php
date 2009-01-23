@@ -96,6 +96,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-tools-modifiertest-submit' => 'Test',
 	'abusefilter-tools' => 'Abuse filter tools',
 	'abusefilter-loglink' => 'View the abuse log',
+	'abusefilter-return' => 'Return to filter management',
 	
 	// Options form
 	'abusefilter-list-options' => 'Options',
@@ -119,12 +120,12 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-reautoconfirm-notallowed' => 'You are not allowed to restore autoconfirmed status.',
 	
 	// Abuse filter status
-	'abusefilter-status' => "Of the last $1 {{PLURAL:$1|action|actions}}, $5 ($6%) {{PLURAL:$5|has|have}} matched one of the filters currently enabled.", // $2 ($3%) {{PLURAL:$2|has|have}} reached the condition limit of $4.
+	'abusefilter-status' => "Of the last $1 {{PLURAL:$1|action|actions}}, $2 ($3%) {{PLURAL:$2|has|have}} reached the condition limit of $4, and $5 ($6%) {{PLURAL:$5|has|have}} matched one of the filters currently enabled.",
 	
 	// The edit screen
 	'abusefilter-edit-subtitle' => 'Editing filter $1',
 	'abusefilter-edit-oldwarning' => "<strong>You are editing an old version of this filter. The statistics quoted are for the most recent version of the filter. If you save your changes, you will overwrite all changes since the revision you are editing.</strong> &bull; [[Special:AbuseFilter/history/$2|Return to this filter's history]]",
-	'abusefilter-edit-status-label' => 'Statistics',
+	'abusefilter-edit-status-label' => 'Statistics:',
 	'abusefilter-edit-status' => 'Of the last $1 {{PLURAL:$1|action|actions}}, this filter has matched $2 ($3%).',
 	'abusefilter-edit-throttled' => "'''Warning''': This filter was automatically disabled as a safety measure. It reached the limit of matching more than $1% of actions.",
 	'abusefilter-edit-new' => 'New filter',
@@ -149,19 +150,22 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-edit-action-block' => 'Block the user and/or IP address from editing',
 	'abusefilter-edit-action-throttle' => 'Trigger actions only if the user trips a rate limit',
 	'abusefilter-edit-action-rangeblock' => 'Block the /16 range from which the user originates.',
+	'abusefilter-edit-action-tag' => 'Tag the edit for further review.',
 	'abusefilter-edit-throttle-count' => 'Number of actions to allow:',
 	'abusefilter-edit-throttle-period' => 'Period of time:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|second|seconds}}',
 	'abusefilter-edit-throttle-groups' => "Group throttle by:\n:''(one per line, combine with commas)''",
 	'abusefilter-edit-warn-message' => 'System message to use for warning:',
+	'abusefilter-edit-tag-tag' => 'Tags to apply (one per line) :',
 	'abusefilter-edit-denied' => "You may not view details of this filter, because it is hidden from public view",
 	'abusefilter-edit-main' => 'Filter parameters',
 	'abusefilter-edit-done-subtitle' => 'Filter edited',
-	'abusefilter-edit-done' => "You have successfully saved your changes to the filter.\n\n[[Special:AbuseFilter|Return]]",
+	'abusefilter-edit-done' => "You have successfully saved your changes to filter $1.",
 	'abusefilter-edit-badsyntax' => "There is a syntax error in the filter you specified. The output from the parser was: <pre>$1</pre>",
 	'abusefilter-edit-viewhistory' => "View this filter's history",
 	'abusefilter-edit-history' => 'History',
 	'abusefilter-edit-check' => 'Check syntax',
+	'abusefilter-edit-badfilter' => 'The filter you specified does not exist',
 	
 	// Filter editing helpers
 	'abusefilter-edit-builder-select' => 'Select an option to add it at the cursor',

@@ -4,6 +4,9 @@ if ( ! defined( 'MEDIAWIKI' ) )
 
 class AbuseFilterHooks {
 
+// So far, all of the error message out-params for these hooks accept HTML.
+// Hooray!
+
 	public static function onEditFilter($editor, $text, $section, &$error, $summary) {
 		// Load vars
 		$vars = array();
@@ -160,5 +163,32 @@ class AbuseFilterHooks {
 		$error = $filter_result;
 		
 		return $filter_result == '' || $filter_result === true;
+	}
+
+	public static function onRecentChangeSave( $recentChange ) {
+		$title = Title::makeTitle( $recentChange->mAttribs['rc_namespace'], $recentChange->mAttribs['rc_title'] );
+		$action = $recentChange->mAttribs['rc_log_type'] ? $recentChange->mAttribs['rc_log_type'] : 'edit';
+		$actionID = implode( '-', array(
+				$title->getPrefixedText(), $recentChange->mAttribs['rc_user_text'], $action
+			) );
+
+		if ( !empty( AbuseFilter::$tagsToSet[$actionID] ) && count( $tags = AbuseFilter::$tagsToSet[$actionID]) ) {
+			ChangeTags::addTags( $tags, $recentChange->mAttribs['rc_id'], $recentChange->mAttribs['rc_this_oldid'], $recentChange->mAttribs['rc_logid'] );
+		}
+
+		return true;
+	}
+
+	public static function onListDefinedTags( &$emptyTags ) {
+		## This is a pretty awful hack.
+		$dbr = wfGetDB( DB_SLAVE );
+
+		$res = $dbr->select( 'abuse_filter_action', 'afa_parameters', array( 'afa_consequence' => 'tag' ), __METHOD__ );
+
+		while( $row = $res->fetchObject() ) {
+			$emptyTags = array_filter( array_merge( explode( "\n", $row->afa_parameters ), $emptyTags ) );
+		}
+
+		return true;
 	}
 }

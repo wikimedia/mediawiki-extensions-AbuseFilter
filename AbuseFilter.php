@@ -29,10 +29,15 @@ $wgExtensionAliasesFiles['AbuseFilter'] = "$dir/AbuseFilter.alias.php";
 
 $wgAutoloadClasses['AbuseFilter'] = "$dir/AbuseFilter.class.php";
 $wgAutoloadClasses['AbuseFilterParser'] = "$dir/AbuseFilter.parser.php";
-$wgAutoloadClasses['AbuseFilterParserNative'] = "$dir/AbuseFilter.nativeparser.php";
 $wgAutoloadClasses['AbuseFilterHooks'] = "$dir/AbuseFilter.hooks.php";
 $wgAutoloadClasses['SpecialAbuseLog'] = "$dir/SpecialAbuseLog.php";
 $wgAutoloadClasses['SpecialAbuseFilter'] = "$dir/SpecialAbuseFilter.php";
+
+$wgAutoloadClasses['AbuseFilterViewList'] = "$dir/Views/AbuseFilterViewList.php";
+$wgAutoloadClasses['AbuseFilterView'] = "$dir/Views/AbuseFilterView.php";
+$wgAutoloadClasses['AbuseFilterViewEdit'] = "$dir/Views/AbuseFilterViewEdit.php";
+$wgAutoloadClasses['AbuseFilterViewTools'] = "$dir/Views/AbuseFilterViewTools.php";
+$wgAutoloadClasses['AbuseFilterViewHistory'] = "$dir/Views/AbuseFilterViewHistory.php";
 
 $wgSpecialPages['AbuseLog'] = 'SpecialAbuseLog';
 $wgSpecialPages['AbuseFilter'] = 'SpecialAbuseFilter';
@@ -44,6 +49,8 @@ $wgHooks['AbortNewAccount'][] = 'AbuseFilterHooks::onAbortNewAccount';
 $wgHooks['ArticleDelete'][] = 'AbuseFilterHooks::onArticleDelete';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'AbuseFilterHooks::onSchemaUpdate';
 $wgHooks['AbortDeleteQueueNominate'][] = 'AbuseFilterHooks::onAbortDeleteQueueNominate';
+$wgHooks['RecentChange_save'][] = 'AbuseFilterHooks::onRecentChangeSave';
+$wgHooks['ListDefinedTags'][] = 'AbuseFilterHooks::onListDefinedTags';
 
 $wgAvailableRights[] = 'abusefilter-modify';
 $wgAvailableRights[] = 'abusefilter-log-detail';
@@ -51,11 +58,11 @@ $wgAvailableRights[] = 'abusefilter-view';
 $wgAvailableRights[] = 'abusefilter-log';
 $wgAvailableRights[] = 'abusefilter-private';
 
-$wgAbuseFilterAvailableActions = array( 'flag', 'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'degroup', 'rangeblock' );
+$wgAbuseFilterAvailableActions = array( 'flag', 'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'degroup', 'rangeblock', 'tag' );
 
 // Conditions take about 4ms to check, so 100 conditions would take 400ms
 // Currently, has no effect.
-// $wgAbuseFilterConditionLimit = 1000;
+$wgAbuseFilterConditionLimit = 1000;
 
 // Disable filters if they match more than X edits, constituting more than Y% of the last Z edits, if they have been changed in the last S seconds
 $wgAbuseFilterEmergencyDisableThreshold = 0.05;

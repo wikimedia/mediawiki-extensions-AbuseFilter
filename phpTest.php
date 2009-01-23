@@ -4,16 +4,11 @@
  * Runs tests against the PHP parser.
  */
 
-require_once ( getenv('MW_INSTALL_PATH') !== false
-	? getenv('MW_INSTALL_PATH')."/maintenance/commandLine.inc"
-	: dirname( __FILE__ ) . '/../../maintenance/commandLine.inc' );
-
+require_once( '/home/andrew/wm-svn/phase3/maintenance/commandLine.inc' );
 $tester = new AbuseFilterParser;
 
-$test_path = dirname( __FILE__ )."/parser_native/tests";
+$test_path = dirname( __FILE__ )."/tests";
 $tests = glob( $test_path."/*.t" );
-
-// die( print_r( $tester->intEval( '"foo" in "foobar" & "quux" contains "ux"' ), true ) );
 
 $check = 0;
 $pass = 0;
