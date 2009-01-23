@@ -197,26 +197,6 @@ class AbuseFilter {
 
 		foreach( $actionsByFilter as $filter => $actions ) {
 			// Special-case handling for warnings.
-			if ( !empty( $actions['warn'] ) ) {
-				$parameters = $actions['warn']['parameters'];
-				$warnKey = 'abusefilter-warned-'.$title->getPrefixedText();
-				if (!isset($_SESSION[$warnKey]) || !$_SESSION[$warnKey]) {
-					$_SESSION[$warnKey] = true;
-
-					// Threaten them a little bit
-					$msg = ( !empty($parameters[0]) && strlen($parameters[0]) ) ? $parameters[0] : 'abusefilter-warning';
-					$messages[] = wfMsgNoTrans( $msg, self::$filters[$filter]->af_public_comments ) . "<br />\n";
-
-					$actionsTaken[] = 'warn';
-
-					continue; // Don't do anything else.
-				} else {
-					// We already warned them
-					$_SESSION[$warnKey] = false;
-				}
-				
-				unset( $actions['warn'] );
-			}
 
 			if ( !empty( $actions['throttle'] ) ) {
 				$parameters = $actions['throttle']['parameters'];
@@ -232,9 +212,30 @@ class AbuseFilter {
 
 				unset( $actions['throttle'] );
 				if (!$hitThrottle) {
-					$actionsTaken[] = 'throttle';
+					$actionsTaken[$filter][] = 'throttle';
 					continue;
 				}
+			}
+			
+			if ( !empty( $actions['warn'] ) ) {
+				$parameters = $actions['warn']['parameters'];
+				$warnKey = 'abusefilter-warned-'.$title->getPrefixedText();
+				if (!isset($_SESSION[$warnKey]) || !$_SESSION[$warnKey]) {
+					$_SESSION[$warnKey] = true;
+
+					// Threaten them a little bit
+					$msg = ( !empty($parameters[0]) && strlen($parameters[0]) ) ? $parameters[0] : 'abusefilter-warning';
+					$messages[] = wfMsgNoTrans( $msg, self::$filters[$filter]->af_public_comments ) . "<br />\n";
+
+					$actionsTaken[$filter][] = 'warn';
+
+					continue; // Don't do anything else.
+				} else {
+					// We already warned them
+					$_SESSION[$warnKey] = false;
+				}
+				
+				unset( $actions['warn'] );
 			}
 
 			// Do the rest of the actions
@@ -259,7 +260,6 @@ class AbuseFilter {
 
 		// Short-cut any remaining code if no filters were hit.
 		if ( count( array_filter( $filter_matched) ) == 0 ) {
-			die( var_dump( $filter_matched ) );
 			return true;
 		}
 
@@ -284,7 +284,7 @@ class AbuseFilter {
 			$thisLog = $log_template;
 			$thisLog['afl_filter'] = $filter;
 			$thisLog['afl_action'] = $action;
-			$thisLog['afl_actions'] = implode( ',', $actions_taken[$filter] );
+			$thisLog['afl_actions'] = implode( ',', $actions );
 
 			// Don't log if we were only throttling.
 			if ($thisLog['afl_actions'] != 'throttle') {
@@ -418,16 +418,16 @@ class AbuseFilter {
 				// Do nothing. Here for completeness.
 				break;
 
-			case 'tag':
-				// Mark with a tag on recentchanges.
-				global $wgUser;
-				
-				$actionID = implode( '-', array(
-						$title->getPrefixedText(), $wgUser->getName(), $vars['ACTION']
-					) );
-
-				AbuseFilter::$tagsToSet[$actionID] = $parameters;
-				break;
+// 			case 'tag':
+// 				// Mark with a tag on recentchanges.
+// 				global $wgUser;
+// 				
+// 				$actionID = implode( '-', array(
+// 						$title->getPrefixedText(), $wgUser->getName(), $vars['ACTION']
+// 					) );
+// 
+// 				AbuseFilter::$tagsToSet[$actionID] = $parameters;
+// 				break;
 		}
 		
 		return $display;
@@ -442,7 +442,6 @@ class AbuseFilter {
 		if ($count > 0) {
 			$wgMemc->incr( $key );
 			if ($count > $rateCount) {
-				$wgMemc->delete( $key );
 				return true; // THROTTLED
 			}
 		} else {

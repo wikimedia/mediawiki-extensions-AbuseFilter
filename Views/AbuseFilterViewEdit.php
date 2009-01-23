@@ -109,7 +109,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			// Do the update
 			$dbw->insert( 'abuse_filter_history', $afh_row, __METHOD__ );
-			$dbw->delete( 'abuse_filter_action', array( 'afa_filter' => $filter, 'afa_consequence' => $deadActions ), __METHOD__ );
+			$dbw->delete( 'abuse_filter_action', array( 'afa_filter' => $filter ), __METHOD__ );
 			$dbw->insert( 'abuse_filter_action', $actionsRows, __METHOD__ );
 
 			$dbw->commit();
@@ -293,70 +293,80 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$output = '';
 
-		// Special case: flagging - always on.
-		$checkbox = Xml::checkLabel( wfMsg( 'abusefilter-edit-action-flag' ), 'wpFilterActionFlag', 'wpFilterActionFlag', true, array( 'disabled' => '1' ) );
-		$output .= Xml::tags( 'p', null, $checkbox );
-
-		// Special case: throttling
-		$throttleSettings = Xml::checkLabel( wfMsg( 'abusefilter-edit-action-throttle' ), 'wpFilterActionThrottle', 'wpFilterActionThrottle', $setActions['throttle'] );
-		$throttleFields = array();
-
-		if ($setActions['throttle']) {
-			array_shift( $actions['throttle']['parameters'] );
-			$throttleRate = explode(',',$actions['throttle']['parameters'][0]);
-			$throttleCount = $throttleRate[0];
-			$throttlePeriod = $throttleRate[1];
-
-			$throttleGroups = implode("\n", array_slice($actions['throttle']['parameters'], 1 ) );
-		} else {
-			$throttleCount = 3;
-			$throttlePeriod = 60;
-
-			$throttleGroups = "user\n";
-		}
-
-		$throttleFields['abusefilter-edit-throttle-count'] = Xml::input( 'wpFilterThrottleCount', 20, $throttleCount );
-		$throttleFields['abusefilter-edit-throttle-period'] = wfMsgExt( 'abusefilter-edit-throttle-seconds', array( 'parseinline', 'replaceafter' ), array(Xml::input( 'wpFilterThrottlePeriod', 20, $throttlePeriod )  ) );
-		$throttleFields['abusefilter-edit-throttle-groups'] = Xml::textarea( 'wpFilterThrottleGroups', $throttleGroups."\n" );
-		$throttleSettings .= Xml::buildForm( $throttleFields );
-		$output .= Xml::tags( 'p', null, $throttleSettings );
-
-		// Special case: Warning
-		$checkbox = Xml::checkLabel( wfMsg( 'abusefilter-edit-action-warn' ), 'wpFilterActionWarn', 'wpFilterActionWarn', $setActions['warn'] );
-		$output .= Xml::tags( 'p', null, $checkbox );
-
-		$warnMsg = empty($setActions['warn']) ? 'abusefilter-warning' : $actions['warn']['parameters'][0];
-		$warnFields['abusefilter-edit-warn-message'] = Xml::input( 'wpFilterWarnMessage', 45, $warnMsg );
-		$output .= Xml::tags( 'p', null, Xml::buildForm( $warnFields ) );
-
-		// Special case: tagging
-		if ($setActions['tag']) {
-			$tags = $actions['tag']['parameters'];
-		} else {
-			$tags = array();
-		}
-
-		$checkbox = Xml::checkLabel( wfMsg('abusefilter-edit-action-tag'), 'wpFilterActionTag', 'wpFilterActionTag', $setActions['tag'] );
-		$output .= Xml::tags( 'p', null, $checkbox );
-
-		$tagFields['abusefilter-edit-tag-tag'] = Xml::textarea( 'wpFilterTags', implode( "\n", $tags ) );
-		$output .= Xml::tags( 'p', null, Xml::buildForm( $tagFields ) );
-
-		// The remainder are just toggles
-		$remainingActions = array_diff( $wgAbuseFilterAvailableActions, array( 'flag', 'throttle', 'warn', 'tag' ) );
-
-		foreach( $remainingActions as $action ) {
-			$message = 'abusefilter-edit-action-'.$action;
-			$form_field = 'wpFilterAction' . ucfirst($action);
-			$status = $setActions[$action];
-
-			$thisAction = Xml::checkLabel( wfMsg( $message ), $form_field, $form_field, $status );
-			$thisAction = Xml::tags( 'p', null, $thisAction );
-
-			$output .= $thisAction;
+		foreach( $wgAbuseFilterAvailableActions as $action ) {
+			$output .= $this->buildConsequenceSelector( $action, $setActions[$action], @$actions[$action]['parameters'] );
 		}
 
 		return $output;
+	}
+
+	function buildConsequenceSelector( $action, $set, $parameters ) {
+		global $wgAbuseFilterAvailableActions;
+
+		if ( !in_array( $action, $wgAbuseFilterAvailableActions ) ) {
+			return;
+		}
+		
+		switch( $action ) {
+			case 'throttle':
+				$throttleSettings = Xml::checkLabel( wfMsg( 'abusefilter-edit-action-throttle' ), 'wpFilterActionThrottle', 'wpFilterActionThrottle', $set );
+				$throttleFields = array();
+
+				if ($set) {
+					array_shift( $parameters );
+					$throttleRate = explode(',', $parameters[0]);
+					$throttleCount = $throttleRate[0];
+					$throttlePeriod = $throttleRate[1];
+
+					$throttleGroups = implode("\n", array_slice($parameters, 1 ) );
+				} else {
+					$throttleCount = 3;
+					$throttlePeriod = 60;
+
+					$throttleGroups = "user\n";
+				}
+
+				$throttleFields['abusefilter-edit-throttle-count'] = Xml::input( 'wpFilterThrottleCount', 20, $throttleCount );
+				$throttleFields['abusefilter-edit-throttle-period'] = wfMsgExt( 'abusefilter-edit-throttle-seconds', array( 'parseinline', 'replaceafter' ), array(Xml::input( 'wpFilterThrottlePeriod', 20, $throttlePeriod )  ) );
+				$throttleFields['abusefilter-edit-throttle-groups'] = Xml::textarea( 'wpFilterThrottleGroups', $throttleGroups."\n" );
+				$throttleSettings .= Xml::buildForm( $throttleFields );
+				return Xml::tags( 'p', null, $throttleSettings );
+			case 'flag':
+				$checkbox = Xml::checkLabel( wfMsg( 'abusefilter-edit-action-flag' ), 'wpFilterActionFlag', 'wpFilterActionFlag', true, array( 'disabled' => '1' ) );
+				return Xml::tags( 'p', null, $checkbox );
+			case 'warn':
+				$output = '';
+				$checkbox = Xml::checkLabel( wfMsg( 'abusefilter-edit-action-warn' ), 'wpFilterActionWarn', 'wpFilterActionWarn', $set );
+				$output .= Xml::tags( 'p', null, $checkbox );
+
+				$warnMsg = empty($set) ? 'abusefilter-warning' : $parameters[0];
+				$warnFields['abusefilter-edit-warn-message'] = Xml::input( 'wpFilterWarnMessage', 45, $warnMsg );
+				$output .= Xml::tags( 'p', null, Xml::buildForm( $warnFields ) );
+				return $output;
+				// Commented out to avoid trunk changes for now.
+// 			case 'tag':
+// 				if ($set) {
+// 					$tags = $parameters;
+// 				} else {
+// 					$tags = array();
+// 				}
+// 				$output = '';
+// 
+// 				$checkbox = Xml::checkLabel( wfMsg('abusefilter-edit-action-tag'), 'wpFilterActionTag', 'wpFilterActionTag', $set );
+// 				$output .= Xml::tags( 'p', null, $checkbox );
+// 
+// 				$tagFields['abusefilter-edit-tag-tag'] = Xml::textarea( 'wpFilterTags', implode( "\n", $tags ) );
+// 				$output .= Xml::tags( 'p', null, Xml::buildForm( $tagFields ) );
+// 				return $output;
+			default:
+				$message = 'abusefilter-edit-action-'.$action;
+				$form_field = 'wpFilterAction' . ucfirst($action);
+				$status = $set;
+
+				$thisAction = Xml::checkLabel( wfMsg( $message ), $form_field, $form_field, $status );
+				$thisAction = Xml::tags( 'p', null, $thisAction );
+				return $thisAction;
+		}
 	}
 
 	function loadFilterData( $id ) {
