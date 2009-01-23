@@ -1,9 +1,10 @@
 function doSyntaxCheck()
 {
-	var filter = document.getElementById('wpFilterRules').value;
+	var filter = document.getElementById(wgFilterBoxName).value;
 	injectSpinner( document.getElementById( 'mw-abusefilter-syntaxcheck' ), 'abusefilter-syntaxcheck' );
 	sajax_do_call( 'AbuseFilter::ajaxCheckSyntax', [filter], processSyntaxResult );
 }
+
 function processSyntaxResult( request ) {
 	var response = request.responseText;
 	
@@ -15,17 +16,20 @@ function processSyntaxResult( request ) {
 	if (response.match( /OK/ )) {
 		// Successful
 		changeText( el, 'No syntax errors.' );
+		el.syntaxOk = true;
 	} else {
 		var error = response.substr(4);
 		changeText( el, 'Syntax error: '+error );
+		el.syntaxOk = false;
 	}
 }
+
 function addText() {
 	if (document.getElementById('wpFilterBuilder').selectedIndex == 0) {
 		return;
 	}
 	
-	insertAtCursor(document.getElementById('wpFilterRules'), document.getElementById('wpFilterBuilder').value + " ");
+	insertAtCursor(document.getElementById(wgFilterBoxName), document.getElementById('wpFilterBuilder').value + " ");
 	document.getElementById('wpFilterBuilder').selectedIndex = 0;
 }
 
@@ -50,7 +54,10 @@ function insertAtCursor(myField, myValue) {
 }
 
 addOnloadHook( function() {
-	addHandler( document.getElementById( 'wpFilterRules' ), 'keyup', function() {
-		document.getElementById( 'mw-abusefilter-syntaxresult' ).style.display = 'none';
+	addHandler( document.getElementById( wgFilterBoxName ), 'keyup', function() {
+		el = document.getElementById( 'mw-abusefilter-syntaxresult' );
+		if (el.syntaxOk == true) {
+			el.style.display = 'none';
+		}
 	} );
 } );

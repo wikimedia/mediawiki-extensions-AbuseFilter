@@ -195,7 +195,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 		}
 
-		$fields['abusefilter-edit-rules'] = $this->buildEditBox($row);
+		$fields['abusefilter-edit-rules'] = AbuseFilter::buildEditBox($row->af_pattern);
 		$fields['abusefilter-edit-notes'] = Xml::textarea( 'wpFilterNotes', ( isset( $row->af_comments ) ? $row->af_comments."\n" : "\n" ) );
 
 		// Build checkboxen
@@ -241,47 +241,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$output .= $form;
 
 		return $output;
-	}
-
-	function buildEditBox( $row ) {
-		global $wgOut;
-
-		$rules = Xml::textarea( 'wpFilterRules', ( isset( $row->af_pattern ) ? $row->af_pattern."\n" : "\n" ) );
-
-		$dropDown = array(
-			'op-arithmetic' => array('+' => 'addition', '-' => 'subtraction', '*' => 'multiplication', '/' => 'divide', '%' => 'modulo', '**' => 'pow'),
-			'op-comparison' => array('==' => 'equal', '!=' => 'notequal', '<' => 'lt', '>' => 'gt', '<=' => 'lte', '>=' => 'gte'),
-			'op-bool' => array( '!' => 'not', '&' => 'and', '|' => 'or', '^' => 'xor' ),
-			'misc' => array( 'in' => 'in', 'like' => 'like', '""' => 'stringlit', ),
-			'funcs' => array( 'length(string)' => 'length', 'lcase(string)' => 'lcase', 'ccnorm(string)' => 'ccnorm', 'rmdoubles(string)' => 'rmdoubles', 'specialratio(string)' => 'specialratio', 'norm(string)' => 'norm', 'count(needle,haystack)' => 'count' ),
-			'vars' => array( 'ACCOUNTNAME' => 'accountname', 'ACTION' => 'action', 'ADDED_LINES' => 'addedlines', 'EDIT_DELTA' => 'delta', 'EDIT_DIFF' => 'diff', 'NEW_SIZE' => 'newsize', 'OLD_SIZE' => 'oldsize', 'REMOVED_LINES' => 'removedlines', 'SUMMARY' => 'summary', 'ARTICLE_ARTICLEID' => 'article-id', 'ARTICLE_NAMESPACE' => 'article-ns', 'ARTICLE_TEXT' => 'article-text', 'ARTICLE_PREFIXEDTEXT' => 'article-prefixedtext', 'MOVED_FROM_ARTICLEID' => 'movedfrom-id', 'MOVED_FROM_NAMESPACE' => 'movedfrom-ns', 'MOVED_FROM_TEXT' => 'movedfrom-text', 'MOVED_FROM_PREFIXEDTEXT' => 'movedfrom-prefixedtext', 'MOVED_TO_ARTICLEID' => 'movedto-id', 'MOVED_TO_NAMESPACE' => 'movedto-ns', 'MOVED_TO_TEXT' => 'movedto-text', 'MOVED_TO_PREFIXEDTEXT' => 'movedto-prefixedtext', 'USER_EDITCOUNT' =>  'user-editcount', 'USER_AGE' => 'user-age', 'USER_NAME' => 'user-name', 'USER_GROUPS' => 'user-groups', 'USER_EMAILCONFIRM' => 'user-emailconfirm'),
-		);
-
-		// Generate builder drop-down
-		$builder = '';
-
-		$builder .= Xml::option( wfMsg( "abusefilter-edit-builder-select") );
-
-		foreach( $dropDown as $group => $values ) {
-			$builder .= Xml::openElement( 'optgroup', array( 'label' => wfMsg( "abusefilter-edit-builder-group-$group" ) ) ) . "\n";
-
-			foreach( $values as $content => $name ) {
-				$builder .= Xml::option( wfMsg( "abusefilter-edit-builder-$group-$name" ), $content ) . "\n";
-			}
-
-			$builder .= Xml::closeElement( 'optgroup' ) . "\n";
-		}
-
-		$rules .= Xml::tags( 'select', array( 'id' => 'wpFilterBuilder', 'onchange' => 'addText();' ), $builder );
-
-		// Add syntax checking
-		$rules .= Xml::element( 'input', array( 'type' => 'button', 'onclick' => 'doSyntaxCheck()', 'value' => wfMsg( 'abusefilter-edit-check' ), 'id' => 'mw-abusefilter-syntaxcheck' ) );
-		$rules .= Xml::element( 'div', array( 'id' => 'mw-abusefilter-syntaxresult', 'style' => 'display: none;' ), '&nbsp;' );
-
-		// Add script
-		$wgOut->addInlineScript( file_get_contents(dirname(__FILE__)."/edit.js") );
-
-		return $rules;
 	}
 
 	function buildConsequenceEditor( $row, $actions ) {
