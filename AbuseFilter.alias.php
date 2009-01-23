@@ -80,7 +80,7 @@ $aliases['id'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'AbuseLog' => array( '不正利用ログ' ),
+	'AbuseLog' => array( '不正利用記録' ),
 	'AbuseFilter' => array( '不正利用フィルター' ),
 );
 
