@@ -21,6 +21,19 @@ function processSyntaxResult( request ) {
 		var error = response.substr(4);
 		changeText( el, 'Syntax error: '+error );
 		el.syntaxOk = false;
+
+		var charRegex = /at char (\d+)/;
+		if ( charRegex.test( error ) ) {
+			var charArray = charRegex.exec( error );
+			var position = charArray[1];
+			var textArea = document.getElementById( wgFilterBoxName );
+
+			if (textArea.selectionStart && textArea.selectionEnd) {
+				textArea.selectionStart = position;
+				textArea.selectionEnd = position;
+				textArea.focus();
+			}
+		}
 	}
 }
 
