@@ -725,7 +725,7 @@ class AbuseFilterParser {
 		$bases = array( 'b' => 2, 'x' => 16, 'o' => 8 );
 		$baseClass = '['.implode('', array_keys($bases)).']';
 		$radixRegex = "/^[0-9A-Fa-f]+$baseClass\b/u";
-		if( ctype_digit($code[0]) || ( self::isDigitOrDot( $code[0] ) && ctype_digit( $code[1] ) ) || preg_match( $radixRegex, $code ) ) {
+		if( ctype_digit($code[0]) || ( self::isDigitOrDot( $code[0] ) && !empty($code[1]) && ctype_digit( $code[1] ) ) || preg_match( $radixRegex, $code ) ) {
 			$tok .= $code[0];
 			$code = substr( $code, 1 );
 			
