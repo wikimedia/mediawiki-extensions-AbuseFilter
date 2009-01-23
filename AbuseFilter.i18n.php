@@ -17,7 +17,7 @@ $messages['en'] = array(
 	// Special pages
 	'abusefilter' => 'Abuse filter configuration',
 	'abuselog' => 'Abuse log',
-	
+
 	// Hooks
 	'abusefilter-warning' => "<big>'''Warning'''</big>: This action has been automatically identified as harmful.
 Unconstructive edits will be quickly reverted,
@@ -44,16 +44,16 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-blocker' => 'Abuse filter',
 	'abusefilter-blockreason' => 'Automatically blocked by abuse filter. Description of matched rule: $1',
 	'abusefilter-degroupreason' => 'Rights automatically stripped by abuse filter. Rule description: $1',
-	
+
 	'abusefilter-accountreserved' => 'This account name is reserved for use by the abuse filter.',
-	
+
 	// Permissions
 	'right-abusefilter-modify' => 'Modify abuse filters',
 	'right-abusefilter-view' => 'View abuse filters',
 	'right-abusefilter-log' => 'View the abuse log',
 	'right-abusefilter-log-detail' => 'View detailed abuse log entries',
 	'right-abusefilter-private' => 'View private data in the abuse log',
-	
+
 	// Abuse Log
 	'abusefilter-log' => 'Abuse filter log',
 	'abusefilter-log-search' => 'Search the abuse log',
@@ -71,7 +71,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-log-details-private' => 'Private data',
 	'abusefilter-log-details-ip' => 'Originating IP address',
 	'abusefilter-log-noactions' => 'none',
-	
+
 	// Abuse filter management
 	'abusefilter-management' => 'Abuse filter management',
 	'abusefilter-list' => 'All filters',
@@ -97,7 +97,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-tools' => 'Abuse filter tools',
 	'abusefilter-loglink' => 'View the abuse log',
 	'abusefilter-return' => 'Return to filter management',
-	
+
 	// Options form
 	'abusefilter-list-options' => 'Options',
 	'abusefilter-list-options-deleted' => 'Deleted filters:',
@@ -107,7 +107,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-list-options-disabled' => 'Disabled filters:',
 	'abusefilter-list-options-hidedisabled' => 'Hide disabled filters',
 	'abusefilter-list-options-submit' => 'Update',
-	
+
 	// Abuse filter tools
 	'abusefilter-tools-subtitle' => 'Tools',
 	'abusefilter-tools-text' => 'Here are some tools which may be useful in formulating and debugging abuse filters. [[Special:AbuseFilter|Return to main menu]]',
@@ -118,10 +118,10 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-tools-reautoconfirm-submit' => 'Re-autoconfirm',
 	'abusefilter-reautoconfirm-none' => 'That user has not had their autoconfirmed status suspended.',
 	'abusefilter-reautoconfirm-notallowed' => 'You are not allowed to restore autoconfirmed status.',
-	
+
 	// Abuse filter status
 	'abusefilter-status' => "Of the last $1 {{PLURAL:$1|action|actions}}, $2 ($3%) {{PLURAL:$2|has|have}} reached the condition limit of $4, and $5 ($6%) {{PLURAL:$5|has|have}} matched one of the filters currently enabled.",
-	
+
 	// The edit screen
 	'abusefilter-edit-subtitle' => 'Editing filter $1',
 	'abusefilter-edit-oldwarning' => "<strong>You are editing an old version of this filter. The statistics quoted are for the most recent version of the filter. If you save your changes, you will overwrite all changes since the revision you are editing.</strong> &bull; [[Special:AbuseFilter/history/$2|Return to this filter's history]]",
@@ -156,7 +156,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|second|seconds}}',
 	'abusefilter-edit-throttle-groups' => "Group throttle by:\n:''(one per line, combine with commas)''",
 	'abusefilter-edit-warn-message' => 'System message to use for warning:',
-	'abusefilter-edit-tag-tag' => 'Tags to apply (one per line) :',
+	'abusefilter-edit-tag-tag' => 'Tags to apply (one per line):',
 	'abusefilter-edit-denied' => "You may not view details of this filter, because it is hidden from public view",
 	'abusefilter-edit-main' => 'Filter parameters',
 	'abusefilter-edit-done-subtitle' => 'Filter edited',
@@ -166,7 +166,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-edit-history' => 'History',
 	'abusefilter-edit-check' => 'Check syntax',
 	'abusefilter-edit-badfilter' => 'The filter you specified does not exist',
-	
+
 	// Filter editing helpers
 	'abusefilter-edit-builder-select' => 'Select an option to add it at the cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Arithmetic operators',
@@ -228,7 +228,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-edit-builder-vars-user-name' => 'Name of user account',
 	'abusefilter-edit-builder-vars-user-groups' => 'Groups (including implicit) user is in',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Time email address was confirmed',
-	
+
 	// Filter history
 	'abusefilter-history' => 'History for filter $1',
 	'abusefilter-history-hidden' => 'hidden',
@@ -3216,20 +3216,20 @@ $messages['it'] = array(
 	'abusefilter-desc' => "Applica un'euristica automatica agli edit.",
 	'abusefilter' => 'Configurazione filtro abusi',
 	'abuselog' => 'Registro abusi',
-	'abusefilter-warning' => "<big>'''Attenzione'''</big>: Questa azione è stata automaticamente riconosciuta come potenzialmente pericolosa. 
+	'abusefilter-warning' => "<big>'''Attenzione'''</big>: Questa azione è stata automaticamente riconosciuta come potenzialmente pericolosa.
 Gli edit non costruttivi verranno immediatamente annullati, ed edit gravemente o ripetutamente non costruttivi daranno luogo al blocco della tua utenza o del tuo computer.
 Se ritieni che questo edit sia costruttivo, puoi cliccare nuovamente il tasto Invia per confermarlo.
 Questa è una breve descrizione della regola di sicurezza che la tua azione ha violato: $1",
-	'abusefilter-disallowed' => 'Questa azione è stata automaticamente riconosciuta come potenzialmente pericolosa e perciò non permessa. 
+	'abusefilter-disallowed' => 'Questa azione è stata automaticamente riconosciuta come potenzialmente pericolosa e perciò non permessa.
 Se ritieni che questo edit sia costruttivo, puoi contattare un amministratore ed informarlo di cosa stavi cercando di fare.
 Questa è una breve descrizione della regola di sicurezza che la tua azione ha violato: $1',
-	'abusefilter-blocked-display' => 'Questa azione è stata automaticamente riconosciuta come potenzialmente pericolosa e ti è stato impedito di eseguirla. 
+	'abusefilter-blocked-display' => 'Questa azione è stata automaticamente riconosciuta come potenzialmente pericolosa e ti è stato impedito di eseguirla.
 In più, per proteggere {{SITENAME}}, la tua utenza e tutti gli indirizzi IP ad essa associati sono stati bloccati e non possono più editare.
 Se ritieni che vi sia stato un errore, per favore contatta un amministratore.
 Questa è una breve descrizione della regola di sicurezza che la tua azione ha violato: $1',
-	'abusefilter-degrouped' => "Questa azione è stata automaticamente riconosciuta come potenzialmente pericolosa. 
+	'abusefilter-degrouped' => "Questa azione è stata automaticamente riconosciuta come potenzialmente pericolosa.
 Conseguentemente, l'azione non è stata permessa e, dato il rischio che la tua utenza sia stata compromessa, tutti i diritti sono stati revocati.
-Se ritieni che vi sia stato un errore, per favore contatta un burocrate formendogli una spiegazione di questa azione, e i tuoi diritti potrebbero essere ripristinati. 
+Se ritieni che vi sia stato un errore, per favore contatta un burocrate formendogli una spiegazione di questa azione, e i tuoi diritti potrebbero essere ripristinati.
 Questa è una breve descrizione della regola di sicurezza che la tua azione ha violato: $1",
 	'abusefilter-degroupreason' => 'Diritti rimossi automaticamente dal filtro abusi. Descrizione della regola: $1',
 	'abusefilter-accountreserved' => 'Questo account è riservato al filtro abusi.',
@@ -5040,7 +5040,7 @@ $messages['pl'] = array(
 	'abusefilter' => 'Konfiguracja filtru nadużyć',
 	'abuselog' => 'Rejestr nadużyć',
 	'abusefilter-warning' => "<big>'''Uwaga'''</big>: Ta akcja została automatycznie zidentyfikowana jako szkodliwa.
-Niekonstruktywne edycje zostaną szybko wycofane, 
+Niekonstruktywne edycje zostaną szybko wycofane,
 a rażące lub powtarzające się niekonstruktywne edytowanie może spowodować zablokowanie Twojego konta lub adresu IP.
 Jeśli uważasz, że ta edycja jest zasadna, możesz kliknąć przycisk „{{int:savearticle}}”, aby ją zatwierdzić.
 Krótki opis reguły nadużycia, do której Twoja akcji została dopasowana: $1",
