@@ -331,7 +331,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	function loadFilterData( $id ) {
 
 		if ($id == 'new') {
-			return array( new StdClass, array() );
+			$obj = new stdClass;
+			$obj->af_pattern = '';
+			$obj->af_enabled = 1;
+			$obj->af_hidden = 0;
+			return array( $obj, array() );
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
