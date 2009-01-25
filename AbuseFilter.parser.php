@@ -219,15 +219,15 @@ class AFPData {
 			$a = $a->toInt();
 			$b = $b->toInt();
 		}
-		
+
+		$data = null;
 		if( $op == '*' )
 			$data = $a * $b;
-		if( $op == '/' )
+		elseif( $op == '/' )
 			$data = $a / $b;
-		if( $op == '%' )
+		elseif( $op == '%' )
 			$data = $a % $b;
-			
-		if (!$data)
+		else
 			throw new AFPException( "Invalid multiplication-related operation: {$op}" );
 			
 		if ($type == self::DInt)
