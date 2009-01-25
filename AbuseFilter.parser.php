@@ -220,6 +220,10 @@ class AFPData {
 			$b = $b->toInt();
 		}
 
+		if ($op != '*' && $b == 0) {
+			throw new AFPException( "Illegal attempt to divide $a by 0." );
+		}
+
 		$data = null;
 		if( $op == '*' )
 			$data = $a * $b;
