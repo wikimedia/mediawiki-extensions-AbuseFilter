@@ -628,7 +628,7 @@ class AbuseFilter {
 		return $user;
 	}
 
-	function buildEditBox( $rules, $textName = 'wpFilterRules' ) {
+	static function buildEditBox( $rules, $textName = 'wpFilterRules' ) {
 		global $wgOut;
 
 		$rules = Xml::textarea( $textName, ( isset( $rules ) ? $rules."\n" : "\n" ) );
