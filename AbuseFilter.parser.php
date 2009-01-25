@@ -556,7 +556,7 @@ class AbuseFilterParser {
 			$func = self::$mFunctions[$this->mCur->value];
 			$this->move();
 			if( $this->mCur->type != AFPToken::TBrace || $this->mCur->value != '(' )
-				throw new AFPException( "Expected ( at char {$this->mCur->value}" );
+				throw new AFPException( "Expected ( at char {$this->mCur->pos} (got a '{$this->mCur->value}')" );
 			wfProfileIn( __METHOD__."-loadargs" );
 			$args = array();
 			do {
