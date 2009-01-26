@@ -34,6 +34,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			list ($newRow, $actions) = $this->loadRequest($filter);
 
+			$differences = $this->compareVersions( array($newRow, $actions), array( $newRow->mOriginalRow, $newRow->mOriginalActions ) );
+
+			if (!count($differences)) {
+				$wgOut->redirect( $this->getTitle()->getLocalURL() );
+				return;
+			}
+
 			$newRow = get_object_vars($newRow); // Convert from object to array
 
 			// Set last modifier.
@@ -360,6 +367,40 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		return array( $row, $actions );
 	}
 
+	/** Each version is expected to be an array( $row, $actions )
+	    Returns an array of fields that are different.*/
+	function compareVersions( $version_1, $version_2 ) {
+		$compareFields = array( 'af_public_comments', 'af_pattern', 'af_comments', 'af_deleted', 'af_enabled', 'af_hidden' );
+		$differences = array();
+
+		list($row1, $actions1) = $version_1;
+		list($row2, $actions2) = $version_2;
+
+		foreach( $compareFields as $field ) {
+			if ($row1->$field != $row2->$field) {
+				$differences[] = $field;
+			}
+		}
+
+		global $wgAbuseFilterAvailableActions;
+		foreach( $wgAbuseFilterAvailableActions as $action ) {
+			if ( !isset($actions1[$action]) && !isset( $actions2[$action] ) ) {
+				// They're both unset
+			} elseif ( isset($actions1[$action]) && isset( $actions2[$action] ) ) {
+				// They're both set.
+				if ( array_diff( $actions1[$action]['parameters'], $actions2[$action]['parameters'] ) ) {
+					// Different parameters
+					$differences[] = 'actions';
+				}
+			} else {
+				// One's unset, one's set.
+				$differences[] = 'actions';
+			}
+		}
+
+		return array_unique( $differences );
+	}
+
 	function loadRequest( $filter, $history_id = null ) {
 		static $row = null;
 		static $actions = null;
@@ -376,7 +417,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		// We need some details like last editor
-		list($row) = $this->loadFilterData( $filter );
+		list($row,$origActions) = $this->loadFilterData( $filter );
+
+		$row->mOriginalRow = clone $row;
+		$row->mOriginalActions = $origActions;
 
 		$textLoads = array( 'af_public_comments' => 'wpFilterDescription', 'af_pattern' => 'wpFilterRules', 'af_comments' => 'wpFilterNotes' );
 
