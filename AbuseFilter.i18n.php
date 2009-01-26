@@ -231,7 +231,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Last five contributors to the article',
 	'abusefilter-edit-builder-vars-all-links' => 'All external links in the new text',
 	'abusefilter-edit-builder-vars-added-links' => 'All external links added in the edit',
-	'abusefilter-edit-builder-vars-removed-links' => 'All external links removed oin the edit',
+	'abusefilter-edit-builder-vars-removed-links' => 'All external links removed in the edit',
 
 	// Filter history
 	'abusefilter-filter-log' => 'Recent filter changes',
