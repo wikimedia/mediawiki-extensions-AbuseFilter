@@ -182,7 +182,7 @@ class AFPData {
 			return new AFPData( self::DBool, $a && $b );
 		if( $op == '^' )
 			return new AFPData( self::DBool, $a xor $b );
-		throw new AFPException( "Invalid boolean operation: {$op}" );
+		throw new AFPException( "Invalid boolean operation: {$op}" ); // Should never happen.
 	}
 	
 	public static function compareOp( $a, $b, $op ) {
@@ -204,7 +204,7 @@ class AFPData {
 			return new AFPData( self::DBool, $a >= $b );
 		if( $op == '<=' )
 			return new AFPData( self::DBool, $a <= $b );
-		throw new AFPException( "Invalid comprasion operation: {$op}" );
+		throw new AFPException( "Invalid comparison operation: {$op}" ); // Should never happen
 	}
 	
 	public static function mulRel( $a, $b, $op ) {	
@@ -221,7 +221,7 @@ class AFPData {
 		}
 
 		if ($op != '*' && $b == 0) {
-			throw new AFPException( "Illegal attempt to divide $a by 0." );
+			throw new AFPUserVisibleException( 'dividebyzero', 0, array($a) );
 		}
 
 		$data = null;
@@ -232,7 +232,7 @@ class AFPData {
 		elseif( $op == '%' )
 			$data = $a % $b;
 		else
-			throw new AFPException( "Invalid multiplication-related operation: {$op}" );
+			throw new AFPException( "Invalid multiplication-related operation: {$op}" ); // Should never happen
 			
 		if ($type == self::DInt)
 			$data = intval($data);
@@ -272,6 +272,19 @@ class AFPData {
 }
 
 class AFPException extends MWException {}
+
+// Exceptions that we might conceivably want to report to ordinary users
+// (i.e. exceptions that don't represent bugs in the extension itself)
+class AFPUserVisibleException extends AFPException {
+	function __construct( $exception_id, $position, $params) {
+		$msg = wfMsgExt( 'abusefilter-exception-'.$exception_id, array(), array_merge( array($position), $params ) );
+		parent::__construct( $msg );
+
+		$this->mExceptionID = $exception_id;
+		$this->mPosition = $position;
+		$this->mParams = $params;
+	}
+}
 	
 class AbuseFilterParser {
 	var $mParams, $mVars, $mCode, $mTokens, $mPos, $mCur;
@@ -319,8 +332,8 @@ class AbuseFilterParser {
 	public function checkSyntax( $filter ) {
 		try {
 			$this->parse($filter);
-		} catch (AFPException $excep) {
-			return $excep->getMessage();
+		} catch (AFPUserVisibleException $excep) {
+			return array($excep->getMessage(), $excep->mPosition);
 		}
 		return true;
 	}
@@ -376,7 +389,7 @@ class AbuseFilterParser {
 	protected function doLevelEntry( &$result ) {
 		$this->doLevelSet( $result );
 		if( $this->mCur->type != AFPToken::TNone ) {
-			throw new AFPException( "Unexpected {$this->mCur->type} at char {$this->mCur->pos}" );
+			throw new AFPUserVisibleException( 'unexpectedatend', $this->mCur->pos, array($this->mCur->type) );
 		}
 	}
 	
@@ -390,13 +403,13 @@ class AbuseFilterParser {
 			$this->move();
 			$this->doLevelBoolOps( $result );
 			if( !($this->mCur->type == AFPToken::TKeyword && $this->mCur->value == 'then') )
-				throw new AFPException( "Excepted \"then\" at char {$this->mCur->pos}" );
+				throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos, array('then') );
 			$this->move();
 			$r1 = new AFPData();
 			$r2 = new AFPData();
 			$this->doLevelConditions( $r1 );
 			if( !($this->mCur->type == AFPToken::TKeyword && $this->mCur->value == 'else') )
-				throw new AFPException( "Excepted \"else\" at char {$this->mCur->pos}" );
+				throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos, array('else') );
 			$this->move();
 			$this->doLevelConditions( $r2 );
 			if( $result->toBool() ) {
@@ -405,7 +418,7 @@ class AbuseFilterParser {
 				$result = $r2;
 			}
 			if( !($this->mCur->type == AFPToken::TKeyword && $this->mCur->value == 'end') )
-				throw new AFPException( "Excepted \"else\" at char {$this->mCur->pos}" );
+				throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos, array('end') );
 			$this->move();
 		} else {
 			$this->doLevelBoolOps( $result );
@@ -415,7 +428,7 @@ class AbuseFilterParser {
 				$r2 = new AFPData();
 				$this->doLevelConditions( $r1 );
 				if( !($this->mCur->type == AFPToken::TOp && $this->mCur->value == ':') )
-					throw new AFPException( "Excepted \":\" at char {$this->mCur->pos}" );
+					throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos, array(':') );
 				$this->move();
 				$this->doLevelConditions( $r2 );
 				if( $result->toBool() ) {
@@ -547,7 +560,7 @@ class AbuseFilterParser {
 			$this->move();
 			$this->doLevelSet( $result );
 			if( !($this->mCur->type == AFPToken::TBrace && $this->mCur->value == ')') )
-				throw new AFPException( "Expected ) at char {$this->mCur->pos}" );
+				throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos, array(')') );
 			$this->move();
 		} else {
 			$this->doLevelFunction( $result );
@@ -560,7 +573,7 @@ class AbuseFilterParser {
 			$func = self::$mFunctions[$this->mCur->value];
 			$this->move();
 			if( $this->mCur->type != AFPToken::TBrace || $this->mCur->value != '(' )
-				throw new AFPException( "Expected ( at char {$this->mCur->pos} (got a '{$this->mCur->value}')" );
+				throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos, array('(') );
 			wfProfileIn( __METHOD__."-loadargs" );
 			$args = array();
 			do {
@@ -571,7 +584,7 @@ class AbuseFilterParser {
 			} while( $this->mCur->type == AFPToken::TComma );
 			
 			if( $this->mCur->type != AFPToken::TBrace || $this->mCur->value != ')' ) {
-				throw new AFPException( "Expected ) at char {$this->mCur->pos}, instead I see {$this->mCur->value}, a {$this->mCur->type}" );
+				throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos, array(')') );
 			}
 			wfProfileOut( __METHOD__."-loadargs" );
 			
@@ -627,13 +640,13 @@ class AbuseFilterParser {
 				elseif( $tok == "null" )
 					$result = new AFPData();
 				else
-					throw new AFPException( "Unexpected {$this->mCur->type} at char {$this->mCur->pos}" );
+					throw new AFPUserVisibleException( 'unrecognisedkeyword', $this->mCur->pos, array($tok) );
 				break;
 			case AFPToken::TBrace:
 			if( $this->mCur->value == ')' )
 				return;        // Handled at the entry level
 			default:
-				throw new AFPException( "Unexpected {$this->mCur->type} at char {$this->mCur->pos}" );
+				throw new AFPUserVisibleException( 'unexpectedtoken', $this->mCur->pos, array($this->mCur->value) );
 		}
 		$this->move();
 		wfProfileOut( __METHOD__ );
@@ -723,7 +736,7 @@ class AbuseFilterParser {
 					$code = substr( $code, 1 );
 				}
 			}
-			throw new AFPException( "Unclosed string begining at char $pos" );
+			throw new AFPUserVisibleException( 'unclosedstring', $pos, array() );;
 		}
 		
 		$bases = array( 'b' => 2, 'x' => 16, 'o' => 8 );
@@ -764,7 +777,7 @@ class AbuseFilterParser {
 				$code = substr( $code, 1 );
 			}
 			if( !in_array( $tok, self::$mOps ) )
-			throw new AFPException( "Invalid operator: {$tok} (at char $pos)" );
+			throw new AFPUserVisibleException( 'invalidoperator', $this->mCur->pos, array($tok) );
 			return array( $tok, AFPToken::TOp, $code, $pos );
 		}
 		
@@ -777,7 +790,7 @@ class AbuseFilterParser {
 			return array( $tok, $type, $code, $pos );
 		}
 		
-		throw new AFPException( "Unrecognized token \"{$code[0]}\" at char $pos" );
+		throw new AFPUserVisibleException( 'unrecognisedtoken', $this->mCur->pos, array($code[0]) );;
 	}
 	
 	protected static function isDigitOrDot( $chr ) {
@@ -930,7 +943,7 @@ class AbuseFilterParser {
 	
 	protected function castString( $args ) {
 		if ( count( $args ) < 1)
-			throw new AFPException( "No params passed to ".__METHOD__ );
+			throw new AFPUserVisibleException( 'noparams', $this->mCur->pos, array(__METHOD__) );
 		$val = $args[0];
 		
 		return new AFPData( AFPData::DString, $val->data );
@@ -938,7 +951,7 @@ class AbuseFilterParser {
 	
 	protected function castInt( $args ) {
 		if ( count( $args ) < 1)
-			throw new AFPException( "No params passed to ".__METHOD__ );
+			throw new AFPUserVisibleException( 'noparams', $this->mCur->pos, array(__METHOD__) );
 		$val = $args[0];
 		
 		return new AFPData( AFPData::DInt, intval($val->data) );
@@ -946,7 +959,7 @@ class AbuseFilterParser {
 
 	protected function castFloat( $args ) {
 		if ( count( $args ) < 1)
-			throw new AFPException( "No params passed to ".__METHOD__ );
+			throw new AFPUserVisibleException( 'noparams', $this->mCur->pos, array(__METHOD__) );
 		$val = $args[0];
 		
 		return new AFPData( AFPData::DFloat, doubleval($val->data) );
@@ -954,7 +967,7 @@ class AbuseFilterParser {
 	
 	protected function castBool( $args ) {
 		if ( count( $args ) < 1)
-			throw new AFPException( "No params passed to ".__METHOD__ );
+			throw new AFPUserVisibleException( 'noparams', $this->mCur->pos, array(__METHOD__) );
 		$val = $args[0];
 		
 		return new AFPData( AFPData::DBool, (bool)($val->data) );

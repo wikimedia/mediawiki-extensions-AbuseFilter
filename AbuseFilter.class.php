@@ -31,6 +31,8 @@ class AbuseFilter {
 	}
 	
 	public static function ajaxCheckSyntax( $filter ) {
+		wfLoadExtensionMessages( 'AbuseFilter' );
+		
 		$result = self::checkSyntax( $filter );
 		
 		$ok = ($result === true);
@@ -38,7 +40,7 @@ class AbuseFilter {
 		if ($ok) {
 			return "OK";
 		} else {
-			return "ERR: $result";
+			return "ERR: ".json_encode( $result );
 		}
 	}
 

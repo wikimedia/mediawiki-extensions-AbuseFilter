@@ -254,6 +254,17 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-history-select-legend' => 'Refine search',
 	'abusefilter-history-select-user' => 'User:',
 	'abusefilter-history-select-submit' => 'Refine',
+
+	// Exceptions
+	'abusefilter-exception-unexpectedatend' => 'Unexpected "$2" at end.',
+	'abusefilter-exception-expectednotfound' => 'Expected a $2 at character $1, not found.',
+	'abusefilter-exception-unrecognisedkeyword' => 'Unrecognised keyword $2 at character $1.',
+	'abusefilter-exception-unexpectedtoken' => 'Unexpected token "$2" at character $1.',
+	'abusefilter-exception-unclosedstring' => 'Unclosed string starting at character $1.',
+	'abusefilter-exception-invalidoperator' => 'Invalid operator $2 at character $1.',
+	'abusefilter-exception-unrecognisedtoken' => 'Unrecognised token "$2" at character $1.',
+	'abusefilter-exception-noparams' => 'No parameters given to function "$2" at character $1.',
+	'abusefilter-exception-dividebyzero' => 'Illegal attempt to divide $2 by zero.',
 );
 
 /** Message documentation (Message documentation)

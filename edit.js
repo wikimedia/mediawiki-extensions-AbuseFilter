@@ -18,26 +18,22 @@ function processSyntaxResult( request ) {
 		changeText( el, 'No syntax errors.' );
 		el.syntaxOk = true;
 	} else {
-		var error = response.substr(4);
-		changeText( el, 'Syntax error: '+error );
+		var errorData = eval(response.substr(4));
+		changeText( el, 'Syntax error: '+errorData[0] );
 		el.syntaxOk = false;
 
-		var charRegex = /at char (\d+)/;
-		if ( charRegex.test( error ) ) {
-			var charArray = charRegex.exec( error );
-			var position = charArray[1];
-			var textArea = document.getElementById( wgFilterBoxName );
+		var position = errorData[1];
+		var textArea = document.getElementById( wgFilterBoxName );
 
-			textArea.focus();
-			if (document.selection) {
-				var sel = document.selection.createRange();
-				sel.moveStart( 'character', -textArea.value.length );
-				sel.moveStart( 'character', position );
-				sel.select();
-			} else if (textArea.selectionStart && textArea.selectionEnd) {
-				textArea.selectionStart = position;
-				textArea.selectionEnd = position;
-			}
+		textArea.focus();
+		if (document.selection) {
+			var sel = document.selection.createRange();
+			sel.moveStart( 'character', -textArea.value.length );
+			sel.moveStart( 'character', position );
+			sel.select();
+		} else if (textArea.selectionStart && textArea.selectionEnd) {
+			textArea.selectionStart = position;
+			textArea.selectionEnd = position;
 		}
 	}
 }
