@@ -11,6 +11,7 @@ class AbuseFilter {
 	public static $condCount = 0;
 	public static $filters = array();
 	public static $tagsToSet = array();
+	public static $history_mappings = array( 'af_pattern' => 'afh_pattern', 'af_user' => 'afh_user', 'af_user_text' => 'afh_user_text', 'af_timestamp' => 'afh_timestamp', 'af_comments' => 'afh_comments', 'af_public_comments' => 'afh_public_comments', 'af_deleted' => 'afh_deleted', 'af_id' => 'afh_filter' );
 
 	public static function generateUserVars( $user ) {
 		$vars = array();
@@ -674,5 +675,70 @@ class AbuseFilter {
 		$wgOut->addInlineScript( $editScript );
 
 		return $rules;
+	}
+
+	/** Each version is expected to be an array( $row, $actions )
+	    Returns an array of fields that are different.*/
+	static function compareVersions( $version_1, $version_2 ) {
+		$compareFields = array( 'af_public_comments', 'af_pattern', 'af_comments', 'af_deleted', 'af_enabled', 'af_hidden' );
+		$differences = array();
+
+		list($row1, $actions1) = $version_1;
+		list($row2, $actions2) = $version_2;
+
+		foreach( $compareFields as $field ) {
+			if ($row1->$field != $row2->$field) {
+				$differences[] = $field;
+			}
+		}
+
+		global $wgAbuseFilterAvailableActions;
+		foreach( $wgAbuseFilterAvailableActions as $action ) {
+			if ( !isset($actions1[$action]) && !isset( $actions2[$action] ) ) {
+				// They're both unset
+			} elseif ( isset($actions1[$action]) && isset( $actions2[$action] ) ) {
+				// They're both set.
+				if ( array_diff( $actions1[$action]['parameters'], $actions2[$action]['parameters'] ) ) {
+					// Different parameters
+					$differences[] = 'actions';
+				}
+			} else {
+				// One's unset, one's set.
+				$differences[] = 'actions';
+			}
+		}
+
+		return array_unique( $differences );
+	}
+
+	static function translateFromHistory( $row ) {
+		## Translate into an abuse_filter row with some black magic. This is ever so slightly evil!
+		$af_row = new StdClass;
+
+		foreach (self::$history_mappings as $af_col => $afh_col ) {
+			$af_row->$af_col = $row->$afh_col;
+		}
+
+		## Process flags
+
+		$af_row->af_deleted = 0;
+		$af_row->af_hidden = 0;
+		$af_row->af_enabled = 0;
+
+		$flags = explode(',', $row->afh_flags );
+		foreach( $flags as $flag ) {
+			$col_name = "af_$flag";
+			$af_row->$col_name = 1;
+		}
+
+		## Process actions
+		$actions_raw = unserialize($row->afh_actions);
+		$actions_output = array();
+
+		foreach( $actions_raw as $action => $parameters ) {
+			$actions_output[$action] = array( 'action' => $action, 'parameters' => $parameters );
+		}
+
+		return array( $af_row, $actions_output );
 	}
 }

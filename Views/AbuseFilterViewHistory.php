@@ -80,6 +80,7 @@ class AbuseFilterHistoryPager extends TablePager {
 		if (!$this->mFilter) {
 			// awful hack
 			$headers = array( 'afh_filter' => 'abusefilter-history-filterid' ) + $headers;
+			unset( $headers['afh_pattern'] );
 		}
 
 		$headers = array_map( 'wfMsg', $headers );
@@ -99,25 +100,33 @@ class AbuseFilterHistoryPager extends TablePager {
 
 		$row = $this->mCurrentRow;
 
+		$formatted = '';
+
 		switch($name) {
 			case 'afh_timestamp':
 				$title = SpecialPage::getTitleFor( 'AbuseFilter', 'history/'.$this->mFilter.'/item/'.$row->afh_id );
-				return $sk->link( $title, $wgLang->timeanddate( $row->afh_timestamp ) );
+				$formatted = $sk->link( $title, $wgLang->timeanddate( $row->afh_timestamp ) );
+				break;
 			case 'afh_user_text':
-				return $sk->userLink( $row->afh_user, $row->afh_user_text ) . ' ' . $sk->userToolLinks( $row->afh_user, $row->afh_user_text );
+				$formatted = $sk->userLink( $row->afh_user, $row->afh_user_text ) . ' ' . $sk->userToolLinks( $row->afh_user, $row->afh_user_text );
+				break;
 			case 'afh_public_comments':
-				return $wgOut->parse( $value );
+				$formatted = $wgOut->parse( $value );
+				break;
 			case 'afh_flags':
 				$flags = array_filter( explode( ',', $value ) );
 				$flags_display = array();
 				foreach( $flags as $flag ) {
 					$flags_display[] = wfMsg( "abusefilter-history-$flag" );
 				}
-				return implode( ', ', $flags_display );
+				$formatted = implode( ', ', $flags_display );
+				break;
 			case 'afh_pattern':
-				return htmlspecialchars( $wgLang->truncate( $value, 200, '...' ) );
+				$formatted = htmlspecialchars( $wgLang->truncate( $value, 200, '...' ) );
+				break;
 			case 'afh_comments':
-				return htmlspecialchars( $wgLang->truncate( $value, 200, '...' ) );
+				$formatted = htmlspecialchars( $wgLang->truncate( $value, 200, '...' ) );
+				break;
 			case 'afh_actions':
 				$actions = unserialize( $value );
 
@@ -128,21 +137,42 @@ class AbuseFilterHistoryPager extends TablePager {
 				}
 				$display_actions = Xml::tags( 'ul', null, $display_actions );
 
-				return $display_actions;
+				$formatted = $display_actions;
+				break;
 			case 'afh_filter':
-				$title = $this->getTitle( $value );
-				return $sk->link( $title, $value );
+				$title = $this->mPage->getTitle( strval($value) );
+				$formatted = $sk->link( $title, $value );
+				break;
+			default:
+				$formatted = "Unable to format $name";
+				break;
 		}
 
-		return "Unable to format name $name\n";
+		$mappings = array_flip(AbuseFilter::$history_mappings) + array( 'afh_actions' => 'actions' );
+		$changed = explode( ',', $row->afh_changed_fields );
+
+		$fieldChanged = false;
+		if ($name == 'afh_flags') {
+			// This is a bit freaky, but it works. Basically, returns true if any of those filters are in the $changed array.
+			if ( count( array_diff( array( 'af_enabled', 'af_hidden', 'af_deleted' ), $changed ) ) < 3 ) {
+				$fieldChanged = true;
+			}
+		} elseif ( in_array( $mappings[$name], $changed ) ) {
+			$fieldChanged = true;
+		}
+
+		if ($fieldChanged)
+			$formatted = Xml::tags( 'strong', array( 'class' => 'mw-abusefilter-history-changed' ), $formatted );
+
+		return $formatted;
 	}
 
 	function getQueryInfo() {
 		$info = array(
 			'tables' => 'abuse_filter_history',
 			'fields' => $this->mFilter ?
-				array( 'afh_timestamp', 'afh_user_text', 'afh_public_comments', 'afh_flags', 'afh_pattern', 'afh_comments', 'afh_actions', 'afh_id', 'afh_user' ) :
-				array( 'afh_filter', 'afh_timestamp', 'afh_user_text', 'afh_public_comments', 'afh_flags', 'afh_comments', 'afh_actions', 'afh_id', 'afh_user' ),
+				array( 'afh_timestamp', 'afh_user_text', 'afh_public_comments', 'afh_flags', 'afh_pattern', 'afh_comments', 'afh_actions', 'afh_id', 'afh_user', 'afh_changed_fields' ) :
+				array( 'afh_filter', 'afh_timestamp', 'afh_user_text', 'afh_public_comments', 'afh_flags', 'afh_comments', 'afh_actions', 'afh_id', 'afh_user', 'afh_changed_fields'),
 			'conds' => $this->mFilter ? array( 'afh_filter' => $this->mFilter ) : array(),
 		);
 

@@ -5,8 +5,6 @@ if (!defined( 'MEDIAWIKI' ))
 
 class AbuseFilterViewEdit extends AbuseFilterView {
 
-	static $history_mappings = array( 'af_pattern' => 'afh_pattern', 'af_user' => 'afh_user', 'af_user_text' => 'afh_user_text', 'af_timestamp' => 'afh_timestamp', 'af_comments' => 'afh_comments', 'af_public_comments' => 'afh_public_comments', 'af_deleted' => 'afh_deleted', 'af_id' => 'afh_filter' );
-
 	function __construct( $page, $params ) {
 		parent::__construct( $page, $params );
 		$this->mFilter = $page->mFilter;
@@ -34,7 +32,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			list ($newRow, $actions) = $this->loadRequest($filter);
 
-			$differences = $this->compareVersions( array($newRow, $actions), array( $newRow->mOriginalRow, $newRow->mOriginalActions ) );
+			$differences = AbuseFilter::compareVersions( array($newRow, $actions), array( $newRow->mOriginalRow, $newRow->mOriginalActions ) );
+
+			unset( $newRow->mOriginalRow );
+			unset( $newRow->mOriginalActions );
 
 			if (!count($differences)) {
 				$wgOut->redirect( $this->getTitle()->getLocalURL() );
@@ -90,7 +91,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// Create a history row
 			$afh_row = array();
 
-			foreach( self::$history_mappings as $af_col => $afh_col ) {
+			foreach( AbuseFilter::$history_mappings as $af_col => $afh_col ) {
 				$afh_row[$afh_col] = $newRow[$af_col];
 			}
 
@@ -100,6 +101,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$displayActions[$action['action']] = $action['parameters'];
 			}
 			$afh_row['afh_actions'] = serialize($displayActions);
+
+			$afh_row['afh_changed_fields'] = implode( ',', $differences );
 
 			// Flags
 			$flags = array();
@@ -367,40 +370,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		return array( $row, $actions );
 	}
 
-	/** Each version is expected to be an array( $row, $actions )
-	    Returns an array of fields that are different.*/
-	function compareVersions( $version_1, $version_2 ) {
-		$compareFields = array( 'af_public_comments', 'af_pattern', 'af_comments', 'af_deleted', 'af_enabled', 'af_hidden' );
-		$differences = array();
-
-		list($row1, $actions1) = $version_1;
-		list($row2, $actions2) = $version_2;
-
-		foreach( $compareFields as $field ) {
-			if ($row1->$field != $row2->$field) {
-				$differences[] = $field;
-			}
-		}
-
-		global $wgAbuseFilterAvailableActions;
-		foreach( $wgAbuseFilterAvailableActions as $action ) {
-			if ( !isset($actions1[$action]) && !isset( $actions2[$action] ) ) {
-				// They're both unset
-			} elseif ( isset($actions1[$action]) && isset( $actions2[$action] ) ) {
-				// They're both set.
-				if ( array_diff( $actions1[$action]['parameters'], $actions2[$action]['parameters'] ) ) {
-					// Different parameters
-					$differences[] = 'actions';
-				}
-			} else {
-				// One's unset, one's set.
-				$differences[] = 'actions';
-			}
-		}
-
-		return array_unique( $differences );
-	}
-
 	function loadRequest( $filter, $history_id = null ) {
 		static $row = null;
 		static $actions = null;
@@ -471,34 +440,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Load the row.
 		$row = $dbr->selectRow( 'abuse_filter_history', '*', array( 'afh_id' => $id ), __METHOD__ );
 
-		## Translate into an abuse_filter row with some black magic. This is ever so slightly evil!
-		$af_row = new StdClass;
-
-		foreach (self::$history_mappings as $af_col => $afh_col ) {
-			$af_row->$af_col = $row->$afh_col;
-		}
-
-		## Process flags
-
-		$af_row->af_deleted = 0;
-		$af_row->af_hidden = 0;
-		$af_row->af_enabled = 0;
-
-		$flags = explode(',', $row->afh_flags );
-		foreach( $flags as $flag ) {
-			$col_name = "af_$flag";
-			$af_row->$col_name = 1;
-		}
-
-		## Process actions
-		$actions_raw = unserialize($row->afh_actions);
-		$actions_output = array();
-
-		foreach( $actions_raw as $action => $parameters ) {
-			$actions_output[$action] = array( 'action' => $action, 'parameters' => $parameters );
-		}
-
-
-		return array( $af_row, $actions_output );
+		return AbuseFilter::translateFromHistory( $row );
 	}
 }

@@ -24,6 +24,9 @@ class SpecialAbuseFilter extends SpecialPage {
 		$wgOut->setRobotPolicy( "noindex,nofollow" );
 		$wgOut->setArticleRelated( false );
 		$wgOut->enableClientCache( false );
+
+		global $wgScriptPath;
+		$wgOut->addExtensionStyle( $wgScriptPath."/extensions/AbuseFilter/abusefilter.css" );
 		
 		// Are we allowed?
 		if ( !$wgUser->isAllowed( 'abusefilter-view' ) ) {

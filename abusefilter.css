@@ -19,3 +19,7 @@ table.mw-abuselog-details th {
 table.mw-abuselog-details caption {
 	font-weight: bold;
 }
+
+.mw-abusefilter-history-changed {
+	background: #ffe0e0;
+}
