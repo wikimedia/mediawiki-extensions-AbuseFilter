@@ -14,7 +14,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 		// Quick links
 		$wgOut->addWikiMsg( 'abusefilter-links' );
-		$lists = array( 'tools' );
+		$lists = array( 'tools', 'log' );
 		if ($this->canEdit())
 			$lists[] = 'new';
 		$links = '';

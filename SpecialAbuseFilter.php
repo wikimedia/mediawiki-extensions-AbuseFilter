@@ -45,9 +45,9 @@ class SpecialAbuseFilter extends SpecialPage {
 			$view = 'AbuseFilterViewTools';
 		}
 		
-		if (!empty($params[0]) && $params[0] == 'history') {
+		if (!empty($params[0]) && ($params[0] == 'history' || $params[0] == 'log') ) {
 			if (count($params) == 1) {
-				// ... useless?
+				$view = 'AbuseFilterViewHistory';
 			} elseif (count($params) == 2) {
 				## Second param is a filter ID
 				$view = 'AbuseFilterViewHistory';

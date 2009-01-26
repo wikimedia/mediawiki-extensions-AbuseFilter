@@ -16,16 +16,41 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		global $wgUser;
 
 		$filter = $this->mFilter;
-		
+
+		if ($filter)
+			$wgOut->setPageTitle( wfMsg( 'abusefilter-history', $filter ) );
+		else
+			$wgOut->setPageTitle( wfMsg( 'abusefilter-log' ) );
+			
 		$sk = $wgUser->getSkin();
-		$wgOut->setPageTitle( wfMsg( 'abusefilter-history', $filter ) );
-		$backToFilter_label = wfMsgExt( 'abusefilter-history-backedit', array('parseinline') );
-		$backToList_label = wfMsgExt( 'abusefilter-history-backlist', array('parseinline') );
-		$backlinks = $sk->makeKnownLinkObj( $this->getTitle( $filter ), $backToFilter_label ) . '&nbsp;&bull;&nbsp;' .
-				$sk->makeKnownLinkObj( $this->getTitle( ), $backToList_label );
+
+		$links = array();
+		if ($filter)
+			$links['abusefilter-history-backedit'] = $this->getTitle( $filter );
+		$links['abusefilter-history-backlist'] = $this->getTitle();
+
+		foreach( $links as $msg => $title ) {
+			$links[$msg] = $sk->link( $title, wfMsgExt( $msg, 'parseinline' ) );
+		}
+		
+		$backlinks = implode( '&nbsp;&bull;&nbsp;', $links );
 		$wgOut->addHTML( Xml::tags( 'p', null, $backlinks ) );
 
-		$pager = new AbuseFilterHistoryPager( $filter, $this );
+		$user = $wgRequest->getText( 'user' );
+		if ($user) {
+			$wgOut->setSubtitle( wfMsg( 'abusefilter-history-foruser', $sk->userLink( 1 /* We don't really need to get a user ID */, $user ) ) );
+		}
+
+		// Add filtering of changes et al.
+		$fields['abusefilter-history-select-user'] = wfInput( 'user', 45, $user );
+
+		$filterForm = Xml::buildForm( $fields, 'abusefilter-history-select-submit' );
+		$filterForm .= "\n" . Xml::hidden( 'title', $this->getTitle( "history/$filter" ) );
+		$filterForm = Xml::tags( 'form', array( 'action' => $this->getTitle( "history/$filter" )->getLocalURL(), 'method' => 'get' ), $filterForm );
+		$filterForm = Xml::fieldset( wfMsg( 'abusefilter-history-select-legend' ), $filterForm );
+		$wgOut->addHTML( $filterForm );
+
+		$pager = new AbuseFilterHistoryPager( $filter, $this, $user );
 		$table = $pager->getBody();
 
 		$wgOut->addHTML( $pager->getNavigationBar() . $table . $pager->getNavigationBar() );
@@ -34,9 +59,10 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 
 class AbuseFilterHistoryPager extends TablePager {
 
-	function __construct( $filter, $page ) {
+	function __construct( $filter, $page, $user ) {
 		$this->mFilter = $filter;
 		$this->mPage = $page;
+		$this->mUser = $user;
 		$this->mDefaultDirection = true;
 		parent::__construct();
 	}
@@ -50,6 +76,11 @@ class AbuseFilterHistoryPager extends TablePager {
 
 		$headers = array( 'afh_timestamp' => 'abusefilter-history-timestamp', 'afh_user_text' => 'abusefilter-history-user', 'afh_public_comments' => 'abusefilter-history-public',
 					'afh_flags' => 'abusefilter-history-flags', 'afh_pattern' => 'abusefilter-history-filter', 'afh_comments' => 'abusefilter-history-comments', 'afh_actions' => 'abusefilter-history-actions' );
+
+		if (!$this->mFilter) {
+			// awful hack
+			$headers = array( 'afh_filter' => 'abusefilter-history-filterid' ) + $headers;
+		}
 
 		$headers = array_map( 'wfMsg', $headers );
 
@@ -98,17 +129,29 @@ class AbuseFilterHistoryPager extends TablePager {
 				$display_actions = Xml::tags( 'ul', null, $display_actions );
 
 				return $display_actions;
+			case 'afh_filter':
+				$title = $this->getTitle( $value );
+				return $sk->link( $title, $value );
 		}
 
 		return "Unable to format name $name\n";
 	}
 
 	function getQueryInfo() {
-		return array(
+		$info = array(
 			'tables' => 'abuse_filter_history',
-			'fields' => array( 'afh_timestamp', 'afh_user_text', 'afh_public_comments', 'afh_flags', 'afh_pattern', 'afh_comments', 'afh_actions', 'afh_id', 'afh_user' ),
-			'conds' => array( 'afh_filter' => $this->mFilter ),
+			'fields' => $this->mFilter ?
+				array( 'afh_timestamp', 'afh_user_text', 'afh_public_comments', 'afh_flags', 'afh_pattern', 'afh_comments', 'afh_actions', 'afh_id', 'afh_user' ) :
+				array( 'afh_filter', 'afh_timestamp', 'afh_user_text', 'afh_public_comments', 'afh_flags', 'afh_comments', 'afh_actions', 'afh_id', 'afh_user' ),
+			'conds' => $this->mFilter ? array( 'afh_filter' => $this->mFilter ) : array(),
 		);
+
+		global $wgRequest;
+		if ($this->mUser) {
+			$info['conds']['afh_user_text'] = $this->mUser;
+		}
+		
+		return $info;
 	}
 
 	function getIndexField() {

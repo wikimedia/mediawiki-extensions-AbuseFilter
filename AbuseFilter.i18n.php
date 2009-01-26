@@ -230,7 +230,9 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Time email address was confirmed',
 
 	// Filter history
+	'abusefilter-log' => 'Recent filter changes',
 	'abusefilter-history' => 'History for filter $1',
+	'abusefilter-history-foruser' => 'Changes by $1',
 	'abusefilter-history-hidden' => 'hidden',
 	'abusefilter-history-enabled' => 'enabled',
 	'abusefilter-history-timestamp' => 'Time',
@@ -244,6 +246,10 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-history-backedit' => 'Back to filter editor',
 	'abusefilter-history-backlist' => 'Back to filter list',
 	'abusefilter-history-deleted' => 'Deleted',
+	'abusefilter-history-filterid' => 'Filter',
+	'abusefilter-history-select-legend' => 'Refine search',
+	'abusefilter-history-select-user' => 'User:',
+	'abusefilter-history-select-submit' => 'Refine',
 );
 
 /** Message documentation (Message documentation)
