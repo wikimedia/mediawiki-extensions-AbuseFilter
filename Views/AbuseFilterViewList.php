@@ -14,7 +14,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 		// Quick links
 		$wgOut->addWikiMsg( 'abusefilter-links' );
-		$lists = array( 'tools', 'log' );
+		$lists = array( 'tools' );
 		if ($this->canEdit())
 			$lists[] = 'new';
 		$links = '';
@@ -26,6 +26,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$links .= Xml::tags( 'li', null, $link ) . "\n";
 		}
 		$links .= Xml::tags( 'li', null, $sk->link( SpecialPage::getTitleFor( 'AbuseLog' ), wfMsg( 'abusefilter-loglink' ) ) );
+		$links .= Xml::tags( 'li', null, $sk->link( $this->getTitle( 'history' ), wfMsg( 'abusefilter-filter-log' ) ) );
 		$links = Xml::tags( 'ul', null, $links );
 		$wgOut->addHTML( $links );
 
