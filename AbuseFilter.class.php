@@ -390,6 +390,11 @@ class AbuseFilter {
 
 					$display .= wfMsgNoTrans( 'abusefilter-degrouped', $rule_desc ) ."<br />\n";
 
+					// Don't log it if there aren't any groups being removed!
+					if (!count($groups)) {
+						break;
+					}
+					
 					// Log it.
 					$log = new LogPage( 'rights' );
 
