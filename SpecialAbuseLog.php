@@ -19,6 +19,9 @@ class SpecialAbuseLog extends SpecialPage {
 		$wgOut->setRobotPolicy( "noindex,nofollow" );
 		$wgOut->setArticleRelated( false );
 		$wgOut->enableClientCache( false );
+
+		global $wgScriptPath;
+		$wgOut->addExtensionStyle( $wgScriptPath."/extensions/AbuseFilter/abusefilter.css" );
 		
 		// Are we allowed?
 		if ( count( $errors = $this->getTitle()->getUserPermissionsErrors( 'abusefilter-log', $wgUser, true, array( 'ns-specialprotected' ) ) ) ) {
@@ -98,6 +101,11 @@ class SpecialAbuseLog extends SpecialPage {
 		if (!$this->canSeeDetails()) {
 			return;
 		}
+
+		// I don't want to change the names of the pre-existing messages
+		// describing the variables, nor do I want to rewrite them, so I'm just
+		// mapping the variable names to builder messages with a pre-existing array.
+		$variableMessageMappings = array( 'ACCOUNTNAME' => 'accountname', 'ACTION' => 'action', 'ADDED_LINES' => 'addedlines', 'EDIT_DELTA' => 'delta', 'EDIT_DIFF' => 'diff', 'NEW_SIZE' => 'newsize', 'OLD_SIZE' => 'oldsize', 'REMOVED_LINES' => 'removedlines', 'SUMMARY' => 'summary', 'ARTICLE_ARTICLEID' => 'article-id', 'ARTICLE_NAMESPACE' => 'article-ns', 'ARTICLE_TEXT' => 'article-text', 'ARTICLE_PREFIXEDTEXT' => 'article-prefixedtext', 'MOVED_FROM_ARTICLEID' => 'movedfrom-id', 'MOVED_FROM_NAMESPACE' => 'movedfrom-ns', 'MOVED_FROM_TEXT' => 'movedfrom-text', 'MOVED_FROM_PREFIXEDTEXT' => 'movedfrom-prefixedtext', 'MOVED_TO_ARTICLEID' => 'movedto-id', 'MOVED_TO_NAMESPACE' => 'movedto-ns', 'MOVED_TO_TEXT' => 'movedto-text', 'MOVED_TO_PREFIXEDTEXT' => 'movedto-prefixedtext', 'USER_EDITCOUNT' =>  'user-editcount', 'USER_AGE' => 'user-age', 'USER_NAME' => 'user-name', 'USER_GROUPS' => 'user-groups', 'USER_EMAILCONFIRM' => 'user-emailconfirm', 'ARTICLE_RECENT_CONTRIBUTORS' => 'recent-contributors', 'ALL_LINKS' => 'all-links', 'ADDED_LINKS' => 'added-links', 'REMOVED_LINKS' => 'removed-links');
 		
 		$dbr = wfGetDB( DB_SLAVE );
 		
@@ -115,14 +123,21 @@ class SpecialAbuseLog extends SpecialPage {
 		// Build a table.
 		$vars = unserialize( $row->afl_var_dump );
 		
-		$output .= Xml::openElement( 'table', array( 'class' => 'wikitable mw-abuselog-details', 'style' => "width: 80%;" ) ) . Xml::openElement( 'tbody' );
+		$output .= Xml::openElement( 'table', array( 'class' => 'mw-abuselog-details', 'style' => "width: 80%;" ) ) . Xml::openElement( 'tbody' );
 		
 		$header = Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-var' ) ) . Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-val' ) );
 		$output .= Xml::tags( 'tr', null, $header );
 		
 		// Now, build the body of the table.
 		foreach( $vars as $key => $value ) {
-			$trow = Xml::element( 'td', array( 'class' => 'mw-abuselog-var', 'style' => 'width: 30%;' ), $key ) . Xml::element( 'td', array( 'class' => 'mw-abuselog-var-value', 'style' => "white-space: pre; font-family: monospace;" ), $value );
+			if ( !empty($variableMessageMappings[$key]) ) {
+				$mapping = $variableMessageMappings[$key];
+				$keyDisplay = wfMsgExt( "abusefilter-edit-builder-vars-$mapping", 'parseinline' ) . ' (' . Xml::element( 'tt', null, $key ) . ')';
+			} else {
+				$keyDisplay = Xml::element( 'tt', null, $key );
+			}
+			
+			$trow = Xml::tags( 'td', array( 'class' => 'mw-abuselog-var', 'style' => 'width: 30%;' ), $keyDisplay ) . Xml::element( 'td', array( 'class' => 'mw-abuselog-var-value', 'style' => "white-space: pre; font-family: monospace;" ), $value );
 			$output .= Xml::tags( 'tr', array( 'class' => "mw-abuselog-details-$key" ), $trow );
 		}
 		

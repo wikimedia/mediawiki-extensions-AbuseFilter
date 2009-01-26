@@ -1,0 +1,21 @@
+/* This code was stolen shamelessly from enwikipedia's Common.css */
+table.mw-abuselog-details {
+	margin: 1em 1em 1em 0;
+	background: #f9f9f9;
+	border: 1px #aaa solid;
+	border-collapse: collapse;
+}
+
+table.mw-abuselog-details th, table.mw-abuselog-details td {
+	border: 1px #aaa solid;
+	padding: 0.2em;
+}
+
+table.mw-abuselog-details th {
+	background: #f2f2f2;
+	text-align: center;
+}
+
+table.mw-abuselog-details caption {
+	font-weight: bold;
+}

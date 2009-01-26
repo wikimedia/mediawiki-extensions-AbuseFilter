@@ -20,7 +20,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		if ($filter)
 			$wgOut->setPageTitle( wfMsg( 'abusefilter-history', $filter ) );
 		else
-			$wgOut->setPageTitle( wfMsg( 'abusefilter-log' ) );
+			$wgOut->setPageTitle( wfMsg( 'abusefilter-filter-log' ) );
 			
 		$sk = $wgUser->getSkin();
 
