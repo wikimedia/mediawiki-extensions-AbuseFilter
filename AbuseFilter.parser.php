@@ -777,7 +777,7 @@ class AbuseFilterParser {
 				$code = substr( $code, 1 );
 			}
 			if( !in_array( $tok, self::$mOps ) )
-			throw new AFPUserVisibleException( 'invalidoperator', $this->mCur->pos, array($tok) );
+			throw new AFPUserVisibleException( 'invalidoperator', $pos, array($tok) );
 			return array( $tok, AFPToken::TOp, $code, $pos );
 		}
 		
@@ -790,7 +790,7 @@ class AbuseFilterParser {
 			return array( $tok, $type, $code, $pos );
 		}
 		
-		throw new AFPUserVisibleException( 'unrecognisedtoken', $this->mCur->pos, array($code[0]) );;
+		throw new AFPUserVisibleException( 'unrecognisedtoken', $pos, array($code[0]) );;
 	}
 	
 	protected static function isDigitOrDot( $chr ) {
