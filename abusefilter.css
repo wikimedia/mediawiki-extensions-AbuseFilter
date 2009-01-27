@@ -23,3 +23,8 @@ table.mw-abuselog-details caption {
 .mw-abusefilter-history-changed {
 	background: #ffe0e0;
 }
+
+.mw-abuselog-var-value {
+	overflow: auto;
+	max-height: 10em;
+}

@@ -26,6 +26,9 @@ class AbuseFilterHooks {
 		$diff = trim( str_replace( '\No newline at end of file', '', $diff ) );
 		$vars['EDIT_DIFF'] = $diff;
 		$vars['NEW_SIZE'] = strlen($new_text);
+
+		$vars['OLD_TEXT'] = $old_text;
+		$vars['NEW_TEXT'] = $new_text;
 		
 		// Some more specific/useful details about the changes.
 		$diff_lines = explode( "\n", $diff );

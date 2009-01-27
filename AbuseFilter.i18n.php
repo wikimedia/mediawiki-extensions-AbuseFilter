@@ -232,6 +232,8 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-edit-builder-vars-all-links' => 'All external links in the new text',
 	'abusefilter-edit-builder-vars-added-links' => 'All external links added in the edit',
 	'abusefilter-edit-builder-vars-removed-links' => 'All external links removed in the edit',
+	'abusefilter-edit-builder-vars-old-text' => 'Old article text, before the edit',
+	'abusefilter-edit-builder-vars-new-text' => 'New article text, after the edit',
 
 	// Filter history
 	'abusefilter-filter-log' => 'Recent filter changes',
