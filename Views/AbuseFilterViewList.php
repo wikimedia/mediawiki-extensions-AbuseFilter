@@ -127,7 +127,7 @@ class AbuseFilterPager extends TablePager {
 		#$this->mConds[] = 'afa_filter=af_id';
 		$abuse_filter = $dbr->tableName( 'abuse_filter' );
 		return array( 'tables' => array('abuse_filter', 'abuse_filter_action'),
-			'fields' => array( 'af_id', '(af_enabled | af_deleted << 1) AS status', 'af_public_comments', 'af_hidden', 'af_hit_count', 'af_timestamp', 'af_user_text', 'af_user', 'group_concat(afa_consequence) AS consequences' ),
+			'fields' => array( 'af_id', '(af_enabled | af_deleted << 1) AS status', 'af_public_comments', 'af_hidden', 'af_hit_count', 'af_timestamp', 'af_user_text', 'af_user', /*'group_concat(afa_consequence) AS consequences'*/ ),
 			'conds' => $this->mConds,
 			'options' => array( 'GROUP BY' => 'af_id' ),
 			'join_conds' => array( 'abuse_filter_action' => array( 'LEFT JOIN', 'afa_filter=af_id' ) ) );
@@ -144,7 +144,7 @@ class AbuseFilterPager extends TablePager {
 			return $headers;
 		}
 
-		$headers = array( 'af_id' => 'abusefilter-list-id', 'af_public_comments' => 'abusefilter-list-public', 'consequences' => 'abusefilter-list-consequences', 'status' => 'abusefilter-list-status', 'af_timestamp' => 'abusefilter-list-lastmodified', 'af_hidden' => 'abusefilter-list-visibility', 'af_hit_count' => 'abusefilter-list-hitcount' );
+		$headers = array( 'af_id' => 'abusefilter-list-id', 'af_public_comments' => 'abusefilter-list-public', /*'consequences' => 'abusefilter-list-consequences',*/ 'status' => 'abusefilter-list-status', 'af_timestamp' => 'abusefilter-list-lastmodified', 'af_hidden' => 'abusefilter-list-visibility', 'af_hit_count' => 'abusefilter-list-hitcount' );
 
 		$headers = array_map( 'wfMsg', $headers );
 
