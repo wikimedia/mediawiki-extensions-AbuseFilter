@@ -192,14 +192,19 @@ class AbuseFilter {
 	public static function executeFilterActions( $filters, $title, $vars ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		// Retrieve the consequences.
-		$res = $dbr->select( 'abuse_filter_action', '*', array( 'afa_filter' => $filters ), __METHOD__ );
+		$res = $dbr->select( array('abuse_filter_action', 'abuse_filter'), '*', array( 'af_id' => $filters ), __METHOD__, array(), array( 'abuse_filter_action' => array('LEFT JOIN', 'afa_filter=af_id') ) );
 
 		$actionsByFilter = array_fill_keys( $filters, array() );
 		$actionsTaken = array_fill_keys( $filters, array() );
 
 		// Categorise consequences by filter.
+		global $wgAbuseFilterRestrictedActions;
 		while ( $row = $dbr->fetchObject( $res ) ) {
-			$actionsByFilter[$row->afa_filter][$row->afa_consequence] = array( 'action' => $row->afa_consequence, 'parameters' => explode( "\n", $row->afa_parameters ) );
+			if ( $row->af_throttled && in_array( $row->afa_consequence, $wgAbuseFilterRestrictedActions ) ) {
+				## Don't do the action
+			} else {
+				$actionsByFilter[$row->afa_filter][$row->afa_consequence] = array( 'action' => $row->afa_consequence, 'parameters' => explode( "\n", $row->afa_parameters ) );
+			}
 		}
 
 		wfLoadExtensionMessages( 'AbuseFilter' );
@@ -560,7 +565,7 @@ class AbuseFilter {
 			return; // The rest will only apply if a filter was triggered.
 		}
 
-		self::checkEmergencyDisable( $filters );
+		self::checkEmergencyDisable( $filters, $total );
 
 		// Increment trigger counter
 		if ($filter_triggered) {
@@ -573,7 +578,7 @@ class AbuseFilter {
 		$dbw->update( 'abuse_filter', array( 'af_hit_count=af_hit_count+1' ), array( 'af_id' => array_keys( array_filter( $filters ) ) ), __METHOD__ );
 	}
 
-	public static function checkEmergencyDisable( $filters ) {
+	public static function checkEmergencyDisable( $filters, $total ) {
 		global $wgAbuseFilterEmergencyDisableThreshold, $wgAbuseFilterEmergencyDisableCount, $wgAbuseFilterEmergencyDisableAge, $wgMemc;
 
 		foreach( $filters as $filter => $matched ) {
@@ -593,10 +598,10 @@ class AbuseFilter {
 				$filter_age = wfTimestamp( TS_UNIX, self::$filters[$filter]->af_timestamp );
 				$throttle_exempt_time = $filter_age + $wgAbuseFilterEmergencyDisableAge;
 
-				if ($throttle_exempt_time > time() && $matchCount > $wgAbuseFilterEmergencyDisableCount && ($matchCount / $total) > $wgAbuseFilterEmergencyDisableThreshold) {
+				if ($total && $throttle_exempt_time > time() && $matchCount > $wgAbuseFilterEmergencyDisableCount && ($matchCount / $total) > $wgAbuseFilterEmergencyDisableThreshold) {
 					// More than $wgAbuseFilterEmergencyDisableCount matches, constituting more than $wgAbuseFilterEmergencyDisableThreshold (a fraction) of last few edits. Disable it.
 					$dbw = wfGetDB( DB_MASTER );
-					$dbw->update( 'abuse_filter', array( 'af_enabled' => 0, 'af_throttled' => 1 ), array( 'af_id' => $filter ), __METHOD__ );
+					$dbw->update( 'abuse_filter', array( 'af_throttled' => 1 ), array( 'af_id' => $filter ), __METHOD__ );
 				}
 			}
 		}

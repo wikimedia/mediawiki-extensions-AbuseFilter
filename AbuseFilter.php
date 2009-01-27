@@ -84,3 +84,4 @@ $wgAjaxExportList[] = 'AbuseFilter::ajaxReAutoconfirm';
 $wgAbuseFilterStyleVersion = 2;
 
 $wgAbuseFilterRestrictedActions = array( 'block', 'degroup' );
+
