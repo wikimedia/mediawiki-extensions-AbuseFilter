@@ -2828,6 +2828,13 @@ $messages['he'] = array(
 	'abusefilter-exception-unrecognisedtoken' => 'סימן בלתי מזוהה "$2" בתו מספר $1.',
 	'abusefilter-exception-noparams' => 'לא ניתנו פרמטרים לפונקציה "$2" בתו מספר $1.',
 	'abusefilter-exception-dividebyzero' => 'ניסיון בלתי חוקי לחלק את $2 באפס.',
+	'abusefilter-action-throttle' => 'הגבלת תדירות פעולה',
+	'abusefilter-action-warn' => 'אזהרה',
+	'abusefilter-action-blockautopromote' => 'ביטול שיוך אוטומטי לקבוצות',
+	'abusefilter-action-block' => 'חסימה',
+	'abusefilter-action-degroup' => 'הסרה מקבוצות',
+	'abusefilter-action-rangeblock' => 'חסימת טווח',
+	'abusefilter-action-disallow' => 'מניעת פעולה',
 );
 
 /** Hindi (हिन्दी)
