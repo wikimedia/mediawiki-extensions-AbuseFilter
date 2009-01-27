@@ -13,6 +13,7 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter (
 	af_hit_count bigint not null default 0,
 	af_throttled tinyint(1) NOT NULL default 0,
 	af_deleted tinyint(1) NOT NULL DEFAULT 0,
+	af_actions varchar(255) NOT NULL DEFAULT '',
 	
 	PRIMARY KEY (af_id),
 	KEY (af_user)

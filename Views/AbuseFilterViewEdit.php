@@ -431,6 +431,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 		}
 
+		$row->af_actions = implode( ',', array_keys( array_filter( $actions ) ) );
+
 		return array( $row, $actions );
 	}
 
