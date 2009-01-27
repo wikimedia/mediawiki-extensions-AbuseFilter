@@ -2,6 +2,7 @@ function doSyntaxCheck()
 {
 	var filter = document.getElementById(wgFilterBoxName).value;
 	injectSpinner( document.getElementById( 'mw-abusefilter-syntaxcheck' ), 'abusefilter-syntaxcheck' );
+	document.getElementById( 'mw-abusefilter-syntaxcheck' ).disabled = true;
 	sajax_do_call( 'AbuseFilter::ajaxCheckSyntax', [filter], processSyntaxResult );
 }
 
@@ -9,6 +10,7 @@ function processSyntaxResult( request ) {
 	var response = request.responseText;
 	
 	removeSpinner( 'abusefilter-syntaxcheck' );
+	document.getElementById( 'mw-abusefilter-syntaxcheck' ).disabled = false;
 
 	var el = document.getElementById( 'mw-abusefilter-syntaxresult' );
 	el.style.display = 'block';
