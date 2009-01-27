@@ -46,7 +46,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			// Check for restricted actions
 			global $wgAbuseFilterRestrictedActions;
-			if ( count( array_intersect( $wgAbuseFilterRestrictedActions, array_keys( array_filter( $actions ) ) ) ) ) {
+			if ( count( array_intersect( $wgAbuseFilterRestrictedActions, array_keys( array_filter( $actions ) ) ) ) &&
+				!$wgUser->isAllowed( 'abusefilter-modify-restricted' ) ) {
 				$wgOut->addHTML( $this->buildFilterEditor( wfMsgExt( 'abusefilter-edit-restricted', 'parse' ), $this->mFilter, $history_id ) );
 				return;
 			}

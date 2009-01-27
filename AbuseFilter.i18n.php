@@ -53,6 +53,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	'right-abusefilter-log' => 'View the abuse log',
 	'right-abusefilter-log-detail' => 'View detailed abuse log entries',
 	'right-abusefilter-private' => 'View private data in the abuse log',
+	'right-abusefilter-modify-restricted' => 'Modify filters with restricted actions',
 
 	// Abuse Log
 	'abusefilter-log' => 'Abuse filter log',
