@@ -556,6 +556,10 @@ class AbuseFilter {
 			$wgMemc->incr( $overflow_key );
 		}
 
+		if (!$filter_triggered) {
+			return; // The rest will only apply if a filter was triggered.
+		}
+
 		self::checkEmergencyDisable( $filters );
 
 		// Increment trigger counter
