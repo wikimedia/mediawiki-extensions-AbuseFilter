@@ -668,7 +668,7 @@ class AbuseFilter {
 			$builder .= Xml::closeElement( 'optgroup' ) . "\n";
 		}
 
-		$rules .= Xml::tags( 'select', array( 'id' => 'wpFilterBuilder', 'onchange' => 'addText();' ), $builder );
+		$rules .= Xml::tags( 'select', array( 'id' => 'wpFilterBuilder', 'onchange' => 'addText();' ), $builder ) . ' ';
 
 		// Add syntax checking
 		$rules .= Xml::element( 'input', array( 'type' => 'button', 'onclick' => 'doSyntaxCheck()', 'value' => wfMsg( 'abusefilter-edit-check' ), 'id' => 'mw-abusefilter-syntaxcheck' ) );

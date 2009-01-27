@@ -10,7 +10,7 @@ class SpecialAbuseLog extends SpecialPage {
 	}
 	
 	function execute( $parameter ) {
-		global $wgUser,$wgOut,$wgRequest;
+		global $wgUser,$wgOut,$wgRequest, $wgAbuseFilterStyleVersion;
 
 		$this->setHeaders();
 		$this->loadParameters();
@@ -21,8 +21,8 @@ class SpecialAbuseLog extends SpecialPage {
 		$wgOut->enableClientCache( false );
 
 		global $wgScriptPath;
-		$wgOut->addExtensionStyle( $wgScriptPath."/extensions/AbuseFilter/abusefilter.css" );
-		
+		$wgOut->addExtensionStyle( $wgScriptPath . "/extensions/AbuseFilter/abusefilter.css?$wgAbuseFilterStyleVersion" );
+
 		// Are we allowed?
 		if ( count( $errors = $this->getTitle()->getUserPermissionsErrors( 'abusefilter-log', $wgUser, true, array( 'ns-specialprotected' ) ) ) ) {
 			// Go away.
