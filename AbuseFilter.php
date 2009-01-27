@@ -61,8 +61,6 @@ $wgAvailableRights[] = 'abusefilter-modify-restricted';
 
 $wgAbuseFilterAvailableActions = array( 'flag', 'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'degroup', /* Disabled because it's ridiculously excessive 'rangeblock'*/ /*, 'tag' Disabled for now to avoid trunk changes. */ );
 
-// Conditions take about 4ms to check, so 100 conditions would take 400ms
-// Currently, has no effect.
 $wgAbuseFilterConditionLimit = 1000;
 
 // Disable filters if they match more than X edits, constituting more than Y% of the last Z edits, if they have been changed in the last S seconds
