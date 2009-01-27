@@ -25,7 +25,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// Check syntax
 			$syntaxerr = AbuseFilter::checkSyntax( $wgRequest->getVal( 'wpFilterRules' ) );
 			if ($syntaxerr !== true ) {
-				$wgOut->addHTML( $this->buildFilterEditor( wfMsgExt( 'abusefilter-edit-badsyntax', array( 'parseinline' ), array( $syntaxerr ) ), $filter, $history_id ) );
+				$wgOut->addHTML( $this->buildFilterEditor( wfMsgExt( 'abusefilter-edit-badsyntax', array( 'parse' ), array( $syntaxerr ) ), $filter, $history_id ) );
+				return;
 			}
 
 			$dbw = wfGetDB( DB_MASTER );
@@ -37,8 +38,16 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			unset( $newRow->mOriginalRow );
 			unset( $newRow->mOriginalActions );
 
+			// Check for non-changes
 			if (!count($differences)) {
 				$wgOut->redirect( $this->getTitle()->getLocalURL() );
+				return;
+			}
+
+			// Check for restricted actions
+			global $wgAbuseFilterRestrictedActions;
+			if ( count( array_intersect( $wgAbuseFilterRestrictedActions, array_keys( array_filter( $actions ) ) ) ) ) {
+				$wgOut->addHTML( $this->buildFilterEditor( wfMsgExt( 'abusefilter-edit-restricted', 'parse' ), $this->mFilter, $history_id ) );
 				return;
 			}
 

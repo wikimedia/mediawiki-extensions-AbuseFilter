@@ -57,8 +57,9 @@ $wgAvailableRights[] = 'abusefilter-log-detail';
 $wgAvailableRights[] = 'abusefilter-view';
 $wgAvailableRights[] = 'abusefilter-log';
 $wgAvailableRights[] = 'abusefilter-private';
+$wgAvailableRights[] = 'abusefilter-modify-restricted';
 
-$wgAbuseFilterAvailableActions = array( 'flag', 'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'degroup', 'rangeblock' /*, 'tag' Disabled for now to avoid trunk changes. */ );
+$wgAbuseFilterAvailableActions = array( 'flag', 'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'degroup', /* Disabled because it's ridiculously excessive 'rangeblock'*/ /*, 'tag' Disabled for now to avoid trunk changes. */ );
 
 // Conditions take about 4ms to check, so 100 conditions would take 400ms
 // Currently, has no effect.
@@ -81,3 +82,5 @@ $wgAjaxExportList[] = 'AbuseFilter::ajaxReAutoconfirm';
 
 // Bump the version number every time you change any of the .css/.js files
 $wgAbuseFilterStyleVersion = 2;
+
+$wgAbuseFilterRestrictedActions = array( 'block', 'degroup' );
