@@ -546,8 +546,6 @@ class AbuseFilter {
 				$wgMemc->set( self::filterMatchesKey( $filter ), 0, $storage_period );
 			}
 			$wgMemc->set( self::filterMatchesKey(), 0, $storage_period );
-			
-			return;
 		}
 
 		// Increment total

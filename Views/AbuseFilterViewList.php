@@ -9,7 +9,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 		$sk = $wgUser->getSkin();
 		
-		// Show list of filters.
+		// Status info...
 		$this->showStatus();
 
 		// Quick links
