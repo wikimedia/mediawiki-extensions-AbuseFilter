@@ -162,7 +162,7 @@ class AbuseFilterHistoryPager extends TablePager {
 		}
 
 		if ($fieldChanged)
-			$formatted = Xml::tags( 'strong', array( 'class' => 'mw-abusefilter-history-changed' ), $formatted );
+			$formatted = Xml::tags( 'div', array( 'class' => 'mw-abusefilter-history-changed' ), $formatted );
 
 		return $formatted;
 	}
