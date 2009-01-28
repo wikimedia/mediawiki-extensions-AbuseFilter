@@ -284,17 +284,17 @@ A brief description of the abuse rule which your action matched is: $1",
 
 	// Revert interface
 	'abusefilter-revert-title' => 'Revert all changes by filter $1',
-	'abusefilter-revert-intro' => 'This form allows you to revert all changes by filter $1. Please exercise care in using this tool.',
+	'abusefilter-revert-intro' => 'This form allows you to revert all changes made by the abuse filter due to filter $1. Please exercise care in using this tool.',
 	'abusefilter-revert-preview-item' => '$1: $2 made a $3 on $4. Actions to be reverted: $5 ($6)',
-	'abusefilter-revert-search-legend' => 'Select actions to be reverted',
+	'abusefilter-revert-search-legend' => 'Select abuse filter actions to be reverted',
 	'abusefilter-revert-periodstart' => 'Period start:',
 	'abusefilter-revert-periodend' => 'Period end:',
 	'abusefilter-revert-search' => 'Select actions',
 	'abusefilter-revert-filter' => 'Filter:',
-	'abusefilter-revert-preview-intro' => 'Below are the changes that will be reverted by this action. Please check them carefully, and click "confirm" to confirm your selection.',
+	'abusefilter-revert-preview-intro' => 'Below are the actions taken by the abuse filter that will be reverted by this action. Please check them carefully, and click "confirm" to confirm your selection.',
 	'abusefilter-revert-confirm' => 'Confirm',
-	'abusefilter-revert-success' => 'You have successfully reverted all actions taken due to [[Special:AbuseFilter/$1|filter $1]].',
-	'abusefilter-revert-reason' => 'Automatic revert of all actions taken due to filter $1. Reason given: $2',
+	'abusefilter-revert-success' => 'You have successfully reverted all actions taken by the abuse filter due to [[Special:AbuseFilter/$1|filter $1]].',
+	'abusefilter-revert-reason' => 'Automatic revert of all actions taken by the abuse filter due to filter $1. Reason given: $2',
 	'abusefilter-revert-reasonfield' => 'Reason for revert:',
 );
 
