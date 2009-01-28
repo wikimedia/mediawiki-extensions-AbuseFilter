@@ -66,6 +66,12 @@ $aliases['gsw'] = array(
 	'AbuseFilter' => array( 'Missbruchsfilter' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'AbuseLog' => array( 'Vandálszűrő-napló' ),
+	'AbuseFilter' => array( 'Vandálszűrő' ),
+);
+
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
 	'AbuseLog' => array( 'RegistroDeAbusos' ),
