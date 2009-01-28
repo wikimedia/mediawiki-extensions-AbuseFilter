@@ -19,44 +19,11 @@ class AbuseFilterHooks {
 		
 		$old_text = $editor->getBaseRevision() ? $editor->getBaseRevision()->getText() : '';
 		$new_text = $editor->textbox1;
-		
-		$vars['EDIT_DELTA'] = strlen($new_text) - strlen($old_text);
-		$vars['OLD_SIZE'] = strlen($old_text);
-		$diff = wfDiff( $old_text, $new_text );
-		$diff = trim( str_replace( '\No newline at end of file', '', $diff ) );
-		$vars['EDIT_DIFF'] = $diff;
-		$vars['NEW_SIZE'] = strlen($new_text);
-
-		$vars['OLD_WIKITEXT'] = $old_text;
-		$vars['NEW_WIKITEXT'] = $new_text;
-		
-		// Some more specific/useful details about the changes.
-		$diff_lines = explode( "\n", $diff );
-		$added_lines = array();
-		$removed_lines = array();
-		foreach( $diff_lines as $line ) {
-			if (strpos( $line, '-' )===0) {
-				$removed_lines[] = substr($line,1);
-			} elseif (strpos( $line, '+' )===0) {
-				$added_lines[] = substr($line,1);
-			}
-		}
-		$vars['ADDED_LINES'] = implode( "\n", $added_lines );
-		$vars['REMOVED_LINES'] = implode( "\n", $removed_lines );
-		
-		// Added links...
 		$oldLinks = self::getOldLinks( $editor->mTitle );
-		$editInfo = $editor->mArticle->prepareTextForEdit( $text );
-		$newLinks = array_keys( $editInfo->output->getExternalLinks() );
-		$vars['ALL_LINKS'] = implode( "\n", $newLinks );
-		$vars['ADDED_LINKS'] = implode( "\n", array_diff( $newLinks, array_intersect( $newLinks, $oldLinks ) ) );
-		$vars['REMOVED_LINKS'] = implode( "\n", array_diff( $oldLinks, array_intersect( $newLinks, $oldLinks ) ) );
 
-		// Pull other useful stuff from $editInfo.
-		$newHTML = $vars['NEW_HTML'] = $editInfo->output->getText();
-		$newText = $vars['NEW_TEXT'] = preg_replace( '/<[^>]+>/', '', $newHTML );
+		$vars = array_merge( $vars, AbuseFilter::getEditVars( $editor->mTitle, $old_text, $new_text, $oldLinks ) );
 
-		$filter_result = AbuseFilter::filterAction( $vars, $editor->mTitle );
+		$filter_result = AbuseFilter::filterAction( $vars, $editor->mTitle, $oldLinks );
 
 		if( $filter_result !== true ){
 			$error = $filter_result;

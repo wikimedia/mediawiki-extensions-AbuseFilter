@@ -52,6 +52,22 @@ class AbuseFilter {
 		}
 	}
 
+	public static function ajaxGetFilter( $filter ) {
+		global $wgUser;
+		if ( !$wgUser->isAllowed( 'abusefilter-view' ) ) {
+			return false;
+		}
+
+		$dbr = wfGetDB( DB_SLAVE );
+		$row = $dbr->selectRow( 'abuse_filter', '*', array( 'af_id' => $filter ), __METHOD__ );
+
+		if ( $row->af_hidden && !$wgUser->isAllowed( 'abusefilter-modify' ) ) {
+			return false;
+		}
+
+		return strval($row->af_pattern);
+	}
+
 	public static function triggerLimiter( $val = 1 ) {
 		self::$condCount += $val;
 
@@ -758,5 +774,112 @@ class AbuseFilter {
 		$display = wfMsg( "abusefilter-action-$action" );
 		$display = wfEmptyMsg( "abusefilter-action-$action", $display ) ? $action : $display;
 		return $display;
+	}
+
+	public static function getVarsFromRCRow( $row ) {
+		if ($row->rc_this_oldid) {
+			// It's an edit.
+			return self::getEditVarsFromRCRow( $row );
+		} elseif ( $row->rc_log_type == 'move' ) {
+			return self::getMoveVarsFromRCRow( $row );
+		} elseif ( $row->rc_log_type == 'newusers' ) {
+			return self::getCreateVarsFromRCRow( $row );
+		}
+	}
+
+	public static function getCreateVarsFromRCRow( $row ) {
+		$vars = array('ACTION' => 'createaccount');
+		$vars['USER_NAME'] = $vars['ACCOUNTNAME'] = Title::makeTitle( $row->rc_namespace, $row->rc_title )->getText();
+		return $vars;
+	}
+
+	public static function getEditVarsFromRCRow( $row ) {
+		$vars = array();
+		$title = Title::makeTitle( $row->rc_namespace, $row->rc_title );
+		
+		$vars = array_merge( $vars, self::generateUserVars( User::newFromId( $row->rc_user ) ) );
+		$vars = array_merge( $vars, self::generateTitleVars( $title, 'ARTICLE_' ) );
+		$vars['ACTION'] = 'edit';
+		$vars['SUMMARY'] = $row->rc_comment;
+
+		$newRev = Revision::newFromId( $row->rc_this_oldid );
+		$new_text = $newRev->getText();
+
+		if ($row->rc_last_oldid) {
+			$oldRev = Revision::newFromId( $row->rc_last_oldid );
+			$old_text = $oldRev->getText();
+		} else {
+			$old_text = '';
+		}
+
+		$vars = array_merge( $vars, self::getEditVars( $title, $old_text, $new_text, null, $row->rc_this_oldid, $row->rc_last_oldid ) );
+
+		return $vars;
+	}
+
+	public static function getMoveVarsFromRCRow( $row ) {
+		$vars = array();
+		
+		$user = User::newFromId( $row->rc_user );
+		$oldTitle = Title::makeTitle( $row->rc_namespace, $row->rc_title );
+		$newTitle = Title::newFromText( trim($row->rc_params) );
+		
+		$vars = array_merge( $vars, AbuseFilter::generateUserVars( $user ),
+			AbuseFilter::generateTitleVars( $oldTitle, 'MOVED_FROM' ),
+			AbuseFilter::generateTitleVars( $newTitle, 'MOVED_TO' ) );
+
+		$vars['SUMMARY'] = $row->rc_comment;
+		$vars['ACTION'] = 'move';
+
+		return $vars;
+	}
+
+	public static function getEditVars( $title, $old_text, $new_text, $oldLinks = null, $revid=null, $oldid=null ) {
+		$vars = array();
+		$article = new Article( $title );
+
+		$vars['EDIT_DELTA'] = strlen($new_text) - strlen($old_text);
+		$vars['OLD_SIZE'] = strlen($old_text);
+		$diff = wfDiff( $old_text, $new_text );
+		$diff = trim( str_replace( '\No newline at end of file', '', $diff ) );
+		$vars['EDIT_DIFF'] = $diff;
+		$vars['NEW_SIZE'] = strlen($new_text);
+
+		$vars['OLD_WIKITEXT'] = $old_text;
+		$vars['NEW_WIKITEXT'] = $new_text;
+
+		// Some more specific/useful details about the changes.
+		$diff_lines = explode( "\n", $diff );
+		$added_lines = array();
+		$removed_lines = array();
+		foreach( $diff_lines as $line ) {
+			if (strpos( $line, '-' )===0) {
+				$removed_lines[] = substr($line,1);
+			} elseif (strpos( $line, '+' )===0) {
+				$added_lines[] = substr($line,1);
+			}
+		}
+		$vars['ADDED_LINES'] = implode( "\n", $added_lines );
+		$vars['REMOVED_LINES'] = implode( "\n", $removed_lines );
+
+		if ($oldLinks === null && $oldid) {
+			$oldInfo = $article->prepareTextForEdit( $old_text, $oldid );
+			$oldLinks = $oldInfo->output->getExternalLinks();
+		} elseif ($oldLinks === null) {
+			$oldLinks = array();
+		}
+
+		// Added links...
+		$editInfo = $article->prepareTextForEdit( $old_text, $revid );
+		$newLinks = array_keys( $editInfo->output->getExternalLinks() );
+		$vars['ALL_LINKS'] = implode( "\n", $newLinks );
+		$vars['ADDED_LINKS'] = implode( "\n", array_diff( $newLinks, array_intersect( $newLinks, $oldLinks ) ) );
+		$vars['REMOVED_LINKS'] = implode( "\n", array_diff( $oldLinks, array_intersect( $newLinks, $oldLinks ) ) );
+
+		// Pull other useful stuff from $editInfo.
+		$newHTML = $vars['NEW_HTML'] = $editInfo->output->getText();
+		$newText = $vars['NEW_TEXT'] = preg_replace( '/<[^>]+>/', '', $newHTML );
+
+		return $vars;
 	}
 }

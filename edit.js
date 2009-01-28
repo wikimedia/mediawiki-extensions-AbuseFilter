@@ -49,6 +49,15 @@ function addText() {
 	document.getElementById('wpFilterBuilder').selectedIndex = 0;
 }
 
+function fetchFilter() {
+	var filter = document.getElementById( 'mw-abusefilter-load-filter' ).value;
+
+	sajax_do_call( 'AbuseFilter::ajaxGetFilter', [filter], function(request) {
+		var filter = request.responseText;
+		document.getElementById( wgFilterBoxName ).value = filter;
+	} );
+}
+
 //From http://clipmarks.com/clipmark/CEFC94CB-94D6-4495-A7AA-791B7355E284/
 function insertAtCursor(myField, myValue) {
 	//IE support
@@ -106,6 +115,11 @@ addOnloadHook( function() {
 			el.style.display = 'none';
 		}
 	} );
+
+	var loader = document.getElementById( 'mw-abusefilter-load' );
+	if (loader) {
+		addHandler( loader, 'click', fetchFilter );
+	}
 
 	setupActions();
 } );

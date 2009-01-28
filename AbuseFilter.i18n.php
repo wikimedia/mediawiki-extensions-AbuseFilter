@@ -315,6 +315,13 @@ Please check them carefully, and click "confirm" to confirm your selection.',
 	'abusefilter-revert-reason' => 'Automatic revert of all actions taken by the abuse filter due to filter $1.
 Reason given: $2',
 	'abusefilter-revert-reasonfield' => 'Reason for revert:',
+
+	'abusefilter-test' => 'Test a filter against previous edits',
+	'abusefilter-test-intro' => 'This page allows you to check a filter entered in the box below against the last $1 changes. To load an existing filter, type its filter ID into the box below the edit textbox, and click the "Load" button.',
+	'abusefilter-test-legend' => 'Filter testing',
+	'abusefilter-test-load-filter' => 'Load filter ID:',
+	'abusefilter-test-submit' => 'Test',
+	'abusefilter-test-load' => 'Load',
 );
 
 /** Message documentation (Message documentation)
