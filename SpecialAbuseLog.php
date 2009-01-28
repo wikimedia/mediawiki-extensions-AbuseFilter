@@ -123,7 +123,7 @@ class SpecialAbuseLog extends SpecialPage {
 		// Build a table.
 		$vars = unserialize( $row->afl_var_dump );
 		
-		$output .= Xml::openElement( 'table', array( 'class' => 'mw-abuselog-details', 'style' => "width: 80%;" ) ) . Xml::openElement( 'tbody' );
+		$output .= Xml::openElement( 'table', array( 'class' => 'mw-abuselog-details' ) ) . Xml::openElement( 'tbody' );
 		
 		$header = Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-var' ) ) . Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-val' ) );
 		$output .= Xml::tags( 'tr', null, $header );
@@ -136,8 +136,10 @@ class SpecialAbuseLog extends SpecialPage {
 			} else {
 				$keyDisplay = Xml::element( 'tt', null, $key );
 			}
+
+			$value = Xml::element( 'div', array( 'class' => 'mw-abuselog-var-value' ), $value );
 			
-			$trow = Xml::tags( 'td', array( 'class' => 'mw-abuselog-var', 'style' => 'width: 30%;' ), $keyDisplay ) . Xml::element( 'td', array( 'class' => 'mw-abuselog-var-value', 'style' => "white-space: pre; font-family: monospace;" ), $value );
+			$trow = Xml::tags( 'td', array( 'class' => 'mw-abuselog-var' ), $keyDisplay ) . Xml::tags( 'td', array( 'class' => 'mw-abuselog-var-value' ), $value );
 			$output .= Xml::tags( 'tr', array( 'class' => "mw-abuselog-details-$key mw-abuselog-value" ), $trow );
 		}
 		

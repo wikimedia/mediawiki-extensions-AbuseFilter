@@ -4,6 +4,7 @@ table.mw-abuselog-details {
 	background: #f9f9f9;
 	border: 1px #aaa solid;
 	border-collapse: collapse;
+	width: 80%;
 }
 
 table.mw-abuselog-details th, table.mw-abuselog-details td {
@@ -26,6 +27,15 @@ table.mw-abuselog-details caption {
 }
 
 .mw-abuselog-var-value {
-	overflow: auto;
+	white-space: pre-wrap;
+	font-family: monospace;
+}
+
+div.mw-abuselog-var-value {
 	max-height: 10em;
+	overflow: auto;
+}
+
+td.mw-abuselog-var {
+	width: 30%;
 }

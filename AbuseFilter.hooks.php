@@ -27,8 +27,8 @@ class AbuseFilterHooks {
 		$vars['EDIT_DIFF'] = $diff;
 		$vars['NEW_SIZE'] = strlen($new_text);
 
-		$vars['OLD_TEXT'] = $old_text;
-		$vars['NEW_TEXT'] = $new_text;
+		$vars['OLD_WIKITEXT'] = $old_text;
+		$vars['NEW_WIKITEXT'] = $new_text;
 		
 		// Some more specific/useful details about the changes.
 		$diff_lines = explode( "\n", $diff );
@@ -51,6 +51,10 @@ class AbuseFilterHooks {
 		$vars['ALL_LINKS'] = implode( "\n", $newLinks );
 		$vars['ADDED_LINKS'] = implode( "\n", array_diff( $newLinks, array_intersect( $newLinks, $oldLinks ) ) );
 		$vars['REMOVED_LINKS'] = implode( "\n", array_diff( $oldLinks, array_intersect( $newLinks, $oldLinks ) ) );
+
+		// Pull other useful stuff from $editInfo.
+		$newHTML = $vars['NEW_HTML'] = $editInfo->output->getText();
+		$newText = $vars['NEW_TEXT'] = preg_replace( '/<[^>]+>/', '', $newHTML );
 
 		$filter_result = AbuseFilter::filterAction( $vars, $editor->mTitle );
 
