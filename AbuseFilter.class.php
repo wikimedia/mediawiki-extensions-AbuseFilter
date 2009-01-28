@@ -632,8 +632,12 @@ class AbuseFilter {
 		// Not set up. Create it.
 		
 		if (!$user->getId()) {
+			print "Trying to create account -- user id is " . $user->getId();
 			$user->addToDatabase();
 			$user->saveSettings();
+			# Increment site_stats.ss_users
+			$ssu = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
+			$ssu->doUpdate();
 		} else {
 			// Take over the account
 			$user->setPassword( null );
@@ -643,10 +647,6 @@ class AbuseFilter {
 		
 		# Promote user so it doesn't look too crazy.
 		$user->addGroup( 'sysop' );
-		
-		# Increment site_stats.ss_users
-		$ssu = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
-		$ssu->doUpdate();
 		
 		return $user;
 	}

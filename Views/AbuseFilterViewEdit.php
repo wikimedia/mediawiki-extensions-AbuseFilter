@@ -240,6 +240,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$fields['abusefilter-edit-flags'] = $flags;
 
 		if ($filter != 'new') {
+			$tools = '';
+			$tools .= $sk->link( $this->getTitle( 'revert/'.$filter ), wfMsg( 'abusefilter-edit-revert' ) );
+			$fields['abusefilter-edit-tools'] = $tools;
+		}
+
+		if ($filter != 'new') {
 			// Last modification details
 			$user = $sk->userLink( $row->af_user, $row->af_user_text ) . $sk->userToolLinks( $row->af_user, $row->af_user_text );
 			$fields['abusefilter-edit-lastmod'] = wfMsgExt( 'abusefilter-edit-lastmod-text', array( 'parseinline', 'replaceafter' ), array( $wgLang->timeanddate( $row->af_timestamp ), $user ) );

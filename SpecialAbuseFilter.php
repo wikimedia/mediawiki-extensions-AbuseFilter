@@ -44,6 +44,11 @@ class SpecialAbuseFilter extends SpecialPage {
 		if ($subpage == 'tools') {
 			$view = 'AbuseFilterViewTools';
 		}
+
+		if ( count($params) == 2 && $params[0] == 'revert' && is_numeric( $params[1] ) ) {
+			$this->mFilter = $params[1];
+			$view = 'AbuseFilterViewRevert';
+		}
 		
 		if (!empty($params[0]) && ($params[0] == 'history' || $params[0] == 'log') ) {
 			if (count($params) == 1) {

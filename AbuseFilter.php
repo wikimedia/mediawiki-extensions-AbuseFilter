@@ -38,6 +38,7 @@ $wgAutoloadClasses['AbuseFilterView'] = "$dir/Views/AbuseFilterView.php";
 $wgAutoloadClasses['AbuseFilterViewEdit'] = "$dir/Views/AbuseFilterViewEdit.php";
 $wgAutoloadClasses['AbuseFilterViewTools'] = "$dir/Views/AbuseFilterViewTools.php";
 $wgAutoloadClasses['AbuseFilterViewHistory'] = "$dir/Views/AbuseFilterViewHistory.php";
+$wgAutoloadClasses['AbuseFilterViewRevert'] = "$dir/Views/AbuseFilterViewRevert.php";
 
 $wgSpecialPages['AbuseLog'] = 'SpecialAbuseLog';
 $wgSpecialPages['AbuseFilter'] = 'SpecialAbuseFilter';
@@ -58,6 +59,7 @@ $wgAvailableRights[] = 'abusefilter-view';
 $wgAvailableRights[] = 'abusefilter-log';
 $wgAvailableRights[] = 'abusefilter-private';
 $wgAvailableRights[] = 'abusefilter-modify-restricted';
+$wgAvailableRights[] = 'abusefilter-revert';
 
 $wgAbuseFilterAvailableActions = array( 'flag', 'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'degroup', /* Disabled because it's ridiculously excessive 'rangeblock'*/ /*, 'tag' Disabled for now to avoid trunk changes. */ );
 
