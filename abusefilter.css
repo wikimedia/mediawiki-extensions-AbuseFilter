@@ -39,3 +39,11 @@ div.mw-abuselog-var-value {
 td.mw-abuselog-var {
 	width: 30%;
 }
+
+tr.mw-abusefilter-list-disabled, tr.mw-abusefilter-list-disabled td {
+	color: #666666;
+}
+
+tr.mw-abusefilter-list-deleted, tr.mw-abusefilter-list-deleted td {
+	color: #aaaaaa;
+}

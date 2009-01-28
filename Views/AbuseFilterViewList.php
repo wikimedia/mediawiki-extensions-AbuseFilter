@@ -201,6 +201,16 @@ class AbuseFilterPager extends TablePager {
 		return 'af_id';
 	}
 
+	function getRowClass( $row ) {
+		if ($row->status & 1) {
+			return 'mw-abusefilter-list-enabled';
+		} elseif ($row->status & 2) {
+			return 'mw-abusefilter-list-deleted';
+		} else {
+			return 'mw-abusefilter-list-disabled';
+		}
+	}
+
 	function isFieldSortable($name) {
 		$sortable_fields = array( 'af_id', 'status', 'af_hit_count', 'af_throttled', 'af_user_text', 'af_timestamp' );
 		return in_array( $name, $sortable_fields );
