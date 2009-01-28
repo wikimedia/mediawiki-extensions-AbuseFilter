@@ -239,7 +239,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 		$fields['abusefilter-edit-flags'] = $flags;
 
-		if ($filter != 'new') {
+		if ( $filter != 'new' && $wgUser->isAllowed( 'abusefilter-revert' ) ) {
 			$tools = '';
 			$tools .= $sk->link( $this->getTitle( 'revert/'.$filter ), wfMsg( 'abusefilter-edit-revert' ) );
 			$fields['abusefilter-edit-tools'] = $tools;
