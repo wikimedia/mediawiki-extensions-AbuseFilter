@@ -439,16 +439,18 @@ class AbuseFilter {
 				// Do nothing. Here for completeness.
 				break;
 
-// 			case 'tag':
-// 				// Mark with a tag on recentchanges.
-// 				global $wgUser;
-// 				
-// 				$actionID = implode( '-', array(
-// 						$title->getPrefixedText(), $wgUser->getName(), $vars['ACTION']
-// 					) );
-// 
-// 				AbuseFilter::$tagsToSet[$actionID] = $parameters;
-// 				break;
+			case 'tag':
+				// Mark with a tag on recentchanges.
+				global $wgUser;
+
+				$actionID = implode( '-', array(
+						$title->getPrefixedText(), $wgUser->getName(), $vars['ACTION']
+					) );
+
+				AbuseFilter::$tagsToSet[$actionID] = $parameters;
+				break;
+			default:
+				throw new MWException( "Unrecognised action $action" );
 		}
 		
 		return $display;

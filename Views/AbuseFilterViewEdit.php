@@ -328,21 +328,20 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$warnFields['abusefilter-edit-warn-message'] = Xml::input( 'wpFilterWarnMessage', 45, $warnMsg );
 				$output .= Xml::tags( 'p', null, Xml::buildForm( $warnFields ) );
 				return $output;
-				// Commented out to avoid trunk changes for now.
-// 			case 'tag':
-// 				if ($set) {
-// 					$tags = $parameters;
-// 				} else {
-// 					$tags = array();
-// 				}
-// 				$output = '';
-// 
-// 				$checkbox = Xml::checkLabel( wfMsg('abusefilter-edit-action-tag'), 'wpFilterActionTag', 'wpFilterActionTag', $set );
-// 				$output .= Xml::tags( 'p', null, $checkbox );
-// 
-// 				$tagFields['abusefilter-edit-tag-tag'] = Xml::textarea( 'wpFilterTags', implode( "\n", $tags ) );
-// 				$output .= Xml::tags( 'p', null, Xml::buildForm( $tagFields ) );
-// 				return $output;
+			case 'tag':
+				if ($set) {
+					$tags = $parameters;
+				} else {
+					$tags = array();
+				}
+				$output = '';
+
+				$checkbox = Xml::checkLabel( wfMsg('abusefilter-edit-action-tag'), 'wpFilterActionTag', 'wpFilterActionTag', $set );
+				$output .= Xml::tags( 'p', null, $checkbox );
+
+				$tagFields['abusefilter-edit-tag-tag'] = Xml::textarea( 'wpFilterTags', implode( "\n", $tags ) );
+				$output .= Xml::tags( 'p', null, Xml::buildForm( $tagFields ) );
+				return $output;
 			default:
 				$message = 'abusefilter-edit-action-'.$action;
 				$form_field = 'wpFilterAction' . ucfirst($action);
