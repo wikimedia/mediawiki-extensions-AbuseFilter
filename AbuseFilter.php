@@ -42,6 +42,8 @@ $wgAutoloadClasses['AbuseFilterViewRevert'] = "$dir/Views/AbuseFilterViewRevert.
 
 $wgSpecialPages['AbuseLog'] = 'SpecialAbuseLog';
 $wgSpecialPages['AbuseFilter'] = 'SpecialAbuseFilter';
+$wgSpecialPageGroups['AbuseLog'] = 'changes';
+$wgSpecialPageGroups['AbuseFilter'] = 'wiki';
 
 $wgHooks['EditFilter'][] = 'AbuseFilterHooks::onEditFilter';
 $wgHooks['GetAutoPromoteGroups'][] = 'AbuseFilterHooks::onGetAutoPromoteGroups';
