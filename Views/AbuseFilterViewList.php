@@ -167,7 +167,7 @@ class AbuseFilterPager extends TablePager {
 			case 'af_id':
 				return $sk->link( SpecialPage::getTitleFor( 'AbuseFilter', intval($value) ), intval($value) );
 			case 'af_public_comments':
-				return $wgOut->parse( $value );
+				return $sk->link( SpecialPage::getTitleFor( 'AbuseFilter', intval($row->af_id) ), $wgOut->parse( $value ) );
 			case 'af_actions':
 				$actions = explode(',', $value);
 				$displayActions = array();
