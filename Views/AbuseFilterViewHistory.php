@@ -133,7 +133,7 @@ class AbuseFilterHistoryPager extends TablePager {
 				$display_actions = '';
 
 				foreach( $actions as $action => $parameters ) {
-					$display_actions .= Xml::tags( 'li', null, wfMsgExt( 'abusefilter-history-action', array( 'parseinline' ), array($action, implode('; ', $parameters)) ) );
+					$display_actions .= Xml::tags( 'li', null, wfMsgExt( 'abusefilter-history-action', array( 'parseinline' ), array( AbuseFilter::getActionDisplay($action), implode('; ', $parameters)) ) );
 				}
 				$display_actions = Xml::tags( 'ul', null, $display_actions );
 

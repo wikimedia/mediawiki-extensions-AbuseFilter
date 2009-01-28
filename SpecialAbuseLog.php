@@ -195,6 +195,14 @@ class SpecialAbuseLog extends SpecialPage {
 		$actions_taken = $row->afl_actions;
 		if (!strlen(trim($actions_taken))) {
 			$actions_taken = wfMsg( 'abusefilter-log-noactions' );
+		} else {
+			$actions = explode(',', $actions_taken);
+			$displayActions = array();
+
+			foreach( $actions as $action ) {
+				$displayActions[] = AbuseFilter::getActionDisplay( $action );;
+			}
+			$actions_taken = implode( ', ', $displayActions );
 		}
 		
 		if ($this->canSeeDetails()) {

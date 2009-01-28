@@ -172,9 +172,7 @@ class AbuseFilterPager extends TablePager {
 				$actions = explode(',', $value);
 				$displayActions = array();
 				foreach( $actions as $action ) {
-					$display = wfMsg( "abusefilter-action-$action" );
-					$display = wfEmptyMsg( "abusefilter-action-$action", $display ) ? $action : $display;
-					$displayActions[] = $display;
+					$displayActions[] = AbuseFilter::getActionDisplay( $action );;
 				}
 				return htmlspecialchars( implode( ', ', $displayActions ) );
 			case 'status':

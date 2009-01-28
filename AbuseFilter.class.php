@@ -751,4 +751,10 @@ class AbuseFilter {
 
 		return array( $af_row, $actions_output );
 	}
+
+	static function getActionDisplay( $action ) {
+		$display = wfMsg( "abusefilter-action-$action" );
+		$display = wfEmptyMsg( "abusefilter-action-$action", $display ) ? $action : $display;
+		return $display;
+	}
 }

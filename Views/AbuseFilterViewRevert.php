@@ -47,9 +47,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				$displayActions = array();
 
 				global $wgLang;
-				foreach( $result['actions'] as $action ) {
-					$displayActions[] = wfMsgExt( "abusefilter-action-$action", 'parseinline' );
-				}
+				$displayActions = array_map( array( 'AbuseFilter', 'getActionDisplay' ), $result['actions'] );
 				
 				$msg = wfMsgExt( 'abusefilter-revert-preview-item', array( 'parseinline', 'replaceafter' ),
 					array( $wgLang->timeanddate( $result['timestamp'] ), $sk->userLink( $result['userid'],
