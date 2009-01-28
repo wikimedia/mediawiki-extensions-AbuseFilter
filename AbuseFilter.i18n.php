@@ -63,8 +63,12 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-log-search-filter' => 'Filter ID:',
 	'abusefilter-log-search-title' => 'Title:',
 	'abusefilter-log-search-submit' => 'Search',
-	'abusefilter-log-entry' => '$1: $2 triggered an abuse filter, making a $3 on $4. Actions taken: $5; Filter description: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 triggered [[Special:AbuseFilter/$3|filter $3]], making a $4 on $5. Actions taken: $6; Filter description: $7 ($8)',
+	'abusefilter-log-entry' => '$1: $2 triggered an abuse filter, performing the action "$3" on $4.
+Actions taken: $5;
+Filter description: $6',
+	'abusefilter-log-detailedentry' => '$1: $2 triggered [[Special:AbuseFilter/$3|filter $3]], performing the action "$4" on $5.
+Actions taken: $6;
+Filter description: $7 ($8)',
 	'abusefilter-log-detailslink' => 'details',
 	'abusefilter-log-details-legend' => 'Details for log entry $1',
 	'abusefilter-log-details-var' => 'Variable',
@@ -112,7 +116,8 @@ A brief description of the abuse rule which your action matched is: $1",
 
 	// Abuse filter tools
 	'abusefilter-tools-subtitle' => 'Tools',
-	'abusefilter-tools-text' => 'Here are some tools which may be useful in formulating and debugging abuse filters. [[Special:AbuseFilter|Return to main menu]]',
+	'abusefilter-tools-text' => 'Here are some tools which may be useful in formulating and debugging abuse filters.
+[[Special:AbuseFilter|Return to main menu]].',
 	'abusefilter-tools-expr' => 'Expression tester',
 	'abusefilter-tools-submitexpr' => 'Evaluate',
 	'abusefilter-tools-reautoconfirm' => 'Restore autoconfirmed status',
@@ -126,10 +131,14 @@ A brief description of the abuse rule which your action matched is: $1",
 
 	// The edit screen
 	'abusefilter-edit-subtitle' => 'Editing filter $1',
-	'abusefilter-edit-oldwarning' => "<strong>You are editing an old version of this filter. The statistics quoted are for the most recent version of the filter. If you save your changes, you will overwrite all changes since the revision you are editing.</strong> &bull; [[Special:AbuseFilter/history/$2|Return to this filter's history]]",
+	'abusefilter-edit-oldwarning' => "<strong>You are editing an old version of this filter.
+The statistics quoted are for the most recent version of the filter.
+If you save your changes, you will overwrite all changes since the revision you are editing.</strong> &bull;
+[[Special:AbuseFilter/history/$2|Return to this filter's history]].",
 	'abusefilter-edit-status-label' => 'Statistics:',
 	'abusefilter-edit-status' => 'Of the last $1 {{PLURAL:$1|action|actions}}, this filter has matched $2 ($3%).',
-	'abusefilter-edit-throttled' => "'''Warning''': This filter was automatically disabled as a safety measure. It reached the limit of matching more than $1% of actions.",
+	'abusefilter-edit-throttled' => "'''Warning''': This filter was automatically disabled as a safety measure.
+It reached the limit of matching more than $1% of actions.",
 	'abusefilter-edit-new' => 'New filter',
 	'abusefilter-edit-save' => 'Save filter',
 	'abusefilter-edit-id' => 'Filter ID:',
@@ -163,8 +172,10 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-edit-main' => 'Filter parameters',
 	'abusefilter-edit-done-subtitle' => 'Filter edited',
 	'abusefilter-edit-done' => "You have successfully saved your changes to filter $1.",
-	'abusefilter-edit-badsyntax' => "There is a syntax error in the filter you specified. The output from the parser was: <pre>$1</pre>",
-	'abusefilter-edit-restricted' => 'You cannot edit this filter, because it contains one or more restricted actions. Please ask a user with permission to add restricted actions to make the change for you.',
+	'abusefilter-edit-badsyntax' => "There is a syntax error in the filter you specified.
+The output from the parser was: <pre>$1</pre>",
+	'abusefilter-edit-restricted' => 'You cannot edit this filter, because it contains one or more restricted actions.
+Please ask a user with permission to add restricted actions to make the change for you.',
 	'abusefilter-edit-viewhistory' => "View this filter's history",
 	'abusefilter-edit-history' => 'History',
 	'abusefilter-edit-check' => 'Check syntax',
@@ -289,17 +300,20 @@ A brief description of the abuse rule which your action matched is: $1",
 
 	// Revert interface
 	'abusefilter-revert-title' => 'Revert all changes by filter $1',
-	'abusefilter-revert-intro' => 'This form allows you to revert all changes made by the abuse filter due to filter $1. Please exercise care in using this tool.',
+	'abusefilter-revert-intro' => 'This form allows you to revert all changes made by the abuse filter due to filter $1.
+Please exercise care in using this tool.',
 	'abusefilter-revert-preview-item' => '$1: $2 made a $3 on $4. Actions to be reverted: $5 ($6)',
 	'abusefilter-revert-search-legend' => 'Select abuse filter actions to be reverted',
 	'abusefilter-revert-periodstart' => 'Period start:',
 	'abusefilter-revert-periodend' => 'Period end:',
 	'abusefilter-revert-search' => 'Select actions',
 	'abusefilter-revert-filter' => 'Filter:',
-	'abusefilter-revert-preview-intro' => 'Below are the actions taken by the abuse filter that will be reverted by this action. Please check them carefully, and click "confirm" to confirm your selection.',
+	'abusefilter-revert-preview-intro' => 'Below are the actions taken by the abuse filter that will be reverted by this action.
+Please check them carefully, and click "confirm" to confirm your selection.',
 	'abusefilter-revert-confirm' => 'Confirm',
-	'abusefilter-revert-success' => 'You have successfully reverted all actions taken by the abuse filter due to [[Special:AbuseFilter/$1|filter $1]].',
-	'abusefilter-revert-reason' => 'Automatic revert of all actions taken by the abuse filter due to filter $1. Reason given: $2',
+	'abusefilter-revert-success' => 'You have reverted all actions taken by the abuse filter due to [[Special:AbuseFilter/$1|filter $1]].',
+	'abusefilter-revert-reason' => 'Automatic revert of all actions taken by the abuse filter due to filter $1.
+Reason given: $2',
 	'abusefilter-revert-reasonfield' => 'Reason for revert:',
 );
 
@@ -3691,20 +3705,20 @@ $messages['it'] = array(
 	'abusefilter-desc' => "Applica un'euristica automatica agli edit.",
 	'abusefilter' => 'Configurazione filtro abusi',
 	'abuselog' => 'Registro abusi',
-	'abusefilter-warning' => "<big>'''Attenzione'''</big>: Questa azione è stata automaticamente riconosciuta come potenzialmente pericolosa. 
+	'abusefilter-warning' => "<big>'''Attenzione'''</big>: Questa azione è stata automaticamente riconosciuta come potenzialmente pericolosa.
 Gli edit non costruttivi verranno immediatamente annullati, ed edit gravemente o ripetutamente non costruttivi daranno luogo al blocco della tua utenza o del tuo computer.
 Se ritieni che questo edit sia costruttivo, puoi cliccare nuovamente il tasto Invia per confermarlo.
 Questa è una breve descrizione della regola di sicurezza che la tua azione ha violato: $1",
-	'abusefilter-disallowed' => 'Questa azione è stata automaticamente riconosciuta come potenzialmente pericolosa e perciò non permessa. 
+	'abusefilter-disallowed' => 'Questa azione è stata automaticamente riconosciuta come potenzialmente pericolosa e perciò non permessa.
 Se ritieni che questo edit sia costruttivo, puoi contattare un amministratore ed informarlo di cosa stavi cercando di fare.
 Questa è una breve descrizione della regola di sicurezza che la tua azione ha violato: $1',
-	'abusefilter-blocked-display' => 'Questa azione è stata automaticamente riconosciuta come potenzialmente pericolosa e ti è stato impedito di eseguirla. 
+	'abusefilter-blocked-display' => 'Questa azione è stata automaticamente riconosciuta come potenzialmente pericolosa e ti è stato impedito di eseguirla.
 In più, per proteggere {{SITENAME}}, la tua utenza e tutti gli indirizzi IP ad essa associati sono stati bloccati e non possono più editare.
 Se ritieni che vi sia stato un errore, per favore contatta un amministratore.
 Questa è una breve descrizione della regola di sicurezza che la tua azione ha violato: $1',
-	'abusefilter-degrouped' => "Questa azione è stata automaticamente riconosciuta come potenzialmente pericolosa. 
+	'abusefilter-degrouped' => "Questa azione è stata automaticamente riconosciuta come potenzialmente pericolosa.
 Conseguentemente, l'azione non è stata permessa e, dato il rischio che la tua utenza sia stata compromessa, tutti i diritti sono stati revocati.
-Se ritieni che vi sia stato un errore, per favore contatta un burocrate formendogli una spiegazione di questa azione, e i tuoi diritti potrebbero essere ripristinati. 
+Se ritieni che vi sia stato un errore, per favore contatta un burocrate formendogli una spiegazione di questa azione, e i tuoi diritti potrebbero essere ripristinati.
 Questa è una breve descrizione della regola di sicurezza che la tua azione ha violato: $1",
 	'abusefilter-degroupreason' => 'Diritti rimossi automaticamente dal filtro abusi. Descrizione della regola: $1',
 	'abusefilter-accountreserved' => 'Questo account è riservato al filtro abusi.',
@@ -5570,7 +5584,7 @@ $messages['pl'] = array(
 	'abusefilter' => 'Konfiguracja filtru nadużyć',
 	'abuselog' => 'Rejestr nadużyć',
 	'abusefilter-warning' => "<big>'''Uwaga'''</big>: Ta akcja została automatycznie zidentyfikowana jako szkodliwa.
-Niekonstruktywne edycje zostaną szybko wycofane, 
+Niekonstruktywne edycje zostaną szybko wycofane,
 a rażące lub powtarzające się niekonstruktywne edytowanie może spowodować zablokowanie Twojego konta lub adresu IP.
 Jeśli uważasz, że ta edycja jest zasadna, możesz kliknąć przycisk „{{int:savearticle}}”, aby ją zatwierdzić.
 Krótki opis reguły nadużycia, do której Twoja akcji została dopasowana: $1",
