@@ -83,7 +83,7 @@ $wgAjaxExportList[] = 'AbuseFilter::ajaxEvaluateExpression';
 $wgAjaxExportList[] = 'AbuseFilter::ajaxReAutoconfirm';
 
 // Bump the version number every time you change any of the .css/.js files
-$wgAbuseFilterStyleVersion = 2;
+$wgAbuseFilterStyleVersion = 3;
 
 $wgAbuseFilterRestrictedActions = array( 'block', 'degroup' );
 

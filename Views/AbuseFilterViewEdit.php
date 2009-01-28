@@ -294,7 +294,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		
 		switch( $action ) {
 			case 'throttle':
-				$throttleSettings = Xml::checkLabel( wfMsg( 'abusefilter-edit-action-throttle' ), 'wpFilterActionThrottle', 'wpFilterActionThrottle', $set );
+				$throttleSettings = Xml::checkLabel( wfMsg( 'abusefilter-edit-action-throttle' ), 'wpFilterActionThrottle', "mw-abusefilter-action-checkbox-$action", $set, array(  'class' => 'mw-abusefilter-action-checkbox' ) );
 				$throttleFields = array();
 
 				if ($set) {
@@ -314,19 +314,19 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$throttleFields['abusefilter-edit-throttle-count'] = Xml::input( 'wpFilterThrottleCount', 20, $throttleCount );
 				$throttleFields['abusefilter-edit-throttle-period'] = wfMsgExt( 'abusefilter-edit-throttle-seconds', array( 'parseinline', 'replaceafter' ), array(Xml::input( 'wpFilterThrottlePeriod', 20, $throttlePeriod )  ) );
 				$throttleFields['abusefilter-edit-throttle-groups'] = Xml::textarea( 'wpFilterThrottleGroups', $throttleGroups."\n" );
-				$throttleSettings .= Xml::buildForm( $throttleFields );
-				return Xml::tags( 'p', null, $throttleSettings );
+				$throttleSettings .= Xml::tags( 'div', array( 'id' => 'mw-abusefilter-throttle-parameters' ), Xml::buildForm( $throttleFields ) );
+				return $throttleSettings;
 			case 'flag':
-				$checkbox = Xml::checkLabel( wfMsg( 'abusefilter-edit-action-flag' ), 'wpFilterActionFlag', 'wpFilterActionFlag', true, array( 'disabled' => '1' ) );
+				$checkbox = Xml::checkLabel( wfMsg( 'abusefilter-edit-action-flag' ), 'wpFilterActionFlag', "mw-abusefilter-action-checkbox-$action", true, array( 'disabled' => '1', 'class' => 'mw-abusefilter-action-checkbox' ) );
 				return Xml::tags( 'p', null, $checkbox );
 			case 'warn':
 				$output = '';
-				$checkbox = Xml::checkLabel( wfMsg( 'abusefilter-edit-action-warn' ), 'wpFilterActionWarn', 'wpFilterActionWarn', $set );
+				$checkbox = Xml::checkLabel( wfMsg( 'abusefilter-edit-action-warn' ), 'wpFilterActionWarn', "mw-abusefilter-action-checkbox-$action", $set, array( 'class' => 'mw-abusefilter-action-checkbox' ) );
 				$output .= Xml::tags( 'p', null, $checkbox );
 
 				$warnMsg = empty($set) ? 'abusefilter-warning' : $parameters[0];
 				$warnFields['abusefilter-edit-warn-message'] = Xml::input( 'wpFilterWarnMessage', 45, $warnMsg );
-				$output .= Xml::tags( 'p', null, Xml::buildForm( $warnFields ) );
+				$output .= Xml::tags( 'div', array( 'id' => 'mw-abusefilter-warn-parameters' ), Xml::buildForm( $warnFields ) );
 				return $output;
 			case 'tag':
 				if ($set) {
@@ -336,18 +336,18 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				}
 				$output = '';
 
-				$checkbox = Xml::checkLabel( wfMsg('abusefilter-edit-action-tag'), 'wpFilterActionTag', 'wpFilterActionTag', $set );
+				$checkbox = Xml::checkLabel( wfMsg('abusefilter-edit-action-tag'), 'wpFilterActionTag', "mw-abusefilter-action-checkbox-$action", $set, array( 'class' => 'mw-abusefilter-action-checkbox' ) );
 				$output .= Xml::tags( 'p', null, $checkbox );
 
 				$tagFields['abusefilter-edit-tag-tag'] = Xml::textarea( 'wpFilterTags', implode( "\n", $tags ) );
-				$output .= Xml::tags( 'p', null, Xml::buildForm( $tagFields ) );
+				$output .= Xml::tags( 'div', array( 'id' => 'mw-abusefilter-tag-parameters' ), Xml::buildForm( $tagFields ) );
 				return $output;
 			default:
 				$message = 'abusefilter-edit-action-'.$action;
 				$form_field = 'wpFilterAction' . ucfirst($action);
 				$status = $set;
 
-				$thisAction = Xml::checkLabel( wfMsg( $message ), $form_field, $form_field, $status );
+				$thisAction = Xml::checkLabel( wfMsg( $message ), $form_field, "mw-abusefilter-action-checkbox-$action", $status, array( 'class' => 'mw-abusefilter-action-checkbox' ) );
 				$thisAction = Xml::tags( 'p', null, $thisAction );
 				return $thisAction;
 		}

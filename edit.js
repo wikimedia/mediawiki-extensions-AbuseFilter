@@ -69,6 +69,36 @@ function insertAtCursor(myField, myValue) {
 	}
 }
 
+function setupActions() {
+	var checkboxen = getElementsByClassName( document, 'input', 'mw-abusefilter-action-checkbox' );
+
+	for( var i=0; i<checkboxen.length; i++ ) {
+		var checkbox = checkboxen[i];
+
+		addHandler( checkbox, 'click', hideDeselectedActions );
+	}
+	// A second loop, so sue me.
+	hideDeselectedActions();
+}
+
+function hideDeselectedActions() {
+	var checkboxen = getElementsByClassName( document, 'input', 'mw-abusefilter-action-checkbox' );
+
+	for( var i=0; i<checkboxen.length; i++ ) {
+		// ID format is mw-abusefilter-action-checkbox-$action
+		// We want substr(31)
+		var checkbox = checkboxen[i];
+		var action = checkbox.id.substr(31);
+		var params = document.getElementById( "mw-abusefilter-"+action+"-parameters" );
+
+		if (params && checkbox.checked) {
+			params.style.display = 'block';
+		} else if (params) {
+			params.style.display = 'none';
+		}
+	}
+}
+
 addOnloadHook( function() {
 	addHandler( document.getElementById( wgFilterBoxName ), 'keyup', function() {
 		el = document.getElementById( 'mw-abusefilter-syntaxresult' );
@@ -76,4 +106,6 @@ addOnloadHook( function() {
 			el.style.display = 'none';
 		}
 	} );
+
+	setupActions();
 } );
