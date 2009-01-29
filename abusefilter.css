@@ -33,6 +33,7 @@ table.mw-abuselog-details caption {
 
 div.mw-abuselog-var-value {
 	max-height: 10em;
+	max-width: 100%;
 	overflow: auto;
 }
 
