@@ -255,6 +255,9 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-edit-builder-vars-new-text' => 'New page wikitext, after the edit',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'New page text, stripped of any markup',
 	'abusefilter-edit-builder-vars-new-html' => 'Parsed HTML source of the new revision',
+	'abusefilter-edit-builder-vars-recent-contributors' => 'Last ten users to contribute to the article',
+	'abusefilter-edit-builder-vars-restrictions-edit' => 'Edit protection level of the article',
+	'abusefilter-edit-builder-vars-restrictions-move' => 'Move protection level of the article',
 
 	// Filter history
 	'abusefilter-filter-log' => 'Recent filter changes',

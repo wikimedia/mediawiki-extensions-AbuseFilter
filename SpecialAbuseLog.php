@@ -122,6 +122,7 @@ class SpecialAbuseLog extends SpecialPage {
 		
 		if ($this->canSeePrivate()) {
 			// Private stuff, like IPs.
+			$header = Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-var' ) ) . Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-val' ) );
 			$output .= Xml::element( 'h3', null, wfMsg( 'abusefilter-log-details-private' ) );
 			$output .= Xml::openElement( 'table', array( 'class' => 'wikitable mw-abuselog-private', 'style' => "width: 80%;" ) ) . Xml::openElement( 'tbody' );
 			$output .= $header;
