@@ -64,6 +64,10 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$counter = 1;
 
 		while ( $row = $dbr->fetchObject( $res ) ) {
+			## Incompatible stuff.
+			if ( !$row->rc_this_oldid && !in_array( $row->rc_log_action, array( 'move', 'newusers' ) ) )
+				continue;
+			
 			$rc = RecentChange::newFromRow( $row );
 			$rc->counter = $counter++;
 			$output .= $changesList->recentChangesLine( $rc, false );

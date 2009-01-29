@@ -343,6 +343,8 @@ To load an existing filter, type its filter ID into the box below the edit textb
 	'abusefilter-examine-match' => 'The filter matched this change.',
 	'abusefilter-examine-nomatch' => 'The filter did not match this change.',
 	'abusefilter-examine-syntaxerror' => 'The filter has invalid syntax',
+	'abusefilter-examine-notfound' => 'The change you requested could not be found.',
+	'abusefilter-examine-incompatible' => 'The change you requested is not supported by the Abuse Filter',
 );
 
 /** Message documentation (Message documentation)
