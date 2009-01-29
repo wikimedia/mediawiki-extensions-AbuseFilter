@@ -902,7 +902,13 @@ class AbuseFilter {
 		$vars['REMOVED_LINKS'] = implode( "\n", array_diff( $oldLinks, array_intersect( $newLinks, $oldLinks ) ) );
 
 		// Pull other useful stuff from $editInfo.
-		$newHTML = $vars['NEW_HTML'] = $editInfo->output->getText();
+		$newHTML = $editInfo->output->getText();
+
+		// Kill the PP limit comments. Ideally we'd just remove these by not setting the parser option, but then we
+		//  can't share a parse operation with the edit, which is bad.
+		$newHTML = preg_replace( '/<!--\s*NewPP limit report[^>]*-->\s*$/si', '', $newHTML );
+		$vars['NEW_HTML'] = $newHTML;
+		
 		$newText = $vars['NEW_TEXT'] = preg_replace( '/<[^>]+>/', '', $newHTML );
 
 		return $vars;
