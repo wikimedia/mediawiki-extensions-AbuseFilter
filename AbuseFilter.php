@@ -55,6 +55,7 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'AbuseFilterHooks::onSchemaUpdate';
 $wgHooks['AbortDeleteQueueNominate'][] = 'AbuseFilterHooks::onAbortDeleteQueueNominate';
 $wgHooks['RecentChange_save'][] = 'AbuseFilterHooks::onRecentChangeSave';
 $wgHooks['ListDefinedTags'][] = 'AbuseFilterHooks::onListDefinedTags';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'AbuseFilterHooks::onLoadExtensionSchemaUpdates';
 
 $wgAvailableRights[] = 'abusefilter-modify';
 $wgAvailableRights[] = 'abusefilter-log-detail';
@@ -83,14 +84,6 @@ $wgAjaxExportList[] = 'AbuseFilter::ajaxCheckSyntax';
 $wgAjaxExportList[] = 'AbuseFilter::ajaxEvaluateExpression';
 $wgAjaxExportList[] = 'AbuseFilter::ajaxReAutoconfirm';
 $wgAjaxExportList[] = 'AbuseFilter::ajaxGetFilter';
-
-// DB updates
-$wgExtNewTables[] = array( 'abuse_filter', "$dir/abusefilter.tables.sql" );
-$wgExtNewTables[] = array( 'abuse_filter_history', "$dir/db_patches/patch-abuse_filter_history.sql" );
-
-$wgExtNewFields[] = array( 'abuse_filter_history', 'afh_changed_fields', "$dir/db_patches/patch-afh_changed_fields.sql" );
-$wgExtNewFields[] = array( 'abuse_filter', 'af_deleted', "$dir/db_patches/patch-af_deleted.sql" );
-$wgExtNewFields[] = array( 'abuse_filter', 'af_actions', "$dir/db_patches/patch-af_actions.sql" );
 
 // Bump the version number every time you change any of the .css/.js files
 $wgAbuseFilterStyleVersion = 3;
