@@ -42,8 +42,10 @@ In addition, as a security measure, some privileges routinely granted to establi
 A brief description of the abuse rule which your action matched is: $1",
 
 	'abusefilter-blocker' => 'Abuse filter',
-	'abusefilter-blockreason' => 'Automatically blocked by abuse filter. Description of matched rule: $1',
-	'abusefilter-degroupreason' => 'Rights automatically stripped by abuse filter. Rule description: $1',
+	'abusefilter-blockreason' => 'Automatically blocked by abuse filter.
+Description of matched rule: $1',
+	'abusefilter-degroupreason' => 'Rights automatically stripped by abuse filter.
+Rule description: $1',
 
 	'abusefilter-accountreserved' => 'This account name is reserved for use by the abuse filter.',
 
@@ -302,7 +304,8 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-revert-title' => 'Revert all changes by filter $1',
 	'abusefilter-revert-intro' => 'This form allows you to revert all changes made by the abuse filter due to filter $1.
 Please exercise care in using this tool.',
-	'abusefilter-revert-preview-item' => '$1: $2 made a $3 on $4. Actions to be reverted: $5 ($6)',
+	'abusefilter-revert-preview-item' => '$1: $2 made a $3 on $4.
+Actions to be reverted: $5 ($6)',
 	'abusefilter-revert-search-legend' => 'Select abuse filter actions to be reverted',
 	'abusefilter-revert-periodstart' => 'Period start:',
 	'abusefilter-revert-periodend' => 'Period end:',
@@ -317,7 +320,8 @@ Reason given: $2',
 	'abusefilter-revert-reasonfield' => 'Reason for revert:',
 
 	'abusefilter-test' => 'Test a filter against previous edits',
-	'abusefilter-test-intro' => 'This page allows you to check a filter entered in the box below against the last $1 changes. To load an existing filter, type its filter ID into the box below the edit textbox, and click the "Load" button.',
+	'abusefilter-test-intro' => 'This page allows you to check a filter entered in the box below against the last $1 changes.
+To load an existing filter, type its filter ID into the box below the edit textbox, and click the "Load" button.',
 	'abusefilter-test-legend' => 'Filter testing',
 	'abusefilter-test-load-filter' => 'Load filter ID:',
 	'abusefilter-test-submit' => 'Test',
