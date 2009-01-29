@@ -289,6 +289,10 @@ class AbuseFilter {
 				unset( $actions['warn'] );
 			}
 
+			if ( count($actions)>1 && !empty( $actions['disallow'] ) ) {
+				unset( $actions['disallow'] );
+			}
+
 			// Do the rest of the actions
 			foreach( $actions as $action => $info ) {
 				$newMsg = self::takeConsequenceAction( $action, $info['parameters'], $title, $vars, self::$filters[$filter]->af_public_comments );
