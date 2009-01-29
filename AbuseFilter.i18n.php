@@ -179,7 +179,7 @@ The output from the parser was: <pre>$1</pre>",
 	'abusefilter-edit-restricted' => 'You cannot edit this filter, because it contains one or more restricted actions.
 Please ask a user with permission to add restricted actions to make the change for you.',
 	'abusefilter-edit-viewhistory' => "View this filter's history",
-	'abusefilter-edit-history' => 'History',
+	'abusefilter-edit-history' => 'History:',
 	'abusefilter-edit-check' => 'Check syntax',
 	'abusefilter-edit-badfilter' => 'The filter you specified does not exist',
 	'abusefilter-edit-revert' => 'Revert actions taken by this filter',
