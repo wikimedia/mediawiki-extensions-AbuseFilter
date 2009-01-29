@@ -14,13 +14,14 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 		// Quick links
 		$wgOut->addWikiMsg( 'abusefilter-links' );
-		$lists = array( 'tools', 'test' );
+		$lists = array( 'tools', 'test', 'examine' );
 		if ($this->canEdit())
 			$lists[] = 'new';
 		$links = '';
 		$sk = $wgUser->getSkin();
 		foreach( $lists as $list ) {
 			$title = $this->getTitle( $list );
+			$list = strtr( $list, '/', '-' );
 
 			$link = $sk->link( $title, wfMsg( "abusefilter-$list" ) );
 			$links .= Xml::tags( 'li', null, $link ) . "\n";

@@ -50,8 +50,12 @@ class SpecialAbuseFilter extends SpecialPage {
 			$view = 'AbuseFilterViewRevert';
 		}
 
-		if ( !empty($params[0]) && $params[0] == 'test' ) {
-			$view = 'AbuseFilterViewTest';
+		if ( $subpage == 'test' ) {
+			$view = 'AbuseFilterViewTestBatch';
+		}
+
+		if ( count($params) && $params[0] == 'examine' ) {
+			$view = 'AbuseFilterViewExamine';
 		}
 		
 		if (!empty($params[0]) && ($params[0] == 'history' || $params[0] == 'log') ) {

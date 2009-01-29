@@ -3,7 +3,7 @@
 if (!defined( 'MEDIAWIKI' ))
 	die();
 
-class AbuseFilterViewTest extends AbuseFilterView {
+class AbuseFilterViewTestBatch extends AbuseFilterView {
 	// Hard-coded for now.
 	static $mChangeLimit = 100;
 	
@@ -25,7 +25,14 @@ class AbuseFilterViewTest extends AbuseFilterView {
 
 		// Removed until I can distinguish between positives and negatives :)
 // 		$output .= Xml::tags( 'p', null, Xml::checkLabel( wfMsg( 'abusefilter-test-shownegative' ), 'wpShowNegative', 'wpShowNegative', $this->mShowNegative ) );
-		$output .= Xml::tags( 'p', null, Xml::submitButton( wfMsg( 'abusefilter-test-submit' ) ) );
+
+		// Selectory stuff
+		$selectFields = array();
+		$selectFields['abusefilter-test-user'] = wfInput( 'wpTestUser', 45, $this->mTestUser );
+		$selectFields['abusefilter-test-period-start'] = wfInput( 'wpTestPeriodStart', 45, $this->mTestPeriodStart );
+		$selectFields['abusefilter-test-period-end'] = wfInput( 'wpTestPeriodEnd', 45, $this->mTestPeriodEnd );
+		$output .= Xml::buildForm( $selectFields, 'abusefilter-test-submit' );
+		
 		$output .= Xml::hidden( 'title', $this->getTitle("test")->getPrefixedText() );
 		$output = Xml::tags( 'form', array( 'action' => $this->getTitle("test")->getLocalURL(), 'method' => 'POST' ), $output );
 
@@ -40,18 +47,27 @@ class AbuseFilterViewTest extends AbuseFilterView {
 
 	function doTest() {
 		// Quick syntax check.
+		global $wgUser, $wgOut;
 		if ( ($result = AbuseFilter::checkSyntax( $this->mFilter )) !== true ) {
 			$wgOut->addWikiMsg( 'abusefilter-test-syntaxerr' );
 			return;
 		}
+		$dbr = wfGetDB( DB_SLAVE );
+
+		$conds = array( 'rc_user_text' => $this->mTestUser );
+
+		if ($this->mTestPeriodStart) {
+			$conds[] = 'rc_timestamp>='.$dbr->addQuotes( $dbr->timestamp( strtotime( $this->mTestPeriodStart ) ) );
+		}
+		if ($this->mTestPeriodEnd) {
+			$conds[] = 'rc_timestamp<='.$dbr->addQuotes( $dbr->timestamp( strtotime( $this->mTestPeriodEnd ) ) );
+		}
 
 		// Get our ChangesList
-		global $wgUser, $wgOut;
-		$changesList = ChangesList::newFromUser( $wgUser );
+		$changesList = new AbuseFilterChangesList( $wgUser->getSkin() );
 		$output = $changesList->beginRecentChangesList();
 
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'recentchanges', '*', array(), __METHOD__, array( 'LIMIT' => self::$mChangeLimit, 'ORDER BY' => 'rc_timestamp asc' ) );
+		$res = $dbr->select( 'recentchanges', '*', array_filter( $conds ), __METHOD__, array( 'LIMIT' => self::$mChangeLimit, 'ORDER BY' => 'rc_timestamp desc' ) );
 
 		$counter = 1;
 
@@ -80,5 +96,8 @@ class AbuseFilterViewTest extends AbuseFilterView {
 
 		$this->mFilter = $wgRequest->getText( 'wpTestFilter' );
 		$this->mShowNegative = $wgRequest->getBool( 'wpShowNegative' );
+		$this->mTestUser = $wgRequest->getText( 'wpTestUser' );
+		$this->mTestPeriodEnd = $wgRequest->getText( 'wpTestPeriodEnd' );
+		$this->mTestPeriodStart = $wgRequest->getText( 'wpTestPeriodStart' );
 	}
 }

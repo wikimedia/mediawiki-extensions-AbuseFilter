@@ -26,3 +26,15 @@ abstract class AbuseFilterView {
 		return $canEdit;
 	}
 }
+
+class AbuseFilterChangesList extends OldChangesList {
+	protected function insertExtra( &$s, &$rc, &$classes ) {
+		## Empty, used for subclassers to add anything special.
+		$sk = $this->skin;
+
+		$title = SpecialPage::getTitleFor( 'AbuseFilter', "examine/".$rc->mAttribs['rc_id'] );
+		$examineLink = $sk->link( $title, wfMsgExt( 'abusefilter-changeslist-examine', 'parseinline' ) );
+
+		$s .= " ($examineLink)";
+	}
+}

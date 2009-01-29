@@ -68,6 +68,25 @@ class AbuseFilter {
 		return strval($row->af_pattern);
 	}
 
+	public static function ajaxCheckFilterWithVars( $filter, $vars ) {
+		global $wgUser;
+
+		// Anti-DoS
+		if ( !$wgUser->isAllowed( 'abusefilter-view' ) ) {
+			return false;
+		}
+
+		// If we have a syntax error.
+		if ( self::checkSyntax( $filter ) !== true ) {
+			return 'SYNTAXERROR';
+		}
+		
+		$vars = json_decode( $vars, true );
+		$result = self::checkConditions( $filter, $vars );
+
+		return $result ? 'MATCH' : 'NOMATCH';
+	}
+
 	public static function triggerLimiter( $val = 1 ) {
 		self::$condCount += $val;
 
@@ -669,7 +688,7 @@ class AbuseFilter {
 		return $user;
 	}
 
-	static function buildEditBox( $rules, $textName = 'wpFilterRules' ) {
+	static function buildEditBox( $rules, $textName = 'wpFilterRules', $addResultDiv = true ) {
 		global $wgOut;
 
 		$rules = Xml::textarea( $textName, ( isset( $rules ) ? $rules."\n" : "\n" ) );
@@ -695,7 +714,9 @@ class AbuseFilter {
 
 		// Add syntax checking
 		$rules .= Xml::element( 'input', array( 'type' => 'button', 'onclick' => 'doSyntaxCheck()', 'value' => wfMsg( 'abusefilter-edit-check' ), 'id' => 'mw-abusefilter-syntaxcheck' ) );
-		$rules .= Xml::element( 'div', array( 'id' => 'mw-abusefilter-syntaxresult', 'style' => 'display: none;' ), '&nbsp;' );
+
+		if ($addResultDiv)
+			$rules .= Xml::element( 'div', array( 'id' => 'mw-abusefilter-syntaxresult', 'style' => 'display: none;' ), '&nbsp;' );
 
 		// Add script
 		$editScript = file_get_contents(dirname(__FILE__)."/edit.js");
@@ -881,5 +902,37 @@ class AbuseFilter {
 		$newText = $vars['NEW_TEXT'] = preg_replace( '/<[^>]+>/', '', $newHTML );
 
 		return $vars;
+	}
+
+	public static function buildVarDumpTable( $vars ) {
+		$output = '';
+
+		// I don't want to change the names of the pre-existing messages
+		// describing the variables, nor do I want to rewrite them, so I'm just
+		// mapping the variable names to builder messages with a pre-existing array.
+		$variableMessageMappings = self::$builderValues['vars'];
+		
+		$output .= Xml::openElement( 'table', array( 'class' => 'mw-abuselog-details' ) ) . Xml::openElement( 'tbody' );
+
+		$header = Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-var' ) ) . Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-val' ) );
+		$output .= Xml::tags( 'tr', null, $header );
+
+		// Now, build the body of the table.
+		foreach( $vars as $key => $value ) {
+			if ( !empty($variableMessageMappings[$key]) ) {
+				$mapping = $variableMessageMappings[$key];
+				$keyDisplay = wfMsgExt( "abusefilter-edit-builder-vars-$mapping", 'parseinline' ) . ' (' . Xml::element( 'tt', null, $key ) . ')';
+			} else {
+				$keyDisplay = Xml::element( 'tt', null, $key );
+			}
+
+			$value = Xml::element( 'div', array( 'class' => 'mw-abuselog-var-value' ), $value );
+
+			$trow = Xml::tags( 'td', array( 'class' => 'mw-abuselog-var' ), $keyDisplay ) . Xml::tags( 'td', array( 'class' => 'mw-abuselog-var-value' ), $value );
+			$output .= Xml::tags( 'tr', array( 'class' => "mw-abuselog-details-$key mw-abuselog-value" ), $trow );
+		}
+
+		$output .= Xml::closeElement( 'tbody' ) . Xml::closeElement( 'table' );
+		return $output;
 	}
 }

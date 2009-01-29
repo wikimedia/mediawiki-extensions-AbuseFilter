@@ -39,7 +39,9 @@ $wgAutoloadClasses['AbuseFilterViewEdit'] = "$dir/Views/AbuseFilterViewEdit.php"
 $wgAutoloadClasses['AbuseFilterViewTools'] = "$dir/Views/AbuseFilterViewTools.php";
 $wgAutoloadClasses['AbuseFilterViewHistory'] = "$dir/Views/AbuseFilterViewHistory.php";
 $wgAutoloadClasses['AbuseFilterViewRevert'] = "$dir/Views/AbuseFilterViewRevert.php";
-$wgAutoloadClasses['AbuseFilterViewTest'] = "$dir/Views/AbuseFilterViewTest.php";
+$wgAutoloadClasses['AbuseFilterViewTestBatch'] = "$dir/Views/AbuseFilterViewTestBatch.php";
+$wgAutoloadClasses['AbuseFilterViewExamine'] = "$dir/Views/AbuseFilterViewExamine.php";
+$wgAutoloadClasses['AbuseFilterChangesList'] = "$dir/Views/AbuseFilterViewExamine.php";
 
 $wgSpecialPages['AbuseLog'] = 'SpecialAbuseLog';
 $wgSpecialPages['AbuseFilter'] = 'SpecialAbuseFilter';
@@ -84,6 +86,7 @@ $wgAjaxExportList[] = 'AbuseFilter::ajaxCheckSyntax';
 $wgAjaxExportList[] = 'AbuseFilter::ajaxEvaluateExpression';
 $wgAjaxExportList[] = 'AbuseFilter::ajaxReAutoconfirm';
 $wgAjaxExportList[] = 'AbuseFilter::ajaxGetFilter';
+$wgAjaxExportList[] = 'AbuseFilter::ajaxCheckFilterWithVars';
 
 // Bump the version number every time you change any of the .css/.js files
 $wgAbuseFilterStyleVersion = 3;

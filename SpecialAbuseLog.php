@@ -101,11 +101,6 @@ class SpecialAbuseLog extends SpecialPage {
 		if (!$this->canSeeDetails()) {
 			return;
 		}
-
-		// I don't want to change the names of the pre-existing messages
-		// describing the variables, nor do I want to rewrite them, so I'm just
-		// mapping the variable names to builder messages with a pre-existing array.
-		$variableMessageMappings = AbuseFilter::$builderValues['vars'];
 		
 		$dbr = wfGetDB( DB_SLAVE );
 		
@@ -123,27 +118,7 @@ class SpecialAbuseLog extends SpecialPage {
 		// Build a table.
 		$vars = unserialize( $row->afl_var_dump );
 		
-		$output .= Xml::openElement( 'table', array( 'class' => 'mw-abuselog-details' ) ) . Xml::openElement( 'tbody' );
-		
-		$header = Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-var' ) ) . Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-val' ) );
-		$output .= Xml::tags( 'tr', null, $header );
-		
-		// Now, build the body of the table.
-		foreach( $vars as $key => $value ) {
-			if ( !empty($variableMessageMappings[$key]) ) {
-				$mapping = $variableMessageMappings[$key];
-				$keyDisplay = wfMsgExt( "abusefilter-edit-builder-vars-$mapping", 'parseinline' ) . ' (' . Xml::element( 'tt', null, $key ) . ')';
-			} else {
-				$keyDisplay = Xml::element( 'tt', null, $key );
-			}
-
-			$value = Xml::element( 'div', array( 'class' => 'mw-abuselog-var-value' ), $value );
-			
-			$trow = Xml::tags( 'td', array( 'class' => 'mw-abuselog-var' ), $keyDisplay ) . Xml::tags( 'td', array( 'class' => 'mw-abuselog-var-value' ), $value );
-			$output .= Xml::tags( 'tr', array( 'class' => "mw-abuselog-details-$key mw-abuselog-value" ), $trow );
-		}
-		
-		$output .= Xml::closeElement( 'tbody' ) . Xml::closeElement( 'table' );
+		$output .= AbuseFilter::buildVarDumpTable( $vars );
 		
 		if ($this->canSeePrivate()) {
 			// Private stuff, like IPs.
