@@ -254,9 +254,6 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-edit-builder-vars-new-text' => 'New page wikitext, after the edit',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'New page text, stripped of any markup',
 	'abusefilter-edit-builder-vars-new-html' => 'Parsed HTML source of the new revision',
-	'abusefilter-edit-builder-vars-all-links' => 'All links in the new page text',
-	'abusefilter-edit-builder-vars-added-links' => 'Links added to the page',
-	'abusefilter-edit-builder-vars-removed-links' => 'Links removed from the page',
 
 	// Filter history
 	'abusefilter-filter-log' => 'Recent filter changes',
@@ -3140,6 +3137,7 @@ $messages['he'] = array(
 	'right-abusefilter-log-detail' => 'צפייה ביומן ההשחתה המפורט',
 	'right-abusefilter-private' => 'צפייה במידע אישי ביומן ההשחתה',
 	'right-abusefilter-modify-restricted' => 'שינוי מסננים עם פעולות מוגבלות',
+	'right-abusefilter-revert' => 'שחזור כל השינויים שבוצעו על ידי מסנן השחתה מסוים',
 	'abusefilter-log' => 'יומן מסנן ההשחתה',
 	'abusefilter-log-search' => 'חיפוש ביומן ההשחתה',
 	'abusefilter-log-search-user' => 'משתמש:',
@@ -3246,6 +3244,8 @@ $messages['he'] = array(
 	'abusefilter-edit-history' => 'היסטוריה',
 	'abusefilter-edit-check' => 'בדיקת תחביר',
 	'abusefilter-edit-badfilter' => 'המסנן שציינתם אינו קיים',
+	'abusefilter-edit-revert' => 'שחזור פעולות שבוצעו על ידי מסנן זה',
+	'abusefilter-edit-tools' => 'כלים',
 	'abusefilter-edit-builder-select' => 'בחרו באפשרות עם הסמן כדי להוסיף אותה',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'אופרטורים חשבוניים',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'חיבור (+)',
@@ -3311,6 +3311,8 @@ $messages['he'] = array(
 	'abusefilter-edit-builder-vars-removed-links' => 'כל הקישורים החיצוניים שהוסרו בעריכה',
 	'abusefilter-edit-builder-vars-old-text' => 'טקסט הדף הישן, לפני העריכה',
 	'abusefilter-edit-builder-vars-new-text' => 'טקסט הדף החדש, אחרי העריכה',
+	'abusefilter-edit-builder-vars-new-text-stripped' => 'טקסט הדף החדש, ללא סימוני HTML',
+	'abusefilter-edit-builder-vars-new-html' => 'מקור ה־HTML המפוענח של הגרסה החדשה',
 	'abusefilter-filter-log' => 'שינויים אחרונים במסננים',
 	'abusefilter-history' => 'ההיסטוריה של המסנן $1',
 	'abusefilter-history-foruser' => 'שינויים של $1',
@@ -3346,6 +3348,30 @@ $messages['he'] = array(
 	'abusefilter-action-degroup' => 'הסרה מקבוצות',
 	'abusefilter-action-rangeblock' => 'חסימת טווח',
 	'abusefilter-action-disallow' => 'מניעת פעולה',
+	'abusefilter-revert-title' => 'שחזור כל השינויים של המסנן $1',
+	'abusefilter-revert-intro' => 'טופס זה מאפשר לכם לשחזר את כל השינויים שבוצעו על ידי מסנן ההשחתה בגלל המסנן $1.
+אנא הזהרו בשימוש כלי זה.',
+	'abusefilter-revert-preview-item' => '$1: $2 ביצע $3 על $4.
+פעולות לביטול: $5 ($6)',
+	'abusefilter-revert-search-legend' => 'בחירת פעולות המסנן לשחזור',
+	'abusefilter-revert-periodstart' => 'תחילת התקופה:',
+	'abusefilter-revert-periodend' => 'סיום התקופה:',
+	'abusefilter-revert-search' => 'בחירת פעולות',
+	'abusefilter-revert-filter' => 'מסנן:',
+	'abusefilter-revert-preview-intro' => 'להלן הפעולות שבוצעו על ידי מסנן ההשחתה ושישוחזרו כולן על ידי פעולה זו.
+אנא בידקו אותן בזהירות, ולחצו על "אישור" כדי לאשר את בחירתכם.',
+	'abusefilter-revert-confirm' => 'אישור',
+	'abusefilter-revert-success' => 'ביטלתם את כל השינויים שבוצעו על ידי מסנן ההשחתה בגלל [[Special:AbuseFilter/$1|המסנן $1]].',
+	'abusefilter-revert-reason' => 'שחזור אוטומטי של כל הפעולות שבוצעו על ידי מסנן ההשחתה בגלל המסנן $1.
+הסיבה שנתנה: $2',
+	'abusefilter-revert-reasonfield' => 'סיבה לשחזור:',
+	'abusefilter-test' => 'בדיקת מסנן מול עריכות קודמות',
+	'abusefilter-test-intro' => 'דף זה מאפשר לכם לבדוק מסנן המוכנס לתיבה שלהלן מול $1 השינויים האחרונים.
+כדי לטעון מסנן קיים, כתבו את מספר המסנן שלו לתוך התיבה שמתחת לתיבת העריכה שלהלן, ולחצו על הכפתור "טעינה".',
+	'abusefilter-test-legend' => 'בדיקת מסנן',
+	'abusefilter-test-load-filter' => 'טעינת מסנן מספר:',
+	'abusefilter-test-submit' => 'בדיקה',
+	'abusefilter-test-load' => 'טעינה',
 );
 
 /** Hindi (हिन्दी)
