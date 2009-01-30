@@ -140,7 +140,12 @@ class AbuseFilter {
 	}
 	
 	public static function evaluateExpression( $expr, $vars = array() ) {
+		wfLoadExtensionMessages( 'AbuseFilter' );
 		global $wgAbuseFilterParserClass;
+
+		if (self::checkSyntax( $expr ) !== true) {
+			return '';
+		}
 		
 		$parser = new $wgAbuseFilterParserClass;
 		
