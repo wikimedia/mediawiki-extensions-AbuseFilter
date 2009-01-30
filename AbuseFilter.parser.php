@@ -339,6 +339,7 @@ class AbuseFilterParser {
 	}
 	
 	public function setVar( $name, $var ) {
+		$name = strtolower($name);
 		$this->mVars[$name] = AFPData::newFromPHPVar( $var );
 	}
 	
@@ -526,9 +527,10 @@ class AbuseFilterParser {
 	
 	protected function doLevelSpecialWords( &$result ) {
 		$this->doLevelUnarys( $result );
+		$keyword = strtolower($this->mCur->value);
 		$specwords = array( 'in' => 'keywordIn', 'like' => 'keywordLike', 'matches' => 'keywordLike', 'contains' => 'keywordContains', 'rlike' => 'keywordRegex', 'regex' => 'keywordRegex' );
-		if( $this->mCur->type == AFPToken::TKeyword && in_array( $this->mCur->value, array_keys($specwords) ) ) {
-			$func = $specwords[$this->mCur->value];
+		if( $this->mCur->type == AFPToken::TKeyword && in_array( $keyword, array_keys($specwords) ) ) {
+			$func = $specwords[$keyword];
 			$this->move();
 			$r2 = new AFPData();
 			$this->doLevelUnarys( $r2 );
@@ -617,8 +619,9 @@ class AbuseFilterParser {
 		$tok = $this->mCur->value;
 		switch( $this->mCur->type ) {
 			case AFPToken::TID:
-				if( isset( $this->mVars[$tok] ) ) {
-					$result = $this->mVars[$tok];
+				$var = strtolower($tok);
+				if( isset( $this->mVars[$var] ) ) {
+					$result = $this->mVars[$var];
 				} else {
 					$result = new AFPData();
 				}
