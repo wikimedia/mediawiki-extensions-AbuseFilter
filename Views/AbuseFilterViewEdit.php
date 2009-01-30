@@ -134,6 +134,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			$dbw->commit();
 
+			// Special-case stuff for tags -- purge the tag list cache.
+			if ( isset( $actions['tag'] ) ) {
+				global $wgMemc;
+				$wgMemc->delete( wfMemcKey( 'valid-tags' ) );
+			}
+
 			global $wgOut;
 
 			$wgOut->redirect( $this->getTitle()->getLocalURL( 'result=success&changedfilter='.$new_id ) );
