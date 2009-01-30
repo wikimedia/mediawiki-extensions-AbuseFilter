@@ -55,7 +55,6 @@ $wgHooks['GetAutoPromoteGroups'][] = 'AbuseFilterHooks::onGetAutoPromoteGroups';
 $wgHooks['AbortMove'][] = 'AbuseFilterHooks::onAbortMove';
 $wgHooks['AbortNewAccount'][] = 'AbuseFilterHooks::onAbortNewAccount';
 $wgHooks['ArticleDelete'][] = 'AbuseFilterHooks::onArticleDelete';
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'AbuseFilterHooks::onSchemaUpdate';
 $wgHooks['AbortDeleteQueueNominate'][] = 'AbuseFilterHooks::onAbortDeleteQueueNominate';
 $wgHooks['RecentChange_save'][] = 'AbuseFilterHooks::onRecentChangeSave';
 $wgHooks['ListDefinedTags'][] = 'AbuseFilterHooks::onListDefinedTags';
