@@ -168,6 +168,8 @@ class AbuseFilterHooks {
 
 	public static function onLoadExtensionSchemaUpdates() {
 		global $wgExtNewTables, $wgExtNewFields;
+
+		$dir = dirname( __FILE__ );
 		
 		// DB updates
 		$wgExtNewTables[] = array( 'abuse_filter', "$dir/abusefilter.tables.sql" );
