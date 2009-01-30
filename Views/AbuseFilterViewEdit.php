@@ -238,21 +238,22 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$flags .= $checkbox;
 		}
 		$fields['abusefilter-edit-flags'] = $flags;
-
+		$tools = '';
 		if ( $filter != 'new' && $wgUser->isAllowed( 'abusefilter-revert' ) ) {
-			$tools = '';
 			$tools .= Xml::tags( 'p', null, $sk->link( $this->getTitle( 'revert/'.$filter ), wfMsg( 'abusefilter-edit-revert' ) ) );
-			$tools .= Xml::tags( 'p', null, $sk->link( $this->getTitle( "test/$filter" ), wfMsgExt( 'abusefilter-edit-test-link', 'parseinline' ) ) );
-			$fields['abusefilter-edit-tools'] = $tools;
 		}
 
 		if ($filter != 'new') {
+			// Test link
+			$tools .= Xml::tags( 'p', null, $sk->link( $this->getTitle( "test/$filter" ), wfMsgExt( 'abusefilter-edit-test-link', 'parseinline' ) ) );
 			// Last modification details
 			$user = $sk->userLink( $row->af_user, $row->af_user_text ) . $sk->userToolLinks( $row->af_user, $row->af_user_text );
 			$fields['abusefilter-edit-lastmod'] = wfMsgExt( 'abusefilter-edit-lastmod-text', array( 'parseinline', 'replaceafter' ), array( $wgLang->timeanddate( $row->af_timestamp ), $user ) );
 			$history_display = wfMsgExt( 'abusefilter-edit-viewhistory', array( 'parseinline' ) );
 			$fields['abusefilter-edit-history'] = $sk->makeKnownLinkObj( $this->getTitle( 'history/'.$filter ), $history_display );
 		}
+
+		$fields['abusefilter-edit-tools'] = $tools;
 
 		$form = Xml::buildForm( $fields );
 		$form = Xml::fieldset( wfMsg( 'abusefilter-edit-main' ), $form );
