@@ -922,10 +922,10 @@ class AbuseFilter {
 		// mapping the variable names to builder messages with a pre-existing array.
 		$variableMessageMappings = self::$builderValues['vars'];
 		
-		$output .= Xml::openElement( 'table', array( 'class' => 'mw-abuselog-details' ) ) . Xml::openElement( 'tbody' );
+		$output .= Xml::openElement( 'table', array( 'class' => 'mw-abuselog-details' ) ) . Xml::openElement( 'tbody' ) . "\n";
 
 		$header = Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-var' ) ) . Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-val' ) );
-		$output .= Xml::tags( 'tr', null, $header );
+		$output .= Xml::tags( 'tr', null, $header ) . "\n";
 
 		// Now, build the body of the table.
 		foreach( $vars as $key => $value ) {
@@ -936,10 +936,12 @@ class AbuseFilter {
 				$keyDisplay = Xml::element( 'tt', null, $key );
 			}
 
+			if( is_null( $value ) )
+				$value = '';
 			$value = Xml::element( 'div', array( 'class' => 'mw-abuselog-var-value' ), $value );
 
 			$trow = Xml::tags( 'td', array( 'class' => 'mw-abuselog-var' ), $keyDisplay ) . Xml::tags( 'td', array( 'class' => 'mw-abuselog-var-value' ), $value );
-			$output .= Xml::tags( 'tr', array( 'class' => "mw-abuselog-details-$key mw-abuselog-value" ), $trow );
+			$output .= Xml::tags( 'tr', array( 'class' => "mw-abuselog-details-$key mw-abuselog-value" ), $trow ) . "\n";
 		}
 
 		$output .= Xml::closeElement( 'tbody' ) . Xml::closeElement( 'table' );
