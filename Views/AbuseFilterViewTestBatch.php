@@ -101,5 +101,10 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$this->mTestUser = $wgRequest->getText( 'wpTestUser' );
 		$this->mTestPeriodEnd = $wgRequest->getText( 'wpTestPeriodEnd' );
 		$this->mTestPeriodStart = $wgRequest->getText( 'wpTestPeriodStart' );
+
+		if ( !$this->mFilter && count($this->mParams) > 1 && is_numeric( $filter = $this->mParams[1] ) ) {
+			$dbr = wfGetDB( DB_SLAVE );
+			$this->mFilter = $dbr->selectField( 'abuse_filter', 'af_pattern', array( 'af_id' => $filter ), __METHOD__ );
+		}
 	}
 }

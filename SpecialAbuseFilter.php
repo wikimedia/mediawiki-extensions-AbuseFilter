@@ -50,7 +50,7 @@ class SpecialAbuseFilter extends SpecialPage {
 			$view = 'AbuseFilterViewRevert';
 		}
 
-		if ( $subpage == 'test' ) {
+		if ( count($params) && $params[0] == 'test' ) {
 			$view = 'AbuseFilterViewTestBatch';
 		}
 

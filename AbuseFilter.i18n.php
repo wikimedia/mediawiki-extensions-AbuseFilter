@@ -183,7 +183,8 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-edit-check' => 'Check syntax',
 	'abusefilter-edit-badfilter' => 'The filter you specified does not exist',
 	'abusefilter-edit-revert' => 'Revert actions taken by this filter',
-	'abusefilter-edit-tools' => 'Tools',
+	'abusefilter-edit-tools' => 'Tools:',
+	'abusefilter-edit-test-link' => 'Test this filter against recent edits',
 
 	// Filter editing helpers
 	'abusefilter-edit-builder-select' => 'Select an option to add it at the cursor',

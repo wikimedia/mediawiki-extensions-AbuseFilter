@@ -217,7 +217,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$fields['abusefilter-edit-rules'] = AbuseFilter::buildEditBox($row->af_pattern);
 		$fields['abusefilter-edit-notes'] = Xml::textarea( 'wpFilterNotes', ( isset( $row->af_comments ) ? $row->af_comments."\n" : "\n" ) );
-
+		
 		// Build checkboxen
 		$checkboxes = array( 'hidden', 'enabled', 'deleted' );
 		$flags = '';
@@ -241,7 +241,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		if ( $filter != 'new' && $wgUser->isAllowed( 'abusefilter-revert' ) ) {
 			$tools = '';
-			$tools .= $sk->link( $this->getTitle( 'revert/'.$filter ), wfMsg( 'abusefilter-edit-revert' ) );
+			$tools .= Xml::tags( 'p', null, $sk->link( $this->getTitle( 'revert/'.$filter ), wfMsg( 'abusefilter-edit-revert' ) ) );
+			$tools .= Xml::tags( 'p', null, $sk->link( $this->getTitle( "test/$filter" ), wfMsgExt( 'abusefilter-edit-test-link', 'parseinline' ) ) );
 			$fields['abusefilter-edit-tools'] = $tools;
 		}
 
