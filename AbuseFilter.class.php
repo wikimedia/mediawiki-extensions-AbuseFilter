@@ -900,7 +900,7 @@ class AbuseFilter {
 		}
 
 		// Added links...
-		$editInfo = $article->prepareTextForEdit( $old_text, $revid );
+		$editInfo = $article->prepareTextForEdit( $new_text, $revid );
 		$newLinks = array_keys( $editInfo->output->getExternalLinks() );
 		$vars['ALL_LINKS'] = implode( "\n", $newLinks );
 		$vars['ADDED_LINKS'] = implode( "\n", array_diff( $newLinks, array_intersect( $newLinks, $oldLinks ) ) );
