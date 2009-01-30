@@ -29,12 +29,18 @@ abstract class AbuseFilterView {
 
 class AbuseFilterChangesList extends OldChangesList {
 	protected function insertExtra( &$s, &$rc, &$classes ) {
-		## Empty, used for subclassers to add anything special.
 		$sk = $this->skin;
 
 		$title = SpecialPage::getTitleFor( 'AbuseFilter', "examine/".$rc->mAttribs['rc_id'] );
 		$examineLink = $sk->link( $title, wfMsgExt( 'abusefilter-changeslist-examine', 'parseinline' ) );
 
 		$s .= " ($examineLink)";
+
+		## If we have a match..
+		if ( isset( $rc->filterResult ) ) {
+			$class = $rc->filterResult ? 'mw-abusefilter-changeslist-match' : 'mw-abusefilter-changeslist-nomatch';
+
+			$classes[] = $class;
+		}
 	}
 }

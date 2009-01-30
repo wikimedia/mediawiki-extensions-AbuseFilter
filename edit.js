@@ -19,10 +19,12 @@ function processSyntaxResult( request ) {
 		// Successful
 		changeText( el, 'No syntax errors.' );
 		el.syntaxOk = true;
+		el.className = 'mw-abusefilter-syntaxresult-ok';
 	} else {
 		var errorData = eval(response.substr(4));
 		changeText( el, 'Syntax error: '+errorData[0] );
 		el.syntaxOk = false;
+		el.className = 'mw-abusefilter-syntaxresult-error';
 
 		var position = errorData[1];
 		var textArea = document.getElementById( wgFilterBoxName );

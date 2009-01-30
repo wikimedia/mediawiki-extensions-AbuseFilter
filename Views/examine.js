@@ -11,9 +11,12 @@ function examinerCheckFilter() {
 
 		if (response == 'MATCH') {
 			changeText( el, wgMessageMatch );
+			el.className = 'mw-abusefilter-examine-match';
 		} else if (response == 'NOMATCH') {
 			changeText( el, wgMessageNomatch );
+			el.className = 'mw-abusefilter-examine-nomatch';
 		} else if (response == 'SYNTAXERROR' ) {
+			el.className = 'mw-abusefilter-examine-syntaxerror';
 			changeText( el, wgMessageError );
 		}
 	} );

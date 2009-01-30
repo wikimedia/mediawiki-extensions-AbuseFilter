@@ -48,3 +48,24 @@ tr.mw-abusefilter-list-disabled, tr.mw-abusefilter-list-disabled td {
 tr.mw-abusefilter-list-deleted, tr.mw-abusefilter-list-deleted td {
 	color: #aaaaaa;
 }
+
+.mw-abusefilter-examine-match,
+.mw-abusefilter-syntaxresult-ok,
+li.mw-abusefilter-changeslist-match {
+	background-image: url(yes_check.png);
+}
+
+.mw-abusefilter-examine-nomatch,
+.mw-abusefilter-examine-syntaxerror,
+.mw-abusefilter-syntaxresult-error,
+li.mw-abusefilter-changeslist-nomatch {
+	background-image: url(red_x.png);
+}
+
+#mw-abusefilter-syntaxresult,
+li.mw-abusefilter-changeslist-nomatch,
+li.mw-abusefilter-changeslist-match {
+	background-repeat: no-repeat;
+	padding-left: 25px;
+	background-position: left center;
+}

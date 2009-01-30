@@ -24,7 +24,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$output = Xml::tags( 'div', array( 'id' => 'mw-abusefilter-test-editor' ), $output );
 
 		// Removed until I can distinguish between positives and negatives :)
-// 		$output .= Xml::tags( 'p', null, Xml::checkLabel( wfMsg( 'abusefilter-test-shownegative' ), 'wpShowNegative', 'wpShowNegative', $this->mShowNegative ) );
+ 		$output .= Xml::tags( 'p', null, Xml::checkLabel( wfMsg( 'abusefilter-test-shownegative' ), 'wpShowNegative', 'wpShowNegative', $this->mShowNegative ) );
 
 		// Selectory stuff
 		$selectFields = array();
@@ -80,7 +80,9 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			$result = AbuseFilter::checkConditions( $this->mFilter, $vars );
 
 			if ($result || $this->mShowNegative) {
+				// Stash result in RC item
 				$rc = RecentChange::newFromRow( $row );
+				$rc->filterResult = $result;
 				$rc->counter = $counter++;
 				$output .= $changesList->recentChangesLine( $rc, false );
 			}

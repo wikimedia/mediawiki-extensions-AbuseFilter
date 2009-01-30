@@ -11,6 +11,8 @@ if ( ! defined( 'MEDIAWIKI' ) )
  *
  * @author Andrew Garrett <andrew@epstone.net>
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+ * Includes GFDL-licensed images retrieved from http://commons.wikimedia.org/wiki/File:Yes_check.svg
+ * and http://commons.wikimedia.org/wiki/File:Red_x.svg -- both have been downsampled and converted to PNG.
  */
 
 $dir = dirname(__FILE__);
@@ -89,6 +91,6 @@ $wgAjaxExportList[] = 'AbuseFilter::ajaxGetFilter';
 $wgAjaxExportList[] = 'AbuseFilter::ajaxCheckFilterWithVars';
 
 // Bump the version number every time you change any of the .css/.js files
-$wgAbuseFilterStyleVersion = 4;
+$wgAbuseFilterStyleVersion = 5;
 
 $wgAbuseFilterRestrictedActions = array( 'block', 'degroup' );
