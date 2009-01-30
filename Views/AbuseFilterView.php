@@ -30,9 +30,10 @@ abstract class AbuseFilterView {
 class AbuseFilterChangesList extends OldChangesList {
 	protected function insertExtra( &$s, &$rc, &$classes ) {
 		$sk = $this->skin;
+		$examineParams = empty($rc->examineParams) ? array() : $rc->examineParams;
 
 		$title = SpecialPage::getTitleFor( 'AbuseFilter', "examine/".$rc->mAttribs['rc_id'] );
-		$examineLink = $sk->link( $title, wfMsgExt( 'abusefilter-changeslist-examine', 'parseinline' ) );
+		$examineLink = $sk->link( $title, wfMsgExt( 'abusefilter-changeslist-examine', 'parseinline' ), array(), $examineParams );
 
 		$s .= " ($examineLink)";
 

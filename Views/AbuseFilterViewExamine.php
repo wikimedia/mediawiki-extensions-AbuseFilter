@@ -114,7 +114,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 
 		// Add test bit
 		$tester = Xml::tags( 'h2', null, wfMsgExt( 'abusefilter-examine-test', 'parseinline' ) );
-		$tester .= AbuseFilter::buildEditBox( '', 'wpTestFilter', false );
+		$tester .= AbuseFilter::buildEditBox( $this->mTestFilter, 'wpTestFilter', false );
 		$tester .= "\n" . Xml::inputLabel( wfMsg( 'abusefilter-test-load-filter' ), 'wpInsertFilter', 'mw-abusefilter-load-filter', 10, '' ) . '&nbsp;' .
 			Xml::element( 'input', array( 'type' => 'button', 'value' => wfMsg( 'abusefilter-test-load' ), 'id' => 'mw-abusefilter-load' ) );
 		$output .= Xml::tags( 'div', array( 'id' => 'mw-abusefilter-examine-editor' ), $tester );
@@ -134,5 +134,6 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$this->mSearchPeriodStart = $wgRequest->getText( 'wpSearchPeriodStart' );
 		$this->mSearchPeriodEnd = $wgRequest->getText( 'wpSearchPeriodEnd' );
 		$this->mSubmit = $wgRequest->getCheck( 'submit' );
+		$this->mTestFilter = $wgRequest->getText( 'testfilter' );
 	}
 }
