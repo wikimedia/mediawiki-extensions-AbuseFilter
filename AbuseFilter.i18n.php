@@ -283,7 +283,7 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-history-select-submit' => 'Refine',
 
 	// Exceptions
-	'abusefilter-exception-unexpectedatend' => 'Unexpected "$2" at end.',
+	'abusefilter-exception-unexpectedatend' => 'Unexpected "$2" at character $1.',
 	'abusefilter-exception-expectednotfound' => 'Expected a $2 at character $1, not found.',
 	'abusefilter-exception-unrecognisedkeyword' => 'Unrecognised keyword $2 at character $1.',
 	'abusefilter-exception-unexpectedtoken' => 'Unexpected token "$2" at character $1.',
