@@ -253,6 +253,8 @@ class AbuseFilter {
 
 		foreach( $actionsByFilter as $filter => $actions ) {
 			// Special-case handling for warnings.
+			global $wgOut;
+			$parsed_public_comments = $wgOut->parseInline( self::$filters[$filter]->af_public_comments );
 
 			if ( !empty( $actions['throttle'] ) ) {
 				$parameters = $actions['throttle']['parameters'];
@@ -281,7 +283,7 @@ class AbuseFilter {
 
 					// Threaten them a little bit
 					$msg = ( !empty($parameters[0]) && strlen($parameters[0]) ) ? $parameters[0] : 'abusefilter-warning';
-					$messages[] = wfMsgNoTrans( $msg, self::$filters[$filter]->af_public_comments ) . "<br />\n";
+					$messages[] = wfMsgExt( $msg, 'parseinline', array( $parsed_public_comments) ) . "<br />\n";
 
 					$actionsTaken[$filter][] = 'warn';
 
@@ -300,7 +302,7 @@ class AbuseFilter {
 
 			// Do the rest of the actions
 			foreach( $actions as $action => $info ) {
-				$newMsg = self::takeConsequenceAction( $action, $info['parameters'], $title, $vars, self::$filters[$filter]->af_public_comments );
+				$newMsg = self::takeConsequenceAction( $action, $info['parameters'], $title, $vars, self::$filters[$filter]->af_public_comments);
 
 				if ($newMsg)
 					$messages[] = $newMsg;
@@ -365,10 +367,10 @@ class AbuseFilter {
 		switch ($action) {
 			case 'disallow':
 				if (strlen($parameters[0])) {
-					$display .= wfMsgNoTrans( $parameters[0], $rule_desc ) . "\n";
+					$display .= wfMsgExt( $parameters[0], 'parseinline', array($rule_desc) ) . "\n";
 				} else {
 					// Generic message.
-					$display .= wfMsgNoTrans( 'abusefilter-disallowed', $rule_desc ) ."<br />\n";
+					$display .= wfMsgExt( 'abusefilter-disallowed', 'parseinline', array($rule_desc) ) ."<br />\n";
 				}
 				break;
 				
@@ -400,7 +402,7 @@ class AbuseFilter {
 				$log->addEntry( 'block', Title::makeTitle( NS_USER, $wgUser->getName() ),
 					wfMsgForContent( 'abusefilter-blockreason', $rule_desc ), $logParams, self::getFilterUser() );
 				
-				$display .= wfMsgNoTrans( 'abusefilter-blocked-display', $rule_desc ) ."<br />\n";
+				$display .= wfMsgExt( 'abusefilter-blocked-display', 'parseinline', array($rule_desc) ) ."<br />\n";
 				break;
 			case 'rangeblock':
 				global $wgUser;
@@ -436,7 +438,7 @@ class AbuseFilter {
 				$log->addEntry( 'block', Title::makeTitle( NS_USER, $range ),
 					wfMsgForContent( 'abusefilter-blockreason', $rule_desc ), $logParams, self::getFilterUser() );
 				
-				$display .= wfMsgNoTrans( 'abusefilter-blocked-display', $rule_desc ) ."<br />\n";
+				$display .= wfMsgExt( 'abusefilter-blocked-display', 'parseinline', $rule_desc ) ."<br />\n";
 				break;
 			case 'degroup':
 				global $wgUser;
@@ -448,7 +450,7 @@ class AbuseFilter {
 						$wgUser->removeGroup( $group );
 					}
 
-					$display .= wfMsgNoTrans( 'abusefilter-degrouped', $rule_desc ) ."<br />\n";
+					$display .= wfMsgExt( 'abusefilter-degrouped', 'parseinline', array($rule_desc) ) ."<br />\n";
 
 					// Don't log it if there aren't any groups being removed!
 					if (!count($groups)) {
@@ -475,7 +477,7 @@ class AbuseFilter {
 					$blockPeriod = (int)mt_rand( 3*86400, 7*86400 ); // Block for 3-7 days.
 					$wgMemc->set( self::autoPromoteBlockKey( $wgUser ), true, $blockPeriod );
 
-					$display .= wfMsgNoTrans( 'abusefilter-autopromote-blocked', $rule_desc ) ."<br />\n";
+					$display .= wfMsgExt( 'abusefilter-autopromote-blocked', 'parseinline', array($rule_desc) ) ."<br />\n";
 				}
 				break;
 

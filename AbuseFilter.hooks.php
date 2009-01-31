@@ -26,7 +26,10 @@ class AbuseFilterHooks {
 		$filter_result = AbuseFilter::filterAction( $vars, $editor->mTitle, $oldLinks );
 
 		if( $filter_result !== true ){
-			$error = $filter_result;
+			global $wgOut;
+			$wgOut->addHTML( $filter_result );
+			$editor->showEditForm();
+			return false;
 		}
 		return true;
 	}

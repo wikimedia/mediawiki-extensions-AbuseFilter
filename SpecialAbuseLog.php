@@ -180,13 +180,16 @@ class SpecialAbuseLog extends SpecialPage {
 			}
 			$actions_taken = implode( ', ', $displayActions );
 		}
+
+		global $wgOut;
+		$parsed_comments = $wgOut->parseInline( $row->af_public_comments );
 		
 		if ($this->canSeeDetails()) {
 			$detailsLink = $sk->makeKnownLinkObj( $this->getTitle(  ), wfMsg( 'abusefilter-log-detailslink' ), 'details='.$row->afl_id );
 			
-			$description = wfMsgExt( 'abusefilter-log-detailedentry', array( 'parseinline', 'replaceafter' ), array( $timestamp, $user, $row->afl_filter, $row->afl_action, $sk->makeKnownLinkObj( $title ), $actions_taken, $row->af_public_comments, $detailsLink ) );
+			$description = wfMsgExt( 'abusefilter-log-detailedentry', array( 'parseinline', 'replaceafter' ), array( $timestamp, $user, $row->afl_filter, $row->afl_action, $sk->makeKnownLinkObj( $title ), $actions_taken, $parsed_comments, $detailsLink ) );
 		} else {
-			$description = wfMsgExt( 'abusefilter-log-entry', array( 'parseinline', 'replaceafter' ), array( $timestamp, $user, $row->afl_action, $sk->makeKnownLinkObj( $title ), $actions_taken, $row->af_public_comments ) );
+			$description = wfMsgExt( 'abusefilter-log-entry', array( 'parseinline', 'replaceafter' ), array( $timestamp, $user, $row->afl_action, $sk->makeKnownLinkObj( $title ), $actions_taken, $parsed_comments ) );
 		}
 		
 		return $li ? Xml::tags( 'li', null, $description ) : $description;
