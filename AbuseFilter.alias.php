@@ -120,6 +120,12 @@ $aliases['nl'] = array(
 	'AbuseFilter' => array( 'Misbruikfilter' ),
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
+$aliases['nn'] = array(
+	'AbuseLog' => array( 'Misbrukslogg' ),
+	'AbuseFilter' => array( 'Misbruksfilter' ),
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'AbuseLog' => array( 'Misbrukslogg' ),
