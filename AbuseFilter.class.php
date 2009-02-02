@@ -207,6 +207,8 @@ class AbuseFilter {
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'abuse_filter', '*', array( 'af_enabled' => 1, 'af_deleted' => 0 ) );
 
+		$filter_matched = array();
+
 		while ( $row = $dbr->fetchObject( $res ) ) {
 			// Store the row somewhere convenient
 			self::$filters[$row->af_id] = $row;
