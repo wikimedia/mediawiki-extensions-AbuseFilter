@@ -335,6 +335,8 @@ class AbuseFilter {
 					'afl_namespace' => $title->getNamespace(), 'afl_title' => $title->getDBKey(), 'afl_ip' => wfGetIp() );
 
 		self::addLogEntries( $actions_taken, $log_template, $vars['ACTION'] );
+
+		$error_msg = $error_msg == '' ? true : $error_msg;
 		
 		return $error_msg;
 	}
