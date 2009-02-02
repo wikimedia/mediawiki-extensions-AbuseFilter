@@ -323,7 +323,7 @@ Reason given: $2',
 
 	// These messages are for batch checking
 	'abusefilter-test' => 'Test a filter against previous edits',
-	'abusefilter-test-intro' => 'This page allows you to check a filter entered in the box below against the last $1 changes.
+	'abusefilter-test-intro' => 'This page allows you to check a filter entered in the box below against the last $1 {{PLURAL:$1|change|changes}}.
 To load an existing filter, type its filter ID into the box below the edit textbox, and click the "Load" button.',
 	'abusefilter-test-legend' => 'Filter testing',
 	'abusefilter-test-load-filter' => 'Load filter ID:',
