@@ -42,6 +42,12 @@ $aliases['de'] = array(
 	'AbuseFilter' => array( 'Missbrauchfilter' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'AbuseLog' => array( 'Protokol znjewužywanjow' ),
+	'AbuseFilter' => array( 'Filter znjewužywanjow' ),
+);
+
 /** Esperanto (Esperanto) */
 $aliases['eo'] = array(
 	'AbuseLog' => array( 'Protokolo pri misuzado' ),
@@ -64,6 +70,12 @@ $aliases['gl'] = array(
 $aliases['gsw'] = array(
 	'AbuseLog' => array( 'Missbruchsfilter-Logbuech' ),
 	'AbuseFilter' => array( 'Missbruchsfilter' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'AbuseLog' => array( 'Protokol znjewužiwanjow' ),
+	'AbuseFilter' => array( 'Filter znjewužiwanjow' ),
 );
 
 /** Hungarian (Magyar) */
