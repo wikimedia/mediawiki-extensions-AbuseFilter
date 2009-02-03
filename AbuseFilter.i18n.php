@@ -4354,6 +4354,11 @@ $messages['he'] = array(
 	'abusefilter-edit-throttle-groups' => "הגבלות פעילות לפי קבוצה:
 :''(אחד בשורה, יש לשלב עם פסיקים)''",
 	'abusefilter-edit-warn-message' => 'הודעת המערכת המשמשת לאזהרה:',
+	'abusefilter-edit-warn-other' => 'הודעה אחרת',
+	'abusefilter-edit-warn-other-label' => "שם ההודעה של ההודעה האחרת:
+:''(ללא הקידומת \"מדיה ויקי\")''",
+	'abusefilter-edit-warn-actions' => 'פעולות',
+	'abusefilter-edit-warn-preview' => 'תצוגה מקדימה של ההודעה',
 	'abusefilter-edit-tag-tag' => 'סימונים אפשריים (אחד בשורה):',
 	'abusefilter-edit-denied' => 'אינכם יכולים לצפות בפרטים של מסנן זה, כיוון שהוא מוסתר מעיני הציבור.',
 	'abusefilter-edit-main' => 'הפרמטרים של המסנן',
