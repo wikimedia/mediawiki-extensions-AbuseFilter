@@ -171,7 +171,7 @@ class AbuseFilterHistoryPager extends TablePager {
 		$info = array(
 			'tables' => 'abuse_filter_history',
 			'fields' => $this->mFilter ?
-				array( 'afh_timestamp', 'afh_user_text', 'afh_public_comments', 'afh_flags', 'afh_pattern', 'afh_comments', 'afh_actions', 'afh_id', 'afh_user', 'afh_changed_fields' ) :
+				array( 'afh_filter', 'afh_timestamp', 'afh_user_text', 'afh_public_comments', 'afh_flags', 'afh_pattern', 'afh_comments', 'afh_actions', 'afh_id', 'afh_user', 'afh_changed_fields' ) :
 				array( 'afh_filter', 'afh_timestamp', 'afh_user_text', 'afh_public_comments', 'afh_flags', 'afh_comments', 'afh_actions', 'afh_id', 'afh_user', 'afh_changed_fields'),
 			'conds' => $this->mFilter ? array( 'afh_filter' => $this->mFilter ) : array(),
 		);
