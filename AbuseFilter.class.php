@@ -834,7 +834,7 @@ class AbuseFilter {
 		$title = Title::makeTitle( $row->rc_namespace, $row->rc_title );
 		
 		$vars = array_merge( $vars, self::generateUserVars( User::newFromId( $row->rc_user ) ) );
-		$vars = array_merge( $vars, self::generateTitleVars( $title, 'ARTICLE_' ) );
+		$vars = array_merge( $vars, self::generateTitleVars( $title, 'ARTICLE' ) );
 		$vars['ACTION'] = 'edit';
 		$vars['SUMMARY'] = $row->rc_comment;
 
