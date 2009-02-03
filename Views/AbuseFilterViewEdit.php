@@ -337,8 +337,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$warnFields['abusefilter-edit-warn-other-label'] = Xml::input( 'wpFilterWarnMessageOther', 45, $warnMsg ? $warnMsg : 'abusefilter-warning-', array( 'id' => 'mw-abusefilter-warn-message-other' ) );
 
 				$previewButton = Xml::element( 'input', array( 'type' => 'button', 'id' => 'mw-abusefilter-warn-preview-button', 'value' => wfMsg( 'abusefilter-edit-warn-preview' ) ) );
+				$editButton = Xml::element( 'input', array( 'type' => 'button', 'id' => 'mw-abusefilter-warn-edit-button', 'value' => wfMsg( 'abusefilter-edit-warn-edit' ) ) );
 				$previewHolder = Xml::element( 'div', array( 'id' => 'mw-abusefilter-warn-preview' ), '' );
-				$warnFields['abusefilter-edit-warn-actions'] = Xml::tags( 'p', null, $previewButton ) . "\n$previewHolder";
+				$warnFields['abusefilter-edit-warn-actions'] = Xml::tags( 'p', null, "$previewButton $editButton" ) . "\n$previewHolder";
 				$output .= Xml::tags( 'div', array( 'id' => 'mw-abusefilter-warn-parameters' ), Xml::buildForm( $warnFields ) );
 				return $output;
 			case 'tag':

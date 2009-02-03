@@ -134,6 +134,16 @@ function previewWarnMessage() {
 	xmlHttp.send(null);
 }
 
+function editWarnMessage() {
+	var message = document.getElementById( 'mw-abusefilter-warn-message-existing' ).value;
+
+	if (message == 'other') {
+		message = document.getElementById( 'mw-abusefilter-warn-message-other' ).value;
+	}
+
+	window.location = wgScript + '?title=MediaWiki:'+encodeURIComponent( message )+'&action=edit';
+}
+
 addOnloadHook( function() {
 	addHandler( document.getElementById( wgFilterBoxName ), 'keyup', function() {
 		el = document.getElementById( 'mw-abusefilter-syntaxresult' );
@@ -150,6 +160,11 @@ addOnloadHook( function() {
 	var warnMsgPreview = document.getElementById( 'mw-abusefilter-warn-preview-button' );
 	if (warnMsgPreview) {
 		addHandler( warnMsgPreview, 'click', previewWarnMessage );
+	}
+
+	var warnMsgEdit = document.getElementById( 'mw-abusefilter-warn-edit-button' );
+	if (warnMsgEdit) {
+		addHandler( warnMsgEdit, 'click', editWarnMessage );
 	}
 
 	setupActions();
