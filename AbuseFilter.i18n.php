@@ -267,7 +267,7 @@ Please ask a user with permission to add restricted actions to make the change f
 
 	// Filter history
 	'abusefilter-filter-log' => 'Recent filter changes',
-	'abusefilter-history' => 'History for filter $1',
+	'abusefilter-history' => 'Change history for Abuse Filter #$1',
 	'abusefilter-history-foruser' => 'Changes by $1',
 	'abusefilter-history-hidden' => 'Hidden',
 	'abusefilter-history-enabled' => 'Enabled',
