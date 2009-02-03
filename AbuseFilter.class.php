@@ -513,16 +513,26 @@ class AbuseFilter {
 		global $wgMemc;
 		
 		$key = self::throttleKey( $throttleId, $types, $title );
-		$count = $wgMemc->get( $key );
+		$count = intval( $wgMemc->get( $key ) );
+
+		wfDebugLog( 'AbuseFilter', "Got value $count for throttle key $key\n" );
 		
 		if ($count > 0) {
 			$wgMemc->incr( $key );
-			if ($count > $rateCount) {
-				return true; // THROTTLED
-			}
+			$count++;
+			wfDebugLog( 'AbuseFilter', "Incremented throttle key $key" );
 		} else {
+			wfDebugLog( 'AbuseFilter', "Added throttle key $key with value 1" );
 			$wgMemc->add( $key, 1, $ratePeriod );
+			$count = 1;
 		}
+
+		if ($count > $rateCount) {
+			wfDebugLog( 'AbuseFilter', "Throttle $key hit value $count -- maximum is $rateCount." );
+			return true; // THROTTLED
+		}
+
+		wfDebugLog( 'AbuseFilter', "Throttle $key not hit!" );
 		
 		return false; // NOT THROTTLED
 	}
