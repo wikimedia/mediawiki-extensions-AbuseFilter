@@ -104,6 +104,9 @@ class AbuseFilter {
 	
 	public static function generateTitleVars( $title, $prefix ) {
 		$vars = array();
+
+		if (!$title)
+			return array();
 		
 		$vars[$prefix."_ARTICLEID"] = $title->getArticleId();
 		$vars[$prefix."_NAMESPACE"] = $title->getNamespace();
