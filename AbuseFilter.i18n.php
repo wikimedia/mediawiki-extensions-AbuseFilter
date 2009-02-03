@@ -4359,7 +4359,8 @@ $messages['he'] = array(
 	'abusefilter-edit-warn-other-label' => "שם ההודעה של ההודעה האחרת:
 :''(ללא הקידומת \"מדיה ויקי\")''",
 	'abusefilter-edit-warn-actions' => 'פעולות',
-	'abusefilter-edit-warn-preview' => 'תצוגה מקדימה של ההודעה',
+	'abusefilter-edit-warn-preview' => 'תצוגה מקדימה של ההודעה שנבחרה',
+	'abusefilter-edit-warn-edit' => 'יצירת/עריכת ההודעה שנבחרה',
 	'abusefilter-edit-tag-tag' => 'סימונים אפשריים (אחד בשורה):',
 	'abusefilter-edit-denied' => 'אינכם יכולים לצפות בפרטים של מסנן זה, כיוון שהוא מוסתר מעיני הציבור.',
 	'abusefilter-edit-main' => 'הפרמטרים של המסנן',
