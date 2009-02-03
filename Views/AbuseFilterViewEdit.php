@@ -25,7 +25,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// Check syntax
 			$syntaxerr = AbuseFilter::checkSyntax( $wgRequest->getVal( 'wpFilterRules' ) );
 			if ($syntaxerr !== true ) {
-				$wgOut->addHTML( $this->buildFilterEditor( wfMsgExt( 'abusefilter-edit-badsyntax', array( 'parse' ), array( $syntaxerr ) ), $filter, $history_id ) );
+				$wgOut->addHTML( $this->buildFilterEditor( wfMsgExt( 'abusefilter-edit-badsyntax', array( 'parse' ), array( $syntaxerr[0] ) ), $filter, $history_id ) );
 				return;
 			}
 
@@ -331,9 +331,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$output = '';
 				$checkbox = Xml::checkLabel( wfMsg( 'abusefilter-edit-action-warn' ), 'wpFilterActionWarn', "mw-abusefilter-action-checkbox-$action", $set, array( 'class' => 'mw-abusefilter-action-checkbox' ) );
 				$output .= Xml::tags( 'p', null, $checkbox );
-
 				$warnMsg = empty($set) ? 'abusefilter-warning' : $parameters[0];
-				$warnFields['abusefilter-edit-warn-message'] = Xml::input( 'wpFilterWarnMessage', 45, $warnMsg );
+
+				$warnFields['abusefilter-edit-warn-message'] = $this->getExistingSelector( $warnMsg );
+				$warnFields['abusefilter-edit-warn-other-label'] = Xml::input( 'wpFilterWarnMessageOther', 45, $warnMsg ? $warnMsg : 'abusefilter-warning-', array( 'id' => 'mw-abusefilter-warn-message-other' ) );
+
+				$previewButton = Xml::element( 'input', array( 'type' => 'button', 'id' => 'mw-abusefilter-warn-preview-button', 'value' => wfMsg( 'abusefilter-edit-warn-preview' ) ) );
+				$previewHolder = Xml::element( 'div', array( 'id' => 'mw-abusefilter-warn-preview' ), '' );
+				$warnFields['abusefilter-edit-warn-actions'] = Xml::tags( 'p', null, $previewButton ) . "\n$previewHolder";
 				$output .= Xml::tags( 'div', array( 'id' => 'mw-abusefilter-warn-parameters' ), Xml::buildForm( $warnFields ) );
 				return $output;
 			case 'tag':
@@ -359,6 +364,31 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$thisAction = Xml::tags( 'p', null, $thisAction );
 				return $thisAction;
 		}
+	}
+
+	function getExistingSelector( $warnMsg ) {
+		$existingSelector = new XmlSelect( 'wpFilterWarnMessage', 'mw-abusefilter-warn-message-existing', $warnMsg == 'abusefilter-warning' ? 'abusefilter-warning' : 'other' );
+
+		// Find other messages.
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'page', array( 'page_title' ), array( 'page_namespace' => 8, 'page_title LIKE '.$dbr->addQuotes( 'Abusefilter-warning%' ) ), __METHOD__ );
+
+		$existingSelector->addOption( 'abusefilter-warning' );
+
+		global $wgLang;
+		while( $row = $dbr->fetchObject( $res ) ) {
+			if ( $wgLang->lcfirst($row->page_title) == $wgLang->lcfirst($warnMsg) ) {
+				$existingSelector->setDefault( $wgLang->lcfirst($warnMsg) );
+			}
+			
+			if ($row->page_title != 'Abusefilter-warning') {
+				$existingSelector->addOption( $wgLang->lcfirst($row->page_title) );
+			}
+		}
+
+		$existingSelector->addOption( wfMsg( 'abusefilter-edit-warn-other' ), 'other' );
+
+		return $existingSelector->getHTML();
 	}
 
 	function loadFilterData( $id ) {
@@ -444,7 +474,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					$parameters[1] = "$throttleCount,$throttlePeriod";
 					$parameters = array_merge( $parameters, $throttleGroups );
 				} elseif ($action == 'warn') {
-					$parameters[0] = $wgRequest->getVal( 'wpFilterWarnMessage' );
+					$specMsg = $wgRequest->getVal( 'wpFilterWarnMessage' );
+
+					if ($specMsg == 'other')
+						$specMsg = $wgRequest->getVal( 'wpFilterWarnMessageOther' );
+					
+					$parameters[0] = $specMsg;
 				} elseif ($action == 'tag') {
 					$parameters = explode("\n", $wgRequest->getText( 'wpFilterTags' ) );
 				}

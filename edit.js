@@ -110,6 +110,30 @@ function hideDeselectedActions() {
 	}
 }
 
+function previewWarnMessage() {
+	var message = document.getElementById( 'mw-abusefilter-warn-message-existing' ).value;
+
+	if (message == 'other') {
+		message = document.getElementById( 'mw-abusefilter-warn-message-other' ).value;
+	}
+	
+	var xmlHttp = sajax_init_object();
+
+	xmlHttp.open( 'GET', wgScript + '?title=MediaWiki:' + encodeURIComponent( message ) + '&action=render', true );
+
+	xmlHttp.onreadystatechange = function() {
+		if (xmlHttp.readyState != 4)
+			return;
+
+		var responseText = xmlHttp.responseText;
+
+		// Beware of raptors.
+		document.getElementById( 'mw-abusefilter-warn-preview' ).innerHTML = responseText;
+	};
+
+	xmlHttp.send(null);
+}
+
 addOnloadHook( function() {
 	addHandler( document.getElementById( wgFilterBoxName ), 'keyup', function() {
 		el = document.getElementById( 'mw-abusefilter-syntaxresult' );
@@ -121,6 +145,11 @@ addOnloadHook( function() {
 	var loader = document.getElementById( 'mw-abusefilter-load' );
 	if (loader) {
 		addHandler( loader, 'click', fetchFilter );
+	}
+
+	var warnMsgPreview = document.getElementById( 'mw-abusefilter-warn-preview-button' );
+	if (warnMsgPreview) {
+		addHandler( warnMsgPreview, 'click', previewWarnMessage );
 	}
 
 	setupActions();
