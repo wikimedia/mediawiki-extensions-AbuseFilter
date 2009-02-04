@@ -15,7 +15,9 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 
 		// Check if we've got a subpage
 		if ( count($this->mParams)>1 && is_numeric($this->mParams[1]) ) {
-			$this->showExaminer( $this->mParams[1] );
+			$this->showExaminerForRC( $this->mParams[1] );
+		} elseif ( count($this->mParams)>2 && $this->mParams[1] == 'log' && is_numeric( $this->mParams[2] ) ) {
+			$this->showExaminerForLogEntry( $this->mParams[2] );
 		} else {
 			$this->showSearch();
 		}
@@ -78,9 +80,9 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$wgOut->addHTML( $output );
 	}
 
-	function showExaminer( $rcid ) {
-		global $wgOut, $wgUser;
-		
+	function showExaminerForRC( $rcid ) {
+		global $wgOut;
+
 		// Get data
 		$dbr = wfGetDB( DB_SLAVE );
 		$row = $dbr->selectRow( 'recentchanges', '*', array( 'rc_id' => $rcid ), __METHOD__ );
@@ -91,6 +93,29 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		}
 
 		$vars = AbuseFilter::getVarsFromRCRow( $row );
+
+		$this->showExaminer( $vars );
+	}
+
+	function showExaminerForLogEntry( $logid ) {
+		global $wgOut;
+
+		// Get data
+		$dbr = wfGetDB( DB_SLAVE );
+		$row = $dbr->selectRow( 'abuse_filter_log', '*', array( 'afl_id' => $logid ), __METHOD__ );
+
+		if (!$row) {
+			$wgOut->addWikiMsg( 'abusefilter-examine-notfound' );
+			return;
+		}
+
+		$vars = unserialize( $row->afl_var_dump );
+
+		$this->showExaminer( $vars );
+	}
+
+	function showExaminer( $vars ) {
+		global $wgOut, $wgUser;
 
 		if (!$vars) {
 			$wgOut->addWikiMsg( 'abusefilter-examine-incompatible' );

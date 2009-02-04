@@ -70,7 +70,7 @@ Actions taken: $5;
 Filter description: $6',
 	'abusefilter-log-detailedentry' => '$1: $2 triggered [[Special:AbuseFilter/$3|filter $3]], performing the action "$4" on $5.
 Actions taken: $6;
-Filter description: $7 ($8)',
+Filter description: $7 ($8) ($9)',
 	'abusefilter-log-detailslink' => 'details',
 	'abusefilter-log-details-legend' => 'Details for log entry $1',
 	'abusefilter-log-details-var' => 'Variable',
@@ -406,7 +406,8 @@ $messages['qqq'] = array(
 * $5 link to page the action that triggered the filter was made on
 * $6 actions taken by the filter
 * $7 comments in filter description
-* $8 filter details link',
+* $8 action details link
+* $9 link to examine the action',
 	'abusefilter-log-detailslink' => '{{Identical|Details}}',
 	'abusefilter-log-details-var' => 'Caption of a column on a detail view of [[Special:AbuseLog]]',
 	'abusefilter-log-details-val' => 'Caption of a column on a detail view of [[Special:AbuseLog]]
