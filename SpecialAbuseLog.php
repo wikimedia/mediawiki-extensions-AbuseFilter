@@ -169,7 +169,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$timestamp = $wgLang->timeanddate( $row->afl_timestamp );
 		
 		$actions_taken = $row->afl_actions;
-		if (!strlen(trim($actions_taken))) {
+		if ( !strlen( trim( $actions_taken) ) ) {
 			$actions_taken = wfMsg( 'abusefilter-log-noactions' );
 		} else {
 			$actions = explode(',', $actions_taken);
@@ -189,7 +189,8 @@ class SpecialAbuseLog extends SpecialPage {
 			$detailsLink = $sk->makeKnownLinkObj( $this->getTitle(  ), wfMsg( 'abusefilter-log-detailslink' ), 'details='.$row->afl_id );
 			$examineLink = $sk->link( $examineTitle, wfMsgExt( 'abusefilter-changeslist-examine', 'parseinline' ), array() );
 			
-			$description = wfMsgExt( 'abusefilter-log-detailedentry', array( 'parseinline', 'replaceafter' ), array( $timestamp, $user, $row->afl_filter, $row->afl_action, $sk->makeKnownLinkObj( $title ), $actions_taken, $parsed_comments, $detailsLink, $examineLink ) );
+			$description = wfMsgExt( 'abusefilter-log-detailedentry', array( 'parseinline', 'replaceafter' ),
+				array( $timestamp, $user, $row->afl_filter, $row->afl_action, $sk->makeKnownLinkObj( $title ), $actions_taken, $parsed_comments, $detailsLink, $examineLink ) );
 		} else {
 			$description = wfMsgExt( 'abusefilter-log-entry', array( 'parseinline', 'replaceafter' ), array( $timestamp, $user, $row->afl_action, $sk->makeKnownLinkObj( $title ), $actions_taken, $parsed_comments ) );
 		}
