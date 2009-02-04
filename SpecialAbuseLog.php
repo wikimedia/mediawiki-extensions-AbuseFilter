@@ -185,7 +185,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$parsed_comments = $wgOut->parseInline( $row->af_public_comments );
 		
 		if ($this->canSeeDetails()) {
-			$examineTitle = $this->getTitle( "examine/log/".$row->afl_id );
+			$examineTitle = SpecialPage::getTitleFor( 'AbuseFilter', "examine/log/".$row->afl_id );
 			$detailsLink = $sk->makeKnownLinkObj( $this->getTitle(  ), wfMsg( 'abusefilter-log-detailslink' ), 'details='.$row->afl_id );
 			$examineLink = $sk->link( $examineTitle, wfMsgExt( 'abusefilter-changeslist-examine', 'parseinline' ), array() );
 			
