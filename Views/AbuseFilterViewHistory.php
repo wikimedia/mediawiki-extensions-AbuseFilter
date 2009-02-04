@@ -80,7 +80,7 @@ class AbuseFilterHistoryPager extends TablePager {
 		if (!$this->mFilter) {
 			// awful hack
 			$headers = array( 'afh_filter' => 'abusefilter-history-filterid' ) + $headers;
-			unset( $headers['afh_pattern'] );
+			unset( $headers['afh_comments'] );
 		}
 
 		$headers = array_map( 'wfMsg', $headers );
