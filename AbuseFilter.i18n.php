@@ -4386,7 +4386,7 @@ $messages['he'] = array(
 תיאור המסנן: $6',
 	'abusefilter-log-detailedentry' => '$1: $2 הפעיל את [[Special:AbuseFilter/$3|מסנן ההשחתה $3]] כשביצע את הפעולה $4 על $5.
 הפעולות שננקטו: $6;
-תיאור המסנן: $7 ($8)',
+תיאור המסנן: $7 ($8) ($9)',
 	'abusefilter-log-detailslink' => 'פרטים',
 	'abusefilter-log-details-legend' => 'פרטים עבור פריט היומן $1',
 	'abusefilter-log-details-var' => 'משתנה',
