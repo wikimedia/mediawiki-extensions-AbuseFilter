@@ -21,7 +21,8 @@ class AbuseFilterHooks {
 		$new_text = $editor->textbox1;
 		$oldLinks = self::getOldLinks( $editor->mTitle );
 
-		$vars = array_merge( $vars, AbuseFilter::getEditVars( $editor->mTitle, $old_text, $new_text, $oldLinks ) );
+		$vars = array_merge( $vars, 
+			AbuseFilter::getEditVars( $editor->mTitle, $old_text, $new_text, $oldLinks ) );
 
 		$filter_result = AbuseFilter::filterAction( $vars, $editor->mTitle, $oldLinks );
 
@@ -106,7 +107,8 @@ class AbuseFilterHooks {
 		$vars['ACTION'] = 'createaccount';
 		$vars['ACCOUNTNAME'] = $vars['USER_NAME'] = $user->getName();
 		
-		$filter_result = AbuseFilter::filterAction( $vars, SpecialPage::getTitleFor( 'Userlogin' ) );
+		$filter_result = AbuseFilter::filterAction( 
+			$vars, SpecialPage::getTitleFor( 'Userlogin' ) );
 		
 		$message = $filter_result;
 		
@@ -116,7 +118,9 @@ class AbuseFilterHooks {
 	public static function onAbortDeleteQueueNominate( $user, $article, $queue, $reason, &$error ) {
 		$vars = array();
 		
-		$vars = array_merge( $vars, AbuseFilter::generateUserVars( $user ), AbuseFilter::generateTitleVars( $article->mTitle, 'ARTICLE' ) );
+		$vars = array_merge( $vars, 
+			AbuseFilter::generateUserVars( $user ), 
+			AbuseFilter::generateTitleVars( $article->mTitle, 'ARTICLE' ) );
 		$vars['SUMMARY'] = $reason;
 		$vars['ACTION'] = 'delnom';
 		$vars['QUEUE'] = $queue;
@@ -128,14 +132,23 @@ class AbuseFilterHooks {
 	}
 
 	public static function onRecentChangeSave( $recentChange ) {
-		$title = Title::makeTitle( $recentChange->mAttribs['rc_namespace'], $recentChange->mAttribs['rc_title'] );
-		$action = $recentChange->mAttribs['rc_log_type'] ? $recentChange->mAttribs['rc_log_type'] : 'edit';
+		$title = Title::makeTitle( 
+			$recentChange->mAttribs['rc_namespace'], 
+			$recentChange->mAttribs['rc_title'] );
+		$action = $recentChange->mAttribs['rc_log_type'] ? 
+			$recentChange->mAttribs['rc_log_type'] : 'edit';
 		$actionID = implode( '-', array(
 				$title->getPrefixedText(), $recentChange->mAttribs['rc_user_text'], $action
 			) );
 
-		if ( !empty( AbuseFilter::$tagsToSet[$actionID] ) && count( $tags = AbuseFilter::$tagsToSet[$actionID]) ) {
-			ChangeTags::addTags( $tags, $recentChange->mAttribs['rc_id'], $recentChange->mAttribs['rc_this_oldid'], $recentChange->mAttribs['rc_logid'] );
+		if ( !empty( AbuseFilter::$tagsToSet[$actionID] ) 
+			&& count( $tags = AbuseFilter::$tagsToSet[$actionID]) ) 
+		{
+			ChangeTags::addTags( 
+				$tags, 
+				$recentChange->mAttribs['rc_id'], 
+				$recentChange->mAttribs['rc_this_oldid'],
+				$recentChange->mAttribs['rc_logid'] );
 		}
 
 		return true;
@@ -145,10 +158,13 @@ class AbuseFilterHooks {
 		## This is a pretty awful hack.
 		$dbr = wfGetDB( DB_SLAVE );
 
-		$res = $dbr->select( 'abuse_filter_action', 'afa_parameters', array( 'afa_consequence' => 'tag' ), __METHOD__ );
+		$res = $dbr->select( 'abuse_filter_action', 'afa_parameters', 
+			array( 'afa_consequence' => 'tag' ), __METHOD__ );
 
 		while( $row = $res->fetchObject() ) {
-			$emptyTags = array_filter( array_merge( explode( "\n", $row->afa_parameters ), $emptyTags ) );
+			$emptyTags = array_filter( 
+				array_merge( explode( "\n", $row->afa_parameters ), $emptyTags ) 
+			);
 		}
 
 		return true;
@@ -160,12 +176,14 @@ class AbuseFilterHooks {
 		$dir = dirname( __FILE__ );
 		
 		// DB updates
-		$wgExtNewTables[] = array( 'abuse_filter', "$dir/abusefilter.tables.sql" );
-		$wgExtNewTables[] = array( 'abuse_filter_history', "$dir/db_patches/patch-abuse_filter_history.sql" );
-
-		$wgExtNewFields[] = array( 'abuse_filter_history', 'afh_changed_fields', "$dir/db_patches/patch-afh_changed_fields.sql" );
-		$wgExtNewFields[] = array( 'abuse_filter', 'af_deleted', "$dir/db_patches/patch-af_deleted.sql" );
-		$wgExtNewFields[] = array( 'abuse_filter', 'af_actions', "$dir/db_patches/patch-af_actions.sql" );
+		$wgExtNewTables = array_merge( $wgExtNewTables,
+			array(
+				array( 'abuse_filter', "$dir/abusefilter.tables.sql" ),
+				array( 'abuse_filter_history', "$dir/db_patches/patch-abuse_filter_history.sql" ),
+				array( 'abuse_filter_history', 'afh_changed_fields', "$dir/db_patches/patch-afh_changed_fields.sql" ),
+				array( 'abuse_filter', 'af_deleted', "$dir/db_patches/patch-af_deleted.sql" ),
+				array( 'abuse_filter', 'af_actions', "$dir/db_patches/patch-af_actions.sql" ),
+			) );
 
 		return true;
 	}

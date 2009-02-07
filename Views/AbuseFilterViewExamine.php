@@ -16,7 +16,10 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		// Check if we've got a subpage
 		if ( count($this->mParams)>1 && is_numeric($this->mParams[1]) ) {
 			$this->showExaminerForRC( $this->mParams[1] );
-		} elseif ( count($this->mParams)>2 && $this->mParams[1] == 'log' && is_numeric( $this->mParams[2] ) ) {
+		} elseif ( count($this->mParams)>2 
+			&& $this->mParams[1] == 'log' 
+			&& is_numeric( $this->mParams[2] ) ) 
+		{
 			$this->showExaminerForLogEntry( $this->mParams[2] );
 		} else {
 			$this->showSearch();
@@ -31,17 +34,26 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 
 		$selectFields = array(); ## Same fields as in Test
 		$selectFields['abusefilter-test-user'] = wfInput( 'wpSearchUser', 45, $this->mSearchUser );
-		$selectFields['abusefilter-test-period-start'] = wfInput( 'wpSearchPeriodStart', 45, $this->mSearchPeriodStart );
-		$selectFields['abusefilter-test-period-end'] = wfInput( 'wpSearchPeriodEnd', 45, $this->mSearchPeriodEnd );
+		$selectFields['abusefilter-test-period-start'] = 
+			wfInput( 'wpSearchPeriodStart', 45, $this->mSearchPeriodStart );
+		$selectFields['abusefilter-test-period-end'] = 
+			wfInput( 'wpSearchPeriodEnd', 45, $this->mSearchPeriodEnd );
 
 		$selector .= Xml::buildForm( $selectFields, 'abusefilter-examine-submit' );
 		$selector .= Xml::hidden( 'submit', 1 );
 		$selector .= Xml::hidden( 'title', $this->getTitle( 'examine' )->getPrefixedText() );
-		$selector = Xml::tags( 'form', array( 'action' => $this->getTitle( 'examine' )->getLocalURL(), 'method' => 'GET' ), $selector );
-		$selector = Xml::fieldset( wfMsg( 'abusefilter-examine-legend' ), $selector );
+		$selector = Xml::tags( 'form', 
+			array( 
+				'action' => $this->getTitle( 'examine' )->getLocalURL(), 
+				'method' => 'GET' 
+			), 
+			$selector );
+		$selector = Xml::fieldset( 
+			wfMsg( 'abusefilter-examine-legend' ), 
+			$selector );
 		$wgOut->addHTML( $selector );
 
-		if ($this->mSubmit) {
+		if ( $this->mSubmit ) {
 			$this->showResults();
 		}
 	}
@@ -59,7 +71,8 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			$conds[] = 'rc_timestamp<=' . $dbr->addQuotes( $dbr->timestamp( $endTS ) );
 		}
 		
-		$res = $dbr->select( 'recentchanges', '*', array_filter($conds), __METHOD__, array( 'ORDER BY' => 'rc_timestamp DESC', 'LIMIT' => '500' ) );
+		$res = $dbr->select( 'recentchanges', '*', array_filter($conds), __METHOD__, 
+			array( 'ORDER BY' => 'rc_timestamp DESC', 'LIMIT' => '500' ) );
 
 		$changesList = new AbuseFilterChangesList( $wgUser->getSkin() );
 		$output = $changesList->beginRecentChangesList();
@@ -67,8 +80,11 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 
 		while ( $row = $dbr->fetchObject( $res ) ) {
 			## Incompatible stuff.
-			if ( !$row->rc_this_oldid && !in_array( $row->rc_log_action, array( 'move', 'newusers' ) ) )
+			if ( !$row->rc_this_oldid 
+				&& !in_array( $row->rc_log_action, array( 'move', 'newusers' ) ) )
+			{
 				continue;
+			}
 			
 			$rc = RecentChange::newFromRow( $row );
 			$rc->counter = $counter++;
@@ -125,7 +141,8 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$output = '';
 
 		// Send armoured as JSON -- I totally give up on trying to send it as a proper object.
-		$wgOut->addInlineScript( "var wgExamineVars = ". Xml::encodeJsVar( json_encode( $vars ) ) .";" );
+		$wgOut->addInlineScript( "var wgExamineVars = ". 
+			Xml::encodeJsVar( json_encode( $vars ) ) .";" );
 		$wgOut->addInlineScript( file_get_contents( dirname( __FILE__ ) . "/examine.js" ) );
 
 		// Add messages
@@ -133,18 +150,49 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$msg['match'] = wfMsg( 'abusefilter-examine-match' );
 		$msg['nomatch'] = wfMsg( 'abusefilter-examine-nomatch' );
 		$msg['syntaxerror'] = wfMsg( 'abusefilter-examine-syntaxerror' );
-		$wgOut->addInlineScript( "var wgMessageMatch = ".Xml::encodeJsVar( $msg['match'] ) . ";\n".
-					"var wgMessageNomatch = ".Xml::encodeJsVar( $msg['nomatch'] ) . ";\n".
-					"var wgMessageError = ".Xml::encodeJsVar( $msg['syntaxerror'] ) . ";\n" );
+		$wgOut->addInlineScript( 
+			"var wgMessageMatch = ".Xml::encodeJsVar( $msg['match'] ) . ";\n".
+			"var wgMessageNomatch = ".Xml::encodeJsVar( $msg['nomatch'] ) . ";\n".
+			"var wgMessageError = ".Xml::encodeJsVar( $msg['syntaxerror'] ) . ";\n" );
 
 		// Add test bit
 		$tester = Xml::tags( 'h2', null, wfMsgExt( 'abusefilter-examine-test', 'parseinline' ) );
 		$tester .= AbuseFilter::buildEditBox( $this->mTestFilter, 'wpTestFilter', false );
-		$tester .= "\n" . Xml::inputLabel( wfMsg( 'abusefilter-test-load-filter' ), 'wpInsertFilter', 'mw-abusefilter-load-filter', 10, '' ) . '&nbsp;' .
-			Xml::element( 'input', array( 'type' => 'button', 'value' => wfMsg( 'abusefilter-test-load' ), 'id' => 'mw-abusefilter-load' ) );
+		$tester .= 
+			"\n" . 
+			Xml::inputLabel( 
+				wfMsg( 'abusefilter-test-load-filter' ), 
+				'wpInsertFilter', 
+				'mw-abusefilter-load-filter', 
+				10, 
+				'' 
+			) . 
+			'&nbsp;' .
+			Xml::element( 
+				'input', 
+				array( 
+					'type' => 'button', 
+					'value' => wfMsg( 'abusefilter-test-load' ), 
+					'id' => 'mw-abusefilter-load' 
+				) 
+			);
 		$output .= Xml::tags( 'div', array( 'id' => 'mw-abusefilter-examine-editor' ), $tester );
-		$output .= Xml::tags( 'p', null, Xml::element( 'input', array( 'type' => 'button', 'value' => wfMsg( 'abusefilter-examine-test-button' ), 'id' => 'mw-abusefilter-examine-test' ) ) .
-				Xml::element( 'div', array( 'id' => 'mw-abusefilter-syntaxresult', 'style' => 'display: none;' ), '&nbsp;' ) );
+		$output .= Xml::tags( 'p', 
+			null, 
+			Xml::element( 'input', 
+				array( 
+					'type' => 'button', 
+					'value' => wfMsg( 'abusefilter-examine-test-button' ), 
+					'id' => 'mw-abusefilter-examine-test' 
+				) 
+			) .
+			Xml::element( 'div', 
+				array( 
+					'id' => 'mw-abusefilter-syntaxresult', 
+					'style' => 'display: none;' 
+				), '&nbsp;' 
+			) 
+		);
 
 		// Variable dump
 		$output .= Xml::tags( 'h2', null, wfMsgExt( 'abusefilter-examine-vars', 'parseinline' ) );

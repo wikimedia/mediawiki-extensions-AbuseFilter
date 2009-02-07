@@ -21,10 +21,13 @@ class SpecialAbuseLog extends SpecialPage {
 		$wgOut->enableClientCache( false );
 
 		global $wgScriptPath;
-		$wgOut->addExtensionStyle( $wgScriptPath . "/extensions/AbuseFilter/abusefilter.css?$wgAbuseFilterStyleVersion" );
+		$wgOut->addExtensionStyle( $wgScriptPath . 
+			"/extensions/AbuseFilter/abusefilter.css?$wgAbuseFilterStyleVersion" );
 
 		// Are we allowed?
-		if ( count( $errors = $this->getTitle()->getUserPermissionsErrors( 'abusefilter-log', $wgUser, true, array( 'ns-specialprotected' ) ) ) ) {
+		$errors = $this->getTitle()->getUserPermissionsErrors( 
+			'abusefilter-log', $wgUser, true, array( 'ns-specialprotected' ) );
+		if ( count( $errors ) ) {
 			// Go away.
 			$wgOut->showPermissionsErrorPage( $errors, 'abusefilter-log' );
 			return;
@@ -59,15 +62,21 @@ class SpecialAbuseLog extends SpecialPage {
 		$fields = array();
 		
 		// Search conditions
-		$fields['abusefilter-log-search-user'] = Xml::input( 'wpSearchUser', 45, $this->mSearchUser );
-		if ($this->canSeeDetails())
-			$fields['abusefilter-log-search-filter'] = Xml::input( 'wpSearchFilter', 45, $this->mSearchFilter );
-		$fields['abusefilter-log-search-title'] = Xml::input( 'wpSearchTitle', 45, $this->mSearchTitle );
+		$fields['abusefilter-log-search-user'] = 
+			Xml::input( 'wpSearchUser', 45, $this->mSearchUser );
+		if ($this->canSeeDetails()) {
+			$fields['abusefilter-log-search-filter'] = 
+				Xml::input( 'wpSearchFilter', 45, $this->mSearchFilter );
+		}
+		$fields['abusefilter-log-search-title'] = 
+			Xml::input( 'wpSearchTitle', 45, $this->mSearchTitle );
 		
 		$form = Xml::hidden( 'title', $this->getTitle()->getPrefixedText() );
 		
 		$form .= Xml::buildForm( $fields, 'abusefilter-log-search-submit' );
-		$output .= Xml::tags( 'form', array( 'method' => 'GET', 'action' => $this->getTitle()->getLocalURL() ), $form );
+		$output .= Xml::tags( 'form', 
+			array( 'method' => 'GET', 'action' => $this->getTitle()->getLocalURL() ), 
+			$form );
 		$output = Xml::tags( 'fieldset', null, $output );
 		
 		$wgOut->addHTML( $output );
@@ -104,7 +113,8 @@ class SpecialAbuseLog extends SpecialPage {
 		
 		$dbr = wfGetDB( DB_SLAVE );
 		
-		$row = $dbr->selectRow( array('abuse_filter_log','abuse_filter'), '*', array( 'afl_id' => $id, 'af_id=afl_filter' ), __METHOD__ );
+		$row = $dbr->selectRow( array('abuse_filter_log','abuse_filter'), '*', 
+			array( 'afl_id' => $id, 'af_id=afl_filter' ), __METHOD__ );
 		
 		if (!$row)
 			return;
@@ -122,13 +132,29 @@ class SpecialAbuseLog extends SpecialPage {
 		
 		if ($this->canSeePrivate()) {
 			// Private stuff, like IPs.
-			$header = Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-var' ) ) . Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-val' ) );
+			$header = 
+				Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-var' ) ) . 
+				Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-val' ) );
 			$output .= Xml::element( 'h3', null, wfMsg( 'abusefilter-log-details-private' ) );
-			$output .= Xml::openElement( 'table', array( 'class' => 'wikitable mw-abuselog-private', 'style' => "width: 80%;" ) ) . Xml::openElement( 'tbody' );
+			$output .= 
+				Xml::openElement( 'table', 
+					array( 
+						'class' => 'wikitable mw-abuselog-private', 
+						'style' => "width: 80%;" 
+					) 
+				) . 
+				Xml::openElement( 'tbody' );
 			$output .= $header;
 			
 			// IP address
-			$output .= Xml::tags( 'tr', null, Xml::element( 'td', array( 'style' => 'width: 30%;' ), wfMsg('abusefilter-log-details-ip' ) ) . Xml::element( 'td', null, $row->afl_ip ) );
+			$output .= 
+				Xml::tags( 'tr', null, 
+					Xml::element( 'td', 
+						array( 'style' => 'width: 30%;' ), 
+						wfMsg('abusefilter-log-details-ip' ) 
+					) . 
+					Xml::element( 'td', null, $row->afl_ip ) 
+				);
 			
 			$output .= Xml::closeElement( 'tbody' ) . Xml::closeElement( 'table' );
 		}
@@ -141,12 +167,15 @@ class SpecialAbuseLog extends SpecialPage {
 	
 	function canSeeDetails() {
 		global $wgUser;
-		return !count($this->getTitle()->getUserPermissionsErrors( 'abusefilter-log-detail', $wgUser, true, array( 'ns-specialprotected' ) ));
+		return !count($this->getTitle()->getUserPermissionsErrors( 
+			'abusefilter-log-detail', $wgUser, true, array( 'ns-specialprotected' ) ));
 	}
 	
 	function canSeePrivate() {
 		global $wgUser;
-		return !count($this->getTitle()->getUserPermissionsErrors( 'abusefilter-private', $wgUser, true, array( 'ns-specialprotected' ) ));
+		return !count(
+			$this->getTitle()->getUserPermissionsErrors( 
+				'abusefilter-private', $wgUser, true, array( 'ns-specialprotected' ) ));
 	}
 	
 	function formatRow( $row, $li = true ) {
@@ -186,13 +215,42 @@ class SpecialAbuseLog extends SpecialPage {
 		
 		if ($this->canSeeDetails()) {
 			$examineTitle = SpecialPage::getTitleFor( 'AbuseFilter', "examine/log/".$row->afl_id );
-			$detailsLink = $sk->makeKnownLinkObj( $this->getTitle(  ), wfMsg( 'abusefilter-log-detailslink' ), 'details='.$row->afl_id );
-			$examineLink = $sk->link( $examineTitle, wfMsgExt( 'abusefilter-changeslist-examine', 'parseinline' ), array() );
+			$detailsLink = $sk->makeKnownLinkObj( 
+				$this->getTitle(), 
+				wfMsg( 'abusefilter-log-detailslink' ), 
+				'details='.$row->afl_id );
+			$examineLink = $sk->link( 
+				$examineTitle, 
+				wfMsgExt( 'abusefilter-changeslist-examine', 'parseinline' ), 
+				array() );
 			
-			$description = wfMsgExt( 'abusefilter-log-detailedentry', array( 'parseinline', 'replaceafter' ),
-				array( $timestamp, $user, $row->afl_filter, $row->afl_action, $sk->makeKnownLinkObj( $title ), $actions_taken, $parsed_comments, $detailsLink, $examineLink ) );
+			$description = wfMsgExt( 'abusefilter-log-detailedentry', 
+				array( 'parseinline', 'replaceafter' ),
+				array( 
+					$timestamp, 
+					$user, 
+					$row->afl_filter, 
+					$row->afl_action, 
+					$sk->makeKnownLinkObj( $title ), 
+					$actions_taken, 
+					$parsed_comments, 
+					$detailsLink, 
+					$examineLink 
+				) 
+			);
 		} else {
-			$description = wfMsgExt( 'abusefilter-log-entry', array( 'parseinline', 'replaceafter' ), array( $timestamp, $user, $row->afl_action, $sk->makeKnownLinkObj( $title ), $actions_taken, $parsed_comments ) );
+			$description = wfMsgExt( 
+				'abusefilter-log-entry', 
+				array( 'parseinline', 'replaceafter' ), 
+				array( 
+					$timestamp, 
+					$user, 
+					$row->afl_action, 
+					$sk->makeKnownLinkObj( $title ), 
+					$actions_taken, 
+					$parsed_comments 
+				) 
+			);
 		}
 		
 		return $li ? Xml::tags( 'li', null, $description ) : $description;

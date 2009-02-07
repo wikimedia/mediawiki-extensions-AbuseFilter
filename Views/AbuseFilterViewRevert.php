@@ -25,13 +25,25 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 		// First, the search form.
 		$searchFields = array();
-		$searchFields['abusefilter-revert-filter'] = Xml::element( 'strong', null, $filter );
-		$searchFields['abusefilter-revert-periodstart'] = Xml::input( 'wpPeriodStart', 45, $this->origPeriodStart );
-		$searchFields['abusefilter-revert-periodend'] = Xml::input( 'wpPeriodEnd', 45, $this->origPeriodEnd );
+		$searchFields['abusefilter-revert-filter'] = 
+			Xml::element( 'strong', null, $filter );
+		$searchFields['abusefilter-revert-periodstart'] = 
+			Xml::input( 'wpPeriodStart', 45, $this->origPeriodStart );
+		$searchFields['abusefilter-revert-periodend'] = 
+			Xml::input( 'wpPeriodEnd', 45, $this->origPeriodEnd );
 		$searchForm = Xml::buildForm( $searchFields, 'abusefilter-revert-search' );
 		$searchForm .= "\n" . Xml::hidden( 'submit', 1 );
-		$searchForm = Xml::tags( 'form', array( 'action' => $this->getTitle( "revert/$filter" )->getLocalURL(), 'method' => 'POST' ), $searchForm );
-		$searchForm = Xml::fieldset( wfMsg( 'abusefilter-revert-search-legend' ), $searchForm );
+		$searchForm = 
+			Xml::tags( 
+				'form', 
+				array( 
+					'action' => $this->getTitle( "revert/$filter" )->getLocalURL(), 
+					'method' => 'POST' 
+				), 
+				$searchForm 
+			);
+		$searchForm = 
+			Xml::fieldset( wfMsg( 'abusefilter-revert-search-legend' ), $searchForm );
 
 		$wgOut->addHTML( $searchForm );
 
@@ -47,27 +59,52 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				$displayActions = array();
 
 				global $wgLang;
-				$displayActions = array_map( array( 'AbuseFilter', 'getActionDisplay' ), $result['actions'] );
+				$displayActions = array_map( 
+					array( 'AbuseFilter', 'getActionDisplay' ), 
+					$result['actions'] );
 				
-				$msg = wfMsgExt( 'abusefilter-revert-preview-item', array( 'parseinline', 'replaceafter' ),
-					array( $wgLang->timeanddate( $result['timestamp'] ), $sk->userLink( $result['userid'],
-						$result['user'] ), $result['action'], $sk->link( $result['title'] ), implode( ', ', $displayActions ),
-						$sk->link( SpecialPage::getTitleFor( 'AbuseLog' ), wfMsgNoTrans( 'abusefilter-log-detailslink' ), array(), array('details' =>$result['id']) ) )
-					);
+				$msg = wfMsgExt( 
+					'abusefilter-revert-preview-item', 
+					array( 'parseinline', 'replaceafter' ),
+					array( 
+						$wgLang->timeanddate( $result['timestamp'] ), 
+						$sk->userLink( $result['userid'], $result['user'] ), 
+						$result['action'], 
+						$sk->link( $result['title'] ), 
+						implode( ', ', $displayActions ),
+						$sk->link( 
+							SpecialPage::getTitleFor( 'AbuseLog' ), 
+							wfMsgNoTrans( 'abusefilter-log-detailslink' ), 
+							array(), 
+							array('details' =>$result['id']) 
+						) 
+					)
+				);
 				$list[] = Xml::tags( 'li', null, $msg );
 			}
 
 			$wgOut->addHTML( Xml::tags( 'ul', null, implode("\n", $list) ) );
 
 			// Add a button down the bottom.
-			$confirmForm = '';
-			$confirmForm .= Xml::hidden( 'editToken', $wgUser->editToken( "abusefilter-revert-$filter" ) );
-			$confirmForm .= Xml::hidden( 'title', $this->getTitle("revert/$filter")->getPrefixedText() );
-			$confirmForm .= Xml::hidden( 'wpPeriodStart', $this->origPeriodStart );
-			$confirmForm .= Xml::hidden( 'wpPeriodEnd', $this->origPeriodEnd );
-			$confirmForm .= Xml::inputLabel( wfMsg( 'abusefilter-revert-reasonfield' ), 'wpReason', 'wpReason', 45 ) . "\n";
-			$confirmForm .= Xml::submitButton( wfMsg( 'abusefilter-revert-confirm' ) );
-			$confirmForm = Xml::tags( 'form', array( 'action' => $this->getTitle("revert/$filter")->getLocalURL(), 'method' => 'post' ), $confirmForm );
+			$confirmForm = 
+				Xml::hidden( 'editToken', $wgUser->editToken( "abusefilter-revert-$filter" ) ) .
+				Xml::hidden( 'title', $this->getTitle("revert/$filter")->getPrefixedText() ) .
+				Xml::hidden( 'wpPeriodStart', $this->origPeriodStart ) .
+				Xml::hidden( 'wpPeriodEnd', $this->origPeriodEnd ) .
+				Xml::inputLabel( 
+					wfMsg( 'abusefilter-revert-reasonfield' ), 
+					'wpReason', 'wpReason', 45 
+				) . 
+				"\n" .
+				Xml::submitButton( wfMsg( 'abusefilter-revert-confirm' ) );
+			$confirmForm = Xml::tags( 
+				'form', 
+				array( 
+					'action' => $this->getTitle("revert/$filter")->getLocalURL(), 
+					'method' => 'post' 
+				), 
+				$confirmForm 
+			);
 			$wgOut->addHTML( $confirmForm );
 		}
 	}
@@ -98,7 +135,16 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			$reversibleActions = array( 'block', 'blockautopromote', 'degroup' );
 			$currentReversibleActions = array_intersect( $actions, $reversibleActions );
 			if ( count( $currentReversibleActions ) ) {
-				$results[] = array( 'id' => $row->afl_id, 'actions' => $currentReversibleActions, 'user' => $row->afl_user_text, 'userid' => $row->afl_user, 'vars' => unserialize( $row->afl_var_dump ), 'title' => Title::makeTitle( $row->afl_namespace, $row->afl_title ), 'action' => $row->afl_action, 'timestamp' => $row->afl_timestamp );
+				$results[] = array( 
+					'id' => $row->afl_id, 
+					'actions' => $currentReversibleActions, 
+					'user' => $row->afl_user_text, 
+					'userid' => $row->afl_user, 
+					'vars' => unserialize( $row->afl_var_dump ), 
+					'title' => Title::makeTitle( $row->afl_namespace, $row->afl_title ), 
+					'action' => $row->afl_action, 
+					'timestamp' => $row->afl_timestamp 
+				);
 			}
 		}
 
@@ -107,9 +153,11 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 	function loadParameters() {
 		global $wgRequest;
-		
-		$this->mPeriodStart = strtotime( $this->origPeriodStart = $wgRequest->getText( 'wpPeriodStart' ) );
-		$this->mPeriodEnd = strtotime( $this->origPeriodEnd = $wgRequest->getText( 'wpPeriodEnd' ) );
+
+		$this->origPeriodStart = $wgRequest->getText( 'wpPeriodStart' );
+		$this->mPeriodStart = strtotime( $this->origPeriodStart );
+		$this->origPeriodEnd = $wgRequest->getText( 'wpPeriodEnd' );
+		$this->mPeriodEnd = strtotime( $this->origPeriodEnd );
 		$this->mSubmit = $wgRequest->getVal( 'submit' );
 		$this->mReason = $wgRequest->getVal( 'wpReason' );
 	}
@@ -143,17 +191,27 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 				$block->delete();
 				$log = new LogPage( 'block' );
-				$log->addEntry( 'unblock', Title::makeTitle( NS_USER, $result['user'] ), wfMsgForContent( 'abusefilter-revert-reason', $this->mPage->mFilter, $this->mReason ) );
+				$log->addEntry( 
+					'unblock', 
+					Title::makeTitle( NS_USER, $result['user'] ), 
+					wfMsgForContent( 
+						'abusefilter-revert-reason', $this->mPage->mFilter, $this->mReason 
+					) 
+				);
 				break;
 			case 'blockautopromote':
 				global $wgMemc;
-				$wgMemc->delete( AbuseFilter::autopromoteBlockKey( User::newFromId( $result['userid'] ) ) );
+				$wgMemc->delete( AbuseFilter::autopromoteBlockKey( 
+					User::newFromId( $result['userid'] ) ) );
 				break;
 			case 'degroup':
 				// Pull the user's groups from the vars.
 				$oldGroups = $result['vars']['USER_GROUPS'];
 				$oldGroups = explode(',', $oldGroups);
-				$oldGroups = array_diff( $oldGroups, array_intersect( $oldGroups, User::getImplicitGroups() ) );
+				$oldGroups = array_diff( 
+					$oldGroups, 
+					array_intersect( $oldGroups, User::getImplicitGroups() ) 
+				);
 
 				$rows = array();
 				foreach( $oldGroups as $group ) {
@@ -174,7 +232,14 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				$user->invalidateCache();
 
 				$log = new LogPage( 'rights' );
-				$log->addEntry( 'rights', $user->getUserPage(), wfMsgForContent( 'abusefilter-revert-reason', $this->mPage->mFilter, $this->mReason ), array( implode(',', $currentGroups), implode(',', $newGroups) ) );
+				$log->addEntry( 'rights', $user->getUserPage(), 
+					wfMsgForContent( 
+						'abusefilter-revert-reason', 
+						$this->mPage->mFilter, 
+						$this->mReason 
+					),
+					array( implode(',', $currentGroups), implode(',', $newGroups) ) 
+				);
 		}
 	}
 }

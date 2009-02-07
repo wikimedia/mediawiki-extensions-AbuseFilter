@@ -26,8 +26,18 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$link = $sk->link( $title, wfMsg( "abusefilter-$list" ) );
 			$links .= Xml::tags( 'li', null, $link ) . "\n";
 		}
-		$links .= Xml::tags( 'li', null, $sk->link( SpecialPage::getTitleFor( 'AbuseLog' ), wfMsg( 'abusefilter-loglink' ) ) );
-		$links .= Xml::tags( 'li', null, $sk->link( $this->getTitle( 'history' ), wfMsg( 'abusefilter-filter-log' ) ) );
+		$links .= Xml::tags( 'li', null, 
+			$sk->link( 
+				SpecialPage::getTitleFor( 'AbuseLog' ), 
+				wfMsg( 'abusefilter-loglink' ) 
+			) 
+		);
+		$links .= Xml::tags( 'li', null, 
+			$sk->link( 
+				$this->getTitle( 'history' ), 
+				wfMsg( 'abusefilter-filter-log' ) 
+			) 
+		);
 		$links = Xml::tags( 'ul', null, $links );
 		$wgOut->addHTML( $links );
 
@@ -57,7 +67,8 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$sk = $this->mSkin = $wgUser->getSkin();
 
 		$output = '';
-		$output .= Xml::element( 'h2', null, wfMsgExt( 'abusefilter-list', array( 'parseinline' ) ) );
+		$output .= Xml::element( 'h2', null, 
+			wfMsgExt( 'abusefilter-list', array( 'parseinline' ) ) );
 
 		$pager = new AbuseFilterPager( $this, $conds );
 
@@ -66,15 +77,44 @@ class AbuseFilterViewList extends AbuseFilterView {
 		## Options form
 		$options = '';
 		$fields = array();
-		$fields['abusefilter-list-options-deleted'] = Xml::radioLabel( wfMsg( 'abusefilter-list-options-deleted-show' ), 'deletedfilters', 'show', 'mw-abusefilter-deletedfilters-show', $deleted == 'show' );
-		$fields['abusefilter-list-options-deleted'] .= Xml::radioLabel( wfMsg( 'abusefilter-list-options-deleted-hide' ), 'deletedfilters', 'hide', 'mw-abusefilter-deletedfilters-hide', $deleted == 'hide' );
-		$fields['abusefilter-list-options-deleted'] .= Xml::radioLabel( wfMsg( 'abusefilter-list-options-deleted-only' ), 'deletedfilters', 'only', 'mw-abusefilter-deletedfilters-only', $deleted == 'only' );
-		$fields['abusefilter-list-options-disabled'] = Xml::checkLabel( wfMsg( 'abusefilter-list-options-hidedisabled' ), 'hidedisabled', 'mw-abusefilter-disabledfilters-hide', $hidedisabled );
+		$fields['abusefilter-list-options-deleted'] = 
+			Xml::radioLabel( 
+				wfMsg( 'abusefilter-list-options-deleted-show' ), 
+				'deletedfilters', 
+				'show', 
+				'mw-abusefilter-deletedfilters-show', 
+				$deleted == 'show' 
+			) .
+			Xml::radioLabel( 
+				wfMsg( 'abusefilter-list-options-deleted-hide' ), 
+				'deletedfilters', 
+				'hide', 
+				'mw-abusefilter-deletedfilters-hide', 
+				$deleted == 'hide' 
+			) .
+			Xml::radioLabel( 
+				wfMsg( 'abusefilter-list-options-deleted-only' ), 
+				'deletedfilters', 
+				'only', 
+				'mw-abusefilter-deletedfilters-only', 
+				$deleted == 'only' );
+		$fields['abusefilter-list-options-disabled'] = 
+			Xml::checkLabel( 
+				wfMsg( 'abusefilter-list-options-hidedisabled' ), 
+				'hidedisabled', 
+				'mw-abusefilter-disabledfilters-hide', 
+				$hidedisabled 
+			);
 		$fields['abusefilter-list-limit'] = $pager->getLimitSelect();
 
 		$options = Xml::buildForm( $fields, 'abusefilter-list-options-submit' );
 		$options .= Xml::hidden( 'title', $this->getTitle()->getPrefixedText() );
-		$options = Xml::tags( 'form', array( 'method' => 'get', 'action' => $this->getTitle()->getFullURL() ), $options );
+		$options = Xml::tags( 'form', 
+			array( 
+				'method' => 'get', 
+				'action' => $this->getTitle()->getFullURL() 
+			), 
+			$options );
 		$options = Xml::fieldset( wfMsg( 'abusefilter-list-options' ), $options );
 
 		$output .= $options;
@@ -127,11 +167,25 @@ class AbuseFilterPager extends TablePager {
 		$dbr = wfGetDB( DB_SLAVE );
 		#$this->mConds[] = 'afa_filter=af_id';
 		$abuse_filter = $dbr->tableName( 'abuse_filter' );
-		return array( 'tables' => array('abuse_filter', 'abuse_filter_action'),
-			'fields' => array( 'af_id', '(af_enabled | af_deleted << 1) AS status', 'af_public_comments', 'af_hidden', 'af_hit_count', 'af_timestamp', 'af_user_text', 'af_user', 'af_actions' ),
+		return array( 
+			'tables' => array('abuse_filter', 'abuse_filter_action'),
+			'fields' => array( 
+				'af_id', 
+				'(af_enabled | af_deleted << 1) AS status',
+			 	'af_public_comments', 
+				'af_hidden', 
+				'af_hit_count', 
+				'af_timestamp', 
+				'af_user_text', 
+				'af_user', 
+				'af_actions' 
+			),
 			'conds' => $this->mConds,
 			'options' => array( 'GROUP BY' => 'af_id' ),
-			'join_conds' => array( 'abuse_filter_action' => array( 'LEFT JOIN', 'afa_filter=af_id' ) ) );
+			'join_conds' => array( 
+				'abuse_filter_action' => array( 'LEFT JOIN', 'afa_filter=af_id' ) 
+			) 
+		);
 	}
 
 	function getIndexField() {
@@ -145,7 +199,14 @@ class AbuseFilterPager extends TablePager {
 			return $headers;
 		}
 
-		$headers = array( 'af_id' => 'abusefilter-list-id', 'af_public_comments' => 'abusefilter-list-public', 'af_actions' => 'abusefilter-list-consequences', 'status' => 'abusefilter-list-status', 'af_timestamp' => 'abusefilter-list-lastmodified', 'af_hidden' => 'abusefilter-list-visibility', 'af_hit_count' => 'abusefilter-list-hitcount' );
+		$headers = array( 
+			'af_id' => 'abusefilter-list-id', 
+			'af_public_comments' => 'abusefilter-list-public', 
+			'af_actions' => 'abusefilter-list-consequences', 
+			'status' => 'abusefilter-list-status', 
+			'af_timestamp' => 'abusefilter-list-lastmodified', 
+			'af_hidden' => 'abusefilter-list-visibility', 
+			'af_hit_count' => 'abusefilter-list-hitcount' );
 
 		$headers = array_map( 'wfMsg', $headers );
 
@@ -166,9 +227,13 @@ class AbuseFilterPager extends TablePager {
 
 		switch($name) {
 			case 'af_id':
-				return $sk->link( SpecialPage::getTitleFor( 'AbuseFilter', intval($value) ), intval($value) );
+				return $sk->link( 
+					SpecialPage::getTitleFor( 'AbuseFilter', intval($value) ), intval($value) );
 			case 'af_public_comments':
-				return $sk->link( SpecialPage::getTitleFor( 'AbuseFilter', intval($row->af_id) ), $wgOut->parseInline( $value ) );
+				return $sk->link( 
+					SpecialPage::getTitleFor( 'AbuseFilter', intval($row->af_id) ), 
+					$wgOut->parseInline( $value ) 
+				);
 			case 'af_actions':
 				$actions = explode(',', $value);
 				$displayActions = array();
@@ -187,12 +252,32 @@ class AbuseFilterPager extends TablePager {
 				$msg = $value ? 'abusefilter-hidden' : 'abusefilter-unhidden';
 				return wfMsgExt( $msg, 'parseinline' );
 			case 'af_hit_count':
-				$count_display = wfMsgExt( 'abusefilter-hitcount', array( 'parseinline' ), $wgLang->formatNum( $value ) );
-				$link = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'AbuseLog' ), $count_display, 'wpSearchFilter='.$row->af_id );
+				$count_display = wfMsgExt( 
+					'abusefilter-hitcount', 
+					array( 'parseinline' ), 
+					$wgLang->formatNum( $value ) 
+				);
+				$link = $sk->makeKnownLinkObj( 
+					SpecialPage::getTitleFor( 'AbuseLog' ), 
+					$count_display, 
+					'wpSearchFilter='.$row->af_id 
+				);
 				return $link;
 			case 'af_timestamp':
-				$userLink = $sk->userLink( $row->af_user, $row->af_user_text ) . $sk->userToolLinks( $row->af_user, $row->af_user_text );
-				return wfMsgExt( 'abusefilter-edit-lastmod-text', array( 'replaceafter', 'parseinline' ), array( $wgLang->timeanddate($value), $userLink ) );
+				$userLink = 
+					$sk->userLink( 
+						$row->af_user, 
+						$row->af_user_text 
+					) . 
+					$sk->userToolLinks( 
+						$row->af_user, 
+						$row->af_user_text 
+					);
+				return wfMsgExt( 
+					'abusefilter-edit-lastmod-text', 
+					array( 'replaceafter', 'parseinline' ), 
+					array( $wgLang->timeanddate($value), $userLink ) 
+				);
 			default:
 				throw new MWException( "Unknown row type $name!" );
 		}
@@ -213,7 +298,13 @@ class AbuseFilterPager extends TablePager {
 	}
 
 	function isFieldSortable($name) {
-		$sortable_fields = array( 'af_id', 'status', 'af_hit_count', 'af_throttled', 'af_user_text', 'af_timestamp' );
+		$sortable_fields = array( 
+			'af_id', 
+			'status', 
+			'af_hit_count', 
+			'af_throttled', 
+			'af_user_text', 
+			'af_timestamp' );
 		return in_array( $name, $sortable_fields );
 	}
 }

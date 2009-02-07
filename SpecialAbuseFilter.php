@@ -14,7 +14,8 @@ class SpecialAbuseFilter extends SpecialPage {
 	function execute( $subpage ) {
 		global $wgUser, $wgOut, $wgRequest, $wgAbuseFilterStyleVersion, $wgScriptPath;
 
-		$wgOut->addExtensionStyle( "{$wgScriptPath}/extensions/AbuseFilter/abusefilter.css?{$wgAbuseFilterStyleVersion}" );
+		$wgOut->addExtensionStyle( "{$wgScriptPath}/extensions/AbuseFilter/abusefilter.css?" . 
+			$wgAbuseFilterStyleVersion );
 		$view = 'AbuseFilterViewList';
 
 		$this->setHeaders();
@@ -33,7 +34,8 @@ class SpecialAbuseFilter extends SpecialPage {
 
 		if ( $wgRequest->getVal( 'result' ) == 'success' ) {
 			$wgOut->setSubtitle( wfMsg( 'abusefilter-edit-done-subtitle' ) );
-			$wgOut->wrapWikiMsg( '<p class="success">$1</p>', array('abusefilter-edit-done', $wgRequest->getVal( 'changedfilter' ) ) );
+			$wgOut->wrapWikiMsg( '<p class="success">$1</p>', 
+				array('abusefilter-edit-done', $wgRequest->getVal( 'changedfilter' ) ) );
 		}
 		
 		$this->mSkin = $wgUser->getSkin();

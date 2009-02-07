@@ -39,7 +39,9 @@ class AbuseFilterChangesList extends OldChangesList {
 
 		## If we have a match..
 		if ( isset( $rc->filterResult ) ) {
-			$class = $rc->filterResult ? 'mw-abusefilter-changeslist-match' : 'mw-abusefilter-changeslist-nomatch';
+			$class = $rc->filterResult ? 
+				'mw-abusefilter-changeslist-match' : 
+				'mw-abusefilter-changeslist-nomatch';
 
 			$classes[] = $class;
 		}

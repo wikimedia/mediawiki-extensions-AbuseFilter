@@ -19,8 +19,23 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$output = '';
 		$output .= AbuseFilter::buildEditBox( $this->mFilter, 'wpTestFilter' ) . "\n";
-		$output .= Xml::inputLabel( wfMsg( 'abusefilter-test-load-filter' ), 'wpInsertFilter', 'mw-abusefilter-load-filter', 10, '' ) . '&nbsp;' .
-			Xml::element( 'input', array( 'type' => 'button', 'value' => wfMsg( 'abusefilter-test-load' ), 'id' => 'mw-abusefilter-load' ) );
+		$output .= 
+			Xml::inputLabel( 
+				wfMsg( 'abusefilter-test-load-filter' ), 
+				'wpInsertFilter', 
+				'mw-abusefilter-load-filter', 
+				10, 
+				'' 
+			) . 
+			'&nbsp;' .
+			Xml::element( 
+				'input', 
+				array( 
+					'type' => 'button', 
+					'value' => wfMsg( 'abusefilter-test-load' ), 
+					'id' => 'mw-abusefilter-load' 
+				) 
+			);
 		$output = Xml::tags( 'div', array( 'id' => 'mw-abusefilter-test-editor' ), $output );
 
 		// Removed until I can distinguish between positives and negatives :)
@@ -29,12 +44,19 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		// Selectory stuff
 		$selectFields = array();
 		$selectFields['abusefilter-test-user'] = wfInput( 'wpTestUser', 45, $this->mTestUser );
-		$selectFields['abusefilter-test-period-start'] = wfInput( 'wpTestPeriodStart', 45, $this->mTestPeriodStart );
-		$selectFields['abusefilter-test-period-end'] = wfInput( 'wpTestPeriodEnd', 45, $this->mTestPeriodEnd );
+		$selectFields['abusefilter-test-period-start'] = 
+			wfInput( 'wpTestPeriodStart', 45, $this->mTestPeriodStart );
+		$selectFields['abusefilter-test-period-end'] = 
+			wfInput( 'wpTestPeriodEnd', 45, $this->mTestPeriodEnd );
 		$output .= Xml::buildForm( $selectFields, 'abusefilter-test-submit' );
 		
 		$output .= Xml::hidden( 'title', $this->getTitle("test")->getPrefixedText() );
-		$output = Xml::tags( 'form', array( 'action' => $this->getTitle("test")->getLocalURL(), 'method' => 'POST' ), $output );
+		$output = Xml::tags( 'form', 
+			array( 
+				'action' => $this->getTitle("test")->getLocalURL(), 
+				'method' => 'POST' 
+			), 
+			$output );
 
 		$output = Xml::fieldset( wfMsg( 'abusefilter-test-legend' ), $output );
 
@@ -57,17 +79,20 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$conds = array( 'rc_user_text' => $this->mTestUser );
 
 		if ($this->mTestPeriodStart) {
-			$conds[] = 'rc_timestamp>='.$dbr->addQuotes( $dbr->timestamp( strtotime( $this->mTestPeriodStart ) ) );
+			$conds[] = 'rc_timestamp >= ' . 
+				$dbr->addQuotes( $dbr->timestamp( strtotime( $this->mTestPeriodStart ) ) );
 		}
 		if ($this->mTestPeriodEnd) {
-			$conds[] = 'rc_timestamp<='.$dbr->addQuotes( $dbr->timestamp( strtotime( $this->mTestPeriodEnd ) ) );
+			$conds[] = 'rc_timestamp <= ' . 
+				$dbr->addQuotes( $dbr->timestamp( strtotime( $this->mTestPeriodEnd ) ) );
 		}
 
 		// Get our ChangesList
 		$changesList = new AbuseFilterChangesList( $wgUser->getSkin() );
 		$output = $changesList->beginRecentChangesList();
 
-		$res = $dbr->select( 'recentchanges', '*', array_filter( $conds ), __METHOD__, array( 'LIMIT' => self::$mChangeLimit, 'ORDER BY' => 'rc_timestamp desc' ) );
+		$res = $dbr->select( 'recentchanges', '*', array_filter( $conds ), __METHOD__, 
+			array( 'LIMIT' => self::$mChangeLimit, 'ORDER BY' => 'rc_timestamp desc' ) );
 
 		$counter = 1;
 
@@ -103,9 +128,14 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$this->mTestPeriodEnd = $wgRequest->getText( 'wpTestPeriodEnd' );
 		$this->mTestPeriodStart = $wgRequest->getText( 'wpTestPeriodStart' );
 
-		if ( !$this->mFilter && count($this->mParams) > 1 && is_numeric( $filter = $this->mParams[1] ) ) {
+		if ( !$this->mFilter 
+			&& count($this->mParams) > 1 
+			&& is_numeric( $this->mParams[1] ) )
+		{
 			$dbr = wfGetDB( DB_SLAVE );
-			$this->mFilter = $dbr->selectField( 'abuse_filter', 'af_pattern', array( 'af_id' => $filter ), __METHOD__ );
+			$this->mFilter = $dbr->selectField( 'abuse_filter', 'af_pattern', 
+				array( 'af_id' => $this->mParams[1] ), 
+				__METHOD__ );
 		}
 	}
 }
