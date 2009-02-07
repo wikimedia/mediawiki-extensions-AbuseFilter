@@ -503,7 +503,7 @@ class AbuseFilter {
 				AbuseFilter::$tagsToSet[$actionID] = $parameters;
 				break;
 			default:
-				throw new MWException( "Unrecognised action $action" );
+				wfDebugLog( 'AbuseFilter', "Unrecognised action $action" );
 		}
 		
 		return $display;
