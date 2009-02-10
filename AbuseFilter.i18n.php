@@ -599,8 +599,8 @@ $messages['ar'] = array(
 الأفعال المتخذة: $5;
 وصف الفلتر: $6',
 	'abusefilter-log-detailedentry' => '$1: $2 أطلق [[Special:AbuseFilter/$3|الفلتر $3]]، مؤديا الفعل "$4" في $5.
-الأفعال المتخذة: $6;
-وصف الفلتر: $7 ($8)',
+الأفعال المتخذة: $6؛
+وصف الفلتر: $7 ($8) ($9)',
 	'abusefilter-log-detailslink' => 'التفاصيل',
 	'abusefilter-log-details-legend' => 'التفاصيل لمدخلة السجل $1',
 	'abusefilter-log-details-var' => 'متغير',
@@ -957,7 +957,7 @@ $messages['arz'] = array(
 	'abusefilter-reautoconfirm-notallowed' => 'أنت غير مسموح لك باسترجاع حالة التأكيد التلقائى.',
 	'abusefilter-status' => 'من آخر $1 {{PLURAL:$1|فعل|فعل}}، $2 ($3%) {{PLURAL:$2|وصل|وصل}} إلى حد الحالة ل$4. $5 ($6%) {{PLURAL:$5|طابق|طابق}} واحدا من الفلاتر المفعلة حاليا.',
 	'abusefilter-edit-subtitle' => 'تعديل الفلتر $1',
-	'abusefilter-edit-oldwarning' => '<strong>أنت تعدل نسخة قديمة من هذا الفلتر. الإحصاءات الموجودة هى لأحدث نسخة من الفلتر. لو أنك حفظت تغييراتك، فستكتب على كل التغييرات منذ المراجعة التي تعدلها.</strong> &bull; [[Special:AbuseFilter/history/$2|رجوع إلى تاريخ هذا الفلتر]]',
+	'abusefilter-edit-oldwarning' => '<strong>أنت تعدل نسخة قديمة من هذا الفلتر. الإحصاءات الموجودة هى لأحدث نسخة من الفلتر. لو أنك حفظت تغييراتك، فستكتب على كل التغييرات منذ المراجعة التى تعدلها.</strong> &bull; [[Special:AbuseFilter/history/$2|رجوع إلى تاريخ هذا الفلتر]]',
 	'abusefilter-edit-status-label' => 'احصائيات:',
 	'abusefilter-edit-status' => 'من آخر $1 {{PLURAL:$1|تعديل|تعديل}}، هذا الفلتر طابق $2 ($3%).',
 	'abusefilter-edit-throttled' => "'''تحذير''': هذا الفلتر تم تعطيله تلقائيا كإجراء أمني. لقد وصل إلى حد مطابقة أكثر من $1% من الأفعال.",
@@ -1090,9 +1090,19 @@ $messages['arz'] = array(
 	'abusefilter-revert-confirm' => 'تأكيد',
 	'abusefilter-test-submit' => 'اختبار',
 	'abusefilter-test-load' => 'تحميل',
+	'abusefilter-examine-legend' => 'اختار التغييرات',
+	'abusefilter-examine-diff' => 'URL بتاع الفرق:',
 	'abusefilter-examine-user' => 'اليوزر:',
 	'abusefilter-examine-title' => 'عنوان الصفحه:',
 	'abusefilter-examine-submit' => 'تدوير',
+	'abusefilter-examine-vars' => 'المتغيرات المتولده للتغيير دا',
+	'abusefilter-examine-test' => 'اختبر التغيير دا ضد الفيلتر',
+	'abusefilter-examine-test-button' => 'فيلتر الاختبار',
+	'abusefilter-examine-match' => 'الفيلتر مطابق التغيير دا.',
+	'abusefilter-examine-nomatch' => 'الفيلتر مش مطابق التغيير دا',
+	'abusefilter-examine-syntaxerror' => 'الفيلتر عنده سينتاكس مش صح',
+	'abusefilter-examine-notfound' => 'التغير اللى طلبته مالقيناهوش',
+	'abusefilter-examine-incompatible' => 'التغيير اللى طلبته مش بيدعمه فيلتر الاساءه',
 );
 
 /** Assamese (অসমীয়া)
@@ -1233,7 +1243,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-edit-action-blockautopromote' => 'Зьняць з удзельніка статус аўтаматычнага пацьверджаньня',
 	'abusefilter-edit-action-degroup' => 'Выдаліць удзельніка з усіх прывілеяваных групаў',
 	'abusefilter-edit-action-block' => 'Заблякаваць удзельніка і/ці ІР-адрас',
-	'abusefilter-edit-action-throttle' => 'Выконваць дзеяньні толькі калі ўдзельнік перайшоў дапушчальны узровень',
+	'abusefilter-edit-action-throttle' => 'Выконваць дзеяньні толькі калі ўдзельнік перайшоў дапушчальны ўзровень',
 	'abusefilter-edit-action-rangeblock' => 'Заблякаваць дыяпазон /16 IP-адрасоў, зь якога працуе ўдзельнік.',
 	'abusefilter-edit-action-tag' => 'Пазначыць рэдагаваньне для далейшай праверкі.',
 	'abusefilter-edit-throttle-count' => 'Колькасьць дазволеных дзеяньняў:',
@@ -1248,7 +1258,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-edit-warn-actions' => 'Дзеяньні',
 	'abusefilter-edit-warn-preview' => 'Папярэдні прагляд выбранага паведамленьня',
 	'abusefilter-edit-warn-edit' => 'Стварыць/рэдагаваць выбранае паведамленьне',
-	'abusefilter-edit-tag-tag' => 'Ужываемыя тэгі (па аднаму на радок):',
+	'abusefilter-edit-tag-tag' => 'Ужываемыя тэгі (па адным на радок):',
 	'abusefilter-edit-denied' => 'Вы ня можаце праглядзець дэталі гэтага фільтру, таму што яны схаваныя ад агульнага прагляду',
 	'abusefilter-edit-main' => 'Парамэтры фільтру',
 	'abusefilter-edit-done-subtitle' => 'Фільтар быў адрэдагаваны',
@@ -1357,7 +1367,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-exception-expectednotfound' => 'Чаканы $2 у канцы $1 ня знойдзены.',
 	'abusefilter-exception-unrecognisedkeyword' => 'Нераспазнанае ключавое слова $2 у пазыцыі $1.',
 	'abusefilter-exception-unexpectedtoken' => 'Нечаканы элемэнт «$2» у пазыцыі $1.',
-	'abusefilter-exception-unclosedstring' => 'Незачынены радок выразу, які пачынаецца з пазыцыі $1.',
+	'abusefilter-exception-unclosedstring' => 'Незакрыты радок выразу, які пачынаецца з пазыцыі $1.',
 	'abusefilter-exception-invalidoperator' => 'Няслушны апэратар $2 у пазыцыі $1.',
 	'abusefilter-exception-unrecognisedtoken' => 'Нераспазнаны элемэнт «$2» у пазыцыі $1.',
 	'abusefilter-exception-noparams' => 'Няма парамэтраў для функцыі «$2» у пазыцыі $1.',
@@ -1379,8 +1389,8 @@ $messages['be-tarask'] = array(
 	'abusefilter-revert-periodend' => 'Канец пэрыяду:',
 	'abusefilter-revert-search' => 'Выбар дзеяньняў',
 	'abusefilter-revert-filter' => 'Фільтар:',
-	'abusefilter-revert-preview-intro' => 'Ніжэй знаходзяцца дзеяньні выкананыя фільтрам злоўжываньняў, якія будуць адкачаны.
-Калі ласка, праверце іх уважліва і націсьніце «пацьвердзіць» каб пацьвердзіць Ваша дзеяньне.',
+	'abusefilter-revert-preview-intro' => 'Ніжэй знаходзяцца дзеяньні, выкананыя фільтрам злоўжываньняў, якія будуць адкачаныя.
+Калі ласка, праверце іх уважліва і націсьніце «пацьвердзіць», каб пацьвердзіць Вашае дзеяньне.',
 	'abusefilter-revert-confirm' => 'Пацьвердзіць',
 	'abusefilter-revert-success' => 'Вы адкацілі ўсе дзеяньні выкананыя фільтрам злоўжываньняў [[Special:AbuseFilter/$1|filter $1]].',
 	'abusefilter-revert-reason' => 'Аўтаматычны адкат усіх дзеяньняў, выкананых фільтрам злоўжываньняў $1.
@@ -1396,10 +1406,10 @@ $messages['be-tarask'] = array(
 	'abusefilter-test-user' => 'Зьмены зробленыя ўдзельнікам:',
 	'abusefilter-test-period-start' => 'Зьмены зробленыя пасьля:',
 	'abusefilter-test-period-end' => 'Зьмены зробленыя перад:',
-	'abusefilter-test-shownegative' => 'Паказаць зьмены, якія не супадаюць з фільтрам',
+	'abusefilter-test-shownegative' => 'Паказаць зьмены, якія не супадаюць зь фільтрам',
 	'abusefilter-changeslist-examine' => 'праверыць',
 	'abusefilter-examine' => 'Праверыць індывідуальныя зьмены',
-	'abusefilter-examine-intro' => 'Гэта старонка дазваляе Вам праверыць пераменныя, створаныя фільтрам злоўжываньняў для індывідуальных зьменаў, і праверыць іх на фільтрах.',
+	'abusefilter-examine-intro' => 'Гэтая старонка дазваляе Вам праверыць зьменныя, створаныя фільтрам злоўжываньняў для індывідуальных зьменаў, і праверыць іх на фільтрах.',
 	'abusefilter-examine-legend' => 'Выбар зьменаў',
 	'abusefilter-examine-diff' => 'URL-адрас розьніцы паміж вэрсіямі:',
 	'abusefilter-examine-user' => 'Удзельнік:',
@@ -2392,6 +2402,12 @@ $5 Aktionen ($6 %) {{PLURAL:$5|wurde|wurden}} von einem der aktivierten Filter e
 	'abusefilter-edit-throttle-groups' => "Regeln für die Gruppendrossel:
 :''(eine pro Zeile, verbinden mit Kommata)''",
 	'abusefilter-edit-warn-message' => 'Systemnachricht für die Warnung:',
+	'abusefilter-edit-warn-other' => 'Andere Systemnachricht',
+	'abusefilter-edit-warn-other-label' => "Seitenname von einer anderen Systemnachricht:
+:''(ohne MediaWiki-Präfix)''",
+	'abusefilter-edit-warn-actions' => 'Aktionen',
+	'abusefilter-edit-warn-preview' => 'Vorschau der gewählten Systemnachricht',
+	'abusefilter-edit-warn-edit' => 'Erstelle/Bearbeite gewählte Systemnachricht',
 	'abusefilter-edit-tag-tag' => 'gültige Labels (eins pro Zeile):',
 	'abusefilter-edit-denied' => 'Du kannst die Details dieses Filters nicht einsehen, weil sie versteckt sind',
 	'abusefilter-edit-main' => 'Filterparameter',
@@ -2580,6 +2596,23 @@ $messages['dsb'] = array(
 	'abusefilter-desc' => 'Nałožujo awtomatisku heuristiku na změny.',
 	'abusefilter' => 'Konfiguracija filtra znjewužywanja',
 	'abuselog' => 'Protokol znjewužywanjow',
+	'abusefilter-warning' => "<big>'''Warnowanje'''</big>: Toś ta akcija jo se awtomatiski identificěrowała ako škódna.
+Njekonstruktiwne změny budu se spěšnje anulěrowaś, a njesromne abo wóspjetowane njekonstruktiwne wobźěłowanje buźo k tomu wjasć, až twójo konto abo twójo licadło se blokěrujo.
+Jolic se mysliš, až toś ta změna jo konstruktiwna, móžoš na Znowego wótpósłaś kliknuś, aby ju wobkšuśił. Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpowědujo, jo: $1",
+	'abusefilter-disallowed' => 'Toś ta akcija jo se awtomatiski identificěrowała ako škódna, a togodla znjemóžniła.
+Jolic se měniš, až twója změna jo była konstruktiwna, staj se z administratorom do zwiska a informěruj jogo, což sy wopytał cyniś.
+Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpowědujo, jo: $1',
+	'abusefilter-blocked-display' => 'Toś ta akcija jo se awtomatiski identificěrowała ako škódna, a jo se śi zawoborało ju wuwjasć.
+Pśidatnje, aby {{SITENAME}} šćitało, blokěruju se twójo wužywarske konto a wše zwězane IP-adrese pśeśiwo wobźěłowanjoju.
+Jolic jo se to zamólnje stało, staj se pšosym z administratorom do zwiska.
+Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpowědujo, jo: $1',
+	'abusefilter-degrouped' => 'Toś ta akcija jo se awtomatiski identificěrowała ako škódna.
+Pótakem jo se znjemóžniła, a, dokulaž twójo konto ma se za wobgrozone, wše pšawa su se pšec wzeli.
+Jolic se mysliš, až jo so to zamólnje stało, staj se pšosym z běrokratom do zwiska a pśidaj rozjasnjenje toś teje akcije a twóje pšawa budu se wótnowiś.
+Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpowědujo, jo: $1',
+	'abusefilter-autopromote-blocked' => 'Toś ta akcija jo se awtomatiski identificěrowała ako škódna a jo se znjemóžniła.
+Pśidatnje, ako wěstotna napšawa, su se někotare priwilegije, kótarež se powšyknje napóranym kontam dawaju, pšec wzeli twójomu kontoju.
+Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpowědujo, jo: $1',
 	'abusefilter-blocker' => 'Filter znjewužywanja',
 	'abusefilter-blockreason' => 'Awtomatiski pśez filter znjewužywanja zablokěrowany. Wopisanje pśitrjefjecego pšawidła: $1',
 	'abusefilter-degroupreason' => 'Pšawa awtomatiski pśez fitler znjewužywanja zajmjone. Wopisanje pšawidła: $1',
@@ -2651,6 +2684,10 @@ $messages['dsb'] = array(
 	'abusefilter-reautoconfirm-notallowed' => 'Njesmějoš awtomatiski wobkšuśony status wótnowiś',
 	'abusefilter-status' => 'Ze {{PLURAL:$1|slědneje akcije|slědneju $1 akciji|slědnych $1 akcijow|slědnych $1 akcijow}} $2 ($3 %) {{PLURAL:$2|jo dojśpiła|stej dojśpiłej|su dojśpili|jo dojśpiło}} limit wuměnjenja $4 a $5 ($6 %) {{PLURAL:$5|jo wótpowědowała|stej wótpowědowałej|su wótpowědowali|jo wótpowědowało}} jadnomu z filtrow, kótarež su tuchylu zmóžnjone.',
 	'abusefilter-edit-subtitle' => 'Filter $1 se wobźěłujo',
+	'abusefilter-edit-oldwarning' => '<strong>Wobźěłujoš staru wersiju toś togo filtra.
+Statistiske pódaśa su za nejnowšu wersiju filtra.
+Jolic składujoš swóje změny, buźoš wše změny pśepisowaś, kótarež sy cynił wót wersije, kótaruž wobźěłujoš.</strong> &bull;
+[[Special:AbuseFilter/history/$2|Slědk k stawiznam toś togo filtra]].',
 	'abusefilter-edit-status-label' => 'Statistika:',
 	'abusefilter-edit-status' => 'Ze {{PLURAL:$1|slědneje akcije|slědneju $1 akcijowu|slědnych $1 akcijow|slědnych $1 akcijow}} toś ten filter jo spóznał $2 ($3 %).',
 	'abusefilter-edit-throttled' => "'''Warnowanje''': Toś ten filter jo se awtomatiski znjemóžnił ako wěstotna napšawa.
@@ -2766,6 +2803,7 @@ Pšosym pšos wužywarja z pšawom wobgranicowane akcije pśidaś, aby cynił zm
 	'abusefilter-edit-builder-vars-user-editcount' => 'Licenje změnow wužywarja',
 	'abusefilter-edit-builder-vars-user-age' => 'Starstwo wužywarskego konta',
 	'abusefilter-edit-builder-vars-user-name' => 'Mě wužywarskego konta',
+	'abusefilter-edit-builder-vars-user-groups' => 'Kupki (teke implicitne), w kótarychž wužywaŕ jo cłonk',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Cas, gaž e-mailowa adresa jo se wobkšuśiła',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Slědnych pěś wobźěłarjow boka',
 	'abusefilter-edit-builder-vars-all-links' => 'Wše eksterne wótkaze w nowem teksće',
@@ -2775,6 +2813,8 @@ Pšosym pšos wužywarja z pšawom wobgranicowane akcije pśidaś, aby cynił zm
 	'abusefilter-edit-builder-vars-new-text' => 'Nowy wikitekst boka, pó wobźěłanju',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nowy tekst boka, bźez wobznamjenjeńskego teksta',
 	'abusefilter-edit-builder-vars-new-html' => 'Analyzěrowane HTML-žrědło noweje wersije',
+	'abusefilter-edit-builder-vars-restrictions-edit' => 'Šćitny schójźeńk za wobźěłowanje boka',
+	'abusefilter-edit-builder-vars-restrictions-move' => 'Šćitny schóźeńk za pśesuwanje boka',
 	'abusefilter-filter-log' => 'Nejnowše změny pśez filter',
 	'abusefilter-history' => 'Stawizny za znjewužywański filter #$1 změniś',
 	'abusefilter-history-foruser' => 'Změny wót $1',
@@ -3846,7 +3886,7 @@ Accións levadas a cabo: $5.
 Descrición do filtro: $6',
 	'abusefilter-log-detailedentry' => '$1: $2 accionou [[Special:AbuseFilter/$3|o filtro $3]], levando a cabo a acción "$4" en $5.
 Accións levadas a cabo: $6.
-Descrición do filtro: $7 ($8)',
+Descrición do filtro: $7 ($8) ($9)',
 	'abusefilter-log-detailslink' => 'detalles',
 	'abusefilter-log-details-legend' => 'Detalles para a entrada $1 do rexistro',
 	'abusefilter-log-details-var' => 'Variable',
@@ -4135,7 +4175,7 @@ $messages['grc'] = array(
 	'abusefilter-edit-rules' => 'Συνθῆκαι:',
 	'abusefilter-edit-notes' => "Σημειώσεις:
 :''(ἰδιωτικόν)",
-	'abusefilter-edit-history' => 'Ἱστορία:',
+	'abusefilter-edit-history' => 'Αἱ προτέραι:',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Πρόσθεσις (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Ἀφαίρεσις (-)',
 	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Πολλαπλασίασις (*)',
@@ -4153,6 +4193,8 @@ $messages['grc'] = array(
 	'abusefilter-history-flags' => 'Σημαῖαι',
 	'abusefilter-history-comments' => 'Σχόλια',
 	'abusefilter-history-deleted' => 'Διεγραμμένη',
+	'abusefilter-history-select-user' => 'Χρώμενος:',
+	'abusefilter-examine-user' => 'Χρώμενος:',
 );
 
 /** Swiss German (Alemannisch)
@@ -9039,6 +9081,7 @@ $messages['roa-tara'] = array(
 	'abusefilter-log-noactions' => 'ninde',
 	'abusefilter-list' => 'Tutte le filtre',
 	'abusefilter-list-edit' => 'Cange',
+	'abusefilter-list-details' => 'Dettaglie',
 	'abusefilter-hidden' => 'Privete',
 	'abusefilter-unhidden' => 'Pubbleche',
 	'abusefilter-deleted' => 'Scangillete',
