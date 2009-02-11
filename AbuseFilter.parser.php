@@ -362,17 +362,15 @@ class AbuseFilterParser {
 		wfProfileOut( __METHOD__ );
 	}
 	
-	protected function move( $shift = +1 ) {
-		$old = $this->mPos;
-		$this->mPos += $shift;
-		if( $this->mPos >= 0 && $this->mPos < count( $this->mTokens ) ) {
-			$this->mCur = $this->mTokens[$this->mPos];
-			return true;
-		}
-		else {
-			$this->mPos = $old;
-			return false;
-		}
+	protected function move( ) {
+		wfProfileIn( __METHOD__ );
+		list( $val, $type, $code, $offset ) =
+			self::nextToken( $this->mCode, $this->mPos );
+		
+		$token = new AFPToken( $type, $val, $this->mPos );
+		$this->mPos = $offset;
+		wfProfileOut( __METHOD__ );
+		return $this->mCur = $token;
 	}
 	
 	public function parse( $code ) {
@@ -385,10 +383,15 @@ class AbuseFilterParser {
 	
 	function intEval( $code ) {
 		wfProfileIn( __METHOD__ );
+		
+		// Setup, resetting
 		$this->mCode = $code;
-		$this->mTokens = self::parseTokens( $code );
 		$this->mPos = 0;
-		$this->mCur = $this->mTokens[0];
+		$this->mLen = strlen( $code );
+		
+		// Parse the first token
+		$this->move();
+		
 		$result = new AFPData();
 		$this->doLevelEntry( $result );
 		wfProfileOut( __METHOD__ );
@@ -641,8 +644,17 @@ class AbuseFilterParser {
 				$var = strtolower($tok);
 				if( isset( $this->mVars[$var] ) ) {
 					$result = $this->mVars[$var];
-				} else {
+				} elseif (
+					array_key_exists( strtolower($var),
+						AbuseFilter::$builderValues['vars'] )
+				) {
+					// If the variable is valid but not set, return null
 					$result = new AFPData();
+				} else {
+					// If the variable is invalid, throw an exception
+					throw new AFPUserVisibleException( 'unrecognisedvar',
+														$this->mCur->pos,
+														array( $var ) );
 				}
 				break;
 			case AFPToken::TString:
@@ -662,7 +674,9 @@ class AbuseFilterParser {
 				elseif( $tok == "null" )
 					$result = new AFPData();
 				else
-					throw new AFPUserVisibleException( 'unrecognisedkeyword', $this->mCur->pos, array($tok) );
+					throw new AFPUserVisibleException( 'unrecognisedkeyword',
+														$this->mCur->pos,
+														array($tok) );
 				break;
 			case AFPToken::TBrace:
 			if( $this->mCur->value == ')' )
@@ -681,38 +695,17 @@ class AbuseFilterParser {
 	
 	/* End of levels */
 	
-	public static function parseTokens( $code ) {
-		$r = array();
-		$len = strlen( $code );
-		$hash = md5(trim($code));
-		
-		if (isset(self::$parserCache[$hash])) {
-			return self::$parserCache[$hash];
-		}
-		
-		$offset = 0; // Where to next search
-		while( $tok = self::nextToken( $code, $offset ) ) {
-			$pos = $offset; // Start of the next token
-			list( $val, $type, $code, $offset ) = $tok;
-			$r[] = new AFPToken( $type, $val, $pos );
-			if( $type == AFPToken::TNone )
-				break;
-		}
-		
-		return self::$parserCache[$hash] = $r;
-	}
-	
 	static function nextToken( $code, $offset ) {
 		$tok = '';
 		
 		static $lastInput = array();
 		
-// 		if ( $lastInput == array( $code, $offset ) ) {
-// 			throw new AFPException( "Entered infinite loop. Offset $offset of $code" );
-// 		}
+		if ( $lastInput == array( $code, $offset ) ) {
+			throw new AFPException( "Entered infinite loop. Offset $offset of $code" );
+		}
 		
 		$lastInput = array( $code, $offset );
-		
+			
 		while( !empty( $code[$offset] ) && ctype_space( $code[$offset] ) )
 			$offset++;
 		

@@ -297,6 +297,7 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-exception-unrecognisedtoken' => 'Unrecognised token "$2" at character $1.',
 	'abusefilter-exception-noparams' => 'No parameters given to function "$2" at character $1.',
 	'abusefilter-exception-dividebyzero' => 'Illegal attempt to divide $2 by zero at character $1.',
+	'abusefilter-exception-unrecognisedvar' => 'Unrecognised variable $2 at character $1',
 
 	// Actions
 	'abusefilter-action-throttle' => 'Throttle',
