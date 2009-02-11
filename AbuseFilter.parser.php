@@ -743,7 +743,13 @@ class AbuseFilterParser {
 					return array( $tok, AFPToken::TString, $code, $offset );
 				}
 				
-				if( $code[$offset] == '\\' ) {
+				// Performance: Use a PHP function (implemented in C)
+				//  to scan ahead.
+				$addLength = strcspn( $code, $type."\\", $offset );
+				if ($addLength) {
+					$tok .= substr( $code, $offset, $addLength );
+					$offset += $addLength;
+				} elseif( $code[$offset] == '\\' ) {
 					if( $code[$offset + 1] == '\\' )
 						$tok .= '\\';
 					elseif( $code[$offset + 1] == $type )
@@ -891,10 +897,6 @@ class AbuseFilterParser {
 		
 		throw new AFPUserVisibleException(
 			'unrecognisedtoken', $offset, array( substr( $code, $offset ) ) );
-	}
-	
-	protected static function isDigitOrDot( $chr ) {
-		return ctype_alnum( $chr ) || $chr == '.';
 	}
 	
 	protected static function isValidIdSymbol( $chr ) {

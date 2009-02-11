@@ -4,7 +4,10 @@
  * Runs tests against the PHP parser.
  */
 
-require( '/home/andrew/mediawiki/maintenance/commandLine.inc' );	
+require_once ( getenv('MW_INSTALL_PATH') !== false
+	? getenv('MW_INSTALL_PATH')."/maintenance/commandLine.inc"
+	: dirname( __FILE__ ) . '/../../maintenance/commandLine.inc' );
+	
 $tester = new AbuseFilterParser;
 
 wfLoadExtensionMessages( 'AbuseFilter' );
@@ -16,9 +19,6 @@ $check = 0;
 $pass = 0;
 
 foreach( $tests as $test ) {
-	if( in_string( 'whitespace.t', $test ) )
-		continue;	// Skip it. Or add preset variables support to the parser
-
 	$result = substr($test,0,-2).".r";
 
 	$rule = trim(file_get_contents( $test ));
@@ -45,6 +45,10 @@ foreach( $tests as $test ) {
 		}
 	} catch (AFPException $excep) {
 		print "-FAILED - exception ".$excep->getMessage()." with input $rule\n";
+		
+		// export
+		$vars = var_export( $tester->mTokens, true );
+		file_put_contents( $test.'.parsed', $vars );
 	}
 }
 
