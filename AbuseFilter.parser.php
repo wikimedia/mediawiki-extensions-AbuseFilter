@@ -700,31 +700,43 @@ class AbuseFilterParser {
 		
 		static $lastInput = array();
 		
+		// Check for infinite loops
 		if ( $lastInput == array( $code, $offset ) ) {
+			// Should never happen
 			throw new AFPException( "Entered infinite loop. Offset $offset of $code" );
 		}
 		
 		$lastInput = array( $code, $offset );
 			
-		while( !empty( $code[$offset] ) && ctype_space( $code[$offset] ) )
-			$offset++;
+		// Spaces
+		$matches = array();
+		if ( preg_match( '/\s+/u', $code, $matches, PREG_OFFSET_CAPTURE, $offset ) &&
+				$matches[0][1] == $offset ) {
+			$offset += strlen($matches[0][0]);		
+		}
 		
 		if( $offset >= strlen($code) ) return array( '', AFPToken::TNone, $code, $offset );
 
+		// Comments
 		if ( substr($code, $offset, 2) == '/*' ) {
 			$end = strpos( $code, '*/', $offset );
 			
 			return self::nextToken( $code, $end + 2 );
 		}
 		
+		// Commas
 		if( $code[$offset] == ',' ) {
 			$offset++;
 			return array( ',', AFPToken::TComma, $code, $offset );
 		}
 		
+		// Braces
+		
 		if( $code[$offset] == '(' or $code[$offset] == ')' ) {
 			return array( $code[$offset], AFPToken::TBrace, $code, $offset + 1 );
-		}	
+		}
+		
+		// Strings
 		
 		if( $code[$offset] == '"' || $code[$offset] == "'" ) {
 			$type = $code[$offset];
@@ -777,38 +789,29 @@ class AbuseFilterParser {
 			throw new AFPUserVisibleException( 'unclosedstring', $offset, array() );;
 		}
 		
-		if( ctype_punct( $code[$offset] ) ) {
-			// Match using a regex. Regexes are faster than PHP
+		// Find operators
+		
+		static $operator_regex = null;
+		// Match using a regex. Regexes are faster than PHP
+		if (!$operator_regex) {
 			$quoted_operators = array();
 			
 			foreach( self::$mOps as $op )
 				$quoted_operators[] = preg_quote( $op, '/' );
 			$operator_regex = '/('.implode('|', $quoted_operators).')/';
-			$matches = array();
-			
-			preg_match( $operator_regex, $code, $matches, PREG_OFFSET_CAPTURE, $offset );
-			
-			if( count( $matches ) && $matches[0][1] == $offset ) {
-				$tok = $matches[0][0];
-				$offset += strlen( $tok );
-				return array( $tok, AFPToken::TOp, $code, $offset );
-			} elseif ($code[$offset] != '.') { // '.' is used to start some floats
-				// Find the operator
-				preg_match( '/[^\s\w]+/', $code, $matches, 0, $offset );
-				
-				if ( in_array( $matches[0], self::$mOps ) ) {
-					// Should never happen
-					throw new AFPException(
-						"Weird error: valid operator ".$matches[0]." was not matched by
-						regex ".$operator_regex );
-				}
-				
-				throw new AFPUserVisibleException( 'invalidoperator',
-													$offset,
-													array( $matches[0] )
-												);
-			}
 		}
+		
+		$matches = array();
+		
+		preg_match( $operator_regex, $code, $matches, PREG_OFFSET_CAPTURE, $offset );
+		
+		if( count( $matches ) && $matches[0][1] == $offset ) {
+			$tok = $matches[0][0];
+			$offset += strlen( $tok );
+			return array( $tok, AFPToken::TOp, $code, $offset );
+		}
+		
+		// Find bare numbers
 		
 		$bases = array( 'b' => 2,
 						'x' => 16,
@@ -849,7 +852,7 @@ class AbuseFilterParser {
 
 			if ( preg_match( $baseRegex, $input ) ) {
 				if ($base != 10) {
-					$num = wfBaseConvert( $input, $base, 10 );
+					$num = base_convert( $input, $base, 10 );
 				} else {
 					$num = $input;
 				}
@@ -871,29 +874,25 @@ class AbuseFilterParser {
 			}
 		}
 		
-		if( self::isValidIdSymbol( $code[$offset] ) ) {
-			// Regex match
-			$idSymbolRegex = '/[0-9A-Za-z_]+/';
-			$matches = array();
-			preg_match( $idSymbolRegex, $code, $matches, PREG_OFFSET_CAPTURE, $offset );
+		// The rest are considered IDs
+		
+		// Regex match > PHP
+		$idSymbolRegex = '/[0-9A-Za-z_]+/';
+		$matches = array();
+		preg_match( $idSymbolRegex, $code, $matches, PREG_OFFSET_CAPTURE, $offset );
+		
+		if ( $matches[0][1] == $offset ) {
+			$tok = $matches[0][0];
 			
-			if ( $matches[0][1] == $offset ) {
-				$tok = $matches[0][0];
+			$type = in_array( $tok, self::$mKeywords )
+				? AFPToken::TKeyword
+				: AFPToken::TID;
 				
-				$type = in_array( $tok, self::$mKeywords )
-					? AFPToken::TKeyword
-					: AFPToken::TID;
-					
-				return array( $tok, $type, $code, $offset + strlen($tok) );
-			}
+			return array( $tok, $type, $code, $offset + strlen($tok) );
 		}
 		
 		throw new AFPUserVisibleException(
 			'unrecognisedtoken', $offset, array( substr( $code, $offset ) ) );
-	}
-	
-	protected static function isValidIdSymbol( $chr ) {
-		return ctype_alnum( $chr ) || $chr == '_';
 	}
 	
 	//Built-in functions
