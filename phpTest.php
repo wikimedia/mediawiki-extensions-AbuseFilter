@@ -4,11 +4,10 @@
  * Runs tests against the PHP parser.
  */
 
-require_once ( getenv('MW_INSTALL_PATH') !== false
-	? getenv('MW_INSTALL_PATH')."/maintenance/commandLine.inc"
-	: dirname( __FILE__ ) . '/../../maintenance/commandLine.inc' );
-	
+require( '/home/andrew/mediawiki/maintenance/commandLine.inc' );	
 $tester = new AbuseFilterParser;
+
+wfLoadExtensionMessages( 'AbuseFilter' );
 
 $test_path = dirname( __FILE__ )."/tests";
 $tests = glob( $test_path."/*.t" );
@@ -39,6 +38,10 @@ foreach( $tests as $test ) {
 		} else {
 			print "-FAILED - expected output $output, actual output $actual.\n";
 			print "-Expression: $rule\n";
+			
+			// export
+			$vars = var_export( $tester->mTokens, true );
+			file_put_contents( $test.'.parsed', $vars );
 		}
 	} catch (AFPException $excep) {
 		print "-FAILED - exception ".$excep->getMessage()." with input $rule\n";

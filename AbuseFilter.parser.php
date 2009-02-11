@@ -81,7 +81,8 @@ class AFPData {
 		elseif( is_null( $var ) )
 			return new AFPData();
 		else
-		throw new AFPException( "Data type " . gettype( $var ) . " is not supported by AbuseFilter" );
+			throw new AFPException(
+				"Data type " . gettype( $var ) . " is not supported by AbuseFilter" );
 	}
 	
 	public function dup() {
@@ -207,7 +208,7 @@ class AFPData {
 		throw new AFPException( "Invalid comparison operation: {$op}" ); // Should never happen
 	}
 	
-	public static function mulRel( $a, $b, $op ) {	
+	public static function mulRel( $a, $b, $op, $pos ) {	
 		// Figure out the type.
 		if ($a->type == self::DFloat || $b->type == self::DFloat ||
 			$a->toFloat() != $a->toString() || $b->toFloat() != $b->toString() ) {
@@ -221,7 +222,7 @@ class AFPData {
 		}
 
 		if ($op != '*' && $b == 0) {
-			throw new AFPUserVisibleException( 'dividebyzero', 0, array($a) );
+			throw new AFPUserVisibleException( 'dividebyzero', $pos, array($a) );
 		}
 
 		$data = null;
@@ -304,9 +305,19 @@ class AbuseFilterParser {
 	'rmdoubles' => 'funcRMDoubles',
 	'count' => 'funcCount'
 	);
+	
+	// Order is important. The punctuation-matching regex requires that
+	//  ** comes before *, etc. They are sorted to make it easy to spot
+	//  such errors.
 	static $mOps = array(
-	'!', '*', '**', '/', '+', '-', '%', '&', '|', '^', '?',
-	'<', '>', '>=', '<=', '==', '!=', '=',  '===', '!==', ':',
+	'!==', '!=', '!', 	// Inequality
+	'**', '*', 			// Multiplication/exponentiation
+	'/', '+', '-', '%', // Other arithmetic
+	'&', '|', '^', 		// Logic
+	'?', ':', 			// Ternery
+	'<=','<', 			// Less than
+	'>=', '>', 			// Greater than
+	'===', '==', '=', 	// Equality
 	);
 	static $mKeywords = array(
 	'in', 'like', 'true', 'false', 'null', 'contains', 'matches',
@@ -382,6 +393,14 @@ class AbuseFilterParser {
 		$this->doLevelEntry( $result );
 		wfProfileOut( __METHOD__ );
 		return $result;
+	}
+	
+	static function lengthCompare( $a, $b ) {
+		if ( strlen($a) == strlen($b) ) {
+			return 0;
+		}
+		
+		return ( strlen($a) < strlen($b) ) ? -1 : 1;
 	}
 	
 	/* Levels */
@@ -496,7 +515,7 @@ class AbuseFilterParser {
 			$this->move();
 			$r2 = new AFPData();
 			$this->doLevelPow( $r2 );
-			$result = AFPData::mulRel( $result, $r2, $op );
+			$result = AFPData::mulRel( $result, $r2, $op, $this->mCur->pos );
 		}
 		wfProfileOut( __METHOD__ );
 	}
@@ -649,7 +668,12 @@ class AbuseFilterParser {
 			if( $this->mCur->value == ')' )
 				return;        // Handled at the entry level
 			default:
-				throw new AFPUserVisibleException( 'unexpectedtoken', $this->mCur->pos, array($this->mCur->value) );
+				throw new AFPUserVisibleException( 'unexpectedtoken',
+													$this->mCur->pos,
+													array(
+														$this->mCur->type,
+														$this->mCur->value
+													) );
 		}
 		$this->move();
 		wfProfileOut( __METHOD__ );
@@ -666,134 +690,207 @@ class AbuseFilterParser {
 			return self::$parserCache[$hash];
 		}
 		
-		while( $tok = self::nextToken( $code, $len ) ) {
-			list( $val, $type, $code, $pos ) = $tok;
+		$offset = 0; // Where to next search
+		while( $tok = self::nextToken( $code, $offset ) ) {
+			$pos = $offset; // Start of the next token
+			list( $val, $type, $code, $offset ) = $tok;
 			$r[] = new AFPToken( $type, $val, $pos );
 			if( $type == AFPToken::TNone )
-			break;
+				break;
 		}
 		
 		return self::$parserCache[$hash] = $r;
 	}
 	
-	protected static function nextToken( $code, $len ) {
+	static function nextToken( $code, $offset ) {
 		$tok = '';
 		
-		if( strlen( $code ) == 0 ) return array( '', AFPToken::TNone, $code, $len );
+		static $lastInput = array();
 		
-		while( ctype_space( $code[0] ) )
-			$code = substr( $code, 1 );
+// 		if ( $lastInput == array( $code, $offset ) ) {
+// 			throw new AFPException( "Entered infinite loop. Offset $offset of $code" );
+// 		}
 		
-		$pos = $len - strlen( $code );
+		$lastInput = array( $code, $offset );
 		
-		if( strlen( $code ) == 0 ) return array( '', AFPToken::TNone, $code, $pos );
+		while( !empty( $code[$offset] ) && ctype_space( $code[$offset] ) )
+			$offset++;
+		
+		if( $offset >= strlen($code) ) return array( '', AFPToken::TNone, $code, $offset );
 
-		if ( substr($code,0,2) == '/*' ) {
-			// Comments
-			$last = '/*';
-			while ($last != '*/') {
-				$code = substr($code,1);
-				$last[0] = $last[1];
-				$last[1] = $code[0];
-			}
-			$code = substr( $code, 1 );
+		if ( substr($code, $offset, 2) == '/*' ) {
+			$end = strpos( $code, '*/', $offset );
 			
-			return self::nextToken( $code, $len );
+			return self::nextToken( $code, $end + 2 );
 		}
 		
-		if( $code[0] == ',' )
-			return array( ',', AFPToken::TComma, substr( $code, 1 ), $pos );
+		if( $code[$offset] == ',' ) {
+			$offset++;
+			return array( ',', AFPToken::TComma, $code, $offset );
+		}
 		
-		if( $code[0] == '(' or $code[0] == ')' )
-			return array( $code[0], AFPToken::TBrace, substr( $code, 1 ), $pos );
+		if( $code[$offset] == '(' or $code[$offset] == ')' ) {
+			return array( $code[$offset], AFPToken::TBrace, $code, $offset + 1 );
+		}	
+		
+		if( $code[$offset] == '"' || $code[$offset] == "'" ) {
+			$type = $code[$offset];
+			$offset++;
+			while( $offset < strlen($code) ) {
 			
-		if( $code[0] == '"' || $code[0] == "'" ) {
-			$type = $code[0];
-			$code = substr( $code, 1 );
-			while( strlen( $code ) != 0 ) {
-				if( $code[0] == $type ) {
-					return array( $tok, AFPToken::TString, substr( $code, 1 ), $pos );
+				if( $code[$offset] == $type ) {
+					$offset++;
+					return array( $tok, AFPToken::TString, $code, $offset );
 				}
-				if( $code[0] == '\\' ) {
-					if( $code[1] == '\\' )
+				
+				if( $code[$offset] == '\\' ) {
+					if( $code[$offset + 1] == '\\' )
 						$tok .= '\\';
-					elseif( $code[1] == $type )
+					elseif( $code[$offset + 1] == $type )
 						$tok .= $type;
-					elseif( $code[1] == 'n' )
+					elseif( $code[$offset + 1] == 'n' )
 						$tok .= "\n";
-					elseif( $code[1] == 'r' )
+					elseif( $code[$offset + 1] == 'r' )
 						$tok .= "\r";
-					elseif( $code[1] == 't' )
+					elseif( $code[$offset + 1] == 't' )
 						$tok .= "\t";
-					elseif( $code[1] == 'x' ) {
-						$chr = substr($code,2,2);
-						$chr = wfBaseConvert( $chr, 16, 10 );
-						$tok .= chr($chr);
-						$code = substr( $code, 2 );
+					elseif( $code[$offset + 1] == 'x' ) {
+						$chr = substr( $code, $offset + 2, 2 );
+						
+						if ( preg_match( '/^[0-9A-Fa-f]{2}$/', $chr ) ) {
+							$chr = base_convert( $chr, 16, 10 );
+							$tok .= chr($chr);
+							$offset += 2; # \xXX -- 2 done later
+						} else {
+							$tok .= 'x';
+						}
+					} else {
+						$tok .= $code[$offset + 1];
 					}
-					else
-						$tok .= $code[1];
-					$code = substr( $code, 2 );
+					
+					$offset+=2;
+					
 				} else {
-					$tok .= $code[0];
-					$code = substr( $code, 1 );
+					$tok .= $code[$offset];
+					$offset++;
 				}
 			}
-			throw new AFPUserVisibleException( 'unclosedstring', $pos, array() );;
+			throw new AFPUserVisibleException( 'unclosedstring', $offset, array() );;
 		}
 		
-		$bases = array( 'b' => 2, 'x' => 16, 'o' => 8 );
+		if( ctype_punct( $code[$offset] ) ) {
+			// Match using a regex. Regexes are faster than PHP
+			$quoted_operators = array();
+			
+			foreach( self::$mOps as $op )
+				$quoted_operators[] = preg_quote( $op, '/' );
+			$operator_regex = '/('.implode('|', $quoted_operators).')/';
+			$matches = array();
+			
+			preg_match( $operator_regex, $code, $matches, PREG_OFFSET_CAPTURE, $offset );
+			
+			if( count( $matches ) && $matches[0][1] == $offset ) {
+				$tok = $matches[0][0];
+				$offset += strlen( $tok );
+				return array( $tok, AFPToken::TOp, $code, $offset );
+			} elseif ($code[$offset] != '.') { // '.' is used to start some floats
+				// Find the operator
+				preg_match( '/[^\s\w]+/', $code, $matches, 0, $offset );
+				
+				if ( in_array( $matches[0], self::$mOps ) ) {
+					// Should never happen
+					throw new AFPException(
+						"Weird error: valid operator ".$matches[0]." was not matched by
+						regex ".$operator_regex );
+				}
+				
+				throw new AFPUserVisibleException( 'invalidoperator',
+													$offset,
+													array( $matches[0] )
+												);
+			}
+		}
+		
+		$bases = array( 'b' => 2,
+						'x' => 16,
+						'o' => 8 );
+		$baseChars = array(
+						2 => '[01]',
+						16 => '[0-9A-Fa-f]',
+						8 => '[0-8]',
+						10 => '[0-9.]',
+						);
 		$baseClass = '['.implode('', array_keys($bases)).']';
-		$radixRegex = "/^[0-9A-Fa-f]+$baseClass\b/u";
-		if( ctype_digit($code[0]) || ( self::isDigitOrDot( $code[0] ) && !empty($code[1]) && ctype_digit( $code[1] ) ) || preg_match( $radixRegex, $code ) ) {
-			$tok .= $code[0];
-			$code = substr( $code, 1 );
+		$radixRegex = "/([0-9A-Fa-f]*(?:\.\d*)?)($baseClass)?/u";
+		$matches = array();
+		
+		preg_match( $radixRegex, $code, $matches, PREG_OFFSET_CAPTURE, $offset );
+		
+		if ( count( $matches ) && $matches[0][1] == $offset ) {
+			$input = $matches[1][0];
+			$baseChar = @$matches[2][0];
+			$num = null;
 			
-			$base = '';
-			
-			while( strlen( $code ) != 0 && self::isDigitOrDot( $code[0] ) ) {
-				$tok .= $base = $code[0];
-				$code = substr( $code, 1 );
+			// Sometimes the base char gets mixed in with the rest of it because
+			//  the regex targets hex, too.
+			//  This mostly happens with binary
+			if (!$baseChar && !empty( $bases[ substr( $input, -1 ) ] ) ) {
+				$baseChar = substr( $input, -1, 1 );
+				$input = substr( $input, 0, -1 );
 			}
 			
-			if ($base && isset($bases[$base]) ) {
-				$tok = substr( $tok, 0, -1 );
-				
-				$base = $bases[$base];
-				
-				$code = substr( $code, 1 );
-				
-				$tok = wfBaseConvert( $tok, $base, 10 );
+			if ($baseChar) {
+				$base = $bases[$baseChar];
+			} else {
+				$base = 10;
 			}
 			
-			$float = in_string( '.', $tok );
-			
-			if (strlen($tok))
-				return array( $float ? doubleval( $tok ) : intval( $tok ), $float ? AFPToken::TFloat : AFPToken::TInt, $code, $pos );
+			// Check against the appropriate character class for input validation
+			$baseRegex = "/^".$baseChars[$base]."+$/";
+
+			if ( preg_match( $baseRegex, $input ) ) {
+				if ($base != 10) {
+					$num = wfBaseConvert( $input, $base, 10 );
+				} else {
+					$num = $input;
+				}
+						
+				$offset += strlen( $matches[0][0] );
+				
+				$float = in_string( '.', $input );
+				
+				return array(
+					$float
+						? doubleval( $num )
+						: intval( $num ),
+					$float
+						? AFPToken::TFloat
+						: AFPToken::TInt,
+					$code,
+					$offset
+				);
+			}
 		}
 		
-		if( ctype_punct( $code[0] ) ) {
-			$tok .= $code[0];
-			$code = substr( $code, 1 );
-			while( strlen( $code ) != 0 && ctype_punct( $code[0] ) ) {
-				$tok .= $code[0];
-				$code = substr( $code, 1 );
+		if( self::isValidIdSymbol( $code[$offset] ) ) {
+			// Regex match
+			$idSymbolRegex = '/[0-9A-Za-z_]+/';
+			$matches = array();
+			preg_match( $idSymbolRegex, $code, $matches, PREG_OFFSET_CAPTURE, $offset );
+			
+			if ( $matches[0][1] == $offset ) {
+				$tok = $matches[0][0];
+				
+				$type = in_array( $tok, self::$mKeywords )
+					? AFPToken::TKeyword
+					: AFPToken::TID;
+					
+				return array( $tok, $type, $code, $offset + strlen($tok) );
 			}
-			if( !in_array( $tok, self::$mOps ) )
-			throw new AFPUserVisibleException( 'invalidoperator', $pos, array($tok) );
-			return array( $tok, AFPToken::TOp, $code, $pos );
 		}
 		
-		if( self::isValidIdSymbol( $code[0] ) ) {
-			while( strlen( $code ) != 0 && self::isValidIdSymbol( $code[0] ) ) {
-				$tok .= $code[0];
-				$code = substr( $code, 1 );
-			}
-			$type = in_array( $tok, self::$mKeywords ) ? AFPToken::TKeyword : AFPToken::TID;
-			return array( $tok, $type, $code, $pos );
-		}
-		
-		throw new AFPUserVisibleException( 'unrecognisedtoken', $pos, array($code[0]) );;
+		throw new AFPUserVisibleException(
+			'unrecognisedtoken', $offset, array( substr( $code, $offset ) ) );
 	}
 	
 	protected static function isDigitOrDot( $chr ) {
