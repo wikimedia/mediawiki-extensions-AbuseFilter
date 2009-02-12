@@ -4783,6 +4783,7 @@ $messages['he'] = array(
 	'abusefilter-exception-unrecognisedtoken' => 'סימן בלתי מזוהה "$2" בתו מספר $1.',
 	'abusefilter-exception-noparams' => 'לא ניתנו פרמטרים לפונקציה "$2" בתו מספר $1.',
 	'abusefilter-exception-dividebyzero' => 'ניסיון בלתי חוקי לחלק את $2 באפס בתו מספר $1.',
+	'abusefilter-exception-unrecognisedvar' => 'משתנה בלתי מזוהה $2 בתו מספר $1',
 	'abusefilter-action-throttle' => 'הגבלת תדירות פעולה',
 	'abusefilter-action-warn' => 'אזהרה',
 	'abusefilter-action-blockautopromote' => 'ביטול שיוך אוטומטי לקבוצות',
