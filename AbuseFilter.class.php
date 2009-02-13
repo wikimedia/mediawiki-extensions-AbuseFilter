@@ -762,34 +762,33 @@ class AbuseFilter {
 		global $wgAbuseFilterEmergencyDisableThreshold, $wgAbuseFilterEmergencyDisableCount,
 			$wgAbuseFilterEmergencyDisableAge, $wgMemc;
 
-		foreach( $filters as $filter => $matched ) {
-			if ($matched) {
-				// Increment counter
-				$matchCount = $wgMemc->get( self::filterMatchesKey( $filter ) );
+		foreach( $filters as $filter ) {
+			// Increment counter
+			$matchCount = $wgMemc->get( self::filterMatchesKey( $filter ) );
 
-				// Handle missing keys...
-				if (!$matchCount) {
-					$wgMemc->set( self::filterMatchesKey( $filter ), 1, self::$statsStoragePeriod );
-				} else {
-					$wgMemc->incr( self::filterMatchesKey( $filter ) );
-				}
-				$matchCount++;
-			
-				// Figure out if the filter is subject to being deleted.
-				$filter_age = wfTimestamp( TS_UNIX, self::$filters[$filter]->af_timestamp );
-				$throttle_exempt_time = $filter_age + $wgAbuseFilterEmergencyDisableAge;
+			// Handle missing keys...
+			if (!$matchCount) {
+				$wgMemc->set( self::filterMatchesKey( $filter ), 1, self::$statsStoragePeriod );
+			} else {
+				$wgMemc->incr( self::filterMatchesKey( $filter ) );
+			}
+			$matchCount++;
+		
+			// Figure out if the filter is subject to being deleted.
+			$filter_age = wfTimestamp( TS_UNIX,
+				self::$filters[$filter]->af_timestamp );
+			$throttle_exempt_time = $filter_age + $wgAbuseFilterEmergencyDisableAge;
 
-				if ($total && $throttle_exempt_time > time()
-					&& $matchCount > $wgAbuseFilterEmergencyDisableCount
-					&& ($matchCount / $total) > $wgAbuseFilterEmergencyDisableThreshold)
-				{
-					// More than $wgAbuseFilterEmergencyDisableCount matches,
-					// constituting more than $wgAbuseFilterEmergencyDisableThreshold
-					// (a fraction) of last few edits. Disable it.
-					$dbw = wfGetDB( DB_MASTER );
-					$dbw->update( 'abuse_filter', array( 'af_throttled' => 1 ),
-						array( 'af_id' => $filter ), __METHOD__ );
-				}
+			if ($total && $throttle_exempt_time > time()
+				&& $matchCount > $wgAbuseFilterEmergencyDisableCount
+				&& ($matchCount / $total) > $wgAbuseFilterEmergencyDisableThreshold)
+			{
+				// More than $wgAbuseFilterEmergencyDisableCount matches,
+				// constituting more than $wgAbuseFilterEmergencyDisableThreshold
+				// (a fraction) of last few edits. Disable it.
+				$dbw = wfGetDB( DB_MASTER );
+				$dbw->update( 'abuse_filter', array( 'af_throttled' => 1 ),
+					array( 'af_id' => $filter ), __METHOD__ );
 			}
 		}
 	}
