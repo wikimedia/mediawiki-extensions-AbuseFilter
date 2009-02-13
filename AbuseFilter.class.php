@@ -331,6 +331,9 @@ class AbuseFilter {
 				&& in_array( $row->afa_consequence, $wgAbuseFilterRestrictedActions ) )
 			{
 				## Don't do the action
+			} elseif ( $row->afa_filter != $row->af_id ) {
+				// We probably got a NULL, as it's a LEFT JOIN.
+				//  Don't add it anyway.
 			} else {
 				$actionsByFilter[$row->afa_filter][$row->afa_consequence] = array(
 					'action' => $row->afa_consequence,
@@ -347,7 +350,7 @@ class AbuseFilter {
 			// Special-case handling for warnings.
 			global $wgOut;
 			$parsed_public_comments = $wgOut->parseInline(
-				self::$filters[$filter]->af_public_comments );
+				self::$filters[$filter]->af_public_comments ); 
 
 			if ( !empty( $actions['throttle'] ) ) {
 				$parameters = $actions['throttle']['parameters'];
@@ -450,6 +453,7 @@ class AbuseFilter {
 		$dbw = wfGetDB( DB_MASTER );
 
 		$log_rows = array();
+		$logged_filters = array();
 
 		foreach( $actions_taken as $filter => $actions ) {
 			$thisLog = $log_template;
@@ -458,16 +462,31 @@ class AbuseFilter {
 			$thisLog['afl_actions'] = implode( ',', $actions );
 
 			// Don't log if we were only throttling.
-			if ($thisLog['afl_actions'] != 'throttle') {
+			if ( $thisLog['afl_actions'] != 'throttle' ) {
 				$log_rows[] = $thisLog;
+				$logged_filters[] = $filter;
 			}
 		}
 
-		if (!count($log_rows)) {
+		if ( !count($log_rows) ) {
 			return;
 		}
+		
+		global $wgMemc;
+		
+		// Increment trigger counter
+		$wgMemc->incr( self::filterMatchesKey() );
 
 		$dbw->insert( 'abuse_filter_log', $log_rows, __METHOD__ );
+
+		// Update hit-counter.
+		$dbw->update( 'abuse_filter', array( 'af_hit_count=af_hit_count+1' ),
+			array( 'af_id' => $logged_filters ),
+			__METHOD__ );
+			
+		// Check for emergency disabling.
+		$total = $wgMemc->get( AbuseFilter::filterUsedKey() );
+		self::checkEmergencyDisable( $logged_filters, $total );
 	}
 	
 	public static function takeConsequenceAction( $action, $parameters, $title,
@@ -737,24 +756,6 @@ class AbuseFilter {
 		if ($overflow_triggered) {
 			$wgMemc->incr( $overflow_key );
 		}
-
-		if (!$filter_triggered) {
-			return; // The rest will only apply if a filter was triggered.
-		}
-
-		self::checkEmergencyDisable( $filters, $total );
-
-		// Increment trigger counter
-		if ($filter_triggered) {
-			$wgMemc->incr( self::filterMatchesKey() );
-		}
-
-		$dbw = wfGetDB( DB_MASTER );
-
-		// Update hit-counter.
-		$dbw->update( 'abuse_filter', array( 'af_hit_count=af_hit_count+1' ),
-			array( 'af_id' => array_keys( array_filter( $filters ) ) ),
-			__METHOD__ );
 	}
 
 	public static function checkEmergencyDisable( $filters, $total ) {
