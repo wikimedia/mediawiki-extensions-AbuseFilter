@@ -141,10 +141,10 @@ class AbuseFilterHistoryPager extends TablePager {
 				$formatted = implode( ', ', $flags_display );
 				break;
 			case 'afh_pattern':
-				$formatted = htmlspecialchars( $wgLang->truncate( $value, 200, '...' ) );
+				$formatted = htmlspecialchars( $wgLang->truncate( $value, 200 ) );
 				break;
 			case 'afh_comments':
-				$formatted = htmlspecialchars( $wgLang->truncate( $value, 200, '...' ) );
+				$formatted = htmlspecialchars( $wgLang->truncate( $value, 200 ) );
 				break;
 			case 'afh_actions':
 				$actions = unserialize( $value );
