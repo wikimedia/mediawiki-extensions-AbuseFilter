@@ -87,7 +87,7 @@ $aliases['hu'] = array(
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
 	'AbuseLog' => array( 'RegistroDeAbusos' ),
-	'AbuseFilter' => array( 'FiltroAntiabuso' ),
+	'AbuseFilter' => array( 'FiltroAntiAbuso' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
@@ -178,5 +178,17 @@ $aliases['si'] = array(
 $aliases['sv'] = array(
 	'AbuseLog' => array( 'Missbrukslogg' ),
 	'AbuseFilter' => array( 'Missbruksfilter' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'AbuseLog' => array( 'Talaan ng pang-aabuso' ),
+	'AbuseFilter' => array( 'Talaan ng pansala' ),
+);
+
+/** Vèneto (Vèneto) */
+$aliases['vec'] = array(
+	'AbuseLog' => array( 'RegistroAbusi' ),
+	'AbuseFilter' => array( 'FiltroAbusi' ),
 );
 

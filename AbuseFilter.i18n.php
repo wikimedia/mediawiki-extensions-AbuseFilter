@@ -1090,6 +1090,8 @@ $messages['arz'] = array(
 	'abusefilter-edit-builder-vars-old-text' => 'الويكيتيكست بتاع الصفحه القديمه، قبل التعديل',
 	'abusefilter-edit-builder-vars-new-text' => 'الويكيتيكست بتاع الصفحه الجديده، بعد التعديل',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'نص الصفحه الجديد،متجرد من اى تهيئه',
+	'abusefilter-edit-builder-vars-restrictions-edit' => 'مستوى الحمايه بتاع تعديل الصفحه',
+	'abusefilter-edit-builder-vars-restrictions-move' => 'انقل مستوى الحمايه بتاع الصفحه',
 	'abusefilter-history' => 'التاريخ للفلتر $1',
 	'abusefilter-history-hidden' => 'مخفي',
 	'abusefilter-history-enabled' => 'مفعل',
@@ -1114,6 +1116,7 @@ $messages['arz'] = array(
 	'abusefilter-revert-search' => 'اختار الافعال',
 	'abusefilter-revert-filter' => 'فيلتر:',
 	'abusefilter-revert-confirm' => 'تأكيد',
+	'abusefilter-revert-reasonfield' => 'سبب الاسترجاع',
 	'abusefilter-test-submit' => 'اختبار',
 	'abusefilter-test-load' => 'تحميل',
 	'abusefilter-examine-legend' => 'اختار التغييرات',
@@ -3470,7 +3473,9 @@ Syy: $1',
 	'abusefilter-blockreason' => 'Automaattisen väärinkäyttösuodattimen estämä. Syy:',
 	'abusefilter-accountreserved' => 'Tämä käyttäjätunnus on varattu väärinkäyttösuodattimen käyttöön.',
 	'right-abusefilter-modify' => 'Muokata väärinkäyttösuodattimia',
+	'right-abusefilter-view' => 'Tarkastella väärinkäyttösuodattimia',
 	'right-abusefilter-log' => 'Tarkastella väärinkäyttölokia',
+	'right-abusefilter-private' => 'Tarkastella yksityistiedoja väärinkäyttölokista',
 	'abusefilter-log-search' => 'Etsi väärinkäyttölokista',
 	'abusefilter-log-search-user' => 'Käyttäjä:',
 	'abusefilter-log-search-title' => 'Otsikko:',
@@ -3512,6 +3517,7 @@ Syy: $1',
 	'abusefilter-list-options-submit' => 'Päivitä',
 	'abusefilter-tools-subtitle' => 'Työkalut',
 	'abusefilter-tools-reautoconfirm-user' => 'Käyttäjä',
+	'abusefilter-edit-subtitle' => 'Muokataan suodatinta $1',
 	'abusefilter-edit-status-label' => 'Tilastot:',
 	'abusefilter-edit-new' => 'Luo suodatin',
 	'abusefilter-edit-save' => 'Tallenna suodatin',
@@ -3529,6 +3535,7 @@ Syy: $1',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|sekunti|sekuntia}}',
 	'abusefilter-edit-warn-message' => 'Varoitukseen käytettävä järjestelmäviesti',
 	'abusefilter-edit-warn-other' => 'Muu viesti',
+	'abusefilter-edit-warn-actions' => 'Toiminnot',
 	'abusefilter-edit-warn-preview' => 'Esikatsele valittua viestiä',
 	'abusefilter-edit-denied' => 'Et voi katsoa tämän suodattimen yksityiskohtia, koska ne ovat piilotettu',
 	'abusefilter-edit-done-subtitle' => 'Suodatinta muokattu',
@@ -3576,14 +3583,18 @@ Syy: $1',
 	'abusefilter-action-warn' => 'Varoita',
 	'abusefilter-action-block' => 'Estä',
 	'abusefilter-action-degroup' => 'Poista ryhmistä',
+	'abusefilter-action-rangeblock' => 'Alue-esto',
 	'abusefilter-action-disallow' => 'kiellä',
 	'abusefilter-revert-filter' => 'Suodatin',
 	'abusefilter-revert-confirm' => 'Vahvista',
 	'abusefilter-revert-reasonfield' => 'Palautuksen syy',
 	'abusefilter-test-legend' => 'Suodattimen kokeilu',
 	'abusefilter-test-submit' => 'Kokeile',
+	'abusefilter-test-load' => 'Lataa',
+	'abusefilter-changeslist-examine' => 'tarkasta',
 	'abusefilter-examine-user' => 'Käyttäjä',
 	'abusefilter-examine-submit' => 'Etsi',
+	'abusefilter-examine-test-button' => 'Kokeile suodatinta',
 	'abusefilter-examine-match' => 'Suodatin vastasi tätä muutosta.',
 	'abusefilter-examine-syntaxerror' => 'Suodattimella on virheellinen syntaksi',
 );
@@ -4927,6 +4938,7 @@ $messages['hi'] = array(
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  * @author SpeedyGonsales
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'abusefilter-log-detailslink' => 'detalji',
@@ -4934,7 +4946,30 @@ $messages['hr'] = array(
 	'abusefilter-log-details-var' => 'Varijabla',
 	'abusefilter-log-details-val' => 'Vrijednost',
 	'abusefilter-log-noactions' => 'ništa',
+	'abusefilter-edit-builder-vars-restrictions-move' => 'Premještena razina zaštite stranice',
+	'abusefilter-filter-log' => 'Nedavne promjene filtra',
+	'abusefilter-history' => 'Stare izmjene za zloporabni filtar #$1',
+	'abusefilter-history-foruser' => 'Promjene suradnika $1',
+	'abusefilter-history-hidden' => 'Skriven',
+	'abusefilter-history-enabled' => 'Omogućeno',
+	'abusefilter-history-timestamp' => 'Vrijeme',
+	'abusefilter-history-user' => 'Suradnik',
+	'abusefilter-history-public' => 'Opis javnog filtra',
+	'abusefilter-history-flags' => 'Zastavice',
+	'abusefilter-history-filter' => 'Pravilo filtra',
 	'abusefilter-history-comments' => 'Komentari',
+	'abusefilter-history-actions' => 'Radnje',
+	'abusefilter-history-backedit' => 'Natag na uređivač filtra',
+	'abusefilter-history-backlist' => 'Natrag na popis filtara',
+	'abusefilter-history-deleted' => 'Izbrisano',
+	'abusefilter-history-filterid' => 'Filtar',
+	'abusefilter-history-select-legend' => 'Pročisti pretraživanje',
+	'abusefilter-history-select-user' => 'Suradnik:',
+	'abusefilter-history-select-submit' => 'Pročisti',
+	'abusefilter-exception-unexpectedatend' => 'Neočekivano "$2" na znaku $1.',
+	'abusefilter-exception-expectednotfound' => 'Očekivano $2 na znaku $1 nije nađeno.',
+	'abusefilter-exception-unrecognisedkeyword' => 'Neprepoznata ključna riječ $2 na znaku $1.',
+	'abusefilter-exception-unexpectedtoken' => 'Neočekivani token  "$3" (tipa $2) na znaku $1.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -6277,9 +6312,11 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author Malafaya
+ * @author Temuri rajavi
  */
 $messages['ka'] = array(
 	'abusefilter-log-search-user' => 'მომხმარებელი:',
+	'abusefilter-tools-reautoconfirm-user' => 'მომხმარებელი:',
 	'abusefilter-edit-throttle-seconds' => '$1 წამი',
 	'abusefilter-edit-history' => 'ისტორია',
 	'abusefilter-history-user' => 'მომხმარებელი',
@@ -6411,6 +6448,7 @@ $messages['ko'] = array(
 	'abusefilter-log-details-var' => '변수',
 	'abusefilter-list-id' => '필터 ID',
 	'abusefilter-list-status' => '상태',
+	'abusefilter-hidden' => '비공개',
 	'abusefilter-enabled' => '활성화됨',
 	'abusefilter-deleted' => '삭제됨',
 	'abusefilter-disabled' => '비활성화됨',
@@ -6420,6 +6458,7 @@ $messages['ko'] = array(
 	'abusefilter-list-options-disabled' => '비활성화된 필터:',
 	'abusefilter-tools-reautoconfirm' => '자동 인증 상태를 복구',
 	'abusefilter-tools-reautoconfirm-user' => '사용자:',
+	'abusefilter-edit-status-label' => '통계:',
 	'abusefilter-edit-new' => '새 필터',
 	'abusefilter-edit-save' => '필터 저장하기',
 	'abusefilter-edit-id' => '필터 ID:',
@@ -6428,6 +6467,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-enabled' => '이 필터 활성화하기',
 	'abusefilter-edit-deleted' => '삭제된 것으로 표시',
 	'abusefilter-edit-action-blockautopromote' => '사용자의 자동 인증 상태를 해제',
+	'abusefilter-edit-action-rangeblock' => '사용자가 사용한 IP의 /16광역을 차단',
 	'abusefilter-edit-throttle-period' => '주기:',
 	'abusefilter-edit-throttle-seconds' => '$1초',
 	'abusefilter-edit-warn-message' => '경고할 때 사용할 시스템 메시지:',
@@ -6436,20 +6476,24 @@ $messages['ko'] = array(
 	'abusefilter-edit-history' => '역사:',
 	'abusefilter-edit-check' => '구문 확인',
 	'abusefilter-edit-tools' => '도구:',
+	'abusefilter-edit-builder-group-op-arithmetic' => '산술 연산자',
 	'abusefilter-edit-builder-op-arithmetic-addition' => '더하기 (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => '빼기 (-)',
 	'abusefilter-edit-builder-op-arithmetic-multiplication' => '곱하기 (*)',
 	'abusefilter-edit-builder-op-arithmetic-divide' => '나누기 (/)',
 	'abusefilter-edit-builder-op-arithmetic-pow' => '제곱 (**)',
+	'abusefilter-edit-builder-group-op-comparison' => '비교 연산자',
 	'abusefilter-edit-builder-op-comparison-equal' => '같음 (==)',
 	'abusefilter-edit-builder-op-comparison-notequal' => '같지 않음 (!=)',
 	'abusefilter-edit-builder-op-comparison-lt' => '보다 작음 (<)',
 	'abusefilter-edit-builder-op-comparison-gt' => '보다 큼 (>)',
 	'abusefilter-edit-builder-op-comparison-lte' => '작거나 같음 (<=)',
 	'abusefilter-edit-builder-op-comparison-gte' => '크거나 같음 (>=)',
+	'abusefilter-edit-builder-op-bool-not' => '부정 (!)',
 	'abusefilter-edit-builder-op-bool-and' => '그리고 (&)',
 	'abusefilter-edit-builder-op-bool-or' => '또는 (|)',
 	'abusefilter-edit-builder-group-misc' => '기타',
+	'abusefilter-edit-builder-funcs-length' => '문자열 길이 (length)',
 	'abusefilter-edit-builder-group-vars' => '변수',
 	'abusefilter-edit-builder-vars-summary' => '편집 요약/이유',
 	'abusefilter-edit-builder-vars-article-ns' => '문서 이름공간',
@@ -6739,6 +6783,10 @@ Hei ass eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi är Akioun pass
 	'abusefilter-tools-submitexpr' => 'Bewerten',
 	'abusefilter-tools-reautoconfirm-user' => 'Benotzer:',
 	'abusefilter-edit-subtitle' => 'Änner vum Filter $1',
+	'abusefilter-edit-oldwarning' => "<strong>Dir sidd amgaang eng al Versioun vum Filter z'änneren.
+D'Statistike sinn déi vun der leschter Versioun vum Filter.
+Wann Dir Är Ännerunge späichert dann iwwerschreiwt Dir all Ännerungen zënter der Versioun déi Dir elo ännert. </strong> &bull;
+[[Special:AbuseFilter/history/$2|Z'réck op d'Versiounsgeschicht vun  dësem Filter]].",
 	'abusefilter-edit-status-label' => 'Statistiken:',
 	'abusefilter-edit-new' => 'Neie Filter',
 	'abusefilter-edit-save' => 'Filter späicheren',
@@ -6863,6 +6911,8 @@ D'Resultat vum Parser war: <pre>$1</pre>",
 	'abusefilter-action-rangeblock' => 'Spär vum Beräich',
 	'abusefilter-action-disallow' => 'Net erlaben',
 	'abusefilter-revert-title' => 'All Ännerungen duerch de Filter $1 zrécksetzen',
+	'abusefilter-revert-intro' => 'Dëse Formulaire erlaabt et fir all Ännerunge vum Mëssbrauchsfilterm duerchde Filter $1 zréckzesetzen.
+Benotzt dës Fonctioun w.e.g. nëmmen wann Dir hir Konsequenzen ofschätze kënnt.',
 	'abusefilter-revert-search-legend' => 'Mëssbrauchsfilteren erauswielen déi zréckgesat solle ginn',
 	'abusefilter-revert-periodstart' => 'Ufank vun der Period:',
 	'abusefilter-revert-periodend' => 'Enn vun der Period:',
@@ -7132,6 +7182,76 @@ $messages['nah'] = array(
 	'abusefilter-log-noactions' => 'ahtlein',
 	'abusefilter-list-edit' => 'Ticpatlāz',
 	'abusefilter-edit-throttle-period' => 'Cāhuitl:',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'abusefilter-log-search-user' => 'Bruker:',
+	'abusefilter-log-search-filter' => 'Filter-ID:',
+	'abusefilter-log-search-title' => 'Titel:',
+	'abusefilter-log-search-submit' => 'Söken',
+	'abusefilter-log-details-var' => 'Variable',
+	'abusefilter-log-details-val' => 'Weert',
+	'abusefilter-log-details-private' => 'Private Daten',
+	'abusefilter-log-noactions' => 'keen',
+	'abusefilter-list' => 'All Filters',
+	'abusefilter-enabled' => 'Anstellt',
+	'abusefilter-deleted' => 'Wegdaan',
+	'abusefilter-disabled' => 'Utstellt',
+	'abusefilter-new' => 'Nee Filter',
+	'abusefilter-tools-modifiertest-submit' => 'Test',
+	'abusefilter-tools-subtitle' => 'Warktüüch',
+	'abusefilter-tools-reautoconfirm-user' => 'Bruker:',
+	'abusefilter-edit-new' => 'Nee Filter',
+	'abusefilter-edit-lastmod-text' => '$1 vun $2',
+	'abusefilter-edit-throttle-period' => 'Tiedduur:',
+	'abusefilter-edit-done-subtitle' => 'Filter ännert',
+	'abusefilter-edit-history' => 'Historie:',
+	'abusefilter-edit-tools' => 'Warktüüch:',
+	'abusefilter-edit-builder-group-op-arithmetic' => 'Arithmeetsche Operatorn',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Totellen (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Aftrecken (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Maalnehmen (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'Delen (/)',
+	'abusefilter-edit-builder-op-arithmetic-modulo' => 'Modulo (%)',
+	'abusefilter-edit-builder-group-op-comparison' => 'Verglieksoperatorn',
+	'abusefilter-edit-builder-op-comparison-equal' => 'Is gliek (==)',
+	'abusefilter-edit-builder-op-comparison-notequal' => 'Is nich gliek (!=)',
+	'abusefilter-edit-builder-op-comparison-lt' => 'Lütter as (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'Grötter as (>)',
+	'abusefilter-edit-builder-op-comparison-lte' => 'Lütter as oder gliek (<=)',
+	'abusefilter-edit-builder-op-comparison-gte' => 'Grötter as oder gliek (>=)',
+	'abusefilter-edit-builder-group-op-bool' => 'Boolesche Operatorn',
+	'abusefilter-edit-builder-op-bool-not' => 'Nich (!)',
+	'abusefilter-edit-builder-op-bool-and' => 'Un (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'Oder (|)',
+	'abusefilter-edit-builder-vars-user-editcount' => 'Tall Bidrääg vun’n Bruker',
+	'abusefilter-edit-builder-vars-user-age' => 'Öller vun dat Brukerkonto',
+	'abusefilter-edit-builder-vars-user-name' => 'Naam vun dat Brukerkonto',
+	'abusefilter-edit-builder-vars-user-groups' => 'Gruppen (ok implizite), in de de Bruker Maat is',
+	'abusefilter-history-foruser' => 'Ännern vun $1',
+	'abusefilter-history-timestamp' => 'Tied',
+	'abusefilter-history-user' => 'Bruker',
+	'abusefilter-history-filter' => 'Filterregel',
+	'abusefilter-history-deleted' => 'Wegdaan',
+	'abusefilter-history-filterid' => 'Filter',
+	'abusefilter-history-select-user' => 'Bruker:',
+	'abusefilter-revert-filter' => 'Filter:',
+	'abusefilter-revert-reasonfield' => 'Grund för Trüchdreihn:',
+	'abusefilter-test-submit' => 'Testen',
+	'abusefilter-test-load' => 'Laden',
+	'abusefilter-examine-user' => 'Bruker:',
+	'abusefilter-examine-title' => 'Siedentitel:',
+	'abusefilter-examine-submit' => 'Söken',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'abusefilter-log-details-val' => 'Weerde',
 );
 
 /** Dutch (Nederlands)
@@ -9510,6 +9630,47 @@ $messages['ru'] = array(
 	'abusefilter-examine-incompatible' => 'Указанное вами изменение не поддерживается фильтром злоупотреблений',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'abusefilter-desc' => 'Көннөрүлэргэ эвристика фильтрдарын туһанарга туттуллар',
+	'abusefilter' => 'Аһара түһүү фильтрын туоруоруута',
+	'abuselog' => 'Аһара түһүү (злоупотребление) сурунаала',
+	'abusefilter-warning' => "<big>'''Болҕой'''</big>: Бу дьайыы апатамаатынан омсолоох курдук бэлиэтэммит.
+Туһата суох көннөрүүлэр түргэнник сотуллуохтара,
+улахан эбэтэр хаста да оҥоһуллубут буоллахтарына ааккын эбэтэр көмпүүтэргин хааччахтааһыҥҥа тиэрдиэхтэрэ.
+Ол гынан баран, эн туһалаах көннөрүүнү оҥордум диэн эрэнэр буоллаххына, өссө биирдэ \"Бигэргэтии\" тимэҕи баттаан көннөрүүгүн оҥор.
+Эн оҥорбут дьайыыгын кытта ситимнэммит аһара түһүү кылгас ис хоһооно: \$1",
+	'abusefilter-disallowed' => 'Бу дьайыы апатамаатынан омсолоох курдук бэлиэтэммит,
+онон бобуллубут.
+Ол гынан баран, эн туһалаах көннөрүүнү оҥордум диэн эрэнэр буоллаххына, дьаһабылга тахсан тугу гынаары гынаргын кэпсээ. 
+Эн оҥорбут дьайыыгын кытта ситимнэммит аһара түһүү кылгас ис хоһооно: $1',
+	'abusefilter-blocked-display' => 'Бу дьайыы апатамаатынан омсолоох курдук бэлиэтэммит,
+онон оҥороруҥ бобуллубут.
+Ону таһынан {{SITENAME}} бырайыагы көмүскүүр соруктаах эн аатыҥ уонна IP-иҥ хааччахтаннылар.
+Ол гынан баран, маны сыыһа дьаһал диир буоллаххына дьаһабылга таҕыс. 
+Эн оҥорбут дьайыыгын кытта ситимнэммит аһара түһүү кылгас ис хоһооно: $1',
+	'abusefilter-degrouped' => 'Бу дьайыы апатамаатынан омсолоох курдук бэлиэтэммит,
+онон оҥороруҥ бобуллубут, аатыҥ бөрүкүтэ суох дьон тиһиктэригэр киирбит, туох баар бырааптара уһуллубут.
+Ол гынан баран, маны сыыһа дьаһал диир буоллаххына дьаһабылга таҕыс, тоҕо маннык оҥорбуккун кэпсээ, оччоҕо быраабыҥ хат бэриллиэ.
+Эн оҥорбут дьайыыгын кытта ситимнэммит аһара түһүү кылгас ис хоһооно: $1',
+	'abusefilter-autopromote-blocked' => 'Бу дьайыы апатамаатынан омсолоох курдук бэлиэтэммит, онон бобуллубут.
+Ону таһынан бырайыагы көмүскүүр соруктаах эн ааккыттан сорох бэлиэммит аакка бэриллэр эбии бырааптар сотуллубуттар.
+Эн оҥорбут дьайыыгын кытта ситимнэммит аһара түһүү кылгас ис хоһооно: $1',
+	'abusefilter-blocker' => 'Омсолоох дьайыы фильтра',
+	'abusefilter-blockreason' => 'Омсолоох дьайыы фильтра аптамаатынан хааччахтаабыт. 
+Сөп түбэһэр сиэр-туом маннык: $1',
+	'abusefilter-degroupreason' => 'Омсолоох туһаныыны хааччахтыыр фильтр бырааптаргын аптамаатынан былдьаабыт.
+Сиэр-туом маннык: $1',
+	'abusefilter-accountreserved' => 'Бу аат омсолоох туһаныыны хааччахтыыр фильтр аатыгар бэриллэ сылдьар.',
+	'right-abusefilter-modify' => 'Омсо фильтрын уларытыы',
+	'right-abusefilter-view' => 'Омсо сиидэлэрин көрүү',
+	'right-abusefilter-log' => 'Омсолоох дьайыылар сурунаалларын көрүү',
+	'right-abusefilter-log-detail' => 'Омсолоох дьайыылар сурунаалларын сиһилии көрүү',
+	'right-abusefilter-private' => 'Омсолоох дьайыылар сурунаалларыгар кистэнэр тус сибидиэнньэлэри көрүү',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -11202,7 +11363,16 @@ $messages['vec'] = array(
 	'abusefilter-edit-builder-op-bool-not' => 'No (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'E (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'O (|)',
+	'abusefilter-edit-builder-group-funcs' => 'Funsioni',
+	'abusefilter-edit-builder-group-vars' => 'Variabili',
+	'abusefilter-edit-builder-vars-action' => 'Azion',
+	'abusefilter-edit-builder-vars-newsize' => 'Nova dimension de la pàxena',
+	'abusefilter-edit-builder-vars-oldsize' => 'Vecia dimension de la pàxena',
+	'abusefilter-filter-log' => 'Ultimi canbiamenti ai filtri',
+	'abusefilter-history-foruser' => 'Canbiamenti de $1',
+	'abusefilter-history-hidden' => 'sconto',
 	'abusefilter-history-user' => 'Utente',
+	'abusefilter-history-actions' => 'Azioni',
 	'abusefilter-history-deleted' => 'Scancelà',
 	'abusefilter-history-filterid' => 'Filtro',
 	'abusefilter-history-select-user' => 'Utente:',
@@ -11214,6 +11384,8 @@ $messages['vec'] = array(
 	'abusefilter-examine-user' => 'Utente:',
 	'abusefilter-examine-title' => 'Titolo de la pàxena:',
 	'abusefilter-examine-submit' => 'Serca',
+	'abusefilter-examine-test-button' => 'Próa filtro',
+	'abusefilter-examine-syntaxerror' => 'El filtro el gà na sintassi mia valida',
 );
 
 /** Vietnamese (Tiếng Việt)
