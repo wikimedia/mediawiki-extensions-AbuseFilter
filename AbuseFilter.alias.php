@@ -86,8 +86,8 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'AbuseLog' => array( 'RegistroDeAbusos' ),
-	'AbuseFilter' => array( 'FiltroAntiAbuso' ),
+	'AbuseLog' => array( 'Registro de abusos' ),
+	'AbuseFilter' => array( 'Filtro anti-abuso', 'Filtro antiabuso' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
