@@ -303,6 +303,7 @@ class AbuseFilterParser {
 	'specialratio' => 'funcSpecialRatio',
 	'rmspecials' => 'funcRMSpecials',
 	'rmdoubles' => 'funcRMDoubles',
+	'rmwhitespace' => 'funcRMWhitespace',
 	'count' => 'funcCount'
 	);
 	
@@ -1003,12 +1004,26 @@ class AbuseFilterParser {
 		return AntiSpoof::listToString($ret);
 	}
 	
+	protected function rmwhitespace( $s ) {
+		return preg_replace( '/\s+/u', '', $s );
+	}
+	
 	protected function funcRMSpecials( $args ) {
 		if( count( $args ) < 1 )
 			throw new AFPExpection( "No params passed to ".__METHOD__ );
 		$s = $args[0]->toString();
 		
 		$s = $this->rmspecials( $s );
+		
+		return new AFPData( AFPData::DString, $s );
+	}
+	
+	protected function funcRMWhitespace( $args ) {
+		if( count( $args ) < 1 )
+			throw new AFPExpection( "No params passed to ".__METHOD__ );
+		$s = $args[0]->toString();
+		
+		$s = $this->rmwhitespace( $s );
 		
 		return new AFPData( AFPData::DString, $s );
 	}
@@ -1031,6 +1046,7 @@ class AbuseFilterParser {
 		$s = $this->ccnorm($s);
 		$s = $this->rmdoubles( $s );
 		$s = $this->rmspecials( $s );
+		$s = $this->rmwhitespace( $s );
 		
 		return new AFPData( AFPData::DString, $s );
 	}
