@@ -215,7 +215,7 @@ class AbuseFilterHistoryPager extends TablePager {
 				'afh_actions', 
 				'afh_id', 
 				'afh_user', 
-				'afh_changed_fields'
+				'afh_changed_fields',
 				'afh_pattern' ),
 			'conds' => array(),
 		);
