@@ -215,7 +215,8 @@ class AbuseFilterHistoryPager extends TablePager {
 				'afh_actions', 
 				'afh_id', 
 				'afh_user', 
-				'afh_changed_fields' ),
+				'afh_changed_fields'
+				'afh_pattern' ),
 			'conds' => array(),
 		);
 
@@ -224,7 +225,6 @@ class AbuseFilterHistoryPager extends TablePager {
 			$info['conds']['afh_user_text'] = $this->mUser;
 		}
 		if ( $this->mFilter ) {
-			$info['fields'][] = 'afh_pattern';
 			$info['conds']['afh_filter'] = $this->mFilter;
 		}
 		
