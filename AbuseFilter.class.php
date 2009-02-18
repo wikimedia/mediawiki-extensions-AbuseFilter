@@ -238,7 +238,9 @@ class AbuseFilter {
 	}
 	
 	public static function ajaxReAutoconfirm( $username ) {
-	
+		global $wgUser;
+		wfLoadExtensionMessages( 'AbuseFilter' );
+		
 		if (!$wgUser->isAllowed('abusefilter-modify')) {
 			// Don't allow it.
 			return wfMsg( 'abusefilter-reautoconfirm-notallowed' );

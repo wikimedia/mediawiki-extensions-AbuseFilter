@@ -21,7 +21,7 @@ function doReautoSubmit()
 function processReautoconfirm( request ) {
 	var response = request.responseText;
 
-	if (strlen(response)) {
+	if (response && response.length) {
 		jsMsg( response );
 	}
 
