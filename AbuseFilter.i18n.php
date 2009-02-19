@@ -4719,6 +4719,7 @@ $messages['he'] = array(
 	'abusefilter-tools-reautoconfirm-submit' => 'סימון מחדש',
 	'abusefilter-reautoconfirm-none' => 'למשתמש זה לא בוטלו הרשאות המשתמש הוותיק.',
 	'abusefilter-reautoconfirm-notallowed' => 'אינכם מורשים לסמן מחדש משתמש כמשתמש ותיק.',
+	'abusefilter-reautoconfirm-done' => 'החשבון סומן מחדש כמשתמש ותיק',
 	'abusefilter-status' => 'מתוך {{PLURAL:$1|הפעולה האחרונה|$1 הפעולות האחרונות}}, {{PLURAL:$2|אחת ($3%) הגיעה|$2 ($3%) הגיעו}} לגבול התנאי של $4, ו{{PLURAL:$5|אחת ($6%) התאימה|־$5 ($6%) התאימו}} לאחד מהמסננים הפעילים כעת.',
 	'abusefilter-edit-subtitle' => 'עריכת המסנן $1',
 	'abusefilter-edit-oldwarning' => '<strong>הנכם עורכים גרסה ישנה של מסנן זה. הסטטיסטיקות המופיעות הינן עבור הגרסה העדכנית ביותר של המסנן. אם תשמרו את השינויים שביצעתם, הם ידרסו את כל השינויים מאז הגרסה שאתם עורכים כעת.</strong> &bull; [[Special:AbuseFilter/history/$2|חזרה להיסטוריית הגרסאות של המסנן]]',
