@@ -330,7 +330,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$sk->makeKnownLinkObj( $this->getTitle( 'history/'.$filter ), $history_display );
 		}
 
-		$fields['abusefilter-edit-tools'] = $tools;
+		if ($tools) {
+			$fields['abusefilter-edit-tools'] = $tools;
+		}
 
 		$form = Xml::buildForm( $fields );
 		$form = Xml::fieldset( wfMsg( 'abusefilter-edit-main' ), $form );
