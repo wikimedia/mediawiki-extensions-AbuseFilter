@@ -256,6 +256,8 @@ class AbuseFilter {
 		}
 		
 		$wgMemc->delete( $k );
+		
+		return wfMsg( 'abusefilter-reautoconfirm-done' );
 	}
 	
 	public static function ajaxEvaluateExpression( $expr ) {

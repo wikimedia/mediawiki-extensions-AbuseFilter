@@ -127,6 +127,7 @@ Filter description: $7 ($8) ($9)',
 	'abusefilter-tools-reautoconfirm-submit' => 'Re-autoconfirm',
 	'abusefilter-reautoconfirm-none' => 'That user has not had their autoconfirmed status suspended.',
 	'abusefilter-reautoconfirm-notallowed' => 'You are not allowed to restore autoconfirmed status.',
+	'abusefilter-reautoconfirm-done' => "Account's autoconfirmed status has been restored",
 
 	// Abuse filter status
 	'abusefilter-status' => "Of the last $1 {{PLURAL:$1|action|actions}}, $2 ($3%) {{PLURAL:$2|has|have}} reached the condition limit of $4, and $5 ($6%) {{PLURAL:$5|has|have}} matched one of the filters currently enabled.",
