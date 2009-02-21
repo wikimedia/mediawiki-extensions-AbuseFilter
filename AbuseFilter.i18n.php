@@ -558,7 +558,7 @@ $messages['an'] = array(
  */
 $messages['ar'] = array(
 	'abusefilter-desc' => 'يطبق قواعد أوتوماتيكية على التعديلات.',
-	'abusefilter' => 'ضبط فلتر الإساءة',
+	'abusefilter' => 'ضبط مرشح الإساءة',
 	'abuselog' => 'سجل الإساءة',
 	'abusefilter-warning' => "<big>'''تحذير'''</big>: هذا الفعل تم التعرف عليه تلقائيا كضار.
 التعديلات غير البناءة سيتم استرجاعها سريعا،
@@ -581,29 +581,29 @@ $messages['ar'] = array(
 	'abusefilter-autopromote-blocked' => 'هذا الفعل تم التعرف عليه تلقائيا كضار، وتم منعه.
 بالإضافة إلى ذلك، كإجراء أمني، بعض المميزات التي يتم منحها روتينيا للحسابات تمت إزالتها مؤقتا من حسابك.
 وصف مختصر لقاعدة الإساءة التي طابقها فعلك هو: $1',
-	'abusefilter-blocker' => 'فلتر الإساءة',
-	'abusefilter-blockreason' => 'ممنوع تلقائيا بواسطة فلتر الإساءة. وصف القاعدة المطابقة: $1',
-	'abusefilter-degroupreason' => 'الصلاحيات تمت إزالتها تلقائيا بواسطة فلتر الإساءة. وصف القاعدة: $1',
-	'abusefilter-accountreserved' => 'اسم الحساب هذا محجوز للاستخدام بواسطة فلتر الإساءة.',
-	'right-abusefilter-modify' => 'تعديل فلاتر الإساءة',
-	'right-abusefilter-view' => 'عرض فلاتر الإساءة',
+	'abusefilter-blocker' => 'مرشح الإساءة',
+	'abusefilter-blockreason' => 'ممنوع تلقائيا بواسطة مرشح الإساءة. وصف القاعدة المطابقة: $1',
+	'abusefilter-degroupreason' => 'الصلاحيات تمت إزالتها تلقائيا بواسطة مرشح الإساءة. وصف القاعدة: $1',
+	'abusefilter-accountreserved' => 'اسم الحساب هذا محجوز للاستخدام بواسطة مرشح الإساءة.',
+	'right-abusefilter-modify' => 'عدل مرشحات الإساءة',
+	'right-abusefilter-view' => 'اعرض مرشحات الإساءة',
 	'right-abusefilter-log' => 'عرض سجل الإساءة',
 	'right-abusefilter-log-detail' => 'عرض مدخلات سجل الإساءة المفصلة',
 	'right-abusefilter-private' => 'عرض البيانات السرية في سجل الإساءة',
-	'right-abusefilter-modify-restricted' => 'تعديل فلاتر الإساءة مع الأفعال المحظورة',
-	'right-abusefilter-revert' => 'استرجاع كامل التعديلات لفلتر إساءة محدد.',
-	'abusefilter-log' => 'سجل فلتر الإساءة',
+	'right-abusefilter-modify-restricted' => 'عدل مرشحات الإساءة مع الأفعال المحظورة',
+	'right-abusefilter-revert' => 'استرجع كل التعديلات لمرشح إساءة محدد.',
+	'abusefilter-log' => 'سجل مرشح الإساءة',
 	'abusefilter-log-search' => 'بحث سجل الإساءة',
 	'abusefilter-log-search-user' => 'المستخدم:',
-	'abusefilter-log-search-filter' => 'رقم الفلتر:',
+	'abusefilter-log-search-filter' => 'رقم المرشح:',
 	'abusefilter-log-search-title' => 'العنوان:',
 	'abusefilter-log-search-submit' => 'بحث',
-	'abusefilter-log-entry' => '$1: $2 فعل فلتر إساءة، مؤديا الفعل "$3" في $4.
+	'abusefilter-log-entry' => '$1: $2 فعل مرشح إساءة، مؤديا الفعل "$3" في $4.
 الأفعال المتخذة: $5;
-وصف الفلتر: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 أطلق [[Special:AbuseFilter/$3|الفلتر $3]]، مؤديا الفعل "$4" في $5.
+وصف المرشح: $6',
+	'abusefilter-log-detailedentry' => '$1: $2 أطلق [[Special:AbuseFilter/$3|المرشح $3]]، مؤديا الفعل "$4" في $5.
 الأفعال المتخذة: $6؛
-وصف الفلتر: $7 ($8) ($9)',
+وصف المرشح: $7 ($8) ($9)',
 	'abusefilter-log-detailslink' => 'التفاصيل',
 	'abusefilter-log-details-legend' => 'التفاصيل لمدخلة السجل $1',
 	'abusefilter-log-details-var' => 'متغير',
@@ -612,9 +612,9 @@ $messages['ar'] = array(
 	'abusefilter-log-details-private' => 'بيانات سرية',
 	'abusefilter-log-details-ip' => 'عنوان الأيبي المصدر',
 	'abusefilter-log-noactions' => 'لا شيء',
-	'abusefilter-management' => 'التحكم بفلتر الإساءة',
+	'abusefilter-management' => 'التحكم بمرشح الإساءة',
 	'abusefilter-list' => 'كل الفلاتر',
-	'abusefilter-list-id' => 'رقم الفلتر',
+	'abusefilter-list-id' => 'رقم المرشح',
 	'abusefilter-list-status' => 'الحالة',
 	'abusefilter-list-public' => 'وصف علني',
 	'abusefilter-list-consequences' => 'العواقب',
@@ -630,12 +630,12 @@ $messages['ar'] = array(
 	'abusefilter-deleted' => 'محذوف',
 	'abusefilter-disabled' => 'معطل',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|ضربة|ضربة}}',
-	'abusefilter-new' => 'فلتر جديد',
+	'abusefilter-new' => 'مرشح جديد',
 	'abusefilter-links' => 'وصلات مفيدة:',
 	'abusefilter-tools-modifiertest-submit' => 'اختبار',
 	'abusefilter-tools' => 'أدوات فلاتر الإساءة',
 	'abusefilter-loglink' => 'عرض سجل الإساءة',
-	'abusefilter-return' => 'رجوع إلى إدارة الفلتر',
+	'abusefilter-return' => 'رجوع إلى إدارة المرشح',
 	'abusefilter-list-options' => 'خيارات',
 	'abusefilter-list-options-deleted' => 'الفلاتر المحذوفة:',
 	'abusefilter-list-options-deleted-only' => 'اعرض فقط الفلاتر المحذوفة',
@@ -655,26 +655,29 @@ $messages['ar'] = array(
 	'abusefilter-reautoconfirm-notallowed' => 'أنت غير مسموح لك باسترجاع حالة التأكيد التلقائي.',
 	'abusefilter-reautoconfirm-done' => 'حالة التأكيد التلقائي للحساب تمت استعادتها',
 	'abusefilter-status' => 'من آخر $1 {{PLURAL:$1|فعل|فعل}}، $2 ($3%) {{PLURAL:$2|وصل|وصل}} إلى حد الحالة ل$4. $5 ($6%) {{PLURAL:$5|طابق|طابق}} واحدا من الفلاتر المفعلة حاليا.',
-	'abusefilter-edit-subtitle' => 'تعديل الفلتر $1',
-	'abusefilter-edit-oldwarning' => '<strong>أنت تعدل نسخة قديمة من هذا الفلتر. الإحصاءات الموجودة هي لأحدث نسخة من الفلتر. لو أنك حفظت تغييراتك، فستكتب على كل التغييرات منذ المراجعة التي تعدلها.</strong> &bull; [[Special:AbuseFilter/history/$2|رجوع إلى تاريخ هذا الفلتر]]',
+	'abusefilter-edit-subtitle' => 'تعديل المرشح $1',
+	'abusefilter-edit-oldwarning' => '<strong>أنت تعدل نسخة قديمة من هذا المرشح.
+الإحصاءات الموجودة هي لأحدث نسخة من المرشح.
+لو أنك حفظت تغييراتك، فستكتب على كل التغييرات منذ المراجعة التي تعدلها.</strong> &bull; [[Special:AbuseFilter/history/$2|رجوع إلى تاريخ هذا المرشح]]',
 	'abusefilter-edit-status-label' => 'إحصاءات:',
-	'abusefilter-edit-status' => 'من آخر $1 {{PLURAL:$1|تعديل|تعديل}}، هذا الفلتر طابق $2 ($3%).',
-	'abusefilter-edit-throttled' => "'''تحذير''': هذا الفلتر تم تعطيله تلقائيا كإجراء أمني. لقد وصل إلى حد مطابقة أكثر من $1% من الأفعال.",
-	'abusefilter-edit-new' => 'فلتر جديد',
-	'abusefilter-edit-save' => 'حفظ الفلتر',
-	'abusefilter-edit-id' => 'رقم الفلتر:',
+	'abusefilter-edit-status' => 'من آخر $1 {{PLURAL:$1|تعديل|تعديل}}، هذا المرشح طابق $2 ($3%).',
+	'abusefilter-edit-throttled' => "'''تحذير''': هذا المرشح تم تعطيله تلقائيا كإجراء أمني.
+لقد وصل إلى حد مطابقة أكثر من $1% من الأفعال.",
+	'abusefilter-edit-new' => 'مرشح جديد',
+	'abusefilter-edit-save' => 'حفظ المرشح',
+	'abusefilter-edit-id' => 'رقم المرشح:',
 	'abusefilter-edit-description' => "الوصف:
 :''(معروض علنيا)''",
 	'abusefilter-edit-flags' => 'الأعلام:',
-	'abusefilter-edit-enabled' => 'تفعيل هذا الفلتر',
+	'abusefilter-edit-enabled' => 'تفعيل هذا المرشح',
 	'abusefilter-edit-deleted' => 'التعليم كمحذوفة',
-	'abusefilter-edit-hidden' => 'إخفاء تفاصيل هذا الفلتر من العرض العلني',
+	'abusefilter-edit-hidden' => 'إخفاء تفاصيل هذا المرشح من العرض العلني',
 	'abusefilter-edit-rules' => 'الشروط:',
 	'abusefilter-edit-notes' => "ملاحظات:
 :''(سرية)",
-	'abusefilter-edit-lastmod' => 'فلتر المعدل آخرا',
+	'abusefilter-edit-lastmod' => 'رشح المعدل آخرا',
 	'abusefilter-edit-lastmod-text' => '$1 بواسطة $2',
-	'abusefilter-edit-hitcount' => 'ضربات الفلتر:',
+	'abusefilter-edit-hitcount' => 'ضربات المرشح:',
 	'abusefilter-edit-consequences' => 'الأفعال المتخذة عند التطابق',
 	'abusefilter-edit-action-warn' => 'نفذ هذه الأفعال بعد إعطاء المستخدم تحذيرا',
 	'abusefilter-edit-action-disallow' => 'امنع المستخدم من عمل الفعل المقصود',
@@ -698,20 +701,20 @@ $messages['ar'] = array(
 	'abusefilter-edit-warn-preview' => 'أظهر العرض المسبق للرسالة المختارة',
 	'abusefilter-edit-warn-edit' => 'أنشيء/عدل الرسالة المختارة',
 	'abusefilter-edit-tag-tag' => 'الوسوم للتنفيذ (واحد لكل سطر):',
-	'abusefilter-edit-denied' => 'أنت لا يمكنك رؤية تفاصيل هذا الفلتر، لأنه مخفي من العرض العلني',
-	'abusefilter-edit-main' => 'محددات الفلتر',
-	'abusefilter-edit-done-subtitle' => 'الفلتر تم تعديله',
-	'abusefilter-edit-done' => 'أنت حفظت بنجاح تغييراتك للفلتر $1.',
-	'abusefilter-edit-badsyntax' => 'هناك خطأ صياغة في الفلتر الذي حددته. الخرج من المحلل كان: <pre>$1</pre>',
-	'abusefilter-edit-restricted' => 'أنت لا يمكنك تعديل هذا الفلتر، لأنه يحتوي على واحد أو أكثر من الأفعال المحظورة.
+	'abusefilter-edit-denied' => 'أنت لا يمكنك رؤية تفاصيل هذا المرشح، لأنه مخفي من العرض العلني',
+	'abusefilter-edit-main' => 'محددات المرشح',
+	'abusefilter-edit-done-subtitle' => 'المرشح تم تعديله',
+	'abusefilter-edit-done' => 'أنت حفظت بنجاح تغييراتك للمرشح $1.',
+	'abusefilter-edit-badsyntax' => 'هناك خطأ صياغة في المرشح الذي حددته. الخرج من المحلل كان: <pre>$1</pre>',
+	'abusefilter-edit-restricted' => 'أنت لا يمكنك تعديل هذا المرشح، لأنه يحتوي على واحد أو أكثر من الأفعال المحظورة.
 من فضلك سل مستخدما ذا سماح إضافة الأفعال المحظورة ليفعل التغيير لك.',
-	'abusefilter-edit-viewhistory' => 'عرض تاريخ هذا الفلتر',
+	'abusefilter-edit-viewhistory' => 'عرض تاريخ هذا المرشح',
 	'abusefilter-edit-history' => 'التاريخ:',
 	'abusefilter-edit-check' => 'تحقق من الصياغة',
-	'abusefilter-edit-badfilter' => 'الفلتر الذي حددته غير موجود',
-	'abusefilter-edit-revert' => 'استرجاع الأفعال التي قام بها هذا الفلتر',
+	'abusefilter-edit-badfilter' => 'المرشح الذي حددته غير موجود',
+	'abusefilter-edit-revert' => 'استرجاع الأفعال التي قام بها هذا المرشح',
 	'abusefilter-edit-tools' => 'أدوات:',
-	'abusefilter-edit-test-link' => 'اختبر هذا الفلتر ضد التعديلات الحديثة',
+	'abusefilter-edit-test-link' => 'اختبر هذا المرشح ضد التعديلات الحديثة',
 	'abusefilter-edit-builder-select' => 'اختر خيارا لإضافته عند البكرة',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'معاملات حسابية',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'جمع (+)',
@@ -783,22 +786,22 @@ $messages['ar'] = array(
 	'abusefilter-edit-builder-vars-new-html' => 'مصدر HTML المعروض للمراجعة الجديدة',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'مستوى حماية التعديل للصفحة',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'مستوى حماية النقل للصفحة',
-	'abusefilter-filter-log' => 'تغييرات الفلتر الأخيرة',
-	'abusefilter-history' => 'غير التاريخ لفلتر الإساءة #$1',
+	'abusefilter-filter-log' => 'تغييرات المرشح الأخيرة',
+	'abusefilter-history' => 'غير التاريخ لمرشح الإساءة #$1',
 	'abusefilter-history-foruser' => 'تغييرات من قبل $1',
 	'abusefilter-history-hidden' => 'مخفي',
 	'abusefilter-history-enabled' => 'مفعل',
 	'abusefilter-history-timestamp' => 'وقت',
 	'abusefilter-history-user' => 'مستخدم',
-	'abusefilter-history-public' => 'وصف الفلتر العلني',
+	'abusefilter-history-public' => 'وصف المرشح العلني',
 	'abusefilter-history-flags' => 'أعلام',
-	'abusefilter-history-filter' => 'قاعدة الفلتر',
+	'abusefilter-history-filter' => 'قاعدة المرشح',
 	'abusefilter-history-comments' => 'تعليقات',
 	'abusefilter-history-actions' => 'أفعال',
-	'abusefilter-history-backedit' => 'رجوع إلى محرر الفلتر',
-	'abusefilter-history-backlist' => 'رجوع إلى قائمة الفلتر',
+	'abusefilter-history-backedit' => 'رجوع إلى محرر المرشح',
+	'abusefilter-history-backlist' => 'رجوع إلى قائمة المرشح',
 	'abusefilter-history-deleted' => 'محذوف',
-	'abusefilter-history-filterid' => 'فلتر',
+	'abusefilter-history-filterid' => 'مرشح',
 	'abusefilter-history-select-legend' => 'تصفية البحث',
 	'abusefilter-history-select-user' => 'مستخدم:',
 	'abusefilter-history-select-submit' => 'تصفية',
@@ -819,50 +822,50 @@ $messages['ar'] = array(
 	'abusefilter-action-degroup' => 'أزل من المجموعات',
 	'abusefilter-action-rangeblock' => 'منع نطاق',
 	'abusefilter-action-disallow' => 'عدم السماح',
-	'abusefilter-revert-title' => 'استرجاع كامل التعديلات للفلتر $1',
-	'abusefilter-revert-intro' => 'هذه الاستمارة تسمح لك باسترجاع كل التغييرات المعمولة بواسطة فلتر الإساءة بسبب الفلتر $1.
+	'abusefilter-revert-title' => 'استرجاع كامل التعديلات للمرشح $1',
+	'abusefilter-revert-intro' => 'هذه الاستمارة تسمح لك باسترجاع كل التغييرات المعمولة بواسطة مرشح الإساءة بسبب المرشح $1.
 من فضلك احترس عند استخدام هذه الأداة.',
 	'abusefilter-revert-preview-item' => '$1: $2 عمل $3 في $4.
 الأفعال للاسترجاع: $5 ($6)',
-	'abusefilter-revert-search-legend' => 'اختر أفعال فلتر الإساءة التي تريد استرجاعها',
+	'abusefilter-revert-search-legend' => 'اختر أفعال مرشح الإساءة التي تريد استرجاعها',
 	'abusefilter-revert-periodstart' => 'فترة البداية:',
 	'abusefilter-revert-periodend' => 'فترة النهاية:',
 	'abusefilter-revert-search' => 'اختر الأفعال',
-	'abusefilter-revert-filter' => 'فلتر:',
-	'abusefilter-revert-preview-intro' => 'بالأسفل الأفعال المتخذة بواسطة فلتر الإساءة والتي سيتم استرجاعها بواسطة هذا الفعل.
+	'abusefilter-revert-filter' => 'مرشح:',
+	'abusefilter-revert-preview-intro' => 'بالأسفل الأفعال المتخذة بواسطة مرشح الإساءة والتي سيتم استرجاعها بواسطة هذا الفعل.
 من فضلك تحقق منها بحرص، واضغط "تأكيد" لتأكيد اختيارك.',
 	'abusefilter-revert-confirm' => 'تأكيد',
-	'abusefilter-revert-success' => 'لقد قمت باسترجاع كامل التعديلات التي قام بها فلتر الإساءة وفقاً لـ[[Special:AbuseFilter/$1|فلتر $1]].',
-	'abusefilter-revert-reason' => 'استرجاع تلقائي لكل الأفعال المتخذة بواسطة فلتر الإساءة بسبب الفلتر $1.
+	'abusefilter-revert-success' => 'لقد قمت باسترجاع كامل التعديلات التي قام بها مرشح الإساءة وفقا [[Special:AbuseFilter/$1|للمرشح $1]].',
+	'abusefilter-revert-reason' => 'استرجاع تلقائي لكل الأفعال المتخذة بواسطة مرشح الإساءة بسبب المرشح $1.
 السبب المعطى: $2',
 	'abusefilter-revert-reasonfield' => 'سبب الاسترجاع',
-	'abusefilter-test' => 'اختبار الفلتر على تعديلات سابقة',
-	'abusefilter-test-intro' => 'هذه الصفحة تسمح لك بالتحقق من فلتر مدخل في الصندوق بالأسفل ضد آخر $1 {{PLURAL:$1|تغيير|تغيير}}.
-لتحميل فلتر موجود، اكتب رقم الفلتر الخاص به في الصندوق بأسفل صندوق نص التعديل، واضغط زر "تحميل".',
-	'abusefilter-test-legend' => 'اختبار الفلتر',
-	'abusefilter-test-load-filter' => 'تحميل رمز تعريف الفلتر:',
+	'abusefilter-test' => 'اختبار المرشح على تعديلات سابقة',
+	'abusefilter-test-intro' => 'هذه الصفحة تسمح لك بالتحقق من مرشح مدخل في الصندوق بالأسفل ضد آخر $1 {{PLURAL:$1|تغيير|تغيير}}.
+لتحميل مرشح موجود، اكتب رقم المرشح الخاص به في الصندوق بأسفل صندوق نص التعديل، واضغط زر "تحميل".',
+	'abusefilter-test-legend' => 'اختبار المرشح',
+	'abusefilter-test-load-filter' => 'تحميل رمز تعريف المرشح:',
 	'abusefilter-test-submit' => 'اختبار',
 	'abusefilter-test-load' => 'تحميل',
 	'abusefilter-test-user' => 'التغييرات بواسطة المستخدم:',
 	'abusefilter-test-period-start' => 'التغييرات المعمولة بعد:',
 	'abusefilter-test-period-end' => 'التغييرات المعمولة قبل:',
-	'abusefilter-test-shownegative' => 'اعرض التغييرات التي لا تطابق الفلتر',
+	'abusefilter-test-shownegative' => 'اعرض التغييرات التي لا تطابق المرشح',
 	'abusefilter-changeslist-examine' => 'افحص',
 	'abusefilter-examine' => 'افحص التغييرات الفردية',
-	'abusefilter-examine-intro' => 'هذه الصفحة تسمح لك بفحص المتغيرات المولدة بواسطة فلتر الإساءة لتغيير فردي، واختبارها ضد الفلاتر.',
+	'abusefilter-examine-intro' => 'هذه الصفحة تسمح لك بفحص المتغيرات المولدة بواسطة مرشح الإساءة لتغيير فردي، واختبارها ضد المرشحات.',
 	'abusefilter-examine-legend' => 'اختيار التغييرات',
 	'abusefilter-examine-diff' => 'مسار الفرق:',
 	'abusefilter-examine-user' => 'المستخدم:',
 	'abusefilter-examine-title' => 'عنوان الصفحة:',
 	'abusefilter-examine-submit' => 'بحث',
 	'abusefilter-examine-vars' => 'المتغيرات المولدة لهذا التغيير',
-	'abusefilter-examine-test' => 'اختبر هذا التغيير ضد فلتر',
-	'abusefilter-examine-test-button' => 'اختبار الفلتر',
-	'abusefilter-examine-match' => 'الفلتر طابق هذا التغيير.',
-	'abusefilter-examine-nomatch' => 'الفلتر لم يطابق هذا التغيير.',
-	'abusefilter-examine-syntaxerror' => 'الفلتر به صيغة غير صحيحة',
+	'abusefilter-examine-test' => 'اختبر هذا التغيير ضد مرشح',
+	'abusefilter-examine-test-button' => 'اختبار المرشح',
+	'abusefilter-examine-match' => 'المرشح طابق هذا التغيير.',
+	'abusefilter-examine-nomatch' => 'المرشح لم يطابق هذا التغيير.',
+	'abusefilter-examine-syntaxerror' => 'المرشح به صيغة غير صحيحة',
 	'abusefilter-examine-notfound' => 'التغيير الذي طلبته لم يمكن إيجاده.',
-	'abusefilter-examine-incompatible' => 'التغيير الذي طلبته غير مدعوم بواسطة فلتر الإساءة',
+	'abusefilter-examine-incompatible' => 'التغيير الذي طلبته غير مدعوم بواسطة مرشح الإساءة',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -2587,7 +2590,7 @@ Aktionen, die rückgängig gemacht werden: $5 ($6)',
 	'abusefilter-revert-preview-intro' => 'Unten stehen die Aktionen des Missbrauchsfilters, die hiermit rückgängig gemacht werden.
 Bitte überprüfe sie sorgfältig und klicke auf „Bestätigen“, um deine Auswahl zu bestätigen.',
 	'abusefilter-revert-confirm' => 'Bestätigen',
-	'abusefilter-revert-success' => 'Du hast alle Aktionen des Missbrauchsfilters, die aufgrund von [[{{ns:special}}:AbuseFilter/$1|Filter $1]] vorgenommen wurden, rückgängig gemacht.',
+	'abusefilter-revert-success' => 'Du hast alle Aktionen des Missbrauchsfilters, die aufgrund von [[Special:AbuseFilter/$1|Filter $1]] vorgenommen wurden, rückgängig gemacht.',
 	'abusefilter-revert-reason' => 'Automatisches Zurücksetzen aller Aktionen des Missbrauchsfilters aufgrund von Filter $1.
 Angegebener Grund: $2',
 	'abusefilter-revert-reasonfield' => 'Grund für das Zurücksetzen:',
@@ -2622,6 +2625,7 @@ Um einen bestehenden Filter zu laden, gib seine Filter-ID in das Feld unterhalb 
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author ChrisiPK
+ * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'abusefilter-edit-restricted' => 'Sie können diesen Filter nicht bearbeiten, weil er eine oder mehrere verbotene Aktionen enthält.
@@ -2630,8 +2634,8 @@ Bitten Sie einen Benutzer, der verbotene Aktionen hinzufügen kann, darum, die �
 Bitte verwenden Sie dieses Werkzeug mit Vorsicht.',
 	'abusefilter-revert-preview-intro' => 'Unten stehen die Aktionen des Missbrauchsfilters, die hiermit rückgängig gemacht werden.
 Bitte überprüfen Sie sie sorgfältig und klicken Sie auf „Bestätigen“, um Ihre Auswahl zu bestätigen.',
-	'abusefilter-revert-success' => 'Sie haben alle Aktionen des Missbrauchsfilters, die aufgrund von [[{{ns:special}}:AbuseFilter/$1|Filter $1]] vorgenommen wurden, rückgängig gemacht.',
-	'abusefilter-test-intro' => 'Mit dieser Seite kann ein Filter probeweise auf die letzten $1 Änderungen angewendet werden.
+	'abusefilter-revert-success' => 'Sie haben alle Aktionen des Missbrauchsfilters, die aufgrund von [[Special:AbuseFilter/$1|Filter $1]] vorgenommen wurden, rückgängig gemacht.',
+	'abusefilter-test-intro' => 'Mit dieser Seite kann ein Filter probeweise auf die {{PLURAL:$1|letzte Änderung|letzten $1 Änderungen}} angewendet werden.
 Um einen bestehenden Filter zu laden, geben Sie seine Filter-ID in das Feld unterhalb des Bearbeiten-Textfeldes ein und klicken Sie auf den „Laden“-Button.',
 );
 
@@ -4033,7 +4037,7 @@ Descrición do filtro: $7 ($8) ($9)',
 	'abusefilter-management' => 'Xestión do filtro de abusos',
 	'abusefilter-list' => 'Todos os filtros',
 	'abusefilter-list-id' => 'Filtrar o ID',
-	'abusefilter-list-status' => 'Status',
+	'abusefilter-list-status' => 'Estado',
 	'abusefilter-list-public' => 'Descrición pública',
 	'abusefilter-list-consequences' => 'Consecuencias',
 	'abusefilter-list-visibility' => 'Visibilidade',
