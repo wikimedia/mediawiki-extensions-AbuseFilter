@@ -3143,6 +3143,8 @@ Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1',
 	'abusefilter-action-rangeblock' => 'Forbari IP-adresan intervalon',
 	'abusefilter-action-disallow' => 'Malpermesi',
 	'abusefilter-revert-filter' => 'Filtrilo:',
+	'abusefilter-test-user' => 'Ŝanĝoj de uzanto:',
+	'abusefilter-examine-user' => 'Uzanto:',
 	'abusefilter-examine-submit' => 'Serĉi',
 );
 
@@ -3596,10 +3598,17 @@ Syy: $1',
 	'abusefilter-edit-builder-op-bool-not' => 'Ei (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'Ja (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Tai (|)',
+	'abusefilter-edit-builder-group-misc' => 'Sekalaiset',
 	'abusefilter-edit-builder-group-funcs' => 'Funktiot',
+	'abusefilter-edit-builder-funcs-length' => 'Merkkijonon pituus (length)',
+	'abusefilter-edit-builder-funcs-lcase' => 'Muuta pienaakkosiksi (lcase)',
+	'abusefilter-edit-builder-funcs-norm' => 'Yhtenäistä (norm)',
 	'abusefilter-edit-builder-vars-action' => 'Toiminto',
+	'abusefilter-edit-builder-vars-addedlines' => 'Muokkauksessa lisättyjen rivien määrä',
+	'abusefilter-edit-builder-vars-delta' => 'Koon muutos muokkauksessa',
 	'abusefilter-edit-builder-vars-newsize' => 'Uuden sivun koko',
 	'abusefilter-edit-builder-vars-oldsize' => 'Vanhan sivun koko',
+	'abusefilter-edit-builder-vars-removedlines' => 'Muokkauksessa poistettujen rivien määrä',
 	'abusefilter-edit-builder-vars-article-id' => 'Sivun tunniste',
 	'abusefilter-edit-builder-vars-user-editcount' => 'Käyttäjän muokkausmäärä',
 	'abusefilter-edit-builder-vars-user-age' => 'Käyttäjätunnuksen ikä',
@@ -3608,6 +3617,7 @@ Syy: $1',
 	'abusefilter-edit-builder-vars-added-links' => 'Kaikki muokkauksessa lisätyt ulkoiset linkit',
 	'abusefilter-edit-builder-vars-removed-links' => 'Kaikki muokkauksessa poistetut ulkoiset linkit',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Muokkaa sivun suojausta',
+	'abusefilter-filter-log' => 'Suodattimen tuoreet muutokset',
 	'abusefilter-history-hidden' => 'piilotettu',
 	'abusefilter-history-timestamp' => 'Aika',
 	'abusefilter-history-user' => 'Käyttäjä',
@@ -3642,6 +3652,7 @@ Syy: $1',
  * @author Grondin
  * @author IAlex
  * @author McDutchie
+ * @author PieRRoMaN
  * @author Robby
  * @author Verdy p
  * @author Zetud
@@ -3651,9 +3662,9 @@ $messages['fr'] = array(
 	'abusefilter' => 'Configuration du filtre des abus',
 	'abuselog' => 'Journal des abus',
 	'abusefilter-warning' => "<big>'''Avertissement'''</big> : cette action a été identifiée automatiquement comme nuisible.
-Les modifications non constructives seront rapidement annulée
+Les modifications non constructives seront rapidement annulées
 et les âneries répétées ou outrageantes provoqueront le blocage de votre compte ou l’inscription de votre ordinateur en liste noire.
-Si vous être convaincu{{GENDER:||e|(e)}} que votre modification est constructive, vous pouvez la soumettre une nouvelle fois pour la confirmer.
+Si vous êtes convaincu{{GENDER:||e|(e)}} que votre modification est constructive, vous pouvez la soumettre une nouvelle fois pour la confirmer.
 Voici une brève description de la règle de filtrage des abus ayant détecté votre action : $1",
 	'abusefilter-disallowed' => 'Cette action a été automatiquement idenfiée comme nuisible et, par voie de conséquence, non permise.
 Si vous êtes convaincu{{GENDER:||e|(e)}} que votre modification était constructive, veuillez contacter un administrateur et l’informer de ce que vous avez essayé de faire.
@@ -3746,7 +3757,7 @@ Description du filtre : $7 ($8) ($9)',
 	'abusefilter-reautoconfirm-none' => 'Cet utilisateur n’a pas eu de suspension de l’état autoconfirmé.',
 	'abusefilter-reautoconfirm-notallowed' => 'Vous n’êtes pas autorisé{{GENDER:||e|(e)}} à rétablir l’état autoconfirmé.',
 	'abusefilter-reautoconfirm-done' => 'L’état autoconfirmé du compte utilisateur a été rétabli',
-	'abusefilter-status' => '{{PLURAL:$1|Dans la dernière action|Parmi les $1 dernières actions}}, $2 ($3 %) {{PLURAL:$2|a|ont}} atteint la limite des $4 conditions autorisées. Et $5 ($6 %) {{PLURAL:$5|a été détecté|ont été détectés}} par l’un des filtres actuellement activés.',
+	'abusefilter-status' => '{{PLURAL:$1|Dans la dernière action|Parmi les $1 dernières actions}}, $2 ($3 %) {{PLURAL:$2|a|ont}} atteint la limite des $4 conditions autorisées. Et $5 ($6 %) {{PLURAL:$5|a été détectée|ont été détectées}} par l’un des filtres actuellement activés.',
 	'abusefilter-edit-subtitle' => 'Modification du filtre $1',
 	'abusefilter-edit-oldwarning' => '<strong>Vous êtes en train de modifier une ancienne version de ce filtre.
 Les statistiques affichées concernent la version la plus récente de celui-ci.
@@ -3786,12 +3797,12 @@ Il a atteint la limite de détection de plus de $1 % des actions.",
 	'abusefilter-edit-throttle-seconds' => '$1 seconde{{PLURAL:$1||s}}',
 	'abusefilter-edit-throttle-groups' => "Grouper la modération par :
 : ''(un par ligne, séparé par des virgules)''",
-	'abusefilter-edit-warn-message' => 'Message système a utiliser pour l’avertissement :',
+	'abusefilter-edit-warn-message' => 'Message système à utiliser pour l’avertissement :',
 	'abusefilter-edit-warn-other' => 'Autre message',
 	'abusefilter-edit-warn-other-label' => "Nom de page d’un autre message
 : ''(sans le préfixe MediaWiki)''",
 	'abusefilter-edit-warn-actions' => 'Actions',
-	'abusefilter-edit-warn-preview' => 'Prévisualiser les messages sélectionnés',
+	'abusefilter-edit-warn-preview' => 'Prévisualiser le message sélectionné',
 	'abusefilter-edit-warn-edit' => 'Créer / modifier le message sélectionné',
 	'abusefilter-edit-tag-tag' => 'Balises à appliquer (une par ligne) :',
 	'abusefilter-edit-denied' => 'Vous ne pouvez pas voir les détails de ce filtre parce qu’il est caché à la vue du public',
@@ -3832,7 +3843,7 @@ Demandez à un utilisateur autorisé à ajouter des actions restreintes d’effe
 	'abusefilter-edit-builder-misc-ternary' => 'Opérateur ternaire (1 ? 2 : 3)',
 	'abusefilter-edit-builder-misc-in' => 'Contenu dans la chaîne de caractères (in)',
 	'abusefilter-edit-builder-misc-like' => 'Correspond au motif (like)',
-	'abusefilter-edit-builder-misc-rlike' => 'Correspond a l’expression rationnelle (rlike)',
+	'abusefilter-edit-builder-misc-rlike' => 'Correspond à l’expression rationnelle (rlike)',
 	'abusefilter-edit-builder-misc-stringlit' => 'Chaîne littérale ("")',
 	'abusefilter-edit-builder-group-funcs' => 'Fonctions',
 	'abusefilter-edit-builder-funcs-length' => 'Longueur de la chaîne de caractères (length)',
@@ -3841,13 +3852,13 @@ Demandez à un utilisateur autorisé à ajouter des actions restreintes d’effe
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Enlève les caractères doubles (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Caractères spéciaux / total des caractères (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Normalise (norm)',
-	'abusefilter-edit-builder-funcs-count' => 'Nombre d’occurences de la chaîne de caractères X dans la chaîne Y (count)',
+	'abusefilter-edit-builder-funcs-count' => 'Nombre d’occurrences de la chaîne de caractères X dans la chaîne Y (count)',
 	'abusefilter-edit-builder-group-vars' => 'Variables',
 	'abusefilter-edit-builder-vars-accountname' => 'Nom du compte (lors de la création du compte)',
 	'abusefilter-edit-builder-vars-action' => 'Action',
 	'abusefilter-edit-builder-vars-addedlines' => 'Lignes ajoutées lors de la modification',
 	'abusefilter-edit-builder-vars-delta' => 'Différence de taille lors de la modification',
-	'abusefilter-edit-builder-vars-diff' => 'Diffs unifiés des changements faits lors de la modification',
+	'abusefilter-edit-builder-vars-diff' => 'Diff unifié des changements faits lors de la modification',
 	'abusefilter-edit-builder-vars-newsize' => 'Taille de la nouvelle page',
 	'abusefilter-edit-builder-vars-oldsize' => 'Taille de l’ancienne page',
 	'abusefilter-edit-builder-vars-removedlines' => 'Lignes supprimées lors de la modification',
@@ -7434,6 +7445,7 @@ Benotzt dës Fonctioun w.e.g. nëmmen wann Dir hir Konsequenzen ofschätze kënn
 	'abusefilter-revert-filter' => 'Filter:',
 	'abusefilter-revert-confirm' => 'Confirméieren',
 	'abusefilter-revert-reasonfield' => "Grond fir d'Zrécksetzen:",
+	'abusefilter-test' => 'De Filter mat de leschten Ännerungen ausprobéieren',
 	'abusefilter-test-legend' => 'Test vum Filter',
 	'abusefilter-test-load-filter' => 'Luede vum Filter mat der ID:',
 	'abusefilter-test-submit' => 'Test',
@@ -7921,12 +7933,12 @@ Als u uw wijzigingen opslaat, overschrijft u alle wijzigingen die na deze versie
 	'abusefilter-edit-denied' => 'U mag de details van deze filter niet bekijken, omdat die niet publiekelijk zichtbaar zijn',
 	'abusefilter-edit-main' => 'Filterparameters',
 	'abusefilter-edit-done-subtitle' => 'Filter bewerkt',
-	'abusefilter-edit-done' => 'De wijzigingen aan de filter $1 zijn opgeslagen.',
+	'abusefilter-edit-done' => 'De wijzigingen aan het filter $1 zijn opgeslagen.',
 	'abusefilter-edit-badsyntax' => 'Er zit een syntaxisfout in de opgegeven filter.
 De uitvoer van de parser was: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'U kunt deze filter niet bewerken omdat die één of meerdere beperkte handelingen bevat.
 Vraag een gebruiker met toestemming om beperkte handelingen toe te voegen om de wijziging voor u te maken.',
-	'abusefilter-edit-viewhistory' => 'Geschiedenis van de filter bekijken',
+	'abusefilter-edit-viewhistory' => 'Geschiedenis van het filter bekijken',
 	'abusefilter-edit-history' => 'Geschiedenis
 :',
 	'abusefilter-edit-check' => 'Syntaxis controleren',
@@ -11319,9 +11331,11 @@ $messages['te'] = array(
 	'abusefilter-new' => 'కొత్త జల్లెడ',
 	'abusefilter-links' => 'ఉపయోగపడే లింకులు:',
 	'abusefilter-list-options' => 'ఎంపికలు',
+	'abusefilter-list-options-submit' => 'తాజాకరించు',
 	'abusefilter-tools-subtitle' => 'పనిముట్లు',
+	'abusefilter-tools-reautoconfirm-user' => 'వాడుకరి:',
 	'abusefilter-edit-subtitle' => '$1 జల్లెడను దిద్దుతున్నారు',
-	'abusefilter-edit-status-label' => 'గణాంకాలు',
+	'abusefilter-edit-status-label' => 'గణాంకాలు:',
 	'abusefilter-edit-new' => 'కొత్త జల్లెడ',
 	'abusefilter-edit-save' => 'జల్లెడ భద్రపరచు',
 	'abusefilter-edit-id' => 'జల్లెడ ఐ.డీ:',
@@ -11335,11 +11349,15 @@ $messages['te'] = array(
 	'abusefilter-edit-action-disallow' => 'ఈ చర్యను నిరాకరించు',
 	'abusefilter-edit-action-block' => 'ఈ వాడుకరిని దిద్దుబాట్లు చేయకుండా నిషేధించు',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|క్షణం|క్షణాలు}}',
-	'abusefilter-edit-history' => 'చరిత్ర',
+	'abusefilter-edit-warn-other' => 'ఇతర సందేశం',
+	'abusefilter-edit-history' => 'చరిత్ర:',
+	'abusefilter-edit-tools' => 'పనిముట్లు:',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'కూడిక (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'తీసివేత (-)',
 	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'గుణకారం (*)',
 	'abusefilter-edit-builder-op-arithmetic-divide' => 'భాగాహారం (/)',
+	'abusefilter-edit-builder-op-bool-and' => 'మరియు (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'లేదా (|)',
 	'abusefilter-edit-builder-vars-action' => 'చర్య',
 	'abusefilter-edit-builder-vars-newsize' => 'కొత్త పేజీ పరిమాణం',
 	'abusefilter-edit-builder-vars-oldsize' => 'పాత పేజీ పరిమాణం',
@@ -11348,6 +11366,10 @@ $messages['te'] = array(
 	'abusefilter-history-user' => 'వాడుకరి',
 	'abusefilter-history-comments' => 'వ్యాఖ్యలు',
 	'abusefilter-history-actions' => 'చర్యలు',
+	'abusefilter-history-select-user' => 'వాడుకరి:',
+	'abusefilter-examine-user' => 'వాడుకరి:',
+	'abusefilter-examine-title' => 'పేజీ శీర్షిక:',
+	'abusefilter-examine-submit' => 'వెతుకు',
 );
 
 /** Tetum (Tetun)
