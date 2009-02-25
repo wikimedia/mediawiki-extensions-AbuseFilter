@@ -1003,7 +1003,15 @@ class AbuseFilter {
 		$vars = array();
 		$title = Title::makeTitle( $row->rc_namespace, $row->rc_title );
 		
-		$vars = array_merge( $vars, self::generateUserVars( User::newFromId( $row->rc_user ) ) );
+		if ($row->rc_user) 
+			$user = User::newFromId( $row->rc_user );
+		else {
+			$user = new User;
+			$user->setName( $row->rc_user_text );
+		}
+		
+		$vars = array_merge( $vars, self::generateUserVars( $user ) );
+		
 		$vars = array_merge( $vars, self::generateTitleVars( $title, 'ARTICLE' ) );
 		$vars['ACTION'] = 'edit';
 		$vars['SUMMARY'] = $row->rc_comment;
@@ -1027,7 +1035,13 @@ class AbuseFilter {
 	public static function getMoveVarsFromRCRow( $row ) {
 		$vars = array();
 		
-		$user = User::newFromId( $row->rc_user );
+		if ($row->rc_user) 
+			$user = User::newFromId( $row->rc_user );
+		else {
+			$user = new User;
+			$user->setName( $row->rc_user_text );
+		}
+		
 		$oldTitle = Title::makeTitle( $row->rc_namespace, $row->rc_title );
 		$newTitle = Title::newFromText( trim($row->rc_params) );
 		
