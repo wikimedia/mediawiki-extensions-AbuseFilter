@@ -212,7 +212,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		// Normalise username
 		$userTitle = Title::newFromText( $searchUsername );
 		
-		if ( $userTitle->getNamespace() == NS_USER ) 
+		if ( $userTitle && $userTitle->getNamespace() == NS_USER ) 
 			$this->mSearchUser = $userTitle->getText(); // Allow User:Blah syntax.
 		elseif ( $userTitle )
 			// Not sure of the value of prefixedText over text, but no need to munge unnecessarily.
