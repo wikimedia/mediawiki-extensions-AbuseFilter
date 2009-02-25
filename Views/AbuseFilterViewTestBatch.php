@@ -124,7 +124,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$this->mFilter = $wgRequest->getText( 'wpTestFilter' );
 		$this->mShowNegative = $wgRequest->getBool( 'wpShowNegative' );
-		$this->mTestUser = $wgRequest->getText( 'wpTestUser' );
+		$testUsername = $wgRequest->getText( 'wpTestUser' );
 		$this->mTestPeriodEnd = $wgRequest->getText( 'wpTestPeriodEnd' );
 		$this->mTestPeriodStart = $wgRequest->getText( 'wpTestPeriodStart' );
 
@@ -137,5 +137,17 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 				array( 'af_id' => $this->mParams[1] ), 
 				__METHOD__ );
 		}
+		
+		// Normalise username
+		$userTitle = Title::newFromText( $testUsername );
+		
+		if ( $userTitle && $userTitle->getNamespace() == NS_USER ) 
+			$this->mTestUser = $userTitle->getText(); // Allow User:Blah syntax.
+		elseif ( $userTitle )
+			// Not sure of the value of prefixedText over text, but no need to munge unnecessarily.
+			$this->mTestUser = $userTitle->getPrefixedText();
+		else
+			$this->mTestUser = null; // No user specified.
+		
 	}
 }
