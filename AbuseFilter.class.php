@@ -844,8 +844,10 @@ class AbuseFilter {
 
 	static function buildEditBox( $rules, $textName = 'wpFilterRules', $addResultDiv = true ) {
 		global $wgOut;
+		
+		$rules = rtrim($rules) ."\n";
 
-		$rules = Xml::textarea( $textName, ( isset( $rules ) ? $rules."\n" : "\n" ) );
+		$rules = Xml::textarea( $textName, $rules );
 
 		$dropDown = self::$builderValues;
 
