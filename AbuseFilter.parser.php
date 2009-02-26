@@ -337,7 +337,7 @@ class AbuseFilterParser {
 		$this->mParams = array();
 		$this->mCode = '';
 		$this->mTokens = array();
-		$this->mVars = array();
+		$this->mVars = new AbuseFilterVariableHolder;
 		$this->mPos = 0;
 	}
 	
@@ -350,17 +350,19 @@ class AbuseFilterParser {
 		return true;
 	}
 	
-	public function setVar( $name, $var ) {
+	public function setVar( $name, $value ) {
 		$name = strtolower($name);
-		$this->mVars[$name] = AFPData::newFromPHPVar( $var );
+		$this->mVars->setVar( $name, $value );
 	}
 	
 	public function setVars( $vars ) {
-		wfProfileIn( __METHOD__ );
-		foreach( $vars as $name => $var ) {
-			$this->setVar( $name, $var );
+		if ( is_array( $vars ) ) {
+			foreach( $vars as $name => $var ) {
+				$this->setVar( $name, $var );
+			}
+		} elseif ( $vars instanceof AbuseFilterVariableHolder ) {
+			$this->mVars->addHolder( $vars );
 		}
-		wfProfileOut( __METHOD__ );
 	}
 	
 	protected function move( ) {
@@ -643,20 +645,7 @@ class AbuseFilterParser {
 		switch( $this->mCur->type ) {
 			case AFPToken::TID:
 				$var = strtolower($tok);
-				if( isset( $this->mVars[$var] ) ) {
-					$result = $this->mVars[$var];
-				} elseif (
-					array_key_exists( strtolower($var),
-						AbuseFilter::$builderValues['vars'] )
-				) {
-					// If the variable is valid but not set, return null
-					$result = new AFPData();
-				} else {
-					// If the variable is invalid, throw an exception
-					throw new AFPUserVisibleException( 'unrecognisedvar',
-														$this->mCur->pos,
-														array( $var ) );
-				}
+				$result = $this->getVarValue( $var );
 				break;
 			case AFPToken::TString:
 				$result = new AFPData( AFPData::DString, $tok );
@@ -692,6 +681,18 @@ class AbuseFilterParser {
 		}
 		$this->move();
 		wfProfileOut( __METHOD__ );
+	}
+	
+	protected function getVarValue( $var ) {
+		$var = strtolower($var);
+		if ( ! array_key_exists( $var, AbuseFilter::$builderValues['vars'] ) ) {
+			// If the variable is invalid, throw an exception
+			throw new AFPUserVisibleException( 'unrecognisedvar',
+												$this->mCur->pos,
+												array( $var ) );
+		} else {
+			return $this->mVars->getVar( $var );
+		}
 	}
 	
 	/* End of levels */

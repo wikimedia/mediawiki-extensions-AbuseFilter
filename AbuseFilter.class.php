@@ -96,22 +96,24 @@ class AbuseFilter {
 			'article_restrictions_edit' => 'restrictions-edit',
 			'article_restrictions_move' => 'restrictions-move',
 			'article_recent_contributors' => 'recent-contributors',
+			'old_text' => 'old-text-stripped',
+			'old_html' => 'old-html',
+			'old_links' => 'old-links',
 		),
 	);
 
 	public static function generateUserVars( $user ) {
-		$vars = array();
+		$vars = new AbuseFilterVariableHolder;
 		
-		// Load all the data we want.
-		$user->load();
+		$vars->setLazyLoadVar( 'user_editcount', 'simple-user-accessor',
+			array( 'user' => $user->getName(), 'method' => 'getEditCount' ) );
+		$vars->setVar( 'user_name', $user->getName() );
+		$vars->setLazyLoadVar( 'user_emailconfirm', 'simple-user-accessor',
+			array( 'user' => $user->getName(), 'method' => 'getEmailAuthenticationTimestamp' ) );
 		
-		$vars['USER_EDITCOUNT'] = $user->getEditCount();
-		$vars['USER_AGE'] = time() - wfTimestampOrNull( TS_UNIX, $user->getRegistration() );
-		$vars['USER_NAME'] = $user->getName();
-		$vars['USER_GROUPS'] = implode(',', $user->getEffectiveGroups() );
-		$vars['USER_EMAILCONFIRM'] = $user->getEmailAuthenticationTimestamp();
-		
-		// More to come
+		$vars->setLazyLoadVar( 'user_age', 'user-age',
+			array( 'user' => $user->getName(), 'asof' => wfTimestampNow() ) );
+		$vars->setLazyLoadVar( 'user_groups', 'user-groups', array( 'user' => $user->getName() ) );
 		
 		return $vars;
 	}
@@ -181,36 +183,34 @@ class AbuseFilter {
 	}
 	
 	public static function generateTitleVars( $title, $prefix ) {
-		$vars = array();
+		$vars = new AbuseFilterVariableHolder;
 
 		if (!$title)
 			return array();
 		
-		$vars[$prefix."_ARTICLEID"] = $title->getArticleId();
-		$vars[$prefix."_NAMESPACE"] = $title->getNamespace();
-		$vars[$prefix."_TEXT"] = $title->getText();
-		$vars[$prefix."_PREFIXEDTEXT"] = $title->getPrefixedText();
+		$vars->setVar( $prefix."_ARTICLEID", $title->getArticleId() );
+		$vars->setVar( $prefix."_NAMESPACE", $title->getNamespace() );
+		$vars->setVar( $prefix."_TEXT",  $title->getText() );
+		$vars->setVar( $prefix."_PREFIXEDTEXT", $title->getPrefixedText() );
 
 		// Use restrictions.
-		if ($title->mRestrictionsLoaded) {
-			// Don't bother if they're unloaded
-			foreach( $title->mRestrictions as $action => $rights ) {
-				$rights = count($rights) ? $rights : array();
-				$vars[$prefix."_RESTRICTIONS_".$action] = implode(',', $rights );
-			}
+		global $wgRestrictionTypes;
+		foreach( $wgRestrictionTypes as $action ) {
+			$vars->setLazyLoadVar( "{$prefix}_restrictions_$action", 'get-page-restrictions',
+				array( 'title' => $title->getText(),
+						'namespace' => $title->getNamespace(),
+						'action' => $action
+					)
+				);
 		}
 		
-		// Find last 5 authors.
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'revision', 'distinct rev_user_text',
-			array( 'rev_page' => $title->getArticleId() ), __METHOD__,
-			array( 'ORDER BY' => 'rev_timestamp DESC', 'LIMIT' => 10 ) );
-		$users = array();
-		while ($user = $dbr->fetchRow($res)) {
-			$users[] = $user[0];
-		}
-		$vars[$prefix."_RECENT_CONTRIBUTORS"] = implode(',', $users);
-		
+		$vars->setLazyLoadVar( "{$prefix}_recent_contributors", 'load-recent-authors',
+				array(
+					'cutoff' => wfTimestampNow(),
+					'title' => $title->getText(),
+					'namespace' => $title->getNamespace()
+				) );
+				
 		return $vars;
 	}
 	
@@ -446,7 +446,7 @@ class AbuseFilter {
 			'afl_title' => $title->getDBKey(),
 			'afl_ip' => wfGetIp() );
 
-		self::addLogEntries( $actions_taken, $log_template, $vars['ACTION'] );
+		self::addLogEntries( $actions_taken, $log_template, $vars->getVar( 'ACTION' )->toString() );
 
 		$error_msg = $error_msg == '' ? true : $error_msg;
 		
@@ -632,7 +632,8 @@ class AbuseFilter {
 				global $wgUser;
 
 				$actionID = implode( '-', array(
-						$title->getPrefixedText(), $wgUser->getName(), $vars['ACTION']
+						$title->getPrefixedText(), $wgUser->getName(),
+							$vars->getVar( 'ACTION' )->toString()
 					) );
 
 				AbuseFilter::$tagsToSet[$actionID] = $parameters;
@@ -1000,40 +1001,41 @@ class AbuseFilter {
 	}
 
 	public static function getEditVarsFromRCRow( $row ) {
-		$vars = array();
+		$vars = new AbuseFilterVariableHolder;
 		$title = Title::makeTitle( $row->rc_namespace, $row->rc_title );
 		
 		if ($row->rc_user) 
-			$user = User::newFromId( $row->rc_user );
+			$user = User::newFromName( $row->rc_user_text );
 		else {
 			$user = new User;
 			$user->setName( $row->rc_user_text );
 		}
 		
-		$vars = array_merge( $vars, self::generateUserVars( $user ) );
+		$vars->addHolder( self::generateUserVars( $user ) );
 		
-		$vars = array_merge( $vars, self::generateTitleVars( $title, 'ARTICLE' ) );
-		$vars['ACTION'] = 'edit';
-		$vars['SUMMARY'] = $row->rc_comment;
+		$vars->addHolder( self::generateTitleVars( $title, 'ARTICLE' ) );
+		$vars->setVar( 'ACTION', 'edit' );
+		$vars->setVar( 'SUMMARY', $row->rc_comment );
 
-		$newRev = Revision::newFromId( $row->rc_this_oldid );
-		$new_text = $newRev->getText();
+		
+		$vars->setLazyLoadVar( 'new_wikitext', 'revision-text-by-id',
+			array( 'revid' => $row->rc_this_oldid ) );
 
 		if ($row->rc_last_oldid) {
-			$oldRev = Revision::newFromId( $row->rc_last_oldid );
-			$old_text = $oldRev->getText();
+			$vars->setLazyLoadVar( 'old_wikitext', 'revision-text-by-id',
+				array( 'revid' => $row->rc_last_oldid ) );
 		} else {
-			$old_text = '';
+			$vars->setVar( 'old_wikitext', '' );
 		}
 
-		$vars = array_merge( $vars, self::getEditVars( 
-			$title, $old_text, $new_text, null, $row->rc_this_oldid, $row->rc_last_oldid ) );
+		$vars->addHolder( self::getEditVars( 
+			$title, $row->rc_this_oldid, $row->rc_last_oldid ) );
 
 		return $vars;
 	}
 
 	public static function getMoveVarsFromRCRow( $row ) {
-		$vars = array();
+		$vars = new AbuseFilterVariableHolder;
 		
 		if ($row->rc_user) 
 			$user = User::newFromId( $row->rc_user );
@@ -1045,76 +1047,81 @@ class AbuseFilter {
 		$oldTitle = Title::makeTitle( $row->rc_namespace, $row->rc_title );
 		$newTitle = Title::newFromText( trim($row->rc_params) );
 		
-		$vars = array_merge( $vars, AbuseFilter::generateUserVars( $user ),
+		$vars = AbuseFilterVariableHolder::merge(
+			$vars,
+			AbuseFilter::generateUserVars( $user ),
 			AbuseFilter::generateTitleVars( $oldTitle, 'MOVED_FROM' ),
-			AbuseFilter::generateTitleVars( $newTitle, 'MOVED_TO' ) );
+			AbuseFilter::generateTitleVars( $newTitle, 'MOVED_TO' )
+		);
 
-		$vars['SUMMARY'] = $row->rc_comment;
-		$vars['ACTION'] = 'move';
+		$vars->setVar( 'SUMMARY', $row->rc_comment );
+		$vars->setVar( 'ACTION', 'move' );
 
 		return $vars;
 	}
 
-	public static function getEditVars( $title, $old_text, $new_text, $oldLinks = null, 
-		$revid=null, $oldid=null ) 
+	public static function getEditVars( $title ) 
 	{
-		$vars = array();
+		$vars = new AbuseFilterVariableHolder;
 		$article = new Article( $title );
 
-		$vars['EDIT_DELTA'] = strlen($new_text) - strlen($old_text);
-		$vars['OLD_SIZE'] = strlen($old_text);
-		$diff = wfDiff( $old_text, $new_text );
-		$diff = trim( str_replace( '\No newline at end of file', '', $diff ) );
-		$vars['EDIT_DIFF'] = $diff;
-		$vars['NEW_SIZE'] = strlen($new_text);
-
-		$vars['OLD_WIKITEXT'] = $old_text;
-		$vars['NEW_WIKITEXT'] = $new_text;
+		$vars->setLazyLoadVar( 'edit_diff', 'diff',
+			array( 'oldtext-var' => 'old_text', 'newtext-var' => 'new_text' ) );
+		$vars->setLazyLoadVar( 'new_size', 'length', array( 'length-var' => 'new_wikitext' ) );
+		$vars->setLazyLoadVar( 'old_size', 'length', array( 'length-var' => 'old_wikitext' ) );
+		$vars->setLazyLoadVar( 'edit_delta', 'subtract',
+			array( 'val1-var' => 'new_size', 'val2-var' => 'old_size' ) );
 
 		// Some more specific/useful details about the changes.
-		$diff_lines = explode( "\n", $diff );
-		$added_lines = array();
-		$removed_lines = array();
-		foreach( $diff_lines as $line ) {
-			if (strpos( $line, '-' )===0) {
-				$removed_lines[] = substr($line,1);
-			} elseif (strpos( $line, '+' )===0) {
-				$added_lines[] = substr($line,1);
-			}
-		}
-		$vars['ADDED_LINES'] = implode( "\n", $added_lines );
-		$vars['REMOVED_LINES'] = implode( "\n", $removed_lines );
+		$vars->setLazyLoadVar( 'added_lines', 'diff-split',
+			array( 'diff-var' => 'edit_diff', 'line-prefix' => '+' ) );
+		$vars->setLazyLoadVar( 'removed_lines', 'diff-split',
+			array( 'diff-var' => 'edit_diff', 'line-prefix' => '-' ) );
 
-		if ($oldLinks === null && $oldid) {
-			$oldInfo = $article->prepareTextForEdit( $old_text, $oldid );
-			$oldLinks = $oldInfo->output->getExternalLinks();
-		} elseif ($oldLinks === null) {
-			$oldLinks = array();
-		}
-
-		// Added links...
-		$editInfo = $article->prepareTextForEdit( $new_text, $revid );
-		$newLinks = array_keys( $editInfo->output->getExternalLinks() );
-		$vars['ALL_LINKS'] = implode( "\n", $newLinks );
-		$vars['ADDED_LINKS'] = implode( "\n", 
-			array_diff( $newLinks, array_intersect( $newLinks, $oldLinks ) ) );
-		$vars['REMOVED_LINKS'] = implode( "\n", 
-			array_diff( $oldLinks, array_intersect( $newLinks, $oldLinks ) ) );
-
-		// Pull other useful stuff from $editInfo.
-		$newHTML = $editInfo->output->getText();
-
-		// Kill the PP limit comments. Ideally we'd just remove these by not setting the 
-		// parser option, but then we can't share a parse operation with the edit, which is bad.
-		$newHTML = preg_replace( '/<!--\s*NewPP limit report[^>]*-->\s*$/si', '', $newHTML );
-		$vars['NEW_HTML'] = $newHTML;
-		
-		$newText = $vars['NEW_TEXT'] = preg_replace( '/<[^>]+>/', '', $newHTML );
+		// Links
+		$vars->setLazyLoadVar( 'all_links', 'links-from-wikitext',
+			array(
+				'namespace' => $title->getNamespace(),
+				'title' => $title->getText(),
+				'text-var' => 'new_wikitext'
+			) );
+		$vars->setLazyLoadVar( 'old_links', 'links-from-wikitext-nonedit',
+			array(
+				'namespace' => $title->getNamespace(),
+				'title' => $title->getText(),
+				'text-var' => 'old_wikitext'
+			) );
+		$vars->setLazyLoadVar( 'added_links', 'link-diff-added',
+			array( 'oldlink-var' => 'old_links', 'newlink-var' => 'all_links' ) );
+		$vars->setLazyLoadVar( 'removed_links', 'link-diff-removed',
+			array( 'oldlink-var' => 'old_links', 'newlink-var' => 'all_links' ) );
+			
+		$vars->setLazyLoadVar( 'new_html', 'parse-wikitext',
+			array( 
+				'namespace' => $title->getNamespace(),
+				'title' => $title->getText(),
+				'wikitext-var' => 'new_wikitext'
+			) );
+		$vars->setLazyLoadVar( 'new_text', 'strip-html',
+			array( 'html-var' => 'new_html' ) );
+		$vars->setLazyLoadVar( 'old_html', 'parse-wikitext-nonedit',
+			array(  
+				'namespace' => $title->getNamespace(),
+				'title' => $title->getText(),
+				'wikitext-var' => 'old_wikitext'
+			) );
+		$vars->setLazyLoadVar( 'old_text', 'strip-html',
+			array( 'html-var' => 'old_html' ) );
 
 		return $vars;
 	}
 
 	public static function buildVarDumpTable( $vars ) {
+		// Export all values
+		
+		if ($vars instanceof AbuseFilterVariableHolder )
+			$vars = $vars->exportAllVars();
+		
 		$output = '';
 
 		// I don't want to change the names of the pre-existing messages

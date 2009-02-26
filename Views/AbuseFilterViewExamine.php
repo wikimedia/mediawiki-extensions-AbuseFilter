@@ -126,7 +126,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		}
 
 		$vars = unserialize( $row->afl_var_dump );
-
+		
 		$this->showExaminer( $vars );
 	}
 

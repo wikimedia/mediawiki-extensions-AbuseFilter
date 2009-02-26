@@ -9,22 +9,26 @@ class AbuseFilterHooks {
 
 	public static function onEditFilter($editor, $text, $section, &$error, $summary) {
 		// Load vars
-		$vars = array();
+		$vars = new AbuseFilterVariableHolder;
 		
 		global $wgUser;
-		$vars = array_merge( $vars, AbuseFilter::generateUserVars( $wgUser ) );
-		$vars = array_merge( $vars, AbuseFilter::generateTitleVars( $editor->mTitle , 'ARTICLE' ));
-		$vars['ACTION'] = 'edit';
-		$vars['SUMMARY'] = $summary;
+		$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
+		$vars->addHolder( AbuseFilter::generateTitleVars( $editor->mTitle , 'ARTICLE' ) );
+		$vars->setVar( 'ACTION', 'edit' );
+		$vars->setVar( 'SUMMARY', $summary );
 		
-		$old_text = $editor->getBaseRevision() ? $editor->getBaseRevision()->getText() : '';
-		$new_text = $editor->textbox1;
-		$oldLinks = self::getOldLinks( $editor->mTitle );
+		$vars->setLazyLoadVar( 'old_wikitext', 'revision-text-by-timestamp',
+			array(
+					'timestamp' => $editor->edittime,
+					'namespace' => $editor->mTitle->getNamespace(),
+					'title' => $editor->mTitle->getText(),
+				) );
+				
+		$vars->setVar( 'new_wikitext', $editor->textbox1 );
 
-		$vars = array_merge( $vars, 
-			AbuseFilter::getEditVars( $editor->mTitle, $old_text, $new_text, $oldLinks ) );
+		$vars->addHolder( AbuseFilter::getEditVars( $editor->mTitle ) );
 
-		$filter_result = AbuseFilter::filterAction( $vars, $editor->mTitle, $oldLinks );
+		$filter_result = AbuseFilter::filterAction( $vars, $editor->mTitle );
 
 		if( $filter_result !== true ){
 			global $wgOut;
@@ -33,22 +37,6 @@ class AbuseFilterHooks {
 			return false;
 		}
 		return true;
-	}
-	
-	/**
-	 * Load external links from the externallinks table
-	 * Stolen from ConfirmEdit
-	 */
-	static function getOldLinks( $title ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		$id = $title->getArticleId(); // should be zero queries
-		$res = $dbr->select( 'externallinks', array( 'el_to' ), 
-			array( 'el_from' => $id ), __METHOD__ );
-		$links = array();
-		while ( $row = $dbr->fetchObject( $res ) ) {
-			$links[] = $row->el_to;
-		}
-		return $links;
 	}
 	
 	public static function onGetAutoPromoteGroups( $user, &$promote ) {
@@ -64,14 +52,16 @@ class AbuseFilterHooks {
 	}
 	
 	public static function onAbortMove( $oldTitle, $newTitle, $user, &$error, $reason ) {
-		$vars = array();
+		$vars = new AbuseFilterVariableHolder;
 		
 		global $wgUser;
-		$vars = array_merge( $vars, AbuseFilter::generateUserVars( $wgUser ),
-					AbuseFilter::generateTitleVars( $oldTitle, 'MOVED_FROM' ),
-					AbuseFilter::generateTitleVars( $newTitle, 'MOVED_TO' ) );
-		$vars['SUMMARY'] = $reason;
-		$vars['ACTION'] = 'move';
+		$vars->addHolder( AbuseFilterVariableHolder::merge(
+							AbuseFilter::generateUserVars( $wgUser ),
+							AbuseFilter::generateTitleVars( $oldTitle, 'MOVED_FROM' ),
+							AbuseFilter::generateTitleVars( $newTitle, 'MOVED_TO' )
+				) );
+		$vars->setVar( 'SUMMARY', $reason );
+		$vars->setVar( 'ACTION', 'move' );
 		
 		$filter_result = AbuseFilter::filterAction( $vars, $oldTitle );
 		
@@ -81,13 +71,13 @@ class AbuseFilterHooks {
 	}
 	
 	public static function onArticleDelete( &$article, &$user, &$reason, &$error ) {
-		$vars = array();
+		$vars = new AbuseFilterVariableHolder;
 		
 		global $wgUser;
-		$vars = array_merge( $vars, AbuseFilter::generateUserVars( $wgUser ),
-					AbuseFilter::generateTitleVars( $article->mTitle, 'ARTICLE' ) );
-		$vars['SUMMARY'] = $reason;
-		$vars['ACTION'] = 'delete';
+		$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
+		$vars->addHolder( AbuseFilter::generateTitleVars( $article->mTitle, 'ARTICLE' ) );
+		$vars->setVar( 'SUMMARY', $reason );
+		$vars->setVar( 'ACTION', 'delete' );
 		
 		$filter_result = AbuseFilter::filterAction( $vars, $article->mTitle );
 		
@@ -104,29 +94,13 @@ class AbuseFilterHooks {
 		}
 		$vars = array();
 		
-		$vars['ACTION'] = 'createaccount';
-		$vars['ACCOUNTNAME'] = $vars['USER_NAME'] = $user->getName();
+		$vars->setVar( 'ACTION', 'createaccount' );
+		$vars->setVar( 'ACCOUNTNAME', $user->getName() );
 		
 		$filter_result = AbuseFilter::filterAction( 
 			$vars, SpecialPage::getTitleFor( 'Userlogin' ) );
 		
 		$message = $filter_result;
-		
-		return $filter_result == '' || $filter_result === true;
-	}
-	
-	public static function onAbortDeleteQueueNominate( $user, $article, $queue, $reason, &$error ) {
-		$vars = array();
-		
-		$vars = array_merge( $vars, 
-			AbuseFilter::generateUserVars( $user ), 
-			AbuseFilter::generateTitleVars( $article->mTitle, 'ARTICLE' ) );
-		$vars['SUMMARY'] = $reason;
-		$vars['ACTION'] = 'delnom';
-		$vars['QUEUE'] = $queue;
-		
-		$filter_result = AbuseFilter::filterAction( $vars, $article->mTitle );
-		$error = $filter_result;
 		
 		return $filter_result == '' || $filter_result === true;
 	}

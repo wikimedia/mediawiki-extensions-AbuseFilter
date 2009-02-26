@@ -264,7 +264,10 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Last ten users to contribute to the page',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Edit protection level of the page',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Move protection level of the page',
-
+	'abusefilter-edit-builder-vars-old-text-stripped' => 'Old page text, stripped of any markup',
+	'abusefilter-edit-builder-vars-old-links' => 'Links in the article, before the edit',
+	'abusefilter-edit-builder-vars-old-html' => 'Old page wikitext, parsed into HTML',
+	
 	// Filter history
 	'abusefilter-filter-log' => 'Recent filter changes',
 	'abusefilter-history' => 'Change history for Abuse Filter #$1',
