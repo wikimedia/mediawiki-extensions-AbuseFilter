@@ -214,7 +214,6 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-edit-builder-op-bool-or' => 'Or (|)',
 	'abusefilter-edit-builder-op-bool-xor' => 'XOR (^)',
 	'abusefilter-edit-builder-group-misc' => 'Miscellaneous',
-	'abusefilter-edit-builder-misc-ternary' => 'Ternary operator (1 ? 2 : 3)',
 	'abusefilter-edit-builder-misc-in' => 'contained in string (in)',
 	'abusefilter-edit-builder-misc-like' => 'Matches pattern (like)',
 	'abusefilter-edit-builder-misc-rlike' => 'Matches regex (rlike)',
