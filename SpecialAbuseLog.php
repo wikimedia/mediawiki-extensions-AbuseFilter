@@ -195,8 +195,8 @@ class SpecialAbuseLog extends SpecialPage {
 		
 		$description = '';
 		
-		$timestamp = $wgLang->timeanddate( $row->afl_timestamp );
-		
+		$timestamp = $wgLang->timeanddate( $row->afl_timestamp, true );
+
 		$actions_taken = $row->afl_actions;
 		if ( !strlen( trim( $actions_taken) ) ) {
 			$actions_taken = wfMsg( 'abusefilter-log-noactions' );
@@ -227,7 +227,7 @@ class SpecialAbuseLog extends SpecialPage {
 			$description = wfMsgExt( 'abusefilter-log-detailedentry', 
 				array( 'parseinline', 'replaceafter' ),
 				array( 
-					$timestamp, 
+					$wgLang->timeanddate( wfTimestamp(TS_MW, $row->log_timestamp), true ), 
 					$user, 
 					$row->afl_filter, 
 					$row->afl_action, 

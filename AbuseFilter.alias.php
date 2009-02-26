@@ -38,8 +38,8 @@ $aliases['bs'] = array(
 
 /** German (Deutsch) */
 $aliases['de'] = array(
-	'AbuseLog' => array( 'Missbrauchsfilter-Logbuch' ),
-	'AbuseFilter' => array( 'Missbrauchsfilter' ),
+	'AbuseLog' => array( 'Missbrauchsfilter-Logbuch', 'Missbrauchfilter-Logbuch' ),
+	'AbuseFilter' => array( 'Missbrauchsfilter', 'Missbrauchfilter' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
