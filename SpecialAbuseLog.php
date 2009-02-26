@@ -227,7 +227,7 @@ class SpecialAbuseLog extends SpecialPage {
 			$description = wfMsgExt( 'abusefilter-log-detailedentry', 
 				array( 'parseinline', 'replaceafter' ),
 				array( 
-					$wgLang->timeanddate( wfTimestamp(TS_MW, $row->log_timestamp), true ), 
+					$timestamp, 
 					$user, 
 					$row->afl_filter, 
 					$row->afl_action, 
