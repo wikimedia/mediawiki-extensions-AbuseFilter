@@ -58,6 +58,14 @@ Rule description: $1',
 	'right-abusefilter-modify-restricted' => 'Modify abuse filters with restricted actions',
 	'right-abusefilter-revert' => 'Revert all changes by a given abuse filter',
 
+	'action-abusefilter-modify' => 'modify abuse filters',
+	'action-abusefilter-view' => 'view abuse filters',
+	'action-abusefilter-log' => 'view the abuse log',
+	'action-abusefilter-log-detail' => 'view detailed abuse log entries',
+	'action-abusefilter-private' => 'view private data in the abuse log',
+	'action-abusefilter-modify-restricted' => 'modify abuse filters with restricted actions',
+	'action-abusefilter-revert' => 'revert all changes by a given abuse filter',
+
 	// Abuse Log
 	'abusefilter-log' => 'Abuse filter log',
 	'abusefilter-log-search' => 'Search the abuse log',
