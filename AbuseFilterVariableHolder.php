@@ -229,7 +229,16 @@ class AFComputedVariable {
 			case 'simple-user-accessor':
 				$user = $parameters['user'];
 				$method = $parameters['method'];
+				
+				if (!$user) {
+					throw new MWException( "No user parameter given." );
+				}
+				
 				$obj = self::userObjectFromName( $user );
+				
+				if (!$obj) {
+					throw new MWException( "Invalid username $user" );
+				}
 				
 				$result = call_user_func( array($obj, $method) );
 				break;
