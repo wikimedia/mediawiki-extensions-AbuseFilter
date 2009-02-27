@@ -68,7 +68,7 @@ Rule description: $1',
 
 	// Abuse Log
 	'abusefilter-log' => 'Abuse filter log',
-	'abusefilter-log-summary' => 'This log shows a list of all actions catched by the filters.',
+	'abusefilter-log-summary' => 'This log shows a list of all actions caught by the filters.',
 	'abusefilter-log-search' => 'Search the abuse log',
 	'abusefilter-log-search-user' => 'User:',
 	'abusefilter-log-search-filter' => 'Filter ID:',
