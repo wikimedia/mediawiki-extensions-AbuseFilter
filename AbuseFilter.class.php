@@ -435,12 +435,15 @@ class AbuseFilter {
 
 		list( $actions_taken, $error_msg ) = self::executeFilterActions(
 			array_keys( array_filter( $filter_matched ) ), $title, $vars );
+			
+		$var_dump = self::storeVarDump( $vars );
+		$var_dump = "stored-text:$var_dump"; // To distinguish from stuff stored directly
 
 		// Create a template
 		$log_template = array(
 			'afl_user' => $wgUser->getId(),
 			'afl_user_text' => $wgUser->getName(),
-			'afl_var_dump' => serialize( $vars ),
+			'afl_var_dump' => $var_dump,
 			'afl_timestamp' => $dbr->timestamp(wfTimestampNow()),
 			'afl_namespace' => $title->getNamespace(),
 			'afl_title' => $title->getDBKey(),
@@ -491,6 +494,93 @@ class AbuseFilter {
 		// Check for emergency disabling.
 		$total = $wgMemc->get( AbuseFilter::filterUsedKey() );
 		self::checkEmergencyDisable( $logged_filters, $total );
+	}
+	
+	/** Store a var dump to External Storage or the text table
+	  * Some of this code is stolen from Revision::insertOn and friends */
+	public static function storeVarDump( $vars ) {
+  		wfProfileIn( __METHOD__ );
+  		
+  		if ( is_array( $vars ) || is_object( $vars ) )
+ 	  		$text = serialize( $vars );
+ 	  	else $text = $vars;
+ 	  	
+		$flags = array();
+		
+		if (function_exists( 'gzdeflate' )) {
+			$text = gzdeflate( $text );
+			$flags[] = 'gzip';
+		}
+		
+		// Store to ES if applicable
+		global $wgDefaultExternalStore;
+		if ($wgDefaultExternalStore) {
+			$text = ExternalStore::insertToDefault( $text );
+			$flags[] = 'external';
+			
+			if (!$text)
+				// Not mission-critical, just return nothing
+				return null;
+		}
+		
+		// Store to text table
+		$dbw = wfGetDB( DB_MASTER );
+		$old_id = $dbw->nextSequenceValue( 'text_old_id_val' );
+		$dbw->insert( 'text',
+			array(
+				'old_id'    => $old_id,
+				'old_text'  => $text,
+				'old_flags' => implode( ',', $flags ),
+			), __METHOD__
+		);
+		$text_id = $dbw->insertId();
+		wfProfileOut( __METHOD__ );
+		
+		return $text_id;
+	}
+	
+	/** Retrieve a var dump from External Storage or the text table
+	    Some of this code is stolen from Revision::loadText et al */
+	public static function loadVarDump( $stored_dump ) {
+		wfProfileIn( __METHOD__ );
+		
+		// Back-compat
+		if ( strpos( $stored_dump, 'stored-text:' ) === false ) {
+			wfProfileOut( __METHOD__ );
+			return unserialize( $stored_dump );
+		}
+		
+		$text_id = substr( $stored_dump, strlen( 'stored-text:' ) );
+		
+		$dbr = wfGetDB( DB_SLAVE );
+		
+		$text_row = $dbr->selectRow(
+						'text',
+						array( 'old_text', 'old_flags' ),
+						array( 'old_id' => $text_id ),
+						__METHOD__
+					);
+					
+		if (!$text_row) {
+			wfProfileOut( __METHOD__ );
+			return new AbuseFilterVariableHolder;
+		}
+		
+		$flags = explode( ',', $text_row->old_flags );
+		$text = $text_row->old_text;
+		
+		if ( in_array( 'external', $flags ) ) {
+			$text = ExternalStore::fetchFromURL( $text );
+		}
+		
+		if ( in_array( 'gzip', $flags ) ) {
+			$text = gzinflate( $text );
+		}
+		
+		$obj = unserialize( $text );
+		
+		wfProfileOut( __METHOD__ );
+		return $obj;
 	}
 	
 	public static function takeConsequenceAction( $action, $parameters, $title,

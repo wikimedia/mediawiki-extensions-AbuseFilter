@@ -140,7 +140,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 					'actions' => $currentReversibleActions, 
 					'user' => $row->afl_user_text, 
 					'userid' => $row->afl_user, 
-					'vars' => unserialize( $row->afl_var_dump ), 
+					'vars' => AbuseFilter::loadVarDump( $row->afl_var_dump ), 
 					'title' => Title::makeTitle( $row->afl_namespace, $row->afl_title ), 
 					'action' => $row->afl_action, 
 					'timestamp' => $row->afl_timestamp 

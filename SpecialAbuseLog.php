@@ -126,7 +126,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$output .= Xml::element( 'h3', null, wfMsg( 'abusefilter-log-details-vars' ) );
 		
 		// Build a table.
-		$vars = unserialize( $row->afl_var_dump );
+		$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
 		
 		$output .= AbuseFilter::buildVarDumpTable( $vars );
 		
