@@ -13,6 +13,7 @@ class SpecialAbuseLog extends SpecialPage {
 		global $wgUser,$wgOut,$wgRequest, $wgAbuseFilterStyleVersion;
 
 		$this->setHeaders();
+		$this->outputHeader( 'abusefilter-log-summary' );
 		$this->loadParameters();
 
 		$wgOut->setPageTitle( wfMsg( 'abusefilter-log' ) );
