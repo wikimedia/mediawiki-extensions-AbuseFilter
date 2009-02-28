@@ -11,6 +11,11 @@ class AbuseFilterHooks {
 		// Load vars
 		$vars = new AbuseFilterVariableHolder;
 		
+		// Cache article object so we can share a parse operation
+		$title = $editor->mTitle;
+		$articleCacheKey = $title->getNamespace().':'.$title->getText();
+		AFComputedVariable::$articleCache[$articleCacheKey] = $editor->mArticle;
+		
 		global $wgUser;
 		$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
 		$vars->addHolder( AbuseFilter::generateTitleVars( $editor->mTitle , 'ARTICLE' ) );

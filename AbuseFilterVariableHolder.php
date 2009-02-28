@@ -93,13 +93,21 @@ class AFComputedVariable {
 			return self::$userCache[$username];
 			
 		wfDebug( "Couldn't find user $username in cache\n" );
-			
+		
+		if (IP::isIPAddress( $username )) {
+			$u = new User;
+			$u->setName( $username );
+			return self::$userCache[$username] = $u;
+		}
+		
 		return self::$userCache[$username] = User::newFromName( $username );
 	}
 	
 	static function articleFromTitle( $namespace, $title ) {
 		if ( isset( self::$articleCache["$namespace:$title"] ) )
 			return self::$articleCache["$namespace:$title"];
+			
+		wfDebug( "Creating article object for $namespace:$title in cache\n" );
 		
 		$t = Title::makeTitle( $namespace, $title );
 		self::$articleCache["$namespace:$title"] = new Article( $t );
