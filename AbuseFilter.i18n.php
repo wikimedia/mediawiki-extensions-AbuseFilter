@@ -378,6 +378,7 @@ To load an existing filter, type its filter ID into the box below the edit textb
  * @author EugeneZelenko
  * @author Fryed-peach
  * @author Jon Harald Søby
+ * @author McDutchie
  * @author Meno25
  * @author Mormegil
  * @author Purodha
@@ -391,14 +392,22 @@ $messages['qqq'] = array(
 
 * <code>$1</code> – short description of the abuse filter rule which triggered this action',
 	'abusefilter-degroupreason' => 'Reason of removal of the user from all privileged groups performed by Abuse filter.',
-	'right-abusefilter-modify' => '{{doc-right}}',
-	'right-abusefilter-view' => '{{doc-right}}',
-	'right-abusefilter-log' => '{{doc-right}}',
-	'right-abusefilter-log-detail' => '{{doc-right}}',
-	'right-abusefilter-private' => '{{doc-right}}',
-	'right-abusefilter-modify-restricted' => '{{doc-right}}',
+	'right-abusefilter-modify' => '{{doc-right|abusefilter-modify}}',
+	'right-abusefilter-view' => '{{doc-right|abusefilter-view}}',
+	'right-abusefilter-log' => '{{doc-right|abusefilter-log}}',
+	'right-abusefilter-log-detail' => '{{doc-right|abusefilter-log-detail}}',
+	'right-abusefilter-private' => '{{doc-right|abusefilter-private}}',
+	'right-abusefilter-modify-restricted' => '{{doc-right|abusefilter-modify-restricted}}',
 	'right-abusefilter-revert' => '{{doc-right|abusefilter-revert}}',
+	'action-abusefilter-modify' => '{{Doc-action|abusefilter-modify}}',
+	'action-abusefilter-view' => '{{Doc-action|abusefilter-view}}',
+	'action-abusefilter-log' => '{{Doc-action|abusefilter-log}}',
+	'action-abusefilter-log-detail' => '{{Doc-action|abusefilter-log-detail}}',
+	'action-abusefilter-private' => '{{Doc-action|abusefilter-private}}',
+	'action-abusefilter-modify-restricted' => '{{Doc-action|abusefilter-modify-restricted}}',
+	'action-abusefilter-revert' => '{{Doc-action|abusefilter-revert}}',
 	'abusefilter-log' => 'Caption of [[Special:AbuseLog]]',
+	'abusefilter-log-summary' => 'This message is displayed at the top of the log overview page for extension AbuseFilter.',
 	'abusefilter-log-search' => 'Caption of a fieldset for filter definition on [[Special:AbuseLog]]',
 	'abusefilter-log-search-user' => '{{Identical|User}}',
 	'abusefilter-log-search-filter' => '{{Identical|Filter ID}}',
@@ -443,7 +452,7 @@ $messages['qqq'] = array(
 	'abusefilter-status' => 'Status information displayed on top of [[Special:AbuseFilter]].
 
 * <tt>$1</tt> – number of recent actions
-* <tt>$2</tt> – number of filter runs that reached the limit of $4 conditions (and have had to be terminated)
+* <tt>$2</tt> – number of filter runs that reached the limit of $4 conditions (and have had to be terminated)
 * <tt>$3</tt> – percentage: $2 / $1 * 100
 * <tt>$4</tt> – maximum number of conditions allowed
 * <tt>$5</tt> – number of matched actions
@@ -455,7 +464,6 @@ $messages['qqq'] = array(
 * $1 is a time and date
 * $2 is a link to a user page with a user name as link text',
 	'abusefilter-edit-history' => '{{Identical|History}}',
-	'abusefilter-edit-builder-misc-ternary' => "A ternary operator (sometimes incorrectly called a tertiary operator)[1] is an operator that takes three arguments. '''(1 ? 2 : 3)''' should remain untranslated.",
 	'abusefilter-edit-builder-misc-in' => 'Do not translate "(in)"',
 	'abusefilter-edit-builder-misc-like' => 'Do not translate "(like)"',
 	'abusefilter-edit-builder-misc-rlike' => '{{doc-important|Do not translate "rlike"}}',
@@ -796,6 +804,9 @@ $messages['ar'] = array(
 	'abusefilter-edit-builder-vars-new-html' => 'مصدر HTML المعروض للمراجعة الجديدة',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'مستوى حماية التعديل للصفحة',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'مستوى حماية النقل للصفحة',
+	'abusefilter-edit-builder-vars-old-text-stripped' => 'نص الصفحة القديم، منزوع منه أي تهيئة',
+	'abusefilter-edit-builder-vars-old-links' => 'الوصلات في الصفحة، قبل التعديل',
+	'abusefilter-edit-builder-vars-old-html' => 'نص ويكي الصفحة القديم، محلل إلى HTML',
 	'abusefilter-filter-log' => 'تغييرات المرشح الأخيرة',
 	'abusefilter-history' => 'غير التاريخ لمرشح الإساءة #$1',
 	'abusefilter-history-foruser' => 'تغييرات من قبل $1',
@@ -1193,7 +1204,15 @@ $messages['be-tarask'] = array(
 	'right-abusefilter-private' => 'Паказаць прыватныя зьвесткі ў журнале злоўжываньняў',
 	'right-abusefilter-modify-restricted' => 'зьмена фільтраў злоўжываньняў з абмежавальнымі дзеяньнямі',
 	'right-abusefilter-revert' => 'адкат усіх зьменаў, зробленых фільтрам злоўжываньняў',
+	'action-abusefilter-modify' => 'зьмяніць фільтры злоўжываньняў',
+	'action-abusefilter-view' => 'паказаць фільтры злоўжываньняў',
+	'action-abusefilter-log' => 'паказаць журнал злоўжываньняў',
+	'action-abusefilter-log-detail' => 'паказаць падрабязнасьці запісаў журналу злоўжываньняў',
+	'action-abusefilter-private' => 'паказаць прыватныя зьвесткі ў журнале злоўжываньняў',
+	'action-abusefilter-modify-restricted' => 'зьмяніць фільтры злоўжываньняў з абмежаванымі дзеяньнямі',
+	'action-abusefilter-revert' => 'адмяніць усе зьмены зробленыя пазначаным фільтрам злоўжываньняў',
 	'abusefilter-log' => 'Журнал фільтру злоўжываньняў',
+	'abusefilter-log-summary' => 'Гэты журнал паказвае сьпіс усіх дзеяньняў, якія былі выяўленыя фільтрамі.',
 	'abusefilter-log-search' => 'Пошук у журнале злоўжываньняў',
 	'abusefilter-log-search-user' => 'Удзельнік:',
 	'abusefilter-log-search-filter' => 'Ідэнтыфікатар фільтру:',
@@ -1388,6 +1407,9 @@ $messages['be-tarask'] = array(
 	'abusefilter-edit-builder-vars-new-html' => 'Разабраны HTML-код новай вэрсіі',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Узровень абароны старонкі ад рэдагаваньняў',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Узровень абароны старонкі ад пераносаў',
+	'abusefilter-edit-builder-vars-old-text-stripped' => 'Стары зьмест старонкі, пазбаўлены ад усіх пазнакаў',
+	'abusefilter-edit-builder-vars-old-links' => 'Спасылкі на старонцы перад рэдагаваньнем',
+	'abusefilter-edit-builder-vars-old-html' => 'Стары вікі-тэкст старонкі, пераўтвораны ў фармат HTML',
 	'abusefilter-filter-log' => 'Апошнія зьмены фільтру',
 	'abusefilter-history' => 'Гісторыя зьменаў фільтру злоўжываньняў $1',
 	'abusefilter-history-foruser' => 'Зьмены зробленыя $1',
@@ -1700,7 +1722,15 @@ Kratki opis prekršenih pravila koje se odnose na Vašu akciju je: $1',
 	'right-abusefilter-private' => 'Pogledaj privatne podatke u logu zloupotrebe.',
 	'right-abusefilter-modify-restricted' => 'Mijenjanje filtera zloupotrebe sa ograničenim akcijama',
 	'right-abusefilter-revert' => 'Vrati sve izmjene date od filtera zloupotreba',
+	'action-abusefilter-modify' => 'izmijeni filtere zloupotrebe',
+	'action-abusefilter-view' => 'pregledaj filtere zloupotrebe',
+	'action-abusefilter-log' => 'vidi zapisnik zloupotrebe',
+	'action-abusefilter-log-detail' => 'vidi detalje stavke zapisnika zloupotrebe',
+	'action-abusefilter-private' => 'vidi privatne podatke u zapisniku zloupotreba',
+	'action-abusefilter-modify-restricted' => 'izmijeni filtere zloupotrebe sa ograničenim akcijama',
+	'action-abusefilter-revert' => 'vrati sve izmjene po datom filteru zloupotrebe',
 	'abusefilter-log' => 'Log filtera zloupotrebe',
+	'abusefilter-log-summary' => 'Ovaj zapisnik prikazuje spisak svih akcija koje su zadržali filteri.',
 	'abusefilter-log-search' => 'Pretraži log zloupotrebe',
 	'abusefilter-log-search-user' => 'Korisnik:',
 	'abusefilter-log-search-filter' => 'Filtriraj ID:',
@@ -1890,6 +1920,9 @@ Zamolite korisnika sa dopuštenjima za dodavanje ograničenih akcija da napravi 
 	'abusefilter-edit-builder-vars-new-html' => 'Parsirani HTML izvor nove revizije',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Uredi nivo zaštite stranice',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Premjesti nivo zaštite stranice',
+	'abusefilter-edit-builder-vars-old-text-stripped' => 'Tekst sa stare stranice, uklonjene sve oznake',
+	'abusefilter-edit-builder-vars-old-links' => 'Linkovi na stranici, prije uređivanja',
+	'abusefilter-edit-builder-vars-old-html' => 'Wikitekst stare stranice, parsiran u HTML',
 	'abusefilter-filter-log' => 'Nedavne izmjene filtera',
 	'abusefilter-history' => 'Historija izmjena za Abuse Filter $1',
 	'abusefilter-history-foruser' => 'Izmjene od strane {{GENDER:$1|korisnika|korisnice}} $1',
@@ -2324,26 +2357,27 @@ $messages['de'] = array(
 	'abusefilter' => 'Missbrauchsfilter-Einstellungen',
 	'abuselog' => 'Missbrauchs-Logbuch',
 	'abusefilter-warning' => "<big>'''Achtung'''</big>: Diese Aktion wurde als potentiell unkonstruktiv erkannt.
-Solche Beiträge werden meist sehr schnell entfernt. In wiederholten und besonders schlimmen Fällen wird dein Account bzw. deine IP-Adresse gesperrt.
+Solche Beiträge werden meist sehr schnell entfernt. In wiederholten und besonders schlimmen Fällen wird dein Benutzerkonto bzw. deine IP-Adresse gesperrt.
 Wenn du denkst, dass deine Änderung konstruktiv war, kannst du sie jedoch mit einem erneuten Klick auf „{{int:savearticle}}“ bestätigen.
 Kurzbeschreibung der verletzten Regel: $1",
 	'abusefilter-disallowed' => 'Diese Aktion wurde automatisch als schädlich erkannt und deshalb nicht ausgeführt.
 Wenn du denkst, dass dein Beitrag konstruktiv war, wende dich bitte an einen Administrator und schildere ihm, was du versucht hast beizutragen.
 Kurzbeschreibung der verletzten Regel: $1',
 	'abusefilter-blocked-display' => 'Diese Aktion wurde automatisch als schädlich erkannt und nicht ausgeführt.
-Ferner wurden dein Benutzeraccount und alle zugehörigen IP-Adressen gesperrt.
+Ferner wurden dein Benutzerkonto und alle zugehörigen IP-Adressen gesperrt.
 Wenn du denkst, dass es sich hierbei um einen Fehler handelt, wende dich bitte an einen Administrator.
 Kurzbeschreibung der verletzten Regel: $1',
 	'abusefilter-degrouped' => 'Diese Aktion wurde als schädlich erkannt und nicht ausgeführt.
-Da es möglich ist, dass dein Benutzeraccount kompromittiert wurde, wurden dir alle gewährten Rechte genommen.
+Da es möglich ist, dass dein Benutzerkonto kompromittiert wurde, wurden dir alle gewährten Rechte genommen.
 Wenn du denkst, dass es sich hierbei um einen Fehler handelt, so wende dich bitte an einen Bürokraten und schildere ihm, was du gerade getan hast, damit deine Rechte wiederhergestellt werden können.
 Kurzbeschreibung der verletzten Regel: $1',
 	'abusefilter-autopromote-blocked' => 'Diese Aktion wurde als schädlich erkannt und nicht ausgeführt.
 Zusätzlich wurden dir als eine Sicherheitsmaßnahme einige automatisch vergebenen Rechte kurzzeitig genommen.
 Kurzbeschreibung der verletzten Regel: $1',
 	'abusefilter-blocker' => 'Missbrauchsfilter',
-	'abusefilter-blockreason' => 'Du wurdest vom Missbrauchsfilter automatisch gesperrt. Beschreibung der zutreffenden Regel: $1',
-	'abusefilter-degroupreason' => 'Deine Berechtigungen wurden vom Missbrauchsfilter automatisch beschränkt. Beschreibung der Regel: $1',
+	'abusefilter-blockreason' => 'Du wurdest durch einen Missbrauchsfilter automatisch gesperrt. Beschreibung der zutreffenden Regel: $1',
+	'abusefilter-degroupreason' => 'Deine Berechtigungen wurden durch einen Missbrauchsfilter automatisch beschränkt.
+Beschreibung der Regel: $1',
 	'abusefilter-accountreserved' => 'Dieser Benutzername ist für den Missbrauchsfilter reserviert.',
 	'right-abusefilter-modify' => 'Missbrauchsfilter bearbeiten',
 	'right-abusefilter-view' => 'Missbrauchsfilter ansehen',
@@ -2458,13 +2492,13 @@ Filterbeschreibung: $7 ($8) ($9)',
 :''(ohne MediaWiki-Präfix)''",
 	'abusefilter-edit-warn-actions' => 'Aktionen:',
 	'abusefilter-edit-warn-preview' => 'Vorschau der gewählten Systemnachricht',
-	'abusefilter-edit-warn-edit' => 'Erstelle/Bearbeite gewählte Systemnachricht',
+	'abusefilter-edit-warn-edit' => 'Gewählte Systemnachricht erstellen/bearbeiten',
 	'abusefilter-edit-tag-tag' => 'gültige Labels (eins pro Zeile):',
 	'abusefilter-edit-denied' => 'Du kannst die Details dieses Filters nicht einsehen, weil sie versteckt sind',
 	'abusefilter-edit-main' => 'Filterparameter',
 	'abusefilter-edit-done-subtitle' => 'Filter bearbeitet',
 	'abusefilter-edit-done' => 'Deine Änderungen am Filter $1 wurden erfolgreich gespeichert.',
-	'abusefilter-edit-badsyntax' => 'Der von die spezifizierte Filter enthält einen Syntaxfehler. Die Parserausgabe lautete: <pre>$1</pre>',
+	'abusefilter-edit-badsyntax' => 'Der von dir spezifizierte Filter enthält einen Syntaxfehler. Die Parserausgabe lautete: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Du kannst diesen Filter nicht bearbeiten, weil er eine oder mehrere verbotene Aktionen enthält.
 Bitte einen Benutzer, der verbotene Aktionen hinzufügen kann, darum, die Änderung für dich vorzunehmen.',
 	'abusefilter-edit-viewhistory' => 'Versionsgeschichte des Filters ansehen',
@@ -2543,6 +2577,9 @@ Bitte einen Benutzer, der verbotene Aktionen hinzufügen kann, darum, die Änder
 	'abusefilter-edit-builder-vars-new-html' => 'HTML-Quelltext der neuen Version',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Bearbeiten-Schutzstufe der Seite',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Verschieben-Schutzstufe der Seite',
+	'abusefilter-edit-builder-vars-old-text-stripped' => 'Alter Seitentext, von jeglicher Textauszeichnung befreit',
+	'abusefilter-edit-builder-vars-old-links' => 'Links der Seite, vor der Bearbeitung',
+	'abusefilter-edit-builder-vars-old-html' => 'HTML-Quelltext der alten Version',
 	'abusefilter-filter-log' => 'Missbrauchsfilter-Änderungen',
 	'abusefilter-history' => 'Versionsgeschichte für Missbrauchsfilter $1',
 	'abusefilter-history-foruser' => 'Änderungen von $1',
@@ -2630,6 +2667,32 @@ Um einen bestehenden Filter zu laden, gib seine Filter-ID in das Feld unterhalb 
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
+	'abusefilter-warning' => "<big>'''Achtung'''</big>: Diese Aktion wurde als potentiell unkonstruktiv erkannt.
+Solche Beiträge werden meist sehr schnell entfernt. In wiederholten und besonders schlimmen Fällen wird Ihr Benutzerkonto bzw. Ihre IP-Adresse gesperrt.
+Wenn Sie denken, dass Ihre Änderung konstruktiv war, können Sie sie jedoch mit einem erneuten Klick auf „{{int:savearticle}}“ bestätigen.
+Kurzbeschreibung der verletzten Regel: $1",
+	'abusefilter-disallowed' => 'Diese Aktion wurde automatisch als schädlich erkannt und deshalb nicht ausgeführt.
+Wenn Sie denken, dass Ihr Beitrag konstruktiv war, wenden Sie sich bitte an einen Administrator und schilderen ihm, was Sie versucht haben beizutragen.
+Kurzbeschreibung der verletzten Regel: $1',
+	'abusefilter-blocked-display' => 'Diese Aktion wurde automatisch als schädlich erkannt und nicht ausgeführt.
+Ferner wurden Ihr Benutzerkonto und alle Ihnen zugehörigen IP-Adressen gesperrt.
+Wenn Sie denken, dass es sich hierbei um einen Fehler handelt, wenden Sie sich bitte an einen Administrator.
+Kurzbeschreibung der verletzten Regel: $1',
+	'abusefilter-degrouped' => 'Diese Aktion wurde als schädlich erkannt und nicht ausgeführt.
+Da es möglich ist, dass Ihr Benutzerkonto kompromittiert wurde, wurden Ihnen alle gewährten Rechte genommen.
+Wenn Sie denken, dass es sich hierbei um einen Fehler handelt, so wenden Sie sich bitte an einen Bürokraten und schilderen ihm, was Sie gerade getan haben, damit Ihre Rechte wiederhergestellt werden können.
+Kurzbeschreibung der verletzten Regel: $1',
+	'abusefilter-autopromote-blocked' => 'Diese Aktion wurde als schädlich erkannt und nicht ausgeführt.
+Zusätzlich wurden Ihnen als eine Sicherheitsmaßnahme einige automatisch vergebenen Rechte kurzzeitig genommen.
+Kurzbeschreibung der verletzten Regel: $1',
+	'abusefilter-blockreason' => 'Sie wurden durch einen Missbrauchsfilter automatisch gesperrt. Beschreibung der zutreffenden Regel: $1',
+	'abusefilter-degroupreason' => 'Ihre Berechtigungen wurden durch einen Missbrauchsfilter automatisch beschränkt.
+Beschreibung der Regel: $1',
+	'abusefilter-reautoconfirm-notallowed' => 'Sie sind nicht berechtigt, Benutzer wieder zu bestätigten Benutzern zu machen.',
+	'abusefilter-edit-oldwarning' => '<strong>Sie bearbeiten nicht die aktuelle, sondern eine ältere Version dieses Filters. Die Statistik gilt nur für die letzte Version des Filters. Wenn Sie speichern, wird diese als aktuelle Version neu gespeichert. </strong> &bull; [[Special:AbuseFilter/history/$2|Zurück zur Versionsgeschichte des Filters]]',
+	'abusefilter-edit-denied' => 'Sie können die Details dieses Filters nicht einsehen, weil sie versteckt sind',
+	'abusefilter-edit-done' => 'Ihre Änderungen am Filter $1 wurden erfolgreich gespeichert.',
+	'abusefilter-edit-badsyntax' => 'Der von Ihnen spezifizierte Filter enthält einen Syntaxfehler. Die Parserausgabe lautete: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Sie können diesen Filter nicht bearbeiten, weil er eine oder mehrere verbotene Aktionen enthält.
 Bitten Sie einen Benutzer, der verbotene Aktionen hinzufügen kann, darum, die Änderung für Sie vorzunehmen.',
 	'abusefilter-revert-intro' => 'Mit diesem Formular können alle Änderungen durch den Missbrauchsfilter aufgrund von Filter $1 rückgängig gemacht werden.
@@ -2676,7 +2739,15 @@ Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpo
 	'right-abusefilter-private' => 'Priwatne daty w protokolu znjewužywanjow zwobrazniś',
 	'right-abusefilter-modify-restricted' => 'Znjewužywańske filtry z wobgranicowanymi akcijami změniś',
 	'right-abusefilter-revert' => 'Wše změny wót danego znjewužywańskego filtra anulěrowaś',
+	'action-abusefilter-modify' => 'znjewužywańske filtry změniś',
+	'action-abusefilter-view' => 'znjewužywańske filtry se woglědaś',
+	'action-abusefilter-log' => 'znjewužywański protokol se woglědaś',
+	'action-abusefilter-log-detail' => 'nadrobne zapiski znjewužywańskego protokola se woglědaś',
+	'action-abusefilter-private' => 'priwatne daty w znjewužywańskem protokolu se woglědaś',
+	'action-abusefilter-modify-restricted' => 'znjewužywańske filtry z wobgranicowanymi akcijami změniś',
+	'action-abusefilter-revert' => 'wše změny pśez dany znjewužywański filter pśewobrośiś',
 	'abusefilter-log' => 'Protokol filtrow znjewužywanja',
+	'abusefilter-log-summary' => 'Toś ten protkol pokazujo liscínu wšych pśez filtry pópadnjonych akcijow.',
 	'abusefilter-log-search' => 'Protokol znjewužywanjow pytaś',
 	'abusefilter-log-search-user' => 'Wužywaŕ:',
 	'abusefilter-log-search-filter' => 'ID filtra:',
@@ -3158,6 +3229,8 @@ Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1',
  * @author Crazymadlover
  * @author Dferg
  * @author Imre
+ * @author McDutchie
+ * @author PieRRoMaN
  * @author Remember the dot
  * @author Sanbec
  */
@@ -3165,15 +3238,42 @@ $messages['es'] = array(
 	'abusefilter-desc' => 'Aplicar automáticamente heuristicas para ediciones',
 	'abusefilter' => 'Abuso de configuración de filtro',
 	'abuselog' => 'Abuso de log',
-	'abusefilter-blocker' => 'Abuso de filtro',
+	'abusefilter-warning' => "<big>'''Atención'''</big>: Esta acción ha sido automáticamente identificada como dañina.
+Las ediciones no constructivas son rápidamente revertidas,
+la repetición de dichas acciones tendrá como consecuencia que su cuenta u ordenador sea bloqueado.
+Si cree que esta edición es constructiva, puede pulsar de nuevo el botón grabar para confirmarlo.
+Una breve explicación acerca de la regla del filtro antiabusos es: $1",
+	'abusefilter-disallowed' => 'Esta acción ha sido automáticamente identificada como dañina,
+y por tanto ha sido deshabilitada.
+Si cree que su edición es legítima, por favor, póngase en contacto con un administrador, e infórmele de lo que intentaba hacer.
+Una breve explicación acerca de por qué se ha deshabilitado la acción es: $1',
+	'abusefilter-blocked-display' => 'Esta acción ha sido automáticamente identificada como dañina y ha sido automáticamente detenida.
+Además, con el objeto de proteger {{SITENAME}}, su cuenta de usuario y todas sus direcciones IP asociadas han sido bloqueadas.
+Si la acción ha sido errónea, contacte con un administrador.
+Una breve explicación acerca de la regla del filtro antiabusos violada es: $1',
+	'abusefilter-degrouped' => 'Esta acción ha sido automáticamente identificada como dañina.
+En consecuencia, ha sido deshabilitada, y, sospechando que su cuenta está comprometida, todos sus privilegios han sido revocados.
+Si cree que esta acción es un error, por favor, contacte con un burócrata con una explicación de dicha acción y sus derechos serán restaurados.
+Una breve explicación acerca de la regla del filtro violada es: $1',
+	'abusefilter-autopromote-blocked' => 'Esta acción ha sido automáticamente identificada como dañina y por lo tanto ha sido deshabilitada.
+Además, como medida de seguridad, algunos derechos de usuarios entregados a cuentas activas y comprometidas con el proyecto han sido revocados temporalmente de su cuenta.
+Una breve explicación acerca de la regla del filtro antiabusos violada es: $1',
+	'abusefilter-blocker' => 'Filtro antiabusos',
+	'abusefilter-blockreason' => 'Bloqueado automáticamente por el filtro antiabusos. <br />
+Descripción de la regla: $1',
+	'abusefilter-degroupreason' => 'Derechos automáticamente revocados por el filtro antiabusos. <br />
+Descripción: $1',
 	'abusefilter-accountreserved' => 'El nombre de ésta cuenta está reservada para uso por filtro de abuso.',
-	'right-abusefilter-modify' => 'Modificar abuso de filtros',
-	'right-abusefilter-view' => 'Ver abuso de filtros',
+	'right-abusefilter-modify' => 'Modificar filtros de abuso',
+	'right-abusefilter-view' => 'Ver filtros de abuso',
 	'right-abusefilter-log' => 'Ver el log de abuso',
 	'right-abusefilter-log-detail' => 'Ver detalladamente el log de entradas de abuso',
 	'right-abusefilter-private' => 'Ver datos privados en el log de abuso',
 	'right-abusefilter-modify-restricted' => 'Modificar filtros de abuso con acciones restringidas',
 	'right-abusefilter-revert' => 'Revertir todos los cambios por un dador de filtros de abuso',
+	'action-abusefilter-modify' => 'modificar los filtros de abuso',
+	'action-abusefilter-view' => 'ver filtros de abuso',
+	'action-abusefilter-log' => 'ver registro de abusos',
 	'abusefilter-log' => 'Log de abusos de filtro',
 	'abusefilter-log-search' => 'Buscar abuso en el log',
 	'abusefilter-log-search-user' => 'Usuario:',
@@ -3259,7 +3359,7 @@ $messages['es'] = array(
 	'abusefilter-edit-warn-other' => 'Otro mensaje',
 	'abusefilter-edit-warn-other-label' => "Nombre de página de otro mensaje:
 :''(sin prefijo MediaWiki)''",
-	'abusefilter-edit-warn-actions' => 'Acciones',
+	'abusefilter-edit-warn-actions' => 'Acciones:',
 	'abusefilter-edit-warn-preview' => 'Previsualizar mensaje seleccionado',
 	'abusefilter-edit-warn-edit' => 'Crear/Editar mensaje seleccionado',
 	'abusefilter-edit-tag-tag' => 'Etiquetas a aplicar (uno por línea):',
@@ -3662,7 +3762,7 @@ Syy: $1',
 $messages['fr'] = array(
 	'abusefilter-desc' => 'Applique des heuristiques automatiques aux modifications',
 	'abusefilter' => 'Configuration du filtre antiabus',
-	'abuselog' => 'Journal antiabus',
+	'abuselog' => 'Journal des filtres antiabus',
 	'abusefilter-warning' => "<big>'''Avertissement'''</big> : cette action a été identifiée automatiquement comme nuisible.
 Les modifications non constructives seront rapidement annulées
 et les âneries répétées ou outrageantes provoqueront le blocage de votre compte ou l’inscription de votre ordinateur en liste noire.
@@ -4031,14 +4131,22 @@ Unha breve descrición da regra de abuso coa que a súa acción coincide é: $1'
 	'abusefilter-blockreason' => 'Bloqueado automaticamente polo filtro de abusos. Descrición da coincidencia da regra: $1',
 	'abusefilter-degroupreason' => 'Os dereitos foron retirados automaticamente polo filtro de abusos. Descrición da regra: $1',
 	'abusefilter-accountreserved' => 'Este nome de conta está reservado para ser usado polo filtro de abusos.',
-	'right-abusefilter-modify' => 'Modificar os filtros de abuso',
+	'right-abusefilter-modify' => 'Modificar os filtros de abusos',
 	'right-abusefilter-view' => 'Ver os filtros de abuso',
 	'right-abusefilter-log' => 'Ver o rexistro de abusos',
 	'right-abusefilter-log-detail' => 'Ver os detalles das entradas do rexistro de abusos',
 	'right-abusefilter-private' => 'Ver os datos privados no rexistro de abusos',
 	'right-abusefilter-modify-restricted' => 'Modificar os filtros de abusos con accións restrinxidas',
 	'right-abusefilter-revert' => 'Reverter todos os cambios dun filtro de abusos dado',
+	'action-abusefilter-modify' => 'modificar os filtros de abusos',
+	'action-abusefilter-view' => 'ver os filtros de abusos',
+	'action-abusefilter-log' => 'ver o rexistro de abusos',
+	'action-abusefilter-log-detail' => 'ver as entradas detalladas do rexistro de abusos',
+	'action-abusefilter-private' => 'ver os datos privados do rexistro de abusos',
+	'action-abusefilter-modify-restricted' => 'modificar o filtro de abusos con accións restrinxidas',
+	'action-abusefilter-revert' => 'reverter todo os cambios feitos por un filtro de abusos',
 	'abusefilter-log' => 'Rexistro do filtro de abusos',
+	'abusefilter-log-summary' => 'Este rexistro mostra unha lista de todas as accións capturadas polos filtros.',
 	'abusefilter-log-search' => 'Procurar o rexistro de abuso',
 	'abusefilter-log-search-user' => 'Usuario:',
 	'abusefilter-log-search-filter' => 'Filtrar o ID:',
@@ -4410,7 +4518,15 @@ Churzbschryybig vu dr verletzte Regle: $1',
 	'right-abusefilter-private' => 'Privati Date im Missbruuchs-Logbuech aaluege',
 	'right-abusefilter-modify-restricted' => 'Filter ändere mit bschränkte Aktione',
 	'right-abusefilter-revert' => 'Alli Änderige vum Missbruchsfilter, wu aagee isch, zruggsetze',
+	'action-abusefilter-modify' => 'Missbruuchsfilter ändere',
+	'action-abusefilter-view' => 'Missbruuchsfilter aaluege',
+	'action-abusefilter-log' => 'Missbruuchsfilterlogbuech aaluege',
+	'action-abusefilter-log-detail' => 'Detaillierti Yyträg im Missbruuchsfilterlogbuech aaluege',
+	'action-abusefilter-private' => 'Privati Date im Missbruuchsfilterlogbuech aaluege',
+	'action-abusefilter-modify-restricted' => 'Missbruuchsfilter ändere mit yygschränkte Aktione',
+	'action-abusefilter-revert' => 'Alli Änderige vun eme Missbruuchsfilter zrucksetze',
 	'abusefilter-log' => 'Missbruuchsfilter-Logbuech',
+	'abusefilter-log-summary' => 'Des Logbuech zeigt alli Aktion, wu vu dr Filter usegfilteret wore sin.',
 	'abusefilter-log-search' => 'im Missbruuchs-Logbuech sueche',
 	'abusefilter-log-search-user' => 'Benutzer:',
 	'abusefilter-log-search-filter' => 'Filter-ID:',
@@ -4594,6 +4710,9 @@ Churzbschryybig vu dr verletzte Regle: $1',
 	'abusefilter-edit-builder-vars-new-html' => 'Parsed HTML Quälle vu dr neje Revisionn',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Schutzstatus vu däre Syte',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Schutzstatus vu däre Syte verschiebe',
+	'abusefilter-edit-builder-vars-old-text-stripped' => 'Alte Sytetäkscht, wu alli Markierige uusegnuu sin',
+	'abusefilter-edit-builder-vars-old-links' => 'Gleicher in dr Syte, vor dr Bearbeitig',
+	'abusefilter-edit-builder-vars-old-html' => 'Alte Sytetäkscht, parsed in HTML',
 	'abusefilter-filter-log' => 'Missbruuchsfilter-Änderige',
 	'abusefilter-history' => 'Versionsgschicht fir Missbruuchsfilter $1 ändere',
 	'abusefilter-history-foruser' => 'Änderige vu $1',
@@ -5324,7 +5443,15 @@ Krótke wopisanje znjewužiwanskeho prawidła, kotremuž twoja akcija wotpowědu
 	'right-abusefilter-private' => 'Priwatne daty w protokol znjewužiwanjow zwobraznić',
 	'right-abusefilter-modify-restricted' => 'Znjewužiwanske filtry z wobmjezowanymi akcijemi změnić',
 	'right-abusefilter-revert' => 'Wšě změny wot dateho wužiwanskeho filtra cofnyć',
+	'action-abusefilter-modify' => 'znjewužiwanske filtry změnić',
+	'action-abusefilter-view' => 'znjewužiwanske filtry sej wobhladać',
+	'action-abusefilter-log' => 'znjewužiwanski protokol sej wobhladać',
+	'action-abusefilter-log-detail' => 'podrobne zapiski znjewužiwanskeho protokola sej wobhladać',
+	'action-abusefilter-private' => 'priwatne daty w znjewužiwanskim protokolu sej wobhladać',
+	'action-abusefilter-modify-restricted' => 'znjewužiwanske filtry z wobmjezowanymi akcijemi změnić',
+	'action-abusefilter-revert' => 'wšě změny přez daty znjewužiwanski filter wobroćić',
 	'abusefilter-log' => 'Protokol filtrow znjewužiwanja',
+	'abusefilter-log-summary' => 'Tutón protokol pokazuje lisćinu wšěch přez filtry popadnjene akcijow.',
 	'abusefilter-log-search' => 'Protokol znjewužiwanjow přepytać',
 	'abusefilter-log-search-user' => 'Wužiwar:',
 	'abusefilter-log-search-filter' => 'ID filtra:',
@@ -5800,7 +5927,7 @@ Bánj óvatosan az eszköz használatakor.',
  */
 $messages['ia'] = array(
 	'abusefilter-desc' => 'Applica heuristicas automatic al modificationes.',
-	'abusefilter' => 'Configuration del filtro contra abuso',
+	'abusefilter' => 'Configuration del filtros anti-abuso',
 	'abuselog' => 'Registro de abusos',
 	'abusefilter-warning' => "<big>'''Advertimento:'''</big> Iste action ha essite automaticamente identificate como damnose.
 Tote modificationes non constructive essera rapidemente revertite,
@@ -5834,7 +5961,15 @@ Un breve description del regula anti-abuso correspondente con tu action es: $1',
 	'right-abusefilter-private' => 'Vider datos private in le registro de abusos',
 	'right-abusefilter-modify-restricted' => 'Modificar le filtros anti-abuso con actiones restringite',
 	'right-abusefilter-revert' => 'Reverter tote le modificationes facite per un filtro anti-abuso specific',
+	'action-abusefilter-modify' => 'modificar le filtros anti-abuso',
+	'action-abusefilter-view' => 'vider le filtros anti-abuso',
+	'action-abusefilter-log' => 'vider le registro de abusos',
+	'action-abusefilter-log-detail' => 'vider entratas in detalio del registro de abusos',
+	'action-abusefilter-private' => 'vider datos private in le registro de abusos',
+	'action-abusefilter-modify-restricted' => 'modificar le filtros anti-abuso con actiones restringite',
+	'action-abusefilter-revert' => 'reverter tote le modificationes facite per un filtro anti-abuso specific',
 	'abusefilter-log' => 'Registro del filtro anti-abuso',
+	'abusefilter-log-summary' => 'Iste registro monstra un lista de tote le actiones attrappate per le filtros anti-abuso.',
 	'abusefilter-log-search' => 'Cercar in le registro de abusos',
 	'abusefilter-log-search-user' => 'Usator:',
 	'abusefilter-log-search-filter' => 'ID del filtro:',
@@ -5875,7 +6010,7 @@ Description del filtro: $7 ($8) ($9)',
 	'abusefilter-new' => 'Nove filtro',
 	'abusefilter-links' => 'Ligamines utile:',
 	'abusefilter-tools-modifiertest-submit' => 'Provar',
-	'abusefilter-tools' => 'Instrumentos pro filtros contra abuso',
+	'abusefilter-tools' => 'Instrumentos pro filtros anti-abuso',
 	'abusefilter-loglink' => 'Vider le registro de abusos',
 	'abusefilter-return' => 'Retornar al gestion de filtros',
 	'abusefilter-list-options' => 'Optiones',
@@ -6026,6 +6161,9 @@ Per favor demanda a un usator con le permission de adder actiones restringite de
 	'abusefilter-edit-builder-vars-new-html' => 'Codice-fonte del nove version transformate in HTML',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Nivello de protection pro le modification del pagina',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Nivello de protection pro le renomination del pagina',
+	'abusefilter-edit-builder-vars-old-text-stripped' => 'Le texto ancian del pagina, disfacite de omne notation',
+	'abusefilter-edit-builder-vars-old-links' => 'Ligamines in le pagina, ante le modification',
+	'abusefilter-edit-builder-vars-old-html' => 'Le wikitexto ancian del pagina, convertite in HTML',
 	'abusefilter-filter-log' => 'Modificationes recente de filtros',
 	'abusefilter-history' => 'Historia de modificationes del filtro anti-abuso $1',
 	'abusefilter-history-foruser' => 'Modificationes per $1',
@@ -6630,6 +6768,7 @@ Per caricare un filtro esistente, digitare il relativo identificatore nella case
  * @author Fievarsty
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author Mizusumashi
  * @author Muttley
  */
 $messages['ja'] = array(
@@ -6652,7 +6791,15 @@ $messages['ja'] = array(
 	'right-abusefilter-private' => '不正利用記録中の個人データを閲覧する',
 	'right-abusefilter-modify-restricted' => '制限された操作を含む不正利用フィルターを変更する',
 	'right-abusefilter-revert' => '指定した不正利用フィルターによるすべての変更を差し戻す',
+	'action-abusefilter-modify' => '不正利用フィルターの変更',
+	'action-abusefilter-view' => '不正利用フィルターの閲覧',
+	'action-abusefilter-log' => '不正利用記録の閲覧',
+	'action-abusefilter-log-detail' => '不正利用記録の詳細項目を閲覧',
+	'action-abusefilter-private' => '不正利用記録中の個人データの閲覧',
+	'action-abusefilter-modify-restricted' => '制限された操作を含む不正利用フィルターの変更',
+	'action-abusefilter-revert' => '指定した不正利用フィルターによるすべての変更の差し戻し',
 	'abusefilter-log' => '不正利用フィルター記録',
+	'abusefilter-log-summary' => 'この記録は、フィルターによって捕捉されたすべてのアクションのリストを表示しています。',
 	'abusefilter-log-search' => '不正利用記録を検索',
 	'abusefilter-log-search-user' => '利用者:',
 	'abusefilter-log-search-filter' => 'フィルターID:',
@@ -7060,6 +7207,7 @@ $messages['km'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'abusefilter-desc' => '편집에 자동적으로 필터를 적용',
 	'abusefilter-warning' => "<big>'''경고'''</big>: 이러한 행위는 자동적으로 해로운 것으로 간주되었습니다.
 비생산적인 편집은 신속하게 되돌려질 것이며, 반복적인 비생산적 편집은 당신의 계정이나 컴퓨터가 차단될 수 있습니다.
 이 편집이 생산적인 편집이라 확신한다면, 확인 버튼을 다시 클릭하십시오.
@@ -7076,9 +7224,11 @@ $messages['ko'] = array(
 	'abusefilter-log-details-var' => '변수',
 	'abusefilter-log-details-val' => '값',
 	'abusefilter-log-details-private' => '비공개 정보',
+	'abusefilter-log-noactions' => '없음',
 	'abusefilter-list' => '모든 필터',
 	'abusefilter-list-id' => '필터 ID',
 	'abusefilter-list-status' => '상태',
+	'abusefilter-list-public' => '공개적 설명',
 	'abusefilter-list-visibility' => '공개 여부',
 	'abusefilter-list-edit' => '편집',
 	'abusefilter-list-lastmodified' => '마지막 수정',
@@ -7089,6 +7239,8 @@ $messages['ko'] = array(
 	'abusefilter-disabled' => '비활성화됨',
 	'abusefilter-new' => '새 필터',
 	'abusefilter-links' => '유용한 링크:',
+	'abusefilter-tools-modifiertest-submit' => '시험',
+	'abusefilter-list-options' => '설정',
 	'abusefilter-list-options-deleted' => '삭제된 필터:',
 	'abusefilter-list-options-deleted-only' => '삭제된 필터만 보이기',
 	'abusefilter-list-options-deleted-hide' => '삭제된 필터 숨기기',
@@ -7096,9 +7248,13 @@ $messages['ko'] = array(
 	'abusefilter-list-options-disabled' => '비활성화된 필터:',
 	'abusefilter-list-options-hidedisabled' => '비활성화된 필터를 숨기기',
 	'abusefilter-tools-subtitle' => '도구',
+	'abusefilter-tools-expr' => '구문 검사기',
 	'abusefilter-tools-reautoconfirm' => '자동 인증 상태를 복구',
 	'abusefilter-tools-reautoconfirm-user' => '사용자:',
+	'abusefilter-tools-reautoconfirm-submit' => '자동 인증 상태 복구',
+	'abusefilter-reautoconfirm-none' => '이 계정은 자동 인증 상태가 해제된 적이 없습니다.',
 	'abusefilter-reautoconfirm-notallowed' => '당신은 자동 인증 상태를 복구할 권한이 없습니다.',
+	'abusefilter-reautoconfirm-done' => '계정의 자동 인증 상태가 복구되었습니다.',
 	'abusefilter-edit-status-label' => '통계:',
 	'abusefilter-edit-new' => '새 필터',
 	'abusefilter-edit-save' => '필터 저장하기',
@@ -7109,10 +7265,13 @@ $messages['ko'] = array(
 	'abusefilter-edit-deleted' => '삭제된 것으로 표시',
 	'abusefilter-edit-lastmod-text' => '$2(이)가 $1에 변경',
 	'abusefilter-edit-action-blockautopromote' => '사용자의 자동 인증 상태를 해제',
+	'abusefilter-edit-action-degroup' => '모든 사용자 권한을 해제',
 	'abusefilter-edit-action-rangeblock' => '사용자가 사용한 IP의 /16광역을 차단',
+	'abusefilter-edit-action-tag' => '나중에 검토를 위해 태그하기',
 	'abusefilter-edit-throttle-period' => '주기:',
 	'abusefilter-edit-throttle-seconds' => '$1초',
 	'abusefilter-edit-warn-message' => '경고할 때 사용할 시스템 메시지:',
+	'abusefilter-edit-warn-other' => '다른 메시지',
 	'abusefilter-edit-warn-other-label' => '다른 메시지의 이름:
 :({{ns:8}} 접두어를 뺀 이름)',
 	'abusefilter-edit-warn-preview' => '선택한 메시지 미리 보기',
@@ -7143,9 +7302,10 @@ $messages['ko'] = array(
 	'abusefilter-edit-builder-op-bool-or' => '또는 (|)',
 	'abusefilter-edit-builder-op-bool-xor' => '배타적 논리합 (^)',
 	'abusefilter-edit-builder-group-misc' => '기타',
-	'abusefilter-edit-builder-misc-ternary' => '3단 연산자 (1 ? : 3)',
+	'abusefilter-edit-builder-group-funcs' => '기능',
 	'abusefilter-edit-builder-funcs-length' => '문자열 길이 (length)',
 	'abusefilter-edit-builder-funcs-lcase' => '소문자로 변환 (lcase)',
+	'abusefilter-edit-builder-funcs-rmdoubles' => '중복되는 글자를 제거 (rmdouble)',
 	'abusefilter-edit-builder-group-vars' => '변수',
 	'abusefilter-edit-builder-vars-accountname' => '계정 이름 (계정 생성 시)',
 	'abusefilter-edit-builder-vars-action' => '행위',
@@ -7158,6 +7318,12 @@ $messages['ko'] = array(
 	'abusefilter-edit-builder-vars-article-prefixedtext' => '전체 문서 제목',
 	'abusefilter-edit-builder-vars-user-editcount' => '사용자의 편집 횟수',
 	'abusefilter-edit-builder-vars-user-name' => '사용자 계정 이름',
+	'abusefilter-edit-builder-vars-user-emailconfirm' => '이메일이 인증된 시각',
+	'abusefilter-edit-builder-vars-recent-contributors' => '이 문서를 마지막으로 편집한 10명의 편집자',
+	'abusefilter-edit-builder-vars-all-links' => '바뀐 글에 포함된 모든 외부 링크',
+	'abusefilter-edit-builder-vars-restrictions-edit' => '문서 보호 수준 (편집)',
+	'abusefilter-edit-builder-vars-restrictions-move' => '문서 보호 수준 (이동)',
+	'abusefilter-filter-log' => '최근 필터의 바뀜',
 	'abusefilter-history-enabled' => '활성화됨',
 	'abusefilter-history-timestamp' => '시간',
 	'abusefilter-history-filter' => '필터 규칙',
@@ -7181,6 +7347,7 @@ $messages['ko'] = array(
 	'abusefilter-examine-user' => '사용자:',
 	'abusefilter-examine-title' => '문서 제목:',
 	'abusefilter-examine-submit' => '찾기',
+	'abusefilter-examine-test-button' => '필터 시험',
 );
 
 /** Krio (Krio)
@@ -7237,7 +7404,8 @@ En koote Äklierung för dämm Automaat sing Rääjel, die hee jejreffe hät, es
 Äklierung för de Rääjel: $1',
 	'abusefilter-degroupreason' => 'Rääschte automaatesch fottjenumme vum Meßbruchsfelter.
 Äklierung för de Rääjel: $1',
-	'abusefilter-accountreserved' => 'Dä Name för ene Metmaacher es för der Meßbruchsfelter frei jehallde.',
+	'abusefilter-accountreserved' => 'Dä Name för ene Metmaacher es nit mieh frei.
+Dä es för däm Meßbruchsfelter sing Axjuhne reserveet.',
 	'right-abusefilter-modify' => 'Meßbruchsfeltere ändere',
 	'right-abusefilter-view' => 'Meßbruchsfeltere aanloore',
 	'right-abusefilter-log' => 'De Meßbruchsfeltere ier Logbooch lesse',
@@ -7245,7 +7413,16 @@ En koote Äklierung för dämm Automaat sing Rääjel, die hee jejreffe hät, es
 	'right-abusefilter-private' => 'En de Meßbruchsfeltere ierem Logbooch de private Einzelheite beloore',
 	'right-abusefilter-modify-restricted' => 'Meßbruchsfeltere met Akzijone ändere, die besönder Rääschte nüdesch han',
 	'right-abusefilter-revert' => 'Alle Anderunge zeröck nämme, die ene beshtemmpte Meßbruchsfelter jemaat hät',
+	'action-abusefilter-modify' => 'Do darfs kein Meßbruchsfeltere ändere',
+	'action-abusefilter-view' => 'Do darfs kein Meßbruchsfeltere aanbeloore',
+	'action-abusefilter-log' => 'De darfs nit en dä Meßbruchsfeltere ier Logbooch erin loore',
+	'action-abusefilter-log-detail' => '
+De darfs nit en dä Meßbruchsfeltere ierem Logbooch en de Einzelheite erin loore',
+	'action-abusefilter-private' => 'De darfs nit en dä Meßbruchsfeltere ierem Logbooch en de private Date erin loore',
+	'action-abusefilter-modify-restricted' => 'De darfs nit aan Meßbruchsfeltere erömändere, met Akzijone, die besönder Rääschte nüdesch han',
+	'action-abusefilter-revert' => 'Do darfs nit alle Anderunge zeröck nämme, die ene beshtemmpte Meßbruchsfelter jemaat hät',
 	'abusefilter-log' => 'Logbooch fum Mißbruchsfelter',
+	'abusefilter-log-summary' => 'Dat Logboch zeisch all dat, woh ene Meßbruchsfelter drop aanjeshpronge es.',
 	'abusefilter-log-search' => 'Don em Meßbruchsfelter-Logboch ußsöke',
 	'abusefilter-log-search-user' => 'Metmaacher:',
 	'abusefilter-log-search-filter' => 'Felter-Räjel:',
@@ -7328,6 +7505,7 @@ Dä hät sing Jrenß övverschredde, un bei mieh wie $1% vun alle Oproofe jejref
 	'abusefilter-edit-lastmod' => 'Zoletz jeändert:',
 	'abusefilter-edit-lastmod-text' => '$1 fum $1',
 	'abusefilter-edit-hitcount' => 'Treffer:',
+	'abusefilter-edit-action-warn' => 'Donn dat maache, nohdämm dä Metmaacher en Warnung krääje hät.',
 	'abusefilter-edit-action-flag' => 'Don de Änderung em Meßbruchs-Logbooch makeere',
 	'abusefilter-edit-action-block' => 'Donn dä Metmaacher un/odder de IP Addreß för et Ändere sperre',
 	'abusefilter-edit-action-rangeblock' => 'Don de /16-er IP-Berett sperre, vun woh dä Metmaacher kohm.',
@@ -7362,7 +7540,6 @@ Dä hät sing Jrenß övverschredde, un bei mieh wie $1% vun alle Oproofe jejref
 	'abusefilter-edit-builder-op-bool-or' => 'ov, udder, „et ein, udder et ander, udder beeds“ (|)',
 	'abusefilter-edit-builder-op-bool-xor' => 'XOR, exklusief-udder, „et ein, udder et ander, ävver nit beeds“ (^)',
 	'abusefilter-edit-builder-group-misc' => 'Söns jet',
-	'abusefilter-edit-builder-misc-ternary' => 'wann-dann-söns (1 ? 2 : 3)',
 	'abusefilter-edit-builder-misc-in' => 'en dä Bochstave-Reih enthallde (in)',
 	'abusefilter-edit-builder-misc-like' => 'Paß op e Muster (<i lang="en">like</i>)',
 	'abusefilter-edit-builder-group-funcs' => 'Funxjuhne',
@@ -7416,6 +7593,7 @@ Dä hät sing Jrenß övverschredde, un bei mieh wie $1% vun alle Oproofe jejref
 	'abusefilter-history-deleted' => 'Fottjelohße',
 	'abusefilter-history-filterid' => 'Felter',
 	'abusefilter-history-select-user' => 'Metmaacher:',
+	'abusefilter-action-throttle' => 'Beschränke',
 	'abusefilter-action-warn' => 'Warne',
 	'abusefilter-action-block' => 'Shperre',
 	'abusefilter-action-rangeblock' => 'Berett-Sperr',
@@ -7469,11 +7647,15 @@ Hei ass eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi är Akioun pass
 	'abusefilter-blockreason' => 'Automtesch gespaart duerch de Mëssbrauchsfilter. Beschreiwung vun der Regel déi benotzt gouf: $1',
 	'abusefilter-degroupreason' => 'Rechter goufen atomatesch duerch de Mëssbrauchsfilter ewechgeholl. Beschreiwung vun der Regel: $1',
 	'abusefilter-accountreserved' => 'Dëse Numm fir e Benotzerkont ass reservéiert fir vum Mëssbrauchs-filer benotzt ze ginn.',
-	'right-abusefilter-modify' => "D'filtere vum Mëssbrauch änneren",
+	'right-abusefilter-modify' => 'Mëssbrauchsfilteren änneren',
 	'right-abusefilter-view' => 'Mëssbrauchs-Filtere weisen',
 	'right-abusefilter-log' => 'Lëscht vum Mëssbrauch weisen',
 	'right-abusefilter-log-detail' => 'Detailléiert Versioun vum Mëssbrauchslog weisen',
 	'right-abusefilter-revert' => 'All Ännerungen vun engem bestëmmte Mëssbruachsfilter zrécksetzen',
+	'action-abusefilter-modify' => "Mëssbrauchsfilteren z'änneren",
+	'action-abusefilter-view' => 'Mëssbrauchsfilteren ze kucken',
+	'action-abusefilter-log' => "d'Logbuch vum Mëssbrauch ze kucken",
+	'action-abusefilter-revert' => 'all Ännerungen vun engem bestëmmte Mëssbrauchsfilter zréckzesetzen',
 	'abusefilter-log' => 'Lëscht vun de Mëssbrauchs-Filteren',
 	'abusefilter-log-search' => 'D?Lëscht vum Mëssbrauch duerchsichen',
 	'abusefilter-log-search-user' => 'Benotzer:',
@@ -8118,7 +8300,15 @@ Een korte beschrijving van de regel op basis waarvan uw bewerking is tegengehoud
 	'right-abusefilter-private' => 'Beperkt zichtbare gegevens in het misbruiklogboek bekijken',
 	'right-abusefilter-modify-restricted' => 'Misbruikfilters met beperkte handelingen wijzigen',
 	'right-abusefilter-revert' => 'Alle wijzigingen door een misbruikfilter terugdraaien',
+	'action-abusefilter-modify' => 'misbruikfilters te wijzigen',
+	'action-abusefilter-view' => 'misbruikfilters te bekijken',
+	'action-abusefilter-log' => 'misbruiklogboek te bekijken',
+	'action-abusefilter-log-detail' => 'gedetailleerde misbruiklogboekvermeldingen te bekijken',
+	'action-abusefilter-private' => 'privégegevens in het misbruiklogboek te bekijken',
+	'action-abusefilter-modify-restricted' => 'misbruikfilters met beperkte handelingen te wijzigen',
+	'action-abusefilter-revert' => 'alle wijzigingen door een bepaalde misbruikfilter terug te draaien',
 	'abusefilter-log' => 'Misbruiklogboek',
+	'abusefilter-log-summary' => 'Dit logboek geeft een lijst weer van handelingen die opgevangen zijn door misbruikfilters.',
 	'abusefilter-log-search' => 'Het misbruiklogboek doorzoeken',
 	'abusefilter-log-search-user' => 'Gebruiker:',
 	'abusefilter-log-search-filter' => 'Filternummer:',
@@ -8313,6 +8503,9 @@ Vraag een gebruiker met toestemming om beperkte handelingen toe te voegen om de 
 	'abusefilter-edit-builder-vars-new-html' => 'Verwerkte HTML-broncode van de nieuwe versie',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Beveiligingsniveau voor bewerken van de pagina',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Beveiligingsniveau voor hernoemen van de pagina',
+	'abusefilter-edit-builder-vars-old-text-stripped' => 'Tekst oude pagina, ontdaan van alle opmaak',
+	'abusefilter-edit-builder-vars-old-links' => 'Verwijzingen in de pagina voor de bewerking',
+	'abusefilter-edit-builder-vars-old-html' => 'Wikitext oude pagina in HTML',
 	'abusefilter-filter-log' => 'Recente filterwijzigingen',
 	'abusefilter-history' => 'Geschiedenis voor het misbruikfilter #$1',
 	'abusefilter-history-foruser' => 'Wijzigingen door $1',
@@ -8427,7 +8620,15 @@ Ei kort skildring av misbruksregelen handlinga di braut er: $1',
 	'right-abusefilter-private' => 'Sjå privat informasjon i misbruksloggen',
 	'right-abusefilter-modify-restricted' => 'Endra misbruksfilter med avgrensa handlingar',
 	'right-abusefilter-revert' => 'Gjera om alle endringar gjorde av eit visst misbruksfilter',
+	'action-abusefilter-modify' => 'endra misbruksfilter',
+	'action-abusefilter-view' => 'sjå misbruksfilter',
+	'action-abusefilter-log' => 'sjå misbruksloggen',
+	'action-abusefilter-log-detail' => 'sjå detaljert loggføring om misbruk',
+	'action-abusefilter-private' => 'sjå private data i misbruksloggen',
+	'action-abusefilter-modify-restricted' => 'endra misbruksfilter med avgrensa handlingar',
+	'action-abusefilter-revert' => 'gjera om alle endringane gjorde av eit misbruksfilter',
 	'abusefilter-log' => 'Logg for misbruksfilter',
+	'abusefilter-log-summary' => 'Denne loggføringa syner ei liste over alle handlingar fanga opp av filtra.',
 	'abusefilter-log-search' => 'Søk i misbruksloggen',
 	'abusefilter-log-search-user' => 'Brukar:',
 	'abusefilter-log-search-filter' => 'Filter-ID:',
@@ -9387,7 +9588,15 @@ Krótki opis reguły nadużycia, do której Twoja akcji została dopasowana: $1'
 	'right-abusefilter-private' => 'Podgląd prywatnych danych w rejestrze nadużyć',
 	'right-abusefilter-modify-restricted' => 'Modyfikuj filtry nadużyć z zastrzeżonymi operacjami',
 	'right-abusefilter-revert' => 'Anuluj wszystkie zmiany wykonane przez zadany filtr nadużyć',
+	'action-abusefilter-modify' => 'modyfikowania filtru nadużyć',
+	'action-abusefilter-view' => 'przeglądania filtrów nadużyć',
+	'action-abusefilter-log' => 'przeglądania rejestru nadużyć',
+	'action-abusefilter-log-detail' => 'przeglądania szczegółów wpisów w rejestrze nadużyć',
+	'action-abusefilter-private' => 'oglądania prywatnych informacji w rejestrze nadużyć',
+	'action-abusefilter-modify-restricted' => 'zmieniania filtrów nadużyć z ograniczonymi akcjami',
+	'action-abusefilter-revert' => 'wycofania wszystkich zmian wskazanych przez filtr nadużyć',
 	'abusefilter-log' => 'Rejestr filtru nadużyć',
+	'abusefilter-log-summary' => 'Ten rejestr zawiera spis wszystkich działań wychwyconych przez filtry.',
 	'abusefilter-log-search' => 'Szukaj w rejestrze nadużyć',
 	'abusefilter-log-search-user' => 'Użytkownik',
 	'abusefilter-log-search-filter' => 'ID filtru:',
@@ -9489,7 +9698,7 @@ Opis filtru: $7 ($8) ($9)',
 	'abusefilter-edit-warn-other' => 'Inny komunikat',
 	'abusefilter-edit-warn-other-label' => "Nazwa strony innego komunikatu:
 :''(bez przedrostka MediaWiki)''",
-	'abusefilter-edit-warn-actions' => 'Operacje',
+	'abusefilter-edit-warn-actions' => 'Operacje:',
 	'abusefilter-edit-warn-preview' => 'Podgląd wybranego komunikatu',
 	'abusefilter-edit-warn-edit' => 'Utwórz lub edytuj wybrany komunikat',
 	'abusefilter-edit-tag-tag' => 'Oznaczenia do zastosowania (po jednym w wierszu):',
@@ -9576,6 +9785,9 @@ Opis filtru: $7 ($8) ($9)',
 	'abusefilter-edit-builder-vars-new-html' => 'Sformatowane źródło HTML nowej wersji',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Edycja poziomu zabezpieczenia strony',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Przeniesienie ze strony na stronę poziomu zabezpieczenia strony',
+	'abusefilter-edit-builder-vars-old-text-stripped' => 'Stara treść strony pozbawiona wszystkich znaczników',
+	'abusefilter-edit-builder-vars-old-links' => 'Łącza na stronie przed edycją',
+	'abusefilter-edit-builder-vars-old-html' => 'Stara treść strony w formacie wiki przetworzona na HTML',
 	'abusefilter-filter-log' => 'Ostatnie zmiany ustawień filtru',
 	'abusefilter-history' => 'Historia zmian dla filtru nr $1',
 	'abusefilter-history-foruser' => 'Zmiany wykonane przez $1',
@@ -9722,7 +9934,15 @@ Descrição da regra correspondida: $1',
 	'right-abusefilter-private' => 'Ver dados privados no registo de abusos',
 	'right-abusefilter-modify-restricted' => 'Modificar filtros de abuso com ações restritas',
 	'right-abusefilter-revert' => 'Reverter todas as modificações feitas por um dado filtro de abuso',
+	'action-abusefilter-modify' => 'modificar filtros de abuso',
+	'action-abusefilter-view' => 'ver filtros de abuso',
+	'action-abusefilter-log' => 'ver o registo de abusos',
+	'action-abusefilter-log-detail' => 'ver entradas detalhadas do registo de abusos',
+	'action-abusefilter-private' => 'ver dados privados do registo de abusos',
+	'action-abusefilter-modify-restricted' => 'modificar filtros de abuso com ações restritas',
+	'action-abusefilter-revert' => 'reverter todas as modificações feitas por um dado filtro de abuso',
 	'abusefilter-log' => 'Registo de filtros de abuso',
+	'abusefilter-log-summary' => 'Este registo mostra uma lista de todas as ações capturadas pelos filtros.',
 	'abusefilter-log-search' => 'Pesquisar o registo de abusos',
 	'abusefilter-log-search-user' => 'Utilizador:',
 	'abusefilter-log-search-filter' => 'ID do filtro:',
@@ -9829,7 +10049,7 @@ O filtro atingiu o limite de correspondência com mais de $1% de ações.",
 	'abusefilter-edit-warn-other' => 'Outra mensagem',
 	'abusefilter-edit-warn-other-label' => "Nome da página de outra mensagem:
 :''(sem prefixo MediaWiki)''",
-	'abusefilter-edit-warn-actions' => 'Ações',
+	'abusefilter-edit-warn-actions' => 'Ações:',
 	'abusefilter-edit-warn-preview' => 'Prever mensagem selecionada',
 	'abusefilter-edit-warn-edit' => 'Criar/Editar mensagem selecionada',
 	'abusefilter-edit-tag-tag' => 'Etiquetas a aplicar (uma por linha):',
@@ -9917,6 +10137,9 @@ Por favor, peça a um utilizador com permissão para adicionar ações restritas
 	'abusefilter-edit-builder-vars-new-html' => 'Fonte HTML analisada da nova revisão',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Nível de proteção de edição da página',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Nível de proteção de movimentação da página',
+	'abusefilter-edit-builder-vars-old-text-stripped' => 'Texto antiga da página, com toda a formatação removida',
+	'abusefilter-edit-builder-vars-old-links' => 'Ligações na página, antes da edição',
+	'abusefilter-edit-builder-vars-old-html' => 'Wikitexto antiga da página, convertido para HTML',
 	'abusefilter-filter-log' => 'Modificações recentes de filtros',
 	'abusefilter-history' => 'Histórico de modificações do Filtro de Abuso #$1',
 	'abusefilter-history-foruser' => 'Modificações por $1',
@@ -10285,7 +10508,15 @@ $messages['ru'] = array(
 	'right-abusefilter-private' => 'Просмотреть приватные данные в журнале злоупотреблений',
 	'right-abusefilter-modify-restricted' => 'изменение фильтров с ограничивающими действиями',
 	'right-abusefilter-revert' => 'откатывать изменения, произведённые фильтром злоупотреблений',
+	'action-abusefilter-modify' => 'изменять фильтры злоупотреблений',
+	'action-abusefilter-view' => 'просматривать фильтры злоупотреблений',
+	'action-abusefilter-log' => 'просматривать журнал фильтров злоупотреблений',
+	'action-abusefilter-log-detail' => 'просматривать подробности журнала фильтра злоупотреблений',
+	'action-abusefilter-private' => 'просмотр личных данных в журнале фильтров злоупотреблений',
+	'action-abusefilter-modify-restricted' => 'изменять фильтры злоупотреблений с запрещающими действиями',
+	'action-abusefilter-revert' => 'отменять все изменения указанного фильтра злоупотреблений',
 	'abusefilter-log' => 'Журнал фильтра злоупотреблений',
+	'abusefilter-log-summary' => 'В этом журнале представлен список всех действий, обнаруженных фильтрами.',
 	'abusefilter-log-search' => 'Поиск в журнале злоупотреблений',
 	'abusefilter-log-search-user' => 'Участник:',
 	'abusefilter-log-search-filter' => 'ИД фильтра:',
@@ -10474,6 +10705,9 @@ $messages['ru'] = array(
 	'abusefilter-edit-builder-vars-new-html' => 'Разобранный HTML-код новой версии',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Уровень защиты страницы от правок',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Уровень защиты страницы от переименований',
+	'abusefilter-edit-builder-vars-old-text-stripped' => 'Текст старой страницы, лишённый разметки',
+	'abusefilter-edit-builder-vars-old-links' => 'Ссылки на странице до правки',
+	'abusefilter-edit-builder-vars-old-html' => 'Викитекст старой страницы, преобразованный в HTML',
 	'abusefilter-filter-log' => 'Последние изменения фильтров',
 	'abusefilter-history' => 'История изменений фильтра злоупотреблений #$1',
 	'abusefilter-history-foruser' => 'Изменения сделанные $1',
@@ -10610,6 +10844,7 @@ $messages['sah'] = array(
 Сиидэ туһунан: $7 ($8) ($9)',
 	'abusefilter-log-detailslink' => 'сиһилии',
 	'abusefilter-log-details-legend' => '$1 сурунаал суруга сиһилии',
+	'abusefilter-log-details-var' => 'Уларыйар кэриҥ (переменная)',
 	'abusefilter-log-details-val' => 'Суолтата',
 	'abusefilter-log-details-vars' => 'Дьайыы кээмэйдэрэ',
 	'abusefilter-log-details-private' => 'Кистэлэҥ билии (данные)',
@@ -10622,6 +10857,7 @@ $messages['sah'] = array(
 	'abusefilter-list-public' => 'Бу туһунан дьон барыта көрөрүгэр маннык суруллубут',
 	'abusefilter-list-consequences' => 'Содуллара',
 	'abusefilter-list-visibility' => 'Көстүүтэ',
+	'abusefilter-list-hitcount' => 'Үлэлээһинэ',
 	'abusefilter-list-edit' => 'Уларыт',
 	'abusefilter-list-details' => 'Сиһилии',
 	'abusefilter-list-limit' => 'Сирэйгэ ахсаана:',
@@ -10656,6 +10892,7 @@ $messages['sah'] = array(
 	'abusefilter-tools-reautoconfirm-submit' => 'Хат бигэргэтии',
 	'abusefilter-reautoconfirm-none' => 'Бу кыттааччы аптамаатынан бигэргэтиитэ араарыллыбатах.',
 	'abusefilter-reautoconfirm-notallowed' => 'Аптамаатынан бигэргэтиини туруорар кыаҕыҥ суох.',
+	'abusefilter-reautoconfirm-done' => 'Ааты аптамаатынан бигэргэтии кыаҕа төннөрүлүннэ',
 	'abusefilter-status' => '$1 {{PLURAL:$1|бүтэһик дьайыыттан|бүтэһик дьайыылартан}}, $2 ($3%)  хааччахтыыр $4 көрдөбүлгэ {{PLURAL:$2|түбэспит|түбэспиттэр}}, оттон $5 ($6%) билигин арахсан турар сиидэҕэ {{PLURAL:$5|сөп түбэһэр|сөп түбэһэллэр}}.',
 	'abusefilter-edit-subtitle' => '$1 сиидэни уларытыы',
 	'abusefilter-edit-oldwarning' => '<strong>Сиидэ эргэ барылын уларыттыҥ.
@@ -10811,6 +11048,24 @@ $messages['sah'] = array(
 	'abusefilter-exception-unexpectedtoken' => '"$3" биллибэт бэлиэ (көрүҥэ $2) $1 бэлиэҕэ (позицияҕа).',
 	'abusefilter-exception-unclosedstring' => 'Мантан: $1 саҕаланар устуруока сабыллыбатах этиитэ.',
 	'abusefilter-exception-invalidoperator' => '$1 позицияҕа сыыһа "$2" бэлиэ турбут.',
+	'abusefilter-exception-unrecognisedtoken' => 'Кыайан билиниллибэтэх "$2" бэлиэ $1 позицияҕа.',
+	'abusefilter-exception-noparams' => '"$2" функция параметрдара $1 позицияҕа ыйыллыбатахтар.',
+	'abusefilter-exception-dividebyzero' => '$1 позицияҕа $2 нуулга түҥэтии оҥоһулла сатаата.',
+	'abusefilter-revert-reasonfield' => 'Төннөрүү төрүөтэ:',
+	'abusefilter-test' => 'Урут оҥоһуллубут көннөрүүлэргэ сиидэни тургутуу',
+	'abusefilter-test-intro' => 'Бу сирэй аллараа түннүккэ киллэриллибит сиидэни бүтэһик {{PLURAL:$1|$1 көннөрүү көмөтүнэн|$1 көннөрүүлэр көмөлөрүнэн}} тургутарга туттуллар.
+Баар сиидэни киллэрэргэ кини нүөмэрин тиэкис түннүгэр (эрэдээксийэ түннүгүн анныгар) суруй уонна "Киллэр" тимэҕи баттаа.',
+	'abusefilter-test-legend' => 'Сиидэни тургутуу',
+	'abusefilter-test-load-filter' => 'Маннык нүөмэрдээх сиидэни киллэр:',
+	'abusefilter-test-submit' => 'Тургутуу',
+	'abusefilter-test-load' => 'Киллэр',
+	'abusefilter-test-user' => 'Кыттааччы уларытыылара:',
+	'abusefilter-test-period-start' => 'Уларытыылар бу кэнниттэн оҥоһуллубуттар:',
+	'abusefilter-test-period-end' => 'Уларытыылар бу кэнниттэн оҥоһуллубуттар:',
+	'abusefilter-test-shownegative' => 'Сиидэҕэ түбэспэт уларытыылары көрдөр',
+	'abusefilter-changeslist-examine' => 'көрөргө',
+	'abusefilter-examine' => 'Биирдиилээн уларытыылары көрүү',
+	'abusefilter-examine-intro' => 'Бу сирэй көмөтүнэн омсо сиидэтэ оҥорбут барылларын биирдиилээн көрүөххэ сөп уонна олору тургутан көрүөххэ сөп.',
 );
 
 /** Slovak (Slovenčina)
@@ -12076,6 +12331,8 @@ $messages['tr'] = array(
 	'abusefilter-blocker' => 'Kötüye kullanım süzgeci',
 	'abusefilter-blockreason' => 'Kötüye kullanım süzgeci tarafından otomatik olarak engellendi.
 Eşleşen kuralın tanımı: $1',
+	'abusefilter-degroupreason' => 'Haklar, kötüye kullanım süzgeci tarafından otomatik olarak kısıtlandı.
+Kural açıklaması: $1',
 	'abusefilter-accountreserved' => 'Bu hesap adı kötüye kullanım süzgeci tarafından kullanılmak üzere rezerve edildi.',
 	'right-abusefilter-modify' => 'Kötüye kullanım süzgeçlerini değiştir',
 	'right-abusefilter-view' => 'Kötüye kullanım süzgeçlerini gör',
@@ -12084,12 +12341,26 @@ Eşleşen kuralın tanımı: $1',
 	'right-abusefilter-private' => 'Kötüye kullanım günlüğündeki özel verileri gör',
 	'right-abusefilter-modify-restricted' => 'Kısıtlı eylemler içeren kötüye kullanım süzgeçlerini değiştir',
 	'right-abusefilter-revert' => 'Verilen bir kötüye kullanım süzgeci tarafından yapılan tüm değişiklikleri geri al',
+	'action-abusefilter-modify' => 'kötüye kullanım süzgeçlerini değiştirmeye',
+	'action-abusefilter-view' => 'kötüye kullanım süzgeçlerini görmeye',
+	'action-abusefilter-log' => 'kötüye kullanım günlüğünü görmeye',
+	'action-abusefilter-log-detail' => 'ayrıntılı kötüye kullanım günlük girdilerini görmeye',
+	'action-abusefilter-private' => 'kötüye kullanım günlüğündeki özel verileri görmeye',
+	'action-abusefilter-modify-restricted' => 'kısıtlı eyleme sahip kötüye kullanım süzgeçlerini değiştirmeye',
+	'action-abusefilter-revert' => 'verilen bir kötüye kullanım süzgecinin tüm değişikliklerini geri almaya',
 	'abusefilter-log' => 'Kötüye kullanım süzgeci günlüğü',
+	'abusefilter-log-summary' => 'Bu günlük, süzgeçlere yakalanan tüm eylemlerin bir listesini gösterir.',
 	'abusefilter-log-search' => 'Kötüye kullanım günlüğünü ara',
 	'abusefilter-log-search-user' => 'Kullanıcı:',
 	'abusefilter-log-search-filter' => 'Süzgeç IDsi:',
 	'abusefilter-log-search-title' => 'Başlık:',
 	'abusefilter-log-search-submit' => 'Ara',
+	'abusefilter-log-entry' => '$1: $2 bir kötüye kullanım süzgecini tetikledi, $4 sayfasında "$3" eylemi yapılıyor.
+Yapılan eylemler: $5;
+Süzgeç açıklaması: $6',
+	'abusefilter-log-detailedentry' => '$1: $2, [[Special:AbuseFilter/$3|$3 süzgecini]] tetikledi, $5 sayfasında "$4" eylemi yapılıyor.
+Yapılan eylemler: $6;
+Süzgeç açıklaması: $7 ($8) ($9)',
 	'abusefilter-log-detailslink' => 'ayrıntılar',
 	'abusefilter-log-details-legend' => '$1 günlük girdisi için ayrıntılar',
 	'abusefilter-log-details-var' => 'Değişken',
@@ -12249,6 +12520,7 @@ Eşleşen kuralın tanımı: $1',
 	'abusefilter-exception-unclosedstring' => '$1 karakterinde başlayan kapanmamış dizi',
 	'abusefilter-exception-invalidoperator' => '$1 karakterinde geçersiz operatör "$2".',
 	'abusefilter-exception-dividebyzero' => '$1 karakterinde $2 ile kuraldışı sıfıra bölme girişimi.',
+	'abusefilter-exception-unrecognisedvar' => '$1 karakterinde tanınmayan değişken $2',
 	'abusefilter-action-warn' => 'Uyar',
 	'abusefilter-action-block' => 'Engelle',
 	'abusefilter-action-degroup' => 'Gruplardan çıkar',
@@ -12492,7 +12764,7 @@ $messages['vec'] = array(
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|secondo|secondi}}',
 	'abusefilter-edit-warn-message' => 'Messajo de sistema da doparar come avertimento:',
 	'abusefilter-edit-warn-other' => 'Altro messajo',
-	'abusefilter-edit-warn-actions' => 'Azioni',
+	'abusefilter-edit-warn-actions' => 'Azioni:',
 	'abusefilter-edit-warn-preview' => 'Anteprima del messajo selessionà',
 	'abusefilter-edit-warn-edit' => 'Crèa/Modìfega el messajo selessionà',
 	'abusefilter-edit-main' => 'Parametri del filtro',
@@ -13023,3 +13295,4 @@ $messages['zh-tw'] = array(
 	'abusefilter-edit-builder-vars-movedfrom-id' => '要移動的源頁面頁面ID',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => '要移動的源名字空間',
 );
+
