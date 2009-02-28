@@ -443,7 +443,7 @@ $messages['qqq'] = array(
 	'abusefilter-status' => 'Status information displayed on top of [[Special:AbuseFilter]].
 
 * <tt>$1</tt> – number of recent actions
-* <tt>$2</tt> – number of filter runs that reached the limit of $4 conditions (and have had to be terminated)
+* <tt>$2</tt> – number of filter runs that reached the limit of $4 conditions (and have had to be terminated)
 * <tt>$3</tt> – percentage: $2 / $1 * 100
 * <tt>$4</tt> – maximum number of conditions allowed
 * <tt>$5</tt> – number of matched actions
@@ -3661,51 +3661,59 @@ Syy: $1',
  */
 $messages['fr'] = array(
 	'abusefilter-desc' => 'Applique des heuristiques automatiques aux modifications',
-	'abusefilter' => 'Configuration du filtre des abus',
-	'abuselog' => 'Journal des abus',
+	'abusefilter' => 'Configuration du filtre antiabus',
+	'abuselog' => 'Journal antiabus',
 	'abusefilter-warning' => "<big>'''Avertissement'''</big> : cette action a été identifiée automatiquement comme nuisible.
 Les modifications non constructives seront rapidement annulées
 et les âneries répétées ou outrageantes provoqueront le blocage de votre compte ou l’inscription de votre ordinateur en liste noire.
 Si vous êtes convaincu{{GENDER:||e|(e)}} que votre modification est constructive, vous pouvez la soumettre une nouvelle fois pour la confirmer.
-Voici une brève description de la règle de filtrage des abus ayant détecté votre action : $1",
+Voici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1",
 	'abusefilter-disallowed' => 'Cette action a été automatiquement idenfiée comme nuisible et, par voie de conséquence, non permise.
 Si vous êtes convaincu{{GENDER:||e|(e)}} que votre modification était constructive, veuillez contacter un administrateur et l’informer de ce que vous avez essayé de faire.
-Voici une brève description de la règle de filtrage des abus ayant détecté votre action : $1',
+Voici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1',
 	'abusefilter-blocked-display' => 'Cette action a été automatiquement identifée comme nuisible
 et vous avez déjà été empêché de l’exécuter.
 De plus, pour protéger {{SITENAME}}, votre compte utilisateur et toutes les adresses IP associées ont été bloqués contre toute modification.
 Si ceci est dû à une erreur, veuillez contacter un administrateur.
-Voici une brève description de la règle de filtrage des abus ayant détecté votre action : $1',
+Voici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1',
 	'abusefilter-degrouped' => 'Cette action a été automatiquement identifiée comme nuisible.
 En conséquence, elle a été non permise et, puisque votre compte est suspecté de compromission, tous vos droits ont été retirés.
 Si vous êtes convaincu{{GENDER:||e|(e)}} que cela est dû à une erreur, veuillez contacter un bureaucrate avec une explication de cette action afin de rétablir vos droits.
-Voici une brève description de la règle de filtrage des abus ayant détecté votre action : $1',
+Voici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1',
 	'abusefilter-autopromote-blocked' => 'Cette action a été automatiquement identifiée comme nuisible et elle a été non permise.
 En conséquence, à titre de mesure de sécurité, quelques privilèges accordés d’habitude pour les comptes établis ont été révoqués temporairement de votre compte.
-Voici une brève description de la règle de filtrage des abus ayant détecté votre action : $1',
-	'abusefilter-blocker' => 'Filtre d’abus',
-	'abusefilter-blockreason' => 'Bloqué automatiquement par le filtre des abus.
+Voici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1',
+	'abusefilter-blocker' => 'Filtre antiabus',
+	'abusefilter-blockreason' => 'Bloqué automatiquement par le filtre antiabus.
 Description de la règle associée : $1',
-	'abusefilter-degroupreason' => 'Droits automatiquement retirés par le filtre des abus.
+	'abusefilter-degroupreason' => 'Droits automatiquement retirés par le filtre antiabus.
 Description de la règle associée : $1',
-	'abusefilter-accountreserved' => 'Le nom de ce compte est révervé pour l’usage par le filtre des abus.',
-	'right-abusefilter-modify' => 'Modifier les filtres d’abus',
-	'right-abusefilter-view' => 'Voir les filtres d’abus',
-	'right-abusefilter-log' => 'Voir le journal des abus',
-	'right-abusefilter-log-detail' => 'Voir les entrées détaillées du journal des abus',
-	'right-abusefilter-private' => 'Voir les données privées dans le journal des abus',
-	'right-abusefilter-modify-restricted' => 'Modifier les filtres d’abus qui ont des actions restreintes',
-	'right-abusefilter-revert' => "Révoquer toutes les modifications effectuées par un filtre d'abus donné",
-	'abusefilter-log' => 'Journal du filtre des abus',
-	'abusefilter-log-search' => 'Rechercher dans le journal des abus',
+	'abusefilter-accountreserved' => 'Le nom de ce compte est révervé pour l’usage par le filtre antiabus.',
+	'right-abusefilter-modify' => 'Modifier les filtres antiabus',
+	'right-abusefilter-view' => 'Voir les filtres antiabus',
+	'right-abusefilter-log' => 'Voir le journal antiabus',
+	'right-abusefilter-log-detail' => 'Voir les entrées détaillées du journal antiabus',
+	'right-abusefilter-private' => 'Voir les données privées dans le journal antiabus',
+	'right-abusefilter-modify-restricted' => 'Modifier les filtres antiabus qui ont des actions restreintes',
+	'right-abusefilter-revert' => 'Révoquer toutes les modifications effectuées par un filtre antiabus donné',
+	'action-abusefilter-modify' => 'modifie les filtres antiabus',
+	'action-abusefilter-view' => 'visionner les filtres antiabus',
+	'action-abusefilter-log' => 'visionner le journal antiabus',
+	'action-abusefilter-log-detail' => 'visionner en détail les entrées du journal antiabus',
+	'action-abusefilter-private' => 'visionner les données privées dans le journal antiabus',
+	'action-abusefilter-modify-restricted' => 'modifier les filtres antiabus avec des actions restreintes',
+	'action-abusefilter-revert' => 'annuler toutes les modification selon un filtre antiabus défini',
+	'abusefilter-log' => 'Journal du filtre antiabus',
+	'abusefilter-log-summary' => "Ce journal affiche une liste d'actions entreprises par les filtres.",
+	'abusefilter-log-search' => 'Rechercher dans le journal antiabus',
 	'abusefilter-log-search-user' => 'Utilisateur :',
 	'abusefilter-log-search-filter' => 'Identifiant du filtre :',
 	'abusefilter-log-search-title' => 'Titre :',
 	'abusefilter-log-search-submit' => 'Rechercher',
-	'abusefilter-log-entry' => '$1 : $2 a déclenché un filtre d’abus, lors de l’action « $3 » sur $4.
+	'abusefilter-log-entry' => '$1 : $2 a déclenché un filtre antiabus, lors de l’action « $3 » sur $4.
 Actions prises : $5 ;
 Description du filtre : $6',
-	'abusefilter-log-detailedentry' => '$1 : $2 a déclenché le [[Special:AbuseFilter/$3|filtre d’abus $3]], lors de l’action « $4 » sur $5.
+	'abusefilter-log-detailedentry' => '$1 : $2 a déclenché le [[Special:AbuseFilter/$3|filtre antiabus $3]], lors de l’action « $4 » sur $5.
 Actions prises : $6 ;
 Description du filtre : $7 ($8) ($9)',
 	'abusefilter-log-detailslink' => 'détails',
@@ -3716,7 +3724,7 @@ Description du filtre : $7 ($8) ($9)',
 	'abusefilter-log-details-private' => 'Données privées',
 	'abusefilter-log-details-ip' => 'Adresse IP d’origine',
 	'abusefilter-log-noactions' => 'néant',
-	'abusefilter-management' => 'Gestion du filtre des abus',
+	'abusefilter-management' => 'Gestion du filtre antiabus',
 	'abusefilter-list' => 'Tous les filtres',
 	'abusefilter-list-id' => 'Identifiant du filtre',
 	'abusefilter-list-status' => 'État',
@@ -3737,8 +3745,8 @@ Description du filtre : $7 ($8) ($9)',
 	'abusefilter-new' => 'Nouveau filtre',
 	'abusefilter-links' => 'Liens utiles :',
 	'abusefilter-tools-modifiertest-submit' => 'Tester',
-	'abusefilter-tools' => 'Outils du filtre des abus',
-	'abusefilter-loglink' => 'Voir le journal des abus',
+	'abusefilter-tools' => 'Outils du filtre antiabus',
+	'abusefilter-loglink' => 'Voir le journal antiabus',
 	'abusefilter-return' => 'Revenir à la gestion des filtres',
 	'abusefilter-list-options' => 'Options',
 	'abusefilter-list-options-deleted' => 'Filtres supprimés :',
@@ -3749,7 +3757,7 @@ Description du filtre : $7 ($8) ($9)',
 	'abusefilter-list-options-hidedisabled' => 'Masquer les filtres désactivés',
 	'abusefilter-list-options-submit' => 'Mettre à jour',
 	'abusefilter-tools-subtitle' => 'Outils',
-	'abusefilter-tools-text' => 'Voici quelques outils qui peuvent être utiles dans la formulation et le déboguage des filtres d’abus.
+	'abusefilter-tools-text' => 'Voici quelques outils qui peuvent être utiles dans la formulation et le déboguage des filtres antiabus.
 [[Special:AbuseFilter|Retour au menu principal]].',
 	'abusefilter-tools-expr' => 'Testeur d’expressions',
 	'abusefilter-tools-submitexpr' => 'Évaluer',
@@ -3787,7 +3795,7 @@ Il a atteint la limite de détection de plus de $1 % des actions.",
 	'abusefilter-edit-consequences' => 'Actions entreprises lors de la détection',
 	'abusefilter-edit-action-warn' => 'Déclencher ces actions après avoir donné un avertissement à l’utilisateur',
 	'abusefilter-edit-action-disallow' => 'Ne pas permettre à l’utilisateur d’effectuer l’action en question',
-	'abusefilter-edit-action-flag' => 'Marquer la modification dans le journal des abus',
+	'abusefilter-edit-action-flag' => 'Marquer la modification dans le journal antiabus',
 	'abusefilter-edit-action-blockautopromote' => 'Révoquer l’état autoconfirmé du compte utilisateur',
 	'abusefilter-edit-action-degroup' => 'Retirer l’utilisateur de tous les groupes privilégiés',
 	'abusefilter-edit-action-block' => 'Bloquer toutes les modifications par l’utilisateur et/ou l’adresse IP',
@@ -3891,8 +3899,11 @@ Demandez à un utilisateur autorisé à ajouter des actions restreintes d’effe
 	'abusefilter-edit-builder-vars-new-html' => 'Source HTML parsée de la nouvelle version',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Niveau de protection des modifications de la page',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Niveau de protection de renommage de la page',
+	'abusefilter-edit-builder-vars-old-text-stripped' => 'Page de texte ancienne dépourvue de toute mise en forme.',
+	'abusefilter-edit-builder-vars-old-links' => 'Liens dans la page, avant la modification',
+	'abusefilter-edit-builder-vars-old-html' => 'Page ancienne en wikitexte, analysée en HTML',
 	'abusefilter-filter-log' => 'Modifications récentes des filtres',
-	'abusefilter-history' => 'Historique des modifications du filtre des abus n° $1',
+	'abusefilter-history' => 'Historique des modifications du filtre antiabus n° $1',
 	'abusefilter-history-foruser' => 'Modifications par $1',
 	'abusefilter-history-hidden' => 'Caché',
 	'abusefilter-history-enabled' => 'Activé',
@@ -3929,20 +3940,20 @@ Demandez à un utilisateur autorisé à ajouter des actions restreintes d’effe
 	'abusefilter-action-rangeblock' => 'Bloquer la plage',
 	'abusefilter-action-disallow' => 'Interdire la modification',
 	'abusefilter-revert-title' => 'Révoquer toutes les modifications par le filtre $1',
-	'abusefilter-revert-intro' => 'Ce formulaire vous permet de révoquer toutes les modifications faites par le filtre d’abus $1.
+	'abusefilter-revert-intro' => 'Ce formulaire vous permet de révoquer toutes les modifications faites par le filtre antiabus $1.
 Veuillez faire très attention en utilisant cet outil.',
 	'abusefilter-revert-preview-item' => '$1 : $2 a fait $3 sur $4.
 Actions à révoquer : $5 ($6)',
-	'abusefilter-revert-search-legend' => 'Sélectionnez les actions à révoquer du filtre d’abus',
+	'abusefilter-revert-search-legend' => 'Sélectionnez les actions à révoquer du filtre antiabus',
 	'abusefilter-revert-periodstart' => 'Début de la période :',
 	'abusefilter-revert-periodend' => 'Fin de la période :',
 	'abusefilter-revert-search' => 'Sélectionner les actions',
 	'abusefilter-revert-filter' => 'Filtre :',
-	'abusefilter-revert-preview-intro' => 'Ci-dessous figurent les actions entreprises par le filtre d’abus et qui seront révoquées par cette action.
+	'abusefilter-revert-preview-intro' => 'Ci-dessous figurent les actions entreprises par le filtre antiabus et qui seront révoquées par cette action.
 Vérifiez-les avec attention et cliquez sur « Confirmer » pour valider votre sélection.',
 	'abusefilter-revert-confirm' => 'Confirmer',
-	'abusefilter-revert-success' => 'Vous avez révoqué avec succès toutes les actions entreprises par le filtre d’abus et déclenchées par le [[Special:AbuseFilter/$1|filtre $1]].',
-	'abusefilter-revert-reason' => 'Révocation automatique de toutes les actions entreprises par le filtre des abus et déclenchées par le filtre $1.
+	'abusefilter-revert-success' => 'Vous avez révoqué avec succès toutes les actions entreprises par le filtre antiabus et déclenchées par le [[Special:AbuseFilter/$1|filtre $1]].',
+	'abusefilter-revert-reason' => 'Révocation automatique de toutes les actions entreprises par le filtre antiabus et déclenchées par le filtre $1.
 Motif donné : $2',
 	'abusefilter-revert-reasonfield' => 'Motif de la révocation :',
 	'abusefilter-test' => 'Tester un filtre sur les précédentes modifications',
@@ -3958,7 +3969,7 @@ Pour charger un filtre existant, entrez son identifiant dans le champ sous la zo
 	'abusefilter-test-shownegative' => 'Afficher les modifications non prises en compte par le filtre',
 	'abusefilter-changeslist-examine' => 'examiner',
 	'abusefilter-examine' => 'Examiner des modifications individuelles',
-	'abusefilter-examine-intro' => 'Cette page vous permet d’examiner les variables générées pour une modification individuelle par le filtre des abus et de les tester avec les filtres.',
+	'abusefilter-examine-intro' => 'Cette page vous permet d’examiner les variables générées pour une modification individuelle par le filtre antiabus et de les tester avec les filtres.',
 	'abusefilter-examine-legend' => 'Sélectionner les modifications',
 	'abusefilter-examine-diff' => 'Adresse hypertexte du diff :',
 	'abusefilter-examine-user' => 'Utilisateur :',
@@ -3971,7 +3982,7 @@ Pour charger un filtre existant, entrez son identifiant dans le champ sous la zo
 	'abusefilter-examine-nomatch' => 'Cette modification n’a pas été détectée par le filtre.',
 	'abusefilter-examine-syntaxerror' => 'Le filtre a une syntaxe incorrecte',
 	'abusefilter-examine-notfound' => 'La modification que vous avez demandée n’a pas été trouvée.',
-	'abusefilter-examine-incompatible' => 'La modification que vous avez demandée n’est pas supportée par le filtre des abus.',
+	'abusefilter-examine-incompatible' => 'La modification que vous avez demandée n’est pas supportée par le filtre antiabus.',
 );
 
 /** Western Frisian (Frysk)
@@ -13012,4 +13023,3 @@ $messages['zh-tw'] = array(
 	'abusefilter-edit-builder-vars-movedfrom-id' => '要移動的源頁面頁面ID',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => '要移動的源名字空間',
 );
-
