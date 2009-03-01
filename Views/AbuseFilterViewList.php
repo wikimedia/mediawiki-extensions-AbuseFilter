@@ -138,7 +138,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$overflow_percent = sprintf( "%.2f", 100 * $overflow_count / $total_count );
 			$match_percent = sprintf( "%.2f", 100 * $match_count / $total_count );
 
-			$status = wfMsgExt( 'abusefilter-status', array( 'parsemag', 'escape' ),
+			$status = wfMsgExt( 'abusefilter-status', array( 'parseinline' ),
 				$wgLang->formatNum($total_count),
 				$wgLang->formatNum($overflow_count),
 				$wgLang->formatNum($overflow_percent),
