@@ -97,7 +97,7 @@ class AbuseFilterHooks {
 			$message = wfMsg( 'abusefilter-accountreserved' );
 			return false;
 		}
-		$vars = array();
+		$vars = new AbuseFilterVariableHolder;
 		
 		$vars->setVar( 'ACTION', 'createaccount' );
 		$vars->setVar( 'ACCOUNTNAME', $user->getName() );
