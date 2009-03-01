@@ -54,6 +54,12 @@ $aliases['eo'] = array(
 	'AbuseFilter' => array( 'Filtrilo kontraŭ misuzado' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'AbuseLog' => array( 'Väärinkäyttöloki' ),
+	'AbuseFilter' => array( 'Väärinkäyttösuodatin' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'AbuseLog' => array( 'Journal des abus', 'JournalDesAbus' ),
