@@ -232,7 +232,7 @@ class SpecialAbuseLog extends SpecialPage {
 					$user, 
 					$row->afl_filter, 
 					$row->afl_action, 
-					$sk->makeKnownLinkObj( $title ), 
+					$sk->link( $title ), 
 					$actions_taken, 
 					$parsed_comments, 
 					$detailsLink, 
@@ -247,7 +247,7 @@ class SpecialAbuseLog extends SpecialPage {
 					$timestamp, 
 					$user, 
 					$row->afl_action, 
-					$sk->makeKnownLinkObj( $title ), 
+					$sk->link( $title ), 
 					$actions_taken, 
 					$parsed_comments 
 				) 
