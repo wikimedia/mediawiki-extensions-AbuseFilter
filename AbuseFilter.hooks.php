@@ -7,7 +7,7 @@ class AbuseFilterHooks {
 // So far, all of the error message out-params for these hooks accept HTML.
 // Hooray!
 
-	public static function onEditFilter($editor, $text, $section, &$error, $summary) {
+	public static function onEditFilterMerged($editor, $text, &$error, $summary) {
 		// Load vars
 		$vars = new AbuseFilterVariableHolder;
 		

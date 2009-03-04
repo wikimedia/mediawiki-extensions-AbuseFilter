@@ -1158,7 +1158,7 @@ class AbuseFilter {
 		$article = new Article( $title );
 
 		$vars->setLazyLoadVar( 'edit_diff', 'diff',
-			array( 'oldtext-var' => 'old_text', 'newtext-var' => 'new_text' ) );
+			array( 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_wikitext' ) );
 		$vars->setLazyLoadVar( 'new_size', 'length', array( 'length-var' => 'new_wikitext' ) );
 		$vars->setLazyLoadVar( 'old_size', 'length', array( 'length-var' => 'old_wikitext' ) );
 		$vars->setLazyLoadVar( 'edit_delta', 'subtract',

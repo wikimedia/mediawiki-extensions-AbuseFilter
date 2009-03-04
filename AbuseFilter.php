@@ -53,7 +53,7 @@ $wgSpecialPages['AbuseFilter'] = 'SpecialAbuseFilter';
 $wgSpecialPageGroups['AbuseLog'] = 'changes';
 $wgSpecialPageGroups['AbuseFilter'] = 'wiki';
 
-$wgHooks['EditFilter'][] = 'AbuseFilterHooks::onEditFilter';
+$wgHooks['EditFilterMerged'][] = 'AbuseFilterHooks::onEditFilterMerged';
 $wgHooks['GetAutoPromoteGroups'][] = 'AbuseFilterHooks::onGetAutoPromoteGroups';
 $wgHooks['AbortMove'][] = 'AbuseFilterHooks::onAbortMove';
 $wgHooks['AbortNewAccount'][] = 'AbuseFilterHooks::onAbortNewAccount';
