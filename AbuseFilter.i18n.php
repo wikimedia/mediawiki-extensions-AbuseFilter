@@ -276,6 +276,7 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Old page text, stripped of any markup',
 	'abusefilter-edit-builder-vars-old-links' => 'Links in the page, before the edit',
 	'abusefilter-edit-builder-vars-old-html' => 'Old page wikitext, parsed into HTML',
+	'abusefilter-edit-builder-vars-minor-edit' => 'Whether or not the edit is marked as minor',
 	
 	// Filter history
 	'abusefilter-filter-log' => 'Recent filter changes',

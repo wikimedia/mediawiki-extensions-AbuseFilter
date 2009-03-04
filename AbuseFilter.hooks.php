@@ -21,6 +21,7 @@ class AbuseFilterHooks {
 		$vars->addHolder( AbuseFilter::generateTitleVars( $editor->mTitle , 'ARTICLE' ) );
 		$vars->setVar( 'ACTION', 'edit' );
 		$vars->setVar( 'SUMMARY', $summary );
+		$vars->setVar( 'minor_edit', $editor->minoredit );
 		
 		$vars->setLazyLoadVar( 'old_wikitext', 'revision-text-by-timestamp',
 			array(

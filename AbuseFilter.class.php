@@ -99,6 +99,7 @@ class AbuseFilter {
 			'old_text' => 'old-text-stripped',
 			'old_html' => 'old-html',
 			'old_links' => 'old-links',
+			'minor_edit' => 'minor-edit',
 		),
 	);
 
@@ -1108,6 +1109,7 @@ class AbuseFilter {
 		$vars->addHolder( self::generateTitleVars( $title, 'ARTICLE' ) );
 		$vars->setVar( 'ACTION', 'edit' );
 		$vars->setVar( 'SUMMARY', $row->rc_comment );
+		$vars->setVar( 'minor_edit', $row->rc_minor );
 
 		
 		$vars->setLazyLoadVar( 'new_wikitext', 'revision-text-by-id',
