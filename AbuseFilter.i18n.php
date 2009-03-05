@@ -5117,6 +5117,7 @@ $messages['he'] = array(
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'טקסט הדף הישן, ללא סימוני HTML',
 	'abusefilter-edit-builder-vars-old-links' => 'קישורים בדף, לפני העריכה',
 	'abusefilter-edit-builder-vars-old-html' => 'טקסט הוויקי של הדף הישן, בפיענוח ל־HTML',
+	'abusefilter-edit-builder-vars-minor-edit' => 'האם עריכה זו מסומנת כמשנית או לא',
 	'abusefilter-filter-log' => 'שינויים אחרונים במסננים',
 	'abusefilter-history' => 'היסטוריית השינויים של מסנן ההשחתה #$1',
 	'abusefilter-history-foruser' => 'שינויים של $1',
