@@ -685,7 +685,8 @@ class AbuseFilterParser {
 	
 	protected function getVarValue( $var ) {
 		$var = strtolower($var);
-		if ( ! array_key_exists( $var, AbuseFilter::$builderValues['vars'] ) ) {
+		$builderValues = AbuseFilter::getBuilderValues();
+		if ( ! array_key_exists( $var, $builderValues['vars'] ) ) {
 			// If the variable is invalid, throw an exception
 			throw new AFPUserVisibleException( 'unrecognisedvar',
 												$this->mCur->pos,

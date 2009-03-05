@@ -119,6 +119,17 @@ class AbuseFilter {
 		return $vars;
 	}
 	
+	public static function getBuilderValues() {
+		static $realValues = null;
+		
+		if ($realValues) return $realValues;
+		
+		$realValues = self::$builderValues;
+		wfRunHooks( 'AbuseFilter-builder', array( &$realValues ) );
+		
+		return $realValues;
+	}
+	
 	public static function ajaxCheckSyntax( $filter ) {
 		wfLoadExtensionMessages( 'AbuseFilter' );
 		
@@ -424,6 +435,9 @@ class AbuseFilter {
 	
 	public static function filterAction( $vars, $title ) {
 		global $wgUser,$wgMemc;
+		
+		// Add vars from extensions
+		wfRunHooks( 'AbuseFilter-filterAction', array( &$vars, $title ) );
 
 		$dbr = wfGetDB( DB_SLAVE );
 
@@ -940,7 +954,7 @@ class AbuseFilter {
 
 		$rules = Xml::textarea( $textName, $rules );
 
-		$dropDown = self::$builderValues;
+		$dropDown = self::getBuilderValues();
 
 		// Generate builder drop-down
 		$builder = '';
@@ -1221,7 +1235,8 @@ class AbuseFilter {
 		// I don't want to change the names of the pre-existing messages
 		// describing the variables, nor do I want to rewrite them, so I'm just
 		// mapping the variable names to builder messages with a pre-existing array.
-		$variableMessageMappings = self::$builderValues['vars'];
+		$variableMessageMappings = self::getBuilderValues();
+		$variableMessageMappings = $variableMessageMappings['vars'];
 		
 		$output .= 
 			Xml::openElement( 'table', array( 'class' => 'mw-abuselog-details' ) ) . 
