@@ -44,6 +44,8 @@ class AbuseFilterVariableHolder {
 	}
 	
 	function addHolder( $addHolder ) {
+		if ( !is_object($addHolder) )
+			throw new MWException( "Invalid argument to AbuseFilterVariableHolder::addHolder" );
 		$this->mVars = array_merge( $this->mVars, $addHolder->mVars );
 	}
 	
