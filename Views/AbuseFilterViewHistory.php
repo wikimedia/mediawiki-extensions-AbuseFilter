@@ -11,7 +11,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 	}
 
 	function show() {
-		global $wgRequest,$wgOut;
+		global $wgRequest, $wgOut, $wgLang;
 
 		global $wgUser;
 
@@ -21,7 +21,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			$wgOut->setPageTitle( wfMsg( 'abusefilter-history', $filter ) );
 		else
 			$wgOut->setPageTitle( wfMsg( 'abusefilter-filter-log' ) );
-			
+
 		$sk = $wgUser->getSkin();
 
 		$links = array();
@@ -32,8 +32,8 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		foreach( $links as $msg => $title ) {
 			$links[$msg] = $sk->link( $title, wfMsgExt( $msg, 'parseinline' ) );
 		}
-		
-		$backlinks = implode( '&nbsp;&bull;&nbsp;', $links );
+
+		$backlinks = $wgLang->pipeList( $links );
 		$wgOut->addHTML( Xml::tags( 'p', null, $backlinks ) );
 
 		$user = $wgRequest->getText( 'user' );
@@ -138,7 +138,7 @@ class AbuseFilterHistoryPager extends TablePager {
 				foreach( $flags as $flag ) {
 					$flags_display[] = wfMsg( "abusefilter-history-$flag" );
 				}
-				$formatted = implode( ', ', $flags_display );
+				$formatted = $wgLang->commaList( $flags_display );
 				break;
 			case 'afh_pattern':
 				$formatted = htmlspecialchars( $wgLang->truncate( $value, 200 ) );
@@ -152,17 +152,14 @@ class AbuseFilterHistoryPager extends TablePager {
 				$display_actions = '';
 
 				foreach( $actions as $action => $parameters ) {
-					$display_actions .= Xml::tags( 
-						'li', null, 
-						wfMsgExt( 
-							'abusefilter-history-action', 
-							array( 'parseinline' ), 
-							array( 
-								AbuseFilter::getActionDisplay($action), 
-								implode('; ', $parameters)
-							) 
-						) 
-					);
+					if( count( $parameters ) == 0 ) {
+						$displayAction = AbuseFilter::getActionDisplay( $action );
+					} else {
+						$displayAction = AbuseFilter::getActionDisplay( $action ) .
+									wfMsgExt( 'colon-separator', 'escapenoentities' ) .
+									$wgLang->semicolonList( $parameters );
+					}
+					$display_actions .= Xml::tags( 'li', null, $displayAction );
 				}
 				$display_actions = Xml::tags( 'ul', null, $display_actions );
 
