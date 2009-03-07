@@ -780,7 +780,7 @@ class AbuseFilterParser {
 							$tok .= 'x';
 						}
 					} else {
-						$tok .= $code[$offset + 1];
+						$tok .= "\\" . $code[$offset + 1];
 					}
 					
 					$offset+=2;
