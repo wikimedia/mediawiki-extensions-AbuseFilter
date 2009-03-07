@@ -292,19 +292,20 @@ class AbuseFilterParser {
 	
 	// length,lcase,ccnorm,rmdoubles,specialratio,rmspecials,norm,count
 	static $mFunctions = array(
-	'lcase' => 'funcLc',
-	'length' => 'funcLen',
-	'string' => 'castString',
-	'int' => 'castInt',
-	'float' => 'castFloat',
-	'bool' => 'castBool',
-	'norm' => 'funcNorm',
-	'ccnorm' => 'funcCCNorm',
-	'specialratio' => 'funcSpecialRatio',
-	'rmspecials' => 'funcRMSpecials',
-	'rmdoubles' => 'funcRMDoubles',
-	'rmwhitespace' => 'funcRMWhitespace',
-	'count' => 'funcCount'
+		'lcase' => 'funcLc',
+		'length' => 'funcLen',
+		'string' => 'castString',
+		'int' => 'castInt',
+		'float' => 'castFloat',
+		'bool' => 'castBool',
+		'norm' => 'funcNorm',
+		'ccnorm' => 'funcCCNorm',
+		'specialratio' => 'funcSpecialRatio',
+		'rmspecials' => 'funcRMSpecials',
+		'rmdoubles' => 'funcRMDoubles',
+		'rmwhitespace' => 'funcRMWhitespace',
+		'count' => 'funcCount',
+		'rcount' => 'funcRCount',
 	);
 	
 	// Order is important. The punctuation-matching regex requires that
@@ -956,6 +957,35 @@ class AbuseFilterParser {
 			while ( ($offset = strpos( $haystack, $needle, $offset + 1 )) !== false ) {
 				$count++;
 			}
+		}
+		
+		return new AFPData( AFPData::DInt, $count );
+	}
+	
+	protected function funcRCount( $args ) {
+		if( count( $args ) < 1 )
+			throw new AFPExpection( "No params passed to ".__METHOD__ );
+			
+		$offset = -1;
+		
+		if (count($args) == 1) {
+			$count = count( explode( ",", $args[0]->toString() ) );
+		} else {
+			$needle = $args[0]->toString();
+			$haystack = $args[1]->toString();
+
+			## Munge the regex			
+			if (preg_match('/^\/.*\/$/u', $needle)) {
+				$needle .= 'u';
+			} elseif (preg_match( '/^\/.*\/\w+$/u', $needle ) ) {
+				# Nothing
+			} else {
+				$needle = "/$needle/u";
+			}
+			
+			$count = 0;
+			$matches = array();
+			$count = preg_match_all( $needle, $haystack, $matches );
 		}
 		
 		return new AFPData( AFPData::DInt, $count );

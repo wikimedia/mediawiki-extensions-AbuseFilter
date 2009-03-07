@@ -57,7 +57,8 @@ class AbuseFilter {
 			'rmdoubles(string)' => 'rmdoubles',
 			'specialratio(string)' => 'specialratio',
 			'norm(string)' => 'norm',
-			'count(needle,haystack)' => 'count'
+			'count(needle,haystack)' => 'count',
+			'rcount(needle,haystack)' => 'rcount',
 		),
 		'vars' => array(
 			'accountname' => 'accountname',
@@ -239,7 +240,7 @@ class AbuseFilter {
 		global $wgAbuseFilterParserClass;
 
 		if (self::checkSyntax( $expr ) !== true) {
-			return '';
+			return 'BADSYNTAX';
 		}
 		
 		$parser = new $wgAbuseFilterParserClass;

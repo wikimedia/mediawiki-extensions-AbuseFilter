@@ -235,6 +235,7 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-edit-builder-funcs-specialratio' => 'Special characters / total characters (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Normalise (norm)',
 	'abusefilter-edit-builder-funcs-count' => 'Number of times string X appears in string Y (count)',
+	'abusefilter-edit-builder-funcs-count' => 'Number of times regex X appears in string Y (rcount)',
 	'abusefilter-edit-builder-group-vars' => 'Variables',
 	'abusefilter-edit-builder-vars-accountname' => 'Account name (on account creation)',
 	'abusefilter-edit-builder-vars-action' => 'Action',
