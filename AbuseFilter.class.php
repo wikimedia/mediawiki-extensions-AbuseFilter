@@ -265,12 +265,12 @@ class AbuseFilter {
 		$k = AbuseFilter::autoPromoteBlockKey($u);
 		
 		if (!$wgMemc->get( $k ) ) {
-			return wfMsg( 'abusefilter-reautoconfirm-none' );
+			return wfMsgExt( 'abusefilter-reautoconfirm-none', array( 'parsemag' ), $username );
 		}
 		
 		$wgMemc->delete( $k );
 		
-		return wfMsg( 'abusefilter-reautoconfirm-done' );
+		return wfMsgExt( 'abusefilter-reautoconfirm-done', array( 'parsemag' ), $username );
 	}
 	
 	public static function ajaxEvaluateExpression( $expr ) {
