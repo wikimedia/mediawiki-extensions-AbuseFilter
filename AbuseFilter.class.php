@@ -199,7 +199,7 @@ class AbuseFilter {
 		$vars = new AbuseFilterVariableHolder;
 
 		if (!$title)
-			return array();
+			return new AbuseFilterVariableHolder;
 		
 		$vars->setVar( $prefix."_ARTICLEID", $title->getArticleId() );
 		$vars->setVar( $prefix."_NAMESPACE", $title->getNamespace() );
@@ -1153,8 +1153,10 @@ class AbuseFilter {
 			$user->setName( $row->rc_user_text );
 		}
 		
+		$params = explode( "\n", trim($row->rc_params) );
+		
 		$oldTitle = Title::makeTitle( $row->rc_namespace, $row->rc_title );
-		$newTitle = Title::newFromText( trim($row->rc_params) );
+		$newTitle = Title::newFromText( $params[0] );
 		
 		$vars = AbuseFilterVariableHolder::merge(
 			$vars,
