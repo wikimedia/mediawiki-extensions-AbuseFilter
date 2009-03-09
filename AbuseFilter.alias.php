@@ -62,8 +62,8 @@ $aliases['fi'] = array(
 
 /** French (Français) */
 $aliases['fr'] = array(
-	'AbuseLog' => array( 'Journal des abus', 'JournalDesAbus' ),
-	'AbuseFilter' => array( "Filtre d'abus", 'FiltredAbus', 'FilterAbus' ),
+	'AbuseLog' => array( 'Journal du filtre antiabus', 'Journal du filtre anti-abus', 'JournalFiltreAntiabus', 'Journal des abus', 'JournalDesAbus' ),
+	'AbuseFilter' => array( 'Filtre antiabus', 'Filtre anti-abus', 'FiltreAntiabus', "Filtre d'abus", 'FiltredAbus', 'FilterAbus' ),
 );
 
 /** Galician (Galego) */
