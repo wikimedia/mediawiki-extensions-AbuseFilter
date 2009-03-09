@@ -306,6 +306,7 @@ class AbuseFilterParser {
 		'rmwhitespace' => 'funcRMWhitespace',
 		'count' => 'funcCount',
 		'rcount' => 'funcRCount',
+		'ip_in_range' => 'funcIPInRange',
 	);
 	
 	// Order is important. The punctuation-matching regex requires that
@@ -989,6 +990,18 @@ class AbuseFilterParser {
 		}
 		
 		return new AFPData( AFPData::DInt, $count );
+	}
+	
+	protected function funcIPInRange( $args ) {
+		if( count( $args ) < 2 )
+			throw new AFPExpection( "No params passed to ".__METHOD__ );
+			
+		$ip = $args[0]->toString();
+		$range = $args[1]->toString();
+		
+		$result = IP::isInRange( $ip, $range );
+		
+		return new AFPData( AFPData::DBool, $result );
 	}
 	
 	protected function funcCCNorm( $args ) {
