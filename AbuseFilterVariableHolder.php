@@ -102,7 +102,11 @@ class AFComputedVariable {
 			return self::$userCache[$username] = $u;
 		}
 		
-		return self::$userCache[$username] = User::newFromName( $username );
+		$user = User::newFromName( $username );
+		$user->load();
+		self::$userCache[$username] = $user;
+		
+		return $user;
 	}
 	
 	static function articleFromTitle( $namespace, $title ) {
