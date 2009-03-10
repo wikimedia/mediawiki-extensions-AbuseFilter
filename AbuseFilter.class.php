@@ -304,6 +304,7 @@ class AbuseFilter {
 	/** Returns an associative array of filters which were tripped */
 	public static function checkAllFilters( $vars ) {
 		// Fetch from the database.
+		wfProfileIn( __METHOD__ );
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'abuse_filter', '*', array( 'af_enabled' => 1, 'af_deleted' => 0 ) );
 
@@ -326,12 +327,15 @@ class AbuseFilter {
 
 		// Update statistics, and disable filters which are over-blocking.
 		self::recordStats( $filter_matched );
+		
+		wfProfileOut( __METHOD__ );
 
 		return $filter_matched;
 	}
 
 	/** Returns an array [ list of actions taken by filter, error message to display, if any ] */
 	public static function executeFilterActions( $filters, $title, $vars ) {
+		wfProfileIn( __METHOD__ );
 		$dbr = wfGetDB( DB_SLAVE );
 		// Retrieve the consequences.
 		$res = $dbr->select( array('abuse_filter_action', 'abuse_filter'), '*',
@@ -431,11 +435,14 @@ class AbuseFilter {
 			}
 		}
 
+		wfProfileOut( __METHOD__ );
 		return array( $actionsTaken, implode( "\n", $messages ) );
 	}
 	
 	public static function filterAction( $vars, $title ) {
 		global $wgUser,$wgMemc;
+		
+		wfProfileIn( __METHOD__ );
 		
 		// Add vars from extensions
 		wfRunHooks( 'AbuseFilter-filterAction', array( &$vars, $title ) );
@@ -446,8 +453,11 @@ class AbuseFilter {
 
 		// Short-cut any remaining code if no filters were hit.
 		if ( count( array_filter( $filter_matched) ) == 0 ) {
+			wfProfileOut( __METHOD__ );
 			return true;
 		}
+		
+		wfProfileIn( __METHOD__.'-block' );
 
 		list( $actions_taken, $error_msg ) = self::executeFilterActions(
 			array_keys( array_filter( $filter_matched ) ), $title, $vars );
@@ -469,10 +479,15 @@ class AbuseFilter {
 
 		$error_msg = $error_msg == '' ? true : $error_msg;
 		
+		wfProfileOut( __METHOD__.'-block' );
+		
+		wfProfileOut( __METHOD__ );
+		
 		return $error_msg;
 	}
 
 	public static function addLogEntries( $actions_taken, $log_template, $action ) {
+		wfProfileIn( __METHOD__ );
 		$dbw = wfGetDB( DB_MASTER );
 
 		$log_rows = array();
@@ -492,8 +507,11 @@ class AbuseFilter {
 		}
 
 		if ( !count($log_rows) ) {
+			wfProfileOut( __METHOD__ );
 			return;
 		}
+		
+		wfProfileIn( __METHOD__.'-hitstats' );
 		
 		global $wgMemc;
 		
@@ -510,6 +528,10 @@ class AbuseFilter {
 		// Check for emergency disabling.
 		$total = $wgMemc->get( AbuseFilter::filterUsedKey() );
 		self::checkEmergencyDisable( $logged_filters, $total );
+		
+		wfProfileOut( __METHOD__.'-hitstats' );
+		
+		wfProfileOut( __METHOD__ );
 	}
 	
 	/** Store a var dump to External Storage or the text table
@@ -834,6 +856,8 @@ class AbuseFilter {
 	public static function recordStats( $filters ) {
 		global $wgAbuseFilterConditionLimit,$wgMemc;
 		
+		wfProfileIn( __METHOD__ );
+		
 		$blocking_filters = array_keys( array_filter( $filters ) );
 
 		// Figure out if we've triggered overflows and blocks.
@@ -867,6 +891,7 @@ class AbuseFilter {
 		if ($overflow_triggered) {
 			$wgMemc->incr( $overflow_key );
 		}
+		wfProfileOut( __METHOD__ );
 	}
 
 	public static function checkEmergencyDisable( $filters, $total ) {
