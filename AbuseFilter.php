@@ -70,6 +70,11 @@ $wgAvailableRights[] = 'abusefilter-private';
 $wgAvailableRights[] = 'abusefilter-modify-restricted';
 $wgAvailableRights[] = 'abusefilter-revert';
 
+$wgLogTypes[] = 'abusefilter';
+$wgLogNames['abusefilter']          = 'abusefilter-log-name';
+$wgLogHeaders['abusefilter']        = 'abusefilter-log-header';
+$wgLogActionsHandlers['abusefilter/modify'] = array( 'AbuseFilter', 'modifyActionText' );
+
 $wgAbuseFilterAvailableActions = array( 'flag', 'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'degroup', 'tag'  );
 
 $wgAbuseFilterConditionLimit = 1000;

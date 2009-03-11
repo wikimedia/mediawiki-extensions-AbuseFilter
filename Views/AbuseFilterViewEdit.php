@@ -152,13 +152,20 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$afh_row['afh_flags'] = implode( ",", $flags );
 
 			$afh_row['afh_filter'] = $new_id;
+			$afh_row['afh_id'] = $history_id = $dbw->nextSequenceValue( 'abuse_filter_af_id_seq' );
 
 			// Do the update
 			$dbw->insert( 'abuse_filter_history', $afh_row, __METHOD__ );
+			$history_id = $dbw->insertId();
 			$dbw->delete( 'abuse_filter_action', array( 'afa_filter' => $filter ), __METHOD__ );
 			$dbw->insert( 'abuse_filter_action', $actionsRows, __METHOD__ );
 
 			$dbw->commit();
+			
+			// Logging
+			$lp = new LogPage( 'abusefilter' );
+			
+			$lp->addEntry( 'modify', $this->getTitle( $new_id ), '', array( $history_id, $new_id ) );
 
 			// Special-case stuff for tags -- purge the tag list cache.
 			if ( isset( $actions['tag'] ) ) {
@@ -214,8 +221,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		if ($error) {
 			$wgOut->addHTML( "<span class=\"error\">$error</span>" );
 		}
-
-		$wgOut->addHTML( $sk->link( $this->getTitle(), wfMsg( 'abusefilter-history-backlist' ) ) );
 
 		$fields = array();
 

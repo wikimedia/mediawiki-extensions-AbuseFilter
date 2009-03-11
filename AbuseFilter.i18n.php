@@ -381,6 +381,12 @@ You can receive a full explanation by clicking the "Check Syntax" button.',
 	'abusefilter-topnav-examine' => 'Examine past edits',
 	'abusefilter-topnav-log' => 'Abuse Log',
 	'abusefilter-topnav-tools' => 'Debugging tools',
+	
+	// Logging
+	'abusefilter-log-name' => 'Abuse Filter log',
+	'abusefilter-log-header' => "This log shows a summary of changes made to filters.
+For full details, see [[Special:AbuseFilter/history|the list]] of recent filter changes.",
+	'abusefilter-log-entry-modify' => 'modified $1 ($2)',
 );
 
 /** Message documentation (Message documentation)
