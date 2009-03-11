@@ -103,8 +103,9 @@ class AbuseFilter {
 			'minor_edit' => 'minor-edit',
 		),
 	);
-	
+
 	public static function addNavigationLinks( $out, $sk, $pageType ) {
+		global $wgLang;
 		$linkDefs = array(
 					'home' => 'Special:AbuseFilter',
 					'recentchanges' => 'Special:AbuseFilter/history',
@@ -136,12 +137,12 @@ class AbuseFilter {
 				$links[] = $sk->link( $title, $msg );
 			}
 		}
-		
-		$linkStr = '( '.implode( ' | ', $links ).' )';
+
+		$linkStr = '(' . $wgLang->pipeList( $links ) . ')';
 		$linkStr = wfMsgExt( 'abusefilter-topnav', 'parseinline' ) . " $linkStr";
-		
+
 		$linkStr = Xml::tags( 'div', array( 'class' => 'mw-abusefilter-navigation' ), $linkStr );
-		
+
 		$out->addHTML( $linkStr );
 	}
 
