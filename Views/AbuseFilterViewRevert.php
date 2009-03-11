@@ -67,7 +67,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 					'abusefilter-revert-preview-item', 
 					array( 'parseinline', 'replaceafter' ),
 					array( 
-						$wgLang->timeanddate( $result['timestamp'] ), 
+						$wgLang->timeanddate( $result['timestamp'], true ), 
 						$sk->userLink( $result['userid'], $result['user'] ), 
 						$result['action'], 
 						$sk->link( $result['title'] ), 

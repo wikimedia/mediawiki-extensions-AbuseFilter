@@ -328,7 +328,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				wfMsgExt( 
 					'abusefilter-edit-lastmod-text', 
 					array( 'parseinline', 'replaceafter' ), 
-					array( $wgLang->timeanddate( $row->af_timestamp ), $user ) 
+					array( $wgLang->timeanddate( $row->af_timestamp, true ), $user ) 
 				);
 			$history_display = wfMsgExt( 'abusefilter-edit-viewhistory', array( 'parseinline' ) );
 			$fields['abusefilter-edit-history'] = 

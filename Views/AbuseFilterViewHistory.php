@@ -121,7 +121,7 @@ class AbuseFilterHistoryPager extends TablePager {
 			case 'afh_timestamp':
 				$title = SpecialPage::getTitleFor( 'AbuseFilter', 
 					'history/'.$row->afh_filter.'/item/'.$row->afh_id );
-				$formatted = $sk->link( $title, $wgLang->timeanddate( $row->afh_timestamp ) );
+				$formatted = $sk->link( $title, $wgLang->timeanddate( $row->afh_timestamp, true ) );
 				break;
 			case 'afh_user_text':
 				$formatted = 

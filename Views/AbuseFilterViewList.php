@@ -258,7 +258,7 @@ class AbuseFilterPager extends TablePager {
 				return wfMsgExt( 
 					'abusefilter-edit-lastmod-text', 
 					array( 'replaceafter', 'parseinline' ), 
-					array( $wgLang->timeanddate($value), $userLink ) 
+					array( $wgLang->timeanddate( $value, true ), $userLink ) 
 				);
 			default:
 				throw new MWException( "Unknown row type $name!" );
