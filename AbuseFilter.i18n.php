@@ -4947,6 +4947,9 @@ $messages['he'] = array(
 	'abusefilter-desc' => 'ביצוע בדיקות אוטומטיות לעריכות כדי לאתר השחתות',
 	'abusefilter' => 'תצורת מסנן ההשחתה',
 	'abuselog' => 'יומן השחתה',
+	'abusefilter-intro' => 'ברוכים הבאים לממשק הניהול של מסנן ההשחתה.
+מסנן ההשחתה הוא אמצעי אוטומטי להפעלת בדיקות אוטומטיות של כל הפעולות.
+ממשק הז מציג רשימה של מסננים שהוגדרו, ומאפשר את שינויים.',
 	'abusefilter-warning' => "<big>'''אזהרה'''</big>: פעולה זו זוהתה כמזיקה.
 עריכות שאינן מועילות ישוחזרו מיידית,
 ועריכות גסות או חזרה על עריכות שאינן מועילות יגרמו לחסימת החשבון או המחשב שלכם.
@@ -5025,7 +5028,7 @@ $messages['he'] = array(
 	'abusefilter-deleted' => 'מחוק',
 	'abusefilter-disabled' => 'מבוטל',
 	'abusefilter-hitcount' => '{{PLURAL:$1|פעולה אחת סוננה|$1 פעולות סוננו}}',
-	'abusefilter-new' => 'מסנן חדש',
+	'abusefilter-new' => 'יצירת מסנן חדש',
 	'abusefilter-links' => 'קישורים שימושיים:',
 	'abusefilter-tools-modifiertest-submit' => 'בדיקה',
 	'abusefilter-tools' => 'כלי מסנן ההשחתה',
@@ -5040,8 +5043,7 @@ $messages['he'] = array(
 	'abusefilter-list-options-hidedisabled' => 'הסתרת המסננים שבוטלו',
 	'abusefilter-list-options-submit' => 'עדכון',
 	'abusefilter-tools-subtitle' => 'כלים',
-	'abusefilter-tools-text' => 'להלן מספר כלים שעשויים להיות לכם לעזר בניסוח ובניפוי השגיאות של מסנני ההשחתה.
-[[Special:AbuseFilter|חזרה לתפריט הראשי]]',
+	'abusefilter-tools-text' => 'להלן מספר כלים שעשויים להיות לכם לעזר בניסוח ובניפוי השגיאות של מסנני ההשחתה.',
 	'abusefilter-tools-expr' => 'בודק הביטויים',
 	'abusefilter-tools-submitexpr' => 'הערכה',
 	'abusefilter-tools-reautoconfirm' => 'סימון המשתמש מחדש כמשתמש ותיק',
@@ -5194,7 +5196,6 @@ $messages['he'] = array(
 	'abusefilter-history-comments' => 'הערות',
 	'abusefilter-history-actions' => 'פעולות',
 	'abusefilter-history-backedit' => 'חזרה לעורך המסננים',
-	'abusefilter-history-backlist' => 'חזרה לרשימת המסננים',
 	'abusefilter-history-deleted' => 'נמחק',
 	'abusefilter-history-filterid' => 'מסמן',
 	'abusefilter-history-select-legend' => 'עידון החיפוש',
@@ -5245,6 +5246,8 @@ $messages['he'] = array(
 	'abusefilter-test-period-start' => 'שינויים שנערכו לאחר:',
 	'abusefilter-test-period-end' => 'שינויים שנערכו לפני:',
 	'abusefilter-test-shownegative' => 'הצגת שינויים שאינם תואמים את המסנן',
+	'abusefilter-test-syntaxerr' => 'במסנן שהכנסתם יש שגיאת תחביר.
+באפשרותכם לקבל הסבר מלא באמצעות לחיצה על הכפתור "בדיקת תחביר".',
 	'abusefilter-changeslist-examine' => 'בדיקה',
 	'abusefilter-examine' => 'בדיקת שינויים אינדיבידואליים',
 	'abusefilter-examine-intro' => 'דף זה מאפשר לכם לבדוק את המשתנים שמייצר מסנן ההשחתה עבור שינוי אינדיבידואלי, ולבדוק זאת אל מול המסננים.',
@@ -5261,6 +5264,16 @@ $messages['he'] = array(
 	'abusefilter-examine-syntaxerror' => 'תחביר המסנן אינו תקין',
 	'abusefilter-examine-notfound' => 'לא ניתן לאתר את השינוי המבוקש.',
 	'abusefilter-examine-incompatible' => 'השינוי המבוקש אינו נתמך על ידי מסנן ההשחתה',
+	'abusefilter-topnav' => "'''ניווט במסנן ההשחתה'''",
+	'abusefilter-topnav-home' => 'הדף הראשי',
+	'abusefilter-topnav-test' => 'בדיקה מקובצת',
+	'abusefilter-topnav-examine' => 'בדיקת עריכות קודמות',
+	'abusefilter-topnav-log' => 'יומן ההשחתה',
+	'abusefilter-topnav-tools' => 'כלי ניפוי שגיאות',
+	'abusefilter-log-name' => 'יומן מסנן ההשחתה',
+	'abusefilter-log-header' => 'יומן זה מציג סיכום של השינויים שבוצעו למסננים.
+לפרטים מלאים, ראו את [[Special:AbuseFilter/history|רשימת]] השינויים האחרונים למסננים.',
+	'abusefilter-log-entry-modify' => 'שינה את $1 ($2)',
 );
 
 /** Hindi (हिन्दी)
