@@ -46,4 +46,7 @@ class AbuseFilterChangesList extends OldChangesList {
 			$classes[] = $class;
 		}
 	}
+	
+	// Kill rollback links.
+	protected function insertRollback( &$s, &$rc ) {}
 }
