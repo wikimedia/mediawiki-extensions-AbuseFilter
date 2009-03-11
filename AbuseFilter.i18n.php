@@ -17,6 +17,9 @@ $messages['en'] = array(
 	// Special pages
 	'abusefilter' => 'Abuse filter configuration',
 	'abuselog' => 'Abuse log',
+	'abusefilter-intro' => "Welcome to the Abuse Filter management interface.
+The Abuse Filter is an automated software mechanism of applying automatic heuristics to all actions.
+This interface shows a list of defined filters, and allows them to be modified.",
 
 	// Hooks
 	'abusefilter-warning' => "<big>'''Warning'''</big>: This action has been automatically identified as harmful.
@@ -108,7 +111,7 @@ Filter description: $7 ($8) ($9)',
 	'abusefilter-deleted' => 'Deleted',
 	'abusefilter-disabled' => 'Disabled',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|hit|hits}}',
-	'abusefilter-new' => 'New filter',
+	'abusefilter-new' => 'Create a new filter',
 	'abusefilter-links' => 'Useful links:',
 	'abusefilter-tools-modifiertest-submit' => 'Test',
 	'abusefilter-tools' => 'Abuse filter tools',
@@ -127,8 +130,7 @@ Filter description: $7 ($8) ($9)',
 
 	// Abuse filter tools
 	'abusefilter-tools-subtitle' => 'Tools',
-	'abusefilter-tools-text' => 'Here are some tools which may be useful in formulating and debugging abuse filters.
-[[Special:AbuseFilter|Return to main menu]].',
+	'abusefilter-tools-text' => 'Here are some tools which may be useful in formulating and debugging abuse filters.',
 	'abusefilter-tools-expr' => 'Expression tester',
 	'abusefilter-tools-submitexpr' => 'Evaluate',
 	'abusefilter-tools-reautoconfirm' => 'Restore autoconfirmed status',
@@ -293,7 +295,6 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-history-comments' => 'Comments',
 	'abusefilter-history-actions' => 'Actions',
 	'abusefilter-history-backedit' => 'Back to filter editor',
-	'abusefilter-history-backlist' => 'Back to filter list',
 	'abusefilter-history-deleted' => 'Deleted',
 	'abusefilter-history-filterid' => 'Filter',
 	'abusefilter-history-select-legend' => 'Refine search',
@@ -372,6 +373,14 @@ You can receive a full explanation by clicking the "Check Syntax" button.',
 	'abusefilter-examine-syntaxerror' => 'The filter has invalid syntax',
 	'abusefilter-examine-notfound' => 'The change you requested could not be found.',
 	'abusefilter-examine-incompatible' => 'The change you requested is not supported by the Abuse Filter',
+	
+	// Top navigation interface
+	'abusefilter-topnav' => "'''Abuse Filter navigation'''",
+	'abusefilter-topnav-home' => 'Home',
+	'abusefilter-topnav-test' => 'Batch testing',
+	'abusefilter-topnav-examine' => 'Examine past edits',
+	'abusefilter-topnav-log' => 'Abuse Log',
+	'abusefilter-topnav-tools' => 'Debugging tools',
 );
 
 /** Message documentation (Message documentation)

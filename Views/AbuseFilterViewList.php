@@ -11,35 +11,17 @@ class AbuseFilterViewList extends AbuseFilterView {
 		
 		// Status info...
 		$this->showStatus();
+		
+		$wgOut->addWikiMsg( 'abusefilter-intro' );
 
-		// Quick links
-		$wgOut->addWikiMsg( 'abusefilter-links' );
-		$lists = array( 'tools', 'test', 'examine' );
-		if ($this->canEdit())
-			$lists[] = 'new';
-		$links = '';
+		// New filter button
 		$sk = $wgUser->getSkin();
-		foreach( $lists as $list ) {
-			$title = $this->getTitle( $list );
-			$list = strtr( $list, '/', '-' );
-
-			$link = $sk->link( $title, wfMsg( "abusefilter-$list" ) );
-			$links .= Xml::tags( 'li', null, $link ) . "\n";
+		if ($this->canEdit()) {
+			$title = $this->getTitle( 'new' );
+			$link = $sk->link( $title, wfMsg( "abusefilter-new" ) );
+			$links = Xml::tags( 'p', null, $link ) . "\n";
+			$wgOut->addHTML( $links );
 		}
-		$links .= Xml::tags( 'li', null, 
-			$sk->link( 
-				SpecialPage::getTitleFor( 'AbuseLog' ), 
-				wfMsg( 'abusefilter-loglink' ) 
-			) 
-		);
-		$links .= Xml::tags( 'li', null, 
-			$sk->link( 
-				$this->getTitle( 'history' ), 
-				wfMsg( 'abusefilter-filter-log' ) 
-			) 
-		);
-		$links = Xml::tags( 'ul', null, $links );
-		$wgOut->addHTML( $links );
 
 		// Options.
 		$conds = array();

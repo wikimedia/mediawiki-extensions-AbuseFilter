@@ -11,6 +11,8 @@ class SpecialAbuseLog extends SpecialPage {
 	
 	function execute( $parameter ) {
 		global $wgUser,$wgOut,$wgRequest, $wgAbuseFilterStyleVersion;
+		
+		AbuseFilter::addNavigationLinks( $wgOut, $wgUser->getSkin(), 'log' );
 
 		$this->setHeaders();
 		$this->outputHeader( 'abusefilter-log-summary' );

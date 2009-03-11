@@ -27,7 +27,6 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		$links = array();
 		if ($filter)
 			$links['abusefilter-history-backedit'] = $this->getTitle( $filter );
-		$links['abusefilter-history-backlist'] = $this->getTitle();
 
 		foreach( $links as $msg => $title ) {
 			$links[$msg] = $sk->link( $title, wfMsgExt( $msg, 'parseinline' ) );

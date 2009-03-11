@@ -40,29 +40,35 @@ class SpecialAbuseFilter extends SpecialPage {
 		
 		$this->mSkin = $wgUser->getSkin();
 		$this->mHistoryID = null;
+		$pageType = 'home';
 		
 		$params = array_filter( explode( '/', $subpage ) );
 		
 		if ($subpage == 'tools') {
 			$view = 'AbuseFilterViewTools';
+			$pageType = 'tools';
 		}
 
 		if ( count($params) == 2 && $params[0] == 'revert' && is_numeric( $params[1] ) ) {
 			$this->mFilter = $params[1];
 			$view = 'AbuseFilterViewRevert';
+			$pageType = 'revert';
 		}
 
 		if ( count($params) && $params[0] == 'test' ) {
 			$view = 'AbuseFilterViewTestBatch';
+			$pageType = 'test';
 		}
 
 		if ( count($params) && $params[0] == 'examine' ) {
 			$view = 'AbuseFilterViewExamine';
+			$pageType = 'examine';
 		}
 		
 		if (!empty($params[0]) && ($params[0] == 'history' || $params[0] == 'log') ) {
 			if (count($params) == 1) {
 				$view = 'AbuseFilterViewHistory';
+				$pageType = 'recentchanges';
 			} elseif (count($params) == 2) {
 				## Second param is a filter ID
 				$view = 'AbuseFilterViewHistory';
@@ -78,6 +84,9 @@ class SpecialAbuseFilter extends SpecialPage {
 			$this->mFilter = $subpage;
 			$view = 'AbuseFilterViewEdit';
 		}
+		
+		// Links at the top
+		AbuseFilter::addNavigationLinks( $wgOut, $this->mSkin, $pageType );
 
 		$v = new $view( $this, $params );
 		$v->show( );

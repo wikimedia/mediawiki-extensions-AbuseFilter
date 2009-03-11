@@ -103,6 +103,47 @@ class AbuseFilter {
 			'minor_edit' => 'minor-edit',
 		),
 	);
+	
+	public static function addNavigationLinks( $out, $sk, $pageType ) {
+		$linkDefs = array(
+					'home' => 'Special:AbuseFilter',
+					'recentchanges' => 'Special:AbuseFilter/history',
+					'test' => 'Special:AbuseFilter/test',
+					'examine' => 'Special:AbuseFilter/examine',
+					'log' => 'Special:AbuseLog',
+					'tools' => 'Special:AbuseFilter/tools',
+				);
+				
+		// Save some translator work
+		$msgOverrides = array(
+							'recentchanges' => 'abusefilter-filter-log',
+						);
+		
+		$links = array();
+		
+		foreach( $linkDefs as $name => $page ) {
+			$msgName = "abusefilter-topnav-$name";
+			
+			if ( isset($msgOverrides[$name]) )
+				$msgName = $msgOverrides[$name];
+			
+			$msg = wfMsgExt( $msgName, 'parseinline' );
+			$title = Title::newFromText( $page );
+			
+			if ($name == $pageType) {
+				$links[] = Xml::tags( 'strong', null, $msg );
+			} else {
+				$links[] = $sk->link( $title, $msg );
+			}
+		}
+		
+		$linkStr = '( '.implode( ' | ', $links ).' )';
+		$linkStr = wfMsgExt( 'abusefilter-topnav', 'parseinline' ) . " $linkStr";
+		
+		$linkStr = Xml::tags( 'div', array( 'class' => 'mw-abusefilter-navigation' ), $linkStr );
+		
+		$out->addHTML( $linkStr );
+	}
 
 	public static function generateUserVars( $user ) {
 		$vars = new AbuseFilterVariableHolder;
