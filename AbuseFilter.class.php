@@ -1347,15 +1347,15 @@ class AbuseFilter {
 		return $output;
 	}
 	
-	static function modifyActionText( $page, $type, $title, $sk, $args ) {
-		
+	static function modifyActionText( $page, $type, $title, $sk, $args ) {		
 		list( $history_id, $filter_id ) = $args;
 		
-		$filter_link = $sk->link( $title );
+		$filter_link = $sk ? $sk->link( $title ) : $title->getFullURL();
 		
 		$details_title = SpecialPage::getTitleFor( 'AbuseFilter', "history/$filter_id/item/$history_id" );
 		$details_text = wfMsgExt( 'abusefilter-log-detailslink', 'parseinline' );
-		$details_link = $sk->link( $details_title, $details_text );
+		$details_link =
+			$sk ? $sk->link( $details_title, $details_text ) : $details_title->getFullURL();
 		
 		return wfMsgExt( 'abusefilter-log-entry-modify',
 			array('parseinline','replaceafter'), array( $filter_link, $details_link ) );
