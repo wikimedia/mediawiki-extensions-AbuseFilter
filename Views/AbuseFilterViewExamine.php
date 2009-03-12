@@ -60,36 +60,14 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 
 	function showResults() {
 		global $wgUser, $wgOut;
-		
-		$dbr = wfGetDB( DB_SLAVE );
-
-		$conds = array( 'rc_user_text' => $this->mSearchUser );
-		if ( $startTS = strtotime($this->mSearchPeriodStart) ) {
-			$conds[] = 'rc_timestamp>=' . $dbr->addQuotes( $dbr->timestamp( $startTS ) );
-		}
-		if ( $endTS = strtotime($this->mSearchPeriodEnd) ) {
-			$conds[] = 'rc_timestamp<=' . $dbr->addQuotes( $dbr->timestamp( $endTS ) );
-		}
-		
-		$res = $dbr->select( 'recentchanges', '*', array_filter($conds), __METHOD__, 
-			array( 'ORDER BY' => 'rc_timestamp DESC', 'LIMIT' => '500' ) );
 
 		$changesList = new AbuseFilterChangesList( $wgUser->getSkin() );
 		$output = $changesList->beginRecentChangesList();
-		$counter = 1;
-
-		while ( $row = $dbr->fetchObject( $res ) ) {
-			## Incompatible stuff.
-			if ( !$row->rc_this_oldid 
-				&& !in_array( $row->rc_log_action, array( 'move', 'newusers' ) ) )
-			{
-				continue;
-			}
-			
-			$rc = RecentChange::newFromRow( $row );
-			$rc->counter = $counter++;
-			$output .= $changesList->recentChangesLine( $rc, false );
-		}
+		$this->mCounter = 1;
+		
+		$pager = new AbuseFilterExaminePager( $this, $changesList );
+		
+		$output .= $pager->getNavigationBar() . $pager->getBody() . $pager->getNavigationBar();
 
 		$output .= $changesList->endRecentChangesList();
 
@@ -219,5 +197,56 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			$this->mSearchUser = $userTitle->getPrefixedText();
 		else
 			$this->mSearchUser = '';
+	}
+}
+
+class AbuseFilterExaminePager extends ReverseChronologicalPager {
+	function __construct( $page, $changesList ) {
+		parent::__construct();
+		$this->mChangesList = $changesList;
+		$this->mPage = $page;
+	}
+	
+	function getQueryInfo() {
+		$dbr = wfGetDB( DB_SLAVE );
+		$conds = array( 'rc_user_text' => $this->mPage->mSearchUser );
+		if ( $startTS = strtotime($this->mPage->mSearchPeriodStart) ) {
+			$conds[] = 'rc_timestamp>=' . $dbr->addQuotes( $dbr->timestamp( $startTS ) );
+		}
+		if ( $endTS = strtotime($this->mPage->mSearchPeriodEnd) ) {
+			$conds[] = 'rc_timestamp<=' . $dbr->addQuotes( $dbr->timestamp( $endTS ) );
+		}
+		
+		// If one of these is true, we're abusefilter compatible.
+		$compatConds = array(
+			'rc_this_oldid',
+			'rc_log_action' => array( 'move', 'newusers' ),
+		);
+		
+		$conds[] = $dbr->makeList( $compatConds, LIST_OR );
+		
+		$info = array(
+			'tables' => 'recentchanges',
+			'fields' => '*',
+			'conds' => array_filter($conds),
+			'options' => array( 'ORDER BY' => 'rc_timestamp DESC' ),
+		);
+		
+		return $info;
+	}
+	
+	function formatRow( $row ) {
+		## Incompatible stuff.
+		$rc = RecentChange::newFromRow( $row );
+		$rc->counter = $this->mPage->mCounter++;
+		return $this->mChangesList->recentChangesLine( $rc, false );
+	}
+	
+	function getIndexField() {
+		return 'rc_id';
+	}
+	
+	function getTitle() {
+		return $this->mPage->getTitle( 'examine' );
 	}
 }
