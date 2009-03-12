@@ -88,9 +88,8 @@ class AbuseFilterHistoryPager extends TablePager {
 			'afh_user_text' => 'abusefilter-history-user', 
 			'afh_public_comments' => 'abusefilter-history-public',
 			'afh_flags' => 'abusefilter-history-flags', 
-			'afh_pattern' => 'abusefilter-history-filter', 
-			'afh_comments' => 'abusefilter-history-comments', 
-			'afh_actions' => 'abusefilter-history-actions' );
+			'afh_actions' => 'abusefilter-history-actions',
+			'afh_id' => 'abusefilter-history-diff');
 
 		if (!$this->mFilter) {
 			// awful hack
@@ -132,18 +131,7 @@ class AbuseFilterHistoryPager extends TablePager {
 				$formatted = $wgOut->parse( $value );
 				break;
 			case 'afh_flags':
-				$flags = array_filter( explode( ',', $value ) );
-				$flags_display = array();
-				foreach( $flags as $flag ) {
-					$flags_display[] = wfMsg( "abusefilter-history-$flag" );
-				}
-				$formatted = $wgLang->commaList( $flags_display );
-				break;
-			case 'afh_pattern':
-				$formatted = htmlspecialchars( $wgLang->truncate( $value, 200 ) );
-				break;
-			case 'afh_comments':
-				$formatted = htmlspecialchars( $wgLang->truncate( $value, 200 ) );
+				$formatted = AbuseFilter::formatFlags( $value );
 				break;
 			case 'afh_actions':
 				$actions = unserialize( $value );
@@ -151,13 +139,7 @@ class AbuseFilterHistoryPager extends TablePager {
 				$display_actions = '';
 
 				foreach( $actions as $action => $parameters ) {
-					if( count( $parameters ) == 0 ) {
-						$displayAction = AbuseFilter::getActionDisplay( $action );
-					} else {
-						$displayAction = AbuseFilter::getActionDisplay( $action ) .
-									wfMsgExt( 'colon-separator', 'escapenoentities' ) .
-									$wgLang->semicolonList( $parameters );
-					}
+					$displayAction = AbuseFilter::formatAction( $action, $parameters );
 					$display_actions .= Xml::tags( 'li', null, $displayAction );
 				}
 				$display_actions = Xml::tags( 'ul', null, $display_actions );
@@ -168,13 +150,18 @@ class AbuseFilterHistoryPager extends TablePager {
 				$title = $this->mPage->getTitle( strval($value) );
 				$formatted = $sk->link( $title, $value );
 				break;
+			case 'afh_id':
+				$title = $this->mPage->getTitle( 
+							"history/".$row->afh_filter."/diff/prev/$value" );
+				$formatted = $sk->link( $title, wfMsgExt( 'abusefilter-history-diff', 'parseinline' ) );
+				break;
 			default:
 				$formatted = "Unable to format $name";
 				break;
 		}
 
 		$mappings = array_flip(AbuseFilter::$history_mappings) + 
-			array( 'afh_actions' => 'actions' );
+			array( 'afh_actions' => 'actions', 'afh_id' => 'id' );
 		$changed = explode( ',', $row->afh_changed_fields );
 
 		$fieldChanged = false;
@@ -212,7 +199,8 @@ class AbuseFilterHistoryPager extends TablePager {
 				'afh_id', 
 				'afh_user', 
 				'afh_changed_fields',
-				'afh_pattern' ),
+				'afh_pattern',
+				'afh_id' ),
 			'conds' => array(),
 		);
 

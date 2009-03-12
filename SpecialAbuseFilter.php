@@ -66,6 +66,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		}
 		
 		if (!empty($params[0]) && ($params[0] == 'history' || $params[0] == 'log') ) {
+			$pageType = '';
 			if (count($params) == 1) {
 				$view = 'AbuseFilterViewHistory';
 				$pageType = 'recentchanges';
@@ -77,6 +78,9 @@ class SpecialAbuseFilter extends SpecialPage {
 				$this->mFilter = $params[1];
 				$this->mHistoryID = $params[3];
 				$view = 'AbuseFilterViewEdit';
+			} elseif (count($params) == 5 && $params[2] == 'diff') {
+				// Special:AbuseFilter/history/<filter>/diff/<oldid>/<newid>
+				$view = 'AbuseFilterViewDiff';
 			}
 		}
 		

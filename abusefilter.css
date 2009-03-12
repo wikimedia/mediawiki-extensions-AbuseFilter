@@ -73,3 +73,45 @@ li.mw-abusefilter-changeslist-match {
 .mw-abusefilter-navigation {
 	text-align: center;
 }
+
+table.mw-abusefilter-diff {
+	width: 80%;
+	border-collapse: collapse;
+}
+
+table.mw-abusefilter-diff td,
+table.mw-abusefilter-diff th {
+	border: 1px solid #888888;
+}
+
+.mw-abusefilter-diff-added,
+.mw-abusefilter-diff-multiline .diff-addedline {
+	background: #cfc;
+}
+
+.mw-abusefilter-diff-removed,
+.mw-abusefilter-diff-multiline .diff-deletedline {
+	background: #ffa;
+}
+
+.mw-abusefilter-diff-context,
+.mw-abusefilter-diff-multiline .diff-context {
+	background: #eee;
+}
+
+.mw-abusefilter-diff-multiline {
+	width: 100%;
+}
+
+.mw-abusefilter-diff-multiline td {
+	border: none !important;
+}
+
+.mw-abusefilter-diff-multiline .diff-marker {
+	font-size: 0.8em;
+}
+
+.mw-abusefilter-diff-multiline td.diff-addedline,
+.mw-abusefilter-diff-multiline td.diff-deletedline {
+	width: 50%;
+}

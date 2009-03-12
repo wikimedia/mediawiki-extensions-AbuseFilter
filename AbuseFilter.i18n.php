@@ -300,6 +300,7 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-history-select-legend' => 'Refine search',
 	'abusefilter-history-select-user' => 'User:',
 	'abusefilter-history-select-submit' => 'Refine',
+	'abusefilter-history-diff' => 'Changes',
 
 	// Exceptions
 	'abusefilter-exception-unexpectedatend' => 'Unexpected "$2" at character $1.',
@@ -387,6 +388,15 @@ You can receive a full explanation by clicking the "Check Syntax" button.',
 	'abusefilter-log-header' => "This log shows a summary of changes made to filters.
 For full details, see [[Special:AbuseFilter/history|the list]] of recent filter changes.",
 	'abusefilter-log-entry-modify' => 'modified $1 ($2)',
+	
+	// Diffs
+	'abusefilter-diff-title' => 'Differences between versions',
+	'abusefilter-diff-item' => 'Item',
+	'abusefilter-diff-version' => 'Version from $1 by $2',
+	'abusefilter-diff-info' => 'Basic information',
+	'abusefilter-diff-pattern' => 'Filter conditions',
+	'abusefilter-diff-invalid' => 'Unable to fetch the requested versions',
+	'abusefilter-diff-backhistory' => 'Back to filter history',
 );
 
 /** Message documentation (Message documentation)

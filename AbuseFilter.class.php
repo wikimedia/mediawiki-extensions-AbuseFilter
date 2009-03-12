@@ -1352,12 +1352,34 @@ class AbuseFilter {
 		
 		$filter_link = $sk ? $sk->link( $title ) : $title->getFullURL();
 		
-		$details_title = SpecialPage::getTitleFor( 'AbuseFilter', "history/$filter_id/item/$history_id" );
+		$details_title = SpecialPage::getTitleFor( 'AbuseFilter', "history/$filter_id/diff/prev/$history_id" );
 		$details_text = wfMsgExt( 'abusefilter-log-detailslink', 'parseinline' );
 		$details_link =
 			$sk ? $sk->link( $details_title, $details_text ) : $details_title->getFullURL();
 		
 		return wfMsgExt( 'abusefilter-log-entry-modify',
 			array('parseinline','replaceafter'), array( $filter_link, $details_link ) );
+	}
+	
+	static function formatAction( $action, $parameters ) {
+		global $wgLang;
+		if( count( $parameters ) == 0 ) {
+			$displayAction = AbuseFilter::getActionDisplay( $action );
+		} else {
+			$displayAction = AbuseFilter::getActionDisplay( $action ) .
+						wfMsgExt( 'colon-separator', 'escapenoentities' ) .
+						$wgLang->semicolonList( $parameters );
+		}
+		return $displayAction;
+	}
+	
+	static function formatFlags( $value ) {
+		global $wgLang;
+		$flags = array_filter( explode( ',', $value ) );
+		$flags_display = array();
+		foreach( $flags as $flag ) {
+			$flags_display[] = wfMsg( "abusefilter-history-$flag" );
+		}
+		return $wgLang->commaList( $flags_display );
 	}
 }
