@@ -378,6 +378,9 @@ class AbuseFilter {
 	/** Returns an array [ list of actions taken by filter, error message to display, if any ] */
 	public static function executeFilterActions( $filters, $title, $vars ) {
 		wfProfileIn( __METHOD__ );
+		static $blockingActions = array( 'block', 'rangeblock', 'degroup',
+											'blockautopromote' );
+		
 		$dbr = wfGetDB( DB_SLAVE );
 		// Retrieve the consequences.
 		$res = $dbr->select( array('abuse_filter_action', 'abuse_filter'), '*',
@@ -461,7 +464,9 @@ class AbuseFilter {
 				unset( $actions['warn'] );
 			}
 
-			if ( count($actions)>1 && !empty( $actions['disallow'] ) ) {
+			// prevent double warnings
+			if ( count( array_intersect( $actions, $blockingActions ) ) > 1 &&
+					!empty( $actions['disallow'] ) ) {
 				unset( $actions['disallow'] );
 			}
 
