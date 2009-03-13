@@ -5363,6 +5363,7 @@ $messages['he'] = array(
 	'abusefilter-history-select-legend' => 'עידון החיפוש',
 	'abusefilter-history-select-user' => 'משתמש:',
 	'abusefilter-history-select-submit' => 'עידון',
+	'abusefilter-history-diff' => 'הבדלים',
 	'abusefilter-exception-unexpectedatend' => '"$2" בלתי צפוי בתו מספר $1.',
 	'abusefilter-exception-expectednotfound' => 'צפוי $2 בתו מספר $1, לא נמצא.',
 	'abusefilter-exception-unrecognisedkeyword' => 'מילת מפתח בלתי מזוהה $2 בתו מספר $1.',
@@ -5436,6 +5437,13 @@ $messages['he'] = array(
 	'abusefilter-log-header' => 'יומן זה מציג סיכום של השינויים שבוצעו למסננים.
 לפרטים מלאים, ראו את [[Special:AbuseFilter/history|רשימת]] השינויים האחרונים למסננים.',
 	'abusefilter-log-entry-modify' => 'שינה את $1 ($2)',
+	'abusefilter-diff-title' => 'הבדלים בין גרסאות',
+	'abusefilter-diff-item' => 'פריט',
+	'abusefilter-diff-version' => 'גרסה מ־$1 של $2',
+	'abusefilter-diff-info' => 'מידע בסיסי',
+	'abusefilter-diff-pattern' => 'תנאי המסננים',
+	'abusefilter-diff-invalid' => 'לא ניתן לקבל את הגרסאות המבוקשות',
+	'abusefilter-diff-backhistory' => 'בחזרה להיסטוריית המסנן',
 );
 
 /** Hindi (हिन्दी)
