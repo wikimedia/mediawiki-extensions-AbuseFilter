@@ -99,6 +99,6 @@ $wgAjaxExportList[] = 'AbuseFilter::ajaxGetFilter';
 $wgAjaxExportList[] = 'AbuseFilter::ajaxCheckFilterWithVars';
 
 // Bump the version number every time you change any of the .css/.js files
-$wgAbuseFilterStyleVersion = 6;
+$wgAbuseFilterStyleVersion = 7;
 
 $wgAbuseFilterRestrictedActions = array( 'block', 'degroup' );
