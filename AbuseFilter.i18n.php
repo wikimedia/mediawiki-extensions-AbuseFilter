@@ -535,7 +535,7 @@ This is also used in {{msg-mw|Abusefilter-revert-preview-intro}}. When changing 
 	'abusefilter-test-submit' => 'Caption of the submit button on [[Special:AbuseFilter/test]]',
 	'abusefilter-test-load' => 'Text on a button, and referred to in {{msg-mw|abusefilter-test-intro}}
 {{Identical|Load}}',
-	'abusefilter-test-syntaxerr' => '"Check Syntax" is the same as {{msg-mw|Abusefilter-edit-check}}.',
+	'abusefilter-test-syntaxerr' => '"Check Syntax" is the same as {{msg-mw|abusefilter-edit-check}}.',
 	'abusefilter-examine-user' => '{{Identical|User}}',
 	'abusefilter-examine-submit' => '{{Identical|Search}}',
 	'abusefilter-topnav-home' => '{{Identical|Home}}',
@@ -3386,6 +3386,9 @@ $messages['es'] = array(
 	'abusefilter-desc' => 'Aplicar automáticamente heuristicas para ediciones',
 	'abusefilter' => 'Abuso de configuración de filtro',
 	'abuselog' => 'Abuso de log',
+	'abusefilter-intro' => 'Bienvenido a la interface de administración de filtros de abuso.
+El filtro de abuso es un mecanismo de sfotware automatizado de aplicación heurística automática a todas las acciones.
+Esta interface muestra una lista de filtros definidos, y les permite ser modificados.',
 	'abusefilter-warning' => "<big>'''Atención'''</big>: Esta acción ha sido automáticamente identificada como dañina.
 Las ediciones no constructivas son rápidamente revertidas,
 la repetición de dichas acciones tendrá como consecuencia que su cuenta u ordenador sea bloqueado.
@@ -3478,6 +3481,7 @@ Descripción: $1',
 	'abusefilter-tools-reautoconfirm-submit' => 'Re-autoconfirmar',
 	'abusefilter-reautoconfirm-none' => 'El usuario no tiene {{GENDER:$1|su|su}} estado autoconfirmado suspendido.',
 	'abusefilter-reautoconfirm-notallowed' => 'No se te permite restaurar el estado autoconfirmado',
+	'abusefilter-reautoconfirm-done' => 'El estado autoconfirmado de la cuenta ha sido restaurado',
 	'abusefilter-edit-subtitle' => 'Editando filtro $1',
 	'abusefilter-edit-oldwarning' => '<strong>Estás editando una versión antigua de este filtro.
 Las estadísticas citadas son para la más reciente versión del filtro.
@@ -7793,19 +7797,19 @@ dat Dinge Zohjang hee jeshperrt weed: Dinge Name als Metmaacher, odder
 de IP-Addreß vun Dingem Kompjuter, odder alle beeds sen dann betroffe.
 Wann De ävver meins, dat Ding Änderung joot es — Automaate künne
 schliißlesch donevve lijje — dann donn räujesch noch ens op
-„{{int:savearticle}}“ klecke, öm dat ze beschtäätejje. Dann weet se aanjenumme. En koote Äklierung för dämm Automaat sing Rääjel,
-die hee jejreffe hät, es: $1",
+„{{int:savearticle}}“ klecke, öm dat ze beschtäätejje. Dann weet se aanjenumme.
+Däm Automat sing Rääjel koot explezeet, di do jegreffe hät: $1",
 	'abusefilter-disallowed' => 'Unser Automaat för et Prööfe hät dat, wat De jraad affjescheck häs, als verbodde ennjeshtoof. Wann De ävver meins, dat Ding Änderung joot es —
 Automaate künne ens donevve lijje — dann donn dat enem Wiki-Köbes
 verzälle, un schriif och op, wat De donn wollts.
-En koote Äklierung för dämm Automaat sing Rääjel, die hee jejreffe hät, es: $1',
+Däm Automat sing Rääjel koot explezeet, di do jegreffe hät: $1',
 	'abusefilter-blocked-display' => 'Unser Automaat för et Prööfe, dä hät dat, wat De jraad affjescheck häs,
 als verbodde ennjeshtoof, un hät et nit zojelohße. Öm dat Wiki hee ze
 schöze, es och Dinge Zohjang jeshperrt woode: Dinge Name als Metmaacher,
 un de IP-Addreß vun Dingem Kompjuter, sen dofun betroffe.
 Wann De ävver meins, dat Ding Änderung joot woor — Automaate künne
 schliißlesch ens donevve lijje — dann verzäll dat enem Wiki-Köbes.
-En koote Äklierung för dämm Automaat sing Rääjel, die hee jejreffe hät, es: $1',
+Däm Automat sing Rääjel koot explezeet, di do jegreffe hät: $1',
 	'abusefilter-degrouped' => 'Unser Automaat för et Prööfe hät dat, wat De jraad affjescheck häs,
 als verbodde ennjeshtoof, un hät et nit zojelohße. Weil mer vermoode,
 dat Dinge Zohjang hee jeknack woodt, ham_mer dämm uß Vörseesch ens all
@@ -7813,18 +7817,18 @@ sing Rääschte affjenumme.
 Wann De ävver meins, dat Ding Änderung joot woor — Automaate künne
 schliißlesch och ens donevve lijje — verzäll dat enem Bürrokraad, un och
 woröm dat joot wohr, un wann De Jlöck häs, kriß De Ding Rääschde widder.
-En koote Äklierung för dämm Automaat sing Rääjel, die hee jejreffe hät, es: $1',
+Däm Automat sing Rääjel koot explezeet, di do jegreffe hät: $1',
 	'abusefilter-autopromote-blocked' => 'Unser Automaat för et Prööfe hät dat, wat De jraad affjescheck häs, als
 verbodde ennjeshtoof un nit zohjelooße. Zor Sescherheit, häs de vun dä
 automattesch verjovve Rääschte för Metmaacher, e paa op Zick verloore.
-En koote Äklierung för dämm Automaat sing Rääjel, die hee jejreffe hät, es: $1',
+Däm Automat sing Rääjel koot explezeet, di do jegreffe hät: $1',
 	'abusefilter-blocker' => 'Meßbruchsfelter',
 	'abusefilter-blockreason' => 'Automaatesch jesperrt vum Meßbruchsfelter.
-Äklierung för de Rääjel: $1',
+Die Rääjel koot explezeet, di do jegreffe hät: $1',
 	'abusefilter-degroupreason' => 'Rääschte automaatesch fottjenumme vum Meßbruchsfelter.
-Äklierung för de Rääjel: $1',
+Die Rääjel koot explezeet, di do jegreffe hät: $1',
 	'abusefilter-accountreserved' => 'Dä Name för ene Metmaacher es nit mieh frei.
-Dä es för däm Meßbruchsfelter sing Axjuhne reserveet.',
+Dä es för däm Meßbruchsfelter sing Akßjuhne reserveet.',
 	'right-abusefilter-modify' => 'Meßbruchsfeltere ändere',
 	'right-abusefilter-view' => 'Meßbruchsfeltere aanloore',
 	'right-abusefilter-log' => 'De Meßbruchsfeltere ier Logbooch lesse',
@@ -7848,15 +7852,15 @@ De darfs nit en dä Meßbruchsfeltere ierem Logbooch en de Einzelheite erin loor
 	'abusefilter-log-search-title' => 'Tittel:',
 	'abusefilter-log-search-submit' => 'Sök!',
 	'abusefilter-log-entry' => '$1: {{GENDER:$2|dä|et|dä Metmaacher|dat|de}} $2 hät met „$3“ op dä Sigg $4
-dä Meßbruchsfelter op der Plan jeroofe, un dä hät: $5. Äklierung för de Rääjel: $6',
+dä Meßbruchsfelter op der Plan jeroofe, un dä hät: $5. De Rääjel explezeet: $6',
 	'abusefilter-log-detailedentry' => '$1: {{GENDER:$2|dä|et|dä Metmaacher|dat|de}} $2 hät met „$4“ op dä Sigg $5
 däm [[Special:AbuseFilter/$3|Meßbruchsfelter sing Rääjel $3]] jetroffe,
-un dä Felter hät: $6. Äklierung för de Rääjel: $7 ($8) ($9)',
+un dä Felter hät: $6. De Rääjel explezeet: $7 ($8) ($9)',
 	'abusefilter-log-detailslink' => 'Einzelheite aanloore',
 	'abusefilter-log-details-legend' => 'Einzelheite för dä Logbooch-Endraach $1',
-	'abusefilter-log-details-var' => 'Speicher (Name)',
+	'abusefilter-log-details-var' => 'Date (Speicher Name)',
 	'abusefilter-log-details-val' => 'Wäät',
-	'abusefilter-log-details-vars' => 'Parrameetere för de Axjuhne',
+	'abusefilter-log-details-vars' => 'Parrameetere för de Akßjuhne',
 	'abusefilter-log-details-private' => 'Private Date',
 	'abusefilter-log-details-ip' => 'De IP-Address fun däm, dä et jweese wohr',
 	'abusefilter-log-noactions' => 'kei',
@@ -7878,7 +7882,7 @@ un dä Felter hät: $6. Äklierung för de Rääjel: $7 ($8) ($9)',
 	'abusefilter-deleted' => 'Fottjeschmeße',
 	'abusefilter-disabled' => 'Affjeschalldt',
 	'abusefilter-hitcount' => '{{PLURAL:$1|Eine|$1|keine}} Treffer',
-	'abusefilter-new' => 'Neu Filter-Räjel',
+	'abusefilter-new' => 'Neu Felter-Räjel aanlääje',
 	'abusefilter-links' => 'Nözlijje Lengks:',
 	'abusefilter-tools-modifiertest-submit' => 'Ußprobeere',
 	'abusefilter-tools' => 'Dem Meßbruchsfelter sing Werkzüsch',
@@ -7912,7 +7916,7 @@ Wann De Ding Änderunge afshpeishere deihß, dann sin all de Änderunge
 un Äjänzunge fott, die shpääder derbei jekumme sen.</strong> &bull;
 [[Special:AbuseFilter/history/$2|Jangk zeröck op däm Felter sing Versione]].',
 	'abusefilter-edit-status-label' => 'Zahle un Statistike:',
-	'abusefilter-edit-status' => '{{PLURAL:$1|De letzte Axjuhn woodt|Unger de letzte $1 Axjuhne {{PLURAL:$2|woor_er ein, die|woore $2, die|wood kein}}|Kein Axjuhn woodt}} vun dämm Felter hee opjejreff{{PLURAL:$1|e|{{PLURAL:$2|e wood|e woode|e}}|e}}, dat sinn_er $3% jewääse.',
+	'abusefilter-edit-status' => '{{PLURAL:$1|De letzte Akßjuhn woodt|Unger de letzte $1 Akßjuhne {{PLURAL:$2|woor_er ein, die|woore $2, die|wood kein}}|Kein Akßjuhn woodt}} vun dämm Felter hee opjejreff{{PLURAL:$1|e|{{PLURAL:$2|e wood|e woode|e}}|e}}, dat sinn_er $3% jewääse.',
 	'abusefilter-edit-throttled' => "'''Opjepaß''': Dä Felter hee es automattesch affjeschalldt. Zor Sescherheit.
 Dä hät sing Jrenß övverschredde, un bei mieh wie $1% vun alle Oproofe jejreffe.",
 	'abusefilter-edit-new' => 'Neu Filter-Räjel',
@@ -7930,16 +7934,17 @@ Dä hät sing Jrenß övverschredde, un bei mieh wie $1% vun alle Oproofe jejref
 	'abusefilter-edit-lastmod' => 'Zoletz jeändert:',
 	'abusefilter-edit-lastmod-text' => '$1 fum $2',
 	'abusefilter-edit-hitcount' => 'Treffer:',
-	'abusefilter-edit-consequences' => 'Axjuhne, wann dä Felter jriif',
+	'abusefilter-edit-consequences' => 'De Akßjuhne zom Maache, wann dä Felter jriif',
 	'abusefilter-edit-action-warn' => 'Donn dat maache, nohdämm dä Metmaacher en Warnung krääje hät.',
 	'abusefilter-edit-action-disallow' => 'Loß dä Metmaacher dat nit maache, wat hä donn wullt',
 	'abusefilter-edit-action-flag' => 'Don de Änderung em Meßbruchs-Logbooch makeere',
 	'abusefilter-edit-action-blockautopromote' => 'Donn däm Metmaacher singe Shtattus als enne beshtäteschte Metmaacher fott nämme',
 	'abusefilter-edit-action-degroup' => 'Donn dä Metmaacher uß alle Jruppe met besönder Rääschte ußdraare',
 	'abusefilter-edit-action-block' => 'Donn dä Metmaacher un/odder de IP Addreß för et Ändere sperre',
+	'abusefilter-edit-action-throttle' => 'Waat met dä Akßjuhn, bes dä Metmaacher dat zoo öff versöhk hät, su dat hä övver en beshtemmpte Jrens erövver kütt.',
 	'abusefilter-edit-action-rangeblock' => 'Don de /16-er IP-Berett sperre, vun woh dä Metmaacher kohm.',
 	'abusefilter-edit-action-tag' => 'Don de Änderung markeere, för se shpääder nohzeloore.',
-	'abusefilter-edit-throttle-count' => 'De Aanzahl zojelohße Axjuhne:',
+	'abusefilter-edit-throttle-count' => 'De Aanzahl zojelohße Akßjuhne:',
 	'abusefilter-edit-throttle-period' => 'De Door fun dä Zick:',
 	'abusefilter-edit-throttle-seconds' => '{{PLURAL:$1|Ein Sekund|$1 Sekunde|Kein Sekund}}',
 	'abusefilter-edit-throttle-groups' => "Donn de Bremse en Jroppe, noh:
@@ -7956,7 +7961,7 @@ Dä hät sing Jrenß övverschredde, un bei mieh wie $1% vun alle Oproofe jejref
 	'abusefilter-edit-done-subtitle' => 'Felter jeändert',
 	'abusefilter-edit-done' => 'Ding Änderunge aan däm Filter „$1“ sin jetz ennjedraare.',
 	'abusefilter-edit-badsyntax' => 'En däm Fellter, dä De aanjejovve häs, es ene Fähler dren.
-Dat Projramm för de Süntax ze prööfe, säät: <pre>$1</pre>',
+Dat Projramm för de Süntaks ze prööfe, säät: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Dä Felter hee darfs De nit ändere. Der jrond is, dat winischßdens ein
 Akßjuhn do dren es, woh mer e extra Rääsch för bruch. Bes esu joot, un
 donn ene Metmaacher dröm frore, dat ze maache, dä dat Rääsch hät.',
@@ -8003,7 +8008,7 @@ donn ene Metmaacher dröm frore, dat ze maache, dä dat Rääsch hät.',
 	'abusefilter-edit-builder-funcs-rcount' => 'De Aanzahl, wie öff de <i lang="en">regular Expression</i>X em Tex Y dren es (rcount)',
 	'abusefilter-edit-builder-group-vars' => 'Varrijabelle',
 	'abusefilter-edit-builder-vars-accountname' => 'Däm Metmaacher singe Name — wi hä ennjeresht wood',
-	'abusefilter-edit-builder-vars-action' => 'Akßjohn',
+	'abusefilter-edit-builder-vars-action' => 'Akßjuhn',
 	'abusefilter-edit-builder-vars-addedlines' => 'Aanzahl Reije, di bemm Ändere dobeij jekumme sen',
 	'abusefilter-edit-builder-vars-delta' => 'Der Ongerscheed em Ömfang',
 	'abusefilter-edit-builder-vars-newsize' => 'De Sigg iere neue Ömfang',
@@ -8052,12 +8057,13 @@ donn ene Metmaacher dröm frore, dat ze maache, dä dat Rääsch hät.',
 	'abusefilter-history-flags' => 'Fähnsche',
 	'abusefilter-history-filter' => 'Felteräjel',
 	'abusefilter-history-comments' => 'Kommentaa',
-	'abusefilter-history-actions' => 'Akßjohne',
+	'abusefilter-history-actions' => 'Akßjuhne',
 	'abusefilter-history-backedit' => 'Zeröck nohm Felter Ändere',
 	'abusefilter-history-deleted' => 'Fottjelohße',
 	'abusefilter-history-filterid' => 'Felter',
 	'abusefilter-history-select-user' => 'Metmaacher:',
 	'abusefilter-history-select-submit' => 'Loß jonn!',
+	'abusefilter-history-diff' => 'Ungerscheid(e)',
 	'abusefilter-exception-unexpectedatend' => 'Beim Zeiche $1, do deiht „$2“ nit passe.',
 	'abusefilter-exception-expectednotfound' => 'Beim Zeiche $1, do deiht e „$2“ fäähle.',
 	'abusefilter-exception-unrecognisedkeyword' => 'Beim Zeiche $1, dat Schlösselwoot „$2“ kenne mer nit.',
@@ -8090,6 +8096,10 @@ Donn se joot aanbekike, un donn „{{int:abusefilter-revert-confirm}}“ klecke,
 	'abusefilter-revert-reason' => 'All Änderunge zeröck nämme, die dä Meßbruchßfelter opjrond vun dä Räjel $1 jemaat hät. Der aanjejovve Jrund es: $2',
 	'abusefilter-revert-reasonfield' => 'Der Jrond för et Zeröcknämme:',
 	'abusefilter-test' => 'Donn dä Felter met fröjere Änderunge ußprobeere',
+	'abusefilter-test-intro' => 'Hee met kanns De ene Felter övverpröfe aan de {{PLURAL:$1|de letzte Änderung|de $1 {{lcfirst:{{int:recentchanges}}}}|nix, mer han nämmlesch kein letzte Änderung}} em Wiki.
+Öm ene Felter jelaade ze krejje, dä ald doh es, donn däm sing Nommer in däm Feld onger dä 
+box below the edit textbox, 
+enjävve, un donn op dä Knopp „{{int:abusefilter-test-load}}“ klecke.',
 	'abusefilter-test-legend' => 'Felter Pröfe',
 	'abusefilter-test-load-filter' => 'Felter-Räjel för zem Laade:',
 	'abusefilter-test-submit' => 'Pröfe!',
@@ -8098,15 +8108,20 @@ Donn se joot aanbekike, un donn „{{int:abusefilter-revert-confirm}}“ klecke,
 	'abusefilter-test-period-start' => 'De Änderunge donoh:',
 	'abusefilter-test-period-end' => 'De Änderunge doför:',
 	'abusefilter-test-shownegative' => 'Zeich de Änderunge, die dä Felter nit jrief',
+	'abusefilter-test-syntaxerr' => 'Ding Räjel för dä Felter hät en kapodde Süntaks.
+Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilter-edit-check}}“ klecke.',
 	'abusefilter-changeslist-examine' => 'jenou aankike',
 	'abusefilter-examine' => 'Einzel Änderunge jenou aankike',
+	'abusefilter-examine-intro' => 'Op dä Sigg hee kanns De de Date inspezeere, die dä Meßbruchsfelter uß en bestemmpte Änderung aam Wiki erußjetrocke hät, un Do kanns domet och einzel Räjelle pröve.',
 	'abusefilter-examine-legend' => 'Ußjesoohte Änderunge',
+	'abusefilter-examine-diff' => 'Dä <i lang="en">URL</i> för die Versione ze verjliesche:',
 	'abusefilter-examine-user' => 'Metmaacher:',
 	'abusefilter-examine-title' => 'Siggetittel:',
 	'abusefilter-examine-submit' => 'Söke',
+	'abusefilter-examine-vars' => 'Dem Felter sing Date för di Änderung',
 	'abusefilter-examine-test' => 'Donn di Änderung hee jäje ene Felter pröfe',
-	'abusefilter-examine-test-button' => 'Felter prööfe',
-	'abusefilter-examine-match' => 'Dä Felter hät op de Änderung jepaß.',
+	'abusefilter-examine-test-button' => 'Dä Felter ußprobeere!',
+	'abusefilter-examine-match' => 'Dä Felter hät op die Änderung jepaß.',
 	'abusefilter-examine-nomatch' => 'Dä Felter hät nit op de Änderung jepaß.',
 	'abusefilter-examine-syntaxerror' => 'Dä Felter hät en onjöltijje Opbou odder Forrem',
 	'abusefilter-examine-notfound' => 'Di Änderung, die De häs han welle, kunnt nit jefunge wääde.',
@@ -8120,6 +8135,13 @@ Donn se joot aanbekike, un donn „{{int:abusefilter-revert-confirm}}“ klecke,
 	'abusefilter-log-header' => 'En däm Logboch he fingks De de Änderunge aan de Feltere em Övverbleck. Einzelheite sin en de 
 [[Special:AbuseFilter/history|Leß met de neuste Änderunge aan Meßbruchsfeltere]].',
 	'abusefilter-log-entry-modify' => 'hät $1 jeändert ($2)',
+	'abusefilter-diff-title' => 'Ungerscheide zwesche Versione',
+	'abusefilter-diff-item' => 'Jäjeschtand',
+	'abusefilter-diff-version' => 'Version {{GENDER:$2|vum|vum|vun dämm Metmaacher|vum|vun dä}} $2 aam $1',
+	'abusefilter-diff-info' => 'Jrundlääje Aanjabe',
+	'abusefilter-diff-pattern' => 'De Bedengunge',
+	'abusefilter-diff-invalid' => 'Mer kunnte de jewönschte Versione nit fenge',
+	'abusefilter-diff-backhistory' => 'Jangk zeröck op de Leß met de Versione vun däm Felter',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -10173,6 +10195,7 @@ Descripcion del filtre : $7 ($8) ($9)",
 	'abusefilter-history-select-legend' => 'Afinar la recèrca',
 	'abusefilter-history-select-user' => 'Utilizaire :',
 	'abusefilter-history-select-submit' => 'Afinar',
+	'abusefilter-history-diff' => 'Modificacions',
 	'abusefilter-exception-unexpectedatend' => '« $2 » pas esperat al caractèr $1.',
 	'abusefilter-exception-expectednotfound' => 'Un $2 es esperat al caractèr $1 mas es pas estat trobat.',
 	'abusefilter-exception-unrecognisedkeyword' => 'Mot clau $2 al caractèr $1 pas reconegut.',
@@ -10244,6 +10267,13 @@ Podètz recebre una explicacion complèta en clicant sul boton « Verificar la s
 	'abusefilter-log-header' => 'Aqueste jornal aficha un somari de las modificacions fachas als filtres.
 Per mai de detalhs, vejatz [[Special:AbuseFilter/history|la lista]] dels darrièrs cambiaments del filtre.',
 	'abusefilter-log-entry-modify' => 'a modificat $1 ($2)',
+	'abusefilter-diff-title' => 'Diferéncias entre las versions',
+	'abusefilter-diff-item' => 'Article',
+	'abusefilter-diff-version' => 'Version del $1 per $2',
+	'abusefilter-diff-info' => 'Informacions basicas',
+	'abusefilter-diff-pattern' => 'Condicions del filtre',
+	'abusefilter-diff-invalid' => 'Impossible de tornar trobar las versions demandadas',
+	'abusefilter-diff-backhistory' => "Retorn a l'istoric del filtre",
 );
 
 /** Oriya (ଓଡ଼ିଆ)
@@ -10263,8 +10293,11 @@ $messages['os'] = array(
 	'abusefilter-log-search-submit' => 'Агур',
 	'abusefilter-log-noactions' => 'нæй',
 	'abusefilter-list-status' => 'Статус',
+	'abusefilter-deleted' => 'Аппæрст',
 	'abusefilter-tools-reautoconfirm-user' => 'Архайæг',
+	'abusefilter-edit-status-label' => 'Статистикæ:',
 	'abusefilter-history-user' => 'Архайæг',
+	'abusefilter-history-deleted' => 'Аппæрст',
 );
 
 /** Plautdietsch (Plautdietsch)
