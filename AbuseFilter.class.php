@@ -487,9 +487,12 @@ class AbuseFilter {
 	}
 	
 	public static function filterAction( $vars, $title ) {
-		global $wgUser,$wgMemc;
+		global $wgUser,$wgMemc, $wgTitle;
 		
 		wfProfileIn( __METHOD__ );
+		
+		if (!$wgTitle)
+			$wgTitle = SpecialPage::getTitleFor( 'AbuseFilter' );
 		
 		// Add vars from extensions
 		wfRunHooks( 'AbuseFilter-filterAction', array( &$vars, $title ) );
