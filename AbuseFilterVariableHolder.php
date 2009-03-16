@@ -218,6 +218,11 @@ class AFComputedVariable {
 				$cutOff = $parameters['cutoff'];
 				$title = Title::makeTitle( $parameters['namespace'], $parameters['title'] );
 				
+				if (!$title->exists()) {
+					$result = '';
+					break;
+				}
+				
 				$dbr = wfGetDB( DB_SLAVE );
 				$res = $dbr->select( 'revision', 'distinct rev_user_text',
 					array(

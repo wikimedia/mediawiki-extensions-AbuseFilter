@@ -288,7 +288,7 @@ class AFPUserVisibleException extends AFPException {
 }
 	
 class AbuseFilterParser {
-	var $mParams, $mVars, $mCode, $mTokens, $mPos, $mCur;
+	var $mParams, $mVars, $mCode, $mTokens, $mPos, $mCur, $mSubexpressions, $mDebug;
 	
 	// length,lcase,ccnorm,rmdoubles,specialratio,rmspecials,norm,count
 	static $mFunctions = array(
@@ -341,6 +341,8 @@ class AbuseFilterParser {
 		$this->mTokens = array();
 		$this->mVars = new AbuseFilterVariableHolder;
 		$this->mPos = 0;
+		$this->mDebug = false;
+		$this->mSubexpressions = array();
 	}
 	
 	public function checkSyntax( $filter ) {
@@ -409,6 +411,28 @@ class AbuseFilterParser {
 		}
 		
 		return ( strlen($a) < strlen($b) ) ? -1 : 1;
+	}
+	
+	protected function createSubexpression( $value, $tokens, $type = null ) {
+		if ($type)
+			$data = new AFPData( $type, $value );
+		else
+			$data = AFPData::newFromPHPVar( $value );
+			
+		if (!$this->mDebug)
+			return $data;
+			
+		if (!$this->mSubexpressions)
+			$this->mSubexpressions = array();
+		
+		$thisData = array(
+			'tokens' => $tokens,
+			'value' => $data,
+		);
+		
+		$this->mSubexpressions[] = $thisData;
+		
+		return $data;
 	}
 	
 	/* Levels */
