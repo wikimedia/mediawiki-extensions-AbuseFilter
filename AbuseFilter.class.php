@@ -465,7 +465,7 @@ class AbuseFilter {
 			}
 
 			// prevent double warnings
-			if ( count( array_intersect( $actions, $blockingActions ) ) > 1 &&
+			if ( count( array_intersect( $actions, $blockingActions ) ) > 0 &&
 					!empty( $actions['disallow'] ) ) {
 				unset( $actions['disallow'] );
 			}
