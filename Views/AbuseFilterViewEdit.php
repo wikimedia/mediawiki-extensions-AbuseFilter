@@ -163,9 +163,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$dbw->commit();
 			
 			// Logging
-			$lp = new LogPage( 'abusefilter' );
 			
-			$lp->addEntry( 'modify', $this->getTitle( $new_id ), '', array( $history_id, $new_id ) );
+			## Broken until logging table is expanded to 32 chars.
+#			$lp = new LogPage( 'abusefilter' );
+			
+#			$lp->addEntry( 'modify', $this->getTitle( $new_id ), '', array( $history_id, $new_id ) );
 
 			// Special-case stuff for tags -- purge the tag list cache.
 			if ( isset( $actions['tag'] ) ) {
