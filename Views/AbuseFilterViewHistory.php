@@ -21,9 +21,17 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			$wgOut->setPageTitle( wfMsg( 'abusefilter-history', $filter ) );
 		else
 			$wgOut->setPageTitle( wfMsg( 'abusefilter-filter-log' ) );
+			
+		## Check perms
+		if ( $filter &&
+				!$wgUser->isAllowed( 'abusefilter-modify' ) &&
+				AbuseFilter::filterHidden( $filter ) ) {
+			$wgOut->addWikiMsg( 'abusefilter-history-error-hidden' );
+			return;
+		}
 
+		## Useful links
 		$sk = $wgUser->getSkin();
-
 		$links = array();
 		if ($filter)
 			$links['abusefilter-history-backedit'] = $this->getTitle( $filter );
@@ -35,12 +43,14 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		$backlinks = $wgLang->pipeList( $links );
 		$wgOut->addHTML( Xml::tags( 'p', null, $backlinks ) );
 
+		## For user
 		$user = $wgRequest->getText( 'user' );
 		if ($user) {
 			$wgOut->setSubtitle( 
 				wfMsg( 
 					'abusefilter-history-foruser', 
-					$sk->userLink( 1 /* We don't really need to get a user ID */, $user ) 
+					$sk->userLink( 1 /* We don't really need to get a user ID */, $user ),
+					$user // For GENDER
 				) 
 			);
 		}
@@ -187,29 +197,45 @@ class AbuseFilterHistoryPager extends TablePager {
 
 	function getQueryInfo() {
 		$info = array(
-			'tables' => 'abuse_filter_history',
+			'tables' => array( 'abuse_filter_history', 'abuse_filter' ),
 			'fields' => array( 
-				'afh_filter', 
-				'afh_timestamp', 
-				'afh_user_text', 
-				'afh_public_comments', 
-				'afh_flags', 
-				'afh_comments', 
-				'afh_actions', 
-				'afh_id', 
-				'afh_user', 
-				'afh_changed_fields',
-				'afh_pattern',
-				'afh_id' ),
+					'afh_filter', 
+					'afh_timestamp', 
+					'afh_user_text', 
+					'afh_public_comments', 
+					'afh_flags', 
+					'afh_comments', 
+					'afh_actions', 
+					'afh_id', 
+					'afh_user', 
+					'afh_changed_fields',
+					'afh_pattern',
+					'afh_id',
+					'af_hidden'
+				),
 			'conds' => array(),
+			'join_conds' => array(
+					'abuse_filter' =>
+						array(
+							'LEFT JOIN',
+							'afh_filter=af_id',
+						),
+				),
 		);
 
-		global $wgRequest;
+		global $wgRequest, $wgUser;
+		
 		if ($this->mUser) {
 			$info['conds']['afh_user_text'] = $this->mUser;
 		}
+		
 		if ( $this->mFilter ) {
 			$info['conds']['afh_filter'] = $this->mFilter;
+		}
+		
+		if ( !$wgUser->isAllowed( 'abusefilter-modify' ) ) {
+			// Hide data the user can't see.
+			$info['conds']['af_hidden'] = 0;
 		}
 		
 		return $info;

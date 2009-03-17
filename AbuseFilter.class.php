@@ -202,6 +202,16 @@ class AbuseFilter {
 
 		return strval($row->af_pattern);
 	}
+	
+	public static function filterHidden( $filter ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		$hidden = $dbr->selectField( 'abuse_filter',
+								'af_hidden',
+								array( 'af_id' => $filter ),
+								__METHOD__
+								);
+		return $hidden ? true : false;
+	}
 
 	public static function ajaxCheckFilterWithVars( $filter, $vars ) {
 		global $wgUser;

@@ -301,6 +301,7 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-history-select-user' => 'User:',
 	'abusefilter-history-select-submit' => 'Refine',
 	'abusefilter-history-diff' => 'Changes',
+	'abusefilter-history-error-hidden' => 'The filter you requested is hidden, and you cannot view its history.',
 
 	// Exceptions
 	'abusefilter-exception-unexpectedatend' => 'Unexpected "$2" at character $1.',
