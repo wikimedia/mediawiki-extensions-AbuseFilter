@@ -3,6 +3,9 @@
 function examinerCheckFilter() {
 	var filter = document.getElementById( 'wpTestFilter' ).value;
 
+	// The vars are too much for a GET.
+	sajax_request_type = 'POST';
+	
 	sajax_do_call( 'AbuseFilter::ajaxCheckFilterWithVars', [filter, wgExamineVars], function(request) {
 		var response = request.responseText;
 		var el = document.getElementById( 'mw-abusefilter-syntaxresult' );
