@@ -87,6 +87,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		if ( is_numeric($subpage) || $subpage == 'new' ) {
 			$this->mFilter = $subpage;
 			$view = 'AbuseFilterViewEdit';
+			$pageType = 'edit';
 		}
 		
 		// Links at the top
