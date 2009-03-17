@@ -5369,6 +5369,7 @@ $messages['he'] = array(
 	'abusefilter-history-select-user' => 'משתמש:',
 	'abusefilter-history-select-submit' => 'עידון',
 	'abusefilter-history-diff' => 'הבדלים',
+	'abusefilter-history-error-hidden' => 'המסנן שביקשתם מוסתר, לכן אינכם יכולים לצפות בהיסטוריה שלו.',
 	'abusefilter-exception-unexpectedatend' => '"$2" בלתי צפוי בתו מספר $1.',
 	'abusefilter-exception-expectednotfound' => 'צפוי $2 בתו מספר $1, לא נמצא.',
 	'abusefilter-exception-unrecognisedkeyword' => 'מילת מפתח בלתי מזוהה $2 בתו מספר $1.',
