@@ -30,7 +30,7 @@ class AbuseFilterHooks {
 					'title' => $editor->mTitle->getText(),
 				) );
 				
-		$vars->setVar( 'new_wikitext', $editor->textbox1 );
+		$vars->setVar( 'new_wikitext', $text );
 
 		$vars->addHolder( AbuseFilter::getEditVars( $editor->mTitle ) );
 
