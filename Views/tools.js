@@ -10,7 +10,7 @@ function processExprResult( request ) {
 	removeSpinner( 'abusefilter-expr' );
 
 	var el = document.getElementById( 'mw-abusefilter-expr-result' );
-	changeText( el, response );
+	el.innerHTML = response;
 }
 function doReautoSubmit()
 {

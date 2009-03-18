@@ -326,7 +326,7 @@ class AbuseFilter {
 	}
 	
 	public static function ajaxEvaluateExpression( $expr ) {
-		return self::evaluateExpression( $expr );
+		return htmlspecialchars( self::evaluateExpression( $expr ) );
 	}
 
 	public static function checkConditions( $conds, $vars, $ignoreError = true ) {
