@@ -5178,6 +5178,7 @@ $messages['he'] = array(
 	'abusefilter-log-details-private' => 'מידע פרטי',
 	'abusefilter-log-details-ip' => 'כתובת ה־IP המקורית',
 	'abusefilter-log-noactions' => 'אין',
+	'abusefilter-log-details-diff' => 'שינויים בוצעו בעריכה',
 	'abusefilter-management' => 'ניהול מסנני ההשחתה',
 	'abusefilter-list' => 'כל המסננים',
 	'abusefilter-list-id' => 'מספר המסנן',
