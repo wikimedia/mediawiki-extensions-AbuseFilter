@@ -265,9 +265,16 @@ class AFComputedVariable {
 				$user = $parameters['user'];
 				$asOf = $parameters['asof'];
 				$obj = self::userObjectFromName( $user );
+				
+				if ($obj->getId() == 0) {
+					$result = 0;
+					break;
+				}
+				
 				$registration = $obj->getRegistration();
 				$result =
-					wfTimestamp( TS_UNIX, $asOf) - wfTimestampOrNull( TS_UNIX, $registration );
+					wfTimestamp( TS_UNIX, $asOf) -
+						wfTimestampOrNull( TS_UNIX, $registration );
 				break;
 			case 'user-groups':
 				$user = $parameters['user'];
