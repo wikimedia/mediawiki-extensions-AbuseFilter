@@ -524,6 +524,7 @@ class AbuseFilter {
 			
 		$var_dump = self::storeVarDump( $vars );
 		$var_dump = "stored-text:$var_dump"; // To distinguish from stuff stored directly
+		$action = $vars->getVar( 'ACTION' )->toString();
 
 		// Create a template
 		$log_template = array(
@@ -534,8 +535,13 @@ class AbuseFilter {
 			'afl_namespace' => $title->getNamespace(),
 			'afl_title' => $title->getDBKey(),
 			'afl_ip' => wfGetIp() );
+		
+		// Hack to avoid revealing IPs of people creating accounts
+		if (!$wgUser->getId() && $action == 'createaccount') {
+			$log_template['afl_user_text'] = $vars->getVar( 'accountname' )->toString();
+		}
 
-		self::addLogEntries( $actions_taken, $log_template, $vars->getVar( 'ACTION' )->toString() );
+		self::addLogEntries( $actions_taken, $log_template, $action );
 
 		$error_msg = $error_msg == '' ? true : $error_msg;
 		
