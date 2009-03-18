@@ -133,6 +133,41 @@ class SpecialAbuseLog extends SpecialPage {
 		
 		$output .= AbuseFilter::buildVarDumpTable( $vars );
 		
+		// Diff, if available
+		if ( $vars->getVar( 'action' )->toString() == 'edit' ) {
+			## Stolen from DifferenceEngine.php
+			global $wgStylePath, $wgStyleVersion, $wgOut;
+			$wgOut->addStyle( 'common/diff.css' );
+	
+			// JS is needed to detect old versions of Mozilla to work around an annoyance bug.
+			$wgOut->addScript( "<script type=\"text/javascript\" src=\"$wgStylePath/common/diff.js?$wgStyleVersion\"></script>" );
+			
+			$old_wikitext = $vars->getVar('old_wikitext')->toString();
+			$new_wikitext = $vars->getVar('new_wikitext')->toString();
+			
+			$old_lines = explode( "\n", $old_wikitext );
+			$new_lines = explode( "\n", $new_wikitext );
+			
+			$diff = new Diff( $old_lines, $new_lines );
+			$formatter = new TableDiffFormatter;
+			
+			static $colDescriptions = "<col class='diff-marker' />
+		<col class='diff-content' />
+		<col class='diff-marker' />
+		<col class='diff-content' />";
+			
+			$formattedDiff = $formatter->format( $diff );
+			$formattedDiff =
+				"<table class='diff'>$colDescriptions<tbody>$formattedDiff</tbody></table>";
+			
+			$output .=
+				Xml::tags( 'h3',
+							null,
+							wfMsgExt( 'abusefilter-log-details-diff', 'parseinline' )
+						);
+			$output .= $formattedDiff;
+		}
+		
 		if ($this->canSeePrivate()) {
 			// Private stuff, like IPs.
 			$header = 

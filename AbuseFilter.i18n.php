@@ -91,6 +91,7 @@ Filter description: $7 ($8) ($9)',
 	'abusefilter-log-details-private' => 'Private data',
 	'abusefilter-log-details-ip' => 'Originating IP address',
 	'abusefilter-log-noactions' => 'none',
+	'abusefilter-log-details-diff' => 'Changes made in edit',
 
 	// Abuse filter management
 	'abusefilter-management' => 'Abuse filter management',

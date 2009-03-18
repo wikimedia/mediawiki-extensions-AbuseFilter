@@ -235,7 +235,7 @@ class AFComputedVariable {
 				while ($user = $dbr->fetchRow($res)) {
 					$users[] = $user[0];
 				}
-				$result = implode( ",", $users );
+				$result = implode( ", ", $users );
 				break;
 			case 'get-page-restrictions':
 				$action = $parameters['action'];
