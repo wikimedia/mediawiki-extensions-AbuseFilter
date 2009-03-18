@@ -284,10 +284,14 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$new = explode( "\n", $new );
 			
 		if ( $old == $new ) {
-			$old = implode( "\n", $old );
-			$new = implode( "\n", $new );
+			$old = implode( "<br/>\n", $old );
+			$new = implode( "<br/>\n", $new );
 			return $this->getSimpleRow( $msg, $old, $new );
 		}
+		
+		// Hacky fix for double-escaping.
+		$old = array_map( 'html_entity_decode', $old );
+		$new = array_map( 'html_entity_decode', $new );
 		
 		$row = '';
 		$row .= Xml::tags( 'th', null, wfMsgExt( $msg, 'parseinline' ) );
