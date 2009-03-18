@@ -208,7 +208,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		$info .= $this->getMultiLineRow(
 											'abusefilter-edit-rules',
 											$oldVersion['pattern'],
-											$newVersion['pattern']
+											$newVersion['pattern'],
+											'text'
 										);
 		
 		// Actions
@@ -269,6 +270,11 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			global $wgOut;
 			$old = $wgOut->parseInline( $old );
 			$new = $wgOut->parseInline( $new );
+		}
+		
+		if ($format == 'text') {
+			$old = htmlspecialchars($old);
+			$new = htmlspecialchars($new);
 		}
 		
 		$row .= Xml::tags( 'td', array( 'class' => $oldClass ), $old );
