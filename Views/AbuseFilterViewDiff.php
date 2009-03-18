@@ -60,7 +60,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$row = $dbr->selectRow(
 						'abuse_filter_history',
 						'*',
-						array( 'afh_id' => $spec ),
+						array( 'afh_id' => $spec, 'afh_filter' => $this->mFilter ),
 						__METHOD__
 					);
 		} elseif ( $spec == 'cur' ) {
