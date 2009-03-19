@@ -387,8 +387,6 @@ class AbuseFilterParser {
 	}
 	
 	function intEval( $code ) {
-		wfProfileIn( __METHOD__ );
-		
 		// Setup, resetting
 		$this->mCode = $code;
 		$this->mPos = 0;
@@ -399,7 +397,6 @@ class AbuseFilterParser {
 		
 		$result = new AFPData();
 		$this->doLevelEntry( $result );
-		wfProfileOut( __METHOD__ );
 		return $result;
 	}
 	
@@ -521,23 +518,23 @@ class AbuseFilterParser {
 			$this->move();
 			$r2 = new AFPData();
 			
-			if ($op == '&' && !$result) {
+			if ($op == '&' && !($result->toBool())) {
 				wfProfileIn( __METHOD__.'-shortcircuit' );
 				$orig = $this->mShortCircuit;
 				$this->mShortCircuit = true;
 				$this->doLevelCompares( $r2 );
-				$this->mShortCircuit = false;
+				$this->mShortCircuit = $orig;
 				$result = new AFPData( AFPData::DBool, false );
 				wfProfileOut( __METHOD__.'-shortcircuit' );
 				return;
 			}
 			
-			if ($op == '|' && $result) {
+			if ($op == '|' && ($result->toBool())) {
 				wfProfileIn( __METHOD__.'-shortcircuit' );
 				$orig = $this->mShortCircuit;
 				$this->mShortCircuit = true;
 				$this->doLevelCompares( $r2 );
-				$this->mShortCircuit = false;
+				$this->mShortCircuit = $orig;
 				$result = new AFPData( AFPData::DBool, true );
 				wfProfileOut( __METHOD__.'-shortcircuit' );
 				return;
@@ -636,6 +633,7 @@ class AbuseFilterParser {
 			}
 			
 			wfProfileIn( __METHOD__ );
+			
 			wfProfileIn( __METHOD__."-$func" );
 			$result = AFPData::$func( $result, $r2 );
 			wfProfileOut( __METHOD__."-$func" );
@@ -694,6 +692,7 @@ class AbuseFilterParser {
 			wfProfileOut( __METHOD__."-loadargs" );
 			
 			if ($this->mShortCircuit) {
+				wfProfileOut( __METHOD__ );
 				return; // The result doesn't matter.
 			}
 			
@@ -777,7 +776,7 @@ class AbuseFilterParser {
 												array( $var ) );
 		} else {
 			$val = $this->mVars->getVar( $var );
-			wfProfile( __METHOD__ );
+			wfProfileOut( __METHOD__ );
 			return $val;
 		}
 	}
