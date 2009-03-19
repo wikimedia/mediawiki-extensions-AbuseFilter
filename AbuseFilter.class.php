@@ -361,10 +361,16 @@ class AbuseFilter {
 		wfProfileIn( __METHOD__ );
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'abuse_filter', '*', array( 'af_enabled' => 1, 'af_deleted' => 0 ) );
+		
+		// Sampling profiler
+		$profile = rand(0,50);
+		$profile = ($profile == 1) ? true : false;
 
 		$filter_matched = array();
 
 		while ( $row = $dbr->fetchObject( $res ) ) {
+			if ($profile)
+				$startTime = microtime(true);
 			// Store the row somewhere convenient
 			self::$filters[$row->af_id] = $row;
 
@@ -377,6 +383,14 @@ class AbuseFilter {
 				// Record non-match.
 				$filter_matched[$row->af_id] = false;
 			}
+			
+			if ($profile) {
+				$endTime = microtime(true);
+				
+				$timeTaken = $endTime - $startTime;
+				
+				self::recordProfilingResult( $row->af_id, $timeTaken );
+			}
 		}
 
 		// Update statistics, and disable filters which are over-blocking.
@@ -385,6 +399,48 @@ class AbuseFilter {
 		wfProfileOut( __METHOD__ );
 
 		return $filter_matched;
+	}
+	
+	public static function resetFilterProfile( $filter ) {
+		global $wgMemc; 
+		$countKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'count' );
+		$totalKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'total' );
+		
+		$wgMemc->delete( $countKey );
+		$wgMemc->delete( $totalKey );
+	}
+	
+	public static function recordProfilingResult( $filter, $time ) {
+		global $wgMemc;
+		
+		$countKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'count' );
+		$totalKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'total' );
+		
+		$curCount = $wgMemc->get( $countKey );
+		$curTotal = $wgMemc->get( $totalKey );
+		
+		$wgMemc->set( $totalKey, $curTotal + $time, 3600 );
+		
+		if ($curCount)
+			$wgMemc->incr( $countKey );
+		else
+			$wgMemc->set( $countKey, 1, 3600 );
+	}
+	
+	public static function getFilterProfile( $filter ) {
+		global $wgMemc;
+		
+		$countKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'count' );
+		$totalKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'total' );
+		
+		$curCount = $wgMemc->get( $countKey );
+		$curTotal = $wgMemc->get( $totalKey );
+		
+		if (!$curCount)
+			return 0;
+		
+		$profile = ($curTotal / $curCount) * 1000;
+		return round( $profile, 2); // Return in ms, rounded to 2dp
 	}
 
 	/** Returns an array [ list of actions taken by filter, error message to display, if any ] */

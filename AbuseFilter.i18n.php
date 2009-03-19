@@ -151,7 +151,8 @@ The statistics quoted are for the most recent version of the filter.
 If you save your changes, you will overwrite all changes since the revision you are editing.</strong> &bull;
 [[Special:AbuseFilter/history/$2|Return to this filter's history]].",
 	'abusefilter-edit-status-label' => 'Statistics:',
-	'abusefilter-edit-status' => 'Of the last $1 {{PLURAL:$1|action|actions}}, this filter has matched $2 ($3%).',
+	'abusefilter-edit-status' => 'Of the last $1 {{PLURAL:$1|action|actions}}, this filter has matched $2 ($3%).
+On average, its run time is $4ms',
 	'abusefilter-edit-throttled' => "'''Warning''': This filter was automatically disabled as a safety measure.
 It reached the limit of matching more than $1% of actions.",
 	'abusefilter-edit-new' => 'New filter',

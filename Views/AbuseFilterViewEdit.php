@@ -174,6 +174,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				global $wgMemc;
 				$wgMemc->delete( wfMemcKey( 'valid-tags' ) );
 			}
+			
+			AbuseFilter::resetFilterProfile( $new_id );
 
 			global $wgOut;
 
@@ -257,11 +259,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			if ($total > 0) {
 				$matches_percent = sprintf( '%.2f', 100 * $matches_count / $total );
+				$profile = AbuseFilter::getFilterProfile( $filter );
 				$fields['abusefilter-edit-status-label'] =
 					wfMsgExt( 'abusefilter-edit-status', array( 'parsemag', 'escape' ),
 						$wgLang->formatNum($total),
 						$wgLang->formatNum($matches_count),
-						$wgLang->formatNum($matches_percent)
+						$wgLang->formatNum($matches_percent),
+						$wgLang->formatNum($profile)
 					);
 			}
 		}
