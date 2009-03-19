@@ -59,6 +59,9 @@ class AbuseFilter {
 			'norm(string)' => 'norm',
 			'count(needle,haystack)' => 'count',
 			'rcount(needle,haystack)' => 'rcount',
+			'rmwhitespace(text)' => 'rmwhitespace',
+			'rmspecials(text)' => 'rmspecials',
+			'ip_in_range(ip, range)' => 'ip_in_range',
 		),
 		'vars' => array(
 			'accountname' => 'accountname',
