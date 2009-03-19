@@ -46,9 +46,12 @@ class AbuseFilter {
 		),
 		'misc' => array(
 			'in' => 'in',
+			'contains' => 'contains',
 			'like' => 'like',
 			'""' => 'stringlit',
-			'rlike' => 'rlike'
+			'rlike' => 'rlike',
+			'cond ? iftrue : iffalse' => 'tern',
+			'if cond then iftrue else iffalse end' => 'cond',
 		),
 		'funcs' => array(
 			'length(string)' => 'length',
