@@ -1256,6 +1256,8 @@ class AbuseFilter {
 			$vars = self::getMoveVarsFromRCRow( $row );
 		} elseif ( $row->rc_log_type == 'newusers' ) {
 			$vars = self::getCreateVarsFromRCRow( $row );
+		} else {
+			return null;
 		}
 		$vars->setVar( 'context', 'generated' );
 		return $vars;
