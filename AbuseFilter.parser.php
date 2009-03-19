@@ -518,7 +518,7 @@ class AbuseFilterParser {
 			$this->move();
 			$r2 = new AFPData();
 			
-			if ($op == '&' && !($result->toBool())) {
+			if ( $op == '&' && !( $result->toBool() ) ) {
 				wfProfileIn( __METHOD__.'-shortcircuit' );
 				$orig = $this->mShortCircuit;
 				$this->mShortCircuit = true;
@@ -526,10 +526,10 @@ class AbuseFilterParser {
 				$this->mShortCircuit = $orig;
 				$result = new AFPData( AFPData::DBool, false );
 				wfProfileOut( __METHOD__.'-shortcircuit' );
-				return;
+				continue;
 			}
 			
-			if ($op == '|' && ($result->toBool())) {
+			if ( $op == '|' && $result->toBool() ) {
 				wfProfileIn( __METHOD__.'-shortcircuit' );
 				$orig = $this->mShortCircuit;
 				$this->mShortCircuit = true;
@@ -537,7 +537,7 @@ class AbuseFilterParser {
 				$this->mShortCircuit = $orig;
 				$result = new AFPData( AFPData::DBool, true );
 				wfProfileOut( __METHOD__.'-shortcircuit' );
-				return;
+				continue;
 			}
 			
 			$this->doLevelCompares( $r2 );
