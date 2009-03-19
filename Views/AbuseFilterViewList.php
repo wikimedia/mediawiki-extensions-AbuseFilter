@@ -170,10 +170,6 @@ class AbuseFilterPager extends TablePager {
 		);
 	}
 
-	function getIndexField() {
-		return 'af_id';
-	}
-
 	function getFieldNames() {
 		static $headers = null;
 
