@@ -97,8 +97,8 @@ class AbuseFilter {
 			'article_restrictions_edit' => 'restrictions-edit',
 			'article_restrictions_move' => 'restrictions-move',
 			'article_recent_contributors' => 'recent-contributors',
-			'old_text' => 'old-text-stripped',
-			'old_html' => 'old-html',
+#			'old_text' => 'old-text-stripped', ## Disabled, performance
+#			'old_html' => 'old-html', ## Disabled, performance
 			'old_links' => 'old-links',
 			'minor_edit' => 'minor-edit',
 		),
@@ -342,6 +342,8 @@ class AbuseFilter {
 		} catch (Exception $excep) {
 			// Sigh.
 			$result = false;
+			
+			wfDebugLog( 'AbuseFilter', "AbuseFilter parser error: ".$excep->getMessage()."\n" );
 
 			if (!$ignoreError) {
 				throw $excep;
@@ -506,6 +508,9 @@ class AbuseFilter {
 		
 		// Add vars from extensions
 		wfRunHooks( 'AbuseFilter-filterAction', array( &$vars, $title ) );
+		
+		// Set context
+		$vars->setVar( 'context', 'filter' );
 
 		$dbr = wfGetDB( DB_SLAVE );
 
@@ -1184,12 +1189,14 @@ class AbuseFilter {
 	public static function getVarsFromRCRow( $row ) {
 		if ($row->rc_this_oldid) {
 			// It's an edit.
-			return self::getEditVarsFromRCRow( $row );
+			$vars = self::getEditVarsFromRCRow( $row );
 		} elseif ( $row->rc_log_type == 'move' ) {
-			return self::getMoveVarsFromRCRow( $row );
+			$vars = self::getMoveVarsFromRCRow( $row );
 		} elseif ( $row->rc_log_type == 'newusers' ) {
-			return self::getCreateVarsFromRCRow( $row );
+			$vars = self::getCreateVarsFromRCRow( $row );
 		}
+		$vars->setVar( 'context', 'generated' );
+		return $vars;
 	}
 
 	public static function getCreateVarsFromRCRow( $row ) {
@@ -1287,7 +1294,7 @@ class AbuseFilter {
 				'title' => $title->getText(),
 				'text-var' => 'new_wikitext'
 			) );
-		$vars->setLazyLoadVar( 'old_links', 'links-from-wikitext-nonedit',
+		$vars->setLazyLoadVar( 'old_links', 'links-from-wikitext-or-database',
 			array(
 				'namespace' => $title->getNamespace(),
 				'title' => $title->getText(),

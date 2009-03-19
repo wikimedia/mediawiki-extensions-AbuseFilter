@@ -2,6 +2,7 @@
 
 class AbuseFilterVariableHolder {
 	var $mVars = array();
+	static $varBlacklist = array( 'context' );
 	
 	function setVar( $variable, $datum ) {
 		$variable = strtolower( $variable );
@@ -49,13 +50,20 @@ class AbuseFilterVariableHolder {
 		$this->mVars = array_merge( $this->mVars, $addHolder->mVars );
 	}
 	
+	function __wakeup() {
+		// Reset the context.
+		$this->setVar( 'context', 'stored' );
+	}
+	
 	function exportAllVars() {
 		$allVarNames = array_keys( $this->mVars );
 		$exported = array();
 		
 		foreach( $allVarNames as $varName ) {
-			$exported[$varName] = $this->getVar( $varName )->toString();
+			if (!in_array( $varName, self::$varBlacklist ) )
+				$exported[$varName] = $this->getVar( $varName )->toString();
 		}
+		
 		return $exported;
 	}
 	
@@ -121,6 +129,21 @@ class AFComputedVariable {
 		return self::$articleCache["$namespace:$title"];
 	}
 	
+	static function getLinksFromDB( $article ) {
+		// Stolen from ConfirmEdit
+		$id = $article->getId();
+		if (!$id) return array();
+		
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'externallinks', array( 'el_to' ), 
+			array( 'el_from' => $id ), __METHOD__ );
+		$links = array();
+		while ( $row = $dbr->fetchObject( $res ) ) {
+			$links[] = $row->el_to;
+		}
+		return $links;
+	}
+	
 	function compute( $vars ) {
 		$parameters = $this->mParameters;
 		$result = null;
@@ -146,7 +169,8 @@ class AFComputedVariable {
 				$result = implode( "\n", $interest_lines );
 				break;
 			case 'links-from-wikitext':
-				$article = self::articleFromTitle( $parameters['namespace'], $parameters['title'] );
+				$article = self::articleFromTitle( $parameters['namespace'],
+													$parameters['title'] );
 				$textVar = $parameters['text-var'];
 				
 				$new_text = $vars->getVar( $textVar )->toString();
@@ -154,13 +178,22 @@ class AFComputedVariable {
 				$links = array_keys( $editInfo->output->getExternalLinks() );
 				$result = implode( "\n", $links );
 				break;
-			case 'links-from-wikitext-nonedit':
-				$article = self::articleFromTitle( $parameters['namespace'], $parameters['title'] );
-				$textVar = $parameters['text-var'];
+			case 'links-from-wikitext-or-database':
+				$article = self::articleFromTitle( $parameters['namespace'],
+													$parameters['title'] );
 				
-				$wikitext = $vars->getVar( $textVar )->toString();
-				$editInfo = $this->parseNonEditWikitext( $wikitext, $article );
-				$links = array_keys( $editInfo->output->getExternalLinks() );
+				if ($vars->getVar( 'context' )->toString() == 'filter') {
+					$links = $this->getLinksFromDB( $article );
+					wfDebug( "AbuseFilter: loading old links from DB\n" );
+				} else {				
+					wfDebug( "AbuseFilter: loading old links from Parser\n" );
+					$textVar = $parameters['text-var'];
+					
+					$wikitext = $vars->getVar( $textVar )->toString();
+					$editInfo = $this->parseNonEditWikitext( $wikitext, $article );
+					$links = array_keys( $editInfo->output->getExternalLinks() );
+				}
+				
 				$result = implode( "\n", $links );
 				break;
 			case 'link-diff-added':
