@@ -178,6 +178,7 @@ class AFComputedVariable {
 				$links = array_keys( $editInfo->output->getExternalLinks() );
 				$result = implode( "\n", $links );
 				break;
+			case 'links-from-wikitext-nonedit':
 			case 'links-from-wikitext-or-database':
 				$article = self::articleFromTitle( $parameters['namespace'],
 													$parameters['title'] );
