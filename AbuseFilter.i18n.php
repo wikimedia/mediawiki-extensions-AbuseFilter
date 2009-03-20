@@ -137,7 +137,7 @@ Filter description: $7 ($8) ($9)',
 	'abusefilter-tools-reautoconfirm' => 'Restore autoconfirmed status',
 	'abusefilter-tools-reautoconfirm-user' => 'User:',
 	'abusefilter-tools-reautoconfirm-submit' => 'Re-autoconfirm',
-	'abusefilter-reautoconfirm-none' => 'That user has not had {{GENDER:$1|his|her}} autoconfirmed status suspended.', # This message supports {{GENDER}}
+	'abusefilter-reautoconfirm-none' => 'That user has not had {{GENDER:$1|his|her|their}} autoconfirmed status suspended.', # This message supports {{GENDER}}
 	'abusefilter-reautoconfirm-notallowed' => 'You are not allowed to restore autoconfirmed status.',
 	'abusefilter-reautoconfirm-done' => "Account's autoconfirmed status has been restored", # This message supports {{GENDER}}
 
