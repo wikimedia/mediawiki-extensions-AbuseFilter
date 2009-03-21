@@ -33,11 +33,11 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$selector = '';
 
 		$selectFields = array(); ## Same fields as in Test
-		$selectFields['abusefilter-test-user'] = wfInput( 'wpSearchUser', 45, $this->mSearchUser );
+		$selectFields['abusefilter-test-user'] = Xml::input( 'wpSearchUser', 45, $this->mSearchUser );
 		$selectFields['abusefilter-test-period-start'] = 
-			wfInput( 'wpSearchPeriodStart', 45, $this->mSearchPeriodStart );
+			Xml::input( 'wpSearchPeriodStart', 45, $this->mSearchPeriodStart );
 		$selectFields['abusefilter-test-period-end'] = 
-			wfInput( 'wpSearchPeriodEnd', 45, $this->mSearchPeriodEnd );
+			Xml::input( 'wpSearchPeriodEnd', 45, $this->mSearchPeriodEnd );
 
 		$selector .= Xml::buildForm( $selectFields, 'abusefilter-examine-submit' );
 		$selector .= Xml::hidden( 'submit', 1 );

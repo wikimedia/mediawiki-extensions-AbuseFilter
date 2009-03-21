@@ -43,11 +43,11 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		// Selectory stuff
 		$selectFields = array();
-		$selectFields['abusefilter-test-user'] = wfInput( 'wpTestUser', 45, $this->mTestUser );
+		$selectFields['abusefilter-test-user'] = Xml::input( 'wpTestUser', 45, $this->mTestUser );
 		$selectFields['abusefilter-test-period-start'] = 
-			wfInput( 'wpTestPeriodStart', 45, $this->mTestPeriodStart );
+			Xml::input( 'wpTestPeriodStart', 45, $this->mTestPeriodStart );
 		$selectFields['abusefilter-test-period-end'] = 
-			wfInput( 'wpTestPeriodEnd', 45, $this->mTestPeriodEnd );
+			Xml::input( 'wpTestPeriodEnd', 45, $this->mTestPeriodEnd );
 		$output .= Xml::buildForm( $selectFields, 'abusefilter-test-submit' );
 		
 		$output .= Xml::hidden( 'title', $this->getTitle("test")->getPrefixedText() );
