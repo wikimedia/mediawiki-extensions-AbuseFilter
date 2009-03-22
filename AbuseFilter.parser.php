@@ -1118,18 +1118,7 @@ class AbuseFilterParser {
 	}
 	
 	protected function rmdoubles( $s ) {
-		$last = -1;
-		$ret = array();
-		
-		$chars = AntiSpoof::stringToList( $s );
-		
-		foreach( $chars as $char) {
-			if ($char != $last)
-				$ret[] = $char;
-			$last = $char;
-		}
-		
-		return AntiSpoof::listToString($ret);
+		return preg_replace( '/(.)\1+/us','\1',$s);
 	}
 	
 	protected function rmwhitespace( $s ) {
