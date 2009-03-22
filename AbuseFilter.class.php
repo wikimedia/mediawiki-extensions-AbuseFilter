@@ -425,12 +425,13 @@ class AbuseFilter {
 		$curCount = $wgMemc->get( $countKey );
 		$curTotal = $wgMemc->get( $totalKey );
 		
-		$wgMemc->set( $totalKey, $curTotal + $time, 3600 );
-		
-		if ($curCount)
+		if ($curCount) {
+			$wgMemc->set( $totalKey, $curTotal + $time, 3600 );		
 			$wgMemc->incr( $countKey );
-		else
+		} else {
 			$wgMemc->set( $countKey, 1, 3600 );
+			$wgMemc->set( $totalKey, $time, 3600 );			
+		}
 	}
 	
 	public static function getFilterProfile( $filter ) {
@@ -1259,7 +1260,9 @@ class AbuseFilter {
 		} else {
 			return null;
 		}
-		$vars->setVar( 'context', 'generated' );
+		if ($vars)
+			$vars->setVar( 'context', 'generated' );
+		
 		return $vars;
 	}
 

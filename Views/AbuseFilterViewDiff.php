@@ -52,6 +52,13 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		static $dependentSpecs = array( 'prev', 'next' );
 		static $cache = array();
 		
+		global $wgUser;
+		
+		if ( AbuseFilter::filterHidden( $this->mFilter ) &&
+				!$wgUser->isAllowed( 'abusefilter-modify' ) ) {
+			return null;		
+		}
+		
 		if ( isset( $cache[$spec] ) )
 			return $cache[$spec];
 		
