@@ -152,13 +152,9 @@ class AFPData {
 		$str = $str->toString();
 		$pattern = $regex->toString();
 		
-		if (preg_match('/^\/.*\/$/u', $pattern)) {
-			$pattern .= 'u';
-		} elseif (preg_match( '/^\/.*\/\w+$/u', $pattern ) ) {
-			# Nothing
-		} else {
-			$pattern = "/$pattern/u";
-		}
+		$pattern = strtr( $pattern, array('/' => '\/') );
+		
+		$pattern = "/$pattern/u";
 		
 		wfSuppressWarnings();
 		$result = preg_match( $pattern, $str );
@@ -1058,7 +1054,8 @@ class AbuseFilterParser {
 			$needle = $args[0]->toString();
 			$haystack = $args[1]->toString();
 
-			## Munge the regex			
+			## Munge the regex
+			$needle = strtr( $needle, array('/' => '\/') );
 			$needle = "/$needle/u";
 			
 			$count = 0;

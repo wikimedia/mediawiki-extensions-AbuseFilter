@@ -102,3 +102,8 @@ $wgAjaxExportList[] = 'AbuseFilter::ajaxCheckFilterWithVars';
 $wgAbuseFilterStyleVersion = 8;
 
 $wgAbuseFilterRestrictedActions = array( 'block', 'degroup' );
+
+// UDP configuration
+$wgAbuseFilterUDPPrefix = 'abusefilter:';
+$wgAbuseFilterUDPAddress = null;
+$wgAbuseFilterUDPPort = null;

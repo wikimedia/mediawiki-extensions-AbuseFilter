@@ -1484,4 +1484,11 @@ class AbuseFilter {
 		}
 		return $wgLang->commaList( $flags_display );
 	}
+	
+	static function sendToUDP( $data ) {
+		global $wgAbuseFilterUDPPrefix, $wgAbuseFilterUDPAddress, $wgAbuseFilterUDPPort;
+		
+		RecentChange::sendToUDP( $data, $wgAbuseFilterUDPAddress, $wgAbuseFilterUDPPrefix,
+									$wgAbuseFilterUDPPort );
+	}
 }
