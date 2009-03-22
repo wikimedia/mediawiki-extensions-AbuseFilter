@@ -67,7 +67,9 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		
 		$pager = new AbuseFilterExaminePager( $this, $changesList );
 		
-		$output .= $pager->getNavigationBar() . $pager->getBody() . $pager->getNavigationBar();
+		$output .= $pager->getNavigationBar() .
+					$pager->getBody() .
+					$pager->getNavigationBar();
 
 		$output .= $changesList->endRecentChangesList();
 
@@ -248,5 +250,9 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	
 	function getTitle() {
 		return $this->mPage->getTitle( 'examine' );
+	}
+	
+	function getEmptyBody() {
+		return wfMsgExt( 'abusefilter-examine-noresults', 'parse' );
 	}
 }

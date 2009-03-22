@@ -383,6 +383,7 @@ You can receive a full explanation by clicking the "Check Syntax" button.',
 	'abusefilter-examine-syntaxerror' => 'The filter has invalid syntax',
 	'abusefilter-examine-notfound' => 'The change you requested could not be found.',
 	'abusefilter-examine-incompatible' => 'The change you requested is not supported by the Abuse Filter',
+	'abusefilter-examine-noresults' => 'No results were found for the search parameters you provided.',
 	
 	// Top navigation interface
 	'abusefilter-topnav' => "'''Abuse Filter navigation'''",
