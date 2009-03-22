@@ -92,6 +92,14 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 						__METHOD__,
 						array( 'ORDER BY' => 'afh_timestamp desc' )
 					);
+			if ($other && !$row) {
+				$t = $this->getTitle(
+					"history/".$this->mFilter."/item/".$other['meta']['history_id'] );
+				global $wgOut;
+				$wgOut->redirect( $t->getFullURL() );
+				return;
+			}
+			
 		} elseif ($spec == 'next' && !in_array( $otherSpec, $dependentSpecs ) ) {
 			// cached
 			$other = $this->loadSpec( $otherSpec, $spec );
@@ -106,6 +114,14 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 						__METHOD__,
 						array( 'ORDER BY' => 'afh_timestamp desc' )
 					);
+					
+			if ($other && !$row) {
+				$t = $this->getTitle( 
+					"history/".$this->mFilter."/item/".$other['meta']['history_id'] );
+				global $wgOut;
+				$wgOut->redirect( $t->getFullURL() );
+				return;
+			}
 		}
 		
 		if (!$row)
