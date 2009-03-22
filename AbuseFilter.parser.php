@@ -1059,13 +1059,7 @@ class AbuseFilterParser {
 			$haystack = $args[1]->toString();
 
 			## Munge the regex			
-			if (preg_match('/^\/.*\/$/u', $needle)) {
-				$needle .= 'u';
-			} elseif (preg_match( '/^\/.*\/\w+$/u', $needle ) ) {
-				# Nothing
-			} else {
-				$needle = "/$needle/u";
-			}
+			$needle = "/$needle/u";
 			
 			$count = 0;
 			$matches = array();
