@@ -36,11 +36,16 @@ class SpecialAbuseLog extends SpecialPage {
 			return;
 		}
 		
-		// Show the search form.
-		$this->searchForm();
-		
-		// Show the log itself.
-		$this->showList();
+		$detailsid = $wgRequest->getIntOrNull( 'details' );
+		if ($detailsid) {
+			$this->showDetails( $detailsid );
+		} else {		
+			// Show the search form.
+			$this->searchForm();
+			
+			// Show the log itself.
+			$this->showList();
+		}
 	}
 	
 	function loadParameters() {
@@ -50,12 +55,6 @@ class SpecialAbuseLog extends SpecialPage {
 		$this->mSearchTitle = $wgRequest->getText( 'wpSearchTitle' );
 		if ($this->canSeeDetails())
 			$this->mSearchFilter = $wgRequest->getIntOrNull( 'wpSearchFilter' );
-			
-		$detailsid = $wgRequest->getIntOrNull( 'details' );
-		
-		if ($detailsid) {
-			$this->showDetails( $detailsid );
-		}
 	}
 	
 	function searchForm() {
@@ -126,12 +125,9 @@ class SpecialAbuseLog extends SpecialPage {
 		
 		$output .= Xml::element( 'legend', null, wfMsg( 'abusefilter-log-details-legend', $id ) );
 		$output .= Xml::tags( 'p', null, $this->formatRow( $row, false ) );
-		$output .= Xml::element( 'h3', null, wfMsg( 'abusefilter-log-details-vars' ) );
-		
-		// Build a table.
+
+		// Load data		
 		$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
-		
-		$output .= AbuseFilter::buildVarDumpTable( $vars );
 		
 		// Diff, if available
 		if ( $vars->getVar( 'action' )->toString() == 'edit' ) {
@@ -167,6 +163,11 @@ class SpecialAbuseLog extends SpecialPage {
 						);
 			$output .= $formattedDiff;
 		}
+		
+		$output .= Xml::element( 'h3', null, wfMsg( 'abusefilter-log-details-vars' ) );
+		
+		// Build a table.
+		$output .= AbuseFilter::buildVarDumpTable( $vars );
 		
 		if ($this->canSeePrivate()) {
 			// Private stuff, like IPs.
