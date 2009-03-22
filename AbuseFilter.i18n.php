@@ -5643,6 +5643,7 @@ $messages['he'] = array(
 	'abusefilter-examine-syntaxerror' => 'תחביר המסנן אינו תקין',
 	'abusefilter-examine-notfound' => 'לא ניתן לאתר את השינוי המבוקש.',
 	'abusefilter-examine-incompatible' => 'השינוי המבוקש אינו נתמך על ידי מסנן ההשחתה',
+	'abusefilter-examine-noresults' => 'לא נמצאו תוצאות עבור הפרמטרים שסיפקתם לחיפוש.',
 	'abusefilter-topnav' => "'''ניווט במסנן ההשחתה'''",
 	'abusefilter-topnav-home' => 'הדף הראשי',
 	'abusefilter-topnav-test' => 'בדיקה מקובצת',
