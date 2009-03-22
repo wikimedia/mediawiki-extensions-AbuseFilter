@@ -1267,9 +1267,13 @@ class AbuseFilter {
 	}
 
 	public static function getCreateVarsFromRCRow( $row ) {
-		$vars = array('ACTION' => 'createaccount');
-		$vars['USER_NAME'] = $vars['ACCOUNTNAME'] = 
-			Title::makeTitle( $row->rc_namespace, $row->rc_title )->getText();
+		$vars = new AbuseFilterVariableHolder;
+		
+		$vars->setVar('ACTION', 'createaccount');
+		
+		$name = Title::makeTitle( $row->rc_namespace, $row->rc_title )->getText();
+		$vars->setVar( 'user_name', $name );
+		$vars->setVar( 'accountname', $name );
 		return $vars;
 	}
 
