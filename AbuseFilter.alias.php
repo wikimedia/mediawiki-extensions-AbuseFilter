@@ -19,7 +19,7 @@ $aliases['en'] = array(
  */
 $aliases['ar'] = array(
 	'AbuseLog' => array( 'سجل_الإساءة' ),
-	'AbuseFilter' => array( 'فلتر_الإساءة' ),
+	'AbuseFilter' => array( 'مرشح_الإساءة', 'فلتر_الإساءة' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى)
