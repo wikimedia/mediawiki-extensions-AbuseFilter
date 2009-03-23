@@ -151,20 +151,30 @@ class AbuseFilterHooks {
 	}
 
 	public static function onLoadExtensionSchemaUpdates() {
-		global $wgExtNewTables, $wgExtNewFields;
+		global $wgExtNewTables, $wgExtNewFields, $wgExtPGNewFields, $wgExtNewIndexes, $wgDBtype;
 
 		$dir = dirname( __FILE__ );
 		
 		// DB updates
-		$wgExtNewTables = array_merge( $wgExtNewTables,
-			array(
-				array( 'abuse_filter', "$dir/abusefilter.tables.sql" ),
-				array( 'abuse_filter_history', "$dir/db_patches/patch-abuse_filter_history.sql" ),
-				array( 'abuse_filter_history', 'afh_changed_fields', "$dir/db_patches/patch-afh_changed_fields.sql" ),
-				array( 'abuse_filter', 'af_deleted', "$dir/db_patches/patch-af_deleted.sql" ),
-				array( 'abuse_filter', 'af_actions', "$dir/db_patches/patch-af_actions.sql" ),
-			) );
-
+		if( $wgDBtype == 'mysql' ) {
+			$wgExtNewTables = array_merge( $wgExtNewTables,
+				    array(
+						  array( 'abuse_filter', "$dir/abusefilter.tables.sql" ),
+						  array( 'abuse_filter_history', "$dir/db_patches/patch-abuse_filter_history.sql" ),
+						  array( 'abuse_filter_history', 'afh_changed_fields', "$dir/db_patches/patch-afh_changed_fields.sql" ),
+						  array( 'abuse_filter', 'af_deleted', "$dir/db_patches/patch-af_deleted.sql" ),
+						  array( 'abuse_filter', 'af_actions', "$dir/db_patches/patch-af_actions.sql" ),
+					) );
+		} else if ( $wgDBtype == 'postgres' ) {
+			$wgExtNewTables = array_merge( $wgExtNewTables,
+				    array(
+						  array( 'abuse_filter', "$dir/abusefilter.tables.pg.sql" ),
+						  array( 'abuse_filter_history', "$dir/db_patches/patch-abuse_filter_history.pg.sql" ),
+					) );
+			$wgExtPGNewFields[] = array('abuse_filter', 'af_deleted', "SMALLINT NOT NULL DEFAULT 0" );
+			$wgExtPGNewFields[] = array('abuse_filter', 'af_actions', "TEXT NOT NULL DEFAULT ''" );
+			$wgExtNewIndexes[] = array('abuse_filter_log', 'abuse_filter_log_ip', "(afl_ip)");
+		}
 		return true;
 	}
 }
