@@ -117,6 +117,9 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			$wgOut->addWikiMsg( 'abusefilter-examine-incompatible' );
 			return;
 		}
+		
+		if ($vars instanceof AbuseFilterVariableHolder )
+			$vars = $vars->exportAllVars();
 
 		$output = '';
 
