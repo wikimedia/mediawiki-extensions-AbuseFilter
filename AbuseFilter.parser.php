@@ -152,7 +152,7 @@ class AFPData {
 		$str = $str->toString();
 		$pattern = $regex->toString();
 		
-		$needle = strtr( $needle, array('\/' => '\/', '/' => '\/') );
+		$pattern = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $pattern );
 		$pattern = "/$pattern/u";
 		
 		wfSuppressWarnings();
@@ -1107,7 +1107,7 @@ class AbuseFilterParser {
 			$haystack = $args[1]->toString();
 
 			## Munge the regex
-			$needle = strtr( $needle, array('\/' => '\/', '/' => '\/') );
+			$needle = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $needle );
 			$needle = "/$needle/u";
 			
 			$count = 0;
