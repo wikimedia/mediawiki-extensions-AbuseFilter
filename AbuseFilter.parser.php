@@ -794,8 +794,9 @@ class AbuseFilterParser {
 			
 		// Spaces
 		$matches = array();
-		if ( preg_match( '/\s+/uA', $code, $matches, 0, $offset ) ) {
-			$offset += strlen($matches[0]);		
+		if ( preg_match( '/\s+/u', $code, $matches, PREG_OFFSET_CAPTURE, $offset ) &&
+				$matches[0][1] == $offset ) {
+			$offset += strlen($matches[0][0]);		
 		}
 		
 		if( $offset >= strlen($code) ) return array( '', AFPToken::TNone, $code, $offset );
@@ -824,8 +825,7 @@ class AbuseFilterParser {
 		if( $code[$offset] == '"' || $code[$offset] == "'" ) {
 			$type = $code[$offset];
 			$offset++;
-			$strLen = $len = strlen($code);
-			while( $offset < $strLen ) {
+			while( $offset < strlen($code) ) {
 			
 				if( $code[$offset] == $type ) {
 					$offset++;
@@ -839,22 +839,16 @@ class AbuseFilterParser {
 					$tok .= substr( $code, $offset, $addLength );
 					$offset += $addLength;
 				} elseif( $code[$offset] == '\\' ) {
-					switch( $code[$offset + 1] ) {
-					case '\\':
+					if( $code[$offset + 1] == '\\' )
 						$tok .= '\\';
-						break;
-					case $type:
+					elseif( $code[$offset + 1] == $type )
 						$tok .= $type;
-						break;
-					case 'n';
+					elseif( $code[$offset + 1] == 'n' )
 						$tok .= "\n";
-						break;
-					case 'r':
+					elseif( $code[$offset + 1] == 'r' )
 						$tok .= "\r";
-						break;
-					case 't':
+					elseif( $code[$offset + 1] == 't' )
 						$tok .= "\t";
-						break;
 					elseif( $code[$offset + 1] == 'x' ) {
 						$chr = substr( $code, $offset + 2, 2 );
 						
@@ -888,15 +882,15 @@ class AbuseFilterParser {
 			
 			foreach( self::$mOps as $op )
 				$quoted_operators[] = preg_quote( $op, '/' );
-			$operator_regex = '/('.implode('|', $quoted_operators).')/A';
+			$operator_regex = '/('.implode('|', $quoted_operators).')/';
 		}
 		
 		$matches = array();
 		
-		preg_match( $operator_regex, $code, $matches, 0, $offset );
+		preg_match( $operator_regex, $code, $matches, PREG_OFFSET_CAPTURE, $offset );
 		
-		if( count( $matches ) ) {
-			$tok = $matches[0];
+		if( count( $matches ) && $matches[0][1] == $offset ) {
+			$tok = $matches[0][0];
 			$offset += strlen( $tok );
 			return array( $tok, AFPToken::TOp, $code, $offset );
 		}
@@ -913,14 +907,14 @@ class AbuseFilterParser {
 						10 => '[0-9.]',
 						);
 		$baseClass = '['.implode('', array_keys($bases)).']';
-		$radixRegex = "/([0-9A-Fa-f]*(?:\.\d*)?)($baseClass)?/Au";
+		$radixRegex = "/([0-9A-Fa-f]*(?:\.\d*)?)($baseClass)?/u";
 		$matches = array();
 		
-		preg_match( $radixRegex, $code, $matches, 0, $offset );
+		preg_match( $radixRegex, $code, $matches, PREG_OFFSET_CAPTURE, $offset );
 		
-		if ( count( $matches ) ) {
-			$input = $matches[1];
-			$baseChar = @$matches[2];
+		if ( count( $matches ) && $matches[0][1] == $offset ) {
+			$input = $matches[1][0];
+			$baseChar = @$matches[2][0];
 			$num = null;
 			
 			// Sometimes the base char gets mixed in with the rest of it because
@@ -967,11 +961,12 @@ class AbuseFilterParser {
 		// The rest are considered IDs
 		
 		// Regex match > PHP
-		$idSymbolRegex = '/[0-9A-Za-z_]+/A';
+		$idSymbolRegex = '/[0-9A-Za-z_]+/';
 		$matches = array();
+		preg_match( $idSymbolRegex, $code, $matches, PREG_OFFSET_CAPTURE, $offset );
 		
-		if ( preg_match( $idSymbolRegex, $code, $matches, 0, $offset ) ) {
-			$tok = $matches[0];
+		if ( $matches[0][1] == $offset ) {
+			$tok = $matches[0][0];
 			
 			$type = in_array( $tok, self::$mKeywords )
 				? AFPToken::TKeyword
