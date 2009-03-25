@@ -313,7 +313,7 @@ Please ask a user with permission to add restricted actions to make the change f
 
 	// Exceptions
 	'abusefilter-exception-unexpectedatend' => 'Unexpected "$2" at character $1.',
-	'abusefilter-exception-expectednotfound' => 'Expected a $2 at character $1, not found.',
+	'abusefilter-exception-expectednotfound' => 'Expected a $2 at character $1, not found (found $3 $4 instead).',
 	'abusefilter-exception-unrecognisedkeyword' => 'Unrecognised keyword $2 at character $1.',
 	'abusefilter-exception-unexpectedtoken' => 'Unexpected token "$3" (of type $2) at character $1.',
 	'abusefilter-exception-unclosedstring' => 'Unclosed string starting at character $1.',

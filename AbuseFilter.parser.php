@@ -425,7 +425,9 @@ class AbuseFilterParser {
 			$this->doLevelBoolOps( $result );
 			
 			if( !($this->mCur->type == AFPToken::TKeyword && $this->mCur->value == 'then') )
-				throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos, array('then') );
+				throw new AFPUserVisibleException( 'expectednotfound',
+									$this->mCur->pos,
+									array('then', $this->mCur->type, $this->mCur->value ) );
 			$this->move();
 
 			
@@ -444,7 +446,9 @@ class AbuseFilterParser {
 			}
 			
 			if( !($this->mCur->type == AFPToken::TKeyword && $this->mCur->value == 'else') )
-				throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos, array('else') );
+				throw new AFPUserVisibleException( 'expectednotfound',
+								$this->mCur->pos,
+								array('else', $this->mCur->type, $this->mCur->value ) );
 			$this->move();
 			
 			if (!$isTrue) {
@@ -457,7 +461,9 @@ class AbuseFilterParser {
 			}
 			
 			if( !($this->mCur->type == AFPToken::TKeyword && $this->mCur->value == 'end') )
-				throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos, array('end') );
+				throw new AFPUserVisibleException( 'expectednotfound',
+							$this->mCur->pos,
+							array('end', $this->mCur->type, $this->mCur->value ) );
 			$this->move();
 			
 			if( $result->toBool() ) {
@@ -485,7 +491,9 @@ class AbuseFilterParser {
 				}
 				
 				if( !($this->mCur->type == AFPToken::TOp && $this->mCur->value == ':') )
-					throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos, array(':') );
+					throw new AFPUserVisibleException( 'expectednotfound',
+									$this->mCur->pos,
+									array(':', $this->mCur->type, $this->mCur->value ) );
 				$this->move();
 				
 				if (!$isTrue) {
@@ -657,7 +665,9 @@ class AbuseFilterParser {
 			$this->move();
 			$this->doLevelSet( $result );
 			if( !($this->mCur->type == AFPToken::TBrace && $this->mCur->value == ')') )
-				throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos, array(')') );
+				throw new AFPUserVisibleException( 'expectednotfound',
+							$this->mCur->pos,
+							array(')', $this->mCur->type, $this->mCur->value ) );
 			$this->move();
 		} else {
 			$this->doLevelFunction( $result );
@@ -670,7 +680,9 @@ class AbuseFilterParser {
 			$func = self::$mFunctions[$this->mCur->value];
 			$this->move();
 			if( $this->mCur->type != AFPToken::TBrace || $this->mCur->value != '(' )
-				throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos, array('(') );
+				throw new AFPUserVisibleException( 'expectednotfound',
+							$this->mCur->pos,
+							array('(', $this->mCur->type, $this->mCur->value ) );
 			wfProfileIn( __METHOD__."-loadargs" );
 			$args = array();
 			do {
@@ -681,7 +693,9 @@ class AbuseFilterParser {
 			} while( $this->mCur->type == AFPToken::TComma );
 			
 			if( $this->mCur->type != AFPToken::TBrace || $this->mCur->value != ')' ) {
-				throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos, array(')') );
+				throw new AFPUserVisibleException( 'expectednotfound',
+								$this->mCur->pos,
+								array(')', $this->mCur->type, $this->mCur->value ) );
 			}
 			$this->move();
 			
@@ -794,9 +808,8 @@ class AbuseFilterParser {
 			
 		// Spaces
 		$matches = array();
-		if ( preg_match( '/\s+/u', $code, $matches, PREG_OFFSET_CAPTURE, $offset ) &&
-				$matches[0][1] == $offset ) {
-			$offset += strlen($matches[0][0]);		
+		if ( preg_match( '/\s+/uA', $code, $matches, 0, $offset ) ) {
+			$offset += strlen($matches[0]);		
 		}
 		
 		if( $offset >= strlen($code) ) return array( '', AFPToken::TNone, $code, $offset );
@@ -825,7 +838,8 @@ class AbuseFilterParser {
 		if( $code[$offset] == '"' || $code[$offset] == "'" ) {
 			$type = $code[$offset];
 			$offset++;
-			while( $offset < strlen($code) ) {
+			$strLen = strlen($code);
+			while( $offset < $strLen ) {
 			
 				if( $code[$offset] == $type ) {
 					$offset++;
@@ -839,28 +853,35 @@ class AbuseFilterParser {
 					$tok .= substr( $code, $offset, $addLength );
 					$offset += $addLength;
 				} elseif( $code[$offset] == '\\' ) {
-					if( $code[$offset + 1] == '\\' )
-						$tok .= '\\';
-					elseif( $code[$offset + 1] == $type )
-						$tok .= $type;
-					elseif( $code[$offset + 1] == 'n' )
-						$tok .= "\n";
-					elseif( $code[$offset + 1] == 'r' )
-						$tok .= "\r";
-					elseif( $code[$offset + 1] == 't' )
-						$tok .= "\t";
-					elseif( $code[$offset + 1] == 'x' ) {
-						$chr = substr( $code, $offset + 2, 2 );
-						
-						if ( preg_match( '/^[0-9A-Fa-f]{2}$/', $chr ) ) {
-							$chr = base_convert( $chr, 16, 10 );
-							$tok .= chr($chr);
-							$offset += 2; # \xXX -- 2 done later
-						} else {
-							$tok .= 'x';
-						}
-					} else {
-						$tok .= "\\" . $code[$offset + 1];
+					switch( $code[$offset + 1] ) {
+						case '\\':
+							$tok .= '\\';
+							break;
+						case $type:
+							$tok .= $type;
+							break;
+						case 'n';
+							$tok .= "\n";
+							break;
+						case 'r':
+							$tok .= "\r";
+							break;
+						case 't':
+							$tok .= "\t";
+							break;
+						case 'x':
+							$chr = substr( $code, $offset + 2, 2 );
+							
+							if ( preg_match( '/^[0-9A-Fa-f]{2}$/', $chr ) ) {
+								$chr = base_convert( $chr, 16, 10 );
+								$tok .= chr($chr);
+								$offset += 2; # \xXX -- 2 done later
+							} else {
+								$tok .= 'x';
+							}
+							break;
+						default:
+							$tok .= "\\" . $code[$offset + 1];
 					}
 					
 					$offset+=2;
@@ -882,15 +903,15 @@ class AbuseFilterParser {
 			
 			foreach( self::$mOps as $op )
 				$quoted_operators[] = preg_quote( $op, '/' );
-			$operator_regex = '/('.implode('|', $quoted_operators).')/';
+			$operator_regex = '/('.implode('|', $quoted_operators).')/A';
 		}
 		
 		$matches = array();
 		
-		preg_match( $operator_regex, $code, $matches, PREG_OFFSET_CAPTURE, $offset );
+		preg_match( $operator_regex, $code, $matches, 0, $offset );
 		
-		if( count( $matches ) && $matches[0][1] == $offset ) {
-			$tok = $matches[0][0];
+		if( count( $matches ) ) {
+			$tok = $matches[0];
 			$offset += strlen( $tok );
 			return array( $tok, AFPToken::TOp, $code, $offset );
 		}
@@ -907,16 +928,13 @@ class AbuseFilterParser {
 						10 => '[0-9.]',
 						);
 		$baseClass = '['.implode('', array_keys($bases)).']';
-		$radixRegex = "/([0-9A-Fa-f]*(?:\.\d*)?)($baseClass)?/u";
+		$radixRegex = "/([0-9A-Fa-f]*(?:\.\d*)?)($baseClass)?/Au";
 		$matches = array();
 		
-		preg_match( $radixRegex, $code, $matches, PREG_OFFSET_CAPTURE, $offset );
-		
-		if ( count( $matches ) && $matches[0][1] == $offset ) {
-			$input = $matches[1][0];
-			$baseChar = @$matches[2][0];
+		if ( preg_match( $radixRegex, $code, $matches, 0, $offset ) ) {
+			$input = $matches[1];
+			$baseChar = @$matches[2];
 			$num = null;
-			
 			// Sometimes the base char gets mixed in with the rest of it because
 			//  the regex targets hex, too.
 			//  This mostly happens with binary
@@ -941,7 +959,7 @@ class AbuseFilterParser {
 					$num = $input;
 				}
 						
-				$offset += strlen( $matches[0][0] );
+				$offset += strlen( $matches[0] );
 				
 				$float = in_string( '.', $input );
 				
@@ -961,12 +979,11 @@ class AbuseFilterParser {
 		// The rest are considered IDs
 		
 		// Regex match > PHP
-		$idSymbolRegex = '/[0-9A-Za-z_]+/';
+		$idSymbolRegex = '/[0-9A-Za-z_]+/A';
 		$matches = array();
-		preg_match( $idSymbolRegex, $code, $matches, PREG_OFFSET_CAPTURE, $offset );
 		
-		if ( $matches[0][1] == $offset ) {
-			$tok = $matches[0][0];
+		if ( preg_match( $idSymbolRegex, $code, $matches, 0, $offset ) ) {
+			$tok = $matches[0];
 			
 			$type = in_array( $tok, self::$mKeywords )
 				? AFPToken::TKeyword
