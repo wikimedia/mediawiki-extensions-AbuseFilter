@@ -284,7 +284,7 @@ class AFPUserVisibleException extends AFPException {
 }
 	
 class AbuseFilterParser {
-	var $mParams, $mVars, $mCode, $mTokens, $mPos, $mCur, $mShortCircuit;
+	var $mParams, $mVars, $mCode, $mTokens, $mPos, $mCur, $mShortCircuit, $mAllowShort;
 	
 	// length,lcase,ccnorm,rmdoubles,specialratio,rmspecials,norm,count
 	static $mFunctions = array(
@@ -337,14 +337,20 @@ class AbuseFilterParser {
 		$this->mTokens = array();
 		$this->mVars = new AbuseFilterVariableHolder;
 		$this->mPos = 0;
+		$this->mShortCircuit = false;
+		$this->mAllowShort = true;
 	}
 	
 	public function checkSyntax( $filter ) {
 		try {
+			$origAS = $this->mAllowShort;
+			$this->mAllowShort = false;
 			$this->parse($filter);
 		} catch (AFPUserVisibleException $excep) {
+			$this->mAllowShort = $origAS;
 			return array($excep->getMessage(), $excep->mPosition);
 		}
+		$this->mAllowShort = $origAS;
 		return true;
 	}
 	
@@ -374,6 +380,28 @@ class AbuseFilterParser {
 		return $this->mCur = $token;
 	}
 	
+	protected function skipOverBraces() {
+		if( !($this->mCur->type == AFPToken::TBrace && $this->mCur->value == '(') || !$this->mShortCircuit ) {
+			return;
+		}
+
+		$braces = 1;
+		wfProfileIn( __METHOD__ );
+		while( $this->mCur->type != AFPToken::TNone && $braces > 0 ) {
+			$this->move();
+			if( $this->mCur->type == AFPToken::TBrace ) {
+				if( $this->mCur->value == '(' ) {
+					$braces++;
+				} elseif ($this->mCur->value == ')') {
+					$braces--;
+				}
+			}
+		}
+		wfProfileOut( __METHOD__ );
+		if( !($this->mCur->type == AFPToken::TBrace && $this->mCur->value == ')') )
+			throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos, array(')') );
+	}
+
 	public function parse( $code ) {
 		return $this->intEval( $code )->toBool();
 	}
@@ -387,6 +415,7 @@ class AbuseFilterParser {
 		$this->mCode = $code;
 		$this->mPos = 0;
 		$this->mLen = strlen( $code );
+		$this->mShortCircuit = false;
 		
 		// Parse the first token
 		$this->move();
@@ -438,7 +467,7 @@ class AbuseFilterParser {
 			
 			if ($isTrue) {
 				$scOrig = $this->mShortCircuit;
-				$this->mShortCircuit = true;
+				$this->mShortCircuit = $this->mAllowShort;
 			}
 			$this->doLevelConditions( $r1 );
 			if ($isTrue) {
@@ -453,7 +482,7 @@ class AbuseFilterParser {
 			
 			if (!$isTrue) {
 				$scOrig = $this->mShortCircuit;
-				$this->mShortCircuit = true;
+				$this->mShortCircuit = $this->mAllowShort;
 			}
 			$this->doLevelConditions( $r2 );
 			if (!$isTrue) {
@@ -483,7 +512,7 @@ class AbuseFilterParser {
 				
 				if ($isTrue) {
 					$scOrig = $this->mShortCircuit;
-					$this->mShortCircuit = true;
+					$this->mShortCircuit = $this->mAllowShort;
 				}
 				$this->doLevelConditions( $r1 );
 				if ($isTrue) {
@@ -498,7 +527,7 @@ class AbuseFilterParser {
 				
 				if (!$isTrue) {
 					$scOrig = $this->mShortCircuit;
-					$this->mShortCircuit = true;
+					$this->mShortCircuit = $this->mAllowShort;
 				}
 				$this->doLevelConditions( $r2 );
 				if (!$isTrue) {
@@ -525,7 +554,7 @@ class AbuseFilterParser {
 			if ( $op == '&' && !( $result->toBool() ) ) {
 				wfProfileIn( __METHOD__.'-shortcircuit' );
 				$orig = $this->mShortCircuit;
-				$this->mShortCircuit = true;
+				$this->mShortCircuit = $this->mAllowShort;
 				$this->doLevelCompares( $r2 );
 				$this->mShortCircuit = $orig;
 				$result = new AFPData( AFPData::DBool, false );
@@ -536,7 +565,7 @@ class AbuseFilterParser {
 			if ( $op == '|' && $result->toBool() ) {
 				wfProfileIn( __METHOD__.'-shortcircuit' );
 				$orig = $this->mShortCircuit;
-				$this->mShortCircuit = true;
+				$this->mShortCircuit = $this->mAllowShort;
 				$this->doLevelCompares( $r2 );
 				$this->mShortCircuit = $orig;
 				$result = new AFPData( AFPData::DBool, true );
@@ -662,8 +691,12 @@ class AbuseFilterParser {
 	
 	protected function doLevelBraces( &$result ) {
 		if( $this->mCur->type == AFPToken::TBrace && $this->mCur->value == '(' ) {
-			$this->move();
-			$this->doLevelSet( $result );
+			if( $this->mShortCircuit ) {
+				$this->skipOverBraces();
+			} else {
+				$this->move();
+				$this->doLevelSet( $result );
+			}
 			if( !($this->mCur->type == AFPToken::TBrace && $this->mCur->value == ')') )
 				throw new AFPUserVisibleException( 'expectednotfound',
 							$this->mCur->pos,
@@ -683,6 +716,14 @@ class AbuseFilterParser {
 				throw new AFPUserVisibleException( 'expectednotfound',
 							$this->mCur->pos,
 							array('(', $this->mCur->type, $this->mCur->value ) );
+
+			if ($this->mShortCircuit) {
+				$this->skipOverBraces();
+				$this->move();
+				wfProfileOut( __METHOD__ );
+				return; // The result doesn't matter.
+			}
+							
 			wfProfileIn( __METHOD__."-loadargs" );
 			$args = array();
 			do {
@@ -700,11 +741,6 @@ class AbuseFilterParser {
 			$this->move();
 			
 			wfProfileOut( __METHOD__."-loadargs" );
-			
-			if ($this->mShortCircuit) {
-				wfProfileOut( __METHOD__ );
-				return; // The result doesn't matter.
-			}
 			
 			wfProfileIn( __METHOD__."-$func" );
 			
