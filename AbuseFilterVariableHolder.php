@@ -341,7 +341,10 @@ class AFComputedVariable {
 					$result = '';
 				break;
 			default:
-				throw new AFPException( "Unknown variable compute type ".$this->mMethod );
+				if (  wfRunHooks( 'AbuseFilter-computeVariable',
+									array( $this->mMethod, $vars ) ) ) {
+					throw new AFPException( "Unknown variable compute type ".$this->mMethod );
+				}
 		}
 		
 		return AFPData::newFromPHPVar( $result );
