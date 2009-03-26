@@ -246,6 +246,7 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Remove whitespace',
 	'abusefilter-edit-builder-funcs-rmspecials' => 'Remove special characters',
 	'abusefilter-edit-builder-funcs-ip_in_range' => 'Is IP in range?',
+	'abusefilter-edit-builder-funcs-contains-any' => 'Search string for multiple substrings',
 	'abusefilter-edit-builder-group-vars' => 'Variables',
 	'abusefilter-edit-builder-vars-accountname' => 'Account name (on account creation)',
 	'abusefilter-edit-builder-vars-action' => 'Action',

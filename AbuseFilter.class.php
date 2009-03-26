@@ -65,6 +65,7 @@ class AbuseFilter {
 			'rmwhitespace(text)' => 'rmwhitespace',
 			'rmspecials(text)' => 'rmspecials',
 			'ip_in_range(ip, range)' => 'ip_in_range',
+			'contains_any(haystack,needle1,needle2,needle3)' => 'contains-any',
 		),
 		'vars' => array(
 			'accountname' => 'accountname',

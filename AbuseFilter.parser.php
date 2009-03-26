@@ -302,6 +302,7 @@ class AbuseFilterParser {
 		'count' => 'funcCount',
 		'rcount' => 'funcRCount',
 		'ip_in_range' => 'funcIPInRange',
+		'contains_any' => 'funcContainsAny',
 	);
 	
 	// Order is important. The punctuation-matching regex requires that
@@ -1138,6 +1139,38 @@ class AbuseFilterParser {
 		$s = $this->ccnorm( $s );
 		
 		return new AFPData( AFPData::DString, $s );
+	}
+	
+	protected function funcContainsAny( $args ) {
+		if (count( $args ) < 2 ) {
+			throw new AFPException( "Not enough params to ".__METHOD__ );
+		}
+		
+		$s = array_shift( $args );
+		$s = $s->toString();
+		
+		$searchStrings = array();
+		
+		foreach( $args as $arg ) {
+			$searchStrings[] = $arg->toString();
+		}
+		
+		if ( function_exists( 'fss_prep_search' ) ) {
+			$fss = fss_prep_search( $searchStrings );
+			$result = fss_exec_search( $fss, $s );
+			
+			$ok = is_array($result);
+		} else {
+			$ok = false;
+			foreach( $searchStrings as $needle ) {
+				if (in_string( $needle, $s ) ) {
+					$ok = true;
+					break;
+				}
+			}
+		}
+		
+		return new AFPData( AFPData::DBool, $ok );
 	}
 	
 	protected function ccnorm( $s ) {
