@@ -339,12 +339,17 @@ class AbuseFilter {
 	public static function checkConditions( $conds, $vars, $ignoreError = true ) {
 		global $wgAbuseFilterParserClass;
 		
+		static $parser;
+		
 		wfProfileIn( __METHOD__ );
 		
-		try {
+		if ( is_null($parser) ) {
 			$parser = new $wgAbuseFilterParserClass;
 			
 			$parser->setVars( $vars );
+		}
+		
+		try {
 			$result = $parser->parse( $conds, self::$condCount );
 		} catch (Exception $excep) {
 			// Sigh.
