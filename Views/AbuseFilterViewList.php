@@ -153,9 +153,7 @@ class AbuseFilterPager extends TablePager {
 			'tables' => array('abuse_filter', 'abuse_filter_action'),
 			'fields' => array( 
 				'af_id', 
-				'af_enabled',
-				'af_deleted',
-				'af_global',
+				'(af_enabled | af_deleted << 1) AS status',
 			 	'af_public_comments', 
 				'af_hidden', 
 				'af_hit_count', 
@@ -222,19 +220,12 @@ class AbuseFilterPager extends TablePager {
 				}
 				return htmlspecialchars( implode( ', ', $displayActions ) );
 			case 'status':
-				$statuses = array();
-				if ($row->af_deleted)
-					$statuses[] = wfMsgExt( 'abusefilter-deleted', 'parseinline' );
-				elseif ($row->af_enabled)
-					$statuses[] = wfMsgExt( 'abusefilter-enabled', 'parseinline' );
+				if ($value & 2)
+					return wfMsgExt( 'abusefilter-deleted', 'parseinline' );
+				elseif ($value & 1)
+					return wfMsgExt( 'abusefilter-enabled', 'parseinline' );
 				else
-					$statuses[] = wfMsgExt( 'abusefilter-disabled', 'parseinline' );
-				
-				global $wgAbuseFilterIsCentral;
-				if ($row->af_global && $wgAbuseFilterIsCentral)
-					$statuses[] = wfMsgExt( 'abusefilter-status-global', 'parseinline' );
-					
-				return $wgLang->semicolonList( $statuses );
+					return wfMsgExt( 'abusefilter-disabled', 'parseinline' );
 			case 'af_hidden':
 				$msg = $value ? 'abusefilter-hidden' : 'abusefilter-unhidden';
 				return wfMsgExt( $msg, 'parseinline' );
