@@ -963,7 +963,7 @@ class AbuseFilterParser {
 						10 => '[0-9.]',
 						);
 		$baseClass = '['.implode('', array_keys($bases)).']';
-		$radixRegex = "/([0-9A-Fa-f]*(?:\.\d*)?)($baseClass)?/Au";
+		$radixRegex = "/([0-9A-Fa-f]+(?:\.\d*)?|\.\d+)($baseClass)?/Au";
 		$matches = array();
 		
 		if ( preg_match( $radixRegex, $code, $matches, 0, $offset ) ) {
