@@ -107,3 +107,8 @@ $wgAbuseFilterRestrictedActions = array( 'block', 'degroup' );
 $wgAbuseFilterUDPPrefix = 'abusefilter:';
 $wgAbuseFilterUDPAddress = null;
 $wgAbuseFilterUDPPort = null;
+
+// Centralised filters
+$wgAbuseFilterCentralDB = null;
+$wgAbuseFilterIsCentral = false;
+

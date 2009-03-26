@@ -336,14 +336,15 @@ class AbuseFilter {
 		return htmlspecialchars( self::evaluateExpression( $expr ) );
 	}
 
-	public static function checkConditions( $conds, $vars, $ignoreError = true ) {
+	public static function checkConditions( $conds, $vars, $ignoreError = true,
+											$keepVars = 'resetvars' ) {
 		global $wgAbuseFilterParserClass;
 		
 		static $parser;
 		
 		wfProfileIn( __METHOD__ );
 		
-		if ( is_null($parser) ) {
+		if ( is_null($parser) || $keepVars == 'resetvars' ) {
 			$parser = new $wgAbuseFilterParserClass;
 			
 			$parser->setVars( $vars );
@@ -388,7 +389,8 @@ class AbuseFilter {
 
 			// Check conditions...
 			$pattern = trim($row->af_pattern);
-			if ( self::checkConditions( $pattern, $vars ) ) {
+			if ( self::checkConditions( $pattern, $vars, true /* ignore errors */,
+										'keepvars' ) ) {
 				// Record match.
 				$filter_matched[$row->af_id] = true;
 			} else {

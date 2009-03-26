@@ -118,6 +118,7 @@ Filter description: $7 ($8) ($9)',
 	'abusefilter-tools' => 'Abuse filter tools',
 	'abusefilter-loglink' => 'View the abuse log',
 	'abusefilter-return' => 'Return to filter management',
+	'abusefilter-status-global' => 'Global',
 
 	// Options form
 	'abusefilter-list-options' => 'Options',
@@ -204,6 +205,7 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-edit-revert' => 'Revert actions taken by this filter',
 	'abusefilter-edit-tools' => 'Tools:',
 	'abusefilter-edit-test-link' => 'Test this filter against recent edits',
+	'abusefilter-edit-global' => 'Apply this filter globally',
 
 	// Filter editing helpers
 	'abusefilter-edit-builder-select' => 'Select an option to add it at the cursor',
