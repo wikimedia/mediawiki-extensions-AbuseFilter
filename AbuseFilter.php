@@ -53,6 +53,9 @@ $wgSpecialPages['AbuseFilter'] = 'SpecialAbuseFilter';
 $wgSpecialPageGroups['AbuseLog'] = 'changes';
 $wgSpecialPageGroups['AbuseFilter'] = 'wiki';
 
+$wgAutoloadClasses['ApiQueryAbuseLog'] = "$dir/ApiQueryAbuseLog.php";
+$wgAPIListModules['abuselog'] = 'ApiQueryAbuseLog';
+
 $wgHooks['EditFilterMerged'][] = 'AbuseFilterHooks::onEditFilterMerged';
 $wgHooks['GetAutoPromoteGroups'][] = 'AbuseFilterHooks::onGetAutoPromoteGroups';
 $wgHooks['AbortMove'][] = 'AbuseFilterHooks::onAbortMove';
