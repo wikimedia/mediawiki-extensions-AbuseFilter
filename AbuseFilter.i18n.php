@@ -232,7 +232,7 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-edit-builder-misc-rlike' => 'Matches regex (rlike)',
 	'abusefilter-edit-builder-misc-contains' => 'Left string contains right string (contains)',
 	'abusefilter-edit-builder-misc-stringlit' => 'String literal ("")',
-	'abusefilter-edit-builder-misc-tern' => 'Ternery operator (X ? Y : Z)',
+	'abusefilter-edit-builder-misc-tern' => 'Ternary operator (X ? Y : Z)',
 	'abusefilter-edit-builder-misc-cond' => 'Conditional (if X then Y else Z)',
 	'abusefilter-edit-builder-group-funcs' => 'Functions',
 	'abusefilter-edit-builder-funcs-length' => 'String length (length)',
