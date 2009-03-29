@@ -2405,6 +2405,7 @@ Požádejte uživatele s oprávněním přidávat taková opatření, aby potře
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Odstranit bílé znaky',
 	'abusefilter-edit-builder-funcs-rmspecials' => 'Odstranit speciální znaky',
 	'abusefilter-edit-builder-funcs-ip_in_range' => 'Patří IP adresa do rozsahu?',
+	'abusefilter-edit-builder-funcs-contains-any' => 'Hledání několika podřetězců v řetězci',
 	'abusefilter-edit-builder-group-vars' => 'Proměnné',
 	'abusefilter-edit-builder-vars-accountname' => 'Uživatelské jméno (při zakládání nového účtu)',
 	'abusefilter-edit-builder-vars-action' => 'Operace',
@@ -2467,7 +2468,7 @@ Požádejte uživatele s oprávněním přidávat taková opatření, aby potře
 	'abusefilter-history-diff' => 'Změny',
 	'abusefilter-history-error-hidden' => 'Požadovaný filtr je skrytý, takže si jeho historii prohlédnout nemůžete.',
 	'abusefilter-exception-unexpectedatend' => 'Na pozici $1 nebylo očekáváno „$2“.',
-	'abusefilter-exception-expectednotfound' => 'Na pozici $1 bylo očekáváno $2, ale nebylo nalezeno.',
+	'abusefilter-exception-expectednotfound' => 'Na pozici $1 bylo očekáváno $2, ale nebylo nalezeno (místo toho bylo nalezeno $3 „$4“).',
 	'abusefilter-exception-unrecognisedkeyword' => 'Neznámé klíčové slovo $2 na pozici $1.',
 	'abusefilter-exception-unexpectedtoken' => 'Neočekávaný element „$3“ (typ $2) na pozici $1.',
 	'abusefilter-exception-unclosedstring' => 'Řetězec začínající na pozici $1 není ukončen.',
@@ -2526,6 +2527,7 @@ Podrobnější vysvětlení můžete získat kliknutím na tlačítko „Zkontro
 	'abusefilter-examine-syntaxerror' => 'Filtr má neplatnou syntaxi.',
 	'abusefilter-examine-notfound' => 'Vámi požadovaná změna nebyla nalezena.',
 	'abusefilter-examine-incompatible' => 'Vámi požadovanou změnu Filtr zneužívání nepodporuje.',
+	'abusefilter-examine-noresults' => 'Podle zadaných parametrů nebyly nalezeny žádné výsledky.',
 	'abusefilter-topnav' => "'''Navigace po filtru zneužívání'''",
 	'abusefilter-topnav-home' => 'Hlavní stránka',
 	'abusefilter-topnav-test' => 'Hromadné testování',
@@ -4995,7 +4997,7 @@ $messages['grc'] = array(
 	'abusefilter-hidden' => 'Ἰδιωτική',
 	'abusefilter-unhidden' => 'Δημοσία',
 	'abusefilter-deleted' => 'Διεγραμμένη',
-	'abusefilter-new' => 'Νέον διηθητήριον',
+	'abusefilter-new' => 'Ποεῖν νέον διηθητήριον',
 	'abusefilter-tools-modifiertest-submit' => 'Δοκιμή',
 	'abusefilter-tools-reautoconfirm-user' => 'Χρώμενος:',
 	'abusefilter-edit-new' => 'Νέον διηθητήριον',
@@ -5016,6 +5018,7 @@ $messages['grc'] = array(
 	'abusefilter-edit-builder-op-bool-or' => 'Ἤ (|)',
 	'abusefilter-edit-builder-group-funcs' => 'Τελέσεις',
 	'abusefilter-edit-builder-vars-action' => 'Δρᾶσις',
+	'abusefilter-history-hidden' => 'Κεκρυμμένη',
 	'abusefilter-history-timestamp' => 'Χρόνος',
 	'abusefilter-history-user' => 'Χρώμενος',
 	'abusefilter-history-flags' => 'Σημαῖαι',
@@ -8782,6 +8785,7 @@ Aktiounen déi zréckgesat ginn: $5 ($6)',
 	'abusefilter-examine-syntaxerror' => "D'Syntax vun dësem Filter ass net valabel",
 	'abusefilter-examine-notfound' => 'Déi Ännerung déi dir gefrot hutt gouf net fonnt.',
 	'abusefilter-examine-incompatible' => 'Déi Ännerung déi Dir ugefrot hutt gëtt net vum Mëssbrauchsfilter ënnerstetzt',
+	'abusefilter-topnav' => "'''Navigatioun vum Mëssbrauchs-Filter'''",
 	'abusefilter-topnav-home' => 'Haaptsäit',
 	'abusefilter-topnav-examine' => 'Déi lescht Ännerungen nokucken',
 	'abusefilter-topnav-log' => 'Logbuch vum Mëssbrauch',
@@ -11477,6 +11481,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Lijealso
  * @author MF-Warburg
  * @author Malafaya
  * @author Waldir
@@ -11819,6 +11824,7 @@ Você pode ver uma explicação completa clicando no botão "Verificar sintaxe".
 	'abusefilter-examine-syntaxerror' => 'O filtro tem sintaxe inválida',
 	'abusefilter-examine-notfound' => 'A alteração requisitada não pôde ser encontrada.',
 	'abusefilter-examine-incompatible' => 'A alteração requisitada não é suportada pelo Filtro de Abuso',
+	'abusefilter-examine-noresults' => 'Não foram encontrados resultados para os parâmetros de pesquisa fornecidos.',
 	'abusefilter-topnav' => "'''Navegação no Filtro de Abuso'''",
 	'abusefilter-topnav-home' => 'Início',
 	'abusefilter-topnav-test' => 'Teste em bloco',
