@@ -79,6 +79,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$this->addWhereRange('afl_timestamp', $params['dir'], $params['start'], $params['end']);
 		
 		$this->addWhereIf( array('afl_user_text' => $params['user']), isset($params['user']));
+		$this->addWhereIf( array('afl_filter' => $params['filter']), isset($params['filter']));
 		
 		$title = $params['title'];
 		if (!is_null($title)) {
@@ -150,6 +151,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			),
 			'user' => null,
 			'title' => null,
+			'filter' => null,
 			'limit' => array(
 				ApiBase :: PARAM_DFLT => 10,
 				ApiBase :: PARAM_TYPE => 'limit',
@@ -179,8 +181,9 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			'start' => 'The timestamp to start enumerating from',
 			'end' => 'The timestamp to stop enumerating at',
 			'dir' => 'The direction in which to enumerate',
-			'title' => 'Filter entries to those occurring on a given page.',
-			'user' => 'Filter entries to those done by a given user or IP address.',
+			'title' => 'Show only entries occurring on a given page.',
+			'user' => 'Show only entries done by a given user or IP address.',
+			'filter' => 'Show only entries that were caught by a given filter ID', 
 			'limit' => 'The maximum amount of entries to list',
 			'prop' => 'Which properties to get',
 		);
