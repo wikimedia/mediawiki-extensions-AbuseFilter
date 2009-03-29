@@ -47,6 +47,9 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$fld_ids = isset($prop['ids']);
 		$fld_filter = isset($prop['filter']);
 		$fld_user = isset($prop['user']);
+		$fld_ip = isset($prop['ip']);
+		if($fld_ip && !$wgUser->isAllowed('abusefilter-private'))
+			$this->dieUsage('You don\'t have permission to view IP addresses', 'permissiondenied');
 		$fld_title = isset($prop['title']);
 		$fld_action = isset($prop['action']);
 		$fld_details = isset($prop['details']);
@@ -68,6 +71,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		}
 		$this->addFieldsIf(array('afl_id', 'afl_filter'), $fld_ids);
 		$this->addFieldsIf('afl_user_text', $fld_user);
+		$this->addFieldsIf('afl_ip', $fld_ip);
 		$this->addFieldsIf(array('afl_namespace', 'afl_title'), $fld_title);
 		$this->addFieldsIf('afl_action', $fld_action);
 		$this->addFieldsIf('afl_var_dump', $fld_details);
@@ -109,6 +113,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				$entry['filter'] = $row->af_public_comments;
 			if($fld_user)
 				$entry['user'] = $row->afl_user_text;
+			if($fld_ip)
+				$entry['ip'] = $row->afl_ip;
 			if($fld_title) {
 				$title = Title::makeTitle($row->afl_namespace, $row->afl_title);
 				ApiQueryBase::addTitleInfo($entry, $title);
@@ -165,6 +171,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 						'ids',
 						'filter',
 						'user',
+						'ip',
 						'title',
 						'action',
 						'details',
