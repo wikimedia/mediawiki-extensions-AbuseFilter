@@ -5484,9 +5484,11 @@ $messages['he'] = array(
 	'abusefilter-log-entry' => '$1: $2 הפעיל את מסנן ההשחתה כשביצע את הפעולה $3 על $4.
 פעולות שננקטו: $5; 
 תיאור המסנן: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 הפעיל את [[Special:AbuseFilter/$3|מסנן ההשחתה $3]] כשביצע את הפעולה "$4" על $5.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 הפעיל את $3 כשביצע את הפעולה "$4" על $5.
 הפעולות שננקטו: $6;
 תיאור המסנן: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-global' => 'המסנן הגלובלי $1',
+	'abusefilter-log-detailedentry-local' => 'המסנן $1',
 	'abusefilter-log-detailslink' => 'פרטים',
 	'abusefilter-log-details-legend' => 'פרטים עבור פריט היומן $1',
 	'abusefilter-log-details-var' => 'משתנה',
@@ -5520,6 +5522,7 @@ $messages['he'] = array(
 	'abusefilter-tools' => 'כלי מסנן ההשחתה',
 	'abusefilter-loglink' => 'צפייה ביומן ההשחתה',
 	'abusefilter-return' => 'חזרה לניהול המסננים',
+	'abusefilter-status-global' => 'גלובלי',
 	'abusefilter-list-options' => 'אפשרויות',
 	'abusefilter-list-options-deleted' => 'מסננים שנמחקו:',
 	'abusefilter-list-options-deleted-only' => 'הצגת מסננים שנמחקו בלבד',
@@ -5596,6 +5599,7 @@ $messages['he'] = array(
 	'abusefilter-edit-revert' => 'שחזור פעולות שבוצעו על ידי מסנן זה',
 	'abusefilter-edit-tools' => 'כלים:',
 	'abusefilter-edit-test-link' => 'בדיקת מסנן זה מול עריכות אחרונות',
+	'abusefilter-edit-global' => 'החלת מסנן זה באופן גלובלי',
 	'abusefilter-edit-builder-select' => 'בחרו באפשרות עם הסמן כדי להוסיף אותה',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'אופרטורים חשבוניים',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'חיבור (+)',
@@ -5682,6 +5686,7 @@ $messages['he'] = array(
 	'abusefilter-history-foruser' => 'שינויים של $1',
 	'abusefilter-history-hidden' => 'מוסתר',
 	'abusefilter-history-enabled' => 'פעיל',
+	'abusefilter-history-global' => 'גלובלי',
 	'abusefilter-history-timestamp' => 'זמן',
 	'abusefilter-history-user' => 'משתמש',
 	'abusefilter-history-public' => 'התיאור הציבורי של המסנן',
