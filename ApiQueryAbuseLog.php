@@ -48,27 +48,21 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$fld_filter = isset($prop['filter']);
 		$fld_user = isset($prop['user']);
 		$fld_ip = isset($prop['ip']);
-		if($fld_ip && !$wgUser->isAllowed('abusefilter-private'))
-			$this->dieUsage('You don\'t have permission to view IP addresses', 'permissiondenied');
 		$fld_title = isset($prop['title']);
 		$fld_action = isset($prop['action']);
 		$fld_details = isset($prop['details']);
-		if($fld_details && !$wgUser->isAllowed('abusefilter-log-detail'))
-			$this->dieUsage('You don\'t have permission to view detailed abuse log entries', 'permissiondenied');
 		$fld_result = isset($prop['result']);
 		$fld_timestamp = isset($prop['timestamp']);
+		
+		if($fld_ip && !$wgUser->isAllowed('abusefilter-private'))
+			$this->dieUsage('You don\'t have permission to view IP addresses', 'permissiondenied');
+		if($fld_details && !$wgUser->isAllowed('abusefilter-log-detail'))
+			$this->dieUsage('You don\'t have permission to view detailed abuse log entries', 'permissiondenied');
 
 		$result = $this->getResult();
-		$data = array();
 
 		$this->addTables('abuse_filter_log');
-		if($fld_filter) {
-			$this->addTables('abuse_filter');
-			$this->addFields('af_public_comments');
-			$this->addJoinConds(array('abuse_filter' => 
-				array('JOIN', 'afl_filter=af_id'))
-			);
-		}
+		$this->addFields('afl_timestamp');
 		$this->addFieldsIf(array('afl_id', 'afl_filter'), $fld_ids);
 		$this->addFieldsIf('afl_user_text', $fld_user);
 		$this->addFieldsIf('afl_ip', $fld_ip);
@@ -76,7 +70,11 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$this->addFieldsIf('afl_action', $fld_action);
 		$this->addFieldsIf('afl_var_dump', $fld_details);
 		$this->addFieldsIf('afl_actions', $fld_result);
-		$this->addFields('afl_timestamp');
+		if($fld_filter) {
+			$this->addTables('abuse_filter');
+			$this->addFields('af_public_comments');
+			$this->addWhere('afl_filter=af_id');
+		}
 
 		$this->addOption('LIMIT', $params['limit'] + 1);
 		
@@ -89,7 +87,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		if (!is_null($title)) {
 			$titleObj = Title :: newFromText($title);
 			if (is_null($titleObj))
-				$this->dieUsage("Bad title value '$title'", 'param_title');
+				$this->dieUsageMsg(array('invalidtitle', $title));
 			$this->addWhereFld('afl_namespace', $titleObj->getNamespace());
 			$this->addWhereFld('afl_title', $titleObj->getDBkey());
 		}		
@@ -106,8 +104,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			}
 			$entry = array();
 			if($fld_ids) {
-				$entry['id'] = $row->afl_id;
-				$entry['filter_id'] = $row->afl_filter;
+				$entry['id'] = intval($row->afl_id);
+				$entry['filter_id'] = intval($row->afl_filter);
 			}
 			if($fld_filter)
 				$entry['filter'] = $row->af_public_comments;
@@ -133,11 +131,15 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 					$entry['details'] = array_change_key_case($vars, CASE_LOWER);
 				}
 			}
-			if ($entry)
-				$data[] = $entry;
+			if ($entry) {
+				$fit = $result->addValue(array('query', $this->getModuleName()), null, $entry);
+				if(!$fit) {
+					$this->setContinueEnumParameter('start', wfTimestamp(TS_ISO_8601, $row->afl_timestamp));
+					break;
+				}
+			}
 		}
-		$result->setIndexedTagName($data, 'item');
-		$result->addValue('query', $this->getModuleName(), $data);
+		$result->setIndexedTagName_internal(array('query', $this->getModuleName()), 'item');
 	}
 
 	public function getAllowedParams() {
@@ -146,7 +148,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				ApiBase :: PARAM_TYPE => 'timestamp'
 			),
 			'end' => array(
-				ApiBase :: PARAM_TYPE => 'timestamp',
+				ApiBase :: PARAM_TYPE => 'timestamp'
 			),
 			'dir' => array(
 				ApiBase :: PARAM_TYPE => array(

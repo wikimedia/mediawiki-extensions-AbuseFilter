@@ -56,7 +56,6 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 		$fld_private = isset($prop['private']);
 		
 		$result = $this->getResult();
-		$data = array();
 
 		$this->addTables('abuse_filter');
 		
@@ -109,7 +108,7 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 			}
 			$entry = array();
 			if($fld_id)
-				$entry['id'] = $row->af_id;
+				$entry['id'] = intval($row->af_id);
 			if($fld_desc)
 				$entry['description'] = $row->af_public_comments;
 			if($fld_pattern && (!$row->af_hidden || $showhidden))
@@ -117,7 +116,7 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 			if($fld_actions)
 				$entry['actions'] = $row->af_actions;
 			if($fld_hits)
-				$entry['hits'] = $row->af_hit_count;
+				$entry['hits'] = intval($row->af_hit_count);
 			if($fld_comments && (!$row->af_hidden || $showhidden))
 				$entry['comments'] = $row->af_comments;
 			if($fld_user)
@@ -132,11 +131,15 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 				if($row->af_deleted)
 					$entry['deleted'] = '';
 			}
-			if ($entry)
-				$data[] = $entry;
+			if ($entry) {
+				$fit = $result->addValue(array('query', $this->getModuleName()), null, $entry);
+				if(!$fit) {
+					$this->setContinueEnumParameter('startid', $row->af_id);
+					break;
+				}
+			}
 		}
-		$result->setIndexedTagName($data, 'filter');
-		$result->addValue('query', $this->getModuleName(), $data);
+		$result->setIndexedTagName_internal(array('query', $this->getModuleName()), 'filter');
 	}
 
 	public function getAllowedParams() {
