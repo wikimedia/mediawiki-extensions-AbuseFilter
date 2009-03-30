@@ -229,8 +229,20 @@ class SpecialAbuseLog extends SpecialPage {
 		
 		$title = Title::makeTitle( $row->afl_namespace, $row->afl_title );
 		
-		$user = $sk->userLink( $row->afl_user, $row->afl_user_text ) .
-			$sk->userToolLinks( $row->afl_user, $row->afl_user_text );
+		if (!$row->afl_wiki) {
+			$pageLink = $sk->link( $title );
+		} else {
+			$pageLink = WikiMap::makeForeignLink( $row->afl_wiki, $row->afl_title );
+		}
+		
+		if (!$row->afl_wiki) {
+			// Local user
+			$user = $sk->userLink( $row->afl_user, $row->afl_user_text ) .
+				$sk->userToolLinks( $row->afl_user, $row->afl_user_text );
+		} else {
+			$user = WikiMap::foreignUserLink( $row->afl_wiki, $row->afl_user_text );
+			$user .= " (".WikiMap::getWikiName( $row->afl_wiki ) . ")";
+		}
 		
 		$description = '';
 		
@@ -244,13 +256,21 @@ class SpecialAbuseLog extends SpecialPage {
 			$displayActions = array();
 
 			foreach( $actions as $action ) {
-				$displayActions[] = AbuseFilter::getActionDisplay( $action );;
+				$displayActions[] = AbuseFilter::getActionDisplay( $action );
 			}
 			$actions_taken = implode( ', ', $displayActions );
 		}
-
+		
+		$globalIndex = AbuseFilter::decodeGlobalName( $row->afl_filter );
+		
 		global $wgOut;
-		$parsed_comments = $wgOut->parseInline( $row->af_public_comments );
+		if ($globalIndex) {
+			// Pull global filter description
+			$parsed_comments =
+				$wgOut->parseInline( AbuseFilter::getGlobalFilterDescription( $globalIndex ) );
+		} else {
+			$parsed_comments = $wgOut->parseInline( $row->af_public_comments );
+		}
 		
 		if ($this->canSeeDetails()) {
 			$examineTitle = SpecialPage::getTitleFor( 'AbuseFilter', "examine/log/".$row->afl_id );
@@ -262,15 +282,31 @@ class SpecialAbuseLog extends SpecialPage {
 				$examineTitle, 
 				wfMsgExt( 'abusefilter-changeslist-examine', 'parseinline' ), 
 				array() );
-			
-			$description = wfMsgExt( 'abusefilter-log-detailedentry', 
+				
+			if ($globalIndex) {
+				global $wgAbuseFilterCentralDB;
+				$globalURL =
+					WikiMap::getForeignURL( $wgAbuseFilterCentralDB,
+											'Special:AbuseFilter/'.$globalIndex );
+				
+				$linkText = wfMsgExt( 'abusefilter-log-detailedentry-global',
+										'parseinline', array($globalIndex) );
+				
+				$filterLink = $sk->makeExternalLink( $globalURL, $linkText );
+			} else {
+				$title = SpecialPage::getTitleFor( 'AbuseFilter', $row->afl_filter );
+				$linkText = wfMsgExt( 'abusefilter-log-detailedentry-local',
+										'parseinline', array($row->afl_filter) );
+				$filterLink = $sk->link( $title, $linkText );
+			}
+			$description = wfMsgExt( 'abusefilter-log-detailedentry-meta', 
 				array( 'parseinline', 'replaceafter' ),
 				array( 
 					$timestamp, 
 					$user, 
-					$row->afl_filter, 
+					$filterLink, 
 					$row->afl_action, 
-					$sk->link( $title ), 
+					$pageLink, 
 					$actions_taken, 
 					$parsed_comments, 
 					$detailsLink, 
@@ -313,12 +349,17 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	function getQueryInfo() {
 		$conds = $this->mConds;
 		
-		$conds[] = 'af_id=afl_filter';
-		
 		return array(
 			'tables' => array('abuse_filter_log','abuse_filter'),
 			'fields' => '*',
 			'conds' => $conds,
+			'join_conds' =>
+				array( 'abuse_filter' =>
+					array(
+						'LEFT JOIN',
+						'af_id=afl_filter',
+					),
+				),
 		);
 	}
 

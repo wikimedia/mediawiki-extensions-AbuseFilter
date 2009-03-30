@@ -148,6 +148,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$flags[] = 'enabled';
 			if ($newRow['af_deleted'])
 				$flags[] = 'deleted';
+			if ($newRow['af_global'])
+				$flags[] = 'global';
 
 			$afh_row['afh_flags'] = implode( ",", $flags );
 
@@ -280,6 +282,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Build checkboxen
 		$checkboxes = array( 'hidden', 'enabled', 'deleted' );
 		$flags = '';
+		
+		global $wgAbuseFilterIsCentral;
+		if ($wgAbuseFilterIsCentral)
+			$checkboxes[] = 'global';
 
 		if (isset($row->af_throttled) && $row->af_throttled) {
 			global $wgAbuseFilterEmergencyDisableThreshold;
@@ -582,6 +588,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$obj->af_pattern = '';
 			$obj->af_enabled = 1;
 			$obj->af_hidden = 0;
+			$obj->af_global = 0;
 			return array( $obj, array() );
 		}
 
@@ -641,6 +648,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$row->af_deleted = $wgRequest->getBool( 'wpFilterDeleted' );
 		$row->af_enabled = $wgRequest->getBool( 'wpFilterEnabled' ) && !$row->af_deleted;
 		$row->af_hidden = $wgRequest->getBool( 'wpFilterHidden' );
+		global $wgAbuseFilterIsCentral;
+		$row->af_global = $wgRequest->getBool( 'wpFilterGlobal' ) && $wgAbuseFilterIsCentral;
 
 		// Actions
 		global $wgAbuseFilterAvailableActions;

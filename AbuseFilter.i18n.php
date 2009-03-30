@@ -80,9 +80,11 @@ Rule description: $1',
 	'abusefilter-log-entry' => '$1: $2 triggered an abuse filter, performing the action "$3" on $4.
 Actions taken: $5;
 Filter description: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 triggered [[Special:AbuseFilter/$3|filter $3]], performing the action "$4" on $5.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 triggered $3, performing the action "$4" on $5.
 Actions taken: $6;
 Filter description: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-global' => 'global filter $1',
+	'abusefilter-log-detailedentry-local' => 'filter $1',
 	'abusefilter-log-detailslink' => 'details',
 	'abusefilter-log-details-legend' => 'Details for log entry $1',
 	'abusefilter-log-details-var' => 'Variable',
@@ -118,6 +120,7 @@ Filter description: $7 ($8) ($9)',
 	'abusefilter-tools' => 'Abuse filter tools',
 	'abusefilter-loglink' => 'View the abuse log',
 	'abusefilter-return' => 'Return to filter management',
+	'abusefilter-status-global' => 'Global',
 
 	// Options form
 	'abusefilter-list-options' => 'Options',
@@ -204,6 +207,7 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-edit-revert' => 'Revert actions taken by this filter',
 	'abusefilter-edit-tools' => 'Tools:',
 	'abusefilter-edit-test-link' => 'Test this filter against recent edits',
+	'abusefilter-edit-global' => 'Apply this filter globally',
 
 	// Filter editing helpers
 	'abusefilter-edit-builder-select' => 'Select an option to add it at the cursor',
@@ -296,6 +300,7 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-history-foruser' => 'Changes by $1',
 	'abusefilter-history-hidden' => 'Hidden',
 	'abusefilter-history-enabled' => 'Enabled',
+	'abusefilter-history-global' => 'Global',
 	'abusefilter-history-timestamp' => 'Time',
 	'abusefilter-history-user' => 'User',
 	'abusefilter-history-public' => 'Public filter description',
@@ -460,10 +465,10 @@ $messages['qqq'] = array(
 * $4 link to page the action that triggered the filter was made on
 * $5 actions taken by the filter
 * $6 comments in filter description',
-	'abusefilter-log-detailedentry' => 'This message is for a log entry.
+	'abusefilter-log-detailedentry-meta' => 'This message is for a log entry.
 * $1 timestamp
 * $2 user
-* $3 filter name
+* $3 link to filter
 * $4 action by user
 * $5 link to page the action that triggered the filter was made on
 * $6 actions taken by the filter
@@ -1325,9 +1330,10 @@ $messages['be-tarask'] = array(
 	'abusefilter-log-entry' => '$1: $2 выклікаў фільтар злоўжываньняў, выконваючы дзеяньне «$3» на $4.
 Прынятыя меры: $5;
 Апісаньне фільтру: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 выклікаў [[Special:AbuseFilter/$3|фільтар $3]], выконваючы дзеяньне «$4» на $5.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 выклікаў $3, выконваючы дзеяньне «$4» на $5.
 Прынятыя меры: $6;
 Апісаньне фільтру: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'фільтар $1',
 	'abusefilter-log-detailslink' => 'падрабязнасьці',
 	'abusefilter-log-details-legend' => 'Падрабязнасьці запісу ў журнале $1',
 	'abusefilter-log-details-var' => 'Зьменная',
@@ -1669,7 +1675,8 @@ $messages['bg'] = array(
 	'abusefilter-log-search-title' => 'Заглавие:',
 	'abusefilter-log-search-submit' => 'Търсене',
 	'abusefilter-log-entry' => '$1: $2 задейства защитен филтър, извършвайки $3 на $4. Последвали действия: $5; Описание на филтъра: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 задейства [[Special:AbuseFilter/$3|филтър $3]], извършвайки $4 на $5. Последвали действия: $6; Описание на филтъра: $7 ($8)',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 задейства $3, извършвайки $4 на $5. Последвали действия: $6; Описание на филтъра: $7 ($8)',
+	'abusefilter-log-detailedentry-local' => 'филтър $1',
 	'abusefilter-log-detailslink' => 'детайли',
 	'abusefilter-log-details-legend' => 'Детайли за запис от дневника $1',
 	'abusefilter-log-details-var' => 'Променлива',
@@ -1876,7 +1883,8 @@ Kratki opis prekršenih pravila koje se odnose na Vašu akciju je: $1',
 	'abusefilter-log-entry' => '$1: Korisnik $2 je pokrenuo filter za zloupotrebu, napravivši akciju "$3" na $4. 
 Napravljena akcija: $5; 
 Opis filtera: $6',
-	'abusefilter-log-detailedentry' => '$1: Korisnik $2 pokrenuo [[Special:AbuseFilter/$3|filter $3]], napravivši akciju "$4" na $5. Napravljena akcija: $6; Opis filtera: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-meta' => '$1: Korisnik $2 pokrenuo $3, napravivši akciju "$4" na $5. Napravljena akcija: $6; Opis filtera: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'filter $1',
 	'abusefilter-log-detailslink' => 'detalji',
 	'abusefilter-log-details-legend' => 'Detalji podataka u logu $1',
 	'abusefilter-log-details-var' => 'Varijabla (promjenjiva)',
@@ -2256,8 +2264,9 @@ Popis pravidla: $1',
 	'abusefilter-log-search-submit' => 'Hledat',
 	'abusefilter-log-entry' => '$1: $2 {{GENDER:$2|spustil|spustila|spustil}} filtr zneužívání při činnosti „$3“ na $4.
 Provedená opatření: $5; popis filtru: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 {{GENDER:$2|spustil|spustila|spustil}} [[Special:AbuseFilter/$3|filtr $3]] při činnosti „$4“ na $5.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 {{GENDER:$2|spustil|spustila|spustil}} $3 při činnosti „$4“ na $5.
 Provedená opatření: $6; popis filtru: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'filtr $1',
 	'abusefilter-log-detailslink' => 'podrobnosti',
 	'abusefilter-log-details-legend' => 'Podrobnosti záznamu $1',
 	'abusefilter-log-details-var' => 'Proměnná',
@@ -2622,9 +2631,10 @@ Beschreibung der Regel: $1',
 	'abusefilter-log-entry' => '$1: $2 löste einen Missbrauchsfilter aus, indem er die Aktion „$3“ auf „$4“ anwendete.
 Filteraktion: „$5“;
 Filterbeschreibung: „$6“',
-	'abusefilter-log-detailedentry' => '$1: $2 löste den [[Special:AbuseFilter/$3|Filter $3]] aus, indem er die Aktion „$4“ auf „$5“ anwendete.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 löste den $3 aus, indem er die Aktion „$4“ auf „$5“ anwendete.
 Ergriffene Maßnahmen: $6;
 Filterbeschreibung: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'Filter $1',
 	'abusefilter-log-detailslink' => 'Details',
 	'abusefilter-log-details-legend' => 'Details für den Logbuch-Eintrag $1',
 	'abusefilter-log-details-var' => 'Variable',
@@ -3015,7 +3025,8 @@ Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpo
 	'abusefilter-log-search-title' => 'Titel:',
 	'abusefilter-log-search-submit' => 'Pytaś',
 	'abusefilter-log-entry' => '$1: $2 jo filter znjewužywanja zapušćił a cynił akciju $3 na $4. Wuwjeźone akcije: $5; Wopisanje filtra: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 jo zapušćił [[Special:AbuseFilter/$3|filter $3]] a jo pśewjadł akciju "$4" na $5. Wuwjeźone akcije: $6; Wopisanje filtra: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 jo zapušćił $3 a jo pśewjadł akciju "$4" na $5. Wuwjeźone akcije: $6; Wopisanje filtra: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'filter $1',
 	'abusefilter-log-detailslink' => 'Drobnosći',
 	'abusefilter-log-details-legend' => 'Drobnosći za protokolowy zapisk $1',
 	'abusefilter-log-details-var' => 'Wariabla',
@@ -4303,9 +4314,10 @@ Description de la règle associée : $1',
 	'abusefilter-log-entry' => '$1 : $2 a déclenché un filtre antiabus, lors de l’action « $3 » sur $4.
 Actions prises : $5 ;
 Description du filtre : $6',
-	'abusefilter-log-detailedentry' => '$1 : $2 a déclenché le [[Special:AbuseFilter/$3|filtre antiabus $3]], lors de l’action « $4 » sur $5.
+	'abusefilter-log-detailedentry-meta' => '$1 : $2 a déclenché le $3, lors de l’action « $4 » sur $5.
 Actions prises : $6 ;
 Description du filtre : $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'filtre antiabus $1',
 	'abusefilter-log-detailslink' => 'détails',
 	'abusefilter-log-details-legend' => 'Détails pour l’entrée $1 du journal',
 	'abusefilter-log-details-var' => 'Variable',
@@ -4678,9 +4690,10 @@ Unha breve descrición da regra de abuso coa que a súa acción coincide é: $1'
 	'abusefilter-log-entry' => '$1: $2 accionou un filtro de abusos, levando a cabo a acción "$3" en $4.
 Accións levadas a cabo: $5.
 Descrición do filtro: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 accionou [[Special:AbuseFilter/$3|o filtro $3]], levando a cabo a acción "$4" en $5.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 accionou $3, levando a cabo a acción "$4" en $5.
 Accións levadas a cabo: $6.
 Descrición do filtro: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'o filtro $1',
 	'abusefilter-log-detailslink' => 'detalles',
 	'abusefilter-log-details-legend' => 'Detalles para a entrada $1 do rexistro',
 	'abusefilter-log-details-var' => 'Variable',
@@ -5092,7 +5105,8 @@ Churzbschryybig vu dr verletzte Regle: $1',
 	'abusefilter-log-search-title' => 'Titel:',
 	'abusefilter-log-search-submit' => 'Sueche',
 	'abusefilter-log-entry' => '$1: $2 het e Missbrauchsfilter uusglest dur d Aawändig vu $3 uf $4. Aktion: $5; Filterbschryybig: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 het dr [[Special:AbuseFilter/$3|Filter $3]] uusglest. Dees verursacht het e $4 uf $5. Ergriffeni Maßnahme: $6; Filterbschryybung: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 het dr $3 uusglest. Dees verursacht het e $4 uf $5. Ergriffeni Maßnahme: $6; Filterbschryybung: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'Filter $1',
 	'abusefilter-log-detailslink' => 'Detail',
 	'abusefilter-log-details-legend' => 'Detail fir dr Logbuech-Yytrag $1',
 	'abusefilter-log-details-var' => 'Variable',
@@ -5833,9 +5847,10 @@ Opis pravila: $1',
 	'abusefilter-log-entry' => '$1: $2 pokrenuo je filtar zloporabe, vršeći radnju "$3" na $4.
 Poduzete radnje: $5;
 Opis filtra: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 pokrenuo je [[Special:AbuseFilter/$3|filtar $3]], vršeći radnju "$4" na $5. 
+	'abusefilter-log-detailedentry-meta' => '$1: $2 pokrenuo je $3, vršeći radnju "$4" na $5. 
 Poduzete radnje: $6;
 Opis filtra: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'filtar $1',
 	'abusefilter-log-detailslink' => 'detalji',
 	'abusefilter-log-details-legend' => 'Detalji zapisa $1',
 	'abusefilter-log-details-var' => 'Varijabla',
@@ -6106,9 +6121,10 @@ Krótke wopisanje znjewužiwanskeho prawidła, kotremuž twoja akcija wotpowědu
 	'abusefilter-log-entry' => '$1: $2 pušći znjewužiwanski filter přez wuwjedźenje akcije "$3" na $4.
 Přewjedźene akcije: $5;
 Wopisanje filtra: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 pušći [[Special:AbuseFilter/$3|filter $3]] přez wuwjedźenje akcije "$4" na $5.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 pušći $3 přez wuwjedźenje akcije "$4" na $5.
 Přewjedźene akcije: $6;
 Wopisanje filtra:: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'filter $1',
 	'abusefilter-log-detailslink' => 'podrobnosće',
 	'abusefilter-log-details-legend' => 'Podrobnosće za protokolowy zapisk $1',
 	'abusefilter-log-details-var' => 'Wariabla',
@@ -6655,9 +6671,10 @@ Un breve description del regula anti-abuso correspondente con tu action es: $1',
 	'abusefilter-log-entry' => '$1: $2 activava un filtro anti-abuso, executante le action "$3" in $4.
 Actiones interprendite: $5;
 Description del filtro: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 activava le [[Special:AbuseFilter/$3|filtro $3]], executante le action "$4" in $5.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 activava le $3, executante le action "$4" in $5.
 Actiones interprendite: $6;
 Description del filtro: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'filtro $1',
 	'abusefilter-log-detailslink' => 'detalios',
 	'abusefilter-log-details-legend' => 'Detalios pro le entrata $1 del registro',
 	'abusefilter-log-details-var' => 'Variabile',
@@ -7001,7 +7018,8 @@ Keterangan mengenai peraturan terkait: $1',
 	'abusefilter-log-search-title' => 'Judul:',
 	'abusefilter-log-search-submit' => 'Cari',
 	'abusefilter-log-entry' => '$1: $2 memicu filter penyalahgunaan, melakukan $3 pada $4. Tindakan yang diambil: $5; Keterangan filter: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 memicu filter penyalahgunaan $3, melakukan $4 pada $5. Tindakan yang diambil: $6; Keterangan filter: $7 ($8)',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 memicu filter penyalahgunaan $3, melakukan $4 pada $5. Tindakan yang diambil: $6; Keterangan filter: $7 ($8)',
+	'abusefilter-log-detailedentry-local' => 'filter $1',
 	'abusefilter-log-detailslink' => 'rincian',
 	'abusefilter-log-details-legend' => 'Rincian untuk entri log $1',
 	'abusefilter-log-details-var' => 'Variable',
@@ -7214,9 +7232,10 @@ Descrizione della regola corrispondente: $1',
 	'abusefilter-log-entry' => '$1: $2 ha provocato l\'attivazione di un filtro anti abusi con l\'azione "$3" su $4.
 Azioni intraprese: $5;
 Descrizione del filtro: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 ha provocato l\'attivazione [[Special:AbuseFilter/$3|del filtro $3]] con l\'azione "$4" su $5.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 ha provocato l\'attivazione $3 con l\'azione "$4" su $5.
 Azioni intraprese: $6;
 Descrizione del filtro: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'del filtro $1',
 	'abusefilter-log-detailslink' => 'dettagli',
 	'abusefilter-log-details-legend' => 'Dettagli della voce di registro $1',
 	'abusefilter-log-details-var' => 'Variabile',
@@ -7563,9 +7582,10 @@ $messages['ja'] = array(
 	'abusefilter-log-entry' => '$1: $2 が $4 で「$3」操作を行い不正利用フィルターに引っかかりました。
 対処アクション: $5;
 フィルター解説: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 が $5 で「$4」操作を行い[[Special:AbuseFilter/$3|フィルター $3]] に引っかかりました。
+	'abusefilter-log-detailedentry-meta' => '$1: $2 が $5 で「$4」操作を行い$3 に引っかかりました。
 対処アクション: $6;
 フィルター解説: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'フィルター $1',
 	'abusefilter-log-detailslink' => '詳細',
 	'abusefilter-log-details-legend' => '記録項目 $1 の詳細',
 	'abusefilter-log-details-var' => '変数',
@@ -8228,9 +8248,10 @@ De darfs nit en dä Meßbruchsfeltere ierem Logbooch en de Einzelheite erin loor
 	'abusefilter-log-search-submit' => 'Söhke!',
 	'abusefilter-log-entry' => "$1: {{GENDER:$2|dä|et|dä Metmaacher|dat|de}} $2 hät met „$3“ op dä Sigg $4
 dä Meßbruchsfelter op der Plan jeroofe, un dä däät dat: $5. De Rääjel explezeet: ''$6''.",
-	'abusefilter-log-detailedentry' => '$1: {{GENDER:$2|dä|et|dä Metmaacher|dat|de}} $2 hät met „$4“ op dä Sigg $5
-däm [[Special:AbuseFilter/$3|Meßbruchsfelter sing Rääjel $3]] jetroffe,
+	'abusefilter-log-detailedentry-meta' => '$1: {{GENDER:$2|dä|et|dä Metmaacher|dat|de}} $2 hät met „$4“ op dä Sigg $5
+däm $3 jetroffe,
 un dä Felter hät: $6. De Rääjel explezeet: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'Meßbruchsfelter sing Rääjel $1',
 	'abusefilter-log-detailslink' => 'Einzelheite aanloore',
 	'abusefilter-log-details-legend' => 'Einzelheite för dä Logbooch-Endraach $1',
 	'abusefilter-log-details-var' => 'Date (Speicher Name)',
@@ -8875,9 +8896,10 @@ Een korte besjrieving van de regel op basis waervan de bewerking is tegegehoue v
 	'abusefilter-log-entry' => '$1: $2 leet \'ne misbroekfilter aafgaon bie \'t oetveure hanjeling "$3" op $4.
 Genaome maatregel: $5.
 Filterbesjrieving: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 leet [[Special:AbuseFilter/$3|filter $3]] aafgaon bie \'t oetveure van de hanjeling "$4" op $5.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 leet $3 aafgaon bie \'t oetveure van de hanjeling "$4" op $5.
 Genaome maatregel: $6.
 Filterbesjrieving: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'filter $1',
 	'abusefilter-log-detailslink' => 'kleinighijjer',
 	'abusefilter-log-details-legend' => 'Details veur logregel $1',
 	'abusefilter-log-details-var' => 'Variabel',
@@ -9376,9 +9398,10 @@ Dat liggt dor an: $1',
 	'abusefilter-log-entry' => '$1: $2 hett en Missbruukfilter utlööst, as he de Akschoon „$3“ op „$4“ anwennt hett.
 Filterakschoon: „$5“;
 Wat dat för’n Filter is: „$6“',
-	'abusefilter-log-detailedentry' => '$1: $2 hett den [[Special:AbuseFilter/$3|Filter $3]] utlööst, as he de Akschoon „$4“ op „$5“ anwennt hett.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 hett den $3 utlööst, as he de Akschoon „$4“ op „$5“ anwennt hett.
 Filterakschoon: $6;
 Wat dat för’n Filter is: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'Filter $1',
 	'abusefilter-log-detailslink' => 'Details',
 	'abusefilter-log-details-legend' => 'Details för Logbook-Indrag $1',
 	'abusefilter-log-details-var' => 'Variable',
@@ -9745,9 +9768,10 @@ Een korte beschrijving van de regel op basis waarvan uw bewerking is tegengehoud
 	'abusefilter-log-entry' => '$1: $2 liet een misbruikfilter afgaan bij het uitvoeren handeling "$3" op $4.
 Genomen maatregel: $5.
 Filterbeschrijving: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 liet [[Special:AbuseFilter/$3|filter $3]] afgaan bij het uitvoeren van de handeling "$4" op $5.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 liet $3 afgaan bij het uitvoeren van de handeling "$4" op $5.
 Genomen maatregel: $6.
 Filterbeschrijving: $7 ($8) ($9)',
+	'abusefilter-detailedentry-local' => 'filter $1',
 	'abusefilter-log-detailslink' => 'details',
 	'abusefilter-log-details-legend' => 'Details voor logboekregel $1',
 	'abusefilter-log-details-var' => 'Variabele',
@@ -10098,7 +10122,8 @@ Ei kort skildring av misbruksregelen handlinga di braut er: $1',
 	'abusefilter-log-search-title' => 'Tittel:',
 	'abusefilter-log-search-submit' => 'Søk',
 	'abusefilter-log-entry' => '$1: $2 utløyste eit misbruksfilter ved å gjera  handlinga «$3» på $4. Reaksjon: $5; Filterskildring: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 utløyste [[Special:AbuseFilter/$3|misbruksfilter $3]] ved å utføra handlinga «$4» på $5. Reaksjon: $6; Filterskildring: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 utløyste $3 ved å utføra handlinga «$4» på $5. Reaksjon: $6; Filterskildring: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'misbruksfilter $1',
 	'abusefilter-log-detailslink' => 'detaljar',
 	'abusefilter-log-details-legend' => 'Detaljar for loggelementet $1',
 	'abusefilter-log-details-var' => 'Variabel',
@@ -10439,9 +10464,10 @@ En kort beskrivelse av misbruksregelen handlingen din brøt er: $1',
 	'abusefilter-log-entry' => '$1: $2 utløste misbruksfilteret ved å gjøre en $3 på $4. 
 Reaksjon: $5; 
 filterbeskrivelse: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 utløste misbruksfilter [[Special:AbuseFilter/$3|filter $3]], ved å gjøre en $4 på $5. 
+	'abusefilter-log-detailedentry-meta' => '$1: $2 utløste misbruksfilter $3, ved å gjøre en $4 på $5. 
 Reaksjon: $6; 
 Filterbeskrivelse: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'filter $1',
 	'abusefilter-log-detailslink' => 'detaljer',
 	'abusefilter-log-details-legend' => 'Detaljer for loggelement $1',
 	'abusefilter-log-details-var' => 'Variabel',
@@ -10770,9 +10796,10 @@ Una descripcion brèva de la règla d’abús que vòstra accion a desenclavat e
 	'abusefilter-log-entry' => "$1 : $2 a desenclavat un filtre dels abuses, qu'executa l'accion « $3 » sus $4.
 Accions presas : $5 ;
 Descripcion del filtre : $6",
-	'abusefilter-log-detailedentry' => "$1 : $2 a desenclavat lo [[Special:AbuseFilter/$3|filtre $3 dels abuses]], en executant l'accion « $4 » sur $5.
+	'abusefilter-log-detailedentry-meta' => "$1 : $2 a desenclavat lo $3, en executant l'accion « $4 » sur $5.
 Accions presas : $6 ; 
 Descripcion del filtre : $7 ($8) ($9)",
+	'abusefilter-log-detailedentry-local' => 'filtre $1 dels abuses',
 	'abusefilter-log-detailslink' => 'detalhs',
 	'abusefilter-log-details-legend' => "Detalhs per l'entrada $1 del jornal",
 	'abusefilter-log-details-var' => 'Variabla',
@@ -11161,9 +11188,10 @@ Krótki opis reguły nadużycia, do której Twoja akcji została dopasowana: $1'
 	'abusefilter-log-entry' => '$1: $2 uruchomił filtr nadużyć, wykonał „$3” na $4. 
 Podjęta akcja: $5.
 Opis filtru: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 uruchomił [[Special:AbuseFilter/$3|filtr $3]], wykonał „$4” na $5.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 uruchomił $3, wykonał „$4” na $5.
 Podjęta akcja: $6.
 Opis filtru: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'filtr $1',
 	'abusefilter-log-detailslink' => 'szczegóły',
 	'abusefilter-log-details-legend' => 'Szczegóły wpisu w rejestrze $1',
 	'abusefilter-log-details-var' => 'Zmienna',
@@ -11543,9 +11571,10 @@ Descrição da regra correspondida: $1',
 	'abusefilter-log-entry' => '$1: $2 despoletou um filtro de abuso, executando a ação "$3" em $4.
 Ações tomadas: $5;
 Descrição do filtro: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 despoletou o [[Special:AbuseFilter/$3|filtro $3]], executando a ação "$4" em $5.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 despoletou o $3, executando a ação "$4" em $5.
 Ações tomadas: $6;
 Descrição do filtro: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'filtro $1',
 	'abusefilter-log-detailslink' => 'detalhes',
 	'abusefilter-log-details-legend' => 'Detalhes para entrada de registo $1',
 	'abusefilter-log-details-var' => 'Variável',
@@ -11898,7 +11927,8 @@ O descriere sumară a regulii abuzului care se potriveşte cu acţiunea ta este:
 	'abusefilter-log-search-title' => 'Titlu:',
 	'abusefilter-log-search-submit' => 'Caută',
 	'abusefilter-log-entry' => '$1: $2 a declanşat un filtru abuz, executând $3 asupra $4. Măsura luată: $5; Descrierea filtrului: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 a declanşat [[Special:AbuseFilter/$3|filtrul $3]], executând $4 asupra $5. Măsura luată: $6; Descrierea filtrului: $7 ($8)',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 a declanşat $3, executând $4 asupra $5. Măsura luată: $6; Descrierea filtrului: $7 ($8)',
+	'abusefilter-log-detailedentry-local' => 'filtrul $1',
 	'abusefilter-log-detailslink' => 'detalii',
 	'abusefilter-log-details-legend' => 'Detalii pentru intrarea $1 din jurnal',
 	'abusefilter-log-details-var' => 'Variabilă',
@@ -12149,9 +12179,10 @@ $messages['ru'] = array(
 	'abusefilter-log-entry' => '$1: $2 вызвал срабатывание фильтра злоупотреблений, действие «$3» на странице $4.
 Предпринятие меры: $5.
 Описание фильтра: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 вызвал срабатывание [[Special:AbuseFilter/$3|фильтра $3]], действие «$4» на странице $5.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 вызвал срабатывание $3, действие «$4» на странице $5.
 Предпринятые меры: $6.
 Описание фильтра: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'фильтра $1',
 	'abusefilter-log-detailslink' => 'подробности',
 	'abusefilter-log-details-legend' => 'Подробности записи журнала $1',
 	'abusefilter-log-details-var' => 'Переменная',
@@ -12506,9 +12537,10 @@ $messages['sah'] = array(
 	'abusefilter-log-entry' => '$1: киниттэн сылтаан - $2 - омсо сиидэтэ үлэлээбит, «$3» дьайыыны $4 сирэйгэ оҥорбут.
 Оҥоһуллубут дьайыылар: $5.
 Сиидэ туһунан: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 кыттааччыттан сылтаан [[Special:AbuseFilter/$3|$3 сиидэ]] үлэлээбит, «$4» дьайыыны $5 сирэйгэ оҥорбут.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 кыттааччыттан сылтаан $3 үлэлээбит, «$4» дьайыыны $5 сирэйгэ оҥорбут.
 Оҥоһуллубут дьайыылар: $6.
 Сиидэ туһунан: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => '$1 сиидэ',
 	'abusefilter-log-detailslink' => 'сиһилии',
 	'abusefilter-log-details-legend' => '$1 сурунаал суруга сиһилии',
 	'abusefilter-log-details-var' => 'Уларыйар кэриҥ (переменная)',
@@ -12830,9 +12862,10 @@ Stručný popis pravidla zneužitia, ktoré zachytilo vašu úpravu, je: $1',
 	'abusefilter-log-entry' => '$1: $2 spustil filter zneužití, pri vykonávaní „$3“ na $4.
 Vykonané opatrenia: $5;
 Popis filtra: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 spustil filter [[Special:AbuseFilter/$3|filter $3]], vynkonaná operácia „$4“ na $5.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 spustil filter $3, vynkonaná operácia „$4“ na $5.
 Vykonané opatrenia: $6;
 Popis filtra: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'filter $1',
 	'abusefilter-log-detailslink' => 'podrobnosti',
 	'abusefilter-log-details-legend' => 'Podrobnosti položky záznamu $1',
 	'abusefilter-log-details-var' => 'Premenná',
@@ -13190,7 +13223,8 @@ Kuute Beschrieuwenge fon ju nit beoachtede Räägel: $1',
 	'abusefilter-log-search-title' => 'Tittel:',
 	'abusefilter-log-search-submit' => 'Säike (uk ap Düütsk5)',
 	'abusefilter-log-entry' => '$1: $2 löösde ne Misbruuks-Sieuwe uut, truch dät hie $3 ap $4 moakede. Aktion: $5; Sieuwe-Beschrieuwenge: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 häd ju [[Special:AbuseFilter/$3|Sieuwe $3]] uutlöösd, wät n $4 ap $5 feruurseeked. Ärgriepene Mäitenoamen: $6; Sieuwebeschrieuwenge: $7 ($8)',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 häd ju $3 uutlöösd, wät n $4 ap $5 feruurseeked. Ärgriepene Mäitenoamen: $6; Sieuwebeschrieuwenge: $7 ($8)',
+	'abusefilter-log-detailedentry-local' => 'Sieuwe $1',
 	'abusefilter-log-detailslink' => 'Eenpeldhaide',
 	'abusefilter-log-details-legend' => 'Eenpeldhaide foar dän Logbouk-Iendraach $1',
 	'abusefilter-log-details-var' => 'Variable',
@@ -13420,9 +13454,10 @@ Beskrivning av utlöst regel: $1',
 	'abusefilter-log-entry' => '$1: $2 utlöste ett missbruksfilter genom att göra handlingen "$3" på $4. 
 Utförd handling: $5; 
 Filterbeskrivning: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 utlöste [[Special:AbuseFilter/$3|filter $3]], genom att göra handlingen "$4" på $5.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 utlöste $3, genom att göra handlingen "$4" på $5.
 Utförd handling: $6; 
 Filterbeskrivning: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'filter $1',
 	'abusefilter-log-detailslink' => 'detaljer',
 	'abusefilter-log-details-legend' => 'Detaljer för loggelement $1',
 	'abusefilter-log-details-var' => 'Variabel',
@@ -13869,7 +13904,8 @@ Isang maiksing paglalarawan ng alituntunin sa pang-aabuso na tumugma sa kilos mo
 	'abusefilter-log-entry' => '$1: nagpagalaw si $2 ng isang pansala ng pang-aabuso, na nagsagawa ng $3 sa $4. 
 Mga kilos na ginawa: $5; 
 Paglalarawan ng pansala: $6',
-	'abusefilter-log-detailedentry' => '$1: nagpagalaw si $2 ng [[Special:AbuseFilter/$3|pansalang $3]], na nagsagawa ng kilos na $4 sa $5. Mga kilos na ginawa: $6; Paglalarawan ng pansala: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-meta' => '$1: nagpagalaw si $2 ng $3, na nagsagawa ng kilos na $4 sa $5. Mga kilos na ginawa: $6; Paglalarawan ng pansala: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'pansalang $1',
 	'abusefilter-log-detailslink' => 'mga detalye',
 	'abusefilter-log-details-legend' => 'Mga detalye para sa ipinasok sa talang $1',
 	'abusefilter-log-details-var' => 'Pabagu-bago',
@@ -14224,9 +14260,10 @@ Kural açıklaması: $1',
 	'abusefilter-log-entry' => '$1: $2 bir suistimal filtresini tetikledi, $4 sayfasında "$3" eylemi yapılıyor.
 Yapılan eylemler: $5;
 Filtre açıklaması: $6',
-	'abusefilter-log-detailedentry' => '$1: $2, [[Special:AbuseFilter/$3|$3 süzgecini]] tetikledi, $5 sayfasında "$4" eylemi yapılıyor.
+	'abusefilter-log-detailedentry-meta' => '$1: $2, $3 tetikledi, $5 sayfasında "$4" eylemi yapılıyor.
 Yapılan eylemler: $6;
 Süzgeç açıklaması: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => '$1 süzgecini',
 	'abusefilter-log-detailslink' => 'ayrıntılar',
 	'abusefilter-log-details-legend' => '$1 günlük girdisi için ayrıntılar',
 	'abusefilter-log-details-var' => 'Değişken',
@@ -14571,9 +14608,10 @@ $messages['uk'] = array(
 	'abusefilter-log-search-title' => 'Заголовок:',
 	'abusefilter-log-search-submit' => 'Знайти',
 	'abusefilter-log-entry' => '$1: $2 запустив фільтр зловживань, виконуючи "$3" на сторінці "$4". Прийняті заходи: $5; опис фільтру: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 запустив [[Special:AbuseFilter/$3|фільтр $3]], виконуючи "$4" на сторінці "$5".
+	'abusefilter-log-detailedentry-meta' => '$1: $2 запустив $3, виконуючи "$4" на сторінці "$5".
 Вжиті заходи: $6.
 Опис фільтру: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'фільтр $1',
 	'abusefilter-log-detailslink' => 'деталі',
 	'abusefilter-log-details-legend' => 'Деталі журнального запису $1',
 	'abusefilter-log-details-var' => 'Змінна',
@@ -14897,9 +14935,10 @@ Miêu tả ngắn về quy luật lạm dụng mà tác vụ của bạn gặp p
 	'abusefilter-log-search-title' => 'Tựa đề:',
 	'abusefilter-log-search-submit' => 'Tìm kiếm',
 	'abusefilter-log-entry' => '$1: $2 đã kích hoạt bộ lọc sai phạm, thực hiện tác động “$3” vào lúc $4. Tác vụ diễn ra: $5; Mô tả bộ lọc: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 đã kích hoạt [[Special:AbuseFilter/$3|bộ lọc $3]], thực hiện tác vụ “$4” trên $5.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 đã kích hoạt $3, thực hiện tác vụ “$4” trên $5.
 Tác vụ thực hiện: $6;
 Mô tả bộ lọc: $7 ($8) ($9)',
+	'abusefilter-log-detailedentry-local' => 'bộ lọc $1',
 	'abusefilter-log-detailslink' => 'chi tiết',
 	'abusefilter-log-details-legend' => 'Chi tiết cho mục nhật trình $1',
 	'abusefilter-log-details-var' => 'Biến',

@@ -372,38 +372,31 @@ class AbuseFilter {
 	public static function checkAllFilters( $vars ) {
 		// Fetch from the database.
 		wfProfileIn( __METHOD__ );
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'abuse_filter', '*', array( 'af_enabled' => 1, 'af_deleted' => 0 ) );
 		
 		// Sampling profiler
 		$profile = rand(0,50);
 		$profile = ($profile == 1) ? true : false;
 
 		$filter_matched = array();
+		
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'abuse_filter', '*', array( 'af_enabled' => 1, 'af_deleted' => 0 ) );
 
 		while ( $row = $dbr->fetchObject( $res ) ) {
-			if ($profile)
-				$startTime = microtime(true);
-			// Store the row somewhere convenient
-			self::$filters[$row->af_id] = $row;
-
-			// Check conditions...
-			$pattern = trim($row->af_pattern);
-			if ( self::checkConditions( $pattern, $vars, true /* ignore errors */,
-										'keepvars' ) ) {
-				// Record match.
-				$filter_matched[$row->af_id] = true;
-			} else {
-				// Record non-match.
-				$filter_matched[$row->af_id] = false;
-			}
+			$filter_matched[$row->af_id] = self::checkFilter( $row, $vars, $profile );
+		}
+		
+		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
+		if ($wgAbuseFilterCentralDB && !$wgAbuseFilterIsCentral) {
+			// Global filters
+			$fdb = wfGetDB( DB_SLAVE, array(), $wgAbuseFilterCentralDB );
+			$res = $fdb->select( 'abuse_filter', '*',
+									array( 'af_enabled' => 1, 'af_deleted' => 0,
+											'af_global' => 1 ) );
 			
-			if ($profile) {
-				$endTime = microtime(true);
-				
-				$timeTaken = $endTime - $startTime;
-				
-				self::recordProfilingResult( $row->af_id, $timeTaken );
+			while ( $row = $fdb->fetchObject( $res ) ) {
+				$filter_matched["global-".$row->af_id] =
+					self::checkFilter( $row, $vars, $profile, 'global-' );
 			}
 		}
 
@@ -413,6 +406,37 @@ class AbuseFilter {
 		wfProfileOut( __METHOD__ );
 
 		return $filter_matched;
+	}
+	
+	public static function checkFilter( $row, $vars, $profile = false, $prefix = '' ) {
+		$filterID = $prefix.$row->af_id;
+		
+		if ($profile)
+			$startTime = microtime(true);
+			
+		// Store the row somewhere convenient
+		self::$filters[$filterID] = $row;
+
+		// Check conditions...
+		$pattern = trim($row->af_pattern);
+		if ( self::checkConditions( $pattern, $vars, true /* ignore errors */,
+									'keepvars' ) ) {
+			// Record match.
+			$result = true;
+		} else {
+			// Record non-match.
+			$result = false;
+		}
+		
+		if ($profile) {
+			$endTime = microtime(true);
+			
+			$timeTaken = $endTime - $startTime;
+			
+			self::recordProfilingResult( $row->af_id, $timeTaken );
+		}
+		
+		return $result;
 	}
 	
 	public static function resetFilterProfile( $filter ) {
@@ -457,22 +481,58 @@ class AbuseFilter {
 		$profile = ($curTotal / $curCount) * 1000;
 		return round( $profile, 2); // Return in ms, rounded to 2dp
 	}
-
-	/** Returns an array [ list of actions taken by filter, error message to display, if any ] */
-	public static function executeFilterActions( $filters, $title, $vars ) {
-		wfProfileIn( __METHOD__ );
-		static $blockingActions = array( 'block', 'rangeblock', 'degroup',
-											'blockautopromote' );
+	
+	/** Utility function to decode global-$index to $index. Returns false if not global */
+	public static function decodeGlobalName( $filter ) {
+		if ( strpos( $filter, 'global-' ) == 0 ) {
+			return substr( $filter, strlen('global-') );
+		}
 		
+		return false;
+	}
+	
+	public static function getConsequencesForFilters( $filters ) {
+		$globalFilters = array();
+		$localFilters = array();
+		
+		foreach( $filters as $filter ) {
+			$globalIndex = self::decodeGlobalName( $filter );
+			
+			if ($globalIndex)
+				$globalFilters[] = $globalIndex;
+			else
+				$localFilters[] = $filter;
+		}
+		
+		global $wgAbuseFilterCentralDB;
+		// Load local filter info
 		$dbr = wfGetDB( DB_SLAVE );
 		// Retrieve the consequences.
+		$consequences = array();
+		
+		if ( count($localFilters) ) {
+			$consequences = self::loadConsequencesFromDB( $dbr, $localFilters );
+		}
+		
+		if ( count($globalFilters) ) {
+			$fdb = wfGetDB( DB_SLAVE, array(), $wgAbuseFilterCentralDB );
+			$consequences = array_merge( $consequences,
+							self::loadConsequencesFromDB( $fdb, $globalFilters, 'global-' ) );
+		}
+		
+		return $consequences;
+	}
+	
+	public static function loadConsequencesFromDB( $dbr, $filters, $prefix='' ) {
+		$actionsByFilter = array();
+		foreach( $filters as $filter ) {
+			$actionsByFilter[$prefix.$filter] = array();
+		}
+		
 		$res = $dbr->select( array('abuse_filter_action', 'abuse_filter'), '*',
 			array( 'af_id' => $filters ), __METHOD__, array(),
 			array( 'abuse_filter_action' => array('LEFT JOIN', 'afa_filter=af_id') ) );
-
-		$actionsByFilter = array_fill_keys( $filters, array() );
-		$actionsTaken = array_fill_keys( $filters, array() );
-
+		
 		// Categorise consequences by filter.
 		global $wgAbuseFilterRestrictedActions;
 		while ( $row = $dbr->fetchObject( $res ) ) {
@@ -482,14 +542,26 @@ class AbuseFilter {
 				## Don't do the action
 			} elseif ( $row->afa_filter != $row->af_id ) {
 				// We probably got a NULL, as it's a LEFT JOIN.
-				//  Don't add it anyway.
+				//  Don't add it.
 			} else {
-				$actionsByFilter[$row->afa_filter][$row->afa_consequence] = array(
+				$actionsByFilter[$prefix.$row->afa_filter][$row->afa_consequence] = array(
 					'action' => $row->afa_consequence,
 					'parameters' => explode( "\n", $row->afa_parameters )
 				);
 			}
 		}
+		
+		return $actionsByFilter;
+	}
+
+	/** Returns an array [ list of actions taken by filter, error message to display, if any ] */
+	public static function executeFilterActions( $filters, $title, $vars ) {
+		wfProfileIn( __METHOD__ );
+		static $blockingActions = array( 'block', 'rangeblock', 'degroup',
+											'blockautopromote' );
+
+		$actionsByFilter = self::getConsequencesForFilters( $filters );
+		$actionsTaken = array_fill_keys( $filters, array() );
 
 		wfLoadExtensionMessages( 'AbuseFilter' );
 
@@ -597,16 +669,13 @@ class AbuseFilter {
 
 		list( $actions_taken, $error_msg ) = self::executeFilterActions(
 			array_keys( array_filter( $filter_matched ) ), $title, $vars );
-			
-		$var_dump = self::storeVarDump( $vars );
-		$var_dump = "stored-text:$var_dump"; // To distinguish from stuff stored directly
+		
 		$action = $vars->getVar( 'ACTION' )->toString();
 
 		// Create a template
 		$log_template = array(
 			'afl_user' => $wgUser->getId(),
 			'afl_user_text' => $wgUser->getName(),
-			'afl_var_dump' => $var_dump,
 			'afl_timestamp' => $dbr->timestamp(wfTimestampNow()),
 			'afl_namespace' => $title->getNamespace(),
 			'afl_title' => $title->getDBKey(),
@@ -617,7 +686,7 @@ class AbuseFilter {
 			$log_template['afl_user_text'] = $vars->getVar( 'accountname' )->toString();
 		}
 
-		self::addLogEntries( $actions_taken, $log_template, $action );
+		self::addLogEntries( $actions_taken, $log_template, $action, $vars );
 
 		$error_msg = $error_msg == '' ? true : $error_msg;
 		
@@ -628,14 +697,21 @@ class AbuseFilter {
 		return $error_msg;
 	}
 
-	public static function addLogEntries( $actions_taken, $log_template, $action ) {
+	public static function addLogEntries( $actions_taken, $log_template, $action, $vars ) {
 		wfProfileIn( __METHOD__ );
 		$dbw = wfGetDB( DB_MASTER );
+		
+		$central_log_template = array(
+			'afl_wiki' => wfWikiId(),
+		);
 
 		$log_rows = array();
-		$logged_filters = array();
+		$central_log_rows = array();
+		$logged_local_filters = array();
+		$logged_global_filters = array();
 
 		foreach( $actions_taken as $filter => $actions ) {
+			$globalIndex = self::decodeGlobalName( $filter );
 			$thisLog = $log_template;
 			$thisLog['afl_filter'] = $filter;
 			$thisLog['afl_action'] = $action;
@@ -644,13 +720,36 @@ class AbuseFilter {
 			// Don't log if we were only throttling.
 			if ( $thisLog['afl_actions'] != 'throttle' ) {
 				$log_rows[] = $thisLog;
-				$logged_filters[] = $filter;
+				
+				if (!$globalIndex)
+					$logged_local_filters[] = $filter;
+				
+				// Global logging
+				if ($globalIndex) {
+					$title = Title::makeTitle( $thisLog['afl_namespace'],
+												$thisLog['afl_title'] );
+					$centralLog = $thisLog + $central_log_template;
+					$centralLog['afl_filter'] = $globalIndex;
+					$centralLog['afl_title'] = $title->getPrefixedText();
+					$centralLog['afl_namespace'] = 0;
+					
+					$central_log_rows[] = $centralLog;
+					$logged_global_filters[] = $globalIndex;
+				}
 			}
 		}
 
 		if ( !count($log_rows) ) {
 			wfProfileOut( __METHOD__ );
 			return;
+		}
+		
+		// Only store the var dump if we're actually going to add log rows.
+		$var_dump = self::storeVarDump( $vars );
+		$var_dump = "stored-text:$var_dump"; // To distinguish from stuff stored directly
+		
+		foreach( $log_rows as $index => $data ) {
+			$log_rows[$index]['afl_var_dump'] = $var_dump;
 		}
 		
 		wfProfileIn( __METHOD__.'-hitstats' );
@@ -662,14 +761,35 @@ class AbuseFilter {
 
 		$dbw->insert( 'abuse_filter_log', $log_rows, __METHOD__ );
 
-		// Update hit-counter.
-		$dbw->update( 'abuse_filter', array( 'af_hit_count=af_hit_count+1' ),
-			array( 'af_id' => $logged_filters ),
-			__METHOD__ );
+		if ( count($logged_local_filters) ) {
+			// Update hit-counter.
+			$dbw->update( 'abuse_filter', array( 'af_hit_count=af_hit_count+1' ),
+				array( 'af_id' => $logged_local_filters ),
+				__METHOD__ );
+		}
+		
+		// Global stuff
+		if ( count($logged_global_filters) ) {
+			$vars->computeDBVars();
+			$global_var_dump = self::storeVarDump( $vars, 'global' );
+			$global_var_dump = "stored-text:$global_var_dump";
+			foreach( $central_log_rows as $index => $data ) {
+				$central_log_rows[$index]['afl_var_dump'] = $global_var_dump;
+			}
+
+			global $wgAbuseFilterCentralDB;
+			$fdb = wfGetDB( DB_MASTER, array(), $wgAbuseFilterCentralDB );
 			
+			$fdb->insert( 'abuse_filter_log', $central_log_rows, __METHOD__ );
+			
+			$fdb->update( 'abuse_filter', array( 'af_hit_count=af_hit_count+1' ),
+				array( 'af_id' => $logged_global_filters ),
+				__METHOD__ );
+		}
+
 		// Check for emergency disabling.
 		$total = $wgMemc->get( AbuseFilter::filterUsedKey() );
-		self::checkEmergencyDisable( $logged_filters, $total );
+		self::checkEmergencyDisable( $logged_local_filters, $total );
 		
 		wfProfileOut( __METHOD__.'-hitstats' );
 		
@@ -678,7 +798,7 @@ class AbuseFilter {
 	
 	/** Store a var dump to External Storage or the text table
 	  * Some of this code is stolen from Revision::insertOn and friends */
-	public static function storeVarDump( $vars ) {
+	public static function storeVarDump( $vars, $global = false ) {
   		wfProfileIn( __METHOD__ );
   		
   		if ( is_array( $vars ) || is_object( $vars ) )
@@ -693,9 +813,12 @@ class AbuseFilter {
 		}
 		
 		// Store to ES if applicable
-		global $wgDefaultExternalStore;
+		global $wgDefaultExternalStore, $wgAbuseFilterCentralDB;
 		if ($wgDefaultExternalStore) {
-			$text = ExternalStore::insertToDefault( $text );
+			if ($global)
+				$text = ExternalStore::insertToForeignDefault( $text, $wgAbuseFilterCentralDB );
+			else
+				$text = ExternalStore::insertToDefault( $text );
 			$flags[] = 'external';
 			
 			if (!$text)
@@ -704,7 +827,10 @@ class AbuseFilter {
 		}
 		
 		// Store to text table
-		$dbw = wfGetDB( DB_MASTER );
+		if ($global)
+			$dbw = wfGetDB( DB_MASTER, array(), $wgAbuseFilterCentralDB );
+		else
+			$dbw = wfGetDB( DB_MASTER );
 		$old_id = $dbw->nextSequenceValue( 'text_old_id_val' );
 		$dbw->insert( 'text',
 			array(
@@ -1185,7 +1311,8 @@ class AbuseFilter {
 			'af_comments', 
 			'af_deleted', 
 			'af_enabled', 
-			'af_hidden' 
+			'af_hidden',
+			'af_global',
 		);
 		$differences = array();
 
@@ -1498,5 +1625,16 @@ class AbuseFilter {
 		
 		RecentChange::sendToUDP( $data, $wgAbuseFilterUDPAddress, $wgAbuseFilterUDPPrefix,
 									$wgAbuseFilterUDPPort );
+	}
+	
+	static function getGlobalFilterDescription( $filterID ) {
+		global $wgAbuseFilterCentralDB;
+		
+		if (!$wgAbuseFilterCentralDB) return;
+		
+		$fdb = wfGetDB( DB_SLAVE, array(), $wgAbuseFilterCentralDB );
+		
+		return $fdb->selectField( 'abuse_filter', 'af_public_comments',
+									array( 'af_id' => $filterID ), __METHOD__ );
 	}
 }

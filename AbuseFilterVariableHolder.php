@@ -67,6 +67,23 @@ class AbuseFilterVariableHolder {
 		return $exported;
 	}
 	
+	/** Compute all vars which need DB access. Useful for vars which are going to be saved
+	  * cross-wiki or used for offline analysis */
+	function computeDBVars() {
+		static $dbTypes = array( 'links-from-wikitext-or-database', 'load-recent-authors',
+									'get-page-restrictions', 'simple-user-accessor',
+									'user-age', 'user-groups', 'revision-text-by-id',
+									'revision-text-by-timestamp' );
+		
+		foreach( $this->mVars as $name => $value ) {
+			if ($value instanceof AFComputedVariable &&
+						in_array( $value->mMethod, $dbTypes ) ) {
+					$value = $value->compute( $this );
+					$this->setVar( $name, $value );
+			}
+		}
+	}
+	
 }
 
 class AFComputedVariable {
