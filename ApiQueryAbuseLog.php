@@ -73,7 +73,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		if($fld_filter) {
 			$this->addTables('abuse_filter');
 			$this->addFields('af_public_comments');
-			$this->addWhere('afl_filter=af_id');
+			$this->addJoinConds(array('abuse_filter' => array('LEFT JOIN',
+					'af_id=afl_filter')));
 		}
 
 		$this->addOption('LIMIT', $params['limit'] + 1);
