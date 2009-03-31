@@ -11,6 +11,11 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		global $wgOut, $wgUser, $wgRequest;
 		
 		AbuseFilter::disableConditionLimit();
+		
+		if (!$wgUser->isAllowed( 'abusefilter-modify' ) ) {
+			$wgOut->addWikiMsg( 'abusefilter-mustbeeditor' );
+			return;
+		}
 
 		$this->loadParameters();
 		

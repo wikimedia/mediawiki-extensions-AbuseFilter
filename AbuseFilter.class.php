@@ -183,6 +183,11 @@ class AbuseFilter {
 	public static function ajaxCheckSyntax( $filter ) {
 		wfLoadExtensionMessages( 'AbuseFilter' );
 		
+		global $wgUser;
+		if (!$wgUser->isAllowed( 'abusefilter-modify' ) ) {
+			return false;
+		}
+		
 		$result = self::checkSyntax( $filter );
 		
 		$ok = ($result === true);
@@ -224,7 +229,7 @@ class AbuseFilter {
 		global $wgUser;
 
 		// Anti-DoS
-		if ( !$wgUser->isAllowed( 'abusefilter-view' ) ) {
+		if ( !$wgUser->isAllowed( 'abusefilter-modify' ) ) {
 			return false;
 		}
 
@@ -333,6 +338,10 @@ class AbuseFilter {
 	}
 	
 	public static function ajaxEvaluateExpression( $expr ) {
+		global $wgUser;
+		if (!$wgUser->isAllowed( 'abusefilter-modify' ) ) {
+			return false;
+		}
 		return htmlspecialchars( self::evaluateExpression( $expr ) );
 	}
 

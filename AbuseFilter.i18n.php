@@ -20,6 +20,7 @@ $messages['en'] = array(
 	'abusefilter-intro' => "Welcome to the Abuse Filter management interface.
 The Abuse Filter is an automated software mechanism of applying automatic heuristics to all actions.
 This interface shows a list of defined filters, and allows them to be modified.",
+	'abusefilter-mustbeeditor' => 'For security reasons, only users with the right to modify abuse filters may use this interface.',
 
 	// Hooks
 	'abusefilter-warning' => "<big>'''Warning'''</big>: This action has been automatically identified as harmful.
