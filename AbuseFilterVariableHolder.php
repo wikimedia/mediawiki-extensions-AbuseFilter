@@ -67,6 +67,10 @@ class AbuseFilterVariableHolder {
 		return $exported;
 	}
 	
+	function varIsSet( $var ) {
+		return array_key_exists( $var, $this->mVars );
+	}
+	
 	/** Compute all vars which need DB access. Useful for vars which are going to be saved
 	  * cross-wiki or used for offline analysis */
 	function computeDBVars() {

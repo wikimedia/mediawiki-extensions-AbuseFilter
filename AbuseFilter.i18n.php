@@ -255,6 +255,7 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-edit-builder-funcs-substr' => 'Substring (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'Position of substring in string (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'Replace substring with string (str_replace)',
+	'abusefilter-edit-builder-funcs-set_var' => 'Set variable (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Variables',
 	'abusefilter-edit-builder-vars-accountname' => 'Account name (on account creation)',
 	'abusefilter-edit-builder-vars-timestamp' => 'Unix timestamp of change',

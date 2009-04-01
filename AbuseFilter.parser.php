@@ -41,6 +41,7 @@ class AFPToken {
 	const TOp = 'T_OP';
 	const TBrace = 'T_BRACE';
 	const TComma = 'T_COMMA';
+	const TStatementSeparator = 'T_STATEMENT_SEPARATOR';
 	
 	var $type;
 	var $value;
@@ -307,6 +308,13 @@ class AbuseFilterParser {
 		'strlen' => 'funcLen',
 		'strpos' => 'funcStrPos',
 		'str_replace' => 'funcStrReplace',
+		'set' => 'funcSetVar',
+		'set_var' => 'funcSetVar',
+	);
+	
+	// Functions that affect parser state, and shouldn't be cached.
+	static $ActiveFunctions = array(
+		'funcSetVar',
 	);
 	
 	// Order is important. The punctuation-matching regex requires that
@@ -421,9 +429,6 @@ class AbuseFilterParser {
 		$this->mLen = strlen( $code );
 		$this->mShortCircuit = false;
 		
-		// Parse the first token
-		$this->move();
-		
 		$result = new AFPData();
 		$this->doLevelEntry( $result );
 		return $result;
@@ -442,14 +447,19 @@ class AbuseFilterParser {
 	/** Handles unexpected characters after the expression */
 	protected function doLevelEntry( &$result ) {
 		$this->doLevelSet( $result );
+		
 		if( $this->mCur->type != AFPToken::TNone ) {
 			throw new AFPUserVisibleException( 'unexpectedatend', $this->mCur->pos, array($this->mCur->type) );
 		}
 	}
 	
-	/** Handles "=" operator */
+	/** Handles multiple expressions */
 	protected function doLevelSet( &$result ) {
-		$this->doLevelConditions( $result );
+		do {
+			$this->move();
+			$lastPos = $this->mCur->pos;
+			$this->doLevelConditions( $result );
+		} while ($this->mCur->type == AFPToken::TStatementSeparator);
 	}
 
 	protected function doLevelConditions( &$result ) {
@@ -698,7 +708,6 @@ class AbuseFilterParser {
 			if( $this->mShortCircuit ) {
 				$this->skipOverBraces();
 			} else {
-				$this->move();
 				$this->doLevelSet( $result );
 			}
 			if( !($this->mCur->type == AFPToken::TBrace && $this->mCur->value == ')') )
@@ -731,7 +740,6 @@ class AbuseFilterParser {
 			wfProfileIn( __METHOD__."-loadargs" );
 			$args = array();
 			do {
-				$this->move();
 				$r = new AFPData();
 				$this->doLevelSet( $r );
 				$args[] = $r;
@@ -750,7 +758,8 @@ class AbuseFilterParser {
 			
 			$funcHash = md5($func.serialize($args));
 			
-			if (isset(self::$funcCache[$funcHash])) {
+			if (isset(self::$funcCache[$funcHash]) &&
+					!in_array( $func, self::$ActiveFunctions ) ) {
 				$result = self::$funcCache[$funcHash];
 			} else {
 				AbuseFilter::triggerLimiter();
@@ -802,6 +811,8 @@ class AbuseFilterParser {
 			case AFPToken::TBrace:
 			if( $this->mCur->value == ')' )
 				return;        // Handled at the entry level
+			case AFPToken::TNone:
+				return; // Handled at entry level
 			default:
 				throw new AFPUserVisibleException( 'unexpectedtoken',
 													$this->mCur->pos,
@@ -818,7 +829,8 @@ class AbuseFilterParser {
 		wfProfileIn( __METHOD__ );
 		$var = strtolower($var);
 		$builderValues = AbuseFilter::getBuilderValues();
-		if ( ! array_key_exists( $var, $builderValues['vars'] ) ) {
+		if ( !( array_key_exists( $var, $builderValues['vars'] )
+				|| $this->mVars->varIsSet( $var ) ) ) {
 			// If the variable is invalid, throw an exception
 			wfProfileOut( __METHOD__ );
 			throw new AFPUserVisibleException( 'unrecognisedvar',
@@ -863,14 +875,17 @@ class AbuseFilterParser {
 		
 		// Commas
 		if( $code[$offset] == ',' ) {
-			$offset++;
-			return array( ',', AFPToken::TComma, $code, $offset );
+			return array( ',', AFPToken::TComma, $code, $offset + 1 );
 		}
 		
 		// Braces
-		
 		if( $code[$offset] == '(' or $code[$offset] == ')' ) {
 			return array( $code[$offset], AFPToken::TBrace, $code, $offset + 1 );
+		}
+		
+		// Semicolons
+		if ($code[$offset] == ';') {
+			return array( ';', AFPToken::TStatementSeparator, $code, $offset + 1 );
 		}
 		
 		// Strings
@@ -1319,6 +1334,20 @@ class AbuseFilterParser {
 		$replace = $args[2]->toString();
 		
 		return new AFPData( AFPData::DString, str_replace( $search, $replace, $subject ) );
+	}
+	
+	protected function funcSetVar( $args ) {
+		if ( count($args) < 2 ) {
+			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
+						array( 'set_var', 2, count($args ) ) );
+		}
+		
+		$varName = $args[0]->toString();
+		$value = $args[1];
+		
+		$this->mVars->setVar( $varName, $value );
+		
+		return $value;
 	}
 	
 	protected function castString( $args ) {
