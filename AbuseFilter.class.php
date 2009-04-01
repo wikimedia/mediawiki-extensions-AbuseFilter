@@ -1252,15 +1252,25 @@ class AbuseFilter {
 		return $user;
 	}
 
-	static function buildEditBox( $rules, $textName = 'wpFilterRules', $addResultDiv = true ) {
+	static function buildEditBox( $rules, $textName = 'wpFilterRules', $addResultDiv = true,
+									$canEdit=true) {
 		global $wgOut;
 		
+		$readOnlyAttrib = array();
+		if (!$canEdit)
+			$readOnlyAttrib['disabled'] = 'disabled';
+			
+		global $wgUser;
+		$noTestAttrib = array();
+		if ( !$wgUser->isAllowed( 'abusefilter-modify' ) ) {
+			$noTestAttrib['disabled'] = 'disabled';
+			$addResultDiv = false;
+		}
+		
 		$rules = rtrim($rules) ."\n";
-
-		$rules = Xml::textarea( $textName, $rules );
+		$rules = Xml::textarea( $textName, $rules, 40, 5, $readOnlyAttrib );
 
 		$dropDown = self::getBuilderValues();
-
 		// Generate builder drop-down
 		$builder = '';
 
@@ -1298,7 +1308,7 @@ class AbuseFilter {
 				'onclick' => 'doSyntaxCheck()', 
 				'value' => wfMsg( 'abusefilter-edit-check' ), 
 				'id' => 'mw-abusefilter-syntaxcheck' 
-			) );
+			) + $noTestAttrib );
 
 		if ($addResultDiv)
 			$rules .= Xml::element( 'div', 
