@@ -52,6 +52,12 @@ class SpecialAbuseLog extends SpecialPage {
 		global $wgRequest;
 		
 		$this->mSearchUser = $wgRequest->getText( 'wpSearchUser' );
+
+		$t = Title::newFromText( trim($this->mSearchUser) );
+		if ($t) {
+			$this->mSearchUser = $t->getText(); // Username normalisation
+		} else $this->mSearchUser = null;
+		
 		$this->mSearchTitle = $wgRequest->getText( 'wpSearchTitle' );
 		if ($this->canSeeDetails())
 			$this->mSearchFilter = $wgRequest->getIntOrNull( 'wpSearchFilter' );
