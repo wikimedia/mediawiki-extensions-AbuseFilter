@@ -248,10 +248,13 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-edit-builder-funcs-norm' => 'Normalise (norm)',
 	'abusefilter-edit-builder-funcs-count' => 'Number of times string X appears in string Y (count)',
 	'abusefilter-edit-builder-funcs-rcount' => 'Number of times regex X appears in string Y (rcount)',
-	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Remove whitespace',
-	'abusefilter-edit-builder-funcs-rmspecials' => 'Remove special characters',
-	'abusefilter-edit-builder-funcs-ip_in_range' => 'Is IP in range?',
-	'abusefilter-edit-builder-funcs-contains-any' => 'Search string for multiple substrings',
+	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Remove whitespace (rmwhitespace)',
+	'abusefilter-edit-builder-funcs-rmspecials' => 'Remove special characters (rmspecials)',
+	'abusefilter-edit-builder-funcs-ip_in_range' => 'Is IP in range? (ip_in_range)',
+	'abusefilter-edit-builder-funcs-contains-any' => 'Search string for multiple substrings (contains_any)',
+	'abusefilter-edit-builder-funcs-substr' => 'Substring (substr)',
+	'abusefilter-edit-builder-funcs-strpos' => 'Position of substring in string (strpos)',
+	'abusefilter-edit-builder-funcs-str_replace' => 'Replace substring with string (str_replace)',
 	'abusefilter-edit-builder-group-vars' => 'Variables',
 	'abusefilter-edit-builder-vars-accountname' => 'Account name (on account creation)',
 	'abusefilter-edit-builder-vars-timestamp' => 'Unix timestamp of change',
@@ -330,6 +333,8 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-exception-noparams' => 'No parameters given to function "$2" at character $1.',
 	'abusefilter-exception-dividebyzero' => 'Illegal attempt to divide $2 by zero at character $1.',
 	'abusefilter-exception-unrecognisedvar' => 'Unrecognised variable $2 at character $1',
+	'abusefilter-exception-notenoughargs' => 'Not enough arguments to function $2 called at character $1.
+Expected $3 arguments, got $4',
 
 	// Actions
 	'abusefilter-action-throttle' => 'Throttle',

@@ -303,6 +303,10 @@ class AbuseFilterParser {
 		'rcount' => 'funcRCount',
 		'ip_in_range' => 'funcIPInRange',
 		'contains_any' => 'funcContainsAny',
+		'substr' => 'funcSubstr',
+		'strlen' => 'funcLen',
+		'strpos' => 'funcStrPos',
+		'str_replace' => 'funcStrReplace',
 	);
 	
 	// Order is important. The punctuation-matching regex requires that
@@ -1036,21 +1040,24 @@ class AbuseFilterParser {
 	protected function funcLc( $args ) {
 		global $wgContLang;
 		if( count( $args ) < 1 )
-			throw new AFPExpection( "No params passed to lc()" );
+			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
+						array( 'lc', 2, count($args) ) );
 		$s = $args[0]->toString();
 		return new AFPData( AFPData::DString, $wgContLang->lc( $s ) );
 	}
 	
 	protected function funcLen( $args ) {
 		if( count( $args ) < 1 )
-			throw new AFPExpection( "No params passed to len()" );
+			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
+						array( 'len', 2, count($args) ) );
 		$s = $args[0]->toString();
 		return new AFPData( AFPData::DInt, mb_strlen( $s, 'utf-8' ) );
 	}
 	
 	protected function funcSimpleNorm( $args ) {
 		if( count( $args ) < 1 )
-			throw new AFPExpection( "No params passed to simplenorm()" );
+			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
+						array( 'simplenorm', 2, count($args) ) );
 		$s = $args[0]->toString();
 		
 		$s = preg_replace( '/[\d\W]+/', '', $s );
@@ -1060,7 +1067,8 @@ class AbuseFilterParser {
 	
 	protected function funcSpecialRatio( $args ) {
 		if( count( $args ) < 1 )
-			throw new AFPExpection( "No params passed to specialratio()" );
+			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
+						array( 'specialratio', 1, count($args) ) );
 		$s = $args[0]->toString();
 		
 		if (!strlen($s)) {
@@ -1076,7 +1084,8 @@ class AbuseFilterParser {
 	
 	protected function funcCount( $args ) {
 		if( count( $args ) < 1 )
-			throw new AFPExpection( "No params passed to ".__METHOD__ );
+			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
+						array( 'count', 1, count($args) ) );
 			
 		$offset = -1;
 		
@@ -1097,7 +1106,8 @@ class AbuseFilterParser {
 	
 	protected function funcRCount( $args ) {
 		if( count( $args ) < 1 )
-			throw new AFPExpection( "No params passed to ".__METHOD__ );
+			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
+						array( 'rcount', 1, count($args) ) );
 			
 		$offset = -1;
 		
@@ -1121,7 +1131,8 @@ class AbuseFilterParser {
 	
 	protected function funcIPInRange( $args ) {
 		if( count( $args ) < 2 )
-			throw new AFPExpection( "No params passed to ".__METHOD__ );
+			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
+						array( 'ip_in_range', 2, count($args) ) );
 			
 		$ip = $args[0]->toString();
 		$range = $args[1]->toString();
@@ -1133,7 +1144,8 @@ class AbuseFilterParser {
 	
 	protected function funcCCNorm( $args ) {
 		if( count( $args ) < 1 )
-			throw new AFPExpection( "No params passed to ".__METHOD__ );
+			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
+						array( 'ccnorm', 1, count($args) ) );
 		$s = $args[0]->toString();
 		
 		$s = $this->ccnorm( $s );
@@ -1143,7 +1155,8 @@ class AbuseFilterParser {
 	
 	protected function funcContainsAny( $args ) {
 		if (count( $args ) < 2 ) {
-			throw new AFPException( "Not enough params to ".__METHOD__ );
+			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
+						array( 'contains_any', 2, count($args) ) );
 		}
 		
 		$s = array_shift( $args );
@@ -1203,7 +1216,8 @@ class AbuseFilterParser {
 	
 	protected function funcRMSpecials( $args ) {
 		if( count( $args ) < 1 )
-			throw new AFPExpection( "No params passed to ".__METHOD__ );
+			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
+						array( 'rmspecials', 1, count($args) ) );
 		$s = $args[0]->toString();
 		
 		$s = $this->rmspecials( $s );
@@ -1213,7 +1227,8 @@ class AbuseFilterParser {
 	
 	protected function funcRMWhitespace( $args ) {
 		if( count( $args ) < 1 )
-			throw new AFPExpection( "No params passed to ".__METHOD__ );
+			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
+						array( 'rmwhitespace', 1, count($args) ) );
 		$s = $args[0]->toString();
 		
 		$s = $this->rmwhitespace( $s );
@@ -1223,7 +1238,8 @@ class AbuseFilterParser {
 	
 	protected function funcRMDoubles( $args ) {
 		if( count( $args ) < 1 )
-			throw new AFPExpection( "No params passed to ".__METHOD__ );
+			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
+						array( 'rmdoubles', 1, count($args) ) );
 		$s = $args[0]->toString();
 		
 		$s = $this->rmdoubles( $s );
@@ -1233,7 +1249,8 @@ class AbuseFilterParser {
 	
 	protected function funcNorm( $args ) {
 		if( count( $args ) < 1 )
-			throw new AFPExpection( "No params passed to ".__METHOD__ );
+			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
+						array( 'norm', 1, count($args) ) );
 		$s = $args[0]->toString();
 		
 		$s = $this->ccnorm($s);
@@ -1242,6 +1259,62 @@ class AbuseFilterParser {
 		$s = $this->rmwhitespace( $s );
 		
 		return new AFPData( AFPData::DString, $s );
+	}
+	
+	protected function funcSubstr( $args ) {
+		if ( count($args) < 2 ) {
+			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
+						array( 'substr', 2, count($args) ) );
+		}
+		
+		$s = $args[0]->toString();
+		$offset = $args[1]->toInt();
+		
+		if ( isset($args[2]) ) {
+			$length = $args[2]->toInt();
+			
+			$result = substr( $s, $offset, $length );
+		} else {
+			$result = substr( $s, $offset );
+		}
+		
+		return new AFPData( AFPData::DString, $result );
+	}
+	
+	protected function funcStrPos( $args ) {
+		if ( count($args) < 2 ) {
+			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
+						array( 'strpos', 2, count($args) ) );
+		}
+		
+		$haystack = $args[0]->toString();
+		$needle = $args[1]->toString();
+		
+		if ( isset($args[2]) ) {
+			$offset = $args[2]->toInt();
+			
+			$result = strpos( $haystack, $needle, $offset );
+		} else {
+			$result = strpos( $haystack, $needle );
+		}
+		
+		if ($result === false)
+			$result = -1;
+		
+		return new AFPData( AFPData::DInt, $result );
+	}
+	
+	protected function funcStrReplace( $args ) {
+		if ( count($args) < 3 ) {
+			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
+						array( 'str_replace', 3, count($args) ) );
+		}
+		
+		$subject = $args[0]->toString();
+		$search = $args[1]->toString();
+		$replace = $args[2]->toString();
+		
+		return new AFPData( AFPData::DString, str_replace( $search, $replace, $subject ) );
 	}
 	
 	protected function castString( $args ) {

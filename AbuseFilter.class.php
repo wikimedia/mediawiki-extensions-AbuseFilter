@@ -66,6 +66,9 @@ class AbuseFilter {
 			'rmspecials(text)' => 'rmspecials',
 			'ip_in_range(ip, range)' => 'ip_in_range',
 			'contains_any(haystack,needle1,needle2,needle3)' => 'contains-any',
+			'substr(subject, offset, length)' => 'substr',
+			'strpos(haystack, needle)' => 'strpos',
+			'str_replace(subject, search, replace)' => 'str_replace',
 		),
 		'vars' => array(
 			'timestamp' => 'timestamp',
