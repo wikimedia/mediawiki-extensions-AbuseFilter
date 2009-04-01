@@ -148,16 +148,16 @@ class AFPData {
 		return new AFPData( self::DBool, (bool)$result );
 	}
 	
-	public static function keywordRegex( $str, $regex ) {
+	public static function keywordRegex( $str, $regex, $pos ) {
 		$str = $str->toString();
-		$pattern = $regex->toString();
+		$pattern = $regex = $regex->toString();
 		
 		$pattern = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $pattern );
 		$pattern = "/$pattern/u";
 		
-		wfSuppressWarnings();
+		set_error_handler( array( 'AbuseFilterParser', 'regexErrorHandler' ) );
 		$result = preg_match( $pattern, $str );
-		wfRestoreWarnings();
+		restore_error_handler();
 		return new AFPData( self::DBool, (bool)$result );
 	}
 	
@@ -672,7 +672,7 @@ class AbuseFilterParser {
 			wfProfileIn( __METHOD__ );
 			
 			wfProfileIn( __METHOD__."-$func" );
-			$result = AFPData::$func( $result, $r2 );
+			$result = AFPData::$func( $result, $r2, $this->mCur->pos );
 			wfProfileOut( __METHOD__."-$func" );
 			wfProfileOut( __METHOD__ );
 		}
@@ -1114,8 +1114,9 @@ class AbuseFilterParser {
 		if (count($args) == 1) {
 			$count = count( explode( ",", $args[0]->toString() ) );
 		} else {
-			$needle = $args[0]->toString();
+			$needle = $regex = $args[0]->toString();
 			$haystack = $args[1]->toString();
+			$pos = $this->mCur->pos;
 
 			## Munge the regex
 			$needle = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $needle );
@@ -1123,7 +1124,10 @@ class AbuseFilterParser {
 			
 			$count = 0;
 			$matches = array();
+			
+			set_error_handler( array( 'AbuseFilterParser', 'regexErrorHandler' ) );
 			$count = preg_match_all( $needle, $haystack, $matches );
+			restore_error_handler();
 		}
 		
 		return new AFPData( AFPData::DInt, $count );
@@ -1347,6 +1351,12 @@ class AbuseFilterParser {
 		$val = $args[0];
 		
 		return new AFPData( AFPData::DBool, (bool)($val->data) );
+	}
+	
+	public static function regexErrorHandler( $errno, $errstr, $errfile, $errline, $context ) {
+		throw new AFPUserVisibleException( 'regexfailure', $context['pos'],
+					array( $errstr, $context['regex'] ) );
+		return true;
 	}
 }
 
