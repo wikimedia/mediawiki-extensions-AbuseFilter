@@ -68,6 +68,7 @@ class AbuseFilter {
 			'contains_any(haystack,needle1,needle2,needle3)' => 'contains-any',
 		),
 		'vars' => array(
+			'timestamp' => 'timestamp',
 			'accountname' => 'accountname',
 			'action' => 'action',
 			'added_lines' => 'addedlines',
@@ -663,6 +664,7 @@ class AbuseFilter {
 		
 		// Set context
 		$vars->setVar( 'context', 'filter' );
+		$vars->setVar( 'timestamp', time() );
 
 		$dbr = wfGetDB( DB_SLAVE );
 
@@ -1404,8 +1406,10 @@ class AbuseFilter {
 		} else {
 			return null;
 		}
-		if ($vars)
+		if ($vars) {
 			$vars->setVar( 'context', 'generated' );
+			$vars->setVar( 'timestamp', wfTimestamp( TS_UNIX, $row->rc_timestamp ) );
+		}
 		
 		return $vars;
 	}

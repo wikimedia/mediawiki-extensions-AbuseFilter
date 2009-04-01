@@ -254,6 +254,7 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-edit-builder-funcs-contains-any' => 'Search string for multiple substrings',
 	'abusefilter-edit-builder-group-vars' => 'Variables',
 	'abusefilter-edit-builder-vars-accountname' => 'Account name (on account creation)',
+	'abusefilter-edit-builder-vars-timestamp' => 'Unix timestamp of change',
 	'abusefilter-edit-builder-vars-action' => 'Action',
 	'abusefilter-edit-builder-vars-addedlines' => 'Lines added in edit',
 	'abusefilter-edit-builder-vars-delta' => 'Size change in edit',
