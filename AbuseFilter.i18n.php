@@ -5558,59 +5558,59 @@ $messages['haw'] = array(
  */
 $messages['he'] = array(
 	'abusefilter-desc' => 'ביצוע בדיקות אוטומטיות לעריכות כדי לאתר השחתות',
-	'abusefilter' => 'תצורת מסנן ההשחתה',
-	'abuselog' => 'יומן השחתה',
-	'abusefilter-intro' => 'ברוכים הבאים לממשק הניהול של מסנן ההשחתה.
-מסנן ההשחתה הוא אמצעי אוטומטי להפעלת בדיקות אוטומטיות של כל הפעולות.
+	'abusefilter' => 'תצורת מסנן ההשחתות',
+	'abuselog' => 'יומן השחתות',
+	'abusefilter-intro' => 'ברוכים הבאים לממשק הניהול של מסנן ההשחתות.
+מסנן ההשחתות הוא אמצעי אוטומטי להפעלת בדיקות אוטומטיות של כל הפעולות.
 ממשק זה מציג רשימה של מסננים שהוגדרו, ומאפשר את שינויים.',
-	'abusefilter-mustbeeditor' => 'מסיבות אבטחה, רק משתמשים עם ההרשאה לשנות מסנני השחתה יכולים להשתמש בממשק זה.',
+	'abusefilter-mustbeeditor' => 'מסיבות אבטחה, רק משתמשים עם ההרשאה לשנות מסנני השחתות יכולים להשתמש בממשק זה.',
 	'abusefilter-warning' => "<big>'''אזהרה'''</big>: פעולה זו זוהתה כמזיקה.
 עריכות שאינן מועילות ישוחזרו מיידית,
 ועריכות גסות או חזרה על עריכות שאינן מועילות יגרמו לחסימת החשבון או המחשב שלכם.
 אם הנכם סבורים כי עריכה זו מועילה, תוכלו ללחוץ על \"שמירה\" שוב כדי לאמת אותה.
-תיאור קצר של כלל ההשחתה אותו הפרה עריכתכם: \$1",
+תיאור קצר של כלל ההשחתות אותו הפרה עריכתכם: \$1",
 	'abusefilter-disallowed' => 'פעולה זו זוהתה כמזיקה באופן אוטומטי,
 ולכן נחסמה.
 אם הנכם מאמינים כי עריכתכם היתה מועילה, אנא צרו קשר עם אחד ממפעילי מערכת, והודיעו לו מה אתם מנסים לעשות.
-תיאור קצר של כלל ההשחתה אותו הפרה הודעתכם: $1',
+תיאור קצר של כלל ההשחתות אותו הפרה הודעתכם: $1',
 	'abusefilter-blocked-display' => 'פעולה זו זוהתה כמזיקה באופן אוטומטי,
 והפעלתה נמנעה.
 בנוסף, כדי להגן על {{SITENAME}}, חשבון המשתמש שלכם וכל כתובות ה־IP המשויכות לו נחסמו לעריכה.
 אם פעולתכם ארעה בטעות, אנא צרו קשר עם מפעיל מערכת.
-תיאור קצר של כלל השחתה אותו הפרה עריכתכם: $1',
+תיאור קצר של כלל השחתות אותו הפרה עריכתכם: $1',
 	'abusefilter-degrouped' => 'פעולה זו זוהתה כמזיקה באופן אוטומטי.
 עקב כך, הפעולה נמנעה, ומאחר וחשבונכם חשוד בכך שנפרץ לצורכי הונאה, כל הרשאותיכם נשללו.
 אם הנכם מאמינים כי זוהי שגיאה, אנא צרו קשר עם ביורוקרט והסבירו לו פעולה זו. ייתכן כי הרשאותיכם יוחזרו לכם.
 תיאור קצר של כלל ההשתחתה אותו הפרה עריכתכם: $1',
 	'abusefilter-autopromote-blocked' => 'פעולה זו זוהתה כמזיקה באופן אוטומטי, ולכן נמנעה.
 בנוסף, כאמצעי בטיחות, הרשאות הניתנות לחשבונות של משתמשים ותיקים נשללו באופן זמני מחשבונכם.
-תיאור קצר של כלל ההשחתה אותו הפרה עריכתכם: $1',
-	'abusefilter-blocker' => 'מסנן השחתה',
-	'abusefilter-blockreason' => 'בוצעה חסימה אוטומטית על ידי מסנן ההשחתה. תיאור הכלל התואם: $1',
-	'abusefilter-degroupreason' => 'ההרשאות נשללו אוטומטית על ידי מסנן  ההשחתה. תיאור הכלל: $1',
-	'abusefilter-accountreserved' => 'שם משתמש זה שמור לשימושו של מסנן ההשחתה.',
-	'right-abusefilter-modify' => 'שינוי מסנני ההשחתה',
-	'right-abusefilter-view' => 'צפייה במסנני ההשחתה',
-	'right-abusefilter-log' => 'צפייה ביומן ההשחתה',
-	'right-abusefilter-log-detail' => 'צפייה ביומן ההשחתה המפורט',
-	'right-abusefilter-private' => 'צפייה במידע אישי ביומן ההשחתה',
-	'right-abusefilter-modify-restricted' => 'שינוי מסנני השחתה עם פעולות מוגבלות',
-	'right-abusefilter-revert' => 'שחזור כל השינויים שבוצעו על ידי מסנן השחתה מסוים',
-	'action-abusefilter-modify' => 'לשנות את מסנני ההשחתה',
-	'action-abusefilter-view' => 'לצפות במסנני ההשחתה',
-	'action-abusefilter-log' => 'לצפות ביומן ההשחתה',
-	'action-abusefilter-log-detail' => 'לצפות ביומן ההשחתה המפורט',
-	'action-abusefilter-private' => 'לצפות במידע אישי ביומן ההשחתה',
-	'action-abusefilter-modify-restricted' => 'לשנות מסנני השחתה עם פעולות מוגבלות',
-	'action-abusefilter-revert' => 'לשחזר את כל השינויים שבוצעו על ידי מסנן השחתה מסוים',
-	'abusefilter-log' => 'יומן מסנן ההשחתה',
+תיאור קצר של כלל ההשחתות אותו הפרה עריכתכם: $1',
+	'abusefilter-blocker' => 'מסנן השחתות',
+	'abusefilter-blockreason' => 'בוצעה חסימה אוטומטית על ידי מסנן ההשחתות. תיאור הכלל התואם: $1',
+	'abusefilter-degroupreason' => 'ההרשאות נשללו אוטומטית על ידי מסנן  ההשחתות. תיאור הכלל: $1',
+	'abusefilter-accountreserved' => 'שם משתמש זה שמור לשימושו של מסנן ההשחתות.',
+	'right-abusefilter-modify' => 'שינוי מסנני ההשחתות',
+	'right-abusefilter-view' => 'צפייה במסנני ההשחתות',
+	'right-abusefilter-log' => 'צפייה ביומן ההשחתות',
+	'right-abusefilter-log-detail' => 'צפייה ביומן ההשחתות המפורט',
+	'right-abusefilter-private' => 'צפייה במידע אישי ביומן ההשחתות',
+	'right-abusefilter-modify-restricted' => 'שינוי מסנני השחתות עם פעולות מוגבלות',
+	'right-abusefilter-revert' => 'שחזור כל השינויים שבוצעו על ידי מסנן השחתות מסוים',
+	'action-abusefilter-modify' => 'לשנות את מסנני ההשחתות',
+	'action-abusefilter-view' => 'לצפות במסנני ההשחתות',
+	'action-abusefilter-log' => 'לצפות ביומן ההשחתות',
+	'action-abusefilter-log-detail' => 'לצפות ביומן ההשחתות המפורט',
+	'action-abusefilter-private' => 'לצפות במידע אישי ביומן ההשחתות',
+	'action-abusefilter-modify-restricted' => 'לשנות מסנני השחתות עם פעולות מוגבלות',
+	'action-abusefilter-revert' => 'לשחזר את כל השינויים שבוצעו על ידי מסנן השחתות מסוים',
+	'abusefilter-log' => 'יומן מסנן ההשחתות',
 	'abusefilter-log-summary' => 'יומן זה מציג את כל הפעולות שנתפסו על ידי המסננים.',
-	'abusefilter-log-search' => 'חיפוש ביומן ההשחתה',
+	'abusefilter-log-search' => 'חיפוש ביומן ההשחתות',
 	'abusefilter-log-search-user' => 'משתמש:',
 	'abusefilter-log-search-filter' => 'מספר המסנן:',
 	'abusefilter-log-search-title' => 'כותרת:',
 	'abusefilter-log-search-submit' => 'חיפוש',
-	'abusefilter-log-entry' => '$1: $2 הפעיל את מסנן ההשחתה כשביצע את הפעולה $3 על $4.
+	'abusefilter-log-entry' => '$1: $2 הפעיל את מסנן ההשחתות כשביצע את הפעולה $3 על $4.
 פעולות שננקטו: $5; 
 תיאור המסנן: $6',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 הפעיל את $3 כשביצע את הפעולה "$4" על $5.
@@ -5627,7 +5627,7 @@ $messages['he'] = array(
 	'abusefilter-log-details-ip' => 'כתובת ה־IP המקורית',
 	'abusefilter-log-noactions' => 'אין',
 	'abusefilter-log-details-diff' => 'שינויים בוצעו בעריכה',
-	'abusefilter-management' => 'ניהול מסנני ההשחתה',
+	'abusefilter-management' => 'ניהול מסנני ההשחתות',
 	'abusefilter-list' => 'כל המסננים',
 	'abusefilter-list-id' => 'מספר המסנן',
 	'abusefilter-list-status' => 'מצב',
@@ -5648,20 +5648,20 @@ $messages['he'] = array(
 	'abusefilter-new' => 'יצירת מסנן חדש',
 	'abusefilter-links' => 'קישורים שימושיים:',
 	'abusefilter-tools-modifiertest-submit' => 'בדיקה',
-	'abusefilter-tools' => 'כלי מסנן ההשחתה',
-	'abusefilter-loglink' => 'צפייה ביומן ההשחתה',
+	'abusefilter-tools' => 'כלי מסנן ההשחתות',
+	'abusefilter-loglink' => 'צפייה ביומן ההשחתות',
 	'abusefilter-return' => 'חזרה לניהול המסננים',
 	'abusefilter-status-global' => 'גלובלי',
 	'abusefilter-list-options' => 'אפשרויות',
 	'abusefilter-list-options-deleted' => 'מסננים שנמחקו:',
 	'abusefilter-list-options-deleted-only' => 'הצגת מסננים שנמחקו בלבד',
 	'abusefilter-list-options-deleted-hide' => 'הסתרת מסננים שנמחקו',
-	'abusefilter-list-options-deleted-show' => 'הכללת המסננים שנמחקו',
+	'abusefilter-list-options-deleted-show' => 'הכללת מסננים שנמחקו',
 	'abusefilter-list-options-disabled' => 'מסננים שבוטלו:',
-	'abusefilter-list-options-hidedisabled' => 'הסתרת המסננים שבוטלו',
+	'abusefilter-list-options-hidedisabled' => 'הסתרת מסננים שבוטלו',
 	'abusefilter-list-options-submit' => 'עדכון',
 	'abusefilter-tools-subtitle' => 'כלים',
-	'abusefilter-tools-text' => 'להלן מספר כלים שעשויים להיות לכם לעזר בניסוח ובניפוי השגיאות של מסנני ההשחתה.',
+	'abusefilter-tools-text' => 'להלן מספר כלים שעשויים להיות לכם לעזר בניסוח ובניפוי השגיאות של מסנני ההשחתות.',
 	'abusefilter-tools-expr' => 'בודק הביטויים',
 	'abusefilter-tools-submitexpr' => 'הערכה',
 	'abusefilter-tools-reautoconfirm' => 'סימון המשתמש מחדש כמשתמש ותיק',
@@ -5695,7 +5695,7 @@ $messages['he'] = array(
 	'abusefilter-edit-consequences' => 'פעולות שננקטו בעת ההתאמה',
 	'abusefilter-edit-action-warn' => 'פעולות שיבוצעו לאחר אזהרת המשתמש',
 	'abusefilter-edit-action-disallow' => 'מניעת המשתמש מביצוע פעולה זו',
-	'abusefilter-edit-action-flag' => 'סימון העריכה ביומן ההשחתה',
+	'abusefilter-edit-action-flag' => 'סימון העריכה ביומן ההשחתות',
 	'abusefilter-edit-action-blockautopromote' => 'שלילת הרשאות המשתמש הוותיק של המשתמש',
 	'abusefilter-edit-action-degroup' => 'הסרת המשתמש מכל קבוצות המשתמש עם ההרשאות',
 	'abusefilter-edit-action-block' => 'חסימת המשתמש ו/או כתובת ה־IP מעריכה',
@@ -5816,7 +5816,7 @@ $messages['he'] = array(
 	'abusefilter-edit-builder-vars-old-html' => 'טקסט הוויקי של הדף הישן, בפיענוח ל־HTML',
 	'abusefilter-edit-builder-vars-minor-edit' => 'האם עריכה זו מסומנת כמשנית או לא',
 	'abusefilter-filter-log' => 'שינויים אחרונים במסננים',
-	'abusefilter-history' => 'היסטוריית השינויים של מסנן ההשחתה #$1',
+	'abusefilter-history' => 'היסטוריית השינויים של מסנן ההשחתות #$1',
 	'abusefilter-history-foruser' => 'שינויים של $1',
 	'abusefilter-history-hidden' => 'מוסתר',
 	'abusefilter-history-enabled' => 'פעיל',
@@ -5857,7 +5857,7 @@ $messages['he'] = array(
 	'abusefilter-action-rangeblock' => 'חסימת טווח',
 	'abusefilter-action-disallow' => 'מניעת פעולה',
 	'abusefilter-revert-title' => 'שחזור כל השינויים של המסנן $1',
-	'abusefilter-revert-intro' => 'טופס זה מאפשר לכם לשחזר את כל השינויים שבוצעו על ידי מסנן ההשחתה בגלל המסנן $1.
+	'abusefilter-revert-intro' => 'טופס זה מאפשר לכם לשחזר את כל השינויים שבוצעו על ידי מסנן ההשחתות בגלל המסנן $1.
 אנא הזהרו בשימוש כלי זה.',
 	'abusefilter-revert-preview-item' => '$1: $2 ביצע $3 על $4.
 פעולות לביטול: $5 ($6)',
@@ -5866,11 +5866,11 @@ $messages['he'] = array(
 	'abusefilter-revert-periodend' => 'סיום התקופה:',
 	'abusefilter-revert-search' => 'בחירת פעולות',
 	'abusefilter-revert-filter' => 'מסנן:',
-	'abusefilter-revert-preview-intro' => 'להלן הפעולות שבוצעו על ידי מסנן ההשחתה ושישוחזרו כולן על ידי פעולה זו.
+	'abusefilter-revert-preview-intro' => 'להלן הפעולות שבוצעו על ידי מסנן ההשחתות ושישוחזרו כולן על ידי פעולה זו.
 אנא בידקו אותן בזהירות, ולחצו על "אישור" כדי לאשר את בחירתכם.',
 	'abusefilter-revert-confirm' => 'אישור',
-	'abusefilter-revert-success' => 'ביטלתם את כל השינויים שבוצעו על ידי מסנן ההשחתה בגלל [[Special:AbuseFilter/$1|המסנן $1]].',
-	'abusefilter-revert-reason' => 'שחזור אוטומטי של כל הפעולות שבוצעו על ידי מסנן ההשחתה בגלל המסנן $1.
+	'abusefilter-revert-success' => 'ביטלתם את כל השינויים שבוצעו על ידי מסנן ההשחתות בגלל [[Special:AbuseFilter/$1|המסנן $1]].',
+	'abusefilter-revert-reason' => 'שחזור אוטומטי של כל הפעולות שבוצעו על ידי מסנן ההשחתות בגלל המסנן $1.
 הסיבה שנתנה: $2',
 	'abusefilter-revert-reasonfield' => 'סיבה לשחזור:',
 	'abusefilter-test' => 'בדיקת מסנן מול עריכות קודמות',
@@ -5887,8 +5887,8 @@ $messages['he'] = array(
 	'abusefilter-test-syntaxerr' => 'במסנן שהכנסתם יש שגיאת תחביר.
 באפשרותכם לקבל הסבר מלא באמצעות לחיצה על הכפתור "בדיקת תחביר".',
 	'abusefilter-changeslist-examine' => 'בדיקה',
-	'abusefilter-examine' => 'בדיקת שינויים אינדיבידואליים',
-	'abusefilter-examine-intro' => 'דף זה מאפשר לכם לבדוק את המשתנים שמייצר מסנן ההשחתה עבור שינוי אינדיבידואלי, ולבדוק זאת אל מול המסננים.',
+	'abusefilter-examine' => 'בדיקת שינויים ספציפיים',
+	'abusefilter-examine-intro' => 'דף זה מאפשר לכם לבדוק את המשתנים שמייצר מסנן ההשחתות עבור שינוי ספציפי, ולבדוק זאת אל מול המסננים.',
 	'abusefilter-examine-legend' => 'בחירת השינויים',
 	'abusefilter-examine-diff' => 'כתובת ההשוואה בין הגרסאות:',
 	'abusefilter-examine-user' => 'משתמש:',
@@ -5901,15 +5901,15 @@ $messages['he'] = array(
 	'abusefilter-examine-nomatch' => 'המסנן אינו תואם לשינוי זה.',
 	'abusefilter-examine-syntaxerror' => 'תחביר המסנן אינו תקין',
 	'abusefilter-examine-notfound' => 'לא ניתן לאתר את השינוי המבוקש.',
-	'abusefilter-examine-incompatible' => 'השינוי המבוקש אינו נתמך על ידי מסנן ההשחתה',
+	'abusefilter-examine-incompatible' => 'השינוי המבוקש אינו נתמך על ידי מסנן ההשחתות',
 	'abusefilter-examine-noresults' => 'לא נמצאו תוצאות עבור הפרמטרים שסיפקתם לחיפוש.',
-	'abusefilter-topnav' => "'''ניווט במסנן ההשחתה'''",
+	'abusefilter-topnav' => "'''ניווט במסנן ההשחתות'''",
 	'abusefilter-topnav-home' => 'הדף הראשי',
-	'abusefilter-topnav-test' => 'בדיקה מקובצת',
+	'abusefilter-topnav-test' => 'בדיקת מסנן',
 	'abusefilter-topnav-examine' => 'בדיקת עריכות קודמות',
-	'abusefilter-topnav-log' => 'יומן ההשחתה',
+	'abusefilter-topnav-log' => 'יומן ההשחתות',
 	'abusefilter-topnav-tools' => 'כלי ניפוי שגיאות',
-	'abusefilter-log-name' => 'יומן מסנן ההשחתה',
+	'abusefilter-log-name' => 'יומן מסנן ההשחתות',
 	'abusefilter-log-header' => 'יומן זה מציג סיכום של השינויים שבוצעו למסננים.
 לפרטים מלאים, ראו את [[Special:AbuseFilter/history|רשימת]] השינויים האחרונים למסננים.',
 	'abusefilter-log-entry-modify' => 'שינה את $1 ($2)',

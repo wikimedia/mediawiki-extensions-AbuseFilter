@@ -78,6 +78,14 @@ $aliases['gsw'] = array(
 	'AbuseFilter' => array( 'Missbruchsfilter' ),
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$aliases['he'] = array(
+	'AbuseLog'    => array( 'יומן_ההשחתות' ),
+	'AbuseFilter' => array( 'מסנן_ההשחתות' ),
+);
+
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
 	'AbuseLog' => array( 'Protokol znjewužiwanjow' ),
