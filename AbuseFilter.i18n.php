@@ -5846,8 +5846,8 @@ $messages['he'] = array(
 	'abusefilter-exception-noparams' => 'לא ניתנו פרמטרים לפונקציה "$2" בתו מספר $1.',
 	'abusefilter-exception-dividebyzero' => 'ניסיון בלתי חוקי לחלק את $2 באפס בתו מספר $1.',
 	'abusefilter-exception-unrecognisedvar' => 'משתנה בלתי מזוהה $2 בתו מספר $1',
-	'abusefilter-exception-notenoughargs' => 'לא הועברו מספיק פרמטרים לפונקציה $2 שנקראה בתו $1.
-יש צורך ב־$3 ארגומנטים, התקבלו $4',
+	'abusefilter-exception-notenoughargs' => 'לא הועברו מספיק ארגומנטים לפונקציה $2 שנקראה בתו $1.
+יש צורך ב{{PLURAL:$3|ארגומנט אחד|־$3 ארגומנטים}}, {{PLURAL:$4|התקבל אחד|התקבלו $4}}',
 	'abusefilter-exception-regexfailure' => 'שגיאה בביטוי הרגולרי "$3" בתו $1: "$2"',
 	'abusefilter-action-throttle' => 'הגבלת תדירות פעולה',
 	'abusefilter-action-warn' => 'אזהרה',
