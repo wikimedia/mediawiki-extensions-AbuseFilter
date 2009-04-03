@@ -82,7 +82,7 @@ $aliases['gsw'] = array(
  * @author Rotem Liss
  */
 $aliases['he'] = array(
-	'AbuseLog'    => array( 'יומן_ההשחתות' ),
+	'AbuseLog' => array( 'יומן_ההשחתות' ),
 	'AbuseFilter' => array( 'מסנן_ההשחתות' ),
 );
 
