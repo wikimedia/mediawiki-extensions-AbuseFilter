@@ -337,6 +337,7 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-exception-notenoughargs' => 'Not enough arguments to function $2 called at character $1.
 	Expected $3 {{PLURAL:$3|argument|arguments}}, got $4',
 	'abusefilter-exception-regexfailure' => 'Error in regular expression "$3" at character $1: "$2"',
+	'abusefilter-exception-overridebuiltin' => 'Illegal overriding of built-in variable "$2" at character $1.',
 
 	// Actions
 	'abusefilter-action-throttle' => 'Throttle',

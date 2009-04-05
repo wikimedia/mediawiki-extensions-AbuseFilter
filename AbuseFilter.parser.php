@@ -268,6 +268,16 @@ class AFPData {
 	}
 }
 
+class AFPParserState {
+	var $pos, $token, $lastInput;
+
+	public function __construct( $token, $pos ) {
+		$this->token = $token;
+		$this->pos = $pos;
+		$this->lastInput = AbuseFilterParser::$lastHandledToken;
+	}
+}
+
 class AFPException extends MWException {}
 
 // Exceptions that we might conceivably want to report to ordinary users
@@ -325,6 +335,7 @@ class AbuseFilterParser {
 	'**', '*', 			// Multiplication/exponentiation
 	'/', '+', '-', '%', // Other arithmetic
 	'&', '|', '^', 		// Logic
+	':=',				// Setting
 	'?', ':', 			// Ternery
 	'<=','<', 			// Less than
 	'>=', '>', 			// Greater than
@@ -338,6 +349,8 @@ class AbuseFilterParser {
 	static $parserCache = array();
 	
 	static $funcCache = array();
+	
+	static $lastHandledToken = array();
 	
 	public function __construct() {
 		$this->resetState();
@@ -391,7 +404,18 @@ class AbuseFilterParser {
 		wfProfileOut( __METHOD__ );
 		return $this->mCur = $token;
 	}
-	
+
+	// getState() and setState() function allows parser state to be rollbacked to several tokens back
+	protected function getState() {
+		return new AFPParserState( $this->mCur, $this->mPos );
+	}
+
+	protected function setState( AFPParserState $state ) {
+		$this->mCur = $state->token;
+		$this->mPos = $state->pos;
+		self::$lastHandledToken = $state->lastInput;
+	}
+
 	protected function skipOverBraces() {
 		if( !($this->mCur->type == AFPToken::TBrace && $this->mCur->value == '(') || !$this->mShortCircuit ) {
 			return;
@@ -446,7 +470,7 @@ class AbuseFilterParser {
 	
 	/** Handles unexpected characters after the expression */
 	protected function doLevelEntry( &$result ) {
-		$this->doLevelSet( $result );
+		$this->doLevelSemicolon( $result );
 		
 		if( $this->mCur->type != AFPToken::TNone ) {
 			throw new AFPUserVisibleException( 'unexpectedatend', $this->mCur->pos, array($this->mCur->type) );
@@ -454,12 +478,30 @@ class AbuseFilterParser {
 	}
 	
 	/** Handles multiple expressions */
-	protected function doLevelSet( &$result ) {
+	protected function doLevelSemicolon( &$result ) {
 		do {
 			$this->move();
-			$lastPos = $this->mCur->pos;
-			$this->doLevelConditions( $result );
+			if( $this->mCur->type != AFPToken::TStatementSeparator )
+				$this->doLevelSet( $result );
 		} while ($this->mCur->type == AFPToken::TStatementSeparator);
+	}
+
+	protected function doLevelSet( &$result ) {
+		if( $this->mCur->type == AFPToken::TID ) {
+			$varname = $this->mCur->value;
+			$prev = $this->getState();
+			$this->move();
+
+			if( $this->mCur->type == AFPToken::TOp && $this->mCur->value == ':=' ) {
+				$this->move();
+				$this->doLevelSet( $result );
+				$this->setUserVariable( $varname, $result );
+				return;
+			} else {
+				$this->setState( $prev );
+			}
+		}
+		$this->doLevelConditions( $result );
 	}
 
 	protected function doLevelConditions( &$result ) {
@@ -708,7 +750,7 @@ class AbuseFilterParser {
 			if( $this->mShortCircuit ) {
 				$this->skipOverBraces();
 			} else {
-				$this->doLevelSet( $result );
+				$this->doLevelSemicolon( $result );
 			}
 			if( !($this->mCur->type == AFPToken::TBrace && $this->mCur->value == ')') )
 				throw new AFPUserVisibleException( 'expectednotfound',
@@ -741,7 +783,7 @@ class AbuseFilterParser {
 			$args = array();
 			do {
 				$r = new AFPData();
-				$this->doLevelSet( $r );
+				$this->doLevelSemicolon( $r );
 				$args[] = $r;
 			} while( $this->mCur->type == AFPToken::TComma );
 			
@@ -825,6 +867,8 @@ class AbuseFilterParser {
 		wfProfileOut( __METHOD__ );
 	}
 	
+	/* End of levels */
+
 	protected function getVarValue( $var ) {
 		wfProfileIn( __METHOD__ );
 		$var = strtolower($var);
@@ -842,21 +886,24 @@ class AbuseFilterParser {
 			return $val;
 		}
 	}
-	
-	/* End of levels */
-	
+
+	protected function setUserVariable( $name, $value ) {
+		$builderValues = AbuseFilter::getBuilderValues();
+		if( array_key_exists( $name, $builderValues['vars'] ) )
+			throw new AFPUserVisibleException( 'overridebuiltin', $this->mCur->pos, array( $name ) );
+		$this->mVars->setVar( $name, $value );
+	}
+
 	static function nextToken( $code, $offset ) {
 		$tok = '';
 		
-		static $lastInput = array();
-		
 		// Check for infinite loops
-		if ( $lastInput == array( $code, $offset ) ) {
+		if ( self::$lastHandledToken == array( $code, $offset ) ) {
 			// Should never happen
 			throw new AFPException( "Entered infinite loop. Offset $offset of $code" );
 		}
 		
-		$lastInput = array( $code, $offset );
+		self::$lastHandledToken = array( $code, $offset );
 			
 		// Spaces
 		$matches = array();
@@ -1345,7 +1392,7 @@ class AbuseFilterParser {
 		$varName = $args[0]->toString();
 		$value = $args[1];
 		
-		$this->mVars->setVar( $varName, $value );
+		$this->setUserVariable( $varName, $value );
 		
 		return $value;
 	}
@@ -1395,7 +1442,7 @@ class AbuseFilterParser {
 if(!function_exists('fnmatch')) {
 
     function fnmatch($pattern, $string) {
-        return preg_match("#^".strtr(preg_quote($pattern, '#'), array('\*' => '.*', '\?' => '.'))."$#i", $string);
+        return preg_match("#^".strtr(preg_quote($pattern, '#'), array('\*' => '.*', '\?' => '.'))."$#iu", $string);
     } // end
 
 } // end if

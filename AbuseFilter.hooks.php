@@ -157,14 +157,12 @@ class AbuseFilterHooks {
 		
 		// DB updates
 		if( $wgDBtype == 'mysql' ) {
-			$wgExtNewTables = array_merge( $wgExtNewTables,
-				    array(
-						  array( 'abuse_filter', "$dir/abusefilter.tables.sql" ),
-						  array( 'abuse_filter_history', "$dir/db_patches/patch-abuse_filter_history.sql" ),
-						  array( 'abuse_filter_history', 'afh_changed_fields', "$dir/db_patches/patch-afh_changed_fields.sql" ),
-						  array( 'abuse_filter', 'af_deleted', "$dir/db_patches/patch-af_deleted.sql" ),
-						  array( 'abuse_filter', 'af_actions', "$dir/db_patches/patch-af_actions.sql" ),
-					) );
+			$wgExtNewTables[] = array( 'abuse_filter', "$dir/abusefilter.tables.sql" );
+			$wgExtNewTables[] = array( 'abuse_filter_history', "$dir/db_patches/patch-abuse_filter_history.sql" );
+			$wgExtNewFields[] = array( 'abuse_filter_history', 'afh_changed_fields', "$dir/db_patches/patch-afh_changed_fields.sql" );
+			$wgExtNewFields[] = array( 'abuse_filter', 'af_deleted', "$dir/db_patches/patch-af_deleted.sql" );
+			$wgExtNewFields[] = array( 'abuse_filter', 'af_actions', "$dir/db_patches/patch-af_actions.sql" );
+			$wgExtNewFields[] = array( 'abuse_filter', 'af_global', "$dir/db_patches/patch-global_filters.sql" );
 		} else if ( $wgDBtype == 'postgres' ) {
 			$wgExtNewTables = array_merge( $wgExtNewTables,
 				    array(
