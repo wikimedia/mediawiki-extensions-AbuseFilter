@@ -338,7 +338,7 @@ Please ask a user with permission to add restricted actions to make the change f
 	Expected $3 {{PLURAL:$3|argument|arguments}}, got $4',
 	'abusefilter-exception-regexfailure' => 'Error in regular expression "$3" at character $1: "$2"',
 	'abusefilter-exception-overridebuiltin' => 'Illegal overriding of built-in variable "$2" at character $1.',
-	'abusefilter-exception-outofbounds' => 'Requesting non-existent list item $2 (list size = 3) at character $1.',
+	'abusefilter-exception-outofbounds' => 'Requesting non-existent list item $2 (list size = $3) at character $1.',
 	'abusefilter-exception-notlist' => 'Requesting array item of non-array at character $1.',
 
 	// Actions
