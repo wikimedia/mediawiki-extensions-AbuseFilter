@@ -187,7 +187,7 @@ class AFComputedVariable {
 						$interest_lines[] = substr( $line, strlen($line_prefix) );
 					}
 				}
-				$result = implode( "\n", $interest_lines );
+				$result = $interest_lines;
 				break;
 			case 'links-from-wikitext':
 				$article = self::articleFromTitle( $parameters['namespace'],
@@ -197,7 +197,7 @@ class AFComputedVariable {
 				$new_text = $vars->getVar( $textVar )->toString();
 				$editInfo = $article->prepareTextForEdit( $new_text );
 				$links = array_keys( $editInfo->output->getExternalLinks() );
-				$result = implode( "\n", $links );
+				$result = $links;
 				break;
 			case 'links-from-wikitext-nonedit':
 			case 'links-from-wikitext-or-database':
@@ -216,7 +216,7 @@ class AFComputedVariable {
 					$links = array_keys( $editInfo->output->getExternalLinks() );
 				}
 				
-				$result = implode( "\n", $links );
+				$result = $links;
 				break;
 			case 'link-diff-added':
 				$oldLinkVar = $parameters['oldlink-var'];
@@ -229,7 +229,7 @@ class AFComputedVariable {
 				$newLinks = explode( "\n", $newLinks );
 				
 				$added = array_diff( $newLinks, $oldLinks );
-				$result = implode( "\n", $added );
+				$result = $added;
 				break;
 			case 'link-diff-removed':
 				$oldLinkVar = $parameters['oldlink-var'];
@@ -242,7 +242,7 @@ class AFComputedVariable {
 				$newLinks = explode( "\n", $newLinks );
 				
 				$removed = array_diff( $oldLinks, $newLinks );
-				$result = implode( "\n", $removed );
+				$result = $removed;
 				break;
 			case 'parse-wikitext':
 				$article = self::articleFromTitle( $parameters['namespace'], $parameters['title'] );
@@ -290,7 +290,7 @@ class AFComputedVariable {
 				while ($user = $dbr->fetchRow($res)) {
 					$users[] = $user[0];
 				}
-				$result = implode( ", ", $users );
+				$result = $users;
 				break;
 			case 'get-page-restrictions':
 				$action = $parameters['action'];
@@ -298,7 +298,7 @@ class AFComputedVariable {
 				
 				$rights = $title->getRestrictions( $action );
 				$rights = count($rights) ? $rights : array();
-				$result = implode(',', $rights );
+				$result = $rights;
 				break;
 			case 'simple-user-accessor':
 				$user = $parameters['user'];
@@ -334,7 +334,7 @@ class AFComputedVariable {
 			case 'user-groups':
 				$user = $parameters['user'];
 				$obj = self::userObjectFromName( $user );
-				$result = implode(',', $obj->getEffectiveGroups() );
+				$result = $obj->getEffectiveGroups();
 				break;
 			case 'length':
 				$s = $vars->getVar( $parameters['length-var'] )->toString();
