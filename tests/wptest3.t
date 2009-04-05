@@ -1,5 +1,5 @@
 /* Filter 18 from English Wikipedia (test type edits from clicking on edit bar) */
-user_groups_test := "*";
+user_groups_test := ["*"];
 article_namespace_test := 0;
 added_lines_test := "Hello world! '''Bold text''' [http://www.example.com link title]";
 

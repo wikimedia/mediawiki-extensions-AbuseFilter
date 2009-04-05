@@ -1,5 +1,5 @@
 /* Filter 61 from English Wikipedia (new user removing references) */
-user_groups_test := "*";
+user_groups_test := ["*"];
 new_size_test := 100;
 article_namespace_test := 0;
 edit_delta_test := -22;
