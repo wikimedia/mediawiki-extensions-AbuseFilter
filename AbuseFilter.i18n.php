@@ -5877,6 +5877,8 @@ $messages['he'] = array(
 יש צורך ב{{PLURAL:$3|ארגומנט אחד|־$3 ארגומנטים}}, {{PLURAL:$4|התקבל אחד|התקבלו $4}}',
 	'abusefilter-exception-regexfailure' => 'שגיאה בביטוי הרגולרי "$3" בתו מספר $1: "$2"',
 	'abusefilter-exception-overridebuiltin' => 'דריסה בלתי תקינה של המשתנה המובנה "$2" בתו מספר $1.',
+	'abusefilter-exception-outofbounds' => 'ביקשו פריט רשימה בלתי קיים $2 (גודל הרשימה = $3) בתו מספר $1.',
+	'abusefilter-exception-notlist' => 'ביקשו פריט מערך מלא־מערך בתו מספר $1.',
 	'abusefilter-action-throttle' => 'הגבלת תדירות פעולה',
 	'abusefilter-action-warn' => 'אזהרה',
 	'abusefilter-action-blockautopromote' => 'ביטול שיוך אוטומטי לקבוצות',
