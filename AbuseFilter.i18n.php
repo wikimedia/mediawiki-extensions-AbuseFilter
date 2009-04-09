@@ -1072,9 +1072,6 @@ $messages['arz'] = array(
 	'abusefilter-log-entry' => '$1: $2 خلا فيلتر الاساءه يشتغل ، و يعمل "$3" فى $4.
 الاعمال اللى اتعملت: $5;
 وصف الفيلتر: $6',
-	'abusefilter-log-detailedentry' => '$1: $2 خلا [[Special:AbuseFilter/$3|الفيلتر $3]] يشتغل، و يعمل"$4" فى $5.
-الاعمال اللى اتعملت: $6;
-وصف الفيلتر: $7 ($8) ($9)',
 	'abusefilter-log-detailslink' => 'التفاصيل',
 	'abusefilter-log-details-legend' => 'التفاصيل بتاعة مدخلة السجل $1',
 	'abusefilter-log-details-var' => 'متغير',
@@ -4030,6 +4027,7 @@ Por favor solicita a un usuario con permiso para agregar acciones restringidas h
 	'abusefilter-exception-noparams' => 'Ningún parámetro siguó la función "$2" en caracter $1.',
 	'abusefilter-exception-dividebyzero' => 'Intento ilegal de dividir $2 entre cero en caracter $1.',
 	'abusefilter-exception-unrecognisedvar' => 'Variable no reconocida $2 en caracter $1',
+	'abusefilter-action-throttle' => 'Impedir',
 	'abusefilter-action-warn' => 'Advertir',
 	'abusefilter-action-block' => 'Bloquear',
 	'abusefilter-action-degroup' => 'Remover de grupos',
@@ -7661,10 +7659,10 @@ Chiedere a un utente abilitato all'inserimento di azioni riservate di effettuare
 	'abusefilter-edit-builder-funcs-norm' => 'Normalizza (norm)',
 	'abusefilter-edit-builder-funcs-count' => 'Numero di occorrenze della stringa X nella stringa Y (count)',
 	'abusefilter-edit-builder-funcs-rcount' => "Numero di occorrenze dell'espressione regolare X nella stringa Y (rcount)",
-	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Elimina whitespace',
-	'abusefilter-edit-builder-funcs-rmspecials' => 'Rimuovi caratteri speciali',
-	'abusefilter-edit-builder-funcs-ip_in_range' => "L'indirizzo IP appartiene all'intervallo?",
-	'abusefilter-edit-builder-funcs-contains-any' => 'Stringa di ricerca per sottostringhe multiple',
+	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Elimina whitespace (rmwhitespace)',
+	'abusefilter-edit-builder-funcs-rmspecials' => 'Rimuovi caratteri speciali (rmspecials)',
+	'abusefilter-edit-builder-funcs-ip_in_range' => "L'indirizzo IP appartiene all'intervallo? (ip_in_range)",
+	'abusefilter-edit-builder-funcs-contains-any' => 'Stringa di ricerca per sottostringhe multiple (contains_any)',
 	'abusefilter-edit-builder-group-vars' => 'Variabili',
 	'abusefilter-edit-builder-vars-accountname' => "Nome dell'account (al momento della creazione)",
 	'abusefilter-edit-builder-vars-action' => 'Azione',
