@@ -206,14 +206,15 @@ $aliases['vec'] = array(
 	'AbuseFilter' => array( 'FiltroAbusi' ),
 );
 
-/** 简体中文 (Simplified Chinese) */
+/** Simplified Chinese (‪中文(简体)‬) */
 $aliases['zh-hans'] = array(
-	'AbuseLog'    => array( '过滤日志' ),
+	'AbuseLog' => array( '过滤日志' ),
 	'AbuseFilter' => array( '防滥用过滤器' ),
 );
 
-/** 傳統中文 (Traditional Chinese) */
+/** Traditional Chinese (‪中文(繁體)‬) */
 $aliases['zh-hant'] = array(
-	'AbuseLog'    => array( '過濾日誌' ),
+	'AbuseLog' => array( '過濾日誌' ),
 	'AbuseFilter' => array( '防濫用過濾器' ),
 );
+

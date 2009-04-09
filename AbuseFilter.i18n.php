@@ -719,6 +719,8 @@ $messages['ar'] = array(
 	'abusefilter-log-entry' => '$1: $2 فعل مرشح إساءة، مؤديا الفعل "$3" في $4.
 الأفعال المتخذة: $5;
 وصف المرشح: $6',
+	'abusefilter-log-detailedentry-global' => 'المرشح العام $1',
+	'abusefilter-log-detailedentry-local' => 'المرشح $1',
 	'abusefilter-log-detailslink' => 'التفاصيل',
 	'abusefilter-log-details-legend' => 'التفاصيل لمدخلة السجل $1',
 	'abusefilter-log-details-var' => 'متغير',
@@ -752,6 +754,7 @@ $messages['ar'] = array(
 	'abusefilter-tools' => 'أدوات مرشحات الإساءة',
 	'abusefilter-loglink' => 'عرض سجل الإساءة',
 	'abusefilter-return' => 'رجوع إلى إدارة المرشح',
+	'abusefilter-status-global' => 'عام',
 	'abusefilter-list-options' => 'خيارات',
 	'abusefilter-list-options-deleted' => 'المرشحات المحذوفة:',
 	'abusefilter-list-options-deleted-only' => 'اعرض فقط المرشحات المحذوفة',
@@ -832,6 +835,7 @@ $messages['ar'] = array(
 	'abusefilter-edit-revert' => 'استرجاع الأفعال التي قام بها هذا المرشح',
 	'abusefilter-edit-tools' => 'أدوات:',
 	'abusefilter-edit-test-link' => 'اختبر هذا المرشح ضد التعديلات الحديثة',
+	'abusefilter-edit-global' => 'طبق هذا المرشح بشكل عام',
 	'abusefilter-edit-builder-select' => 'اختر خيارا لإضافته عند البكرة',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'معاملات حسابية',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'جمع (+)',
@@ -869,10 +873,10 @@ $messages['ar'] = array(
 	'abusefilter-edit-builder-funcs-norm' => 'معادلة (norm)',
 	'abusefilter-edit-builder-funcs-count' => 'عدد المرات التي تظهر فيها السلسلة X في السلسلة Y (count)',
 	'abusefilter-edit-builder-funcs-rcount' => 'عدد المرات الريجيكس X يظهر في السلسلة Y (rcount)',
-	'abusefilter-edit-builder-funcs-rmwhitespace' => 'أزل الفراغات البيضاء',
-	'abusefilter-edit-builder-funcs-rmspecials' => 'إزالة الحروف الخاصة',
-	'abusefilter-edit-builder-funcs-ip_in_range' => 'هل الأيبي في النطاق؟',
-	'abusefilter-edit-builder-funcs-contains-any' => 'ابحث في السلسلة عن سلاسل فرعية متعددة',
+	'abusefilter-edit-builder-funcs-rmwhitespace' => 'أزل الفراغات البيضاء (rmwhitespace)',
+	'abusefilter-edit-builder-funcs-rmspecials' => 'إزالة الحروف الخاصة (rmspecials)',
+	'abusefilter-edit-builder-funcs-ip_in_range' => 'هل الأيبي في النطاق؟ (ip_in_range)',
+	'abusefilter-edit-builder-funcs-contains-any' => 'ابحث في السلسلة عن سلاسل فرعية متعددة (contains_any)',
 	'abusefilter-edit-builder-group-vars' => 'متغيرات',
 	'abusefilter-edit-builder-vars-accountname' => 'اسم الحساب (on account creation)',
 	'abusefilter-edit-builder-vars-action' => 'فعل',
@@ -919,6 +923,7 @@ $messages['ar'] = array(
 	'abusefilter-history-foruser' => 'تغييرات من قبل $1',
 	'abusefilter-history-hidden' => 'مخفي',
 	'abusefilter-history-enabled' => 'مفعل',
+	'abusefilter-history-global' => 'عام',
 	'abusefilter-history-timestamp' => 'وقت',
 	'abusefilter-history-user' => 'مستخدم',
 	'abusefilter-history-public' => 'وصف المرشح العلني',
@@ -9054,6 +9059,7 @@ D'Resultat vum Parser war: <pre>$1</pre>",
 	'abusefilter-edit-builder-vars-removed-links' => 'All extern Linken déi bäi der Ännerung ewechgeholl goufen',
 	'abusefilter-edit-builder-vars-old-text' => 'Alen Text op der Säit, virun der Ännerung',
 	'abusefilter-edit-builder-vars-new-text' => 'Neien Text op der Säit, no der Ännerung',
+	'abusefilter-edit-builder-vars-new-html' => 'Geparseden HTML Quelltext vun der neier Versioun',
 	'abusefilter-edit-builder-vars-old-links' => 'Linken op der Säit, virun der Ännerung',
 	'abusefilter-edit-builder-vars-minor-edit' => "Ob d'Ännerung als kleng markéiert gëtt oder net",
 	'abusefilter-filter-log' => 'Rezent Ännerunge vu Filteren',
@@ -9078,6 +9084,7 @@ D'Resultat vum Parser war: <pre>$1</pre>",
 	'abusefilter-history-diff' => 'Ännerungen',
 	'abusefilter-history-error-hidden' => "De Filter deen Dir ugefrot hutt ass verstoppt, an Dir kënnt d'Versiounen dovun net gesinn.",
 	'abusefilter-exception-unexpectedatend' => 'Onerwaarten $2 beim Zeeche(n) $1',
+	'abusefilter-exception-unrecognisedtoken' => 'Onbekannt Zeechen "$2" beim Zeechen $1.',
 	'abusefilter-exception-dividebyzero' => 'Versuch fir $2 duerch null ze dividéieren beim Buchstaw $1.',
 	'abusefilter-action-throttle' => 'Lues maachen',
 	'abusefilter-action-warn' => 'Warnen',
@@ -9111,6 +9118,7 @@ Aktiounen déi zréckgesat ginn: $5 ($6)',
 Dir kënnt eng komplett Erklärung kréien wann Dir op "Syntax nokucken" klickt.',
 	'abusefilter-changeslist-examine' => 'ënnersichen',
 	'abusefilter-examine' => 'Individuell Ännerungen ënnersichen',
+	'abusefilter-examine-intro' => "Dës Säit erlaabt et d'Variabelen déi vun engem Mëssbrauchsfilter fir eng Ännerung generéiert goufen z'ënnersichen a se mat de Filteren ze testen.",
 	'abusefilter-examine-legend' => 'Ännerungen auswielen',
 	'abusefilter-examine-diff' => 'Ënnerscheed URL:',
 	'abusefilter-examine-user' => 'Benotzer:',
@@ -11394,6 +11402,9 @@ En mejana, la durada d'execucion d'aqueste filtre es de $4 ms.",
 	'abusefilter-exception-notenoughargs' => 'Pas pro de paramètres per la foncion $2 apelada al caractèr $1.
 $3 {{PLURAL:$3|argument demandat|arguments demandats}}, $4 {{PLURAL:$4|obtengut|obtenguts}}',
 	'abusefilter-exception-regexfailure' => 'Error dins l’expression regulara « $3 » al caractèr $1 : « $2 »',
+	'abusefilter-exception-overridebuiltin' => 'Espotiment interdich de la variabla disponibla per defaut « $2 » al caractèr $1.',
+	'abusefilter-exception-outofbounds' => "Demanda de l'element inexistent $2 (talha de la lista = $3) al caractèr $1.",
+	'abusefilter-exception-notlist' => "Demanda d'un element dins quicòm mai qu'un tablèu al caractèr $1.",
 	'abusefilter-action-throttle' => 'Regulacion',
 	'abusefilter-action-warn' => 'Avertiment',
 	'abusefilter-action-blockautopromote' => 'Blocar la promocion automatica',
@@ -14317,6 +14328,7 @@ $messages['th'] = array(
 	'abusefilter-log-search-submit' => 'สืบค้น',
 	'abusefilter-edit-deleted' => 'ทำเครื่องหมายว่าลบแล้ว',
 	'abusefilter-history-foruser' => 'การเปลี่ยนแปลงโดย $1',
+	'abusefilter-revert-confirm' => 'ยืนยัน',
 	'abusefilter-examine-submit' => 'สืบค้น',
 );
 
@@ -15741,33 +15753,26 @@ $messages['zh-cn'] = array(
  * @author Chenzw
  * @author Gaoxuewei
  * @author Gzdavidwong
+ * @author Liangent
+ * @author Philip <philip.npc@gmail.com>
  * @author Skjackey tse
  * @author Wmr89502270
- * @author Philip <philip.npc@gmail.com>
  */
 $messages['zh-hans'] = array(
-	// Description message
 	'abusefilter-desc' => '对编辑行为自动进行条件判定',
-
-	// Special pages
 	'abusefilter' => '防滥用过滤器配置',
 	'abuselog' => '过滤日志',
-	'abusefilter-intro' => "欢迎访问防滥用过滤器管理界面。防滥用过滤器是一个可以针对所有最近编辑动作进行自动化判断的软件系统。本界面包含了现有过滤器的列表，并允许管理人员修改它们。",
+	'abusefilter-intro' => '欢迎访问防滥用过滤器管理界面。防滥用过滤器是一个可以针对所有最近编辑动作进行自动化判断的软件系统。本界面包含了现有过滤器的列表，并允许管理人员修改它们。',
 	'abusefilter-mustbeeditor' => '出于安全考虑，只有拥有编辑防滥用过滤器权限的用户方可使用本界面。',
-
-	// Hooks
 	'abusefilter-warning' => "<big>'''警告'''</big>：您的行为被自动识别为具有危害性。无意义的编辑会被迅速地加以回退，而过分或重复的无意义编辑会导致您的帐户或计算机遭到封禁。如果您认为您的该次编辑是有意义的，请再次点击提交以确认它。与您此次行为所匹配的过滤规则概述如下：$1",
-	'abusefilter-disallowed' => "您的行为被自动识别为具有危害性，并遭到禁止。如果您认为您的该次编辑是有意义的，请联系管理员，并告知他们您尝试做到的事。与您此次行为所匹配的过滤规则概述如下：$1",
-	'abusefilter-blocked-display' => "您的行为被自动识别为具有危害性，并被阻止继续进行。除此以外，为了保护{{SITENAME}}，您的用户帐户以及所有相关联的IP地址都被禁止进行编辑。如果您认为这是系统误判，请联系管理员。与您此次行为所匹配的过滤规则概述如下：$1",
-	'abusefilter-degrouped' => "您的行为被自动识别为具有危害性，并遭到禁止。此外，由于您的帐户被怀疑遭到盗窃，所有权限均已被剥夺。如果您认为这是系统误判，请联系行政员并解释此次行为，或能取回权限。与您此次行为所匹配的过滤规则概述如下：$1",
-	'abusefilter-autopromote-blocked' => "您的行为被自动识别为具有危害性，并遭到禁止。此外，为安全起见，您的帐户被暂时剥夺了部分例行授予已创建帐户的权限。与您此次行为所匹配的过滤规则概述如下：$1",
-
+	'abusefilter-disallowed' => '您的行为被自动识别为具有危害性，并遭到禁止。如果您认为您的该次编辑是有意义的，请联系管理员，并告知他们您尝试做到的事。与您此次行为所匹配的过滤规则概述如下：$1',
+	'abusefilter-blocked-display' => '您的行为被自动识别为具有危害性，并被阻止继续进行。除此以外，为了保护{{SITENAME}}，您的用户帐户以及所有相关联的IP地址都被禁止进行编辑。如果您认为这是系统误判，请联系管理员。与您此次行为所匹配的过滤规则概述如下：$1',
+	'abusefilter-degrouped' => '您的行为被自动识别为具有危害性，并遭到禁止。此外，由于您的帐户被怀疑遭到盗窃，所有权限均已被剥夺。如果您认为这是系统误判，请联系行政员并解释此次行为，或能取回权限。与您此次行为所匹配的过滤规则概述如下：$1',
+	'abusefilter-autopromote-blocked' => '您的行为被自动识别为具有危害性，并遭到禁止。此外，为安全起见，您的帐户被暂时剥夺了部分例行授予已创建帐户的权限。与您此次行为所匹配的过滤规则概述如下：$1',
 	'abusefilter-blocker' => '防滥用过滤器',
 	'abusefilter-blockreason' => '由防滥用过滤器自动封禁。触发规则描述：$1',
 	'abusefilter-degroupreason' => '由防滥用过滤器自动剥夺所有权限，触发规则描述：$1',
 	'abusefilter-accountreserved' => '此帐户已由防滥用过滤器保留使用。',
-
-	// Permissions
 	'right-abusefilter-modify' => '修改防滥用过滤器',
 	'right-abusefilter-view' => '查看防滥用过滤器',
 	'right-abusefilter-log' => '查看过滤日志',
@@ -15775,7 +15780,6 @@ $messages['zh-hans'] = array(
 	'right-abusefilter-private' => '查看过滤日志中的非公开数据',
 	'right-abusefilter-modify-restricted' => '受限修改防滥用过滤器',
 	'right-abusefilter-revert' => '撤销指定防滥用过滤器作出的所有更改',
-
 	'action-abusefilter-modify' => '修改防滥用过滤器',
 	'action-abusefilter-view' => '查看防滥用过滤器',
 	'action-abusefilter-log' => '查看过滤日志',
@@ -15783,8 +15787,6 @@ $messages['zh-hans'] = array(
 	'action-abusefilter-private' => '查看过滤日志中的非公开数据',
 	'action-abusefilter-modify-restricted' => '受限修改防滥用过滤器',
 	'action-abusefilter-revert' => '撤销指定防滥用过滤器作出的所有更改',
-
-	// Abuse Log
 	'abusefilter-log' => '防滥用过滤器日志',
 	'abusefilter-log-summary' => '本日志列出了过滤器捕捉到的所有行为。',
 	'abusefilter-log-search' => '搜索过滤日志',
@@ -15805,8 +15807,6 @@ $messages['zh-hans'] = array(
 	'abusefilter-log-details-ip' => '原始IP地址',
 	'abusefilter-log-noactions' => '无',
 	'abusefilter-log-details-diff' => '修订版本间差异',
-
-	// Abuse filter management
 	'abusefilter-management' => '管理防滥用过滤器',
 	'abusefilter-list' => '所有过滤器',
 	'abusefilter-list-id' => '过滤器编号',
@@ -15832,8 +15832,6 @@ $messages['zh-hans'] = array(
 	'abusefilter-loglink' => '查看过滤日志',
 	'abusefilter-return' => '返回过滤器管理界面',
 	'abusefilter-status-global' => '全域',
-
-	// Options form
 	'abusefilter-list-options' => '选项',
 	'abusefilter-list-options-deleted' => '已删除过滤器：',
 	'abusefilter-list-options-deleted-only' => '只显示已删除过滤器',
@@ -15842,8 +15840,6 @@ $messages['zh-hans'] = array(
 	'abusefilter-list-options-disabled' => '已停用过滤器：',
 	'abusefilter-list-options-hidedisabled' => '隐藏已停用过滤器',
 	'abusefilter-list-options-submit' => '更新',
-
-	// Abuse filter tools
 	'abusefilter-tools-subtitle' => '工具',
 	'abusefilter-tools-text' => '本处提供了一些有利于制作和测试防滥用过滤器的工具。',
 	'abusefilter-tools-expr' => '表达式测试器',
@@ -15853,28 +15849,26 @@ $messages['zh-hans'] = array(
 	'abusefilter-tools-reautoconfirm-submit' => '重新自动确认',
 	'abusefilter-reautoconfirm-none' => '该用户的自动确认状态并未被暂行剥夺。',
 	'abusefilter-reautoconfirm-notallowed' => '您没有恢复自动确认状态的权力。',
-	'abusefilter-reautoconfirm-done' => "该帐户的自动确认状态已被恢复",
-
-	// Abuse filter status
-	'abusefilter-status' => "在最近$1次编辑中，有$2（$3%）次编辑达到了$4次的条件上限，有$5（$6%）次编辑触发了已启用的过滤器之一。",
-
-	// The edit screen
+	'abusefilter-reautoconfirm-done' => '该帐户的自动确认状态已被恢复',
+	'abusefilter-status' => '在最近$1次编辑中，有$2（$3%）次编辑达到了$4次的条件上限，有$5（$6%）次编辑触发了已启用的过滤器之一。',
 	'abusefilter-edit-subtitle' => '编辑过滤器$1',
-	'abusefilter-edit-oldwarning' => "<strong>您正在编辑该过滤器的旧有版本。统计栏中引用的是该过滤器的最新版本。如果您保存您的编辑，所编辑版本之后的所有修改均会丢失。</strong> &bull;
-[[Special:AbuseFilter/history/$2|返回过滤器的历史页面]]。",
+	'abusefilter-edit-oldwarning' => '<strong>您正在编辑该过滤器的旧有版本。统计栏中引用的是该过滤器的最新版本。如果您保存您的编辑，所编辑版本之后的所有修改均会丢失。</strong> &bull;
+[[Special:AbuseFilter/history/$2|返回过滤器的历史页面]]。',
 	'abusefilter-edit-status-label' => '统计：',
 	'abusefilter-edit-status' => '在最近的$1次编辑中，有$2（$3%）次编辑触发了本过滤器。其平均运行时间为$4毫秒',
 	'abusefilter-edit-throttled' => "'''警告'''：本过滤器已因安全问题而停止运行。它已达到匹配超过$1%编辑的上限。",
 	'abusefilter-edit-new' => '新建过滤器',
 	'abusefilter-edit-save' => '保存过滤器',
 	'abusefilter-edit-id' => '过滤器编号：',
-	'abusefilter-edit-description' => "描述：\n:''（公开可见）''",
+	'abusefilter-edit-description' => "描述：
+:''（公开可见）''",
 	'abusefilter-edit-flags' => '标记：',
 	'abusefilter-edit-enabled' => '启用此过滤器',
 	'abusefilter-edit-deleted' => '标记为已删除',
 	'abusefilter-edit-hidden' => '向公众隐藏此过滤器的详细信息',
 	'abusefilter-edit-rules' => '条件：',
-	'abusefilter-edit-notes' => "注释：\n:''（非公开可见）''",
+	'abusefilter-edit-notes' => "注释：
+:''（非公开可见）''",
 	'abusefilter-edit-lastmod' => '过滤器最近更改：',
 	'abusefilter-edit-lastmod-text' => '$1：$2',
 	'abusefilter-edit-hitcount' => '触发数：',
@@ -15891,21 +15885,23 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-throttle-count' => '允许的操作次数：',
 	'abusefilter-edit-throttle-period' => '时间长度：',
 	'abusefilter-edit-throttle-seconds' => '$1秒',
-	'abusefilter-edit-throttle-groups' => "受限群组：\n:''（每行一个，且以半角逗号相连）''",
+	'abusefilter-edit-throttle-groups' => "受限群组：
+:''（每行一个，且以半角逗号相连）''",
 	'abusefilter-edit-warn-message' => '用作警告的系统消息：',
 	'abusefilter-edit-warn-other' => '其他消息',
-	'abusefilter-edit-warn-other-label' => "其他消息的页面名：\n:''（无须MediaWiki前缀）''",
+	'abusefilter-edit-warn-other-label' => "其他消息的页面名：
+:''（无须MediaWiki前缀）''",
 	'abusefilter-edit-warn-actions' => '操作：',
 	'abusefilter-edit-warn-preview' => '预览所选消息',
 	'abusefilter-edit-warn-edit' => '创建／编辑所选消息',
 	'abusefilter-edit-tag-tag' => '欲应用的标签（每行一个）：',
-	'abusefilter-edit-denied' => "您无法查看该过滤器的详情，因为它已设定为向公众隐藏。",
+	'abusefilter-edit-denied' => '您无法查看该过滤器的详情，因为它已设定为向公众隐藏。',
 	'abusefilter-edit-main' => '过滤器参数',
 	'abusefilter-edit-done-subtitle' => '已编辑过滤器',
-	'abusefilter-edit-done' => "您已成功保存您对过滤器$1的修改。",
-	'abusefilter-edit-badsyntax' => "您指定的过滤器中存有语法错误。解析器的输出结果为：<pre>$1</pre>",
+	'abusefilter-edit-done' => '您已成功保存您对过滤器$1的修改。',
+	'abusefilter-edit-badsyntax' => '您指定的过滤器中存有语法错误。解析器的输出结果为：<pre>$1</pre>',
 	'abusefilter-edit-restricted' => '您无法编辑此过滤器，因为其中包含一个或多个受限操作。请寻求拥有相应权限用户的帮助，以协助您作出相应修改。',
-	'abusefilter-edit-viewhistory' => "查看过滤器历史",
+	'abusefilter-edit-viewhistory' => '查看过滤器历史',
 	'abusefilter-edit-history' => '历史：',
 	'abusefilter-edit-check' => '语法检查',
 	'abusefilter-edit-badfilter' => '您指定的过滤器并不存在',
@@ -15913,8 +15909,6 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-tools' => '工具：',
 	'abusefilter-edit-test-link' => '以最近的编辑测试本过滤器',
 	'abusefilter-edit-global' => '全域应用本过滤器',
-
-	// Filter editing helpers
 	'abusefilter-edit-builder-select' => '选择需添加到光标处的选项',
 	'abusefilter-edit-builder-group-op-arithmetic' => '算术运算符',
 	'abusefilter-edit-builder-op-arithmetic-addition' => '加（+）',
@@ -15988,7 +15982,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-builder-vars-user-name' => '用户帐户的名称',
 	'abusefilter-edit-builder-vars-user-groups' => '用户所在群组（包括隐藏群组）',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => '电子邮件地址得到确认的时间',
-	'abusefilter-edit-builder-vars-recent-contributors' => '页面的最后五名编辑者',
+	'abusefilter-edit-builder-vars-recent-contributors' => '页面的最后十名编辑者',
 	'abusefilter-edit-builder-vars-all-links' => '新内容中的所有外部链接',
 	'abusefilter-edit-builder-vars-added-links' => '新内容中新增的所有外部链接',
 	'abusefilter-edit-builder-vars-removed-links' => '新内容中移除的所有外部链接',
@@ -15996,15 +15990,12 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-builder-vars-new-text' => '编辑后的新页面，wiki代码格式',
 	'abusefilter-edit-builder-vars-new-text-stripped' => '编辑后的新页面，去除所有标记',
 	'abusefilter-edit-builder-vars-new-html' => '编辑后的新页面，已解析为HTML源码',
-	'abusefilter-edit-builder-vars-recent-contributors' => '页面的最后十名编辑者',
 	'abusefilter-edit-builder-vars-restrictions-edit' => '页面的编辑保护级别',
 	'abusefilter-edit-builder-vars-restrictions-move' => '页面的移动保护级别',
 	'abusefilter-edit-builder-vars-old-text-stripped' => '编辑前的旧页面，去除所有标记',
 	'abusefilter-edit-builder-vars-old-links' => '旧内容中的所有外部链接',
 	'abusefilter-edit-builder-vars-old-html' => '编辑前的旧页面，已解析为HTML源码',
 	'abusefilter-edit-builder-vars-minor-edit' => '编辑是否被标记为小修改',
-	
-	// Filter history
 	'abusefilter-filter-log' => '过滤器最近更改',
 	'abusefilter-history' => '过滤器#$1的修订历史',
 	'abusefilter-history-foruser' => '由$1作出的修改',
@@ -16026,8 +16017,6 @@ $messages['zh-hans'] = array(
 	'abusefilter-history-select-submit' => '精确',
 	'abusefilter-history-diff' => '修订',
 	'abusefilter-history-error-hidden' => '您所请求的过滤器是隐藏的，您无法查看它的历史。',
-
-	// Exceptions
 	'abusefilter-exception-unexpectedatend' => '字符$1处出现意料外的“$2”。',
 	'abusefilter-exception-expectednotfound' => '字符$1处未找到预期的$2（但找到了$3 $4）。',
 	'abusefilter-exception-unrecognisedkeyword' => '字符$1处出现了无法识别的关键字$2。',
@@ -16043,8 +16032,6 @@ $messages['zh-hans'] = array(
 	'abusefilter-exception-overridebuiltin' => '字符$1处非法覆盖内建变量“$2”。',
 	'abusefilter-exception-outofbounds' => '字符$1处请求了不存在的列表项$2（列表长度 = $3）。',
 	'abusefilter-exception-notlist' => '字符$1处向非数组请求了数组项。',
-
-	// Actions
 	'abusefilter-action-throttle' => '频率控制',
 	'abusefilter-action-warn' => '警告',
 	'abusefilter-action-blockautopromote' => '禁止自动授权',
@@ -16052,8 +16039,6 @@ $messages['zh-hans'] = array(
 	'abusefilter-action-degroup' => '从用户群组中移除',
 	'abusefilter-action-rangeblock' => '段封禁',
 	'abusefilter-action-disallow' => '阻止',
-
-	// Revert interface
 	'abusefilter-revert-title' => '撤销过滤器$1作出的所有操作',
 	'abusefilter-revert-intro' => '本表格允许你撤销过滤器$1作出的所有操作。请谨慎使用此工具。',
 	'abusefilter-revert-preview-item' => '$1：$2在$4上作出了$3。将被撤销的操作：$5（$6）',
@@ -16067,8 +16052,6 @@ $messages['zh-hans'] = array(
 	'abusefilter-revert-success' => '你已经撤销了[[Special:AbuseFilter/$1|过滤器$1]]作出的所有操作。',
 	'abusefilter-revert-reason' => '自动撤销了过滤器$1的所有操作，原因如下：$2',
 	'abusefilter-revert-reasonfield' => '撤销原因：',
-
-	// These messages are for batch checking
 	'abusefilter-test' => '利用先前的编辑测试过滤器',
 	'abusefilter-test-intro' => '本页允许您检查下方方框中输入的过滤器对最近$1次修改所造成的影响。若要加载其他现有的过滤器，请在方框下面的文本编辑框中输入过滤器的编号，并单击“载入”按钮。',
 	'abusefilter-test-legend' => '过滤器测试中',
@@ -16081,8 +16064,6 @@ $messages['zh-hans'] = array(
 	'abusefilter-test-shownegative' => '显示不与过滤器匹配的更改',
 	'abusefilter-test-syntaxerr' => '您所输入的过滤器存有语法错误。请点击“语法检查”按钮进行语法检查，并获取详细解释。',
 	'abusefilter-changeslist-examine' => '检查',
-
-	// And these messages are for examining specific actions.
 	'abusefilter-examine' => '检查单独更改',
 	'abusefilter-examine-intro' => '本页面允许您检查防滥用过滤器根据某次单独更改所生成的变量，并使用过滤器进行测试。',
 	'abusefilter-examine-legend' => '选择更改：',
@@ -16099,21 +16080,15 @@ $messages['zh-hans'] = array(
 	'abusefilter-examine-notfound' => '未找到您请求的更改。',
 	'abusefilter-examine-incompatible' => '防滥用过滤器不支持您请求的更改。',
 	'abusefilter-examine-noresults' => '您输入的搜索参数未找到任何结果。',
-	
-	// Top navigation interface
 	'abusefilter-topnav' => "'''防滥用过滤器导航'''",
 	'abusefilter-topnav-home' => '主页',
 	'abusefilter-topnav-test' => '批量测试',
 	'abusefilter-topnav-examine' => '检查过去的编辑',
 	'abusefilter-topnav-log' => '过滤日志',
 	'abusefilter-topnav-tools' => '测试工具',
-	
-	// Logging
 	'abusefilter-log-name' => '防滥用过滤器日志',
-	'abusefilter-log-header' => "本日志显示了对过滤器所作更改的摘要。详细的日志，参见[[Special:AbuseFilter/history|此表]]获取过滤器的最近更改。",
+	'abusefilter-log-header' => '本日志显示了对过滤器所作更改的摘要。详细的日志，参见[[Special:AbuseFilter/history|此表]]获取过滤器的最近更改。',
 	'abusefilter-log-entry-modify' => '$1已更改（$2）',
-	
-	// Diffs
 	'abusefilter-diff-title' => '版本差异',
 	'abusefilter-diff-item' => '项目',
 	'abusefilter-diff-version' => '自$1由$2所作的修订版本',
@@ -16135,9 +16110,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-desc' => '套用自動試誤結果到編輯',
 	'abusefilter' => '防濫用過濾器配置',
 	'abuselog' => '過濾日誌',
-	'abusefilter-intro' => '歡迎您訪問濫用編輯過濾器管理介面。
-防濫用過濾器是一種套用電腦自動試誤結果到所有的編輯動作的自動化軟件系統。
-本介面列出預設過濾器的列表，並允其被修改之。',
+	'abusefilter-intro' => '歡迎訪問防濫用過濾器管理界面。防濫用過濾器是一個可以針對所有最近編輯動作進行自動化判斷的軟件系統。本界面包含了現有過濾器的列表，並允許管理人員將之修改。',
 	'abusefilter-mustbeeditor' => '基於安全理由，僅有權修改防濫用過濾器的用戶可以使用本介面。',
 	'abusefilter-warning' => "<big>'''警告'''</big>：此操作已被系統自動確認為有害。
 非建設性編輯將會被快速還原，
@@ -16366,15 +16339,15 @@ $messages['zh-hant'] = array(
 	'abusefilter-edit-builder-vars-movedto-ns' => '要移動的目的名字空間',
 	'abusefilter-edit-builder-vars-movedto-text' => '要移動的目的頁面標題',
 	'abusefilter-edit-builder-vars-movedto-prefixedtext' => '要移動的目的頁面完整標題',
-	'abusefilter-edit-builder-vars-user-editcount' => '使用者的編輯次數',
-	'abusefilter-edit-builder-vars-user-age' => '該使用者帳號齡',
-	'abusefilter-edit-builder-vars-user-name' => '使用者帳號名',
-	'abusefilter-edit-builder-vars-user-groups' => '該使用者所在的（包括隱含的）用戶群組',
-	'abusefilter-edit-builder-vars-user-emailconfirm' => '使用者電子郵件地址已確認',
-	'abusefilter-edit-builder-vars-recent-contributors' => '最近10位貢獻於該頁的使用者',
+	'abusefilter-edit-builder-vars-user-editcount' => '用戶編輯次數',
+	'abusefilter-edit-builder-vars-user-age' => '用戶帳號年齡',
+	'abusefilter-edit-builder-vars-user-name' => '用戶帳號名',
+	'abusefilter-edit-builder-vars-user-groups' => '用戶所在的（包括隱含的）用戶群組',
+	'abusefilter-edit-builder-vars-user-emailconfirm' => '用戶的電郵地址已經確認',
+	'abusefilter-edit-builder-vars-recent-contributors' => '最近十位於該頁貢獻的用戶',
 	'abusefilter-edit-builder-vars-all-links' => '將所有外部連結以新、純文字模式貼上',
 	'abusefilter-edit-builder-vars-added-links' => '將所有外部連結加入編輯',
-	'abusefilter-edit-builder-vars-removed-links' => '將所有外部連結從編輯裡移除',
+	'abusefilter-edit-builder-vars-removed-links' => '將所有外部連結從編輯中移除',
 	'abusefilter-edit-builder-vars-old-text' => '在現下所編輯處之前貼上舊頁的維基文字',
 	'abusefilter-edit-builder-vars-new-text' => '在現下所編輯處之後貼上新頁的維基文字',
 	'abusefilter-edit-builder-vars-new-text-stripped' => '新建該頁文字，並去除任何的標記',
@@ -16384,15 +16357,15 @@ $messages['zh-hant'] = array(
 	'abusefilter-edit-builder-vars-old-text-stripped' => '舊頁面純文字，去除任何標記符',
 	'abusefilter-edit-builder-vars-old-links' => '在現下所編輯處連結到該頁',
 	'abusefilter-edit-builder-vars-old-html' => '將舊頁維基文字解析成HTML',
-	'abusefilter-edit-builder-vars-minor-edit' => '是否該編輯標示為小修改',
+	'abusefilter-edit-builder-vars-minor-edit' => '是否將編輯標示為小修改',
 	'abusefilter-filter-log' => '最近過濾器更改',
-	'abusefilter-history' => '濫用編輯過濾器#$1的修訂歷史',
+	'abusefilter-history' => '防濫用過濾器#$1的修訂歷史',
 	'abusefilter-history-foruser' => '由$1所作的修改',
 	'abusefilter-history-hidden' => '隱藏',
-	'abusefilter-history-enabled' => '顯示',
+	'abusefilter-history-enabled' => '已啟用',
 	'abusefilter-history-global' => '全域',
 	'abusefilter-history-timestamp' => '時間',
-	'abusefilter-history-user' => '使用者',
+	'abusefilter-history-user' => '用戶',
 	'abusefilter-history-public' => '過濾器的公開描述',
 	'abusefilter-history-flags' => '標記',
 	'abusefilter-history-filter' => '過濾器規則',
@@ -16402,15 +16375,17 @@ $messages['zh-hant'] = array(
 	'abusefilter-history-deleted' => '已刪除',
 	'abusefilter-history-filterid' => '過濾器',
 	'abusefilter-history-select-legend' => '精確查詢',
-	'abusefilter-history-select-user' => '使用者：',
+	'abusefilter-history-select-user' => '用戶︰',
 	'abusefilter-history-select-submit' => '查詢',
 	'abusefilter-history-diff' => '更動',
 	'abusefilter-history-error-hidden' => '您請求的過濾器目前狀態為隱藏，故無法檢視其歷史',
-	'abusefilter-exception-unexpectedatend' => '於字元$1處出現系統意料外的「$2」。',
-	'abusefilter-exception-expectednotfound' => '於字元$1處系統預料出現$2，卻找不到（不過找到 $3 $4）。',
-	'abusefilter-exception-unrecognisedkeyword' => '於字元$1處關鍵字$2系統無法識別。',
+	'abusefilter-exception-unexpectedatend' => '於字元$1處出現意料以外的「$2」。',
+	'abusefilter-exception-expectednotfound' => '字元$1處未找到預期的$2（但找到了$3 $4）。',
+	'abusefilter-exception-unrecognisedkeyword' => '字元$1處出現了無法識別的關鍵字$2。',
+	'abusefilter-exception-unexpectedtoken' => '字元$1處有類型$2非預料符記「$3」',
 	'abusefilter-exception-unclosedstring' => '於字元$1處存在沒有結尾的字串。',
-	'abusefilter-exception-invalidoperator' => '於字元$1處存在非法運算子「$2」。',
+	'abusefilter-exception-invalidoperator' => '字元$1處存在非法運算子「$2」。',
+	'abusefilter-exception-unrecognisedtoken' => '於字元$1處無法辨識符記「$2」。',
 	'abusefilter-exception-noparams' => '於字元$1處函數「$2」沒有給定參數。',
 	'abusefilter-exception-dividebyzero' => '於字元$1處非法將$2除以零。',
 	'abusefilter-exception-unrecognisedvar' => '於字元$1處變數$2系統無法識別。',
@@ -16425,40 +16400,43 @@ $messages['zh-hant'] = array(
 	'abusefilter-action-blockautopromote' => '禁止自動授權',
 	'abusefilter-action-block' => '封禁',
 	'abusefilter-action-degroup' => '從用戶群組中移除',
-	'abusefilter-action-rangeblock' => '區域封禁',
-	'abusefilter-action-disallow' => '動作駁回',
-	'abusefilter-revert-title' => '回復過濾器$1所作所有的更改',
-	'abusefilter-revert-intro' => '本表單讓您回復濫用編輯過濾器$1所做的所有更改。
+	'abusefilter-action-rangeblock' => '域封禁',
+	'abusefilter-action-disallow' => '阻止',
+	'abusefilter-revert-title' => '回復過濾器$1作出的所有更改',
+	'abusefilter-revert-intro' => '本表單讓您回復防濫用過濾器$1所做的所有更改。
 請小心使用。',
-	'abusefilter-revert-search-legend' => '請選擇欲恢復其動作的濫用編輯過濾器',
+	'abusefilter-revert-preview-item' => '$2於$1在$4進行了$3。
+將被回復的操作為︰$5 ($6)',
+	'abusefilter-revert-search-legend' => '請選擇欲恢復的防濫用編輯器動作',
 	'abusefilter-revert-periodstart' => '開始時間：',
 	'abusefilter-revert-periodend' => '終止時間：',
 	'abusefilter-revert-search' => '選擇動作',
 	'abusefilter-revert-filter' => '過濾器：',
-	'abusefilter-revert-preview-intro' => '以下列出濫用編輯過濾器過去採取的行動，系統預計將會還原這些行動。
-請仔細逐一檢查，並按下「確認」以確認您的選擇。',
+	'abusefilter-revert-preview-intro' => '下面列出了本次操作將要還原的防濫用過濾器操作。
+請仔細逐一檢查，並按下「確認」按鈕確認您的選擇。',
 	'abusefilter-revert-confirm' => '確認',
-	'abusefilter-revert-success' => '您已回復了濫用編輯[[Special:AbuseFilter/$1|過濾器 $1]]之前所採取的所有動作。',
-	'abusefilter-revert-reason' => '自動回復濫用編輯過濾器$1所有的動作。
-原因： $2',
+	'abusefilter-revert-success' => '您已回復了防濫用[[Special:AbuseFilter/$1|過濾器 $1]]作出的所有動作。',
+	'abusefilter-revert-reason' => '自動回復防濫用過濾器$1的所有動作。
+原因如下： $2',
 	'abusefilter-revert-reasonfield' => '恢復原因：',
-	'abusefilter-test' => '針對上次修改測試此過濾器',
-	'abusefilter-test-intro' => '本頁讓您檢查在下面方框所鍵入的過濾器對最新$1次修改所造成的影響。
-若要載入其他現行的過濾器，於編輯文字框下面的框框裡鍵入其對應編號，然後按下「載入」鈕。',
+	'abusefilter-test' => '利用先前的編輯測試過濾器',
+	'abusefilter-test-intro' => '本頁讓您檢視下方方框中輸入的過濾器對最近$1次修改所造成的影響。
+若要載入其他現行的過濾器，請於編輯文字框下面的方框中鍵入其對應編號，然後按下「載入」鈕。',
 	'abusefilter-test-legend' => '過濾器測試中',
 	'abusefilter-test-load-filter' => '載入過濾器編號：',
 	'abusefilter-test-submit' => '測試',
 	'abusefilter-test-load' => '載入',
 	'abusefilter-test-user' => '使用者更改：',
-	'abusefilter-test-period-start' => '自右列時間後所做的更改：',
-	'abusefilter-test-period-end' => '自右列時間前所做的更改：',
+	'abusefilter-test-period-start' => '右框所輸時間後的更改：',
+	'abusefilter-test-period-end' => '右框所輸時間前的更改：',
 	'abusefilter-test-shownegative' => '顯示與過濾器不匹配的更改',
-	'abusefilter-test-syntaxerr' => '您輸入的過濾器語法有誤。
+	'abusefilter-test-syntaxerr' => '您輸入的過濾器有語法錯誤。
 請按下「語法檢查」鈕以取得完整說明。',
-	'abusefilter-changeslist-examine' => '檢視',
-	'abusefilter-examine' => '檢視個別更改',
-	'abusefilter-examine-intro' => '本頁讓您檢視由濫用編輯過濾器為個別變更所產生的變數，並測試其相對應的過濾器。',
+	'abusefilter-changeslist-examine' => '檢查',
+	'abusefilter-examine' => '檢查個別更改',
+	'abusefilter-examine-intro' => '本頁讓您檢視由防濫用過濾器為個別變更所產生的變數，並測試其相對應的過濾器。',
 	'abusefilter-examine-legend' => '選擇更改',
+	'abusefilter-examine-diff' => 'URL差異：',
 	'abusefilter-examine-user' => '使用者：',
 	'abusefilter-examine-title' => '頁面標題：',
 	'abusefilter-examine-submit' => '搜尋',
@@ -16469,17 +16447,17 @@ $messages['zh-hant'] = array(
 	'abusefilter-examine-nomatch' => '過濾器與這修改不匹配。',
 	'abusefilter-examine-syntaxerror' => '過濾器語法不正確',
 	'abusefilter-examine-notfound' => '系統無法找到您請求的更改。',
-	'abusefilter-examine-incompatible' => '濫用編輯過濾器不支援您請求的更改',
+	'abusefilter-examine-incompatible' => '防濫用過濾器對您請求的更改不支援',
 	'abusefilter-examine-noresults' => '您提供的搜尋參數找不到任何結果。',
-	'abusefilter-topnav' => "'''濫用編輯過濾器導引'''",
-	'abusefilter-topnav-home' => '濫用編輯過濾器首頁',
+	'abusefilter-topnav' => "'''防濫用過濾器導航'''",
+	'abusefilter-topnav-home' => '首頁',
 	'abusefilter-topnav-test' => '批次測試',
-	'abusefilter-topnav-examine' => '檢視過往編輯',
-	'abusefilter-topnav-log' => '濫用編輯記錄',
+	'abusefilter-topnav-examine' => '檢查過往編輯',
+	'abusefilter-topnav-log' => '過濾日誌',
 	'abusefilter-topnav-tools' => '除錯工具',
-	'abusefilter-log-name' => '濫用編輯過濾器記錄',
-	'abusefilter-log-header' => '此日誌顯示了過濾器所做的更改的摘要。
-有關詳細信息，請參閱[[Special:AbuseFilter/history|此列表]]。',
+	'abusefilter-log-name' => '防濫用編輯過濾器記錄',
+	'abusefilter-log-header' => '本日誌顯示了過濾器所作更改的摘要。
+詳細信息請參見最近更改[[Special:AbuseFilter/history|列表]]。',
 	'abusefilter-log-entry-modify' => '$1 已更改 ($2)',
 	'abusefilter-diff-title' => '修訂版本間差異',
 	'abusefilter-diff-item' => '項目',
