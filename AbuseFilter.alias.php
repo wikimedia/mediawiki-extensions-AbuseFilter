@@ -206,3 +206,14 @@ $aliases['vec'] = array(
 	'AbuseFilter' => array( 'FiltroAbusi' ),
 );
 
+/** 简体中文 (Simplified Chinese) */
+$aliases['zh-hans'] = array(
+	'AbuseLog'    => array( '过滤日志' ),
+	'AbuseFilter' => array( '防滥用过滤器' ),
+);
+
+/** 傳統中文 (Traditional Chinese) */
+$aliases['zh-hant'] = array(
+	'AbuseLog'    => array( '過濾日誌' ),
+	'AbuseFilter' => array( '防濫用過濾器' ),
+);
