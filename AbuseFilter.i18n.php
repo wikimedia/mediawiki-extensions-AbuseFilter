@@ -16001,7 +16001,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-builder-vars-restrictions-move' => '页面的移动保护级别',
 	'abusefilter-edit-builder-vars-old-text-stripped' => '编辑前的旧页面，去除所有标记',
 	'abusefilter-edit-builder-vars-old-links' => '旧内容中的所有外部链接',
-	'abusefilter-edit-builder-vars-old-html' => '编辑钱的旧页面，已解析为HTML源码',
+	'abusefilter-edit-builder-vars-old-html' => '编辑前的旧页面，已解析为HTML源码',
 	'abusefilter-edit-builder-vars-minor-edit' => '编辑是否被标记为小修改',
 	
 	// Filter history
@@ -16106,7 +16106,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-topnav-test' => '批量测试',
 	'abusefilter-topnav-examine' => '检查过去的编辑',
 	'abusefilter-topnav-log' => '过滤日志',
-	'abusefilter-topnav-tools' => '测试日志',
+	'abusefilter-topnav-tools' => '测试工具',
 	
 	// Logging
 	'abusefilter-log-name' => '防滥用过滤器日志',
