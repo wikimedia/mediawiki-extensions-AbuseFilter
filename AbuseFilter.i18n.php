@@ -532,6 +532,7 @@ $messages['qqq'] = array(
 	'abusefilter-edit-builder-funcs-length' => "{{doc-important|Do not translate \"'''(length)'''\"}}",
 	'abusefilter-edit-builder-funcs-lcase' => "{{doc-important|Do not translate \"'''(lcase)'''\"}}",
 	'abusefilter-edit-builder-funcs-ccnorm' => "{{doc-important|Do not translate \"'''(ccnorm)'''\"}}",
+	'abusefilter-edit-builder-funcs-convert' => "{{doc-important|Don't translate <code>(convert)</code>.}}",
 	'abusefilter-edit-builder-funcs-rmdoubles' => '{{doc-important|Do not translate "\'\'\'(rmdoubles)\'\'\'"}}
 
 Functional explanation: rmdoubles removes repeated characters in the argument, and returns the result. For example: "foobybboo" will return "fobybo"',
@@ -671,6 +672,7 @@ $messages['ar'] = array(
 	'abusefilter-intro' => 'مرحبا بك إلى واجهة التحكم بمرشح الإساءة.
 مرشح الإساءة هو ميكانيكية برمجية آلية لتطبيق ضوابط تلقائية لكل الأفعال.
 هذه الواجهة تعرض قائمة بالمرشحات المعرفة، وتسمح بتعديلها.',
+	'abusefilter-mustbeeditor' => 'لأسباب أمنية، المستخدمون ذوو صلاحية تعديل مرشّحات الإساءة فقط يمكنهم استخدام هذه الواجهة.',
 	'abusefilter-warning' => "<big>'''تحذير'''</big>: هذا الفعل تم التعرف عليه تلقائيا كضار.
 التعديلات غير البناءة سيتم استرجاعها سريعا،
 والتعديل غير البناء المتكرر أو المستمر سيؤدي إلى منع حسابك أو حاسوبك.
@@ -1508,6 +1510,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-edit-builder-funcs-length' => 'Даўжыня радку (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'У малыя літары (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Нармалізацыя шматзначных сымбаляў (ccnorm)',
+	'abusefilter-edit-builder-funcs-convert' => 'Канвэртаваць радок ў пазначаны варыянт (convert)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Выдаленьне паўтараючыся сымбаляў (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Спэцыяльных сымбаляў / усяго сымбаляў (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Нармалізацыя (norm)',
@@ -1841,12 +1844,17 @@ $messages['bg'] = array(
 	'abusefilter-history-actions' => 'Действия',
 	'abusefilter-history-backedit' => 'Връщане към редактора на филтри',
 	'abusefilter-history-select-user' => 'Потребител:',
+	'abusefilter-revert-filter' => 'Филтър:',
 	'abusefilter-revert-confirm' => 'Потвърждаване',
 	'abusefilter-test-submit' => 'Изпробване',
 	'abusefilter-changeslist-examine' => 'изследване',
 	'abusefilter-examine-user' => 'Потребител:',
 	'abusefilter-examine-submit' => 'Търсене',
 	'abusefilter-examine-syntaxerror' => 'Синтаксисът на филтъра е невалиден',
+	'abusefilter-examine-notfound' => 'Поисканата промяна не може да бъде намерена.',
+	'abusefilter-examine-noresults' => 'Не бяха намерени резултати за предоставените параметри за търсенето.',
+	'abusefilter-topnav-log' => 'Дневник на злоупотребите',
+	'abusefilter-diff-title' => 'Разлики между версиите',
 );
 
 /** Breton (Brezhoneg)
@@ -2467,6 +2475,7 @@ Požádejte uživatele s oprávněním přidávat taková opatření, aby potře
 	'abusefilter-edit-builder-funcs-length' => 'Délka řetězce (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Převést na malá písmena (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalizovat zaměnitelné znaky (ccnorm)',
+	'abusefilter-edit-builder-funcs-convert' => 'Převést řetězec do zadané varianty (convert)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Odstranit zdvojené znaky (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Speciální znaky / celkem znaků (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Normalizovat (norm)',
@@ -3250,6 +3259,7 @@ Pšosym pšos wužywarja z pšawom wobgranicowane akcije pśidaś, aby cynił zm
 	'abusefilter-edit-builder-funcs-length' => 'Dłujkosć znamjenjowego rěda (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Do małych pismikow pśeměniś (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Zaměnjujobne znamješka normalizěrowaś (ccnorm)',
+	'abusefilter-edit-builder-funcs-convert' => 'Znamješkowy rěd do pódaneje warianty konwertěrowaś (convert)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Dwójne znamješka wótpóraś (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Specialne znamješka / znamješka dogromady (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Normalizěrowaś (norm)',
@@ -3338,9 +3348,9 @@ Pšosym pšos wužywarja z pšawom wobgranicowane akcije pśidaś, aby cynił zm
 	'abusefilter-exception-unrecognisedvar' => 'Njespóznata wariabla $2 pla znamješka $1',
 	'abusefilter-exception-notenoughargs' => 'Nic dosć argumentow za funkciju $2 wuwołanu pla znamješka $1.
 $3 {{PLURAL:$3|argument wócakowany|argumenta wócakowanej|argumenty wócakowane|argumentow wócakowanych}}, $4 {{PLURAL:$4|dostany|dostanej|dostane|dostanych}}',
-	'abusefilter-exception-regexfailure' => 'Zmólka w regularnem wurazu "$4" pla znamješka $1: "$2"',
+	'abusefilter-exception-regexfailure' => 'Zmólka w regularnem wurazu "$3" pla znamješka $1: "$2"',
 	'abusefilter-exception-overridebuiltin' => 'Njedowólone wótpóranje zaźěłaneje wariable "$2" pla znamuška $1.',
-	'abusefilter-exception-outofbounds' => 'Pomina se njeeksistěrujucy lisćinowy zapisk $2 (lisćinowa wjelikosć = 3) pla znamuška $1.',
+	'abusefilter-exception-outofbounds' => 'Pomina se njeeksistěrujucy lisćinowy zapisk $2 (lisćinowa wjelikosć = $3) pla znamuška $1.',
 	'abusefilter-exception-notlist' => 'Pomina se zapisk pólneje wariable pla znamuška $1, za objekt, kótaryž njejo pólna wariabla.',
 	'abusefilter-action-throttle' => 'Pódušyś',
 	'abusefilter-action-warn' => 'Warnowaś',
@@ -4636,11 +4646,12 @@ Demandez à un utilisateur autorisé à ajouter des actions restreintes d’effe
 	'abusefilter-edit-builder-misc-cond' => 'Conditionnel (if X then Y else Z)',
 	'abusefilter-edit-builder-group-funcs' => 'Fonctions',
 	'abusefilter-edit-builder-funcs-length' => 'Longueur de la chaîne de caractères (length)',
-	'abusefilter-edit-builder-funcs-lcase' => 'Converti en minuscules (lcase)',
-	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalise les caractères prêtant à confusion (ccnorm)',
-	'abusefilter-edit-builder-funcs-rmdoubles' => 'Enlève les caractères doubles (rmdoubles)',
+	'abusefilter-edit-builder-funcs-lcase' => 'Convertir en minuscules (lcase)',
+	'abusefilter-edit-builder-funcs-ccnorm' => 'Normaliser les caractères prêtant à confusion (ccnorm)',
+	'abusefilter-edit-builder-funcs-convert' => 'Convertir la chaîne dans la variante spécifiée (convert)',
+	'abusefilter-edit-builder-funcs-rmdoubles' => 'Enlever les caractères doubles (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Caractères spéciaux / total des caractères (specialratio)',
-	'abusefilter-edit-builder-funcs-norm' => 'Normalise (norm)',
+	'abusefilter-edit-builder-funcs-norm' => 'Normaliser (norm)',
 	'abusefilter-edit-builder-funcs-count' => 'Nombre d’occurrences de la chaîne de caractères X dans la chaîne Y (count)',
 	'abusefilter-edit-builder-funcs-rcount' => "Nombre de fois que l'expression régulière X apparaît dans la chaîne Y (rcount)",
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Supprimer les espaces (rmwhitespace)',
@@ -4649,7 +4660,7 @@ Demandez à un utilisateur autorisé à ajouter des actions restreintes d’effe
 	'abusefilter-edit-builder-funcs-contains-any' => 'Rechercher des multiples sous-chaînes dans une chaîne (contains_any)',
 	'abusefilter-edit-builder-funcs-substr' => 'Sous-chaîne (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'Position de la sous-chaîne dans la chaîne (strpos)',
-	'abusefilter-edit-builder-funcs-str_replace' => 'Remplacer la sous-chaîne par une chaîne (str_replace)',
+	'abusefilter-edit-builder-funcs-str_replace' => 'Remplacer la sous-chaîne par la chaîne (str_replace)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Définir la variable (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Variables',
 	'abusefilter-edit-builder-vars-accountname' => 'Nom du compte (lors de la création du compte)',
@@ -5473,6 +5484,7 @@ Churzbschryybig vu dr verletzte Regle: $1',
 	'abusefilter-edit-builder-funcs-length' => 'Lengi vu dr Zeichefolg (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'In Chleibuechstabe konvertiere (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Zeiche, wu verwirre, normalisiere (ccnorm)',
+	'abusefilter-edit-builder-funcs-convert' => 'Konvertier-String zuen ere spezifizierte Variable (convert)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Doppleti Zeichen useneh (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Spezialzeiche / Zeiche insgsamt (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Normalisiere (norm)',
@@ -6528,6 +6540,7 @@ Limit wjace hač $1 % akcijow je so docpěł.",
 	'abusefilter-edit-builder-funcs-length' => 'Dołhosć znamješkoweho slěda (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Do małych pismikow konwertować (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Zaměnjujomne znamješka normalizować (ccnorm)',
+	'abusefilter-edit-builder-funcs-convert' => 'Znamješkowy slěd do podateje warinaty konwertować (convert)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Dwójne znamješka wotstronić (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Specialne znamješka / znamješka dohromady (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Normalizować (norm)',
@@ -6618,7 +6631,7 @@ Limit wjace hač $1 % akcijow je so docpěł.",
 $3 {{PLURAL:$3|argument wočakowany|argumentaj wočakowanej|argumenty wočakowane|argumentow wočakowane}}, $4 {{PLURAL:$4|dóstany|dóstanej|dóstane|dóstanych}}',
 	'abusefilter-exception-regexfailure' => 'Zmylk w regularnym wurazu "$3" pola znamješka $1: "$2"',
 	'abusefilter-exception-overridebuiltin' => 'Njedowolene zběhnjenje płaćiwosće zatwarjeneje wariable "$2" pola znamješka $1.',
-	'abusefilter-exception-outofbounds' => 'Požaduje so njeeksistowacy lisćinowy zapisk $2 (lisćinowa wulkosć = 3) pola znamješka $1.',
+	'abusefilter-exception-outofbounds' => 'Požaduje so njeeksistowacy lisćinowy zapisk $2 (lisćinowa wulkosć = $3) pola znamješka $1.',
 	'abusefilter-exception-notlist' => 'Požaduje so zapisk pólneje wariable pola znamješka $1, za objekt, kotryž pólna wariabla njeje.',
 	'abusefilter-action-throttle' => 'Haćić',
 	'abusefilter-action-warn' => 'Warnować',
@@ -8002,6 +8015,7 @@ $messages['ja'] = array(
 	'abusefilter-edit-builder-funcs-length' => '文字列の長さ (length)',
 	'abusefilter-edit-builder-funcs-lcase' => '小文字化 (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => '混乱しやすい文字を正規化 (ccnorm)',
+	'abusefilter-edit-builder-funcs-convert' => '文字列を指定した言語変種に変換 (convert)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => '重複する文字を削除 (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => '特殊文字の数 / 全体の文字数 (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => '正規化 (norm)',
@@ -8308,10 +8322,16 @@ $messages['ko'] = array(
 따라서 이 행위는 불허되었습니다.
 당신의 편집이 생산적이라고 여기신다면, 관리자에게 문의하여 무엇을 하려 하는 지 알려 주세요.
 당신의 행위와 일치하는 규칙을 가진 필터의 간단한 설명은 다음과 같습니다: $1',
+	'abusefilter-blocked-display' => '이러한 행위는 해로운 것으로 간주되어 더 이상 행하지 못하게 금지되었습니다.
+그리고 {{SITENAME}}을(를) 보호하기 위해, 당신의 계정과 연관된 IP 주소가 차단되었습니다.
+이것이 오류로 인한 것이라면, 관리자에게 문의해주세요.
+당신의 행위와 일치한 필터의 간단한 설명은 다음과 같습니다: $1',
 	'abusefilter-log-search-user' => '사용자:',
 	'abusefilter-log-search-filter' => '필터 ID:',
 	'abusefilter-log-search-title' => '제목:',
 	'abusefilter-log-search-submit' => '찾기',
+	'abusefilter-log-detailedentry-global' => '공통 필터 $1',
+	'abusefilter-log-detailedentry-local' => '필터 $1',
 	'abusefilter-log-detailslink' => '자세한 정보',
 	'abusefilter-log-details-var' => '변수',
 	'abusefilter-log-details-val' => '값',
@@ -8321,8 +8341,10 @@ $messages['ko'] = array(
 	'abusefilter-list-id' => '필터 ID',
 	'abusefilter-list-status' => '상태',
 	'abusefilter-list-public' => '공개적 설명',
+	'abusefilter-list-consequences' => '조치',
 	'abusefilter-list-visibility' => '공개 여부',
 	'abusefilter-list-edit' => '편집',
+	'abusefilter-list-limit' => '페이지당 필터 개수',
 	'abusefilter-list-lastmodified' => '마지막 수정',
 	'abusefilter-hidden' => '비공개',
 	'abusefilter-unhidden' => '공개',
@@ -8370,6 +8392,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-warn-other-label' => '다른 메시지의 이름:
 :({{ns:8}} 접두어를 뺀 이름)',
 	'abusefilter-edit-warn-preview' => '선택한 메시지 미리 보기',
+	'abusefilter-edit-warn-edit' => '선택한 메시지를 생성/편집하기',
 	'abusefilter-edit-tag-tag' => '적용할 태그 (1줄당 1개씩):',
 	'abusefilter-edit-main' => '필터 변수',
 	'abusefilter-edit-viewhistory' => '이 필터의 역사 보기',
@@ -8401,16 +8424,21 @@ $messages['ko'] = array(
 	'abusefilter-edit-builder-funcs-length' => '문자열 길이 (length)',
 	'abusefilter-edit-builder-funcs-lcase' => '소문자로 변환 (lcase)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => '중복되는 글자를 제거 (rmdouble)',
+	'abusefilter-edit-builder-funcs-rmspecials' => '특수 문자를 제거 (rmspecials)',
 	'abusefilter-edit-builder-group-vars' => '변수',
 	'abusefilter-edit-builder-vars-accountname' => '계정 이름 (계정 생성 시)',
 	'abusefilter-edit-builder-vars-action' => '행위',
+	'abusefilter-edit-builder-vars-addedlines' => '편집 중 추가된 줄',
 	'abusefilter-edit-builder-vars-delta' => '편집에서의 문서 크기 변화',
 	'abusefilter-edit-builder-vars-newsize' => '새 문서 크기',
 	'abusefilter-edit-builder-vars-oldsize' => '이전 문서 크기',
+	'abusefilter-edit-builder-vars-removedlines' => '편집 중 제거된 줄',
 	'abusefilter-edit-builder-vars-summary' => '편집 요약/이유',
+	'abusefilter-edit-builder-vars-article-id' => '페이지 ID',
 	'abusefilter-edit-builder-vars-article-ns' => '문서 이름공간',
 	'abusefilter-edit-builder-vars-article-text' => '(이름공간을 뺀) 문서 제목',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => '전체 문서 제목',
+	'abusefilter-edit-builder-vars-movedfrom-text' => '이동 전의 제목',
 	'abusefilter-edit-builder-vars-user-editcount' => '사용자의 편집 횟수',
 	'abusefilter-edit-builder-vars-user-name' => '사용자 계정 이름',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => '이메일이 인증된 시각',
@@ -8701,6 +8729,7 @@ donn ene Metmaacher dröm frore, dat ze maache, dä dat Rääsch hät.',
 	'abusefilter-edit-builder-funcs-length' => 'de Aanzahl Bochstave en de Bochstave-Reih (<code lang="en">length</code>)',
 	'abusefilter-edit-builder-funcs-lcase' => 'dat sellve nur en Kleinbochstave (<code lang="en">lcase</code>)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'dat sellve nur de verwähßelba/miehdeutijje Bochstave nommaleseet (<code lang="en">ccnorm</code>)',
+	'abusefilter-edit-builder-funcs-convert' => 'Donn en Reih uß Zeishe en dat ömwandelle, wat aanjejoove es (<code lang="en">convert</code>)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'dat sellve nur de dubbel-Bochstave us dä Reih en eifache ömjetuusch (<code lang="en">rmdoubles</code>)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'de Aanzahl Sönderzeiche jedeilt dorsch de jesamp Zahl Zeische (<code lang="en">specialratio</code>)',
 	'abusefilter-edit-builder-funcs-norm' => 'de Bochstave nommaliseet (<code lang="en">norm</code>)',
@@ -8873,6 +8902,10 @@ $messages['lb'] = array(
 	'abusefilter' => 'Astellung vum Mëssbrauchsfilter',
 	'abuselog' => 'Lëscht vum Mëssbrauch',
 	'abusefilter-mustbeeditor' => "Aus Sécherheetsgrënn kënnen nëmme Benotzer déi d'Recht hunn fir Mëssbrauchsfilteren z'änneren dësen Interface benotzen.",
+	'abusefilter-disallowed' => 'Dës Aktioun gouf automatesch als schiedlech erkannt,
+an dofir net zougelooss.
+Wann Dir mengt datt Är Ännerung konstruktiv ass, da kontaktéiert w.e.g. en Administrateur, an informéiert deen wat Dir versicht hutt ze maachen.
+Eng kuerz Beschreiwung vun der Mëssbrauchsregel déi op är Aktioun getraff huet ass hei: $1',
 	'abusefilter-degrouped' => 'Dës Aktioun gouf automatesch als schedlech klasséiert.
 Dowéint gouf ze net zougelooss a well äre Benotzerkont dofir elo verdächteg ass fir kompromettéiert ze si goufen all är Rechter zréckgezunn.
 Wann Dir mengt datt dëst e Feeler ass da kontaktéiert w.e.g. e Bürokrat a gitt him eng Erklärung fir dës Aktioun an är Rechter ginn nees restauréiert.
@@ -9016,6 +9049,7 @@ D'Resultat vum Parser war: <pre>$1</pre>",
 	'abusefilter-edit-builder-op-bool-or' => 'Oder (|)',
 	'abusefilter-edit-builder-group-misc' => 'Verschiddenes',
 	'abusefilter-edit-builder-group-funcs' => 'Fonctiounen',
+	'abusefilter-edit-builder-funcs-length' => 'Längt vun den Zeechen (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'A kleng Buchstawen ëmwandelen (lcase)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Duebel-Buchstawen ewechhuelen (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Spezalbuchstawen / Total vun de Buchstawen(Zeechen) (specialratio)',
@@ -11499,6 +11533,14 @@ $messages['os'] = array(
 	'abusefilter-history-deleted' => 'Аппæрст',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'abusefilter-list-edit' => 'Ennere',
+	'abusefilter-edit-history' => 'Gschicht:',
+);
+
 /** Plautdietsch (Plautdietsch)
  * @author Slomox
  */
@@ -11721,6 +11763,7 @@ Opis filtru: $7 ($8) ($9)',
 	'abusefilter-edit-builder-funcs-length' => 'Długość ciągu znaków (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Na małe litery (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalizacja kłopotliwych znaków (ccnorm)',
+	'abusefilter-edit-builder-funcs-convert' => 'Konwertuj ciąg znaków do określonego wariantu (convert)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Usuwanie powtarzających się znaków (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Znaki specjalne / suma znaków (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Normalizacja (norm)',
@@ -12518,6 +12561,7 @@ $messages['roa-tara'] = array(
 /** Russian (Русский)
  * @author Ahonc
  * @author Aleksandrit
+ * @author AlexSm
  * @author Ferrer
  * @author HalanTul
  * @author Lockal
@@ -12670,7 +12714,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-action-block' => 'Заблокировать участника или IP-адрес',
 	'abusefilter-edit-action-throttle' => 'Применять меры только если участник превышает предел',
 	'abusefilter-edit-action-rangeblock' => 'Блокировать диапазон /16, из которого работает участник.',
-	'abusefilter-edit-action-tag' => 'Отметить правку для дальнейшей проверки.',
+	'abusefilter-edit-action-tag' => 'Отметить правку для дальнейшей проверки',
 	'abusefilter-edit-throttle-count' => 'Количество разрешённых действий:',
 	'abusefilter-edit-throttle-period' => 'Отрезок времени:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|секунда|секунды|секунд}}',
@@ -12744,7 +12788,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-builder-funcs-str_replace' => 'Замена подстроки в строке (str_replace)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Установить переменную (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Переменные',
-	'abusefilter-edit-builder-vars-accountname' => 'Учётная запись (создание учётной записи)',
+	'abusefilter-edit-builder-vars-accountname' => 'Имя учётной записи (при создании учётной записи)',
 	'abusefilter-edit-builder-vars-timestamp' => 'Unix-время изменения',
 	'abusefilter-edit-builder-vars-action' => 'Действие',
 	'abusefilter-edit-builder-vars-addedlines' => 'Число добавленных в правке строк',
@@ -12753,7 +12797,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-builder-vars-newsize' => 'Новый размер страницы',
 	'abusefilter-edit-builder-vars-oldsize' => 'Старый размер страницы',
 	'abusefilter-edit-builder-vars-removedlines' => 'Удалённых строк в правке',
-	'abusefilter-edit-builder-vars-summary' => 'Редактировать описание/причину',
+	'abusefilter-edit-builder-vars-summary' => 'Описание правки',
 	'abusefilter-edit-builder-vars-article-id' => 'ID страницы',
 	'abusefilter-edit-builder-vars-article-ns' => 'Пространство имён страницы',
 	'abusefilter-edit-builder-vars-article-text' => 'Название страницы (без пространства имён)',
@@ -12771,7 +12815,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-builder-vars-user-name' => 'Имя учётной записи',
 	'abusefilter-edit-builder-vars-user-groups' => 'Группы (включая неявные) в которых состоит участник',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Время подтверждения адреса эл. почты',
-	'abusefilter-edit-builder-vars-recent-contributors' => 'Последние пять редакторов страницы',
+	'abusefilter-edit-builder-vars-recent-contributors' => 'Последние десять редакторов страницы',
 	'abusefilter-edit-builder-vars-all-links' => 'Все внешние ссылки в новом тексте',
 	'abusefilter-edit-builder-vars-added-links' => 'Все внешние ссылки, добавленные в правке',
 	'abusefilter-edit-builder-vars-removed-links' => 'Все внешние ссылки, удалённые в правке',
@@ -13471,6 +13515,7 @@ Priemerný čas behu je $4 ms.',
 	'abusefilter-edit-builder-funcs-length' => 'Dĺžka reťazca (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Na malé písmená (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalizovať zameniteľné znaky (ccnorm)',
+	'abusefilter-edit-builder-funcs-convert' => 'Previesť reťazec na určený variant (convert)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Odstrániť dvojité znaky (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Špeciálne znaky / znakov celkom (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Normalizovať (norm)',
@@ -14325,6 +14370,7 @@ $messages['tg-cyrl'] = array(
  */
 $messages['th'] = array(
 	'abusefilter-log-search-submit' => 'สืบค้น',
+	'abusefilter-log-noactions' => 'ไม่มี',
 	'abusefilter-edit-deleted' => 'ทำเครื่องหมายว่าลบแล้ว',
 	'abusefilter-history-foruser' => 'การเปลี่ยนแปลงโดย $1',
 	'abusefilter-revert-confirm' => 'ยืนยัน',
@@ -14900,6 +14946,7 @@ Lütfen kısıtlı eylemleri eklemeye izni olan bir kullanıcıdan, sizin için 
 	'abusefilter-edit-builder-funcs-length' => 'Dizin uzunluğu (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Küçük harfe çevir (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Karıştırılabilir karakterleri normalleştir (ccnorm)',
+	'abusefilter-edit-builder-funcs-convert' => 'Diziyi belirtilen varyanta çevir (convert)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Çift-karakterleri çıkar (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Özel karakterler / toplam karakterler (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Normalleştir (norm)',
@@ -15209,6 +15256,8 @@ $messages['vec'] = array(
 	'abusefilter-log-search-filter' => 'ID del filtro:',
 	'abusefilter-log-search-title' => 'Titolo:',
 	'abusefilter-log-search-submit' => 'Serca',
+	'abusefilter-log-detailedentry-global' => 'filtro globale $1',
+	'abusefilter-log-detailedentry-local' => 'del filtro $1',
 	'abusefilter-log-detailslink' => 'detagli',
 	'abusefilter-log-details-legend' => 'Detàji de la voxe de registro $1',
 	'abusefilter-log-details-var' => 'Variabile',
@@ -15242,6 +15291,7 @@ $messages['vec'] = array(
 	'abusefilter-tools' => 'Strumenti del filtro abusi',
 	'abusefilter-loglink' => 'Varda el registro dei abusi',
 	'abusefilter-return' => 'Torna a la gestion del filtro',
+	'abusefilter-status-global' => 'Globale',
 	'abusefilter-list-options' => 'Opzioni',
 	'abusefilter-list-options-deleted' => 'Filtri scancelè:',
 	'abusefilter-list-options-deleted-only' => 'Fà védar solo i filtri scancelè',
@@ -15264,6 +15314,7 @@ $messages['vec'] = array(
 	'abusefilter-edit-id' => 'ID del filtro:',
 	'abusefilter-edit-description' => "Descrission:
 :''(visibile publicamente)''",
+	'abusefilter-edit-flags' => 'Flag:',
 	'abusefilter-edit-enabled' => 'Intaca sto filtro',
 	'abusefilter-edit-deleted' => 'Segna come scancelà',
 	'abusefilter-edit-hidden' => 'Scondi i detagli de sto filtro da la vista pùblica',
@@ -15825,7 +15876,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-disabled' => '已停用',
 	'abusefilter-hitcount' => '$1次',
 	'abusefilter-new' => '新建过滤器',
-	'abusefilter-links' => '有用链接：',
+	'abusefilter-links' => '有用的链接:',
 	'abusefilter-tools-modifiertest-submit' => '测试',
 	'abusefilter-tools' => '防滥用过滤器工具',
 	'abusefilter-loglink' => '查看过滤日志',
@@ -15861,7 +15912,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-id' => '过滤器编号：',
 	'abusefilter-edit-description' => "描述：
 :''（公开可见）''",
-	'abusefilter-edit-flags' => '标记：',
+	'abusefilter-edit-flags' => '标志:',
 	'abusefilter-edit-enabled' => '启用此过滤器',
 	'abusefilter-edit-deleted' => '标记为已删除',
 	'abusefilter-edit-hidden' => '向公众隐藏此过滤器的详细信息',
@@ -15875,14 +15926,14 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-action-warn' => '在向用户发出警告后触发下列操作',
 	'abusefilter-edit-action-disallow' => '阻止用户进行可疑的操作',
 	'abusefilter-edit-action-flag' => '在过滤日志中标记该编辑',
-	'abusefilter-edit-action-blockautopromote' => '剥夺用户的自动确认状态',
+	'abusefilter-edit-action-blockautopromote' => '撤销用户的自动确认状态',
 	'abusefilter-edit-action-degroup' => '将用户从所有权限组中移除',
 	'abusefilter-edit-action-block' => '封禁进行编辑的用户和／或IP地址',
 	'abusefilter-edit-action-throttle' => '只当用户触犯频率上限后方触发操作',
 	'abusefilter-edit-action-rangeblock' => '根据用户使用的IP地址进行/16的广域封禁',
 	'abusefilter-edit-action-tag' => '标记该编辑以供进一步检查',
 	'abusefilter-edit-throttle-count' => '允许的操作次数：',
-	'abusefilter-edit-throttle-period' => '时间长度：',
+	'abusefilter-edit-throttle-period' => '时长：',
 	'abusefilter-edit-throttle-seconds' => '$1秒',
 	'abusefilter-edit-throttle-groups' => "受限群组：
 :''（每行一个，且以半角逗号相连）''",
