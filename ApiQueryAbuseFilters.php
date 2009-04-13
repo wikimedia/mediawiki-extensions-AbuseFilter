@@ -197,9 +197,9 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 	public function getParamDescription() {
 		return array (
 			'startid' => 'The filter id to start enumerating from',
-			'endid' => 'The filter if to stop enumerating at',
+			'endid' => 'The filter id to stop enumerating at',
 			'dir' => 'The direction in which to enumerate',
-			'show' => 'Shoe only filters which meet this criteria',
+			'show' => 'Show only filters which meet this criteria',
 			'limit' => 'The maximum number of filters to list',
 			'prop' => 'Which properties to get',
 		);
