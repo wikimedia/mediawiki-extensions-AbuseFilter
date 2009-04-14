@@ -199,7 +199,7 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 			'startid' => 'The filter id to start enumerating from',
 			'endid' => 'The filter id to stop enumerating at',
 			'dir' => 'The direction in which to enumerate',
-			'show' => 'Show only filters which meet this criteria',
+			'show' => 'Show only filters which meet these criteria',
 			'limit' => 'The maximum number of filters to list',
 			'prop' => 'Which properties to get',
 		);
