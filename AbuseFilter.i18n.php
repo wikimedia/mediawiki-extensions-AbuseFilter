@@ -6057,6 +6057,7 @@ $messages['he'] = array(
 	'abusefilter-edit-builder-funcs-length' => 'אורך המחרוזת (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'המרה לאותיות קטנות (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'נירמול תווים מבלבלים (ccnorm)',
+	'abusefilter-edit-builder-funcs-convert' => 'המרת מחרוזת לגרסת שפה מסוימת (convert)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'הסרת תווים כפולים (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'תווים מיוחדים / סך כל התווים (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'נירמול (norm)',
