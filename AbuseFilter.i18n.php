@@ -7374,6 +7374,8 @@ Per favor demanda a un usator con le permission de adder actiones restringite de
 Expectava $3 {{PLURAL:$3|parametro|parametros}}, recipeva $4.',
 	'abusefilter-exception-regexfailure' => 'Error in le expression regular "$3" al character $1: "$2"',
 	'abusefilter-exception-overridebuiltin' => 'Supplantation invalide del variabile incorporate "$2" al character $1.',
+	'abusefilter-exception-outofbounds' => 'Requesta de un elemento de lista non existente $2 (grandor del lista = $3) al character $1.',
+	'abusefilter-exception-notlist' => 'Requesta de un elemento de array ab un variabile non array al character $1.',
 	'abusefilter-action-throttle' => 'Limitar frequentia',
 	'abusefilter-action-warn' => 'Advertir',
 	'abusefilter-action-blockautopromote' => 'Blocar autopromotion',
