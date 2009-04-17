@@ -837,9 +837,11 @@ class AbuseFilter {
 				$text = ExternalStore::insertToDefault( $text );
 			$flags[] = 'external';
 			
-			if (!$text)
+			if (!$text) {
 				// Not mission-critical, just return nothing
+				wfProfileOut( __METHOD__ );
 				return null;
+			}
 		}
 		
 		// Store to text table
