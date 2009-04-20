@@ -151,7 +151,7 @@ class AbuseFilterHooks {
 	}
 
 	public static function onLoadExtensionSchemaUpdates() {
-		global $wgExtNewTables, $wgExtNewFields, $wgExtPGNewFields, $wgExtNewIndexes, $wgDBtype;
+		global $wgExtNewTables, $wgExtNewFields, $wgExtPGNewFields, $wgExtPGAlteredFields, $wgExtNewIndexes, $wgDBtype;
 
 		$dir = dirname( __FILE__ );
 		
@@ -169,8 +169,14 @@ class AbuseFilterHooks {
 						  array( 'abuse_filter', "$dir/abusefilter.tables.pg.sql" ),
 						  array( 'abuse_filter_history', "$dir/db_patches/patch-abuse_filter_history.pg.sql" ),
 					) );
-			$wgExtPGNewFields[] = array('abuse_filter', 'af_deleted', "SMALLINT NOT NULL DEFAULT 0" );
 			$wgExtPGNewFields[] = array('abuse_filter', 'af_actions', "TEXT NOT NULL DEFAULT ''" );
+			$wgExtPGNewFields[] = array('abuse_filter', 'af_deleted', 'SMALLINT NOT NULL DEFAULT 0' );
+			$wgExtPGNewFields[] = array('abuse_filter', 'af_global',  'SMALLINT NOT NULL DEFAULT 0' );
+
+			$wgExtPGNewFields[] = array('abuse_filter_log', 'afl_wiki',    'TEXT' );
+			$wgExtPGNewFields[] = array('abuse_filter_log', 'afl_deleted', 'SMALLINT' );
+			$wgExtPGAlteredFields[] = array('abuse_filter_log', 'afl_filter', 'TEXT' );
+
 			$wgExtNewIndexes[] = array('abuse_filter_log', 'abuse_filter_log_ip', "(afl_ip)");
 		}
 		return true;
