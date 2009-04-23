@@ -382,6 +382,7 @@ To load an existing filter, type its filter ID into the box below the edit textb
 	'abusefilter-test-user' => 'Changes by user:',
 	'abusefilter-test-period-start' => 'Changes made after:',
 	'abusefilter-test-period-end' => 'Changes made before:',
+	'abusefilter-test-page' => 'Changes made to page:',
 	'abusefilter-test-shownegative' => 'Show changes that do not match the filter',
 	'abusefilter-test-syntaxerr' => 'The filter you entered contained a syntax error.
 You can receive a full explanation by clicking the "Check Syntax" button.',
