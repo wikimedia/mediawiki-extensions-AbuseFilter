@@ -1433,16 +1433,20 @@ class AbuseFilterParser {
 	}
 	
 	protected function ccnorm( $s ) {
-		if (!class_exists( 'AntiSpoof' ) ) {
-			return $s;
+		static $equivset = null;
+		
+		if ( is_null( $equivset ) ) {
+			global $IP;
+			require( "$IP/extensions/AntiSpoof/equivset.php" );
 		}
 		
-		// Normalise confusable characters.
-		$chars = AntiSpoof::stringToList( $s );
-		$chars = AntiSpoof::equivString( $chars );
-		$s = AntiSpoof::listToString( $chars );
-		
-		return $s;
+		if (function_exists('fss_prep_replace')) {
+			$fss = fss_prep_replace( $equivset );
+			
+			return fss_exec_replace( $fss, $s );
+		} else {
+			return strtr( $s, $equivset );
+		}
 	}
 	
 	protected function rmspecials( $s ) {
