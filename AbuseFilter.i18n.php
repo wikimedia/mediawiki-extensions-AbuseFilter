@@ -6056,6 +6056,7 @@ $messages['he'] = array(
 	'abusefilter-edit-tools' => 'כלים:',
 	'abusefilter-edit-test-link' => 'בדיקת מסנן זה מול עריכות אחרונות',
 	'abusefilter-edit-global' => 'החלת מסנן זה באופן גלובלי',
+	'abusefilter-edit-export' => 'ייצוא מסנן זה לאתר ויקי אחר',
 	'abusefilter-edit-builder-select' => 'בחרו באפשרות עם הסמן כדי להוסיף אותה',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'אופרטורים חשבוניים',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'חיבור (+)',
@@ -6214,6 +6215,7 @@ $messages['he'] = array(
 	'abusefilter-test-user' => 'שינויים שבוצעו על ידי המשתמש:',
 	'abusefilter-test-period-start' => 'שינויים שנערכו לאחר:',
 	'abusefilter-test-period-end' => 'שינויים שנערכו לפני:',
+	'abusefilter-test-page' => 'שינויים שבוצעו בדף:',
 	'abusefilter-test-shownegative' => 'הצגת שינויים שאינם תואמים את המסנן',
 	'abusefilter-test-syntaxerr' => 'במסנן שהכנסתם יש שגיאת תחביר.
 באפשרותכם לקבל הסבר מלא באמצעות לחיצה על הכפתור "בדיקת תחביר".',
@@ -6240,6 +6242,7 @@ $messages['he'] = array(
 	'abusefilter-topnav-examine' => 'בדיקת עריכות קודמות',
 	'abusefilter-topnav-log' => 'יומן ההשחתות',
 	'abusefilter-topnav-tools' => 'כלי ניפוי שגיאות',
+	'abusefilter-topnav-import' => 'ייבוא מסנן',
 	'abusefilter-log-name' => 'יומן מסנן ההשחתות',
 	'abusefilter-log-header' => 'יומן זה מציג סיכום של השינויים שבוצעו למסננים.
 לפרטים מלאים, ראו את [[Special:AbuseFilter/history|רשימת]] השינויים האחרונים למסננים.',
@@ -6251,6 +6254,10 @@ $messages['he'] = array(
 	'abusefilter-diff-pattern' => 'תנאי המסננים',
 	'abusefilter-diff-invalid' => 'לא ניתן לקבל את הגרסאות המבוקשות',
 	'abusefilter-diff-backhistory' => 'בחזרה להיסטוריית המסנן',
+	'abusefilter-import-intro' => 'באפשרותכם להשתמש בממשק זה כדי לייבא מסננים מאתרי ויקי אחרים.
+באתר המקור, לחצו על "{{int:abusefilter-edit-export}}" שב"{{int:abusefilter-tools-subtitle}}" בממשק העריכה.
+העתיקו מתיבת הטקסט המופיעה שם, הדביקו את הטקסט בתיבת הטקסט הזו, ואז לחצו על "{{int:abusefilter-import-submit}}",',
+	'abusefilter-import-submit' => 'ייבוא המידע',
 );
 
 /** Hindi (हिन्दी)
