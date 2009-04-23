@@ -90,6 +90,11 @@ class SpecialAbuseFilter extends SpecialPage {
 			$pageType = 'edit';
 		}
 		
+		if ( $subpage == 'import' ) {
+			$view = 'AbuseFilterViewImport';
+			$pageType = 'import';
+		}
+		
 		// Links at the top
 		AbuseFilter::addNavigationLinks( $wgOut, $this->mSkin, $pageType );
 

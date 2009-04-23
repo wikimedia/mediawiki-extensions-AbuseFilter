@@ -43,6 +43,7 @@ $wgAutoloadClasses['AbuseFilterViewTestBatch'] = "$dir/Views/AbuseFilterViewTest
 $wgAutoloadClasses['AbuseFilterViewExamine'] = "$dir/Views/AbuseFilterViewExamine.php";
 $wgAutoloadClasses['AbuseFilterChangesList'] = "$dir/Views/AbuseFilterViewExamine.php";
 $wgAutoloadClasses['AbuseFilterViewDiff'] = "$dir/Views/AbuseFilterViewDiff.php";
+$wgAutoloadClasses['AbuseFilterViewImport'] = "$dir/Views/AbuseFilterViewImport.php";
 
 $wgAutoloadClasses['AbuseFilterVariableHolder'] = "$dir/AbuseFilterVariableHolder.php";
 $wgAutoloadClasses['AFComputedVariable'] = "$dir/AbuseFilterVariableHolder.php";
@@ -102,7 +103,7 @@ $wgAjaxExportList[] = 'AbuseFilter::ajaxGetFilter';
 $wgAjaxExportList[] = 'AbuseFilter::ajaxCheckFilterWithVars';
 
 // Bump the version number every time you change any of the .css/.js files
-$wgAbuseFilterStyleVersion = 8;
+$wgAbuseFilterStyleVersion = 9;
 
 $wgAbuseFilterRestrictedActions = array( 'block', 'degroup' );
 

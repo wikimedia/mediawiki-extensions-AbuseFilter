@@ -360,10 +360,16 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$fields['abusefilter-edit-history'] = 
 				$sk->makeKnownLinkObj( $this->getTitle( 'history/'.$filter ), $history_display );
 		}
+		
+		// Add export
+		$exportText = serialize( array( 'row' => $row, 'actions' => $actions ) );
+		$tools .= Xml::tags( 'a', array( 'href' => 'javascript:afShowExport();' ),
+								wfMsgExt( 'abusefilter-edit-export', 'parseinline' ) );
+		$tools .= Xml::element( 'textarea',
+					array( 'readonly' => 'readonly', 'id' => 'mw-abusefilter-export' ),
+					$exportText );
 
-		if ($tools) {
-			$fields['abusefilter-edit-tools'] = $tools;
-		}
+		$fields['abusefilter-edit-tools'] = $tools;
 
 		$form = Xml::buildForm( $fields );
 		$form = Xml::fieldset( wfMsg( 'abusefilter-edit-main' ), $form );
@@ -660,55 +666,77 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$row->mOriginalRow = clone $row;
 		$row->mOriginalActions = $origActions;
-
-		$textLoads = array( 
-			'af_public_comments' => 'wpFilterDescription', 
-			'af_pattern' => 'wpFilterRules', 
-			'af_comments' => 'wpFilterNotes' );
-
-		foreach( $textLoads as $col => $field ) {
-			$row->$col = trim($wgRequest->getVal( $field ));
-		}
-
-		$row->af_deleted = $wgRequest->getBool( 'wpFilterDeleted' );
-		$row->af_enabled = $wgRequest->getBool( 'wpFilterEnabled' ) && !$row->af_deleted;
-		$row->af_hidden = $wgRequest->getBool( 'wpFilterHidden' );
-		global $wgAbuseFilterIsCentral;
-		$row->af_global = $wgRequest->getBool( 'wpFilterGlobal' ) && $wgAbuseFilterIsCentral;
-
-		// Actions
-		global $wgAbuseFilterAvailableActions;
-		$actions = array();
-		foreach( $wgAbuseFilterAvailableActions as $action ) {
-			// Check if it's set
-			$enabled = $wgRequest->getBool( 'wpFilterAction'.ucfirst($action) );
-
-			if ($enabled) {
-				$parameters = array();
-
-				if ($action == 'throttle') {
-					// We need to load the parameters
-					$throttleCount = $wgRequest->getIntOrNull( 'wpFilterThrottleCount' );
-					$throttlePeriod = $wgRequest->getIntOrNull( 'wpFilterThrottlePeriod' );
-					$throttleGroups = explode( "\n", 
-						trim( $wgRequest->getText( 'wpFilterThrottleGroups' ) ) );
-
-					$parameters[0] = $this->mFilter; // For now, anyway
-					$parameters[1] = "$throttleCount,$throttlePeriod";
-					$parameters = array_merge( $parameters, $throttleGroups );
-				} elseif ($action == 'warn') {
-					$specMsg = $wgRequest->getVal( 'wpFilterWarnMessage' );
-
-					if ($specMsg == 'other')
-						$specMsg = $wgRequest->getVal( 'wpFilterWarnMessageOther' );
-					
-					$parameters[0] = $specMsg;
-				} elseif ($action == 'tag') {
-					$parameters = explode("\n", $wgRequest->getText( 'wpFilterTags' ) );
+		
+		// Check for importing
+		$import = $wgRequest->getVal( 'wpImportText' );
+		if ($import) {
+			$data = unserialize($import);
+			
+			$importRow = $data['row'];
+			$actions = $data['actions'];
+			
+			$copy = array(
+						'af_public_comments',
+						'af_pattern',
+						'af_comments',
+						'af_deleted',
+						'af_enabled',
+						'af_hidden',
+					);
+			
+			foreach( $copy as $name ) {
+				$row->$name = $importRow->$name;
+			}
+		} else {
+			$textLoads = array( 
+				'af_public_comments' => 'wpFilterDescription', 
+				'af_pattern' => 'wpFilterRules', 
+				'af_comments' => 'wpFilterNotes' );
+	
+			foreach( $textLoads as $col => $field ) {
+				$row->$col = trim($wgRequest->getVal( $field ));
+			}
+	
+			$row->af_deleted = $wgRequest->getBool( 'wpFilterDeleted' );
+			$row->af_enabled = $wgRequest->getBool( 'wpFilterEnabled' ) && !$row->af_deleted;
+			$row->af_hidden = $wgRequest->getBool( 'wpFilterHidden' );
+			global $wgAbuseFilterIsCentral;
+			$row->af_global = $wgRequest->getBool( 'wpFilterGlobal' ) && $wgAbuseFilterIsCentral;
+	
+			// Actions
+			global $wgAbuseFilterAvailableActions;
+			$actions = array();
+			foreach( $wgAbuseFilterAvailableActions as $action ) {
+				// Check if it's set
+				$enabled = $wgRequest->getBool( 'wpFilterAction'.ucfirst($action) );
+	
+				if ($enabled) {
+					$parameters = array();
+	
+					if ($action == 'throttle') {
+						// We need to load the parameters
+						$throttleCount = $wgRequest->getIntOrNull( 'wpFilterThrottleCount' );
+						$throttlePeriod = $wgRequest->getIntOrNull( 'wpFilterThrottlePeriod' );
+						$throttleGroups = explode( "\n", 
+							trim( $wgRequest->getText( 'wpFilterThrottleGroups' ) ) );
+	
+						$parameters[0] = $this->mFilter; // For now, anyway
+						$parameters[1] = "$throttleCount,$throttlePeriod";
+						$parameters = array_merge( $parameters, $throttleGroups );
+					} elseif ($action == 'warn') {
+						$specMsg = $wgRequest->getVal( 'wpFilterWarnMessage' );
+	
+						if ($specMsg == 'other')
+							$specMsg = $wgRequest->getVal( 'wpFilterWarnMessageOther' );
+						
+						$parameters[0] = $specMsg;
+					} elseif ($action == 'tag') {
+						$parameters = explode("\n", $wgRequest->getText( 'wpFilterTags' ) );
+					}
+	
+					$thisAction = array( 'action' => $action, 'parameters' => $parameters );
+					$actions[$action] = $thisAction;
 				}
-
-				$thisAction = array( 'action' => $action, 'parameters' => $parameters );
-				$actions[$action] = $thisAction;
 			}
 		}
 

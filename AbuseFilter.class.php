@@ -126,6 +126,7 @@ class AbuseFilter {
 					'examine' => 'Special:AbuseFilter/examine',
 					'log' => 'Special:AbuseLog',
 					'tools' => 'Special:AbuseFilter/tools',
+					'import' => 'Special:AbuseFilter/import',
 				);
 				
 		// Save some translator work

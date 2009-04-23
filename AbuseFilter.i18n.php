@@ -209,6 +209,7 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-edit-tools' => 'Tools:',
 	'abusefilter-edit-test-link' => 'Test this filter against recent edits',
 	'abusefilter-edit-global' => 'Apply this filter globally',
+	'abusefilter-edit-export' => 'Export this filter to another wiki',
 
 	// Filter editing helpers
 	'abusefilter-edit-builder-select' => 'Select an option to add it at the cursor',
@@ -411,6 +412,7 @@ You can receive a full explanation by clicking the "Check Syntax" button.',
 	'abusefilter-topnav-examine' => 'Examine past edits',
 	'abusefilter-topnav-log' => 'Abuse Log',
 	'abusefilter-topnav-tools' => 'Debugging tools',
+	'abusefilter-topnav-import' => 'Import filter',
 	
 	// Logging
 	'abusefilter-log-name' => 'Abuse Filter log',
@@ -426,6 +428,12 @@ For full details, see [[Special:AbuseFilter/history|the list]] of recent filter 
 	'abusefilter-diff-pattern' => 'Filter conditions',
 	'abusefilter-diff-invalid' => 'Unable to fetch the requested versions',
 	'abusefilter-diff-backhistory' => 'Back to filter history',
+	
+	// Import interface
+	'abusefilter-import-intro' => 'You can use this interface to import filters from other wikis.
+On the source wiki, click "export this filter to another wiki" under "tools" on the editing interface.
+Copy from the textbox that appears, and paste it into this textbox, then click "Import",',
+	'abusefilter-import-submit' => 'Import data',
 );
 
 /** Message documentation (Message documentation)
