@@ -434,7 +434,7 @@ For full details, see [[Special:AbuseFilter/history|the list]] of recent filter 
 	// Import interface
 	'abusefilter-import-intro' => 'You can use this interface to import filters from other wikis.
 On the source wiki, click "{{int:abusefilter-edit-export}}" under "{{int:abusefilter-tools-subtitle}}" on the editing interface.
-Copy from the textbox that appears, and paste it into this textbox, then click "{{int:abusefilter-import-submit}}",',
+Copy from the textbox that appears, and paste it into this textbox, then click "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Import data',
 );
 
