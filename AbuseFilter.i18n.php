@@ -609,6 +609,7 @@ This is also used in {{msg-mw|Abusefilter-revert-preview-intro}}. When changing 
 	'abusefilter-diff-version' => 'Message is used in two scenarios.
 * $1 is new link or old link. Link description is a time stamp
 * $2 is new user link or old user link. Link description is a user name',
+	'abusefilter-import-intro' => "Do not ''translate'' <nowiki>{{int:abusefilter-edit-export}}</nowiki>, <nowiki>{{int:abusefilter-tools-subtitle}}</nowiki>, and <nowiki>{{int:abusefilter-import-submit}}</nowiki> unless you absolute must substitute any of them.",
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -854,6 +855,7 @@ $messages['ar'] = array(
 	'abusefilter-edit-tools' => 'أدوات:',
 	'abusefilter-edit-test-link' => 'اختبر هذا المرشح ضد التعديلات الحديثة',
 	'abusefilter-edit-global' => 'طبق هذا المرشح بشكل عام',
+	'abusefilter-edit-export' => 'صدر هذا المرشح لويكي آخر',
 	'abusefilter-edit-builder-select' => 'اختر خيارا لإضافته عند البكرة',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'معاملات حسابية',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'جمع (+)',
@@ -1013,6 +1015,7 @@ $messages['ar'] = array(
 	'abusefilter-test-user' => 'التغييرات بواسطة المستخدم:',
 	'abusefilter-test-period-start' => 'التغييرات المعمولة بعد:',
 	'abusefilter-test-period-end' => 'التغييرات المعمولة قبل:',
+	'abusefilter-test-page' => 'التغييرات المعمولة للصفحة:',
 	'abusefilter-test-shownegative' => 'اعرض التغييرات التي لا تطابق المرشح',
 	'abusefilter-test-syntaxerr' => 'المرشح الذي أدخلته يحتوي على خطأ صياغة.
 يمكنك تلقي تفسير كامل بواسطة الضغط على زر "التحقق من الصياغة".',
@@ -1039,6 +1042,7 @@ $messages['ar'] = array(
 	'abusefilter-topnav-examine' => 'افحص التعديلات الماضية',
 	'abusefilter-topnav-log' => 'سجل الإساءة',
 	'abusefilter-topnav-tools' => 'أدوات الإصلاح',
+	'abusefilter-topnav-import' => 'استيراد المرشح',
 	'abusefilter-log-name' => 'سجل مرشح الإساءة',
 	'abusefilter-log-header' => 'هذا السجل يعرض ملخصا للتغييرات المعمولة للمرشحات.
 للتفاصيل الكاملة، انظر [[Special:AbuseFilter/history|قائمة]] تغييرات المرشحات الحديثة.',
@@ -1050,6 +1054,10 @@ $messages['ar'] = array(
 	'abusefilter-diff-pattern' => 'شروط المرشح',
 	'abusefilter-diff-invalid' => 'ليس بالإمكان إحضار النسخ المطلوبة',
 	'abusefilter-diff-backhistory' => 'عودة إلى تاريخ المرشح',
+	'abusefilter-import-intro' => 'يمكنك استخدام هذه الواجهة لاستيراد المرشحات من الويكيات الأخرى.
+في الويكي المصدر، اضغط "{{int:abusefilter-edit-export}}" تحت "{{int:abusefilter-tools-subtitle}}" في واجهة التعديل.
+انسخ من صندوق النص الذي سيظهر، والصقه إلى صندوق النص هذا، ثم اضغط "{{int:abusefilter-import-submit}}",',
+	'abusefilter-import-submit' => 'استيراد البيانات',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -1506,6 +1514,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-edit-tools' => 'Інструмэнты:',
 	'abusefilter-edit-test-link' => 'Праверыць гэты фільтар на апошніх зьменах',
 	'abusefilter-edit-global' => 'Ужываць гэты фільтар глябальна',
+	'abusefilter-edit-export' => 'Экспартаваць гэты фільтар у іншую вікі',
 	'abusefilter-edit-builder-select' => 'Выберыце парамэтар, каб дадаць яго',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Арытмэтычныя апэратары',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Складаньне (+)',
@@ -1664,6 +1673,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-test-user' => 'Зьмены зробленыя ўдзельнікам:',
 	'abusefilter-test-period-start' => 'Зьмены зробленыя пасьля:',
 	'abusefilter-test-period-end' => 'Зьмены зробленыя перад:',
+	'abusefilter-test-page' => 'Зьмены, зробленыя на старонцы:',
 	'abusefilter-test-shownegative' => 'Паказаць зьмены, якія не супадаюць зь фільтрам',
 	'abusefilter-test-syntaxerr' => 'Фільтар, які Вы ўвялі, утрымлівае сынтаксычную памылку.
 Вы можаце атрымаць поўнае тлумачэньне, калі націсьніце на кнопку «Праверыць сынтаксіс».',
@@ -1690,6 +1700,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-topnav-examine' => 'Праверка апошніх рэдагаваньняў',
 	'abusefilter-topnav-log' => 'Журнал злоўжываньняў',
 	'abusefilter-topnav-tools' => 'Інструмэнты для наладкі',
+	'abusefilter-topnav-import' => 'Імпартаваць фільтр',
 	'abusefilter-log-name' => 'Журнал фільтру злоўжываньняў',
 	'abusefilter-log-header' => 'Гэты журнал паказвае кароткае апісаньне зьменаў у фільтрах.
 Поўную інфармацыю можна знайсьці ў [[Special:AbuseFilter/history|сьпісе]] апошніх зьменаў фільтраў.',
@@ -1701,6 +1712,10 @@ $messages['be-tarask'] = array(
 	'abusefilter-diff-pattern' => 'Умовы фільтру',
 	'abusefilter-diff-invalid' => 'Немагчыма атрымаць запытаныя вэрсіі',
 	'abusefilter-diff-backhistory' => 'Вярнуцца да гісторыі фільтру',
+	'abusefilter-import-intro' => 'Вы можаце выкарыстоўваць гэты інтэрфэйс для імпарту фільтраў зь іншых вікі.
+У крынічнай вікі націсьніце «{{int:abusefilter-edit-export}}» у разьдзеле «{{int:abusefilter-tools-subtitle}}» інтэрфэйсу рэдагаваньня.
+Скапіруйце з узьнікшага тэкставага поля, і ўстаўце у гэта тэкставае поле, потым націсьніце «{{int:abusefilter-import-submit}}»,',
+	'abusefilter-import-submit' => 'Імпартаваць зьвесткі',
 );
 
 /** Bulgarian (Български)
@@ -2074,6 +2089,7 @@ Zamolite korisnika sa dopuštenjima za dodavanje ograničenih akcija da napravi 
 	'abusefilter-edit-tools' => 'Alati:',
 	'abusefilter-edit-test-link' => 'Provjerite ovaj filter protiv nedavnih izmjena',
 	'abusefilter-edit-global' => 'Primijeni ovaj filter globalno',
+	'abusefilter-edit-export' => 'Izvezi ovaj filter na drugu wiki',
 	'abusefilter-edit-builder-select' => 'Izaberite jednu opciju da biste je dodali na kursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetički operatori',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Sabiranje (+)',
@@ -2231,6 +2247,7 @@ Navedeni razlog: $2',
 	'abusefilter-test-user' => 'Izmjene od strane korisnika:',
 	'abusefilter-test-period-start' => 'Izmjene načinjene poslije:',
 	'abusefilter-test-period-end' => 'Izmjene načinjene poslije:',
+	'abusefilter-test-page' => 'Izmjene napravljene na stranici:',
 	'abusefilter-test-shownegative' => 'Prikaži promjene koje ne odgovaraju filteru',
 	'abusefilter-test-syntaxerr' => 'Filter koji ste unijeli sadrži sintaksnu grešku.
 Možete dobiti potpuno objašnjenje klikanje na dugme "Provjeri sintaksu".',
@@ -2257,6 +2274,7 @@ Možete dobiti potpuno objašnjenje klikanje na dugme "Provjeri sintaksu".',
 	'abusefilter-topnav-examine' => 'Istraži ranije izmjene',
 	'abusefilter-topnav-log' => 'Zapisnik zloupotrebe',
 	'abusefilter-topnav-tools' => 'Alati za debugiranje',
+	'abusefilter-topnav-import' => 'Filter uvoza',
 	'abusefilter-log-name' => 'Zapisnik filtera zloupotrebe',
 	'abusefilter-log-header' => 'Ovaj zapisnik prikazuje sažetak izmjena napravljenih na filterima.
 Za sve detalje, pogledajte [[Special:AbuseFilter/history|spisak]] nedavnih izmjena filtera.',
@@ -2268,6 +2286,10 @@ Za sve detalje, pogledajte [[Special:AbuseFilter/history|spisak]] nedavnih izmje
 	'abusefilter-diff-pattern' => 'Uslovi filtera',
 	'abusefilter-diff-invalid' => 'Tražene vezije nisu mogle biti učitane',
 	'abusefilter-diff-backhistory' => 'Nazad na historiju filtera',
+	'abusefilter-import-intro' => 'Možete koristiti ovaj interfejs za uvoz filtera sa drugih wikija.
+U izvornoj wiki, kliknite na "{{int:abusefilter-edit-export}}" u meniju "{{int:abusefilter-tools-subtitle}}" u interfejsu uređivanja.
+Kopirajte iz tekstualne kutije koja se pojavi i zalijepite u ovu kutiju, zatim kliknite na "{{int:abusefilter-import-submit}}",',
+	'abusefilter-import-submit' => 'Uvezi podatke',
 );
 
 /** Catalan (Català)
@@ -2472,6 +2494,7 @@ Požádejte uživatele s oprávněním přidávat taková opatření, aby potře
 	'abusefilter-edit-tools' => 'Nástroje:',
 	'abusefilter-edit-test-link' => 'Otestovat tento filtr na posledních změnách',
 	'abusefilter-edit-global' => 'Tento filtr aplikovat globálně',
+	'abusefilter-edit-export' => 'Export tohoto filtru pro jinou wiki',
 	'abusefilter-edit-builder-select' => 'Vyberte položku, bude přidána na místo, kde je kurzor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetické operátory',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Sčítání (+)',
@@ -2653,6 +2676,7 @@ Podrobnější vysvětlení můžete získat kliknutím na tlačítko „Zkontro
 	'abusefilter-topnav-examine' => 'Prozkoumat minulé editace',
 	'abusefilter-topnav-log' => 'Protokol filtrů zneužívání',
 	'abusefilter-topnav-tools' => 'Ladicí nástroje',
+	'abusefilter-topnav-import' => 'Import filtru',
 	'abusefilter-log-name' => 'Kniha filtrů zneužívání',
 	'abusefilter-log-header' => 'Tento protokol obsahuje přehled změn filtrů.
 Úplné podrobnosti naleznete v [[Special:AbuseFilter/history|seznamu posledních změn filtrů]].',
@@ -2664,6 +2688,10 @@ Podrobnější vysvětlení můžete získat kliknutím na tlačítko „Zkontro
 	'abusefilter-diff-pattern' => 'Podmínky filtru',
 	'abusefilter-diff-invalid' => 'Nepodařilo se načíst požadované verze',
 	'abusefilter-diff-backhistory' => 'Zpět na historii filtru',
+	'abusefilter-import-intro' => 'Pomocí tohoto rozhraní můžete importovat filtry z jiných wiki.
+Na zdrojové wiki klikněte v editačním rozhraní na „{{int:abusefilter-edit-export}}“ v sekci „{{int:abusefilter-tools-subtitle}}“.
+Zkopírujte si text, který se objeví v rámečku, vložte ho do tohoto formuláře a klikněte na „{{int:abusefilter-import-submit}}“.',
+	'abusefilter-import-submit' => 'Importovat data',
 );
 
 /** Welsh (Cymraeg)
@@ -3149,6 +3177,8 @@ Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpo
 	'abusefilter-log-details-ip' => 'Wuchadna adresa IP',
 	'abusefilter-log-noactions' => 'žeden',
 	'abusefilter-log-details-diff' => 'Pśi wobźěłanju cynjone změny',
+	'abusefilter-log-linkoncontribs' => 'znjewužywański protokol',
+	'abusefilter-log-linkoncontribs-text' => 'Znjwužywański protokol za toś togo wužywarja',
 	'abusefilter-management' => 'Zastojanje filtrow znjewužywanja',
 	'abusefilter-list' => 'Wše filtry',
 	'abusefilter-list-id' => 'ID filtra',
@@ -3256,6 +3286,7 @@ Pšosym pšos wužywarja z pšawom wobgranicowane akcije pśidaś, aby cynił zm
 	'abusefilter-edit-tools' => 'Rědy:',
 	'abusefilter-edit-test-link' => 'Toś ten filter pśeśiwo aktualnym změnam testowaś',
 	'abusefilter-edit-global' => 'Toś ten filter globalnje nałožyś',
+	'abusefilter-edit-export' => 'Toś ten filter do drugego wikija eksportěrowaś',
 	'abusefilter-edit-builder-select' => 'Wubjeŕ opciju, aby ju zasajźił pla kursora',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetiske operatory',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adicija (+)',
@@ -3411,6 +3442,7 @@ Aby zacytał eksistěrujucy filter, zapódaj jogo filtrowy ID do kašćika pód 
 	'abusefilter-test-user' => 'Změny wót wužywarja:',
 	'abusefilter-test-period-start' => 'Změny pśewjeźone pó:',
 	'abusefilter-test-period-end' => 'Změny pśewjeźone do:',
+	'abusefilter-test-page' => 'Změny pśewjeźone na boku:',
 	'abusefilter-test-shownegative' => 'Změny pokazaś, kótarež njewótpowěduju filtroju',
 	'abusefilter-test-syntaxerr' => 'Filter, kótaryž sy zapódał, jo wopśimjeł syntaksowu zmólku.
 Pśez kliknjenje na tłocašk "Syntaksu kontrolěrowaś" móžoš połne wujasnjenje dostaś.',
@@ -3437,6 +3469,7 @@ Pśez kliknjenje na tłocašk "Syntaksu kontrolěrowaś" móžoš połne wujasnj
 	'abusefilter-topnav-examine' => 'Zachadne změny pśekontrolěrowaś',
 	'abusefilter-topnav-log' => 'Znjewužywański protokol',
 	'abusefilter-topnav-tools' => 'Rědy za wótpóranje zmólkow',
+	'abusefilter-topnav-import' => 'Filter importěrowaś',
 	'abusefilter-log-name' => 'Protokol znjewužywańskego filtra',
 	'abusefilter-log-header' => 'Toś ten protokol pokazujo zespominanje změnow, kótarež su se pśewjadli na filtrach.
 Za połne drobnostki glědaj [[Special:AbuseFilter/history|lisćinu]] nejnowšych filtrowych změnow.',
@@ -3448,6 +3481,9 @@ Za połne drobnostki glědaj [[Special:AbuseFilter/history|lisćinu]] nejnowšyc
 	'abusefilter-diff-pattern' => 'Filtrowe wuměnjenja',
 	'abusefilter-diff-invalid' => 'Njemóžno pominane wersije wobstaraś',
 	'abusefilter-diff-backhistory' => 'Slědk k filtrowym stawiznam',
+	'abusefilter-import-intro' => 'Móžoš toś ten interfejs wužywaś, aby importěrował filtry z drugich wikijow.
+Klikni w žrědłowem wikiju na "{{int:abusefilter-edit-export}}" pód "{{int:abusefilter-tools-subtitle}}" na wobźěłowańskem interfejsu. Kopěruj z tekstowego póla, kótarež se pokazujo do toś togo tekstowego póla a klikni pótom na "{{int:abusefilter-import-submit}}",',
+	'abusefilter-import-submit' => 'Daty importěrowaś',
 );
 
 /** Greek (Ελληνικά)
@@ -3534,6 +3570,7 @@ $messages['el'] = array(
 	'abusefilter-list-options-hidedisabled' => 'Απόκρυψη απενεργοποιημένων φίλτρων',
 	'abusefilter-list-options-submit' => 'Ενημέρωση',
 	'abusefilter-tools-subtitle' => 'Εργαλεία',
+	'abusefilter-tools-text' => 'Εδώ βρίσκονται κάποια εργαλεία τα οποία ενδέχεται να είναι χρἠσιμα στην διατύπωση και την εκσφαλμἀτωση φίλτρων καταχρἠσεων.',
 	'abusefilter-tools-expr' => 'Ελεγκτής εκφράσεων',
 	'abusefilter-tools-submitexpr' => 'Εκτίμηση',
 	'abusefilter-tools-reautoconfirm' => 'αποκατάσταση αυτομάτως επιβεβαιωμένης κατάστασης',
@@ -3689,6 +3726,7 @@ $messages['el'] = array(
 	'abusefilter-test-user' => 'Αλλαγές από τον χρήστη:',
 	'abusefilter-test-period-start' => 'Αλλαγές που έγιναν μετά:',
 	'abusefilter-test-period-end' => 'Αλλαγές που έγιναν πριν:',
+	'abusefilter-test-page' => 'Αλλαγές στις οποίες υποβλήθηκε η σελίδα:',
 	'abusefilter-changeslist-examine' => 'εξετάστε',
 	'abusefilter-examine' => 'Εξέταση μεμονωμένων αλλαγών',
 	'abusefilter-examine-legend' => 'Επιλέξτε τις αλλαγές',
@@ -3711,6 +3749,7 @@ $messages['el'] = array(
 	'abusefilter-topnav-examine' => 'Εξέταση περασμένων επεξεργασιών',
 	'abusefilter-topnav-log' => 'Ιστορικό καταχρήσεων',
 	'abusefilter-topnav-tools' => 'Εργαλεία εκσφαλμάτωσης',
+	'abusefilter-topnav-import' => 'Εισαγωγή φίλτρου',
 	'abusefilter-log-name' => 'Ιστορικό Φίλτρου Καταχρήσεων',
 	'abusefilter-log-entry-modify' => 'τροποποιημένη $1 ($2)',
 	'abusefilter-diff-title' => 'Διαφορές μεταξύ των εκδόσεων',
@@ -3720,6 +3759,7 @@ $messages['el'] = array(
 	'abusefilter-diff-pattern' => 'Όροι φίλτρων',
 	'abusefilter-diff-invalid' => 'Αδύνατη η εξαγωγή των ζητουμένων εκδοχών',
 	'abusefilter-diff-backhistory' => 'Πίσω στο ιστορικό φίλτρου',
+	'abusefilter-import-submit' => 'Εισαγωγή δεδομένων',
 );
 
 /** Esperanto (Esperanto)
@@ -4179,6 +4219,7 @@ Por favor solicita a un usuario con permiso para agregar acciones restringidas h
 	'abusefilter-edit-builder-misc-rlike' => 'Coincide con expresión regular (rlike)',
 	'abusefilter-edit-builder-misc-stringlit' => 'Cadena de caracteres literal ("")',
 	'abusefilter-edit-builder-misc-tern' => 'Operador ternario (X ? Y : Z)',
+	'abusefilter-edit-builder-misc-cond' => 'Condicional (si X entonces Y sino Z)',
 	'abusefilter-edit-builder-group-funcs' => 'Funciones',
 	'abusefilter-edit-builder-funcs-length' => 'Longitud de cadena de caracteres (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'A letra minúscula (lcase)',
@@ -4188,6 +4229,7 @@ Por favor solicita a un usuario con permiso para agregar acciones restringidas h
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Remover espacio en blanco (rmwhitespace)',
 	'abusefilter-edit-builder-funcs-rmspecials' => 'Remover caracteres especiales (rmspecials)',
 	'abusefilter-edit-builder-funcs-ip_in_range' => '¿Está la IP en el rango? (ip_in_range)',
+	'abusefilter-edit-builder-funcs-substr' => 'Subcadena (substr)',
 	'abusefilter-edit-builder-group-vars' => 'Variables',
 	'abusefilter-edit-builder-vars-accountname' => 'Nombre de cuenta (en creación de cuenta)',
 	'abusefilter-edit-builder-vars-action' => 'Acción',
@@ -4197,7 +4239,9 @@ Por favor solicita a un usuario con permiso para agregar acciones restringidas h
 	'abusefilter-edit-builder-vars-oldsize' => 'Tamaño de página antigua',
 	'abusefilter-edit-builder-vars-removedlines' => 'Líneas removidas en edición',
 	'abusefilter-edit-builder-vars-summary' => 'Editar resumen/razón',
+	'abusefilter-edit-builder-vars-article-id' => 'ID de página',
 	'abusefilter-edit-builder-vars-article-ns' => 'Espacio de nombres de la página',
+	'abusefilter-edit-builder-vars-article-text' => 'Título de página (sin espacio de nombre)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Título de página completa',
 	'abusefilter-edit-builder-vars-movedto-text' => 'Título de página de destino a mover',
 	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Título completo de página de destino a mover',
@@ -4278,6 +4322,7 @@ Puedes recibir una completa explicación haciendo click en el botón "Verificar 
 	'abusefilter-examine' => 'Examinar cambios individuales',
 	'abusefilter-examine-intro' => 'Esta página te permite examinar las variables generadas por el filtro de abuso para un cambio individual, y lo prueba contra los filtros.',
 	'abusefilter-examine-legend' => 'Seleccionar cambios',
+	'abusefilter-examine-diff' => 'URL de dif:',
 	'abusefilter-examine-user' => 'Usuario:',
 	'abusefilter-examine-title' => 'Título de página:',
 	'abusefilter-examine-submit' => 'Buscar',
@@ -4447,11 +4492,11 @@ Syy: $1',
 	'right-abusefilter-log-detail' => 'Tarkastella yksityiskohtaisesti väärinkäyttölokia',
 	'right-abusefilter-private' => 'Tarkastella yksityistiedoja väärinkäyttölokista',
 	'right-abusefilter-revert' => 'Palauttaa kaikki muutokset valitulla väärinkäyttösuodattimella',
-	'action-abusefilter-modify' => 'muuta väärinkäyttösuodattimia',
-	'action-abusefilter-view' => 'näytä väärinkäyttösuodattimet',
-	'action-abusefilter-log' => 'näytä väärinkäyttöloki',
-	'action-abusefilter-log-detail' => 'näytä väärinkäyttöloki yksityiskohtaisesti',
-	'action-abusefilter-private' => 'näytä yksityiset tiedot väärinkäyttölokissa',
+	'action-abusefilter-modify' => 'muuttaa väärinkäyttösuodattimia',
+	'action-abusefilter-view' => 'tarkastella väärinkäyttösuodattimia',
+	'action-abusefilter-log' => 'tarkastella väärinkäyttölokia',
+	'action-abusefilter-log-detail' => 'tarkastella väärinkäyttölokia yksityiskohtaisesti',
+	'action-abusefilter-private' => 'tarkastella yksityistiedoja väärinkäyttölokista',
 	'abusefilter-log' => 'Väärinkäyttösuodattimen loki',
 	'abusefilter-log-summary' => 'Tämä loki näyttää luettelon kaikista suodattimiin tarttuneista toiminnoista.',
 	'abusefilter-log-search' => 'Etsi väärinkäyttölokista',
@@ -4711,6 +4756,8 @@ Description du filtre : $7 ($8) ($9)',
 	'abusefilter-log-details-ip' => 'Adresse IP d’origine',
 	'abusefilter-log-noactions' => 'néant',
 	'abusefilter-log-details-diff' => 'Changements faits dans la modification',
+	'abusefilter-log-linkoncontribs' => 'Journal des abus',
+	'abusefilter-log-linkoncontribs-text' => 'Journal des abus de cet utilisateur',
 	'abusefilter-management' => 'Gestion du filtre antiabus',
 	'abusefilter-list' => 'Tous les filtres',
 	'abusefilter-list-id' => 'N° filtre',
@@ -4819,6 +4866,7 @@ Demandez à un utilisateur autorisé à ajouter des actions restreintes d’effe
 	'abusefilter-edit-tools' => 'Outils :',
 	'abusefilter-edit-test-link' => 'Tester ce filtre sur les modifications récentes',
 	'abusefilter-edit-global' => 'Appliquer ce filtre globalement',
+	'abusefilter-edit-export' => 'Exporter ce filtre vers un autre wiki',
 	'abusefilter-edit-builder-select' => 'Sélectionnez une option pour l’ajouter au curseur',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Opérateurs arithmétiques',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Addition (+)',
@@ -4977,6 +5025,7 @@ Pour charger un filtre existant, entrez son identifiant dans le champ sous la zo
 	'abusefilter-test-user' => 'Modifications par l’utilisateur :',
 	'abusefilter-test-period-start' => 'Changements faits après :',
 	'abusefilter-test-period-end' => 'Changements faits avant :',
+	'abusefilter-test-page' => 'Modifications apportées à la page :',
 	'abusefilter-test-shownegative' => 'Afficher les modifications non prises en compte par le filtre',
 	'abusefilter-test-syntaxerr' => 'Le filtre que vous avez saisi contient une erreur de syntaxe.
 Vous pouvez recevoir une explication complète en cliquant sur le bouton « Vérifier la syntaxe ».',
@@ -5003,6 +5052,7 @@ Vous pouvez recevoir une explication complète en cliquant sur le bouton « Vér
 	'abusefilter-topnav-examine' => 'Examiner les modifications précédentes',
 	'abusefilter-topnav-log' => 'Journal antiabus',
 	'abusefilter-topnav-tools' => 'Outils de déboyage',
+	'abusefilter-topnav-import' => 'Importer un filtre',
 	'abusefilter-log-name' => 'Journal du filtre antiabus',
 	'abusefilter-log-header' => 'Ce journal affiche un sommaire des modifications faites aux filtres.
 Pour plus de détails, voyez [[Special:AbuseFilter/history|la liste]] des modifications récentes du filtre.',
@@ -5014,6 +5064,10 @@ Pour plus de détails, voyez [[Special:AbuseFilter/history|la liste]] des modifi
 	'abusefilter-diff-pattern' => 'Conditions du filtre',
 	'abusefilter-diff-invalid' => 'Impossible de retrouver les versions demandées',
 	'abusefilter-diff-backhistory' => "Retour à l'historique du filtre",
+	'abusefilter-import-intro' => 'Vous pouvez utiliser cette interface pour importer des filtres en provenance d’autres wikis.
+Sur le wiki d’origine, cliquez sur « {{int:abusefilter-edit-export}} » dans « {{int:abusefilter-tools-subtitle}} » depuis l’interface d’édition.
+Copiez la zone de texte qui s’affiche et collez-le dans cette zone de texte, puis cliquez sur « {{int:abusefilter-import-submit}} »,',
+	'abusefilter-import-submit' => 'Importer des données',
 );
 
 /** Western Frisian (Frysk)
@@ -5207,6 +5261,7 @@ Por favor, pregúntelle a un usuario cos permisos necesarios para engadir acció
 	'abusefilter-edit-tools' => 'Ferramentas:',
 	'abusefilter-edit-test-link' => 'Probar este filtro coas edicións recentes',
 	'abusefilter-edit-global' => 'Aplicar este filtro globalmente',
+	'abusefilter-edit-export' => 'Exportar este filtro a outro wiki',
 	'abusefilter-edit-builder-select' => 'Seleccione unha opción para engadila ao cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operadores aritméticos',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Suma (+)',
@@ -5364,6 +5419,7 @@ Para cargar un filtro existente, teclee o seu ID na caixa que está por baixo da
 	'abusefilter-test-user' => 'Cambios do usuario:',
 	'abusefilter-test-period-start' => 'Cambios feitos despois:',
 	'abusefilter-test-period-end' => 'Cambios feitos antes:',
+	'abusefilter-test-page' => 'Cambios feitos na páxina:',
 	'abusefilter-test-shownegative' => 'Amosar os cambios que non coincidan co filtro',
 	'abusefilter-test-syntaxerr' => 'O filtro que introduciu contiña un erro na súa sintaxe.
 Pode obter unha explicación completa premendo no botón "Comprobar a sintaxe".',
@@ -5390,6 +5446,7 @@ Pode obter unha explicación completa premendo no botón "Comprobar a sintaxe".'
 	'abusefilter-topnav-examine' => 'Examinar as edicións pasadas',
 	'abusefilter-topnav-log' => 'Rexistro de abusos',
 	'abusefilter-topnav-tools' => 'Ferramentas de depuración',
+	'abusefilter-topnav-import' => 'Importar un filtro',
 	'abusefilter-log-name' => 'Rexistro do filtro de abusos',
 	'abusefilter-log-header' => 'Este rexistro mostra un resumo dos cambios feitos aos filtros.
 Para obter máis detalles, vaia [[Special:AbuseFilter/history|á lista]] dos cambios feitos recentemente nos filtros.',
@@ -5401,6 +5458,10 @@ Para obter máis detalles, vaia [[Special:AbuseFilter/history|á lista]] dos cam
 	'abusefilter-diff-pattern' => 'Condicións do filtro',
 	'abusefilter-diff-invalid' => 'Non se poden atopar as versións solicitadas',
 	'abusefilter-diff-backhistory' => 'Voltar ao historial do filtro',
+	'abusefilter-import-intro' => 'Pode empregar esta interface para importar filtros doutros wikis.
+No wiki de orixe, prema en "{{int:abusefilter-edit-export}}" baixo a opción "{{int:abusefilter-tools-subtitle}}" na interface de edición.
+Copie a caixa de texto que aparece e péguea nestoutra caixa de texto, logo prema en "{{int:abusefilter-import-submit}}",',
+	'abusefilter-import-submit' => 'Importar os datos',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -5658,6 +5719,7 @@ Churzbschryybig vu dr verletzte Regle: $1',
 	'abusefilter-edit-tools' => 'Wärchzyyg:',
 	'abusefilter-edit-test-link' => 'Dää Filter versuechswys uf di letschte Bearbeitige aawände',
 	'abusefilter-edit-global' => 'Dää Filter wältwyt aawände',
+	'abusefilter-edit-export' => 'Dää Filter in e ander Wiki exportiere',
 	'abusefilter-edit-builder-select' => 'Wehl e Option uus go si am Cursor yyzfiege',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Arithmetischi Operatore',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Addition (+)',
@@ -5814,6 +5876,7 @@ Grund: $2',
 	'abusefilter-test-user' => 'Änderige vum Benutzer:',
 	'abusefilter-test-period-start' => 'Speteri Änderige:',
 	'abusefilter-test-period-end' => 'Vorigi Änderige:',
+	'abusefilter-test-page' => 'Änderige an dr Syte:',
 	'abusefilter-test-shownegative' => 'Änderige zeige, wu nit zuem Filter stimme',
 	'abusefilter-test-syntaxerr' => 'Im Filter, wu Du yygee hesch, het s e Syntax-Fähler.
 Du chasch e vollständigi Erklärig iberchu, wänn du uf „Check Syntax” drucksch.',
@@ -5840,6 +5903,7 @@ Du chasch e vollständigi Erklärig iberchu, wänn du uf „Check Syntax” druc
 	'abusefilter-topnav-examine' => 'Letschti Bearbeitige priefe',
 	'abusefilter-topnav-log' => 'Missbruuchsfilter-Logbuech',
 	'abusefilter-topnav-tools' => 'Wärchzyyg debugge',
+	'abusefilter-topnav-import' => 'Filter importiere',
 	'abusefilter-log-name' => 'Missbruuchsfilter-Logbuech',
 	'abusefilter-log-header' => 'Des Logbuech zeigt d Änderige, wu an Filter gmacht wore sin.
 Fir meh Detail lueg d [[Special:AbuseFilter/history|Lischt vu dr letschte Filteränderige]].',
@@ -5851,6 +5915,10 @@ Fir meh Detail lueg d [[Special:AbuseFilter/history|Lischt vu dr letschte Filter
 	'abusefilter-diff-pattern' => 'Filterbedingige',
 	'abusefilter-diff-invalid' => 'Cha di aagforderete Verione nit finde',
 	'abusefilter-diff-backhistory' => 'Zruck zue dr Filtergschicht',
+	'abusefilter-import-intro' => 'Du chasch des Interface bruche go Filter vu andere Wikis importiere.
+Druck im Quällwiki uf "{{int:abusefilter-edit-export}}" unter "{{int:abusefilter-tools-subtitle}}" im Bearbeitigs-Interface.
+Kopier e us em Textbook, wu erschynt, un fieg e in des Textbook yy, derno druck "{{int:abusefilter-import-submit}}",',
+	'abusefilter-import-submit' => 'Date importiere',
 );
 
 /** Manx (Gaelg)
@@ -6617,6 +6685,8 @@ Wopisanje filtra:: $7 ($8) ($9)',
 	'abusefilter-log-details-ip' => 'Wuchadna adresa IP',
 	'abusefilter-log-noactions' => 'žadyn',
 	'abusefilter-log-details-diff' => 'Při wobdźěłanju činjene změny',
+	'abusefilter-log-linkoncontribs' => 'znjewužiwanski protokol',
+	'abusefilter-log-linkoncontribs-text' => 'Znjewužiwanski protokol za tutoho wužiwarja',
 	'abusefilter-management' => 'Zrjadowanje filtrow znjewužiwanja',
 	'abusefilter-list' => 'wšě filtry',
 	'abusefilter-list-id' => 'ID filtra',
@@ -6722,6 +6792,7 @@ Limit wjace hač $1 % akcijow je so docpěł.",
 	'abusefilter-edit-tools' => 'Nastroje:',
 	'abusefilter-edit-test-link' => 'Tutón filter přećiwo aktualnym změnam testować',
 	'abusefilter-edit-global' => 'Tutón filter globalnje nałožić',
+	'abusefilter-edit-export' => 'Tutón filter do druheho wikija eksportować',
 	'abusefilter-edit-builder-select' => 'wubjer opciju, zo by ju pola kursora zasunył',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetiske operatory',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adicija (+)',
@@ -6879,6 +6950,7 @@ Zo by eksistowacy filter začitał, zapodaj jeho filtrowy ID do kašćika pod wo
 	'abusefilter-test-user' => 'Změny wot wužiwarja:',
 	'abusefilter-test-period-start' => 'Změny přewjedźene po:',
 	'abusefilter-test-period-end' => 'Změny přewjedźene do:',
+	'abusefilter-test-page' => 'Změny přewjedźene na stronje:',
 	'abusefilter-test-shownegative' => 'Změny pokazać, kotrež filtrej njewotpowěduja',
 	'abusefilter-test-syntaxerr' => 'Filter, kotryž sy zapodał, je syntaksowy zmylk wobsahował.
 Přez kliknjenje na tłóčatko "Syntaksu kontrolować" móžeš połne wujasnjenje dóstać.',
@@ -6905,6 +6977,7 @@ Přez kliknjenje na tłóčatko "Syntaksu kontrolować" móžeš połne wujasnje
 	'abusefilter-topnav-examine' => 'Zańdźene změny přepruwować',
 	'abusefilter-topnav-log' => 'Protokol znjewužiwanjow',
 	'abusefilter-topnav-tools' => 'Nastroje za wotstronjenje zmylkow',
+	'abusefilter-topnav-import' => 'Fitler importować',
 	'abusefilter-log-name' => 'Protokol znjewužiwanskich filtrow',
 	'abusefilter-log-header' => 'Tutón protokol pokazuje zjeće změnow, kotrež buchu na filtrach přewjedźene.
 Za dospołne podrobnosće hlej [[Special:AbuseFilter/history|lisćinu]] njedawnych filtrowych změnow.',
@@ -6916,6 +6989,9 @@ Za dospołne podrobnosće hlej [[Special:AbuseFilter/history|lisćinu]] njedawny
 	'abusefilter-diff-pattern' => 'Filtrowe wuměnjenja',
 	'abusefilter-diff-invalid' => 'Njemóžno požadane wersije wobstarać',
 	'abusefilter-diff-backhistory' => 'Wróćo k filtrowym stawiznam',
+	'abusefilter-import-intro' => 'Móžeš tutón interfejs wužiwać, zo by filtry z druhich wikijow importował.
+Klikń w žórłowym wikiju na "{{int:abusefilter-edit-export}}" pod "{{int:abusefilter-tools-subtitle}}" na wobdźěłowanskim interfejsu. Kopěruj z jewjaceho so tekstoweho pola do tutoho tekstoweho pola a klikń potom na "{{int:abusefilter-import-submit}}",',
+	'abusefilter-import-submit' => 'Daty importować',
 );
 
 /** Haitian (Kreyòl ayisyen)
@@ -7290,6 +7366,7 @@ Per favor demanda a un usator con le permission de adder actiones restringite de
 	'abusefilter-edit-tools' => 'Instrumentos:',
 	'abusefilter-edit-test-link' => 'Testar iste filtro contra le modificationes recente',
 	'abusefilter-edit-global' => 'Applicar iste filtro globalmente',
+	'abusefilter-edit-export' => 'Exportar iste filtro verso un altere wiki',
 	'abusefilter-edit-builder-select' => 'Selige un option pro inserer lo al puncto del cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operatores arithmetic',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Addition (+)',
@@ -7448,6 +7525,7 @@ Pro cargar un filtro existente, entra su ID in le quadro sub le quadro de modifi
 	'abusefilter-test-user' => 'Modificationes per le usator:',
 	'abusefilter-test-period-start' => 'Modificationes facite post:',
 	'abusefilter-test-period-end' => 'Modificationes facite ante:',
+	'abusefilter-test-page' => 'Modificationes facite al pagina:',
 	'abusefilter-test-shownegative' => 'Monstrar modificationes que non corresponde al filtro',
 	'abusefilter-test-syntaxerr' => 'Le filtro que tu entrava contine un error de syntaxe.
 Tu pote reciper un explication complete per cliccar le button "Verificar syntaxe".',
@@ -7474,6 +7552,7 @@ Tu pote reciper un explication complete per cliccar le button "Verificar syntaxe
 	'abusefilter-topnav-examine' => 'Examinar modificationes precedente',
 	'abusefilter-topnav-log' => 'Registro de abusos',
 	'abusefilter-topnav-tools' => 'Instrumentos pro reparar defectos',
+	'abusefilter-topnav-import' => 'Importar filtro',
 	'abusefilter-log-name' => 'Registro del filtro anti-abuso',
 	'abusefilter-log-header' => 'Iste registro monstra un summario del modificationes facite al filtros.
 Pro detalios complete, vide [[Special:AbuseFilter/history|le lista]] de cambios recente al filtros.',
@@ -7485,6 +7564,10 @@ Pro detalios complete, vide [[Special:AbuseFilter/history|le lista]] de cambios 
 	'abusefilter-diff-pattern' => 'Conditiones del filtro',
 	'abusefilter-diff-invalid' => 'Impossibile obtener le versiones requestate',
 	'abusefilter-diff-backhistory' => 'Retornar al historia del filtro',
+	'abusefilter-import-intro' => 'Iste interfacie es pro importar filtros ex altere wikis.
+In le wiki de origine, clicca "{{int:abusefilter-edit-export}}" sub "{{int:abusefilter-tools-subtitle}}" in le interfacie de modification.
+Copia le contento del quadro de texto que appare, e colla lo in iste quadro de texto, pois clicca "{{int:abusefilter-import-submit}}",',
+	'abusefilter-import-submit' => 'Importar datos',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -8211,8 +8294,9 @@ $messages['ja'] = array(
 	'abusefilter-edit-badfilter' => '指定したフィルターは存在しません',
 	'abusefilter-edit-revert' => 'このフィルターによるアクションを差し戻す',
 	'abusefilter-edit-tools' => 'ツール:',
-	'abusefilter-edit-test-link' => 'このフィルターを最近の編集に対して試験',
+	'abusefilter-edit-test-link' => 'このフィルターを最近の編集に対して試験する',
 	'abusefilter-edit-global' => 'このフィルターをグローバルに適用する',
+	'abusefilter-edit-export' => 'このフィルターを別のウィキにエクスポートする',
 	'abusefilter-edit-builder-select' => 'カーソル箇所に追加するものを選択',
 	'abusefilter-edit-builder-group-op-arithmetic' => '算術演算子',
 	'abusefilter-edit-builder-op-arithmetic-addition' => '加算 (+)',
@@ -8222,7 +8306,7 @@ $messages['ja'] = array(
 	'abusefilter-edit-builder-op-arithmetic-modulo' => '剰余 (%)',
 	'abusefilter-edit-builder-op-arithmetic-pow' => '累乗 (**)',
 	'abusefilter-edit-builder-group-op-comparison' => '比較演算子',
-	'abusefilter-edit-builder-op-comparison-equal' => '同等 (==)',
+	'abusefilter-edit-builder-op-comparison-equal' => '同値 (==)',
 	'abusefilter-edit-builder-op-comparison-notequal' => '不等 (!=)',
 	'abusefilter-edit-builder-op-comparison-lt' => '未満 (<)',
 	'abusefilter-edit-builder-op-comparison-gt' => '超過 (>)',
@@ -8249,7 +8333,7 @@ $messages['ja'] = array(
 	'abusefilter-edit-builder-funcs-rmdoubles' => '重複する文字を削除 (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => '特殊文字の数 / 全体の文字数 (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => '正規化 (norm)',
-	'abusefilter-edit-builder-funcs-count' => '文字列 X が文字列 Y 中に現れた回数 (count)',
+	'abusefilter-edit-builder-funcs-count' => '文字列 X が文字列 Y 中に出現する回数 (count)',
 	'abusefilter-edit-builder-funcs-rcount' => '正規表現 X が文字列 Y に出現する回数 (rcount)',
 	'abusefilter-edit-builder-funcs-rmwhitespace' => '空白類を除去 (rmwhitespace)',
 	'abusefilter-edit-builder-funcs-rmspecials' => '特殊文字を除去 (rmspecials)',
@@ -8367,6 +8451,7 @@ $3 つの引数があるべきですが $4 つしかありません。',
 	'abusefilter-test-user' => '変更した利用者:',
 	'abusefilter-test-period-start' => 'これ以後の変更:',
 	'abusefilter-test-period-end' => 'これ以前の変更:',
+	'abusefilter-test-page' => 'ページに対する変更:',
 	'abusefilter-test-shownegative' => 'フィルターに一致しない変更を表示する',
 	'abusefilter-test-syntaxerr' => 'あなたが入力したフィルターには構文エラーがあります。「{{int:abusefilter-edit-check}}」ボタンを押して、完全な説明を得ることができます。',
 	'abusefilter-changeslist-examine' => '分析',
@@ -8392,6 +8477,7 @@ $3 つの引数があるべきですが $4 つしかありません。',
 	'abusefilter-topnav-examine' => '過去の編集の検査',
 	'abusefilter-topnav-log' => '不正利用記録',
 	'abusefilter-topnav-tools' => 'デバッグ用ツール',
+	'abusefilter-topnav-import' => 'フィルターのインポート',
 	'abusefilter-log-name' => '不正利用フィルター記録',
 	'abusefilter-log-header' => 'この記録はフィルターに対してなされた変更の要約を表示しています。全詳細は、最近のフィルターの変更[[Special:AbuseFilter/history|一覧]]をご覧ください。',
 	'abusefilter-log-entry-modify' => '$1 を変更 ($2)',
@@ -8402,6 +8488,8 @@ $3 つの引数があるべきですが $4 つしかありません。',
 	'abusefilter-diff-pattern' => 'フィルター条件',
 	'abusefilter-diff-invalid' => '要求された版を取得できません',
 	'abusefilter-diff-backhistory' => 'フィルター履歴に戻る',
+	'abusefilter-import-intro' => 'このインタフェースを使って、別のウィキからフィルターをインポートすることができます。インポート元のウィキで、編集画面の「{{int:abusefilter-tools-subtitle}}」下にある「{{int:abusefilter-edit-export}}」をクリックします。そこで現れるテキストボックスの内容をコピーし、このテキストボックスにペーストして、「{{int:abusefilter-import-submit}}」をクリックします。',
+	'abusefilter-import-submit' => 'インポート',
 );
 
 /** Georgian (ქართული)
@@ -8928,6 +9016,7 @@ donn ene Metmaacher dröm frore, dat ze maache, dä dat Rääsch hät.',
 	'abusefilter-edit-tools' => 'Werkzüch:',
 	'abusefilter-edit-test-link' => 'Donn dä Fellter an de neuste Änderunge ußprobeere',
 	'abusefilter-edit-global' => 'Donn dä Felter jemeinsam för diverse Wikis aanwende',
+	'abusefilter-edit-export' => 'Donn dä Felter för en ander Wiki expotteere',
 	'abusefilter-edit-builder-select' => 'Donn ein fun dä Müjjeleschkeite uß dä Leß hee ußwähle, öm se onge aan dä Possizjuhn enzefööje, woh de jraadt aam Schriive bes, woh Dinge Kööser shteiht.',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Zom Räschne',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'zosamme zälle (<code>+</code>)',
@@ -9087,6 +9176,7 @@ Donn se joot aanbekike, un donn „{{int:abusefilter-revert-confirm}}“ klecke,
 	'abusefilter-test-user' => 'Änderunge fun däm Metmaacher:',
 	'abusefilter-test-period-start' => 'De Änderunge donoh:',
 	'abusefilter-test-period-end' => 'De Änderunge doför:',
+	'abusefilter-test-page' => 'Änderonge, di aan dä Sigg jemaat woode sin:',
 	'abusefilter-test-shownegative' => 'Zeich de Änderunge, die dä Felter nit jrief',
 	'abusefilter-test-syntaxerr' => 'Ding Räjel för dä Felter hät en kapodde Süntaks.
 Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilter-edit-check}}“ klecke.',
@@ -9113,6 +9203,7 @@ Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilte
 	'abusefilter-topnav-examine' => 'Övver de {{lcfirst:{{int:recentchanges}}}} pröfe',
 	'abusefilter-topnav-log' => 'Logboch övver der Meßbruchsfelter ier Wirke',
 	'abusefilter-topnav-tools' => 'Werkzüch för Fähler ze fenge',
+	'abusefilter-topnav-import' => 'Feltere Empotteere',
 	'abusefilter-log-name' => 'Et Logboch övver de Meßbruchsfelter',
 	'abusefilter-log-header' => 'En däm Logboch he fingks De de Änderunge aan de Feltere em Övverbleck. Einzelheite sin en de 
 [[Special:AbuseFilter/history|Leß met de neuste Änderunge aan Meßbruchsfeltere]].',
@@ -9124,6 +9215,8 @@ Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilte
 	'abusefilter-diff-pattern' => 'De Bedengunge vum Felter',
 	'abusefilter-diff-invalid' => 'Mer kunnte de jewönschte Versione nit fenge',
 	'abusefilter-diff-backhistory' => 'Jangk zeröck op de Leß met de Versione vun däm Felter',
+	'abusefilter-import-intro' => 'Do kanns hee di Schnettshtell bruche, öm Date vun de Meßbruchsfeltere vun andere Wikis noh hee ze empotteere. En dämm Wiki, woh de Date her kumme, doh donn op „{{int:abusefilter-edit-export}}“ unger „{{int:abusefilter-tools-subtitle}}“ klecke, op dä Sigg zom Felter Ändere. Donn dä Ennhalt vun däm Kaste met Tex, dä dann doh kütt, en hee dä Kaste eren kopeere, un dann donn hee dä Knopp „{{int:abusefilter-import-submit}}“ klecke.',
+	'abusefilter-import-submit' => 'Lohß Jonn!',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -9133,6 +9226,11 @@ $messages['lb'] = array(
 	'abusefilter' => 'Astellung vum Mëssbrauchsfilter',
 	'abuselog' => 'Lëscht vum Mëssbrauch',
 	'abusefilter-mustbeeditor' => "Aus Sécherheetsgrënn kënnen nëmme Benotzer déi d'Recht hunn fir Mëssbrauchsfilteren z'änneren dësen Interface benotzen.",
+	'abusefilter-warning' => "<big>'''Opgepasst'''</big>: Dës Aktioun gouf automatesch als geféierlech erkannt.
+Ännerungen déi net konstruktiv si ginn automatesch zréckgsat, 
+a besonnesch schlëmmen oder widderhuelte Fäll gëtt Äre Benotzerkont oder Computer gespaart.
+Wann dir mengt datt Är Ännerung konstruktiv ass kënnt dir nachemol op \"Späichere\" klicken fir ze confirméieren.
+Eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi Är Aktioun reagéiert huet: \$1",
 	'abusefilter-disallowed' => 'Dës Aktioun gouf automatesch als schiedlech erkannt,
 an dofir net zougelooss.
 Wann Dir mengt datt Är Ännerung konstruktiv ass, da kontaktéiert w.e.g. en Administrateur, an informéiert deen wat Dir versicht hutt ze maachen.
@@ -9287,6 +9385,7 @@ D'Resultat vum Parser war: <pre>$1</pre>",
 	'abusefilter-edit-tools' => 'Geschir:',
 	'abusefilter-edit-test-link' => 'Dëse Filter mat de leschten Ännerungen ausprobéieren',
 	'abusefilter-edit-global' => 'Dëse Filter global uwenden',
+	'abusefilter-edit-export' => 'Dëse Filter an eng aner Wiki exportéieren',
 	'abusefilter-edit-builder-select' => 'Wielt eng Optioun eraus fir se do anzesetzen wou de Cursor steet',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Arithmetesch Operateuren',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Additioun (+)',
@@ -9408,6 +9507,7 @@ Grond: $2',
 	'abusefilter-test-user' => 'Ännerunge vum Benotzer:',
 	'abusefilter-test-period-start' => 'Ännerungen nom:',
 	'abusefilter-test-period-end' => 'Ännerungen déi virdru gemaach goufen:',
+	'abusefilter-test-page' => 'Ännerungen déi op dëser Säit gemaach goufen',
 	'abusefilter-test-shownegative' => 'Ännerunge weisen déi net op de Filter passen',
 	'abusefilter-test-syntaxerr' => 'am Filter deen dir aginn hutt ass e Syntaxfeeler.
 Dir kënnt eng komplett Erklärung kréien wann Dir op "Syntax nokucken" klickt.',
@@ -9433,6 +9533,7 @@ Dir kënnt eng komplett Erklärung kréien wann Dir op "Syntax nokucken" klickt.
 	'abusefilter-topnav-test' => 'Regelen testen',
 	'abusefilter-topnav-examine' => 'Déi lescht Ännerungen nokucken',
 	'abusefilter-topnav-log' => 'Logbuch vum Mëssbrauch',
+	'abusefilter-topnav-import' => 'Fiter importéieren',
 	'abusefilter-log-name' => 'Logbuch vum Mëssbrauchsfilter',
 	'abusefilter-log-header' => "Dëst Logbuch weist e Resumé vun Ännerungen féi un de filtere gemaach goufen.
 Fir weider Detailer, kuckt [[Special:AbuseFilter/history|d'Lëscht]] vun de rezenten Filterännerungen.",
@@ -9444,6 +9545,10 @@ Fir weider Detailer, kuckt [[Special:AbuseFilter/history|d'Lëscht]] vun de reze
 	'abusefilter-diff-pattern' => 'Konditioune vum Filter',
 	'abusefilter-diff-invalid' => 'Déi ugefrote Versiounen kënnen net fonnt ginn',
 	'abusefilter-diff-backhistory' => "Zréck op d'Lëscht vun de Versioune vum Filter",
+	'abusefilter-import-intro' => 'Dir kënnt dësen Interface benotzen fir Filtere vu anere Wikien z\'importéieren.
+Klickt op der originaler Wiki op "{{int:abusefilter-edit-export}}"  ënner "{{int:abusefilter-tools-subtitle}}" op demInterface vun den Ännerungen.
+Kopéiert vun der Textkëscht déi opgeet an dës Textkëscht a klickt op "{{int:abusefilter-import-submit}}",',
+	'abusefilter-import-submit' => 'Donnéeën importéieren',
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)
@@ -10425,6 +10530,8 @@ Filterbeschrijving: $7 ($8) ($9)',
 	'abusefilter-log-details-ip' => 'IP-adres',
 	'abusefilter-log-noactions' => 'geen',
 	'abusefilter-log-details-diff' => 'Wijzigingen in de bewerking',
+	'abusefilter-log-linkoncontribs' => 'misbruiklogboek',
+	'abusefilter-log-linkoncontribs-text' => 'Misbruiklogboek voor deze gebruiker',
 	'abusefilter-management' => 'Beheer van misbruikfilter',
 	'abusefilter-list' => 'Alle filters',
 	'abusefilter-list-id' => 'Filternummer',
@@ -10533,6 +10640,7 @@ Vraag een gebruiker met toestemming om beperkte handelingen toe te voegen om de 
 	'abusefilter-edit-tools' => 'Hulpmiddelen:',
 	'abusefilter-edit-test-link' => 'Dit filter tegen recente bewerkingen testen',
 	'abusefilter-edit-global' => 'Deze filter globaal toepassen',
+	'abusefilter-edit-export' => 'Dit filter exporteren naar een andere wiki',
 	'abusefilter-edit-builder-select' => 'Selecteer een optie om deze aan de cursor toe te voegen',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmische operatoren',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Optellen (+)',
@@ -10692,6 +10800,7 @@ Geeft een filternummer in om een bestaande filter te laden, en klik daarna op de
 	'abusefilter-test-user' => 'Wijzigingen door gebruiker:',
 	'abusefilter-test-period-start' => 'Wijzigingen gemaakt na:',
 	'abusefilter-test-period-end' => 'Wijzigingen gemaakt voor:',
+	'abusefilter-test-page' => 'Wijzigingen aan pagina:',
 	'abusefilter-test-shownegative' => 'Wijzigingen weergeven die niet aan het filter voldoen',
 	'abusefilter-test-syntaxerr' => 'Het filter dat u hebt ingevoerd bevat een syntaxisfout.
 Door op "Syntaxis controleren" te klikken krijgt u een volledige toelichting.',
@@ -10718,6 +10827,7 @@ Door op "Syntaxis controleren" te klikken krijgt u een volledige toelichting.',
 	'abusefilter-topnav-examine' => 'Bewerkingen onderzoeken',
 	'abusefilter-topnav-log' => 'Misbruiklogboek',
 	'abusefilter-topnav-tools' => 'Hulpmiddelen voor debuggen',
+	'abusefilter-topnav-import' => 'Filter importeren',
 	'abusefilter-log-name' => 'Misbruikfilterlogboek',
 	'abusefilter-log-header' => 'Dit logboek geeft een overzicht van wijzigingen aan filters.
 Zie de [[Special:AbuseFilter/history|lijst met recente filterwijzigingen]] voor volledige details.',
@@ -10729,6 +10839,10 @@ Zie de [[Special:AbuseFilter/history|lijst met recente filterwijzigingen]] voor 
 	'abusefilter-diff-pattern' => 'Filtervoorwaarden',
 	'abusefilter-diff-invalid' => 'Het was niet mogelijk de gevraagde versies op te halen',
 	'abusefilter-diff-backhistory' => 'Terug naar de filtergeschiedenis',
+	'abusefilter-import-intro' => 'U kunt deze interface gebruiken om filters van andere wiki\'s te importeren.
+Klik "{{int:abusefilter-edit-export}}i" bij "{{int:abusefilter-tools-subtitle}}".
+Kopieer de tekst die in het bewerkingsvenster verschijnt naar dit bewerkingsvenster en klik dan "{{int:abusefilter-import-submit}}".',
+	'abusefilter-import-submit' => 'Filtergegevens importeren',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -11584,6 +11698,7 @@ En mejana, la durada d'execucion d'aqueste filtre es de $4 ms.",
 	'abusefilter-edit-tools' => 'Espleches :',
 	'abusefilter-edit-test-link' => 'Testar aqueste filtre contra los darrièras edicions',
 	'abusefilter-edit-global' => 'Aplicar aqueste filtre globalament',
+	'abusefilter-edit-export' => 'Exportar aqueste filtre cap a un autre wiki',
 	'abusefilter-edit-builder-select' => 'Seleccionar una opcion per l’apondre cap al cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operators aritmetics',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adicion (+)',
@@ -11740,6 +11855,7 @@ Per cargar un filtre existent, picatz son ID dins la boita en dejós de la boita
 	'abusefilter-test-user' => "Cambiaments de l'utilizaire :",
 	'abusefilter-test-period-start' => 'Cambiaments faches aprèp :',
 	'abusefilter-test-period-end' => 'Cambiaments faches abans :',
+	'abusefilter-test-page' => 'Modificacions aportadas a la pagina :',
 	'abusefilter-test-shownegative' => 'Afichar los cambiaments que correspòndon pas al filtre',
 	'abusefilter-test-syntaxerr' => "Lo filtre qu'avètz picat conten una error de sintaxi.
 Podètz recebre una explicacion complèta en clicant sul boton « Verificar la sintaxi ».",
@@ -11766,6 +11882,7 @@ Podètz recebre una explicacion complèta en clicant sul boton « Verificar la s
 	'abusefilter-topnav-examine' => 'Examinar las modificacions precedentas',
 	'abusefilter-topnav-log' => 'Jornal antiabuses',
 	'abusefilter-topnav-tools' => 'Espleches de debogatge',
+	'abusefilter-topnav-import' => 'Importar un filtre',
 	'abusefilter-log-name' => 'Jornal del filtre antiabuses',
 	'abusefilter-log-header' => 'Aqueste jornal aficha un somari de las modificacions fachas als filtres.
 Per mai de detalhs, vejatz [[Special:AbuseFilter/history|la lista]] dels darrièrs cambiaments del filtre.',
@@ -11777,6 +11894,10 @@ Per mai de detalhs, vejatz [[Special:AbuseFilter/history|la lista]] dels darriè
 	'abusefilter-diff-pattern' => 'Condicions del filtre',
 	'abusefilter-diff-invalid' => 'Impossible de tornar trobar las versions demandadas',
 	'abusefilter-diff-backhistory' => "Retorn a l'istoric del filtre",
+	'abusefilter-import-intro' => "Podètz utilizar aquesta interfàcia per importar de filtres en provenéncia d’autres wikis.
+Sul wiki d’origina, clicatz sus « {{int:abusefilter-edit-export}} » dins « {{int:abusefilter-tools-subtitle}} » dempuèi l’interfàcia d’edicion.
+Copiatz l'airal de tèxte que s’aficha e empegatz-lo dins aqueste airal de tèxte, puèi clicatz sus « {{int:abusefilter-import-submit}} »,",
+	'abusefilter-import-submit' => 'Importar de donadas',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
@@ -12006,6 +12127,7 @@ Opis filtru: $7 ($8) ($9)',
 	'abusefilter-edit-tools' => 'Narzędzia',
 	'abusefilter-edit-test-link' => 'Sprawdź ten filtr na ostatnich zmianach',
 	'abusefilter-edit-global' => 'Zastosuj ten filtr globalnie',
+	'abusefilter-edit-export' => 'Eksportuj filtr do innej wiki',
 	'abusefilter-edit-builder-select' => 'Wybierz opcję, aby wkleić ją na pozycji kursora',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operatory arytmetyczne',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Dodawanie (+)',
@@ -12164,6 +12286,7 @@ Aby załadować istniejący filtr, wprowadź jego ID do pola znajdującego się 
 	'abusefilter-test-user' => 'Zmiany wykonane przez użytkownika',
 	'abusefilter-test-period-start' => 'Zmiany wykonane później niż',
 	'abusefilter-test-period-end' => 'Zmiany wykonane wcześniej niż',
+	'abusefilter-test-page' => 'Zmiany na stronie:',
 	'abusefilter-test-shownegative' => 'Pokaż zmiany, które nie pasują do filtru',
 	'abusefilter-test-syntaxerr' => 'Wykryto błąd składni we wprowadzonym filtrze.
 Pełne wyjaśnienie dostępne jest po kliknięciu przycisku „Sprawdź składnię”.',
@@ -12190,6 +12313,7 @@ Pełne wyjaśnienie dostępne jest po kliknięciu przycisku „Sprawdź składni
 	'abusefilter-topnav-examine' => 'Skontroluj dawniejsze edycje',
 	'abusefilter-topnav-log' => 'Rejestr nadużyć',
 	'abusefilter-topnav-tools' => 'Narzędzia śledzenia',
+	'abusefilter-topnav-import' => 'Filtr importu',
 	'abusefilter-log-name' => 'Rejestr filtru nadużyć',
 	'abusefilter-log-header' => 'Rejestr zawiera zestawienie zmian wprowadzanych w filtrach.
 Pełne informacje odnajdziesz w [[Special:AbuseFilter/history|rejestrze]] ostatnich zmian w filtrach.',
@@ -12201,6 +12325,10 @@ Pełne informacje odnajdziesz w [[Special:AbuseFilter/history|rejestrze]] ostatn
 	'abusefilter-diff-pattern' => 'Warunki filtru',
 	'abusefilter-diff-invalid' => 'Nie można pobrać żądanej wersji',
 	'abusefilter-diff-backhistory' => 'Powrót do historii filtru',
+	'abusefilter-import-intro' => 'Ten interfejs służy do importowania filtrów z innych wiki.
+Kliknij w źródłowej wiki „{{int:abusefilter-edit-export}}” pod „{{int:abusefilter-tools-subtitle}}” w edycji interfejsu.
+Skopiuj zawartość pola tekstowego, które się pojawi, i wklej ją do poniższego pola tekstowego, a następnie kliknij przycisk „{{int:abusefilter-import-submit}}”,',
+	'abusefilter-import-submit' => 'Importuj dane',
 );
 
 /** Pashto (پښتو)
@@ -13022,6 +13150,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-tools' => 'Инструменты:',
 	'abusefilter-edit-test-link' => 'Проверить этот фильтр на свежих правках',
 	'abusefilter-edit-global' => 'Применить этот фильтр глобально',
+	'abusefilter-edit-export' => 'Экспортировать этот фильтр в другую вики',
 	'abusefilter-edit-builder-select' => 'Выберите пункт для добавления',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Арифметические операторы',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Сложение (+)',
@@ -13180,6 +13309,7 @@ $messages['ru'] = array(
 	'abusefilter-test-user' => 'Изменения участника:',
 	'abusefilter-test-period-start' => 'Изменения сделаны после:',
 	'abusefilter-test-period-end' => 'Изменения сделаны до:',
+	'abusefilter-test-page' => 'Сделанные на странице изменения:',
 	'abusefilter-test-shownegative' => 'Показывать изменения, не попадающие под фильтр',
 	'abusefilter-test-syntaxerr' => 'Введённый вами фильтр содержит синтаксическую ошибку.
 Вы можете получить подробное объяснение, нажав на кнопку «Проверить синтаксис».',
@@ -13206,6 +13336,7 @@ $messages['ru'] = array(
 	'abusefilter-topnav-examine' => 'Изучение последних правок',
 	'abusefilter-topnav-log' => 'Журнал злоупотреблений',
 	'abusefilter-topnav-tools' => 'Средства отладки',
+	'abusefilter-topnav-import' => 'Импорт фильтра',
 	'abusefilter-log-name' => 'Журнал фильтра злоупотреблений',
 	'abusefilter-log-header' => 'В этот журнал записываются описания изменений, произведённых в фильтрах.
 Подробности можно найти в [[Special:AbuseFilter/history|списке]] последних изменений фильтров.',
@@ -13217,6 +13348,10 @@ $messages['ru'] = array(
 	'abusefilter-diff-pattern' => 'Условия фильтрации',
 	'abusefilter-diff-invalid' => 'Не удаётся получить запрошенные версии',
 	'abusefilter-diff-backhistory' => 'Вернуться к истории фильтра',
+	'abusefilter-import-intro' => 'Вы можете использовать этот интерфейс для импорта фильтров из других вики.
+В исходной вики, нажмите «{{int:abusefilter-edit-export}}» в разделе «{{int:abusefilter-tools-subtitle}}» интерфейса редактирования.
+Скопируйте содержание текстового поля, вставьте его на эту страницу и нажмите «{{int:abusefilter-import-submit}}».',
+	'abusefilter-import-submit' => 'Импортировать данные',
 );
 
 /** Yakut (Саха тыла)
@@ -13648,10 +13783,10 @@ Stručný popis pravidla zneužitia, ktoré zachytilo vašu úpravu, je: $1',
 	'abusefilter-log-search-filter' => 'ID filtra:',
 	'abusefilter-log-search-title' => 'Názov:',
 	'abusefilter-log-search-submit' => 'Hľadať',
-	'abusefilter-log-entry' => '$1: $2 spustil filter zneužití, pri vykonávaní „$3“ na $4.
+	'abusefilter-log-entry' => '$1: $2 spustil filter zneužití, pri vykonávaní operácie „$3“ na $4.
 Vykonané opatrenia: $5;
 Popis filtra: $6',
-	'abusefilter-log-detailedentry-meta' => '$1: $2 spustil filter $3, vynkonaná operácia „$4“ na $5.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 spustil filter $3, vykonaná operácia „$4“ na $5.
 Vykonané opatrenia: $6;
 Popis filtra: $7 ($8) ($9)',
 	'abusefilter-log-detailedentry-global' => 'globálny filter $1',
@@ -13767,6 +13902,7 @@ Priemerný čas behu je $4 ms.',
 	'abusefilter-edit-tools' => 'Nástroje:',
 	'abusefilter-edit-test-link' => 'Otestovať tento filter na posledných úpravách',
 	'abusefilter-edit-global' => 'Aplikovať tento filter globálne',
+	'abusefilter-edit-export' => 'Exportovať tento filter do inej wiki',
 	'abusefilter-edit-builder-select' => 'Vyberte voľbu, ktorá sa pridá na miesto, kde je kurzor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetické operátory',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Sčítanie (+)',
@@ -13784,10 +13920,10 @@ Priemerný čas behu je $4 ms.',
 	'abusefilter-edit-builder-op-comparison-gte' => 'Väčší alebo rovný ako (>=)',
 	'abusefilter-edit-builder-group-op-bool' => 'Operátory pravdivostných hodnôt',
 	'abusefilter-edit-builder-op-bool-not' => 'Negácia (!)',
-	'abusefilter-edit-builder-op-bool-and' => 'logický súčin (&)',
-	'abusefilter-edit-builder-op-bool-or' => 'logický súčet (|)',
+	'abusefilter-edit-builder-op-bool-and' => 'Logický súčin (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'Logický súčet (|)',
 	'abusefilter-edit-builder-group-misc' => 'Rôzne',
-	'abusefilter-edit-builder-misc-in' => 'reťazec obsahuje (in)',
+	'abusefilter-edit-builder-misc-in' => 'Reťazec obsahuje (in)',
 	'abusefilter-edit-builder-misc-like' => 'Zodpovedá vzoru (like)',
 	'abusefilter-edit-builder-misc-rlike' => 'Zodpovedá regulárnemu výrazu (rlike)',
 	'abusefilter-edit-builder-misc-contains' => 'Reťazec vľavo obsahuje reťazec vpravo (obsahuje)',
@@ -13892,7 +14028,7 @@ Priemerný čas behu je $4 ms.',
 	'abusefilter-exception-outofbounds' => 'Požadovaná bola neexistujúca položka zoznamu $2 (veľkosť zoznamu = $3) na pozícii $1.',
 	'abusefilter-exception-notlist' => 'Požaduje sa položka poľa premennej, ktorá nie je pole na pozícii $1.',
 	'abusefilter-action-throttle' => 'Obmedziť',
-	'abusefilter-action-warn' => 'Upozorniť',
+	'abusefilter-action-warn' => 'Upoz.',
 	'abusefilter-action-blockautopromote' => 'Blokovať autom. povýšenie',
 	'abusefilter-action-block' => 'Blokovať',
 	'abusefilter-action-degroup' => 'Odstrániť zo skupín',
@@ -13924,6 +14060,7 @@ Existujúci filter načítate napísaním jeho ID do poľa pod poľom úprav a k
 	'abusefilter-test-user' => 'Zmeny vykonané používateľom:',
 	'abusefilter-test-period-start' => 'Zmeny vykonané po:',
 	'abusefilter-test-period-end' => 'Zmeny vykonané pred:',
+	'abusefilter-test-page' => 'Vykonané zmeny stránky:',
 	'abusefilter-test-shownegative' => 'Zobraziť úpravy, ktoré nezodpovedajú filtru',
 	'abusefilter-test-syntaxerr' => 'Filter, ktorý ste zadali obsahoval syntaktickú chybu.
 Kompletné vysvetlenie dostanete po kliknutí na tlačidlo „Skontrolovať syntax“.',
@@ -13950,6 +14087,7 @@ Kompletné vysvetlenie dostanete po kliknutí na tlačidlo „Skontrolovať synt
 	'abusefilter-topnav-examine' => 'Preskúmať minulé úpravy',
 	'abusefilter-topnav-log' => 'Záznam zneužití',
 	'abusefilter-topnav-tools' => 'Ladiace nástroje',
+	'abusefilter-topnav-import' => 'Importovať filter',
 	'abusefilter-log-name' => 'Záznam Filtra zneužití',
 	'abusefilter-log-header' => 'Tento záznam zobrazuje súhrn zmien filtrov.
 Podrobnosti nájdete v [[Special:AbuseFilter/history|zozname]] posledných zmien filtrov.',
@@ -13961,6 +14099,10 @@ Podrobnosti nájdete v [[Special:AbuseFilter/history|zozname]] posledných zmien
 	'abusefilter-diff-pattern' => 'Podmienky filtra',
 	'abusefilter-diff-invalid' => 'Nepodarilo sa získať požadované verzie',
 	'abusefilter-diff-backhistory' => 'Späť na históriu filtra',
+	'abusefilter-import-intro' => 'Toto rozhranie môžete použiť na importovanie filtrov z iných wiki.
+Na zdrojovej wiki kliknite na „{{int:Abusefilter-edit-export}}“ v ponuke „{{int:abusefilter-tools-subtitle}}“ v rozhraní na úpravy.
+Skopírujte ho z textového poľa, kde sa objaví a vložte ho do tohto textového poľa. Pootom kliknite na „Importovať“.',
+	'abusefilter-import-submit' => 'Importovať údaje',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)
@@ -15111,6 +15253,8 @@ Süzgeç açıklaması: $7 ($8) ($9)',
 	'abusefilter-log-details-ip' => 'Kaynak IP adresi',
 	'abusefilter-log-noactions' => 'hiç',
 	'abusefilter-log-details-diff' => 'Değişiklikte düzenleme yapılmış',
+	'abusefilter-log-linkoncontribs' => 'suistimal günlüğü',
+	'abusefilter-log-linkoncontribs-text' => 'Bu kullanıcı için suistimal günlüğü',
 	'abusefilter-management' => 'Suistimal filtresi yönetimi',
 	'abusefilter-list' => 'Tüm süzgeçler',
 	'abusefilter-list-id' => 'Süzgeç IDsi',
@@ -15219,6 +15363,7 @@ Lütfen kısıtlı eylemleri eklemeye izni olan bir kullanıcıdan, sizin için 
 	'abusefilter-edit-tools' => 'Araçlar:',
 	'abusefilter-edit-test-link' => 'Son değişikliklere karşı bu süzgeci test et',
 	'abusefilter-edit-global' => 'Bu filtreyi küresel olarak uygula',
+	'abusefilter-edit-export' => 'Bu filtreyi başka bir vikiye aktar',
 	'abusefilter-edit-builder-select' => 'İmleçte eklemek için bir seçenek seçin',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetik operatörler',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Toplama (+)',
@@ -15377,6 +15522,7 @@ Mevcut bir filtreyi yüklemek için, filtre IDsini değişiklik metin kutusunun 
 	'abusefilter-test-user' => 'Kullanıcının değişiklikleri:',
 	'abusefilter-test-period-start' => 'Sonradan yapılan değişiklikler:',
 	'abusefilter-test-period-end' => 'Önceden yapılan değişiklikler:',
+	'abusefilter-test-page' => 'Sayfaya yapılan değişiklikler:',
 	'abusefilter-test-shownegative' => 'Süzgeçle eşleşmeyen değişiklikleri göster',
 	'abusefilter-test-syntaxerr' => 'Girdiğiniz filtre sözdizimi hatası içerdi.
 "Sözdizimini kontrol et" düğmesine tıklayarak tam bir açıklama alabilirsiniz.',
@@ -15403,6 +15549,7 @@ Mevcut bir filtreyi yüklemek için, filtre IDsini değişiklik metin kutusunun 
 	'abusefilter-topnav-examine' => 'Geçmiş değişiklikleri incele',
 	'abusefilter-topnav-log' => 'Suistimal Günlüğü',
 	'abusefilter-topnav-tools' => 'Hata ayıklama araçları',
+	'abusefilter-topnav-import' => 'Filtreyi içe aktar',
 	'abusefilter-log-name' => 'Suistimal Filtresi günlüğü',
 	'abusefilter-log-header' => 'Bu günlük filtrelere yapılan değişikliklerin bir özetini gösterir.
 Tam ayrıntılar için, son filtre değişiklikleri [[Special:AbuseFilter/history|listesine]] bakın.',
@@ -15414,6 +15561,10 @@ Tam ayrıntılar için, son filtre değişiklikleri [[Special:AbuseFilter/histor
 	'abusefilter-diff-pattern' => 'Filtre koşulları',
 	'abusefilter-diff-invalid' => 'İstenen sürümler alınamıyor',
 	'abusefilter-diff-backhistory' => 'Filtre geçmişine geri dön',
+	'abusefilter-import-intro' => 'Bu arayüzü diğer vikilerden filtreleri içe aktarmak için kullanabilirsiniz.
+Kaynak vikide, değiştirme arayüzünde "{{int:abusefilter-tools-subtitle}}"ın altındaki "{{int:abusefilter-edit-export}}"a tıklayın.
+Görünen metin kutusundan kopyalayın, ve bu metin kutusuna yapıştırın, daha sonra "{{int:abusefilter-import-submit}}"a tıklayın,',
+	'abusefilter-import-submit' => 'Verileri içe aktar',
 );
 
 /** Ukrainian (Українська)
@@ -15551,6 +15702,10 @@ $messages['vec'] = array(
 	'abusefilter-desc' => 'Àplica dele eurìstiche automatiche a le modifiche.',
 	'abusefilter' => 'Configurassion del filtro abusi',
 	'abuselog' => 'Registro abusi',
+	'abusefilter-intro' => "Benvegnù in te l'interfacia de gestion del Filtro Abusi.
+El Filtro Abusi el xe un sistema automatixà par l'aplicassion de eurìstiche automatiche a tute le azion.
+Sta interfacia la mostra un elenco dei filtri definìi e la parmete de modificarli.",
+	'abusefilter-mustbeeditor' => 'Par motivi de sicuressa, solo i utenti col dirito de modificar i filtri abusi i pol doparar sta interfacia.',
 	'abusefilter-blocker' => 'Filtro abusi',
 	'abusefilter-accountreserved' => 'Sta utensa la xe riservà par el filtro abusi.',
 	'right-abusefilter-modify' => 'Modìfega i filtri abusi',
@@ -15558,7 +15713,14 @@ $messages['vec'] = array(
 	'right-abusefilter-log' => 'Varda el registro abusi',
 	'right-abusefilter-log-detail' => 'Varda voci detaglià del registro abusi',
 	'right-abusefilter-private' => 'Varda i dati privati nel registro dei abusi',
+	'action-abusefilter-modify' => 'modificar i filtri abusi',
+	'action-abusefilter-view' => 'vardar i filtri abusi',
+	'action-abusefilter-log' => 'vardar el registro dei abusi',
+	'action-abusefilter-log-detail' => 'vardar le voci de detaglio del registro dei abusi',
+	'action-abusefilter-private' => 'vardar le informassion riservà in tel registro dei abusi',
+	'action-abusefilter-modify-restricted' => 'modificar i filtri abusi con le azion riservà',
 	'abusefilter-log' => 'Registro del filtro abusi',
+	'abusefilter-log-summary' => 'Sto registro el mostra un elenco de tute le azion caturà dai filtri.',
 	'abusefilter-log-search' => 'Serca in tel registro dei abusi',
 	'abusefilter-log-search-user' => 'Utente:',
 	'abusefilter-log-search-filter' => 'ID del filtro:',
@@ -15615,6 +15777,8 @@ $messages['vec'] = array(
 	'abusefilter-tools-reautoconfirm-user' => 'Utente:',
 	'abusefilter-tools-reautoconfirm-submit' => 'Ripristina autoconferma',
 	'abusefilter-reautoconfirm-none' => "El stato de autoconfermà par {{GENDER:$1|l'utente|l'utente|l'utente}} no'l xe stà sospeso.",
+	'abusefilter-reautoconfirm-notallowed' => 'No te ghè el parmesso de ripristinar el stato de autoconfermà.',
+	'abusefilter-reautoconfirm-done' => "El stato de autoconfermà de l'utensa el xe stà ripristinà.",
 	'abusefilter-edit-subtitle' => 'Modìfega del filtro $1',
 	'abusefilter-edit-status-label' => 'Statìsteghe:',
 	'abusefilter-edit-new' => 'Filtro novo',
@@ -15641,6 +15805,7 @@ $messages['vec'] = array(
 	'abusefilter-edit-warn-preview' => 'Anteprima del messajo selessionà',
 	'abusefilter-edit-warn-edit' => 'Crèa/Modìfega el messajo selessionà',
 	'abusefilter-edit-tag-tag' => 'Tag da aplicar (uno par riga):',
+	'abusefilter-edit-denied' => 'No te podi védar i detagli de sto filtro, parché i xe sconti al pùblico.',
 	'abusefilter-edit-main' => 'Parametri del filtro',
 	'abusefilter-edit-done-subtitle' => 'Filtro modifegà',
 	'abusefilter-edit-done' => 'Te ghè salvà i to canbiamenti al filtro $1.',
@@ -15652,6 +15817,7 @@ $messages['vec'] = array(
 	'abusefilter-edit-tools' => 'Strumenti:',
 	'abusefilter-edit-test-link' => 'Pròa sto filtro co le ultime modifiche',
 	'abusefilter-edit-global' => 'Àplica sto filtro globalmente',
+	'abusefilter-edit-export' => "Esporta sto filtro su n'altra wiki",
 	'abusefilter-edit-builder-select' => 'Siegli na opzion par zontarla in te la posission del cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operadori aritmetici',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Soma (+)',
@@ -15797,6 +15963,7 @@ Azion da anular: $5 ($6)',
 	'abusefilter-test-user' => "Canbiamenti fati da l'utente:",
 	'abusefilter-test-period-start' => 'Canbiamenti fati dopo el:',
 	'abusefilter-test-period-end' => 'Canbiamenti fati prima del:',
+	'abusefilter-test-page' => 'Canbiamenti fati a la pagina:',
 	'abusefilter-changeslist-examine' => 'esàmina',
 	'abusefilter-examine' => 'Esàmina i singoli canbiamenti',
 	'abusefilter-examine-legend' => 'Selessiona canbiamenti',
@@ -15813,6 +15980,7 @@ Azion da anular: $5 ($6)',
 	'abusefilter-topnav-examine' => 'Esàmina le modifiche vèce',
 	'abusefilter-topnav-log' => 'Registro dei abusi',
 	'abusefilter-topnav-tools' => 'Strumenti de debug',
+	'abusefilter-topnav-import' => 'Inporta filtro',
 	'abusefilter-log-name' => 'Registro del filtro abusi',
 	'abusefilter-log-entry-modify' => 'gà modifegà $1 ($2)',
 	'abusefilter-diff-title' => 'Difarense tra le version',
@@ -15821,6 +15989,7 @@ Azion da anular: $5 ($6)',
 	'abusefilter-diff-info' => 'Informassion de base',
 	'abusefilter-diff-pattern' => 'Condission dei filtri',
 	'abusefilter-diff-backhistory' => 'Torna indrìo a la storia del filtro',
+	'abusefilter-import-submit' => 'Inporta dati',
 );
 
 /** Vietnamese (Tiếng Việt)

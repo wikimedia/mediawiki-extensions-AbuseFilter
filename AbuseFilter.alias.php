@@ -66,6 +66,12 @@ $aliases['fr'] = array(
 	'AbuseFilter' => array( 'Filtre antiabus', 'Filtre anti-abus', 'FiltreAntiabus', "Filtre d'abus", 'FiltredAbus', 'FilterAbus' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'AbuseLog' => array( 'Jornal des abus', 'JornalDesAbus' ),
+	'AbuseFilter' => array( "Filtro d'abus", 'FiltroDAbus' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'AbuseLog' => array( 'Rexistro de abusos' ),
