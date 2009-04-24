@@ -147,10 +147,9 @@ class AbuseFilterPager extends TablePager {
 
 	function getQueryInfo() {
 		$dbr = wfGetDB( DB_SLAVE );
-		#$this->mConds[] = 'afa_filter=af_id';
 		$abuse_filter = $dbr->tableName( 'abuse_filter' );
 		return array( 
-			'tables' => array('abuse_filter', 'abuse_filter_action'),
+			'tables' => array('abuse_filter'),
 			'fields' => array( 
 				'af_id', 
 				'af_enabled',
@@ -165,10 +164,6 @@ class AbuseFilterPager extends TablePager {
 				'af_actions' 
 			),
 			'conds' => $this->mConds,
-			'options' => array( 'GROUP BY' => 'af_id' ),
-			'join_conds' => array( 
-				'abuse_filter_action' => array( 'LEFT JOIN', 'afa_filter=af_id' ) 
-			) 
 		);
 	}
 

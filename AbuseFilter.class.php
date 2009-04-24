@@ -818,15 +818,19 @@ class AbuseFilter {
 	public static function storeVarDump( $vars, $global = false ) {
   		wfProfileIn( __METHOD__ );
   		
+  		global $wgCompressRevisions;
+  		
   		if ( is_array( $vars ) || is_object( $vars ) )
  	  		$text = serialize( $vars );
  	  	else $text = $vars;
  	  	
 		$flags = array();
 		
-		if (function_exists( 'gzdeflate' )) {
-			$text = gzdeflate( $text );
-			$flags[] = 'gzip';
+		if( $wgCompressRevisions ) {
+			if (function_exists( 'gzdeflate' )) {
+				$text = gzdeflate( $text );
+				$flags[] = 'gzip';
+			}
 		}
 		
 		// Store to ES if applicable

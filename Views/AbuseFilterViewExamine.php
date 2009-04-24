@@ -226,7 +226,7 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 		
 		// If one of these is true, we're abusefilter compatible.
 		$compatConds = array(
-			'rc_this_oldid',
+			'rc_this_oldid != 0',
 			'rc_log_action' => array( 'move', 'create' ),
 		);
 		

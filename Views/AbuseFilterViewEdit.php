@@ -159,7 +159,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// Do the update
 			$dbw->insert( 'abuse_filter_history', $afh_row, __METHOD__ );
 			$history_id = $dbw->insertId();
-			$dbw->delete( 'abuse_filter_action', array( 'afa_filter' => $filter ), __METHOD__ );
+			if ($filter != 'new')
+				$dbw->delete( 'abuse_filter_action', array( 'afa_filter' => $filter ), __METHOD__ );
 			$dbw->insert( 'abuse_filter_action', $actionsRows, __METHOD__ );
 
 			$dbw->commit();
