@@ -181,4 +181,21 @@ class AbuseFilterHooks {
 		}
 		return true;
 	}
+	
+	public static function onContributionsToolLinks( $id, $nt, &$tools )
+	{
+	    global $wgUser;
+	    wfLoadExtensionMessages( 'AbuseFilter' );
+        if( $wgUser->isAllowed( 'abusefilter-log' ) ) {
+    	    $sk = $wgUser->getSkin();
+	    	$tools[] = $sk->link(
+	    			SpecialPage::getTitleFor( 'AbuseLog' ),
+	    			wfMsg( 'abusefilter-log-linkoncontribs' ),
+	    			array( 'title' =>
+	    				wfMsgExt( 'abusefilter-log-linkoncontribs-text', 'parseinline' ) ),
+	    			array( 'wpSearchUser' => $nt->getText() )
+	    		);
+		}
+		return true;
+    }
 }

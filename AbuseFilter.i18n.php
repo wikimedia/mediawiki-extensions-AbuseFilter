@@ -95,7 +95,8 @@ Filter description: $7 ($8) ($9)',
 	'abusefilter-log-details-ip' => 'Originating IP address',
 	'abusefilter-log-noactions' => 'none',
 	'abusefilter-log-details-diff' => 'Changes made in edit',
-
+	'abusefilter-log-linkoncontribs' => 'abuse log',
+	'abusefilter-log-linkoncontribs-text' => 'Abuse Log for this user',
 	// Abuse filter management
 	'abusefilter-management' => 'Abuse filter management',
 	'abusefilter-list' => 'All filters',
