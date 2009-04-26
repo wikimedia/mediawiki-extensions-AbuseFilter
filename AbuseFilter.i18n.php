@@ -750,6 +750,8 @@ $messages['ar'] = array(
 	'abusefilter-log-details-ip' => 'عنوان الأيبي المصدر',
 	'abusefilter-log-noactions' => 'لا شيء',
 	'abusefilter-log-details-diff' => 'التغييرات المعمولة في التعديل',
+	'abusefilter-log-linkoncontribs' => 'سجل الإساءة',
+	'abusefilter-log-linkoncontribs-text' => 'سجل الإساءة لهذا المستخدم',
 	'abusefilter-management' => 'التحكم بمرشح الإساءة',
 	'abusefilter-list' => 'كل المرشحات',
 	'abusefilter-list-id' => 'رقم المرشح',
@@ -1407,6 +1409,8 @@ $messages['be-tarask'] = array(
 	'abusefilter-log-details-ip' => 'Выходны ІР-адрас',
 	'abusefilter-log-noactions' => 'няма',
 	'abusefilter-log-details-diff' => 'Зьмены, зробленыя ў рэдагаваньні',
+	'abusefilter-log-linkoncontribs' => 'журнал злоўжываньняў',
+	'abusefilter-log-linkoncontribs-text' => 'Журнал злоўжываньняў гэтага ўдзельніка',
 	'abusefilter-management' => 'Кіраваньне фільтрам злоўжываньняў',
 	'abusefilter-list' => 'Усе фільтры',
 	'abusefilter-list-id' => 'Ідэнтыфікатар фільтру',
@@ -4095,6 +4099,8 @@ Descripción: $1',
 	'abusefilter-log-details-ip' => 'Dirección IP originante',
 	'abusefilter-log-noactions' => 'ninguna',
 	'abusefilter-log-details-diff' => 'Cambios hechos en la edición',
+	'abusefilter-log-linkoncontribs' => 'registro de abuso',
+	'abusefilter-log-linkoncontribs-text' => 'Registro de abuso para este usuario',
 	'abusefilter-management' => 'Gestión del filtro antiabuso',
 	'abusefilter-list' => 'Todos los filtros',
 	'abusefilter-list-id' => 'Identificación de filtro',
@@ -4196,6 +4202,7 @@ Por favor solicita a un usuario con permiso para agregar acciones restringidas h
 	'abusefilter-edit-tools' => 'Herramientas:',
 	'abusefilter-edit-test-link' => 'Probar este filtro contra ediciones reciemtes',
 	'abusefilter-edit-global' => 'Aplicar este filtro globalmente',
+	'abusefilter-edit-export' => 'Exportar este filtro a otro wiki',
 	'abusefilter-edit-builder-select' => 'Seleccione una opción para agregarla en el cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operadores aritmétricos',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adición (+)',
@@ -4340,6 +4347,7 @@ Puedes recibir una completa explicación haciendo click en el botón "Verificar 
 	'abusefilter-topnav-examine' => 'Examinar ediciones pasadas',
 	'abusefilter-topnav-log' => 'Registro de abusos',
 	'abusefilter-topnav-tools' => 'Herramientas de reparación',
+	'abusefilter-topnav-import' => 'Importar filtro',
 	'abusefilter-log-name' => 'Registro de filtro de abuso',
 	'abusefilter-log-header' => 'Este registro muestra un resumen de cambios hechos a los filtros.
 Para detalles completos, ver [[Special:AbuseFilter/history|la lista]] de cambios de filtros recientes.',
@@ -4351,6 +4359,7 @@ Para detalles completos, ver [[Special:AbuseFilter/history|la lista]] de cambios
 	'abusefilter-diff-pattern' => 'Condiciones de filtro',
 	'abusefilter-diff-invalid' => 'Incapaz de traer la versiones solicitadas',
 	'abusefilter-diff-backhistory' => 'Regresar al historial del filtro',
+	'abusefilter-import-submit' => 'Importar datos',
 );
 
 /** Basque (Euskara)
@@ -4468,7 +4477,7 @@ $messages['eu'] = array(
  * @author Vililikku
  */
 $messages['fi'] = array(
-	'abusefilter-desc' => 'Suodattaa muokkaukset automaattisella heuristiikalla',
+	'abusefilter-desc' => 'Mahdollistaa muokkauksien suodattamisen automaattisella heuristiikalla.',
 	'abusefilter' => 'Väärinkäyttösuodattimen asetukset',
 	'abuselog' => 'Väärinkäyttöloki',
 	'abusefilter-warning' => "<big>'''Varoitus'''</big>: Tämä muokkaus on automaattisesti tunnistettu haitalliseksi.
@@ -4490,10 +4499,10 @@ Syy: $1',
 	'right-abusefilter-modify' => 'Muokata väärinkäyttösuodattimia',
 	'right-abusefilter-view' => 'Tarkastella väärinkäyttösuodattimia',
 	'right-abusefilter-log' => 'Tarkastella väärinkäyttölokia',
-	'right-abusefilter-log-detail' => 'Tarkastella yksityiskohtaisesti väärinkäyttölokia',
+	'right-abusefilter-log-detail' => 'Tarkastella väärinkäyttölokia yksityiskohtaisesti',
 	'right-abusefilter-private' => 'Tarkastella yksityistiedoja väärinkäyttölokista',
 	'right-abusefilter-revert' => 'Palauttaa kaikki muutokset valitulla väärinkäyttösuodattimella',
-	'action-abusefilter-modify' => 'muuttaa väärinkäyttösuodattimia',
+	'action-abusefilter-modify' => 'muokata väärinkäyttösuodattimia',
 	'action-abusefilter-view' => 'tarkastella väärinkäyttösuodattimia',
 	'action-abusefilter-log' => 'tarkastella väärinkäyttölokia',
 	'action-abusefilter-log-detail' => 'tarkastella väärinkäyttölokia yksityiskohtaisesti',
@@ -4502,8 +4511,10 @@ Syy: $1',
 	'abusefilter-log-summary' => 'Tämä loki näyttää luettelon kaikista suodattimiin tarttuneista toiminnoista.',
 	'abusefilter-log-search' => 'Etsi väärinkäyttölokista',
 	'abusefilter-log-search-user' => 'Käyttäjä:',
+	'abusefilter-log-search-filter' => 'Suodatin-ID:',
 	'abusefilter-log-search-title' => 'Otsikko:',
 	'abusefilter-log-search-submit' => 'Etsi',
+	'abusefilter-log-detailedentry-local' => 'suodatin $1',
 	'abusefilter-log-detailslink' => 'tiedot',
 	'abusefilter-log-details-legend' => 'Yksityiskohdat lokitapahtumalle $1',
 	'abusefilter-log-details-var' => 'Muuttuja',
@@ -4511,8 +4522,11 @@ Syy: $1',
 	'abusefilter-log-details-private' => 'Yksityistieto',
 	'abusefilter-log-noactions' => 'ei mitään',
 	'abusefilter-log-details-diff' => 'Muokkauksessa tehdyt muutokset',
+	'abusefilter-log-linkoncontribs' => 'väärinkäyttöloki',
+	'abusefilter-log-linkoncontribs-text' => 'Väärinkäyttöloki tälle käyttäjälle',
 	'abusefilter-management' => 'Väärinkäyttösuodattimen hallinta',
 	'abusefilter-list' => 'Kaikki suodattimet',
+	'abusefilter-list-id' => 'Suodatin-ID',
 	'abusefilter-list-status' => 'Tila',
 	'abusefilter-list-public' => 'Julkinen kuvaus',
 	'abusefilter-list-consequences' => 'Seuraamukset',
@@ -4549,15 +4563,17 @@ Syy: $1',
 	'abusefilter-edit-status-label' => 'Tilastot:',
 	'abusefilter-edit-new' => 'Luo suodatin',
 	'abusefilter-edit-save' => 'Tallenna suodatin',
+	'abusefilter-edit-id' => 'Suodatin-ID:',
 	'abusefilter-edit-description' => "Kuvaus
 :''(julkisesti näkyvillä)''",
 	'abusefilter-edit-flags' => 'Merkinnät:',
 	'abusefilter-edit-enabled' => 'Käytä tätä suodatinta',
 	'abusefilter-edit-deleted' => 'Merkitse poistetuksi',
-	'abusefilter-edit-hidden' => 'Piilota suodattimen yksityiskohdat',
+	'abusefilter-edit-hidden' => 'Piilota suodattimen yksityiskohdat julkiselta näkyvyydeltä',
 	'abusefilter-edit-rules' => 'Ehdot',
 	'abusefilter-edit-notes' => "Kommentit
 :''(yksityinen)''",
+	'abusefilter-edit-lastmod' => 'Suodatinta viimeksi muuttanut:',
 	'abusefilter-edit-action-flag' => 'Merkitse muokkaus väärinkäyttölokiin',
 	'abusefilter-edit-action-degroup' => 'Poista käyttäjä kaikista etuoikeutetuista ryhmistä',
 	'abusefilter-edit-action-block' => 'Aseta käyttäjälle ja/tai IP-osoitteelle muokkausesto',
@@ -4567,7 +4583,7 @@ Syy: $1',
 	'abusefilter-edit-warn-other' => 'Muu viesti',
 	'abusefilter-edit-warn-actions' => 'Toiminnot',
 	'abusefilter-edit-warn-preview' => 'Esikatsele valittua viestiä',
-	'abusefilter-edit-denied' => 'Et voi katsoa tämän suodattimen yksityiskohtia, koska ne ovat piilotettu',
+	'abusefilter-edit-denied' => 'Et voi katsoa tämän suodattimen yksityiskohtia, koska ne ovat piilotettu julkiselta näkyvyydeltä.',
 	'abusefilter-edit-done-subtitle' => 'Suodatinta muokattu',
 	'abusefilter-edit-done' => 'Muutokset suodattimeen $1 tallennettiin onnistuneesti.',
 	'abusefilter-edit-viewhistory' => 'Näytä suodattimen historia',
@@ -4605,7 +4621,7 @@ Syy: $1',
 	'abusefilter-edit-builder-funcs-count' => 'Merkkijonon X esiintymiskerrat merkkijonossa Y (count)',
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Poista tyhjä tila (rmwhitespace)',
 	'abusefilter-edit-builder-funcs-rmspecials' => 'Poista erikoismerkit (rmspecials)',
-	'abusefilter-edit-builder-funcs-ip_in_range' => 'Onko IP-osoite avaruudessa? (ip_in_range)',
+	'abusefilter-edit-builder-funcs-ip_in_range' => 'Onko IP-osoite osoiteavaruudessa? (ip_in_range)',
 	'abusefilter-edit-builder-group-vars' => 'Muuttujat',
 	'abusefilter-edit-builder-vars-accountname' => 'Käyttäjätunnus (tunnuksen luomisessa)',
 	'abusefilter-edit-builder-vars-timestamp' => 'Muutoksen Unix-aikaleima',
@@ -4646,7 +4662,7 @@ Syy: $1',
 	'abusefilter-action-block' => 'Estä',
 	'abusefilter-action-degroup' => 'Poista ryhmistä',
 	'abusefilter-action-rangeblock' => 'Alue-esto',
-	'abusefilter-action-disallow' => 'kiellä',
+	'abusefilter-action-disallow' => 'Kiellä',
 	'abusefilter-revert-filter' => 'Suodatin',
 	'abusefilter-revert-confirm' => 'Vahvista',
 	'abusefilter-revert-reasonfield' => 'Palautuksen syy',
@@ -4663,15 +4679,22 @@ Syy: $1',
 	'abusefilter-examine-test-button' => 'Kokeile suodatinta',
 	'abusefilter-examine-match' => 'Suodatin vastasi tätä muutosta.',
 	'abusefilter-examine-syntaxerror' => 'Suodattimella on virheellinen syntaksi',
+	'abusefilter-examine-notfound' => 'Pyytämääsi muutosta ei löytynyt.',
+	'abusefilter-examine-incompatible' => 'Väärinkäyttösuodatin ei tue pyytämiäsi muutoksia',
+	'abusefilter-examine-noresults' => 'Antamillasi hakuehdoilla ei löytynyt yhtään tulosta.',
+	'abusefilter-topnav' => "'''Väärinkäyttösuodattimen valikko'''",
 	'abusefilter-topnav-home' => 'Etusivu',
+	'abusefilter-topnav-test' => 'Ryhmän kokeilu',
 	'abusefilter-topnav-log' => 'Väärinkäyttöloki',
 	'abusefilter-topnav-tools' => 'Vianjäljitystyökalut',
+	'abusefilter-topnav-import' => 'Tuo suodatin',
 	'abusefilter-log-name' => 'Väärinkäyttösuodattimen loki',
 	'abusefilter-diff-title' => 'Versioiden välinen ero',
 	'abusefilter-diff-info' => 'Perustiedot',
 	'abusefilter-diff-pattern' => 'Suodattimen ehdot',
 	'abusefilter-diff-invalid' => 'Pyydettyjä versioita ei voitu hakea',
 	'abusefilter-diff-backhistory' => 'Takaisin suodatinhistoriaan',
+	'abusefilter-import-submit' => 'Tuo tiedot',
 );
 
 /** French (Français)
@@ -5159,6 +5182,8 @@ Descrición do filtro: $7 ($8) ($9)',
 	'abusefilter-log-details-ip' => 'Enderezo IP de orixe',
 	'abusefilter-log-noactions' => 'ningunha',
 	'abusefilter-log-details-diff' => 'Cambios feitos na edición',
+	'abusefilter-log-linkoncontribs' => 'rexistro de abusos',
+	'abusefilter-log-linkoncontribs-text' => 'Rexistro de abusos deste usuario',
 	'abusefilter-management' => 'Xestión do filtro de abusos',
 	'abusefilter-list' => 'Todos os filtros',
 	'abusefilter-list-id' => 'Filtrar o ID',
@@ -7263,6 +7288,8 @@ Description del filtro: $7 ($8) ($9)',
 	'abusefilter-log-details-ip' => 'Adresse IP de origine',
 	'abusefilter-log-noactions' => 'nihil',
 	'abusefilter-log-details-diff' => 'Modificationes effectuate',
+	'abusefilter-log-linkoncontribs' => 'registro de abusos',
+	'abusefilter-log-linkoncontribs-text' => 'Registro del abusos de iste usator',
 	'abusefilter-management' => 'Gestion del filtro anti-abuso',
 	'abusefilter-list' => 'Tote le filtros',
 	'abusefilter-list-id' => 'ID del filtro',
@@ -8198,6 +8225,8 @@ $messages['ja'] = array(
 	'abusefilter-log-details-ip' => '発信元のIPアドレス',
 	'abusefilter-log-noactions' => 'なし',
 	'abusefilter-log-details-diff' => '編集でなされた変更',
+	'abusefilter-log-linkoncontribs' => '不正利用記録',
+	'abusefilter-log-linkoncontribs-text' => 'この利用者の不正利用記録',
 	'abusefilter-management' => '不正利用フィルター管理',
 	'abusefilter-list' => 'すべてのフィルター',
 	'abusefilter-list-id' => 'フィルターID',
@@ -8905,6 +8934,8 @@ Name',
 	'abusefilter-log-details-ip' => 'De IP-Address fun däm, dä et jweese wohr',
 	'abusefilter-log-noactions' => 'kei',
 	'abusefilter-log-details-diff' => 'De Änderunge',
+	'abusefilter-log-linkoncontribs' => 'Logbooch vum Meßbruchsfelter',
+	'abusefilter-log-linkoncontribs-text' => 'Logbooch fum Meßbruchsfelter för dä Metmaacher',
 	'abusefilter-management' => 'Meßbruchsfellter Verwallde',
 	'abusefilter-list' => 'All Feltere',
 	'abusefilter-list-id' => 'Felter-Räjel',
@@ -9228,6 +9259,9 @@ Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilte
 $messages['lb'] = array(
 	'abusefilter' => 'Astellung vum Mëssbrauchsfilter',
 	'abuselog' => 'Lëscht vum Mëssbrauch',
+	'abusefilter-intro' => "Wëllkom op der Säit vum Mëssbrauchsfiler-Management.
+De Mëssbrauchsfilter ass en automatesche Mechanismus deen et erlaabt autmatesch Heuristiken op all aktiounen unzewenden.
+Dës Spezialsäit weist eng Lëscht vun definéierte Filteren an erlaabt et dës z'änneren.",
 	'abusefilter-mustbeeditor' => "Aus Sécherheetsgrënn kënnen nëmme Benotzer déi d'Recht hunn fir Mëssbrauchsfilteren z'änneren dësen Interface benotzen.",
 	'abusefilter-warning' => "<big>'''Opgepasst'''</big>: Dës Aktioun gouf automatesch als geféierlech erkannt.
 Ännerungen déi net konstruktiv si ginn automatesch zréckgsat, 
@@ -9292,6 +9326,8 @@ Beschreiwung vum Filter: $7 ($8) ($9)',
 	'abusefilter-log-details-ip' => 'IP-Adress déi bnotzt gouf',
 	'abusefilter-log-noactions' => 'keen',
 	'abusefilter-log-details-diff' => 'Ännerungen déi an der Ännerung gemaach goufen',
+	'abusefilter-log-linkoncontribs' => 'Logbuch vum Mëssbrauch',
+	'abusefilter-log-linkoncontribs-text' => 'Logbuch vum M!essbrauch fir dëse Benotzer',
 	'abusefilter-management' => 'Gestioun vum Mëssbrauchsfilter',
 	'abusefilter-list' => 'All Filteren',
 	'abusefilter-list-id' => 'Nummer(ID) vum Filter',
@@ -11599,6 +11635,8 @@ Descripcion del filtre : $7 ($8) ($9)",
 	'abusefilter-log-details-ip' => 'Provenéncia de l’adreça IP',
 	'abusefilter-log-noactions' => 'pas cap',
 	'abusefilter-log-details-diff' => 'Cambiaments faches dins la modificacion',
+	'abusefilter-log-linkoncontribs' => 'Jornal dels abuses',
+	'abusefilter-log-linkoncontribs-text' => "Jornal dels abuses d'aqueste utilizaire",
 	'abusefilter-management' => 'Gestion del filtre dels abuses',
 	'abusefilter-list' => 'Totes los filtres',
 	'abusefilter-list-id' => 'Filtre ID',
@@ -12028,6 +12066,8 @@ Opis filtru: $7 ($8) ($9)',
 	'abusefilter-log-details-ip' => 'Użyte adresy IP',
 	'abusefilter-log-noactions' => 'brak',
 	'abusefilter-log-details-diff' => 'Wprowadzone w edycji zmiany',
+	'abusefilter-log-linkoncontribs' => 'rejestr nadużyć',
+	'abusefilter-log-linkoncontribs-text' => 'Wpisy w rejestrze nadużyć dla tego użytkownika',
 	'abusefilter-management' => 'Zarządzanie filtrem nadużyć',
 	'abusefilter-list' => 'Wszystkie filtry',
 	'abusefilter-list-id' => 'ID filtru',
@@ -13051,6 +13091,8 @@ $messages['ru'] = array(
 	'abusefilter-log-details-ip' => 'Исходящий IP-адрес',
 	'abusefilter-log-noactions' => 'нет',
 	'abusefilter-log-details-diff' => 'Изменения, сделанные в правке',
+	'abusefilter-log-linkoncontribs' => 'журнал злоупотреблений',
+	'abusefilter-log-linkoncontribs-text' => 'Записи журнала злоупотреблений для этого участника',
 	'abusefilter-management' => 'Управление фильтром злоупотреблений',
 	'abusefilter-list' => 'Все фильтры',
 	'abusefilter-list-id' => 'ID фильтра',
@@ -13803,6 +13845,8 @@ Popis filtra: $7 ($8) ($9)',
 	'abusefilter-log-details-ip' => 'Zdrojová IP adresa',
 	'abusefilter-log-noactions' => 'žiadne',
 	'abusefilter-log-details-diff' => 'Zmeny vykonané v úprave',
+	'abusefilter-log-linkoncontribs' => 'záznam zneužití',
+	'abusefilter-log-linkoncontribs-text' => 'Záznam zneužití tohto používateľa',
 	'abusefilter-management' => 'Správa filtra zneužití',
 	'abusefilter-list' => 'Všetky filtre',
 	'abusefilter-list-id' => 'ID filtra',
@@ -14104,7 +14148,7 @@ Podrobnosti nájdete v [[Special:AbuseFilter/history|zozname]] posledných zmien
 	'abusefilter-diff-backhistory' => 'Späť na históriu filtra',
 	'abusefilter-import-intro' => 'Toto rozhranie môžete použiť na importovanie filtrov z iných wiki.
 Na zdrojovej wiki kliknite na „{{int:Abusefilter-edit-export}}“ v ponuke „{{int:abusefilter-tools-subtitle}}“ v rozhraní na úpravy.
-Skopírujte ho z textového poľa, kde sa objaví a vložte ho do tohto textového poľa. Pootom kliknite na „Importovať“.',
+Skopírujte ho z textového poľa, kde sa objaví a vložte ho do tohto textového poľa. Potom kliknite na „{{int:abusefilter-import-submit}}“.',
 	'abusefilter-import-submit' => 'Importovať údaje',
 );
 
@@ -15716,12 +15760,15 @@ Sta interfacia la mostra un elenco dei filtri definìi e la parmete de modificar
 	'right-abusefilter-log' => 'Varda el registro abusi',
 	'right-abusefilter-log-detail' => 'Varda voci detaglià del registro abusi',
 	'right-abusefilter-private' => 'Varda i dati privati nel registro dei abusi',
+	'right-abusefilter-modify-restricted' => 'Modifica i filtri anti abusi con le azion riservà',
+	'right-abusefilter-revert' => 'Anula tuti i canbiamenti fati da un determinato filtro abusi',
 	'action-abusefilter-modify' => 'modificar i filtri abusi',
 	'action-abusefilter-view' => 'vardar i filtri abusi',
 	'action-abusefilter-log' => 'vardar el registro dei abusi',
 	'action-abusefilter-log-detail' => 'vardar le voci de detaglio del registro dei abusi',
 	'action-abusefilter-private' => 'vardar le informassion riservà in tel registro dei abusi',
 	'action-abusefilter-modify-restricted' => 'modificar i filtri abusi con le azion riservà',
+	'action-abusefilter-revert' => 'ripristinar tute le modifiche fate da un determinato filtro abusi',
 	'abusefilter-log' => 'Registro del filtro abusi',
 	'abusefilter-log-summary' => 'Sto registro el mostra un elenco de tute le azion caturà dai filtri.',
 	'abusefilter-log-search' => 'Serca in tel registro dei abusi',
@@ -15740,6 +15787,8 @@ Sta interfacia la mostra un elenco dei filtri definìi e la parmete de modificar
 	'abusefilter-log-details-ip' => 'Indirisso IP de origine',
 	'abusefilter-log-noactions' => 'nissuna',
 	'abusefilter-log-details-diff' => 'Modìfeghe fate',
+	'abusefilter-log-linkoncontribs' => 'registro abusi',
+	'abusefilter-log-linkoncontribs-text' => 'Registro dei abusi par sto utente',
 	'abusefilter-management' => 'Gestion del filtro abusi',
 	'abusefilter-list' => 'Tuti i filtri',
 	'abusefilter-list-id' => 'ID del filtro',
@@ -16068,6 +16117,8 @@ Mô tả bộ lọc: $7 ($8) ($9)',
 	'abusefilter-log-details-ip' => 'Địa chỉ IP gốc',
 	'abusefilter-log-noactions' => 'không',
 	'abusefilter-log-details-diff' => 'Các thay đổi trong phiên sửa đổi',
+	'abusefilter-log-linkoncontribs' => 'nhật trình lạm dụng',
+	'abusefilter-log-linkoncontribs-text' => 'Nhật trình lạm dụng của người dùng',
 	'abusefilter-management' => 'Quản lý bộ lọc sai phạm',
 	'abusefilter-list' => 'Các bộ lọc',
 	'abusefilter-list-id' => 'ID bộ lọc',
@@ -16171,6 +16222,7 @@ Xin hãy yêu cầu một thành viên có quyền thêm các tác vụ hạn ch
 	'abusefilter-edit-tools' => 'Công cụ:',
 	'abusefilter-edit-test-link' => 'Kiểm thử bộ lọc này với các thay đổi gần đây',
 	'abusefilter-edit-global' => 'Áp dụng bộ lọc này toàn cầu',
+	'abusefilter-edit-export' => 'Xuất bộ lọc này ra wiki khác',
 	'abusefilter-edit-builder-select' => 'Lựa một tùy chọn để thêm nó vào con trỏ',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Toán tử số học',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Phép cộng (+)',
@@ -16329,6 +16381,7 @@ Lý do: $2',
 	'abusefilter-test-user' => 'Thay đổi của thành viên:',
 	'abusefilter-test-period-start' => 'Thay đổi thực hiện sau:',
 	'abusefilter-test-period-end' => 'Thay đổi thực hiện trước:',
+	'abusefilter-test-page' => 'Các thay đổi tại trang:',
 	'abusefilter-test-shownegative' => 'Hiển thị thay đổi không trùng với bộ lọc',
 	'abusefilter-test-syntaxerr' => 'Bộ lọc được nhập vào có lỗi cú pháp. Hãy bấm nút “Kiểm tra cú pháp” để đọc chi tiết đầy đủ.',
 	'abusefilter-changeslist-examine' => 'kiểm tra',
@@ -16354,6 +16407,7 @@ Lý do: $2',
 	'abusefilter-topnav-examine' => 'Kiểm tra các sửa đổi về trước',
 	'abusefilter-topnav-log' => 'Nhật trình lạm dụng',
 	'abusefilter-topnav-tools' => 'Công cụ gỡ rối',
+	'abusefilter-topnav-import' => 'Nhập bộ lọc',
 	'abusefilter-log-name' => 'Nhật trình bộ lọc lạm dụng',
 	'abusefilter-log-header' => 'Nhật trình này tóm lại các thay đổi bộ lọc. Hãy xem các chi tiết đầy đủ trong danh sách các [[Special:AbuseFilter/history|thay đổi bộ lọc gần đây]].',
 	'abusefilter-log-entry-modify' => 'đã sửa đổi $1 ($2)',
@@ -16364,6 +16418,10 @@ Lý do: $2',
 	'abusefilter-diff-pattern' => 'Điều kiện lọc',
 	'abusefilter-diff-invalid' => 'Không thể lấy các phiên bản yêu cầu',
 	'abusefilter-diff-backhistory' => 'Trở lại lịch sử bộ lọc',
+	'abusefilter-import-intro' => 'Trang này để nhập bộ lọc từ wiki khác.
+Tại trang sửa đổi của wiki nguồn, hãy bấm “{{int:abusefilter-edit-export}}” dưới đề mục “{{int:abusefilter-tools-subtitle}}”.
+Sau đó, chép văn bản từ hộp sẽ hiện ra, dán nó vào hộp ở đây, và bấm “{{int:abusefilter-import-submit}}”.',
+	'abusefilter-import-submit' => 'Nhập dữ liệu',
 );
 
 /** Volapük (Volapük)
@@ -16382,53 +16440,44 @@ $messages['vo'] = array(
 	'abusefilter-history-user' => 'Geban',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
-	// Description message
 	'abusefilter-desc' => '應用自動行為到編輯',
-
-	// Special pages
 	'abusefilter' => '濫用過濾器設定',
 	'abuselog' => '濫用紀錄',
-	'abusefilter-intro' => "歡迎到濫用過濾器管理界面。
+	'abusefilter-intro' => '歡迎到濫用過濾器管理界面。
 濫用過濾器係一個自動化軟件程序應用自動行為到任何動作度。
-呢個界面顯示一個定義咗嘅過濾器，容許去改佢哋。",
+呢個界面顯示一個定義咗嘅過濾器，容許去改佢哋。',
 	'abusefilter-mustbeeditor' => '基於保安理由，淨係得有權限改濫用過濾器嘅用戶先可以用呢個界面。',
-
-	// Hooks
 	'abusefilter-warning' => "<big>'''警告'''</big>: 呢個動作已經自動認定咗做有害嘅。
 冇建設性嘅編輯將會好快噉還原，
 同埋過份或者重覆嘅編輯會令到你個戶口或者電腦封鎖。
 如果你相信呢個編輯係有建設性嘅，你可以撳多一下遞交去確認佢。
 一個簡明濫用條件嘅描述同你嘅動作配合嘅係: $1",
-	'abusefilter-disallowed' => "呢個動作已經自動認定咗做有害嘅，
+	'abusefilter-disallowed' => '呢個動作已經自動認定咗做有害嘅，
 已經唔容許。
 如果你相信呢個編輯係有建設性嘅，請同管理員聯絡，通知佢哋你會試吓點做。
-一個簡明濫用條件嘅描述同你嘅動作配合嘅係: $1",
-	'abusefilter-blocked-display' => "呢個動作已經自動認定咗做有害嘅，
+一個簡明濫用條件嘅描述同你嘅動作配合嘅係: $1',
+	'abusefilter-blocked-display' => '呢個動作已經自動認定咗做有害嘅，
 你已經被防止執行佢。
 除此之外，要保謢{{SITENAME}}，你嘅戶口同全部有關嘅IP地址已經全部封鎖，唔畀編輯。
 如果出錯，請同管理員聯絡。
-一個簡明濫用條件嘅描述同你嘅動作配合嘅係: $1",
-	'abusefilter-degrouped' => "呢個動作已經自動認定咗做有害嘅，
+一個簡明濫用條件嘅描述同你嘅動作配合嘅係: $1',
+	'abusefilter-degrouped' => '呢個動作已經自動認定咗做有害嘅，
 結果，佢已經唔容許，重有，你個戶口可能已經被盜用，所有嘅權限已經拎走咗。
 如果你相信呢個係有錯嘅話，請聯絡事務員為呢個動作解釋，你嘅權限可能會恢復。
-一個簡明濫用條件嘅描述同你嘅動作配合嘅係: $1",
-	'abusefilter-autopromote-blocked' => "呢個動作已經自動認定咗做有害嘅，已經唔容許。
+一個簡明濫用條件嘅描述同你嘅動作配合嘅係: $1',
+	'abusefilter-autopromote-blocked' => '呢個動作已經自動認定咗做有害嘅，已經唔容許。
 除此之外，為咗保安理由，一啲開戶口嘅權限已經響你個戶口度拎走咗。
-一個簡明濫用條件嘅描述同你嘅動作配合嘅係: $1",
-
+一個簡明濫用條件嘅描述同你嘅動作配合嘅係: $1',
 	'abusefilter-blocker' => '濫用過濾器',
 	'abusefilter-blockreason' => '自動被濫用過濾器封鎖。
 配合規則嘅描述: $1',
 	'abusefilter-degroupreason' => '被濫用過濾器自動拎走咗權限。
 規則描述: $1',
-
 	'abusefilter-accountreserved' => '呢個戶口名預留畀濫用過濾器用。',
-
-	// Permissions
 	'right-abusefilter-modify' => '改濫用過濾器',
 	'right-abusefilter-view' => '睇濫用過濾器',
 	'right-abusefilter-log' => '去睇濫用紀錄',
@@ -16436,7 +16485,6 @@ $messages['yue'] = array(
 	'right-abusefilter-private' => '去睇濫用紀錄裏面嘅資料',
 	'right-abusefilter-modify-restricted' => '用限制動作改濫用過濾器',
 	'right-abusefilter-revert' => '復原一個濫用過濾器嘅全部修改',
-
 	'action-abusefilter-modify' => '改濫用過濾器',
 	'action-abusefilter-view' => '睇濫用過濾器',
 	'action-abusefilter-log' => '去睇濫用紀錄',
@@ -16444,8 +16492,6 @@ $messages['yue'] = array(
 	'action-abusefilter-private' => '去睇濫用紀錄裏面嘅資料',
 	'action-abusefilter-modify-restricted' => '用限制動作改濫用過濾器',
 	'action-abusefilter-revert' => '復原一個濫用過濾器嘅全部修改',
-
-	// Abuse Log
 	'abusefilter-log' => '濫用過濾器紀錄',
 	'abusefilter-log-summary' => '呢個紀錄列示咗由過濾器捉到嘅全部動作。',
 	'abusefilter-log-search' => '搵濫用紀錄',
@@ -16472,7 +16518,6 @@ $messages['yue'] = array(
 	'abusefilter-log-details-diff' => '響編輯嘅更動',
 	'abusefilter-log-linkoncontribs' => '濫用紀錄',
 	'abusefilter-log-linkoncontribs-text' => '呢位用戶嘅濫用紀錄',
-	// Abuse filter management
 	'abusefilter-management' => '濫用過濾器管理',
 	'abusefilter-list' => '全部過濾器',
 	'abusefilter-list-id' => '過濾器ID',
@@ -16498,8 +16543,6 @@ $messages['yue'] = array(
 	'abusefilter-loglink' => '去睇濫用紀錄',
 	'abusefilter-return' => '返去過濾器管理',
 	'abusefilter-status-global' => '全域',
-
-	// Options form
 	'abusefilter-list-options' => '選項',
 	'abusefilter-list-options-deleted' => '刪咗嘅過濾器:',
 	'abusefilter-list-options-deleted-only' => '只係顯示刪咗嘅過濾器',
@@ -16508,8 +16551,6 @@ $messages['yue'] = array(
 	'abusefilter-list-options-disabled' => '閂咗嘅過濾器:',
 	'abusefilter-list-options-hidedisabled' => '隱藏閂咗嘅過濾器',
 	'abusefilter-list-options-submit' => '更新',
-
-	// Abuse filter tools
 	'abusefilter-tools-subtitle' => '工具',
 	'abusefilter-tools-text' => '呢度有啲有用嘅工具去將濫用過濾器公式化同除錯。',
 	'abusefilter-tools-expr' => '表達式測試器',
@@ -16517,19 +16558,15 @@ $messages['yue'] = array(
 	'abusefilter-tools-reautoconfirm' => '恢恢自動確認狀態',
 	'abusefilter-tools-reautoconfirm-user' => '用戶:',
 	'abusefilter-tools-reautoconfirm-submit' => '重新確認',
-	'abusefilter-reautoconfirm-none' => '呢位用戶冇將{{GENDER:$1|佢|佢|佢哋}}嘅自動確認狀態停用。', # This message supports {{GENDER}}
+	'abusefilter-reautoconfirm-none' => '呢位用戶冇將{{GENDER:$1|佢|佢|佢哋}}嘅自動確認狀態停用。',
 	'abusefilter-reautoconfirm-notallowed' => '你唔容許去恢恢自動確認狀態。',
-	'abusefilter-reautoconfirm-done' => "戶口嘅自動確認狀態已經恢恢", # This message supports {{GENDER}}
-
-	// Abuse filter status
-	'abusefilter-status' => "響之前$1次動作，有$2次 ($3%) 已經到咗$4次條件上限，以及有$5次 ($6%) 同其中一組而定開咗嘅過濾器配合。",
-
-	// The edit screen
+	'abusefilter-reautoconfirm-done' => '戶口嘅自動確認狀態已經恢恢',
+	'abusefilter-status' => '響之前$1次動作，有$2次 ($3%) 已經到咗$4次條件上限，以及有$5次 ($6%) 同其中一組而定開咗嘅過濾器配合。',
 	'abusefilter-edit-subtitle' => '編輯緊過濾器$1',
-	'abusefilter-edit-oldwarning' => "<strong>你而家編輯緊呢個過濾器嘅舊版本。
+	'abusefilter-edit-oldwarning' => '<strong>你而家編輯緊呢個過濾器嘅舊版本。
 個統計係計響最近過本嘅過濾器度。
 如果你保存你嘅修改，你會覆蓋自從你編輯修訂嘅全部修改。</strong> &bull;
-[[Special:AbuseFilter/history/$2|返去呢個過濾器嘅歷史]]。",
+[[Special:AbuseFilter/history/$2|返去呢個過濾器嘅歷史]]。',
 	'abusefilter-edit-status-label' => '統計:',
 	'abusefilter-edit-status' => '響之前$1次動作，呢個過濾器已經配合咗$2次 ($3%)。
 平均，佢嘅運行時間係$4毫秒',
@@ -16538,13 +16575,15 @@ $messages['yue'] = array(
 	'abusefilter-edit-new' => '新過濾器',
 	'abusefilter-edit-save' => '保存過濾器',
 	'abusefilter-edit-id' => '過濾器ID:',
-	'abusefilter-edit-description' => "描述:\n:''(公共睇得到)''",
+	'abusefilter-edit-description' => "描述:
+:''(公共睇得到)''",
 	'abusefilter-edit-flags' => '旗:',
 	'abusefilter-edit-enabled' => '開呢個過濾器',
 	'abusefilter-edit-deleted' => '標示做刪咗',
 	'abusefilter-edit-hidden' => '隱藏呢個過濾器響公共顯示嘅細節',
 	'abusefilter-edit-rules' => '條件:',
-	'abusefilter-edit-notes' => "咪模:\n:''(私人)''",
+	'abusefilter-edit-notes' => "咪模:
+:''(私人)''",
 	'abusefilter-edit-lastmod' => '過濾器上次修改:',
 	'abusefilter-edit-lastmod-text' => '自$2響$1改',
 	'abusefilter-edit-hitcount' => '過濾器觸發次數:',
@@ -16552,7 +16591,7 @@ $messages['yue'] = array(
 	'abusefilter-edit-action-warn' => '畀用戶警告之後觸發嘅動作',
 	'abusefilter-edit-action-disallow' => '以問題形式防止用戶去做動作',
 	'abusefilter-edit-action-flag' => '響編輯響濫用紀錄度加旗',
-	'abusefilter-edit-action-blockautopromote' => "拎走用戶嘅自動確認狀態",
+	'abusefilter-edit-action-blockautopromote' => '拎走用戶嘅自動確認狀態',
 	'abusefilter-edit-action-degroup' => '響全部組度拎走用戶',
 	'abusefilter-edit-action-block' => '封鎖用戶/IP地址，唔畀編輯',
 	'abusefilter-edit-action-throttle' => '如果用戶去到一個上限率嗰陣觸發動作',
@@ -16561,23 +16600,25 @@ $messages['yue'] = array(
 	'abusefilter-edit-throttle-count' => '可以容許嘅動作:',
 	'abusefilter-edit-throttle-period' => '時段:',
 	'abusefilter-edit-throttle-seconds' => '$1秒',
-	'abusefilter-edit-throttle-groups' => "由組截住:\n:''(一行一個，用逗號組合)''",
+	'abusefilter-edit-throttle-groups' => "由組截住:
+:''(一行一個，用逗號組合)''",
 	'abusefilter-edit-warn-message' => '用系統訊息去警告:',
 	'abusefilter-edit-warn-other' => '其它訊息',
-	'abusefilter-edit-warn-other-label' => "其它訊息嘅頁名:\n:''(無MediaWiki字頭)''",
+	'abusefilter-edit-warn-other-label' => "其它訊息嘅頁名:
+:''(無MediaWiki字頭)''",
 	'abusefilter-edit-warn-actions' => '動作:',
 	'abusefilter-edit-warn-preview' => '預覽揀咗嘅訊息',
 	'abusefilter-edit-warn-edit' => '開/編輯揀咗嘅訊息',
 	'abusefilter-edit-tag-tag' => '摘嘅名 (一行一個):',
-	'abusefilter-edit-denied' => "你唔係以去睇呢個過濾器嘅細節，因為響公共顯示度隱藏咗。",
+	'abusefilter-edit-denied' => '你唔係以去睇呢個過濾器嘅細節，因為響公共顯示度隱藏咗。',
 	'abusefilter-edit-main' => '過濾器參數',
 	'abusefilter-edit-done-subtitle' => '改咗嘅過濾器',
-	'abusefilter-edit-done' => "你已經成功噉保存你嘅修改做過濾器$1。",
-	'abusefilter-edit-badsyntax' => "你所指定嘅過濾器有語法錯誤。
-個處理器嘅輸出係: <pre>$1</pre>",
+	'abusefilter-edit-done' => '你已經成功噉保存你嘅修改做過濾器$1。',
+	'abusefilter-edit-badsyntax' => '你所指定嘅過濾器有語法錯誤。
+個處理器嘅輸出係: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => '你唔可以改呢個過濾器，由於佢有一個或者更多限制咗嘅動作。
 問一位有權限嘅用戶去幫你改，去加限制咗嘅動作。',
-	'abusefilter-edit-viewhistory' => "睇呢個過濾器嘅歷史",
+	'abusefilter-edit-viewhistory' => '睇呢個過濾器嘅歷史',
 	'abusefilter-edit-history' => '歷史:',
 	'abusefilter-edit-check' => '檢查語法',
 	'abusefilter-edit-badfilter' => '你所指定嘅過濾器唔存在',
@@ -16586,8 +16627,6 @@ $messages['yue'] = array(
 	'abusefilter-edit-test-link' => '用呢個過濾器試最近嘅編輯',
 	'abusefilter-edit-global' => '全域應用呢個過濾器',
 	'abusefilter-edit-export' => '倒出呢個過濾器到另一個wiki',
-
-	// Filter editing helpers
 	'abusefilter-edit-builder-select' => '揀一個選項，去加佢到個標記度',
 	'abusefilter-edit-builder-group-op-arithmetic' => '計數運算符',
 	'abusefilter-edit-builder-op-arithmetic-addition' => '加數 (+)',
@@ -16662,7 +16701,7 @@ $messages['yue'] = array(
 	'abusefilter-edit-builder-vars-user-name' => '用戶戶口名',
 	'abusefilter-edit-builder-vars-user-groups' => '用戶響組 (包埋當然嘅)',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => '電郵確認時間',
-	'abusefilter-edit-builder-vars-recent-contributors' => '對呢版嘅上五位編者',
+	'abusefilter-edit-builder-vars-recent-contributors' => '對呢版嘅上十位編者',
 	'abusefilter-edit-builder-vars-all-links' => '新字加外連',
 	'abusefilter-edit-builder-vars-added-links' => '編輯加咗嘅全部外連',
 	'abusefilter-edit-builder-vars-removed-links' => '編輯拎走咗嘅全部外連',
@@ -16670,15 +16709,12 @@ $messages['yue'] = array(
 	'abusefilter-edit-builder-vars-new-text' => '響編輯之後嘅新頁wiki字',
 	'abusefilter-edit-builder-vars-new-text-stripped' => '切咗標記嘅新頁字',
 	'abusefilter-edit-builder-vars-new-html' => '新修訂處理過嘅HTML源碼',
-	'abusefilter-edit-builder-vars-recent-contributors' => '對呢版嘅上十位編者',
 	'abusefilter-edit-builder-vars-restrictions-edit' => '響嗰版嘅保謢等級',
 	'abusefilter-edit-builder-vars-restrictions-move' => '搬嗰版嘅保謢等級',
 	'abusefilter-edit-builder-vars-old-text-stripped' => '切咗標記嘅舊頁字',
 	'abusefilter-edit-builder-vars-old-links' => '響編輯之前嘅連結',
 	'abusefilter-edit-builder-vars-old-html' => '舊wiki字處理過嘅HTML',
 	'abusefilter-edit-builder-vars-minor-edit' => '編輯係小修改',
-	
-	// Filter history
 	'abusefilter-filter-log' => '最近過濾修改',
 	'abusefilter-history' => '濫用過濾器#$1嘅更改歷史',
 	'abusefilter-history-foruser' => '$1嘅更改',
@@ -16700,8 +16736,6 @@ $messages['yue'] = array(
 	'abusefilter-history-select-submit' => '細搵',
 	'abusefilter-history-diff' => '次更改',
 	'abusefilter-history-error-hidden' => '你所請求嘅過濾器隱藏咗，你唔可以睇佢嘅歷史。',
-
-	// Exceptions
 	'abusefilter-exception-unexpectedatend' => '響字元 $1 度唔要 "$2"。',
 	'abusefilter-exception-expectednotfound' => '響字元 $1 度需要 $2，搵唔到 (但係搵到 $3 $4)。',
 	'abusefilter-exception-unrecognisedkeyword' => '響字元 $1 度認唔到關鍵字 $2。',
@@ -16718,8 +16752,6 @@ $messages['yue'] = array(
 	'abusefilter-exception-overridebuiltin' => '響字元 $1 度有非法覆蓋全建變數 "$2"。',
 	'abusefilter-exception-outofbounds' => '響字元 $1 度有未存在嘅表項 $2 (表項大細 = $3)。',
 	'abusefilter-exception-notlist' => '響字元 $1 度非陣列需要陣列項目。',
-
-	// Actions
 	'abusefilter-action-throttle' => '控頻',
 	'abusefilter-action-warn' => '警告',
 	'abusefilter-action-blockautopromote' => '封鎖自動升格',
@@ -16727,8 +16759,6 @@ $messages['yue'] = array(
 	'abusefilter-action-degroup' => '響組度拎走',
 	'abusefilter-action-rangeblock' => '範圍封鎖',
 	'abusefilter-action-disallow' => '唔容許',
-
-	// Revert interface
 	'abusefilter-revert-title' => '由過濾器$1復原全部更改',
 	'abusefilter-revert-intro' => '呢個表容許你去復原因為過濾器$1做過嘅全部更改。
 響用呢個工具之前請小心。',
@@ -16746,8 +16776,6 @@ $messages['yue'] = array(
 	'abusefilter-revert-reason' => '自動復原由過濾器$1做咗嘅全部動作。
 畀咗嘅原因: $2',
 	'abusefilter-revert-reasonfield' => '復原嘅原因:',
-
-	// These messages are for batch checking
 	'abusefilter-test' => '用之前嘅編輯去試過濾器',
 	'abusefilter-test-intro' => '呢一版容許你用下面輸入個盒去檢查針對之前$1次更改嘅過濾器。
 要載入現有嘅過濾器，響編輯盒下面盒嘅輸入佢嘅過濾器ID，再撳『載入』掣。',
@@ -16763,8 +16791,6 @@ $messages['yue'] = array(
 	'abusefilter-test-syntaxerr' => '你所輸入嘅過濾器有語法錯誤。
 你可以撳『檢查語法』掣去收一個完整嘅解釋。',
 	'abusefilter-changeslist-examine' => '查吓',
-
-	// And these messages are for examining specific actions.
 	'abusefilter-examine' => '查個別更改',
 	'abusefilter-examine-intro' => '呢一版容許你去查吓一次個別更改由濫用過濾器產生嘅變數，再由過濾器測試。',
 	'abusefilter-examine-legend' => '揀更改',
@@ -16781,8 +16807,6 @@ $messages['yue'] = array(
 	'abusefilter-examine-notfound' => '你所要求嘅更改搵唔到。',
 	'abusefilter-examine-incompatible' => '你所請求嘅修改並未由濫用過濾器支援',
 	'abusefilter-examine-noresults' => '你所提供嘅搵嘢參數搵到無結果。',
-	
-	// Top navigation interface
 	'abusefilter-topnav' => "'''濫用過濾器導航'''",
 	'abusefilter-topnav-home' => '屋企',
 	'abusefilter-topnav-test' => '連串測試',
@@ -16790,14 +16814,10 @@ $messages['yue'] = array(
 	'abusefilter-topnav-log' => '濫用紀錄',
 	'abusefilter-topnav-tools' => '除錯工具',
 	'abusefilter-topnav-import' => '倒入過濾器',
-	
-	// Logging
 	'abusefilter-log-name' => '濫用過濾器紀錄',
-	'abusefilter-log-header' => "呢個紀錄顯示過濾器更改過嘅摘要。
-要知更多細節，睇之前過濾器更改嘅[[Special:AbuseFilter/history|表]]。",
+	'abusefilter-log-header' => '呢個紀錄顯示過濾器更改過嘅摘要。
+要知更多細節，睇之前過濾器更改嘅[[Special:AbuseFilter/history|表]]。',
 	'abusefilter-log-entry-modify' => '改咗 $1 ($2)',
-	
-	// Diffs
 	'abusefilter-diff-title' => '唔同版本之間嘅差異',
 	'abusefilter-diff-item' => '項目',
 	'abusefilter-diff-version' => '響 $1 由 $2 做嘅版本',
@@ -16805,8 +16825,6 @@ $messages['yue'] = array(
 	'abusefilter-diff-pattern' => '過濾器條件',
 	'abusefilter-diff-invalid' => '唔能夠擷取所需要嘅版本',
 	'abusefilter-diff-backhistory' => '返去過濾器歷史',
-	
-	// Import interface
 	'abusefilter-import-intro' => '你可以用呢個界面由其它wiki度去倒入過濾器。
 	響個來源wiki度，響編輯界面度嘅『{{int:abusefilter-tools-subtitle}}』下面撳『{{int:abusefilter-edit-export}}』。
 複製響文字盒出現嘅字，再響呢個文字盒度貼上，然後再撳『{{int:abusefilter-import-submit}}』。',
