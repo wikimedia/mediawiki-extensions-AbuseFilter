@@ -17,6 +17,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
 
 $dir = dirname(__FILE__);
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'Abuse Filter',
 	'author'         => array('Andrew Garrett','River Tarnell', 'Victor Vasiliev'),
 	'description'    => 'Applies automatic heuristics to edits.',
