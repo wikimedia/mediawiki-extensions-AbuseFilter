@@ -97,6 +97,7 @@ Filter description: $7 ($8) ($9)',
 	'abusefilter-log-details-diff' => 'Changes made in edit',
 	'abusefilter-log-linkoncontribs' => 'abuse log',
 	'abusefilter-log-linkoncontribs-text' => 'Abuse Log for this user',
+
 	// Abuse filter management
 	'abusefilter-management' => 'Abuse filter management',
 	'abusefilter-list' => 'All filters',
@@ -6023,6 +6024,8 @@ $messages['he'] = array(
 	'abusefilter-log-details-ip' => 'כתובת ה־IP המקורית',
 	'abusefilter-log-noactions' => 'אין',
 	'abusefilter-log-details-diff' => 'שינויים בוצעו בעריכה',
+	'abusefilter-log-linkoncontribs' => 'יומן מסנן ההשחתות',
+	'abusefilter-log-linkoncontribs-text' => 'יומן מסנן ההשחתות למשתמש זה',
 	'abusefilter-management' => 'ניהול מסנני ההשחתות',
 	'abusefilter-list' => 'כל המסננים',
 	'abusefilter-list-id' => 'מספר המסנן',
