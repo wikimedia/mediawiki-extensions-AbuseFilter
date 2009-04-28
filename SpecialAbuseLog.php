@@ -109,8 +109,9 @@ class SpecialAbuseLog extends SpecialPage {
 		
 		$pager = new AbuseLogPager( $this, $conds );
 		
+		$body = Xml::tags( 'ul', null, $pager->getBody() );
 		$wgOut->addHTML( $pager->getNavigationBar() .
-				Xml::tags( 'ul', null, $pager->getBody() ) .
+				$body .
 				$pager->getNavigationBar() );
 	}
 	
