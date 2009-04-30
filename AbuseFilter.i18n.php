@@ -2400,6 +2400,8 @@ Provedená opatření: $6; popis filtru: $7 ($8) ($9)',
 	'abusefilter-log-details-ip' => 'Zdrojová IP adresa',
 	'abusefilter-log-noactions' => 'žádná',
 	'abusefilter-log-details-diff' => 'Změny provedené editací',
+	'abusefilter-log-linkoncontribs' => 'protokol zneužití',
+	'abusefilter-log-linkoncontribs-text' => 'Protokol filtrů zneužití pro tohoto uživatele',
 	'abusefilter-management' => 'Správa filtrů zneužívání',
 	'abusefilter-list' => 'Všechny filtry',
 	'abusefilter-list-id' => 'ID filtru',
@@ -2660,6 +2662,7 @@ Už existující filtr můžete použít tím, že jeho ID napíšete do rámeč
 	'abusefilter-test-user' => 'Změny provedené uživatelem:',
 	'abusefilter-test-period-start' => 'Změny provedené po:',
 	'abusefilter-test-period-end' => 'Změny provedené před:',
+	'abusefilter-test-page' => 'Změněná stránka:',
 	'abusefilter-test-shownegative' => 'Zobrazit i změny, které filtru nevyhovují',
 	'abusefilter-test-syntaxerr' => 'Zadaný filtr obsahuje syntaktickou chybu.
 Podrobnější vysvětlení můžete získat kliknutím na tlačítko „Zkontrolovat syntaxi“.',
@@ -8733,7 +8736,7 @@ $messages['ko'] = array(
 :(공개됨)',
 	'abusefilter-edit-enabled' => '이 필터 활성화하기',
 	'abusefilter-edit-deleted' => '삭제된 것으로 표시',
-	'abusefilter-edit-rules' => '상태 규칙:',
+	'abusefilter-edit-rules' => '필터 규칙:',
 	'abusefilter-edit-lastmod-text' => '$2(이)가 $1에 변경',
 	'abusefilter-edit-action-blockautopromote' => '사용자의 자동 인증 상태를 해제',
 	'abusefilter-edit-action-degroup' => '모든 사용자 권한을 해제',
@@ -8774,10 +8777,14 @@ $messages['ko'] = array(
 	'abusefilter-edit-builder-op-bool-or' => '또는 (|)',
 	'abusefilter-edit-builder-op-bool-xor' => '배타적 논리합 (^)',
 	'abusefilter-edit-builder-group-misc' => '기타',
+	'abusefilter-edit-builder-misc-stringlit' => '문자열 ("")',
+	'abusefilter-edit-builder-misc-tern' => '3단 연산자 (X ? Y : Z)',
 	'abusefilter-edit-builder-group-funcs' => '기능',
 	'abusefilter-edit-builder-funcs-length' => '문자열 길이 (length)',
 	'abusefilter-edit-builder-funcs-lcase' => '소문자로 변환 (lcase)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => '중복되는 글자를 제거 (rmdouble)',
+	'abusefilter-edit-builder-funcs-specialratio' => '특수 문자 비율 (specialratio)',
+	'abusefilter-edit-builder-funcs-rmwhitespace' => '공백 제거 (rmwhitespace)',
 	'abusefilter-edit-builder-funcs-rmspecials' => '특수 문자를 제거 (rmspecials)',
 	'abusefilter-edit-builder-group-vars' => '변수',
 	'abusefilter-edit-builder-vars-accountname' => '계정 이름 (계정 생성 시)',
@@ -8812,6 +8819,7 @@ $messages['ko'] = array(
 	'abusefilter-history-select-user' => '사용자:',
 	'abusefilter-exception-expectednotfound' => '$1번째 문자에 있어야 할 $2가 발견되지 않았습니다. ($3 $4를 대신 찾아보세요.)',
 	'abusefilter-exception-dividebyzero' => '$1번째 문자에서 $2를 0으로 나누려 하고 있습니다.',
+	'abusefilter-exception-regexfailure' => '$1번째 글자의 "$3" 정규 표현식에서 오류 발생: "$2"',
 	'abusefilter-action-warn' => '경고',
 	'abusefilter-action-blockautopromote' => '자동 인증 막음',
 	'abusefilter-action-block' => '차단하기',
@@ -8832,9 +8840,11 @@ $messages['ko'] = array(
 	'abusefilter-examine-submit' => '찾기',
 	'abusefilter-examine-test-button' => '필터 시험',
 	'abusefilter-diff-title' => '버전 사이의 차이',
+	'abusefilter-diff-item' => '항목',
 	'abusefilter-diff-info' => '기본 정보',
 	'abusefilter-diff-pattern' => '필터 규칙',
 	'abusefilter-diff-backhistory' => '필터 역사로 돌아가기',
+	'abusefilter-import-submit' => '데이터 가져오기',
 );
 
 /** Krio (Krio)
@@ -13035,11 +13045,11 @@ $messages['ru'] = array(
 Фильтр злоупотреблений представляет собой автоматизированный механизм применения автоматических эвристик к действиям участников.
 Здесь приведён список всех установленных фильтров, даётся возможность их изменения.',
 	'abusefilter-mustbeeditor' => 'По соображениям безопасности, только участники с правом изменения фильтров злоупотреблений могут использовать этот интерфейс.',
-	'abusefilter-warning' => "<big>'''Внимание'''</big>. Данное действие было автоматически определено как вредоносное.
+	'abusefilter-warning' => "<big>'''Внимание'''</big>. Данное действие было автоматически определено как нежелательное.
 Неконструктивные правки будут быстро отменены,
-грубые или неоднократные неконструктивную правки приведут к блокировке вашей учётной записи или компьютера.
-Если вы уверены, что это конструктивная правка, вы можете нажать «Отправить» ещё раз, подтвердив тем самым правку.
-Краткое описание злоупотребления, с которым определено соответствие вашего действия: $1",
+грубые или неоднократные неконструктивные правки приведут к блокировке вашей учётной записи или компьютера.
+Если вы уверены, что это конструктивная правка, вы можете нажать «Отправить» ещё раз для подтверждения.
+Краткое описание правила, с которым определено соответствие вашего действия: $1",
 	'abusefilter-disallowed' => 'Данное действие было автоматически определено как вредоносное,
 и потому запрещено.
 Если вы уверены, что это конструктивная правка, пожалуйста, обратитесь к администратору и расскажите, что вы собирались сделать.
@@ -13161,7 +13171,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-hidden' => 'Скрыть подробности этого фильтра от обычных участников',
 	'abusefilter-edit-rules' => 'Условия:',
 	'abusefilter-edit-notes' => "Примечания:
-:''(приватные)",
+:''(приватные)''",
 	'abusefilter-edit-lastmod' => 'Последнее изменение фильтра:',
 	'abusefilter-edit-lastmod-text' => '$1 — $2',
 	'abusefilter-edit-hitcount' => 'Срабатываний фильтра:',
@@ -13482,6 +13492,8 @@ $messages['sah'] = array(
 	'abusefilter-log-details-ip' => 'Таска тахсар IP',
 	'abusefilter-log-noactions' => 'суох',
 	'abusefilter-log-details-diff' => 'Уларытыы уратылара',
+	'abusefilter-log-linkoncontribs' => 'омсо сурунаала',
+	'abusefilter-log-linkoncontribs-text' => 'Омсо сурунаалын бу кыттааччыга сыһыаннаах суруктара',
 	'abusefilter-management' => 'Омсо сиидэтин салайыы',
 	'abusefilter-list' => 'Бары сиидэлэр',
 	'abusefilter-list-id' => 'Сиидэ нүөмэрэ',
@@ -13590,6 +13602,7 @@ $messages['sah'] = array(
 	'abusefilter-edit-tools' => 'Үнүстүрүмүөннэр:',
 	'abusefilter-edit-test-link' => 'Бу сиидэни саҥа уларытыыларга боруобалыырга',
 	'abusefilter-edit-global' => 'Бу сиидэни глобальнайдык тутун',
+	'abusefilter-edit-export' => 'Бу сиидэни атын биикигэ таһаар',
 	'abusefilter-edit-builder-select' => 'Эбиллэр туруорууну тал',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Арифметика бэлиэлэрэ',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Эбии (+)',
@@ -13742,6 +13755,7 @@ $messages['sah'] = array(
 	'abusefilter-test-user' => 'Кыттааччы уларытыылара:',
 	'abusefilter-test-period-start' => 'Уларытыылар бу кэнниттэн оҥоһуллубуттар:',
 	'abusefilter-test-period-end' => 'Уларытыылар бу кэнниттэн оҥоһуллубуттар:',
+	'abusefilter-test-page' => 'Сирэйгэ оҥоһуллубут уларытыылар:',
 	'abusefilter-test-shownegative' => 'Сиидэҕэ түбэспэт уларытыылары көрдөр',
 	'abusefilter-test-syntaxerr' => 'Килэрбит сиидэҥ синтаксиска сыыһалаах.
 Сиһилии бу туһунан "Синтаксиһын тургут" тимэҕи баттаатаххына билиэххин сөп.',
@@ -13768,6 +13782,7 @@ $messages['sah'] = array(
 	'abusefilter-topnav-examine' => 'Бүтэһик улартыылары үөрэтии',
 	'abusefilter-topnav-log' => 'Омсо сурунаала',
 	'abusefilter-topnav-tools' => 'Өрөмүөн үнүстүрүмүөннэрэ',
+	'abusefilter-topnav-import' => 'Сиидэни импортааһын',
 	'abusefilter-log-name' => 'Омсо сиидэтин сурунаала',
 	'abusefilter-log-header' => 'Бу сурунаалга туох баар сиидэлэргэ оҥоһуллубут улартыылар суруллаллар.
 Сиһилии сиидэлэр кэнники улартыыларын [[Special:AbuseFilter/history|тиһигэр]] көрүөххүн сөп.',
@@ -13779,6 +13794,10 @@ $messages['sah'] = array(
 	'abusefilter-diff-pattern' => 'Сиидэ туруоруулара',
 	'abusefilter-diff-invalid' => 'Көрдөөбүт барыллары көрөр табыллыбата',
 	'abusefilter-diff-backhistory' => 'Сиидэ устуоруйатыгар төннүү',
+	'abusefilter-import-intro' => 'Бу үнүстүрүмүөнү туһанан сиидэлэри атын биикилэртэн импортыаххын сөп.
+Ылар биикигэр "{{int:abusefilter-tools-subtitle}}" салааҕа киириэҥҥин "{{int:abusefilter-edit-export}}" диэни баттаа.
+Тиэкис хонуутуттан иһинээҕитин бу сирэйгэ көһөр уонна "{{int:abusefilter-import-submit}}" диэни баттаа.',
+	'abusefilter-import-submit' => 'Импортаа',
 );
 
 /** Slovak (Slovenčina)
@@ -14874,6 +14893,7 @@ Du kan se en fullständig förklaring genom att klicka på "Kontrollera syntax"-
 	'abusefilter-topnav-examine' => 'Granska tidigare ändringar',
 	'abusefilter-topnav-log' => 'Missbrukslogg',
 	'abusefilter-topnav-tools' => 'Felsökningsverktyg',
+	'abusefilter-topnav-import' => 'Importera filter',
 	'abusefilter-log-name' => 'Logg för missbruksfiltret',
 	'abusefilter-log-header' => 'Denna logg visar en sammanfattning av ändringar som har gjorts i filtren.
 För fullständiga detaljer, se [[Special:AbuseFilter/history|listan]] över de senaste filterändringarna.',
@@ -14885,6 +14905,7 @@ För fullständiga detaljer, se [[Special:AbuseFilter/history|listan]] över de 
 	'abusefilter-diff-pattern' => 'Filtervillkor',
 	'abusefilter-diff-invalid' => 'Kunde inte hämta de önskade versionerna',
 	'abusefilter-diff-backhistory' => 'Tillbaka till filterhistoriken',
+	'abusefilter-import-submit' => 'Importera data',
 );
 
 /** Telugu (తెలుగు)
