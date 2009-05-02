@@ -3501,6 +3501,7 @@ Klikni w žrědłowem wikiju na "{{int:abusefilter-edit-export}}" pód "{{int:ab
  * @author Crazymadlover
  * @author Geraki
  * @author K sal 15
+ * @author Konsnos
  * @author Omnipaedista
  * @author ZaDiak
  */
@@ -3710,6 +3711,7 @@ $messages['el'] = array(
 	'abusefilter-history-select-user' => 'Χρήστης:',
 	'abusefilter-history-select-submit' => 'Διύλιση',
 	'abusefilter-history-diff' => 'Αλλαγές',
+	'abusefilter-history-error-hidden' => 'Το φίλτρο που ζητήσατε είναι κρυφό, και δεν μπορείτε να δείτε το ιστορικό του.',
 	'abusefilter-exception-unclosedstring' => 'Ατακτοποίητος ορμαθός που ξεκινάει από τον χαρακτήρα $1.',
 	'abusefilter-action-throttle' => 'Εμπόδιση',
 	'abusefilter-action-warn' => 'Προειδοποίηση',
@@ -3737,6 +3739,7 @@ $messages['el'] = array(
 	'abusefilter-test-period-start' => 'Αλλαγές που έγιναν μετά:',
 	'abusefilter-test-period-end' => 'Αλλαγές που έγιναν πριν:',
 	'abusefilter-test-page' => 'Αλλαγές στις οποίες υποβλήθηκε η σελίδα:',
+	'abusefilter-test-shownegative' => 'Εμφάνιση αλλαγών που δεν αντιστοιχούν στο φίλτρο',
 	'abusefilter-changeslist-examine' => 'εξετάστε',
 	'abusefilter-examine' => 'Εξέταση μεμονωμένων αλλαγών',
 	'abusefilter-examine-legend' => 'Επιλέξτε τις αλλαγές',
@@ -4297,6 +4300,7 @@ Por favor solicita a un usuario con permiso para agregar acciones restringidas h
 	'abusefilter-exception-noparams' => 'Ningún parámetro siguó la función "$2" en caracter $1.',
 	'abusefilter-exception-dividebyzero' => 'Intento ilegal de dividir $2 entre cero en caracter $1.',
 	'abusefilter-exception-unrecognisedvar' => 'Variable no reconocida $2 en caracter $1',
+	'abusefilter-exception-regexfailure' => 'Error en expresión regular "$3" en caracter $1: "$2"',
 	'abusefilter-action-throttle' => 'Impedir',
 	'abusefilter-action-warn' => 'Advertir',
 	'abusefilter-action-block' => 'Bloquear',
@@ -4329,6 +4333,7 @@ Para cargar un filtro existente, escribe el ID del filtro dentro de la tabla deb
 	'abusefilter-test-user' => 'Cambios por usuario:',
 	'abusefilter-test-period-start' => 'Cambios hechos después:',
 	'abusefilter-test-period-end' => 'Cambios hechos antes:',
+	'abusefilter-test-page' => 'Cambios hechos a la página:',
 	'abusefilter-test-syntaxerr' => 'El filtro que has ingresado contiene un error de sintaxis.
 Puedes recibir una completa explicación haciendo click en el botón "Verificar sintaxis".',
 	'abusefilter-changeslist-examine' => 'examinar',
@@ -5952,6 +5957,13 @@ Fir meh Detail lueg d [[Special:AbuseFilter/history|Lischt vu dr letschte Filter
 Druck im Quällwiki uf "{{int:abusefilter-edit-export}}" unter "{{int:abusefilter-tools-subtitle}}" im Bearbeitigs-Interface.
 Kopier e us em Textbook, wu erschynt, un fieg e in des Textbook yy, derno druck "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'Date importiere',
+);
+
+/** Gujarati (ગુજરાતી)
+ * @author Dineshjk
+ */
+$messages['gu'] = array(
+	'abusefilter-log-noactions' => 'કોઇ નહીં',
 );
 
 /** Manx (Gaelg)
@@ -12747,6 +12759,7 @@ Para carregar um filtro existente, escreva o ID do filtro na caixa abaixo da cai
 	'abusefilter-test-user' => 'Modificações pelo utilizador:',
 	'abusefilter-test-period-start' => 'Modificações feitas após:',
 	'abusefilter-test-period-end' => 'Modificações feitas antes de:',
+	'abusefilter-test-page' => 'Alterações feitas à página:',
 	'abusefilter-test-shownegative' => 'Mostrar modificações que não correspondam ao filtro',
 	'abusefilter-test-syntaxerr' => 'O filtro que introduziu continha um erro de sintaxe.
 Você pode ver uma explicação completa clicando no botão "Verificar sintaxe".',
@@ -12773,6 +12786,7 @@ Você pode ver uma explicação completa clicando no botão "Verificar sintaxe".
 	'abusefilter-topnav-examine' => 'Examinar edições passadas',
 	'abusefilter-topnav-log' => 'Registo de Abusos',
 	'abusefilter-topnav-tools' => 'Ferramentas de depuração',
+	'abusefilter-topnav-import' => 'Importar filtro',
 	'abusefilter-log-name' => 'Registo dos filtros de abuso',
 	'abusefilter-log-header' => 'Este registo mostra um resumo das alterações efetuadas a filtros.
 Para detalhes completos, ver [[Special:AbuseFilter/history|a lista]] de alterações recentes a filtros.',
@@ -12784,6 +12798,7 @@ Para detalhes completos, ver [[Special:AbuseFilter/history|a lista]] de alteraç
 	'abusefilter-diff-pattern' => 'Condições do filtro',
 	'abusefilter-diff-invalid' => 'Não foi possível buscar as versões requeridas',
 	'abusefilter-diff-backhistory' => 'Regressar ao histórico do filtro',
+	'abusefilter-import-submit' => 'Importar dados',
 );
 
 /** Tarifit (Tarifit)
@@ -14624,6 +14639,8 @@ Filterbeskrivning: $7 ($8) ($9)',
 	'abusefilter-log-details-ip' => 'Upphovs-IP',
 	'abusefilter-log-noactions' => 'ingen',
 	'abusefilter-log-details-diff' => 'Ändringar utförda i redigeringen',
+	'abusefilter-log-linkoncontribs' => 'missbrukslogg',
+	'abusefilter-log-linkoncontribs-text' => 'Missbrukslogg för den här användaren',
 	'abusefilter-management' => 'Hantering av missbruksfilter',
 	'abusefilter-list' => 'Alla filter',
 	'abusefilter-list-id' => 'Filter-ID',
@@ -14725,6 +14742,7 @@ Filterbeskrivning: $7 ($8) ($9)',
 	'abusefilter-edit-tools' => 'Verktyg:',
 	'abusefilter-edit-test-link' => 'Testa detta filter mot senaste ändringar',
 	'abusefilter-edit-global' => 'Lägg till det här filtret globalt',
+	'abusefilter-edit-export' => 'Exportera det här filtret till en annan wiki',
 	'abusefilter-edit-builder-select' => 'Ange ett alternativ för att lägga till det på markören',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetiska operatörer',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Addition (+)',
