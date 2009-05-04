@@ -3077,6 +3077,7 @@ Für genauere Details, siehe [[Special:AbuseFilter/history|die Liste]] der letzt
 	'abusefilter-diff-pattern' => 'Filterregeln',
 	'abusefilter-diff-invalid' => 'Die angeforderte Version kann nicht abgerufen werden',
 	'abusefilter-diff-backhistory' => 'Zurück zur Versionsgeschichte des Filters',
+	'abusefilter-import-submit' => 'Daten importieren',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -3639,6 +3640,7 @@ $messages['el'] = array(
 	'abusefilter-edit-tools' => 'Εργαλεία:',
 	'abusefilter-edit-test-link' => 'Δοκιμή αυτού του φίλτρου ενάντια σε πρόσφατες επεξεργασίες',
 	'abusefilter-edit-global' => 'Εφαρμογή αυτού του φίλτρου καθολικά',
+	'abusefilter-edit-export' => 'Εξάγετε αυτό το φίλτρο σε ένα άλλο wiki',
 	'abusefilter-edit-builder-select' => 'Επιλογή προσθετέα στον δρομέα',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Αειυμητικοί τελεστές',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Πρόσθεση (+)',
@@ -3674,6 +3676,7 @@ $messages['el'] = array(
 	'abusefilter-edit-builder-funcs-substr' => 'Υποορμαθός (substr)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Ορισμός μεταβλητής (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Μεταβλητές',
+	'abusefilter-edit-builder-vars-accountname' => 'Όνομα λογαριασμού (στη δημιουργία λογαριασμού)',
 	'abusefilter-edit-builder-vars-action' => 'Ενέργεια',
 	'abusefilter-edit-builder-vars-addedlines' => 'Γραμμές που προστέθηκαν στην επεξεργασία',
 	'abusefilter-edit-builder-vars-delta' => 'Αλλαγή μεγέθους κατά την επεξεργασία',
@@ -4152,6 +4155,7 @@ Descripción: $1',
 	'abusefilter-reautoconfirm-none' => 'Este usuario no ha tenido {{GENDER:$1|su|su}} estado autoconfirmado suspendido.',
 	'abusefilter-reautoconfirm-notallowed' => 'No se te permite restaurar el estado autoconfirmado',
 	'abusefilter-reautoconfirm-done' => 'El estado autoconfirmado de la cuenta ha sido restaurado',
+	'abusefilter-status' => 'De las últimas $1 {{PLURAL:$1|acción|acciones}}, $2 ($3%) {{PLURAL:$2|ha|han}} han alcanzado la condición límite de  $4, y $5 ($6%) {{PLURAL:$5|ha|han}} coincidido con uno de los filtros actualmente habilitados.',
 	'abusefilter-edit-subtitle' => 'Editando filtro $1',
 	'abusefilter-edit-oldwarning' => '<strong>Estás editando una versión antigua de este filtro.
 Las estadísticas citadas son para la más reciente versión del filtro.
@@ -4369,6 +4373,9 @@ Para detalles completos, ver [[Special:AbuseFilter/history|la lista]] de cambios
 	'abusefilter-diff-pattern' => 'Condiciones de filtro',
 	'abusefilter-diff-invalid' => 'Incapaz de traer la versiones solicitadas',
 	'abusefilter-diff-backhistory' => 'Regresar al historial del filtro',
+	'abusefilter-import-intro' => 'Puedes usar esta interface para importar filtros de otros wikis.
+En el wiki fuente, haga click en "{{int:abusefilter-edit-export}}" bajo "{{int:abusefilter-tools-subtitle}}" en la interface de edición.
+Copiar desde el cuadro de texto que aparece, y pegarlo dentro de este cuadro de texto, luego haga click en "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Importar datos',
 );
 
@@ -13402,7 +13409,7 @@ $messages['ru'] = array(
 	'abusefilter-examine-test' => 'Проверить это изменение в фильтре',
 	'abusefilter-examine-test-button' => 'Проверить фильтр',
 	'abusefilter-examine-match' => 'Это изменение подпадает под фильтр.',
-	'abusefilter-examine-nomatch' => 'Это изменение не подподает под фильтр.',
+	'abusefilter-examine-nomatch' => 'Это изменение не подпадает под фильтр.',
 	'abusefilter-examine-syntaxerror' => 'Синтаксическая ошибка в фильтре',
 	'abusefilter-examine-notfound' => 'Указанное вами изменение не может быть найдено.',
 	'abusefilter-examine-incompatible' => 'Указанное вами изменение не поддерживается фильтром злоупотреблений',
@@ -14568,6 +14575,7 @@ Kuute Beschrieuwenge fon ju nit beoachtede Räägel: $1',
  * @author Najami
  * @author Njaelkies Lea
  * @author Petter Strandmark
+ * @author Poxnar
  */
 $messages['sv'] = array(
 	'abusefilter-desc' => 'Tillämpar automatiska filter på redigeringar',
@@ -14923,6 +14931,9 @@ För fullständiga detaljer, se [[Special:AbuseFilter/history|listan]] över de 
 	'abusefilter-diff-pattern' => 'Filtervillkor',
 	'abusefilter-diff-invalid' => 'Kunde inte hämta de önskade versionerna',
 	'abusefilter-diff-backhistory' => 'Tillbaka till filterhistoriken',
+	'abusefilter-import-intro' => 'Du kan använda detta gränssnitt till att importera filter från andra wikier.
+I källwikin klickar du på "{{int:abusefilter-edit-export}}" under "{{int:abusefilter-tools-subtitle}}" i redigeringsgränsnittet.
+Kopiera från textrutan som kommer fram och klistra in det till denna ruta. Klicka sedan på "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Importera data',
 );
 
