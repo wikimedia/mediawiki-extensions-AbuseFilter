@@ -3024,6 +3024,7 @@ Es {{PLURAL:$3|wurde $3 Argument|wurden $3 Argumente}} erwartet, übergeben {{PL
 	'abusefilter-exception-regexfailure' => 'Fehler im regulären Ausdruck „$3“ an Zeichen $1: „$2“',
 	'abusefilter-exception-overridebuiltin' => 'Verbotenes Überschreiben der eingebauten Variable „$2“ an Zeichen $1.',
 	'abusefilter-exception-outofbounds' => 'Anforderung des nicht vorhandenen Listeneintrages $2 (Listengröße: $3) an Zeichen $1.',
+	'abusefilter-exception-notlist' => 'Anforderung eines Arrayelements aus einem Nicht-Array bei Zeichen „$1“.',
 	'abusefilter-action-throttle' => 'Drosseln',
 	'abusefilter-action-warn' => 'Warnen',
 	'abusefilter-action-blockautopromote' => 'Autopromote sperren',
@@ -3571,6 +3572,8 @@ $messages['el'] = array(
 	'abusefilter-log-details-ip' => 'Διεύθυνση IP της προέλευσης',
 	'abusefilter-log-noactions' => 'καμία',
 	'abusefilter-log-details-diff' => 'Αλλαγές που πραγματοποιήθηκαν κατά την επεξεργασία',
+	'abusefilter-log-linkoncontribs' => 'ιστορικό καταχρήσεων',
+	'abusefilter-log-linkoncontribs-text' => 'Ιστορικό καταχρήσεων για αυτόν τον χρήστη',
 	'abusefilter-management' => 'Διαχείριση φίλτρου καταχρήσεων',
 	'abusefilter-list' => 'Όλα τα φίλτρα',
 	'abusefilter-list-id' => 'Ταυτότητα φίλτρου',
@@ -3693,6 +3696,7 @@ $messages['el'] = array(
 	'abusefilter-edit-builder-misc-cond' => 'Υποθετικό (εάν X ειδάλλως Y ή Z)',
 	'abusefilter-edit-builder-group-funcs' => 'Λειτουργίες',
 	'abusefilter-edit-builder-funcs-length' => 'Μήκος ορμαθού (length)',
+	'abusefilter-edit-builder-funcs-lcase' => 'Μετατροπή σε μικρογράμματη γραφή (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Κανονικοποίηση συγχύσιμων χαρακτήρων (ccnorm)',
 	'abusefilter-edit-builder-funcs-norm' => 'Κανονικοποίηση (norm)',
 	'abusefilter-edit-builder-funcs-ip_in_range' => 'Είναι η IP εντός εμβέλειας; (ip_in_range)',
@@ -3700,6 +3704,7 @@ $messages['el'] = array(
 	'abusefilter-edit-builder-funcs-set_var' => 'Ορισμός μεταβλητής (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Μεταβλητές',
 	'abusefilter-edit-builder-vars-accountname' => 'Όνομα λογαριασμού (κατά την δημιουργία λογαριασμού)',
+	'abusefilter-edit-builder-vars-timestamp' => 'Χρονική σφραγίδα Unix της επεξεργασίας',
 	'abusefilter-edit-builder-vars-action' => 'Ενέργεια',
 	'abusefilter-edit-builder-vars-addedlines' => 'Γραμμές που προστέθηκαν στην επεξεργασία',
 	'abusefilter-edit-builder-vars-delta' => 'Αλλαγή μεγέθους κατά την επεξεργασία',
@@ -5915,7 +5920,7 @@ Churzbschryybig vu dr verletzte Regle: $1',
 Het $3 {{PLURAL:$3|Argumänt|Argumänt}} erwartet, het $4 iberchu',
 	'abusefilter-exception-regexfailure' => 'Fähler im reguläre Uusdruck "$3" bim Zeiche $1: "$2"',
 	'abusefilter-exception-overridebuiltin' => 'Nit zuelässigs Uusschalte vu dr yyböute Variable „$2“ bim Zeiche $1.',
-	'abusefilter-exception-outofbounds' => 'Frogt noche eme Lischtepunkt $2 (Lischtegreßi = 3) bim Zeiche $1, wu s nit git.',
+	'abusefilter-exception-outofbounds' => 'Frogt noche eme Lischtepunkt $2 (Lischtegreßi = $3) bim Zeiche $1, wu s nit git.',
 	'abusefilter-exception-notlist' => 'Frogt noch eme Punkt in eme Dateberyych bim Zeiche $1, wu s kei Dateberyych het',
 	'abusefilter-action-throttle' => 'Drossle',
 	'abusefilter-action-warn' => 'Warne',
@@ -10047,6 +10052,7 @@ $messages['mk'] = array(
  * @author Aviator
  * @author Izzudin
  * @author Kurniasan
+ * @author Zamwan
  */
 $messages['ms'] = array(
 	'abusefilter-desc' => 'Mengenakan heuristik automatik pada suntingan.',
@@ -10091,6 +10097,14 @@ Keterangan peraturan: $1',
 	'abusefilter-log-search-user' => 'Pengguna:',
 	'abusefilter-log-search-filter' => 'ID penapis:',
 	'abusefilter-log-search-title' => 'Tajuk:',
+	'abusefilter-log-details-val' => 'Nilai',
+	'abusefilter-log-details-private' => 'Data peribadi',
+	'abusefilter-list-edit' => 'Sunting',
+	'abusefilter-tools-modifiertest-submit' => 'Uji',
+	'abusefilter-list-options-submit' => 'Kemas kini',
+	'abusefilter-tools-reautoconfirm-user' => 'Pengguna:',
+	'abusefilter-edit-status-label' => 'Statistik:',
+	'abusefilter-edit-throttle-period' => 'Tempoh masa',
 );
 
 /** Maltese (Malti)
@@ -13413,7 +13427,7 @@ $messages['ru'] = array(
 	'abusefilter-action-rangeblock' => 'Блокировка диапазона',
 	'abusefilter-action-disallow' => 'Отклонение',
 	'abusefilter-revert-title' => 'Откатить все изменения, сделанные фильтром $1',
-	'abusefilter-revert-intro' => 'Эта форма позволяет вам откатить все изменения, сделанный фильтром злоупотреблений $1.
+	'abusefilter-revert-intro' => 'Эта форма позволяет вам откатить все изменения, сделанные фильтром злоупотреблений $1.
 Пожалуйста, проявите осмотрительность в использовании этого инструмента.',
 	'abusefilter-revert-preview-item' => '$1: $2 сделал $3 на $4. Действия для отмены: $5 ($6)',
 	'abusefilter-revert-search-legend' => 'Выберите действия фильтра злоупотреблений, которые нужно отменить',
@@ -14442,7 +14456,9 @@ Kuute Beschrieuwenge fon ju nit beoachtede Räägel: $1',
 	'abusefilter-log-search-title' => 'Tittel:',
 	'abusefilter-log-search-submit' => 'Säike (uk ap Düütsk5)',
 	'abusefilter-log-entry' => '$1: $2 löösde ne Misbruuks-Sieuwe uut, truch dät hie $3 ap $4 moakede. Aktion: $5; Sieuwe-Beschrieuwenge: $6',
-	'abusefilter-log-detailedentry-meta' => '$1: $2 häd ju $3 uutlöösd, wät n $4 ap $5 feruurseeked. Ärgriepene Mäitenoamen: $6; Sieuwebeschrieuwenge: $7 ($8)',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 häd ju $3 uutlöösd, wät n $4 ap $5 feruurseeked.
+Ärgriepene Mäitenoamen: $6;
+Sieuwebeschrieuwenge: $7 ($8) ($9)',
 	'abusefilter-log-detailedentry-local' => 'Sieuwe $1',
 	'abusefilter-log-detailslink' => 'Eenpeldhaide',
 	'abusefilter-log-details-legend' => 'Eenpeldhaide foar dän Logbouk-Iendraach $1',
@@ -15030,6 +15046,7 @@ $messages['te'] = array(
 	'abusefilter-edit-action-block' => 'ఈ వాడుకరిని దిద్దుబాట్లు చేయకుండా నిషేధించు',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|క్షణం|క్షణాలు}}',
 	'abusefilter-edit-warn-other' => 'ఇతర సందేశం',
+	'abusefilter-edit-warn-actions' => 'చర్యలు:',
 	'abusefilter-edit-history' => 'చరిత్ర:',
 	'abusefilter-edit-tools' => 'పనిముట్లు:',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'కూడిక (+)',
@@ -15043,6 +15060,7 @@ $messages['te'] = array(
 	'abusefilter-edit-builder-vars-oldsize' => 'పాత పేజీ పరిమాణం',
 	'abusefilter-edit-builder-vars-user-age' => 'వాడుకరి ఖాతా యొక్క వయసు',
 	'abusefilter-edit-builder-vars-user-name' => 'వాడుకరి ఖాతా యొక్క పేరు',
+	'abusefilter-history-timestamp' => 'సమయం',
 	'abusefilter-history-user' => 'వాడుకరి',
 	'abusefilter-history-comments' => 'వ్యాఖ్యలు',
 	'abusefilter-history-actions' => 'చర్యలు',
@@ -15050,6 +15068,7 @@ $messages['te'] = array(
 	'abusefilter-examine-user' => 'వాడుకరి:',
 	'abusefilter-examine-title' => 'పేజీ శీర్షిక:',
 	'abusefilter-examine-submit' => 'వెతుకు',
+	'abusefilter-diff-info' => 'ప్రాధమిక సమాచారం',
 );
 
 /** Tetum (Tetun)

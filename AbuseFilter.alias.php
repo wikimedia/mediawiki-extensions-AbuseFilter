@@ -122,6 +122,12 @@ $aliases['ja'] = array(
 	'AbuseFilter' => array( '不正利用フィルター' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'AbuseLog' => array( 'Logbooch vum Meßbruchsfellter' ),
+	'AbuseFilter' => array( 'Meßbruchsfellter' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'AbuseLog' => array( 'Lëscht vum Mëssbrauch' ),
