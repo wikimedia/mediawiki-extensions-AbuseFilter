@@ -546,6 +546,7 @@ class AbuseFilterParser {
 		} while ($this->mCur->type == AFPToken::TStatementSeparator);
 	}
 
+	/** Handles multiple expressions */
 	protected function doLevelSet( &$result ) {
 		if( $this->mCur->type == AFPToken::TID ) {
 			$varname = $this->mCur->value;
@@ -565,13 +566,14 @@ class AbuseFilterParser {
 				}
 				$list = $this->mVars->getVar( $varname );
 				if( $list->type != AFPData::DList )
-						throw new AFPUserVisibleException( 'notlist', $this->mCur->pos, array() );
+					throw new AFPUserVisibleException( 'notlist', $this->mCur->pos, array() );
 				$list = $list->toList();
 				$this->move();
 				if( $this->mCur->type == AFPToken::TSquareBracket && $this->mCur->value == ']' ) {
 					$idx = 'new';
 				} else {
-					$this->setState( $prev ); $this->move();
+					$this->setState( $prev );
+					$this->move();
 					$idx = new AFPData();
 					$this->doLevelSemicolon( $idx );
 					$idx = $idx->toInt();

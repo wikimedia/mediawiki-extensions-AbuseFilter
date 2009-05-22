@@ -37,7 +37,7 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 		
 		$detailsid = $wgRequest->getIntOrNull( 'details' );
-		if ($detailsid) {
+		if ( $detailsid ) {
 			$this->showDetails( $detailsid );
 		} else {		
 			// Show the search form.
@@ -54,13 +54,16 @@ class SpecialAbuseLog extends SpecialPage {
 		$this->mSearchUser = $wgRequest->getText( 'wpSearchUser' );
 
 		$t = Title::newFromText( trim($this->mSearchUser) );
-		if ($t) {
+		if ( $t ) {
 			$this->mSearchUser = $t->getText(); // Username normalisation
-		} else $this->mSearchUser = null;
+		} else {
+			$this->mSearchUser = null;
+		}
 		
 		$this->mSearchTitle = $wgRequest->getText( 'wpSearchTitle' );
-		if ($this->canSeeDetails())
+		if ( $this->canSeeDetails() ) {
 			$this->mSearchFilter = $wgRequest->getIntOrNull( 'wpSearchFilter' );
+		}
 	}
 	
 	function searchForm() {
@@ -96,13 +99,15 @@ class SpecialAbuseLog extends SpecialPage {
 		// Generate conditions list.
 		$conds = array();
 		
-		if (!empty($this->mSearchUser))
+		if ( !empty( $this->mSearchUser ) ) {
 			$conds['afl_user_text'] = $this->mSearchUser;
-		if (!empty($this->mSearchFilter))
+		}
+		if ( !empty( $this->mSearchFilter ) ) {
 			$conds['afl_filter'] = $this->mSearchFilter;
+		}
 			
 		$searchTitle = Title::newFromText( $this->mSearchTitle );
-		if ($this->mSearchTitle && $searchTitle) {
+		if ( $this->mSearchTitle && $searchTitle ) {
 			$conds['afl_namespace'] = $searchTitle->getNamespace();
 			$conds['afl_title'] = $searchTitle->getDBKey();
 		}
@@ -116,7 +121,7 @@ class SpecialAbuseLog extends SpecialPage {
 	}
 	
 	function showDetails( $id ) {
-		if (!$this->canSeeDetails()) {
+		if ( !$this->canSeeDetails() ) {
 			return;
 		}
 		
@@ -126,8 +131,9 @@ class SpecialAbuseLog extends SpecialPage {
 			array( 'afl_id' => $id ), __METHOD__,
 			array( 'abuse_filter' => array( 'left join', 'af_id=afl_filter') ) );
 		
-		if (!$row)
+		if ( !$row ) {
 			return;
+		}
 		
 		$output = '';
 		
@@ -177,7 +183,7 @@ class SpecialAbuseLog extends SpecialPage {
 		// Build a table.
 		$output .= AbuseFilter::buildVarDumpTable( $vars );
 		
-		if ($this->canSeePrivate()) {
+		if ( $this->canSeePrivate() ) {
 			// Private stuff, like IPs.
 			$header = 
 				Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-var' ) ) . 
@@ -214,8 +220,8 @@ class SpecialAbuseLog extends SpecialPage {
 	
 	function canSeeDetails() {
 		global $wgUser;
-		return !count($this->getTitle()->getUserPermissionsErrors( 
-			'abusefilter-log-detail', $wgUser, true, array( 'ns-specialprotected' ) ));
+		return !count( $this->getTitle()->getUserPermissionsErrors( 
+			'abusefilter-log-detail', $wgUser, true, array( 'ns-specialprotected' ) ) );
 	}
 	
 	function canSeePrivate() {
@@ -231,19 +237,19 @@ class SpecialAbuseLog extends SpecialPage {
 		## One-time setup
 		static $sk=null;
 		
-		if (is_null($sk)) {
+		if ( is_null( $sk ) ) {
 			$sk = $wgUser->getSkin();
 		}
 		
 		$title = Title::makeTitle( $row->afl_namespace, $row->afl_title );
 		
-		if (!$row->afl_wiki) {
+		if ( !$row->afl_wiki ) {
 			$pageLink = $sk->link( $title );
 		} else {
 			$pageLink = WikiMap::makeForeignLink( $row->afl_wiki, $row->afl_title );
 		}
 		
-		if (!$row->afl_wiki) {
+		if ( !$row->afl_wiki ) {
 			// Local user
 			$user = $sk->userLink( $row->afl_user, $row->afl_user_text ) .
 				$sk->userToolLinks( $row->afl_user, $row->afl_user_text );
@@ -257,10 +263,10 @@ class SpecialAbuseLog extends SpecialPage {
 		$timestamp = $wgLang->timeanddate( $row->afl_timestamp, true );
 
 		$actions_taken = $row->afl_actions;
-		if ( !strlen( trim( $actions_taken) ) ) {
+		if ( !strlen( trim( $actions_taken ) ) ) {
 			$actions_taken = wfMsg( 'abusefilter-log-noactions' );
 		} else {
-			$actions = explode(',', $actions_taken);
+			$actions = explode( ',', $actions_taken );
 			$displayActions = array();
 
 			foreach( $actions as $action ) {
@@ -272,7 +278,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$globalIndex = AbuseFilter::decodeGlobalName( $row->afl_filter );
 		
 		global $wgOut;
-		if ($globalIndex) {
+		if ( $globalIndex ) {
 			// Pull global filter description
 			$parsed_comments =
 				$wgOut->parseInline( AbuseFilter::getGlobalFilterDescription( $globalIndex ) );
@@ -280,7 +286,7 @@ class SpecialAbuseLog extends SpecialPage {
 			$parsed_comments = $wgOut->parseInline( $row->af_public_comments );
 		}
 		
-		if ($this->canSeeDetails()) {
+		if ( $this->canSeeDetails() ) {
 			$examineTitle = SpecialPage::getTitleFor( 'AbuseFilter', "examine/log/".$row->afl_id );
 			$detailsLink = $sk->makeKnownLinkObj( 
 				$this->getTitle(), 
@@ -291,7 +297,7 @@ class SpecialAbuseLog extends SpecialPage {
 				wfMsgExt( 'abusefilter-changeslist-examine', 'parseinline' ), 
 				array() );
 				
-			if ($globalIndex) {
+			if ( $globalIndex ) {
 				global $wgAbuseFilterCentralDB;
 				$globalURL =
 					WikiMap::getForeignURL( $wgAbuseFilterCentralDB,

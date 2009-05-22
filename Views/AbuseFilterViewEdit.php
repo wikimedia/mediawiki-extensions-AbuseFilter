@@ -22,7 +22,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$didEdit = $this->canEdit() 
 			&& $wgUser->matchEditToken( $editToken, array( 'abusefilter', $filter ) );
 
-		if ($didEdit) {
+		if ( $didEdit ) {
 			// Check syntax
 			$syntaxerr = AbuseFilter::checkSyntax( $wgRequest->getVal( 'wpFilterRules' ) );
 			if ($syntaxerr !== true ) {

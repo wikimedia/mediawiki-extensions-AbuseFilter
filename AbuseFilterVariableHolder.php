@@ -6,7 +6,7 @@ class AbuseFilterVariableHolder {
 	
 	function setVar( $variable, $datum ) {
 		$variable = strtolower( $variable );
-		if (!( $datum instanceof AFPData || $datum instanceof AFComputedVariable ) ) {
+		if ( !( $datum instanceof AFPData || $datum instanceof AFComputedVariable ) ) {
 			$datum = AFPData::newFromPHPVar( $datum );
 		}
 		
@@ -20,15 +20,14 @@ class AbuseFilterVariableHolder {
 	
 	function getVar( $variable ) {
 		$variable = strtolower( $variable );
-		if ( isset($this->mVars[$variable]) ) {
-		
-			if ($this->mVars[$variable] instanceof AFComputedVariable) {
+		if ( isset( $this->mVars[$variable] ) ) {
+			if ( $this->mVars[$variable] instanceof AFComputedVariable ) {
 				$value = $this->mVars[$variable]->compute( $this );
 				$this->setVar( $variable, $value );
-				
 				return $value;
-			} elseif ($this->mVars[$variable] instanceof AFPData)
+			} elseif ( $this->mVars[$variable] instanceof AFPData ) {
 				return $this->mVars[$variable];
+			}
 		} else {
 			return new AFPData();
 		}
@@ -45,8 +44,9 @@ class AbuseFilterVariableHolder {
 	}
 	
 	function addHolder( $addHolder ) {
-		if ( !is_object($addHolder) )
+		if ( !is_object( $addHolder ) ) {
 			throw new MWException( "Invalid argument to AbuseFilterVariableHolder::addHolder" );
+		}
 		$this->mVars = array_merge( $this->mVars, $addHolder->mVars );
 	}
 	
@@ -60,8 +60,9 @@ class AbuseFilterVariableHolder {
 		$exported = array();
 		
 		foreach( $allVarNames as $varName ) {
-			if (!in_array( $varName, self::$varBlacklist ) )
+			if ( !in_array( $varName, self::$varBlacklist ) ) {
 				$exported[$varName] = $this->getVar( $varName )->toString();
+			}
 		}
 		
 		return $exported;
@@ -80,7 +81,7 @@ class AbuseFilterVariableHolder {
 									'revision-text-by-timestamp' );
 		
 		foreach( $this->mVars as $name => $value ) {
-			if ($value instanceof AFComputedVariable &&
+			if ( $value instanceof AFComputedVariable &&
 						in_array( $value->mMethod, $dbTypes ) ) {
 					$value = $value->compute( $this );
 					$this->setVar( $name, $value );
@@ -106,8 +107,9 @@ class AFComputedVariable {
 		
 		$cacheKey = md5($wikitext).':'.$article->mTitle->getPrefixedText();
 		
-		if ( isset( $cache[$cacheKey] ) )
+		if ( isset( $cache[$cacheKey] ) ) {
 			return $cache[$cacheKey];
+		}
 			
 		global $wgParser;
 		$edit = (object)array();
@@ -120,15 +122,17 @@ class AFComputedVariable {
 	}
 	
 	static function userObjectFromName( $username ) {
-		if ( isset( self::$userCache[$username] ) )
+		if ( isset( self::$userCache[$username] ) ) {
 			return self::$userCache[$username];
+		}
 			
 		wfDebug( "Couldn't find user $username in cache\n" );
 		
-		if (IP::isIPAddress( $username )) {
+		if ( IP::isIPAddress( $username ) ) {
 			$u = new User;
 			$u->setName( $username );
-			return self::$userCache[$username] = $u;
+			self::$userCache[$username] = $u;
+			return $u;
 		}
 		
 		$user = User::newFromName( $username );
@@ -139,8 +143,9 @@ class AFComputedVariable {
 	}
 	
 	static function articleFromTitle( $namespace, $title ) {
-		if ( isset( self::$articleCache["$namespace:$title"] ) )
+		if ( isset( self::$articleCache["$namespace:$title"] ) ) {
 			return self::$articleCache["$namespace:$title"];
+		}
 			
 		wfDebug( "Creating article object for $namespace:$title in cache\n" );
 		
@@ -153,7 +158,9 @@ class AFComputedVariable {
 	static function getLinksFromDB( $article ) {
 		// Stolen from ConfirmEdit
 		$id = $article->getId();
-		if (!$id) return array();
+		if ( !$id ) {
+			return array();
+		}
 		
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'externallinks', array( 'el_to' ), 
@@ -260,7 +267,7 @@ class AFComputedVariable {
 				$textVar = $parameters['wikitext-var'];
 				
 				$text = $vars->getVar( $textVar )->toString();
-				$editInfo = $this->parseNonEditWIkitext( $text, $article );
+				$editInfo = $this->parseNonEditWikitext( $text, $article );
 				
 				$result = $editInfo->output->getText();
 				break;
