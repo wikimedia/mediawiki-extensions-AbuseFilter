@@ -10935,7 +10935,7 @@ Vraag een gebruiker met toestemming om beperkte handelingen toe te voegen om de 
 	'abusefilter-edit-builder-vars-user-name' => 'Gebruikersnaam',
 	'abusefilter-edit-builder-vars-user-groups' => 'Groepen (inclusief impliciete) waar gebruiker lid van is',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Tijdstip e-mailbevestiging',
-	'abusefilter-edit-builder-vars-recent-contributors' => 'Laatste vijf bewerkers van de pagina',
+	'abusefilter-edit-builder-vars-recent-contributors' => 'Laatste tien bewerkers van de pagina',
 	'abusefilter-edit-builder-vars-all-links' => 'Alle externe verwijzingen in de nieuwe tekst',
 	'abusefilter-edit-builder-vars-added-links' => 'Alle externe verwijzingen die in deze bewerking zijn toegevoegd',
 	'abusefilter-edit-builder-vars-removed-links' => 'Alle externe verwijzingen die in deze bewerking zijn verwijderd',
