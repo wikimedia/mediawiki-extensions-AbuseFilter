@@ -96,7 +96,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		if ($this->mTestPage) {
 			$title = Title::newFromText( $this->mTestPage );
 			$conds['rc_namespace'] = $title->getNamespace();
-			$conds['rc_title'] = $title->getDBKey();
+			$conds['rc_title'] = $title->getDBkey();
 		}
 
 		// Get our ChangesList

@@ -695,7 +695,7 @@ class AbuseFilter {
 			'afl_user_text' => $wgUser->getName(),
 			'afl_timestamp' => $dbr->timestamp(wfTimestampNow()),
 			'afl_namespace' => $title->getNamespace(),
-			'afl_title' => $title->getDBKey(),
+			'afl_title' => $title->getDBkey(),
 			'afl_ip' => wfGetIp() );
 		
 		// Hack to avoid revealing IPs of people creating accounts
