@@ -5711,7 +5711,7 @@ Die Syte zeigt e Lischte vu definierte Filter. D Filter chenne uf däre Syte au 
 Unkonschtruktivi Byyträg wäre zmeischt zimli schnäll usegnuh. In widerholte un bsundersch schlimme Fäll wird Dyy Benutzerkonto bzw. Dyyni IP-Adräss gsperrt.
 Wänn Du dänksch, ass Dyyni Änderig konschtruktiv gsi isch, chasch si aber bstätige, indäm Du nomol uf  „{{int:savearticle}}“ drucksch.
 
-Churzbschryybig vu dr verletzte Regle: $1",
+Churzbschryybig vu dr verletzte Regle: '''$1'''",
 	'abusefilter-disallowed' => 'Die Aktion isch automatisch as schädlig erkannt wore un isch wäge däm nit durgfiert wore.
 Wänn Du dänksch, ass Dyyni Änderig konschtruktiv gsi isch, wänd Di bitte an e Ammann un schryyb em, was Du mit Dyynere Änderig hesch welle.
 
@@ -5903,7 +5903,6 @@ Churzbschryybig vu dr verletzte Regle: $1',
 	'abusefilter-edit-builder-funcs-length' => 'Lengi vu dr Zeichefolg (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'In Chleibuechstabe konvertiere (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Zeiche, wu verwirre, normalisiere (ccnorm)',
-	'abusefilter-edit-builder-funcs-convert' => 'Konvertier-String zuen ere spezifizierte Variable (convert)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Doppleti Zeichen useneh (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Spezialzeiche / Zeiche insgsamt (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Normalisiere (norm)',
@@ -8796,6 +8795,7 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'abusefilter-desc' => '편집에 자동적으로 필터를 적용',
+	'abusefilter-mustbeeditor' => '보안상의 이유로, 부정행위 방지 필터 편집 권한을 가진 사용자만이 이 양식을 이용할 수 있습니다.',
 	'abusefilter-warning' => "<big>'''경고'''</big>: 이러한 행위는 자동적으로 해로운 것으로 간주되었습니다.
 비생산적인 편집은 신속하게 되돌려질 것이며, 반복적인 비생산적 편집은 당신의 계정이나 컴퓨터가 차단될 수 있습니다.
 이 편집이 생산적인 편집이라 확신한다면, 확인 버튼을 다시 클릭하십시오.
@@ -8851,6 +8851,7 @@ $messages['ko'] = array(
 	'abusefilter-log-details-private' => '비공개 정보',
 	'abusefilter-log-details-ip' => '사용자의 IP 주소',
 	'abusefilter-log-noactions' => '없음',
+	'abusefilter-log-linkoncontribs' => '부정 행위 기록',
 	'abusefilter-log-linkoncontribs-text' => '이 사용자의 부정 행위 기록',
 	'abusefilter-management' => '부정 행위 방지 필터 관리',
 	'abusefilter-list' => '모든 필터',
@@ -8912,6 +8913,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-warn-preview' => '선택한 메시지 미리 보기',
 	'abusefilter-edit-warn-edit' => '선택한 메시지를 생성/편집하기',
 	'abusefilter-edit-tag-tag' => '적용할 태그 (1줄당 1개씩):',
+	'abusefilter-edit-denied' => '이 필터는 비공개로 설정되었기 때문에, 당신은 이 필터의 자세한 사항을 볼 수 없습니다.',
 	'abusefilter-edit-main' => '필터 변수',
 	'abusefilter-edit-viewhistory' => '이 필터의 역사 보기',
 	'abusefilter-edit-history' => '역사:',
@@ -8978,6 +8980,7 @@ $messages['ko'] = array(
 	'abusefilter-history-enabled' => '활성화됨',
 	'abusefilter-history-timestamp' => '시간',
 	'abusefilter-history-user' => '사용자',
+	'abusefilter-history-public' => '필터 설명',
 	'abusefilter-history-filter' => '필터 규칙',
 	'abusefilter-history-backedit' => '필터 편집기로 돌아가기',
 	'abusefilter-history-deleted' => '삭제됨',
@@ -9008,6 +9011,7 @@ $messages['ko'] = array(
 	'abusefilter-examine-submit' => '찾기',
 	'abusefilter-examine-test-button' => '필터 시험',
 	'abusefilter-examine-syntaxerror' => '이 필터의 필터 규칙 문법이 잘못되었습니다.',
+	'abusefilter-topnav-import' => '필터 가져오기',
 	'abusefilter-log-header' => '이 기록은 필터가 변경된 기록의 요약본을 보여 주고 있습니다.
 자세한 정보는 [[Special:AbuseFilter/history|필터의 최근 바뀜]]을 참조하십시오.',
 	'abusefilter-log-entry-modify' => '$1을 수정함 ($2)',
@@ -9015,6 +9019,7 @@ $messages['ko'] = array(
 	'abusefilter-diff-item' => '항목',
 	'abusefilter-diff-info' => '기본 정보',
 	'abusefilter-diff-pattern' => '필터 규칙',
+	'abusefilter-diff-invalid' => '요청한 버전을 불러올 수 없습니다.',
 	'abusefilter-diff-backhistory' => '필터 역사로 돌아가기',
 	'abusefilter-import-intro' => '당신은 이 양식을 통해 다른 위키에서 필터를 가져올 수 있습니다.
 필터가 있는 위키에서 필터 편집 화면의 "{{int:abusefilter-tools-subtitle}}"에서 "{{int:abusefilter-edit-export}}"를 클릭하십시오.
@@ -16280,7 +16285,6 @@ $messages['uk'] = array(
 	'abusefilter-edit-builder-funcs-length' => 'Довжина рядка (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'У нижній регістр (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Нормалізація неоднозначних символів (ccnorm)',
-	'abusefilter-edit-builder-funcs-convert' => 'Перетворити рядок у вказаний вигляд (convert)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Вилучення подвійних символів (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Відношення к-сті спеціальних символів до загальної к-сті символів (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Нормалізація (norm)',
@@ -16340,7 +16344,7 @@ $messages['uk'] = array(
 	'abusefilter-history' => 'Історія змін фільтра зловживань #$1',
 	'abusefilter-history-foruser' => 'Зміни, зроблені $1',
 	'abusefilter-history-hidden' => 'прихований',
-	'abusefilter-history-enabled' => 'включений',
+	'abusefilter-history-enabled' => 'увімкнений',
 	'abusefilter-history-global' => 'Глобальний',
 	'abusefilter-history-timestamp' => 'Коли',
 	'abusefilter-history-user' => 'Користувач',
@@ -16397,17 +16401,57 @@ $messages['uk'] = array(
 Вказана причина: $2',
 	'abusefilter-revert-reasonfield' => 'Причина відкоту:',
 	'abusefilter-test' => 'Перевірити фільтр на вже зроблених правках',
+	'abusefilter-test-intro' => 'Ця сторінка дозволяє вам перевірити фільтр, введений в приведене нижче поле, на {{PLURAL:$1|останній $1 зміні|останніх $1 змінах}}.
+Щоб завантажити існуючий фільтр, введіть його ідентифікатор (ID) в текстовое поле під полем редагування і натисніть кнопку «Завантажити».',
+	'abusefilter-test-legend' => 'Перевірка фільтру',
+	'abusefilter-test-load-filter' => 'Завантажити фільтр з ID:',
+	'abusefilter-test-submit' => 'Перевірити',
+	'abusefilter-test-load' => 'Завантажити',
+	'abusefilter-test-user' => 'Зміни користувача:',
+	'abusefilter-test-period-start' => 'Зміни зроблені після:',
+	'abusefilter-test-period-end' => 'Зміни зроблені до:',
+	'abusefilter-test-page' => 'Зроблені на сторінці зміни:',
+	'abusefilter-test-shownegative' => 'Показувати зміни, які не попадають під фільтр',
+	'abusefilter-test-syntaxerr' => 'Введений вами фільтр містить синтаксичну помилку.
+Ви можете отримати докладне пояснення, натиснувши на «Перевірити синтаксис».',
+	'abusefilter-changeslist-examine' => 'переглянути',
+	'abusefilter-examine' => 'Перегляд окремих змін',
+	'abusefilter-examine-intro' => 'Ця сторінка дозволяє вам переглянути змінні, створені фільтром зловживань для окремої зміни і перевірити їх у фільтрах.',
+	'abusefilter-examine-legend' => 'Вибір змін',
+	'abusefilter-examine-diff' => 'URL різниці версій:',
+	'abusefilter-examine-user' => 'Користувач:',
+	'abusefilter-examine-title' => 'Заголовок сторінки:',
+	'abusefilter-examine-submit' => 'Знайти',
+	'abusefilter-examine-vars' => 'Змінні, створені для цієї зміни',
+	'abusefilter-examine-test' => 'Перевірити цю зміну у фільтрі',
+	'abusefilter-examine-test-button' => 'Випробувати фільтр',
+	'abusefilter-examine-match' => 'Ця змін підпадає під фільтр.',
+	'abusefilter-examine-nomatch' => 'Ця зміна не підпадає під фільтр.',
+	'abusefilter-examine-syntaxerror' => 'Синтаксична помилка у фільтрі',
+	'abusefilter-examine-notfound' => 'Вказану вами зміну не знайдено.',
+	'abusefilter-examine-incompatible' => 'Вказана вами зміна не підтримується фільтром зловживань',
+	'abusefilter-examine-noresults' => 'Нічого не знайдено за запитом із заданими параметрами.',
+	'abusefilter-topnav' => "'''Навігація по Фільтру зловживань'''",
+	'abusefilter-topnav-home' => 'На початок',
+	'abusefilter-topnav-test' => 'Пакетна перевірка',
+	'abusefilter-topnav-examine' => 'Перевірка останніх редагувань',
 	'abusefilter-topnav-log' => 'Журнал зловживань',
 	'abusefilter-topnav-tools' => 'Засоби зневадження',
 	'abusefilter-topnav-import' => 'Імпорт фільтру',
 	'abusefilter-log-name' => 'Журнал фільтру зловживань',
+	'abusefilter-log-header' => 'У цей журнал записуються описи змін, зроблених у фільтрах.
+Подробиці можна знайти в [[Special:AbuseFilter/history|списку]] останніх змін фільтрів.',
 	'abusefilter-log-entry-modify' => 'змінив $1 ($2)',
 	'abusefilter-diff-title' => 'Різниця між версіями',
 	'abusefilter-diff-item' => 'Елемент',
 	'abusefilter-diff-version' => 'Версія від $1, $2',
 	'abusefilter-diff-info' => 'Основні відомості',
 	'abusefilter-diff-pattern' => 'Умови фільтрації',
+	'abusefilter-diff-invalid' => 'Не вдається отримати запитані версії',
 	'abusefilter-diff-backhistory' => 'Повернутися до історії фільтру',
+	'abusefilter-import-intro' => 'Ви можете використовувати цей інтерфейс для імпорту фільтрів з інших вікі.
+У джерельній вікі, натисніть «{{int:abusefilter-edit-export}}» у розділі «{{int:abusefilter-tools-subtitle}}» інтерфейсу редагування.
+Скопіюйте зміст текстового поля, вставте його у цю сторінку і натисніть «{{int:abusefilter-import-submit}}».',
 	'abusefilter-import-submit' => 'Імпортувати дані',
 );
 
@@ -16573,7 +16617,6 @@ Sta interfacia la mostra un elenco dei filtri definìi e la parmete de modificar
 	'abusefilter-edit-builder-funcs-length' => 'Longhessa stringa (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Convèrti in minuscolo (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalixa i caràteri che se pol confóndar (ccnorm)',
-	'abusefilter-edit-builder-funcs-convert' => 'Converti stringa a la variante spesificà (convert)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Cava caràteri dopi (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Caràteri speciali su caràteri totali (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Normalixa (norm)',
