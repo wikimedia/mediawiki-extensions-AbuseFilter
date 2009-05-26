@@ -57,7 +57,6 @@ class AbuseFilter {
 			'length(string)' => 'length',
 			'lcase(string)' => 'lcase',
 			'ccnorm(string)' => 'ccnorm',
-			'convert("vairant", string)' => 'convert',
 			'rmdoubles(string)' => 'rmdoubles',
 			'specialratio(string)' => 'specialratio',
 			'norm(string)' => 'norm',

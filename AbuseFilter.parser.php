@@ -365,7 +365,6 @@ class AbuseFilterParser {
 		'bool' => 'castBool',
 		'norm' => 'funcNorm',
 		'ccnorm' => 'funcCCNorm',
-		'convert' => 'funcConvert',
 		'specialratio' => 'funcSpecialRatio',
 		'rmspecials' => 'funcRMSpecials',
 		'rmdoubles' => 'funcRMDoubles',
@@ -1255,16 +1254,6 @@ class AbuseFilterParser {
 						array( 'lc', 2, count($args) ) );
 		$s = $args[0]->toString();
 		return new AFPData( AFPData::DString, $wgContLang->lc( $s ) );
-	}
-	
-	protected function funcConvert( $args ) {
-		global $wgContLang;
-		if( count( $args ) < 2 )
-			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
-						array( 'lang_convert', 2, count($args) ) );
-		$v = $args[0]->toString();
-		$s = $args[1]->toString();
-		return new AFPData( AFPData::DString, $wgContLang->convert( $s, false, $v ) );
 	}
 	
 	protected function funcLen( $args ) {
