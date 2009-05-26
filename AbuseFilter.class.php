@@ -387,10 +387,6 @@ class AbuseFilter {
 	public static function checkAllFilters( $vars ) {
 		// Fetch from the database.
 		wfProfileIn( __METHOD__ );
-		
-		// Sampling profiler
-		$profile = rand(0,50);
-		$profile = ($profile == 1) ? true : false;
 
 		$filter_matched = array();
 		
@@ -398,7 +394,7 @@ class AbuseFilter {
 		$res = $dbr->select( 'abuse_filter', '*', array( 'af_enabled' => 1, 'af_deleted' => 0 ) );
 
 		while ( $row = $dbr->fetchObject( $res ) ) {
-			$filter_matched[$row->af_id] = self::checkFilter( $row, $vars, $profile );
+			$filter_matched[$row->af_id] = self::checkFilter( $row, $vars, true );
 		}
 		
 		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
@@ -411,7 +407,7 @@ class AbuseFilter {
 			
 			while ( $row = $fdb->fetchObject( $res ) ) {
 				$filter_matched["global-".$row->af_id] =
-					self::checkFilter( $row, $vars, $profile, 'global-' );
+					self::checkFilter( $row, $vars, true, 'global-' );
 			}
 		}
 

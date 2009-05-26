@@ -391,7 +391,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$form = Xml::tags( 'form', 
 			array( 
 				'action' => $this->getTitle( $filter )->getFullURL(), 
-				'method' => 'POST' 
+				'method' => 'post' 
 			), 
 			$form );
 

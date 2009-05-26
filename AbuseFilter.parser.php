@@ -121,10 +121,10 @@ class AFPData {
 				return new AFPData( self::DInt, intval( count( $orig->data ) ) );
 			}
 			if( $target == self::DString ) {
-				$lines = array();
+				$s = '';
 				foreach( $orig->data as $item )
-					$lines[] = $item->toString();
-				return new AFPData( self::DString, implode( "\n", $lines ) );
+					$s .= $item->toString()."\n";
+				return new AFPData( self::DString, $s );
 			}
 		}
 
@@ -588,7 +588,7 @@ class AbuseFilterParser {
 				if( $this->mCur->type == AFPToken::TOp && $this->mCur->value == ':=' ) {
 					$this->move();
 					$this->doLevelSet( $result );
-					if( $idx == 'new' )
+					if( $idx === 'new' )
 						$list[] = $result;
 					else
 						$list[$idx] = $result;
@@ -1425,20 +1425,16 @@ class AbuseFilterParser {
 	
 	protected function ccnorm( $s ) {
 		static $equivset = null;
+		static $replacementArray = null;
 		
-		if ( is_null( $equivset ) ) {
+		if ( is_null( $equivset ) || is_null( $replacementArray ) ) {
 			global $IP;
 			require( "$IP/extensions/AntiSpoof/equivset.php" );
+			$replacementArray = new ReplacementArray( $equivset );
 		}
 		
-		if (function_exists('fss_prep_replace')) {
-			$fss = fss_prep_replace( $equivset );
-			
-			return fss_exec_replace( $fss, $s );
-		} else {
-			return strtr( $s, $equivset );
-		}
-	}
+		return $replacementArray->replace( $s );
+	}	
 	
 	protected function rmspecials( $s ) {
 		$orig = $s;

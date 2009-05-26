@@ -128,6 +128,10 @@ class AFComputedVariable {
 			
 		wfDebug( "Couldn't find user $username in cache\n" );
 		
+		if ( count( self::$userCache ) > 1000 ) {
+			self::$userCache = array();
+		}
+		
 		if ( IP::isIPAddress( $username ) ) {
 			$u = new User;
 			$u->setName( $username );
@@ -145,6 +149,10 @@ class AFComputedVariable {
 	static function articleFromTitle( $namespace, $title ) {
 		if ( isset( self::$articleCache["$namespace:$title"] ) ) {
 			return self::$articleCache["$namespace:$title"];
+		}
+			
+		if ( count( self::$articleCache ) > 1000 ) {
+			self::$articleCache = array();
 		}
 			
 		wfDebug( "Creating article object for $namespace:$title in cache\n" );
@@ -182,7 +190,7 @@ class AFComputedVariable {
 				$text1 = $vars->getVar( $text1Var )->toString();
 				$text2 = $vars->getVar( $text2Var )->toString();
 				$result = wfDiff( $text1, $text2 );
-				$result = trim( str_replace( '\No newline at end of file', '', $result ) );
+				$result = trim( str_replace( "\ No newline at end of file\n", '', $result ) );
 				break;
 			case 'diff-split':
 				$diff = $vars->getVar( $parameters['diff-var'] )->toString();
@@ -190,21 +198,31 @@ class AFComputedVariable {
 				$diff_lines = explode( "\n", $diff );
 				$interest_lines = array();
 				foreach( $diff_lines as $line ) {
-					if (strpos( $line, $line_prefix )===0) {
+					if ( substr( $line, 0, 1 ) === $line_prefix) {
 						$interest_lines[] = substr( $line, strlen($line_prefix) );
 					}
 				}
 				$result = $interest_lines;
 				break;
 			case 'links-from-wikitext':
+				// This should ONLY be used when sharing a parse operation with the edit.
+				global $wgArticle;
+				
 				$article = self::articleFromTitle( $parameters['namespace'],
 													$parameters['title'] );
-				$textVar = $parameters['text-var'];
 				
-				$new_text = $vars->getVar( $textVar )->toString();
-				$editInfo = $article->prepareTextForEdit( $new_text );
-				$links = array_keys( $editInfo->output->getExternalLinks() );
-				$result = $links;
+				if ( $wgArticle && $article->getTitle() === $wgArticle->getTitle() ) {
+					$textVar = $parameters['text-var'];
+					
+					$new_text = $vars->getVar( $textVar )->toString();
+					$editInfo = $article->prepareTextForEdit( $new_text );
+					$links = array_keys( $editInfo->output->getExternalLinks() );
+					$result = $links;
+				} else {
+					// Change to links-from-wikitext-nonedit.
+					$this->mMethod = 'links-from-wikitext-nonedit';
+					$result = $this->compute( $vars );
+				}
 				break;
 			case 'links-from-wikitext-nonedit':
 			case 'links-from-wikitext-or-database':
@@ -226,18 +244,6 @@ class AFComputedVariable {
 				$result = $links;
 				break;
 			case 'link-diff-added':
-				$oldLinkVar = $parameters['oldlink-var'];
-				$newLinkVar = $parameters['newlink-var'];
-				
-				$oldLinks = $vars->getVar( $oldLinkVar )->toString();
-				$newLinks = $vars->getVar( $newLinkVar )->toString();
-				
-				$oldLinks = explode( "\n", $oldLinks );
-				$newLinks = explode( "\n", $newLinks );
-				
-				$added = array_diff( $newLinks, $oldLinks );
-				$result = $added;
-				break;
 			case 'link-diff-removed':
 				$oldLinkVar = $parameters['oldlink-var'];
 				$newLinkVar = $parameters['newlink-var'];
@@ -248,19 +254,33 @@ class AFComputedVariable {
 				$oldLinks = explode( "\n", $oldLinks );
 				$newLinks = explode( "\n", $newLinks );
 				
-				$removed = array_diff( $oldLinks, $newLinks );
-				$result = $removed;
+				if ($this->mMethod == 'link-diff-added') {
+					$result = array_diff( $newLinks, $oldLinks );
+				}
+				if ($this->mMethod == 'link-diff-removed') {
+					$result = array_diff( $oldLinks, $newLinks );
+				}
 				break;
 			case 'parse-wikitext':
-				$article = self::articleFromTitle( $parameters['namespace'], $parameters['title'] );
-				$textVar = $parameters['wikitext-var'];
 				
-				$new_text = $vars->getVar( $textVar )->toString();
-				$editInfo = $article->prepareTextForEdit( $new_text );
-				$newHTML = $editInfo->output->getText();
-				// Kill the PP limit comments. Ideally we'd just remove these by not setting the 
-				// parser option, but then we can't share a parse operation with the edit, which is bad.
-				$result = preg_replace( '/<!--\s*NewPP limit report[^>]*-->\s*$/si', '', $newHTML );
+				// Should ONLY be used when sharing a parse operation with the edit.
+				global $wgArticle;
+				$article = self::articleFromTitle( $parameters['namespace'], $parameters['title'] );
+				
+				if ($wgArticle && $article->getTitle() === $wgArticle->getTitle()) {
+					$textVar = $parameters['wikitext-var'];
+					
+					$new_text = $vars->getVar( $textVar )->toString();
+					$editInfo = $article->prepareTextForEdit( $new_text );
+					$newHTML = $editInfo->output->getText();
+					// Kill the PP limit comments. Ideally we'd just remove these by not setting the 
+					// parser option, but then we can't share a parse operation with the edit, which is bad.
+					$result = preg_replace( '/<!--\s*NewPP limit report[^>]*-->\s*$/si', '', $newHTML );
+				} else {
+					// Change to parse-wikitext-nonedit.
+					$this->mMethod = 'parse-wikitext-nonedit';
+					$result = $this->compute( $vars );
+				}
 				break;
 			case 'parse-wikitext-nonedit':
 				$article = self::articleFromTitle( $parameters['namespace'], $parameters['title'] );
@@ -274,7 +294,7 @@ class AFComputedVariable {
 			case 'strip-html':
 				$htmlVar = $parameters['html-var'];
 				$html = $vars->getVar( $htmlVar )->toString();
-				$result = preg_replace( '/<[^>]+>/', '', $html );
+				$result = StringUtils::delimiterReplace( '<', '>', '', $html );
 				break;
 			case 'load-recent-authors':
 				$cutOff = $parameters['cutoff'];
@@ -375,6 +395,7 @@ class AFComputedVariable {
 				}
 		}
 		
-		return AFPData::newFromPHPVar( $result );
+		return $result instanceof AFPData
+			? $result : AFPData::newFromPHPVar( $result );
 	}
 }
