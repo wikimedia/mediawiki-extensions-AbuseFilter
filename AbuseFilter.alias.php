@@ -136,7 +136,7 @@ $aliases['lb'] = array(
 
 /** Maltese (Malti) */
 $aliases['mt'] = array(
-	'AbuseLog' => array( 'LogAbbuż' ),
+	'AbuseLog' => array( 'ReġistruAbbuż' ),
 	'AbuseFilter' => array( 'FiltruAbbuż' ),
 );
 

@@ -4149,11 +4149,11 @@ Filtrila priskribo: $6',
  */
 $messages['es'] = array(
 	'abusefilter-desc' => 'Aplicar automáticamente heuristicas para ediciones',
-	'abusefilter' => 'Abuso de configuración de filtro',
-	'abuselog' => 'Abuso de log',
-	'abusefilter-intro' => 'Bienvenido a la interface de administración de filtros de abuso.
-El filtro de abuso es un mecanismo de sfotware automatizado de aplicación heurística automática a todas las acciones.
-Esta interface muestra una lista de filtros definidos, y les permite ser modificados.',
+	'abusefilter' => 'Configuración del flitro antiabusos',
+	'abuselog' => 'Registro del filtro antiabusos',
+	'abusefilter-intro' => 'Bienvenido a la interfáz de administración de filtros de antiabuso.
+El filtro antiabuso es un mecanismo de software automatizado de aplicación heurística automática a todas las acciones.
+Esta interfáz muestra una lista de filtros definidos, que pueden ser ser modificados.',
 	'abusefilter-mustbeeditor' => 'Por razones de seguridad, solamente los usuarios con derechos pra modificar filtros de abuso pueden usar esta interface.',
 	'abusefilter-warning' => "<big>'''Atención'''</big>: Esta acción ha sido automáticamente identificada como dañina.
 Las ediciones no constructivas son rápidamente revertidas,
@@ -4195,7 +4195,7 @@ Descripción: $1',
 	'action-abusefilter-private' => 'ver datos privados en el registro',
 	'action-abusefilter-modify-restricted' => 'modificar filtros de abuso con acciones restringidas',
 	'action-abusefilter-revert' => 'revertir todos los cambios de un filtro de abuso dado',
-	'abusefilter-log' => 'Log de abusos de filtro',
+	'abusefilter-log' => 'Registro del filtro de abusos',
 	'abusefilter-log-summary' => 'Este registro muestra una lista de todas las acciones detectadas por los filtros.',
 	'abusefilter-log-search' => 'Buscar abuso en el log',
 	'abusefilter-log-search-user' => 'Usuario:',
@@ -15060,6 +15060,9 @@ Filterbeskrivning: $7 ($8) ($9)',
 	'abusefilter-edit-builder-funcs-rmspecials' => 'Ta bort specialtecken (rmspecials)',
 	'abusefilter-edit-builder-funcs-ip_in_range' => 'Är IP-numret i intervallet? (ip_in_range)',
 	'abusefilter-edit-builder-funcs-contains-any' => 'Söksträng för multipla understrängar (contains_any)',
+	'abusefilter-edit-builder-funcs-substr' => 'Delsträng (substr)',
+	'abusefilter-edit-builder-funcs-strpos' => 'Delsträngens position i strängen (strpos)',
+	'abusefilter-edit-builder-funcs-str_replace' => 'Ersatte delsträng med sträng (str_replace)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Ställ in variabel (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Variabler',
 	'abusefilter-edit-builder-vars-accountname' => 'Kontonamn (on account creation)',
