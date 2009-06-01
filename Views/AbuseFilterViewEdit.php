@@ -348,14 +348,19 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				) 
 			);
 			// Last modification details
-			$user = 
+			$userLink = 
 				$sk->userLink( $row->af_user, $row->af_user_text ) . 
 				$sk->userToolLinks( $row->af_user, $row->af_user_text );
+			$user = $row->af_user_text;
 			$fields['abusefilter-edit-lastmod'] = 
 				wfMsgExt( 
 					'abusefilter-edit-lastmod-text', 
 					array( 'parseinline', 'replaceafter' ), 
-					array( $wgLang->timeanddate( $row->af_timestamp, true ), $user ) 
+					array( $wgLang->timeanddate( $row->af_timestamp, true ),
+						$userLink, 
+						$wgLang->date( $row->af_timestamp, true ),
+						$wgLang->time( $row->af_timestamp, true ),
+						$user ) 
 				);
 			$history_display = wfMsgExt( 'abusefilter-edit-viewhistory', array( 'parseinline' ) );
 			$fields['abusefilter-edit-history'] = 

@@ -530,8 +530,11 @@ $messages['qqq'] = array(
 	'abusefilter-edit-status-label' => '{{Identical|Statistics}}',
 	'abusefilter-edit-id' => '{{Identical|Filter ID}}',
 	'abusefilter-edit-lastmod-text' => 'This message is used on Special:AbuseFilter to indicate the last modified date, time and user for existing rules.
-* $1 is a time and date
-* $2 is a link to a user page with a user name as link text',
+* $1 is a time and date (duplicated in $3 and $4)
+* $2 is a link to a user page with a user name as link text, followed by a series of related links
+* $3 is the date
+* $4 is the time
+* $5 is the user name which can be used with GENDER',
 	'abusefilter-edit-history' => '{{Identical|History}}',
 	'abusefilter-edit-builder-misc-in' => 'Do not translate "(in)"',
 	'abusefilter-edit-builder-misc-like' => 'Do not translate "(like)"',
