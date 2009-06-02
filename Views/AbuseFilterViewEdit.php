@@ -368,7 +368,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 		
 		// Add export
-		$exportText = serialize( array( 'row' => $row, 'actions' => $actions ) );
+		$exportText = json_encode( array( 'row' => $row, 'actions' => $actions ) );
 		$tools .= Xml::tags( 'a', array( 'href' => 'javascript:afShowExport();' ),
 								wfMsgExt( 'abusefilter-edit-export', 'parseinline' ) );
 		$tools .= Xml::element( 'textarea',
@@ -676,10 +676,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Check for importing
 		$import = $wgRequest->getVal( 'wpImportText' );
 		if ($import) {
-			$data = unserialize($import);
+			$data = json_decode($import);
 			
-			$importRow = $data['row'];
-			$actions = $data['actions'];
+			$importRow = $data->row;
+			$actions = wfObjectToArray( $data->actions );
 			
 			$copy = array(
 						'af_public_comments',
