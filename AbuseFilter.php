@@ -119,3 +119,5 @@ $wgAbuseFilterUDPPort = null;
 $wgAbuseFilterCentralDB = null;
 $wgAbuseFilterIsCentral = false;
 
+// Block duration
+$wgAbuseFilterBlockDuration = 'indefinite';

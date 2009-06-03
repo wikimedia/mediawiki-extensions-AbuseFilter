@@ -925,7 +925,7 @@ class AbuseFilter {
 				break;
 				
 			case 'block':
-				global $wgUser;
+				global $wgUser, $wgAbuseFilterBlockDuration;
 				$filterUser = AbuseFilter::getFilterUser();
 
 				// Create a block.
@@ -938,14 +938,18 @@ class AbuseFilter {
 				$block->mTimestamp = wfTimestampNow();
 				$block->mAnonOnly = 1;
 				$block->mCreateAccount = 1;
-				$block->mExpiry = 'infinity';
+				$block->mExpiry = Block::parseExpiryInput( $wgAbuseFilterBlockDuration );
 
 				$block->insert();
 				
 				// Log it
 				# Prepare log parameters
 				$logParams = array();
-				$logParams[] = 'indefinite';
+				if ($block->mExpiry == 'infinity') {
+					$logParams[] = 'indefinite';
+				} else {
+					$logParams[] = $wgAbuseFilterBlockDuration;
+				}
 				$logParams[] = 'nocreate, angry-autoblock';
 	
 				$log = new LogPage( 'block' );
