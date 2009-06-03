@@ -618,7 +618,7 @@ class AbuseFilter {
 						$msg = 'abusefilter-warning';
 					}
 					$messages[] = wfMsgExt( $msg, 'parseinline',
-						array( $parsed_public_comments) ) . "<br />\n";
+						array( $parsed_public_comments, $filter ) ) . "<br />\n";
 
 					$actionsTaken[$filter][] = 'warn';
 
