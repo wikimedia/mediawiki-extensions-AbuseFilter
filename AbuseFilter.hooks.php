@@ -198,4 +198,25 @@ class AbuseFilterHooks {
 		}
 		return true;
     }
+    
+    public static function onUploadVerification($saveName, $tempName, &$error) {
+		$vars = new AbuseFilterVariableHolder;
+		
+		global $wgUser;
+		$vars->addHolder( AbuseFilterVariableHolder::merge(
+							AbuseFilter::generateUserVars( $wgUser ),
+							AbuseFilter::generateTitleVars( Title::newFromText($saveName), 'FILE' )
+				) );
+				
+		$vars->setVar( 'ACTION', 'upload' );
+		$vars->setVar( 'file_sha1', sha1_file( $tempName ) ); // TODO share with save
+		
+		$filter_result = AbuseFilter::filterAction( $vars, Title::newFromText( $saveName ) );
+		
+		if ( is_string($filter_result) ) {
+			$error = $filter_result;
+		}
+		
+		return $filter_result == '' || $filter_result === true;
+    }
 }

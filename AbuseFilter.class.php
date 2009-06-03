@@ -113,6 +113,7 @@ class AbuseFilter {
 #			'old_html' => 'old-html', ## Disabled, performance
 			'old_links' => 'old-links',
 			'minor_edit' => 'minor-edit',
+			'file_sha1' => 'file-sha1',
 		),
 	);
 
