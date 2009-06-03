@@ -138,8 +138,9 @@ class AbuseFilterHooks {
 		## This is a pretty awful hack.
 		$dbr = wfGetDB( DB_SLAVE );
 
-		$res = $dbr->select( 'abuse_filter_action', 'afa_parameters', 
-			array( 'afa_consequence' => 'tag' ), __METHOD__ );
+		$res = $dbr->select( array( 'abuse_filter_action', 'abuse_filter' ), 'afa_parameters', 
+			array( 'afa_consequence' => 'tag', 'af_enabled' => true ), __METHOD__, array(),
+			array( 'abuse_filter' => array( 'inner join', 'afa_filter=af_id' ) ) );
 
 		while( $row = $res->fetchObject() ) {
 			$emptyTags = array_filter( 
