@@ -190,7 +190,7 @@ class AFComputedVariable {
 				$text1 = $vars->getVar( $text1Var )->toString();
 				$text2 = $vars->getVar( $text2Var )->toString();
 				$result = wfDiff( $text1, $text2 );
-				$result = trim( str_replace( "\ No newline at end of file\n", '', $result ) );
+				$result = trim( preg_replace( "/^\\\\ No newline at end of file\n/m", '', $result ) );
 				break;
 			case 'diff-split':
 				$diff = $vars->getVar( $parameters['diff-var'] )->toString();
@@ -211,7 +211,7 @@ class AFComputedVariable {
 				$article = self::articleFromTitle( $parameters['namespace'],
 													$parameters['title'] );
 				
-				if ( $wgArticle && $article->getTitle() === $wgArticle->getTitle() ) {
+				if ( $wgArticle && $article->getTitle()->equals( $wgArticle->getTitle() ) ) {
 					$textVar = $parameters['text-var'];
 					
 					$new_text = $vars->getVar( $textVar )->toString();
