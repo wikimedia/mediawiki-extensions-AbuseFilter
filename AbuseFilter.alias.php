@@ -134,6 +134,12 @@ $aliases['lb'] = array(
 	'AbuseFilter' => array( 'Mëssbrauchsfilter' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'AbuseLog' => array( 'दुरूपयोगनोंदी' ),
+	'AbuseFilter' => array( 'दुरूपयोगगाळणी' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'AbuseLog' => array( 'ReġistruAbbuż' ),
