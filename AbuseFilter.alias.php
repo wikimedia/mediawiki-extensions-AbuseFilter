@@ -84,6 +84,12 @@ $aliases['gsw'] = array(
 	'AbuseFilter' => array( 'Missbruchsfilter' ),
 );
 
+/** Gujarati (ગુજરાતી) */
+$aliases['gu'] = array(
+	'AbuseLog' => array( 'દુરુપયોગ લોગ' ),
+	'AbuseFilter' => array( 'દુરુપયોગ ગળણી' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
