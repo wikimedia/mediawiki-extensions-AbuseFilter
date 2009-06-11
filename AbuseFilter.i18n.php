@@ -3781,6 +3781,7 @@ $messages['el'] = array(
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Παλιό κείμενο σελίδας, χώρις κάποια σύνταξη markup',
 	'abusefilter-edit-builder-vars-old-links' => 'Σύνδεσμοι στην σελίδα πριν από την επεξεργασία',
 	'abusefilter-edit-builder-vars-old-html' => 'Παλιό βικικείμενο σελίδας, λεξιαναλυμένο σε HTML',
+	'abusefilter-edit-builder-vars-file-sha1' => 'Ανακάτεμα SHA1 των περιεχομένων του αρχείου',
 	'abusefilter-filter-log' => 'Πρόσφατες αλλαγές φίλτρων',
 	'abusefilter-history' => 'Αλλαγή ιστορικού για το Φίλτρο Καταχρήσεων #$1',
 	'abusefilter-history-foruser' => 'Αλλαγές από τον $1',
@@ -10885,7 +10886,7 @@ Filterbeschrijving: $7 ($8) ($9)',
 	'abusefilter-reautoconfirm-done' => 'De bevestigde gebruikersstatus van de gebruiker is hersteld',
 	'abusefilter-status' => 'Van de laatste $1 {{PLURAL:$1|handeling|handelingen}}, {{PLURAL:$2|heeft er 1|hebben er $2}} ($3%) de drempelwaarde van $4 bereikt, en {{PLURAL:$5|past|passen}} $5 ($6%) bij één van de huidige ingeschakelde filters.',
 	'abusefilter-edit-subtitle' => 'Bezig met het bewerken van filter $1',
-	'abusefilter-edit-oldwarning' => '<strong>U bent een oude versie van dit  filter aan het bewerken.
+	'abusefilter-edit-oldwarning' => '<strong>U bent een oude versie van dit filter aan het bewerken.
 De weergegeven statistieken gelden voor de meest recente versie van het filter.
 Als u uw wijzigingen opslaat, overschrijft u alle wijzigingen die na deze versie zijn gemaakt.</strong> &bull;
 [[Special:AbuseFilter/history/$2|Terug naar de geschiedenis van deze filter]]',
@@ -12942,7 +12943,6 @@ Por favor, peça a um utilizador com permissão para adicionar ações restritas
 	'abusefilter-edit-builder-funcs-length' => 'Comprimento de cadeia de carateres (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Para minúscula (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalizar carateres confundíveis (ccnorm)',
-	'abusefilter-edit-builder-funcs-convert' => 'Converter string para a variante especificada (convert)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Remover carateres duplos (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Carateres especiais / total de carateres (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Normalizar (norm)',
@@ -12998,6 +12998,7 @@ Por favor, peça a um utilizador com permissão para adicionar ações restritas
 	'abusefilter-edit-builder-vars-old-links' => 'Ligações na página, antes da edição',
 	'abusefilter-edit-builder-vars-old-html' => 'Wikitexto antiga da página, convertido para HTML',
 	'abusefilter-edit-builder-vars-minor-edit' => 'Se a edição está marcada ou não como menor',
+	'abusefilter-edit-builder-vars-file-sha1' => 'Hash SHA1 do conteúdo do ficheiro',
 	'abusefilter-filter-log' => 'Modificações recentes de filtros',
 	'abusefilter-history' => 'Histórico de modificações do Filtro de Abuso #$1',
 	'abusefilter-history-foruser' => 'Modificações por $1',
@@ -13128,7 +13129,7 @@ $messages['rif'] = array(
  * @author Silviubogan
  */
 $messages['ro'] = array(
-	'abusefilter-desc' => 'Aplică euristică automată modificărilor.',
+	'abusefilter-desc' => 'Aplică euristici automate modificărilor.',
 	'abusefilter' => 'Configuraţie filtru abuz',
 	'abuselog' => 'Jurnal abuz',
 	'abusefilter-warning' => "<big>'''Atenţie'''</big>: Această acţiune a fost identificată automat ca fiind periculoasă.
