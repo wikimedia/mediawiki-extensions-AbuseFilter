@@ -128,7 +128,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$dbr = wfGetDB( DB_SLAVE );
 		
 		$row = $dbr->selectRow( array('abuse_filter_log','abuse_filter'), '*', 
-			array( 'afl_id' => $id ), __METHOD__,
+			array( 'afl_id' => $id ), __METHOD__, array(),
 			array( 'abuse_filter' => array( 'left join', 'af_id=afl_filter') ) );
 		
 		if ( !$row ) {
