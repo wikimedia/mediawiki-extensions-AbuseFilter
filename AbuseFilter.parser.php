@@ -154,8 +154,6 @@ class AFPData {
 	}
 	
 	public static function keywordIn( $a, $b ) {
-		if( $b->type == self::DList )
-			return new AFPData( self::DBool, self::listContains( $a, $b ) );
 		$a = $a->toString();
 		$b = $b->toString();
 		
@@ -167,8 +165,6 @@ class AFPData {
 	}
 	
 	public static function keywordContains( $a, $b ) {
-		if( $a->type == self::DList )
-			return new AFPData( self::DBool, self::listContains( $b, $a ) );
 		$a = $a->toString();
 		$b = $b->toString();
 		
@@ -1260,9 +1256,7 @@ class AbuseFilterParser {
 		if( count( $args ) < 1 )
 			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
 						array( 'len', 2, count($args) ) );
-		if( $args[0]->type == AFPData::DList ) {
-			return new AFPData( AFPData::DInt, count( $args[0]->data ) );
-		}
+
 		$s = $args[0]->toString();
 		return new AFPData( AFPData::DInt, mb_strlen( $s, 'utf-8' ) );
 	}
@@ -1386,14 +1380,6 @@ class AbuseFilterParser {
 		if (count( $args ) < 2 ) {
 			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
 						array( 'contains_any', 2, count($args) ) );
-		}
-
-		if( $args[0]->type == AFPData::DList ) {
-			$list = array_shift( $args );
-			foreach( $args as $arg ) 
-				if( AFPData::listContains( $arg, $list ) )
-					return new AFPData( AFPData::DBool, true );
-			return new AFPData( AFPData::DBool, false );
 		}
 
 		$s = array_shift( $args );
