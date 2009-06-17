@@ -629,10 +629,32 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			return array( $obj, array() );
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
+		// Load from master to avoid unintended reversions where there's replication lag.
+		$dbr = wfGetDB( DB_MASTER );
+		
+		// Load certain fields only. This prevents a condition seen on Wikimedia where
+		//  a schema change adding a new field caused that extra field to be selected.
+		//  Since the selected row may be inserted back into the database, this will cause
+		//  an SQL error if, say, one server has the updated schema but another does not.
+		$loadFields = array(
+			'af_id',
+			'af_pattern',
+			'af_user',
+			'af_user_text',
+			'af_timestamp',
+			'af_enabled',
+			'af_comments',
+			'af_public_comments',
+			'af_hidden',
+			'af_hit_count',
+			'af_throttled',
+			'af_deleted',
+			'af_actions',
+			'af_global',
+		);
 
 		// Load the main row
-		$row = $dbr->selectRow( 'abuse_filter', '*', array( 'af_id' => $id ), __METHOD__ );
+		$row = $dbr->selectRow( 'abuse_filter', $loadFields, array( 'af_id' => $id ), __METHOD__ );
 
 		if (!isset($row) || !isset($row->af_id) || !$row->af_id)
 			return null;
