@@ -178,7 +178,7 @@ class AbuseFilterPager extends TablePager {
 			'af_id' => 'abusefilter-list-id', 
 			'af_public_comments' => 'abusefilter-list-public', 
 			'af_actions' => 'abusefilter-list-consequences', 
-			'status' => 'abusefilter-list-status', 
+			'af_enabled' => 'abusefilter-list-status', 
 			'af_timestamp' => 'abusefilter-list-lastmodified', 
 			'af_hidden' => 'abusefilter-list-visibility', 
 			'af_hit_count' => 'abusefilter-list-hitcount' );
@@ -216,7 +216,7 @@ class AbuseFilterPager extends TablePager {
 					$displayActions[] = AbuseFilter::getActionDisplay( $action );;
 				}
 				return htmlspecialchars( implode( ', ', $displayActions ) );
-			case 'status':
+			case 'af_enabled':
 				$statuses = array();
 				if ($row->af_deleted)
 					$statuses[] = wfMsgExt( 'abusefilter-deleted', 'parseinline' );
@@ -287,7 +287,7 @@ class AbuseFilterPager extends TablePager {
 	function isFieldSortable($name) {
 		$sortable_fields = array( 
 			'af_id', 
-			'status', 
+			'af_enabled', 
 			'af_hit_count', 
 			'af_throttled', 
 			'af_user_text', 
