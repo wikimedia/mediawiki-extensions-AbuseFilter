@@ -205,9 +205,14 @@ class AFPData {
 		$pattern = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $pattern );
 		$pattern = "/$pattern/u";
 		
-		set_error_handler( array( 'AbuseFilterParser', 'regexErrorHandler' ) );
-		$result = preg_match( $pattern, $str );
-		restore_error_handler();
+		try {
+			set_error_handler( array( 'AbuseFilterParser', 'regexErrorHandler' ) );
+			$result = preg_match( $pattern, $str );
+			restore_error_handler();
+		} catch( Exception $e ) {
+			restore_error_handler();
+			throw $e;
+		}
 		return new AFPData( self::DBool, (bool)$result );
 	}
 	
@@ -1344,9 +1349,14 @@ class AbuseFilterParser {
 			$count = 0;
 			$matches = array();
 			
-			set_error_handler( array( 'AbuseFilterParser', 'regexErrorHandler' ) );
-			$count = preg_match_all( $needle, $haystack, $matches );
-			restore_error_handler();
+			try {
+				set_error_handler( array( 'AbuseFilterParser', 'regexErrorHandler' ) );
+				$count = preg_match_all( $needle, $haystack, $matches );
+				restore_error_handler();
+			} catch( Exception $e ) {
+				restore_error_handler();
+				throw $e;
+			}
 		}
 		
 		return new AFPData( AFPData::DInt, $count );
