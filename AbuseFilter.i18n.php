@@ -346,6 +346,7 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-exception-notlist' => 'Requesting array item of non-array at character $1.',
 
 	// Actions
+	'abusefilter-action-tag' => 'Tag',
 	'abusefilter-action-throttle' => 'Throttle',
 	'abusefilter-action-warn' => 'Warn',
 	'abusefilter-action-blockautopromote' => 'Block autopromote',
@@ -18178,6 +18179,7 @@ $messages['yue'] = array(
 	'abusefilter-exception-overridebuiltin' => '響字元 $1 度有非法覆蓋全建變數 "$2"。',
 	'abusefilter-exception-outofbounds' => '響字元 $1 度有未存在嘅表項 $2 (表項大細 = $3)。',
 	'abusefilter-exception-notlist' => '響字元 $1 度非陣列需要陣列項目。',
+	'abusefilter-action-tag' => '標籤',
 	'abusefilter-action-throttle' => '控頻',
 	'abusefilter-action-warn' => '警告',
 	'abusefilter-action-blockautopromote' => '封鎖自動升格',
@@ -18558,6 +18560,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-exception-overridebuiltin' => '字符$1处非法覆盖内建变量“$2”。',
 	'abusefilter-exception-outofbounds' => '字符$1处请求了不存在的列表项$2（列表长度 = $3）。',
 	'abusefilter-exception-notlist' => '字符$1处向非数组请求了数组项。',
+	'abusefilter-action-tag' => '标签',
 	'abusefilter-action-throttle' => '频率控制',
 	'abusefilter-action-warn' => '警告',
 	'abusefilter-action-blockautopromote' => '禁止自动授权',
@@ -18928,6 +18931,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-exception-overridebuiltin' => '於字元$1處非法覆寫內建變數「$2」。',
 	'abusefilter-exception-outofbounds' => '於字元$1處請求不存在的串列元素$2（串列長度 = $3）',
 	'abusefilter-exception-notlist' => '於非陣列字元$1處請求陣列元素。',
+	'abusefilter-action-tag' => '標籤',
 	'abusefilter-action-throttle' => '頻率控制',
 	'abusefilter-action-warn' => '警告',
 	'abusefilter-action-blockautopromote' => '禁止自動授權',
