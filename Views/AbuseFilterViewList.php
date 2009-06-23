@@ -161,7 +161,7 @@ class AbuseFilterPager extends TablePager {
 				'af_timestamp', 
 				'af_user_text', 
 				'af_user', 
-				'af_actions' 
+				'af_actions',
 			),
 			'conds' => $this->mConds,
 		);
