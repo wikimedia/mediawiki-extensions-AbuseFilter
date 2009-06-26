@@ -442,6 +442,7 @@ Copy from the textbox that appears, and paste it into this textbox, then click "
 
 /** Message documentation (Message documentation)
  * @author Aotake
+ * @author Bennylin
  * @author ChrisiPK
  * @author Darth Kule
  * @author EugeneZelenko
@@ -584,7 +585,7 @@ Functional explanation: rmdoubles removes repeated characters in the argument, a
 
 {{Identical|Time}}',
 	'abusefilter-history-user' => '{{Identical/User}}',
-	'abusefilter-history-comments' => '{{Identical|Comment}}',
+	'abusefilter-history-comments' => '{{Identical|Comments}}',
 	'abusefilter-history-actions' => '{{Identical|Action}}',
 	'abusefilter-history-deleted' => '{{Identical|Deleted}}',
 	'abusefilter-history-select-user' => '{{Identical|User}}',
@@ -4762,6 +4763,8 @@ Syy: $1',
 	'abusefilter-tools-reautoconfirm-user' => 'Käyttäjä',
 	'abusefilter-edit-subtitle' => 'Muokataan suodatinta $1',
 	'abusefilter-edit-status-label' => 'Tilastot:',
+	'abusefilter-edit-throttled' => "'''Varoitus''': Tämä suodatin on otettu varotoimena automaattisesti pois käytöstä.
+Suodatin saavutti yli $1 % täsmäävän toiminnon rajan.",
 	'abusefilter-edit-new' => 'Luo suodatin',
 	'abusefilter-edit-save' => 'Tallenna suodatin',
 	'abusefilter-edit-id' => 'Suodatin-ID:',
@@ -4902,6 +4905,7 @@ Annettu syy: $2',
 	'abusefilter-log-name' => 'Väärinkäyttösuodattimen loki',
 	'abusefilter-log-entry-modify' => 'muokattu $1 ($2)',
 	'abusefilter-diff-title' => 'Versioiden välinen ero',
+	'abusefilter-diff-version' => 'Käyttäjän $2 versio $1',
 	'abusefilter-diff-info' => 'Perustiedot',
 	'abusefilter-diff-pattern' => 'Suodattimen ehdot',
 	'abusefilter-diff-invalid' => 'Pyydettyjä versioita ei voitu hakea',
@@ -8162,7 +8166,7 @@ Secara rata-rata, waktu yang dibutuhkan adalah $4ms',
 	'abusefilter-edit-throttled' => "'''Peringatan''': Filter ini telah dinonaktifkan secara otomatis untuk alasan keamanan. Terdapat lebih dari $1% tindakan yang cocok dan mencapai batasan filter ini.",
 	'abusefilter-edit-new' => 'Filter baru',
 	'abusefilter-edit-save' => 'Simpan filter',
-	'abusefilter-edit-id' => 'ID Filter:',
+	'abusefilter-edit-id' => 'ID filter:',
 	'abusefilter-edit-description' => "Keterangan:
 :''(dapat dilihat secara publik)''",
 	'abusefilter-edit-flags' => 'Tanda:',
@@ -8207,7 +8211,7 @@ Secara rata-rata, waktu yang dibutuhkan adalah $4ms',
 	'abusefilter-edit-restricted' => 'Anda tidak dapat menyunting filter ini, karena mengandung satu atau lebih tindakan yang dibatasi.
 Mintalah kepada pengguna yang memiliki hak akses untuk menyunting tindakan yang dibatasi ini.',
 	'abusefilter-edit-viewhistory' => 'Lihat sejarah filter ini',
-	'abusefilter-edit-history' => 'Sejarah:',
+	'abusefilter-edit-history' => 'Versi:',
 	'abusefilter-edit-check' => 'Periksa sintaksis',
 	'abusefilter-edit-badfilter' => 'Filter yang Anda minta tidak ditemukan',
 	'abusefilter-edit-revert' => 'Kembalikan tindakan yang dilakukan oleh filter ini',
@@ -8236,8 +8240,20 @@ Mintalah kepada pengguna yang memiliki hak akses untuk menyunting tindakan yang 
 	'abusefilter-edit-builder-op-bool-or' => 'Atau (|)',
 	'abusefilter-edit-builder-group-misc' => 'Lainnya',
 	'abusefilter-edit-builder-misc-in' => 'terkandung dalam string (in)',
+	'abusefilter-edit-builder-vars-action' => 'Tindakan',
+	'abusefilter-history-enabled' => 'Diaktifkan',
+	'abusefilter-history-timestamp' => 'Waktu',
+	'abusefilter-history-user' => 'Pengguna',
+	'abusefilter-history-comments' => 'Komentar',
+	'abusefilter-history-actions' => 'Tindakan',
+	'abusefilter-history-deleted' => 'Dihapus',
+	'abusefilter-history-select-user' => 'Pengguna:',
+	'abusefilter-revert-filter' => 'Penyaring:',
+	'abusefilter-revert-confirm' => 'Konfirmasi',
 	'abusefilter-test-load' => 'Muatkan',
+	'abusefilter-examine-user' => 'Pengguna:',
 	'abusefilter-examine-submit' => 'Cari',
+	'abusefilter-topnav-home' => 'Utama',
 );
 
 /** Ido (Ido)
