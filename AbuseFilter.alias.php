@@ -48,6 +48,12 @@ $aliases['dsb'] = array(
 	'AbuseFilter' => array( 'Filter znjewužywanjow' ),
 );
 
+/** Greek (Ελληνικά) */
+$aliases['el'] = array(
+	'AbuseLog' => array( 'ΑρχείοΠαρενόχλησης' ),
+	'AbuseFilter' => array( 'ΦίλτροΠαρενόχλησης', 'ΦίλτροΚαταχρήσεων' ),
+);
+
 /** Esperanto (Esperanto) */
 $aliases['eo'] = array(
 	'AbuseLog' => array( 'Protokolo pri misuzado' ),
@@ -138,6 +144,12 @@ $aliases['ksh'] = array(
 $aliases['lb'] = array(
 	'AbuseLog' => array( 'Lëscht vum Mëssbrauch' ),
 	'AbuseFilter' => array( 'Mëssbrauchsfilter' ),
+);
+
+/** Lithuanian (Lietuvių) */
+$aliases['lt'] = array(
+	'AbuseLog' => array( 'Piktnaudžiavimų protokolas' ),
+	'AbuseFilter' => array( 'Piktnaudžiavimų filtras' ),
 );
 
 /** Marathi (मराठी) */
