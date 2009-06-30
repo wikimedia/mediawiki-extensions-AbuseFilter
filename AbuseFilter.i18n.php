@@ -5797,6 +5797,7 @@ $messages['grc'] = array(
 	'abusefilter-topnav-home' => 'Οἰκία',
 	'abusefilter-diff-item' => 'Τεμάχιον',
 	'abusefilter-diff-info' => 'Βασικὴ πεῦσις',
+	'abusefilter-import-submit' => 'Εἰσάγειν δεδομένα',
 );
 
 /** Swiss German (Alemannisch)
@@ -11610,10 +11611,10 @@ Filterbeschrijving: $7 ($8) ($9)',
 	'abusefilter-reautoconfirm-done' => 'De bevestigde gebruikersstatus van de gebruiker is hersteld',
 	'abusefilter-status' => 'Van de laatste $1 {{PLURAL:$1|handeling|handelingen}}, {{PLURAL:$2|heeft er 1|hebben er $2}} ($3%) de drempelwaarde van $4 bereikt, en {{PLURAL:$5|past|passen}} $5 ($6%) bij één van de huidige ingeschakelde filters.',
 	'abusefilter-edit-subtitle' => 'Bezig met het bewerken van filter $1',
-	'abusefilter-edit-oldwarning' => '<strong>U bent een oude versie van dit filter aan het bewerken.
+	'abusefilter-edit-oldwarning' => '<strong>U bent een oude versie van dit  filter aan het bewerken.
 De weergegeven statistieken gelden voor de meest recente versie van het filter.
 Als u uw wijzigingen opslaat, overschrijft u alle wijzigingen die na deze versie zijn gemaakt.</strong> &bull;
-[[Special:AbuseFilter/history/$2|Terug naar de geschiedenis van deze filter]]',
+[[Special:AbuseFilter/history/$2|Terug naar de geschiedenis van dit filter]]',
 	'abusefilter-edit-status-label' => 'Statistieken:',
 	'abusefilter-edit-status' => '{{PLURAL:$1|De laatste handeling voldeed|Van de laatste $1 handelingen voldeden er $2}} aan dit filter ($3%).
 De gemiddelde looptijd van de filtercontrole is $4ms.',
@@ -11749,7 +11750,7 @@ Vraag een gebruiker met toestemming om beperkte handelingen toe te voegen om de 
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Laatste tien bewerkers van de pagina',
 	'abusefilter-edit-builder-vars-all-links' => 'Alle externe verwijzingen in de nieuwe tekst',
 	'abusefilter-edit-builder-vars-added-links' => 'Alle externe verwijzingen die in deze bewerking zijn toegevoegd',
-	'abusefilter-edit-builder-vars-removed-links' => 'Alle externe verwijzingen die in deze bewerking zijn verwijderd',
+	'abusefilter-edit-builder-vars-removed-links' => 'Alle bij deze bewerking toegevoegde externe verwijzingen zijn verwijderd',
 	'abusefilter-edit-builder-vars-old-text' => 'Wikitekst van de oude pagina vóór de bewerking',
 	'abusefilter-edit-builder-vars-new-text' => 'Wikitekst van de nieuwe pagina ná de bewerking',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nieuwe paginatekst, ontdaan van opmaakcode',
@@ -13854,6 +13855,7 @@ $messages['rif'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
  * @author Silviubogan
@@ -13898,8 +13900,12 @@ O descriere sumară a regulii abuzului care se potriveşte cu acţiunea ta este:
 	'abusefilter-log-search-filter' => 'ID filtru:',
 	'abusefilter-log-search-title' => 'Titlu:',
 	'abusefilter-log-search-submit' => 'Caută',
-	'abusefilter-log-entry' => '$1: $2 a declanşat un filtru abuz, executând $3 asupra $4. Măsura luată: $5; Descrierea filtrului: $6',
-	'abusefilter-log-detailedentry-meta' => '$1: $2 a declanşat $3, executând $4 asupra $5. Măsura luată: $6; Descrierea filtrului: $7 ($8)',
+	'abusefilter-log-entry' => '$1: $2 a declanşat un filtru abuz, executând acţiunea "$3" asupra $4.
+Măsura luatră: $5;
+Descrierea filtrului: $6',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 a desclanşat $3, executând acţiunea "$4" asupra $5.
+Măsura luată: $6;
+Descrierea filtrului: $7 ($8) ($9)',
 	'abusefilter-log-detailedentry-local' => 'filtrul $1',
 	'abusefilter-log-detailslink' => 'detalii',
 	'abusefilter-log-details-legend' => 'Detalii pentru intrarea $1 din jurnal',
@@ -13927,7 +13933,7 @@ O descriere sumară a regulii abuzului care se potriveşte cu acţiunea ta este:
 	'abusefilter-deleted' => 'Şters',
 	'abusefilter-disabled' => 'Dezactivat',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|conectare|conectări}}',
-	'abusefilter-new' => 'Filtru nou',
+	'abusefilter-new' => 'Creează un filtru nou',
 	'abusefilter-links' => 'Legături folositoare:',
 	'abusefilter-tools-modifiertest-submit' => 'Test',
 	'abusefilter-tools' => 'Unelte filtru abuz',
@@ -13941,18 +13947,19 @@ O descriere sumară a regulii abuzului care se potriveşte cu acţiunea ta este:
 	'abusefilter-list-options-hidedisabled' => 'Ascunde filtrele dezactivate',
 	'abusefilter-list-options-submit' => 'Actualizează',
 	'abusefilter-tools-subtitle' => 'Unelte',
-	'abusefilter-tools-text' => 'Aici sunt câteva unelte care pot fi utile în formularea şi depanarea filtrelor abuz. [[Special:AbuseFilter|Înapoi la meniul principal]]',
+	'abusefilter-tools-text' => 'Aici sunt câteva unelte care pot fi utile în formularea şi depanarea filtrelor abuz.',
 	'abusefilter-tools-expr' => 'Expresii test',
 	'abusefilter-tools-submitexpr' => 'Evaluare',
 	'abusefilter-tools-reautoconfirm' => 'Restaurează statutul autoconfirmat',
 	'abusefilter-tools-reautoconfirm-user' => 'Utilizator:',
 	'abusefilter-tools-reautoconfirm-submit' => 'Re-autoconfirmare',
-	'abusefilter-reautoconfirm-none' => 'Utilizatorul nu are statutul autoconfirmat suspendat.',
+	'abusefilter-reautoconfirm-none' => 'Acel utilizator nu are statutul de utilizator autoconfirmat suspendat.',
 	'abusefilter-reautoconfirm-notallowed' => 'Nu ai dreptul de a restaura un statut autoconfirmat.',
 	'abusefilter-status' => 'Din {{PLURAL:$1|ultima acţiune|ultimele acţiuni}} $1, $2 ($3%) {{PLURAL:$2|a|au}} atins condiţia limită a $4. $5 ($6%)',
 	'abusefilter-edit-subtitle' => 'Modificare filtru $1',
-	'abusefilter-edit-status-label' => 'Statistici',
-	'abusefilter-edit-status' => 'Din ultimele $1 {{PLURAL:$1|acţiune|acţiuni}}, acest filtru a găsit $2 ($3%).',
+	'abusefilter-edit-status-label' => 'Statistici:',
+	'abusefilter-edit-status' => 'Din {{PLURAL:$1|ultima acţiune|ultimele $1 acţiuni}}, acest filtru a găsit $2 ($3%).
+În medie, timpul său de rulare este de $4ms',
 	'abusefilter-edit-throttled' => "'''Atenţie''': Acest filtru a fost dezactivat automat ca o măsură de siguranţă. A atins limita de potrivire la mai mult de $1% din acţiuni.",
 	'abusefilter-edit-new' => 'Filtru nou',
 	'abusefilter-edit-save' => 'Salvează filtru',
@@ -13969,7 +13976,7 @@ O descriere sumară a regulii abuzului care se potriveşte cu acţiunea ta este:
 	'abusefilter-edit-lastmod' => 'Ultima modificare filtru:',
 	'abusefilter-edit-lastmod-text' => '$1 de $2',
 	'abusefilter-edit-hitcount' => 'Conectări filtru:',
-	'abusefilter-edit-consequences' => 'Acţiuni efectuate la conectare',
+	'abusefilter-edit-consequences' => 'Acţiuni efectuate la detectare',
 	'abusefilter-edit-action-warn' => 'Declanşează aceste acţiuni după ce ai avertizat utilizatorul',
 	'abusefilter-edit-action-disallow' => 'Nu permite utilizatorului efectuarea acestei acţiuni',
 	'abusefilter-edit-action-flag' => 'Semnalizează modificarea în jurnalul abuz',
