@@ -148,7 +148,7 @@ $aliases['lb'] = array(
 
 /** Lithuanian (Lietuvių) */
 $aliases['lt'] = array(
-	'AbuseLog' => array( 'Piktnaudžiavimų protokolas' ),
+	'AbuseLog' => array( 'Piktnaudžiavimų sąrašas' ),
 	'AbuseFilter' => array( 'Piktnaudžiavimų filtras' ),
 );
 
