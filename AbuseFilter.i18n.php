@@ -61,6 +61,7 @@ Rule description: $1',
 	'right-abusefilter-private' => 'View private data in the abuse log',
 	'right-abusefilter-modify-restricted' => 'Modify abuse filters with restricted actions',
 	'right-abusefilter-revert' => 'Revert all changes by a given abuse filter',
+	'right-abusefilter-view-private' => 'View abuse filters marked as private',
 
 	'action-abusefilter-modify' => 'modify abuse filters',
 	'action-abusefilter-view' => 'view abuse filters',
@@ -69,6 +70,7 @@ Rule description: $1',
 	'action-abusefilter-private' => 'view private data in the abuse log',
 	'action-abusefilter-modify-restricted' => 'modify abuse filters with restricted actions',
 	'action-abusefilter-revert' => 'revert all changes by a given abuse filter',
+	'action-abusefilter-view-private' => 'view abuse filters marked as private',
 
 	// Abuse Log
 	'abusefilter-log' => 'Abuse filter log',

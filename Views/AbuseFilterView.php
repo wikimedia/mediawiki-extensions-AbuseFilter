@@ -17,13 +17,24 @@ abstract class AbuseFilterView {
 
 	function canEdit() {
 		global $wgUser;
-		static $canEdit = 'unset';
+		static $canEdit = null;
 
-		if ($canEdit == 'unset') {
+		if ( is_null( $canEdit ) ) {
 			$canEdit = $wgUser->isAllowed( 'abusefilter-modify' );
 		}
 
 		return $canEdit;
+	}
+
+	function canViewPrivate() {
+		global $wgUser;
+		static $canView = null;
+
+		if ( is_null( $canView ) ) {
+			$canView = $this->canEdit() || $wgUser->isAllowed( 'abusefilter-view-private' );
+		}
+
+		return $canView;
 	}
 }
 
