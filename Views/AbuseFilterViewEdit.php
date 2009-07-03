@@ -167,10 +167,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			
 			// Logging
 			
-			## Broken until logging table is expanded to 32 chars.
-#			$lp = new LogPage( 'abusefilter' );
+			$lp = new LogPage( 'abusefilter' );
 			
-#			$lp->addEntry( 'modify', $this->getTitle( $new_id ), '', array( $history_id, $new_id ) );
+			$lp->addEntry( 'modify', $this->getTitle( $new_id ), '', array( $history_id, $new_id ) );
 
 			// Special-case stuff for tags -- purge the tag list cache.
 			if ( isset( $actions['tag'] ) ) {
