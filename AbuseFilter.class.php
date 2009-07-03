@@ -1285,7 +1285,7 @@ class AbuseFilter {
 		
 		$readOnlyAttrib = array();
 		if (!$canEdit)
-			$readOnlyAttrib['disabled'] = 'disabled';
+			$readOnlyAttrib['readonly'] = 'readonly';
 			
 		global $wgUser;
 		$noTestAttrib = array();
