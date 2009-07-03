@@ -16,6 +16,14 @@ class AbuseFilterHooks {
 		$articleCacheKey = $title->getNamespace().':'.$title->getText();
 		AFComputedVariable::$articleCache[$articleCacheKey] = $editor->mArticle;
 		
+		// Check for null edits.
+		$oldtext = $editor->mArticle->getContent();
+		
+		if ( strcmp( $oldtext, $text ) == 0 ) {
+			// Don't trigger for null edits.
+			return true;
+		}
+		
 		global $wgUser;
 		$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
 		$vars->addHolder( AbuseFilter::generateTitleVars( $editor->mTitle , 'ARTICLE' ) );
@@ -23,13 +31,7 @@ class AbuseFilterHooks {
 		$vars->setVar( 'SUMMARY', $summary );
 		$vars->setVar( 'minor_edit', $editor->minoredit );
 		
-		$vars->setLazyLoadVar( 'old_wikitext', 'revision-text-by-timestamp',
-			array(
-					'timestamp' => $editor->edittime,
-					'namespace' => $editor->mTitle->getNamespace(),
-					'title' => $editor->mTitle->getText(),
-				) );
-				
+		$vars->setVar( 'old_wikitext', $oldtext );
 		$vars->setVar( 'new_wikitext', $text );
 
 		$vars->addHolder( AbuseFilter::getEditVars( $editor->mTitle ) );
