@@ -270,13 +270,17 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			if ($total > 0) {
 				$matches_percent = sprintf( '%.2f', 100 * $matches_count / $total );
-				$profile = AbuseFilter::getFilterProfile( $filter );
+				list($timeProfile, $condProfile) = AbuseFilter::getFilterProfile( $filter );
+				
 				$fields['abusefilter-edit-status-label'] =
 					wfMsgExt( 'abusefilter-edit-status', array( 'parsemag', 'escape' ),
-						$wgLang->formatNum($total),
-						$wgLang->formatNum($matches_count),
-						$wgLang->formatNum($matches_percent),
-						$wgLang->formatNum($profile)
+						array( 
+							$wgLang->formatNum($total),
+							$wgLang->formatNum($matches_count),
+							$wgLang->formatNum($matches_percent),
+							$wgLang->formatNum($timeProfile),
+							$wgLang->formatNum($condProfile)
+						)
 					);
 			}
 		}
