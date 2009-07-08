@@ -14609,6 +14609,7 @@ $messages['sah'] = array(
 	'right-abusefilter-private' => 'Омсолоох дьайыылар сурунаалларыгар кистэнэр тус сибидиэнньэлэри көрүү',
 	'right-abusefilter-modify-restricted' => 'Хааччахтыыр сиидэлэри уларытыы',
 	'right-abusefilter-revert' => 'Омсо сиидэтэ оҥорбут уларытыытын төннөр',
+	'right-abusefilter-view-private' => 'Кистэммит омсо сиидэлэрин көрүү',
 	'action-abusefilter-modify' => 'омсо сиидэтин уларытыы',
 	'action-abusefilter-view' => 'омсо сиидэтин көрүү',
 	'action-abusefilter-log' => 'омсо сиидэтин сурунаалын көрүү',
@@ -14616,6 +14617,7 @@ $messages['sah'] = array(
 	'action-abusefilter-private' => 'омсо сиидэтин сурунаалыгар тус дааннайдары көрүү',
 	'action-abusefilter-modify-restricted' => 'бобор/хааччахтыыр сиидэлэри уларытыы',
 	'action-abusefilter-revert' => 'бу сиидэ уларытыыларын барытын оннугар төннөрүү',
+	'action-abusefilter-view-private' => 'кистэммит омсо сиидэлэрин көрүү',
 	'abusefilter-log' => 'Омсо сиидэтин сурунаала',
 	'abusefilter-log-summary' => 'Бу сурунаалга сиидэлэр булбут дьайыылара барыта көрдөрүлүннэ.',
 	'abusefilter-log-search' => 'Омсо сурунаалыгар көрдөөһүн',
@@ -14693,7 +14695,7 @@ $messages['sah'] = array(
 [[Special:AbuseFilter/history/$2|Сиидэ устуоруйатын сирэйигэр төннүү]].',
 	'abusefilter-edit-status-label' => 'Статистиката:',
 	'abusefilter-edit-status' => 'Бүтэһик $1 {{PLURAL:$1|дьайыыттан|дьайыылартан}}, бу сиидэ $2 ($3%) сөп түбэһэр.
-Кини үлэтэ ортотунан — $4 мс',
+Кини үлэтэ ортотунан — $4 мс, усулуобуйа лимиититтэн $5 {{PLURAL:$5|усулуобуйаны|усулуобуйатын}} туттар.',
 	'abusefilter-edit-throttled' => "'''Сэрэтии.''' Бу сиидэ сэрэх муҥутаан араарыллыбыт.
 Үлэлиир бырыһыана бары дьайыылартан өлүүтэ $1 %-тан тахсыбыт.",
 	'abusefilter-edit-new' => 'Саҥа сиидэ',
@@ -14859,7 +14861,7 @@ $messages['sah'] = array(
 	'abusefilter-history-diff' => 'Уларытыылар',
 	'abusefilter-history-error-hidden' => 'Көрдөөбүт сиидэҥ сабыылаах, онон кини устуоруйатын көрөр табыллыбат.',
 	'abusefilter-exception-unexpectedatend' => '$1 бэлиэҕэ кэтэһиллибэтэх "$2".',
-	'abusefilter-exception-expectednotfound' => '$1 бэлиэҕэ кэтэһиллибит $2 көстүбэтэх.',
+	'abusefilter-exception-expectednotfound' => '$1 бэлиэҕэ кэтэһиллибит $2 көстүбэтэх (кини оннугар $3 $4 булуллубут).',
 	'abusefilter-exception-unrecognisedkeyword' => '$1 бэлиэҕэ биллибэт $2 күлүүс тыл.',
 	'abusefilter-exception-unexpectedtoken' => '"$3" биллибэт бэлиэ (көрүҥэ $2) $1 бэлиэҕэ (позицияҕа).',
 	'abusefilter-exception-unclosedstring' => 'Мантан: $1 саҕаланар устуруока сабыллыбатах этиитэ.',
@@ -14868,6 +14870,8 @@ $messages['sah'] = array(
 	'abusefilter-exception-noparams' => '"$2" функция параметрдара $1 позицияҕа ыйыллыбатахтар.',
 	'abusefilter-exception-dividebyzero' => '$1 позицияҕа $2 нуулга түҥэтии оҥоһулла сатаата.',
 	'abusefilter-exception-unrecognisedvar' => '$1 позицияҕа биллибэт $2 переменнай',
+	'abusefilter-exception-notenoughargs' => '$1 позицияҕа тахсар $2 функция аргуменнара тиийбэттэр.
+$3 {{PLURAL:$3|аргумент кэтэһиллэр|аргуменнаах буолуохтаах}}, $4 {{PLURAL:$4|ылыллыбыт|ылыллынна}}',
 	'abusefilter-action-throttle' => 'Ылҕааһын (сужение, throttle)',
 	'abusefilter-action-warn' => 'Сэрэтии',
 	'abusefilter-action-blockautopromote' => 'Аптамаатынан арбааһыны тохтот',
