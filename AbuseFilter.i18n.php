@@ -1080,6 +1080,14 @@ $messages['ar'] = array(
 	'abusefilter-import-submit' => 'استيراد البيانات',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'abusefilter-tools-modifiertest-submit' => 'ܢܣܝܘܢܐ',
+	'abusefilter-list-options' => 'ܓܒܝܬ̈ܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25
@@ -2933,12 +2941,12 @@ Filterbeschreibung: $7 ($8) ($9)',
 	'abusefilter-tools-text' => 'Auf dieser Seite finden sich einige Werkzeuge, die beim Erstellen von Missbrauchsfiltern und bei der Fehlersuche hilfreich sein können.',
 	'abusefilter-tools-expr' => 'Expression-Tester',
 	'abusefilter-tools-submitexpr' => 'Prüfen',
-	'abusefilter-tools-reautoconfirm' => '„Bestätigter Benutzer“-Status wiederherstellen',
+	'abusefilter-tools-reautoconfirm' => '„Automatisch bestätigte Benutzer“-Status wiederherstellen',
 	'abusefilter-tools-reautoconfirm-user' => 'Benutzer:',
-	'abusefilter-tools-reautoconfirm-submit' => 'Wieder zum bestätigten Benutzer machen',
-	'abusefilter-reautoconfirm-none' => '{{GENDER:$1|Diesem Benutzer|Dieser Benutzerin|Diesem Benutzer}} ist der „Bestätigter Benutzer“-Status nicht entzogen worden.',
-	'abusefilter-reautoconfirm-notallowed' => 'Du bist nicht berechtigt, Benutzer wieder zu bestätigten Benutzern zu machen.',
-	'abusefilter-reautoconfirm-done' => '„Bestätigter Benutzer“-Status wurde wiederhergestellt',
+	'abusefilter-tools-reautoconfirm-submit' => 'Wieder zum automatisch bestätigten Benutzer machen',
+	'abusefilter-reautoconfirm-none' => '{{GENDER:$1|Diesem Benutzer|Dieser Benutzerin|Diesem Benutzer}} ist der „Automatisch bestätigte Benutzer“-Status nicht entzogen worden.',
+	'abusefilter-reautoconfirm-notallowed' => 'Du bist nicht berechtigt, Benutzer wieder zu automatisch bestätigten Benutzern zu machen.',
+	'abusefilter-reautoconfirm-done' => '„Automatisch bestätigte Benutzer“-Status wurde wiederhergestellt',
 	'abusefilter-status' => 'Von {{PLURAL:$1|der letzten Aktion|den letzten $1 Aktionen}} {{PLURAL:$2|hat eine|haben $2}} ($3 %) den Grenzwert von $4 erreicht.
 {{PLURAL:$5|Eine Aktion|$5 Aktionen}} ($6 %) {{PLURAL:$5|wurde|wurden}} von einem der aktivierten Filter erkannt.',
 	'abusefilter-edit-subtitle' => 'Bearbeite Filter $1',
@@ -2966,7 +2974,7 @@ Im Durchschnitt betrug ihre Bearbeitungszeit $4 ms und sie benötigten $5 {{PLUR
 	'abusefilter-edit-action-warn' => 'Aktionen nach Warnung des Benutzers ausführen',
 	'abusefilter-edit-action-disallow' => 'Die vom Benutzer vorgesehene Aktion nicht ausführen',
 	'abusefilter-edit-action-flag' => 'Bearbeitung im Missbrauchsfilter-Logbuch markieren',
-	'abusefilter-edit-action-blockautopromote' => '„Bestätigter Benutzer“-Status entziehen',
+	'abusefilter-edit-action-blockautopromote' => '„Automatisch bestätigte Benutzer“-Status entziehen',
 	'abusefilter-edit-action-degroup' => 'Benutzer aus allen Gruppen mit Sonderrechten entfernen',
 	'abusefilter-edit-action-block' => 'Benutzer/IP-Adresse sperren',
 	'abusefilter-edit-action-throttle' => 'Aktion nur auslösen, wenn der Benutzer ein bestimmtes Limit überschreitet',
@@ -3231,7 +3239,7 @@ Kurzbeschreibung der verletzten Regel: $1',
 	'abusefilter-blockreason' => 'Sie wurden durch einen Missbrauchsfilter automatisch gesperrt. Beschreibung der zutreffenden Regel: $1',
 	'abusefilter-degroupreason' => 'Ihre Berechtigungen wurden durch einen Missbrauchsfilter automatisch beschränkt.
 Beschreibung der Regel: $1',
-	'abusefilter-reautoconfirm-notallowed' => 'Sie sind nicht berechtigt, Benutzer wieder zu bestätigten Benutzern zu machen.',
+	'abusefilter-reautoconfirm-notallowed' => 'Sie sind nicht berechtigt, Benutzer wieder zu automatisch bestätigten Benutzern zu machen.',
 	'abusefilter-edit-oldwarning' => '<strong>Sie bearbeiten nicht die aktuelle, sondern eine ältere Version dieses Filters. Die Statistik gilt nur für die letzte Version des Filters. Wenn Sie speichern, wird diese als aktuelle Version neu gespeichert. </strong> &bull; [[Special:AbuseFilter/history/$2|Zurück zur Versionsgeschichte des Filters]]',
 	'abusefilter-edit-denied' => 'Sie können die Details dieses Filters nicht einsehen, weil sie versteckt sind.',
 	'abusefilter-edit-done' => 'Ihre Änderungen am Filter $1 wurden erfolgreich gespeichert.',
@@ -4216,6 +4224,7 @@ Agoj por malfari: $5 ($6)',
 	'abusefilter-examine-syntaxerror' => 'La filtrilo havas malvalidan sintakson.',
 	'abusefilter-examine-notfound' => 'La ŝango petita ne eblis esti trovita.',
 	'abusefilter-examine-incompatible' => 'Via petita ŝanĝo ne estas subtenata de la Misuzada Filtrilo',
+	'abusefilter-examine-noresults' => 'Neniuj rezultoj estis trovitaj de la serĉ-parametroj donitaj.',
 	'abusefilter-topnav-home' => 'Hejmo',
 	'abusefilter-topnav-test' => 'Stapla testado',
 	'abusefilter-topnav-examine' => 'Vidi antaŭajn redaktojn',
@@ -4980,6 +4989,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Crt
  * @author Ilaiho
  * @author Nike
@@ -4991,6 +5001,7 @@ $messages['fi'] = array(
 	'abusefilter-desc' => 'Mahdollistaa muokkauksien suodattamisen automaattisella heuristiikalla.',
 	'abusefilter' => 'Väärinkäyttösuodattimen asetukset',
 	'abuselog' => 'Väärinkäyttöloki',
+	'abusefilter-mustbeeditor' => 'Turvallisuussyistä vain käyttäjät, joilla on oikeus muuttaa väärinkäyttösuodattimia saavat hyödyntää tätä käyttöliittymää.',
 	'abusefilter-warning' => "<big>'''Varoitus'''</big>: Tämä muokkaus on automaattisesti tunnistettu haitalliseksi.
 Epäasialliset muokkaukset kumotaan nopeasti ja törkeä tai toistuva häiriköinti johtaa tunnuksesi tai IP-osoitteesi estämiseen.
 Jos muokkauksesi on mielestäsi asiallinen, napsauta Tallenna-painiketta uudelleen.
@@ -5004,6 +5015,9 @@ ja sen suorittaminen on estetty.
 {{GRAMMAR:genitive|{{SITENAME}}}} suojelemiseksi muokkaaminen on estetty tunnukseltasi ja kaikilta siihen liittyviltä IP-osoitteilta.
 Ota yhteyttä ylläpitäjään mikäli on tapahtunut virhe.
 Syy: $1',
+	'abusefilter-autopromote-blocked' => 'Tämä toimenpide on automaattisesti tunnistettu haitalliseksi, ja sitä ei ole sallittu.
+Turvallisuussyistä jotkin rutiininomaisesti peruskäyttäjille myönnetyt etuoikeudet on väliaikaisesti poistettu käyttäjätunnukseltasi.
+Väärinkäyttösuodatinsäännön kuvaus, joka vastasi suorittamaasi toimenpidettä, on kuvattu lyhyesti täällä: $1',
 	'abusefilter-blocker' => 'Väärinkäyttösuodatin',
 	'abusefilter-blockreason' => 'Automaattisen väärinkäyttösuodattimen estämä. Syy: $1',
 	'abusefilter-accountreserved' => 'Tämä käyttäjätunnus on varattu väärinkäyttösuodattimen käyttöön.',
@@ -5068,7 +5082,9 @@ Syy: $1',
 	'abusefilter-list-options-hidedisabled' => 'Piilota epäaktiiviset suodattimet',
 	'abusefilter-list-options-submit' => 'Päivitä',
 	'abusefilter-tools-subtitle' => 'Työkalut',
+	'abusefilter-tools-text' => 'Tässä työkaluja, jotka voivat olla hyödyllisiä väärinkäyttösuodattimien muodostamisessa ja niiden virheenjäljityksessä.',
 	'abusefilter-tools-expr' => 'Lausekkeen kokeilu',
+	'abusefilter-tools-submitexpr' => 'Arvioi',
 	'abusefilter-tools-reautoconfirm' => 'Palauta automaattisesti hyväksytyn käyttäjän tila',
 	'abusefilter-tools-reautoconfirm-user' => 'Käyttäjä',
 	'abusefilter-reautoconfirm-none' => 'Käyttäjän automaattisesti hyväksytyn käyttäjän tilaa ei ole peruutettu.',
@@ -5090,9 +5106,12 @@ Suodatin saavutti yli $1 % täsmäävän toiminnon rajan.",
 :''(yksityinen)''",
 	'abusefilter-edit-lastmod' => 'Suodatinta viimeksi muuttanut:',
 	'abusefilter-edit-hitcount' => 'Suodattimen osumat:',
+	'abusefilter-edit-action-warn' => 'Käynnistä nämä toimenpiteet käyttäjän varoituksen jälkeen',
+	'abusefilter-edit-action-disallow' => 'Estä käyttäjää suorittamasta kyseistä toimenpidettä',
 	'abusefilter-edit-action-flag' => 'Merkitse muokkaus väärinkäyttölokiin',
 	'abusefilter-edit-action-degroup' => 'Poista käyttäjä kaikista etuoikeutetuista ryhmistä',
 	'abusefilter-edit-action-block' => 'Aseta käyttäjälle ja/tai IP-osoitteelle muokkausesto',
+	'abusefilter-edit-action-tag' => 'Merkitse muokkaus lisätarkastelun kohteeksi',
 	'abusefilter-edit-throttle-period' => 'Aikaväli',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|sekunti|sekuntia}}',
 	'abusefilter-edit-warn-message' => 'Varoitukseen käytettävä järjestelmäviesti',
@@ -5163,11 +5182,16 @@ Suodatin saavutti yli $1 % täsmäävän toiminnon rajan.",
 	'abusefilter-edit-builder-vars-removed-links' => 'Kaikki muokkauksessa poistetut ulkoiset linkit',
 	'abusefilter-edit-builder-vars-old-text' => 'Sivun vanha wikiteksti, ennen muokkausta',
 	'abusefilter-edit-builder-vars-new-text' => 'Sivun uusi wikiteksti, muokkauksen jälkeen',
+	'abusefilter-edit-builder-vars-new-text-stripped' => 'Sivun uusin tekstimuoto, riisuttuna kaikista koodimerkinnöistä',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Muokkaa sivun suojausta',
+	'abusefilter-edit-builder-vars-restrictions-move' => 'Sivun siirtosuojauksen taso',
+	'abusefilter-edit-builder-vars-old-text-stripped' => 'Sivun vanhempi teksti, riisuttuna koodimerkinnöistä',
+	'abusefilter-edit-builder-vars-minor-edit' => 'Onko muokkaus on merkitty pieneksi muokkaukseksi vai ei',
 	'abusefilter-edit-builder-vars-file-sha1' => 'Tiedoston sisällön SHA1-tiiviste',
 	'abusefilter-filter-log' => 'Suodattimen tuoreet muutokset',
 	'abusefilter-history' => 'Muutoshistoria väärinkäyttösuodattimelle $1',
 	'abusefilter-history-hidden' => 'piilotettu',
+	'abusefilter-history-enabled' => 'Aktivoitu',
 	'abusefilter-history-timestamp' => 'Aika',
 	'abusefilter-history-user' => 'Käyttäjä',
 	'abusefilter-history-public' => 'Suodattimen julkinen kuvaus',
@@ -5178,6 +5202,8 @@ Suodatin saavutti yli $1 % täsmäävän toiminnon rajan.",
 	'abusefilter-history-filterid' => 'Suodatin',
 	'abusefilter-history-select-user' => 'Käyttäjä',
 	'abusefilter-history-diff' => 'Muutokset',
+	'abusefilter-history-error-hidden' => 'Pyytämäsi suodatin on salattu, etkä voi tarkastella sen historiaa.',
+	'abusefilter-action-throttle' => 'Hillitse muokkaustahtia',
 	'abusefilter-action-warn' => 'Varoita',
 	'abusefilter-action-blockautopromote' => 'Automaattinen esto',
 	'abusefilter-action-block' => 'Estä',
@@ -5207,6 +5233,7 @@ Annettu syy: $2',
 	'abusefilter-examine-test' => 'Kokeile tätä muokkausta suodattimeen',
 	'abusefilter-examine-test-button' => 'Kokeile suodatinta',
 	'abusefilter-examine-match' => 'Suodatin vastasi tätä muutosta.',
+	'abusefilter-examine-nomatch' => 'Suodatin ei vastannut tämän muutoksen kohdalta.',
 	'abusefilter-examine-syntaxerror' => 'Suodattimella on virheellinen syntaksi',
 	'abusefilter-examine-notfound' => 'Pyytämääsi muutosta ei löytynyt.',
 	'abusefilter-examine-incompatible' => 'Väärinkäyttösuodatin ei tue pyytämiäsi muutoksia',
@@ -8989,6 +9016,7 @@ Per ottenere una spiegazione completa, fare clic sul pulsante "Verifica sintassi
 	'abusefilter-topnav-examine' => 'Esamina le modifiche precedenti',
 	'abusefilter-topnav-log' => 'Log degli abusi',
 	'abusefilter-topnav-tools' => 'Strumenti di debug',
+	'abusefilter-topnav-import' => 'Importa filtro',
 	'abusefilter-log-name' => 'Registro del filtro anti abusi',
 	'abusefilter-log-header' => "Il registro mostra un riassunto delle modifiche effettuate sui filtri.
 Per i dettagli completi, consultare [[Special:AbuseFilter/history|l'elenco]] delle modifiche più recenti agli stessi.",
@@ -9000,6 +9028,7 @@ Per i dettagli completi, consultare [[Special:AbuseFilter/history|l'elenco]] del
 	'abusefilter-diff-pattern' => 'Condizioni dei filtri',
 	'abusefilter-diff-invalid' => 'Impossibile caricare le versioni richieste',
 	'abusefilter-diff-backhistory' => 'Torna alla cronologia dei filtri',
+	'abusefilter-import-submit' => 'Importa dati',
 );
 
 /** Japanese (日本語)
@@ -16543,6 +16572,7 @@ $messages['te'] = array(
 	'abusefilter-history-comments' => 'వ్యాఖ్యలు',
 	'abusefilter-history-actions' => 'చర్యలు',
 	'abusefilter-history-select-user' => 'వాడుకరి:',
+	'abusefilter-history-diff' => 'మార్పులు',
 	'abusefilter-examine-user' => 'వాడుకరి:',
 	'abusefilter-examine-title' => 'పేజీ శీర్షిక:',
 	'abusefilter-examine-submit' => 'వెతుకు',
