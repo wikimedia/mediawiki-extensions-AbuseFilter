@@ -216,6 +216,8 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-edit-export' => 'Export this filter to another wiki',
 	'abusefilter-edit-syntaxok' => 'No syntax errors detected.',
 	'abusefilter-edit-syntaxerr' => 'Syntax error detected: $1',
+	'abusefilter-edit-bad-tags' => 'One or more of the tags you specified is not valid.
+Tags should be short, and they should not contain special characters.',
 
 	// Filter editing helpers
 	'abusefilter-edit-builder-select' => 'Select an option to add it at the cursor',

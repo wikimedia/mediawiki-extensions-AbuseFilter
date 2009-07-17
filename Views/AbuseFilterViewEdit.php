@@ -73,6 +73,26 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				);
 				return;
 			}
+			
+			// If we've activated the 'tag' option, check the arguments for validity.
+			if ( !empty($actions['tag']) ) {
+				$bad = false;
+				foreach( $actions['tag']['parameters'] as $tag ) {
+					$t = Title::makeTitleSafe( NS_MEDIAWIKI, 'tag-'.$tag );
+					if (!$t) {
+						$bad = true;
+					}
+					
+					if ($bad) {
+						$wgOut->addHTML( $this->buildFilterEditor(
+										wfMsgExt( 'abusefilter-edit-bad-tags', 'parse' ),
+										$this->mFilter,
+										$history_id
+									) );
+						return;
+					}
+				}
+			}
 
 			$newRow = get_object_vars($newRow); // Convert from object to array
 
