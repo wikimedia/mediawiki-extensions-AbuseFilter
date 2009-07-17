@@ -1301,14 +1301,6 @@ class AbuseFilterParser {
 
 		if( $args[0]->type == AFPData::DList && count( $args ) == 1 ) {
 			return new AFPData( AFPData::DInt, count( $args[0]->data ) );
-		} elseif( count( $args ) > 1 && $args[1]->type == AFPData::DList ) {
-			$needle = $args[0];
-			$haystack = $args[1]->toList();
-			$count = 0;
-			foreach( $haystack as $item )
-				if( AFPData::equals( $needle, $item ))
-					$count++;
-			return new AFPData( AFPData::DInt, $count );
 		}
 
 		$offset = -1;
