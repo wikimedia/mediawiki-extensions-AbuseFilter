@@ -214,6 +214,8 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-edit-test-link' => 'Test this filter against recent edits',
 	'abusefilter-edit-global' => 'Apply this filter globally',
 	'abusefilter-edit-export' => 'Export this filter to another wiki',
+	'abusefilter-edit-syntaxok' => 'No syntax errors detected.',
+	'abusefilter-edit-syntaxerr' => 'Syntax error detected: $1',
 
 	// Filter editing helpers
 	'abusefilter-edit-builder-select' => 'Select an option to add it at the cursor',

@@ -17,12 +17,14 @@ function processSyntaxResult( request ) {
 	
 	if (response.match( /OK/ )) {
 		// Successful
-		changeText( el, 'No syntax errors.' );
+		changeText( el, wgAbuseFilterMessages['abusefilter-edit-syntaxok'] );
 		el.syntaxOk = true;
 		el.className = 'mw-abusefilter-syntaxresult-ok';
 	} else {
 		var errorData = eval(response.substr(4));
-		changeText( el, 'Syntax error: '+errorData[0] );
+		var msg = wgAbuseFilterMessages['abusefilter-edit-syntaxerr'];
+		msg = msg.replace( '$1', errorData[0] );
+		changeText( el, msg );
 		el.syntaxOk = false;
 		el.className = 'mw-abusefilter-syntaxresult-error';
 

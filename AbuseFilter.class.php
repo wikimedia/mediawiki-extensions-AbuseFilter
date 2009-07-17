@@ -1345,6 +1345,15 @@ class AbuseFilter {
 		// Add script
 		$editScript = file_get_contents(dirname(__FILE__)."/edit.js");
 		$editScript = "var wgFilterBoxName = ".Xml::encodeJSVar( $textName ).";\n$editScript";
+		
+		// Import localisation.
+		$importMessages = array( 'abusefilter-edit-syntaxok', 'abusefilter-edit-syntaxerr' );
+		$msgData = array();
+		foreach( $importMessages as $msg ) {
+			$msgData[$msg] = wfMsg( $msg );
+		}
+		$editScript .= "\nvar wgAbuseFilterMessages = ".json_encode($msgData).";\n";
+		
 		$wgOut->addInlineScript( $editScript );
 
 		return $rules;
