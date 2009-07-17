@@ -118,16 +118,21 @@ class AbuseFilter {
 	);
 
 	public static function addNavigationLinks( $out, $sk, $pageType ) {
-		global $wgLang;
+		global $wgLang, $wgUser;
 		$linkDefs = array(
 					'home' => 'Special:AbuseFilter',
 					'recentchanges' => 'Special:AbuseFilter/history',
 					'test' => 'Special:AbuseFilter/test',
 					'examine' => 'Special:AbuseFilter/examine',
 					'log' => 'Special:AbuseLog',
+				);
+		
+		if ($wgUser->isAllowed( 'abusefilter-modify' ) ) {
+			$linkDefs = array_merge( $linkDefs, array(
 					'tools' => 'Special:AbuseFilter/tools',
 					'import' => 'Special:AbuseFilter/import',
-				);
+				) );
+		}
 				
 		// Save some translator work
 		$msgOverrides = array(
