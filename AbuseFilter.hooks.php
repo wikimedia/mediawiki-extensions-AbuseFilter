@@ -206,15 +206,16 @@ class AbuseFilterHooks {
 		$vars = new AbuseFilterVariableHolder;
 		
 		global $wgUser;
+		$title = Title::makeTitle($saveName, NS_FILE);
 		$vars->addHolder( AbuseFilterVariableHolder::merge(
 							AbuseFilter::generateUserVars( $wgUser ),
-							AbuseFilter::generateTitleVars( Title::newFromText($saveName), 'FILE' )
+							AbuseFilter::generateTitleVars( $title, 'FILE' )
 				) );
 				
 		$vars->setVar( 'ACTION', 'upload' );
 		$vars->setVar( 'file_sha1', sha1_file( $tempName ) ); // TODO share with save
 		
-		$filter_result = AbuseFilter::filterAction( $vars, Title::newFromText( $saveName ) );
+		$filter_result = AbuseFilter::filterAction( $vars, $title );
 		
 		if ( is_string($filter_result) ) {
 			$error = $filter_result;
