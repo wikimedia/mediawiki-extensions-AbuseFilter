@@ -4953,6 +4953,7 @@ $messages['fa'] = array(
 	'abusefilter-edit-builder-vars-user-name' => 'نام حساب کاربری',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'انتقال وضعیت حفاظت صفحه',
 	'abusefilter-filter-log' => 'تغییرات اخیر فیلترها',
+	'abusefilter-history' => 'تاریخچه تغییرهای فیلتر خرابکاری #$1',
 	'abusefilter-history-foruser' => 'تغییرات توسط $1',
 	'abusefilter-history-hidden' => 'پنهان',
 	'abusefilter-history-enabled' => 'فعال',
@@ -4974,6 +4975,7 @@ $messages['fa'] = array(
 	'abusefilter-history-error-hidden' => 'فیلتری که شما درخواست کرده‌اید پنهان شده‌است و شما نمی‌توانید آن را در تاریخچه ببینید',
 	'abusefilter-exception-unrecognisedkeyword' => 'عدم تشخیص کلیدواژه $2 در کاراکتر $1',
 	'abusefilter-action-tag' => 'تگ',
+	'abusefilter-action-throttle' => 'دریچه',
 	'abusefilter-action-warn' => 'هشدار',
 	'abusefilter-action-block' => 'بستن',
 	'abusefilter-action-rangeblock' => 'محدوده بستن',
@@ -4988,11 +4990,13 @@ $messages['fa'] = array(
 	'abusefilter-test-load' => 'بارگذاری',
 	'abusefilter-test-user' => 'تغییرات کاربر:',
 	'abusefilter-changeslist-examine' => 'امتحان',
+	'abusefilter-examine-legend' => 'تغییرات انتخابی',
 	'abusefilter-examine-diff' => 'آدرس تفاوت:',
 	'abusefilter-examine-user' => 'کاربر:',
 	'abusefilter-examine-title' => 'عنوان صفحه:',
 	'abusefilter-examine-submit' => 'جستجو',
 	'abusefilter-examine-test-button' => 'تست فیلتر',
+	'abusefilter-examine-syntaxerror' => 'فیلتر ساختار نادرست دارد',
 	'abusefilter-topnav' => "'''ناوبری فیلتر خرابکاری'''",
 	'abusefilter-topnav-home' => 'منزل',
 	'abusefilter-topnav-log' => 'سیاهه خرابکاری',
@@ -10394,6 +10398,7 @@ Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilte
  * @author Robby
  */
 $messages['lb'] = array(
+	'abusefilter-desc' => 'Applizéiert automatesch Heuristiken op Ännerungen',
 	'abusefilter' => 'Astellung vum Mëssbrauchsfilter',
 	'abuselog' => 'Lëscht vum Mëssbrauch',
 	'abusefilter-intro' => "Wëllkom op der Säit vum Mëssbrauchsfiler-Management.
@@ -10440,6 +10445,7 @@ Eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi Är Aktioun reagéiert 
 	'action-abusefilter-private' => 'privat Donnéeën am Mëssbrauchsfilter weisen',
 	'action-abusefilter-modify-restricted' => "d'Mëssbrauchsfiltere mat limtéierten Aktiounen z'änneren",
 	'action-abusefilter-revert' => 'all Ännerungen vun engem bestëmmte Mëssbrauchsfilter zréckzesetzen',
+	'action-abusefilter-view-private' => 'Mëssbrauchsfilteren ze kucken, déi als privat markéiert sinn',
 	'abusefilter-log' => 'Lëscht vun de Mëssbrauchs-Filteren',
 	'abusefilter-log-summary' => 'Dëst Logbuch weist eng Lëscht vun allen Aktiounen déi duerch Filteren opgefaang goufen.',
 	'abusefilter-log-search' => 'D?Lëscht vum Mëssbrauch duerchsichen',
@@ -15657,6 +15663,10 @@ Priemerný čas behu je $4 ms a spotrebuje $5 {{PLURAL:$5|podmienku|podmienky|po
 	'abusefilter-edit-test-link' => 'Otestovať tento filter na posledných úpravách',
 	'abusefilter-edit-global' => 'Aplikovať tento filter globálne',
 	'abusefilter-edit-export' => 'Exportovať tento filter do inej wiki',
+	'abusefilter-edit-syntaxok' => 'Neboli zistené žiadne syntaktické chyby.',
+	'abusefilter-edit-syntaxerr' => 'Zistená syntaktická chyba: $1',
+	'abusefilter-edit-bad-tags' => 'Jedna alebo viac zo značiek, ktoré ste uviedli nie je platných.
+Značky by mali byť krátke a nemali by obsahovať špeciálne znaky.',
 	'abusefilter-edit-builder-select' => 'Vyberte voľbu, ktorá sa pridá na miesto, kde je kurzor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetické operátory',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Sčítanie (+)',

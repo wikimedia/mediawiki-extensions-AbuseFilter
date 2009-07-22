@@ -224,6 +224,12 @@ $aliases['si'] = array(
 	'AbuseFilter' => array( 'අපයෙදුම් පෙරහන' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'AbuseLog' => array( 'ZáznamZneužití' ),
+	'AbuseFilter' => array( 'FilterZneužití' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'AbuseLog' => array( 'Missbrukslogg' ),
