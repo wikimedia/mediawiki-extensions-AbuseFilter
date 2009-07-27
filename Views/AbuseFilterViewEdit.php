@@ -541,7 +541,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						'type' => 'button', 
 						'id' => 'mw-abusefilter-warn-preview-button', 
 						'value' => wfMsg( 'abusefilter-edit-warn-preview' ) 
-					) + $readOnlyAttrib
+					)
 				);
 				$editButton = Xml::element( 
 					'input', 
@@ -549,7 +549,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						'type' => 'button', 
 						'id' => 'mw-abusefilter-warn-edit-button', 
 						'value' => wfMsg( 'abusefilter-edit-warn-edit' ) 
-					) + $readOnlyAttrib
+					)
 				);
 				$previewHolder = Xml::element( 
 					'div', 
