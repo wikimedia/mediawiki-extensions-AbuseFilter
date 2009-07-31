@@ -1498,9 +1498,9 @@ class AbuseFilterParser {
 		if ( isset($args[2]) ) {
 			$length = $args[2]->toInt();
 			
-			$result = substr( $s, $offset, $length );
+			$result = mb_substr( $s, $offset, $length );
 		} else {
-			$result = substr( $s, $offset );
+			$result = mb_substr( $s, $offset );
 		}
 		
 		return new AFPData( AFPData::DString, $result );
@@ -1518,9 +1518,9 @@ class AbuseFilterParser {
 		if ( isset($args[2]) ) {
 			$offset = $args[2]->toInt();
 			
-			$result = strpos( $haystack, $needle, $offset );
+			$result = mb_strpos( $haystack, $needle, $offset );
 		} else {
-			$result = strpos( $haystack, $needle );
+			$result = mb_strpos( $haystack, $needle );
 		}
 		
 		if ($result === false)
