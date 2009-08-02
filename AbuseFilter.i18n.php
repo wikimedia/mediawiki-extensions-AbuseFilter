@@ -10761,7 +10761,7 @@ Dir kënnt eng komplett Erklärung kréien wann Dir op "Syntax nokucken" klickt.
 	'abusefilter-examine-nomatch' => 'De Filter erfaasst dës Ännerung net.',
 	'abusefilter-examine-syntaxerror' => "D'Syntax vun dësem Filter ass net valabel",
 	'abusefilter-examine-notfound' => 'Déi Ännerung déi dir gefrot hutt gouf net fonnt.',
-	'abusefilter-examine-incompatible' => 'Déi Ännerung déi Dir ugefrot hutt gëtt net vum Mëssbrauchsfilter ënnerstetzt',
+	'abusefilter-examine-incompatible' => 'Déi Ännerung déi Dir ugefrot hutt gëtt net vum Mëssbrauchsfilter ënnerstëtzt',
 	'abusefilter-examine-noresults' => 'Et gouf näischt fonnt mat de Sich-Parameter déi Dir uginn hutt',
 	'abusefilter-topnav' => "'''Navigatioun vum Mëssbrauchs-Filter'''",
 	'abusefilter-topnav-home' => 'Haaptsäit',
