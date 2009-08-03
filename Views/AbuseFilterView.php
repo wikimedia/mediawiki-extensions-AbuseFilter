@@ -39,7 +39,7 @@ abstract class AbuseFilterView {
 }
 
 class AbuseFilterChangesList extends OldChangesList {
-	protected function insertExtra( &$s, &$rc, &$classes ) {
+	public function insertExtra( &$s, &$rc, &$classes ) {
 		$sk = $this->skin;
 		$examineParams = empty($rc->examineParams) ? array() : $rc->examineParams;
 
@@ -59,5 +59,5 @@ class AbuseFilterChangesList extends OldChangesList {
 	}
 	
 	// Kill rollback links.
-	protected function insertRollback( &$s, &$rc ) {}
+	public function insertRollback( &$s, &$rc ) {}
 }
