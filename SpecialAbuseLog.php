@@ -61,6 +61,7 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 		
 		$this->mSearchTitle = $wgRequest->getText( 'wpSearchTitle' );
+		$this->mSearchFilter = null;
 		if ( $this->canSeeDetails() ) {
 			$this->mSearchFilter = $wgRequest->getIntOrNull( 'wpSearchFilter' );
 		}
