@@ -6846,8 +6846,8 @@ $messages['he'] = array(
 	'abusefilter-edit-export' => 'ייצוא מסנן זה לאתר ויקי אחר',
 	'abusefilter-edit-syntaxok' => 'לא נמצאו שגיאות תחביריות.',
 	'abusefilter-edit-syntaxerr' => 'נמצאה שגיאה תחבירית: $1',
-	'abusefilter-edit-bad-tags' => 'תגית אחת או יותר מאלו שצויינו אינה תקנית.
-על התגיות להיות קצרות, ואינן יכולות להכיל תווים מיוחדים.',
+	'abusefilter-edit-bad-tags' => 'תגית אחת או יותר מאלו שצוינו אינה תקינה.
+על התגיות להיות קצרות, והן אינן יכולות להכיל תווים מיוחדים.',
 	'abusefilter-edit-builder-select' => 'בחרו באפשרות עם הסמן כדי להוסיף אותה',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'אופרטורים חשבוניים',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'חיבור (+)',
