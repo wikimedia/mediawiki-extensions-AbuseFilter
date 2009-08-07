@@ -5074,11 +5074,17 @@ ja sen suorittaminen on estetty.
 {{GRAMMAR:genitive|{{SITENAME}}}} suojelemiseksi muokkaaminen on estetty tunnukseltasi ja kaikilta siihen liittyviltä IP-osoitteilta.
 Ota yhteyttä ylläpitäjään mikäli on tapahtunut virhe.
 Syy: $1',
+	'abusefilter-degrouped' => 'Tämä toimenpide on automaattisesti tunnistettu haitalliseksi.
+Siitä johtuen sitä ei ole sallittu, ja koska käyttäjätilisi on epäilty olevan murrettu, sen kaikki oikeudet on peruttu.
+Mikäli tämä on ollut mielestäsi erehdys, ota yhteyttä byrokraattiin ja esitä perustelusi tälle toimenpiteelle, niin oikeutesi saatetaan palauttaa. 
+Lyhyt kuvaus väärinkäyttösuodattimen säännöstä, joka täsmää toimenpiteeseesi on: $1',
 	'abusefilter-autopromote-blocked' => 'Tämä toimenpide on automaattisesti tunnistettu haitalliseksi, ja sitä ei ole sallittu.
 Turvallisuussyistä jotkin rutiininomaisesti peruskäyttäjille myönnetyt etuoikeudet on väliaikaisesti poistettu käyttäjätunnukseltasi.
 Väärinkäyttösuodatinsäännön kuvaus, joka vastasi suorittamaasi toimenpidettä, on kuvattu lyhyesti täällä: $1',
 	'abusefilter-blocker' => 'Väärinkäyttösuodatin',
 	'abusefilter-blockreason' => 'Automaattisen väärinkäyttösuodattimen estämä. Syy: $1',
+	'abusefilter-degroupreason' => 'Oikeudet vedetty automaattisesti pois väärinkäyttösuodattimen toimesta.
+Säännön kuvaus: $1',
 	'abusefilter-accountreserved' => 'Tämä käyttäjätunnus on varattu väärinkäyttösuodattimen käyttöön.',
 	'right-abusefilter-modify' => 'Muokata väärinkäyttösuodattimia',
 	'right-abusefilter-view' => 'Tarkastella väärinkäyttösuodattimia',
@@ -5086,6 +5092,7 @@ Väärinkäyttösuodatinsäännön kuvaus, joka vastasi suorittamaasi toimenpide
 	'right-abusefilter-log-detail' => 'Tarkastella väärinkäyttölokia yksityiskohtaisesti',
 	'right-abusefilter-private' => 'Tarkastella yksityistiedoja väärinkäyttölokista',
 	'right-abusefilter-revert' => 'Palauttaa kaikki muutokset valitulla väärinkäyttösuodattimella',
+	'right-abusefilter-view-private' => 'Tarkastella väärinkäyttösuodattimia, jotka on merkitty yksityisiksi',
 	'action-abusefilter-modify' => 'muokata väärinkäyttösuodattimia',
 	'action-abusefilter-view' => 'tarkastella väärinkäyttösuodattimia',
 	'action-abusefilter-log' => 'tarkastella väärinkäyttölokia',
@@ -7923,6 +7930,9 @@ Kérj meg egy megfelelő jogosultságokkal rendelkező szerkesztőt, hogy végez
 	'abusefilter-edit-global' => 'Szűrő globális alkalmazása',
 	'abusefilter-edit-export' => 'Szűrő exportálása egy másik wikibe',
 	'abusefilter-edit-syntaxok' => 'Nincs szintaktikai hiba.',
+	'abusefilter-edit-syntaxerr' => 'Szintaktikai hiba: $1',
+	'abusefilter-edit-bad-tags' => 'Egy vagy több megadott tag nem érvényes.
+A tageknek rövidnek kell lenniük, és nem tartalmazhatnak speciális karaktereket.',
 	'abusefilter-edit-builder-select' => 'A kurzornál való beszúráshoz válassz egy opciót',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetikai operátorok',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'összeadás (+)',
@@ -8046,6 +8056,7 @@ Kérj meg egy megfelelő jogosultságokkal rendelkező szerkesztőt, hogy végez
 	'abusefilter-exception-overridebuiltin' => 'A(z) $1. karakternél a „$2” beépített változó felülírása nem engedélyezett.',
 	'abusefilter-exception-outofbounds' => 'A(z) $1. karakternél nem létezõ, $2. számú listatagra található hivatkozás, de az egész lista csak $3 hosszú.',
 	'abusefilter-exception-notlist' => 'A(z) $1. karakternél a függvény tömbbe nem tartozó tömbtagot kér.',
+	'abusefilter-action-tag' => 'Tag',
 	'abusefilter-action-throttle' => 'Szerkesztési sebesség',
 	'abusefilter-action-warn' => 'Figyelmeztetés',
 	'abusefilter-action-blockautopromote' => 'Autopromote blokkolása',
