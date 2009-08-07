@@ -239,7 +239,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$wgOut->setSubtitle( wfMsg( 'abusefilter-edit-subtitle', $filter, $history_id ) );
 
 		// Hide hidden filters.
-		if ( isset($row->af_hidden) && $row->af_hidden && !$this->canViewPrivate() ) {
+		if ( ( (isset($row->af_hidden) && $row->af_hidden) ||
+				AbuseFilter::filterHidden( $filter ) )
+			&& !$this->canViewPrivate() ) {
 			return wfMsg( 'abusefilter-edit-denied' );
 		}
 
