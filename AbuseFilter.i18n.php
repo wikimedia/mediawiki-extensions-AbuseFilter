@@ -4753,7 +4753,13 @@ $messages['eu'] = array(
 	'abusefilter-history-filterid' => 'Iragazkia',
 	'abusefilter-history-select-user' => 'Lankide:',
 	'abusefilter-history-diff' => 'Aldaketak',
+	'abusefilter-action-warn' => 'Abisatu',
+	'abusefilter-action-block' => 'Blokeatu',
+	'abusefilter-action-disallow' => 'Debekatu',
 	'abusefilter-revert-search' => 'Ekintzak hautatu',
+	'abusefilter-revert-filter' => 'Iragazkia:',
+	'abusefilter-revert-confirm' => 'Berretsi',
+	'abusefilter-test-load' => 'Kargatu',
 	'abusefilter-test-user' => 'Erabiltzaileak egindako aldaketak:',
 	'abusefilter-test-period-start' => 'Geroago egindako aldaketak:',
 	'abusefilter-test-period-end' => 'Lehenago egindako aldaketak:',
@@ -4764,6 +4770,7 @@ $messages['eu'] = array(
 	'abusefilter-examine-submit' => 'Bilatu',
 	'abusefilter-topnav-home' => 'Hasiera',
 	'abusefilter-topnav-import' => 'Iragazkia inportatu',
+	'abusefilter-diff-info' => 'Oinarrizko informazioa',
 	'abusefilter-import-submit' => 'Datuak inportatu',
 );
 
@@ -4829,6 +4836,9 @@ $messages['fa'] = array(
 	'abusefilter-log-entry' => '$1: $2توسط فیلتر خرابکاری گرفته شد او مشغول اجرای"$3" بر روی $4 بود.
 عمل فیلتر: $5;
 توضیحات فیلتر: $6',
+	'abusefilter-log-detailedentry-meta' => '$1:$2 گرفت $3 در حالی که قصد داشت "$4" را روی $5 انجام دهد.
+اقدامی که گرفته شد:$6
+توضیحات فیلتر:$7 ($8) ($9)',
 	'abusefilter-log-detailedentry-global' => 'فیلتر سراسری $1',
 	'abusefilter-log-detailedentry-local' => 'فیلتر $1',
 	'abusefilter-log-detailslink' => 'جزئیات',
@@ -5008,8 +5018,11 @@ $messages['fa'] = array(
 	'abusefilter-action-throttle' => 'دریچه',
 	'abusefilter-action-warn' => 'هشدار',
 	'abusefilter-action-block' => 'بستن',
+	'abusefilter-action-degroup' => 'حذف از گروه‌ها',
 	'abusefilter-action-rangeblock' => 'محدوده بستن',
 	'abusefilter-action-disallow' => 'بدون اجازه',
+	'abusefilter-revert-periodstart' => 'شروع تناوب:',
+	'abusefilter-revert-periodend' => 'پایان تناوب:',
 	'abusefilter-revert-search' => 'انتخاب اقدامات',
 	'abusefilter-revert-filter' => 'پالایه:',
 	'abusefilter-revert-confirm' => 'تائید',
@@ -8799,6 +8812,7 @@ $messages['io'] = array(
 
 /** Italian (Italiano)
  * @author BrokenArrow
+ * @author Brownout
  * @author Darth Kule
  * @author Gianfranco
  * @author Melos
@@ -8928,7 +8942,7 @@ Salvando le modifiche verranno annullati tutti i cambiamenti apportati da questa
 [[Special:AbuseFilter/history/$2|Ritorna alla cronologia del filtro]].',
 	'abusefilter-edit-status-label' => 'Statistiche:',
 	'abusefilter-edit-status' => "Rispetto {{PLURAL:$1|all'azione più recente|alle $1 azioni più recenti}}, questo filtro ha trovato $2 corrispondenze ($3%).
-Il suo tempo medio di esecuzione è di $4 ms.",
+Il suo tempo medio di esecuzione è di $4 ms. Esso impiega $5 {{PLURAL:$5|condizione|condizioni}} della condizione limite.",
 	'abusefilter-edit-throttled' => "'''Attenzione''': Questo filtro è stato disattivato automaticamente come misura precauzionale.
 È stato raggiunto il limite massimo di corrispondenze, pari al $1% delle azioni.",
 	'abusefilter-edit-new' => 'Nuovo filtro',
@@ -8939,7 +8953,7 @@ Il suo tempo medio di esecuzione è di $4 ms.",
 	'abusefilter-edit-flags' => 'Flag:',
 	'abusefilter-edit-enabled' => 'Attiva questo filtro',
 	'abusefilter-edit-deleted' => 'Segna come cancellato',
-	'abusefilter-edit-hidden' => 'Nascondi i dettagli di questo filtro al pobblico',
+	'abusefilter-edit-hidden' => 'Nascondi i dettagli di questo filtro al pubblico',
 	'abusefilter-edit-rules' => 'Condizioni:',
 	'abusefilter-edit-notes' => "Note:
 :''(privato)''",
@@ -9873,6 +9887,7 @@ $messages['ko'] = array(
 	'abusefilter-list-public' => '공개적 설명',
 	'abusefilter-list-consequences' => '조치',
 	'abusefilter-list-visibility' => '공개 여부',
+	'abusefilter-list-hitcount' => '적발 건수',
 	'abusefilter-list-edit' => '편집',
 	'abusefilter-list-limit' => '페이지당 필터 개수',
 	'abusefilter-list-lastmodified' => '마지막 수정',
@@ -9885,6 +9900,7 @@ $messages['ko'] = array(
 	'abusefilter-new' => '새 필터 만들기',
 	'abusefilter-links' => '유용한 링크:',
 	'abusefilter-tools-modifiertest-submit' => '시험',
+	'abusefilter-return' => '필터 관리 페이지로 돌아가기',
 	'abusefilter-status-global' => '공통',
 	'abusefilter-list-options' => '설정',
 	'abusefilter-list-options-deleted' => '삭제된 필터:',
@@ -9966,6 +9982,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-builder-op-bool-or' => '또는 (|)',
 	'abusefilter-edit-builder-op-bool-xor' => '배타적 논리합 (^)',
 	'abusefilter-edit-builder-group-misc' => '기타',
+	'abusefilter-edit-builder-misc-in' => '문자열에 포함 (in)',
 	'abusefilter-edit-builder-misc-stringlit' => '문자열 ("")',
 	'abusefilter-edit-builder-misc-tern' => '3단 연산자 (X ? Y : Z)',
 	'abusefilter-edit-builder-group-funcs' => '기능',
@@ -9999,8 +10016,14 @@ $messages['ko'] = array(
 	'abusefilter-edit-builder-vars-removed-links' => '편집 중 제거된 모든 바깥 고리',
 	'abusefilter-edit-builder-vars-restrictions-edit' => '문서 보호 수준 (편집)',
 	'abusefilter-edit-builder-vars-restrictions-move' => '문서 보호 수준 (이동)',
+	'abusefilter-edit-builder-vars-old-text-stripped' => '마크업을 제외한 편집 전의 문서 내용',
+	'abusefilter-edit-builder-vars-old-links' => '편집하기 전의 문서 링크',
+	'abusefilter-edit-builder-vars-old-html' => 'HTML로 변환된 편집 전 문서 내용',
+	'abusefilter-edit-builder-vars-minor-edit' => '사소한 편집 표시 여부',
 	'abusefilter-edit-builder-vars-file-sha1' => '파일 내용의 SHA1 해시',
 	'abusefilter-filter-log' => '최근 필터의 바뀜',
+	'abusefilter-history' => '부정 행위 방지 필터 #$1에 대한 변경 내력',
+	'abusefilter-history-foruser' => '$1의 편집',
 	'abusefilter-history-hidden' => '숨겨짐',
 	'abusefilter-history-enabled' => '활성화됨',
 	'abusefilter-history-timestamp' => '시간',
@@ -10038,6 +10061,8 @@ $messages['ko'] = array(
 	'abusefilter-examine-submit' => '찾기',
 	'abusefilter-examine-test-button' => '필터 시험',
 	'abusefilter-examine-syntaxerror' => '이 필터의 필터 규칙 문법이 잘못되었습니다.',
+	'abusefilter-topnav' => "'''부정 행위 방지 필터 둘러보기'''",
+	'abusefilter-topnav-tools' => '디버그 도구',
 	'abusefilter-topnav-import' => '필터 가져오기',
 	'abusefilter-log-name' => '부정 행위 방지 필터 기록',
 	'abusefilter-log-header' => '이 기록은 필터가 변경된 기록의 요약본을 보여 주고 있습니다.
