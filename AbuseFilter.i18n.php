@@ -2456,9 +2456,12 @@ $messages['ca'] = array(
 	'abusefilter-tools-modifiertest-submit' => 'Test',
 	'abusefilter-status-global' => 'Global',
 	'abusefilter-list-options' => 'Opcions',
+	'abusefilter-list-options-deleted' => 'Filtres eliminats:',
+	'abusefilter-list-options-deleted-only' => 'Mostra només els filtres eliminats',
 	'abusefilter-list-options-deleted-hide' => 'Amaga els filtres eliminats',
 	'abusefilter-list-options-deleted-show' => 'Mostra els filtres eliminats',
 	'abusefilter-list-options-disabled' => 'Filtres deshabilitats:',
+	'abusefilter-list-options-hidedisabled' => 'Oculta filtres deshabilitats',
 	'abusefilter-list-options-submit' => 'Actualitza',
 	'abusefilter-tools-subtitle' => 'Eines',
 	'abusefilter-tools-submitexpr' => 'Avalua',
@@ -2534,9 +2537,12 @@ $messages['ca'] = array(
 	'abusefilter-history-user' => 'Usuari',
 	'abusefilter-history-filter' => 'Regla de filtrat',
 	'abusefilter-history-comments' => 'Comentaris',
+	'abusefilter-history-actions' => 'Accions',
+	'abusefilter-history-backedit' => "Torna a l'editor de filtres",
 	'abusefilter-history-deleted' => 'Eliminat',
 	'abusefilter-history-filterid' => 'Filtre',
 	'abusefilter-history-select-user' => 'Usuari:',
+	'abusefilter-history-diff' => 'Canvis',
 	'abusefilter-action-tag' => 'Etiqueta',
 	'abusefilter-action-warn' => 'Avisa',
 	'abusefilter-action-block' => 'Bloca',
@@ -2544,8 +2550,11 @@ $messages['ca'] = array(
 	'abusefilter-revert-periodend' => 'Fi del període:',
 	'abusefilter-revert-search' => 'Seleccionau les accions',
 	'abusefilter-revert-filter' => 'Filtre:',
+	'abusefilter-revert-confirm' => 'Confirma',
+	'abusefilter-revert-reasonfield' => 'Raó per la reversió:',
 	'abusefilter-test-submit' => 'Prova',
 	'abusefilter-test-load' => 'Carrega',
+	'abusefilter-test-user' => 'Canvis per usuari:',
 	'abusefilter-changeslist-examine' => 'Examinau',
 	'abusefilter-examine' => 'Examinau els canvis individuals',
 	'abusefilter-examine-legend' => 'Seleccioneu els canvis',
@@ -2553,8 +2562,10 @@ $messages['ca'] = array(
 	'abusefilter-examine-title' => 'Títol de la pàgina:',
 	'abusefilter-examine-submit' => 'Cerca',
 	'abusefilter-topnav-examine' => 'Examinau edicions passades',
+	'abusefilter-topnav-import' => 'Importa el filtre',
 	'abusefilter-log-entry-modify' => 'modificat $1 ($2)',
 	'abusefilter-diff-title' => 'Diferències entre versions',
+	'abusefilter-diff-item' => 'Ítem',
 	'abusefilter-diff-version' => 'Versió de $1 per $2',
 	'abusefilter-diff-info' => 'Informació bàsica',
 	'abusefilter-diff-pattern' => 'Condicions del filtre',
@@ -4346,12 +4357,14 @@ $messages['el'] = array(
 	'abusefilter-edit-builder-vars-removed-links' => 'Όλες οι εξωτερικές συνδέσεις που αφαιρέθηκαν στην επεξεργασία',
 	'abusefilter-edit-builder-vars-old-text' => 'Παλιο βικικείμενο σελίδας, πριν την επεξεργασία',
 	'abusefilter-edit-builder-vars-new-text' => 'Νέα σελίδα βικικειμένου, μετά την επεξεργασία',
+	'abusefilter-edit-builder-vars-new-text-stripped' => 'Νέο κείμενο σελίδας, γυμνό από κάθε σημείωση (markup)',
 	'abusefilter-edit-builder-vars-new-html' => 'Λεξιανάλυση της πηγής HTML της νέας αναθεώρησης',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Επεξεργασία του επιπέδου προστασίας της σελίδας',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Μετακίνηση του επιπέδου προστασίας της σελίδας',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Παλιό κείμενο σελίδας, χώρις κάποια σύνταξη markup',
 	'abusefilter-edit-builder-vars-old-links' => 'Σύνδεσμοι στην σελίδα πριν από την επεξεργασία',
 	'abusefilter-edit-builder-vars-old-html' => 'Παλιό βικικείμενο σελίδας, λεξιαναλυμένο σε HTML',
+	'abusefilter-edit-builder-vars-minor-edit' => 'Εάν η επεξεργασία σημαίνεται ως μικρή',
 	'abusefilter-edit-builder-vars-file-sha1' => 'SHA1 hash των περιεχομένων του αρχείου',
 	'abusefilter-filter-log' => 'Πρόσφατες αλλαγές φίλτρων',
 	'abusefilter-history' => 'Αλλαγή ιστορικού για το Φίλτρο Καταχρήσεων #$1',
@@ -4381,6 +4394,7 @@ $messages['el'] = array(
 	'abusefilter-exception-unrecognisedtoken' => 'Μη αναγνωρίσιμο σύμβολο (token) $2 στον χαρακτήρα $1.',
 	'abusefilter-exception-unrecognisedvar' => 'Μη αναγνωρίσιμη μεταβλητή $2 στον χαρακτήρα $1.',
 	'abusefilter-exception-regexfailure' => 'Σφάλμα στην κανονική έκφραση "$3" στον χαρακτήρα $1: "$2"',
+	'abusefilter-exception-notlist' => 'Αίτηση για ένα αντικείμενο μέσα σε κάτι διαφορετικό από πίνακα στον χαρακτήρα $1.',
 	'abusefilter-action-tag' => 'Ετικέτα',
 	'abusefilter-action-throttle' => 'Εμπόδιση',
 	'abusefilter-action-warn' => 'Προειδοποίηση',
@@ -6377,6 +6391,48 @@ Pour plus de détails, voyez [[Special:AbuseFilter/history|la liste]] des modifi
 Sur le wiki d’origine, cliquez sur « {{int:abusefilter-edit-export}} » dans « {{int:abusefilter-tools-subtitle}} » depuis l’interface d’édition.
 Copiez la zone de texte qui s’affiche et collez-le dans cette zone de texte, puis cliquez sur « {{int:abusefilter-import-submit}} »,',
 	'abusefilter-import-submit' => 'Importer des données',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'abusefilter-log-search-user' => 'Utilisator :',
+	'abusefilter-log-search-filter' => 'N° filtro :',
+	'abusefilter-log-search-title' => 'Titro :',
+	'abusefilter-log-search-submit' => 'Rechèrchiér',
+	'abusefilter-log-detailslink' => 'dètalys',
+	'abusefilter-list-id' => 'N° filtro',
+	'abusefilter-list-edit' => 'Changiér',
+	'abusefilter-list-details' => 'Dètalys',
+	'abusefilter-list-limit' => 'Nombro per pâge :',
+	'abusefilter-hidden' => 'Privâ',
+	'abusefilter-unhidden' => 'Public',
+	'abusefilter-enabled' => 'Activâ',
+	'abusefilter-deleted' => 'Suprimâ',
+	'abusefilter-list-options' => 'Opcions',
+	'abusefilter-list-options-deleted' => 'Filtros suprimâs :',
+	'abusefilter-tools-reautoconfirm-user' => 'Utilisator :',
+	'abusefilter-edit-status-label' => 'Statistiques :',
+	'abusefilter-edit-new' => 'Novél filtro',
+	'abusefilter-edit-save' => 'Sôvar lo filtro',
+	'abusefilter-edit-id' => 'N° filtro :',
+	'abusefilter-edit-warn-actions' => 'Accions :',
+	'abusefilter-edit-history' => 'Historico :',
+	'abusefilter-edit-builder-op-bool-not' => 'Nan (!)',
+	'abusefilter-edit-builder-op-bool-and' => 'Et (&)',
+	'abusefilter-edit-builder-vars-action' => 'Accion',
+	'abusefilter-history-enabled' => 'Activâ',
+	'abusefilter-history-timestamp' => 'Dâta',
+	'abusefilter-history-user' => 'Utilisator',
+	'abusefilter-history-actions' => 'Accions',
+	'abusefilter-history-filterid' => 'Filtro',
+	'abusefilter-history-select-user' => 'Utilisator :',
+	'abusefilter-history-diff' => 'Changements',
+	'abusefilter-test-load' => 'Chargiér',
+	'abusefilter-examine-user' => 'Utilisator :',
+	'abusefilter-examine-title' => 'Titro de la pâge :',
+	'abusefilter-examine-submit' => 'Rechèrchiér',
 );
 
 /** Western Frisian (Frysk)
@@ -10509,6 +10565,13 @@ $messages['km'] = array(
 	'abusefilter-diff-info' => 'ព័ត៌មាន​មូលដ្ឋាន​',
 	'abusefilter-diff-pattern' => 'លក្ខខណ្ឌ​តម្រង',
 	'abusefilter-import-submit' => 'នាំចូល​ទិន្នន័យ​',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'abusefilter-edit-history' => 'ಇತಿಹಾಸ:',
 );
 
 /** Korean (한국어)
@@ -15290,6 +15353,53 @@ Para detalhes completos, ver [[Special:AbuseFilter/history|a lista]] de alteraç
 Na wiki de origem, clique em "{{int:abusefilter-edit-export}}", sob "{{int:abusefilter-tools-subtitle}}" na interface de edição.
 Copie da caixa de texto que aparece, e cole nesta caixa de texto, e a seguir clique em "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Importar dados',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Heldergeovane
+ */
+$messages['pt-br'] = array(
+	'abusefilter-desc' => 'Aplica heurísticas automáticas às edições.',
+	'abusefilter' => 'Configuração do filtro de abusos',
+	'abuselog' => 'Registro de abusos',
+	'abusefilter-intro' => "Bem-vindo à interface de gestão do Filtro de Abusos.
+O Filtro de Abuso é um mecanismo de ''software'' automatizado de aplicação de heurísticas automáticas a todas as ações.
+Esta interface mostra uma lista de filtros definidos, e permite que sejam modificados.",
+	'abusefilter-mustbeeditor' => 'Por razões de segurança, apenas os usuários com o direito de modificar filtros de abusos podem usar esta interface.',
+	'abusefilter-warning' => "<big>'''Atenção'''</big>: esta ação foi identificada automaticamente como prejudicial.
+As edições não construtivas serão revertidas rapidamente,
+e a repetição destas edições resultará no bloqueio da sua conta ou do seu computador.
+Se você crê que esta edição é construtiva, pode pressionar novamente o botão \"Enviar\" para confirmá-lo.
+Uma breve descrição da regra de abuso com a qual a sua ação coincidiu é: \$1",
+	'abusefilter-disallowed' => 'Esta ação foi identificada automaticamente como prejudicial,
+e foi consequentemente bloqueada.
+Se você crê que a sua edição foi construtiva, por favor contate um administrador, e informe-o do que você estava tentando fazer.
+Uma breve descrição da regra de abuso com a qual a sua ação coincidiu é: $1',
+	'abusefilter-blocked-display' => 'Esta ação foi identificada automaticamente como prejudicial,
+e você foi impedido de executá-la.
+Além disso, para proteger o {{SITENAME}}, sua conta de usuário e todos os endereços IP associados foram impedidas de editar.
+Se isto ocorreu por engano, por favor contate um administrador.
+Uma breve descrição da regra de abuso com a qual a sua ação coincidiu é: $1',
+	'abusefilter-degrouped' => 'Esta ação foi identificada automaticamente como prejudicial.
+Em consequência, foi bloqueada, e, já que se suspeita que a sua conta esteja comprometida, todas as permissões foram removidas.
+Se você crê que isto ocorreu por engano, por favor contate um burocrata indicando uma justificação desta ação, e as suas permissões poderão ser repostas.
+Uma breve descrição da regra de abuso com a qual a sua ação coincidiu é: $1',
+	'abusefilter-autopromote-blocked' => 'Esta ação foi identificada automaticamente como prejudicial, e foi bloqueada.
+Além disso, como medida de segurança, alguns privilégios automaticamente concedidos a contas estabelecidas foram temporariamente removidos da sua conta.
+Uma breve descrição da regra de abuso com a qual a sua ação coincidiu é: $1',
+	'abusefilter-blocker' => 'Filtro de abusos',
+	'abusefilter-blockreason' => 'Automaticamente bloqueado pelo filtro de abusos.
+Descrição da regra correspondida: $1',
+	'abusefilter-degroupreason' => 'Direitos automaticamente retirados pelo filtro de abusos.
+Descrição da regra: $1',
+	'abusefilter-accountreserved' => 'Este nome de conta está reservado para uso pelo filtro de abusos.',
+	'right-abusefilter-modify' => 'Modificar filtros de abusos',
+	'right-abusefilter-view' => 'Ver filtros de abusos',
+	'right-abusefilter-log' => 'Ver o registro de abusos',
+	'right-abusefilter-log-detail' => 'Ver entradas detalhadas do registro de abusos',
+	'right-abusefilter-private' => 'Ver dados privados no registro de abusos',
+	'right-abusefilter-modify-restricted' => 'Modificar filtros de abusos com ações restritas',
+	'right-abusefilter-revert' => 'Reverter todas as modificações feitas por um dado filtro de abusos',
 );
 
 /** Tarifit (Tarifit)
