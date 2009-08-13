@@ -4146,7 +4146,30 @@ $messages['el'] = array(
 	'abusefilter-desc' => 'Εφαρμόζει αυτόματη ανίχνευση σε επεξεργασίες',
 	'abusefilter' => 'Διαμόρφωση φίλτρου καταχρήσεων',
 	'abuselog' => 'Ιστορικό καταχρήσεων',
+	'abusefilter-intro' => 'Καλωσήρθατε στη διεπαφή διαχείρισης του Φίλτρου Καταχρήσεων.
+Το Φίλτρο Καταχρήσεων είναι ένα αυτοματοποιημένο λογισμικό που εφαρμόζει αυτόματες ευρετικές μεθόδους σε όλες τις ενέργειες.
+Αυτή η διεπαφή παρουσιάζει μία σειρά καθορισμένων φίλτρων και επιτρέπει την μετατροπή τους.',
 	'abusefilter-mustbeeditor' => 'Για λόγους ασφαλείας, μόνο χρήστες με το δικαίωμα να τροποποιούν φίλτρα καταχρήσεων είναι σε θέση να χρησιμοποιούν αυτήν την διεπαφή.',
+	'abusefilter-warning' => "<big>'''Προειδοποίηση'''</big>: Αυτή η ενέργεια ταυτοποιήθηκε αυτόματα ως επιβλαβής.
+Μη εποικοδομητικές ή επαναλαμβανόμενες επεξεργασίες θα αναστρέφονται αυτόματα,
+και θα έχουν ως αποτέλεσμα τη φραγή του λογαριασμού ή του υπολογιστή σας.
+Αν πιστεύετε ότι αυτή η επεξεργασία είναι εποικοδομητική, μπορείτε να πατήσετε Αποθἠκευση και πάλι για να το επιβεβαιώσετε.
+Μια σύντομη περιγραφή του κανόνα καταχρήσεων στο οποίο αντιστοίχησε η ενέργειά σας είναι η εξής: $1",
+	'abusefilter-disallowed' => 'Αυτή η ενέργεια ταυτοποιήθηκε αυτόματα ως επιβλαβής, και άρα απαγορεύεται.
+Αν πιστεύετε ότι αυτή η επεξεργασία είναι εποικοδομητική, παρακαλώ επικοινωνήστε με έναν διαχειριστή, και πληροφορήστε τον για το τι προσπαθείτε να κάνετε.
+Μια σύντομη περιγραφή του κανόνα καταχρήσεων στο οποίο αντιστοίχησε η ενέργειά σας είναι η εξής: $1',
+	'abusefilter-blocked-display' => 'Αυτή η ενέργεια ταυτοποιήθηκε αυτόματα ως επιβλαβής,
+και αποτραπήκατε από το να την εκτελέσετε.
+Επιπλέον, για να προστατευθεί το {{SITENAME}}, ο λογαριασμός χρήστη σας και όλες οι σχετιζόμενες διευθύνσεις IP έχουν φραγεί από τη δυνατότητα επεξεργασίας.
+Αν πιστεύτε ότι έχει γίνει κάποιο λάθος, παρακαλώ επικοινωνήστε με έναν διαχειριστή.
+Μια σύντομη περιγραφή του κανόνα καταχρήσεων στο οποίο αντιστοίχησε η ενέργειά σας είναι η εξής: $1',
+	'abusefilter-degrouped' => 'Αυτή η ενέργεια ταυτοποιήθηκε αυτόματα ως επιβλαβής.
+Συνεπώς, απαγορεύεται, εφόσον ο λογαριασμός σας μάλλον έχει εκτεθεί, όλα τα δικαιώματά του ανακλήθηκαν.
+Αν πιστεύτε ότι έχει γίνει κάποιο λάθος, παρακαλώ επικοινωνήστε με έναν γραφειοκράτη, και πληροφορήστε τον για το τι προσπαθείτε να κάνετε, και τα δικαιώματά σας θα αποκατασταθούν.
+Μια σύντομη περιγραφή του κανόνα καταχρήσεων στο οποίο αντιστοίχησε η ενέργειά σας είναι η εξής: $1',
+	'abusefilter-autopromote-blocked' => 'Αυτή η ενέργεια ταυτοποιήθηκε αυτόματα ως επιβλαβής, και άρα απαγορεύεται.
+Επιπλέον, ως μέτρο ασφαλείας, κάποια από τα συνήθη δικαιώματά του ανακλήθηκαν προσωρινά.
+Μια σύντομη περιγραφή του κανόνα καταχρήσεων στο οποίο αντιστοίχησε η ενέργειά σας είναι η εξής: $1',
 	'abusefilter-blocker' => 'Φίλτρο κατάχρησης',
 	'abusefilter-blockreason' => 'Αυτόματη φραγή από το φίλτρο κατάχρησης.
 Περιγραφή του σχετικού κανόνα: $1',
@@ -4176,6 +4199,12 @@ $messages['el'] = array(
 	'abusefilter-log-search-filter' => 'Ταυτοποίηση φίλτρου:',
 	'abusefilter-log-search-title' => 'Τίτλος:',
 	'abusefilter-log-search-submit' => 'Αναζήτηση',
+	'abusefilter-log-entry' => '$1: Ο $2 προκάλεσε ένα φίλτρο καταχρήσεων, εκτελώντας την ενέργεια "$3" στο $4.
+Ενέργειες που λήφθηκαν: $5;
+Περιγραφή φίλτρου: $6',
+	'abusefilter-log-detailedentry-meta' => '$1: Ο $2 προκάλεσε το $3, εκτελώντας την ενέργεια "$4" στο $5.
+Ενέργειες που λήφθηκαν: $6;
+Περιγραφή φίλτρου: $7 ($8) ($9)',
 	'abusefilter-log-detailedentry-global' => 'καθολικό φίλτρο $1',
 	'abusefilter-log-detailedentry-local' => 'φίλτρο $1',
 	'abusefilter-log-detailslink' => 'λεπτομέρειες',
@@ -4234,7 +4263,15 @@ $messages['el'] = array(
 	'abusefilter-reautoconfirm-done' => 'Η αυτομάτως επιβεβαιωμένη κατάσταση του λογαριασμού αποκαταστάθηκε',
 	'abusefilter-status' => 'Από {{PLURAL:$1|την τελευταία|τις τελευταίες}} $1 {{PLURAL:$1|ενέργεια|ενέργειες}}, $2 ($3%)  {{PLURAL:$2|έχει|έχουν}} φτάσει το προϋποτιθέμενο όριο $4, και $5 ($6%) {{PLURAL:$5|έχει|έχουν}} ταιριάξει με ένα από τα φίλτρα που είναι ενεργοποιημένα.',
 	'abusefilter-edit-subtitle' => 'Επεξεργασία φίλτρου $1',
+	'abusefilter-edit-oldwarning' => '<strong>Επεξεργάζεστε μια παλιά έκδοση αυτού του φίλτρου.
+Οι στατιστικές που αναφέρονται είναι για την πιο πρόσφατη έκδοση του φίλτρου.
+Αν αποθηκεύσετε τις αλλαγές σας, θα παρακάμψετε όλες τι επεξεργασίες από την έκδοση που επεξεργάζεστε.</strong> &bull;
+[[Special:AbuseFilter/history/$2|Επιστροφή στο ιστορικό του φίλτρου]].',
 	'abusefilter-edit-status-label' => 'Στατιστικά:',
+	'abusefilter-edit-status' => 'Από {{PLURAL:$1|τη $1 τελευταία ενέργεια|τις $1 τελευταίες ενέργειες}}, αυτό το φίλτρο έχει αντιστοιχίσει $2 ($3%).
+Στο μέσο όρο, ο χρόνος απόκρισης της είναι $4ms, και καταναλώνει $5 {{PLURAL:$5|όρο|όρους}} από το όριο όρων.',
+	'abusefilter-edit-throttled' => "'''Προειδοποίηση''': Αυτό το φίλτρο απενεργοποιήθηκε αυτόματα ως ένα μέτρο ασφαλείας.
+Έφτασε το όριο της αντιστοίχισης περισσότερο από $1% των δράσεων.",
 	'abusefilter-edit-new' => 'Νέο φίλτρο',
 	'abusefilter-edit-save' => 'Αποθήκευση φίλτρου',
 	'abusefilter-edit-id' => 'Ταυτότητα φίλτρου:',
@@ -4251,11 +4288,14 @@ $messages['el'] = array(
 	'abusefilter-edit-lastmod-text' => '$1 από $2',
 	'abusefilter-edit-hitcount' => 'Αποτελέσματα φίλτρου:',
 	'abusefilter-edit-consequences' => 'Εκτέλεση της ένεργειας όταν εντοπισθεί το αποτέλεσμα',
+	'abusefilter-edit-action-warn' => 'Πρόκληση τέτοιων ενεργειών αφού δοθεί στον χρήστη μια προειδοποίηση',
 	'abusefilter-edit-action-disallow' => 'Αποτροπή του χρήστη από την εκτέλεση της συγκεκριμένης ενέργειας',
 	'abusefilter-edit-action-flag' => 'Επισήμανση με σημαία αυτής της επεξεργασίας στο ιστορικό καταχρήσεων',
 	'abusefilter-edit-action-blockautopromote' => 'Ανάκληση της ιδιότητας αυτοεπιβεβαιωμένου χρήστη',
 	'abusefilter-edit-action-degroup' => 'Αφαίρεσε τον χρήστη από όλες τις ομάδες δικαιωμάτων',
 	'abusefilter-edit-action-block' => 'Φραγή του χρήστη και/ή της διεύθυνσης IP από την επεξεργασία',
+	'abusefilter-edit-action-throttle' => 'Πρόκληση τέτοιων ενεργειών μόνο αν ο χρήστης ξεπεράσει ένα όριο ρυθμού',
+	'abusefilter-edit-action-rangeblock' => 'Φραγή της εμβέλειας IP /16 από όπου προέρχεται ο χρήστης.',
 	'abusefilter-edit-action-tag' => 'Σήμανση της επεξεργασίας με ετικέτα για περαιτέρω επιθεώρηση',
 	'abusefilter-edit-throttle-count' => 'Αριθμός επιτρεπόμενων ενεργειών:',
 	'abusefilter-edit-throttle-period' => 'Χρονική περίοδος:',
@@ -4274,6 +4314,10 @@ $messages['el'] = array(
 	'abusefilter-edit-main' => 'Παράμετροι φίλτρου',
 	'abusefilter-edit-done-subtitle' => 'Επεξεργασμένο φίλτρο',
 	'abusefilter-edit-done' => 'Οι αλλαγές σας στο φίλτρο $1 έχουν αποθηκεφθεί επιτυχώς.',
+	'abusefilter-edit-badsyntax' => 'Υπάρχει ένα συντακτικό λάθος στο φίλτρο που δώσατε.
+Το αποτέλεσμα από τον λεξιαναλυτή ήταν: <pre>$1</pre>',
+	'abusefilter-edit-restricted' => 'Δεν μπορείτε να επεξεργαστείτε αυτό το φίλτρο, γιατί περιέχει μία ή περισσότερες περιορισμένες ενέργειες.
+Παρακαλώ ζητήστε από ένα χρήστη με άδεια να προσθέσει τις περιορισμένες ενέργειες και να κάνει την αλλαγή για σας.',
 	'abusefilter-edit-viewhistory' => 'Εμφάνιση του ιστορικού αυτού του φίλτρου',
 	'abusefilter-edit-history' => 'Ιστορικό:',
 	'abusefilter-edit-check' => 'Έλεγχος σύνταξης',
@@ -4285,6 +4329,8 @@ $messages['el'] = array(
 	'abusefilter-edit-export' => 'Εξάγετε αυτό το φίλτρο σε ένα άλλο wiki',
 	'abusefilter-edit-syntaxok' => 'Δεν εντοπίστηκε κανένα συντακτικό σφάλμα.',
 	'abusefilter-edit-syntaxerr' => 'Εντοπίστηκε συντακτικό σφάλμα: $1',
+	'abusefilter-edit-bad-tags' => 'Μία ή περισσότερες από τις ετικέτες που καθόρισες δεν είναι έγκυρο.
+Οι ετικέτες θα πρέπει να είναι βραχείες και θα πρέπει να μην περιέχουν ειδικούς χαρακτήρες.',
 	'abusefilter-edit-builder-select' => 'Διαλέξτε μια επιλογή για να την προσθέσετε στο δρομέα',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Αριθμητικοί τελεστές',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Πρόσθεση (+)',
@@ -4319,9 +4365,15 @@ $messages['el'] = array(
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Αφαίρεση διπλών χαρακτήρων (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Ειδικοί χαρακτήρες / συνολικοί χαρακτήρες (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Κανονικοποίηση (norm)',
+	'abusefilter-edit-builder-funcs-count' => 'Αριθμός φορών που ο ορμαθός X εμφανίζεται στον ορμαθό Y (count)',
+	'abusefilter-edit-builder-funcs-rcount' => 'Ο αριθμός των φορών που η τακτική έκφραση Χ εμφανίζεται στον ορμαθό Υ (rcount)',
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Aφαίρεση κενού διαστήματος (rmwhitespace)',
+	'abusefilter-edit-builder-funcs-rmspecials' => 'Αφαίρεση ειδικών χαρακτήρων (rmspecials)',
 	'abusefilter-edit-builder-funcs-ip_in_range' => 'Είναι η IP εντός εμβέλειας; (ip_in_range)',
+	'abusefilter-edit-builder-funcs-contains-any' => 'Αναζήτηση ορμαθού για πολλαπλούς υποορμαθούς (contains_any)',
 	'abusefilter-edit-builder-funcs-substr' => 'Υποορμαθός (substr)',
+	'abusefilter-edit-builder-funcs-strpos' => 'Θέση του υποορμαθού στον ορμαθό (strpos)',
+	'abusefilter-edit-builder-funcs-str_replace' => 'Αντικατάσταση υποορμαθού με ορμαθό (str_replace)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Ορισμός μεταβλητής (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Μεταβλητές',
 	'abusefilter-edit-builder-vars-accountname' => 'Όνομα λογαριασμού (κατά την δημιουργία λογαριασμού)',
@@ -4388,12 +4440,20 @@ $messages['el'] = array(
 	'abusefilter-history-diff' => 'Αλλαγές',
 	'abusefilter-history-error-hidden' => 'Το φίλτρο που ζητήσατε είναι κρυφό, και δεν μπορείτε να δείτε το ιστορικό του.',
 	'abusefilter-exception-unexpectedatend' => 'Μη αναμενόμενο "$2" στον χαρακτήρα $1.',
+	'abusefilter-exception-expectednotfound' => 'Αναμενόταν ένα $2 στο χαρακτήρα $1, δεν βρέθηκε (βρέθηκε το $3 $4 στη θέση του).',
 	'abusefilter-exception-unrecognisedkeyword' => 'Μη αναγνωρίσιμη λέξη-κλειδί $2 στον χαρακτήρα $1.',
+	'abusefilter-exception-unexpectedtoken' => 'Απρόσμενο σύμβολο "$3" (του τύπου $2) στο χαρακτήρα $1.',
 	'abusefilter-exception-unclosedstring' => 'Ατακτοποίητος ορμαθός που ξεκινάει από τον χαρακτήρα $1.',
 	'abusefilter-exception-invalidoperator' => 'Μη έγκυρος τελεστής "$2" στον χαρακτήρα $1.',
 	'abusefilter-exception-unrecognisedtoken' => 'Μη αναγνωρίσιμο σύμβολο (token) $2 στον χαρακτήρα $1.',
+	'abusefilter-exception-noparams' => 'Δεν δόθηκαν παράμετροι για τη συνάρτηση "$2" στο χαρακτήρα $1.',
+	'abusefilter-exception-dividebyzero' => 'Παράνομη προσπάθεια να διαχωριστεί τοe $2 μέσω μηδέν στον χαρακτήρα $1.',
 	'abusefilter-exception-unrecognisedvar' => 'Μη αναγνωρίσιμη μεταβλητή $2 στον χαρακτήρα $1.',
+	'abusefilter-exception-notenoughargs' => 'Όχι αρκετά ορίσματα στη συνάρτηση $2 που κλήθηκε στον χαρακτήρα $1.
+$3 {{PLURAL:$3|αναμενόμενο κατηγορούμενο|αναμενόμενα κατηγορούμενα}}, $4 αποκτημένα.',
 	'abusefilter-exception-regexfailure' => 'Σφάλμα στην κανονική έκφραση "$3" στον χαρακτήρα $1: "$2"',
+	'abusefilter-exception-overridebuiltin' => 'Παράνομη τοπική υπερκάλυψη της ενσωματωμένης μεταβλητής "$2" στον χαρακτήρα $1.',
+	'abusefilter-exception-outofbounds' => 'Η ζήτηση μη υπαρχόντων αντικειμένων λίστας $2 (μέγεθος λίστας = $3) στο χαρακτήρα $1.',
 	'abusefilter-exception-notlist' => 'Αίτηση για ένα αντικείμενο μέσα σε κάτι διαφορετικό από πίνακα στον χαρακτήρα $1.',
 	'abusefilter-action-tag' => 'Ετικέτα',
 	'abusefilter-action-throttle' => 'Εμπόδιση',
@@ -4404,6 +4464,8 @@ $messages['el'] = array(
 	'abusefilter-action-rangeblock' => 'Φάσμα φραγής',
 	'abusefilter-action-disallow' => 'Απαγόρευση',
 	'abusefilter-revert-title' => 'Αναστροφή όλων των αλλαγών από το φίλτρο $1',
+	'abusefilter-revert-intro' => 'Αυτή η φόρμα σας επιτρέπει να αναστρέψετε όλες τις αλλαγές που έγιναν από το φίλτρο καταχρήσεων εξ αιτίας του φίλτρου $1.
+Παρακαλώ να χρησιμοποιείτε προσεκτικά αυτό το εργαλείο.',
 	'abusefilter-revert-preview-item' => '$1: $2 έκανε ένα $3 στο $4.
 Ενέργειες προς αναστροφή: $5 ($6)',
 	'abusefilter-revert-search-legend' => 'Επιλογή ενεργειών του φίλτρου κατάχρησης προς αναστροφή',
@@ -4411,11 +4473,16 @@ $messages['el'] = array(
 	'abusefilter-revert-periodend' => 'Λήξη περιόδου:',
 	'abusefilter-revert-search' => 'Επιλογή ενεργειών',
 	'abusefilter-revert-filter' => 'Φίλτρο:',
+	'abusefilter-revert-preview-intro' => 'Παρακάτω είναι οι ενέργειες που πάρθηκαν από το φίλτρο καταχρήσεων που θα αναστραφούν με αυτή την ενέργεια.
+Παρακαλώ ελέγξτε τις προσεκτικά, και πατήστε "επιβεβαίωση" για να ολοκληρώσετε την επιλογή σας.',
 	'abusefilter-revert-confirm' => 'Επιβεβαίωση',
+	'abusefilter-revert-success' => 'Έχετε αναστρέψει όλες τις ενέργειες που πάρθηκαν από το φίλτρο καταχρήσεων εξαιτίας του [[Special:AbuseFilter/$1|φίλτρου $1]].',
 	'abusefilter-revert-reason' => 'Αυτόματη μεταστροφή όλων των δράσεων που ανέλαβε το φίλτρο καταχρήσεων εξ αιτίας του φίλτρου $1.
 Η αιτία που δόθηκε: $2',
 	'abusefilter-revert-reasonfield' => 'Αιτία της αναστροφής:',
 	'abusefilter-test' => 'Έλεγχος ενός φίλτρου ενάντια σε προηγούμενες επεξεργασίες',
+	'abusefilter-test-intro' => 'Αυτή η σελίδα σου επιτρέπει να ελέγξεις ένα φίλτρο που δόθηκε στο παρακάτω κουτί έναντι {{PLURAL:$1|στη $1 τελευταία αλλαγή|στις $1 τελευταίες αλλαγές}}.
+Για να φορτώσετε ένα υπάρχον φίλτρο, πληκτρολογήστε την ταυτότητά του στο κουτί παρακάτω από το κουτί κειμένου επεξεργασίας, και πατήστε το πλήκτρο "Φόρτωση"".',
 	'abusefilter-test-legend' => 'Έλεγχος φίλτρου',
 	'abusefilter-test-load-filter' => 'Φόρτωση ταυτότητας φίλτρου:',
 	'abusefilter-test-submit' => 'Δοκιμή',
@@ -4425,8 +4492,11 @@ $messages['el'] = array(
 	'abusefilter-test-period-end' => 'Αλλαγές που έγιναν πριν:',
 	'abusefilter-test-page' => 'Αλλαγές στις οποίες υποβλήθηκε η σελίδα:',
 	'abusefilter-test-shownegative' => 'Εμφάνιση αλλαγών που δεν αντιστοιχούν στο φίλτρο',
+	'abusefilter-test-syntaxerr' => 'Το φίλτρο που δώσατε περιέχει ένα συντακτικό λάθος.
+Μπορείτε να παραλάβετε μια πλήρη εξήγηση πατώντας το κουμπί "Έλεγχος Σύνταξης".',
 	'abusefilter-changeslist-examine' => 'εξετάστε',
 	'abusefilter-examine' => 'Εξέταση μεμονωμένων αλλαγών',
+	'abusefilter-examine-intro' => 'Αυτή η σελίδα σας επιτρέπει να εξετάσετε μεταβλητές που έχουν παραχθεί από Φίλτρο Καταχρήσεων για μία μεμονωμένη αλλαγή και να την εξετάσετε κόντρα σε φίλτρα.',
 	'abusefilter-examine-legend' => 'Επιλέξτε τις αλλαγές',
 	'abusefilter-examine-diff' => 'URL διαφ:',
 	'abusefilter-examine-user' => 'Χρήστης:',
@@ -4449,6 +4519,8 @@ $messages['el'] = array(
 	'abusefilter-topnav-tools' => 'Εργαλεία εκσφαλμάτωσης',
 	'abusefilter-topnav-import' => 'Εισαγωγή φίλτρου',
 	'abusefilter-log-name' => 'Ιστορικό Φίλτρου Καταχρήσεων',
+	'abusefilter-log-header' => 'Αυτή η καταγραφή εμφανίζει μια σύνοψη από αλλαγές που έγιναν στα φίλτρα.
+Για πλήρεις λεπτομέρειες, δείτε [[Special:AbuseFilter/history|τη λίστα]] των πρόσφατων αλλαγών φίλτρου.',
 	'abusefilter-log-entry-modify' => 'τροποποιημένη $1 ($2)',
 	'abusefilter-diff-title' => 'Διαφορές μεταξύ των εκδόσεων',
 	'abusefilter-diff-item' => 'Αντικείμενο',
@@ -4457,6 +4529,9 @@ $messages['el'] = array(
 	'abusefilter-diff-pattern' => 'Όροι φίλτρων',
 	'abusefilter-diff-invalid' => 'Αδύνατη η εξαγωγή των ζητουμένων εκδοχών',
 	'abusefilter-diff-backhistory' => 'Πίσω στο ιστορικό φίλτρου',
+	'abusefilter-import-intro' => 'Μπορείτε να χρησιμοποιήσετε αυτή την επιφάνεια για να εισάγετε φίλτρα από άλλα βίκι.
+Στο βίκι-πηγή, πατήστε "{{int:abusefilter-edit-export}}" κάτω από "{{int:abusefilter-tools-subtitle}}" στην επιφάνεια επεξεργασίας.
+Αντιγράψτε από το κουτί κειμένου που εμφανίζεται, και επικολλήστε το σε αυτό το κουτί κειμένου, και πατήστε "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Εισαγωγή δεδομένων',
 );
 
@@ -6902,6 +6977,7 @@ $messages['grc'] = array(
 	'abusefilter-edit-builder-op-bool-or' => 'Ἤ (|)',
 	'abusefilter-edit-builder-group-funcs' => 'Τελέσεις',
 	'abusefilter-edit-builder-funcs-norm' => 'Κανονικοποιεῖν (norm)',
+	'abusefilter-edit-builder-funcs-strpos' => 'Θέσις τοῦ ὑφορμαθού ἐν τῷ ὁρμαθῷ (strpos)',
 	'abusefilter-edit-builder-group-vars' => 'Μεταβληταί',
 	'abusefilter-edit-builder-vars-action' => 'Δρᾶσις',
 	'abusefilter-edit-builder-vars-user-groups' => 'Ὁμάδες (τῶν ἐνδεχομένων συμπεριλαμβανομένων) αἷνπερ ἀνήκει ὁ χρώμενος',
@@ -10577,6 +10653,7 @@ $messages['kn'] = array(
 /** Korean (한국어)
  * @author Klutzy
  * @author Kwj2772
+ * @author Pakman
  * @author Yknok29
  */
 $messages['ko'] = array(
@@ -10815,6 +10892,7 @@ $messages['ko'] = array(
 	'abusefilter-test-load-filter' => '불러올 필터 번호:',
 	'abusefilter-test-submit' => '시험',
 	'abusefilter-test-load' => '불러오기',
+	'abusefilter-test-user' => '사용자 변경:',
 	'abusefilter-changeslist-examine' => '검사',
 	'abusefilter-examine-diff' => '차이 URL:',
 	'abusefilter-examine-user' => '사용자:',
@@ -17533,7 +17611,7 @@ Filterbeskrivning: $7 ($8) ($9)',
 	'abusefilter-edit-subtitle' => 'Redigerar filtret $1',
 	'abusefilter-edit-oldwarning' => '<strong>Du redigerar en gammal version av detta filter. Den angivna statistiken gäller den senaste versionen av filtret. Om du sparar dina ändringar kommer du att skriva över alla ändringar som gjorts efter den version du redigerar. </strong> &bull; [[Special:AbuseFilter/history/$2|Återvänd till detta filters historik]]',
 	'abusefilter-edit-status-label' => 'Statistik:',
-	'abusefilter-edit-status' => 'Av {{PLURAL:$1|den senaste handlingen|de senaste $1 handlingarna}} har detta filter matchat $2 ($3%). Körtiden är i genomsnitt $4ms.',
+	'abusefilter-edit-status' => 'Av {{PLURAL:$1|den senaste handlingen|de senaste $1 handlingarna}} har detta filter matchat $2 ($3 %). Körtiden är i genomsnitt $4 ms och filtret använder $5 {{PLURAL:$5|villkor|villkor}} av villkorsgränsen.',
 	'abusefilter-edit-throttled' => "'''Varning''': Detta filter blev automatiskt avaktiverat som en säkerhetsåtgärd. Det nådde gränsen genom att utlösas av mer än $1&nbsp;% av handlingarna.",
 	'abusefilter-edit-new' => 'Nytt filter',
 	'abusefilter-edit-save' => 'Spara filter',
@@ -17588,7 +17666,10 @@ Filterbeskrivning: $7 ($8) ($9)',
 	'abusefilter-edit-test-link' => 'Testa detta filter mot senaste ändringar',
 	'abusefilter-edit-global' => 'Lägg till det här filtret globalt',
 	'abusefilter-edit-export' => 'Exportera det här filtret till en annan wiki',
-	'abusefilter-edit-builder-select' => 'Ange ett alternativ för att lägga till det på markören',
+	'abusefilter-edit-syntaxok' => 'Inga syntaxfel upptäcktes.',
+	'abusefilter-edit-syntaxerr' => 'Syntaxfel uppstod: $1',
+	'abusefilter-edit-bad-tags' => 'En eller flera av de märken du angav är inte giltigt. Märken skall vara korta och de får inte innehålla några specialtecken.',
+	'abusefilter-edit-builder-select' => 'Ange ett alternativ för att lägga till det vid markören',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetiska operatörer',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Addition (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Subtraktion (-)',
@@ -17704,6 +17785,10 @@ Filterbeskrivning: $7 ($8) ($9)',
 	'abusefilter-exception-noparams' => 'Inga parametrar givna till funktion "$2" vid tecken $1.',
 	'abusefilter-exception-dividebyzero' => 'Ogiltigt försök att dividera $2 med noll vid tecken $1.',
 	'abusefilter-exception-unrecognisedvar' => 'Okänd variabel $2 vid tecken $1',
+	'abusefilter-exception-notenoughargs' => 'Funktionen $2 anropades med för få argument vid teckenposition $1. $3 {{PLURAL:$3|argument|argument}} väntades, fick bara $4.',
+	'abusefilter-exception-regexfailure' => 'Fel i det reguljära uttrycket "$3" vid teckenposition $1: "$2"',
+	'abusefilter-exception-overridebuiltin' => 'Ogiltig överskrivning av inbyggd variabel "$2" vid teckenposition $1.',
+	'abusefilter-exception-outofbounds' => 'Begärde icke-existerande listelement $2 (listans storkel = $3) vid teckenposition $1.',
 	'abusefilter-action-tag' => 'Tagg',
 	'abusefilter-action-throttle' => 'Begränsning',
 	'abusefilter-action-warn' => 'Varna',
