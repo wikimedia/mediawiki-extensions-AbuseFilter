@@ -5146,6 +5146,7 @@ Por favor solicita a un usuario con permiso para agregar acciones restringidas h
 	'abusefilter-action-tag' => 'Etiqueta',
 	'abusefilter-action-throttle' => 'Impedir',
 	'abusefilter-action-warn' => 'Advertir',
+	'abusefilter-action-blockautopromote' => 'Bloquear autopromoción',
 	'abusefilter-action-block' => 'Bloquear',
 	'abusefilter-action-degroup' => 'Remover de grupos',
 	'abusefilter-action-rangeblock' => 'Bloqueo de rango',
@@ -5509,9 +5510,9 @@ $messages['fa'] = array(
 	'abusefilter-log-entry' => '$1: $2توسط فیلتر خرابکاری گرفته شد او مشغول اجرای"$3" بر روی $4 بود.
 عمل فیلتر: $5;
 توضیحات فیلتر: $6',
-	'abusefilter-log-detailedentry-meta' => '$1:$2 گرفت $3 در حالی که قصد داشت "$4" را روی $5 انجام دهد.
-اقدامی که گرفته شد:$6
-توضیحات فیلتر:$7 ($8) ($9)',
+	'abusefilter-log-detailedentry-meta' => '$1:$2 $3 را در حالی که قصد داشت عمل «$4» را روی $5 انجام دهد فعال کرد.
+اقدامی که توسط پالایه گرفته شد: $6
+توضیحات پالایه: $7 ($8) ($9)',
 	'abusefilter-log-detailedentry-global' => 'فیلتر سراسری $1',
 	'abusefilter-log-detailedentry-local' => 'فیلتر $1',
 	'abusefilter-log-detailslink' => 'جزئیات',
@@ -5666,7 +5667,7 @@ $messages['fa'] = array(
 	'abusefilter-edit-builder-vars-user-name' => 'نام حساب کاربری',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'انتقال وضعیت حفاظت صفحه',
 	'abusefilter-filter-log' => 'تغییرات اخیر فیلترها',
-	'abusefilter-history' => 'تاریخچه تغییرهای فیلتر خرابکاری #$1',
+	'abusefilter-history' => 'تاریخچهٔ تغییرهای پالایهٔ خرابکاری #$1',
 	'abusefilter-history-foruser' => 'تغییرات توسط $1',
 	'abusefilter-history-hidden' => 'پنهان',
 	'abusefilter-history-enabled' => 'فعال',
@@ -5706,13 +5707,13 @@ $messages['fa'] = array(
 	'abusefilter-test-load' => 'بارگذاری',
 	'abusefilter-test-user' => 'تغییرات کاربر:',
 	'abusefilter-changeslist-examine' => 'امتحان',
-	'abusefilter-examine-legend' => 'تغییرات انتخابی',
+	'abusefilter-examine-legend' => 'انتخاب تغییرات',
 	'abusefilter-examine-diff' => 'آدرس تفاوت:',
 	'abusefilter-examine-user' => 'کاربر:',
 	'abusefilter-examine-title' => 'عنوان صفحه:',
 	'abusefilter-examine-submit' => 'جستجو',
 	'abusefilter-examine-test-button' => 'تست فیلتر',
-	'abusefilter-examine-syntaxerror' => 'فیلتر ساختار نادرست دارد',
+	'abusefilter-examine-syntaxerror' => 'پالایه ساختار نادرست دارد',
 	'abusefilter-topnav' => "'''ناوبری فیلتر خرابکاری'''",
 	'abusefilter-topnav-home' => 'منزل',
 	'abusefilter-topnav-log' => 'سیاهه خرابکاری',
@@ -9577,8 +9578,8 @@ $messages['it'] = array(
 	'abusefilter-desc' => "Applica un'euristica automatica alle modifiche.",
 	'abusefilter' => 'Configurazione del filtro anti abusi',
 	'abuselog' => 'Registro abusi',
-	'abusefilter-intro' => "Benvenuti nell'interfaccia di gestione del Filtro Anti Abusi.
-Il Filtro Anti Abusi è un sistema software automatizzato per l'applicazione di euristiche automatiche a tutte le azioni.
+	'abusefilter-intro' => "Benvenuti nell'interfaccia di gestione del filtro anti abusi.
+Il filtro anti abusi è un sistema automatizzato per l'applicazione di euristiche automatiche a tutte le azioni.
 L'interfaccia mostra un elenco dei filtri definiti e ne consente la modifica.",
 	'abusefilter-mustbeeditor' => 'Per motivi di sicurezza, solo gli utenti con il diritto di modificare i filtri anti abusi possono utilizzare questa interfaccia.',
 	'abusefilter-warning' => "<big>'''Attenzione'''</big>: Questa azione è stata ritenuta pericolosa in base a una verifica automatica.
@@ -9622,7 +9623,7 @@ Descrizione della regola corrispondente: $1',
 	'action-abusefilter-view-private' => 'visualizzare i filtri anti abusi segnati come privati',
 	'abusefilter-log' => 'Log del filtro anti abusi',
 	'abusefilter-log-summary' => 'Questo registro mostra un elenco di tutte le azioni catturate dai filtri.',
-	'abusefilter-log-search' => 'Cerca nel log degli abusi',
+	'abusefilter-log-search' => 'Cerca nel registro del filtro anti abusi',
 	'abusefilter-log-search-user' => 'Utente:',
 	'abusefilter-log-search-filter' => 'ID filtro:',
 	'abusefilter-log-search-title' => 'Titolo:',
@@ -9848,7 +9849,7 @@ Le etichette devono essere corte e non contenere caratteri speciali.',
 	'abusefilter-edit-builder-vars-minor-edit' => 'Indica se la modifica è minore o meno',
 	'abusefilter-edit-builder-vars-file-sha1' => 'Hash SHA1 del contenuto del file',
 	'abusefilter-filter-log' => 'Ultime modifiche ai filtri',
-	'abusefilter-history' => 'Cronologia delle modifiche al Filtro Anti Abusi n. $1',
+	'abusefilter-history' => 'Cronologia delle modifiche al filtro anti abusi n. $1',
 	'abusefilter-history-foruser' => 'Modifiche apportate da $1',
 	'abusefilter-history-hidden' => 'nascosto',
 	'abusefilter-history-enabled' => 'attivato',
@@ -9922,7 +9923,7 @@ Per caricare un filtro esistente, digitare il relativo identificatore nella case
 Per ottenere una spiegazione completa, fare clic sul pulsante "Verifica sintassi".',
 	'abusefilter-changeslist-examine' => 'esamina',
 	'abusefilter-examine' => 'Esamina le singole modifiche',
-	'abusefilter-examine-intro' => 'Questa pagina consente di esaminare le variabili generate dal Filtro Anti Abusi in relazione a una particolare modifica, verificandone il comportamento in funzione dei filtri.',
+	'abusefilter-examine-intro' => 'Questa pagina consente di esaminare le variabili generate dal filtro anti abusi in relazione a una particolare modifica, verificandone il comportamento in funzione dei filtri.',
 	'abusefilter-examine-legend' => 'Seleziona modifiche',
 	'abusefilter-examine-diff' => 'URL delle differenze:',
 	'abusefilter-examine-user' => 'Utente:',
@@ -9935,9 +9936,9 @@ Per ottenere una spiegazione completa, fare clic sul pulsante "Verifica sintassi
 	'abusefilter-examine-nomatch' => 'Il filtro non è stato attivato da questa modifica.',
 	'abusefilter-examine-syntaxerror' => 'La sintassi del filtro è errata',
 	'abusefilter-examine-notfound' => 'Impossibile trovare la modifica richiesta.',
-	'abusefilter-examine-incompatible' => 'La modifica richiesta non è supportata dal Filtro Anti Abusi.',
+	'abusefilter-examine-incompatible' => 'La modifica richiesta non è supportata dal filtro anti abusi.',
 	'abusefilter-examine-noresults' => 'I parametri di ricerca specificati non hanno prodotto alcun risultato.',
-	'abusefilter-topnav' => "'''Filtro Anti Abusi - Navigazione'''",
+	'abusefilter-topnav' => "'''Filtro anti abusi – Navigazione'''",
 	'abusefilter-topnav-home' => 'Home',
 	'abusefilter-topnav-test' => 'Verifica in batch',
 	'abusefilter-topnav-examine' => 'Esamina le modifiche precedenti',
@@ -15436,6 +15437,7 @@ Copie da caixa de texto que aparece, e cole nesta caixa de texto, e a seguir cli
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
@@ -15480,6 +15482,7 @@ Descrição da regra: $1',
 	'right-abusefilter-private' => 'Ver dados privados no registro de abusos',
 	'right-abusefilter-modify-restricted' => 'Modificar filtros de abusos com ações restritas',
 	'right-abusefilter-revert' => 'Reverter todas as modificações feitas por um dado filtro de abusos',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Subtração (-)',
 );
 
 /** Tarifit (Tarifit)
@@ -17717,6 +17720,7 @@ Filterbeskrivning: $7 ($8) ($9)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Ställ in variabel (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Variabler',
 	'abusefilter-edit-builder-vars-accountname' => 'Kontonamn (on account creation)',
+	'abusefilter-edit-builder-vars-timestamp' => 'Unix-tidsstämpel från förändringen',
 	'abusefilter-edit-builder-vars-action' => 'Åtgärd',
 	'abusefilter-edit-builder-vars-addedlines' => 'Linjer tillagda i redigering',
 	'abusefilter-edit-builder-vars-delta' => 'Storleksändring i redigering',
@@ -17756,6 +17760,7 @@ Filterbeskrivning: $7 ($8) ($9)',
 	'abusefilter-edit-builder-vars-old-links' => 'Länkar i denna sida, före redigeringen',
 	'abusefilter-edit-builder-vars-old-html' => 'Gammal sidwikitext, parsad till HTML',
 	'abusefilter-edit-builder-vars-minor-edit' => 'Huruvida redigeringen är markerad som mindre',
+	'abusefilter-edit-builder-vars-file-sha1' => 'SHA1-hash av filinnehållet',
 	'abusefilter-filter-log' => 'Senaste filterändringar',
 	'abusefilter-history' => 'Ändringshistorik för missbruksfilter #$1',
 	'abusefilter-history-foruser' => 'Ändringar av $1',
@@ -17791,6 +17796,7 @@ Filterbeskrivning: $7 ($8) ($9)',
 	'abusefilter-exception-regexfailure' => 'Fel i det reguljära uttrycket "$3" vid teckenposition $1: "$2"',
 	'abusefilter-exception-overridebuiltin' => 'Ogiltig överskrivning av inbyggd variabel "$2" vid teckenposition $1.',
 	'abusefilter-exception-outofbounds' => 'Begärde icke-existerande listelement $2 (listans storkel = $3) vid teckenposition $1.',
+	'abusefilter-exception-notlist' => 'Begär tabellelement från en icketabell vid teckenposition $1.',
 	'abusefilter-action-tag' => 'Tagg',
 	'abusefilter-action-throttle' => 'Begränsning',
 	'abusefilter-action-warn' => 'Varna',
@@ -19131,6 +19137,7 @@ $messages['uk'] = array(
 
 /** Vèneto (Vèneto)
  * @author Candalua
+ * @author Nemo bis
  * @author Nick1915
  */
 $messages['vec'] = array(
@@ -19429,7 +19436,7 @@ Azion da anular: $5 ($6)',
 	'abusefilter-examine-notfound' => 'No se riesse a catar la modifica che te ghè richiesto.',
 	'abusefilter-examine-incompatible' => 'La modifica richiesta no la xe suportada dal filtro abusi.',
 	'abusefilter-examine-noresults' => 'No xe vegnù fora nissun risultato par i parametri de riserca indicà da ti.',
-	'abusefilter-topnav' => "'''Navigassion Filtro Anti Abusi'''",
+	'abusefilter-topnav' => "'''Navigassion filtro anti abusi'''",
 	'abusefilter-topnav-home' => 'Inissio',
 	'abusefilter-topnav-test' => 'Verifica in batch',
 	'abusefilter-topnav-examine' => 'Esàmina le modifiche vèce',
