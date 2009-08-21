@@ -548,6 +548,7 @@ $messages['qqq'] = array(
 	'abusefilter-edit-status-label' => '{{Identical|Statistics}}',
 	'abusefilter-edit-new' => '',
 	'abusefilter-edit-id' => '{{Identical|Filter ID}}',
+	'abusefilter-edit-flags' => '{{Identical|Flag}}',
 	'abusefilter-edit-lastmod-text' => 'This message is used on Special:AbuseFilter to indicate the last modified date, time and user for existing rules.
 * $1 is a time and date (duplicated in $3 and $4)
 * $2 is a link to a user page with a user name as link text, followed by a series of related links
@@ -599,6 +600,7 @@ Functional explanation: rmdoubles removes repeated characters in the argument, a
 
 {{Identical|Time}}',
 	'abusefilter-history-user' => '{{Identical/User}}',
+	'abusefilter-history-flags' => '{{Identical|Flag}}',
 	'abusefilter-history-comments' => '{{Identical|Comments}}',
 	'abusefilter-history-actions' => '{{Identical|Action}}',
 	'abusefilter-history-deleted' => '{{Identical|Deleted}}',
@@ -676,12 +678,18 @@ $messages['af'] = array(
 	'abusefilter-list-options-submit' => 'Opdateer',
 	'abusefilter-tools-reautoconfirm-user' => 'Gebruiker:',
 	'abusefilter-edit-status-label' => 'Statistieke',
+	'abusefilter-edit-flags' => 'Vlae:',
 	'abusefilter-edit-throttle-seconds' => '$1 sekondes',
+	'abusefilter-edit-warn-actions' => 'Handelinge:',
+	'abusefilter-edit-builder-vars-action' => 'Handeling',
 	'abusefilter-history-timestamp' => 'Tyd',
 	'abusefilter-history-user' => 'Gebruiker',
+	'abusefilter-history-flags' => 'Vlae',
 	'abusefilter-history-comments' => 'Opmerkings',
+	'abusefilter-history-actions' => 'Maatreëls',
 	'abusefilter-history-select-user' => 'Gebruiker:',
 	'abusefilter-examine-user' => 'Gebruiker:',
+	'abusefilter-examine-submit' => 'Soek',
 );
 
 /** Amharic (አማርኛ)
@@ -2024,8 +2032,10 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'abusefilter-log-search-user' => 'Implijer :',
+	'abusefilter-log-search-title' => 'Titl :',
 	'abusefilter-log-search-submit' => 'Klask',
 	'abusefilter-list-details' => 'Munudoù',
+	'abusefilter-list-limit' => 'Niver dre bajenn',
 	'abusefilter-hidden' => 'Prevez',
 	'abusefilter-unhidden' => 'Foran',
 	'abusefilter-new' => 'Sevel ur sil nevez',
@@ -2037,10 +2047,15 @@ $messages['br'] = array(
 	'abusefilter-edit-status-label' => 'Stadegoù :',
 	'abusefilter-edit-new' => 'Sil nevez',
 	'abusefilter-edit-save' => 'Enrollañ ar sil',
+	'abusefilter-edit-description' => "Deskrivadur :
+: ''(a-wel d'an holl)''",
+	'abusefilter-edit-flags' => 'Bannieloù :',
+	'abusefilter-edit-deleted' => 'Merkañ evel diverket',
 	'abusefilter-edit-notes' => "Notennoù :
 :''(prevez)''",
+	'abusefilter-edit-lastmod' => "Kemm diwezhañ degaset d'ar sil :",
 	'abusefilter-edit-throttle-period' => 'Prantad amzer :',
-	'abusefilter-edit-throttle-seconds' => '$1 eilenn',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|eilenn|eilenn}}',
 );
 
 /** Bosnian (Bosanski)
@@ -11929,6 +11944,7 @@ D'Resultat vum Parser war: <pre>$1</pre>",
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Espacen eraushuelen (rmwhitespace)',
 	'abusefilter-edit-builder-funcs-rmspecials' => 'Spezialzeechen ewechhuelen (rmspecials)',
 	'abusefilter-edit-builder-funcs-ip_in_range' => "Ass d'IP-Adress am Beräich? (ip_in_range)",
+	'abusefilter-edit-builder-funcs-substr' => 'Deel vun enger Zeecheketten (substr)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Variabel definéieren (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Variabelen',
 	'abusefilter-edit-builder-vars-accountname' => 'Numm vum Benotzerkont (beim Uleeë vum Benotzerkont)',
@@ -12763,6 +12779,7 @@ Visas detales žiūrėkite filtrų naujausių keitimo [[Special:AbuseFilter/hist
  */
 $messages['mhr'] = array(
 	'abusefilter-log-search-user' => 'Пайдаланыше:',
+	'abusefilter-edit-status-label' => 'Иктешлымаш:',
 	'abusefilter-edit-history' => 'Историй',
 	'abusefilter-history-user' => 'Пайдаланыше',
 	'abusefilter-revert-filter' => 'Фильтр:',
@@ -14862,7 +14879,7 @@ Per cargar un filtre existent, picatz son ID dins la bóstia en dejós de la bó
 	'abusefilter-test-page' => 'Modificacions aportadas a la pagina :',
 	'abusefilter-test-shownegative' => 'Afichar los cambiaments que correspòndon pas al filtre',
 	'abusefilter-test-syntaxerr' => "Lo filtre qu'avètz picat conten una error de sintaxi.
-Podètz recebre una explicacion complèta en clicant sul boton « Verificar la sintaxi ».",
+Podètz recebre una explicacion completa en clicant sul boton « Verificar la sintaxi ».",
 	'abusefilter-changeslist-examine' => 'examinar',
 	'abusefilter-examine' => 'Examinar de modificacions individualament',
 	'abusefilter-examine-intro' => "Aquesta pagina vos permet d'examinar las variablas generidas pel filtre dels abuses per de modificacions individualas e las testar amb los filtres.",
@@ -15371,6 +15388,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Giro720
  * @author Lijealso
  * @author MF-Warburg
  * @author Malafaya
@@ -15561,6 +15579,10 @@ Por favor, peça a um utilizador com permissão para adicionar ações restritas
 	'abusefilter-edit-test-link' => 'Testar este filtro com edições recentes',
 	'abusefilter-edit-global' => 'Aplicar este filtro globalmente',
 	'abusefilter-edit-export' => 'Exportar este filtro para outra wiki',
+	'abusefilter-edit-syntaxok' => 'Nenhum erro de sintaxe foi detetado.',
+	'abusefilter-edit-syntaxerr' => 'Erro de sintaxe detetado: $1',
+	'abusefilter-edit-bad-tags' => 'Uma ou mais marcações que você especificou não são válidas.
+Marcações devem ser curtas e não devem conter caracteres especiais.',
 	'abusefilter-edit-builder-select' => 'Selecione uma opção para inserir no cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operadores aritméticos',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adição (+)',
