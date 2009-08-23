@@ -660,12 +660,14 @@ $messages['af'] = array(
 	'abuselog' => 'Misbruiklogboek',
 	'abusefilter-blocker' => 'Misbruikfilter',
 	'abusefilter-log-search-user' => 'Gebruiker:',
+	'abusefilter-log-search-filter' => 'Filternommer:',
 	'abusefilter-log-search-title' => 'Titel:',
 	'abusefilter-log-search-submit' => 'Soek',
 	'abusefilter-log-detailslink' => 'details',
 	'abusefilter-log-details-var' => 'Veranderlike',
 	'abusefilter-log-details-val' => 'Waarde',
 	'abusefilter-log-noactions' => 'geen',
+	'abusefilter-list-id' => 'Filternommer',
 	'abusefilter-list-status' => 'Status',
 	'abusefilter-list-public' => 'Publieke beskrywing',
 	'abusefilter-list-consequences' => 'Gevolge',
@@ -679,7 +681,8 @@ $messages['af'] = array(
 	'abusefilter-tools-modifiertest-submit' => 'Toets',
 	'abusefilter-list-options-submit' => 'Opdateer',
 	'abusefilter-tools-reautoconfirm-user' => 'Gebruiker:',
-	'abusefilter-edit-status-label' => 'Statistieke',
+	'abusefilter-edit-status-label' => 'Statistieke:',
+	'abusefilter-edit-id' => 'Filternommer:',
 	'abusefilter-edit-flags' => 'Vlae:',
 	'abusefilter-edit-throttle-seconds' => '$1 sekondes',
 	'abusefilter-edit-warn-actions' => 'Handelinge:',
@@ -693,9 +696,12 @@ $messages['af'] = array(
 	'abusefilter-history-actions' => 'Maatreëls',
 	'abusefilter-history-deleted' => 'Geskrap',
 	'abusefilter-history-select-user' => 'Gebruiker:',
+	'abusefilter-revert-filter' => 'Filter:',
 	'abusefilter-revert-confirm' => 'Bevestig',
+	'abusefilter-test-load' => 'Laai',
 	'abusefilter-examine-user' => 'Gebruiker:',
 	'abusefilter-examine-submit' => 'Soek',
+	'abusefilter-topnav-home' => 'Tuisblad',
 );
 
 /** Amharic (አማርኛ)
@@ -5291,6 +5297,7 @@ Toiming: $5. Filtri kirjeldus: $6',
 	'abusefilter-log-details-diff' => 'Redigeerimisega tehtud muudatused',
 	'abusefilter-log-linkoncontribs' => 'väärtarvitamise logi',
 	'abusefilter-management' => 'Väärtarvitusfiltri haldamine',
+	'abusefilter-list' => 'Kõik filtrid',
 	'abusefilter-list-status' => 'Olek',
 	'abusefilter-list-public' => 'Avalik kirjeldus',
 	'abusefilter-list-consequences' => 'Tagajärjed',
@@ -5315,7 +5322,9 @@ Toiming: $5. Filtri kirjeldus: $6',
 	'abusefilter-edit-notes' => "Märkmed:
 :''(isiklik)''",
 	'abusefilter-edit-warn-other' => 'Muu sõnum',
+	'abusefilter-edit-viewhistory' => 'Vaata selle filtri ajalugu',
 	'abusefilter-edit-history' => 'Ajalugu:',
+	'abusefilter-edit-export' => 'Ekspordi see filter teise vikisse',
 	'abusefilter-edit-builder-op-comparison-equal' => 'Võrdne (==)',
 	'abusefilter-edit-builder-op-comparison-notequal' => 'Ei võrdu (!=)',
 	'abusefilter-edit-builder-op-comparison-lt' => 'Väiksem kui (<)',
@@ -17329,7 +17338,7 @@ Skopírujte ho z textového poľa, kde sa objaví a vložte ho do tohto textové
 	'abusefilter-import-submit' => 'Importovať údaje',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -17479,7 +17488,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-import-submit' => 'Увези податке',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  * @author Михајло Анђелковић
  */
