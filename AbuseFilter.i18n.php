@@ -20429,6 +20429,10 @@ $messages['yue'] = array(
 	'abusefilter-edit-test-link' => '用呢個過濾器試最近嘅編輯',
 	'abusefilter-edit-global' => '全域應用呢個過濾器',
 	'abusefilter-edit-export' => '倒出呢個過濾器到另一個wiki',
+	'abusefilter-edit-syntaxok' => '偵測到無語法錯誤。',
+	'abusefilter-edit-syntaxerr' => '偵測到語法錯誤: $1',
+	'abusefilter-edit-bad-tags' => '你所指定嘅一個或者更多個嘅標籤無效。
+標籤係應該要短嘅，佢地唔應該有一啲特別字元。',
 	'abusefilter-edit-builder-select' => '揀一個選項，去加佢到個標記度',
 	'abusefilter-edit-builder-group-op-arithmetic' => '計數運算符',
 	'abusefilter-edit-builder-op-arithmetic-addition' => '加數 (+)',
@@ -20696,7 +20700,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-log-search-title' => '标题：',
 	'abusefilter-log-search-submit' => '搜索',
 	'abusefilter-log-entry' => '$1：$2在$4上进行了“$3”的操作，触发了过滤器。采取的行动：$5；过滤器描述：$6',
-	'abusefilter-log-detailedentry-meta' => '$1：$2在$5上进行了“$4”的操作，触发了过滤器$3。采取的行动：$6；过滤器描述：$7（$8）（$9）',
+	'abusefilter-log-detailedentry-meta' => '$1：$2在$5上进行了“$4”的操作，触发了$3。采取的行动：$6；过滤器描述：$7（$8）（$9）',
 	'abusefilter-log-detailedentry-global' => '全域过滤器$1',
 	'abusefilter-log-detailedentry-local' => '过滤器$1',
 	'abusefilter-log-detailslink' => '详情',
@@ -21065,10 +21069,10 @@ $messages['zh-hant'] = array(
 	'abusefilter-log-search-title' => '標題：',
 	'abusefilter-log-search-submit' => '搜尋',
 	'abusefilter-log-entry' => '$2於$1觸發防濫用過濾器，於$4執行$3操作。
-採取的行動：$5
+採取的行動：$5；
 過濾器描述：$6',
-	'abusefilter-log-detailedentry-meta' => '$2於$1觸發$3過濾器，於$5執行$4操作。
-採取的行動：$6
+	'abusefilter-log-detailedentry-meta' => '$2於$1觸發$3，於$5執行$4操作。
+採取的行動：$6；
 過濾器描述：$7（$8） （$9）',
 	'abusefilter-log-detailedentry-global' => '全域過濾器 $1',
 	'abusefilter-log-detailedentry-local' => '過濾器 $1',
