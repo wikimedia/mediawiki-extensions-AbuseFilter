@@ -9798,7 +9798,7 @@ Secara rata-rata, waktu yang dibutuhkan adalah $4ms',
 	'abusefilter-edit-id' => 'ID filter:',
 	'abusefilter-edit-description' => "Keterangan:
 :''(dapat dilihat secara publik)''",
-	'abusefilter-edit-flags' => 'Tanda:',
+	'abusefilter-edit-flags' => 'Panji:',
 	'abusefilter-edit-enabled' => 'Aktifkan filter ini',
 	'abusefilter-edit-deleted' => 'Tandai sebagai telah dihapus',
 	'abusefilter-edit-hidden' => 'Sembunyikan rincian filter ini dari publik',
@@ -9873,6 +9873,7 @@ Mintalah kepada pengguna yang memiliki hak akses untuk menyunting tindakan yang 
 	'abusefilter-history-enabled' => 'Diaktifkan',
 	'abusefilter-history-timestamp' => 'Waktu',
 	'abusefilter-history-user' => 'Pengguna',
+	'abusefilter-history-flags' => 'Panji',
 	'abusefilter-history-comments' => 'Komentar',
 	'abusefilter-history-actions' => 'Tindakan',
 	'abusefilter-history-deleted' => 'Dihapus',
@@ -11792,17 +11793,17 @@ an Dir konnt se dowéint net ausféieren.
 Des weideren, fir {{SITENAME}} ze protegéieren, gouf Äre Benotzerkont an all assoziéiert IP-Adressen automatesch fir all Ännerunge gespaart.
 Wann dëst irrtèmlech geschitt ass da kontaktéiert w.e.g. en Adminstrateur.
 Hei ass eng kuerz Beschreiwung vun der mëssbrauchsregel op déi Är Aktioun gepasst huet: $1',
-	'abusefilter-degrouped' => 'Dës Aktioun gouf automatesch als schedlech klasséiert.
-Dowéint gouf ze net zougelooss a well äre Benotzerkont dofir elo verdächteg ass fir kompromettéiert ze si goufen all är Rechter zréckgezunn.
-Wann Dir mengt datt dëst e Feeler ass da kontaktéiert w.e.g. e Bürokrat a gitt him eng Erklärung fir dës Aktioun an är Rechter ginn nees restauréiert.
-Hei ass eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi är Akioun passt: $1',
+	'abusefilter-degrouped' => 'Dës Aktioun gouf automatesch als schiedlech klasséiert.
+Dowéinst gouf se net zougelooss a well Äre Benotzerkont dofir elo verdächteg ass, fir kompromettéiert ze sinn, goufen all Är Rechter zréckgezunn.
+Wann Dir mengt datt dëst e Feeler ass da kontaktéiert w.e.g. e Bürokrat a gitt him eng Erklärung fir dës Aktioun, an Är Rechter ginn nees restauréiert.
+Hei ass eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi Är Akioun passt: $1',
 	'abusefilter-autopromote-blocked' => 'Dës Aktioun gouf automatesch as geféierlech erkannt an net ausgefouert.
 Zusäzlech goufen aus Sécherheetsgrënn goufen e puer Rechter déi confirméiert Benotzerkonten hunn temporaire vun ärem Benotzer zréckgeszunn.
 Eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi Är Aktioun reagéiert huet ass: $1',
 	'abusefilter-blocker' => 'Filter vum Mëssbrauch',
 	'abusefilter-blockreason' => 'Automtesch gespaart duerch de Mëssbrauchsfilter. Beschreiwung vun der Regel déi benotzt gouf: $1',
 	'abusefilter-degroupreason' => 'Rechter goufen atomatesch duerch de Mëssbrauchsfilter ewechgeholl. Beschreiwung vun der Regel: $1',
-	'abusefilter-accountreserved' => 'Dëse Numm fir e Benotzerkont ass reservéiert fir vum Mëssbrauchs-filer benotzt ze ginn.',
+	'abusefilter-accountreserved' => 'Dësen Numm fir e Benotzerkont ass reservéiert fir vum Mëssbrauchs-filter benotzt ze ginn.',
 	'right-abusefilter-modify' => 'Mëssbrauchsfilteren änneren',
 	'right-abusefilter-view' => 'Mëssbrauchs-Filtere weisen',
 	'right-abusefilter-log' => 'Lëscht vum Mëssbrauch weisen',
@@ -18258,6 +18259,7 @@ $messages['sw'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  * @author వైజాసత్య
  */
@@ -18283,7 +18285,7 @@ $messages['te'] = array(
 	'abusefilter-enabled' => 'సచేతనం',
 	'abusefilter-deleted' => 'తొలగించారు',
 	'abusefilter-disabled' => 'అచేతనం',
-	'abusefilter-new' => 'కొత్త జల్లెడ',
+	'abusefilter-new' => 'కొత్త జల్లెడని సృష్టించు',
 	'abusefilter-links' => 'ఉపయోగపడే లింకులు:',
 	'abusefilter-list-options' => 'ఎంపికలు',
 	'abusefilter-list-options-submit' => 'తాజాకరించు',
@@ -18300,9 +18302,9 @@ $messages['te'] = array(
 	'abusefilter-edit-notes' => "గమనికలు:
 :''(అంతరంగికం)",
 	'abusefilter-edit-hitcount' => 'జల్లెడ హిట్లు:',
-	'abusefilter-edit-consequences' => 'హిట్‌పై తీసుకున్న చర్యలు',
-	'abusefilter-edit-action-disallow' => 'ఈ చర్యను నిరాకరించు',
-	'abusefilter-edit-action-block' => 'ఈ వాడుకరిని దిద్దుబాట్లు చేయకుండా నిషేధించు',
+	'abusefilter-edit-consequences' => 'జోడి కుదిరినప్పుడు తీసుకున్న చర్యలు',
+	'abusefilter-edit-action-disallow' => 'వాడుకరి చేసే ఈ చర్యను నిరాకరించు',
+	'abusefilter-edit-action-block' => 'ఈ వాడుకరిని/ఐపీ చిరునామాను దిద్దుబాట్లు చేయకుండా నిషేధించు',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|క్షణం|క్షణాలు}}',
 	'abusefilter-edit-warn-other' => 'ఇతర సందేశం',
 	'abusefilter-edit-warn-actions' => 'చర్యలు:',
@@ -18325,6 +18327,7 @@ $messages['te'] = array(
 	'abusefilter-history-actions' => 'చర్యలు',
 	'abusefilter-history-select-user' => 'వాడుకరి:',
 	'abusefilter-history-diff' => 'మార్పులు',
+	'abusefilter-test-load' => 'లోడు',
 	'abusefilter-examine-user' => 'వాడుకరి:',
 	'abusefilter-examine-title' => 'పేజీ శీర్షిక:',
 	'abusefilter-examine-submit' => 'వెతుకు',
