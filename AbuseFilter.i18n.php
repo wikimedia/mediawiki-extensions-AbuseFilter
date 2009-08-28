@@ -11776,7 +11776,7 @@ $messages['lb'] = array(
 	'abusefilter' => 'Astellung vum Mëssbrauchsfilter',
 	'abuselog' => 'Lëscht vum Mëssbrauch',
 	'abusefilter-intro' => "Wëllkom op der Säit vum Mëssbrauchsfiler-Management.
-De Mëssbrauchsfilter ass en automatesche Mechanismus deen et erlaabt autmatesch Heuristiken op all aktiounen unzewenden.
+De Mëssbrauchsfilter ass en automatesche Mechanismus deen et erlaabt autmatesch Heuristiken op all Aktiounen unzewenden.
 Dës Spezialsäit weist eng Lëscht vun definéierte Filteren an erlaabt et dës z'änneren.",
 	'abusefilter-mustbeeditor' => "Aus Sécherheetsgrënn kënnen nëmme Benotzer déi d'Recht hunn fir Mëssbrauchsfilteren z'änneren dësen Interface benotzen.",
 	'abusefilter-warning' => "<big>'''Opgepasst'''</big>: Dës Aktioun gouf automatesch als geféierlech erkannt.
@@ -11803,7 +11803,7 @@ Eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi Är Aktioun reagéiert 
 	'abusefilter-blocker' => 'Filter vum Mëssbrauch',
 	'abusefilter-blockreason' => 'Automtesch gespaart duerch de Mëssbrauchsfilter. Beschreiwung vun der Regel déi benotzt gouf: $1',
 	'abusefilter-degroupreason' => 'Rechter goufen atomatesch duerch de Mëssbrauchsfilter ewechgeholl. Beschreiwung vun der Regel: $1',
-	'abusefilter-accountreserved' => 'Dësen Numm fir e Benotzerkont ass reservéiert fir vum Mëssbrauchs-filter benotzt ze ginn.',
+	'abusefilter-accountreserved' => 'Dësen Numm fir e Benotzerkont ass reservéiert fir vum Mëssbrauchsfilter benotzt ze ginn.',
 	'right-abusefilter-modify' => 'Mëssbrauchsfilteren änneren',
 	'right-abusefilter-view' => 'Mëssbrauchs-Filtere weisen',
 	'right-abusefilter-log' => 'Lëscht vum Mëssbrauch weisen',
@@ -11884,7 +11884,7 @@ Beschreiwung vum Filter: $7 ($8) ($9)',
 	'abusefilter-tools-expr' => 'Test vun den Expressiounen',
 	'abusefilter-tools-submitexpr' => 'Bewerten',
 	'abusefilter-tools-reautoconfirm-user' => 'Benotzer:',
-	'abusefilter-edit-subtitle' => 'Änner vum Filter $1',
+	'abusefilter-edit-subtitle' => 'Ännere vum Filter $1',
 	'abusefilter-edit-oldwarning' => "<strong>Dir sidd amgaang eng al Versioun vum Filter z'änneren.
 D'Statistike sinn déi vun der leschter Versioun vum Filter.
 Wann Dir Är Ännerunge späichert dann iwwerschreiwt Dir all Ännerungen zënter der Versioun déi Dir elo ännert. </strong> &bull;
@@ -12110,7 +12110,7 @@ Fir weider Detailer, kuckt [[Special:AbuseFilter/history|d'Lëscht]] vun de reze
 	'abusefilter-diff-version' => 'Versioun vum $1 vum $2',
 	'abusefilter-diff-info' => 'Basisinformatiounen',
 	'abusefilter-diff-pattern' => 'Konditioune vum Filter',
-	'abusefilter-diff-invalid' => 'Déi ugefrote Versiounen kënnen net fonnt ginn',
+	'abusefilter-diff-invalid' => 'Déi ugefrote Versioune kënnen net fonnt ginn',
 	'abusefilter-diff-backhistory' => "Zréck op d'Lëscht vun de Versioune vum Filter",
 	'abusefilter-import-intro' => 'Dir kënnt dësen Interface benotzen fir Filtere vu anere Wikien z\'importéieren.
 Klickt op der originaler Wiki op "{{int:abusefilter-edit-export}}"  ënner "{{int:abusefilter-tools-subtitle}}" op demInterface vun den Ännerungen.
