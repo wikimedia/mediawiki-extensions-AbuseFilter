@@ -11897,6 +11897,7 @@ Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilte
 
 /** Latin (Latina)
  * @author Omnipaedista
+ * @author UV
  */
 $messages['la'] = array(
 	'abusefilter' => 'Configuratio filtri iniuriarum',
@@ -11940,7 +11941,7 @@ $messages['la'] = array(
 	'abusefilter-examine-user' => 'Usor:',
 	'abusefilter-examine-title' => 'Titulus paginae:',
 	'abusefilter-examine-submit' => 'Quaerere',
-	'abusefilter-log-name' => 'Acta Filtri Iniustitiarum',
+	'abusefilter-log-name' => 'Acta filtri iniuriarum',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -19442,7 +19443,7 @@ $messages['uk'] = array(
 	'abusefilter-edit-throttled' => "'''Попередження''': цей фільтр був автоматично вимкнений у заходах безпеки. Він досяг межі співпадінь у $1% дій.",
 	'abusefilter-edit-new' => 'Новий фільтр',
 	'abusefilter-edit-save' => 'Зберегти фільтр',
-	'abusefilter-edit-id' => 'ІД фильтра:',
+	'abusefilter-edit-id' => 'ІД фільтра:',
 	'abusefilter-edit-description' => "Опис:
 :''(загальнодоступне) ''",
 	'abusefilter-edit-flags' => 'Прапорці:',
