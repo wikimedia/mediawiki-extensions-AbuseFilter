@@ -7045,7 +7045,10 @@ Descrición do filtro: $7 ($8) ($9)',
 	'abusefilter-reautoconfirm-done' => 'O status de autoconfirmación da conta foi restaurado',
 	'abusefilter-status' => '{{PLURAL:$1|Da última acción|Das $1 últimas accións}}, $2 ($3%) {{PLURAL:$5|atinxiu|atinxiron}} a condición límite de $4, e $5 ($6%) {{PLURAL:$5|coincidiu|coincidiron}} cun dos filtros actualmente activados.',
 	'abusefilter-edit-subtitle' => 'Editando o filtro $1',
-	'abusefilter-edit-oldwarning' => '<strong>Está a editar unha versión vella deste filtro. As estatísticas citadas son da versión máis recente do filtro. Se garda os seus cambios, sobreescribirá todos os cambios desde a revisión que está editando.</strong> &bull; [[Special:AbuseFilter/history/$2|Voltar ao historial deste filtro]]',
+	'abusefilter-edit-oldwarning' => '<strong>Está a editar unha versión vella deste filtro.
+As estatísticas citadas son da versión máis recente do filtro.
+Se garda os seus cambios, sobrescribirá todos os cambios desde a revisión que está editando.</strong> &bull; 
+[[Special:AbuseFilter/history/$2|Voltar ao historial deste filtro]]',
 	'abusefilter-edit-status-label' => 'Estatísticas:',
 	'abusefilter-edit-status' => '{{PLURAL:$1|Da última acción|Das $1 últimas accións}}, este filtro coincidiu con $2 ($3%).
 De media, o seu tempo de execución é de $4ms, e consome {{PLURAL:$5|unha condición|$5 condicións}} do límite de condicións.',
