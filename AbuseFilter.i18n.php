@@ -11426,6 +11426,7 @@ $messages['ko'] = array(
 	'abusefilter-history-filter' => '필터 규칙',
 	'abusefilter-history-backedit' => '필터 편집기로 돌아가기',
 	'abusefilter-history-deleted' => '삭제됨',
+	'abusefilter-history-filterid' => '필터',
 	'abusefilter-history-select-user' => '사용자:',
 	'abusefilter-history-diff' => '차이',
 	'abusefilter-exception-expectednotfound' => '$1번째 문자에 있어야 할 $2가 발견되지 않았습니다. ($3 $4를 대신 찾아보세요.)',
