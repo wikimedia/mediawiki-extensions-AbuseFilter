@@ -16002,6 +16002,7 @@ Copie da caixa de texto que aparece, e cole nesta caixa de texto, e a seguir cli
 /** Brazilian Portuguese (Português do Brasil)
  * @author Giro720
  * @author Heldergeovane
+ * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'abusefilter-desc' => 'Aplica heurísticas automáticas às edições.',
@@ -16045,6 +16046,8 @@ Descrição da regra: $1',
 	'right-abusefilter-private' => 'Ver dados privados no registro de abusos',
 	'right-abusefilter-modify-restricted' => 'Modificar filtros de abusos com ações restritas',
 	'right-abusefilter-revert' => 'Reverter todas as modificações feitas por um dado filtro de abusos',
+	'abusefilter-status-global' => 'Global',
+	'abusefilter-list-options' => 'Opções',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Subtração (-)',
 );
 
