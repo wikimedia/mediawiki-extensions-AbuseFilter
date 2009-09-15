@@ -1373,7 +1373,7 @@ class AbuseFilterParser {
 						array( 'ccnorm', 1, count($args) ) );
 		$s = $args[0]->toString();
 		
-		$s = htmlspecialchars_decode($s);
+		$s = html_entity_decode($s, ENT_QUOTES, 'UTF-8');
 		$s = $this->ccnorm( $s );
 		
 		return new AFPData( AFPData::DString, $s );
