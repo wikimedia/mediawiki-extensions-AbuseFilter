@@ -4949,17 +4949,17 @@ Por plenaj detaloj, vidu [[Special:AbuseFilter/history|la liston]] de lastaj fil
  */
 $messages['es'] = array(
 	'abusefilter-desc' => 'Aplicar automáticamente heuristicas para ediciones',
-	'abusefilter' => 'Configuración del flitro antiabusos',
+	'abusefilter' => 'Configuración del filtro antiabusos',
 	'abuselog' => 'Registro del filtro antiabusos',
-	'abusefilter-intro' => 'Bienvenido a la interfáz de administración de filtros de antiabuso.
+	'abusefilter-intro' => 'Bienvenido a la interfáz de administración de filtros antiabuso.
 El filtro antiabuso es un mecanismo de software automatizado de aplicación heurística automática a todas las acciones.
 Esta interfáz muestra una lista de filtros definidos, que pueden ser ser modificados.',
-	'abusefilter-mustbeeditor' => 'Por razones de seguridad, solamente los usuarios con derechos pra modificar filtros de abuso pueden usar esta interfáz.',
+	'abusefilter-mustbeeditor' => 'Por razones de seguridad, solamente los usuarios con derechos para modificar filtros de abuso pueden usar esta interfáz.',
 	'abusefilter-warning' => "<big>'''Atención'''</big>: Esta acción ha sido automáticamente identificada como dañina.
 Las ediciones no constructivas son rápidamente revertidas,
 la repetición de dichas acciones tendrá como consecuencia que su cuenta u ordenador sea bloqueado.
 Si cree que esta edición es constructiva, puede pulsar de nuevo el botón grabar para confirmarlo.
-Una breve explicación acerca de la regla del filtro antiabusos es: $1",
+Una breve explicación acerca de la regla del filtro antiabusos que usted ha disparado es: $1",
 	'abusefilter-disallowed' => 'Esta acción ha sido automáticamente identificada como dañina,
 y por tanto ha sido deshabilitada.
 Si cree que su edición es legítima, por favor, póngase en contacto con un administrador, e infórmele de lo que intentaba hacer.
@@ -4967,20 +4967,20 @@ Una breve explicación acerca de por qué se ha deshabilitado la acción es: $1'
 	'abusefilter-blocked-display' => 'Esta acción ha sido automáticamente identificada como dañina y ha sido automáticamente detenida.
 Además, con el objeto de proteger {{SITENAME}}, su cuenta de usuario y todas sus direcciones IP asociadas han sido bloqueadas.
 Si la acción ha sido errónea, contacte con un administrador.
-Una breve explicación acerca de la regla del filtro antiabusos violada es: $1',
+Una breve explicación acerca de la regla del filtro antiabusos que ha disparado es: $1',
 	'abusefilter-degrouped' => 'Esta acción ha sido automáticamente identificada como dañina.
 En consecuencia, ha sido deshabilitada, y, sospechando que su cuenta está comprometida, todos sus privilegios han sido revocados.
-Si cree que esta acción es un error, por favor, contacte con un burócrata con una explicación de dicha acción y sus derechos serán restaurados.
-Una breve explicación acerca de la regla del filtro violada es: $1',
+Si cree que esta acción es un error, por favor, contacte con un burócrata con una explicación de dicha acción y sus derechos puedrán ser restaurados.
+Una breve explicación acerca de la regla del filtro que usted ha disparado es: $1',
 	'abusefilter-autopromote-blocked' => 'Esta acción ha sido automáticamente identificada como dañina y por lo tanto ha sido deshabilitada.
-Además, como medida de seguridad, algunos derechos de usuarios entregados a cuentas activas y comprometidas con el proyecto han sido revocados temporalmente de su cuenta.
-Una breve explicación acerca de la regla del filtro antiabusos violada es: $1',
+Además, como medida de seguridad, algunos privilegios entregados a cuentas activas y comprometidas con el proyecto han sido revocados temporalmente de su cuenta.
+Una breve explicación acerca de la regla del filtro antiabusos que usted ha disparado es: $1',
 	'abusefilter-blocker' => 'Filtro antiabusos',
-	'abusefilter-blockreason' => 'Bloqueado automáticamente por el filtro antiabusos. <br />
-Descripción de la regla: $1',
-	'abusefilter-degroupreason' => 'Derechos automáticamente revocados por el filtro antiabusos. <br />
+	'abusefilter-blockreason' => 'Bloqueado automáticamente por el filtro antiabusos.
+Descripción del filtro que se ha disparado: $1',
+	'abusefilter-degroupreason' => 'Privilegios automáticamente revocados por el filtro antiabusos.
 Descripción: $1',
-	'abusefilter-accountreserved' => 'El nombre de ésta cuenta está reservada para uso por filtro de abuso.',
+	'abusefilter-accountreserved' => 'El nombre de esta cuenta está reservada para el uso por el filtro de abusos.',
 	'right-abusefilter-modify' => 'Modificar filtros de abuso',
 	'right-abusefilter-view' => 'Ver filtros de abuso',
 	'right-abusefilter-log' => 'Ver el log de abuso',
@@ -5004,6 +5004,12 @@ Descripción: $1',
 	'abusefilter-log-search-filter' => 'Identificación de filtro:',
 	'abusefilter-log-search-title' => 'Título:',
 	'abusefilter-log-search-submit' => 'Buscar',
+	'abusefilter-log-entry' => '$1: $2 disparó un filtro de edición realizando la accion "$3" en $4.
+Acciones tomadas: $5;
+Descripción del filtro: $6',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 disparó $3 realizando la acción "$4" en $5.
+Acciones tomadas: $6;
+Descripción del filtro: $7 ($8) ($9)',
 	'abusefilter-log-detailedentry-global' => 'filtro global $1',
 	'abusefilter-log-detailedentry-local' => 'filtro $1',
 	'abusefilter-log-detailslink' => 'detalles',
@@ -5024,7 +5030,7 @@ Descripción: $1',
 	'abusefilter-list-public' => 'Descripción pública',
 	'abusefilter-list-consequences' => 'Consecuencias',
 	'abusefilter-list-visibility' => 'Visibilidad',
-	'abusefilter-list-hitcount' => 'Contador de hits',
+	'abusefilter-list-hitcount' => 'Contador de detecciones',
 	'abusefilter-list-edit' => 'Editar',
 	'abusefilter-list-details' => 'Detalles',
 	'abusefilter-list-limit' => 'Número por página:',
@@ -5034,10 +5040,10 @@ Descripción: $1',
 	'abusefilter-enabled' => 'Habilitado',
 	'abusefilter-deleted' => 'Eliminado',
 	'abusefilter-disabled' => 'Deshabilitado',
-	'abusefilter-hitcount' => '$1 {{PLURAL:$1|hit|hits}}',
+	'abusefilter-hitcount' => '$1 {{PLURAL:$1|disparo|disparos}}',
 	'abusefilter-new' => 'Crear un filtro nuevo',
 	'abusefilter-links' => 'Enlaces útiles:',
-	'abusefilter-tools-modifiertest-submit' => 'Exámen',
+	'abusefilter-tools-modifiertest-submit' => 'Probar',
 	'abusefilter-tools' => 'Abuso de herramientas de filtros',
 	'abusefilter-loglink' => 'Ver log de abuso',
 	'abusefilter-return' => 'Regrasar a la gestión de filtros',
@@ -5051,7 +5057,7 @@ Descripción: $1',
 	'abusefilter-list-options-hidedisabled' => 'Esconder filtros deshabilitados',
 	'abusefilter-list-options-submit' => 'Actualización',
 	'abusefilter-tools-subtitle' => 'Herramientas',
-	'abusefilter-tools-text' => 'Aquí hay algunas herramientas que pueden ser útiles formulando y reparando abuso de filtros.',
+	'abusefilter-tools-text' => 'Aquí hay algunas herramientas que pueden ser útiles formulando y reparando filtros.',
 	'abusefilter-tools-expr' => 'Expresión de quien prueba',
 	'abusefilter-tools-submitexpr' => 'Evaluar',
 	'abusefilter-tools-reautoconfirm' => 'Restaurar estado autoconfirmado',
@@ -5069,13 +5075,13 @@ Si grabas tus cambios, reescribiras todos los cambios desde la revisión que est
 	'abusefilter-edit-status-label' => 'Estadísticas:',
 	'abusefilter-edit-status' => 'De {{PLURAL:$1|la última acción|las últimas acciones}}, este filtro ha coincido con $2 ($3%).
 En promedio, su tiempo de ejecución es $4ms, y consume $5 {{PLURAL:$5|condición|condiciones}} del limite de condiciones.',
-	'abusefilter-edit-throttled' => "'''Atención''': Este filtro ha sido automáticamente deshabilitado como medida de seguridad.<br />
+	'abusefilter-edit-throttled' => "'''Atención''': Este filtro ha sido automáticamente deshabilitado como medida de seguridad.
 El filtro ha sobrepasado el límite de más del $1% acciones.",
 	'abusefilter-edit-new' => 'Nuevo filtro',
 	'abusefilter-edit-save' => 'Guardar filtro',
 	'abusefilter-edit-id' => 'Identificación de filtro:',
 	'abusefilter-edit-description' => ":''(se puede ver publicamente)''",
-	'abusefilter-edit-flags' => 'Banderas:',
+	'abusefilter-edit-flags' => 'Opciones:',
 	'abusefilter-edit-enabled' => 'Habilitar éste filtro',
 	'abusefilter-edit-deleted' => 'Marcar como eliminado',
 	'abusefilter-edit-hidden' => 'Esconder detalles de éste filtro en vista pública',
@@ -5088,15 +5094,16 @@ El filtro ha sobrepasado el límite de más del $1% acciones.",
 	'abusefilter-edit-consequences' => 'Acciones tomadas cuando coincidieron',
 	'abusefilter-edit-action-disallow' => 'Prevenir al usuario de realizar la acción en cuestión',
 	'abusefilter-edit-action-flag' => 'Marcar la revisión en el registro de abusos',
-	'abusefilter-edit-action-blockautopromote' => 'Revocar el estatus de autoconfirmado del usuario',
-	'abusefilter-edit-action-degroup' => 'Retirar del usuario todos los grupos de privilegios',
-	'abusefilter-edit-action-block' => 'Bloquear el usuario y/o dirección IP de editar',
-	'abusefilter-edit-action-rangeblock' => 'Bloquear el rango /16 de que el usuario origina.',
-	'abusefilter-edit-action-tag' => 'Marcar la revisión para más revista.',
+	'abusefilter-edit-action-blockautopromote' => 'Revocar el estado autoconfirmado del usuario',
+	'abusefilter-edit-action-degroup' => 'Retirar al usuario de todos sus privilegios',
+	'abusefilter-edit-action-block' => 'Bloquear al usuario y/o dirección IP',
+	'abusefilter-edit-action-throttle' => 'Disparar el filtro sólamente si el usuario sobrepasa un límite de ritmo de edición',
+	'abusefilter-edit-action-rangeblock' => 'Bloquear el rango /16 del usuario que origina el disparo del filtro',
+	'abusefilter-edit-action-tag' => 'Marcar la edición para una revisión posterior',
 	'abusefilter-edit-throttle-count' => 'Número de acciones a permitir:',
 	'abusefilter-edit-throttle-period' => 'Período de tiempo:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|segundo|segundos}}',
-	'abusefilter-edit-warn-message' => 'Mensaje de sistema para usar por advertencia:',
+	'abusefilter-edit-warn-message' => 'Mensaje del sistema para usar por la advertencia:',
 	'abusefilter-edit-warn-other' => 'Otro mensaje',
 	'abusefilter-edit-warn-other-label' => "Nombre de página de otro mensaje:
 :''(sin prefijo MediaWiki)''",
@@ -5110,8 +5117,8 @@ El filtro ha sobrepasado el límite de más del $1% acciones.",
 	'abusefilter-edit-done' => 'Usted ha guardado sus cambios al filtro $1 con éxito.',
 	'abusefilter-edit-badsyntax' => 'Hay un error de sintaxis en el filtro que especificó.
 El resultado del analizador fue: <pre>$1</pre>',
-	'abusefilter-edit-restricted' => 'No puedes editar este filtro, porque contiene uno o más acciones restringidas.
-Por favor solicita a un usuario con permiso para agregar acciones restringidas hacer el cambio por ti.',
+	'abusefilter-edit-restricted' => 'No puedes editar este filtro, porque contiene una o más acciones restringidas.
+Por favor solicita a un usuario con permisos suficientes para agregar acciones restringidas hacer el cambio por ti.',
 	'abusefilter-edit-viewhistory' => 'Ver el historial de este filtro',
 	'abusefilter-edit-history' => 'Historial:',
 	'abusefilter-edit-check' => 'Comprobar sintaxis',
@@ -5163,7 +5170,7 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-edit-builder-funcs-substr' => 'Subcadena (substr)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Establecer variable (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Variables',
-	'abusefilter-edit-builder-vars-accountname' => 'Nombre de cuenta (en creación de cuenta)',
+	'abusefilter-edit-builder-vars-accountname' => 'Nombre de usuario (en creación de cuenta)',
 	'abusefilter-edit-builder-vars-timestamp' => 'Fechador Unix de cambio',
 	'abusefilter-edit-builder-vars-action' => 'Acción',
 	'abusefilter-edit-builder-vars-addedlines' => 'Lineas añadidas en revisión',
@@ -5187,6 +5194,8 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-edit-builder-vars-user-editcount' => 'Editar conteo de usuario',
 	'abusefilter-edit-builder-vars-user-age' => 'Antigüedad de cuenta de usuario',
 	'abusefilter-edit-builder-vars-user-name' => 'Nombre de cuenta de usuario',
+	'abusefilter-edit-builder-vars-user-groups' => 'Grupos (incluídos aquellos implícitos) en los cuales el usuario está',
+	'abusefilter-edit-builder-vars-user-emailconfirm' => 'El tiempo que hace que la dirección de correo electrónico fue confirmada',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Últimos diez usuarios en contribuir en la página',
 	'abusefilter-edit-builder-vars-all-links' => 'Todos los vínculos externos en el nuevo texto',
 	'abusefilter-edit-builder-vars-added-links' => 'Todos los vínculos externos agregados en la edición',
@@ -5208,7 +5217,7 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-history-timestamp' => 'Tiempo',
 	'abusefilter-history-user' => 'Usuario',
 	'abusefilter-history-public' => 'Publicar descripción de filtro',
-	'abusefilter-history-flags' => 'Banderas',
+	'abusefilter-history-flags' => 'Opciones',
 	'abusefilter-history-filter' => 'Norma de filtro',
 	'abusefilter-history-comments' => 'Comentarios',
 	'abusefilter-history-actions' => 'Acciones',
@@ -5230,9 +5239,9 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-action-tag' => 'Etiqueta',
 	'abusefilter-action-throttle' => 'Impedir',
 	'abusefilter-action-warn' => 'Advertir',
-	'abusefilter-action-blockautopromote' => 'Bloquear autopromoción',
+	'abusefilter-action-blockautopromote' => 'Bloquear promociones automáticas',
 	'abusefilter-action-block' => 'Bloquear',
-	'abusefilter-action-degroup' => 'Remover de grupos',
+	'abusefilter-action-degroup' => 'Eliminar de los grupos',
 	'abusefilter-action-rangeblock' => 'Bloqueo de rango',
 	'abusefilter-action-disallow' => 'No permitir',
 	'abusefilter-revert-title' => 'Revertir todos los cambios hechos por el filtro $1',
@@ -5262,6 +5271,7 @@ Para cargar un filtro existente, escribe el ID del filtro dentro de la tabla deb
 	'abusefilter-test-period-start' => 'Cambios hechos después:',
 	'abusefilter-test-period-end' => 'Cambios hechos antes:',
 	'abusefilter-test-page' => 'Cambios hechos a la página:',
+	'abusefilter-test-shownegative' => 'Mostrar cambios que no coinciden con el filtro',
 	'abusefilter-test-syntaxerr' => 'El filtro que has ingresado contiene un error de sintaxis.
 Puedes recibir una completa explicación haciendo click en el botón "Verificar sintaxis".',
 	'abusefilter-changeslist-examine' => 'examinar',
@@ -5474,11 +5484,13 @@ $messages['eu'] = array(
 	'abusefilter-edit-action-block' => 'Erabiltzailea eta/edo IP helbidea blokeatu ediziorik egin ez dezan',
 	'abusefilter-edit-throttle-period' => 'Denbora periodoa:',
 	'abusefilter-edit-throttle-seconds' => '{{PLURAL:$1|segundu bat|$1 segundu}}',
+	'abusefilter-edit-warn-actions' => 'Ekintzak:',
 	'abusefilter-edit-warn-preview' => 'Hautatutako mezuaren aurrebista erakutsi',
 	'abusefilter-edit-warn-edit' => 'Sortu/Editatu hautatutako mezua',
 	'abusefilter-edit-main' => 'Iragazkiaren parametroak',
 	'abusefilter-edit-viewhistory' => 'Iragazki honen historia begiratu',
 	'abusefilter-edit-history' => 'Historia:',
+	'abusefilter-edit-tools' => 'Tresnak:',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Eragile aritmetikoak',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Batuketa (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Kenketa (-)',
@@ -5537,6 +5549,7 @@ $messages['eu'] = array(
 	'abusefilter-examine-submit' => 'Bilatu',
 	'abusefilter-topnav-home' => 'Hasiera',
 	'abusefilter-topnav-import' => 'Iragazkia inportatu',
+	'abusefilter-diff-title' => 'Bertsioen arteko ezberdintasunak',
 	'abusefilter-diff-info' => 'Oinarrizko informazioa',
 	'abusefilter-import-submit' => 'Datuak inportatu',
 );
