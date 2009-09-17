@@ -5571,10 +5571,7 @@ $messages['fa'] = array(
 و در صورت ویرایش‌های عمدی خرابکارانه دسترسی‌تان به سرعت بسته خواهد است.
 اگر مطمئنید که این ویرایش مفید است دوباره بر دکمه تایید بفشارید.
 دلیل جلوگیری این بود: $1",
-	'abusefilter-disallowed' => 'این کار به طور خودکار خطرناک است،
-و بنابرین شما اجازه این کار را ندارید
-اگر فکر می‌کنید که پالایه‌تان درست است با یکی از مدیران تماس بگیرید
-پالایه تعریفی شما این بود: $1',
+	'abusefilter-disallowed' => 'این کار به طور خودکار خطرناک تشخیص داده‌شده است.<br /> و بنابرین شما اجازه این کار را ندارید<br /> اگر فکر می‌کنید که کارتان درست است با [[وپ:مدیران|مدیران]] [[وپ:تام|تماس بگیرید]].<br /> پالایه‌ای که جلوی شما را گرفت این بود: $',
 	'abusefilter-blocked-display' => 'اجرا کردن این عمل به طور خودکار خطرناک تشخیص داده‌شده است,
 و شما از اجرای این منع شدید.
 به علاوه برای حفاظت از {{SITENAME}}, حساب شما و آی‌پی شما به طور خودکار بسته می‌شود.
@@ -5876,7 +5873,7 @@ Turvallisuussyistä jotkin rutiininomaisesti peruskäyttäjille myönnetyt etuoi
 Väärinkäyttösuodatinsäännön kuvaus, joka vastasi suorittamaasi toimenpidettä, on kuvattu lyhyesti täällä: $1',
 	'abusefilter-blocker' => 'Väärinkäyttösuodatin',
 	'abusefilter-blockreason' => 'Automaattisen väärinkäyttösuodattimen estämä. Syy: $1',
-	'abusefilter-degroupreason' => 'Oikeudet vedetty automaattisesti pois väärinkäyttösuodattimen toimesta.
+	'abusefilter-degroupreason' => 'Oikeudet automaattisesti poistettu väärinkäyttösuodattimen toimesta.
 Säännön kuvaus: $1',
 	'abusefilter-accountreserved' => 'Tämä käyttäjätunnus on varattu väärinkäyttösuodattimen käyttöön.',
 	'right-abusefilter-modify' => 'Muokata väärinkäyttösuodattimia',
@@ -5970,7 +5967,7 @@ Suodatin saavutti yli $1 % täsmäävän toiminnon rajan.",
 	'abusefilter-edit-notes' => "Kommentit
 :''(yksityinen)''",
 	'abusefilter-edit-lastmod' => 'Suodatinta viimeksi muuttanut:',
-	'abusefilter-edit-lastmod-text' => '$1 ($2)',
+	'abusefilter-edit-lastmod-text' => '$1 – $2',
 	'abusefilter-edit-hitcount' => 'Suodattimen osumat:',
 	'abusefilter-edit-consequences' => 'Toiminnat, jotka tehdään kun löytyy täsmäävät',
 	'abusefilter-edit-action-warn' => 'Käynnistä nämä toimenpiteet käyttäjän varoituksen jälkeen',
@@ -6108,7 +6105,7 @@ Pyydä rajoitettujen toimintojen lisäämiseen tarvittavien oikeuksien haltijalt
 	'abusefilter-history-diff' => 'Muutokset',
 	'abusefilter-history-error-hidden' => 'Pyytämäsi suodatin on salattu, etkä voi tarkastella sen historiaa.',
 	'abusefilter-exception-regexfailure' => 'Virhe säännöllisessä lausekkeessa ”$3” merkin $1 kohdalla: ”$2”',
-	'abusefilter-action-tag' => 'Tägi',
+	'abusefilter-action-tag' => 'Merkitse',
 	'abusefilter-action-throttle' => 'Hillitse muokkaustahtia',
 	'abusefilter-action-warn' => 'Varoita',
 	'abusefilter-action-blockautopromote' => 'Automaattinen esto',
@@ -6138,7 +6135,7 @@ Annettu syy: $2',
 	'abusefilter-test-shownegative' => 'Näytä muutokset, jotka eivät täsmää suodattimen kanssa',
 	'abusefilter-test-syntaxerr' => 'Suodatin, jonka syötit sisälsi syntaksivirheen.
 Voit saada perusteellisen selityksen napsauttamalla ”Tarkista syntaksi” -painiketta.',
-	'abusefilter-changeslist-examine' => 'tarkasta',
+	'abusefilter-changeslist-examine' => 'tutki',
 	'abusefilter-examine' => 'Tarkasta yksittäiset muutokset',
 	'abusefilter-examine-intro' => 'Tällä sivulla voit tarkastella väärinkäyttösuodattimen muuttujia yksittäisen muutoksen suhteen, ja testata suodattimien suhteen.',
 	'abusefilter-examine-legend' => 'Valitse muutokset',
