@@ -17,7 +17,11 @@ class AbuseFilterHooks {
 		AFComputedVariable::$articleCache[$articleCacheKey] = $editor->mArticle;
 		
 		// Check for null edits.
-		$oldtext = $editor->mArticle->getContent();
+		$oldtext = '';
+		
+		if ( $editor->mArticle->exists() ) {
+			$oldtext = $editor->mArticle->getContent();
+		}
 		
 		if ( strcmp( $oldtext, $text ) == 0 ) {
 			// Don't trigger for null edits.
