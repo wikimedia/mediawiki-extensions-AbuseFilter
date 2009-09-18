@@ -31,8 +31,9 @@ class SpecialAbuseFilter extends SpecialPage {
 
 		if ( $wgRequest->getVal( 'result' ) == 'success' ) {
 			$wgOut->setSubtitle( wfMsg( 'abusefilter-edit-done-subtitle' ) );
+			$changedFilter = intval($wgRequest->getVal( 'changedfilter' ));
 			$wgOut->wrapWikiMsg( '<p class="success">$1</p>', 
-				array('abusefilter-edit-done', $wgRequest->getVal( 'changedfilter' ) ) );
+				array('abusefilter-edit-done', $changedFilter ) );
 		}
 		
 		$this->mSkin = $wgUser->getSkin();
