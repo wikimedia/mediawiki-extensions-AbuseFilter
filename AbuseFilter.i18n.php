@@ -3582,6 +3582,7 @@ Bitte einen Benutzer, der verbotene Aktionen hinzufügen kann, darum, die Änder
 	'abusefilter-edit-syntaxerr' => 'Syntaxfehler gefunden: $1',
 	'abusefilter-edit-bad-tags' => 'Eine oder mehrere der angegebenen Markierungen sind nicht gültig.
 Markierungen sollten kurz sein und sie sollten keine Sonderzeichen beinhalten.',
+	'abusefilter-edit-notallowed' => 'Es ist dir nicht erlaubt, Missbrauchsfilter zu erstellen oder zu bearbeiten',
 	'abusefilter-edit-builder-select' => 'Wähle eine Option aus, um sie am Cursor einzufügen',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Arithmetische Operatoren',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Addition (+)',
@@ -3819,6 +3820,7 @@ Beschreibung der Regel: $1',
 	'abusefilter-edit-badsyntax' => 'Der von Ihnen spezifizierte Filter enthält einen Syntaxfehler. Die Parserausgabe lautete: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Sie können diesen Filter nicht bearbeiten, weil er eine oder mehrere verbotene Aktionen enthält.
 Bitten Sie einen Benutzer, der verbotene Aktionen hinzufügen kann, darum, die Änderung für Sie vorzunehmen.',
+	'abusefilter-edit-notallowed' => 'Es ist Ihnen nicht erlaubt, Missbrauchsfilter zu erstellen oder zu bearbeiten',
 	'abusefilter-revert-intro' => 'Mit diesem Formular können alle Änderungen durch den Missbrauchsfilter aufgrund von Filter $1 rückgängig gemacht werden.
 Bitte verwenden Sie dieses Werkzeug mit Vorsicht.',
 	'abusefilter-revert-preview-intro' => 'Unten stehen die Aktionen des Missbrauchsfilters, die hiermit rückgängig gemacht werden.
@@ -4010,6 +4012,7 @@ Pšosym pšos wužywarja z pšawom wobgranicowane akcije pśidaś, aby cynił zm
 	'abusefilter-edit-syntaxerr' => 'Syntaksowa zmólka namakana: $1',
 	'abusefilter-edit-bad-tags' => 'Jadna abo někotare z pódanych toflickow njejo płaśiwa.
 Toflicki by mógli krotke byś a njeby mógli specielne znamuška wopśimjeś.',
+	'abusefilter-edit-notallowed' => 'Njesmějoš znjewužywańske filtry napóraś abo wobźěłaś',
 	'abusefilter-edit-builder-select' => 'Wubjeŕ opciju, aby ju zasajźił pla kursora',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetiske operatory',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adicija (+)',
@@ -6376,6 +6379,7 @@ Demandez à un utilisateur autorisé à ajouter des actions restreintes d’effe
 	'abusefilter-edit-syntaxerr' => 'Erreur de syntaxe détectée : $1',
 	'abusefilter-edit-bad-tags' => "Une ou plusieurs balises que vous avez spécifié n'est pas valide.
 Les balises doivent être courtes et ne pas contenir de caractères spéciaux.",
+	'abusefilter-edit-notallowed' => "Vous n'êtes pas autorisé à créer ou modifier des filtres antiabus",
 	'abusefilter-edit-builder-select' => 'Sélectionnez une option pour l’ajouter au curseur',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Opérateurs arithmétiques',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Addition (+)',
@@ -7120,8 +7124,9 @@ Por favor, pregúntelle a un usuario cos permisos necesarios para engadir acció
 	'abusefilter-edit-export' => 'Exportar este filtro a outro wiki',
 	'abusefilter-edit-syntaxok' => 'Non se detectaron erros de sintaxe.',
 	'abusefilter-edit-syntaxerr' => 'Detectouse un erro de sintaxe: $1',
-	'abusefilter-edit-bad-tags' => 'Unha ou máis das etiquetas das que especificou non é/son válida(s).
-As etiquetas deben ser curtas, e non deben conter caracteres especiais.',
+	'abusefilter-edit-bad-tags' => 'Unha ou máis das etiquetas que especificou non é/son válida(s).
+As etiquetas deberían ser curtas e non conter caracteres especiais.',
+	'abusefilter-edit-notallowed' => 'Non ten os permisos necesarios para crear ou editar filtros de abuso',
 	'abusefilter-edit-builder-select' => 'Seleccione unha opción para engadila ao cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operadores aritméticos',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Suma (+)',
@@ -7610,6 +7615,7 @@ Churzbschryybig vu dr verletzte Regle: $1',
 	'abusefilter-edit-syntaxerr' => 'Syntaxfähler gfunde: $1',
 	'abusefilter-edit-bad-tags' => 'Ei oder mehreri vu dr Markierige, wu aagee sin, sin nit giltig.
 Markierige sotte churz syy un s sotte kei Sonderzeiche din haa.',
+	'abusefilter-edit-notallowed' => 'Du derfsch kei Missbruuchsfilter aalege oder bearbeite',
 	'abusefilter-edit-builder-select' => 'Wehl e Option uus go si am Cursor yyzfiege',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Arithmetischi Operatore',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Addition (+)',
@@ -8707,6 +8713,7 @@ Limit wjace hač $1 % akcijow je so docpěł.",
 	'abusefilter-edit-syntaxerr' => 'Syntaksowy zmylk wotkryty: $1',
 	'abusefilter-edit-bad-tags' => 'Jedna abo wjacore z podatych tafličkow njeje płaćiwa.
 Taflički měli krótke być a njeměli wosebite znamješka wobsahować.',
+	'abusefilter-edit-notallowed' => 'Njesměš znjewužiwanske filtry wutworić abo wobdźěłać',
 	'abusefilter-edit-builder-select' => 'wubjer opciju, zo by ju pola kursora zasunył',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetiske operatory',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adicija (+)',
@@ -10695,6 +10702,7 @@ $messages['ja'] = array(
 	'abusefilter-edit-syntaxok' => '構文エラーは検出されませんでした。',
 	'abusefilter-edit-syntaxerr' => '構文エラーの検出: $1',
 	'abusefilter-edit-bad-tags' => 'あなたが指定したタグの1つ以上に不正なものがあります。タグは短く、かつ特殊文字を含んではなりません。',
+	'abusefilter-edit-notallowed' => 'あなたは不正利用フィルターを作成または編集することが許可されていません',
 	'abusefilter-edit-builder-select' => 'カーソル箇所に追加するものを選択',
 	'abusefilter-edit-builder-group-op-arithmetic' => '算術演算子',
 	'abusefilter-edit-builder-op-arithmetic-addition' => '加算 (+)',
@@ -13818,6 +13826,7 @@ Vraag een gebruiker met toestemming om beperkte handelingen toe te voegen om de 
 	'abusefilter-edit-syntaxerr' => 'Er is een syntaxisfout gevonden: $1',
 	'abusefilter-edit-bad-tags' => 'Een of meer van de labels die u heeft opgegeven is niet geldig.
 Labels moeten kort zijn en mogen geen speciale tekens bevatten.',
+	'abusefilter-edit-notallowed' => 'U hebt geen rechten om misbruikfilters aan te maken of te wijzigen',
 	'abusefilter-edit-builder-select' => 'Selecteer een optie om deze aan de cursor toe te voegen',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmische operatoren',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Optellen (+)',
@@ -16625,6 +16634,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-syntaxerr' => 'Обнаружена ошибка синтаксиса: $1',
 	'abusefilter-edit-bad-tags' => 'Одна или более из указанным вами меток неверна.
 Метка должна быть короткой, и не должна содержать спецсимволов.',
+	'abusefilter-edit-notallowed' => 'У вас нет разрешения создавать или редактировать фильтры злоупотреблений',
 	'abusefilter-edit-builder-select' => 'Выберите пункт для добавления',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Арифметические операторы',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Сложение (+)',
