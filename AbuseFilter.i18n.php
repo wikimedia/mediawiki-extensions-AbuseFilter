@@ -222,6 +222,7 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-edit-syntaxerr' => 'Syntax error detected: $1',
 	'abusefilter-edit-bad-tags' => 'One or more of the tags you specified is not valid.
 Tags should be short, and they should not contain special characters.',
+	'abusefilter-edit-notallowed' => 'You are not permitted to create or edit abuse filters',
 
 	// Filter editing helpers
 	'abusefilter-edit-builder-select' => 'Select an option to add it at the cursor',

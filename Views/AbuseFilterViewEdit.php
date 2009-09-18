@@ -17,6 +17,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$filter = $this->mFilter;
 		$history_id = $this->mHistoryID;
 		$this->mSkin = $wgUser->getSkin();
+		
+		if ( $filter == 'new' && !$wgUser->isAllowed( 'abusefilter-modify' ) ) {
+			$wgOut->addWikiMsg( 'abusefilter-edit-notallowed' );
+			return;
+		}
 
 		$editToken = $wgRequest->getVal( 'wpEditToken' );
 		$didEdit = $this->canEdit() 
