@@ -1594,7 +1594,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-edit-syntaxerr' => 'Знойдзеная сынтаксычная памылка: $1',
 	'abusefilter-edit-bad-tags' => 'Адна ці болей пазначаных Вамі метак — няслушная.
 Меткі павінны быць кароткімі, і яны не павінны ўтрымліваць спэцыяльныя сымбалі.',
-	'abusefilter-edit-notallowed' => 'Вы ня маеце дазволу ствараць ці рэдагаваць фільтры злоўжываньняў',
+	'abusefilter-edit-notallowed' => 'Вы ня маеце правоў на стварэньне альбо рэдагаваньне фільтраў злоўжываньняў',
 	'abusefilter-edit-builder-select' => 'Выберыце парамэтар, каб дадаць яго',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Арытмэтычныя апэратары',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Складаньне (+)',
@@ -11478,6 +11478,7 @@ $messages['ko'] = array(
 	'abusefilter-examine-test-button' => '필터 시험',
 	'abusefilter-examine-syntaxerror' => '이 필터의 필터 규칙 문법이 잘못되었습니다.',
 	'abusefilter-topnav' => "'''부정 행위 방지 필터 둘러보기'''",
+	'abusefilter-topnav-log' => '부정 행위 기록',
 	'abusefilter-topnav-tools' => '디버그 도구',
 	'abusefilter-topnav-import' => '필터 가져오기',
 	'abusefilter-log-name' => '부정 행위 방지 필터 기록',
@@ -13631,6 +13632,7 @@ Kopeer de Textbox, de dor wiest warrt, un föög den Text in disse Textbox in, k
  * @author Servien
  */
 $messages['nds-nl'] = array(
+	'abusefilter-accountreserved' => 'Disse gebrukersnaam is erisserveerd veur de misbruukfilter',
 	'abusefilter-log-details-val' => 'Weerde',
 );
 
@@ -15393,6 +15395,7 @@ Opis filtru: $7 ($8) ($9)',
 	'abusefilter-edit-syntaxerr' => 'Wykryto błąd składni – $1',
 	'abusefilter-edit-bad-tags' => 'Co najmniej jedno z oznaczeń jest niepoprawne.
 Oznaczenia powinny być krótkie i nie powinny zawierać znaków specjalnych.',
+	'abusefilter-edit-notallowed' => 'Nie posiadasz uprawnienia do tworzenia lub edytowania filtrów nadużyć',
 	'abusefilter-edit-builder-select' => 'Wybierz opcję, aby wkleić ją na pozycji kursora',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operatory arytmetyczne',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Dodawanie (+)',
