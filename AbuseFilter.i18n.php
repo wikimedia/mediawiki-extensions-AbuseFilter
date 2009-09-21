@@ -9262,7 +9262,7 @@ Visszavonásra váló mûveletek: $5 ($6)',
 	'abusefilter-revert-filter' => 'Szűrő:',
 	'abusefilter-revert-preview-intro' => 'Ez a művelet a vandálszűrő alábbi műveleteit fogja visszavonni.
 Alaposan nézd át, hogy mi fog történni, és csak utána kattints a „Biztosan” gombra.',
-	'abusefilter-revert-confirm' => 'Biztosan',
+	'abusefilter-revert-confirm' => 'Megerősítés',
 	'abusefilter-revert-success' => 'A(z) [[Special:AbuseFilter/$1|$1 szűrő]] miatt visszavontad a vandálszűrő összes műveletét.',
 	'abusefilter-revert-reason' => 'A(z) $1 szűrő miatt a vandálszűrő összes művelete automatikus visszavonásra kerül.
 Indoklás: $2',
@@ -11721,6 +11721,7 @@ donn ene Metmaacher dröm frore, dat ze maache, dä dat Rääsch hät.',
 	'abusefilter-edit-syntaxerr' => 'Ene Fähler woodt en de Syntax jefonge: $1',
 	'abusefilter-edit-bad-tags' => 'Eine udder mieh vun dä Makeerung sin verkeeht, di De aanjejovve häs.
 Makeerunge sullte koot sin, un et sullte kein Sönderzeijshe dren vörkumme.',
+	'abusefilter-edit-notallowed' => 'Do häß nit dat Rääsch, Meßbruchßfelter aanzelääje udder öm_ze_ändere',
 	'abusefilter-edit-builder-select' => 'Donn ein fun dä Müjjeleschkeite uß dä Leß hee ußwähle, öm se onge aan dä Possizjuhn enzefööje, woh de jraadt aam Schriive bes, woh Dinge Kööser shteiht.',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Zom Räschne',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'zosamme zälle (<code>+</code>)',
@@ -19207,6 +19208,7 @@ Lütfen kısıtlı eylemleri eklemeye izni olan bir kullanıcıdan, sizin için 
 	'abusefilter-edit-syntaxerr' => 'Sözdizimi hatası algılandı: $1',
 	'abusefilter-edit-bad-tags' => 'Belirttiğiniz etiketlerin bir veya daha fazlası geçersiz.
 Etiketler kısa olmalıdır, ve özel karakter içermemelidir.',
+	'abusefilter-edit-notallowed' => 'Suistimal filtrelerini oluşturmaya veya değiştirmeye izniniz yok',
 	'abusefilter-edit-builder-select' => 'İmleçte eklemek için bir seçenek seçin',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetik operatörler',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Toplama (+)',
