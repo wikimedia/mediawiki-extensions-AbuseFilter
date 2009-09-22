@@ -8040,6 +8040,7 @@ $messages['he'] = array(
 	'abusefilter-edit-syntaxerr' => 'נמצאה שגיאה תחבירית: $1',
 	'abusefilter-edit-bad-tags' => 'תגית אחת או יותר מאלו שצוינו אינה תקינה.
 על התגיות להיות קצרות, והן אינן יכולות להכיל תווים מיוחדים.',
+	'abusefilter-edit-notallowed' => 'אינכם מורשים ליצור או לערוך מסנני השחתות',
 	'abusefilter-edit-builder-select' => 'בחרו באפשרות עם הסמן כדי להוסיף אותה',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'אופרטורים חשבוניים',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'חיבור (+)',
