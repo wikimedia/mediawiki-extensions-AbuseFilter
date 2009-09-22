@@ -2273,6 +2273,7 @@ Zamolite korisnika sa dopuštenjima za dodavanje ograničenih akcija da napravi 
 	'abusefilter-edit-syntaxerr' => 'Otkrivena sintaksa greška: $1',
 	'abusefilter-edit-bad-tags' => 'Jedna ili više oznaka koje ste naveli nije valjana.
 Oznake trebaju biti kratke i ne bi smjele sadržavati posebne znakove.',
+	'abusefilter-edit-notallowed' => 'Nije Vam dopušteno da pravite ili uređujete filtere zloupotrebe',
 	'abusefilter-edit-builder-select' => 'Izaberite jednu opciju da biste je dodali na kursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetički operatori',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Sabiranje (+)',
@@ -9120,6 +9121,7 @@ Kérj meg egy megfelelő jogosultságokkal rendelkező szerkesztőt, hogy végez
 	'abusefilter-edit-syntaxerr' => 'Szintaktikai hiba: $1',
 	'abusefilter-edit-bad-tags' => 'Egy vagy több megadott tag nem érvényes.
 A tageknek rövidnek kell lenniük, és nem tartalmazhatnak speciális karaktereket.',
+	'abusefilter-edit-notallowed' => 'Nincs engedélyed visszaélési szabályok létrehozására vagy módosítására',
 	'abusefilter-edit-builder-select' => 'A kurzornál való beszúráshoz válassz egy opciót',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetikai operátorok',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'összeadás (+)',
@@ -12153,6 +12155,7 @@ D'Resultat vum Parser war: <pre>$1</pre>",
 	'abusefilter-edit-export' => 'Dëse Filter an eng aner Wiki exportéieren',
 	'abusefilter-edit-syntaxok' => 'Keng Syntaxfeeler fonnt.',
 	'abusefilter-edit-syntaxerr' => 'Syntaxfeeler fonnt: $1',
+	'abusefilter-edit-notallowed' => "Et ass Iech net erlaabt fir Mëssbrauchsfilteren unzeleeën oder z'änneren",
 	'abusefilter-edit-builder-select' => 'Wielt eng Optioun eraus fir se do anzesetzen wou de Cursor steet',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Arithmetesch Operateuren',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Additioun (+)',
