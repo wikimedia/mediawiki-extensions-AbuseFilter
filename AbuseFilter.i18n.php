@@ -5138,6 +5138,7 @@ Por favor solicita a un usuario con permisos suficientes para agregar acciones r
 	'abusefilter-edit-syntaxerr' => 'Error de sintaxis detect: $1',
 	'abusefilter-edit-bad-tags' => 'Uno o más de las etiquetas que especificaste no son válidos.
 Las etiquetas deberían ser cortas, y no deberían contener caracteres especiales.',
+	'abusefilter-edit-notallowed' => 'No se te permite crear o editar filtros de abuso',
 	'abusefilter-edit-builder-select' => 'Seleccione una opción para agregarla en el cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operadores aritmétricos',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adición (+)',
@@ -12175,6 +12176,7 @@ D'Resultat vum Parser war: <pre>$1</pre>",
 	'abusefilter-edit-builder-group-funcs' => 'Fonctiounen',
 	'abusefilter-edit-builder-funcs-length' => 'Längt vun den Zeechen (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'A kleng Buchstawen ëmwandelen (lcase)',
+	'abusefilter-edit-builder-funcs-ccnorm' => 'Déi Buchstawen, déi gäre verwiesselt ginn, normaliséieren (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Duebel-Buchstawen ewechhuelen (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Spezalbuchstawen / Total vun de Buchstawen(Zeechen) (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Normaliséieren (norm)',
@@ -15620,11 +15622,30 @@ $messages['ps'] = array(
 	'abusefilter-list' => 'ټول چاڼګران',
 	'abusefilter-list-status' => 'دريځ',
 	'abusefilter-list-edit' => 'سمون',
-	'abusefilter-tools-reautoconfirm-user' => 'کارونکی',
+	'abusefilter-list-options' => 'خوښنې',
+	'abusefilter-tools-subtitle' => 'اوزارونه',
+	'abusefilter-tools-reautoconfirm-user' => 'کارن:',
+	'abusefilter-edit-new' => 'نوی چاڼګر',
 	'abusefilter-edit-flags' => 'بېرغونه:',
 	'abusefilter-edit-notes' => "يادونې:
 :''(شخصي)",
+	'abusefilter-edit-throttle-period' => 'د وخت موده:',
+	'abusefilter-edit-warn-other' => 'بل پيغام',
+	'abusefilter-edit-history' => 'پېښليک:',
+	'abusefilter-edit-tools' => 'اوزارونه:',
+	'abusefilter-edit-builder-vars-user-age' => 'د کارن-حساب عمر',
+	'abusefilter-edit-builder-vars-user-name' => 'د کارن-حساب نوم',
+	'abusefilter-history-hidden' => 'پټ',
+	'abusefilter-history-timestamp' => 'وخت',
 	'abusefilter-history-user' => 'کارونکی',
+	'abusefilter-history-filterid' => 'چاڼګر',
+	'abusefilter-history-select-user' => 'کارن:',
+	'abusefilter-history-diff' => 'بدلونونه',
+	'abusefilter-revert-filter' => 'چاڼګر:',
+	'abusefilter-examine-legend' => 'بدلونونه ټاکل',
+	'abusefilter-examine-user' => 'کارن:',
+	'abusefilter-examine-title' => 'د مخ سرليک:',
+	'abusefilter-examine-submit' => 'پلټل',
 );
 
 /** Portuguese (Português)
@@ -20382,6 +20403,7 @@ Xin hãy yêu cầu một thành viên có quyền thêm các tác vụ hạn ch
 	'abusefilter-edit-syntaxerr' => 'Có lỗi cú pháp: $1',
 	'abusefilter-edit-bad-tags' => 'Một hoặc một số thẻ bạn chỉ định không hợp lệ.
 Thẻ phải ngắn, và chúng không nên chứa các ký tự đặc biệt.',
+	'abusefilter-edit-notallowed' => 'Bạn không có phép tạo hay sửa đổi bộ lọc lạm dụng.',
 	'abusefilter-edit-builder-select' => 'Lựa một tùy chọn để thêm nó vào con trỏ',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Toán tử số học',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Phép cộng (+)',
@@ -20598,6 +20620,26 @@ $messages['vo'] = array(
 	'abusefilter-edit-status-label' => 'Statits:',
 	'abusefilter-edit-lastmod-text' => '$1, fa $2',
 	'abusefilter-history-user' => 'Geban',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'abuselog' => 'שלעכט־באניצן לאג',
+	'abusefilter-log-search-user' => 'באַניצער',
+	'abusefilter-log-search-submit' => 'זוכן',
+	'abusefilter-log-noactions' => 'קיין',
+	'abusefilter-hidden' => 'פריוואט',
+	'abusefilter-tools-reautoconfirm-user' => 'באַניצער:',
+	'abusefilter-edit-status-label' => 'סטאַטיסטיק:',
+	'abusefilter-edit-history' => 'היסטאריע:',
+	'abusefilter-history-timestamp' => 'צײַט',
+	'abusefilter-history-user' => 'באַניצער',
+	'abusefilter-history-select-user' => 'באַניצער:',
+	'abusefilter-history-diff' => 'ענדערונגען',
+	'abusefilter-examine-user' => 'באַניצער:',
+	'abusefilter-examine-submit' => 'זוכן',
 );
 
 /** Yue (粵語)
