@@ -2830,6 +2830,7 @@ Požádejte uživatele s oprávněním přidávat taková opatření, aby potře
 	'abusefilter-edit-syntaxerr' => 'Nalezena syntaktická chyba: $1',
 	'abusefilter-edit-bad-tags' => 'Jedna či více uvedených značek nejsou platné.
 Značky by měly být krátké a nesmí obsahovat žádné zvláštní znaky.',
+	'abusefilter-edit-notallowed' => 'Nemáte oprávnění vytvářet nebo editovat filtry zneužívání',
 	'abusefilter-edit-builder-select' => 'Vyberte položku, bude přidána na místo, kde je kurzor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetické operátory',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Sčítání (+)',
@@ -4414,6 +4415,7 @@ $messages['el'] = array(
 	'abusefilter-edit-syntaxerr' => 'Εντοπίστηκε συντακτικό σφάλμα: $1',
 	'abusefilter-edit-bad-tags' => 'Μία ή περισσότερες από τις ετικέτες που καθόρισες δεν είναι έγκυρο.
 Οι ετικέτες θα πρέπει να είναι βραχείες και θα πρέπει να μην περιέχουν ειδικούς χαρακτήρες.',
+	'abusefilter-edit-notallowed' => 'Δεν σου επιτρέπεται να δημιουργήσεις ή να επεξεργαστείς φίλτρα καταχρήσεων',
 	'abusefilter-edit-builder-select' => 'Διαλέξτε μια επιλογή για να την προσθέσετε στο δρομέα',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Αριθμητικοί τελεστές',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Πρόσθεση (+)',
