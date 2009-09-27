@@ -14970,6 +14970,7 @@ En mejana, la durada d'execucion d'aqueste filtre es de $4 ms e utiliza $5 condi
 	'abusefilter-edit-syntaxerr' => 'Error de sintaxi detectada : $1',
 	'abusefilter-edit-bad-tags' => "Una o mai d'una balisa qu'aètez especificada es pas valida.
 Las balisas devon èsser cortas e conténer pas de caractèrs especials.",
+	'abusefilter-edit-notallowed' => 'Sètz pas autorizat a crear o modificar de filtres antiabuses',
 	'abusefilter-edit-builder-select' => 'Seleccionar una opcion per l’apondre cap al cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operators aritmetics',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adicion (+)',
