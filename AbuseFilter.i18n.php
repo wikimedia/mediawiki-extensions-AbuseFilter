@@ -11260,6 +11260,10 @@ $messages['ko'] = array(
 그리고 {{SITENAME}}을(를) 보호하기 위해, 당신의 계정과 연관된 IP 주소가 차단되었습니다.
 이것이 오류로 인한 것이라면, 관리자에게 문의해주세요.
 당신의 행위와 일치한 필터의 간단한 설명은 다음과 같습니다: $1',
+	'abusefilter-degrouped' => '이러한 행위는 자동적으로 해로운 것으로 간주되었습니다.
+따라서, 당신의 계정이 정상적으로 이용되지 않는다고 의심되어 모든 권한이 해제되었습니다.
+당신이 이 문제가 오류로 인해 생긴 문제라면, 이 행동에 대한 설명과 함께 이 프로젝트의 사무관에게 문의하여 권한 복구를 요청하십시오.
+당신의 행위와 일치하는 필터 규칙에 대한 간단한 설명은 다음과 같습니다: $1',
 	'abusefilter-blocker' => '부정행위 방지 필터',
 	'abusefilter-blockreason' => '부정행위 방지 필터에 의해 자동적으로 차단되었습니다.
 일치하는 규착에 대한 설명: $1',
@@ -11355,6 +11359,7 @@ $messages['ko'] = array(
 :(공개됨)',
 	'abusefilter-edit-enabled' => '이 필터 활성화하기',
 	'abusefilter-edit-deleted' => '삭제된 것으로 표시',
+	'abusefilter-edit-hidden' => '일반 사용자가 필터의 세부 사항을 보지 못하도록 숨기기',
 	'abusefilter-edit-rules' => '필터 규칙:',
 	'abusefilter-edit-notes' => '주석:
 :(비공개)',
@@ -11366,6 +11371,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-action-flag' => '이 행위를 부정 행위 기록에 기록',
 	'abusefilter-edit-action-blockautopromote' => '사용자의 자동 인증 상태를 해제',
 	'abusefilter-edit-action-degroup' => '모든 사용자 권한을 해제',
+	'abusefilter-edit-action-throttle' => '속도 제한을 넘었을 때만 필터를 적용',
 	'abusefilter-edit-action-rangeblock' => '사용자가 사용한 IP의 /16광역을 차단',
 	'abusefilter-edit-action-tag' => '나중에 검토를 위해 태그하기',
 	'abusefilter-edit-throttle-period' => '주기:',
@@ -11374,6 +11380,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-warn-other' => '다른 메시지',
 	'abusefilter-edit-warn-other-label' => '다른 메시지의 이름:
 :({{ns:8}} 접두어를 뺀 이름)',
+	'abusefilter-edit-warn-actions' => '동작:',
 	'abusefilter-edit-warn-preview' => '선택한 메시지 미리 보기',
 	'abusefilter-edit-warn-edit' => '선택한 메시지를 생성/편집하기',
 	'abusefilter-edit-tag-tag' => '적용할 태그 (1줄당 1개씩):',
@@ -11417,11 +11424,13 @@ $messages['ko'] = array(
 	'abusefilter-edit-builder-funcs-lcase' => '소문자로 변환 (lcase)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => '중복되는 글자를 제거 (rmdouble)',
 	'abusefilter-edit-builder-funcs-specialratio' => '특수 문자 비율 (specialratio)',
+	'abusefilter-edit-builder-funcs-norm' => '정규화 (norm)',
 	'abusefilter-edit-builder-funcs-rmwhitespace' => '공백 제거 (rmwhitespace)',
 	'abusefilter-edit-builder-funcs-rmspecials' => '특수 문자를 제거 (rmspecials)',
 	'abusefilter-edit-builder-funcs-set_var' => '변수 설정 (set_var)',
 	'abusefilter-edit-builder-group-vars' => '변수',
 	'abusefilter-edit-builder-vars-accountname' => '계정 이름 (계정 생성 시)',
+	'abusefilter-edit-builder-vars-timestamp' => '변경된 시점의 유닉스 타임스탬프',
 	'abusefilter-edit-builder-vars-action' => '행위',
 	'abusefilter-edit-builder-vars-addedlines' => '편집 중 추가된 줄',
 	'abusefilter-edit-builder-vars-delta' => '편집에서의 문서 크기 변화',
@@ -11479,6 +11488,9 @@ $messages['ko'] = array(
 	'abusefilter-revert-filter' => '필터:',
 	'abusefilter-revert-confirm' => '확인',
 	'abusefilter-revert-reasonfield' => '되돌리는 이유:',
+	'abusefilter-test' => '과거의 편집에 대해 필터 시험하기',
+	'abusefilter-test-intro' => '이 페이지에서 과거의 편집 $1개에 대해 아래 상자에 입력한 필터를 시험할 수 있습니다.
+이미 존재하는 필터를 불러오려면, 아래 상자에 필터 ID를 입력하고 "불러오기" 버튼을 클릭하십시오.',
 	'abusefilter-test-load-filter' => '불러올 필터 번호:',
 	'abusefilter-test-submit' => '시험',
 	'abusefilter-test-load' => '불러오기',
@@ -11491,6 +11503,7 @@ $messages['ko'] = array(
 	'abusefilter-examine-test-button' => '필터 시험',
 	'abusefilter-examine-syntaxerror' => '이 필터의 필터 규칙 문법이 잘못되었습니다.',
 	'abusefilter-topnav' => "'''부정 행위 방지 필터 둘러보기'''",
+	'abusefilter-topnav-examine' => '과거의 편집 검토하기',
 	'abusefilter-topnav-log' => '부정 행위 기록',
 	'abusefilter-topnav-tools' => '디버그 도구',
 	'abusefilter-topnav-import' => '필터 가져오기',
@@ -11500,6 +11513,7 @@ $messages['ko'] = array(
 	'abusefilter-log-entry-modify' => '$1을 수정함 ($2)',
 	'abusefilter-diff-title' => '버전 사이의 차이',
 	'abusefilter-diff-item' => '항목',
+	'abusefilter-diff-version' => '$2 사용자가 편집한 $1 버전',
 	'abusefilter-diff-info' => '기본 정보',
 	'abusefilter-diff-pattern' => '필터 규칙',
 	'abusefilter-diff-invalid' => '요청한 버전을 불러올 수 없습니다.',
