@@ -15869,6 +15869,7 @@ Por favor, peça a um utilizador com permissão para adicionar ações restritas
 	'abusefilter-edit-syntaxerr' => 'Erro de sintaxe detetado: $1',
 	'abusefilter-edit-bad-tags' => 'Uma ou mais marcações que você especificou não são válidas.
 Marcações devem ser curtas e não devem conter caracteres especiais.',
+	'abusefilter-edit-notallowed' => 'Você não tem permissão de criar ou editar os filtros de abuso',
 	'abusefilter-edit-builder-select' => 'Selecione uma opção para inserir no cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operadores aritméticos',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adição (+)',
