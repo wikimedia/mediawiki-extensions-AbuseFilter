@@ -3792,6 +3792,7 @@ Kopiere den dort erscheinenden Code, füge ihn hier ein und klicke dann auf die 
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author ChrisiPK
+ * @author MichaelFrey
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
@@ -3831,6 +3832,7 @@ Bitte überprüfen Sie sie sorgfältig und klicken Sie auf „Bestätigen“, um
 	'abusefilter-revert-success' => 'Sie haben alle Aktionen des Missbrauchsfilters, die aufgrund von [[Special:AbuseFilter/$1|Filter $1]] vorgenommen wurden, rückgängig gemacht.',
 	'abusefilter-test-intro' => 'Mit dieser Seite kann ein Filter probeweise auf die {{PLURAL:$1|letzte Änderung|letzten $1 Änderungen}} angewendet werden.
 Um einen bestehenden Filter zu laden, geben Sie seine Filter-ID in das Feld unterhalb des Bearbeiten-Textfeldes ein und klicken Sie auf den „Laden“-Button.',
+	'abusefilter-import-intro' => 'Sie können diese Schnittstelle verwenden, um Filter aus anderen Wikis zu importieren. Klicken Sie im Quellwiki auf die Schaltfläche „<abusefilter-edit-export>“ innerhalb von „<abusefilter-tools-subtitle>“. Kopieren Sie dort den erscheinenden Code, fügen Sie ihn hier ein und klicken Sie dann auf die Schaltfläche „<abusefilter-import-submit>“.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
