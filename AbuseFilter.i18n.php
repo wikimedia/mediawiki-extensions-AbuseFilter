@@ -5610,7 +5610,10 @@ $messages['fa'] = array(
 و در صورت ویرایش‌های عمدی خرابکارانه دسترسی‌تان به سرعت بسته خواهد است.
 اگر مطمئنید که این ویرایش مفید است دوباره بر دکمه تایید بفشارید.
 دلیل جلوگیری این بود: $1",
-	'abusefilter-disallowed' => 'این کار به طور خودکار خطرناک تشخیص داده‌شده است.<br /> و بنابرین شما اجازه این کار را ندارید<br /> اگر فکر می‌کنید که کارتان درست است با [[وپ:مدیران|مدیران]] [[وپ:تام|تماس بگیرید]].<br /> پالایه‌ای که جلوی شما را گرفت این بود: $',
+	'abusefilter-disallowed' => 'این کار به طور خودکار خطرناک تشخیص داده‌شده است،
+و بنابرین شما اجازه این کار را ندارید.
+اگر فکر می‌کنید که کارتان درست است با مدیران تماس بگیرید، و آن‌ها را از آن‌چه می‌خواهید انجام دهید آگاه کنید.
+چکیده ای از قانونی که با عمل شما مطابقت داشت در رو به رو آمده‌است: $1',
 	'abusefilter-blocked-display' => 'اجرا کردن این عمل به طور خودکار خطرناک تشخیص داده‌شده است,
 و شما از اجرای این منع شدید.
 به علاوه برای حفاظت از {{SITENAME}}, حساب شما و آی‌پی شما به طور خودکار بسته می‌شود.
@@ -9546,6 +9549,7 @@ Per favor demanda a un usator con le permission de adder actiones restringite de
 	'abusefilter-edit-syntaxerr' => 'Error de syntaxe detegite: $1',
 	'abusefilter-edit-bad-tags' => 'Un o plus del etiquettas que tu specificava non es valide.
 Le etiquettas debe esser curte, e non pote continer characteres special.',
+	'abusefilter-edit-notallowed' => 'Tu non ha le permission de crear o modificar filtros anti-abuso.',
 	'abusefilter-edit-builder-select' => 'Selige un option pro inserer lo al puncto del cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operatores arithmetic',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Addition (+)',
