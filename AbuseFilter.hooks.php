@@ -210,7 +210,7 @@ class AbuseFilterHooks {
 		$vars = new AbuseFilterVariableHolder;
 		
 		global $wgUser;
-		$title = Title::makeTitle($saveName, NS_FILE);
+		$title = Title::makeTitle(NS_FILE, $saveName);
 		$vars->addHolder( AbuseFilterVariableHolder::merge(
 							AbuseFilter::generateUserVars( $wgUser ),
 							AbuseFilter::generateTitleVars( $title, 'FILE' )
