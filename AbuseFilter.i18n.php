@@ -13147,6 +13147,26 @@ $messages['mk'] = array(
 	'abusefilter-edit-builder-op-bool-xor' => 'XOR (^)',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'abusefilter-edit-builder-group-op-arithmetic' => 'ഗണന ചിഹ്നങ്ങൾ',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'സങ്കലനം (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'വ്യവകലനം (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'ഗുണനം (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'ഹരണം (/)',
+	'abusefilter-edit-builder-op-arithmetic-modulo' => 'ശിഷ്ടം (%)',
+	'abusefilter-edit-builder-op-arithmetic-pow' => 'വർഗ്ഗപ്പെരുക്കം (**)',
+	'abusefilter-edit-builder-group-op-comparison' => 'തുലന ചിഹ്നങ്ങൾ',
+	'abusefilter-edit-builder-op-comparison-equal' => 'സമമാണ് (==)',
+	'abusefilter-edit-builder-op-comparison-notequal' => 'സമമല്ല (!=)',
+	'abusefilter-edit-builder-op-comparison-lt' => 'ചെറുതാണ് (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'വലുതാണ് (>)',
+	'abusefilter-edit-builder-op-comparison-lte' => 'ചെറുതോ സമമോ ആണ് (<=)',
+	'abusefilter-edit-builder-op-comparison-gte' => 'വലുതോ സമമോ ആണ് (>=)',
+);
+
 /** Mongolian (Монгол)
  * @author Chinneeb
  */
@@ -21285,6 +21305,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-syntaxerr' => '检测到语法错误：$1',
 	'abusefilter-edit-bad-tags' => '一个或更多的标签不可用。
 标签不应过长，并且不应包含任何特殊字符。',
+	'abusefilter-edit-notallowed' => '您未被允许创建或编辑防滥用过滤器',
 	'abusefilter-edit-builder-select' => '选择需添加到光标处的选项',
 	'abusefilter-edit-builder-group-op-arithmetic' => '算术运算符',
 	'abusefilter-edit-builder-op-arithmetic-addition' => '加（+）',
