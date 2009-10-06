@@ -4646,6 +4646,10 @@ kaj vi estis preventita farinte ĝin.
 Plue, por protekti {{SITENAME}}n, via uzanto-konto kaj ĉiuj ĉi-ligitaj IP-adresoj estis forbaritaj de redaktado.
 Se ĉi tiu okazis erare, bonvolu kontakti administranto.
 Mallonga priskribo de la regulo de misuzado kiun via ago kongruis estas: $1',
+	'abusefilter-degrouped' => 'Ĉi tiu ago estis aŭtomate identigita kiel malhelpema.
+Rezulte, ĝi estis malpermesita, kaj, ĉar via konto suspektite esti kaperita, ĉiuj rajtoj estis forigitaj.
+Se vi kredas ke ĉi tiel eraras, bonvolu kontakti burokraton kun ekspliko de ĉi tiu ago, kaj viaj rajtoj eble estos restarigitaj.
+Mallonga priskribo de la misuzada regulo kiu kongruas vian agon estas: $1',
 	'abusefilter-blocker' => 'Filtrilo de misuzo',
 	'abusefilter-blockreason' => 'Aŭtomate blokita de la misuzada filtrilo. Resumo de kongrua regulo: $1',
 	'abusefilter-degroupreason' => 'Rajtoj estis aŭtomate forigitaj de misuzadaj filtriloj.
