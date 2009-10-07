@@ -7094,7 +7094,7 @@ Descrición do filtro: $7 ($8) ($9)',
 	'abusefilter-tools-subtitle' => 'Ferramentas',
 	'abusefilter-tools-text' => 'Aquí hai algunhas ferramentas que poden ser de utilidade na formulación e depuración dos filtros de abuso.',
 	'abusefilter-tools-expr' => 'Verificador de expresións',
-	'abusefilter-tools-submitexpr' => 'Evaluar',
+	'abusefilter-tools-submitexpr' => 'Avaliar',
 	'abusefilter-tools-reautoconfirm' => 'Restaurar o status de autoconfirmación',
 	'abusefilter-tools-reautoconfirm-user' => 'Usuario:',
 	'abusefilter-tools-reautoconfirm-submit' => 'Volver autoconfirmar',
@@ -10946,6 +10946,7 @@ $3 つの{{PLURAL:$3|引数}}があるべきですが $4 つしかありませ�
 );
 
 /** Georgian (ქართული)
+ * @author BRUTE
  * @author Malafaya
  * @author Temuri rajavi
  * @author გიორგიმელა
@@ -11070,6 +11071,8 @@ $messages['ka'] = array(
 	'abusefilter-examine-user' => 'მომხმარებელი:',
 	'abusefilter-examine-title' => 'გვერდის სათაური:',
 	'abusefilter-examine-submit' => 'ძიება',
+	'abusefilter-diff-title' => 'განსხვავება ვერსიებს შორის',
+	'abusefilter-diff-info' => 'ძირითადი ინფორმაცია',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -14977,7 +14980,7 @@ Descripcion del filtre : $7 ($8) ($9)",
 	'abusefilter-tools-subtitle' => 'Espleches',
 	'abusefilter-tools-text' => 'Vaquí qualques espleches que pòdon èsser utils dins la formulacion o lo debogatge dels filtres d’abuses.',
 	'abusefilter-tools-expr' => "Tèst d'expression",
-	'abusefilter-tools-submitexpr' => 'Evaluar',
+	'abusefilter-tools-submitexpr' => 'Avalorar',
 	'abusefilter-tools-reautoconfirm' => "Restablís l'estatut autoconfirmat",
 	'abusefilter-tools-reautoconfirm-user' => 'Utilizaire :',
 	'abusefilter-tools-reautoconfirm-submit' => 'Autoconfirmar tornamai',
