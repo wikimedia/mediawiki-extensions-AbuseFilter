@@ -1,6 +1,6 @@
 <?php
 
-if (!defined( 'MEDIAWIKI' ))
+if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
 abstract class AbuseFilterView {
@@ -9,10 +9,10 @@ abstract class AbuseFilterView {
 		$this->mParams = $params;
 	}
 
-	function getTitle( $subpage='' ) {
+	function getTitle( $subpage = '' ) {
 		return $this->mPage->getTitle( $subpage );
 	}
-	
+
 	abstract function show();
 
 	function canEdit() {
@@ -41,9 +41,9 @@ abstract class AbuseFilterView {
 class AbuseFilterChangesList extends OldChangesList {
 	public function insertExtra( &$s, &$rc, &$classes ) {
 		$sk = $this->skin;
-		$examineParams = empty($rc->examineParams) ? array() : $rc->examineParams;
+		$examineParams = empty( $rc->examineParams ) ? array() : $rc->examineParams;
 
-		$title = SpecialPage::getTitleFor( 'AbuseFilter', "examine/".$rc->mAttribs['rc_id'] );
+		$title = SpecialPage::getTitleFor( 'AbuseFilter', 'examine/' . $rc->mAttribs['rc_id'] );
 		$examineLink = $sk->link( $title, wfMsgExt( 'abusefilter-changeslist-examine', 'parseinline' ), array(), $examineParams );
 
 		$s .= " ($examineLink)";
@@ -51,13 +51,13 @@ class AbuseFilterChangesList extends OldChangesList {
 		## If we have a match..
 		if ( isset( $rc->filterResult ) ) {
 			$class = $rc->filterResult ? 
-				'mw-abusefilter-changeslist-match' : 
+				'mw-abusefilter-changeslist-match' :
 				'mw-abusefilter-changeslist-nomatch';
 
 			$classes[] = $class;
 		}
 	}
-	
+
 	// Kill rollback links.
 	public function insertRollback( &$s, &$rc ) {}
 }

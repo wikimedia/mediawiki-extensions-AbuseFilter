@@ -1,8 +1,9 @@
 <?php
 /**
- * Internationalisation file for extension AbuseFilter.
+ * Internationalisation file for AbuseFilter extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

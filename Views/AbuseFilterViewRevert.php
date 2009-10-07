@@ -1,10 +1,10 @@
 <?php
 
-if (!defined( 'MEDIAWIKI' ))
+if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
 class AbuseFilterViewRevert extends AbuseFilterView {
-	function show( ) {
+	function show() {
 		$filter = $this->mPage->mFilter;
 
 		global $wgUser, $wgRequest, $wgOut;
@@ -17,7 +17,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 		$this->loadParameters();
 
-		if ($this->attemptRevert())
+		if ( $this->attemptRevert() )
 			return;
 
 		$wgOut->addWikiMsg( 'abusefilter-revert-intro', $filter );
@@ -33,28 +33,28 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			Xml::input( 'wpPeriodEnd', 45, $this->origPeriodEnd );
 		$searchForm = Xml::buildForm( $searchFields, 'abusefilter-revert-search' );
 		$searchForm .= "\n" . Xml::hidden( 'submit', 1 );
-		$searchForm = 
-			Xml::tags( 
-				'form', 
-				array( 
-					'action' => $this->getTitle( "revert/$filter" )->getLocalURL(), 
-					'method' => 'POST' 
-				), 
-				$searchForm 
+		$searchForm =
+			Xml::tags(
+				'form',
+				array(
+					'action' => $this->getTitle( "revert/$filter" )->getLocalURL(),
+					'method' => 'POST'
+				),
+				$searchForm
 			);
-		$searchForm = 
+		$searchForm =
 			Xml::fieldset( wfMsg( 'abusefilter-revert-search-legend' ), $searchForm );
 
 		$wgOut->addHTML( $searchForm );
 
-		if ($this->mSubmit) {
+		if ( $this->mSubmit ) {
 			// Add a summary of everything that will be reversed.
 			$wgOut->addWikiMsg( 'abusefilter-revert-preview-intro' );
 
 			// Look up all of them.
 			$results = $this->doLookup();
 			$list = array();
-			
+
 			foreach( $results as $result ) {
 				$displayActions = array();
 
@@ -62,48 +62,48 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				$displayActions = array_map( 
 					array( 'AbuseFilter', 'getActionDisplay' ), 
 					$result['actions'] );
-				
-				$msg = wfMsgExt( 
-					'abusefilter-revert-preview-item', 
+
+				$msg = wfMsgExt(
+					'abusefilter-revert-preview-item',
 					array( 'parseinline', 'replaceafter' ),
-					array( 
-						$wgLang->timeanddate( $result['timestamp'], true ), 
-						$sk->userLink( $result['userid'], $result['user'] ), 
-						$result['action'], 
-						$sk->link( $result['title'] ), 
+					array(
+						$wgLang->timeanddate( $result['timestamp'], true ),
+						$sk->userLink( $result['userid'], $result['user'] ),
+						$result['action'],
+						$sk->link( $result['title'] ),
 						implode( ', ', $displayActions ),
-						$sk->link( 
-							SpecialPage::getTitleFor( 'AbuseLog' ), 
-							wfMsgNoTrans( 'abusefilter-log-detailslink' ), 
-							array(), 
-							array('details' =>$result['id']) 
-						) 
+						$sk->link(
+							SpecialPage::getTitleFor( 'AbuseLog' ),
+							wfMsgNoTrans( 'abusefilter-log-detailslink' ),
+							array(),
+							array( 'details' =>$result['id'] )
+						)
 					)
 				);
 				$list[] = Xml::tags( 'li', null, $msg );
 			}
 
-			$wgOut->addHTML( Xml::tags( 'ul', null, implode("\n", $list) ) );
+			$wgOut->addHTML( Xml::tags( 'ul', null, implode( "\n", $list ) ) );
 
 			// Add a button down the bottom.
 			$confirmForm = 
 				Xml::hidden( 'editToken', $wgUser->editToken( "abusefilter-revert-$filter" ) ) .
-				Xml::hidden( 'title', $this->getTitle("revert/$filter")->getPrefixedText() ) .
+				Xml::hidden( 'title', $this->getTitle( "revert/$filter" )->getPrefixedText() ) .
 				Xml::hidden( 'wpPeriodStart', $this->origPeriodStart ) .
 				Xml::hidden( 'wpPeriodEnd', $this->origPeriodEnd ) .
-				Xml::inputLabel( 
-					wfMsg( 'abusefilter-revert-reasonfield' ), 
-					'wpReason', 'wpReason', 45 
-				) . 
+				Xml::inputLabel(
+					wfMsg( 'abusefilter-revert-reasonfield' ),
+					'wpReason', 'wpReason', 45
+				) .
 				"\n" .
 				Xml::submitButton( wfMsg( 'abusefilter-revert-confirm' ) );
-			$confirmForm = Xml::tags( 
-				'form', 
-				array( 
-					'action' => $this->getTitle("revert/$filter")->getLocalURL(), 
-					'method' => 'post' 
+			$confirmForm = Xml::tags(
+				'form',
+				array(
+					'action' => $this->getTitle( "revert/$filter" )->getLocalURL(),
+					'method' => 'post'
 				), 
-				$confirmForm 
+				$confirmForm
 			);
 			$wgOut->addHTML( $confirmForm );
 		}
@@ -118,9 +118,9 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 		$dbr = wfGetDB( DB_SLAVE );
 
-		if ($periodStart)
+		if ( $periodStart )
 			$conds[] = 'afl_timestamp>'.$dbr->addQuotes( $dbr->timestamp( $periodStart ) );
-		if ($periodEnd)
+		if ( $periodEnd )
 			$conds[] = 'afl_timestamp<'.$dbr->addQuotes( $dbr->timestamp( $periodEnd ) );
 
 		// Database query.
@@ -128,22 +128,22 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 		$results = array();
 		while ( $row = $dbr->fetchObject( $res ) ) {
-			if (!$row->afl_actions)
+			if ( !$row->afl_actions )
 				continue;
 
-			$actions = explode(',', $row->afl_actions);
+			$actions = explode( ',', $row->afl_actions );
 			$reversibleActions = array( 'block', 'blockautopromote', 'degroup' );
 			$currentReversibleActions = array_intersect( $actions, $reversibleActions );
 			if ( count( $currentReversibleActions ) ) {
-				$results[] = array( 
-					'id' => $row->afl_id, 
-					'actions' => $currentReversibleActions, 
-					'user' => $row->afl_user_text, 
-					'userid' => $row->afl_user, 
-					'vars' => AbuseFilter::loadVarDump( $row->afl_var_dump ), 
-					'title' => Title::makeTitle( $row->afl_namespace, $row->afl_title ), 
-					'action' => $row->afl_action, 
-					'timestamp' => $row->afl_timestamp 
+				$results[] = array(
+					'id' => $row->afl_id,
+					'actions' => $currentReversibleActions,
+					'user' => $row->afl_user_text,
+					'userid' => $row->afl_user,
+					'vars' => AbuseFilter::loadVarDump( $row->afl_var_dump ),
+					'title' => Title::makeTitle( $row->afl_namespace, $row->afl_title ),
+					'action' => $row->afl_action,
+					'timestamp' => $row->afl_timestamp
 				);
 			}
 		}
@@ -178,7 +178,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			}
 		}
 		$wgOut->addWikiMsg( 'abusefilter-revert-success', $filter );
-		
+
 		return true;
 	}
 
@@ -186,17 +186,17 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		switch( $action ) {
 			case 'block':
 				$block = Block::newFromDB( '', $result['userid'], false );
-				if (!$block || $block->getBy() != AbuseFilter::getFilterUser()->getId())
+				if ( !$block || $block->getBy() != AbuseFilter::getFilterUser()->getId() )
 					return false; // Not blocked by abuse filter.
 
 				$block->delete();
 				$log = new LogPage( 'block' );
-				$log->addEntry( 
-					'unblock', 
-					Title::makeTitle( NS_USER, $result['user'] ), 
-					wfMsgForContent( 
-						'abusefilter-revert-reason', $this->mPage->mFilter, $this->mReason 
-					) 
+				$log->addEntry(
+					'unblock',
+					Title::makeTitle( NS_USER, $result['user'] ),
+					wfMsgForContent(
+						'abusefilter-revert-reason', $this->mPage->mFilter, $this->mReason
+					)
 				);
 				break;
 			case 'blockautopromote':
@@ -207,10 +207,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			case 'degroup':
 				// Pull the user's groups from the vars.
 				$oldGroups = $result['vars']['USER_GROUPS'];
-				$oldGroups = explode(',', $oldGroups);
-				$oldGroups = array_diff( 
-					$oldGroups, 
-					array_intersect( $oldGroups, User::getImplicitGroups() ) 
+				$oldGroups = explode( ',', $oldGroups );
+				$oldGroups = array_diff(
+					$oldGroups,
+					array_intersect( $oldGroups, User::getImplicitGroups() )
 				);
 
 				$rows = array();
@@ -226,19 +226,19 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				// Don't do anything if there are no groups to add.
 				if ( !count( array_diff( $newGroups, $currentGroups ) ) )
 					return;
-					
+
 				$dbw = wfGetDB( DB_MASTER );
-				$dbw->insert( 'user_groups', $rows, __METHOD__, array('IGNORE') );
+				$dbw->insert( 'user_groups', $rows, __METHOD__, array( 'IGNORE' ) );
 				$user->invalidateCache();
 
 				$log = new LogPage( 'rights' );
-				$log->addEntry( 'rights', $user->getUserPage(), 
-					wfMsgForContent( 
-						'abusefilter-revert-reason', 
-						$this->mPage->mFilter, 
-						$this->mReason 
+				$log->addEntry( 'rights', $user->getUserPage(),
+					wfMsgForContent(
+						'abusefilter-revert-reason',
+						$this->mPage->mFilter,
+						$this->mReason
 					),
-					array( implode(',', $currentGroups), implode(',', $newGroups) ) 
+					array( implode( ',', $currentGroups ), implode( ',', $newGroups ) ) 
 				);
 		}
 	}

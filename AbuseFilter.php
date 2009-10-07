@@ -1,30 +1,29 @@
 <?php
-if ( ! defined( 'MEDIAWIKI' ) )
+if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
-/**#@+
+/**
  * Automatically applies heuristics to edits.
- * @addtogroup Extensions
  *
- * @link http://www.mediawiki.org/wiki/Extension:AbuseFilter Documentation
- *
- *
+ * @file
+ * @ingroup Extensions
  * @author Andrew Garrett <andrew@epstone.net>
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  * Includes GFDL-licensed images retrieved from http://commons.wikimedia.org/wiki/File:Yes_check.svg
  * and http://commons.wikimedia.org/wiki/File:Red_x.svg -- both have been downsampled and converted to PNG.
+ * @link http://www.mediawiki.org/wiki/Extension:AbuseFilter Documentation
  */
 
-$dir = dirname(__FILE__);
 $wgExtensionCredits['other'][] = array(
-	'path'           => __FILE__,
-	'name'           => 'Abuse Filter',
-	'author'         => array('Andrew Garrett','River Tarnell', 'Victor Vasiliev'),
-	'description'    => 'Applies automatic heuristics to edits.',
+	'path' => __FILE__,
+	'name' => 'Abuse Filter',
+	'author' => array( 'Andrew Garrett', 'River Tarnell', 'Victor Vasiliev' ),
+	'description' => 'Applies automatic heuristics to edits.',
 	'descriptionmsg' => 'abusefilter-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:AbuseFilter',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:AbuseFilter',
 );
 
+$dir = dirname( __FILE__ );
 $wgExtensionMessagesFiles['AbuseFilter'] =  "$dir/AbuseFilter.i18n.php";
 $wgExtensionAliasesFiles['AbuseFilter'] = "$dir/AbuseFilter.alias.php";
 
@@ -85,7 +84,7 @@ $wgLogNames['abusefilter']          = 'abusefilter-log-name';
 $wgLogHeaders['abusefilter']        = 'abusefilter-log-header';
 $wgLogActionsHandlers['abusefilter/modify'] = array( 'AbuseFilter', 'modifyActionText' );
 
-$wgAbuseFilterAvailableActions = array( 'flag', 'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'degroup', 'tag'  );
+$wgAbuseFilterAvailableActions = array( 'flag', 'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'degroup', 'tag' );
 
 $wgAbuseFilterConditionLimit = 1000;
 
