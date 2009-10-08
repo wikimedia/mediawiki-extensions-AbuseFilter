@@ -10955,6 +10955,10 @@ $messages['ka'] = array(
 	'abusefilter-log-search-user' => 'მომხმარებელი:',
 	'abusefilter-log-search-title' => 'სათაური:',
 	'abusefilter-log-search-submit' => 'ძიება',
+	'abusefilter-list-visibility' => 'ხილვადობა',
+	'abusefilter-list-details' => 'დეტალები',
+	'abusefilter-unhidden' => 'საზოგადოებრივი',
+	'abusefilter-status-global' => 'გლობალური',
 	'abusefilter-tools-reautoconfirm-user' => 'მომხმარებელი:',
 	'abusefilter-edit-status-label' => 'სტატისტიკა:',
 	'abusefilter-edit-new' => 'ახალი ფილტრი',
@@ -18725,6 +18729,7 @@ $messages['te'] = array(
 	'abusefilter-examine-user' => 'వాడుకరి:',
 	'abusefilter-examine-title' => 'పేజీ శీర్షిక:',
 	'abusefilter-examine-submit' => 'వెతుకు',
+	'abusefilter-topnav-home' => 'ముంగిలి',
 	'abusefilter-diff-info' => 'ప్రాధమిక సమాచారం',
 );
 
