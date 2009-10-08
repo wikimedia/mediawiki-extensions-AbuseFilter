@@ -95,9 +95,6 @@ $wgAbuseFilterEmergencyDisableAge = 86400; // One day.
 
 // Abuse filter parser class
 $wgAbuseFilterParserClass = 'AbuseFilterParser';
-$wgAbuseFilterNativeParser = "$dir/parser_native/af_parser";
-$wgAbuseFilterNativeSyntaxCheck = "$dir/parser_native/syntax_check";
-$wgAbuseFilterNativeExpressionEvaluator = "$dir/parser_native/af_expr";
 
 $wgAjaxExportList[] = 'AbuseFilter::ajaxCheckSyntax';
 $wgAjaxExportList[] = 'AbuseFilter::ajaxEvaluateExpression';
