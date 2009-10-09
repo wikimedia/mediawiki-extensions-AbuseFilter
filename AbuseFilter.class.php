@@ -1657,7 +1657,7 @@ class AbuseFilter {
 			if ( !empty( $variableMessageMappings[$key] ) ) {
 				$mapping = $variableMessageMappings[$key];
 				$keyDisplay = wfMsgExt( "abusefilter-edit-builder-vars-$mapping", 'parseinline' ) .
-				' (' . Xml::element( 'tt', null, $key ) . ')';
+				' ' . Xml::element( 'tt', null, wfMsg( 'parentheses', $key ) );
 			} else {
 				$keyDisplay = Xml::element( 'tt', null, $key );
 			}
