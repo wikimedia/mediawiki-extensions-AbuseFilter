@@ -3840,6 +3840,12 @@ Um einen bestehenden Filter zu laden, geben Sie seine Filter-ID in das Feld unte
  * @author Xoser
  */
 $messages['diq'] = array(
+	'abusefilter-edit-builder-op-bool-and' => 'U (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'Ya zi (|)',
+	'abusefilter-edit-builder-group-misc' => 'Binan',
+	'abusefilter-edit-builder-misc-in' => 'String de ca geno (in)',
+	'abusefilter-edit-builder-misc-like' => 'Pattern meç keno',
+	'abusefilter-edit-builder-misc-rlike' => 'Reqex meç keno (rlike)',
 	'abusefilter-edit-builder-misc-tern' => 'Operatorê ternaryî (X ? Y : Z)',
 	'abusefilter-edit-builder-misc-cond' => 'Kordinator (eka X o wext Y ya zi Z)',
 	'abusefilter-edit-builder-group-funcs' => 'Fonksiyonî',
@@ -3910,8 +3916,40 @@ $messages['diq'] = array(
 	'abusefilter-history-diff' => 'Vurnayîşî',
 	'abusefilter-action-tag' => 'Etiket',
 	'abusefilter-action-block' => 'Blok',
+	'abusefilter-test-legend' => 'Testê filitreyî',
 	'abusefilter-test-submit' => 'Test',
 	'abusefilter-test-load' => 'Bar ke',
+	'abusefilter-changeslist-examine' => 'kontrol bike',
+	'abusefilter-examine-legend' => 'Vurnayîşê biweçine',
+	'abusefilter-examine-diff' => 'Diff URL:',
+	'abusefilter-examine-user' => 'Karber:',
+	'abusefilter-examine-title' => 'Sername:',
+	'abusefilter-examine-submit' => 'Bigêre',
+	'abusefilter-examine-vars' => 'Ser ena vurnayîşê opsiyonî',
+	'abusefilter-examine-test' => 'Ena vurnayîşî ser filitre ra test bike',
+	'abusefilter-examine-test-button' => 'Filitre test bike',
+	'abusefilter-examine-syntaxerror' => 'Ena filter de yew syntakê ğeletî esta',
+	'abusefilter-examine-notfound' => 'Vurnayîşê ke ti wazenî nieşkenî bivine.',
+	'abusefilter-examine-incompatible' => 'Vurnayîşê ke ti wazenî Abuse Filter destek ni dano',
+	'abusefilter-examine-noresults' => 'Parametreyê bigêrayîşî ke ti ma ra da are înan de netice çini yo.',
+	'abusefilter-topnav' => "'''Pusulayê Abuse Filitreyî'''",
+	'abusefilter-topnav-home' => 'Kiye',
+	'abusefilter-topnav-test' => 'Testê batchî',
+	'abusefilter-topnav-examine' => 'Vurnayîşê verinî analiz bike',
+	'abusefilter-topnav-log' => 'Logê Abuseyî',
+	'abusefilter-topnav-tools' => 'Hacetê texmîr kerdişî',
+	'abusefilter-topnav-import' => 'Filitre împort bike',
+	'abusefilter-log-name' => 'Logê Abuse Filter',
+	'abusefilter-log-header' => 'Ena log yew qisse mucneno ke ey de vurnayîşê filitreyî esta.
+Qe detayanê hemî, bivine [[Special:AbuseFilter/history|liste]]yê vurnayîşê filitreyî.',
+	'abusefilter-log-entry-modify' => '$1 vurna ($2)',
+	'abusefilter-diff-title' => 'Benatê versiyonan de ferqan',
+	'abusefilter-diff-item' => 'Îtem',
+	'abusefilter-diff-version' => 'Versiyon ke $1 ra pê $2',
+	'abusefilter-diff-info' => 'Enformasyonê temelî',
+	'abusefilter-diff-pattern' => 'Kondisyonê filitre',
+	'abusefilter-diff-invalid' => 'Nieşkenî versiyonê ke ti wazeno fetch bike',
+	'abusefilter-diff-backhistory' => 'Tarixê filitreyî reyna şi',
 	'abusefilter-import-intro' => 'Ti eşkeno ser ena ripel de wîkîyî binan ra filitre împort bike.
 Wîkî çimeyî de bine "{{int:abusefilter-tools-subtitle}}" de "{{int:abusefilter-edit-export}}" klik bike. 
 Kutiyê nuştîşî kopye bike u ena kutiyê nuştîş rê na pa u klik bike "{{int:abusefilter-import-submit}}".',
@@ -10199,6 +10237,7 @@ Anda dapat menerima penjelasan lengkap dengan menekan tombol "Periksa Sintaks".'
 	'abusefilter-examine-noresults' => 'Tidak ada hasil yang ditemukan untuk pencarian dengan parameter yang anda sediakan.',
 	'abusefilter-topnav' => "'''Navigasi Filter Penyalahgunaan '''",
 	'abusefilter-topnav-home' => 'Utama',
+	'abusefilter-topnav-test' => 'Tumpak uji coba',
 	'abusefilter-topnav-examine' => 'Memeriksa suntingan terdahulu',
 	'abusefilter-topnav-log' => 'Log penyalahgunaan',
 	'abusefilter-topnav-tools' => 'Alat Debugging',
@@ -12807,6 +12846,7 @@ Li edizion miga construtivi i sarà revertid à bott, e grand o repetud edizion 
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Homo
  * @author Matasg
  * @author Tomasdd
  * @author Vpovilaitis
@@ -13156,7 +13196,7 @@ Jūs galite gauti pilną paaiškinimą, jei paspausite butoną "Patikrinti sinta
 	'abusefilter-examine-nomatch' => 'Šis pakeitimas filtro netenkina.',
 	'abusefilter-examine-syntaxerror' => 'Filtras turi klaidingą sintaksę',
 	'abusefilter-examine-notfound' => 'Pakeitimai kurių paprašėte nerasti.',
-	'abusefilter-examine-incompatible' => 'Jūsų pakeitimai yra nepalaikomi piktnaudžiavimo filtro',
+	'abusefilter-examine-incompatible' => 'Jūsų pakeitimai nepalaikomi piktnaudžiavimo filtro',
 	'abusefilter-examine-noresults' => 'Nerasti jokie paieškos rezultatai Jūsų nurodytiems parametrams.',
 	'abusefilter-topnav' => "'''Piktnaudžiavimo filtrų navigatorius'''",
 	'abusefilter-topnav-home' => 'Pradžia',
