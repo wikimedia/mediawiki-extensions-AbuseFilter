@@ -13294,6 +13294,8 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
+	'abusefilter' => 'ദുരുപയോഗ അരിപ്പയുടെ ക്രമീകരണങ്ങൾ',
+	'abuselog' => 'ദുരുപയോഗ രേഖ',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'ഗണന ചിഹ്നങ്ങൾ',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'സങ്കലനം (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'വ്യവകലനം (-)',
@@ -17671,6 +17673,7 @@ Priemerný čas behu je $4 ms a spotrebuje $5 {{PLURAL:$5|podmienku|podmienky|po
 	'abusefilter-edit-syntaxerr' => 'Zistená syntaktická chyba: $1',
 	'abusefilter-edit-bad-tags' => 'Jedna alebo viac zo značiek, ktoré ste uviedli nie je platných.
 Značky by mali byť krátke a nemali by obsahovať špeciálne znaky.',
+	'abusefilter-edit-notallowed' => 'Nemáte oprávnenie vytvárať alebo meniť filtre zneužití',
 	'abusefilter-edit-builder-select' => 'Vyberte voľbu, ktorá sa pridá na miesto, kde je kurzor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetické operátory',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Sčítanie (+)',
