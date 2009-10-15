@@ -20962,6 +20962,7 @@ $messages['vo'] = array(
 $messages['yi'] = array(
 	'abuselog' => 'שלעכט־באניצן לאג',
 	'abusefilter-log-search-user' => 'באַניצער',
+	'abusefilter-log-search-title' => 'טיטל:',
 	'abusefilter-log-search-submit' => 'זוכן',
 	'abusefilter-log-noactions' => 'קיין',
 	'abusefilter-hidden' => 'פריוואט',
@@ -20973,7 +20974,9 @@ $messages['yi'] = array(
 	'abusefilter-history-select-user' => 'באַניצער:',
 	'abusefilter-history-diff' => 'ענדערונגען',
 	'abusefilter-examine-user' => 'באַניצער:',
+	'abusefilter-examine-title' => 'בלאַטנאָמען:',
 	'abusefilter-examine-submit' => 'זוכן',
+	'abusefilter-topnav-home' => 'היימבלאַט',
 );
 
 /** Yue (粵語)
