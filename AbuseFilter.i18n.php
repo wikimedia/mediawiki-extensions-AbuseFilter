@@ -732,7 +732,7 @@ $messages['an'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'abusefilter-desc' => 'يطبق قواعد أوتوماتيكية على التعديلات.',
+	'abusefilter-desc' => 'يطبق قواعد آلية على التعديلات.',
 	'abusefilter' => 'ضبط مرشح الإساءة',
 	'abuselog' => 'سجل الإساءة',
 	'abusefilter-intro' => 'مرحبا بك إلى واجهة التحكم بمرشح الإساءة.
@@ -917,6 +917,7 @@ $messages['ar'] = array(
 	'abusefilter-edit-syntaxerr' => 'أكشفت خطأ صياغة: $1',
 	'abusefilter-edit-bad-tags' => 'واحدة أو أكثر من الوسوم التي حددتها غير صالحة.
 يجب أن تكون الوسوم قصيرة ويجب ألا تحتوي محارف خاصة.',
+	'abusefilter-edit-notallowed' => 'لا يسمح لك بإنشاء أو تعديل مرشحات الإساءة',
 	'abusefilter-edit-builder-select' => 'اختر خيارا لإضافته عند البكرة',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'معاملات حسابية',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'جمع (+)',
@@ -3915,6 +3916,51 @@ $messages['diq'] = array(
 	'abusefilter-tools-reautoconfirm-submit' => 'Reyna otoconfirme bike',
 	'abusefilter-edit-subtitle' => 'Filitreyê $1î ho vurneno',
 	'abusefilter-edit-status-label' => 'Îstatîstîks:',
+	'abusefilter-edit-description' => "Deskripsiyon:
+:''(herkes eşkenî bivîne)''",
+	'abusefilter-edit-flags' => 'Îkazî:',
+	'abusefilter-edit-enabled' => 'Ena filitre a bike',
+	'abusefilter-edit-deleted' => 'Nîşanê wedariyaye da',
+	'abusefilter-edit-hidden' => 'Detayanê ena filitre şar ra binumne',
+	'abusefilter-edit-rules' => 'Şartî:',
+	'abusefilter-edit-notes' => "Notî:
+:''(xasî)''",
+	'abusefilter-edit-lastmod' => 'Ena filitre ke twer peni de vurnaye biya:',
+	'abusefilter-edit-lastmod-text' => 'pê $2, $1',
+	'abusefilter-edit-hitcount' => 'Reytingê filitreyî',
+	'abusefilter-edit-consequences' => 'Çi wext maç biy, ena herketan kerd',
+	'abusefilter-edit-action-warn' => 'Peni ra karber îkaz biy, enê herketan biker',
+	'abusefilter-edit-action-disallow' => 'Ena karber rê destur medî ke ena herket biker',
+	'abusefilter-edit-action-flag' => 'Vurnayîşê ke logê abuseyî de îkaz biya',
+	'abusefilter-edit-action-blockautopromote' => 'Statuyê karber ê otokonfirmasyonî iptal bike',
+	'abusefilter-edit-action-degroup' => 'Ena karber grupan ra wedarne',
+	'abusefilter-edit-action-block' => 'Karber u/ya zi adresê karberî blok bike',
+	'abusefilter-edit-action-throttle' => 'Eka karber yew limit ra zafyer şino, enê herketan biker',
+	'abusefilter-edit-action-rangeblock' => '/16 range ke ena karber yeno ay blok bike',
+	'abusefilter-edit-action-tag' => 'Qe kontrole raverî ena vurnayîşî etiket bike',
+	'abusefilter-edit-throttle-count' => 'Amarê hereketan ke destur guret:',
+	'abusefilter-edit-throttle-period' => 'Wext:',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|saniye|saniyeyan}}',
+	'abusefilter-edit-warn-message' => 'Mesajê sistemî ke qe îkaz kerdişî viraziyo:',
+	'abusefilter-edit-warn-other' => 'mesajo bin',
+	'abusefilter-edit-warn-actions' => 'Hereketan:',
+	'abusefilter-edit-warn-preview' => 'Mesaj ke ti weçîne ay verqeyd bike',
+	'abusefilter-edit-warn-edit' => 'Mesaj ke ti weçîne ay bivurne',
+	'abusefilter-edit-denied' => 'Ti nieşkeno detayanê ena filitre bivîne, çunkî ena filitre kamu ra nimniyayo.',
+	'abusefilter-edit-main' => 'Parametreyan filitre bike',
+	'abusefilter-edit-done-subtitle' => 'Vurnayîşî filitre bike',
+	'abusefilter-edit-done' => 'Ti vurnayîşî ke ser filitre $1kerd, înan qeyd biy.',
+	'abusefilter-edit-viewhistory' => 'Tarixê ena filitre bivîne',
+	'abusefilter-edit-history' => 'Tarix:',
+	'abusefilter-edit-check' => 'Syntax kontrol bike',
+	'abusefilter-edit-badfilter' => 'Filitre ke ti weçine databese ma de çin o',
+	'abusefilter-edit-revert' => 'Vurnayîşî ke ena filitre kerd înan tekrar biyar',
+	'abusefilter-edit-tools' => 'Xecetî:',
+	'abusefilter-edit-test-link' => 'Ena filitre ser vurnayîşê newî test bike',
+	'abusefilter-edit-global' => 'Ena filtre globalî apply bike',
+	'abusefilter-edit-export' => 'Ena filitre yew nw wîkî rê împort bike',
+	'abusefilter-edit-syntaxok' => 'ğelatê syntax çin o',
+	'abusefilter-edit-syntaxerr' => 'Ğeletê syntax esto: $1',
 	'abusefilter-edit-builder-op-bool-and' => 'U (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Ya zi (|)',
 	'abusefilter-edit-builder-group-misc' => 'Binan',
@@ -3989,6 +4035,8 @@ $messages['diq'] = array(
 	'abusefilter-history-select-user' => 'Karber:',
 	'abusefilter-history-select-submit' => 'Hewl bike',
 	'abusefilter-history-diff' => 'Vurnayîşî',
+	'abusefilter-exception-invalidoperator' => 'Karektarê $1î de operatorê çewtî  "$2".',
+	'abusefilter-exception-unrecognisedtoken' => 'Karektarê $1î de unrecognised token "$2".',
 	'abusefilter-action-tag' => 'Etiket',
 	'abusefilter-action-block' => 'Blok',
 	'abusefilter-test-legend' => 'Testê filitreyî',
@@ -6089,8 +6137,8 @@ $messages['fi'] = array(
 	'abusefilter-desc' => 'Mahdollistaa muokkauksien suodattamisen automaattisella heuristiikalla.',
 	'abusefilter' => 'Väärinkäyttösuodattimen asetukset',
 	'abuselog' => 'Väärinkäyttöloki',
-	'abusefilter-intro' => 'Tervetuloa väärinkäyttösuodattimen hallintaliittymään.
-Väärinkäyttösuodatin on automaattinen mekanismi, joka soveltaa automaattista heuristiikkaa jokaiseen toimintoon.
+	'abusefilter-intro' => 'Tervetuloa väärinkäyttösuodattimen hallintakäyttöliittymään.
+Väärinkäyttösuodatin on automaattinen mekanismi, joka soveltaa automaattista heuristiikkaa kaikkiin toimintoihin.
 Tämä käyttöliittymä näyttää luettelon määritellyistä suodattimista, ja mahdollistaa niiden muuttamisen.',
 	'abusefilter-mustbeeditor' => 'Turvallisuussyistä vain käyttäjät, joilla on oikeus muuttaa väärinkäyttösuodattimia saavat hyödyntää tätä käyttöliittymää.',
 	'abusefilter-warning' => "<big>'''Varoitus'''</big>: Tämä muokkaus on automaattisesti tunnistettu haitalliseksi.
@@ -6246,7 +6294,8 @@ Pyydä rajoitettujen toimintojen lisäämiseen tarvittavien oikeuksien haltijalt
 	'abusefilter-edit-export' => 'Vie tämä suodatin toiseen wikiin',
 	'abusefilter-edit-syntaxok' => 'Ei havaittuja syntaksivirheitä.',
 	'abusefilter-edit-syntaxerr' => 'Syntaksivirhe havaittu: $1',
-	'abusefilter-edit-bad-tags' => 'Yksi tai useampi merkintäkoodeista jotka olet esittänyt ei ole toimiva. Merkintäkoodien tulisi olla lyhyitä eivätkä ne saisi sisältää erikoismerkkejä.',
+	'abusefilter-edit-bad-tags' => 'Yksi tai useampi määrittämistäsi merkinnöistä ei ole toimivia.
+Merkintöjen tulisi olla lyhyitä ja ilman erikoismerkkejä.',
 	'abusefilter-edit-builder-select' => 'Valitse vaihtoehdoista lisätäksesi sen kohdistimen kohdalle',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmeettiset operaattorit',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Lisäys (+)',
@@ -11485,14 +11534,14 @@ $messages['kn'] = array(
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'abusefilter-desc' => '편집에 자동적으로 필터를 적용',
+	'abusefilter-desc' => '사용자 편집에 문제가 있는지를 자동으로 검사하는 기능',
 	'abusefilter' => '부정 행위 방지 필터 관리',
 	'abuselog' => '부정 행위 기록',
 	'abusefilter-mustbeeditor' => '보안상의 이유로, 부정행위 방지 필터 편집 권한을 가진 사용자만이 이 양식을 이용할 수 있습니다.',
-	'abusefilter-warning' => "<big>'''경고'''</big>: 이러한 행위는 자동적으로 해로운 것으로 간주되었습니다.
-비생산적인 편집은 신속하게 되돌려질 것이며, 반복적인 비생산적 편집은 당신의 계정이나 컴퓨터가 차단될 수 있습니다.
-이 편집이 생산적인 편집이라 확신한다면, 확인 버튼을 다시 클릭하십시오.
-당신의 행위와 일치하는 필터 규칙에 대한 간단한 설명은 다음과 같습니다: $1",
+	'abusefilter-warning' => "<big>'''경고'''</big>: 현재 행동은 문제 있는 행동일 가능성이 있다고 판단됩니다. 이 판단은 프로그램에 의해 자동적으로 이루어집니다.
+무의미하거나 비생산적인 편집은 자동적으로 되돌려지며, 이러한 행동이 반복될 경우 계정이나 IP 주소 등이 차단될 수 있습니다.
+만약 이 편집에 문제가 없다면, 저장 버튼을 다시 눌러 주세요.
+문제가 된 필터 규칙은 다음과 같습니다: $1",
 	'abusefilter-disallowed' => '이러한 행위는 자동적으로 해로운 것으로 간주되었습니다.
 따라서 이 행위는 불허되었습니다.
 당신의 편집이 생산적이라고 여기신다면, 관리자에게 문의하여 무엇을 하려 하는 지 알려 주세요.
