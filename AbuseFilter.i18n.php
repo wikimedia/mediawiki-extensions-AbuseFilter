@@ -3841,13 +3841,43 @@ Um einen bestehenden Filter zu laden, geben Sie seine Filter-ID in das Feld unte
 );
 
 /** Zazaki (Zazaki)
+ * @author Aspar
  * @author Xoser
  */
 $messages['diq'] = array(
 	'abusefilter-desc' => 'Automatik heuristics vurnayîşan rê apply keno',
 	'abusefilter' => 'Konfigurasyonê filitere yê abusî',
 	'abuselog' => 'Logê abuseyî',
+	'abusefilter-intro' => 'Îdareyê filitreyê abuseyî şima xeyr ameyî.
+Filitreyê abuseyî yew softwareyê otomatikî ke otomatik heuristics applikasyon keno. 
+Ena pele yew listeyê filitreyî mucneno u vurnayîşan rê destur dano.',
+	'abusefilter-mustbeeditor' => 'Qe pawitişî, teyna kerberanê ke pê desturî eşkeno filitreyê abuseyî bivurne.',
+	'abusefilter-warning' => "<big>'''Îkaz'''</big>: Ena hereket hewl niyo u zerar dano. 
+Ma vurnayîşanê ke zerarin lez wedarneno,
+eyni zeman de, eka ti ser vurnayîşê xo zerarin de zaf israr kenî, ma hesab u komputerê tu blok kenî.
+Eka ti van vurnayîşê xo konstraktif o ya zi hewl o, rena qeyd bike.
+Yew deskripsiyonê hereketê tu zerarin: $1",
+	'abusefilter-disallowed' => 'Ena hereket hewl niyo u zerar dano,
+ayra destur çini yo. 
+Eka ti van vurnayîşê xo konstraktif o ya zi hewl o, yew îdare kerdoğê sîteyî rê mesaj bişirave.
+Yew deskripsiyonê hereketê tu zerarin: $1',
+	'abusefilter-blocked-display' => 'Ena hereket hewl niyo u zerar dano,
+aye ra ti niekeno qeyd bike.
+Eyni zemun de, qe pawitişê {{SITENAME}}î hesab u IPyê tu blok biyo.  
+Eka ti van ma yew ğeletî keno, yew îdare kerdoğê sîteyî rê mesaj bişirave.
+Yew deskripsiyonê hereketê tu zerarin: $1',
+	'abusefilter-degrouped' => 'Ena hereket hewl niyo u zerar dano.
+Aye ra destur tu çini yo u heqanê tu yê hemî ma ti ra grewt.
+Eka ti van ma yew ğeletî keno, yew îdare kerdoğê sîteyî rê mesaj bişirave. Eka yew ğelet esto, ma heqanê tu yê hemî reyna dan. 
+Yew deskripsiyonê hereketê tu zerarin: $1',
+	'abusefilter-autopromote-blocked' => 'Ena hereket hewl niyo u zerar dano u aye ra destur tu çini yo. 
+Qe pawitişê sîte, heqanê tu yê nime ma ti ra grewt.
+Yew deskripsiyonê hereketê tu zerarin: $1',
 	'abusefilter-blocker' => 'Filitreyê abuseyî',
+	'abusefilter-blockreason' => 'Filitreyê abuseyî otomatîk blok kerd.
+Qe deskripsiyon: $1',
+	'abusefilter-degroupreason' => 'Filitreyê abuseyî heqan otomatîk blok kerd.
+Qe deskripsiyon: $1',
 	'abusefilter-accountreserved' => 'Ena nameyê hesabî qe filitereyê abuseyî rê rezerve biy.',
 	'right-abusefilter-modify' => 'Filitreyê abuseyî bivurne',
 	'right-abusefilter-view' => 'Filitreyê abuseyî bivîne',
@@ -3872,6 +3902,12 @@ $messages['diq'] = array(
 	'abusefilter-log-search-filter' => 'IDyê Filitreyî:',
 	'abusefilter-log-search-title' => 'Sername:',
 	'abusefilter-log-search-submit' => 'Bigêre',
+	'abusefilter-log-entry' => '$1: $2 filitreyê abuseyî kerd a, ser $4 de hereketê "$3"î kerd.
+Hereket: $5;
+Deskripsiyonê filitreyî: $6',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 kerd $3, ser $5 de hereketê "$4"î kerd.
+Hereket: $6;
+Deskripsiyonê filitreyî: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-log-detailedentry-global' => 'filitreyê globalî $1',
 	'abusefilter-log-detailedentry-local' => 'filitreyê $1î',
 	'abusefilter-log-detailslink' => 'detayî',
@@ -3919,13 +3955,26 @@ $messages['diq'] = array(
 	'abusefilter-list-options-hidedisabled' => 'Filitreyê qefilnaye binimne',
 	'abusefilter-list-options-submit' => 'Rocaniye',
 	'abusefilter-tools-subtitle' => 'Xacetî',
+	'abusefilter-tools-text' => 'wexta ke filtreya suistimali formule bena nê hacet lazım beni.',
 	'abusefilter-tools-expr' => 'Testoğê Expressionî',
 	'abusefilter-tools-submitexpr' => 'Xulasa',
 	'abusefilter-tools-reautoconfirm' => 'Statuyê otoconfirmasyonî restore bike',
 	'abusefilter-tools-reautoconfirm-user' => 'Karber:',
 	'abusefilter-tools-reautoconfirm-submit' => 'Reyna otoconfirme bike',
+	'abusefilter-reautoconfirm-none' => 'halê otomatik-tesdiqkerdış {{GENDER:$1|karberi|karberi|karberan}} battal nêbı.',
+	'abusefilter-reautoconfirm-notallowed' => 'desthelatiyê şıma çino şıma otomatik-tesdiqkerdış  biyari.',
+	'abusefilter-reautoconfirm-done' => 'halê otomatik-tesdiqkerdışê hesabi tepiya ameyo',
+	'abusefilter-status' => '$1 {{PLURAL:$1|karo|karo}} peyin de, $2 (%$3) filtre $4 resa sinorê şerti u $5 (%$6) kar yew filtreya aktif de hemcıt bı.',
 	'abusefilter-edit-subtitle' => 'Filitreyê $1î ho vurneno',
+	'abusefilter-edit-oldwarning' => '<strong>şıma (hê) revizyonê no filtreyi vurneni.
+nê istatiski qey na filtreya.
+.</strong> &bull;
+[[Special:AbuseFilter/history/$2|agêr hal-verinê na filtre]].',
 	'abusefilter-edit-status-label' => 'Îstatîstîks:',
+	'abusefilter-edit-status' => '$1 {{PLURAL:$1|karo|karo}} peyin de, medyayê ke na filtre de hemcıtî $2 ($3%).
+şertê muddetê xebat $4ms u sinorê şerti $5 qedneno.',
+	'abusefilter-edit-throttled' => "'''hişyari''': na filtre qey tedbirê pawıtışi bı otomatik battal verdiya.
+%$1 ra zêd resa sinorê hemcıtbiyayişi.",
 	'abusefilter-edit-new' => 'Filtreyê newî',
 	'abusefilter-edit-save' => 'Filitre qeyd bike',
 	'abusefilter-edit-id' => 'IDyê filitreyî',
@@ -3954,15 +4003,22 @@ $messages['diq'] = array(
 	'abusefilter-edit-throttle-count' => 'Amarê hereketan ke destur guret:',
 	'abusefilter-edit-throttle-period' => 'Wext:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|saniye|saniyeyan}}',
+	'abusefilter-edit-throttle-groups' => ":''(her satır re yew heb, pê virgul piyawanê-piya besnê)''",
 	'abusefilter-edit-warn-message' => 'Mesajê sistemî ke qe îkaz kerdişî viraziyo:',
 	'abusefilter-edit-warn-other' => 'mesajo bin',
+	'abusefilter-edit-warn-other-label' => "nameyê pelê mesaji yo binı:
+:''(wa prefixê medyawiki çinibo)''",
 	'abusefilter-edit-warn-actions' => 'Hereketan:',
 	'abusefilter-edit-warn-preview' => 'Mesaj ke ti weçîne ay verqeyd bike',
 	'abusefilter-edit-warn-edit' => 'Mesaj ke ti weçîne ay bivurne',
+	'abusefilter-edit-tag-tag' => 'etiketê ke tetbiq beni (her satır re yew heb):',
 	'abusefilter-edit-denied' => 'Ti nieşkeno detayanê ena filitre bivîne, çunkî ena filitre kamu ra nimniyayo.',
 	'abusefilter-edit-main' => 'Parametreyan filitre bike',
 	'abusefilter-edit-done-subtitle' => 'Vurnayîşî filitre bike',
 	'abusefilter-edit-done' => 'Ti vurnayîşî ke ser filitre $1kerd, înan qeyd biy.',
+	'abusefilter-edit-badsyntax' => 'filtreya ke şıma nişane kerdo tede xetaya sentaksi esta.
+wesikaya arêdayoxi: <pre>$1</pre>',
+	'abusefilter-edit-restricted' => 'şıma nêeşkeni na filtre bıvurni çunke tede karo qedexebiyaye esto.',
 	'abusefilter-edit-viewhistory' => 'Tarixê ena filitre bivîne',
 	'abusefilter-edit-history' => 'Tarix:',
 	'abusefilter-edit-check' => 'Syntax kontrol bike',
@@ -3974,6 +4030,10 @@ $messages['diq'] = array(
 	'abusefilter-edit-export' => 'Ena filitre yew nw wîkî rê împort bike',
 	'abusefilter-edit-syntaxok' => 'ğelatê syntax çin o',
 	'abusefilter-edit-syntaxerr' => 'Ğeletê syntax esto: $1',
+	'abusefilter-edit-bad-tags' => 'etiketê ke şıma nişane kerdo tede nemeqbuli esti.
+gani etiketi kılm bıbi u tede karakterê xususi çinibi.',
+	'abusefilter-edit-notallowed' => 'desturê şıma çino şıma filtreya suistimali vırazi ya zi bıvurni',
+	'abusefilter-edit-builder-select' => 'İmleçte eklemek için bir seçenek seçin',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operasyonê arîtmetîkî',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'De kerdiş (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Vetiş (-)',
@@ -3996,6 +4056,7 @@ $messages['diq'] = array(
 	'abusefilter-edit-builder-misc-in' => 'String de ca geno (in)',
 	'abusefilter-edit-builder-misc-like' => 'Pattern meç keno',
 	'abusefilter-edit-builder-misc-rlike' => 'Reqex meç keno (rlike)',
+	'abusefilter-edit-builder-misc-contains' => 'Sol dizi sağ diziyi içeriyor (contains)',
 	'abusefilter-edit-builder-misc-stringlit' => 'Literalê stringî ("")',
 	'abusefilter-edit-builder-misc-tern' => 'Operatorê ternaryî (X ? Y : Z)',
 	'abusefilter-edit-builder-misc-cond' => 'Kordinator (eka X o wext Y ya zi Z)',
@@ -4049,12 +4110,18 @@ $messages['diq'] = array(
 	'abusefilter-edit-builder-vars-added-links' => 'Vurnayîşê newe de linkanê hericiyan ê de biy',
 	'abusefilter-edit-builder-vars-removed-links' => 'Vurnayîşê newe de linkanê hericiyan ê wedariyaye',
 	'abusefilter-edit-builder-vars-old-text' => 'Wîkîtextê ripel kihan, verniyê vurnayîşî',
+	'abusefilter-edit-builder-vars-new-text' => 'pelê wikimetni yo newe: badê vurnayiş',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nuştêyê pel ê newî, te de markup çini yo',
+	'abusefilter-edit-builder-vars-new-html' => 'Yeni revizyonun derlenmiş HTML kaynağı',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Seviyeyê kilit kerdişê pele',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Seviyeyê berdişê pele',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Nuştêyê pel ê kihanî, te de markup çini yo',
+	'abusefilter-edit-builder-vars-old-links' => 'gıreyê ke pel deyi, verê vurnayişi',
+	'abusefilter-edit-builder-vars-old-html' => 'pelê vikimetni yo kehen, qey HTML  arêdiya',
+	'abusefilter-edit-builder-vars-minor-edit' => 'vurnayiş bı qıci işaret beno nê nêbeno',
 	'abusefilter-edit-builder-vars-file-sha1' => 'Tedeesteyê dosya yê SHA1 hashî',
 	'abusefilter-filter-log' => 'Vurnayîşanê penî ke ser filitre',
+	'abusefilter-history' => 'qey filtreya suistimali #$1vurnayişê hal-verini',
 	'abusefilter-history-foruser' => '$1 ra vurnayîşan',
 	'abusefilter-history-hidden' => 'Nimnaye',
 	'abusefilter-history-enabled' => 'A biya',
@@ -4073,8 +4140,22 @@ $messages['diq'] = array(
 	'abusefilter-history-select-user' => 'Karber:',
 	'abusefilter-history-select-submit' => 'Hewl bike',
 	'abusefilter-history-diff' => 'Vurnayîşî',
+	'abusefilter-history-error-hidden' => 'filtreya ke şıma waşto nımteyo u şıma nêeşkeni hal-verinê aye bıvini.',
+	'abusefilter-exception-unexpectedatend' => 'karakterê $1\'i  "$2" texmin nêbene.',
+	'abusefilter-exception-expectednotfound' => '$1 karakterinde bir $2 bekleniyordu, bulunamadı (yerine $3 $4 bulundu).',
+	'abusefilter-exception-unrecognisedkeyword' => "karakterê $1'i de keywordo nêşınasnaye $2.",
+	'abusefilter-exception-unexpectedtoken' => 'karakterê $1\'i de simgeya bêtexmin "$3" (no $2 tip de).',
+	'abusefilter-exception-unclosedstring' => '$1 karakterinde başlayan kapanmamış dizi',
 	'abusefilter-exception-invalidoperator' => 'Karektarê $1î de operatorê çewtî  "$2".',
 	'abusefilter-exception-unrecognisedtoken' => 'Karektarê $1î de unrecognised token "$2".',
+	'abusefilter-exception-noparams' => 'fonksiyonê "$2" i re no $1 karakter de çı parametrecı nêdiya.',
+	'abusefilter-exception-dividebyzero' => "karakterê $1'i de pê $2 sıfır re teqsim kerdış .",
+	'abusefilter-exception-unrecognisedvar' => "karakterê $1'i de parametreya nêşınasnaye $2",
+	'abusefilter-exception-notenoughargs' => '$1 karakterinde çağrılan $2 fonksiyonu için yeterli değişken yok.
+$3 {{PLURAL:$3|değişken|değişken}} bekleniyordu, $4 alındı',
+	'abusefilter-exception-regexfailure' => 'ifadeya "$3" de karakter $1\'i de xeta: "$2"',
+	'abusefilter-exception-overridebuiltin' => '$1 karakterinde "$2" yerleşik değişkeninin kuraldışı geçersiz kılınması.',
+	'abusefilter-exception-outofbounds' => '$1 karakterindeki mevcut olmayan liste öğesi $2 (liste boyutu = $3) isteniyor.',
 	'abusefilter-exception-notlist' => 'Ser karekterê $1î, wazeno adetê array ê nearrayî.',
 	'abusefilter-action-tag' => 'Etiket',
 	'abusefilter-action-throttle' => 'Qirik',
@@ -4085,6 +4166,7 @@ $messages['diq'] = array(
 	'abusefilter-action-rangeblock' => 'Menzîl-blok',
 	'abusefilter-action-disallow' => 'Destur med',
 	'abusefilter-revert-title' => 'Vuranayîşan ke pê filitreyê $1 biye înan reyna biyar',
+	'abusefilter-revert-intro' => "no form, vurnayişê ke semedê filtreya $1'i biye newe ra tepiya ardışê ninan de destur dano şıma.",
 	'abusefilter-revert-preview-item' => '$1: $2 biya yew $3 ser $4.
 Hereketan ke te wazeni reyna biyar: $5 ($6)',
 	'abusefilter-revert-search-legend' => 'Hereketanê filitreyan ke te wazeni reyna biyar înan weçine',
@@ -4092,9 +4174,16 @@ Hereketan ke te wazeni reyna biyar: $5 ($6)',
 	'abusefilter-revert-periodend' => 'Periyod ke qediyen:',
 	'abusefilter-revert-search' => 'Hereketan biweçine',
 	'abusefilter-revert-filter' => 'Filitre:',
+	'abusefilter-revert-preview-intro' => 'Aşağıdakiler, suistimal filtresi tarafından alınan ve bu eylemle geri alınacak eylemlerdir.
+Lütfen dikkatlice kontrol edin, ve seçiminizi onaylamak için "onayla"ya tıklayın.',
 	'abusefilter-revert-confirm' => 'Konfirme bike',
+	'abusefilter-revert-success' => '[[Special:AbuseFilter/$1|$1 filtresinden]] dolayı suistimal filtresi tarafından alınan tüm eylemleri geri aldınız.',
+	'abusefilter-revert-reason' => '$1 filtresinden dolayı suistimal filtresi tarafından alınan tüm eylemlerin otomatik geri alımı.
+Verilen sebep: $2',
 	'abusefilter-revert-reasonfield' => 'Sebebê reyna ardişî:',
 	'abusefilter-test' => 'Duştê vurnayîşan rê yew filitre test bike',
+	'abusefilter-test-intro' => 'Bu sayfa, aşağıdaki kutuya girilen bir filtreyi son $1 {{PLURAL:$1|değişikliğe|değişikliğe}} karşı kontrol etmenize izin verir.
+Mevcut bir filtreyi yüklemek için, filtre IDsini değişiklik metin kutusunun altındaki kutuya girin, ve "Yükle" düğmesine tıklayın.',
 	'abusefilter-test-legend' => 'Testê filitreyî',
 	'abusefilter-test-load-filter' => 'IDyê filitre bar bike',
 	'abusefilter-test-submit' => 'Test',
@@ -13549,7 +13638,10 @@ $messages['ml'] = array(
 	'abusefilter-edit-builder-op-comparison-gte' => 'വലുതോ സമമോ ആണ് (>=)',
 	'abusefilter-edit-builder-funcs-ip_in_range' => 'ഐ.പി. പരിധിയിലാണോ? (ip_in_range)',
 	'abusefilter-edit-builder-group-vars' => 'ചരങ്ങൾ',
+	'abusefilter-edit-builder-vars-accountname' => 'അംഗത്വനാമം (അംഗത്വ സൃഷ്ടിയിലുള്ളത്)',
 	'abusefilter-edit-builder-vars-action' => 'പ്രവൃത്തി',
+	'abusefilter-edit-builder-vars-addedlines' => 'തിരുത്തലിൽ കൂട്ടിച്ചേർക്കപ്പെട്ട വരികൾ',
+	'abusefilter-edit-builder-vars-delta' => 'തിരുത്തലിൽ മാറ്റം വന്ന വലിപ്പം',
 	'abusefilter-edit-builder-vars-newsize' => 'താളിന്റെ പുതിയ വലിപ്പം',
 	'abusefilter-edit-builder-vars-oldsize' => 'താളിന്റെ പഴയ വലിപ്പം',
 	'abusefilter-edit-builder-vars-removedlines' => 'തിരുത്തലിൽ ഒഴിവാക്കപ്പെട്ട വരികൾ',
@@ -13613,6 +13705,7 @@ $messages['ml'] = array(
 	'abusefilter-diff-title' => 'പതിപ്പുകൾ തമ്മിലുള്ള വ്യത്യാസങ്ങൾ',
 	'abusefilter-diff-info' => 'അടിസ്ഥാന വിവരങ്ങൾ',
 	'abusefilter-diff-invalid' => 'ആവശ്യപ്പെട്ട പതിപ്പുകൾ ശേഖരിക്കാൻ കഴിയില്ല',
+	'abusefilter-import-submit' => 'വിവരങ്ങൾ ഇറക്കുമതി ചെയ്യുക',
 );
 
 /** Mongolian (Монгол)
