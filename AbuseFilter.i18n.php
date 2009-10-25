@@ -4193,6 +4193,8 @@ Mevcut bir filtreyi yüklemek için, filtre IDsini değişiklik metin kutusunun 
 	'abusefilter-test-period-end' => 'Vurnayişan ke verni de biyê:',
 	'abusefilter-test-page' => 'Vurnayişan ser pelan:',
 	'abusefilter-test-shownegative' => 'Vurnayîşan ke filitre match nikena înan bimucne',
+	'abusefilter-test-syntaxerr' => 'Filitreyê tu de yew ğeletê syntaxî esto.
+Qe yew deskripsiyonê ğeletî, "Check Syntax" rê bitexne.',
 	'abusefilter-changeslist-examine' => 'kontrol bike',
 	'abusefilter-examine' => 'Vurnayişanê şexsî kontrol bike',
 	'abusefilter-examine-intro' => 'Ena pele ti ra yardim keno ke ti eşkeno variableyan kontrol bike u filitre test bike.',
@@ -13577,6 +13579,7 @@ $messages['ml'] = array(
 	'abusefilter' => 'ദുരുപയോഗ അരിപ്പയുടെ ക്രമീകരണങ്ങൾ',
 	'abuselog' => 'ദുരുപയോഗ രേഖ',
 	'abusefilter-blocker' => 'ദുരുപയോഗ അരിപ്പ',
+	'abusefilter-accountreserved' => 'ഈ അംഗത്വനാമം ദുരുപയോഗ അരിപ്പയുടെ ഉപയോഗത്തിനായി മാറ്റിവെച്ചിരിക്കുകയാണ്.',
 	'abusefilter-log-search-user' => 'ഉപയോക്താവ്:',
 	'abusefilter-log-search-title' => 'തലക്കെട്ട്:',
 	'abusefilter-log-search-submit' => 'തിരയുക',
@@ -21254,6 +21257,13 @@ $messages['vo'] = array(
 	'abusefilter-edit-status-label' => 'Statits:',
 	'abusefilter-edit-lastmod-text' => '$1, fa $2',
 	'abusefilter-history-user' => 'Geban',
+);
+
+/** Kalmyk (Хальмг)
+ * @author Huuchin
+ */
+$messages['xal'] = array(
+	'abusefilter-diff-item' => 'Махбуд',
 );
 
 /** Yiddish (ייִדיש)
