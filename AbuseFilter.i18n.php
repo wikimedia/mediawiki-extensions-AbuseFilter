@@ -13578,6 +13578,9 @@ $messages['ml'] = array(
 	'abusefilter-desc' => 'തിരുത്തലുകളിൽ സ്വയം പ്രതിരോധപ്രവർത്തനങ്ങൾ നടപ്പിലാക്കുന്നു',
 	'abusefilter' => 'ദുരുപയോഗ അരിപ്പയുടെ ക്രമീകരണങ്ങൾ',
 	'abuselog' => 'ദുരുപയോഗ രേഖ',
+	'abusefilter-disallowed' => 'ഈ പ്രവൃത്തി ദോഷകരമെന്നു സ്വയമേ തിരിച്ചറിഞ്ഞ്, അനുവദിക്കാത്തത് ആകുന്നു.
+താങ്കളുടെ തിരുത്തൽ സൃഷ്ടിപരമാണെന്ന് താങ്കൾ വിശ്വസിക്കുന്നുവെങ്കിൽ, ദയവായി കാര്യനിർവാഹകരിലൊരാളെ ബന്ധപ്പെടുക, താങ്കൾ എന്താണ് ചെയ്യാൻ ശ്രമിച്ചതെന്നറിയിക്കുക.
+താങ്കളുടെ പ്രവൃത്തിയുമായി സാദൃശ്യമുള്ള ദുരുപയോഗ നിയമത്തിന്റെ ലഘുവിവരണം: $1',
 	'abusefilter-blocker' => 'ദുരുപയോഗ അരിപ്പ',
 	'abusefilter-accountreserved' => 'ഈ അംഗത്വനാമം ദുരുപയോഗ അരിപ്പയുടെ ഉപയോഗത്തിനായി മാറ്റിവെച്ചിരിക്കുകയാണ്.',
 	'abusefilter-log-search-user' => 'ഉപയോക്താവ്:',
@@ -13686,6 +13689,8 @@ $messages['ml'] = array(
 	'abusefilter-action-block' => 'തടയുക',
 	'abusefilter-action-degroup' => 'സംഘങ്ങളിൽ നിന്ന് നീക്കംചെയ്യുക',
 	'abusefilter-action-disallow' => 'അനുവദിക്കാതിരിക്കുക',
+	'abusefilter-revert-periodstart' => 'സമയാരംഭം:',
+	'abusefilter-revert-periodend' => 'സമയാവസാനം:',
 	'abusefilter-revert-search' => 'പ്രവൃത്തികൾ തിരഞ്ഞെടുക്കുക',
 	'abusefilter-revert-confirm' => 'സ്ഥിരീകരിക്കുക',
 	'abusefilter-revert-reasonfield' => 'മുൻപ്രാപനത്തിനുള്ള കാരണം:',
