@@ -1132,6 +1132,7 @@ $messages['ar'] = array(
 $messages['arc'] = array(
 	'abusefilter-tools-modifiertest-submit' => 'ܢܣܝܘܢܐ',
 	'abusefilter-list-options' => 'ܓܒܝܬ̈ܐ',
+	'abusefilter-edit-builder-vars-article-ns' => 'ܚܩܠܐ ܕܦܐܬܐ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
