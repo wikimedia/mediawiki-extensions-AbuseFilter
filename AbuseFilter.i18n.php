@@ -13580,17 +13580,21 @@ $messages['ml'] = array(
 	'abusefilter-desc' => 'തിരുത്തലുകളിൽ സ്വയം പ്രതിരോധപ്രവർത്തനങ്ങൾ നടപ്പിലാക്കുന്നു',
 	'abusefilter' => 'ദുരുപയോഗ അരിപ്പയുടെ ക്രമീകരണങ്ങൾ',
 	'abuselog' => 'ദുരുപയോഗ രേഖ',
+	'abusefilter-mustbeeditor' => 'സുരക്ഷാ കാരണങ്ങളാൽ, ദുരുപയോഗ അരിപ്പ തിരുത്തുവാനുള്ള അവകാശമുള്ള ഉപയോക്താക്കൾക്ക് മാത്രമേ ഈ ദൃശ്യമണ്ഡലം ഉപയോഗിക്കാൻ കഴിയൂ.',
 	'abusefilter-disallowed' => 'ഈ പ്രവൃത്തി ദോഷകരമെന്നു സ്വയമേ തിരിച്ചറിഞ്ഞ്, അനുവദിക്കാത്തത് ആകുന്നു.
 താങ്കളുടെ തിരുത്തൽ സൃഷ്ടിപരമാണെന്ന് താങ്കൾ വിശ്വസിക്കുന്നുവെങ്കിൽ, ദയവായി കാര്യനിർവാഹകരിലൊരാളെ ബന്ധപ്പെടുക, താങ്കൾ എന്താണ് ചെയ്യാൻ ശ്രമിച്ചതെന്നറിയിക്കുക.
 താങ്കളുടെ പ്രവൃത്തിയുമായി സാദൃശ്യമുള്ള ദുരുപയോഗ നിയമത്തിന്റെ ലഘുവിവരണം: $1',
 	'abusefilter-blocker' => 'ദുരുപയോഗ അരിപ്പ',
 	'abusefilter-accountreserved' => 'ഈ അംഗത്വനാമം ദുരുപയോഗ അരിപ്പയുടെ ഉപയോഗത്തിനായി മാറ്റിവെച്ചിരിക്കുകയാണ്.',
+	'abusefilter-log-search' => 'ദുരുപയോഗ രേഖയിൽ തിരയുക',
 	'abusefilter-log-search-user' => 'ഉപയോക്താവ്:',
 	'abusefilter-log-search-title' => 'തലക്കെട്ട്:',
 	'abusefilter-log-search-submit' => 'തിരയുക',
 	'abusefilter-log-detailslink' => 'വിവരണങ്ങൾ',
+	'abusefilter-log-details-legend' => 'രേഖയിൽ ഉൾപ്പെട്ട $1 ഇനത്തിന്റെ വിവരങ്ങൾ',
 	'abusefilter-log-details-var' => 'ചരം',
 	'abusefilter-log-details-val' => 'മൂല്യം',
+	'abusefilter-log-details-private' => 'സ്വകാര്യ വിവരം',
 	'abusefilter-log-details-ip' => 'ഉത്ഭവിക്കുന്ന ഐ.പി. വിലാസം',
 	'abusefilter-log-noactions' => 'ഒന്നുമില്ല',
 	'abusefilter-log-details-diff' => 'തിരുത്തലിൽ വരുത്തിയ മാറ്റങ്ങൾ',
@@ -13606,6 +13610,7 @@ $messages['ml'] = array(
 	'abusefilter-unhidden' => 'സാർവ്വജനികം',
 	'abusefilter-enabled' => 'സജ്ജമാക്കിയിരിക്കുന്നു',
 	'abusefilter-deleted' => 'മായ്ച്ചിരിക്കുന്നു',
+	'abusefilter-disabled' => 'നിർജ്ജീവമാക്കപ്പെട്ടിരിക്കുന്നു',
 	'abusefilter-hitcount' => '{{PLURAL:$1|ഒരു എടുത്തുനോക്കൽ|$1 എടുത്തുനോക്കലുകൾ}}',
 	'abusefilter-links' => 'പ്രയോജനപ്രദമാകുന്ന കണ്ണികൾ:',
 	'abusefilter-tools-modifiertest-submit' => 'പരീക്ഷണം',
@@ -13615,8 +13620,13 @@ $messages['ml'] = array(
 	'abusefilter-list-options-submit' => 'പുതുക്കുക',
 	'abusefilter-tools-subtitle' => 'ഉപകരണങ്ങൾ',
 	'abusefilter-tools-submitexpr' => 'മൂല്യനിർണ്ണയം നടത്തുക',
+	'abusefilter-tools-reautoconfirm' => 'സ്വയം സ്ഥിരീകൃത സ്ഥിതി പുനഃസ്ഥാപിക്കുക',
 	'abusefilter-tools-reautoconfirm-user' => 'ഉപയോക്താവ്:',
+	'abusefilter-reautoconfirm-notallowed' => 'സ്വയം സ്ഥിരീകൃത സ്ഥിതി പുനഃസ്ഥാപിക്കാൻ താങ്കൾക്ക് അനുമതിയില്ല.',
+	'abusefilter-reautoconfirm-done' => 'അംഗത്വത്തിന്റെ സ്വയം സ്ഥിരീകൃത സ്ഥിതി പുനഃസ്ഥാപിച്ചിരിക്കുന്നു',
 	'abusefilter-edit-status-label' => 'സ്ഥിതിവിവരക്കണക്കുകൾ:',
+	'abusefilter-edit-description' => "വിവരണം:
+:''(പൊതുജന ലഭ്യം)''",
 	'abusefilter-edit-deleted' => 'മായ്ച്ചതായി അടയാളപ്പെടുത്തുക',
 	'abusefilter-edit-hidden' => 'പൊതുജന ദൃഷ്ടിയിൽ നിന്നും അരിപ്പയുടെ വിവരങ്ങൾ മറയ്ക്കുക',
 	'abusefilter-edit-notes' => "കുറിപ്പുകൾ:
@@ -13674,6 +13684,8 @@ $messages['ml'] = array(
 	'abusefilter-edit-builder-vars-all-links' => 'പുതിയ എഴുത്തിലുള്ള പുറത്തേയ്ക്കുള്ള കണ്ണികൾ എല്ലാം',
 	'abusefilter-edit-builder-vars-added-links' => 'തിരുത്തലിൽ കൂട്ടിച്ചേർക്കപ്പെട്ട പുറത്തേയ്ക്കുള്ള കണ്ണികൾ എല്ലാം',
 	'abusefilter-edit-builder-vars-removed-links' => 'തിരുത്തലിൽ നീക്കം ചെയ്യപ്പെട്ട പുറത്തേയ്ക്കുള്ള കണ്ണികൾ എല്ലാം',
+	'abusefilter-edit-builder-vars-old-text' => 'തിരുത്തലിനു മുമ്പുള്ള, പഴയ താളിലെ വിക്കി എഴുത്ത്',
+	'abusefilter-edit-builder-vars-new-text' => 'തിരുത്തലിനു ശേഷമുള്ള, പുതിയ താളിലെ വിക്കി എഴുത്ത്',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'താളിന്റെ സംരക്ഷണ മാനം തിരുത്തുക',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'താളിന്റെ സംരക്ഷണ മാനത്തിൽ മാറ്റം വരുത്തുക',
 	'abusefilter-history-foruser' => '$1 വരുത്തിയ മാറ്റങ്ങൾ',
@@ -19271,6 +19283,7 @@ $messages['te'] = array(
 	'abusefilter-examine-submit' => 'వెతుకు',
 	'abusefilter-topnav-home' => 'ముంగిలి',
 	'abusefilter-diff-info' => 'ప్రాధమిక సమాచారం',
+	'abusefilter-diff-pattern' => 'వడపోత నియమాలు',
 );
 
 /** Tetum (Tetun)
