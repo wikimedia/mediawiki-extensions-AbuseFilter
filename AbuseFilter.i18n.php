@@ -2049,11 +2049,20 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
+	'abuselog' => 'Marilh ar siloù a-enep ar gwallimplij',
+	'abusefilter-mustbeeditor' => "Evit abegoù surentez, n'eus nemet an implijerien ganto ar gwir da cheñch ar siloù a-enep d'ar gwallimplij a c'hell implijout an etrefas-mañ.",
+	'abusefilter-blocker' => 'Sil a-enep ar gwallimplij',
+	'right-abusefilter-view' => 'Gwelet ar siloù a-enep ar gwallimplij',
+	'right-abusefilter-log' => 'Gwelet marilh ar siloù a-enep ar gwallimplij',
+	'action-abusefilter-view' => 'Gwelet ar siloù a-enep ar gwallimplij',
 	'abusefilter-log-search-user' => 'Implijer :',
 	'abusefilter-log-search-title' => 'Titl :',
 	'abusefilter-log-search-submit' => 'Klask',
+	'abusefilter-log-details-val' => 'Talvoud',
+	'abusefilter-list-edit' => 'Kemmañ',
 	'abusefilter-list-details' => 'Munudoù',
 	'abusefilter-list-limit' => 'Niver dre bajenn',
 	'abusefilter-hidden' => 'Prevez',
@@ -2076,6 +2085,7 @@ $messages['br'] = array(
 	'abusefilter-edit-lastmod' => "Kemm diwezhañ degaset d'ar sil :",
 	'abusefilter-edit-throttle-period' => 'Prantad amzer :',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|eilenn|eilenn}}',
+	'abusefilter-edit-tools' => 'Ostilhoù :',
 	'abusefilter-edit-builder-op-comparison-equal' => 'Par da (==)',
 	'abusefilter-edit-builder-op-comparison-notequal' => 'Disheñvel diouzh (!=)',
 	'abusefilter-edit-builder-op-comparison-lt' => "Bihanoc'h eget (<)",
@@ -2090,9 +2100,17 @@ $messages['br'] = array(
 	'abusefilter-edit-builder-vars-article-ns' => 'Esaouenn anv ar bajenn',
 	'abusefilter-edit-builder-vars-article-text' => 'Titl ar bajenn (hep an esaouenn anv)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Titl klok ar bajenn',
+	'abusefilter-edit-builder-vars-user-name' => 'Anv kont an implijer',
+	'abusefilter-history-hidden' => 'Kuzhet',
+	'abusefilter-history-user' => 'Implijer',
 	'abusefilter-history-deleted' => 'Diverket',
 	'abusefilter-history-filterid' => 'Sil',
 	'abusefilter-history-select-user' => 'Implijer :',
+	'abusefilter-revert-filter' => 'Sil :',
+	'abusefilter-test-submit' => 'Amprouiñ',
+	'abusefilter-examine-user' => 'Implijer :',
+	'abusefilter-examine-submit' => 'Klask',
+	'abusefilter-diff-info' => 'Titouroù diazez',
 );
 
 /** Bosnian (Bosanski)
@@ -13514,6 +13532,7 @@ $messages['mhr'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
@@ -13538,7 +13557,7 @@ $messages['mk'] = array(
 	'abusefilter-list-options-hidedisabled' => 'Сокриј исклучени филтери',
 	'abusefilter-list-options-submit' => 'Ажурирај',
 	'abusefilter-tools-subtitle' => 'Алатки',
-	'abusefilter-edit-status-label' => 'Статистики',
+	'abusefilter-edit-status-label' => 'Статистики:',
 	'abusefilter-edit-new' => 'Нов филтер',
 	'abusefilter-edit-save' => 'Зачувај филтер',
 	'abusefilter-edit-id' => 'ID на филтер:',
@@ -13555,8 +13574,9 @@ $messages['mk'] = array(
 	'abusefilter-edit-lastmod-text' => '$1 од $2',
 	'abusefilter-edit-throttle-period' => 'Временски период:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|секунда|секунди}}',
-	'abusefilter-edit-history' => 'Историја',
+	'abusefilter-edit-history' => 'Историја:',
 	'abusefilter-edit-check' => 'Проверка на синтакса',
+	'abusefilter-edit-tools' => 'Алатки:',
 	'abusefilter-edit-builder-op-arithmetic-modulo' => 'Модул (%)',
 	'abusefilter-edit-builder-op-arithmetic-pow' => 'Степен (**)',
 	'abusefilter-edit-builder-group-op-comparison' => 'Оператори за споредба',
@@ -13571,6 +13591,8 @@ $messages['mk'] = array(
 	'abusefilter-edit-builder-op-bool-and' => 'И (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Или (|)',
 	'abusefilter-edit-builder-op-bool-xor' => 'XOR (^)',
+	'abusefilter-diff-item' => 'Елемент',
+	'abusefilter-import-submit' => 'Увези податоци',
 );
 
 /** Malayalam (മലയാളം)
