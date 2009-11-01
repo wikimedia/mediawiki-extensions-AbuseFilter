@@ -2094,6 +2094,7 @@ $messages['br'] = array(
 	'abusefilter-edit-notes' => "Notennoù :
 :''(prevez)''",
 	'abusefilter-edit-lastmod' => "Kemm diwezhañ degaset d'ar sil :",
+	'abusefilter-edit-lastmod-text' => '$1 dre $2',
 	'abusefilter-edit-throttle-period' => 'Prantad amzer :',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|eilenn|eilenn}}',
 	'abusefilter-edit-history' => 'Istor :',
@@ -2113,12 +2114,15 @@ $messages['br'] = array(
 	'abusefilter-edit-builder-vars-article-ns' => 'Esaouenn anv ar bajenn',
 	'abusefilter-edit-builder-vars-article-text' => 'Titl ar bajenn (hep an esaouenn anv)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Titl klok ar bajenn',
+	'abusefilter-edit-builder-vars-user-age' => 'Oad ar gont implijer',
 	'abusefilter-edit-builder-vars-user-name' => 'Anv kont an implijer',
 	'abusefilter-history-hidden' => 'Kuzhet',
+	'abusefilter-history-timestamp' => 'Deiziad',
 	'abusefilter-history-user' => 'Implijer',
 	'abusefilter-history-deleted' => 'Diverket',
 	'abusefilter-history-filterid' => 'Sil',
 	'abusefilter-history-select-user' => 'Implijer :',
+	'abusefilter-history-diff' => 'Kemmoù',
 	'abusefilter-action-block' => 'Stankañ',
 	'abusefilter-revert-filter' => 'Sil :',
 	'abusefilter-test-submit' => 'Amprouiñ',
@@ -10200,6 +10204,7 @@ Copia le contento del quadro de texto que appare, e colla lo in iste quadro de t
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot
+ * @author IvanLanin
  * @author Rex
  */
 $messages['id'] = array(
@@ -10389,6 +10394,7 @@ Mintalah kepada pengguna yang memiliki hak akses untuk menyunting tindakan yang 
 	'abusefilter-edit-syntaxerr' => 'Kesalahan sintaks terdeteksi: $1',
 	'abusefilter-edit-bad-tags' => 'Satu atau lebih dari penanda yang anda tentukan tidak sah.
 Penanda harus pendek, dan seharusnya tidak berisi karakter khusus.',
+	'abusefilter-edit-notallowed' => 'Anda tidak diizinkan untuk membuat atau mengedit filter penyalahgunaan',
 	'abusefilter-edit-builder-select' => 'Pilih sebuah opsi untuk menambahkannya pada kursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operator aritmatika',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Penambahan (+)',
@@ -10411,7 +10417,10 @@ Penanda harus pendek, dan seharusnya tidak berisi karakter khusus.',
 	'abusefilter-edit-builder-group-misc' => 'Lainnya',
 	'abusefilter-edit-builder-misc-in' => 'terkandung dalam string (in)',
 	'abusefilter-edit-builder-misc-like' => 'Pola sesuai (seperti)',
+	'abusefilter-edit-builder-misc-rlike' => 'Cocok dengan regex (rlike)',
 	'abusefilter-edit-builder-misc-contains' => 'Karakter kiri berisi karakter kanan (contains)',
+	'abusefilter-edit-builder-misc-stringlit' => 'Untaian harfiah ("")',
+	'abusefilter-edit-builder-misc-tern' => 'Operator terner (X ? Y : Z)',
 	'abusefilter-edit-builder-misc-cond' => 'Kondisional (if X then Y else Z)',
 	'abusefilter-edit-builder-group-funcs' => 'Fungsi',
 	'abusefilter-edit-builder-funcs-length' => 'Panjang karakter (length)',
@@ -10421,6 +10430,7 @@ Penanda harus pendek, dan seharusnya tidak berisi karakter khusus.',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Karakter khusus / jumlah karakter (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Normalisasi (norm)',
 	'abusefilter-edit-builder-funcs-count' => 'Nomor dari karakter waktu X muncul di karakter Y (count)',
+	'abusefilter-edit-builder-funcs-rcount' => 'Jumlah kemunculan regex X pada untaian Y (rcount)',
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Buang ruangputih (rmwhitespace)',
 	'abusefilter-edit-builder-funcs-rmspecials' => 'Buang karakter khusus (rmspecials)',
 	'abusefilter-edit-builder-funcs-ip_in_range' => 'Apakah IP pada jangkauan? (ip_in_range)',
@@ -10506,6 +10516,8 @@ Penanda harus pendek, dan seharusnya tidak berisi karakter khusus.',
 	'abusefilter-exception-notenoughargs' => 'Tidak cukup argumen untuk fungsi $2 dipanggil pada karakter $1.
 Diharapkan {{PLURAL:$3|argumen|argumen}} $3, menghasilkan $4',
 	'abusefilter-exception-regexfailure' => 'Kesalahan pada ekspresi biasa "$3" pada karakter $1: "$2"',
+	'abusefilter-exception-overridebuiltin' => 'Penyampingan ilegal variabel terpasang "$2" pada karakter $1.',
+	'abusefilter-exception-outofbounds' => 'Meminta butir daftar $2 yang tak ada (jumlah butir = $3) pada karakter $1.',
 	'abusefilter-exception-notlist' => 'Permintaan butir Larik dari bukan-larik pada karekter $1.',
 	'abusefilter-action-tag' => 'Penanda',
 	'abusefilter-action-throttle' => 'Batasan',
@@ -10516,6 +10528,8 @@ Diharapkan {{PLURAL:$3|argumen|argumen}} $3, menghasilkan $4',
 	'abusefilter-action-rangeblock' => 'Batasan blokir',
 	'abusefilter-action-disallow' => 'tidak diijinkan',
 	'abusefilter-revert-title' => 'Mengembalikan perubahan dari penyaringan $1',
+	'abusefilter-revert-intro' => 'Isian ini memungkinkan Anda mengembalikan semua perubahan yang dibuat oleh filter penyalahgunaan karena filter $1.
+Harap berhati-hati dalam menggunakan alat ini.',
 	'abusefilter-revert-preview-item' => '$1: $2 melakukan $3 pada $4.
 Aksi yang dikembalikan: $5 ($6)',
 	'abusefilter-revert-search-legend' => 'Pilih aksi Penyaringan penyalahgunaan untuk di kembalikan',
@@ -10523,9 +10537,16 @@ Aksi yang dikembalikan: $5 ($6)',
 	'abusefilter-revert-periodend' => 'Periode selesai:',
 	'abusefilter-revert-search' => 'Pilih tindakan',
 	'abusefilter-revert-filter' => 'Penyaring:',
+	'abusefilter-revert-preview-intro' => 'Berikut adalah tindakan yang dilakukan oleh filter penyalahgunaan yang akan dikembalikan oleh tindakan ini.
+Harap periksa dengan saksama, dan klik "konfirmasikan" untuk mengkonfirmasikan pilihan Anda.',
 	'abusefilter-revert-confirm' => 'Konfirmasi',
+	'abusefilter-revert-success' => 'Anda telah mengembalikan semua tindakan yang dilakukan filter penyalahgunaan karena [[Special:AbuseFilter/$1|filter $1]].',
+	'abusefilter-revert-reason' => 'Pengembalian otomatis terhadap semua tindakan yang dilakukan filter penyalahgunaan karena filter $1.
+Alasan yang diberikan: $2',
 	'abusefilter-revert-reasonfield' => 'Alasan pengembalian:',
 	'abusefilter-test' => 'Uji penyaringan terhadap suntingan sebelumnya',
+	'abusefilter-test-intro' => 'Halaman ini memungkinkan Anda untuk mengecek suatu filter yang dimasukkan pada kotak di bawah terhadap $1 {{PLURAL:$1|perubahan|perubahan}} terakhir.
+Untuk memuat suatu filter yang telah ada, tikkan ID filternya ke dalam kotak di bawah kotak suntingan, dan klik tombol "Muatkan".',
 	'abusefilter-test-legend' => 'Saring pengujian',
 	'abusefilter-test-load-filter' => 'Muat penyaringan ID:',
 	'abusefilter-test-submit' => 'Ujicoba',
@@ -10539,6 +10560,7 @@ Aksi yang dikembalikan: $5 ($6)',
 Anda dapat menerima penjelasan lengkap dengan menekan tombol "Periksa Sintaks".',
 	'abusefilter-changeslist-examine' => 'periksa',
 	'abusefilter-examine' => 'Teliti perubahan tersendiri',
+	'abusefilter-examine-intro' => 'Halaman ini memungkinkan Anda untuk memeriksa variabel yang dihasilkan Filter Penyalahgunaan untuk suatu perubahan individu, dan mengujinya terhadap filter.',
 	'abusefilter-examine-legend' => 'Ubah pilihan',
 	'abusefilter-examine-diff' => 'Beda URL:',
 	'abusefilter-examine-user' => 'Pengguna:',
@@ -10561,6 +10583,8 @@ Anda dapat menerima penjelasan lengkap dengan menekan tombol "Periksa Sintaks".'
 	'abusefilter-topnav-tools' => 'Alat Debugging',
 	'abusefilter-topnav-import' => 'Impor penyaring',
 	'abusefilter-log-name' => 'Log penyaringan penyalahgunaan',
+	'abusefilter-log-header' => 'Log ini memberikan ringkasan perubahan yang dilakukan terhadap filter.
+Untuk detail lengkap, lihat [[Special:AbuseFilter/history|daftar]] perubahan filter terbaru.',
 	'abusefilter-log-entry-modify' => 'pengubahan $1 ($2)',
 	'abusefilter-diff-title' => 'Perbedaan antarrevisi',
 	'abusefilter-diff-item' => 'butir',
@@ -10569,6 +10593,9 @@ Anda dapat menerima penjelasan lengkap dengan menekan tombol "Periksa Sintaks".'
 	'abusefilter-diff-pattern' => 'Penyaringan kondisi',
 	'abusefilter-diff-invalid' => 'Tidak dapat menarik versi yang diminta',
 	'abusefilter-diff-backhistory' => 'Kembali ke sejarah penyaringan',
+	'abusefilter-import-intro' => 'Anda dapat menggunakan antarmuka ini untuk mengimpor filter dari wiki lain.
+Pada wiki asal, klik "{{int:abusefilter-edit-export}}" di bawah "{{int:abusefilter-tools-subtitle}}" pada antarmuka penyuntingan.
+Salin dari kotak teks yang muncul, dan tempelkan di kotak teks ini, lalu klik "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Impor data',
 );
 
@@ -15914,11 +15941,11 @@ $messages['pl'] = array(
 Filtr nadużyć jest to oprogramowanie automatycznego stosowania heurystyki do wszystkich akcji.
 Interfejs pozwala przeglądać listę zdefiniowanych filtrów oraz pozwala na ich modyfikowanie.',
 	'abusefilter-mustbeeditor' => 'Ze względów bezpieczeństwa z tego interfejsu mogą korzystać wyłącznie użytkownicy posiadający uprawnienie do zmieniania filtrów nadużyć.',
-	'abusefilter-warning' => "<big>'''Uwaga'''</big>: Ta akcja została automatycznie zidentyfikowana jako szkodliwa.
-Niekonstruktywne edycje zostaną szybko wycofane, 
+	'abusefilter-warning' => "<big>'''Uwaga'''</big>: Twoja edycja została automatycznie zidentyfikowana jako szkodliwa.
+Niewłaściwe zmiany zostaną szybko wycofane, 
 a rażące lub powtarzające się niekonstruktywne edytowanie może spowodować zablokowanie Twojego konta lub adresu IP.
-Jeśli uważasz, że ta edycja jest zasadna, możesz kliknąć przycisk „{{int:savearticle}}”, aby ją zatwierdzić.
-Krótki opis reguły nadużycia, do której Twoja akcji została dopasowana: $1",
+Jeśli uważasz, że to co robisz ma uzasadnienie, kliknij przycisk „{{int:savearticle}}”, aby zatwierdzić zmiany.
+Krótki opis reguły nadużycia, do której Twoja akcji została dopasowana — $1",
 	'abusefilter-disallowed' => 'Ta akcja została automatycznie zidentyfikowana jako szkodliwa,
 w związku z tym została odrzucona.
 Jeśli uważasz, że ta edycja była zasadna, skontaktuj się z administratorem i poinformuj go o zaistniałej sytuacji.
@@ -19277,6 +19304,7 @@ $messages['te'] = array(
 	'abusefilter-disabled' => 'అచేతనం',
 	'abusefilter-new' => 'కొత్త జల్లెడని సృష్టించు',
 	'abusefilter-links' => 'ఉపయోగపడే లింకులు:',
+	'abusefilter-status-global' => 'సార్వత్రికం',
 	'abusefilter-list-options' => 'ఎంపికలు',
 	'abusefilter-list-options-submit' => 'తాజాకరించు',
 	'abusefilter-tools-subtitle' => 'పనిముట్లు',
@@ -19309,8 +19337,10 @@ $messages['te'] = array(
 	'abusefilter-edit-builder-vars-action' => 'చర్య',
 	'abusefilter-edit-builder-vars-newsize' => 'కొత్త పేజీ పరిమాణం',
 	'abusefilter-edit-builder-vars-oldsize' => 'పాత పేజీ పరిమాణం',
+	'abusefilter-edit-builder-vars-article-prefixedtext' => 'పేజీ పూర్తి శీర్షిక',
 	'abusefilter-edit-builder-vars-user-age' => 'వాడుకరి ఖాతా యొక్క వయసు',
 	'abusefilter-edit-builder-vars-user-name' => 'వాడుకరి ఖాతా యొక్క పేరు',
+	'abusefilter-history-foruser' => '$1 యొక్క మార్పులు',
 	'abusefilter-history-timestamp' => 'సమయం',
 	'abusefilter-history-user' => 'వాడుకరి',
 	'abusefilter-history-comments' => 'వ్యాఖ్యలు',
