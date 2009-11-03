@@ -620,6 +620,7 @@ Functional explanation: rmdoubles removes repeated characters in the argument, a
 * $2 is a function name
 * $3 is the number of expected arguments
 * $4 is the number of passed arguments (also supports PLURAL)',
+	'abusefilter-action-tag' => '{{Identical|Tag}}',
 	'abusefilter-revert-title' => 'Caption of [[Special:AbuseFilter/revert/1]] (go to [[Special:AbuseFilter]], open a filter, click “Revert actions taken by this filter”)',
 	'abusefilter-revert-filter' => '{{Identical|Filter}}',
 	'abusefilter-revert-preview-intro' => '"Confirm" is the contents of {{msg-mw|abusefilter-revert-confirm}}.',
@@ -701,6 +702,7 @@ $messages['af'] = array(
 	'abusefilter-history-actions' => 'Maatreëls',
 	'abusefilter-history-deleted' => 'Geskrap',
 	'abusefilter-history-select-user' => 'Gebruiker:',
+	'abusefilter-action-tag' => 'Etiket',
 	'abusefilter-revert-filter' => 'Filter:',
 	'abusefilter-revert-confirm' => 'Bevestig',
 	'abusefilter-test-load' => 'Laai',
@@ -13653,6 +13655,9 @@ $messages['ml'] = array(
 താങ്കളുടെ പ്രവൃത്തിയുമായി സാദൃശ്യമുള്ള ദുരുപയോഗ നിയമത്തിന്റെ ലഘുവിവരണം: $1',
 	'abusefilter-blocker' => 'ദുരുപയോഗ അരിപ്പ',
 	'abusefilter-accountreserved' => 'ഈ അംഗത്വനാമം ദുരുപയോഗ അരിപ്പയുടെ ഉപയോഗത്തിനായി മാറ്റിവെച്ചിരിക്കുകയാണ്.',
+	'action-abusefilter-log' => 'ദുരുപയോഗ രേഖ കാണുക',
+	'action-abusefilter-log-detail' => 'ദുരുപയോഗ രേഖയിലെ ഉൾപ്പെടുത്തലുകളുടെ വിശദവിവരങ്ങൾ കാണുക',
+	'action-abusefilter-private' => 'ദുരുപയോഗ രേഖയിലെ സ്വകാര്യ വിവരങ്ങൾ കാണുക',
 	'abusefilter-log-search' => 'ദുരുപയോഗ രേഖയിൽ തിരയുക',
 	'abusefilter-log-search-user' => 'ഉപയോക്താവ്:',
 	'abusefilter-log-search-title' => 'തലക്കെട്ട്:',
@@ -13661,6 +13666,7 @@ $messages['ml'] = array(
 	'abusefilter-log-details-legend' => 'രേഖയിൽ ഉൾപ്പെട്ട $1 ഇനത്തിന്റെ വിവരങ്ങൾ',
 	'abusefilter-log-details-var' => 'ചരം',
 	'abusefilter-log-details-val' => 'മൂല്യം',
+	'abusefilter-log-details-vars' => 'പ്രവർത്തന ചരങ്ങൾ',
 	'abusefilter-log-details-private' => 'സ്വകാര്യ വിവരം',
 	'abusefilter-log-details-ip' => 'ഉത്ഭവിക്കുന്ന ഐ.പി. വിലാസം',
 	'abusefilter-log-noactions' => 'ഒന്നുമില്ല',
@@ -13668,6 +13674,8 @@ $messages['ml'] = array(
 	'abusefilter-log-linkoncontribs' => 'ദുരുപയോഗ രേഖ',
 	'abusefilter-log-linkoncontribs-text' => 'ഈ ഉപയോക്താവിന്റെ ദുരുപയോഗ രേഖ',
 	'abusefilter-list-status' => 'സ്ഥിതി',
+	'abusefilter-list-public' => 'പൊതു വിവരണം',
+	'abusefilter-list-consequences' => 'പരിണിതഫലങ്ങൾ',
 	'abusefilter-list-visibility' => 'ദൃശ്യത',
 	'abusefilter-list-edit' => 'തിരുത്തുക',
 	'abusefilter-list-details' => 'വിശദവിവരങ്ങൾ',
@@ -13689,6 +13697,7 @@ $messages['ml'] = array(
 	'abusefilter-tools-submitexpr' => 'മൂല്യനിർണ്ണയം നടത്തുക',
 	'abusefilter-tools-reautoconfirm' => 'സ്വയം സ്ഥിരീകൃത സ്ഥിതി പുനഃസ്ഥാപിക്കുക',
 	'abusefilter-tools-reautoconfirm-user' => 'ഉപയോക്താവ്:',
+	'abusefilter-tools-reautoconfirm-submit' => 'വീണ്ടും സ്വയം സ്ഥിരീകരിക്കുക',
 	'abusefilter-reautoconfirm-notallowed' => 'സ്വയം സ്ഥിരീകൃത സ്ഥിതി പുനഃസ്ഥാപിക്കാൻ താങ്കൾക്ക് അനുമതിയില്ല.',
 	'abusefilter-reautoconfirm-done' => 'അംഗത്വത്തിന്റെ സ്വയം സ്ഥിരീകൃത സ്ഥിതി പുനഃസ്ഥാപിച്ചിരിക്കുന്നു',
 	'abusefilter-edit-status-label' => 'സ്ഥിതിവിവരക്കണക്കുകൾ:',
@@ -13763,10 +13772,13 @@ $messages['ml'] = array(
 	'abusefilter-history-user' => 'ഉപയോക്താവ്',
 	'abusefilter-history-actions' => 'പ്രവൃത്തികൾ',
 	'abusefilter-history-deleted' => 'മായ്ച്ചിരിക്കുന്നു',
+	'abusefilter-history-select-legend' => 'പരിഷ്കരിച്ച തിരച്ചിൽ',
 	'abusefilter-history-select-user' => 'ഉപയോക്താവ്:',
+	'abusefilter-history-select-submit' => 'പരിഷ്കൃതം',
 	'abusefilter-history-diff' => 'മാറ്റങ്ങൾ',
 	'abusefilter-exception-unexpectedatend' => 'ലിപ് $1-ൽ അപ്രതീക്ഷിത "$2".',
 	'abusefilter-exception-expectednotfound' => 'ലിപി $1-ൽ $2 പ്രതീക്ഷിച്ചിരുന്നു, പക്ഷേ കിട്ടിയില്ല (പകരം $3 $4 ലഭിച്ചു).',
+	'abusefilter-exception-dividebyzero' => 'അക്ഷരം $1-ൽ പൂജ്യം കൊണ്ട് $2-വിനെ ഹരിക്കാനുള്ള ആസാധുവായ ശ്രമം.',
 	'abusefilter-action-block' => 'തടയുക',
 	'abusefilter-action-degroup' => 'സംഘങ്ങളിൽ നിന്ന് നീക്കംചെയ്യുക',
 	'abusefilter-action-disallow' => 'അനുവദിക്കാതിരിക്കുക',
@@ -20185,6 +20197,7 @@ Görünen metin kutusundan kopyalayın, ve bu metin kutusuna yapıştırın, dah
  * @author AS
  * @author Ahonc
  * @author NickK
+ * @author Prima klasy4na
  * @author SamOdin
  */
 $messages['uk'] = array(
@@ -20357,7 +20370,7 @@ $messages['uk'] = array(
 	'abusefilter-edit-badsyntax' => 'У вказному вами фільтрі є синтаксична помилка.
 Синтаксичний аналізатор видав таке повідомлення: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Ви не можете змінити цей фільтр, оскільки він містить одну або декілька обмежуючих дій. Будь ласка, попросіть користувача з відповідними правами змінити фільтр для вас.',
-	'abusefilter-edit-viewhistory' => 'Показати історію цього фільтра',
+	'abusefilter-edit-viewhistory' => 'Переглянути історію цього фільтра',
 	'abusefilter-edit-history' => 'Історія:',
 	'abusefilter-edit-check' => 'Перевірити синтаксис',
 	'abusefilter-edit-badfilter' => 'Вказаного вами фільтру не існує',
