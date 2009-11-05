@@ -2076,6 +2076,7 @@ $messages['br'] = array(
 	'abusefilter-log-linkoncontribs-text' => 'Marilh ar siloù a-enep ar gwallimplij  evit an implijer-mañ',
 	'abusefilter-list' => 'An holl siloù',
 	'abusefilter-list-status' => 'Statud',
+	'abusefilter-list-visibility' => 'Gwelusted',
 	'abusefilter-list-edit' => 'Kemmañ',
 	'abusefilter-list-details' => 'Munudoù',
 	'abusefilter-list-limit' => 'Niver dre bajenn',
@@ -2113,6 +2114,7 @@ $messages['br'] = array(
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|eilenn|eilenn}}',
 	'abusefilter-edit-warn-actions' => 'Oberoù :',
 	'abusefilter-edit-done-subtitle' => 'Sil aozet',
+	'abusefilter-edit-viewhistory' => 'Gwelet istor ar sil-mañ',
 	'abusefilter-edit-history' => 'Istor :',
 	'abusefilter-edit-check' => 'Gwiriañ an ereadur',
 	'abusefilter-edit-tools' => 'Ostilhoù :',
@@ -2134,10 +2136,12 @@ $messages['br'] = array(
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Titl klok ar bajenn',
 	'abusefilter-edit-builder-vars-user-age' => 'Oad ar gont implijer',
 	'abusefilter-edit-builder-vars-user-name' => 'Anv kont an implijer',
+	'abusefilter-history-foruser' => 'Kemmoù gant $1',
 	'abusefilter-history-hidden' => 'Kuzhet',
 	'abusefilter-history-enabled' => 'Gweredekaet',
 	'abusefilter-history-timestamp' => 'Deiziad',
 	'abusefilter-history-user' => 'Implijer',
+	'abusefilter-history-flags' => 'Bannieloù',
 	'abusefilter-history-actions' => 'Oberoù',
 	'abusefilter-history-deleted' => 'Diverket',
 	'abusefilter-history-filterid' => 'Sil',
@@ -2149,11 +2153,14 @@ $messages['br'] = array(
 	'abusefilter-revert-confirm' => 'Kadarnaat',
 	'abusefilter-test-submit' => 'Amprouiñ',
 	'abusefilter-test-load' => 'Kargañ',
+	'abusefilter-changeslist-examine' => 'arsellet',
 	'abusefilter-examine-user' => 'Implijer :',
 	'abusefilter-examine-title' => 'Titl ar bajenn :',
 	'abusefilter-examine-submit' => 'Klask',
 	'abusefilter-examine-test-button' => 'Amprouiñ ar sil',
+	'abusefilter-examine-syntaxerror' => 'Direizh eo ereadur ar sil',
 	'abusefilter-topnav-home' => 'Degemer',
+	'abusefilter-topnav-import' => 'Enporzhiañ ur sil',
 	'abusefilter-diff-item' => 'Elfenn',
 	'abusefilter-diff-info' => 'Titouroù diazez',
 	'abusefilter-import-submit' => 'Enporzhiañ roadennoù',
@@ -5431,9 +5438,9 @@ $messages['es'] = array(
 	'abusefilter-desc' => 'Aplicar automáticamente heuristicas para ediciones',
 	'abusefilter' => 'Configuración del filtro antiabusos',
 	'abuselog' => 'Registro del filtro antiabusos',
-	'abusefilter-intro' => 'Bienvenido a la interfáz de administración de filtros antiabuso.
-El filtro antiabuso es un mecanismo de software automatizado de aplicación heurística automática a todas las acciones.
-Esta interfáz muestra una lista de filtros definidos, que pueden ser ser modificados.',
+	'abusefilter-intro' => 'Bienvenido a la interfaz de administración de filtros de edición.
+El filtro de edición es un mecanismo de software automatizado que aplica heurística a todas las acciones.
+Esta interfaz muestra una lista de filtros definidos, que pueden ser ser modificados.',
 	'abusefilter-mustbeeditor' => 'Por razones de seguridad, solamente los usuarios con derechos para modificar filtros de abuso pueden usar esta interfáz.',
 	'abusefilter-warning' => "<big>'''Atención'''</big>: Esta acción ha sido automáticamente identificada como dañina.
 Las ediciones no constructivas son rápidamente revertidas,
@@ -5455,7 +5462,7 @@ Una breve explicación acerca de la regla del filtro que usted ha disparado es: 
 	'abusefilter-autopromote-blocked' => 'Esta acción ha sido automáticamente identificada como dañina y por lo tanto ha sido deshabilitada.
 Además, como medida de seguridad, algunos privilegios entregados a cuentas activas y comprometidas con el proyecto han sido revocados temporalmente de su cuenta.
 Una breve explicación acerca de la regla del filtro antiabusos que usted ha disparado es: $1',
-	'abusefilter-blocker' => 'Filtro antiabusos',
+	'abusefilter-blocker' => 'Filtro de abusos',
 	'abusefilter-blockreason' => 'Bloqueado automáticamente por el filtro antiabusos.
 Descripción del filtro que se ha disparado: $1',
 	'abusefilter-degroupreason' => 'Privilegios automáticamente revocados por el filtro antiabusos.
@@ -13759,8 +13766,10 @@ $messages['ml'] = array(
 :''(പൊതുജന ലഭ്യം)''",
 	'abusefilter-edit-deleted' => 'മായ്ച്ചതായി അടയാളപ്പെടുത്തുക',
 	'abusefilter-edit-hidden' => 'പൊതുജന ദൃഷ്ടിയിൽ നിന്നും അരിപ്പയുടെ വിവരങ്ങൾ മറയ്ക്കുക',
+	'abusefilter-edit-rules' => 'ഉപാധികൾ:',
 	'abusefilter-edit-notes' => "കുറിപ്പുകൾ:
 :''(സ്വകാര്യം)''",
+	'abusefilter-edit-action-block' => 'ഉപയോക്താവിനെ ഒപ്പം/അല്ലങ്കിൽ ഐ.പി. വിലാസത്തെ തിരുത്തുന്നതിൽ നിന്നും തടയുക',
 	'abusefilter-edit-throttle-count' => 'അനുവദിക്കപ്പെട്ടിരിക്കുന്ന പ്രവർത്തനങ്ങളുടെ എണ്ണം:',
 	'abusefilter-edit-throttle-period' => 'കാലയളവ്:',
 	'abusefilter-edit-throttle-seconds' => '{{PLURAL:$1|ഒരു സെക്കന്റ്|$1 സെക്കന്റുകൾ}}',
@@ -13787,6 +13796,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-builder-op-comparison-gt' => 'വലുതാണ് (>)',
 	'abusefilter-edit-builder-op-comparison-lte' => 'ചെറുതോ സമമോ ആണ് (<=)',
 	'abusefilter-edit-builder-op-comparison-gte' => 'വലുതോ സമമോ ആണ് (>=)',
+	'abusefilter-edit-builder-group-misc' => 'പലവക',
 	'abusefilter-edit-builder-funcs-rmspecials' => 'പ്രത്യേക അക്ഷരങ്ങൾ നീക്കംചെയ്യുക (rmspecials)',
 	'abusefilter-edit-builder-funcs-ip_in_range' => 'ഐ.പി. പരിധിയിലാണോ? (ip_in_range)',
 	'abusefilter-edit-builder-funcs-substr' => 'ഉപപദം (substr)',
@@ -13862,6 +13872,7 @@ $messages['ml'] = array(
 	'abusefilter-examine-title' => 'താളിന്റെ തലക്കെട്ട്:',
 	'abusefilter-examine-submit' => 'അന്വേഷിക്കുക',
 	'abusefilter-examine-noresults' => 'താങ്കൾ നൽകിയവയ്ക്കുള്ള തിരച്ചിലുകൾ യാതൊരു ഫലവും നൽകിയില്ല.',
+	'abusefilter-topnav-examine' => 'പഴയ തിരുത്തലുകൾ പരിശോധിക്കുക',
 	'abusefilter-topnav-log' => 'ദുരുപയോഗ രേഖ',
 	'abusefilter-log-name' => 'ദുരുപയോഗ അരിപ്പയുടെ ഉപയോഗ രേഖ',
 	'abusefilter-log-entry-modify' => '$1 ($2) മാറ്റം വരുത്തി',
