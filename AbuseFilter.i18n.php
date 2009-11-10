@@ -13773,6 +13773,10 @@ $messages['ml'] = array(
 താങ്കളുടെ തിരുത്തൽ സൃഷ്ടിപരമാണെന്ന് താങ്കൾ വിശ്വസിക്കുന്നുവെങ്കിൽ, ദയവായി കാര്യനിർവാഹകരിലൊരാളെ ബന്ധപ്പെടുക, താങ്കൾ എന്താണ് ചെയ്യാൻ ശ്രമിച്ചതെന്നറിയിക്കുക.
 താങ്കളുടെ പ്രവൃത്തിയുമായി സാദൃശ്യമുള്ള ദുരുപയോഗ നിയമത്തിന്റെ ലഘുവിവരണം: $1',
 	'abusefilter-blocker' => 'ദുരുപയോഗ അരിപ്പ',
+	'abusefilter-blockreason' => 'ദുരുപയോഗ അരിപ്പ ഉപയോഗിച്ച് സ്വതവേ തടയപ്പെട്ടിരിക്കുന്നു.
+ഒത്തുപോവുന്ന നിയമത്തിന്റെ വിവരണം: $1',
+	'abusefilter-degroupreason' => 'ദുരുപയോഗ അരിപ്പ അവകാശങ്ങൾ സ്വതവേ അരിഞ്ഞുമാറ്റിയിരിക്കുന്നു.
+നയ വിവരണം: $1',
 	'abusefilter-accountreserved' => 'ഈ അംഗത്വനാമം ദുരുപയോഗ അരിപ്പയുടെ ഉപയോഗത്തിനായി മാറ്റിവെച്ചിരിക്കുകയാണ്.',
 	'right-abusefilter-modify' => 'ദുരുപയോഗ അരിപ്പകൾ പുതുക്കുക',
 	'right-abusefilter-view' => 'ദുരുപയോഗ അരിപ്പകൾ കാണുക',
@@ -13791,6 +13795,7 @@ $messages['ml'] = array(
 	'action-abusefilter-revert' => 'തന്നിരിക്കുന്ന ദുരുപയോഗ അരിപ്പ ചെയ്ത എല്ലാ മാറ്റങ്ങളും തിരസ്കരിക്കുക',
 	'action-abusefilter-view-private' => 'സ്വകാര്യമെന്ന അടയാളപ്പെടുത്തിയ ദുരുപയോഗ അരിപ്പകൾ കാണുക',
 	'abusefilter-log' => 'ദുരുപയോഗ അരിപ്പയുടെ പ്രവർത്തന രേഖ',
+	'abusefilter-log-summary' => 'അരിപ്പകൾ കണ്ടെത്തിയ എല്ലാ പ്രവൃത്തിയുടേയും പട്ടിക ഈ രേഖയിൽ കാണാം.',
 	'abusefilter-log-search' => 'ദുരുപയോഗ രേഖയിൽ തിരയുക',
 	'abusefilter-log-search-user' => 'ഉപയോക്താവ്:',
 	'abusefilter-log-search-title' => 'തലക്കെട്ട്:',
@@ -13887,6 +13892,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-bad-tags' => 'താങ്കൾ നൽകിയ റ്റാഗുകളിൽ ഒന്നോ അതിലധികമോ അസാധുവാണ്.
 റ്റാഗുകൾ ചെറുതും പ്രത്യേക അക്ഷരങ്ങൾ ഉൾക്കൊള്ളാത്തവയും ആയിരിക്കണം.',
 	'abusefilter-edit-notallowed' => 'ദുരുപയോഗ അരിപ്പകൾ തിരുത്താനോ സൃഷ്ടിക്കാനോ താങ്കൾക്ക് അനുമതിയില്ല',
+	'abusefilter-edit-builder-select' => 'കഴ്‌‌സറിലേയ്ക്ക് ചേർക്കാനായി ഒരു ഐച്ഛികം തിരഞ്ഞെടുക്കുക',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'ഗണന ചിഹ്നങ്ങൾ',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'സങ്കലനം (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'വ്യവകലനം (-)',
@@ -13990,6 +13996,7 @@ $messages['ml'] = array(
 	'abusefilter-examine-submit' => 'അന്വേഷിക്കുക',
 	'abusefilter-examine-vars' => 'ഈ മാറ്റത്തിനായി സൃഷ്ടിച്ച ചരങ്ങൾ',
 	'abusefilter-examine-test-button' => 'അരിപ്പ പരീക്ഷിക്കുക',
+	'abusefilter-examine-match' => 'ഈ മാറ്റത്തോട് അരിപ്പ യോജിക്കുന്നു.',
 	'abusefilter-examine-noresults' => 'താങ്കൾ നൽകിയവയ്ക്കുള്ള തിരച്ചിലുകൾ യാതൊരു ഫലവും നൽകിയില്ല.',
 	'abusefilter-topnav-examine' => 'പഴയ തിരുത്തലുകൾ പരിശോധിക്കുക',
 	'abusefilter-topnav-log' => 'ദുരുപയോഗ രേഖ',
@@ -14002,6 +14009,7 @@ $messages['ml'] = array(
 	'abusefilter-diff-version' => '$1-നു $2 സൃഷ്ടിച്ച പതിപ്പ്',
 	'abusefilter-diff-info' => 'അടിസ്ഥാന വിവരങ്ങൾ',
 	'abusefilter-diff-invalid' => 'ആവശ്യപ്പെട്ട പതിപ്പുകൾ ശേഖരിക്കാൻ കഴിയില്ല',
+	'abusefilter-diff-backhistory' => 'അരിപ്പയുടെ നാൾവഴിയിലേയ്ക്ക് തിരിച്ചുപോവുക',
 	'abusefilter-import-submit' => 'വിവരങ്ങൾ ഇറക്കുമതി ചെയ്യുക',
 );
 
@@ -19541,6 +19549,7 @@ $messages['te'] = array(
 	'abusefilter-list-hitcount' => 'హిట్ల లెక్క',
 	'abusefilter-list-edit' => 'మార్చు',
 	'abusefilter-list-details' => 'వివరాలు',
+	'abusefilter-list-lastmodified' => 'చివరి మార్పు',
 	'abusefilter-hidden' => 'అంతరంగికం',
 	'abusefilter-unhidden' => 'బహిరంగం',
 	'abusefilter-enabled' => 'సచేతనం',
@@ -19581,6 +19590,8 @@ $messages['te'] = array(
 	'abusefilter-edit-builder-vars-action' => 'చర్య',
 	'abusefilter-edit-builder-vars-newsize' => 'కొత్త పేజీ పరిమాణం',
 	'abusefilter-edit-builder-vars-oldsize' => 'పాత పేజీ పరిమాణం',
+	'abusefilter-edit-builder-vars-summary' => 'మార్పు సంగ్రహం/కారణం',
+	'abusefilter-edit-builder-vars-article-text' => 'పేజీ శీర్షిక (పేరుబరి లేకుండా)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'పేజీ పూర్తి శీర్షిక',
 	'abusefilter-edit-builder-vars-user-age' => 'వాడుకరి ఖాతా యొక్క వయసు',
 	'abusefilter-edit-builder-vars-user-name' => 'వాడుకరి ఖాతా యొక్క పేరు',
@@ -19591,6 +19602,7 @@ $messages['te'] = array(
 	'abusefilter-history-actions' => 'చర్యలు',
 	'abusefilter-history-select-user' => 'వాడుకరి:',
 	'abusefilter-history-diff' => 'మార్పులు',
+	'abusefilter-revert-confirm' => 'నిర్ధారించు',
 	'abusefilter-test-load' => 'లోడు',
 	'abusefilter-examine-user' => 'వాడుకరి:',
 	'abusefilter-examine-title' => 'పేజీ శీర్షిక:',
