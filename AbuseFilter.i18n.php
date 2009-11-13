@@ -13838,6 +13838,7 @@ $messages['ml'] = array(
 	'abusefilter-list-public' => 'പൊതു വിവരണം',
 	'abusefilter-list-consequences' => 'പരിണിതഫലങ്ങൾ',
 	'abusefilter-list-visibility' => 'ദൃശ്യത',
+	'abusefilter-list-hitcount' => 'സന്ദർശന എണ്ണം',
 	'abusefilter-list-edit' => 'തിരുത്തുക',
 	'abusefilter-list-details' => 'വിശദവിവരങ്ങൾ',
 	'abusefilter-list-limit' => 'ഓരോ താളിലുമുള്ള എണ്ണം:',
@@ -13900,10 +13901,12 @@ $messages['ml'] = array(
 	'abusefilter-edit-denied' => 'താങ്കൾക്ക് ഈ അരിപ്പയുടെ വിവരങ്ങൾ അറിയാൻ സാദ്ധ്യമല്ല, അത് പൊതുദൃഷ്ടിയിൽ നിന്നും മറയ്ക്കപ്പെട്ടതാണ്.',
 	'abusefilter-edit-main' => 'അരിപ്പയ്ക്കായുള്ള ചരങ്ങൾ',
 	'abusefilter-edit-done-subtitle' => 'അരിപ്പ തിരുത്തി',
+	'abusefilter-edit-done' => 'താങ്കൾ $1 അരിപ്പയിൽ വരുത്തിയ മാറ്റങ്ങൾ വിജയകരമായി സേവ് ചെയ്തിരിക്കുന്നു.',
 	'abusefilter-edit-viewhistory' => 'ഈ അരിപ്പയുടെ നാൾവഴി കാണുക',
 	'abusefilter-edit-history' => 'നാൾവഴി:',
 	'abusefilter-edit-check' => 'എഴുത്തുരീതി പരിശോധിക്കുക',
 	'abusefilter-edit-badfilter' => 'താങ്കൾ വ്യക്തമാക്കിയ അരിപ്പ നിലവിലില്ല',
+	'abusefilter-edit-revert' => 'ഈ അരിപ്പ ചെയ്ത പ്രവൃത്തികൾ മുൻപ്രാപനം ചെയ്യുക',
 	'abusefilter-edit-tools' => 'ഉപകരണങ്ങൾ:',
 	'abusefilter-edit-global' => 'ഈ അരിപ്പ ആഗോളമായി പ്രാവർത്തികമാക്കുക',
 	'abusefilter-edit-export' => 'ഈ അരിപ്പ മറ്റൊരു വിക്കിയിലേയ്ക്ക് കയറ്റുമതി ചെയ്യുക',
@@ -13979,6 +13982,8 @@ $messages['ml'] = array(
 	'abusefilter-history-timestamp' => 'സമയം',
 	'abusefilter-history-user' => 'ഉപയോക്താവ്',
 	'abusefilter-history-public' => 'പൊതു അരിപ്പയുടെ വിവരണം',
+	'abusefilter-history-flags' => 'പതാകകൾ',
+	'abusefilter-history-comments' => 'അഭിപ്രായങ്ങൾ',
 	'abusefilter-history-actions' => 'പ്രവൃത്തികൾ',
 	'abusefilter-history-deleted' => 'മായ്ച്ചിരിക്കുന്നു',
 	'abusefilter-history-filterid' => 'അരിപ്പ',
@@ -13990,6 +13995,7 @@ $messages['ml'] = array(
 	'abusefilter-exception-unexpectedatend' => 'ലിപ് $1-ൽ അപ്രതീക്ഷിത "$2".',
 	'abusefilter-exception-expectednotfound' => 'ലിപി $1-ൽ $2 പ്രതീക്ഷിച്ചിരുന്നു, പക്ഷേ കിട്ടിയില്ല (പകരം $3 $4 ലഭിച്ചു).',
 	'abusefilter-exception-dividebyzero' => 'അക്ഷരം $1-ൽ പൂജ്യം കൊണ്ട് $2-വിനെ ഹരിക്കാനുള്ള ആസാധുവായ ശ്രമം.',
+	'abusefilter-action-tag' => 'റ്റാഗ്',
 	'abusefilter-action-warn' => 'മുന്നറിയിപ്പ് നൽകുക',
 	'abusefilter-action-block' => 'തടയുക',
 	'abusefilter-action-degroup' => 'സംഘങ്ങളിൽ നിന്ന് നീക്കംചെയ്യുക',
@@ -16635,11 +16641,10 @@ Uma breve descricição da regra de abuso com a qual a sua ação coincidiu é: 
 e foi consequentemente bloqueada.
 Se você crê que a sua edição foi construtiva, por favor contacte um administrador, e informe-o do que você estava a tentar fazer.
 Uma breve descrição da regra de abuso com a qual a sua ação coincidiu é: $1',
-	'abusefilter-blocked-display' => 'Esta ação foi identificada automaticamente como prejudicial,
-e você foi impedido de a executar.
-Além disso, para proteger o {{SITENAME}}, edições da sua conta e de todos os endereços IP associados foram bloqueadas.
-Se isto ocorreu por engano, por favor contacte um administrador.
-Uma breve descrição da regra de abuso com a qual a sua ação coincidiu é: $1',
+	'abusefilter-blocked-display' => 'Esta acção foi automaticamente identificada como prejudicial e está impedido de executá-la.
+Adicionalmente, para proteger a {{SITENAME}}, foram bloqueadas as edições pela sua conta e por todos os endereços IP associados.
+Se considera que este bloqueio é indevido, por favor contacte um administrador.
+Uma breve descrição da regra de abuso com a qual a sua acção coincidiu é: $1',
 	'abusefilter-degrouped' => 'Esta ação foi identificada automaticamente como prejudicial.
 Em consequência, foi bloqueada, e, já que se suspeita que a sua conta esteja comprometida, todas as permissões foram removidas.
 Se você crê que isto ocorreu por engano, por favor contacte um buroctata indicando uma justificação desta ação, e as suas permissões poderão ser repostas.
@@ -16892,7 +16897,7 @@ Marcações devem ser curtas e não devem conter caracteres especiais.',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Nível de proteção de movimentação da página',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Texto antiga da página, com toda a formatação removida',
 	'abusefilter-edit-builder-vars-old-links' => 'Ligações na página, antes da edição',
-	'abusefilter-edit-builder-vars-old-html' => 'Wikitexto antiga da página, convertido para HTML',
+	'abusefilter-edit-builder-vars-old-html' => 'Wikitexto antigo da página, convertido para HTML',
 	'abusefilter-edit-builder-vars-minor-edit' => 'Se a edição está marcada ou não como menor',
 	'abusefilter-edit-builder-vars-file-sha1' => 'Hash SHA1 do conteúdo do ficheiro',
 	'abusefilter-filter-log' => 'Modificações recentes de filtros',
@@ -17006,14 +17011,15 @@ Para detalhes completos, ver [[Special:AbuseFilter/history|a lista]] de alteraç
 	'abusefilter-diff-pattern' => 'Condições do filtro',
 	'abusefilter-diff-invalid' => 'Não foi possível buscar as versões requeridas',
 	'abusefilter-diff-backhistory' => 'Regressar ao histórico do filtro',
-	'abusefilter-import-intro' => 'Você pode usar esta interface para importar filtros de outras wikis.
+	'abusefilter-import-intro' => 'Pode usar esta interface para importar filtros de outras wikis.
 Na wiki de origem, clique em "{{int:abusefilter-edit-export}}", sob "{{int:abusefilter-tools-subtitle}}" na interface de edição.
-Copie da caixa de texto que aparece, e cole nesta caixa de texto, e a seguir clique em "{{int:abusefilter-import-submit}}".',
+Copie da caixa de texto que aparece, cole nesta caixa de texto e a seguir clique em "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Importar dados',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Giro720
+ * @author Hamilton Abreu
  * @author Heldergeovane
  * @author Luckas Blade
  */
@@ -17143,6 +17149,9 @@ Descrição da regra: $1',
 	'abusefilter-topnav-import' => 'Importar filtro',
 	'abusefilter-diff-title' => 'Diferenças entre versões',
 	'abusefilter-diff-pattern' => 'Condições do filtro',
+	'abusefilter-import-intro' => 'Você pode usar esta interface para importar filtros de outras wikis.
+Na wiki de origem, clique em "{{int:abusefilter-edit-export}}", sob "{{int:abusefilter-tools-subtitle}}" na interface de edição.
+Copie da caixa de texto que aparece, e cole nesta caixa de texto, e a seguir clique em "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Importar dados',
 );
 
