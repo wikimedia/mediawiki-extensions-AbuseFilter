@@ -314,8 +314,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$new = explode( "\n", $new );
 
 		if ( $old == $new ) {
-			$old = implode( "<br/>\n", $old );
-			$new = implode( "<br/>\n", $new );
+			$old = implode( "<br />\n", $old );
+			$new = implode( "<br />\n", $new );
 			return $this->getSimpleRow( $msg, $old, $new, 'text' );
 		}
 
