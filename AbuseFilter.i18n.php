@@ -13817,6 +13817,7 @@ $messages['ml'] = array(
 	'abusefilter-log-summary' => 'അരിപ്പകൾ കണ്ടെത്തിയ എല്ലാ പ്രവൃത്തിയുടേയും പട്ടിക ഈ രേഖയിൽ കാണാം.',
 	'abusefilter-log-search' => 'ദുരുപയോഗ രേഖയിൽ തിരയുക',
 	'abusefilter-log-search-user' => 'ഉപയോക്താവ്:',
+	'abusefilter-log-search-filter' => 'അരിപ്പയുടെ ഐ.ഡി.:',
 	'abusefilter-log-search-title' => 'തലക്കെട്ട്:',
 	'abusefilter-log-search-submit' => 'തിരയുക',
 	'abusefilter-log-detailedentry-global' => '$1 ആഗോള അരിപ്പ',
@@ -13874,8 +13875,11 @@ $messages['ml'] = array(
 	'abusefilter-reautoconfirm-done' => 'അംഗത്വത്തിന്റെ സ്വയം സ്ഥിരീകൃത സ്ഥിതി പുനഃസ്ഥാപിച്ചിരിക്കുന്നു',
 	'abusefilter-edit-subtitle' => 'അരിപ്പ $1 തിരുത്തുന്നു',
 	'abusefilter-edit-status-label' => 'സ്ഥിതിവിവരക്കണക്കുകൾ:',
+	'abusefilter-edit-throttled' => "'''മുന്നറിയിപ്പ്''':സുരക്ഷാ മാർഗ്ഗമെന്ന നിലയിൽ ഈ അരിപ്പ സ്വയം പ്രവർത്തനരഹിതമാക്കിയിരിക്കുന്നു.
+പ്രവൃത്തിയുടെ $1% ഒത്തുപോകലുകളുടെ പരിധിയെത്തിയിരിക്കുന്നു.",
 	'abusefilter-edit-new' => 'പുതിയ അരിപ്പ',
 	'abusefilter-edit-save' => 'അരിപ്പ സേവ് ചെയ്യുക',
+	'abusefilter-edit-id' => 'അരിപ്പയുടെ ഐ.ഡി.:',
 	'abusefilter-edit-description' => "വിവരണം:
 :''(പൊതുജന ലഭ്യം)''",
 	'abusefilter-edit-flags' => 'പതാകകൾ:',
@@ -13910,6 +13914,8 @@ $messages['ml'] = array(
 	'abusefilter-edit-main' => 'അരിപ്പയ്ക്കായുള്ള ചരങ്ങൾ',
 	'abusefilter-edit-done-subtitle' => 'അരിപ്പ തിരുത്തി',
 	'abusefilter-edit-done' => 'താങ്കൾ $1 അരിപ്പയിൽ വരുത്തിയ മാറ്റങ്ങൾ വിജയകരമായി സേവ് ചെയ്തിരിക്കുന്നു.',
+	'abusefilter-edit-restricted' => 'താങ്കൾക്ക് ഈ അരിപ്പയിൽ മാറ്റം വരുത്താൻ കഴിയില്ല, കാരണം ഇതിൽ ഒന്നോ അതിലധികമോ പരിമിതപ്പെടുത്തിയ പ്രവൃത്തികളുണ്ട്.
+ദയവായി അനുമതിയുള്ള ഉപയോക്താവിനെ സമീപിച്ച് പരിമിതപ്പെടുത്തിയ മാറ്റങ്ങൾ താങ്കൾക്കായി ചെയ്യാൻ ദയവായി ആവശ്യപ്പെടുക.',
 	'abusefilter-edit-viewhistory' => 'ഈ അരിപ്പയുടെ നാൾവഴി കാണുക',
 	'abusefilter-edit-history' => 'നാൾവഴി:',
 	'abusefilter-edit-check' => 'എഴുത്തുരീതി പരിശോധിക്കുക',
