@@ -10752,7 +10752,7 @@ $messages['io'] = array(
 	'abusefilter-list-edit' => 'Redaktar',
 	'abusefilter-hidden' => 'Privata',
 	'abusefilter-unhidden' => 'Publika',
-	'abusefilter-new' => 'Nova filtrilo',
+	'abusefilter-new' => 'Krear nova filtrilo',
 	'abusefilter-tools-modifiertest-submit' => 'Probez',
 	'abusefilter-list-options' => 'Selekti',
 	'abusefilter-list-options-deleted-only' => 'Montrar nur filtrili efacita',
@@ -10768,6 +10768,8 @@ $messages['io'] = array(
 	'abusefilter-edit-done-subtitle' => 'La filtrilo redaktesas',
 	'abusefilter-edit-history' => 'Versionaro:',
 	'abusefilter-edit-tools' => 'Utensili:',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adiciono (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Sustraciono (-)',
 	'abusefilter-edit-builder-op-arithmetic-divide' => 'Divido (/)',
 	'abusefilter-history-foruser' => 'Chanji da $1',
 	'abusefilter-history-timestamp' => 'Tempo',
@@ -10776,6 +10778,7 @@ $messages['io'] = array(
 	'abusefilter-history-deleted' => 'Efacita',
 	'abusefilter-history-filterid' => 'Filtrilo',
 	'abusefilter-history-select-user' => 'Uzanto:',
+	'abusefilter-history-diff' => 'Chanji',
 	'abusefilter-action-degroup' => 'Forigar ek grupi',
 	'abusefilter-revert-filter' => 'Filtrilo:',
 	'abusefilter-test-submit' => 'Probez',
@@ -13321,6 +13324,7 @@ Gaef \'n filternummer in om \'ne bestaonde filter te laje, en klik daonao op de 
 );
 
 /** Lumbaart (Lumbaart)
+ * @author Dakrismeno
  * @author Sprüngli
  */
 $messages['lmo'] = array(
@@ -13329,6 +13333,8 @@ $messages['lmo'] = array(
 	'abuselog' => "Diari d'abus",
 	'abusefilter-warning' => "Chetsa azion a l'è staida automatigament identifiada en tant che dagnousa.
 Li edizion miga construtivi i sarà revertid à bott, e grand o repetud edizion mia constructivi i resultarà end al cost cunt o ordenadour blocad. Se cas che creghée che chesta edizion la sighi construtiva, a podée clicar Sotmet de nœuv per confirmar-la. Una curta descripzion de la regula d'abus che la vosta edizion l'ha rencontrad a l'è: $1",
+	'abusefilter-diff-info' => 'Infurmazión de bas',
+	'abusefilter-diff-pattern' => 'Cundizión di filter',
 );
 
 /** Lithuanian (Lietuvių)
@@ -14035,9 +14041,11 @@ $messages['ml'] = array(
 	'abusefilter-test-period-start' => 'പിന്നീട് വരുത്തിയ മാറ്റങ്ങൾ:',
 	'abusefilter-test-period-end' => 'മുമ്പ് വരുത്തിയ മാറ്റങ്ങൾ:',
 	'abusefilter-test-page' => 'താളിൽ വരുത്തിയ മാറ്റങ്ങൾ:',
+	'abusefilter-test-shownegative' => 'അരിപ്പയുമായി യോജിക്കാത്ത മാറ്റങ്ങൾ പ്രദർശിപ്പിക്കുക',
 	'abusefilter-changeslist-examine' => 'പരിശോധിക്കുക',
 	'abusefilter-examine' => 'ഒറ്റയൊറ്റ മാറ്റങ്ങൾ പരിശോധിക്കുക',
 	'abusefilter-examine-legend' => 'മാറ്റങ്ങൾ തിരഞ്ഞെടുക്കുക',
+	'abusefilter-examine-diff' => 'വ്യത്യാസത്തിന്റെ യൂ.ആർ.എൽ.:',
 	'abusefilter-examine-user' => 'ഉപയോക്താവ്:',
 	'abusefilter-examine-title' => 'താളിന്റെ തലക്കെട്ട്:',
 	'abusefilter-examine-submit' => 'അന്വേഷിക്കുക',
@@ -14045,6 +14053,10 @@ $messages['ml'] = array(
 	'abusefilter-examine-test' => 'ഈ മാറ്റം ഒരു അരിപ്പയിൽ പരീക്ഷിക്കുക',
 	'abusefilter-examine-test-button' => 'അരിപ്പ പരീക്ഷിക്കുക',
 	'abusefilter-examine-match' => 'ഈ മാറ്റത്തോട് അരിപ്പ യോജിക്കുന്നു.',
+	'abusefilter-examine-nomatch' => 'അരിപ്പ ഈ മാറ്റവുമായി ഒത്തുപോകുന്നില്ല.',
+	'abusefilter-examine-syntaxerror' => 'ഈ അരിപ്പയിൽ അസാധുവായ ലേഖനരീതിയുണ്ട്',
+	'abusefilter-examine-notfound' => 'താങ്കളാവശ്യപ്പെട്ട മാറ്റം കണ്ടെത്താനായില്ല.',
+	'abusefilter-examine-incompatible' => 'താങ്കളാവശ്യപ്പെട്ട മാറ്റം ദുരുപയോഗ അരിപ്പ പിന്തുണയ്ക്കുന്നില്ല',
 	'abusefilter-examine-noresults' => 'താങ്കൾ നൽകിയവയ്ക്കുള്ള തിരച്ചിലുകൾ യാതൊരു ഫലവും നൽകിയില്ല.',
 	'abusefilter-topnav-examine' => 'പഴയ തിരുത്തലുകൾ പരിശോധിക്കുക',
 	'abusefilter-topnav-log' => 'ദുരുപയോഗ രേഖ',
