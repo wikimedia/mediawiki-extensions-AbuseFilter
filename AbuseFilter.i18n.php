@@ -14073,6 +14073,7 @@ $messages['ml'] = array(
 	'abusefilter-examine-notfound' => 'താങ്കളാവശ്യപ്പെട്ട മാറ്റം കണ്ടെത്താനായില്ല.',
 	'abusefilter-examine-incompatible' => 'താങ്കളാവശ്യപ്പെട്ട മാറ്റം ദുരുപയോഗ അരിപ്പ പിന്തുണയ്ക്കുന്നില്ല',
 	'abusefilter-examine-noresults' => 'താങ്കൾ നൽകിയവയ്ക്കുള്ള തിരച്ചിലുകൾ യാതൊരു ഫലവും നൽകിയില്ല.',
+	'abusefilter-topnav' => "'''ദുരുപയോഗ അരിപ്പയ്ക്കുള്ള വഴികാട്ടി'''",
 	'abusefilter-topnav-examine' => 'പഴയ തിരുത്തലുകൾ പരിശോധിക്കുക',
 	'abusefilter-topnav-log' => 'ദുരുപയോഗ രേഖ',
 	'abusefilter-topnav-tools' => 'പ്രശ്നപരിഹാര ഉപകരണങ്ങൾ',
