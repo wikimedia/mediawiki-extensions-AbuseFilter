@@ -1,5 +1,9 @@
 -- SQL tables for AbuseFilter extension (Postgres version)
 
+-- Note: This does not currently work, as the extension generates queries
+-- like this: SELECT af_hidden FROM abuse_filter WHERE af_id = 'new' LIMIT 1
+-- Which makes no sense as af_id is a BIGINT in the MySQL version of the schema
+
 BEGIN;
 
 CREATE SEQUENCE abuse_filter_af_id_seq;
