@@ -3525,6 +3525,7 @@ Handlinger som skal tilbagerulles: $5 ($6)',
  * @author Cedric31
  * @author ChrisiPK
  * @author Church of emacs
+ * @author Giftpflanze
  * @author Leithian
  * @author Merlissimo
  * @author Metalhead64
@@ -3559,7 +3560,7 @@ Da es möglich ist, dass dein Benutzerkonto kompromittiert wurde, wurden dir all
 Wenn du denkst, dass es sich hierbei um einen Fehler handelt, so wende dich bitte an einen Bürokraten und schildere ihm, was du gerade getan hast, damit deine Rechte wiederhergestellt werden können.
 Kurzbeschreibung der verletzten Regel: $1',
 	'abusefilter-autopromote-blocked' => 'Diese Aktion wurde als schädlich erkannt und nicht ausgeführt.
-Zusätzlich wurden dir als eine Sicherheitsmaßnahme einige automatisch vergebenen Rechte kurzzeitig genommen.
+Zusätzlich wurden dir als Sicherheitsmaßnahme einige automatisch vergebene Rechte kurzzeitig genommen.
 Kurzbeschreibung der verletzten Regel: $1',
 	'abusefilter-blocker' => 'Missbrauchsfilter',
 	'abusefilter-blockreason' => 'Du wurdest durch einen Missbrauchsfilter automatisch gesperrt. Beschreibung der zutreffenden Regel: $1',
@@ -3924,6 +3925,7 @@ Kopiere den dort erscheinenden Code, füge ihn hier ein und klicke dann auf die 
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author ChrisiPK
+ * @author Giftpflanze
  * @author MichaelFrey
  * @author Umherirrender
  */
@@ -3944,7 +3946,7 @@ Da es möglich ist, dass Ihr Benutzerkonto kompromittiert wurde, wurden Ihnen al
 Wenn Sie denken, dass es sich hierbei um einen Fehler handelt, so wenden Sie sich bitte an einen Bürokraten und schilderen ihm, was Sie gerade getan haben, damit Ihre Rechte wiederhergestellt werden können.
 Kurzbeschreibung der verletzten Regel: $1',
 	'abusefilter-autopromote-blocked' => 'Diese Aktion wurde als schädlich erkannt und nicht ausgeführt.
-Zusätzlich wurden Ihnen als eine Sicherheitsmaßnahme einige automatisch vergebenen Rechte kurzzeitig genommen.
+Zusätzlich wurden Ihnen als Sicherheitsmaßnahme einige automatisch vergebene Rechte kurzzeitig genommen.
 Kurzbeschreibung der verletzten Regel: $1',
 	'abusefilter-blockreason' => 'Sie wurden durch einen Missbrauchsfilter automatisch gesperrt. Beschreibung der zutreffenden Regel: $1',
 	'abusefilter-degroupreason' => 'Ihre Berechtigungen wurden durch einen Missbrauchsfilter automatisch beschränkt.
