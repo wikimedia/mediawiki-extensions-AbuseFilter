@@ -895,7 +895,7 @@ class AbuseFilter {
 			$dbw = wfGetDB( DB_MASTER, array(), $wgAbuseFilterCentralDB );
 		else
 			$dbw = wfGetDB( DB_MASTER );
-		$old_id = $dbw->nextSequenceValue( 'text_old_id_val' );
+		$old_id = $dbw->nextSequenceValue( 'text_old_id_seq' );
 		$dbw->insert( 'text',
 			array(
 				'old_id'    => $old_id,
