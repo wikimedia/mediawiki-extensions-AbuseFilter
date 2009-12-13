@@ -1860,6 +1860,7 @@ $messages['bg'] = array(
 	'abusefilter-log-search-submit' => 'Търсене',
 	'abusefilter-log-entry' => '$1: $2 задейства защитен филтър, извършвайки $3 на $4. Последвали действия: $5; Описание на филтъра: $6',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 задейства $3, извършвайки $4 на $5. Последвали действия: $6; Описание на филтъра: $7 ($8)',
+	'abusefilter-log-detailedentry-global' => 'глобален филтър $1',
 	'abusefilter-log-detailedentry-local' => 'филтър $1',
 	'abusefilter-log-detailslink' => 'детайли',
 	'abusefilter-log-details-legend' => 'Детайли за запис от дневника $1',
@@ -13879,6 +13880,12 @@ $messages['ml'] = array(
 	'abusefilter-log-search-filter' => 'അരിപ്പയുടെ ഐ.ഡി.:',
 	'abusefilter-log-search-title' => 'തലക്കെട്ട്:',
 	'abusefilter-log-search-submit' => 'തിരയുക',
+	'abusefilter-log-entry' => '$1: $2 ഒരു ദുരുപയോഗ അരിപ്പയെ ഉണർത്തിയിരിക്കുന്നു,  "$3" എന്ന പ്രവൃത്തി $4 എന്നതിൽ ചെയ്യുന്നു.
+എടുത്ത നടപടികൾ: $5;
+അരിപ്പയുടെ വിവരണം: $6',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 $3 അരിപ്പയെ ഉണർത്തിയിരിക്കുന്നു, "$4" എന്ന പ്രവൃത്തി $5 താളിൽ ചെയ്യുന്നു.
+എടുത്ത നടപടി: $6;
+അരിപ്പയുടെ വിവരണം: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-log-detailedentry-global' => '$1 ആഗോള അരിപ്പ',
 	'abusefilter-log-detailedentry-local' => '$1 അരിപ്പ',
 	'abusefilter-log-detailslink' => 'വിവരണങ്ങൾ',
@@ -14091,6 +14098,7 @@ $messages['ml'] = array(
 	'abusefilter-exception-unexpectedatend' => 'ലിപ് $1-ൽ അപ്രതീക്ഷിത "$2".',
 	'abusefilter-exception-expectednotfound' => 'ലിപി $1-ൽ $2 പ്രതീക്ഷിച്ചിരുന്നു, പക്ഷേ കിട്ടിയില്ല (പകരം $3 $4 ലഭിച്ചു).',
 	'abusefilter-exception-unrecognisedkeyword' => '$1 അക്ഷരത്തിൽ തിരിച്ചറിയാൻ കഴിയാത്ത അടയാളവാക്ക് $2.',
+	'abusefilter-exception-unexpectedtoken' => '$1 അക്ഷരത്തിൽ പ്രതീക്ഷിക്കാത്ത ചീട്ട് "$3" ($2 തരത്തിലുള്ളത്).',
 	'abusefilter-exception-invalidoperator' => '$1 അക്ഷരത്തിങ്കൽ അസാധുവായ ചിഹനനം "$2".',
 	'abusefilter-exception-unrecognisedtoken' => '$1 അക്ഷരത്തിൽ തിരിച്ചറിയപ്പെടാത്ത ചീട്ട് "$2".',
 	'abusefilter-exception-dividebyzero' => 'അക്ഷരം $1-ൽ പൂജ്യം കൊണ്ട് $2-വിനെ ഹരിക്കാനുള്ള ആസാധുവായ ശ്രമം.',
