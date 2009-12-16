@@ -11705,12 +11705,17 @@ $messages['ka'] = array(
 	'abusefilter-history-select-user' => 'მომხმარებელი:',
 	'abusefilter-history-diff' => 'ცვლილებები',
 	'abusefilter-test-user' => 'მომხმარებლის ცვლილებები:',
+	'abusefilter-changeslist-examine' => 'ნახვა',
 	'abusefilter-examine-user' => 'მომხმარებელი:',
 	'abusefilter-examine-title' => 'გვერდის სათაური:',
 	'abusefilter-examine-submit' => 'ძიება',
 	'abusefilter-diff-title' => 'განსხვავება ვერსიებს შორის',
 	'abusefilter-diff-item' => 'ელემენტი',
 	'abusefilter-diff-info' => 'ძირითადი ინფორმაცია',
+	'abusefilter-import-intro' => 'თქვენ შეგიძლიათ გამოიყენოთეს ინტერფეისი სხვა ვიკებიდან ფილტრების იმპორტირებისათვის.
+ვიკის წყაროში, დააჭირეთ "{{int:abusefilter-edit-export}}" რედაქტირების ინტერფეისის "{{int:abusefilter-tools-subtitle}}" განყოფილებაში.
+დააკოპირეთ ტექსტური ველის შიგთავსი, გადმოიტანეთ ამ გვერდზე და დააჭირეთ "{{int:abusefilter-import-submit}}".',
+	'abusefilter-import-submit' => 'მონაცემების იმპორტირება',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -14066,7 +14071,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-builder-vars-user-editcount' => 'ഉപയോക്താവിന്റെ തിരുത്തലുകളുടെ എണ്ണം',
 	'abusefilter-edit-builder-vars-user-age' => 'ഉപയോക്തൃ അംഗത്വത്തിന്റെ പ്രായം',
 	'abusefilter-edit-builder-vars-user-name' => 'ഉപയോക്തൃ അംഗത്വത്തിന്റെ നാമം',
-	'abusefilter-edit-builder-vars-user-groups' => 'ഉപയോക്താവ് ഉൾപ്പെട്ട (സ്വതവേ ഉൾപ്പെട്ടത് ഉൾപ്പടെ) സംഘങ്ങൾ',
+	'abusefilter-edit-builder-vars-user-groups' => 'ഉപയോക്താവ് ഉൾപ്പെട്ട (സ്വതവേ ഉൾപ്പെട്ടത് ഉൾപ്പെടെ) സംഘങ്ങൾ',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'ഇമെയിൽ വിലാസം സ്ഥിരീകരിച്ച സമയം',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'താളിൽ സേവനങ്ങൾ ചെയ്ത അവസാനത്തെ പത്ത് ഉപയോക്താക്കൾ',
 	'abusefilter-edit-builder-vars-all-links' => 'പുതിയ എഴുത്തിലുള്ള പുറത്തേയ്ക്കുള്ള കണ്ണികൾ എല്ലാം',
