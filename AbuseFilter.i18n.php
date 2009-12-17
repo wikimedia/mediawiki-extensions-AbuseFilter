@@ -14127,6 +14127,8 @@ $messages['ml'] = array(
 	'abusefilter-revert-periodend' => 'സമയാവസാനം:',
 	'abusefilter-revert-search' => 'പ്രവൃത്തികൾ തിരഞ്ഞെടുക്കുക',
 	'abusefilter-revert-filter' => 'അരിപ്പ:',
+	'abusefilter-revert-preview-intro' => 'ഈ പ്രവൃത്തി ചെയ്താൽ മുൻപ്രാപനം ചെയ്യപ്പെടുന്ന പ്രവൃത്തികൾ താഴെ കൊടുത്തിരിക്കുന്നു.
+ദയവായി അവ ശ്രദ്ധയോടെ പരിശോധിക്കുക, താങ്കൾ തിരഞ്ഞെടുത്തവ സ്ഥിരീകരിക്കാനായി "സ്ഥിരീകരിക്കുക" ഞെക്കുക.',
 	'abusefilter-revert-confirm' => 'സ്ഥിരീകരിക്കുക',
 	'abusefilter-revert-success' => '[[Special:AbuseFilter/$1|അരിപ്പ $1]] ഉപയോഗിച്ച് ദുരുപയോഗ അരിപ്പ ചെയ്ത എല്ലാ പ്രവൃത്തികളും മുന്നവസ്ഥയിലേയ്ക്ക് മാറ്റിയിരിക്കുന്നു.',
 	'abusefilter-revert-reasonfield' => 'മുൻപ്രാപനത്തിനുള്ള കാരണം:',
