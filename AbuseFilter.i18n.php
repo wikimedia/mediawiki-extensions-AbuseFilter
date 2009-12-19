@@ -2078,6 +2078,7 @@ $messages['br'] = array(
 	'action-abusefilter-log' => 'Gwelet marilh ar siloù a-enep ar gwallimplij',
 	'action-abusefilter-modify-restricted' => 'kemmañ ar siloù a-enep ar gwallimplij gant oberoù bevennet',
 	'abusefilter-log' => 'Marilh ar sil a-enep ar gwallimplij',
+	'abusefilter-log-search' => 'Klask e-barzh marilh ar siloù a-enep ar gwallimplij',
 	'abusefilter-log-search-user' => 'Implijer :',
 	'abusefilter-log-search-filter' => 'Niv. ar sil :',
 	'abusefilter-log-search-title' => 'Titl :',
@@ -2087,6 +2088,7 @@ $messages['br'] = array(
 	'abusefilter-log-detailslink' => 'munudoù',
 	'abusefilter-log-details-var' => 'Varienn',
 	'abusefilter-log-details-val' => 'Talvoud',
+	'abusefilter-log-details-private' => 'Titouroù prevez',
 	'abusefilter-log-noactions' => 'netra',
 	'abusefilter-log-linkoncontribs' => 'Marilh ar siloù a-enep ar gwallimplij',
 	'abusefilter-log-linkoncontribs-text' => 'Marilh ar siloù a-enep ar gwallimplij  evit an implijer-mañ',
@@ -2095,6 +2097,7 @@ $messages['br'] = array(
 	'abusefilter-list-status' => 'Statud',
 	'abusefilter-list-consequences' => 'Heuliadoù',
 	'abusefilter-list-visibility' => 'Gwelusted',
+	'abusefilter-list-hitcount' => 'Niver a ziskoachadennoù',
 	'abusefilter-list-edit' => 'Kemmañ',
 	'abusefilter-list-details' => 'Munudoù',
 	'abusefilter-list-limit' => 'Niver dre bajenn',
@@ -2104,6 +2107,7 @@ $messages['br'] = array(
 	'abusefilter-enabled' => 'Gweredekaet',
 	'abusefilter-deleted' => 'Dilamet',
 	'abusefilter-disabled' => 'Diweredekaet',
+	'abusefilter-hitcount' => '$1 {{PLURAL:$1|diskoachadenn|diskoachadenn}}',
 	'abusefilter-new' => 'Sevel ur sil nevez',
 	'abusefilter-links' => 'Liammoù talvoudus :',
 	'abusefilter-tools-modifiertest-submit' => 'Amprouiñ',
@@ -2198,6 +2202,7 @@ $messages['br'] = array(
 	'abusefilter-history-diff' => 'Kemmoù',
 	'abusefilter-action-tag' => 'Balizenn',
 	'abusefilter-action-block' => 'Stankañ',
+	'abusefilter-action-disallow' => "Nac'hañ ar c'hemm",
 	'abusefilter-revert-periodstart' => 'Deroù ar prantad :',
 	'abusefilter-revert-periodend' => 'Dibenn ar prantad :',
 	'abusefilter-revert-search' => 'Dibab an obererezhioù',
@@ -13910,6 +13915,10 @@ $messages['ml'] = array(
 കൂടുതലായി, {{SITENAME}} സംരക്ഷിക്കുന്നതിനായി താങ്കളുടെ അംഗത്വവും ബന്ധപ്പെട്ട ഐ.പി. വിലാസങ്ങളും തിരുത്തുന്നതിൽ നിന്നും തടയുന്നതാണ്.
 ഇത് പിഴവുമൂലമുണ്ടായതെങ്കിൽ ദയവായി ഒരു കാര്യനിർവാഹകനെ ബന്ധപ്പെടുക.
 താങ്കളുടെ പ്രവൃത്തിയുമായി ഒത്തുപോകുന്ന ദുരുപയോഗനിയമത്തിന്റെ ലഘുവിവരണം കാണുക: $1',
+	'abusefilter-degrouped' => 'ഈ പ്രവൃത്തി ദോഷകരമെന്ന് യാന്ത്രികമായി തിരിച്ചറിഞ്ഞിട്ടുള്ളതാണ്.
+അക്കാരണം കൊണ്ട്, അത് അനുവദിക്കാനാവാത്തതും, താങ്കളുടെ അംഗത്വം സംശയത്തിന്റെ നിഴലിലാവുകയും, എല്ലാ അവകാശങ്ങളും നീക്കുകയും ചെയ്യുന്നതാണ്.
+ഇതെന്തെങ്കിലും പിഴവുമൂലമുണ്ടായതാണെന്നു താങ്കൾ കരുതുന്നുവെങ്കിൽ ഈ പ്രവൃത്തിയ്ക്കുള്ള വിശദീകരണവുമായി ദയവായി ഒരു ബ്യൂറോക്രാറ്റിനെ സമീപിക്കുക, താങ്കളുടെ അവകാശങ്ങൾ പുനഃസ്ഥാപിക്കപ്പെട്ടേയ്ക്കാം.
+താങ്കളുടെ പ്രവൃത്തിയുമായി കണ്ടെത്തിയ ദുരുപയോഗ നിയമത്തിന്റെ ലഘുവിവരണം കൊടുക്കുന്നു: $1',
 	'abusefilter-autopromote-blocked' => 'ഈ പ്രവൃത്തി സ്വയം ദോഷകരമെന്നു കണ്ടെത്തിയിട്ടുണ്ട്, അതനുവദിക്കാൻ സാധിക്കുകയില്ല.
 കൂടുതലായി സുരക്ഷാ മാനദണ്ഡമെന്ന നിലയിൽ, മതിപ്പുനേടിയ അംഗത്വങ്ങൾക്ക് സമ്പ്രദായികമായി ലഭിച്ചു പോരുന്ന ചില അവകാശങ്ങൾ താങ്കളുടെ അംഗത്വത്തിൽ നിന്നും താത്കാലികമായി നീക്കം ചെയ്തിരിക്കുന്നു.
 താങ്കളുടെ പ്രവൃത്തിയുമായി ചേർന്നു പ്രവർത്തിച്ച ദുരുപയോഗനിയമത്തിന്റെ ലഘു വിവരണം കാണുക: $1',
