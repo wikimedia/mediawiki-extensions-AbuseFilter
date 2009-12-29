@@ -745,17 +745,30 @@ $messages['af'] = array(
 	'abusefilter-edit-builder-op-bool-and' => 'En (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Of (|)',
 	'abusefilter-edit-builder-group-funcs' => 'Funksies',
+	'abusefilter-edit-builder-group-vars' => 'Veranderlikes',
 	'abusefilter-edit-builder-vars-action' => 'Handeling',
+	'abusefilter-edit-builder-vars-newsize' => 'Nuwe bladsy grootte',
+	'abusefilter-edit-builder-vars-oldsize' => 'Ou bladsy grootte',
+	'abusefilter-edit-builder-vars-article-id' => 'Bladsy-ID',
+	'abusefilter-edit-builder-vars-article-ns' => 'Bladsy se naamruimte',
+	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Volledige bladsynaam',
+	'abusefilter-history-foruser' => 'Wysigings deur $1',
+	'abusefilter-history-hidden' => 'Verborge',
 	'abusefilter-history-enabled' => 'Geaktiveer',
+	'abusefilter-history-global' => 'Globaal',
 	'abusefilter-history-timestamp' => 'Tyd',
 	'abusefilter-history-user' => 'Gebruiker',
 	'abusefilter-history-flags' => 'Vlae',
 	'abusefilter-history-comments' => 'Opmerkings',
 	'abusefilter-history-actions' => 'Maatreëls',
 	'abusefilter-history-deleted' => 'Geskrap',
+	'abusefilter-history-filterid' => 'Filter',
 	'abusefilter-history-select-user' => 'Gebruiker:',
+	'abusefilter-history-select-submit' => 'Verfyn',
+	'abusefilter-history-diff' => 'Wysigings',
 	'abusefilter-action-tag' => 'Etiket',
 	'abusefilter-action-warn' => 'Waarsku',
+	'abusefilter-action-block' => 'Blokkeer',
 	'abusefilter-revert-filter' => 'Filter:',
 	'abusefilter-revert-confirm' => 'Bevestig',
 	'abusefilter-test-submit' => 'Toets',
@@ -763,7 +776,12 @@ $messages['af'] = array(
 	'abusefilter-examine-user' => 'Gebruiker:',
 	'abusefilter-examine-submit' => 'Soek',
 	'abusefilter-topnav-home' => 'Tuisblad',
+	'abusefilter-log-entry-modify' => 'het $1 gewysig ($2)',
+	'abusefilter-diff-title' => 'Verskille tussen weergawes',
 	'abusefilter-diff-item' => 'Item',
+	'abusefilter-diff-version' => 'Weergawe van $1 deur $2',
+	'abusefilter-diff-info' => 'Basiese inligting',
+	'abusefilter-import-submit' => 'Importeer data',
 );
 
 /** Amharic (አማርኛ)
@@ -1910,14 +1928,22 @@ $messages['bg'] = array(
 	'right-abusefilter-log' => 'Преглеждане на дневника на вредоносните действия',
 	'right-abusefilter-log-detail' => 'Преглеждане на подробни записи в дневника на вредоносните действия',
 	'right-abusefilter-private' => 'Преглеждане на скритите данни в дневника с вредоносни действия',
+	'action-abusefilter-modify' => 'промяна на защитните филтри',
+	'action-abusefilter-view' => 'преглед на защитните филтри',
+	'action-abusefilter-log' => 'преглед на днивника на защитните филтри',
+	'action-abusefilter-log-detail' => 'подробен преглед на дневника на защитните филтри',
 	'abusefilter-log' => 'Дневник на защитата от вредоносни действия',
 	'abusefilter-log-search' => 'Търсене в дневника със злоупотреби',
 	'abusefilter-log-search-user' => 'Потребител:',
 	'abusefilter-log-search-filter' => 'Идентификатор на филтър:',
 	'abusefilter-log-search-title' => 'Заглавие:',
 	'abusefilter-log-search-submit' => 'Търсене',
-	'abusefilter-log-entry' => '$1: $2 задейства защитен филтър, извършвайки $3 на $4. Последвали действия: $5; Описание на филтъра: $6',
-	'abusefilter-log-detailedentry-meta' => '$1: $2 задейства $3, извършвайки $4 на $5. Последвали действия: $6; Описание на филтъра: $7 ($8)',
+	'abusefilter-log-entry' => '$1: $2 задейства защитен филтър, извършвайки действие "$3" на $4.
+Предприети действия: $5;
+Описание на филтъра: $6',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 задейства $3, извършвайки действие "$4" на $5.
+Предприети действия: $6;
+Описание на филтъра: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-log-detailedentry-global' => 'глобален филтър $1',
 	'abusefilter-log-detailedentry-local' => 'филтър $1',
 	'abusefilter-log-detailslink' => 'детайли',
@@ -1945,6 +1971,7 @@ $messages['bg'] = array(
 	'abusefilter-hidden' => 'Скрит',
 	'abusefilter-unhidden' => 'Видим',
 	'abusefilter-enabled' => 'включен',
+	'abusefilter-deleted' => 'Изтрит',
 	'abusefilter-disabled' => 'изключен',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|съвпадение|съвпадения}}',
 	'abusefilter-new' => 'Създаване на нов филтър',
@@ -2095,7 +2122,7 @@ $messages['bg'] = array(
 	'abusefilter-edit-builder-vars-minor-edit' => 'Отбелязана ли е редакцията като малка промяна или не',
 	'abusefilter-edit-builder-vars-file-sha1' => 'SHA1 хеш стойност на съдържанието на файла',
 	'abusefilter-filter-log' => 'Последни промени на филтъра',
-	'abusefilter-history' => 'История за филтър $1',
+	'abusefilter-history' => 'История на промените на защитен филтър #$1',
 	'abusefilter-history-foruser' => 'Промени от $1',
 	'abusefilter-history-hidden' => 'скрит',
 	'abusefilter-history-enabled' => 'включен',
@@ -2115,6 +2142,7 @@ $messages['bg'] = array(
 	'abusefilter-action-block' => 'Блокиране',
 	'abusefilter-action-degroup' => 'Премахване от групите',
 	'abusefilter-action-rangeblock' => 'Блокиране по IP диапазон',
+	'abusefilter-action-disallow' => 'Забраняване',
 	'abusefilter-revert-periodstart' => 'Начало на периода:',
 	'abusefilter-revert-periodend' => 'Край на периода:',
 	'abusefilter-revert-filter' => 'Филтър:',
@@ -4126,6 +4154,7 @@ Um einen bestehenden Filter zu laden, geben Sie seine Filter-ID in das Feld unte
 
 /** Zazaki (Zazaki)
  * @author Aspar
+ * @author Mirzali
  * @author Xoser
  */
 $messages['diq'] = array(
@@ -4185,7 +4214,7 @@ Qe deskripsiyon: $1',
 	'abusefilter-log-search-user' => 'Karber:',
 	'abusefilter-log-search-filter' => 'IDyê Filitreyî:',
 	'abusefilter-log-search-title' => 'Sername:',
-	'abusefilter-log-search-submit' => 'Bigêre',
+	'abusefilter-log-search-submit' => 'Cıgeyre',
 	'abusefilter-log-entry' => '$1: $2 filitreyê abuseyî kerd a, ser $4 de hereketê "$3"î kerd.
 Hereket: $5;
 Deskripsiyonê filitreyî: $6',
@@ -5335,6 +5364,9 @@ Mallonga priskribo de la regulo de misuzado kiun via ago kongruis estas: $1',
 Rezulte, ĝi estis malpermesita, kaj, ĉar via konto suspektite esti kaperita, ĉiuj rajtoj estis forigitaj.
 Se vi kredas ke ĉi tiel eraras, bonvolu kontakti burokraton kun ekspliko de ĉi tiu ago, kaj viaj rajtoj eble estos restarigitaj.
 Mallonga priskribo de la misuzada regulo kiu kongruas vian agon estas: $1',
+	'abusefilter-autopromote-blocked' => 'Ĉi tiu ago estis aŭtomate identigita kiel malhelpema, kaj ĉi tiel ĝi estis malpermesita.
+Plue por sekureco, iom rajtoj ordinare donita al establitaj kontoj estas provizore prenita de via konto.
+Mallonga resumo de la misuzada regulo kiu kongruis vian agon estas: $1',
 	'abusefilter-blocker' => 'Filtrilo de misuzo',
 	'abusefilter-blockreason' => 'Aŭtomate blokita de la misuzada filtrilo. Resumo de kongrua regulo: $1',
 	'abusefilter-degroupreason' => 'Rajtoj estis aŭtomate forigitaj de misuzadaj filtriloj.
@@ -5366,6 +5398,9 @@ Priskribo de regulo: $1',
 	'abusefilter-log-entry' => '$1: $2 ekagigis misuzadan filtrilon, farante agon "$3" en $4.
 Agoj faritaj: $5;
 Filtrila priskribo: $6',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 ŝpronis $3, farante agon "$4" en $5.
+Agoj fariĝis: $6;
+Filtrila priskribo: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-log-detailedentry-global' => 'ĝenerala filtrilo $1',
 	'abusefilter-log-detailedentry-local' => 'filtrilo $1',
 	'abusefilter-log-detailslink' => 'detaloj',
@@ -5422,12 +5457,15 @@ Filtrila priskribo: $6',
 	'abusefilter-reautoconfirm-none' => 'Tiu uzanto ne havis {{GENDER:$1|lian|ŝian|la}} statuson pri aŭtomata konfirmado haltitan.',
 	'abusefilter-reautoconfirm-notallowed' => 'Vi ne rajtas restarigi statuson de aŭtomata konfirmado',
 	'abusefilter-reautoconfirm-done' => 'Statuso de aŭtomata konfirmado estis restarigita',
+	'abusefilter-status' => 'El la lastaj $1 {{PLURAL:$1|lasta 1 ago|lastaj $1 agoj}}, $2 ($3%) atingis la kondiĉa limo de $4, kaj $5 ($6%) kongruis unu el la ŝaltataj filtriloj.',
 	'abusefilter-edit-subtitle' => 'Redaktis filtrilon $1',
 	'abusefilter-edit-oldwarning' => '<strong>Vi redaktas malnovan version de ĉi tiu filtrilo.
 Ĉi tiuj statistikoj estas por la plej lasta versio de la filtrilo.
 Se vi konservus ŝanĝojn, vi anstataŭigus ĉiujn ŝanĝojn ekde la version vi redaktas.</strong> &bull;
 [[Special:AbuseFilter/history/$2|Reiri al la historio de ĉi tiu filtrilo]].',
 	'abusefilter-edit-status-label' => 'Statistikoj:',
+	'abusefilter-edit-status' => 'El la {{PLURAL:$1|lasta 1 ago|lastaj $1 agoj}}, ĉi tiu filtrilo kongruis $2 ($3%).
+Averaĝe, ĝia plenumtempo estas $4ms, kaj ĝi konsumas $5 {{PLURAL:$5|kondiĉon|kondiĉojn}} de la kondiĉa limo.',
 	'abusefilter-edit-throttled' => "'''Averto''': Ĉi tiu filtrilo aŭtomate malebligiĝis pro sekureco. Ĝi atingis la limo kontruanta pli ol $1% de agoj.",
 	'abusefilter-edit-new' => 'Nova filtrilo',
 	'abusefilter-edit-save' => 'Konservi filtrilon',
@@ -5445,11 +5483,13 @@ Se vi konservus ŝanĝojn, vi anstataŭigus ĉiujn ŝanĝojn ekde la version vi 
 	'abusefilter-edit-lastmod-text' => '$1 de $2',
 	'abusefilter-edit-hitcount' => 'Filtrilaj trafoj:',
 	'abusefilter-edit-consequences' => 'Agoj farotaj kiam kongrua',
+	'abusefilter-edit-action-warn' => 'Sproni ĉi tiun agojn post avertante uzanton',
 	'abusefilter-edit-action-disallow' => 'Preventi la uzanton fari tian agon',
 	'abusefilter-edit-action-flag' => 'Indiki ĉi tiun redakton en la protokolo pri misuzado',
 	'abusefilter-edit-action-blockautopromote' => 'Maldoni la aŭtomate konfirmitan statuson de uzanto',
 	'abusefilter-edit-action-degroup' => 'Forigi la uzanton de ĉiuj rajtitaj grupoj',
 	'abusefilter-edit-action-block' => 'Forbari la uzanton kaj/aŭ IP-adreson de redaktado',
+	'abusefilter-edit-action-throttle' => 'Sproni agojn nur se la uzanto atingas rapidlimon',
 	'abusefilter-edit-action-rangeblock' => 'Forbari la /16 intervalon kie la uzanto originas',
 	'abusefilter-edit-action-tag' => 'Flagi la redakton por plua kontrolado',
 	'abusefilter-edit-throttle-count' => 'Nombro de agoj por permisigi',
@@ -5469,6 +5509,10 @@ Se vi konservus ŝanĝojn, vi anstataŭigus ĉiujn ŝanĝojn ekde la version vi 
 	'abusefilter-edit-main' => 'Filtraj parametroj',
 	'abusefilter-edit-done-subtitle' => 'Filtrilo redaktita',
 	'abusefilter-edit-done' => 'Vi sukcese konservis viajn ŝanĝojn al filtrilo $1.',
+	'abusefilter-edit-badsyntax' => 'Estas sintaksa eraro en la filtrilo kiun vi specifigis.
+La eligo de la sintaksa analizilo estis: <pre>$1</pre>',
+	'abusefilter-edit-restricted' => 'Vi ne povas redakti ĉi tiun filtrilon, ĉar ĝi enhavas unu aŭ pliajn malpermesitajn agojn.
+Bonvolu peti uzanton kun rajton por aldoni limigitajn agojn fari ĉi tian ŝanĝon por vi.',
 	'abusefilter-edit-viewhistory' => 'Vidi ĉi tiun historion de filtrilo',
 	'abusefilter-edit-history' => 'Historio:',
 	'abusefilter-edit-check' => 'Kontroli sintakson',
@@ -5480,6 +5524,8 @@ Se vi konservus ŝanĝojn, vi anstataŭigus ĉiujn ŝanĝojn ekde la version vi 
 	'abusefilter-edit-export' => 'Eksporti ĉi tiun filtrilon al alia vikio',
 	'abusefilter-edit-syntaxok' => 'Neniuj sintaksaj eraroj troviĝis.',
 	'abusefilter-edit-syntaxerr' => 'Sintaksa eraro troviĝis: $1',
+	'abusefilter-edit-bad-tags' => 'Unu aŭ pliaj de la etikedoj kiun vi specifigis ne estas valida.
+Etikedoj devas esti mallonga, kaj ili ne devas enhavi specialajn signojn.',
 	'abusefilter-edit-builder-select' => 'Elektu opcion por aldoni ĝin ĉe la kursoro',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Matematikaj operacioj',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adicio (+)',
@@ -5501,6 +5547,8 @@ Se vi konservus ŝanĝojn, vi anstataŭigus ĉiujn ŝanĝojn ekde la version vi 
 	'abusefilter-edit-builder-op-bool-or' => 'Logika Aŭ (|)',
 	'abusefilter-edit-builder-group-misc' => 'Diversaĵoj',
 	'abusefilter-edit-builder-misc-in' => 'enhava en bitĉeno (in)',
+	'abusefilter-edit-builder-misc-like' => 'Kongruas paternon (like)',
+	'abusefilter-edit-builder-misc-rlike' => 'Kongruas regularan esprimon (rlike)',
 	'abusefilter-edit-builder-misc-stringlit' => 'Signoĉena literalo ("")',
 	'abusefilter-edit-builder-misc-tern' => 'Ternara operacio (X ? Y : Z)',
 	'abusefilter-edit-builder-misc-cond' => 'Kondiĉa operacio (if X then Y else Z)',
@@ -5508,6 +5556,7 @@ Se vi konservus ŝanĝojn, vi anstataŭigus ĉiujn ŝanĝojn ekde la version vi 
 	'abusefilter-edit-builder-funcs-length' => 'Longeco de bitĉeno (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Minuskligi (lcase)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Forigi duoblajn signojn (rmdoubles)',
+	'abusefilter-edit-builder-funcs-specialratio' => 'Specialaj signoj / ĉiuj signoj (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Normigi (norm)',
 	'abusefilter-edit-builder-funcs-count' => 'Nombro de fojoj ke bitĉeno X aperas en bitĉeno Y (count)',
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Forigi blankspacon (rmwhitespace)',
@@ -5544,6 +5593,7 @@ Se vi konservus ŝanĝojn, vi anstataŭigus ĉiujn ŝanĝojn ekde la version vi 
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Ŝanĝi protektnivelon de la paĝo',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Movprotekta nivelo de la paĝo',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Teksto de malnova paĝo, sen iu ajn marklingvo',
+	'abusefilter-edit-builder-vars-file-sha1' => 'SHA1-haketo de dosiera enhavo',
 	'abusefilter-filter-log' => 'Lastaj filtrilaj ŝanĝoj',
 	'abusefilter-history' => 'ŝanĝada historio por Misuzada Filtrilo #$1',
 	'abusefilter-history-foruser' => 'Ŝanĝoj de $1',
@@ -5580,12 +5630,20 @@ Se vi konservus ŝanĝojn, vi anstataŭigus ĉiujn ŝanĝojn ekde la version vi 
 	'abusefilter-revert-preview-item' => '$1: $2 faris $3n je $4.
 Agoj por malfari: $5 ($6)',
 	'abusefilter-revert-search-legend' => 'Elekti agojn de misuzadaj filtriloj por malfari',
+	'abusefilter-revert-periodstart' => 'Komenco de intervalo:',
+	'abusefilter-revert-periodend' => 'Fino de intervalo:',
 	'abusefilter-revert-search' => 'Elekti agojn',
 	'abusefilter-revert-filter' => 'Filtrilo:',
+	'abusefilter-revert-preview-intro' => 'Jen agoj faritaj de la misuzada filtrilo kiu estos restarigita de ĉi tiu ago.
+Bonvolu kontroli ili zorgeme, kaj klaku "konfirmi" por konfirmi via elekto.',
 	'abusefilter-revert-confirm' => 'Konfirmi',
 	'abusefilter-revert-success' => 'Vi malfaris ĉiujn agojn faritajn de la misuzada filtrilo de [[Special:AbuseFilter/$1|filtrilo $1]].',
+	'abusefilter-revert-reason' => 'Aŭtomata restarigo de ĉiuj agoj faritaj de la misuzada filtrilo pro filtrilo $1.
+Kialo donita: $2',
 	'abusefilter-revert-reasonfield' => 'Kialo por malfaro:',
 	'abusefilter-test' => 'Testi filtrilon kontraŭ antaŭaj redaktoj',
+	'abusefilter-test-intro' => 'Ĉi tiu paĝo permesas al vi konsulti filtrilon enigitan en la jena skatolo kontraŭ la {{PLURAL:$1|lasta ŝanĝo|lastaj $1 ŝanĝoj}}.
+Ŝarĝi ekzistantan filtrilon, tajpu ĝian filtrilan identigon en la suba skatolo sub la redakta ilobreto, kaj klaku la butonon "Ŝarĝi".',
 	'abusefilter-test-legend' => 'Filtrila testado',
 	'abusefilter-test-load-filter' => 'Filtrila identigo por ŝarĝi:',
 	'abusefilter-test-submit' => 'Testi',
@@ -5595,8 +5653,11 @@ Agoj por malfari: $5 ($6)',
 	'abusefilter-test-period-end' => 'Ŝanĝoj faritaj antaŭ:',
 	'abusefilter-test-page' => 'Ŝanĝoj faritaj al paĝo:',
 	'abusefilter-test-shownegative' => 'Montri ŝanĝojn ne kongrantajn la filtrilon',
+	'abusefilter-test-syntaxerr' => 'La filtrilo kiun vi enigis enhavis sintaksan eraron.
+Vi povas ricevi plenan eksplikon per klakante la butonon "Kontroli Sintakson".',
 	'abusefilter-changeslist-examine' => 'vidi',
 	'abusefilter-examine' => 'Rigardi individuajn ŝanĝojn',
+	'abusefilter-examine-intro' => 'Ĉi tiu paĝo permesas al vi rigardi la variablojn generitajn de la Misuzada Filtrilo por individua ŝanĝo, kaj testi ĝin per filtriloj.',
 	'abusefilter-examine-legend' => 'Elekti ŝanĝojn',
 	'abusefilter-examine-diff' => 'URL-o de diferenco:',
 	'abusefilter-examine-user' => 'Uzanto:',
@@ -5629,6 +5690,9 @@ Por plenaj detaloj, vidu [[Special:AbuseFilter/history|la liston]] de lastaj fil
 	'abusefilter-diff-pattern' => 'Filtrilaj kondiĉoj',
 	'abusefilter-diff-invalid' => 'Ne eblas akiri la petitajn versiojn',
 	'abusefilter-diff-backhistory' => 'Reiri al filtrila historio',
+	'abusefilter-import-intro' => 'Vi povas uzi ĉi tiun interfacon por importi filtrilojn de aliaj vikioj.
+En la fonta vikio, klaku "{{int:abusefilter-edit-export}}" sub "{{int:abusefilter-tools-subtitle}}" en la redakta interfaco.
+Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Importi datenojn',
 );
 
@@ -6032,9 +6096,10 @@ $messages['et'] = array(
 	'right-abusefilter-view' => 'Vaadata väärtarvituse filtreid',
 	'right-abusefilter-log' => 'Vaadata väärtarvituse logi',
 	'right-abusefilter-log-detail' => 'Vaadata väärtarvituse logi üksikasjalikke sissekandeid',
+	'right-abusefilter-private' => 'Vaadata väärtarvituslogis isiklikke andmeid',
 	'right-abusefilter-modify-restricted' => 'Muuta piirangutega toimingute abil väärtarvituse filtreid',
 	'right-abusefilter-revert' => 'Tühistada kõik kindla väärtarvituse filtri tehtud muudatused',
-	'right-abusefilter-view-private' => 'Vaadata isiklikuks märgitud filtreid',
+	'right-abusefilter-view-private' => 'Vaadata erafiltreid',
 	'action-abusefilter-modify' => 'muuta väärtarvituse filtreid',
 	'action-abusefilter-view' => 'vaadata väärtarvituse filtreid',
 	'action-abusefilter-log' => 'vaadata väärtarvituse logi',
@@ -6047,13 +6112,20 @@ $messages['et'] = array(
 	'abusefilter-log-summary' => 'Selles logis on loetletud tegevused, mille filtrid on tabanud.',
 	'abusefilter-log-search' => 'Otsi väärtarvituse logist',
 	'abusefilter-log-search-user' => 'Kasutaja:',
+	'abusefilter-log-search-filter' => 'Filtri ID:',
 	'abusefilter-log-search-title' => 'Pealkiri:',
 	'abusefilter-log-search-submit' => 'Otsi',
 	'abusefilter-log-entry' => '$1: $2 vallandas väärtarvitusfiltri, sooritades leheküljel $4 tegevust "$3".
 Toiming: $5. Filtri kirjeldus: $6',
+	'abusefilter-log-detailslink' => 'üksikasjad',
+	'abusefilter-log-details-legend' => 'Logisissekande $1 üksikasjad',
+	'abusefilter-log-details-var' => 'Muutuja',
+	'abusefilter-log-details-val' => 'Väärtus',
+	'abusefilter-log-details-private' => 'Isiklikud andmed',
 	'abusefilter-log-noactions' => 'ei midagi',
 	'abusefilter-log-details-diff' => 'Redigeerimisega tehtud muudatused',
 	'abusefilter-log-linkoncontribs' => 'väärtarvitamise logi',
+	'abusefilter-log-linkoncontribs-text' => 'Väärtarvituslogi selle kasutaja jaoks',
 	'abusefilter-management' => 'Väärtarvitusfiltri haldamine',
 	'abusefilter-list' => 'Kõik filtrid',
 	'abusefilter-list-id' => 'Filtri ID',
@@ -6066,13 +6138,15 @@ Toiming: $5. Filtri kirjeldus: $6',
 	'abusefilter-list-details' => 'Üksikasjad',
 	'abusefilter-list-limit' => 'Lehekülje kohta:',
 	'abusefilter-list-lastmodified' => 'Viimati muudetud',
-	'abusefilter-hidden' => 'Isiklik',
+	'abusefilter-hidden' => 'Erafilter',
 	'abusefilter-unhidden' => 'Avalik',
 	'abusefilter-enabled' => 'Lubatud',
 	'abusefilter-deleted' => 'Kustutatud',
 	'abusefilter-disabled' => 'Keelatud',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|tabamus|tabamust}}',
 	'abusefilter-links' => 'Kasulikke linke:',
+	'abusefilter-loglink' => 'Vaata väärtarvituslogi',
+	'abusefilter-return' => 'Naase filtri haldamise juurde',
 	'abusefilter-status-global' => 'Globaalne',
 	'abusefilter-list-options' => 'Sätted',
 	'abusefilter-list-options-deleted' => 'Kustutatud filtrid:',
@@ -6084,6 +6158,9 @@ Toiming: $5. Filtri kirjeldus: $6',
 	'abusefilter-list-options-submit' => 'Uuenda',
 	'abusefilter-tools-subtitle' => 'Tööriistad',
 	'abusefilter-tools-reautoconfirm-user' => 'Kasutaja:',
+	'abusefilter-reautoconfirm-none' => 'Sellelt kasutajalt pole automaatselt kinnitatud kasutaja õiguseid ära võetud.',
+	'abusefilter-reautoconfirm-notallowed' => 'Sul pole lubatud automaatselt kinnitatud kasutaja õiguseid tagasi anda.',
+	'abusefilter-reautoconfirm-done' => 'Kontole on automaatselt kinnitatud kasutaja õigused tagasi antud',
 	'abusefilter-edit-subtitle' => 'Filtri $1 muutmine',
 	'abusefilter-edit-oldwarning' => '<strong>Muudad selle filtri vana versiooni.
 Allpool toodud arvandmed käivad filtri uusima versiooni kohta.
@@ -6112,6 +6189,8 @@ Kui oma muudatused salvestad, kirjutad üle kõik redigeeritavast redaktsioonist
 	'abusefilter-edit-action-block' => 'Keela kasutajal ja/või IP-aadressil redigeerimine',
 	'abusefilter-edit-action-throttle' => 'Päästa toimingud vaid siis valla, kui kasutaja ületab limiidi',
 	'abusefilter-edit-action-tag' => 'Märgista muudatus edasiseks läbivaatuseks',
+	'abusefilter-edit-throttle-count' => 'Lubatud toimingute määr:',
+	'abusefilter-edit-throttle-period' => 'Ajavahemik:',
 	'abusefilter-edit-warn-message' => 'Hoiatusena kasutatav süsteemisõnum:',
 	'abusefilter-edit-warn-other' => 'Muu sõnum',
 	'abusefilter-edit-warn-other-label' => "Muu sõnumi lehekülje pealkiri:
@@ -6120,7 +6199,10 @@ Kui oma muudatused salvestad, kirjutad üle kõik redigeeritavast redaktsioonist
 	'abusefilter-edit-warn-preview' => 'Valitud sõnumi eelvaade',
 	'abusefilter-edit-warn-edit' => 'Loo valitud sõnum või muuda seda',
 	'abusefilter-edit-tag-tag' => 'Kasutatavad märgised (rea kohta üks):',
+	'abusefilter-edit-denied' => 'Sa ei või selle filtri üksikasju vaadata, sest see on üldsuse eest peidetud.',
 	'abusefilter-edit-main' => 'Filtri näitajad',
+	'abusefilter-edit-done-subtitle' => 'Filter muudetud',
+	'abusefilter-edit-done' => 'Filtrile $1 tehtud muudatused on edukalt salvestatud.',
 	'abusefilter-edit-viewhistory' => 'Vaata selle filtri ajalugu',
 	'abusefilter-edit-history' => 'Ajalugu:',
 	'abusefilter-edit-check' => 'Kontrolli süntaksist',
@@ -6129,6 +6211,7 @@ Kui oma muudatused salvestad, kirjutad üle kõik redigeeritavast redaktsioonist
 	'abusefilter-edit-export' => 'Ekspordi see filter teise vikisse',
 	'abusefilter-edit-syntaxok' => 'Süntaksitõrkeid ei leitud.',
 	'abusefilter-edit-syntaxerr' => 'Leiti süntaksitõrge: $1',
+	'abusefilter-edit-notallowed' => 'Sul pole lubatud väärtarvitusfiltreid luua ega muuta.',
 	'abusefilter-edit-builder-select' => 'Vali kursori kohale lisatav',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmeetilised tehted',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Liitmine (+)',
@@ -6207,6 +6290,8 @@ Kui oma muudatused salvestad, kirjutad üle kõik redigeeritavast redaktsioonist
 	'abusefilter-action-block' => 'Blokeeri',
 	'abusefilter-action-degroup' => 'Kustuta rühmadest',
 	'abusefilter-action-disallow' => 'Keela',
+	'abusefilter-revert-periodstart' => 'Vahemiku algus:',
+	'abusefilter-revert-periodend' => 'Vahemiku lõpp:',
 	'abusefilter-test-user' => 'Muudatuste tegija:',
 	'abusefilter-test-period-start' => 'Hilisemad muudatused kui:',
 	'abusefilter-test-period-end' => 'Varasemad muudatused kui:',
@@ -6219,6 +6304,7 @@ Lisaselgituse jaoks klõpsa nuppu "Kontrolli süntaksit".',
 	'abusefilter-examine-user' => 'Kasutaja:',
 	'abusefilter-examine-title' => 'Lehekülje pealkiri:',
 	'abusefilter-examine-submit' => 'Otsi',
+	'abusefilter-examine-test-button' => 'Katseta filtrit',
 	'abusefilter-examine-noresults' => 'Antud parameetritega otsimisele ei leitud vasteid.',
 	'abusefilter-topnav' => "'''Väärtarvitusfiltri navigatsioon'''",
 	'abusefilter-topnav-home' => 'Pealeht',
@@ -6695,6 +6781,7 @@ $messages['fa'] = array(
  * @author Silvonen
  * @author Str4nd
  * @author Vililikku
+ * @author ZeiP
  */
 $messages['fi'] = array(
 	'abusefilter-desc' => 'Mahdollistaa muokkauksien suodattamisen automaattisella heuristiikalla.',
@@ -6734,6 +6821,7 @@ Säännön kuvaus: $1',
 	'right-abusefilter-log' => 'Tarkastella väärinkäyttölokia',
 	'right-abusefilter-log-detail' => 'Tarkastella väärinkäyttölokia yksityiskohtaisesti',
 	'right-abusefilter-private' => 'Tarkastella yksityistiedoja väärinkäyttölokista',
+	'right-abusefilter-modify-restricted' => 'Muokata väärinkäyttösuodattimia rajoitetuilla toiminnoilla',
 	'right-abusefilter-revert' => 'Palauttaa kaikki muutokset valitulla väärinkäyttösuodattimella',
 	'right-abusefilter-view-private' => 'Tarkastella väärinkäyttösuodattimia, jotka on merkitty yksityisiksi',
 	'action-abusefilter-modify' => 'muokata väärinkäyttösuodattimia',
@@ -6741,15 +6829,22 @@ Säännön kuvaus: $1',
 	'action-abusefilter-log' => 'tarkastella väärinkäyttölokia',
 	'action-abusefilter-log-detail' => 'tarkastella väärinkäyttölokia yksityiskohtaisesti',
 	'action-abusefilter-private' => 'tarkastella yksityistiedoja väärinkäyttölokista',
+	'action-abusefilter-modify-restricted' => 'muokata väärinkäyttösuodattimia rajoitetuilla toiminnoilla',
 	'action-abusefilter-revert' => 'palauta kaikki muokkaukset annetun väärinkäyttösuodattimen mukaan',
 	'action-abusefilter-view-private' => 'näytä yksityiseksi merkityt väärinkäyttösuodattimet',
 	'abusefilter-log' => 'Väärinkäyttösuodattimen loki',
 	'abusefilter-log-summary' => 'Tämä loki näyttää luettelon kaikista suodattimiin tarttuneista toiminnoista.',
 	'abusefilter-log-search' => 'Etsi väärinkäyttölokista',
 	'abusefilter-log-search-user' => 'Käyttäjä:',
-	'abusefilter-log-search-filter' => 'Suodatin-ID:',
+	'abusefilter-log-search-filter' => 'Tunniste',
 	'abusefilter-log-search-title' => 'Otsikko:',
 	'abusefilter-log-search-submit' => 'Etsi',
+	'abusefilter-log-entry' => '$1: $2 laukaisi väärinkäyttösuodattimen käyttäessään toimintoa ”$3” osoitteessa $4. 
+Laukaistut toiminnot: $5
+Suodattimen kuvaus: $6',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 laukaisi suodattimen $3 käyttäessään toimintoa ”$4” osoitteessa $5. 
+Laukaistut toiminnot: $6
+Suodattimen kuvaus: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-log-detailedentry-local' => 'suodatin $1',
 	'abusefilter-log-detailslink' => 'tiedot',
 	'abusefilter-log-details-legend' => 'Yksityiskohdat lokitapahtumalle $1',
@@ -6763,7 +6858,7 @@ Säännön kuvaus: $1',
 	'abusefilter-log-linkoncontribs-text' => 'Väärinkäyttöloki tälle käyttäjälle',
 	'abusefilter-management' => 'Väärinkäyttösuodattimen hallinta',
 	'abusefilter-list' => 'Kaikki suodattimet',
-	'abusefilter-list-id' => 'Suodatin-ID',
+	'abusefilter-list-id' => 'Tunniste',
 	'abusefilter-list-status' => 'Tila',
 	'abusefilter-list-public' => 'Julkinen kuvaus',
 	'abusefilter-list-consequences' => 'Seuraamukset',
@@ -6804,15 +6899,21 @@ Säännön kuvaus: $1',
 	'abusefilter-reautoconfirm-notallowed' => 'Sinulla ei ole oikeutta palauttaa automaattisesti hyväksytyn tilaa.',
 	'abusefilter-reautoconfirm-done' => 'Tunnuksen automaattisesti hyväksytyn tila on palautettu',
 	'abusefilter-edit-subtitle' => 'Muokataan suodatinta $1',
+	'abusefilter-edit-oldwarning' => '<strong>Muokkaat tämän suodattimen vanhaa versiota. 
+Annetut tilastot ovat suodattimen uusimmalle versiolle. 
+Jos tallennat muutoksesi, yliajat kaikki muokkaamasi version jälkeen tehdyt muutokset.</strong> &bull;
+[[Special:AbuseFilter/history/$2|Palaa suodattimen historiaan]].',
 	'abusefilter-edit-status-label' => 'Tilastot:',
+	'abusefilter-edit-status' => 'Viimeisestä $1 toiminnosta tämä suodatin täsmäsi $2 kertaa ($3 %).
+Keskimäärin sen ajoaika on $4 ms, ja se kuluttaa $5 {{PLURAL:$5|ehdon|ehtoa}} ehtorajasta.',
 	'abusefilter-edit-throttled' => "'''Varoitus''': Tämä suodatin on otettu varotoimena automaattisesti pois käytöstä.
 Suodatin saavutti yli $1 % täsmäävän toiminnon rajan.",
 	'abusefilter-edit-new' => 'Luo suodatin',
 	'abusefilter-edit-save' => 'Tallenna suodatin',
-	'abusefilter-edit-id' => 'Suodatin-ID:',
+	'abusefilter-edit-id' => 'Tunniste',
 	'abusefilter-edit-description' => "Kuvaus
 :''(julkisesti näkyvillä)''",
-	'abusefilter-edit-flags' => 'Merkinnät:',
+	'abusefilter-edit-flags' => 'Merkinnät',
 	'abusefilter-edit-enabled' => 'Käytä tätä suodatinta',
 	'abusefilter-edit-deleted' => 'Merkitse poistetuksi',
 	'abusefilter-edit-hidden' => 'Piilota suodattimen yksityiskohdat julkiselta näkyvyydeltä',
@@ -6829,6 +6930,7 @@ Suodatin saavutti yli $1 % täsmäävän toiminnon rajan.",
 	'abusefilter-edit-action-blockautopromote' => 'Mitätöi käyttäjän automaattisesti hyväksytyn tila',
 	'abusefilter-edit-action-degroup' => 'Poista käyttäjä kaikista etuoikeutetuista ryhmistä',
 	'abusefilter-edit-action-block' => 'Aseta käyttäjälle ja/tai IP-osoitteelle muokkausesto',
+	'abusefilter-edit-action-rangeblock' => 'Estä /16-alue, josta käyttäjä tulee',
 	'abusefilter-edit-action-tag' => 'Merkitse muokkaus lisätarkastelun kohteeksi',
 	'abusefilter-edit-throttle-count' => 'Toimintojen sallimismäärä:',
 	'abusefilter-edit-throttle-period' => 'Aikaväli',
@@ -6838,12 +6940,13 @@ Suodatin saavutti yli $1 % täsmäävän toiminnon rajan.",
 	'abusefilter-edit-warn-actions' => 'Toiminnot',
 	'abusefilter-edit-warn-preview' => 'Esikatsele valittua viestiä',
 	'abusefilter-edit-warn-edit' => 'Luo tai muokkaa valittua viestiä',
+	'abusefilter-edit-tag-tag' => 'Käytettävät tagit (yksi per rivi):',
 	'abusefilter-edit-denied' => 'Et voi katsoa tämän suodattimen yksityiskohtia, koska ne ovat piilotettu julkiselta näkyvyydeltä.',
 	'abusefilter-edit-main' => 'Suodattimen parametrit',
 	'abusefilter-edit-done-subtitle' => 'Suodatinta muokattu',
 	'abusefilter-edit-done' => 'Muutokset suodattimeen $1 tallennettiin onnistuneesti.',
 	'abusefilter-edit-badsyntax' => 'Suodattimessa, jonka määritit on syntaksivirhe.
-Jäsennin tuotti: <pre>$1</pre>',
+Jäsentimen palaute: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Et voi muuttaa tätä suodatinta, koska se sisältää yhden tai useamman rajoitetun toiminnon. 
 Pyydä rajoitettujen toimintojen lisäämiseen tarvittavien oikeuksien haltijalta, että tämä tekee muutoksen puolestasi.',
 	'abusefilter-edit-viewhistory' => 'Näytä suodattimen historia',
@@ -6859,6 +6962,7 @@ Pyydä rajoitettujen toimintojen lisäämiseen tarvittavien oikeuksien haltijalt
 	'abusefilter-edit-syntaxerr' => 'Syntaksivirhe havaittu: $1',
 	'abusefilter-edit-bad-tags' => 'Yksi tai useampi määrittämistäsi merkinnöistä ei ole toimivia.
 Merkintöjen tulisi olla lyhyitä ja ilman erikoismerkkejä.',
+	'abusefilter-edit-notallowed' => 'Sinulla ei ole oikeutta luoda tai muokata väärinkäyttösuodattimia',
 	'abusefilter-edit-builder-select' => 'Valitse vaihtoehdoista lisätäksesi sen kohdistimen kohdalle',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmeettiset operaattorit',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Lisäys (+)',
@@ -6909,6 +7013,7 @@ Merkintöjen tulisi olla lyhyitä ja ilman erikoismerkkejä.',
 	'abusefilter-edit-builder-vars-action' => 'Toiminto',
 	'abusefilter-edit-builder-vars-addedlines' => 'Muokkauksessa lisättyjen rivien määrä',
 	'abusefilter-edit-builder-vars-delta' => 'Koon muutos muokkauksessa',
+	'abusefilter-edit-builder-vars-diff' => 'Muokkauksessa tehtyjen muutosten yhdistetty diff-tuloste',
 	'abusefilter-edit-builder-vars-newsize' => 'Uuden sivun koko',
 	'abusefilter-edit-builder-vars-oldsize' => 'Vanhan sivun koko',
 	'abusefilter-edit-builder-vars-removedlines' => 'Muokkauksessa poistettujen rivien määrä',
@@ -6917,10 +7022,18 @@ Merkintöjen tulisi olla lyhyitä ja ilman erikoismerkkejä.',
 	'abusefilter-edit-builder-vars-article-ns' => 'Sivun nimiavaruus',
 	'abusefilter-edit-builder-vars-article-text' => 'Sivun nimi (ilman nimiavaruutta)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Sivun koko nimi',
+	'abusefilter-edit-builder-vars-movedfrom-id' => 'Siirron lähdesivun tunnistenumero',
+	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Siirron lähdesivun nimiavaruus',
+	'abusefilter-edit-builder-vars-movedfrom-text' => 'Siirron lähdesivun nimi',
+	'abusefilter-edit-builder-vars-movedfrom-prefixedtext' => 'Siirron lähdesivun koko nimi',
+	'abusefilter-edit-builder-vars-movedto-id' => 'Siirron kohdesivun tunnistenumero',
+	'abusefilter-edit-builder-vars-movedto-ns' => 'Siirron kohdesivun nimiavaruus',
+	'abusefilter-edit-builder-vars-movedto-text' => 'Siirron kohdesivun nimi',
 	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Koko nimi siirrettävän sivun kohdesivulle',
 	'abusefilter-edit-builder-vars-user-editcount' => 'Käyttäjän muokkausmäärä',
 	'abusefilter-edit-builder-vars-user-age' => 'Käyttäjätunnuksen ikä',
 	'abusefilter-edit-builder-vars-user-name' => 'Käyttäjätunnuksen nimi',
+	'abusefilter-edit-builder-vars-user-groups' => 'Ryhmät (myös implisiittiset), joissa käyttäjä on',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Sähköpostiosoite vahvistettiin',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Sivun viimeisimmät kymmenen muokkaajaa',
 	'abusefilter-edit-builder-vars-all-links' => 'Kaikki ulkoiset linkit uudessa tekstissä',
@@ -6958,6 +7071,7 @@ Merkintöjen tulisi olla lyhyitä ja ilman erikoismerkkejä.',
 	'abusefilter-history-select-submit' => 'Aseta lisärajaus',
 	'abusefilter-history-diff' => 'Muutokset',
 	'abusefilter-history-error-hidden' => 'Pyytämäsi suodatin on salattu, etkä voi tarkastella sen historiaa.',
+	'abusefilter-exception-invalidoperator' => 'Virheellinen operaattori ”$2” merkissä $1.',
 	'abusefilter-exception-regexfailure' => 'Virhe säännöllisessä lausekkeessa ”$3” merkin $1 kohdalla: ”$2”',
 	'abusefilter-action-tag' => 'Merkitse',
 	'abusefilter-action-throttle' => 'Hillitse muokkaustahtia',
@@ -6968,6 +7082,10 @@ Merkintöjen tulisi olla lyhyitä ja ilman erikoismerkkejä.',
 	'abusefilter-action-rangeblock' => 'Alue-esto',
 	'abusefilter-action-disallow' => 'Kiellä',
 	'abusefilter-revert-title' => 'Peru kaikki suodattimen $1 tekemät muutokset',
+	'abusefilter-revert-intro' => 'Tämä lomake antaa sinun palauttaa kaikki muutokset, jotka väärinkäyttösuodatin on tehnyt suodattimen $1 perusteella.
+Käytä tätä työkalua varoen.',
+	'abusefilter-revert-preview-item' => '$1: $2 teki $3:n $4.
+Kumottavat toiminnot: $5 ($6)',
 	'abusefilter-revert-search-legend' => 'Valitse suodatintoiminnot, jotka haluat perua',
 	'abusefilter-revert-periodstart' => 'Aikavälin alku',
 	'abusefilter-revert-periodend' => 'Aikavälin loppu',
@@ -6980,6 +7098,7 @@ Annettu syy: $2',
 	'abusefilter-revert-reasonfield' => 'Palautuksen syy',
 	'abusefilter-test' => 'Kokeile suodatinta viimeisimpiin muokkauksiin',
 	'abusefilter-test-legend' => 'Suodattimen kokeilu',
+	'abusefilter-test-load-filter' => 'Lataa suodatin tunnisteella:',
 	'abusefilter-test-submit' => 'Kokeile',
 	'abusefilter-test-load' => 'Lataa',
 	'abusefilter-test-user' => 'Käyttäjän muokkaukset:',
@@ -6988,10 +7107,10 @@ Annettu syy: $2',
 	'abusefilter-test-page' => 'Sivuun tehdyt muutokset:',
 	'abusefilter-test-shownegative' => 'Näytä muutokset, jotka eivät täsmää suodattimen kanssa',
 	'abusefilter-test-syntaxerr' => 'Suodatin, jonka syötit sisälsi syntaksivirheen.
-Voit saada perusteellisen selityksen napsauttamalla ”Tarkista syntaksi” -painiketta.',
+Lisätietoja saat napsauttamalla ”Tarkista syntaksi” -painiketta.',
 	'abusefilter-changeslist-examine' => 'tutki',
 	'abusefilter-examine' => 'Tarkasta yksittäiset muutokset',
-	'abusefilter-examine-intro' => 'Tällä sivulla voit tarkastella väärinkäyttösuodattimen muuttujia yksittäisen muutoksen suhteen, ja testata suodattimien suhteen.',
+	'abusefilter-examine-intro' => 'Tällä sivulla voit tarkastella väärinkäyttösuodattimen muuttujia yksittäisen muutoksen suhteen, ja testata sitä suodattimilla.',
 	'abusefilter-examine-legend' => 'Valitse muutokset',
 	'abusefilter-examine-diff' => 'Muutoksen URL',
 	'abusefilter-examine-user' => 'Käyttäjä',
@@ -7024,6 +7143,9 @@ Lisätietoja saat suodattimen [[Special:AbuseFilter/history|viimeisimpien muutos
 	'abusefilter-diff-pattern' => 'Suodattimen ehdot',
 	'abusefilter-diff-invalid' => 'Pyydettyjä versioita ei voitu hakea',
 	'abusefilter-diff-backhistory' => 'Takaisin suodatinhistoriaan',
+	'abusefilter-import-intro' => 'Voit käyttää tätä käyttöliittymää suodattimien tuomiseksi muista wikeistä.
+Napsauta ”{{int:abusefilter-edit-export}}” kohdassa ”{{int:abusefilter-tools-subtitle}}” lähdewikin muokkausnäkymässä.
+Kopioi ilmestyvän tekstikentän sisältö ja liitä se tähän tekstikenttään, jonka jälkeen napsauta ”{{int:abusefilter-import-submit}}”.',
 	'abusefilter-import-submit' => 'Tuo tiedot',
 );
 
@@ -11147,8 +11269,8 @@ Le statistiche citate si riferiscono alla versione più recente del filtro.
 Salvando le modifiche verranno annullati tutti i cambiamenti apportati da questa versione in poi.</strong> &bull;
 [[Special:AbuseFilter/history/$2|Ritorna alla cronologia del filtro]].',
 	'abusefilter-edit-status-label' => 'Statistiche:',
-	'abusefilter-edit-status' => "Rispetto {{PLURAL:$1|all'azione più recente|alle $1 azioni più recenti}}, questo filtro ha trovato $2 corrispondenze ($3%).
-Il suo tempo medio di esecuzione è di $4 ms. Esso impiega $5 {{PLURAL:$5|condizione|condizioni}} della condizione limite.",
+	'abusefilter-edit-status' => "Rispetto {{PLURAL:$1|all'azione più recente|alle $1 azioni più recenti}}, questo filtro ha trovato {{PLURAL:$2|corrispondenza|corrispondenze}} ($3 %).
+Il suo tempo medio di esecuzione è di $4 ms, e impiega $5 {{PLURAL:$5|condizione|condizioni}} del limite di condizioni.",
 	'abusefilter-edit-throttled' => "'''Attenzione''': Questo filtro è stato disattivato automaticamente come misura precauzionale.
 È stato raggiunto il limite massimo di corrispondenze, pari al $1% delle azioni.",
 	'abusefilter-edit-new' => 'Nuovo filtro',
@@ -11927,6 +12049,13 @@ $messages['ka'] = array(
 ვიკის წყაროში, დააჭირეთ "{{int:abusefilter-edit-export}}" რედაქტირების ინტერფეისის "{{int:abusefilter-tools-subtitle}}" განყოფილებაში.
 დააკოპირეთ ტექსტური ველის შიგთავსი, გადმოიტანეთ ამ გვერდზე და დააჭირეთ "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'მონაცემების იმპორტირება',
+);
+
+/** Kirmanjki (Kırmancki)
+ * @author Mirzali
+ */
+$messages['kiu'] = array(
+	'abusefilter-log-search-submit' => 'Cıfeteliye',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -13063,6 +13192,7 @@ En huet méi wéi déi definiéiert Limit vun $1% vun den Aktiounen als schiedle
 	'abusefilter-edit-action-warn' => 'Dës Aktiounen ausféieren nodeem de Benotzer eng Warnung kritt huet',
 	'abusefilter-edit-action-disallow' => 'Dem Benotzer dës Aktioun net erlaben',
 	'abusefilter-edit-action-flag' => "D'Ännerung am Mëssbrauchslog markéieren",
+	'abusefilter-edit-action-blockautopromote' => 'Dem Benotzer seng "autoconfirmed"-Rechter ofhuelen',
 	'abusefilter-edit-action-degroup' => 'De Benotzer aus alle priviligéierte Gruppen eraushuelen',
 	'abusefilter-edit-action-block' => "De Benotzer an/oder d'IP-Adress fir Ännerunge spären",
 	'abusefilter-edit-action-throttle' => 'Aktiounen nëmmen ausléise wann de Benotzer eng bestëmmte Limit depasséiert',
@@ -14581,6 +14711,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-builder-funcs-lcase' => 'ചെറിയക്ഷരങ്ങളിലേയ്ക്ക് (lcase)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'ഇരട്ട അക്ഷരങ്ങൾ നീക്കം ചെയ്യുക (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'പ്രത്യേകാക്ഷരങ്ങൾ /ആകെ അക്ഷരങ്ങൾ (specialratio)',
+	'abusefilter-edit-builder-funcs-count' => 'പദം Y എന്നതിനുള്ളിൽ പദം X പ്രത്യക്ഷപ്പെടുന്ന തവണകൾ (count)',
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'ശൂന്യ ഇട നീക്കം ചെയ്യുക (rmwhitespace)',
 	'abusefilter-edit-builder-funcs-rmspecials' => 'പ്രത്യേക അക്ഷരങ്ങൾ നീക്കംചെയ്യുക (rmspecials)',
 	'abusefilter-edit-builder-funcs-ip_in_range' => 'ഐ.പി. പരിധിയിലാണോ? (ip_in_range)',
@@ -18248,6 +18379,8 @@ $messages['roa-tara'] = array(
 	'abusefilter-history-comments' => 'Commende',
 	'abusefilter-history-actions' => 'Aziune',
 	'abusefilter-history-deleted' => 'Scangillete',
+	'abusefilter-diff-item' => 'Elemende',
+	'abusefilter-import-submit' => "'Mborte date",
 );
 
 /** Russian (Русский)
