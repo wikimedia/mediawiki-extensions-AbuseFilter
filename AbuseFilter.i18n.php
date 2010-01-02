@@ -12586,7 +12586,7 @@ $messages['ko'] = array(
 	'abusefilter-reautoconfirm-done' => '계정의 자동 인증 상태가 복구되었습니다.',
 	'abusefilter-edit-subtitle' => '필터 $1 편집하기',
 	'abusefilter-edit-status-label' => '통계:',
-	'abusefilter-edit-status' => '최근 $1개의 행위 중 $2건 ($3) 이 이 필터와 일치하였습니다.
+	'abusefilter-edit-status' => '최근 $1개의 행위 중 $2건 ($3%) 이 이 필터와 일치하였습니다.
 평균적으로 필터의 작동 시간은 $4밀리초이며, $5만큼의 부하가 걸리고 있습니다.',
 	'abusefilter-edit-throttled' => "'''경고''': 이 필터는 안전상의 이유로 자동적으로 비활성화되었습니다.
 필터 일치 비율이 $1%로 한계에 다다랐습니다.",
@@ -15031,6 +15031,8 @@ $messages['ml'] = array(
 തന്നിരിക്കുന്ന കാരണം:$2',
 	'abusefilter-revert-reasonfield' => 'മുൻപ്രാപനത്തിനുള്ള കാരണം:',
 	'abusefilter-test' => 'മുൻ‌‌തിരുത്തലുകളിൽ ഒരു അരിപ്പ പരീക്ഷിക്കുക',
+	'abusefilter-test-intro' => 'ഈ താൾ ഒടുവിലത്തെ {PLURAL:$1|ഒരു മാറ്റത്തിൽ|$1 മാറ്റങ്ങളിൽ}} താഴെയുള്ള പെട്ടിയിൽ നൽകിയിരിക്കുന്ന അരിപ്പ പരീക്ഷിക്കാൻ അനുവധിക്കുന്നു.
+നിലവിലുള്ള ഒരു അരിപ്പ ഉപയോഗിക്കാൻ, അതിന്റെ ഐ.ഡി. തിരുത്തുവാനുള്ള പെട്ടിയുടെ താഴെയുള്ള പെട്ടിയിൽ നൽകിയ ശേഷം, "എടുക്കുക" എന്ന ബട്ടൺ ഞെക്കുക.',
 	'abusefilter-test-legend' => 'അരിപ്പയുടെ പരീക്ഷണം',
 	'abusefilter-test-load-filter' => 'അരിപ്പയുടെ ഐ.ഡി. എടുക്കുക:',
 	'abusefilter-test-submit' => 'പരീക്ഷിയ്ക്കുക',
@@ -15040,6 +15042,8 @@ $messages['ml'] = array(
 	'abusefilter-test-period-end' => 'മുമ്പ് വരുത്തിയ മാറ്റങ്ങൾ:',
 	'abusefilter-test-page' => 'താളിൽ വരുത്തിയ മാറ്റങ്ങൾ:',
 	'abusefilter-test-shownegative' => 'അരിപ്പയുമായി യോജിക്കാത്ത മാറ്റങ്ങൾ പ്രദർശിപ്പിക്കുക',
+	'abusefilter-test-syntaxerr' => 'താങ്കൾ നൽകിയ അരിപ്പയുടെ എഴുത്തുരീതിയിൽ പിശകുണ്ട്.
+"എഴുത്തുരീതി പരിശോധിക്കുക" എന്ന ബട്ടൺ ഞെക്കിയാൽ താങ്കൾക്ക് പൂർണ്ണമായ വിശദീകരണം ലഭിക്കുന്നതാണ്.',
 	'abusefilter-changeslist-examine' => 'പരിശോധിക്കുക',
 	'abusefilter-examine' => 'ഒറ്റയൊറ്റ മാറ്റങ്ങൾ പരിശോധിക്കുക',
 	'abusefilter-examine-intro' => 'ഓരോ ഒറ്റയൊറ്റ മാറ്റത്തിനും ദുരുപയോഗ അരിപ്പ സൃഷ്ടിക്കുന്ന ചരങ്ങൾ പരിശോധിക്കാൻ ഈ താൾ താങ്കളെ അനുവദിക്കുന്നു, ഒപ്പം അത് അരിപ്പകളിൽ പരീക്ഷിക്കാവുന്നതുമാണ്.',
@@ -15072,6 +15076,7 @@ $messages['ml'] = array(
 	'abusefilter-diff-item' => 'ഇനം',
 	'abusefilter-diff-version' => '$1-നു $2 സൃഷ്ടിച്ച പതിപ്പ്',
 	'abusefilter-diff-info' => 'അടിസ്ഥാന വിവരങ്ങൾ',
+	'abusefilter-diff-pattern' => 'അരിപ്പയിലെ ഉപാധികൾ',
 	'abusefilter-diff-invalid' => 'ആവശ്യപ്പെട്ട പതിപ്പുകൾ ശേഖരിക്കാൻ കഴിയില്ല',
 	'abusefilter-diff-backhistory' => 'അരിപ്പയുടെ നാൾവഴിയിലേയ്ക്ക് തിരിച്ചുപോവുക',
 	'abusefilter-import-intro' => 'മറ്റുവിക്കികളിൽ നിന്ന് അരിപ്പകൾ ഇറക്കുമതി ചെയ്യാൻ ഈ ദൃശ്യമണ്ഡലം ഉപയോഗിക്കാവുന്നതാണ്.
@@ -18170,6 +18175,7 @@ Descrição da regra: $1',
 	'abusefilter-deleted' => 'Eliminado',
 	'abusefilter-disabled' => 'Desativado',
 	'abusefilter-new' => 'Criar um novo filtro',
+	'abusefilter-tools-modifiertest-submit' => 'Testar',
 	'abusefilter-tools' => 'Ferramentas do filtro de abuso',
 	'abusefilter-status-global' => 'Global',
 	'abusefilter-list-options' => 'Opções',
@@ -18230,8 +18236,10 @@ Descrição da regra: $1',
 	'abusefilter-history-enabled' => 'Ativado',
 	'abusefilter-history-global' => 'Global',
 	'abusefilter-history-user' => 'Usuário',
+	'abusefilter-history-comments' => 'Comentários',
 	'abusefilter-history-filterid' => 'Filtro',
 	'abusefilter-history-select-user' => 'Usuário:',
+	'abusefilter-history-diff' => 'Alterações',
 	'abusefilter-action-warn' => 'Avisar',
 	'abusefilter-action-block' => 'Bloquear',
 	'abusefilter-action-disallow' => 'Desautorizar',
