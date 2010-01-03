@@ -2028,6 +2028,10 @@ $messages['bg'] = array(
 	'abusefilter-desc' => 'Извършва автоматична евристика на редакциите.',
 	'abusefilter' => 'Настройка на защитата от вредоносни действия',
 	'abuselog' => 'Дневник на вредоносните действия',
+	'abusefilter-intro' => 'Добре дошли в административния интерфейс на Филтъра срещу злоупотреби.
+Филтърът срещу злоупотреби е автоматизиран софтуерен механизъм за прилагане на евристични оценки към разнообразни действия. 
+Този интерфейс показва списък на дефинираните филтри с възможност те да бъдат променяни.',
+	'abusefilter-mustbeeditor' => 'От съображения за сигурност само потребители с права да променят филтрите срещу злоупотреби могат да използват този интерфейс.',
 	'abusefilter-warning' => "<big>'''Внимание'''</big>: Извършваното действие беше автоматично разпознато като вредоносно.
 Неконструктивните редакции лесно ще бъдат премахнати,
 а демонстративното или упоритото вредене ще доведе до блокиране на потребителската ви сметка или IP адрес.
@@ -2055,12 +2059,16 @@ $messages['bg'] = array(
 	'right-abusefilter-log' => 'Преглеждане на дневника на вредоносните действия',
 	'right-abusefilter-log-detail' => 'Преглеждане на подробни записи в дневника на вредоносните действия',
 	'right-abusefilter-private' => 'Преглеждане на скритите данни в дневника с вредоносни действия',
+	'right-abusefilter-revert' => 'Възвръщане на всички промени, направени от филтъра срещу злоупотреби',
 	'right-abusefilter-view-private' => 'Преглед на защитните филтри, означени като скрити',
 	'action-abusefilter-modify' => 'промяна на защитните филтри',
 	'action-abusefilter-view' => 'преглед на защитните филтри',
 	'action-abusefilter-log' => 'преглед на днивника на защитните филтри',
 	'action-abusefilter-log-detail' => 'подробен преглед на дневника на защитните филтри',
+	'action-abusefilter-private' => 'преглед на личните данни в Дневника на злоупотребите',
+	'action-abusefilter-revert' => 'възвръщане на всички промени, направени от даден филтър',
 	'abusefilter-log' => 'Дневник на защитата от вредоносни действия',
+	'abusefilter-log-summary' => 'Този дневник показва списъка на всички действия, прехванати от филтрите.',
 	'abusefilter-log-search' => 'Търсене в дневника със злоупотреби',
 	'abusefilter-log-search-user' => 'Потребител:',
 	'abusefilter-log-search-filter' => 'Идентификатор на филтър:',
@@ -13296,7 +13304,7 @@ Eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi Är Aktioun reagéiert 
 	'right-abusefilter-log' => 'Lëscht vum Mëssbrauch weisen',
 	'right-abusefilter-log-detail' => 'Detailléiert Versioun vum Mëssbrauchslog weisen',
 	'right-abusefilter-private' => 'Privat Donnéeën am Mëssbrauchsfilter weisen',
-	'right-abusefilter-modify-restricted' => 'Mëssbrauchsfiltere mat limtéierten Aktiounen änneren',
+	'right-abusefilter-modify-restricted' => 'Mëssbrauchsfiltere mat limitéierten Aktiounen änneren',
 	'right-abusefilter-revert' => 'All Ännerungen vun engem bestëmmte Mëssbruachsfilter zrécksetzen',
 	'right-abusefilter-view-private' => 'Mëssbrauchsfilter weisen déi als privat markéiert sinn',
 	'action-abusefilter-modify' => "Mëssbrauchsfilteren z'änneren",
@@ -14837,6 +14845,8 @@ $messages['ml'] = array(
 	'abusefilter-reautoconfirm-done' => 'അംഗത്വത്തിന്റെ സ്വയം സ്ഥിരീകൃത സ്ഥിതി പുനഃസ്ഥാപിച്ചിരിക്കുന്നു',
 	'abusefilter-edit-subtitle' => 'അരിപ്പ $1 തിരുത്തുന്നു',
 	'abusefilter-edit-status-label' => 'സ്ഥിതിവിവരക്കണക്കുകൾ:',
+	'abusefilter-edit-status' => 'ഒടുവിലത്തെ {{PLURAL:$1|പ്രവൃത്തിയിൽ|$1 പ്രവൃത്തികളിൽ}}, അരിപ്പ $2 എണ്ണവുമായി ഒത്തുപോയി ($3%).
+ശരാശരി, പ്രവർത്തന സമയം $4 മില്ലിസെക്കന്റ് ആണ്, ഉപാധികളിൽ {{PLURAL:$5|ഒരുപാധി|$5 ഉപാധികൾ}} ഉപയോഗിച്ചിരിക്കുന്നു.',
 	'abusefilter-edit-throttled' => "'''മുന്നറിയിപ്പ്''':സുരക്ഷാ മാർഗ്ഗമെന്ന നിലയിൽ ഈ അരിപ്പ സ്വയം പ്രവർത്തനരഹിതമാക്കിയിരിക്കുന്നു.
 പ്രവൃത്തിയുടെ $1% ഒത്തുപോകലുകളുടെ പരിധിയെത്തിയിരിക്കുന്നു.",
 	'abusefilter-edit-new' => 'പുതിയ അരിപ്പ',
@@ -14861,6 +14871,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-action-blockautopromote' => 'ഉപയോക്താവിന്റെ സ്വയംസ്ഥിരീകൃത സ്ഥിതി പിൻവലിക്കുക',
 	'abusefilter-edit-action-degroup' => 'എല്ലാ പ്രത്യേക പദവികളുള്ള സംഘങ്ങളിൽ നിന്നും ഉപയോക്താവിനെ നീക്കുക',
 	'abusefilter-edit-action-block' => 'ഉപയോക്താവിനെ ഒപ്പം/അല്ലെങ്കിൽ ഐ.പി. വിലാസത്തെ തിരുത്തുന്നതിൽ നിന്നും തടയുക',
+	'abusefilter-edit-action-throttle' => 'ഉപയോക്താവ് പരിധി കടന്നാൽ മാത്രം പ്രവൃത്തികൾ തുടങ്ങുക',
 	'abusefilter-edit-action-rangeblock' => 'ഉപയോക്താവ് കടന്നുവരുന്ന /16 പരിധി തടയുക',
 	'abusefilter-edit-action-tag' => 'മറ്റൊരു സംശോധനത്തിലെ തിരുത്തൽ റ്റാഗ് ചെയ്യുക',
 	'abusefilter-edit-throttle-count' => 'അനുവദിക്കപ്പെട്ടിരിക്കുന്ന പ്രവർത്തനങ്ങളുടെ എണ്ണം:',
@@ -15031,7 +15042,7 @@ $messages['ml'] = array(
 തന്നിരിക്കുന്ന കാരണം:$2',
 	'abusefilter-revert-reasonfield' => 'മുൻപ്രാപനത്തിനുള്ള കാരണം:',
 	'abusefilter-test' => 'മുൻ‌‌തിരുത്തലുകളിൽ ഒരു അരിപ്പ പരീക്ഷിക്കുക',
-	'abusefilter-test-intro' => 'ഈ താൾ ഒടുവിലത്തെ {PLURAL:$1|ഒരു മാറ്റത്തിൽ|$1 മാറ്റങ്ങളിൽ}} താഴെയുള്ള പെട്ടിയിൽ നൽകിയിരിക്കുന്ന അരിപ്പ പരീക്ഷിക്കാൻ അനുവധിക്കുന്നു.
+	'abusefilter-test-intro' => 'ഈ താൾ ഒടുവിലത്തെ {{PLURAL:$1|ഒരു മാറ്റത്തിൽ|$1 മാറ്റങ്ങളിൽ}} താഴെയുള്ള പെട്ടിയിൽ നൽകിയിരിക്കുന്ന അരിപ്പ പരീക്ഷിക്കാൻ അനുവധിക്കുന്നു.
 നിലവിലുള്ള ഒരു അരിപ്പ ഉപയോഗിക്കാൻ, അതിന്റെ ഐ.ഡി. തിരുത്തുവാനുള്ള പെട്ടിയുടെ താഴെയുള്ള പെട്ടിയിൽ നൽകിയ ശേഷം, "എടുക്കുക" എന്ന ബട്ടൺ ഞെക്കുക.',
 	'abusefilter-test-legend' => 'അരിപ്പയുടെ പരീക്ഷണം',
 	'abusefilter-test-load-filter' => 'അരിപ്പയുടെ ഐ.ഡി. എടുക്കുക:',
