@@ -12161,6 +12161,7 @@ $messages['ka'] = array(
 	'abusefilter-log-search-submit' => 'ძიება',
 	'abusefilter-log-details-vars' => 'Action parameters',
 	'abusefilter-list-visibility' => 'ხილვადობა',
+	'abusefilter-list-edit' => 'რედაქტირება',
 	'abusefilter-list-details' => 'დეტალები',
 	'abusefilter-unhidden' => 'საზოგადოებრივი',
 	'abusefilter-deleted' => 'წაშლილია',
