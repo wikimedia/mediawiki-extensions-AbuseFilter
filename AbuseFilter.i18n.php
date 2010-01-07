@@ -2976,7 +2976,18 @@ Kopirajte iz tekstualne kutije koja se pojavi i zalijepite u ovu kutiju, zatim k
  * @author Ssola
  */
 $messages['ca'] = array(
+	'abusefilter-desc' => 'Aplica heurística automàtica a les edicions',
+	'abusefilter' => "Configuració del filtre d'abús",
 	'abuselog' => "Registre d'abús",
+	'abusefilter-intro' => "Benvingut a la interfície de gestió del Filtre d'Abús.
+El Filtre d'Abús es un mecanisme del programari per aplicar heurística automàtica a totes les accions.
+Aquesta interfície mostra un llistat amb tots els filtres definits i permet modificar-los.",
+	'abusefilter-mustbeeditor' => "Per raons de seguretat, només poden utilitzar aquesta interfície els usuaris amb permisos per a modificar els filtres d'abús.",
+	'abusefilter-warning' => "<big>'''Avís'''</big>: Aquesta acció ha estat automàticament identificada com a perniciosa.
+Les edicions no constructives seran ràpidament desfetes,
+i l'editar reiteradament de forma no constructiva resultarà en el bloqueig del vostre compte o ordinador.
+Si creieu que les vostres edicions són constructives, podeu clicar novament a Submit per a confirmar-ho.
+A continuació us mostrem una breu descripció de la regla d'abús que ha complert la vostra acció: $1",
 	'abusefilter-log-search-user' => 'Usuari:',
 	'abusefilter-log-search-filter' => 'ID del filtre:',
 	'abusefilter-log-search-title' => 'Títol:',
@@ -9744,6 +9755,7 @@ Za učitavanje postojećeg filtra, upišite ID filtra u okvir ispod okvira za ur
 	'abusefilter-topnav-tools' => "Alati za ispravljanje pogrešaka (''debugging'')",
 	'abusefilter-log-name' => 'Evidencija filtra zloporaba',
 	'abusefilter-diff-title' => 'Razlike između verzija',
+	'abusefilter-diff-item' => 'Stavka',
 	'abusefilter-diff-info' => 'Osnovni podaci',
 	'abusefilter-diff-pattern' => 'Filtar uvjeta',
 	'abusefilter-diff-invalid' => 'Nemoguće je dohvatiti tražene verzije',
