@@ -2021,6 +2021,7 @@ $messages['be-tarask'] = array(
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
+ * @author Stanqo
  * @author Turin
  * @author Петър Петров
  */
@@ -2276,6 +2277,7 @@ $messages['bg'] = array(
 	'abusefilter-history-foruser' => 'Промени от $1',
 	'abusefilter-history-hidden' => 'скрит',
 	'abusefilter-history-enabled' => 'включен',
+	'abusefilter-history-global' => 'Общ',
 	'abusefilter-history-timestamp' => 'Време',
 	'abusefilter-history-user' => 'Потребител',
 	'abusefilter-history-public' => 'Описание на публичен филтър',
@@ -2284,9 +2286,11 @@ $messages['bg'] = array(
 	'abusefilter-history-comments' => 'Коментари',
 	'abusefilter-history-actions' => 'Действия',
 	'abusefilter-history-backedit' => 'Връщане към редактора на филтри',
+	'abusefilter-history-deleted' => 'Изтрит',
 	'abusefilter-history-filterid' => 'Филтър',
 	'abusefilter-history-select-legend' => 'Подробно търсене',
 	'abusefilter-history-select-user' => 'Потребител:',
+	'abusefilter-history-select-submit' => 'Усъвършенстване',
 	'abusefilter-history-diff' => 'Промени',
 	'abusefilter-history-error-hidden' => 'Търсеният филтър е скрит и не можете да преглеждате историята му.',
 	'abusefilter-exception-unexpectedatend' => 'Неочаквано "$2" при знака $1.',
@@ -2300,6 +2304,7 @@ $messages['bg'] = array(
 {{PLURAL:$3|Очакван е|Очаквани са}} $3 {{PLURAL:$3|аргумент|аргумента}}, {{PLURAL:$4|получен е|получени са}} $4',
 	'abusefilter-exception-regexfailure' => 'Грешка в регулюрния израз "$3" при знак $1: "$2"',
 	'abusefilter-exception-overridebuiltin' => 'Неоторизиран опит за предефиниране на вградената променлива "$2" при знак $1.',
+	'abusefilter-action-tag' => 'Етикет',
 	'abusefilter-action-warn' => 'Предупреждение',
 	'abusefilter-action-block' => 'Блокиране',
 	'abusefilter-action-degroup' => 'Премахване от групите',
@@ -2324,6 +2329,7 @@ $messages['bg'] = array(
 	'abusefilter-test-load-filter' => 'Запеждане на филтър с ID:',
 	'abusefilter-test-submit' => 'Изпробване',
 	'abusefilter-test-load' => 'Зареждане',
+	'abusefilter-test-user' => 'Промени от потребител:',
 	'abusefilter-test-period-start' => 'Промени, направени след това:',
 	'abusefilter-test-period-end' => 'Промени, направени преди това:',
 	'abusefilter-test-page' => 'Промени по страницата:',
@@ -11745,8 +11751,8 @@ Verificarle con cura e fare clic su "Conferma" per confermare la selezione.',
 Motivo indicato: $2',
 	'abusefilter-revert-reasonfield' => "Motivo dell'annullamento:",
 	'abusefilter-test' => 'Verifica un filtro confrontandolo con le modifiche precedenti',
-	'abusefilter-test-intro' => 'Questa pagina consente di verificare il filtro indicato nella casella in basso nei confronti {{PLURAL:$1|l\'ultima modifica|le ultime $1 modifiche}}.
-Per caricare un filtro esistente, digitare il relativo identificatore nella casella sottostante la casella di testo per la modifica e fare clic sul pulsante "Carica".',
+	'abusefilter-test-intro' => 'Questa pagina consente di verificare il filtro indicato nella casella in basso nei confronti del{{PLURAL:$1|l\'ultima modifica|le ultime $1 modifiche}}.
+Per caricare un filtro esistente, digitare il relativo identificatore nella casella sottostante la casella di testo e fare clic sul pulsante "Carica".',
 	'abusefilter-test-legend' => 'Verifica filtri',
 	'abusefilter-test-load-filter' => 'Carica filtro con ID:',
 	'abusefilter-test-submit' => 'Verifica',
