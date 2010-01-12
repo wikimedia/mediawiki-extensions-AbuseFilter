@@ -14906,6 +14906,7 @@ $messages['ml'] = array(
 	'abusefilter-list-options-hidedisabled' => 'നിർജ്ജീവമാക്കപ്പെട്ട അരിപ്പകൾ മറയ്ക്കുക',
 	'abusefilter-list-options-submit' => 'പുതുക്കുക',
 	'abusefilter-tools-subtitle' => 'ഉപകരണങ്ങൾ',
+	'abusefilter-tools-text' => 'ദുരുപയോഗ അരിപ്പകൾ സൃഷ്ടിക്കാനും തെറ്റുതിരുത്താനും ഉപയോഗിക്കാവുന്ന ചില ഉപകരണങ്ങൾ ഇവിടെ നൽകിയിരിക്കുന്നു.',
 	'abusefilter-tools-submitexpr' => 'മൂല്യനിർണ്ണയം നടത്തുക',
 	'abusefilter-tools-reautoconfirm' => 'സ്വയം സ്ഥിരീകൃത സ്ഥിതി പുനഃസ്ഥാപിക്കുക',
 	'abusefilter-tools-reautoconfirm-user' => 'ഉപയോക്താവ്:',
@@ -14913,6 +14914,10 @@ $messages['ml'] = array(
 	'abusefilter-reautoconfirm-notallowed' => 'സ്വയം സ്ഥിരീകൃത സ്ഥിതി പുനഃസ്ഥാപിക്കാൻ താങ്കൾക്ക് അനുമതിയില്ല.',
 	'abusefilter-reautoconfirm-done' => 'അംഗത്വത്തിന്റെ സ്വയം സ്ഥിരീകൃത സ്ഥിതി പുനഃസ്ഥാപിച്ചിരിക്കുന്നു',
 	'abusefilter-edit-subtitle' => 'അരിപ്പ $1 തിരുത്തുന്നു',
+	'abusefilter-edit-oldwarning' => '<strong>താങ്കൾ ഈ അരിപ്പയുടെ പഴയൊരു പതിപ്പാണ് തിരുത്തുന്നത്.
+ഉദ്ധരിച്ചിരിക്കുന്ന സ്ഥിതിവിവരമാകട്ടെ അരിപ്പയുടെ ഏറ്റവും പുതിയതും.
+താങ്കളുടെ മാറ്റങ്ങൾ സേവ് ചെയ്യുകയാണെങ്കിൽ, താങ്കൾ തിരുത്തിയ നാൾപ്പതിപ്പ് മുതലുള്ള എല്ലാ മാറ്റങ്ങളും നഷ്ടപ്പെടുന്നതാണ്.</strong> &bull;
+[[Special:AbuseFilter/history/$2|ഈ അരിപ്പയുടെ നാൾവഴിയിലേയ്ക്ക് മടങ്ങുക]].',
 	'abusefilter-edit-status-label' => 'സ്ഥിതിവിവരക്കണക്കുകൾ:',
 	'abusefilter-edit-status' => 'ഒടുവിലത്തെ {{PLURAL:$1|പ്രവൃത്തിയിൽ|$1 പ്രവൃത്തികളിൽ}}, അരിപ്പ $2 എണ്ണവുമായി ഒത്തുപോയി ($3%).
 ശരാശരി, പ്രവർത്തന സമയം $4 മില്ലിസെക്കന്റ് ആണ്, ഉപാധികളിൽ {{PLURAL:$5|ഒരുപാധി|$5 ഉപാധികൾ}} ഉപയോഗിച്ചിരിക്കുന്നു.',
@@ -15011,6 +15016,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'ശൂന്യ ഇട നീക്കം ചെയ്യുക (rmwhitespace)',
 	'abusefilter-edit-builder-funcs-rmspecials' => 'പ്രത്യേക അക്ഷരങ്ങൾ നീക്കംചെയ്യുക (rmspecials)',
 	'abusefilter-edit-builder-funcs-ip_in_range' => 'ഐ.പി. പരിധിയിലാണോ? (ip_in_range)',
+	'abusefilter-edit-builder-funcs-contains-any' => 'വിവിധ ഉപപദങ്ങൾക്ക് വേണ്ടി തിരയാനുള്ള പദം (contains_any)',
 	'abusefilter-edit-builder-funcs-substr' => 'ഉപപദം (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'പദത്തിൽ ഉപപദത്തിന്റെ സ്ഥാനം (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'ഉപപദത്തിനു പകരം പദം ചേർക്കുക (str_replace)',
