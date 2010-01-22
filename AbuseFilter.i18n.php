@@ -468,6 +468,7 @@ Copy from the textbox that appears, and paste it into this textbox, then click "
  * @author Purodha
  * @author Raymond
  * @author Siebrand
+ * @author Translationista
  */
 $messages['qqq'] = array(
 	'abusefilter-desc' => 'Short description of the Abusefilter extension, shown in [[Special:Version]]. Do not translate or change links.',
@@ -518,7 +519,8 @@ $messages['qqq'] = array(
 * $8 action details link
 * $9 link to examine the action',
 	'abusefilter-log-detailslink' => '{{Identical|Details}}',
-	'abusefilter-log-details-var' => 'Caption of a column on a detail view of [[Special:AbuseLog]]',
+	'abusefilter-log-details-var' => 'Caption of a column on a detail view of [[Special:AbuseLog]]
+{{Identical|Variable}}',
 	'abusefilter-log-details-val' => 'Caption of a column on a detail view of [[Special:AbuseLog]]
 {{Identical|Value}}',
 	'abusefilter-log-details-vars' => 'Caption on a detail view of [[Special:AbuseLog]]',
@@ -558,6 +560,7 @@ $messages['qqq'] = array(
 * $3 is the date
 * $4 is the time
 * $5 is the user name which can be used with GENDER',
+	'abusefilter-edit-throttle-groups' => 'Could you please go over the "throttle" concept? It is polysemic in Spanish. I need definition.',
 	'abusefilter-edit-warn-actions' => '{{Identical|Action}}',
 	'abusefilter-edit-history' => '{{Identical|History}}',
 	'abusefilter-edit-builder-misc-in' => 'Do not translate "(in)"',
@@ -583,6 +586,7 @@ Functional explanation: rmdoubles removes repeated characters in the argument, a
 	'abusefilter-edit-builder-funcs-substr' => "{{doc-important|Do not translate \"'''(substr)'''\"}}",
 	'abusefilter-edit-builder-funcs-strpos' => "{{doc-important|Do not translate \"'''(strpos)'''\"}}",
 	'abusefilter-edit-builder-funcs-str_replace' => "{{doc-important|Do not translate \"'''(str_replace)'''\"}}",
+	'abusefilter-edit-builder-group-vars' => '{{Identical|Variable}}',
 	'abusefilter-edit-builder-vars-accountname' => 'This variable is used only during account creation and contains the username of the newly created account',
 	'abusefilter-edit-builder-vars-action' => '{{Identical|Action}}',
 	'abusefilter-edit-builder-vars-newsize' => 'New size of the page',
@@ -5976,6 +5980,7 @@ Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku 
  * @author PieRRoMaN
  * @author Remember the dot
  * @author Sanbec
+ * @author Translationista
  */
 $messages['es'] = array(
 	'abusefilter-desc' => 'Aplicar automáticamente heurísticas para ediciones',
@@ -6203,6 +6208,7 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Remover espacio en blanco (rmwhitespace)',
 	'abusefilter-edit-builder-funcs-rmspecials' => 'Remover caracteres especiales (rmspecials)',
 	'abusefilter-edit-builder-funcs-ip_in_range' => '¿Está la IP en el rango? (ip_in_range)',
+	'abusefilter-edit-builder-funcs-contains-any' => 'Buscar múltiples subcadenas en la cadena (contains_any)',
 	'abusefilter-edit-builder-funcs-substr' => 'Subcadena (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'Posición de la subcadena en la cadena (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'Reemplazar subcadena con una cadena (str_replace)',
@@ -6241,9 +6247,11 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-edit-builder-vars-removed-links' => 'Todos los vínculos externos removidos en la edición',
 	'abusefilter-edit-builder-vars-old-text' => 'Antigua página de wikitexto, antes de la edición',
 	'abusefilter-edit-builder-vars-new-text' => 'Nueva página de wikitexto, después de la edición',
+	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nuevo texto de página, libre de cualquier revisión',
 	'abusefilter-edit-builder-vars-new-html' => 'Fuente HTML analizada de la nueva revisión',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Editar nivel de protección de la página',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Mover nivel de protección de la página',
+	'abusefilter-edit-builder-vars-old-text-stripped' => 'Texto de página antiguo, libre de revisiones',
 	'abusefilter-edit-builder-vars-old-links' => 'Vínculos en la página, antes de la edición',
 	'abusefilter-edit-builder-vars-old-html' => 'Antigua página de wikitexto, analizada en HTML',
 	'abusefilter-edit-builder-vars-minor-edit' => 'Si la edición es marcada o no como menor',
@@ -6272,12 +6280,19 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-exception-unexpectedatend' => 'Inesperado "$2" en caracter $1.',
 	'abusefilter-exception-expectednotfound' => 'Esperado un $2 en caracter $1, no encontrado (en su lugar encontrado $3 $4).',
 	'abusefilter-exception-unrecognisedkeyword' => 'Palabra clave no reconocida $2 en el caracter $1',
+	'abusefilter-exception-unexpectedtoken' => 'Token $3 inesperado (del tipo $2) en el caracter $1.',
 	'abusefilter-exception-unclosedstring' => 'Cadena no cerrada empezando en el caracter $1',
 	'abusefilter-exception-invalidoperator' => 'Operador inválido "$2" en caracter $1.',
+	'abusefilter-exception-unrecognisedtoken' => 'Token "$2" no reconocido en el caracter $1.',
 	'abusefilter-exception-noparams' => 'Ningún parámetro siguó la función "$2" en caracter $1.',
 	'abusefilter-exception-dividebyzero' => 'Intento ilegal de dividir $2 entre cero en caracter $1.',
 	'abusefilter-exception-unrecognisedvar' => 'Variable no reconocida $2 en caracter $1',
+	'abusefilter-exception-notenoughargs' => 'El caracter $1 no ha dado a la función $2 suficientes argumentos .
+Se espera $3 {{PLURAL:$3|argumento|argumento}} y se ha dado $4',
 	'abusefilter-exception-regexfailure' => 'Error en expresión regular "$3" en caracter $1: "$2"',
+	'abusefilter-exception-overridebuiltin' => 'Sobreescritura ilegal de variable "$2" en caracter $1.',
+	'abusefilter-exception-outofbounds' => 'Solicitando objeto de listado no existente $2 (tamaño del listado = $3) en el caracter $1.',
+	'abusefilter-exception-notlist' => 'Solicitando objeto de matriz de no-matriz en el caracter $1.',
 	'abusefilter-action-tag' => 'Marcar',
 	'abusefilter-action-throttle' => 'Impedir',
 	'abusefilter-action-warn' => 'Advertir',
@@ -9534,8 +9549,8 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Ex13
  * @author SpeedyGonsales
- * @author Suradnik13
  */
 $messages['hr'] = array(
 	'abusefilter-desc' => 'Primjenjuje automatsku heuristiku na uređivanja',
@@ -15204,6 +15219,7 @@ $messages['ml'] = array(
  */
 $messages['mn'] = array(
 	'abusefilter-log-search-submit' => 'Хайх',
+	'abusefilter-history-comments' => 'Тайлбар',
 	'abusefilter-revert-filter' => 'Шүүлтүүр:',
 	'abusefilter-examine-submit' => 'Хайх',
 );
