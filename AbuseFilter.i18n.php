@@ -17375,6 +17375,7 @@ $messages['pdc'] = array(
 	'abusefilter-history-user' => 'Yuuser',
 	'abusefilter-history-comments' => 'Anmaerrickinge',
 	'abusefilter-history-select-user' => 'Yuuser:',
+	'abusefilter-test-load' => 'Laade',
 	'abusefilter-examine-user' => 'Yuuser:',
 	'abusefilter-examine-submit' => 'Uffgucke',
 	'abusefilter-diff-version' => 'Version vum $1 vun $2',
