@@ -13734,8 +13734,8 @@ Fir weider Detailer, kuckt [[Special:AbuseFilter/history|d'Lëscht]] vun de reze
 	'abusefilter-diff-pattern' => 'Konditioune vum Filter',
 	'abusefilter-diff-invalid' => 'Déi ugefrote Versioune kënnen net fonnt ginn',
 	'abusefilter-diff-backhistory' => "Zréck op d'Lëscht vun de Versioune vum Filter",
-	'abusefilter-import-intro' => 'Dir kënnt dësen Interface benotzen fir Filtere vu anere Wikien z\'importéieren.
-Klickt op der originaler Wiki op "{{int:abusefilter-edit-export}}"  ënner "{{int:abusefilter-tools-subtitle}}" op demInterface vun den Ännerungen.
+	'abusefilter-import-intro' => 'Dir kënnt dësen Interface benotze fir Filtere vu anere Wikien z\'importéieren.
+Klickt op der originaler Wiki op "{{int:abusefilter-edit-export}}"  ënner "{{int:abusefilter-tools-subtitle}}" op dem Interface vun den Ännerungen.
 Kopéiert vun der Textkëscht déi opgeet an dës Textkëscht a klickt op "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'Donnéeën importéieren',
 );
