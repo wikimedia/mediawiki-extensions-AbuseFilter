@@ -19102,7 +19102,7 @@ $messages['ru'] = array(
 	'abusefilter-revert-periodend' => 'Окончание периода:',
 	'abusefilter-revert-search' => 'Выбор действий',
 	'abusefilter-revert-filter' => 'Фильтр:',
-	'abusefilter-revert-preview-intro' => 'Ниже приведёны выполненные фильтром злоупотреблений действия, которые будут отменены.
+	'abusefilter-revert-preview-intro' => 'Ниже приведены выполненные фильтром злоупотреблений действия, которые будут отменены.
 Пожалуйста, внимательно их проверьте и нажмите «подтвердить».',
 	'abusefilter-revert-confirm' => 'Подтвердить',
 	'abusefilter-revert-success' => 'Вы откатили все действия, выполненные фильтром злоупотреблений [[Special:AbuseFilter/$1|$1]].',
