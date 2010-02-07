@@ -7548,7 +7548,7 @@ Les modifications non constructives seront rapidement annulées
 et les âneries répétées ou outrageantes provoqueront le blocage de votre compte ou de votre adresse IP.
 Si vous êtes convaincu{{GENDER:||e|(e)}} que votre modification est constructive, vous pouvez la soumettre une nouvelle fois pour la confirmer.
 Voici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1",
-	'abusefilter-disallowed' => 'Cette action a été automatiquement idenfiée comme nuisible
+	'abusefilter-disallowed' => 'Cette action a été automatiquement identifiée comme nuisible
 et a donc été empêchée.
 Si vous êtes convaincu{{GENDER:||e|(e)}} que votre modification était constructive, veuillez contacter un administrateur et l’informer de ce que vous avez essayé de faire.
 Voici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1',
