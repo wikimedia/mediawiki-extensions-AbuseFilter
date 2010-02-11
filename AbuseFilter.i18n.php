@@ -23457,6 +23457,7 @@ $messages['yi'] = array(
 	'abusefilter-log-search-submit' => 'זוכן',
 	'abusefilter-log-detailedentry-local' => 'פֿילטער $1',
 	'abusefilter-log-detailslink' => 'פרטים',
+	'abusefilter-log-details-var' => 'וואַריאַבל',
 	'abusefilter-log-noactions' => 'קיין',
 	'abusefilter-hidden' => 'פריוואט',
 	'abusefilter-unhidden' => 'עפֿנטלעך',
@@ -23465,6 +23466,7 @@ $messages['yi'] = array(
 	'abusefilter-disabled' => 'אָפאַקטיוויזירן',
 	'abusefilter-tools-reautoconfirm-user' => 'באַניצער:',
 	'abusefilter-edit-status-label' => 'סטאַטיסטיק:',
+	'abusefilter-edit-lastmod-text' => '$1 פֿון $2',
 	'abusefilter-edit-history' => 'היסטאריע:',
 	'abusefilter-history-timestamp' => 'צײַט',
 	'abusefilter-history-user' => 'באַניצער',
@@ -23474,6 +23476,7 @@ $messages['yi'] = array(
 	'abusefilter-examine-title' => 'בלאַטנאָמען:',
 	'abusefilter-examine-submit' => 'זוכן',
 	'abusefilter-topnav-home' => 'היימבלאַט',
+	'abusefilter-diff-item' => 'איינהייט',
 );
 
 /** Yue (粵語)
