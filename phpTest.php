@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Runs tests against the PHP parser.
  */
@@ -18,8 +17,8 @@ $tests = glob( $test_path . "/*.t" );
 $check = 0;
 $pass = 0;
 
-foreach( $tests as $test ) {
-	$result = substr( $test, 0, -2 ) . ".r";
+foreach ( $tests as $test ) {
+	$result = substr( $test, 0, - 2 ) . ".r";
 
 	$rule = trim( file_get_contents( $test ) );
 	$output = ( $cont = trim( file_get_contents( $result ) ) ) == 'MATCH';

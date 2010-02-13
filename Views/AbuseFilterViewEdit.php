@@ -1,10 +1,8 @@
 <?php
-
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
 class AbuseFilterViewEdit extends AbuseFilterView {
-
 	function __construct( $page, $params ) {
 		parent::__construct( $page, $params );
 		$this->mFilter = $page->mFilter;
@@ -24,14 +22,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		$editToken = $wgRequest->getVal( 'wpEditToken' );
-		$didEdit = $this->canEdit() 
+		$didEdit = $this->canEdit()
 			&& $wgUser->matchEditToken( $editToken, array( 'abusefilter', $filter ) );
 
 		if ( $didEdit ) {
 			// Check syntax
 			$syntaxerr = AbuseFilter::checkSyntax( $wgRequest->getVal( 'wpFilterRules' ) );
 			if ( $syntaxerr !== true ) {
-				$wgOut->addHTML( 
+				$wgOut->addHTML(
 					$this->buildFilterEditor(
 						wfMsgExt(
 							'abusefilter-edit-badsyntax',
@@ -66,8 +64,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			global $wgAbuseFilterRestrictedActions;
 			if (
 				array_intersect(
-					$wgAbuseFilterRestrictedActions, 
-					array_keys( array_filter( $actions ) ) ) 
+					$wgAbuseFilterRestrictedActions,
+					array_keys( array_filter( $actions ) ) )
 				&& !$wgUser->isAllowed( 'abusefilter-modify-restricted' ) )
 			{
 				$wgOut->addHTML(
@@ -83,7 +81,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// If we've activated the 'tag' option, check the arguments for validity.
 			if ( !empty( $actions['tag'] ) ) {
 				$bad = false;
-				foreach( $actions['tag']['parameters'] as $tag ) {
+				foreach ( $actions['tag']['parameters'] as $tag ) {
 					$t = Title::makeTitleSafe( NS_MEDIAWIKI, 'tag-' . $tag );
 					if ( !$t ) {
 						$bad = true;
@@ -134,9 +132,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			global $wgAbuseFilterAvailableActions;
 			$deadActions = array();
 			$actionsRows = array();
-			foreach( $wgAbuseFilterAvailableActions as $action ) {
+			foreach ( $wgAbuseFilterAvailableActions as $action ) {
 				// Check if it's set
-				$enabled = isset($actions[$action]) && (bool)$actions[$action];
+				$enabled = isset( $actions[$action] ) && (bool)$actions[$action];
 
 				if ( $enabled ) {
 					$parameters = $actions[$action]['parameters'];
@@ -155,13 +153,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// Create a history row
 			$afh_row = array();
 
-			foreach( AbuseFilter::$history_mappings as $af_col => $afh_col ) {
+			foreach ( AbuseFilter::$history_mappings as $af_col => $afh_col ) {
 				$afh_row[$afh_col] = $newRow[$af_col];
 			}
 
 			// Actions
 			$displayActions = array();
-			foreach( $actions as $action ) {
+			foreach ( $actions as $action ) {
 				$displayActions[$action['action']] = $action['parameters'];
 			}
 			$afh_row['afh_actions'] = serialize( $displayActions );
@@ -209,25 +207,25 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			global $wgOut;
 
-			$wgOut->redirect( 
+			$wgOut->redirect(
 				$this->getTitle()->getLocalURL( 'result=success&changedfilter=' . $new_id ) );
 		} else {
 			if ( $history_id ) {
-				$wgOut->addWikiMsg( 
+				$wgOut->addWikiMsg(
 					'abusefilter-edit-oldwarning', $this->mHistoryID, $this->mFilter );
 			}
 
 			$wgOut->addHTML( $this->buildFilterEditor( null, $this->mFilter, $history_id ) );
 
 			if ( $history_id ) {
-				$wgOut->addWikiMsg( 
+				$wgOut->addWikiMsg(
 					'abusefilter-edit-oldwarning', $this->mHistoryID, $this->mFilter );
 			}
 		}
 	}
 
 	function buildFilterEditor( $error, $filter, $history_id = null ) {
-		if( $filter === null ) {
+		if ( $filter === null ) {
 			return false;
 		}
 
@@ -238,7 +236,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Load from request OR database.
 		list( $row, $actions ) = $this->loadRequest( $filter, $history_id );
 
-		if( !$row ) {
+		if ( !$row ) {
 			$wgOut->addWikiMsg( 'abusefilter-edit-badfilter' );
 			$wgOut->addHTML( $sk->link( $this->getTitle(), wfMsg( 'abusefilter-return' ) ) );
 			return;
@@ -269,7 +267,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$fields = array();
 
-		$fields['abusefilter-edit-id'] = 
+		$fields['abusefilter-edit-id'] =
 			$this->mFilter == 'new' ? wfMsg( 'abusefilter-edit-new' ) : $filter;
 		$fields['abusefilter-edit-description'] =
 			Xml::input(
@@ -280,7 +278,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			);
 
 		// Hit count display
-		if( !empty( $row->af_hit_count ) ){
+		if ( !empty( $row->af_hit_count ) ) {
 			$count = (int)$row->af_hit_count;
 			$count_display = wfMsgExt( 'abusefilter-hitcount', array( 'parseinline' ),
 				$wgLang->formatNum( $count )
@@ -303,7 +301,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			if ( $total > 0 ) {
 				$matches_percent = sprintf( '%.2f', 100 * $matches_count / $total );
 				list( $timeProfile, $condProfile ) = AbuseFilter::getFilterProfile( $filter );
-				
+
 				$fields['abusefilter-edit-status-label'] =
 					wfMsgExt( 'abusefilter-edit-status', array( 'parsemag', 'escape' ),
 						array(
@@ -347,7 +345,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			);
 		}
 
-		foreach( $checkboxes as $checkboxId ) {
+		foreach ( $checkboxes as $checkboxId ) {
 			$message = "abusefilter-edit-$checkboxId";
 			$dbField = "af_$checkboxId";
 			$postVar = 'wpFilter' . ucfirst( $checkboxId );
@@ -362,8 +360,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$checkbox = Xml::tags( 'p', null, $checkbox );
 			$flags .= $checkbox;
 		}
+
 		$fields['abusefilter-edit-flags'] = $flags;
 		$tools = '';
+
 		if ( $filter != 'new' && $wgUser->isAllowed( 'abusefilter-revert' ) ) {
 			$tools .= Xml::tags(
 				'p', null,
@@ -381,7 +381,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$sk->link(
 					$this->getTitle( "test/$filter" ),
 					wfMsgExt( 'abusefilter-edit-test-link', 'parseinline' )
-				) 
+				)
 			);
 			// Last modification details
 			$userLink =
@@ -397,7 +397,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						$wgLang->date( $row->af_timestamp, true ),
 						$wgLang->time( $row->af_timestamp, true ),
 						$user
-					) 
+					)
 				);
 			$history_display = wfMsgExt( 'abusefilter-edit-viewhistory', array( 'parseinline' ) );
 			$fields['abusefilter-edit-history'] =
@@ -424,9 +424,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		if ( $this->canEdit() ) {
 			$form .= Xml::submitButton( wfMsg( 'abusefilter-edit-save' ) );
-			$form .= Xml::hidden( 
-				'wpEditToken', 
-				$wgUser->editToken( array( 'abusefilter', $filter ) ) 
+			$form .= Xml::hidden(
+				'wpEditToken',
+				$wgUser->editToken( array( 'abusefilter', $filter ) )
 			);
 		}
 
@@ -445,15 +445,16 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 	function buildConsequenceEditor( $row, $actions ) {
 		global $wgAbuseFilterAvailableActions;
+
 		$setActions = array();
-		foreach( $wgAbuseFilterAvailableActions as $action ) {
+		foreach ( $wgAbuseFilterAvailableActions as $action ) {
 			$setActions[$action] = array_key_exists( $action, $actions );
 		}
 
 		$output = '';
 
-		foreach( $wgAbuseFilterAvailableActions as $action ) {
-			$output .= $this->buildConsequenceSelector( 
+		foreach ( $wgAbuseFilterAvailableActions as $action ) {
+			$output .= $this->buildConsequenceSelector(
 				$action, $setActions[$action], @$actions[$action]['parameters'] );
 		}
 
@@ -508,7 +509,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						array(
 							Xml::input( 'wpFilterThrottlePeriod', 20, $throttlePeriod,
 								$readOnlyAttrib
-						) ) 
+						) )
 					);
 				$throttleFields['abusefilter-edit-throttle-groups'] =
 					Xml::textarea( 'wpFilterThrottleGroups', $throttleGroups . "\n",
@@ -521,28 +522,28 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					);
 				return $throttleSettings;
 			case 'flag':
-				$checkbox = Xml::checkLabel( 
-					wfMsg( 'abusefilter-edit-action-flag' ), 
-					'wpFilterActionFlag', 
-					"mw-abusefilter-action-checkbox-$action", 
-					true, 
+				$checkbox = Xml::checkLabel(
+					wfMsg( 'abusefilter-edit-action-flag' ),
+					'wpFilterActionFlag',
+					"mw-abusefilter-action-checkbox-$action",
+					true,
 					array( 'disabled' => '1', 'class' => 'mw-abusefilter-action-checkbox' ) );
 				return Xml::tags( 'p', null, $checkbox );
 			case 'warn':
 				$output = '';
-				$checkbox = Xml::checkLabel( 
-					wfMsg( 'abusefilter-edit-action-warn' ), 
-					'wpFilterActionWarn', 
-					"mw-abusefilter-action-checkbox-$action", 
-					$set, 
+				$checkbox = Xml::checkLabel(
+					wfMsg( 'abusefilter-edit-action-warn' ),
+					'wpFilterActionWarn',
+					"mw-abusefilter-action-checkbox-$action",
+					$set,
 					array( 'class' => 'mw-abusefilter-action-checkbox' ) + $cbReadOnlyAttrib );
 				$output .= Xml::tags( 'p', null, $checkbox );
-				$warnMsg = empty($set) ? 'abusefilter-warning' : $parameters[0];
+				$warnMsg = empty( $set ) ? 'abusefilter-warning' : $parameters[0];
 
 				$warnFields['abusefilter-edit-warn-message'] =
 					$this->getExistingSelector( $warnMsg );
 				$warnFields['abusefilter-edit-warn-other-label'] =
-					Xml::input( 
+					Xml::input(
 						'wpFilterWarnMessageOther',
 						45,
 						$warnMsg ? $warnMsg : 'abusefilter-warning-',
@@ -642,11 +643,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$existingSelector->addOption( 'abusefilter-warning' );
 
 		global $wgLang;
-		while( $row = $dbr->fetchObject( $res ) ) {
+		while ( $row = $dbr->fetchObject( $res ) ) {
 			if ( $wgLang->lcfirst( $row->page_title ) == $wgLang->lcfirst( $warnMsg ) ) {
 				$existingSelector->setDefault( $wgLang->lcfirst( $warnMsg ) );
 			}
-			
+
 			if ( $row->page_title != 'Abusefilter-warning' ) {
 				$existingSelector->addOption( $wgLang->lcfirst( $row->page_title ) );
 			}
@@ -658,7 +659,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	}
 
 	function loadFilterData( $id ) {
-
 		if ( $id == 'new' ) {
 			$obj = new stdClass;
 			$obj->af_pattern = '';
@@ -724,7 +724,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		if ( !is_null( $actions ) && !is_null( $row ) ) {
 			return array( $row, $actions );
 		} elseif ( $wgRequest->wasPosted() ) {
-			## Nothing, we do it all later
+			# Nothing, we do it all later
 		} elseif ( $history_id ) {
 			return $this->loadHistoryItem( $history_id );
 		} else {
@@ -754,7 +754,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				'af_hidden',
 			);
 
-			foreach( $copy as $name ) {
+			foreach ( $copy as $name ) {
 				$row->$name = $importRow->$name;
 			}
 		} else {
@@ -764,7 +764,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				'af_comments' => 'wpFilterNotes'
 			);
 
-			foreach( $textLoads as $col => $field ) {
+			foreach ( $textLoads as $col => $field ) {
 				$row->$col = trim( $wgRequest->getVal( $field ) );
 			}
 
@@ -777,7 +777,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// Actions
 			global $wgAbuseFilterAvailableActions;
 			$actions = array();
-			foreach( $wgAbuseFilterAvailableActions as $action ) {
+			foreach ( $wgAbuseFilterAvailableActions as $action ) {
 				// Check if it's set
 				$enabled = $wgRequest->getBool( 'wpFilterAction' . ucfirst( $action ) );
 
@@ -788,7 +788,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						// We need to load the parameters
 						$throttleCount = $wgRequest->getIntOrNull( 'wpFilterThrottleCount' );
 						$throttlePeriod = $wgRequest->getIntOrNull( 'wpFilterThrottlePeriod' );
-						$throttleGroups = explode( "\n", 
+						$throttleGroups = explode( "\n",
 							trim( $wgRequest->getText( 'wpFilterThrottleGroups' ) ) );
 
 						$parameters[0] = $this->mFilter; // For now, anyway
@@ -804,7 +804,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					} elseif ( $action == 'tag' ) {
 						$parameters = explode( "\n", $wgRequest->getText( 'wpFilterTags' ) );
 					}
-	
+
 					$thisAction = array( 'action' => $action, 'parameters' => $parameters );
 					$actions[$action] = $thisAction;
 				}

@@ -1,10 +1,8 @@
 <?php
-
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
 class AbuseFilterViewExamine extends AbuseFilterView {
-
 	function show() {
 		global $wgOut, $wgUser;
 
@@ -32,11 +30,11 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		// Add selector
 		$selector = '';
 
-		$selectFields = array(); ## Same fields as in Test
+		$selectFields = array(); # # Same fields as in Test
 		$selectFields['abusefilter-test-user'] = Xml::input( 'wpSearchUser', 45, $this->mSearchUser );
-		$selectFields['abusefilter-test-period-start'] = 
+		$selectFields['abusefilter-test-period-start'] =
 			Xml::input( 'wpSearchPeriodStart', 45, $this->mSearchPeriodStart );
-		$selectFields['abusefilter-test-period-end'] = 
+		$selectFields['abusefilter-test-period-end'] =
 			Xml::input( 'wpSearchPeriodEnd', 45, $this->mSearchPeriodEnd );
 
 		$selector .= Xml::buildForm( $selectFields, 'abusefilter-examine-submit' );
@@ -136,8 +134,8 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$msg['nomatch'] = wfMsg( 'abusefilter-examine-nomatch' );
 		$msg['syntaxerror'] = wfMsg( 'abusefilter-examine-syntaxerror' );
 		$wgOut->addInlineScript(
-			"var wgMessageMatch = " . Xml::encodeJsVar( $msg['match'] ) . ";\n".
-			"var wgMessageNomatch = " . Xml::encodeJsVar( $msg['nomatch'] ) . ";\n".
+			"var wgMessageMatch = " . Xml::encodeJsVar( $msg['match'] ) . ";\n" .
+			"var wgMessageNomatch = " . Xml::encodeJsVar( $msg['nomatch'] ) . ";\n" .
 			"var wgMessageError = " . Xml::encodeJsVar( $msg['syntaxerror'] ) . ";\n"
 		);
 
@@ -200,7 +198,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		// Normalise username
 		$userTitle = Title::newFromText( $searchUsername );
 
-		if ( $userTitle && $userTitle->getNamespace() == NS_USER ) 
+		if ( $userTitle && $userTitle->getNamespace() == NS_USER )
 			$this->mSearchUser = $userTitle->getText(); // Allow User:Blah syntax.
 		elseif ( $userTitle )
 			// Not sure of the value of prefixedText over text, but no need to munge unnecessarily.
@@ -246,7 +244,7 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	}
 
 	function formatRow( $row ) {
-		## Incompatible stuff.
+		# Incompatible stuff.
 		$rc = RecentChange::newFromRow( $row );
 		$rc->counter = $this->mPage->mCounter++;
 		return $this->mChangesList->recentChangesLine( $rc, false );

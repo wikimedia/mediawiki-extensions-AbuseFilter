@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Makes the required changes for the AbuseFilter extension
  */

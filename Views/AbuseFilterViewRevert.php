@@ -1,5 +1,4 @@
 <?php
-
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
@@ -21,15 +20,15 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			return;
 
 		$wgOut->addWikiMsg( 'abusefilter-revert-intro', $filter );
-		$wgOut->setPageTitle( wfMsg('abusefilter-revert-title', $filter) );
+		$wgOut->setPageTitle( wfMsg( 'abusefilter-revert-title', $filter ) );
 
 		// First, the search form.
 		$searchFields = array();
-		$searchFields['abusefilter-revert-filter'] = 
+		$searchFields['abusefilter-revert-filter'] =
 			Xml::element( 'strong', null, $filter );
-		$searchFields['abusefilter-revert-periodstart'] = 
+		$searchFields['abusefilter-revert-periodstart'] =
 			Xml::input( 'wpPeriodStart', 45, $this->origPeriodStart );
-		$searchFields['abusefilter-revert-periodend'] = 
+		$searchFields['abusefilter-revert-periodend'] =
 			Xml::input( 'wpPeriodEnd', 45, $this->origPeriodEnd );
 		$searchForm = Xml::buildForm( $searchFields, 'abusefilter-revert-search' );
 		$searchForm .= "\n" . Xml::hidden( 'submit', 1 );
@@ -55,12 +54,12 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			$results = $this->doLookup();
 			$list = array();
 
-			foreach( $results as $result ) {
+			foreach ( $results as $result ) {
 				$displayActions = array();
 
 				global $wgLang;
-				$displayActions = array_map( 
-					array( 'AbuseFilter', 'getActionDisplay' ), 
+				$displayActions = array_map(
+					array( 'AbuseFilter', 'getActionDisplay' ),
 					$result['actions'] );
 
 				$msg = wfMsgExt(
@@ -76,7 +75,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 							SpecialPage::getTitleFor( 'AbuseLog' ),
 							wfMsgNoTrans( 'abusefilter-log-detailslink' ),
 							array(),
-							array( 'details' =>$result['id'] )
+							array( 'details' => $result['id'] )
 						)
 					)
 				);
@@ -86,7 +85,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			$wgOut->addHTML( Xml::tags( 'ul', null, implode( "\n", $list ) ) );
 
 			// Add a button down the bottom.
-			$confirmForm = 
+			$confirmForm =
 				Xml::hidden( 'editToken', $wgUser->editToken( "abusefilter-revert-$filter" ) ) .
 				Xml::hidden( 'title', $this->getTitle( "revert/$filter" )->getPrefixedText() ) .
 				Xml::hidden( 'wpPeriodStart', $this->origPeriodStart ) .
@@ -102,7 +101,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				array(
 					'action' => $this->getTitle( "revert/$filter" )->getLocalURL(),
 					'method' => 'post'
-				), 
+				),
 				$confirmForm
 			);
 			$wgOut->addHTML( $confirmForm );
@@ -119,9 +118,9 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$dbr = wfGetDB( DB_SLAVE );
 
 		if ( $periodStart )
-			$conds[] = 'afl_timestamp>'.$dbr->addQuotes( $dbr->timestamp( $periodStart ) );
+			$conds[] = 'afl_timestamp>' . $dbr->addQuotes( $dbr->timestamp( $periodStart ) );
 		if ( $periodEnd )
-			$conds[] = 'afl_timestamp<'.$dbr->addQuotes( $dbr->timestamp( $periodEnd ) );
+			$conds[] = 'afl_timestamp<' . $dbr->addQuotes( $dbr->timestamp( $periodEnd ) );
 
 		// Database query.
 		$res = $dbr->select( 'abuse_filter_log', '*', $conds, __METHOD__ );
@@ -171,9 +170,9 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			return false;
 
 		$results = $this->doLookup();
-		foreach( $results as $result ) {
+		foreach ( $results as $result ) {
 			$actions = $result['actions'];
-			foreach( $actions as $action ) {
+			foreach ( $actions as $action ) {
 				$this->revertAction( $action, $result );
 			}
 		}
@@ -201,7 +200,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				break;
 			case 'blockautopromote':
 				global $wgMemc;
-				$wgMemc->delete( AbuseFilter::autopromoteBlockKey( 
+				$wgMemc->delete( AbuseFilter::autopromoteBlockKey(
 					User::newFromId( $result['userid'] ) ) );
 				break;
 			case 'degroup':
@@ -214,7 +213,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				);
 
 				$rows = array();
-				foreach( $oldGroups as $group ) {
+				foreach ( $oldGroups as $group ) {
 					$rows[] = array( 'ug_user' => $result['userid'], 'ug_group' => $group );
 				}
 
@@ -238,7 +237,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 						$this->mPage->mFilter,
 						$this->mReason
 					),
-					array( implode( ',', $currentGroups ), implode( ',', $newGroups ) ) 
+					array( implode( ',', $currentGroups ), implode( ',', $newGroups ) )
 				);
 		}
 	}

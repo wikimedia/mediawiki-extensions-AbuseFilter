@@ -1,5 +1,4 @@
 <?php
-
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
@@ -48,9 +47,9 @@ class AbuseFilterChangesList extends OldChangesList {
 
 		$s .= " ($examineLink)";
 
-		## If we have a match..
+		# If we have a match..
 		if ( isset( $rc->filterResult ) ) {
-			$class = $rc->filterResult ? 
+			$class = $rc->filterResult ?
 				'mw-abusefilter-changeslist-match' :
 				'mw-abusefilter-changeslist-nomatch';
 
@@ -59,5 +58,5 @@ class AbuseFilterChangesList extends OldChangesList {
 	}
 
 	// Kill rollback links.
-	public function insertRollback( &$s, &$rc ) {}
+	public function insertRollback( &$s, &$rc ) { }
 }

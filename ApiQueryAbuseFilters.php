@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Created on Mar 29, 2009
  *
@@ -31,14 +30,13 @@
  * @ingroup Extensions
  */
 class ApiQueryAbuseFilters extends ApiQueryBase {
-
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'abf' );
 	}
 
 	public function execute() {
 		global $wgUser;
-		if( !$wgUser->isAllowed( 'abusefilter-view' ) )
+		if ( !$wgUser->isAllowed( 'abusefilter-view' ) )
 			$this->dieUsage( 'You don\'t have permission to view abuse filters', 'permissiondenied' );
 
 		$params = $this->extractRequestParams();
@@ -80,8 +78,8 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 
 			/* Check for conflicting parameters. */
 			if ( ( isset( $show['enabled'] ) && isset( $show['!enabled'] ) )
-					|| ( isset( $show['deleted']) && isset( $show['!deleted'] ) )
-					|| ( isset( $show['private']) && isset( $show['!private'] ) ) ) {
+					|| ( isset( $show['deleted'] ) && isset( $show['!deleted'] ) )
+					|| ( isset( $show['private'] ) && isset( $show['!private'] ) ) ) {
 					$this->dieUsage( 'Incorrect parameter - mutually exclusive values may not be supplied', 'show' );
 			}
 
@@ -98,40 +96,40 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 		$showhidden = $wgUser->isAllowed( 'abusefilter-modify' );
 
 		$count = 0;
-		while( $row = $res->fetchObject() ) {
-			if( ++$count > $params['limit'] ) {
+		while ( $row = $res->fetchObject() ) {
+			if ( ++$count > $params['limit'] ) {
 				// We've had enough
 				$this->setContinueEnumParameter( 'startid', $row->af_id );
 				break;
 			}
 			$entry = array();
-			if( $fld_id )
-				$entry['id'] = intval($row->af_id);
-			if( $fld_desc )
+			if ( $fld_id )
+				$entry['id'] = intval( $row->af_id );
+			if ( $fld_desc )
 				$entry['description'] = $row->af_public_comments;
-			if( $fld_pattern && ( !$row->af_hidden || $showhidden ) )
+			if ( $fld_pattern && ( !$row->af_hidden || $showhidden ) )
 				$entry['pattern'] = $row->af_pattern;
-			if( $fld_actions )
+			if ( $fld_actions )
 				$entry['actions'] = $row->af_actions;
-			if( $fld_hits )
+			if ( $fld_hits )
 				$entry['hits'] = intval( $row->af_hit_count );
-			if( $fld_comments && ( !$row->af_hidden || $showhidden ) )
+			if ( $fld_comments && ( !$row->af_hidden || $showhidden ) )
 				$entry['comments'] = $row->af_comments;
-			if( $fld_user )
+			if ( $fld_user )
 				$entry['lasteditor'] = $row->af_user_text;
-			if( $fld_time )
+			if ( $fld_time )
 				$entry['lastedittime'] = wfTimestamp( TS_ISO_8601, $row->af_timestamp );
-			if( $fld_private && $row->af_hidden )
+			if ( $fld_private && $row->af_hidden )
 				$entry['private'] = '';
-			if( $fld_status ) {
-				if( $row->af_enabled )
+			if ( $fld_status ) {
+				if ( $row->af_enabled )
 					$entry['enabled'] = '';
-				if( $row->af_deleted )
+				if ( $row->af_deleted )
 					$entry['deleted'] = '';
 			}
 			if ( $entry ) {
 				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $entry );
-				if( !$fit ) {
+				if ( !$fit ) {
 					$this->setContinueEnumParameter( 'startid', $row->af_id );
 					break;
 				}

@@ -1,10 +1,8 @@
 <?php
-
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
 class AbuseFilterViewHistory extends AbuseFilterView {
-
 	function __construct( $page, $params ) {
 		parent::__construct( $page, $params );
 		$this->mFilter = $page->mFilter;
@@ -20,7 +18,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		else
 			$wgOut->setPageTitle( wfMsg( 'abusefilter-filter-log' ) );
 
-		## Check perms
+		# Check perms
 		if ( $filter &&
 				!$wgUser->isAllowed( 'abusefilter-modify' ) &&
 				AbuseFilter::filterHidden( $filter ) ) {
@@ -28,20 +26,20 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			return;
 		}
 
-		## Useful links
+		# Useful links
 		$sk = $wgUser->getSkin();
 		$links = array();
 		if ( $filter )
 			$links['abusefilter-history-backedit'] = $this->getTitle( $filter );
 
-		foreach( $links as $msg => $title ) {
+		foreach ( $links as $msg => $title ) {
 			$links[$msg] = $sk->link( $title, wfMsgExt( $msg, 'parseinline' ) );
 		}
 
 		$backlinks = $wgLang->pipeList( $links );
 		$wgOut->addHTML( Xml::tags( 'p', null, $backlinks ) );
 
-		## For user
+		# For user
 		$user = $wgRequest->getText( 'user' );
 		if ( $user ) {
 			$wgOut->setSubtitle(
@@ -49,7 +47,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 					'abusefilter-history-foruser',
 					$sk->userLink( 1 /* We don't really need to get a user ID */, $user ),
 					$user // For GENDER
-				) 
+				)
 			);
 		}
 
@@ -76,7 +74,6 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 }
 
 class AbuseFilterHistoryPager extends TablePager {
-
 	function __construct( $filter, $page, $user ) {
 		$this->mFilter = $filter;
 		$this->mPage = $page;
@@ -92,7 +89,7 @@ class AbuseFilterHistoryPager extends TablePager {
 			return $headers;
 		}
 
-		$headers = array( 
+		$headers = array(
 			'afh_timestamp' => 'abusefilter-history-timestamp',
 			'afh_user_text' => 'abusefilter-history-user',
 			'afh_public_comments' => 'abusefilter-history-public',
@@ -128,7 +125,7 @@ class AbuseFilterHistoryPager extends TablePager {
 
 		switch( $name ) {
 			case 'afh_timestamp':
-				$title = SpecialPage::getTitleFor( 'AbuseFilter', 
+				$title = SpecialPage::getTitleFor( 'AbuseFilter',
 					'history/' . $row->afh_filter . '/item/' . $row->afh_id );
 				$formatted = $sk->link( $title, $wgLang->timeanddate( $row->afh_timestamp, true ) );
 				break;
@@ -148,7 +145,7 @@ class AbuseFilterHistoryPager extends TablePager {
 
 				$display_actions = '';
 
-				foreach( $actions as $action => $parameters ) {
+				foreach ( $actions as $action => $parameters ) {
 					$displayAction = AbuseFilter::formatAction( $action, $parameters );
 					$display_actions .= Xml::tags( 'li', null, $displayAction );
 				}
@@ -161,7 +158,7 @@ class AbuseFilterHistoryPager extends TablePager {
 				$formatted = $sk->link( $title, $value );
 				break;
 			case 'afh_id':
-				$title = $this->mPage->getTitle( 
+				$title = $this->mPage->getTitle(
 							'history/' . $row->afh_filter . "/diff/prev/$value" );
 				$formatted = $sk->link( $title, wfMsgExt( 'abusefilter-history-diff', 'parseinline' ) );
 				break;
@@ -170,13 +167,13 @@ class AbuseFilterHistoryPager extends TablePager {
 				break;
 		}
 
-		$mappings = array_flip( AbuseFilter::$history_mappings ) + 
+		$mappings = array_flip( AbuseFilter::$history_mappings ) +
 			array( 'afh_actions' => 'actions', 'afh_id' => 'id' );
 		$changed = explode( ',', $row->afh_changed_fields );
 
 		$fieldChanged = false;
 		if ( $name == 'afh_flags' ) {
-			// This is a bit freaky, but it works. 
+			// This is a bit freaky, but it works.
 			// Basically, returns true if any of those filters are in the $changed array.
 			$filters = array( 'af_enabled', 'af_hidden', 'af_deleted', 'af_global' );
 			if ( count( array_diff( $filters, $changed ) ) < count( $filters ) ) {
@@ -225,7 +222,7 @@ class AbuseFilterHistoryPager extends TablePager {
 		);
 
 		global $wgRequest, $wgUser;
-		
+
 		if ( $this->mUser ) {
 			$info['conds']['afh_user_text'] = $this->mUser;
 		}

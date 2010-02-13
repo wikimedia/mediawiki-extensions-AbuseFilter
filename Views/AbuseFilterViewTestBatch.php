@@ -1,5 +1,4 @@
 <?php
-
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
@@ -24,14 +23,14 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$output = '';
 		$output .= AbuseFilter::buildEditBox( $this->mFilter, 'wpTestFilter' ) . "\n";
-		$output .= 
+		$output .=
 			Xml::inputLabel(
 				wfMsg( 'abusefilter-test-load-filter' ),
 				'wpInsertFilter',
 				'mw-abusefilter-load-filter',
 				10,
 				''
-			) . 
+			) .
 			'&nbsp;' .
 			Xml::element(
 				'input',
@@ -39,7 +38,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 					'type' => 'button',
 					'value' => wfMsg( 'abusefilter-test-load' ),
 					'id' => 'mw-abusefilter-load'
-				) 
+				)
 			);
 		$output = Xml::tags( 'div', array( 'id' => 'mw-abusefilter-test-editor' ), $output );
 
@@ -48,9 +47,9 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		// Selectory stuff
 		$selectFields = array();
 		$selectFields['abusefilter-test-user'] = Xml::input( 'wpTestUser', 45, $this->mTestUser );
-		$selectFields['abusefilter-test-period-start'] = 
+		$selectFields['abusefilter-test-period-start'] =
 			Xml::input( 'wpTestPeriodStart', 45, $this->mTestPeriodStart );
-		$selectFields['abusefilter-test-period-end'] = 
+		$selectFields['abusefilter-test-period-end'] =
 			Xml::input( 'wpTestPeriodEnd', 45, $this->mTestPeriodEnd );
 		$selectFields['abusefilter-test-page'] =
 			Xml::input( 'wpTestPage', 45, $this->mTestPage );
@@ -59,10 +58,10 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$output .= Xml::hidden( 'title', $this->getTitle( 'test' )->getPrefixedText() );
 		$output = Xml::tags( 'form',
-			array( 
-				'action' => $this->getTitle( 'test' )->getLocalURL(), 
+			array(
+				'action' => $this->getTitle( 'test' )->getLocalURL(),
 				'method' => 'POST'
-			), 
+			),
 			$output
 		);
 
@@ -108,7 +107,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			'recentchanges',
 			'*',
 			array_filter( $conds ),
-			__METHOD__, 
+			__METHOD__,
 			array( 'LIMIT' => self::$mChangeLimit, 'ORDER BY' => 'rc_timestamp desc' )
 		);
 
@@ -153,8 +152,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		{
 			$dbr = wfGetDB( DB_SLAVE );
 			$this->mFilter = $dbr->selectField( 'abuse_filter',
-				'af_pattern', 
-				array( 'af_id' => $this->mParams[1] ), 
+				'af_pattern',
+				array( 'af_id' => $this->mParams[1] ),
 				__METHOD__
 			);
 		}
@@ -162,13 +161,12 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		// Normalise username
 		$userTitle = Title::newFromText( $testUsername );
 
-		if ( $userTitle && $userTitle->getNamespace() == NS_USER ) 
+		if ( $userTitle && $userTitle->getNamespace() == NS_USER )
 			$this->mTestUser = $userTitle->getText(); // Allow User:Blah syntax.
 		elseif ( $userTitle )
 			// Not sure of the value of prefixedText over text, but no need to munge unnecessarily.
 			$this->mTestUser = $userTitle->getPrefixedText();
 		else
 			$this->mTestUser = null; // No user specified.
-		
 	}
 }

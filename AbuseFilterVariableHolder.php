@@ -1,5 +1,4 @@
 <?php
-
 class AbuseFilterVariableHolder {
 	var $mVars = array();
 	static $varBlacklist = array( 'context' );
@@ -36,7 +35,7 @@ class AbuseFilterVariableHolder {
 	static function merge() {
 		$newHolder = new AbuseFilterVariableHolder;
 
-		foreach( func_get_args() as $addHolder ) {
+		foreach ( func_get_args() as $addHolder ) {
 			$newHolder->addHolder( $addHolder );
 		}
 
@@ -59,7 +58,7 @@ class AbuseFilterVariableHolder {
 		$allVarNames = array_keys( $this->mVars );
 		$exported = array();
 
-		foreach( $allVarNames as $varName ) {
+		foreach ( $allVarNames as $varName ) {
 			if ( !in_array( $varName, self::$varBlacklist ) ) {
 				$exported[$varName] = $this->getVar( $varName )->toString();
 			}
@@ -88,7 +87,7 @@ class AbuseFilterVariableHolder {
 			'revision-text-by-timestamp'
 		);
 
-		foreach( $this->mVars as $name => $value ) {
+		foreach ( $this->mVars as $name => $value ) {
 			if ( $value instanceof AFComputedVariable &&
 						in_array( $value->mMethod, $dbTypes ) ) {
 					$value = $value->compute( $this );
@@ -96,7 +95,6 @@ class AbuseFilterVariableHolder {
 			}
 		}
 	}
-
 }
 
 class AFComputedVariable {
@@ -177,9 +175,9 @@ class AFComputedVariable {
 		if ( !$id ) {
 			return array();
 		}
-		
+
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'externallinks', array( 'el_to' ), 
+		$res = $dbr->select( 'externallinks', array( 'el_to' ),
 			array( 'el_from' => $id ), __METHOD__ );
 		$links = array();
 		while ( $row = $dbr->fetchObject( $res ) ) {
@@ -205,7 +203,7 @@ class AFComputedVariable {
 				$line_prefix = $parameters['line-prefix'];
 				$diff_lines = explode( "\n", $diff );
 				$interest_lines = array();
-				foreach( $diff_lines as $line ) {
+				foreach ( $diff_lines as $line ) {
 					if ( substr( $line, 0, 1 ) === $line_prefix ) {
 						$interest_lines[] = substr( $line, strlen( $line_prefix ) );
 					}
@@ -237,10 +235,10 @@ class AFComputedVariable {
 				$article = self::articleFromTitle( $parameters['namespace'],
 													$parameters['title'] );
 
-				if ( $vars->getVar( 'context' )->toString() == 'filter') {
+				if ( $vars->getVar( 'context' )->toString() == 'filter' ) {
 					$links = $this->getLinksFromDB( $article );
 					wfDebug( "AbuseFilter: loading old links from DB\n" );
-				} else {				
+				} else {
 					wfDebug( "AbuseFilter: loading old links from Parser\n" );
 					$textVar = $parameters['text-var'];
 
@@ -280,7 +278,7 @@ class AFComputedVariable {
 					$new_text = $vars->getVar( $textVar )->toString();
 					$editInfo = $article->prepareTextForEdit( $new_text );
 					$newHTML = $editInfo->output->getText();
-					// Kill the PP limit comments. Ideally we'd just remove these by not setting the 
+					// Kill the PP limit comments. Ideally we'd just remove these by not setting the
 					// parser option, but then we can't share a parse operation with the edit, which is bad.
 					$result = preg_replace( '/<!--\s*NewPP limit report[^>]*-->\s*$/si', '', $newHTML );
 				} else {
@@ -323,7 +321,7 @@ class AFComputedVariable {
 				);
 
 				$users = array();
-				while( $user = $dbr->fetchRow( $res ) ) {
+				while ( $user = $dbr->fetchRow( $res ) ) {
 					$users[] = $user[0];
 				}
 				$result = $users;

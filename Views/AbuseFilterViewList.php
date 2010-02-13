@@ -1,5 +1,4 @@
 <?php
-
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
@@ -28,10 +27,10 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$deleted = $wgRequest->getVal( 'deletedfilters' );
 		$hidedisabled = $wgRequest->getBool( 'hidedisabled' );
 		if ( $deleted == 'show' ) {
-			## Nothing
+			# Nothing
 		} elseif ( $deleted == 'only' ) {
 			$conds['af_deleted'] = 1;
-		} else { ## hide, or anything else.
+		} else { # hide, or anything else.
 			$conds['af_deleted'] = 0;
 			$deleted = 'hide';
 		}
@@ -56,7 +55,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 		extract( $optarray );
 
-		## Options form
+		# Options form
 		$options = '';
 		$fields = array();
 		$fields['abusefilter-list-options-deleted'] =
@@ -74,7 +73,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 				'mw-abusefilter-deletedfilters-hide',
 				$deleted == 'hide'
 			) .
-			Xml::radioLabel( 
+			Xml::radioLabel(
 				wfMsg( 'abusefilter-list-options-deleted-only' ),
 				'deletedfilters',
 				'only',
@@ -139,7 +138,6 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 // Probably no need to autoload this class, as it will only be called from the class above.
 class AbuseFilterPager extends TablePager {
-
 	function __construct( $page, $conds ) {
 		$this->mPage = $page;
 		$this->mConds = $conds;
@@ -191,7 +189,7 @@ class AbuseFilterPager extends TablePager {
 	}
 
 	function formatValue( $name, $value ) {
-		global $wgOut,$wgLang;
+		global $wgOut, $wgLang;
 
 		static $sk = null;
 
@@ -204,18 +202,18 @@ class AbuseFilterPager extends TablePager {
 
 		switch( $name ) {
 			case 'af_id':
-				return $sk->link( 
+				return $sk->link(
 					SpecialPage::getTitleFor( 'AbuseFilter', intval( $value ) ), intval( $value ) );
 			case 'af_public_comments':
-				return $sk->link( 
-					SpecialPage::getTitleFor( 'AbuseFilter', intval( $row->af_id ) ), 
-					$wgOut->parseInline( $value ) 
+				return $sk->link(
+					SpecialPage::getTitleFor( 'AbuseFilter', intval( $row->af_id ) ),
+					$wgOut->parseInline( $value )
 				);
 			case 'af_actions':
 				$actions = explode( ',', $value );
 				$displayActions = array();
-				foreach( $actions as $action ) {
-					$displayActions[] = AbuseFilter::getActionDisplay( $action );;
+				foreach ( $actions as $action ) {
+					$displayActions[] = AbuseFilter::getActionDisplay( $action ); ;
 				}
 				return htmlspecialchars( implode( ', ', $displayActions ) );
 			case 'af_enabled':
@@ -253,7 +251,7 @@ class AbuseFilterPager extends TablePager {
 						$row->af_user,
 						$row->af_user_text
 					) .
-					$sk->userToolLinks( 
+					$sk->userToolLinks(
 						$row->af_user,
 						$row->af_user_text
 					);
@@ -265,7 +263,7 @@ class AbuseFilterPager extends TablePager {
 						$userLink,
 						$wgLang->date( $value, true ),
 						$wgLang->time( $value, true ),
-						$user ) 
+						$user )
 				);
 			default:
 				throw new MWException( "Unknown row type $name!" );

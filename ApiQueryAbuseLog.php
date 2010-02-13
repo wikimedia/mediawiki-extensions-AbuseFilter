@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Created on Mar 28, 2009
  *
@@ -31,14 +30,13 @@
  * @ingroup Extensions
  */
 class ApiQueryAbuseLog extends ApiQueryBase {
-
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'afl' );
 	}
 
 	public function execute() {
 		global $wgUser;
-		if( !$wgUser->isAllowed( 'abusefilter-log' ) )
+		if ( !$wgUser->isAllowed( 'abusefilter-log' ) )
 			$this->dieUsage( 'You don\'t have permission to view the abuse log', 'permissiondenied' );
 
 		$params = $this->extractRequestParams();
@@ -54,9 +52,9 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$fld_result = isset( $prop['result'] );
 		$fld_timestamp = isset( $prop['timestamp'] );
 
-		if( $fld_ip && !$wgUser->isAllowed( 'abusefilter-private' ) )
+		if ( $fld_ip && !$wgUser->isAllowed( 'abusefilter-private' ) )
 			$this->dieUsage( 'You don\'t have permission to view IP addresses', 'permissiondenied' );
-		if( $fld_details && !$wgUser->isAllowed( 'abusefilter-log-detail' ) )
+		if ( $fld_details && !$wgUser->isAllowed( 'abusefilter-log-detail' ) )
 			$this->dieUsage( 'You don\'t have permission to view detailed abuse log entries', 'permissiondenied' );
 
 		$result = $this->getResult();
@@ -70,7 +68,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$this->addFieldsIf( 'afl_action', $fld_action );
 		$this->addFieldsIf( 'afl_var_dump', $fld_details );
 		$this->addFieldsIf( 'afl_actions', $fld_result );
-		if( $fld_filter ) {
+		if ( $fld_filter ) {
 			$this->addTables( 'abuse_filter' );
 			$this->addFields( 'af_public_comments' );
 			$this->addJoinConds( array( 'abuse_filter' => array( 'LEFT JOIN',
@@ -81,8 +79,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 
 		$this->addWhereRange( 'afl_timestamp', $params['dir'], $params['start'], $params['end'] );
 
-		$this->addWhereIf( array('afl_user_text' => $params['user'] ), isset( $params['user'] ) );
-		$this->addWhereIf( array('afl_filter' => $params['filter'] ), isset( $params['filter'] ) );
+		$this->addWhereIf( array( 'afl_user_text' => $params['user'] ), isset( $params['user'] ) );
+		$this->addWhereIf( array( 'afl_filter' => $params['filter'] ), isset( $params['filter'] ) );
 
 		$title = $params['title'];
 		if ( !is_null( $title ) ) {
@@ -95,34 +93,34 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$res = $this->select( __METHOD__ );
 
 		$count = 0;
-		while( $row = $res->fetchObject() ) {
-			if( ++$count > $params['limit'] ) {
+		while ( $row = $res->fetchObject() ) {
+			if ( ++$count > $params['limit'] ) {
 				// We've had enough
 				$this->setContinueEnumParameter( 'start', wfTimestamp( TS_ISO_8601, $row->afl_timestamp ) );
 				break;
 			}
 			$entry = array();
-			if( $fld_ids ) {
+			if ( $fld_ids ) {
 				$entry['id'] = intval( $row->afl_id );
 				$entry['filter_id'] = intval( $row->afl_filter );
 			}
-			if( $fld_filter )
+			if ( $fld_filter )
 				$entry['filter'] = $row->af_public_comments;
-			if( $fld_user )
+			if ( $fld_user )
 				$entry['user'] = $row->afl_user_text;
-			if( $fld_ip )
+			if ( $fld_ip )
 				$entry['ip'] = $row->afl_ip;
-			if( $fld_title ) {
+			if ( $fld_title ) {
 				$title = Title::makeTitle( $row->afl_namespace, $row->afl_title );
 				ApiQueryBase::addTitleInfo( $entry, $title );
 			}
-			if( $fld_action )
+			if ( $fld_action )
 				$entry['action'] = $row->afl_action;
-			if( $fld_result )
+			if ( $fld_result )
 				$entry['result'] = $row->afl_actions;
-			if( $fld_timestamp )
+			if ( $fld_timestamp )
 				$entry['timestamp'] = wfTimestamp( TS_ISO_8601, $row->afl_timestamp );
-			if( $fld_details ) {
+			if ( $fld_details ) {
 				$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
 				if ( $vars instanceof AbuseFilterVariableHolder ) {
 					$entry['details'] = $vars->exportAllVars();
@@ -132,7 +130,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			}
 			if ( $entry ) {
 				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $entry );
-				if( !$fit ) {
+				if ( !$fit ) {
 					$this->setContinueEnumParameter( 'start', wfTimestamp( TS_ISO_8601, $row->afl_timestamp ) );
 					break;
 				}
@@ -182,7 +180,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				ApiBase::PARAM_ISMULTI => true
 			)
 		);
-	}	
+	}
 
 	public function getParamDescription() {
 		return array(
@@ -191,7 +189,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			'dir' => 'The direction in which to enumerate',
 			'title' => 'Show only entries occurring on a given page.',
 			'user' => 'Show only entries done by a given user or IP address.',
-			'filter' => 'Show only entries that were caught by a given filter ID', 
+			'filter' => 'Show only entries that were caught by a given filter ID',
 			'limit' => 'The maximum amount of entries to list',
 			'prop' => 'Which properties to get',
 		);

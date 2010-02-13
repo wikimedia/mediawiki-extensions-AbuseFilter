@@ -3,7 +3,6 @@ if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
 class SpecialAbuseFilter extends SpecialPage {
-
 	var $mSkin;
 
 	public function __construct() {
@@ -14,7 +13,7 @@ class SpecialAbuseFilter extends SpecialPage {
 	public function execute( $subpage ) {
 		global $wgUser, $wgOut, $wgRequest, $wgAbuseFilterStyleVersion, $wgScriptPath;
 
-		$wgOut->addExtensionStyle( "{$wgScriptPath}/extensions/AbuseFilter/abusefilter.css?" . 
+		$wgOut->addExtensionStyle( "{$wgScriptPath}/extensions/AbuseFilter/abusefilter.css?" .
 			$wgAbuseFilterStyleVersion );
 		$view = 'AbuseFilterViewList';
 
@@ -32,7 +31,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		if ( $wgRequest->getVal( 'result' ) == 'success' ) {
 			$wgOut->setSubtitle( wfMsg( 'abusefilter-edit-done-subtitle' ) );
 			$changedFilter = intval( $wgRequest->getVal( 'changedfilter' ) );
-			$wgOut->wrapWikiMsg( '<p class="success">$1</p>', 
+			$wgOut->wrapWikiMsg( '<p class="success">$1</p>',
 				array( 'abusefilter-edit-done', $changedFilter ) );
 		}
 
@@ -43,7 +42,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		$params = explode( '/', $subpage );
 
 		// Filter by removing blanks.
-		foreach( $params as $index => $param ) {
+		foreach ( $params as $index => $param ) {
 			if ( $param === '' ) {
 				unset( $params[$index] );
 			}
@@ -77,7 +76,7 @@ class SpecialAbuseFilter extends SpecialPage {
 				$view = 'AbuseFilterViewHistory';
 				$pageType = 'recentchanges';
 			} elseif ( count( $params ) == 2 ) {
-				## Second param is a filter ID
+				# # Second param is a filter ID
 				$view = 'AbuseFilterViewHistory';
 				$this->mFilter = $params[1];
 			} elseif ( count( $params ) == 4 && $params[2] == 'item' ) {

@@ -1,11 +1,10 @@
 <?php
-
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
 class AbuseFilterViewTools extends AbuseFilterView {
 	function show() {
-		global $wgRequest,$wgOut,$wgUser;
+		global $wgRequest, $wgOut, $wgUser;
 
 		// Header
 		$wgOut->setSubTitle( wfMsg( 'abusefilter-tools-subtitle' ) );

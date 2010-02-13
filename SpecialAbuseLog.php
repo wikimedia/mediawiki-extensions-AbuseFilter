@@ -3,7 +3,6 @@ if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
 class SpecialAbuseLog extends SpecialPage {
-
 	public function __construct() {
 		wfLoadExtensionMessages( 'AbuseFilter' );
 		parent::__construct( 'AbuseLog', 'abusefilter-log' );
@@ -24,11 +23,11 @@ class SpecialAbuseLog extends SpecialPage {
 		$wgOut->enableClientCache( false );
 
 		global $wgScriptPath;
-		$wgOut->addExtensionStyle( $wgScriptPath . 
+		$wgOut->addExtensionStyle( $wgScriptPath .
 			"/extensions/AbuseFilter/abusefilter.css?$wgAbuseFilterStyleVersion" );
 
 		// Are we allowed?
-		$errors = $this->getTitle()->getUserPermissionsErrors( 
+		$errors = $this->getTitle()->getUserPermissionsErrors(
 			'abusefilter-log', $wgUser, true, array( 'ns-specialprotected' ) );
 		if ( count( $errors ) ) {
 			// Go away.
@@ -74,20 +73,20 @@ class SpecialAbuseLog extends SpecialPage {
 		$fields = array();
 
 		// Search conditions
-		$fields['abusefilter-log-search-user'] = 
+		$fields['abusefilter-log-search-user'] =
 			Xml::input( 'wpSearchUser', 45, $this->mSearchUser );
 		if ( $this->canSeeDetails() ) {
-			$fields['abusefilter-log-search-filter'] = 
+			$fields['abusefilter-log-search-filter'] =
 				Xml::input( 'wpSearchFilter', 45, $this->mSearchFilter );
 		}
-		$fields['abusefilter-log-search-title'] = 
+		$fields['abusefilter-log-search-title'] =
 			Xml::input( 'wpSearchTitle', 45, $this->mSearchTitle );
 
 		$form = Xml::hidden( 'title', $this->getTitle()->getPrefixedText() );
 
 		$form .= Xml::buildForm( $fields, 'abusefilter-log-search-submit' );
 		$output .= Xml::tags( 'form',
-			array( 'method' => 'GET', 'action' => $this->getTitle()->getLocalURL() ), 
+			array( 'method' => 'GET', 'action' => $this->getTitle()->getLocalURL() ),
 			$form );
 		$output = Xml::tags( 'fieldset', null, $output );
 
@@ -141,7 +140,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$output .= Xml::element( 'legend', null, wfMsg( 'abusefilter-log-details-legend', $id ) );
 		$output .= Xml::tags( 'p', null, $this->formatRow( $row, false ) );
 
-		// Load data		
+		// Load data
 		$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
 
 		// Diff, if available
@@ -228,7 +227,7 @@ class SpecialAbuseLog extends SpecialPage {
 	function formatRow( $row, $li = true ) {
 		global $wgLang, $wgUser;
 
-		## One-time setup
+		# # One-time setup
 		static $sk = null;
 
 		if ( is_null( $sk ) ) {
@@ -263,7 +262,7 @@ class SpecialAbuseLog extends SpecialPage {
 			$actions = explode( ',', $actions_taken );
 			$displayActions = array();
 
-			foreach( $actions as $action ) {
+			foreach ( $actions as $action ) {
 				$displayActions[] = AbuseFilter::getActionDisplay( $action );
 			}
 			$actions_taken = implode( ', ', $displayActions );
@@ -283,9 +282,9 @@ class SpecialAbuseLog extends SpecialPage {
 		if ( $this->canSeeDetails() ) {
 			$examineTitle = SpecialPage::getTitleFor( 'AbuseFilter', 'examine/log/' . $row->afl_id );
 			$detailsLink = $sk->makeKnownLinkObj(
-				$this->getTitle(), 
-				wfMsg( 'abusefilter-log-detailslink' ), 
-				'details='.$row->afl_id
+				$this->getTitle(),
+				wfMsg( 'abusefilter-log-detailslink' ),
+				'details=' . $row->afl_id
 			);
 			$examineLink = $sk->link(
 				$examineTitle,
@@ -334,13 +333,12 @@ class SpecialAbuseLog extends SpecialPage {
 					$sk->link( $title ),
 					$actions_taken,
 					$parsed_comments
-				) 
+				)
 			);
 		}
 
 		return $li ? Xml::tags( 'li', null, $description ) : $description;
 	}
-
 }
 
 class AbuseLogPager extends ReverseChronologicalPager {

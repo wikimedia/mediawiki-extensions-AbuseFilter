@@ -3,10 +3,8 @@ if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
 class AbuseFilterHooks {
-
 // So far, all of the error message out-params for these hooks accept HTML.
 // Hooray!
-
 	public static function onEditFilterMerged( $editor, $text, &$error, $summary ) {
 		// Load vars
 		$vars = new AbuseFilterVariableHolder;
@@ -42,7 +40,7 @@ class AbuseFilterHooks {
 
 		$filter_result = AbuseFilter::filterAction( $vars, $editor->mTitle );
 
-		if( $filter_result !== true ){
+		if ( $filter_result !== true ) {
 			global $wgOut;
 			$wgOut->addHTML( $filter_result );
 			$editor->showEditForm();
@@ -111,7 +109,7 @@ class AbuseFilterHooks {
 		$vars->setVar( 'ACTION', 'createaccount' );
 		$vars->setVar( 'ACCOUNTNAME', $user->getName() );
 
-		$filter_result = AbuseFilter::filterAction( 
+		$filter_result = AbuseFilter::filterAction(
 			$vars, SpecialPage::getTitleFor( 'Userlogin' ) );
 
 		$message = $filter_result;
@@ -121,17 +119,17 @@ class AbuseFilterHooks {
 
 	public static function onRecentChangeSave( $recentChange ) {
 		$title = Title::makeTitle(
-			$recentChange->mAttribs['rc_namespace'], 
+			$recentChange->mAttribs['rc_namespace'],
 			$recentChange->mAttribs['rc_title']
 		);
-		$action = $recentChange->mAttribs['rc_log_type'] ? 
+		$action = $recentChange->mAttribs['rc_log_type'] ?
 			$recentChange->mAttribs['rc_log_type'] : 'edit';
 		$actionID = implode( '-', array(
 				$title->getPrefixedText(), $recentChange->mAttribs['rc_user_text'], $action
 			) );
 
-		if ( !empty( AbuseFilter::$tagsToSet[$actionID] ) 
-			&& count( $tags = AbuseFilter::$tagsToSet[$actionID] ) ) 
+		if ( !empty( AbuseFilter::$tagsToSet[$actionID] )
+			&& count( $tags = AbuseFilter::$tagsToSet[$actionID] ) )
 		{
 			ChangeTags::addTags(
 				$tags,
@@ -145,19 +143,19 @@ class AbuseFilterHooks {
 	}
 
 	public static function onListDefinedTags( &$emptyTags ) {
-		## This is a pretty awful hack.
+		# This is a pretty awful hack.
 		$dbr = wfGetDB( DB_SLAVE );
 
 		$res = $dbr->select(
 			array( 'abuse_filter_action', 'abuse_filter' ),
-			'afa_parameters', 
+			'afa_parameters',
 			array( 'afa_consequence' => 'tag', 'af_enabled' => true ),
 			__METHOD__,
 			array(),
 			array( 'abuse_filter' => array( 'INNER JOIN', 'afa_filter=af_id' ) )
 		);
 
-		while( $row = $res->fetchObject() ) {
+		while ( $row = $res->fetchObject() ) {
 			$emptyTags = array_filter(
 				array_merge( explode( "\n", $row->afa_parameters ), $emptyTags )
 			);
@@ -172,7 +170,7 @@ class AbuseFilterHooks {
 		$dir = dirname( __FILE__ );
 
 		// DB updates
-		if( $wgDBtype == 'mysql' ) {
+		if ( $wgDBtype == 'mysql' ) {
 			$wgExtNewTables[] = array( 'abuse_filter', "$dir/abusefilter.tables.sql" );
 			$wgExtNewTables[] = array( 'abuse_filter_history', "$dir/db_patches/patch-abuse_filter_history.sql" );
 			$wgExtNewFields[] = array( 'abuse_filter_history', 'afh_changed_fields', "$dir/db_patches/patch-afh_changed_fields.sql" );
@@ -201,7 +199,7 @@ class AbuseFilterHooks {
 	public static function onContributionsToolLinks( $id, $nt, &$tools ) {
 		global $wgUser;
 		wfLoadExtensionMessages( 'AbuseFilter' );
-		if( $wgUser->isAllowed( 'abusefilter-log' ) ) {
+		if ( $wgUser->isAllowed( 'abusefilter-log' ) ) {
 			$sk = $wgUser->getSkin();
 			$tools[] = $sk->link(
 				SpecialPage::getTitleFor( 'AbuseLog' ),

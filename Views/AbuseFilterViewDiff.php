@@ -1,5 +1,4 @@
 <?php
-
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
@@ -20,7 +19,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$links['abusefilter-diff-backhistory'] = $this->getTitle( 'history/' . $this->mFilter );
 		}
 
-		foreach( $links as $msg => $title ) {
+		foreach ( $links as $msg => $title ) {
 			$links[$msg] = $this->mSkin->link( $title, wfMsgExt( $msg, 'parseinline' ) );
 		}
 
@@ -81,7 +80,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		} elseif ( $spec == 'prev' && !in_array( $otherSpec, $dependentSpecs ) ) {
 			// cached
 			$other = $this->loadSpec( $otherSpec, $spec );
-			
+
 			$row = $dbr->selectRow(
 				'abuse_filter_history',
 				'*',
@@ -116,7 +115,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			);
 
 			if ( $other && !$row ) {
-				$t = $this->getTitle( 
+				$t = $this->getTitle(
 					'history/' . $this->mFilter . '/item/' . $other['meta']['history_id'] );
 				global $wgOut;
 				$wgOut->redirect( $t->getFullURL() );
@@ -152,6 +151,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 	function formatVersionLink( $timestamp, $history_id ) {
 		global $wgLang, $wgUser;
+
 		$sk = $wgUser->getSkin();
 
 		$filter = $this->mFilter;
@@ -261,7 +261,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		$lines = array();
 
 		ksort( $actions );
-		foreach( $actions as $action => $parameters ) {
+		foreach ( $actions as $action => $parameters ) {
 			$lines[] = AbuseFilter::formatAction( $action, $parameters );
 		}
 
@@ -279,7 +279,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		return $html;
 	}
 
-	function getSimpleRow( $msg, $old, $new, $format='wikitext' ) {
+	function getSimpleRow( $msg, $old, $new, $format = 'wikitext' ) {
 		$row = '';
 
 		$row .= Xml::tags( 'th', null, wfMsgExt( $msg, 'parseinline' ) );

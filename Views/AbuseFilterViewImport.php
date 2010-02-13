@@ -1,5 +1,4 @@
 <?php
-
 class AbuseFilterViewImport extends AbuseFilterView {
 
 	function show() {
