@@ -8431,7 +8431,7 @@ Descrición do filtro: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-edit-oldwarning' => '<strong>Está a editar unha versión vella deste filtro.
 As estatísticas citadas son da versión máis recente do filtro.
 Se garda os seus cambios, sobrescribirá todos os cambios desde a revisión que está editando.</strong> &bull;
-[[Special:AbuseFilter/history/$2|Voltar ao historial deste filtro]]',
+[[Special:AbuseFilter/history/$2|Voltar ao historial deste filtro]].',
 	'abusefilter-edit-status-label' => 'Estatísticas:',
 	'abusefilter-edit-status' => '{{PLURAL:$1|Da última acción|Das $1 últimas accións}}, este filtro coincidiu con $2 ($3%).
 De media, o seu tempo de execución é de $4ms, e consome {{PLURAL:$5|unha condición|$5 condicións}} do límite de condicións.',
