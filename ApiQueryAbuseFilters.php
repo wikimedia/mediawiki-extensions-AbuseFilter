@@ -204,6 +204,14 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 	public function getDescription() {
 		return 'Show details of the abuse filters.';
 	}
+	
+	public function getPossibleErrors() {
+		return array_merge( parent::getPossibleErrors(), array(
+			array( 'nosuchuser', 'user' ),
+			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view abuse filters'),
+			array( 'code' => 'show', 'Incorrect parameter - mutually exclusive values may not be supplied'),
+		) );
+	}
 
 	protected function getExamples() {
 		return array(

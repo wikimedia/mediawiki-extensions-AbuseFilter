@@ -198,6 +198,15 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 	public function getDescription() {
 		return 'Show events that were caught by one of the abuse filters.';
 	}
+	
+	public function getPossibleErrors() {
+		return array_merge( parent::getPossibleErrors(), array(
+			array( 'invalidtitle', 'title' ),
+			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view the abuse log'),
+			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view IP addresses'),
+			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view detailed abuse log entries'),
+		) );
+	}
 
 	protected function getExamples() {
 		return array(
