@@ -18,7 +18,6 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Abuse Filter',
 	'author' => array( 'Andrew Garrett', 'River Tarnell', 'Victor Vasiliev' ),
-	'description' => 'Applies automatic heuristics to edits.',
 	'descriptionmsg' => 'abusefilter-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AbuseFilter',
 );
