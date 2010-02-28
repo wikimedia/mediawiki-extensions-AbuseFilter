@@ -10842,7 +10842,7 @@ Si tu immagazina tu modificationes, tu superscribera tote le modificationes faci
 In media, su durata de execution es $4ms, e illo consume $5 {{PLURAL:$5|condition|conditiones}} ex le limite de conditiones.',
 	'abusefilter-edit-throttled' => "'''Attention:''' Iste filtro ha essite disactivate automaticamente como mesura de securitate. Illo ha attingite le limite de correspondentia a plus de $1% del actiones.",
 	'abusefilter-edit-new' => 'Nove filtro',
-	'abusefilter-edit-save' => 'Immagazinar filtro',
+	'abusefilter-edit-save' => 'Salveguardar filtro',
 	'abusefilter-edit-id' => 'ID del filtro:',
 	'abusefilter-edit-description' => "Description:
 :''(visibile al publico)''",
