@@ -24,9 +24,9 @@ This interface shows a list of defined filters, and allows them to be modified."
 	'abusefilter-mustbeeditor' => 'For security reasons, only users with the right to modify abuse filters may use this interface.',
 
 	// Hooks
-	'abusefilter-warning' => "<big>'''Warning'''</big>: This action has been automatically identified as harmful.
+	'abusefilter-warning' => "'''Warning''': This action has been automatically identified as harmful.
 Unconstructive edits will be quickly reverted,
-and egregious or repeated unconstructive editing will result in your account or computer being blocked.
+and egregious or repeated unconstructive editing will result in your account or IP address being blocked.
 If you believe this edit to be constructive, you may click Submit again to confirm it.
 A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-disallowed' => "This action has been automatically identified as harmful,
