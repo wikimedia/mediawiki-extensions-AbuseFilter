@@ -7560,6 +7560,7 @@ Kopioi ilmestyvän tekstikentän sisältö ja liitä se tähän tekstikenttään
  * @author IAlex
  * @author Kropotkine 113
  * @author McDutchie
+ * @author Peter17
  * @author PieRRoMaN
  * @author Robby
  * @author Verdy p
@@ -7573,8 +7574,8 @@ $messages['fr'] = array(
 Le filtre antiabus est un un mécanisme logiciel automatisé qui permet d'appliquer des heuristiques prédéfinies à toutes les actions.
 Cette interface présente une liste des filtres définis, et donne la possibilité de les modifier.",
 	'abusefilter-mustbeeditor' => 'Pour des raisons de sécurité, seuls les utilisateurs avec le droit de modifier les filtres antiabus peuvent utiliser cette interface.',
-	'abusefilter-warning' => "'''Avertissement''' : cette action a été identifiée automatiquement comme nuisible.
-Les modifications non constructives seront rapidement annulées
+	'abusefilter-warning' => "'''Avertissement''' : Cette action a été identifiée automatiquement comme nuisible.
+Les modifications non-constructives seront rapidement annulées
 et les âneries répétées ou outrageantes provoqueront le blocage de votre compte ou de votre adresse IP.
 Si vous êtes convaincu{{GENDER:||e|(e)}} que votre modification est constructive, vous pouvez la soumettre une nouvelle fois pour la confirmer.
 Voici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1",
@@ -10723,7 +10724,7 @@ Iste interfacie monstra un lista de filtros definite, e permitte modificar los.'
 	'abusefilter-mustbeeditor' => 'Pro motivos de securitate, solmente le usatores con le permission de modificar le filtros anti-abuso pote usar iste interfacie.',
 	'abusefilter-warning' => "'''Attention:''' Iste action ha essite automaticamente identificate como damnose.
 Tote modificationes non constructive essera rapidemente revertite,
-e le repetition flagrante de modificationes non constructive resultara in le blocada de tu conto o computator.
+e le repetition flagrante de modificationes non constructive resultara in le blocada de tu conto o adresse IP.
 Si tu crede que iste modification sia constructive, tu pote cliccar Submitter de novo pro confirmar lo.
 Un breve description del regula anti-abuso que detegeva tu action es: $1",
 	'abusefilter-disallowed' => 'Iste action ha essite automaticamente identificate como damnose,
