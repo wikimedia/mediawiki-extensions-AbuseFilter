@@ -13485,8 +13485,8 @@ Dës Spezialsäit weist eng Lëscht vun definéierte Filteren an erlaabt et dës
 	'abusefilter-mustbeeditor' => "Aus Sécherheetsgrënn kënnen nëmme Benotzer déi d'Recht hunn fir Mëssbrauchsfilteren z'änneren dësen Interface benotzen.",
 	'abusefilter-warning' => "'''Opgepasst''': Dës Aktioun gouf automatesch als geféierlech erkannt.
 Ännerungen déi net konstruktiv si ginn automatesch zréckgsat, 
-a besonnesch schlëmmen oder widderhuelte Fäll gëtt Äre Benotzerkont oder Computer gespaart.
-Wann dir mengt datt Är Ännerung konstruktiv ass kënnt dir nachemol op \"Späichere\" klicken fir ze confirméieren.
+a besonnesch schlëmmen oder widderhuelte Fäll gëtt Äre Benotzerkont oder Är IP-Adress gespaart.
+Wann Dir mengt datt Är Ännerung konstruktiv ass kënnt dir nachemol op \"Späichere\" klicke fir ze confirméieren.
 Eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi Är Aktioun reagéiert huet: \$1",
 	'abusefilter-disallowed' => 'Dës Aktioun gouf automatesch als schiedlech erkannt,
 an dofir net zougelooss.
@@ -13665,12 +13665,12 @@ D'Resultat vum Parser war: <pre>$1</pre>",
 	'abusefilter-edit-builder-op-arithmetic-modulo' => 'Modulo (%)',
 	'abusefilter-edit-builder-op-arithmetic-pow' => 'Potenz (**)',
 	'abusefilter-edit-builder-group-op-comparison' => 'Operateure fir ze vergläichen',
-	'abusefilter-edit-builder-op-comparison-equal' => 'Dselwescht wéi (==)',
+	'abusefilter-edit-builder-op-comparison-equal' => 'Dselwecht wéi (==)',
 	'abusefilter-edit-builder-op-comparison-notequal' => 'Verschidde vun (!=)',
 	'abusefilter-edit-builder-op-comparison-lt' => 'Manner wéi (<)',
 	'abusefilter-edit-builder-op-comparison-gt' => 'Méi grouss wéi (>)',
-	'abusefilter-edit-builder-op-comparison-lte' => "Méi kleng oder d'selwescht wéi (<=)",
-	'abusefilter-edit-builder-op-comparison-gte' => "Méi grouss oder d'selwëscht wéi (>=)",
+	'abusefilter-edit-builder-op-comparison-lte' => 'Méi kleng oder dselwecht wéi (<=)',
+	'abusefilter-edit-builder-op-comparison-gte' => 'Méi grouss oder dselwecht wéi (>=)',
 	'abusefilter-edit-builder-group-op-bool' => 'Boolesch Operateuren',
 	'abusefilter-edit-builder-op-bool-not' => 'Net (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'An (&)',
