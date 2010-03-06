@@ -9931,8 +9931,8 @@ Znjewužiwanski filter je awtomatizowana softwarowy mechanizm za nałoženje aut
 Powjerch pokazuje lisćinu definowanych filtrow a dowola je změnić.',
 	'abusefilter-mustbeeditor' => 'Z wěstotnych přičinow móžeja jenož wužiwarjo z prawom znjewužiwanske filtry změnić tutón interfejs wužiwać.',
 	'abusefilter-warning' => "'''Warnowanje''': Tuta akcija bu awtomatisce jako škódna identifikowana.
-Njekonstruktiwne změny budu so spěšnje cofnyć, a njesłyšane abo wospjetowane wobdźěłowanje budźe k tomu wjesć, zo twoje konto abo twój ličak so blokuje.
-Jeli maš tutu změnu za konstruktiwnu, móžeš na Znowa wotpósłać kliknyć, zo by ju wobkrućił. Krótke wopisanje znjewužiwanskeho prawidła, kotremuž twoja akcija wotpowěduje, je: $1",
+Njekonstruktiwne změny budu so spěšnje cofnyć, a njesłyšane abo wospjetowane wobdźěłowanje budźe k tomu wjesć, zo twoje konto abo twoja IP-adresa so blokuje.
+Jeli maš tutu změnu za konstruktiwnu, móžeš znowa na Wotpósłać kliknyć, zo by ju wobkrućił. Krótke wopisanje znjewužiwanskeho prawidła, kotremuž twoja akcija wotpowěduje, je: $1",
 	'abusefilter-disallowed' => 'Tuta akcija bu awtomatisce jako škódna identifikowana a tohodla znjemóžnjena.
 Jeli wěriš, zo twoju změna je konstruktiwna była, staj so z administratorom do zwiska a informuj jeho, štož sy spytał činić.
 Krótke wopisanje znjewužiwanskeho prawidła, kotremuž twoja akcija wotpowěduje, je: $1',
@@ -14953,7 +14953,7 @@ $messages['ml'] = array(
 	'abusefilter-intro' => 'ദുരുപയോഗ അരിപ്പയുടെ കൈകാര്യനിർവഹണ മണ്ഡലത്തിലേയ്ക്കു സ്വാഗതം.
 എല്ലാ പ്രവർത്തനങ്ങളിലും അനുഭവപ്പെടാവുന്ന പ്രവൃത്തികൾ സ്വയം ചെയ്യാനുള്ള സോഫ്‌‌റ്റ്‌‌വെയർ സം‌‌വിധാനമാണ് ദുരുപയോഗ അരിപ്പ.
 ഈ ദൃശ്യമണ്ഡലത്തിൽ നിർവചിക്കപ്പെട്ടിരിക്കുന്ന അരിപ്പകളുടെ പട്ടികൾ പ്രദർശിപ്പിക്കുന്നു, അവയിൽ മാറ്റം വരുത്താനും സാധിക്കുന്നതാണ്.',
-	'abusefilter-mustbeeditor' => 'സുരക്ഷാ കാരണങ്ങളാൽ, ദുരുപയോഗ അരിപ്പ തിരുത്തുവാനുള്ള അവകാശമുള്ള ഉപയോക്താക്കൾക്ക് മാത്രമേ ഈ ദൃശ്യമണ്ഡലം ഉപയോഗിക്കാൻ കഴിയൂ.',
+	'abusefilter-mustbeeditor' => 'സുരക്ഷാ കാരണങ്ങളാൽ, ദുരുപയോഗ അരിപ്പ തിരുത്താൻ അവകാശമുള്ള ഉപയോക്താക്കൾക്ക് മാത്രമേ ഈ സമ്പർക്കമുഖം ഉപയോഗിക്കാൻ കഴിയൂ.',
 	'abusefilter-warning' => "'''മുന്നറിയിപ്പ്''': ഈ പ്രവൃത്തി ദോഷകരമെന്ന് സ്വയം തിരിച്ചറിഞ്ഞിട്ടുള്ളതാണ്.
 സൃഷ്ടിപരമല്ലാത്ത തിരുത്തലുകൾ അതിവേഗം മുൻപ്രാപനം ചെയ്യുന്നതായിരിക്കും, ദുരുദ്ദേശത്തോടെയുള്ള അല്ലെങ്കിൽ ആവർത്തിച്ചുണ്ടാകുന്ന സൃഷ്ടിപരമല്ലാത്ത തിരുത്തലുകൾ താങ്കളുടെ അംഗത്വത്തെയോ ഐ.പി. വിലാസത്തേയോ വിലക്കുന്നതിൽ എത്തിയേക്കാം.
 താങ്കൾ താങ്കളുടെ തിരുത്തൽ സൃഷ്ടിപരമെന്നു വിശ്വസിക്കുന്നുണ്ടെങ്കിൽ സ്ഥിരീകരിക്കാനായി ദയവായി വീണ്ടും സമർപ്പിക്കുക.
