@@ -3299,7 +3299,7 @@ Filtry zneužívání jsou automatický softwarový mechanismus, prostřednictv�
 V tomto rozhraní můžete vidět seznam definovaných filtrů a měnit je.',
 	'abusefilter-mustbeeditor' => 'Z bezpečnostních důvodů mohou toto rozhraní používat pouze uživatelé oprávnění spravovat filtry zneužívání.',
 	'abusefilter-warning' => "'''Upozornění''': Tato činnost byla automaticky identifikována jako škodlivá.
-Neužitečné editace budou rychle revertovány, v&nbsp;opakovaných nebo závažných případech může být váš uživatelský účet či počítač zablokován.
+Neužitečné editace budou rychle revertovány, v&nbsp;opakovaných nebo závažných případech mohou být váš uživatelský účet či IP adresa zablokovány.
 Pokud považujete svou editaci za správnou, můžete ji potvrdit opětovným kliknutím na Uložit změny.
 Stručný popis pravidla, které vaši činnost označilo za škodlivou: $1",
 	'abusefilter-disallowed' => 'Tato činnost byla automaticky identifikována jako škodlivá, a&nbsp;proto zakázána.
@@ -11571,7 +11571,7 @@ Il filtro anti abusi è un sistema automatizzato per l'applicazione di euristich
 L'interfaccia mostra un elenco dei filtri definiti e ne consente la modifica.",
 	'abusefilter-mustbeeditor' => 'Per motivi di sicurezza, solo gli utenti con il diritto di modificare i filtri anti abusi possono utilizzare questa interfaccia.',
 	'abusefilter-warning' => "'''Attenzione''': Questa azione è stata ritenuta pericolosa in base a una verifica automatica.
-Le modifiche non costruttive verranno prontamente annullate; l'inserimento palese o ripetuto di contributi non costruttivi darà luogo al blocco dell'utenza o del computer.
+Le modifiche non costruttive verranno prontamente annullate; l'inserimento palese o ripetuto di contributi non costruttivi darà luogo al blocco dell'utenza o del tuo indirizzo IP.
 Se si ritiene che la modifica in questione sia costruttiva, fare nuovamente clic su Invia per confermarla.
 Questa è una breve descrizione della regola di sicurezza che è stata violata: $1",
 	'abusefilter-disallowed' => 'Questa azione è stata ritenuta pericolosa e quindi impedita in base a una verifica automatica.
@@ -11748,6 +11748,7 @@ Chiedere a un utente abilitato all'inserimento di azioni riservate di effettuare
 	'abusefilter-edit-syntaxerr' => 'Errore di sintassi rilevato: $1',
 	'abusefilter-edit-bad-tags' => 'Una etichetta specificata o più non è valida.
 Le etichette devono essere corte e non contenere caratteri speciali.',
+	'abusefilter-edit-notallowed' => 'Non sei autorizzato a creare o modificare i filtri del filtro anti abusi',
 	'abusefilter-edit-builder-select' => "Scegliere un'opzione per aggiungerla nella posizione del cursore",
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operatori aritmetici',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Addizione (+)',
@@ -11965,7 +11966,7 @@ $messages['ja'] = array(
 	'abuselog' => '不正利用記録',
 	'abusefilter-intro' => '不正利用フィルターの管理インタフェースにようこそ。不正利用フィルターは、あらゆる操作に対して自動的なヒューリスティクスを適用する、自動化されたソフトウェアメカニズムです。このインタフェースは定義済みのフィルターを一覧表示し、それらを変更することができます。',
 	'abusefilter-mustbeeditor' => 'セキュリティ上の理由から、不正利用フィルターを変更できる権限を持つ利用者だけがこのインターフェースを使用できます。',
-	'abusefilter-warning' => "'''警告''': 行われた操作は自動的に有害と判断されました。建設的でない編集は速やかに差し戻されます。被害程度の大きい破壊的編集や頻繁な破壊行為はあなたのアカウントまたはコンピュータのブロックにつながります。あなたの行った編集が確かに建設的なものであるならば、「投稿」ボタンを再度クリックしてください。あなたの操作が方針に違反している点の概略は次の通りです。$1",
+	'abusefilter-warning' => "'''警告''': 行われた操作は自動的に有害と判断されました。建設的でない編集は速やかに差し戻されます。被害程度の大きい破壊的編集や頻繁な破壊行為はあなたのアカウントまたはIPアドレスのブロックにつながります。あなたの行った編集が確かに建設的なものであるならば、「投稿」ボタンを再度クリックしてください。あなたの操作が方針に違反している点の概略は次の通りです。$1",
 	'abusefilter-disallowed' => '行われた操作は自動的に有害と判断されたため実行できませんでした。あなたの行った編集が確かに建設的なものであるならば、管理者に連絡をしてあなたの行おうとしていた操作について知らせてください。あなたの操作が方針に違反している点の概略は次の通りです。$1',
 	'abusefilter-blocked-display' => '行われた操作は自動的に有害と判断されたため、実行が中断されました。同時に{{SITENAME}}を保護するためにあなたの利用者アカウントと関連するすべてのIPアドレスが投稿ブロックされました。この措置が誤りであるならば、管理者に連絡してください。あなたの操作が方針に違反している点の概略は次の通りです。$1',
 	'abusefilter-degrouped' => '行われた操作は自動的に有害と判断されました。そのため操作は実行されず、またあなたのアカウントが乗っ取られていると判断し、すべての権限をはく奪しました。この措置が誤りであるならば、この操作についての説明を添えてビューロクラットに連絡し、権限の復帰を依頼してください。あなたの操作が方針に違反している点の概略は次の通りです。$1',
@@ -20583,6 +20584,7 @@ Sieuwebeschrieuwenge: $7 ($8{{int:pipe-separator}}$9)',
  * @author Petter Strandmark
  * @author Poxnar
  * @author Rotsee
+ * @author Sertion
  */
 $messages['sv'] = array(
 	'abusefilter-desc' => 'Tillämpar automatiska filter på redigeringar',
@@ -20592,9 +20594,9 @@ $messages['sv'] = array(
 Missbruksfiltret är en automatisk mjukvarumekanism som utför automatisk kontroll av alla handlingar.
 Detta gränssnitt visar en lista över definierade filter och gör det möjligt att ändra i dessa.',
 	'abusefilter-mustbeeditor' => 'Av säkerhetsskäl kan bara användare med rätt att modifiera missbruksfiltret använda detta gränssnitt.',
-	'abusefilter-warning' => "'''Varning:''' Denna handling har automatiskt identifierats som skadlig.
-Icke konstruktiva redigeringar kommer snabbt att återställas,
-och långvarigt förstörande redigeringar kommer leda till att ditt konto eller dator blir blockerad.
+	'abusefilter-warning' => "'''Varning:''' Handlingen har automatiskt identifierats som skadlig.
+Destruktiva redigeringar kommer snabbt att återställas,
+och återkommande förstörande redigeringar kommer leda till att ditt konto eller IP-adress blir blockerad.
 Om du anser att denna redigering är konstruktiv, klicka på \"Spara\" igen för att bekräfta det.
 En kortfattad beskrivning av missbruksregler som din handling utlöste är: \$1",
 	'abusefilter-disallowed' => 'Denna handling har automatiskt identifierats som skadlig och tillåts därför inte.
