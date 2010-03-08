@@ -8383,10 +8383,10 @@ Velaquí hai unha breve descrición da regra de abuso coa que coincide a súa ac
 	'abusefilter-log-search-filter' => 'ID do filtro:',
 	'abusefilter-log-search-title' => 'Título:',
 	'abusefilter-log-search-submit' => 'Procurar',
-	'abusefilter-log-entry' => '$1: $2 accionou un filtro de abusos, levando a cabo a acción "$3" en $4.
+	'abusefilter-log-entry' => '$1: $2 accionou un filtro de abusos, levando a cabo a acción "$3" en "$4".
 Accións levadas a cabo: $5.
 Descrición do filtro: $6',
-	'abusefilter-log-detailedentry-meta' => '$1: $2 accionou $3, levando a cabo a acción "$4" en $5.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 accionou o $3, levando a cabo a acción "$4" en "$5".
 Accións levadas a cabo: $6.
 Descrición do filtro: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-log-detailedentry-global' => 'o filtro global $1',
@@ -8442,7 +8442,7 @@ Descrición do filtro: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-tools-reautoconfirm' => 'Restaurar o estado de autoconfirmación',
 	'abusefilter-tools-reautoconfirm-user' => 'Usuario:',
 	'abusefilter-tools-reautoconfirm-submit' => 'Volver autoconfirmar',
-	'abusefilter-reautoconfirm-none' => '{{GENDER:$1|Esa usuaria|Ese usuario}} non tivo o seu estado de autoconfirmación suspendido.',
+	'abusefilter-reautoconfirm-none' => '{{GENDER:$1|Ese usuario|Esa usuaria}} non tivo o seu estado de autoconfirmación suspendido.',
 	'abusefilter-reautoconfirm-notallowed' => 'Non ten os permisos necesarios para restaurar o estado de autoconfirmación.',
 	'abusefilter-reautoconfirm-done' => 'Restaurouse o estado de autoconfirmación da conta',
 	'abusefilter-status' => '{{PLURAL:$1|Da última acción|Das $1 últimas accións}}, $2 ($3%) {{PLURAL:$5|atinxiu|atinxiron}} a condición límite de $4, e $5 ($6%) {{PLURAL:$5|coincidiu|coincidiron}} cun dos filtros actualmente activados.',
