@@ -21108,6 +21108,7 @@ $messages['te'] = array(
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'పేజీ యొక్క మార్పుల సంరక్షణా స్థాయి',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'పేజీ యొక్క తరలింపు సంరక్షణా స్థాయి',
 	'abusefilter-edit-builder-vars-old-links' => 'ఈ పేజీలోని లంకెలు, మార్పుకి ముందు',
+	'abusefilter-edit-builder-vars-minor-edit' => 'మార్పు చిన్న మార్పుగా గుర్తించబడినదా లేదా',
 	'abusefilter-filter-log' => 'ఇటీవలి వడపోతల మార్పులు',
 	'abusefilter-history' => 'దుర్వినియోగ వడపోత #$1 యొక్క మార్పుల చరిత్ర',
 	'abusefilter-history-foruser' => '$1 యొక్క మార్పులు',
