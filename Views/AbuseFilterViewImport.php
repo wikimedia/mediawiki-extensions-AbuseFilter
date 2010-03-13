@@ -11,7 +11,10 @@ class AbuseFilterViewImport extends AbuseFilterView {
 		$wgOut->addWikiMsg( 'abusefilter-import-intro' );
 
 		$html = Xml::textarea( 'wpImportText', '', 40, 20 );
-		$html .= Xml::submitButton( wfMsg( 'abusefilter-import-submit' ) );
+		$html .= Xml::submitButton(
+			wfMsg( 'abusefilter-import-submit' ),
+			array( 'accesskey' => 's' )
+		);
 		$url = SpecialPage::getTitleFor( 'AbuseFilter', 'new' )->getFullURL();
 
 		$html = Xml::tags( 'form', array( 'method' => 'post', 'action' => $url ), $html );

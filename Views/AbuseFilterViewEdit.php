@@ -423,7 +423,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		);
 
 		if ( $this->canEdit() ) {
-			$form .= Xml::submitButton( wfMsg( 'abusefilter-edit-save' ) );
+			$form .= Xml::submitButton( wfMsg( 'abusefilter-edit-save' ), array( 'accesskey' => 's' ) );
 			$form .= Xml::hidden(
 				'wpEditToken',
 				$wgUser->editToken( array( 'abusefilter', $filter ) )
