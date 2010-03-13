@@ -2458,6 +2458,7 @@ $messages['br'] = array(
 	'right-abusefilter-view' => 'Gwelet ar siloù a-enep ar gwallimplij',
 	'right-abusefilter-log' => 'Gwelet marilh ar siloù a-enep ar gwallimplij',
 	'right-abusefilter-private' => 'Gwelet ar roadennoù prevez er marilh a-enep ar gwallimplij',
+	'right-abusefilter-modify-restricted' => 'Kemmañ ar siloù a-enep ar gwallimplij gant oberoù bevennet',
 	'right-abusefilter-view-private' => 'Gwelet ar siloù gwallimplij merket evel prevez',
 	'action-abusefilter-modify' => 'Kemmañ ar siloù a-enep ar gwallimplij',
 	'action-abusefilter-view' => 'Gwelet ar siloù a-enep ar gwallimplij',
@@ -2701,6 +2702,7 @@ Oberezhioù da adlakaat : $5 ($6)',
 	'abusefilter-examine-syntaxerror' => 'Direizh eo ereadur ar sil',
 	'abusefilter-examine-notfound' => "N'eo ket bet kavet ar c'hemm ho peus goulennet.",
 	'abusefilter-examine-noresults' => "N'eus disoc'h ebet evit an arventennoù klask ho peus roet.",
+	'abusefilter-topnav' => "'''Merdeiñ ar sil a-enep ar gwallimplij'''",
 	'abusefilter-topnav-home' => 'Degemer',
 	'abusefilter-topnav-test' => 'Amprouadenn a steudad',
 	'abusefilter-topnav-examine' => "Studiañ ar c'hemmoù a-raok",
@@ -21885,7 +21887,7 @@ Bu arayüz, tanımlı süzgeçlerin listesini gösterir ve değiştirilmelerine 
 	'abusefilter-mustbeeditor' => 'Güvenlik nedeniyle, bu arayüzü sadece suistimal filtrelerini değiştirme yetkisine sahip kullanıcılar kullanabilir.',
 	'abusefilter-warning' => "'''Uyarı''': Bu eylem otomatikman zararlı olarak tanımlanmıştır.
 Yapıcı olmayan değişiklikler hızlıca geri döndürülecektir,
-ve çok kötü ya da tekrar eden yapıcı olmayan değişiklikler hesabınızın ya da bilgisayarınızın engellenmesiyle sonuçlanacaktır.
+ve çok kötü ya da tekrar eden yapıcı olmayan değişiklikler hesabınızın ya da IP adresinizin engellenmesiyle sonuçlanacaktır.
 Eğer bu değişikliğin yapıcı olduğuna inanıyorsanız, onaylamak için tekrar Gönder'e basabilirsiniz.
 Eyleminizin eşleştiği suistimal kuralının kısa bir açıklaması: $1",
 	'abusefilter-disallowed' => 'Bu eylem otomatikman zararlı olarak tanımlanmıştır,
