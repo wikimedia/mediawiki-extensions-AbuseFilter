@@ -215,7 +215,7 @@ class AbuseFilterPager extends TablePager {
 				foreach ( $actions as $action ) {
 					$displayActions[] = AbuseFilter::getActionDisplay( $action ); ;
 				}
-				return htmlspecialchars( implode( ', ', $displayActions ) );
+				return htmlspecialchars( $wgLang->commaList( $displayActions ) );
 			case 'af_enabled':
 				$statuses = array();
 				if ( $row->af_deleted )

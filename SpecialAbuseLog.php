@@ -265,7 +265,7 @@ class SpecialAbuseLog extends SpecialPage {
 			foreach ( $actions as $action ) {
 				$displayActions[] = AbuseFilter::getActionDisplay( $action );
 			}
-			$actions_taken = implode( ', ', $displayActions );
+			$actions_taken = $wgLang->commaList( $displayActions );
 		}
 
 		$globalIndex = AbuseFilter::decodeGlobalName( $row->afl_filter );

@@ -70,7 +70,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 						$sk->userLink( $result['userid'], $result['user'] ),
 						$result['action'],
 						$sk->link( $result['title'] ),
-						implode( ', ', $displayActions ),
+						$wgLang->commaList( $displayActions ),
 						$sk->link(
 							SpecialPage::getTitleFor( 'AbuseLog' ),
 							wfMsgNoTrans( 'abusefilter-log-detailslink' ),
