@@ -17960,11 +17960,11 @@ $messages['pt'] = array(
 O Filtro de Abuso é um mecanismo de software automatizado de aplicação de heurísticas automáticas a todas as ações.
 Esta interface mostra uma lista de filtros definidos, e permite que sejam modificados.',
 	'abusefilter-mustbeeditor' => 'Por razões de segurança, apenas os utilizadores com o direito de modificar filtros de abuso podem usar esta interface.',
-	'abusefilter-warning' => "'''Atenção:''' esta ação foi identificada automaticamente como prejudicial.
+	'abusefilter-warning' => "'''Atenção:''' esta acção foi identificada de forma automática como prejudicial.
 As edições não construtivas serão revertidas rapidamente,
-e a repetição destas edições resultará no bloqueio da sua conta ou do seu computador.
-Se você crê que esta edição é construtiva, pode premir novamente o botão \"Enviar\" para confirmá-lo.
-Uma breve descricição da regra de abuso com a qual a sua ação coincidiu é: \$1",
+e a repetição destas edições resultará no bloqueio da sua conta ou do seu endereço IP.
+Se crê que esta edição é construtiva, pode clicar novamente o botão \"Enviar\" para confirmá-lo.
+Uma breve descrição da regra de abuso com a qual a sua acção coincidiu é: \$1",
 	'abusefilter-disallowed' => 'Esta ação foi identificada automaticamente como prejudicial,
 e foi consequentemente bloqueada.
 Se você crê que a sua edição foi construtiva, por favor contacte um administrador, e informe-o do que você estava a tentar fazer.
@@ -18519,6 +18519,7 @@ $messages['rif'] = array(
 );
 
 /** Romanian (Română)
+ * @author Ervinutz
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
@@ -18527,7 +18528,7 @@ $messages['rif'] = array(
  */
 $messages['ro'] = array(
 	'abusefilter-desc' => 'Aplică euristici automate modificărilor.',
-	'abusefilter' => 'Configuraţie filtru abuz',
+	'abusefilter' => 'Configurează filtrul de abuz',
 	'abuselog' => 'Jurnal abuz',
 	'abusefilter-mustbeeditor' => 'Din motive de securitate, doar utilizatorii cu dreptul de a modifica filtrele de abuzare pot utiliza această interfaţă.',
 	'abusefilter-warning' => "'''Atenţie''': Această acţiune a fost identificată automat ca fiind periculoasă.
