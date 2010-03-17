@@ -158,7 +158,7 @@ $aliases['ja'] = array(
 	'AbuseFilter' => array( '不正利用フィルター' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'AbuseLog' => array( 'Logbooch vum Meßbruchsfellter' ),
 	'AbuseFilter' => array( 'Meßbruchsfellter' ),

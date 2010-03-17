@@ -7573,7 +7573,7 @@ $messages['fr'] = array(
 	'abusefilter' => 'Configuration du filtre antiabus',
 	'abuselog' => 'Journal des filtres antiabus',
 	'abusefilter-intro' => "Bienvenue dans l'interface de gestion des filtres antiabus.
-Le filtre antiabus est un un mécanisme logiciel automatisé qui permet d'appliquer des heuristiques prédéfinies à toutes les actions.
+Le filtre antiabus est un mécanisme logiciel automatisé qui permet d'appliquer des heuristiques prédéfinies à toutes les actions.
 Cette interface présente une liste des filtres définis, et donne la possibilité de les modifier.",
 	'abusefilter-mustbeeditor' => 'Pour des raisons de sécurité, seuls les utilisateurs avec le droit de modifier les filtres antiabus peuvent utiliser cette interface.',
 	'abusefilter-warning' => "'''Avertissement''' : Cette action a été identifiée automatiquement comme nuisible.
