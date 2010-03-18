@@ -4890,7 +4890,7 @@ Znjewužywański filter jo awtomatizěrowany softwarowy mechanizm za nałoženje
 Toś ten pówjerch pokazujo lisćinu definěrowanych filtrow a zmóžnja je změniś.',
 	'abusefilter-mustbeeditor' => 'Z wěstotnych pśicynow mógu jano wužywarje z pšawom znjewužywaśnke filtry změniś toś ten interfejs wužywaś.',
 	'abusefilter-warning' => "'''Warnowanje''': Toś ta akcija jo se awtomatiski identificěrowała ako škódna.
-Njekonstruktiwne změny budu se spěšnje anulěrowaś, a njesromne abo wóspjetowane njekonstruktiwne wobźěłowanje buźo k tomu wjasć, až twójo konto abo twójo licadło se blokěrujo.
+Njekonstruktiwne změny budu se spěšnje anulěrowaś, a njesromne abo wóspjetowane njekonstruktiwne wobźěłowanje buźo k tomu wjasć, až twójo konto abo twója IP-adresa se blokěrujo.
 Jolic se mysliš, až toś ta změna jo konstruktiwna, móžoš na Znowego wótpósłaś kliknuś, aby ju wobkšuśił. Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpowědujo, jo: $1",
 	'abusefilter-disallowed' => 'Toś ta akcija jo se awtomatiski identificěrowała ako škódna, a togodla znjemóžniła.
 Jolic se měniš, až twója změna jo była konstruktiwna, staj se z administratorom do zwiska a informěruj jogo, což sy wopytał cyniś.
@@ -6084,9 +6084,9 @@ El filtro de edición es un mecanismo de software automatizado que aplica heurí
 Esta interfaz muestra una lista de filtros definidos, que pueden ser ser modificados.',
 	'abusefilter-mustbeeditor' => 'Por razones de seguridad, solamente los usuarios con derechos para modificar filtros de abuso pueden usar esta interfaz.',
 	'abusefilter-warning' => "'''Atención''': Esta acción ha sido automáticamente identificada como dañina.
-Las ediciones no constructivas son rápidamente revertidas,
-la repetición de dichas acciones tendrá como consecuencia que su cuenta u ordenador sea bloqueado.
-Si cree que esta edición es constructiva, puede pulsar de nuevo el botón grabar para confirmarlo.
+Las ediciones no constructivas serán revertidas rápidamente y
+la repetición de dichas acciones tendrá como consecuencia que su cuenta o dirección IP sean bloqueados.
+Si cree que esta edición es constructiva, puede pulsar de nuevo el botón grabar de nuevo para confirmarlo.
 Una breve explicación acerca de la regla del filtro antiabusos que usted ha disparado es: $1",
 	'abusefilter-disallowed' => 'Esta acción ha sido automáticamente identificada como dañina,
 y por tanto ha sido deshabilitada.
@@ -6232,6 +6232,8 @@ El filtro ha sobrepasado el límite de más del $1% acciones.",
 	'abusefilter-edit-throttle-count' => 'Número de acciones a permitir:',
 	'abusefilter-edit-throttle-period' => 'Período de tiempo:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|segundo|segundos}}',
+	'abusefilter-edit-throttle-groups' => "Agrupar limitador por:
+:''(uno por línea, combinar con comas)''",
 	'abusefilter-edit-warn-message' => 'Mensaje del sistema para usar por la advertencia:',
 	'abusefilter-edit-warn-other' => 'Otro mensaje',
 	'abusefilter-edit-warn-other-label' => "Nombre de página de otro mensaje:
@@ -6243,7 +6245,7 @@ El filtro ha sobrepasado el límite de más del $1% acciones.",
 	'abusefilter-edit-denied' => 'No puede ver detalles de este filtro porque es privado',
 	'abusefilter-edit-main' => 'Parámetros de filtro',
 	'abusefilter-edit-done-subtitle' => 'Filtro editado',
-	'abusefilter-edit-done' => 'Usted ha guardado sus cambios al filtro $1 con éxito.',
+	'abusefilter-edit-done' => 'Ha guardado sus cambios al filtro $1 con éxito.',
 	'abusefilter-edit-badsyntax' => 'Hay un error de sintaxis en el filtro que especificó.
 El resultado del analizador fue: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'No puedes editar este filtro, porque contiene una o más acciones restringidas.
@@ -6288,7 +6290,7 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-edit-builder-misc-contains' => 'La cadena izquierda contiene a la cadena derecha (contains)',
 	'abusefilter-edit-builder-misc-stringlit' => 'Cadena de caracteres literal ("")',
 	'abusefilter-edit-builder-misc-tern' => 'Operador ternario (X ? Y : Z)',
-	'abusefilter-edit-builder-misc-cond' => 'Condicional (si X entonces Y sino Z)',
+	'abusefilter-edit-builder-misc-cond' => 'Condicional (if X then Y else Z)',
 	'abusefilter-edit-builder-group-funcs' => 'Funciones',
 	'abusefilter-edit-builder-funcs-length' => 'Longitud de cadena de caracteres (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'A letra minúscula (lcase)',
@@ -6298,8 +6300,8 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-edit-builder-funcs-norm' => 'Normalizar (norm)',
 	'abusefilter-edit-builder-funcs-count' => 'Número de veces que la cadena X aparece en la cadena Y (count)',
 	'abusefilter-edit-builder-funcs-rcount' => 'Número de veces que el regex X aparece en la cadena Y (rcount)',
-	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Remover espacio en blanco (rmwhitespace)',
-	'abusefilter-edit-builder-funcs-rmspecials' => 'Remover caracteres especiales (rmspecials)',
+	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Eliminar espacio en blanco (rmwhitespace)',
+	'abusefilter-edit-builder-funcs-rmspecials' => 'Eliminar caracteres especiales (rmspecials)',
 	'abusefilter-edit-builder-funcs-ip_in_range' => '¿Está la IP en el rango? (ip_in_range)',
 	'abusefilter-edit-builder-funcs-contains-any' => 'Buscar múltiples subcadenas en la cadena (contains_any)',
 	'abusefilter-edit-builder-funcs-substr' => 'Subcadena (substr)',
@@ -6387,7 +6389,7 @@ Se espera $3 {{PLURAL:$3|argumento|argumento}} y se ha dado $4',
 	'abusefilter-exception-outofbounds' => 'Solicitando objeto de listado no existente $2 (tamaño del listado = $3) en el caracter $1.',
 	'abusefilter-exception-notlist' => 'Solicitando objeto de matriz de no-matriz en el caracter $1.',
 	'abusefilter-action-tag' => 'Marcar',
-	'abusefilter-action-throttle' => 'Impedir',
+	'abusefilter-action-throttle' => 'Limitar',
 	'abusefilter-action-warn' => 'Advertir',
 	'abusefilter-action-blockautopromote' => 'Bloquear la recepción de permisos de usuario obtenidos automáticamente',
 	'abusefilter-action-block' => 'Bloquear',
