@@ -15352,10 +15352,10 @@ $messages['ms'] = array(
 Abuse Filter ialah mekanisme perisian automatik untuk mengenakan swakaji automatik kepada semua tindakan.
 Antara muka ini menunjukkan senarai penapis yang ditakrif, dan membenarkan mereka diubahsuai.',
 	'abusefilter-warning' => "'''Amaran''': Tindakan ini telah dikenalpasti secara automatik sebagai berbahaya.
-Suntingan tidak berkonstruk akan dibalikkan secepat mungkin,
-dan suntingan tidak berkonstruk yang dilakukan berkali-kali akan menyebabkan akaun anda atau komputer disekat.
-Jika anda percaya suntingan ini berkonstruk, sila tekan Hantar sekali lagi untuk memastikannya.
-Sebuah penerangan ringkas tentang penyalahgunaan peraturan yang berkaitan tindakan anda ialah: $1",
+Suntingan tidak membina akan dibalikkan dengan segera,
+dan suntingan tidak membina yang berulang-ulang akan menyebabkan akaun atau alamat IP anda disekat.
+Jika anda percaya suntingan ini membina, sila tekan Simpan sekali lagi untuk mengesahkankannya.
+Penerangan ringkas tentang peraturan penyalahgunaan yang sepadan dengan tindakan anda ialah: $1",
 	'abusefilter-disallowed' => 'Tindakan ini telah dikenalpasti secara automatik sebagai berbahaya.,
 dan dengan itu tidak dibenarkan.
 Jika anda percaya suntingan ini berkonstruk, sila hubungi penyelia, dan beritahu mereka mengenai perkara yang anda cuba lakukan.
@@ -22325,13 +22325,13 @@ $messages['uk'] = array(
 	'right-abusefilter-view-private' => 'перегляд прихованих фільтрів зловживань',
 	'action-abusefilter-modify' => 'змінювати фільтри зловживань',
 	'action-abusefilter-view' => 'переглядати фільтри зловживань',
-	'action-abusefilter-log' => 'переглядати журнал фільтра зловживань',
+	'action-abusefilter-log' => 'переглядати журнал зловживань',
 	'action-abusefilter-log-detail' => 'переглядати деталі журналу фільтра зловживань',
 	'action-abusefilter-private' => 'переглядати особисті дані у журналі фільтра зловживань',
 	'action-abusefilter-modify-restricted' => 'змінювати фільтри зловживань із заборонювальними діями',
 	'action-abusefilter-revert' => 'скасовувати всі зміни зазначеного фільтра зловживань',
 	'action-abusefilter-view-private' => 'перегляд прихованих фільтрів зловживань',
-	'abusefilter-log' => 'Журнал фільтра зловживань',
+	'abusefilter-log' => 'Журнал фільтра редагувань',
 	'abusefilter-log-summary' => 'У цьому журналі показано список усіх дій, перехоплених фільтрами.',
 	'abusefilter-log-search' => 'Пошук в журналі зловживань',
 	'abusefilter-log-search-user' => 'Користувач:',
