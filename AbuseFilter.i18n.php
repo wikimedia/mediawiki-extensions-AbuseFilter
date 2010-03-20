@@ -17066,10 +17066,10 @@ $messages['oc'] = array(
 Lo filtre antiabuses es un mecanisme logicial automatizat que permet d'aplicar d'euristicas predefinidas a totas las accions.
 Aquesta interfàcia presenta una lista dels filtres definits, e balha la possibilitat de los modificar.",
 	'abusefilter-mustbeeditor' => 'Per de rasons de seguretat, sols los utilizaires amb lo drech de modificar los filtres antiabuses pòdon utilizar aquesta interfàcia.',
-	'abusefilter-warning' => "'''Avertiment''' : Aquesta accion es estada identificada automaticament coma nusibla.
-Las edicions que son pas constructivas seràn rapidament anullada,
-e la repeticion de las asinadas del meteis genre provocarà lo blocatge de vòstre compte.
-Se sètz convençut(uda) que vòstra modificacion es constructiva, la podètz la sometre un còp de mai per la validar.
+	'abusefilter-warning' => "'''Avertiment''' : Aquesta accion es estada identificada automaticament coma nosibla.
+Las edicions que son pas constructivas seràn rapidament anulladas,
+e la repeticion de las asinadas del meteis genre provocarà lo blocatge de vòstre compte o de vòstra adreça IP.
+Se sètz convençu{{GENDER:||t|(da)}} que vòstra modificacion es constructiva, la podètz la sometre un còp de mai per la validar.
 Vaquí la descripcion brèva de la règla de l’abús qu'a detectat vòstra accion : $1",
 	'abusefilter-disallowed' => 'Aquesta modificacion es estada automaticament idenficada coma nusibla e, per via de consequéncia, pas permesa.
 Se sètz convençut(uda) que vòstra modificacion èra constructiva, contactatz un administrator, e informatz-lo de quina accion eratz a far : $1',
@@ -22361,7 +22361,7 @@ $messages['uk'] = array(
 	'abusefilter-list' => 'Усі фільтри',
 	'abusefilter-list-id' => 'ІД фільтра',
 	'abusefilter-list-status' => 'Стан',
-	'abusefilter-list-public' => 'Загальнодоступний опис',
+	'abusefilter-list-public' => 'Публічний опис',
 	'abusefilter-list-consequences' => 'Наслідки',
 	'abusefilter-list-visibility' => 'Видимість',
 	'abusefilter-list-hitcount' => 'Спрацьовувань',
@@ -22370,7 +22370,7 @@ $messages['uk'] = array(
 	'abusefilter-list-limit' => 'Кількість на сторінці:',
 	'abusefilter-list-lastmodified' => 'Останні зміни',
 	'abusefilter-hidden' => 'Прихований',
-	'abusefilter-unhidden' => 'Загальнодоступний',
+	'abusefilter-unhidden' => 'Публічний',
 	'abusefilter-enabled' => 'Увімкнений',
 	'abusefilter-deleted' => 'Вилучений',
 	'abusefilter-disabled' => 'Вимкнений',
@@ -22411,7 +22411,7 @@ $messages['uk'] = array(
 	'abusefilter-edit-save' => 'Зберегти фільтр',
 	'abusefilter-edit-id' => 'ІД фільтра:',
 	'abusefilter-edit-description' => "Опис:
-:''(загальнодоступне) ''",
+:''(публічний) ''",
 	'abusefilter-edit-flags' => 'Прапорці:',
 	'abusefilter-edit-enabled' => 'Увімкнути цей фільтр',
 	'abusefilter-edit-deleted' => 'Позначити як вилучений',
