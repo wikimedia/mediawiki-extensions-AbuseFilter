@@ -4421,7 +4421,7 @@ Weitere Erläuterungen gibt es bei Klick auf die Schaltfläche „Syntaxprüfung
 	'abusefilter-log-name' => 'Missbrauchsfilter-Logbuch',
 	'abusefilter-log-header' => 'Dieses Logbuch zeigt eine Zusammenfassung der Änderungen an Filtern.
 Für genauere Details, siehe [[Special:AbuseFilter/history|die Liste]] der letzten Änderungen an Filtern.',
-	'abusefilter-log-entry-modify' => 'geändert $1 ($2)',
+	'abusefilter-log-entry-modify' => 'änderte $1 ($2)',
 	'abusefilter-diff-title' => 'Unterschied zwischen Versionen',
 	'abusefilter-diff-item' => 'Element',
 	'abusefilter-diff-version' => 'Version vom $1 von $2',
