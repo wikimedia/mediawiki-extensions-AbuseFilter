@@ -23077,9 +23077,9 @@ Trang này có danh sách bộ lọc định trước để cấu hình.',
 	'abusefilter-mustbeeditor' => 'Vì lý do an toàn, cần có quyền sửa đổi bộ lọc lạm dụng để sử dụng trang này.',
 	'abusefilter-warning' => "'''Cảnh báo''': Tác vụ này đã được tự động xác định là nguy hại.
 Những sửa đổi không có tính xây dựng sẽ nhanh chóng bị hồi lại,
-và sửa đổi không có tính xây dựng xảy ra thường xuyên và liên tục sẽ dẫn đến việc cấm tài khoản của hoặc máy tính của bạn.
+và sửa đổi không có tính xây dựng xảy ra thường xuyên và liên tục sẽ dẫn đến việc cấm tài khoản hoặc địa chỉ IP của bạn.
 Nếu bạn tin rằng sửa đổi này là có tính xây dựng, bạn có thể nhấn Lưu trang một lần nữa để xác nhận điều đó.
-Miêu tả ngắn về quy luật lạm dụng mà tác vụ của bạn gặp phải là: $1",
+Miêu tả ngắn về quy định nguy hại mà tác vụ của bạn gặp phải là: $1",
 	'abusefilter-disallowed' => 'Tác vụ này đã được tự động xác định là nguy hại,
 và do đó không được phép thực hiện.
 Nếu bạn tin rằng sửa đổi của bạn là có tính xây dựng, xin hãy liên hệ với một người quản lý, và thông báo cho họ về những điều bạn đang cố gắng làm.
