@@ -5676,11 +5676,11 @@ $messages['eo'] = array(
 La Misuzada Filtrilo estas aŭtomata programara ilo por apliki aŭtomata heŭristiko al ĉiuj agoj.
 Ĉi tiu interfaco montras liston de difinitaj filtriloj, kaj permesas ilin esti modifita.',
 	'abusefilter-mustbeeditor' => 'Pro sekurecaj kialoj, nur uzantoj kun la rajto modifi maluzadajn filtrilojn povas uzi ĉi tiun interfacon.',
-	'abusefilter-warning' => "'''Averto''': Ĉi tiu ago estis aŭtomate identigita kiel misuzema.
+	'abusefilter-warning' => "'''Averto''': Ĉi tiu ago estis aŭtomate identigita kiel malhelpema.
 Malkonstruktivaj redaktoj rapide estos malfaritaj,
 kaj ĉi tia ega aŭ ripetita redaktado rezultos, ke via konto aŭ komputilo estos forbarita.
 Se vi kredas ke ĉi tiu redakto estas ja konstruktiva, vi povas klaki Konservi denove por konfirmi ĝin.
-Mallonga priskribo pri la regulo de misuzo kiun via ago kongruis estas: $1",
+Mallonga priskribo pri la regulo de misuzado kiun via ago kongruis estas: $1",
 	'abusefilter-disallowed' => 'Ĉi tiu ago estis aŭtomate identigita kiel damaĝa, kaj do estis malpermesita.
 Se vi kredas ke via redakto estis utila, bonvolu kontakti administranton, kaj informi ilin pri kion vi volis fari.
 Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1',
@@ -7567,6 +7567,7 @@ Kopioi ilmestyvän tekstikentän sisältö ja liitä se tähän tekstikenttään
  * @author Peter17
  * @author PieRRoMaN
  * @author Robby
+ * @author Urhixidur
  * @author Verdy p
  * @author Zetud
  */
@@ -7758,7 +7759,7 @@ Demandez à un utilisateur autorisé à ajouter des actions restreintes d’effe
 	'abusefilter-edit-export' => 'Exporter ce filtre vers un autre wiki',
 	'abusefilter-edit-syntaxok' => 'Aucune erreur de syntaxe détectée.',
 	'abusefilter-edit-syntaxerr' => 'Erreur de syntaxe détectée : $1',
-	'abusefilter-edit-bad-tags' => "Une ou plusieurs balises que vous avez spécifié n'est pas valide.
+	'abusefilter-edit-bad-tags' => "Une ou plusieurs balises que vous avez spécifiée(s) n'est (ne sont) pas valide(s).
 Les balises doivent être courtes et ne pas contenir de caractères spéciaux.",
 	'abusefilter-edit-notallowed' => "Vous n'êtes pas autorisé à créer ou modifier des filtres antiabus",
 	'abusefilter-edit-builder-select' => 'Sélectionnez une option pour l’ajouter au curseur',
