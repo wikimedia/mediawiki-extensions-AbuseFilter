@@ -842,11 +842,11 @@ $messages['ar'] = array(
 مرشح الإساءة هو ميكانيكية برمجية آلية لتطبيق ضوابط تلقائية لكل الأفعال.
 هذه الواجهة تعرض قائمة بالمرشحات المعرفة، وتسمح بتعديلها.',
 	'abusefilter-mustbeeditor' => 'لأسباب أمنية، المستخدمون ذوو صلاحية تعديل مرشّحات الإساءة فقط يمكنهم استخدام هذه الواجهة.',
-	'abusefilter-warning' => "'''تحذير''': هذا الفعل تم التعرف عليه تلقائيا كضار.
-التعديلات غير البناءة سيتم استرجاعها سريعا،
+	'abusefilter-warning' => "'''تحذير''': أُعتبر هذا الإجراء ضارًا.
+سيتم استرجاع التعديلات غير البناءة سريعا،
 والتعديل غير البناء المتكرر أو المستمر سيؤدي إلى منع حسابك أو حاسوبك.
-لو كنت تعتقد أن هذا التعديل بناء، يمكنك أن تضغط تنفيذ مرة أخرى لتأكيده.
-وصف مختصر لقاعدة الإساءة التي طابقها فعلك هو: $1",
+إذا كنت تعتقد أن هذا التعديل بناء، فيمكن أن تضغط \"أرسل\" مرة أخرى لتأكيده.
+وصف مختصر لقاعدة الإساءة التي طابقها فعلك: \$1",
 	'abusefilter-disallowed' => 'هذا الفعل تم التعرف عليه تلقائيا كضار،
 ولذا تم منعه.
 لو كنت تعتقد أن تعديلك بناء، من فضلك اتصل بإداري، وأخبره بما كنت تحاول أن تفعل.
@@ -6713,6 +6713,7 @@ Lisaselgituse jaoks klõpsa nuppu "Kontrolli süntaksit".',
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Joxemai
  * @author Kobazulo
  * @author Theklan
  * @author Unai Fdz. de Betoño
@@ -6822,6 +6823,7 @@ $messages['eu'] = array(
 	'abusefilter-edit-builder-group-funcs' => 'Funtzioak',
 	'abusefilter-edit-builder-funcs-length' => 'Karaktere-katearen luzera (length)',
 	'abusefilter-edit-builder-group-vars' => 'Aldagaiak',
+	'abusefilter-edit-builder-vars-action' => 'Ekintza',
 	'abusefilter-edit-builder-vars-newsize' => 'Orrialdearen tamaina berria',
 	'abusefilter-edit-builder-vars-oldsize' => 'Orrialdearen tamaina zaharra',
 	'abusefilter-edit-builder-vars-summary' => 'Aldatu laburpena/arrazoia',
@@ -6836,6 +6838,7 @@ $messages['eu'] = array(
 	'abusefilter-history-timestamp' => 'Ordua',
 	'abusefilter-history-user' => 'Lankidea',
 	'abusefilter-history-comments' => 'Iruzkinak',
+	'abusefilter-history-actions' => 'Ekintzak',
 	'abusefilter-history-deleted' => 'Ezabatua',
 	'abusefilter-history-filterid' => 'Iragazkia',
 	'abusefilter-history-select-user' => 'Lankide:',
@@ -6860,6 +6863,7 @@ $messages['eu'] = array(
 	'abusefilter-examine-title' => 'Orrialdearen izenburua:',
 	'abusefilter-examine-submit' => 'Bilatu',
 	'abusefilter-topnav-home' => 'Hasiera',
+	'abusefilter-topnav-examine' => 'Aztertu aurreko aldaketak',
 	'abusefilter-topnav-tools' => 'Arazketarako tresnak',
 	'abusefilter-topnav-import' => 'Iragazkia inportatu',
 	'abusefilter-diff-title' => 'Bertsioen arteko ezberdintasunak',
