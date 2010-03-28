@@ -49,6 +49,7 @@ class AbuseFilter {
 			'like' => 'like',
 			'""' => 'stringlit',
 			'rlike' => 'rlike',
+			'irlike' => 'irlike',
 			'cond ? iftrue : iffalse' => 'tern',
 			'if cond then iftrue else iffalse end' => 'cond',
 		),

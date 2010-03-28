@@ -198,12 +198,14 @@ class AFPData {
 		return new AFPData( self::DBool, (bool)$result );
 	}
 
-	public static function keywordRegex( $str, $regex, $pos ) {
+	public static function keywordRegex( $str, $regex, $pos, $insensitive = false ) {
 		$str = $str->toString();
 		$pattern = $regex = $regex->toString();
 
 		$pattern = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $pattern );
 		$pattern = "/$pattern/u";
+		
+		if( $insensitive ) $pattern .= "i";
 
 		try {
 			set_error_handler( array( 'AbuseFilterParser', 'regexErrorHandler' ) );
@@ -214,6 +216,10 @@ class AFPData {
 			throw $e;
 		}
 		return new AFPData( self::DBool, (bool)$result );
+	}
+	
+	public static function keywordRegexInsensitive( $str, $regex, $pos ) {
+		return self::keywordRegex( $str, $regex, $pos, true );
 	}
 
 	public static function unaryMinus( $data ) {
@@ -403,7 +409,7 @@ class AbuseFilterParser {
 	);
 	static $mKeywords = array(
 	'in', 'like', 'true', 'false', 'null', 'contains', 'matches',
-	'rlike', 'regex', 'if', 'then', 'else', 'end',
+	'rlike', 'irlike', 'regex', 'if', 'then', 'else', 'end',
 	);
 
 	static $parserCache = array();
@@ -837,6 +843,7 @@ class AbuseFilterParser {
 			'matches' => 'keywordLike',
 			'contains' => 'keywordContains',
 			'rlike' => 'keywordRegex',
+			'irlike' => 'keywordRegexInsensitive',
 			'regex' => 'keywordRegex'
 		);
 		if ( $this->mCur->type == AFPToken::TKeyword && in_array( $keyword, array_keys( $specwords ) ) ) {
