@@ -17541,7 +17541,7 @@ $messages['pl'] = array(
 Filtr nadużyć jest to oprogramowanie automatycznego stosowania heurystyki do wszystkich akcji.
 Interfejs pozwala przeglądać listę zdefiniowanych filtrów oraz pozwala na ich modyfikowanie.',
 	'abusefilter-mustbeeditor' => 'Ze względów bezpieczeństwa z tego interfejsu mogą korzystać wyłącznie użytkownicy posiadający uprawnienie do zmieniania filtrów nadużyć.',
-	'abusefilter-warning' => "'''Uwaga''': Twoja edycja została automatycznie zidentyfikowana jako szkodliwa.
+	'abusefilter-warning' => "'''Uwaga''' Twoje działanie zostało automatycznie zidentyfikowane jako szkodliwe.
 Niewłaściwe zmiany zostaną szybko wycofane, 
 a rażące lub powtarzające się niekonstruktywne edytowanie może spowodować zablokowanie Twojego konta lub adresu IP.
 Jeśli uważasz, że to co robisz ma uzasadnienie, kliknij przycisk „{{int:savearticle}}”, aby zatwierdzić zmiany.
@@ -17740,6 +17740,7 @@ Oznaczenia powinny być krótkie i nie powinny zawierać znaków specjalnych.',
 	'abusefilter-edit-builder-misc-in' => 'zawiera ciąg znaków (in)',
 	'abusefilter-edit-builder-misc-like' => 'Dopasowane wzorce (like)',
 	'abusefilter-edit-builder-misc-rlike' => 'Dopasowane wzorce wyrażenia regularnego (rlike)',
+	'abusefilter-edit-builder-misc-irlike' => 'Pasujące do wyrażenia regularnego, wielkość liter (irlike)',
 	'abusefilter-edit-builder-misc-contains' => 'Lewy ciąg znaków zawiera prawy (contains)',
 	'abusefilter-edit-builder-misc-stringlit' => 'Łańcuch znaków ("")',
 	'abusefilter-edit-builder-misc-tern' => 'Operator warunkowy (X ? Y : Z)',
@@ -23949,6 +23950,7 @@ $messages['zh-cn'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
  * @author Chenzw
+ * @author Fantasticfears
  * @author FireJackey
  * @author Gaoxuewei
  * @author Gzdavidwong
@@ -23964,7 +23966,11 @@ $messages['zh-hans'] = array(
 	'abuselog' => '过滤日志',
 	'abusefilter-intro' => '欢迎访问防滥用过滤器管理界面。防滥用过滤器是一个可以针对所有最近编辑动作进行自动化判断的软件系统。本界面包含了现有过滤器的列表，并允许管理人员修改它们。',
 	'abusefilter-mustbeeditor' => '出于安全考虑，只有拥有编辑防滥用过滤器权限的用户方可使用本界面。',
-	'abusefilter-warning' => "'''警告'''：您的行为被自动识别为具有危害性。无意义的编辑会被迅速地加以回退，而过分或重复的无意义编辑会导致您的帐户或计算机遭到封禁。如果您认为您的该次编辑是有意义的，请再次点击提交以确认它。与您此次行为所匹配的过滤规则概述如下：$1",
+	'abusefilter-warning' => "'''警告'''：您的行为被自动识别为具有危害性。
+无意义的编辑会被迅速地回退，
+而过分或重复的无意义编辑会导致您的帐户或IP地址遭到封禁。
+如果您确信您的该次编辑是有意义的，你可以再次点击提交以确认它。
+与您此次行为所匹配的过滤规则概述如下：$1",
 	'abusefilter-disallowed' => '您的行为被自动识别为具有危害性，并遭到禁止。如果您认为您的该次编辑是有意义的，请联系管理员，并告知他们您尝试做到的事。与您此次行为所匹配的过滤规则概述如下：$1',
 	'abusefilter-blocked-display' => '您的行为被自动识别为具有危害性，并被阻止继续进行。除此以外，为了保护{{SITENAME}}，您的用户帐户以及所有相关联的IP地址都被禁止进行编辑。如果您认为这是系统误判，请联系管理员。与您此次行为所匹配的过滤规则概述如下：$1',
 	'abusefilter-degrouped' => '您的行为被自动识别为具有危害性，并遭到禁止。此外，由于您的帐户被怀疑遭到盗窃，所有权限均已被剥夺。如果您认为这是系统误判，请联系行政员并解释此次行为，或能取回权限。与您此次行为所匹配的过滤规则概述如下：$1',
