@@ -6076,6 +6076,7 @@ Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku 
  * @author Imre
  * @author Locos epraix
  * @author McDutchie
+ * @author Pertile
  * @author PieRRoMaN
  * @author Remember the dot
  * @author Sanbec
@@ -6293,6 +6294,7 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-edit-builder-misc-in' => 'contenido en la cadena (in)',
 	'abusefilter-edit-builder-misc-like' => 'Coincide con patrón (like)',
 	'abusefilter-edit-builder-misc-rlike' => 'Coincide con expresión regular (rlike)',
+	'abusefilter-edit-builder-misc-irlike' => 'Coincide con la expresión regular, no distingue entre mayúsculas y minúsculas (irlike)',
 	'abusefilter-edit-builder-misc-contains' => 'La cadena izquierda contiene a la cadena derecha (contains)',
 	'abusefilter-edit-builder-misc-stringlit' => 'Cadena de caracteres literal ("")',
 	'abusefilter-edit-builder-misc-tern' => 'Operador ternario (X ? Y : Z)',
@@ -17939,10 +17941,14 @@ $messages['ps'] = array(
 	'abusefilter-list-status' => 'دريځ',
 	'abusefilter-list-edit' => 'سمون',
 	'abusefilter-deleted' => 'ړنګ شو',
+	'abusefilter-new' => 'يو نوی چاڼګر جوړول',
+	'abusefilter-status-global' => 'نړېوال',
 	'abusefilter-list-options' => 'خوښنې',
+	'abusefilter-list-options-submit' => 'اوسمهالول',
 	'abusefilter-tools-subtitle' => 'اوزارونه',
 	'abusefilter-tools-reautoconfirm-user' => 'کارن:',
 	'abusefilter-edit-new' => 'نوی چاڼګر',
+	'abusefilter-edit-save' => 'چاڼګر خوندي کول',
 	'abusefilter-edit-flags' => 'بېرغونه:',
 	'abusefilter-edit-notes' => "يادونې:
 :''(شخصي)",
@@ -17953,8 +17959,11 @@ $messages['ps'] = array(
 	'abusefilter-edit-builder-vars-user-age' => 'د کارن-حساب عمر',
 	'abusefilter-edit-builder-vars-user-name' => 'د کارن-حساب نوم',
 	'abusefilter-history-hidden' => 'پټ',
+	'abusefilter-history-global' => 'نړېوال',
 	'abusefilter-history-timestamp' => 'وخت',
 	'abusefilter-history-user' => 'کارونکی',
+	'abusefilter-history-flags' => 'بيرغونه',
+	'abusefilter-history-deleted' => 'ړنګ شو',
 	'abusefilter-history-filterid' => 'چاڼګر',
 	'abusefilter-history-select-user' => 'کارن:',
 	'abusefilter-history-diff' => 'بدلونونه',
@@ -19004,7 +19013,7 @@ $messages['ru'] = array(
 	'abusefilter-list-details' => 'Подробности',
 	'abusefilter-list-limit' => 'Количество на странице:',
 	'abusefilter-list-lastmodified' => 'Последнее изменение',
-	'abusefilter-hidden' => 'Личное',
+	'abusefilter-hidden' => 'Скрытый',
 	'abusefilter-unhidden' => 'Общедоступное',
 	'abusefilter-enabled' => 'Включён',
 	'abusefilter-deleted' => 'Удалён',
@@ -22119,6 +22128,7 @@ Etiketler kısa olmalıdır, ve özel karakter içermemelidir.',
 	'abusefilter-edit-builder-misc-in' => 'dizisinde bulunuyor (in)',
 	'abusefilter-edit-builder-misc-like' => 'Motif eşleşiyor (like)',
 	'abusefilter-edit-builder-misc-rlike' => 'Düzenli ifade eşleşiyor (rlike)',
+	'abusefilter-edit-builder-misc-irlike' => 'Düzenli ifade eşleşiyor, büyük-küçük harf duyarsız (irlike)',
 	'abusefilter-edit-builder-misc-contains' => 'Sol dizi sağ diziyi içeriyor (contains)',
 	'abusefilter-edit-builder-misc-stringlit' => 'Dizi aynen ("")',
 	'abusefilter-edit-builder-misc-tern' => 'Üçlü operatör (X ? Y : Z)',
