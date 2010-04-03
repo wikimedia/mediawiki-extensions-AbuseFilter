@@ -3500,6 +3500,7 @@ Značky by měly být krátké a nesmí obsahovat žádné zvláštní znaky.',
 	'abusefilter-edit-builder-misc-in' => 'Obsažen v řetězci (in)',
 	'abusefilter-edit-builder-misc-like' => 'Odpovídá vzoru (like)',
 	'abusefilter-edit-builder-misc-rlike' => 'Odpovídá regulárnímu výrazu (rlike)',
+	'abusefilter-edit-builder-misc-irlike' => 'Odpovídá regexu s ignorováním velikosti písmen (irlike)',
 	'abusefilter-edit-builder-misc-contains' => 'Řetězec vpravo je obsažen v řetězci vlevo (contains)',
 	'abusefilter-edit-builder-misc-stringlit' => 'Řetězcový literál ("")',
 	'abusefilter-edit-builder-misc-tern' => 'Ternární operátor (X ? Y : Z)',
@@ -9261,6 +9262,7 @@ $messages['haw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author StuB
  * @author YaronSh
@@ -9288,8 +9290,8 @@ $messages['he'] = array(
 אם פעולתכם ארעה בטעות, אנא צרו קשר עם מפעיל מערכת.
 תיאור קצר של כלל השחתות אותו הפרה עריכתכם: $1',
 	'abusefilter-degrouped' => 'פעולה זו זוהתה כמזיקה באופן אוטומטי.
-עקב כך, הפעולה נמנעה, ומאחר וחשבונכם חשוד בכך שנפרץ לצורכי הונאה, כל הרשאותיכם נשללו.
-אם הנכם מאמינים כי זוהי שגיאה, אנא צרו קשר עם ביורוקרט והסבירו לו פעולה זו. ייתכן כי הרשאותיכם יוחזרו לכם.
+עקב כך הפעולה נמנעה, ומאחר שחשבונכם חשוד בכך שנפרץ לצורכי הונאה, כל הרשאותיכם נשללו.
+אם אתם מאמינים שזוהי שגיאה, אנא צרו קשר עם ביורוקרט והסבירו לו פעולה זו. ייתכן כי הרשאותיכם יוחזרו לכם.
 תיאור קצר של כלל ההשתחתה אותו הפרה עריכתכם: $1',
 	'abusefilter-autopromote-blocked' => 'פעולה זו זוהתה כמזיקה באופן אוטומטי, ולכן נמנעה.
 בנוסף, כאמצעי בטיחות, הרשאות הניתנות לחשבונות של משתמשים ותיקים נשללו באופן זמני מחשבונכם.
@@ -9412,7 +9414,7 @@ $messages['he'] = array(
 	'abusefilter-edit-action-blockautopromote' => 'שלילת הרשאות המשתמש הוותיק של המשתמש',
 	'abusefilter-edit-action-degroup' => 'הסרת המשתמש מכל קבוצות המשתמש עם ההרשאות',
 	'abusefilter-edit-action-block' => 'חסימת המשתמש ו/או כתובת ה־IP מעריכה',
-	'abusefilter-edit-action-throttle' => 'ביצוע פעולות רק במידה והמשתמש עובר את הגבלת מספר הפעולות האלה',
+	'abusefilter-edit-action-throttle' => 'ביצוע פעולות רק כאשר המשתמש עובר את הגבלת מספר הפעולות האלה',
 	'abusefilter-edit-action-rangeblock' => 'חסימת טווח ה־/16 ממנו פועל המשתמש',
 	'abusefilter-edit-action-tag' => 'סימון העריכה לבדיקה נוספת',
 	'abusefilter-edit-throttle-count' => 'מספר פעולות שניתן לבצע:',
@@ -12171,6 +12173,7 @@ $messages['ja'] = array(
 	'abusefilter-edit-builder-misc-in' => '文字列中に含むか (in)',
 	'abusefilter-edit-builder-misc-like' => 'パターンとのマッチ (like)',
 	'abusefilter-edit-builder-misc-rlike' => '正規表現とのマッチ (rlike)',
+	'abusefilter-edit-builder-misc-irlike' => '正規表現にマッチ,大文字と小文字を区別しない (irlike)',
 	'abusefilter-edit-builder-misc-contains' => '左の文字列が右の文字列を含むか (contains)',
 	'abusefilter-edit-builder-misc-stringlit' => '文字列リテラル ("")',
 	'abusefilter-edit-builder-misc-tern' => '三項演算子 (X ? Y : Z)',
@@ -15258,8 +15261,8 @@ $messages['ml'] = array(
 	'abusefilter-history-select-submit' => 'പരിഷ്കൃതം',
 	'abusefilter-history-diff' => 'മാറ്റങ്ങൾ',
 	'abusefilter-history-error-hidden' => 'താങ്കളാവശ്യപ്പെട്ട അരിപ്പ മറയ്ക്കപ്പെട്ടിരിക്കുന്നതിനാൽ, അതിന്റെ നാൾ വഴി താങ്കൾക്ക് ദൃശ്യമല്ല.',
-	'abusefilter-exception-unexpectedatend' => 'ലിപ് $1-ൽ അപ്രതീക്ഷിത "$2".',
-	'abusefilter-exception-expectednotfound' => 'ലിപി $1-ൽ $2 പ്രതീക്ഷിച്ചിരുന്നു, പക്ഷേ കിട്ടിയില്ല (പകരം $3 $4 ലഭിച്ചു).',
+	'abusefilter-exception-unexpectedatend' => 'അക്ഷരം $1-ൽ അപ്രതീക്ഷിത "$2".',
+	'abusefilter-exception-expectednotfound' => 'അക്ഷരം $1-ൽ $2 പ്രതീക്ഷിച്ചിരുന്നു, പക്ഷേ കിട്ടിയില്ല (പകരം $3 $4 ലഭിച്ചു).',
 	'abusefilter-exception-unrecognisedkeyword' => '$1 അക്ഷരത്തിൽ തിരിച്ചറിയാൻ കഴിയാത്ത അടയാളവാക്ക് $2.',
 	'abusefilter-exception-unexpectedtoken' => '$1 അക്ഷരത്തിൽ പ്രതീക്ഷിക്കാത്ത ചീട്ട് "$3" ($2 തരത്തിലുള്ളത്).',
 	'abusefilter-exception-unclosedstring' => 'അക്ഷരം $1-ൽ അടയ്ക്കാത്ത പദം ഉണ്ട്.',
@@ -15278,7 +15281,7 @@ $messages['ml'] = array(
 	'abusefilter-action-rangeblock' => 'പരിധിയടച്ച്-തടയൽ',
 	'abusefilter-action-disallow' => 'അനുവദിക്കാതിരിക്കുക',
 	'abusefilter-revert-title' => '$1 അരിപ്പ ചെയ്ത എല്ലാ മാറ്റങ്ങളും തിരസ്കരിക്കുക',
-	'abusefilter-revert-intro' => 'ഈ ഫോം ഉപയോഗിച്ച് താങ്കൾക്ക് അരിപ്പ $1 മൂലം ദുരുപയോഗ അരിപ്പ ചെയ്ത എല്ലാ തിരുത്തലുകളും മുൻപ്രാപനം ചെയ്യാൻ കഴിയുന്നതാണ്.
+	'abusefilter-revert-intro' => 'അരിപ്പ $1 മൂലം ദുരുപയോഗ അരിപ്പ ചെയ്ത എല്ലാ തിരുത്തലുകളും ഈ ഫോം ഉപയോഗിച്ച് താങ്കൾക്ക് മുൻപ്രാപനം ചെയ്യാൻ കഴിയുന്നതാണ്.
 ഈ ഉപകരണം ഉപയോഗിക്കുമ്പോൾ ദയവായി ശ്രദ്ധ പുലർത്തുക.',
 	'abusefilter-revert-preview-item' => '$1: $4-ൽ $2 ഒരു $3 ചെയ്തിരിക്കുന്നു.
 മുൻപ്രാപനം ചെയ്യേണ്ടുന്ന പ്രവൃത്തികൾ: $5 ($6)',
@@ -15295,7 +15298,7 @@ $messages['ml'] = array(
 തന്നിരിക്കുന്ന കാരണം:$2',
 	'abusefilter-revert-reasonfield' => 'മുൻപ്രാപനത്തിനുള്ള കാരണം:',
 	'abusefilter-test' => 'മുൻ‌‌തിരുത്തലുകളിൽ ഒരു അരിപ്പ പരീക്ഷിക്കുക',
-	'abusefilter-test-intro' => 'ഈ താൾ ഒടുവിലത്തെ {{PLURAL:$1|ഒരു മാറ്റത്തിൽ|$1 മാറ്റങ്ങളിൽ}} താഴെയുള്ള പെട്ടിയിൽ നൽകിയിരിക്കുന്ന അരിപ്പ പരീക്ഷിക്കാൻ അനുവധിക്കുന്നു.
+	'abusefilter-test-intro' => 'ഒടുവിലത്തെ {{PLURAL:$1|ഒരു മാറ്റത്തിൽ|$1 മാറ്റങ്ങളിൽ}} താഴെയുള്ള പെട്ടിയിൽ നൽകിയിരിക്കുന്ന അരിപ്പ പരീക്ഷിക്കാൻ ഈ താൾ അനുവദിക്കുന്നു.
 നിലവിലുള്ള ഒരു അരിപ്പ ഉപയോഗിക്കാൻ, അതിന്റെ ഐ.ഡി. തിരുത്തുവാനുള്ള പെട്ടിയുടെ താഴെയുള്ള പെട്ടിയിൽ നൽകിയ ശേഷം, "എടുക്കുക" എന്ന ബട്ടൺ ഞെക്കുക.',
 	'abusefilter-test-legend' => 'അരിപ്പയുടെ പരീക്ഷണം',
 	'abusefilter-test-load-filter' => 'അരിപ്പയുടെ ഐ.ഡി. എടുക്കുക:',
