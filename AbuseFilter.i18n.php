@@ -12719,8 +12719,8 @@ $messages['ko'] = array(
 부정 행위 방지 필터는 모든 행위에 대해 문제가 있는지 자동적으로 검사하는 소프트웨어입니다.
 이 페이지에서는 필터의 목록을 나열하고 있으며, 필터를 수정할 수 있습니다.',
 	'abusefilter-mustbeeditor' => '보안상의 이유로, 부정행위 방지 필터 편집 권한을 가진 사용자만이 이 양식을 이용할 수 있습니다.',
-	'abusefilter-warning' => "'''경고''': 현재 행동은 문제 있는 행동일 가능성이 있다고 판단됩니다. 이 판단은 프로그램에 의해 자동적으로 이루어집니다.
-무의미하거나 비생산적인 편집은 자동적으로 되돌려지며, 이러한 행동이 반복될 경우 계정이나 IP 주소 등이 차단될 수 있습니다.
+	'abusefilter-warning' => "'''경고''': 현재 행동은 문제 있는 행동일 가능성이 있다고 판단됩니다.
+무의미하거나 비생산적인 편집은 즉시 되돌려지며, 이러한 행동이 반복될 경우 계정이나 IP 주소 등이 차단될 수 있습니다.
 만약 이 편집에 문제가 없다면, 저장 버튼을 다시 눌러 주세요.
 문제가 된 필터 규칙은 다음과 같습니다: $1",
 	'abusefilter-disallowed' => '이러한 행위는 자동적으로 해로운 것으로 간주되었습니다.
@@ -12820,6 +12820,7 @@ $messages['ko'] = array(
 	'abusefilter-list-options-hidedisabled' => '비활성화된 필터를 숨기기',
 	'abusefilter-list-options-submit' => '적용',
 	'abusefilter-tools-subtitle' => '도구',
+	'abusefilter-tools-text' => '부정 행위 방지 필터를 제작하고 디버그하는 데 유용한 도구입니다.',
 	'abusefilter-tools-expr' => '구문 검사기',
 	'abusefilter-tools-submitexpr' => '시험',
 	'abusefilter-tools-reautoconfirm' => '자동 인증 상태를 복구',
@@ -12829,6 +12830,10 @@ $messages['ko'] = array(
 	'abusefilter-reautoconfirm-notallowed' => '당신은 자동 인증 상태를 복구할 권한이 없습니다.',
 	'abusefilter-reautoconfirm-done' => '계정의 자동 인증 상태가 복구되었습니다.',
 	'abusefilter-edit-subtitle' => '필터 $1 편집하기',
+	'abusefilter-edit-oldwarning' => '<strong>당신은 이 필터의 이전 버전을 수정하고 있습니다.
+아래의 통계는 이 필터의 최근 버전에 대한 것입니다.
+당신이 수정한 내용을 저장하면 당신이 편집하고 있는 버전 이후의 모든 수정 사항을 덮어쓰게 됩니다.</strong> &bull;
+[[Special:AbuseFilter/history/$2|이 필터의 역사로 돌아가기]].',
 	'abusefilter-edit-status-label' => '통계:',
 	'abusefilter-edit-status' => '최근 $1개의 행위 중 $2건 ($3%) 이 이 필터와 일치하였습니다.
 평균적으로 필터의 작동 시간은 $4밀리초이며, $5만큼의 부하가 걸리고 있습니다.',
@@ -12839,6 +12844,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-id' => '필터 ID:',
 	'abusefilter-edit-description' => '설명:
 :(공개됨)',
+	'abusefilter-edit-flags' => '설정:',
 	'abusefilter-edit-enabled' => '이 필터 활성화하기',
 	'abusefilter-edit-deleted' => '삭제된 것으로 표시',
 	'abusefilter-edit-hidden' => '일반 사용자가 필터의 세부 사항을 보지 못하도록 숨기기',
@@ -12873,17 +12879,25 @@ $messages['ko'] = array(
 	'abusefilter-edit-tag-tag' => '적용할 태그 (1줄당 1개씩):',
 	'abusefilter-edit-denied' => '이 필터는 비공개로 설정되었기 때문에, 당신은 이 필터의 자세한 사항을 볼 수 없습니다.',
 	'abusefilter-edit-main' => '필터 변수',
+	'abusefilter-edit-done-subtitle' => '필터를 편집함',
 	'abusefilter-edit-done' => '필터 $1을(를) 편집하는 데 성공하였습니다.',
+	'abusefilter-edit-badsyntax' => '당신이 입력한 필터 구문에 오류가 있습니다.
+파서 함수의 출력값: <pre>$1</pre>',
+	'abusefilter-edit-restricted' => '이 필터에는 제한된 조치를 취할 수 있게 하는 설정이 포함되어 있어 이 필터를 편집할 수 없습니다.
+필터를 편집하려면 제한된 조치를 설정할 수 있는 권한을 가진 사용자에게 문의하십시오.',
 	'abusefilter-edit-viewhistory' => '이 필터의 역사 보기',
 	'abusefilter-edit-history' => '역사:',
 	'abusefilter-edit-check' => '구문 확인',
 	'abusefilter-edit-badfilter' => '당신이 제시한 필터가 존재하지 않습니다.',
+	'abusefilter-edit-revert' => '이 필터로 취해진 조치 되돌리기',
 	'abusefilter-edit-tools' => '도구:',
 	'abusefilter-edit-test-link' => '최근 편집에 대해 이 필터를 시험하기',
 	'abusefilter-edit-global' => '이 필터를 모든 위키에 적용',
 	'abusefilter-edit-export' => '이 필터를 다른 위키로 내보내기',
 	'abusefilter-edit-syntaxok' => '구문 오류 없음.',
 	'abusefilter-edit-syntaxerr' => '구문 오류 발견: $1',
+	'abusefilter-edit-bad-tags' => '당신이 입력한 태그가 올바르지 않습니다.
+태그는 짧고, 특수 문자를 포함하지 않아야 합니다.',
 	'abusefilter-edit-notallowed' => '당신은 부정 행위 방지 필터를 생성하거나 편집할 수 없습니다.',
 	'abusefilter-edit-builder-select' => '커서가 있는 위치에 추가할 설정을 선택하십시오.',
 	'abusefilter-edit-builder-group-op-arithmetic' => '산술 연산자',
@@ -12909,6 +12923,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-builder-misc-in' => '문자열에 포함 (in)',
 	'abusefilter-edit-builder-misc-like' => '패턴 일치 (like)',
 	'abusefilter-edit-builder-misc-rlike' => '정규 표현식 패턴 일치 (rlike)',
+	'abusefilter-edit-builder-misc-contains' => '왼쪽 문자열이 오른쪽 문자열을 포함 (contains)',
 	'abusefilter-edit-builder-misc-stringlit' => '문자열 ("")',
 	'abusefilter-edit-builder-misc-tern' => '3단 연산자 (X ? Y : Z)',
 	'abusefilter-edit-builder-misc-cond' => '조건부 (if X then Y else Z)',
