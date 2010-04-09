@@ -6224,7 +6224,7 @@ El filtro ha sobrepasado el límite de más del $1% acciones.",
 	'abusefilter-edit-rules' => 'Condiciones:',
 	'abusefilter-edit-notes' => "Notas:
 :''(privado)''",
-	'abusefilter-edit-lastmod' => 'Filtrar última modificación:',
+	'abusefilter-edit-lastmod' => 'Última modificación del filtro:',
 	'abusefilter-edit-lastmod-text' => '$1 por $2',
 	'abusefilter-edit-hitcount' => 'Aciertos del filtro:',
 	'abusefilter-edit-consequences' => 'Medidas a tomar cuando las condiciones coincidan',
@@ -22339,12 +22339,12 @@ Görünen metin kutusundan kopyalayın, ve bu metin kutusuna yapıştırın, dah
  */
 $messages['uk'] = array(
 	'abusefilter-desc' => 'Застосовує до редагувань автоматичні евристики.',
-	'abusefilter' => 'Налаштування фільтра зловживань',
+	'abusefilter' => 'Налаштування фільтра редагувань',
 	'abuselog' => 'Журнал зловживань',
-	'abusefilter-intro' => 'Ласкаво просимо на сторінку керування фільтром зловживань.
-Фільтр зловживань являє собою автоматизований механізм застосування автоматичних евристик до дій користувачів.
+	'abusefilter-intro' => 'Ласкаво просимо на сторінку керування фільтром редагувань.
+Фільтр редагувань це автоматизований механізм застосування автоматичних евристик до дій користувачів.
 Тут наведений список усіх установлених фільтрів, надається можливість їх зміни.',
-	'abusefilter-mustbeeditor' => 'З причин безпеки, тільки користувачі з правом зміни фільтрів зловживань можуть використовувати цей інтерфейс.',
+	'abusefilter-mustbeeditor' => 'З причин безпеки, тільки користувачі з правом зміни фільтрів редагувань можуть використовувати цей інтерфейс.',
 	'abusefilter-warning' => "'''Увага''': Ця дія була автоматично визначена як шкідлива.
 Неконструктивні редагування будуть швидко скасовані,
 грубі або неодноразові неконструктивні редагування призведуть до блокування вашого облікового запису або IP-адреси.
@@ -22366,26 +22366,26 @@ $messages['uk'] = array(
 	'abusefilter-autopromote-blocked' => "Ця дія автоматично визначена як шкідлива, і тому заборонена.
 Окрім того, як захід безпеки, у вашого облікового запису тимчасово відібрано деякі привілеї, які звичайно надаються зареєстрованим обліковим записам.
 Короткий опис зловживання, яке пов'язане з вашою дією: $1",
-	'abusefilter-blocker' => 'Фільтр зловживань',
-	'abusefilter-blockreason' => 'Автоматично заблокований фільтром зловживань. Опис правила: $1',
-	'abusefilter-degroupreason' => 'Права автоматично відібрані фільтром зловживань. Опис правила: $1',
-	'abusefilter-accountreserved' => 'Цей обліковий запис є зарезервованим для використання фільтром зловживань.',
-	'right-abusefilter-modify' => 'Налаштовування фільтрів зловживань',
-	'right-abusefilter-view' => 'Перегляд фільтрів зловживань',
+	'abusefilter-blocker' => 'Фільтр редагувань',
+	'abusefilter-blockreason' => 'Автоматично заблокований фільтром редагувань. Опис правила: $1',
+	'abusefilter-degroupreason' => 'Права автоматично відібрані фільтром редагувань. Опис правила: $1',
+	'abusefilter-accountreserved' => 'Цей обліковий запис є зарезервованим для використання фільтром редагувань.',
+	'right-abusefilter-modify' => 'Налаштовування фільтрів редагувань',
+	'right-abusefilter-view' => 'Перегляд фільтрів редагувань',
 	'right-abusefilter-log' => 'Переглянути журнал зловживань',
 	'right-abusefilter-log-detail' => 'Перегляд деталей записів журналу зловживань',
 	'right-abusefilter-private' => 'Перегляд приватних даних у журналі зловживань',
 	'right-abusefilter-modify-restricted' => 'Зміна фільтрів з обмежуючими діями',
-	'right-abusefilter-revert' => 'Відкіт змін, зроблених фільтром зловживань',
-	'right-abusefilter-view-private' => 'перегляд прихованих фільтрів зловживань',
-	'action-abusefilter-modify' => 'змінювати фільтри зловживань',
-	'action-abusefilter-view' => 'переглядати фільтри зловживань',
+	'right-abusefilter-revert' => 'Відкіт змін, зроблених фільтром редагувань',
+	'right-abusefilter-view-private' => 'перегляд прихованих фільтрів редагувань',
+	'action-abusefilter-modify' => 'змінювати фільтри редагувань',
+	'action-abusefilter-view' => 'переглядати фільтри редагувань',
 	'action-abusefilter-log' => 'переглядати журнал зловживань',
-	'action-abusefilter-log-detail' => 'переглядати деталі журналу фільтра зловживань',
-	'action-abusefilter-private' => 'переглядати особисті дані у журналі фільтра зловживань',
-	'action-abusefilter-modify-restricted' => 'змінювати фільтри зловживань із заборонювальними діями',
-	'action-abusefilter-revert' => 'скасовувати всі зміни зазначеного фільтра зловживань',
-	'action-abusefilter-view-private' => 'перегляд прихованих фільтрів зловживань',
+	'action-abusefilter-log-detail' => 'переглядати деталі журналу зловживань',
+	'action-abusefilter-private' => 'переглядати особисті дані в журналі зловживань',
+	'action-abusefilter-modify-restricted' => 'змінювати фільтри редагувань із заборонювальними діями',
+	'action-abusefilter-revert' => 'скасовувати всі зміни зазначеного фільтра редагувань',
+	'action-abusefilter-view-private' => 'перегляд прихованих фільтрів редагувань',
 	'abusefilter-log' => 'Журнал фільтра редагувань',
 	'abusefilter-log-summary' => 'У цьому журналі показано список усіх дій, перехоплених фільтрами.',
 	'abusefilter-log-search' => 'Пошук в журналі зловживань',
@@ -22393,7 +22393,7 @@ $messages['uk'] = array(
 	'abusefilter-log-search-filter' => 'Ідентифікатор фільтра:',
 	'abusefilter-log-search-title' => 'Заголовок:',
 	'abusefilter-log-search-submit' => 'Знайти',
-	'abusefilter-log-entry' => '$1: $2 запустив фільтр зловживань, виконуючи "$3" на сторінці $4.
+	'abusefilter-log-entry' => '$1: $2 запустив фільтр редагувань, виконуючи "$3" на сторінці $4.
 Ужиті заходи: $5.
 Опис фільтру: $6',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 запустив $3, виконуючи "$4" на сторінці "$5".
@@ -22412,7 +22412,7 @@ $messages['uk'] = array(
 	'abusefilter-log-details-diff' => 'Зміни, зроблені при редагуванні',
 	'abusefilter-log-linkoncontribs' => 'журнал зловживань',
 	'abusefilter-log-linkoncontribs-text' => 'Журнал зловживань цього користувача',
-	'abusefilter-management' => 'Управління фільтром зловживань',
+	'abusefilter-management' => 'Управління фільтром редагувань',
 	'abusefilter-list' => 'Усі фільтри',
 	'abusefilter-list-id' => 'ІД фільтра',
 	'abusefilter-list-status' => 'Стан',
@@ -22433,7 +22433,7 @@ $messages['uk'] = array(
 	'abusefilter-new' => 'Створити фільтр',
 	'abusefilter-links' => 'Корисні посилання:',
 	'abusefilter-tools-modifiertest-submit' => 'Тест',
-	'abusefilter-tools' => 'Для допомоги при формулюванні та налагодженні фільтру зловживань є певні засоби.',
+	'abusefilter-tools' => 'Для допомоги при формулюванні та налагодженні фільтру редагувань є певні засоби.',
 	'abusefilter-loglink' => 'Показати журнал зловживань',
 	'abusefilter-return' => 'Повернутися до керування фільтрами',
 	'abusefilter-status-global' => 'Глобальний',
@@ -22446,7 +22446,7 @@ $messages['uk'] = array(
 	'abusefilter-list-options-hidedisabled' => 'Приховати відключені фільтри:',
 	'abusefilter-list-options-submit' => 'Оновити',
 	'abusefilter-tools-subtitle' => 'Засоби',
-	'abusefilter-tools-text' => 'Тут є деякі засоби, які можуть пригодитися у формулюванні і налагодженні фільтрів зловживань.',
+	'abusefilter-tools-text' => 'Тут є деякі засоби, які можуть пригодитися у формулюванні та налагодженні фільтрів редагувань.',
 	'abusefilter-tools-expr' => 'Випробувач виразів',
 	'abusefilter-tools-submitexpr' => 'Випробувати',
 	'abusefilter-tools-reautoconfirm' => 'Відновити статус автопідтвердження',
@@ -22520,7 +22520,7 @@ $messages['uk'] = array(
 	'abusefilter-edit-syntaxerr' => 'Знайдено синтаксичну помилку: $1',
 	'abusefilter-edit-bad-tags' => 'Принаймні одна з вказаних вами міток неправильна.
 Мітка має бути короткою і не має містити спецсимволів.',
-	'abusefilter-edit-notallowed' => 'У вас нема прав створювати чи змінювати фільтри зловживань',
+	'abusefilter-edit-notallowed' => 'У вас нема права створювати чи змінювати фільтри редагувань',
 	'abusefilter-edit-builder-select' => 'Виберіть пункт, щоб додати на місце курсору',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Арифметичні оператори',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Додавання (+)',
@@ -22611,7 +22611,7 @@ $messages['uk'] = array(
 	'abusefilter-edit-builder-vars-minor-edit' => 'Чи було редагування позначене як незначне',
 	'abusefilter-edit-builder-vars-file-sha1' => 'SHA1-хеш вмісту файлу',
 	'abusefilter-filter-log' => 'Нові зміни фільтрів',
-	'abusefilter-history' => 'Історія змін фільтра зловживань #$1',
+	'abusefilter-history' => 'Історія змін фільтра редагувань #$1',
 	'abusefilter-history-foruser' => 'Зміни, зроблені $1',
 	'abusefilter-history-hidden' => 'прихований',
 	'abusefilter-history-enabled' => 'увімкнений',
@@ -22656,19 +22656,19 @@ $messages['uk'] = array(
 	'abusefilter-action-rangeblock' => 'Блокування діапазону',
 	'abusefilter-action-disallow' => 'Відхилення',
 	'abusefilter-revert-title' => 'Відкотити всі зміни, зроблені фільтром $1',
-	'abusefilter-revert-intro' => 'Ця форма дозволяє вам відкотити всі зміни, зроблені фільтром зловживань $1.
+	'abusefilter-revert-intro' => 'Ця форма дозволяє вам відкотити всі зміни, зроблені фільтром редагувань $1.
 Будь ласка, будьте обачні у використанні цього інструменту.',
 	'abusefilter-revert-preview-item' => '$1: $2 зробив $3 на $4. Дії для скасування: $5 ($6)',
-	'abusefilter-revert-search-legend' => 'Виберіть дії фільтру зловживань, які потрібно скасувати',
+	'abusefilter-revert-search-legend' => 'Виберіть дії фільтру редагувань, які потрібно скасувати',
 	'abusefilter-revert-periodstart' => 'Початок періоду:',
 	'abusefilter-revert-periodend' => 'Закінчення періоду:',
 	'abusefilter-revert-search' => 'Вибір дій',
 	'abusefilter-revert-filter' => 'Фільтр:',
-	'abusefilter-revert-preview-intro' => 'Нижче приведені виконані фільтром зловживань дії, які будуть скасовані.
+	'abusefilter-revert-preview-intro' => 'Нижче приведені виконані фільтром редагувань дії, які будуть скасовані.
 Будь ласка, уважно їх перевірте та натисність «підтвердити».',
 	'abusefilter-revert-confirm' => 'Підтвердити',
-	'abusefilter-revert-success' => 'Ви відкотили всі дії, виконані фільтром зловживань [[Special:AbuseFilter/$1|$1]].',
-	'abusefilter-revert-reason' => 'Автоматичний відкіт всіх дій, виконаних фільтром зловживань $1.
+	'abusefilter-revert-success' => 'Ви відкотили всі дії, виконані фільтром редагувань [[Special:AbuseFilter/$1|$1]].',
+	'abusefilter-revert-reason' => 'Автоматичний відкіт всіх дій, виконаних фільтром редагувань $1.
 Вказана причина: $2',
 	'abusefilter-revert-reasonfield' => 'Причина відкоту:',
 	'abusefilter-test' => 'Перевірити фільтр на вже зроблених редагуваннях',
@@ -22687,7 +22687,7 @@ $messages['uk'] = array(
 Ви можете отримати докладне пояснення, натиснувши на «Перевірити синтаксис».',
 	'abusefilter-changeslist-examine' => 'переглянути',
 	'abusefilter-examine' => 'Перегляд окремих змін',
-	'abusefilter-examine-intro' => 'Ця сторінка дозволяє вам переглянути змінні, створені фільтром зловживань для окремої зміни і перевірити їх у фільтрах.',
+	'abusefilter-examine-intro' => 'Ця сторінка дозволяє вам переглянути змінні, створені фільтром редагувань для окремої зміни і перевірити їх у фільтрах.',
 	'abusefilter-examine-legend' => 'Вибір змін',
 	'abusefilter-examine-diff' => 'URL різниці версій:',
 	'abusefilter-examine-user' => 'Користувач:',
@@ -22700,7 +22700,7 @@ $messages['uk'] = array(
 	'abusefilter-examine-nomatch' => 'Ця зміна не підпадає під фільтр.',
 	'abusefilter-examine-syntaxerror' => 'Синтаксична помилка у фільтрі',
 	'abusefilter-examine-notfound' => 'Вказану вами зміну не знайдено.',
-	'abusefilter-examine-incompatible' => 'Вказана вами зміна не підтримується фільтром зловживань',
+	'abusefilter-examine-incompatible' => 'Фільтр редагувань не підтримує вказану вами зміну',
 	'abusefilter-examine-noresults' => 'Нічого не знайдено за запитом із заданими параметрами.',
 	'abusefilter-topnav' => "'''Навігація по Фільтру зловживань'''",
 	'abusefilter-topnav-home' => 'Список',
