@@ -3128,10 +3128,10 @@ El Filtre d'Abús es un mecanisme del programari per aplicar heurística automà
 Aquesta interfície mostra un llistat amb tots els filtres definits i permet modificar-los.",
 	'abusefilter-mustbeeditor' => "Per raons de seguretat, només poden utilitzar aquesta interfície els usuaris amb permisos per a modificar els filtres d'abús.",
 	'abusefilter-warning' => "'''Avís''': Aquesta acció ha estat automàticament identificada com a perniciosa.
-Les edicions no constructives seran ràpidament desfetes,
-i l'editar reiteradament de forma no constructiva resultarà en el bloqueig del vostre compte o ordinador.
-Si creieu que les vostres edicions són constructives, podeu clicar novament a Submit per a confirmar-ho.
-A continuació us mostrem una breu descripció de la regla d'abús que ha complert la vostra acció: $1",
+Les edicions no constructives seran ràpidament revertides,
+i la reiterada edició de forma no constructiva pot comportar en el bloqueig del vostre compte o ordinador.
+Si creieu que les vostres edicions són constructives, podeu clicar novament a Envia per a confirmar-ho.
+A continuació us mostrem una breu descripció de la regla d'abús que ha infringit la vostra acció: $1",
 	'abusefilter-log-search-user' => 'Usuari:',
 	'abusefilter-log-search-filter' => 'ID del filtre:',
 	'abusefilter-log-search-title' => 'Títol:',
