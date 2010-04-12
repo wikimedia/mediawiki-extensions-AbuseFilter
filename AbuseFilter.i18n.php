@@ -17655,7 +17655,7 @@ Krótki opis reguły nadużycia, do której Twoja akcji została dopasowana: $1'
 	'abusefilter-log-search' => 'Szukaj w rejestrze nadużyć',
 	'abusefilter-log-search-user' => 'Użytkownik',
 	'abusefilter-log-search-filter' => 'ID filtru:',
-	'abusefilter-log-search-title' => 'Tytuł strony:',
+	'abusefilter-log-search-title' => 'Tytuł strony',
 	'abusefilter-log-search-submit' => 'Szukaj',
 	'abusefilter-log-entry' => '$1: $2 uruchomił filtr nadużyć, wykonał „$3” na $4. 
 Podjęta akcja: $5.
@@ -17987,6 +17987,13 @@ Pełne informacje odnajdziesz w [[Special:AbuseFilter/history|rejestrze]] ostatn
 W trybie edycji filtru kliknij w źródłowej wiki „{{int:abusefilter-edit-export}}” przy nagłówku „{{int:abusefilter-tools-subtitle}}”.
 Skopiuj zawartość pola tekstowego, które się pojawi, i wklej ją do poniższego pola tekstowego, a następnie kliknij przycisk „{{int:abusefilter-import-submit}}”,',
 	'abusefilter-import-submit' => 'Importuj dane',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'abuselog' => "Registr ëd j'abus",
 );
 
 /** Pashto (پښتو)
