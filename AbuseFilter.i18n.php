@@ -19359,10 +19359,10 @@ $messages['ru'] = array(
 	'abusefilter-test-load-filter' => 'Загрузить фильтр с ID:',
 	'abusefilter-test-submit' => 'Проверить',
 	'abusefilter-test-load' => 'Загрузить',
-	'abusefilter-test-user' => 'Изменения участника:',
+	'abusefilter-test-user' => 'Изменения сделаны участником:',
 	'abusefilter-test-period-start' => 'Изменения сделаны после:',
 	'abusefilter-test-period-end' => 'Изменения сделаны до:',
-	'abusefilter-test-page' => 'Сделанные на странице изменения:',
+	'abusefilter-test-page' => 'Изменения сделаны на странице:',
 	'abusefilter-test-shownegative' => 'Показывать изменения, не попадающие под фильтр',
 	'abusefilter-test-syntaxerr' => 'Введённый вами фильтр содержит синтаксическую ошибку.
 Вы можете получить подробное объяснение, нажав на кнопку «Проверить синтаксис».',
