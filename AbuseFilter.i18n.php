@@ -12754,6 +12754,8 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'abusefilter-log-search-title' => 'ಶೀರ್ಷಿಕೆ:',
+	'abusefilter-list-status' => 'ಸ್ಥಾನಮಾನ',
 	'abusefilter-edit-history' => 'ಇತಿಹಾಸ:',
 );
 
