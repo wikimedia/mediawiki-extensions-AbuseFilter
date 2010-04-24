@@ -12997,6 +12997,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-builder-funcs-ip_in_range' => 'IP가 대역 안에 있는 지 여부 (ip_in_range)',
 	'abusefilter-edit-builder-funcs-contains-any' => '문자열에서 여러 하위 문자열 찾기 (contains_any)',
 	'abusefilter-edit-builder-funcs-substr' => '하위 문자열',
+	'abusefilter-edit-builder-funcs-strpos' => '문자열 내의 하위 문자열의 위치 (strpos)',
 	'abusefilter-edit-builder-funcs-set_var' => '변수 설정 (set_var)',
 	'abusefilter-edit-builder-group-vars' => '변수',
 	'abusefilter-edit-builder-vars-accountname' => '계정 이름 (계정 생성 시)',
