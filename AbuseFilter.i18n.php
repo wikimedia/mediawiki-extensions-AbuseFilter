@@ -4450,10 +4450,11 @@ Kopiere den dort erscheinenden Code, füge ihn hier ein und klicke dann auf die 
  * @author ChrisiPK
  * @author Giftpflanze
  * @author MichaelFrey
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
-	'abusefilter-warning' => "<big>'''Achtung'''</big>: Diese Aktion wurde als potentiell unkonstruktiv erkannt.
+	'abusefilter-warning' => "'''Achtung''': Diese Aktion wurde als potentiell unkonstruktiv erkannt.
 Solche Beiträge werden meist sehr schnell entfernt. In wiederholten und besonders schlimmen Fällen wird Ihr Benutzerkonto bzw. Ihre IP-Adresse gesperrt.
 Wenn Sie denken, dass Ihre Änderung konstruktiv war, können Sie sie jedoch mit einem erneuten Klick auf „{{int:savearticle}}“ bestätigen.
 Kurzbeschreibung der verletzten Regel: $1",
@@ -13118,7 +13119,7 @@ $messages['kri'] = array(
 	'abusefilter-edit-history' => 'Istri',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -18657,6 +18658,7 @@ $messages['rif'] = array(
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Misterr
  * @author Silviubogan
  * @author Stelistcristi
  */
@@ -21441,7 +21443,7 @@ Filtr düşündirişi: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-status' => 'Soňky $1 {{PLURAL:$1|hereketden|hereketden}} $2 (%$3) sanysy $4 şert çägine baryp ýetdi, $5 (%$6) sanysy bolsa häzirki açyk filtrleriň birine gabat geldi.',
 	'abusefilter-edit-subtitle' => '$1 filtri redaktirlenýär',
 	'abusefilter-edit-status-label' => 'Statistikalar:',
-	'abusefilter-edit-status' => 'Bu filtr soňky $1 {{PLURAL:$1|hereketden|hereketden}} $2 (%$3) sanysyna gabat geldi.
+	'abusefilter-edit-status' => 'Bu filtr soňky $1 {{PLURAL:$1|hereketden|hereketden}} $2 (%$3) sanysyna gabat geldi. 
 Ortaça alnanda, işlän wagty $4ms, we onuň şert çägi $5 sany şerti sarp edýär.',
 	'abusefilter-edit-throttled' => "'''Duýduryş''': Bu filtr howpsuzlyk çäresi hökmünde awtomatik ýapyldy.
 Ol hereketleriň %$1 sanysyndan artykmaç gabat gelme çägine baryp ýetdi.",
@@ -23653,7 +23655,7 @@ $messages['yi'] = array(
 	'abusefilter-diff-item' => 'איינהייט',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
