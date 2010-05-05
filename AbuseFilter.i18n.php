@@ -15429,6 +15429,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'പഴയ താളിലെ, എന്തെങ്കിലും മാർക്കപ്പുകൾ ഉണ്ടെങ്കിൽ അവ നീക്കിയ ശേഷമുള്ള, എഴുത്ത്',
 	'abusefilter-edit-builder-vars-old-links' => 'തിരുത്തുന്നതിനു മുമ്പ് താളിലുണ്ടായിരുന്ന കണ്ണികൾ',
 	'abusefilter-edit-builder-vars-minor-edit' => 'തിരുത്തൽ ചെറുതിരുത്തൽ ആയി അടയാളപ്പെടുത്തണോ?',
+	'abusefilter-edit-builder-vars-file-sha1' => 'പ്രമാണത്തിന്റെ ഉള്ളടക്കത്തിന്റെ SHA1 ഹാഷ്',
 	'abusefilter-filter-log' => 'അരിപ്പ നടത്തിയ സമീപകാല മാറ്റങ്ങൾ',
 	'abusefilter-history' => '"#$1" ദുരുപയോഗ അരിപ്പയുടെ മാറ്റങ്ങളുടെ ചരിത്രം',
 	'abusefilter-history-foruser' => '$1 വരുത്തിയ മാറ്റങ്ങൾ',
