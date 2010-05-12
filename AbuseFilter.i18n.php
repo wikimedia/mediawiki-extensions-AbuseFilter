@@ -15460,6 +15460,7 @@ $messages['ml'] = array(
 	'abusefilter-exception-unrecognisedtoken' => '$1 അക്ഷരത്തിൽ തിരിച്ചറിയപ്പെടാത്ത ചീട്ട് "$2".',
 	'abusefilter-exception-dividebyzero' => 'അക്ഷരം $1-ൽ പൂജ്യം കൊണ്ട് $2-വിനെ ഹരിക്കാനുള്ള ആസാധുവായ ശ്രമം.',
 	'abusefilter-exception-unrecognisedvar' => '$1 അക്ഷരത്തിങ്കൽ തിരിച്ചറിയാൻ കഴിയാത്ത ചരം $2',
+	'abusefilter-exception-regexfailure' => '"$3"റെഗുലർ എക്സ്‌‌പ്രെഷനിൽ $1 അക്ഷരത്തിങ്കൽ പിഴവുണ്ട്: "$2"',
 	'abusefilter-exception-overridebuiltin' => 'സ്വതവേയുള്ള ചരമായ "$2" അക്ഷരം $1-ൽ അനധികൃതമായി അതിലംഘിച്ചിരിക്കുന്നു.',
 	'abusefilter-exception-outofbounds' => 'നിലവിലില്ലാത്ത പട്ടികയിലെ ഇനം $2 (പട്ടികയുടെ വലിപ്പം =$3) അക്ഷരം $1-ൽ ആവശ്യപ്പെട്ടിരിക്കുന്നു.',
 	'abusefilter-action-tag' => 'റ്റാഗ്',
