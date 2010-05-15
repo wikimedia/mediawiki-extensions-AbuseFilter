@@ -13854,7 +13854,7 @@ En huet méi wéi déi definiéiert Limit vun $1% vun den Aktiounen als schiedle
 	'abusefilter-edit-warn-actions' => 'Aktiounen:',
 	'abusefilter-edit-warn-preview' => 'De gewielte Message kucken ouni ofzespäicheren',
 	'abusefilter-edit-warn-edit' => 'De gewielte Systemmessage uleeën/änneren',
-	'abusefilter-edit-denied' => 'Dir kënnt Detailer vun dësem Filter net gesinn, well se virum Public verstoppr sinn',
+	'abusefilter-edit-denied' => 'Dir kënnt Detailer vun dësem Filter net gesinn, well se virum Public verstoppt sinn',
 	'abusefilter-edit-main' => 'Parametere vum Filter',
 	'abusefilter-edit-done-subtitle' => 'Filter geännert',
 	'abusefilter-edit-done' => 'Dir hutt är Ännerunge vum Filter $1 ofgespäichert.',
