@@ -24544,6 +24544,7 @@ $messages['zh-hans'] = array(
  * @author Alexsh
  * @author Bencmq
  * @author Gzdavidwong
+ * @author Horacewai2
  * @author Liangent
  * @author Mark85296341
  * @author Skjackey tse
@@ -24751,6 +24752,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-edit-builder-misc-in' => '包含字串（in）',
 	'abusefilter-edit-builder-misc-like' => '匹配型樣（like）',
 	'abusefilter-edit-builder-misc-rlike' => '匹配正則表示式（rlike）',
+	'abusefilter-edit-builder-misc-irlike' => '正則匹配，區分大小寫(irlike)',
 	'abusefilter-edit-builder-misc-contains' => '左邊字串含有右邊字串（contains）',
 	'abusefilter-edit-builder-misc-stringlit' => '字串（""）',
 	'abusefilter-edit-builder-misc-tern' => '三進運算符（X ? Y : Z）',
