@@ -13687,6 +13687,52 @@ $messages['la'] = array(
 	'abusefilter-log-name' => 'Acta filtri iniuriarum',
 );
 
+/** Ladino (Ladino)
+ * @author Universal Life
+ */
+$messages['lad'] = array(
+	'abusefilter-desc' => 'A los trocamientos, aplica maneras topadores (eurísticas)',
+	'abusefilter' => 'Konfiggurasyón del filtro contra-abusos',
+	'abusefilter-intro' => 'Buenas venidas a la interfaz de administrasyón de filtros de trocamientos.
+El filtro de trocamientos es un mekanismo de software otomatizado que aplica maneras topaderas (eurísticas) a todas las aksyones.
+Esta interfaz mostra una lista de filtros dēfinidos i da permisyón de trocarlos.',
+	'abusefilter-blocker' => 'Filtro contra-abusos',
+	'abusefilter-blockreason' => 'Bloqueado de sí para sí, de la parte del filtro contra-abusos.
+Deskripsyón del filtro alcançado: $1',
+	'abusefilter-accountreserved' => 'El nombre de este cuento está reservado para el uso de la parte del filtro contra-abusos',
+	'abusefilter-list' => 'Todos los filtros',
+	'abusefilter-list-id' => 'Número de filtro',
+	'abusefilter-list-consequences' => 'Consegüenças',
+	'abusefilter-list-hitcount' => 'Número de alcanços',
+	'abusefilter-list-edit' => 'Troca',
+	'abusefilter-list-details' => 'Los detalyos',
+	'abusefilter-list-limit' => 'Número por hoja:',
+	'abusefilter-list-lastmodified' => 'El trocamiento de alcabo',
+	'abusefilter-deleted' => 'Efassado',
+	'abusefilter-disabled' => 'Desactivado',
+	'abusefilter-hitcount' => '$1 {{PLURAL:$1|alcanço|alcanços}}',
+	'abusefilter-links' => 'Linkes provechosos',
+	'abusefilter-list-options' => 'Opsyones',
+	'abusefilter-list-options-deleted' => 'Los filtros efassados:',
+	'abusefilter-edit-id' => 'Número de filtro:',
+	'abusefilter-edit-hitcount' => 'Los filtros alcançados:',
+	'abusefilter-edit-action-warn' => 'Lança el filtro dospués de dar un aviso al empleador',
+	'abusefilter-edit-action-flag' => 'Marca el trocamiento, en los rejjistros de filtro de contra-abusos',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|sêgondo|sêgondos}}',
+	'abusefilter-edit-export' => 'Taxirea este filtro a un otro viki',
+	'abusefilter-edit-notallowed' => 'No se te da permisyón de criar o de trocar los filtros contra-abusos',
+	'abusefilter-action-tag' => 'Marca',
+	'abusefilter-action-warn' => 'Avisa',
+	'abusefilter-action-block' => 'Bloquea',
+	'abusefilter-action-degroup' => 'Quita de los grupos',
+	'abusefilter-action-rangeblock' => 'Bloqueo de rango',
+	'abusefilter-action-disallow' => 'No des permisyón',
+	'abusefilter-changeslist-examine' => 'Egzamina',
+	'abusefilter-examine-noresults' => 'No se topó dingún rêsultado por lo que buscates.',
+	'abusefilter-diff-pattern' => 'Kondisyones del filtro',
+	'abusefilter-diff-invalid' => 'Las versiones demandadas, no se las está puediendo traer',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
  * @author Robby
