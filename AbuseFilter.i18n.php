@@ -6998,7 +6998,7 @@ $messages['fa'] = array(
 دلیلی که به خاطرش بسته شدید این است: $1',
 	'abusefilter-degrouped' => 'اجرا کردن این عمل به طور خودکار خطرناک تشخیص داده شده‌است.
 برای همین شما اجازه انجام دادن این کار را ندارید و به طور خودکار دسترسی‌تان به سیستم گرفته می‌شود.
-درصورتی که فکر می‌کنید اشتباهی شده‌است با دیوانسالاران سیستم تماس بگیرید
+درصورتی که فکر می‌کنید اشتباهی شده‌است با دیوانسالاران سیستم تماس بگیرید.
 دلیلی که دسترسی شما گرفته شده‌است این بود: $1',
 	'abusefilter-blocker' => 'پالایه خرابکاری',
 	'abusefilter-blockreason' => 'به طور خودکار توسط پالایه خرابکاری بسته شد.
@@ -11618,6 +11618,15 @@ Untuk detail lengkap, lihat [[Special:AbuseFilter/history|daftar]] perubahan fil
 Pada wiki asal, klik "{{int:abusefilter-edit-export}}" di bawah "{{int:abusefilter-tools-subtitle}}" pada antarmuka penyuntingan.
 Salin dari kotak teks yang muncul, dan tempelkan di kotak teks ini, lalu klik "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Impor data',
+);
+
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'abusefilter-log-search-submit' => 'Chöwá',
+	'abusefilter-list-edit' => 'Rüwa',
+	'abusefilter-edit-warn-actions' => 'Mmèmé:',
+	'abusefilter-history-actions' => 'Mmèmé',
+	'abusefilter-examine-submit' => 'Chöwá',
 );
 
 /** Ido (Ido)
@@ -17814,9 +17823,11 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'abusefilter-log-search-user' => 'Yuuser:',
+	'abusefilter-log-search-title' => 'Titel:',
 	'abusefilter-log-search-submit' => 'Uffgucke',
 	'abusefilter-log-noactions' => 'ken',
 	'abusefilter-list-edit' => 'Ennere',
+	'abusefilter-hidden' => 'Private',
 	'abusefilter-tools-subtitle' => 'Gscharr',
 	'abusefilter-tools-reautoconfirm-user' => 'Yuuser:',
 	'abusefilter-edit-status-label' => 'Nummere:',
