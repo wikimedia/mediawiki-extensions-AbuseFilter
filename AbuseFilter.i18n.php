@@ -2544,10 +2544,15 @@ $messages['br'] = array(
 	'abuselog' => 'Marilh ar siloù a-enep ar gwallimplij',
 	'abusefilter-mustbeeditor' => "Evit abegoù surentez, n'eus nemet an implijerien ganto ar gwir da cheñch ar siloù a-enep d'ar gwallimplij a c'hell implijout an etrefas-mañ.",
 	'abusefilter-blocker' => 'Sil a-enep ar gwallimplij',
+	'abusefilter-blockreason' => 'Stanket ez emgefre gant ar sil a-enep ar gwallimplij.
+Deskrivadur ar reolenn kevreet : $1',
+	'abusefilter-degroupreason' => 'Gwirioù bet tennet ez emgefre gant ar sil a-enep ar gwallimplij.
+Deskrivadur ar reolenn kevreet : $1',
 	'abusefilter-accountreserved' => 'Miret eo an anv kont-mañ evit un implij gant ar siloù a-enep ar gwallimplij.',
 	'right-abusefilter-modify' => 'Kemmañ ar siloù a-enep ar gwallimplij',
 	'right-abusefilter-view' => 'Gwelet ar siloù a-enep ar gwallimplij',
 	'right-abusefilter-log' => 'Gwelet marilh ar siloù a-enep ar gwallimplij',
+	'right-abusefilter-log-detail' => "Gwelet ar c'hasadennoù dre ar munud evit marilh ar siloù a-enep ar gwallimplij",
 	'right-abusefilter-private' => 'Gwelet ar roadennoù prevez er marilh a-enep ar gwallimplij',
 	'right-abusefilter-modify-restricted' => 'Kemmañ ar siloù a-enep ar gwallimplij gant oberoù bevennet',
 	'right-abusefilter-view-private' => 'Gwelet ar siloù gwallimplij merket evel prevez',
@@ -6971,6 +6976,7 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Huji
  * @author Ladsgroup
  */
@@ -6996,10 +7002,7 @@ $messages['fa'] = array(
 به علاوه برای حفاظت از {{SITENAME}}, حساب شما و آی‌پی شما به طور خودکار بسته می‌شود.
 اگر فکر می‌کنید اشتباهی شده با یکی از مدیران تماس بگیرید.
 دلیلی که به خاطرش بسته شدید این است: $1',
-	'abusefilter-degrouped' => 'اجرا کردن این عمل به طور خودکار خطرناک تشخیص داده شده‌است.
-برای همین شما اجازه انجام دادن این کار را ندارید و به طور خودکار دسترسی‌تان به سیستم گرفته می‌شود.
-درصورتی که فکر می‌کنید اشتباهی شده‌است با دیوانسالاران سیستم تماس بگیرید.
-دلیلی که دسترسی شما گرفته شده‌است این بود: $1',
+	'abusefilter-degrouped' => 'اجرا کردن این عمل به طور خودکار خطرناک تشخیص داده شده‌است. برای همین شما اجازه انجام دادن این کار را ندارید و به طور خودکار دسترسی‌تان به سامانه محدود می‌شود. درصورتی که فکر می‌کنید اشتباهی شده‌است با دیوانسالاران تماس بگیرید. دلیلی که دسترسی شما گرفته شده‌است این بود: $1',
 	'abusefilter-blocker' => 'پالایه خرابکاری',
 	'abusefilter-blockreason' => 'به طور خودکار توسط پالایه خرابکاری بسته شد.
 توضیحات:$1',
@@ -7015,7 +7018,7 @@ $messages['fa'] = array(
 	'right-abusefilter-revert' => 'واگردانی تمام تغییرات توسط یک پالایه خرابکاری',
 	'right-abusefilter-view-private' => 'نمایش پالایه‌های خرابکاری علامت خورده به عنوان خصوصی',
 	'action-abusefilter-modify' => 'تصحیح پالایه خرابکاری',
-	'action-abusefilter-view' => 'نمایش پالایه‌های خرابکاری',
+	'action-abusefilter-view' => 'نمایش پالایهٔ خرابکاری',
 	'action-abusefilter-log' => 'نمایش سیاهه خرابکاری',
 	'action-abusefilter-log-detail' => 'جزئیات ثبت در سیاهه خرابکاری',
 	'action-abusefilter-private' => 'نمایش اطلاعات خصوصی در سیاهه خرابکاری',
@@ -12457,6 +12460,7 @@ $messages['ka'] = array(
 	'abusefilter-log-search-title' => 'სათაური:',
 	'abusefilter-log-search-submit' => 'ძიება',
 	'abusefilter-log-details-vars' => 'Action parameters',
+	'abusefilter-log-noactions' => 'არცერთი',
 	'abusefilter-log-details-diff' => 'რედაქტირებისას განხორციელებული ცვლილებები',
 	'abusefilter-list-status' => 'სტატუსი',
 	'abusefilter-list-public' => 'საზოგადო აღწერა',
@@ -12570,12 +12574,14 @@ $messages['ka'] = array(
 	'abusefilter-edit-builder-op-comparison-equal' => 'ტოლია (==)',
 	'abusefilter-edit-builder-op-comparison-notequal' => 'არ არის ტოლი (!=)',
 	'abusefilter-edit-builder-op-comparison-lt' => 'ნაკლები ვიდრე (<)',
+	'abusefilter-edit-builder-op-bool-not' => 'არ (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'და (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'ან (|)',
 	'abusefilter-edit-builder-group-funcs' => 'ფუნქციები',
 	'abusefilter-edit-builder-group-vars' => 'ცვალებადი',
 	'abusefilter-edit-builder-vars-accountname' => 'ანგარიშის სახელი (შექმნისას)',
 	'abusefilter-edit-builder-vars-timestamp' => 'Unix ცვლილების დრო',
+	'abusefilter-edit-builder-vars-action' => 'მოქმედება',
 	'abusefilter-edit-builder-vars-addedlines' => 'ხაზის ჩამატება',
 	'abusefilter-edit-builder-vars-delta' => 'ზომის ცვლილება რედაქტირებაში',
 	'abusefilter-edit-builder-vars-diff' => 'რედაქტირების ცვლილების უნიფიცირებული შედარება',
@@ -12623,6 +12629,9 @@ $messages['ka'] = array(
 	'abusefilter-history-global' => 'გლობალური',
 	'abusefilter-history-timestamp' => 'დრო',
 	'abusefilter-history-user' => 'მომხმარებელი',
+	'abusefilter-history-flags' => 'დროშები',
+	'abusefilter-history-comments' => 'კომენტარები',
+	'abusefilter-history-actions' => 'მოქმედებები',
 	'abusefilter-history-deleted' => 'წაშლილია',
 	'abusefilter-history-select-user' => 'მომხმარებელი:',
 	'abusefilter-history-diff' => 'ცვლილებები',
@@ -12644,10 +12653,16 @@ $messages['ka'] = array(
 	'abusefilter-action-rangeblock' => 'დიაპაზონის ბლოკირება',
 	'abusefilter-action-disallow' => 'გათიშვა',
 	'abusefilter-revert-title' => 'გააუქმეთ ფილტრის მიერ გაკეთებული ყველა ცვლილება $1',
+	'abusefilter-revert-search' => 'აირჩიეთ მოქმედება',
 	'abusefilter-revert-filter' => 'ფილტრი:',
+	'abusefilter-revert-confirm' => 'დადასტურება',
+	'abusefilter-revert-reasonfield' => 'გაუქმების მიზეზი:',
 	'abusefilter-test-submit' => 'შემოწმება',
 	'abusefilter-test-load' => 'ატვირთვა',
 	'abusefilter-test-user' => 'მომხმარებლის ცვლილებები:',
+	'abusefilter-test-period-start' => 'ცვლილებები გაკეთდა მას შემდეგ რაც:',
+	'abusefilter-test-period-end' => 'ცვლილებები გაკეთდა მანამ:',
+	'abusefilter-test-page' => 'ცვლილებები გაკეთდა გვერდში:',
 	'abusefilter-changeslist-examine' => 'ნახვა',
 	'abusefilter-examine' => 'ცალკეული რედაქტირებების ხილვა',
 	'abusefilter-examine-legend' => 'არჩეული ცვლილებები',
