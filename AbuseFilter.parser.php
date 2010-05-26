@@ -1641,7 +1641,6 @@ class AbuseFilterParser {
 
 	public static function regexErrorHandler( $errno, $errstr, $errfile, $errline, $context ) {
 		if ( error_reporting() == 0 ) { return true; }
-		wfLoadExtensionMessages( 'AbuseFilter' );
 		throw new AFPUserVisibleException( 'regexfailure', $context['pos'],
 					array( $errstr, $context['regex'] ) );
 		return true;

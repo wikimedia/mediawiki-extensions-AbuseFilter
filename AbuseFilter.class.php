@@ -193,8 +193,6 @@ class AbuseFilter {
 	}
 
 	public static function ajaxCheckSyntax( $filter ) {
-		wfLoadExtensionMessages( 'AbuseFilter' );
-
 		global $wgUser;
 		if ( !$wgUser->isAllowed( 'abusefilter-modify' ) ) {
 			return false;
@@ -313,7 +311,6 @@ class AbuseFilter {
 	}
 
 	public static function evaluateExpression( $expr, $vars = array() ) {
-		wfLoadExtensionMessages( 'AbuseFilter' );
 		global $wgAbuseFilterParserClass;
 
 		if ( self::checkSyntax( $expr ) !== true ) {
@@ -329,7 +326,6 @@ class AbuseFilter {
 
 	public static function ajaxReAutoconfirm( $username ) {
 		global $wgUser;
-		wfLoadExtensionMessages( 'AbuseFilter' );
 
 		if ( !$wgUser->isAllowed( 'abusefilter-modify' ) ) {
 			// Don't allow it.
@@ -611,8 +607,6 @@ class AbuseFilter {
 
 		$actionsByFilter = self::getConsequencesForFilters( $filters );
 		$actionsTaken = array_fill_keys( $filters, array() );
-
-		wfLoadExtensionMessages( 'AbuseFilter' );
 
 		$messages = array();
 
@@ -958,7 +952,6 @@ class AbuseFilter {
 	public static function takeConsequenceAction( $action, $parameters, $title,
 		$vars, $rule_desc )
 	{
-		wfLoadExtensionMessages( 'AbuseFilter' );
 		$display = '';
 		switch ( $action ) {
 			case 'disallow':
@@ -1286,8 +1279,6 @@ class AbuseFilter {
 	}
 
 	public static function getFilterUser() {
-		wfLoadExtensionMessages( 'AbuseFilter' );
-
 		$user = User::newFromName( wfMsgForContent( 'abusefilter-blocker' ) );
 		$user->load();
 		if ( $user->getId() && $user->mPassword == '' ) {
