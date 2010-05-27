@@ -99,6 +99,7 @@ class AbuseFilterHooks {
 	}
 
 	public static function onAbortNewAccount( $user, &$message ) {
+		wfLoadExtensionMessages( 'AbuseFilter' );
 		if ( $user->getName() == wfMsgForContent( 'abusefilter-blocker' ) ) {
 			$message = wfMsg( 'abusefilter-accountreserved' );
 			return false;
@@ -197,6 +198,7 @@ class AbuseFilterHooks {
 
 	public static function onContributionsToolLinks( $id, $nt, &$tools ) {
 		global $wgUser;
+		wfLoadExtensionMessages( 'AbuseFilter' );
 		if ( $wgUser->isAllowed( 'abusefilter-log' ) ) {
 			$sk = $wgUser->getSkin();
 			$tools[] = $sk->link(

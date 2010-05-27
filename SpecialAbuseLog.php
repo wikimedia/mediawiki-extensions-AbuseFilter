@@ -4,6 +4,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 
 class SpecialAbuseLog extends SpecialPage {
 	public function __construct() {
+		wfLoadExtensionMessages( 'AbuseFilter' );
 		parent::__construct( 'AbuseLog', 'abusefilter-log' );
 	}
 

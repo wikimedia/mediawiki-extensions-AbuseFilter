@@ -6,6 +6,7 @@ class SpecialAbuseFilter extends SpecialPage {
 	var $mSkin;
 
 	public function __construct() {
+		wfLoadExtensionMessages( 'AbuseFilter' );
 		parent::__construct( 'AbuseFilter', 'abusefilter-view' );
 	}
 
