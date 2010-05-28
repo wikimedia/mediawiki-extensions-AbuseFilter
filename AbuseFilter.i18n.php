@@ -6175,6 +6175,7 @@ Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku 
  * @author McDutchie
  * @author Pertile
  * @author PieRRoMaN
+ * @author Platonides
  * @author Remember the dot
  * @author Sanbec
  * @author Translationista
@@ -6432,7 +6433,7 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Espacio de nombre de la pagina fuente a trasladar',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Título de la pagina fuente a trasladar',
 	'abusefilter-edit-builder-vars-movedfrom-prefixedtext' => 'Título completo de la pagina fuente a trasladar',
-	'abusefilter-edit-builder-vars-movedto-id' => 'ID de pagina de la pagina de dewstino del traslado',
+	'abusefilter-edit-builder-vars-movedto-id' => 'ID de pagina de la página de destino del traslado',
 	'abusefilter-edit-builder-vars-movedto-ns' => 'Espacio de nombre de la pagina de destino del traslado',
 	'abusefilter-edit-builder-vars-movedto-text' => 'Título de página de destino a mover',
 	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Título completo de página de destino a mover',
@@ -21910,11 +21911,7 @@ $messages['tl'] = array(
 Ang Pansala ng Pang-aabuso ay isang kusang mekanismo ng sopwer ng paggamit ng automatikong tulong ng pagkatuto sa lahat ng mga kilos.
 Nagpapakita ang ugnayang-hangganang ito ng isang talaan ng binigyang kahulugang mga pansala, at nagpapahintulot na mabago ang mga ito.',
 	'abusefilter-mustbeeditor' => 'Para sa mga dahilang pangkaligtasan, mga tagagamit lamang na may karapatang baguhin ang mga pansala ng pang-aabuso ang maaaring gumamit ng ugnayang-hangganang ito.',
-	'abusefilter-warning' => "'''Babala''': Ang kilos na ito ay kusang nakilala bilang makakapinsala.
-Mabilisang ibabalik sa dati ang hindi mabubuting mga pagbabago,
-at hahantong sa paghadlang ng akawnt o kompyuter mo ang paulit-ulit na napakasama o hindi mabubuting mga pagbabago.
-Kung pinaniniwalaan mong mabuti ang pagbabagong ito, maaari mong pinduting muli ang Ipasa upang tiyakin ito.
-Isang maiksing paglalarawan ng alituntunin sa pang-aabuso na tumugma sa kilos mo ang: $1",
+	'abusefilter-warning' => "'''Babala''': Ang galaw na ito ay kusang kinilala bilang mapanganib.  Mabilisang ibabalik sa dati ang hindi nakapagpapainam na pagbabago, at magbubunga ang kapansin-pansin at paulit-ulit na hindi maiinam na pagbabago ng pagharang sa akawnt o adres ng IP.  Kung sa tingin mong mainam ang pagbabagong ito, maaaring mong pindutin uli ang Ipasa upang tiyakin ito.  Isang maikling paglalarawan ng alituntunin sa pang-aabuso na tumugma sa iyong galaw ang: $1",
 	'abusefilter-disallowed' => "Ang kilos na ito ay kusang nakilala bilang makakapinsala,
 kaya't hindi pinahintulutan.
 Kung naniniwala kang mabuti ang iyong ginawang pagbabago, makipag-ugnayan sa isang tagapangasiwa, at ipagbigay-alam sa kanila ang kung ano ang sinusubok mong gawin.
@@ -21942,6 +21939,7 @@ Isang maiksing paglalarawan ng alituntunin sa pang-aabuso na tumugma sa kilos mo
 	'right-abusefilter-private' => 'Tingnan ang pansariling datong nasa loob ng tala ng pang-aabuso',
 	'right-abusefilter-modify-restricted' => 'Baguhin ang mga pansala ng pang-aabuso na may hangganan sa mga paggalaw',
 	'right-abusefilter-revert' => 'Ibalik sa dati ang lahat ng mga pagbabagong ginawa ng isang partikular na pansala ng pang-aabuso',
+	'right-abusefilter-view-private' => 'Tingnan ang mga pansala ng pang-aabuso bilang pribado',
 	'action-abusefilter-modify' => 'baguhin ang mga pansala ng pang-aabuso',
 	'action-abusefilter-view' => 'tingnan ang mga pansala ng pang-aabuso',
 	'action-abusefilter-log' => 'tingnan ang talaan ng pang-aabuso',
@@ -21949,6 +21947,7 @@ Isang maiksing paglalarawan ng alituntunin sa pang-aabuso na tumugma sa kilos mo
 	'action-abusefilter-private' => 'tingnan ang pribadong datong nasa loob ng talaan ng pang-aabuso',
 	'action-abusefilter-modify-restricted' => 'baguhin ang mga pansala ng pang-aabuso na may mga kilos na may hangganan',
 	'action-abusefilter-revert' => 'ibalik sa dati ang lahat ng mga pagbabago ginawa ng isang ibinigay na pansala ng pang-aabuso',
+	'action-abusefilter-view-private' => 'tingnan ang mga pansala ng pang-aabuso na tinatakan bilang pribado',
 	'abusefilter-log' => 'Tala ng pansala ng pang-aabuso',
 	'abusefilter-log-summary' => 'Nagpapakita ang talaang ito ng isang talaan ng lahat ng mga kilos na nahuli ng mga pansala.',
 	'abusefilter-log-search' => 'Maghanap sa tala ng pang-aabuso',
@@ -21971,6 +21970,8 @@ Paglalarawan ng pansala: $6',
 	'abusefilter-log-details-ip' => 'Pinagmumulang adres ng IP',
 	'abusefilter-log-noactions' => 'wala',
 	'abusefilter-log-details-diff' => 'Mga pagbabagong ginawa sa pamamatnugot',
+	'abusefilter-log-linkoncontribs' => 'Tala ng pang-aabuso',
+	'abusefilter-log-linkoncontribs-text' => 'Tala ng Pang-aabuso para sa tagagamit na ito',
 	'abusefilter-management' => 'Pamamahala ng pansala ng pang-aabuso',
 	'abusefilter-list' => 'Lahat ng mga pansala',
 	'abusefilter-list-id' => 'ID ng pansala',
@@ -22018,8 +22019,8 @@ Paglalarawan ng pansala: $6',
 	'abusefilter-edit-subtitle' => 'Binabago ang pansalang $1',
 	'abusefilter-edit-oldwarning' => '<strong>Binabago mo ang isang lumang bersyon ng pansalang ito. Ang siniping mga estadistika ay para sa pinakakamakailang bersyon ng pansala. Kapag sinagip mo ang iyong mga pagbabago, mapapatungan mo ang lahat ng mga pagbabago magmula sa rebisyong pinapatnugutan mo.</strong> &bull; [[Special:AbuseFilter/history/$2|Bumalik sa kasaysayan ng pansalang ito]]',
 	'abusefilter-edit-status-label' => 'Mga estadistika:',
-	'abusefilter-edit-status' => 'Mula sa huling $1 {{PLURAL:$1|kilos|mga kilos}}, tumugma ang pansalang ito sa $2 ($3%).
-Sa karaniwan, ang oras ng pagtakbo nito ay $4ms',
+	'abusefilter-edit-status' => 'Mula sa huling $1 na {{PLURAL:$1|kilos|mga kilos}}, tumugma ang pansalang ito sa $2 ($3%).
+Sa karaniwan, ang oras ng pagtakbo nito ay $4ms, at gumugugol ng $5 na {{PLURAL:$5|kundisyon|mga kundisyon}} ng hangganan ng kundisyon.',
 	'abusefilter-edit-throttled' => "'''Babala''': Kusang hindi pinagana ang pansalang ito bilang isang pamamaraang pangkaligtasan. Umabot na ito sa hangganan ng pagtugma sa mahigit kaysa $1% na mga kilos.",
 	'abusefilter-edit-new' => 'Bagong pansala',
 	'abusefilter-edit-save' => 'Sagipin ang pansala',
@@ -22073,6 +22074,12 @@ Sa karaniwan, ang oras ng pagtakbo nito ay $4ms',
 	'abusefilter-edit-tools' => 'Mga kagamitan:',
 	'abusefilter-edit-test-link' => 'Subukin ang pansalang ito laban sa kamakailang mga pagbabago',
 	'abusefilter-edit-global' => 'Gamiting pandaigdigan ang pansalang ito',
+	'abusefilter-edit-export' => 'Iluwas ang pansalang ito sa ibang wiki',
+	'abusefilter-edit-syntaxok' => 'Walang kamaliang pangsintaks na napansin.',
+	'abusefilter-edit-syntaxerr' => 'Napansin ang kamaliang pangsintaks: $1',
+	'abusefilter-edit-bad-tags' => 'Isa o mahigit sa mga tatak na tinukoy mo ang hindi tanggap.
+Kailangan maiiksi ang mga tatak, at hindi sila dapat maglaman ng natatanging mga panitik.',
+	'abusefilter-edit-notallowed' => 'Hindi ka pinapahintulutang lumikha o magbago ng mga pansala ng pang-aabuso',
 	'abusefilter-edit-builder-select' => "Pumili ng isang pagpipilian upang maidagdag ito doon sa panturo (''cursor'')",
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Mga tagapagpaandar ng aritmetika',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Pagdaragdag (+)',
@@ -22096,6 +22103,7 @@ Sa karaniwan, ang oras ng pagtakbo nito ay $4ms',
 	'abusefilter-edit-builder-misc-in' => 'nilalaman ng bagting (in)',
 	'abusefilter-edit-builder-misc-like' => 'Tumutugma sa huwaran (like)',
 	'abusefilter-edit-builder-misc-rlike' => 'Tumutugma sa karaniwang pagsasaad (rlike)',
+	'abusefilter-edit-builder-misc-irlike' => 'Tumutugmo sa regex, maramdamin sa pagtipa (irlike)',
 	'abusefilter-edit-builder-misc-contains' => 'Naglalaman ang pangkaliwang bagting ng pangkanang bagting (naglalaman ng)',
 	'abusefilter-edit-builder-misc-stringlit' => 'Literal na bagting ("")',
 	'abusefilter-edit-builder-misc-tern' => 'Terneryong bantas (X ? Y : Z)',
@@ -22159,6 +22167,7 @@ Sa karaniwan, ang oras ng pagtakbo nito ay $4ms',
 	'abusefilter-edit-builder-vars-old-links' => 'Mga kawing sa loob ng pahina, bago mangyari ang pagbago',
 	'abusefilter-edit-builder-vars-old-html' => 'Teksto ng wiki ng lumang pahina, ibinanghay upang maging HTML',
 	'abusefilter-edit-builder-vars-minor-edit' => 'Kung tinatakan ba o hindi ang pagbabago bilang mababa ang antas',
+	'abusefilter-edit-builder-vars-file-sha1' => 'pangtadtad na SHA1 ng mga nilalaman ng talaksan',
 	'abusefilter-filter-log' => 'Kamakailang mga pagbabago sa pansala',
 	'abusefilter-history' => 'Baguhin ang kasaysayan para sa Pansala ng Pang-aabusong $1',
 	'abusefilter-history-foruser' => 'Mga pagbabago ng $1',
@@ -22196,6 +22205,7 @@ Inaasahan ang $3 {{PLURAL:$3|pangangatwiran|mga pangangatwiran}}, $4 ang nakuha'
 	'abusefilter-exception-overridebuiltin' => 'Hindi makabatas na pangingibabaw sa likas na nakakabit na pabagu-bagong "$2" sa panitik na $1.',
 	'abusefilter-exception-outofbounds' => 'Humihiling ng hindi umiiral na nakatalang bagay na $2 (sukat ng talaan = $3) sa panitik na $1.',
 	'abusefilter-exception-notlist' => 'Humihiling ng hanay ng bagay ng hindi nakahanay sa panitik na $1.',
+	'abusefilter-action-tag' => 'Tatakan',
 	'abusefilter-action-throttle' => 'Siilin',
 	'abusefilter-action-warn' => 'Magbabala',
 	'abusefilter-action-blockautopromote' => 'Hadlangan ang pagsulong ng antas',
@@ -22228,6 +22238,7 @@ Ibinigay na dahilan: $2',
 	'abusefilter-test-user' => 'Mga binago ng tagagamit:',
 	'abusefilter-test-period-start' => 'Mga pagbabagong ginawa pagkaraan:',
 	'abusefilter-test-period-end' => 'Naunang ginawang mga pagbabago:',
+	'abusefilter-test-page' => 'Mga pagbabagong ginawa sa pahina:',
 	'abusefilter-test-shownegative' => 'Ipakita ang mga pagbabagong hindi tumutugma sa pansala',
 	'abusefilter-test-syntaxerr' => 'Ang ipinasok mong pansala ay naglalaman ng isang kamalian sa palaugnayan.
 Makakatanggap ka ng isang buong paliwanag sa pamamagitan ng pagpindot sa pindutang "Suriin ang Palaugnayan".',
@@ -22254,6 +22265,7 @@ Makakatanggap ka ng isang buong paliwanag sa pamamagitan ng pagpindot sa pinduta
 	'abusefilter-topnav-examine' => 'Suriin ang nakaraang mga pamamatnugot',
 	'abusefilter-topnav-log' => 'Talaan ng Pang-aabuso',
 	'abusefilter-topnav-tools' => 'Mga kagamitang pantanggal ng depekto',
+	'abusefilter-topnav-import' => 'Angkatin ang pansala',
 	'abusefilter-log-name' => 'Talaan ng Pansala ng Pang-aabuso',
 	'abusefilter-log-header' => 'Nagpapakita ang talaang ito ng isang buod ng mga pagbabagong ginawa sa mga pansala.
 Para sa buong mga detalye, tingnan [[Special:AbuseFilter/history|ang talaan]] ng kamakailang mga pagbabago sa pansala.',
@@ -22265,6 +22277,10 @@ Para sa buong mga detalye, tingnan [[Special:AbuseFilter/history|ang talaan]] ng
 	'abusefilter-diff-pattern' => 'Mga kalagayan ng pansala',
 	'abusefilter-diff-invalid' => 'Hindi nagawang makuha ang hiniling na mga bersyon',
 	'abusefilter-diff-backhistory' => 'Magbalik sa kasaysayan ng pansala',
+	'abusefilter-import-intro' => 'Magagamit ang hangganang-mukhang ito upang makapag-angkat ng mga pansala mula sa ibang mga wiki.
+Doon sa pinagmulang wiki, pindutin ang "{{int:abusefilter-edit-export}}" na nasa ilalim ng "{{int:abusefilter-tools-subtitle}}" sa ibabaw ng hangganang-mukhang pambago.
+Kopyahin mula sa kahong pangteksto na lilitaw, at idikit ito sa kahong pangtekstong ito, matapos ay pindutin ang "{{int:abusefilter-import-submit}}".',
+	'abusefilter-import-submit' => 'Angkatin ang dato',
 );
 
 /** Turkish (Türkçe)
