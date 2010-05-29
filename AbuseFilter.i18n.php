@@ -8583,7 +8583,7 @@ De media, o seu tempo de execución é de $4ms, e consome {{PLURAL:$5|unha condi
 	'abusefilter-edit-notes' => "Notas:
 :''(privado)''",
 	'abusefilter-edit-lastmod' => 'O filtro foi modificado por última vez:',
-	'abusefilter-edit-lastmod-text' => '$1 por $2',
+	'abusefilter-edit-lastmod-text' => 'o $3 ás $4 por $2',
 	'abusefilter-edit-hitcount' => 'Deteccións do filtro:',
 	'abusefilter-edit-consequences' => 'Accións levadas cando coincidiu',
 	'abusefilter-edit-action-warn' => 'Accionar estas accións despois de darlle ao usuario un aviso',
@@ -12462,6 +12462,8 @@ $messages['ka'] = array(
 	'abusefilter-log-search-user' => 'მომხმარებელი:',
 	'abusefilter-log-search-title' => 'სათაური:',
 	'abusefilter-log-search-submit' => 'ძიება',
+	'abusefilter-log-detailslink' => 'დეტალები',
+	'abusefilter-log-details-var' => 'ცვალებადი',
 	'abusefilter-log-details-vars' => 'Action parameters',
 	'abusefilter-log-noactions' => 'არცერთი',
 	'abusefilter-log-details-diff' => 'რედაქტირებისას განხორციელებული ცვლილებები',
@@ -12478,6 +12480,7 @@ $messages['ka'] = array(
 	'abusefilter-deleted' => 'წაშლილია',
 	'abusefilter-disabled' => 'გათიშულია',
 	'abusefilter-new' => 'ახალი ფილტრის შექმნა',
+	'abusefilter-links' => 'სასარგებლო ბმულები:',
 	'abusefilter-tools-modifiertest-submit' => 'ტესტი',
 	'abusefilter-loglink' => ' ბოროტად გამოყენების ფილტრის ჟურნალი',
 	'abusefilter-return' => ' ბოროტად გამოყენების ფილტრის მართვასთან დაბრუნება',
@@ -14921,9 +14924,9 @@ $messages['mk'] = array(
 	'abusefilter-desc' => 'Извршува автоматски хевристички филтрирања во уредувањата',
 	'abusefilter' => 'Прилагодувања на филтерот за злоупотреба',
 	'abuselog' => 'Дневник на злоупотреби',
-	'abusefilter-intro' => 'Добредојдовте на интерфејсот за раководење со Филтерот за злоупотреби.
+	'abusefilter-intro' => 'Добредојдовте на посредникот за раководење со Филтерот за злоупотреби.
 Филтерот за злоупотреби е автоматизиран програмски механизам за примена на автоматска хевристика врз сите дејства.
-На овој интефејс е прикажана листа на утврдени филтри, и истиот овозможува нивно менување.',
+На овој интефејс е прикажан список на утврдени филтри, и истиот овозможува нивно менување.',
 	'abusefilter-mustbeeditor' => 'Од безбедносни причини, овој интерфејс можат да го користат само корисници со право на менување филтри за злоупотреба.',
 	'abusefilter-warning' => "'''Предупредување''': Ова дејство е автоматски утврдено како штетно.
 Неконструктивните уредувања ќе бидат набргу отстранети,
@@ -14969,7 +14972,7 @@ $messages['mk'] = array(
 	'action-abusefilter-revert' => 'враќање на сите промени на даден филтер за злоупотреби',
 	'action-abusefilter-view-private' => 'прегледување на филтри за злоупотреби означени како приватни',
 	'abusefilter-log' => 'Дневник на филтерот за злоупотреби',
-	'abusefilter-log-summary' => 'Овој дневник прикажува листа на сите дејства уловени од филтрите.',
+	'abusefilter-log-summary' => 'Овој дневник прикажува список на сите дејства уловени од филтрите.',
 	'abusefilter-log-search' => 'Пребарај по дневникот на злоупотреби',
 	'abusefilter-log-search-user' => 'Корисник:',
 	'abusefilter-log-search-filter' => 'Идентификатор на филтер:',
@@ -15019,7 +15022,7 @@ $messages['mk'] = array(
 	'abusefilter-loglink' => 'Покажи дневник на злоупотреби',
 	'abusefilter-return' => 'Назад кон раководењето со филтри',
 	'abusefilter-status-global' => 'Глобален',
-	'abusefilter-list-options' => 'Опции',
+	'abusefilter-list-options' => 'Нагодувања',
 	'abusefilter-list-options-deleted' => 'Избришани филтри:',
 	'abusefilter-list-options-deleted-only' => 'Прикажи само избришани филтери',
 	'abusefilter-list-options-deleted-hide' => 'Сокриј избришани филтери',
@@ -15108,7 +15111,7 @@ $messages['mk'] = array(
 	'abusefilter-edit-bad-tags' => 'Еден или повеќе назначени ознаки се неважечки.
 Ознаките треба да бидат кратки, и не треба да содржат специјални знаци.',
 	'abusefilter-edit-notallowed' => 'Не ви е дозволено да создавате или уредувате филтри за злоупотреби',
-	'abusefilter-edit-builder-select' => 'Одберете опција за додавање кај курсорот',
+	'abusefilter-edit-builder-select' => 'Одберете можност за додавање кај курсорот',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Аритметички оператори',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Собирање (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Одземање (-)',
@@ -15232,7 +15235,7 @@ $messages['mk'] = array(
 Се {{PLURAL:$3|очекуваше $3 аргумент|очекуваа $3 аргументи}}, а {{PLURAL:$4|добиен е|добиени се}} $4',
 	'abusefilter-exception-regexfailure' => 'Грешка во регуларниот израз „$3“ кај знакот $1: „$2“',
 	'abusefilter-exception-overridebuiltin' => 'Недозволено поклопување на вградена променлива „$2“ кај знакот $1.',
-	'abusefilter-exception-outofbounds' => 'Барање за непостоечка ставка во листата $2 (големина на листата = $3) кај знакот $1.',
+	'abusefilter-exception-outofbounds' => 'Барање за непостоечка ставка во списокот $2 (големина на списокот = $3) кај знакот $1.',
 	'abusefilter-exception-notlist' => 'Барање на елемент од стројот за објект кој не е строј кај знакот $1.',
 	'abusefilter-action-tag' => 'Ознака',
 	'abusefilter-action-throttle' => 'Стесни',
@@ -15299,7 +15302,7 @@ $messages['mk'] = array(
 	'abusefilter-topnav-import' => 'Увези филтер',
 	'abusefilter-log-name' => 'Дневник на филтерот за злоупотреба',
 	'abusefilter-log-header' => 'Во овој дневник е прикажан преглед на промените направени во филтрите.
-За сите подробности, погледајте ја [[Special:AbuseFilter/history|листата]] на скорешни промени во филтрите.',
+За сите подробности, погледајте го [[Special:AbuseFilter/history|списокот]] на скорешни промени во филтрите.',
 	'abusefilter-log-entry-modify' => 'го измени $1 ($2)',
 	'abusefilter-diff-title' => 'Разлики помеѓу верзиите',
 	'abusefilter-diff-item' => 'Елемент',
