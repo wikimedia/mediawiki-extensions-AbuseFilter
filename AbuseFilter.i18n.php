@@ -909,9 +909,11 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'abusefilter-log-details-var' => 'Variable',
 	'abusefilter-log-noactions' => 'garra',
 	'abusefilter-list-edit' => 'Editar',
 	'abusefilter-edit-warn-actions' => 'Accions:',
+	'abusefilter-edit-builder-group-vars' => 'Variables',
 	'abusefilter-edit-builder-vars-action' => 'Acción',
 	'abusefilter-history-actions' => 'Accions',
 	'abusefilter-revert-filter' => 'Filtro:',
@@ -4985,7 +4987,7 @@ Kutiyê nuştîşî kopye bike u ena kutiyê nuştîş rê na pa u klik bike "{{
  */
 $messages['dsb'] = array(
 	'abusefilter-desc' => 'Nałožujo awtomatisku heuristiku na změny.',
-	'abusefilter' => 'Konfiguracija filtra znjewužywanja',
+	'abusefilter' => 'Konfiguracija znjewužywańskego filtra',
 	'abuselog' => 'Protokol znjewužywanjow',
 	'abusefilter-intro' => 'Witaj do pówjercha zastojanja znjewužywańskich filtrow.
 Znjewužywański filter jo awtomatizěrowany softwarowy mechanizm za nałoženje awtomatiskeje heuristiki na wše akcije.
@@ -5008,12 +5010,12 @@ Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpo
 	'abusefilter-autopromote-blocked' => 'Toś ta akcija jo se awtomatiski identificěrowała ako škódna a jo se znjemóžniła.
 Pśidatnje, ako wěstotna napšawa, su se někotare priwilegije, kótarež se powšyknje napóranym kontam dawaju, pšec wzeli twójomu kontoju.
 Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpowědujo, jo: $1',
-	'abusefilter-blocker' => 'Filter znjewužywanja',
-	'abusefilter-blockreason' => 'Awtomatiski pśez filter znjewužywanja zablokěrowany. Wopisanje pśitrjefjecego pšawidła: $1',
-	'abusefilter-degroupreason' => 'Pšawa awtomatiski pśez fitler znjewužywanja zajmjone. Wopisanje pšawidła: $1',
-	'abusefilter-accountreserved' => 'Toś to kontowe mě jo za wužywanje pśez filter znjewužywanja wuměnjone.',
-	'right-abusefilter-modify' => 'Filtry znjewužywanja změniś',
-	'right-abusefilter-view' => 'Filtry znjewužywanja zwobrazniś',
+	'abusefilter-blocker' => 'Znjewužywański filter',
+	'abusefilter-blockreason' => 'Awtomatiski pśez znjewužywański filter zablokěrowany. Wopisanje pśitrjefjecego pšawidła: $1',
+	'abusefilter-degroupreason' => 'Pšawa awtomatiski pśez znjewužywański filter zajmjone. Wopisanje pšawidła: $1',
+	'abusefilter-accountreserved' => 'Toś to kontowe mě jo za wužywanje pśez znjewužywański filter wuměnjone.',
+	'right-abusefilter-modify' => 'Znjewužywańske filtry změniś',
+	'right-abusefilter-view' => 'Znjewužywańske filtry se woglědaś',
 	'right-abusefilter-log' => 'Protokol znjewužywanjow zwobrazniś',
 	'right-abusefilter-log-detail' => 'Detailěrowane zapiski protokola znjewužywanjow zwbrazniś',
 	'right-abusefilter-private' => 'Priwatne daty w protokolu znjewužywanjow zwobrazniś',
@@ -5028,14 +5030,14 @@ Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpo
 	'action-abusefilter-modify-restricted' => 'znjewužywańske filtry z wobgranicowanymi akcijami změniś',
 	'action-abusefilter-revert' => 'wše změny pśez dany znjewužywański filter pśewobrośiś',
 	'action-abusefilter-view-private' => 'znjewužywańske filtry se woglědaś, kótarež su ako priwatne markěrowane',
-	'abusefilter-log' => 'Protokol filtrow znjewužywanja',
-	'abusefilter-log-summary' => 'Toś ten protkol pokazujo liscínu wšych pśez filtry pópadnjonych akcijow.',
+	'abusefilter-log' => 'Protokol znjewužywańskich filtrow',
+	'abusefilter-log-summary' => 'Toś ten protokol pokazujo liscínu wšych pśez filtry pópadnjonych akcijow.',
 	'abusefilter-log-search' => 'Protokol znjewužywanjow pytaś',
 	'abusefilter-log-search-user' => 'Wužywaŕ:',
 	'abusefilter-log-search-filter' => 'ID filtra:',
 	'abusefilter-log-search-title' => 'Titel:',
 	'abusefilter-log-search-submit' => 'Pytaś',
-	'abusefilter-log-entry' => '$1: $2 jo filter znjewužywanja zapušćił a cynił akciju $3 na $4. Wuwjeźone akcije: $5; Wopisanje filtra: $6',
+	'abusefilter-log-entry' => '$1: $2 jo znjewužywański filter zapušćił a cynił akciju $3 na $4. Wuwjeźone akcije: $5; Wopisanje filtra: $6',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 jo zapušćił $3 a jo pśewjadł akciju "$4" na $5. Wuwjeźone akcije: $6; Wopisanje filtra: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-log-detailedentry-global' => 'globalny filter $1',
 	'abusefilter-log-detailedentry-local' => 'filter $1',
@@ -5050,7 +5052,7 @@ Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpo
 	'abusefilter-log-details-diff' => 'Pśi wobźěłanju cynjone změny',
 	'abusefilter-log-linkoncontribs' => 'znjewužywański protokol',
 	'abusefilter-log-linkoncontribs-text' => 'Znjwužywański protokol za toś togo wužywarja',
-	'abusefilter-management' => 'Zastojanje filtrow znjewužywanja',
+	'abusefilter-management' => 'Zastojanje znjewužywańskich filtrow',
 	'abusefilter-list' => 'Wše filtry',
 	'abusefilter-list-id' => 'ID filtra',
 	'abusefilter-list-status' => 'Status',
@@ -5072,7 +5074,7 @@ Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpo
 	'abusefilter-links' => 'Wužytne wótkaze:',
 	'abusefilter-tools-modifiertest-submit' => 'Test',
 	'abusefilter-tools' => 'Rědy znjewužywańskego filtra',
-	'abusefilter-loglink' => 'Protokol znjewužywanja se woglědaś',
+	'abusefilter-loglink' => 'Protokol znjewužywanjow se woglědaś',
 	'abusefilter-return' => 'Slědk k zastojanjoju filtrow',
 	'abusefilter-status-global' => 'Globalny',
 	'abusefilter-list-options' => 'Opcije',
@@ -10043,17 +10045,17 @@ Za učitavanje postojećeg filtra, upišite ID filtra u okvir ispod okvira za ur
  */
 $messages['hsb'] = array(
 	'abusefilter-desc' => 'Nałožuje awtomatisku heuristiku na změny.',
-	'abusefilter' => 'Konfiguracija filtra znjewužiwanja',
-	'abuselog' => 'protokol znjewužiwanjow',
+	'abusefilter' => 'Konfiguracija znjewužiwanskeho filtra',
+	'abuselog' => 'Protokol znjewužiwanjow',
 	'abusefilter-intro' => 'Witaj do powjercha zrjadowanja znjewužiwanskich filtrow.
-Znjewužiwanski filter je awtomatizowana softwarowy mechanizm za nałoženje automatiskeje heuristiki na wšě akcije.
+Znjewužiwanski filter je awtomatizowany softwarowy mechanizm za nałoženje awtomatiskeje heuristiki na wšě akcije.
 Powjerch pokazuje lisćinu definowanych filtrow a dowola je změnić.',
 	'abusefilter-mustbeeditor' => 'Z wěstotnych přičinow móžeja jenož wužiwarjo z prawom znjewužiwanske filtry změnić tutón interfejs wužiwać.',
 	'abusefilter-warning' => "'''Warnowanje''': Tuta akcija bu awtomatisce jako škódna identifikowana.
 Njekonstruktiwne změny budu so spěšnje cofnyć, a njesłyšane abo wospjetowane wobdźěłowanje budźe k tomu wjesć, zo twoje konto abo twoja IP-adresa so blokuje.
 Jeli maš tutu změnu za konstruktiwnu, móžeš znowa na Wotpósłać kliknyć, zo by ju wobkrućił. Krótke wopisanje znjewužiwanskeho prawidła, kotremuž twoja akcija wotpowěduje, je: $1",
 	'abusefilter-disallowed' => 'Tuta akcija bu awtomatisce jako škódna identifikowana a tohodla znjemóžnjena.
-Jeli wěriš, zo twoju změna je konstruktiwna była, staj so z administratorom do zwiska a informuj jeho, štož sy spytał činić.
+Jeli wěriš, zo twoja změna je konstruktiwna była, staj so z administratorom do zwiska a informuj jeho, štož sy spytał činić.
 Krótke wopisanje znjewužiwanskeho prawidła, kotremuž twoja akcija wotpowěduje, je: $1',
 	'abusefilter-blocked-display' => 'Tuta akcija bu awtomatisce jako škódna identifikowana, a je so ći zadźěwało, ju wuwjesć.
 Přidatnje su so twoje wužiwarske konto a wšě zwjazane IP-addresy přećiwo wobdźěłanju zawrjene, zo by so {{SITENAME}} škitał.
@@ -10065,12 +10067,12 @@ Jeli wěriš, zo to je so zmylnje stało, staj so z běrokratom do zwiska, přid
 Krótke wopisanje znjewužiwanskeho, kotremuž twoja akcija wotpowěduje, je: $1',
 	'abusefilter-autopromote-blocked' => 'Tuta akcija bu awtomatisce jako škódna identifikowana a je so znjemóžniła. Přidatnje, jako wěstotna naprawa, su so někotre priwilegije, kotrež so powšitkownje wutworjenym kontam dawaja, nachwilu twojemu konće zebrali.
 Krótke wopisanje znjewužiwanskeho prawidła, kotremuž twoja akcija wotpowěduje, je: $1',
-	'abusefilter-blocker' => 'Filter znjewužiwanja',
-	'abusefilter-blockreason' => 'Přez filter znjewužiwanja awtomatisce blokowany. Wopisanje prawidła: $1',
-	'abusefilter-degroupreason' => 'Prawa awtomatisce přez filter znjewužiwanja zebrane. Wopisanje prawidła: $1',
-	'abusefilter-accountreserved' => 'Tute kontowe mjeno je za wužiwanje přez filter znjewužiwanja wuměnjene.',
-	'right-abusefilter-modify' => 'Filtry znjewužiwanja změnić',
-	'right-abusefilter-view' => 'Filtry znjewužiwanja zwobraznić',
+	'abusefilter-blocker' => 'Znjewužiwanski filter',
+	'abusefilter-blockreason' => 'Přez znjewužiwanski filter awtomatisce blokowany. Wopisanje prawidła: $1',
+	'abusefilter-degroupreason' => 'Prawa awtomatisce přez znjewužiwanski filter zebrane. Wopisanje prawidła: $1',
+	'abusefilter-accountreserved' => 'Tute kontowe mjeno je za wužiwanje přez znjewužiwanski filter wuměnjene.',
+	'right-abusefilter-modify' => 'Znjewužiwanske filtry změnić',
+	'right-abusefilter-view' => 'Znjewužiwanske filtry sej wobhladać',
 	'right-abusefilter-log' => 'Protokol znjewužiwanjow zwobraznić',
 	'right-abusefilter-log-detail' => 'Podrobne zapiski protokola znjewužiwanjow zwobraznić',
 	'right-abusefilter-private' => 'Priwatne daty w protokol znjewužiwanjow zwobraznić',
@@ -10085,7 +10087,7 @@ Krótke wopisanje znjewužiwanskeho prawidła, kotremuž twoja akcija wotpowědu
 	'action-abusefilter-modify-restricted' => 'znjewužiwanske filtry z wobmjezowanymi akcijemi změnić',
 	'action-abusefilter-revert' => 'wšě změny přez daty znjewužiwanski filter wobroćić',
 	'action-abusefilter-view-private' => 'znjewužiwanske filtry sej wobhladać, kotrež su jako priwatne markěrowane',
-	'abusefilter-log' => 'Protokol filtrow znjewužiwanja',
+	'abusefilter-log' => 'Protokol znjewužiwanskich filtrow',
 	'abusefilter-log-summary' => 'Tutón protokol pokazuje lisćinu wšěch přez filtry popadnjene akcijow.',
 	'abusefilter-log-search' => 'Protokol znjewužiwanjow přepytać',
 	'abusefilter-log-search-user' => 'Wužiwar:',
@@ -10111,7 +10113,7 @@ Wopisanje filtra:: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-log-details-diff' => 'Při wobdźěłanju činjene změny',
 	'abusefilter-log-linkoncontribs' => 'znjewužiwanski protokol',
 	'abusefilter-log-linkoncontribs-text' => 'Znjewužiwanski protokol za tutoho wužiwarja',
-	'abusefilter-management' => 'Zrjadowanje filtrow znjewužiwanja',
+	'abusefilter-management' => 'Zrjadowanje znjewužiwanskich filtrow',
 	'abusefilter-list' => 'wšě filtry',
 	'abusefilter-list-id' => 'ID filtra',
 	'abusefilter-list-status' => 'Status',
@@ -10133,7 +10135,7 @@ Wopisanje filtra:: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-links' => 'Wužitne wotkazy:',
 	'abusefilter-tools-modifiertest-submit' => 'Test',
 	'abusefilter-tools' => 'Nastroje znjewužiwanskeho filtra',
-	'abusefilter-loglink' => 'Protokol znjewužiwanja zwobraznić',
+	'abusefilter-loglink' => 'Protokol znjewužiwanjow pokazać',
 	'abusefilter-return' => 'Wróćo k zrjadowanju filtrow',
 	'abusefilter-status-global' => 'Globalny',
 	'abusefilter-list-options' => 'Opcije',
@@ -10182,7 +10184,7 @@ Limit wjace hač $1 % akcijow je so docpěł.",
 	'abusefilter-edit-consequences' => 'Akcije, kotrež maja so při trjechenym wuwjesć',
 	'abusefilter-edit-action-warn' => 'Tute akcije po warnowanje wužiwarjej zahibać',
 	'abusefilter-edit-action-disallow' => 'Wujwedźenju dateje akcije přez wužiwarja zadźěwać',
-	'abusefilter-edit-action-flag' => 'Změnu w protokolu znjewužiwanja markěrować',
+	'abusefilter-edit-action-flag' => 'Změnu w protokolu znjewužiwanow markěrować',
 	'abusefilter-edit-action-blockautopromote' => 'Wužiwarjej awtomatisce wobkrućeny status zebrać',
 	'abusefilter-edit-action-degroup' => 'Wužiwarja ze wšěch  priwilegowanych skupinow wotstronić',
 	'abusefilter-edit-action-block' => 'Wužiwarja a/abo IP-adresu přećiwo změnjenju blokować',
