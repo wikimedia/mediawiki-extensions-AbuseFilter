@@ -3385,6 +3385,13 @@ A continuació us mostrem una breu descripció de la regla d'abús que ha infrin
 	'abusefilter-import-submit' => 'Importa dades',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'abuselog' => 'Зулумаш долу тéптар',
+);
+
 /** Corsican (Corsu) */
 $messages['co'] = array(
 	'abusefilter-log-search-user' => 'Utilizatore:',
@@ -12476,6 +12483,7 @@ $messages['ka'] = array(
 	'abusefilter-log-details-vars' => 'Action parameters',
 	'abusefilter-log-noactions' => 'არცერთი',
 	'abusefilter-log-details-diff' => 'რედაქტირებისას განხორციელებული ცვლილებები',
+	'abusefilter-log-linkoncontribs' => 'ბოროტად გამოყენების ჟურნალი',
 	'abusefilter-list-status' => 'სტატუსი',
 	'abusefilter-list-public' => 'საზოგადო აღწერა',
 	'abusefilter-list-visibility' => 'ხილვადობა',
@@ -12710,6 +12718,7 @@ $messages['ka'] = array(
 	'abusefilter-diff-info' => 'ძირითადი ინფორმაცია',
 	'abusefilter-diff-pattern' => 'ფილტრის პირობები',
 	'abusefilter-diff-invalid' => 'ვერ მიიღებთ მოთხოვნილ ვერსიას',
+	'abusefilter-diff-backhistory' => 'ფილტრის ისტორიაში დაბრუნება',
 	'abusefilter-import-intro' => 'თქვენ შეგიძლიათ გამოიყენოთეს ინტერფეისი სხვა ვიკებიდან ფილტრების იმპორტირებისათვის.
 ვიკის წყაროში, დააჭირეთ "{{int:abusefilter-edit-export}}" რედაქტირების ინტერფეისის "{{int:abusefilter-tools-subtitle}}" განყოფილებაში.
 დააკოპირეთ ტექსტური ველის შიგთავსი, გადმოიტანეთ ამ გვერდზე და დააჭირეთ "{{int:abusefilter-import-submit}}".',
@@ -20495,6 +20504,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-list-options-deleted-hide' => 'Сакриј обрисане филтере',
 	'abusefilter-list-options-disabled' => 'Онемогућени филтери:',
 	'abusefilter-list-options-hidedisabled' => 'Сакриј онемогућене филтере',
+	'abusefilter-tools-reautoconfirm-user' => 'Корисник:',
 	'abusefilter-edit-status-label' => 'Статистике:',
 	'abusefilter-edit-new' => 'Нови филтер',
 	'abusefilter-edit-save' => 'Сними филтер',
@@ -20502,6 +20512,14 @@ $messages['sr-ec'] = array(
 	'abusefilter-edit-deleted' => 'Означи као обрисан',
 	'abusefilter-edit-notes' => "Напомене:
 :''(приватно)''",
+	'abusefilter-edit-throttle-period' => 'Временски период:',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|секунда|секунди}}',
+	'abusefilter-edit-warn-actions' => 'Акције:',
+	'abusefilter-edit-main' => 'Параметри филтера',
+	'abusefilter-edit-done-subtitle' => 'Филтер измењен',
+	'abusefilter-edit-history' => 'Историја:',
+	'abusefilter-edit-check' => 'Провери ситаксу',
+	'abusefilter-edit-tools' => 'Алати:',
 	'abusefilter-edit-builder-select' => 'Изаберите опцију коју ћете додати курсору',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Аритметичке операције',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Сабирање (+)',
@@ -20547,6 +20565,9 @@ $messages['sr-ec'] = array(
 	'abusefilter-edit-builder-funcs-str_replace' => 'Замени подстринг неким стрингом (str_replace)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Постави променљиву (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Променљиве',
+	'abusefilter-edit-builder-vars-action' => 'Акција',
+	'abusefilter-edit-builder-vars-addedlines' => 'Линија додатих при измени',
+	'abusefilter-edit-builder-vars-delta' => 'Промена величине при измени',
 	'abusefilter-edit-builder-vars-newsize' => 'Величина нове стране',
 	'abusefilter-edit-builder-vars-oldsize' => 'Величина старе стране',
 	'abusefilter-edit-builder-vars-removedlines' => 'Линије уклоњене током измене',
@@ -20572,6 +20593,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-history-timestamp' => 'Време',
 	'abusefilter-history-user' => 'Корисник',
 	'abusefilter-history-flags' => 'Заставице',
+	'abusefilter-history-filter' => 'Правило филтера',
 	'abusefilter-history-comments' => 'Коментари',
 	'abusefilter-history-actions' => 'Акције',
 	'abusefilter-history-backedit' => 'Повратак на едитор филтера',
@@ -20579,6 +20601,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-history-filterid' => 'Филтер',
 	'abusefilter-history-select-legend' => 'Профини претрагу',
 	'abusefilter-history-select-user' => 'Корисник:',
+	'abusefilter-history-select-submit' => 'Профини',
 	'abusefilter-history-diff' => 'Измене',
 	'abusefilter-history-error-hidden' => 'Филтер кога сте тражили је сакривен, и Ви не можете видети његову историју.',
 	'abusefilter-exception-unexpectedatend' => 'Неочекивано "$2" на карактеру $1.',
@@ -20591,6 +20614,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-exception-regexfailure' => 'Грешка у регуларном изрзу "$3" на карактеру $1: "$2"',
 	'abusefilter-exception-outofbounds' => 'Захтевање непостојећег елемента списка $2 (величина списка = $3) на карактеру $1.',
 	'abusefilter-exception-notlist' => 'Захтевање члана низа од нечега што није низ, на карактеру $1.',
+	'abusefilter-action-tag' => 'Таг',
 	'abusefilter-action-warn' => 'Упозори',
 	'abusefilter-action-block' => 'Блокирај',
 	'abusefilter-action-degroup' => 'Избриши из група',
@@ -20602,6 +20626,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-revert-search' => 'Изабери акције',
 	'abusefilter-revert-filter' => 'Филтер:',
 	'abusefilter-revert-confirm' => 'Потврди',
+	'abusefilter-revert-reasonfield' => 'Разлог за реверт:',
 	'abusefilter-test' => 'Тестирај филтер на претходне измене',
 	'abusefilter-test-legend' => 'Тестирање филтера',
 	'abusefilter-test-load-filter' => 'Учитај ID филтера:',
