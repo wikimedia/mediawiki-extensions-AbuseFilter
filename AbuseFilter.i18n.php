@@ -5124,8 +5124,8 @@ Jo dojśpił limit wěcej ako $1 % akcijow.",
 	'abusefilter-edit-deleted' => 'Ako wulašowany markěrowaś',
 	'abusefilter-edit-hidden' => 'Drobnosći toś togo filtra pśed zjawnym zwobraznjenim schowaś',
 	'abusefilter-edit-rules' => 'Wuměnjenja::',
-	'abusefilter-edit-notes' => "Pśipomnjeś:
-:'' (priwatny)",
+	'abusefilter-edit-notes' => "Pśipomnjeśa:
+:'' (priwatne)''",
 	'abusefilter-edit-lastmod' => 'filter slědny raz změnjony:',
 	'abusefilter-edit-lastmod-text' => '$1 wót $2',
 	'abusefilter-edit-hitcount' => 'Licba filtrowych trefarjow:',
@@ -17920,7 +17920,7 @@ Interfejs pozwala przeglądać listę zdefiniowanych filtrów oraz pozwala na ic
 Niewłaściwe zmiany zostaną szybko wycofane, 
 a rażące lub powtarzające się niekonstruktywne edytowanie może spowodować zablokowanie Twojego konta lub adresu IP.
 Jeśli uważasz, że to co robisz ma uzasadnienie, kliknij przycisk „{{int:savearticle}}”, aby zatwierdzić zmiany.
-Krótki opis reguły nadużycia, do której Twoja akcji została dopasowana — $1",
+Krótki opis reguły nadużycia, do której Twoja akcji została dopasowana – $1",
 	'abusefilter-disallowed' => 'Ta akcja została automatycznie zidentyfikowana jako szkodliwa,
 w związku z tym została odrzucona.
 Jeśli uważasz, że ta edycja była zasadna, skontaktuj się z administratorem i poinformuj go o zaistniałej sytuacji.
