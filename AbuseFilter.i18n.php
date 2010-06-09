@@ -915,6 +915,7 @@ $messages['an'] = array(
 	'abusefilter-log-noactions' => 'garra',
 	'abusefilter-list-edit' => 'Editar',
 	'abusefilter-edit-warn-actions' => 'Accions:',
+	'abusefilter-edit-history' => 'Historial:',
 	'abusefilter-edit-builder-group-vars' => 'Variables',
 	'abusefilter-edit-builder-vars-action' => 'Acción',
 	'abusefilter-history-actions' => 'Accions',
