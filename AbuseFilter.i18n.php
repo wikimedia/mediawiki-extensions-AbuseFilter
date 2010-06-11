@@ -11685,6 +11685,7 @@ $messages['io'] = array(
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Sustraciono (-)',
 	'abusefilter-edit-builder-op-arithmetic-divide' => 'Divido (/)',
 	'abusefilter-history-foruser' => 'Chanji da $1',
+	'abusefilter-history-global' => 'Globala',
 	'abusefilter-history-timestamp' => 'Tempo',
 	'abusefilter-history-user' => 'Uzanto',
 	'abusefilter-history-comments' => 'Komenti',
@@ -11700,6 +11701,7 @@ $messages['io'] = array(
 	'abusefilter-examine-title' => 'titulo di pagino:',
 	'abusefilter-examine-submit' => 'Serchez',
 	'abusefilter-examine-test-button' => 'Probez filtrilo',
+	'abusefilter-diff-version' => 'Versiono ye $1 da $2',
 );
 
 /** Italian (Italiano)
@@ -14483,6 +14485,7 @@ Es 't öch wieziginge opsleit, euversjrief t'r alle wijziginge die nao deze vers
 	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Ganse bestömmingsnaom venne verplaatsber paasj',
 	'abusefilter-edit-builder-vars-user-editcount' => 'Broekerbewèrkingtaal',
 	'abusefilter-edit-builder-vars-user-age' => 'Broekerlaeftied',
+	'abusefilter-edit-builder-vars-minor-edit' => 'Of de bewirking waal of neet es klein gemarkeerd is.',
 	'abusefilter-history-foruser' => 'Angeringer doearch $1',
 	'abusefilter-history-hidden' => 'verbórge',
 	'abusefilter-history-enabled' => 'Ingesjakeldj',
@@ -18775,10 +18778,10 @@ $messages['pt-br'] = array(
 O Filtro de Abuso é um mecanismo de ''software'' automatizado de aplicação de heurísticas automáticas a todas as ações.
 Esta interface mostra uma lista de filtros definidos, e permite que sejam modificados.",
 	'abusefilter-mustbeeditor' => 'Por razões de segurança, apenas os usuários com o direito de modificar filtros de abusos podem usar esta interface.',
-	'abusefilter-warning' => "'''Atenção''': esta ação foi identificada automaticamente como prejudicial.
+	'abusefilter-warning' => "'''Aviso:''' esta operação foi identificada de forma automática como prejudicial.
 As edições não construtivas serão revertidas rapidamente,
-e a repetição destas edições resultará no bloqueio da sua conta ou do seu computador.
-Se você crê que esta edição é construtiva, pode pressionar novamente o botão \"Enviar\" para confirmá-lo.
+e a repetição destas edições resultará no bloqueio da sua conta ou do seu endereço IP.
+Se você acredita que esta edição é construtiva, pode clicar novamente o botão \"Enviar\" para confirmá-lo.
 Uma breve descrição da regra de abuso com a qual a sua ação coincidiu é: \$1",
 	'abusefilter-disallowed' => 'Esta ação foi identificada automaticamente como prejudicial,
 e foi consequentemente bloqueada.
@@ -18816,12 +18819,26 @@ Descrição da regra: $1',
 	'action-abusefilter-log-detail' => 'ver entradas detalhadas do registro de abusos',
 	'action-abusefilter-private' => 'ver dados privados no registro de abusos',
 	'action-abusefilter-modify-restricted' => 'modificar filtros de abuso com ações restritas',
+	'action-abusefilter-revert' => 'reverter todas as alterações feitas por um dado filtro de abuso',
+	'action-abusefilter-view-private' => 'ver filtros de abuso marcados como privados',
+	'abusefilter-log' => 'Registro do filtro de abusos',
+	'abusefilter-log-summary' => 'Este registro mostra uma lista de todas as ações capturadas pelos filtros.',
+	'abusefilter-log-search' => 'Pesquisar o registro de abusos',
 	'abusefilter-log-search-user' => 'Usuário:',
+	'abusefilter-log-search-filter' => 'Identificação de filtro:',
 	'abusefilter-log-search-title' => 'Título:',
 	'abusefilter-log-search-submit' => 'Pesquisar',
+	'abusefilter-log-entry' => '$1: $2 disparou um filtro de abuso, executando a operação "$3" em $4.
+Ações tomadas: $5;
+Descrição do filtro: $6',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 disparou o $3, executando a operação "$4" em $5.
+Ações tomadas: $6;
+Descrição do filtro: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-log-detailedentry-global' => 'filtro global $1',
 	'abusefilter-log-detailedentry-local' => 'filtro $1',
 	'abusefilter-log-detailslink' => 'detalhes',
+	'abusefilter-log-details-legend' => 'Detalhes para entrada de registro $1',
+	'abusefilter-log-details-var' => 'Variável',
 	'abusefilter-log-details-val' => 'Valor',
 	'abusefilter-log-details-private' => 'Dados privados',
 	'abusefilter-log-linkoncontribs' => 'Registro de abusos',
@@ -24024,6 +24041,7 @@ $messages['yi'] = array(
 );
 
 /** Cantonese (粵語)
+ * @author Horacewai2
  * @author Shinjiman
  */
 $messages['yue'] = array(
@@ -24068,6 +24086,7 @@ $messages['yue'] = array(
 	'right-abusefilter-private' => '去睇濫用紀錄裏面嘅資料',
 	'right-abusefilter-modify-restricted' => '用限制動作改濫用過濾器',
 	'right-abusefilter-revert' => '復原一個濫用過濾器嘅全部修改',
+	'right-abusefilter-view-private' => '睇一個私密嘅過濾器',
 	'action-abusefilter-modify' => '改濫用過濾器',
 	'action-abusefilter-view' => '睇濫用過濾器',
 	'action-abusefilter-log' => '去睇濫用紀錄',
@@ -24075,6 +24094,7 @@ $messages['yue'] = array(
 	'action-abusefilter-private' => '去睇濫用紀錄裏面嘅資料',
 	'action-abusefilter-modify-restricted' => '用限制動作改濫用過濾器',
 	'action-abusefilter-revert' => '復原一個濫用過濾器嘅全部修改',
+	'action-abusefilter-view-private' => '睇私密嘅過濾器',
 	'abusefilter-log' => '濫用過濾器紀錄',
 	'abusefilter-log-summary' => '呢個紀錄列示咗由過濾器捉到嘅全部動作。',
 	'abusefilter-log-search' => '搵濫用紀錄',
@@ -24152,7 +24172,7 @@ $messages['yue'] = array(
 [[Special:AbuseFilter/history/$2|返去呢個過濾器嘅歷史]]。',
 	'abusefilter-edit-status-label' => '統計:',
 	'abusefilter-edit-status' => '響之前$1次動作，呢個過濾器已經配合咗$2次 ($3%)。
-平均，佢嘅運行時間係$4毫秒',
+平均，佢嘅運行時間係$4毫秒，用左$5{{PLURAL:$5|次|次}}限制。',
 	'abusefilter-edit-throttled' => "'''警告''': 呢個過濾器因為安全緣故，已經自動噉閂咗。
 佢到達咗配合多過$1%嘅動作。",
 	'abusefilter-edit-new' => '新過濾器',
@@ -24214,6 +24234,7 @@ $messages['yue'] = array(
 	'abusefilter-edit-syntaxerr' => '偵測到語法錯誤: $1',
 	'abusefilter-edit-bad-tags' => '你所指定嘅一個或者更多個嘅標籤無效。
 標籤係應該要短嘅，佢地唔應該有一啲特別字元。',
+	'abusefilter-edit-notallowed' => '你無權新增或者更改過濾器',
 	'abusefilter-edit-builder-select' => '揀一個選項，去加佢到個標記度',
 	'abusefilter-edit-builder-group-op-arithmetic' => '計數運算符',
 	'abusefilter-edit-builder-op-arithmetic-addition' => '加數 (+)',
@@ -24238,6 +24259,7 @@ $messages['yue'] = array(
 	'abusefilter-edit-builder-misc-in' => '字串有 (in)',
 	'abusefilter-edit-builder-misc-like' => '特徵配合 (like)',
 	'abusefilter-edit-builder-misc-rlike' => '正表配合 (rlike)',
+	'abusefilter-edit-builder-misc-irlike' => '正則匹配，分大小楷(irlike)',
 	'abusefilter-edit-builder-misc-contains' => '左字串有右字串 (contains)',
 	'abusefilter-edit-builder-misc-stringlit' => '字面字串 ("")',
 	'abusefilter-edit-builder-misc-tern' => '三運算符 (X ? Y : Z)',
