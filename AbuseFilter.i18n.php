@@ -3391,6 +3391,7 @@ A continuació us mostrem una breu descripció de la regla d'abús que ha infrin
  */
 $messages['ce'] = array(
 	'abuselog' => 'Зулумаш долу тéптар',
+	'abusefilter-exception-unrecognisedkeyword' => 'Дойзуш доцу оьшуш долу дош $2 оцу меттигца $1.',
 );
 
 /** Corsican (Corsu) */
