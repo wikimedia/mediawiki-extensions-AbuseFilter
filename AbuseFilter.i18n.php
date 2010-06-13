@@ -4611,8 +4611,8 @@ Ena pele yew listeyê filitreyî mucneno u vurnayîşan rê destur dano.',
 	'abusefilter-mustbeeditor' => 'Qe pawitişî, teyna kerberanê ke pê desturî eşkeno filitreyê abuseyî bivurne.',
 	'abusefilter-warning' => "'''Îkaz''': Ena hereket hewl niyo u zerar dano.
 Ma vurnayîşanê ke zerarin lez wedarneno,
-eyni zeman de, eka ti ser vurnayîşê xo zerarin de zaf israr kenî, ma hesab u komputerê tu blok kenî.
-Eka ti van vurnayîşê xo konstraktif o ya zi hewl o, rena qeyd bike.
+eyni zeman de, eka ti ser vurnayîşê xo zerarin de zaf israr kenî, ma hesab u IP adrese tu blok kenî.
+Eka ti van vurnayîşê xo konstraktif o ya zi hewl o, reyna qeyd bike.
 Yew deskripsiyonê hereketê tu zerarin: $1",
 	'abusefilter-disallowed' => 'Ena hereket hewl niyo u zerar dano,
 ayra destur çini yo.
@@ -4813,6 +4813,7 @@ gani etiketi kılm bıbi u tede karakterê xususi çinibi.',
 	'abusefilter-edit-builder-misc-in' => 'String de ca geno (in)',
 	'abusefilter-edit-builder-misc-like' => 'Pattern meç keno',
 	'abusefilter-edit-builder-misc-rlike' => 'Reqex meç keno (rlike)',
+	'abusefilter-edit-builder-misc-irlike' => 'Regex mac nikeno, herfe girdi ferq keno (irlike)',
 	'abusefilter-edit-builder-misc-contains' => 'Sol dizi sağ diziyi içeriyor (contains)',
 	'abusefilter-edit-builder-misc-stringlit' => 'Literalê stringî ("")',
 	'abusefilter-edit-builder-misc-tern' => 'Operatorê ternaryî (X ? Y : Z)',
@@ -24172,7 +24173,7 @@ $messages['yue'] = array(
 如果你保存你嘅修改，你會覆蓋自從你編輯修訂嘅全部修改。</strong> &bull;
 [[Special:AbuseFilter/history/$2|返去呢個過濾器嘅歷史]]。',
 	'abusefilter-edit-status-label' => '統計:',
-	'abusefilter-edit-status' => '響之前$1次動作，呢個過濾器已經配合咗$2次 ($3%)。
+	'abusefilter-edit-status' => '響之前$1{{PLURAL:$1|次|次}}動作，呢個過濾器已經配合咗$2次 ($3%)。
 平均，佢嘅運行時間係$4毫秒，用左$5{{PLURAL:$5|次|次}}限制。',
 	'abusefilter-edit-throttled' => "'''警告''': 呢個過濾器因為安全緣故，已經自動噉閂咗。
 佢到達咗配合多過$1%嘅動作。",
