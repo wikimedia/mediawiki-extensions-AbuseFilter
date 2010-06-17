@@ -18318,7 +18318,7 @@ $messages['ps'] = array(
 نارغوونکې سمونې به ډېر ژر پر شا خپلې پخوانۍ بڼې ته واوړي، ورانکاري او په بيا بيا د نارغوونکې سمونې په ترسره کولو سره به ستاسو په کارن-حساب او يا هم کمپيوټر باندې بنديزونه ولګېږي.
 که چېرته تاسو په دې ډاډه ياست چې همدا يوه رغوونکې سمونه ده، نو تاسو کولای شی چې پر «سپارل» وټوکۍ ترڅو ستاسو د کړنې پخلی وشي.
 د ناوړو کړنو د کړنلارې يوه لنډه څرګندونه چې ستاسو د کړنې همډوله وه، په دې توګه ده: $1",
-	'abusefilter-log-search-user' => 'کارونکی:',
+	'abusefilter-log-search-user' => 'کارن:',
 	'abusefilter-log-search-title' => 'سرليک:',
 	'abusefilter-log-search-submit' => 'پلټل',
 	'abusefilter-log-noactions' => 'هېڅ',
@@ -18347,7 +18347,7 @@ $messages['ps'] = array(
 	'abusefilter-history-hidden' => 'پټ',
 	'abusefilter-history-global' => 'نړېوال',
 	'abusefilter-history-timestamp' => 'وخت',
-	'abusefilter-history-user' => 'کارونکی',
+	'abusefilter-history-user' => 'کارن',
 	'abusefilter-history-flags' => 'بيرغونه',
 	'abusefilter-history-deleted' => 'ړنګ شو',
 	'abusefilter-history-filterid' => 'چاڼګر',
