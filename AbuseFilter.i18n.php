@@ -18843,6 +18843,7 @@ Descrição do filtro: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-log-details-legend' => 'Detalhes para entrada de registro $1',
 	'abusefilter-log-details-var' => 'Variável',
 	'abusefilter-log-details-val' => 'Valor',
+	'abusefilter-log-details-vars' => 'Parâmetros de ação',
 	'abusefilter-log-details-private' => 'Dados privados',
 	'abusefilter-log-linkoncontribs' => 'Registro de abusos',
 	'abusefilter-log-linkoncontribs-text' => 'Registro de Abuso para este usuário',
@@ -18879,6 +18880,7 @@ Descrição do filtro: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-edit-enabled' => 'Ativar este filtro',
 	'abusefilter-edit-deleted' => 'Marcar como eliminado',
 	'abusefilter-edit-rules' => 'Condições:',
+	'abusefilter-edit-action-blockautopromote' => 'Revogar o estatuto autoconfirmado do usuário',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|segundo|segundos}}',
 	'abusefilter-edit-warn-other' => 'Outra mensagem',
 	'abusefilter-edit-warn-actions' => 'Ações:',
@@ -19716,6 +19718,23 @@ $messages['ru'] = array(
 	'abusefilter-import-submit' => 'Импортировать данные',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'abusefilter-history-foruser' => 'Зміны, зроблены $1',
+	'abusefilter-history-hidden' => 'Схованый',
+	'abusefilter-history-enabled' => 'Запнутый',
+	'abusefilter-history-global' => 'Ґлобалный',
+	'abusefilter-history-timestamp' => 'Час',
+	'abusefilter-history-user' => 'Хоснователь',
+	'abusefilter-history-comments' => 'Коментарї',
+	'abusefilter-history-actions' => 'Дїї',
+	'abusefilter-history-deleted' => 'Змазано',
+	'abusefilter-history-filterid' => 'Філтер',
+	'abusefilter-history-select-user' => 'Хоснователь:',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -20511,6 +20530,9 @@ $messages['sr-ec'] = array(
 	'abusefilter-log-details-private' => 'Приватни подаци',
 	'abusefilter-log-noactions' => 'ништа',
 	'abusefilter-log-details-diff' => 'Промене направљене изменом',
+	'abusefilter-list-status' => 'Статус',
+	'abusefilter-list-public' => 'Јавни опис',
+	'abusefilter-list-consequences' => 'Консеквенце',
 	'abusefilter-list-visibility' => 'Видљивост',
 	'abusefilter-list-edit' => 'Измени',
 	'abusefilter-list-details' => 'Детаљи',
@@ -20529,8 +20551,12 @@ $messages['sr-ec'] = array(
 	'abusefilter-edit-status-label' => 'Статистике:',
 	'abusefilter-edit-new' => 'Нови филтер',
 	'abusefilter-edit-save' => 'Сними филтер',
+	'abusefilter-edit-description' => "Опис:
+:''(јавно видљиво)''",
+	'abusefilter-edit-flags' => 'Заставице:',
 	'abusefilter-edit-enabled' => 'Омогући овај филтер',
 	'abusefilter-edit-deleted' => 'Означи као обрисан',
+	'abusefilter-edit-rules' => 'Услови:',
 	'abusefilter-edit-notes' => "Напомене:
 :''(приватно)''",
 	'abusefilter-edit-throttle-period' => 'Временски период:',
@@ -20660,6 +20686,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-test-shownegative' => 'Покажи измене које не одговарају филтеру',
 	'abusefilter-changeslist-examine' => 'прегледај',
 	'abusefilter-examine-legend' => 'Изабери измене',
+	'abusefilter-examine-diff' => 'URL дифа:',
 	'abusefilter-examine-user' => 'Корисник:',
 	'abusefilter-examine-title' => 'Наслов стране:',
 	'abusefilter-examine-submit' => 'Претрага',
