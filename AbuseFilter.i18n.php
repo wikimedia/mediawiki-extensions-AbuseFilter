@@ -9381,6 +9381,7 @@ $messages['haw'] = array(
  * @author Rotemliss
  * @author StuB
  * @author YaronSh
+ * @author Yonidebest
  */
 $messages['he'] = array(
 	'abusefilter-desc' => 'ביצוע בדיקות אוטומטיות לעריכות כדי לאתר השחתות',
@@ -9588,6 +9589,7 @@ $messages['he'] = array(
 	'abusefilter-edit-builder-misc-in' => 'האם נמצא במחרוזת (in)',
 	'abusefilter-edit-builder-misc-like' => 'האם תואם לתבנית (like)',
 	'abusefilter-edit-builder-misc-rlike' => 'תואם לביטוי רגולרי (rlike)',
+	'abusefilter-edit-builder-misc-irlike' => 'ביטוי רגולרי, לא תלוי רישיות (irlike)',
 	'abusefilter-edit-builder-misc-contains' => 'המחרוזת השמאלית מכילה את המחרוזת הימנית (contains)',
 	'abusefilter-edit-builder-misc-stringlit' => 'מחרוזת מילולית ("")',
 	'abusefilter-edit-builder-misc-tern' => 'האופרטור המשולש (X ? Y : Z)',
@@ -18342,18 +18344,27 @@ $messages['ps'] = array(
 	'abusefilter-edit-warn-other' => 'بل پيغام',
 	'abusefilter-edit-history' => 'پېښليک:',
 	'abusefilter-edit-tools' => 'اوزارونه:',
+	'abusefilter-edit-builder-vars-newsize' => 'د نوي مخ کچه',
+	'abusefilter-edit-builder-vars-oldsize' => 'د زوړ مخ کچه',
+	'abusefilter-edit-builder-vars-article-id' => 'د مخ پېژند',
 	'abusefilter-edit-builder-vars-user-age' => 'د کارن-حساب عمر',
 	'abusefilter-edit-builder-vars-user-name' => 'د کارن-حساب نوم',
 	'abusefilter-history-hidden' => 'پټ',
+	'abusefilter-history-enabled' => 'چارن',
 	'abusefilter-history-global' => 'نړېوال',
 	'abusefilter-history-timestamp' => 'وخت',
 	'abusefilter-history-user' => 'کارن',
 	'abusefilter-history-flags' => 'بيرغونه',
+	'abusefilter-history-comments' => 'تبصرې',
 	'abusefilter-history-deleted' => 'ړنګ شو',
 	'abusefilter-history-filterid' => 'چاڼګر',
 	'abusefilter-history-select-user' => 'کارن:',
 	'abusefilter-history-diff' => 'بدلونونه',
+	'abusefilter-action-warn' => 'ګواښنه',
 	'abusefilter-action-block' => 'بنديز لګول',
+	'abusefilter-revert-periodstart' => 'د مودې پيل:',
+	'abusefilter-revert-periodend' => 'د مودې پای:',
+	'abusefilter-revert-search' => 'چارې ټاکل',
 	'abusefilter-revert-filter' => 'چاڼګر:',
 	'abusefilter-test-submit' => 'آزمېښت',
 	'abusefilter-test-load' => 'برسېرول',
