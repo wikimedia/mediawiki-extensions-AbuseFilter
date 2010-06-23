@@ -18970,6 +18970,7 @@ $messages['rif'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author Ervinutz
  * @author Firilacroco
  * @author KlaudiuMihaila
@@ -19199,8 +19200,8 @@ Descrierea filtrului: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-filter-log' => 'Schimbări ale filtrului recente',
 	'abusefilter-history' => 'Istoricul modificărilor pentru Filtrul Abuz #$1',
 	'abusefilter-history-foruser' => 'Schimbări efectuate de $1',
-	'abusefilter-history-hidden' => 'ascuns',
-	'abusefilter-history-enabled' => 'activat',
+	'abusefilter-history-hidden' => 'Ascuns',
+	'abusefilter-history-enabled' => 'Activat',
 	'abusefilter-history-global' => 'Global',
 	'abusefilter-history-timestamp' => 'Timp',
 	'abusefilter-history-user' => 'Utilizator',
@@ -19223,7 +19224,7 @@ Descrierea filtrului: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-exception-notenoughargs' => 'Parametri insuficienți pentru funcția $2 invocată la caracterul $1.
 Se {{PLURAL:$3|aștepta un argument|așteptau $3 argumente}}, {{PLURAL:$4|s-a primit|s-au primit}} $4.',
 	'abusefilter-action-tag' => 'Etichetă',
-	'abusefilter-action-throttle' => 'Limitează modificările',
+	'abusefilter-action-throttle' => 'Limitare',
 	'abusefilter-action-warn' => 'Avertizează',
 	'abusefilter-action-block' => 'Blochează',
 	'abusefilter-action-degroup' => 'Elimină din grupuri',
@@ -19247,12 +19248,12 @@ Motivul dat: $2',
 	'abusefilter-test-period-end' => 'Schimbări efectuate înainte:',
 	'abusefilter-test-page' => 'Schimbări aduse paginii:',
 	'abusefilter-test-shownegative' => 'Arată schimbările care nu se potrivesc filtrului',
-	'abusefilter-changeslist-examine' => 'examinați',
+	'abusefilter-changeslist-examine' => 'examinează',
 	'abusefilter-examine' => 'Examinați schimbările individuale',
-	'abusefilter-examine-legend' => 'Marchează schimbările',
+	'abusefilter-examine-legend' => 'Selectează modificările',
 	'abusefilter-examine-diff' => 'URL diff:',
 	'abusefilter-examine-user' => 'Utilizator:',
-	'abusefilter-examine-title' => 'Titlu pagină:',
+	'abusefilter-examine-title' => 'Titlul paginii:',
 	'abusefilter-examine-submit' => 'Caută',
 	'abusefilter-examine-vars' => 'Variabile generate pentru această schimbare',
 	'abusefilter-examine-test-button' => 'Testați filtru',
