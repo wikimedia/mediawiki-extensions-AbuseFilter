@@ -77,6 +77,8 @@ $wgAvailableRights[] = 'abusefilter-private';
 $wgAvailableRights[] = 'abusefilter-modify-restricted';
 $wgAvailableRights[] = 'abusefilter-revert';
 $wgAvailableRights[] = 'abusefilter-view-private';
+$wgAvailableRights[] = 'abusefilter-hidden-log';
+$wgAvailableRights[] = 'abusefilter-hide-log';
 
 $wgLogTypes[] = 'abusefilter';
 $wgLogNames['abusefilter']          = 'abusefilter-log-name';

@@ -36,8 +36,11 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 
 		$detailsid = $wgRequest->getIntOrNull( 'details' );
+		$hideid = $wgRequest->getIntOrNull( 'hide' );
 		if ( $detailsid ) {
 			$this->showDetails( $detailsid );
+		} elseif ( $hideid ) {
+			$this->showHideForm( $hideid );
 		} else {
 			// Show the search form.
 			$this->searchForm();
@@ -61,7 +64,7 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$this->mSearchTitle = $wgRequest->getText( 'wpSearchTitle' );
 		$this->mSearchFilter = null;
-		if ( $this->canSeeDetails() ) {
+		if ( self::canSeeDetails() ) {
 			$this->mSearchFilter = $wgRequest->getIntOrNull( 'wpSearchFilter' );
 		}
 	}
@@ -75,7 +78,7 @@ class SpecialAbuseLog extends SpecialPage {
 		// Search conditions
 		$fields['abusefilter-log-search-user'] =
 			Xml::input( 'wpSearchUser', 45, $this->mSearchUser );
-		if ( $this->canSeeDetails() ) {
+		if ( self::canSeeDetails() ) {
 			$fields['abusefilter-log-search-filter'] =
 				Xml::input( 'wpSearchFilter', 45, $this->mSearchFilter );
 		}
@@ -91,6 +94,62 @@ class SpecialAbuseLog extends SpecialPage {
 		$output = Xml::tags( 'fieldset', null, $output );
 
 		$wgOut->addHTML( $output );
+	}
+	
+	function showHideForm( $id ) {
+		global $wgOut, $wgUser;
+		
+		if ( ! $wgUser->isAllowed( 'abusefilter-hide-log' ) ) {
+			$wgOut->addWikiMsg( 'abusefilter-log-hide-forbidden' );
+			return;
+		}
+		
+		$dbr = wfGetDB( DB_SLAVE );
+
+		$row = $dbr->selectRow( array( 'abuse_filter_log', 'abuse_filter' ), '*',
+			array( 'afl_id' => $id ), __METHOD__, array(),
+			array( 'abuse_filter' => array( 'LEFT JOIN', 'af_id=afl_filter' ) ) );
+
+		if ( !$row ) {
+			return;
+		}
+		
+		$formInfo = array(
+			'logid' => array(
+				'type' => 'info',
+				'default' => $id,
+				'label-message' => 'abusefilter-log-hide-id',
+			),
+			'reason' => array(
+				'type' => 'text',
+				'label-message' => 'abusefilter-log-hide-reason',
+			),
+			'hidden' => array(
+				'type' => 'toggle',
+				'default' => $row->afl_deleted,
+				'label-message' => 'abusefilter-log-hide-hidden',
+			),
+		);
+		
+		$form = new HTMLForm( $formInfo );
+		$form->setTitle( $this->getTitle() );
+		$form->addHiddenField( 'hide', $id );
+		$form->setSubmitCallback( array( $this, 'saveHideForm' ) );
+		$form->show();
+	}
+	
+	function saveHideForm( $fields ) {
+		global $wgRequest, $wgOut;
+		$logid = $wgRequest->getVal( 'hide' );
+		
+		$dbw = wfGetDB( DB_MASTER );
+		
+		$dbw->update( 'abuse_filter_log', array( 'afl_deleted' => $fields['hidden'] ),
+				array( 'afl_id' => $logid ) );
+				
+		$wgOut->redirect( SpecialPage::getTitleFor( 'AbuseLog' )->getFullURL() );
+		
+		return true;
 	}
 
 	function showList() {
@@ -130,7 +189,7 @@ class SpecialAbuseLog extends SpecialPage {
 	}
 
 	function showDetails( $id ) {
-		if ( !$this->canSeeDetails() ) {
+		if ( !self::canSeeDetails() ) {
 			return;
 		}
 
@@ -141,6 +200,12 @@ class SpecialAbuseLog extends SpecialPage {
 			array( 'abuse_filter' => array( 'LEFT JOIN', 'af_id=afl_filter' ) ) );
 
 		if ( !$row ) {
+			return;
+		}
+		
+		if ( $row->afl_deleted && !self::canSeeHidden() ) {
+			global $wgOut;
+			$wgOut->addWikiMsg( 'abusefilter-log-details-hidden' );
 			return;
 		}
 
@@ -185,7 +250,7 @@ class SpecialAbuseLog extends SpecialPage {
 		// Build a table.
 		$output .= AbuseFilter::buildVarDumpTable( $vars );
 
-		if ( $this->canSeePrivate() ) {
+		if ( self::canSeePrivate() ) {
 			// Private stuff, like IPs.
 			$header =
 				Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-var' ) ) .
@@ -220,17 +285,19 @@ class SpecialAbuseLog extends SpecialPage {
 		$wgOut->addHTML( $output );
 	}
 
-	function canSeeDetails() {
+	static function canSeeDetails() {
 		global $wgUser;
-		return !count( $this->getTitle()->getUserPermissionsErrors(
-			'abusefilter-log-detail', $wgUser, true, array( 'ns-specialprotected' ) ) );
+		return $wgUser->isAllowed( 'abusefilter-log-detail' );
 	}
 
-	function canSeePrivate() {
+	static function canSeePrivate() {
 		global $wgUser;
-		return !count(
-			$this->getTitle()->getUserPermissionsErrors(
-				'abusefilter-private', $wgUser, true, array( 'ns-specialprotected' ) ) );
+		return $wgUser->isAllowed( 'abusefilter-private' );
+	}
+	
+	static function canSeeHidden() {
+		global $wgUser;
+		return $wgUser->isAllowed( 'abusefilter-hidden-log' );
 	}
 
 	function formatRow( $row, $li = true ) {
@@ -238,6 +305,8 @@ class SpecialAbuseLog extends SpecialPage {
 
 		# # One-time setup
 		static $sk = null;
+		
+		$actionLinks = array();
 
 		if ( is_null( $sk ) ) {
 			$sk = $wgUser->getSkin();
@@ -288,7 +357,7 @@ class SpecialAbuseLog extends SpecialPage {
 			$parsed_comments = $wgOut->parseInline( $row->af_public_comments );
 		}
 
-		if ( $this->canSeeDetails() ) {
+		if ( self::canSeeDetails() ) {
 			$examineTitle = SpecialPage::getTitleFor( 'AbuseFilter', 'examine/log/' . $row->afl_id );
 			$detailsLink = $sk->makeKnownLinkObj(
 				$this->getTitle(),
@@ -300,6 +369,20 @@ class SpecialAbuseLog extends SpecialPage {
 				wfMsgExt( 'abusefilter-changeslist-examine', 'parseinline' ),
 				array()
 			);
+			
+			$actionLinks[] = $detailsLink;
+			$actionLinks[] = $examineLink;
+			
+			if ( $wgUser->isAllowed( 'abusefilter-hide-log' ) ) {
+				$hideLink = $sk->link(
+						$this->getTitle(),
+						wfMsg( 'abusefilter-log-hidelink' ),
+						array(),
+						array( 'hide' => $row->afl_id )
+					);
+				
+				$actionLinks[] = $hideLink;
+			}
 
 			if ( $globalIndex ) {
 				global $wgAbuseFilterCentralDB;
@@ -327,8 +410,7 @@ class SpecialAbuseLog extends SpecialPage {
 					$pageLink,
 					$actions_taken,
 					$parsed_comments,
-					$detailsLink,
-					$examineLink
+					$wgLang->pipeList( $actionLinks ),
 				)
 			);
 		} else {
@@ -344,6 +426,11 @@ class SpecialAbuseLog extends SpecialPage {
 					$parsed_comments
 				)
 			);
+		}
+		
+		if ( $row->afl_deleted ) {
+			$description .= ' '.
+				wfMsgExt( 'abusefilter-log-hidden', 'parseinline' );
 		}
 
 		return $li ? Xml::tags( 'li', null, $description ) : $description;
@@ -366,7 +453,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	function getQueryInfo() {
 		$conds = $this->mConds;
 
-		return array(
+		$info = array(
 			'tables' => array( 'abuse_filter_log', 'abuse_filter' ),
 			'fields' => '*',
 			'conds' => $conds,
@@ -378,6 +465,12 @@ class AbuseLogPager extends ReverseChronologicalPager {
 					),
 				),
 		);
+		
+		if ( ! $this->mForm->canSeeHidden() ) {
+			$info['conds']['afl_deleted'] = 0;
+		}
+		
+		return $info;
 	}
 
 	function getIndexField() {
