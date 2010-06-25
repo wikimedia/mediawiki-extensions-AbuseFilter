@@ -106,13 +106,12 @@ Filter description: $7 ($8)',
 	'abusefilter-log-linkoncontribs-text' => 'Abuse Log for this user',
 	'abusefilter-log-hidden' => '(entry hidden)',
 	'abusefilter-log-hide' => 'hide or unhide',
-	'abusefilter-log-details-hidden' => 'You cannot view the details for this entry
-because it is hidden from public view.',
+	'abusefilter-log-details-hidden' => 'You cannot view the details for this entry because it is hidden from public view.',
 
 	// Hiding log entries
 	'abusefilter-log-hide-id' => 'Log entry ID:',
 	'abusefilter-log-hide-hidden' => 'Hide this entry from public view',
-	'abusefilter-log-hide-reason' => 'Reason for hiding this entry:',
+	'abusefilter-log-hide-reason' => 'Reason:',
 	'abusefilter-log-hide-forbidden' => 'You do not have permission to hide
 abuse log entries.',
 
