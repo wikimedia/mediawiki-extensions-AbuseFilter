@@ -100,7 +100,16 @@ class SpecialAbuseLog extends SpecialPage {
 		$conds = array();
 
 		if ( $this->mSearchUser ) {
-			$conds['afl_user_text'] = $this->mSearchUser;
+			$user = User::newFromName( $this->mSearchUser );
+			
+			if ( !$user ) {
+				$conds[] = 'afl_ip=afl_user_text';
+				$conds['afl_user'] = 0;
+				$conds['afl_user_text'] = $this->mSearchUser;
+			} else {			
+				$conds['afl_user'] = $user->getId();
+				$conds['afl_user_text'] = $user->getName();
+			}
 		}
 
 		if ( $this->mSearchFilter ) {
