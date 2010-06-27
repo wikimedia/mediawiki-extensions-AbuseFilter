@@ -177,6 +177,7 @@ class AbuseFilterHooks {
 			$wgExtNewFields[] = array( 'abuse_filter', 'af_deleted', "$dir/db_patches/patch-af_deleted.sql" );
 			$wgExtNewFields[] = array( 'abuse_filter', 'af_actions', "$dir/db_patches/patch-af_actions.sql" );
 			$wgExtNewFields[] = array( 'abuse_filter', 'af_global', "$dir/db_patches/patch-global_filters.sql" );
+			$wgExtNewIndexes[] = array( 'abuse_filter_log', 'filter_timestamp', "$dir/db_patches/patch-fix-indexes.sql" );
 		} elseif ( $wgDBtype == 'postgres' ) {
 			$wgExtNewTables = array_merge( $wgExtNewTables,
 					array(
