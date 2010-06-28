@@ -644,7 +644,7 @@ class AbuseFilter {
 
 			if ( !empty( $actions['warn'] ) ) {
 				$parameters = $actions['warn']['parameters'];
-				$warnKey = 'abusefilter-warned-' . $title->getPrefixedText();
+				$warnKey = 'abusefilter-warned-' . $title->getPrefixedText() . '-' . $filter;
 				if ( !isset( $_SESSION[$warnKey] ) || !$_SESSION[$warnKey] ) {
 					$_SESSION[$warnKey] = true;
 
