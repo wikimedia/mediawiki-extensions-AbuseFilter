@@ -4659,11 +4659,11 @@ $messages['diq'] = array(
 Filitreyê abuseyî yew softwareyê otomatikî ke otomatik heuristics applikasyon keno.
 Ena pele yew listeyê filitreyî mucneno u vurnayîşan rê destur dano.',
 	'abusefilter-mustbeeditor' => 'Qe pawitişî, teyna kerberanê ke pê desturî eşkeno filitreyê abuseyî bivurne.',
-	'abusefilter-warning' => "'''Îkaz''': Ena hereket hewl niyo u zerar dano.
-Ma vurnayîşanê ke zerarin lez wedarneno,
-eyni zeman de, eka ti ser vurnayîşê xo zerarin de zaf israr kenî, ma hesab u IP adrese tu blok kenî.
-Eka ti van vurnayîşê xo konstraktif o ya zi hewl o, reyna qeyd bike.
-Yew deskripsiyonê hereketê tu zerarin: $1",
+	'abusefilter-warning' => "'''Balantış''': Eno hereket otomatikmen zerarın tesbit bi.
+Vurnayışê zerarıni be lerze dariyenê we, 
+u vurnayışo xırabın ya zi zerarın neticey xo hesabê şıma de vêneno ya zi IP-adresa şıma bloke bena.  
+Şıma ke fıkıriyenê no vurnayış hewlo, şenê be tesdiqkerdış ney qeyd kerê.  
+Suistımalkerdışê qeydey sero yew arezekerdışo kılmo ke hereketê şıma eyar keno: $1",
 	'abusefilter-disallowed' => 'Ena hereket hewl niyo u zerar dano,
 ayra destur çini yo.
 Eka ti van vurnayîşê xo konstraktif o ya zi hewl o, yew îdare kerdoğê sîteyî rê mesaj bişirave.
@@ -4863,7 +4863,7 @@ gani etiketi kılm bıbi u tede karakterê xususi çinibi.',
 	'abusefilter-edit-builder-misc-in' => 'String de ca geno (in)',
 	'abusefilter-edit-builder-misc-like' => 'Pattern meç keno',
 	'abusefilter-edit-builder-misc-rlike' => 'Reqex meç keno (rlike)',
-	'abusefilter-edit-builder-misc-irlike' => 'Regex mac nikeno, herfe girdi ferq keno (irlike)',
+	'abusefilter-edit-builder-misc-irlike' => 'Şıkiyeno ra ifadeyo nizamın, nuştışo qıc u gırd (irlike)',
 	'abusefilter-edit-builder-misc-contains' => 'Sol dizi sağ diziyi içeriyor (contains)',
 	'abusefilter-edit-builder-misc-stringlit' => 'Literalê stringî ("")',
 	'abusefilter-edit-builder-misc-tern' => 'Operatorê ternaryî (X ? Y : Z)',
@@ -13102,6 +13102,8 @@ $messages['ko'] = array(
 	'right-abusefilter-modify-restricted' => '부정 행위 방지 필터의 제한적인 기능 설정을 변경',
 	'right-abusefilter-revert' => '주어진 필터에 의한 모든 변경을 되돌리기',
 	'right-abusefilter-view-private' => '비공개된 필터 보기',
+	'right-abusefilter-hide-log' => '부정 행위 기록의 항목 숨기기',
+	'right-abusefilter-hidden-log' => '숨겨진 부정 행위 기록 보기',
 	'action-abusefilter-modify' => '부정 행위 방지 필터를 수정할',
 	'action-abusefilter-view' => '부정행위 방지 필터를 볼',
 	'action-abusefilter-log' => '부정 행위 기록을 볼',
@@ -13127,6 +13129,7 @@ $messages['ko'] = array(
 	'abusefilter-log-detailedentry-global' => '공통 필터 $1',
 	'abusefilter-log-detailedentry-local' => '필터 $1',
 	'abusefilter-log-detailslink' => '자세한 정보',
+	'abusefilter-log-hidelink' => '보이기 설정',
 	'abusefilter-log-details-legend' => '로그 $1에 대한 자세한 정보',
 	'abusefilter-log-details-var' => '변수',
 	'abusefilter-log-details-val' => '값',
@@ -13143,6 +13146,7 @@ $messages['ko'] = array(
 	'abusefilter-log-hide-id' => '로그 항목 자료 ID :',
 	'abusefilter-log-hide-hidden' => '이 항목을 비공개로 설정',
 	'abusefilter-log-hide-reason' => '이유:',
+	'abusefilter-log-hide-forbidden' => '당신은 부정 행위 기록 항목을 숨길 권한이 없습니다.',
 	'abusefilter-management' => '부정 행위 방지 필터 관리',
 	'abusefilter-list' => '모든 필터',
 	'abusefilter-list-id' => '필터 ID',
