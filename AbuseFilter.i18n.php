@@ -943,6 +943,7 @@ $messages['an'] = array(
 /** Arabic (العربية)
  * @author Alnokta
  * @author Ciphers
+ * @author Loya
  * @author Meno25
  * @author Orango
  * @author OsamaK
@@ -988,6 +989,7 @@ $messages['ar'] = array(
 	'right-abusefilter-modify-restricted' => 'عدل مرشحات الإساءة مع الأفعال المحظورة',
 	'right-abusefilter-revert' => 'استرجع كل التعديلات لمرشح إساءة محدد.',
 	'right-abusefilter-view-private' => 'اعرض مرشحات الإساءة المعلّمة كخاصة',
+	'right-abusefilter-hide-log' => 'إخفاء إدخالات سجل الإساءة',
 	'action-abusefilter-modify' => 'تعديل مرشحات الإساءة',
 	'action-abusefilter-view' => 'رؤية مرشحات الإساءة',
 	'action-abusefilter-log' => 'رؤية سجل الإساءة',
@@ -1002,6 +1004,7 @@ $messages['ar'] = array(
 	'abusefilter-log-search-user' => 'المستخدم:',
 	'abusefilter-log-search-filter' => 'رقم المُرشِّح:',
 	'abusefilter-log-search-title' => 'العنوان:',
+	'abusefilter-log-show-deleted' => 'أظهر التصنيفات المخفية',
 	'abusefilter-log-search-submit' => 'ابحث',
 	'abusefilter-log-entry' => '$1: $2 فعل مرشح إساءة، مؤديا الفعل "$3" في $4.
 الأفعال المتخذة: $5;
@@ -1022,6 +1025,8 @@ $messages['ar'] = array(
 	'abusefilter-log-details-diff' => 'التغييرات المعمولة في التعديل',
 	'abusefilter-log-linkoncontribs' => 'سجل الإساءة',
 	'abusefilter-log-linkoncontribs-text' => 'سجل الإساءة لهذا المستخدم',
+	'abusefilter-log-hide-reason' => 'السبب',
+	'abusefilter-log-hide-forbidden' => 'ليس لديك صلاحية لإخفاء إدخالات سجل الإساءة',
 	'abusefilter-management' => 'التحكم بمرشح الإساءة',
 	'abusefilter-list' => 'كل المرشحات',
 	'abusefilter-list-id' => 'رقم المُرشِّح',
@@ -5448,6 +5453,13 @@ Za połne drobnostki glědaj [[Special:AbuseFilter/history|lisćinu]] nejnowšyc
 	'abusefilter-import-intro' => 'Móžoš toś ten interfejs wužywaś, aby importěrował filtry z drugich wikijow.
 Klikni w žrědłowem wikiju na "{{int:abusefilter-edit-export}}" pód "{{int:abusefilter-tools-subtitle}}" na wobźěłowańskem interfejsu. Kopěruj z tekstowego póla, kótarež se pokazujo do toś togo tekstowego póla a klikni pótom na "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'Daty importěrowaś',
+);
+
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'abusefilter-log-search-submit' => 'Dii',
+	'abusefilter-list-edit' => 'Trɔ asi le eŋu',
+	'abusefilter-examine-submit' => 'Dii',
 );
 
 /** Greek (Ελληνικά)
@@ -24416,6 +24428,11 @@ $messages['vo'] = array(
 	'abusefilter-edit-status-label' => 'Statits:',
 	'abusefilter-edit-lastmod-text' => '$1, fa $2',
 	'abusefilter-history-user' => 'Geban',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'abusefilter-log-hide-reason' => '理由：',
 );
 
 /** Kalmyk (Хальмг)
