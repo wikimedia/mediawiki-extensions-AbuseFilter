@@ -11819,6 +11819,7 @@ $messages['io'] = array(
 	'abusefilter-log-search-title' => 'Titulo:',
 	'abusefilter-log-search-submit' => 'Serchez',
 	'abusefilter-log-noactions' => 'nula',
+	'abusefilter-log-hide-reason' => 'Motivo:',
 	'abusefilter-list' => 'Omna filtrili',
 	'abusefilter-list-status' => 'Stando',
 	'abusefilter-list-edit' => 'Redaktar',
