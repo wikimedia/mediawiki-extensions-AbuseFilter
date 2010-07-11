@@ -15595,9 +15595,9 @@ $messages['ml'] = array(
 കൂടുതലായി സുരക്ഷാ മാനദണ്ഡമെന്ന നിലയിൽ, മതിപ്പുനേടിയ അംഗത്വങ്ങൾക്ക് സമ്പ്രദായികമായി ലഭിച്ചു പോരുന്ന ചില അവകാശങ്ങൾ താങ്കളുടെ അംഗത്വത്തിൽ നിന്നും താത്കാലികമായി നീക്കം ചെയ്തിരിക്കുന്നു.
 താങ്കളുടെ പ്രവൃത്തിയുമായി ചേർന്നു പ്രവർത്തിച്ച ദുരുപയോഗനിയമത്തിന്റെ ലഘു വിവരണം കാണുക: $1',
 	'abusefilter-blocker' => 'ദുരുപയോഗ അരിപ്പ',
-	'abusefilter-blockreason' => 'ദുരുപയോഗ അരിപ്പ ഉപയോഗിച്ച് സ്വതവേ തടയപ്പെട്ടിരിക്കുന്നു.
+	'abusefilter-blockreason' => 'ദുരുപയോഗ അരിപ്പ ഉപയോഗിച്ച് സ്വതേ തടയപ്പെട്ടിരിക്കുന്നു.
 ഒത്തുപോവുന്ന നിയമത്തിന്റെ വിവരണം: $1',
-	'abusefilter-degroupreason' => 'ദുരുപയോഗ അരിപ്പ അവകാശങ്ങൾ സ്വതവേ അരിഞ്ഞുമാറ്റിയിരിക്കുന്നു.
+	'abusefilter-degroupreason' => 'ദുരുപയോഗ അരിപ്പ അവകാശങ്ങൾ സ്വതേ അരിഞ്ഞുമാറ്റിയിരിക്കുന്നു.
 നയ വിവരണം: $1',
 	'abusefilter-accountreserved' => 'ഈ അംഗത്വനാമം ദുരുപയോഗ അരിപ്പയുടെ ഉപയോഗത്തിനായി മാറ്റിവെച്ചിരിക്കുകയാണ്.',
 	'right-abusefilter-modify' => 'ദുരുപയോഗ അരിപ്പകൾ പുതുക്കുക',
@@ -15829,7 +15829,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-builder-vars-user-editcount' => 'ഉപയോക്താവിന്റെ തിരുത്തലുകളുടെ എണ്ണം',
 	'abusefilter-edit-builder-vars-user-age' => 'ഉപയോക്തൃ അംഗത്വത്തിന്റെ പ്രായം',
 	'abusefilter-edit-builder-vars-user-name' => 'ഉപയോക്തൃ അംഗത്വത്തിന്റെ നാമം',
-	'abusefilter-edit-builder-vars-user-groups' => 'ഉപയോക്താവ് ഉൾപ്പെട്ട (സ്വതവേ ഉൾപ്പെട്ടത് ഉൾപ്പെടെ) സംഘങ്ങൾ',
+	'abusefilter-edit-builder-vars-user-groups' => 'ഉപയോക്താവ് ഉൾപ്പെട്ട (സ്വതേ ഉൾപ്പെട്ടത് ഉൾപ്പെടെ) സംഘങ്ങൾ',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'ഇമെയിൽ വിലാസം സ്ഥിരീകരിച്ച സമയം',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'താളിൽ സേവനങ്ങൾ ചെയ്ത അവസാനത്തെ പത്ത് ഉപയോക്താക്കൾ',
 	'abusefilter-edit-builder-vars-all-links' => 'പുതിയ എഴുത്തിലുള്ള പുറത്തേയ്ക്കുള്ള കണ്ണികൾ എല്ലാം',
@@ -15875,7 +15875,7 @@ $messages['ml'] = array(
 	'abusefilter-exception-dividebyzero' => 'അക്ഷരം $1-ൽ പൂജ്യം കൊണ്ട് $2-വിനെ ഹരിക്കാനുള്ള ആസാധുവായ ശ്രമം.',
 	'abusefilter-exception-unrecognisedvar' => '$1 അക്ഷരത്തിങ്കൽ തിരിച്ചറിയാൻ കഴിയാത്ത ചരം $2',
 	'abusefilter-exception-regexfailure' => '"$3"റെഗുലർ എക്സ്‌‌പ്രെഷനിൽ $1 അക്ഷരത്തിങ്കൽ പിഴവുണ്ട്: "$2"',
-	'abusefilter-exception-overridebuiltin' => 'സ്വതവേയുള്ള ചരമായ "$2" അക്ഷരം $1-ൽ അനധികൃതമായി അതിലംഘിച്ചിരിക്കുന്നു.',
+	'abusefilter-exception-overridebuiltin' => 'സ്വതേയുള്ള ചരമായ "$2" അക്ഷരം $1-ൽ അനധികൃതമായി അതിലംഘിച്ചിരിക്കുന്നു.',
 	'abusefilter-exception-outofbounds' => 'നിലവിലില്ലാത്ത പട്ടികയിലെ ഇനം $2 (പട്ടികയുടെ വലിപ്പം =$3) അക്ഷരം $1-ൽ ആവശ്യപ്പെട്ടിരിക്കുന്നു.',
 	'abusefilter-action-tag' => 'റ്റാഗ്',
 	'abusefilter-action-throttle' => 'ത്വരണി',
@@ -18582,11 +18582,13 @@ $messages['ps'] = array(
 	'abusefilter-list' => 'ټول چاڼګران',
 	'abusefilter-list-status' => 'دريځ',
 	'abusefilter-list-edit' => 'سمون',
+	'abusefilter-hidden' => 'شخصي',
 	'abusefilter-deleted' => 'ړنګ شو',
 	'abusefilter-new' => 'يو نوی چاڼګر جوړول',
 	'abusefilter-tools-modifiertest-submit' => 'آزمېښت',
 	'abusefilter-status-global' => 'نړېوال',
 	'abusefilter-list-options' => 'خوښنې',
+	'abusefilter-list-options-deleted' => 'ړنګ شوي چاڼګران:',
 	'abusefilter-list-options-submit' => 'اوسمهالول',
 	'abusefilter-tools-subtitle' => 'اوزارونه',
 	'abusefilter-tools-reautoconfirm-user' => 'کارن:',
