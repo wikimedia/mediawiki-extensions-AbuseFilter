@@ -11476,6 +11476,8 @@ Keterangan mengenai peraturan terkait: $1',
 	'right-abusefilter-modify-restricted' => 'Memodifikasi filter penyalahgunaan dengan tindakan terbatas',
 	'right-abusefilter-revert' => 'Mengembalikan semua perubahan yang dilakukan oleh suatu filter penyalahgunaan yang ditentukan',
 	'right-abusefilter-view-private' => 'Lihat penyaringan penyalahgunaan yang ditandai sebagai pribadi',
+	'right-abusefilter-hide-log' => 'Sembunyikan entri di dalam log penyalahgunaan',
+	'right-abusefilter-hidden-log' => 'Lihat entri log penyalahgunaan tersembunyi',
 	'action-abusefilter-modify' => 'memodifikasi filter penyalahgunaan',
 	'action-abusefilter-view' => 'tampilkan filter penyalahgunaan',
 	'action-abusefilter-log' => 'tampilkan log penyalahgunaan',
@@ -11490,6 +11492,7 @@ Keterangan mengenai peraturan terkait: $1',
 	'abusefilter-log-search-user' => 'Pengguna:',
 	'abusefilter-log-search-filter' => 'ID filter:',
 	'abusefilter-log-search-title' => 'Judul:',
+	'abusefilter-log-show-deleted' => 'Tampilkan entri yang disembunyikan',
 	'abusefilter-log-search-submit' => 'Cari',
 	'abusefilter-log-entry' => '$1: $2 memicu salah satu filter penyalahgunaan, dengan melakukan "$3" pada $4.
 Tindakan yang diambil: $5;
@@ -11500,6 +11503,7 @@ Keterangan filter: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'filter global $1',
 	'abusefilter-log-detailedentry-local' => 'filter $1',
 	'abusefilter-log-detailslink' => 'rincian',
+	'abusefilter-log-hidelink' => 'sesuaikan tampilan',
 	'abusefilter-log-details-legend' => 'Rincian untuk entri log $1',
 	'abusefilter-log-details-var' => 'Variabel',
 	'abusefilter-log-details-val' => 'Nilai',
@@ -11510,7 +11514,14 @@ Keterangan filter: $7 ($8)',
 	'abusefilter-log-details-diff' => 'Perubahan dalam suntingan',
 	'abusefilter-log-linkoncontribs' => 'log penyalahgunaan',
 	'abusefilter-log-linkoncontribs-text' => 'Log Penyalahgunaan untuk pengguna ini',
+	'abusefilter-log-hidden' => '(entri disembunyikan)',
+	'abusefilter-log-hide' => 'sembunyikan atau jangan sembunyikan',
+	'abusefilter-log-details-hidden' => 'Anda tidak dapat melihat rincian entri ini karena telah disembunyikan dari publik.',
+	'abusefilter-log-hide-id' => 'ID entri log:',
+	'abusefilter-log-hide-hidden' => 'Sembunyikan entri ini dari publik',
 	'abusefilter-log-hide-reason' => 'Alasan:',
+	'abusefilter-log-hide-forbidden' => 'Anda tidak memiliki izin untuk menyembunyikan
+entri log penyalahgunaan.',
 	'abusefilter-management' => 'Manajemen filter penyalahgunaan',
 	'abusefilter-list' => 'Semua filter',
 	'abusefilter-list-id' => 'ID filter',
@@ -23410,6 +23421,7 @@ Görünen metin kutusundan kopyalayın, ve bu metin kutusuna yapıştırın, dah
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author JenVan
  * @author NickK
  * @author Prima klasy4na
  * @author SamOdin
@@ -23457,6 +23469,7 @@ $messages['uk'] = array(
 	'right-abusefilter-revert' => 'Відкіт змін, зроблених фільтром редагувань',
 	'right-abusefilter-view-private' => 'перегляд прихованих фільтрів редагувань',
 	'right-abusefilter-hide-log' => 'приховання записів у журналі зловживань',
+	'right-abusefilter-hidden-log' => 'Перегляд прихованих записів журналу зловживань',
 	'action-abusefilter-modify' => 'змінювати фільтри редагувань',
 	'action-abusefilter-view' => 'переглядати фільтри редагувань',
 	'action-abusefilter-log' => 'переглядати журнал зловживань',
@@ -23471,6 +23484,7 @@ $messages['uk'] = array(
 	'abusefilter-log-search-user' => 'Користувач:',
 	'abusefilter-log-search-filter' => 'Ідентифікатор фільтра:',
 	'abusefilter-log-search-title' => 'Заголовок:',
+	'abusefilter-log-show-deleted' => 'Показувати приховані записи',
 	'abusefilter-log-search-submit' => 'Знайти',
 	'abusefilter-log-entry' => '$1: $2 запустив фільтр редагувань, виконуючи "$3" на сторінці $4.
 Ужиті заходи: $5.
@@ -23481,6 +23495,7 @@ $messages['uk'] = array(
 	'abusefilter-log-detailedentry-global' => 'глобальний фільтр $1',
 	'abusefilter-log-detailedentry-local' => 'фільтр $1',
 	'abusefilter-log-detailslink' => 'деталі',
+	'abusefilter-log-hidelink' => 'налаштувати видимість',
 	'abusefilter-log-details-legend' => 'Деталі журнального запису $1',
 	'abusefilter-log-details-var' => 'Змінна',
 	'abusefilter-log-details-val' => 'Значення',
@@ -23491,7 +23506,14 @@ $messages['uk'] = array(
 	'abusefilter-log-details-diff' => 'Зміни, зроблені при редагуванні',
 	'abusefilter-log-linkoncontribs' => 'журнал зловживань',
 	'abusefilter-log-linkoncontribs-text' => 'Журнал зловживань цього користувача',
+	'abusefilter-log-hidden' => '(запис приховано)',
+	'abusefilter-log-hide' => 'приховати або відобразити',
+	'abusefilter-log-details-hidden' => 'Ви не можете проглянути докладну інформацію про цей фільтр, оскільки вона прихована від звичайних користувачів.',
+	'abusefilter-log-hide-id' => 'ID записи журналу:',
+	'abusefilter-log-hide-hidden' => 'Приховати цей запис від інших користувачів.',
 	'abusefilter-log-hide-reason' => 'Причина:',
+	'abusefilter-log-hide-forbidden' => 'У вас немає дозволу, щоб приховувати
+записи журналу зловживань.',
 	'abusefilter-management' => 'Управління фільтром редагувань',
 	'abusefilter-list' => 'Усі фільтри',
 	'abusefilter-list-id' => 'ІД фільтра',
