@@ -22136,6 +22136,7 @@ $messages['te'] = array(
 	'abusefilter-log-details-diff' => 'దిద్దుబాటులో చేసిన మార్పులు',
 	'abusefilter-log-linkoncontribs' => 'దుర్వినియోగాల చిట్టా',
 	'abusefilter-log-linkoncontribs-text' => 'ఈ వాడుకరి యొక్క దుర్వినియోగాల చిట్టా',
+	'abusefilter-log-hide-reason' => 'కారణం:',
 	'abusefilter-management' => 'దుర్వినియోగ వడపోతల నిర్వహణ',
 	'abusefilter-list' => 'అన్ని వడపోతలు',
 	'abusefilter-list-status' => 'స్థితి',
