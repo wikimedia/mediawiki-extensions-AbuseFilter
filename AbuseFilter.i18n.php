@@ -18143,6 +18143,7 @@ $messages['pdc'] = array(
 	'abusefilter-log-search-title' => 'Titel:',
 	'abusefilter-log-search-submit' => 'Uffgucke',
 	'abusefilter-log-noactions' => 'ken',
+	'abusefilter-log-hide-reason' => 'Grund:',
 	'abusefilter-list-edit' => 'Ennere',
 	'abusefilter-hidden' => 'Private',
 	'abusefilter-tools-subtitle' => 'Gscharr',
