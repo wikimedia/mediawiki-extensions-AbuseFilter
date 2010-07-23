@@ -36,7 +36,6 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 
 	public function execute() {
 		global $wgUser;
-		$this->getMain()->setVaryCookie();
 		if ( !$wgUser->isAllowed( 'abusefilter-view' ) )
 			$this->dieUsage( 'You don\'t have permission to view abuse filters', 'permissiondenied' );
 
