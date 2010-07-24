@@ -6,7 +6,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	function show() {
 		$filter = $this->mPage->mFilter;
 
-		global $wgUser, $wgRequest, $wgOut;
+		global $wgUser, $wgOut;
 		$sk = $wgUser->getSkin();
 
 		if ( !$wgUser->isAllowed( 'abusefilter-revert' ) ) {

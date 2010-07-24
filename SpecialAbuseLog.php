@@ -70,7 +70,7 @@ class SpecialAbuseLog extends SpecialPage {
 	}
 
 	function searchForm() {
-		global $wgOut, $wgUser;
+		global $wgOut;
 
 		$output = Xml::element( 'legend', null, wfMsg( 'abusefilter-log-search' ) );
 		$fields = array();

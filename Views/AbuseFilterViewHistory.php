@@ -221,7 +221,7 @@ class AbuseFilterHistoryPager extends TablePager {
 				),
 		);
 
-		global $wgRequest, $wgUser;
+		global $wgUser;
 
 		if ( $this->mUser ) {
 			$info['conds']['afh_user_text'] = $this->mUser;

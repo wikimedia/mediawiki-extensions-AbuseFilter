@@ -4,7 +4,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 
 class AbuseFilterViewTools extends AbuseFilterView {
 	function show() {
-		global $wgRequest, $wgOut, $wgUser;
+		global $wgOut, $wgUser;
 
 		// Header
 		$wgOut->setSubTitle( wfMsg( 'abusefilter-tools-subtitle' ) );

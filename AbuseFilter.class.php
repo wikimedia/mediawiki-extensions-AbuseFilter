@@ -692,7 +692,7 @@ class AbuseFilter {
 	}
 
 	public static function filterAction( $vars, $title ) {
-		global $wgUser, $wgMemc, $wgTitle;
+		global $wgUser, $wgTitle;
 
 		wfProfileIn( __METHOD__ );
 

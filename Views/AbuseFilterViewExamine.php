@@ -4,7 +4,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 
 class AbuseFilterViewExamine extends AbuseFilterView {
 	function show() {
-		global $wgOut, $wgUser;
+		global $wgOut;
 
 		$wgOut->setPageTitle( wfMsg( 'abusefilter-examine' ) );
 		$wgOut->addWikiMsg( 'abusefilter-examine-intro' );
@@ -25,7 +25,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	}
 
 	function showSearch() {
-		global $wgUser, $wgOut;
+		global $wgOut;
 
 		// Add selector
 		$selector = '';
