@@ -485,6 +485,7 @@ Copy from the textbox that appears, and paste it into this textbox, then click "
  * @author Purodha
  * @author Raymond
  * @author Siebrand
+ * @author The Evil IP address
  * @author Translationista
  * @author Umherirrender
  */
@@ -590,28 +591,28 @@ Parameters:
 	'abusefilter-edit-builder-misc-like' => 'Do not translate "(like)"',
 	'abusefilter-edit-builder-misc-rlike' => '{{doc-important|Do not translate "rlike"}}',
 	'abusefilter-edit-builder-misc-irlike' => '{{doc-important|Do  not translate "irlike"}}',
-	'abusefilter-edit-builder-misc-contains' => 'Jangan terjemahkan "(contains)".',
-	'abusefilter-edit-builder-misc-tern' => 'Jangan rubah "(X ? Y : Z)".',
+	'abusefilter-edit-builder-misc-contains' => 'Don\'t translate "(contains)".',
+	'abusefilter-edit-builder-misc-tern' => 'Don\'t change "(X ? Y : Z)".',
 	'abusefilter-edit-builder-misc-cond' => 'Jangan rubah "(if X then Y else Z)".',
-	'abusefilter-edit-builder-funcs-length' => "{{doc-important|Jangan terjemahkan \"'''(length)'''\"}}",
-	'abusefilter-edit-builder-funcs-lcase' => "{{doc-important|Jangan terjemahkan \"'''(lcase)'''\"}}",
-	'abusefilter-edit-builder-funcs-ccnorm' => "{{doc-important|Jangan terjemahkan \"'''(ccnorm)'''\"}}",
-	'abusefilter-edit-builder-funcs-rmdoubles' => '{{doc-important|Jangan terjemahkan "\'\'\'(rmdoubles)\'\'\'"}}
+	'abusefilter-edit-builder-funcs-length' => "{{doc-important|Do not translate \"'''(length)'''\"}}",
+	'abusefilter-edit-builder-funcs-lcase' => "{{doc-important|Do not translate \"'''(lcase)'''\"}}",
+	'abusefilter-edit-builder-funcs-ccnorm' => "{{doc-important|Do not translate \"'''(ccnorm)'''\"}}",
+	'abusefilter-edit-builder-funcs-rmdoubles' => '{{doc-important|Do not translate "\'\'\'(rmdoubles)\'\'\'"}}
 
-Penjelasan fungsi: rmdoubles membuang karakter berulang dalam argumen, dan kembali ke hasil. Contohnya: "foobybboo" akan menjadi "fobybo"',
-	'abusefilter-edit-builder-funcs-specialratio' => "{{doc-important|Jangan terjemahkan \"'''(specialratio)'''\"}}",
-	'abusefilter-edit-builder-funcs-norm' => "{{doc-important|Jangan terjemahkan \"'''(norm)'''\"}}",
+Functional explanation: rmdoubles removes repeated characters in the argument, and returns the result. For example: "foobybboo" will return "fobybo"',
+	'abusefilter-edit-builder-funcs-specialratio' => "{{doc-important|Do not translate \"'''(specialratio)'''\"}}",
+	'abusefilter-edit-builder-funcs-norm' => "{{doc-important|Do not translate \"'''(norm)'''\"}}",
 	'abusefilter-edit-builder-funcs-count' => "{{doc-important|Do not translate \"'''(count)'''\"}}",
-	'abusefilter-edit-builder-funcs-rcount' => '{{doc-important|Jangan terjemahkan "rcount"}}',
-	'abusefilter-edit-builder-funcs-rmwhitespace' => "{{doc-important|Jangan terjemahkan \"'''(rmwhitespace)'''\"}}",
-	'abusefilter-edit-builder-funcs-rmspecials' => "{{doc-important|Jangan terjemahkan \"'''(rmspecials)'''\"}}",
+	'abusefilter-edit-builder-funcs-rcount' => '{{doc-important|Do not translate "rcount"}}',
+	'abusefilter-edit-builder-funcs-rmwhitespace' => "{{doc-important|Do not translate \"'''(rmwhitespace)'''\"}}",
+	'abusefilter-edit-builder-funcs-rmspecials' => "{{doc-important|Do not translate \"'''(rmspecials)'''\"}}",
 	'abusefilter-edit-builder-funcs-ip_in_range' => "{{doc-important|Jangan terjemahkan \"'''(ip_in_range)'''\"}}",
 	'abusefilter-edit-builder-funcs-contains-any' => "{{doc-important|Jangan terjemahkan \"'''(contains_any)'''\"}}",
 	'abusefilter-edit-builder-funcs-substr' => "{{doc-important|Jangan terjemahkan \"'''(substr)'''\"}}",
 	'abusefilter-edit-builder-funcs-strpos' => "{{doc-important|Jangan terjemahkan \"'''(strpos)'''\"}}",
 	'abusefilter-edit-builder-funcs-str_replace' => "{{doc-important|Do not translate \"'''(str_replace)'''\"}}",
 	'abusefilter-edit-builder-group-vars' => '{{Identical|Variabel}}',
-	'abusefilter-edit-builder-vars-accountname' => 'Variabel ini digunakan hanya pada pembuatan akun dan berisi nama pengguna baru dari pembuat akun baru',
+	'abusefilter-edit-builder-vars-accountname' => 'This variable is used only during account creation and contains the username of the newly created account',
 	'abusefilter-edit-builder-vars-action' => '{{Identical|Action}}',
 	'abusefilter-edit-builder-vars-newsize' => 'New size of the page',
 	'abusefilter-edit-builder-vars-oldsize' => 'Old size of the page',
