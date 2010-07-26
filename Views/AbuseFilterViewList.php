@@ -145,8 +145,6 @@ class AbuseFilterPager extends TablePager {
 	}
 
 	function getQueryInfo() {
-		$dbr = wfGetDB( DB_SLAVE );
-		$abuse_filter = $dbr->tableName( 'abuse_filter' );
 		return array(
 			'tables' => array( 'abuse_filter' ),
 			'fields' => array(
