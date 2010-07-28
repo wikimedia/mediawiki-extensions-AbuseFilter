@@ -474,6 +474,7 @@ Copy from the textbox that appears, and paste it into this textbox, then click "
  * @author Darth Kule
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Hamilton Abreu
  * @author Iwan Novirion
  * @author Jon Harald Søby
  * @author Kwj2772
@@ -606,17 +607,17 @@ Functional explanation: rmdoubles removes repeated characters in the argument, a
 	'abusefilter-edit-builder-funcs-rcount' => '{{doc-important|Do not translate "rcount"}}',
 	'abusefilter-edit-builder-funcs-rmwhitespace' => "{{doc-important|Do not translate \"'''(rmwhitespace)'''\"}}",
 	'abusefilter-edit-builder-funcs-rmspecials' => "{{doc-important|Do not translate \"'''(rmspecials)'''\"}}",
-	'abusefilter-edit-builder-funcs-ip_in_range' => "{{doc-important|Jangan terjemahkan \"'''(ip_in_range)'''\"}}",
-	'abusefilter-edit-builder-funcs-contains-any' => "{{doc-important|Jangan terjemahkan \"'''(contains_any)'''\"}}",
-	'abusefilter-edit-builder-funcs-substr' => "{{doc-important|Jangan terjemahkan \"'''(substr)'''\"}}",
-	'abusefilter-edit-builder-funcs-strpos' => "{{doc-important|Jangan terjemahkan \"'''(strpos)'''\"}}",
+	'abusefilter-edit-builder-funcs-ip_in_range' => "{{doc-important|Do not translate \"'''(ip_in_range)'''\"}}",
+	'abusefilter-edit-builder-funcs-contains-any' => "{{doc-important|Do not translate \"'''(contains_any)'''\"}}",
+	'abusefilter-edit-builder-funcs-substr' => "{{doc-important|Do not translate \"'''(substr)'''\"}}",
+	'abusefilter-edit-builder-funcs-strpos' => "{{doc-important|Do not translate \"'''(strpos)'''\"}}",
 	'abusefilter-edit-builder-funcs-str_replace' => "{{doc-important|Do not translate \"'''(str_replace)'''\"}}",
-	'abusefilter-edit-builder-group-vars' => '{{Identical|Variabel}}',
+	'abusefilter-edit-builder-group-vars' => '{{Identical|Variable}}',
 	'abusefilter-edit-builder-vars-accountname' => 'This variable is used only during account creation and contains the username of the newly created account',
 	'abusefilter-edit-builder-vars-action' => '{{Identical|Action}}',
 	'abusefilter-edit-builder-vars-newsize' => 'New size of the page',
 	'abusefilter-edit-builder-vars-oldsize' => 'Old size of the page',
-	'abusefilter-edit-builder-vars-article-ns' => '&lt;abusefilter-edit-builder-vars-article-ns&gt;',
+	'abusefilter-edit-builder-vars-article-ns' => 'The namespace that the page for the trigger is supposed to be in.',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'Paraphrase: The page ID of the page to be moved',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Paraphrase: Namespace of the page that is to be moved',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Paraphrase: Name of the page that is to be moved',
@@ -11840,13 +11841,16 @@ Salin dari kotak teks yang muncul, dan tempelkan di kotak teks ini, lalu klik "{
 	'abusefilter-import-submit' => 'Impor data',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
 	'abusefilter-log-search-submit' => 'Chöwá',
 	'abusefilter-list-edit' => 'Rüwa',
 	'abusefilter-edit-warn-actions' => 'Mmèmé:',
 	'abusefilter-history-actions' => 'Mmèmé',
 	'abusefilter-examine-submit' => 'Chöwá',
+	'abusefilter-diff-item' => 'Ihnye',
 );
 
 /** Ido (Ido)
@@ -13667,6 +13671,7 @@ Name',
 	'abusefilter-log-details-diff' => 'De Änderunge',
 	'abusefilter-log-linkoncontribs' => 'Logbooch vum Meßbruchsfelter',
 	'abusefilter-log-linkoncontribs-text' => 'Logbooch fum Meßbruchsfelter för dä Metmaacher',
+	'abusefilter-log-hide-reason' => 'Jrond:',
 	'abusefilter-management' => 'Meßbruchsfellter Verwallde',
 	'abusefilter-list' => 'All Feltere',
 	'abusefilter-list-id' => 'Felter-Räjel',
@@ -19516,7 +19521,7 @@ $messages['rif'] = array(
  */
 $messages['ro'] = array(
 	'abusefilter-desc' => 'Aplică euristici automate modificărilor.',
-	'abusefilter' => 'Configurează filtrul de abuz',
+	'abusefilter' => 'Configurare filtru de abuz',
 	'abuselog' => 'Jurnal abuz',
 	'abusefilter-mustbeeditor' => 'Din motive de securitate, doar utilizatorii cu dreptul de a modifica filtrele de abuzare pot utiliza această interfață.',
 	'abusefilter-warning' => "'''Atenție''': Această acțiune a fost identificată automat ca fiind periculoasă.
@@ -24310,6 +24315,7 @@ Mô tả bộ lọc: $7 ($8)',
 	'abusefilter-log-hide' => 'hiện hay ẩn',
 	'abusefilter-log-details-hidden' => 'Bạn không có quyền xem chi tiết mục ẩn này.',
 	'abusefilter-log-hide-id' => 'ID của mục nhật trình:',
+	'abusefilter-log-hide-hidden' => 'Ẩn mục này khỏi công cộng',
 	'abusefilter-log-hide-reason' => 'Lý do:',
 	'abusefilter-log-hide-forbidden' => 'Bạn không có quyền ẩn mục trong nhật ký lạm dụng.',
 	'abusefilter-management' => 'Quản lý bộ lọc sai phạm',
