@@ -14050,6 +14050,7 @@ $messages['la'] = array(
 $messages['lad'] = array(
 	'abusefilter-desc' => 'A los trocamientos, aplica maneras topadores (eurísticas)',
 	'abusefilter' => 'Konfiggurasyón del filtro contra-abusos',
+	'abuselog' => 'Rējistro del filtro antiabusos',
 	'abusefilter-intro' => 'Buenas venidas a la interfaz de administrasyón de filtros de trocamientos.
 El filtro de trocamientos es un mekanismo de software otomatizado que aplica maneras topaderas (eurísticas) a todas las aksyones.
 Esta interfaz mostra una lista de filtros dēfinidos i da permisyón de trocarlos.',
@@ -14057,6 +14058,8 @@ Esta interfaz mostra una lista de filtros dēfinidos i da permisyón de trocarlo
 	'abusefilter-blockreason' => 'Bloqueado de sí para sí, de la parte del filtro contra-abusos.
 Deskripsyón del filtro alcançado: $1',
 	'abusefilter-accountreserved' => 'El nombre de este cuento está reservado para el uso de la parte del filtro contra-abusos',
+	'abusefilter-log-details-val' => 'Valor',
+	'abusefilter-log-hide-reason' => 'Razón:',
 	'abusefilter-list' => 'Todos los filtros',
 	'abusefilter-list-id' => 'Número de filtro',
 	'abusefilter-list-consequences' => 'Consegüenças',
@@ -14069,23 +14072,30 @@ Deskripsyón del filtro alcançado: $1',
 	'abusefilter-disabled' => 'Desactivado',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|alcanço|alcanços}}',
 	'abusefilter-links' => 'Linkes provechosos',
+	'abusefilter-status-global' => 'Globbal',
 	'abusefilter-list-options' => 'Opsyones',
 	'abusefilter-list-options-deleted' => 'Los filtros efassados:',
+	'abusefilter-tools-reautoconfirm-user' => 'Usador:',
+	'abusefilter-edit-new' => 'Nuevo filtro',
 	'abusefilter-edit-id' => 'Número de filtro:',
 	'abusefilter-edit-hitcount' => 'Los filtros alcançados:',
 	'abusefilter-edit-action-warn' => 'Lança el filtro dospués de dar un aviso al empleador',
 	'abusefilter-edit-action-flag' => 'Marca el trocamiento, en los rejjistros de filtro de contra-abusos',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|sêgondo|sêgondos}}',
+	'abusefilter-edit-history' => 'Istoria',
 	'abusefilter-edit-export' => 'Taxirea este filtro a un otro viki',
 	'abusefilter-edit-notallowed' => 'No se te da permisyón de criar o de trocar los filtros contra-abusos',
+	'abusefilter-history-select-user' => 'Usador:',
 	'abusefilter-action-tag' => 'Marca',
 	'abusefilter-action-warn' => 'Avisa',
 	'abusefilter-action-block' => 'Bloquea',
 	'abusefilter-action-degroup' => 'Quita de los grupos',
 	'abusefilter-action-rangeblock' => 'Bloqueo de rango',
 	'abusefilter-action-disallow' => 'No des permisyón',
+	'abusefilter-test-load' => 'Cargar',
 	'abusefilter-changeslist-examine' => 'Egzamina',
 	'abusefilter-examine-noresults' => 'No se topó dingún rêsultado por lo que buscates.',
+	'abusefilter-topnav-log' => 'Rējistro de abusos',
 	'abusefilter-diff-pattern' => 'Kondisyones del filtro',
 	'abusefilter-diff-invalid' => 'Las versiones demandadas, no se las está puediendo traer',
 );
@@ -25115,6 +25125,7 @@ $messages['zh-cn'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bbqyee
  * @author Bencmq
+ * @author Chenxiaoqino
  * @author Chenzw
  * @author Fantasticfears
  * @author FireJackey
@@ -25153,6 +25164,8 @@ $messages['zh-hans'] = array(
 	'right-abusefilter-modify-restricted' => '受限修改防滥用过滤器',
 	'right-abusefilter-revert' => '撤销指定防滥用过滤器作出的所有更改',
 	'right-abusefilter-view-private' => '查看被标记为隐藏的过滤器',
+	'right-abusefilter-hide-log' => '将条目在记录中隐藏',
+	'right-abusefilter-hidden-log' => '查看隐藏的滥用记录条目',
 	'action-abusefilter-modify' => '修改防滥用过滤器',
 	'action-abusefilter-view' => '查看防滥用过滤器',
 	'action-abusefilter-log' => '查看过滤日志',
@@ -25167,12 +25180,14 @@ $messages['zh-hans'] = array(
 	'abusefilter-log-search-user' => '用户：',
 	'abusefilter-log-search-filter' => '过滤器编号：',
 	'abusefilter-log-search-title' => '标题：',
+	'abusefilter-log-show-deleted' => '显示隐藏的条目',
 	'abusefilter-log-search-submit' => '搜索',
 	'abusefilter-log-entry' => '$1：$2在$4上进行了“$3”的操作，触发了过滤器。采取的行动：$5；过滤器描述：$6',
 	'abusefilter-log-detailedentry-meta' => '$1：$2在$5上进行了“$4”的操作，触发了$3。采取的行动：$6；过滤器描述：$7（$8）',
 	'abusefilter-log-detailedentry-global' => '全域过滤器$1',
 	'abusefilter-log-detailedentry-local' => '过滤器$1',
 	'abusefilter-log-detailslink' => '详情',
+	'abusefilter-log-hidelink' => '调整可见度',
 	'abusefilter-log-details-legend' => '日志详情：$1',
 	'abusefilter-log-details-var' => '变量',
 	'abusefilter-log-details-val' => '值',
@@ -25183,6 +25198,12 @@ $messages['zh-hans'] = array(
 	'abusefilter-log-details-diff' => '修订版本间差异',
 	'abusefilter-log-linkoncontribs' => '防滥用过滤器日志',
 	'abusefilter-log-linkoncontribs-text' => '此用户的过滤器日志',
+	'abusefilter-log-hidden' => '（条目已被隐藏）',
+	'abusefilter-log-hide' => '隐藏或取消隐藏',
+	'abusefilter-log-details-hidden' => '你无法获取详细信息，因为此条目已被从公共范围隐藏。',
+	'abusefilter-log-hide-hidden' => '将此条目从公众视野隐藏',
+	'abusefilter-log-hide-reason' => '理由：',
+	'abusefilter-log-hide-forbidden' => '你没有权限去隐藏此滥用记录条目',
 	'abusefilter-management' => '管理防滥用过滤器',
 	'abusefilter-list' => '所有过滤器',
 	'abusefilter-list-id' => '过滤器编号',
