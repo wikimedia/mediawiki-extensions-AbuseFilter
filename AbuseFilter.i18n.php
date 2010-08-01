@@ -8425,7 +8425,7 @@ Les balises dêvont étre côrtes et pués pas avêr de caractèros spèciâls.'
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Suprimar los èspâços (rmwhitespace)',
 	'abusefilter-edit-builder-funcs-rmspecials' => 'Suprimar los caractèros spèciâls (rmspecials)',
 	'abusefilter-edit-builder-funcs-ip_in_range' => 'L’adrèce IP est-el dens la plage d’adrèces IP ? (ip_in_range)',
-	'abusefilter-edit-builder-funcs-contains-any' => 'Rechèrchiér des sot-chênes multiples dens una chêna (contains_any)',
+	'abusefilter-edit-builder-funcs-contains-any' => 'Rechèrchiér un mouél de sot-chênes dens una chêna (contains_any)',
 	'abusefilter-edit-builder-funcs-substr' => 'Sot-chêna (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'Posicion de la sot-chêna dens la chêna (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'Remplaciér la sot-chêna per la chêna (str_replace)',
