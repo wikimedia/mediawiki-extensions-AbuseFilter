@@ -1788,7 +1788,7 @@ $messages['ba'] = array(
 	'abusefilter-warning' => "'''Иғтибар!''' Был алым автоматик рәүештә кәрәкһеҙ тип билдәленде. Эшлекһеҙ төҙәтеүҙәр юйыласаҡ, тупаҫ төҙәтеүҙәр һәм  эшлекһеҙ төҙәтеүҙәр ҡабатланһа, һеҙҙең иҫәп яҙмаһы йәки IP-адрес бикләнәсәк.
 Әгәр был төҙәтеү эшлекле тип уйлаһағыҙ \"Яҙҙырып ҡуйырға\" төмәһенә тағы баҫығыҙ.
 Кәрәкһеҙ тип билдәленгән ғәмәлегеҙ:  \$1",
-	'abusefilter-disallowed' => 'Был алым автоматик рәүештә кәрәкһеҙ тип билдәленде, шуның өсөн уны эшлә алмайһығыҙ.
+	'abusefilter-disallowed' => 'Был алым автоматик рәүештә кәрәкһеҙ тип билдәленде, шуның өсөн уны эшләргә рөхсәт ителмәй.
 Әгәр был төҙәтеү эшлекле тип уйлаһағыҙ, хәкимгә мәрәжәғәт итегеҙ һәм алымдарығыҙҙы тасуирлағыҙ.
 Кәрәкһеҙ тип билдәленгән ғәмәлегеҙ:  $1.',
 	'abusefilter-blocked-display' => 'Был алым автоматик рәүештә кәрәкһеҙ тип билдәленде, шуның өсөн уны эшлә алмайһығыҙ.
@@ -16770,8 +16770,7 @@ De uitvoer van de parser was: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'U kunt dit filter niet bewerken omdat die één of meerdere beperkte handelingen bevat.
 Vraag een gebruiker met toestemming om beperkte handelingen toe te voegen om de wijziging voor u te maken.',
 	'abusefilter-edit-viewhistory' => 'Geschiedenis van het filter bekijken',
-	'abusefilter-edit-history' => 'Geschiedenis
-:',
+	'abusefilter-edit-history' => 'Geschiedenis:',
 	'abusefilter-edit-check' => 'Syntaxis controleren',
 	'abusefilter-edit-badfilter' => 'De aangegeven filter bestaat niet',
 	'abusefilter-edit-revert' => 'De door dit filter genomen maatregelen terugdraaien',
