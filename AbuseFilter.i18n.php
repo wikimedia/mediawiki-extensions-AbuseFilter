@@ -950,6 +950,7 @@ $messages['an'] = array(
  * @author Meno25
  * @author Orango
  * @author OsamaK
+ * @author ترجمان05
  */
 $messages['ar'] = array(
 	'abusefilter-desc' => 'يطبق قواعد آلية على التعديلات.',
@@ -1019,6 +1020,7 @@ $messages['ar'] = array(
 	'abusefilter-log-detailedentry-global' => 'المرشح العام $1',
 	'abusefilter-log-detailedentry-local' => 'المرشح $1',
 	'abusefilter-log-detailslink' => 'التفاصيل',
+	'abusefilter-log-hidelink' => 'أضبط الرؤية',
 	'abusefilter-log-details-legend' => 'التفاصيل لمدخلة السجل $1',
 	'abusefilter-log-details-var' => 'متغير',
 	'abusefilter-log-details-val' => 'قيمة',
@@ -1032,6 +1034,7 @@ $messages['ar'] = array(
 	'abusefilter-log-hidden' => '(السجل مخفي)',
 	'abusefilter-log-hide' => 'إظهار أو إخفاء',
 	'abusefilter-log-details-hidden' => 'لا يمكنك رؤية تفاصيل هذا المدخل، لأنه مخفي من العرض العلني',
+	'abusefilter-log-hide-id' => 'هوية مدخلة لسجل:',
 	'abusefilter-log-hide-hidden' => 'إخفاء هذا المدخل من العرض العلني',
 	'abusefilter-log-hide-reason' => 'السبب',
 	'abusefilter-log-hide-forbidden' => 'ليس لديك صلاحية لإخفاء إدخالات سجل الإساءة',
@@ -5606,6 +5609,7 @@ $messages['el'] = array(
 	'abusefilter-log-details-diff' => 'Αλλαγές που πραγματοποιήθηκαν κατά την επεξεργασία',
 	'abusefilter-log-linkoncontribs' => 'ιστορικό καταχρήσεων',
 	'abusefilter-log-linkoncontribs-text' => 'Ιστορικό καταχρήσεων για αυτόν τον χρήστη',
+	'abusefilter-log-hide-reason' => 'Αιτία:',
 	'abusefilter-management' => 'Διαχείριση φίλτρου καταχρήσεων',
 	'abusefilter-list' => 'Όλα τα φίλτρα',
 	'abusefilter-list-id' => 'Ταυτότητα φίλτρου',
@@ -6329,6 +6333,7 @@ Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku 
  * @author Dferg
  * @author Imre
  * @author Locos epraix
+ * @author Manuelt15
  * @author McDutchie
  * @author Pertile
  * @author PieRRoMaN
@@ -6341,9 +6346,9 @@ $messages['es'] = array(
 	'abusefilter-desc' => 'Aplicar automáticamente heurísticas para ediciones',
 	'abusefilter' => 'Configuración del filtro antiabusos',
 	'abuselog' => 'Registro del filtro antiabusos',
-	'abusefilter-intro' => 'Bienvenido a la interfaz de administración de filtros de edición.
-El filtro de edición es un mecanismo de software automatizado que aplica heurística a todas las acciones.
-Esta interfaz muestra una lista de filtros definidos, que pueden ser ser modificados.',
+	'abusefilter-intro' => 'Bienvenido a la interfaz de administración del filtro de ediciones.
+El filtro de ediciones es un mecanismo de software automatizado que aplica heurística a todas las acciones.
+Esta interfaz muestra una lista de filtros definidos, que pueden ser modificados.',
 	'abusefilter-mustbeeditor' => 'Por razones de seguridad, solamente los usuarios con derechos para modificar filtros de abuso pueden usar esta interfaz.',
 	'abusefilter-warning' => "'''Atención''': Esta acción ha sido automáticamente identificada como dañina.
 Las ediciones no constructivas serán revertidas rápidamente y
@@ -9621,6 +9626,13 @@ $messages['gu'] = array(
 $messages['gv'] = array(
 	'abusefilter-log-search-user' => 'Ymmydeyr:',
 	'abusefilter-list-status' => 'Stayd',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'abusefilter-log-search-submit' => 'Nema',
+	'abusefilter-log-hide-reason' => 'Dalili:',
+	'abusefilter-examine-submit' => 'Nema',
 );
 
 /** Hakka (Hak-kâ-fa)
