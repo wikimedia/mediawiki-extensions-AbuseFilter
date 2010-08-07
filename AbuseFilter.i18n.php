@@ -3482,6 +3482,19 @@ $messages['ce'] = array(
 	'abusefilter-exception-unrecognisedkeyword' => 'Дойзуш доцу оьшуш долу дош $2 оцу меттигца $1.',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'abusefilter-log-search-user' => 'بەکارهێنەر:',
+	'abusefilter-log-search-submit' => 'گەڕان',
+	'abusefilter-log-hide-reason' => 'هۆکار:',
+	'abusefilter-tools-reautoconfirm-user' => 'بەکارهێنەر:',
+	'abusefilter-history-user' => 'بەکارهێنەر',
+	'abusefilter-history-select-user' => 'بەکارهێنەر:',
+	'abusefilter-revert-confirm' => 'پشتدار بکەرەوە',
+	'abusefilter-examine-user' => 'بەکارهێنەر:',
+	'abusefilter-examine-submit' => 'گەڕان',
+);
+
 /** Corsican (Corsu) */
 $messages['co'] = array(
 	'abusefilter-log-search-user' => 'Utilizatore:',
