@@ -2622,6 +2622,7 @@ $messages['bn'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -2877,6 +2878,7 @@ Oberezhioù da adlakaat : $5 ($6)',
 	'abusefilter-changeslist-examine' => 'arsellet',
 	'abusefilter-examine' => "Studiañ ar c'hemmoù hiniennel",
 	'abusefilter-examine-legend' => 'Diuzañ kemmoù',
+	'abusefilter-examine-diff' => "URL an diforc'h:",
 	'abusefilter-examine-user' => 'Implijer :',
 	'abusefilter-examine-title' => 'Titl ar bajenn :',
 	'abusefilter-examine-submit' => 'Klask',
@@ -24007,6 +24009,13 @@ $messages['uk'] = array(
 У джерельній вікі, натисніть «{{int:abusefilter-edit-export}}» у розділі «{{int:abusefilter-tools-subtitle}}» інтерфейсу редагування.
 Скопіюйте зміст текстового поля, вставте його у цю сторінку і натисніть «{{int:abusefilter-import-submit}}».',
 	'abusefilter-import-submit' => 'Імпортувати дані',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'abusefilter-log-search-user' => 'صارف:',
+	'abusefilter-log-search-title' => 'عنوان:',
+	'abusefilter-log-hide-reason' => 'وجہ:',
 );
 
 /** Vèneto (Vèneto)
