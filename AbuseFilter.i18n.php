@@ -1816,6 +1816,9 @@ $messages['ba'] = array(
 	'right-abusefilter-log' => 'Урынһыҙ файҙаланыу яҙмаларын ҡарау',
 	'right-abusefilter-log-detail' => 'зарарлы ғәмәлдәр журналындағы яҙмаларҙы ентекләп ҡарау',
 	'right-abusefilter-private' => 'зарарлы ғәмәлдәр журналындағы шәхси мәғлүмәтле яҙмаларҙы ҡарау',
+	'right-abusefilter-modify-restricted' => 'Сикләү ғәмәлдәр башҡарған  фильтрҙарҙы үҙгәртеү',
+	'right-abusefilter-revert' => 'зарарлы ғәмәлдәр фильтры башҡарған үҙгәрештәрҙе кире ҡайтарыу',
+	'right-abusefilter-view-private' => 'Йәшерен булып билдәләнгән зарарлы ғәмәлдәр фильтрҙарын ҡарау',
 	'abusefilter-log' => 'Урынһыҙ файҙаланыу яҙмалары',
 	'abusefilter-log-search-user' => 'Ҡатнашыусы:',
 	'abusefilter-log-search-filter' => 'Фильтр идентификаторы:',
@@ -4295,6 +4298,7 @@ Handlinger som skal tilbagerulles: $5 ($6)',
  * @author The Evil IP address
  * @author Umherirrender
  * @author W (aka Wuzur)
+ * @author Wikifan
  * @author Xqt
  */
 $messages['de'] = array(
@@ -4307,7 +4311,7 @@ Diese Oberfläche zeigt eine Liste aller definierten Filter und erlaubt es, dies
 	'abusefilter-mustbeeditor' => 'Aus Sicherheitsgründen dürfen nur Benutzer mit dem Recht zur Änderung von Missbrauchsfiltern diese Schnittstelle verwenden.',
 	'abusefilter-warning' => "'''Achtung''': Diese Aktion wurde als potentiell unkonstruktiv erkannt.
 Solche Beiträge werden meist sehr schnell entfernt. In wiederholten und besonders schlimmen Fällen wird dein Benutzerkonto bzw. deine IP-Adresse gesperrt.
-Wenn du denkst, dass deine Änderung konstruktiv war, kannst du sie jedoch mit einem erneuten Klick auf „{{int:savearticle}}“ bestätigen.
+Wenn du meinst, dass deine Änderung sinnvoll ist, kannst du sie jedoch mit einem erneuten Klick auf „{{int:savearticle}}“ bestätigen.
 Kurzbeschreibung der verletzten Regel: $1",
 	'abusefilter-disallowed' => 'Diese Aktion wurde automatisch als schädlich erkannt und deshalb nicht ausgeführt.
 Wenn du denkst, dass dein Beitrag konstruktiv war, wende dich bitte an einen Administrator und schildere ihm, was du versucht hast beizutragen.
@@ -16113,7 +16117,7 @@ $messages['ml'] = array(
 	'abusefilter-revert-reason' => 'അരിപ്പ $1 ഉപയോഗിച്ച് ദുരുപയോഗ അരിപ്പ ചെയ്ത എല്ലാ പ്രവൃത്തികളും സ്വയം മുൻപ്രാപനം ചെയ്യുന്നു.
 തന്നിരിക്കുന്ന കാരണം:$2',
 	'abusefilter-revert-reasonfield' => 'മുൻപ്രാപനത്തിനുള്ള കാരണം:',
-	'abusefilter-test' => 'മുൻ‌‌തിരുത്തലുകളിൽ ഒരു അരിപ്പ പരീക്ഷിക്കുക',
+	'abusefilter-test' => 'മുൻ‌തിരുത്തലുകളിൽ ഒരു അരിപ്പ പരീക്ഷിക്കുക',
 	'abusefilter-test-intro' => 'ഒടുവിലത്തെ {{PLURAL:$1|ഒരു മാറ്റത്തിൽ|$1 മാറ്റങ്ങളിൽ}} താഴെയുള്ള പെട്ടിയിൽ നൽകിയിരിക്കുന്ന അരിപ്പ പരീക്ഷിക്കാൻ ഈ താൾ അനുവദിക്കുന്നു.
 നിലവിലുള്ള ഒരു അരിപ്പ ഉപയോഗിക്കാൻ, അതിന്റെ ഐ.ഡി. തിരുത്തുവാനുള്ള പെട്ടിയുടെ താഴെയുള്ള പെട്ടിയിൽ നൽകിയ ശേഷം, "എടുക്കുക" എന്ന ബട്ടൺ ഞെക്കുക.',
 	'abusefilter-test-legend' => 'അരിപ്പയുടെ പരീക്ഷണം',
