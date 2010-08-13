@@ -4703,6 +4703,7 @@ Kopiere den dort erscheinenden Code, füge ihn hier ein und klicke dann auf die 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author ChrisiPK
  * @author Giftpflanze
+ * @author Kghbln
  * @author MichaelFrey
  * @author The Evil IP address
  * @author Umherirrender
@@ -4729,6 +4730,8 @@ Kurzbeschreibung der verletzten Regel: $1',
 	'abusefilter-blockreason' => 'Sie wurden durch einen Missbrauchsfilter automatisch gesperrt. Beschreibung der zutreffenden Regel: $1',
 	'abusefilter-degroupreason' => 'Ihre Berechtigungen wurden durch einen Missbrauchsfilter automatisch beschränkt.
 Beschreibung der Regel: $1',
+	'abusefilter-log-details-hidden' => 'Sie können die Details dieses Eintrags nicht einsehen, da sie vor der Öffentlichkeit verborgen sind.',
+	'abusefilter-log-hide-forbidden' => 'Sie haben nicht die Berechtigung, die Einträge des Missbrauchsfilter-Logbuchs auszublenden.',
 	'abusefilter-reautoconfirm-notallowed' => 'Sie sind nicht berechtigt, Benutzer wieder zu automatisch bestätigten Benutzern zu machen.',
 	'abusefilter-edit-oldwarning' => '<strong>Sie bearbeiten nicht die aktuelle, sondern eine ältere Version dieses Filters. Die Statistik gilt nur für die letzte Version des Filters. Wenn Sie speichern, wird diese als aktuelle Version neu gespeichert. </strong> &bull; [[Special:AbuseFilter/history/$2|Zurück zur Versionsgeschichte des Filters]]',
 	'abusefilter-edit-denied' => 'Sie können die Details dieses Filters nicht einsehen, weil sie versteckt sind.',
@@ -8005,7 +8008,7 @@ Voici une brève description de la règle de filtrage antiabus ayant détecté v
 Description de la règle associée : $1',
 	'abusefilter-degroupreason' => 'Droits automatiquement retirés par le filtre antiabus.
 Description de la règle associée : $1',
-	'abusefilter-accountreserved' => 'Le nom de ce compte est réservé pour l’usage par le filtre antiabus.',
+	'abusefilter-accountreserved' => 'Ce nom de compte est réservé à l’usage du filtre antiabus.',
 	'right-abusefilter-modify' => 'Modifier les filtres antiabus',
 	'right-abusefilter-view' => 'Voir les filtres antiabus',
 	'right-abusefilter-log' => 'Voir le journal des filtres antiabus',
@@ -13363,9 +13366,9 @@ $messages['ko'] = array(
 당신의 편집이 생산적이라고 여기신다면, 관리자에게 문의하여 무엇을 하려 하는지 알려 주세요.
 당신의 행위와 일치하는 규칙을 가진 필터의 간단한 설명은 다음과 같습니다: $1',
 	'abusefilter-blocked-display' => '이러한 행위는 해로운 것으로 간주되어 더 이상 행하지 못하게 금지되었습니다.
-그리고 {{SITENAME}}을(를) 보호하기 위해, 당신의 계정과 연관된 IP 주소가 차단되었습니다.
+그리고 {{SITENAME}}을(를) 보호하기 위해, 귀하의 계정과 연관된 IP 주소가 차단되었습니다.
 이것이 오류로 인한 것이라면, 관리자에게 문의해주세요.
-당신의 행위와 일치한 필터의 간단한 설명은 다음과 같습니다: $1',
+귀하의 행위와 일치한 필터의 간단한 설명은 다음과 같습니다: $1',
 	'abusefilter-degrouped' => '이러한 행위는 자동적으로 해로운 것으로 간주되었습니다.
 따라서, 당신의 계정이 정상적으로 이용되지 않는다고 의심되어 모든 권한이 해제되었습니다.
 당신이 이 문제가 오류로 인해 생긴 문제라면, 이 행동에 대한 설명과 함께 이 프로젝트의 사무관에게 문의하여 권한 복구를 요청하십시오.
