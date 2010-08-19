@@ -1,6 +1,7 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) )
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die();
+}
 
 class AbuseFilterViewTestBatch extends AbuseFilterView {
 	// Hard-coded for now.
@@ -60,7 +61,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$output = Xml::tags( 'form',
 			array(
 				'action' => $this->getTitle( 'test' )->getLocalURL(),
-				'method' => 'POST'
+				'method' => 'post'
 			),
 			$output
 		);
@@ -113,11 +114,12 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$counter = 1;
 
-		while ( $row = $dbr->fetchObject( $res ) ) {
+		foreach( $res as $row ) {
 			$vars = AbuseFilter::getVarsFromRCRow( $row );
 
-			if ( !$vars )
+			if ( !$vars ) {
 				continue;
+			}
 
 			$result = AbuseFilter::checkConditions( $this->mFilter, $vars );
 
@@ -161,12 +163,13 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		// Normalise username
 		$userTitle = Title::newFromText( $testUsername );
 
-		if ( $userTitle && $userTitle->getNamespace() == NS_USER )
+		if ( $userTitle && $userTitle->getNamespace() == NS_USER ) {
 			$this->mTestUser = $userTitle->getText(); // Allow User:Blah syntax.
-		elseif ( $userTitle )
+		} elseif ( $userTitle ) {
 			// Not sure of the value of prefixedText over text, but no need to munge unnecessarily.
 			$this->mTestUser = $userTitle->getPrefixedText();
-		else
+		} else {
 			$this->mTestUser = null; // No user specified.
+		}
 	}
 }

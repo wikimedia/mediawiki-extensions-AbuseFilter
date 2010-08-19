@@ -1,6 +1,7 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) )
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die();
+}
 
 class AbuseFilterViewExamine extends AbuseFilterView {
 	function show() {
@@ -30,7 +31,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		// Add selector
 		$selector = '';
 
-		$selectFields = array(); # # Same fields as in Test
+		$selectFields = array(); # Same fields as in Test
 		$selectFields['abusefilter-test-user'] = Xml::input( 'wpSearchUser', 45, $this->mSearchUser );
 		$selectFields['abusefilter-test-period-start'] =
 			Xml::input( 'wpSearchPeriodStart', 45, $this->mSearchPeriodStart );
@@ -43,7 +44,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$selector = Xml::tags( 'form',
 			array(
 				'action' => $this->getTitle( 'examine' )->getLocalURL(),
-				'method' => 'GET'
+				'method' => 'get'
 			),
 			$selector
 		);
@@ -118,14 +119,15 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
-		if ( $vars instanceof AbuseFilterVariableHolder )
+		if ( $vars instanceof AbuseFilterVariableHolder ) {
 			$vars = $vars->exportAllVars();
+		}
 
 		$output = '';
 
 		// Send armoured as JSON -- I totally give up on trying to send it as a proper object.
-		$wgOut->addInlineScript( "var wgExamineVars = " .
-			Xml::encodeJsVar( json_encode( $vars ) ) . ";" );
+		$wgOut->addInlineScript( 'var wgExamineVars = ' .
+			Xml::encodeJsVar( json_encode( $vars ) ) . ';' );
 		$wgOut->addInlineScript( file_get_contents( dirname( __FILE__ ) . '/examine.js' ) );
 
 		// Add messages
@@ -134,9 +136,9 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$msg['nomatch'] = wfMsg( 'abusefilter-examine-nomatch' );
 		$msg['syntaxerror'] = wfMsg( 'abusefilter-examine-syntaxerror' );
 		$wgOut->addInlineScript(
-			"var wgMessageMatch = " . Xml::encodeJsVar( $msg['match'] ) . ";\n" .
-			"var wgMessageNomatch = " . Xml::encodeJsVar( $msg['nomatch'] ) . ";\n" .
-			"var wgMessageError = " . Xml::encodeJsVar( $msg['syntaxerror'] ) . ";\n"
+			'var wgMessageMatch = ' . Xml::encodeJsVar( $msg['match'] ) . ";\n" .
+			'var wgMessageNomatch = ' . Xml::encodeJsVar( $msg['nomatch'] ) . ";\n" .
+			'var wgMessageError = ' . Xml::encodeJsVar( $msg['syntaxerror'] ) . ";\n"
 		);
 
 		// Add test bit
@@ -198,13 +200,14 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		// Normalise username
 		$userTitle = Title::newFromText( $searchUsername );
 
-		if ( $userTitle && $userTitle->getNamespace() == NS_USER )
+		if ( $userTitle && $userTitle->getNamespace() == NS_USER ) {
 			$this->mSearchUser = $userTitle->getText(); // Allow User:Blah syntax.
-		elseif ( $userTitle )
+		} elseif ( $userTitle ) {
 			// Not sure of the value of prefixedText over text, but no need to munge unnecessarily.
 			$this->mSearchUser = $userTitle->getPrefixedText();
-		else
+		} else {
 			$this->mSearchUser = '';
+		}
 	}
 }
 
@@ -218,10 +221,12 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	function getQueryInfo() {
 		$dbr = wfGetDB( DB_SLAVE );
 		$conds = array( 'rc_user_text' => $this->mPage->mSearchUser );
-		if ( $startTS = strtotime( $this->mPage->mSearchPeriodStart ) ) {
+		$startTS = strtotime( $this->mPage->mSearchPeriodStart );
+		if ( $startTS ) {
 			$conds[] = 'rc_timestamp>=' . $dbr->addQuotes( $dbr->timestamp( $startTS ) );
 		}
-		if ( $endTS = strtotime( $this->mPage->mSearchPeriodEnd ) ) {
+		$endTS = strtotime( $this->mPage->mSearchPeriodEnd );
+		if ( $endTS ) {
 			$conds[] = 'rc_timestamp<=' . $dbr->addQuotes( $dbr->timestamp( $endTS ) );
 		}
 

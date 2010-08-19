@@ -1,6 +1,7 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) )
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die();
+}
 
 class AbuseFilterViewRevert extends AbuseFilterView {
 	function show() {
@@ -16,8 +17,9 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 		$this->loadParameters();
 
-		if ( $this->attemptRevert() )
+		if ( $this->attemptRevert() ) {
 			return;
+		}
 
 		$wgOut->addWikiMsg( 'abusefilter-revert-intro', $filter );
 		$wgOut->setPageTitle( wfMsg( 'abusefilter-revert-title', $filter ) );
@@ -37,7 +39,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				'form',
 				array(
 					'action' => $this->getTitle( "revert/$filter" )->getLocalURL(),
-					'method' => 'POST'
+					'method' => 'post'
 				),
 				$searchForm
 			);
@@ -117,18 +119,21 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 		$dbr = wfGetDB( DB_SLAVE );
 
-		if ( $periodStart )
+		if ( $periodStart ) {
 			$conds[] = 'afl_timestamp>' . $dbr->addQuotes( $dbr->timestamp( $periodStart ) );
-		if ( $periodEnd )
+		}
+		if ( $periodEnd ) {
 			$conds[] = 'afl_timestamp<' . $dbr->addQuotes( $dbr->timestamp( $periodEnd ) );
+		}
 
 		// Database query.
 		$res = $dbr->select( 'abuse_filter_log', '*', $conds, __METHOD__ );
 
 		$results = array();
-		while ( $row = $dbr->fetchObject( $res ) ) {
-			if ( !$row->afl_actions )
+		foreach( $res as $row ) {
+			if ( !$row->afl_actions ) {
 				continue;
+			}
 
 			$actions = explode( ',', $row->afl_actions );
 			$reversibleActions = array( 'block', 'blockautopromote', 'degroup' );
@@ -166,8 +171,9 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 		$filter = $this->mPage->mFilter;
 		$token = $wgRequest->getVal( 'editToken' );
-		if ( !$wgUser->matchEditToken( $token, "abusefilter-revert-$filter" ) )
+		if ( !$wgUser->matchEditToken( $token, "abusefilter-revert-$filter" ) ) {
 			return false;
+		}
 
 		$results = $this->doLookup();
 		foreach ( $results as $result ) {
@@ -185,8 +191,9 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		switch( $action ) {
 			case 'block':
 				$block = Block::newFromDB( '', $result['userid'], false );
-				if ( !$block || $block->getBy() != AbuseFilter::getFilterUser()->getId() )
+				if ( !$block || $block->getBy() != AbuseFilter::getFilterUser()->getId() ) {
 					return false; // Not blocked by abuse filter.
+				}
 
 				$block->delete();
 				$log = new LogPage( 'block' );
@@ -214,7 +221,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 				$rows = array();
 				foreach ( $oldGroups as $group ) {
-					$rows[] = array( 'ug_user' => $result['userid'], 'ug_group' => $group );
+					$rows[] = array(
+						'ug_user' => $result['userid'],
+						'ug_group' => $group
+					);
 				}
 
 				// Cheat a little bit. User::addGroup repeatedly is too slow.
@@ -223,8 +233,9 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				$newGroups = array_merge( $oldGroups, $currentGroups );
 
 				// Don't do anything if there are no groups to add.
-				if ( !count( array_diff( $newGroups, $currentGroups ) ) )
+				if ( !count( array_diff( $newGroups, $currentGroups ) ) ) {
 					return;
+				}
 
 				$dbw = wfGetDB( DB_MASTER );
 				$dbw->insert( 'user_groups', $rows, __METHOD__, array( 'IGNORE' ) );

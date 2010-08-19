@@ -1,6 +1,7 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) )
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die();
+}
 
 class AbuseFilterViewDiff extends AbuseFilterView {
 	var $mOldVersion = null;
@@ -26,8 +27,9 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		$backlinks = $wgLang->pipeList( $links );
 		$wgOut->addHTML( Xml::tags( 'p', null, $backlinks ) );
 
-		if ( $show )
+		if ( $show ) {
 			$wgOut->addHTML( $this->formatDiff() );
+		}
 	}
 
 	function loadData() {
@@ -123,8 +125,9 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			}
 		}
 
-		if ( !$row )
+		if ( !$row ) {
 			return null;
+		}
 
 		$data = $this->loadFromHistoryRow( $row );
 		$cache[$spec] = $data;
@@ -265,8 +268,9 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$lines[] = AbuseFilter::formatAction( $action, $parameters );
 		}
 
-		if ( !count( $lines ) )
+		if ( !count( $lines ) ) {
 			$lines[] = '';
+		}
 
 		return $lines;
 	}
@@ -308,10 +312,12 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	}
 
 	function getMultiLineRow( $msg, $old, $new ) {
-		if ( !is_array( $old ) )
+		if ( !is_array( $old ) ) {
 			$old = explode( "\n", $old );
-		if ( !is_array( $new ) )
+		}
+		if ( !is_array( $new ) ) {
 			$new = explode( "\n", $new );
+		}
 
 		if ( $old == $new ) {
 			$old = implode( "<br />\n", $old );

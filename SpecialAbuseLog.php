@@ -1,6 +1,7 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) )
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die();
+}
 
 class SpecialAbuseLog extends SpecialPage {
 	public function __construct() {
@@ -89,31 +90,36 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$form .= Xml::buildForm( $fields, 'abusefilter-log-search-submit' );
 		$output .= Xml::tags( 'form',
-			array( 'method' => 'GET', 'action' => $this->getTitle()->getLocalURL() ),
+			array( 'method' => 'get', 'action' => $this->getTitle()->getLocalURL() ),
 			$form );
 		$output = Xml::tags( 'fieldset', null, $output );
 
 		$wgOut->addHTML( $output );
 	}
-	
+
 	function showHideForm( $id ) {
 		global $wgOut, $wgUser;
-		
-		if ( ! $wgUser->isAllowed( 'abusefilter-hide-log' ) ) {
+
+		if ( !$wgUser->isAllowed( 'abusefilter-hide-log' ) ) {
 			$wgOut->addWikiMsg( 'abusefilter-log-hide-forbidden' );
 			return;
 		}
-		
+
 		$dbr = wfGetDB( DB_SLAVE );
 
-		$row = $dbr->selectRow( array( 'abuse_filter_log', 'abuse_filter' ), '*',
-			array( 'afl_id' => $id ), __METHOD__, array(),
-			array( 'abuse_filter' => array( 'LEFT JOIN', 'af_id=afl_filter' ) ) );
+		$row = $dbr->selectRow(
+			array( 'abuse_filter_log', 'abuse_filter' ),
+			'*',
+			array( 'afl_id' => $id ),
+			__METHOD__,
+			array(),
+			array( 'abuse_filter' => array( 'LEFT JOIN', 'af_id=afl_filter' ) )
+		);
 
 		if ( !$row ) {
 			return;
 		}
-		
+
 		$formInfo = array(
 			'logid' => array(
 				'type' => 'info',
@@ -130,25 +136,29 @@ class SpecialAbuseLog extends SpecialPage {
 				'label-message' => 'abusefilter-log-hide-hidden',
 			),
 		);
-		
+
 		$form = new HTMLForm( $formInfo );
 		$form->setTitle( $this->getTitle() );
 		$form->addHiddenField( 'hide', $id );
 		$form->setSubmitCallback( array( $this, 'saveHideForm' ) );
 		$form->show();
 	}
-	
+
 	function saveHideForm( $fields ) {
 		global $wgRequest, $wgOut;
 		$logid = $wgRequest->getVal( 'hide' );
-		
+
 		$dbw = wfGetDB( DB_MASTER );
-		
-		$dbw->update( 'abuse_filter_log', array( 'afl_deleted' => $fields['hidden'] ),
-				array( 'afl_id' => $logid ) );
-				
+
+		$dbw->update(
+			'abuse_filter_log',
+			array( 'afl_deleted' => $fields['hidden'] ),
+			array( 'afl_id' => $logid ),
+			__METHOD__
+		);
+
 		$wgOut->redirect( SpecialPage::getTitleFor( 'AbuseLog' )->getFullURL() );
-		
+
 		return true;
 	}
 
@@ -160,12 +170,12 @@ class SpecialAbuseLog extends SpecialPage {
 
 		if ( $this->mSearchUser ) {
 			$user = User::newFromName( $this->mSearchUser );
-			
+
 			if ( !$user ) {
 				$conds[] = 'afl_ip=afl_user_text';
 				$conds['afl_user'] = 0;
 				$conds['afl_user_text'] = $this->mSearchUser;
-			} else {			
+			} else {
 				$conds['afl_user'] = $user->getId();
 				$conds['afl_user_text'] = $user->getName();
 			}
@@ -195,14 +205,19 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$dbr = wfGetDB( DB_SLAVE );
 
-		$row = $dbr->selectRow( array( 'abuse_filter_log', 'abuse_filter' ), '*',
-			array( 'afl_id' => $id ), __METHOD__, array(),
-			array( 'abuse_filter' => array( 'LEFT JOIN', 'af_id=afl_filter' ) ) );
+		$row = $dbr->selectRow(
+			array( 'abuse_filter_log', 'abuse_filter' ),
+			'*',
+			array( 'afl_id' => $id ),
+			__METHOD__,
+			array(),
+			array( 'abuse_filter' => array( 'LEFT JOIN', 'af_id=afl_filter' ) )
+		);
 
 		if ( !$row ) {
 			return;
 		}
-		
+
 		if ( $row->afl_deleted && !self::canSeeHidden() ) {
 			global $wgOut;
 			$wgOut->addWikiMsg( 'abusefilter-log-details-hidden' );
@@ -294,7 +309,7 @@ class SpecialAbuseLog extends SpecialPage {
 		global $wgUser;
 		return $wgUser->isAllowed( 'abusefilter-private' );
 	}
-	
+
 	static function canSeeHidden() {
 		global $wgUser;
 		return $wgUser->isAllowed( 'abusefilter-hidden-log' );
@@ -303,9 +318,9 @@ class SpecialAbuseLog extends SpecialPage {
 	function formatRow( $row, $li = true ) {
 		global $wgLang, $wgUser;
 
-		# # One-time setup
+		# One-time setup
 		static $sk = null;
-		
+
 		$actionLinks = array();
 
 		if ( is_null( $sk ) ) {
@@ -369,10 +384,10 @@ class SpecialAbuseLog extends SpecialPage {
 				wfMsgExt( 'abusefilter-changeslist-examine', 'parseinline' ),
 				array()
 			);
-			
+
 			$actionLinks[] = $detailsLink;
 			$actionLinks[] = $examineLink;
-			
+
 			if ( $wgUser->isAllowed( 'abusefilter-hide-log' ) ) {
 				$hideLink = $sk->link(
 						$this->getTitle(),
@@ -380,7 +395,7 @@ class SpecialAbuseLog extends SpecialPage {
 						array(),
 						array( 'hide' => $row->afl_id )
 					);
-				
+
 				$actionLinks[] = $hideLink;
 			}
 
@@ -427,7 +442,7 @@ class SpecialAbuseLog extends SpecialPage {
 				)
 			);
 		}
-		
+
 		if ( $row->afl_deleted ) {
 			$description .= ' '.
 				wfMsgExt( 'abusefilter-log-hidden', 'parseinline' );
@@ -465,11 +480,11 @@ class AbuseLogPager extends ReverseChronologicalPager {
 					),
 				),
 		);
-		
-		if ( ! $this->mForm->canSeeHidden() ) {
+
+		if ( !$this->mForm->canSeeHidden() ) {
 			$info['conds']['afl_deleted'] = 0;
 		}
-		
+
 		return $info;
 	}
 

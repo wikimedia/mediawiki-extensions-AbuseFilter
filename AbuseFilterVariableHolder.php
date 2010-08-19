@@ -177,10 +177,14 @@ class AFComputedVariable {
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'externallinks', array( 'el_to' ),
-			array( 'el_from' => $id ), __METHOD__ );
+		$res = $dbr->select(
+			'externallinks',
+			array( 'el_to' ),
+			array( 'el_from' => $id ),
+			__METHOD__
+		);
 		$links = array();
-		while ( $row = $dbr->fetchObject( $res ) ) {
+		foreach( $res as $row ) {
 			$links[] = $row->el_to;
 		}
 		return $links;
@@ -214,8 +218,10 @@ class AFComputedVariable {
 				// This should ONLY be used when sharing a parse operation with the edit.
 				global $wgArticle;
 
-				$article = self::articleFromTitle( $parameters['namespace'],
-													$parameters['title'] );
+				$article = self::articleFromTitle(
+					$parameters['namespace'],
+					$parameters['title']
+				);
 
 				if ( $wgArticle && $article->getTitle()->equals( $wgArticle->getTitle() ) ) {
 					$textVar = $parameters['text-var'];
@@ -232,8 +238,10 @@ class AFComputedVariable {
 				break;
 			case 'links-from-wikitext-nonedit':
 			case 'links-from-wikitext-or-database':
-				$article = self::articleFromTitle( $parameters['namespace'],
-													$parameters['title'] );
+				$article = self::articleFromTitle(
+					$parameters['namespace'],
+					$parameters['title']
+				);
 
 				if ( $vars->getVar( 'context' )->toString() == 'filter' ) {
 					$links = $this->getLinksFromDB( $article );
@@ -311,7 +319,8 @@ class AFComputedVariable {
 				}
 
 				$dbr = wfGetDB( DB_SLAVE );
-				$res = $dbr->select( 'revision', 'distinct rev_user_text',
+				$res = $dbr->select( 'revision',
+					'DISTINCT rev_user_text',
 					array(
 						'rev_page' => $title->getArticleId(),
 						'rev_timestamp<' . $dbr->addQuotes( $dbr->timestamp( $cutOff ) )
@@ -390,10 +399,11 @@ class AFComputedVariable {
 
 				$rev = Revision::loadFromTimestamp( $dbr, $title, $timestamp );
 
-				if ( $rev )
+				if ( $rev ) {
 					$result = $rev->getText();
-				else
+				} else {
 					$result = '';
+				}
 				break;
 			default:
 				if ( wfRunHooks( 'AbuseFilter-computeVariable',

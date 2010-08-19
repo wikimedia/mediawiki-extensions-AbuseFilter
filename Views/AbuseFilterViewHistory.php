@@ -1,6 +1,7 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) )
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die();
+}
 
 class AbuseFilterViewHistory extends AbuseFilterView {
 	function __construct( $page, $params ) {
@@ -13,10 +14,11 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 
 		$filter = $this->mFilter;
 
-		if ( $filter )
+		if ( $filter ) {
 			$wgOut->setPageTitle( wfMsg( 'abusefilter-history', $filter ) );
-		else
+		} else {
 			$wgOut->setPageTitle( wfMsg( 'abusefilter-filter-log' ) );
+		}
 
 		# Check perms
 		if ( $filter &&
@@ -29,8 +31,9 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		# Useful links
 		$sk = $wgUser->getSkin();
 		$links = array();
-		if ( $filter )
+		if ( $filter ) {
 			$links['abusefilter-history-backedit'] = $this->getTitle( $filter );
+		}
 
 		foreach ( $links as $msg => $title ) {
 			$links[$msg] = $sk->link( $title, wfMsgExt( $msg, 'parseinline' ) );

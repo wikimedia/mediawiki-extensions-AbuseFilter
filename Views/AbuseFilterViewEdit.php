@@ -1,6 +1,7 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) )
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die();
+}
 
 class AbuseFilterViewEdit extends AbuseFilterView {
 	function __construct( $page, $params ) {
@@ -168,16 +169,20 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			// Flags
 			$flags = array();
-			if ( $newRow['af_hidden'] )
+			if ( $newRow['af_hidden'] ) {
 				$flags[] = 'hidden';
-			if ( $newRow['af_enabled'] )
+			}
+			if ( $newRow['af_enabled'] ) {
 				$flags[] = 'enabled';
-			if ( $newRow['af_deleted'] )
+			}
+			if ( $newRow['af_deleted'] ) {
 				$flags[] = 'deleted';
-			if ( $newRow['af_global'] )
+			}
+			if ( $newRow['af_global'] ) {
 				$flags[] = 'global';
+			}
 
-			$afh_row['afh_flags'] = implode( ",", $flags );
+			$afh_row['afh_flags'] = implode( ',', $flags );
 
 			$afh_row['afh_filter'] = $new_id;
 			$afh_row['afh_id'] = $history_id = $dbw->nextSequenceValue( 'abuse_filter_af_id_seq' );
@@ -185,8 +190,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// Do the update
 			$dbw->insert( 'abuse_filter_history', $afh_row, __METHOD__ );
 			$history_id = $dbw->insertId();
-			if ( $filter != 'new' )
-				$dbw->delete( 'abuse_filter_action', array( 'afa_filter' => $filter ), __METHOD__ );
+			if ( $filter != 'new' ) {
+				$dbw->delete(
+					'abuse_filter_action',
+					array( 'afa_filter' => $filter ),
+					__METHOD__
+				);
+			}
 			$dbw->insert( 'abuse_filter_action', $actionsRows, __METHOD__ );
 
 			$dbw->commit();
@@ -331,8 +341,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$flags = '';
 
 		global $wgAbuseFilterIsCentral;
-		if ( $wgAbuseFilterIsCentral )
+		if ( $wgAbuseFilterIsCentral ) {
 			$checkboxes[] = 'global';
+		}
 
 		if ( isset( $row->af_throttled ) && $row->af_throttled ) {
 			global $wgAbuseFilterEmergencyDisableThreshold;
@@ -643,7 +654,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$existingSelector->addOption( 'abusefilter-warning' );
 
 		global $wgLang;
-		while ( $row = $dbr->fetchObject( $res ) ) {
+		foreach( $res as $row ) {
 			if ( $wgLang->lcfirst( $row->page_title ) == $wgLang->lcfirst( $warnMsg ) ) {
 				$existingSelector->setDefault( $wgLang->lcfirst( $warnMsg ) );
 			}
@@ -695,8 +706,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Load the main row
 		$row = $dbr->selectRow( 'abuse_filter', $loadFields, array( 'af_id' => $id ), __METHOD__ );
 
-		if ( !isset( $row ) || !isset( $row->af_id ) || !$row->af_id )
+		if ( !isset( $row ) || !isset( $row->af_id ) || !$row->af_id ) {
 			return null;
+		}
 
 		// Load the actions
 		$actions = array();
@@ -705,7 +717,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			array( 'afa_filter' => $id ),
 			__METHOD__
 		);
-		while ( $actionRow = $dbr->fetchObject( $res ) ) {
+		foreach( $res as $actionRow ) {
 			$thisAction = array();
 			$thisAction['action'] = $actionRow->afa_consequence;
 			$thisAction['parameters'] = explode( "\n", $actionRow->afa_parameters );

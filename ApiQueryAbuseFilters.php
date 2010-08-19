@@ -4,7 +4,7 @@
  *
  * AbuseFilter extension
  *
- * Copyright (C) 2008 Alex Z. mrzmanwiki AT gmail DOT com
+ * Copyright © 2008 Alex Z. mrzmanwiki AT gmail DOT com
  * Based mostly on code by Bryan Tong Minh and Roan Kattouw
  *
  * This program is free software; you can redistribute it and/or modify
@@ -36,8 +36,9 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 
 	public function execute() {
 		global $wgUser;
-		if ( !$wgUser->isAllowed( 'abusefilter-view' ) )
+		if ( !$wgUser->isAllowed( 'abusefilter-view' ) ) {
 			$this->dieUsage( 'You don\'t have permission to view abuse filters', 'permissiondenied' );
+		}
 
 		$params = $this->extractRequestParams();
 
@@ -103,29 +104,40 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 				break;
 			}
 			$entry = array();
-			if ( $fld_id )
+			if ( $fld_id ) {
 				$entry['id'] = intval( $row->af_id );
-			if ( $fld_desc )
+			}
+			if ( $fld_desc ) {
 				$entry['description'] = $row->af_public_comments;
-			if ( $fld_pattern && ( !$row->af_hidden || $showhidden ) )
+			}
+			if ( $fld_pattern && ( !$row->af_hidden || $showhidden ) ) {
 				$entry['pattern'] = $row->af_pattern;
-			if ( $fld_actions )
+			}
+			if ( $fld_actions ) {
 				$entry['actions'] = $row->af_actions;
-			if ( $fld_hits )
+			}
+			if ( $fld_hits ) {
 				$entry['hits'] = intval( $row->af_hit_count );
-			if ( $fld_comments && ( !$row->af_hidden || $showhidden ) )
+			}
+			if ( $fld_comments && ( !$row->af_hidden || $showhidden ) ) {
 				$entry['comments'] = $row->af_comments;
-			if ( $fld_user )
+			}
+			if ( $fld_user ) {
 				$entry['lasteditor'] = $row->af_user_text;
-			if ( $fld_time )
+			}
+			if ( $fld_time ) {
 				$entry['lastedittime'] = wfTimestamp( TS_ISO_8601, $row->af_timestamp );
-			if ( $fld_private && $row->af_hidden )
+			}
+			if ( $fld_private && $row->af_hidden ) {
 				$entry['private'] = '';
+			}
 			if ( $fld_status ) {
-				if ( $row->af_enabled )
+				if ( $row->af_enabled ) {
 					$entry['enabled'] = '';
-				if ( $row->af_deleted )
+				}
+				if ( $row->af_deleted ) {
 					$entry['deleted'] = '';
+				}
 			}
 			if ( $entry ) {
 				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $entry );
@@ -204,7 +216,7 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 	public function getDescription() {
 		return 'Show details of the abuse filters.';
 	}
-	
+
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'nosuchuser', 'user' ),

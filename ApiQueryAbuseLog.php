@@ -4,7 +4,7 @@
  *
  * AbuseFilter extension
  *
- * Copyright (C) 2008 Alex Z. mrzmanwiki AT gmail DOT com
+ * Copyright © 2008 Alex Z. mrzmanwiki AT gmail DOT com
  * Based mostly on code by Bryan Tong Minh and Roan Kattouw
  *
  * This program is free software; you can redistribute it and/or modify
@@ -36,8 +36,9 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 
 	public function execute() {
 		global $wgUser;
-		if ( !$wgUser->isAllowed( 'abusefilter-log' ) )
+		if ( !$wgUser->isAllowed( 'abusefilter-log' ) ) {
 			$this->dieUsage( 'You don\'t have permission to view the abuse log', 'permissiondenied' );
+		}
 
 		$params = $this->extractRequestParams();
 
@@ -53,10 +54,12 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$fld_timestamp = isset( $prop['timestamp'] );
 		$fld_hidden = isset( $prop['hidden'] );
 
-		if ( $fld_ip && !$wgUser->isAllowed( 'abusefilter-private' ) )
+		if ( $fld_ip && !$wgUser->isAllowed( 'abusefilter-private' ) ) {
 			$this->dieUsage( 'You don\'t have permission to view IP addresses', 'permissiondenied' );
-		if ( $fld_details && !$wgUser->isAllowed( 'abusefilter-log-detail' ) )
+		}
+		if ( $fld_details && !$wgUser->isAllowed( 'abusefilter-log-detail' ) ) {
 			$this->dieUsage( 'You don\'t have permission to view detailed abuse log entries', 'permissiondenied' );
+		}
 
 		$result = $this->getResult();
 
@@ -70,7 +73,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$this->addFieldsIf( 'afl_var_dump', $fld_details );
 		$this->addFieldsIf( 'afl_actions', $fld_result );
 		$this->addFieldsIf( 'afl_deleted', $fld_hidden );
-		
+
 		if ( $fld_filter ) {
 			$this->addTables( 'abuse_filter' );
 			$this->addFields( 'af_public_comments' );
@@ -84,13 +87,14 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 
 		$this->addWhereIf( array( 'afl_user_text' => $params['user'] ), isset( $params['user'] ) );
 		$this->addWhereIf( array( 'afl_filter' => $params['filter'] ), isset( $params['filter'] ) );
-		$this->addWhereIf( array( 'afl_deleted' => 0 ), ! SpecialAbuseLog::canSeeHidden() );
+		$this->addWhereIf( array( 'afl_deleted' => 0 ), !SpecialAbuseLog::canSeeHidden() );
 
 		$title = $params['title'];
 		if ( !is_null( $title ) ) {
 			$titleObj = Title::newFromText( $title );
-			if ( is_null( $titleObj ) )
+			if ( is_null( $titleObj ) ) {
 				$this->dieUsageMsg( array( 'invalidtitle', $title ) );
+			}
 			$this->addWhereFld( 'afl_namespace', $titleObj->getNamespace() );
 			$this->addWhereFld( 'afl_title', $titleObj->getDBkey() );
 		}
@@ -108,22 +112,28 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				$entry['id'] = intval( $row->afl_id );
 				$entry['filter_id'] = intval( $row->afl_filter );
 			}
-			if ( $fld_filter )
+			if ( $fld_filter ) {
 				$entry['filter'] = $row->af_public_comments;
-			if ( $fld_user )
+			}
+			if ( $fld_user ) {
 				$entry['user'] = $row->afl_user_text;
-			if ( $fld_ip )
+			}
+			if ( $fld_ip ) {
 				$entry['ip'] = $row->afl_ip;
+			}
 			if ( $fld_title ) {
 				$title = Title::makeTitle( $row->afl_namespace, $row->afl_title );
 				ApiQueryBase::addTitleInfo( $entry, $title );
 			}
-			if ( $fld_action )
+			if ( $fld_action ) {
 				$entry['action'] = $row->afl_action;
-			if ( $fld_result )
+			}
+			if ( $fld_result ) {
 				$entry['result'] = $row->afl_actions;
-			if ( $fld_timestamp )
+			}
+			if ( $fld_timestamp ) {
 				$entry['timestamp'] = wfTimestamp( TS_ISO_8601, $row->afl_timestamp );
+			}
 			if ( $fld_details ) {
 				$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
 				if ( $vars instanceof AbuseFilterVariableHolder ) {
@@ -132,11 +142,11 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 					$entry['details'] = array_change_key_case( $vars, CASE_LOWER );
 				}
 			}
-			
+
 			if ( $fld_hidden ) {
 				$entry['hidden'] = $row->afl_deleted;
 			}
-			
+
 			if ( $entry ) {
 				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $entry );
 				if ( !$fit ) {
@@ -208,7 +218,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 	public function getDescription() {
 		return 'Show events that were caught by one of the abuse filters.';
 	}
-	
+
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'invalidtitle', 'title' ),

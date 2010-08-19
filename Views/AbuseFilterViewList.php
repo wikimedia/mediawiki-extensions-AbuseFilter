@@ -1,6 +1,7 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) )
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die();
+}
 
 class AbuseFilterViewList extends AbuseFilterView {
 	function show() {
@@ -211,21 +212,23 @@ class AbuseFilterPager extends TablePager {
 				$actions = explode( ',', $value );
 				$displayActions = array();
 				foreach ( $actions as $action ) {
-					$displayActions[] = AbuseFilter::getActionDisplay( $action ); ;
+					$displayActions[] = AbuseFilter::getActionDisplay( $action );
 				}
 				return htmlspecialchars( $wgLang->commaList( $displayActions ) );
 			case 'af_enabled':
 				$statuses = array();
-				if ( $row->af_deleted )
+				if ( $row->af_deleted ) {
 					$statuses[] = wfMsgExt( 'abusefilter-deleted', 'parseinline' );
-				elseif ( $row->af_enabled )
+				} elseif ( $row->af_enabled ) {
 					$statuses[] = wfMsgExt( 'abusefilter-enabled', 'parseinline' );
-				else
+				} else {
 					$statuses[] = wfMsgExt( 'abusefilter-disabled', 'parseinline' );
+				}
 
 				global $wgAbuseFilterIsCentral;
-				if ( $row->af_global && $wgAbuseFilterIsCentral )
+				if ( $row->af_global && $wgAbuseFilterIsCentral ) {
 					$statuses[] = wfMsgExt( 'abusefilter-status-global', 'parseinline' );
+				}
 
 				return $wgLang->commaList( $statuses );
 			case 'af_hidden':

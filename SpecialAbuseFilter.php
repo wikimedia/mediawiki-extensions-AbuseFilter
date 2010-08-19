@@ -1,6 +1,7 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) )
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die();
+}
 
 class SpecialAbuseFilter extends SpecialPage {
 	var $mSkin;
@@ -76,7 +77,7 @@ class SpecialAbuseFilter extends SpecialPage {
 				$view = 'AbuseFilterViewHistory';
 				$pageType = 'recentchanges';
 			} elseif ( count( $params ) == 2 ) {
-				# # Second param is a filter ID
+				# Second param is a filter ID
 				$view = 'AbuseFilterViewHistory';
 				$this->mFilter = $params[1];
 			} elseif ( count( $params ) == 4 && $params[2] == 'item' ) {
