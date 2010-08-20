@@ -38,6 +38,11 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$detailsid = $wgRequest->getIntOrNull( 'details' );
 		$hideid = $wgRequest->getIntOrNull( 'hide' );
+		
+		if ( $parameter ) {
+			$detailsid = $parameter;
+		}
+		
 		if ( $detailsid ) {
 			$this->showDetails( $detailsid );
 		} elseif ( $hideid ) {
@@ -156,6 +161,11 @@ class SpecialAbuseLog extends SpecialPage {
 			array( 'afl_id' => $logid ),
 			__METHOD__
 		);
+		
+		$logPage = new LogPage( 'suppress' );
+		$action = $fields['hidden'] ? 'hide-afl' : 'unhide-afl';
+		
+		$logPage->addEntry( $action, $this->getTitle( $logid ), $fields['reason'] );
 
 		$wgOut->redirect( SpecialPage::getTitleFor( 'AbuseLog' )->getFullURL() );
 
@@ -375,9 +385,8 @@ class SpecialAbuseLog extends SpecialPage {
 		if ( self::canSeeDetails() ) {
 			$examineTitle = SpecialPage::getTitleFor( 'AbuseFilter', 'examine/log/' . $row->afl_id );
 			$detailsLink = $sk->makeKnownLinkObj(
-				$this->getTitle(),
-				wfMsg( 'abusefilter-log-detailslink' ),
-				'details=' . $row->afl_id
+				$this->getTitle($row->afl_id),
+				wfMsg( 'abusefilter-log-detailslink' )
 			);
 			$examineLink = $sk->link(
 				$examineTitle,

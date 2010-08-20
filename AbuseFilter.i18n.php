@@ -114,6 +114,8 @@ Filter description: $7 ($8)',
 	'abusefilter-log-hide-reason' => 'Reason:',
 	'abusefilter-log-hide-forbidden' => 'You do not have permission to hide
 abuse log entries.',
+	'abusefilter-logentry-suppress' => 'hid [[$1]]',
+	'abusefilter-logentry-unsuppress' => 'unhid [[$1]]',
 
 	// Abuse filter management
 	'abusefilter-management' => 'Abuse filter management',
