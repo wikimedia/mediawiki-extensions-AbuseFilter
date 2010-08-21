@@ -493,7 +493,7 @@ Copy from the textbox that appears, and paste it into this textbox, then click "
  * @author Umherirrender
  */
 $messages['qqq'] = array(
-	'abusefilter-desc' => 'Short description of the Abusefilter extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'abusefilter-desc' => '{{desc}}',
 	'abusefilter' => 'Name of Special:AbuseFilter in Special:SpecialPages.',
 	'abuselog' => 'Name of Special:AbuseLog in Special:SpecialPages.',
 	'abusefilter-warning' => 'A warning message shown when a user tries to save an edit which matches some abuse filter rule.
@@ -2989,6 +2989,7 @@ Kratki opis prekršenih pravila koje se odnose na Vašu akciju je: $1',
 	'abusefilter-log-search-user' => 'Korisnik:',
 	'abusefilter-log-search-filter' => 'Filtriraj ID:',
 	'abusefilter-log-search-title' => 'Naslov:',
+	'abusefilter-log-show-deleted' => 'Prikaži skrivene stavke',
 	'abusefilter-log-search-submit' => 'Traži',
 	'abusefilter-log-entry' => '$1: Korisnik $2 je pokrenuo filter za zloupotrebu, napravivši akciju "$3" na $4.
 Napravljena akcija: $5;
@@ -3008,8 +3009,15 @@ Opis filtera: $6',
 	'abusefilter-log-details-diff' => 'Izmjene napravljene pri uređivanju',
 	'abusefilter-log-linkoncontribs' => 'zapisnik zloupotrebe',
 	'abusefilter-log-linkoncontribs-text' => 'Zapisnik zloupotrebe za ovog korisnika',
+	'abusefilter-log-hidden' => '(stavka sakrivena)',
 	'abusefilter-log-hide' => 'sakrij ili otkrij',
+	'abusefilter-log-details-hidden' => 'Možda nećete vidjeti detalje ove stavke, zato što je sakrivena za javni pregled.',
+	'abusefilter-log-hide-id' => 'ID stavke zapisa:',
+	'abusefilter-log-hide-hidden' => 'Sakrij ovu stavku od javnog pregleda',
 	'abusefilter-log-hide-reason' => 'Razlog:',
+	'abusefilter-log-hide-forbidden' => 'Nemate dopuštenje da sakrijete stavke zapisa zloupotrebe.',
+	'abusefilter-logentry-suppress' => 'sakr [[$1]]',
+	'abusefilter-logentry-unsuppress' => 'otkr [[$1]]',
 	'abusefilter-management' => 'Podešavanje filtera za zloupotrebu',
 	'abusefilter-list' => 'Svi filteri',
 	'abusefilter-list-id' => 'ID filtera',
@@ -3611,6 +3619,8 @@ Provedená opatření: $6; popis filtru: $7 ($8)',
 	'abusefilter-log-hide-hidden' => 'Skrýt tento záznam před veřejností',
 	'abusefilter-log-hide-reason' => 'Důvod:',
 	'abusefilter-log-hide-forbidden' => 'Nemáte oprávnění ke skrývání záznamů v protokolu zneužití.',
+	'abusefilter-logentry-suppress' => 'skryl [[$1]]',
+	'abusefilter-logentry-unsuppress' => 'odkryl [[$1]]',
 	'abusefilter-management' => 'Správa filtrů zneužívání',
 	'abusefilter-list' => 'Všechny filtry',
 	'abusefilter-list-id' => 'ID filtru',
@@ -4387,6 +4397,8 @@ Filterbeschreibung: $7 ($8)',
 	'abusefilter-log-hide-hidden' => 'Diesen Eintrag öffentlich verbergen',
 	'abusefilter-log-hide-reason' => 'Grund:',
 	'abusefilter-log-hide-forbidden' => 'Du hast nicht die Berechtigung, die Einträge des Missbrauchsfilter-Logbuchs auszublenden.',
+	'abusefilter-logentry-suppress' => 'hat [[$1]] verborgen',
+	'abusefilter-logentry-unsuppress' => 'hat [[$1]] sichtbar gemacht',
 	'abusefilter-management' => 'Missbrauchsfilter-Verwaltung',
 	'abusefilter-list' => 'Alle Filter',
 	'abusefilter-list-id' => 'Filter-ID',
@@ -7196,6 +7208,7 @@ $messages['eu'] = array(
  * @author Ebraminio
  * @author Huji
  * @author Ladsgroup
+ * @author Sahim
  * @author Wayiran
  */
 $messages['fa'] = array(
@@ -7286,6 +7299,8 @@ $messages['fa'] = array(
 	'abusefilter-log-hide-hidden' => 'پنهان کردن این مورد از دید عموم',
 	'abusefilter-log-hide-reason' => 'دلیل:',
 	'abusefilter-log-hide-forbidden' => 'شما دسترسی لازم برای پنهان کردن موارد سیاهه خرابکاری را ندارید.',
+	'abusefilter-logentry-suppress' => 'مخفی [[$1]]',
+	'abusefilter-logentry-unsuppress' => 'ناپنهان [[$1]]',
 	'abusefilter-management' => 'مدیریت پالایه خرابکاری',
 	'abusefilter-list' => 'تمام پالایه‌ها',
 	'abusefilter-list-id' => 'شماره پالایه',
@@ -8107,6 +8122,8 @@ parce qu'elle est cachée à la vue du public.",
 	'abusefilter-log-hide-reason' => 'Motif :',
 	'abusefilter-log-hide-forbidden' => "Vous n'avez pas les droits pour masquer 
 des entrées du journal des abus.",
+	'abusefilter-logentry-suppress' => 'a masqué [[$1]]',
+	'abusefilter-logentry-unsuppress' => 'a démasqué [[$1]]',
 	'abusefilter-management' => 'Gestion du filtre antiabus',
 	'abusefilter-list' => 'Tous les filtres',
 	'abusefilter-list-id' => 'N° filtre',
@@ -8879,6 +8896,8 @@ Descrición do filtro: $7 ($8)',
 	'abusefilter-log-hide-reason' => 'Motivo:',
 	'abusefilter-log-hide-forbidden' => 'Non ten os permisos necesarios para agochar
 entradas do rexistro de abusos.',
+	'abusefilter-logentry-suppress' => 'agochou "[[$1]]"',
+	'abusefilter-logentry-unsuppress' => 'descubriu "[[$1]]"',
 	'abusefilter-management' => 'Xestión do filtro de abusos',
 	'abusefilter-list' => 'Todos os filtros',
 	'abusefilter-list-id' => 'ID do filtro',
@@ -11314,6 +11333,8 @@ Description del filtro: $7 ($8)',
 	'abusefilter-log-hide-reason' => 'Motivo:',
 	'abusefilter-log-hide-forbidden' => 'Tu non ha le permission de celar
 entratas del registro de abusos.',
+	'abusefilter-logentry-suppress' => 'celava [[$1]]',
+	'abusefilter-logentry-unsuppress' => 'revelava [[$1]]',
 	'abusefilter-management' => 'Gestion del filtro anti-abuso',
 	'abusefilter-list' => 'Tote le filtros',
 	'abusefilter-list-id' => 'ID del filtro',
@@ -12614,6 +12635,8 @@ $messages['ja'] = array(
 	'abusefilter-log-hide-reason' => '理由:',
 	'abusefilter-log-hide-forbidden' => '不正利用記録の項目を
 隠す権限がありません。',
+	'abusefilter-logentry-suppress' => '[[$1]]を非公開',
+	'abusefilter-logentry-unsuppress' => '[[$1]]を公開',
 	'abusefilter-management' => '不正利用フィルター管理',
 	'abusefilter-list' => 'すべてのフィルター',
 	'abusefilter-list-id' => 'フィルターID',
@@ -18529,6 +18552,8 @@ Opis filtru: $7 ($8)',
 	'abusefilter-log-hide-reason' => 'Powód',
 	'abusefilter-log-hide-forbidden' => 'Nie masz uprawnień do ukrywania
 wpisów w rejestrze nadużyć.',
+	'abusefilter-logentry-suppress' => 'ukrył [[$1]]',
+	'abusefilter-logentry-unsuppress' => 'zakończył ukrywanie [[$1]]',
 	'abusefilter-management' => 'Zarządzanie filtrem nadużyć',
 	'abusefilter-list' => 'Wszystkie filtry',
 	'abusefilter-list-id' => 'ID filtru',
@@ -19016,6 +19041,8 @@ Descrição do filtro: $7 ($8)',
 	'abusefilter-log-hide-reason' => 'Motivo:',
 	'abusefilter-log-hide-forbidden' => 'Não tem permissão para ocultar
 entradas do registo de abusos.',
+	'abusefilter-logentry-suppress' => 'ocultou [[$1]]',
+	'abusefilter-logentry-unsuppress' => 'revelou [[$1]]',
 	'abusefilter-management' => 'Gestão do filtro de abusos',
 	'abusefilter-list' => 'Todos os filtros',
 	'abusefilter-list-id' => 'ID do filtro',
@@ -19430,6 +19457,7 @@ Descrição do filtro: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-log-hide-reason' => 'Motivo:',
 	'abusefilter-log-hide-forbidden' => 'Não tem permissão para ocultar
 entradas do registro de abusos.',
+	'abusefilter-logentry-suppress' => 'ocultar [[$1]]',
 	'abusefilter-management' => 'Gerenciamento do filtro de abuso',
 	'abusefilter-list' => 'Todos os filtros',
 	'abusefilter-list-id' => 'Identificação de filtro',
@@ -21327,6 +21355,13 @@ Podrobnosti nájdete v [[Special:AbuseFilter/history|zozname]] posledných zmien
 Na zdrojovej wiki kliknite na „{{int:Abusefilter-edit-export}}“ v ponuke „{{int:abusefilter-tools-subtitle}}“ v rozhraní na úpravy.
 Skopírujte ho z textového poľa, kde sa objaví a vložte ho do tohto textového poľa. Potom kliknite na „{{int:abusefilter-import-submit}}“.',
 	'abusefilter-import-submit' => 'Importovať údaje',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'abusefilter-log-hide-reason' => 'Razlog:',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
