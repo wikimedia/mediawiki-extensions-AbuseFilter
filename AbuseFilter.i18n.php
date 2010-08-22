@@ -3945,6 +3945,7 @@ $messages['cy'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Aputtu
  * @author Froztbyte
  * @author Lhademmor
  */
@@ -3974,6 +3975,9 @@ En kortfattet beskrivelse af misbrugsreglen som din handling udløste er: $1',
 Som konsekvens heraf er den ikke tilladt, og på grund af mistanke om misbrug har din konto mistet alle rettigheder.
 Hvis du mener at dette er sket på grund af en fejl, så kontakt en bureaukrat med en forklaring på denne handling, og dine rettigheder kan genoprettes.
 En kortfattet beskrivelse af misbrugsreglen som din handling udløste er: $1',
+	'abusefilter-autopromote-blocked' => ' Denne handling er automatisk blevet identificeret som skadelig, og blevet deaktiveret. 
+ Hertil kommer, som en sikkerhedsforanstaltning at nogle privilegier som rutinemæssigt tildeles til oprettede kontoer er inddraget midlertidigt fra din konto. 
+ En kort beskrivelse af den misbrugsregel som matcher din handling er: $1',
 	'abusefilter-blocker' => 'Misbrugsfilter',
 	'abusefilter-blockreason' => 'Automatisk blokeret af misbrugsfilter.
 Beskrivelse af den udløste regel: $1',
@@ -3988,6 +3992,8 @@ Regelbeskrivelse: $1',
 	'right-abusefilter-modify-restricted' => 'Ændre misbrugsfiltre med begrænsede handlinger',
 	'right-abusefilter-revert' => 'Tilbagerul alle ændringer udført af et bestemt misbrugsfilter',
 	'right-abusefilter-view-private' => 'Vis misbrugsfiltre markeret som private',
+	'right-abusefilter-hide-log' => 'Skjul poster i misbrugslog',
+	'right-abusefilter-hidden-log' => 'Vis skjulte poster i misbrugslog',
 	'action-abusefilter-modify' => 'ændre misbrugsfiltre',
 	'action-abusefilter-view' => 'vis misbrugsfiltre',
 	'action-abusefilter-log' => 'vis misbrugsloggen',
@@ -4002,6 +4008,7 @@ Regelbeskrivelse: $1',
 	'abusefilter-log-search-user' => 'Bruger:',
 	'abusefilter-log-search-filter' => 'Filter-ID:',
 	'abusefilter-log-search-title' => 'Titel:',
+	'abusefilter-log-show-deleted' => 'Vis skjulte poster',
 	'abusefilter-log-search-submit' => 'Søg',
 	'abusefilter-log-detailedentry-global' => 'globalt filter $1',
 	'abusefilter-log-detailedentry-local' => 'filter $1',
@@ -8564,7 +8571,7 @@ Dèscripcion du filtro : $7 ($8)',
 	'abusefilter-edit-action-flag' => 'Marcar lo changement dens lo jornal des abus',
 	'abusefilter-edit-action-blockautopromote' => 'Rèvocar l’ètat ôtoconfirmâ du compto utilisator',
 	'abusefilter-edit-action-degroup' => 'Enlevar l’utilisator de totes les tropes privilègiyês',
-	'abusefilter-edit-action-block' => 'Blocar en ècritura l’utilisator et/ou l’adrèce IP',
+	'abusefilter-edit-action-block' => 'Blocar en ècritura l’utilisator et / ou l’adrèce IP',
 	'abusefilter-edit-action-throttle' => 'Dècllenchiér les accions ren que se l’utilisator at dèpassâ una quota limita',
 	'abusefilter-edit-action-rangeblock' => 'Blocar la plage d’adrèces IP /16 d’origina a l’utilisator.',
 	'abusefilter-edit-action-tag' => 'Balisar lo changement por una rèvision a vegnir',
@@ -11748,6 +11755,8 @@ Keterangan filter: $7 ($8)',
 	'abusefilter-log-hide-reason' => 'Alasan:',
 	'abusefilter-log-hide-forbidden' => 'Anda tidak memiliki izin untuk menyembunyikan
 entri log penyalahgunaan.',
+	'abusefilter-logentry-suppress' => 'sembunyikan [[$1]]',
+	'abusefilter-logentry-unsuppress' => 'jangan sembunyikan [[$1]]',
 	'abusefilter-management' => 'Manajemen filter penyalahgunaan',
 	'abusefilter-list' => 'Semua filter',
 	'abusefilter-list-id' => 'ID filter',
@@ -15944,6 +15953,8 @@ $messages['ml'] = array(
 	'abusefilter-log-hide-hidden' => 'പൊതുജനദൃഷ്ടിയിൽ നിന്ന് ഈ വിവരം മറയ്ക്കുക',
 	'abusefilter-log-hide-reason' => 'കാരണം:',
 	'abusefilter-log-hide-forbidden' => 'ദുരുപയോഗ രേഖയിലെ വിവരങ്ങൾ മറയ്ക്കാനുള്ള അനുവാദം താങ്കൾക്കില്ല.',
+	'abusefilter-logentry-suppress' => 'മറയ്ക്കുക [[$1]]',
+	'abusefilter-logentry-unsuppress' => 'മറ നീക്കുക [[$1]]',
 	'abusefilter-management' => 'ദുരുപയോഗ അരിപ്പ കൈകാര്യം',
 	'abusefilter-list' => 'എല്ലാ അരിപ്പകളും',
 	'abusefilter-list-id' => 'അരിപ്പയുടെ ഐ.ഡി.',
@@ -20248,6 +20259,8 @@ $messages['ru'] = array(
 	'abusefilter-log-hide-reason' => 'Причина:',
 	'abusefilter-log-hide-forbidden' => 'У вас нет разрешения на сокрытие
 записей журнала злоупотреблений.',
+	'abusefilter-logentry-suppress' => 'скрыть [[$1]]',
+	'abusefilter-logentry-unsuppress' => 'показать [[$1]]',
 	'abusefilter-management' => 'Управление фильтром злоупотреблений',
 	'abusefilter-list' => 'Все фильтры',
 	'abusefilter-list-id' => 'ID фильтра',
@@ -24609,6 +24622,8 @@ Mô tả bộ lọc: $7 ($8)',
 	'abusefilter-log-hide-hidden' => 'Ẩn mục này khỏi công cộng',
 	'abusefilter-log-hide-reason' => 'Lý do:',
 	'abusefilter-log-hide-forbidden' => 'Bạn không có quyền ẩn mục trong nhật ký lạm dụng.',
+	'abusefilter-logentry-suppress' => 'đã ẩn [[$1]]',
+	'abusefilter-logentry-unsuppress' => 'đã hiển thị lại [[$1]]',
 	'abusefilter-management' => 'Quản lý bộ lọc sai phạm',
 	'abusefilter-list' => 'Các bộ lọc',
 	'abusefilter-list-id' => 'ID bộ lọc',
