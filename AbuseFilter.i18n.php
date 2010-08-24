@@ -7279,8 +7279,8 @@ $messages['fa'] = array(
 	'abusefilter-log-search-title' => 'عنوان:',
 	'abusefilter-log-show-deleted' => 'نمایش موارد مخفی',
 	'abusefilter-log-search-submit' => 'جستجو',
-	'abusefilter-log-entry' => '$1: $2توسط پالایه خرابکاری گرفته شد او مشغول اجرای"$3" بر روی $4 بود.
-عمل پالایه: $5;
+	'abusefilter-log-entry' => '$1: $2 توسط پالایه خرابکاری گرفته شد او مشغول اجرای «$3» بر روی $4 بود.
+عمل پالایه: $5"؛
 توضیحات پالایه: $6',
 	'abusefilter-log-detailedentry-meta' => '$1:$2 $3 را در حالی که قصد داشت عمل «$4» را روی $5 انجام دهد فعال کرد.
 اقدامی که توسط پالایه گرفته شد: $6
@@ -7542,7 +7542,7 @@ $messages['fa'] = array(
 	'abusefilter-exception-unrecognisedvar' => 'متغیر ناشناختهٔ $2 در نویسهٔ $1',
 	'abusefilter-exception-notenoughargs' => 'آرگومان‌های خوانده شده به تابع $2 در نویسهٔ $1 کافی نبود.
 در حالی که انتظار $3 آرگومان می‌رفت، $4 آرگومان بدست آمد',
-	'abusefilter-exception-regexfailure' => 'خطا در عبارات باقاعده «$3ن در نویسه $1: «$2»',
+	'abusefilter-exception-regexfailure' => 'خطا در عبارات باقاعده «$3» در نویسهٔ $1: «$2»',
 	'abusefilter-exception-overridebuiltin' => 'بی‌اعتبار ساختن غیرمجاز متغیر درونی «$2» در نویسه $1.',
 	'abusefilter-exception-outofbounds' => 'درخواست مورد ناموجود $2 از فهرست (اندازه فهرست = $3) در نویسه $1.',
 	'abusefilter-exception-notlist' => 'درخواست مورد آرایه از غیر آرایه در نویسه $1.',
@@ -9411,6 +9411,8 @@ Churzbschryybig vu dr verletzte Regle: $1',
 	'abusefilter-log-hide-hidden' => 'Dää Yytrag fir d Effentligkeit uusblände',
 	'abusefilter-log-hide-reason' => 'Grund:',
 	'abusefilter-log-hide-forbidden' => 'Du derfsch d Yytreg vum Missbruuchsfilter-Logbuech nit uusblände.',
+	'abusefilter-logentry-suppress' => 'het [[$1]] uusbländet',
+	'abusefilter-logentry-unsuppress' => 'het [[$1]] sichtbar gmacht',
 	'abusefilter-management' => 'Missbruuchsfilter-Verwaltig',
 	'abusefilter-list' => 'Alli Filter',
 	'abusefilter-list-id' => 'Filter-ID',
@@ -15545,6 +15547,8 @@ $messages['mk'] = array(
 	'abusefilter-log-hide-reason' => 'Причина:',
 	'abusefilter-log-hide-forbidden' => 'Немате дозвола да криете
 записи во дневникот на злоупотреби.',
+	'abusefilter-logentry-suppress' => 'скриено [[$1]]',
+	'abusefilter-logentry-unsuppress' => 'прикажано [[$1]]',
 	'abusefilter-management' => 'Раководење со филтерот за злоупотреби',
 	'abusefilter-list' => 'Сите филтри',
 	'abusefilter-list-id' => 'ID на филтерот',
@@ -19468,7 +19472,8 @@ Descrição do filtro: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-log-hide-reason' => 'Motivo:',
 	'abusefilter-log-hide-forbidden' => 'Não tem permissão para ocultar
 entradas do registro de abusos.',
-	'abusefilter-logentry-suppress' => 'ocultar [[$1]]',
+	'abusefilter-logentry-suppress' => 'ocultou [[$1]]',
+	'abusefilter-logentry-unsuppress' => 'revelou [[$1]]',
 	'abusefilter-management' => 'Gerenciamento do filtro de abuso',
 	'abusefilter-list' => 'Todos os filtros',
 	'abusefilter-list-id' => 'Identificação de filtro',
@@ -21375,6 +21380,7 @@ Skopírujte ho z textového poľa, kde sa objaví a vložte ho do tohto textové
  */
 $messages['sl'] = array(
 	'abusefilter-log-hide-reason' => 'Razlog:',
+	'abusefilter-edit-history' => 'Zgodovina:',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
