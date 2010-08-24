@@ -13513,6 +13513,8 @@ $messages['ko'] = array(
 	'abusefilter-log-hide-hidden' => '이 항목을 비공개로 설정',
 	'abusefilter-log-hide-reason' => '이유:',
 	'abusefilter-log-hide-forbidden' => '당신은 부정 행위 기록 항목을 숨길 권한이 없습니다.',
+	'abusefilter-logentry-suppress' => '[[$1]]을 비공개함',
+	'abusefilter-logentry-unsuppress' => '[[$1]]을 공개함',
 	'abusefilter-management' => '부정 행위 방지 필터 관리',
 	'abusefilter-list' => '모든 필터',
 	'abusefilter-list-id' => '필터 ID',
@@ -14840,6 +14842,8 @@ Filterbesjrieving: $7 ($8)',
 	'abusefilter-log-noactions' => 'gein',
 	'abusefilter-log-details-diff' => 'Bewèrkingsangeringer',
 	'abusefilter-log-hide-reason' => 'Reeje:',
+	'abusefilter-logentry-suppress' => 'verbórg [[$1]]',
+	'abusefilter-logentry-unsuppress' => 'maakde [[$1]] zichbaar',
 	'abusefilter-management' => 'Misbroekfilterbehieër',
 	'abusefilter-list' => 'Al filter',
 	'abusefilter-list-id' => 'Filter ID',
@@ -15001,6 +15005,7 @@ Es 't öch wieziginge opsleit, euversjrief t'r alle wijziginge die nao deze vers
 	'abusefilter-history-foruser' => 'Angeringer doearch $1',
 	'abusefilter-history-hidden' => 'verbórge',
 	'abusefilter-history-enabled' => 'Ingesjakeldj',
+	'abusefilter-history-global' => 'Wikiwied',
 	'abusefilter-history-timestamp' => 'Tied',
 	'abusefilter-history-user' => 'Gebroeker',
 	'abusefilter-history-public' => 'Pebleiek filterbesjrieving',
@@ -15013,6 +15018,8 @@ Es 't öch wieziginge opsleit, euversjrief t'r alle wijziginge die nao deze vers
 	'abusefilter-history-filterid' => 'Filter',
 	'abusefilter-history-select-legend' => 'Verfien zeuk',
 	'abusefilter-history-select-user' => 'Gebroeker:',
+	'abusefilter-history-select-submit' => 'Verfien',
+	'abusefilter-history-diff' => 'Bewèrkinger',
 	'abusefilter-action-throttle' => 'Limiete',
 	'abusefilter-action-warn' => 'Waorsjuuw',
 	'abusefilter-action-blockautopromote' => 'Blokkeer autematis promovere',
@@ -23733,6 +23740,7 @@ Görünen metin kutusundan kopyalayın, ve bu metin kutusuna yapıştırın, dah
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author Alex Khimich
  * @author JenVan
  * @author NickK
  * @author Prima klasy4na
@@ -23826,6 +23834,8 @@ $messages['uk'] = array(
 	'abusefilter-log-hide-reason' => 'Причина:',
 	'abusefilter-log-hide-forbidden' => 'У вас немає дозволу, щоб приховувати
 записи журналу зловживань.',
+	'abusefilter-logentry-suppress' => 'сховати [[$1]]',
+	'abusefilter-logentry-unsuppress' => 'показати [[$1]]',
 	'abusefilter-management' => 'Управління фільтром редагувань',
 	'abusefilter-list' => 'Усі фільтри',
 	'abusefilter-list-id' => 'ІД фільтра',
