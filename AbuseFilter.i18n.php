@@ -14782,10 +14782,10 @@ $messages['li'] = array(
 	'abusefilter-intro' => "Dit is 't beheersjerm van de misbroekfilter.
 De misbroekfilter is e systeem det automatische heuristiek toepas op alle hanjelinge.
 Via dit sjerm waere alle ingestelde filters waergegaeve en kinne die aangepas waere.",
-	'abusefilter-warning' => "'''Waarsjuwing''': Deze hanjeling is automatisch geïdentificeerd as sjadelik.
-Onconstructieve bewerkinge waere snel trökggedreid, en herhaald onconstructief bewerke eindig in n blokkade van diene gebroeker.
-As 't dinkt dat deze bewerking waal constructief is, klik dan opnuuj op \"Pagina opslaon\" om de bewerking te bevestige.
-ne Korte besjrieving van de regel op basis waarvan de bewerking is taegegehouwe vólg noe: \$1",
+	'abusefilter-warning' => "'''Waarsjuwing''': Dees hanjeling is automatisch geïdentificeerd as sjadelik.
+Onconstructieve bewerkinge waere snel trökgedreid, en herhaald onconstructief bewerke eindig in n blokkade van diene gebroeker of IP.
+As se dinks det dees bewerking waal constructief is, klik dan opnuuj op \"Pagina opslaon\" om de bewerking te bevestige.
+'n Korte besjrieving van de regel op basis waarvan de bewerking is taegegehouwe vólg noe: \$1",
 	'abusefilter-disallowed' => "Deze hanjeling is automatisch geïdentificeerd as sjadelik, en daarom neet toegelaote.
 As 't dinkt dat de bewerking waol constructief was, naem dan contact op met 'n beheerder, en informeer hem waat de probeerde te doon.
 'ne Korte besjrieving van de regel op basis waarvan de bewerking is tegegehouwe vólgt noe: $1",
@@ -15021,6 +15021,7 @@ Es 't öch wieziginge opsleit, euversjrief t'r alle wijziginge die nao deze vers
 	'abusefilter-history-select-user' => 'Gebroeker:',
 	'abusefilter-history-select-submit' => 'Verfien',
 	'abusefilter-history-diff' => 'Bewèrkinger',
+	'abusefilter-action-tag' => 'Label',
 	'abusefilter-action-throttle' => 'Limiete',
 	'abusefilter-action-warn' => 'Waorsjuuw',
 	'abusefilter-action-blockautopromote' => 'Blokkeer autematis promovere',
@@ -15058,6 +15059,7 @@ Gaef \'n filternummer in om \'ne bestaonde filter te laje, en klik daonao op de 
 	'abusefilter-examine-user' => 'Gebroeker:',
 	'abusefilter-examine-title' => 'Paginanaam:',
 	'abusefilter-examine-submit' => 'Zeuk',
+	'abusefilter-examine-test-button' => 'Tes filter',
 	'abusefilter-topnav-home' => 'Veurmenu',
 	'abusefilter-diff-item' => 'Deil',
 	'abusefilter-import-submit' => 'Veur data in',
