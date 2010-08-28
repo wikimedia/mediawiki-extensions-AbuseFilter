@@ -459,6 +459,17 @@ class SpecialAbuseLog extends SpecialPage {
 
 		return $li ? Xml::tags( 'li', null, $description ) : $description;
 	}
+	
+	public static function getNotDeletedCond( $db ) {
+		$deletedZeroCond = $db->makeList(
+				array( 'afl_deleted' => 0 ), LIST_AND );
+		$deletedNullCond = $db->makeList(
+				array( 'afl_deleted' => null ), LIST_AND );
+		$notDeletedCond = $db->makeList(
+			array( $deletedZeroCond, $deletedNullCond ), LIST_OR );
+			
+		return $notDeletedCond;
+	}
 }
 
 class AbuseLogPager extends ReverseChronologicalPager {
@@ -491,7 +502,8 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		);
 
 		if ( !$this->mForm->canSeeHidden() ) {
-			$info['conds']['afl_deleted'] = 0;
+			$db = $this->mDb;
+			$info['conds'][] = SpecialAbuseLog::getNotDeletedCond($db);
 		}
 
 		return $info;
