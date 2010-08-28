@@ -85,8 +85,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 
 		$this->addWhereRange( 'afl_timestamp', $params['dir'], $params['start'], $params['end'] );
 		
-		$db = $this->getDatabase();
-		$notDeletedCond = SpecialAbuseLog::getNotDeletedCondition($db);
+		$db = $this->getDB();
+		$notDeletedCond = SpecialAbuseLog::getNotDeletedCond($db);
 
 		$this->addWhereIf( array( 'afl_user_text' => $params['user'] ), isset( $params['user'] ) );
 		$this->addWhereIf( array( 'afl_filter' => $params['filter'] ), isset( $params['filter'] ) );
