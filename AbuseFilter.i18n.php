@@ -109,11 +109,11 @@ Filter description: $7 ($8)',
 	'abusefilter-log-details-hidden' => 'You cannot view the details for this entry because it is hidden from public view.',
 
 	// Hiding log entries
+	'abusefilter-log-hide-legend' => 'Hide log entry',
 	'abusefilter-log-hide-id' => 'Log entry ID:',
 	'abusefilter-log-hide-hidden' => 'Hide this entry from public view',
 	'abusefilter-log-hide-reason' => 'Reason:',
-	'abusefilter-log-hide-forbidden' => 'You do not have permission to hide
-abuse log entries.',
+	'abusefilter-log-hide-forbidden' => 'You do not have permission to hide abuse log entries.',
 	'abusefilter-logentry-suppress' => 'hid "[[$1]]"',
 	'abusefilter-logentry-unsuppress' => 'unhid "[[$1]]"',
 

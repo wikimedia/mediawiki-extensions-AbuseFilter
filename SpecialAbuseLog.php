@@ -144,6 +144,7 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$form = new HTMLForm( $formInfo );
 		$form->setTitle( $this->getTitle() );
+		$form->setWrapperLegend( wfMsgExt( 'abusefilter-log-hide-legend', 'parsemag' ) );
 		$form->addHiddenField( 'hide', $id );
 		$form->setSubmitCallback( array( $this, 'saveHideForm' ) );
 		$form->show();
