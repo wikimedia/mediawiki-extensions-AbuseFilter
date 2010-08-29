@@ -480,6 +480,7 @@ Copy from the textbox that appears, and paste it into this textbox, then click "
  * @author Iwan Novirion
  * @author Jon Harald Søby
  * @author Kwj2772
+ * @author Lejonel
  * @author Lloffiwr
  * @author McDutchie
  * @author Meno25
@@ -596,7 +597,7 @@ Parameters:
 	'abusefilter-edit-builder-misc-irlike' => '{{doc-important|Do  not translate "irlike"}}',
 	'abusefilter-edit-builder-misc-contains' => 'Don\'t translate "(contains)".',
 	'abusefilter-edit-builder-misc-tern' => 'Don\'t change "(X ? Y : Z)".',
-	'abusefilter-edit-builder-misc-cond' => 'Jangan rubah "(if X then Y else Z)".',
+	'abusefilter-edit-builder-misc-cond' => 'Don\'t change "(if X then Y else Z)".',
 	'abusefilter-edit-builder-funcs-length' => "{{doc-important|Do not translate \"'''(length)'''\"}}",
 	'abusefilter-edit-builder-funcs-lcase' => "{{doc-important|Do not translate \"'''(lcase)'''\"}}",
 	'abusefilter-edit-builder-funcs-ccnorm' => "{{doc-important|Do not translate \"'''(ccnorm)'''\"}}",
@@ -4400,12 +4401,13 @@ Filterbeschreibung: $7 ($8)',
 	'abusefilter-log-hidden' => '(Eintrag versteckt)',
 	'abusefilter-log-hide' => 'verbergen oder anzeigen',
 	'abusefilter-log-details-hidden' => 'Du kannst die Details dieses Eintrags nicht einsehen, da sie vor der Öffentlichkeit verborgen sind.',
+	'abusefilter-log-hide-legend' => 'Logbucheintrag verstecken',
 	'abusefilter-log-hide-id' => 'Logbuch-Eintrags-ID:',
 	'abusefilter-log-hide-hidden' => 'Diesen Eintrag öffentlich verbergen',
 	'abusefilter-log-hide-reason' => 'Grund:',
 	'abusefilter-log-hide-forbidden' => 'Du hast nicht die Berechtigung, die Einträge des Missbrauchsfilter-Logbuchs auszublenden.',
-	'abusefilter-logentry-suppress' => 'hat [[$1]] verborgen',
-	'abusefilter-logentry-unsuppress' => 'hat [[$1]] sichtbar gemacht',
+	'abusefilter-logentry-suppress' => 'hat „[[$1]]“ verborgen',
+	'abusefilter-logentry-unsuppress' => 'hat „[[$1]]“ sichtbar gemacht',
 	'abusefilter-management' => 'Missbrauchsfilter-Verwaltung',
 	'abusefilter-list' => 'Alle Filter',
 	'abusefilter-list-id' => 'Filter-ID',
@@ -8048,12 +8050,10 @@ Le filtre antiabus est un mécanisme logiciel automatisé qui permet d'appliquer
 Cette interface présente une liste des filtres définis, et donne la possibilité de les modifier.",
 	'abusefilter-mustbeeditor' => 'Pour des raisons de sécurité, seuls les utilisateurs avec le droit de modifier les filtres antiabus peuvent utiliser cette interface.',
 	'abusefilter-warning' => "'''Avertissement''' : Cette action a été identifiée automatiquement comme nuisible.
-Les modifications non-constructives seront rapidement annulées
-et les âneries répétées ou outrageantes provoqueront le blocage de votre compte ou de votre adresse IP.
+Les modifications non-constructives seront rapidement annulées et les âneries répétées ou outrageantes provoqueront le blocage de votre compte ou de votre adresse IP.
 Si vous êtes convaincu{{GENDER:||e|(e)}} que votre modification est constructive, vous pouvez la soumettre une nouvelle fois pour la confirmer.
 Voici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1",
-	'abusefilter-disallowed' => 'Cette action a été automatiquement identifiée comme nuisible
-et a donc été empêchée.
+	'abusefilter-disallowed' => 'Cette action a été automatiquement identifiée comme nuisible et a donc été empêchée.
 Si vous êtes convaincu{{GENDER:||e|(e)}} que votre modification était constructive, veuillez contacter un administrateur et l’informer de ce que vous avez essayé de faire.
 Voici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1',
 	'abusefilter-blocked-display' => 'Cette action a été automatiquement identifée comme nuisible
@@ -8062,7 +8062,7 @@ De plus, pour protéger {{SITENAME}}, votre compte utilisateur et toutes les adr
 Si ceci est dû à une erreur, veuillez contacter un administrateur.
 Voici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1',
 	'abusefilter-degrouped' => 'Cette action a été automatiquement identifiée comme nuisible.
-En conséquence, elle a été non permise et, puisque votre compte est suspecté de compromission, tous vos droits ont été retirés.
+En conséquence, elle a été interdite et, puisque votre compte est suspecté de compromission, tous vos droits ont été retirés.
 Si vous êtes convaincu{{GENDER:||e|(e)}} que cela est dû à une erreur, veuillez contacter un bureaucrate avec une explication de cette action afin de rétablir vos droits.
 Voici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1',
 	'abusefilter-autopromote-blocked' => 'Cette action a été automatiquement identifiée comme nuisible et a donc été empêchée.
@@ -8124,6 +8124,7 @@ Description du filtre : $7 ($8)',
 	'abusefilter-log-hide' => 'masquer ou afficher',
 	'abusefilter-log-details-hidden' => "Vous ne pouvez pas afficher les détails pour cette entrée 
 parce qu'elle est cachée à la vue du public.",
+	'abusefilter-log-hide-legend' => 'Masquer l’entrée dans les journaux',
 	'abusefilter-log-hide-id' => 'Identifiant de l’entrée de journal :',
 	'abusefilter-log-hide-hidden' => 'Masquer cette entrée à la vue du public',
 	'abusefilter-log-hide-reason' => 'Motif :',
@@ -11337,6 +11338,7 @@ Description del filtro: $7 ($8)',
 	'abusefilter-log-hidden' => '(entrata celate)',
 	'abusefilter-log-hide' => 'celar o revelar',
 	'abusefilter-log-details-hidden' => 'Tu non pote vider le detalios de iste entrata, proque illo es celate al vista del publico.',
+	'abusefilter-log-hide-legend' => 'Celar entrata de registro',
 	'abusefilter-log-hide-id' => 'ID del entrata:',
 	'abusefilter-log-hide-hidden' => 'Celar iste entrata al vista del publico',
 	'abusefilter-log-hide-reason' => 'Motivo:',
@@ -11752,6 +11754,7 @@ Keterangan filter: $7 ($8)',
 	'abusefilter-log-hidden' => '(entri disembunyikan)',
 	'abusefilter-log-hide' => 'sembunyikan atau jangan sembunyikan',
 	'abusefilter-log-details-hidden' => 'Anda tidak dapat melihat rincian entri ini karena telah disembunyikan dari publik.',
+	'abusefilter-log-hide-legend' => 'Sembunyikan entri log',
 	'abusefilter-log-hide-id' => 'ID entri log:',
 	'abusefilter-log-hide-hidden' => 'Sembunyikan entri ini dari publik',
 	'abusefilter-log-hide-reason' => 'Alasan:',
@@ -15552,6 +15555,7 @@ $messages['mk'] = array(
 	'abusefilter-log-hidden' => '(скриен запис)',
 	'abusefilter-log-hide' => 'сокриј или откриј',
 	'abusefilter-log-details-hidden' => 'Не можете да ги прегледувате подробностите на овој запис бидејќи тој е сокриен за јавноста.',
+	'abusefilter-log-hide-legend' => 'Сокриј ставка',
 	'abusefilter-log-hide-id' => 'ID на записот:',
 	'abusefilter-log-hide-hidden' => 'Сокриј го записов за јавноста',
 	'abusefilter-log-hide-reason' => 'Причина:',
@@ -15963,6 +15967,7 @@ $messages['ml'] = array(
 	'abusefilter-log-hidden' => '(വിവരം മറയ്ക്കപ്പെട്ടിരിക്കുന്നു)',
 	'abusefilter-log-hide' => 'മറയ്ക്കുക അല്ലെങ്കിൽ മറയ്ക്കൽ ഒഴിവാക്കുക',
 	'abusefilter-log-details-hidden' => 'ഈ വിവരം പൊതുജനദൃഷ്ടിയിൽ നിന്നും മറയ്ക്കപ്പെട്ടിരിക്കുന്നതിനാൽ, കൂടുതൽ വിവരങ്ങൾ കാണാനാകില്ല.',
+	'abusefilter-log-hide-legend' => 'രേഖയിലെ ഉൾപ്പെടുത്തൽ മറയ്ക്കുക',
 	'abusefilter-log-hide-id' => 'രേഖയിൽ ഉൾപ്പെടുത്തിയതിന്റെ ഐ.ഡി.:',
 	'abusefilter-log-hide-hidden' => 'പൊതുജനദൃഷ്ടിയിൽ നിന്ന് ഈ വിവരം മറയ്ക്കുക',
 	'abusefilter-log-hide-reason' => 'കാരണം:',
@@ -16101,6 +16106,8 @@ $messages['ml'] = array(
 	'abusefilter-edit-builder-group-misc' => 'പലവക',
 	'abusefilter-edit-builder-misc-in' => 'പദത്തിൽ ഉൾപ്പെട്ടിരിക്കുന്നു (in)',
 	'abusefilter-edit-builder-misc-like' => 'ശ്രേണി ഒത്തുപോകുന്നു (like)',
+	'abusefilter-edit-builder-misc-rlike' => 'റെജെക്സ് ഒത്തുനോക്കുക (rlike)',
+	'abusefilter-edit-builder-misc-irlike' => 'കേസ് കണക്കിലാക്കാതെ റെജെക്സ് ഒത്തുനോക്കുക (irlike)',
 	'abusefilter-edit-builder-misc-contains' => 'ഇടത്തെ പദം വലത്തെ പദത്തെ ഉൾക്കൊള്ളുന്നു (contains)',
 	'abusefilter-edit-builder-misc-stringlit' => 'പദ എഴുത്ത് ("")',
 	'abusefilter-edit-builder-misc-tern' => 'തൃതീയ ചിഹ്നനം (X ? Y : Z)',
@@ -16154,10 +16161,12 @@ $messages['ml'] = array(
 	'abusefilter-edit-builder-vars-old-text' => 'തിരുത്തലിനു മുമ്പുള്ള, പഴയ താളിലെ വിക്കി എഴുത്ത്',
 	'abusefilter-edit-builder-vars-new-text' => 'തിരുത്തലിനു ശേഷമുള്ള, പുതിയ താളിലെ വിക്കി എഴുത്ത്',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'പുതിയ താളിലെ, എന്തെങ്കിലും മാർക്കപ്പുകൾ ഉണ്ടെങ്കിൽ അവ നീക്കിയ ശേഷമുള്ള, എഴുത്ത്',
+	'abusefilter-edit-builder-vars-new-html' => 'പുതിയ നാൾപ്പതിപ്പിന്റെ എച്ച്.റ്റി.എം.എൽ. ആയി പാഴ്സ് ചെയ്യപ്പെട്ട സ്രോതസ്സ്',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'താളിന്റെ സംരക്ഷണ മാനം തിരുത്തുക',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'താളിന്റെ സംരക്ഷണ മാനത്തിൽ മാറ്റം വരുത്തുക',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'പഴയ താളിലെ, എന്തെങ്കിലും മാർക്കപ്പുകൾ ഉണ്ടെങ്കിൽ അവ നീക്കിയ ശേഷമുള്ള, എഴുത്ത്',
 	'abusefilter-edit-builder-vars-old-links' => 'തിരുത്തുന്നതിനു മുമ്പ് താളിലുണ്ടായിരുന്ന കണ്ണികൾ',
+	'abusefilter-edit-builder-vars-old-html' => 'എച്ച്.റ്റി.എം.എൽ. ആക്കി പാഴ്സ് ചെയ്യപ്പെട്ട പഴയ താളിലെ വിക്കി എഴുത്തുകൾ',
 	'abusefilter-edit-builder-vars-minor-edit' => 'തിരുത്തൽ ചെറുതിരുത്തൽ ആയി അടയാളപ്പെടുത്തണോ?',
 	'abusefilter-edit-builder-vars-file-sha1' => 'പ്രമാണത്തിന്റെ ഉള്ളടക്കത്തിന്റെ SHA1 ഹാഷ്',
 	'abusefilter-filter-log' => 'അരിപ്പ ഉപയോഗിച്ച് ചെയ്ത സമീപകാല മാറ്റങ്ങൾ',
@@ -16920,6 +16929,7 @@ Filterbeschrijving: $7 ($8)',
 	'abusefilter-log-hidden' => '(melding verborgen)',
 	'abusefilter-log-hide' => 'verbergen of weergeven',
 	'abusefilter-log-details-hidden' => 'U kunt de details van deze melding niet bekijken omdat deze verborgen is.',
+	'abusefilter-log-hide-legend' => 'Logboekregel verbergen',
 	'abusefilter-log-hide-id' => 'Logboekmeldingsnummer:',
 	'abusefilter-log-hide-hidden' => 'Deze melding verbergen',
 	'abusefilter-log-hide-reason' => 'Reden:',
@@ -18572,6 +18582,7 @@ Opis filtru: $7 ($8)',
 	'abusefilter-log-hidden' => '(wpis ukryty)',
 	'abusefilter-log-hide' => 'ukryj lub zakończ ukrywanie',
 	'abusefilter-log-details-hidden' => 'Nie możesz zobaczyć szczegółów tego wpisu, ponieważ jest ukryty przed widokiem publicznym.',
+	'abusefilter-log-hide-legend' => 'Ukryj wpis w rejestrze',
 	'abusefilter-log-hide-id' => 'Identyfikator wpisu w rejestrze',
 	'abusefilter-log-hide-hidden' => 'Ukryj ten wpis przed widokiem publicznym',
 	'abusefilter-log-hide-reason' => 'Powód',
@@ -22003,6 +22014,7 @@ Sieuwebeschrieuwenge: $7 ($8)',
  * @author Fluff
  * @author Gabbe.g
  * @author GameOn
+ * @author Lejonel
  * @author Leo Johannes
  * @author M.M.S.
  * @author MagnusA
@@ -22206,21 +22218,21 @@ missbrukslogg-poster.',
 	'abusefilter-edit-bad-tags' => 'En eller flera av de märken du angav är inte giltigt. Märken skall vara korta och de får inte innehålla några specialtecken.',
 	'abusefilter-edit-notallowed' => 'Du har inte tillåtelse att skapa eller ändra missbruksfilter',
 	'abusefilter-edit-builder-select' => 'Ange ett alternativ för att lägga till det vid markören',
-	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetiska operatörer',
+	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetiska operatorer',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Addition (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Subtraktion (-)',
 	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Multiplikation (*)',
 	'abusefilter-edit-builder-op-arithmetic-divide' => 'Division (/)',
-	'abusefilter-edit-builder-op-arithmetic-modulo' => 'Procent (%)',
+	'abusefilter-edit-builder-op-arithmetic-modulo' => 'Modulo (%)',
 	'abusefilter-edit-builder-op-arithmetic-pow' => 'Dignitet (**)',
-	'abusefilter-edit-builder-group-op-comparison' => 'Jämförelseoperatörer',
+	'abusefilter-edit-builder-group-op-comparison' => 'Jämförelseoperatorer',
 	'abusefilter-edit-builder-op-comparison-equal' => 'Lika med (==)',
 	'abusefilter-edit-builder-op-comparison-notequal' => 'Inte lika med (!=)',
 	'abusefilter-edit-builder-op-comparison-lt' => 'Mindre än (<)',
 	'abusefilter-edit-builder-op-comparison-gt' => 'Mer än (>)',
 	'abusefilter-edit-builder-op-comparison-lte' => 'Mindre än eller lika med (<=)',
 	'abusefilter-edit-builder-op-comparison-gte' => 'Mer än eller lika med (>=)',
-	'abusefilter-edit-builder-group-op-bool' => 'Booleska operatörer',
+	'abusefilter-edit-builder-group-op-bool' => 'Booleska operatorer',
 	'abusefilter-edit-builder-op-bool-not' => 'Inte (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'Och (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Eller (|)',
@@ -22231,8 +22243,8 @@ missbrukslogg-poster.',
 	'abusefilter-edit-builder-misc-irlike' => 'Matchar reguljärt uttryck, skiftlägesokänsligt (irlike)',
 	'abusefilter-edit-builder-misc-contains' => 'Texten till vänster innehåller texten till höger (contains)',
 	'abusefilter-edit-builder-misc-stringlit' => 'Literal sträng ("")',
-	'abusefilter-edit-builder-misc-tern' => 'Trefaldig operator (X ? Y : Z)',
-	'abusefilter-edit-builder-misc-cond' => 'Villkorlig (if X then Y else Z)',
+	'abusefilter-edit-builder-misc-tern' => 'Ternära operatorn (X ? Y : Z)',
+	'abusefilter-edit-builder-misc-cond' => 'Villkor (if X then Y else Z)',
 	'abusefilter-edit-builder-group-funcs' => 'Funktioner',
 	'abusefilter-edit-builder-funcs-length' => 'Stränglängd (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Gör om till små bokstäver (lcase)',
@@ -22245,7 +22257,7 @@ missbrukslogg-poster.',
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Ta bort blanktecken (rmwhitespace)',
 	'abusefilter-edit-builder-funcs-rmspecials' => 'Ta bort specialtecken (rmspecials)',
 	'abusefilter-edit-builder-funcs-ip_in_range' => 'Är IP-numret i intervallet? (ip_in_range)',
-	'abusefilter-edit-builder-funcs-contains-any' => 'Söksträng för multipla understrängar (contains_any)',
+	'abusefilter-edit-builder-funcs-contains-any' => 'Sök efter flera delsträngar i strängen (contains_any)',
 	'abusefilter-edit-builder-funcs-substr' => 'Delsträng (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'Delsträngens position i strängen (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'Ersätt delsträng med sträng (str_replace)',
@@ -23832,6 +23844,7 @@ $messages['uk'] = array(
 	'abusefilter-log-hidden' => '(запис приховано)',
 	'abusefilter-log-hide' => 'приховати або відобразити',
 	'abusefilter-log-details-hidden' => 'Ви не можете проглянути докладну інформацію про цей фільтр, оскільки вона прихована від звичайних користувачів.',
+	'abusefilter-log-hide-legend' => 'Сховати запис у журналі',
 	'abusefilter-log-hide-id' => 'ID записи журналу:',
 	'abusefilter-log-hide-hidden' => 'Приховати цей запис від інших користувачів.',
 	'abusefilter-log-hide-reason' => 'Причина:',
