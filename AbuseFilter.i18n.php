@@ -10176,6 +10176,7 @@ $messages['hi'] = array(
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  * @author Ex13
+ * @author Roberta F.
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
@@ -10451,6 +10452,7 @@ Za učitavanje postojećeg filtra, upišite ID filtra u okvir ispod okvira za ur
 	'abusefilter-diff-pattern' => 'Filtar uvjeta',
 	'abusefilter-diff-invalid' => 'Nemoguće je dohvatiti tražene verzije',
 	'abusefilter-diff-backhistory' => 'Natrag na povijest filtra',
+	'abusefilter-import-submit' => 'Uvoz podataka',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -25002,6 +25004,14 @@ $messages['vo'] = array(
 	'abusefilter-edit-status-label' => 'Statits:',
 	'abusefilter-edit-lastmod-text' => '$1, fa $2',
 	'abusefilter-history-user' => 'Geban',
+);
+
+/** Walloon (Walon)
+ * @author Lucyin
+ */
+$messages['wa'] = array(
+	'abusefilter-deleted' => 'Disfacé',
+	'abusefilter-history-deleted' => 'Disfacé',
 );
 
 /** Wu (吴语) */
