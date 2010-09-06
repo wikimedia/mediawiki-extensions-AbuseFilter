@@ -21041,6 +21041,18 @@ $3 {{PLURAL:$3|аргумент кэтэһиллэр|аргуменнаах бу
 	'abusefilter-import-submit' => 'Импортаа',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'abusefilter-log-search-user' => 'පරිශීලකයා:',
+	'abusefilter-log-search-title' => 'ශීර්ෂය:',
+	'abusefilter-log-search-submit' => 'ගවේෂණය',
+	'abusefilter-log-detailslink' => 'විස්තර',
+	'abusefilter-log-hide-reason' => 'හේතුව:',
+	'abusefilter-hidden' => 'පෞද්ගලික',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  * @author Mormegil
