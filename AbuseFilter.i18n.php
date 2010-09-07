@@ -2651,8 +2651,12 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'abusefilter-desc' => "Lakaat a ra da dalvezout hentennoù emgefre d'ar c'hemmoù",
 	'abusefilter' => 'Kefluniadur ar siloù a-enep ar gwallimplij',
 	'abuselog' => 'Marilh ar siloù a-enep ar gwallimplij',
+	'abusefilter-intro' => 'Degemer mat en etrefas evit merañ ar siloù drougimplij.
+Ar sil drougimplij zo ur gwikefre-meziant emgefre da lakaat da dalvezout hentennoù emgefre evit pep ober.
+An etrefas-mañ a ziskouezh ul listenn enni siloù strizh, hag a aotre da gemm anezho.',
 	'abusefilter-mustbeeditor' => "Evit abegoù surentez, n'eus nemet an implijerien ganto ar gwir da cheñch ar siloù a-enep d'ar gwallimplij a c'hell implijout an etrefas-mañ.",
 	'abusefilter-blocker' => 'Sil a-enep ar gwallimplij',
 	'abusefilter-blockreason' => 'Stanket ez emgefre gant ar sil a-enep ar gwallimplij.
@@ -20635,6 +20639,99 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'abusefilter-desc' => 'Придавать автоматічны гверістікы до едітовань',
+	'abusefilter' => 'Конфіґурація філтрів знеужываня',
+	'abuselog' => 'Запис знеужываня',
+	'abusefilter-intro' => 'Вітайте у інтерфейсі про керованя філтрів знеужываня.
+Філтер знеужываня є автоматічный софтверовый механізм, средством котрого ся вшыткы операції тестують за помочі автоматічных геврістік.
+В тім інтерфейсі можете відїти список дефінованых філтрів і мінити їх.',
+	'abusefilter-mustbeeditor' => 'З безпечностных причін, лем хоснователї з пвавами зміны філтрів можуть хосновати тот інтерфейс.',
+	'abusefilter-warning' => "'''Увага''': Тота дїя была автоматічно ідентіфікована як шкодлива.
+Неконштруктівны едітованя будуть швыдко ревертованы, в&nbsp;повторяный або заважных припадах може быти ваше конто хоснователя ці IP-адреса заблокованы.
+Кідь поважуєте своє едітованя за правилне, можете го підтвердити кликнутём на Уложыти зміны.
+Короткый опис правила, котре вашу дїю означіло за шкодливу : $1",
+	'abusefilter-disallowed' => 'Тота дїя была автоматічно означена як шкодлива,
+і зато заборонена.
+Кідь вірите, же ваше едітованя є конштруктівне, просиме контактуйте адміністратора і дайте му знати, што сьте хотїли зробити.
+Короткый опис правила, котре вашу дїю означіло за шкодливу: $1',
+	'abusefilter-blocked-display' => 'Тота дїя была автоматічно означена як шкодлива,
+і зато была заборонена.
+Окрім того про охорону проєкту {{SITENAME}} было вашому конту хоснователя і з ним звязанін IP-адресї зоблоковане едітованя.
+Кідь собі думате, же ся їднать о хыбу, контактуйте адміністратора.
+Короткый опис правила, котре ваші дїю означіло за шкодливу: $1',
+	'abusefilter-degrouped' => 'Тота дїя была означена як шкодлива.
+Зато была заказана про подозрїня з огрожіня вашого конта хоснователя вам были одобраты вшыткы права.
+Кідь собі думате, же ся їднать о хыбу, контактуйте бірократа з пояснїнём той дїї і права вам можуть быти вернуты.
+Короткый опис правила, котре вашу дїю означіло за шкодливу: $1',
+	'abusefilter-autopromote-blocked' => 'Тота дїя была автоматічно ідентіфікована як шкодліва і прото была заказана.
+Як безпечностне опатрїня были навеце вашому конту дочасно  одобраны дакотры права звычайно придїлёваны вшыткым реґістрованым хоснователям.
+Короткый опис правила, котре вашу дїю означіло за шкодливу: $1',
+	'abusefilter-blocker' => 'Філтер знеужываня',
+	'abusefilter-blockreason' => 'Автоматічно заблоковане філтром знеужываня.
+Попис хоснованого правила: $1',
+	'abusefilter-degroupreason' => 'Права автоматічно одобраны філтром знеужываня.
+Попис правила: $1',
+	'abusefilter-accountreserved' => 'Тото мено хоснователя є резервоване про філтер знеужываня.',
+	'right-abusefilter-modify' => 'Управованя філтрів знеужываня',
+	'right-abusefilter-view' => 'Перегляд філтрів знеужываня',
+	'right-abusefilter-log' => 'Перезераня протоколу знеужываня',
+	'right-abusefilter-log-detail' => 'Перегляд детайлів в протоколї знеужываня',
+	'right-abusefilter-private' => 'Перегляд пріватных дат в протоколї знеужываня',
+	'right-abusefilter-modify-restricted' => 'Зміна філтрів з обмеджуючімя дїями',
+	'right-abusefilter-revert' => 'Ревертованя вшыткых змін зробленых філтром едітовань',
+	'right-abusefilter-view-private' => 'Перезераня філтрів знеужытя означеный як пріватны',
+	'right-abusefilter-hide-log' => 'Схованя записів в протоколї знеужытя',
+	'right-abusefilter-hidden-log' => 'Перегляд схованых заисів в протоколї знеужываня',
+	'action-abusefilter-modify' => 'управовати філтры знеужываня',
+	'action-abusefilter-view' => 'перезерати філтры знеужываня',
+	'action-abusefilter-log' => 'перезерати протоколу знеужываня',
+	'action-abusefilter-log-detail' => 'перезерати детайлы в протоколї знеужываня',
+	'action-abusefilter-private' => 'перезерати пріватны дата в протоколї знеужываня',
+	'action-abusefilter-modify-restricted' => 'мінити філтры знеужываня з обмеджуючімя дїями',
+	'action-abusefilter-revert' => 'ревертовати вшыткы зміны зроблены філтром едітовань',
+	'action-abusefilter-view-private' => 'перезерати філтрів знеужытя означеный як пріватны',
+	'abusefilter-log' => 'Протокол філтра знеужываня',
+	'abusefilter-log-summary' => 'Тот протокол обсягує список вшыткых дїй захопленых філтрами',
+	'abusefilter-log-search' => 'Глядати в  записї знеужытя',
+	'abusefilter-log-search-user' => 'Хоснователь:',
+	'abusefilter-log-search-filter' => 'ІД філтра:',
+	'abusefilter-log-search-title' => 'Назва:',
+	'abusefilter-log-show-deleted' => 'Вказати схованы записы',
+	'abusefilter-log-search-submit' => 'Глядати',
+	'abusefilter-log-entry' => '$1: $2 {{GENDER:$2|спустив|спустила|спустилиl}} філтер знеужываня почас дїї „$3“ на $4.
+Зрроблены опатрїня: $5;
+Попис філтра: $6',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 {{GENDER:$2|спустив|спустила|спустилиl}}  $3 почас дїї „$4“ на $5.
+Зрроблены опатрїня: $6;
+Попис філтра: $7 ($8)',
+	'abusefilter-log-detailedentry-global' => 'ґлобалный філтер $1',
+	'abusefilter-log-detailedentry-local' => 'філтер $1',
+	'abusefilter-log-detailslink' => 'детайлы',
+	'abusefilter-log-hidelink' => 'управити видительность',
+	'abusefilter-log-details-var' => 'Перемінна',
+	'abusefilter-log-noactions' => 'жадна',
+	'abusefilter-log-linkoncontribs' => 'протокол знеужываня',
+	'abusefilter-log-hide-reason' => 'Причіна:',
+	'abusefilter-list-id' => 'ІД філтра',
+	'abusefilter-list-status' => 'Статус',
+	'abusefilter-list-edit' => 'Едітовати',
+	'abusefilter-list-details' => 'Детайлы',
+	'abusefilter-list-lastmodified' => 'Послїдня зміна',
+	'abusefilter-hidden' => 'Пріватный',
+	'abusefilter-unhidden' => 'Публічный',
+	'abusefilter-enabled' => 'Запнутый',
+	'abusefilter-deleted' => 'Змазаный',
+	'abusefilter-disabled' => 'Выпнутый',
+	'abusefilter-hitcount' => '$1 {{PLURAL:$1|засяг|засягы|засягів}}',
+	'abusefilter-tools-modifiertest-submit' => 'Тест',
+	'abusefilter-tools' => 'Інштрументы філтра знеужываня',
+	'abusefilter-loglink' => 'Вказати протокол знеужываня',
+	'abusefilter-status-global' => 'Ґлобалный',
+	'abusefilter-list-options' => 'Можности',
+	'abusefilter-list-options-submit' => 'Обновити',
+	'abusefilter-tools-reautoconfirm-user' => 'Хоснователь:',
+	'abusefilter-edit-new' => 'Новый філтер',
+	'abusefilter-edit-warn-other' => 'Іншы повідомлїня',
 	'abusefilter-history-foruser' => 'Зміны, зроблены $1',
 	'abusefilter-history-hidden' => 'Схованый',
 	'abusefilter-history-enabled' => 'Запнутый',
@@ -22464,6 +22561,27 @@ Kopiera från textrutan som kommer fram och klistra in det till denna ruta. Klic
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'abusefilter-log-search-user' => 'Mtumiaji:',
+	'abusefilter-log-search-title' => 'Cheo:',
+	'abusefilter-log-search-submit' => 'Tafuta',
+	'abusefilter-log-noactions' => 'usichague',
+	'abusefilter-log-hide-reason' => 'Sababu:',
+	'abusefilter-list-edit' => 'Hariri',
+	'abusefilter-disabled' => 'Imelemazwa',
+	'abusefilter-list-options-submit' => 'Sasisha',
+	'abusefilter-tools-reautoconfirm-user' => 'Mtumiaji:',
+	'abusefilter-edit-warn-actions' => 'Vitendo:',
+	'abusefilter-edit-history' => 'Historia:',
+	'abusefilter-history-user' => 'Mtumiaji',
+	'abusefilter-history-select-user' => 'Mtumiaji:',
+	'abusefilter-history-diff' => 'Mabadiliko',
+	'abusefilter-action-block' => 'Zuia',
+	'abusefilter-revert-filter' => 'Chuja:',
+	'abusefilter-revert-confirm' => 'Yakinisha',
+	'abusefilter-test-load' => 'Kupakia',
+	'abusefilter-examine-user' => 'Mtumiaji:',
+	'abusefilter-examine-submit' => 'Tafuta',
+	'abusefilter-topnav-home' => 'Mwanzo',
 	'abusefilter-diff-info' => 'Maelezo ya msingi',
 );
 
