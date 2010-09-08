@@ -12986,6 +12986,7 @@ $messages['ka'] = array(
 	'abusefilter-log-search-submit' => 'ძიება',
 	'abusefilter-log-detailslink' => 'დეტალები',
 	'abusefilter-log-details-var' => 'ცვალებადი',
+	'abusefilter-log-details-val' => 'მნიშვნელობა',
 	'abusefilter-log-details-vars' => 'Action parameters',
 	'abusefilter-log-noactions' => 'არცერთი',
 	'abusefilter-log-details-diff' => 'რედაქტირებისას განხორციელებული ცვლილებები',
@@ -13162,6 +13163,7 @@ $messages['ka'] = array(
 	'abusefilter-history-comments' => 'კომენტარები',
 	'abusefilter-history-actions' => 'მოქმედებები',
 	'abusefilter-history-deleted' => 'წაშლილია',
+	'abusefilter-history-filterid' => 'ფილტრი',
 	'abusefilter-history-select-user' => 'მომხმარებელი:',
 	'abusefilter-history-diff' => 'ცვლილებები',
 	'abusefilter-exception-unclosedstring' => 'დაუხურავი ხაზოვანი გამოსახულება, იწყება $1-ით.',
@@ -13531,6 +13533,7 @@ $messages['ko'] = array(
 	'abusefilter-log-hidden' => '(항목 숨김)',
 	'abusefilter-log-hide' => '숨기기 또는 보이기',
 	'abusefilter-log-details-hidden' => '이 항목은 비공개로 설정되엇기 때문에, 당신은 이 항목의 자세한 사항을 볼 수 없습니다.',
+	'abusefilter-log-hide-legend' => '로그 항목 숨기기',
 	'abusefilter-log-hide-id' => '로그 항목 자료 ID :',
 	'abusefilter-log-hide-hidden' => '이 항목을 비공개로 설정',
 	'abusefilter-log-hide-reason' => '이유:',
@@ -21560,6 +21563,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-log-details-private' => 'Приватни подаци',
 	'abusefilter-log-noactions' => 'ништа',
 	'abusefilter-log-details-diff' => 'Промене направљене изменом',
+	'abusefilter-log-hide-reason' => 'Разлог:',
 	'abusefilter-list-status' => 'Статус',
 	'abusefilter-list-public' => 'Јавни опис',
 	'abusefilter-list-consequences' => 'Консеквенце',
@@ -21577,6 +21581,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-list-options-deleted-hide' => 'Сакриј обрисане филтере',
 	'abusefilter-list-options-disabled' => 'Онемогућени филтери:',
 	'abusefilter-list-options-hidedisabled' => 'Сакриј онемогућене филтере',
+	'abusefilter-list-options-submit' => 'Ажурирај',
 	'abusefilter-tools-reautoconfirm-user' => 'Корисник:',
 	'abusefilter-edit-status-label' => 'Статистике:',
 	'abusefilter-edit-new' => 'Нови филтер',
@@ -21727,6 +21732,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-examine-syntaxerror' => 'Филтер има неисправну синтаксу',
 	'abusefilter-examine-notfound' => 'Измена коју сте затражили није нађена.',
 	'abusefilter-examine-noresults' => 'Нису нађени пезултати за параметре претраге које сте задали.',
+	'abusefilter-topnav-home' => 'На почетак',
 	'abusefilter-topnav-examine' => 'Испитај прошле измене',
 	'abusefilter-topnav-tools' => 'Алати за дебаговање',
 	'abusefilter-topnav-import' => 'Увези филтер',
@@ -22558,6 +22564,7 @@ Kopiera från textrutan som kommer fram och klistra in det till denna ruta. Klic
 );
 
 /** Swahili (Kiswahili)
+ * @author Ikiwaner
  * @author Lloffiwr
  */
 $messages['sw'] = array(
@@ -22569,6 +22576,7 @@ $messages['sw'] = array(
 	'abusefilter-list-edit' => 'Hariri',
 	'abusefilter-disabled' => 'Imelemazwa',
 	'abusefilter-list-options-submit' => 'Sasisha',
+	'abusefilter-tools-subtitle' => 'Vifaa',
 	'abusefilter-tools-reautoconfirm-user' => 'Mtumiaji:',
 	'abusefilter-edit-warn-actions' => 'Vitendo:',
 	'abusefilter-edit-history' => 'Historia:',
