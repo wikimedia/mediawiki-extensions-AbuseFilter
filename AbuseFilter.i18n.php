@@ -10957,6 +10957,7 @@ A vandálszűrő leírása: $7 ($8)',
 	'abusefilter-log-details-diff' => 'Szerkesztés során elvégzett változtatások',
 	'abusefilter-log-linkoncontribs' => 'vandálszűrő naplója',
 	'abusefilter-log-linkoncontribs-text' => 'A szerkesztő Vandálszűrő-naplója',
+	'abusefilter-log-hide-reason' => 'Indoklás:',
 	'abusefilter-management' => 'Vandálszűrő-kezelés',
 	'abusefilter-list' => 'Az összes szűrő',
 	'abusefilter-list-id' => 'Szűrőazonosító',
@@ -12640,11 +12641,11 @@ $messages['ja'] = array(
 	'abusefilter-log-show-deleted' => '隠された項目を表示',
 	'abusefilter-log-search-submit' => '検索',
 	'abusefilter-log-entry' => '$1: $2 が $4 で「$3」操作を行い不正利用フィルターが発動しました。
-対処操作: $5;
+対処操作: $5、
 フィルター解説: $6',
-	'abusefilter-log-detailedentry-meta' => '$1: $2 が $5 で「$4」操作を行い$3 に発動しました。
-対処操作: $6;
-フィルター解説: $7 ($8)',
+	'abusefilter-log-detailedentry-meta' => '$1に$2が$5で「$4」操作を行ない、$3が発動しました。
+対処操作: $6
+フィルター解説: $7（$8）',
 	'abusefilter-log-detailedentry-global' => 'グローバルフィルター $1',
 	'abusefilter-log-detailedentry-local' => 'フィルター $1',
 	'abusefilter-log-detailslink' => '詳細',
@@ -12729,7 +12730,7 @@ $messages['ja'] = array(
 	'abusefilter-edit-deleted' => '削除する',
 	'abusefilter-edit-hidden' => 'このフィルターの詳細を公開しない',
 	'abusefilter-edit-rules' => '条件:',
-	'abusefilter-edit-notes' => "注釈:
+	'abusefilter-edit-notes' => "メモ：
 :''(非公開)''",
 	'abusefilter-edit-lastmod' => 'フィルターの最終変更:',
 	'abusefilter-edit-lastmod-text' => '$1、$2',
@@ -12935,7 +12936,7 @@ $3 つの{{PLURAL:$3|引数}}があるべきですが $4 つしかありませ�
 	'abusefilter-test-page' => '変更されるページ：',
 	'abusefilter-test-shownegative' => 'フィルターに一致しない変更を表示する',
 	'abusefilter-test-syntaxerr' => 'あなたが入力したフィルターには構文エラーがあります。「{{int:abusefilter-edit-check}}」ボタンを押して、完全な説明を得ることができます。',
-	'abusefilter-changeslist-examine' => '試験',
+	'abusefilter-changeslist-examine' => '分析',
 	'abusefilter-examine' => '個別の変更を分析する',
 	'abusefilter-examine-intro' => 'このページでは不正利用フィルターが個別の編集に対して生成した変数を分析し、フィルターに対してそれを試験することができます。',
 	'abusefilter-examine-legend' => '変更の選択',
@@ -14287,6 +14288,17 @@ Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilte
 	'abusefilter-diff-backhistory' => 'Jangk zeröck op de Leß met de Versione vun däm Felter',
 	'abusefilter-import-intro' => 'Do kanns hee di Schnettshtell bruche, öm Date vun de Meßbruchsfeltere vun andere Wikis noh hee ze empotteere. En dämm Wiki, woh de Date her kumme, doh donn op „{{int:abusefilter-edit-export}}“ unger „{{int:abusefilter-tools-subtitle}}“ klecke, op dä Sigg zom Felter Ändere. Donn dä Ennhalt vun däm Kaste met Tex, dä dann doh kütt, en hee dä Kaste eren kopeere, un dann donn hee dä Knopp „{{int:abusefilter-import-submit}}“ klecke.',
 	'abusefilter-import-submit' => 'Lohß Jonn!',
+);
+
+/** Kurdish (Latin) (Kurdî (Latin)) */
+$messages['ku-latn'] = array(
+	'abusefilter-log-search-user' => 'Bikarhêner:',
+	'abusefilter-log-search-title' => 'Sernav:',
+	'abusefilter-log-search-submit' => 'Lêbigere',
+	'abusefilter-log-hide-reason' => 'Sedem',
+	'abusefilter-list-edit' => 'Biguherîne',
+	'abusefilter-list-options-submit' => 'Rojanekirin',
+	'abusefilter-tools-reautoconfirm-user' => 'Bikarhêner:',
 );
 
 /** Latin (Latina)
