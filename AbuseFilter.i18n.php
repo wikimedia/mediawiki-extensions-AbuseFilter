@@ -1832,6 +1832,13 @@ $messages['ba'] = array(
 	'abusefilter-tools-reautoconfirm-user' => 'Ҡатнашыусы:',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'abusefilter-desc' => 'Wendt automaatiche Heuristiken auf Enderungen å',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Cesco
  * @author EugeneZelenko
@@ -12598,6 +12605,7 @@ Copiare dalla casella che appare e copiare in questa casella, quindi fare clic s
  * @author Hosiryuhosi
  * @author Mizusumashi
  * @author Muttley
+ * @author Yanajin66
  * @author 青子守歌
  */
 $messages['ja'] = array(
