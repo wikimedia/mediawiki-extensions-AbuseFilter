@@ -19701,7 +19701,7 @@ Ações tomadas: $5;
 Descrição do filtro: $6',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 disparou o $3, executando a operação "$4" em $5.
 Ações tomadas: $6;
-Descrição do filtro: $7 ($8{{int:pipe-separator}}$9)',
+Descrição do filtro: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'filtro global $1',
 	'abusefilter-log-detailedentry-local' => 'filtro $1',
 	'abusefilter-log-detailslink' => 'detalhes',
