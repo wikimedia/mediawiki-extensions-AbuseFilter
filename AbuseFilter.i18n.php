@@ -1838,6 +1838,7 @@ $messages['ba'] = array(
  */
 $messages['bar'] = array(
 	'abusefilter-desc' => 'Wendt automaatiche Heuristiken auf Enderungen å',
+	'abusefilter-list-edit' => 'werkln',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -10890,6 +10891,7 @@ $messages['ht'] = array(
  * @author Dani
  * @author Dunee
  * @author Glanthor Reviol
+ * @author Misibacsi
  * @author Tgr
  */
 $messages['hu'] = array(
@@ -10949,6 +10951,7 @@ A visszaélési szabály rövid leírása: $1',
 	'abusefilter-log-search-user' => 'Szerkesztő:',
 	'abusefilter-log-search-filter' => 'Szűrőazonosító:',
 	'abusefilter-log-search-title' => 'Cím:',
+	'abusefilter-log-show-deleted' => 'Rejtett tételek mutatása',
 	'abusefilter-log-search-submit' => 'Keresés',
 	'abusefilter-log-entry' => '$1: $2 „$3” műveletével beindított egy vandálszűrőt a(z) $4 oldalon.
 Elvégzett intézkedések: $5
@@ -10959,6 +10962,7 @@ A vandálszűrő leírása: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => '$1 azonosítójú globális szűrőt',
 	'abusefilter-log-detailedentry-local' => '$1 azonosítójú szűrőt',
 	'abusefilter-log-detailslink' => 'részletek',
+	'abusefilter-log-hidelink' => 'láthatóság beállítása',
 	'abusefilter-log-details-legend' => 'A(z) $1 naplóbejegyzés részletei',
 	'abusefilter-log-details-var' => 'Változó',
 	'abusefilter-log-details-val' => 'Érték',
@@ -10969,7 +10973,14 @@ A vandálszűrő leírása: $7 ($8)',
 	'abusefilter-log-details-diff' => 'Szerkesztés során elvégzett változtatások',
 	'abusefilter-log-linkoncontribs' => 'vandálszűrő naplója',
 	'abusefilter-log-linkoncontribs-text' => 'A szerkesztő Vandálszűrő-naplója',
+	'abusefilter-log-hide' => 'elrejt / mutat',
+	'abusefilter-log-details-hidden' => 'Ennek a tételnek a láthatósága "rejtett", ezért a nyilvánosság számára nem látható.',
+	'abusefilter-log-hide-id' => 'A tétel azonosítója:',
+	'abusefilter-log-hide-hidden' => 'Ennek a tételnek az elrejtése a nyilvánosság elől.',
 	'abusefilter-log-hide-reason' => 'Indoklás:',
+	'abusefilter-log-hide-forbidden' => 'Nincs jogosultságod elrejteni ezeket a tételeket.',
+	'abusefilter-logentry-suppress' => 'rejtve "[[$1]]"',
+	'abusefilter-logentry-unsuppress' => 'felfedve "[[$1]]"',
 	'abusefilter-management' => 'Vandálszűrő-kezelés',
 	'abusefilter-list' => 'Az összes szűrő',
 	'abusefilter-list-id' => 'Szűrőazonosító',
@@ -16529,6 +16540,7 @@ Keterangan peraturan: $1',
 	'abusefilter-tools-reautoconfirm-user' => 'Pengguna:',
 	'abusefilter-edit-status-label' => 'Statistik:',
 	'abusefilter-edit-throttle-period' => 'Tempoh masa',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|saat|saat}}',
 	'abusefilter-edit-warn-actions' => 'Tindakan:',
 	'abusefilter-edit-main' => 'Parameter penapis',
 	'abusefilter-edit-viewhistory' => 'Lihat sejarah penapis ini',
@@ -16537,12 +16549,13 @@ Keterangan peraturan: $1',
 	'abusefilter-edit-badfilter' => 'Penapis yang anda nyatakan tidak wujud',
 	'abusefilter-edit-tools' => 'Alatan:',
 	'abusefilter-edit-syntaxok' => 'Tiada kesalahan sintaks yang dikesan.',
-	'abusefilter-edit-syntaxerr' => 'Kesalahan sintaks dikesan:',
+	'abusefilter-edit-syntaxerr' => 'Kesalahan sintaks dikesan: $1',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Pengoperasi aritmetik',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Campur (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Tolak (-)',
 	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Darab (*)',
 	'abusefilter-edit-builder-op-arithmetic-divide' => 'Bahagi (/)',
+	'abusefilter-edit-builder-op-arithmetic-modulo' => 'Modulo (%)',
 	'abusefilter-edit-builder-op-arithmetic-pow' => 'Kuasa (**)',
 	'abusefilter-edit-builder-op-comparison-equal' => 'Sama dengan (==)',
 	'abusefilter-edit-builder-op-comparison-notequal' => 'Tidak sama dengan (!=)',
@@ -16553,6 +16566,7 @@ Keterangan peraturan: $1',
 	'abusefilter-edit-builder-op-bool-not' => 'Tak (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'Dan (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Atau (|)',
+	'abusefilter-edit-builder-group-misc' => 'Pelbagai',
 	'abusefilter-edit-builder-misc-contains' => 'Rentetan kiri mengandungi rentetan kanan (contains)',
 	'abusefilter-edit-builder-misc-tern' => 'Pengoperasi tetiga (X ? Y : Z)',
 	'abusefilter-edit-builder-misc-cond' => 'Bersyarat (if X then Y else Z)',
@@ -21386,8 +21400,14 @@ $messages['si'] = array(
 	'abusefilter-log-search-title' => 'ශීර්ෂය:',
 	'abusefilter-log-search-submit' => 'ගවේෂණය',
 	'abusefilter-log-detailslink' => 'විස්තර',
+	'abusefilter-log-details-val' => 'වටිනාකම',
+	'abusefilter-log-noactions' => 'කිසිවක්  නොවේ',
 	'abusefilter-log-hide-reason' => 'හේතුව:',
+	'abusefilter-list-status' => 'තත්වය',
+	'abusefilter-list-edit' => 'සංස්කරණය කරන්න',
 	'abusefilter-hidden' => 'පෞද්ගලික',
+	'abusefilter-unhidden' => 'ප්‍රසිද්ධ',
+	'abusefilter-tools-reautoconfirm-user' => 'පරිශීලකයා:',
 );
 
 /** Slovak (Slovenčina)
