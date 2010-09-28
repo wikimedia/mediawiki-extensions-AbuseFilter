@@ -2748,7 +2748,7 @@ Deskrivadur ar reolenn kevreet : $1',
 	'abusefilter-log-entry' => '$1: $2 en deus lañset ur sil gwallimplij, e-kerzh an ober "$3" war $4.
 Oberoù kemeret : $5;
 Diskrivadenn ar sil : $6',
-	'abusefilter-log-detailedentry-meta' => '$1: $2 en deus lañset ar $3, e-kerzh an ober "$4" war $5.
+	'abusefilter-log-detailedentry-meta' => '$1 : $2 en deus lañset ar $3, e-kerzh an ober "$4" war $5.
 Oberoù kemeret : $6;
 Diskrivadenn ar sil : $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'sil hollek $1',
@@ -2827,7 +2827,7 @@ Ma enrollit ho kemmoù, e flastrit holl ar c'hemmoù bet graet abaoe ar stumm em
 	'abusefilter-edit-status-label' => 'Stadegoù :',
 	'abusefilter-edit-status' => 'E-barzh an {{PLURAL:$1|ober diwezhañ|$1 ober diwezhañ}}, ar sil-mañ en deus dinoet $2 ($3%).
 Dre geidenn, an padelezh da lañsañ anezhañ a zo $4ms, hag implijout a ra $5 {{PLURAL:$5|amplegad|amplegad}} eus termen an amplegadoù.',
-	'abusefilter-edit-throttled' => "'''Diwallit''': ar sil-mañ a zo bet direwedekaet en un doare emgefrek dre surentez.
+	'abusefilter-edit-throttled' => "'''Diwallit''' : ar sil-mañ a zo bet diweredekaet en un doare emgefrek dre surentez.
 Tizhout a ra termen an dinoiñ muioc'h evit $1% eus an oberoù.",
 	'abusefilter-edit-new' => 'Sil nevez',
 	'abusefilter-edit-save' => 'Enrollañ ar sil',
@@ -2872,7 +2872,7 @@ Tizhout a ra termen an dinoiñ muioc'h evit $1% eus an oberoù.",
 	'abusefilter-edit-done-subtitle' => 'Sil aozet',
 	'abusefilter-edit-done' => "Enrollet-mat eo bet ho kemmoù d'ar sil $1.",
 	'abusefilter-edit-badsyntax' => "Ur fazi ereadurezh a zo e-barzh ar sil-mañ.
-Disoc'h ar parser a oa: <pre>$1</pre>",
+Disoc'h ar parser a oa : <pre>$1</pre>",
 	'abusefilter-edit-restricted' => "Ne c'helloc'h ket kemmañ ar sil-mañ, peogwir ez eus unan pe meur a oberoù bevennet.
 Goulennit mar plij digant un impljier aotreet da ouzhpennañ oberoù bevennet evit ober ar c'hemmoù evidoc'h.",
 	'abusefilter-edit-viewhistory' => 'Gwelet istor ar sil-mañ',
@@ -3037,7 +3037,7 @@ Trugarez da wiriañ anezho gant aked, ha klikit war "kadarnaat" evit kadarnaat h
 	'abusefilter-revert-confirm' => 'Kadarnaat',
 	'abusefilter-revert-success' => "Diskaret ho peus pep ober graet gant ar sil gwallimplij abalamour d'ar [[Special:AbuseFilter/$1|sil $1]].",
 	'abusefilter-revert-reason' => "Dizober en un doare emgefreek pep ober graet gant ar sil gwallimplij abalamour d'ar sil $1.
-Abeg roet: $2",
+Abeg roet : $2",
 	'abusefilter-revert-reasonfield' => 'Abeg an distaoladenn :',
 	'abusefilter-test' => "Amprouiñ ur sil war ar c'hemmoù kozh",
 	'abusefilter-test-intro' => 'Gant ar bajenn-mañ e c\'helloc\'h gwiriañ an/ar $1 {{PLURAL:$1|c\'hemm|c\'hemm}} ziwezhañ eno ur sil roet en takad testenn amañ dindan.
@@ -13079,10 +13079,10 @@ $messages['ja'] = array(
 	'abusefilter-edit-action-blockautopromote' => '利用者の自動承認ステータスを取り消す',
 	'abusefilter-edit-action-degroup' => '利用者をすべての特権グループから除く',
 	'abusefilter-edit-action-block' => '利用者および/またはIPアドレスを編集ブロックする',
-	'abusefilter-edit-action-throttle' => '利用者が速度制限を破った場合にのみ対処操作を発動する',
+	'abusefilter-edit-action-throttle' => '利用者が設定された速度限界を越えた場合にのみ、対処操作を発動する',
 	'abusefilter-edit-action-rangeblock' => '利用者の発信元を/16レンジでブロックする',
 	'abusefilter-edit-action-tag' => '後で再検討するために編集にタグを付ける',
-	'abusefilter-edit-throttle-count' => '許される操作数:',
+	'abusefilter-edit-throttle-count' => '許可される操作数:',
 	'abusefilter-edit-throttle-period' => '期間:',
 	'abusefilter-edit-throttle-seconds' => '$1{{PLURAL:$1|秒}}',
 	'abusefilter-edit-throttle-groups' => "制限をグループ化する:
@@ -18945,7 +18945,7 @@ $3 {{PLURAL:$3|argument demandat|arguments demandats}}, $4 {{PLURAL:$4|obtengut|
 	'abusefilter-action-rangeblock' => 'Blocar la plaja',
 	'abusefilter-action-disallow' => 'Interdire',
 	'abusefilter-revert-title' => 'Revocar totas las modificacions pel filtre $1',
-	'abusefilter-revert-intro' => "Aqueste formulari vos permet de revocar totas las modificacions fachas pel filtre d'abuses $1. Mercé de far atencion en utilizant aqueste esplech.",
+	'abusefilter-revert-intro' => "Aqueste formulari vos permet de revocar totas las modificacions fachas pel filtre d'abuses $1. Mercé de far atencion en utilizant aquesta aisina.",
 	'abusefilter-revert-preview-item' => '$1 : $2 fach lo $3 a $4.
 Accions de revocar : $5 ($6)',
 	'abusefilter-revert-search-legend' => "Seleccionar las accions del filtre d'abuses de revocar",
