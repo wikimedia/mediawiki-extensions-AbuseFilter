@@ -11,7 +11,7 @@ $sqlfile = '/abusefilter.tables.sql';
 if ( $wgDBtype == 'postgres' )
 	 $sqlfile = '/abusefilter.tables.pg.sql';
 
-dbsource( dirname( __FILE__ ) . $sqlfile );
+wfGetDB( DB_MASTER )->sourceFile( dirname( __FILE__ ) . $sqlfile );
 
 // Create the Abuse Filter user.
 wfLoadExtensionMessages( 'AbuseFilter' );
