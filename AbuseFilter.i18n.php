@@ -29,9 +29,8 @@ Unconstructive edits will be quickly reverted,
 and egregious or repeated unconstructive editing will result in your account or IP address being blocked.
 If you believe this edit to be constructive, you may click Submit again to confirm it.
 A brief description of the abuse rule which your action matched is: $1",
-	'abusefilter-disallowed' => "This action has been automatically identified as harmful,
-and therefore disallowed.
-If you believe your edit was constructive, please contact an administrator, and inform them of what you were trying to do.
+	'abusefilter-disallowed' => "This action has been automatically identified as harmful, and therefore disallowed.
+If you believe your edit was constructive, please inform an administrator of what you were trying to do.
 A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-blocked-display' => "This action has been automatically identified as harmful,
 and you have been prevented from executing it.
