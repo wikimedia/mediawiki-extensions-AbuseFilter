@@ -2684,12 +2684,12 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'abusefilter-desc' => "Lakaat a ra da dalvezout hentennoù emgefre d'ar c'hemmoù",
+	'abusefilter-desc' => "Lakaat a ra hentennoù klask emgefre da dalvezout evit ar c'hemmoù",
 	'abusefilter' => 'Kefluniadur ar siloù a-enep ar gwallimplij',
 	'abuselog' => 'Marilh ar siloù a-enep ar gwallimplij',
-	'abusefilter-intro' => 'Degemer mat en etrefas evit merañ ar siloù drougimplij.
-Ar sil drougimplij zo ur gwikefre-meziant emgefre da lakaat da dalvezout hentennoù emgefre evit pep ober.
-An etrefas-mañ a ziskouezh ul listenn enni siloù strizh, hag a aotre da gemm anezho.',
+	'abusefilter-intro' => 'Degemer mat en etrefas merañ ar siloù drougimplij.
+Ur gwikedre meziantel emgefre eo ar sil a-enep an drougimplij. Talvezout a ra da lakaat hentennoù klask emgefre raktermenet evit pep ober.
+Diskouez a ra an etrefas-mañ ur roll eus ar siloù termenet, hag aotren a ra degas kemmoù enno.',
 	'abusefilter-mustbeeditor' => "Evit abegoù surentez, n'eus nemet an implijerien ganto ar gwir da cheñch ar siloù a-enep d'ar gwallimplij a c'hell implijout an etrefas-mañ.",
 	'abusefilter-warning' => "'''Diwallit''': an ober-mañ a zo anavezet evit bezañ noazus.
 Ar c'hemmoù diyaus a vo nullet raktal,
@@ -15488,6 +15488,10 @@ In plaats daovan is $3 $4 aangetróffe.",
 	'abusefilter-exception-notenoughargs' => "d'r Zeen neet zat parameters ingegaeve veur de functie $2 die is aangeropen in karakter $1.
 d'r {{PLURAL:$3|Woort eine paramaeter|Woorte $3 paramaeters}} verwach en d'r {{PLURAL:$4|is t'r eine|zeen d'r $4}} aangetróffe.",
 	'abusefilter-exception-regexfailure' => 'd\'r Is \'n fout aangetróffen in de regulier expressie "$3" bie karakter $1: "$2"',
+	'abusefilter-exception-overridebuiltin' => 'De ingeboewde variable "$2" is vervange bie karakter $1.
+Dit is neet toegestange.',
+	'abusefilter-exception-outofbounds' => "d'r Is getrach e lieselement ($2 bie liesgruuedje $3) op te haole det neet besteit bie karakter $1.",
+	'abusefilter-exception-notlist' => "d'r Is getrach e verzamelingselement op te vraogen oet get det gein verzameling is bie karakter $1.",
 	'abusefilter-action-tag' => 'Label',
 	'abusefilter-action-throttle' => 'Limiete',
 	'abusefilter-action-warn' => 'Waorsjuuw',
@@ -15524,6 +15528,9 @@ Gaef \'n filternummer in om \'ne bestaonde filter te laje, en klik daonao op de 
 	'abusefilter-test-period-start' => 'Verangeringe gemaak nao:',
 	'abusefilter-test-period-end' => 'Verangeringe gemaak veur:',
 	'abusefilter-test-page' => 'Verangeringe aan pagina:',
+	'abusefilter-test-shownegative' => 'Toean verangeringe die neet aan de filter voldoon',
+	'abusefilter-test-syntaxerr' => 'De filter daen se haes ingeveurd bevat \'n syntaxisfout.
+Door op "Syntaxis controleren" te klikke kriegs se \'n volledige toelichting.',
 	'abusefilter-changeslist-examine' => 'óngerzeuk',
 	'abusefilter-examine' => 'Óngerzeuk individueel verangeringe',
 	'abusefilter-examine-intro' => "Via dees pagina kins se de door de filter aangemaakde variabele veur 'n individueel verangering óngerzeuken en dees teste taenge filters.",
@@ -15538,6 +15545,9 @@ Gaef \'n filternummer in om \'ne bestaonde filter te laje, en klik daonao op de 
 	'abusefilter-examine-match' => 'De filter vóldeit aan dees verangering.',
 	'abusefilter-examine-nomatch' => 'De filter vóldeit neet aan dees verangering.',
 	'abusefilter-examine-syntaxerror' => "De filter haet 'nen óngeljigen ópmaak.",
+	'abusefilter-examine-notfound' => 'De verangering die se haes opgevraog is neet aangetróffe.',
+	'abusefilter-examine-incompatible' => 'De filter ondersteunt de verangering die se haes opgevraog neet',
+	'abusefilter-examine-noresults' => "d'r Zeen geun resultate gevónje veur de zeukopdrachparamaeters die se haes opgegaeve.",
 	'abusefilter-topnav' => "'''Filternavigatie'''",
 	'abusefilter-topnav-home' => 'Veurmenu',
 	'abusefilter-topnav-test' => 'Batchtes',
@@ -15545,6 +15555,9 @@ Gaef \'n filternummer in om \'ne bestaonde filter te laje, en klik daonao op de 
 	'abusefilter-topnav-log' => 'Filterlogbook',
 	'abusefilter-topnav-tools' => 'Hólpmiddele veur debugge',
 	'abusefilter-topnav-import' => 'Importeer filter',
+	'abusefilter-log-name' => 'Filterlogbook',
+	'abusefilter-log-header' => "Dit logbook geuf 'n euverzich van filterverangeringe.
+Zuuch de [[Special:AbuseFilter/history|lies mit recente filterverangeringe]] veur volledige details.",
 	'abusefilter-log-entry-modify' => 'haet $1 gewiezig ($2)',
 	'abusefilter-diff-title' => '(Versjil tösje versies)',
 	'abusefilter-diff-item' => 'Deil',
@@ -17564,7 +17577,7 @@ Onconstructieve bewerkingen worden snel teruggedraaid, en herhaald onconstructie
 Als u denkt dat deze bewerking wel constructief is, klik dan opnieuw op \"Pagina opslaan\" om de bewerking te bevestigen.
 Een korte beschrijving van de regel op basis waarvan uw bewerking is tegengehouden volgt nu: \$1",
 	'abusefilter-disallowed' => 'Deze handeling is automatisch geïdentificeerd als schadelijk, en daarom niet toegelaten.
-Als u denkt dat uw bewerking wel constructief was, neem dan contact op met een beheerder, en informeer hemwat u probeerde te doen.
+Als u denkt dat uw bewerking wel constructief was, rapporteer dan aan de beheerder wat u probeerde te doen.
 Een korte beschrijving van de regel op basis waarvan uw bewerking is tegengehouden volgt nu: $1',
 	'abusefilter-blocked-display' => 'Deze handeling is automatisch geïdentificeerd als schadelijk. Daarom is deze niet uitgevoerd.
 Om {{SITENAME}} te beschermen zijn uw gebruiker en alle bijbehorende IP-adressen geblokkeerd.
@@ -17578,7 +17591,8 @@ Een korte beschrijving van de regel op basis waarvan uw bewerking is tegengehoud
 Als aanvullende veiligheidsmaatregel zijn een aantal automatisch toegekende rechten voor uw gebruiker tijdelijk ingetrokken.
 Een korte beschrijving van de regel op basis waarvan uw bewerking is tegengehouden volgt nu: $1',
 	'abusefilter-blocker' => 'Filter',
-	'abusefilter-blockreason' => 'Automatisch geblokeerd door het filter. Beschrijving van de regel die dit veroorzaakte: $1',
+	'abusefilter-blockreason' => 'Automatisch geblokeerd door het filter.
+Beschrijving van de regel die dit veroorzaakte: $1',
 	'abusefilter-degroupreason' => 'Rechten zijn automatisch verwijderd door het filter. Regelbeschrijving: $1',
 	'abusefilter-accountreserved' => 'Deze gebruiker is gereserveerd voor het filter.',
 	'right-abusefilter-modify' => 'Filters wijzigen',
@@ -23347,6 +23361,7 @@ $messages['sw'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author Karthi.dr
  * @author TRYPPN
  * @author செல்வா
  */
@@ -23399,6 +23414,8 @@ $messages['ta'] = array(
 	'abusefilter-tools-modifiertest-submit' => 'சோதனை',
 	'abusefilter-status-global' => 'எங்கும்',
 	'abusefilter-list-options' => 'விருப்பத்தேர்வுகள்',
+	'abusefilter-list-options-deleted-hide' => 'அழிக்கப்பட்ட வடிகட்டல்களை மறைக்கவும்',
+	'abusefilter-list-options-deleted-show' => 'அழிக்கப்பட்ட வடிகட்டல்களைச் சேர்த்துக் கொள்ளவும்',
 	'abusefilter-list-options-submit' => 'புதுப்பி',
 	'abusefilter-tools-subtitle' => 'கருவிகள்',
 	'abusefilter-tools-submitexpr' => 'மதிப்பீடு செய்',
@@ -23417,6 +23434,7 @@ $messages['ta'] = array(
 	'abusefilter-edit-history' => 'வரலாறு:',
 	'abusefilter-edit-check' => 'தொடரமைப்பை சரிபார்க்கவும்',
 	'abusefilter-edit-tools' => 'கருவிகள்:',
+	'abusefilter-edit-syntaxok' => 'எந்த அமைப்பு இலக்கணப் பிழையும் இல்லை',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'கணிதக்குறியீடுகள்',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'கூட்டல் (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'கழித்தல் (-)',
