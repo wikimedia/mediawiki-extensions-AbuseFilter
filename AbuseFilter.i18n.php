@@ -6234,7 +6234,10 @@ Filtrila priskribo: $7 ($8)',
 	'abusefilter-log-details-diff' => 'Ŝanĝoj faritaj en redaktoj',
 	'abusefilter-log-linkoncontribs' => 'protokolo pri misuzado',
 	'abusefilter-log-linkoncontribs-text' => 'Protokolaĵoj en la Protokolo pri Misuzado por ĉi tiu uzanto',
+	'abusefilter-log-hide' => 'kaŝi aŭ malkaŝi',
+	'abusefilter-log-hide-legend' => 'Kaŝi protokoleron',
 	'abusefilter-log-hide-reason' => 'Kialo:',
+	'abusefilter-logentry-suppress' => 'kaŝis "[[$1]]"',
 	'abusefilter-management' => 'Administrado de filtriloj de misuzo',
 	'abusefilter-list' => 'Ĉiuj filtriloj',
 	'abusefilter-list-id' => 'Identigo de Filtrilo',
@@ -19622,10 +19625,16 @@ Skopiuj zawartość pola tekstowego, które się pojawi, i wklej ją do poniższ
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
+	'abusefilter-desc' => "A àplica dj'eurìstiche automàtiche a le modìfiche",
+	'abusefilter' => "Configurassion dël fìlter contra j'abus",
 	'abuselog' => "Registr ëd j'abus",
+	'abusefilter-intro' => "Bin ëvnù ant l'antërfassa ëd gestion dij fìlter contra j'abus.
+Ël fìlter contra j'abus a l'é un mecanism ëd programa automatisà ch'a àplica dj'eurìstiche automàtiche a tute j'assion.
+Costa antërfassa a smon na lista ëd fìlter definì e a përmet ëd modificheje.",
 );
 
 /** Pashto (پښتو)
@@ -23414,8 +23423,11 @@ $messages['ta'] = array(
 	'abusefilter-tools-modifiertest-submit' => 'சோதனை',
 	'abusefilter-status-global' => 'எங்கும்',
 	'abusefilter-list-options' => 'விருப்பத்தேர்வுகள்',
+	'abusefilter-list-options-deleted-only' => 'நீக்கப்பட்ட வடிகட்டிகளை மட்டும் காட்டவும்',
 	'abusefilter-list-options-deleted-hide' => 'அழிக்கப்பட்ட வடிகட்டல்களை மறைக்கவும்',
 	'abusefilter-list-options-deleted-show' => 'அழிக்கப்பட்ட வடிகட்டல்களைச் சேர்த்துக் கொள்ளவும்',
+	'abusefilter-list-options-disabled' => 'செயலிழக்கம் செய்யப்பட்ட வடிகட்டிகள்:',
+	'abusefilter-list-options-hidedisabled' => 'செயலிழக்கம் செய்யப்பட்ட வடிகட்டிகளை மறைக்கவும்',
 	'abusefilter-list-options-submit' => 'புதுப்பி',
 	'abusefilter-tools-subtitle' => 'கருவிகள்',
 	'abusefilter-tools-submitexpr' => 'மதிப்பீடு செய்',
@@ -23440,6 +23452,13 @@ $messages['ta'] = array(
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'கழித்தல் (-)',
 	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'பெருக்கல் (*)',
 	'abusefilter-edit-builder-op-arithmetic-divide' => 'வகுத்தல் (/)',
+	'abusefilter-edit-builder-group-op-comparison' => 'ஒத்துப்பார்க்கும் கணிதக்குறியீடுகள்',
+	'abusefilter-edit-builder-op-comparison-equal' => 'மிகச்சமமானது (==)',
+	'abusefilter-edit-builder-op-comparison-notequal' => 'சமமானதல்ல (!=)',
+	'abusefilter-edit-builder-op-comparison-lt' => 'இதற்கும் குறைவான (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'இதற்கும் அதிகமான (>)',
+	'abusefilter-edit-builder-op-comparison-lte' => 'இதற்கும் குறைவான அல்லது சமமான (<=)',
+	'abusefilter-edit-builder-op-comparison-gte' => 'இதற்கும் அதிகமான அல்லது சமமான (<=)',
 	'abusefilter-edit-builder-op-bool-not' => 'இல்லாதது (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'இத்துடன் (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'அல்லது (|)',
@@ -23448,6 +23467,11 @@ $messages['ta'] = array(
 	'abusefilter-edit-builder-vars-newsize' => 'புதிய பக்க அளவு',
 	'abusefilter-edit-builder-vars-oldsize' => 'பழைய பக்க அளவு',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'முழு பக்கத்தின் தலைப்பு',
+	'abusefilter-edit-builder-vars-user-editcount' => 'பயனரின் தொகுப்புக்களின் எண்ணிக்கை',
+	'abusefilter-edit-builder-vars-user-age' => 'பயனர் கணக்கின் வயது',
+	'abusefilter-edit-builder-vars-user-name' => 'பயனர் கணக்கின் பெயர்',
+	'abusefilter-edit-builder-vars-user-emailconfirm' => 'மின்னஞ்சல் முகவரி உறுதிசெய்யப்பட்ட நேரம்',
+	'abusefilter-edit-builder-vars-recent-contributors' => 'இப்பக்கத்திற்கு  கடைசியாக பங்களித்த பத்து பயனர்கள்',
 	'abusefilter-history-hidden' => 'மறைக்கப்பட்டது',
 	'abusefilter-history-enabled' => 'பயன்பாட்டில் உள்ளது',
 	'abusefilter-history-global' => 'எங்கும்',
@@ -23472,6 +23496,10 @@ $messages['ta'] = array(
 	'abusefilter-revert-reasonfield' => 'முன்னிலையாக்குவதற்கான காரணம்:',
 	'abusefilter-test-submit' => 'சோதனை',
 	'abusefilter-test-load' => 'ஏற்று',
+	'abusefilter-test-user' => 'பயனரால் செய்யப்பட்ட மாற்றங்கள்:',
+	'abusefilter-test-period-start' => 'இதற்குப் பிறகு செய்யப்பட்ட மாற்றங்கள்:',
+	'abusefilter-test-period-end' => 'இதற்கு முன்புச் செய்யப்பட்ட மாற்றங்கள்:',
+	'abusefilter-test-page' => 'இப்பக்கத்திற்குச் செய்யப்பட்ட மாற்றங்கள்:',
 	'abusefilter-changeslist-examine' => 'ஆய்வு செய்',
 	'abusefilter-examine-legend' => 'மாற்றங்களைத் தேர்ந்தெடுக்கவும்',
 	'abusefilter-examine-user' => 'பயனர்:',
