@@ -12561,6 +12561,7 @@ Descrizione della regola corrispondente: $1',
 	'right-abusefilter-modify-restricted' => 'Modifica i filtri anti abusi con le azioni riservate',
 	'right-abusefilter-revert' => 'Annulla tutti i cambiamenti di un determinato filtro anti abusi',
 	'right-abusefilter-view-private' => 'Visualizza i filtri anti abusi segnati come privati',
+	'right-abusefilter-hidden-log' => 'Visualizza voci nascoste del registro del filtro anti abusi',
 	'action-abusefilter-modify' => 'modificare i filtri anti abusi',
 	'action-abusefilter-view' => 'visualizzare i filtri anti abusi',
 	'action-abusefilter-log' => 'visualizzare il registro del filtro anti abusi',
@@ -13791,6 +13792,7 @@ $messages['km'] = array(
 $messages['kn'] = array(
 	'abusefilter-log-search-title' => 'ಶೀರ್ಷಿಕೆ:',
 	'abusefilter-log-search-submit' => 'ಹುಡುಕು',
+	'abusefilter-log-hide-reason' => 'ಕಾರಣ:',
 	'abusefilter-list-status' => 'ಸ್ಥಾನಮಾನ',
 	'abusefilter-list-edit' => 'ಸಂಪಾದಿಸಿ',
 	'abusefilter-tools-subtitle' => 'ಉಪಕರಣಗಳು',
@@ -19637,6 +19639,15 @@ $messages['pms'] = array(
 	'abusefilter-intro' => "Bin ëvnù ant l'antërfassa ëd gestion dij fìlter contra j'abus.
 Ël fìlter contra j'abus a l'é un mecanism ëd programa automatisà ch'a àplica dj'eurìstiche automàtiche a tute j'assion.
 Costa antërfassa a smon na lista ëd fìlter definì e a përmet ëd modificheje.",
+	'abusefilter-mustbeeditor' => "Për dle rason ëd sigurëssa, mach j'utent con ël drit ëd modifiché ij fìlter contra j'abus a peulo dovré s'antërfassa.",
+	'abusefilter-warning' => "'''Atension''': Costa assion a l'è stàita indentificà an automàtich coma danosa.
+Le modificassion nen costrutive a saran tòst anulà,
+e le modìfiche nen costrutive esagerà o arpetùe a mneran al blocagi ëd sò cont o soa adrëssa IP.
+S'a chërd che soa modìfica a l'é costrutiva, a peul torna sgnaché ansima a Mandé për confermela.
+Na curta descrission ëd la régola dj'abus anté ch'a l'é cascà soa modìfica a l'é: $1",
+	'abusefilter-disallowed' => "Costa assion a l'é stàita identificà an automàtich coma danosa, e donca ampedìa.
+S'a chërd che soa modìfica a l'era costrutiva, ch'a buta al corent n'aministrator ëd lòn ch'a sërcava ëd fé.
+Na curta descrission ëd la régola dj'abus anté ch'a l'é cascà soa assion a l'é: $1",
 );
 
 /** Pashto (پښتو)
@@ -23479,6 +23490,7 @@ $messages['ta'] = array(
 	'abusefilter-edit-builder-group-funcs' => 'செயலாற்றிகள்',
 	'abusefilter-edit-builder-funcs-length' => 'சொற்றொடரின் நீளம் (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'சிற்றெழுத்தாக்கு (lcase)',
+	'abusefilter-edit-builder-funcs-specialratio' => 'சிறப்பு எழுத்துக்கள் / மொத்த எழுத்துக்கள் (specialratio)',
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'வெள்ளை இடைவெளிகளை நீக்கு (rmwhitespace)',
 	'abusefilter-edit-builder-funcs-rmspecials' => 'சிறப்பு எழுத்துக்களை நீக்கவும் (rmspecials)',
 	'abusefilter-edit-builder-funcs-ip_in_range' => 'ஐ.பி. அதன் வரையறையில் உள்ளதா ? (ip_in_range)',
@@ -26152,16 +26164,20 @@ $messages['yi'] = array(
 	'abusefilter-log-detailslink' => 'פרטים',
 	'abusefilter-log-details-var' => 'וואַריאַבל',
 	'abusefilter-log-noactions' => 'קיין',
+	'abusefilter-log-hide-reason' => 'אורזאַך:',
 	'abusefilter-list-edit' => 'רעדאַקטירן',
 	'abusefilter-hidden' => 'פריוואט',
 	'abusefilter-unhidden' => 'עפֿנטלעך',
 	'abusefilter-enabled' => 'אַקטיוויזירט',
 	'abusefilter-deleted' => 'אויסגעמעקט',
 	'abusefilter-disabled' => 'אָפאַקטיוויזירן',
+	'abusefilter-status-global' => 'גלאבאַל',
+	'abusefilter-list-options-submit' => 'דערהײַנטיקן',
 	'abusefilter-tools-reautoconfirm-user' => 'באַניצער:',
 	'abusefilter-edit-status-label' => 'סטאַטיסטיק:',
 	'abusefilter-edit-lastmod-text' => '$1 פֿון $2',
 	'abusefilter-edit-history' => 'היסטאריע:',
+	'abusefilter-edit-builder-group-vars' => 'וואַריאַבלען',
 	'abusefilter-history-timestamp' => 'צײַט',
 	'abusefilter-history-user' => 'באַניצער',
 	'abusefilter-history-select-user' => 'באַניצער:',
