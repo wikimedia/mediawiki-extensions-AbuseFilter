@@ -7476,8 +7476,8 @@ $messages['fa'] = array(
 	'abusefilter-log-entry' => '$1: $2 توسط پالایه خرابکاری گرفته شد؛ او مشغول اجرای «$3» بر روی $4 بود.
 عمل پالایه: $5"؛
 توضیحات پالایه: $6',
-	'abusefilter-log-detailedentry-meta' => '$1:$2 $3 را در حالی که قصد داشت عمل «$4» را روی $5 انجام دهد فعال کرد.
-اقدامی که توسط پالایه گرفته شد: $6
+	'abusefilter-log-detailedentry-meta' => '$1: $2 $3 را در حالی که قصد داشت عمل «$4» را روی $5 انجام دهد فعال کرد.
+اقدام صورت‌گرفته: $6؛
 توضیحات پالایه: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'پالایه سراسری $1',
 	'abusefilter-log-detailedentry-local' => 'پالایه $1',
@@ -7716,7 +7716,7 @@ $messages['fa'] = array(
 	'abusefilter-history-public' => 'توضیحات عمومی پالایه',
 	'abusefilter-history-flags' => 'پرچم‌ها',
 	'abusefilter-history-filter' => 'قواعد پالایه',
-	'abusefilter-history-comments' => 'نظرات',
+	'abusefilter-history-comments' => 'توضیح',
 	'abusefilter-history-actions' => 'اقدامات',
 	'abusefilter-history-backedit' => 'بازگشت به ویرایشگر پالایه',
 	'abusefilter-history-deleted' => 'حذف شده',
@@ -7749,7 +7749,7 @@ $messages['fa'] = array(
 	'abusefilter-action-block' => 'بستن',
 	'abusefilter-action-degroup' => 'حذف از گروه‌ها',
 	'abusefilter-action-rangeblock' => 'بستن یک بازه',
-	'abusefilter-action-disallow' => 'منع کردن',
+	'abusefilter-action-disallow' => 'جلوگیری',
 	'abusefilter-revert-title' => 'واگردانی تمام تغییرهای انجام شده توسط پالایه $1',
 	'abusefilter-revert-intro' => 'این فرم به شما اجازهٔ واگردانی همهٔ تغییرات انجام شده توسط پالایهٔ خرابکاری به دلیل پالایهٔ $1 را می‌دهد.
 لطفاً در استفاده از این ابزار دقت کنید.',
@@ -16634,7 +16634,7 @@ $messages['ml'] = array(
 	'abusefilter-list-options-deleted-only' => 'മായ്ക്കപ്പെട്ട അരിപ്പകൾ മാത്രം പ്രദർശിപ്പിക്കുക',
 	'abusefilter-list-options-deleted-hide' => 'മായ്ക്കപ്പെട്ട അരിപ്പകൾ മറയ്ക്കുക',
 	'abusefilter-list-options-deleted-show' => 'മായ്ക്കപ്പെട്ട അരിപ്പകൾ ഉൾപ്പെടുത്തുക',
-	'abusefilter-list-options-disabled' => 'നിർജീവമാക്കപ്പെട്ട അരിപ്പകൾ:',
+	'abusefilter-list-options-disabled' => 'നിർജ്ജീവമാക്കപ്പെട്ട അരിപ്പകൾ:',
 	'abusefilter-list-options-hidedisabled' => 'നിർജ്ജീവമാക്കപ്പെട്ട അരിപ്പകൾ മറയ്ക്കുക',
 	'abusefilter-list-options-submit' => 'പുതുക്കുക',
 	'abusefilter-tools-subtitle' => 'ഉപകരണങ്ങൾ',
@@ -16690,7 +16690,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-warn-message' => 'മുന്നറിയിപ്പിനായി ഉപയോഗിക്കുന്ന വ്യവസ്ഥാ സന്ദേശം:',
 	'abusefilter-edit-warn-other' => 'മറ്റു സന്ദേശം',
 	'abusefilter-edit-warn-other-label' => "മറ്റ് സന്ദേശങ്ങളുടെ താളിന്റെ പേര്:
-:''(മീഡിയവിക്കി പൂർവ്വപദം ഇല്ലാതെ)''",
+:''(പൂർവ്വപദമായ മീഡിയവിക്കി ഇല്ലാതെ)''",
 	'abusefilter-edit-warn-actions' => 'പ്രവർത്തനങ്ങൾ:',
 	'abusefilter-edit-warn-preview' => 'തിരഞ്ഞെടുത്ത സന്ദേശത്തിന്റെ പ്രിവ്യൂ കാണുക',
 	'abusefilter-edit-warn-edit' => 'തിരഞ്ഞെടുത്ത സന്ദേശം സൃഷ്ടിക്കുക/തിരുത്തുക',
@@ -19772,6 +19772,29 @@ Descrission dël filtr: $7 ($8)',
 	'abusefilter-return' => 'Torné andré a la gestion dij filtr',
 	'abusefilter-status-global' => 'Global',
 	'abusefilter-list-options' => 'Opsion',
+	'abusefilter-list-options-deleted' => 'Filtr scanselà:',
+	'abusefilter-list-options-deleted-only' => 'Mosta mach filtr scanselà',
+	'abusefilter-list-options-deleted-hide' => 'Stërma filtr scanselà',
+	'abusefilter-list-options-deleted-show' => 'Comprend filtr scanselà',
+	'abusefilter-list-options-disabled' => 'Filtr disabilità:',
+	'abusefilter-list-options-hidedisabled' => 'Stërma filtr disabilità',
+	'abusefilter-list-options-submit' => 'Agiorna',
+	'abusefilter-tools-subtitle' => 'Utiss',
+	'abusefilter-tools-text' => "Ambelessì a-i son quaich utiss ch'a peulo esse ùtij a formulé e preuvé ij filtr ëd sicurëssa.",
+	'abusefilter-tools-expr' => "Tester d'espression",
+	'abusefilter-tools-submitexpr' => 'Vàluta',
+	'abusefilter-tools-reautoconfirm' => 'Riprìstina stat autoconfirmà',
+	'abusefilter-tools-reautoconfirm-user' => 'Utent:',
+	'abusefilter-tools-reautoconfirm-submit' => 'Autoconfirma torna',
+	'abusefilter-reautoconfirm-none' => "Col utent a l'ha pa avù ël {{GENDER:$1|sò|sò|sò}} stat autoconfirmà sospeis.",
+	'abusefilter-reautoconfirm-notallowed' => 'It peule pa ripristiné lë stat autoconfirmà.',
+	'abusefilter-reautoconfirm-done' => "Lë stat autoconfirmà dël cont a l'é stàit ripristinà",
+	'abusefilter-status' => "Dj'ùltime $1 {{PLURAL:$1|assion|assion}}, $2 ($3%) {{PLURAL:$2|a l'é|a son}} rivà a la condission lìmit ëd $4, e $5 ($6%) {{PLURAL:$5|a l'ha|a l'han}} cobià un dij filtr abilità al moment.",
+	'abusefilter-edit-subtitle' => 'Modifiché ël filtr $1',
+	'abusefilter-edit-throttled' => "'''Avis''': Sto filtr a l'é stàit disabilità automaticament com misura ëd sicurëssa.
+A l'era rivà al lìmit ëd cobié pi che $1% d'assion.",
+	'abusefilter-edit-new' => 'Filtr neuv',
+	'abusefilter-edit-save' => 'Salva filtr',
 );
 
 /** Pashto (پښتو)
@@ -23664,6 +23687,7 @@ $messages['ta'] = array(
 	'abusefilter-history-diff' => 'மாற்றங்கள்',
 	'abusefilter-action-warn' => 'எச்சரி',
 	'abusefilter-action-block' => 'தடு',
+	'abusefilter-action-degroup' => 'குழுக்களில் இருந்து விலக்கு',
 	'abusefilter-action-disallow' => 'அனுமதிமறுப்பு',
 	'abusefilter-revert-periodstart' => 'துவக்க நேரம்:',
 	'abusefilter-revert-periodend' => 'முடிவடைந்த நேரம்:',
@@ -23682,6 +23706,9 @@ $messages['ta'] = array(
 	'abusefilter-examine-user' => 'பயனர்:',
 	'abusefilter-examine-title' => 'பக்கத்தின் தலைப்பு:',
 	'abusefilter-examine-submit' => 'தேடுக',
+	'abusefilter-examine-test-button' => 'சோதனை வடிகட்டி',
+	'abusefilter-examine-match' => 'வடிகட்டியானது இந்த மாற்றத்துடன் ஒத்துப்போகிறது',
+	'abusefilter-examine-nomatch' => 'வடிகட்டியானது இந்த மாற்றத்துடன் ஒத்துவரவில்லை.',
 	'abusefilter-diff-item' => 'பொருள்',
 );
 
