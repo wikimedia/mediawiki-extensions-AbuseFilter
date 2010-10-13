@@ -716,6 +716,9 @@ $messages['af'] = array(
 	'abusefilter-log-details-val' => 'Waarde',
 	'abusefilter-log-details-ip' => 'IP-adres',
 	'abusefilter-log-noactions' => 'geen',
+	'abusefilter-log-hide-reason' => 'Rede:',
+	'abusefilter-logentry-suppress' => 'het [[$1]] versteek',
+	'abusefilter-logentry-unsuppress' => 'het [[$1]] sigbaar gemaak',
 	'abusefilter-list-id' => 'Filternommer',
 	'abusefilter-list-status' => 'Status',
 	'abusefilter-list-public' => 'Publieke beskrywing',
@@ -16124,7 +16127,7 @@ $messages['mk'] = array(
 Ако оваа реакција се должи на некаква грешка, обратете се на администратор.
 Еве краток опис на правилото за злоупотреби според кое беше утврдено дека сте направиле престап: $1',
 	'abusefilter-degrouped' => 'Ова дејство е автоматски утврдено како штетно.
-Затоа дејството не е дозволено. Покрај ова, бидејќи вашата сметка е под сомнение дека е искомпромитирана, одземени ви се и правата.
+Затоа тоа не е дозволено. Покрај ова, бидејќи вашата сметка е под сомнение дека е искомпромитирана, одземени ви се и правата.
 Ако сметате дека ова беше некоја грешка, контактирајте бирократ со објаснение за вашата постапка, за да можат да ви бидат вратени правата.
 Еве краток опис на правилото за злоупотреби според кое беше утврдено дека сте направиле престап: $1',
 	'abusefilter-autopromote-blocked' => 'Оваа постапка е автоматски утврдена како штетна, и затоа не е дозволена.
@@ -19772,29 +19775,44 @@ Descrission dël filtr: $7 ($8)',
 	'abusefilter-return' => 'Torné andré a la gestion dij filtr',
 	'abusefilter-status-global' => 'Global',
 	'abusefilter-list-options' => 'Opsion',
-	'abusefilter-list-options-deleted' => 'Filtr scanselà:',
-	'abusefilter-list-options-deleted-only' => 'Mosta mach filtr scanselà',
-	'abusefilter-list-options-deleted-hide' => 'Stërma filtr scanselà',
-	'abusefilter-list-options-deleted-show' => 'Comprend filtr scanselà',
+	'abusefilter-list-options-deleted' => 'Filtr ëscancelà:',
+	'abusefilter-list-options-deleted-only' => 'Mostré mach ij filtr ëscancelà',
+	'abusefilter-list-options-deleted-hide' => 'Stërmé ij filtr ëscancelà',
+	'abusefilter-list-options-deleted-show' => 'Comprende ij filtr ëscancelà',
 	'abusefilter-list-options-disabled' => 'Filtr disabilità:',
-	'abusefilter-list-options-hidedisabled' => 'Stërma filtr disabilità',
+	'abusefilter-list-options-hidedisabled' => 'Stërmé ij filtr disabilità',
 	'abusefilter-list-options-submit' => 'Agiorna',
 	'abusefilter-tools-subtitle' => 'Utiss',
-	'abusefilter-tools-text' => "Ambelessì a-i son quaich utiss ch'a peulo esse ùtij a formulé e preuvé ij filtr ëd sicurëssa.",
-	'abusefilter-tools-expr' => "Tester d'espression",
+	'abusefilter-tools-text' => "Ambelessì a-i é dj'utiss ch'a peulo ven-e a taj ant la formolassion e la verìfica dij filtr ëd contra j'abus.",
+	'abusefilter-tools-expr' => "Verificator d'espression",
 	'abusefilter-tools-submitexpr' => 'Vàluta',
-	'abusefilter-tools-reautoconfirm' => 'Riprìstina stat autoconfirmà',
+	'abusefilter-tools-reautoconfirm' => 'Ristabilì lë stat àuto-confirmà',
 	'abusefilter-tools-reautoconfirm-user' => 'Utent:',
 	'abusefilter-tools-reautoconfirm-submit' => 'Autoconfirma torna',
-	'abusefilter-reautoconfirm-none' => "Col utent a l'ha pa avù ël {{GENDER:$1|sò|sò|sò}} stat autoconfirmà sospeis.",
+	'abusefilter-reautoconfirm-none' => "Col utent a l'ha pa avù {{GENDER:$1|sò|sò|sò}} stat autoconfirmà sospèis.",
 	'abusefilter-reautoconfirm-notallowed' => 'It peule pa ripristiné lë stat autoconfirmà.',
 	'abusefilter-reautoconfirm-done' => "Lë stat autoconfirmà dël cont a l'é stàit ripristinà",
-	'abusefilter-status' => "Dj'ùltime $1 {{PLURAL:$1|assion|assion}}, $2 ($3%) {{PLURAL:$2|a l'é|a son}} rivà a la condission lìmit ëd $4, e $5 ($6%) {{PLURAL:$5|a l'ha|a l'han}} cobià un dij filtr abilità al moment.",
+	'abusefilter-status' => "Dj'ùltime $1 {{PLURAL:$1|assion|assion}}, $2 ($3%) {{PLURAL:$2|a l'é|a son}} rivà a la condission lìmit ëd $4, e $5 ($6%) {{PLURAL:$5|a l'é stàita |a son ëstàite}} identificà da un dij filtr abilità al moment.",
 	'abusefilter-edit-subtitle' => 'Modifiché ël filtr $1',
-	'abusefilter-edit-throttled' => "'''Avis''': Sto filtr a l'é stàit disabilità automaticament com misura ëd sicurëssa.
-A l'era rivà al lìmit ëd cobié pi che $1% d'assion.",
+	'abusefilter-edit-oldwarning' => "<strong>A l'é an camin ch'a modìfica na version veja d'ës fìlter.
+Le statìstiche mostrà a rësguardo la version pì recenta dël fìlter.
+S'a salva soe modìfiche, a-j scrivrà ëdzora a tute ij cangiament fàit a parte dla revision ch'a l'é an camin ch'a modìfica.</strong> &bull;
+[[Special:AbuseFilter/history/$2|Torné a la stòria d'ës fìlter]].",
+	'abusefilter-edit-status-label' => 'Statìstiche:',
+	'abusefilter-edit-status' => "{{PLURAL:$1|Dl'ùltima|Dj'ùltime $1}} assion, ës fìlter a n'ha andividuane $2 ($3%).
+An media, sò temp ëd travaj a l'é ëd $4 ms e a consuma $5 {{PLURAL:$5|condission|condission}} dël lìmit ëd condission.",
+	'abusefilter-edit-throttled' => "'''Avis''': Ës filtr a l'é stàit disabilità an automàtich coma mzura ëd sicurëssa.
+A l'era rivà al lìmit d'identificassion ëd pi che $1% dj'assion.",
 	'abusefilter-edit-new' => 'Filtr neuv',
-	'abusefilter-edit-save' => 'Salva filtr',
+	'abusefilter-edit-save' => 'Salvé ël filtr',
+	'abusefilter-edit-id' => 'Identificativ dël fìlter',
+	'abusefilter-edit-description' => "Descrission:
+:''(visìbil da tuti)''",
+	'abusefilter-edit-flags' => 'Marcador:',
+	'abusefilter-edit-enabled' => "Abilité 's fìlter",
+	'abusefilter-edit-deleted' => 'Marché coma scancelà',
+	'abusefilter-edit-hidden' => "Stërmé ij detaj d'ës fìlter da la vista pùblica",
+	'abusefilter-edit-rules' => 'Condission:',
 );
 
 /** Pashto (پښتو)
