@@ -1790,6 +1790,18 @@ $messages['as'] = array(
 	'abusefilter-log-search-submit' => 'সন্ধান',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'abusefilter-action-warn' => 'Xəbərdarlıq',
+	'abusefilter-examine-user' => 'İstifadəçi:',
+	'abusefilter-examine-title' => 'Səhifə başlığı:',
+	'abusefilter-examine-submit' => 'Axtar',
+	'abusefilter-diff-title' => 'Versiyalar arasındakı fərqlər',
+	'abusefilter-diff-item' => 'Element',
+);
+
 /** Bashkir (Башҡорт)
  * @author Comp1089
  */
@@ -19813,6 +19825,41 @@ A l'era rivà al lìmit d'identificassion ëd pi che $1% dj'assion.",
 	'abusefilter-edit-deleted' => 'Marché coma scancelà',
 	'abusefilter-edit-hidden' => "Stërmé ij detaj d'ës fìlter da la vista pùblica",
 	'abusefilter-edit-rules' => 'Condission:',
+	'abusefilter-edit-notes' => "Nòte:
+:''(privà)''",
+	'abusefilter-edit-lastmod' => 'Filtr ùltim modificà:',
+	'abusefilter-edit-lastmod-text' => '$1 da $2',
+	'abusefilter-edit-hitcount' => 'Colp ëd filtr',
+	'abusefilter-edit-consequences' => 'Assin pijà quand cobià',
+	'abusefilter-edit-action-warn' => "Ancamin-a ste assion d'apress d'avèj dàit n'avis a l'utent",
+	'abusefilter-edit-action-disallow' => "Vieta a l'utent ëd fé l'assion an custion",
+	'abusefilter-edit-action-flag' => 'Signa la modìfica ant ël registr ëd sicurëssa',
+	'abusefilter-edit-action-blockautopromote' => "Gava lë stat d'autoconfirmà a l'utent",
+	'abusefilter-edit-action-degroup' => "Gava l'utent da tute le partìe privilegià",
+	'abusefilter-edit-action-block' => "Blòca l'utent e/o l'adrëssa IP da modifiché",
+	'abusefilter-edit-action-throttle' => "Ancamin-a j'assion mach se l'utent a fà scaté un lìmit persentual",
+	'abusefilter-edit-action-rangeblock' => "Bloca l'antërval /16 d'andova l'utent a riva",
+	'abusefilter-edit-action-tag' => 'Etichëtta la modìfica per revision adissionaj',
+	'abusefilter-edit-throttle-count' => "Nùmer d'assion da përmëtte:",
+	'abusefilter-edit-throttle-period' => 'Durà ëd temp:',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|second|second}}',
+	'abusefilter-edit-throttle-groups' => "Uniss j'artard për:
+:''(un për linia, combinà con vìrgole)''",
+	'abusefilter-edit-warn-message' => 'Mëssagi ëd sistem da dovré për avis:',
+	'abusefilter-edit-warn-other' => 'Autr mëssagi',
+	'abusefilter-edit-warn-other-label' => "Nòm ëd pàgina ëd n'àutr mëssagi:
+:''(sensa prefiss mediaWiki)''",
+	'abusefilter-edit-warn-actions' => 'Assion:',
+	'abusefilter-edit-warn-preview' => 'Preuva mëssagi selessionà',
+	'abusefilter-edit-warn-edit' => 'Crea/Modìfica mëssagi selessionà',
+	'abusefilter-edit-tag-tag' => 'Tichëtte da apliché (un-a për linia):',
+	'abusefilter-edit-denied' => "It peule pa vardé ij detaj dë sto filtr, përchè a l'é stërmà da la vista pùblica.",
+	'abusefilter-edit-main' => 'Paràmetr ëd filtr',
+	'abusefilter-edit-done-subtitle' => 'Filtr modificà',
+	'abusefilter-edit-badsyntax' => "A-i é n'eror ëd sintass ant ël filtr ch'it l'has specificà.
+La surtìa dal parser a l'era: <pre>$1</pre>",
+	'abusefilter-edit-restricted' => "It peule pa modifiché sto filtr, a motiv d'un-a o i assion vietà.
+Për piasì ciama a n'utent con përmess për gionté j'assion vietà ëd fé ij cambi për ti.",
 );
 
 /** Pashto (پښتو)
