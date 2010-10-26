@@ -27290,7 +27290,7 @@ Kopyahin mula sa kahong pangteksto na lilitaw, at idikit ito sa kahong pangtekst
  */
 $messages['tpi'] = array(
 	'abusefilter-log-search-user' => 'Yusa:',
-	'abusefilter-log-hide-reason' => ' As bilong en:',
+	'abusefilter-log-hide-reason' => 'As bilong en:',
 	'abusefilter-list-edit' => 'Senisim',
 	'abusefilter-tools-subtitle' => 'Ol tul',
 	'abusefilter-tools-reautoconfirm-user' => 'Yusa:',
