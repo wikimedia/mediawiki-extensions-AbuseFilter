@@ -3155,8 +3155,8 @@ $messages['bg'] = array(
  * @author Samritmaity
  */
 $messages['bn'] = array(
-	'abusefilter-desc' => 'এই সম্পাদনার ক্ষেত্রে স্বয়ংক্রিয় অনুসন্ধানমূলক পদ্ধতি প্রযোয্য ।',
-	'abusefilter' => 'অপব্যবহার প্রতিরোধক রূপরেখা',
+	'abusefilter-desc' => 'সম্পাদনায় স্বয়ংক্রিয় অনুসন্ধানমূলক পদ্ধতি প্রযোজ্য।',
+	'abusefilter' => 'অপব্যবহার ফিল্টার কনফিগারেশন',
 	'abuselog' => 'অপব্যবহার লগ',
 	'abusefilter-blocker' => 'অপব্যবহার পরিশ্রুতক',
 	'abusefilter-log-search-user' => 'ব্যবহারকারী:',
