@@ -7,8 +7,6 @@ class AbuseFilterViewList extends AbuseFilterView {
 	function show() {
 		global $wgUser, $wgOut, $wgRequest;
 
-		$sk = $wgUser->getSkin();
-
 		// Status info...
 		$this->showStatus();
 
@@ -57,7 +55,6 @@ class AbuseFilterViewList extends AbuseFilterView {
 		extract( $optarray );
 
 		# Options form
-		$options = '';
 		$fields = array();
 		$fields['abusefilter-list-options-deleted'] =
 			Xml::radioLabel(

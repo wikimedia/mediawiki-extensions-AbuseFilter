@@ -124,8 +124,6 @@ class AbuseFilterHistoryPager extends TablePager {
 
 		$row = $this->mCurrentRow;
 
-		$formatted = '';
-
 		switch( $name ) {
 			case 'afh_timestamp':
 				$title = SpecialPage::getTitleFor( 'AbuseFilter',

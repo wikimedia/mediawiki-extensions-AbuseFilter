@@ -354,8 +354,6 @@ class SpecialAbuseLog extends SpecialPage {
 			$user .= ' (' . WikiMap::getWikiName( $row->afl_wiki ) . ')';
 		}
 
-		$description = '';
-
 		$timestamp = $wgLang->timeanddate( $row->afl_timestamp, true );
 
 		$actions_taken = $row->afl_actions;

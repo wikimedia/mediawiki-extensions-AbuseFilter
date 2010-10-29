@@ -301,7 +301,6 @@ class AFPData {
 			throw new AFPUserVisibleException( 'dividebyzero', $pos, array( $a ) );
 		}
 
-		$data = null;
 		if ( $op == '*' ) {
 			$data = $a * $b;
 		} elseif ( $op == '/' ) {

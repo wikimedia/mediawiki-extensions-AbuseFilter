@@ -1029,7 +1029,6 @@ class AbuseFilter {
 					array( $rule_desc ) ) . "<br />\n";
 				break;
 			case 'rangeblock':
-				global $wgUser;
 				$filterUser = AbuseFilter::getFilterUser();
 
 				$range = IP::toHex( wfGetIP() );
@@ -1194,8 +1193,6 @@ class AbuseFilter {
 	}
 
 	public static function throttleKey( $throttleId, $type, $title ) {
-		$identifier = '';
-
 		$types = explode( ',', $type );
 
 		$identifiers = array();

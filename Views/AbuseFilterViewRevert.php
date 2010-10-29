@@ -57,8 +57,6 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			$list = array();
 
 			foreach ( $results as $result ) {
-				$displayActions = array();
-
 				global $wgLang;
 				$displayActions = array_map(
 					array( 'AbuseFilter', 'getActionDisplay' ),
