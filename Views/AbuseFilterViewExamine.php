@@ -39,8 +39,8 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			Xml::input( 'wpSearchPeriodEnd', 45, $this->mSearchPeriodEnd );
 
 		$selector .= Xml::buildForm( $selectFields, 'abusefilter-examine-submit' );
-		$selector .= Xml::hidden( 'submit', 1 );
-		$selector .= Xml::hidden( 'title', $this->getTitle( 'examine' )->getPrefixedText() );
+		$selector .= Html::hidden( 'submit', 1 );
+		$selector .= Html::hidden( 'title', $this->getTitle( 'examine' )->getPrefixedText() );
 		$selector = Xml::tags( 'form',
 			array(
 				'action' => $this->getTitle( 'examine' )->getLocalURL(),

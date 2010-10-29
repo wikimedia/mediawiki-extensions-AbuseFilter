@@ -984,7 +984,6 @@ class AbuseFilter {
 	public static function takeConsequenceAction( $action, $parameters, $title,
 		$vars, $rule_desc )
 	{
-		wfLoadExtensionMessages( 'AbuseFilter' );
 		$display = '';
 		switch ( $action ) {
 			case 'disallow':
@@ -1312,8 +1311,6 @@ class AbuseFilter {
 	}
 
 	public static function getFilterUser() {
-		wfLoadExtensionMessages( 'AbuseFilter' );
-
 		$user = User::newFromName( wfMsgForContent( 'abusefilter-blocker' ) );
 		$user->load();
 		if ( $user->getId() && $user->mPassword == '' ) {

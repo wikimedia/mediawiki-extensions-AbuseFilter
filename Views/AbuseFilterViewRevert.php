@@ -33,7 +33,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$searchFields['abusefilter-revert-periodend'] =
 			Xml::input( 'wpPeriodEnd', 45, $this->origPeriodEnd );
 		$searchForm = Xml::buildForm( $searchFields, 'abusefilter-revert-search' );
-		$searchForm .= "\n" . Xml::hidden( 'submit', 1 );
+		$searchForm .= "\n" . Html::hidden( 'submit', 1 );
 		$searchForm =
 			Xml::tags(
 				'form',
@@ -88,11 +88,11 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 			// Add a button down the bottom.
 			$confirmForm =
-				Xml::hidden( 'editToken', $wgUser->editToken( "abusefilter-revert-$filter" ) ) .
-				Xml::hidden( 'title', $this->getTitle( "revert/$filter" )->getPrefixedText() ) .
-				Xml::hidden( 'wpPeriodStart', $this->origPeriodStart ) .
-				Xml::hidden( 'wpPeriodEnd', $this->origPeriodEnd ) .
-				Xml::inputLabel(
+				Html::hidden( 'editToken', $wgUser->editToken( "abusefilter-revert-$filter" ) ) .
+				Html::hidden( 'title', $this->getTitle( "revert/$filter" )->getPrefixedText() ) .
+				Html::hidden( 'wpPeriodStart', $this->origPeriodStart ) .
+				Html::hidden( 'wpPeriodEnd', $this->origPeriodEnd ) .
+				Html::inputLabel(
 					wfMsg( 'abusefilter-revert-reasonfield' ),
 					'wpReason', 'wpReason', 45
 				) .

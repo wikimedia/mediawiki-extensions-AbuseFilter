@@ -14,7 +14,6 @@ if ( $wgDBtype == 'postgres' )
 wfGetDB( DB_MASTER )->sourceFile( dirname( __FILE__ ) . $sqlfile );
 
 // Create the Abuse Filter user.
-wfLoadExtensionMessages( 'AbuseFilter' );
 $user = User::newFromName( wfMsgForContent( 'abusefilter-blocker' ) );
 
 if ( !$user->getId() ) {
