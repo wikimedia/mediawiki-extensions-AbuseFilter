@@ -9713,6 +9713,14 @@ $messages['fy'] = array(
 	'abusefilter-history-user' => 'Meidogger',
 );
 
+/** Traditional Gan script (贛語(繁體))
+ * @author Symane
+ */
+$messages['gan-hant'] = array(
+	'abusefilter-log-search-submit' => '尋吖',
+	'abusefilter-examine-submit' => '尋吖',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
