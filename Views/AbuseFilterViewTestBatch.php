@@ -78,7 +78,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	function doTest() {
 		// Quick syntax check.
 		global $wgUser, $wgOut;
-		if ( ( $result = AbuseFilter::checkSyntax( $this->mFilter ) ) !== true ) {
+		$result = AbuseFilter::checkSyntax( $this->mFilter );
+		if ( $result !== true ) {
 			$wgOut->addWikiMsg( 'abusefilter-test-syntaxerr' );
 			return;
 		}
