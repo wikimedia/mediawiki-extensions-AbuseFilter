@@ -9780,7 +9780,7 @@ Velaquí hai unha breve descrición da regra de abuso coa que coincide a súa ac
 	'action-abusefilter-view-private' => 'ver os filtros de abusos marcados como privados',
 	'abusefilter-log' => 'Rexistro do filtro de abusos',
 	'abusefilter-log-summary' => 'Este rexistro mostra unha lista de todas as accións capturadas polos filtros.',
-	'abusefilter-log-search' => 'Procurar o rexistro de abuso',
+	'abusefilter-log-search' => 'Procurar no rexistro de abusos',
 	'abusefilter-log-search-user' => 'Usuario:',
 	'abusefilter-log-search-filter' => 'ID do filtro:',
 	'abusefilter-log-search-title' => 'Título:',
@@ -10055,13 +10055,13 @@ As etiquetas deberían ser curtas e non conter caracteres especiais.',
 	'abusefilter-exception-outofbounds' => 'O elemento $2 solicitado da lista non existe (tamaño da lista = $3) no carácter $1.',
 	'abusefilter-exception-notlist' => 'Conxunto de elementos solicitados de non conxunto no carácter $1.',
 	'abusefilter-action-tag' => 'Etiquetar',
-	'abusefilter-action-throttle' => 'Acelerar',
+	'abusefilter-action-throttle' => 'Limitar',
 	'abusefilter-action-warn' => 'Avisar',
 	'abusefilter-action-blockautopromote' => 'Bloquear a autopromoción',
 	'abusefilter-action-block' => 'Bloquear',
 	'abusefilter-action-degroup' => 'Eliminar dos grupos',
 	'abusefilter-action-rangeblock' => 'Rango do bloqueo',
-	'abusefilter-action-disallow' => 'Non permitir',
+	'abusefilter-action-disallow' => 'Impedir',
 	'abusefilter-revert-title' => 'Reverter todos os cambios feitos polo filtro $1',
 	'abusefilter-revert-intro' => 'Este formulario permítelle reverter todos os cambios feitos polo filtro de abusos $1.
 Por favor, teña coidado con esta ferramenta.',
@@ -10648,7 +10648,7 @@ $messages['gu'] = array(
  */
 $messages['gv'] = array(
 	'abusefilter-log-search-user' => 'Ymmydeyr:',
-	'abusefilter-list-status' => 'Stayd',
+	'abusefilter-list-status' => 'Staydys',
 );
 
 /** Hausa (هَوُسَ) */
