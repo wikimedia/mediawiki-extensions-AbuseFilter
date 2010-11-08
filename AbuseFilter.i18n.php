@@ -4668,6 +4668,7 @@ $messages['cy'] = array(
  * @author Aputtu
  * @author Froztbyte
  * @author Lhademmor
+ * @author Sarrus
  */
 $messages['da'] = array(
 	'abusefilter-desc' => 'Anvender automatiske filtre på redigeringer',
@@ -4678,8 +4679,8 @@ Misbrugsfilteret er en automatisk mekanisme i softwaren som udfører automatisk 
 Denne grænseflade viser en liste over definerede filtre, og gør det muligt at ændre dem.',
 	'abusefilter-mustbeeditor' => 'Af sikkerhedsmæssige årsager kan denne grænseflade kun bruges af brugere med rettigheder til at ændre misbrugsfiltre.',
 	'abusefilter-warning' => "'''Advarsel:''' Denne handling er automatisk blevet identificeret som skadelig.
-Ikke-konstruktive redigeringer bliver hurtigt fjernet,
-og forstyrrende eller gentagende ikke-konstruktive redigeringer vil føre til at din konto eller computer bliver blokeret.
+Ikke-konstruktive redigeringer bliver fjernet hurtigt,
+og forstyrrende eller gentagende ikke-konstruktive redigeringer vil føre til at din konto eller ip-adresse bliver blokeret.
 Hvis du mener at dette er en konstruktiv redigering så klik på \"Gem\" igen for at bekræfte.
 En kortfattet beskrivelse af misbrugsreglen som din handling udløste er: \$1",
 	'abusefilter-disallowed' => 'Denne handling er automatisk blevet identificeret som skadelig,
@@ -4745,7 +4746,15 @@ Regelbeskrivelse: $1',
 	'abusefilter-log-linkoncontribs' => 'misbrugslog',
 	'abusefilter-log-linkoncontribs-text' => 'Misbrugslog for denne bruger',
 	'abusefilter-log-hidden' => '(post skjult)',
+	'abusefilter-log-hide' => 'Skjul eller vis',
+	'abusefilter-log-details-hidden' => 'Du kan ikke se detaljerne for denne post, fordi den er skjult for offentligheden',
+	'abusefilter-log-hide-legend' => 'Skjul loghandlig',
+	'abusefilter-log-hide-id' => 'Loghandlings-id:',
+	'abusefilter-log-hide-hidden' => 'Skjul denne loghandling for offentligheden',
 	'abusefilter-log-hide-reason' => 'Årsag:',
+	'abusefilter-log-hide-forbidden' => 'Du har ikke rettigheder til at skjule misbrugsfilterhandlinger',
+	'abusefilter-logentry-suppress' => 'Skjulte "[[$1]]"',
+	'abusefilter-logentry-unsuppress' => 'Gjorde "[[$1]]" synligt for offentligheden igen',
 	'abusefilter-management' => 'Håndtering af misbrugsfilter',
 	'abusefilter-list' => 'Alle filtre',
 	'abusefilter-list-id' => 'Filter-ID',
