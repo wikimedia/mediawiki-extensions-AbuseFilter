@@ -30241,6 +30241,7 @@ $messages['zh-hans'] = array(
  * @author Jimmy xu wrk
  * @author Liangent
  * @author Mark85296341
+ * @author Pbdragonwang
  * @author Skjackey tse
  * @author Wong128hk
  * @author Wrightbus
@@ -30323,6 +30324,8 @@ $messages['zh-hant'] = array(
 	'abusefilter-log-hide-reason' => '原因：',
 	'abusefilter-log-hide-forbidden' => '你沒有權限去隱藏
 過濾日誌的記錄',
+	'abusefilter-logentry-suppress' => '隱藏 "[[$1]]"',
+	'abusefilter-logentry-unsuppress' => '取消隱藏 "[[$1]]"',
 	'abusefilter-management' => '防濫用過濾器管理',
 	'abusefilter-list' => '所有過濾器',
 	'abusefilter-list-id' => '過濾器編號',
