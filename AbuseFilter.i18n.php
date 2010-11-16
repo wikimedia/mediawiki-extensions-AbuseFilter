@@ -20159,6 +20159,13 @@ $messages['pdt'] = array(
 	'abusefilter-history-user' => 'Brucker',
 );
 
+/** Pfälzisch (Pfälzisch)
+ * @author Xqt
+ */
+$messages['pfl'] = array(
+	'abusefilter-list-edit' => 'Bearwaide',
+);
+
 /** Polish (Polski)
  * @author Airwolf
  * @author Derbeth
