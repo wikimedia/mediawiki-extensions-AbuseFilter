@@ -1018,6 +1018,7 @@ $messages['an'] = array(
  * @author Ciphers
  * @author Loya
  * @author Meno25
+ * @author Mido
  * @author Orango
  * @author OsamaK
  * @author ترجمان05
@@ -1109,6 +1110,8 @@ $messages['ar'] = array(
 	'abusefilter-log-hide-hidden' => 'إخفاء هذا المدخل من العرض العلني',
 	'abusefilter-log-hide-reason' => 'السبب',
 	'abusefilter-log-hide-forbidden' => 'ليس لديك صلاحية لإخفاء إدخالات سجل الإساءة',
+	'abusefilter-logentry-suppress' => 'تم إخفاء "[[$1]]"',
+	'abusefilter-logentry-unsuppress' => 'تم إظهار "[[$1]]"',
 	'abusefilter-management' => 'التحكم بمرشح الإساءة',
 	'abusefilter-list' => 'كل المرشحات',
 	'abusefilter-list-id' => 'رقم المُرشِّح',
@@ -7473,10 +7476,10 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-exception-unexpectedtoken' => 'Token $3 inesperado (del tipo $2) en el caracter $1.',
 	'abusefilter-exception-unclosedstring' => 'Cadena no cerrada empezando en el caracter $1',
 	'abusefilter-exception-invalidoperator' => 'Operador inválido "$2" en caracter $1.',
-	'abusefilter-exception-unrecognisedtoken' => 'Token "$2" no reconocido en el caracter $1.',
+	'abusefilter-exception-unrecognisedtoken' => 'Token "$2" no reconocido en el carácter $1.',
 	'abusefilter-exception-noparams' => 'Ningún parámetro siguó la función "$2" en caracter $1.',
 	'abusefilter-exception-dividebyzero' => 'Intento ilegal de dividir $2 entre cero en caracter $1.',
-	'abusefilter-exception-unrecognisedvar' => 'Variable no reconocida $2 en caracter $1',
+	'abusefilter-exception-unrecognisedvar' => 'Variable no reconocida $2 en carácter $1',
 	'abusefilter-exception-notenoughargs' => 'El caracter $1 no ha dado a la función $2 suficientes argumentos .
 Se espera $3 {{PLURAL:$3|argumento|argumento}} y se ha dado $4',
 	'abusefilter-exception-regexfailure' => 'Error en expresión regular "$3" en caracter $1: "$2"',
