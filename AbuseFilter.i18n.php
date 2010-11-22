@@ -16770,6 +16770,15 @@ Visas detales žiūrėkite filtrų naujausių keitimo [[Special:AbuseFilter/hist
 	'abusefilter-import-submit' => 'Importuoti duomenis',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'abusefilter-log-search-user' => 'Lītuotuojs:',
+	'abusefilter-list-edit' => 'Pataiseit',
+	'abusefilter-edit-flags' => 'Karūgi:',
+);
+
 /** Latvian (Latviešu)
  * @author GreenZeb
  * @author Marozols
@@ -20212,7 +20221,9 @@ $messages['pdt'] = array(
  * @author Xqt
  */
 $messages['pfl'] = array(
+	'abusefilter-log-noactions' => 'kään',
 	'abusefilter-list-edit' => 'Bearwaide',
+	'abusefilter-edit-status-label' => 'Schdadischdik:',
 	'abusefilter-history-user' => 'Benutzer',
 	'abusefilter-history-select-user' => 'Benutzer:',
 	'abusefilter-examine-user' => 'Benutzer:',
