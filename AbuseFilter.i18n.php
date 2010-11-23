@@ -24103,6 +24103,19 @@ $messages['scn'] = array(
 	'abusefilter-topnav-home' => 'Paggina principali',
 );
 
+/** Tachelhit (Tašlḥiyt)
+ * @author Dalinanir
+ */
+$messages['shi'] = array(
+	'abusefilter-log-search-title' => 'Aswl:',
+	'abusefilter-log-search-submit' => 'Cabba',
+	'abusefilter-log-detailslink' => 'Ifruriyn',
+	'abusefilter-log-hidelink' => 'Sgadda izṛi',
+	'abusefilter-log-details-legend' => 'Ifruriyn f ukccum $1 n unɣmas',
+	'abusefilter-log-details-var' => 'Ur izga',
+	'abusefilter-log-details-val' => 'Atig',
+);
+
 /** Sinhala (සිංහල)
  * @author බිඟුවා
  */
