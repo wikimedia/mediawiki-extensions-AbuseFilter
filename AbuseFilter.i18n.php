@@ -20194,7 +20194,7 @@ $messages['pdc'] = array(
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Addition (+)',
 	'abusefilter-edit-builder-op-comparison-lt' => 'Gleener ass wie (<)',
 	'abusefilter-edit-builder-op-comparison-gt' => 'Greeser ass wie (>)',
-	'abusefilter-edit-builder-op-bool-not' => 'Net (!)',
+	'abusefilter-edit-builder-op-bool-not' => 'Naett (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'Unn (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Odder (|)',
 	'abusefilter-edit-builder-vars-newsize' => 'Neie Grees vun dem Blatt',
@@ -21059,9 +21059,10 @@ Ch'a còpia la casela ëd test ch'a compariss, e ch'a l'ancòla an costa casela 
  */
 $messages['ps'] = array(
 	'abusefilter-warning' => "'''ګواښنه''': همدا کړنه په اتوماتيک ډول زيانمنه وپېژندل شوه.
-نارغوونکې سمونې به ډېر ژر پر شا خپلې پخوانۍ بڼې ته واوړي، ورانکاري او په بيا بيا د نارغوونکې سمونې په ترسره کولو سره به ستاسو په کارن-حساب او يا هم کمپيوټر باندې بنديزونه ولګېږي.
-که چېرته تاسو په دې ډاډه ياست چې همدا يوه رغوونکې سمونه ده، نو تاسو کولای شی چې پر «سپارل» وټوکۍ ترڅو ستاسو د کړنې پخلی وشي.
-د ناوړو کړنو د کړنلارې يوه لنډه څرګندونه چې ستاسو د کړنې همډوله وه، په دې توګه ده: $1",
+نارغوونکې سمونې به ډېر ژر پر شا خپلې پخوانۍ بڼې ته واړول شي، 
+او ورانکاري او په بيا بيا د نارغوونکې سمونې په ترسره کولو سره به ستاسې په کارن-حساب او يا هم IP پتې باندې بنديزونه ولګېږي.
+که چېرته تاسې په دې ډاډه ياست چې همدا يو رغوونکی سمون دی، نو تاسې کولای شی چې پر «سپارل» وټوکۍ ترڅو ستاسې د کړنې پخلی وشي.
+د ناوړو کړنو د کړنلارې يوه لنډه څرګندونه چې ستاسې د کړنې همډوله وه، په دې توګه ده: $1",
 	'abusefilter-log-search-user' => 'کارن:',
 	'abusefilter-log-search-title' => 'سرليک:',
 	'abusefilter-log-search-submit' => 'پلټل',
