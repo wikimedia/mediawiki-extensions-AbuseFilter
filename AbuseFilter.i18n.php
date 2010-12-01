@@ -16832,6 +16832,7 @@ Visas detales žiūrėkite filtrų naujausių keitimo [[Special:AbuseFilter/hist
  */
 $messages['ltg'] = array(
 	'abusefilter-log-search-user' => 'Lītuotuojs:',
+	'abusefilter-list-status' => 'Statuss',
 	'abusefilter-list-edit' => 'Pataiseit',
 	'abusefilter-edit-flags' => 'Karūgi:',
 );
