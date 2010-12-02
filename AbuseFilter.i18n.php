@@ -17032,6 +17032,7 @@ Pilnu paskaidrojumu vari saņemt, noklikšķinot uz pogas "Pārbadīt sintaksi".
  * @author Jagwar
  */
 $messages['mg'] = array(
+	'abuselog' => 'Tatitry ny Abuse Filter',
 	'right-abusefilter-modify' => 'Hanova ny Abuse filter',
 	'right-abusefilter-view' => 'Hijery ny Abuse Filter',
 	'right-abusefilter-log' => 'Hijery ny tatitry ny abuse filter',
@@ -17067,14 +17068,29 @@ $messages['mg'] = array(
 	'abusefilter-edit-action-blockautopromote' => "Hanala ny sata « autoconfirmed » an'ilay mpikambana",
 	'abusefilter-edit-action-degroup' => "Hanala ilay mpikambana ao amin'ny vondrona manan-tombontsoa",
 	'abusefilter-edit-action-block' => 'Hanakana ilay mpikambana sy/na adiresy IP hanoratra',
+	'abusefilter-edit-warn-actions' => 'Tao :',
+	'abusefilter-edit-warn-edit' => 'Hamorona na hanova ny hafatra nofidiana',
+	'abusefilter-edit-tag-tag' => 'Balizy hampiharina (iray isaky ny andalana)',
 	'abusefilter-edit-main' => 'Parametatry ny sivana',
 	'abusefilter-edit-done-subtitle' => 'Sivana voaova',
+	'abusefilter-edit-viewhistory' => "Hijery ny tantaran'ity sivana (Filter) ity",
 	'abusefilter-edit-history' => 'Tantara',
+	'abusefilter-edit-revert' => "Hamerina ny tao nataon'io sivana (filter) io",
+	'abusefilter-edit-tools' => 'Fitaovana :',
 	'abusefilter-edit-syntaxok' => "Tsy nahitana hadisoana teo amin'ny rafitry ny fifehezanteny",
 	'abusefilter-edit-notallowed' => 'Tsy manana alalana mamorona na manova ny abuse filter ianao',
+	'abusefilter-edit-builder-group-op-arithmetic' => 'Mpamaritra aritimetika',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Fanambarana (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Fanalana (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Fampitomboana (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'Fizarana isa (/)',
 	'abusefilter-edit-builder-op-bool-not' => 'Tsia (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'Sy (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Na (|)',
+	'abusefilter-edit-builder-group-vars' => 'Miova',
+	'abusefilter-edit-builder-vars-action' => 'Tao :',
+	'abusefilter-edit-builder-vars-newsize' => 'Habem-pejy vaovao',
+	'abusefilter-edit-builder-vars-oldsize' => 'Habem-pejy taloha',
 );
 
 /** Eastern Mari (Олык Марий)
