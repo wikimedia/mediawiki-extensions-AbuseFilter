@@ -11303,6 +11303,7 @@ $messages['hi'] = array(
 	'abusefilter-tools-expr' => 'अभिव्यक्ति परीक्षक',
 	'abusefilter-tools-submitexpr' => 'मूल्यांकन',
 	'abusefilter-tools-reautoconfirm' => 'बहाल ऑटो स्थिति की पुष्टि',
+	'abusefilter-edit-status-label' => 'आँकड़े',
 	'abusefilter-revert-confirm' => 'पुष्टि',
 );
 
