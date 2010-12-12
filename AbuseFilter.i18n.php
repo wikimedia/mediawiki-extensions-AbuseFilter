@@ -11264,17 +11264,27 @@ $messages['he'] = array(
 );
 
 /** Hindi (हिन्दी)
+ * @author Akansha
  * @author Bhawani Gautam Rhk
  * @author Kaustubh
  * @author Kumar
  */
 $messages['hi'] = array(
 	'abusefilter-desc' => ' स्वचालित नियम संपादन पर लागू होता है',
+	'abusefilter' => 'दुर्व्यवहार फिल्टर विन्यास',
 	'abuselog' => 'अपमानजनक लॉग इन',
+	'abusefilter-intro' => 'दुर्व्यवहार फिल्टर परिचय',
+	'abusefilter-mustbeeditor' => 'सुरक्षा कारणों के लिए, सही के साथ ही प्रयोक्ताओं के दुरुपयोग फिल्टर इस अंतरफलक का प्रयोग कर सकते संशोधित करने के लिए',
 	'abusefilter-disallowed' => 'यह क्रिया स्वतः किया गया है और  हानिकारक के रूप में पहचान गया है, इसलिए अस्वीकृत है',
+	'abusefilter-blocked-display' => 'दुरुपयोग प्रदर्शन अवरुद्ध फिल्टर',
 	'abusefilter-blocker' => 'फिल्टर दुरुपयोग',
 	'abusefilter-blockreason' => 'स्वचालित फिल्टर द्वारा अवरुद्ध दुरुपयोग.',
+	'abusefilter-accountreserved' => 'इस खाते के नाम के दुरुपयोग फिल्टर के उपयोग के लिए आरक्षित है.',
+	'right-abusefilter-log' => 'गाली लॉग देखें',
+	'right-abusefilter-log-detail' => 'देखें विस्तृत दुरुपयोग लॉग प्रविष्टियों',
 	'right-abusefilter-private' => 'दुरुपयोग लॉग में देखें निजी डेटा',
+	'right-abusefilter-revert' => 'किसी दिए गए दुर्व्यवहार की सभी परिवर्तनों को वापस फिल्टर',
+	'right-abusefilter-view-private' => 'देखें छिपे हुए दुर्व्यवहार लॉग प्रविष्टियों',
 	'right-abusefilter-hide-log' => 'दुरुपयोग लॉग में प्रविष्टियों छिपाएँ',
 	'abusefilter-log-search-title' => 'शीर्षक:',
 	'abusefilter-log-show-deleted' => 'दिखाएँ छिपे प्रविष्टि',
@@ -11304,6 +11314,30 @@ $messages['hi'] = array(
 	'abusefilter-tools-submitexpr' => 'मूल्यांकन',
 	'abusefilter-tools-reautoconfirm' => 'बहाल ऑटो स्थिति की पुष्टि',
 	'abusefilter-edit-status-label' => 'आँकड़े',
+	'abusefilter-edit-new' => 'फिल्टर-संपादित नई दुरुपयोग',
+	'abusefilter-edit-save' => 'दुरुपयोग संपादित फिल्टर को बचाने के',
+	'abusefilter-edit-description' => 'दुर्व्यवहार फिल्टर संपादित वर्णन',
+	'abusefilter-edit-flags' => 'गाली झंडे संपादित फिल्टर',
+	'abusefilter-edit-enabled' => 'दुरुपयोग संपादित फिल्टर सक्षम',
+	'abusefilter-edit-deleted' => 'दुरुपयोग संपादित फिल्टर हटाए',
+	'abusefilter-edit-hidden' => 'सार्वजनिक दृश्य से इस फिल्टर का विवरण छिपाएँ',
+	'abusefilter-edit-rules' => 'गाली-नियम संपादित फिल्टर',
+	'abusefilter-edit-notes' => 'दुर्व्यवहार फिल्टर-संपादित करें नोट्स',
+	'abusefilter-edit-lastmod' => 'फिल्टर अंतिम बार संशोधित',
+	'abusefilter-edit-hitcount' => 'दुर्व्यवहार फिल्टर-संपादित हिट गिनती',
+	'abusefilter-edit-consequences' => 'कार्यों जब मिलान लिया',
+	'abusefilter-edit-action-warn' => 'दुरुपयोग फिल्टर संपादित कार्रवाई चेतावनी',
+	'abusefilter-edit-action-disallow' => 'फिल्टर-संपादित-कार्रवाई नामंज़ूर दुरुपयोग',
+	'abusefilter-edit-action-flag' => 'झंडा दुरुपयोग लॉग में संपादित करें',
+	'abusefilter-edit-action-blockautopromote' => 'आह्वान उपयोगकर्ता के ऑटो स्थिति की पुष्टि की',
+	'abusefilter-edit-action-block' => 'दुर्व्यवहार फिल्टर संपादित कार्रवाई ब्लॉक',
+	'abusefilter-edit-warn-preview' => 'दुर्व्यवहार फिल्टर संपादित आगाह पूर्वावलोकन',
+	'abusefilter-edit-warn-edit' => 'दुर्व्यवहार फिल्टर-आगाह संपादित-संपादित करें',
+	'abusefilter-edit-tag-tag' => 'दुर्व्यवहार फिल्टर-संपादित टैग टैग',
+	'abusefilter-edit-denied' => 'दुरुपयोग संपादित वंचित फिल्टर',
+	'abusefilter-edit-main' => 'दुर्व्यवहार फिल्टर संपादित-मुख्य',
+	'abusefilter-edit-done-subtitle' => 'फिल्टर से किया उपशीर्षक संपादित दुरुपयोग',
+	'abusefilter-edit-done' => 'दुर्व्यवहार फिल्टर से किया संपादित करें',
 	'abusefilter-revert-confirm' => 'पुष्टि',
 );
 
@@ -26208,6 +26242,7 @@ $messages['sw'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author Kanags
  * @author Karthi.dr
  * @author TRYPPN
  * @author செல்வா
@@ -26250,7 +26285,7 @@ $messages['ta'] = array(
 	'abusefilter-list-hitcount' => 'வந்துபார்த்தோர் எண்ணிக்கை',
 	'abusefilter-list-edit' => 'தொகு',
 	'abusefilter-list-details' => 'விளக்கம்',
-	'abusefilter-list-lastmodified' => 'கடைசியாக திருத்தப்பட்டது',
+	'abusefilter-list-lastmodified' => 'கடைசியாகத் திருத்தப்பட்டது',
 	'abusefilter-hidden' => 'தனிப்பட்ட',
 	'abusefilter-unhidden' => 'பொதுவான',
 	'abusefilter-enabled' => 'பயன்பாட்டில் உள்ளது',
@@ -26345,7 +26380,7 @@ $messages['ta'] = array(
 	'abusefilter-edit-builder-vars-user-age' => 'பயனர் கணக்கின் வயது',
 	'abusefilter-edit-builder-vars-user-name' => 'பயனர் கணக்கின் பெயர்',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'மின்னஞ்சல் முகவரி உறுதிசெய்யப்பட்ட நேரம்',
-	'abusefilter-edit-builder-vars-recent-contributors' => 'இப்பக்கத்திற்கு  கடைசியாக பங்களித்த பத்து பயனர்கள்',
+	'abusefilter-edit-builder-vars-recent-contributors' => 'இப்பக்கத்திற்குக் கடைசியாகப் பங்களித்த பத்து பயனர்கள்',
 	'abusefilter-history-hidden' => 'மறைக்கப்பட்டது',
 	'abusefilter-history-enabled' => 'பயன்பாட்டில் உள்ளது',
 	'abusefilter-history-global' => 'எங்கும்',
