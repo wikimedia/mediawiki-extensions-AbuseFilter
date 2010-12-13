@@ -29613,6 +29613,7 @@ $messages['vo'] = array(
 	'abusefilter-edit-status-label' => 'Statits:',
 	'abusefilter-edit-lastmod-text' => '$1, fa $2',
 	'abusefilter-history-user' => 'Geban',
+	'abusefilter-examine-submit' => 'Sukön',
 );
 
 /** Walloon (Walon)
