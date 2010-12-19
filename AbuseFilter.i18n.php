@@ -29675,11 +29675,19 @@ $messages['yi'] = array(
 	'abusefilter-history-user' => 'באַניצער',
 	'abusefilter-history-select-user' => 'באַניצער:',
 	'abusefilter-history-diff' => 'ענדערונגען',
+	'abusefilter-action-warn' => 'וואָרענען',
+	'abusefilter-action-block' => 'פאַרשפּאַרן',
+	'abusefilter-action-degroup' => 'אַ וועקנעמען פון גרופּעס',
+	'abusefilter-revert-periodstart' => 'תקופה אָנהייב:',
+	'abusefilter-revert-periodend' => 'תקופה סוף',
+	'abusefilter-revert-confirm' => 'באַשטעטיקן',
+	'abusefilter-test-submit' => 'פּרובירן',
 	'abusefilter-examine-user' => 'באַניצער:',
 	'abusefilter-examine-title' => 'בלאַטנאָמען:',
 	'abusefilter-examine-submit' => 'זוכן',
 	'abusefilter-topnav-home' => 'היימבלאַט',
 	'abusefilter-diff-item' => 'איינהייט',
+	'abusefilter-import-submit' => 'אימפארטירן דאַטן',
 );
 
 /** Yoruba (Yorùbá)
