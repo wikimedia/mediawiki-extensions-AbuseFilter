@@ -9027,7 +9027,7 @@ Lisätietoja saat napsauttamalla ”Tarkista syntaksi” -painiketta.',
 	'abusefilter-log-name' => 'Väärinkäyttösuodattimen loki',
 	'abusefilter-log-header' => 'Tässä lokissa esitetään yhteenveto suodattimiin tehdyistä muutoksista.
 Lisätietoja saat suodattimen [[Special:AbuseFilter/history|viimeisimpien muutosten luettelosta]].',
-	'abusefilter-log-entry-modify' => 'muokattu $1 ($2)',
+	'abusefilter-log-entry-modify' => 'muokkasi kohdetta $1 ($2)',
 	'abusefilter-diff-title' => 'Versioiden välinen ero',
 	'abusefilter-diff-item' => 'Kohde',
 	'abusefilter-diff-version' => 'Käyttäjän $2 versio $1',
@@ -20413,6 +20413,15 @@ $messages['os'] = array(
 	'abusefilter-history-deleted' => 'Аппæрст',
 );
 
+/** Punjabi (ਪੰਜਾਬੀ)
+ * @author Aalam
+ */
+$messages['pa'] = array(
+	'abusefilter-list-options-submit' => 'ਅੱਪਡੇਟ',
+	'abusefilter-tools-subtitle' => 'ਟੂਲ',
+	'abusefilter-tools-reautoconfirm-user' => 'ਯੂਜ਼ਰ:',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */
@@ -24358,6 +24367,7 @@ $messages['shi'] = array(
 
 /** Sinhala (සිංහල)
  * @author බිඟුවා
+ * @author ශ්වෙත
  */
 $messages['si'] = array(
 	'abusefilter-log-search-user' => 'පරිශීලකයා:',
@@ -24367,6 +24377,7 @@ $messages['si'] = array(
 	'abusefilter-log-detailedentry-local' => '$1 පෙරනය',
 	'abusefilter-log-detailslink' => 'විස්තර',
 	'abusefilter-log-details-val' => 'වටිනාකම',
+	'abusefilter-log-details-private' => 'පුද්ගලික දත්ත',
 	'abusefilter-log-noactions' => 'කිසිවක්  නොවේ',
 	'abusefilter-log-hide-reason' => 'හේතුව:',
 	'abusefilter-list-status' => 'තත්වය',
@@ -24375,6 +24386,8 @@ $messages['si'] = array(
 	'abusefilter-unhidden' => 'ප්‍රසිද්ධ',
 	'abusefilter-tools-subtitle' => 'මෙවලම්',
 	'abusefilter-tools-reautoconfirm-user' => 'පරිශීලකයා:',
+	'abusefilter-edit-status-label' => 'සංඛ්‍යාන දත්ත:',
+	'abusefilter-edit-builder-group-vars' => 'විචල්‍යයන්',
 );
 
 /** Slovak (Slovenčina)
