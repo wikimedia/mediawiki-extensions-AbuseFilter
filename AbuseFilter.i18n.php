@@ -3225,6 +3225,24 @@ $messages['bn'] = array(
 	'abusefilter-topnav-home' => 'প্রধান পাতা',
 );
 
+/** Tibetan (བོད་ཡིག)
+ * @author Freeyak
+ */
+$messages['bo'] = array(
+	'abusefilter-log-search-user' => 'བཀོལ་མི།',
+	'abusefilter-log-search-title' => 'ཁ་ཡིག',
+	'abusefilter-log-noactions' => 'གང་ཡང་མིན།',
+	'abusefilter-log-details-diff' => 'བཟོ་བཅོས་བྱས་བ།',
+	'abusefilter-history-global' => 'འཛམ་གླིང་།',
+	'abusefilter-history-timestamp' => 'དུས་ཚོད།',
+	'abusefilter-history-user' => 'ཁོངས་མི།',
+	'abusefilter-history-flags' => 'དར་ཆ།',
+	'abusefilter-history-comments' => 'བསམ་ཚུལ།',
+	'abusefilter-history-deleted' => 'གསུབ་ཟིན།',
+	'abusefilter-action-warn' => 'ཉེན་བརྡ།',
+	'abusefilter-revert-confirm' => 'གཏན་འབེབས།',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
@@ -24384,6 +24402,15 @@ $messages['si'] = array(
 	'abusefilter-list-edit' => 'සංස්කරණය කරන්න',
 	'abusefilter-hidden' => 'පෞද්ගලික',
 	'abusefilter-unhidden' => 'ප්‍රසිද්ධ',
+	'abusefilter-status-global' => 'ගෝලීය',
+	'abusefilter-list-options' => 'විකල්ප',
+	'abusefilter-list-options-deleted' => 'මකාදැමුණු පෙරහන්:',
+	'abusefilter-list-options-deleted-only' => 'මකාදැමුණු පෙරහන් පමණක් පෙන්වන්න',
+	'abusefilter-list-options-deleted-hide' => 'මකාදැමුණු පෙරහන් සඟවන්න',
+	'abusefilter-list-options-deleted-show' => 'මකාදැමුණු පෙරහන් ඇතුළත් කරන්න',
+	'abusefilter-list-options-disabled' => 'අක්‍රීය කෙරුණු පෙරහන්:',
+	'abusefilter-list-options-hidedisabled' => 'අක්‍රීය පෙරහන් සඟවන්න',
+	'abusefilter-list-options-submit' => 'යාවත්කාල කරන්න',
 	'abusefilter-tools-subtitle' => 'මෙවලම්',
 	'abusefilter-tools-reautoconfirm-user' => 'පරිශීලකයා:',
 	'abusefilter-edit-status-label' => 'සංඛ්‍යාන දත්ත:',
