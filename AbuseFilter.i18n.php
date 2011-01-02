@@ -25246,6 +25246,7 @@ Nato skopirajte besedilo v prikazanem polju, prilepite ga v to polje in kliknite
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -25281,7 +25282,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-list-options-hidedisabled' => 'Сакриј онемогућене филтере',
 	'abusefilter-list-options-submit' => 'Ажурирај',
 	'abusefilter-tools-reautoconfirm-user' => 'Корисник:',
-	'abusefilter-edit-status-label' => 'Статистике:',
+	'abusefilter-edit-status-label' => 'Статистика:',
 	'abusefilter-edit-new' => 'Нови филтер',
 	'abusefilter-edit-save' => 'Сними филтер',
 	'abusefilter-edit-description' => "Опис:
@@ -25297,7 +25298,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-edit-warn-actions' => 'Акције:',
 	'abusefilter-edit-main' => 'Параметри филтера',
 	'abusefilter-edit-done-subtitle' => 'Филтер измењен',
-	'abusefilter-edit-history' => 'Историја:',
+	'abusefilter-edit-history' => 'Историјат:',
 	'abusefilter-edit-check' => 'Провери ситаксу',
 	'abusefilter-edit-tools' => 'Алати:',
 	'abusefilter-edit-builder-select' => 'Изаберите опцију коју ћете додати курсору',
