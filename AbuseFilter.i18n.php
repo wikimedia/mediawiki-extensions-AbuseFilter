@@ -7183,7 +7183,7 @@ Etikedoj devas esti mallonga, kaj ili ne devas enhavi specialajn signojn.',
 	'abusefilter-edit-builder-vars-movedto-id' => 'Paĝo-identigo de mova cela paĝo',
 	'abusefilter-edit-builder-vars-movedto-ns' => 'Nomspaco de la destino-paĝo',
 	'abusefilter-edit-builder-vars-movedto-text' => 'Titolo de cela paĝo de alinomado',
-	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Plena titolo de mova cela paĝo',
+	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Plena titolo de alinomigita cela paĝo',
 	'abusefilter-edit-builder-vars-user-editcount' => 'Redakto-kontado de uzanto',
 	'abusefilter-edit-builder-vars-user-age' => 'Aĝo de uzula konto',
 	'abusefilter-edit-builder-vars-user-name' => 'Nomo de uzula konto',
@@ -25400,7 +25400,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-exception-regexfailure' => 'Грешка у регуларном изрзу "$3" на карактеру $1: "$2"',
 	'abusefilter-exception-outofbounds' => 'Захтевање непостојећег елемента списка $2 (величина списка = $3) на карактеру $1.',
 	'abusefilter-exception-notlist' => 'Захтевање члана низа од нечега што није низ, на карактеру $1.',
-	'abusefilter-action-tag' => 'Таг',
+	'abusefilter-action-tag' => 'Ознака',
 	'abusefilter-action-warn' => 'Упозори',
 	'abusefilter-action-block' => 'Блокирај',
 	'abusefilter-action-degroup' => 'Избриши из група',
@@ -25450,6 +25450,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-el'] = array(
@@ -25595,7 +25596,7 @@ $messages['sr-el'] = array(
 	'abusefilter-exception-regexfailure' => 'Greška u regularnom izrzu "$3" na karakteru $1: "$2"',
 	'abusefilter-exception-outofbounds' => 'Zahtevanje nepostojećeg elementa spiska $2 (veličina spiska = $3) na karakteru $1.',
 	'abusefilter-exception-notlist' => 'Zahtevanje člana niza od nečega što nije niz, na karakteru $1.',
-	'abusefilter-action-tag' => 'Tag',
+	'abusefilter-action-tag' => 'Oznaka',
 	'abusefilter-action-warn' => 'Upozori',
 	'abusefilter-action-block' => 'Blokiraj',
 	'abusefilter-action-degroup' => 'Izbriši iz grupa',
