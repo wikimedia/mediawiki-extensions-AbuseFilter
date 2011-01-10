@@ -14350,6 +14350,7 @@ $3 つの{{PLURAL:$3|引数}}があるべきですが $4 つしかありませ�
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author Dawid Deutschland
  * @author Malafaya
  * @author Temuri rajavi
  * @author გიორგიმელა
@@ -14360,9 +14361,12 @@ $messages['ka'] = array(
 	'right-abusefilter-log-detail' => 'ბოროტად გამოყენების ფილტრის ჟურნალის ჩანაწერების ყურადღებით ხილვა',
 	'right-abusefilter-private' => 'ბოროტად გამოყენების ფილტრის ჟურნალის დამალული მონაცემების ხილვა',
 	'abusefilter-log-search-user' => 'მომხმარებელი:',
+	'abusefilter-log-search-filter' => 'ფილტრის ID:',
 	'abusefilter-log-search-title' => 'სათაური:',
 	'abusefilter-log-show-deleted' => 'დამალული ჩანაწერების ჩვენება',
 	'abusefilter-log-search-submit' => 'ძიება',
+	'abusefilter-log-detailedentry-global' => 'გლობალური ფილტრი $1',
+	'abusefilter-log-detailedentry-local' => 'ფილტრი $1',
 	'abusefilter-log-detailslink' => 'დეტალები',
 	'abusefilter-log-details-var' => 'ცვალებადი',
 	'abusefilter-log-details-val' => 'მნიშვნელობა',
@@ -14371,9 +14375,15 @@ $messages['ka'] = array(
 	'abusefilter-log-noactions' => 'არცერთი',
 	'abusefilter-log-details-diff' => 'რედაქტირებისას განხორციელებული ცვლილებები',
 	'abusefilter-log-linkoncontribs' => 'ბოროტად გამოყენების ჟურნალი',
+	'abusefilter-log-hidden' => '(ცვლილება დამალულია)',
+	'abusefilter-log-hide' => 'დამალვა ან ჩვენება',
+	'abusefilter-log-details-hidden' => 'თქვენ ვერ იხილავთ დამატებით ინფორმაციას ამ ფილტრის შესახებ, რადგანაც ის დამალულია ჩვეულებრივი მომხმარებლებისთვის.',
+	'abusefilter-log-hide-hidden' => 'ამ ცვლილების დამალვა საზოგადოებისათვის',
 	'abusefilter-log-hide-reason' => 'მიზეზი:',
 	'abusefilter-logentry-suppress' => '"[[$1]]"-ის დამალვა',
 	'abusefilter-logentry-unsuppress' => '"[[$1]]"-ის ჩვენება',
+	'abusefilter-list' => 'ყველა ფილტრი',
+	'abusefilter-list-id' => 'ფილტრის ID',
 	'abusefilter-list-status' => 'სტატუსი',
 	'abusefilter-list-public' => 'საზოგადო აღწერა',
 	'abusefilter-list-consequences' => 'შედეგები',
@@ -24422,6 +24432,7 @@ $messages['si'] = array(
 	'abusefilter-list-edit' => 'සංස්කරණය කරන්න',
 	'abusefilter-hidden' => 'පෞද්ගලික',
 	'abusefilter-unhidden' => 'ප්‍රසිද්ධ',
+	'abusefilter-deleted' => 'මකා දමන ලදී',
 	'abusefilter-status-global' => 'ගෝලීය',
 	'abusefilter-list-options' => 'විකල්ප',
 	'abusefilter-list-options-deleted' => 'මකාදැමුණු පෙරහන්:',
