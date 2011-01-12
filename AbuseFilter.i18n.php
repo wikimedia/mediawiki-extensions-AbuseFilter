@@ -4413,7 +4413,33 @@ Descripció de la regla aplicada: $1",
  */
 $messages['ce'] = array(
 	'abuselog' => 'Зулумаш долу тéптар',
+	'abusefilter-intro' => 'Марша догlийла, зулам литтаран Урхаллийн агlон тlе.
+Зулам литтар, декъашхоша деш долу, зуламан дуьхьала, шаьшха болх бо гlирс бу.
+Кхузахь балийна, массо а, литтарийн могlам, хийца аьтто а болуш.',
+	'abusefilter-mustbeeditor' => 'Кхерамазаллийн lалашонца, зулам литтар хийца йиш йолу декъашхойн бен, бакъо яц хlара юкъардакъа лело.',
+	'abusefilter-warning' => "'''Тидаме'''. Хlара динарг, шаьшха къастийна ца оьшуш санна.
+Хlоттам боцу нийсдарш хира ду, сиха дlа даьхна,
+морса йа, дуккха хlоттам боцу нийсдарш дича, хьан дlавазвалар ле IP-долу меттиг сацор ду.
+Хьо тешна валахь, хlара нийсдара хlоттам болуш хиларна, юхаъ «Дlайахьийта» тlе таlа йе.
+Аш дечуьнца догlуш хилар бакъонца билгалла даьккхина: $1",
+	'abusefilter-disallowed' => 'Хlара динарг, шаьшха зуламе санна къастийна, 
+цун дера ца магийна.
+Нагахь, хьо тешна валахь, хlара нийсдар хlоттам болуш хиларна, дехар до, адаманкуьйгалхочуьнга дийцар, хьо дан воллург.
+Зуламах лаьцна хаам, аш дечуьнца догlуш хилар билгалла даьккхина: $1',
+	'abusefilter-blocker' => 'Зулум литтар',
+	'abusefilter-log-search-user' => 'Декъашхо:',
+	'abusefilter-log-detailedentry-local' => 'литтар $1',
+	'abusefilter-log-detailslink' => 'мадарра',
+	'abusefilter-log-hidelink' => 'схьагар нисде',
+	'abusefilter-log-noactions' => 'цаоьшу',
+	'abusefilter-log-linkoncontribs' => 'зулуман тептар',
+	'abusefilter-list-edit' => 'Нисйé',
+	'abusefilter-tools-reautoconfirm-user' => 'Декъашхо:',
+	'abusefilter-history-user' => 'Декъашхо',
+	'abusefilter-history-select-legend' => 'Билгалдакха лахар',
+	'abusefilter-history-select-user' => 'Декъашхо:',
 	'abusefilter-exception-unrecognisedkeyword' => 'Дойзуш доцу оьшуш долу дош $2 оцу меттигца $1.',
+	'abusefilter-examine-user' => 'Декъашхо:',
 );
 
 /** Sorani (کوردی) */
@@ -8077,8 +8103,10 @@ Lisaselgituse jaoks klõpsa nuppu "Kontrolli süntaksit".',
  * @author Unai Fdz. de Betoño
  */
 $messages['eu'] = array(
+	'abusefilter-desc' => 'Edizioei heuristika automatikoa aplikatzen die',
 	'abusefilter' => 'Gehiegikerien iragazkiaren konfigurazioa',
 	'abuselog' => 'Gehiegikerien erregistroa',
+	'abusefilter-mustbeeditor' => 'Segurtasun arrazoiak direla eta, gehiegikeria-filtroak aldatzeko eskumena duten erabiltzaileek soilik balia dezakete interfaze hau.',
 	'right-abusefilter-modify' => 'Gehiegikeria iragazkiak aldatu',
 	'right-abusefilter-view' => 'Gehiegikeria iragazkiak ikusi',
 	'right-abusefilter-log' => 'Gehiegikeria loga ikusi',
@@ -8098,6 +8126,7 @@ $messages['eu'] = array(
 	'abusefilter-log-details-private' => 'Datu pribatuak',
 	'abusefilter-log-details-ip' => 'IP helbide sortzailea',
 	'abusefilter-log-noactions' => 'bat ere ez',
+	'abusefilter-log-hide-reason' => 'Arrazoia:',
 	'abusefilter-management' => 'Gehiegikeria iragazkiaren kudeaketa',
 	'abusefilter-list' => 'Iragazki guztiak',
 	'abusefilter-list-id' => 'Iragazkiaren IDa',
@@ -8121,6 +8150,7 @@ $messages['eu'] = array(
 	'abusefilter-tools-modifiertest-submit' => 'Froga',
 	'abusefilter-tools' => 'Gehiegikeria iragazki tresnak',
 	'abusefilter-loglink' => 'Ikusi gehiegikerien loga',
+	'abusefilter-status-global' => 'Globala',
 	'abusefilter-list-options' => 'Aukerak',
 	'abusefilter-list-options-deleted' => 'Ezabatutako iragazkiak:',
 	'abusefilter-list-options-deleted-only' => 'Erakutsi ezbatutako iragazkiak bakarrik',
@@ -8148,6 +8178,7 @@ $messages['eu'] = array(
 	'abusefilter-edit-notes' => "Oharrak:
 :''(pribatua)''",
 	'abusefilter-edit-action-block' => 'Erabiltzailea eta/edo IP helbidea blokeatu ediziorik egin ez dezan',
+	'abusefilter-edit-throttle-count' => 'Baimendu beharreko ekintza kopurua',
 	'abusefilter-edit-throttle-period' => 'Denbora periodoa:',
 	'abusefilter-edit-throttle-seconds' => '{{PLURAL:$1|segundu bat|$1 segundu}}',
 	'abusefilter-edit-warn-other' => 'Beste mezu bat',
@@ -8157,7 +8188,9 @@ $messages['eu'] = array(
 	'abusefilter-edit-main' => 'Iragazkiaren parametroak',
 	'abusefilter-edit-viewhistory' => 'Iragazki honen historia begiratu',
 	'abusefilter-edit-history' => 'Historia:',
+	'abusefilter-edit-check' => 'Egiaztatu sintaxia',
 	'abusefilter-edit-tools' => 'Tresnak:',
+	'abusefilter-edit-syntaxok' => 'Ez da sintaxi-errorerik aurkitu',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Eragile aritmetikoak',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Batuketa (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Kenketa (-)',
