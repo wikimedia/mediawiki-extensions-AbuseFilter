@@ -8269,6 +8269,7 @@ $messages['eu'] = array(
  * @author Ebraminio
  * @author Huji
  * @author Ladsgroup
+ * @author Mjbmr
  * @author Sahim
  * @author Wayiran
  * @author ZxxZxxZ
@@ -8651,7 +8652,7 @@ $messages['fa'] = array(
 	'abusefilter-examine-submit' => 'جستجو',
 	'abusefilter-examine-vars' => 'متغیرهای ایجاد شده برای این تغییر',
 	'abusefilter-examine-test' => 'آزمایش این تغییر بر روی یک پالایه',
-	'abusefilter-examine-test-button' => 'آزمایبش پالایه',
+	'abusefilter-examine-test-button' => 'آزمایش پالایه',
 	'abusefilter-examine-match' => 'پالایه با این تغییر مطابقت داشت.',
 	'abusefilter-examine-nomatch' => 'پالایه با این تغییر مطابقت نداشت.',
 	'abusefilter-examine-syntaxerror' => 'پالایه ساختار نادرست دارد',
