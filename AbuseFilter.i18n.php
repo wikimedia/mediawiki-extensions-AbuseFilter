@@ -14587,6 +14587,7 @@ $messages['ka'] = array(
 	'abusefilter-history-global' => 'გლობალური',
 	'abusefilter-history-timestamp' => 'დრო',
 	'abusefilter-history-user' => 'მომხმარებელი',
+	'abusefilter-history-public' => 'სილტრის საჯარო აღწერა',
 	'abusefilter-history-flags' => 'დროშები',
 	'abusefilter-history-comments' => 'კომენტარები',
 	'abusefilter-history-actions' => 'მოქმედებები',
@@ -14612,10 +14613,13 @@ $messages['ka'] = array(
 	'abusefilter-action-rangeblock' => 'დიაპაზონის ბლოკირება',
 	'abusefilter-action-disallow' => 'გათიშვა',
 	'abusefilter-revert-title' => 'გააუქმეთ ფილტრის მიერ გაკეთებული ყველა ცვლილება $1',
+	'abusefilter-revert-periodstart' => 'პერიოდის დასაწყისი:',
+	'abusefilter-revert-periodend' => 'პერიოდის დასასრული:',
 	'abusefilter-revert-search' => 'აირჩიეთ მოქმედება',
 	'abusefilter-revert-filter' => 'ფილტრი:',
 	'abusefilter-revert-confirm' => 'დადასტურება',
 	'abusefilter-revert-reasonfield' => 'გაუქმების მიზეზი:',
+	'abusefilter-test' => 'ფილტრის ტესტირება',
 	'abusefilter-test-submit' => 'შემოწმება',
 	'abusefilter-test-load' => 'ატვირთვა',
 	'abusefilter-test-user' => 'მომხმარებლის ცვლილებები:',
@@ -22316,7 +22320,7 @@ $messages['ro'] = array(
 	'abusefilter' => 'Configurare filtru de abuz',
 	'abuselog' => 'Jurnal abuz',
 	'abusefilter-intro' => 'Bun venit la interfața de gestionare a filtrului de abuzuri.
-Filtrul de abuzuri este un mecanism software automat care aplică automat euristice tuturor acțiunilor.
+Filtrul de abuzuri este un mecanism software automat care aplică euristice automate tuturor acțiunilor.
 Această interfață afișează o listă de filtre definite și permite modificarea acestora.',
 	'abusefilter-mustbeeditor' => 'Din motive de securitate, doar utilizatorii cu dreptul de a modifica filtrele de abuzare pot utiliza această interfață.',
 	'abusefilter-warning' => "'''Atenție''': Această acțiune a fost identificată în mod automat ca fiind periculoasă.
@@ -22443,7 +22447,7 @@ Descrierea filtrului: $7 ($8)',
 	'abusefilter-reautoconfirm-none' => 'Acel utilizator nu are statutul de utilizator autoconfirmat suspendat.',
 	'abusefilter-reautoconfirm-notallowed' => 'Nu ai dreptul de a restaura un statut autoconfirmat.',
 	'abusefilter-reautoconfirm-done' => 'Statutul de autoconfirmat al contului a fost restaurat',
-	'abusefilter-status' => 'Din {{PLURAL:$1|ultima acțiune|ultimele acțiuni}} $1, $2 ($3%) {{PLURAL:$2|a|au}} atins condiția limită a $4. $5 ($6%)',
+	'abusefilter-status' => 'Din {{PLURAL:$1|ultima acțiune|ultimele $1 (de) acțiuni}}, $2 ($3%) {{PLURAL:$2|a|au}} atins condiția limită de $4 de rulări și $5 ($6%) {{PLURAL:$5|a|au}} fost asociat{{PLURAL:$5||e}} cu unul dintre filtrele active.',
 	'abusefilter-edit-subtitle' => 'Modificare filtru $1',
 	'abusefilter-edit-oldwarning' => '<strong>Modificați o versiune învechită a acestui filtru.
 Statisticile citate sunt pentru cea mai recentă versiune a filtrului.
@@ -22678,6 +22682,7 @@ Pentru a încărca o regulă existentă, introduceți IDul regulii în căsuța 
 Puteți primi o explicație completă apăsând pe butonul "Verificare sintaxă".',
 	'abusefilter-changeslist-examine' => 'examinează',
 	'abusefilter-examine' => 'Examinați schimbările individuale',
+	'abusefilter-examine-intro' => 'Această pagină vă permite să examinați variabilele generate de filtrul de abuzuri pentru o modificare și să o treceți prin filtre.',
 	'abusefilter-examine-legend' => 'Marchează schimbările',
 	'abusefilter-examine-diff' => 'URL diff:',
 	'abusefilter-examine-user' => 'Utilizator:',
@@ -25295,7 +25300,7 @@ Nato skopirajte besedilo v prikazanem polju, prilepite ga v to polje in kliknite
 	'abusefilter-import-submit' => 'Uvozi podatke',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -25345,7 +25350,7 @@ $messages['sr-ec'] = array(
 :''(приватно)''",
 	'abusefilter-edit-throttle-period' => 'Временски период:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|секунда|секунди}}',
-	'abusefilter-edit-warn-actions' => 'Акције:',
+	'abusefilter-edit-warn-actions' => 'Радње:',
 	'abusefilter-edit-main' => 'Параметри филтера',
 	'abusefilter-edit-done-subtitle' => 'Филтер измењен',
 	'abusefilter-edit-history' => 'Историјат:',
@@ -25430,7 +25435,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-history-backedit' => 'Повратак на едитор филтера',
 	'abusefilter-history-deleted' => 'Обрисано',
 	'abusefilter-history-filterid' => 'Филтер',
-	'abusefilter-history-select-legend' => 'Профини претрагу',
+	'abusefilter-history-select-legend' => 'Прецизирај претрагу',
 	'abusefilter-history-select-user' => 'Корисник:',
 	'abusefilter-history-select-submit' => 'Профини',
 	'abusefilter-history-diff' => 'Измене',
