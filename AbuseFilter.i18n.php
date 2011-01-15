@@ -4434,7 +4434,9 @@ $messages['ce'] = array(
 	'abusefilter-log-noactions' => 'цаоьшу',
 	'abusefilter-log-linkoncontribs' => 'зулуман тептар',
 	'abusefilter-list-edit' => 'Нисйé',
+	'abusefilter-list-lastmodified' => 'Тlаьххьара хийцамаш',
 	'abusefilter-tools-reautoconfirm-user' => 'Декъашхо:',
+	'abusefilter-edit-lastmod' => 'Тlаьххьара литтаран хийцам:',
 	'abusefilter-history-user' => 'Декъашхо',
 	'abusefilter-history-select-legend' => 'Билгалдакха лахар',
 	'abusefilter-history-select-user' => 'Декъашхо:',
@@ -14384,6 +14386,7 @@ $3 つの{{PLURAL:$3|引数}}があるべきですが $4 つしかありませ�
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author David1010
  * @author Dawid Deutschland
  * @author Malafaya
  * @author Temuri rajavi
@@ -14587,7 +14590,7 @@ $messages['ka'] = array(
 	'abusefilter-history-global' => 'გლობალური',
 	'abusefilter-history-timestamp' => 'დრო',
 	'abusefilter-history-user' => 'მომხმარებელი',
-	'abusefilter-history-public' => 'სილტრის საჯარო აღწერა',
+	'abusefilter-history-public' => 'ფილტრის საჯარო აღწერა',
 	'abusefilter-history-flags' => 'დროშები',
 	'abusefilter-history-comments' => 'კომენტარები',
 	'abusefilter-history-actions' => 'მოქმედებები',
@@ -22411,7 +22414,7 @@ Descrierea filtrului: $7 ($8)',
 	'abusefilter-list-public' => 'Descriere publică',
 	'abusefilter-list-consequences' => 'Consecințe',
 	'abusefilter-list-visibility' => 'Vizibilitate',
-	'abusefilter-list-hitcount' => 'Număr conectări',
+	'abusefilter-list-hitcount' => 'Număr potriviri',
 	'abusefilter-list-edit' => 'Modifică',
 	'abusefilter-list-details' => 'Detalii',
 	'abusefilter-list-limit' => 'Număr pe pagină:',
@@ -22421,7 +22424,7 @@ Descrierea filtrului: $7 ($8)',
 	'abusefilter-enabled' => 'Activat',
 	'abusefilter-deleted' => 'Șters',
 	'abusefilter-disabled' => 'Dezactivat',
-	'abusefilter-hitcount' => '$1 {{PLURAL:$1|conectare|conectări}}',
+	'abusefilter-hitcount' => '$1 {{PLURAL:$1|potrivire|potriviri|de potriviri}}',
 	'abusefilter-new' => 'Creează un filtru nou',
 	'abusefilter-links' => 'Legături folositoare:',
 	'abusefilter-tools-modifiertest-submit' => 'Test',
@@ -22447,7 +22450,7 @@ Descrierea filtrului: $7 ($8)',
 	'abusefilter-reautoconfirm-none' => 'Acel utilizator nu are statutul de utilizator autoconfirmat suspendat.',
 	'abusefilter-reautoconfirm-notallowed' => 'Nu ai dreptul de a restaura un statut autoconfirmat.',
 	'abusefilter-reautoconfirm-done' => 'Statutul de autoconfirmat al contului a fost restaurat',
-	'abusefilter-status' => 'Din {{PLURAL:$1|ultima acțiune|ultimele $1 (de) acțiuni}}, $2 ($3%) {{PLURAL:$2|a|au}} atins condiția limită de $4 de rulări și $5 ($6%) {{PLURAL:$5|a|au}} fost asociat{{PLURAL:$5||e}} cu unul dintre filtrele active.',
+	'abusefilter-status' => 'Din {{PLURAL:$1|ultima acțiune|ultimele $1 acțiuni|ultimele $1 de acțiuni}}, $2 ($3%) {{PLURAL:$2|a|au}} atins condiția limită de $4 rulări și $5 ($6%) s-{{PLURAL:$5|a|au}} potrivit cu unul dintre filtrele active.',
 	'abusefilter-edit-subtitle' => 'Modificare filtru $1',
 	'abusefilter-edit-oldwarning' => '<strong>Modificați o versiune învechită a acestui filtru.
 Statisticile citate sunt pentru cea mai recentă versiune a filtrului.
@@ -22471,7 +22474,7 @@ Dacă salvați modificările dumneavoastră, veți suprascrie toate modificăril
 :''(private)",
 	'abusefilter-edit-lastmod' => 'Ultima modificare filtru:',
 	'abusefilter-edit-lastmod-text' => '$1 de $2',
-	'abusefilter-edit-hitcount' => 'Conectări filtru:',
+	'abusefilter-edit-hitcount' => 'Potriviri filtru:',
 	'abusefilter-edit-consequences' => 'Acțiuni efectuate la detectare',
 	'abusefilter-edit-action-warn' => 'Declanșează aceste acțiuni după ce ai avertizat utilizatorul',
 	'abusefilter-edit-action-disallow' => 'Nu permite utilizatorului efectuarea acestei acțiuni',
@@ -25401,7 +25404,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-edit-builder-funcs-str_replace' => 'Замени подстринг неким стрингом (str_replace)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Постави променљиву (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Променљиве',
-	'abusefilter-edit-builder-vars-action' => 'Акција',
+	'abusefilter-edit-builder-vars-action' => 'Радња',
 	'abusefilter-edit-builder-vars-addedlines' => 'Линија додатих при измени',
 	'abusefilter-edit-builder-vars-delta' => 'Промена величине при измени',
 	'abusefilter-edit-builder-vars-newsize' => 'Величина нове стране',
@@ -30703,7 +30706,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-desc' => '套用自動試誤結果到編輯',
 	'abusefilter' => '防濫用過濾器配置',
 	'abuselog' => '過濾日誌',
-	'abusefilter-intro' => '歡迎訪問防濫用過濾器管理界面。防濫用過濾器是一個可以針對所有最近編輯動作進行自動化判斷的軟件系統。本界面包含了現有過濾器的列表，並允許管理人員將之修改。',
+	'abusefilter-intro' => '歡迎訪問防濫用過濾器管理介面。防濫用過濾器是一個可以針對所有最近編輯動作進行自動化判斷的軟體系統。本介面包含了現有過濾器的列表，並允許管理人員將之修改。',
 	'abusefilter-mustbeeditor' => '基於安全理由，僅有權修改防濫用過濾器的用戶可以使用本介面。',
 	'abusefilter-warning' => "'''警告'''：此操作已被系統自動確認為有害。
 沒有建設性編輯將會被快速還原，
@@ -30766,7 +30769,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-log-noactions' => '無',
 	'abusefilter-log-details-diff' => '修訂版本間差異',
 	'abusefilter-log-linkoncontribs' => '防濫用過濾器日誌',
-	'abusefilter-log-linkoncontribs-text' => '此用户的过滤器日志',
+	'abusefilter-log-linkoncontribs-text' => '此用戶的過濾器日誌',
 	'abusefilter-log-hidden' => '(記錄隱藏)',
 	'abusefilter-log-hide' => '隱藏或取消隱藏',
 	'abusefilter-log-details-hidden' => '因為這是不公開的，你不可以參閱此記錄的詳情。',
@@ -30796,7 +30799,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-deleted' => '已刪除',
 	'abusefilter-disabled' => '已停用',
 	'abusefilter-hitcount' => '$1次觸發',
-	'abusefilter-new' => '創建新過濾器',
+	'abusefilter-new' => '建立一個新的過濾器',
 	'abusefilter-links' => '有用連結：',
 	'abusefilter-tools-modifiertest-submit' => '測試',
 	'abusefilter-tools' => '防濫用過濾器工具',
@@ -30825,7 +30828,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-edit-subtitle' => '正在編輯過濾器 $1',
 	'abusefilter-edit-oldwarning' => '<strong>警告：您正在編輯的是本過濾器的舊版本。
 統計資料欄所援引的是該過濾器最新的版本。
-您若保存您目前的修改，本版本之後的任何修改都會丟失。</strong> &bull;
+您若保存您目前的修改，本版本之後的任何修改都會遺失。</strong> &bull;
 [[Special:AbuseFilter/history/$2|返回本過濾器的歷史]]。',
 	'abusefilter-edit-status-label' => '統計資料：',
 	'abusefilter-edit-status' => '在最近的$1次編輯中，有$2（$3%）次編輯觸發了本過濾器。其平均運行時間為$4毫秒，消耗了$5條限制。',
@@ -30889,7 +30892,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-edit-syntaxerr' => '檢測到語法錯誤：$1',
 	'abusefilter-edit-bad-tags' => '一個或更多的標籤不可用。
 標籤不應過長，並且不應包含任何特殊字符。',
-	'abusefilter-edit-notallowed' => '您未被允許創建或編輯防濫用過濾器',
+	'abusefilter-edit-notallowed' => '您未被允許建立或編輯防濫用過濾器',
 	'abusefilter-edit-builder-select' => '選一選項以加此至游標處',
 	'abusefilter-edit-builder-group-op-arithmetic' => '算術運算符',
 	'abusefilter-edit-builder-op-arithmetic-addition' => '加（+）',
@@ -31090,7 +31093,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-diff-pattern' => '過濾器狀態',
 	'abusefilter-diff-invalid' => '無法取得請求的版本',
 	'abusefilter-diff-backhistory' => '返回過濾器歷史頁面',
-	'abusefilter-import-intro' => '您可以使用本界面來導入其他wiki的過濾器。在來源處點擊過濾器編輯界面處“{{int:abusefilter-tools-subtitle}}”下的“{{int:abusefilter-edit-export}}”。複製隨後出現的文本框中的內容，並粘貼至下方的文本框中，並點擊“{{int:abusefilter-import-submit}}”。',
+	'abusefilter-import-intro' => '您可以使用本介面來導入其他wiki的過濾器。在來源處點擊過濾器編輯介面處“{{int:abusefilter-tools-subtitle}}”下的“{{int:abusefilter-edit-export}}”。複製隨後出現的文字框中的內容，並複製至下方的文字框中，並點擊“{{int:abusefilter-import-submit}}”。',
 	'abusefilter-import-submit' => '導入數據',
 );
 
