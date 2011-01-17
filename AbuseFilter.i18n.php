@@ -8489,7 +8489,7 @@ $messages['fa'] = array(
 	'abusefilter-edit-builder-op-arithmetic-modulo' => 'باقی‌مانده (%)',
 	'abusefilter-edit-builder-op-arithmetic-pow' => 'توان (**)',
 	'abusefilter-edit-builder-group-op-comparison' => 'عملگرهای مقایسه‌ای',
-	'abusefilter-edit-builder-op-comparison-equal' => 'برابر است با(==)',
+	'abusefilter-edit-builder-op-comparison-equal' => 'برابر است با (==)',
 	'abusefilter-edit-builder-op-comparison-notequal' => 'برابر نیست با (!=)',
 	'abusefilter-edit-builder-op-comparison-lt' => 'کمتر از (>)',
 	'abusefilter-edit-builder-op-comparison-gt' => 'بیشتر از (<)',
@@ -14397,6 +14397,7 @@ $messages['ka'] = array(
 	'right-abusefilter-log' => 'ბოროტად გამოყენების ფილტრის ჟურნალის ხილვა',
 	'right-abusefilter-log-detail' => 'ბოროტად გამოყენების ფილტრის ჟურნალის ჩანაწერების ყურადღებით ხილვა',
 	'right-abusefilter-private' => 'ბოროტად გამოყენების ფილტრის ჟურნალის დამალული მონაცემების ხილვა',
+	'abusefilter-log' => 'ბოროტად გამოყენების ფილტრის ჟურნალი',
 	'abusefilter-log-search-user' => 'მომხმარებელი:',
 	'abusefilter-log-search-filter' => 'ფილტრის ID:',
 	'abusefilter-log-search-title' => 'სათაური:',
@@ -22314,6 +22315,7 @@ $messages['rif'] = array(
  * @author Mihai
  * @author Minisarm
  * @author Misterr
+ * @author Rsocol
  * @author Silviubogan
  * @author Stelistcristi
  * @author Strainu
@@ -22321,51 +22323,52 @@ $messages['rif'] = array(
 $messages['ro'] = array(
 	'abusefilter-desc' => 'Aplică euristici automate modificărilor.',
 	'abusefilter' => 'Configurare filtru de abuz',
-	'abuselog' => 'Jurnal abuz',
+	'abuselog' => 'Jurnal abuzuri',
 	'abusefilter-intro' => 'Bun venit la interfața de gestionare a filtrului de abuzuri.
-Filtrul de abuzuri este un mecanism software automat care aplică euristice automate tuturor acțiunilor.
+Filtrul de abuzuri este un mecanism software automat care aplică euristici automate tuturor acțiunilor.
 Această interfață afișează o listă de filtre definite și permite modificarea acestora.',
-	'abusefilter-mustbeeditor' => 'Din motive de securitate, doar utilizatorii cu dreptul de a modifica filtrele de abuzare pot utiliza această interfață.',
+	'abusefilter-mustbeeditor' => 'Din motive de securitate, doar utilizatorii cu drept de modificare a filtrelor de abuz pot utiliza această interfață.',
 	'abusefilter-warning' => "'''Atenție''': Această acțiune a fost identificată în mod automat ca fiind periculoasă.
 Modificările neconstructive vor fi rapid înlăturate,
 iar cele evident neconstructive și repetate vor avea ca efect blocarea contului sau adresei IP de la care vă conectați.
-Dacă într-adevăr credeți că această modificare este constructivă, apăsați din nou pe Trimite pentru confirmare.
+Dacă într-adevăr credeți că această modificare este constructivă, apăsați din nou pe „Trimite” pentru confirmare.
 O descriere sumară a regulii abuzului care se potrivește acțiunii dumneavoastră este: $1",
-	'abusefilter-disallowed' => 'Această acțiune a fost identificată automat ca fiind periculoasă,
-din acest motiv a fost refuzată.
-Dacă ești convins că modificarea ta a fost constructivă, te rog contactează un administrator, și informează-l despre ce dorești să faci.
-O descriere sumară a regulii abuzului care se potrivește cu acțiunea ta este: $1',
-	'abusefilter-blocked-display' => 'Această acțiune a fost identificată automat ca fiind periculoasă,
-și ai ai fost împiedicat să o execuți.
-În plus, pentru a proteja {{SITENAME}}, contul tău și toate adresele IP asociate contului fost blocate la modifcare.
-Dacă blocarea este o eroare, te rog contactează un administrator.
-O descriere sumară a regulii abuzului care se potrivește cu acțiunea ta este: $1',
-	'abusefilter-degrouped' => 'Această acțiune a fost identificată automat ca fiind periculoasă.
-În consecință, acțiunea a fost refuzată, iar deoarece contul pare a fi compromis, toate drepturile au fost revocate.
-Dacă consideri această acțiune o eroare, te rog contactează un birocrat și explică-i ce s-a întâmplat, iar drepturile tale s-ar putea să fie restaurate.
-O descriere sumară a regulii abuzului care se potrivește cu acțiunea ta este: $1',
-	'abusefilter-autopromote-blocked' => 'Această acțiune a fost identificată automat ca fiind periculoasă și a fost interzisă.
-În plus, ca o măsură de securitate, unele privilegii pe care le ai, în ceea ce privește deschiderea de conturi, au fost revocate.
-O descriere sumară a regulii abuzului care se potrivește cu acțiunea ta este: $1',
+	'abusefilter-disallowed' => 'Această acțiune a fost identificată în mod automat ca fiind periculoasă, din acest motiv fiind refuzată.
+Dacă într-adevăr credeți că modificarea dumneavoastră a fost constructivă, vă rugăm să contactați un administrator și să-l informați despre ceea ce doriți să întreprindeți.
+O descriere sumară a regulii abuzului care se potrivește acțiunii dumneavoastră este: $1',
+	'abusefilter-blocked-display' => 'Această acțiune a fost identificată în mod automat ca fiind periculoasă;
+drept urmare ați fost împiedicat să o executați.
+În plus, pentru a proteja {{SITENAME}}, contul dumneavoastră și toate adresele IP asociate acestuia au fost blocate de la modificare.
+Dacă blocarea este eronată, vă rugăm să contactați un administrator.
+O descriere sumară a regulii abuzului care se potrivește acțiunii dumneavoastră este: $1',
+	'abusefilter-degrouped' => 'Această acțiune a fost identificată în mod automat ca fiind periculoasă.
+În consecință, acțiunea a fost refuzată și, din moment ce contul dumneavoastră pare a fi compromis, toate drepturile au fost revocate.
+Dacă sunteți de părere că această sancțiune este eronată, vă rugăm să contactați un birocrat căruia să-i explicați cele întâmplate, drepturile dumneavoastră putând fi astfel restaurate.
+O descriere sumară a regulii abuzului care se potrivește acțiunii dumneavoastră este: $1',
+	'abusefilter-autopromote-blocked' => 'Această acțiune a fost identificată în mod automat ca fiind periculoasă și a fost refuzată.
+În plus, ca o măsură de securitate, unele privilegii pe care le-ați dobândit în momentul creării contului au fost revocate.
+O descriere sumară a regulii abuzului care se potrivește acțiunii dumneavoastră este: $1',
 	'abusefilter-blocker' => 'Filtru abuz',
-	'abusefilter-blockreason' => 'Blocare automată efectuată de filtrul abuz. Descrierea regulii: $1',
-	'abusefilter-degroupreason' => 'Drepturi automat suspendate de către filtrul abuz. Descrierea regulii: $1',
+	'abusefilter-blockreason' => 'Blocare automată efectuată de filtrul de abuz.
+Descrierea regulii aplicate: $1',
+	'abusefilter-degroupreason' => 'Drepturi automat suspendate de către filtrul de abuz.
+Descrierea regulii: $1',
 	'abusefilter-accountreserved' => 'Acest nume de cont este rezervat pentru a fi folosit de către filtrul abuz.',
-	'right-abusefilter-modify' => 'Modifică filtrele abuz',
-	'right-abusefilter-view' => 'Vezi filtrele abuz',
-	'right-abusefilter-log' => 'Vezi jurnalul abuz',
-	'right-abusefilter-log-detail' => 'Vezi intrările detaliate din jurnalul abuz',
-	'right-abusefilter-private' => 'Vezi datele private din jurnalul abuz',
-	'right-abusefilter-modify-restricted' => 'Modificați filtrele de abuzare cu acțiuni restricționate',
-	'right-abusefilter-revert' => 'Reveniți asupra tuturor modificărilor corespunzătoare unui filtru de abuz dat',
-	'right-abusefilter-view-private' => 'Vedeți filtrele de abuzare marcate ca private',
+	'right-abusefilter-modify' => 'Modifică filtrele de abuz',
+	'right-abusefilter-view' => 'Vizualizează filtrele de abuz',
+	'right-abusefilter-log' => 'Vizualizează jurnalul de abuzuri',
+	'right-abusefilter-log-detail' => 'Vizualizează intrări detaliate în jurnalul de abuzuri',
+	'right-abusefilter-private' => 'Vizualizează datele private din jurnalul de abuzuri',
+	'right-abusefilter-modify-restricted' => 'Modifică filtrele de abuz cu acțiuni restricționate',
+	'right-abusefilter-revert' => 'Revine asupra tuturor modificărilor corespunzătoare unui filtru de abuz dat',
+	'right-abusefilter-view-private' => 'Vizualizează filtrele de abuz marcate ca private',
 	'right-abusefilter-hide-log' => 'Ascunde intrările în jurnalul de abuzuri',
 	'right-abusefilter-hidden-log' => 'Vizualizează intrările ascunse din jurnalul de abuzuri',
 	'action-abusefilter-modify' => 'modifică filtrele de abuz',
 	'action-abusefilter-view' => 'vezi filtrele de abuzare',
 	'action-abusefilter-log' => 'vezi jurnalul de abuzare',
 	'action-abusefilter-log-detail' => 'vedeți înregistrările jurnalului cu abuzuri detaliate',
-	'action-abusefilter-private' => 'vedeți date private în jurnanul de abuzuri',
+	'action-abusefilter-private' => 'vedeți date private în jurnalul de abuzuri',
 	'action-abusefilter-modify-restricted' => 'modificați filtrele de abuzare cu acțiuni restricționate',
 	'action-abusefilter-revert' => 'anulați toate modificările de la filtru de abuzare',
 	'action-abusefilter-view-private' => 'vezi filtrele de abuzare marcate ca private',
@@ -22378,7 +22381,7 @@ O descriere sumară a regulii abuzului care se potrivește cu acțiunea ta este:
 	'abusefilter-log-show-deleted' => 'Afișează intrările ascunse',
 	'abusefilter-log-search-submit' => 'Caută',
 	'abusefilter-log-entry' => '$1: $2 a declanșat un filtru abuz, executând acțiunea "$3" asupra $4.
-Măsura luatră: $5;
+Măsura luată: $5;
 Descrierea filtrului: $6',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 a desclanșat $3, executând acțiunea "$4" asupra $5.
 Măsura luată: $6;
@@ -22501,7 +22504,7 @@ Dacă salvați modificările dumneavoastră, veți suprascrie toate modificăril
 	'abusefilter-edit-denied' => 'S-ar putea să nu vezi detaliile acestui filtru, deoarece a fost ascuns publicului',
 	'abusefilter-edit-main' => 'Parametrii filtrului',
 	'abusefilter-edit-done-subtitle' => 'Filtru modificat',
-	'abusefilter-edit-done' => 'Modificările au fost salvate cu succes filtrului $1.',
+	'abusefilter-edit-done' => 'Modificările filtrului $1 au fost salvate cu succes.',
 	'abusefilter-edit-badsyntax' => 'Există o eroare de sintaxă în filtrul specificat. Analizatorul a întors eroarea: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Nu puteți modifica acest filtru, deoarece conține una sau mai multe acțiuni restricționate.
 Rugați un utilizator cu permisiuni de adăugare a acțiunilor restricționate să efectueze modificarea pentru dumneavoastră.',
@@ -22529,7 +22532,7 @@ Etichetele trebuie să fie scurte și nu trebuie să conțină caractere special
 	'abusefilter-edit-builder-op-arithmetic-pow' => 'Putere (**)',
 	'abusefilter-edit-builder-group-op-comparison' => 'Operatori comparativi',
 	'abusefilter-edit-builder-op-comparison-equal' => 'Egal cu (==)',
-	'abusefilter-edit-builder-op-comparison-notequal' => 'Inegal cu (!=)',
+	'abusefilter-edit-builder-op-comparison-notequal' => 'Diferit de (!=)',
 	'abusefilter-edit-builder-op-comparison-lt' => 'Mai mic decât (<)',
 	'abusefilter-edit-builder-op-comparison-gt' => 'Mai mare decât (>)',
 	'abusefilter-edit-builder-op-comparison-lte' => 'Mai mic sau egal cu (<=)',
@@ -22607,7 +22610,7 @@ Etichetele trebuie să fie scurte și nu trebuie să conțină caractere special
 	'abusefilter-edit-builder-vars-old-html' => 'Textul wiki vechi, parsat în HTML',
 	'abusefilter-edit-builder-vars-minor-edit' => 'Indiferent dacă modificarea este sau nu marcată ca minoră',
 	'abusefilter-edit-builder-vars-file-sha1' => 'Hash-ul SHA1 al conținutului fișierului',
-	'abusefilter-filter-log' => 'Schimbări ale filtrului recente',
+	'abusefilter-filter-log' => 'Schimbări recente ale filtrului',
 	'abusefilter-history' => 'Istoricul modificărilor pentru Filtrul Abuz #$1',
 	'abusefilter-history-foruser' => 'Schimbări efectuate de $1',
 	'abusefilter-history-hidden' => 'Ascuns',
@@ -22704,7 +22707,7 @@ Puteți primi o explicație completă apăsând pe butonul "Verificare sintaxă"
 	'abusefilter-topnav-home' => 'Acasă',
 	'abusefilter-topnav-test' => 'Testare în serie',
 	'abusefilter-topnav-examine' => 'Examinați editări din trecut',
-	'abusefilter-topnav-log' => 'Jurnal abuz',
+	'abusefilter-topnav-log' => 'Jurnal abuzuri',
 	'abusefilter-topnav-tools' => 'Unelte de depanare',
 	'abusefilter-topnav-import' => 'Importă filtru',
 	'abusefilter-log-name' => 'Jurnalul filtrului de abuzare',
@@ -30774,13 +30777,13 @@ $messages['zh-hant'] = array(
 	'abusefilter-log-hide' => '隱藏或取消隱藏',
 	'abusefilter-log-details-hidden' => '因為這是不公開的，你不可以參閱此記錄的詳情。',
 	'abusefilter-log-hide-legend' => '隱藏日誌條目',
-	'abusefilter-log-hide-id' => '日誌記錄ID:',
+	'abusefilter-log-hide-id' => '日誌記錄 ID：',
 	'abusefilter-log-hide-hidden' => '對公眾隱藏此日誌項目',
 	'abusefilter-log-hide-reason' => '原因：',
 	'abusefilter-log-hide-forbidden' => '你沒有權限去隱藏
 過濾日誌的記錄',
-	'abusefilter-logentry-suppress' => '隱藏 "[[$1]]"',
-	'abusefilter-logentry-unsuppress' => '取消隱藏 "[[$1]]"',
+	'abusefilter-logentry-suppress' => '隱藏「[[$1]]」',
+	'abusefilter-logentry-unsuppress' => '取消隱藏「[[$1]]」',
 	'abusefilter-management' => '防濫用過濾器管理',
 	'abusefilter-list' => '所有過濾器',
 	'abusefilter-list-id' => '過濾器編號',
@@ -30798,7 +30801,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-enabled' => '啟用',
 	'abusefilter-deleted' => '已刪除',
 	'abusefilter-disabled' => '已停用',
-	'abusefilter-hitcount' => '$1次觸發',
+	'abusefilter-hitcount' => '$1 次觸發',
 	'abusefilter-new' => '建立一個新的過濾器',
 	'abusefilter-links' => '有用連結：',
 	'abusefilter-tools-modifiertest-submit' => '測試',
@@ -31076,7 +31079,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-examine-incompatible' => '防濫用過濾器對您請求的更改不支援',
 	'abusefilter-examine-noresults' => '您提供的搜尋參數找不到任何結果。',
 	'abusefilter-topnav' => "'''防濫用過濾器導航'''",
-	'abusefilter-topnav-home' => '主頁',
+	'abusefilter-topnav-home' => '首頁',
 	'abusefilter-topnav-test' => '批次測試',
 	'abusefilter-topnav-examine' => '檢查過往編輯',
 	'abusefilter-topnav-log' => '過濾日誌',
