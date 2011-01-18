@@ -8287,7 +8287,7 @@ $messages['fa'] = array(
 	'abusefilter-warning' => "'''اخطار''': این کار به طور خودکار خطرناک تشخیص داده‌شده‌است.
 ویرایش‌های غیرسازنده به سرعت واگردانی خواهند شد،
 و ویرایش‌های عمدی یا مکرر خرابکارانه منجر به بسته شدن حساب یا نشانی آی‌پی شما خواهد شد.
-اگر مطمئنید که این ویرایش مفید است دوباره بر دکمه تایید بفشارید تا آن را تایید کنید.
+اگر مطمئنید که این ویرایش مفید است دوباره بر دکمه تأیید بفشارید تا آن را تأیید کنید.
 خلاصه‌ای از توضیح قانون جلوگیری از خرابکاری که با کار شما مطابقت دارد چنین است: $1",
 	'abusefilter-disallowed' => 'این کار به طور خودکار خطرناک تشخیص داده‌شده است، بنابرین شما اجازهٔ این کار را ندارید.
 اگر فکر می‌کنید که کارتان درست بوده است با مدیران تماس بگیرید، و آن‌ها را از آن‌چه می‌خواهید انجام دهید آگاه کنید.
@@ -8624,7 +8624,7 @@ $messages['fa'] = array(
 	'abusefilter-revert-search' => 'انتخاب اقدامات',
 	'abusefilter-revert-filter' => 'پالایه:',
 	'abusefilter-revert-preview-intro' => 'در زیر اقدامات صورت گرفته توسط پالایهٔ خرابکاری آمده است که توسط این اقدام واگردنی می‌شود.
-لطفاً با دقت آن‌ها را بررسی کنید، و به منظور تایید انتخاب، روی «تایید» کلیک نمایید.',
+لطفاً با دقت آن‌ها را بررسی کنید، و به منظور تأیید انتخاب، روی «تایید» کلیک نمایید.',
 	'abusefilter-revert-confirm' => 'تأیید',
 	'abusefilter-revert-success' => 'شما همهٔ اقدام‌های صورت گرفته توسط پالایهٔ خرابکاری به دلیل [[Special:AbuseFilter/$1|پالایهٔ $1]] را واگردانی کرده‌اید.',
 	'abusefilter-revert-reason' => 'واگردانی خودکار همهٔ اقدام‌های صورت‌گرفته توسط پالایهٔ خرابکاری به دلیل پالایهٔ $1.
@@ -14406,16 +14406,19 @@ $messages['ka'] = array(
 	'abusefilter-log-detailedentry-global' => 'გლობალური ფილტრი $1',
 	'abusefilter-log-detailedentry-local' => 'ფილტრი $1',
 	'abusefilter-log-detailslink' => 'დეტალები',
+	'abusefilter-log-hidelink' => 'ხილვადობის დაყენება',
 	'abusefilter-log-details-var' => 'ცვალებადი',
 	'abusefilter-log-details-val' => 'მნიშვნელობა',
 	'abusefilter-log-details-vars' => 'Action parameters',
 	'abusefilter-log-details-private' => 'კერძო მონაცემი',
+	'abusefilter-log-details-ip' => 'გამავალი IP მისამართი',
 	'abusefilter-log-noactions' => 'არცერთი',
 	'abusefilter-log-details-diff' => 'რედაქტირებისას განხორციელებული ცვლილებები',
 	'abusefilter-log-linkoncontribs' => 'ბოროტად გამოყენების ჟურნალი',
 	'abusefilter-log-hidden' => '(ცვლილება დამალულია)',
 	'abusefilter-log-hide' => 'დამალვა ან ჩვენება',
 	'abusefilter-log-details-hidden' => 'თქვენ ვერ იხილავთ დამატებით ინფორმაციას ამ ფილტრის შესახებ, რადგანაც ის დამალულია ჩვეულებრივი მომხმარებლებისთვის.',
+	'abusefilter-log-hide-id' => 'ჟურნალის ჩანაწერების ID:',
 	'abusefilter-log-hide-hidden' => 'ამ ცვლილების დამალვა საზოგადოებისათვის',
 	'abusefilter-log-hide-reason' => 'მიზეზი:',
 	'abusefilter-logentry-suppress' => '"[[$1]]"-ის დამალვა',
@@ -14536,6 +14539,7 @@ $messages['ka'] = array(
 	'abusefilter-edit-builder-op-comparison-equal' => 'ტოლია (==)',
 	'abusefilter-edit-builder-op-comparison-notequal' => 'არ არის ტოლი (!=)',
 	'abusefilter-edit-builder-op-comparison-lt' => 'ნაკლები ვიდრე (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'მეტი ვიდრე (>)',
 	'abusefilter-edit-builder-op-bool-not' => 'არ (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'და (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'ან (|)',
@@ -14598,6 +14602,7 @@ $messages['ka'] = array(
 	'abusefilter-history-deleted' => 'წაშლილია',
 	'abusefilter-history-filterid' => 'ფილტრი',
 	'abusefilter-history-select-user' => 'მომხმარებელი:',
+	'abusefilter-history-select-submit' => 'გასუფთავება',
 	'abusefilter-history-diff' => 'ცვლილებები',
 	'abusefilter-exception-unclosedstring' => 'დაუხურავი ხაზოვანი გამოსახულება, იწყება $1-ით.',
 	'abusefilter-exception-invalidoperator' => 'არასწორი ოპერატორი «$2» $1 პოზიციაში.',
@@ -14624,6 +14629,7 @@ $messages['ka'] = array(
 	'abusefilter-revert-confirm' => 'დადასტურება',
 	'abusefilter-revert-reasonfield' => 'გაუქმების მიზეზი:',
 	'abusefilter-test' => 'ფილტრის ტესტირება',
+	'abusefilter-test-legend' => 'ფილტრის შემოწმება',
 	'abusefilter-test-submit' => 'შემოწმება',
 	'abusefilter-test-load' => 'ატვირთვა',
 	'abusefilter-test-user' => 'მომხმარებლის ცვლილებები:',
@@ -25328,7 +25334,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-list-public' => 'Јавни опис',
 	'abusefilter-list-consequences' => 'Консеквенце',
 	'abusefilter-list-visibility' => 'Видљивост',
-	'abusefilter-list-edit' => 'Измени',
+	'abusefilter-list-edit' => 'Уреди',
 	'abusefilter-list-details' => 'Детаљи',
 	'abusefilter-hidden' => 'Приватно',
 	'abusefilter-unhidden' => 'Јавно',
