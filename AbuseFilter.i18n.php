@@ -15763,13 +15763,20 @@ Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilte
 	'abusefilter-import-submit' => 'Lohß Jonn!',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin)) */
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
 $messages['ku-latn'] = array(
 	'abusefilter-log-search-user' => 'Bikarhêner:',
 	'abusefilter-log-search-title' => 'Sernav:',
 	'abusefilter-log-search-submit' => 'Lêbigere',
+	'abusefilter-log-detailslink' => 'detayan',
 	'abusefilter-log-hide-reason' => 'Sedem',
+	'abusefilter-logentry-suppress' => '"[[$1]]" hid',
+	'abusefilter-list-status' => 'Rewş',
 	'abusefilter-list-edit' => 'Biguherîne',
+	'abusefilter-list-details' => 'Detayan',
+	'abusefilter-tools-modifiertest-submit' => 'Test',
 	'abusefilter-list-options-submit' => 'Rojanekirin',
 	'abusefilter-tools-reautoconfirm-user' => 'Bikarhêner:',
 );
