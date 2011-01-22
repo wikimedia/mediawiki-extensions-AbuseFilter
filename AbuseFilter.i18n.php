@@ -1943,7 +1943,7 @@ $messages['az'] = array(
 	'abusefilter-diff-item' => 'Element',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  * @author Comp1089
  * @author Haqmar
@@ -2372,7 +2372,7 @@ $messages['be'] = array(
 	'abusefilter-revert-confirm' => 'Пацвердзіць',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Cesco
  * @author EugeneZelenko
  * @author Jim-by
@@ -5664,7 +5664,7 @@ Kopiere den dort erscheinenden Code, füge ihn hier ein und klicke dann auf die 
 	'abusefilter-import-submit' => 'Daten importieren',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author ChrisiPK
  * @author Giftpflanze
  * @author Kghbln
@@ -9957,7 +9957,7 @@ $messages['fy'] = array(
 	'abusefilter-history-user' => 'Meidogger',
 );
 
-/** Traditional Gan script (贛語(繁體))
+/** Traditional Gan script (‪贛語(繁體)‬)
  * @author Symane
  */
 $messages['gan-hant'] = array(
@@ -20716,7 +20716,7 @@ $messages['pdt'] = array(
 	'abusefilter-history-user' => 'Brucker',
 );
 
-/** Pfälzisch (Pfälzisch)
+/** Pälzisch (Pälzisch)
  * @author Xqt
  */
 $messages['pfl'] = array(
@@ -22046,6 +22046,7 @@ Copie da caixa de texto que aparece, coloque nesta caixa de texto e depois cliqu
 /** Brazilian Portuguese (Português do Brasil)
  * @author Giro720
  * @author Hamilton Abreu
+ * @author Helder.wiki
  * @author Heldergeovane
  * @author Luckas Blade
  */
@@ -25665,7 +25666,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-import-submit' => 'Увези податке',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  * @author Михајло Анђелковић
@@ -30052,6 +30053,7 @@ Tó bá jẹ́ pé àsìṣe ló ṣẹlẹ̀, ẹ jọ̀wọ́ ẹ fi tó olùm
 /** Cantonese (粵語)
  * @author Horacewai2
  * @author Shinjiman
+ * @author Waihorace
  */
 $messages['yue'] = array(
 	'abusefilter-desc' => '應用自動行為到編輯',
@@ -30862,6 +30864,7 @@ $messages['zh-hans'] = array(
  * @author Mark85296341
  * @author Pbdragonwang
  * @author Skjackey tse
+ * @author Waihorace
  * @author Wong128hk
  * @author Wrightbus
  * @author Zanhsieh
@@ -31279,8 +31282,10 @@ $messages['zh-hk'] = array(
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)
  * @author Gzdavidwong
+ * @author Pbdragonwang
  */
 $messages['zh-tw'] = array(
+	'abuselog' => '過濾日誌',
 	'abusefilter-edit-builder-vars-addedlines' => '編輯增加了行數',
 	'abusefilter-edit-builder-vars-delta' => '編輯改變了大小',
 	'abusefilter-edit-builder-vars-diff' => '編輯造成了統一的變化',
