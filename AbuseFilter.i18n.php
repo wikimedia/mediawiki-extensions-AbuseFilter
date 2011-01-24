@@ -10247,8 +10247,8 @@ As etiquetas deberían ser curtas e non conter caracteres especiais.',
 	'abusefilter-edit-builder-vars-all-links' => 'Todas as ligazóns externas do novo texto',
 	'abusefilter-edit-builder-vars-added-links' => 'Todas as ligazóns externas engadidas na edición',
 	'abusefilter-edit-builder-vars-removed-links' => 'Todas as ligazóns externas eliminadas na edición',
-	'abusefilter-edit-builder-vars-old-text' => 'Wikitexto vello da páxina, antes da edición',
-	'abusefilter-edit-builder-vars-new-text' => 'Wikitexto novo da páxina, despois da edición',
+	'abusefilter-edit-builder-vars-old-text' => 'Texto wiki vello da páxina, antes da edición',
+	'abusefilter-edit-builder-vars-new-text' => 'Texto wiki novo da páxina, despois da edición',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Texto novo da páxina, sen ningunha marca',
 	'abusefilter-edit-builder-vars-new-html' => 'Fonte HTML transformada na nova revisión',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Nivel de protección de edición da páxina',
@@ -10360,7 +10360,7 @@ Pode obter unha explicación completa premendo no botón "Comprobar a sintaxe".'
 	'abusefilter-log-name' => 'Rexistro do filtro de abusos',
 	'abusefilter-log-header' => 'Este rexistro mostra un resumo dos cambios feitos aos filtros.
 Para obter máis detalles, vaia [[Special:AbuseFilter/history|á lista]] dos cambios feitos recentemente nos filtros.',
-	'abusefilter-log-entry-modify' => 'modificou $1 ($2)',
+	'abusefilter-log-entry-modify' => 'modificou "$1" ($2)',
 	'abusefilter-diff-title' => 'Diferenzas entre versións',
 	'abusefilter-diff-item' => 'Elemento',
 	'abusefilter-diff-version' => 'Versión de $1 feita por $2',
@@ -15357,14 +15357,14 @@ Unge es en Leß met de aanjlaate Felter, woh De eröm draan moodelle kanns.',
 	'abusefilter-mustbeeditor' => 'För sesher ze sen, künne nur Metmaacher di Sigg hee aanloore, di och Feltere aanlääje un ändere dörve.',
 	'abusefilter-warning' => "'''Opjepaß''': Mer han ene Automaat, dä hät dat, wat De jraad
 affjescheck häs, als wahscheinlesch Kappes odder Meßß ennjeshtoof.
-Beschtußte Änderunge wääde su odder su retuur jenumme.
+Beschtußte Änderunge wääde su odder su flöck retuur jenumme.
 Ußjemaate un besönders vill extra shtußßijje Änderunge sorrje doför,
 dat Dinge Zohjang hee jeshperrt weed: Dinge Name als Metmaacher, odder
-de IP-Addreß vun Dingem Kompjuter, odder alle beeds sen dann betroffe.
+de <i lang=\"en\">IP</i>-Addreß vun Dingem Kompjuter, odder alle beeds sen dann betroffe.
 Wann De ävver meins, dat Ding Änderung joot es — Automaate künne
 schliißlesch donevve lijje — dann donn räujesch noch ens op
 „{{int:savearticle}}“ klecke, öm dat ze beschtäätejje. Dann weet se aanjenumme.
-Däm Automat sing Rääjel koot explezeet, di do jegreffe hät: $1",
+Däm Automat sing Rääjel koot explezeet, di do jejreffe hät: \$1",
 	'abusefilter-disallowed' => 'Unser Automaat för et Prööfe hät dat, wat De jraad affjescheck häs, als verbodde ennjeshtoof. Wann De ävver meins, dat Ding Änderung joot es —
 Automaate künne ens donevve lijje — dann donn dat enem Wiki-Köbes
 verzälle, un schriif och op, wat De donn wollts.
@@ -15794,12 +15794,15 @@ $messages['ku-latn'] = array(
 	'abusefilter-tools-modifiertest-submit' => 'Test',
 	'abusefilter-list-options-deleted-only' => 'Tenê fîltreyên jêbûyî nîşan bide',
 	'abusefilter-list-options-submit' => 'Rojanekirin',
+	'abusefilter-tools-subtitle' => 'Amûran',
 	'abusefilter-tools-reautoconfirm-user' => 'Bikarhêner:',
+	'abusefilter-edit-new' => 'Fîltreya nû',
 	'abusefilter-edit-history' => 'Dîrok:',
 	'abusefilter-edit-builder-op-bool-not' => 'Na (!)',
 	'abusefilter-edit-builder-op-bool-and' => ' Û (&)',
 	'abusefilter-history-timestamp' => 'Dem',
 	'abusefilter-history-user' => 'Bikarhêner',
+	'abusefilter-history-select-user' => 'Bikarhêner:',
 	'abusefilter-revert-filter' => 'Fîltre:',
 	'abusefilter-test-submit' => 'Test',
 	'abusefilter-examine-user' => 'Bikarhêner:',
