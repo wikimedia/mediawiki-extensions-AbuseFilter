@@ -554,6 +554,7 @@ Parameters:
 	'abusefilter-management' => 'Title of [[Special:AbuseFilter]]',
 	'abusefilter-list-id' => '{{Identical|Filter ID}}',
 	'abusefilter-list-status' => '{{Identical|Status}}',
+	'abusefilter-list-visibility' => '{{Identical|Visibility}}',
 	'abusefilter-list-edit' => 'Probably the verb "to edit" (instead of the noun "an edit").
 
 {{Identical|Edit}}',
@@ -704,6 +705,31 @@ $messages['rtm'] = array(
  */
 $messages['niu'] = array(
 	'abusefilter-log-search-submit' => 'Kumi',
+);
+
+/** Dusun Bundu-liwan (Dusun Bundu-liwan)
+ * @author FRANCIS5091
+ */
+$messages['dtp'] = array(
+	'abusefilter-desc' => 'Pokianu huristik mimpoporion hilo niditan',
+	'abusefilter' => 'Manahas sinalaguno nuludan',
+	'abuselog' => 'Log sinalaguno',
+	'abusefilter-intro' => 'Kopiwosian mongoi id kouroso mangaraja Manahas Sinalaguno.
+Manahas Sinalaguno nopo nga doungkaralano kumaraja  dit posusuangon momoripori iri numaan pokionuo id huristik mimpoporion montok oinsanan it maan.
+Kouroso diti popokito do lis panahas potumboyo, om pabanar dilo do maan modipaito.',
+	'abusefilter-mustbeeditor' => 'Montok do kotingoligan, iri mongongoguno miampai kasagaan do mongodipait panahas sinalaguno no milo do momoguno diti kouroso.',
+	'abusefilter-warning' => "'''Ponorohon''': Kinaraja diti noporianan nointutunan do kikoligogon.
+Niditan di awu nopongo maan pogulio do tiinu,
+om opinsugutan nu nopo do awu momongo niditan nga karaag do akaun nu toi ko maan antabai porotokol intonit ''IP''nu.
+Otumbayaan ko nopo do nopongo iti niditannu, maai nopo kaagu kotiko Pootodo do papatatap dilo.
+Kointalangan do sinalaguno diti kooturan di kohompit do niditannu nopo nga oboyo do: $1",
+	'abusefilter-disallowed' => 'Kinaraja diti noporianan nointutunan do kikoligogon, om ilo no do awu pasagaon.
+Niditan di awu nopongo maan pogulio do tiinu,
+Otumbayaan ko nopo do nopongo iti niditannu, maai gia sunudai it mintatamong  do nunu daa umbalan nu momonsoi. Kointalangan do sinalaguno diti kooturan di kohompit do kinarajanu nopo nga oboyo do: $1',
+	'abusefilter-blocked-display' => "Kinaraja diti noporianan nointutunan do kikoligogon, om nantaban ko do popotilombus dilo.
+Mooi do otingolig ilo {{SITENAME}} akaun momomogunonu om oinsanan porotokol intonit toi ''IP''nu nga nantaban do mongidit.
+Nung nokosilap iti, maai posunudo do mintatamong.
+Kointalangan do sinalaguno diti kooturan di kohompit do kinarajanu nopo nga oboyo do: $1",
 );
 
 /** Afrikaans (Afrikaans)
@@ -25636,7 +25662,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-revert-search' => 'Изабери акције',
 	'abusefilter-revert-filter' => 'Филтер:',
 	'abusefilter-revert-confirm' => 'Потврди',
-	'abusefilter-revert-reasonfield' => 'Разлог за реверт:',
+	'abusefilter-revert-reasonfield' => 'Разлог:',
 	'abusefilter-test' => 'Тестирај филтер на претходне измене',
 	'abusefilter-test-legend' => 'Тестирање филтера',
 	'abusefilter-test-load-filter' => 'Учитај ID филтера:',
