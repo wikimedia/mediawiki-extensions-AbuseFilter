@@ -25693,7 +25693,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-log-entry-modify' => 'изменио $1 ($2)',
 	'abusefilter-diff-title' => 'Разлике између издања',
 	'abusefilter-diff-version' => 'Верзија из $1, од $2',
-	'abusefilter-diff-info' => 'Основне инфомације',
+	'abusefilter-diff-info' => 'Основни подаци',
 	'abusefilter-diff-backhistory' => 'Повратак на историју филтера',
 	'abusefilter-import-submit' => 'Увези податке',
 );
