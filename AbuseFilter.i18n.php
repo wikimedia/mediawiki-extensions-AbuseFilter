@@ -1958,9 +1958,11 @@ $messages['as'] = array(
 );
 
 /** Azerbaijani (Azərbaycanca)
+ * @author PPerviz
  * @author Sortilegus
  */
 $messages['az'] = array(
+	'abusefilter-log-search-submit' => 'Axtar',
 	'abusefilter-action-warn' => 'Xəbərdarlıq',
 	'abusefilter-examine-user' => 'İstifadəçi:',
 	'abusefilter-examine-title' => 'Səhifə başlığı:',
