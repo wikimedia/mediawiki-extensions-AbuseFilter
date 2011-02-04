@@ -21658,7 +21658,7 @@ Ch'a còpia la casela ëd test ch'a compariss, e ch'a l'ancòla an costa casela 
 $messages['ps'] = array(
 	'abusefilter-warning' => "'''ګواښنه''': همدا کړنه په اتوماتيک ډول زيانمنه وپېژندل شوه.
 نارغوونکې سمونې به ډېر ژر پر شا خپلې پخوانۍ بڼې ته واړول شي، 
-او ورانکاري او په بيا بيا د نارغوونکې سمونې په ترسره کولو سره به ستاسې په کارن-حساب او يا هم IP پتې باندې بنديزونه ولګېږي.
+او ورانکاري او په بيا بيا د نارغوونکې سمونې په ترسره کولو سره به ستاسې په ګڼون او يا هم IP پتې باندې بنديزونه ولګېږي.
 که چېرته تاسې په دې ډاډه ياست چې همدا يو رغوونکی سمون دی، نو تاسې کولای شی چې پر «سپارل» وټوکۍ ترڅو ستاسې د کړنې پخلی وشي.
 د ناوړو کړنو د کړنلارې يوه لنډه څرګندونه چې ستاسې د کړنې همډوله وه، په دې توګه ده: $1",
 	'abusefilter-log-search-user' => 'کارن:',
@@ -21696,8 +21696,8 @@ $messages['ps'] = array(
 	'abusefilter-edit-builder-vars-article-id' => 'د مخ پېژند',
 	'abusefilter-edit-builder-vars-article-ns' => 'د مخ نوم-تشيال',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'د مخ بشپړ سرليک',
-	'abusefilter-edit-builder-vars-user-age' => 'د کارن-حساب عمر',
-	'abusefilter-edit-builder-vars-user-name' => 'د کارن-حساب نوم',
+	'abusefilter-edit-builder-vars-user-age' => 'د ګڼون عمر',
+	'abusefilter-edit-builder-vars-user-name' => 'د ګڼون نوم',
 	'abusefilter-history-hidden' => 'پټ',
 	'abusefilter-history-enabled' => 'چارن',
 	'abusefilter-history-global' => 'نړېوال',
@@ -22641,10 +22641,10 @@ Descrierea regulii: $1',
 	'abusefilter-log-search-title' => 'Titlu:',
 	'abusefilter-log-show-deleted' => 'Afișează intrările ascunse',
 	'abusefilter-log-search-submit' => 'Caută',
-	'abusefilter-log-entry' => '$1: $2 a declanșat un filtru abuz, executând acțiunea "$3" asupra $4.
+	'abusefilter-log-entry' => '$1: $2 a declanșat un filtru de abuz, executând acțiunea „$3” asupra paginii $4.
 Măsura luată: $5;
 Descrierea filtrului: $6',
-	'abusefilter-log-detailedentry-meta' => '$1: $2 a desclanșat $3, executând acțiunea "$4" asupra $5.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 a declanșat $3, executând acțiunea „$4” asupra paginii $5.
 Măsura luată: $6;
 Descrierea filtrului: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'filtru global $1',
