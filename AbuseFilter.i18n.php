@@ -25570,6 +25570,7 @@ Nato skopirajte besedilo v prikazanem polju, prilepite ga v to polje in kliknite
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -25620,7 +25621,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-edit-warn-actions' => 'Радње:',
 	'abusefilter-edit-main' => 'Параметри филтера',
 	'abusefilter-edit-done-subtitle' => 'Филтер измењен',
-	'abusefilter-edit-history' => 'Историјат:',
+	'abusefilter-edit-history' => 'Историја:',
 	'abusefilter-edit-check' => 'Провери ситаксу',
 	'abusefilter-edit-tools' => 'Алати:',
 	'abusefilter-edit-builder-select' => 'Изаберите опцију коју ћете додати курсору',
