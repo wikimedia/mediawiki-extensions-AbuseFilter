@@ -19118,16 +19118,45 @@ $messages['nds-nl'] = array(
  */
 $messages['ne'] = array(
 	'abusefilter-desc' => 'स्वचालित अनुमानित सम्पादनहरुकोनिम्ति लागु हुन्छ',
+	'abusefilter' => 'दुर्व्यवहार फिल्टर विन्यास',
+	'abuselog' => 'दुर्व्यवहार लग',
+	'abusefilter-intro' => 'दुर्व्यवहार फ़िल्टर प्रबन्धन अंतरफलकमा स्वागत छ।
+दुर्व्यवहार फ़िल्टर सबै कार्यमा स्वचालित heuristics (खोज)को लागि  प्रयोग गरिने एउटा स्वचालित सफ्टवेयर प्रणाली हो।
+यस अंतरफलकले परिभाषित फिल्टरको एउटा सूची प्रदर्शित गर्छ, र परिवर्तन गर्ने अनुमति दिन्छ।',
+	'abusefilter-mustbeeditor' => 'सुरक्षा कारणहरुले गर्दा, दुर्व्यवहार फिल्टर परिवर्तन गर्ने अधिकार प्राप्त प्रयोगकर्ताहरुले मात्र यस अन्तरमोहोड़ाको प्रयोग गर्न सक्नेछन्।',
+	'abusefilter-warning' => "'''चेतावनी:''' यो कार्य हानिकारक भनेर स्वतः चिनियो।
+ध्वंसात्मक सम्पादन शीघ्र उल्टाइनेछ,
+र जबरजस्ती अथवा ध्वंसात्मक सम्पादन दोहोराएको परिणाम स्वरुप तपाईंको खाता अथवा IP ठेगानामा प्रतिबन्ध लगाइनेछ।
+यदि तपाईं आफ्नो सम्पादन रचनात्मक भएकोमा विश्वस्त हुनुहुन्छ भनें पुनः '''संग्रह गर्नुहोस्'''मा क्लिक गरेर सुनिश्चित गर्नुहोस्।
+दुर्व्यहार नीति जसमा तपाईंको कार्यसित मेल खाइरहेछ, यसको एउटा संक्षिप्त विवरण यस प्रकार छ: $1",
+	'abusefilter-disallowed' => 'यो कार्य हानिकारक भनेर स्वतः चिनियो, अनि यसकारण अनुमति छैन।
+यदि तपाईं आफ्नो सम्पादन रचनात्मक भएकोमा विश्वस्त हुनुहुन्छ भनें कृपया तपाईंले के गर्ने प्रयास गर्नु हुँदै थियो यो कुरा कुनै एक जना प्रबन्धकलाई जनाउनुहोस् ।
+दुर्व्यहार नीति जसमा तपाईंको कार्यसित मेल खाइरहेछ, यसको एउटा संक्षिप्त विवरण यस प्रकार छ: $1',
+	'abusefilter-log-search-user' => 'प्रयोगकर्ता:',
+	'abusefilter-log-search-submit' => 'खोज्नुहोस्',
+	'abusefilter-log-detailedentry-local' => '$1 फिल्टर गर्ने',
+	'abusefilter-log-detailslink' => 'विवरण',
+	'abusefilter-log-hidden' => '(प्रविष्टि लुकाइएको)',
 	'abusefilter-list-status' => 'स्थिति',
 	'abusefilter-list-consequences' => 'परिणाम',
+	'abusefilter-hidden' => 'निजी',
 	'abusefilter-unhidden' => 'सार्वजनिक',
 	'abusefilter-deleted' => 'मेटियो',
 	'abusefilter-disabled' => 'निरस्त',
 	'abusefilter-tools-modifiertest-submit' => 'जाँच',
 	'abusefilter-status-global' => 'वैश्विक',
 	'abusefilter-list-options' => 'विकल्पहरु',
+	'abusefilter-list-options-deleted' => 'मेटाइएका फिल्टहरु:',
+	'abusefilter-list-options-deleted-only' => 'मेटाइएका फिल्टहरु मात्र देखाउनुहोस्',
+	'abusefilter-list-options-deleted-hide' => 'मेटाइएका फिल्टहरु लुकाउनुहोस्',
+	'abusefilter-list-options-deleted-show' => 'मेटाइएका फिल्टहरु संलग्न गर्नुहोस्',
 	'abusefilter-list-options-submit' => 'अद्यतन',
 	'abusefilter-tools-subtitle' => 'औजारहरु',
+	'abusefilter-edit-status' => 'विगत $1 {{PLURAL:$1|को कार्य|का कार्यहरु}}सित, $2 ($3%) मेल खान्छ।
+औसतमा, यसको संचालन $4ms समय छ र यसले शर्त सीमाको $5 {{PLURAL:$5|शर्त|शर्तहरु}} खपत गर्छ।',
+	'abusefilter-edit-description' => "विवरण:
+:''(सार्वजनिक रुपमा देखिने)''",
+	'abusefilter-edit-flags' => 'पताकाहरु:',
 	'abusefilter-edit-rules' => 'शर्तहरु:',
 	'abusefilter-edit-notes' => "टिप्पणी:
 :''(निजि)''",
