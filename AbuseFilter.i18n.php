@@ -15772,7 +15772,7 @@ Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilte
 	'abusefilter-examine-diff' => 'Dä <i lang="en">URL</i> för die Versione ze verjliesche:',
 	'abusefilter-examine-user' => 'Metmaacher:',
 	'abusefilter-examine-title' => 'Siggetittel:',
-	'abusefilter-examine-submit' => 'Söke!',
+	'abusefilter-examine-submit' => 'Söhke!',
 	'abusefilter-examine-vars' => 'Dem Felter sing Date för di Änderung',
 	'abusefilter-examine-test' => 'Donn di Änderung hee jäje ene Felter pröfe',
 	'abusefilter-examine-test-button' => 'Dä Felter ußprobeere!',
