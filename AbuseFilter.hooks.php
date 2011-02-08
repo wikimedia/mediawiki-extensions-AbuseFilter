@@ -155,7 +155,7 @@ class AbuseFilterHooks {
 			array( 'abuse_filter' => array( 'INNER JOIN', 'afa_filter=af_id' ) )
 		);
 
-		foreach ( $res as $row ) {
+		while ( $row = $res->fetchObject() ) {
 			$emptyTags = array_filter(
 				array_merge( explode( "\n", $row->afa_parameters ), $emptyTags )
 			);

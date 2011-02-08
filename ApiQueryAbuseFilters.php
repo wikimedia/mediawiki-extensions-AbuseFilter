@@ -97,7 +97,7 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 		$showhidden = $wgUser->isAllowed( 'abusefilter-modify' );
 
 		$count = 0;
-		foreach ( $res as $row ) {
+		while ( $row = $res->fetchObject() ) {
 			if ( ++$count > $params['limit'] ) {
 				// We've had enough
 				$this->setContinueEnumParameter( 'startid', $row->af_id );

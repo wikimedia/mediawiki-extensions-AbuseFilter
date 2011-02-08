@@ -330,7 +330,7 @@ class AFComputedVariable {
 				);
 
 				$users = array();
-				foreach ( $res as $user ) {
+				while ( $user = $dbr->fetchRow( $res ) ) {
 					$users[] = $user[0];
 				}
 				$result = $users;
