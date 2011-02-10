@@ -1219,7 +1219,6 @@ class AbuseFilter {
 
 		// Figure out if we've triggered overflows and blocks.
 		$overflow_triggered = ( self::$condCount > $wgAbuseFilterConditionLimit );
-		$filter_triggered = count( $blocking_filters ) > 0;
 
 		// Store some keys...
 		$overflow_key = self::filterLimitReachedKey();
@@ -1589,9 +1588,13 @@ class AbuseFilter {
 		return $vars;
 	}
 
+	/**
+	 * @static
+	 * @param  $title Title
+	 * @return AbuseFilterVariableHolder
+	 */
 	public static function getEditVars( $title ) {
 		$vars = new AbuseFilterVariableHolder;
-		$article = new Article( $title );
 
 		$vars->setLazyLoadVar( 'edit_diff', 'diff',
 			array( 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_wikitext' ) );

@@ -152,7 +152,7 @@ function afShowExport() {
 addOnloadHook( function() {
 	addHandler( document.getElementById( wgFilterBoxName ), 'keyup', function() {
 		el = document.getElementById( 'mw-abusefilter-syntaxresult' );
-		if ( el.syntaxOk == true ) {
+		if ( el.syntaxOk ) {
 			el.style.display = 'none';
 		}
 	} );

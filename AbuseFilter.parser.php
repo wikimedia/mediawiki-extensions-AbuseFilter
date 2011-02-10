@@ -207,7 +207,7 @@ class AFPData {
 
 	public static function keywordRegex( $str, $regex, $pos, $insensitive = false ) {
 		$str = $str->toString();
-		$pattern = $regex = $regex->toString();
+		$pattern = $regex->toString();
 
 		$pattern = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $pattern );
 		$pattern = "/$pattern/u";
@@ -1279,7 +1279,6 @@ class AbuseFilterParser {
 		if ( preg_match( $radixRegex, $code, $matches, 0, $offset ) ) {
 			$input = $matches[1];
 			$baseChar = @$matches[2];
-			$num = null;
 			// Sometimes the base char gets mixed in with the rest of it because
 			// the regex targets hex, too.
 			// This mostly happens with binary
@@ -1378,7 +1377,7 @@ class AbuseFilterParser {
 		$s = $args[0]->toString();
 
 		$s = preg_replace( '/[\d\W]+/', '', $s );
-		$s = strtolower( $value );
+		$s = strtolower( $s );
 		return new AFPData( AFPData::DString, $s );
 	}
 
@@ -1442,20 +1441,16 @@ class AbuseFilterParser {
 			);
 		}
 
-		$offset = -1;
-
 		if ( count( $args ) == 1 ) {
 			$count = count( explode( ',', $args[0]->toString() ) );
 		} else {
-			$needle = $regex = $args[0]->toString();
+			$needle = $args[0]->toString();
 			$haystack = $args[1]->toString();
-			$pos = $this->mCur->pos;
 
 			# Munge the regex
 			$needle = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $needle );
 			$needle = "/$needle/u";
 
-			$count = 0;
 			$matches = array();
 
 			try {
@@ -1554,7 +1549,6 @@ class AbuseFilterParser {
 	}
 
 	protected function rmspecials( $s ) {
-		$orig = $s;
 		$s = preg_replace( '/[^\p{L}\p{N}]/u', '', $s );
 
 		return $s;

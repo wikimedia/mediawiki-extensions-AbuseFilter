@@ -65,9 +65,8 @@ li.mw-abusefilter-changeslist-nomatch {
 #mw-abusefilter-syntaxresult,
 li.mw-abusefilter-changeslist-nomatch,
 li.mw-abusefilter-changeslist-match {
-	background-repeat: no-repeat;
+	background: no-repeat left center;
 	padding-left: 25px;
-	background-position: left center;
 }
 
 .mw-abusefilter-navigation {
