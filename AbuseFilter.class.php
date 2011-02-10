@@ -167,6 +167,11 @@ class AbuseFilter {
 		$out->addHTML( $linkStr );
 	}
 
+	/**
+	 * @static
+	 * @param  $user User
+	 * @return AbuseFilterVariableHolder
+	 */
 	public static function generateUserVars( $user ) {
 		$vars = new AbuseFilterVariableHolder;
 
@@ -279,6 +284,12 @@ class AbuseFilter {
 		self::$condLimitEnabled = false;
 	}
 
+	/**
+	 * @static
+	 * @param  $title Title
+	 * @param  $prefix
+	 * @return AbuseFilterVariableHolder
+	 */
 	public static function generateTitleVars( $title, $prefix ) {
 		$vars = new AbuseFilterVariableHolder;
 
@@ -1214,8 +1225,6 @@ class AbuseFilter {
 		global $wgAbuseFilterConditionLimit, $wgMemc;
 
 		wfProfileIn( __METHOD__ );
-
-		$blocking_filters = array_keys( array_filter( $filters ) );
 
 		// Figure out if we've triggered overflows and blocks.
 		$overflow_triggered = ( self::$condCount > $wgAbuseFilterConditionLimit );

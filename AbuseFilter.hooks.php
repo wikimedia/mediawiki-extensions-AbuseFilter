@@ -164,6 +164,11 @@ class AbuseFilterHooks {
 		return true;
 	}
 
+	/**
+	 * @static
+	 * @param $updater DatabaseUpdater
+	 * @return bool
+	 */
 	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
 		$dir = dirname( __FILE__ );
 

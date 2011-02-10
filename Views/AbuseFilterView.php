@@ -8,6 +8,10 @@ abstract class AbuseFilterView {
 		$this->mParams = $params;
 	}
 
+	/**
+	 * @param string $subpage
+	 * @return Title
+	 */
 	function getTitle( $subpage = '' ) {
 		return $this->mPage->getTitle( $subpage );
 	}

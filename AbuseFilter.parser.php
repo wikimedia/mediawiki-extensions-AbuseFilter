@@ -592,7 +592,7 @@ class AbuseFilterParser {
 				if ( !$this->mVars->varIsSet( $varname ) ) {
 					throw new AFPUserVisibleException( 'unrecognisedvar',
 						$this->mCur->pos,
-						array( $var )
+						array( $varname )
 					);
 				}
 				$list = $this->mVars->getVar( $varname );

@@ -52,7 +52,8 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 		$pager = new AbuseFilterPager( $this, $conds );
 
-		extract( $optarray );
+		$deleted = $optarray['deleted'];
+		$hidedisabled = $optarray['hidedisabled'];
 
 		# Options form
 		$fields = array();
