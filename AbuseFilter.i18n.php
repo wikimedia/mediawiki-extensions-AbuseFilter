@@ -21794,9 +21794,9 @@ Uma breve descrição da regra de abuso com a qual a sua acção coincidiu é: $
 Em consequência, foi bloqueada, e, já que se suspeita que a sua conta esteja comprometida, todas as permissões foram removidas.
 Se crê que esta acção é incorrecta, por favor contacte um burocrata indicando uma justificação para a operação, e as suas permissões poderão ser repostas.
 Uma breve descrição da regra de abuso com a qual a sua acção coincidiu é: $1',
-	'abusefilter-autopromote-blocked' => 'Esta operação foi identificada automaticamente como prejudicial, e foi bloqueada.
-Além disso, como medida de segurança, alguns privilégios automaticamente concedidos a contas estabelecidas, foram temporariamente removidos da sua conta.
-Uma breve descrição da regra de abuso com a qual a sua acção coincidiu é: $1',
+	'abusefilter-autopromote-blocked' => 'Esta ação foi identificada automaticamente como prejudicial, e foi bloqueada.
+Além disso, como medida de segurança, alguns privilégios automaticamente concedidos a contas estabelecidas foram temporariamente removidos da sua conta.
+Segue-se uma breve descrição da regra de prevenção de abuso com a qual a sua ação coincidiu: $1',
 	'abusefilter-blocker' => 'Filtro de abusos',
 	'abusefilter-blockreason' => 'Automaticamente bloqueado pelo filtro de abusos.
 Descrição da regra correspondida: $1',
