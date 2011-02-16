@@ -22757,8 +22757,8 @@ Statisticile citate sunt pentru cea mai recentă versiune a filtrului.
 Dacă salvați modificările dumneavoastră, veți suprascrie toate modificările efectuate după versiunea pe care o editați.</strong> &bull;
 [[Special:AbuseFilter/history/$2|Înapoi la istoricul acestui filtru]].',
 	'abusefilter-edit-status-label' => 'Statistici:',
-	'abusefilter-edit-status' => 'Din {{PLURAL:$1|ultima acțiune|ultimele $1 (de) acțiuni}}, acest filtru a găsit $2 ($3%).
-În medie, timpul său de rulare este de $4ms și consumă $5 {{PLURAL:$5|condiție|(de) condiții}} ale limitei de condiții.',
+	'abusefilter-edit-status' => 'Din {{PLURAL:$1|ultima acțiune|ultimele $1 acțiuni| ultimele $1 de acțiuni}}, acest filtru a găsit $2 ($3%).
+În medie, timpul său de rulare este de $4 ms și consumă $5 {{PLURAL:$5|condiție|condiții|de condiții}} ale limitei de condiții.',
 	'abusefilter-edit-throttled' => "'''Atenție''': Acest filtru a fost dezactivat automat ca o măsură de siguranță. A atins limita de potrivire la mai mult de $1% din acțiuni.",
 	'abusefilter-edit-new' => 'Filtru nou',
 	'abusefilter-edit-save' => 'Salvează filtru',
@@ -25785,7 +25785,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-examine-legend' => 'Изабери измене',
 	'abusefilter-examine-diff' => 'URL дифа:',
 	'abusefilter-examine-user' => 'Корисник:',
-	'abusefilter-examine-title' => 'Наслов стране:',
+	'abusefilter-examine-title' => 'Наслов странице:',
 	'abusefilter-examine-submit' => 'Претрага',
 	'abusefilter-examine-test' => 'Тестирај ову измену на филтер',
 	'abusefilter-examine-test-button' => 'Тестирај филтер',
