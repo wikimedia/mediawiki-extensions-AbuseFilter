@@ -18717,6 +18717,7 @@ $messages['myv'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Teòtlalili
  */
 $messages['nah'] = array(
 	'abusefilter-log-search-user' => 'Tlatequitiltilīlli:',
@@ -18724,6 +18725,7 @@ $messages['nah'] = array(
 	'abusefilter-log-search-submit' => 'Tlatēmōz',
 	'abusefilter-log-noactions' => 'ahtlein',
 	'abusefilter-list-edit' => 'Ticpatlāz',
+	'abusefilter-tools-subtitle' => 'Tekitiâtìn',
 	'abusefilter-edit-throttle-period' => 'Cāhuitl:',
 );
 
