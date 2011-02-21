@@ -3185,6 +3185,7 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Ehsanulhb
  * @author Samritmaity
  */
 $messages['bn'] = array(
@@ -3213,7 +3214,7 @@ $messages['bn'] = array(
 	'abusefilter-hidden' => 'ব্যক্তিগত',
 	'abusefilter-unhidden' => 'সর্বসাধারণের',
 	'abusefilter-enabled' => 'সক্রিয়',
-	'abusefilter-deleted' => 'মুছে ফেলা হয়েছে',
+	'abusefilter-deleted' => 'অপসারণ',
 	'abusefilter-disabled' => 'নিস্ক্রিয়',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|হিট|হিটসমূহ}}',
 	'abusefilter-links' => 'কার্যকর লিঙ্ক:',
@@ -3245,7 +3246,7 @@ $messages['bn'] = array(
 	'abusefilter-history-diff' => 'পরিবর্তনসমূহ',
 	'abusefilter-action-tag' => 'ট্যাগ',
 	'abusefilter-action-block' => 'বাধা দান',
-	'abusefilter-revert-confirm' => 'নিশ্চিত',
+	'abusefilter-revert-confirm' => 'নিশ্চিত করুন',
 	'abusefilter-test-submit' => 'পরীক্ষণ',
 	'abusefilter-test-load' => 'লোড',
 	'abusefilter-examine-user' => 'ব্যবহারকারী:',
@@ -15581,8 +15582,8 @@ Dä hät sing Jrenß övverschredde, un bei mieh wie $1% vun alle Oproofe jejref
 	'abusefilter-edit-warn-other-label' => 'Dä Sigge-Tittel för de ander Nohreesch:
 :(oohne <code>MediaWiki:</code> doför)',
 	'abusefilter-edit-warn-actions' => 'Akßjuhne:',
-	'abusefilter-edit-warn-preview' => 'De ußjesoohte Nohresch ier Vör-Ansich zeije',
-	'abusefilter-edit-warn-edit' => 'De ußjesohte Nohresch aanlääje udder ändere',
+	'abusefilter-edit-warn-preview' => 'De ußjesoohte Nohreesch ier Vör-Ansich zeije',
+	'abusefilter-edit-warn-edit' => 'De ußjesohte Nohreesch aanlääje udder ändere',
 	'abusefilter-edit-tag-tag' => 'De Makeerunge för aan de Änderung ze pappe, jeede schön extra, en en Reih för sesch jeschrevve:',
 	'abusefilter-edit-denied' => 'Do kanns nit all de Einzelheite vun däm Fellter beloore, weil se för de Öffentleschkeit vershtoche sen.',
 	'abusefilter-edit-main' => 'Parrameetere för dä Felter',
@@ -15829,10 +15830,12 @@ $messages['ku-latn'] = array(
 	'abusefilter-list-details' => 'Detayan',
 	'abusefilter-new' => 'Fîltreka nû çêke',
 	'abusefilter-tools-modifiertest-submit' => 'Test',
+	'abusefilter-list-options-deleted' => 'Fîltreyên hatine jêbirirn:',
 	'abusefilter-list-options-deleted-only' => 'Tenê fîltreyên jêbûyî nîşan bide',
 	'abusefilter-list-options-submit' => 'Rojanekirin',
 	'abusefilter-tools-subtitle' => 'Amûran',
 	'abusefilter-tools-reautoconfirm-user' => 'Bikarhêner:',
+	'abusefilter-edit-status-label' => 'Statîstîk:',
 	'abusefilter-edit-new' => 'Fîltreya nû',
 	'abusefilter-edit-history' => 'Dîrok:',
 	'abusefilter-edit-builder-op-bool-not' => 'Na (!)',
