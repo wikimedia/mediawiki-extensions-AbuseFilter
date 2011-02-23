@@ -6970,6 +6970,7 @@ $3 {{PLURAL:$3|αναμενόμενο κατηγορούμενο|αναμενό�
 );
 
 /** Esperanto (Esperanto)
+ * @author AVRS
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -7130,13 +7131,13 @@ Averaĝe, ĝia plenumtempo estas $4ms, kaj ĝi konsumas $5 {{PLURAL:$5|kondiĉon
 	'abusefilter-edit-lastmod-text' => '$1 de $2',
 	'abusefilter-edit-hitcount' => 'Filtrilaj trafoj:',
 	'abusefilter-edit-consequences' => 'Agoj farotaj kiam kongrua',
-	'abusefilter-edit-action-warn' => 'Sproni ĉi tiun agojn post avertante uzanton',
+	'abusefilter-edit-action-warn' => 'Plenumi ĉi tiun agojn post averti la uzanton',
 	'abusefilter-edit-action-disallow' => 'Preventi la uzanton fari tian agon',
 	'abusefilter-edit-action-flag' => 'Indiki ĉi tiun redakton en la protokolo pri misuzado',
 	'abusefilter-edit-action-blockautopromote' => 'Maldoni la aŭtomate konfirmitan statuson de uzanto',
 	'abusefilter-edit-action-degroup' => 'Forigi la uzanton de ĉiuj rajtitaj grupoj',
 	'abusefilter-edit-action-block' => 'Forbari la uzanton kaj/aŭ IP-adreson de redaktado',
-	'abusefilter-edit-action-throttle' => 'Sproni agojn nur se la uzanto atingas rapidlimon',
+	'abusefilter-edit-action-throttle' => 'Plenumi agojn nur se la uzanto atingas rapidlimon',
 	'abusefilter-edit-action-rangeblock' => 'Forbari la /16 intervalon kie la uzanto originas',
 	'abusefilter-edit-action-tag' => 'Flagi la redakton por plua kontrolado',
 	'abusefilter-edit-throttle-count' => 'Nombro de agoj por permisigi',
