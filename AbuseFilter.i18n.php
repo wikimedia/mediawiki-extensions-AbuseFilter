@@ -19145,6 +19145,12 @@ $messages['ne'] = array(
 	'abusefilter-disallowed' => 'यो कार्य हानिकारक भनेर स्वतः चिनियो, अनि यसकारण अनुमति छैन।
 यदि तपाईं आफ्नो सम्पादन रचनात्मक भएकोमा विश्वस्त हुनुहुन्छ भनें कृपया तपाईंले के गर्ने प्रयास गर्नु हुँदै थियो यो कुरा कुनै एक जना प्रबन्धकलाई जनाउनुहोस् ।
 दुर्व्यहार नीति जसमा तपाईंको कार्यसित मेल खाइरहेछ, यसको एउटा संक्षिप्त विवरण यस प्रकार छ: $1',
+	'abusefilter-blocked-display' => 'यो कार्य घातक भनेर स्वतः चिनियो,
+र तपाईंलाई यसको क्रियान्वयनमा रोक लगाइएकोछ।
+अनि {{SITENAME}}को सुरक्षाको निम्ति तपाईंको प्रयोगकर्ता खाता अनि सबै सम्बन्धित आई पी ठेगानाहरुमाथि पनि सम्पादन गर्न रोक 
+लगाइएकोछ।
+यदि यो गल्तीले भएको भए कृपया प्रबन्धकसित सम्पर्क गर्नुहोला।
+यस गलत कार्य नीतिसित तपाईंको कार्यले मेल खाँदैछ, एउटा संक्षिप्त विवरण यस प्रकार छ :$1',
 	'abusefilter-log-search-user' => 'प्रयोगकर्ता:',
 	'abusefilter-log-search-submit' => 'खोज्नुहोस्',
 	'abusefilter-log-detailedentry-local' => '$1 फिल्टर गर्ने',
@@ -19152,10 +19158,12 @@ $messages['ne'] = array(
 	'abusefilter-log-hidden' => '(प्रविष्टि लुकाइएको)',
 	'abusefilter-list-status' => 'स्थिति',
 	'abusefilter-list-consequences' => 'परिणाम',
+	'abusefilter-list-edit' => 'सम्पादन',
 	'abusefilter-hidden' => 'निजी',
 	'abusefilter-unhidden' => 'सार्वजनिक',
 	'abusefilter-deleted' => 'मेटियो',
 	'abusefilter-disabled' => 'निरस्त',
+	'abusefilter-hitcount' => '$1 {{PLURAL:$1|हिट|हिटहरु}}',
 	'abusefilter-tools-modifiertest-submit' => 'जाँच',
 	'abusefilter-status-global' => 'वैश्विक',
 	'abusefilter-list-options' => 'विकल्पहरु',
@@ -19165,6 +19173,10 @@ $messages['ne'] = array(
 	'abusefilter-list-options-deleted-show' => 'मेटाइएका फिल्टहरु संलग्न गर्नुहोस्',
 	'abusefilter-list-options-submit' => 'अद्यतन',
 	'abusefilter-tools-subtitle' => 'औजारहरु',
+	'abusefilter-tools-submitexpr' => 'जाँच गर्ने',
+	'abusefilter-tools-reautoconfirm-user' => 'प्रयोगकर्ता:',
+	'abusefilter-tools-reautoconfirm-submit' => 'पुनः स्वतः निश्चय गर्ने',
+	'abusefilter-reautoconfirm-none' => 'ती {{GENDER:$1|प्रयोगकर्ता|प्रयोगकर्ता|प्रयोगकर्ताहरु}}को स्वतः निश्चय स्थिति निलम्बन गरिएको थिएन।',
 	'abusefilter-edit-status' => 'विगत $1 {{PLURAL:$1|को कार्य|का कार्यहरु}}सित, $2 ($3%) मेल खान्छ।
 औसतमा, यसको संचालन $4ms समय छ र यसले शर्त सीमाको $5 {{PLURAL:$5|शर्त|शर्तहरु}} खपत गर्छ।',
 	'abusefilter-edit-description' => "विवरण:
