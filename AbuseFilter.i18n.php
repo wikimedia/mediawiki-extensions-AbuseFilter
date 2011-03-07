@@ -18544,6 +18544,7 @@ $messages['ms'] = array(
 	'abusefilter-intro' => 'Selamat datang ke antara muka pengurusan Abuse Filter.
 Abuse Filter ialah mekanisme perisian automatik untuk mengenakan swakaji automatik kepada semua tindakan.
 Antara muka ini menunjukkan senarai penapis yang ditakrif, dan membenarkan mereka diubahsuai.',
+	'abusefilter-mustbeeditor' => 'Untuk tujuan keselamatan, hanya pengguna dengan hak mengubahsuai penapis penyalahgunaan boleh menggunakan antara muka ini.',
 	'abusefilter-warning' => "'''Amaran''': Tindakan ini telah dikenalpasti secara automatik sebagai berbahaya.
 Suntingan tidak membina akan dibalikkan dengan segera,
 dan suntingan tidak membina yang berulang-ulang akan menyebabkan akaun atau alamat IP anda disekat.
@@ -18589,19 +18590,37 @@ Keterangan peraturan: $1',
 	'action-abusefilter-revert' => 'membalikkan semua perubahan oleh penapis penyalahgunaan tertentu',
 	'action-abusefilter-view-private' => 'melihat penapis penyalahgunaan yang ditanda rahsia',
 	'abusefilter-log' => 'Log penapis penyalahgunaan',
+	'abusefilter-log-summary' => 'Log ini menunjukkan senarai bagi semua tindakan yang ditangkap oleh penapis.',
+	'abusefilter-log-search' => 'Gelintar log penyalahgunaan',
 	'abusefilter-log-search-user' => 'Pengguna:',
 	'abusefilter-log-search-filter' => 'ID penapis:',
 	'abusefilter-log-search-title' => 'Tajuk:',
+	'abusefilter-log-show-deleted' => 'Tunjuk entri tersembunyi',
 	'abusefilter-log-search-submit' => 'Gelintar',
+	'abusefilter-log-entry' => '$1: $2 mencetuskan penapis penyalahgunaan, melakukan tindakan "$3" pada $4.
+Tindakan diambil: $5;
+Huraian penapis: $6',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 mencetuskan $3, melakukan tindakan "$4" pada $5.
+Tindakan diambil: $6;
+Huraian penapis: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'penapis sejagat $1',
 	'abusefilter-log-detailedentry-local' => 'penapis $1',
 	'abusefilter-log-detailslink' => 'butiran',
+	'abusefilter-log-hidelink' => 'ubah kebolehlihatan',
+	'abusefilter-log-details-legend' => 'Butiran untuk entri log $1',
 	'abusefilter-log-details-var' => 'Pemboleh ubah',
 	'abusefilter-log-details-val' => 'Nilai',
 	'abusefilter-log-details-vars' => 'Parameter tindakan',
 	'abusefilter-log-details-private' => 'Data peribadi',
+	'abusefilter-log-details-ip' => 'Alamat IP pelaku',
 	'abusefilter-log-noactions' => 'tiada',
+	'abusefilter-log-details-diff' => 'Perubahan akibat suntingan',
 	'abusefilter-log-linkoncontribs' => 'log penyalahgunaan',
+	'abusefilter-log-linkoncontribs-text' => 'Log salah guna bagi pengguna ini',
+	'abusefilter-log-hidden' => '(entri disorok)',
+	'abusefilter-log-hide' => 'sorok atau nyahsorok',
+	'abusefilter-log-details-hidden' => 'Anda tidak dapat melihat butiran bagi entri ini kerana ia disembunyikan daripada pandangan awam.',
+	'abusefilter-log-hide-legend' => 'Sorok entri log',
 	'abusefilter-log-hide-reason' => 'Sebab:',
 	'abusefilter-list' => 'Semua penapis',
 	'abusefilter-list-id' => 'ID penapis',
