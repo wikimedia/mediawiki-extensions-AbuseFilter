@@ -3292,10 +3292,10 @@ Ar c'hemmoù diyaus a vo nullet raktal,
 stanket e vo ho kont pe ho chomlec'h IP ma skrivit bleupajoù lies pe dismegañsus.
 Ma soñjit eo ar c'hemm yaus, galloud a rit kinnig anezhañ en-dro evit kadarnaat.
 Un diskrivadur berr eus ar reolenn drougimplij dinoet gantañ ho ober : $1",
-	'abusefilter-disallowed' => "A ober-mañ a zo anavezet evit bezañ noazus,
+	'abusefilter-disallowed' => "Anavezet eo an ober-mañ evit bezañ noazus,
 harzet eo bet dre-se.
-Ma soñjoc'h e oa yaus ho kemm, trugarez da vont e darempred gant ur merour, a lavarit ar pezh ho poa c'hoant ober.
-Un diskrivadur berr eus ar reolenn drougimplij dinoet gantañ ho ober : $1",
+Ma soñj deoc'h e oa reizh ho kemm, trugarez da vont e darempred gant ur merour, a lavarit ar pezh ho poa c'hoant d'ober.
+Setu un deskrivadur berr eus ar reolenn diskoachañ an drougimplij eo bet dinoet ganti hoc'h oberiadenn : $1",
 	'abusefilter-blocked-display' => "An ober-mañ a zo anavezet evit bezañ noazus,
 harzet oc'h bet dija war ar poent-mañ.
 Da eil, evit gwareziñ {{SITENAME}}, ho kont implijer hag ho holl chomlec'hioù IP implijet ganeoc'h a zo bet stanket.
