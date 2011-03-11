@@ -8634,7 +8634,7 @@ $messages['fa'] = array(
 در حالی که انتظار $3 پارامتر می‌رفت، $4 پارامتر به‌دست آمد',
 	'abusefilter-exception-regexfailure' => 'خطا در عبارات باقاعده «$3» در نویسهٔ $1: «$2»',
 	'abusefilter-exception-overridebuiltin' => 'بی‌اعتبار ساختن غیرمجاز متغیر درونی «$2» در نویسه $1.',
-	'abusefilter-exception-outofbounds' => 'درخواست مورد ناموجود $2 از فهرست (اندازه فهرست = $3) در نویسه $1.',
+	'abusefilter-exception-outofbounds' => 'درخواست مورد ناموجود $2 از فهرست (اندازهٔ فهرست = $3) در نویسهٔ $1.',
 	'abusefilter-exception-notlist' => 'درخواست مورد آرایه از غیر آرایه در نویسه $1.',
 	'abusefilter-action-tag' => 'برچسب',
 	'abusefilter-action-throttle' => 'دریچه',
