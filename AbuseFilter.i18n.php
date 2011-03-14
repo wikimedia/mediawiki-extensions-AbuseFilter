@@ -10965,36 +10965,36 @@ $messages['haw'] = array(
  */
 $messages['he'] = array(
 	'abusefilter-desc' => 'ביצוע בדיקות אוטומטיות לעריכות כדי לאתר השחתות',
-	'abusefilter' => 'תצורת מסנן ההשחתות',
+	'abusefilter' => 'ניהול מסנני ההשחתות',
 	'abuselog' => 'יומן השחתות',
 	'abusefilter-intro' => 'ברוכים הבאים לממשק הניהול של מסנן ההשחתות.
 מסנן ההשחתות הוא אמצעי אוטומטי להפעלת בדיקות אוטומטיות של כל הפעולות.
 ממשק זה מציג רשימה של מסננים שהוגדרו, ומאפשר את שינויים.',
 	'abusefilter-mustbeeditor' => 'מסיבות אבטחה, רק משתמשים עם ההרשאה לשנות מסנני השחתות יכולים להשתמש בממשק זה.',
 	'abusefilter-warning' => "'''אזהרה''': פעולה זו זוהתה באופן אוטומטי כמזיקה.
-עריכות שאינן מועילות ישוחזרו מידית,
+עריכות שאינן מועילות ישוחזרו במהרה,
 ועריכות גסות או חזרה על עריכות לא מועילות יגרמו לחסימת החשבון או כתובת ה־IP שלכם.
 אם אתם סבורים שעריכה זו מועילה, תוכלו ללחוץ על \"שמירה\" שוב כדי לאמת אותה.
-תיאור קצר של כלל ההשחתות שאותו הפרה עריכתכם: \$1",
-	'abusefilter-disallowed' => 'פעולה זו זוהתה כמזיקה באופן אוטומטי,
+תיאור קצר של החוק שפעולתכם הפרה: \$1",
+	'abusefilter-disallowed' => 'פעולה זו זוהתה באופן אוטומטי כמזיקה,
 ולכן נחסמה.
-אם הנכם מאמינים כי עריכתכם היתה מועילה, אנא צרו קשר עם אחד ממפעילי מערכת, והודיעו לו מה אתם מנסים לעשות.
-תיאור קצר של כלל ההשחתות אותו הפרה הודעתכם: $1',
-	'abusefilter-blocked-display' => 'פעולה זו זוהתה כמזיקה באופן אוטומטי,
+אם נראה לכם שעריכתכם הייתה מועילה, אנא צרו קשר עם אחד ממפעילי מערכת, והודיעו לו מה אתם מנסים לעשות.
+תיאור קצר של החוק שפעולתכם הפרה: $1',
+	'abusefilter-blocked-display' => 'פעולה זו זוהתה באופן אוטומטי כמזיקה,
 והפעלתה נמנעה.
 בנוסף, כדי להגן על {{SITENAME}}, חשבון המשתמש שלכם וכל כתובות ה־IP המשויכות לו נחסמו לעריכה.
-אם פעולתכם ארעה בטעות, אנא צרו קשר עם מפעיל מערכת.
-תיאור קצר של כלל השחתות אותו הפרה עריכתכם: $1',
-	'abusefilter-degrouped' => 'פעולה זו זוהתה כמזיקה באופן אוטומטי.
-עקב כך הפעולה נמנעה, ומאחר שחשבונכם חשוד בכך שנפרץ לצורכי הונאה, כל הרשאותיכם נשללו.
-אם אתם מאמינים שזוהי שגיאה, אנא צרו קשר עם ביורוקרט והסבירו לו פעולה זו. ייתכן כי הרשאותיכם יוחזרו לכם.
-תיאור קצר של כלל ההשתחתה אותו הפרה עריכתכם: $1',
-	'abusefilter-autopromote-blocked' => 'פעולה זו זוהתה כמזיקה באופן אוטומטי, ולכן נמנעה.
+אם פעולתכם אירעה בטעות, אנא צרו קשר עם מפעיל מערכת.
+תיאור קצר של החוק שפעולתכם הפרה: $1',
+	'abusefilter-degrouped' => 'פעולה זו זוהתה באופן אוטומטי כמזיקה.
+עקב כך הפעולה נחסמה, ומאחר שחשבונכם חשוד בכך שנפרץ לצורכי הונאה, כל הרשאותיכם נשללו.
+אם אתם מאמינים שזוהי שגיאה, אנא צרו קשר עם ביורוקרט והסבירו לו פעולה זו וייתכן כי הרשאותיכם יוחזרו לכם.
+תיאור קצר של החוק שפעולתכם הפרה: $1',
+	'abusefilter-autopromote-blocked' => 'פעולה זו זוהתה באופן אוטומטי כמזיקה, ולכן נחסמה.
 בנוסף, כאמצעי בטיחות, הרשאות הניתנות לחשבונות של משתמשים ותיקים נשללו באופן זמני מחשבונכם.
-תיאור קצר של כלל ההשחתות אותו הפרה עריכתכם: $1',
+תיאור קצר של החוק שפעולתכם הפרה: $1',
 	'abusefilter-blocker' => 'מסנן השחתות',
-	'abusefilter-blockreason' => 'בוצעה חסימה אוטומטית על ידי מסנן ההשחתות. תיאור הכלל התואם: $1',
-	'abusefilter-degroupreason' => 'ההרשאות נשללו אוטומטית על ידי מסנן  ההשחתות. תיאור הכלל: $1',
+	'abusefilter-blockreason' => 'בוצעה חסימה אוטומטית על ידי מסנן ההשחתות. תיאור החוק התואם: $1',
+	'abusefilter-degroupreason' => 'ההרשאות נשללו אוטומטית על ידי מסנן ההשחתות. תיאור החוק: $1',
 	'abusefilter-accountreserved' => 'שם משתמש זה שמור לשימושו של מסנן ההשחתות.',
 	'right-abusefilter-modify' => 'שינוי מסנני ההשחתות',
 	'right-abusefilter-view' => 'צפייה במסנני ההשחתות',
@@ -11258,7 +11258,7 @@ $messages['he'] = array(
 	'abusefilter-history-user' => 'משתמש',
 	'abusefilter-history-public' => 'התיאור הציבורי של המסנן',
 	'abusefilter-history-flags' => 'אפשרויות',
-	'abusefilter-history-filter' => 'כלל מסנן',
+	'abusefilter-history-filter' => 'חוק מסנן',
 	'abusefilter-history-comments' => 'הערות',
 	'abusefilter-history-actions' => 'פעולות',
 	'abusefilter-history-backedit' => 'חזרה לעורך המסננים',
@@ -19245,19 +19245,26 @@ $messages['ne'] = array(
 यदि यो गल्तीले भएको भए कृपया प्रबन्धकसित सम्पर्क गर्नुहोला।
 यस गलत कार्य नीतिसित तपाईंको कार्यले मेल खाँदैछ, एउटा संक्षिप्त विवरण यस प्रकार छ :$1',
 	'abusefilter-log-search-user' => 'प्रयोगकर्ता:',
+	'abusefilter-log-search-title' => 'शीर्षक:',
+	'abusefilter-log-show-deleted' => 'लुकेका प्रविष्टि देखाउने',
 	'abusefilter-log-search-submit' => 'खोज्नुहोस्',
 	'abusefilter-log-detailedentry-local' => '$1 फिल्टर गर्ने',
 	'abusefilter-log-detailslink' => 'विवरण',
+	'abusefilter-log-details-private' => 'निजी आँकड़ा',
 	'abusefilter-log-hidden' => '(प्रविष्टि लुकाइएको)',
+	'abusefilter-log-hide-reason' => 'कारण:',
 	'abusefilter-list-status' => 'स्थिति',
 	'abusefilter-list-consequences' => 'परिणाम',
 	'abusefilter-list-edit' => 'सम्पादन',
 	'abusefilter-list-details' => 'विवरण',
+	'abusefilter-list-lastmodified' => 'पछिल्लो परिवर्तन',
 	'abusefilter-hidden' => 'निजी',
 	'abusefilter-unhidden' => 'सार्वजनिक',
+	'abusefilter-enabled' => 'सक्रिय',
 	'abusefilter-deleted' => 'मेटियो',
 	'abusefilter-disabled' => 'निरस्त',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|हिट|हिटहरु}}',
+	'abusefilter-links' => 'उपयोगी लिंक',
 	'abusefilter-tools-modifiertest-submit' => 'जाँच',
 	'abusefilter-status-global' => 'वैश्विक',
 	'abusefilter-list-options' => 'विकल्पहरु',
@@ -19296,6 +19303,7 @@ $messages['ne'] = array(
 	'abusefilter-edit-test-link' => 'भर्खरैका सम्पादनहरु विरुद्ध यस फिल्टरको जाँच गर्ने',
 	'abusefilter-edit-syntaxok' => 'वाक्यविन्यास त्रुटिहरु भेटिएनन्।',
 	'abusefilter-edit-syntaxerr' => 'फेला परेको वाक्यविन्यास त्रुटि:$1',
+	'abusefilter-edit-builder-group-op-arithmetic' => 'अंकगणितीय अपरेटर',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'योग (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'घटाव (-)',
 	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'गुणन (*)',
@@ -19307,6 +19315,7 @@ $messages['ne'] = array(
 	'abusefilter-edit-builder-op-comparison-notequal' => '(!=)को बराबर होइन',
 	'abusefilter-edit-builder-op-comparison-lt' => '(<) भन्दा कम',
 	'abusefilter-edit-builder-op-comparison-gt' => '(>) भन्दा अधिक',
+	'abusefilter-edit-builder-op-comparison-lte' => 'भन्दा कम अथवा बराबर (<=)',
 	'abusefilter-edit-builder-op-bool-not' => 'होइन (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'र (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'वा (|)',
@@ -19351,10 +19360,14 @@ $messages['ne'] = array(
 	'abusefilter-revert-reasonfield' => 'फर्काउने कारण:',
 	'abusefilter-test-submit' => 'जाँच गर्ने',
 	'abusefilter-examine-user' => 'प्रयोगकर्ता:',
+	'abusefilter-examine-title' => 'पृष्ठ शीर्षक:',
+	'abusefilter-examine-submit' => 'खोज्ने',
 	'abusefilter-examine-syntaxerror' => 'फिल्टरमा अमान्य वाक्यविन्यास',
 	'abusefilter-topnav-home' => 'गृह',
+	'abusefilter-topnav-examine' => 'पुराना सम्पादनहरु जाँच्ने',
 	'abusefilter-log-entry-modify' => '$1 ($2) परिवर्तित',
 	'abusefilter-diff-item' => 'सामग्री',
+	'abusefilter-diff-version' => 'संस्करण $1देखि $2द्वारा',
 	'abusefilter-diff-info' => 'बुनियादी सूचना',
 	'abusefilter-diff-pattern' => 'फिल्टरका अवस्थाहरु',
 	'abusefilter-import-submit' => 'आँकड़ा ल्याउने',
@@ -26184,31 +26197,31 @@ $messages['stq'] = array(
 	'abusefilter-desc' => 'Woant automatiske Heuristike ap Annerengen an.',
 	'abusefilter' => 'Misbruukssieuwe-Ienstaalengen',
 	'abuselog' => 'Misbruuks-Logbouk',
-	'abusefilter-warning' => "'''Woarschauenge''': Disse Aktion wuud automatisk as skoadelk ärkoand.
+	'abusefilter-warning' => "'''Woarskauenge''': Disse Aktion wuud automatisk as skoadelk ärkoand.
 Uunkonstruktive Biedraage wäide maast gjucht gau wächhoald. In wierhoalde un besunners läipe Falle wäd dien Account blw. dien IP-Adresse speerd.
 Wan du toankst, dät dien Annerenge konstruktiv waas, koast du ju oawers mäd n näien Klik ap „{{int:savearticle}}“ bestäätigje.
 Kuute Beskrieuwenge fon ju nit beoachtede Räägel: $1",
 	'abusefilter-disallowed' => 'Disse Aktion wuud automatisk as schoadelk ärkoand un deeruum nit truchfierd.
 Wan du toankst, dät dien Biedraach konstruktiv waas, weende die dan an n Administrator un schilderje him, wät du fersoacht hääst bietoudreegen.
 
-Kuute Beschrieuwenge fon ju nit beoachtede Räägel: $1',
-	'abusefilter-blocked-display' => 'Disse Aktion wuud automatisk as schoadelk ärkoand un nit uutfierd.
+Kuute Beskrieuwenge fon ju nit beoachtede Räägel: $1',
+	'abusefilter-blocked-display' => 'Disse Aktion wuud automatisk as skoadelk ärkoand un nit uutfierd.
 Fääre wuud dien Benutseraccount un aal touheerige IP-Adressen speerd.
 Wan du toankst, dät et sik hierbie uum n Failer honnelt, weende die dan an n Administrator.
 
-Kuute Beschrieuwenge fon ju nit beoachtede Räägel: $1',
-	'abusefilter-degrouped' => 'Disse Aktion wuud as schoadelk ärkoand un nit uutfierd.
+Kuute Beskrieuwenge fon ju nit beoachtede Räägel: $1',
+	'abusefilter-degrouped' => 'Disse Aktion wuud as skoadelk ärkoand un nit uutfierd.
 Deer et muugelk is, dät dien Benutseraccount kompromittierd wuude, wuuden die aal gewäärde Gjuchte nuumen.
-Wan du toankst, dät et sik hierbie uum n Failer honnelt, dan weende die an n Bürokroat un schillerje him, wät du juust däin hääst, deermäd dien Gjuchte wierhäärstoald wäide konnen.
+Wan du toankst, dät et sik hierbie uum n Failer honnelt, dan weende die an n Bürokroat un skillerje him, wät du juust däin hääst, deermäd dien Gjuchte wierhäärstoald wäide konnen.
 
-Kuute Beschrieuwenge fon ju nit beoachtede Räägel: $1',
-	'abusefilter-autopromote-blocked' => 'Disse Aktion wuud as schoadelk ärkoand un nit uutfierd.
+Kuute Beskrieuwenge fon ju nit beoachtede Räägel: $1',
+	'abusefilter-autopromote-blocked' => 'Disse Aktion wuud as skoadelk ärkoand un nit uutfierd.
 Buppedät wuuden die uut Sicherhaid eenige automatisk ferroate Gjuchte kuuttiedich nuumen.
 
-Kuute Beschrieuwenge fon ju nit beoachtede Räägel: $1',
+Kuute Beskrieuwenge fon ju nit beoachtede Räägel: $1',
 	'abusefilter-blocker' => 'Misbruukssieuwe',
-	'abusefilter-blockreason' => 'Du wuudst fon ju Misbruukssieuwe automatisk speerd. Beschrieuwenge fon ju Riege: $1',
-	'abusefilter-degroupreason' => 'Dien Begjuchtigengen wuuden fon ju Misbruukssieuwe automatisk beschranked. Beschrieuwenge fon ju Riege: $1',
+	'abusefilter-blockreason' => 'Du wuudst fon ju Misbruukssieuwe automatisk speerd. Beskrieuwenge fon ju Riege: $1',
+	'abusefilter-degroupreason' => 'Dien Begjuchtigengen wuuden fon ju Misbruukssieuwe automatisk beskanked. Beskrieuwenge fon ju Riege: $1',
 	'abusefilter-accountreserved' => 'Dissen Benutsernoome is foar ju Misbruukssieuwe reservierd.',
 	'right-abusefilter-modify' => 'Misbruukssieuwen beoarbaidje',
 	'right-abusefilter-view' => 'Misbruukssieuwen bekiekje',
@@ -26223,10 +26236,10 @@ Kuute Beschrieuwenge fon ju nit beoachtede Räägel: $1',
 	'abusefilter-log-search-submit' => 'Säike (uk ap Düütsk5)',
 	'abusefilter-log-entry' => '$1: $2 löösde ne Misbruuks-Sieuwe uut, truch dät hie "$3" ap $4 moakede. 
 Aktion: $5; 
-Sieuwe-Beschrieuwenge: $6',
+Sieuwe-Beskrieuwenge: $6',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 häd ju $3 uutlöösd, wät n $4 ap $5 feruurseeked.
 Ärgriepene Mäitenoamen: $6;
-Sieuwebeschrieuwenge: $7 ($8)',
+Sieuwebeskrieuwenge: $7 ($8)',
 	'abusefilter-log-detailedentry-local' => 'Sieuwe $1',
 	'abusefilter-log-detailslink' => 'Eenpeldhaide',
 	'abusefilter-log-details-legend' => 'Eenpeldhaide foar dän Logbouk-Iendraach $1',
@@ -26240,7 +26253,7 @@ Sieuwebeschrieuwenge: $7 ($8)',
 	'abusefilter-list' => 'Aal Sieuwen',
 	'abusefilter-list-id' => 'Sieuwe-ID',
 	'abusefilter-list-status' => 'Stoatus',
-	'abusefilter-list-public' => 'Eepentelke Beschrieuwenge',
+	'abusefilter-list-public' => 'Eepentelke Beskrieuwenge',
 	'abusefilter-list-consequences' => 'Foulgen',
 	'abusefilter-list-visibility' => 'Sichtboarkaid',
 	'abusefilter-list-hitcount' => 'Träffertäller',
@@ -26278,15 +26291,15 @@ Sieuwebeschrieuwenge: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => 'Du bäst nit begjuchtiged, Benutsere wier tou bestäätigde Benutsere tou moakjen.',
 	'abusefilter-status' => 'Fon {{PLURAL:$1|ju lääste Aktion|do lääste $1 Aktione}} {{PLURAL:$2|häd een|hääbe $2}} ($3 %) dän Gränswäid fon $4 beloanged. $5 ($6 %) {{PLURAL:$5|wuud|wuude}} fon een fon do apstuuns aktivierde Sieuwe wierkoand.',
 	'abusefilter-edit-subtitle' => 'Beoarbaidje Sieuwe $1',
-	'abusefilter-edit-oldwarning' => '<strong>Du beoarbaidest nit ju aktuelle, man ne allere Version fon disse Sieuwe. Ju Statistik jält bloot foar ju lääste Version fon ju Sieuwe. Wan du spiekerst, wäd ju oolde as aktuelle Version näi spiekerd. </strong> &bull; [[Special:AbuseFilter/history/$2|Tourääch tou ju Versionsgeschichte fon ju Sieuwe]]',
+	'abusefilter-edit-oldwarning' => '<strong>Du beoarbaidest nit ju aktuelle, man ne allere Version fon disse Sieuwe. Ju Statistik jält bloot foar ju lääste Version fon ju Sieuwe. Wan du spiekerst, wäd ju oolde as aktuelle Version näi spiekerd. </strong> &bull; [[Special:AbuseFilter/history/$2|Tourääch tou ju Versionsgeskichte fon ju Sieuwe]]',
 	'abusefilter-edit-status-label' => 'Statistike:',
 	'abusefilter-edit-status' => 'Fon {{PLURAL:$1|ju|do}} lääste {{PLURAL:$1|Aktion|$1 Aktione}} {{PLURAL:$2|wuud|wuuden}} $2 ($3 %) fon disse Sieuwe wierkoand. 
 In n Truchsnit bedruuch hiere Beoarbaidengstied $4 ms un do benöödigeden $5 {{PLURAL:$5|Bedingenge|Bedingengen}} fon ju ferlööwede Hoochsttaal.',
-	'abusefilter-edit-throttled' => "'''Woarschauenge''': Disse Sieuwe wuud sicherhaidshoolwe automatisk deaktivierd. Ju häd moor as dät definierde Buppescheed fon $1 % fon do Aktione ärkoand.",
+	'abusefilter-edit-throttled' => "'''Woarskauenge''': Disse Sieuwe wuud sicherhaidshoolwe automatisk deaktivierd. Ju häd moor as dät definierde Buppeskeed fon $1 % fon do Aktione ärkoand.",
 	'abusefilter-edit-new' => 'Näie Sieuwe',
 	'abusefilter-edit-save' => 'Sieuwe spiekerje',
 	'abusefilter-edit-id' => 'Sieuwe-ID:',
-	'abusefilter-edit-description' => "Beschrieuwenge:
+	'abusefilter-edit-description' => "Beskrieuwenge:
 :''(eepentelk sichtboar)''",
 	'abusefilter-edit-flags' => 'Flaagen',
 	'abusefilter-edit-enabled' => 'Disse Sieuwe aktivierje',
@@ -26299,7 +26312,7 @@ In n Truchsnit bedruuch hiere Beoarbaidengstied $4 ms un do benöödigeden $5 {{
 	'abusefilter-edit-lastmod-text' => '$1 fon $2',
 	'abusefilter-edit-hitcount' => 'Träffere fon ju Sieuwe:',
 	'abusefilter-edit-consequences' => 'Bie Träffere uuttoufierende Aktione',
-	'abusefilter-edit-action-warn' => 'Aktione ätter Woarschauenge fon dän Benutser uutfiere',
+	'abusefilter-edit-action-warn' => 'Aktione ätter Woarskauenge fon dän Benutser uutfiere',
 	'abusefilter-edit-action-disallow' => 'Unnerbint ju fon dän Benutser foarsäine Aktion',
 	'abusefilter-edit-action-flag' => 'Beoarbaidenge in dät Misbruuks-Logbouk markierje',
 	'abusefilter-edit-action-blockautopromote' => '„Bestäätiger Benutser“-Stoatus äntluuke',
@@ -26312,13 +26325,13 @@ In n Truchsnit bedruuch hiere Beoarbaidengstied $4 ms un do benöödigeden $5 {{
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|Sekunde|Sekunden}}',
 	'abusefilter-edit-throttle-groups' => "Räägele foar ju Gruppendröisel:
 :''(een pro Riege, ferbiende mäd Kommata)''",
-	'abusefilter-edit-warn-message' => 'Systemättergjucht foar ju Woarschauenge:',
+	'abusefilter-edit-warn-message' => 'Systemättergjucht foar ju Woarskauenge:',
 	'abusefilter-edit-denied' => 'Du koast do Details fon disse Sieuwe nit ienkiekje, deeruum dät do ferstopped sunt',
 	'abusefilter-edit-main' => 'Sieuweparametere',
 	'abusefilter-edit-done-subtitle' => 'Sieuwe beoarbaided',
 	'abusefilter-edit-done' => 'Dien Annerengen an ju Sieuwe $1 wuuden mäd Ärfoulch spiekerd.',
 	'abusefilter-edit-badsyntax' => 'Ju fon die spezifizierde Sieuwe änthaalt n Syntaxfailer. Ju Parseruutgoawe lutte: <pre>$1</pre>',
-	'abusefilter-edit-viewhistory' => 'Versionsgeschichte fon ju Sieuwe ankiekje',
+	'abusefilter-edit-viewhistory' => 'Versionsgeskichte fon ju Sieuwe bekiekje',
 	'abusefilter-edit-history' => 'Geskichte:',
 	'abusefilter-edit-check' => 'Syntaxwröich',
 	'abusefilter-edit-builder-select' => 'Wääl ne Option uut, uum ju an n Cursor ientouföigjen',
@@ -26341,7 +26354,7 @@ In n Truchsnit bedruuch hiere Beoarbaidengstied $4 ms un do benöödigeden $5 {{
 	'abusefilter-edit-builder-op-bool-and' => 'Un (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Of (|)',
 	'abusefilter-edit-builder-op-bool-xor' => 'XOR (^)',
-	'abusefilter-edit-builder-group-misc' => 'Ferscheedenes',
+	'abusefilter-edit-builder-group-misc' => 'Ferskeedenhaide',
 	'abusefilter-edit-builder-misc-in' => 'äntheelden in Teekenfoulge (in)',
 	'abusefilter-edit-builder-misc-like' => 'Paaset tou Muster (like)',
 	'abusefilter-edit-builder-misc-stringlit' => 'Woudwoudelken String ("")',
@@ -26358,7 +26371,7 @@ In n Truchsnit bedruuch hiere Beoarbaidengstied $4 ms un do benöödigeden $5 {{
 	'abusefilter-edit-builder-vars-action' => 'Aktion',
 	'abusefilter-edit-builder-vars-addedlines' => 'Riegen bie ju Beoarbaidenge bietouföiged',
 	'abusefilter-edit-builder-vars-delta' => 'Grööte bie ju Beoarbaidenge annerd',
-	'abusefilter-edit-builder-vars-diff' => 'Fereenigden Versionsunnerscheed fon ju Beoarbaidenge',
+	'abusefilter-edit-builder-vars-diff' => 'Fereenigden Versionsunnerskeed fon ju Beoarbaidenge',
 	'abusefilter-edit-builder-vars-newsize' => 'Näie Siedengrööte',
 	'abusefilter-edit-builder-vars-oldsize' => 'Oolde Siedengrööte',
 	'abusefilter-edit-builder-vars-removedlines' => 'Riegen bie ju Beoarbaidenge wächhoald',
@@ -26385,7 +26398,7 @@ In n Truchsnit bedruuch hiere Beoarbaidengstied $4 ms un do benöödigeden $5 {{
 	'abusefilter-history-enabled' => 'aktivierd',
 	'abusefilter-history-timestamp' => 'Tied',
 	'abusefilter-history-user' => 'Benutser',
-	'abusefilter-history-public' => 'Eepentelke Sieuwe-Beschrieuwenge',
+	'abusefilter-history-public' => 'Eepentelke Sieuwe-Beskrieuwenge',
 	'abusefilter-history-flags' => 'Flags',
 	'abusefilter-history-filter' => 'Sieuweräägel',
 	'abusefilter-history-comments' => 'Kommentoare',
