@@ -709,6 +709,7 @@ $messages['niu'] = array(
 
 /** Dusun Bundu-liwan (Dusun Bundu-liwan)
  * @author FRANCIS5091
+ * @author FRANELYA
  */
 $messages['dtp'] = array(
 	'abusefilter-desc' => 'Pokianu huristik mimpoporion hilo niditan',
@@ -730,6 +731,9 @@ Otumbayaan ko nopo do nopongo iti niditannu, maai gia sunudai it mintatamong  do
 Mooi do otingolig ilo {{SITENAME}} akaun momomogunonu om oinsanan porotokol intonit toi ''IP''nu nga nantaban do mongidit.
 Nung nokosilap iti, maai posunudo do mintatamong.
 Kointalangan do sinalaguno diti kooturan di kohompit do kinarajanu nopo nga oboyo do: $1",
+	'right-abusefilter-modify' => 'Alanai gagagan salahguno',
+	'right-abusefilter-view' => 'Intaai gagagan salaguno',
+	'right-abusefilter-log' => 'Intaai log salaguno',
 	'abusefilter-log-search-user' => 'Momoguno:',
 	'abusefilter-log-show-deleted' => 'Pokitono susuang poinlisok',
 	'abusefilter-log-search-submit' => 'Ihumo',
@@ -738,6 +742,10 @@ Kointalangan do sinalaguno diti kooturan di kohompit do kinarajanu nopo nga oboy
 	'abusefilter-list-edit' => 'Idito',
 	'abusefilter-deleted' => 'Nopugas',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|kotik|kokotik}}',
+	'abusefilter-list-options-submit' => 'Inwoguai',
+	'abusefilter-tools-subtitle' => 'Tangakakamot',
+	'abusefilter-tools-reautoconfirm-user' => 'Momoguno:',
+	'abusefilter-edit-tools' => 'Tangakakamot:',
 );
 
 /** Afrikaans (Afrikaans)
@@ -20966,10 +20974,11 @@ Copiatz l'airal de tèxte que s’aficha e empegatz-lo dins aqueste airal de tè
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Jose77
+ * @author Psubhashish
  */
 $messages['or'] = array(
 	'abusefilter-log-search-submit' => 'ସନ୍ଧାନ',
-	'abusefilter-edit-history' => 'ଇତିହାସ',
+	'abusefilter-edit-history' => 'ଇତିହାସ:',
 );
 
 /** Ossetic (Иронау)
