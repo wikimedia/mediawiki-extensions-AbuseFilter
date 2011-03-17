@@ -18829,9 +18829,13 @@ $messages['nah'] = array(
 	'abusefilter-log-search-title' => 'Tōcāitl:',
 	'abusefilter-log-search-submit' => 'Tlatēmōz',
 	'abusefilter-log-noactions' => 'ahtlein',
-	'abusefilter-list-edit' => 'Ticpatlāz',
+	'abusefilter-log-hide-reason' => 'Tlèka:',
+	'abusefilter-list-edit' => 'Moyèktlàlìs',
 	'abusefilter-tools-subtitle' => 'Tekitiâtìn',
 	'abusefilter-edit-throttle-period' => 'Cāhuitl:',
+	'abusefilter-examine-title' => 'Tlaìxtlapaltòkâtli:',
+	'abusefilter-examine-submit' => 'Motèmòs',
+	'abusefilter-topnav-home' => 'Pèwalòyàn',
 );
 
 /** Low German (Plattdüütsch)
