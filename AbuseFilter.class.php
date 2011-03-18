@@ -1015,7 +1015,7 @@ class AbuseFilter {
 				$block->mTimestamp = wfTimestampNow();
 				$block->mAnonOnly = 1;
 				$block->mCreateAccount = 1;
-				$block->mExpiry = Block::parseExpiryInput( $wgAbuseFilterBlockDuration );
+				$block->mExpiry = SpecialBlock::parseExpiryInput( $wgAbuseFilterBlockDuration );
 
 				$block->insert();
 
@@ -1058,7 +1058,7 @@ class AbuseFilter {
 				$block->mTimestamp = wfTimestampNow();
 				$block->mAnonOnly = 0;
 				$block->mCreateAccount = 1;
-				$block->mExpiry = Block::parseExpiryInput( '1 week' );
+				$block->mExpiry = SpecialBlock::parseExpiryInput( '1 week' );
 
 				$block->insert();
 
