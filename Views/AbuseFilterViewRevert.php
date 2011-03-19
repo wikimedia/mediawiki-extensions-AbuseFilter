@@ -188,7 +188,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	function revertAction( $action, $result ) {
 		switch( $action ) {
 			case 'block':
-				$block = Block::newFromDB( '', $result['userid'], false );
+				$block = Block::newFromTarget( User::whoIs( $result['userid'] ) );
 				if ( !$block || $block->getBy() != AbuseFilter::getFilterUser()->getId() ) {
 					return false; // Not blocked by abuse filter.
 				}

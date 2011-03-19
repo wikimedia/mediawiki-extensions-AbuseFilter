@@ -1013,8 +1013,8 @@ class AbuseFilter {
 				$block->mByName = $filterUser->getName();
 				$block->mReason = wfMsgForContent( 'abusefilter-blockreason', $rule_desc );
 				$block->mTimestamp = wfTimestampNow();
-				$block->mAnonOnly = 1;
-				$block->mCreateAccount = 1;
+				$block->isHardblock( false );
+				$block->prevents( 'createaccount', true );
 				$block->mExpiry = SpecialBlock::parseExpiryInput( $wgAbuseFilterBlockDuration );
 
 				$block->insert();
@@ -1042,11 +1042,7 @@ class AbuseFilter {
 			case 'rangeblock':
 				$filterUser = AbuseFilter::getFilterUser();
 
-				$range = IP::toHex( wfGetIP() );
-				$range = substr( $range, 0, 4 ) . '0000';
-				$range = long2ip( hexdec( $range ) );
-				$range .= '/16';
-				$range = Block::normaliseRange( $range );
+				$range = IP::sanitizeRange( wfGetIP() . '/16' );
 
 				// Create a block.
 				$block = new Block;
@@ -1056,8 +1052,8 @@ class AbuseFilter {
 				$block->mByName = $filterUser->getName();
 				$block->mReason = wfMsgForContent( 'abusefilter-blockreason', $rule_desc );
 				$block->mTimestamp = wfTimestampNow();
-				$block->mAnonOnly = 0;
-				$block->mCreateAccount = 1;
+				$block->isHardblock( false );
+				$block->prevents( 'createaccount', true );
 				$block->mExpiry = SpecialBlock::parseExpiryInput( '1 week' );
 
 				$block->insert();
