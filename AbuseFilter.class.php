@@ -1007,12 +1007,9 @@ class AbuseFilter {
 
 				// Create a block.
 				$block = new Block;
-				$block->mAddress = $wgUser->getName();
-				$block->mUser = $wgUser->getId();
-				$block->mBy = $filterUser->getId();
-				$block->mByName = $filterUser->getName();
+				$block->setTarget( $wgUser->getName() );
+				$block->setBlocker( $filterUser );
 				$block->mReason = wfMsgForContent( 'abusefilter-blockreason', $rule_desc );
-				$block->mTimestamp = wfTimestampNow();
 				$block->isHardblock( false );
 				$block->prevents( 'createaccount', true );
 				$block->mExpiry = SpecialBlock::parseExpiryInput( $wgAbuseFilterBlockDuration );
@@ -1046,12 +1043,9 @@ class AbuseFilter {
 
 				// Create a block.
 				$block = new Block;
-				$block->mAddress = $range;
-				$block->mUser = 0;
-				$block->mBy = $filterUser->getId();
-				$block->mByName = $filterUser->getName();
+				$block->setTarget( $range );
+				$block->setBlocker( $filterUser );
 				$block->mReason = wfMsgForContent( 'abusefilter-blockreason', $rule_desc );
-				$block->mTimestamp = wfTimestampNow();
 				$block->isHardblock( false );
 				$block->prevents( 'createaccount', true );
 				$block->mExpiry = SpecialBlock::parseExpiryInput( '1 week' );
