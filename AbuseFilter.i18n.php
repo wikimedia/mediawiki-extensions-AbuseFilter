@@ -8145,6 +8145,7 @@ Lisaselgituse jaoks klõpsa nuppu "Kontrolli süntaksit".',
 );
 
 /** Basque (Euskara)
+ * @author Abel2es
  * @author An13sa
  * @author Joxemai
  * @author Kobazulo
@@ -8269,6 +8270,7 @@ $messages['eu'] = array(
 	'abusefilter-edit-builder-vars-newsize' => 'Orrialdearen tamaina berria',
 	'abusefilter-edit-builder-vars-oldsize' => 'Orrialdearen tamaina zaharra',
 	'abusefilter-edit-builder-vars-summary' => 'Aldatu laburpena/arrazoia',
+	'abusefilter-edit-builder-vars-article-id' => 'Orriaren IDa',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Orrialdearen izenburu osoa',
 	'abusefilter-edit-builder-vars-user-editcount' => 'Erabiltzailearen edizioen kontagailua',
 	'abusefilter-edit-builder-vars-user-age' => 'Lankide kontuaren adina',
@@ -8285,6 +8287,7 @@ $messages['eu'] = array(
 	'abusefilter-history-filterid' => 'Iragazkia',
 	'abusefilter-history-select-user' => 'Lankide:',
 	'abusefilter-history-diff' => 'Aldaketak',
+	'abusefilter-action-tag' => 'Etiketa',
 	'abusefilter-action-warn' => 'Abisatu',
 	'abusefilter-action-block' => 'Blokeatu',
 	'abusefilter-action-disallow' => 'Debekatu',
@@ -8310,6 +8313,7 @@ $messages['eu'] = array(
 	'abusefilter-topnav-tools' => 'Arazketarako tresnak',
 	'abusefilter-topnav-import' => 'Iragazkia inportatu',
 	'abusefilter-diff-title' => 'Bertsioen arteko ezberdintasunak',
+	'abusefilter-diff-item' => 'Elementua',
 	'abusefilter-diff-info' => 'Oinarrizko informazioa',
 	'abusefilter-import-submit' => 'Datuak inportatu',
 );
@@ -17673,15 +17677,28 @@ $messages['mg'] = array(
 	'abusefilter-list-hitcount' => "Isan'ny « hit »",
 	'abusefilter-list-edit' => 'Hanova',
 	'abusefilter-list-details' => 'Antsipirihany',
+	'abusefilter-hidden' => 'Tsy sarababem-bahoaka',
+	'abusefilter-unhidden' => 'Sarababem-bahoaka',
+	'abusefilter-enabled' => 'Alefa',
+	'abusefilter-deleted' => 'Voafafa',
+	'abusefilter-disabled' => 'Tsy alefa',
+	'abusefilter-links' => 'Rohy ilaina :',
 	'abusefilter-tools-modifiertest-submit' => 'Hanandrana',
 	'abusefilter-tools' => "Fitaovan'ny Abuse filter",
 	'abusefilter-loglink' => 'Hijery ny tatitry ny abuse filter',
+	'abusefilter-return' => "Hiverina any amin'ny fikarakarana sivana",
+	'abusefilter-status-global' => 'Ankapobe',
 	'abusefilter-list-options' => 'Safidy',
+	'abusefilter-list-options-submit' => 'Vaozina',
+	'abusefilter-tools-subtitle' => 'Fitaovana :',
+	'abusefilter-tools-reautoconfirm-user' => 'Mpikambana :',
+	'abusefilter-edit-rules' => 'Fepetra :',
 	'abusefilter-edit-action-disallow' => 'Hanakana ny mpikambana hanao ilay tao',
 	'abusefilter-edit-action-flag' => "Hanamarika ilay fanovana ao amin'ny Abuse Filter",
 	'abusefilter-edit-action-blockautopromote' => "Hanala ny sata « autoconfirmed » an'ilay mpikambana",
 	'abusefilter-edit-action-degroup' => "Hanala ilay mpikambana ao amin'ny vondrona manan-tombontsoa",
 	'abusefilter-edit-action-block' => 'Hanakana ilay mpikambana sy/na adiresy IP hanoratra',
+	'abusefilter-edit-warn-other' => 'Hafatra hafa',
 	'abusefilter-edit-warn-actions' => 'Tao :',
 	'abusefilter-edit-warn-edit' => 'Hamorona na hanova ny hafatra nofidiana',
 	'abusefilter-edit-tag-tag' => 'Balizy hampiharina (iray isaky ny andalana)',
@@ -18553,6 +18570,7 @@ $messages['mn'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aurora
  * @author Aviator
  * @author Izzudin
@@ -18613,12 +18631,12 @@ Keterangan peraturan: $1',
 	'action-abusefilter-view-private' => 'melihat penapis penyalahgunaan yang ditanda rahsia',
 	'abusefilter-log' => 'Log penapis penyalahgunaan',
 	'abusefilter-log-summary' => 'Log ini menunjukkan senarai bagi semua tindakan yang ditangkap oleh penapis.',
-	'abusefilter-log-search' => 'Gelintar log penyalahgunaan',
+	'abusefilter-log-search' => 'Cari dalam log penyalahgunaan',
 	'abusefilter-log-search-user' => 'Pengguna:',
 	'abusefilter-log-search-filter' => 'ID penapis:',
 	'abusefilter-log-search-title' => 'Tajuk:',
 	'abusefilter-log-show-deleted' => 'Tunjuk entri tersembunyi',
-	'abusefilter-log-search-submit' => 'Gelintar',
+	'abusefilter-log-search-submit' => 'Cari',
 	'abusefilter-log-entry' => '$1: $2 mencetuskan penapis penyalahgunaan, melakukan tindakan "$3" pada $4.
 Tindakan diambil: $5;
 Huraian penapis: $6',
@@ -29818,7 +29836,11 @@ Copia da la casèla che apare e copia in sta casèla qua, quindi struca "{{int:a
  */
 $messages['vep'] = array(
 	'abusefilter-log-search-user' => 'Kävutai:',
+	'abusefilter-log-search-title' => 'Pälkirjutez:',
+	'abusefilter-log-show-deleted' => 'Ozutada peittud kirjutesed',
+	'abusefilter-log-search-submit' => 'Ectä',
 	'abusefilter-log-detailslink' => 'detalid',
+	'abusefilter-log-noactions' => 'Ei ole',
 	'abusefilter-list' => "Kaik fil'trad",
 	'abusefilter-list-status' => 'Status',
 	'abusefilter-list-edit' => 'Redaktiruida',
@@ -29843,6 +29865,7 @@ $messages['vep'] = array(
 	'abusefilter-edit-builder-op-arithmetic-modulo' => "Modul' (%)",
 	'abusefilter-edit-builder-op-arithmetic-pow' => 'Märpordaz (**)',
 	'abusefilter-edit-builder-op-comparison-lt' => 'Vähemb mi (<)',
+	'abusefilter-edit-builder-op-bool-not' => 'Ei (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'Da (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Vai (|)',
 	'abusefilter-edit-builder-group-funcs' => 'Funkcijad',
@@ -29855,6 +29878,7 @@ $messages['vep'] = array(
 	'abusefilter-history-global' => 'Globaline',
 	'abusefilter-history-timestamp' => 'Aig',
 	'abusefilter-history-user' => 'Kävutai',
+	'abusefilter-history-flags' => 'Flagad',
 	'abusefilter-history-comments' => 'Kommentarijad',
 	'abusefilter-history-actions' => 'Tegendad',
 	'abusefilter-history-deleted' => 'Čutud poiš',
