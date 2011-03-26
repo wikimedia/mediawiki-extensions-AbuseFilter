@@ -18844,6 +18844,13 @@ $messages['myv'] = array(
 	'abusefilter-topnav-home' => 'Ушодома таркав',
 );
 
+/** Mazanderani (مازِرونی)
+ * @author محک
+ */
+$messages['mzn'] = array(
+	'abusefilter-test-load' => 'باربی‌یشتن',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  * @author Teòtlalili
