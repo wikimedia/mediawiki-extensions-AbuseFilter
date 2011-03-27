@@ -4181,7 +4181,7 @@ Descripció de la regla aplicada: $1",
 	'abusefilter-log-hide-legend' => 'Amaga entrada de registre',
 	'abusefilter-log-hide-id' => "ID de l'entrada de registre:",
 	'abusefilter-log-hide-hidden' => 'Amaga aquesta entrada de la vista pública',
-	'abusefilter-log-hide-reason' => 'Raó:',
+	'abusefilter-log-hide-reason' => 'Motiu:',
 	'abusefilter-log-hide-forbidden' => "No tens permís per amagar entrades del registre d'abusos",
 	'abusefilter-logentry-suppress' => 'amaga "[[$1]]"',
 	'abusefilter-logentry-unsuppress' => 'mostra "[[$1]]"',
@@ -21061,8 +21061,22 @@ Copiatz l'airal de tèxte que s’aficha e empegatz-lo dins aqueste airal de tè
  * @author Psubhashish
  */
 $messages['or'] = array(
-	'abusefilter-log-search-submit' => 'ସନ୍ଧାନ',
+	'abusefilter-log-search-submit' => 'ଖୋଜିବା',
+	'abusefilter-list' => 'ସବୁ ଛଣା',
+	'abusefilter-list-consequences' => 'ପରିଣାମସବୁ',
+	'abusefilter-list-visibility' => 'ଦେଖଣା',
+	'abusefilter-list-edit' => 'ବଦଳାଇବା',
+	'abusefilter-list-details' => 'ଆହୁରି ଅଧିକ',
+	'abusefilter-list-limit' => 'ଫରଦ ପ୍ରତି ନମ୍ବର',
+	'abusefilter-list-lastmodified' => 'ଶେଷ ବଦଳ',
+	'abusefilter-hidden' => 'ଖାଲି ନିଜର',
+	'abusefilter-unhidden' => 'ସଭିଁକ ପାଇଁ',
+	'abusefilter-enabled' => 'ସଚଳ କରାଗଲା',
+	'abusefilter-deleted' => 'ଲିଭିଗଲା',
+	'abusefilter-disabled' => 'ଅଚଳ କରିଦିଆଯାଇଛି',
+	'abusefilter-hitcount' => '$1 {{PLURAL:$1|ହିଟ|ହିଟସବୁ}}',
 	'abusefilter-edit-history' => 'ଇତିହାସ:',
+	'abusefilter-history-select-user' => 'ଇଉଜର',
 );
 
 /** Ossetic (Иронау)
