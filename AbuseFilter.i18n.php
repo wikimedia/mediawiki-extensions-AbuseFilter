@@ -17255,6 +17255,7 @@ $messages['ltg'] = array(
 	'abusefilter-list-options-submit' => 'Atjaunynuot',
 	'abusefilter-tools-reautoconfirm-user' => 'Lītuotuojs:',
 	'abusefilter-edit-flags' => 'Karūgi:',
+	'abusefilter-edit-history' => 'Viesture:',
 	'abusefilter-history-timestamp' => 'Laiks',
 	'abusefilter-history-user' => 'Lītuotuojs',
 	'abusefilter-history-select-user' => 'Lītuotuojs:',
