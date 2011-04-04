@@ -9843,7 +9843,7 @@ Les balises dêvont étre côrtes et pués pas avêr de caractèros spèciâls.'
 	'abusefilter-edit-builder-vars-newsize' => 'Talye de la pâge novèla',
 	'abusefilter-edit-builder-vars-oldsize' => 'Vielye talye de la pâge',
 	'abusefilter-edit-builder-vars-removedlines' => 'Legnes suprimâs pendent lo changement',
-	'abusefilter-edit-builder-vars-summary' => 'Rèsumâ / rêson du changement',
+	'abusefilter-edit-builder-vars-summary' => 'Rèsumâ de changement / rêson',
 	'abusefilter-edit-builder-vars-article-id' => 'Numerô de la pâge',
 	'abusefilter-edit-builder-vars-article-ns' => 'Èspâço de noms de la pâge',
 	'abusefilter-edit-builder-vars-article-text' => 'Titro de la pâge (sen l’èspâço de noms)',
@@ -17742,7 +17742,7 @@ $messages['mhr'] = array(
  */
 $messages['mk'] = array(
 	'abusefilter-desc' => 'Извршува автоматски хевристички филтрирања во уредувањата',
-	'abusefilter' => 'Прилагодувања на филтерот за злоупотреба',
+	'abusefilter' => 'Прилагодувања на филтерот на злоупотреби',
 	'abuselog' => 'Дневник на злоупотреби',
 	'abusefilter-intro' => 'Добредојдовте на посредникот за раководење со Филтерот за злоупотреби.
 Филтерот за злоупотреби е автоматизиран програмски механизам за примена на автоматска хевристика врз сите дејства.
@@ -19574,7 +19574,7 @@ Filterbeschrijving: $7 ($8)',
 	'abusefilter-list-limit' => 'Aantal per pagina:',
 	'abusefilter-list-lastmodified' => 'Laatste wijziging',
 	'abusefilter-hidden' => 'Beperkt zichtbaar',
-	'abusefilter-unhidden' => 'Publiek',
+	'abusefilter-unhidden' => 'Openbaar',
 	'abusefilter-enabled' => 'Ingeschakeld',
 	'abusefilter-deleted' => 'Verwijderd',
 	'abusefilter-disabled' => 'Uitgeschakeld',
