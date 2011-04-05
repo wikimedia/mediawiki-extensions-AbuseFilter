@@ -10936,9 +10936,11 @@ $messages['gu'] = array(
 
 /** Manx (Gaelg)
  * @author MacTire02
+ * @author Shimmin Beg
  */
 $messages['gv'] = array(
 	'abusefilter-log-search-user' => 'Ymmydeyr:',
+	'abusefilter-log-hide-reason' => 'Fa:',
 	'abusefilter-list-status' => 'Staydys',
 );
 
@@ -16128,6 +16130,7 @@ Beschreiwung vum Filter: $7 ($8)',
 	'abusefilter-log-hidden' => '(Androung verstoppt)',
 	'abusefilter-log-hide' => 'verstoppen oder nees weisen',
 	'abusefilter-log-details-hidden' => 'Dir kënnt Detailer hei der vun net gesinn well e virun der Ëffentlechkeet verstoppt sinn.',
+	'abusefilter-log-hide-legend' => 'Rubrik am Logbuch verstoppen',
 	'abusefilter-log-hide-id' => 'Entrée vun der ID am Logbuch:',
 	'abusefilter-log-hide-hidden' => 'Dëst virun der Ëffentlechkeet verstoppen',
 	'abusefilter-log-hide-reason' => 'Grond:',
