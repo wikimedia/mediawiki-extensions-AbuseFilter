@@ -6666,7 +6666,11 @@ $messages['el'] = array(
 	'abusefilter-log-linkoncontribs-text' => 'Ιστορικό καταχρήσεων για αυτόν τον χρήστη',
 	'abusefilter-log-hidden' => '(κρυφή εγγραφή)',
 	'abusefilter-log-hide' => 'απόκρυψη ή επανεμφάνιση',
+	'abusefilter-log-hide-legend' => 'Αποκρύψτε το αρχείο καταγραφής',
+	'abusefilter-log-hide-id' => 'Σύνδεση εισόδου ID:',
+	'abusefilter-log-hide-hidden' => 'Απόκρυψη αυτής της  εγγραφής από την κοινή θέα',
 	'abusefilter-log-hide-reason' => 'Αιτία:',
+	'abusefilter-logentry-unsuppress' => 'αποκάλυψε "[[$1]]"',
 	'abusefilter-management' => 'Διαχείριση φίλτρου καταχρήσεων',
 	'abusefilter-list' => 'Όλα τα φίλτρα',
 	'abusefilter-list-id' => 'Ταυτότητα φίλτρου',
@@ -29963,12 +29967,12 @@ Nếu bạn tin rằng sửa đổi này là có tính xây dựng, bạn có th
 Miêu tả ngắn về quy định nguy hại mà tác vụ của bạn gặp phải là: $1",
 	'abusefilter-disallowed' => 'Tác vụ này đã được tự động xác định là nguy hại,
 và do đó không được phép thực hiện.
-Nếu bạn tin rằng sửa đổi của bạn là có tính xây dựng, xin hãy liên hệ với một người quản lý, và thông báo cho họ về những điều bạn đang cố gắng làm.
+Nếu bạn tin rằng sửa đổi của bạn là có tính xây dựng, xin hãy liên hệ với một quản lý viên, và thông báo cho họ về những điều bạn đang cố gắng làm.
 Miêu tả ngắn về quy luật lạm dụng mà tác vụ của bạn gặp phải là: $1',
 	'abusefilter-blocked-display' => 'Tác vụ này đã được tự động xác định là nguy hại,
 và bị ngăn không cho bạn thực hiện nó.
 Ngoài ra, để bảo vệ {{PAGENAME}}, tài khoản cá nhân của bạn và tất cả các địa chỉ IP đi cùng với nó đã bị cấm sửa đổi.
-Nếu điều này xảy ra do nhầm lẫn, xin hãy liên hệ với một người quản lý.
+Nếu điều này xảy ra do nhầm lẫn, xin hãy liên hệ với một quản lý viên.
 Miêu tả ngắn về quy luật lạm dụng mà tác vụ của bạn gặp phải là: $1',
 	'abusefilter-degrouped' => 'Tác vụ này đã được tự động xác định là nguy hại.
 Do đó, bạn không được phép thực hiện, và, vì tài khoản của bạn bị nghi là bị đánh cắp, tất cả các quyền đã bị gỡ bỏ.
