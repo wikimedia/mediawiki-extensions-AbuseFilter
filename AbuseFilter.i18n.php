@@ -707,47 +707,6 @@ $messages['niu'] = array(
 	'abusefilter-log-search-submit' => 'Kumi',
 );
 
-/** Dusun Bundu-liwan (Dusun Bundu-liwan)
- * @author FRANCIS5091
- * @author FRANELYA
- */
-$messages['dtp'] = array(
-	'abusefilter-desc' => 'Pokianu huristik mimpoporion hilo niditan',
-	'abusefilter' => 'Manahas sinalaguno nuludan',
-	'abuselog' => 'Log sinalaguno',
-	'abusefilter-intro' => 'Kopiwosian mongoi id kouroso mangaraja Manahas Sinalaguno.
-Manahas Sinalaguno nopo nga doungkaralano kumaraja  dit posusuangon momoripori iri numaan pokionuo id huristik mimpoporion montok oinsanan it maan.
-Kouroso diti popokito do lis panahas potumboyo, om pabanar dilo do maan modipaito.',
-	'abusefilter-mustbeeditor' => 'Montok do kotingoligan, iri mongongoguno miampai kasagaan do mongodipait panahas sinalaguno no milo do momoguno diti kouroso.',
-	'abusefilter-warning' => "'''Ponorohon''': Kinaraja diti noporianan nointutunan do kikoligogon.
-Niditan di awu nopongo maan pogulio do tiinu,
-om opinsugutan nu nopo do awu momongo niditan nga karaag do akaun nu toi ko maan antabai porotokol intonit ''IP''nu.
-Otumbayaan ko nopo do nopongo iti niditannu, maai nopo kaagu kotiko Pootodo do papatatap dilo.
-Kointalangan do sinalaguno diti kooturan di kohompit do niditannu nopo nga oboyo do: $1",
-	'abusefilter-disallowed' => 'Kinaraja diti noporianan nointutunan do kikoligogon, om ilo no do awu pasagaon.
-Niditan di awu nopongo maan pogulio do tiinu,
-Otumbayaan ko nopo do nopongo iti niditannu, maai gia sunudai it mintatamong  do nunu daa umbalan nu momonsoi. Kointalangan do sinalaguno diti kooturan di kohompit do kinarajanu nopo nga oboyo do: $1',
-	'abusefilter-blocked-display' => "Kinaraja diti noporianan nointutunan do kikoligogon, om nantaban ko do popotilombus dilo.
-Mooi do otingolig ilo {{SITENAME}} akaun momomogunonu om oinsanan porotokol intonit toi ''IP''nu nga nantaban do mongidit.
-Nung nokosilap iti, maai posunudo do mintatamong.
-Kointalangan do sinalaguno diti kooturan di kohompit do kinarajanu nopo nga oboyo do: $1",
-	'right-abusefilter-modify' => 'Alanai gagagan salahguno',
-	'right-abusefilter-view' => 'Intaai gagagan salaguno',
-	'right-abusefilter-log' => 'Intaai log salaguno',
-	'abusefilter-log-search-user' => 'Momoguno:',
-	'abusefilter-log-show-deleted' => 'Pokitono susuang poinlisok',
-	'abusefilter-log-search-submit' => 'Ihumo',
-	'abusefilter-log-linkoncontribs' => 'Log nasalaguno',
-	'abusefilter-log-hide-reason' => 'Sabab:',
-	'abusefilter-list-edit' => 'Idito',
-	'abusefilter-deleted' => 'Nopugas',
-	'abusefilter-hitcount' => '$1 {{PLURAL:$1|kotik|kokotik}}',
-	'abusefilter-list-options-submit' => 'Inwoguai',
-	'abusefilter-tools-subtitle' => 'Tangakakamot',
-	'abusefilter-tools-reautoconfirm-user' => 'Momoguno:',
-	'abusefilter-edit-tools' => 'Tangakakamot:',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -6564,6 +6523,47 @@ Za połne drobnostki glědaj [[Special:AbuseFilter/history|lisćinu]] nejnowšyc
 	'abusefilter-import-intro' => 'Móžoš toś ten interfejs wužywaś, aby importěrował filtry z drugich wikijow.
 Klikni w žrědłowem wikiju na "{{int:abusefilter-edit-export}}" pód "{{int:abusefilter-tools-subtitle}}" na wobźěłowańskem interfejsu. Kopěruj z tekstowego póla, kótarež se pokazujo do toś togo tekstowego póla a klikni pótom na "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'Daty importěrowaś',
+);
+
+/** Dusun Bundu-liwan (Dusun Bundu-liwan)
+ * @author FRANCIS5091
+ * @author FRANELYA
+ */
+$messages['dtp'] = array(
+	'abusefilter-desc' => 'Pokianu huristik mimpoporion hilo niditan',
+	'abusefilter' => 'Manahas sinalaguno nuludan',
+	'abuselog' => 'Log sinalaguno',
+	'abusefilter-intro' => 'Kopiwosian mongoi id kouroso mangaraja Manahas Sinalaguno.
+Manahas Sinalaguno nopo nga doungkaralano kumaraja  dit posusuangon momoripori iri numaan pokionuo id huristik mimpoporion montok oinsanan it maan.
+Kouroso diti popokito do lis panahas potumboyo, om pabanar dilo do maan modipaito.',
+	'abusefilter-mustbeeditor' => 'Montok do kotingoligan, iri mongongoguno miampai kasagaan do mongodipait panahas sinalaguno no milo do momoguno diti kouroso.',
+	'abusefilter-warning' => "'''Ponorohon''': Kinaraja diti noporianan nointutunan do kikoligogon.
+Niditan di awu nopongo maan pogulio do tiinu,
+om opinsugutan nu nopo do awu momongo niditan nga karaag do akaun nu toi ko maan antabai porotokol intonit ''IP''nu.
+Otumbayaan ko nopo do nopongo iti niditannu, maai nopo kaagu kotiko Pootodo do papatatap dilo.
+Kointalangan do sinalaguno diti kooturan di kohompit do niditannu nopo nga oboyo do: $1",
+	'abusefilter-disallowed' => 'Kinaraja diti noporianan nointutunan do kikoligogon, om ilo no do awu pasagaon.
+Niditan di awu nopongo maan pogulio do tiinu,
+Otumbayaan ko nopo do nopongo iti niditannu, maai gia sunudai it mintatamong  do nunu daa umbalan nu momonsoi. Kointalangan do sinalaguno diti kooturan di kohompit do kinarajanu nopo nga oboyo do: $1',
+	'abusefilter-blocked-display' => "Kinaraja diti noporianan nointutunan do kikoligogon, om nantaban ko do popotilombus dilo.
+Mooi do otingolig ilo {{SITENAME}} akaun momomogunonu om oinsanan porotokol intonit toi ''IP''nu nga nantaban do mongidit.
+Nung nokosilap iti, maai posunudo do mintatamong.
+Kointalangan do sinalaguno diti kooturan di kohompit do kinarajanu nopo nga oboyo do: $1",
+	'right-abusefilter-modify' => 'Alanai gagagan salahguno',
+	'right-abusefilter-view' => 'Intaai gagagan salaguno',
+	'right-abusefilter-log' => 'Intaai log salaguno',
+	'abusefilter-log-search-user' => 'Momoguno:',
+	'abusefilter-log-show-deleted' => 'Pokitono susuang poinlisok',
+	'abusefilter-log-search-submit' => 'Ihumo',
+	'abusefilter-log-linkoncontribs' => 'Log nasalaguno',
+	'abusefilter-log-hide-reason' => 'Sabab:',
+	'abusefilter-list-edit' => 'Idito',
+	'abusefilter-deleted' => 'Nopugas',
+	'abusefilter-hitcount' => '$1 {{PLURAL:$1|kotik|kokotik}}',
+	'abusefilter-list-options-submit' => 'Inwoguai',
+	'abusefilter-tools-subtitle' => 'Tangakakamot',
+	'abusefilter-tools-reautoconfirm-user' => 'Momoguno:',
+	'abusefilter-edit-tools' => 'Tangakakamot:',
 );
 
 /** Ewe (Eʋegbe) */
@@ -16437,6 +16437,19 @@ Fir weider Detailer, kuckt [[Special:AbuseFilter/history|d'Lëscht]] vun de reze
 Klickt op der originaler Wiki op "{{int:abusefilter-edit-export}}"  ënner "{{int:abusefilter-tools-subtitle}}" op dem Interface vun den Ännerungen.
 Kopéiert vun der Textkëscht déi opgeet an dës Textkëscht a klickt op "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'Donnéeën importéieren',
+);
+
+/** Lezghian (Лезги)
+ * @author Namik
+ */
+$messages['lez'] = array(
+	'abusefilter-log-search-submit' => 'Ахтармишун',
+	'abusefilter-log-hide-reason' => 'Кар',
+	'abusefilter-list-edit' => 'Дегишарун',
+	'abusefilter-deleted' => 'Къакъудун',
+	'abusefilter-edit-history' => 'Тарих',
+	'abusefilter-edit-builder-op-bool-and' => 'ва',
+	'abusefilter-topnav-home' => 'КIвал',
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)
