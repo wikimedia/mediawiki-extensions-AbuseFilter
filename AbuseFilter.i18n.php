@@ -2365,12 +2365,23 @@ $messages['bar'] = array(
 );
 
 /** Belarusian (Беларуская)
+ * @author LexArt
  * @author Тест
  */
 $messages['be'] = array(
+	'abusefilter-log-search-user' => 'Удзельнік:',
+	'abusefilter-log-search-title' => 'Загаловак:',
 	'abusefilter-log-hide-reason' => 'Прычына:',
+	'abusefilter-list-edit' => 'Правіць',
 	'abusefilter-edit-status-label' => 'Статыстыка:',
+	'abusefilter-edit-warn-actions' => 'Дзеянні:',
 	'abusefilter-edit-history' => 'Гісторыя:',
+	'abusefilter-edit-builder-op-bool-not' => 'Не (!)',
+	'abusefilter-edit-builder-op-bool-and' => 'І (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'Або (|)',
+	'abusefilter-edit-builder-group-funcs' => 'Функцыі',
+	'abusefilter-history-timestamp' => 'Час',
+	'abusefilter-history-comments' => 'Каментары',
 	'abusefilter-revert-filter' => 'Фільтр:',
 	'abusefilter-revert-confirm' => 'Пацвердзіць',
 );
@@ -8749,6 +8760,7 @@ $messages['fa'] = array(
  * @author Silvonen
  * @author Str4nd
  * @author Vililikku
+ * @author Zache
  * @author ZeiP
  */
 $messages['fi'] = array(
@@ -9066,10 +9078,10 @@ Merkintöjen tulisi olla lyhyitä ja ilman erikoismerkkejä.',
 	'abusefilter-exception-unexpectedatend' => 'Odottamaton ”$2” merkissä $1.',
 	'abusefilter-exception-expectednotfound' => '$2 odotettu merkissä $1, ei löytynyt (sen sijaan löytyi $3 $4).',
 	'abusefilter-exception-unrecognisedkeyword' => 'Tunnistamaton avainsana $2 merkissä $1.',
-	'abusefilter-exception-unexpectedtoken' => 'Odottamaton sane ”$3” (tyyppiä $2) kohdassa $1.',
+	'abusefilter-exception-unexpectedtoken' => 'Odottamaton merkkijono ”$3” (tyyppiä $2) kohdassa $1.',
 	'abusefilter-exception-unclosedstring' => 'Sulkematon merkkijono alkaen merkistä $1.',
 	'abusefilter-exception-invalidoperator' => 'Virheellinen operaattori ”$2” merkissä $1.',
-	'abusefilter-exception-unrecognisedtoken' => 'Tunnistamaton sane ”$2” kohdassa $1.',
+	'abusefilter-exception-unrecognisedtoken' => 'Tunnistamaton merkkijono ”$2” kohdassa $1.',
 	'abusefilter-exception-noparams' => 'Parametreja ei annettu funktiolle ”$2” merkissä $1.',
 	'abusefilter-exception-dividebyzero' => 'Laiton yritys jakaa $2 nollalla merkissä $1.',
 	'abusefilter-exception-unrecognisedvar' => 'Tunnistamaton muuttuja $2 merkissä $1',
@@ -16894,6 +16906,7 @@ Li edizion miga construtivi i sarà revertid à bott, e grand o repetud edizion 
 /** Lithuanian (Lietuvių)
  * @author Homo
  * @author Matasg
+ * @author Perkunas
  * @author Tomasdd
  * @author Vpovilaitis
  */
@@ -16949,6 +16962,7 @@ Taisyklės aprašymas: $1',
 	'abusefilter-log-search-user' => 'Naudotojas:',
 	'abusefilter-log-search-filter' => 'Filtro ID:',
 	'abusefilter-log-search-title' => 'Antraštė:',
+	'abusefilter-log-show-deleted' => 'Rodyti paslėptus įrašus',
 	'abusefilter-log-search-submit' => 'Ieškoti',
 	'abusefilter-log-entry' => '$1: $2 iššaukė piktnaudžiavimo filtrą, atlikdamas veiksmą "$3" puslapiui $4.
 Buvo panaudotas veiksmas: $5;
@@ -18691,9 +18705,9 @@ Huraian penapis: $7 ($8)',
 	'abusefilter-list-edit' => 'Sunting',
 	'abusefilter-list-details' => 'Butiran',
 	'abusefilter-hidden' => 'Rahsia',
-	'abusefilter-enabled' => 'Boleh',
+	'abusefilter-enabled' => 'Dihidupkan',
 	'abusefilter-deleted' => 'Dihapuskan',
-	'abusefilter-disabled' => 'Dilumpuhkan',
+	'abusefilter-disabled' => 'Dimatikan',
 	'abusefilter-new' => 'Cipta penapis baru',
 	'abusefilter-links' => 'Pautan-pautan berguna:',
 	'abusefilter-tools-modifiertest-submit' => 'Uji',
@@ -18760,7 +18774,7 @@ Huraian penapis: $7 ($8)',
 	'abusefilter-edit-builder-vars-user-editcount' => 'Jumlah suntingan pengguna',
 	'abusefilter-edit-builder-vars-user-age' => 'Umur akaun pengguna',
 	'abusefilter-edit-builder-vars-user-name' => 'Nama akaun pengguna',
-	'abusefilter-history-enabled' => 'Boleh',
+	'abusefilter-history-enabled' => 'Dihidupkan',
 	'abusefilter-history-timestamp' => 'Waktu',
 	'abusefilter-history-user' => 'Pengguna',
 	'abusefilter-history-actions' => 'Tindakan',
