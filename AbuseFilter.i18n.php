@@ -1933,10 +1933,12 @@ $messages['as'] = array(
 );
 
 /** Azerbaijani (Azərbaycanca)
+ * @author Hydra
  * @author PPerviz
  * @author Sortilegus
  */
 $messages['az'] = array(
+	'abusefilter-blocker' => 'Dəyişiklik süzgəci',
 	'abusefilter-log-search-submit' => 'Axtar',
 	'abusefilter-action-warn' => 'Xəbərdarlıq',
 	'abusefilter-examine-user' => 'İstifadəçi:',
@@ -17996,7 +17998,7 @@ $messages['mk'] = array(
 	'abusefilter-edit-builder-op-comparison-lte' => 'Помало или еднакво со (<=)',
 	'abusefilter-edit-builder-op-comparison-gte' => 'Поголемо или еднакво со (>=)',
 	'abusefilter-edit-builder-group-op-bool' => 'Булови оператори',
-	'abusefilter-edit-builder-op-bool-not' => 'Not (!)',
+	'abusefilter-edit-builder-op-bool-not' => 'Не (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'И (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Или (|)',
 	'abusefilter-edit-builder-op-bool-xor' => 'ЕКСИЛИ (^)',
@@ -21101,10 +21103,27 @@ $messages['or'] = array(
 	'abusefilter-log-search-title' => 'ନାଆଁ:',
 	'abusefilter-log-show-deleted' => 'ଲୁଚାଯାଇଥିବା ଏଁଟ୍ରିଗୁଡ଼ିକ ଦେଖାଇବା',
 	'abusefilter-log-search-submit' => 'ଖୋଜିବା',
+	'abusefilter-log-detailslink' => 'ଆହୁରି ଅଧିକ',
+	'abusefilter-log-hidelink' => 'ଦେଖିବାକୁ ବଦଳାଇବା',
+	'abusefilter-log-details-legend' => '$1 ପାଇଁ ଲଗ ପ୍ରବେଶ',
+	'abusefilter-log-details-var' => 'ବଦଳୁଥିବା',
+	'abusefilter-log-details-val' => 'ମୂଲ୍ୟ',
+	'abusefilter-log-details-private' => 'ଗୋପନ ଡାଟା',
+	'abusefilter-log-details-ip' => 'ଆଇ.ପି. ଠିକଣା ତିଆରି କରୁଛି',
+	'abusefilter-log-noactions' => 'କିଛି ନାହିଁ',
 	'abusefilter-log-details-diff' => "'''ଏଡିଟ'''ରେ କରାଯାଇଥିବା ବଦଳ",
+	'abusefilter-log-linkoncontribs-text' => 'ଏହି ବ୍ୟବାହାରକାରୀଙ୍କ ପାଇଁ ଖରାପ ଲଗ',
+	'abusefilter-log-hidden' => '(ଲୁଚାଯାଇଥିବା ପ୍ରବେଶ)',
+	'abusefilter-log-hide' => 'ଲୁଚାଇବା ବା ଦେଖାଇବା',
+	'abusefilter-log-details-hidden' => 'ଆପଣ ଏହି ଏଣ୍ଟ୍ରି ଉପରେ ବିଶେଷ କିଛି ଜାଣିପାରିବେ ନାହିଁ କାରଣ ଏହା ସାଧାରଣ ନଜର ଆଢୁଆଳରେ ରଖାଯାଇଛି ।',
+	'abusefilter-log-hide-legend' => 'ଲଗ ଏଣ୍ଟ୍ରି ଲୁଚାଇବା',
+	'abusefilter-log-hide-id' => 'ଲଗ ଏଣ୍ଟ୍ରି ଆଇ.ଡ଼ି:',
+	'abusefilter-log-hide-hidden' => 'ସମସ୍ତଙ୍କ ଦେଖିବାରୁ ଏହାକୁ ଅଟକାଇବା',
 	'abusefilter-log-hide-reason' => 'କାରଣ',
+	'abusefilter-log-hide-forbidden' => 'ଲଗ ପ୍ରବେଶସବୁକୁ ଲୁଚାଇବା ପାଇଁ ଏପଣଙ୍କୁ ଅନୁମତି ଦିଆଯାଇନାହିଁ ।',
 	'abusefilter-logentry-suppress' => '"[[$1]]" ଲୁଚାଇଦିଆଗଲା',
 	'abusefilter-logentry-unsuppress' => 'ଲୁଚିଥିବା "[[$1]]"କୁ ଦେଖାଇଦିଆଗଲା',
+	'abusefilter-management' => 'ଗାଳି ଗୁଲଜ ରୋକିବା ବ୍ୟବସ୍ଥା',
 	'abusefilter-list' => 'ସବୁ ଛଣା',
 	'abusefilter-list-consequences' => 'ପରିଣାମସବୁ',
 	'abusefilter-list-visibility' => 'ଦେଖଣା',
