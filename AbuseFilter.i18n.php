@@ -10011,6 +10011,21 @@ Copiyéd la zona de tèxto que sè montre et pués côlâd-lo dens cela zona de 
 	'abusefilter-import-submit' => 'Importar des balyês',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'abusefilter-log-search-user' => 'Utent:',
+	'abusefilter-log-search-title' => 'Titul:',
+	'abusefilter-log-show-deleted' => 'Mostre vôs platadis',
+	'abusefilter-log-search-submit' => 'Cîr',
+	'abusefilter-log-detailslink' => 'detais',
+	'abusefilter-log-details-var' => 'Variabil',
+	'abusefilter-log-noactions' => 'nissune',
+	'abusefilter-log-hide-reason' => 'Reson:',
+	'abusefilter-list-status' => 'Stât',
+);
+
 /** Western Frisian (Frysk)
  * @author Pyt
  * @author Snakesteuben
@@ -13415,8 +13430,8 @@ Penanda harus pendek, dan seharusnya tidak berisi karakter khusus.',
 	'abusefilter-edit-builder-vars-new-text' => 'Teks wiki halaman baru, setelah penyuntingan',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Teks halaman baru, menghilangkan markah apa pun',
 	'abusefilter-edit-builder-vars-new-html' => 'Pengurai sumber HTML dari revisi baru',
-	'abusefilter-edit-builder-vars-restrictions-edit' => 'Sunting tingkat perlindungan halaman',
-	'abusefilter-edit-builder-vars-restrictions-move' => 'buang tingkat perlindungan halaman',
+	'abusefilter-edit-builder-vars-restrictions-edit' => 'Sunting tingkat pelindungan halaman',
+	'abusefilter-edit-builder-vars-restrictions-move' => 'buang tingkat pelindungan halaman',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Teks halaman lama, menghilangkan markah apa pun',
 	'abusefilter-edit-builder-vars-old-links' => 'Pranala dalam halaman, sebelum penyuntingan',
 	'abusefilter-edit-builder-vars-old-html' => 'Halaman lama tekswiki, uraikan ke HTML',
@@ -22059,7 +22074,9 @@ $messages['ps'] = array(
 	'abusefilter-log-search-user' => 'کارن:',
 	'abusefilter-log-search-title' => 'سرليک:',
 	'abusefilter-log-search-submit' => 'پلټل',
+	'abusefilter-log-details-val' => 'ارزښت',
 	'abusefilter-log-noactions' => 'هېڅ',
+	'abusefilter-log-hide-reason' => 'سبب:',
 	'abusefilter-list' => 'ټول چاڼګران',
 	'abusefilter-list-status' => 'دريځ',
 	'abusefilter-list-edit' => 'سمون',
@@ -22075,10 +22092,11 @@ $messages['ps'] = array(
 	'abusefilter-tools-reautoconfirm-user' => 'کارن:',
 	'abusefilter-edit-new' => 'نوی چاڼګر',
 	'abusefilter-edit-save' => 'چاڼګر خوندي کول',
-	'abusefilter-edit-flags' => 'بېرغونه:',
+	'abusefilter-edit-flags' => 'رپيان:',
 	'abusefilter-edit-notes' => "يادونې:
 :''(شخصي)",
 	'abusefilter-edit-throttle-period' => 'د وخت موده:',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|ثانيه|ثانيې}}',
 	'abusefilter-edit-warn-other' => 'بل پيغام',
 	'abusefilter-edit-warn-edit' => 'ټاکلی پيغام سمول/جوړول',
 	'abusefilter-edit-history' => 'پېښليک:',
@@ -22098,7 +22116,7 @@ $messages['ps'] = array(
 	'abusefilter-history-global' => 'نړېوال',
 	'abusefilter-history-timestamp' => 'وخت',
 	'abusefilter-history-user' => 'کارن',
-	'abusefilter-history-flags' => 'بيرغونه',
+	'abusefilter-history-flags' => 'رپيان',
 	'abusefilter-history-comments' => 'تبصرې',
 	'abusefilter-history-deleted' => 'ړنګ شو',
 	'abusefilter-history-filterid' => 'چاڼګر',
