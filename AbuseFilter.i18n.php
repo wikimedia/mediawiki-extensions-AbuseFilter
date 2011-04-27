@@ -19092,6 +19092,18 @@ $messages['mt'] = array(
 	'abusefilter-history-comments' => 'Kummenti',
 );
 
+/** Burmese (မြန်မာဘာသာ)
+ * @author Erikoo
+ */
+$messages['my'] = array(
+	'abusefilter-log-search-user' => 'အသုံးပြုသူ -',
+	'abusefilter-log-search-title' => 'ခေါင်းစဉ် :',
+	'abusefilter-log-show-deleted' => 'ဝှက်ထားသော ကဏ္ဍများကို ပြရန်',
+	'abusefilter-log-search-submit' => 'ရှာ​ဖွေ​ရန်​',
+	'abusefilter-log-noactions' => 'အမည်ညွှန်းမရှိ',
+	'abusefilter-log-hide-reason' => 'အ​ကြောင်း​ပြ​ချက်:',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */
@@ -27415,10 +27427,17 @@ $messages['ta'] = array(
 	'abusefilter-accountreserved' => 'இப்பயனர் கணக்குப்பெயர் முறைகேடு வடிகட்டி பயன்படுத்துவதற்காக ஒதுக்கப்பட்டது',
 	'right-abusefilter-modify' => 'முறைகேடு வடிகட்டியை மாற்றியமை',
 	'right-abusefilter-log' => 'முறைகேடு பதிகையைப் பார்',
+	'right-abusefilter-log-detail' => 'விரிவான முறைகேடு பதிவேட்டுப் பதிவுகளைப் பார்',
+	'right-abusefilter-private' => 'தனியார் தரவை முறைகேடு பதிவேட்டில் பார்',
+	'right-abusefilter-revert' => 'குறிப்பிட்ட முறைகேடு வடிகட்டி செய்த அனைத்து மாற்றங்களையும் முன்னிலைக்கு மாற்று',
+	'right-abusefilter-view-private' => 'தனியாரது எனக் குறிக்கப்பெற்ற  முறைகேடு வடிகட்டிகளைப் பார்',
 	'right-abusefilter-hide-log' => 'முறைகேடு பதிவில் உள்ள உள்ளீடுகளை மறை',
 	'right-abusefilter-hidden-log' => 'மறைக்கப்பட்டுள்ள முறைகேடு பதிகைகளைப் பார்',
 	'action-abusefilter-modify' => 'முறைகேடு வடிகட்டியை மாற்றியமை',
 	'action-abusefilter-view' => 'முறைகேடு வடிகட்டியைப் பார்',
+	'action-abusefilter-log' => 'முறைகேடுப் பதிவேட்டைப் பார்',
+	'action-abusefilter-private' => 'தனியார் தரவை முறைகேடுப் பதிவேட்டில் பார்',
+	'action-abusefilter-modify-restricted' => 'முறைகேடு வடிகட்டிகளைக் கட்டுக்குளடங்கிய செயல்களால் மாற்று',
 	'abusefilter-log' => 'முறைகேடு வடிகட்டிப் பதிகை',
 	'abusefilter-log-search-user' => 'பயனர்:',
 	'abusefilter-log-search-filter' => 'வடிகட்டியின் அடையாள எண்:',
@@ -27581,6 +27600,7 @@ $messages['ta'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Kiranmayee
  * @author Veeven
  * @author వైజాసత్య
@@ -27589,7 +27609,30 @@ $messages['te'] = array(
 	'abusefilter' => 'దుర్వినియోగ వడపోతల స్వరూపణం',
 	'abuselog' => 'దురుపయోగాల చర్యానివేదిక',
 	'abusefilter-mustbeeditor' => 'భద్రతా కారణాల దృష్ట్యా, దుర్వినియోగ వడపోతలను మార్చే హక్కున్న వాడుకరులు మాత్రమే ఈ ముఖాంతరాన్ని ఉపయోగించవచ్చు.',
+	'abusefilter-warning' => "'''హెచ్చరిక”’: ఈ చర్య హానికరమని ఆటోమాటిగ్గా గుర్తించబడింది.
+పసలేని మార్పుచేర్పులు వెంటనే రద్దు చెయ్యబడతాయి,
+కొట్టొచ్చినట్టుగా కనబడే తప్పులు లేదా పదేపదే చేసే పసలేని మార్పుచేర్పులు మీ ఖాతా లేదా ఐపీ అడ్రసు నిషేధానికి దారి తీస్తాయి.
+ఈ మార్పు సరైనదేనని మీరు నమ్మితే, మళ్ళీ పంపించు నొక్కి నిర్ధారించండి.
+మీ చర్యను దుర్వినియోగంగా ఎత్తిచూపిన సదరు నియమం క్లుప్తంగా ఇలా వివరిస్తోంది: $1",
+	'abusefilter-disallowed' => 'ఈ చర్య హానికరమని ఆటోమాటిగ్గా గుర్తించబడింది. అంచేత నిరాకరించాం.
+ఒకవేళ మీ మార్పుచేర్పులు సరైనవని మీరు నమ్మితే, మీరు చెయ్యదలచిన దాని గురించి ఓ నిర్వాహకునికి తెలియబరచండి.
+మీ చర్యను దుర్వినియోగంగా ఎత్తిచూపిన సదరు నియమం క్లుప్తంగా ఇలా వివరిస్తోంది: $1',
+	'abusefilter-blocked-display' => 'ఈ చర్య హానికరమని ఆటోమాటిగ్గా గుర్తించబడింది. అంచేత దాన్ని చెయ్యకుండా మిమ్మల్ని నిరోధించాం.
+అంతేకాక, {{SITENAME}} ను పరిరక్షించేందుకుగాను, మీ వాడుకరిఖాతా, దానికి సంబంధించిన ఐపీ అడ్రసుల ద్వారా మార్పుచేర్పులు చెయ్యకుండా నిరోధించాం.
+ఒకవేళ ఇది పొరపాటున జరిగి ఉంటే, ఎవరైనా ఒక నిర్వాహకుని సంప్రదించండి.
+మీ చర్యను దుర్వినియోగంగా ఎత్తిచూపిన సదరు నియమం క్లుప్తంగా ఇలా చెబుతోంది: $1',
+	'abusefilter-degrouped' => 'ఈ చర్య హానికరమని ఆటోమాటిగ్గా గుర్తించబడింది. 
+పర్యవసానంగా, దాన్ని నిరాకరించాం. అంతేకాక, మీ ఖాతా చౌర్యానికి గురైందని అనుమానిస్తున్నాం కాబట్టి, దానికి ఉన్న అన్ని హక్కులనూ వెనక్కి తీసేసుకున్నాం.
+ఒకవేళ ఇది పొరపాటున జరిగిందని మీరు నమ్మితే, ఎవరైనా ఒక అధికారిని సంప్రదించి, వివరణ ఇవ్వండి. మీ హక్కులను పునరుద్ధరించవచ్చు.
+మీ చర్యను దుర్వినియోగంగా ఎత్తిచూపిన సదరు నియమం క్లుప్తంగా ఇలా చెబుతోంది: $1',
+	'abusefilter-autopromote-blocked' => 'ఈ చర్య హానికరమని ఆటోమాటిగ్గా గుర్తించబడటంతో, దాన్ని నిరాకరించాం.
+అంతేకాక, అనుభవం ఉన్న పాత ఖాతాలకు మామూలుగా ఇచ్చే అనుమతులను భద్రత దృష్ట్యా మీ ఖాతా నుండి తాత్కాలికంగా వెనక్కి తీసుకున్నాం. 
+మీ చర్యను దుర్వినియోగంగా ఎత్తిచూపిన సదరు నియమం క్లుప్తంగా ఇలా చెబుతోంది: $1',
 	'abusefilter-blocker' => 'దురుపయోగాల జల్లెడ',
+	'abusefilter-blockreason' => 'దుర్వినియోగపు వడపోతకం ఆటోమాటిగ్గా నిరోధించింది.
+సంబంధిత నియమపు క్లుప్త వివరణ: $1',
+	'abusefilter-degroupreason' => 'దుర్వినియోగ వడపోతకం ఆటోమాటిగ్గా హక్కులను వెనక్కి లాగేసుకుంది.
+నియమం యొక్క వివరణ: $1',
 	'abusefilter-accountreserved' => 'ఈ ఖాతా పేరుని దుర్వినియోగ వడపోత వినియోగానికై ప్రత్యేకించారు.',
 	'right-abusefilter-modify' => 'దుర్వినియోగ వడపోతలను మార్చగలగడం',
 	'right-abusefilter-view' => 'దుర్వినియోగ వడపోతలని చూడగలగడం',
@@ -27620,6 +27663,9 @@ $messages['te'] = array(
 	'abusefilter-log-entry' => '$1: $4లో చర్య "$3"ని చెయ్యడం ద్వారా $2 ఒక దుర్వినియోగ వడపోతని కదిలించారు.
 తీసుకున్న చర్య: $5;
 వడపోత వివరణ: $6',
+	'abusefilter-log-detailedentry-meta' => '↓ $1: $2, $3 ను ప్రయోగించారు. దాంతో $5 పై "$4" చర్య జరిగింది.
+జరిగిన చర్యలు: $6;
+వడపోతకం వివరణ: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'సార్వత్రిక వడపోత $1',
 	'abusefilter-log-detailedentry-local' => 'వడపోత $1',
 	'abusefilter-log-detailslink' => 'వివరాలు',
@@ -27677,8 +27723,11 @@ $messages['te'] = array(
 	'abusefilter-list-options-hidedisabled' => 'అచేతన వడపోతలను దాచు',
 	'abusefilter-list-options-submit' => 'తాజాకరించు',
 	'abusefilter-tools-subtitle' => 'పనిముట్లు',
+	'abusefilter-tools-text' => 'దుర్వినియోగ వడపోతకాలను తయారుచెయ్యడంలోను, డీబగ్గింగులోనూ ఉపయోగపడగల పరికరాలు కొన్నింటిని చూడండి.',
+	'abusefilter-tools-expr' => 'పదబంధపు పరీక్షకం',
 	'abusefilter-tools-submitexpr' => 'పరీక్షించు',
 	'abusefilter-tools-reautoconfirm-user' => 'వాడుకరి:',
+	'abusefilter-status' => 'గత $1 {{PLURAL:$1|చర్య|చర్యల}}లో $2 ($3%) కండిషన్ల పరిమితి అయిన $4ను {{PLURAL:$2|చేరుకుంది|చేరుకున్నాయి}}, మరొక $5 ($6%) ప్రస్తుతం చేతనంగా ఉన్న వడపోతలలో ఒకదానితో {{PLURAL:$5|సరిపోలుతోంది|సరిపోలుతున్నాయి}}.',
 	'abusefilter-edit-subtitle' => '$1 జల్లెడను దిద్దుతున్నారు',
 	'abusefilter-edit-status-label' => 'గణాంకాలు:',
 	'abusefilter-edit-new' => 'కొత్త జల్లెడ',
@@ -30378,12 +30427,12 @@ Nếu bạn tin rằng sửa đổi này là có tính xây dựng, bạn có th
 Miêu tả ngắn về quy định nguy hại mà tác vụ của bạn gặp phải là: $1",
 	'abusefilter-disallowed' => 'Tác vụ này đã được tự động xác định là nguy hại,
 và do đó không được phép thực hiện.
-Nếu bạn tin rằng sửa đổi của bạn là có tính xây dựng, xin hãy liên hệ với một quản lý viên, và thông báo cho họ về những điều bạn đang cố gắng làm.
+Nếu bạn tin rằng sửa đổi của bạn là có tính xây dựng, xin hãy liên hệ với một bảo quản viên, và thông báo cho họ về những điều bạn đang cố gắng làm.
 Miêu tả ngắn về quy luật lạm dụng mà tác vụ của bạn gặp phải là: $1',
 	'abusefilter-blocked-display' => 'Tác vụ này đã được tự động xác định là nguy hại,
 và bị ngăn không cho bạn thực hiện nó.
 Ngoài ra, để bảo vệ {{PAGENAME}}, tài khoản cá nhân của bạn và tất cả các địa chỉ IP đi cùng với nó đã bị cấm sửa đổi.
-Nếu điều này xảy ra do nhầm lẫn, xin hãy liên hệ với một quản lý viên.
+Nếu điều này xảy ra do nhầm lẫn, xin hãy liên hệ với một bảo quản viên.
 Miêu tả ngắn về quy luật lạm dụng mà tác vụ của bạn gặp phải là: $1',
 	'abusefilter-degrouped' => 'Tác vụ này đã được tự động xác định là nguy hại.
 Do đó, bạn không được phép thực hiện, và, vì tài khoản của bạn bị nghi là bị đánh cắp, tất cả các quyền đã bị gỡ bỏ.
