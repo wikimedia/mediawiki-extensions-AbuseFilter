@@ -1940,10 +1940,12 @@ $messages['as'] = array(
  * @author Hydra
  * @author PPerviz
  * @author Sortilegus
+ * @author Vago
  */
 $messages['az'] = array(
 	'abusefilter-blocker' => 'Dəyişiklik süzgəci',
 	'abusefilter-log-search-user' => 'İstifadəçi:',
+	'abusefilter-log-search-title' => 'Başlıq:',
 	'abusefilter-log-search-submit' => 'Axtar',
 	'abusefilter-log-noactions' => 'heç biri',
 	'abusefilter-log-hide-reason' => 'Səbəb:',
@@ -1956,6 +1958,7 @@ $messages['az'] = array(
 	'abusefilter-edit-history' => 'Tarixçə:',
 	'abusefilter-edit-builder-op-bool-not' => 'Qeyd (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'Və (&)',
+	'abusefilter-edit-builder-op-bool-xor' => 'XOR (^)',
 	'abusefilter-history-global' => 'Qlobal',
 	'abusefilter-history-user' => 'İstifadəçi',
 	'abusefilter-history-select-user' => 'İstifadəçi:',
@@ -17167,6 +17170,9 @@ Filtro aprašymas: $7 ($8)',
 	'abusefilter-log-details-diff' => 'Redagavimo pakeitimai',
 	'abusefilter-log-linkoncontribs' => 'piktnaudžiavimų protokolas',
 	'abusefilter-log-linkoncontribs-text' => 'Šio naudotojo piktnaudžiavimų protokolas',
+	'abusefilter-log-hidden' => '(paslėptas įrašas)',
+	'abusefilter-log-hide-legend' => 'Slėpti žurnalo įrašą',
+	'abusefilter-log-hide-reason' => 'Priežastis',
 	'abusefilter-management' => 'Piktnaudžiavimo filtrų valdymas',
 	'abusefilter-list' => 'Visi filtrai',
 	'abusefilter-list-id' => 'Filtro ID',
@@ -17269,6 +17275,8 @@ Prašau kreiptis į vartotoją, turintį teisę naudoti uždraustus veiksmus, at
 	'abusefilter-edit-test-link' => 'Šį filtrą testuoti naujausiems pakeitimams',
 	'abusefilter-edit-global' => 'Panaudoti šį filtrą visuotinai',
 	'abusefilter-edit-export' => 'Eksportuoti šį filtrą į kitą wiki',
+	'abusefilter-edit-syntaxok' => 'Sintaksės klaidų nerasta.',
+	'abusefilter-edit-syntaxerr' => 'Rasta sintaksės klaida: $1',
 	'abusefilter-edit-builder-select' => 'Pasirinkite variantą įstatymui kursoriaus pozicijoje',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetinės operacijos',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Sudėtis (+)',
