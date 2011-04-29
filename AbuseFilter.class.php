@@ -143,6 +143,9 @@ class AbuseFilter {
 		$links = array();
 
 		foreach ( $linkDefs as $name => $page ) {
+			// Give grep a chance to find the usages:
+			// abusefilter-topnav-home, abusefilter-topnav-test, abusefilter-topnav-examine
+			// abusefilter-topnav-log, abusefilter-topnav-tools, abusefilter-topnav-import
 			$msgName = "abusefilter-topnav-$name";
 
 			if ( isset( $msgOverrides[$name] ) ) {
@@ -159,12 +162,12 @@ class AbuseFilter {
 			}
 		}
 
-		$linkStr = '(' . $wgLang->pipeList( $links ) . ')';
+		$linkStr = wfMsg( 'parentheses', $wgLang->pipeList( $links ) );
 		$linkStr = wfMsgExt( 'abusefilter-topnav', 'parseinline' ) . " $linkStr";
 
 		$linkStr = Xml::tags( 'div', array( 'class' => 'mw-abusefilter-navigation' ), $linkStr );
 
-		$out->addHTML( $linkStr );
+		$out->setSubtitle( $linkStr );
 	}
 
 	/**
