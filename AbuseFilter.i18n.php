@@ -14442,6 +14442,7 @@ Copiare dalla casella che appare e copiare in questa casella, quindi fare clic s
  * @author Hosiryuhosi
  * @author Mizusumashi
  * @author Muttley
+ * @author Ohgi
  * @author Yanajin66
  * @author 青子守歌
  */
@@ -14501,7 +14502,7 @@ $messages['ja'] = array(
 	'abusefilter-log-search' => '不正利用記録を検索',
 	'abusefilter-log-search-user' => '利用者:',
 	'abusefilter-log-search-filter' => 'フィルターID:',
-	'abusefilter-log-search-title' => 'タイトル:',
+	'abusefilter-log-search-title' => 'ページ名:',
 	'abusefilter-log-show-deleted' => '隠された項目を表示',
 	'abusefilter-log-search-submit' => '検索',
 	'abusefilter-log-entry' => '$1: $2 が $4 で「$3」操作を行い不正利用フィルターが発動しました。
