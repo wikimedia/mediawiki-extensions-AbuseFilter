@@ -20467,8 +20467,62 @@ Zie de [[Special:AbuseFilter/history|lijst met recente filterwijzigingen]] voor 
 	'abusefilter-diff-backhistory' => 'Terug naar de filtergeschiedenis',
 	'abusefilter-import-intro' => 'U kunt deze interface gebruiken om filters van andere wiki\'s te importeren.
 Klik "{{int:abusefilter-edit-export}}i" bij "{{int:abusefilter-tools-subtitle}}".
-Kopieer de tekst die in het bewerkingsvenster verschijnt naar dit bewerkingsvenster en klik dan "{{int:abusefilter-import-submit}}".',
+Kopieer de tekst die in het bewerkingsvenster verschijnt naar dit bewerkingsvenster en klik dan op "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Filtergegevens importeren',
+);
+
+/** ‪Nederlands (informeel)‬ (‪Nederlands (informeel)‬)
+ * @author Siebrand
+ */
+$messages['nl-informal'] = array(
+	'abusefilter-warning' => "'''Waarschuwing''': Deze handeling is automatisch geïdentificeerd als schadelijk.
+Onconstructieve bewerkingen worden snel teruggedraaid, en herhaald onconstructief bewerken eindigt in een blokkade van jouw gebruiker of jouw IP-adres.
+Als je denkt dat deze bewerking wel constructief is, klik dan opnieuw op \"Pagina opslaan\" om de bewerking te bevestigen.
+Een korte beschrijving van de regel op basis waarvan je bewerking is tegengehouden volgt nu: \$1",
+	'abusefilter-disallowed' => 'Deze handeling is automatisch geïdentificeerd als schadelijk, en daarom niet toegelaten.
+Als je denkt dat je bewerking wel constructief was, rapporteer dan aan de beheerder wat je probeerde te doen.
+Een korte beschrijving van de regel op basis waarvan je bewerking is tegengehouden volgt nu: $1',
+	'abusefilter-blocked-display' => 'Deze handeling is automatisch geïdentificeerd als schadelijk. Daarom is deze niet uitgevoerd.
+Om {{SITENAME}} te beschermen zijn je gebruiker en alle bijbehorende IP-adressen geblokkeerd.
+Als deze maatregel onterecht is genomen, neem dan contact op met een beheerder.
+Een korte beschrijving van de regel op basis waarvan je bewerking is tegengehouden volgt nu: $1',
+	'abusefilter-degrouped' => 'Deze handeling is automatisch geïdentificeerd als schadelijk.
+Omdat is vastgesteld dat deze gebruiker mogelijk door iemand anders wordt misbruikt, zijn alle rechten ingetrokken.
+Als deze maatregel onterecht is genomen, neem dan contact op met een bureaucraat en licht deze handeling toe, zodat je rechten hersteld kunnen worden.
+Een korte beschrijving van de regel op basis waarvan je bewerking is tegengehouden volgt nu: $1',
+	'abusefilter-autopromote-blocked' => 'Deze handeling is automatisch geïdentificeerd als schadelijk. Daarom is deze niet uitgevoerd.
+Als aanvullende veiligheidsmaatregel zijn een aantal automatisch toegekende rechten voor je gebruiker tijdelijk ingetrokken.
+Een korte beschrijving van de regel op basis waarvan je bewerking is tegengehouden volgt nu: $1',
+	'abusefilter-log-details-hidden' => 'Je kunt de details van deze melding niet bekijken omdat deze verborgen is.',
+	'abusefilter-log-hide-forbidden' => 'Je hebt niet de juiste rechten om meldingen in het filterlogboek te verbergen.',
+	'abusefilter-reautoconfirm-notallowed' => 'Je hebt geen rechten om de automatisch bevestigde status opnieuw in te stellen.',
+	'abusefilter-edit-oldwarning' => '<strong>Je bent een oude versie van dit  filter aan het bewerken.
+De weergegeven statistieken gelden voor de meest recente versie van het filter.
+Als je je wijzigingen opslaat, overschrijf je alle wijzigingen die na deze versie zijn gemaakt.</strong> &bull;
+[[Special:AbuseFilter/history/$2|Terug naar de geschiedenis van dit filter]]',
+	'abusefilter-edit-denied' => 'Je mag de details van dit filter niet bekijken, omdat die niet publiekelijk zichtbaar zijn',
+	'abusefilter-edit-restricted' => 'Je kunt dit filter niet bewerken omdat die één of meerdere beperkte handelingen bevat.
+Vraag een gebruiker met toestemming om beperkte handelingen toe te voegen om de wijziging voor je te maken.',
+	'abusefilter-edit-bad-tags' => 'Een of meer van de labels die je hebt opgegeven is niet geldig.
+Labels moeten kort zijn en mogen geen speciale tekens bevatten.',
+	'abusefilter-edit-notallowed' => 'Je hebt geen rechten om filters aan te maken of te wijzigen',
+	'abusefilter-history-error-hidden' => 'Het filter dat je hebt opgevraagd is verborgen en je kunt de geschiedenis niet bekijken.',
+	'abusefilter-revert-intro' => 'Via dit formulier kan je alle wijzigingen die door het filter via filter $1 gemaakt zijn terugdraaien.
+Gebruik dit hulpmiddel zorgvuldig.',
+	'abusefilter-revert-preview-intro' => 'Hieronder staan de maatregelen die het filter heeft genomen die door deze handeling worden teruggedraaid.
+Controleer de terug te draaien maatregelen zorgvuldig, en klik "Bevestigen" om je selectie te bevestigen.',
+	'abusefilter-revert-success' => 'Je hebt alle maatregelen die door het filter via [[Special:AbuseFilter/$1|filter $1]] zijn genomen teruggedraaid.',
+	'abusefilter-test-intro' => 'Op deze pagina kan je een ingegeven filter controleren met de laatste {{PLURAL:$1|wijzing|$1 wijzingen}}.
+Geef een filternummer in om een bestaand filter te laden en klik daarna op de knop "Laden".',
+	'abusefilter-test-syntaxerr' => 'Het filter dat je hebt ingevoerd bevat een syntaxisfout.
+Door op "Syntaxis controleren" te klikken krijg je een volledige toelichting.',
+	'abusefilter-examine-intro' => 'Via deze pagina kan je de door het filter aangemaakte variabelen voor een individuele wijziging onderzoeken, en deze testen tegen filters.',
+	'abusefilter-examine-notfound' => 'De wijziging die je hebt opgevraagd is niet aangetroffen.',
+	'abusefilter-examine-incompatible' => 'Het filter ondersteunt de wijziging die je hebt opgevraagd niet',
+	'abusefilter-examine-noresults' => 'Er zijn geen resultaten gevonden voor de zoekopdrachtparameters die je hebt opgegeven.',
+	'abusefilter-import-intro' => 'Je kunt deze interface gebruiken om filters van andere wiki\'s te importeren.
+Klik "{{int:abusefilter-edit-export}}i" bij "{{int:abusefilter-tools-subtitle}}".
+Kopieer de tekst die in het bewerkingsvenster verschijnt naar dit bewerkingsvenster en klik dan op "{{int:abusefilter-import-submit}}".',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
