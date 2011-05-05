@@ -5251,6 +5251,15 @@ Zkopírujte si text, který se objeví v rámečku, vložte ho do tohoto formul�
 	'abusefilter-import-submit' => 'Importovat data',
 );
 
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'abusefilter-log-search-user' => 'по́льꙃєватєл҄ь :',
+	'abusefilter-log-search-title' => 'страницѧ имѧ :',
+	'abusefilter-log-hide-reason' => 'какъ съмꙑслъ :',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
