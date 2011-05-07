@@ -1935,6 +1935,22 @@ $messages['as'] = array(
 	'abusefilter-log-search-submit' => 'সন্ধান',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'abusefilter-log-search-user' => 'Usuariu:',
+	'abusefilter-log-search-title' => 'Títulu:',
+	'abusefilter-log-show-deleted' => 'Amosar entraes anubríes',
+	'abusefilter-log-search-submit' => 'Guetar',
+	'abusefilter-log-detailslink' => 'detalles',
+	'abusefilter-log-details-var' => 'Variable',
+	'abusefilter-log-details-val' => 'Valor',
+	'abusefilter-log-noactions' => 'dengún',
+	'abusefilter-log-hide-reason' => 'Motivu:',
+	'abusefilter-list-status' => 'Estáu',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  * @author Hydra
@@ -21714,6 +21730,7 @@ Copiatz l'airal de tèxte que s’aficha e empegatz-lo dins aqueste airal de tè
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Jose77
+ * @author Odisha1
  * @author Psubhashish
  */
 $messages['or'] = array(
@@ -21767,7 +21784,12 @@ $messages['or'] = array(
 	'abusefilter-reautoconfirm-none' => 'ଏହି ବ୍ୟବାହାରକାରୀ {{GENDER:$1|ତାଙ୍କର|ସେମାନଙ୍କର}} ଆପେଆପେ ଥୟ କରାହେବା ସ୍ଥିତିକୁ ଅଟକାଇଛନ୍ତି ।',
 	'abusefilter-reautoconfirm-notallowed' => 'ଆପଣଙ୍କୁ ଆପେ ଆପେ ଥୟ କରିବା ସ୍ଥିତିକୁ ଆଉଥରେ ଫେରାଇବାକୁ ଅନୁମତି ମିଳିନାହିଁ ।',
 	'abusefilter-edit-history' => 'ଇତିହାସ:',
-	'abusefilter-history-select-user' => 'ଇଉଜର',
+	'abusefilter-edit-tools' => 'ଜନ୍ତ୍ର:',
+	'abusefilter-history-user' => 'ବ୍ୟବାହାରକାରୀ',
+	'abusefilter-history-select-user' => 'ବ୍ୟବାହାରକାରୀ:',
+	'abusefilter-history-diff' => 'ବଦଳାଇବା',
+	'abusefilter-examine-user' => 'ବ୍ୟବାହାରକାରୀ:',
+	'abusefilter-examine-submit' => 'ଖୋଜିବା',
 );
 
 /** Ossetic (Иронау)
@@ -28275,6 +28297,7 @@ $messages['tg-latn'] = array(
 
 /** Thai (ไทย)
  * @author Ans
+ * @author Harley Hartwell
  * @author Octahedron80
  * @author Passawuth
  * @author Woraponboonkerd
@@ -28406,7 +28429,7 @@ $messages['th'] = array(
 	'abusefilter-tools-text' => 'นี่เป็นเครื่องมือซึ่งอาจเป็นประโยชน์ในการกำหนดและการแก้จุดบกพร่องของตัวกรองการละเมิดกฎ',
 	'abusefilter-tools-expr' => 'ทดสอบการแสดงข้อมูลขาออก',
 	'abusefilter-tools-submitexpr' => 'ประเมินผล',
-	'abusefilter-tools-reautoconfirm' => 'คืนค่าสถานะที่ถูกยืนยัยโดยอัติโนมัติ',
+	'abusefilter-tools-reautoconfirm' => 'คืนสิทธิ์ผู้ใช้ที่ยืนยันอัตโนมัติ',
 	'abusefilter-tools-reautoconfirm-user' => 'ชื่อผู้ใช้:',
 	'abusefilter-tools-reautoconfirm-submit' => 'ยืนยันโดยอัติโนมัติอีกครั้งหนึ่ง',
 	'abusefilter-reautoconfirm-none' => '{{GENDER:$1| | |กลุ่ม}}ผู้ใช้ที่ยังไม่มีสถานะที่ยืนยันโดยอัติโนมัติได้ถูกระงับแล้ว',
