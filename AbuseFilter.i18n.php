@@ -29701,6 +29701,13 @@ Görünen metin kutusundan kopyalayın, ve bu metin kutusuna yapıştırın, dah
 	'abusefilter-import-submit' => 'Verileri içe aktar',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Zahidulla
+ */
+$messages['tt-cyrl'] = array(
+	'abusefilter-desc' => 'Үзгәртүләргә эвристик ысуллар кулланырга мөмкинлек бирә.',
+);
+
 /** ئۇيغۇرچە (ئۇيغۇرچە)
  * @author Sahran
  */
