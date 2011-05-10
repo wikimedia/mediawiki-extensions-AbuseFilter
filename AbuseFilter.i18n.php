@@ -25778,6 +25778,7 @@ $messages['shi'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
  * @author බිඟුවා
  * @author ශ්වෙත
  */
@@ -25792,6 +25793,7 @@ $messages['si'] = array(
 	'abusefilter-log-details-private' => 'පුද්ගලික දත්ත',
 	'abusefilter-log-noactions' => 'කිසිවක්  නොවේ',
 	'abusefilter-log-hide-reason' => 'හේතුව:',
+	'abusefilter-list' => 'සියලු පෙරහන්',
 	'abusefilter-list-status' => 'තත්වය',
 	'abusefilter-list-edit' => 'සංස්කරණය කරන්න',
 	'abusefilter-hidden' => 'පෞද්ගලික',
