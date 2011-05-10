@@ -30,8 +30,8 @@ $wgExtensionAliasesFiles['AbuseFilter'] = "$dir/AbuseFilter.alias.php";
 $wgAutoloadClasses['AbuseFilter'] = "$dir/AbuseFilter.class.php";
 $wgAutoloadClasses['AbuseFilterParser'] = "$dir/AbuseFilter.parser.php";
 $wgAutoloadClasses['AbuseFilterHooks'] = "$dir/AbuseFilter.hooks.php";
-$wgAutoloadClasses['SpecialAbuseLog'] = "$dir/SpecialAbuseLog.php";
-$wgAutoloadClasses['SpecialAbuseFilter'] = "$dir/SpecialAbuseFilter.php";
+$wgAutoloadClasses['SpecialAbuseLog'] = "$dir/special/SpecialAbuseLog.php";
+$wgAutoloadClasses['SpecialAbuseFilter'] = "$dir/special/SpecialAbuseFilter.php";
 
 $wgAutoloadClasses['AbuseFilterViewList'] = "$dir/Views/AbuseFilterViewList.php";
 $wgAutoloadClasses['AbuseFilterView'] = "$dir/Views/AbuseFilterView.php";
@@ -54,9 +54,9 @@ $wgSpecialPages['AbuseFilter'] = 'SpecialAbuseFilter';
 $wgSpecialPageGroups['AbuseLog'] = 'changes';
 $wgSpecialPageGroups['AbuseFilter'] = 'wiki';
 
-$wgAutoloadClasses['ApiQueryAbuseLog'] = "$dir/ApiQueryAbuseLog.php";
+$wgAutoloadClasses['ApiQueryAbuseLog'] = "$dir/api/ApiQueryAbuseLog.php";
 $wgAPIListModules['abuselog'] = 'ApiQueryAbuseLog';
-$wgAutoloadClasses['ApiQueryAbuseFilters'] = "$dir/ApiQueryAbuseFilters.php";
+$wgAutoloadClasses['ApiQueryAbuseFilters'] = "$dir/api/ApiQueryAbuseFilters.php";
 $wgAPIListModules['abusefilters'] = 'ApiQueryAbuseFilters';
 
 $wgHooks['EditFilterMerged'][] = 'AbuseFilterHooks::onEditFilterMerged';
