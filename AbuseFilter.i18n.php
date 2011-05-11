@@ -25783,9 +25783,13 @@ $messages['shi'] = array(
  * @author ශ්වෙත
  */
 $messages['si'] = array(
+	'abusefilter-intro' => 'අපයෙදුම් පෙරහන් කළමනාකරණ අතුරු මුහුණතට ඔබව සාදරයෙන් පිළිගනිමු.
+The Abuse Filter is an automated software mechanism of applying automatic heuristics to all actions.
+This interface shows a list of defined filters, and allows them to be modified.',
 	'abusefilter-log-search-user' => 'පරිශීලකයා:',
 	'abusefilter-log-search-filter' => 'පෙරනයේ නම',
 	'abusefilter-log-search-title' => 'ශීර්ෂය:',
+	'abusefilter-log-show-deleted' => 'සැඟවුනු සටහන් පෙන්වන්න',
 	'abusefilter-log-search-submit' => 'ගවේෂණය',
 	'abusefilter-log-detailedentry-local' => '$1 පෙරනය',
 	'abusefilter-log-detailslink' => 'විස්තර',
@@ -25793,9 +25797,17 @@ $messages['si'] = array(
 	'abusefilter-log-details-private' => 'පුද්ගලික දත්ත',
 	'abusefilter-log-noactions' => 'කිසිවක්  නොවේ',
 	'abusefilter-log-hide-reason' => 'හේතුව:',
+	'abusefilter-management' => 'අපයෙදුම් පෙරහන් කළමනාකරණය',
 	'abusefilter-list' => 'සියලු පෙරහන්',
+	'abusefilter-list-id' => 'පෙරනයේ නම',
 	'abusefilter-list-status' => 'තත්වය',
+	'abusefilter-list-public' => 'පොදු විස්තරය',
+	'abusefilter-list-consequences' => 'ප්‍රතිවිපාක',
+	'abusefilter-list-visibility' => 'දෘශ්‍යතාව',
+	'abusefilter-list-hitcount' => 'සංස්කරණ ගණනය',
 	'abusefilter-list-edit' => 'සංස්කරණය කරන්න',
+	'abusefilter-list-limit' => 'පිටුවකට සංඛ්‍යාව බැගින්:',
+	'abusefilter-list-lastmodified' => 'අවසන් වරට විකරණය කරන ලද්දේ',
 	'abusefilter-hidden' => 'පෞද්ගලික',
 	'abusefilter-unhidden' => 'ප්‍රසිද්ධ',
 	'abusefilter-enabled' => 'බලය දෙන ලදී',
@@ -25816,6 +25828,11 @@ $messages['si'] = array(
 	'abusefilter-edit-history' => 'ඉතිහාසය:',
 	'abusefilter-edit-tools' => 'මෙවලම්:',
 	'abusefilter-edit-builder-group-vars' => 'විචල්‍යයන්',
+	'abusefilter-examine-submit' => 'සොයන්න',
+	'abusefilter-topnav' => "'''අපයෙදුම් පෙරහන් යාත්‍රණය'''",
+	'abusefilter-topnav-home' => 'මුල් පිටුව',
+	'abusefilter-diff-item' => 'අයිතමය',
+	'abusefilter-diff-info' => 'මූලික තොරතුරු',
 );
 
 /** Slovak (Slovenčina)
