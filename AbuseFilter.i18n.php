@@ -2079,6 +2079,7 @@ Süzgəcin təsviri: $7 ($8)',
 	'abusefilter-edit-save' => 'Süzgəci yadda saxla',
 	'abusefilter-edit-id' => 'ID süzgəci:',
 	'abusefilter-edit-flags' => 'Bayraqlar:',
+	'abusefilter-edit-deleted' => 'Silinmiş kimi qeyd et',
 	'abusefilter-edit-rules' => 'Şərtlər:',
 	'abusefilter-edit-lastmod-text' => '$1 tərəfindən $2',
 	'abusefilter-edit-hitcount' => 'Filtrin işləməsi:',
@@ -16341,6 +16342,7 @@ $messages['ku-latn'] = array(
 	'abusefilter-list-status' => 'Rewş',
 	'abusefilter-list-edit' => 'Biguherîne',
 	'abusefilter-list-details' => 'Detayan',
+	'abusefilter-hidden' => 'Şexsî',
 	'abusefilter-deleted' => 'Hate jêbirin',
 	'abusefilter-new' => 'Fîltreka nû çêke',
 	'abusefilter-tools-modifiertest-submit' => 'Test',
@@ -16352,6 +16354,7 @@ $messages['ku-latn'] = array(
 	'abusefilter-edit-status-label' => 'Statîstîk:',
 	'abusefilter-edit-new' => 'Fîltreya nû',
 	'abusefilter-edit-save' => 'Fîltreyê qeyd bike',
+	'abusefilter-edit-warn-other' => 'Mesaja din',
 	'abusefilter-edit-history' => 'Dîrok:',
 	'abusefilter-edit-builder-op-bool-not' => 'Na (!)',
 	'abusefilter-edit-builder-op-bool-and' => ' Û (&)',
@@ -20086,6 +20089,7 @@ $messages['ne'] = array(
  * @author Annabel
  * @author GerardM
  * @author Mwpnl
+ * @author Romaine
  * @author SPQRobin
  * @author Siebrand
  * @author Tvdm
@@ -20117,7 +20121,7 @@ Een korte beschrijving van de regel op basis waarvan uw bewerking is tegengehoud
 Als aanvullende veiligheidsmaatregel zijn een aantal automatisch toegekende rechten voor uw gebruiker tijdelijk ingetrokken.
 Een korte beschrijving van de regel op basis waarvan uw bewerking is tegengehouden volgt nu: $1',
 	'abusefilter-blocker' => 'Filter',
-	'abusefilter-blockreason' => 'Automatisch geblokeerd door het filter.
+	'abusefilter-blockreason' => 'Automatisch geblokkeerd door het filter.
 Beschrijving van de regel die dit veroorzaakte: $1',
 	'abusefilter-degroupreason' => 'Rechten zijn automatisch verwijderd door het filter. Regelbeschrijving: $1',
 	'abusefilter-accountreserved' => 'Deze gebruiker is gereserveerd voor het filter.',
