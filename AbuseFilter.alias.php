@@ -100,8 +100,8 @@ $specialPageAliases['frp'] = array(
 
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'AbuseLog' => array( 'Rexistro de abusos' ),
-	'AbuseFilter' => array( 'Filtro de abusos' ),
+	'AbuseLog' => array( 'Rexistro_de_abusos' ),
+	'AbuseFilter' => array( 'Filtro_de_abusos' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -132,6 +132,18 @@ $specialPageAliases['hr'] = array(
 $specialPageAliases['hsb'] = array(
 	'AbuseLog' => array( 'Protokol_znjewužiwanjow' ),
 	'AbuseFilter' => array( 'Filter_znjewužiwanjow' ),
+);
+
+/** 湘语 (湘语) */
+$specialPageAliases['hsn'] = array(
+	'AbuseLog' => array( '滥用日志' ),
+	'AbuseFilter' => array( '滥用过滤器' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'AbuseLog' => array( 'JounalAbi' ),
+	'AbuseFilter' => array( 'FiltAbi' ),
 );
 
 /** Hungarian (Magyar) */
@@ -186,6 +198,12 @@ $specialPageAliases['lb'] = array(
 $specialPageAliases['lt'] = array(
 	'AbuseLog' => array( 'Piktnaudžiavimų_sąrašas' ),
 	'AbuseFilter' => array( 'Piktnaudžiavimų_filtras' ),
+);
+
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'AbuseLog' => array( 'ДневникНаЗлоупотреба' ),
+	'AbuseFilter' => array( 'ФилтерНаЗлоупотреба' ),
 );
 
 /** Malayalam (മലയാളം) */
@@ -266,6 +284,12 @@ $specialPageAliases['sa'] = array(
 	'AbuseFilter' => array( 'दुरुपयोगशोधबन्धन' ),
 );
 
+/** Serbo-Croatian (Srpskohrvatski / Српскохрватски) */
+$specialPageAliases['sh'] = array(
+	'AbuseLog' => array( 'Evidencija_zloupotreba' ),
+	'AbuseFilter' => array( 'Filter_zloupotreba' ),
+);
+
 /** Sinhala (සිංහල) */
 $specialPageAliases['si'] = array(
 	'AbuseLog' => array( 'අපයෙදුම්_ලඝු-සටහන' ),
@@ -290,10 +314,22 @@ $specialPageAliases['tl'] = array(
 	'AbuseFilter' => array( 'Talaan ng pansala' ),
 );
 
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'AbuseLog' => array( 'İstismarGünlüğü', 'DeğişiklikGünlüğü' ),
+	'AbuseFilter' => array( 'İstismarSüzgeci', 'DeğişiklikSüzgeci' ),
+);
+
 /** Vèneto (Vèneto) */
 $specialPageAliases['vec'] = array(
 	'AbuseLog' => array( 'RegistroAbusi' ),
 	'AbuseFilter' => array( 'FiltroAbusi' ),
+);
+
+/** Vietnamese (Tiếng Việt) */
+$specialPageAliases['vi'] = array(
+	'AbuseLog' => array( 'Nhật_trình_sai_phạm' ),
+	'AbuseFilter' => array( 'Bộ_lọc_sai_phạm' ),
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */
