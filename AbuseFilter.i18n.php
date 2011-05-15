@@ -16869,7 +16869,9 @@ Kopéiert vun der Textkëscht déi opgeet an dës Textkëscht a klickt op "{{int
  * @author Namik
  */
 $messages['lez'] = array(
+	'abusefilter-log-search-user' => 'Ишлемишчи:',
 	'abusefilter-log-search-submit' => 'Ахтармишун',
+	'abusefilter-log-noactions' => 'садни',
 	'abusefilter-log-hide-reason' => 'Кар',
 	'abusefilter-list-edit' => 'Дегишарун',
 	'abusefilter-deleted' => 'Къакъудун',
@@ -26650,6 +26652,14 @@ Za vse podrobnosti si oglejte [[Special:AbuseFilter/history|seznam]] zadnjih spr
 Na izvornem wikiju kliknite »{{int:abusefilter-edit-export}}« pod »{{int:abusefilter-tools-subtitle}}« v urejevalnem vmesniku.
 Nato skopirajte besedilo v prikazanem polju, prilepite ga v to polje in kliknite »{{int:abusefilter-import-submit}}«.',
 	'abusefilter-import-submit' => 'Uvozi podatke',
+);
+
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'abusefilter-log-search-submit' => 'Raadi',
+	'abusefilter-examine-submit' => 'Raadi',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
