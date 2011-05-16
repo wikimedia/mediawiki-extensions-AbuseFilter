@@ -13989,6 +13989,14 @@ $messages['ig'] = array(
 	'abusefilter-diff-item' => 'Ihnye',
 );
 
+/** Ingush (ГІалгІай Ğalğaj)
+ * @author Sapral Mikail
+ */
+$messages['inh'] = array(
+	'abusefilter-edit-history' => 'Искар:',
+	'abusefilter-edit-tools' => 'ГIирсаш:',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
