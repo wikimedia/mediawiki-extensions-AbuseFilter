@@ -10453,8 +10453,8 @@ $messages['gl'] = array(
 O filtro de abusos é un software mecánico automático que aplica heurísticas automáticas a todas as accións.
 Esta interface mostra unha lista dos filtros definidos e permite que estes sexan modificados.',
 	'abusefilter-mustbeeditor' => 'Por razóns de seguridade, só os usuarios cos dereitos necesarios para modificar os filtros de abusos poden empregar esta interface.',
-	'abusefilter-warning' => "'''Atención:''' esta acción foi identificada automaticamente como prexudicial.
-As edicións non construtivas serán revertidas rapidamente,
+	'abusefilter-warning' => "'''Atención:''' Esta acción foi identificada automaticamente como prexudicial.
+As edicións non construtivas serán revertidas decontado,
 e a repetición destas edicións dará como resultado o bloqueo da súa conta ou do seu enderezo IP.
 Se cre que esta edición é construtiva, pode premer outra vez en \"Enviar\" para confirmalo.
 Velaquí hai unha breve descrición da regra de abuso coa que coincide a súa acción: \$1",
@@ -10604,15 +10604,15 @@ De media, o seu tempo de execución é de $4ms, e consome {{PLURAL:$5|unha condi
 	'abusefilter-edit-lastmod-text' => 'o $3 ás $4 por $2',
 	'abusefilter-edit-hitcount' => 'Deteccións do filtro:',
 	'abusefilter-edit-consequences' => 'Accións levadas cando coincidiu',
-	'abusefilter-edit-action-warn' => 'Accionar estas accións despois de darlle ao usuario un aviso',
+	'abusefilter-edit-action-warn' => 'Desencadear estas accións despois de darlle ao usuario un aviso',
 	'abusefilter-edit-action-disallow' => 'Impedir que o usuario leve a cabo a acción en cuestión',
 	'abusefilter-edit-action-flag' => 'Revisar a edición no rexistro de abusos',
 	'abusefilter-edit-action-blockautopromote' => 'Revogar o estado de usuario autoconfirmado',
 	'abusefilter-edit-action-degroup' => 'Eliminar o usuario de todos os grupos con privilexios',
 	'abusefilter-edit-action-block' => 'Bloquear o usuario e/ou o enderezo IP fronte á edición',
-	'abusefilter-edit-action-throttle' => 'Accionar as accións só se o usuario se salta un límite',
+	'abusefilter-edit-action-throttle' => 'Desencadear as accións só se o usuario se salta un límite',
 	'abusefilter-edit-action-rangeblock' => 'Bloquear os rangos /16 de onde o usuario é orixinario.',
-	'abusefilter-edit-action-tag' => 'Etiquetar a edición para unha revisión posterior.',
+	'abusefilter-edit-action-tag' => 'Etiquetar a edición para unha revisión posterior',
 	'abusefilter-edit-throttle-count' => 'Número de accións a permitir:',
 	'abusefilter-edit-throttle-period' => 'Período de tempo:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|segundo|segundos}}',
@@ -27783,6 +27783,30 @@ $messages['sw'] = array(
 	'abusefilter-examine-submit' => 'Tafuta',
 	'abusefilter-topnav-home' => 'Mwanzo',
 	'abusefilter-diff-info' => 'Maelezo ya msingi',
+);
+
+/** Silesian (Ślůnski)
+ * @author Britscher
+ */
+$messages['szl'] = array(
+	'abusefilter-desc' => 'Automatyczno heurystyko do edycyj',
+	'abusefilter' => 'Konfiguracyjo filtra zńyłużyćůw',
+	'abuselog' => '↓Register zńyłużyćůw',
+	'abusefilter-intro' => 'Regiyrowańy registrym zńyłużyćów
+Register zńyłużyćów je program, kery automatyczńy używo heurystyka do wszyjskich akcyj.
+Interface pozwolo przeglůndać lista zedefińůwanych filtrůw a je pomjyńać.',
+	'abusefilter-mustbeeditor' => 'Lo bezpjyczyństwa, tyn interface mogům używać jyno używocze, kere majům prawo pomjyńać filter zńyłużyćów.',
+	'abusefilter-warning' => "'''Pozůr''': Ta akcyjo bůła automatyczńy uznono szkodzůncům.
+Ńydobre pomjyny bydům cofńynte, a fest złe abo uopakujůnce śe edytowańy skůńczy śe blokadům twojigo kůnta abo IP.
+Eli zwożujesz, że to co robisz je dobre, spamjyntej pomjyny bez „{{int:savearticle}}”.
+Krůtki uopis zńyłużyćo, ke keremu przipasowano twojo akcyjo: $1",
+	'abusefilter-disallowed' => 'Ta akcyjo bůła automatyczńy uznona szkodzůncům a uodćepńynta.
+Eli zwożujesz, że ta edycyjo bůła ajntlichowo, pedź uo tyj sytuacyji administratůrowi.
+Krůtki uopis zńyłużyćo, ke keremu bůła przipasowano twojo akcyjo: $1',
+	'abusefilter-blocker' => 'Filter zńyłużyćów',
+	'right-abusefilter-modify' => 'Pomjyńańy filtrůw zńyłużyćůw',
+	'abusefilter-list-options-submit' => 'Aktualizacyjo',
+	'abusefilter-tools-subtitle' => 'Werkcojgi',
 );
 
 /** Tamil (தமிழ்)
