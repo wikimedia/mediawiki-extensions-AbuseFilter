@@ -1253,6 +1253,7 @@ $messages['ar'] = array(
 	'abusefilter-edit-builder-misc-in' => 'موجود في سلسلة (in)',
 	'abusefilter-edit-builder-misc-like' => 'يطابق النمط (like)',
 	'abusefilter-edit-builder-misc-rlike' => 'يطابق تعبيرا منتظما (rlike)',
+	'abusefilter-edit-builder-misc-irlike' => 'مطابقة التعبيرات الأساسية، غير حساس لحالة الأحرف (irlike)',
 	'abusefilter-edit-builder-misc-contains' => 'السلسلة اليسرى تحتوي على السلسلة اليمنى (contains)',
 	'abusefilter-edit-builder-misc-stringlit' => 'سلسلة حرفية ("")',
 	'abusefilter-edit-builder-misc-tern' => 'معامل تيرنيري (X ? Y : Z)',
@@ -3020,7 +3021,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-topnav-examine' => 'Праверка апошніх рэдагаваньняў',
 	'abusefilter-topnav-log' => 'Журнал злоўжываньняў',
 	'abusefilter-topnav-tools' => 'Інструмэнты для наладкі',
-	'abusefilter-topnav-import' => 'Імпартаваць фільтр',
+	'abusefilter-topnav-import' => 'Імпартаваць фільтар',
 	'abusefilter-log-name' => 'Журнал фільтру злоўжываньняў',
 	'abusefilter-log-header' => 'Гэты журнал паказвае кароткае апісаньне зьменаў у фільтрах.
 Поўную інфармацыю можна знайсьці ў [[Special:AbuseFilter/history|сьпісе]] апошніх зьменаў фільтраў.',
@@ -8740,8 +8741,8 @@ $messages['eu'] = array(
  */
 $messages['fa'] = array(
 	'abusefilter-desc' => 'اکتشافات خودکاری را بر روی ویرایش‌های انجام می‌دهد.',
-	'abusefilter' => 'پیکربندی پالایه خرابکاری',
-	'abuselog' => 'سیاهه خرابکاری',
+	'abusefilter' => 'پیکربندی پالایهٔ خرابکاری',
+	'abuselog' => 'سیاههٔ خرابکاری',
 	'abusefilter-intro' => 'به صفحهٔ مدیریت پالایهٔ خرابکاری خوش‌آمدید.
 پالایهٔ خرابکاری دستگاهی نرم‌افزاری برای اعمال اکتشافات خودکار روی تمامی اعمال است.
 این صفحه تمام پالایه‌ها را فهرست و امکان تغییر آن‌ها را فراهم می‌کند.',
@@ -8769,43 +8770,43 @@ $messages['fa'] = array(
 	'abusefilter-blocker' => 'پالایهٔ خرابکاری',
 	'abusefilter-blockreason' => 'به طور خودکار توسط پالایهٔ خرابکاری بسته شد.
 توضیح قانون مطابقت‌یافته: $1',
-	'abusefilter-degroupreason' => 'از طریق پالایه خرابکاری دسترسی کاربر گرفته شد.
+	'abusefilter-degroupreason' => 'از طریق پالایهٔ خرابکاری دسترسی کاربر گرفته شد.
 توضیح قانون: $1',
 	'abusefilter-accountreserved' => 'این نام کاربری برای استفاده توسط پالایهٔ خرابکاری کنار گذاشته شده‌است.',
 	'right-abusefilter-modify' => 'ویرایش پالایه خرابکاری',
 	'right-abusefilter-view' => 'مشاهدهٔ پالایه خرابکاری',
-	'right-abusefilter-log' => 'مشاهدهٔ سیاهه خرابکاری',
-	'right-abusefilter-log-detail' => 'مشاهدهٔ سیاهه خرابکاری به همراه جزئیات',
-	'right-abusefilter-private' => 'مشاهدهٔ اطلاعات خصوصی در سیاهه خرابکاری',
+	'right-abusefilter-log' => 'مشاهدهٔ سیاههٔ خرابکاری',
+	'right-abusefilter-log-detail' => 'مشاهدهٔ سیاههٔ خرابکاری به همراه جزئیات',
+	'right-abusefilter-private' => 'مشاهدهٔ اطلاعات خصوصی در سیاههٔ خرابکاری',
 	'right-abusefilter-modify-restricted' => 'ویرایش پالایه‌های خرابکاری دارای اقدامات محدودکننده',
-	'right-abusefilter-revert' => 'واگردانی تمام تغییرات توسط یک پالایه خرابکاری',
+	'right-abusefilter-revert' => 'واگردانی تمام تغییرات توسط یک پالایهٔ خرابکاری',
 	'right-abusefilter-view-private' => 'مشاهدهٔ پالایه‌های خرابکاری علامت خورده به عنوان خصوصی',
 	'right-abusefilter-hide-log' => 'پنهان‌کردن موارد سیاههٔ خرابکاری',
 	'right-abusefilter-hidden-log' => 'مشاهدهٔ موارد پنهان سیاههٔ خرابکاری',
 	'action-abusefilter-modify' => 'ویرایش پالایه‌های خرابکاری',
 	'action-abusefilter-view' => 'مشاهدهٔ پالایه‌های خرابکاری',
-	'action-abusefilter-log' => 'مشاهدهٔ سیاهه خرابکاری',
-	'action-abusefilter-log-detail' => 'مشاهدهٔ سیاهه خرابکاری به همراه جزئیات',
-	'action-abusefilter-private' => 'مشاهدهٔ اطلاعات خصوصی در سیاهه خرابکاری',
+	'action-abusefilter-log' => 'مشاهدهٔ سیاههٔ خرابکاری',
+	'action-abusefilter-log-detail' => 'مشاهدهٔ سیاههٔ خرابکاری به همراه جزئیات',
+	'action-abusefilter-private' => 'مشاهدهٔ اطلاعات خصوصی در سیاههٔ خرابکاری',
 	'action-abusefilter-modify-restricted' => 'ویرایش پالایه‌های خرابکاری دارای اقدامات محدودکننده',
-	'action-abusefilter-revert' => 'واگردانی تمام تغییرات توسط یک پالایه خرابکاری',
+	'action-abusefilter-revert' => 'واگردانی تمام تغییرات توسط یک پالایهٔ خرابکاری',
 	'action-abusefilter-view-private' => 'مشاهدهٔ پالایه‌های خرابکاری علامت خورده به عنوان خصوصی',
-	'abusefilter-log' => 'سیاهه پالایه خرابکاری',
+	'abusefilter-log' => 'سیاههٔ پالایهٔ خرابکاری',
 	'abusefilter-log-summary' => 'این سیاهه فهرستی از تمام کارهایی که توسط پالایه‌ها گرفته شده را نشان می‌دهد.',
 	'abusefilter-log-search' => 'جستجو در سیاههٔ خرابکاری',
 	'abusefilter-log-search-user' => 'کاربر:',
-	'abusefilter-log-search-filter' => 'شناسه پالایه:',
+	'abusefilter-log-search-filter' => 'شناسهٔ پالایه:',
 	'abusefilter-log-search-title' => 'عنوان:',
 	'abusefilter-log-show-deleted' => 'نمایش موارد پنهان',
 	'abusefilter-log-search-submit' => 'جستجو',
-	'abusefilter-log-entry' => '$1: $2 توسط پالایه خرابکاری گرفته شد؛ او مشغول اجرای «$3» بر روی $4 بود.
-عمل پالایه: $5"؛
+	'abusefilter-log-entry' => '$1: $2 توسط پالایهٔ خرابکاری گرفته شد؛ مشغول اجرای «$3» بر روی $4 بود.
+عمل پالایه: $5؛
 توضیحات پالایه: $6',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 $3 را در حالی که قصد داشت عمل «$4» را روی $5 انجام دهد فعال کرد.
 اقدام صورت‌گرفته: $6؛
 توضیحات پالایه: $7 ($8)',
-	'abusefilter-log-detailedentry-global' => 'پالایه سراسری $1',
-	'abusefilter-log-detailedentry-local' => 'پالایه $1',
+	'abusefilter-log-detailedentry-global' => 'پالایهٔ سراسری $1',
+	'abusefilter-log-detailedentry-local' => 'پالایهٔ $1',
 	'abusefilter-log-detailslink' => 'جزئیات',
 	'abusefilter-log-hidelink' => 'تنظیم پدیداری',
 	'abusefilter-log-details-legend' => 'جزئیات برای سیاههٔ ثبت‌شده $1',
@@ -8816,7 +8817,7 @@ $messages['fa'] = array(
 	'abusefilter-log-details-ip' => 'آدرس آی‌پی اصلی',
 	'abusefilter-log-noactions' => 'هیچ',
 	'abusefilter-log-details-diff' => 'تغییرات انجام شده در ویرایش',
-	'abusefilter-log-linkoncontribs' => 'سیاهه خرابکاری',
+	'abusefilter-log-linkoncontribs' => 'سیاههٔ خرابکاری',
 	'abusefilter-log-linkoncontribs-text' => 'سیاهه خرابکاری‌ها برای این کاربر',
 	'abusefilter-log-hidden' => '(مورد پنهان)',
 	'abusefilter-log-hide' => 'پنهان یا آشکار کردن',
@@ -8825,12 +8826,12 @@ $messages['fa'] = array(
 	'abusefilter-log-hide-id' => 'شناسه مورد در سیاهه:',
 	'abusefilter-log-hide-hidden' => 'پنهان کردن این مورد از دید عموم',
 	'abusefilter-log-hide-reason' => 'دلیل:',
-	'abusefilter-log-hide-forbidden' => 'شما دسترسی لازم برای پنهان کردن موارد سیاهه خرابکاری را ندارید.',
+	'abusefilter-log-hide-forbidden' => 'شما دسترسی لازم برای پنهان‌کردن موارد سیاههٔ خرابکاری را ندارید.',
 	'abusefilter-logentry-suppress' => '«[[$1]]» را پنهان کرد',
 	'abusefilter-logentry-unsuppress' => '«[[$1]]» را آشکار کرد',
-	'abusefilter-management' => 'مدیریت پالایه خرابکاری',
+	'abusefilter-management' => 'مدیریت پالایهٔ خرابکاری',
 	'abusefilter-list' => 'تمام پالایه‌ها',
-	'abusefilter-list-id' => 'شناسه پالایه',
+	'abusefilter-list-id' => 'شناسهٔ پالایه',
 	'abusefilter-list-status' => 'وضعیت',
 	'abusefilter-list-public' => 'توضیحات عمومی',
 	'abusefilter-list-consequences' => 'عواقب',
@@ -8846,11 +8847,11 @@ $messages['fa'] = array(
 	'abusefilter-deleted' => 'حذف شده',
 	'abusefilter-disabled' => 'غیرفعال',
 	'abusefilter-hitcount' => '$1 مورد پیدا {{PLURAL:$1|شد|شدند}}',
-	'abusefilter-new' => 'ایجاد یک پالایه جدید',
+	'abusefilter-new' => 'ایجاد یک پالایهٔ جدید',
 	'abusefilter-links' => 'پیوندهای کاربردی:',
 	'abusefilter-tools-modifiertest-submit' => 'آزمایش',
-	'abusefilter-tools' => 'ابزارهای پالایه خرابکاری',
-	'abusefilter-loglink' => 'نمایش سیاهه خرابکاری',
+	'abusefilter-tools' => 'ابزارهای پالایهٔ خرابکاری',
+	'abusefilter-loglink' => 'نمایش سیاههٔ خرابکاری',
 	'abusefilter-return' => 'بازگشت به مدیریت پالایه',
 	'abusefilter-status-global' => 'سراسری',
 	'abusefilter-list-options' => 'تنظیمات',
@@ -8872,25 +8873,25 @@ $messages['fa'] = array(
 	'abusefilter-reautoconfirm-notallowed' => 'شما اجازه ندارید حالت تأییدشده را بازگردانید.',
 	'abusefilter-reautoconfirm-done' => 'وضعیت تأییدشدهٔ حساب بازگردانده شد.',
 	'abusefilter-status' => 'از آخرین $1 {{PLURAL:$1|عمل|عمل}}، $2 ($3٪) به ظرفیت شرایط $4 {{PLURAL:$2|رسید|رسیدند}}، و $5 ($6٪) با یکی از پالایه‌هایی که در حال حاضر فعال است مطابقت {{PLURAL:$5|داشت|داشتند}}.',
-	'abusefilter-edit-subtitle' => 'ویرایش پالایه $1',
-	'abusefilter-edit-oldwarning' => '<strong>شما مشغول ویرایش کردن بر روی نسخه قدیمی از پالایه هستید.
-آمار نقل شده بر اساس آخرین نسخه پالایه است.
+	'abusefilter-edit-subtitle' => 'ویرایش پالایهٔ $1',
+	'abusefilter-edit-oldwarning' => '<strong>شما مشغول ویرایش کردن بر روی نسخهٔ قدیمی از پالایه هستید.
+آمار نقل شده بر اساس آخرین نسخهٔ پالایه است.
 اگر دکمه ذخیره را بفشارید تمام تغییرات بعد از نسخه‌ای که ویرایش می‌کنید را رونویسی خواهید کرد.</strong> &bull;
 [[Special:AbuseFilter/history/$2|بازگشت به تاریخچه پالایه]].',
 	'abusefilter-edit-status-label' => 'آمار:',
 	'abusefilter-edit-status' => 'از آخرین $1 {{PLURAL:$1|عمل|عمل}}، این پالایه با $2 ($3٪) مطابقت داشت.
-به طور متوسط این پالایه در مدت $4 میلی ثانیه اجرا می‌شود، و $5 شرط از ظرفیت شرایط را مصرف {{PLURAL:$5|می‌کند|می‌کند}}.',
+به طور متوسط این پالایه در مدت $4 میلی‌ثانیه اجرا می‌شود و $5 شرط از ظرفیت شرایط را مصرف می‌کند.',
 	'abusefilter-edit-throttled' => 'هشدار: این پالایه به دلایل امنیتی به طور خودکار غیرفعال شد.
 این پالایه به ظرفیت مطابقت بیش از $1٪ اقدام‌ها رسید.',
-	'abusefilter-edit-new' => 'پالایه جدید',
-	'abusefilter-edit-save' => 'ذخیره پالایه',
-	'abusefilter-edit-id' => 'شناسه پالایه:',
+	'abusefilter-edit-new' => 'پالایه‌ای جدید',
+	'abusefilter-edit-save' => 'ذخیرهٔ پالایه',
+	'abusefilter-edit-id' => 'شناسهٔ پالایه:',
 	'abusefilter-edit-description' => "توضیحات:
 :''(قابل مشاهده توسط عموم)''",
 	'abusefilter-edit-flags' => 'پرچم‌ها:',
 	'abusefilter-edit-enabled' => 'فعال کردن این پالایه',
 	'abusefilter-edit-deleted' => 'علامت‌زدن به عنوان حذف‌شده',
-	'abusefilter-edit-hidden' => 'پنهان کردن جزئیات این پالایه از دید عموم',
+	'abusefilter-edit-hidden' => 'پنهان‌کردن جزئیات این پالایه از دید عموم',
 	'abusefilter-edit-rules' => 'شروط:',
 	'abusefilter-edit-notes' => "یادداشت:
 :''(خصوصی)''",
@@ -8900,7 +8901,7 @@ $messages['fa'] = array(
 	'abusefilter-edit-consequences' => 'کارهایی که در صورت مطابقت انجام می‌شود',
 	'abusefilter-edit-action-warn' => 'این واکنش‌ها را تنها پس از نمایش یک هشدار به کاربر فعال کن',
 	'abusefilter-edit-action-disallow' => 'از انجام عمل مربوط توسط کاربر جلوگیری کن',
-	'abusefilter-edit-action-flag' => 'به ویرایش درون سیاهه خرابکاری پرچم بده',
+	'abusefilter-edit-action-flag' => 'به ویرایش درون سیاههٔ خرابکاری پرچم بده',
 	'abusefilter-edit-action-blockautopromote' => 'وضعیت تأییدشدهٔ کاربر را لغو کن',
 	'abusefilter-edit-action-degroup' => 'کاربر را از تمام گروه‌های دارای دسترسی ویژه خارج کن',
 	'abusefilter-edit-action-block' => 'دسترسی کاربر و/یا آی‌پی  را از ویرایش قطع کن',
@@ -8923,7 +8924,7 @@ $messages['fa'] = array(
 	'abusefilter-edit-denied' => 'شما نمی‌توانید جزئیات این پالایه را ببینید، زیرا از دید عموم پنهان شده‌است.',
 	'abusefilter-edit-main' => 'پارامترهای پالایه',
 	'abusefilter-edit-done-subtitle' => 'پالایه ویرایش شد',
-	'abusefilter-edit-done' => 'شما تغییرات‌تان را در پالایه $1 با موفقیت ذخیره کردید.',
+	'abusefilter-edit-done' => 'شما تغییرات‌تان را در پالایهٔ $1 با موفقیت ذخیره کردید.',
 	'abusefilter-edit-badsyntax' => 'یک خطای نحوی در پالایه‌ای که مشخص کردید وجود دارد.
 خروجی تحلیلگر این بود: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'شما نمی‌توانید این پالایه را ویرایش کنید، چون حاوی یک یا چند اقدام محدودکننده است.
@@ -8941,7 +8942,7 @@ $messages['fa'] = array(
 	'abusefilter-edit-syntaxerr' => 'خطای نحوی پیدا شد: $1',
 	'abusefilter-edit-bad-tags' => 'یک یا چند برچسب مشخص‌شده توسط شما معتبر نیست.
 برچسب‌ها باید کوتاه باشند، و نباید دارای نویسه‌های ویژه باشند.',
-	'abusefilter-edit-notallowed' => 'شما اجازه ندارید که پالایه خرابکاری بسازید یا ویرایش کنید',
+	'abusefilter-edit-notallowed' => 'شما اجازه ندارید که پالایه‌های خرابکاری بسازید یا ویرایش کنید',
 	'abusefilter-edit-builder-select' => 'گزینه‌ای را انتخاب کنید تا در محل نشانگر اضافه شود',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'عملگرهای حسابی',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'افزودن (+)',
@@ -9075,12 +9076,12 @@ $messages['fa'] = array(
 	'abusefilter-action-degroup' => 'حذف از گروه‌ها',
 	'abusefilter-action-rangeblock' => 'بستن یک بازه',
 	'abusefilter-action-disallow' => 'جلوگیری',
-	'abusefilter-revert-title' => 'واگردانی تمام تغییرهای انجام شده توسط پالایه $1',
+	'abusefilter-revert-title' => 'واگردانی تمام تغییرهای انجام شده توسط پالایهٔ $1',
 	'abusefilter-revert-intro' => 'این فرم به شما اجازهٔ واگردانی همهٔ تغییرات انجام شده توسط پالایهٔ خرابکاری به دلیل پالایهٔ $1 را می‌دهد.
 لطفاً در استفاده از این ابزار دقت کنید.',
 	'abusefilter-revert-preview-item' => '$1: $2 یک $3 بر $4 انجام داد.
 اقداماتی که واگردانی خواهند شد: $5 ($6)',
-	'abusefilter-revert-search-legend' => 'اقدامات پالایه خرابکاری را که می‌خواهید واگردانی کنید برگزینید',
+	'abusefilter-revert-search-legend' => 'اقدامات پالایهٔ خرابکاری را که می‌خواهید واگردانی کنید برگزینید',
 	'abusefilter-revert-periodstart' => 'شروع بازه زمانی:',
 	'abusefilter-revert-periodend' => 'پایان بازه زمانی:',
 	'abusefilter-revert-search' => 'انتخاب اقدامات',
@@ -9121,13 +9122,13 @@ $messages['fa'] = array(
 	'abusefilter-examine-nomatch' => 'پالایه با این تغییر مطابقت نداشت.',
 	'abusefilter-examine-syntaxerror' => 'پالایه ساختار نادرست دارد',
 	'abusefilter-examine-notfound' => 'تغییری که درخواست کردید پیدا نشد.',
-	'abusefilter-examine-incompatible' => 'تغییری که درخواست کردید توسط پالایه خرابکاری‌ها پشتیبانی نمی‌شود',
+	'abusefilter-examine-incompatible' => 'تغییری که درخواست کردید توسط پالایهٔ خرابکاری‌ها پشتیبانی نمی‌شود',
 	'abusefilter-examine-noresults' => 'برای پارامترهای جستجویی که ارائه کردید هیچ نتیجه‌ای یافت نشد.',
-	'abusefilter-topnav' => "'''ناوبری پالایه خرابکاری'''",
+	'abusefilter-topnav' => "'''ناوبری پالایهٔ خرابکاری'''",
 	'abusefilter-topnav-home' => 'منزل',
 	'abusefilter-topnav-test' => 'آزمودن دسته‌ای',
 	'abusefilter-topnav-examine' => 'آزمودن ویرایش‌های قبلی',
-	'abusefilter-topnav-log' => 'سیاهه خرابکاری',
+	'abusefilter-topnav-log' => 'سیاههٔ خرابکاری',
 	'abusefilter-topnav-tools' => 'ابزارهای اشکال‌زدایی',
 	'abusefilter-topnav-import' => 'درون‌ریزی پالایه',
 	'abusefilter-log-name' => 'سیاههٔ پالایهٔ خرابکاری',
@@ -10395,7 +10396,7 @@ Por més de dètalys, vêde la [[Special:AbuseFilter/history|lista]] des dèrri�
 	'abusefilter-diff-title' => 'Difèrences entre les vèrsions',
 	'abusefilter-diff-item' => 'Articllo',
 	'abusefilter-diff-version' => 'Vèrsion du $1 per $2',
-	'abusefilter-diff-info' => 'Enformacions basiéres',
+	'abusefilter-diff-info' => 'Enformacions de bâsa',
 	'abusefilter-diff-pattern' => 'Condicions du filtro',
 	'abusefilter-diff-invalid' => 'Empossiblo de retrovar les vèrsions demandâs',
 	'abusefilter-diff-backhistory' => 'Retôrn a l’historico du filtro',
@@ -19287,6 +19288,7 @@ Tag sepatutnya ringkas dan tidak mengandungi aksara khas.',
 	'abusefilter-edit-builder-funcs-lcase' => 'Huruf kecil (lcase)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Buang aksara-aksara berulang (rmdoubles)',
 	'abusefilter-edit-builder-funcs-substr' => 'Subrentetan (substr)',
+	'abusefilter-edit-builder-group-vars' => 'Pemboleh ubah',
 	'abusefilter-edit-builder-vars-action' => 'Tindakan',
 	'abusefilter-edit-builder-vars-newsize' => 'Saiz laman baru',
 	'abusefilter-edit-builder-vars-oldsize' => 'Saiz laman lama',
@@ -19336,6 +19338,7 @@ Tag sepatutnya ringkas dan tidak mengandungi aksara khas.',
 	'abusefilter-action-tag' => 'Tag',
 	'abusefilter-action-throttle' => 'Dikit',
 	'abusefilter-action-warn' => 'Ingatkan',
+	'abusefilter-action-block' => 'Sekat',
 	'abusefilter-revert-preview-item' => '$1: $2 melakukan $3 di $4.
 Tindakan yang hendak dibatalkan: $5 ($6)',
 	'abusefilter-revert-periodstart' => 'Tempoh bermula:',
@@ -19349,7 +19352,13 @@ Sebab yang diberikan: $2',
 	'abusefilter-revert-reasonfield' => 'Sebab pembatalan:',
 	'abusefilter-test' => 'Uji penapis terhadap suntingan lalu',
 	'abusefilter-test-load' => 'Muatkan',
+	'abusefilter-examine-user' => 'Pengguna:',
+	'abusefilter-examine-title' => 'Tajuk laman:',
+	'abusefilter-examine-submit' => 'Cari',
+	'abusefilter-topnav-home' => 'Laman Utama',
 	'abusefilter-topnav-log' => 'Log Penyalahgunaan',
+	'abusefilter-log-entry-modify' => '$1 diubah suai ($2)',
+	'abusefilter-diff-item' => 'Butiran',
 	'abusefilter-diff-info' => 'Maklumat asas',
 	'abusefilter-diff-pattern' => 'Syarat penapis',
 	'abusefilter-diff-invalid' => 'Versi yang dimohon tidak dapat diambil',
@@ -28363,6 +28372,7 @@ $messages['tg-latn'] = array(
 /** Thai (ไทย)
  * @author Ans
  * @author Harley Hartwell
+ * @author Korrawit
  * @author Octahedron80
  * @author Passawuth
  * @author Woraponboonkerd
@@ -28370,13 +28380,13 @@ $messages['tg-latn'] = array(
 $messages['th'] = array(
 	'abusefilter-desc' => 'วิเคราะห์พฤติกรรมการแก้ไขโดยอัตโนมัติ',
 	'abusefilter' => 'การกำหนดตัวกรองการละเมิดกฎ',
-	'abuselog' => 'ประวัติการลพเมิดกฎ',
+	'abuselog' => 'ประวัติการละเมิดกฎ',
 	'abusefilter-intro' => 'ยินดีต้อนรับสู่ส่วนการจัดการตัวกรองการละเมิดกฎ 
 ตัวกรองการละเมิดกฎเป็นซอฟต์แวร์อัตโนมัติในการวิเคราะห์พฤติกรรมของการกระทำทั้งหมด 
 ส่วนการจัดการนี้จะแสดงรายการของตัวกรองที่กำหนดไว้และสามารถแก้ไขได้',
 	'abusefilter-mustbeeditor' => 'เพื่อความปลอดภัย เฉพาะผู้ใช้ที่มีสิทธิ์แก้ไขตัวกรองการละเมิดกฎเท่านั้นที่สามารถใช้ส่วนการจัดการนี้',
 	'abusefilter-warning' => "'''คำเตือน''': การกระทำนี้ได้รับการระบุโดยอัตโนมัติว่าไม่เหมาะสม 
- การแก้ไขที่ไม่เหมาะสมหรือเป็นภัยต่อระบบจะถูกเปลี่ยนกลับโดยดเร็ว 
+ การแก้ไขที่ไม่เหมาะสมหรือเป็นภัยต่อระบบจะถูกเปลี่ยนกลับโดยเร็ว 
  และการแก้ไขที่ไม่เหมาะสมเป็นอย่างยิ่ง หรือเกิดขึ้นซ้ำหลายครั้งจะส่งผลให้บัญชีหรือที่อยู่ IP ของคุณถูกบล็อค 
  หากคุณเชื่อว่าการแก้ไขนี้เป็นการแก้ไขที่เหมาะสมคุณสามารถคลิกส่งอีกครั้งเพื่อยืนยัน 
  คำอธิบายโดยย่อเกี่ยวกับการละเมิดกฎที่ตรงกับการกระทำของคุณ: $1",
@@ -28398,7 +28408,7 @@ $messages['th'] = array(
 	'abusefilter-blocker' => 'ตัวกรองการละเมิดกฎ',
 	'abusefilter-blockreason' => 'ถูกบล็อกโดยอัตโนมัติโดยตัวกรองการละเมิดกฎ
 รายละเอียดของกฎที่ตรงกับการละเมิดนี้: $1',
-	'abusefilter-degroupreason' => 'สิทธิถูกระงับโดยอัตโนมัติโดยตัวกรองการละเมิดกฏ
+	'abusefilter-degroupreason' => 'สิทธิถูกระงับโดยอัตโนมัติโดยตัวกรองการละเมิดกฎ
 คำอธิบายกฎ: $1',
 	'abusefilter-accountreserved' => 'ชื่อบัญชีนี้มีการสงวนไว้สำหรับการใช้งานโดยตัวกรองการละเมิดกฎ',
 	'right-abusefilter-modify' => 'แก้ไขตัวกรองการละเมิดกฎ',
@@ -28449,10 +28459,10 @@ $messages['th'] = array(
 	'abusefilter-log-linkoncontribs-text' => 'บันทึกความไม่เหมาะสมสำหรับผู้ใช้นี้',
 	'abusefilter-log-hidden' => '(รายการถูกซ่อนไว้)',
 	'abusefilter-log-hide' => 'ซ่อนหรือยกเลิกการซ่อน',
-	'abusefilter-log-details-hidden' => 'คุณไม่สามารถดูรายละเอียดของรายการนี้ เพราะรายการนี้ถูกซ่อนจากการปรากฎแบบสาธารณะ',
+	'abusefilter-log-details-hidden' => 'คุณไม่สามารถดูรายละเอียดของรายการนี้ เพราะรายการนี้ถูกซ่อนจากการปรากฏแบบสาธารณะ',
 	'abusefilter-log-hide-legend' => 'ซ่อนรายการบันทึก',
 	'abusefilter-log-hide-id' => 'ID ของรายการยันทึก:',
-	'abusefilter-log-hide-hidden' => 'ซ่อนรายการนี้จากการปรากฎต่อสาธารณะ',
+	'abusefilter-log-hide-hidden' => 'ซ่อนรายการนี้จากการปรากฏต่อสาธารณะ',
 	'abusefilter-log-hide-reason' => 'สาเหตุ:',
 	'abusefilter-log-hide-forbidden' => 'คุณไม่ได้รับสิทธิ์ในการซ่อนรายการของบันทึกข้อมูลการละเมิดกฎ',
 	'abusefilter-logentry-suppress' => 'ซ่อน "[[$1]]"',
@@ -28496,10 +28506,10 @@ $messages['th'] = array(
 	'abusefilter-tools-submitexpr' => 'ประเมินผล',
 	'abusefilter-tools-reautoconfirm' => 'คืนสิทธิ์ผู้ใช้ที่ยืนยันอัตโนมัติ',
 	'abusefilter-tools-reautoconfirm-user' => 'ชื่อผู้ใช้:',
-	'abusefilter-tools-reautoconfirm-submit' => 'ยืนยันโดยอัติโนมัติอีกครั้งหนึ่ง',
-	'abusefilter-reautoconfirm-none' => '{{GENDER:$1| | |กลุ่ม}}ผู้ใช้ที่ยังไม่มีสถานะที่ยืนยันโดยอัติโนมัติได้ถูกระงับแล้ว',
-	'abusefilter-reautoconfirm-notallowed' => 'คุณไม่ได้รับอนุญาตให้เรียกคืนสถานะที่ยืนยันโดยอัติโนมัติ',
-	'abusefilter-reautoconfirm-done' => 'สถานะที่ยืนยันโดยอัติโนมัติของบัญชีผู้ใช้นี้ได้รับการคืนสภาพแล้ว',
+	'abusefilter-tools-reautoconfirm-submit' => 'ยืนยันโดยอัตโนมัติอีกครั้งหนึ่ง',
+	'abusefilter-reautoconfirm-none' => '{{GENDER:$1| | |กลุ่ม}}ผู้ใช้ที่ยังไม่มีสถานะที่ยืนยันโดยอัตโนมัติได้ถูกระงับแล้ว',
+	'abusefilter-reautoconfirm-notallowed' => 'คุณไม่ได้รับอนุญาตให้เรียกคืนสถานะที่ยืนยันโดยอัตโนมัติ',
+	'abusefilter-reautoconfirm-done' => 'สถานะที่ยืนยันโดยอัตโนมัติของบัญชีผู้ใช้นี้ได้รับการคืนสภาพแล้ว',
 	'abusefilter-edit-subtitle' => 'แก้ไขตัวกรอง $1',
 	'abusefilter-edit-status-label' => 'สถิติ:',
 	'abusefilter-edit-throttled' => "'''คำเตือน ''': ตัวกรองนี้ถูกปิดใช้งานโดยอัตโนมัติตามมาตรการความปลอดภัย 
@@ -28523,7 +28533,7 @@ $messages['th'] = array(
 	'abusefilter-edit-action-warn' => 'เรียกใช้การกระทำเหล่านี้หลังจากที่เตือนผู้ใช้นั้นแล้ว',
 	'abusefilter-edit-action-disallow' => 'ป้องกันผู้ใช้จากดำเนินการกระทำที่มีปัญหา',
 	'abusefilter-edit-action-flag' => 'คั่นการแก้ไขในบันทึกความไม่เหมาะสม',
-	'abusefilter-edit-action-blockautopromote' => 'ยกเลิกสถานะยืนยันโดยอัติโนมัติของผู้ใช้',
+	'abusefilter-edit-action-blockautopromote' => 'ยกเลิกสถานะยืนยันโดยอัตโนมัติของผู้ใช้',
 	'abusefilter-edit-action-degroup' => 'ลบผู้ใช้ออกจากกลุ่มที่มีสิทธิพิเศษทั้งหมด',
 	'abusefilter-edit-action-block' => 'ระงับผู้ใช้ และ/หรือ หมายเลขไอพีจากการแก้ไข',
 	'abusefilter-edit-action-throttle' => 'เรียกใช้การกระทำเฉพาะในกรณีที่ผู้ใช้ดำเนินการเกินกำหนด',
