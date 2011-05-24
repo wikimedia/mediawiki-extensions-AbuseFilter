@@ -9895,7 +9895,7 @@ Les balises doivent être courtes et ne pas contenir de caractères spéciaux.",
 	'abusefilter-history-select-legend' => 'Affiner la recherche',
 	'abusefilter-history-select-user' => 'Utilisateur :',
 	'abusefilter-history-select-submit' => 'Affiner',
-	'abusefilter-history-diff' => 'Modifications',
+	'abusefilter-history-diff' => 'Changements',
 	'abusefilter-history-error-hidden' => 'Le filtre que vous avez demandé est caché, et vous ne pouvez pas afficher son historique.',
 	'abusefilter-exception-unexpectedatend' => '« $2 » inattendu au caractère $1.',
 	'abusefilter-exception-expectednotfound' => 'Un $2 manquant était attendu au caractère $1 ($3 $4 trouvé à la place).',
@@ -18120,6 +18120,41 @@ Pilnu paskaidrojumu vari saņemt, noklikšķinot uz pogas "Pārbadīt sintaksi".
 	'abusefilter-diff-pattern' => 'Filtra nosacījumi',
 	'abusefilter-diff-backhistory' => 'Atpakaļ uz filtra vēsturi',
 	'abusefilter-import-submit' => 'Importēt datus',
+);
+
+/** Maithili (मैथिली)
+ * @author Vinitutpal
+ */
+$messages['mai'] = array(
+	'abusefilter-blocker' => 'फिल्टरक दुरुपयोग',
+	'right-abusefilter-modify' => 'ख़राब फ़िल्टर के ठीक करू',
+	'right-abusefilter-view' => 'ख़राब फ़िल्टर के देखू',
+	'abusefilter-log-search-user' => 'प्रयोक्ता',
+	'abusefilter-log-search-title' => 'शीर्षक',
+	'abusefilter-log-show-deleted' => 'नुकाएल संवर्ग देखाउ',
+	'abusefilter-log-search-submit' => 'ताकू',
+	'abusefilter-log-detailslink' => 'विस्तार',
+	'abusefilter-list-edit' => 'संपादन',
+	'abusefilter-enabled' => 'सक्षम',
+	'abusefilter-deleted' => 'मेटाउ',
+	'abusefilter-tools-modifiertest-submit' => 'परीक्षण',
+	'abusefilter-tools' => 'ख़राब फ़िल्टर उपकरण',
+	'abusefilter-loglink' => '
+गलत लॉग के देखू',
+	'abusefilter-return' => 'प्रबंधन फ़िल्टर मे घुरू',
+	'abusefilter-status-global' => 'वैश्विक',
+	'abusefilter-list-options' => 'विकल्प',
+	'abusefilter-list-options-deleted' => 'मिटायल फ़िल्टर',
+	'abusefilter-list-options-deleted-only' => 'मिटायल फ़िल्टर के देखाऊ',
+	'abusefilter-list-options-deleted-hide' => 'मिटायल फ़िल्टर के नुकाऊ',
+	'abusefilter-list-options-deleted-show' => 'हटायल गेल फ़िल्टर्स मे शामिल करू',
+	'abusefilter-list-options-disabled' => 'अयोग्य फ़िल्टर',
+	'abusefilter-list-options-hidedisabled' => 'अयोग्य फ़िल्टर के नुकाऊ',
+	'abusefilter-list-options-submit' => 'अद्यतन',
+	'abusefilter-tools-subtitle' => 'उपकरण',
+	'abusefilter-tools-submitexpr' => 'मूल्यांकन',
+	'abusefilter-tools-reautoconfirm-user' => 'प्रयोक्ता',
+	'abusefilter-edit-deleted' => 'मिटाबै के निशान दियो',
 );
 
 /** Malagasy (Malagasy)
