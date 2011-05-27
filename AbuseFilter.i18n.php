@@ -13994,8 +13994,27 @@ $messages['ig'] = array(
  * @author Sapral Mikail
  */
 $messages['inh'] = array(
+	'abusefilter-log-search-user' => 'Дакъалаьцархо:',
+	'abusefilter-log-search-submit' => 'Лаха',
+	'abusefilter-log-hide-reason' => 'Бахьан:',
+	'abusefilter-list-edit' => 'Хувца',
+	'abusefilter-tools-reautoconfirm-user' => 'Дакъалаьцархо:',
+	'abusefilter-edit-flags' => 'Байракхаш:',
 	'abusefilter-edit-history' => 'Искар:',
 	'abusefilter-edit-tools' => 'ГIирсаш:',
+	'abusefilter-edit-builder-op-arithmetic-pow' => 'НидзлагIа (**)',
+	'abusefilter-edit-builder-vars-article-id' => 'ID оагIув',
+	'abusefilter-history-hidden' => 'къайла',
+	'abusefilter-history-global' => 'Дунена',
+	'abusefilter-history-timestamp' => 'Ха',
+	'abusefilter-history-user' => 'Дакъалаьцархо',
+	'abusefilter-history-flags' => 'Байракхаш',
+	'abusefilter-history-select-user' => 'Дакъалаьцархо:',
+	'abusefilter-history-diff' => 'Хувцамаш',
+	'abusefilter-action-tag' => 'Йоазо',
+	'abusefilter-examine-user' => 'Дакъалаьцархо:',
+	'abusefilter-examine-title' => 'ОагIувни кертцIи:',
+	'abusefilter-examine-submit' => 'Лаха',
 );
 
 /** Ido (Ido)
