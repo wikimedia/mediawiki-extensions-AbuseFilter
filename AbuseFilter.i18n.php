@@ -21989,8 +21989,15 @@ $messages['os'] = array(
 	'abusefilter-deleted' => 'Аппæрст',
 	'abusefilter-tools-reautoconfirm-user' => 'Архайæг:',
 	'abusefilter-edit-status-label' => 'Статистикæ:',
+	'abusefilter-edit-new' => 'Ног фæрсудзæн',
+	'abusefilter-edit-history' => 'Истори:',
 	'abusefilter-history-user' => 'Архайæг',
 	'abusefilter-history-deleted' => 'Аппæрст',
+	'abusefilter-history-filterid' => 'Фæрсудзæн',
+	'abusefilter-history-select-user' => 'Архайæг:',
+	'abusefilter-history-diff' => 'Ивдтытæ',
+	'abusefilter-revert-filter' => 'Фæрсудзæн:',
+	'abusefilter-examine-user' => 'Архайæг:',
 );
 
 /** Punjabi (ਪੰਜਾਬੀ)
