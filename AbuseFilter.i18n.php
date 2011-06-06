@@ -275,7 +275,7 @@ Tags should be short, and they should not contain special characters.',
 	'abusefilter-edit-builder-funcs-lcase' => 'To lower case (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalise confusable characters (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Remove double-characters (rmdoubles)',
-	'abusefilter-edit-builder-funcs-specialratio' => 'Special characters / total characters (specialratio)',
+	'abusefilter-edit-builder-funcs-specabuialratio' => 'Special characters / total characters (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Normalise (norm)',
 	'abusefilter-edit-builder-funcs-count' => 'Number of times string X appears in string Y (count)',
 	'abusefilter-edit-builder-funcs-rcount' => 'Number of times regex X appears in string Y (rcount)',
@@ -451,6 +451,7 @@ You can receive a full explanation by clicking the "Check Syntax" button.',
 	'abusefilter-log-header' => "This log shows a summary of changes made to filters.
 For full details, see [[Special:AbuseFilter/history|the list]] of recent filter changes.",
 	'abusefilter-log-entry-modify' => 'modified $1 ($2)',
+	'abusefilter-log-noresults' => 'No results',
 
 	// Diffs
 	'abusefilter-diff-title' => 'Differences between versions',

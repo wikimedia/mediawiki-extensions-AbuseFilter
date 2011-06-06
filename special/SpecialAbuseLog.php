@@ -203,9 +203,13 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$pager = new AbuseLogPager( $this, $conds );
 
-		$wgOut->addHTML( $pager->getNavigationBar() .
-				Xml::tags( 'ul', null, $pager->getBody() ) .
-				$pager->getNavigationBar() );
+		if( $pager->getResult()->numRows() !== 0 ) {
+			$wgOut->addHTML( $pager->getNavigationBar() .
+					Xml::tags( 'ul', null, $pager->getBody() ) .
+					$pager->getNavigationBar() );
+		} else {
+			$wgOut->addWikiMsg( 'abusefilter-log-noresults' );
+		}
 	}
 
 	function showDetails( $id ) {
