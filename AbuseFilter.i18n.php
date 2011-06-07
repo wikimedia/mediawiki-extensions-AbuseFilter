@@ -6061,6 +6061,7 @@ Weitere Erläuterungen gibt es bei Klick auf die Schaltfläche „Syntaxprüfung
 	'abusefilter-log-header' => 'Dieses Logbuch zeigt eine Zusammenfassung der Änderungen an Filtern.
 Für genauere Details, siehe [[Special:AbuseFilter/history|die Liste]] der letzten Änderungen an Filtern.',
 	'abusefilter-log-entry-modify' => 'änderte $1 ($2)',
+	'abusefilter-log-noresults' => 'Keine Ergebnisse',
 	'abusefilter-diff-title' => 'Unterschied zwischen Versionen',
 	'abusefilter-diff-item' => 'Element',
 	'abusefilter-diff-version' => 'Version vom $1 von $2',
@@ -26829,6 +26830,7 @@ Polno pojasnilo lahko dobite s klikom na gumb »Preveri skladnjo«.',
 	'abusefilter-log-header' => 'Ta dnevnik prikazuje povzetek sprememb filtrov.
 Za vse podrobnosti si oglejte [[Special:AbuseFilter/history|seznam]] zadnjih sprememb filtrov.',
 	'abusefilter-log-entry-modify' => 'je spremenil(-a) $1 ($2)',
+	'abusefilter-log-noresults' => 'Ni zadetkov',
 	'abusefilter-diff-title' => 'Razlike med različicami',
 	'abusefilter-diff-item' => 'Postavka',
 	'abusefilter-diff-version' => 'Različica dne $1 od $2',
@@ -26848,6 +26850,28 @@ Nato skopirajte besedilo v prikazanem polju, prilepite ga v to polje in kliknite
 $messages['so'] = array(
 	'abusefilter-log-search-submit' => 'Raadi',
 	'abusefilter-examine-submit' => 'Raadi',
+);
+
+/** Albanian (Shqip)
+ * @author Vinie007
+ */
+$messages['sq'] = array(
+	'abusefilter-mustbeeditor' => 'Për arsye sigurie, vetëm përdoruesit me të drejtën për të modifikuar filtra abuzimit mund të përdorin këtë interface.',
+	'abusefilter-blocker' => 'Abuse filtër',
+	'abusefilter-blockreason' => 'të e bllokuara automatikisht nga abuzimi me filtër rregull:.! XAU prej Përshkrim përkojnë $1',
+	'abusefilter-accountreserved' => 'Ky emër llogari është i rezervuar për përdorim nga ana e abuzimit filtri.',
+	'right-abusefilter-modify' => 'abuzim filtra Modifiko',
+	'right-abusefilter-view' => 'abuzim filtra Modifiko',
+	'right-abusefilter-log' => 'Shiko log abuzimin',
+	'right-abusefilter-log-detail' => 'Shiko log detajuar abuzimet',
+	'right-abusefilter-private' => 'Shiko të dhënave private në log abuzimin',
+	'right-abusefilter-modify-restricted' => 'abuzim filtra Modifiko me veprimet e kufizuar',
+	'right-abusefilter-revert' => 'Rikthehet të gjitha ndryshimet nga një abuzim të dhënë filtër',
+	'right-abusefilter-view-private' => 'abuzim filtra Shiko shënuar si private',
+	'right-abusefilter-hide-log' => 'Hide hyra në log abuzimin',
+	'right-abusefilter-hidden-log' => 'Shiko log detajuar abuzimet',
+	'action-abusefilter-view' => 'abuzim filtra Modifiko',
+	'action-abusefilter-log' => 'pamje log abuzimin',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
