@@ -3027,6 +3027,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-log-header' => 'Гэты журнал паказвае кароткае апісаньне зьменаў у фільтрах.
 Поўную інфармацыю можна знайсьці ў [[Special:AbuseFilter/history|сьпісе]] апошніх зьменаў фільтраў.',
 	'abusefilter-log-entry-modify' => 'зьмяніў $1 ($2)',
+	'abusefilter-log-noresults' => 'Вынікаў няма',
 	'abusefilter-diff-title' => 'Адрозьненьні паміж вэрсіямі',
 	'abusefilter-diff-item' => 'Элемэнт',
 	'abusefilter-diff-version' => 'Вэрсія ад $1 $2',
@@ -9581,6 +9582,7 @@ Kopioi ilmestyvän tekstikentän sisältö ja liitä se tähän tekstikenttään
  * @author Peter17
  * @author PieRRoMaN
  * @author Robby
+ * @author Sherbrooke
  * @author Urhixidur
  * @author Verdy p
  * @author Zetud
@@ -9982,6 +9984,7 @@ Vous pouvez recevoir une explication complète en cliquant sur le bouton « Vér
 	'abusefilter-log-header' => 'Ce journal affiche un résumé des modifications faites aux filtres.
 Pour plus de détails, voyez [[Special:AbuseFilter/history|la liste]] des modifications récentes du filtre.',
 	'abusefilter-log-entry-modify' => 'a modifié $1 ($2)',
+	'abusefilter-log-noresults' => 'Aucun résultat',
 	'abusefilter-diff-title' => 'Différences entre les versions',
 	'abusefilter-diff-item' => 'Article',
 	'abusefilter-diff-version' => 'Version du $1 par $2',
@@ -10395,6 +10398,7 @@ Vos pouede recêvre una èxplicacion complèta en cliquent sur lo boton « Contr
 	'abusefilter-log-header' => 'Ceti jornal montre un rèsumâ des changements fêts ux filtros.
 Por més de dètalys, vêde la [[Special:AbuseFilter/history|lista]] des dèrriérs changements du filtro.',
 	'abusefilter-log-entry-modify' => 'at changiê $1 ($2)',
+	'abusefilter-log-noresults' => 'Gins de rèsultat',
 	'abusefilter-diff-title' => 'Difèrences entre les vèrsions',
 	'abusefilter-diff-item' => 'Articllo',
 	'abusefilter-diff-version' => 'Vèrsion du $1 per $2',
@@ -18679,6 +18683,7 @@ $messages['mk'] = array(
 	'abusefilter-log-header' => 'Во овој дневник е прикажан преглед на промените направени во филтрите.
 За сите подробности, погледајте го [[Special:AbuseFilter/history|списокот]] на скорешни промени во филтрите.',
 	'abusefilter-log-entry-modify' => 'го измени $1 ($2)',
+	'abusefilter-log-noresults' => 'Нема резултати',
 	'abusefilter-diff-title' => 'Разлики помеѓу верзиите',
 	'abusefilter-diff-item' => 'Елемент',
 	'abusefilter-diff-version' => 'Верзија од $1, од $2',
@@ -21985,21 +21990,30 @@ $messages['os'] = array(
 	'abusefilter-log-search-title' => 'Сæргонд:',
 	'abusefilter-log-search-submit' => 'Агур',
 	'abusefilter-log-detailedentry-local' => 'фæрсудзæн $1',
+	'abusefilter-log-detailslink' => 'ууыл фылдæр',
 	'abusefilter-log-noactions' => 'нæй',
 	'abusefilter-list' => 'Æппæт фæрсудзæнтæ',
 	'abusefilter-list-status' => 'Статус',
+	'abusefilter-list-details' => 'Фылдæр',
 	'abusefilter-deleted' => 'Аппæрст',
+	'abusefilter-tools-subtitle' => 'Фæрæзтæ',
 	'abusefilter-tools-reautoconfirm-user' => 'Архайæг:',
 	'abusefilter-edit-status-label' => 'Статистикæ:',
 	'abusefilter-edit-new' => 'Ног фæрсудзæн',
+	'abusefilter-edit-throttle-period' => 'Æмгъуыд:',
 	'abusefilter-edit-history' => 'Истори:',
+	'abusefilter-edit-tools' => 'Фæрæзтæ:',
+	'abusefilter-history-timestamp' => 'Рæстæг',
 	'abusefilter-history-user' => 'Архайæг',
 	'abusefilter-history-deleted' => 'Аппæрст',
 	'abusefilter-history-filterid' => 'Фæрсудзæн',
 	'abusefilter-history-select-user' => 'Архайæг:',
 	'abusefilter-history-diff' => 'Ивдтытæ',
+	'abusefilter-revert-periodstart' => 'Æмгъуыды райдайæн:',
+	'abusefilter-revert-periodend' => 'Æмгъуыды кæрон:',
 	'abusefilter-revert-filter' => 'Фæрсудзæн:',
 	'abusefilter-examine-user' => 'Архайæг:',
+	'abusefilter-examine-title' => 'Фарсы сæргонд:',
 );
 
 /** Punjabi (ਪੰਜਾਬੀ)
@@ -22465,6 +22479,7 @@ Pełne wyjaśnienie dostępne jest po kliknięciu przycisku „Sprawdź składni
 	'abusefilter-log-header' => 'Rejestr zawiera zestawienie zmian wprowadzanych w filtrach.
 Pełne informacje odnajdziesz w [[Special:AbuseFilter/history|rejestrze]] ostatnich zmian w filtrach.',
 	'abusefilter-log-entry-modify' => 'zmodyfikował $1 ($2)',
+	'abusefilter-log-noresults' => 'Brak wyników',
 	'abusefilter-diff-title' => 'Różnice pomiędzy wersjami',
 	'abusefilter-diff-item' => 'Przedmiot',
 	'abusefilter-diff-version' => 'Wersja z $1 przez $2',
@@ -23374,6 +23389,7 @@ Para ver uma explicação completa clique o botão "Verificar sintaxe".',
 	'abusefilter-log-header' => 'Este registo mostra um resumo das alterações efectuadas a filtros.
 Para detalhes completos, ver [[Special:AbuseFilter/history|a lista]] de alterações recentes a filtros.',
 	'abusefilter-log-entry-modify' => 'modificou $1 ($2)',
+	'abusefilter-log-noresults' => 'Não foram encontrados resultados.',
 	'abusefilter-diff-title' => 'Diferenças entre versões',
 	'abusefilter-diff-item' => 'Entrada',
 	'abusefilter-diff-version' => 'Versão de $1 por $2',
@@ -25036,6 +25052,7 @@ $messages['ru'] = array(
 	'abusefilter-log-header' => 'В этот журнал записываются описания изменений, произведённых в фильтрах.
 Подробности можно найти в [[Special:AbuseFilter/history|списке]] последних изменений фильтров.',
 	'abusefilter-log-entry-modify' => 'изменил $1 ($2)',
+	'abusefilter-log-noresults' => 'Ничего не найдено',
 	'abusefilter-diff-title' => 'Различия между версиями',
 	'abusefilter-diff-item' => 'Элемент',
 	'abusefilter-diff-version' => 'Версия от $1, $2',
@@ -31446,6 +31463,7 @@ Lý do: $2',
 	'abusefilter-log-name' => 'Nhật trình bộ lọc lạm dụng',
 	'abusefilter-log-header' => 'Nhật trình này tóm lại các thay đổi bộ lọc. Hãy xem các chi tiết đầy đủ trong danh sách các [[Special:AbuseFilter/history|thay đổi bộ lọc gần đây]].',
 	'abusefilter-log-entry-modify' => 'đã sửa đổi $1 ($2)',
+	'abusefilter-log-noresults' => 'Không có kết quả',
 	'abusefilter-diff-title' => 'Khác biệt giữa các phiên bản',
 	'abusefilter-diff-item' => 'Khoản mục',
 	'abusefilter-diff-version' => 'Phiên bản vào $1 bởi $2',
