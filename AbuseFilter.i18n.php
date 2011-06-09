@@ -10845,6 +10845,7 @@ Pode obter unha explicación completa premendo no botón "Comprobar a sintaxe".'
 	'abusefilter-log-header' => 'Este rexistro mostra un resumo dos cambios feitos aos filtros.
 Para obter máis detalles, vaia [[Special:AbuseFilter/history|á lista]] dos cambios feitos recentemente nos filtros.',
 	'abusefilter-log-entry-modify' => 'modificou "$1" ($2)',
+	'abusefilter-log-noresults' => 'Non hai resultados',
 	'abusefilter-diff-title' => 'Diferenzas entre versións',
 	'abusefilter-diff-item' => 'Elemento',
 	'abusefilter-diff-version' => 'Versión de $1 feita por $2',
@@ -14090,6 +14091,7 @@ $messages['io'] = array(
  * @author Melos
  * @author Nemo bis
  * @author Pietrodn
+ * @author Valepert
  */
 $messages['it'] = array(
 	'abusefilter-desc' => "Applica un'euristica automatica alle modifiche.",
@@ -14485,6 +14487,7 @@ Per ottenere una spiegazione completa, fare clic sul pulsante "Verifica sintassi
 	'abusefilter-log-header' => "Il registro mostra un riassunto delle modifiche effettuate sui filtri.
 Per i dettagli completi, consultare [[Special:AbuseFilter/history|l'elenco]] delle modifiche più recenti agli stessi.",
 	'abusefilter-log-entry-modify' => 'ha modificato $1 ($2)',
+	'abusefilter-log-noresults' => 'Nessun risultato',
 	'abusefilter-diff-title' => 'Differenze tra le versioni',
 	'abusefilter-diff-item' => 'Elemento',
 	'abusefilter-diff-version' => 'Versione del $1, autore $2',
@@ -19520,6 +19523,7 @@ Anda boleh menerima penjelasan penuh dengan mengklik butang "Semak sintaks".',
 	'abusefilter-log-header' => 'Log ini menunjukkan ringkasan perubahan yang dibuat pada penapis.
 Untuk butiran lanjut, lihat [[Special:AbuseFilter/history|senarai]] perubahan penapis terkini.',
 	'abusefilter-log-entry-modify' => '$1 diubah suai ($2)',
+	'abusefilter-log-noresults' => 'Tiada hasil',
 	'abusefilter-diff-title' => 'Perbezaan antara versi',
 	'abusefilter-diff-item' => 'Butiran',
 	'abusefilter-diff-version' => 'Versi dari $1 oleh $2',
@@ -20278,6 +20282,7 @@ $messages['ne'] = array(
  * @author Romaine
  * @author SPQRobin
  * @author Siebrand
+ * @author Tjcool007
  * @author Tvdm
  */
 $messages['nl'] = array(
@@ -20673,6 +20678,7 @@ Door op "Syntaxis controleren" te klikken krijgt u een volledige toelichting.',
 	'abusefilter-log-header' => 'Dit logboek geeft een overzicht van wijzigingen aan filters.
 Zie de [[Special:AbuseFilter/history|lijst met recente filterwijzigingen]] voor volledige details.',
 	'abusefilter-log-entry-modify' => 'heeft $1 gewijzigd ($2)',
+	'abusefilter-log-noresults' => 'Geen resultaten',
 	'abusefilter-diff-title' => 'Verschillen tussen versies',
 	'abusefilter-diff-item' => 'Item',
 	'abusefilter-diff-version' => 'Versie van $1 door $2',
@@ -25995,6 +26001,8 @@ $messages['shi'] = array(
  * @author ශ්වෙත
  */
 $messages['si'] = array(
+	'abusefilter' => 'අනිසි පෙරහන් ආකෘතිය',
+	'abuselog' => 'අනිසි ලඝු',
 	'abusefilter-intro' => 'අපයෙදුම් පෙරහන් කළමනාකරණ අතුරු මුහුණතට ඔබව සාදරයෙන් පිළිගනිමු.
 The Abuse Filter is an automated software mechanism of applying automatic heuristics to all actions.
 This interface shows a list of defined filters, and allows them to be modified.',
