@@ -19095,6 +19095,7 @@ $messages['ml'] = array(
 	'abusefilter-log-header' => 'അരിപ്പകളിൽ വരുത്തിയ മാറ്റങ്ങളുടെ ചുരുക്കം ഈ രേഖയിൽ കാണാവുന്നതാണ്.
 പൂർണ്ണ വിവരങ്ങൾക്ക്, അരിപ്പകളിലെ സമീപകാലമാറ്റങ്ങളുടെ [[Special:AbuseFilter/history|പട്ടിക]] കാണുക.',
 	'abusefilter-log-entry-modify' => '$1 ($2) മാറ്റം വരുത്തി',
+	'abusefilter-log-noresults' => 'ഫലങ്ങൾ ഒന്നുമില്ല',
 	'abusefilter-diff-title' => 'പതിപ്പുകൾ തമ്മിലുള്ള വ്യത്യാസങ്ങൾ',
 	'abusefilter-diff-item' => 'ഇനം',
 	'abusefilter-diff-version' => '$1-നു $2 സൃഷ്ടിച്ച പതിപ്പ്',
@@ -24242,6 +24243,7 @@ Puteți primi o explicație completă apăsând pe butonul "Verificare sintaxă"
 	'abusefilter-log-header' => 'Acest jurnal afișează un rezumat de schimbări realizate de filtre.
 Pentru informații complete, vedeți [[Special:AbuseFilter/history|lista]] cu schimbările ale filtrului recente.',
 	'abusefilter-log-entry-modify' => 'a modificat $1 ($2)',
+	'abusefilter-log-noresults' => 'Niciun rezultat',
 	'abusefilter-diff-title' => 'Diferențe între versiuni',
 	'abusefilter-diff-item' => 'Element',
 	'abusefilter-diff-version' => 'Versiune de la $1 de $2',
@@ -25996,13 +25998,14 @@ $messages['shi'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author Singhalawap
  * @author පසිඳු කාවින්ද
  * @author බිඟුවා
  * @author ශ්වෙත
  */
 $messages['si'] = array(
-	'abusefilter' => 'අනිසි පෙරහන් ආකෘතිය',
-	'abuselog' => 'අනිසි ලඝු',
+	'abusefilter' => 'අනිසි පෙරහන් සැකසුම',
+	'abuselog' => 'අනිසි සටහන්',
 	'abusefilter-intro' => 'අපයෙදුම් පෙරහන් කළමනාකරණ අතුරු මුහුණතට ඔබව සාදරයෙන් පිළිගනිමු.
 The Abuse Filter is an automated software mechanism of applying automatic heuristics to all actions.
 This interface shows a list of defined filters, and allows them to be modified.',
