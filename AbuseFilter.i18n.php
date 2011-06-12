@@ -4049,6 +4049,7 @@ Gallout a rit resev un displegadenn glok dre glikañ war ar bouton "Gwiriañ an 
 	'abusefilter-log-header' => "An deizlevr-mañ a ziskouez un diverradenn eus ar c'hemmoù graet d'ar siloù.
 Evit gouzout hiroc'h, gwelout [[Special:AbuseFilter/history|listenn]] eus kemmoù diwezhañ ar sil.",
 	'abusefilter-log-entry-modify' => 'kemmet $1 ($2)',
+	'abusefilter-log-noresults' => "Disoc'h ebet",
 	'abusefilter-diff-title' => 'Disheñvelderioù etre ar stummoù',
 	'abusefilter-diff-item' => 'Elfenn',
 	'abusefilter-diff-version' => 'Stumm $1 gant $2',
@@ -5258,6 +5259,7 @@ Podrobnější vysvětlení můžete získat kliknutím na tlačítko „Zkontro
 	'abusefilter-log-header' => 'Tento protokol obsahuje přehled změn filtrů.
 Úplné podrobnosti naleznete v [[Special:AbuseFilter/history|seznamu posledních změn filtrů]].',
 	'abusefilter-log-entry-modify' => 'změnil $1 ($2)',
+	'abusefilter-log-noresults' => 'Žádné výsledky',
 	'abusefilter-diff-title' => 'Rozdíly mezi verzemi',
 	'abusefilter-diff-item' => 'Položka',
 	'abusefilter-diff-version' => 'Verze z $1 od $2',
@@ -11801,6 +11803,7 @@ $messages['he'] = array(
 	'abusefilter-log-header' => 'יומן זה מציג סיכום של השינויים שבוצעו למסננים.
 לפרטים מלאים, ראו את [[Special:AbuseFilter/history|רשימת]] השינויים האחרונים למסננים.',
 	'abusefilter-log-entry-modify' => 'שינה את $1 ($2)',
+	'abusefilter-log-noresults' => 'אין תוצאות',
 	'abusefilter-diff-title' => 'הבדלים בין גרסאות',
 	'abusefilter-diff-item' => 'פריט',
 	'abusefilter-diff-version' => 'גרסה מ־$1 של $2',
@@ -13527,6 +13530,7 @@ Tu pote reciper un explication complete per cliccar le button "Verificar syntaxe
 	'abusefilter-log-header' => 'Iste registro monstra un summario del modificationes facite al filtros.
 Pro detalios complete, vide [[Special:AbuseFilter/history|le lista]] de cambios recente al filtros.',
 	'abusefilter-log-entry-modify' => 'modificava $1 ($2)',
+	'abusefilter-log-noresults' => 'Nulle resultato',
 	'abusefilter-diff-title' => 'Differentias inter versiones',
 	'abusefilter-diff-item' => 'Entrata',
 	'abusefilter-diff-version' => 'Version del $1 per $2',
@@ -15910,6 +15914,7 @@ $3개의 변수가 있어야 하지만 $4개의 변수가 있습니다.',
 	'abusefilter-log-header' => '이 기록은 필터가 변경된 기록의 요약본을 보여 주고 있습니다.
 자세한 정보는 [[Special:AbuseFilter/history|필터의 최근 바뀜]]을 참조하십시오.',
 	'abusefilter-log-entry-modify' => '$1을 수정함 ($2)',
+	'abusefilter-log-noresults' => '결과가 없습니다.',
 	'abusefilter-diff-title' => '버전 사이의 차이',
 	'abusefilter-diff-item' => '항목',
 	'abusefilter-diff-version' => '$2 사용자가 편집한 $1 버전',
@@ -16892,6 +16897,7 @@ Dir kënnt eng komplett Erklärung kréien wann Dir op "Syntax nokucken" klickt.
 	'abusefilter-log-header' => "Dëst Logbuch weist e Resumé vun Ännerungen féi un de filtere gemaach goufen.
 Fir weider Detailer, kuckt [[Special:AbuseFilter/history|d'Lëscht]] vun de rezenten Filterännerungen.",
 	'abusefilter-log-entry-modify' => 'ännert $1 ($2)',
+	'abusefilter-log-noresults' => 'Keng Resultater',
 	'abusefilter-diff-title' => 'Ënnerscheeder tëschent Versiounen',
 	'abusefilter-diff-item' => 'Objet',
 	'abusefilter-diff-version' => 'Versioun vum $1 vum $2',
@@ -32100,6 +32106,7 @@ $messages['zh-cn'] = array(
  * @author FireJackey
  * @author Gaoxuewei
  * @author Gzdavidwong
+ * @author Hydra
  * @author Jimmy xu wrk
  * @author Liangent
  * @author Philip <philip.npc@gmail.com>
@@ -32471,6 +32478,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-log-name' => '防滥用过滤器日志',
 	'abusefilter-log-header' => '本日志显示了对过滤器所作更改的摘要。详细的日志，参见[[Special:AbuseFilter/history|此表]]获取过滤器的最近更改。',
 	'abusefilter-log-entry-modify' => '$1已更改（$2）',
+	'abusefilter-log-noresults' => '没有结果',
 	'abusefilter-diff-title' => '修订版本间差异',
 	'abusefilter-diff-item' => '项目',
 	'abusefilter-diff-version' => '在$1由$2所做的修订版本',
