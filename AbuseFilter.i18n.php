@@ -4454,6 +4454,7 @@ Možete dobiti potpuno objašnjenje klikanje na dugme "Provjeri sintaksu".',
 	'abusefilter-log-header' => 'Ovaj zapisnik prikazuje sažetak izmjena napravljenih na filterima.
 Za sve detalje, pogledajte [[Special:AbuseFilter/history|spisak]] nedavnih izmjena filtera.',
 	'abusefilter-log-entry-modify' => 'izmijenjeno $1 ($2)',
+	'abusefilter-log-noresults' => 'Nema rezultata',
 	'abusefilter-diff-title' => 'Razlike između verzija',
 	'abusefilter-diff-item' => 'Stavka',
 	'abusefilter-diff-version' => 'Verzija od $1 od strane $2',
@@ -30181,6 +30182,7 @@ $1 ماس كەلگەن مەشغۇلات چېكىگە يەتتى.",
  * @author Ahonc
  * @author Alex Khimich
  * @author JenVan
+ * @author Microcell
  * @author NickK
  * @author Prima klasy4na
  * @author SamOdin
@@ -30577,6 +30579,7 @@ $messages['uk'] = array(
 	'abusefilter-log-header' => 'У цей журнал записуються описи змін, зроблених у фільтрах.
 Подробиці можна знайти в [[Special:AbuseFilter/history|списку]] останніх змін фільтрів.',
 	'abusefilter-log-entry-modify' => 'змінив $1 ($2)',
+	'abusefilter-log-noresults' => 'Немає результатів',
 	'abusefilter-diff-title' => 'Різниця між версіями',
 	'abusefilter-diff-item' => 'Елемент',
 	'abusefilter-diff-version' => 'Версія від $1, $2',
@@ -32599,8 +32602,8 @@ $messages['zh-hant'] = array(
 	'abusefilter-hidden' => '隱密',
 	'abusefilter-unhidden' => '公開',
 	'abusefilter-enabled' => '啟用',
-	'abusefilter-deleted' => '已刪除',
-	'abusefilter-disabled' => '已停用',
+	'abusefilter-deleted' => '已刪',
+	'abusefilter-disabled' => '停用',
 	'abusefilter-hitcount' => '$1 次觸發',
 	'abusefilter-new' => '建立一個新的過濾器',
 	'abusefilter-links' => '有用連結：',
