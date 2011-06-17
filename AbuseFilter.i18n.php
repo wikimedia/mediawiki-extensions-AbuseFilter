@@ -18396,7 +18396,7 @@ $messages['mk'] = array(
 	'abusefilter-list-visibility' => 'Видливост',
 	'abusefilter-list-hitcount' => 'Број на погодоци',
 	'abusefilter-list-edit' => 'Уреди',
-	'abusefilter-list-details' => 'Детали',
+	'abusefilter-list-details' => 'Подробно',
 	'abusefilter-list-limit' => 'Број по страница:',
 	'abusefilter-list-lastmodified' => 'Последна промена',
 	'abusefilter-hidden' => 'Приватен',
@@ -29560,6 +29560,7 @@ Makakatanggap ka ng isang buong paliwanag sa pamamagitan ng pagpindot sa pinduta
 	'abusefilter-log-header' => 'Nagpapakita ang talaang ito ng isang buod ng mga pagbabagong ginawa sa mga pansala.
 Para sa buong mga detalye, tingnan [[Special:AbuseFilter/history|ang talaan]] ng kamakailang mga pagbabago sa pansala.',
 	'abusefilter-log-entry-modify' => 'binago ang $1 ($2)',
+	'abusefilter-log-noresults' => 'Walang mga resulta',
 	'abusefilter-diff-title' => 'Mga pagkakaiba sa pagitan ng mga bersyon',
 	'abusefilter-diff-item' => 'Bagay',
 	'abusefilter-diff-version' => 'Bersyong mula sa $1 ni $2',
