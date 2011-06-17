@@ -52,7 +52,7 @@ class AbuseFilter {
 			'rlike' => 'rlike',
 			'irlike' => 'irlike',
 			'cond ? iftrue : iffalse' => 'tern',
-			'if cond then iftrue else iffalse end' => 'cond',
+			'if cond then iftrue elseiffalse end' => 'cond',
 		),
 		'funcs' => array(
 			'length(string)' => 'length',
