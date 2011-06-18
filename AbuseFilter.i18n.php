@@ -28601,6 +28601,7 @@ $messages['tg-latn'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Akkhaporn
  * @author Ans
  * @author Harley Hartwell
  * @author Korrawit
@@ -28772,6 +28773,8 @@ $messages['th'] = array(
 	'abusefilter-edit-throttle-count' => 'จำนวนของการกระทำที่อนุญาต:',
 	'abusefilter-edit-throttle-period' => 'ช่วงเวลา:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|วินาที|วินาที}}',
+	'abusefilter-edit-warn-other' => 'ข้อความอื่นๆ',
+	'abusefilter-edit-warn-actions' => 'การกระทำ:',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'เครื่องหมายทางคณิตศาสตร์',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'การบวก (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'การลบ (-)',
@@ -28821,7 +28824,15 @@ $messages['th'] = array(
 	'abusefilter-edit-builder-vars-timestamp' => 'ประทับเวลา Unix ของการเปลี่ยนแปลง',
 	'abusefilter-edit-builder-vars-action' => 'การกระทำ',
 	'abusefilter-edit-builder-vars-addedlines' => 'เพิ่มบรรทัดในการแก้ไข',
+	'abusefilter-edit-builder-vars-newsize' => 'ขนาดหน้าใหม่',
+	'abusefilter-edit-builder-vars-oldsize' => 'ขนาดหน้าเก่า',
+	'abusefilter-edit-builder-vars-article-id' => 'หมายเลขหน้า',
 	'abusefilter-history-foruser' => 'การเปลี่ยนแปลงโดย $1',
+	'abusefilter-history-global' => 'ทั่วไป',
+	'abusefilter-history-user' => 'ผู้ใช้',
+	'abusefilter-history-actions' => 'การกระทำ',
+	'abusefilter-history-deleted' => 'ถูกลบ',
+	'abusefilter-history-diff' => 'จำนวนการเปลี่ยนแปลง',
 	'abusefilter-revert-confirm' => 'ยืนยัน',
 	'abusefilter-examine-submit' => 'สืบค้น',
 );
