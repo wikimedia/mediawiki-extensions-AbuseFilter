@@ -7822,6 +7822,7 @@ Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku 
  * @author BicScope
  * @author Crazymadlover
  * @author Dferg
+ * @author Fitoschido
  * @author Imre
  * @author Locos epraix
  * @author Manuelt15
@@ -8183,8 +8184,8 @@ Acciones a ser revertidas: $5 ($6)',
 Razón dada: $2',
 	'abusefilter-revert-reasonfield' => 'Razones para revertir:',
 	'abusefilter-test' => 'Pruebe un filtro contra ediciones previas',
-	'abusefilter-test-intro' => 'Esta página te permite verificar un filtro introducido en la tabla de abajo contra los últimos $1 {{PLURAL:$1|cambio|cambios}}.
-Para cargar un filtro existente, escribe el ID del filtro dentro de la tabla debajo del texto de tabla, y haga click en el botón "Cargar".',
+	'abusefilter-test-intro' => 'Esta página te permite verificar un filtro introducido en la tabla de abajo contra {{PLURAL:$1|el último cambio|los últimos $1 cambios}}.
+Para cargar un filtro existente, escribe el ID del filtro dentro de la tabla debajo del texto de tabla, y pulsa en el botón «Cargar».',
 	'abusefilter-test-legend' => 'Prueba de filtro',
 	'abusefilter-test-load-filter' => 'Cargar filtro ID:',
 	'abusefilter-test-submit' => 'Prueba',
@@ -8233,8 +8234,8 @@ Para detalles completos, ver [[Special:AbuseFilter/history|la lista]] de cambios
 	'abusefilter-diff-invalid' => 'Incapaz de traer la versiones solicitadas',
 	'abusefilter-diff-backhistory' => 'Regresar al historial del filtro',
 	'abusefilter-import-intro' => 'Puedes usar esta interfaz para importar filtros de otros wikis.
-En el wiki fuente, haga click en "{{int:abusefilter-edit-export}}" bajo "{{int:abusefilter-tools-subtitle}}" en la interface de edición.
-Copiar desde el cuadro de texto que aparece, y pegarlo dentro de este cuadro de texto, luego haga click en "{{int:abusefilter-import-submit}}".',
+En el wiki fuente, pulsa en «{{int:abusefilter-edit-export}}» bajo «{{int:abusefilter-tools-subtitle}}» en la interfaz de edición.
+Copia desde el cuadro de texto que aparece, y pegalo dentro de este cuadro de texto, luego pulsa en «{{int:abusefilter-import-submit}}».',
 	'abusefilter-import-submit' => 'Importar datos',
 );
 
@@ -22931,12 +22932,15 @@ $messages['ps'] = array(
 	'abusefilter-log-search-user' => 'کارن:',
 	'abusefilter-log-search-title' => 'سرليک:',
 	'abusefilter-log-search-submit' => 'پلټل',
+	'abusefilter-log-detailedentry-local' => 'چاڼګر $1',
 	'abusefilter-log-details-val' => 'ارزښت',
 	'abusefilter-log-noactions' => 'هېڅ',
+	'abusefilter-log-hide' => 'پټول يا ښکاره کول',
 	'abusefilter-log-hide-reason' => 'سبب:',
 	'abusefilter-logentry-suppress' => '"[[$1]]" پټول',
 	'abusefilter-logentry-unsuppress' => '"[[$1]]" ناپټول',
 	'abusefilter-list' => 'ټول چاڼګران',
+	'abusefilter-list-id' => 'د چاڼګر پېژند',
 	'abusefilter-list-status' => 'دريځ',
 	'abusefilter-list-edit' => 'سمون',
 	'abusefilter-hidden' => 'شخصي',
@@ -22952,6 +22956,7 @@ $messages['ps'] = array(
 	'abusefilter-tools-reautoconfirm-user' => 'کارن:',
 	'abusefilter-edit-new' => 'نوی چاڼګر',
 	'abusefilter-edit-save' => 'چاڼګر خوندي کول',
+	'abusefilter-edit-id' => 'د چاڼګر پېژند:',
 	'abusefilter-edit-flags' => 'رپيان:',
 	'abusefilter-edit-notes' => "يادونې:
 :''(شخصي)",
