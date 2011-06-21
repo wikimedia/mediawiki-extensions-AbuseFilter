@@ -1020,6 +1020,7 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author ;Hiba;1
+ * @author Aiman titi
  * @author Alnokta
  * @author Ciphers
  * @author Loya
@@ -1423,6 +1424,7 @@ $messages['ar'] = array(
 	'abusefilter-log-header' => 'هذا السجل يعرض ملخصا للتغييرات المعمولة للمرشحات.
 للتفاصيل الكاملة، انظر [[Special:AbuseFilter/history|قائمة]] تغييرات المرشحات الحديثة.',
 	'abusefilter-log-entry-modify' => 'عدل $1 ($2)',
+	'abusefilter-log-noresults' => 'لا توجد نتائج.',
 	'abusefilter-diff-title' => 'فروقات بين النسخ',
 	'abusefilter-diff-item' => 'عنصر',
 	'abusefilter-diff-version' => 'نسخة من $1 من قبل $2',
@@ -14919,7 +14921,7 @@ $3 つの{{PLURAL:$3|引数}}があるべきですが $4 つしかありませ�
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
-	'abusefilter' => 'ბოროტად გამოყენებების ფილტრის კონფიგურაცია',
+	'abusefilter' => 'ბოროტად გამოყენების ფილტრის კონფიგურაცია',
 	'abuselog' => 'ბოროტად გამოყენების ჟურნალი',
 	'abusefilter-mustbeeditor' => 'უსაფრთხოების შეხედულებიდან გამომდინარე, მხოლოდ ბოროტად გამოყენების ფილტრების შეცვლის უფლების მქონემომხმარებლებს შეუძლიათ ამ ინტერფეისის გამოყენება.',
 	'abusefilter-warning' => "'''ყურადღება''': ეს ქმედება ავტომატურად იქნა მიჩნეული არაკონსტრუქციულად.
