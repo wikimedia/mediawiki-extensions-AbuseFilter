@@ -5864,7 +5864,7 @@ Bitte einen Benutzer, der verbotene Aktionen hinzufügen kann, darum, die Änder
 	'abusefilter-edit-viewhistory' => 'Versionsgeschichte des Filters ansehen',
 	'abusefilter-edit-history' => 'Versionsgeschichte:',
 	'abusefilter-edit-check' => 'Syntaxprüfung',
-	'abusefilter-edit-badfilter' => 'Der angegebene Filter existiert nicht',
+	'abusefilter-edit-badfilter' => 'Der angegebene Filter ist nicht vorhanden.',
 	'abusefilter-edit-revert' => 'Aktionen des Filters rückgängig machen',
 	'abusefilter-edit-tools' => 'Werkzeuge:',
 	'abusefilter-edit-test-link' => 'Diesen Filter probeweise auf letzte Bearbeitungen anwenden',
