@@ -14029,22 +14029,23 @@ $messages['ig'] = array(
 );
 
 /** Ingush (ГІалгІай Ğalğaj)
+ * @author Amire80
  * @author Sapral Mikail
  */
 $messages['inh'] = array(
 	'abusefilter-log-search-user' => 'Дакъалаьцархо:',
-	'abusefilter-log-search-filter' => 'ID цIенаъерг:',
+	'abusefilter-log-search-filter' => 'ID цӀенаъерг:',
 	'abusefilter-log-show-deleted' => 'Къайла йоазувнаш хьахьокха',
 	'abusefilter-log-search-submit' => 'Лаха',
-	'abusefilter-log-detailedentry-local' => '$1 цIенаъерг',
+	'abusefilter-log-detailedentry-local' => '$1 цӀенаъерг',
 	'abusefilter-log-hide-reason' => 'Бахьан:',
 	'abusefilter-list-edit' => 'Хувца',
 	'abusefilter-tools-reautoconfirm-user' => 'Дакъалаьцархо:',
 	'abusefilter-edit-flags' => 'Байракхаш:',
 	'abusefilter-edit-history' => 'Искар:',
-	'abusefilter-edit-tools' => 'ГIирсаш:',
-	'abusefilter-edit-builder-op-arithmetic-pow' => 'НидзлагIа (**)',
-	'abusefilter-edit-builder-vars-article-id' => 'ID оагIув',
+	'abusefilter-edit-tools' => 'ГӀирсаш:',
+	'abusefilter-edit-builder-op-arithmetic-pow' => 'НидзлагӀа (**)',
+	'abusefilter-edit-builder-vars-article-id' => 'ID оагӀув',
 	'abusefilter-history-hidden' => 'къайла',
 	'abusefilter-history-global' => 'Дунена',
 	'abusefilter-history-timestamp' => 'Ха',
@@ -14054,7 +14055,7 @@ $messages['inh'] = array(
 	'abusefilter-history-diff' => 'Хувцамаш',
 	'abusefilter-action-tag' => 'Йоазо',
 	'abusefilter-examine-user' => 'Дакъалаьцархо:',
-	'abusefilter-examine-title' => 'ОагIувни кертцIи:',
+	'abusefilter-examine-title' => 'ОагӀувни кертцӀи:',
 	'abusefilter-examine-submit' => 'Лаха',
 );
 
