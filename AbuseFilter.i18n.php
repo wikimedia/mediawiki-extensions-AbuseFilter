@@ -4487,7 +4487,7 @@ $messages['ca'] = array(
 	'abusefilter-intro' => "Benvinguts a la interfície de gestió del filtre d'abusos.
 Aquest filtre és un mecanisme del programari per aplicar heurística automàtica a totes les accions.
 Aquesta interfície mostra una llista dels filtres definits i permet modificar-los.",
-	'abusefilter-mustbeeditor' => "Per raons de seguretat, només poden utilitzar aquesta interfície els usuaris amb permisos per a modificar els filtres d'abús.",
+	'abusefilter-mustbeeditor' => "Per raons de seguretat, només poden utilitzar aquesta interfície els usuaris amb permisos per a modificar els filtres d'abusos.",
 	'abusefilter-warning' => "'''Avís''': Aquesta acció ha estat identificada automàticament com a perniciosa.
 Les edicions no constructives seran revertides ràpidament,
 i la reiterada edició de forma no constructiva pot comportar el bloqueig del vostre compte o adreça IP.
@@ -14630,8 +14630,7 @@ $messages['ja'] = array(
 	'abusefilter-log-hide-id' => 'ログ項目ID：',
 	'abusefilter-log-hide-hidden' => '公開記録から、この項目を隠す',
 	'abusefilter-log-hide-reason' => '理由:',
-	'abusefilter-log-hide-forbidden' => '不正利用記録の項目を
-隠す権限がありません。',
+	'abusefilter-log-hide-forbidden' => '不正利用記録の項目を隠す権限がありません。',
 	'abusefilter-logentry-suppress' => '[[$1]]を非公開',
 	'abusefilter-logentry-unsuppress' => '[[$1]]を公開',
 	'abusefilter-management' => '不正利用フィルター管理',
@@ -25917,6 +25916,7 @@ $3 {{PLURAL:$3|аргумент кэтэһиллэр|аргуменнаах бу
 	'abusefilter-log-header' => 'Бу сурунаалга туох баар сиидэлэргэ оҥоһуллубут улартыылар суруллаллар.
 Сиһилии сиидэлэр кэнники улартыыларын [[Special:AbuseFilter/history|тиһигэр]] көрүөххүн сөп.',
 	'abusefilter-log-entry-modify' => 'уларыппыт $1 ($2)',
+	'abusefilter-log-noresults' => 'Туох да көстүбэтэ',
 	'abusefilter-diff-title' => 'Барыллары тэҥнээн көрүү',
 	'abusefilter-diff-item' => 'Элэмиэн',
 	'abusefilter-diff-version' => 'Баччатааҕы $1, $2 барыл',
