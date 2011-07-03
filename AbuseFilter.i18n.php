@@ -9589,6 +9589,7 @@ Lisätietoja saat napsauttamalla ”Tarkista syntaksi” -painiketta.',
 	'abusefilter-log-header' => 'Tässä lokissa esitetään yhteenveto suodattimiin tehdyistä muutoksista.
 Lisätietoja saat suodattimen [[Special:AbuseFilter/history|viimeisimpien muutosten luettelosta]].',
 	'abusefilter-log-entry-modify' => 'muokkasi kohdetta $1 ($2)',
+	'abusefilter-log-noresults' => 'Ei tuloksia',
 	'abusefilter-diff-title' => 'Versioiden välinen ero',
 	'abusefilter-diff-item' => 'Kohde',
 	'abusefilter-diff-version' => 'Käyttäjän $2 versio $1',
