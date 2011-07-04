@@ -1548,11 +1548,11 @@ $messages['arz'] = array(
 مرشح الإساءه هو ميكانيكيه برمجيه آليه لتطبيق ضوابط تلقائيه لكل الأفعال.
 هذه الواجهه تعرض قائمه بالمرشحات المعرفه، وتسمح بتعديلها.',
 	'abusefilter-mustbeeditor' => 'لأسباب أمنيه، المستخدمون ذوو صلاحيه تعديل مرشّحات الإساءه فقط يمكنهم استخدام هذه الواجهه.',
-	'abusefilter-warning' => "'''تحذير''': هذا الفعل تم التعرف عليه تلقائيا كضار.
-التعديلات غير البناءه سيتم استرجاعها سريعا،
-والتعديل غير البناء المتكرر أو المستمر سيؤدى إلى منع حسابك أو حاسوبك.
-لو كنت تعتقد أن هذا التعديل بناء، يمكنك أن تضغط تنفيذ مره أخرى لتأكيده.
-وصف مختصر لقاعده الإساءه التى طابقها فعلك هو: $1",
+	'abusefilter-warning' => "'''تحذير''': الإجراء ده أُعتبر  مضر.
+هايتم استرجاع التعديلات المضره بسرعه،
+والتعديل المضر المتكرر أو المستمر هايتسبب فيى منع حسابك أو الكمبيوتر بتاعك .
+إذا كنت فاكر إن  التعديل ده بناء، فممكن  تضغط \"أرسل\" مرة تانيه.
+وصف مختصر لقاعدة الإساءة : \$1",
 	'abusefilter-disallowed' => 'هذا الفعل تم التعرف عليه تلقائيا كضار،
 ولذا تم منعه.
 لو كنت تعتقد أن تعديلك بناء، من فضلك اتصل بإدارى، وأخبره بما كنت تحاول أن تفعل.
@@ -1581,6 +1581,7 @@ $messages['arz'] = array(
 	'right-abusefilter-modify-restricted' => 'عدل مرشحات الإساءه مع الأفعال المحظورة',
 	'right-abusefilter-revert' => 'استرجع كل التعديلات لمرشح إساءه محدد.',
 	'right-abusefilter-view-private' => 'اعرض مرشحات الإساءه المعلّمه كخاصة',
+	'right-abusefilter-hide-log' => 'تخبيية التعديلات من سجل الإساءة',
 	'action-abusefilter-modify' => 'تعديل مرشحات الإساءة',
 	'action-abusefilter-view' => 'رؤيه مرشحات الإساءة',
 	'action-abusefilter-log' => 'رؤيه سجل الإساءة',
@@ -22025,13 +22026,14 @@ $messages['or'] = array(
 	'abusefilter-examine-submit' => 'ଖୋଜିବା',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
+ * @author Bouron
  */
 $messages['os'] = array(
 	'abusefilter-log-search-user' => 'Архайæг:',
 	'abusefilter-log-search-title' => 'Сæргонд:',
-	'abusefilter-log-search-submit' => 'Агур',
+	'abusefilter-log-search-submit' => 'Агурын',
 	'abusefilter-log-detailedentry-local' => 'фæрсудзæн $1',
 	'abusefilter-log-detailslink' => 'ууыл фылдæр',
 	'abusefilter-log-noactions' => 'нæй',
