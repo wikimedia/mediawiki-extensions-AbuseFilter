@@ -37,11 +37,11 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$detailsid = $wgRequest->getIntOrNull( 'details' );
 		$hideid = $wgRequest->getIntOrNull( 'hide' );
-		
+
 		if ( $parameter ) {
 			$detailsid = $parameter;
 		}
-		
+
 		if ( $detailsid ) {
 			$this->showDetails( $detailsid );
 		} elseif ( $hideid ) {
@@ -161,10 +161,10 @@ class SpecialAbuseLog extends SpecialPage {
 			array( 'afl_id' => $logid ),
 			__METHOD__
 		);
-		
+
 		$logPage = new LogPage( 'suppress' );
 		$action = $fields['hidden'] ? 'hide-afl' : 'unhide-afl';
-		
+
 		$logPage->addEntry( $action, $this->getTitle( $logid ), $fields['reason'] );
 
 		$wgOut->redirect( SpecialPage::getTitleFor( 'AbuseLog' )->getFullURL() );
@@ -202,8 +202,8 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 
 		$pager = new AbuseLogPager( $this, $conds );
-
-		if( $pager->getResult()->numRows() !== 0 ) {
+		$result = $pager->getResult();
+		if( $result && $result->numRows() !== 0 ) {
 			$wgOut->addHTML( $pager->getNavigationBar() .
 					Xml::tags( 'ul', null, $pager->getBody() ) .
 					$pager->getNavigationBar() );
@@ -461,7 +461,7 @@ class SpecialAbuseLog extends SpecialPage {
 
 		return $li ? Xml::tags( 'li', null, $description ) : $description;
 	}
-	
+
 	public static function getNotDeletedCond( $db ) {
 		$deletedZeroCond = $db->makeList(
 				array( 'afl_deleted' => 0 ), LIST_AND );
@@ -469,13 +469,22 @@ class SpecialAbuseLog extends SpecialPage {
 				array( 'afl_deleted' => null ), LIST_AND );
 		$notDeletedCond = $db->makeList(
 			array( $deletedZeroCond, $deletedNullCond ), LIST_OR );
-			
+
 		return $notDeletedCond;
 	}
 }
 
 class AbuseLogPager extends ReverseChronologicalPager {
-	public $mForm, $mConds;
+
+	/**
+	 * @var HtmlForm
+	 */
+	public $mForm;
+
+	/**
+	 * @var array
+	 */
+	public $mConds;
 
 	function __construct( $form, $conds = array(), $details = false ) {
 		$this->mForm = $form;
