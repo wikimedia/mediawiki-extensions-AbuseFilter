@@ -202,6 +202,7 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 
 		$pager = new AbuseLogPager( $this, $conds );
+		$pager->doQuery();
 		$result = $pager->getResult();
 		if( $result && $result->numRows() !== 0 ) {
 			$wgOut->addHTML( $pager->getNavigationBar() .
