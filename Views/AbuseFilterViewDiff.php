@@ -158,7 +158,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		$sk = $wgUser->getSkin();
 
 		$filter = $this->mFilter;
-		$text = $wgLang->timeanddate( $timestamp );
+		$text = $wgLang->timeanddate( $timestamp, true );
 		$title = $this->getTitle( "history/$filter/item/$history_id" );
 
 		$link = $sk->link( $title, $text );
