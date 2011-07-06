@@ -16391,6 +16391,7 @@ Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilte
 	'abusefilter-log-header' => 'En däm Logboch he fingks De de Änderunge aan de Feltere em Övverbleck. Einzelheite sin en de 
 [[Special:AbuseFilter/history|Leß met de neuste Änderunge aan Meßbruchsfeltere]].',
 	'abusefilter-log-entry-modify' => 'hät $1 jeändert ($2)',
+	'abusefilter-log-noresults' => 'Nix jefonge',
 	'abusefilter-diff-title' => 'De Ungerscheide zwesche de Versione',
 	'abusefilter-diff-item' => 'Jäjeschtand',
 	'abusefilter-diff-version' => 'Version {{GENDER:$2|vum|vum|vun dämm Metmaacher|vum|vun dä}} $2 aam/öm $1',
