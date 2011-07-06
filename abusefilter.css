@@ -110,3 +110,14 @@ table.mw-abusefilter-diff th {
 .mw-abusefilter-diff-multiline td.diff-deletedline {
 	width: 50%;
 }
+
+/* Rules are in English */
+/* @noflip */textarea#wpFilterRules { direction: ltr; }
+
+/* Name is in site content language */
+/* @noflip */.sitedir-ltr .TablePager_col_af_public_comments {
+	direction: ltr;
+}
+/* @noflip */.sitedir-rtl .TablePager_col_af_public_comments {
+	direction: rtl;
+}
