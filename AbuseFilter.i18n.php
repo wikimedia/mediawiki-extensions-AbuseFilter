@@ -9170,6 +9170,7 @@ $messages['fa'] = array(
 	'abusefilter-log-header' => 'این سیاهه خلاصه‌ای از تغییرات پالایه‌ها را نمایش می‌دهد.
 برای جزئیات کامل, بنگرید [[Special:AbuseFilter/history|فهرست]] تغییرات پالایه‌ها را.',
 	'abusefilter-log-entry-modify' => '$1 را تصحیح کرد ($2)',
+	'abusefilter-log-noresults' => 'هیچ نتیجه‌ای',
 	'abusefilter-diff-title' => 'تفاوت بین نسخه‌ها',
 	'abusefilter-diff-item' => 'مورد',
 	'abusefilter-diff-version' => 'نسخه از $1 توسط $2',
@@ -17537,6 +17538,10 @@ Filtro aprašymas: $7 ($8)',
 	'abusefilter-reautoconfirm-done' => 'Sąskaitos automatiškai patvirtinta būsena bus atstatyta',
 	'abusefilter-status' => '{{PLURAL:$1|Paskutinis|Paskutiniai|Paskutiniu}} $1 {{PLURAL:$1|veiksmas|veiksmai|veiksmų}}, $2 ($3%) {{PLURAL:$2|veiksmu|veiksmais|veiksmais}} buvo pasiektas sąlygos limitas $4 ir $5 ($6%) {{PLURAL:$5|veiksmu|veiksmais|veiksmais}} veiksmais vienas iš filtrų buvo įjungtas.',
 	'abusefilter-edit-subtitle' => 'Redaguoti filtrą $1',
+	'abusefilter-edit-oldwarning' => '<strong>Jūs keičiate seną šio filtro versiją.
+Rodoma statistika paskaičiuota paskutinei filtro versijai.
+Jei įrašysite pakeitimus, jūs perrašysite visus pakeitimus, darytus po dabar redaguojamos versijos.</strong> &bull;
+[[Special:AbuseFilter/history/$2|Grįžti į šio failo istoriją]].',
 	'abusefilter-edit-status-label' => 'Statistika:',
 	'abusefilter-edit-status' => '{{PLURAL:$1|Paskutinis|Paskutiniai|Paskutinių}} $1 {{PLURAL:$1|veiksmas|veiksmai|veiksmų}}, Šį filtrą atitiko $2 ($3%). Vidutinis jų vykdymo laikas yra $4ms, sunaudota $5 {{PLURAL:$5|sąlyga|sąlygos|sąlygų}} iš limito.',
 	'abusefilter-edit-throttled' => "'''Įspėjimas''': Šis filtras saugumo sumetimais buvo automatiškai išjungtas. Jo atitikimų skaičius pasiekė $1% veiksmų ribą.",
@@ -17784,6 +17789,7 @@ Jūs galite gauti pilną paaiškinimą, jei paspausite butoną "Patikrinti sinta
 	'abusefilter-log-header' => 'Šis protokolas rodo bendrą filtrų pakeitimo statistiką.
 Visas detales žiūrėkite filtrų naujausių keitimo [[Special:AbuseFilter/history|sąraše]].',
 	'abusefilter-log-entry-modify' => 'pakeista $1 ($2)',
+	'abusefilter-log-noresults' => 'Nėra rezultatų',
 	'abusefilter-diff-title' => 'Skirtumas tarp versijų',
 	'abusefilter-diff-item' => 'Elementas',
 	'abusefilter-diff-version' => 'Versijos nuo $1 iki $2',
@@ -32170,7 +32176,7 @@ $messages['zh-cn'] = array(
 $messages['zh-hans'] = array(
 	'abusefilter-desc' => '对编辑行为自动进行条件判定',
 	'abusefilter' => '防滥用过滤器配置',
-	'abuselog' => '滥用日志',
+	'abuselog' => '滥用记录',
 	'abusefilter-intro' => '欢迎访问防滥用过滤器管理界面。防滥用过滤器是一个可以针对所有最近编辑动作进行自动化判断的软件系统。本界面包含了现有过滤器的列表，并允许管理人员修改它们。',
 	'abusefilter-mustbeeditor' => '出于安全考虑，只有拥有编辑防滥用过滤器权限的用户方可使用本界面。',
 	'abusefilter-warning' => "'''警告'''：您的行为被自动识别为具有危害性。
@@ -32188,7 +32194,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-accountreserved' => '此帐户已由防滥用过滤器保留使用。',
 	'right-abusefilter-modify' => '修改防滥用过滤器',
 	'right-abusefilter-view' => '查看防滥用过滤器',
-	'right-abusefilter-log' => '查看滥用日志',
+	'right-abusefilter-log' => '查看滥用记录',
 	'right-abusefilter-log-detail' => '查看详细滥用日志',
 	'right-abusefilter-private' => '查看滥用日志中的非公开数据',
 	'right-abusefilter-modify-restricted' => '受限修改防滥用过滤器',
