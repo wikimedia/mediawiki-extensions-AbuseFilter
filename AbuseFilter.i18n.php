@@ -22029,6 +22029,9 @@ $messages['or'] = array(
 	'abusefilter-history-user' => 'ବ୍ୟବାହାରକାରୀ',
 	'abusefilter-history-select-user' => 'ବ୍ୟବାହାରକାରୀ:',
 	'abusefilter-history-diff' => 'ବଦଳାଇବା',
+	'abusefilter-revert-filter' => 'ଫିଲଟରସବୁ:',
+	'abusefilter-test-submit' => 'ପରଖ',
+	'abusefilter-test-load' => 'ଖୋଲିବେ',
 	'abusefilter-examine-user' => 'ବ୍ୟବାହାରକାରୀ:',
 	'abusefilter-examine-submit' => 'ଖୋଜିବା',
 );
