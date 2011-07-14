@@ -27646,6 +27646,7 @@ $messages['su'] = array(
  * @author Poxnar
  * @author Rotsee
  * @author Sertion
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'abusefilter-desc' => 'Tillämpar automatiska filter på redigeringar',
@@ -28029,6 +28030,7 @@ Du kan se en fullständig förklaring genom att klicka på "Kontrollera syntax"-
 	'abusefilter-log-header' => 'Denna logg visar en sammanfattning av ändringar som har gjorts i filtren.
 För fullständiga detaljer, se [[Special:AbuseFilter/history|listan]] över de senaste filterändringarna.',
 	'abusefilter-log-entry-modify' => 'ändrade $1 ($2)',
+	'abusefilter-log-noresults' => 'Inga resultat',
 	'abusefilter-diff-title' => 'Skillnader mellan versioner',
 	'abusefilter-diff-item' => 'Element',
 	'abusefilter-diff-version' => 'Version från $1 av $2',
