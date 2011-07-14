@@ -11,8 +11,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	function show() {
 		$show = $this->loadData();
 
-		global $wgOut, $wgUser, $wgLang;
-		$this->mSkin = $wgUser->getSkin();
+		global $wgOut, $wgLang;
 
 		$links = array();
 		if ( $this->mFilter ) {
@@ -21,7 +20,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		}
 
 		foreach ( $links as $msg => $title ) {
-			$links[$msg] = $this->mSkin->link( $title, wfMsgExt( $msg, 'parseinline' ) );
+			$links[$msg] = Linker::link( $title, wfMsgExt( $msg, 'parseinline' ) );
 		}
 
 		$backlinks = $wgLang->pipeList( $links );
@@ -33,9 +32,17 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	}
 
 	function loadData() {
+		global $wgUser;
 		$oldSpec = $this->mParams[3];
 		$newSpec = $this->mParams[4];
 		$this->mFilter = $this->mParams[1];
+
+		if ( AbuseFilter::filterHidden( $this->mFilter ) &&
+				!$wgUser->isAllowed( 'abusefilter-modify' ) ) {
+			global $wgOut;
+			$wgOut->addWikiMsg( 'abusefilter-history-error-hidden' );
+			return false;
+		}
 
 		$this->mOldVersion = $this->loadSpec( $oldSpec, $newSpec );
 		$this->mNewVersion = $this->loadSpec( $newSpec, $oldSpec );
@@ -52,13 +59,6 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	function loadSpec( $spec, $otherSpec ) {
 		static $dependentSpecs = array( 'prev', 'next' );
 		static $cache = array();
-
-		global $wgUser;
-
-		if ( AbuseFilter::filterHidden( $this->mFilter ) &&
-				!$wgUser->isAllowed( 'abusefilter-modify' ) ) {
-			return null;
-		}
 
 		if ( isset( $cache[$spec] ) )
 			return $cache[$spec];
@@ -153,15 +153,13 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	}
 
 	function formatVersionLink( $timestamp, $history_id ) {
-		global $wgLang, $wgUser;
-
-		$sk = $wgUser->getSkin();
+		global $wgLang;
 
 		$filter = $this->mFilter;
 		$text = $wgLang->timeanddate( $timestamp, true );
 		$title = $this->getTitle( "history/$filter/item/$history_id" );
 
-		$link = $sk->link( $title, $text );
+		$link = Linker::link( $title, $text );
 
 		return $link;
 	}
@@ -180,12 +178,11 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$newVersion['meta']['history_id']
 		);
 
-		$sk = $this->mSkin;
-		$oldUserLink = $sk->userLink(
+		$oldUserLink = Linker::userLink(
 			$oldVersion['meta']['modified_by'],
 			$oldVersion['meta']['modified_by_text']
 		);
-		$newUserLink = $sk->userLink(
+		$newUserLink = Linker::userLink(
 			$newVersion['meta']['modified_by'],
 			$newVersion['meta']['modified_by_text']
 		);
