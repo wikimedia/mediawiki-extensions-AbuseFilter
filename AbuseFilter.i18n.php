@@ -7856,6 +7856,7 @@ Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku 
  * @author Locos epraix
  * @author Manuelt15
  * @author McDutchie
+ * @author Mor
  * @author Pertile
  * @author PieRRoMaN
  * @author Platonides
@@ -8139,7 +8140,7 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Últimos diez usuarios en contribuir en la página',
 	'abusefilter-edit-builder-vars-all-links' => 'Todos los vínculos externos en el nuevo texto',
 	'abusefilter-edit-builder-vars-added-links' => 'Todos los vínculos externos agregados en la edición',
-	'abusefilter-edit-builder-vars-removed-links' => 'Todos los vínculos externos removidos en la edición',
+	'abusefilter-edit-builder-vars-removed-links' => 'Todos los vínculos externos eliminados en la edición',
 	'abusefilter-edit-builder-vars-old-text' => 'Antigua página de wikitexto, antes de la edición',
 	'abusefilter-edit-builder-vars-new-text' => 'Nuevo wikitexto de la página, después de la edición',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nuevo texto de página, libre de cualquier revisión',
