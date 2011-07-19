@@ -9171,7 +9171,7 @@ $messages['fa'] = array(
 	'abusefilter-log-header' => 'این سیاهه خلاصه‌ای از تغییرات پالایه‌ها را نمایش می‌دهد.
 برای جزئیات کامل, بنگرید [[Special:AbuseFilter/history|فهرست]] تغییرات پالایه‌ها را.',
 	'abusefilter-log-entry-modify' => '$1 را تصحیح کرد ($2)',
-	'abusefilter-log-noresults' => 'هیچ نتیجه‌ای',
+	'abusefilter-log-noresults' => 'بدون نتیجه',
 	'abusefilter-diff-title' => 'تفاوت بین نسخه‌ها',
 	'abusefilter-diff-item' => 'مورد',
 	'abusefilter-diff-version' => 'نسخه از $1 توسط $2',
