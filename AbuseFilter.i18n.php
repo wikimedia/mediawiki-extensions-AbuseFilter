@@ -21172,6 +21172,7 @@ Kopier frå tekstboksen som dukkar opp og lim det inn i tekstboksen her. Trykk s
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
  * @author Guaca
  * @author Harald Khan
  * @author Jon Harald Søby
@@ -21560,6 +21561,7 @@ Du kan se en fullstendig forklaring ved å klikke på «Sjekk syntaks»-knappen.
 	'abusefilter-log-header' => 'Denne loggen viser et sammendrag av endringer gjort i filtrene.
 For fullstendige detaljer, se [[Special:AbuseFilter/history|listen]] over de siste filterendringene.',
 	'abusefilter-log-entry-modify' => 'endret $1 ($2)',
+	'abusefilter-log-noresults' => 'Ingen resultater',
 	'abusefilter-diff-title' => 'Forskjeller mellom versjoner',
 	'abusefilter-diff-item' => 'Element',
 	'abusefilter-diff-version' => 'Versjon fra $1 av $2',
