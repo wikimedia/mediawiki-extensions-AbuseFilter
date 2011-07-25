@@ -20116,7 +20116,7 @@ Kopeer de Textbox, de dor wiest warrt, un föög den Text in disse Textbox in, k
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'abusefilter-accountreserved' => 'Disse gebrukersnaam is erisserveerd veur de misbruukfilter',
+	'abusefilter-accountreserved' => 'Disse gebrukersnaam is ereserveerd veur de misbruukfilter',
 	'abusefilter-log-details-val' => 'Weerde',
 );
 
