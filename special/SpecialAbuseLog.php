@@ -4,6 +4,19 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 class SpecialAbuseLog extends SpecialPage {
+
+	/**
+	 * @var User
+	 */
+	protected $mSearchUser;
+
+	/**
+	 * @var Title
+	 */
+	protected $mSearchTitle;
+
+	protected $mSearchFilter;
+
 	public function __construct() {
 		parent::__construct( 'AbuseLog', 'abusefilter-log' );
 	}
@@ -315,16 +328,25 @@ class SpecialAbuseLog extends SpecialPage {
 		$wgOut->addHTML( $output );
 	}
 
+	/**
+	 * @return bool
+	 */
 	static function canSeeDetails() {
 		global $wgUser;
 		return $wgUser->isAllowed( 'abusefilter-log-detail' );
 	}
 
+	/**
+	 * @return bool
+	 */
 	static function canSeePrivate() {
 		global $wgUser;
 		return $wgUser->isAllowed( 'abusefilter-private' );
 	}
 
+	/**
+	 * @return bool
+	 */
 	static function canSeeHidden() {
 		global $wgUser;
 		return $wgUser->isAllowed( 'abusefilter-hidden-log' );
@@ -463,6 +485,10 @@ class SpecialAbuseLog extends SpecialPage {
 		return $li ? Xml::tags( 'li', null, $description ) : $description;
 	}
 
+	/**
+	 * @param $db DatabaseBase
+	 * @return string
+	 */
 	public static function getNotDeletedCond( $db ) {
 		$deletedZeroCond = $db->makeList(
 				array( 'afl_deleted' => 0 ), LIST_AND );
