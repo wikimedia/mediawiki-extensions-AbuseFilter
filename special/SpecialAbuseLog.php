@@ -265,7 +265,7 @@ class SpecialAbuseLog extends SpecialPage {
 			$old_wikitext = $vars->getVar( 'old_wikitext' )->toString();
 			$new_wikitext = $vars->getVar( 'new_wikitext' )->toString();
 
-			$diffEngine = new DifferenceEngine( $this->mSearchTitle );
+			$diffEngine = new DifferenceEngine;
 
 			$diffEngine->showDiffStyle();
 			$formattedDiff = $diffEngine->generateDiffBody( $old_wikitext, $new_wikitext );
