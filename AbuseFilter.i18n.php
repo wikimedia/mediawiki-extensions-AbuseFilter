@@ -2605,8 +2605,10 @@ $3 {{PLURAL:$3|аргумент}} көтөлә, $4 бирелгән.',
  * @author Mucalexx
  */
 $messages['bar'] = array(
-	'abusefilter-desc' => 'Wendt automaatiche Heuristiken auf Enderungen å',
-	'abusefilter-list-edit' => 'werkln',
+	'abusefilter-desc' => 'Wendt autómaatiche "Heuristiken" auf Änderrungen å',
+	'abusefilter' => 'Missbrauchsfüter-Eihstöungen',
+	'abuselog' => 'Missbrauchsfüter-Lógbiaché',
+	'abusefilter-list-edit' => 'werkeln',
 );
 
 /** Belarusian (Беларуская)
