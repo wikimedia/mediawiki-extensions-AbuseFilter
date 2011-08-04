@@ -7995,7 +7995,7 @@ Descripción del filtro: $7 ($8)',
 	'abusefilter-tools-reautoconfirm-user' => 'Usuario:',
 	'abusefilter-tools-reautoconfirm-submit' => 'Autoconfirmar de nuevo',
 	'abusefilter-reautoconfirm-none' => 'Este usuario no ha tenido {{GENDER:$1|su|su}} estado autoconfirmado suspendido.',
-	'abusefilter-reautoconfirm-notallowed' => 'No estas autorizado para restaurar el permiso autoconfirmado a los usuarios.',
+	'abusefilter-reautoconfirm-notallowed' => 'No estás autorizado para restaurar el permiso autoconfirmado a los usuarios.',
 	'abusefilter-reautoconfirm-done' => 'El estado autoconfirmado de la cuenta ha sido restaurado',
 	'abusefilter-status' => 'De las últimas $1 {{PLURAL:$1|acción|acciones}}, $2 ($3%) {{PLURAL:$2|ha|han}} han alcanzado la condición límite de  $4, y $5 ($6%) {{PLURAL:$5|ha|han}} coincidido con uno de los filtros actualmente habilitados.',
 	'abusefilter-edit-subtitle' => 'Editando filtro $1',
@@ -8043,7 +8043,7 @@ El filtro ha sobrepasado el límite de más del $1% acciones.",
 :''(sin prefijo MediaWiki)''",
 	'abusefilter-edit-warn-actions' => 'Acciones:',
 	'abusefilter-edit-warn-preview' => 'Previsualizar mensaje seleccionado',
-	'abusefilter-edit-warn-edit' => 'Crear/Editar el mensaje seleccionado',
+	'abusefilter-edit-warn-edit' => 'Crear o editar el mensaje seleccionado',
 	'abusefilter-edit-tag-tag' => 'Etiquetas a aplicar (una por línea):',
 	'abusefilter-edit-denied' => 'No puede ver detalles de este filtro porque es privado',
 	'abusefilter-edit-main' => 'Parámetros de filtro',
@@ -8082,7 +8082,7 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-edit-builder-op-comparison-gt' => 'Mayor que (>)',
 	'abusefilter-edit-builder-op-comparison-lte' => 'Menor o igual a (<=)',
 	'abusefilter-edit-builder-op-comparison-gte' => 'Mayor o igual a (>=)',
-	'abusefilter-edit-builder-group-op-bool' => 'Operadores Boleanos',
+	'abusefilter-edit-builder-group-op-bool' => 'Operadores booleanos',
 	'abusefilter-edit-builder-op-bool-not' => 'No (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'Y (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'O (|)',
@@ -8243,7 +8243,7 @@ Puedes recibir una completa explicación haciendo click en el botón "Verificar 
 	'abusefilter-examine-test-button' => 'Filtro de prueba',
 	'abusefilter-examine-match' => 'El filtro coincidió con este cambio.',
 	'abusefilter-examine-nomatch' => 'El filtro no coincidió con este cambio.',
-	'abusefilter-examine-syntaxerror' => 'El filtro tiene sintaxis inválida',
+	'abusefilter-examine-syntaxerror' => 'El filtro tiene una sintaxis no válida',
 	'abusefilter-examine-notfound' => 'El cambio que ha solicitado podría no ser encontrado.',
 	'abusefilter-examine-incompatible' => 'El cambio que ha solicitado no es soportado por el filtro de abusos',
 	'abusefilter-examine-noresults' => 'Ningún resultado fue encontrado para los parámetros de búsqueda que proveíste.',
@@ -12333,6 +12333,7 @@ Možete primiti puno objašnjenje pogreške klikom na gumb "Provjeri sintaksu".'
 	'abusefilter-log-header' => 'Evidencija prikazuje sažetak promjena koje su napravljene filtrima. 
 Za detaljnije informacije, vidi [[Special:AbuseFilter/history|popis]] nedavnih izmjena filtara.',
 	'abusefilter-log-entry-modify' => 'promijenjeno $1 ($2)',
+	'abusefilter-log-noresults' => 'Nema rezultata',
 	'abusefilter-diff-title' => 'Razlike između verzija',
 	'abusefilter-diff-item' => 'Stavka',
 	'abusefilter-diff-version' => 'Inačica stranice $1 suradnika $2',
@@ -14001,9 +14002,9 @@ Salin dari kotak teks yang muncul, dan tempelkan di kotak teks ini, lalu klik "{
  */
 $messages['ig'] = array(
 	'abusefilter-log-search-title' => 'Ishi:',
-	'abusefilter-log-search-submit' => 'Chöwá',
+	'abusefilter-log-search-submit' => 'Chọwa',
 	'abusefilter-log-noactions' => 'efù',
-	'abusefilter-list-edit' => 'Rüwa',
+	'abusefilter-list-edit' => 'Mèzi',
 	'abusefilter-list-details' => 'Nkȯwa',
 	'abusefilter-list-limit' => 'Ónú-ọgụgụ na ótù ihü:',
 	'abusefilter-hidden' => 'Zonàrì ñkịtị',
@@ -14012,7 +14013,7 @@ $messages['ig'] = array(
 	'abusefilter-status-global' => 'Ùwà nílé',
 	'abusefilter-tools-reautoconfirm-user' => "Ọ'bànifé:",
 	'abusefilter-edit-new' => 'Nzàtá ohürù',
-	'abusefilter-edit-save' => 'Donyéré nzàtá',
+	'abusefilter-edit-save' => 'Domá nzàtá',
 	'abusefilter-edit-throttle-period' => 'Ótù ógè:',
 	'abusefilter-edit-warn-other' => 'Ozi ozor',
 	'abusefilter-edit-warn-actions' => 'Mmèmé:',
@@ -14032,7 +14033,7 @@ $messages['ig'] = array(
 	'abusefilter-action-tag' => 'Ọdụ',
 	'abusefilter-examine-user' => "Ọ'bànifé:",
 	'abusefilter-examine-title' => 'Íshí ihü:',
-	'abusefilter-examine-submit' => 'Chöwá',
+	'abusefilter-examine-submit' => 'Chọwa',
 	'abusefilter-topnav-home' => 'Úlọ',
 	'abusefilter-diff-item' => 'Ihnye',
 );
@@ -32187,6 +32188,7 @@ $messages['zh-cn'] = array(
  * @author Hydra
  * @author Jimmy xu wrk
  * @author Liangent
+ * @author PhiLiP
  * @author Philip <philip.npc@gmail.com>
  * @author Skjackey tse
  * @author Wmr89502270
