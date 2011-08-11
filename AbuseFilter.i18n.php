@@ -20125,7 +20125,16 @@ Kopeer de Textbox, de dor wiest warrt, un föög den Text in disse Textbox in, k
  */
 $messages['nds-nl'] = array(
 	'abusefilter-accountreserved' => 'Disse gebrukersnaam is ereserveerd veur de misbruukfilter',
+	'abusefilter-log-search-user' => 'Gebruker:',
+	'abusefilter-log-search-title' => 'Titel:',
+	'abusefilter-log-show-deleted' => 'Laot verbörgen meldingen zien',
+	'abusefilter-log-search-submit' => 'Zeuken',
+	'abusefilter-log-details-var' => 'Variabel',
 	'abusefilter-log-details-val' => 'Weerde',
+	'abusefilter-log-noactions' => 'gien',
+	'abusefilter-log-hide-reason' => 'Reden:',
+	'abusefilter-list-edit' => 'Bewarken',
+	'abusefilter-hidden' => 'Beteund',
 );
 
 /** Nepali (नेपाली)
