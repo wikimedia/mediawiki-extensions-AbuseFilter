@@ -22048,17 +22048,30 @@ $messages['or'] = array(
 	'abusefilter-tools-reautoconfirm-submit' => 'ଆଉଥରେ-ଆପେଆପେ ଥୟ କରିବେ',
 	'abusefilter-reautoconfirm-none' => 'ଏହି ବ୍ୟବାହାରକାରୀ {{GENDER:$1|ତାଙ୍କର|ସେମାନଙ୍କର}} ଆପେଆପେ ଥୟ କରାହେବା ସ୍ଥିତିକୁ ଅଟକାଇଛନ୍ତି ।',
 	'abusefilter-reautoconfirm-notallowed' => 'ଆପଣଙ୍କୁ ଆପେ ଆପେ ଥୟ କରିବା ସ୍ଥିତିକୁ ଆଉଥରେ ଫେରାଇବାକୁ ଅନୁମତି ମିଳିନାହିଁ ।',
+	'abusefilter-edit-status-label' => 'ପରିସଂଖ୍ୟାନ:',
+	'abusefilter-edit-flags' => 'ବିଶେଷ ସୂଚକ:',
 	'abusefilter-edit-warn-actions' => 'କାମସବୁ:',
 	'abusefilter-edit-history' => 'ଇତିହାସ:',
 	'abusefilter-edit-tools' => 'ଜନ୍ତ୍ର:',
+	'abusefilter-edit-builder-group-funcs' => 'କାର୍ଯ୍ୟ',
+	'abusefilter-edit-builder-vars-action' => 'କାମ',
+	'abusefilter-history-enabled' => 'ସାମର୍ଥିକରଣ',
 	'abusefilter-history-user' => 'ବ୍ୟବାହାରକାରୀ',
+	'abusefilter-history-flags' => 'ବିଶେଷ ସୂଚକ',
+	'abusefilter-history-comments' => 'ଟିପ୍ପଣୀ',
+	'abusefilter-history-actions' => 'କାମ',
+	'abusefilter-history-filterid' => 'ଛାଣିବା',
 	'abusefilter-history-select-user' => 'ବ୍ୟବାହାରକାରୀ:',
 	'abusefilter-history-diff' => 'ବଦଳାଇବା',
+	'abusefilter-action-block' => 'ଖଣ୍ଡ',
 	'abusefilter-revert-filter' => 'ଛଣା:',
+	'abusefilter-revert-confirm' => ' ନିଶ୍ଚିତନ',
 	'abusefilter-test-submit' => 'ପରଖ',
 	'abusefilter-test-load' => 'ଖୋଲିବେ',
 	'abusefilter-examine-user' => 'ବ୍ୟବାହାରକାରୀ:',
 	'abusefilter-examine-submit' => 'ଖୋଜିବା',
+	'abusefilter-topnav-home' => 'ମୂଳ ଜାଗା',
+	'abusefilter-diff-item' => 'ବସ୍ତୁ',
 );
 
 /** Ossetic (Ирон)
@@ -30094,10 +30107,12 @@ Görünen metin kutusundan kopyalayın, ve bu metin kutusuna yapıştırın, dah
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ajdar
  * @author Zahidulla
  */
 $messages['tt-cyrl'] = array(
 	'abusefilter-desc' => 'Үзгәртүләргә эвристик ысуллар кулланырга мөмкинлек бирә.',
+	'abusefilter-status-global' => 'Глобаль',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)
