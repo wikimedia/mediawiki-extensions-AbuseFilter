@@ -2608,7 +2608,14 @@ $messages['bar'] = array(
 	'abusefilter-desc' => 'Wendt autómaatiche "Heuristiken" auf Änderrungen å',
 	'abusefilter' => 'Missbrauchsfüter-Eihstöungen',
 	'abuselog' => 'Missbrauchsfüter-Lógbiaché',
+	'abusefilter-log-search-user' => 'Benutzer:',
+	'abusefilter-log-search-title' => 'Titel:',
+	'abusefilter-log-show-deleted' => 'Vastéckte Eihträg åzoang',
+	'abusefilter-log-search-submit' => 'Suachen',
+	'abusefilter-log-linkoncontribs' => 'Missbrauchsfüter-Lógbiaché',
+	'abusefilter-log-hide-reason' => 'Grund:',
 	'abusefilter-list-edit' => 'werkeln',
+	'abusefilter-edit-builder-op-bool-xor' => 'XOR (^)',
 );
 
 /** Belarusian (Беларуская)
@@ -6970,7 +6977,7 @@ Klikni w žrědłowem wikiju na "{{int:abusefilter-edit-export}}" pód "{{int:ab
 	'abusefilter-import-submit' => 'Daty importěrowaś',
 );
 
-/** Dusun Bundu-liwan (Dusun Bundu-liwan)
+/** Central Dusun (Dusun Bundu-liwan)
  * @author FRANCIS5091
  * @author FRANELYA
  */
@@ -7440,6 +7447,7 @@ $3 {{PLURAL:$3|αναμενόμενο κατηγορούμενο|αναμενό�
 
 /** Esperanto (Esperanto)
  * @author AVRS
+ * @author Amikeco
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -7458,10 +7466,10 @@ Mallonga priskribo pri la regulo de misuzado kiun via ago kongruis estas: $1",
 	'abusefilter-disallowed' => 'Ĉi tiu ago estis aŭtomate identigita kiel damaĝa, kaj do estis malpermesita.
 Se vi kredas ke via redakto estis utila, bonvolu kontakti administranton, kaj informi ilin pri kion vi volis fari.
 Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1',
-	'abusefilter-blocked-display' => 'Ĉi tiu ago estis aŭtomate vidita kiel malhelpa,
+	'abusefilter-blocked-display' => 'Ĉi tiu ago estis aŭtomate taksita kiel malhelpa,
 kaj vi estis preventita farinte ĝin.
 Plue, por protekti {{SITENAME}}n, via uzanto-konto kaj ĉiuj ĉi-ligitaj IP-adresoj estis forbaritaj de redaktado.
-Se ĉi tiu okazis erare, bonvolu kontakti administranto.
+Se ĉi tiu okazis erare, bonvolu kontakti administranton.
 Mallonga priskribo de la regulo de misuzado kiun via ago kongruis estas: $1',
 	'abusefilter-degrouped' => 'Ĉi tiu ago estis aŭtomate identigita kiel malhelpema.
 Rezulte, ĝi estis malpermesita, kaj, ĉar via konto suspektite esti kaperita, ĉiuj rajtoj estis forigitaj.
@@ -7613,7 +7621,7 @@ Averaĝe, ĝia plenumtempo estas $4ms, kaj ĝi konsumas $5 {{PLURAL:$5|kondiĉon
 	'abusefilter-edit-throttle-period' => 'Tempdaŭro:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|sekundo|sekundoj}}',
 	'abusefilter-edit-throttle-groups' => "Trafike limigi de:
-:''(po unu por linio, kombini kun komoj)''",
+:''(po unu por linio, kombini per komoj)''",
 	'abusefilter-edit-warn-message' => 'Sistema mesaĝo por uzi kiel averto:',
 	'abusefilter-edit-warn-other' => 'Alia mesaĝo',
 	'abusefilter-edit-warn-other-label' => "Paĝa nomo de alia mesaĝo:
@@ -7722,7 +7730,7 @@ Etikedoj devas esti mallonga, kaj ili ne devas enhavi specialajn signojn.',
 	'abusefilter-edit-builder-vars-added-links' => 'Ĉiuj eksteraj ligiloj aldonitaj en la redakto',
 	'abusefilter-edit-builder-vars-removed-links' => 'Ĉiuj eksteraj ligiloj forigitaj en la redakto',
 	'abusefilter-edit-builder-vars-old-text' => 'Malnova paĝa vikiteksto, antaŭ la redakto',
-	'abusefilter-edit-builder-vars-new-text' => 'Nova pagxo de vikiteksto, post la redakto',
+	'abusefilter-edit-builder-vars-new-text' => 'Nova paĝo de vikiteksto, post la redakto',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nova paĝa teksto, forviŝita de iuj marklingvaĵoj',
 	'abusefilter-edit-builder-vars-new-html' => 'Sintakse analizita HTML-fonto de la nova revizio',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Ŝanĝi protektnivelon de la paĝo',
@@ -7775,7 +7783,7 @@ Atentis $3 {{PLURAL:$3|argumenton|argumentojn}}, ricevis $4',
 	'abusefilter-action-blockautopromote' => 'Forbari aŭtomatajn altrangigadojn',
 	'abusefilter-action-block' => 'Forbari',
 	'abusefilter-action-degroup' => 'Forigi el grupoj',
-	'abusefilter-action-rangeblock' => 'Forbari IP-adresan intervalon',
+	'abusefilter-action-rangeblock' => 'Forbari intervalon de IP-adresoj',
 	'abusefilter-action-disallow' => 'Malpermesi',
 	'abusefilter-revert-title' => 'Restarigi ĉiujn ŝanĝojn de filtrilo $1',
 	'abusefilter-revert-intro' => 'Ĉi tiu formularo permesas al vi restarigi ĉiujn ŝanĝojn faritajn de la misuzada filtrilo per filtrilo $1.
@@ -7836,6 +7844,7 @@ Vi povas ricevi plenan eksplikon per klakante la butonon "Kontroli Sintakson".',
 	'abusefilter-log-header' => 'Ĉi tiu protokolo montras resumon de ŝanĝoj faritaj al filtriloj.
 Por plenaj detaloj, vidu [[Special:AbuseFilter/history|la liston]] de lastaj filtrilaj ŝanĝoj.',
 	'abusefilter-log-entry-modify' => 'modifita $1 ($2)',
+	'abusefilter-log-noresults' => 'Mankas rezultoj',
 	'abusefilter-diff-title' => 'Diferencoj inter versioj',
 	'abusefilter-diff-item' => 'Ero',
 	'abusefilter-diff-version' => 'Versio de $1 fare de $2',
@@ -11857,6 +11866,7 @@ $messages['he'] = array(
 
 /** Hindi (हिन्दी)
  * @author Akansha
+ * @author Bhawani Gautam
  * @author Bhawani Gautam Rhk
  * @author Kaustubh
  * @author Kumar
@@ -14937,6 +14947,7 @@ $3 つの{{PLURAL:$3|引数}}があるべきですが $4 つしかありませ�
 	'abusefilter-log-name' => '不正利用フィルター記録',
 	'abusefilter-log-header' => 'この記録はフィルターに対してなされた変更の要約を表示しています。全詳細は、最近のフィルターの変更[[Special:AbuseFilter/history|一覧]]をご覧ください。',
 	'abusefilter-log-entry-modify' => '$1 を変更 ($2)',
+	'abusefilter-log-noresults' => '結果なし',
 	'abusefilter-diff-title' => '版間での差分',
 	'abusefilter-diff-item' => '項目',
 	'abusefilter-diff-version' => '$1 の $2 による版',
@@ -20138,6 +20149,7 @@ $messages['nds-nl'] = array(
 );
 
 /** Nepali (नेपाली)
+ * @author Bhawani Gautam
  * @author Bhawani Gautam Rhk
  */
 $messages['ne'] = array(
@@ -25573,7 +25585,7 @@ $messages['rue'] = array(
 	'abusefilter-import-submit' => 'Імпортовати дата',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
