@@ -15329,6 +15329,13 @@ $messages['ka'] = array(
 	'abusefilter-import-submit' => 'მონაცემების იმპორტირება',
 );
 
+/** کھوار (کھوار)
+ * @author Rachitrali
+ */
+$messages['khw'] = array(
+	'abusefilter-log-search-user' => 'یوزر',
+);
+
 /** Kirmanjki (Kırmancki)
  * @author Mirzali
  */
