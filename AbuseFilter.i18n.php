@@ -28684,6 +28684,7 @@ $messages['te'] = array(
 	'abusefilter-log-header' => 'వడపోతలకు జరిగిన మార్పుల సంగ్రహాన్ని ఈ చిట్టా చూపిస్తుంది.
 పూర్తి వివరాల కొరకు, ఇటీవలి [[Special:AbuseFilter/history|వడపోత మార్పుల జాబితా]]ని చూడండి.',
 	'abusefilter-log-entry-modify' => '$1ని మార్చారు ($2)',
+	'abusefilter-log-noresults' => 'ఫలితాలు లేవు',
 	'abusefilter-diff-title' => 'కూర్పుల మధ్య తేడాలు',
 	'abusefilter-diff-item' => 'అంశం',
 	'abusefilter-diff-info' => 'ప్రాధమిక సమాచారం',
