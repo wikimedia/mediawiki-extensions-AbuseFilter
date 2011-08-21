@@ -8609,6 +8609,9 @@ Lisaselgituse jaoks klõpsa nuppu "Kontrolli süntaksit".',
 	'abusefilter-diff-info' => 'Põhiteave',
 	'abusefilter-diff-pattern' => 'Filtri tingimused',
 	'abusefilter-diff-backhistory' => 'Naase filtri ajaloo juurde',
+	'abusefilter-import-intro' => 'Selle liidese abil saad teistest vikidest filtreid importida.
+Allikvikis klõpsa redigeerimisliidese asukohas "{{int:abusefilter-tools-subtitle}}" nuppu "{{int:abusefilter-edit-export}}".
+Kopeeri ilmuva tekstikasti sisu, kleebi see sellesse tekstikasti ja seejärel klõpsa nuppu "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Impordi andmed',
 );
 
@@ -19199,6 +19202,24 @@ $messages['mn'] = array(
 	'abusefilter-examine-submit' => 'Хайх',
 );
 
+/** Marathi (मराठी)
+ * @author Htt
+ */
+$messages['mr'] = array(
+	'abusefilter-log-details-val' => 'किंमत',
+	'abusefilter-log-noactions' => 'काहीही नाही',
+	'abusefilter-list-status' => 'स्थिती',
+	'abusefilter-list-visibility' => 'दृश्यता',
+	'abusefilter-hidden' => 'खासगी',
+	'abusefilter-unhidden' => 'सार्वजनिक',
+	'abusefilter-list-options' => 'पर्याय',
+	'abusefilter-tools-subtitle' => 'साधने',
+	'abusefilter-edit-history' => 'इतिहास:',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'अधिक (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'वजाबाकी (-)',
+	'abusefilter-examine-user' => 'सदस्य:',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Anakmalaysia
  * @author Aurora
@@ -29732,6 +29753,7 @@ $messages['tpi'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Emperyan
  * @author Joseph
  * @author Mach
  * @author Srhat
@@ -30135,6 +30157,7 @@ Mevcut bir filtreyi yüklemek için, filtre IDsini değişiklik metin kutusunun 
 	'abusefilter-log-header' => 'Bu günlük filtrelere yapılan değişikliklerin bir özetini gösterir.
 Tam ayrıntılar için, son filtre değişiklikleri [[Special:AbuseFilter/history|listesine]] bakın.',
 	'abusefilter-log-entry-modify' => 'değiştirdi $1 ($2)',
+	'abusefilter-log-noresults' => 'Sonuç yok',
 	'abusefilter-diff-title' => 'Sürümler arasındaki farklar',
 	'abusefilter-diff-item' => 'Öğe',
 	'abusefilter-diff-version' => "$1'dan sürüm $2 tarafından",
