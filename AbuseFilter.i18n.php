@@ -154,7 +154,6 @@ Filter description: $7 ($8)',
 	'abusefilter-list-options-submit' => 'Update',
 
 	// Abuse filter tools
-	'abusefilter-tools-subtitle' => 'Tools',
 	'abusefilter-tools-text' => 'Here are some tools which may be useful in formulating and debugging abuse filters.',
 	'abusefilter-tools-expr' => 'Expression tester',
 	'abusefilter-tools-submitexpr' => 'Evaluate',

@@ -7,7 +7,6 @@ class AbuseFilterViewTools extends AbuseFilterView {
 		global $wgOut, $wgUser;
 
 		// Header
-		$wgOut->setSubTitle( wfMsg( 'abusefilter-tools-subtitle' ) );
 		$wgOut->addWikiMsg( 'abusefilter-tools-text' );
 
 		// Expression evaluator
