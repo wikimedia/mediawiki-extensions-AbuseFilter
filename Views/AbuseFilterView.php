@@ -18,6 +18,9 @@ abstract class AbuseFilterView {
 
 	abstract function show();
 
+	/**
+	 * @return bool
+	 */
 	function canEdit() {
 		global $wgUser;
 		static $canEdit = null;
@@ -29,6 +32,9 @@ abstract class AbuseFilterView {
 		return $canEdit;
 	}
 
+	/**
+	 * @return bool
+	 */
 	function canViewPrivate() {
 		global $wgUser;
 		static $canView = null;

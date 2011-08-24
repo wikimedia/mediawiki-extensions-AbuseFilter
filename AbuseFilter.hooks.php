@@ -6,6 +6,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class AbuseFilterHooks {
 // So far, all of the error message out-params for these hooks accept HTML.
 // Hooray!
+
+	/**
+	 * @param $editor
+	 * @param $text
+	 * @param $error
+	 * @param $summary
+	 * @return bool
+	 */
 	public static function onEditFilterMerged( $editor, $text, &$error, $summary ) {
 		// Load vars
 		$vars = new AbuseFilterVariableHolder;
@@ -198,11 +206,11 @@ class AbuseFilterHooks {
 				$wgExtPGNewFields[] = array( 'abuse_filter', 'af_actions', "TEXT NOT NULL DEFAULT ''" );
 				$wgExtPGNewFields[] = array( 'abuse_filter', 'af_deleted', 'SMALLINT NOT NULL DEFAULT 0' );
 				$wgExtPGNewFields[] = array( 'abuse_filter', 'af_global', 'SMALLINT NOT NULL DEFAULT 0' );
-	
+
 				$wgExtPGNewFields[] = array( 'abuse_filter_log', 'afl_wiki', 'TEXT' );
 				$wgExtPGNewFields[] = array( 'abuse_filter_log', 'afl_deleted', 'SMALLINT' );
 				$wgExtPGAlteredFields[] = array( 'abuse_filter_log', 'afl_filter', 'TEXT' );
-	
+
 				$wgExtNewIndexes[] = array( 'abuse_filter_log', 'abuse_filter_log_ip', "(afl_ip)" );
 			}
 		} else {

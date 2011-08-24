@@ -335,18 +335,31 @@ class AFPData {
 	}
 
 	/** Convert shorteners */
+
+	/**
+	 * @return bool
+	 */
 	public function toBool() {
 		return self::castTypes( $this, self::DBool )->data;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function toString() {
 		return self::castTypes( $this, self::DString )->data;
 	}
 
+	/**
+	 * @return float
+	 */
 	public function toFloat() {
 		return self::castTypes( $this, self::DFloat )->data;
 	}
 
+	/**
+	 * @return int
+	 */
 	public function toInt() {
 		return self::castTypes( $this, self::DInt )->data;
 	}
@@ -557,7 +570,11 @@ class AbuseFilterParser {
 
 	/* Levels */
 
-	/** Handles unexpected characters after the expression */
+	/**
+	 * Handles unexpected characters after the expression
+	 *
+	 * @param $result
+	 */
 	protected function doLevelEntry( &$result ) {
 		$this->doLevelSemicolon( $result );
 
@@ -566,7 +583,10 @@ class AbuseFilterParser {
 		}
 	}
 
-	/** Handles multiple expressions */
+	/**
+	 * Handles multiple expressions
+	 * @param $result
+	 */
 	protected function doLevelSemicolon( &$result ) {
 		do {
 			$this->move();
@@ -576,7 +596,11 @@ class AbuseFilterParser {
 		} while ( $this->mCur->type == AFPToken::TStatementSeparator );
 	}
 
-	/** Handles multiple expressions */
+	/**
+	 * Handles multiple expressions
+	 *
+	 * @param $result
+	 */
 	protected function doLevelSet( &$result ) {
 		if ( $this->mCur->type == AFPToken::TID ) {
 			$varname = $this->mCur->value;

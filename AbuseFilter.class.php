@@ -410,7 +410,13 @@ class AbuseFilter {
 		return $result;
 	}
 
-	/** Returns an associative array of filters which were tripped */
+	/**
+	 * Returns an associative array of filters which were tripped
+	 *
+	 * @param $vars array
+	 *
+	 * @return array
+	 */
 	public static function checkAllFilters( $vars ) {
 		// Fetch from the database.
 		wfProfileIn( __METHOD__ );
@@ -548,7 +554,13 @@ class AbuseFilter {
 		return array( $timeProfile, $condProfile );
 	}
 
-	/** Utility function to decode global-$index to $index. Returns false if not global */
+	/**
+	 * Utility function to decode global-$index to $index. Returns false if not global
+	 *
+	 * @param $filter string
+	 *
+	 * @return string|false
+	 */
 	public static function decodeGlobalName( $filter ) {
 		if ( strpos( $filter, 'global-' ) == 0 ) {
 			return substr( $filter, strlen( 'global-' ) );
@@ -628,7 +640,14 @@ class AbuseFilter {
 		return $actionsByFilter;
 	}
 
-	/** Returns an array [ list of actions taken by filter, error message to display, if any ] */
+	/**
+	 * Returns an array [ list of actions taken by filter, error message to display, if any ]
+	 *
+	 * @param $filters array
+	 * @param $title Title
+	 * @param $vars array
+	 * @return array
+	 */
 	public static function executeFilterActions( $filters, $title, $vars ) {
 		wfProfileIn( __METHOD__ );
 		static $blockingActions = array(
@@ -885,6 +904,11 @@ class AbuseFilter {
 	/**
 	 * Store a var dump to External Storage or the text table
 	 * Some of this code is stolen from Revision::insertOn and friends
+	 *
+	 * @param $vars array
+	 * @param $global bool
+	 *
+	 * @return int
 	 */
 	public static function storeVarDump( $vars, $global = false ) {
 		wfProfileIn( __METHOD__ );
@@ -946,6 +970,10 @@ class AbuseFilter {
 	/**
 	 * Retrieve a var dump from External Storage or the text table
 	 * Some of this code is stolen from Revision::loadText et al
+	 *
+	 * @param $stored_dump
+	 *
+	 * @return object
 	 */
 	public static function loadVarDump( $stored_dump ) {
 		wfProfileIn( __METHOD__ );
@@ -1187,10 +1215,8 @@ class AbuseFilter {
 				break;
 			case 'site':
 				return 1;
-				break;
 			case 'page':
 				return $title->getPrefixedText();
-				break;
 		}
 
 		return $identifier;
@@ -1414,6 +1440,11 @@ class AbuseFilter {
 	/**
 	 * Each version is expected to be an array( $row, $actions )
 	 * Returns an array of fields that are different.
+	 *
+	 * @param $version_1
+	 * @param $version_2
+	 *
+	 * @return array
 	 */
 	static function compareVersions( $version_1, $version_2 ) {
 		$compareFields = array(

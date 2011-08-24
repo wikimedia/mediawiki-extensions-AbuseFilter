@@ -107,7 +107,15 @@ class AFComputedVariable {
 		$this->mParameters = $parameters;
 	}
 
-	/** It's like Article::prepareTextForEdit, but not for editing (old wikitext usually) */
+	/**
+	 * It's like Article::prepareTextForEdit, but not for editing (old wikitext usually)
+	 *
+	 *
+	 * @param $wikitext String
+	 * @param $article Article
+	 *
+	 * @return object
+	 */
 	function parseNonEditWikitext( $wikitext, $article ) {
 		static $cache = array();
 
@@ -121,7 +129,7 @@ class AFComputedVariable {
 		$edit = (object)array();
 		$options = new ParserOptions;
 		$options->setTidy( true );
-		$edit->output = $wgParser->parse( $wikitext, $article->mTitle, $options );
+		$edit->output = $wgParser->parse( $wikitext, $article->getTitle(), $options );
 		$cache[$cacheKey] = $edit;
 
 		return $edit;

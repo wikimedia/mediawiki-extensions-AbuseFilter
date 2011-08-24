@@ -77,6 +77,12 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 }
 
 class AbuseFilterHistoryPager extends TablePager {
+
+	/**
+	 * @param $filter
+	 * @param $page Article
+	 * @param $user User
+	 */
 	function __construct( $filter, $page, $user ) {
 		$this->mFilter = $filter;
 		$this->mPage = $page;
@@ -256,6 +262,8 @@ class AbuseFilterHistoryPager extends TablePager {
 	/**
 	 * Title used for self-links. Override this if you want to be able to
 	 * use a title other than $wgTitle
+	 *
+	 * @return Title
 	 */
 	function getTitle() {
 		return $this->mPage->getTitle( 'history/' . $this->mFilter );
