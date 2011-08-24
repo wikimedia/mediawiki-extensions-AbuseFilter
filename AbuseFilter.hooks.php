@@ -105,6 +105,12 @@ class AbuseFilterHooks {
 			return false;
 		}
 		$vars = new AbuseFilterVariableHolder;
+		// Add variables only for a registered user, so IP addresses of
+		// new users won't be exposed
+		global $wgUser;
+		if ( $wgUser->getId() ) {
+			$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
+		}
 
 		$vars->setVar( 'ACTION', 'createaccount' );
 		$vars->setVar( 'ACCOUNTNAME', $user->getName() );

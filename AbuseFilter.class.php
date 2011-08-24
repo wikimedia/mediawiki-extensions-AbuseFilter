@@ -1523,7 +1523,12 @@ class AbuseFilter {
 		$vars->setVar( 'ACTION', 'createaccount' );
 
 		$name = Title::makeTitle( $row->rc_namespace, $row->rc_title )->getText();
-		$vars->setVar( 'user_name', $name );
+		// Add user data if the account was created by a registered user
+		if ( $row->rc_user && $name != $row->rc_user_text ) {
+			$user = User::newFromName( $row->rc_user_text );
+			$vars->addHolder( self::generateUserVars( $user ) );
+		}
+
 		$vars->setVar( 'accountname', $name );
 		return $vars;
 	}
