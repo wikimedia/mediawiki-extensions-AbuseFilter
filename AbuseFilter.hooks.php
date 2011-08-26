@@ -4,8 +4,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 class AbuseFilterHooks {
-// So far, all of the error message out-params for these hooks accept HTML.
-// Hooray!
+	// So far, all of the error message out-params for these hooks accept HTML.
+	// Hooray!
 
 	/**
 	 * @param $editor
@@ -274,5 +274,23 @@ class AbuseFilterHooks {
 		}
 
 		return $filter_result == '' || $filter_result === true;
+	}
+
+	/**
+	 * Adds global variables to the Javascript as needed
+	 *
+	 * @param array $vars
+	 * @return bool
+	 */
+	public static function onMakeGlobalVariablesScript( array &$vars ) {
+		if ( AbuseFilter::$editboxName !== null ) {
+			$vars['wgFilterBoxName'] = AbuseFilter::$editboxName;
+		}
+
+		if ( AbuseFilterViewExamine::$examineType !== null ) {
+			$vars['wgExamineType'] = AbuseFilterViewExamine::$examineType;
+			$vars['wgExamineId'] = AbuseFilterViewExamine::$examineId;
+		}
+		return true;
 	}
 }

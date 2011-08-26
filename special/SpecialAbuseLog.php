@@ -22,7 +22,7 @@ class SpecialAbuseLog extends SpecialPage {
 	}
 
 	public function execute( $parameter ) {
-		global $wgUser, $wgOut, $wgRequest, $wgAbuseFilterStyleVersion;
+		global $wgUser, $wgOut, $wgRequest;
 
 		AbuseFilter::addNavigationLinks( $wgOut, $wgUser->getSkin(), 'log' );
 
@@ -35,9 +35,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$wgOut->setArticleRelated( false );
 		$wgOut->enableClientCache( false );
 
-		global $wgScriptPath;
-		$wgOut->addExtensionStyle( $wgScriptPath .
-			"/extensions/AbuseFilter/abusefilter.css?$wgAbuseFilterStyleVersion" );
+		$wgOut->addModuleStyles( 'ext.abuseFilter' );
 
 		// Are we allowed?
 		$errors = $this->getTitle()->getUserPermissionsErrors(

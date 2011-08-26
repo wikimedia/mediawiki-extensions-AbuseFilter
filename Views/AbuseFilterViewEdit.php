@@ -417,7 +417,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		// Add export
 		$exportText = json_encode( array( 'row' => $row, 'actions' => $actions ) );
-		$tools .= Xml::tags( 'a', array( 'href' => 'javascript:afShowExport();' ),
+		$tools .= Xml::tags( 'a', array( 'href' => '#', 'id' => 'mw-abusefilter-export-link' ),
 								wfMsgExt( 'abusefilter-edit-export', 'parseinline' ) );
 		$tools .= Xml::element( 'textarea',
 			array( 'readonly' => 'readonly', 'id' => 'mw-abusefilter-export' ),

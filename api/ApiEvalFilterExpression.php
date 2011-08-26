@@ -1,0 +1,41 @@
+<?php
+
+class ApiEvalFilterExpression extends ApiBase {
+	public function execute() {
+		$params = $this->extractRequestParams();
+
+		$result = AbuseFilter::evaluateExpression( $params['expression'] );
+
+		$this->getResult()->addValue( null, $this->getModuleName(), array( 'result' => $result ) );
+	}
+
+	public function getAllowedParams() {
+		return array(
+			'expression' => array(
+				ApiBase::PARAM_REQUIRED => true,
+			),
+		);
+	}
+
+	public function getParamDescription() {
+		return array(
+			'expression' => 'The expression to evaluate',
+		);
+	}
+
+	public function getDescription() {
+		return array(
+			'Evaluates an AbuseFilter expression'
+		);
+	}
+
+	public function getExamples() {
+		return array(
+			'api.php?action=evalfilterexpression&expression=lcase("FOO")'
+		);
+	}
+
+	public function getVersion() {
+		return __CLASS__ . ': $Id$';
+	}
+}

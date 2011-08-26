@@ -4,6 +4,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 class AbuseFilterViewExamine extends AbuseFilterView {
+	public static $examineType = null;
+	public static $examineId = null;
+
 	function show() {
 		global $wgOut;
 
@@ -89,6 +92,9 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
+		self::$examineType = 'rc';
+		self::$examineId = $rcid;
+
 		$vars = AbuseFilter::getVarsFromRCRow( $row );
 
 		$this->showExaminer( $vars );
@@ -105,6 +111,9 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			$wgOut->addWikiMsg( 'abusefilter-examine-notfound' );
 			return;
 		}
+
+		self::$examineType = 'log';
+		self::$examineId = $logid;
 
 		$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
 
@@ -125,21 +134,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 
 		$output = '';
 
-		// Send armoured as JSON -- I totally give up on trying to send it as a proper object.
-		$wgOut->addInlineScript( 'var wgExamineVars = ' .
-			Xml::encodeJsVar( json_encode( $vars ) ) . ';' );
-		$wgOut->addInlineScript( file_get_contents( dirname( __FILE__ ) . '/examine.js' ) );
-
-		// Add messages
-		$msg = array();
-		$msg['match'] = wfMsg( 'abusefilter-examine-match' );
-		$msg['nomatch'] = wfMsg( 'abusefilter-examine-nomatch' );
-		$msg['syntaxerror'] = wfMsg( 'abusefilter-examine-syntaxerror' );
-		$wgOut->addInlineScript(
-			'var wgMessageMatch = ' . Xml::encodeJsVar( $msg['match'] ) . ";\n" .
-			'var wgMessageNomatch = ' . Xml::encodeJsVar( $msg['nomatch'] ) . ";\n" .
-			'var wgMessageError = ' . Xml::encodeJsVar( $msg['syntaxerror'] ) . ";\n"
-		);
+		$wgOut->addModules( 'ext.abuseFilter.examine' );
 
 		// Add test bit
 		if ( $wgUser->isAllowed( 'abusefilter-modify' ) ) {

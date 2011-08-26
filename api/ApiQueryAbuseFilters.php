@@ -225,7 +225,7 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 		) );
 	}
 
-	protected function getExamples() {
+	public function getExamples() {
 		return array(
 			'api.php?action=query&list=abusefilters&abfshow=enabled|!private',
 			'api.php?action=query&list=abusefilters&abfprop=id|description|pattern'

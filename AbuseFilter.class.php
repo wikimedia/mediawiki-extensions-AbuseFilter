@@ -117,6 +117,7 @@ class AbuseFilter {
 			'file_sha1' => 'file-sha1',
 		),
 	);
+	public static $editboxName = null;
 
 	public static function addNavigationLinks( $out, $sk, $pageType ) {
 		global $wgLang, $wgUser;
@@ -204,44 +205,6 @@ class AbuseFilter {
 		return $realValues;
 	}
 
-	public static function ajaxCheckSyntax( $filter ) {
-		global $wgUser;
-		if ( !$wgUser->isAllowed( 'abusefilter-modify' ) ) {
-			return false;
-		}
-
-		$result = self::checkSyntax( $filter );
-
-		$ok = ( $result === true );
-
-		if ( $ok ) {
-			return 'OK';
-		} else {
-			return 'ERR: ' . json_encode( $result );
-		}
-	}
-
-	public static function ajaxGetFilter( $filter ) {
-		global $wgUser;
-		if ( !$wgUser->isAllowed( 'abusefilter-view' ) ) {
-			return false;
-		}
-
-		$dbr = wfGetDB( DB_SLAVE );
-		$row = $dbr->selectRow(
-			'abuse_filter',
-			'*',
-			array( 'af_id' => $filter ),
-			__METHOD__
-		);
-
-		if ( $row->af_hidden && !$wgUser->isAllowed( 'abusefilter-modify' ) ) {
-			return false;
-		}
-
-		return strval( $row->af_pattern );
-	}
-
 	public static function filterHidden( $filter ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$hidden = $dbr->selectField(
@@ -251,25 +214,6 @@ class AbuseFilter {
 			__METHOD__
 		);
 		return $hidden ? true : false;
-	}
-
-	public static function ajaxCheckFilterWithVars( $filter, $vars ) {
-		global $wgUser;
-
-		// Anti-DoS
-		if ( !$wgUser->isAllowed( 'abusefilter-modify' ) ) {
-			return false;
-		}
-
-		// If we have a syntax error.
-		if ( self::checkSyntax( $filter ) !== true ) {
-			return 'SYNTAXERROR';
-		}
-
-		$vars = json_decode( $vars, true );
-		$result = self::checkConditions( $filter, $vars );
-
-		return $result ? 'MATCH' : 'NOMATCH';
 	}
 
 	public static function triggerLimiter( $val = 1 ) {
@@ -346,36 +290,6 @@ class AbuseFilter {
 		$parser->setVars( $vars );
 
 		return $parser->evaluateExpression( $expr );
-	}
-
-	public static function ajaxReAutoconfirm( $username ) {
-		global $wgUser;
-
-		if ( !$wgUser->isAllowed( 'abusefilter-modify' ) ) {
-			// Don't allow it.
-			return wfMsg( 'abusefilter-reautoconfirm-notallowed' );
-		}
-
-		$u = User::newFromName( $username );
-
-		global $wgMemc;
-		$k = AbuseFilter::autoPromoteBlockKey( $u );
-
-		if ( !$wgMemc->get( $k ) ) {
-			return wfMsgExt( 'abusefilter-reautoconfirm-none', array( 'parsemag' ), $username );
-		}
-
-		$wgMemc->delete( $k );
-
-		return wfMsgExt( 'abusefilter-reautoconfirm-done', array( 'parsemag' ), $username );
-	}
-
-	public static function ajaxEvaluateExpression( $expr ) {
-		global $wgUser;
-		if ( !$wgUser->isAllowed( 'abusefilter-modify' ) ) {
-			return false;
-		}
-		return htmlspecialchars( self::evaluateExpression( $expr ) );
 	}
 
 	public static function checkConditions( $conds, $vars, $ignoreError = true,
@@ -1402,7 +1316,7 @@ class AbuseFilter {
 		$rules .=
 			Xml::tags(
 				'select',
-				array( 'id' => 'wpFilterBuilder', 'onchange' => 'addText();' ),
+				array( 'id' => 'wpFilterBuilder', ),
 				$builder
 			) . ' ';
 
@@ -1410,7 +1324,6 @@ class AbuseFilter {
 		$rules .= Xml::element( 'input',
 			array(
 				'type' => 'button',
-				'onclick' => 'doSyntaxCheck()',
 				'value' => wfMsg( 'abusefilter-edit-check' ),
 				'id' => 'mw-abusefilter-syntaxcheck'
 			) + $noTestAttrib );
@@ -1421,18 +1334,8 @@ class AbuseFilter {
 				'&#160;' );
 
 		// Add script
-		$editScript = file_get_contents( dirname( __FILE__ ) . '/edit.js' );
-		$editScript = "var wgFilterBoxName = " . Xml::encodeJSVar( $textName ) . ";\n$editScript";
-
-		// Import localisation.
-		$importMessages = array( 'abusefilter-edit-syntaxok', 'abusefilter-edit-syntaxerr' );
-		$msgData = array();
-		foreach ( $importMessages as $msg ) {
-			$msgData[$msg] = wfMsg( $msg );
-		}
-		$editScript .= "\nvar wgAbuseFilterMessages = " . json_encode( $msgData ) . ";\n";
-
-		$wgOut->addInlineScript( $editScript );
+		$wgOut->addModules( 'ext.abuseFilter.edit' );
+		self::$editboxName = $textName;
 
 		return $rules;
 	}

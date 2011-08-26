@@ -121,3 +121,12 @@ table.mw-abusefilter-diff th {
 /* @noflip */.sitedir-rtl .TablePager_col_af_public_comments {
 	direction: rtl;
 }
+
+#mw-abusefilter-filter-tools {
+    display: inline;
+}
+
+.client-nojs #mw-abusefilter-export-link,
+.client-js #mw-abusefilter-export {
+    display: none;
+}

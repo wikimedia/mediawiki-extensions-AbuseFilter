@@ -11,10 +11,9 @@ class SpecialAbuseFilter extends SpecialPage {
 	}
 
 	public function execute( $subpage ) {
-		global $wgUser, $wgOut, $wgRequest, $wgAbuseFilterStyleVersion, $wgScriptPath;
+		global $wgUser, $wgOut, $wgRequest;
 
-		$wgOut->addExtensionStyle( "{$wgScriptPath}/extensions/AbuseFilter/abusefilter.css?" .
-			$wgAbuseFilterStyleVersion );
+		$wgOut->addModuleStyles( 'ext.abuseFilter' );
 		$view = 'AbuseFilterViewList';
 
 		$this->setHeaders();

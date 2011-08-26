@@ -231,7 +231,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		) );
 	}
 
-	protected function getExamples() {
+	public function getExamples() {
 		return array(
 			'api.php?action=query&list=abuselog',
 			'api.php?action=query&list=abuselog&afltitle=API'

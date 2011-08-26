@@ -20,7 +20,6 @@ class AbuseFilterViewTools extends AbuseFilterView {
 				array(
 					'type' => 'button',
 					'id' => 'mw-abusefilter-submitexpr',
-					'onclick' => 'doExprSubmit();',
 					'value' => wfMsg( 'abusefilter-tools-submitexpr' ) )
 				)
 			);
@@ -29,12 +28,7 @@ class AbuseFilterViewTools extends AbuseFilterView {
 		$eval = Xml::fieldset( wfMsg( 'abusefilter-tools-expr' ), $eval );
 		$wgOut->addHTML( $eval );
 
-		// Associated script
-		$exprScript = file_get_contents( dirname( __FILE__ ) . '/tools.js' );
-
-		$wgOut->addInlineScript( $exprScript );
-
-		global $wgUser;
+		$wgOut->addModules( 'ext.abuseFilter.tools' );
 
 		if ( $wgUser->isAllowed( 'abusefilter-modify' ) ) {
 			// Hacky little box to re-enable autoconfirmed if it got disabled
@@ -51,7 +45,6 @@ class AbuseFilterViewTools extends AbuseFilterView {
 				array(
 					'type' => 'button',
 					'id' => 'mw-abusefilter-reautoconfirmsubmit',
-					'onclick' => 'doReautoSubmit();',
 					'value' => wfMsg( 'abusefilter-tools-reautoconfirm-submit' )
 				)
 			);

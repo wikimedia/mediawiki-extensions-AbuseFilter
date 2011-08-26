@@ -58,6 +58,14 @@ $wgAutoloadClasses['ApiQueryAbuseLog'] = "$dir/api/ApiQueryAbuseLog.php";
 $wgAPIListModules['abuselog'] = 'ApiQueryAbuseLog';
 $wgAutoloadClasses['ApiQueryAbuseFilters'] = "$dir/api/ApiQueryAbuseFilters.php";
 $wgAPIListModules['abusefilters'] = 'ApiQueryAbuseFilters';
+$wgAutoloadClasses['ApiCheckFilterSyntax'] = "$dir/api/ApiCheckFilterSyntax.php";
+$wgAPIModules['checkfiltersyntax'] = 'ApiCheckFilterSyntax';
+$wgAutoloadClasses['ApiEvalFilterExpression'] = "$dir/api/ApiEvalFilterExpression.php";
+$wgAPIModules['evalfilterexpression'] = 'ApiEvalFilterExpression';
+$wgAutoloadClasses['ApiUnblockAutopromote'] = "$dir/api/ApiUnblockAutopromote.php";
+$wgAPIModules['unblockautopromote'] = 'ApiUnblockAutopromote';
+$wgAutoloadClasses['ApiCheckFilterMatch'] = "$dir/api/ApiCheckFilterMatch.php";
+$wgAPIModules['checkfiltermatch'] = 'ApiCheckFilterMatch';
 
 $wgHooks['EditFilterMerged'][] = 'AbuseFilterHooks::onEditFilterMerged';
 $wgHooks['GetAutoPromoteGroups'][] = 'AbuseFilterHooks::onGetAutoPromoteGroups';
@@ -69,6 +77,7 @@ $wgHooks['ListDefinedTags'][] = 'AbuseFilterHooks::onListDefinedTags';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'AbuseFilterHooks::onLoadExtensionSchemaUpdates';
 $wgHooks['ContributionsToolLinks'][] = 'AbuseFilterHooks::onContributionsToolLinks';
 $wgHooks['UploadVerification'][] = 'AbuseFilterHooks::onUploadVerification';
+$wgHooks['MakeGlobalVariablesScript'][] = 'AbuseFilterHooks::onMakeGlobalVariablesScript';
 
 $wgAvailableRights[] = 'abusefilter-modify';
 $wgAvailableRights[] = 'abusefilter-log-detail';
@@ -88,6 +97,49 @@ $wgLogActionsHandlers['abusefilter/modify'] = array( 'AbuseFilter', 'modifyActio
 $wgLogActions['suppress/hide-afl'] = 'abusefilter-logentry-suppress';
 $wgLogActions['suppress/unhide-afl'] = 'abusefilter-logentry-unsuppress';
 
+$commonModuleInfo = array(
+	'localBasePath' => dirname( __FILE__ ) . '/modules',
+	'remoteExtPath' => 'AbuseFilter/modules',
+);
+
+$wgResourceModules['ext.abuseFilter'] = array(
+	'styles' => 'ext.abuseFilter.css',
+) + $commonModuleInfo;
+
+$wgResourceModules['ext.abuseFilter.edit'] = array(
+	'scripts' => 'ext.abuseFilter.edit.js',
+	'messages' => array(
+		'abusefilter-edit-syntaxok',
+		'abusefilter-edit-syntaxerr'
+	),
+	'dependencies' => array(
+		'jquery.textSelection',
+		'jquery.spinner',
+	),
+) + $commonModuleInfo;
+
+$wgResourceModules['ext.abuseFilter.tools'] = array(
+	'scripts' => 'ext.abuseFilter.tools.js',
+	'messages' => array(
+		'abusefilter-reautoconfirm-notallowed',
+		'abusefilter-reautoconfirm-none',
+		'abusefilter-reautoconfirm-done',
+	),
+	'dependencies' => array(
+		'jquery.spinner'
+	),
+) + $commonModuleInfo;
+
+$wgResourceModules['ext.abuseFilter.examine'] = array(
+	'scripts' => 'ext.abuseFilter.examine.js',
+	'messages' => array(
+		'abusefilter-examine-match',
+		'abusefilter-examine-nomatch',
+		'abusefilter-examine-syntaxerror',
+		'abusefilter-examine-notfound',
+	),
+) + $commonModuleInfo;
+
 $wgAbuseFilterAvailableActions = array( 'flag', 'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'degroup', 'tag' );
 
 $wgAbuseFilterConditionLimit = 1000;
@@ -105,9 +157,6 @@ $wgAjaxExportList[] = 'AbuseFilter::ajaxEvaluateExpression';
 $wgAjaxExportList[] = 'AbuseFilter::ajaxReAutoconfirm';
 $wgAjaxExportList[] = 'AbuseFilter::ajaxGetFilter';
 $wgAjaxExportList[] = 'AbuseFilter::ajaxCheckFilterWithVars';
-
-// Bump the version number every time you change any of the .css/.js files
-$wgAbuseFilterStyleVersion = 9;
 
 $wgAbuseFilterRestrictedActions = array( 'block', 'degroup' );
 
