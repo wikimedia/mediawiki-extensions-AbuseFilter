@@ -19,16 +19,17 @@ new ( function( $, mw ) {
 	 */
 	this.examinerTestFilter = function() {
 		var filter = $( '#wpTestFilter' ).val(),
+			examine = mw.config.get( 'abuseFilterExamine' ),
 			params = {};
 		$( this ).injectSpinner( 'filter-check' );
 
-		if ( mw.config.get( 'wgExamineType' ) == 'rc' ) {
+		if ( examine.type == 'rc' ) {
 			params = {
-				rcid: mw.config.get( 'wgExamineId' )
+				rcid: examine.id
 			}
 		} else {
 			params = {
-				logid: mw.config.get( 'wgExamineId' )
+				logid: examine.id
 			}
 		}
 

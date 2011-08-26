@@ -7,7 +7,7 @@ new ( function( $, mw ) {
 	 *
 	 * @var {jQuery}
 	 */
-	var $filterBox = $( '#' + mw.config.get( 'wgFilterBoxName' ) );
+	var $filterBox = $( '#' + mw.config.get( 'abuseFilterBoxName' ) );
 
 	/**
 	 * Reference to this

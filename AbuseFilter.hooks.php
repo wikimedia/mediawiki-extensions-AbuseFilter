@@ -284,12 +284,14 @@ class AbuseFilterHooks {
 	 */
 	public static function onMakeGlobalVariablesScript( array &$vars ) {
 		if ( AbuseFilter::$editboxName !== null ) {
-			$vars['wgFilterBoxName'] = AbuseFilter::$editboxName;
+			$vars['abuseFilterBoxName'] = AbuseFilter::$editboxName;
 		}
 
 		if ( AbuseFilterViewExamine::$examineType !== null ) {
-			$vars['wgExamineType'] = AbuseFilterViewExamine::$examineType;
-			$vars['wgExamineId'] = AbuseFilterViewExamine::$examineId;
+			$vars['abuseFilterExamine'] = array(
+				'type' => AbuseFilterViewExamine::$examineType,
+				'id' => AbuseFilterViewExamine::$examineId,
+			);
 		}
 		return true;
 	}
