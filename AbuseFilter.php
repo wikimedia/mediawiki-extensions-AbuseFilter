@@ -152,12 +152,6 @@ $wgAbuseFilterEmergencyDisableAge = 86400; // One day.
 // Abuse filter parser class
 $wgAbuseFilterParserClass = 'AbuseFilterParser';
 
-$wgAjaxExportList[] = 'AbuseFilter::ajaxCheckSyntax';
-$wgAjaxExportList[] = 'AbuseFilter::ajaxEvaluateExpression';
-$wgAjaxExportList[] = 'AbuseFilter::ajaxReAutoconfirm';
-$wgAjaxExportList[] = 'AbuseFilter::ajaxGetFilter';
-$wgAjaxExportList[] = 'AbuseFilter::ajaxCheckFilterWithVars';
-
 $wgAbuseFilterRestrictedActions = array( 'block', 'degroup' );
 
 // UDP configuration
