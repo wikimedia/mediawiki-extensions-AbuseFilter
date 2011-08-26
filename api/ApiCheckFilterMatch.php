@@ -15,8 +15,11 @@ class ApiCheckFilterMatch extends ApiBase {
 			$vars = json_decode( $params['vars'], true );
 		} elseif ( $params['rcid'] ) {
 			$dbr = wfGetDB( DB_SLAVE );
-			$row = $dbr->selectRow( 'recentchanges', '*',
-				array( 'rc_id' => $params['rcid'] ), __METHOD__
+			$row = $dbr->selectRow(
+				'recentchanges',
+				'*',
+				array( 'rc_id' => $params['rcid'] ),
+				__METHOD__
 			);
 
 			if ( !$row ) {
@@ -26,8 +29,11 @@ class ApiCheckFilterMatch extends ApiBase {
 			$vars = AbuseFilter::getVarsFromRCRow( $row );
 		} elseif ( $params['logid'] ) {
 			$dbr = wfGetDB( DB_SLAVE );
-			$row = $dbr->selectRow( 'abuse_filter_log', '*',
-				array( 'afl_id' => $params['logid'] ), __METHOD__
+			$row = $dbr->selectRow(
+				'abuse_filter_log',
+				'*',
+				array( 'afl_id' => $params['logid'] ),
+				__METHOD__
 			);
 
 			if ( !$row ) {
@@ -86,12 +92,14 @@ class ApiCheckFilterMatch extends ApiBase {
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(),
-			$this->getRequireOnlyOneParameterErrorMessages( array( 'vars', 'rcid', 'logid' ) ), array(
-			array( 'permissiondenied' ),
-			array( 'nosuchrcid' ),
-			array( 'code' => 'nosuchlogid', 'info' => 'There is no abuselog entry with the id given' ),
-			array( 'code' => 'badsyntax', 'info' => 'The filter has invalid syntax' ),
-		) );
+			$this->getRequireOnlyOneParameterErrorMessages( array( 'vars', 'rcid', 'logid' ) ),
+			array(
+				array( 'permissiondenied' ),
+				array( 'nosuchrcid' ),
+				array( 'code' => 'nosuchlogid', 'info' => 'There is no abuselog entry with the id given' ),
+				array( 'code' => 'badsyntax', 'info' => 'The filter has invalid syntax' ),
+			)
+		);
 	}
 
 	public function getExamples() {

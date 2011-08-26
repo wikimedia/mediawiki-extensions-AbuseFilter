@@ -4,13 +4,13 @@ class ApiCheckFilterSyntax extends ApiBase {
 
 	public function execute() {
 		global $wgUser;
-		$params = $this->extractRequestParams();
 
 		// "Anti-DoS"
 		if ( !$wgUser->isAllowed( 'abusefilter-modify' ) ) {
 			$this->dieUsageMsg( 'permissiondenied' );
 		}
 
+		$params = $this->extractRequestParams();
 		$result = AbuseFilter::checkSyntax( $params[ 'filter' ] );
 
 		$r = array();

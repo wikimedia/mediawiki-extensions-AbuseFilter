@@ -3,13 +3,12 @@
 class ApiUnblockAutopromote extends ApiBase {
 	public function execute() {
 		global $wgUser;
-		$params = $this->extractRequestParams();
-		$res = array();
 
 		if ( !$wgUser->isAllowed( 'abusefilter-modify' ) ) {
 			$this->dieUsage( 'You do not have permissions to unblock autopromotion', 'permissiondenied' );
 		}
 
+		$params = $this->extractRequestParams();
 		$user = User::newFromName( $params['user'] );
 
 		if ( $user === false ) {
