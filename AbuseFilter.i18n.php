@@ -1027,6 +1027,7 @@ $messages['an'] = array(
  * @author Mido
  * @author Orango
  * @author OsamaK
+ * @author Zack wadghiri
  * @author ترجمان05
  */
 $messages['ar'] = array(
@@ -1227,7 +1228,7 @@ $messages['ar'] = array(
 	'abusefilter-edit-syntaxok' => 'لم يُكتشف أي خطأ صياغي.',
 	'abusefilter-edit-syntaxerr' => 'أكشفت خطأ صياغة: $1',
 	'abusefilter-edit-bad-tags' => 'واحدة أو أكثر من الوسوم التي حددتها غير صالحة.
-يجب أن تكون الوسوم قصيرة ويجب ألا تحتوي محارف خاصة.',
+يجب أن تكون الوسوم قصيرة ويجب ألا تحتوي أحرف خاصة.',
 	'abusefilter-edit-notallowed' => 'لا يسمح لك بإنشاء أو تعديل مرشحات الإساءة',
 	'abusefilter-edit-builder-select' => 'اختر خيارا لإضافته عند البكرة',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'معاملات حسابية',
@@ -31564,7 +31565,6 @@ Mô tả bộ lọc: $7 ($8)',
 	'abusefilter-list-options-disabled' => 'Bộ lọc đã tắt:',
 	'abusefilter-list-options-hidedisabled' => 'Ẩn bộ lọc đã tắt',
 	'abusefilter-list-options-submit' => 'Cập nhật',
-	'abusefilter-tools-subtitle' => 'Công cụ',
 	'abusefilter-tools-text' => 'Dưới đây là một số công cụ có thể hữu ích trong việc công thức hóa và gỡ rối các bộ lọc lạm dụng.',
 	'abusefilter-tools-expr' => 'Bộ kiểm thử biểu thức',
 	'abusefilter-tools-submitexpr' => 'Tính',
@@ -31686,7 +31686,7 @@ Thẻ phải ngắn, và chúng không nên chứa các ký tự đặc biệt.'
 	'abusefilter-edit-builder-funcs-str_replace' => 'Thay chuỗi con bằng chuỗi (str_replace)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Đặt biến (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Biến',
-	'abusefilter-edit-builder-vars-accountname' => 'Tên tài khoản (on account creation)',
+	'abusefilter-edit-builder-vars-accountname' => 'Tên tài khoản (lúc mở tài khoản)',
 	'abusefilter-edit-builder-vars-timestamp' => 'Thời điểm thay đổi dạng Unix',
 	'abusefilter-edit-builder-vars-action' => 'Tác vụ',
 	'abusefilter-edit-builder-vars-addedlines' => 'Những dòng được thêm vào sửa đổi',
