@@ -1029,6 +1029,7 @@ $messages['an'] = array(
  * @author OsamaK
  * @author Zack wadghiri
  * @author ترجمان05
+ * @author زكريا
  */
 $messages['ar'] = array(
 	'abusefilter-desc' => 'يطبق قواعد آلية على التعديلات.',
@@ -1228,7 +1229,7 @@ $messages['ar'] = array(
 	'abusefilter-edit-syntaxok' => 'لم يُكتشف أي خطأ صياغي.',
 	'abusefilter-edit-syntaxerr' => 'أكشفت خطأ صياغة: $1',
 	'abusefilter-edit-bad-tags' => 'واحدة أو أكثر من الوسوم التي حددتها غير صالحة.
-يجب أن تكون الوسوم قصيرة ويجب ألا تحتوي أحرف خاصة.',
+يجب أن تكون الوسوم قصيرة وألا تحتوي على أحرف خاصة.',
 	'abusefilter-edit-notallowed' => 'لا يسمح لك بإنشاء أو تعديل مرشحات الإساءة',
 	'abusefilter-edit-builder-select' => 'اختر خيارا لإضافته عند البكرة',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'معاملات حسابية',
@@ -3060,24 +3061,23 @@ $messages['be-tarask'] = array(
  * @author Петър Петров
  */
 $messages['bg'] = array(
-	'abusefilter-desc' => 'Извършва автоматична евристика на редакциите.',
-	'abusefilter' => 'Настройка на защитата от вредоносни действия',
-	'abuselog' => 'Дневник на вредоносните действия',
+	'abusefilter-desc' => 'Прилага автоматични евристики към редакциите.',
+	'abusefilter' => 'Конфигуриране на филтъра срещу злоупотреби',
+	'abuselog' => 'Дневник на злоупотребите',
 	'abusefilter-intro' => 'Добре дошли в административния интерфейс на Филтъра срещу злоупотреби.
 Филтърът срещу злоупотреби е автоматизиран софтуерен механизъм за прилагане на евристични оценки към разнообразни действия.
 Този интерфейс показва списък на дефинираните филтри с възможност те да бъдат променяни.',
 	'abusefilter-mustbeeditor' => 'От съображения за сигурност само потребители с права да променят филтрите срещу злоупотреби могат да използват този интерфейс.',
 	'abusefilter-warning' => "'''Внимание''': Извършваното действие беше автоматично разпознато като вредоносно.
-Неконструктивните редакции лесно ще бъдат премахнати,
-а демонстративното или упоритото вредене ще доведе до блокиране на потребителската ви сметка или IP адрес.
-Ако вярвате, че тази редакция е конструктивна, можете да натиснете „Съхранение“, за да го потвърдите.
+Неконструктивните редакции бързо биват премахвани, а демонстративното или упоритото вредене може да доведе до блокиране на потребителската ви сметка или IP адрес.
+Ако вярвате, че тази редакция е конструктивна, можете да натиснете бутона „Съхраняване“, за да я запазите.
 Кратко описание на правилото, по което вашето действие беше разпознато: $1",
-	'abusefilter-disallowed' => 'Извършваното действие беше автоматично разпознато като вредоносно и не беше извършено.
-Ако вярвате, че тази редакция е конструктивна, моля свържете се с администратор и опишете точно какво се опитахте да направите.
+	'abusefilter-disallowed' => 'Извършваното действие беше автоматично разпознато като вредоносно и не беше съхранено.
+Ако вярвате, че редакцията ви е била конструктивна, моля, уведомете администраторите относно намеренията си.
 Кратко описание на правилото, по което вашето действие беше разпознато: $1',
 	'abusefilter-blocked-display' => 'Извършваното действие беше автоматично разпознато като вредоносно и беше спряно.
-В допълнение, за защита на {{SITENAME}}, вашата потребителска сметка и IP адрес бяха блокирани.
-Ако смятате, че тази реакция на системата е погрешна, моля свържете се с администратор.
+В допълнение, с цел защита на {{SITENAME}}, вашата потребителска сметка и IP адрес бяха блокирани.
+Ако смятате, че тази реакция на системата е погрешна, моля, свържете се с администратор.
 Кратко описание на правилото, по което вашето действие беше разпознато: $1',
 	'abusefilter-degrouped' => 'Извършваното действие беше автоматично разпознато като вредоносно и беше спряно.  В допълнение, настоящата потребителска сметка прилича на открадната и поради това беше лишена от всички потребителски привилегии.
 Ако смятате, че тази реакция на системата е погрешна, моля свържете се с бюрократ, обяснете действията си и привилегиите ви може да бъдат възстановени.
@@ -3085,21 +3085,25 @@ $messages['bg'] = array(
 	'abusefilter-autopromote-blocked' => 'Извършваното действие беше автоматично разпознато като вредоносно и беше спряно.
 За допълнителна защита, някои привилегии, които обикновено се дават на редовните потребители, временно бяха отнети от вашата потребителска сметка.
 Кратко описание на правилото, по което вашето действие беше разпознато: $1',
-	'abusefilter-blocker' => 'Защита от вредоносни действия',
-	'abusefilter-blockreason' => 'Автоматично блокиране от филтъра за вредоносни действия. Описание на условието: $1',
-	'abusefilter-degroupreason' => 'Защита от вредоносни действия: автоматично отнемане на привилегии.  Причина: $1',
+	'abusefilter-blocker' => 'Филтър срещу злоупотреби',
+	'abusefilter-blockreason' => 'Автоматично блокиране, извършено от филтъра срещу злоупотребите.  
+Описание на причината: $1',
+	'abusefilter-degroupreason' => 'Автоматично отнемане на права, извършено от филтъра срещу злоупотребите. 
+Причина: $1',
 	'abusefilter-accountreserved' => 'Това име на сметка е запазено за употреба от филтъра против вредоносни действия.',
-	'right-abusefilter-modify' => 'Промяна на филтрите против вредоносни действия',
-	'right-abusefilter-view' => 'Преглеждане на филтрите против вредоносни действия',
-	'right-abusefilter-log' => 'Преглеждане на дневника на вредоносните действия',
-	'right-abusefilter-log-detail' => 'Преглеждане на подробни записи в дневника на вредоносните действия',
-	'right-abusefilter-private' => 'Преглеждане на скритите данни в дневника с вредоносни действия',
+	'right-abusefilter-modify' => 'Промяна на филтрите срещу злоупотреба',
+	'right-abusefilter-view' => 'Преглед на филтрите срещу злоупотреби',
+	'right-abusefilter-log' => 'Преглед на дневника на злоупотребите',
+	'right-abusefilter-log-detail' => 'Преглед на подробните записи в дневника на злоупотребите',
+	'right-abusefilter-private' => 'Преглед на скритите данни в дневника на злоупотребите',
 	'right-abusefilter-revert' => 'Възвръщане на всички промени, направени от филтъра срещу злоупотреби',
-	'right-abusefilter-view-private' => 'Преглед на защитните филтри, означени като скрити',
-	'action-abusefilter-modify' => 'промяна на защитните филтри',
-	'action-abusefilter-view' => 'преглед на защитните филтри',
-	'action-abusefilter-log' => 'преглед на днивника на защитните филтри',
-	'action-abusefilter-log-detail' => 'подробен преглед на дневника на защитните филтри',
+	'right-abusefilter-view-private' => 'Преглед на означените като скрити филтри срещу злоупотреби',
+	'right-abusefilter-hide-log' => 'Скриване на записи в дневника на злоупотребите',
+	'right-abusefilter-hidden-log' => 'Преглед на скритите записи в дневника на злоупотребите',
+	'action-abusefilter-modify' => 'промяна на филтрите срещу злоупотреби',
+	'action-abusefilter-view' => 'преглед на филтрите срещу злоупотреби',
+	'action-abusefilter-log' => 'преглед на дневника на злоупотребите',
+	'action-abusefilter-log-detail' => 'подробен преглед на дневника на злоупотребите',
 	'action-abusefilter-private' => 'преглед на личните данни в Дневника на злоупотребите',
 	'action-abusefilter-revert' => 'възвръщане на всички промени, направени от даден филтър',
 	'abusefilter-log' => 'Дневник на филтъра срещу злоупотреби',
@@ -3131,10 +3135,13 @@ $messages['bg'] = array(
 	'abusefilter-log-linkoncontribs-text' => 'Дневник на злоупотребите за този потребител',
 	'abusefilter-log-hidden' => '(скрит запис)',
 	'abusefilter-log-hide' => 'скриване или показване',
+	'abusefilter-log-details-hidden' => 'Не можете да прегледате детайлите за този запис, защото той е непубличен.',
 	'abusefilter-log-hide-legend' => 'Скриване на записа в дневника',
+	'abusefilter-log-hide-id' => 'Идентификатор на запис от дневника:',
 	'abusefilter-log-hide-hidden' => 'Скриване на този запис от публичен преглед',
 	'abusefilter-log-hide-reason' => 'Причина:',
-	'abusefilter-management' => 'Управление на защитата против вредоносни действия',
+	'abusefilter-log-hide-forbidden' => 'Нямате необходимите права да скривате записи от дневника на злоупотребите.',
+	'abusefilter-management' => 'Управление на филтъра срещу злоупотреби',
 	'abusefilter-list' => 'Всички филтри',
 	'abusefilter-list-id' => 'Идентификатор на филтър',
 	'abusefilter-list-status' => 'Статут',
@@ -3155,7 +3162,7 @@ $messages['bg'] = array(
 	'abusefilter-new' => 'Създаване на нов филтър',
 	'abusefilter-links' => 'Полезни препратки:',
 	'abusefilter-tools-modifiertest-submit' => 'тест',
-	'abusefilter-tools' => 'Има помощни инструменти за съставяне и поправяне на защитни филтри.',
+	'abusefilter-tools' => 'Инструменти за създаване на филтри срещу злоупотреби',
 	'abusefilter-loglink' => 'Преглеждане на дневника със злоупотреби',
 	'abusefilter-return' => 'Назад към управлението на филтъра',
 	'abusefilter-status-global' => 'На глобално ниво',
@@ -3167,7 +3174,6 @@ $messages['bg'] = array(
 	'abusefilter-list-options-disabled' => 'Изключени филтри:',
 	'abusefilter-list-options-hidedisabled' => 'Скриване на изключените филтри',
 	'abusefilter-list-options-submit' => 'Обновяване',
-	'abusefilter-tools-subtitle' => 'Инструменти',
 	'abusefilter-tools-text' => 'Тук има някои инструменти, които може да са полезни за създаване или поправяне на филтри срещу злоупотреби.',
 	'abusefilter-tools-expr' => 'Проверка на изрази',
 	'abusefilter-tools-submitexpr' => 'Проверка',
@@ -17498,6 +17504,7 @@ Li edizion miga construtivi i sarà revertid à bott, e grand o repetud edizion 
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
  * @author Homo
+ * @author Ignas693
  * @author Matasg
  * @author Perkunas
  * @author Tomasdd
@@ -17622,7 +17629,6 @@ Filtro aprašymas: $7 ($8)',
 	'abusefilter-list-options-disabled' => 'Išjungti filtrai:',
 	'abusefilter-list-options-hidedisabled' => 'Paslėpti išjungtus filtrus',
 	'abusefilter-list-options-submit' => 'Pakeisti',
-	'abusefilter-tools-subtitle' => 'Priemonės',
 	'abusefilter-tools-text' => 'Čia yra keletas priemonių, kurios gali būti naudingos formuluojant ir derinant piktnaudžiavimo filtrus.',
 	'abusefilter-tools-expr' => 'Išraiškų testavimo priemonė',
 	'abusefilter-tools-submitexpr' => 'Patikrinti',
@@ -17724,6 +17730,7 @@ Prašau kreiptis į vartotoją, turintį teisę naudoti uždraustus veiksmus, at
 	'abusefilter-edit-builder-misc-in' => 'Įeina į simbolių eilutę (in)',
 	'abusefilter-edit-builder-misc-like' => 'Atitinka šabloną (like)',
 	'abusefilter-edit-builder-misc-rlike' => 'Atitinka reguliarią išraišką (rlike)',
+	'abusefilter-edit-builder-misc-irlike' => 'Rungtynės regex, raidžių (irlike)',
 	'abusefilter-edit-builder-misc-contains' => 'Kairė simbolių eilutė įeina į dešiniąją (contains)',
 	'abusefilter-edit-builder-misc-stringlit' => 'Simbolinė konstanta ("")',
 	'abusefilter-edit-builder-misc-tern' => 'Trinarė operacija (X ? Y : Z)',
@@ -17834,6 +17841,8 @@ Buvo {{PLURAL:$3|laukiamas|laukiami|laukiama}} $3 {{PLURAL:$3|parametras|paramet
 	'abusefilter-action-rangeblock' => 'Blokavimas pasiekus ribą',
 	'abusefilter-action-disallow' => 'Neleisti',
 	'abusefilter-revert-title' => 'Atmesti visus filtro $1 pakeitimus',
+	'abusefilter-revert-intro' => 'Ši forma leidžia grąžinti visus pakeitimus, kuriuos piktnaudžiavimo filtrą, dėl filtro  $1 .
+Prašome naudotis priežiūros, naudodami šį įrankį.',
 	'abusefilter-revert-preview-item' => '$1: $2 atliktas $3 puslapiui $4.
 Veiksmas buvo atšauktas: $5 ($6)',
 	'abusefilter-revert-search-legend' => 'Pasirinkite piktnaudžiavimų filtro veiksmą, kurį norite sugrąžinti',
@@ -17841,7 +17850,12 @@ Veiksmas buvo atšauktas: $5 ($6)',
 	'abusefilter-revert-periodend' => 'Periodo pabaiga:',
 	'abusefilter-revert-search' => 'Pasirinkite veiksmus',
 	'abusefilter-revert-filter' => 'Filtras:',
+	'abusefilter-revert-preview-intro' => 'Žemiau yra veiksmai, kurių imasi piktnaudžiavimo filtrą, kuris bus grąžinti šį ieškiniu.
+Prašome atidžiai juos patikrinti, ir spustelėkite "patvirtinti", patvirtinkite savo pasirinkimą.',
 	'abusefilter-revert-confirm' => 'Patvirtinti',
+	'abusefilter-revert-success' => 'Jūs grįžo dėl piktnaudžiavimo filtro dėl visų veiksmų [[specialus: AbuseFilter / $1 |filter  $1 ]].',
+	'abusefilter-revert-reason' => 'Automatinis sugrąžinti, visi veiksmai, kurių imasi piktnaudžiavimo filtrą, dėl filtro  $1 .
+Priežastis:$2',
 	'abusefilter-revert-reasonfield' => 'Priežastis sugrąžinimui:',
 	'abusefilter-test' => 'Testuoti filtrą paskutiniams keitimams',
 	'abusefilter-test-intro' => 'Šis puslapis Jums leidžia patikrinti Jūsų įvestą į žemiau esantį įvedimo lauką filtrą {{PLURAL:$1|paskutiniam|paskutiniams}} $1 {{PLURAL:$1|pakeitimui|pakeitimams|pakeitimų}}.
@@ -17893,6 +17907,9 @@ Visas detales žiūrėkite filtrų naujausių keitimo [[Special:AbuseFilter/hist
 	'abusefilter-diff-pattern' => 'Filtro sąlygos',
 	'abusefilter-diff-invalid' => 'Negalima rasti norimos versijos',
 	'abusefilter-diff-backhistory' => 'Atgal į filtro istoriją',
+	'abusefilter-import-intro' => 'Galite naudoti šią sąsają importuoti filtrus iš kitų wiki.
+Šaltinio wiki, spustelėkite "{{int:abusefilter-redaguoti-eksporto}}" pagal "{{int:abusefilter-įrankiai-paantraštė}}" redagavimo sąsaja.
+Kopijuoti iš teksto lauką, kad pasirodo, ir įklijuokite jį į šį teksto lauką, tada spustelėkite "{{int:abusefilter-importo-pateikti}}".',
 	'abusefilter-import-submit' => 'Importuoti duomenis',
 );
 
