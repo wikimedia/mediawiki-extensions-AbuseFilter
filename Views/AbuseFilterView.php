@@ -1,6 +1,4 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) )
-	die();
 
 abstract class AbuseFilterView {
 	function __construct( $page, $params ) {
@@ -49,11 +47,10 @@ abstract class AbuseFilterView {
 
 class AbuseFilterChangesList extends OldChangesList {
 	public function insertExtra( &$s, &$rc, &$classes ) {
-		$sk = $this->skin;
 		$examineParams = empty( $rc->examineParams ) ? array() : $rc->examineParams;
 
 		$title = SpecialPage::getTitleFor( 'AbuseFilter', 'examine/' . $rc->mAttribs['rc_id'] );
-		$examineLink = $sk->link( $title, wfMsgExt( 'abusefilter-changeslist-examine', 'parseinline' ), array(), $examineParams );
+		$examineLink = Linker::link( $title, wfMsgExt( 'abusefilter-changeslist-examine', 'parseinline' ), array(), $examineParams );
 
 		$s .= " ($examineLink)";
 

@@ -1,11 +1,8 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die();
-}
 
 class AbuseFilterViewList extends AbuseFilterView {
 	function show() {
-		global $wgUser, $wgOut, $wgRequest;
+		global $wgOut, $wgRequest;
 
 		// Status info...
 		$this->showStatus();
@@ -13,10 +10,9 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$wgOut->addWikiMsg( 'abusefilter-intro' );
 
 		// New filter button
-		$sk = $wgUser->getSkin();
 		if ( $this->canEdit() ) {
 			$title = $this->getTitle( 'new' );
-			$link = $sk->link( $title, wfMsg( 'abusefilter-new' ) );
+			$link = Linker::link( $title, wfMsg( 'abusefilter-new' ) );
 			$links = Xml::tags( 'p', null, $link ) . "\n";
 			$wgOut->addHTML( $links );
 		}
@@ -42,9 +38,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 	}
 
 	function showList( $conds = array( 'af_deleted' => 0 ), $optarray = array() ) {
-		global $wgOut, $wgUser;
-
-		$this->mSkin = $wgUser->getSkin();
+		global $wgOut;
 
 		$output = '';
 		$output .= Xml::element( 'h2', null,
@@ -188,21 +182,14 @@ class AbuseFilterPager extends TablePager {
 	function formatValue( $name, $value ) {
 		global $wgOut, $wgLang;
 
-		static $sk = null;
-
-		if ( empty( $sk ) ) {
-			global $wgUser;
-			$sk = $wgUser->getSkin();
-		}
-
 		$row = $this->mCurrentRow;
 
 		switch( $name ) {
 			case 'af_id':
-				return $sk->link(
+				return Linker::link(
 					SpecialPage::getTitleFor( 'AbuseFilter', intval( $value ) ), intval( $value ) );
 			case 'af_public_comments':
-				return $sk->link(
+				return Linker::link(
 					SpecialPage::getTitleFor( 'AbuseFilter', intval( $row->af_id ) ),
 					$wgOut->parseInline( $value )
 				);
@@ -238,7 +225,8 @@ class AbuseFilterPager extends TablePager {
 					array( 'parseinline' ),
 					$wgLang->formatNum( $value )
 				);
-				$link = $sk->makeKnownLinkObj(
+				// @todo FIXME: makeKnownLinkObj() is deprecated.
+				$link = Linker::makeKnownLinkObj(
 					SpecialPage::getTitleFor( 'AbuseLog' ),
 					$count_display,
 					'wpSearchFilter=' . $row->af_id
@@ -246,11 +234,11 @@ class AbuseFilterPager extends TablePager {
 				return $link;
 			case 'af_timestamp':
 				$userLink =
-					$sk->userLink(
+					Linker::userLink(
 						$row->af_user,
 						$row->af_user_text
 					) .
-					$sk->userToolLinks(
+					Linker::userToolLinks(
 						$row->af_user,
 						$row->af_user_text
 					);
