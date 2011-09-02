@@ -104,7 +104,7 @@ Filter description: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'abuse log',
 	'abusefilter-log-linkoncontribs-text' => 'Abuse log for this user',
 	'abusefilter-log-hidden' => '(entry hidden)',
-	'abusefilter-log-hide' => 'hide or unhide',
+	'abusefilter-log-hide' => 'hide or unhide', // @todo FIXME: Message unused?
 	'abusefilter-log-details-hidden' => 'You cannot view the details for this entry because it is hidden from public view.',
 
 	// Hiding log entries
@@ -495,12 +495,25 @@ Copy from the textbox that appears, and paste it into this textbox, then click "
  */
 $messages['qqq'] = array(
 	'abusefilter-desc' => '{{desc}}',
-	'abusefilter' => 'Name of Special:AbuseFilter in Special:SpecialPages.',
-	'abuselog' => 'Name of Special:AbuseLog in Special:SpecialPages.',
-	'abusefilter-warning' => 'A warning message shown when a user tries to save an edit which matches some abuse filter rule.
-Parameters:
-* $1 is a short description of the abuse filter rule which triggered this action',
+	'abusefilter' => 'Name of Special:AbuseFilter in Special:SpecialPages and title of special page.',
+	'abuselog' => 'Name of Special:AbuseLog in Special:SpecialPages and title of special page.',
+	'abusefilter-intro' => 'Introduction text for the list of filter rules.',
+	'abusefilter-mustbeeditor' => '"No access" message shown when a user does not have access rights.',
+	'abusefilter-warning' => 'A warning message shown when a user tries to save an edit which matches some abuse filter rule. Parameters:
+* $1 is a short description of the abuse filter rule which triggered this action.',
+	'abusefilter-disallowed' => 'Message given to user because of a triggered filter. Parameters:
+* $1 is a filter description.',
+	'abusefilter-blocked-display' => 'Message given to user because of a triggered filter. Parameters:
+* * $1 is a filter description.',
+	'abusefilter-degrouped' => 'Message given to user because of a triggered filter. Parameters:
+* * $1 is a filter description.',
 	'abusefilter-degroupreason' => 'Reason of removal of the user from all privileged groups performed by Abuse filter.',
+	'abusefilter-autopromote-blocked' => 'Message given to user because of a triggered filter. Parameters:
+* $1 is a filter description.',
+	'abusefilter-blocker' => 'Username of reserved user for abuse filter actions.',
+	'abusefilter-blockreason' => 'Message given to user because of a triggered filter. Parameters:
+* $1 is a filter description.',
+	'abusefilter-accountreserved' => 'Message given when trying to register a reserved account name for AbuseFilter actions.',
 	'right-abusefilter-modify' => '{{doc-right|abusefilter-modify}}',
 	'right-abusefilter-view' => '{{doc-right|abusefilter-view}}',
 	'right-abusefilter-log' => '{{doc-right|abusefilter-log}}',
@@ -511,29 +524,33 @@ Parameters:
 	'right-abusefilter-view-private' => '{{doc-right|abusefilter-view-private}}',
 	'right-abusefilter-hide-log' => '{{doc-right|abusefilter-hide-log}}',
 	'right-abusefilter-hidden-log' => '{{doc-right|abusefilter-hidden-log}}',
-	'action-abusefilter-modify' => '{{Doc-action|abusefilter-modify}}',
-	'action-abusefilter-view' => '{{Doc-action|abusefilter-view}}',
-	'action-abusefilter-log' => '{{Doc-action|abusefilter-log}}',
-	'action-abusefilter-log-detail' => '{{Doc-action|abusefilter-log-detail}}',
-	'action-abusefilter-private' => '{{Doc-action|abusefilter-private}}',
-	'action-abusefilter-modify-restricted' => '{{Doc-action|abusefilter-modify-restricted}}',
-	'action-abusefilter-revert' => '{{Doc-action|abusefilter-revert}}',
+	'action-abusefilter-modify' => '{{doc-action|abusefilter-modify}}',
+	'action-abusefilter-view' => '{{doc-action|abusefilter-view}}',
+	'action-abusefilter-log' => '{{doc-action|abusefilter-log}}',
+	'action-abusefilter-log-detail' => '{{doc-action|abusefilter-log-detail}}',
+	'action-abusefilter-private' => '{{doc-action|abusefilter-private}}',
+	'action-abusefilter-modify-restricted' => '{{doc-action|abusefilter-modify-restricted}}',
+	'action-abusefilter-revert' => '{{doc-action|abusefilter-revert}}',
 	'action-abusefilter-view-private' => '{{doc-action|abusefilter-view-private}}',
 	'abusefilter-log' => 'Caption of [[Special:AbuseLog]]',
 	'abusefilter-log-summary' => 'This message is displayed at the top of the log overview page for extension AbuseFilter.',
 	'abusefilter-log-search' => 'Caption of a fieldset for filter definition on [[Special:AbuseLog]]',
-	'abusefilter-log-search-user' => '{{Identical|User}}',
-	'abusefilter-log-search-filter' => '{{Identical|Filter ID}}',
-	'abusefilter-log-search-title' => '{{Identical|Title}}',
-	'abusefilter-log-search-submit' => '{{Identical|Search}}',
-	'abusefilter-log-entry' => 'This message is for a log entry.
+	'abusefilter-log-search-user' => 'Field label in abuse filter log page.
+{{Identical|User}}',
+	'abusefilter-log-search-filter' => 'Field label in abuse filter log page.
+{{Identical|Filter ID}}',
+	'abusefilter-log-search-title' => 'Field label in abuse filter log page.
+{{Identical|Title}}',
+	'abusefilter-log-search-submit' => 'Button text to search log in abuse filter log page.
+{{Identical|Search}}',
+	'abusefilter-log-entry' => 'This message is for a log entry. Parameters:
 * $1 timestamp
 * $2 user
 * $3 action by user
 * $4 link to page the action that triggered the filter was made on
 * $5 actions taken by the filter
-* $6 comments in filter description',
-	'abusefilter-log-detailedentry-meta' => 'This message is for a log entry.
+* $6 comments in filter description.',
+	'abusefilter-log-detailedentry-meta' => 'This message is for a log entry. Parameters:
 * $1 timestamp
 * $2 user
 * $3 link to filter
@@ -542,13 +559,40 @@ Parameters:
 * $6 actions taken by the filter
 * $7 comments in filter description
 * $8 action details link
-* $9 link to examine the action',
-	'abusefilter-log-detailslink' => '{{Identical|Details}}',
+* $9 link to examine the action (optional).',
+	'abusefilter-log-detailedentry-global' => 'Addition in the abuse filter log detail when a filter rule is a global rule. Parameters:
+* $1 is a global filter ID.',
+	'abusefilter-log-detailedentry-local' => 'Addition in the abuse filter log detail when a filter rule is a local rule. Parameters:
+* $1 is a local filter ID.',
+	'abusefilter-log-detailslink' => 'Link text for a link to abuse filter log details.
+{{Identical|Details}}',
+	'abusefilter-log-hidelink' => 'Link text in abuse filter log line to hide (when visible) or show (when hidden) a link to the log entry details.',
+	'abusefilter-log-details-legend' => 'Legend for abuse filter log entry details. Parameters:
+* $1 is a filter ID.',
 	'abusefilter-log-details-var' => 'Caption of a column on a detail view of [[Special:AbuseLog]]
 {{Identical|Variable}}',
 	'abusefilter-log-details-val' => 'Caption of a column on a detail view of [[Special:AbuseLog]]
 {{Identical|Value}}',
 	'abusefilter-log-details-vars' => 'Caption on a detail view of [[Special:AbuseLog]]',
+	'abusefilter-log-details-private' => 'Header for private log details.',
+	'abusefilter-log-details-ip' => 'Row label in private log details.',
+	'abusefilter-log-noactions' => 'Possible action taken when a filter matches.',
+	'abusefilter-log-details-diff' => 'Header for differences between two edits in log details.',
+	'abusefilter-log-linkoncontribs' => 'Link text added on [[Special:Contributions]] and other relevant special pages.',
+	'abusefilter-log-linkoncontribs-text' => 'Title for link added on [[Special:Contributions]] and other relevant special pages.',
+	'abusefilter-log-hidden' => 'Text for a hidden log entry.',
+	'abusefilter-log-hide' => 'This message may be unused.',
+	'abusefilter-log-details-hidden' => 'Message shown instead of log row details when those are hidden.',
+	'abusefilter-log-hide-legend' => 'Legend for form to hide a log entry.',
+	'abusefilter-log-hide-id' => 'Field label in form to hide a log entry.',
+	'abusefilter-log-hide-hidden' => 'Checkbox label in form to hide a log entry.',
+	'abusefilter-log-hide-reason' => 'Field label for reason for hiding a log entry.
+{{Identical|Reason}}',
+	'abusefilter-log-hide-forbidden' => 'Message shown instead of a "hide log entry" form when not having the correct user rights.',
+	'abusefilter-logentry-suppress' => 'Log entry when hiding an abuse filter log entry. Parameters:
+* $1 is a link to the log ID with the log ID as description.',
+	'abusefilter-logentry-unsuppress' => 'Log entry when unhiding an abuse filter log entry. Parameters:
+* $1 is a link to the log ID with the log ID as description.',
 	'abusefilter-log-noactions' => '{{Identical|None}}',
 	'abusefilter-log-hide-reason' => '{{Identical|Reason}}',
 	'abusefilter-management' => 'Title of [[Special:AbuseFilter]]',
