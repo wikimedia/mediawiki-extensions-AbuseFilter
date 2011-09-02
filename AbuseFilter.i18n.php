@@ -784,6 +784,7 @@ $messages['af'] = array(
 	'abusefilter-log-hidden' => '(inskrywing versteek)',
 	'abusefilter-log-hide' => 'versteek of wys',
 	'abusefilter-log-hide-legend' => 'Versteek logboekinskrywing',
+	'abusefilter-log-hide-id' => 'Logboek inskrywing-ID:',
 	'abusefilter-log-hide-reason' => 'Rede:',
 	'abusefilter-logentry-suppress' => 'het [[$1]] versteek',
 	'abusefilter-logentry-unsuppress' => 'het [[$1]] sigbaar gemaak',
@@ -809,7 +810,6 @@ $messages['af'] = array(
 	'abusefilter-list-options' => 'Opsies',
 	'abusefilter-list-options-deleted' => 'Geskrapte filters:',
 	'abusefilter-list-options-submit' => 'Opdateer',
-	'abusefilter-tools-subtitle' => 'Gereedskap',
 	'abusefilter-tools-submitexpr' => 'Evalueer',
 	'abusefilter-tools-reautoconfirm-user' => 'Gebruiker:',
 	'abusefilter-edit-status-label' => 'Statistieke:',
@@ -867,6 +867,7 @@ $messages['af'] = array(
 	'abusefilter-edit-builder-misc-like' => 'Voldoen aan patroon (like)',
 	'abusefilter-edit-builder-misc-rlike' => 'Voldoen aan regulêre uitdrukking (rlike)',
 	'abusefilter-edit-builder-misc-irlike' => 'Voldoen aan regulêre uitdrukking, nie gevoelig vir hoofletters nie (irlike)',
+	'abusefilter-edit-builder-misc-contains' => 'Die linker string bevat die regter string (contains)',
 	'abusefilter-edit-builder-misc-stringlit' => 'Letterlike teks ("")',
 	'abusefilter-edit-builder-misc-tern' => 'Drieledige operator (X ? Y : Z)',
 	'abusefilter-edit-builder-misc-cond' => 'Kondisie (as X dan Y anders Z)',
@@ -883,6 +884,8 @@ $messages['af'] = array(
 	'abusefilter-edit-builder-group-vars' => 'Veranderlikes',
 	'abusefilter-edit-builder-vars-accountname' => 'Gebruikersnaam (on account creation)',
 	'abusefilter-edit-builder-vars-action' => 'Handeling',
+	'abusefilter-edit-builder-vars-addedlines' => 'Lyne bygevoeg in wysiging',
+	'abusefilter-edit-builder-vars-delta' => 'Verandering van grootte in wysig',
 	'abusefilter-edit-builder-vars-newsize' => 'Nuwe bladsy grootte',
 	'abusefilter-edit-builder-vars-oldsize' => 'Ou bladsy grootte',
 	'abusefilter-edit-builder-vars-summary' => 'Wysig opsomming/rede',
@@ -17545,6 +17548,16 @@ Li edizion miga construtivi i sarà revertid à bott, e grand o repetud edizion 
 	'abusefilter-diff-pattern' => 'Cundizión di filter',
 );
 
+/** Lingala (Lingála)
+ * @author Eruedin
+ */
+$messages['ln'] = array(
+	'abusefilter-log-search-user' => 'Mosáleli:',
+	'abusefilter-log-search-submit' => 'Boluki',
+	'abusefilter-log-noactions' => 'ntingá',
+	'abusefilter-log-hide-reason' => 'Ntína:',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
  * @author Homo
@@ -25469,6 +25482,7 @@ $messages['ru'] = array(
 );
 
 /** Rusyn (Русиньскый)
+ * @author Dim Grits
  * @author Gazeb
  */
 $messages['rue'] = array(
@@ -25594,7 +25608,6 @@ $messages['rue'] = array(
 	'abusefilter-list-options-disabled' => 'Выпнуты філтры:',
 	'abusefilter-list-options-hidedisabled' => 'Сховати выпнуты філтры',
 	'abusefilter-list-options-submit' => 'Обновити',
-	'abusefilter-tools-subtitle' => 'Інштрументы',
 	'abusefilter-tools-text' => 'Ту суть уведены дакотры інштрументы, котры ся можуть придати про прираву і штелёваня філтрів знеужываня.',
 	'abusefilter-tools-expr' => 'Тестованя выразів',
 	'abusefilter-tools-submitexpr' => 'Опробовати',
@@ -25862,6 +25875,7 @@ $messages['rue'] = array(
 	'abusefilter-log-header' => 'Тот лоґ обсягує перегляд змін філтрів.
 Детайлы найдете у [[Special:AbuseFilter/history|списки послїднїх змін філтрів]].',
 	'abusefilter-log-entry-modify' => 'змінив $1 ($2)',
+	'abusefilter-log-noresults' => 'Жадны ресултаты',
 	'abusefilter-diff-title' => 'Різниця міджі верзіями',
 	'abusefilter-diff-item' => 'Елемент',
 	'abusefilter-diff-version' => 'Верзія од $1, $2',
