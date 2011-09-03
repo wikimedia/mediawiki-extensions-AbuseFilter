@@ -507,12 +507,12 @@ $messages['qqq'] = array(
 * * $1 is a filter description.',
 	'abusefilter-degrouped' => 'Message given to user because of a triggered filter. Parameters:
 * * $1 is a filter description.',
-	'abusefilter-degroupreason' => 'Reason of removal of the user from all privileged groups performed by Abuse filter.',
 	'abusefilter-autopromote-blocked' => 'Message given to user because of a triggered filter. Parameters:
 * $1 is a filter description.',
 	'abusefilter-blocker' => 'Username of reserved user for abuse filter actions.',
 	'abusefilter-blockreason' => 'Message given to user because of a triggered filter. Parameters:
 * $1 is a filter description.',
+	'abusefilter-degroupreason' => 'Reason of removal of the user from all privileged groups performed by Abuse filter.',
 	'abusefilter-accountreserved' => 'Message given when trying to register a reserved account name for AbuseFilter actions.',
 	'right-abusefilter-modify' => '{{doc-right|abusefilter-modify}}',
 	'right-abusefilter-view' => '{{doc-right|abusefilter-view}}',
@@ -576,7 +576,7 @@ $messages['qqq'] = array(
 	'abusefilter-log-details-vars' => 'Caption on a detail view of [[Special:AbuseLog]]',
 	'abusefilter-log-details-private' => 'Header for private log details.',
 	'abusefilter-log-details-ip' => 'Row label in private log details.',
-	'abusefilter-log-noactions' => 'Possible action taken when a filter matches.',
+	'abusefilter-log-noactions' => '{{Identical|None}}',
 	'abusefilter-log-details-diff' => 'Header for differences between two edits in log details.',
 	'abusefilter-log-linkoncontribs' => 'Link text added on [[Special:Contributions]] and other relevant special pages.',
 	'abusefilter-log-linkoncontribs-text' => 'Title for link added on [[Special:Contributions]] and other relevant special pages.',
@@ -586,15 +586,12 @@ $messages['qqq'] = array(
 	'abusefilter-log-hide-legend' => 'Legend for form to hide a log entry.',
 	'abusefilter-log-hide-id' => 'Field label in form to hide a log entry.',
 	'abusefilter-log-hide-hidden' => 'Checkbox label in form to hide a log entry.',
-	'abusefilter-log-hide-reason' => 'Field label for reason for hiding a log entry.
-{{Identical|Reason}}',
+	'abusefilter-log-hide-reason' => '{{Identical|Reason}}',
 	'abusefilter-log-hide-forbidden' => 'Message shown instead of a "hide log entry" form when not having the correct user rights.',
 	'abusefilter-logentry-suppress' => 'Log entry when hiding an abuse filter log entry. Parameters:
 * $1 is a link to the log ID with the log ID as description.',
 	'abusefilter-logentry-unsuppress' => 'Log entry when unhiding an abuse filter log entry. Parameters:
 * $1 is a link to the log ID with the log ID as description.',
-	'abusefilter-log-noactions' => '{{Identical|None}}',
-	'abusefilter-log-hide-reason' => '{{Identical|Reason}}',
 	'abusefilter-management' => 'Title of [[Special:AbuseFilter]]',
 	'abusefilter-list-id' => '{{Identical|Filter ID}}',
 	'abusefilter-list-status' => '{{Identical|Status}}',
@@ -609,7 +606,6 @@ $messages['qqq'] = array(
 	'abusefilter-deleted' => '{{Identical|Deleted}}',
 	'abusefilter-new' => '',
 	'abusefilter-list-options-submit' => '{{Identical|Update}}',
-	'abusefilter-tools-subtitle' => '{{Identical|Tools}}',
 	'abusefilter-tools-reautoconfirm-user' => '{{Identical|User}}',
 	'abusefilter-reautoconfirm-none' => '{{gender}}
 * $1 is the target user name',
@@ -752,6 +748,14 @@ $messages['rtm'] = array(
  */
 $messages['niu'] = array(
 	'abusefilter-log-search-submit' => 'Kumi',
+);
+
+/** Moroccan Spoken Arabic (Maġribi)
+ * @author زكريا
+ */
+$messages['ary'] = array(
+	'abusefilter-log-search-submit' => 'bheṫ',
+	'abusefilter-log-hide' => 'ĥbbi wlla byyen',
 );
 
 /** Afrikaans (Afrikaans)
@@ -2692,6 +2696,7 @@ $messages['be'] = array(
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
+ * @author Renessaince
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
@@ -2813,7 +2818,6 @@ $messages['be-tarask'] = array(
 	'abusefilter-list-options-disabled' => 'Выключаныя фільтры:',
 	'abusefilter-list-options-hidedisabled' => 'Схаваць выключаныя фільтры',
 	'abusefilter-list-options-submit' => 'Абнавіць',
-	'abusefilter-tools-subtitle' => 'Інструмэнты',
 	'abusefilter-tools-text' => 'Тут знаходзяцца інструмэнты, якія могуць быць карыснымі ў фармуляваньні і праверцы фільтраў злоўжываньняў.',
 	'abusefilter-tools-expr' => 'Праверка выразаў',
 	'abusefilter-tools-submitexpr' => 'Паспрабаваць',
@@ -2856,7 +2860,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-edit-action-blockautopromote' => 'Зьняць з удзельніка статус аўтаматычнага пацьверджаньня',
 	'abusefilter-edit-action-degroup' => 'Выдаліць удзельніка з усіх прывілеяваных групаў',
 	'abusefilter-edit-action-block' => 'Заблякаваць удзельніка і/ці ІР-адрас',
-	'abusefilter-edit-action-throttle' => 'Выконваць дзеяньні толькі калі ўдзельнік перайшоў дапушчальны ўзровень',
+	'abusefilter-edit-action-throttle' => 'Выконваць дзеяньні, толькі калі ўдзельнік перайшоў дапушчальны ўзровень',
 	'abusefilter-edit-action-rangeblock' => 'Заблякаваць дыяпазон /16 IP-адрасоў, зь якога працуе ўдзельнік.',
 	'abusefilter-edit-action-tag' => 'Пазначыць рэдагаваньне для далейшай праверкі.',
 	'abusefilter-edit-throttle-count' => 'Колькасьць дазволеных дзеяньняў:',
@@ -3040,7 +3044,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-revert-preview-intro' => 'Ніжэй знаходзяцца дзеяньні, выкананыя фільтрам злоўжываньняў, якія будуць адкачаныя.
 Калі ласка, праверце іх уважліва і націсьніце «пацьвердзіць», каб пацьвердзіць Вашае дзеяньне.',
 	'abusefilter-revert-confirm' => 'Пацьвердзіць',
-	'abusefilter-revert-success' => 'Вы адкацілі ўсе дзеяньні выкананыя фільтрам злоўжываньняў [[Special:AbuseFilter/$1|filter $1]].',
+	'abusefilter-revert-success' => 'Вы адкацілі ўсе дзеяньні, выкананыя фільтрам злоўжываньняў [[Special:AbuseFilter/$1|filter $1]].',
 	'abusefilter-revert-reason' => 'Аўтаматычны адкат усіх дзеяньняў, выкананых фільтрам злоўжываньняў $1.
 Пададзеная прычына: $2',
 	'abusefilter-revert-reasonfield' => 'Прычына адкату:',
@@ -3250,7 +3254,7 @@ $messages['bg'] = array(
 	'abusefilter-edit-hitcount' => 'Съвпадения на филтъра:',
 	'abusefilter-edit-consequences' => 'Действия след съвпадение',
 	'abusefilter-edit-action-warn' => 'Извършване на тези действия след предупреждение на потребителя',
-	'abusefilter-edit-action-disallow' => 'Не позволявай на потребителя да извърши въпросното действие',
+	'abusefilter-edit-action-disallow' => 'Ограничаване на потребителя да извърши въпросното действие',
 	'abusefilter-edit-action-flag' => 'Отбелязване на редакцията в дневника на злоупотребите',
 	'abusefilter-edit-action-blockautopromote' => 'Отнемане на привилегията „Автоматично одобрен потребител“ (autoconfirmed)',
 	'abusefilter-edit-action-degroup' => 'Изключване на потребителя от всички привилегировани групи',
@@ -3310,6 +3314,7 @@ $messages['bg'] = array(
 	'abusefilter-edit-builder-misc-in' => 'Съдържа се в низа (in)',
 	'abusefilter-edit-builder-misc-like' => 'Съвпада с шаблон (like)',
 	'abusefilter-edit-builder-misc-rlike' => 'Съвпада с регулярен израз (rlike)',
+	'abusefilter-edit-builder-misc-irlike' => 'Съответства на регулярния израз, без значение от малки и главни букви (irlike)',
 	'abusefilter-edit-builder-misc-contains' => 'Левият низ съдържа десния низ (contains)',
 	'abusefilter-edit-builder-misc-stringlit' => 'Низов литерал ("")',
 	'abusefilter-edit-builder-misc-tern' => 'Третичен оператор (X ? Y : Z)',
@@ -5386,6 +5391,7 @@ $messages['cy'] = array(
  * @author Aputtu
  * @author Froztbyte
  * @author Lhademmor
+ * @author Peter Alberti
  * @author Sarrus
  */
 $messages['da'] = array(
@@ -5506,7 +5512,6 @@ Regelbeskrivelse: $1',
 	'abusefilter-list-options-disabled' => 'Deaktiverede filtre:',
 	'abusefilter-list-options-hidedisabled' => 'Skjul deaktiverede filtre',
 	'abusefilter-list-options-submit' => 'Opdater',
-	'abusefilter-tools-subtitle' => 'Værktøjer',
 	'abusefilter-tools-text' => 'Her er nogle værktøjer som kan være nyttige til at formulere og fejlsøge misbrugsfiltre.',
 	'abusefilter-tools-expr' => 'Udtrykstester',
 	'abusefilter-tools-submitexpr' => 'Evaluer',
@@ -5575,6 +5580,7 @@ Regelbeskrivelse: $1',
 	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Multiplikation (*)',
 	'abusefilter-edit-builder-op-arithmetic-divide' => 'Division (/)',
 	'abusefilter-edit-builder-op-arithmetic-modulo' => 'Rest/modulo (%)',
+	'abusefilter-edit-builder-op-arithmetic-pow' => 'Potens (**)',
 	'abusefilter-edit-builder-group-op-comparison' => 'Sammenligningsoperatører',
 	'abusefilter-edit-builder-op-comparison-equal' => 'Lig med (==)',
 	'abusefilter-edit-builder-op-comparison-notequal' => 'Ikke lig med (!=)',
@@ -7211,7 +7217,6 @@ $messages['el'] = array(
 	'abusefilter-list-options-disabled' => 'Απενεργοποιημένα φίλτρα:',
 	'abusefilter-list-options-hidedisabled' => 'Απόκρυψη απενεργοποιημένων φίλτρων',
 	'abusefilter-list-options-submit' => 'Ενημέρωση',
-	'abusefilter-tools-subtitle' => 'Εργαλεία',
 	'abusefilter-tools-text' => 'Εδώ βρίσκονται κάποια εργαλεία τα οποία ενδέχεται να είναι χρἠσιμα στην διατύπωση και την εκσφαλμἀτωση φίλτρων καταχρἠσεων.',
 	'abusefilter-tools-expr' => 'Ελεγκτής εκφράσεων',
 	'abusefilter-tools-submitexpr' => 'Εκτίμηση',
@@ -7315,6 +7320,7 @@ $messages['el'] = array(
 	'abusefilter-edit-builder-misc-in' => 'περιλαμβανόμενο στον ορμαθό (in)',
 	'abusefilter-edit-builder-misc-like' => 'Αντιστοιχεί στο μοτίβο (like)',
 	'abusefilter-edit-builder-misc-rlike' => 'Αντιστοιχεί στην τακτική έκφραση (rlike)',
+	'abusefilter-edit-builder-misc-irlike' => 'Ταιριαστό regex, μη ευαίσθητη περίπτωση (irlike)',
 	'abusefilter-edit-builder-misc-contains' => 'Ο αριστερός ορμαθός περιέχει τον δεξιό ορμαθό (contains)',
 	'abusefilter-edit-builder-misc-stringlit' => 'Ορμαθός γραμμάτων ("")',
 	'abusefilter-edit-builder-misc-tern' => 'Τριαδικός τελεστής (X ? Y : Z)',
@@ -23822,6 +23828,7 @@ Copie da caixa de texto que aparece, coloque nesta caixa de texto e depois cliqu
  * @author Helder.wiki
  * @author Heldergeovane
  * @author Luckas Blade
+ * @author MetalBrasil
  */
 $messages['pt-br'] = array(
 	'abusefilter-desc' => 'Aplica heurísticas automáticas às edições.',
@@ -23948,7 +23955,6 @@ entradas do registro de abusos.',
 	'abusefilter-list-options-disabled' => 'Filtros desativados:',
 	'abusefilter-list-options-hidedisabled' => 'Esconder filtros desativados',
 	'abusefilter-list-options-submit' => 'Atualizar',
-	'abusefilter-tools-subtitle' => 'Ferramentas',
 	'abusefilter-tools-text' => 'Aqui estão algumas ferramentas que poderão ser úteis na formulação e depuração dos filtros de abuso.',
 	'abusefilter-tools-expr' => 'Testador de expressões',
 	'abusefilter-tools-submitexpr' => 'Calcular',
@@ -24221,6 +24227,7 @@ Para ver uma explicação completa clique o botão "Verificar sintaxe".',
 	'abusefilter-log-header' => 'Este registro mostra um resumo das alterações efetuadas aos filtros.
 Para detalhes completos, ver [[Special:AbuseFilter/history|a lista]] de alterações recentes a filtros.',
 	'abusefilter-log-entry-modify' => 'modificou $1 ($2)',
+	'abusefilter-log-noresults' => 'Nenhum resultado.',
 	'abusefilter-diff-title' => 'Diferenças entre versões',
 	'abusefilter-diff-item' => 'Entrada',
 	'abusefilter-diff-version' => 'Versão de $1 por $2',
