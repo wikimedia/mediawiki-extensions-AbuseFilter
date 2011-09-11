@@ -27058,7 +27058,6 @@ Popis filtra: $7 ($8)',
 	'abusefilter-list-options-disabled' => 'Vypnuté filtre:',
 	'abusefilter-list-options-hidedisabled' => 'Skryť vypnuté filtre',
 	'abusefilter-list-options-submit' => 'Aktualizovať',
-	'abusefilter-tools-subtitle' => 'Nástroje',
 	'abusefilter-tools-text' => 'Tu sa nachádzajú niektoré nástroje, ktoré možno využiť pri tvorbe a ladení filtrov zneužitia.',
 	'abusefilter-tools-expr' => 'Tester výrazov',
 	'abusefilter-tools-submitexpr' => 'Vyhodnotiť',
@@ -27324,6 +27323,7 @@ Kompletné vysvetlenie dostanete po kliknutí na tlačidlo „Skontrolovať synt
 	'abusefilter-log-header' => 'Tento záznam zobrazuje súhrn zmien filtrov.
 Podrobnosti nájdete v [[Special:AbuseFilter/history|zozname]] posledných zmien filtrov.',
 	'abusefilter-log-entry-modify' => 'zmenil $1 ($2)',
+	'abusefilter-log-noresults' => 'Žiadne výsledky',
 	'abusefilter-diff-title' => 'Rozdiely medzi verziami',
 	'abusefilter-diff-item' => 'Položka',
 	'abusefilter-diff-version' => 'Verzia od $1, $2',
@@ -31356,7 +31356,7 @@ $messages['tt-cyrl'] = array(
 	'abusefilter-status-global' => 'Глобаль',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Sahran
  */
 $messages['ug-arab'] = array(
