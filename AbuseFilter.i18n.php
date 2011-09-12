@@ -22769,6 +22769,7 @@ Copiatz l'airal de tèxte que s’aficha e empegatz-lo dins aqueste airal de tè
 );
 
 /** Oriya (ଓଡ଼ିଆ)
+ * @author Ansumang
  * @author Jose77
  * @author Odisha1
  * @author Psubhashish
@@ -22826,11 +22827,26 @@ $messages['or'] = array(
 	'abusefilter-reautoconfirm-notallowed' => 'ଆପଣଙ୍କୁ ଆପେ ଆପେ ଥୟ କରିବା ସ୍ଥିତିକୁ ଆଉଥରେ ଫେରାଇବାକୁ ଅନୁମତି ମିଳିନାହିଁ ।',
 	'abusefilter-edit-status-label' => 'ପରିସଂଖ୍ୟାନ:',
 	'abusefilter-edit-flags' => 'ବିଶେଷ ସୂଚକ:',
+	'abusefilter-edit-warn-other' => 'ଅଲଗା ସନ୍ଦେଶ',
 	'abusefilter-edit-warn-actions' => 'କାମସବୁ:',
 	'abusefilter-edit-history' => 'ଇତିହାସ:',
 	'abusefilter-edit-tools' => 'ଉପକରଣ:',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'ମିଶାଣ (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'ଫେଡାଣ (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'ଗୁଣନ (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'ହରଣ (/)',
+	'abusefilter-edit-builder-op-bool-and' => 'ଏବଂ (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'ବା (|)',
 	'abusefilter-edit-builder-group-funcs' => 'କାର୍ଯ୍ୟ',
 	'abusefilter-edit-builder-vars-action' => 'କାମ',
+	'abusefilter-edit-builder-vars-newsize' => 'ନୂଆ ପୃଷ୍ଠା ଆକାର',
+	'abusefilter-edit-builder-vars-oldsize' => 'ପୁରୁଣା ପୃଷ୍ଠା ଆକାର',
+	'abusefilter-edit-builder-vars-summary' => 'ବଦଳ ସାରାଂଶ/କାରଣ',
+	'abusefilter-edit-builder-vars-article-id' => 'ପୃଷ୍ଠା ଆଇଡ଼ି',
+	'abusefilter-edit-builder-vars-article-prefixedtext' => 'ପୁରା ପୃଷ୍ଠା ନାମ',
+	'abusefilter-edit-builder-vars-user-editcount' => 'ବ୍ୟବହାରକାରୀଙ୍କ ସମ୍ପାଦନା ସଂଖ୍ୟା',
+	'abusefilter-edit-builder-vars-user-age' => 'ବ୍ୟବହାରକାରୀଙ୍କ ଖାତାର ବୟସ',
+	'abusefilter-edit-builder-vars-user-name' => 'ବ୍ୟବହାରକାରୀଙ୍କ ଖାତାର ନାମ',
 	'abusefilter-history-enabled' => 'ସାମର୍ଥିକରଣ',
 	'abusefilter-history-user' => 'ବ୍ୟବାହାରକାରୀ',
 	'abusefilter-history-flags' => 'ବିଶେଷ ସୂଚକ',
@@ -22839,14 +22855,21 @@ $messages['or'] = array(
 	'abusefilter-history-filterid' => 'ଛାଣିବା',
 	'abusefilter-history-select-user' => 'ବ୍ୟବାହାରକାରୀ:',
 	'abusefilter-history-diff' => 'ବଦଳାସବୁ',
+	'abusefilter-action-tag' => 'ଟାଗ',
+	'abusefilter-action-warn' => 'ଚେତାବନୀ',
 	'abusefilter-action-block' => 'ଖଣ୍ଡ',
+	'abusefilter-action-degroup' => 'ଗୋଠରୁ କାଢିଦେବେ',
+	'abusefilter-action-disallow' => 'ଅସ୍ଵୀକାର',
 	'abusefilter-revert-filter' => 'ଛଣା:',
 	'abusefilter-revert-confirm' => 'ଥୟ କରିବେ',
+	'abusefilter-revert-reasonfield' => 'ପଛକୁ ଫେରିବାର କାରଣ:',
 	'abusefilter-test-submit' => 'ପରଖ',
 	'abusefilter-test-load' => 'ଖୋଲିବେ',
+	'abusefilter-examine-legend' => 'ବଦଳଗୁଡିକୁ ବାଛନ୍ତୁ',
 	'abusefilter-examine-user' => 'ବ୍ୟବାହାରକାରୀ:',
 	'abusefilter-examine-submit' => 'ଖୋଜିବା',
 	'abusefilter-topnav-home' => 'ମୂଳ ଜାଗା',
+	'abusefilter-log-noresults' => 'ପରିଣାମହୀନ',
 	'abusefilter-diff-item' => 'ବସ୍ତୁ',
 );
 
