@@ -28,8 +28,8 @@ $specialPageAliases['arz'] = array(
 
 /** Bulgarian (Български) */
 $specialPageAliases['bg'] = array(
-	'AbuseLog' => array( 'Дневник на филтъра' ),
-	'AbuseFilter' => array( 'Филтър срещу злоупотреби' ),
+	'AbuseLog' => array( 'Дневник_на_филтъра' ),
+	'AbuseFilter' => array( 'Филтър_срещу_злоупотреби' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -70,8 +70,8 @@ $specialPageAliases['eo'] = array(
 
 /** Estonian (Eesti) */
 $specialPageAliases['et'] = array(
-	'AbuseLog' => array( 'Väärtarvituse_logi' ),
-	'AbuseFilter' => array( 'Väärtarvituse_filter' ),
+	'AbuseLog' => array( 'Väärtarvituslogi' ),
+	'AbuseFilter' => array( 'Väärtarvitusfilter' ),
 );
 
 /** Persian (فارسی) */
@@ -200,6 +200,12 @@ $specialPageAliases['lt'] = array(
 	'AbuseFilter' => array( 'Piktnaudžiavimų_filtras' ),
 );
 
+/** Malagasy (Malagasy) */
+$specialPageAliases['mg'] = array(
+	'AbuseLog' => array( 'Tati-panararaotana' ),
+	'AbuseFilter' => array( 'Fanakanam-panararaotana' ),
+);
+
 /** Macedonian (Македонски) */
 $specialPageAliases['mk'] = array(
 	'AbuseLog' => array( 'ДневникНаЗлоупотреба' ),
@@ -284,7 +290,7 @@ $specialPageAliases['sa'] = array(
 	'AbuseFilter' => array( 'दुरुपयोगशोधबन्धन' ),
 );
 
-/** Serbo-Croatian (Srpskohrvatski / Српскохрватски) */
+/** Serbo-Croatian (Srpskohrvatski) */
 $specialPageAliases['sh'] = array(
 	'AbuseLog' => array( 'Evidencija_zloupotreba' ),
 	'AbuseFilter' => array( 'Filter_zloupotreba' ),
@@ -332,10 +338,16 @@ $specialPageAliases['vi'] = array(
 	'AbuseFilter' => array( 'Bộ_lọc_sai_phạm' ),
 );
 
+/** Cantonese (粵語) */
+$specialPageAliases['yue'] = array(
+	'AbuseLog' => array( '濫用日誌' ),
+	'AbuseFilter' => array( '濫用過濾器' ),
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
-	'AbuseLog' => array( '过滤日志' ),
-	'AbuseFilter' => array( '防滥用过滤器' ),
+	'AbuseLog' => array( '滥用日志', '过滤日志' ),
+	'AbuseFilter' => array( '防滥用过滤器', '滥用过滤器' ),
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */
