@@ -33103,7 +33103,10 @@ $messages['yi'] = array(
 	'abusefilter-action-tag' => 'טאַג',
 	'abusefilter-action-warn' => 'וואָרענען',
 	'abusefilter-action-block' => 'פאַרשפּאַרן',
-	'abusefilter-action-degroup' => 'אַ וועקנעמען פון גרופּעס',
+	'abusefilter-action-degroup' => 'אַוועקנעמען פון גרופּעס',
+	'abusefilter-revert-title' => 'צוריקשטעלן אלע ענדערונגען פֿון פֿילטער $1',
+	'abusefilter-revert-preview-item' => '$1: $2 האט אדורכגעפירט $3 אויף $4.
+אקציעס צו ווערן צוריקגעשטעלט: $5 ($6)',
 	'abusefilter-revert-periodstart' => 'תקופה אָנהייב:',
 	'abusefilter-revert-periodend' => 'תקופה סוף',
 	'abusefilter-revert-confirm' => 'באַשטעטיקן',
@@ -33113,7 +33116,12 @@ $messages['yi'] = array(
 	'abusefilter-examine-title' => 'בלאַטנאָמען:',
 	'abusefilter-examine-submit' => 'זוכן',
 	'abusefilter-topnav-home' => 'היימבלאַט',
+	'abusefilter-log-noresults' => 'קיין רעזולטאטן',
+	'abusefilter-diff-title' => 'אונטערשייד צווישן ווערסיעס',
 	'abusefilter-diff-item' => 'איינהייט',
+	'abusefilter-diff-version' => 'ווערסיע פון $1 דורך $2',
+	'abusefilter-diff-info' => 'גרונטלעכע אינפֿארמאַציע',
+	'abusefilter-diff-pattern' => 'פילטער תנאָים',
 	'abusefilter-import-submit' => 'אימפארטירן דאַטן',
 );
 
