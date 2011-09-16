@@ -2008,6 +2008,18 @@ $messages['as'] = array(
  * @author Xuacu
  */
 $messages['ast'] = array(
+	'abusefilter-desc' => 'Aplica heurística automática a les ediciones.',
+	'abusefilter' => "Configuración de la peñera d'abusos",
+	'abuselog' => "Rexistru d'abusos",
+	'abusefilter-intro' => "Bienveníu a la interfaz d'alministración de la peñera d'abusos.
+La peñera d'abusos ye un mecanismu de software automatizáu p'aplicar heurística automática a toles aiciones.
+Esta interfaz amuesa la llista de les peñeres definíes, y permite camudales.",
+	'abusefilter-mustbeeditor' => "Por razones de seguridá, solamente los usuarios con permisu pa camudar les peñeres d'abusu pueden usar esta interfaz.",
+	'abusefilter-warning' => "'''Avisu''': Esta aición s'identificó automáticamente como perxudicial.
+Les ediciones non constructives se revertirán dafechu,
+y la repetición d'ediciones non constructives tendrá como resultáu el bloquéu de la to cuenta o direición IP.
+Si crees qu'esta edición ye constructiva, puedes calcar de nuevo nel botón Unviar pa confirmalo.
+La descripción curtia de la regla d'abusu que s'activó cola to aición ye: $1",
 	'abusefilter-log-search-user' => 'Usuariu:',
 	'abusefilter-log-search-title' => 'Títulu:',
 	'abusefilter-log-show-deleted' => 'Amosar entraes anubríes',
@@ -5001,6 +5013,8 @@ $messages['ckb'] = array(
 /** Corsican (Corsu) */
 $messages['co'] = array(
 	'abusefilter-log-search-user' => 'Utilizatore:',
+	'abusefilter-list-edit' => 'Mudificà',
+	'abusefilter-edit-history' => 'Cronolugia:',
 	'abusefilter-history-user' => 'Utilizatore',
 );
 
@@ -10789,9 +10803,9 @@ entradas do rexistro de abusos.',
 	'abusefilter-list-lastmodified' => 'Última modificación',
 	'abusefilter-hidden' => 'Privado',
 	'abusefilter-unhidden' => 'Público',
-	'abusefilter-enabled' => 'Permitido',
+	'abusefilter-enabled' => 'Activado',
 	'abusefilter-deleted' => 'Borrado',
-	'abusefilter-disabled' => 'Non permitido',
+	'abusefilter-disabled' => 'Desactivado',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|visita|visitas}}',
 	'abusefilter-new' => 'Crear un novo filtro',
 	'abusefilter-links' => 'Ligazóns de utilidade:',
@@ -10808,7 +10822,6 @@ entradas do rexistro de abusos.',
 	'abusefilter-list-options-disabled' => 'Filtros deshabilitados:',
 	'abusefilter-list-options-hidedisabled' => 'Agochar os filtros deshabilitados',
 	'abusefilter-list-options-submit' => 'Actualizar',
-	'abusefilter-tools-subtitle' => 'Ferramentas',
 	'abusefilter-tools-text' => 'Aquí hai algunhas ferramentas que poden ser de utilidade na formulación e depuración dos filtros de abuso.',
 	'abusefilter-tools-expr' => 'Verificador de expresións',
 	'abusefilter-tools-submitexpr' => 'Avaliar',
@@ -10979,7 +10992,7 @@ As etiquetas deberían ser curtas e non conter caracteres especiais.',
 	'abusefilter-history' => 'Historial de cambios do filtro de abusos #$1',
 	'abusefilter-history-foruser' => 'Cambios feitos por $1',
 	'abusefilter-history-hidden' => 'agochado',
-	'abusefilter-history-enabled' => 'permitido',
+	'abusefilter-history-enabled' => 'Activado',
 	'abusefilter-history-global' => 'Global',
 	'abusefilter-history-timestamp' => 'Hora',
 	'abusefilter-history-user' => 'Usuario',
@@ -14235,6 +14248,11 @@ $messages['ig'] = array(
 	'abusefilter-diff-item' => 'Ihnye',
 );
 
+/** Eastern Canadian (Latin script) (inuktitut) */
+$messages['ike-latn'] = array(
+	'abusefilter-list-edit' => 'Suqusiqpaa',
+);
+
 /** Ingush (ГІалгІай Ğalğaj)
  * @author Amire80
  * @author Sapral Mikail
@@ -15891,7 +15909,6 @@ $messages['ko'] = array(
 	'abusefilter-list-options-disabled' => '비활성화된 필터:',
 	'abusefilter-list-options-hidedisabled' => '비활성화된 필터를 숨기기',
 	'abusefilter-list-options-submit' => '적용',
-	'abusefilter-tools-subtitle' => '도구',
 	'abusefilter-tools-text' => '부정 행위 방지 필터를 제작하고 디버그하는 데 유용한 도구입니다.',
 	'abusefilter-tools-expr' => '구문 검사기',
 	'abusefilter-tools-submitexpr' => '시험',
@@ -15908,7 +15925,7 @@ $messages['ko'] = array(
 당신이 수정한 내용을 저장하면 당신이 편집하고 있는 버전 이후의 모든 수정 사항을 덮어쓰게 됩니다.</strong> &bull;
 [[Special:AbuseFilter/history/$2|이 필터의 역사로 돌아가기]].',
 	'abusefilter-edit-status-label' => '통계:',
-	'abusefilter-edit-status' => '최근 $1개의 행위 중 $2건 ($3%) 이 이 필터와 일치하였습니다.
+	'abusefilter-edit-status' => '최근 $1개의 행위 중 $2건($3%)이 이 필터와 일치하였습니다.
 평균적으로 필터의 작동 시간은 $4밀리초이며, $5만큼의 부하가 걸리고 있습니다.',
 	'abusefilter-edit-throttled' => "'''경고''': 이 필터는 안전상의 이유로 자동적으로 비활성화되었습니다.
 필터 일치 비율이 $1%로 한계에 다다랐습니다.",
@@ -33038,6 +33055,7 @@ $messages['vo'] = array(
  * @author Lucyin
  */
 $messages['wa'] = array(
+	'abusefilter-log-hide-reason' => 'Råjhon:',
 	'abusefilter-deleted' => 'Disfacé',
 	'abusefilter-history-deleted' => 'Disfacé',
 );
