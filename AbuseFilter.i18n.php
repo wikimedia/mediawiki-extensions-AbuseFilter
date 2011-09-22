@@ -1999,9 +1999,12 @@ $messages['arz'] = array(
 
 /** Assamese (অসমীয়া)
  * @author Chaipau
+ * @author Psneog
  */
 $messages['as'] = array(
+	'abusefilter-log-search-user' => 'সভ্যৰ নাম:',
 	'abusefilter-log-search-submit' => 'সন্ধান',
+	'abusefilter-edit-builder-vars-user-name' => 'ব্যবহাৰকাৰীৰ নাম',
 );
 
 /** Asturian (Asturianu)
@@ -22871,7 +22874,7 @@ $messages['or'] = array(
 	'abusefilter-history-actions' => 'କାମ',
 	'abusefilter-history-filterid' => 'ଛାଣିବା',
 	'abusefilter-history-select-user' => 'ବ୍ୟବାହାରକାରୀ:',
-	'abusefilter-history-diff' => 'ବଦଳାସବୁ',
+	'abusefilter-history-diff' => 'ବଦଳସବୁ',
 	'abusefilter-action-tag' => 'ଟାଗ',
 	'abusefilter-action-warn' => 'ଚେତାବନୀ',
 	'abusefilter-action-block' => 'ଖଣ୍ଡ',
