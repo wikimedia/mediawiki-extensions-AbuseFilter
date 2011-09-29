@@ -33775,7 +33775,6 @@ $messages['zh-hans'] = array(
 	'abusefilter-list-options-disabled' => '已停用过滤器：',
 	'abusefilter-list-options-hidedisabled' => '隐藏已停用过滤器',
 	'abusefilter-list-options-submit' => '更新',
-	'abusefilter-tools-subtitle' => '工具',
 	'abusefilter-tools-text' => '这里提供了一些实用的制作和测试防滥用过滤器的工具。',
 	'abusefilter-tools-expr' => '表达式测试器',
 	'abusefilter-tools-submitexpr' => '评估',
@@ -33785,7 +33784,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-reautoconfirm-none' => '该用户的自动确认状态并没有被撤销过',
 	'abusefilter-reautoconfirm-notallowed' => '你不能恢复自动确认状态。',
 	'abusefilter-reautoconfirm-done' => '该账户的自动确认状态已恢复',
-	'abusefilter-status' => '在最后$1次编辑中，有$2（$3%）{{PLURAL:$2|次|次}}个编辑器达到了$4次触发的条件上限，有$5（$6%）{{PLURAL:$5|次|次}}编辑触发了已启用的过滤器之一。',
+	'abusefilter-status' => '在最后$1次操作中，有$2（$3%）{{PLURAL:$2|次|次}}操作达到了$4次的条件上限，有$5（$6%）{{PLURAL:$5|次|次}}编辑触发了已启用的过滤器之一。',
 	'abusefilter-edit-subtitle' => '编辑过滤器$1',
 	'abusefilter-edit-oldwarning' => '<strong>你正在编辑该过滤器的旧版本。统计中引用的是该过滤器的最新版本。如果你保存你的编辑，所编辑版本之后的所有更改均会被覆盖。</strong> &bull;
 [[Special:AbuseFilter/history/$2|返回该过滤器的历史记录]]。',
@@ -34184,7 +34183,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-reautoconfirm-none' => '該用戶之自動確認狀態並沒有被撤銷過。',
 	'abusefilter-reautoconfirm-notallowed' => '您未被允許回復自動確認資格。',
 	'abusefilter-reautoconfirm-done' => '該帳號的自動確認狀態已被回復',
-	'abusefilter-status' => '在最近$1操作中，有$2 （$3%）個防濫用過濾器到達其狀態限制 （$4），另外其中有$5 （$6%）次操作相配其中一個現有已被啟用過濾器。',
+	'abusefilter-status' => '在最近$1次操作中，有$2 （$3%）次操作達到條件限制 （$4），另外有$5 （$6%）次操作相配其中一個現有已被啟用過濾器。',
 	'abusefilter-edit-subtitle' => '正在編輯過濾器 $1',
 	'abusefilter-edit-oldwarning' => '<strong>警告：您正在編輯的是本過濾器的舊版本。
 統計資料欄所援引的是該過濾器最新的版本。
