@@ -15,7 +15,7 @@ new ( function( $, mw ) {
 		$( this ).injectSpinner( 'abusefilter-expr' );
 		$.getJSON(
 			mw.util.wikiScript( 'api' ), {
-				action: 'evalfilterexpression',
+				action: 'abusefilterevalexpression',
 				expression: expr,
 				format: 'json'
 			}, that.processExprResult
@@ -47,7 +47,7 @@ new ( function( $, mw ) {
 		$( this ).injectSpinner( 'abusefilter-reautoconfirm' );
 		$.post(
 			mw.util.wikiScript( 'api' ), {
-				action: 'unblockautopromote',
+				action: 'abusefilterunblockautopromote',
 				user: name,
 				token: mw.user.tokens.get( 'editToken' ),
 				format: 'json'

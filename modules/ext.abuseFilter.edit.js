@@ -40,7 +40,7 @@ new ( function( $, mw ) {
 		this.disabled = true;
 		$.getJSON(
 			mw.util.wikiScript( 'api' ), {
-				action: 'checkfiltersyntax',
+				action: 'abusefilterchecksyntax',
 				filter: filter,
 				format: 'json'
 			}, that.processSyntaxResult

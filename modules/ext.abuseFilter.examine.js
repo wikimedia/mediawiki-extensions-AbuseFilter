@@ -36,7 +36,7 @@ new ( function( $, mw ) {
 		// Large amount of data
 		$.post(
 			mw.util.wikiScript( 'api' ), $.extend( params, {
-				action: 'checkfiltermatch',
+				action: 'abusefiltercheckmatch',
 				filter: filter,
 				format: 'json'
 			} ), that.examinerTestProcess, 'json'

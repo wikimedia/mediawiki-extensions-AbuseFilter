@@ -1,6 +1,6 @@
 <?php
 
-class ApiCheckFilterMatch extends ApiBase {
+class ApiAbuseFilterCheckMatch extends ApiBase {
 	public function execute() {
 		global $wgUser;
 		$params = $this->extractRequestParams();

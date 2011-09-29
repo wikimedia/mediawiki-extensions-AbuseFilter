@@ -1,6 +1,6 @@
 <?php
 
-class ApiCheckFilterSyntax extends ApiBase {
+class ApiAbuseFilterCheckSyntax extends ApiBase {
 
 	public function execute() {
 		global $wgUser;

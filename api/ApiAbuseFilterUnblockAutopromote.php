@@ -1,6 +1,6 @@
 <?php
 
-class ApiUnblockAutopromote extends ApiBase {
+class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 	public function execute() {
 		global $wgUser;
 

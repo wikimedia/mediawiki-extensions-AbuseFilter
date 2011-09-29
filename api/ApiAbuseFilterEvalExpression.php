@@ -1,6 +1,6 @@
 <?php
 
-class ApiEvalFilterExpression extends ApiBase {
+class ApiAbuseFilterEvalExpression extends ApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 
