@@ -61,6 +61,13 @@ new ( function( $, mw ) {
 			.show()
 			.removeClass('mw-abusefilter-syntaxresult-ok mw-abusefilter-syntaxresult-error');
 
+		if ( data === undefined ) {
+			$el.text( mw.msg( 'unknown-error' ) )
+				.attr( 'class', 'mw-abusefilter-syntaxresult-error' )
+				.data( 'syntaxOk', false );
+			return;
+		}
+
 		if ( data.status == 'ok' ) {
 			// Successful
 			$el.text( mw.msg( 'abusefilter-edit-syntaxok' ) )
@@ -115,7 +122,9 @@ new ( function( $, mw ) {
 				abflimit: 1
 			}, function ( data ) {
 				$.removeSpinner( 'fetch-spinner' );
-				$filterBox.text( data.query.abusefilters[0].pattern );
+				if ( data.query.abusefilters[0] !== undefined ) {
+					$filterBox.text( data.query.abusefilters[0].pattern );
+				}
 			}
 		);
 	};
@@ -126,6 +135,7 @@ new ( function( $, mw ) {
 	 */
 	this.hideDeselectedActions = function() {
 		$( 'input.mw-abusefilter-action-checkbox' ).each( function() {
+			// mw-abusefilter-action-checkbox-{$action}
 			var action = this.id.substr( 31 );
 			var $params = $( '#mw-abusefilter-' + action + '-parameters' );
 
@@ -149,7 +159,7 @@ new ( function( $, mw ) {
 				title: 'MediaWiki:' + message,
 				action: 'render'
 			}, function( data ) {
-			$( '#mw-abusefilter-warn-preview' ).html( data )
+				$( '#mw-abusefilter-warn-preview' ).html( data )
 		} );
 	};
 

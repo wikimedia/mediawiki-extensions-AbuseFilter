@@ -12,7 +12,7 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 		$user = User::newFromName( $params['user'] );
 
 		if ( $user === false ) {
-			// Same as below
+			// Oh god this is so bad but this message uses GENDER
 			$msg = wfMsgExt( 'abusefilter-reautoconfirm-none', array( 'parsemag' ), $params['user'] );
 			$this->dieUsage( $msg, 'notsuspended' );
 		}
@@ -21,7 +21,7 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 		$key = AbuseFilter::autoPromoteBlockKey( $user );
 
 		if ( !$wgMemc->get( $key ) ) {
-			// Oh god this is so bad but this message uses GENDER
+			// Same as above :(
 			$msg = wfMsgExt( 'abusefilter-reautoconfirm-none', array( 'parsemag' ), $params['user'] );
 			$this->dieUsage( $msg, 'notsuspended' );
 		}

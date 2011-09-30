@@ -110,7 +110,8 @@ $wgResourceModules['ext.abuseFilter.edit'] = array(
 	'scripts' => 'ext.abuseFilter.edit.js',
 	'messages' => array(
 		'abusefilter-edit-syntaxok',
-		'abusefilter-edit-syntaxerr'
+		'abusefilter-edit-syntaxerr',
+		'unknown-error',
 	),
 	'dependencies' => array(
 		'jquery.textSelection',
