@@ -96,7 +96,9 @@ new ( function( $, mw ) {
 			return;
 		}
 
-		$filterBox.insertAtCaret( $filterBuilder.val() + " " );
+		$filterBox.textSelection(
+			'encapsulateSelection', { 'pre': $filterBuilder.val() + " " }
+		);
 		$filterBuilder.prop( 'selectedIndex', 0 );
 	};
 
@@ -171,40 +173,6 @@ new ( function( $, mw ) {
 
 		window.location = mw.config.get( 'wgScript' ) + '?title=MediaWiki:' +  mw.util.wikiUrlencode( message ) + '&action=edit';
 	};
-
-	// From http://stackoverflow.com/questions/946534/insert-text-into-textarea-with-jquery/2819568#2819568
-	$.fn.extend({
-		/**
-		 * Inserts a string in a textarea at the current caret position
-		 * 
-		 * @param {String} myValue String to insert
-		 * @returns {jQuery}
-		 */
-		insertAtCaret: function(myValue){
-			return this.each( function() {
-				if ( document.selection ) {
-					this.focus();
-					sel = document.selection.createRange();
-					sel.text = myValue;
-					this.focus();
-				} else if ( this.selectionStart || this.selectionStart == '0' ) {
-					var startPos = this.selectionStart;
-					var endPos = this.selectionEnd;
-					var scrollTop = this.scrollTop;
-					this.value = this.value.substring( 0, startPos )
-						+ myValue
-						+ this.value.substring( endPos, this.value.length );
-					this.focus();
-					this.selectionStart = startPos + myValue.length;
-					this.selectionEnd = startPos + myValue.length;
-					this.scrollTop = scrollTop;
-				} else {
-					this.value += myValue;
-					this.focus();
-				}
-			} );
-		}
-	});
 
 	/*
 	 * On ready initialization
