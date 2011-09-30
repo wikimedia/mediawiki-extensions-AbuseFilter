@@ -68,7 +68,7 @@ new ( function( $, mw ) {
 			}
 		} else {
 			var exClass;
-			if ( data.checkfiltermatch.result ) {
+			if ( data.abusefiltercheckmatch.result ) {
 				exClass = 'mw-abusefilter-examine-match';
 				msg = 'abusefilter-examine-match';
 			} else {

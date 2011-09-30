@@ -53,7 +53,7 @@ new ( function( $, mw ) {
 	 * @param {Object} data Data returned from the AJAX request
 	 */
 	this.processSyntaxResult = function( data ) {
-		data = data.checkfiltersyntax;
+		data = data.abusefilterchecksyntax;
 		$.removeSpinner( 'abusefilter-syntaxcheck' );
 		$( '#mw-abusefilter-syntaxcheck' ).removeAttr("disabled");
 

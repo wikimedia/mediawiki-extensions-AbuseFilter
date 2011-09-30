@@ -31,7 +31,7 @@ new ( function( $, mw ) {
 		$.removeSpinner( 'abusefilter-expr' );
 
 		$( '#mw-abusefilter-expr-result' )
-			.html( mw.html.escape( data.evalfilterexpression.result ) );
+			.html( mw.html.escape( data.abusefilterevalexpression.result ) );
 	};
 
 	/**
@@ -73,7 +73,7 @@ new ( function( $, mw ) {
 					break;
 			}
 		} else {
-			msg = mw.message( 'abusefilter-reautoconfirm-done', data.unblockautopromote.user ).toString();
+			msg = mw.message( 'abusefilter-reautoconfirm-done', data.abusefilterunblockautopromote.user ).toString();
 		}
 
 		mw.util.jsMessage( msg );
