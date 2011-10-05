@@ -216,12 +216,13 @@ class AFPData {
 			$pattern .= 'i';
 		}
 
+		$handler = new AFPRegexErrorHandler( $pattern, $pos );
 		try {
-			set_error_handler( array( 'AbuseFilterParser', 'regexErrorHandler' ) );
+			$handler->install();
 			$result = preg_match( $pattern, $str );
-			restore_error_handler();
+			$handler->restore();
 		} catch ( Exception $e ) {
-			restore_error_handler();
+			$handler->restore();
 			throw $e;
 		}
 		return new AFPData( self::DBool, (bool)$result );
@@ -391,6 +392,32 @@ class AFPUserVisibleException extends AFPException {
 		$this->mExceptionID = $exception_id;
 		$this->mPosition = $position;
 		$this->mParams = $params;
+	}
+}
+
+class AFPRegexErrorHandler {
+	function __construct( $regex, $pos ) {
+		$this->regex = $regex;
+		$this->pos = $pos;
+	}
+
+	function handleError( $errno, $errstr, $errfile, $errline, $context ) {
+		if ( error_reporting() == 0 ) {
+			return true;
+		}
+		throw new AFPUserVisibleException(
+			'regexfailure',
+			$this->pos,
+			array( $errstr, $this->regex )
+		);
+	}
+
+	function install() {
+		set_error_handler( array( $this, 'handleError' ) );
+	}
+
+	function restore() {
+		restore_error_handler();
 	}
 }
 
@@ -1477,12 +1504,13 @@ class AbuseFilterParser {
 
 			$matches = array();
 
+			$handler = new AFPRegexErrorHandler( $needle, $this->mCur->pos );
 			try {
-				set_error_handler( array( 'AbuseFilterParser', 'regexErrorHandler' ) );
+				$handler->install();
 				$count = preg_match_all( $needle, $haystack, $matches );
-				restore_error_handler();
+				$handler->restore();
 			} catch ( Exception $e ) {
-				restore_error_handler();
+				$handler->restore();
 				throw $e;
 			}
 		}
@@ -1765,17 +1793,6 @@ class AbuseFilterParser {
 		$val = $args[0];
 
 		return AFPData::castTypes( $val, AFPData::DBool );
-	}
-
-	public static function regexErrorHandler( $errno, $errstr, $errfile, $errline, $context ) {
-		if ( error_reporting() == 0 ) {
-			return true;
-		}
-		throw new AFPUserVisibleException(
-			'regexfailure',
-			$context['pos'],
-			array( $errstr, $context['regex'] )
-		);
 	}
 }
 
