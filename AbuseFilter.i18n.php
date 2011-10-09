@@ -28264,7 +28264,7 @@ $messages['sr-ec'] = array(
 Исказане статистике су за најновије издање.
 Ако сачувате, обрисаћете све измене настале од ревизије коју управо уређујете.</strong> &bull;
 [[Special:AbuseFilter/history/$2|Назад на историју овог филтера]].',
-	'abusefilter-edit-status-label' => 'Статистика:',
+	'abusefilter-edit-status-label' => 'Статистике:',
 	'abusefilter-edit-status' => 'Од {{PLURAL:$1|последње радње|последње $1 радње|последњих $1 радњи}}, овај филтер се поклопио $2 ($3%).
 У просеку, његово време покретања је $4 мс, а троши $5 {{PLURAL:$5|услов|услова|услова}}.',
 	'abusefilter-edit-throttled' => "'''Упозорење''': овај филтер је онемогућен из сигурносних разлога.
@@ -28346,6 +28346,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-edit-builder-op-bool-not' => 'Не (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'И (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Или (|)',
+	'abusefilter-edit-builder-op-bool-xor' => 'ЕКСИЛИ (^)',
 	'abusefilter-edit-builder-group-misc' => 'Разно',
 	'abusefilter-edit-builder-misc-in' => 'садржи се у стрингу (in)',
 	'abusefilter-edit-builder-misc-like' => 'Одговара образцу (like)',
