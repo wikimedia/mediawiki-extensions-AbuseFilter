@@ -17190,7 +17190,7 @@ Kopéiert vun der Textkëscht déi opgeet an dës Textkëscht a klickt op "{{int
  * @author Namik
  */
 $messages['lez'] = array(
-	'abusefilter-log-search-user' => 'Ишлемишчи:',
+	'abusefilter-log-search-user' => 'Иштиракчи:',
 	'abusefilter-log-search-submit' => 'Ахтармишун',
 	'abusefilter-log-noactions' => 'садни',
 	'abusefilter-log-hide-reason' => 'Кар',
