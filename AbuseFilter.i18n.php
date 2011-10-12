@@ -8465,11 +8465,11 @@ Reegli kirjeldus: $1',
 	'abusefilter-log-search-submit' => 'Otsi',
 	'abusefilter-log-entry' => '$1: $2 vallandas väärtarvitusfiltri, sooritades leheküljel $4 tegevust "$3".
 Toiming: $5. Filtri kirjeldus: $6',
-	'abusefilter-log-detailedentry-meta' => '$1: $2 vallandas filtri $3, sooritades leheküljel $5 tegevust "$4".
+	'abusefilter-log-detailedentry-meta' => '$1: $2 vallandas $3, sooritades leheküljel $5 tegevust "$4".
 Filtri sooritatud toiming: $6;
 Filtri kirjeldus: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'globaalfilter $1',
-	'abusefilter-log-detailedentry-local' => 'filter $1',
+	'abusefilter-log-detailedentry-local' => 'filtri $1',
 	'abusefilter-log-detailslink' => 'üksikasjad',
 	'abusefilter-log-hidelink' => 'seadista nähtavust',
 	'abusefilter-log-details-legend' => 'Logisissekande $1 üksikasjad',
@@ -11210,6 +11210,7 @@ $messages['grc'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  * @author J. 'mach' wust
  * @author Melancholie
@@ -11334,7 +11335,6 @@ Churzbschryybig vu dr verletzte Regle: $1',
 	'abusefilter-list-options-disabled' => 'Deaktivierti Filter:',
 	'abusefilter-list-options-hidedisabled' => 'Deaktivierti Filter uusblände',
 	'abusefilter-list-options-submit' => 'Spychere',
-	'abusefilter-tools-subtitle' => 'Wärchzyyg',
 	'abusefilter-tools-text' => 'Do sin e paar Wärchzyyg, wu hilfryych chenne syy bim Formuliere un bi dr Fählersuechi vu Missbruuchsfilter.',
 	'abusefilter-tools-expr' => 'Usdruck-Teschter',
 	'abusefilter-tools-submitexpr' => 'Priefe',
@@ -11598,6 +11598,7 @@ Du chasch e vollständigi Erklärig iberchu, wänn du uf „Check Syntax” druc
 	'abusefilter-log-header' => 'Des Logbuech zeigt d Änderige, wu an Filter gmacht wore sin.
 Fir meh Detail lueg d [[Special:AbuseFilter/history|Lischt vu dr letschte Filteränderige]].',
 	'abusefilter-log-entry-modify' => 'het $1 ($2) gänderet',
+	'abusefilter-log-noresults' => 'Kei Ergebniss',
 	'abusefilter-diff-title' => 'Unterschid zwische dr Versione',
 	'abusefilter-diff-item' => 'Yytrag',
 	'abusefilter-diff-version' => 'Version vu $1 dur $2',
