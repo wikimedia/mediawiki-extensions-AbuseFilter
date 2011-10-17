@@ -437,14 +437,11 @@ class SpecialAbuseLog extends SpecialPage {
 					WikiMap::getForeignURL( $wgAbuseFilterCentralDB,
 											'Special:AbuseFilter/' . $globalIndex );
 
-				$linkText = wfMsgExt( 'abusefilter-log-detailedentry-global',
-										'parseinline', array( $globalIndex ) );
-
+				$linkText = wfMessage( 'abusefilter-log-detailedentry-global' )->numParams( $globalIndex )->escaped();
 				$filterLink = $sk->makeExternalLink( $globalURL, $linkText );
 			} else {
 				$title = SpecialPage::getTitleFor( 'AbuseFilter', $row->afl_filter );
-				$linkText = wfMsgExt( 'abusefilter-log-detailedentry-local',
-										'parseinline', array( $row->afl_filter ) );
+				$linkText = wfMessage( 'abusefilter-log-detailedentry-local' )->numParams( $row->afl_filter )->escaped();
 				$filterLink = $sk->link( $title, $linkText );
 			}
 			$description = wfMsgExt( 'abusefilter-log-detailedentry-meta',

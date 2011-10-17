@@ -235,6 +235,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	}
 
 	function buildFilterEditor( $error, $filter, $history_id = null ) {
+		global $wgLang;
+
 		if ( $filter === null ) {
 			return false;
 		}
@@ -278,7 +280,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$fields = array();
 
 		$fields['abusefilter-edit-id'] =
-			$this->mFilter == 'new' ? wfMsg( 'abusefilter-edit-new' ) : $filter;
+			$this->mFilter == 'new' ? wfMsg( 'abusefilter-edit-new' ) : $wgLang->formatNum( $filter );
 		$fields['abusefilter-edit-description'] =
 			Xml::input(
 				'wpFilterDescription',

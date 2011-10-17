@@ -187,7 +187,7 @@ class AbuseFilterPager extends TablePager {
 		switch( $name ) {
 			case 'af_id':
 				return Linker::link(
-					SpecialPage::getTitleFor( 'AbuseFilter', intval( $value ) ), intval( $value ) );
+					SpecialPage::getTitleFor( 'AbuseFilter', intval( $value ) ), $wgLang->formatNum( intval( $value ) ) );
 			case 'af_public_comments':
 				return Linker::link(
 					SpecialPage::getTitleFor( 'AbuseFilter', intval( $row->af_id ) ),

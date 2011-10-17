@@ -131,6 +131,9 @@ class AbuseFilterHistoryPager extends TablePager {
 		$row = $this->mCurrentRow;
 
 		switch( $name ) {
+			case 'afh_filter':
+				$formatted = $wgLang->formatNum ( $row->afh_filter );
+				break;
 			case 'afh_timestamp':
 				$title = SpecialPage::getTitleFor( 'AbuseFilter',
 					'history/' . $row->afh_filter . '/item/' . $row->afh_id );
