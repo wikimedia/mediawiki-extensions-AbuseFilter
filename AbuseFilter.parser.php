@@ -446,6 +446,7 @@ class AbuseFilterParser {
 		'strlen' => 'funcLen',
 		'strpos' => 'funcStrPos',
 		'str_replace' => 'funcStrReplace',
+		'rescape' => 'funcStrRegexEscape',
 		'set' => 'funcSetVar',
 		'set_var' => 'funcSetVar',
 	);
@@ -1740,6 +1741,17 @@ class AbuseFilterParser {
 		$replace = $args[2]->toString();
 
 		return new AFPData( AFPData::DString, str_replace( $search, $replace, $subject ) );
+	}
+
+	protected function funcStrRegexEscape( $args ) {
+		if ( count( $args ) < 1 ) {
+			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
+						array( 'rescape', 1, count( $args ) ) );
+		}
+
+		$string = $args[0]->toString();
+
+		return new AFPData( AFPData::DString, preg_quote( $string ) );
 	}
 
 	protected function funcSetVar( $args ) {
