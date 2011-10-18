@@ -70,6 +70,7 @@ class AbuseFilter {
 			'substr(subject, offset, length)' => 'substr',
 			'strpos(haystack, needle)' => 'strpos',
 			'str_replace(subject, search, replace)' => 'str_replace',
+			'rescape(string)' => 'rescape',
 			'set_var(var,value)' => 'set_var',
 		),
 		'vars' => array(
