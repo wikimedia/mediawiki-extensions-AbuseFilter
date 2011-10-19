@@ -1751,6 +1751,7 @@ class AbuseFilterParser {
 
 		$string = $args[0]->toString();
 
+		// preg_quote does not need the second parameter, since rlike takes care of the delimiter symbol itself
 		return new AFPData( AFPData::DString, preg_quote( $string ) );
 	}
 
