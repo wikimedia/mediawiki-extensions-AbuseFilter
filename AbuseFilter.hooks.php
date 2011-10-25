@@ -20,17 +20,18 @@ class AbuseFilterHooks {
 		// Load vars
 		$vars = new AbuseFilterVariableHolder;
 
-		// Cache article object so we can share a parse operation
-		$title = $editor->mTitle;
-		$articleCacheKey = $title->getNamespace() . ':' . $title->getText();
-		AFComputedVariable::$articleCache[$articleCacheKey] = $editor->mArticle;
-
 		// Check for null edits.
 		$oldtext = '';
 
 		if ( $editor->mArticle->exists() ) {
-			$oldtext = $editor->mArticle->getContent();
+			// Make sure we load the latest text saved in database (bug 31656)
+			$oldtext = $editor->mArticle->getRevision()->getRawText();
 		}
+
+		// Cache article object so we can share a parse operation
+		$title = $editor->mTitle;
+		$articleCacheKey = $title->getNamespace() . ':' . $title->getText();
+		AFComputedVariable::$articleCache[$articleCacheKey] = $editor->mArticle;
 
 		if ( strcmp( $oldtext, $text ) == 0 ) {
 			// Don't trigger for null edits.
