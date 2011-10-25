@@ -8,10 +8,12 @@ class AbuseFilterHooks {
 	// Hooray!
 
 	/**
-	 * @param $editor
-	 * @param $text
-	 * @param $error
-	 * @param $summary
+	 * Entry points for MediaWiki hook 'EditFilterMerged'
+	 *
+	 * @param $editor EditPage instance (object)
+	 * @param $text Content of the edit box
+	 * @param &$error Error message to return
+	 * @param $summary Edit summary for page
 	 * @return bool
 	 */
 	public static function onEditFilterMerged( $editor, $text, &$error, $summary ) {
