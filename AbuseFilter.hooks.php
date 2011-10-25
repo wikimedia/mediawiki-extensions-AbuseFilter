@@ -29,11 +29,14 @@ class AbuseFilterHooks {
 		$oldtext = '';
 
 		if ( $editor->mArticle->exists() ) {
+			// Fetch text which might be an old revision
 			$oldtext = $editor->mArticle->getContent();
 		}
 
-		if ( strcmp( $oldtext, $text ) == 0 ) {
-			// Don't trigger for null edits.
+		if ( $editor->mArticle->isCurrent() && strcmp( $oldtext, $text ) == 0) {
+			// Do not trigger if used text was the latest in the database and user
+			// submitted text does not introduce any difference.
+			// See bugs 19267 & 31656.
 			return true;
 		}
 
