@@ -174,7 +174,7 @@ new ( function( $, mw ) {
 		window.location = mw.config.get( 'wgScript' ) + '?title=MediaWiki:' +  mw.util.wikiUrlencode( message ) + '&action=edit';
 	};
 
-	/*
+	/**
 	 * On ready initialization
 	 */
 	$( function( $ ) {
