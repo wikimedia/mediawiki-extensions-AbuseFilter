@@ -296,8 +296,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		}
 
 		if ( $format == 'text' ) {
-			$old = htmlspecialchars( $old );
-			$new = htmlspecialchars( $new );
+			$old = nl2br( htmlspecialchars( $old ) );
+			$new = nl2br( htmlspecialchars( $new ) );
 		}
 
 		$row .= Xml::tags( 'td', array( 'class' => $oldClass ), $old );
@@ -315,8 +315,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		}
 
 		if ( $old == $new ) {
-			$old = implode( "<br />\n", $old );
-			$new = implode( "<br />\n", $new );
+			$old = implode( "\n", $old );
+			$new = implode( "\n", $new );
 			return $this->getSimpleRow( $msg, $old, $new, 'text' );
 		}
 
