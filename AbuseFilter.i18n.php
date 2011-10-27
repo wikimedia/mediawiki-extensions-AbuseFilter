@@ -12675,7 +12675,6 @@ Wopisanje filtra:: $7 ($8)',
 	'abusefilter-list-options-disabled' => 'Znjemóžnjene filtry:',
 	'abusefilter-list-options-hidedisabled' => 'Znjemóžnjene filtry schować',
 	'abusefilter-list-options-submit' => 'Aktualizować',
-	'abusefilter-tools-subtitle' => 'Nastroje',
 	'abusefilter-tools-text' => 'Tu su někotre nastroje, kotrež su wužitne, zo bychu znjewužiwanske filtry formulowali a jich zmylki wotstronili.',
 	'abusefilter-tools-expr' => 'Testowak wurazow',
 	'abusefilter-tools-submitexpr' => 'Wuhódnoćić',
@@ -12944,6 +12943,7 @@ Přez kliknjenje na tłóčatko "Syntaksu kontrolować" móžeš połne wujasnje
 	'abusefilter-log-header' => 'Tutón protokol pokazuje zjeće změnow, kotrež buchu na filtrach přewjedźene.
 Za dospołne podrobnosće hlej [[Special:AbuseFilter/history|lisćinu]] njedawnych filtrowych změnow.',
 	'abusefilter-log-entry-modify' => 'změni $1 ($2)',
+	'abusefilter-log-noresults' => 'Žane wuslědki',
 	'abusefilter-diff-title' => 'Rozdźěle mjez wersijemi',
 	'abusefilter-diff-item' => 'Zapisk',
 	'abusefilter-diff-version' => 'Wersija wot $1 wot $2',
@@ -14249,6 +14249,14 @@ $messages['ig'] = array(
 /** Eastern Canadian (Latin script) (inuktitut) */
 $messages['ike-latn'] = array(
 	'abusefilter-list-edit' => 'Suqusiqpaa',
+);
+
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'abusefilter-log-search-submit' => 'Biroken',
+	'abusefilter-examine-submit' => 'Biroken',
 );
 
 /** Ingush (ГІалгІай Ğalğaj)
@@ -34025,9 +34033,9 @@ $messages['zh-hans'] = array(
 	'abusefilter-test-load-filter' => '加载过滤器编号：',
 	'abusefilter-test-submit' => '测试',
 	'abusefilter-test-load' => '载入',
-	'abusefilter-test-user' => '右框所输用户进行的更改：',
-	'abusefilter-test-period-start' => '右框所输时间后的更改：',
-	'abusefilter-test-period-end' => '右框所输时间前的更改：',
+	'abusefilter-test-user' => '编辑者：',
+	'abusefilter-test-period-start' => '编辑时间晚于：',
+	'abusefilter-test-period-end' => '编辑时间早于：',
 	'abusefilter-test-page' => '对页面的更改：',
 	'abusefilter-test-shownegative' => '显示不与过滤器匹配的更改',
 	'abusefilter-test-syntaxerr' => '您所输入的过滤器存有语法错误。请点击“语法检查”按钮进行语法检查，并获取详细解释。',
@@ -34434,9 +34442,9 @@ $messages['zh-hant'] = array(
 	'abusefilter-test-load-filter' => '載入過濾器編號：',
 	'abusefilter-test-submit' => '測試',
 	'abusefilter-test-load' => '載入',
-	'abusefilter-test-user' => '使用者更改：',
-	'abusefilter-test-period-start' => '右框所輸時間後的更改：',
-	'abusefilter-test-period-end' => '右框所輸時間前的更改：',
+	'abusefilter-test-user' => '編輯者：',
+	'abusefilter-test-period-start' => '編輯時間晚於：',
+	'abusefilter-test-period-end' => '編輯時間早於：',
 	'abusefilter-test-page' => '對頁面的更改：',
 	'abusefilter-test-shownegative' => '顯示與過濾器不匹配的更改',
 	'abusefilter-test-syntaxerr' => '您輸入的過濾器有語法錯誤。
