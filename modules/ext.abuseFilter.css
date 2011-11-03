@@ -65,8 +65,10 @@ li.mw-abusefilter-changeslist-nomatch {
 #mw-abusefilter-syntaxresult,
 li.mw-abusefilter-changeslist-nomatch,
 li.mw-abusefilter-changeslist-match {
-	background: no-repeat left center;
+	/* Do not consolidate these into a "background:" rule; it will override the background-image: settings in above rulesets */
+	background-repeat: no-repeat;
 	padding-left: 25px;
+	background-position: left center;
 }
 
 table.mw-abusefilter-diff {
