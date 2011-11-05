@@ -4595,6 +4595,7 @@ Kopirajte iz tekstualne kutije koja se pojavi i zalijepite u ovu kutiju, zatim k
 /** Catalan (Català)
  * @author Aleator
  * @author El libre
+ * @author Gemmaa
  * @author Loupeter
  * @author Paucabot
  * @author SMP
@@ -4615,9 +4616,26 @@ Les edicions no constructives seran revertides ràpidament,
 i la reiterada edició de forma no constructiva pot comportar el bloqueig del vostre compte o adreça IP.
 Si creieu que aquesta edició és constructiva, podeu clicar novament el botó Desa per a confirmar-ho.
 A continuació us mostrem una breu descripció de la regla d'abús que ha identificat la vostra acció: $1",
+	'abusefilter-disallowed' => "Aquesta acció ha estat automàticament identifica com nocius i per tant rebutjat.
+Si vostè creu que el seu editar va ser constructives, si us plau informar a un administrador de què estava intentant fer.
+Una breu descripció de la regla de l'abús que coincidien amb la seva acció és:$1",
+	'abusefilter-blocked-display' => "Aquesta acció s'ha identificat automàticament com perjudicials
+ i li ha impedit executar-lo.
+A més a més, per protegir {{SITENAME}}, el seu compte d'usuari i tots associats adreces d'IP s'han blocat des d'edició.
+Si això s'ha produït en l'error, si us plau en contacte amb un administrador.
+Una breu descripció de la regla de l'abús que coincidien amb la seva acció és:$1",
+	'abusefilter-degrouped' => "Aquesta acció ha estat automàticament identificat com a perillosa.
+En conseqüència, ha estat compromès i, ja que el seu compte se sospita de ser compromès, tots els drets han estat revocats.
+Si creu que això ha estat en l'error, si us plau, contactar amb un buròcrata amb una explicació d'aquesta acció, i els seus drets pot ser restaurat.
+Una breu descripció de la regla de l'abús que coincidien amb la seva acció és:$1",
+	'abusefilter-autopromote-blocked' => "Aquesta acció s'ha identificat automàticament com perjudicial, i ha estat deshabilitat.
+A més a més, com a mesura de seguretat, alguns privilegis concedits habitualment per establir comptes han estat revocats temporalment del seu compte.
+Una breu descripció de la regla de l'abús que coincidien amb la seva acció és:$1",
 	'abusefilter-blocker' => "Filtre d'abús",
 	'abusefilter-blockreason' => "Blocat automàticament pel filtre d'abús.
 Descripció de la regla aplicada: $1",
+	'abusefilter-degroupreason' => "Drets despulla automàticament pel filtre d'abús.
+Descripció de la norma:$1",
 	'abusefilter-accountreserved' => "Aquest compte està reservat per al seu ús pel filtre d'abús.",
 	'right-abusefilter-modify' => "Modificar els filtres d'abús",
 	'right-abusefilter-view' => "Veure filtres d'abús",
@@ -4708,13 +4726,13 @@ Descripció del filtre: $7 ($8)",
 	'abusefilter-list-options-disabled' => 'Filtres deshabilitats:',
 	'abusefilter-list-options-hidedisabled' => 'Oculta filtres deshabilitats',
 	'abusefilter-list-options-submit' => 'Actualitza',
-	'abusefilter-tools-subtitle' => 'Eines',
 	'abusefilter-tools-text' => "Aquí hi ha algunes eines que poden ser útils en la formulació i depuració dels filtres d'abusos.",
 	'abusefilter-tools-expr' => "Provador d'expressions",
 	'abusefilter-tools-submitexpr' => 'Avalua',
 	'abusefilter-tools-reautoconfirm' => "Restaura l'estat autoconfirmat",
 	'abusefilter-tools-reautoconfirm-user' => 'Usuari:',
 	'abusefilter-tools-reautoconfirm-submit' => 'Reautoconfirma',
+	'abusefilter-reautoconfirm-none' => "Que l'usuari no ha tingut  {{GENDER:$1| his|her|their}} autoconfirmed estat suspès.",
 	'abusefilter-reautoconfirm-notallowed' => 'No estàs autoritzat/da a recuperar un estat autoconfirmat.',
 	'abusefilter-reautoconfirm-done' => "L'estat de compte autoconfirmat ha estat restaurat",
 	'abusefilter-status' => 'De {{PLURAL:$1|la darrera acció|les darreres $1 accions}}, $2 ($3%) ha{{PLURAL:$2||n}} sobrepassat el límit de $4 condicions autoritzades, i $5 ($6%) ha{{PLURAL:$5||n}} disparat algun dels filtres actualment activats.',
@@ -4760,6 +4778,8 @@ Ha sobrepassat el límit de deteccions del $1% de les accions.",
 :''(un per línia, separat per comes)''",
 	'abusefilter-edit-warn-message' => 'Missatge del sistema a usar com a avís:',
 	'abusefilter-edit-warn-other' => 'Un altre missatge',
+	'abusefilter-edit-warn-other-label' => "Nom de la pàgina d'altres missatge:
+: ' (sense prefix MediaWiki) '",
 	'abusefilter-edit-warn-actions' => 'Accions:',
 	'abusefilter-edit-warn-preview' => 'Previsualitza el missatge seleccionat',
 	'abusefilter-edit-warn-edit' => 'Creau/Editau el missatge seleccionat',
@@ -4768,6 +4788,10 @@ Ha sobrepassat el límit de deteccions del $1% de les accions.",
 	'abusefilter-edit-main' => 'Paràmetres de filtre',
 	'abusefilter-edit-done-subtitle' => 'Filtre editat',
 	'abusefilter-edit-done' => "Els vostres canvis al filtre $1 s'han desat correctament.",
+	'abusefilter-edit-badsyntax' => "Hi ha un error de sintaxi en el filtre que heu especificat.
+La producció de l'analitzador era:<pre>$1</pre>",
+	'abusefilter-edit-restricted' => "No es pot editar aquest filtre, perquè conté un o més accions restringides.
+Si us plau demani un usuari amb permís d'afegir les accions restringides per fer el canvi per a vostè.",
 	'abusefilter-edit-viewhistory' => "Mostra l'historial d'aquest filtre",
 	'abusefilter-edit-history' => 'Historial:',
 	'abusefilter-edit-check' => 'Comprova la sintaxi',
@@ -4779,6 +4803,8 @@ Ha sobrepassat el límit de deteccions del $1% de les accions.",
 	'abusefilter-edit-export' => 'Exporta aquest filtre a un altre wiki',
 	'abusefilter-edit-syntaxok' => "No s'han detectat errors de sintaxi.",
 	'abusefilter-edit-syntaxerr' => "S'ha detectat un error de sintaxi: $1",
+	'abusefilter-edit-bad-tags' => 'Un o més de les etiquetes que heu especificat no és vàlid.
+Etiquetes ha de ser curts, i no ha de contenir caràcters especials.',
 	'abusefilter-edit-notallowed' => "No teniu permisos per crear o modificar filtres d'abusos",
 	'abusefilter-edit-builder-select' => 'Seleccionau una opció per afegir-la al cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operadors aritmètics',
@@ -4816,6 +4842,7 @@ Ha sobrepassat el límit de deteccions del $1% de les accions.",
 	'abusefilter-edit-builder-funcs-specialratio' => 'Caràcters especials / caràcters totals (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Normalitza (norm)',
 	'abusefilter-edit-builder-funcs-count' => 'Nombre de vegades que la cadena X apareix dins la cadena Y (count)',
+	'abusefilter-edit-builder-funcs-rcount' => 'Nombre de vegades regex x apareix en cadena Y (rcount)',
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Elimina els espais en blanc (rmwhitespace)',
 	'abusefilter-edit-builder-funcs-rmspecials' => 'Suprimeix els caràcters especials (rmspecials)',
 	'abusefilter-edit-builder-funcs-ip_in_range' => 'Està la IP al rang? (ip_in_range)',
@@ -4889,6 +4916,7 @@ Ha sobrepassat el límit de deteccions del $1% de les accions.",
 	'abusefilter-history-diff' => 'Canvis',
 	'abusefilter-history-error-hidden' => 'El filtre que heu demanat està ocult, i no podeu veure el seu historial.',
 	'abusefilter-exception-unexpectedatend' => 'Inesperat "$2" al caràcter $1.',
+	'abusefilter-exception-expectednotfound' => "S'esperava un  $2  a les de caràcter  $1 , que no es troba (s'ha trobat  $3   $4  en el seu lloc).",
 	'abusefilter-exception-unrecognisedkeyword' => 'Paraula clau no reconeguda $2 al caràcter $1 .',
 	'abusefilter-exception-unexpectedtoken' => 'Element inesperat "$3" (del tipus $2) al caràcter $1.',
 	'abusefilter-exception-unclosedstring' => 'Cadena no tancada que comença al caràcter $1.',
@@ -4897,7 +4925,12 @@ Ha sobrepassat el límit de deteccions del $1% de les accions.",
 	'abusefilter-exception-noparams' => 'No hi ha paràmetres donats a la funció "$2" al caràcter $1.',
 	'abusefilter-exception-dividebyzero' => 'Intent il·legal per dividir $2 per zero al caràcter $1.',
 	'abusefilter-exception-unrecognisedvar' => 'Variable no reconeguda $2 al caràcter $1',
+	'abusefilter-exception-notenoughargs' => 'No hi ha prou arguments per funcionar  $2  anomenat a caràcter  $1 .
+	Espera que  $3   {{PLURAL:$3| argument|arguments}}, got $4',
 	'abusefilter-exception-regexfailure' => 'Error en l\'expressió regular "$3" al caràcter $1: "$2"',
+	'abusefilter-exception-overridebuiltin' => 'Il. legal anul • lació de variable predefinit " $2 " a les de caràcter  $1 .',
+	'abusefilter-exception-outofbounds' => "S'està sol·licitant l'element inexistent llista  $2  (llista de mida =  $3 ) a les de caràcter  $1 .",
+	'abusefilter-exception-notlist' => 'Sol. licitant element de matriu de no-matriu a caràcter  $1 .',
 	'abusefilter-action-tag' => 'Etiqueta',
 	'abusefilter-action-throttle' => 'Limitador',
 	'abusefilter-action-warn' => 'Avisa',
@@ -4907,12 +4940,21 @@ Ha sobrepassat el límit de deteccions del $1% de les accions.",
 	'abusefilter-action-rangeblock' => 'Rang del bloqueig',
 	'abusefilter-action-disallow' => 'No permetre',
 	'abusefilter-revert-title' => 'Reverteix tots els canvis fets pel filtre $1',
+	'abusefilter-revert-intro' => "Aquest formulari permet vostè tornar tots els canvis realitzats pel filtre d'abús a causa de filtre de  $1 .
+Si us plau, l'exercici cura en l'ús d'aquesta eina.",
+	'abusefilter-revert-preview-item' => '$1: $2 made a $3 on $4.
+Accions de ser tornat:  $5  ( $6 )',
 	'abusefilter-revert-search-legend' => "Selecciona les accions del filtre d'abusos per revertir",
 	'abusefilter-revert-periodstart' => 'Inici del període:',
 	'abusefilter-revert-periodend' => 'Fi del període:',
 	'abusefilter-revert-search' => 'Seleccionau les accions',
 	'abusefilter-revert-filter' => 'Filtre:',
+	'abusefilter-revert-preview-intro' => 'A continuació es presenten les mesures adoptades pel filtre d\'abús que es tornat per aquesta acció.
+Si us plau comprovi\'ls amb cura i feu clic a "confirmar" per confirmar la seva selecció.',
 	'abusefilter-revert-confirm' => 'Confirma',
+	'abusefilter-revert-success' => "Han tornat totes les mesures adoptades pel filtre d'abús per [[especial: AbuseFilter / $1 |filter  $1 ]].",
+	'abusefilter-revert-reason' => "Automatic tornar de totes les mesures adoptades pel filtre d'abús a causa de filtre de  $1 .
+Motiu donat:$2",
 	'abusefilter-revert-reasonfield' => 'Raó per la reversió:',
 	'abusefilter-test' => 'Prova un filtre contra les edicions anteriors',
 	'abusefilter-test-intro' => "Aquesta pàgina permet provar sobre {{PLURAL:$1|la darrera edició|les darreres $1 edicions}} un filtre introduït en la caixa de sota.
@@ -4926,6 +4968,8 @@ Per carregar un filtre existent, escriviu el seu número d'identificació en el 
 	'abusefilter-test-period-end' => 'Canvis fets abans de:',
 	'abusefilter-test-page' => 'Canvis fets a la pàgina:',
 	'abusefilter-test-shownegative' => 'Mostra els canvis que no coincideixen amb el filtre',
+	'abusefilter-test-syntaxerr' => 'El filtre que heu escrit conté un error de sintaxi.
+Vostè pot rebre una plena explicació fent clic al botó de "Comprovació de sintaxi".',
 	'abusefilter-changeslist-examine' => 'examinar',
 	'abusefilter-examine' => 'Examinar els canvis individuals',
 	'abusefilter-examine-intro' => "Aquesta pàgina us permet examinar les variables generades pel filtre d'abusos per a una modificació concreta i provar-les amb els filtres.",
@@ -4954,12 +4998,17 @@ Per carregar un filtre existent, escriviu el seu número d'identificació en el 
 	'abusefilter-log-header' => 'Aquest registre mostra un resum dels canvis fets als filtres.
 Per a més detalls, vegeu [[Special:AbuseFilter/history|la llista]] de canvis recents dels filtres.',
 	'abusefilter-log-entry-modify' => 'modificat $1 ($2)',
+	'abusefilter-log-noresults' => 'No hi ha resultats',
 	'abusefilter-diff-title' => 'Diferències entre versions',
 	'abusefilter-diff-item' => 'Ítem',
 	'abusefilter-diff-version' => 'Versió de $1 per $2',
 	'abusefilter-diff-info' => 'Informació bàsica',
 	'abusefilter-diff-pattern' => 'Condicions del filtre',
+	'abusefilter-diff-invalid' => 'No es pot portar les versions sol·licitada',
 	'abusefilter-diff-backhistory' => "Torna a l'historial del filtre",
+	'abusefilter-import-intro' => 'Vostè pot utilitzar aquesta interfície per filtres d\'importació d\'altres wikis.
+Al wiki de font, feu clic a "{{int:abusefilter-Edita-exportació}}" sota "{{int:abusefilter-eines-subtítol}}" en la interfície d\'edició.
+Copiï des de quadre de text que apareix i enganxar-lo a aquest quadre de text, a continuació, feu clic a "{{int:abusefilter-importar-presentar}}".',
 	'abusefilter-import-submit' => 'Importa dades',
 );
 
@@ -17094,6 +17143,8 @@ En huet méi wéi déi definiéiert Limit vun $1% vun den Aktiounen als schiedle
 	'abusefilter-edit-done' => 'Dir hutt är Ännerunge vum Filter $1 ofgespäichert.',
 	'abusefilter-edit-badsyntax' => "Et ass e Syntaxfeeler an dem Filter deen Dir uginn hutt.
 D'Resultat vum Parser war: <pre>$1</pre>",
+	'abusefilter-edit-restricted' => "Dir kënnt dëse Filter net ännere well eng oder méi restriktiv Aktiounen drasti fir déi ee méi Rechter brauch.
+Frot w.e.g. e Benotzer mat de Rechter fir restriktiv Aktioune fir d'Ännerung fir Iech ze maachen.",
 	'abusefilter-edit-viewhistory' => "D'Versioune vun dësem Filter gesinn",
 	'abusefilter-edit-history' => 'Versiounen:',
 	'abusefilter-edit-check' => 'Syntax iwwerpréifen',
