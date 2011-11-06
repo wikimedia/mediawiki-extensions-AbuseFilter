@@ -1075,19 +1075,17 @@ class AbuseFilter {
 				AbuseFilter::$tagsToSet[$actionID] = $parameters;
 				break;
 			default:
-				if( is_array( $wgAbuseFilterCustomActionsHandlers ) &&
-					in_array( $action, array_keys( $wgAbuseFilterCustomActionsHandlers ) ) )
-				{
+				if( isset( $wgAbuseFilterCustomActionsHandlers[$action] ) ) {
 					$custom_function = $wgAbuseFilterCustomActionsHandlers[$action];
 					if( is_callable( $custom_function ) ) {
-						$ok = call_user_func( $custom_function, $action, $parameters, $title, $vars, $rule_desc );
+						$msg = call_user_func( $custom_function, $action, $parameters, $title, $vars, $rule_desc );
 					}
-					if( $ok ) {
-						$display .= wfMsgExt( 'abusefilter-' . $action, 'parseinline', array() ) . "<br />\n";
+					if( isset( $msg ) ) {
+						$display .= wfMsgExt( $msg, 'parseinline', array() ) . "<br />\n";
 					}
-					break;
+				} else {
+					wfDebugLog( 'AbuseFilter', "Unrecognised action $action" );
 				}
-				wfDebugLog( 'AbuseFilter', "Unrecognised action $action" );
 		}
 
 		return $display;
