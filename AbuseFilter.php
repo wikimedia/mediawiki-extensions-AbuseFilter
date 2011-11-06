@@ -166,3 +166,5 @@ $wgAbuseFilterIsCentral = false;
 
 // Block duration
 $wgAbuseFilterBlockDuration = 'indefinite';
+
+$wgAbuseFilterCustomActionsHandlers = false;

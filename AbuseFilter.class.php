@@ -935,6 +935,8 @@ class AbuseFilter {
 	public static function takeConsequenceAction( $action, $parameters, $title,
 		$vars, $rule_desc )
 	{
+		global $wgAbuseFilterCustomActionsHandlers;
+		
 		$display = '';
 		switch ( $action ) {
 			case 'disallow':
@@ -1073,6 +1075,18 @@ class AbuseFilter {
 				AbuseFilter::$tagsToSet[$actionID] = $parameters;
 				break;
 			default:
+				if( is_array( $wgAbuseFilterCustomActionsHandlers ) &&
+					in_array( $action, array_keys( $wgAbuseFilterCustomActionsHandlers ) ) )
+				{
+					$custom_function = $wgAbuseFilterCustomActionsHandlers[$action];
+					if( is_callable( $custom_function ) ) {
+						$ok = call_user_func( $custom_function, $action, $parameters, $title, $vars, $rule_desc );
+					}
+					if( $ok ) {
+						$display .= wfMsgExt( 'abusefilter-' . $action, 'parseinline', array() ) . "<br />\n";
+					}
+					break;
+				}
 				wfDebugLog( 'AbuseFilter', "Unrecognised action $action" );
 		}
 
