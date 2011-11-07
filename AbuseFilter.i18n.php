@@ -10806,7 +10806,7 @@ $messages['gan-hant'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'abusefilter-desc' => 'Aplica heurísticas automáticas ás edicións.',
+	'abusefilter-desc' => 'Aplica heurísticas automáticas ás edicións',
 	'abusefilter' => 'Configuración do filtro de abusos',
 	'abuselog' => 'Rexistro de abusos',
 	'abusefilter-intro' => 'Benvido á interface do xestor do filtro de abusos.
