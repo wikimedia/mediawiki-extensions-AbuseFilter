@@ -192,14 +192,22 @@ class AbuseFilterHooks {
 		if ( $updater === null ) {
 			global $wgExtNewTables, $wgExtNewFields, $wgExtPGNewFields, $wgExtPGAlteredFields, $wgExtNewIndexes, $wgDBtype;
 			// DB updates
-			if ( $wgDBtype == 'mysql' ) {
-				$wgExtNewTables[] = array( 'abuse_filter', "$dir/abusefilter.tables.sql" );
+			if ( $wgDBtype == 'mysql' || $wgDBtype == 'sqlite' ) {
+				if ( $wgDBtype == 'mysql' ) {
+					$wgExtNewTables[] = array( 'abuse_filter', "$dir/abusefilter.tables.sql" );
+				} else {
+					$wgExtNewTables[] = array( 'abuse_filter', "$dir/abusefilter.tables.sqlite.sql" );
+				}
 				$wgExtNewTables[] = array( 'abuse_filter_history', "$dir/db_patches/patch-abuse_filter_history.sql" );
 				$wgExtNewFields[] = array( 'abuse_filter_history', 'afh_changed_fields', "$dir/db_patches/patch-afh_changed_fields.sql" );
 				$wgExtNewFields[] = array( 'abuse_filter', 'af_deleted', "$dir/db_patches/patch-af_deleted.sql" );
 				$wgExtNewFields[] = array( 'abuse_filter', 'af_actions', "$dir/db_patches/patch-af_actions.sql" );
 				$wgExtNewFields[] = array( 'abuse_filter', 'af_global', "$dir/db_patches/patch-global_filters.sql" );
-				$wgExtNewIndexes[] = array( 'abuse_filter_log', 'filter_timestamp', "$dir/db_patches/patch-fix-indexes.sql" );
+				if ( $wgDBtype == 'mysql' ) {
+					$wgExtNewIndexes[] = array( 'abuse_filter_log', 'filter_timestamp', "$dir/db_patches/patch-fix-indexes.sql" );
+				} else {
+					$wgExtNewIndexes[] = array( 'abuse_filter_log', 'afl_filter_timestamp', "$dir/db_patches/patch-fix-indexes.sqlite.sql" );
+				}
 			} elseif ( $wgDBtype == 'postgres' ) {
 				$wgExtNewTables = array_merge( $wgExtNewTables,
 						array(
@@ -215,16 +223,27 @@ class AbuseFilterHooks {
 				$wgExtPGAlteredFields[] = array( 'abuse_filter_log', 'afl_filter', 'TEXT' );
 
 				$wgExtNewIndexes[] = array( 'abuse_filter_log', 'abuse_filter_log_ip', "(afl_ip)" );
+			} else {
+				throw new MWException("No known Schema updates.");
 			}
 		} else {
-			if ( $updater->getDB()->getType() == 'mysql' ) {
-				$updater->addExtensionUpdate( array( 'addTable', 'abuse_filter', "$dir/abusefilter.tables.sql", true ) );
-				$updater->addExtensionUpdate( array( 'addTable', 'abuse_filter_history', "$dir/db_patches/patch-abuse_filter_history.sql", true ) );
+			if ( $updater->getDB()->getType() == 'mysql' || $updater->getDB()->getType() == 'sqlite' ) {
+				if ( $updater->getDB()->getType() == 'mysql' ) {
+					$updater->addExtensionUpdate( array( 'addTable', 'abuse_filter', "$dir/abusefilter.tables.sql", true ) );
+					$updater->addExtensionUpdate( array( 'addTable', 'abuse_filter_history', "$dir/db_patches/patch-abuse_filter_history.sql", true ) );
+				} else {
+					$updater->addExtensionUpdate( array( 'addTable', 'abuse_filter', "$dir/abusefilter.tables.sqlite.sql", true ) );
+					$updater->addExtensionUpdate( array( 'addTable', 'abuse_filter_history', "$dir/db_patches/patch-abuse_filter_history.sqlite.sql", true ) );
+				}
 				$updater->addExtensionUpdate( array( 'addField', 'abuse_filter_history', 'afh_changed_fields', "$dir/db_patches/patch-afh_changed_fields.sql", true ) );
 				$updater->addExtensionUpdate( array( 'addField', 'abuse_filter', 'af_deleted', "$dir/db_patches/patch-af_deleted.sql", true ) );
 				$updater->addExtensionUpdate( array( 'addField', 'abuse_filter', 'af_actions', "$dir/db_patches/patch-af_actions.sql", true ) );
 				$updater->addExtensionUpdate( array( 'addField', 'abuse_filter', 'af_global', "$dir/db_patches/patch-global_filters.sql", true ) );
-				$updater->addExtensionUpdate( array( 'addIndex', 'abuse_filter_log', 'filter_timestamp', "$dir/db_patches/patch-fix-indexes.sql", true ) );
+				if ( $updater->getDB()->getType() == 'mysql' ) {
+					$updater->addExtensionUpdate( array( 'addIndex', 'abuse_filter_log', 'filter_timestamp', "$dir/db_patches/patch-fix-indexes.sql", true ) );
+				} else {
+					$updater->addExtensionUpdate( array( 'addIndex', 'abuse_filter_log', 'afl_filter_timestamp', "$dir/db_patches/patch-fix-indexes.sqlite.sql", true ) );
+				}
 			} elseif ( $updater->getDB()->getType() == 'postgres' ) {
 				$updater->addExtensionUpdate( array( 'addTable', 'abuse_filter', "$dir/abusefilter.tables.pg.sql", true ) );
 				$updater->addExtensionUpdate( array( 'addTable', 'abuse_filter_history', "$dir/db_patches/patch-abuse_filter_history.pg.sql", true ) );
@@ -235,6 +254,8 @@ class AbuseFilterHooks {
 				$updater->addExtensionUpdate( array( 'addPgField', 'abuse_filter_log', 'afl_deleted', 'SMALLINT' ) );
 				$updater->addExtensionUpdate( array( 'changeField', 'abuse_filter_log', 'afl_filter', 'TEXT' ) );
 				$updater->addExtensionUpdate( array( 'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_ip', "(afl_ip)" ) );
+			} else {
+				throw new MWException("No known Schema updates.");
 			}
 		}
 		return true;
