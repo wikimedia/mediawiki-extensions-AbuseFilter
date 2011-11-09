@@ -23,15 +23,16 @@ class AbuseFilterHooks {
 		// Check for null edits.
 		$oldtext = '';
 
-		if ( $editor->mArticle->exists() ) {
+		$article = $editor->getArticle();
+		if ( $article->exists() ) {
 			// Make sure we load the latest text saved in database (bug 31656)
-			$oldtext = $editor->mArticle->getRevision()->getRawText();
+			$oldtext = $article->getRevision()->getRawText();
 		}
 
 		// Cache article object so we can share a parse operation
 		$title = $editor->mTitle;
 		$articleCacheKey = $title->getNamespace() . ':' . $title->getText();
-		AFComputedVariable::$articleCache[$articleCacheKey] = $editor->mArticle;
+		AFComputedVariable::$articleCache[$articleCacheKey] = $article;
 
 		if ( strcmp( $oldtext, $text ) == 0 ) {
 			// Don't trigger for null edits.
@@ -40,7 +41,7 @@ class AbuseFilterHooks {
 
 		global $wgUser;
 		$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
-		$vars->addHolder( AbuseFilter::generateTitleVars( $editor->mTitle , 'ARTICLE' ) );
+		$vars->addHolder( AbuseFilter::generateTitleVars( $title , 'ARTICLE' ) );
 		$vars->setVar( 'ACTION', 'edit' );
 		$vars->setVar( 'SUMMARY', $summary );
 		$vars->setVar( 'minor_edit', $editor->minoredit );
@@ -48,9 +49,9 @@ class AbuseFilterHooks {
 		$vars->setVar( 'old_wikitext', $oldtext );
 		$vars->setVar( 'new_wikitext', $text );
 
-		$vars->addHolder( AbuseFilter::getEditVars( $editor->mTitle ) );
+		$vars->addHolder( AbuseFilter::getEditVars( $title, $article ) );
 
-		$filter_result = AbuseFilter::filterAction( $vars, $editor->mTitle );
+		$filter_result = AbuseFilter::filterAction( $vars, $title );
 
 		if ( $filter_result !== true ) {
 			global $wgOut;

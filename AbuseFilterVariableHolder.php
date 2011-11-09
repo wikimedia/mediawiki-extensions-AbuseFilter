@@ -224,26 +224,18 @@ class AFComputedVariable {
 				break;
 			case 'links-from-wikitext':
 				// This should ONLY be used when sharing a parse operation with the edit.
-				global $wgArticle;
 
-				$article = self::articleFromTitle(
-					$parameters['namespace'],
-					$parameters['title']
-				);
-
-				if ( $wgArticle && $article->getTitle()->equals( $wgArticle->getTitle() ) ) {
+				$article = $parameters['article'];
+				if ( $article ) {
 					$textVar = $parameters['text-var'];
 
 					$new_text = $vars->getVar( $textVar )->toString();
 					$editInfo = $article->prepareTextForEdit( $new_text );
 					$links = array_keys( $editInfo->output->getExternalLinks() );
 					$result = $links;
-				} else {
-					// Change to links-from-wikitext-nonedit.
-					$this->mMethod = 'links-from-wikitext-nonedit';
-					$result = $this->compute( $vars );
+					break;
 				}
-				break;
+				// Otherwise fall back to database
 			case 'links-from-wikitext-nonedit':
 			case 'links-from-wikitext-or-database':
 				$article = self::articleFromTitle(
@@ -285,10 +277,9 @@ class AFComputedVariable {
 				break;
 			case 'parse-wikitext':
 				// Should ONLY be used when sharing a parse operation with the edit.
-				global $wgArticle;
-				$article = self::articleFromTitle( $parameters['namespace'], $parameters['title'] );
-
-				if ( $wgArticle && $article->getTitle() === $wgArticle->getTitle() ) {
+	
+				$article = $parameters['article'];
+				if ( $article ) {
 					$textVar = $parameters['wikitext-var'];
 
 					$new_text = $vars->getVar( $textVar )->toString();
@@ -297,12 +288,9 @@ class AFComputedVariable {
 					// Kill the PP limit comments. Ideally we'd just remove these by not setting the
 					// parser option, but then we can't share a parse operation with the edit, which is bad.
 					$result = preg_replace( '/<!--\s*NewPP limit report[^>]*-->\s*$/si', '', $newHTML );
-				} else {
-					// Change to parse-wikitext-nonedit.
-					$this->mMethod = 'parse-wikitext-nonedit';
-					$result = $this->compute( $vars );
+					break;
 				}
-				break;
+				// Otherwise fall back to database
 			case 'parse-wikitext-nonedit':
 				$article = self::articleFromTitle( $parameters['namespace'], $parameters['title'] );
 				$textVar = $parameters['wikitext-var'];

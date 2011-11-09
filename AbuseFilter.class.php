@@ -1508,8 +1508,7 @@ class AbuseFilter {
 			$vars->setVar( 'old_wikitext', '' );
 		}
 
-		$vars->addHolder( self::getEditVars(
-			$title, $row->rc_this_oldid, $row->rc_last_oldid ) );
+		$vars->addHolder( self::getEditVars( $title ) );
 
 		return $vars;
 	}
@@ -1547,7 +1546,7 @@ class AbuseFilter {
 	 * @param  $title Title
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function getEditVars( $title ) {
+	public static function getEditVars( $title, $article = null ) {
 		$vars = new AbuseFilterVariableHolder;
 
 		$vars->setLazyLoadVar( 'edit_diff', 'diff',
@@ -1568,7 +1567,8 @@ class AbuseFilter {
 			array(
 				'namespace' => $title->getNamespace(),
 				'title' => $title->getText(),
-				'text-var' => 'new_wikitext'
+				'text-var' => 'new_wikitext',
+				'article' => $article
 			) );
 		$vars->setLazyLoadVar( 'old_links', 'links-from-wikitext-or-database',
 			array(
@@ -1585,7 +1585,8 @@ class AbuseFilter {
 			array(
 				'namespace' => $title->getNamespace(),
 				'title' => $title->getText(),
-				'wikitext-var' => 'new_wikitext'
+				'wikitext-var' => 'new_wikitext',
+				'article' => $article
 			) );
 		$vars->setLazyLoadVar( 'new_text', 'strip-html',
 			array( 'html-var' => 'new_html' ) );
