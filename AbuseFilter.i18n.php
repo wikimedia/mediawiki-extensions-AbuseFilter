@@ -2700,6 +2700,10 @@ $messages['bar'] = array(
 	'abusefilter-desc' => 'Wendt autómaatiche "Heuristiken" auf Änderrungen å',
 	'abusefilter' => 'Missbrauchsfüter-Eihstöungen',
 	'abuselog' => 'Missbrauchsfüter-Lógbiaché',
+	'abusefilter-intro' => "Griass Enk auf da Missbrauchsfüterter-Management-Ówerflächen.
+Da Missbrauchsfüter is a autómaatischer Mechanismus, der autómaatische Heiristiken auf olle Änderrungen auhwendt.
+Dé Ówerflächen zoagt a Listen voh olle definierden Füter und dalaabts, dé z' vaändern.",
+	'abusefilter-mustbeeditor' => 'Aus Sicherheitsgrynd derffm netter Benutzer mim Recht zur Änderrung voh Missbrauchsfütern dé Schnitstö vawenden.',
 	'abusefilter-log-search-user' => 'Benutzer:',
 	'abusefilter-log-search-title' => 'Titel:',
 	'abusefilter-log-show-deleted' => 'Vastéckte Eihträg åzoang',
@@ -8920,6 +8924,7 @@ Kopeeri ilmuva tekstikasti sisu, kleebi see sellesse tekstikasti ja seejärel kl
  * @author Kobazulo
  * @author Theklan
  * @author Unai Fdz. de Betoño
+ * @author Xabier Armendaritz
  */
 $messages['eu'] = array(
 	'abusefilter-desc' => 'Edizioei heuristika automatikoa aplikatzen die',
@@ -8978,7 +8983,6 @@ $messages['eu'] = array(
 	'abusefilter-list-options-disabled' => 'Ezgaitutako iragazkiak:',
 	'abusefilter-list-options-hidedisabled' => 'Izkutatu ezgaitutako iragazkiak',
 	'abusefilter-list-options-submit' => 'Eguneratu',
-	'abusefilter-tools-subtitle' => 'Tresnak',
 	'abusefilter-tools-expr' => 'Espresio frogagailua',
 	'abusefilter-tools-submitexpr' => 'Ebaluatu',
 	'abusefilter-tools-reautoconfirm' => 'Berrezarri autokonfirmazio egoera',
@@ -9038,7 +9042,7 @@ $messages['eu'] = array(
 	'abusefilter-edit-builder-vars-action' => 'Ekintza',
 	'abusefilter-edit-builder-vars-newsize' => 'Orrialdearen tamaina berria',
 	'abusefilter-edit-builder-vars-oldsize' => 'Orrialdearen tamaina zaharra',
-	'abusefilter-edit-builder-vars-summary' => 'Aldatu laburpena/arrazoia',
+	'abusefilter-edit-builder-vars-summary' => 'Aldaketaren laburpena edo arrazoia',
 	'abusefilter-edit-builder-vars-article-id' => 'Orriaren IDa',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Orrialdearen izenburu osoa',
 	'abusefilter-edit-builder-vars-user-editcount' => 'Erabiltzailearen edizioen kontagailua',
@@ -10959,10 +10963,10 @@ De media, o seu tempo de execución é de $4ms, e consome {{PLURAL:$5|unha condi
 	'abusefilter-edit-rules' => 'Condicións:',
 	'abusefilter-edit-notes' => "Notas:
 :''(privado)''",
-	'abusefilter-edit-lastmod' => 'O filtro foi modificado por última vez:',
+	'abusefilter-edit-lastmod' => 'Última modificación do filtro:',
 	'abusefilter-edit-lastmod-text' => 'o $3 ás $4 por $2',
 	'abusefilter-edit-hitcount' => 'Deteccións do filtro:',
-	'abusefilter-edit-consequences' => 'Accións levadas cando coincidiu',
+	'abusefilter-edit-consequences' => 'Accións levadas a cabo na detección',
 	'abusefilter-edit-action-warn' => 'Desencadear estas accións despois de darlle ao usuario un aviso',
 	'abusefilter-edit-action-disallow' => 'Impedir que o usuario leve a cabo a acción en cuestión',
 	'abusefilter-edit-action-flag' => 'Revisar a edición no rexistro de abusos',
@@ -14546,6 +14550,139 @@ $messages['io'] = array(
 	'abusefilter-examine-submit' => 'Serchez',
 	'abusefilter-examine-test-button' => 'Probez filtrilo',
 	'abusefilter-diff-version' => 'Versiono ye $1 da $2',
+);
+
+/** Icelandic (Íslenska)
+ * @author Snævar
+ */
+$messages['is'] = array(
+	'abusefilter-desc' => 'Beitir sjálfvirkri brjóstvitsfræði á breytingar.',
+	'abusefilter' => 'Stillingar misnotkunar síunnar',
+	'abuselog' => 'Misnotkunarskrá',
+	'abusefilter-intro' => 'Velkominn í viðmót Misnotkunar síunnar.
+Sían er sjálfvirkt tæki sem gerir sjálfvirkar brjóstvitsfræði athuganir á allar breytingar.
+Þetta viðmót sýnir lista yfir skilgreindar síur og leyfir breytingar á þeim.',
+	'abusefilter-mustbeeditor' => 'Vegna öryggisástæðna, geta eingöngu notendur með réttindi til þess að breyta þessum misnotkunar síum notað þetta viðmót.',
+	'abusefilter-warning' => "'''Viðvörun:''' Þessi aðgerð hefur sjálfvirkt verið merkt sem skaðleg.
+Skaðlegar breytingar verða snögglega teknar til baka,
+og svívirðilegar eða síendurteknar breytingar leiða til banns á notenda eða vistfangi þínu.
+Ef þú telur að þessi breyting sé uppbyggileg, þá mátt þú ýta á Senda aftur til að staðfesta hana.
+Stutt lýsing um misnotkunar síuna sem breyting þín passaði við er: $1",
+	'abusefilter-disallowed' => 'Þessi aðgerð hefur sjálfvirkt verið merkt sem skaðleg og hefur því verið hafnað.
+Ef þú telur að þessi breyting hafi verið uppbyggileg, hafðu þá samband við möppudýr um það sem þú reyndir að gera.
+Stutt lýsing um misnotkunar síuna sem breyting þín passaði við er: $1',
+	'abusefilter-blocked-display' => 'Þessi aðgerð hefur sjálfvirkt verið merkt sem skaðleg og því er bannað að framkvæma hana.
+Að auki, til þess að verja {{SITENAME}}, hefur notendanafn þitt og það vistfang sem þú notaðir síðast verið bannað.
+Ef villa leiddi þig hingað, hafðu þá samband við möppudýr.
+Stutt lýsing um misnotkunar síuna sem breyting þín passaði við er: $1',
+	'abusefilter-degrouped' => 'Þessi aðgerð hefur sjálfvirkt verið merkt sem skaðleg.
+Því hefur henni verið hafnað og fyrst að grunur er um að aðgangur þinn sé í hættu hafa réttindi þín verið afturkölluð.
+Ef villa leiddi þig hingað, hafðu þá samband við möppudýr með útskýringu um hvað þú reyndir að gera og mögulega færð þú réttindi þín aftur.
+Stutt lýsing um misnotkunar síuna sem breyting þín passaði við er: $1',
+	'abusefilter-autopromote-blocked' => 'Þessi aðgerð hefur sjálfvirkt verið merkt sem skaðleg og því hefur henni verið hafnað.
+Að auki, sem öryggisráðstöfun, hafa þau réttindi sem eru sjálfvirkt gefin notendum verið afturkölluð tímabundið.
+Stutt lýsing um misnotkunar síuna sem breyting þín passaði við er: $1',
+	'abusefilter-blocker' => 'Misnotkunar sía',
+	'abusefilter-blockreason' => 'Sjálfvirkt hafnað af misnotkunar síunni.
+Lýsing misnotkunar síunnar sem passaði við breytinguna: $1',
+	'abusefilter-degroupreason' => 'Réttindi afturkölluð sjálfkrafa af misnotkunar síunni.
+Lýsing síunnar: $1',
+	'abusefilter-accountreserved' => 'Þetta notendanafn er frátekið fyrir misnotkunar síuna.',
+	'right-abusefilter-modify' => 'Breyta misnotkunar síum',
+	'right-abusefilter-view' => 'Skoða misnotkunar síur',
+	'right-abusefilter-log' => 'Skoða misnotkunarskránna',
+	'right-abusefilter-log-detail' => 'Skoða ítarlegar færslur í misnotkunarskránni',
+	'right-abusefilter-private' => 'Skoða persónuleg gögn í misnotkunarskránni',
+	'right-abusefilter-revert' => 'Taka til baka allar breytingar sem voru gerðar af misnotkunar síu',
+	'right-abusefilter-hide-log' => 'Fela færslur í misnotkunarskránni',
+	'right-abusefilter-hidden-log' => 'Skoða faldar færslur í misnotkunarskránni',
+	'action-abusefilter-modify' => 'breyta misnotkunar síum',
+	'action-abusefilter-view' => 'skoða misnotkunar síur',
+	'action-abusefilter-log' => 'skoða misnotkunarskránna',
+	'action-abusefilter-log-detail' => 'skoða ítarlegar færslur í misnotkunarskránni',
+	'action-abusefilter-private' => 'skoða persónuleg gögn í misnotkunarskránni',
+	'action-abusefilter-revert' => 'taka til baka allar breytingar sem voru gerðar af misnotkunar síu',
+	'abusefilter-log' => 'Misnotkunarskrá',
+	'abusefilter-log-summary' => 'Þetta er listi yfir allar aðgerðir sem passa við misnotkunar síurnar.',
+	'abusefilter-log-search' => 'Leita í misnotkunarskránni',
+	'abusefilter-log-search-user' => 'Notandi:',
+	'abusefilter-log-search-title' => 'Titill:',
+	'abusefilter-log-show-deleted' => 'Sýna faldar færslur',
+	'abusefilter-log-search-submit' => 'Leita',
+	'abusefilter-log-entry' => '$1: $2 hrundi af stað misnotkunar síu, með breytingunni "$3" á $4.
+Aðgerðir: $5;
+Lýsing síunnar: $6',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 hrundi af stað síunni $3, með breytingunni "$4" á $5.
+Aðgerðir: $6;
+Lýsing síunnar: $7 ($8)',
+	'abusefilter-log-detailedentry-global' => 'altæk sía $1',
+	'abusefilter-log-detailedentry-local' => 'sía $1',
+	'abusefilter-log-detailslink' => 'nánar',
+	'abusefilter-log-details-var' => 'Breyta',
+	'abusefilter-log-details-val' => 'Gildi',
+	'abusefilter-log-details-vars' => 'Stiki aðgerðar',
+	'abusefilter-log-details-ip' => 'Upprunalegt vistfang',
+	'abusefilter-log-noactions' => 'engar',
+	'abusefilter-log-linkoncontribs' => 'misnotkunar skrá',
+	'abusefilter-log-linkoncontribs-text' => 'misnotkunar skrá notandans',
+	'abusefilter-log-hidden' => '(falin færsla)',
+	'abusefilter-log-hide' => '(fela eða birta)',
+	'abusefilter-log-hide-legend' => 'Fela færslu',
+	'abusefilter-log-hide-forbidden' => 'Þú hefur engin réttindi til að fela færslur í misnotkunar skránni',
+	'abusefilter-logentry-suppress' => 'faldi "[[$1]]"',
+	'abusefilter-list' => 'Allar síur',
+	'abusefilter-list-status' => 'Staða',
+	'abusefilter-list-consequences' => 'Afleiðingar',
+	'abusefilter-list-visibility' => 'Sýnileiki',
+	'abusefilter-list-edit' => 'Breyting',
+	'abusefilter-list-limit' => 'Fjöldi færslna á síðu:',
+	'abusefilter-list-lastmodified' => 'Síðast breytt',
+	'abusefilter-unhidden' => 'Sýnileg öllum',
+	'abusefilter-enabled' => 'Virk',
+	'abusefilter-deleted' => 'Eytt',
+	'abusefilter-disabled' => 'Óvirk',
+	'abusefilter-new' => 'Búa til nýja misnotkunar síu',
+	'abusefilter-links' => 'Gagnlegir tenglar:',
+	'abusefilter-tools-modifiertest-submit' => 'Prófa',
+	'abusefilter-loglink' => 'Skoða misnotkunarskránna',
+	'abusefilter-status-global' => 'Altæk',
+	'abusefilter-list-options' => 'Möguleikar',
+	'abusefilter-list-options-deleted' => 'Eyddar síur:',
+	'abusefilter-list-options-deleted-only' => 'Sýna eingöngu eyddar síur',
+	'abusefilter-list-options-deleted-hide' => 'Fela eyddar síur',
+	'abusefilter-list-options-deleted-show' => 'Birta eyddar síur',
+	'abusefilter-list-options-disabled' => 'Óvirkar síur:',
+	'abusefilter-list-options-hidedisabled' => 'Fela óvirkar síur',
+	'abusefilter-list-options-submit' => 'Uppfæra',
+	'abusefilter-edit-oldwarning' => '<strong>ATH: Þú ert að breyta gamalli útgáfu þessarar síu.
+Sú tölfræði sem vitnað er í er fyrir nýjustu útgáfu síunnar.
+Ef þú vistar breytingarnar munu allar breytingar sem gerðar hafa verið á henni frá þeirri útgáfu vera fjarlægðar ef þú vistar.</strong>
+[[Special:AbuseFilter/history/$2|Fara aftur á breytingarskrá síunnar]]',
+	'abusefilter-edit-status-label' => 'Tölfræði:',
+	'abusefilter-edit-status' => 'Af síðustu $1 {{PLURAL:$1|aðgerð|aðgerðum}} hefur þessi sía passað við $2 ($3%).
+Að meðaltali tekur vinnsla síunnar $4 ms og eyðir $5 {{PLURAL:$5|skilyrði|skilyrðum}} af hámarksfjölda skilyrða.',
+	'abusefilter-edit-throttled' => "'''Viðvörun''': Sían var sjálfvirkt óvirkjuð sem öryggisráðstöfun.
+Hún passaði við fleiri en $1% breytinga.",
+	'abusefilter-edit-new' => 'Ný sía',
+	'abusefilter-edit-save' => 'Vista síu',
+	'abusefilter-edit-description' => "Lýsing:
+:''(birtist öllum)''",
+	'abusefilter-edit-enabled' => 'Virkja þessa síu',
+	'abusefilter-edit-rules' => 'Skilyrði:',
+	'abusefilter-edit-lastmod-text' => '$1 af $2',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Plúsa (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Mínusa (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Margfalda (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'Deila (/)',
+	'abusefilter-edit-builder-op-comparison-equal' => 'Jafnt og (==)',
+	'abusefilter-edit-builder-op-comparison-notequal' => 'Ekki jafnt og (!=)',
+	'abusefilter-edit-builder-op-comparison-lt' => 'Minna en (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'Stærra en (>)',
+	'abusefilter-edit-builder-op-comparison-lte' => 'Minna en eða jafnt og (<=)',
+	'abusefilter-edit-builder-op-comparison-gte' => 'Stærra en eða jafnt og (>=)',
+	'abusefilter-edit-builder-op-bool-not' => 'Ekki (!)',
+	'abusefilter-edit-builder-op-bool-and' => 'Og (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'Eða (|)',
 );
 
 /** Italian (Italiano)
