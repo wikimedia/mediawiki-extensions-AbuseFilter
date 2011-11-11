@@ -14683,6 +14683,11 @@ Hún passaði við fleiri en $1% breytinga.",
 	'abusefilter-edit-builder-op-bool-not' => 'Ekki (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'Og (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Eða (|)',
+	'abusefilter-action-warn' => 'viðvörun',
+	'abusefilter-action-block' => 'banna',
+	'abusefilter-action-degroup' => 'Fjarlægja úr hópum',
+	'abusefilter-action-rangeblock' => 'Fjöldabanna',
+	'abusefilter-action-disallow' => 'Hafna',
 );
 
 /** Italian (Italiano)
