@@ -13079,6 +13079,7 @@ $messages['ht'] = array(
 /** Hungarian (Magyar)
  * @author Bdamokos
  * @author Dani
+ * @author Dj
  * @author Dunee
  * @author Glanthor Reviol
  * @author Misibacsi
@@ -13208,7 +13209,6 @@ A vandálszűrő leírása: $7 ($8)',
 	'abusefilter-list-options-disabled' => 'Kikapcsolt szűrők:',
 	'abusefilter-list-options-hidedisabled' => 'Kikapcsolt szűrők elrejtése',
 	'abusefilter-list-options-submit' => 'Frissítés',
-	'abusefilter-tools-subtitle' => 'Eszközök',
 	'abusefilter-tools-text' => 'Egy pár eszköz a vandálszűrők kialakításához és hibakereséséhez.',
 	'abusefilter-tools-expr' => 'Expression tesztelő',
 	'abusefilter-tools-submitexpr' => 'Kiértékel',
@@ -13476,6 +13476,7 @@ A hiba részletes leírásához kattints az „Ellenőrzés” gombra.',
 	'abusefilter-log-name' => 'Vandálszűrő naplója',
 	'abusefilter-log-header' => 'Ebben a naplóban a szűrőkön végzett változtatások története található. A részletekhez lásd [[Special:AbuseFilter/history|a friss szűrőváltoztatások]] oldalát.',
 	'abusefilter-log-entry-modify' => 'megváltoztatta $1-t ($2)',
+	'abusefilter-log-noresults' => 'Nincs találat',
 	'abusefilter-diff-title' => 'Változatok közötti különbségek',
 	'abusefilter-diff-item' => 'Tétel',
 	'abusefilter-diff-version' => '$2 változata ($1)',
@@ -32144,6 +32145,11 @@ $1 ماس كەلگەن مەشغۇلات چېكىگە يەتتى.",
 	'abusefilter-topnav-tools' => 'سازلاش قورالى',
 	'abusefilter-topnav-import' => 'سۈزگۈچ ئەكىر',
 	'abusefilter-log-name' => 'سۈيىئىستىمال سۈزگۈچ خاتىرىسى',
+);
+
+/** Uyghur (Latin script) (Uyghurche‎) */
+$messages['ug-latn'] = array(
+	'abusefilter-examine-submit' => 'Izdash',
 );
 
 /** Ukrainian (Українська)
