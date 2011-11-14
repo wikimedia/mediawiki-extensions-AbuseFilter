@@ -23344,7 +23344,7 @@ $messages['pdc'] = array(
 	'abusefilter-log-hide-reason' => 'Grund:',
 	'abusefilter-list-edit' => 'Ennere',
 	'abusefilter-hidden' => 'Private',
-	'abusefilter-tools-subtitle' => 'Gscharr',
+	'abusefilter-deleted' => 'Gelescht',
 	'abusefilter-tools-reautoconfirm-user' => 'Yuuser:',
 	'abusefilter-edit-status-label' => 'Nummere:',
 	'abusefilter-edit-lastmod-text' => '$1 vun $2',
@@ -23361,10 +23361,14 @@ $messages['pdc'] = array(
 	'abusefilter-history-timestamp' => 'Zeit',
 	'abusefilter-history-user' => 'Yuuser',
 	'abusefilter-history-comments' => 'Aamaerickinge',
+	'abusefilter-history-deleted' => 'Gelescht',
 	'abusefilter-history-select-user' => 'Yuuser:',
+	'abusefilter-action-block' => 'Aabinne',
 	'abusefilter-test-load' => 'Laade',
 	'abusefilter-examine-user' => 'Yuuser:',
+	'abusefilter-examine-title' => 'Blattnaame:',
 	'abusefilter-examine-submit' => 'Uffgucke',
+	'abusefilter-topnav-home' => 'Schtaert-Blatt',
 	'abusefilter-diff-version' => 'Version vum $1 vun $2',
 );
 
