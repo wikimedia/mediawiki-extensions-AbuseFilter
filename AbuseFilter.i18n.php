@@ -29103,8 +29103,8 @@ $messages['stq'] = array(
 Uunkonstruktive Biedraage wäide maast gjucht gau wächhoald. In wierhoalde un besunners läipe Falle wäd dien Account blw. dien IP-Adresse speerd.
 Wan du toankst, dät dien Annerenge konstruktiv waas, koast du ju oawers mäd n näien Klik ap „{{int:savearticle}}“ bestäätigje.
 Kuute Beskrieuwenge fon ju nit beoachtede Räägel: $1",
-	'abusefilter-disallowed' => 'Disse Aktion wuud automatisk as schoadelk ärkoand un deeruum nit truchfierd.
-Wan du toankst, dät dien Biedraach konstruktiv waas, weende die dan an n Administrator un schilderje him, wät du fersoacht hääst bietoudreegen.
+	'abusefilter-disallowed' => 'Disse Aktion wuud automatisk as skoadelk ärkoand un deeruum nit truchfierd.
+Wan du toankst, dät dien Biedraach konstruktiv waas, weende die dan an n Administrator un skilderje him, wät du fersoacht hääst bietoudreegen.
 
 Kuute Beskrieuwenge fon ju nit beoachtede Räägel: $1',
 	'abusefilter-blocked-display' => 'Disse Aktion wuud automatisk as skoadelk ärkoand un nit uutfierd.
@@ -29197,7 +29197,6 @@ Sieuwebeskrieuwenge: $7 ($8)',
 	'abusefilter-list-options-disabled' => 'Deaktivierde Sieuwen',
 	'abusefilter-list-options-hidedisabled' => 'Deaktivierde Sieuwen fersteete',
 	'abusefilter-list-options-submit' => 'Spiekerje',
-	'abusefilter-tools-subtitle' => 'Reewen',
 	'abusefilter-tools-text' => 'Hier sunt wäkke Reewen, do der hälpe konnen bie dät Formulierjen un bie ju Failersäike fon Misbruukssieuwen.',
 	'abusefilter-tools-expr' => 'Expression-Tester',
 	'abusefilter-tools-submitexpr' => 'Wröigje',
