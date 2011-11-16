@@ -10,8 +10,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 	function show() {
 		$show = $this->loadData();
-
-		global $wgOut, $wgLang;
+		$out = $this->getOutput();
 
 		$links = array();
 		if ( $this->mFilter ) {
@@ -23,24 +22,22 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$links[$msg] = Linker::link( $title, wfMsgExt( $msg, 'parseinline' ) );
 		}
 
-		$backlinks = $wgLang->pipeList( $links );
-		$wgOut->addHTML( Xml::tags( 'p', null, $backlinks ) );
+		$backlinks = $this->getLang()->pipeList( $links );
+		$out->addHTML( Xml::tags( 'p', null, $backlinks ) );
 
 		if ( $show ) {
-			$wgOut->addHTML( $this->formatDiff() );
+			$out->addHTML( $this->formatDiff() );
 		}
 	}
 
 	function loadData() {
-		global $wgUser;
 		$oldSpec = $this->mParams[3];
 		$newSpec = $this->mParams[4];
 		$this->mFilter = $this->mParams[1];
 
 		if ( AbuseFilter::filterHidden( $this->mFilter ) &&
-				!$wgUser->isAllowed( 'abusefilter-modify' ) ) {
-			global $wgOut;
-			$wgOut->addWikiMsg( 'abusefilter-history-error-hidden' );
+				!$this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
+			$this->getOutput()->addWikiMsg( 'abusefilter-history-error-hidden' );
 			return false;
 		}
 
@@ -48,8 +45,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		$this->mNewVersion = $this->loadSpec( $newSpec, $oldSpec );
 
 		if ( is_null( $this->mOldVersion ) || is_null( $this->mNewVersion ) ) {
-			global $wgOut;
-			$wgOut->addWikiMsg( 'abusefilter-diff-invalid' );
+			$this->getOutput()->addWikiMsg( 'abusefilter-diff-invalid' );
 			return false;
 		}
 
@@ -153,10 +149,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	}
 
 	function formatVersionLink( $timestamp, $history_id ) {
-		global $wgLang;
-
 		$filter = $this->mFilter;
-		$text = $wgLang->timeanddate( $timestamp, true );
+		$text = $this->getLang()->timeanddate( $timestamp, true );
 		$title = $this->getTitle( "history/$filter/item/$history_id" );
 
 		$link = Linker::link( $title, $text );

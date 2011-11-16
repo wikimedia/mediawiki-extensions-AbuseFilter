@@ -1,9 +1,14 @@
 <?php
 
-abstract class AbuseFilterView {
+abstract class AbuseFilterView extends ContextSource {
+	/**
+	 * @param $page SpecialPage
+	 * @param $params array
+	 */
 	function __construct( $page, $params ) {
 		$this->mPage = $page;
 		$this->mParams = $params;
+		$this->setContext( $this->mPage->getContext() );
 	}
 
 	/**

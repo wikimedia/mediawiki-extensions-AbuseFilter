@@ -2,12 +2,11 @@
 
 class ApiAbuseFilterCheckMatch extends ApiBase {
 	public function execute() {
-		global $wgUser;
 		$params = $this->extractRequestParams();
 		$this->requireOnlyOneParameter( $params, 'vars', 'rcid', 'logid' );
 
 		// "Anti-DoS"
-		if ( !$wgUser->isAllowed( 'abusefilter-modify' ) ) {
+		if ( !$this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
 			$this->dieUsageMsg( 'permissiondenied' );
 		}
 

@@ -3,10 +3,8 @@
 class ApiAbuseFilterCheckSyntax extends ApiBase {
 
 	public function execute() {
-		global $wgUser;
-
 		// "Anti-DoS"
-		if ( !$wgUser->isAllowed( 'abusefilter-modify' ) ) {
+		if ( !$this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
 			$this->dieUsageMsg( 'permissiondenied' );
 		}
 

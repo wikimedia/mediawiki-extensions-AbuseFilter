@@ -35,8 +35,8 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 	}
 
 	public function execute() {
-		global $wgUser;
-		if ( !$wgUser->isAllowed( 'abusefilter-view' ) ) {
+		$user = $this->getUser();
+		if ( !$user->isAllowed( 'abusefilter-view' ) ) {
 			$this->dieUsage( 'You don\'t have permission to view abuse filters', 'permissiondenied' );
 		}
 
@@ -94,7 +94,7 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 
 		$res = $this->select( __METHOD__ );
 
-		$showhidden = $wgUser->isAllowed( 'abusefilter-modify' );
+		$showhidden = $user->isAllowed( 'abusefilter-modify' );
 
 		$count = 0;
 		foreach ( $res as $row ) {

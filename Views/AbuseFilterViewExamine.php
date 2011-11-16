@@ -8,10 +8,9 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	public static $examineId = null;
 
 	function show() {
-		global $wgOut;
-
-		$wgOut->setPageTitle( wfMsg( 'abusefilter-examine' ) );
-		$wgOut->addWikiMsg( 'abusefilter-examine-intro' );
+		$out = $this->getOutput();
+		$out->setPageTitle( $this->msg( 'abusefilter-examine' ) );
+		$out->addWikiMsg( 'abusefilter-examine-intro' );
 
 		$this->loadParameters();
 
@@ -29,8 +28,6 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	}
 
 	function showSearch() {
-		global $wgOut;
-
 		// Add selector
 		$selector = '';
 
@@ -55,7 +52,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			wfMsg( 'abusefilter-examine-legend' ),
 			$selector
 		);
-		$wgOut->addHTML( $selector );
+		$this->getOutput()->addHTML( $selector );
 
 		if ( $this->mSubmit ) {
 			$this->showResults();
@@ -63,9 +60,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	}
 
 	function showResults() {
-		global $wgUser, $wgOut;
-
-		$changesList = new AbuseFilterChangesList( $wgUser->getSkin() );
+		$changesList = new AbuseFilterChangesList( $this->getSkin() );
 		$output = $changesList->beginRecentChangesList();
 		$this->mCounter = 1;
 
@@ -77,18 +72,16 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 
 		$output .= $changesList->endRecentChangesList();
 
-		$wgOut->addHTML( $output );
+		$this->getOutput()->addHTML( $output );
 	}
 
 	function showExaminerForRC( $rcid ) {
-		global $wgOut;
-
 		// Get data
 		$dbr = wfGetDB( DB_SLAVE );
 		$row = $dbr->selectRow( 'recentchanges', '*', array( 'rc_id' => $rcid ), __METHOD__ );
 
 		if ( !$row ) {
-			$wgOut->addWikiMsg( 'abusefilter-examine-notfound' );
+			$this->getOutput()->addWikiMsg( 'abusefilter-examine-notfound' );
 			return;
 		}
 
@@ -101,14 +94,12 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	}
 
 	function showExaminerForLogEntry( $logid ) {
-		global $wgOut;
-
 		// Get data
 		$dbr = wfGetDB( DB_SLAVE );
 		$row = $dbr->selectRow( 'abuse_filter_log', '*', array( 'afl_id' => $logid ), __METHOD__ );
 
 		if ( !$row ) {
-			$wgOut->addWikiMsg( 'abusefilter-examine-notfound' );
+			$this->getOutput()->addWikiMsg( 'abusefilter-examine-notfound' );
 			return;
 		}
 
@@ -121,10 +112,10 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	}
 
 	function showExaminer( $vars ) {
-		global $wgOut, $wgUser;
+		$output = $this->getOutput();
 
 		if ( !$vars ) {
-			$wgOut->addWikiMsg( 'abusefilter-examine-incompatible' );
+			$output->addWikiMsg( 'abusefilter-examine-incompatible' );
 			return;
 		}
 
@@ -134,10 +125,10 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 
 		$output = '';
 
-		$wgOut->addModules( 'ext.abuseFilter.examine' );
+		$output->addModules( 'ext.abuseFilter.examine' );
 
 		// Add test bit
-		if ( $wgUser->isAllowed( 'abusefilter-modify' ) ) {
+		if ( $this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
 			$tester = Xml::tags( 'h2', null, wfMsgExt( 'abusefilter-examine-test', 'parseinline' ) );
 			$tester .= AbuseFilter::buildEditBox( $this->mTestFilter, 'wpTestFilter', false );
 			$tester .=
@@ -181,16 +172,16 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$output .= Xml::tags( 'h2', null, wfMsgExt( 'abusefilter-examine-vars', 'parseinline' ) );
 		$output .= AbuseFilter::buildVarDumpTable( $vars );
 
-		$wgOut->addHTML( $output );
+		$output->addHTML( $output );
 	}
 
 	function loadParameters() {
-		global $wgRequest;
-		$searchUsername = $wgRequest->getText( 'wpSearchUser' );
-		$this->mSearchPeriodStart = $wgRequest->getText( 'wpSearchPeriodStart' );
-		$this->mSearchPeriodEnd = $wgRequest->getText( 'wpSearchPeriodEnd' );
-		$this->mSubmit = $wgRequest->getCheck( 'submit' );
-		$this->mTestFilter = $wgRequest->getText( 'testfilter' );
+		$request = $this->getRequest();
+		$searchUsername = $request->getText( 'wpSearchUser' );
+		$this->mSearchPeriodStart = $request->getText( 'wpSearchPeriodStart' );
+		$this->mSearchPeriodEnd = $request->getText( 'wpSearchPeriodEnd' );
+		$this->mSubmit = $request->getCheck( 'submit' );
+		$this->mTestFilter = $request->getText( 'testfilter' );
 
 		// Normalise username
 		$userTitle = Title::newFromText( $searchUsername );

@@ -35,8 +35,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 	}
 
 	public function execute() {
-		global $wgUser;
-		if ( !$wgUser->isAllowed( 'abusefilter-log' ) ) {
+		$user = $this->getUser();
+		if ( !$user->isAllowed( 'abusefilter-log' ) ) {
 			$this->dieUsage( 'You don\'t have permission to view the abuse log', 'permissiondenied' );
 		}
 
@@ -54,10 +54,10 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$fld_timestamp = isset( $prop['timestamp'] );
 		$fld_hidden = isset( $prop['hidden'] );
 
-		if ( $fld_ip && !$wgUser->isAllowed( 'abusefilter-private' ) ) {
+		if ( $fld_ip && !$user->isAllowed( 'abusefilter-private' ) ) {
 			$this->dieUsage( 'You don\'t have permission to view IP addresses', 'permissiondenied' );
 		}
-		if ( $fld_details && !$wgUser->isAllowed( 'abusefilter-log-detail' ) ) {
+		if ( $fld_details && !$user->isAllowed( 'abusefilter-log-detail' ) ) {
 			$this->dieUsage( 'You don\'t have permission to view detailed abuse log entries', 'permissiondenied' );
 		}
 
@@ -90,7 +90,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 
 		$this->addWhereIf( array( 'afl_user_text' => $params['user'] ), isset( $params['user'] ) );
 		$this->addWhereIf( array( 'afl_filter' => $params['filter'] ), isset( $params['filter'] ) );
-		$this->addWhereIf( $notDeletedCond, !SpecialAbuseLog::canSeeHidden() );
+		$this->addWhereIf( $notDeletedCond, !SpecialAbuseLog::canSeeHidden( $user ) );
 
 		$title = $params['title'];
 		if ( !is_null( $title ) ) {

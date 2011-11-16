@@ -2,9 +2,7 @@
 
 class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 	public function execute() {
-		global $wgUser;
-
-		if ( !$wgUser->isAllowed( 'abusefilter-modify' ) ) {
+		if ( !$this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
 			$this->dieUsage( 'You do not have permissions to unblock autopromotion', 'permissiondenied' );
 		}
 

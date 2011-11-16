@@ -4,37 +4,32 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 class SpecialAbuseFilter extends SpecialPage {
-	var $mSkin;
-
 	public function __construct() {
 		parent::__construct( 'AbuseFilter', 'abusefilter-view' );
 	}
 
 	public function execute( $subpage ) {
-		global $wgUser, $wgOut, $wgRequest;
+		$out = $this->getOutput();
+		$request = $this->getRequest();
 
-		$wgOut->addModuleStyles( 'ext.abuseFilter' );
+		$out->addModuleStyles( 'ext.abuseFilter' );
 		$view = 'AbuseFilterViewList';
 
 		$this->setHeaders();
 
 		$this->loadParameters( $subpage );
-		$wgOut->setPageTitle( wfMsg( 'abusefilter-management' ) );
+		$out->setPageTitle( $this->msg( 'abusefilter-management' ) );
 
 		// Are we allowed?
-		if ( !$wgUser->isAllowed( 'abusefilter-view' ) ) {
-			$this->displayRestrictionError();
-			return;
-		}
+		$this->checkPermissions();
 
-		if ( $wgRequest->getVal( 'result' ) == 'success' ) {
-			$wgOut->setSubtitle( wfMsg( 'abusefilter-edit-done-subtitle' ) );
-			$changedFilter = intval( $wgRequest->getVal( 'changedfilter' ) );
-			$wgOut->wrapWikiMsg( '<p class="success">$1</p>',
+		if ( $request->getVal( 'result' ) == 'success' ) {
+			$out->setSubtitle( wfMsg( 'abusefilter-edit-done-subtitle' ) );
+			$changedFilter = intval( $request->getVal( 'changedfilter' ) );
+			$out->wrapWikiMsg( '<p class="success">$1</p>',
 				array( 'abusefilter-edit-done', $changedFilter ) );
 		}
 
-		$this->mSkin = $wgUser->getSkin();
 		$this->mHistoryID = null;
 		$pageType = 'home';
 
@@ -100,19 +95,17 @@ class SpecialAbuseFilter extends SpecialPage {
 		}
 
 		// Links at the top
-		AbuseFilter::addNavigationLinks( $wgOut, $this->mSkin, $pageType );
+		AbuseFilter::addNavigationLinks( $out, $this->getSkin(), $pageType );
 
 		$v = new $view( $this, $params );
 		$v->show();
 	}
 
 	function loadParameters( $subpage ) {
-		global $wgRequest;
-
 		$filter = $subpage;
 
 		if ( !is_numeric( $filter ) && $filter != 'new' ) {
-			$filter = $wgRequest->getIntOrNull( 'wpFilter' );
+			$filter = $this->getRequest()->getIntOrNull( 'wpFilter' );
 		}
 		$this->mFilter = $filter;
 	}

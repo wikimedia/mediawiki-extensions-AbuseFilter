@@ -4,17 +4,18 @@ if ( !defined( 'MEDIAWIKI' ) )
 
 class AbuseFilterViewTools extends AbuseFilterView {
 	function show() {
-		global $wgOut, $wgUser;
+		$out = $this->getOutput();
+		$user = $this->getUser();
 
 		// Header
-		$wgOut->addWikiMsg( 'abusefilter-tools-text' );
+		$out->addWikiMsg( 'abusefilter-tools-text' );
 
 		// Expression evaluator
 		$eval = '';
 		$eval .= AbuseFilter::buildEditBox( '', 'wpTestExpr' );
 
 		// Only let users with permission actually test it
-		if ( $wgUser->isAllowed( 'abusefilter-modify' ) ) {
+		if ( $user->isAllowed( 'abusefilter-modify' ) ) {
 			$eval .= Xml::tags( 'p', null,
 				Xml::element( 'input',
 				array(
@@ -26,11 +27,11 @@ class AbuseFilterViewTools extends AbuseFilterView {
 			$eval .= Xml::element( 'p', array( 'id' => 'mw-abusefilter-expr-result' ), ' ' );
 		}
 		$eval = Xml::fieldset( wfMsg( 'abusefilter-tools-expr' ), $eval );
-		$wgOut->addHTML( $eval );
+		$out->addHTML( $eval );
 
-		$wgOut->addModules( 'ext.abuseFilter.tools' );
+		$out->addModules( 'ext.abuseFilter.tools' );
 
-		if ( $wgUser->isAllowed( 'abusefilter-modify' ) ) {
+		if ( $user->isAllowed( 'abusefilter-modify' ) ) {
 			// Hacky little box to re-enable autoconfirmed if it got disabled
 			$rac = '';
 			$rac .= Xml::inputLabel(
@@ -49,7 +50,7 @@ class AbuseFilterViewTools extends AbuseFilterView {
 				)
 			);
 			$rac = Xml::fieldset( wfMsg( 'abusefilter-tools-reautoconfirm' ), $rac );
-			$wgOut->addHTML( $rac );
+			$out->addHTML( $rac );
 		}
 	}
 }

@@ -8,19 +8,19 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	static $mChangeLimit = 100;
 
 	function show() {
-		global $wgOut, $wgUser, $wgRequest;
+		$out = $this->getOutput();
 
 		AbuseFilter::disableConditionLimit();
 
-		if ( !$wgUser->isAllowed( 'abusefilter-modify' ) ) {
-			$wgOut->addWikiMsg( 'abusefilter-mustbeeditor' );
+		if ( !$this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
+			$out->addWikiMsg( 'abusefilter-mustbeeditor' );
 			return;
 		}
 
 		$this->loadParameters();
 
-		$wgOut->setPageTitle( wfMsg( 'abusefilter-test' ) );
-		$wgOut->addWikiMsg( 'abusefilter-test-intro', self::$mChangeLimit );
+		$out->setPageTitle( wfMsg( 'abusefilter-test' ) );
+		$out->addWikiMsg( 'abusefilter-test-intro', self::$mChangeLimit );
 
 		$output = '';
 		$output .= AbuseFilter::buildEditBox( $this->mFilter, 'wpTestFilter' ) . "\n";
@@ -68,19 +68,19 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$output = Xml::fieldset( wfMsg( 'abusefilter-test-legend' ), $output );
 
-		$wgOut->addHTML( $output );
+		$out->addHTML( $output );
 
-		if ( $wgRequest->wasPosted() ) {
+		if ( $this->getRequest()->wasPosted() ) {
 			$this->doTest();
 		}
 	}
 
 	function doTest() {
 		// Quick syntax check.
-		global $wgUser, $wgOut;
+		$out = $this->getOutput();
 		$result = AbuseFilter::checkSyntax( $this->mFilter );
 		if ( $result !== true ) {
-			$wgOut->addWikiMsg( 'abusefilter-test-syntaxerr' );
+			$out->addWikiMsg( 'abusefilter-test-syntaxerr' );
 			return;
 		}
 		$dbr = wfGetDB( DB_SLAVE );
@@ -102,7 +102,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		}
 
 		// Get our ChangesList
-		$changesList = new AbuseFilterChangesList( $wgUser->getSkin() );
+		$changesList = new AbuseFilterChangesList( $this->getSkin() );
 		$output = $changesList->beginRecentChangesList();
 
 		$res = $dbr->select(
@@ -136,18 +136,18 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$output .= $changesList->endRecentChangesList();
 
-		$wgOut->addHTML( $output );
+		$out->addHTML( $output );
 	}
 
 	function loadParameters() {
-		global $wgRequest;
+		$request = $this->getRequest();
 
-		$this->mFilter = $wgRequest->getText( 'wpTestFilter' );
-		$this->mShowNegative = $wgRequest->getBool( 'wpShowNegative' );
-		$testUsername = $wgRequest->getText( 'wpTestUser' );
-		$this->mTestPeriodEnd = $wgRequest->getText( 'wpTestPeriodEnd' );
-		$this->mTestPeriodStart = $wgRequest->getText( 'wpTestPeriodStart' );
-		$this->mTestPage = $wgRequest->getText( 'wpTestPage' );
+		$this->mFilter = $request->getText( 'wpTestFilter' );
+		$this->mShowNegative = $request->getBool( 'wpShowNegative' );
+		$testUsername = $request->getText( 'wpTestUser' );
+		$this->mTestPeriodEnd = $request->getText( 'wpTestPeriodEnd' );
+		$this->mTestPeriodStart = $request->getText( 'wpTestPeriodStart' );
+		$this->mTestPage = $request->getText( 'wpTestPage' );
 
 		if ( !$this->mFilter
 			&& count( $this->mParams ) > 1
