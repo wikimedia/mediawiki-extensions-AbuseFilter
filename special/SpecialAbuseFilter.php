@@ -95,7 +95,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		}
 
 		// Links at the top
-		AbuseFilter::addNavigationLinks( $out, $this->getSkin(), $pageType );
+		AbuseFilter::addNavigationLinks( $this->getContext(), $pageType );
 
 		$v = new $view( $this, $params );
 		$v->show();

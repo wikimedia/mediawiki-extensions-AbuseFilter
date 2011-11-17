@@ -120,8 +120,7 @@ class AbuseFilter {
 	);
 	public static $editboxName = null;
 
-	public static function addNavigationLinks( $out, $sk, $pageType ) {
-		global $wgLang, $wgUser;
+	public static function addNavigationLinks( IContextSource $context, $pageType ) {
 		$linkDefs = array(
 			'home' => 'Special:AbuseFilter',
 			'recentchanges' => 'Special:AbuseFilter/history',
@@ -130,7 +129,7 @@ class AbuseFilter {
 			'log' => 'Special:AbuseLog',
 		);
 
-		if ( $wgUser->isAllowed( 'abusefilter-modify' ) ) {
+		if ( $context->getUser()->isAllowed( 'abusefilter-modify' ) ) {
 			$linkDefs = array_merge( $linkDefs, array(
 					'tools' => 'Special:AbuseFilter/tools',
 					'import' => 'Special:AbuseFilter/import',
@@ -160,16 +159,16 @@ class AbuseFilter {
 			if ( $name == $pageType ) {
 				$links[] = Xml::tags( 'strong', null, $msg );
 			} else {
-				$links[] = $sk->link( $title, $msg );
+				$links[] = $context->getSkin()->link( $title, $msg );
 			}
 		}
 
-		$linkStr = wfMsg( 'parentheses', $wgLang->pipeList( $links ) );
+		$linkStr = wfMsg( 'parentheses', $context->getLang()->pipeList( $links ) );
 		$linkStr = wfMsgExt( 'abusefilter-topnav', 'parseinline' ) . " $linkStr";
 
 		$linkStr = Xml::tags( 'div', array( 'class' => 'mw-abusefilter-navigation' ), $linkStr );
 
-		$out->setSubtitle( $linkStr );
+		$context->getOutput()->setSubtitle( $linkStr );
 	}
 
 	/**
