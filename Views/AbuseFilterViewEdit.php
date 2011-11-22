@@ -240,7 +240,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		// Build the edit form
 		$out = $this->getOutput();
-		$lang = $this->getLang();
+		$lang = $this->getLanguage();
 		$user = $this->getUser();
 		$sk = $this->getSkin();
 
@@ -655,7 +655,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$existingSelector->addOption( 'abusefilter-warning' );
 
-		$lang = $this->getLang();
+		$lang = $this->getLanguage();
 		foreach( $res as $row ) {
 			if ( $lang->lcfirst( $row->page_title ) == $lang->lcfirst( $warnMsg ) ) {
 				$existingSelector->setDefault( $lang->lcfirst( $warnMsg ) );

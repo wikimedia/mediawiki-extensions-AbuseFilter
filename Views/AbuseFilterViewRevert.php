@@ -56,7 +56,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 			// Look up all of them.
 			$results = $this->doLookup();
-			$lang = $this->getLang();
+			$lang = $this->getLanguage();
 			$list = array();
 
 			foreach ( $results as $result ) {

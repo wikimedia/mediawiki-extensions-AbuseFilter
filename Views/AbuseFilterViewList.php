@@ -113,7 +113,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$overflow_percent = sprintf( "%.2f", 100 * $overflow_count / $total_count );
 			$match_percent = sprintf( "%.2f", 100 * $match_count / $total_count );
 
-			$lang = $this->getLang();
+			$lang = $this->getLanguage();
 			$status = wfMsgExt( 'abusefilter-status', array( 'parseinline' ),
 				$lang->formatNum( $total_count ),
 				$lang->formatNum( $overflow_count ),
@@ -180,7 +180,7 @@ class AbuseFilterPager extends TablePager {
 	}
 
 	function formatValue( $name, $value ) {
-		$lang = $this->getLang();
+		$lang = $this->getLanguage();
 		$row = $this->mCurrentRow;
 
 		switch( $name ) {

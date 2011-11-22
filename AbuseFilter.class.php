@@ -163,7 +163,7 @@ class AbuseFilter {
 			}
 		}
 
-		$linkStr = wfMsg( 'parentheses', $context->getLang()->pipeList( $links ) );
+		$linkStr = wfMsg( 'parentheses', $context->getLanguage()->pipeList( $links ) );
 		$linkStr = wfMsgExt( 'abusefilter-topnav', 'parseinline' ) . " $linkStr";
 
 		$linkStr = Xml::tags( 'div', array( 'class' => 'mw-abusefilter-navigation' ), $linkStr );

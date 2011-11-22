@@ -123,7 +123,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			$vars = $vars->exportAllVars();
 		}
 
-		$output = '';
+		$html = '';
 
 		$output->addModules( 'ext.abuseFilter.examine' );
 
@@ -149,8 +149,8 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 						'id' => 'mw-abusefilter-load'
 					)
 				);
-			$output .= Xml::tags( 'div', array( 'id' => 'mw-abusefilter-examine-editor' ), $tester );
-			$output .= Xml::tags( 'p',
+			$html .= Xml::tags( 'div', array( 'id' => 'mw-abusefilter-examine-editor' ), $tester );
+			$html .= Xml::tags( 'p',
 				null,
 				Xml::element( 'input',
 					array(
@@ -169,10 +169,10 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		}
 
 		// Variable dump
-		$output .= Xml::tags( 'h2', null, wfMsgExt( 'abusefilter-examine-vars', 'parseinline' ) );
-		$output .= AbuseFilter::buildVarDumpTable( $vars );
+		$html .= Xml::tags( 'h2', null, wfMsgExt( 'abusefilter-examine-vars', 'parseinline' ) );
+		$html .= AbuseFilter::buildVarDumpTable( $vars );
 
-		$output->addHTML( $output );
+		$output->addHTML( $html );
 	}
 
 	function loadParameters() {

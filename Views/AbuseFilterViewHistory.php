@@ -38,7 +38,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			$links[$msg] = $sk->link( $title, wfMsgExt( $msg, 'parseinline' ) );
 		}
 
-		$backlinks = $this->getLang()->pipeList( $links );
+		$backlinks = $this->getLanguage()->pipeList( $links );
 		$out->addHTML( Xml::tags( 'p', null, $backlinks ) );
 
 		# For user
@@ -119,7 +119,7 @@ class AbuseFilterHistoryPager extends TablePager {
 
 	function formatValue( $name, $value ) {
 		$sk = $this->getSkin();
-		$lang = $this->getLang();
+		$lang = $this->getLanguage();
 
 		$row = $this->mCurrentRow;
 

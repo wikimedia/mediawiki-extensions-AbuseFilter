@@ -350,7 +350,7 @@ class SpecialAbuseLog extends SpecialPage {
 	function formatRow( $row, $li = true ) {
 		$user = $this->getUser();
 		$sk = $this->getSkin();
-		$lang = $this->getLang();
+		$lang = $this->getLanguage();
 
 		$actionLinks = array();
 

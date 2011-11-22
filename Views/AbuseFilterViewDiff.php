@@ -22,7 +22,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$links[$msg] = Linker::link( $title, wfMsgExt( $msg, 'parseinline' ) );
 		}
 
-		$backlinks = $this->getLang()->pipeList( $links );
+		$backlinks = $this->getLanguage()->pipeList( $links );
 		$out->addHTML( Xml::tags( 'p', null, $backlinks ) );
 
 		if ( $show ) {
@@ -150,7 +150,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 	function formatVersionLink( $timestamp, $history_id ) {
 		$filter = $this->mFilter;
-		$text = $this->getLang()->timeanddate( $timestamp, true );
+		$text = $this->getLanguage()->timeanddate( $timestamp, true );
 		$title = $this->getTitle( "history/$filter/item/$history_id" );
 
 		$link = Linker::link( $title, $text );
