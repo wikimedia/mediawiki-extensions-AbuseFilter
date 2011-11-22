@@ -52,6 +52,7 @@ tr.mw-abusefilter-list-deleted, tr.mw-abusefilter-list-deleted td {
 .mw-abusefilter-examine-match,
 .mw-abusefilter-syntaxresult-ok,
 li.mw-abusefilter-changeslist-match {
+	/* @embed */
 	background-image: url(yes_check.png);
 }
 
@@ -59,6 +60,7 @@ li.mw-abusefilter-changeslist-match {
 .mw-abusefilter-examine-syntaxerror,
 .mw-abusefilter-syntaxresult-error,
 li.mw-abusefilter-changeslist-nomatch {
+	/* @embed */
 	background-image: url(red_x.png);
 }
 
