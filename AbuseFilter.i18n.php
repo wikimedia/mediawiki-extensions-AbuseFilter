@@ -1533,7 +1533,6 @@ $messages['arc'] = array(
 	'abusefilter-list-options-deleted-hide' => 'ܛܫܝ ܡܨܦܝܢܝܬ̈ܐ ܫܝܦܬ̈ܐ',
 	'abusefilter-list-options-deleted-show' => 'ܚܒܘܫ ܡܨܦܝܢܝܬ̈ܐ ܫܝܦܬ̈ܐ',
 	'abusefilter-list-options-submit' => 'ܚܘܕܬܐ',
-	'abusefilter-tools-subtitle' => 'ܡܐܢ̈ܐ',
 	'abusefilter-tools-reautoconfirm-user' => 'ܡܦܠܚܢܐ:',
 	'abusefilter-edit-subtitle' => 'ܫܚܠܦ ܡܨܦܝܢܝܬܐ $1',
 	'abusefilter-edit-new' => 'ܡܨܦܝܢܝܬܐ ܚܕܬܐ',
@@ -1713,7 +1712,6 @@ $messages['arz'] = array(
 	'abusefilter-list-options-disabled' => 'المرشحات المعطلة:',
 	'abusefilter-list-options-hidedisabled' => 'أخفِ المرشحات المعطلة',
 	'abusefilter-list-options-submit' => 'تحديث',
-	'abusefilter-tools-subtitle' => 'أدوات',
 	'abusefilter-tools-text' => 'هنا بعض الأدوات التى ربما تكون مفيده فى صياغه وتصليح مرشحات الإساءه.',
 	'abusefilter-tools-expr' => 'مختبر التعبير',
 	'abusefilter-tools-submitexpr' => 'تقييم',
@@ -2407,7 +2405,6 @@ $messages['ba'] = array(
 	'abusefilter-list-options-disabled' => 'Ябылған һөҙгөстәр:',
 	'abusefilter-list-options-hidedisabled' => 'Ябылған һөҙгөстәрҙе йәшерергә',
 	'abusefilter-list-options-submit' => 'Яңыртырға',
-	'abusefilter-tools-subtitle' => 'Ҡоралдар',
 	'abusefilter-tools-text' => 'Бында урынһыҙ файҙаланыуҙар һөҙгөсөн билдәләүҙә һәм төҙәтеүҙә файҙалы булырлыҡ ҡайһы бер ҡоралдар урынлашҡан.',
 	'abusefilter-tools-expr' => 'Аңлатманы тикшереү',
 	'abusefilter-tools-submitexpr' => 'Баһаларға',
@@ -3635,7 +3632,6 @@ $messages['bn'] = array(
 	'abusefilter-list-options-disabled' => 'ফিল্টারগুলো নিষ্ক্রিয় করো',
 	'abusefilter-list-options-hidedisabled' => 'নিষ্ক্রিয় ফিল্টারগুলো লুকাও',
 	'abusefilter-list-options-submit' => 'হালনাগাদ',
-	'abusefilter-tools-subtitle' => 'হাতিয়ার',
 	'abusefilter-tools-expr' => 'এক্সপ্রেশন পরীক্ষক',
 	'abusefilter-tools-reautoconfirm-user' => 'ব্যবহারকারী:',
 	'abusefilter-edit-subtitle' => '$1 ফিল্টার সম্পাদনা',
@@ -3765,7 +3761,6 @@ $messages['bo'] = array(
 	'abusefilter-log-search-title' => 'ཁ་ཡིག',
 	'abusefilter-log-noactions' => 'གང་ཡང་མིན།',
 	'abusefilter-log-details-diff' => 'བཟོ་བཅོས་བྱས་བ།',
-	'abusefilter-tools-subtitle' => 'ལག་ཆ།',
 	'abusefilter-history-global' => 'འཛམ་གླིང་།',
 	'abusefilter-history-timestamp' => 'དུས་ཚོད།',
 	'abusefilter-history-user' => 'ཁོངས་མི།',
@@ -5196,7 +5191,6 @@ Provedená opatření: $6; popis filtru: $7 ($8)',
 	'abusefilter-list-options-disabled' => 'Vypnuté filtry:',
 	'abusefilter-list-options-hidedisabled' => 'Skrýt vypnuté filtry',
 	'abusefilter-list-options-submit' => 'Aktualizovat',
-	'abusefilter-tools-subtitle' => 'Nástroje',
 	'abusefilter-tools-text' => 'Zde jsou uvedeny některé nástroje, které se mohou hodit při přípravě a ladění filtrů zneužívání.',
 	'abusefilter-tools-expr' => 'Testování výrazů',
 	'abusefilter-tools-submitexpr' => 'Vyhodnotit',
@@ -6522,7 +6516,6 @@ Deskripsiyonê filitreyî: $7 ($8)',
 	'abusefilter-list-options-disabled' => 'Filitreyê qefilnaye',
 	'abusefilter-list-options-hidedisabled' => 'Filitreyê qefilnaye binimne',
 	'abusefilter-list-options-submit' => 'Rocaniye',
-	'abusefilter-tools-subtitle' => 'Xacetî',
 	'abusefilter-tools-text' => 'wexta ke filtreya suistimali formule bena nê hacet lazım beni.',
 	'abusefilter-tools-expr' => 'Testoğê Expressionî',
 	'abusefilter-tools-submitexpr' => 'Xulasa',
@@ -6922,7 +6915,6 @@ Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpo
 	'abusefilter-list-options-disabled' => 'Znjemóžnjone filtry:',
 	'abusefilter-list-options-hidedisabled' => 'Znjemóžnjone filtry schowaś',
 	'abusefilter-list-options-submit' => 'Aktualizěrowaś',
-	'abusefilter-tools-subtitle' => 'Rědy',
 	'abusefilter-tools-text' => 'How su někotare rědy, kótarež by mógli pśi formulěrowanju znjewužywańskich filtrow a za pytanje za zmólkimi w nich wužytne byś.',
 	'abusefilter-tools-expr' => 'Testowak wurazow',
 	'abusefilter-tools-submitexpr' => 'Wugódnośiś',
@@ -7239,7 +7231,6 @@ Kointalangan do sinalaguno diti kooturan di kohompit do kinarajanu nopo nga oboy
 	'abusefilter-deleted' => 'Nopugas',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|kotik|kokotik}}',
 	'abusefilter-list-options-submit' => 'Inwoguai',
-	'abusefilter-tools-subtitle' => 'Tangakakamot',
 	'abusefilter-tools-reautoconfirm-user' => 'Momoguno:',
 	'abusefilter-edit-tools' => 'Tangakakamot:',
 );
@@ -8223,7 +8214,6 @@ Descripción del filtro: $7 ($8)',
 	'abusefilter-list-options-disabled' => 'Filtros deshabilitados:',
 	'abusefilter-list-options-hidedisabled' => 'Esconder filtros deshabilitados',
 	'abusefilter-list-options-submit' => 'Actualización',
-	'abusefilter-tools-subtitle' => 'Herramientas',
 	'abusefilter-tools-text' => 'Aquí hay algunas herramientas que pueden ser útiles formulando y reparando filtros.',
 	'abusefilter-tools-expr' => 'Expresión de quien prueba',
 	'abusefilter-tools-submitexpr' => 'Evaluar',
@@ -9223,7 +9213,6 @@ $messages['fa'] = array(
 	'abusefilter-list-options-disabled' => 'پالایه‌های غیرفعال:',
 	'abusefilter-list-options-hidedisabled' => 'نهفتن پالایه‌های غیرفعال',
 	'abusefilter-list-options-submit' => 'به‌روزرسانی',
-	'abusefilter-tools-subtitle' => 'ابزارها',
 	'abusefilter-tools-text' => 'اینجا ابزارهایی کاربردی برای قاعده‌مندکردن و اشکال‌زدایی پالایه‌های خرابکاری وجود دارد.',
 	'abusefilter-tools-expr' => 'آزمایشگر عبارت',
 	'abusefilter-tools-submitexpr' => 'ارزیابی',
@@ -10481,7 +10470,6 @@ Dèscripcion du filtro : $7 ($8)',
 	'abusefilter-list-options-disabled' => 'Filtros dèsactivâs :',
 	'abusefilter-list-options-hidedisabled' => 'Cachiér los filtros dèsactivâs',
 	'abusefilter-list-options-submit' => 'Betar a jorn',
-	'abusefilter-tools-subtitle' => 'Outils',
 	'abusefilter-tools-text' => 'Vê-que quârques outils que pôvont étre utilos dens la formulacion et lo dècofierâjo des filtros d’abus.',
 	'abusefilter-tools-expr' => 'Èprovor d’èxprèssions',
 	'abusefilter-tools-submitexpr' => 'Èstimar',
@@ -11250,7 +11238,6 @@ $messages['grc'] = array(
 	'abusefilter-list-options' => 'Ἐπιλογαί',
 	'abusefilter-list-options-deleted' => 'Διαγεγραμμένα διηθητήρια:',
 	'abusefilter-list-options-submit' => 'Ἐνημέρωσις',
-	'abusefilter-tools-subtitle' => 'Ἐργαλεῖα',
 	'abusefilter-tools-reautoconfirm-user' => 'Χρώμενος:',
 	'abusefilter-edit-status-label' => 'Στατιστικά:',
 	'abusefilter-edit-new' => 'Νέον διηθητήριον',
@@ -11890,7 +11877,6 @@ $messages['he'] = array(
 	'abusefilter-list-options-disabled' => 'מסננים שבוטלו:',
 	'abusefilter-list-options-hidedisabled' => 'הסתרת מסננים שבוטלו',
 	'abusefilter-list-options-submit' => 'עדכון',
-	'abusefilter-tools-subtitle' => 'כלים',
 	'abusefilter-tools-text' => 'להלן מספר כלים שעשויים להיות לכם לעזר בניסוח ובניפוי השגיאות של מסנני ההשחתות.',
 	'abusefilter-tools-expr' => 'בודק הביטויים',
 	'abusefilter-tools-submitexpr' => 'הערכה',
@@ -12218,7 +12204,6 @@ $messages['hi'] = array(
 	'abusefilter-list-options-deleted-only' => 'नष्ट कर दिया गया फिल्टर',
 	'abusefilter-list-options-deleted-show' => 'हटाए गए फ़िल्टर्स में शामिल कर हैं',
 	'abusefilter-list-options-submit' => 'अद्यतन',
-	'abusefilter-tools-subtitle' => 'उपकरण',
 	'abusefilter-tools-expr' => 'अभिव्यक्ति परीक्षक',
 	'abusefilter-tools-submitexpr' => 'मूल्यांकन',
 	'abusefilter-tools-reautoconfirm' => 'बहाल ऑटो स्थिति की पुष्टि',
@@ -14031,7 +14016,6 @@ entri log penyalahgunaan.',
 	'abusefilter-list-options-disabled' => 'Filter yang dinon-aktifkan:',
 	'abusefilter-list-options-hidedisabled' => 'Sembunyikan filter yang dinon-aktifkan',
 	'abusefilter-list-options-submit' => 'Mutakhirkan',
-	'abusefilter-tools-subtitle' => 'Peralatan',
 	'abusefilter-tools-text' => 'Berikut adalah beberapa peralatan yang mungkin berguna untuk merumuskan dan menguji coba filter penyalahgunaan.',
 	'abusefilter-tools-expr' => 'Penguji ekspresi',
 	'abusefilter-tools-submitexpr' => 'Evaluasi',
@@ -14465,6 +14449,9 @@ Deskripsyon ti sagat: $7 ($8)',
 	'abusefilter-list-options-hidedisabled' => 'Ilemmeng dagiti naiddep a sagat',
 	'abusefilter-list-options-submit' => 'Pabaro',
 	'abusefilter-tools-text' => 'Adda ditoy dagiti ramramit nga makatulong ti pinagtempla ken pinagkita ti pinangtarimaan ti sagat ti pinagabuso.',
+	'abusefilter-edit-tools' => 'Ramramit:',
+	'abusefilter-edit-builder-op-bool-and' => 'Ken (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'Wenno (|)',
 	'abusefilter-examine-submit' => 'Biroken',
 );
 
@@ -14517,7 +14504,6 @@ $messages['io'] = array(
 	'abusefilter-tools-modifiertest-submit' => 'Probez',
 	'abusefilter-list-options' => 'Selekti',
 	'abusefilter-list-options-deleted-only' => 'Montrar nur filtrili efacita',
-	'abusefilter-tools-subtitle' => 'Utensili',
 	'abusefilter-tools-reautoconfirm-user' => 'Uzanto:',
 	'abusefilter-edit-status-label' => 'Statistiko:',
 	'abusefilter-edit-new' => 'Nova filtrilo',
@@ -14861,7 +14847,6 @@ Descrizione del filtro: $7 ($8)',
 	'abusefilter-list-options-disabled' => 'Filtri disattivati:',
 	'abusefilter-list-options-hidedisabled' => 'Nascondi i filtri disattivati',
 	'abusefilter-list-options-submit' => 'Aggiorna',
-	'abusefilter-tools-subtitle' => 'Strumenti',
 	'abusefilter-tools-text' => 'Di seguito sono riportati alcuni strumenti utili per la costruzione e la verifica dei filtri anti abusi.',
 	'abusefilter-tools-expr' => 'Verifica espressioni',
 	'abusefilter-tools-submitexpr' => 'Valuta',
@@ -15282,7 +15267,6 @@ $messages['ja'] = array(
 	'abusefilter-list-options-disabled' => '無効化されたフィルター:',
 	'abusefilter-list-options-hidedisabled' => '無効化されたフィルターを隠す',
 	'abusefilter-list-options-submit' => '更新',
-	'abusefilter-tools-subtitle' => 'ツール',
 	'abusefilter-tools-text' => '不正利用フィルターの作成およびデバッグに役立つだろうツールです。',
 	'abusefilter-tools-expr' => '式の試験ツール',
 	'abusefilter-tools-submitexpr' => '評価',
@@ -15656,7 +15640,6 @@ $messages['ka'] = array(
 	'abusefilter-list-options-disabled' => 'გათიშული ფილტრები:',
 	'abusefilter-list-options-hidedisabled' => 'დამალეთ გათიშული ფილტრები',
 	'abusefilter-list-options-submit' => 'განახლება',
-	'abusefilter-tools-subtitle' => 'ხელსაწყოები',
 	'abusefilter-tools-text' => 'აქ არის რამდენიმე სხვადასხვა ხელსაწყო, რომელიც დაგეხმარებათ  ბოროტად გამოყენების ფილტრებთან მუშაობაში.',
 	'abusefilter-tools-expr' => 'გამოთქმათა შემოწმება',
 	'abusefilter-tools-submitexpr' => 'გასინჯვა',
@@ -15923,7 +15906,7 @@ $messages['ka'] = array(
 	'abusefilter-import-submit' => 'მონაცემების იმპორტირება',
 );
 
-/** کھوار (کھوار)
+/** Khowar (کھوار)
  * @author Rachitrali
  */
 $messages['khw'] = array(
@@ -15938,7 +15921,7 @@ $messages['kiu'] = array(
 	'abusefilter-log-search-submit' => 'Cıfeteliye',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
  * @author GaiJin
  */
 $messages['kk-cyrl'] = array(
@@ -16026,7 +16009,6 @@ $messages['km'] = array(
 	'abusefilter-list-options-disabled' => 'តំរងអសកម្ម៖',
 	'abusefilter-list-options-hidedisabled' => 'លាក់តំរងអសកម្ម',
 	'abusefilter-list-options-submit' => 'បន្ទាន់សម័យ',
-	'abusefilter-tools-subtitle' => 'ឧបករណ៍នានា',
 	'abusefilter-tools-submitexpr' => 'វាយតម្លៃ',
 	'abusefilter-tools-reautoconfirm-user' => 'អ្នកប្រើប្រាស់៖',
 	'abusefilter-edit-subtitle' => 'កំពុងកែសម្រួលតម្រង $1',
@@ -16165,7 +16147,6 @@ $messages['kn'] = array(
 	'abusefilter-log-hide-reason' => 'ಕಾರಣ:',
 	'abusefilter-list-status' => 'ಸ್ಥಾನಮಾನ',
 	'abusefilter-list-edit' => 'ಸಂಪಾದಿಸಿ',
-	'abusefilter-tools-subtitle' => 'ಉಪಕರಣಗಳು',
 	'abusefilter-edit-history' => 'ಇತಿಹಾಸ:',
 	'abusefilter-examine-submit' => 'ಹುಡುಕು',
 );
@@ -16739,7 +16720,6 @@ Name',
 	'abusefilter-list-options-disabled' => 'Ußjeschalldt Feltere:',
 	'abusefilter-list-options-hidedisabled' => 'ußblende',
 	'abusefilter-list-options-submit' => 'Lohß Jonn!',
-	'abusefilter-tools-subtitle' => 'Werkzüch',
 	'abusefilter-tools-text' => 'Hee fengks De paa Werkzüch för beim Opboue ze hellfe för Rääjelle för dä Meßbruchsfelter un zom Fäähler Erußklamüüsere.',
 	'abusefilter-tools-expr' => 'Ußdröck ußprobeere',
 	'abusefilter-tools-submitexpr' => 'Felter Pröfe!',
@@ -17031,7 +17011,7 @@ Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilte
 	'abusefilter-import-submit' => 'Lohß Jonn!',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -17054,7 +17034,6 @@ $messages['ku-latn'] = array(
 	'abusefilter-list-options-deleted' => 'Fîltreyên hatine jêbirirn:',
 	'abusefilter-list-options-deleted-only' => 'Tenê fîltreyên jêbûyî nîşan bide',
 	'abusefilter-list-options-submit' => 'Rojanekirin',
-	'abusefilter-tools-subtitle' => 'Amûran',
 	'abusefilter-tools-reautoconfirm-user' => 'Bikarhêner:',
 	'abusefilter-edit-status-label' => 'Statîstîk:',
 	'abusefilter-edit-new' => 'Fîltreya nû',
@@ -17735,7 +17714,6 @@ Filterbesjrieving: $7 ($8)',
 	'abusefilter-list-options-disabled' => 'Gewösjdje filters:',
 	'abusefilter-list-options-hidedisabled' => 'Verbèrg oetgezadje filters',
 	'abusefilter-list-options-submit' => 'Wèrk bie',
-	'abusefilter-tools-subtitle' => 'Hölper',
 	'abusefilter-tools-text' => "Dit zeen 'n aantal hulpmiddele die van pas kinne kómme bie 't formulere en debugge van misbroekfilters.",
 	'abusefilter-tools-expr' => 'Expressjetes',
 	'abusefilter-tools-submitexpr' => 'Evaljewieër',
@@ -18883,7 +18861,6 @@ $messages['mai'] = array(
 	'abusefilter-list-options-disabled' => 'अयोग्य फ़िल्टर',
 	'abusefilter-list-options-hidedisabled' => 'अयोग्य फ़िल्टर के नुकाऊ',
 	'abusefilter-list-options-submit' => 'अद्यतन',
-	'abusefilter-tools-subtitle' => 'उपकरण',
 	'abusefilter-tools-submitexpr' => 'मूल्यांकन',
 	'abusefilter-tools-reautoconfirm-user' => 'प्रयोक्ता',
 	'abusefilter-edit-deleted' => 'मिटाबै के निशान दियो',
@@ -18939,7 +18916,6 @@ $messages['mg'] = array(
 	'abusefilter-status-global' => 'Ankapobe',
 	'abusefilter-list-options' => 'Safidy',
 	'abusefilter-list-options-submit' => 'Vaozina',
-	'abusefilter-tools-subtitle' => 'Fitaovana :',
 	'abusefilter-tools-reautoconfirm-user' => 'Mpikambana :',
 	'abusefilter-edit-rules' => 'Fepetra :',
 	'abusefilter-edit-action-disallow' => 'Hanakana ny mpikambana hanao ilay tao',
@@ -19830,7 +19806,6 @@ $messages['mr'] = array(
 	'abusefilter-hidden' => 'खासगी',
 	'abusefilter-unhidden' => 'सार्वजनिक',
 	'abusefilter-list-options' => 'पर्याय',
-	'abusefilter-tools-subtitle' => 'साधने',
 	'abusefilter-edit-history' => 'इतिहास:',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'अधिक (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'वजाबाकी (-)',
@@ -19969,7 +19944,6 @@ Huraian penapis: $7 ($8)',
 	'abusefilter-list-options-disabled' => 'Penapis yang dimatikan:',
 	'abusefilter-list-options-hidedisabled' => 'Sorokkan penapis yang dimatikan',
 	'abusefilter-list-options-submit' => 'Kemas kini',
-	'abusefilter-tools-subtitle' => 'Alatan',
 	'abusefilter-tools-text' => 'Inilah alat-alatan yang mungkin berguna untuk merumuskan dan menyahpepijatkan penapis salah guna.',
 	'abusefilter-tools-expr' => 'Penguji ungkapan',
 	'abusefilter-tools-submitexpr' => 'Buat penilaian',
@@ -20682,7 +20656,6 @@ $messages['myv'] = array(
 	'abusefilter-status-global' => 'Весемева',
 	'abusefilter-list-options-deleted' => 'Нардань сувтеметне:',
 	'abusefilter-list-options-deleted-hide' => 'Кекшемс нардань сувтеметнень',
-	'abusefilter-tools-subtitle' => 'Кедьйонкст',
 	'abusefilter-tools-submitexpr' => 'Питне путомс',
 	'abusefilter-tools-reautoconfirm-user' => 'Теицясь:',
 	'abusefilter-edit-status-label' => 'Статистикась:',
@@ -20770,7 +20743,6 @@ $messages['nah'] = array(
 	'abusefilter-log-noactions' => 'ahtlein',
 	'abusefilter-log-hide-reason' => 'Tlèka:',
 	'abusefilter-list-edit' => 'Moyèktlàlìs',
-	'abusefilter-tools-subtitle' => 'Tekitiâtìn',
 	'abusefilter-edit-throttle-period' => 'Cāhuitl:',
 	'abusefilter-examine-title' => 'Tlaìxtlapaltòkâtli:',
 	'abusefilter-examine-submit' => 'Motèmòs',
@@ -20884,7 +20856,6 @@ Wat dat för’n Filter is: $7 ($8)',
 	'abusefilter-list-options-disabled' => 'Utschalt Filters:',
 	'abusefilter-list-options-hidedisabled' => 'Utschalt Filters versteken',
 	'abusefilter-list-options-submit' => 'Aktuell maken',
-	'abusefilter-tools-subtitle' => 'Warktüüch',
 	'abusefilter-tools-text' => 'Op disse Sied gifft dat en poor Warktüüch, de bi dat Opstellen vun Missbruukfilters un bi de Fehlersöök helpen köönt.',
 	'abusefilter-tools-expr' => 'Expression-Tester',
 	'abusefilter-tools-submitexpr' => 'Evalueren',
@@ -22106,7 +22077,6 @@ Ei kort skildring av misbruksregelen handlinga di braut er: $1',
 	'abusefilter-list-options-disabled' => 'Deaktiverte filter:',
 	'abusefilter-list-options-hidedisabled' => 'Løyn deaktiverte filter',
 	'abusefilter-list-options-submit' => 'Oppdater',
-	'abusefilter-tools-subtitle' => 'Verktøy',
 	'abusefilter-tools-text' => 'Her er nokre verktøy som kan vera nyttige til å formulera og feilsøkja misbruksfilter.',
 	'abusefilter-tools-expr' => 'Uttrykkstestar',
 	'abusefilter-tools-submitexpr' => 'Evaluer',
@@ -22900,7 +22870,6 @@ Descripcion del filtre : $7 ($8)",
 	'abusefilter-list-options-disabled' => 'Filtres desactivats :',
 	'abusefilter-list-options-hidedisabled' => 'Amagar los filtres desactivats',
 	'abusefilter-list-options-submit' => 'Metre a jorn',
-	'abusefilter-tools-subtitle' => 'Aisinas',
 	'abusefilter-tools-text' => 'Aquí qualques aisinas que pòdon èsser utilas dins la formulacion o lo desbugatge dels filtres d’abuses.',
 	'abusefilter-tools-expr' => "Tèst d'expression",
 	'abusefilter-tools-submitexpr' => 'Avalorar',
@@ -23304,7 +23273,6 @@ $messages['os'] = array(
 	'abusefilter-list-status' => 'Статус',
 	'abusefilter-list-details' => 'Фылдæр',
 	'abusefilter-deleted' => 'Аппæрст',
-	'abusefilter-tools-subtitle' => 'Фæрæзтæ',
 	'abusefilter-tools-reautoconfirm-user' => 'Архайæг:',
 	'abusefilter-edit-status-label' => 'Статистикæ:',
 	'abusefilter-edit-new' => 'Ног фæрсудзæн',
@@ -23329,7 +23297,6 @@ $messages['os'] = array(
  */
 $messages['pa'] = array(
 	'abusefilter-list-options-submit' => 'ਅੱਪਡੇਟ',
-	'abusefilter-tools-subtitle' => 'ਟੂਲ',
 	'abusefilter-tools-reautoconfirm-user' => 'ਯੂਜ਼ਰ:',
 );
 
@@ -23524,7 +23491,6 @@ wpisów w rejestrze nadużyć.',
 	'abusefilter-list-options-disabled' => 'Wyłączone filtry:',
 	'abusefilter-list-options-hidedisabled' => 'ukryj wyłączone filtry',
 	'abusefilter-list-options-submit' => 'Aktualizuj',
-	'abusefilter-tools-subtitle' => 'Narzędzia',
 	'abusefilter-tools-text' => 'Oto kilka narzędzi, które mogą być przydatne w opracowywaniu i śledzeniu pracy filtrów nadużyć.',
 	'abusefilter-tools-expr' => 'Tester wyrażeń',
 	'abusefilter-tools-submitexpr' => 'Testuj',
@@ -24437,7 +24403,6 @@ entradas do registo de abusos.',
 	'abusefilter-list-options-disabled' => 'Filtros desactivados:',
 	'abusefilter-list-options-hidedisabled' => 'Ocultar filtros desactivados',
 	'abusefilter-list-options-submit' => 'Actualizar',
-	'abusefilter-tools-subtitle' => 'Ferramentas',
 	'abusefilter-tools-text' => 'Aqui estão algumas ferramentas que poderão ser úteis na formulação e depuração dos filtros de abuso.',
 	'abusefilter-tools-expr' => 'Testador de expressões',
 	'abusefilter-tools-submitexpr' => 'Calcular',
@@ -25287,7 +25252,6 @@ Descrierea filtrului: $7 ($8)',
 	'abusefilter-list-options-disabled' => 'Filtre dezactivate:',
 	'abusefilter-list-options-hidedisabled' => 'Ascunde filtrele dezactivate',
 	'abusefilter-list-options-submit' => 'Actualizează',
-	'abusefilter-tools-subtitle' => 'Unelte',
 	'abusefilter-tools-text' => 'Aici sunt câteva unelte care pot fi utile în formularea și depanarea filtrelor abuz.',
 	'abusefilter-tools-expr' => 'Expresii test',
 	'abusefilter-tools-submitexpr' => 'Evaluare',
@@ -25687,7 +25651,6 @@ Descriziune d\'u filtre: $7 ($8)',
 	'abusefilter-list-options-disabled' => 'Filtre disabbilitate:',
 	'abusefilter-list-options-hidedisabled' => 'Scunne le filtre disabbilitate',
 	'abusefilter-list-options-submit' => 'Aggiorne',
-	'abusefilter-tools-subtitle' => 'Struminde',
 	'abusefilter-tools-text' => "Aqquà se iacchiene quacche strumènde ca pòtene essere utile jndr'à formulazziune e jndr'ô debugging de le filtre de le abbuse.",
 	'abusefilter-tools-expr' => 'Test de le espressiune',
 	'abusefilter-tools-submitexpr' => 'Valute',
@@ -26109,7 +26072,6 @@ $messages['ru'] = array(
 	'abusefilter-list-options-disabled' => 'Отключённые фильтры:',
 	'abusefilter-list-options-hidedisabled' => 'Скрыть отключённые фильтры',
 	'abusefilter-list-options-submit' => 'Обновить',
-	'abusefilter-tools-subtitle' => 'Инструменты',
 	'abusefilter-tools-text' => 'Здесь находятся некоторые инструменты, которые могут помочь в формулировании и отладке фильтров злоупотреблений.',
 	'abusefilter-tools-expr' => 'Проверка выражения',
 	'abusefilter-tools-submitexpr' => 'Опробовать',
@@ -26925,7 +26887,6 @@ $messages['sah'] = array(
 	'abusefilter-list-options-disabled' => 'Холбоммотох сиидэлэр:',
 	'abusefilter-list-options-hidedisabled' => 'Холбоммотох сиидэлэри көрдөрүмэ',
 	'abusefilter-list-options-submit' => 'Саҥарт',
-	'abusefilter-tools-subtitle' => 'Үнүстүрүмүөннэр',
 	'abusefilter-tools-text' => 'Манна омсо сиидэлэрин туруорууларын уларытарга уонна сөпкө суруйарга аналлаах үнүстүрүмүөннэр көстөллөр.',
 	'abusefilter-tools-expr' => 'Этиини тургутуу',
 	'abusefilter-tools-submitexpr' => 'Тургутан көр',
@@ -27261,7 +27222,6 @@ $messages['scn'] = array(
 	'abusefilter-list-options' => 'Oppizioni',
 	'abusefilter-list-options-disabled' => 'Firtri disabbilitati:',
 	'abusefilter-list-options-hidedisabled' => 'Ammuccia firtri disabilitati',
-	'abusefilter-tools-subtitle' => 'Strummenti',
 	'abusefilter-tools-reautoconfirm-user' => 'Utenti:',
 	'abusefilter-edit-warn-other' => 'Autru missaggiu',
 	'abusefilter-edit-warn-actions' => 'Azzioni:',
@@ -27302,7 +27262,7 @@ $messages['scn'] = array(
 	'abusefilter-topnav-home' => 'Paggina principali',
 );
 
-/** Tachelhit (Tašlḥiyt)
+/** Tachelhit (Tašlḥiyt/ⵜⴰⵛⵍⵃⵉⵜ)
  * @author Dalinanir
  */
 $messages['shi'] = array(
@@ -27928,7 +27888,6 @@ Opis filtra: $7 ($8)',
 	'abusefilter-list-options-disabled' => 'Onemogočeni filtri:',
 	'abusefilter-list-options-hidedisabled' => 'Skrij onemogočene filtre',
 	'abusefilter-list-options-submit' => 'Posodobi',
-	'abusefilter-tools-subtitle' => 'Orodja',
 	'abusefilter-tools-text' => 'Tukaj je nekaj orodij, ki so lahko koristna pri oblikovanju in popravljanju napak filtrov zlorab.',
 	'abusefilter-tools-expr' => 'Preizkuševalec izrazov',
 	'abusefilter-tools-submitexpr' => 'Ovrednoti',
@@ -28896,7 +28855,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-import-submit' => 'Увези податке',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  * @author Михајло Анђелковић
@@ -29509,7 +29468,6 @@ missbrukslogg-poster.',
 	'abusefilter-list-options-disabled' => 'Avaktiverade filter:',
 	'abusefilter-list-options-hidedisabled' => 'Göm avaktiverade filter',
 	'abusefilter-list-options-submit' => 'Uppdatera',
-	'abusefilter-tools-subtitle' => 'Verktyg',
 	'abusefilter-tools-text' => 'Här är några verktyg som kan vara användbara för att skapa och felsöka missbruksfilter.',
 	'abusefilter-tools-expr' => 'Uttryckstestare',
 	'abusefilter-tools-submitexpr' => 'Utvärdera',
@@ -29796,7 +29754,6 @@ $messages['sw'] = array(
 	'abusefilter-list-edit' => 'Hariri',
 	'abusefilter-disabled' => 'Imelemazwa',
 	'abusefilter-list-options-submit' => 'Sasisha',
-	'abusefilter-tools-subtitle' => 'Vifaa',
 	'abusefilter-tools-reautoconfirm-user' => 'Mtumiaji:',
 	'abusefilter-edit-warn-actions' => 'Vitendo:',
 	'abusefilter-edit-history' => 'Historia:',
@@ -29834,7 +29791,6 @@ Krůtki uopis zńyłużyćo, ke keremu bůła przipasowano twojo akcyjo: $1',
 	'abusefilter-blocker' => 'Filter zńyłużyćów',
 	'right-abusefilter-modify' => 'Pomjyńańy filtrůw zńyłużyćůw',
 	'abusefilter-list-options-submit' => 'Aktualizacyjo',
-	'abusefilter-tools-subtitle' => 'Werkcojgi',
 );
 
 /** Tamil (தமிழ்)
@@ -30187,7 +30143,6 @@ $messages['te'] = array(
 	'abusefilter-list-options-disabled' => 'అచేతన వడపోతలు:',
 	'abusefilter-list-options-hidedisabled' => 'అచేతన వడపోతలను దాచు',
 	'abusefilter-list-options-submit' => 'తాజాకరించు',
-	'abusefilter-tools-subtitle' => 'పనిముట్లు',
 	'abusefilter-tools-text' => 'దుర్వినియోగ వడపోతకాలను తయారుచెయ్యడంలోను, డీబగ్గింగులోనూ ఉపయోగపడగల పరికరాలు కొన్నింటిని చూడండి.',
 	'abusefilter-tools-expr' => 'పదబంధపు పరీక్షకం',
 	'abusefilter-tools-submitexpr' => 'పరీక్షించు',
@@ -30374,7 +30329,7 @@ $messages['tet'] = array(
 	'abusefilter-examine-submit' => 'Buka',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -30385,7 +30340,7 @@ $messages['tg-cyrl'] = array(
 	'abusefilter-list-edit' => 'Вироиш',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -30528,7 +30483,6 @@ $messages['th'] = array(
 	'abusefilter-list-options-disabled' => 'ตัวกรองที่ปิดการใช้งาน:',
 	'abusefilter-list-options-hidedisabled' => 'ซ่อนตัวกรองที่ปิดการใช้งาน',
 	'abusefilter-list-options-submit' => 'อัปเดต',
-	'abusefilter-tools-subtitle' => 'เครื่องมือ',
 	'abusefilter-tools-text' => 'นี่เป็นเครื่องมือซึ่งอาจเป็นประโยชน์ในการกำหนดและการแก้จุดบกพร่องของตัวกรองการละเมิดกฎ',
 	'abusefilter-tools-expr' => 'ทดสอบการแสดงข้อมูลขาออก',
 	'abusefilter-tools-submitexpr' => 'ประเมินผล',
@@ -30732,7 +30686,6 @@ Filtr düşündirişi: $7 ($8)',
 	'abusefilter-list-options-disabled' => 'Ýapyk filtrler:',
 	'abusefilter-list-options-hidedisabled' => 'Ýapyk filtrleri gizle',
 	'abusefilter-list-options-submit' => 'Täzele',
-	'abusefilter-tools-subtitle' => 'Gurallar',
 	'abusefilter-tools-expr' => 'Aňlatma synagy',
 	'abusefilter-tools-submitexpr' => 'Baha ber',
 	'abusefilter-tools-reautoconfirm' => 'Awto-tassykly statusy yzyna dikelt',
@@ -31102,7 +31055,6 @@ Paglalarawan ng pansala: $6',
 	'abusefilter-list-options-disabled' => 'Hindi pinagaganang mga pansala:',
 	'abusefilter-list-options-hidedisabled' => 'Itago ang hindi pinagaganang mga pansala',
 	'abusefilter-list-options-submit' => 'Isapanahon',
-	'abusefilter-tools-subtitle' => 'Mga kagamitan',
 	'abusefilter-tools-text' => 'Narito ang ilang mga kagamitang maaaring maging kapakipakinabang sa paggawa ng at pagtatanggal ng depekto mula sa mga pansala ng pang-aabuso.',
 	'abusefilter-tools-expr' => 'Tagapagsubok ng pagsasaad',
 	'abusefilter-tools-submitexpr' => 'Suriin',
@@ -31388,7 +31340,6 @@ $messages['tpi'] = array(
 	'abusefilter-log-search-user' => 'Yusa:',
 	'abusefilter-log-hide-reason' => 'As bilong en:',
 	'abusefilter-list-edit' => 'Senisim',
-	'abusefilter-tools-subtitle' => 'Ol tul',
 	'abusefilter-tools-reautoconfirm-user' => 'Yusa:',
 	'abusefilter-edit-history' => 'Histori:',
 	'abusefilter-edit-tools' => 'Ol tul:',
@@ -31530,7 +31481,6 @@ gizlemeye izniniz yok.',
 	'abusefilter-list-options-disabled' => 'Devre dışı süzgeçler:',
 	'abusefilter-list-options-hidedisabled' => 'Devre dışı süzgeçleri gizle',
 	'abusefilter-list-options-submit' => 'Güncelle',
-	'abusefilter-tools-subtitle' => 'Araçlar',
 	'abusefilter-tools-text' => 'Bunlar, suistimal filtrelerini formüle ederken ve hata ayıklarken yararlı olabilecek bazı araçlar.',
 	'abusefilter-tools-expr' => 'İfade testi',
 	'abusefilter-tools-submitexpr' => 'Değerlendir',
@@ -31817,7 +31767,7 @@ Görünen metin kutusundan kopyalayın, ve bu metin kutusuna yapıştırın, dah
 	'abusefilter-import-submit' => 'Verileri içe aktar',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ajdar
  * @author Zahidulla
  * @author Ильнар
@@ -32284,7 +32234,6 @@ $messages['uk'] = array(
 	'abusefilter-list-options-disabled' => 'Відключені фільтри:',
 	'abusefilter-list-options-hidedisabled' => 'Приховати відключені фільтри:',
 	'abusefilter-list-options-submit' => 'Оновити',
-	'abusefilter-tools-subtitle' => 'Засоби',
 	'abusefilter-tools-text' => 'Тут є деякі засоби, які можуть пригодитися у формулюванні та налагодженні фільтрів редагувань.',
 	'abusefilter-tools-expr' => 'Випробувач виразів',
 	'abusefilter-tools-submitexpr' => 'Випробувати',
@@ -32701,7 +32650,6 @@ Descrission del filtro: $7 ($8)',
 	'abusefilter-list-options-disabled' => 'Filtri destachè:',
 	'abusefilter-list-options-hidedisabled' => 'Scondi i filtri destachè',
 	'abusefilter-list-options-submit' => 'Ajorna',
-	'abusefilter-tools-subtitle' => 'Strumenti',
 	'abusefilter-tools-text' => 'Qua ghe xe alcuni strumenti utili par la costrussion e la verifica dei filtri abusi.',
 	'abusefilter-tools-expr' => 'Verifica espressioni',
 	'abusefilter-tools-submitexpr' => 'Vàluta',
@@ -33003,7 +32951,6 @@ $messages['vep'] = array(
 	'abusefilter-list-details' => 'Detalid',
 	'abusefilter-deleted' => 'Heittud',
 	'abusefilter-list-options-submit' => 'Udištada',
-	'abusefilter-tools-subtitle' => 'Azeged',
 	'abusefilter-tools-reautoconfirm-user' => 'Kävutai:',
 	'abusefilter-edit-id' => "Fil'tran ID:",
 	'abusefilter-edit-throttle-period' => 'Aiganpord:',
@@ -33614,7 +33561,6 @@ Tó bá jẹ́ pé àsìṣe ló ṣẹlẹ̀, ẹ jọ̀wọ́ ẹ fi tó olùm
 	'abusefilter-disabled' => 'Dídálẹ́kun',
 	'abusefilter-links' => 'Àwọn ìjápọ̀ awúlò:',
 	'abusefilter-tools-modifiertest-submit' => 'Àdánwò',
-	'abusefilter-tools-subtitle' => 'Àwọn irinṣẹ́',
 	'abusefilter-tools-reautoconfirm-user' => 'Oníṣe:',
 	'abusefilter-edit-status-label' => 'Àwọn statistiki:',
 	'abusefilter-edit-deleted' => 'Fàlàsí bíi píparẹ́',
@@ -33789,7 +33735,6 @@ $messages['yue'] = array(
 	'abusefilter-list-options-disabled' => '閂咗嘅過濾器:',
 	'abusefilter-list-options-hidedisabled' => '隱藏閂咗嘅過濾器',
 	'abusefilter-list-options-submit' => '更新',
-	'abusefilter-tools-subtitle' => '工具',
 	'abusefilter-tools-text' => '呢度有啲有用嘅工具去將濫用過濾器公式化同除錯。',
 	'abusefilter-tools-expr' => '表達式測試器',
 	'abusefilter-tools-submitexpr' => '評估',
