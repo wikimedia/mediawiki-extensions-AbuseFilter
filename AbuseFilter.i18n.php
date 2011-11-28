@@ -1181,7 +1181,7 @@ $messages['ar'] = array(
 	'abusefilter-log-hide-legend' => 'إخفاء السجل',
 	'abusefilter-log-hide-id' => 'هوية مدخلة لسجل:',
 	'abusefilter-log-hide-hidden' => 'إخفاء هذا المدخل من العرض العلني',
-	'abusefilter-log-hide-reason' => 'السبب',
+	'abusefilter-log-hide-reason' => 'السبب:',
 	'abusefilter-log-hide-forbidden' => 'ليس لديك صلاحية لإخفاء إدخالات سجل الإساءة',
 	'abusefilter-logentry-suppress' => 'تم إخفاء "[[$1]]"',
 	'abusefilter-logentry-unsuppress' => 'تم إظهار "[[$1]]"',
@@ -7184,6 +7184,7 @@ Pśez kliknjenje na tłocašk "Syntaksu kontrolěrowaś" móžoš połne wujasnj
 	'abusefilter-log-header' => 'Toś ten protokol pokazujo zespominanje změnow, kótarež su se pśewjadli na filtrach.
 Za połne drobnostki glědaj [[Special:AbuseFilter/history|lisćinu]] nejnowšych filtrowych změnow.',
 	'abusefilter-log-entry-modify' => 'jo změnił $1 ($2)',
+	'abusefilter-log-noresults' => 'Žedne wuslědki',
 	'abusefilter-diff-title' => 'Rozdźěle mjazy wersijami',
 	'abusefilter-diff-item' => 'Zapisk',
 	'abusefilter-diff-version' => 'Wersija wót $1 wót $2',
