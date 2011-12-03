@@ -5996,10 +5996,10 @@ Beschreibung der Regel: $1',
 	'abusefilter-log-search-title' => 'Titel:',
 	'abusefilter-log-show-deleted' => 'Versteckte Einträge anzeigen',
 	'abusefilter-log-search-submit' => 'Suchen',
-	'abusefilter-log-entry' => '$1: $2 löste einen Missbrauchsfilter aus, indem er die Aktion „$3“ auf „$4“ anwendete.
+	'abusefilter-log-entry' => '$1: $2 löste durch die Aktion „$3“ auf „$4“ einen Missbrauchsfilter aus.
 Filteraktion: „$5“;
 Filterbeschreibung: „$6“',
-	'abusefilter-log-detailedentry-meta' => '$1: $2 löste den $3 aus, indem er die Aktion „$4“ auf „$5“ anwendete.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 löste durch die Aktion „$4“ auf „$5“ den $3 aus.
 Ergriffene Maßnahmen: $6;
 Filterbeschreibung: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'globaler Filter $1',
@@ -10367,7 +10367,7 @@ Se vos éte de sûr que voutron changement ére constructif, vos volyéd veriér
 Vê-que una côrta dèscripcion de la règlla de filtracion d’abus qu’at dècelâ voutra accion : $1',
 	'abusefilter-blocked-display' => 'Cela accion at étâ identifiâ ôtomaticament coment nuésibla
 et pués vos avéd ja étâ empachiê de l’ègzécutar.
-De ples, por protègiér {{SITENAME}}, voutron compto utilisator et pués totes les adrèces IP associyês ont étâ blocâs contre tot changement.
+De ples, por protègiér {{SITENAME}}, voutron compto usanciér et pués totes les adrèces IP associyês ont étâ blocâs contre tot changement.
 Se cen est diu a una èrror, vos volyéd veriér vers un administrator.
 Vê-que una côrta dèscripcion de la règlla de filtracion d’abus qu’at dècelâ voutra accion : $1',
 	'abusefilter-degrouped' => 'Cela accion at étâ identifiâ ôtomaticament coment nuésibla.
@@ -10404,7 +10404,7 @@ Dèscripcion de la règlla associyê : $1',
 	'abusefilter-log' => 'Jornal du filtro d’abus',
 	'abusefilter-log-summary' => 'Ceti jornal montre una lista de les accions dècelâs per los filtros.',
 	'abusefilter-log-search' => 'Rechèrchiér dens lo jornal des abus',
-	'abusefilter-log-search-user' => 'Utilisator :',
+	'abusefilter-log-search-user' => 'Usanciér :',
 	'abusefilter-log-search-filter' => 'Numerô du filtro :',
 	'abusefilter-log-search-title' => 'Titro :',
 	'abusefilter-log-show-deleted' => 'Fâre vêre les entrâs cachiês',
@@ -10428,7 +10428,7 @@ Dèscripcion du filtro : $7 ($8)',
 	'abusefilter-log-noactions' => 'niona',
 	'abusefilter-log-details-diff' => 'Changements fêts dens lo changement',
 	'abusefilter-log-linkoncontribs' => 'jornal des abus',
-	'abusefilter-log-linkoncontribs-text' => 'Jornal des abus a ceti utilisator',
+	'abusefilter-log-linkoncontribs-text' => 'Jornal des abus a ceti usanciér',
 	'abusefilter-log-hidden' => '(entrâ cachiê)',
 	'abusefilter-log-hide' => 'cachiér ou ben fâre vêre',
 	'abusefilter-log-details-hidden' => 'Vos pouede pas vêre los dètalys por cela entrâ perce qu’el est cachiê a la vua du publico.',
@@ -10476,11 +10476,11 @@ Dèscripcion du filtro : $7 ($8)',
 	'abusefilter-tools-expr' => 'Èprovor d’èxprèssions',
 	'abusefilter-tools-submitexpr' => 'Èstimar',
 	'abusefilter-tools-reautoconfirm' => 'Rètablir l’ètat ôtoconfirmâ',
-	'abusefilter-tools-reautoconfirm-user' => 'Utilisator :',
+	'abusefilter-tools-reautoconfirm-user' => 'Usanciér :',
 	'abusefilter-tools-reautoconfirm-submit' => 'Tornar ôtoconfirmar',
-	'abusefilter-reautoconfirm-none' => 'L’ètat ôtoconfirmâ a {{GENDER:$1|cél utilisator|cela utilisatrice}} at pas étâ pendu.',
+	'abusefilter-reautoconfirm-none' => 'L’ètat ôtoconfirmâ a {{GENDER:$1|cél usanciér|cela usanciére}} at pas étâ pendu.',
 	'abusefilter-reautoconfirm-notallowed' => 'Vos éte pas ôtorisâ a rètablir l’ètat ôtoconfirmâ.',
-	'abusefilter-reautoconfirm-done' => 'L’ètat ôtoconfirmâ du compto utilisator at étâ rètabli',
+	'abusefilter-reautoconfirm-done' => 'L’ètat ôtoconfirmâ du compto usanciér at étâ rètabli',
 	'abusefilter-status' => '{{PLURAL:$1|Dens la dèrriére accion|Entre-mié les $1 dèrriéres accions}}, $2 ($3 %) {{PLURAL:$2|at avengiê|ont avengiês}} la limita de les $4 condicions ôtorisâs, et pués $5 ($6 %) {{PLURAL:$5|at étâ dècelâ|ont étâ dècelâs}} per yon des filtros ora activâs.',
 	'abusefilter-edit-subtitle' => 'Changement du filtro $1',
 	'abusefilter-edit-oldwarning' => '<strong>Vos éte aprés changiér una vielye vèrsion de cél filtro.
@@ -10508,14 +10508,14 @@ Il at avengiê la limita de dètèccion de més de $1 % de les accions.",
 	'abusefilter-edit-lastmod-text' => '$1 per $2',
 	'abusefilter-edit-hitcount' => 'Nombro de dètèccions du filtro :',
 	'abusefilter-edit-consequences' => 'Accions entreprêses pendent la dètèccion',
-	'abusefilter-edit-action-warn' => 'Dècllenchiér cetes accions aprés avêr balyê un avèrtissement a l’utilisator',
-	'abusefilter-edit-action-disallow' => 'Empachiér l’utilisator de fâre l’accion en quèstion',
+	'abusefilter-edit-action-warn' => 'Dècllenchiér celes accions aprés avêr balyê un avèrtissement a l’usanciér',
+	'abusefilter-edit-action-disallow' => 'Empachiér l’usanciér de fâre l’accion en quèstion',
 	'abusefilter-edit-action-flag' => 'Marcar lo changement dens lo jornal des abus',
-	'abusefilter-edit-action-blockautopromote' => 'Rèvocar l’ètat ôtoconfirmâ du compto utilisator',
-	'abusefilter-edit-action-degroup' => 'Enlevar l’utilisator de totes les tropes privilègiyês',
-	'abusefilter-edit-action-block' => 'Blocar en ècritura l’utilisator et / ou l’adrèce IP',
-	'abusefilter-edit-action-throttle' => 'Dècllenchiér les accions ren que se l’utilisator at dèpassâ una quota limita',
-	'abusefilter-edit-action-rangeblock' => 'Blocar la plage d’adrèces IP /16 d’origina a l’utilisator.',
+	'abusefilter-edit-action-blockautopromote' => 'Rèvocar l’ètat ôtoconfirmâ du compto usanciér',
+	'abusefilter-edit-action-degroup' => 'Enlevar l’usanciér de totes les tropes privilègiyês',
+	'abusefilter-edit-action-block' => 'Blocar en ècritura l’usanciér et / ou l’adrèce IP',
+	'abusefilter-edit-action-throttle' => 'Dècllenchiér les accions ren que se l’usanciér at dèpassâ una quota limita',
+	'abusefilter-edit-action-rangeblock' => 'Blocar la plage d’adrèces IP /16 d’origina a l’usanciér.',
 	'abusefilter-edit-action-tag' => 'Balisar lo changement por una rèvision a vegnir',
 	'abusefilter-edit-throttle-count' => 'Nombro d’accions ôtorisâs :',
 	'abusefilter-edit-throttle-period' => 'Moment :',
@@ -10537,7 +10537,7 @@ Il at avengiê la limita de dètèccion de més de $1 % de les accions.",
 	'abusefilter-edit-badsyntax' => 'Lo filtro que vos éd spècefiâ at una èrror de sintaxa.
 Lo rèsultat du parsor ére : <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Vos pouede pas changiér cél filtro perce que contint yona ou ben un mouél d’accions rètrentes.
-Demandâd a un utilisator ôtorisâ a apondre des accions rètrentes de fâre lo changement por vos.',
+Demandâd a un usanciér ôtorisâ a apondre des accions rètrentes de fâre lo changement por vos.',
 	'abusefilter-edit-viewhistory' => 'Vêre l’historico de ceti filtro',
 	'abusefilter-edit-history' => 'Historico :',
 	'abusefilter-edit-check' => 'Controlar la sintaxa',
@@ -10620,10 +10620,10 @@ Les balises dêvont étre côrtes et pués pas avêr de caractèros spèciâls.'
 	'abusefilter-edit-builder-vars-movedto-ns' => 'Èspâço de noms de la pâge de dèstinacion du changement de nom',
 	'abusefilter-edit-builder-vars-movedto-text' => 'Titro de la pâge de dèstinacion du changement de nom',
 	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Titro complèt de la pâge de dèstinacion du changement de nom',
-	'abusefilter-edit-builder-vars-user-editcount' => 'Comptor de changements a l’utilisator',
-	'abusefilter-edit-builder-vars-user-age' => 'Âjo du compto utilisator',
-	'abusefilter-edit-builder-vars-user-name' => 'Nom du compto utilisator',
-	'abusefilter-edit-builder-vars-user-groups' => 'Tropes (emplicites avouéc) que l’utilisator est membro',
+	'abusefilter-edit-builder-vars-user-editcount' => 'Comptor de changements a l’usanciér',
+	'abusefilter-edit-builder-vars-user-age' => 'Âjo du compto usanciér',
+	'abusefilter-edit-builder-vars-user-name' => 'Nom du compto usanciér',
+	'abusefilter-edit-builder-vars-user-groups' => 'Tropes (emplicites avouéc) que l’usanciér est membro',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Temps dês la confirmacion de l’adrèce èlèctronica',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Los diéx dèrriérs contributors de la pâge',
 	'abusefilter-edit-builder-vars-all-links' => 'Tôs los lims de defôr dens lo tèxto novél',
@@ -10647,7 +10647,7 @@ Les balises dêvont étre côrtes et pués pas avêr de caractèros spèciâls.'
 	'abusefilter-history-enabled' => 'Activâ',
 	'abusefilter-history-global' => 'Globâl',
 	'abusefilter-history-timestamp' => 'Hora',
-	'abusefilter-history-user' => 'Utilisator',
+	'abusefilter-history-user' => 'Usanciér',
 	'abusefilter-history-public' => 'Dèscripcion publica du filtro',
 	'abusefilter-history-flags' => 'Drapéls',
 	'abusefilter-history-filter' => 'Règlla du filtro',
@@ -10657,7 +10657,7 @@ Les balises dêvont étre côrtes et pués pas avêr de caractèros spèciâls.'
 	'abusefilter-history-deleted' => 'Suprimâ',
 	'abusefilter-history-filterid' => 'Filtro',
 	'abusefilter-history-select-legend' => 'Afinar la rechèrche',
-	'abusefilter-history-select-user' => 'Utilisator :',
+	'abusefilter-history-select-user' => 'Usanciér :',
 	'abusefilter-history-select-submit' => 'Afinar',
 	'abusefilter-history-diff' => 'Changements',
 	'abusefilter-history-error-hidden' => 'Lo filtro que vos éd demandâ est cachiê, et pués vos pouede pas fâre vêre son historico.',
@@ -10679,7 +10679,7 @@ $3 {{PLURAL:$3|argument demandâ|arguments demandâs}}, $4 avu{{PLURAL:$4||s}}',
 	'abusefilter-exception-notlist' => 'Demanda d’un èlèment dens ôtra chousa qu’un tablô u caractèro $1.',
 	'abusefilter-action-tag' => 'Balisa',
 	'abusefilter-action-throttle' => 'Limitar los changements',
-	'abusefilter-action-warn' => 'Avèrtir l’utilisator',
+	'abusefilter-action-warn' => 'Avèrtir l’usanciér',
 	'abusefilter-action-blockautopromote' => 'Blocar la nominacion ôtomatica',
 	'abusefilter-action-block' => 'Blocar',
 	'abusefilter-action-degroup' => 'Enlevar les tropes',
@@ -10709,7 +10709,7 @@ Por chargiér un filtro ègzistent, buchiéd son numerô dens lo champ desot la 
 	'abusefilter-test-load-filter' => 'Chargiér lo filtro numerô :',
 	'abusefilter-test-submit' => 'Èprovar',
 	'abusefilter-test-load' => 'Chargiér',
-	'abusefilter-test-user' => 'Changements per l’utilisator :',
+	'abusefilter-test-user' => 'Changements per l’usanciér :',
 	'abusefilter-test-period-start' => 'Changements fêts aprés :',
 	'abusefilter-test-period-end' => 'Changements fêts devant :',
 	'abusefilter-test-page' => 'Changements aplicâs a la pâge :',
@@ -10721,7 +10721,7 @@ Vos pouede recêvre una èxplicacion complèta en cliquent sur lo boton « Contr
 	'abusefilter-examine-intro' => 'Ceta pâge vos pèrmèt d’ègzamenar les variâbles fêtes por un changement particuliér per lo filtro d’abus et pués de les èprovar avouéc los filtros.',
 	'abusefilter-examine-legend' => 'Chouèsir los changements',
 	'abusefilter-examine-diff' => 'URL du dif :',
-	'abusefilter-examine-user' => 'Utilisator :',
+	'abusefilter-examine-user' => 'Usanciér :',
 	'abusefilter-examine-title' => 'Titro de la pâge :',
 	'abusefilter-examine-submit' => 'Rechèrchiér',
 	'abusefilter-examine-vars' => 'Variâbles fêtes por ceti changement',
@@ -25108,6 +25108,14 @@ Para detalhes completos, ver [[Special:AbuseFilter/history|a lista]] de alteraç
 Na wiki de origem, clique em "{{int:abusefilter-edit-export}}", sob "{{int:abusefilter-tools-subtitle}}" na interface de edição.
 Copie da caixa de texto que aparece, e cole nesta caixa de texto, e a seguir clique em "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Importar dados',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'abusefilter' => "Millay ruray ch'illchina churana",
+	'abuselog' => "Millay ruray hallch'a",
 );
 
 /** Tarifit (Tarifit)
