@@ -81,7 +81,6 @@ Rule description: $1',
 	'abusefilter-log-search-user' => 'User:',
 	'abusefilter-log-search-filter' => 'Filter ID:',
 	'abusefilter-log-search-title' => 'Title:',
-	'abusefilter-log-show-deleted' => 'Show hidden entries',
 	'abusefilter-log-search-submit' => 'Search',
 	'abusefilter-log-entry' => '$1: $2 triggered an abuse filter, performing the action "$3" on $4.
 Actions taken: $5;
@@ -127,7 +126,6 @@ Filter description: $7 ($8)',
 	'abusefilter-list-hitcount' => 'Hit count',
 	'abusefilter-list-edit' => 'Edit',
 	'abusefilter-list-details' => 'Details',
-	'abusefilter-list-limit' => 'Number per page:',
 	'abusefilter-list-lastmodified' => 'Last modified',
 	'abusefilter-hidden' => 'Private',
 	'abusefilter-unhidden' => 'Public',
@@ -136,10 +134,6 @@ Filter description: $7 ($8)',
 	'abusefilter-disabled' => 'Disabled',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|hit|hits}}',
 	'abusefilter-new' => 'Create a new filter',
-	'abusefilter-links' => 'Useful links:',
-	'abusefilter-tools-modifiertest-submit' => 'Test',
-	'abusefilter-tools' => 'Abuse filter tools',
-	'abusefilter-loglink' => 'View the abuse log',
 	'abusefilter-return' => 'Return to filter management',
 	'abusefilter-status-global' => 'Global',
 
@@ -259,7 +253,7 @@ Tags should be short, and they should not contain special characters.',
 	'abusefilter-edit-builder-op-bool-not' => 'Not (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'And (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Or (|)',
-	'abusefilter-edit-builder-op-bool-xor' => 'XOR (^)',
+	'abusefilter-edit-builder-op-bool-xor' => 'XOR (^)',  // Message documentation complete up to here. Siebrand 2011-12-08.
 	'abusefilter-edit-builder-group-misc' => 'Miscellaneous',
 	'abusefilter-edit-builder-misc-in' => 'contained in string (in)',
 	'abusefilter-edit-builder-misc-like' => 'Matches pattern (like)',
@@ -578,7 +572,8 @@ $messages['qqq'] = array(
 	'abusefilter-log-details-vars' => 'Caption on a detail view of [[Special:AbuseLog]]',
 	'abusefilter-log-details-private' => 'Header for private log details.',
 	'abusefilter-log-details-ip' => 'Row label in private log details.',
-	'abusefilter-log-noactions' => '{{Identical|None}}',
+	'abusefilter-log-noactions' => 'Tekst displayed in Special:AbuseLog when a rule was triggered, but no action was taken.
+{{Identical|None}}',
 	'abusefilter-log-details-diff' => 'Header for differences between two edits in log details.',
 	'abusefilter-log-linkoncontribs' => 'Link text added on [[Special:Contributions]] and other relevant special pages.',
 	'abusefilter-log-linkoncontribs-text' => 'Title for link added on [[Special:Contributions]] and other relevant special pages.',
@@ -595,49 +590,146 @@ $messages['qqq'] = array(
 	'abusefilter-logentry-unsuppress' => 'Log entry when unhiding an abuse filter log entry. Parameters:
 * $1 is a link to the log ID with the log ID as description.',
 	'abusefilter-management' => 'Title of [[Special:AbuseFilter]]',
-	'abusefilter-list-id' => '{{Identical|Filter ID}}',
-	'abusefilter-list-status' => '{{Identical|Status}}',
-	'abusefilter-list-visibility' => '{{Identical|Visibility}}',
+	'abusefilter-list-id' => 'Column header in abuse filter overview for the filter identifier.
+{{Identical|Filter ID}}',
+	'abusefilter-list-status' => 'Column header in abuse filter overview for the filter status.
+{{Identical|Status}}',
+	'abusefilter-list-public' => 'Column header in abuse filter overview for the public filter description.',
+	'abusefilter-list-consequences' => 'Column header in abuse filter overview for the filter consequences.',
+	'abusefilter-list-visibility' => 'Column header in abuse filter overview for the public filter visibility.
+{{Identical|Visibility}}',
+	'abusefilter-list-hitcount' => 'Column header in abuse filter overview for the number of times the filter was triggered.',
 	'abusefilter-list-edit' => 'Probably the verb "to edit" (instead of the noun "an edit").
-
 {{Identical|Edit}}',
 	'abusefilter-list-details' => '{{Identical|Details}}',
-	'abusefilter-list-lastmodified' => '{{Identical|Last modified}}',
-	'abusefilter-hidden' => '{{Identical|Private}}',
-	'abusefilter-unhidden' => '{{Identical|Public}}',
-	'abusefilter-enabled' => '{{Identical|Enabled}}',
-	'abusefilter-deleted' => '{{Identical|Deleted}}',
-	'abusefilter-disabled' => '{{Identical|Disabled}}
-Used in [[Special:Preferences]].',
-	'abusefilter-new' => '',
-	'abusefilter-list-options-submit' => '{{Identical|Update}}',
-	'abusefilter-tools-reautoconfirm-user' => '{{Identical|User}}',
-	'abusefilter-reautoconfirm-none' => '{{gender}}
-* $1 is the target user name',
-	'abusefilter-reautoconfirm-done' => 'See {{msg-mw|group-autoconfirmed}} for concept translation. {{gender}}
-* (optional) $1 is the target user name',
-	'abusefilter-status' => 'Status information displayed on top of [[Special:AbuseFilter]].
-
-* <tt>$1</tt> – number of recent actions
-* <tt>$2</tt> – number of filter runs that reached the limit of $4 conditions (and have had to be terminated)
-* <tt>$3</tt> – percentage: $2 / $1 * 100
-* <tt>$4</tt> – maximum number of conditions allowed
-* <tt>$5</tt> – number of matched actions
-* <tt>$6</tt> – percentage: $5 / $1 * 100',
-	'abusefilter-edit-status-label' => '{{Identical|Statistics}}',
-	'abusefilter-edit-new' => '',
-	'abusefilter-edit-id' => '{{Identical|Filter ID}}',
-	'abusefilter-edit-flags' => '{{Identical|Flag}}',
-	'abusefilter-edit-lastmod-text' => 'This message is used on Special:AbuseFilter to indicate the last modified date, time and user for existing rules.
+	'abusefilter-list-lastmodified' => 'Column header in abuse filter overview for the last modified timestamp for a filter.
+{{Identical|Last modified}}',
+	'abusefilter-hidden' => 'Abuse filter status.
+{{Identical|Private}}',
+	'abusefilter-unhidden' => 'Abuse filter status.
+{{Identical|Public}}',
+	'abusefilter-enabled' => 'Abuse filter status.
+{{Identical|Enabled}}',
+	'abusefilter-deleted' => 'Abuse filter status.
+{{Identical|Deleted}}',
+	'abusefilter-disabled' => 'Abuse filter status.
+{{Identical|Disabled}}',
+	'abusefilter-hitcount' => 'Indicates number of times an abuse filter was triggered. Parameters:
+* $1 is the number of hits.',
+	'abusefilter-new' => 'Link text for creating a new abuse filter.',
+	'abusefilter-return' => 'Link displayed when filtering abuse filters without results.',
+	'abusefilter-status-global' => 'Abuse filter status. Means that it is active on all wikis in a farm.',
+	'abusefilter-list-options' => 'Fieldset legend for abuse filter filter options.',
+	'abusefilter-list-options-deleted' => 'Field label in filter form.',
+	'abusefilter-list-options-deleted-only' => 'Radio button label in filter form.',
+	'abusefilter-list-options-deleted-hide' => 'Radio button label in filter form.',
+	'abusefilter-list-options-deleted-show' => 'Radio button label in filter form.',
+	'abusefilter-list-options-disabled' => 'Field label in filter form.',
+	'abusefilter-list-options-hidedisabled' => 'Radio button label in filter form.',
+	'abusefilter-list-options-submit' => 'Submit button text in filter form to update a filtered list.
+{{Identical|Update}}',
+	'abusefilter-tools-text' => 'Introduction test for abuse filter tools.',
+	'abusefilter-tools-expr' => 'Fieldset legend for form to test a filter expression.',
+	'abusefilter-tools-submitexpr' => 'Submit button text to test a filter expression.',
+	'abusefilter-tools-reautoconfirm' => 'Fieldset legend for a form to add a user to the autoconfirmed group again.',
+	'abusefilter-tools-reautoconfirm-user' => 'Field label. See {{msg-mw|group-autoconfirmed}} for concept translation.
+{{Identical|User}}',
+	'abusefilter-tools-reautoconfirm-submit' => 'Submit button text to add a user to the autoconfirmed user group. See {{msg-mw|group-autoconfirmed}} for concept translation.',
+	'abusefilter-reautoconfirm-none' => 'Error text in case a user has not had their autoconfirmed status revoked. See {{msg-mw|group-autoconfirmed}} for concept translation.
+* $1 is the target user name used for GENDER',
+	'abusefilter-reautoconfirm-notallowed' => 'Error text when trying to perform an action the user cannot perform. See {{msg-mw|group-autoconfirmed}} for concept translation.',
+	'abusefilter-reautoconfirm-done' => 'See {{msg-mw|group-autoconfirmed}} for concept translation.
+* $1 is the target user name (optional, used for GENDER).',
+	'abusefilter-status' => 'Status information displayed on top of [[Special:AbuseFilter]]. Parameters:
+* $1 is the number of recent actions
+* $2 is the number of filter runs that reached the limit of $4 conditions (and have had to be terminated)
+* $3 is a percentage: $2 / $1 * 100
+* $4 is the maximum number of conditions allowed
+* $5 is the number of matched actions
+* $6 is a percentage: $5 / $1 * 100',
+	'abusefilter-edit-subtitle' => 'Page subtitle when editing an abuse filter.',
+	'abusefilter-edit-oldwarning' => 'Warning displayed when editing an older version of a filter.',
+	'abusefilter-edit-status-label' => 'Field label for abuse filter statistics.
+{{Identical|Statistics}}',
+	'abusefilter-edit-new' => 'Field value in case an edited filter is new.',
+	'abusefilter-edit-save' => 'Submit button text to save a filter.',
+	'abusefilter-edit-id' => 'Field label for filter identifier.
+{{Identical|Filter ID}}',
+	'abusefilter-edit-description' => 'Field label for publicly viewable abuse filter description.',
+	'abusefilter-edit-flags' => 'Field label for abuse filter flags (checkboxes for "hidden", "enabled" and "deleted").
+{{Identical|Flag}}',
+	'abusefilter-edit-enabled' => 'Checkbox label for a filter flag.',
+	'abusefilter-edit-deleted' => 'Checkbox label for a filter flag.',
+	'abusefilter-edit-hidden' => 'Checkbox label for a filter flag.',
+	'abusefilter-edit-rules' => 'Field label for filter rules.',
+	'abusefilter-edit-notes' => 'Field label for filter notes.',
+	'abusefilter-edit-lastmod' => 'Field label for filter\'s last modified timestamp.',
+	'abusefilter-edit-lastmod-text' => 'This message is used on Special:AbuseFilter to indicate the last modified date, time and user for existing rules. Parameters:
 * $1 is a time and date (duplicated in $3 and $4)
 * $2 is a link to a user page with a user name as link text, followed by a series of related links
 * $3 is the date
 * $4 is the time
 * $5 is the user name which can be used with GENDER',
+	'abusefilter-edit-hitcount' => '',
+	'abusefilter-edit-consequences' => '',
+	'abusefilter-edit-action-warn' => '',
+	'abusefilter-edit-action-disallow' => '',
+	'abusefilter-edit-action-flag' => '',
+	'abusefilter-edit-action-blockautopromote' => '',
+	'abusefilter-edit-action-degroup' => '',
+	'abusefilter-edit-action-block' => '',
+	'abusefilter-edit-action-throttle' => '',
+	'abusefilter-edit-action-rangeblock' => '',
+	'abusefilter-edit-action-tag' => '',
+	'abusefilter-edit-throttle-count' => '',
+	'abusefilter-edit-throttle-period' => '',
+	'abusefilter-edit-throttle-seconds' => '',
 	'abusefilter-edit-throttle-groups' => 'Could you please go over the "throttle" concept? It is polysemic in Spanish. I need definition.',
+	'abusefilter-edit-warn-message' => '',
+	'abusefilter-edit-warn-other' => '',
+	'abusefilter-edit-warn-other-label' => '',
 	'abusefilter-edit-warn-actions' => '{{Identical|Action}}',
+	'abusefilter-edit-warn-preview' => '',
+	'abusefilter-edit-warn-edit' => '',
+	'abusefilter-edit-tag-tag' => '',
+	'abusefilter-edit-denied' => '',
+	'abusefilter-edit-main' => '',
+	'abusefilter-edit-done-subtitle' => '',
+	'abusefilter-edit-done' => '',
+	'abusefilter-edit-badsyntax' => '',
+	'abusefilter-edit-restricted' => '',
+	'abusefilter-edit-viewhistory' => '',
 	'abusefilter-edit-history' => '{{Identical|History}}',
+	'abusefilter-edit-check' => '',
+	'abusefilter-edit-badfilter' => '',
+	'abusefilter-edit-revert' => '',
 	'abusefilter-edit-tools' => '{{Identical|Tools}}',
+	'abusefilter-edit-test-link' => '',
+	'abusefilter-edit-global' => '',
+	'abusefilter-edit-export' => '',
+	'abusefilter-edit-syntaxok' => '',
+	'abusefilter-edit-syntaxerr' => '',
+	'abusefilter-edit-bad-tags' => '',
+	'abusefilter-edit-notallowed' => '',
+	'abusefilter-edit-builder-select' => '',
+	'abusefilter-edit-builder-group-op-arithmetic' => '',
+	'abusefilter-edit-builder-op-arithmetic-addition' => '',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => '',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => '',
+	'abusefilter-edit-builder-op-arithmetic-divide' => '',
+	'abusefilter-edit-builder-op-arithmetic-modulo' => '',
+	'abusefilter-edit-builder-op-arithmetic-pow' => '',
+	'abusefilter-edit-builder-group-op-comparison' => '',
+	'abusefilter-edit-builder-op-comparison-equal' => '',
+	'abusefilter-edit-builder-op-comparison-notequal' => '',
+	'abusefilter-edit-builder-op-comparison-lt' => '',
+	'abusefilter-edit-builder-op-comparison-gt' => '',
+	'abusefilter-edit-builder-op-comparison-lte' => '',
+	'abusefilter-edit-builder-op-comparison-gte' => '',
+	'abusefilter-edit-builder-group-op-bool' => '',
+	'abusefilter-edit-builder-op-bool-not' => '',
+	'abusefilter-edit-builder-op-bool-and' => '',
+	'abusefilter-edit-builder-op-bool-or' => '',
 	'abusefilter-edit-builder-op-bool-xor' => '{{optional}}',
 	'abusefilter-edit-builder-misc-in' => 'Do not translate "(in)"',
 	'abusefilter-edit-builder-misc-like' => 'Do not translate "(like)"',
