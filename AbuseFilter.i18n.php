@@ -572,7 +572,7 @@ $messages['qqq'] = array(
 	'abusefilter-log-details-vars' => 'Caption on a detail view of [[Special:AbuseLog]]',
 	'abusefilter-log-details-private' => 'Header for private log details.',
 	'abusefilter-log-details-ip' => 'Row label in private log details.',
-	'abusefilter-log-noactions' => 'Tekst displayed in Special:AbuseLog when a rule was triggered, but no action was taken.
+	'abusefilter-log-noactions' => 'Text displayed in Special:AbuseLog when a rule was triggered, but no action was taken.
 {{Identical|None}}',
 	'abusefilter-log-details-diff' => 'Header for differences between two edits in log details.',
 	'abusefilter-log-linkoncontribs' => 'Link text added on [[Special:Contributions]] and other relevant special pages.',
