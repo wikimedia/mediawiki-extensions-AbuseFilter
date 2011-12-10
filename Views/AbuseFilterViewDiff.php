@@ -302,10 +302,10 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 	function getMultiLineRow( $msg, $old, $new ) {
 		if ( !is_array( $old ) ) {
-			$old = explode( "\n", str_replace( "\r", '', $old ) );
+			$old = explode( "\n", preg_replace( "/\\\r\\\n?/", "\n", $old ) );
 		}
 		if ( !is_array( $new ) ) {
-			$new = explode( "\n", str_replace( "\r", '', $new ) );
+			$new = explode( "\n", preg_replace( "/\\\r\\\n?/", "\n", $new ) );
 		}
 
 		if ( $old == $new ) {
