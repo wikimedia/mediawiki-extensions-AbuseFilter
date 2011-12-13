@@ -20,7 +20,7 @@ $wgExtensionCredits[version_compare($wgVersion, '1.17alpha', '>=') ? 'antispam' 
 	'name' => 'Abuse Filter',
 	'author' => array( 'Andrew Garrett', 'River Tarnell', 'Victor Vasiliev' ),
 	'descriptionmsg' => 'abusefilter-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:AbuseFilter',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:AbuseFilter',
 );
 
 $dir = dirname( __FILE__ );
