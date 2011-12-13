@@ -14212,11 +14212,11 @@ $messages['ike-latn'] = array(
  * @author Lam-ang
  */
 $messages['ilo'] = array(
-	'abusefilter-desc' => 'Agikabil kadagiti automatiko nga pinagsulbar ti problema ti pinagbalbaliw',
+	'abusefilter-desc' => 'Agikabil kadagiti automatiko a pinagsulbar ti parikut kadagiti pinagurnos',
 	'abusefilter' => 'Kita ti pinakaaramid ti sagat ti pinagabuso',
 	'abuselog' => 'Listaan ti pinag-abuso',
 	'abusefilter-intro' => 'Naragsak nga isasangbay ditoy interface ti pinangasiwaan ti Sagat ti Pinagabuso.
-Ti  Sagat ti Pinagabuso ket automatiko a mekanismo ti software nga agikabil ti automatiko a pinagsulbar ti amin nga problema kadagiti aksion.
+Ti  Sagat ti Pinagabuso ket automatiko a mekanismo ti software nga agikabil ti automatiko a pinagsulbar ti amin a parikut kadagiti aramid.
 Daytoy nga interface ket ipakita na dagiti listaan dagiti naipalawag a sagat, ken maipabalin da a maipasabali.',
 	'abusefilter-mustbeeditor' => 'Para ti pinagseguridad a rason, dagiti laeng agus-usar nga addaan ti karbengan nga agpasabali kadagiti sagat ti pinagabuso ti makausar daytoy nga interface.',
 	'abusefilter-blocker' => 'Sagat ti pinag-abuso',
@@ -22988,6 +22988,7 @@ $messages['or'] = array(
 	'abusefilter-logentry-unsuppress' => 'ଲୁଚିଥିବା "[[$1]]"କୁ ଦେଖାଇଦିଆଗଲା',
 	'abusefilter-management' => 'ଗାଳି ଗୁଲଜ ରୋକିବା ବ୍ୟବସ୍ଥା',
 	'abusefilter-list' => 'ସବୁ ଛଣା',
+	'abusefilter-list-id' => 'ଏହି ଆଇଡ଼ିଟିକୁ ଫିଲଟର କରିବା',
 	'abusefilter-list-status' => 'ସ୍ଥିତି',
 	'abusefilter-list-consequences' => 'ପରିଣାମସବୁ',
 	'abusefilter-list-visibility' => 'ଦେଖଣା',
