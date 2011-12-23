@@ -81,7 +81,7 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$this->mSearchTitle = $request->getText( 'wpSearchTitle' );
 		$this->mSearchFilter = null;
-		if ( self::canSeeDetails( $this->getUser() ) ) {
+		if ( self::canSeeDetails() ) {
 			$this->mSearchFilter = $request->getIntOrNull( 'wpSearchFilter' );
 		}
 	}
@@ -93,7 +93,7 @@ class SpecialAbuseLog extends SpecialPage {
 		// Search conditions
 		$fields['abusefilter-log-search-user'] =
 			Xml::input( 'wpSearchUser', 45, $this->mSearchUser );
-		if ( self::canSeeDetails( $this->getUser() ) ) {
+		if ( self::canSeeDetails() ) {
 			$fields['abusefilter-log-search-filter'] =
 				Xml::input( 'wpSearchFilter', 45, $this->mSearchFilter );
 		}
@@ -222,7 +222,7 @@ class SpecialAbuseLog extends SpecialPage {
 
 	function showDetails( $id ) {
 		$out = $this->getOutput();
-		if ( !self::canSeeDetails( $this->getUser() ) ) {
+		if ( !self::canSeeDetails() ) {
 			return;
 		}
 
@@ -241,7 +241,7 @@ class SpecialAbuseLog extends SpecialPage {
 			return;
 		}
 
-		if ( $row->afl_deleted && !self::canSeeHidden( $this->getUser() ) ) {
+		if ( $row->afl_deleted && !self::canSeeHidden() ) {
 			$out->addWikiMsg( 'abusefilter-log-details-hidden' );
 			return;
 		}
@@ -287,7 +287,7 @@ class SpecialAbuseLog extends SpecialPage {
 		// Build a table.
 		$output .= AbuseFilter::buildVarDumpTable( $vars );
 
-		if ( self::canSeePrivate( $this->getUser() ) ) {
+		if ( self::canSeePrivate() ) {
 			// Private stuff, like IPs.
 			$header =
 				Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-var' ) ) .
@@ -322,27 +322,25 @@ class SpecialAbuseLog extends SpecialPage {
 	}
 
 	/**
-	 * @param $user User
 	 * @return bool
 	 */
-	static function canSeeDetails( User $user ) {
-		return $user->isAllowed( 'abusefilter-log-detail' );
+	static function canSeeDetails() {
+		global $wgUser;
+		return $wgUser->isAllowed( 'abusefilter-log-detail' );
 	}
 
 	/**
-	 * @param $user User
 	 * @return bool
 	 */
-	static function canSeePrivate( User $user ) {
+	static function canSeePrivate() {
 		global $wgUser;
 		return $wgUser->isAllowed( 'abusefilter-private' );
 	}
 
 	/**
-	 * @param $user User
 	 * @return bool
 	 */
-	static function canSeeHidden( User $user ) {
+	static function canSeeHidden() {
 		global $wgUser;
 		return $wgUser->isAllowed( 'abusefilter-hidden-log' );
 	}
@@ -397,7 +395,7 @@ class SpecialAbuseLog extends SpecialPage {
 			$parsed_comments = $wgOut->parseInline( $row->af_public_comments );
 		}
 
-		if ( self::canSeeDetails( $user ) ) {
+		if ( self::canSeeDetails() ) {
 			$examineTitle = SpecialPage::getTitleFor( 'AbuseFilter', 'examine/log/' . $row->afl_id );
 			$detailsLink = $sk->makeKnownLinkObj(
 				$this->getTitle($row->afl_id),
