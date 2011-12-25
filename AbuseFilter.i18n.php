@@ -22249,7 +22249,7 @@ Kopier frå tekstboksen som dukkar opp og lim det inn i tekstboksen her. Trykk s
  * @author Njardarlogar
  * @author Stigmj
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'abusefilter-desc' => 'Legger automatisk til heuristikk til redigeringer.',
 	'abusefilter' => 'Konfigurasjon av misbruksfilter',
 	'abuselog' => 'Misbrukslogg',

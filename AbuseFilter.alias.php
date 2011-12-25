@@ -255,7 +255,7 @@ $specialPageAliases['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['no'] = array(
+$specialPageAliases['nb'] = array(
 	'AbuseLog' => array( 'Misbrukslogg' ),
 	'AbuseFilter' => array( 'Misbruksfilter' ),
 );
