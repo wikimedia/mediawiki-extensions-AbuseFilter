@@ -68,6 +68,12 @@ $specialPageAliases['eo'] = array(
 	'AbuseFilter' => array( 'Filtrilo_kontraŭ_misuzado' ),
 );
 
+/** Spanish (Español) */
+$specialPageAliases['es'] = array(
+	'AbuseLog' => array( 'RegistroAbusos' ),
+	'AbuseFilter' => array( 'FiltroAntiAbusos' ),
+);
+
 /** Estonian (Eesti) */
 $specialPageAliases['et'] = array(
 	'AbuseLog' => array( 'Väärtarvituslogi' ),
@@ -236,6 +242,12 @@ $specialPageAliases['myv'] = array(
 	'AbuseFilter' => array( 'АТевсНолдамоньФильтра' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'AbuseLog' => array( 'Misbrukslogg' ),
+	'AbuseFilter' => array( 'Misbruksfilter' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'AbuseLog' => array( 'Misbruuklogboek' ),
@@ -250,12 +262,6 @@ $specialPageAliases['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
 $specialPageAliases['nn'] = array(
-	'AbuseLog' => array( 'Misbrukslogg' ),
-	'AbuseFilter' => array( 'Misbruksfilter' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
 	'AbuseLog' => array( 'Misbrukslogg' ),
 	'AbuseFilter' => array( 'Misbruksfilter' ),
 );
@@ -284,7 +290,7 @@ $specialPageAliases['ro'] = array(
 	'AbuseFilter' => array( 'Filtru_abuzuri' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'AbuseLog' => array( 'दुरुपयोगअङ्कन' ),
 	'AbuseFilter' => array( 'दुरुपयोगशोधबन्धन' ),
@@ -338,6 +344,12 @@ $specialPageAliases['vi'] = array(
 	'AbuseFilter' => array( 'Bộ_lọc_sai_phạm' ),
 );
 
+/** Yiddish (ייִדיש) */
+$specialPageAliases['yi'] = array(
+	'AbuseLog' => array( 'שעדיקונג_לאגבוך' ),
+	'AbuseFilter' => array( 'שעדיקונג_פילטער' ),
+);
+
 /** Cantonese (粵語) */
 $specialPageAliases['yue'] = array(
 	'AbuseLog' => array( '濫用日誌' ),
@@ -355,8 +367,3 @@ $specialPageAliases['zh-hant'] = array(
 	'AbuseLog' => array( '過濾日誌' ),
 	'AbuseFilter' => array( '防濫用過濾器' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
