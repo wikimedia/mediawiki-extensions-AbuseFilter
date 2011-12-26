@@ -1594,7 +1594,7 @@ class AbuseFilterParser {
 
 		if ( is_null( $equivset ) || is_null( $replacementArray ) ) {
 			global $IP;
-			require( "$IP/extensions/AntiSpoof/equivset.php" );
+			require_once( "$IP/extensions/AntiSpoof/equivset.php" );
 			$replacementArray = new ReplacementArray( $equivset );
 		}
 
