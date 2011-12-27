@@ -169,3 +169,4 @@ $wgAbuseFilterBlockDuration = 'indefinite';
 
 // Callback functions for custom actions
 $wgAbuseFilterCustomActionsHandlers = array();
+
