@@ -106,6 +106,16 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		self::$examineType = 'log';
 		self::$examineId = $logid;
 
+		if ( !SpecialAbuseLog::canSeeDetails() ) {
+			$this->getOutput()->addWikiMsg( 'abusefilter-log-cannot-see-details' );
+			return;
+		}
+
+		if ( $row->afl_deleted && !SpecialAbuseLog::canSeeHidden() ) {
+			$this->getOutput()->addWikiMsg( 'abusefilter-log-details-hidden' );
+			return;
+		}
+
 		$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
 
 		$this->showExaminer( $vars );

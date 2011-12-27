@@ -104,6 +104,7 @@ Filter description: $7 ($8)',
 	'abusefilter-log-linkoncontribs-text' => 'Abuse log for this user',
 	'abusefilter-log-hidden' => '(entry hidden)',
 	'abusefilter-log-hide' => 'hide or unhide', // @todo FIXME: Message unused?
+	'abusefilter-log-cannot-see-details' => 'You do not have permission to see details of any entries.',
 	'abusefilter-log-details-hidden' => 'You cannot view the details for this entry because it is hidden from public view.',
 
 	// Hiding log entries
@@ -580,6 +581,7 @@ $messages['qqq'] = array(
 	'abusefilter-log-linkoncontribs-text' => 'Title for link added on [[Special:Contributions]] and other relevant special pages.',
 	'abusefilter-log-hidden' => 'Text for a hidden log entry.',
 	'abusefilter-log-hide' => 'This message may be unused.',
+	'abusefilter-log-cannot-see-details' => 'Message show instead of the log row for users without permissions to see any details.',
 	'abusefilter-log-details-hidden' => 'Message shown instead of log row details when those are hidden.',
 	'abusefilter-log-hide-legend' => 'Legend for form to hide a log entry.',
 	'abusefilter-log-hide-id' => 'Field label in form to hide a log entry.',
