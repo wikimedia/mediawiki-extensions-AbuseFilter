@@ -730,6 +730,7 @@ class AbuseFilter {
 			$thisLog['afl_filter'] = $filter;
 			$thisLog['afl_action'] = $action;
 			$thisLog['afl_actions'] = implode( ',', $actions );
+			$thisLog['afl_deleted'] = in_array('hidedetails', $actions) ? 1 : 0;
 
 			// Don't log if we were only throttling.
 			if ( $thisLog['afl_actions'] != 'throttle' ) {
@@ -935,7 +936,7 @@ class AbuseFilter {
 		$vars, $rule_desc )
 	{
 		global $wgAbuseFilterCustomActionsHandlers;
-		
+
 		$display = '';
 		switch ( $action ) {
 			case 'disallow':
