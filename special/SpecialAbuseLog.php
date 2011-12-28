@@ -223,6 +223,7 @@ class SpecialAbuseLog extends SpecialPage {
 	function showDetails( $id ) {
 		$out = $this->getOutput();
 		if ( !self::canSeeDetails() ) {
+			$out->addWikiMsg( 'abusefilter-log-cannot-see-details' );
 			return;
 		}
 
@@ -265,9 +266,9 @@ class SpecialAbuseLog extends SpecialPage {
 			$formattedDiff = $diffEngine->generateDiffBody( $old_wikitext, $new_wikitext );
 
 			static $colDescriptions = "<col class='diff-marker' />
-        <col class='diff-content' />
-        <col class='diff-marker' />
-        <col class='diff-content' />";
+		        <col class='diff-content' />
+                <col class='diff-marker' />
+                <col class='diff-content' />";
 
 			$formattedDiff =
 				"<table class='diff'>$colDescriptions<tbody>$formattedDiff</tbody></table>";
