@@ -141,7 +141,7 @@ $wgResourceModules['ext.abuseFilter.examine'] = array(
 	),
 ) + $commonModuleInfo;
 
-$wgAbuseFilterAvailableActions = array( 'flag', 'hidedetails', 'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'degroup', 'tag' );
+$wgAbuseFilterAvailableActions = array( 'flag', 'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'degroup', 'tag' );
 
 $wgAbuseFilterConditionLimit = 1000;
 
@@ -153,7 +153,7 @@ $wgAbuseFilterEmergencyDisableAge = 86400; // One day.
 // Abuse filter parser class
 $wgAbuseFilterParserClass = 'AbuseFilterParser';
 
-$wgAbuseFilterRestrictedActions = array( 'block', 'degroup', 'hidedetails' );
+$wgAbuseFilterRestrictedActions = array( 'block', 'degroup' );
 
 // UDP configuration
 $wgAbuseFilterUDPPrefix = 'abusefilter:';
@@ -169,4 +169,3 @@ $wgAbuseFilterBlockDuration = 'indefinite';
 
 // Callback functions for custom actions
 $wgAbuseFilterCustomActionsHandlers = array();
-
