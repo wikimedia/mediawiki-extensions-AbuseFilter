@@ -18438,6 +18438,7 @@ Door op "Syntaxis controleren" te klikke kriegs se \'n volledige toelichting.',
 	'abusefilter-log-header' => "Dit logbook geuf 'n euverzich van filterverangeringe.
 Zuuch de [[Special:AbuseFilter/history|lies mit recente filterverangeringe]] veur volledige details.",
 	'abusefilter-log-entry-modify' => 'haet $1 gewiezig ($2)',
+	'abusefilter-log-noresults' => 'Gein resultate',
 	'abusefilter-diff-title' => '(Versjil tösje versies)',
 	'abusefilter-diff-item' => 'Deil',
 	'abusefilter-diff-version' => 'Versie van $1 door $2',
@@ -31320,6 +31321,7 @@ $messages['tg-latn'] = array(
  * @author Akkhaporn
  * @author Ans
  * @author Harley Hartwell
+ * @author Horus
  * @author Korrawit
  * @author Octahedron80
  * @author Passawuth
@@ -31406,6 +31408,7 @@ $messages['th'] = array(
 	'abusefilter-log-linkoncontribs-text' => 'บันทึกความไม่เหมาะสมสำหรับผู้ใช้นี้',
 	'abusefilter-log-hidden' => '(รายการถูกซ่อนไว้)',
 	'abusefilter-log-hide' => 'ซ่อนหรือยกเลิกการซ่อน',
+	'abusefilter-log-cannot-see-details' => 'คุณไม่ได้รับอนุญาตให้เห็นรายละเอียดทุกรายการ',
 	'abusefilter-log-details-hidden' => 'คุณไม่สามารถดูรายละเอียดของรายการนี้ เพราะรายการนี้ถูกซ่อนจากการปรากฏแบบสาธารณะ',
 	'abusefilter-log-hide-legend' => 'ซ่อนรายการบันทึก',
 	'abusefilter-log-hide-id' => 'ID ของรายการยันทึก:',
@@ -31453,6 +31456,10 @@ $messages['th'] = array(
 	'abusefilter-reautoconfirm-notallowed' => 'คุณไม่ได้รับอนุญาตให้เรียกคืนสถานะที่ยืนยันโดยอัตโนมัติ',
 	'abusefilter-reautoconfirm-done' => 'สถานะที่ยืนยันโดยอัตโนมัติของบัญชีผู้ใช้นี้ได้รับการคืนสภาพแล้ว',
 	'abusefilter-edit-subtitle' => 'แก้ไขตัวกรอง $1',
+	'abusefilter-edit-oldwarning' => '<strong>คุณกำลังแก้ไขรุ่นเก่าของตัวกรองนี้
+สถิติที่คัดมาสำหรับรุ่นล่าสุดของตัวกรอง
+ถ้าคุณบันทึกการเปลี่ยนแปลง คุณจะเขียนทับการเปลี่ยนแปลงทั้งหมดนับแต่รุ่นที่คุณกำลังแก้ไข</strong> &bull;
+[[Special:AbuseFilter/history/$2|กลับไปยังประวัติของรุ่นนี้]]',
 	'abusefilter-edit-status-label' => 'สถิติ:',
 	'abusefilter-edit-throttled' => "'''คำเตือน ''': ตัวกรองนี้ถูกปิดใช้งานโดยอัตโนมัติตามมาตรการความปลอดภัย
 เนื่องจากถึงขีดจำกัดของการตรวจจับมากกว่า $1% ของการกระทำทั้งหมด",
@@ -31485,6 +31492,8 @@ $messages['th'] = array(
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|วินาที|วินาที}}',
 	'abusefilter-edit-warn-other' => 'ข้อความอื่นๆ',
 	'abusefilter-edit-warn-actions' => 'การกระทำ:',
+	'abusefilter-edit-warn-preview' => 'แสดงตัวอย่างข้อความที่เลือก',
+	'abusefilter-edit-warn-edit' => 'สร้าง/แก้ไขข้อความที่เลือก',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'เครื่องหมายทางคณิตศาสตร์',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'การบวก (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'การลบ (-)',
@@ -31536,12 +31545,16 @@ $messages['th'] = array(
 	'abusefilter-edit-builder-vars-addedlines' => 'เพิ่มบรรทัดในการแก้ไข',
 	'abusefilter-edit-builder-vars-newsize' => 'ขนาดหน้าใหม่',
 	'abusefilter-edit-builder-vars-oldsize' => 'ขนาดหน้าเก่า',
+	'abusefilter-edit-builder-vars-summary' => 'คำอธิบายอย่างย่อ/เหตุผล',
 	'abusefilter-edit-builder-vars-article-id' => 'หมายเลขหน้า',
+	'abusefilter-edit-builder-vars-article-text' => 'ชื่อหน้า (ไม่มีเนมสเปซ)',
+	'abusefilter-edit-builder-vars-article-prefixedtext' => 'ชื่อเต็มหน้า',
 	'abusefilter-history-foruser' => 'การเปลี่ยนแปลงโดย $1',
 	'abusefilter-history-global' => 'ทั่วไป',
 	'abusefilter-history-user' => 'ผู้ใช้',
 	'abusefilter-history-actions' => 'การกระทำ',
 	'abusefilter-history-deleted' => 'ถูกลบ',
+	'abusefilter-history-filterid' => 'ตัวกรอง',
 	'abusefilter-history-diff' => 'จำนวนการเปลี่ยนแปลง',
 	'abusefilter-revert-confirm' => 'ยืนยัน',
 	'abusefilter-examine-submit' => 'สืบค้น',
@@ -34376,6 +34389,7 @@ $messages['xal'] = array(
 );
 
 /** Yiddish (ייִדיש)
+ * @author Imre
  * @author פוילישער
  */
 $messages['yi'] = array(
@@ -34403,6 +34417,7 @@ $messages['yi'] = array(
 	'abusefilter-log-details-val' => 'ווערט',
 	'abusefilter-log-noactions' => 'קיין',
 	'abusefilter-log-hide-reason' => 'אורזאַך:',
+	'abusefilter-list-status' => 'סטאַטוס',
 	'abusefilter-list-edit' => 'רעדאַקטירן',
 	'abusefilter-list-details' => 'פרטים',
 	'abusefilter-list-limit' => 'צאל אין א בלאט:',
@@ -34426,6 +34441,7 @@ $messages['yi'] = array(
 :''(פריוואט)''",
 	'abusefilter-edit-lastmod' => 'פֿילטער לעצטנס געענדערט:',
 	'abusefilter-edit-lastmod-text' => '$1 פֿון $2',
+	'abusefilter-edit-warn-actions' => 'אַקציעס:',
 	'abusefilter-edit-viewhistory' => 'באקוקן דעם פֿילטערס היסטאריע',
 	'abusefilter-edit-history' => 'היסטאריע:',
 	'abusefilter-edit-check' => 'קאנטראלירן סינטאקס',
@@ -34445,9 +34461,14 @@ $messages['yi'] = array(
 	'abusefilter-edit-builder-vars-action' => 'אַקציע',
 	'abusefilter-edit-builder-vars-addedlines' => 'שורות צוגעלייגט בײַם ענדערן',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'פֿולער בלאטנאמען',
+	'abusefilter-history-hidden' => 'פֿאַרבאָרגן',
+	'abusefilter-history-enabled' => 'אַקטיוויזירט',
 	'abusefilter-history-global' => 'גלאבאַל',
 	'abusefilter-history-timestamp' => 'צײַט',
 	'abusefilter-history-user' => 'באַניצער',
+	'abusefilter-history-comments' => 'הערות',
+	'abusefilter-history-actions' => 'אַקציעס',
+	'abusefilter-history-deleted' => 'אויסגעמעקט',
 	'abusefilter-history-filterid' => 'פֿילטער',
 	'abusefilter-history-select-user' => 'באַניצער:',
 	'abusefilter-history-select-submit' => 'ראפֿינירן',
