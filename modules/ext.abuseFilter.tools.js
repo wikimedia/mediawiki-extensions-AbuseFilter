@@ -31,7 +31,7 @@ new ( function( $, mw ) {
 		$.removeSpinner( 'abusefilter-expr' );
 
 		$( '#mw-abusefilter-expr-result' )
-			.text( mw.html.escape( data.abusefilterevalexpression.result ) );
+			.text( data.abusefilterevalexpression.result );
 	};
 
 	/**
