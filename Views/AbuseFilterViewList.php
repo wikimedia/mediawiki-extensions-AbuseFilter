@@ -225,11 +225,15 @@ class AbuseFilterPager extends TablePager {
 					$lang->formatNum( $value )
 				);
 				// @todo FIXME: makeKnownLinkObj() is deprecated.
-				$link = Linker::makeKnownLinkObj(
-					SpecialPage::getTitleFor( 'AbuseLog' ),
-					$count_display,
-					'wpSearchFilter=' . $row->af_id
-				);
+				if ( SpecialAbuseLog::canSeeDetails( $row->af_id, $row->af_hidden ) ) {
+					$link = Linker::makeKnownLinkObj(
+						SpecialPage::getTitleFor( 'AbuseLog' ),
+						$count_display,
+						'wpSearchFilter=' . $row->af_id
+					);
+				} else {
+					$link = "";
+				}
 				return $link;
 			case 'af_timestamp':
 				$userLink =

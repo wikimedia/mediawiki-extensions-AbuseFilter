@@ -22,9 +22,10 @@ abstract class AbuseFilterView extends ContextSource {
 	abstract function show();
 
 	/**
+	 * @static
 	 * @return bool
 	 */
-	function canEdit() {
+	static function canEdit() {
 		global $wgUser;
 		static $canEdit = null;
 
@@ -36,14 +37,15 @@ abstract class AbuseFilterView extends ContextSource {
 	}
 
 	/**
+	 * @static
 	 * @return bool
 	 */
-	function canViewPrivate() {
+	static function canViewPrivate() {
 		global $wgUser;
 		static $canView = null;
 
 		if ( is_null( $canView ) ) {
-			$canView = $this->canEdit() || $wgUser->isAllowed( 'abusefilter-view-private' );
+			$canView = self::canEdit() || $wgUser->isAllowed( 'abusefilter-view-private' );
 		}
 
 		return $canView;

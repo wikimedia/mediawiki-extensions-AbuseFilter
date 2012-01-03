@@ -206,7 +206,17 @@ class AbuseFilter {
 	}
 
 	public static function filterHidden( $filter ) {
-		$dbr = wfGetDB( DB_SLAVE );
+		$globalIndex = self::decodeGlobalName( $filter );
+		if ( $globalIndex ) {
+			global $wgAbuseFilterCentralDB;
+			if ( !$wgAbuseFilterCentralDB ) {
+				return false;
+			}
+			$dbr = wfGetDB( DB_SLAVE, array(), $wgAbuseFilterCentralDB );
+			$filter = $globalIndex;
+		} else {
+			$dbr = wfGetDB( DB_SLAVE );
+		}
 		$hidden = $dbr->selectField(
 			'abuse_filter',
 			'af_hidden',

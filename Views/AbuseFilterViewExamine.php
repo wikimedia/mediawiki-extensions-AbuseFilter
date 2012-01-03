@@ -106,7 +106,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		self::$examineType = 'log';
 		self::$examineId = $logid;
 
-		if ( !SpecialAbuseLog::canSeeDetails() ) {
+		if ( !SpecialAbuseLog::canSeeDetails( $row->afl_filter ) ) {
 			$this->getOutput()->addWikiMsg( 'abusefilter-log-cannot-see-details' );
 			return;
 		}
