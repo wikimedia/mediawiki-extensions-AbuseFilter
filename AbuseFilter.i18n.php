@@ -26778,6 +26778,7 @@ $messages['ru'] = array(
 	'abusefilter-log-linkoncontribs-text' => 'Записи журнала злоупотреблений для этого участника',
 	'abusefilter-log-hidden' => '(запись скрыта)',
 	'abusefilter-log-hide' => 'скрыть или показать',
+	'abusefilter-log-cannot-see-details' => 'У вас нет разрешения на просмотр подробностей этой записи.',
 	'abusefilter-log-details-hidden' => 'Вы не можете просмотреть подробности этой записи, поскольку она была скрыта.',
 	'abusefilter-log-hide-legend' => 'Скрыть запись в журнале',
 	'abusefilter-log-hide-id' => 'ID записи журнала:',
