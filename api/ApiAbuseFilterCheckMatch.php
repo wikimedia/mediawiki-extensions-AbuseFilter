@@ -103,7 +103,7 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 
 	public function getExamples() {
 		return array(
-			'api.php?action=checkfiltermatch&filter=!("autoconfirmed"%20in%20user_groups)&rcid=15'
+			'api.php?action=abusefiltercheckmatch&filter=!("autoconfirmed"%20in%20user_groups)&rcid=15'
 		);
 	}
 

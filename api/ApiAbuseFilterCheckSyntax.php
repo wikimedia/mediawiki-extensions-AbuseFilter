@@ -54,8 +54,8 @@ class ApiAbuseFilterCheckSyntax extends ApiBase {
 
 	public function getExamples() {
 		return array(
-			'api.php?action=checkfiltersyntax&filter="foo"',
-			'api.php?action=checkfiltersyntax&filter="bar"%20bad_variable',
+			'api.php?action=abusefilterchecksyntax&filter="foo"',
+			'api.php?action=abusefilterchecksyntax&filter="bar"%20bad_variable',
 		);
 	}
 

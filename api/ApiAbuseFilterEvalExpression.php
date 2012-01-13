@@ -31,7 +31,7 @@ class ApiAbuseFilterEvalExpression extends ApiBase {
 
 	public function getExamples() {
 		return array(
-			'api.php?action=evalfilterexpression&expression=lcase("FOO")'
+			'api.php?action=abusefilterevalexpression&expression=lcase("FOO")'
 		);
 	}
 
