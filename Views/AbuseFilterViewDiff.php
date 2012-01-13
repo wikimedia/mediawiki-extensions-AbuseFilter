@@ -186,8 +186,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 						wfMsgExt( 'abusefilter-diff-item', 'parseinline' ) );
 		$headings .= Xml::tags( 'th', null,
 			wfMessage( 'abusefilter-diff-version' )
-					->rawParams($oldLink, $oldUserLink,
-						$newVersion['meta']['modified_by_text'] )
+					->rawParams( $oldLink, $oldUserLink )
+					->params( $newVersion['meta']['modified_by_text'] )
 					->parse()
 		);
 		$headings .= Xml::tags( 'th', null,
