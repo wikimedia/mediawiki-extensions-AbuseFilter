@@ -223,7 +223,7 @@ class AbuseFilterHooks {
 		// Create the Abuse Filter user.
 		$user = User::newFromName( wfMsgForContent( 'abusefilter-blocker' ) );
 
-		if ( !$updater->updateRowExists( 'create abusefilter-blocker-user' ) ) {
+		if ( $user && !$updater->updateRowExists( 'create abusefilter-blocker-user' ) ) {
 			if ( !$user->getId() ) {
 				$user->addToDatabase();
 				$user->saveSettings();
