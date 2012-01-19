@@ -2196,14 +2196,82 @@ Les ediciones non constructives se revertirán dafechu,
 y la repetición d'ediciones non constructives tendrá como resultáu el bloquéu de la to cuenta o direición IP.
 Si crees qu'esta edición ye constructiva, puedes calcar de nuevo nel botón Unviar pa confirmalo.
 La descripción curtia de la regla d'abusu que s'activó cola to aición ye: $1",
+	'abusefilter-disallowed' => "Esta aición s'identificó automáticamente como perxudicial y, poro, nun se permite.
+Si pienses que la to edición foi constructiva, por favor, informa a un alministrador de lo que queríes facer.
+Esta ye una descripción curtia de la regla d'abusu que casa cola to aición: $1",
+	'abusefilter-blocked-display' => "Esta aición s'identificó automáticamente como perxudicial, y se te torgó executala.
+Amás, pa protexer a {{SITENAME}}, a la to cuenta d'usuariu y toles direiciones IP asociaes se-yos torgó la edición.
+Si esto asocedió por un fallu, por favor, ponte'n contautu con un alministrador.
+Equí hai una descripción curtia de la regla d'abusu que casa cola to aición: $1",
+	'abusefilter-degrouped' => "Esta aición s'identificó automáticamente como perxudicial.
+Como consecuencia, nun se permitió y, como se sospecha que la to cuenta ta comprometida, tolos tos permisos queden torgaos.
+Si crees qu'esto foi por un error, por favor, ponte en contautu con un burócrata apurriendo-y una esplicación d'esta aición y seique se restaurarán los tos permisos.
+Equí hai una descripción curtia de la regla d'abusu que casa cola to aición: $1",
+	'abusefilter-autopromote-blocked' => "Esta aición s'identificó automaticamente como perxudicial, y nun se permitió.
+Amás, como midida de seguridá, se-y torgaron de mou temporal a la to cuenta dellos permisos que de vezu se conceden a les cuentes establecíes.
+Equí hai una descripción curtia de la regla d'abusu cola que casa la to aición: $1",
+	'abusefilter-blocker' => "Peñera d'abusos",
+	'abusefilter-blockreason' => "Bloquiáu automáticamente pola peñera d'abusu.
+Descripción de la regla aplicada: $1",
+	'abusefilter-degroupreason' => "Permisos retiraos automáticamente pola peñera d'abusu.
+Descripción de la regla: $1",
+	'abusefilter-accountreserved' => "Esti nome de cuenta ta acutáu pa que lu use la peñera d'abusos.",
+	'right-abusefilter-modify' => "Camudar les peñeres d'abusu",
+	'right-abusefilter-view' => "Ver les peñeres d'abusu",
+	'right-abusefilter-log' => "Ver el rexistru d'abusos",
+	'right-abusefilter-log-detail' => "Ver los detalles de les entraes del rexistru d'abusos",
+	'right-abusefilter-private' => "Ver los datos privaos del rexistru d'abusos",
+	'right-abusefilter-modify-restricted' => "Camudar les peñeres d'abusu con aiciones restrinxíes",
+	'right-abusefilter-revert' => "Revertir tolos cambios fechos por una determinada peñera d'abusu",
+	'right-abusefilter-view-private' => "Ver les peñeres d'abusu marcaes como privaes",
+	'right-abusefilter-hide-log' => "Anubrir entraes del rexistru d'abusos",
+	'right-abusefilter-hidden-log' => "Ver les entraes anubríes del rexistru d'abusos",
+	'action-abusefilter-modify' => "camudar les peñeres d'abusu",
+	'action-abusefilter-view' => "ver les peñeres d'abusu",
+	'action-abusefilter-log' => "ver el rexistru d'abusos",
+	'action-abusefilter-log-detail' => "ver los detalles de les entraes del rexistru d'abusos",
+	'action-abusefilter-private' => "ver los datos privaos del rexistru d'abusos",
+	'action-abusefilter-modify-restricted' => "camudar les peñeres d'abusu con aiciones restrinxíes",
+	'action-abusefilter-revert' => "revertir tolos cambios fechos por una determinada peñera d'abusu",
+	'action-abusefilter-view-private' => "ver les peñeres d'abusu marcaes como privaes",
+	'abusefilter-log' => "Rexistru de la peñera d'abusos",
+	'abusefilter-log-summary' => 'Esti rexistru amuesa una llista de toles aiciones detectaes poles peñeres.',
+	'abusefilter-log-search' => "Guetar nel rexistru d'abusos",
 	'abusefilter-log-search-user' => 'Usuariu:',
+	'abusefilter-log-search-filter' => 'ID de la peñera:',
 	'abusefilter-log-search-title' => 'Títulu:',
 	'abusefilter-log-search-submit' => 'Guetar',
+	'abusefilter-log-entry' => "$1: $2 disparó una peñera d'abusu al facer l'aición «$3» en $4.
+Midíes tomaes: $5;
+Descripción de la peñera: $6",
+	'abusefilter-log-detailedentry-meta' => "$1: $2 disparó $3 al facer l'aición «$4» en $5.
+Midíes tomaes: $6;
+Descripción de la peñera: $7 ($8)",
+	'abusefilter-log-detailedentry-global' => 'peñera global $1',
+	'abusefilter-log-detailedentry-local' => 'peñera $1',
 	'abusefilter-log-detailslink' => 'detalles',
+	'abusefilter-log-hidelink' => 'axustar la visibilidá',
+	'abusefilter-log-details-legend' => 'Detalles de la entrada del rexistru $1',
 	'abusefilter-log-details-var' => 'Variable',
 	'abusefilter-log-details-val' => 'Valor',
+	'abusefilter-log-details-vars' => "Parámetros de l'aición",
+	'abusefilter-log-details-private' => 'Datos privaos',
+	'abusefilter-log-details-ip' => "Direición IP d'orixe",
 	'abusefilter-log-noactions' => 'dengún',
+	'abusefilter-log-details-diff' => 'Cambios fechos na edición',
+	'abusefilter-log-linkoncontribs' => "rexistru d'abusos",
+	'abusefilter-log-linkoncontribs-text' => "Rexistru d'abusos d'esti usuariu",
+	'abusefilter-log-hidden' => '(entrada anubría)',
+	'abusefilter-log-hide' => 'anubrir o amosar',
+	'abusefilter-log-cannot-see-details' => "Nun tienes permisu pa ver los detalles d'esta entrada.",
+	'abusefilter-log-details-hidden' => "Nun pues ver los detalles d'esta entrada porque ta anubría de la vista pública.",
+	'abusefilter-log-hide-legend' => 'Anubrir entrada del rexistru',
+	'abusefilter-log-hide-id' => 'ID de la entrada del rexistru:',
+	'abusefilter-log-hide-hidden' => 'Anubrir esta entrada de la vista pública',
 	'abusefilter-log-hide-reason' => 'Motivu:',
+	'abusefilter-log-hide-forbidden' => "Nun tienes permisu p'anubrir entraes del rexistru d'abusos.",
+	'abusefilter-logentry-suppress' => 'anubre "[[$1]]"',
+	'abusefilter-logentry-unsuppress' => 'amuesa "[[$1]]"',
 	'abusefilter-list-status' => 'Estáu',
 );
 
