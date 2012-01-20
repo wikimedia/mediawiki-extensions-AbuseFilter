@@ -1050,7 +1050,7 @@ class AbuseFilter {
 						wfMsgForContent( 'abusefilter-degroupreason', $rule_desc ),
 						array(
 							implode( ', ', $groups ),
-							wfMsgForContent( 'rightsnone' )
+							''
 						),
 						self::getFilterUser()
 					);
