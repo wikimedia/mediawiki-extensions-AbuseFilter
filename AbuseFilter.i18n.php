@@ -9233,6 +9233,7 @@ $messages['eu'] = array(
  * @author Huji
  * @author Ladsgroup
  * @author Mjbmr
+ * @author Reza1615
  * @author Sahim
  * @author Wayiran
  * @author ZxxZxxZ
@@ -9318,6 +9319,7 @@ $messages['fa'] = array(
 	'abusefilter-log-linkoncontribs-text' => 'سیاهه خرابکاری‌ها برای این کاربر',
 	'abusefilter-log-hidden' => '(مورد پنهان)',
 	'abusefilter-log-hide' => 'پنهان یا آشکار کردن',
+	'abusefilter-log-cannot-see-details' => 'برای مشاهده جزئیات این اطلاعات دسترسی ندارید',
 	'abusefilter-log-details-hidden' => 'شما نمی‌توانید جزئیات این مورد را ببینید چون از دید عموم مخفی شده‌است.',
 	'abusefilter-log-hide-legend' => 'پنهان کردن مورد در سیاهه',
 	'abusefilter-log-hide-id' => 'شناسه مورد در سیاهه:',
