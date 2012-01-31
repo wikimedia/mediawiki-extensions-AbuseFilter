@@ -2177,7 +2177,13 @@ $messages['arz'] = array(
 $messages['as'] = array(
 	'abusefilter-log-search-user' => 'সভ্যৰ নাম:',
 	'abusefilter-log-search-submit' => 'সন্ধান',
-	'abusefilter-edit-builder-vars-user-name' => 'ব্যবহাৰকাৰীৰ নাম',
+	'abusefilter-deleted' => 'মছি পেলোৱা হৈছে',
+	'abusefilter-edit-builder-vars-user-name' => 'সদস্যৰ নাম',
+	'abusefilter-history-diff' => 'পৰিবৰ্ত্তনসমূহ',
+	'abusefilter-action-tag' => 'টেগ',
+	'abusefilter-action-warn' => 'সতৰ্ক কৰক',
+	'abusefilter-action-degroup' => 'গোটৰ পৰা আতৰাওক',
+	'abusefilter-examine-title' => 'পৃষ্ঠাখনৰ শিৰোনামা:',
 );
 
 /** Asturian (Asturianu)
