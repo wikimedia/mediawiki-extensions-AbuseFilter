@@ -6645,7 +6645,7 @@ Qe deskripsiyon: $1',
 	'abusefilter-log-search-user' => 'Karber:',
 	'abusefilter-log-search-filter' => 'IDyê Filitreyî:',
 	'abusefilter-log-search-title' => 'Sername:',
-	'abusefilter-log-search-submit' => 'Cıgeyrê',
+	'abusefilter-log-search-submit' => 'Cı geyre',
 	'abusefilter-log-entry' => '$1: $2 filitreyê abuseyî kerd a, ser $4 de hereketê "$3"î kerd.
 Hereket: $5;
 Deskripsiyonê filitreyî: $6',
@@ -16600,7 +16600,7 @@ $messages['khw'] = array(
  * @author Mirzali
  */
 $messages['kiu'] = array(
-	'abusefilter-log-search-submit' => 'Cıfeteliye',
+	'abusefilter-log-search-submit' => 'Cı feteliye',
 );
 
 /** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
