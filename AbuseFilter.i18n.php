@@ -25127,11 +25127,12 @@ $messages['ps'] = array(
  * @author Lijealso
  * @author MF-Warburg
  * @author Malafaya
+ * @author Pedroca cerebral
  * @author Waldir
  */
 $messages['pt'] = array(
 	'abusefilter-desc' => 'Aplica heurísticas automáticas às edições.',
-	'abusefilter' => 'Configuração do filtro de abusos',
+	'abusefilter' => 'Configuração do filtro de edições',
 	'abuselog' => 'Registo de abusos',
 	'abusefilter-intro' => 'Bem-vindo à interface de gestão do Filtro de Abusos.
 O Filtro de Abusos é um mecanismo de software automatizado de aplicação de heurísticas automáticas a todas as operações.
@@ -25539,11 +25540,12 @@ Copie da caixa de texto que aparece, coloque nesta caixa de texto e depois cliqu
  * @author Heldergeovane
  * @author Luckas Blade
  * @author MetalBrasil
+ * @author Pedroca cerebral
  * @author Rafael Vargas
  */
 $messages['pt-br'] = array(
 	'abusefilter-desc' => 'Aplica heurísticas automáticas às edições.',
-	'abusefilter' => 'Configuração do filtro de abusos',
+	'abusefilter' => 'Configuração do filtro de edições',
 	'abuselog' => 'Registro de abusos',
 	'abusefilter-intro' => "Bem-vindo à interface de gestão do Filtro de Abusos.
 O Filtro de Abuso é um mecanismo de ''software'' automatizado de aplicação de heurísticas automáticas a todas as ações.
