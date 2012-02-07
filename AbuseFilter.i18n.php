@@ -24197,6 +24197,7 @@ $messages['pfl'] = array(
 
 /** Polish (Polski)
  * @author Airwolf
+ * @author BeginaFelicysym
  * @author Derbeth
  * @author Jwitos
  * @author Leinad
@@ -24285,7 +24286,7 @@ Opis filtru: $7 ($8)',
 	'abusefilter-log-linkoncontribs-text' => 'Wpisy w rejestrze nadużyć dla tego użytkownika',
 	'abusefilter-log-hidden' => '(wpis ukryty)',
 	'abusefilter-log-hide' => 'ukryj lub zakończ ukrywanie',
-	'abusefilter-log-cannot-see-details' => 'Nie masz uprawnień do przeglądania szczegółów jakiegokolwiek wpisu.',
+	'abusefilter-log-cannot-see-details' => 'Nie masz uprawnień do przeglądania szczegółów tego wpisu.',
 	'abusefilter-log-details-hidden' => 'Nie możesz zobaczyć szczegółów tego wpisu, ponieważ jest ukryty przed widokiem publicznym.',
 	'abusefilter-log-hide-legend' => 'Ukryj wpis w rejestrze',
 	'abusefilter-log-hide-id' => 'Identyfikator wpisu w rejestrze',
@@ -25625,7 +25626,7 @@ Descrição do filtro: $7 ($8)',
 	'abusefilter-log-linkoncontribs-text' => 'Registro de Abuso para este usuário',
 	'abusefilter-log-hidden' => '(entrada ocultada)',
 	'abusefilter-log-hide' => 'ocultar ou revelar',
-	'abusefilter-log-cannot-see-details' => 'Você não tem permissão para ver os detalhes de nenhuma das entradas.',
+	'abusefilter-log-cannot-see-details' => 'Você não tem permissão para ver os detalhes desta entrada.',
 	'abusefilter-log-details-hidden' => 'Você não pode ver os detalhes desta entrada porque estes estão ocultados ao público.',
 	'abusefilter-log-hide-legend' => 'Ocultar entrada',
 	'abusefilter-log-hide-id' => 'ID da entrada:',
