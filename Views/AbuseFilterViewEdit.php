@@ -53,6 +53,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				array( $newRow->mOriginalRow, $newRow->mOriginalActions )
 			);
 
+			$origActions = $newRow->mOriginalActions;
 			unset( $newRow->mOriginalRow );
 			unset( $newRow->mOriginalActions );
 
@@ -64,12 +65,18 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			// Check for restricted actions
 			global $wgAbuseFilterRestrictedActions;
+			$allActions = array_keys( array_merge(
+						array_filter( $actions ),
+						array_filter( $origActions )
+					) );
+
 			if (
-				array_intersect(
-					$wgAbuseFilterRestrictedActions,
-					array_keys( array_filter( $actions ) ) )
-				&& !$user->isAllowed( 'abusefilter-modify-restricted' ) )
-			{
+				count( array_intersect(
+						$wgAbuseFilterRestrictedActions,
+						$allActions
+				) )
+				&& !$user->isAllowed( 'abusefilter-modify-restricted' )
+			) {
 				$out->addHTML(
 					$this->buildFilterEditor(
 						wfMsgExt( 'abusefilter-edit-restricted', 'parse' ),
