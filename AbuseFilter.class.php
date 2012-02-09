@@ -1293,13 +1293,20 @@ class AbuseFilter {
 		return $user;
 	}
 
+	/**
+	 * @param $rules String
+	 * @param $textName String
+	 * @param $addResultDiv Boolean
+	 * @param $canEdit Boolean
+	 */
 	static function buildEditBox( $rules, $textName = 'wpFilterRules', $addResultDiv = true,
 									$canEdit = true ) {
 		global $wgOut;
 
-		$readOnlyAttrib = array();
-		if ( !$canEdit )
-			$readOnlyAttrib['readonly'] = 'readonly';
+		$textareaAttrib = array( 'dir' => 'ltr' ); # Rules are in English
+		if ( !$canEdit ) {
+			$textareaAttrib['readonly'] = 'readonly';
+		}
 
 		global $wgUser;
 		$noTestAttrib = array();
@@ -1309,7 +1316,7 @@ class AbuseFilter {
 		}
 
 		$rules = rtrim( $rules ) . "\n";
-		$rules = Xml::textarea( $textName, $rules, 40, 5, $readOnlyAttrib );
+		$rules = Xml::textarea( $textName, $rules, 40, 5, $textareaAttrib );
 
 		$dropDown = self::getBuilderValues();
 		// Generate builder drop-down
