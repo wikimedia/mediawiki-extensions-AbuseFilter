@@ -4,6 +4,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 class AbuseFilterHooks {
+	static $successful_action_vars = false;
 	// So far, all of the error message out-params for these hooks accept HTML.
 	// Hooray!
 
@@ -19,6 +20,8 @@ class AbuseFilterHooks {
 	public static function onEditFilterMerged( $editor, $text, &$error, $summary ) {
 		// Load vars
 		$vars = new AbuseFilterVariableHolder;
+
+		self::$successful_action_vars = false;
 
 		// Check for null edits.
 		$oldtext = '';
@@ -41,9 +44,9 @@ class AbuseFilterHooks {
 
 		global $wgUser;
 		$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
-		$vars->addHolder( AbuseFilter::generateTitleVars( $title , 'ARTICLE' ) );
-		$vars->setVar( 'ACTION', 'edit' );
-		$vars->setVar( 'SUMMARY', $summary );
+		$vars->addHolder( AbuseFilter::generateTitleVars( $title , 'article' ) );
+		$vars->setVar( 'action', 'edit' );
+		$vars->setVar( 'summary', $summary );
 		$vars->setVar( 'minor_edit', $editor->minoredit );
 
 		$vars->setVar( 'old_wikitext', $oldtext );
@@ -59,6 +62,57 @@ class AbuseFilterHooks {
 			$editor->showEditForm();
 			return false;
 		}
+
+		self::$successful_action_vars = $vars;
+
+		return true;
+	}
+
+	public static function onArticleSaveComplete(
+		&$article, &$user, $text, $summary, $minoredit, $watchthis, $sectionanchor,
+		&$flags, $revision
+	) {
+		if ( ! self::$successful_action_vars ) {
+			return true;
+		}
+
+		$vars = self::$successful_action_vars;
+
+		if ( $vars->getVar('article_prefixedtext')->toString() !==
+			$article->getTitle()->getPrefixedText() 
+		) {
+			return true;
+		}
+
+		if ( $vars->getVar('local_log_ids') ) {
+			// Now actually do our storage
+			$log_ids = $vars->getVar('local_log_ids')->toNative();
+			$dbw = wfGetDB( DB_MASTER );
+
+			if ( count($log_ids) ) {
+				$dbw->update( 'abuse_filter_log',
+					array( 'afl_rev_id' => $revision->getId() ),
+					array( 'afl_id' => $log_ids ),
+					__METHOD__
+				);
+			}
+		}
+
+		if ( $vars->getVar('global_log_ids') ) {
+			$log_ids = $vars->getVar('global_log_ids')->toNative();
+
+			global $wgAbuseFilterCentralDB;
+			$fdb = wfGetDB( DB_MASTER, array(), $wgAbuseFilterCentralDB );
+
+			if ( count($log_ids) ) {
+				$dbw->update( 'abuse_filter_log',
+					array( 'afl_rev_id' => $revision->getId() ),
+					array( 'afl_id' => $log_ids, 'afl_wiki' => wfWikiId() ),
+					__METHOD__
+				);
+			}
+		}
+
 		return true;
 	}
 
@@ -201,6 +255,7 @@ class AbuseFilterHooks {
 			$updater->addExtensionUpdate( array( 'addField', 'abuse_filter', 'af_deleted', "$dir/db_patches/patch-af_deleted.sql", true ) );
 			$updater->addExtensionUpdate( array( 'addField', 'abuse_filter', 'af_actions', "$dir/db_patches/patch-af_actions.sql", true ) );
 			$updater->addExtensionUpdate( array( 'addField', 'abuse_filter', 'af_global', "$dir/db_patches/patch-global_filters.sql", true ) );
+			$updater->addExtensionUpdate( array( 'addField', 'abuse_filter_log', 'afl_rev_id', "$dir/db_patches/patch-afl_action_id.sql", true ) );
 			if ( $updater->getDB()->getType() == 'mysql' ) {
 				$updater->addExtensionUpdate( array( 'addIndex', 'abuse_filter_log', 'filter_timestamp', "$dir/db_patches/patch-fix-indexes.sql", true ) );
 			} else {

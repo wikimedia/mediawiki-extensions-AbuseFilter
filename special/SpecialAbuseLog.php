@@ -252,7 +252,7 @@ class SpecialAbuseLog extends SpecialPage {
 			return;
 		}
 
-		if ( $row->afl_deleted && !self::canSeeHidden() ) {
+		if ( $this->isHidden($row) && !self::canSeeHidden() ) {
 			$out->addWikiMsg( 'abusefilter-log-details-hidden' );
 			return;
 		}
@@ -375,10 +375,30 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$title = Title::makeTitle( $row->afl_namespace, $row->afl_title );
 
+		$diffLink = false;
+
+		if ( self::isHidden($row) && ! $this->canSeeHidden() ) {
+			return '';
+		}
+
 		if ( !$row->afl_wiki ) {
 			$pageLink = $sk->link( $title );
+			if ( $row->afl_rev_id ) {
+				$diffLink = $sk->link( $title,
+					wfMessage('abusefilter-log-diff')->parse(), array(),
+					array( 'diff' => 'prev', 'oldid' => $row->afl_rev_id ) );
+			}
 		} else {
 			$pageLink = WikiMap::makeForeignLink( $row->afl_wiki, $row->afl_title );
+
+			if ( $row->afl_rev_id ) {
+				$diffUrl = WikiMap::getForeignURL( $row->afl_wiki, $row->afl_title );
+				$diffUrl = wfAppendQuery( $diffUrl,
+					array( 'diff' => 'prev', 'oldid' => $row->afl_rev_id ) );
+				
+				$diffLink = Linker::makeExternalLink( $diffUrl,
+					wfMessage('abusefilter-log-diff')->parse() );
+			}
 		}
 
 		if ( !$row->afl_wiki ) {
@@ -433,6 +453,9 @@ class SpecialAbuseLog extends SpecialPage {
 			$actionLinks[] = $detailsLink;
 			$actionLinks[] = $examineLink;
 
+			if ($diffLink)
+				$actionLinks[] = $diffLink;
+
 			if ( $user->isAllowed( 'abusefilter-hide-log' ) ) {
 				$hideLink = $sk->link(
 						$this->getTitle(),
@@ -485,9 +508,12 @@ class SpecialAbuseLog extends SpecialPage {
 			);
 		}
 
-		if ( $row->afl_deleted ) {
+		if ( $this->isHidden($row) === true ) {
 			$description .= ' '.
 				wfMsgExt( 'abusefilter-log-hidden', 'parseinline' );
+		} elseif ( $this->isHidden($row) === 'implicit' ) {
+			$description .= ' '.
+				wfMsgExt( 'abusefilter-log-hidden-implicit', 'parseinline' );
 		}
 
 		return $li ? Xml::tags( 'li', null, $description ) : $description;
@@ -506,6 +532,25 @@ class SpecialAbuseLog extends SpecialPage {
 			array( $deletedZeroCond, $deletedNullCond ), LIST_OR );
 
 		return $notDeletedCond;
+	}
+
+	/**
+	 * Given a log entry row, decides whether or not it can be viewed by the public.
+	 *
+	 * @param $row The abuse_filter_log row object.
+	 * 
+	 * @return Mixed true if the item is explicitly hidden, false if it is not.
+	 * 	The string 'implicit' if it is hidden because the corresponding revision is hidden.
+	 */
+	public static function isHidden( $row ) {
+		if ( $row->afl_rev_id ) {
+			$revision = Revision::newFromId( $row->afl_rev_id );
+			if ( $revision && $revision->getVisibility() != 0 ) {
+				return 'implicit';
+			}
+		}
+
+		return (bool)$row->afl_deleted;
 	}
 }
 

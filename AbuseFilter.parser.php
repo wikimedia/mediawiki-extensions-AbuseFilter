@@ -338,6 +338,39 @@ class AFPData {
 	/** Convert shorteners */
 
 	/**
+	 * @return mixed
+	 */
+	public function toNative() {
+		switch( $this->type ) {
+			case self::DBool:
+				return $this->toBool();
+				break;
+			case self::DString:
+				return $this->toString();
+				break;
+			case self::DFloat:
+				return $this->toFloat();
+				break;
+			case self::DInt:
+				return $this->toInt();
+				break;
+			case self::DList:
+				$input = $this->toList();
+				$output = array();
+				foreach( $input as $item ) {
+					$output[] = $item->toNative();
+				}
+				return $output;
+				break;
+			case self::DNull:
+				return null;
+				break;
+			default:
+				throw new MWException( "Unknown type" );
+		}
+	}
+
+	/**
 	 * @return bool
 	 */
 	public function toBool() {

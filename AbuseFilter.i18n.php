@@ -91,6 +91,7 @@ Filter description: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'global filter $1',
 	'abusefilter-log-detailedentry-local' => 'filter $1',
 	'abusefilter-log-detailslink' => 'details',
+	'abusefilter-log-diff' => 'diff',
 	'abusefilter-log-hidelink' => 'adjust visibility',
 	'abusefilter-log-details-legend' => 'Details for log entry $1',
 	'abusefilter-log-details-var' => 'Variable',
@@ -103,7 +104,7 @@ Filter description: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'abuse log',
 	'abusefilter-log-linkoncontribs-text' => 'Abuse log for this user',
 	'abusefilter-log-hidden' => '(entry hidden)',
-	'abusefilter-log-hide' => 'hide or unhide', // @todo FIXME: Message unused?
+	'abusefilter-log-hidden-implicit' => '(hidden because revision has been deleted)',
 	'abusefilter-log-cannot-see-details' => 'You do not have permission to see details of this entry.',
 	'abusefilter-log-details-hidden' => 'You cannot view the details for this entry because it is hidden from public view.',
 
@@ -842,6 +843,8 @@ This is also used in {{msg-mw|Abusefilter-revert-preview-intro}}. When changing 
 * $2 is new user link or old user link. Link description is a user name',
 	'abusefilter-diff-info' => "Header for the box containing the basic information about a user account, displayed on the 'user profile' tab of the [[Special:Preferences|user preferences]] special page.",
 	'abusefilter-import-intro' => "Do not ''translate'' <nowiki>{{int:abusefilter-edit-export}}</nowiki>, <nowiki>{{int:abusefilter-tools-subtitle}}</nowiki>, and <nowiki>{{int:abusefilter-import-submit}}</nowiki> unless you absolute must substitute any of them.",
+	'abusefilter-log-diff' => 'Diff link text to a revision associated with an AbuseFilter log entry',
+	'abusefilter-log-hidden-implicit' => 'Explanatory text to be shown beside an abuse filter log entry if it cannot be viewed due to its corresponding revision being hidden',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)

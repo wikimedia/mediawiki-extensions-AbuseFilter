@@ -78,6 +78,7 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'AbuseFilterHooks::onLoadExtensionSch
 $wgHooks['ContributionsToolLinks'][] = 'AbuseFilterHooks::onContributionsToolLinks';
 $wgHooks['UploadVerification'][] = 'AbuseFilterHooks::onUploadVerification';
 $wgHooks['MakeGlobalVariablesScript'][] = 'AbuseFilterHooks::onMakeGlobalVariablesScript';
+$wgHooks['ArticleSaveComplete'][] = 'AbuseFilterHooks::onArticleSaveComplete';
 
 $wgAvailableRights[] = 'abusefilter-modify';
 $wgAvailableRights[] = 'abusefilter-log-detail';

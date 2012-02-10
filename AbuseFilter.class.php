@@ -302,8 +302,12 @@ class AbuseFilter {
 		return $parser->evaluateExpression( $expr );
 	}
 
-	public static function checkConditions( $conds, $vars, $ignoreError = true,
-											$keepVars = 'resetvars' ) {
+	public static function checkConditions(
+		$conds,
+		$vars,
+		$ignoreError = true,
+		$keepVars = 'resetvars'
+	) {
 		global $wgAbuseFilterParserClass;
 
 		static $parser;
@@ -401,8 +405,12 @@ class AbuseFilter {
 
 		// Check conditions...
 		$pattern = trim( $row->af_pattern );
-		if ( self::checkConditions( $pattern, $vars, true /* ignore errors */,
-									'keepvars' ) ) {
+		if ( self::checkConditions(
+			$pattern,
+			$vars,
+			true /* ignore errors */,
+			'keepvars'
+		) ) {
 			// Record match.
 			$result = true;
 		} else {
@@ -682,8 +690,10 @@ class AbuseFilter {
 
 		$filter_matched = self::checkAllFilters( $vars );
 
+		$matched_filters = array_keys( array_filter( $filter_matched ) );
+
 		// Short-cut any remaining code if no filters were hit.
-		if ( count( array_filter( $filter_matched ) ) == 0 ) {
+		if ( count( $matched_filters ) == 0 ) {
 			wfProfileOut( __METHOD__ );
 			return true;
 		}
@@ -691,7 +701,7 @@ class AbuseFilter {
 		wfProfileIn( __METHOD__ . '-block' );
 
 		list( $actions_taken, $error_msg ) = self::executeFilterActions(
-			array_keys( array_filter( $filter_matched ) ), $title, $vars );
+			$matched_filters, $title, $vars );
 
 		$action = $vars->getVar( 'ACTION' )->toString();
 
@@ -784,7 +794,11 @@ class AbuseFilter {
 		// Increment trigger counter
 		$wgMemc->incr( self::filterMatchesKey() );
 
-		$dbw->insert( 'abuse_filter_log', $log_rows, __METHOD__ );
+		$local_log_ids = array();
+		foreach( $log_rows as $row ) {
+			$dbw->insert( 'abuse_filter_log', $row, __METHOD__ );
+			$local_log_ids[] = $dbw->insertId();
+		}
 
 		if ( count( $logged_local_filters ) ) {
 			// Update hit-counter.
@@ -794,6 +808,8 @@ class AbuseFilter {
 				__METHOD__
 			);
 		}
+
+		$global_log_ids = array();
 
 		// Global stuff
 		if ( count( $logged_global_filters ) ) {
@@ -807,7 +823,9 @@ class AbuseFilter {
 			global $wgAbuseFilterCentralDB;
 			$fdb = wfGetDB( DB_MASTER, array(), $wgAbuseFilterCentralDB );
 
-			$fdb->insert( 'abuse_filter_log', $central_log_rows, __METHOD__ );
+			foreach( $central_log_rows as $row ) {
+				$fdb->insert( 'abuse_filter_log', $row, __METHOD__ );
+			}
 
 			$fdb->update( 'abuse_filter',
 				array( 'af_hit_count=af_hit_count+1' ),
@@ -815,6 +833,9 @@ class AbuseFilter {
 				__METHOD__
 			);
 		}
+
+		$vars->setVar( 'global_log_ids', $global_log_ids );
+		$vars->setVar( 'local_log_ids', $local_log_ids );
 
 		// Check for emergency disabling.
 		$total = $wgMemc->get( AbuseFilter::filterUsedKey() );
