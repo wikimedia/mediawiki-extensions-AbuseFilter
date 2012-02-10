@@ -24,9 +24,7 @@ class AbuseFilter {
 	public static $builderValues = array(
 		'op-arithmetic' => array(
 			'+' => 'addition',
-			'-' => 'subtraction',
-			'*' => 'multiplication',
-			'/' => 'divide',
+			'-' => 'subtraction', '*' => 'multiplication', '/' => 'divide',
 			'%' => 'modulo',
 			'**' => 'pow'
 		),
@@ -1318,44 +1316,46 @@ class AbuseFilter {
 		$rules = rtrim( $rules ) . "\n";
 		$rules = Xml::textarea( $textName, $rules, 40, 5, $textareaAttrib );
 
-		$dropDown = self::getBuilderValues();
-		// Generate builder drop-down
-		$builder = '';
+		if ( $canEdit ) {
+			$dropDown = self::getBuilderValues();
+			// Generate builder drop-down
+			$builder = '';
 
-		$builder .= Xml::option( wfMsg( 'abusefilter-edit-builder-select' ) );
+			$builder .= Xml::option( wfMsg( 'abusefilter-edit-builder-select' ) );
 
-		foreach ( $dropDown as $group => $values ) {
-			$builder .=
-				Xml::openElement(
-					'optgroup',
-					array( 'label' => wfMsg( "abusefilter-edit-builder-group-$group" ) )
-				) . "\n";
-
-			foreach ( $values as $content => $name ) {
+			foreach ( $dropDown as $group => $values ) {
 				$builder .=
-					Xml::option(
-						wfMsg( "abusefilter-edit-builder-$group-$name" ),
-						$content
+					Xml::openElement(
+						'optgroup',
+						array( 'label' => wfMsg( "abusefilter-edit-builder-group-$group" ) )
 					) . "\n";
+
+				foreach ( $values as $content => $name ) {
+					$builder .=
+						Xml::option(
+							wfMsg( "abusefilter-edit-builder-$group-$name" ),
+							$content
+						) . "\n";
+				}
+
+				$builder .= Xml::closeElement( 'optgroup' ) . "\n";
 			}
 
-			$builder .= Xml::closeElement( 'optgroup' ) . "\n";
+			$rules .=
+				Xml::tags(
+					'select',
+					array( 'id' => 'wpFilterBuilder', ),
+					$builder
+				) . ' ';
+
+			// Add syntax checking
+			$rules .= Xml::element( 'input',
+				array(
+					'type' => 'button',
+					'value' => wfMsg( 'abusefilter-edit-check' ),
+					'id' => 'mw-abusefilter-syntaxcheck'
+				) + $noTestAttrib );
 		}
-
-		$rules .=
-			Xml::tags(
-				'select',
-				array( 'id' => 'wpFilterBuilder', ),
-				$builder
-			) . ' ';
-
-		// Add syntax checking
-		$rules .= Xml::element( 'input',
-			array(
-				'type' => 'button',
-				'value' => wfMsg( 'abusefilter-edit-check' ),
-				'id' => 'mw-abusefilter-syntaxcheck'
-			) + $noTestAttrib );
 
 		if ( $addResultDiv )
 			$rules .= Xml::element( 'div',
