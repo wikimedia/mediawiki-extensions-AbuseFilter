@@ -24,7 +24,9 @@ class AbuseFilter {
 	public static $builderValues = array(
 		'op-arithmetic' => array(
 			'+' => 'addition',
-			'-' => 'subtraction', '*' => 'multiplication', '/' => 'divide',
+			'-' => 'subtraction',
+			'*' => 'multiplication',
+			'/' => 'divide',
 			'%' => 'modulo',
 			'**' => 'pow'
 		),
