@@ -15,7 +15,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @link http://www.mediawiki.org/wiki/Extension:AbuseFilter Documentation
  */
 
-$wgExtensionCredits[version_compare($wgVersion, '1.17alpha', '>=') ? 'antispam' : 'other'][] = array(
+$wgExtensionCredits['antispam'][] = array(
 	'path' => __FILE__,
 	'name' => 'Abuse Filter',
 	'author' => array( 'Andrew Garrett', 'River Tarnell', 'Victor Vasiliev' ),
