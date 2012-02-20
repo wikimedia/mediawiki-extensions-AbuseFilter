@@ -8268,9 +8268,9 @@ Esta interfaz muestra una lista de filtros definidos, que pueden ser modificados
 	'abusefilter-mustbeeditor' => 'Por razones de seguridad, solamente los usuarios con derechos para modificar filtros de abuso pueden usar esta interfaz.',
 	'abusefilter-warning' => "'''Atención''': Esta acción ha sido automáticamente identificada como dañina.
 Las ediciones no constructivas serán revertidas rápidamente y
-la repetición de dichas acciones tendrá como consecuencia que su cuenta o dirección IP sean bloqueados.
-Si cree que esta edición es constructiva, puede pulsar de nuevo el botón grabar de nuevo para confirmarlo.
-Una breve explicación acerca de la regla del filtro antiabusos que usted ha disparado es: $1",
+la repetición de dichas acciones tendrá como consecuencia que tu cuenta o dirección IP sean bloqueadas.
+Si crees que esta edición es constructiva, puedes pulsar de nuevo el botón Grabar para confirmarlo.
+Una breve explicación acerca de la regla del filtro antiabusos que se ha disparado es: $1",
 	'abusefilter-disallowed' => 'Esta acción ha sido automáticamente identificada como dañina, y por tanto ha sido deshabilitada.
 Si cree que su edición es legítima, por favor, póngase en contacto con un administrador e infórmele de lo que intentaba hacer.
 Una breve explicación sobre la regla del filtro antiabusos que se ha disparado con su edición es: $1',
@@ -8288,7 +8288,7 @@ Una breve explicación acerca de la regla del filtro que usted ha disparado es: 
 Descripción del filtro que se ha disparado: $1',
 	'abusefilter-degroupreason' => 'Permisos de usuario automáticamente revocados por el filtro antiabusos.
 Descripción de la regla disparada: $1',
-	'abusefilter-accountreserved' => 'El nombre de esta cuenta está reservada para el uso por el filtro antiabusos.',
+	'abusefilter-accountreserved' => 'Este nombre de cuenta está reservado para su uso por el filtro antiabusos.',
 	'right-abusefilter-modify' => 'Modificar filtros antiabuso',
 	'right-abusefilter-view' => 'Ver filtros antiabuso',
 	'right-abusefilter-log' => 'Ver el registro de abusos',
@@ -8381,7 +8381,7 @@ Descripción del filtro: $7 ($8)',
 	'abusefilter-tools-reautoconfirm' => 'Restaurar el estado autoconfirmado',
 	'abusefilter-tools-reautoconfirm-user' => 'Usuario:',
 	'abusefilter-tools-reautoconfirm-submit' => 'Autoconfirmar de nuevo',
-	'abusefilter-reautoconfirm-none' => 'Este usuario no ha tenido {{GENDER:$1|su|su}} estado autoconfirmado suspendido.',
+	'abusefilter-reautoconfirm-none' => 'Ese usuario no ha visto su estado autoconfirmado suspendido.',
 	'abusefilter-reautoconfirm-notallowed' => 'No estás autorizado para restaurar el permiso autoconfirmado a los usuarios.',
 	'abusefilter-reautoconfirm-done' => 'El estado autoconfirmado de la cuenta ha sido restaurado',
 	'abusefilter-status' => 'De las últimas $1 {{PLURAL:$1|acción|acciones}}, $2 ($3%) {{PLURAL:$2|ha|han}} han alcanzado la condición límite de  $4, y $5 ($6%) {{PLURAL:$5|ha|han}} coincidido con uno de los filtros actualmente habilitados.',
@@ -8443,7 +8443,7 @@ Por favor solicita a un usuario con permisos suficientes para agregar acciones r
 	'abusefilter-edit-viewhistory' => 'Ver el historial de este filtro',
 	'abusefilter-edit-history' => 'Historial:',
 	'abusefilter-edit-check' => 'Comprobar sintaxis',
-	'abusefilter-edit-badfilter' => 'El filtro que usted especificó no existe',
+	'abusefilter-edit-badfilter' => 'El filtro especificado no existe',
 	'abusefilter-edit-revert' => 'Revertir acciones tomadas por este filtro',
 	'abusefilter-edit-tools' => 'Herramientas:',
 	'abusefilter-edit-test-link' => 'Probar este filtro contra ediciones recientes',
@@ -8483,7 +8483,7 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-edit-builder-misc-cond' => 'Condicional (if X then Y else Z)',
 	'abusefilter-edit-builder-group-funcs' => 'Funciones',
 	'abusefilter-edit-builder-funcs-length' => 'Longitud de cadena de caracteres (length)',
-	'abusefilter-edit-builder-funcs-lcase' => 'A letra minúscula (lcase)',
+	'abusefilter-edit-builder-funcs-lcase' => 'A minúsculas (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalizar caracteres confusos (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Quitar caracteres dobles (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Carácteres especiales / carácteres totales (specialratio)',
@@ -8567,7 +8567,7 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-exception-unrecognisedkeyword' => 'Palabra clave no reconocida $2 en el carácter $1',
 	'abusefilter-exception-unexpectedtoken' => 'Token $3 inesperado (del tipo $2) en el carácter $1.',
 	'abusefilter-exception-unclosedstring' => 'Cadena no cerrada empezando en el carácter $1',
-	'abusefilter-exception-invalidoperator' => 'Operador inválido "$2" en carácter $1.',
+	'abusefilter-exception-invalidoperator' => 'Operador no válido «$2» en el carácter $1.',
 	'abusefilter-exception-unrecognisedtoken' => 'Token "$2" no reconocido en el carácter $1.',
 	'abusefilter-exception-noparams' => 'No se ha introducido ningún parámetro a la función "$2" en el carácter $1.',
 	'abusefilter-exception-dividebyzero' => 'Intento ilegal de dividir $2 entre cero en carácter $1.',
