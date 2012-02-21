@@ -7,7 +7,7 @@ new ( function( $, mw ) {
 	 *
 	 * @var {jQuery}
 	 */
-	var $filterBox = $( '#' + mw.config.get( 'abuseFilterBoxName' ) );
+	var $filterBox = [];
 
 	/**
 	 * Reference to this
@@ -178,6 +178,7 @@ new ( function( $, mw ) {
 	 * On ready initialization
 	 */
 	$( function( $ ) {
+		$filterBox = $( '#' + mw.config.get( 'abuseFilterBoxName' ) );
 		// Hide the syntax ok message when the text changes
 		$filterBox.keyup( function() {
 			var $el = $( '#mw-abusefilter-syntaxresult' );

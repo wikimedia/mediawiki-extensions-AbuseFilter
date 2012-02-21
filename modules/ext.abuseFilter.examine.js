@@ -12,7 +12,7 @@ new ( function( $, mw ) {
 	 *
 	 * @type {jQuery}
 	 */
-	var $syntaxResult = $( '#mw-abusefilter-syntaxresult' );
+	var $syntaxResult = [];
 
 	/**
 	 * Tests the filter against an rc event or abuse log entry
@@ -84,6 +84,7 @@ new ( function( $, mw ) {
 	};
 
 	$( function( $ ) {
+		$syntaxResult = $( '#mw-abusefilter-syntaxresult' );
 		$( '#mw-abusefilter-examine-test' ).click( that.examinerTestFilter );
 	} );
 } )( jQuery, mediaWiki );
