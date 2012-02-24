@@ -12313,6 +12313,7 @@ $messages['he'] = array(
  * @author Bhawani Gautam Rhk
  * @author Kaustubh
  * @author Kumar
+ * @author Siddhartha Ghai
  */
 $messages['hi'] = array(
 	'abusefilter-desc' => ' स्वचालित नियम संपादन पर लागू होता है',
@@ -12345,7 +12346,7 @@ $messages['hi'] = array(
 	'abusefilter-log-search-user' => 'सदस्य:',
 	'abusefilter-log-search-filter' => 'छननी आईड़ि:',
 	'abusefilter-log-search-title' => 'शीर्षक:',
-	'abusefilter-log-search-submit' => 'खोज',
+	'abusefilter-log-search-submit' => 'खोजें',
 	'abusefilter-log-detailedentry-global' => 'वैश्विक छननी $1',
 	'abusefilter-log-detailedentry-local' => 'छन्नी $1',
 	'abusefilter-log-detailslink' => 'विस्तॄत विवरणी',
@@ -12535,7 +12536,7 @@ $messages['hi'] = array(
 	'abusefilter-examine-diff' => 'अंतर URL:',
 	'abusefilter-examine-user' => 'सदस्य:',
 	'abusefilter-examine-title' => 'पृष्ठ शीर्षक:',
-	'abusefilter-examine-submit' => 'खोज',
+	'abusefilter-examine-submit' => 'खोजें',
 	'abusefilter-examine-test-button' => 'टेस्ट फ़िल्टर',
 	'abusefilter-topnav' => "'''दुरुपयोग फ़िल्टर नैविगेशन'''",
 	'abusefilter-topnav-home' => 'गृह',
@@ -23335,6 +23336,13 @@ Kopier frå tekstboksen som dukkar opp og lim det inn i tekstboksen her. Trykk s
 	'abusefilter-import-submit' => 'Importer data',
 );
 
+/** Nouormand (Nouormand)
+ * @author Crochet.david
+ */
+$messages['nrm'] = array(
+	'abusefilter-examine-submit' => 'Trachi',
+);
+
 /** Northern Sotho (Sesotho sa Leboa)
  * @author Mohau
  */
@@ -26840,6 +26848,7 @@ $messages['ru'] = array(
 	'abusefilter-log-detailedentry-global' => 'глобальный фильтр $1',
 	'abusefilter-log-detailedentry-local' => 'фильтра $1',
 	'abusefilter-log-detailslink' => 'подробности',
+	'abusefilter-log-diff' => 'изм.',
 	'abusefilter-log-hidelink' => 'настроить видимость',
 	'abusefilter-log-details-legend' => 'Подробности записи журнала $1',
 	'abusefilter-log-details-var' => 'Переменная',
@@ -26852,6 +26861,7 @@ $messages['ru'] = array(
 	'abusefilter-log-linkoncontribs' => 'журнал злоупотреблений',
 	'abusefilter-log-linkoncontribs-text' => 'Записи журнала злоупотреблений для этого участника',
 	'abusefilter-log-hidden' => '(запись скрыта)',
+	'abusefilter-log-hidden-implicit' => '(скрыто, так как правка была удалена)',
 	'abusefilter-log-cannot-see-details' => 'У вас нет разрешения на просмотр подробностей этой записи.',
 	'abusefilter-log-details-hidden' => 'Вы не можете просмотреть подробности этой записи, поскольку она была скрыта.',
 	'abusefilter-log-hide-legend' => 'Скрыть запись в журнале',
