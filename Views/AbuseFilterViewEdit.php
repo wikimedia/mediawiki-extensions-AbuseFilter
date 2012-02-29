@@ -116,7 +116,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$newRow['af_user'] = $user->getId();
 			$newRow['af_user_text'] = $user->getName();
 
-			$dbw->begin();
+			$dbw->begin( __METHOD__ );
 
 			// Insert MAIN row.
 			if ( $filter == 'new' ) {
@@ -207,7 +207,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 			$dbw->insert( 'abuse_filter_action', $actionsRows, __METHOD__ );
 
-			$dbw->commit();
+			$dbw->commit( __METHOD__ );
 
 			// Logging
 
