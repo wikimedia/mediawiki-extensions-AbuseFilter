@@ -860,13 +860,6 @@ $messages['niu'] = array(
 	'abusefilter-log-search-submit' => 'Kumi',
 );
 
-/** Moroccan Spoken Arabic (Maġribi)
- * @author زكريا
- */
-$messages['ary'] = array(
-	'abusefilter-log-search-submit' => 'bheṫ',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  * @author පසිඳු කාවින්ද
@@ -1774,6 +1767,13 @@ $messages['arc'] = array(
 	'abusefilter-diff-info' => 'ܝܕ̈ܥܬܐ ܪ̈ܫܝܬܐ',
 	'abusefilter-diff-pattern' => 'ܬܢܘ̈ܝ ܕܡܨܦܝܢܝܬܐ',
 	'abusefilter-import-submit' => 'ܡܥܠܢܘܬܐ ܕܓܠܝܬ̈ܐ',
+);
+
+/** Moroccan Spoken Arabic (Maġribi)
+ * @author زكريا
+ */
+$messages['ary'] = array(
+	'abusefilter-log-search-submit' => 'bheṫ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -26065,6 +26065,11 @@ Copie da caixa de texto que aparece, e cole nesta caixa de texto, e a seguir cli
 $messages['qu'] = array(
 	'abusefilter' => "Millay ruray ch'illchina churana",
 	'abuselog' => "Millay ruray hallch'a",
+	'action-abusefilter-log' => "Millay ruray hallch'ata qhaway",
+	'abusefilter-log' => "Millay ruray hallch'a",
+	'abusefilter-log-linkoncontribs' => "millay ruray hallch'a",
+	'abusefilter-log-linkoncontribs-text' => "Kay ruraqpaq millay ruray hallch'a",
+	'abusefilter-edit-warn-actions' => 'Ruraykuna:',
 );
 
 /** Tarifit (Tarifit)
