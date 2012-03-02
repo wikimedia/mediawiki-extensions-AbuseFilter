@@ -761,8 +761,7 @@ class AbuseFilter {
 
 				// Global logging
 				if ( $globalIndex ) {
-					$title = Title::makeTitle( 	$thisLog['afl_namespace'],
-									$thisLog['afl_title'] );
+					$title = Title::makeTitle( $thisLog['afl_namespace'], $thisLog['afl_title'] );
 					$centralLog = $thisLog + $central_log_template;
 					$centralLog['afl_filter'] = $globalIndex;
 					$centralLog['afl_title'] = $title->getPrefixedText();
