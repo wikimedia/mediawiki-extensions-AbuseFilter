@@ -9256,8 +9256,8 @@ $messages['fa'] = array(
 و ویرایش‌های عمدی یا مکرر خرابکارانه منجر به بسته شدن حساب یا نشانی آی‌پی شما خواهد شد.
 اگر مطمئنید که این ویرایش مفید است دوباره بر دکمه تأیید بفشارید تا آن را تأیید کنید.
 خلاصه‌ای از توضیح قانون جلوگیری از خرابکاری که با کار شما مطابقت دارد چنین است: $1",
-	'abusefilter-disallowed' => 'این کار به طور خودکار خطرناک تشخیص داده‌شده است، بنابرین شما اجازهٔ این کار را ندارید.
-اگر فکر می‌کنید که کارتان درست بوده است با مدیران تماس بگیرید، و آن‌ها را از آن‌چه می‌خواهید انجام دهید آگاه کنید.
+	'abusefilter-disallowed' => 'این کار به طور خودکار خطرناک تشخیص داده شده‌است و بنابراین غیرمجاز است.
+اگر فکر می‌کنید که ویرایشتان درست بوده‌است لطفاً به یکی از مدیران بگویید که چه می‌خواهید بکنید.
 خلاصه‌ای از توضیح قانون جلوگیری از خرابکاری که با کار شما مطابقت دارد چنین است: $1',
 	'abusefilter-blocked-display' => 'این کار به طور خودکار خطرناک تشخیص داده‌شده است،
 و شما از اجرای آن منع شدید.
@@ -19775,7 +19775,7 @@ $messages['mk'] = array(
 Опис од филтерот: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'глобален филтер $1',
 	'abusefilter-log-detailedentry-local' => 'филтер $1',
-	'abusefilter-log-detailslink' => 'детали',
+	'abusefilter-log-detailslink' => 'подробности',
 	'abusefilter-log-diff' => 'разл',
 	'abusefilter-log-hidelink' => 'прилагоди видливост',
 	'abusefilter-log-details-legend' => 'Подробности за дневничкиот запис $1',
@@ -34372,6 +34372,7 @@ Mô tả bộ lọc: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'bộ lọc toàn bộ $1',
 	'abusefilter-log-detailedentry-local' => 'bộ lọc $1',
 	'abusefilter-log-detailslink' => 'chi tiết',
+	'abusefilter-log-diff' => 'khác',
 	'abusefilter-log-hidelink' => 'hiện/ẩn',
 	'abusefilter-log-details-legend' => 'Chi tiết cho mục nhật trình $1',
 	'abusefilter-log-details-var' => 'Biến',
@@ -34384,6 +34385,7 @@ Mô tả bộ lọc: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'nhật trình lạm dụng',
 	'abusefilter-log-linkoncontribs-text' => 'Nhật trình lạm dụng của người dùng',
 	'abusefilter-log-hidden' => '(mục ẩn)',
+	'abusefilter-log-hidden-implicit' => '(ẩn vì phiên bản đã bị xóa)',
 	'abusefilter-log-cannot-see-details' => 'Bạn không có quyền xem chi tiết của mục này.',
 	'abusefilter-log-details-hidden' => 'Bạn không có quyền xem chi tiết mục ẩn này.',
 	'abusefilter-log-hide-legend' => 'Ẩn mục nhật trình',
