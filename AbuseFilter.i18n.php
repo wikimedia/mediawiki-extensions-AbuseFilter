@@ -5271,6 +5271,7 @@ $messages['co'] = array(
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil
+ * @author Tchoř
  */
 $messages['cs'] = array(
 	'abusefilter-desc' => 'Podrobuje editace automatickým heuristikám',
@@ -5336,6 +5337,7 @@ Provedená opatření: $6; popis filtru: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'globální filtr $1',
 	'abusefilter-log-detailedentry-local' => 'filtr $1',
 	'abusefilter-log-detailslink' => 'podrobnosti',
+	'abusefilter-log-diff' => 'rozdíl',
 	'abusefilter-log-hidelink' => 'upravit viditelnost',
 	'abusefilter-log-details-legend' => 'Podrobnosti záznamu $1',
 	'abusefilter-log-details-var' => 'Proměnná',
@@ -5348,6 +5350,7 @@ Provedená opatření: $6; popis filtru: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'protokol zneužití',
 	'abusefilter-log-linkoncontribs-text' => 'Protokol filtrů zneužití pro tohoto uživatele',
 	'abusefilter-log-hidden' => '(skrytý záznam)',
+	'abusefilter-log-hidden-implicit' => '(skryto, protože byla odstraněna revize)',
 	'abusefilter-log-cannot-see-details' => 'Nemáte oprávnění k prohlížení podrobností tohoto záznamu.',
 	'abusefilter-log-details-hidden' => 'U tohoto záznamu si nemůžete prohlédnout podrobnosti, protože byly před veřejností skryty.',
 	'abusefilter-log-hide-legend' => 'Skrýt záznam protokolu',
@@ -22383,6 +22386,7 @@ $messages['nds-nl'] = array(
 /** Nepali (नेपाली)
  * @author Bhawani Gautam
  * @author Bhawani Gautam Rhk
+ * @author RajeshPandey
  * @author सरोज कुमार ढकाल
  */
 $messages['ne'] = array(
@@ -22414,7 +22418,7 @@ $messages['ne'] = array(
 	'action-abusefilter-view' => 'दुर्व्यवहार फिल्टरहरु हेर्ने',
 	'action-abusefilter-log' => 'दुरुपयोग लगहरु हेर्नुहोस् \\',
 	'action-abusefilter-log-detail' => 'विस्तृत दुरुपयोग लग प्रविष्टीहरु हेर्नुहोस् \\',
-	'abusefilter-log' => 'दुर्व्यवहार लग \\',
+	'abusefilter-log' => 'दुर्व्यवहार लग',
 	'abusefilter-log-search' => 'दुर्व्यवहार लग खोज्ने',
 	'abusefilter-log-search-user' => 'प्रयोगकर्ता:',
 	'abusefilter-log-search-filter' => 'फिल्टर परिचय:',
@@ -22428,7 +22432,7 @@ $messages['ne'] = array(
 	'abusefilter-log-details-ip' => 'सुरुवात गरिएको IP ठेगाना',
 	'abusefilter-log-noactions' => 'कुनै पनि हैन',
 	'abusefilter-log-details-diff' => 'सम्पादनमा गरिएका परिवर्तनहरु',
-	'abusefilter-log-linkoncontribs' => 'दुर्व्यवहार लग \\',
+	'abusefilter-log-linkoncontribs' => 'दुर्व्यवहार लग',
 	'abusefilter-log-hidden' => '(प्रविष्टि लुकाइएको)',
 	'abusefilter-log-hide-legend' => 'लग प्रविष्टि लुकाउने',
 	'abusefilter-log-hide-reason' => 'कारण:',
@@ -23943,7 +23947,7 @@ $messages['or'] = array(
 	'abusefilter-list-consequences' => 'ପରିଣାମସବୁ',
 	'abusefilter-list-visibility' => 'ଦେଖଣା',
 	'abusefilter-list-hitcount' => 'ଦେଖଣା ଗଣନା',
-	'abusefilter-list-edit' => 'ବଦଳାଇବେ',
+	'abusefilter-list-edit' => 'ଏହାକୁ ବଦଳାନ୍ତୁ',
 	'abusefilter-list-details' => 'ଆହୁରି ଅଧିକ',
 	'abusefilter-list-limit' => 'ପୃଷ୍ଠା ପ୍ରତି ସଂଖ୍ୟା:',
 	'abusefilter-list-lastmodified' => '‍ଶେଷଥର ବଦଳାଯାଇଥିଲା',
