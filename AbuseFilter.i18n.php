@@ -35391,6 +35391,7 @@ $messages['zh-cn'] = array(
  * @author Hydra
  * @author Jimmy xu wrk
  * @author Liangent
+ * @author Linforest
  * @author PhiLiP
  * @author Philip <philip.npc@gmail.com>
  * @author Skjackey tse
@@ -35447,6 +35448,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-log-detailedentry-global' => '全域过滤器$1',
 	'abusefilter-log-detailedentry-local' => '过滤器$1',
 	'abusefilter-log-detailslink' => '详情',
+	'abusefilter-log-diff' => '差异',
 	'abusefilter-log-hidelink' => '调整公开级别',
 	'abusefilter-log-details-legend' => '日志详情：$1',
 	'abusefilter-log-details-var' => '变量',
@@ -35459,6 +35461,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-log-linkoncontribs' => '滥用日志',
 	'abusefilter-log-linkoncontribs-text' => '本用户的滥用日志',
 	'abusefilter-log-hidden' => '（条目已被隐藏）',
+	'abusefilter-log-hidden-implicit' => '（因为修订已被删除而隐藏）',
 	'abusefilter-log-cannot-see-details' => '您没有权限去查看这个记录条目的细节。',
 	'abusefilter-log-details-hidden' => '你无法查看详细信息，因为此条目已被从公共范围隐藏。',
 	'abusefilter-log-hide-legend' => '隐藏日志条目',
