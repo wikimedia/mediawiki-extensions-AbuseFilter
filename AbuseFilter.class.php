@@ -1035,9 +1035,9 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $action
-	 * @param $parameters
-	 * @param $title
+	 * @param $action string
+	 * @param $parameters array
+	 * @param $title Title
 	 * @param $vars AbuseFilterVariableHolder
 	 * @param $rule_desc
 	 * @return string
