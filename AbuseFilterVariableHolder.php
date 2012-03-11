@@ -3,6 +3,10 @@ class AbuseFilterVariableHolder {
 	var $mVars = array();
 	static $varBlacklist = array( 'context' );
 
+	/**
+	 * @param $variable
+	 * @param $datum
+	 */
 	function setVar( $variable, $datum ) {
 		$variable = strtolower( $variable );
 		if ( !( $datum instanceof AFPData || $datum instanceof AFComputedVariable ) ) {
@@ -12,11 +16,20 @@ class AbuseFilterVariableHolder {
 		$this->mVars[$variable] = $datum;
 	}
 
+	/**
+	 * @param $variable
+	 * @param $method
+	 * @param $parameters
+	 */
 	function setLazyLoadVar( $variable, $method, $parameters ) {
 		$placeholder = new AFComputedVariable( $method, $parameters );
 		$this->setVar( $variable, $placeholder );
 	}
 
+	/**
+	 * @param $variable
+	 * @return AFPData
+	 */
 	function getVar( $variable ) {
 		$variable = strtolower( $variable );
 		if ( isset( $this->mVars[$variable] ) ) {
@@ -32,6 +45,9 @@ class AbuseFilterVariableHolder {
 		}
 	}
 
+	/**
+	 * @return AbuseFilterVariableHolder
+	 */
 	static function merge() {
 		$newHolder = new AbuseFilterVariableHolder;
 
@@ -42,6 +58,10 @@ class AbuseFilterVariableHolder {
 		return $newHolder;
 	}
 
+	/**
+	 * @param $addHolder
+	 * @throws MWException
+	 */
 	function addHolder( $addHolder ) {
 		if ( !is_object( $addHolder ) ) {
 			throw new MWException( 'Invalid argument to AbuseFilterVariableHolder::addHolder' );
@@ -54,6 +74,9 @@ class AbuseFilterVariableHolder {
 		$this->setVar( 'context', 'stored' );
 	}
 
+	/**
+	 * @return array
+	 */
 	function exportAllVars() {
 		$allVarNames = array_keys( $this->mVars );
 		$exported = array();
@@ -67,6 +90,10 @@ class AbuseFilterVariableHolder {
 		return $exported;
 	}
 
+	/**
+	 * @param $var
+	 * @return bool
+	 */
 	function varIsSet( $var ) {
 		return array_key_exists( $var, $this->mVars );
 	}
@@ -102,6 +129,10 @@ class AFComputedVariable {
 	static $userCache = array();
 	static $articleCache = array();
 
+	/**
+	 * @param $method
+	 * @param $parameters
+	 */
 	function __construct( $method, $parameters ) {
 		$this->mMethod = $method;
 		$this->mParameters = $parameters;
@@ -119,7 +150,7 @@ class AFComputedVariable {
 	function parseNonEditWikitext( $wikitext, $article ) {
 		static $cache = array();
 
-		$cacheKey = md5( $wikitext ) . ':' . $article->mTitle->getPrefixedText();
+		$cacheKey = md5( $wikitext ) . ':' . $article->getTitle()->getPrefixedText();
 
 		if ( isset( $cache[$cacheKey] ) ) {
 			return $cache[$cacheKey];
@@ -135,6 +166,10 @@ class AFComputedVariable {
 		return $edit;
 	}
 
+	/**
+	 * @param $username string
+	 * @return User
+	 */
 	static function userObjectFromName( $username ) {
 		if ( isset( self::$userCache[$username] ) ) {
 			return self::$userCache[$username];
@@ -160,6 +195,11 @@ class AFComputedVariable {
 		return $user;
 	}
 
+	/**
+	 * @param $namespace
+	 * @param $title Title
+	 * @return Article
+	 */
 	static function articleFromTitle( $namespace, $title ) {
 		if ( isset( self::$articleCache["$namespace:$title"] ) ) {
 			return self::$articleCache["$namespace:$title"];
@@ -177,6 +217,10 @@ class AFComputedVariable {
 		return self::$articleCache["$namespace:$title"];
 	}
 
+	/**
+	 * @param $article Article
+	 * @return array
+	 */
 	static function getLinksFromDB( $article ) {
 		// Stolen from ConfirmEdit
 		$id = $article->getId();
@@ -198,6 +242,12 @@ class AFComputedVariable {
 		return $links;
 	}
 
+	/**
+	 * @param $vars AbuseFilterVariableHolder
+	 * @return AFPData|array|int|mixed|null|string
+	 * @throws MWException
+	 * @throws AFPException
+	 */
 	function compute( $vars ) {
 		$parameters = $this->mParameters;
 		$result = null;
