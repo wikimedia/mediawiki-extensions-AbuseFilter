@@ -79,6 +79,11 @@ class AFPData {
 		$this->data = $val;
 	}
 
+	/**
+	 * @param $var
+	 * @return AFPData
+	 * @throws AFPException
+	 */
 	public static function newFromPHPVar( $var ) {
 		if ( is_string( $var ) ) {
 			return new AFPData( self::DString, $var );
@@ -103,10 +108,19 @@ class AFPData {
 		}
 	}
 
+	/**
+	 * @return AFPData
+	 */
 	public function dup() {
 		return new AFPData( $this->type, $this->data );
 	}
 
+	/**
+	 * @static
+	 * @param $orig
+	 * @param $target
+	 * @return AFPData
+	 */
 	public static function castTypes( $orig, $target ) {
 		if ( $orig->type == $target ) {
 			return $orig->dup();
@@ -120,7 +134,7 @@ class AFPData {
 				return new AFPData( self::DBool, (bool)count( $orig->data ) );
 			}
 			if ( $target == self::DFloat ) {
-				return new AFPData( self::DFloat, doubleval( count( $orig->data  ) ) );
+				return new AFPData( self::DFloat,  floatval( count( $orig->data  ) ) );
 			}
 			if ( $target == self::DInt ) {
 				return new AFPData( self::DInt, intval( count( $orig->data ) ) );
@@ -138,7 +152,7 @@ class AFPData {
 			return new AFPData( self::DBool, (bool)$orig->data );
 		}
 		if ( $target == self::DFloat ) {
-			return new AFPData( self::DFloat, doubleval( $orig->data ) );
+			return new AFPData( self::DFloat, floatval( $orig->data ) );
 		}
 		if ( $target == self::DInt ) {
 			return new AFPData( self::DInt, intval( $orig->data ) );
@@ -151,14 +165,28 @@ class AFPData {
 		}
 	}
 
+	/**
+	 * @param $value
+	 * @return AFPData
+	 */
 	public static function boolInvert( $value ) {
 		return new AFPData( self::DBool, !$value->toBool() );
 	}
 
+	/**
+	 * @param $base
+	 * @param $exponent
+	 * @return AFPData
+	 */
 	public static function pow( $base, $exponent ) {
 		return new AFPData( self::DFloat, pow( $base->toFloat(), $exponent->toFloat() ) );
 	}
 
+	/**
+	 * @param $a
+	 * @param $b
+	 * @return AFPData
+	 */
 	public static function keywordIn( $a, $b ) {
 		$a = $a->toString();
 		$b = $b->toString();
@@ -170,6 +198,11 @@ class AFPData {
 		return new AFPData( self::DBool, in_string( $a, $b ) );
 	}
 
+	/**
+	 * @param $a
+	 * @param $b
+	 * @return AFPData
+	 */
 	public static function keywordContains( $a, $b ) {
 		$a = $a->toString();
 		$b = $b->toString();
@@ -181,6 +214,11 @@ class AFPData {
 		return new AFPData( self::DBool, in_string( $b, $a ) );
 	}
 
+	/**
+	 * @param $value
+	 * @param $list
+	 * @return bool
+	 */
 	public static function listContains( $value, $list ) {
 		// Should use built-in PHP function somehow
 		foreach ( $list->data as $item ) {
@@ -191,11 +229,21 @@ class AFPData {
 		return false;
 	}
 
+	/**
+	 * @param $d1
+	 * @param $d2
+	 * @return bool
+	 */
 	public static function equals( $d1, $d2 ) {
 		return $d1->type != self::DList && $d2->type != self::DList &&
 			$d1->toString() === $d2->toString();
 	}
 
+	/**
+	 * @param $str
+	 * @param $pattern
+	 * @return AFPData
+	 */
 	public static function keywordLike( $str, $pattern ) {
 		$str = $str->toString();
 		$pattern = $pattern->toString();
@@ -205,6 +253,14 @@ class AFPData {
 		return new AFPData( self::DBool, (bool)$result );
 	}
 
+	/**
+	 * @param $str
+	 * @param $regex
+	 * @param $pos
+	 * @param $insensitive bool
+	 * @return AFPData
+	 * @throws Exception
+	 */
 	public static function keywordRegex( $str, $regex, $pos, $insensitive = false ) {
 		$str = $str->toString();
 		$pattern = $regex->toString();
@@ -228,10 +284,20 @@ class AFPData {
 		return new AFPData( self::DBool, (bool)$result );
 	}
 
+	/**
+	 * @param $str
+	 * @param $regex
+	 * @param $pos
+	 * @return AFPData
+	 */
 	public static function keywordRegexInsensitive( $str, $regex, $pos ) {
 		return self::keywordRegex( $str, $regex, $pos, true );
 	}
 
+	/**
+	 * @param $data
+	 * @return AFPData
+	 */
 	public static function unaryMinus( $data ) {
 		if ( $data->type == self::DInt ) {
 			return new AFPData( $data->type, - $data->toInt() );
@@ -240,6 +306,13 @@ class AFPData {
 		}
 	}
 
+	/**
+	 * @param $a
+	 * @param $b
+	 * @param $op
+	 * @return AFPData
+	 * @throws AFPException
+	 */
 	public static function boolOp( $a, $b, $op ) {
 		$a = $a->toBool();
 		$b = $b->toBool();
@@ -255,6 +328,13 @@ class AFPData {
 		throw new AFPException( "Invalid boolean operation: {$op}" ); // Should never happen.
 	}
 
+	/**
+	 * @param $a
+	 * @param $b
+	 * @param $op
+	 * @return AFPData
+	 * @throws AFPException
+	 */
 	public static function compareOp( $a, $b, $op ) {
 		if ( $op == '==' || $op == '=' ) {
 			return new AFPData( self::DBool, self::equals( $a, $b ) );
@@ -285,6 +365,15 @@ class AFPData {
 		throw new AFPException( "Invalid comparison operation: {$op}" ); // Should never happen
 	}
 
+	/**
+	 * @param $a
+	 * @param $b
+	 * @param $op
+	 * @param $pos
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 * @throws AFPException
+	 */
 	public static function mulRel( $a, $b, $op, $pos ) {
 		// Figure out the type.
 		if ( $a->type == self::DFloat || $b->type == self::DFloat ||
@@ -315,12 +404,17 @@ class AFPData {
 		if ( $type == self::DInt ) {
 			$data = intval( $data );
 		} else {
-			$data = doubleval( $data );
+			$data = floatval( $data );
 		}
 
 		return new AFPData( $type, $data );
 	}
 
+	/**
+	 * @param $a
+	 * @param $b
+	 * @return AFPData
+	 */
 	public static function sum( $a, $b ) {
 		if ( $a->type == self::DString || $b->type == self::DString ) {
 			return new AFPData( self::DString, $a->toString() . $b->toString() );
@@ -331,6 +425,11 @@ class AFPData {
 		}
 	}
 
+	/**
+	 * @param $a
+	 * @param $b
+	 * @return AFPData
+	 */
 	public static function sub( $a, $b ) {
 		return new AFPData( self::DFloat, $a->toFloat() - $b->toFloat() );
 	}
@@ -338,6 +437,7 @@ class AFPData {
 	/** Convert shorteners */
 
 	/**
+	 * @throws MWException
 	 * @return mixed
 	 */
 	public function toNative() {
@@ -434,6 +534,15 @@ class AFPRegexErrorHandler {
 		$this->pos = $pos;
 	}
 
+	/**
+	 * @param $errno
+	 * @param $errstr
+	 * @param $errfile
+	 * @param $errline
+	 * @param $context
+	 * @return bool
+	 * @throws AFPUserVisibleException
+	 */
 	function handleError( $errno, $errstr, $errfile, $errline, $context ) {
 		if ( error_reporting() == 0 ) {
 			return true;
@@ -455,7 +564,12 @@ class AFPRegexErrorHandler {
 }
 
 class AbuseFilterParser {
-	var $mParams, $mVars, $mCode, $mTokens, $mPos, $mCur, $mShortCircuit, $mAllowShort;
+	var $mParams, $mCode, $mTokens, $mPos, $mCur, $mShortCircuit, $mAllowShort, $mLen;
+
+	/**
+	 * @var AbuseFilterVariableHolder
+	 */
+	var $mVars;
 
 	// length,lcase,ccnorm,rmdoubles,specialratio,rmspecials,norm,count
 	static $mFunctions = array(
@@ -529,6 +643,10 @@ class AbuseFilterParser {
 		$this->mAllowShort = true;
 	}
 
+	/**
+	 * @param $filter
+	 * @return array|bool
+	 */
 	public function checkSyntax( $filter ) {
 		try {
 			$origAS = $this->mAllowShort;
@@ -542,11 +660,18 @@ class AbuseFilterParser {
 		return true;
 	}
 
+	/**
+	 * @param $name
+	 * @param $value
+	 */
 	public function setVar( $name, $value ) {
 		$name = strtolower( $name );
 		$this->mVars->setVar( $name, $value );
 	}
 
+	/**
+	 * @param $vars
+	 */
 	public function setVars( $vars ) {
 		if ( is_array( $vars ) ) {
 			foreach ( $vars as $name => $var ) {
@@ -557,6 +682,9 @@ class AbuseFilterParser {
 		}
 	}
 
+	/**
+	 * @return AFPToken
+	 */
 	protected function move( ) {
 		wfProfileIn( __METHOD__ );
 		list( $val, $type, $code, $offset ) =
@@ -568,17 +696,28 @@ class AbuseFilterParser {
 		return $this->mCur = $token;
 	}
 
-	// getState() and setState() function allows parser state to be rollbacked to several tokens back
+	/**
+	 * getState() function allows parser state to be rollbacked to several tokens back
+	 * @return AFPParserState
+	 */
 	protected function getState() {
 		return new AFPParserState( $this->mCur, $this->mPos );
 	}
 
+	/**
+	 * setState() function allows parser state to be rollbacked to several tokens back
+	 * @param AFPParserState $state
+	 */
 	protected function setState( AFPParserState $state ) {
 		$this->mCur = $state->token;
 		$this->mPos = $state->pos;
 		self::$lastHandledToken = $state->lastInput;
 	}
 
+	/**
+	 * @return mixed
+	 * @throws AFPUserVisibleException
+	 */
 	protected function skipOverBraces() {
 		if ( !( $this->mCur->type == AFPToken::TBrace && $this->mCur->value == '(' ) || !$this->mShortCircuit ) {
 			return;
@@ -601,14 +740,26 @@ class AbuseFilterParser {
 			throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos, array( ')' ) );
 	}
 
+	/**
+	 * @param $code
+	 * @return bool
+	 */
 	public function parse( $code ) {
 		return $this->intEval( $code )->toBool();
 	}
 
+	/**
+	 * @param $filter
+	 * @return string
+	 */
 	public function evaluateExpression( $filter ) {
 		return $this->intEval( $filter )->toString();
 	}
 
+	/**
+	 * @param $code
+	 * @return AFPData
+	 */
 	function intEval( $code ) {
 		// Setup, resetting
 		$this->mCode = $code;
@@ -621,6 +772,11 @@ class AbuseFilterParser {
 		return $result;
 	}
 
+	/**
+	 * @param $a
+	 * @param $b
+	 * @return int
+	 */
 	static function lengthCompare( $a, $b ) {
 		if ( strlen( $a ) == strlen( $b ) ) {
 			return 0;
@@ -635,6 +791,7 @@ class AbuseFilterParser {
 	 * Handles unexpected characters after the expression
 	 *
 	 * @param $result
+	 * @throws AFPUserVisibleException
 	 */
 	protected function doLevelEntry( &$result ) {
 		$this->doLevelSemicolon( $result );
@@ -661,6 +818,8 @@ class AbuseFilterParser {
 	 * Handles multiple expressions
 	 *
 	 * @param $result
+	 * @throws AFPUserVisibleException
+	 * @return
 	 */
 	protected function doLevelSet( &$result ) {
 		if ( $this->mCur->type == AFPToken::TID ) {
@@ -724,6 +883,10 @@ class AbuseFilterParser {
 		$this->doLevelConditions( $result );
 	}
 
+	/**
+	 * @param $result
+	 * @throws AFPUserVisibleException
+	 */
 	protected function doLevelConditions( &$result ) {
 		if ( $this->mCur->type == AFPToken::TKeyword && $this->mCur->value == 'if' ) {
 			$this->move();
@@ -838,6 +1001,9 @@ class AbuseFilterParser {
 		}
 	}
 
+	/**
+	 * @param $result
+	 */
 	protected function doLevelBoolOps( &$result ) {
 		$this->doLevelCompares( $result );
 		$ops = array( '&', '|', '^' );
@@ -876,6 +1042,9 @@ class AbuseFilterParser {
 		}
 	}
 
+	/**
+	 * @param $result
+	 */
 	protected function doLevelCompares( &$result ) {
 		AbuseFilter::triggerLimiter();
 		$this->doLevelSumRels( $result );
@@ -891,6 +1060,9 @@ class AbuseFilterParser {
 		}
 	}
 
+	/**
+	 * @param $result
+	 */
 	protected function doLevelSumRels( &$result ) {
 		$this->doLevelMulRels( $result );
 		wfProfileIn( __METHOD__ );
@@ -910,6 +1082,9 @@ class AbuseFilterParser {
 		wfProfileOut( __METHOD__ );
 	}
 
+	/**
+	 * @param $result
+	 */
 	protected function doLevelMulRels( &$result ) {
 		$this->doLevelPow( $result );
 		wfProfileIn( __METHOD__ );
@@ -924,6 +1099,9 @@ class AbuseFilterParser {
 		wfProfileOut( __METHOD__ );
 	}
 
+	/**
+	 * @param $result
+	 */
 	protected function doLevelPow( &$result ) {
 		$this->doLevelBoolInvert( $result );
 		wfProfileIn( __METHOD__ );
@@ -936,6 +1114,9 @@ class AbuseFilterParser {
 		wfProfileOut( __METHOD__ );
 	}
 
+	/**
+	 * @param $result
+	 */
 	protected function doLevelBoolInvert( &$result ) {
 		if ( $this->mCur->type == AFPToken::TOp && $this->mCur->value == '!' ) {
 			$this->move();
@@ -948,6 +1129,9 @@ class AbuseFilterParser {
 		}
 	}
 
+	/**
+	 * @param $result
+	 */
 	protected function doLevelSpecialWords( &$result ) {
 		$this->doLevelUnarys( $result );
 		$keyword = strtolower( $this->mCur->value );
@@ -979,6 +1163,9 @@ class AbuseFilterParser {
 		}
 	}
 
+	/**
+	 * @param $result
+	 */
 	protected function doLevelUnarys( &$result ) {
 		$op = $this->mCur->value;
 		if ( $this->mCur->type == AFPToken::TOp && ( $op == "+" || $op == "-" ) ) {
@@ -994,6 +1181,10 @@ class AbuseFilterParser {
 		}
 	}
 
+	/**
+	 * @param $result
+	 * @throws AFPUserVisibleException
+	 */
 	protected function doLevelListElements( &$result ) {
 		$this->doLevelBraces( $result );
 		while ( $this->mCur->type == AFPToken::TSquareBracket && $this->mCur->value == '[' ) {
@@ -1017,6 +1208,10 @@ class AbuseFilterParser {
 		}
 	}
 
+	/**
+	 * @param $result
+	 * @throws AFPUserVisibleException
+	 */
 	protected function doLevelBraces( &$result ) {
 		if ( $this->mCur->type == AFPToken::TBrace && $this->mCur->value == '(' ) {
 			if ( $this->mShortCircuit ) {
@@ -1036,6 +1231,10 @@ class AbuseFilterParser {
 		}
 	}
 
+	/**
+	 * @param $result
+	 * @throws AFPUserVisibleException
+	 */
 	protected function doLevelFunction( &$result ) {
 		if ( $this->mCur->type == AFPToken::TID && isset( self::$mFunctions[$this->mCur->value] ) ) {
 			wfProfileIn( __METHOD__ );
@@ -1104,6 +1303,11 @@ class AbuseFilterParser {
 		}
 	}
 
+	/**
+	 * @param $result
+	 * @throws AFPUserVisibleException
+	 * @return AFPData
+	 */
 	protected function doLevelAtom( &$result ) {
 		wfProfileIn( __METHOD__ );
 		$tok = $this->mCur->value;
@@ -1186,6 +1390,11 @@ class AbuseFilterParser {
 
 	/* End of levels */
 
+	/**
+	 * @param $var
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function getVarValue( $var ) {
 		wfProfileIn( __METHOD__ );
 		$var = strtolower( $var );
@@ -1206,6 +1415,11 @@ class AbuseFilterParser {
 		}
 	}
 
+	/**
+	 * @param $name
+	 * @param $value
+	 * @throws AFPUserVisibleException
+	 */
 	protected function setUserVariable( $name, $value ) {
 		$builderValues = AbuseFilter::getBuilderValues();
 		if ( array_key_exists( $name, $builderValues['vars'] ) ) {
@@ -1214,6 +1428,13 @@ class AbuseFilterParser {
 		$this->mVars->setVar( $name, $value );
 	}
 
+	/**
+	 * @param $code
+	 * @param $offset
+	 * @return array
+	 * @throws AFPException
+	 * @throws AFPUserVisibleException
+	 */
 	static function nextToken( $code, $offset ) {
 		$tok = '';
 
@@ -1394,7 +1615,7 @@ class AbuseFilterParser {
 
 				return array(
 					$float
-						? doubleval( $num )
+						? floatval( $num )
 						: intval( $num ),
 					$float
 						? AFPToken::TFloat
@@ -1426,6 +1647,12 @@ class AbuseFilterParser {
 	}
 
 	// Built-in functions
+
+	/**
+	 * @param $args
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function funcLc( $args ) {
 		global $wgContLang;
 		if ( count( $args ) < 1 ) {
@@ -1439,6 +1666,11 @@ class AbuseFilterParser {
 		return new AFPData( AFPData::DString, $wgContLang->lc( $s ) );
 	}
 
+	/**
+	 * @param $args
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function funcLen( $args ) {
 		if ( count( $args ) < 1 ) {
 			throw new AFPUserVisibleException(
@@ -1451,6 +1683,11 @@ class AbuseFilterParser {
 		return new AFPData( AFPData::DInt, mb_strlen( $s, 'utf-8' ) );
 	}
 
+	/**
+	 * @param $args
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function funcSimpleNorm( $args ) {
 		if ( count( $args ) < 1 ) {
 			throw new AFPUserVisibleException(
@@ -1466,6 +1703,11 @@ class AbuseFilterParser {
 		return new AFPData( AFPData::DString, $s );
 	}
 
+	/**
+	 * @param $args
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function funcSpecialRatio( $args ) {
 		if ( count( $args ) < 1 ) {
 			throw new AFPUserVisibleException(
@@ -1487,6 +1729,11 @@ class AbuseFilterParser {
 		return new AFPData( AFPData::DFloat, $val );
 	}
 
+	/**
+	 * @param $args
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function funcCount( $args ) {
 		if ( count( $args ) < 1 ) {
 			throw new AFPUserVisibleException(
@@ -1517,6 +1764,12 @@ class AbuseFilterParser {
 		return new AFPData( AFPData::DInt, $count );
 	}
 
+	/**
+	 * @param $args
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 * @throws Exception
+	 */
 	protected function funcRCount( $args ) {
 		if ( count( $args ) < 1 ) {
 			throw new AFPUserVisibleException(
@@ -1552,6 +1805,11 @@ class AbuseFilterParser {
 		return new AFPData( AFPData::DInt, $count );
 	}
 
+	/**
+	 * @param $args
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function funcIPInRange( $args ) {
 		if ( count( $args ) < 2 ) {
 			throw new AFPUserVisibleException(
@@ -1569,6 +1827,11 @@ class AbuseFilterParser {
 		return new AFPData( AFPData::DBool, $result );
 	}
 
+	/**
+	 * @param $args
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function funcCCNorm( $args ) {
 		if ( count( $args ) < 1 ) {
 			throw new AFPUserVisibleException(
@@ -1585,6 +1848,11 @@ class AbuseFilterParser {
 		return new AFPData( AFPData::DString, $s );
 	}
 
+	/**
+	 * @param $args
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function funcContainsAny( $args ) {
 		if ( count( $args ) < 2 ) {
 			throw new AFPUserVisibleException(
@@ -1621,6 +1889,10 @@ class AbuseFilterParser {
 		return new AFPData( AFPData::DBool, $ok );
 	}
 
+	/**
+	 * @param $s
+	 * @return mixed
+	 */
 	protected function ccnorm( $s ) {
 		static $equivset = null;
 		static $replacementArray = null;
@@ -1634,20 +1906,35 @@ class AbuseFilterParser {
 		return $replacementArray->replace( $s );
 	}
 
+	/**
+	 * @param $s string
+	 * @return array|string
+	 */
 	protected function rmspecials( $s ) {
-		$s = preg_replace( '/[^\p{L}\p{N}]/u', '', $s );
-
-		return $s;
+		return preg_replace( '/[^\p{L}\p{N}]/u', '', $s );
 	}
 
+	/**
+	 * @param $s string
+	 * @return array|string
+	 */
 	protected function rmdoubles( $s ) {
 		return preg_replace( '/(.)\1+/us', '\1', $s );
 	}
 
+	/**
+	 * @param $s string
+	 * @return array|string
+	 */
 	protected function rmwhitespace( $s ) {
 		return preg_replace( '/\s+/u', '', $s );
 	}
 
+	/**
+	 * @param $args array
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function funcRMSpecials( $args ) {
 		if ( count( $args ) < 1 ) {
 			throw new AFPUserVisibleException(
@@ -1663,6 +1950,11 @@ class AbuseFilterParser {
 		return new AFPData( AFPData::DString, $s );
 	}
 
+	/**
+	 * @param $args array
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function funcRMWhitespace( $args ) {
 		if ( count( $args ) < 1 ) {
 			throw new AFPUserVisibleException(
@@ -1678,6 +1970,11 @@ class AbuseFilterParser {
 		return new AFPData( AFPData::DString, $s );
 	}
 
+	/**
+	 * @param $args array
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function funcRMDoubles( $args ) {
 		if ( count( $args ) < 1 ) {
 			throw new AFPUserVisibleException(
@@ -1693,6 +1990,11 @@ class AbuseFilterParser {
 		return new AFPData( AFPData::DString, $s );
 	}
 
+	/**
+	 * @param $args array
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function funcNorm( $args ) {
 		if ( count( $args ) < 1 ) {
 			throw new AFPUserVisibleException(
@@ -1711,6 +2013,11 @@ class AbuseFilterParser {
 		return new AFPData( AFPData::DString, $s );
 	}
 
+	/**
+	 * @param $args array
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function funcSubstr( $args ) {
 		if ( count( $args ) < 2 ) {
 			throw new AFPUserVisibleException(
@@ -1734,6 +2041,11 @@ class AbuseFilterParser {
 		return new AFPData( AFPData::DString, $result );
 	}
 
+	/**
+	 * @param $args array
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function funcStrPos( $args ) {
 		if ( count( $args ) < 2 ) {
 			throw new AFPUserVisibleException(
@@ -1760,6 +2072,11 @@ class AbuseFilterParser {
 		return new AFPData( AFPData::DInt, $result );
 	}
 
+	/**
+	 * @param $args array
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function funcStrReplace( $args ) {
 		if ( count( $args ) < 3 ) {
 			throw new AFPUserVisibleException(
@@ -1776,6 +2093,11 @@ class AbuseFilterParser {
 		return new AFPData( AFPData::DString, str_replace( $search, $replace, $subject ) );
 	}
 
+	/**
+	 * @param $args array
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function funcStrRegexEscape( $args ) {
 		if ( count( $args ) < 1 ) {
 			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
@@ -1788,6 +2110,11 @@ class AbuseFilterParser {
 		return new AFPData( AFPData::DString, preg_quote( $string ) );
 	}
 
+	/**
+	 * @param $args array
+	 * @return mixed
+	 * @throws AFPUserVisibleException
+	 */
 	protected function funcSetVar( $args ) {
 		if ( count( $args ) < 2 ) {
 			throw new AFPUserVisibleException(
@@ -1805,6 +2132,11 @@ class AbuseFilterParser {
 		return $value;
 	}
 
+	/**
+	 * @param $args array
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function castString( $args ) {
 		if ( count( $args ) < 1 ) {
 			throw new AFPUserVisibleException( 'noparams', $this->mCur->pos, array( __METHOD__ ) );
@@ -1814,6 +2146,11 @@ class AbuseFilterParser {
 		return AFPData::castTypes( $val, AFPData::DString );
 	}
 
+	/**
+	 * @param $args array
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function castInt( $args ) {
 		if ( count( $args ) < 1 ) {
 			throw new AFPUserVisibleException( 'noparams', $this->mCur->pos, array( __METHOD__ ) );
@@ -1823,6 +2160,11 @@ class AbuseFilterParser {
 		return AFPData::castTypes( $val, AFPData::DInt );
 	}
 
+	/**
+	 * @param $args array
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function castFloat( $args ) {
 		if ( count( $args ) < 1 ) {
 			throw new AFPUserVisibleException( 'noparams', $this->mCur->pos, array( __METHOD__ ) );
@@ -1832,6 +2174,11 @@ class AbuseFilterParser {
 		return AFPData::castTypes( $val, AFPData::DFloat );
 	}
 
+	/**
+	 * @param $args array
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
 	protected function castBool( $args ) {
 		if ( count( $args ) < 1 ) {
 			throw new AFPUserVisibleException( 'noparams', $this->mCur->pos, array( __METHOD__ ) );
