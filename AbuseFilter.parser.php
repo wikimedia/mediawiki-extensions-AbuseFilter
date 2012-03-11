@@ -74,6 +74,10 @@ class AFPData {
 	var $type;
 	var $data;
 
+	/**
+	 * @param string $type
+	 * @param null $val
+	 */
 	public function __construct( $type = self::DNull, $val = null ) {
 		$this->type = $type;
 		$this->data = $val;
@@ -116,8 +120,7 @@ class AFPData {
 	}
 
 	/**
-	 * @static
-	 * @param $orig
+	 * @param $orig AFPData
 	 * @param $target
 	 * @return AFPData
 	 */
@@ -166,7 +169,7 @@ class AFPData {
 	}
 
 	/**
-	 * @param $value
+	 * @param $value AFPData
 	 * @return AFPData
 	 */
 	public static function boolInvert( $value ) {
@@ -174,8 +177,8 @@ class AFPData {
 	}
 
 	/**
-	 * @param $base
-	 * @param $exponent
+	 * @param $base AFPData
+	 * @param $exponent AFPData
 	 * @return AFPData
 	 */
 	public static function pow( $base, $exponent ) {
@@ -183,8 +186,8 @@ class AFPData {
 	}
 
 	/**
-	 * @param $a
-	 * @param $b
+	 * @param $a AFPData
+	 * @param $b AFPData
 	 * @return AFPData
 	 */
 	public static function keywordIn( $a, $b ) {
@@ -199,8 +202,8 @@ class AFPData {
 	}
 
 	/**
-	 * @param $a
-	 * @param $b
+	 * @param $a AFPData
+	 * @param $b AFPData
 	 * @return AFPData
 	 */
 	public static function keywordContains( $a, $b ) {
@@ -230,8 +233,8 @@ class AFPData {
 	}
 
 	/**
-	 * @param $d1
-	 * @param $d2
+	 * @param $d1 AFPData
+	 * @param $d2 AFPData
 	 * @return bool
 	 */
 	public static function equals( $d1, $d2 ) {
@@ -240,8 +243,8 @@ class AFPData {
 	}
 
 	/**
-	 * @param $str
-	 * @param $pattern
+	 * @param $str AFPData
+	 * @param $pattern AFPData
 	 * @return AFPData
 	 */
 	public static function keywordLike( $str, $pattern ) {
@@ -254,8 +257,8 @@ class AFPData {
 	}
 
 	/**
-	 * @param $str
-	 * @param $regex
+	 * @param $str AFPData
+	 * @param $regex AFPData
 	 * @param $pos
 	 * @param $insensitive bool
 	 * @return AFPData
@@ -295,7 +298,7 @@ class AFPData {
 	}
 
 	/**
-	 * @param $data
+	 * @param $data AFPData
 	 * @return AFPData
 	 */
 	public static function unaryMinus( $data ) {
@@ -307,9 +310,9 @@ class AFPData {
 	}
 
 	/**
-	 * @param $a
-	 * @param $b
-	 * @param $op
+	 * @param $a AFPData
+	 * @param $b AFPData
+	 * @param $op string
 	 * @return AFPData
 	 * @throws AFPException
 	 */
@@ -329,9 +332,9 @@ class AFPData {
 	}
 
 	/**
-	 * @param $a
-	 * @param $b
-	 * @param $op
+	 * @param $a AFPData
+	 * @param $b AFPData
+	 * @param $op string
 	 * @return AFPData
 	 * @throws AFPException
 	 */
@@ -366,9 +369,9 @@ class AFPData {
 	}
 
 	/**
-	 * @param $a
-	 * @param $b
-	 * @param $op
+	 * @param $a AFPData
+	 * @param $b AFPData
+	 * @param $op string
 	 * @param $pos
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
@@ -411,8 +414,8 @@ class AFPData {
 	}
 
 	/**
-	 * @param $a
-	 * @param $b
+	 * @param $a AFPData
+	 * @param $b AFPData
 	 * @return AFPData
 	 */
 	public static function sum( $a, $b ) {
@@ -426,8 +429,8 @@ class AFPData {
 	}
 
 	/**
-	 * @param $a
-	 * @param $b
+	 * @param $a AFPData
+	 * @param $b AFPData
 	 * @return AFPData
 	 */
 	public static function sub( $a, $b ) {
@@ -968,7 +971,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $result
+	 * @param $result AFPData
 	 */
 	protected function doLevelBoolOps( &$result ) {
 		$this->doLevelCompares( $result );
@@ -1815,7 +1818,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args
+	 * @param $args array
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
