@@ -11,8 +11,8 @@ class AbuseFilterHooks {
 	 * Entry points for MediaWiki hook 'EditFilterMerged'
 	 *
 	 * @param $editor EditPage instance (object)
-	 * @param $text Content of the edit box
-	 * @param &$error Error message to return
+	 * @param $text string Content of the edit box
+	 * @param &$error string Error message to return
 	 * @param $summary Edit summary for page
 	 * @return bool
 	 */
@@ -62,6 +62,11 @@ class AbuseFilterHooks {
 		return true;
 	}
 
+	/**
+	 * @param $user
+	 * @param $promote
+	 * @return bool
+	 */
 	public static function onGetAutoPromoteGroups( $user, &$promote ) {
 		global $wgMemc;
 
@@ -74,6 +79,14 @@ class AbuseFilterHooks {
 		return true;
 	}
 
+	/**
+	 * @param $oldTitle Title
+	 * @param $newTitle Title
+	 * @param $user User
+	 * @param $error
+	 * @param $reason
+	 * @return bool
+	 */
 	public static function onAbortMove( $oldTitle, $newTitle, $user, &$error, $reason ) {
 		$vars = new AbuseFilterVariableHolder;
 
@@ -95,22 +108,34 @@ class AbuseFilterHooks {
 		return $filter_result == '' || $filter_result === true;
 	}
 
+	/**
+	 * @param $article Article
+	 * @param $user User
+	 * @param $reason string
+	 * @param $error
+	 * @return bool
+	 */
 	public static function onArticleDelete( &$article, &$user, &$reason, &$error ) {
 		$vars = new AbuseFilterVariableHolder;
 
 		global $wgUser;
 		$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
-		$vars->addHolder( AbuseFilter::generateTitleVars( $article->mTitle, 'ARTICLE' ) );
+		$vars->addHolder( AbuseFilter::generateTitleVars( $article->getTitle(), 'ARTICLE' ) );
 		$vars->setVar( 'SUMMARY', $reason );
 		$vars->setVar( 'ACTION', 'delete' );
 
-		$filter_result = AbuseFilter::filterAction( $vars, $article->mTitle );
+		$filter_result = AbuseFilter::filterAction( $vars, $article->getTitle() );
 
 		$error = $filter_result;
 
 		return $filter_result == '' || $filter_result === true;
 	}
 
+	/**
+	 * @param $user User
+	 * @param $message
+	 * @return bool
+	 */
 	public static function onAbortNewAccount( $user, &$message ) {
 		if ( $user->getName() == wfMsgForContent( 'abusefilter-blocker' ) ) {
 			$message = wfMsg( 'abusefilter-accountreserved' );
@@ -135,10 +160,14 @@ class AbuseFilterHooks {
 		return $filter_result == '' || $filter_result === true;
 	}
 
+	/**
+	 * @param $recentChange RecentChange
+	 * @return bool
+	 */
 	public static function onRecentChangeSave( $recentChange ) {
 		$title = Title::makeTitle(
-			$recentChange->mAttribs['rc_namespace'],
-			$recentChange->mAttribs['rc_title']
+			$recentChange->getAttribute( 'rc_namespace' ),
+			$recentChange->getAttribute( 'rc_title' )
 		);
 		$action = $recentChange->mAttribs['rc_log_type'] ?
 			$recentChange->mAttribs['rc_log_type'] : 'edit';
@@ -160,6 +189,10 @@ class AbuseFilterHooks {
 		return true;
 	}
 
+	/**
+	 * @param $emptyTags array
+	 * @return bool
+	 */
 	public static function onListDefinedTags( &$emptyTags ) {
 		# This is a pretty awful hack.
 		$dbr = wfGetDB( DB_SLAVE );
@@ -184,6 +217,7 @@ class AbuseFilterHooks {
 
 	/**
 	 * @param $updater DatabaseUpdater
+	 * @throws MWException
 	 * @return bool
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
@@ -248,11 +282,16 @@ class AbuseFilterHooks {
 		}
 	}
 
+	/**
+	 * @param $id
+	 * @param $nt Title
+	 * @param $tools
+	 * @return bool
+	 */
 	public static function onContributionsToolLinks( $id, $nt, &$tools ) {
 		global $wgUser;
 		if ( $wgUser->isAllowed( 'abusefilter-log' ) ) {
-			$sk = $wgUser->getSkin();
-			$tools[] = $sk->link(
+				$tools[] = Linker::link(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
 				wfMsg( 'abusefilter-log-linkoncontribs' ),
 				array( 'title' =>
@@ -263,6 +302,12 @@ class AbuseFilterHooks {
 		return true;
 	}
 
+	/**
+	 * @param $saveName
+	 * @param $tempName
+	 * @param $error
+	 * @return bool
+	 */
 	public static function onUploadVerification( $saveName, $tempName, &$error ) {
 		$vars = new AbuseFilterVariableHolder;
 
