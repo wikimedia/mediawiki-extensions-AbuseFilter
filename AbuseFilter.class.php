@@ -254,7 +254,7 @@ class AbuseFilter {
 			return new AbuseFilterVariableHolder;
 		}
 
-		$vars->setVar( $prefix . '_ARTICLEID', $title->getArticleId() );
+		$vars->setVar( $prefix . '_ARTICLEID', $title->getArticleID() );
 		$vars->setVar( $prefix . '_NAMESPACE', $title->getNamespace() );
 		$vars->setVar( $prefix . '_TEXT', $title->getText() );
 		$vars->setVar( $prefix . '_PREFIXEDTEXT', $title->getPrefixedText() );

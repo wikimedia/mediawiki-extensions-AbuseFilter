@@ -318,7 +318,7 @@ class AFComputedVariable {
 				$res = $dbr->select( 'revision',
 					'DISTINCT rev_user_text',
 					array(
-						'rev_page' => $title->getArticleId(),
+						'rev_page' => $title->getArticleID(),
 						'rev_timestamp<' . $dbr->addQuotes( $dbr->timestamp( $cutOff ) )
 					),
 					__METHOD__,
