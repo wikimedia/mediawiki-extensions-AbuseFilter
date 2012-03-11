@@ -111,6 +111,10 @@ class SpecialAbuseLog extends SpecialPage {
 		$this->getOutput()->addHTML( $output );
 	}
 
+	/**
+	 * @param $id
+	 * @return mixed
+	 */
 	function showHideForm( $id ) {
 		if ( !$this->getUser()->isAllowed( 'abusefilter-hide-log' ) ) {
 			$this->getOutput()->addWikiMsg( 'abusefilter-log-hide-forbidden' );
@@ -157,6 +161,10 @@ class SpecialAbuseLog extends SpecialPage {
 		$form->show();
 	}
 
+	/**
+	 * @param $fields
+	 * @return bool
+	 */
 	function saveHideForm( $fields ) {
 		$logid = $this->getRequest()->getVal( 'hide' );
 
@@ -223,6 +231,10 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 	}
 
+	/**
+	 * @param $id
+	 * @return mixed
+	 */
 	function showDetails( $id ) {
 		$out = $this->getOutput();
 
@@ -333,6 +345,8 @@ class SpecialAbuseLog extends SpecialPage {
 	}
 
 	/**
+	 * @param $filter_id null
+	 * @param $filter_hidden null
 	 * @return bool
 	 */
 	static function canSeeDetails( $filter_id = null, $filter_hidden = null ) {
@@ -366,9 +380,13 @@ class SpecialAbuseLog extends SpecialPage {
 		return $wgUser->isAllowed( 'abusefilter-hidden-log' );
 	}
 
+	/**
+	 * @param $row
+	 * @param $li bool
+	 * @return String
+	 */
 	function formatRow( $row, $li = true ) {
 		$user = $this->getUser();
-		$sk = $this->getSkin();
 		$lang = $this->getLanguage();
 
 		$actionLinks = array();
@@ -383,8 +401,8 @@ class SpecialAbuseLog extends SpecialPage {
 
 		if ( !$row->afl_wiki ) {
 			// Local user
-			$userLink = $sk->userLink( $row->afl_user, $row->afl_user_text ) .
-				$sk->userToolLinks( $row->afl_user, $row->afl_user_text );
+			$userLink = Linker::userLink( $row->afl_user, $row->afl_user_text ) .
+					Linker::userToolLinks( $row->afl_user, $row->afl_user_text );
 		} else {
 			$userLink = WikiMap::foreignUserLink( $row->afl_wiki, $row->afl_user_text );
 			$userLink .= ' (' . WikiMap::getWikiName( $row->afl_wiki ) . ')';
@@ -420,11 +438,11 @@ class SpecialAbuseLog extends SpecialPage {
 
 		if ( self::canSeeDetails( $row->afl_filter, $filter_hidden ) ) {
 			$examineTitle = SpecialPage::getTitleFor( 'AbuseFilter', 'examine/log/' . $row->afl_id );
-			$detailsLink = $sk->makeKnownLinkObj(
+			$detailsLink = Linker::makeKnownLinkObj(
 				$this->getTitle($row->afl_id),
 				wfMsg( 'abusefilter-log-detailslink' )
 			);
-			$examineLink = $sk->link(
+			$examineLink = Linker::link(
 				$examineTitle,
 				wfMsgExt( 'abusefilter-changeslist-examine', 'parseinline' ),
 				array()
@@ -434,7 +452,7 @@ class SpecialAbuseLog extends SpecialPage {
 			$actionLinks[] = $examineLink;
 
 			if ( $user->isAllowed( 'abusefilter-hide-log' ) ) {
-				$hideLink = $sk->link(
+				$hideLink = Linker::link(
 						$this->getTitle(),
 						wfMsg( 'abusefilter-log-hidelink' ),
 						array(),
@@ -451,11 +469,11 @@ class SpecialAbuseLog extends SpecialPage {
 											'Special:AbuseFilter/' . $globalIndex );
 
 				$linkText = wfMessage( 'abusefilter-log-detailedentry-global' )->numParams( $globalIndex )->escaped();
-				$filterLink = $sk->makeExternalLink( $globalURL, $linkText );
+				$filterLink = Linker::makeExternalLink( $globalURL, $linkText );
 			} else {
 				$title = SpecialPage::getTitleFor( 'AbuseFilter', $row->afl_filter );
 				$linkText = wfMessage( 'abusefilter-log-detailedentry-local' )->numParams( $row->afl_filter )->escaped();
-				$filterLink = $sk->link( $title, $linkText );
+				$filterLink = Linker::link( $title, $linkText );
 			}
 			$description = wfMsgExt( 'abusefilter-log-detailedentry-meta',
 				array( 'parseinline', 'replaceafter' ),
@@ -478,7 +496,7 @@ class SpecialAbuseLog extends SpecialPage {
 					$timestamp,
 					$userLink,
 					$row->afl_action,
-					$sk->link( $title ),
+					Linker::link( $title ),
 					$actions_taken,
 					$parsed_comments
 				)
@@ -521,6 +539,11 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	 */
 	public $mConds;
 
+	/**
+	 * @param $form
+	 * @param array $conds
+	 * @param bool $details
+	 */
 	function __construct( $form, $conds = array(), $details = false ) {
 		$this->mForm = $form;
 		$this->mConds = $conds;
