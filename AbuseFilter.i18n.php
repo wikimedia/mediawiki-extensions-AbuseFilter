@@ -9730,6 +9730,7 @@ Suodattimen kuvaus: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'yleissuodatin $1',
 	'abusefilter-log-detailedentry-local' => 'suodatin $1',
 	'abusefilter-log-detailslink' => 'tiedot',
+	'abusefilter-log-diff' => 'ero',
 	'abusefilter-log-hidelink' => 'säädä näkyvyyttä',
 	'abusefilter-log-details-legend' => 'Yksityiskohdat lokitapahtumalle $1',
 	'abusefilter-log-details-var' => 'Muuttuja',
@@ -24321,6 +24322,7 @@ $messages['pfl'] = array(
  * @author Maikking
  * @author Matma Rex
  * @author Olgak85
+ * @author Sovq
  * @author Sp5uhe
  */
 $messages['pl'] = array(
@@ -24608,7 +24610,7 @@ Oznaczenia powinny być krótkie i nie powinny zawierać znaków specjalnych.',
 	'abusefilter-filter-log' => 'Ostatnie zmiany ustawień filtru',
 	'abusefilter-history' => 'Historia zmian dla filtru nr $1',
 	'abusefilter-history-foruser' => 'Zmiany wykonane przez $1',
-	'abusefilter-history-hidden' => 'ukryte',
+	'abusefilter-history-hidden' => 'Ukryte',
 	'abusefilter-history-enabled' => 'włączona',
 	'abusefilter-history-global' => 'Globalnie',
 	'abusefilter-history-timestamp' => 'Kiedy',
