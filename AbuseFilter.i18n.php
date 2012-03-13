@@ -20191,6 +20191,7 @@ $messages['ml'] = array(
 	'abusefilter-log-detailedentry-global' => '$1 ആഗോള അരിപ്പ',
 	'abusefilter-log-detailedentry-local' => '$1 അരിപ്പ',
 	'abusefilter-log-detailslink' => 'വിവരണങ്ങൾ',
+	'abusefilter-log-diff' => 'വ്യത്യാസം',
 	'abusefilter-log-hidelink' => 'ദൃശ്യത ക്രമീകരിക്കുക',
 	'abusefilter-log-details-legend' => 'രേഖയിൽ ഉൾപ്പെട്ട $1 ഇനത്തിന്റെ വിവരങ്ങൾ',
 	'abusefilter-log-details-var' => 'ചരം',
