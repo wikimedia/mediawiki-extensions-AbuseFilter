@@ -25149,6 +25149,7 @@ $messages['ps'] = array(
 	'abusefilter-log-search-submit' => 'پلټل',
 	'abusefilter-log-detailedentry-local' => 'چاڼګر $1',
 	'abusefilter-log-detailslink' => 'ځانګړنې',
+	'abusefilter-log-diff' => 'توپير',
 	'abusefilter-log-details-val' => 'ارزښت',
 	'abusefilter-log-noactions' => 'هېڅ',
 	'abusefilter-log-hide-reason' => 'سبب:',
