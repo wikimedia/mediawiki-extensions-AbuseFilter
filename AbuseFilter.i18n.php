@@ -29377,6 +29377,7 @@ $messages['so'] = array(
 );
 
 /** Albanian (Shqip)
+ * @author Euriditi
  * @author Marinari
  * @author Vinie007
  */
@@ -29703,6 +29704,19 @@ E pritshme $3 {{PLURAL:$3|argumenti|argumentet}}, mori $4',
 	'abusefilter-action-degroup' => 'Largo nga grupet',
 	'abusefilter-action-rangeblock' => 'Varg-bllok',
 	'abusefilter-action-disallow' => 'Refuzo',
+	'abusefilter-revert-filter' => 'FIltri:',
+	'abusefilter-test-submit' => 'Verifiko',
+	'abusefilter-test-load' => 'Ngarko',
+	'abusefilter-changeslist-examine' => 'ekzamino',
+	'abusefilter-examine-user' => 'Përdoruesi:',
+	'abusefilter-examine-title' => 'Titulli i faqes:',
+	'abusefilter-examine-submit' => 'Kërko',
+	'abusefilter-topnav-home' => 'Faqja kryesore',
+	'abusefilter-topnav-import' => 'Importo filtër',
+	'abusefilter-log-noresults' => "S'ka rezultate",
+	'abusefilter-diff-item' => 'Artikulli',
+	'abusefilter-diff-info' => 'Informata bazë',
+	'abusefilter-import-submit' => 'Importo të dhëna',
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
