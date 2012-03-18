@@ -8259,6 +8259,7 @@ Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku 
  * @author Platonides
  * @author Remember the dot
  * @author Sanbec
+ * @author Savh
  * @author Translationista
  */
 $messages['es'] = array(
@@ -8572,7 +8573,7 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-exception-unclosedstring' => 'Cadena no cerrada empezando en el carácter $1',
 	'abusefilter-exception-invalidoperator' => 'Operador no válido «$2» en el carácter $1.',
 	'abusefilter-exception-unrecognisedtoken' => 'Token "$2" no reconocido en el carácter $1.',
-	'abusefilter-exception-noparams' => 'No se ha introducido ningún parámetro a la función "$2" en el carácter $1.',
+	'abusefilter-exception-noparams' => 'No se ha introducido ningún parámetro a la función «$2» en el carácter $1.',
 	'abusefilter-exception-dividebyzero' => 'Intento ilegal de dividir $2 entre cero en carácter $1.',
 	'abusefilter-exception-unrecognisedvar' => 'Variable no reconocida $2 en el carácter $1',
 	'abusefilter-exception-notenoughargs' => 'El carácter $1 no ha dado a la función $2 suficientes argumentos.
@@ -28569,6 +28570,7 @@ This interface shows a list of defined filters, and allows them to be modified.'
 /** Slovak (Slovenčina)
  * @author Helix84
  * @author Mormegil
+ * @author Teslaton
  */
 $messages['sk'] = array(
 	'abusefilter-desc' => 'Vykonáva automatickú heuristiku úprav.',
@@ -28633,6 +28635,7 @@ Popis filtra: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'globálny filter $1',
 	'abusefilter-log-detailedentry-local' => 'filter $1',
 	'abusefilter-log-detailslink' => 'podrobnosti',
+	'abusefilter-log-diff' => 'rozdiel',
 	'abusefilter-log-hidelink' => 'zmeniť viditeľnosť',
 	'abusefilter-log-details-legend' => 'Podrobnosti položky záznamu $1',
 	'abusefilter-log-details-var' => 'Premenná',
@@ -28645,6 +28648,8 @@ Popis filtra: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'záznam zneužití',
 	'abusefilter-log-linkoncontribs-text' => 'Záznam zneužití tohto používateľa',
 	'abusefilter-log-hidden' => '(položka skrytá)',
+	'abusefilter-log-hidden-implicit' => '(položka skrytá, pretože bola odstránená revízia)',
+	'abusefilter-log-cannot-see-details' => 'Nemáte práva na prehliadanie podrobností tejto položky.',
 	'abusefilter-log-details-hidden' => 'Nemôžete si pozrieť podrobnosti tejto položky, pretože je verejnosti skrytá.',
 	'abusefilter-log-hide-legend' => 'Skryť položku v zázname',
 	'abusefilter-log-hide-id' => 'ID položky záznamu:',
