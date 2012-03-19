@@ -321,11 +321,17 @@ class AbuseFilterHooks {
 			$updater->addExtensionUpdate( array( 'addPgField', 'abuse_filter_log', 'afl_deleted', 'SMALLINT' ) );
 			$updater->addExtensionUpdate( array( 'changeField', 'abuse_filter_log', 'afl_filter', 'TEXT' ) );
 			$updater->addExtensionUpdate( array( 'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_ip', "(afl_ip)" ) );
-		} else {
-			throw new MWException("No known Schema updates.");
 		}
 
-		// Create the Abuse Filter user.
+		$updater->addExtensionUpdate( array( array( __CLASS__, 'createAbuseFilterUser' ) ) );
+
+		return true;
+	}
+
+	/**
+	 * Updater callback to create the AbuseFilter user after the user tables have been updated.
+	 */
+	public static function createAbuseFilterUser( $updater ) {
 		$user = User::newFromName( wfMsgForContent( 'abusefilter-blocker' ) );
 
 		if ( $user && !$updater->updateRowExists( 'create abusefilter-blocker-user' ) ) {
@@ -345,8 +351,6 @@ class AbuseFilterHooks {
 			# Promote user so it doesn't look too crazy.
 			$user->addGroup( 'sysop' );
 		}
-
-		return true;
 	}
 
 	/**
