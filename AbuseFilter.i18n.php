@@ -690,7 +690,7 @@ $messages['qqq'] = array(
 	'abusefilter-edit-throttle-period' => 'Field label for entering a time period.',
 	'abusefilter-edit-throttle-seconds' => 'Throttle period in seconds. Parameters:
 * $1 is a number of seconds.',
-	'abusefilter-edit-throttle-groups' => 'Field label for properties to group throttle counts by (for example IP address and username). Throttling is the concept of limiting occurances of a certain action in a given time frame.',
+	'abusefilter-edit-throttle-groups' => 'Field label for properties to group throttle counts by (for example IP address and username). Throttling is the concept of limiting occurrences of a certain action in a given time frame.',
 	'abusefilter-edit-warn-message' => 'Field label for dropdown list with system messages.',
 	'abusefilter-edit-warn-other' => 'Option in dropdown menu to specify no item from the list should be used.',
 	'abusefilter-edit-warn-other-label' => 'Field label for entering a system message key to use as warning text.',
