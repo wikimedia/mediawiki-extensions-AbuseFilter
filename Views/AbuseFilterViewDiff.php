@@ -94,7 +94,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 					'history/' . $this->mFilter . '/item/' . $other['meta']['history_id'] );
 				global $wgOut;
 				$wgOut->redirect( $t->getFullURL() );
-				return null;
+				return;
 			}
 
 		} elseif ( $spec == 'next' && !in_array( $otherSpec, $dependentSpecs ) ) {
@@ -117,7 +117,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 					'history/' . $this->mFilter . '/item/' . $other['meta']['history_id'] );
 				global $wgOut;
 				$wgOut->redirect( $t->getFullURL() );
-				return null;
+				return;
 			}
 		}
 
@@ -148,11 +148,6 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		);
 	}
 
-	/**
-	 * @param $timestamp
-	 * @param $history_id
-	 * @return string
-	 */
 	function formatVersionLink( $timestamp, $history_id ) {
 		$filter = $this->mFilter;
 		$text = $this->getLanguage()->timeanddate( $timestamp, true );
@@ -163,9 +158,6 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		return $link;
 	}
 
-	/**
-	 * @return string
-	 */
 	function formatDiff() {
 		$oldVersion = $this->mOldVersion;
 		$newVersion = $this->mNewVersion;
@@ -257,10 +249,6 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		return $html;
 	}
 
-	/**
-	 * @param $actions
-	 * @return array
-	 */
 	function stringifyActions( $actions ) {
 		$lines = array();
 
@@ -276,10 +264,6 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		return $lines;
 	}
 
-	/**
-	 * @param $msg
-	 * @return String
-	 */
 	function getHeaderRow( $msg ) {
 		$html = wfMsgExt( $msg, 'parseinline' );
 		$html = Xml::tags( 'th', array( 'colspan' => 3 ), $html );
@@ -288,13 +272,6 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		return $html;
 	}
 
-	/**
-	 * @param $msg
-	 * @param $old
-	 * @param $new
-	 * @param string $format
-	 * @return string
-	 */
 	function getSimpleRow( $msg, $old, $new, $format = 'wikitext' ) {
 		$row = '';
 
@@ -323,12 +300,6 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		return Xml::tags( 'tr', null, $row ) . "\n";
 	}
 
-	/**
-	 * @param $msg
-	 * @param $old
-	 * @param $new
-	 * @return string
-	 */
 	function getMultiLineRow( $msg, $old, $new ) {
 		if ( !is_array( $old ) ) {
 			$old = explode( "\n", preg_replace( "/\\\r\\\n?/", "\n", $old ) );

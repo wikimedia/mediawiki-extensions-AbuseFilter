@@ -240,12 +240,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 	}
 
-	/**
-	 * @param $error
-	 * @param $filter
-	 * @param $history_id null
-	 * @return bool|String
-	 */
 	function buildFilterEditor( $error, $filter, $history_id = null ) {
 		if ( $filter === null ) {
 			return false;
@@ -255,13 +249,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$out = $this->getOutput();
 		$lang = $this->getLanguage();
 		$user = $this->getUser();
+		$sk = $this->getSkin();
 
 		// Load from request OR database.
 		list( $row, $actions ) = $this->loadRequest( $filter, $history_id );
 
 		if ( !$row ) {
 			$out->addWikiMsg( 'abusefilter-edit-badfilter' );
-			$out->addHTML( Linker::link( $this->getTitle(), wfMsg( 'abusefilter-return' ) ) );
+			$out->addHTML( $sk->link( $this->getTitle(), wfMsg( 'abusefilter-return' ) ) );
 			return;
 		}
 
@@ -306,7 +301,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$count_display = wfMsgExt( 'abusefilter-hitcount', array( 'parseinline' ),
 				$lang->formatNum( $count )
 			);
-			$hitCount = Linker::makeKnownLinkObj(
+			$hitCount = $sk->makeKnownLinkObj(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
 				$count_display,
 				'wpSearchFilter=' . $row->af_id
@@ -392,7 +387,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		if ( $filter != 'new' && $user->isAllowed( 'abusefilter-revert' ) ) {
 			$tools .= Xml::tags(
 				'p', null,
-				Linker::link(
+				$sk->link(
 					$this->getTitle( 'revert/' . $filter ),
 					wfMsg( 'abusefilter-edit-revert' )
 				)
@@ -403,15 +398,15 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// Test link
 			$tools .= Xml::tags(
 				'p', null,
-				Linker::link(
+				$sk->link(
 					$this->getTitle( "test/$filter" ),
 					wfMsgExt( 'abusefilter-edit-test-link', 'parseinline' )
 				)
 			);
 			// Last modification details
 			$userLink =
-				Linker::userLink( $row->af_user, $row->af_user_text ) .
-				Linker::userToolLinks( $row->af_user, $row->af_user_text );
+				$sk->userLink( $row->af_user, $row->af_user_text ) .
+				$sk->userToolLinks( $row->af_user, $row->af_user_text );
 			$userName = $row->af_user_text;
 			$fields['abusefilter-edit-lastmod'] =
 				wfMsgExt(
@@ -426,7 +421,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				);
 			$history_display = wfMsgExt( 'abusefilter-edit-viewhistory', array( 'parseinline' ) );
 			$fields['abusefilter-edit-history'] =
-				Linker::makeKnownLinkObj( $this->getTitle( 'history/' . $filter ), $history_display );
+				$sk->makeKnownLinkObj( $this->getTitle( 'history/' . $filter ), $history_display );
 		}
 
 		// Add export
@@ -468,11 +463,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		return $output;
 	}
 
-	/**
-	 * @param $row
-	 * @param $actions
-	 * @return string
-	 */
 	function buildConsequenceEditor( $row, $actions ) {
 		global $wgAbuseFilterAvailableActions;
 
@@ -491,12 +481,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		return $output;
 	}
 
-	/**
-	 * @param $action
-	 * @param $set
-	 * @param $parameters
-	 * @return string
-	 */
 	function buildConsequenceSelector( $action, $set, $parameters ) {
 		global $wgAbuseFilterAvailableActions;
 
@@ -657,10 +641,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 	}
 
-	/**
-	 * @param $warnMsg
-	 * @return string
-	 */
 	function getExistingSelector( $warnMsg ) {
 		$existingSelector = new XmlSelect(
 			'wpFilterWarnMessage',
@@ -698,10 +678,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		return $existingSelector->getHTML();
 	}
 
-	/**
-	 * @param $id
-	 * @return array|null
-	 */
 	function loadFilterData( $id ) {
 		if ( $id == 'new' ) {
 			$obj = new stdClass;
@@ -761,11 +737,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		return array( $row, $actions );
 	}
 
-	/**
-	 * @param $filter
-	 * @param null $history_id
-	 * @return array|null
-	 */
 	function loadRequest( $filter, $history_id = null ) {
 		static $row = null;
 		static $actions = null;
@@ -866,10 +837,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		return array( $row, $actions );
 	}
 
-	/**
-	 * @param $id
-	 * @return array
-	 */
 	function loadHistoryItem( $id ) {
 		$dbr = wfGetDB( DB_SLAVE );
 

@@ -111,10 +111,6 @@ class SpecialAbuseLog extends SpecialPage {
 		$this->getOutput()->addHTML( $output );
 	}
 
-	/**
-	 * @param $id
-	 * @return mixed
-	 */
 	function showHideForm( $id ) {
 		if ( !$this->getUser()->isAllowed( 'abusefilter-hide-log' ) ) {
 			$this->getOutput()->addWikiMsg( 'abusefilter-log-hide-forbidden' );
@@ -161,10 +157,6 @@ class SpecialAbuseLog extends SpecialPage {
 		$form->show();
 	}
 
-	/**
-	 * @param $fields
-	 * @return bool
-	 */
 	function saveHideForm( $fields ) {
 		$logid = $this->getRequest()->getVal( 'hide' );
 
@@ -231,10 +223,6 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 	}
 
-	/**
-	 * @param $id
-	 * @return mixed
-	 */
 	function showDetails( $id ) {
 		$out = $this->getOutput();
 
@@ -264,7 +252,7 @@ class SpecialAbuseLog extends SpecialPage {
 			return;
 		}
 
-		if ( $this->isHidden( $row ) && !self::canSeeHidden() ) {
+		if ( $row->afl_deleted && !self::canSeeHidden() ) {
 			$out->addWikiMsg( 'abusefilter-log-details-hidden' );
 			return;
 		}
@@ -345,8 +333,6 @@ class SpecialAbuseLog extends SpecialPage {
 	}
 
 	/**
-	 * @param $filter_id null
-	 * @param $filter_hidden null
 	 * @return bool
 	 */
 	static function canSeeDetails( $filter_id = null, $filter_hidden = null ) {
@@ -380,49 +366,25 @@ class SpecialAbuseLog extends SpecialPage {
 		return $wgUser->isAllowed( 'abusefilter-hidden-log' );
 	}
 
-	/**
-	 * @param $row
-	 * @param $li bool
-	 * @return String
-	 */
 	function formatRow( $row, $li = true ) {
 		$user = $this->getUser();
+		$sk = $this->getSkin();
 		$lang = $this->getLanguage();
 
 		$actionLinks = array();
 
 		$title = Title::makeTitle( $row->afl_namespace, $row->afl_title );
 
-		$diffLink = false;
-
-		if ( self::isHidden($row) && ! $this->canSeeHidden() ) {
-			return '';
-		}
-
 		if ( !$row->afl_wiki ) {
-			$pageLink = Linker::link( $title );
-			if ( $row->afl_rev_id ) {
-				$diffLink = Linker::link( $title,
-					wfMessage('abusefilter-log-diff')->parse(), array(),
-					array( 'diff' => 'prev', 'oldid' => $row->afl_rev_id ) );
-			}
+			$pageLink = $sk->link( $title );
 		} else {
 			$pageLink = WikiMap::makeForeignLink( $row->afl_wiki, $row->afl_title );
-
-			if ( $row->afl_rev_id ) {
-				$diffUrl = WikiMap::getForeignURL( $row->afl_wiki, $row->afl_title );
-				$diffUrl = wfAppendQuery( $diffUrl,
-					array( 'diff' => 'prev', 'oldid' => $row->afl_rev_id ) );
-				
-				$diffLink = Linker::makeExternalLink( $diffUrl,
-					wfMessage('abusefilter-log-diff')->parse() );
-			}
 		}
 
 		if ( !$row->afl_wiki ) {
 			// Local user
-			$userLink = Linker::userLink( $row->afl_user, $row->afl_user_text ) .
-					Linker::userToolLinks( $row->afl_user, $row->afl_user_text );
+			$userLink = $sk->userLink( $row->afl_user, $row->afl_user_text ) .
+				$sk->userToolLinks( $row->afl_user, $row->afl_user_text );
 		} else {
 			$userLink = WikiMap::foreignUserLink( $row->afl_wiki, $row->afl_user_text );
 			$userLink .= ' (' . WikiMap::getWikiName( $row->afl_wiki ) . ')';
@@ -458,11 +420,11 @@ class SpecialAbuseLog extends SpecialPage {
 
 		if ( self::canSeeDetails( $row->afl_filter, $filter_hidden ) ) {
 			$examineTitle = SpecialPage::getTitleFor( 'AbuseFilter', 'examine/log/' . $row->afl_id );
-			$detailsLink = Linker::makeKnownLinkObj(
+			$detailsLink = $sk->makeKnownLinkObj(
 				$this->getTitle($row->afl_id),
 				wfMsg( 'abusefilter-log-detailslink' )
 			);
-			$examineLink = Linker::link(
+			$examineLink = $sk->link(
 				$examineTitle,
 				wfMsgExt( 'abusefilter-changeslist-examine', 'parseinline' ),
 				array()
@@ -471,11 +433,8 @@ class SpecialAbuseLog extends SpecialPage {
 			$actionLinks[] = $detailsLink;
 			$actionLinks[] = $examineLink;
 
-			if ($diffLink)
-				$actionLinks[] = $diffLink;
-
 			if ( $user->isAllowed( 'abusefilter-hide-log' ) ) {
-				$hideLink = Linker::link(
+				$hideLink = $sk->link(
 						$this->getTitle(),
 						wfMsg( 'abusefilter-log-hidelink' ),
 						array(),
@@ -492,11 +451,11 @@ class SpecialAbuseLog extends SpecialPage {
 											'Special:AbuseFilter/' . $globalIndex );
 
 				$linkText = wfMessage( 'abusefilter-log-detailedentry-global' )->numParams( $globalIndex )->escaped();
-				$filterLink = Linker::makeExternalLink( $globalURL, $linkText );
+				$filterLink = $sk->makeExternalLink( $globalURL, $linkText );
 			} else {
 				$title = SpecialPage::getTitleFor( 'AbuseFilter', $row->afl_filter );
 				$linkText = wfMessage( 'abusefilter-log-detailedentry-local' )->numParams( $row->afl_filter )->escaped();
-				$filterLink = Linker::link( $title, $linkText );
+				$filterLink = $sk->link( $title, $linkText );
 			}
 			$description = wfMsgExt( 'abusefilter-log-detailedentry-meta',
 				array( 'parseinline', 'replaceafter' ),
@@ -519,19 +478,16 @@ class SpecialAbuseLog extends SpecialPage {
 					$timestamp,
 					$userLink,
 					$row->afl_action,
-					Linker::link( $title ),
+					$sk->link( $title ),
 					$actions_taken,
 					$parsed_comments
 				)
 			);
 		}
 
-		if ( $this->isHidden($row) === true ) {
+		if ( $row->afl_deleted ) {
 			$description .= ' '.
 				wfMsgExt( 'abusefilter-log-hidden', 'parseinline' );
-		} elseif ( $this->isHidden($row) === 'implicit' ) {
-			$description .= ' '.
-				wfMsgExt( 'abusefilter-log-hidden-implicit', 'parseinline' );
 		}
 
 		return $li ? Xml::tags( 'li', null, $description ) : $description;
@@ -551,25 +507,6 @@ class SpecialAbuseLog extends SpecialPage {
 
 		return $notDeletedCond;
 	}
-
-	/**
-	 * Given a log entry row, decides whether or not it can be viewed by the public.
-	 *
-	 * @param $row object The abuse_filter_log row object.
-	 * 
-	 * @return Mixed true if the item is explicitly hidden, false if it is not.
-	 * 	The string 'implicit' if it is hidden because the corresponding revision is hidden.
-	 */
-	public static function isHidden( $row ) {
-		if ( $row->afl_rev_id ) {
-			$revision = Revision::newFromId( $row->afl_rev_id );
-			if ( $revision && $revision->getVisibility() != 0 ) {
-				return 'implicit';
-			}
-		}
-
-		return (bool)$row->afl_deleted;
-	}
 }
 
 class AbuseLogPager extends ReverseChronologicalPager {
@@ -584,11 +521,6 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	 */
 	public $mConds;
 
-	/**
-	 * @param $form
-	 * @param array $conds
-	 * @param bool $details
-	 */
 	function __construct( $form, $conds = array(), $details = false ) {
 		$this->mForm = $form;
 		$this->mConds = $conds;

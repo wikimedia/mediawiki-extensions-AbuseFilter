@@ -120,10 +120,6 @@ class AbuseFilter {
 	);
 	public static $editboxName = null;
 
-	/**
-	 * @param $context IContextSource
-	 * @param $pageType
-	 */
 	public static function addNavigationLinks( IContextSource $context, $pageType ) {
 		$linkDefs = array(
 			'home' => 'Special:AbuseFilter',
@@ -163,7 +159,7 @@ class AbuseFilter {
 			if ( $name == $pageType ) {
 				$links[] = Xml::tags( 'strong', null, $msg );
 			} else {
-				$links[] = Linker::link( $title, $msg );
+				$links[] = $context->getSkin()->link( $title, $msg );
 			}
 		}
 
@@ -196,9 +192,6 @@ class AbuseFilter {
 		return $vars;
 	}
 
-	/**
-	 * @return array
-	 */
 	public static function getBuilderValues() {
 		static $realValues = null;
 
@@ -212,10 +205,6 @@ class AbuseFilter {
 		return $realValues;
 	}
 
-	/**
-	 * @param $filter
-	 * @return bool
-	 */
 	public static function filterHidden( $filter ) {
 		$globalIndex = self::decodeGlobalName( $filter );
 		if ( $globalIndex ) {
@@ -237,10 +226,6 @@ class AbuseFilter {
 		return $hidden ? true : false;
 	}
 
-	/**
-	 * @param $val int
-	 * @throws MWException
-	 */
 	public static function triggerLimiter( $val = 1 ) {
 		self::$condCount += $val;
 
@@ -257,8 +242,9 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $title Title
-	 * @param $prefix
+	 * @static
+	 * @param  $title Title
+	 * @param  $prefix
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function generateTitleVars( $title, $prefix ) {
@@ -294,10 +280,6 @@ class AbuseFilter {
 		return $vars;
 	}
 
-	/**
-	 * @param $filter
-	 * @return mixed
-	 */
 	public static function checkSyntax( $filter ) {
 		global $wgAbuseFilterParserClass;
 
@@ -306,11 +288,6 @@ class AbuseFilter {
 		return $parser->checkSyntax( $filter );
 	}
 
-	/**
-	 * @param $expr
-	 * @param array $vars
-	 * @return string
-	 */
 	public static function evaluateExpression( $expr, $vars = array() ) {
 		global $wgAbuseFilterParserClass;
 
@@ -325,20 +302,8 @@ class AbuseFilter {
 		return $parser->evaluateExpression( $expr );
 	}
 
-	/**
-	 * @param $conds
-	 * @param $vars
-	 * @param $ignoreError bool
-	 * @param $keepVars string
-	 * @return bool
-	 * @throws Exception
-	 */
-	public static function checkConditions(
-		$conds,
-		$vars,
-		$ignoreError = true,
-		$keepVars = 'resetvars'
-	) {
+	public static function checkConditions( $conds, $vars, $ignoreError = true,
+											$keepVars = 'resetvars' ) {
 		global $wgAbuseFilterParserClass;
 
 		static $parser;
@@ -423,14 +388,6 @@ class AbuseFilter {
 		return $filter_matched;
 	}
 
-	/**
-	 * @static
-	 * @param $row
-	 * @param $vars
-	 * @param $profile bool
-	 * @param $prefix string
-	 * @return bool
-	 */
 	public static function checkFilter( $row, $vars, $profile = false, $prefix = '' ) {
 		$filterID = $prefix . $row->af_id;
 
@@ -444,12 +401,8 @@ class AbuseFilter {
 
 		// Check conditions...
 		$pattern = trim( $row->af_pattern );
-		if ( self::checkConditions(
-			$pattern,
-			$vars,
-			true /* ignore errors */,
-			'keepvars'
-		) ) {
+		if ( self::checkConditions( $pattern, $vars, true /* ignore errors */,
+									'keepvars' ) ) {
 			// Record match.
 			$result = true;
 		} else {
@@ -470,9 +423,6 @@ class AbuseFilter {
 		return $result;
 	}
 
-	/**
-	 * @param $filter
-	 */
 	public static function resetFilterProfile( $filter ) {
 		global $wgMemc;
 		$countKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'count' );
@@ -482,11 +432,6 @@ class AbuseFilter {
 		$wgMemc->delete( $totalKey );
 	}
 
-	/**
-	 * @param $filter
-	 * @param $time
-	 * @param $conds
-	 */
 	public static function recordProfilingResult( $filter, $time, $conds ) {
 		global $wgMemc;
 
@@ -509,10 +454,6 @@ class AbuseFilter {
 		}
 	}
 
-	/**
-	 * @param $filter
-	 * @return array
-	 */
 	public static function getFilterProfile( $filter ) {
 		global $wgMemc;
 
@@ -542,7 +483,7 @@ class AbuseFilter {
 	 *
 	 * @param $filter string
 	 *
-	 * @return string|bool
+	 * @return string|false
 	 */
 	public static function decodeGlobalName( $filter ) {
 		if ( strpos( $filter, 'global-' ) == 0 ) {
@@ -552,10 +493,6 @@ class AbuseFilter {
 		return false;
 	}
 
-	/**
-	 * @param $filters array
-	 * @return array
-	 */
 	public static function getConsequencesForFilters( $filters ) {
 		$globalFilters = array();
 		$localFilters = array();
@@ -591,12 +528,6 @@ class AbuseFilter {
 		return $consequences;
 	}
 
-	/**
-	 * @param $dbr DatabaseBase
-	 * @param $filters array
-	 * @param $prefix string
-	 * @return array
-	 */
 	public static function loadConsequencesFromDB( $dbr, $filters, $prefix = '' ) {
 		$actionsByFilter = array();
 		foreach ( $filters as $filter ) {
@@ -731,11 +662,6 @@ class AbuseFilter {
 		return array( $actionsTaken, implode( "\n", $messages ) );
 	}
 
-	/**
-	 * @param $vars AbuseFilterVariableHolder
-	 * @param $title
-	 * @return bool
-	 */
 	public static function filterAction( $vars, $title ) {
 		global $wgUser, $wgTitle;
 
@@ -756,10 +682,8 @@ class AbuseFilter {
 
 		$filter_matched = self::checkAllFilters( $vars );
 
-		$matched_filters = array_keys( array_filter( $filter_matched ) );
-
 		// Short-cut any remaining code if no filters were hit.
-		if ( count( $matched_filters ) == 0 ) {
+		if ( count( array_filter( $filter_matched ) ) == 0 ) {
 			wfProfileOut( __METHOD__ );
 			return true;
 		}
@@ -767,7 +691,7 @@ class AbuseFilter {
 		wfProfileIn( __METHOD__ . '-block' );
 
 		list( $actions_taken, $error_msg ) = self::executeFilterActions(
-			$matched_filters, $title, $vars );
+			array_keys( array_filter( $filter_matched ) ), $title, $vars );
 
 		$action = $vars->getVar( 'ACTION' )->toString();
 
@@ -797,13 +721,6 @@ class AbuseFilter {
 		return $error_msg;
 	}
 
-	/**
-	 * @param $actions_taken
-	 * @param $log_template
-	 * @param $action
-	 * @param $vars AbuseFilterVariableHolder
-	 * @return mixed
-	 */
 	public static function addLogEntries( $actions_taken, $log_template, $action, $vars ) {
 		wfProfileIn( __METHOD__ );
 		$dbw = wfGetDB( DB_MASTER );
@@ -866,11 +783,7 @@ class AbuseFilter {
 		// Increment trigger counter
 		$wgMemc->incr( self::filterMatchesKey() );
 
-		$local_log_ids = array();
-		foreach( $log_rows as $row ) {
-			$dbw->insert( 'abuse_filter_log', $row, __METHOD__ );
-			$local_log_ids[] = $dbw->insertId();
-		}
+		$dbw->insert( 'abuse_filter_log', $log_rows, __METHOD__ );
 
 		if ( count( $logged_local_filters ) ) {
 			// Update hit-counter.
@@ -880,8 +793,6 @@ class AbuseFilter {
 				__METHOD__
 			);
 		}
-
-		$global_log_ids = array();
 
 		// Global stuff
 		if ( count( $logged_global_filters ) ) {
@@ -895,9 +806,7 @@ class AbuseFilter {
 			global $wgAbuseFilterCentralDB;
 			$fdb = wfGetDB( DB_MASTER, array(), $wgAbuseFilterCentralDB );
 
-			foreach( $central_log_rows as $row ) {
-				$fdb->insert( 'abuse_filter_log', $row, __METHOD__ );
-			}
+			$fdb->insert( 'abuse_filter_log', $central_log_rows, __METHOD__ );
 
 			$fdb->update( 'abuse_filter',
 				array( 'af_hit_count=af_hit_count+1' ),
@@ -905,9 +814,6 @@ class AbuseFilter {
 				__METHOD__
 			);
 		}
-
-		$vars->setVar( 'global_log_ids', $global_log_ids );
-		$vars->setVar( 'local_log_ids', $local_log_ids );
 
 		// Check for emergency disabling.
 		$total = $wgMemc->get( AbuseFilter::filterUsedKey() );
@@ -990,7 +896,7 @@ class AbuseFilter {
 	 *
 	 * @param $stored_dump
 	 *
-	 * @return object|AbuseFilterVariableHolder
+	 * @return object
 	 */
 	public static function loadVarDump( $stored_dump ) {
 		wfProfileIn( __METHOD__ );
@@ -1034,14 +940,6 @@ class AbuseFilter {
 		return $obj;
 	}
 
-	/**
-	 * @param $action string
-	 * @param $parameters array
-	 * @param $title Title
-	 * @param $vars AbuseFilterVariableHolder
-	 * @param $rule_desc
-	 * @return string
-	 */
 	public static function takeConsequenceAction( $action, $parameters, $title,
 		$vars, $rule_desc )
 	{
@@ -1201,14 +1099,6 @@ class AbuseFilter {
 		return $display;
 	}
 
-	/**
-	 * @param $throttleId
-	 * @param $types
-	 * @param $title
-	 * @param $rateCount
-	 * @param $ratePeriod
-	 * @return bool
-	 */
 	public static function isThrottled( $throttleId, $types, $title, $rateCount, $ratePeriod ) {
 		global $wgMemc;
 
@@ -1237,11 +1127,6 @@ class AbuseFilter {
 		return false; // NOT THROTTLED
 	}
 
-	/**
-	 * @param $type
-	 * @param $title Title
-	 * @return Int|string
-	 */
 	public static function throttleIdentifier( $type, $title ) {
 		global $wgUser;
 
@@ -1272,12 +1157,6 @@ class AbuseFilter {
 		return $identifier;
 	}
 
-	/**
-	 * @param $throttleId
-	 * @param $type
-	 * @param $title Title
-	 * @return String
-	 */
 	public static function throttleKey( $throttleId, $type, $title ) {
 		$types = explode( ',', $type );
 
@@ -1292,17 +1171,10 @@ class AbuseFilter {
 		return wfMemcKey( 'abusefilter', 'throttle', $throttleId, $type, $identifier );
 	}
 
-	/**
-	 * @param $user User
-	 * @return String
-	 */
 	public static function autoPromoteBlockKey( $user ) {
 		return wfMemcKey( 'abusefilter', 'block-autopromote', $user->getId() );
 	}
 
-	/**
-	 * @param $filters
-	 */
 	public static function recordStats( $filters ) {
 		global $wgAbuseFilterConditionLimit, $wgMemc;
 
@@ -1341,10 +1213,6 @@ class AbuseFilter {
 		wfProfileOut( __METHOD__ );
 	}
 
-	/**
-	 * @param $filters
-	 * @param $total
-	 */
 	public static function checkEmergencyDisable( $filters, $total ) {
 		global $wgAbuseFilterEmergencyDisableThreshold, $wgAbuseFilterEmergencyDisableCount,
 			$wgAbuseFilterEmergencyDisableAge, $wgMemc;
@@ -1383,31 +1251,18 @@ class AbuseFilter {
 		}
 	}
 
-	/**
-	 * @return String
-	 */
 	public static function filterLimitReachedKey() {
 		return wfMemcKey( 'abusefilter', 'stats', 'overflow' );
 	}
 
-	/**
-	 * @return String
-	 */
 	public static function filterUsedKey() {
 		return wfMemcKey( 'abusefilter', 'stats', 'total' );
 	}
 
-	/**
-	 * @param $filter
-	 * @return String
-	 */
 	public static function filterMatchesKey( $filter = null ) {
 		return wfMemcKey( 'abusefilter', 'stats', 'matches', $filter );
 	}
 
-	/**
-	 * @return User
-	 */
 	public static function getFilterUser() {
 		$user = User::newFromName( wfMsgForContent( 'abusefilter-blocker' ) );
 		$user->load();
@@ -1442,7 +1297,6 @@ class AbuseFilter {
 	 * @param $textName String
 	 * @param $addResultDiv Boolean
 	 * @param $canEdit Boolean
-	 * @return string
 	 */
 	static function buildEditBox( $rules, $textName = 'wpFilterRules', $addResultDiv = true,
 									$canEdit = true ) {
@@ -1567,10 +1421,6 @@ class AbuseFilter {
 		return array_unique( $differences );
 	}
 
-	/**
-	 * @param $row
-	 * @return array
-	 */
 	static function translateFromHistory( $row ) {
 		# Translate into an abuse_filter row with some black magic.
 		# This is ever so slightly evil!
@@ -1606,20 +1456,12 @@ class AbuseFilter {
 		return array( $af_row, $actions_output );
 	}
 
-	/**
-	 * @param $action string
-	 * @return String
-	 */
 	static function getActionDisplay( $action ) {
 		$display = wfMsg( "abusefilter-action-$action" );
 		$display = wfEmptyMsg( "abusefilter-action-$action", $display ) ? $action : $display;
 		return $display;
 	}
 
-	/**
-	 * @param $row
-	 * @return AbuseFilterVariableHolder|null
-	 */
 	public static function getVarsFromRCRow( $row ) {
 		if ( $row->rc_this_oldid ) {
 			// It's an edit.
@@ -1639,10 +1481,6 @@ class AbuseFilter {
 		return $vars;
 	}
 
-	/**
-	 * @param $row
-	 * @return AbuseFilterVariableHolder
-	 */
 	public static function getCreateVarsFromRCRow( $row ) {
 		$vars = new AbuseFilterVariableHolder;
 
@@ -1659,10 +1497,6 @@ class AbuseFilter {
 		return $vars;
 	}
 
-	/**
-	 * @param $row
-	 * @return AbuseFilterVariableHolder
-	 */
 	public static function getEditVarsFromRCRow( $row ) {
 		$vars = new AbuseFilterVariableHolder;
 		$title = Title::makeTitle( $row->rc_namespace, $row->rc_title );
@@ -1696,10 +1530,6 @@ class AbuseFilter {
 		return $vars;
 	}
 
-	/**
-	 * @param $row
-	 * @return AbuseFilterVariableHolder
-	 */
 	public static function getMoveVarsFromRCRow( $row ) {
 		$vars = new AbuseFilterVariableHolder;
 
@@ -1729,8 +1559,8 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $title Title
-	 * @param $article Array
+	 * @static
+	 * @param  $title Title
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function getEditVars( $title, $article = null ) {
@@ -1789,10 +1619,6 @@ class AbuseFilter {
 		return $vars;
 	}
 
-	/**
-	 * @param $vars AbuseFilterVariableHolder
-	 * @return string
-	 */
 	public static function buildVarDumpTable( $vars ) {
 		// Export all values
 		if ( $vars instanceof AbuseFilterVariableHolder ) {
@@ -1846,32 +1672,20 @@ class AbuseFilter {
 		return $output;
 	}
 
-	/**
-	 * @param $page
-	 * @param $type
-	 * @param $title Title
-	 * @param $sk Skin
-	 * @param $args array
-	 * @return String
-	 */
 	static function modifyActionText( $page, $type, $title, $sk, $args ) {
 		list( $history_id, $filter_id ) = $args;
 
-		$filter_link = Linker::link( $title );
+		$filter_link = $sk ? $sk->link( $title ) : $title->getCanonicalURL();
 
 		$details_title = SpecialPage::getTitleFor( 'AbuseFilter', "history/$filter_id/diff/prev/$history_id" );
 		$details_text = wfMsgExt( 'abusefilter-log-detailslink', 'parseinline' );
-		$details_link = Linker::link( $details_title, $details_text );
+		$details_link =
+			$sk ? $sk->link( $details_title, $details_text ) : $details_title->getCanonicalURL();
 
 		return wfMsgExt( 'abusefilter-log-entry-modify',
 			array( 'parseinline', 'replaceafter' ), array( $filter_link, $details_link ) );
 	}
 
-	/**
-	 * @param $action
-	 * @param $parameters
-	 * @return String
-	 */
 	static function formatAction( $action, $parameters ) {
 		global $wgLang;
 		if ( count( $parameters ) == 0 ) {
@@ -1884,10 +1698,6 @@ class AbuseFilter {
 		return $displayAction;
 	}
 
-	/**
-	 * @param $value array
-	 * @return string
-	 */
 	static function formatFlags( $value ) {
 		global $wgLang;
 		$flags = array_filter( explode( ',', $value ) );
@@ -1898,9 +1708,6 @@ class AbuseFilter {
 		return $wgLang->commaList( $flags_display );
 	}
 
-	/**
-	 * @param $data string
-	 */
 	static function sendToUDP( $data ) {
 		global $wgAbuseFilterUDPPrefix, $wgAbuseFilterUDPAddress, $wgAbuseFilterUDPPort;
 
@@ -1912,15 +1719,11 @@ class AbuseFilter {
 		);
 	}
 
-	/**
-	 * @param $filterID
-	 * @return bool|mixed|string
-	 */
 	static function getGlobalFilterDescription( $filterID ) {
 		global $wgAbuseFilterCentralDB;
 
 		if ( !$wgAbuseFilterCentralDB ) {
-			return '';
+			return;
 		}
 
 		$fdb = wfGetDB( DB_SLAVE, array(), $wgAbuseFilterCentralDB );

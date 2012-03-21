@@ -9,6 +9,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 		$user = $this->getUser();
 		$out = $this->getOutput();
+		$sk = $this->getSkin();
 
 		if ( !$user->isAllowed( 'abusefilter-revert' ) ) {
 			throw new PermissionsError( 'abusefilter-revert' );
@@ -66,11 +67,11 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 					array( 'parseinline', 'replaceafter' ),
 					array(
 						$lang->timeanddate( $result['timestamp'], true ),
-						Linker::userLink( $result['userid'], $result['user'] ),
+						$sk->userLink( $result['userid'], $result['user'] ),
 						$result['action'],
-						Linker::link( $result['title'] ),
+						$sk->link( $result['title'] ),
 						$lang->commaList( $displayActions ),
-						Linker::link(
+						$sk->link(
 							SpecialPage::getTitleFor( 'AbuseLog' ),
 							wfMsgNoTrans( 'abusefilter-log-detailslink' ),
 							array(),
@@ -89,7 +90,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				Html::hidden( 'title', $this->getTitle( "revert/$filter" )->getPrefixedText() ) .
 				Html::hidden( 'wpPeriodStart', $this->origPeriodStart ) .
 				Html::hidden( 'wpPeriodEnd', $this->origPeriodEnd ) .
-				Xml::inputLabel(
+				Html::inputLabel(
 					wfMsg( 'abusefilter-revert-reasonfield' ),
 					'wpReason', 'wpReason', 45
 				) .

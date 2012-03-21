@@ -53,12 +53,6 @@ abstract class AbuseFilterView extends ContextSource {
 }
 
 class AbuseFilterChangesList extends OldChangesList {
-
-	/**
-	 * @param $s
-	 * @param $rc
-	 * @param $classes array
-	 */
 	public function insertExtra( &$s, &$rc, &$classes ) {
 		$examineParams = empty( $rc->examineParams ) ? array() : $rc->examineParams;
 

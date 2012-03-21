@@ -73,7 +73,6 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$this->addFieldsIf( 'afl_var_dump', $fld_details );
 		$this->addFieldsIf( 'afl_actions', $fld_result );
 		$this->addFieldsIf( 'afl_deleted', $fld_hidden );
-		$this->addFields( 'afl_rev_id' );
 
 		if ( $fld_filter ) {
 			$this->addTables( 'abuse_filter' );
@@ -110,11 +109,6 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				// We've had enough
 				$this->setContinueEnumParameter( 'start', wfTimestamp( TS_ISO_8601, $row->afl_timestamp ) );
 				break;
-			}
-			if ( SpecialAbuseLog::isHidden($row) &&
-				!SpecialAbuseLog::canSeeHidden( $user )
-			) {
-				continue;
 			}
 			$entry = array();
 			if ( $fld_ids ) {
@@ -153,10 +147,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			}
 
 			if ( $fld_hidden ) {
-				$val = SpecialAbuseLog::isHidden($row);
-				if ( $val ) {
-					$entry['hidden'] = $val;
-				}
+				$entry['hidden'] = $row->afl_deleted;
 			}
 
 			if ( $entry ) {

@@ -118,6 +118,7 @@ class AbuseFilterHistoryPager extends TablePager {
 	}
 
 	function formatValue( $name, $value ) {
+		$sk = $this->getSkin();
 		$lang = $this->getLanguage();
 
 		$row = $this->mCurrentRow;
@@ -129,12 +130,12 @@ class AbuseFilterHistoryPager extends TablePager {
 			case 'afh_timestamp':
 				$title = SpecialPage::getTitleFor( 'AbuseFilter',
 					'history/' . $row->afh_filter . '/item/' . $row->afh_id );
-				$formatted = Linker::link( $title, $lang->timeanddate( $row->afh_timestamp, true ) );
+				$formatted = $sk->link( $title, $lang->timeanddate( $row->afh_timestamp, true ) );
 				break;
 			case 'afh_user_text':
 				$formatted =
-					Linker::userLink( $row->afh_user, $row->afh_user_text ) . ' ' .
-					Linker::userToolLinks( $row->afh_user, $row->afh_user_text );
+					$sk->userLink( $row->afh_user, $row->afh_user_text ) . ' ' .
+					$sk->userToolLinks( $row->afh_user, $row->afh_user_text );
 				break;
 			case 'afh_public_comments':
 				$formatted = $this->getOutput()->parse( $value );
@@ -157,12 +158,12 @@ class AbuseFilterHistoryPager extends TablePager {
 				break;
 			case 'afh_filter':
 				$title = $this->mPage->getTitle( strval( $value ) );
-				$formatted = Linker::link( $title, $value );
+				$formatted = $sk->link( $title, $value );
 				break;
 			case 'afh_id':
 				$title = $this->mPage->getTitle(
 							'history/' . $row->afh_filter . "/diff/prev/$value" );
-				$formatted = Linker::link( $title, wfMsgExt( 'abusefilter-history-diff', 'parseinline' ) );
+				$formatted = $sk->link( $title, wfMsgExt( 'abusefilter-history-diff', 'parseinline' ) );
 				break;
 			default:
 				$formatted = "Unable to format $name";
