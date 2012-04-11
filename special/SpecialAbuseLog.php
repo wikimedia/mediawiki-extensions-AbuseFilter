@@ -394,7 +394,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$title = Title::makeTitle( $row->afl_namespace, $row->afl_title );
 
 		if ( !$row->afl_wiki ) {
-			$pageLink = $sk->link( $title );
+			$pageLink = Linker::link( $title );
 		} else {
 			$pageLink = WikiMap::makeForeignLink( $row->afl_wiki, $row->afl_title );
 		}
