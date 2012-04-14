@@ -248,7 +248,7 @@ class AbuseFilterHooks {
 			$updater->addExtensionUpdate( array( 'addPgField', 'abuse_filter', 'af_global', 'SMALLINT NOT NULL DEFAULT 0' ) );
 			$updater->addExtensionUpdate( array( 'addPgField', 'abuse_filter_log', 'afl_wiki', 'TEXT' ) );
 			$updater->addExtensionUpdate( array( 'addPgField', 'abuse_filter_log', 'afl_deleted', 'SMALLINT' ) );
-			$updater->addExtensionUpdate( array( 'changeField', 'abuse_filter_log', 'afl_filter', 'TEXT' ) );
+			$updater->addExtensionUpdate( array( 'changeField', 'abuse_filter_log', 'afl_filter', 'TEXT', '' ) );
 			$updater->addExtensionUpdate( array( 'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_ip', "(afl_ip)" ) );
 		}
 
