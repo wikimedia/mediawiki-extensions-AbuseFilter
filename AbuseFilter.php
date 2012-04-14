@@ -32,6 +32,7 @@ $wgAutoloadClasses['AbuseFilterParser'] = "$dir/AbuseFilter.parser.php";
 $wgAutoloadClasses['AbuseFilterHooks'] = "$dir/AbuseFilter.hooks.php";
 $wgAutoloadClasses['SpecialAbuseLog'] = "$dir/special/SpecialAbuseLog.php";
 $wgAutoloadClasses['SpecialAbuseFilter'] = "$dir/special/SpecialAbuseFilter.php";
+$wgAutoloadClasses['AbuseLogHitFormatter'] = "$dir/AbuseLogHitFormatter.php";
 
 $wgAutoloadClasses['AbuseFilterViewList'] = "$dir/Views/AbuseFilterViewList.php";
 $wgAutoloadClasses['AbuseFilterView'] = "$dir/Views/AbuseFilterView.php";
@@ -94,6 +95,7 @@ $wgLogTypes[] = 'abusefilter';
 $wgLogNames['abusefilter']          = 'abusefilter-log-name';
 $wgLogHeaders['abusefilter']        = 'abusefilter-log-header';
 $wgLogActionsHandlers['abusefilter/modify'] = array( 'AbuseFilter', 'modifyActionText' );
+$wgLogActionsHandlers['abusefilter/hit'] = 'AbuseLogHitFormatter';
 $wgLogActions['suppress/hide-afl'] = 'abusefilter-logentry-suppress';
 $wgLogActions['suppress/unhide-afl'] = 'abusefilter-logentry-unsuppress';
 
@@ -155,10 +157,8 @@ $wgAbuseFilterParserClass = 'AbuseFilterParser';
 
 $wgAbuseFilterRestrictedActions = array( 'block', 'degroup' );
 
-// UDP configuration
-$wgAbuseFilterUDPPrefix = 'abusefilter:';
-$wgAbuseFilterUDPAddress = null;
-$wgAbuseFilterUDPPort = null;
+// Abuse filter hit notification (available options: rc, udp, rcandudp)
+$wgAbuseFilterNotifications = false;
 
 // Centralised filters
 $wgAbuseFilterCentralDB = null;
