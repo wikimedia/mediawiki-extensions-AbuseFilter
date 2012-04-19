@@ -460,7 +460,7 @@ For full details, see [[Special:AbuseFilter/history|the list]] of recent filter 
 
 	// Import interface
 	'abusefilter-import-intro' => 'You can use this interface to import filters from other wikis.
-On the source wiki, click "{{int:abusefilter-edit-export}}" under "{{int:abusefilter-tools-subtitle}}" on the editing interface.
+On the source wiki, click "{{int:abusefilter-edit-export}}" under "{{int:abusefilter-edit-tools}}" on the editing interface.
 Copy from the textbox that appears, and paste it into this textbox, then click "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Import data',
 );
@@ -843,7 +843,7 @@ This is also used in {{msg-mw|Abusefilter-revert-preview-intro}}. When changing 
 * $1 is new link or old link. Link description is a time stamp
 * $2 is new user link or old user link. Link description is a user name',
 	'abusefilter-diff-info' => "Header for the box containing the basic information about a user account, displayed on the 'user profile' tab of the [[Special:Preferences|user preferences]] special page.",
-	'abusefilter-import-intro' => "Do not ''translate'' <nowiki>{{int:abusefilter-edit-export}}</nowiki>, <nowiki>{{int:abusefilter-tools-subtitle}}</nowiki>, and <nowiki>{{int:abusefilter-import-submit}}</nowiki> unless you absolute must substitute any of them.",
+	'abusefilter-import-intro' => "Do not ''translate'' <nowiki>{{int:abusefilter-edit-export}}</nowiki>, <nowiki>{{int:abusefilter-edit-tools}}</nowiki>, and <nowiki>{{int:abusefilter-import-submit}}</nowiki> unless you absolute must substitute any of them.",
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -1232,7 +1232,7 @@ $messages['aln'] = array(
 	'abusefilter-diff-pattern' => 'Kushtet Filter',
 	'abusefilter-diff-invalid' => 'Në pamundësi për të shkoj të marr versionet e kërkuar',
 	'abusefilter-diff-backhistory' => 'Kthehu në filtër historisë',
-	'abusefilter-import-intro' => 'Ju mund të përdorni këtë ndërfaqe për të importuar filtra nga wikis tjera. Në burimi wiki, klikoni "{{int:abusefilter-edit-export}}" nën "{{int:abusefilter-tools-subtitle}}" në interface redaktimi. Kopje nga textbox që duket, dhe ngjitur në këtë textbox, pastaj kliko "{{int:abusefilter-import-submit}}".',
+	'abusefilter-import-intro' => 'Ju mund të përdorni këtë ndërfaqe për të importuar filtra nga wikis tjera. Në burimi wiki, klikoni "{{int:abusefilter-edit-export}}" nën "{{int:abusefilter-edit-tools}}" në interface redaktimi. Kopje nga textbox që duket, dhe ngjitur në këtë textbox, pastaj kliko "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Të dhënat e importit',
 );
 
@@ -1672,7 +1672,7 @@ $messages['ar'] = array(
 	'abusefilter-diff-invalid' => 'ليس بالإمكان إحضار النسخ المطلوبة',
 	'abusefilter-diff-backhistory' => 'عودة إلى تاريخ المرشح',
 	'abusefilter-import-intro' => 'يمكنك استخدام هذه الواجهة لاستيراد المرشحات من الويكيات الأخرى.
-في الويكي المصدر، اضغط "{{int:abusefilter-edit-export}}" تحت "{{int:abusefilter-tools-subtitle}}" في واجهة التعديل.
+في الويكي المصدر، اضغط "{{int:abusefilter-edit-export}}" تحت "{{int:abusefilter-edit-tools}}" في واجهة التعديل.
 انسخ من صندوق النص الذي سيظهر، والصقه إلى صندوق النص هذا، ثم اضغط "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'استيراد البيانات',
 );
@@ -2166,7 +2166,7 @@ $messages['arz'] = array(
 	'abusefilter-diff-invalid' => 'ليس بالإمكان إحضار النسخ المطلوبة',
 	'abusefilter-diff-backhistory' => 'عوده إلى تاريخ المرشح',
 	'abusefilter-import-intro' => 'يمكنك استخدام هذه الواجهه لاستيراد المرشحات من الويكيات الأخرى.
-فى الويكى المصدر، اضغط "{{int:abusefilter-edit-export}}" تحت "{{int:abusefilter-tools-subtitle}}" فى واجهه التعديل.
+فى الويكى المصدر، اضغط "{{int:abusefilter-edit-export}}" تحت "{{int:abusefilter-edit-tools}}" فى واجهه التعديل.
 انسخ من صندوق النص الذى سيظهر، والصقه إلى صندوق النص هذا، ثم اضغط "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'استيراد البيانات',
 );
@@ -2921,7 +2921,7 @@ $3 {{PLURAL:$3|аргумент}} көтөлә, $4 бирелгән.',
 	'abusefilter-diff-invalid' => 'Һоратылған өлгөләрҙе алып булмай',
 	'abusefilter-diff-backhistory' => 'Һөҙгөстөң тарихына кире ҡайтырға',
 	'abusefilter-import-intro' => 'Һеҙ был интерфейсты башҡа вики проекттарҙан Һөҙгөстәрҙе индереү өсөн ҡуллана алаһығыҙ.
-Сығанаҡ вики проектта, мөхәррирләү ҡоралының "{{int:abusefilter-tools-subtitle}}" бүлегендә "{{int:abusefilter-edit-export}}" төймәһенә баҫығыҙ.
+Сығанаҡ вики проектта, мөхәррирләү ҡоралының "{{int:abusefilter-edit-tools}}" бүлегендә "{{int:abusefilter-edit-export}}" төймәһенә баҫығыҙ.
 Килеп сыҡҡан юлдың эстәлеген был юлға күсерегеҙ һәм "{{int:abusefilter-import-submit}}" төймәһенә баҫығыҙ.',
 	'abusefilter-import-submit' => 'Мәғлүмәтте индерергә',
 );
@@ -3372,7 +3372,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-diff-invalid' => 'Немагчыма атрымаць запытаныя вэрсіі',
 	'abusefilter-diff-backhistory' => 'Вярнуцца да гісторыі фільтру',
 	'abusefilter-import-intro' => 'Вы можаце выкарыстоўваць гэты інтэрфэйс для імпарту фільтраў зь іншых вікі.
-У крынічнай вікі націсьніце «{{int:abusefilter-edit-export}}» у разьдзеле «{{int:abusefilter-tools-subtitle}}» інтэрфэйсу рэдагаваньня.
+У крынічнай вікі націсьніце «{{int:abusefilter-edit-export}}» у разьдзеле «{{int:abusefilter-edit-tools}}» інтэрфэйсу рэдагаваньня.
 Скапіруйце з узьнікшага тэкставага поля, і ўстаўце у гэта тэкставае поле, потым націсьніце «{{int:abusefilter-import-submit}}»,',
 	'abusefilter-import-submit' => 'Імпартаваць зьвесткі',
 );
@@ -3758,7 +3758,7 @@ $messages['bg'] = array(
 	'abusefilter-diff-invalid' => 'Не е възможно извличане на исканите версии',
 	'abusefilter-diff-backhistory' => 'Връщане към историята на филтъра',
 	'abusefilter-import-intro' => 'Можете да използвате този интерфейс, за да импортирате филтри от други уикита.
-В уикито-източник щракнете връзката "{{int:abusefilter-edit-export}}" под заглавието "{{int:abusefilter-tools-subtitle}}" в интерфейса за редактиране.
+В уикито-източник щракнете връзката "{{int:abusefilter-edit-export}}" под заглавието "{{int:abusefilter-edit-tools}}" в интерфейса за редактиране.
 Копирайте съдържанието от текстовата кутия, която ще се появи, и го поставете в тази текстова кутия. След това щракнете на "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Внасяне на данни',
 );
@@ -4398,7 +4398,7 @@ Evit gouzout hiroc'h, gwelout [[Special:AbuseFilter/history|listenn]] eus kemmo�
 	'abusefilter-diff-invalid' => "Ne c'haller ket adkavout ar stummoù goulennet",
 	'abusefilter-diff-backhistory' => 'Distreiñ da istor ar sil',
 	'abusefilter-import-intro' => 'Gallout a rit implijout an etrefas-mañ evit enporzhiañ siloù diwar wikioù all.
-Er wiki orin, klikit war "{{int:abusefilter-edit-export}}" e-barzh "{{int:abusefilter-tools-subtitle}}" en etrefas aozañ.
+Er wiki orin, klikit war "{{int:abusefilter-edit-export}}" e-barzh "{{int:abusefilter-edit-tools}}" en etrefas aozañ.
 Eilit an takad testenn a teu war-well, ha pegit anezhañ e-barzh an takad testenn-mañ, da heul klikit war "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Enporzhiañ roadennoù',
 );
@@ -4795,7 +4795,7 @@ Za sve detalje, pogledajte [[Special:AbuseFilter/history|spisak]] nedavnih izmje
 	'abusefilter-diff-invalid' => 'Tražene vezije nisu mogle biti učitane',
 	'abusefilter-diff-backhistory' => 'Nazad na historiju filtera',
 	'abusefilter-import-intro' => 'Možete koristiti ovaj interfejs za uvoz filtera sa drugih wikija.
-U izvornoj wiki, kliknite na "{{int:abusefilter-edit-export}}" u meniju "{{int:abusefilter-tools-subtitle}}" u interfejsu uređivanja.
+U izvornoj wiki, kliknite na "{{int:abusefilter-edit-export}}" u meniju "{{int:abusefilter-edit-tools}}" u interfejsu uređivanja.
 Kopirajte iz tekstualne kutije koja se pojavi i zalijepite u ovu kutiju, zatim kliknite na "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'Uvezi podatke',
 );
@@ -5667,7 +5667,7 @@ Podrobnější vysvětlení můžete získat kliknutím na tlačítko „Zkontro
 	'abusefilter-diff-invalid' => 'Nepodařilo se načíst požadované verze',
 	'abusefilter-diff-backhistory' => 'Zpět na historii filtru',
 	'abusefilter-import-intro' => 'Pomocí tohoto rozhraní můžete importovat filtry z jiných wiki.
-Na zdrojové wiki klikněte v editačním rozhraní na „{{int:abusefilter-edit-export}}“ v sekci „{{int:abusefilter-tools-subtitle}}“.
+Na zdrojové wiki klikněte v editačním rozhraní na „{{int:abusefilter-edit-export}}“ v sekci „{{int:abusefilter-edit-tools}}“.
 Zkopírujte si text, který se objeví v rámečku, vložte ho do tohoto formuláře a klikněte na „{{int:abusefilter-import-submit}}“.',
 	'abusefilter-import-submit' => 'Importovat data',
 );
@@ -6525,7 +6525,7 @@ Für genauere Details, siehe [[Special:AbuseFilter/history|die Liste]] der letzt
 	'abusefilter-diff-invalid' => 'Die angeforderte Version kann nicht abgerufen werden',
 	'abusefilter-diff-backhistory' => 'Zurück zur Versionsgeschichte des Filters',
 	'abusefilter-import-intro' => 'Du kannst diese Schnittstelle verwenden, um Filter aus anderen Wikis zu importieren.
-Klicke im Quellwiki auf die Schaltfläche „{{int:abusefilter-edit-export}}“ innerhalb von „{{int:abusefilter-tools-subtitle}}“.
+Klicke im Quellwiki auf die Schaltfläche „{{int:abusefilter-edit-export}}“ innerhalb von „{{int:abusefilter-edit-tools}}“.
 Kopiere den dort erscheinenden Code, füge ihn hier ein und klicke dann auf die Schaltfläche „{{int:abusefilter-import-submit}}“.',
 	'abusefilter-import-submit' => 'Daten importieren',
 );
@@ -6578,7 +6578,7 @@ Bitte überprüfen Sie sie sorgfältig und klicken Sie auf „Bestätigen“, um
 	'abusefilter-revert-success' => 'Sie haben alle Aktionen des Missbrauchsfilters, die aufgrund von [[Special:AbuseFilter/$1|Filter $1]] vorgenommen wurden, rückgängig gemacht.',
 	'abusefilter-test-intro' => 'Mit dieser Seite kann ein Filter probeweise auf die {{PLURAL:$1|letzte Änderung|letzten $1 Änderungen}} angewendet werden.
 Um einen bestehenden Filter zu laden, geben Sie seine Filter-ID in das Feld unterhalb des Bearbeiten-Textfeldes ein und klicken Sie auf den „Laden“-Button.',
-	'abusefilter-import-intro' => 'Sie können diese Schnittstelle verwenden, um Filter aus anderen Wikis zu importieren. Klicken Sie im Quellwiki auf die Schaltfläche „<abusefilter-edit-export>“ innerhalb von „<abusefilter-tools-subtitle>“. Kopieren Sie dort den erscheinenden Code, fügen Sie ihn hier ein und klicken Sie dann auf die Schaltfläche „<abusefilter-import-submit>“.',
+	'abusefilter-import-intro' => 'Sie können diese Schnittstelle verwenden, um Filter aus anderen Wikis zu importieren. Klicken Sie im Quellwiki auf die Schaltfläche „<abusefilter-edit-export>“ innerhalb von „<abusefilter-edit-tools>“. Kopieren Sie dort den erscheinenden Code, fügen Sie ihn hier ein und klicken Sie dann auf die Schaltfläche „<abusefilter-import-submit>“.',
 );
 
 /** Zazaki (Zazaki)
@@ -6985,7 +6985,7 @@ Qe detayanê hemî, bivine [[Special:AbuseFilter/history|liste]]yê vurnayîşê
 	'abusefilter-diff-invalid' => 'Nieşkenî versiyonê ke ti wazeno fetch bike',
 	'abusefilter-diff-backhistory' => 'Tarixê filitreyî reyna şi',
 	'abusefilter-import-intro' => 'Ti eşkeno ser ena ripel de wîkîyî binan ra filitre împort bike.
-Wîkî çimeyî de bine "{{int:abusefilter-tools-subtitle}}" de "{{int:abusefilter-edit-export}}" klik bike.
+Wîkî çimeyî de bine "{{int:abusefilter-edit-tools}}" de "{{int:abusefilter-edit-export}}" klik bike.
 Kutiyê nuştîşî kopye bike u ena kutiyê nuştîş rê na pa u klik bike "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Data împort bike',
 );
@@ -7380,7 +7380,7 @@ Za połne drobnostki glědaj [[Special:AbuseFilter/history|lisćinu]] nejnowšyc
 	'abusefilter-diff-invalid' => 'Njemóžno pominane wersije wobstaraś',
 	'abusefilter-diff-backhistory' => 'Slědk k filtrowym stawiznam',
 	'abusefilter-import-intro' => 'Móžoš toś ten interfejs wužywaś, aby importěrował filtry z drugich wikijow.
-Klikni w žrědłowem wikiju na "{{int:abusefilter-edit-export}}" pód "{{int:abusefilter-tools-subtitle}}" na wobźěłowańskem interfejsu. Kopěruj z tekstowego póla, kótarež se pokazujo do toś togo tekstowego póla a klikni pótom na "{{int:abusefilter-import-submit}}",',
+Klikni w žrědłowem wikiju na "{{int:abusefilter-edit-export}}" pód "{{int:abusefilter-edit-tools}}" na wobźěłowańskem interfejsu. Kopěruj z tekstowego póla, kótarež se pokazujo do toś togo tekstowego póla a klikni pótom na "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'Daty importěrowaś',
 );
 
@@ -7838,7 +7838,7 @@ $3 {{PLURAL:$3|αναμενόμενο κατηγορούμενο|αναμενό�
 	'abusefilter-diff-invalid' => 'Αδύνατη η εξαγωγή των ζητουμένων εκδοχών',
 	'abusefilter-diff-backhistory' => 'Πίσω στο ιστορικό φίλτρου',
 	'abusefilter-import-intro' => 'Μπορείτε να χρησιμοποιήσετε αυτή την επιφάνεια για να εισάγετε φίλτρα από άλλα βίκι.
-Στο βίκι-πηγή, πατήστε "{{int:abusefilter-edit-export}}" κάτω από "{{int:abusefilter-tools-subtitle}}" στην επιφάνεια επεξεργασίας.
+Στο βίκι-πηγή, πατήστε "{{int:abusefilter-edit-export}}" κάτω από "{{int:abusefilter-edit-tools}}" στην επιφάνεια επεξεργασίας.
 Αντιγράψτε από το κουτί κειμένου που εμφανίζεται, και επικολλήστε το σε αυτό το κουτί κειμένου, και πατήστε "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Εισαγωγή δεδομένων',
 );
@@ -8244,7 +8244,7 @@ Por plenaj detaloj, vidu [[Special:AbuseFilter/history|la liston]] de lastaj fil
 	'abusefilter-diff-invalid' => 'Ne eblas akiri la petitajn versiojn',
 	'abusefilter-diff-backhistory' => 'Reiri al filtrila historio',
 	'abusefilter-import-intro' => 'Vi povas uzi ĉi tiun interfacon por importi filtrilojn de aliaj vikioj.
-En la fonta vikio, klaku "{{int:abusefilter-edit-export}}" sub "{{int:abusefilter-tools-subtitle}}" en la redakta interfaco.
+En la fonta vikio, klaku "{{int:abusefilter-edit-export}}" sub "{{int:abusefilter-edit-tools}}" en la redakta interfaco.
 Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Importi datenojn',
 );
@@ -8665,7 +8665,7 @@ Para detalles completos, ver [[Special:AbuseFilter/history|la lista]] de cambios
 	'abusefilter-diff-invalid' => 'Incapaz de traer la versiones solicitadas',
 	'abusefilter-diff-backhistory' => 'Regresar al historial del filtro',
 	'abusefilter-import-intro' => 'Puedes usar esta interfaz para importar filtros de otros wikis.
-En el wiki fuente, pulsa en «{{int:abusefilter-edit-export}}» bajo «{{int:abusefilter-tools-subtitle}}» en la interfaz de edición.
+En el wiki fuente, pulsa en «{{int:abusefilter-edit-export}}» bajo «{{int:abusefilter-edit-tools}}» en la interfaz de edición.
 Copia desde el cuadro de texto que aparece, y pegalo dentro de este cuadro de texto, luego pulsa en «{{int:abusefilter-import-submit}}».',
 	'abusefilter-import-submit' => 'Importar datos',
 );
@@ -9070,7 +9070,7 @@ Lisaselgituse jaoks klõpsa nuppu "Kontrolli süntaksit".',
 	'abusefilter-diff-invalid' => 'Nõutud versioone ei saadud kätte',
 	'abusefilter-diff-backhistory' => 'Naase filtri ajaloo juurde',
 	'abusefilter-import-intro' => 'Selle liidese abil saad teistest vikidest filtreid importida.
-Allikvikis klõpsa redigeerimisliidese asukohas "{{int:abusefilter-tools-subtitle}}" nuppu "{{int:abusefilter-edit-export}}".
+Allikvikis klõpsa redigeerimisliidese asukohas "{{int:abusefilter-edit-tools}}" nuppu "{{int:abusefilter-edit-export}}".
 Kopeeri ilmuva tekstikasti sisu, kleebi see sellesse tekstikasti ja seejärel klõpsa nuppu "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Impordi andmed',
 );
@@ -9655,7 +9655,7 @@ $messages['fa'] = array(
 	'abusefilter-diff-invalid' => 'ناتوان از واکشی نسخهٔ درخواست شده',
 	'abusefilter-diff-backhistory' => 'بازگشت به تاریخچهٔ پالایه',
 	'abusefilter-import-intro' => 'شما می‌توانید از این رابط برای واردکردن پالایه‌ها از دیگر ویکی‌ها استفاده کنید.
-در ویکی مبدأ روی «{{int:abusefilter-edit-export}}» زیر «{{int:abusefilter-tools-subtitle}}» در رابط ویرایشی کلیک کنید.
+در ویکی مبدأ روی «{{int:abusefilter-edit-export}}» زیر «{{int:abusefilter-edit-tools}}» در رابط ویرایشی کلیک کنید.
 از جعبهٔ متنی که نشان داده می‌شود کپی کرده و در این جعبهٔ متن بچسبانید، سپس روی «{{int:abusefilter-import-submit}}» کلیک کنید.',
 	'abusefilter-import-submit' => 'درون‌ریزی اطلاعات',
 );
@@ -10070,7 +10070,7 @@ Lisätietoja saat suodattimen [[Special:AbuseFilter/history|viimeisimpien muutos
 	'abusefilter-diff-invalid' => 'Pyydettyjä versioita ei voitu hakea',
 	'abusefilter-diff-backhistory' => 'Takaisin suodatinhistoriaan',
 	'abusefilter-import-intro' => 'Voit käyttää tätä käyttöliittymää suodattimien tuomiseksi muista wikeistä.
-Napsauta ”{{int:abusefilter-edit-export}}” kohdassa ”{{int:abusefilter-tools-subtitle}}” lähdewikin muokkausnäkymässä.
+Napsauta ”{{int:abusefilter-edit-export}}” kohdassa ”{{int:abusefilter-edit-tools}}” lähdewikin muokkausnäkymässä.
 Kopioi ilmestyvän tekstikentän sisältö ja liitä se tähän tekstikenttään, jonka jälkeen napsauta ”{{int:abusefilter-import-submit}}”.',
 	'abusefilter-import-submit' => 'Tuo tiedot',
 );
@@ -10516,7 +10516,7 @@ Pour plus de détails, voyez [[Special:AbuseFilter/history|la liste]] des modifi
 	'abusefilter-diff-invalid' => 'Impossible de retrouver les versions demandées',
 	'abusefilter-diff-backhistory' => 'Retour à l’historique du filtre',
 	'abusefilter-import-intro' => 'Vous pouvez utiliser cette interface pour importer des filtres en provenance d’autres wikis.
-Sur le wiki d’origine, cliquez sur « {{int:abusefilter-edit-export}} » dans « {{int:abusefilter-tools-subtitle}} » depuis l’interface d’édition.
+Sur le wiki d’origine, cliquez sur « {{int:abusefilter-edit-export}} » dans « {{int:abusefilter-edit-tools}} » depuis l’interface d’édition.
 Copiez la zone de texte qui s’affiche et collez-le dans cette zone de texte, puis cliquez sur « {{int:abusefilter-import-submit}} »,',
 	'abusefilter-import-submit' => 'Importer des données',
 );
@@ -10923,7 +10923,7 @@ Por més de dètalys, vêde la [[Special:AbuseFilter/history|lista]] des dèrri�
 	'abusefilter-diff-invalid' => 'Empossiblo de retrovar les vèrsions demandâs',
 	'abusefilter-diff-backhistory' => 'Retôrn a l’historico du filtro',
 	'abusefilter-import-intro' => 'Vos pouede utilisar cela entèrface por importar des filtros que vegnont d’ôtros vouiquis.
-Sur lo vouiqui d’origina, clicâd dessus « {{int:abusefilter-edit-export}} » dens « {{int:abusefilter-tools-subtitle}} » dês l’entèrface d’èdicion.
+Sur lo vouiqui d’origina, clicâd dessus « {{int:abusefilter-edit-export}} » dens « {{int:abusefilter-edit-tools}} » dês l’entèrface d’èdicion.
 Copiyéd la zona de tèxto que sè montre et pués côlâd-lo dens cela zona de tèxto, et pués clicâd dessus « {{int:abusefilter-import-submit}} ».',
 	'abusefilter-import-submit' => 'Importar des balyês',
 );
@@ -11370,7 +11370,7 @@ Para obter máis detalles, vaia [[Special:AbuseFilter/history|á lista]] dos cam
 	'abusefilter-diff-invalid' => 'Non se poden atopar as versións solicitadas',
 	'abusefilter-diff-backhistory' => 'Volver ao historial do filtro',
 	'abusefilter-import-intro' => 'Pode empregar esta interface para importar filtros doutros wikis.
-No wiki de orixe, prema en "{{int:abusefilter-edit-export}}" baixo a opción "{{int:abusefilter-tools-subtitle}}" na interface de edición.
+No wiki de orixe, prema en "{{int:abusefilter-edit-export}}" baixo a opción "{{int:abusefilter-edit-tools}}" na interface de edición.
 Copie a caixa de texto que aparece e péguea nestoutra caixa de texto, logo prema en "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'Importar os datos',
 );
@@ -11864,7 +11864,7 @@ Fir meh Detail lueg d [[Special:AbuseFilter/history|Lischt vu dr letschte Filter
 	'abusefilter-diff-invalid' => 'Cha di aagforderete Versione nit finde',
 	'abusefilter-diff-backhistory' => 'Zruck zue dr Filtergschicht',
 	'abusefilter-import-intro' => 'Du chasch die Schnittstell bruche go Filter vu andere Wikis importiere.
-Druck im Quällwiki bim Bearbeite uf „{{int:abusefilter-edit-export}}“ unter „{{int:abusefilter-tools-subtitle}}“.
+Druck im Quällwiki bim Bearbeite uf „{{int:abusefilter-edit-export}}“ unter „{{int:abusefilter-edit-tools}}“.
 Kopier de Kode, wu det erschynt, un fieg en do yy, derno druck „{{int:abusefilter-import-submit}}“.',
 	'abusefilter-import-submit' => 'Date importiere',
 );
@@ -12314,7 +12314,7 @@ $messages['he'] = array(
 	'abusefilter-diff-invalid' => 'לא ניתן לקבל את הגרסאות המבוקשות',
 	'abusefilter-diff-backhistory' => 'בחזרה להיסטוריית המסנן',
 	'abusefilter-import-intro' => 'באפשרותכם להשתמש בממשק זה כדי לייבא מסננים מאתרי ויקי אחרים.
-באתר המקור, לחצו על "{{int:abusefilter-edit-export}}" שב"{{int:abusefilter-tools-subtitle}}" בממשק העריכה.
+באתר המקור, לחצו על "{{int:abusefilter-edit-export}}" שב"{{int:abusefilter-edit-tools}}" בממשק העריכה.
 העתיקו מתיבת הטקסט המופיעה שם, הדביקו את הטקסט בתיבת הטקסט הזו, ואז לחצו על "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'ייבוא המידע',
 );
@@ -13087,7 +13087,7 @@ Za detaljnije informacije, vidi [[Special:AbuseFilter/history|popis]] nedavnih i
 	'abusefilter-diff-invalid' => 'Nemoguće je dohvatiti tražene inačice',
 	'abusefilter-diff-backhistory' => 'Natrag na povijest filtra',
 	'abusefilter-import-intro' => 'Možete rabiti ovo sučelje za uvoz filtara s drugih wikija.
-Na izvornoj wiki, kliknite na poveznicu "{{int:abusefilter-edit-export}}" pod "{{int:abusefilter-tools-subtitle}}" na sučelju za uređivanje.
+Na izvornoj wiki, kliknite na poveznicu "{{int:abusefilter-edit-export}}" pod "{{int:abusefilter-edit-tools}}" na sučelju za uređivanje.
 Kopirajte tekst iz okvira koji će se pojaviti, i zalijepite ga u ovaj okvir, a zatim kliknite "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Uvoz podataka',
 );
@@ -13485,7 +13485,7 @@ Za dospołne podrobnosće hlej [[Special:AbuseFilter/history|lisćinu]] njedawny
 	'abusefilter-diff-invalid' => 'Njemóžno požadane wersije wobstarać',
 	'abusefilter-diff-backhistory' => 'Wróćo k filtrowym stawiznam',
 	'abusefilter-import-intro' => 'Móžeš tutón interfejs wužiwać, zo by filtry z druhich wikijow importował.
-Klikń w žórłowym wikiju na "{{int:abusefilter-edit-export}}" pod "{{int:abusefilter-tools-subtitle}}" na wobdźěłowanskim interfejsu. Kopěruj z jewjaceho so tekstoweho pola do tutoho tekstoweho pola a klikń potom na "{{int:abusefilter-import-submit}}",',
+Klikń w žórłowym wikiju na "{{int:abusefilter-edit-export}}" pod "{{int:abusefilter-edit-tools}}" na wobdźěłowanskim interfejsu. Kopěruj z jewjaceho so tekstoweho pola do tutoho tekstoweho pola a klikń potom na "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'Daty importować',
 );
 
@@ -13901,7 +13901,7 @@ A hiba részletes leírásához kattints az „Ellenőrzés” gombra.',
 	'abusefilter-diff-invalid' => 'A kért változatokat nem lehet beolvasni',
 	'abusefilter-diff-backhistory' => 'Vissza a szűrőelőzményekhez',
 	'abusefilter-import-intro' => 'Ezen a felületen más wikikben készült szűrőket lehet importálni.
-A forráswikin a „{{int:abusefilter-tools-subtitle}}” alatt kattints az „{{int:abusefilter-edit-export}}” gombra.
+A forráswikin a „{{int:abusefilter-edit-tools}}” alatt kattints az „{{int:abusefilter-edit-export}}” gombra.
 A megjelent szövegdoboz tartalmát ebbe a szövegdobozba másold át, majd kattints az „{{int:abusefilter-import-submit}}” gombra.',
 	'abusefilter-import-submit' => 'Adatok importálása',
 );
@@ -14307,7 +14307,7 @@ Pro detalios complete, vide [[Special:AbuseFilter/history|le lista]] de cambios 
 	'abusefilter-diff-invalid' => 'Impossibile obtener le versiones requestate',
 	'abusefilter-diff-backhistory' => 'Retornar al historia del filtro',
 	'abusefilter-import-intro' => 'Iste interfacie es pro importar filtros ex altere wikis.
-In le wiki de origine, clicca "{{int:abusefilter-edit-export}}" sub "{{int:abusefilter-tools-subtitle}}" in le interfacie de modification.
+In le wiki de origine, clicca "{{int:abusefilter-edit-export}}" sub "{{int:abusefilter-edit-tools}}" in le interfacie de modification.
 Copia le contento del quadro de texto que appare, e colla lo in iste quadro de texto, pois clicca "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'Importar datos',
 );
@@ -14717,7 +14717,7 @@ Untuk detail lengkap, lihat [[Special:AbuseFilter/history|daftar]] perubahan fil
 	'abusefilter-diff-invalid' => 'Tidak dapat menarik versi yang diminta',
 	'abusefilter-diff-backhistory' => 'Kembali ke sejarah penyaringan',
 	'abusefilter-import-intro' => 'Anda dapat menggunakan antarmuka ini untuk mengimpor filter dari wiki lain.
-Pada wiki asal, klik "{{int:abusefilter-edit-export}}" di bawah "{{int:abusefilter-tools-subtitle}}" pada antarmuka penyuntingan.
+Pada wiki asal, klik "{{int:abusefilter-edit-export}}" di bawah "{{int:abusefilter-edit-tools}}" pada antarmuka penyuntingan.
 Salin dari kotak teks yang muncul, dan tempelkan di kotak teks ini, lalu klik "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Impor data',
 );
@@ -15167,7 +15167,7 @@ Para kadagiti sibubukel adetalye, kitaen [[Special:AbuseFilter/history|ti listaa
 	'abusefilter-diff-invalid' => 'Saan a maala dagiti kiniddaw a bersion',
 	'abusefilter-diff-backhistory' => 'Agsubli idiay pakasaritaan ti sagat',
 	'abusefilter-import-intro' => 'Mabalin mo nga usaren daytoy nga interface ti agala kadagiti sagat manipud kadagiti sabali a wiki.
-Idiay nataudan a wiki, agtakla ti "{{int:abusefilter-edit-export}}" babaen ti "{{int:abusefilter-tools-subtitle}}" idiay panag-unos ti interface.
+Idiay nataudan a wiki, agtakla ti "{{int:abusefilter-edit-export}}" babaen ti "{{int:abusefilter-edit-tools}}" idiay panag-unos ti interface.
 Kopian manipud idiay teksto ti kahon nga agparang, ken ikabil ditoy a kahon ti teksto, idi kuan agtakla ka ti "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Alaen ti data',
 );
@@ -15949,7 +15949,7 @@ Per i dettagli completi, consultare [[Special:AbuseFilter/history|l'elenco]] del
 	'abusefilter-diff-invalid' => 'Impossibile caricare le versioni richieste',
 	'abusefilter-diff-backhistory' => 'Torna alla cronologia dei filtri',
 	'abusefilter-import-intro' => 'È possibile utilizzare questa interfaccia per importare filtri da altri siti wiki.
-Sul sito wiki d\'origine, fare clic su "{{int:abusefilter-edit-export}}" sotto "{{int:abusefilter-tools-subtitle}}" nell\'interfaccia di modifica.
+Sul sito wiki d\'origine, fare clic su "{{int:abusefilter-edit-export}}" sotto "{{int:abusefilter-edit-tools}}" nell\'interfaccia di modifica.
 Copiare dalla casella che appare e copiare in questa casella, quindi fare clic su "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Importa dati',
 );
@@ -16346,7 +16346,7 @@ $3 つの{{PLURAL:$3|引数}}があるべきですが $4 つしかありませ�
 	'abusefilter-diff-pattern' => 'フィルター条件',
 	'abusefilter-diff-invalid' => '要求された版を取得できません',
 	'abusefilter-diff-backhistory' => 'フィルター履歴に戻る',
-	'abusefilter-import-intro' => 'このインタフェースを使って、別のウィキからフィルターをインポートすることができます。インポート元のウィキで、編集画面の「{{int:abusefilter-tools-subtitle}}」下にある「{{int:abusefilter-edit-export}}」をクリックします。そこで現れるテキストボックスの内容をコピーし、このテキストボックスにペーストして、「{{int:abusefilter-import-submit}}」をクリックします。',
+	'abusefilter-import-intro' => 'このインタフェースを使って、別のウィキからフィルターをインポートすることができます。インポート元のウィキで、編集画面の「{{int:abusefilter-edit-tools}}」下にある「{{int:abusefilter-edit-export}}」をクリックします。そこで現れるテキストボックスの内容をコピーし、このテキストボックスにペーストして、「{{int:abusefilter-import-submit}}」をクリックします。',
 	'abusefilter-import-submit' => 'インポート',
 );
 
@@ -16709,7 +16709,7 @@ $messages['ka'] = array(
 	'abusefilter-diff-invalid' => 'ვერ მიიღებთ მოთხოვნილ ვერსიას',
 	'abusefilter-diff-backhistory' => 'ფილტრის ისტორიაში დაბრუნება',
 	'abusefilter-import-intro' => 'თქვენ შეგიძლიათ გამოიყენოთეს ინტერფეისი სხვა ვიკებიდან ფილტრების იმპორტირებისათვის.
-ვიკის წყაროში, დააჭირეთ "{{int:abusefilter-edit-export}}" რედაქტირების ინტერფეისის "{{int:abusefilter-tools-subtitle}}" განყოფილებაში.
+ვიკის წყაროში, დააჭირეთ "{{int:abusefilter-edit-export}}" რედაქტირების ინტერფეისის "{{int:abusefilter-edit-tools}}" განყოფილებაში.
 დააკოპირეთ ტექსტური ველის შიგთავსი, გადმოიტანეთ ამ გვერდზე და დააჭირეთ "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'მონაცემების იმპორტირება',
 );
@@ -17362,7 +17362,7 @@ $3개의 변수가 있어야 하지만 $4개의 변수가 있습니다.',
 	'abusefilter-diff-invalid' => '요청한 버전을 불러올 수 없습니다.',
 	'abusefilter-diff-backhistory' => '필터 역사로 돌아가기',
 	'abusefilter-import-intro' => '당신은 이 양식을 통해 다른 위키에서 필터를 가져올 수 있습니다.
-필터가 있는 위키에서 필터 편집 화면의 "{{int:abusefilter-tools-subtitle}}"에서 "{{int:abusefilter-edit-export}}"를 클릭하십시오.
+필터가 있는 위키에서 필터 편집 화면의 "{{int:abusefilter-edit-tools}}"에서 "{{int:abusefilter-edit-export}}"를 클릭하십시오.
 나타나는 글상자의 내용을 복사한 후 붙여넣고, "{{int:abusefilter-import-submit}}"를 클릭하십시오.',
 	'abusefilter-import-submit' => '데이터 가져오기',
 );
@@ -17799,7 +17799,7 @@ Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilte
 	'abusefilter-diff-pattern' => 'De Bedengunge vum Felter',
 	'abusefilter-diff-invalid' => 'Mer kunnte de jewönschte Versione nit fenge',
 	'abusefilter-diff-backhistory' => 'Jangk zeröck op de Leß met de Versione vun däm Felter',
-	'abusefilter-import-intro' => 'Do kanns hee di Schnettshtell bruche, öm Date vun de Meßbruchsfeltere vun andere Wikis noh hee ze empotteere. En dämm Wiki, woh de Date her kumme, doh donn op „{{int:abusefilter-edit-export}}“ unger „{{int:abusefilter-tools-subtitle}}“ klecke, op dä Sigg zom Felter Ändere. Donn dä Ennhalt vun däm Kaste met Tex, dä dann doh kütt, en hee dä Kaste eren kopeere, un dann donn hee dä Knopp „{{int:abusefilter-import-submit}}“ klecke.',
+	'abusefilter-import-intro' => 'Do kanns hee di Schnettshtell bruche, öm Date vun de Meßbruchsfeltere vun andere Wikis noh hee ze empotteere. En dämm Wiki, woh de Date her kumme, doh donn op „{{int:abusefilter-edit-export}}“ unger „{{int:abusefilter-edit-tools}}“ klecke, op dä Sigg zom Felter Ändere. Donn dä Ennhalt vun däm Kaste met Tex, dä dann doh kütt, en hee dä Kaste eren kopeere, un dann donn hee dä Knopp „{{int:abusefilter-import-submit}}“ klecke.',
 	'abusefilter-import-submit' => 'Lohß Jonn!',
 );
 
@@ -18337,7 +18337,7 @@ Fir weider Detailer, kuckt [[Special:AbuseFilter/history|d'Lëscht]] vun de reze
 	'abusefilter-diff-invalid' => 'Déi ugefrote Versioune kënnen net fonnt ginn',
 	'abusefilter-diff-backhistory' => "Zréck op d'Lëscht vun de Versioune vum Filter",
 	'abusefilter-import-intro' => 'Dir kënnt dësen Interface benotze fir Filtere vu anere Wikien z\'importéieren.
-Klickt op der originaler Wiki op "{{int:abusefilter-edit-export}}"  ënner "{{int:abusefilter-tools-subtitle}}" op dem Interface vun den Ännerungen.
+Klickt op der originaler Wiki op "{{int:abusefilter-edit-export}}"  ënner "{{int:abusefilter-edit-tools}}" op dem Interface vun den Ännerungen.
 Kopéiert vun der Textkëscht déi opgeet an dës Textkëscht a klickt op "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'Donnéeën importéieren',
 );
@@ -20125,7 +20125,7 @@ $messages['mk'] = array(
 	'abusefilter-diff-invalid' => 'Не можам да ги добијам побараните верзии',
 	'abusefilter-diff-backhistory' => 'Назад кон историјата на филтерот',
 	'abusefilter-import-intro' => 'Овој посредник служи за увезување на филтри од други викија.
-На изворното вико, кликнете на „{{int:abusefilter-edit-export}}“ под „{{int:abusefilter-tools-subtitle}}“ во посредникот за уредување.
+На изворното вико, кликнете на „{{int:abusefilter-edit-export}}“ под „{{int:abusefilter-edit-tools}}“ во посредникот за уредување.
 Копирајте ја содржината од полето коешто ќе ви се појави, и залепете ја во ова поле, па кликнете на „{{int:abusefilter-import-submit}}“.',
 	'abusefilter-import-submit' => 'Увези податоци',
 );
@@ -20530,7 +20530,7 @@ $messages['ml'] = array(
 	'abusefilter-diff-invalid' => 'ആവശ്യപ്പെട്ട പതിപ്പുകൾ ശേഖരിക്കാൻ കഴിയില്ല',
 	'abusefilter-diff-backhistory' => 'അരിപ്പയുടെ നാൾവഴിയിലേയ്ക്ക് തിരിച്ചുപോവുക',
 	'abusefilter-import-intro' => 'മറ്റുവിക്കികളിൽ നിന്ന് അരിപ്പകൾ ഇറക്കുമതി ചെയ്യാൻ ഈ ദൃശ്യമണ്ഡലം ഉപയോഗിക്കാവുന്നതാണ്.
-സ്രോതസ്സ് വിക്കിയിലെ തിരുത്തുവാനുള്ള ദൃശ്യമണ്ഡലത്തിൽ "{{int:abusefilter-tools-subtitle}}" എന്നതിനു താഴെയുള്ള "{{int:abusefilter-edit-export}}" ഞെക്കുക.
+സ്രോതസ്സ് വിക്കിയിലെ തിരുത്തുവാനുള്ള ദൃശ്യമണ്ഡലത്തിൽ "{{int:abusefilter-edit-tools}}" എന്നതിനു താഴെയുള്ള "{{int:abusefilter-edit-export}}" ഞെക്കുക.
 അപ്പോൾ കിട്ടുന്ന ടെക്സ്റ്റ്ബോക്സ് പകർത്തി ഈ ടെക്സ്റ്റ്‌‌ബോക്സിൽ നൽകി, "{{int:abusefilter-import-submit}}" ഞെക്കുക.',
 	'abusefilter-import-submit' => 'വിവരങ്ങൾ ഇറക്കുമതി ചെയ്യുക',
 );
@@ -20971,7 +20971,7 @@ Untuk butiran lanjut, lihat [[Special:AbuseFilter/history|senarai]] perubahan pe
 	'abusefilter-diff-invalid' => 'Versi yang dimohon tidak dapat diambil',
 	'abusefilter-diff-backhistory' => 'Kembali ke sejarah penapis',
 	'abusefilter-import-intro' => 'Anda boleh menggunakan antara muka ini untuk mengimport penapis dari wiki lain.
-Dalam wiki sumber, klik "{{int:abusefilter-edit-export}}" di bawah "{{int:abusefilter-tools-subtitle}}" di antara muka penyuntingan.
+Dalam wiki sumber, klik "{{int:abusefilter-edit-export}}" di bawah "{{int:abusefilter-edit-tools}}" di antara muka penyuntingan.
 Salin dari ruangan teks yang muncul, kemudian tampalkannya ke dalam ruangan teks ini, kemudian klik "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Import data',
 );
@@ -21342,7 +21342,7 @@ Għal aktar dettalji, ara l-[[Special:AbuseFilter/history|lista]] ta' modifiki r
 	'abusefilter-diff-invalid' => 'Ma setgħux jittelgħu l-verżjoni rikjesti',
 	'abusefilter-diff-backhistory' => 'Lura għall-kronoloġija tal-filtru',
 	'abusefilter-import-intro' => 'Inti tista\' tuża din l-interfaċċa sabiex timporta filtri minn wikis oħrajn.
-Fuq il-wiki fejn jinsab is-sors, iklikkja "{{int:abusefilter-edit-export}}" taħt "{{int:abusefilter-tools-subtitle}}" fuq l-interfaċċa tal-immodifikar.
+Fuq il-wiki fejn jinsab is-sors, iklikkja "{{int:abusefilter-edit-export}}" taħt "{{int:abusefilter-edit-tools}}" fuq l-interfaċċa tal-immodifikar.
 Ikkopja mill-kaxxa li tidher u itfagħha f\'din il-kaxxa, u imbagħad iklikkja "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Importa informazzjoni',
 );
@@ -21875,7 +21875,7 @@ For fullstendige detaljer, se [[Special:AbuseFilter/history|listen]] over de sis
 	'abusefilter-diff-invalid' => 'Kunne ikke hente de ønskede versjonene',
 	'abusefilter-diff-backhistory' => 'Tilbake til filterhistorikk',
 	'abusefilter-import-intro' => 'Du kan bruke dette grensesnittet for å importere filtre fra andre wikier.
-I kildewikien klikker du på «{{int:abusefilter-edit-export}}» under «{{int:abusefilter-tools-subtitle}}» i redigeringsgrensesnittet.
+I kildewikien klikker du på «{{int:abusefilter-edit-export}}» under «{{int:abusefilter-edit-tools}}» i redigeringsgrensesnittet.
 Kopier fra tekstruten som kommer frem og lim inn i denne tekstruten. Klikk så på «{{int:abusefilter-import-submit}}».',
 	'abusefilter-import-submit' => 'Importer data',
 );
@@ -22254,7 +22254,7 @@ För mehr Details, kiek di [[Special:AbuseFilter/history|de List]] mit de lesten
 	'abusefilter-diff-invalid' => 'Kunn de angeven Versionen nich halen',
 	'abusefilter-diff-backhistory' => 'Trüch na de Versionsgeschicht von’n Filter',
 	'abusefilter-import-intro' => 'Du kannst disse Sied bruken, Filters ut annere Wikis to importeren.
-Klick op dat Utgangswiki op „{{int:abusefilter-edit-export}}“ ünner „{{int:abusefilter-tools-subtitle}}“ bi dat Afänner-Finster.
+Klick op dat Utgangswiki op „{{int:abusefilter-edit-export}}“ ünner „{{int:abusefilter-edit-tools}}“ bi dat Afänner-Finster.
 Kopeer de Textbox, de dor wiest warrt, un föög den Text in disse Textbox in, klick denn op „{{int:abusefilter-import-submit}}“.',
 	'abusefilter-import-submit' => 'Daten importeren',
 );
@@ -23023,7 +23023,7 @@ Zie de [[Special:AbuseFilter/history|lijst met recente filterwijzigingen]] voor 
 	'abusefilter-diff-invalid' => 'Het was niet mogelijk de gevraagde versies op te halen',
 	'abusefilter-diff-backhistory' => 'Terug naar de filtergeschiedenis',
 	'abusefilter-import-intro' => 'U kunt deze interface gebruiken om filters van andere wiki\'s te importeren.
-Klik "{{int:abusefilter-edit-export}}i" bij "{{int:abusefilter-tools-subtitle}}".
+Klik "{{int:abusefilter-edit-export}}i" bij "{{int:abusefilter-edit-tools}}".
 Kopieer de tekst die in het bewerkingsvenster verschijnt naar dit bewerkingsvenster en klik dan op "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Filtergegevens importeren',
 );
@@ -23078,7 +23078,7 @@ Door op "Syntaxis controleren" te klikken krijg je een volledige toelichting.',
 	'abusefilter-examine-incompatible' => 'Het filter ondersteunt de wijziging die je hebt opgevraagd niet',
 	'abusefilter-examine-noresults' => 'Er zijn geen resultaten gevonden voor de zoekopdrachtparameters die je hebt opgegeven.',
 	'abusefilter-import-intro' => 'Je kunt deze interface gebruiken om filters van andere wiki\'s te importeren.
-Klik "{{int:abusefilter-edit-export}}i" bij "{{int:abusefilter-tools-subtitle}}".
+Klik "{{int:abusefilter-edit-export}}i" bij "{{int:abusefilter-edit-tools}}".
 Kopieer de tekst die in het bewerkingsvenster verschijnt naar dit bewerkingsvenster en klik dan op "{{int:abusefilter-import-submit}}".',
 );
 
@@ -23466,7 +23466,7 @@ For utførlege detaljar, sjå [[Special:AbuseFilter/history|lista]] over dei sis
 	'abusefilter-diff-invalid' => 'Kunne ikkje henta dei etterspurde verjsonane',
 	'abusefilter-diff-backhistory' => 'Attende til filterhistoria',
 	'abusefilter-import-intro' => 'Du kan nytta dette grensesnittet til å importera filter frå andre wikiar.
-På kjeldewikien trykkjer du på «{{int:abusefilter-edit-export}}» under «{{int:abusefilter-tools-subtitle}}» på redigeringsgrensesnittet.
+På kjeldewikien trykkjer du på «{{int:abusefilter-edit-export}}» under «{{int:abusefilter-edit-tools}}» på redigeringsgrensesnittet.
 Kopier frå tekstboksen som dukkar opp og lim det inn i tekstboksen her. Trykk so på «{{int:abusefilter-import-submit}}».',
 	'abusefilter-import-submit' => 'Importer data',
 );
@@ -23866,7 +23866,7 @@ Per mai de detalhs, vejatz [[Special:AbuseFilter/history|la lista]] dels darriè
 	'abusefilter-diff-invalid' => 'Impossible de tornar trobar las versions demandadas',
 	'abusefilter-diff-backhistory' => "Retorn a l'istoric del filtre",
 	'abusefilter-import-intro' => "Podètz utilizar aquesta interfàcia per importar de filtres en provenéncia d’autres wikis.
-Sul wiki d’origina, clicatz sus « {{int:abusefilter-edit-export}} » dins « {{int:abusefilter-tools-subtitle}} » dempuèi l’interfàcia d’edicion.
+Sul wiki d’origina, clicatz sus « {{int:abusefilter-edit-export}} » dins « {{int:abusefilter-edit-tools}} » dempuèi l’interfàcia d’edicion.
 Copiatz l'airal de tèxte que s’aficha e empegatz-lo dins aqueste airal de tèxte, puèi clicatz sus « {{int:abusefilter-import-submit}} »,",
 	'abusefilter-import-submit' => 'Importar de donadas',
 );
@@ -24969,7 +24969,7 @@ Pełne informacje odnajdziesz w [[Special:AbuseFilter/history|rejestrze]] ostatn
 	'abusefilter-diff-invalid' => 'Nie można pobrać żądanej wersji',
 	'abusefilter-diff-backhistory' => 'Powrót do historii filtru',
 	'abusefilter-import-intro' => 'Ten interfejs służy do importowania filtrów z innych wiki.
-W trybie edycji filtru kliknij w źródłowej wiki „{{int:abusefilter-edit-export}}” przy nagłówku „{{int:abusefilter-tools-subtitle}}”.
+W trybie edycji filtru kliknij w źródłowej wiki „{{int:abusefilter-edit-export}}” przy nagłówku „{{int:abusefilter-edit-tools}}”.
 Skopiuj zawartość pola tekstowego, które się pojawi, i wklej ją do poniższego pola tekstowego, a następnie kliknij przycisk „{{int:abusefilter-import-submit}}”,',
 	'abusefilter-import-submit' => 'Importuj dane',
 );
@@ -25378,7 +25378,7 @@ Për ij detaj complet, ch'a bèica [[Special:AbuseFilter/history|la lista]] dle 
 	'abusefilter-diff-invalid' => 'Impossìbil trové le version ciamà',
 	'abusefilter-diff-backhistory' => 'André a la stòria dël filtr',
 	'abusefilter-import-intro' => "A peul dovré costa antërfacia për amporté dij filtr da d'àutre wiki.
-An sla wiki sorgiss, ch'a sgnaca \"{{int:abusefilter-edit-export}}\" sota \"{{int:abusefilter-tools-subtitle}}\" an sl'antërfacia ëd modìfica.
+An sla wiki sorgiss, ch'a sgnaca \"{{int:abusefilter-edit-export}}\" sota \"{{int:abusefilter-edit-tools}}\" an sl'antërfacia ëd modìfica.
 Ch'a còpia la casela ëd test ch'a compariss, e ch'a l'ancòla an costa casela ëd test, peui ch'a sgnaca \"{{int:abusefilter-import-submit}}\".",
 	'abusefilter-import-submit' => 'Amporté dij dat',
 );
@@ -25899,7 +25899,7 @@ Para detalhes completos, ver [[Special:AbuseFilter/history|a lista]] de alteraç
 	'abusefilter-diff-invalid' => 'Não foi possível obter as versões requeridas',
 	'abusefilter-diff-backhistory' => 'Regressar ao histórico do filtro',
 	'abusefilter-import-intro' => 'Pode usar esta interface para importar filtros de outras wikis.
-Na wiki de origem, clique "{{int:abusefilter-edit-export}}", sob "{{int:abusefilter-tools-subtitle}}" na interface de edição.
+Na wiki de origem, clique "{{int:abusefilter-edit-export}}", sob "{{int:abusefilter-edit-tools}}" na interface de edição.
 Copie da caixa de texto que aparece, coloque nesta caixa de texto e depois clique "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Importar dados',
 );
@@ -26314,7 +26314,7 @@ Para detalhes completos, ver [[Special:AbuseFilter/history|a lista]] de alteraç
 	'abusefilter-diff-invalid' => 'Não foi possível obter as versões requeridas',
 	'abusefilter-diff-backhistory' => 'Voltar ao histórico do filtro',
 	'abusefilter-import-intro' => 'Você pode usar esta interface para importar filtros de outras wikis.
-Na wiki de origem, clique em "{{int:abusefilter-edit-export}}", sob "{{int:abusefilter-tools-subtitle}}" na interface de edição.
+Na wiki de origem, clique em "{{int:abusefilter-edit-export}}", sob "{{int:abusefilter-edit-tools}}" na interface de edição.
 Copie da caixa de texto que aparece, e cole nesta caixa de texto, e a seguir clique em "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Importar dados',
 );
@@ -26751,7 +26751,7 @@ Pentru informații complete, vedeți [[Special:AbuseFilter/history|lista]] cu sc
 	'abusefilter-diff-invalid' => 'Nu se pot aduce versiunile solicitate',
 	'abusefilter-diff-backhistory' => 'Înapoi la istoricul filtrului',
 	'abusefilter-import-intro' => 'Poți folosi această interfață pentru a importa filtre din alte wiki-uri.
-În wiki sursă, apasă "{{int:abusefilter-edit-export}}" din "{{int:abusefilter-tools-subtitle}}" din interfața de editare.
+În wiki sursă, apasă "{{int:abusefilter-edit-export}}" din "{{int:abusefilter-edit-tools}}" din interfața de editare.
 Copiază din spațiul textului care apare și lipește în aceast spațiu de text, apoi apasă "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Importă datele',
 );
@@ -27147,7 +27147,7 @@ Pè avè cchiù dettaglie, vide [[Special:AbuseFilter/history|'a liste]] de le c
 	'abusefilter-diff-invalid' => 'Impossibbele recuperà le versiune rechieste',
 	'abusefilter-diff-backhistory' => "Torne ad 'u filtre d'a storie",
 	'abusefilter-import-intro' => 'Jè possibbele ausà quèste \'nderfazze pè le filtre de \'mbortazziune da otre wiki.
-Sus ad \'a wiki de origgene, cazzà "{{int:abusefilter-edit-export}}" sutte "{{int:abusefilter-tools-subtitle}}" sus a le \'nderfazze de le cangiaminde.
+Sus ad \'a wiki de origgene, cazzà "{{int:abusefilter-edit-export}}" sutte "{{int:abusefilter-edit-tools}}" sus a le \'nderfazze de le cangiaminde.
 Copià da \'a caselle de teste ce vide, e \'ngolle jidde sus a quiste cambe de teste, cchiù nnande cazze "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => "'Mborte date",
 );
@@ -27558,7 +27558,7 @@ $messages['ru'] = array(
 	'abusefilter-diff-invalid' => 'Не удаётся получить запрошенные версии',
 	'abusefilter-diff-backhistory' => 'Вернуться к истории фильтра',
 	'abusefilter-import-intro' => 'Вы можете использовать этот интерфейс для импорта фильтров из других вики.
-В исходной вики, нажмите «{{int:abusefilter-edit-export}}» в разделе «{{int:abusefilter-tools-subtitle}}» интерфейса редактирования.
+В исходной вики, нажмите «{{int:abusefilter-edit-export}}» в разделе «{{int:abusefilter-edit-tools}}» интерфейса редактирования.
 Скопируйте содержание текстового поля, вставьте его на эту страницу и нажмите «{{int:abusefilter-import-submit}}».',
 	'abusefilter-import-submit' => 'Импортировать данные',
 );
@@ -27959,7 +27959,7 @@ $messages['rue'] = array(
 	'abusefilter-diff-invalid' => 'Не подарило ся обтримати пожадовны верзії',
 	'abusefilter-diff-backhistory' => 'Назад на історію філтру',
 	'abusefilter-import-intro' => 'За помочі того інтерфейсу можете імпортовати філтры з іншых вікі.
-На жрідловій вікі клікните в інтерфейсї едітованя на „{{int:abusefilter-edit-export}}“ в секції „{{int:abusefilter-tools-subtitle}}“.
+На жрідловій вікі клікните в інтерфейсї едітованя на „{{int:abusefilter-edit-export}}“ в секції „{{int:abusefilter-edit-tools}}“.
 Зкопіруйте текст, котрый ся укаже в рамику, вложте го до того формуларя і клікните на „{{int:abusefilter-import-submit}}“.',
 	'abusefilter-import-submit' => 'Імпортовати дата',
 );
@@ -28378,7 +28378,7 @@ $3 {{PLURAL:$3|аргумент кэтэһиллэр|аргуменнаах бу
 	'abusefilter-diff-invalid' => 'Көрдөөбүт барыллары көрөр табыллыбата',
 	'abusefilter-diff-backhistory' => 'Сиидэ устуоруйатыгар төннүү',
 	'abusefilter-import-intro' => 'Бу үнүстүрүмүөнү туһанан сиидэлэри атын биикилэртэн импортыаххын сөп.
-Ылар биикигэр "{{int:abusefilter-tools-subtitle}}" салааҕа киириэҥҥин "{{int:abusefilter-edit-export}}" диэни баттаа.
+Ылар биикигэр "{{int:abusefilter-edit-tools}}" салааҕа киириэҥҥин "{{int:abusefilter-edit-export}}" диэни баттаа.
 Тиэкис хонуутуттан иһинээҕитин бу сирэйгэ көһөр уонна "{{int:abusefilter-import-submit}}" диэни баттаа.',
 	'abusefilter-import-submit' => 'Импортаа',
 );
@@ -29207,7 +29207,7 @@ Podrobnosti nájdete v [[Special:AbuseFilter/history|zozname]] posledných zmien
 	'abusefilter-diff-invalid' => 'Nepodarilo sa získať požadované verzie',
 	'abusefilter-diff-backhistory' => 'Späť na históriu filtra',
 	'abusefilter-import-intro' => 'Toto rozhranie môžete použiť na importovanie filtrov z iných wiki.
-Na zdrojovej wiki kliknite na „{{int:Abusefilter-edit-export}}“ v ponuke „{{int:abusefilter-tools-subtitle}}“ v rozhraní na úpravy.
+Na zdrojovej wiki kliknite na „{{int:Abusefilter-edit-export}}“ v ponuke „{{int:abusefilter-edit-tools}}“ v rozhraní na úpravy.
 Skopírujte ho z textového poľa, kde sa objaví a vložte ho do tohto textového poľa. Potom kliknite na „{{int:abusefilter-import-submit}}“.',
 	'abusefilter-import-submit' => 'Importovať údaje',
 );
@@ -29615,7 +29615,7 @@ Za vse podrobnosti si oglejte [[Special:AbuseFilter/history|seznam]] zadnjih spr
 	'abusefilter-diff-invalid' => 'Ne morem pridobiti zahtevanih različic',
 	'abusefilter-diff-backhistory' => 'Nazaj na zgodovino filtra',
 	'abusefilter-import-intro' => 'Ta vmesnik lahko uporabite za uvoz filtrov iz drugih wikijev.
-Na izvornem wikiju kliknite »{{int:abusefilter-edit-export}}« pod »{{int:abusefilter-tools-subtitle}}« v urejevalnem vmesniku.
+Na izvornem wikiju kliknite »{{int:abusefilter-edit-export}}« pod »{{int:abusefilter-edit-tools}}« v urejevalnem vmesniku.
 Nato skopirajte besedilo v prikazanem polju, prilepite ga v to polje in kliknite »{{int:abusefilter-import-submit}}«.',
 	'abusefilter-import-submit' => 'Uvozi podatke',
 );
@@ -31321,7 +31321,7 @@ För fullständiga detaljer, se [[Special:AbuseFilter/history|listan]] över de 
 	'abusefilter-diff-invalid' => 'Kunde inte hämta de önskade versionerna',
 	'abusefilter-diff-backhistory' => 'Tillbaka till filterhistoriken',
 	'abusefilter-import-intro' => 'Du kan använda detta gränssnitt till att importera filter från andra wikier.
-I källwikin klickar du på "{{int:abusefilter-edit-export}}" under "{{int:abusefilter-tools-subtitle}}" i redigeringsgränsnittet.
+I källwikin klickar du på "{{int:abusefilter-edit-export}}" under "{{int:abusefilter-edit-tools}}" i redigeringsgränsnittet.
 Kopiera från textrutan som kommer fram och klistra in det till denna ruta. Klicka sedan på "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Importera data',
 );
@@ -31910,7 +31910,7 @@ $messages['te'] = array(
 	'abusefilter-diff-pattern' => 'వడపోత నియమాలు',
 	'abusefilter-diff-backhistory' => 'తిరిగి వడపోత చరిత్రకి',
 	'abusefilter-import-intro' => 'ఇతర వికీల నుండి వడపోతకాలను దిగుమతి చేసుకునేందుకు ఈ ఇంటరుఫేసును వాడవచ్చు.
-మూలవికీలో, ఎడిటింగ్ ఇంటరుఫేసులోని "{{int:abusefilter-tools-subtitle}}"  కింద ఉన్న "{{int:abusefilter-edit-export}}" ను నొక్కండి.
+మూలవికీలో, ఎడిటింగ్ ఇంటరుఫేసులోని "{{int:abusefilter-edit-tools}}"  కింద ఉన్న "{{int:abusefilter-edit-export}}" ను నొక్కండి.
 అప్పుడు కనిపించే టెక్స్టుబాక్సులో ఉన్న పాఠ్యాన్ని కాపీ చేసుకుని, దాన్ని ఈ టెక్స్టుబాక్సులో పేస్టు చెయ్యండి. ఆ తరవాత "{{int:abusefilter-import-submit}}" నొక్కండి.',
 	'abusefilter-import-submit' => 'భోగట్టాని దిగుమతించు',
 );
@@ -32527,7 +32527,7 @@ Jikme-jik maglumat üçin, soňky filtr üýtgeşmeleriniň [[Special:AbuseFilte
 	'abusefilter-diff-invalid' => 'Soralýan wersiýalary alyp bolmaýar',
 	'abusefilter-diff-backhistory' => 'Filtr geçmişine gaýt',
 	'abusefilter-import-intro' => 'Bu interfeýsi başga wikilerden filtr importirlemek üçin ulanyp bilersiňiz.
-Çeşme wikide, redaktirleme interfeýsinde "{{int:abusefilter-tools-subtitle}}"yň aşagyndaky "{{int:abusefilter-edit-export}}" çykgydyna tyklaň.
+Çeşme wikide, redaktirleme interfeýsinde "{{int:abusefilter-edit-tools}}"yň aşagyndaky "{{int:abusefilter-edit-export}}" çykgydyna tyklaň.
 Peýda bolan tekst gutusyndan göçürip alyň we ony şu tekst gutusyna ýelmäň. Soňra "{{int:abusefilter-import-submit}}"a tyklaň.',
 	'abusefilter-import-submit' => 'Maglumatlary importirle',
 );
@@ -32917,7 +32917,7 @@ Para sa buong mga detalye, tingnan [[Special:AbuseFilter/history|ang talaan]] ng
 	'abusefilter-diff-invalid' => 'Hindi nagawang makuha ang hiniling na mga bersyon',
 	'abusefilter-diff-backhistory' => 'Magbalik sa kasaysayan ng pansala',
 	'abusefilter-import-intro' => 'Magagamit ang hangganang-mukhang ito upang makapag-angkat ng mga pansala mula sa ibang mga wiki.
-Doon sa pinagmulang wiki, pindutin ang "{{int:abusefilter-edit-export}}" na nasa ilalim ng "{{int:abusefilter-tools-subtitle}}" sa ibabaw ng hangganang-mukhang pambago.
+Doon sa pinagmulang wiki, pindutin ang "{{int:abusefilter-edit-export}}" na nasa ilalim ng "{{int:abusefilter-edit-tools}}" sa ibabaw ng hangganang-mukhang pambago.
 Kopyahin mula sa kahong pangteksto na lilitaw, at idikit ito sa kahong pangtekstong ito, matapos ay pindutin ang "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Angkatin ang dato',
 );
@@ -33344,7 +33344,7 @@ Tam ayrıntılar için, son filtre değişiklikleri [[Special:AbuseFilter/histor
 	'abusefilter-diff-invalid' => 'İstenen sürümler alınamıyor',
 	'abusefilter-diff-backhistory' => 'Filtre geçmişine geri dön',
 	'abusefilter-import-intro' => 'Bu arayüzü diğer vikilerden filtreleri içe aktarmak için kullanabilirsiniz.
-Kaynak vikide, değiştirme arayüzünde "{{int:abusefilter-tools-subtitle}}"ın altındaki "{{int:abusefilter-edit-export}}"a tıklayın.
+Kaynak vikide, değiştirme arayüzünde "{{int:abusefilter-edit-tools}}"ın altındaki "{{int:abusefilter-edit-export}}"a tıklayın.
 Görünen metin kutusundan kopyalayın, ve bu metin kutusuna yapıştırın, daha sonra "{{int:abusefilter-import-submit}}"a tıklayın,',
 	'abusefilter-import-submit' => 'Verileri içe aktar',
 );
@@ -34079,7 +34079,7 @@ $messages['uk'] = array(
 	'abusefilter-diff-invalid' => 'Не вдається отримати запитані версії',
 	'abusefilter-diff-backhistory' => 'Повернутися до історії фільтру',
 	'abusefilter-import-intro' => 'Ви можете використовувати цей інтерфейс для імпорту фільтрів з інших вікі.
-У джерельній вікі, натисніть «{{int:abusefilter-edit-export}}» у розділі «{{int:abusefilter-tools-subtitle}}» інтерфейсу редагування.
+У джерельній вікі, натисніть «{{int:abusefilter-edit-export}}» у розділі «{{int:abusefilter-edit-tools}}» інтерфейсу редагування.
 Скопіюйте зміст текстового поля, вставте його у цю сторінку і натисніть «{{int:abusefilter-import-submit}}».',
 	'abusefilter-import-submit' => 'Імпортувати дані',
 );
@@ -34492,7 +34492,7 @@ Par i detagli completi, varda [[Special:AbuseFilter/history|l'elenco]] de le mod
 	'abusefilter-diff-invalid' => 'No se riesse a cargar le version che ti gà domandà',
 	'abusefilter-diff-backhistory' => 'Torna indrìo a la storia del filtro',
 	'abusefilter-import-intro' => 'Te poli doparar sta interfaccia par importare filtri da altri siti wiki.
-Sul sito wiki d\'origine, struca "{{int:abusefilter-edit-export}}" soto "{{int:abusefilter-tools-subtitle}}" ne l\'interfacia de modifica.
+Sul sito wiki d\'origine, struca "{{int:abusefilter-edit-export}}" soto "{{int:abusefilter-edit-tools}}" ne l\'interfacia de modifica.
 Copia da la casèla che apare e copia in sta casèla qua, quindi struca "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Inporta dati',
 );
@@ -34975,7 +34975,7 @@ Lý do: $2',
 	'abusefilter-diff-invalid' => 'Không thể lấy các phiên bản yêu cầu',
 	'abusefilter-diff-backhistory' => 'Trở lại lịch sử bộ lọc',
 	'abusefilter-import-intro' => 'Trang này để nhập bộ lọc từ wiki khác.
-Tại trang sửa đổi của wiki nguồn, hãy bấm “{{int:abusefilter-edit-export}}” dưới đề mục “{{int:abusefilter-tools-subtitle}}”.
+Tại trang sửa đổi của wiki nguồn, hãy bấm “{{int:abusefilter-edit-export}}” dưới đề mục “{{int:abusefilter-edit-tools}}”.
 Sau đó, chép văn bản từ hộp sẽ hiện ra, dán nó vào hộp ở đây, và bấm “{{int:abusefilter-import-submit}}”.',
 	'abusefilter-import-submit' => 'Nhập dữ liệu',
 );
@@ -35634,7 +35634,7 @@ $messages['yue'] = array(
 	'abusefilter-diff-invalid' => '唔能夠擷取所需要嘅版本',
 	'abusefilter-diff-backhistory' => '返去過濾器歷史',
 	'abusefilter-import-intro' => '你可以用呢個界面由其它wiki度去倒入過濾器。
-	響個來源wiki度，響編輯界面度嘅『{{int:abusefilter-tools-subtitle}}』下面撳『{{int:abusefilter-edit-export}}』。
+	響個來源wiki度，響編輯界面度嘅『{{int:abusefilter-edit-tools}}』下面撳『{{int:abusefilter-edit-export}}』。
 複製響文字盒出現嘅字，再響呢個文字盒度貼上，然後再撳『{{int:abusefilter-import-submit}}』。',
 	'abusefilter-import-submit' => '倒入資料',
 );
@@ -36038,7 +36038,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-diff-pattern' => '过滤器状态',
 	'abusefilter-diff-invalid' => '无法获取所请求版本',
 	'abusefilter-diff-backhistory' => '返回过滤器历史页面',
-	'abusefilter-import-intro' => '您可以使用本界面来导入其他wiki的过滤器。在来源处点击过滤器编辑界面处“{{int:abusefilter-tools-subtitle}}”下的“{{int:abusefilter-edit-export}}”。复制随后出现的文本框中的内容，并粘贴至下方的文本框中，并点击“{{int:abusefilter-import-submit}}”。',
+	'abusefilter-import-intro' => '您可以使用本界面来导入其他wiki的过滤器。在来源处点击过滤器编辑界面处“{{int:abusefilter-edit-tools}}”下的“{{int:abusefilter-edit-export}}”。复制随后出现的文本框中的内容，并粘贴至下方的文本框中，并点击“{{int:abusefilter-import-submit}}”。',
 	'abusefilter-import-submit' => '导入数据',
 );
 
@@ -36444,7 +36444,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-diff-pattern' => '過濾器狀態',
 	'abusefilter-diff-invalid' => '無法取得請求的版本',
 	'abusefilter-diff-backhistory' => '返回過濾器歷史頁面',
-	'abusefilter-import-intro' => '您可以使用本介面來導入其他wiki的過濾器。在來源處點擊過濾器編輯介面處“{{int:abusefilter-tools-subtitle}}”下的“{{int:abusefilter-edit-export}}”。複製隨後出現的文字框中的內容，並複製至下方的文字框中，並點擊“{{int:abusefilter-import-submit}}”。',
+	'abusefilter-import-intro' => '您可以使用本介面來導入其他wiki的過濾器。在來源處點擊過濾器編輯介面處“{{int:abusefilter-edit-tools}}”下的“{{int:abusefilter-edit-export}}”。複製隨後出現的文字框中的內容，並複製至下方的文字框中，並點擊“{{int:abusefilter-import-submit}}”。',
 	'abusefilter-import-submit' => '導入數據',
 );
 
