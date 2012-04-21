@@ -15962,6 +15962,7 @@ Copiare dalla casella che appare e copiare in questa casella, quindi fare clic s
  * @author Mizusumashi
  * @author Muttley
  * @author Ohgi
+ * @author Shirayuki
  * @author Yanajin66
  * @author 青子守歌
  */
@@ -16026,7 +16027,7 @@ $messages['ja'] = array(
 	'abusefilter-log-entry' => '$1: $2 が $4 で「$3」操作を行い不正利用フィルターが発動しました。
 対処操作: $5、
 フィルター解説: $6',
-	'abusefilter-log-detailedentry-meta' => '$1に$2が$5で「$4」操作を行ない、$3が発動しました。
+	'abusefilter-log-detailedentry-meta' => '$1に$2が$5で「$4」操作を行い、$3が発動しました。
 対処操作: $6
 フィルター解説: $7（$8）',
 	'abusefilter-log-detailedentry-global' => 'グローバルフィルター $1',
@@ -16044,6 +16045,7 @@ $messages['ja'] = array(
 	'abusefilter-log-linkoncontribs' => '不正利用記録',
 	'abusefilter-log-linkoncontribs-text' => 'この利用者の不正利用記録',
 	'abusefilter-log-hidden' => '（隠された項目）',
+	'abusefilter-log-hide' => '隠すまたは表示',
 	'abusefilter-log-details-hidden' => 'この項目は公開記録から隠されているため、詳細を見ることができません。',
 	'abusefilter-log-hide-legend' => 'ログ項目を隠す',
 	'abusefilter-log-hide-id' => 'ログ項目ID：',
@@ -24580,12 +24582,14 @@ Frochn Benudza, wu so Agzione dzufiesche konn, des fa disch zu mache.',
 	'abusefilter-action-warn' => 'Warne',
 	'abusefilter-action-block' => 'Schberre',
 	'abusefilter-action-disallow' => 'Vabiede',
+	'abusefilter-revert-title' => "Alli Änarunge vum Filda $1 rigg'gängisch mache",
 	'abusefilter-revert-preview-item' => "$1: $2 Hod ä $3 uff $4 gmachd.
 Agzione, wu rigg'gängisch gmachd weren: $5 ($6)",
 	'abusefilter-revert-search-legend' => "Agzione vum Missbraisch-Filda wähle, wu rigg'gängisch gmachd were sollen.",
 	'abusefilter-revert-search' => 'Agzione wähle:',
 	'abusefilter-revert-filter' => 'Filda:',
 	'abusefilter-revert-confirm' => 'Bschdedische',
+	'abusefilter-revert-success' => "Du hoschd alli Agzione rigg'gängisch gmachd, wu vum Missbraisch-Filda noch [[Special:AbuseFilter/$1|Filda $1]] gmachd worre sin.",
 	'abusefilter-revert-reason' => 'Zriggsedze vun alle Agzione vunde Missbraisch-Filda weschem Filda $1.
 Oagewene Grund: $2',
 	'abusefilter-revert-reasonfield' => 'Grund fas Zriggsedze:',
@@ -24599,6 +24603,7 @@ Oagewene Grund: $2',
 	'abusefilter-test-page' => 'Änarunge onde Said:',
 	'abusefilter-test-shownegative' => 'Zaisch Änarunge, wu ned uff de Filda basse dun',
 	'abusefilter-changeslist-examine' => 'unasuche',
+	'abusefilter-examine' => 'Änzelni Änarunge nochgugge',
 	'abusefilter-examine-legend' => 'Wähl Änarunge aus',
 	'abusefilter-examine-user' => 'Benutzer:',
 	'abusefilter-examine-title' => 'Tidl vunde Said:',
@@ -24616,6 +24621,7 @@ Oagewene Grund: $2',
 	'abusefilter-topnav-test' => 'Reschle teschde',
 	'abusefilter-topnav-examine' => 'Vagongene Änarunge unasuche',
 	'abusefilter-topnav-log' => 'Logbuch fa Missbraisch',
+	'abusefilter-topnav-tools' => 'Wergzaisch fas Fehlasuche',
 	'abusefilter-topnav-import' => 'Filda roihole',
 	'abusefilter-log-name' => 'Logbuch fa Missbraisch-Filda',
 	'abusefilter-log-header' => "S'Logbuch zaischd ä Zsommefassung vunde Änarunge onde Filda.
