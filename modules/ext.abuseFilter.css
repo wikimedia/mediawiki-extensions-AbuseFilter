@@ -4,7 +4,8 @@ table.mw-abuselog-details {
 	background: #f9f9f9;
 	border: 1px #aaa solid;
 	border-collapse: collapse;
-	width: 80%;
+	width: 100%;
+	table-layout: fixed;
 }
 
 table.mw-abuselog-details th, table.mw-abuselog-details td {
