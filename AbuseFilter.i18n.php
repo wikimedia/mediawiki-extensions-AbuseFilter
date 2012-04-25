@@ -6117,6 +6117,7 @@ Handlinger som skal tilbagerulles: $5 ($6)',
  * @author Cedric31
  * @author ChrisiPK
  * @author Church of emacs
+ * @author Geitost
  * @author Giftpflanze
  * @author Kghbln
  * @author Leithian
@@ -6191,13 +6192,12 @@ Beschreibung der Regel: $1',
 	'abusefilter-log-entry' => '$1: $2 löste durch die Aktion „$3“ auf „$4“ einen Missbrauchsfilter aus.
 Filteraktion: „$5“;
 Filterbeschreibung: „$6“',
-	'abusefilter-log-detailedentry-meta' => '$1: $2 löste durch die Aktion „$4“ auf „$5“ den $3 aus.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 löste durch die Aktion „$4“ auf die Seite „$5“ den $3 aus.
 Ergriffene Maßnahmen: $6;
 Filterbeschreibung: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'globaler Filter $1',
 	'abusefilter-log-detailedentry-local' => 'Filter $1',
 	'abusefilter-log-detailslink' => 'Details',
-	'abusefilter-log-diff' => 'Unterschied',
 	'abusefilter-log-hidelink' => 'Sichtbarkeit ändern',
 	'abusefilter-log-details-legend' => 'Details für den Logbuch-Eintrag $1',
 	'abusefilter-log-details-var' => 'Variable',
@@ -6210,7 +6210,7 @@ Filterbeschreibung: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'Missbrauchsfilter-Logbuch',
 	'abusefilter-log-linkoncontribs-text' => 'Missbrauchsfilter-Logbuch für diesen Benutzer',
 	'abusefilter-log-hidden' => '(Eintrag versteckt)',
-	'abusefilter-log-hidden-implicit' => '(versteckt, da die Version gelöscht wurde)',
+	'abusefilter-log-hide' => 'verbergen oder anzeigen',
 	'abusefilter-log-cannot-see-details' => 'Du hast nicht die Berechtigung, Einzelheiten zur dieser Eingabe einzusehen.',
 	'abusefilter-log-details-hidden' => 'Du kannst die Details dieses Eintrags nicht einsehen, da sie vor der Öffentlichkeit verborgen sind.',
 	'abusefilter-log-hide-legend' => 'Logbucheintrag verstecken',
@@ -6237,7 +6237,7 @@ Filterbeschreibung: $7 ($8)',
 	'abusefilter-enabled' => 'Aktiviert',
 	'abusefilter-deleted' => 'Gelöscht',
 	'abusefilter-disabled' => 'Deaktiviert',
-	'abusefilter-hitcount' => '{{PLURAL:$1|1 Treffer|$1 Treffer}}',
+	'abusefilter-hitcount' => '{{PLURAL:$1|Ein Treffer|$1 Treffer}}',
 	'abusefilter-new' => 'Neuen Filter erstellen',
 	'abusefilter-return' => 'Zurück zur Missbrauchsfilter-Verwaltung',
 	'abusefilter-status-global' => 'Global',
@@ -6368,6 +6368,7 @@ Markierungen sollten kurz sein und sie sollten keine Sonderzeichen beinhalten.',
 	'abusefilter-edit-builder-funcs-substr' => 'Teil-Zeichenkette (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'Position der Teil-Zeichenkette in der Zeichenkette (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'Ersetze Teil-Zeichenkette mit Zeichenkette (str_replace)',
+	'abusefilter-edit-builder-funcs-rescape' => 'Escape-Zeichenfolge als Buchstabensymbol in einem regulären Ausdruck (rescape)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Variable setzen (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Variablen',
 	'abusefilter-edit-builder-vars-accountname' => 'Benutzername (bei Erstellung eines Benutzerkontos)',
