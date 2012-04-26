@@ -767,6 +767,7 @@ Functional explanation: rmdoubles removes repeated characters in the argument, a
 	'abusefilter-edit-builder-funcs-substr' => "{{doc-important|Do not translate \"'''substr'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-strpos' => "{{doc-important|Do not translate \"'''strpos'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-str_replace' => "{{doc-important|Do not translate \"'''str_replace'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
+	'abusefilter-edit-builder-funcs-rescape' => "{{doc-important|Do not translate \"'''rescape'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
 	'abusefilter-edit-builder-group-vars' => 'Group entry in dropdown menu. {{Identical|Variable}}',
 	'abusefilter-edit-builder-vars-accountname' => 'This variable is used only during account creation and contains the username of the newly created account. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}.',
 	'abusefilter-edit-builder-vars-action' => ' Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}. {{Identical|Action}}',
