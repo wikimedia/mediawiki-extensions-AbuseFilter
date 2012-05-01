@@ -16187,7 +16187,7 @@ $messages['ja'] = array(
 	'abusefilter-edit-builder-op-bool-xor' => '排他的論理和 (^)',
 	'abusefilter-edit-builder-group-misc' => 'その他',
 	'abusefilter-edit-builder-misc-in' => '文字列中に含むか (in)',
-	'abusefilter-edit-builder-misc-like' => 'パターンとのマッチ (like)',
+	'abusefilter-edit-builder-misc-like' => 'パターンとの一致 (like)',
 	'abusefilter-edit-builder-misc-rlike' => '正規表現との一致 (rlike)',
 	'abusefilter-edit-builder-misc-irlike' => '正規表現に一致、大文字と小文字を区別しない (irlike)',
 	'abusefilter-edit-builder-misc-contains' => '左の文字列が右の文字列を含むか (contains)',
@@ -26076,6 +26076,7 @@ Copie da caixa de texto que aparece, coloque nesta caixa de texto e depois cliqu
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Giro720
  * @author Hamilton Abreu
  * @author Helder.wiki
@@ -26084,7 +26085,6 @@ Copie da caixa de texto que aparece, coloque nesta caixa de texto e depois cliqu
  * @author MetalBrasil
  * @author Pedroca cerebral
  * @author Rafael Vargas
- * @author 555
  */
 $messages['pt-br'] = array(
 	'abusefilter-desc' => 'Aplica heurísticas automáticas às edições.',
@@ -29637,6 +29637,7 @@ Oznake morajo biti kratne in ne smejo vsebovati posebnih znakov.',
 	'abusefilter-edit-builder-funcs-substr' => 'Podniz (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'Položaj podniza v nizu (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'Zamenjaj podniz z nizom (str_replace)',
+	'abusefilter-edit-builder-funcs-rescape' => 'Ubeži niz kot dobeseden regularni izraz (rescape)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Določi spremenljivko (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Spremenljivke',
 	'abusefilter-edit-builder-vars-accountname' => 'Ime računa (ob ustvarjanju računa)',
