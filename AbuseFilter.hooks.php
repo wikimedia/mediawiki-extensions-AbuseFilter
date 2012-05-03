@@ -26,7 +26,11 @@ class AbuseFilterHooks {
 		$article = $editor->getArticle();
 		if ( $article->exists() ) {
 			// Make sure we load the latest text saved in database (bug 31656)
-			$oldtext = $article->getRevision()->getRawText();
+			$revision = $article->getRevision();
+			if ( !$revision ) {
+				return true;
+			}
+			$oldtext = $revision->getRawText();
 		}
 
 		// Cache article object so we can share a parse operation
