@@ -20,6 +20,10 @@ class AbuseFilterHooks {
 		// Load vars
 		$vars = new AbuseFilterVariableHolder;
 
+		# Replace line endings so the filter won't get confused as $text
+		# was not processed by Parser::preSaveTransform (bug 20310)
+		$text = str_replace( "\r\n", "\n", $text );
+
 		// Check for null edits.
 		$oldtext = '';
 
