@@ -1268,6 +1268,7 @@ $messages['an'] = array(
  * @author Alnokta
  * @author Bassem JARKAS
  * @author Ciphers
+ * @author DRIHEM
  * @author Loya
  * @author Meno25
  * @author Mido
@@ -1357,6 +1358,7 @@ $messages['ar'] = array(
 	'abusefilter-log-linkoncontribs-text' => 'سجل الإساءة لهذا المستخدم',
 	'abusefilter-log-hidden' => '(السجل مخفي)',
 	'abusefilter-log-hide' => 'إظهار أو إخفاء',
+	'abusefilter-log-cannot-see-details' => 'ليس لديك الإذن لمعرفة تفاصيل هذا الإدخال.',
 	'abusefilter-log-details-hidden' => 'لا يمكنك رؤية تفاصيل هذا المدخل، لأنه مخفي من العرض العلني',
 	'abusefilter-log-hide-legend' => 'إخفاء السجل',
 	'abusefilter-log-hide-id' => 'هوية مدخلة لسجل:',
@@ -1516,6 +1518,7 @@ $messages['ar'] = array(
 	'abusefilter-edit-builder-funcs-substr' => 'سلسلة فرعية (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'موضع السلسلة الفرعية في السلسلة (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'استبدال السلسلة الفرعية بسلسلة (str_replace)',
+	'abusefilter-edit-builder-funcs-rescape' => 'سلسلة الهروب كالحرفية في regex (rescape)',
 	'abusefilter-edit-builder-funcs-set_var' => 'ضبط المتغير (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'متغيرات',
 	'abusefilter-edit-builder-vars-accountname' => 'اسم الحساب (on account creation)',
@@ -17218,6 +17221,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-builder-funcs-substr' => '하위 문자열',
 	'abusefilter-edit-builder-funcs-strpos' => '문자열 내의 하위 문자열의 위치 (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => '문자열을 찾아 바꾸기 (str_replace)',
+	'abusefilter-edit-builder-funcs-rescape' => '정규 표현식에서 문자열을 리터럴로 이스케이프 (rescape)',
 	'abusefilter-edit-builder-funcs-set_var' => '변수 설정 (set_var)',
 	'abusefilter-edit-builder-group-vars' => '변수',
 	'abusefilter-edit-builder-vars-accountname' => '계정 이름 (계정 생성 시)',
