@@ -845,10 +845,6 @@ class AbuseFilter {
 		$var_dump = self::storeVarDump( $vars );
 		$var_dump = "stored-text:$var_dump"; // To distinguish from stuff stored directly
 
-		foreach ( $log_rows as $index => $data ) {
-			$log_rows[$index]['afl_var_dump'] = $var_dump;
-		}
-
 		wfProfileIn( __METHOD__ . '-hitstats' );
 
 		global $wgMemc;
@@ -856,7 +852,34 @@ class AbuseFilter {
 		// Increment trigger counter
 		$wgMemc->incr( self::filterMatchesKey() );
 
-		$dbw->insert( 'abuse_filter_log', $log_rows, __METHOD__ );
+		global $wgAbuseFilterNotifications;
+		foreach ( $log_rows as $index => $data ) {
+			$data['afl_var_dump'] = $var_dump;
+			$data['afl_id'] = $dbw->nextSequenceValue( 'abuse_filter_log_afl_id_seq' );
+			$dbw->insert( 'abuse_filter_log', $data, __METHOD__ );
+			if ( $data['afl_id'] === null ) {
+				$data['afl_id'] = $dbw->insertId();
+			}
+
+			if ( $wgAbuseFilterNotifications !== false ) {
+				$entry = new ManualLogEntry( 'abusefilter', 'hit' );
+				// Construct a user object
+				$user = new User();
+				$user->setId( $data['afl_user'] );
+				$user->setName( $data['afl_user_text'] );
+				$entry->setPerformer( $user );
+				// Set action target
+				$entry->setTarget( Title::makeTitle( $data['afl_namespace'], $data['afl_title'] ) );
+				// Additional info
+				$entry->setParameters( array(
+					'action'  => $data['afl_action'],
+					'filter'  => $data['afl_filter'],
+					'actions' => $data['afl_actions'],
+					'log'     => $data['afl_id'],
+				) );
+				$entry->publish( 0, $wgAbuseFilterNotifications );
+			}
+		}
 
 		if ( count( $logged_local_filters ) ) {
 			// Update hit-counter.
@@ -1875,20 +1898,6 @@ class AbuseFilter {
 			$flags_display[] = wfMsg( "abusefilter-history-$flag" );
 		}
 		return $wgLang->commaList( $flags_display );
-	}
-
-	/**
-	 * @param $data string
-	 */
-	static function sendToUDP( $data ) {
-		global $wgAbuseFilterUDPPrefix, $wgAbuseFilterUDPAddress, $wgAbuseFilterUDPPort;
-
-		RecentChange::sendToUDP(
-			$data,
-			$wgAbuseFilterUDPAddress,
-			$wgAbuseFilterUDPPrefix,
-			$wgAbuseFilterUDPPort
-		);
 	}
 
 	/**

@@ -116,6 +116,9 @@ Filter description: $7 ($8)',
 	'abusefilter-logentry-suppress' => 'hid "[[$1]]"',
 	'abusefilter-logentry-unsuppress' => 'unhid "[[$1]]"',
 
+	// Notification on RC
+	'logentry-abusefilter-hit' => '$1 triggered $4, performing the action "$5" on $3. Actions taken: $6 ($7)',
+
 	// Abuse filter management
 	'abusefilter-management' => 'Abuse filter management',
 	'abusefilter-list' => 'All filters',
@@ -594,6 +597,13 @@ $messages['qqq'] = array(
 * $1 is a link to the log ID with the log ID as description.',
 	'abusefilter-logentry-unsuppress' => 'Log entry when unhiding an abuse filter log entry. Parameters:
 * $1 is a link to the log ID with the log ID as description.',
+	'logentry-abusefilter-hit' => 'This message is for a log entry. Parameters:
+* $1 user
+* $3 link to page the action that triggered the filter was made on
+* $4 link to filter
+* $5 action by user
+* $6 actions taken by the filter
+* $7 action details link',
 	'abusefilter-management' => 'Title of [[Special:AbuseFilter]]',
 	'abusefilter-list-id' => 'Column header in abuse filter overview for the filter identifier.
 {{Identical|Filter ID}}',
@@ -24840,6 +24850,7 @@ Opis filtru: $7 ($8)',
 wpisów w rejestrze nadużyć.',
 	'abusefilter-logentry-suppress' => 'ukrył [[$1]]',
 	'abusefilter-logentry-unsuppress' => 'zakończył ukrywanie [[$1]]',
+	'logentry-abusefilter-hit' => '$1 uruchomił $4, wykonał "$5" na $3. Podjęte akcje: $6 ($7)',
 	'abusefilter-management' => 'Zarządzanie filtrem nadużyć',
 	'abusefilter-list' => 'Wszystkie filtry',
 	'abusefilter-list-id' => 'ID filtru',
