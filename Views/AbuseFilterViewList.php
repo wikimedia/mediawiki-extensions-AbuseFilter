@@ -152,6 +152,7 @@ class AbuseFilterPager extends TablePager {
 				'af_user_text',
 				'af_user',
 				'af_actions',
+				'af_group',
 			),
 			'conds' => $this->mConds,
 		);
@@ -171,8 +172,13 @@ class AbuseFilterPager extends TablePager {
 			'af_enabled' => 'abusefilter-list-status',
 			'af_timestamp' => 'abusefilter-list-lastmodified',
 			'af_hidden' => 'abusefilter-list-visibility',
-			'af_hit_count' => 'abusefilter-list-hitcount'
+			'af_hit_count' => 'abusefilter-list-hitcount',
 		);
+
+		global $wgAbuseFilterValidGroups;
+		if ( count($wgAbuseFilterValidGroups) > 1 ) {
+			$headers['af_group'] = 'abusefilter-list-group';
+		}
 
 		$headers = array_map( 'wfMsg', $headers );
 
@@ -255,6 +261,9 @@ class AbuseFilterPager extends TablePager {
 						$lang->time( $value, true ),
 						$user )
 				);
+			case 'af_group':
+				return AbuseFilter::nameGroup( $value );
+				break;
 			default:
 				throw new MWException( "Unknown row type $name!" );
 		}

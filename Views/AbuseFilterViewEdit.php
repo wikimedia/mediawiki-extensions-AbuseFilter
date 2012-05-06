@@ -300,6 +300,25 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$readOnlyAttrib
 			);
 
+		global $wgAbuseFilterValidGroups;
+		if ( count($wgAbuseFilterValidGroups) > 1 ) {
+			$groupSelector = new XmlSelect(
+				'wpFilterGroup',
+				'mw-abusefilter-edit-group',
+				'default'
+			);
+
+			if ( $row->af_group ) {
+				$groupSelector->setDefault($row->af_group);
+			}
+
+			foreach( $wgAbuseFilterValidGroups as $group ) {
+				$groupSelector->addOption( AbuseFilter::nameGroup($group), $group );
+			}
+
+			$fields['abusefilter-edit-group'] = $groupSelector->getHTML();
+		}
+
 		// Hit count display
 		if ( !empty( $row->af_hit_count ) ) {
 			$count = (int)$row->af_hit_count;
@@ -734,6 +753,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			'af_deleted',
 			'af_actions',
 			'af_global',
+			'af_group',
 		);
 
 		// Load the main row
@@ -811,12 +831,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$textLoads = array(
 				'af_public_comments' => 'wpFilterDescription',
 				'af_pattern' => 'wpFilterRules',
-				'af_comments' => 'wpFilterNotes'
+				'af_comments' => 'wpFilterNotes',
 			);
 
 			foreach ( $textLoads as $col => $field ) {
 				$row->$col = trim( $request->getVal( $field ) );
 			}
+
+			$row->af_group = $request->getVal( 'wpFilterGroup', 'default' );
 
 			$row->af_deleted = $request->getBool( 'wpFilterDeleted' );
 			$row->af_enabled = $request->getBool( 'wpFilterEnabled' ) && !$row->af_deleted;

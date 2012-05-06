@@ -142,6 +142,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 				'description' => $row->afh_public_comments,
 				'flags' => $row->afh_flags,
 				'notes' => $row->afh_comments,
+				'group' => $row->afh_group,
 			),
 			'pattern' => $row->afh_pattern,
 			'actions' => unserialize( $row->afh_actions ),
@@ -215,6 +216,17 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$newVersion['info']['description'],
 			'wikitext'
 		);
+		global $wgAbuseFilterValidGroups;
+		if ( 
+			count($wgAbuseFilterValidGroups) > 1 ||
+			$oldVersion['info']['group'] != $newVersion['info']['group']
+		) {
+			$info .= $this->getSimpleRow(
+				'abusefilter-edit-group',
+				AbuseFilter::nameGroup($oldVersion['info']['group']),
+				AbuseFilter::nameGroup($newVersion['info']['group'])
+			);
+		}
 		$info .= $this->getSimpleRow(
 			'abusefilter-edit-flags',
 			AbuseFilter::formatFlags( $oldVersion['info']['flags'] ),
