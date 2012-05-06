@@ -241,10 +241,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	}
 
 	/**
-	 * @param $error
-	 * @param $filter
-	 * @param $history_id null
-	 * @return bool|String
+	 * Builds the full form for edit filters.
+	 * Loads data either from the database or from the HTTP request.
+	 * The request takes precedence over the database
+	 * @param $error An error message to show above the filter box.
+	 * @param $filter The filter ID
+	 * @param $history_id The history ID of the filter, if applicable. Otherwise null
+	 * @return False if there is a failure building the editor, otherwise the HTML text for the editor.
 	 */
 	function buildFilterEditor( $error, $filter, $history_id = null ) {
 		if ( $filter === null ) {
@@ -488,9 +491,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	}
 
 	/**
-	 * @param $row
-	 * @param $actions
-	 * @return string
+	 * Builds the "actions" editor for a given filter.
+	 * @param $row A row from the abuse_filter table.
+	 * @param $actions Array of rows from the abuse_filter_action table
+	 *  corresponding to the abuse filter held in $row.
+	 * @return HTML text for an action editor.
 	 */
 	function buildConsequenceEditor( $row, $actions ) {
 		global $wgAbuseFilterAvailableActions;
@@ -511,10 +516,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	}
 
 	/**
-	 * @param $action
-	 * @param $set
-	 * @param $parameters
-	 * @return string
+	 * Builds a selector for a single AbuseFilter action.
+	 * @param $action String identifier for the action.
+	 * Should be in $wgAbuseFilterAvailableActions
+	 * @param $set Whether or not the action is set.
+	 * @param $parameters If the action is set up, the parameters for it.
+	 * @return string HTML text for the action editor, or NULL if the $action is invalid.
 	 */
 	function buildConsequenceSelector( $action, $set, $parameters ) {
 		global $wgAbuseFilterAvailableActions;
@@ -718,8 +725,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	}
 
 	/**
-	 * @param $id
-	 * @return array|null
+	 * Loads filter data from the database by ID.
+	 * @param $id The filter's ID number
+	 * @return array|null Either an associative array representing the filter,
+	 *  or NULL if the filter does not exist.
 	 */
 	function loadFilterData( $id ) {
 		if ( $id == 'new' ) {
@@ -782,9 +791,15 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	}
 
 	/**
-	 * @param $filter
-	 * @param null $history_id
-	 * @return array|null
+	 * Load filter data to show in the edit view.
+	 * Either from the HTTP request or from the filter/history_id given.
+	 * The HTTP request always takes precedence.
+	 * Includes caching.
+	 * @param $filter The filter ID being requested.
+	 * @param $history_id If any, the history ID being requested.
+	 * @return Array with filter data if available, otherwise null.
+	 * The first element contains the abuse_filter database row,
+	 *  the second element is an array of related abuse_filter_action rows.
 	 */
 	function loadRequest( $filter, $history_id = null ) {
 		static $row = null;
@@ -889,8 +904,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	}
 
 	/**
-	 * @param $id
-	 * @return array
+	 * Loads historical data in a form that the editor can understand.
+	 * @param $id History ID
+	 * @return array In the usual format:
+	 * First element contains the abuse_filter row (as it was).
+	 * Second element contains an array of abuse_filter_action rows.
 	 */
 	function loadHistoryItem( $id ) {
 		$dbr = wfGetDB( DB_SLAVE );
