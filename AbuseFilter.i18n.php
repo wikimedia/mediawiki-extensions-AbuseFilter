@@ -6738,7 +6738,7 @@ Deskripsiyonê filitreyî: $7 ($8)',
 nê istatiski qey na filtreya.
 .</strong> &bull;
 [[Special:AbuseFilter/history/$2|agêr hal-verinê na filtre]].',
-	'abusefilter-edit-status-label' => 'Îstatîstîks:',
+	'abusefilter-edit-status-label' => 'İstatistiki:',
 	'abusefilter-edit-status' => '$1 {{PLURAL:$1|karo|karo}} peyin de, medyayê ke na filtre de hemcıtî $2 ($3%).
 şertê muddetê xebat $4ms u sinorê şerti $5 qedneno.',
 	'abusefilter-edit-throttled' => "'''hişyari''': na filtre qey tedbirê pawıtışi bı otomatik battal verdiya.
