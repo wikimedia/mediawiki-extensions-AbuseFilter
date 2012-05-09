@@ -729,7 +729,7 @@ class AbuseFilter {
 	 * @return bool
 	 */
 	public static function filterAction( $vars, $title ) {
-		global $wgUser, $wgTitle;
+		global $wgUser, $wgTitle, $wgRequest;
 
 		wfProfileIn( __METHOD__ );
 
@@ -768,7 +768,7 @@ class AbuseFilter {
 			'afl_timestamp' => $dbr->timestamp( wfTimestampNow() ),
 			'afl_namespace' => $title->getNamespace(),
 			'afl_title' => $title->getDBkey(),
-			'afl_ip' => wfGetIP()
+			'afl_ip' => $wgRequest->getIP()
 		);
 
 		// Hack to avoid revealing IPs of people creating accounts
@@ -1047,7 +1047,7 @@ class AbuseFilter {
 	public static function takeConsequenceAction( $action, $parameters, $title,
 		$vars, $rule_desc )
 	{
-		global $wgAbuseFilterCustomActionsHandlers;
+		global $wgAbuseFilterCustomActionsHandlers, $wgRequest;
 
 		$display = '';
 		switch ( $action ) {
@@ -1099,7 +1099,7 @@ class AbuseFilter {
 			case 'rangeblock':
 				$filterUser = AbuseFilter::getFilterUser();
 
-				$range = IP::sanitizeRange( wfGetIP() . '/16' );
+				$range = IP::sanitizeRange( $wgRequest->getIP() . '/16' );
 
 				// Create a block.
 				$block = new Block;
@@ -1245,17 +1245,17 @@ class AbuseFilter {
 	 * @return Int|string
 	 */
 	public static function throttleIdentifier( $type, $title ) {
-		global $wgUser;
+		global $wgUser, $wgRequest;
 
 		switch ( $type ) {
 			case 'ip':
-				$identifier = wfGetIP();
+				$identifier = $wgRequest->getIP();
 				break;
 			case 'user':
 				$identifier = $wgUser->getId();
 				break;
 			case 'range':
-				$identifier = substr( IP::toHex( wfGetIP() ), 0, 4 );
+				$identifier = substr( IP::toHex( $wgRequest->getIP() ), 0, 4 );
 				break;
 			case 'creationdate':
 				$reg = $wgUser->getRegistration();
