@@ -8269,6 +8269,7 @@ Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku 
 );
 
 /** Spanish (Español)
+ * @author -jem-
  * @author Aleator
  * @author Alvaro qc
  * @author Armando-Martin
@@ -8659,7 +8660,7 @@ Puedes recibir una completa explicación haciendo click en el botón "Verificar 
 	'abusefilter-examine-submit' => 'Buscar',
 	'abusefilter-examine-vars' => 'Variables generadas para este cambio',
 	'abusefilter-examine-test' => 'Probar este cambio contra un filtro',
-	'abusefilter-examine-test-button' => 'Filtro de prueba',
+	'abusefilter-examine-test-button' => 'Probar filtro',
 	'abusefilter-examine-match' => 'El filtro coincidió con este cambio.',
 	'abusefilter-examine-nomatch' => 'El filtro no coincidió con este cambio.',
 	'abusefilter-examine-syntaxerror' => 'El filtro tiene una sintaxis no válida',
@@ -24535,13 +24536,13 @@ Im Schnidd hodda dodvoa $4 ms un $5 {{PLURAL:$5|Bedingung|Bedingunge}} vunde Heg
 	'abusefilter-edit-main' => 'Parameter vum Filda',
 	'abusefilter-edit-done-subtitle' => "Filda g'änad",
 	'abusefilter-edit-done' => 'Du hoschd die Änarunge oam Filda $1 gschbaischad.',
-	'abusefilter-edit-badsyntax' => 'Doin Filda hodn Sintaxfehla.
+	'abusefilter-edit-badsyntax' => 'Doin Filda hodn Sindaxfehla.
 De Parser hod ausgewe: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Du konschd on dem Filda ned schaffe, waila vabodene Agzione hod.
 Frochn Benudza, wu so Agzione dzufiesche konn, des fa disch zu mache.',
 	'abusefilter-edit-viewhistory' => 'Gschischd vum Filda oagugge',
 	'abusefilter-edit-history' => 'Gschischd vunde Version:',
-	'abusefilter-edit-check' => 'Sintax iwabriefe',
+	'abusefilter-edit-check' => 'Sindax iwabriefe',
 	'abusefilter-edit-badfilter' => 'De Filda, wu oagewe hoschd, hods ned.',
 	'abusefilter-edit-revert' => "Agzione vum Filda rigg'gängisch mache.",
 	'abusefilter-edit-tools' => 'Wergzaisch:',
@@ -24715,8 +24716,8 @@ Umän Filda, wus schun gewe dud, zu laade, gibschd die Filda-ID une ins Feld oi 
 	'abusefilter-test-period-end' => 'Änarunge dvor:',
 	'abusefilter-test-page' => 'Änarunge onde Said:',
 	'abusefilter-test-shownegative' => 'Zaisch Änarunge, wu ned uff de Filda basse dun',
-	'abusefilter-test-syntaxerr' => 'Doin Filda hodn Sintaxfehla.
-Fa waidares gligschd uff „Sintaxbriefung“.',
+	'abusefilter-test-syntaxerr' => 'Doin Filda hodn Sindaxfehla.
+Fa waidares gligschd uff „Sindaxbriefung“.',
 	'abusefilter-changeslist-examine' => 'unasuche',
 	'abusefilter-examine' => 'Änzelni Änarunge nochgugge',
 	'abusefilter-examine-intro' => 'Uff de Said konschd die Vaänalische, wude Missbraisch-Filda fa ä Änarung gmachd hod, unasuche un geschede Filda teschde.',
