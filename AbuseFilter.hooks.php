@@ -138,9 +138,10 @@ class AbuseFilterHooks {
 	/**
 	 * @param $user User
 	 * @param $message
+	 * @param $autocreate bool Indicates whether the account is created automatically.
 	 * @return bool
 	 */
-	public static function onAbortNewAccount( $user, &$message ) {
+	private static function checkNewAccount( $user, &$message, $autocreate ) {
 		if ( $user->getName() == wfMsgForContent( 'abusefilter-blocker' ) ) {
 			$message = wfMsg( 'abusefilter-accountreserved' );
 			return false;
@@ -153,7 +154,7 @@ class AbuseFilterHooks {
 			$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
 		}
 
-		$vars->setVar( 'ACTION', 'createaccount' );
+		$vars->setVar( 'ACTION', $autocreate ? 'autocreateaccount' : 'createaccount' );
 		$vars->setVar( 'ACCOUNTNAME', $user->getName() );
 
 		$filter_result = AbuseFilter::filterAction(
@@ -162,6 +163,27 @@ class AbuseFilterHooks {
 		$message = $filter_result;
 
 		return $filter_result == '' || $filter_result === true;
+	}
+
+	/**
+	 * @param $user User
+	 * @param $message
+	 * @return bool
+	 */
+	public static function onAbortNewAccount( $user, &$message ) {
+		return self::checkNewAccount( $user, $message, false );
+	}
+
+	/**
+	 * @param $user User
+	 * @param $message
+	 * @return bool
+	 */
+	public static function onAbortAutoAccount( $user, &$message ) {
+		// FIXME: ERROR MESSAGE IS SHOWN IN A WEIRD WAY, BEACUSE $message
+		// HERE MEANS NAME OF THE MESSAGE, NOT THE TEXT OF THE MESSAGE AS
+		// IN AbortNewAccount HOOK WHICH WE CANNOT PROVIDE!
+		return self::checkNewAccount( $user, $message, true );
 	}
 
 	/**
