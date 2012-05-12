@@ -921,6 +921,7 @@ Hierdie koppelvlak toon 'n lys van gedefinieer filters, en kan hulle verander wo
 	'abusefilter-log-linkoncontribs' => 'misbruiklogboek',
 	'abusefilter-log-linkoncontribs-text' => 'Misbruik log vir hierdie gebruiker',
 	'abusefilter-log-hidden' => '(inskrywing versteek)',
+	'abusefilter-log-hide' => 'versteek of wys',
 	'abusefilter-log-cannot-see-details' => 'Jy hoef nie toestemming om die besonderhede van enige inskrywings te sien.',
 	'abusefilter-log-details-hidden' => 'Jy kan nie die besonderhede vir hierdie inskrywing, want dit is weggesteek uit die openbare oog.',
 	'abusefilter-log-hide-legend' => 'Versteek logboekinskrywing',
@@ -1790,6 +1791,7 @@ $messages['arc'] = array(
  */
 $messages['ary'] = array(
 	'abusefilter-log-search-submit' => 'bheṫ',
+	'abusefilter-log-hide' => 'ĥbbi wlla byyen',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -2283,6 +2285,7 @@ Descripción de la peñera: $7 ($8)",
 	'abusefilter-log-linkoncontribs' => "rexistru d'abusos",
 	'abusefilter-log-linkoncontribs-text' => "Rexistru d'abusos d'esti usuariu",
 	'abusefilter-log-hidden' => '(entrada anubría)',
+	'abusefilter-log-hide' => 'anubrir o amosar',
 	'abusefilter-log-cannot-see-details' => "Nun tienes permisu pa ver los detalles d'esta entrada.",
 	'abusefilter-log-details-hidden' => "Nun pues ver los detalles d'esta entrada porque ta anubría de la vista pública.",
 	'abusefilter-log-hide-legend' => 'Anubrir entrada del rexistru',
@@ -2371,6 +2374,7 @@ Süzgəcin təsviri: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'Sui-istifadə jurnalı',
 	'abusefilter-log-linkoncontribs-text' => 'Bu istifadəçi üçün sui-istifadə jurnalındakı qeydlər',
 	'abusefilter-log-hidden' => '(qeydlər gizlədilib)',
+	'abusefilter-log-hide' => 'sizlətmək və ya göstərmək',
 	'abusefilter-log-details-hidden' => 'Bu qeydlər gizlədildiyindən, ona ətraflı baxa bilməzsiniz.',
 	'abusefilter-log-hide-legend' => 'Jurnaldakı qeydləri gizlət',
 	'abusefilter-log-hide-id' => 'Jurnaldakı qeydlərin ID-si:',
@@ -3828,6 +3832,7 @@ $messages['bn'] = array(
 	'abusefilter-log-linkoncontribs' => 'অপব্যবহার লগ',
 	'abusefilter-log-linkoncontribs-text' => 'এই ব্যবহারকারীর জন্য অপব্যবহার লগ',
 	'abusefilter-log-hidden' => '(সংযোজন লুকায়িত)',
+	'abusefilter-log-hide' => 'লুকাও বা দেখাও',
 	'abusefilter-log-details-hidden' => 'আপনি এই সংযোজনটি বিস্তারিত দেখতে পারবেন না, কারণ এটি জনসাধারণের প্রদর্শনের থেকে লুকানো রয়েছে।',
 	'abusefilter-log-hide-legend' => 'লগ সংযোজন লুকাও',
 	'abusefilter-log-hide-id' => 'লগ সংযোজনের আইডি:',
@@ -4906,6 +4911,7 @@ Descripció del filtre: $7 ($8)",
 	'abusefilter-log-linkoncontribs' => "registre d'abusos",
 	'abusefilter-log-linkoncontribs-text' => "Registre d'abusos d'aquest usuari",
 	'abusefilter-log-hidden' => '(entrada amagada)',
+	'abusefilter-log-hide' => 'amagar o mostrar',
 	'abusefilter-log-details-hidden' => "No podeu veure els detalls d'aquesta entrada perquè està restringit l'accés públic.",
 	'abusefilter-log-hide-legend' => 'Amaga entrada de registre',
 	'abusefilter-log-hide-id' => "ID de l'entrada de registre:",
@@ -5753,6 +5759,7 @@ Disgrifiad o'r rheol sy'n cyfateb: $1",
 	'abusefilter-log-linkoncontribs' => 'log camddefnydd',
 	'abusefilter-log-linkoncontribs-text' => 'Log camddefnydd ar gyfer y defnyddiwr hwn',
 	'abusefilter-log-hidden' => '(cofnod cuddiedig)',
+	'abusefilter-log-hide' => 'cuddio neu dad-guddio',
 	'abusefilter-log-details-hidden' => "Ni allwch weld manylion y cofnod hwn am ei fod wedi ei guddio o'r golwg.",
 	'abusefilter-log-hide-legend' => 'Cuddio cofnod log',
 	'abusefilter-list-edit' => 'Golygu',
@@ -5845,6 +5852,7 @@ Regelbeskrivelse: $1',
 	'abusefilter-log-linkoncontribs' => 'misbrugslog',
 	'abusefilter-log-linkoncontribs-text' => 'Misbrugslog for denne bruger',
 	'abusefilter-log-hidden' => '(post skjult)',
+	'abusefilter-log-hide' => 'Skjul eller vis',
 	'abusefilter-log-details-hidden' => 'Du kan ikke se detaljerne for denne post, fordi den er skjult for offentligheden',
 	'abusefilter-log-hide-legend' => 'Skjul loghandlig',
 	'abusefilter-log-hide-id' => 'Loghandlings-id:',
@@ -6594,7 +6602,7 @@ Bitte überprüfen Sie sie sorgfältig und klicken Sie auf „Bestätigen“, um
 	'abusefilter-revert-success' => 'Sie haben alle Aktionen des Missbrauchsfilters, die aufgrund von [[Special:AbuseFilter/$1|Filter $1]] vorgenommen wurden, rückgängig gemacht.',
 	'abusefilter-test-intro' => 'Mit dieser Seite kann ein Filter probeweise auf die {{PLURAL:$1|letzte Änderung|letzten $1 Änderungen}} angewendet werden.
 Um einen bestehenden Filter zu laden, geben Sie seine Filter-ID in das Feld unterhalb des Bearbeiten-Textfeldes ein und klicken Sie auf den „Laden“-Button.',
-	'abusefilter-import-intro' => 'Sie können diese Schnittstelle verwenden, um Filter aus anderen Wikis zu importieren. Klicken Sie im Quellwiki auf die Schaltfläche „<abusefilter-edit-export>“ innerhalb von „<abusefilter-edit-tools>“. Kopieren Sie dort den erscheinenden Code, fügen Sie ihn hier ein und klicken Sie dann auf die Schaltfläche „<abusefilter-import-submit>“.',
+	'abusefilter-import-intro' => 'Sie können diese Schnittstelle verwenden, um Filter aus anderen Wikis zu importieren. Klicken Sie im Quellwiki auf die Schaltfläche „<abusefilter-edit-export>“ innerhalb von „<abusefilter-tools-subtitle>“. Kopieren Sie dort den erscheinenden Code, fügen Sie ihn hier ein und klicken Sie dann auf die Schaltfläche „<abusefilter-import-submit>“.',
 );
 
 /** Zazaki (Zazaki)
@@ -12366,9 +12374,9 @@ $messages['hi'] = array(
 	'abusefilter-mustbeeditor' => 'सुरक्षा कारणों के लिए, इस पृष्ठ का प्रयोग केवल वही सदस्य कर सकते हैं जिन्हें दुरुपयोग फ़िल्टर को संपादित करने का अधिकार है।',
 	'abusefilter-warning' => "'''चेतावनी''':इस कार्य को स्वचालित रूप से हानिकारक पाया गया है।
 अरचनात्मक संपादनों को शीघ्र पूर्ववत कर दिया जाएगा,
- और बार-बार अरचनात्मक और हानिकारक संपादन करने पर आपके सदस्य खाते अथवा आइ॰पी पते को अवरोधित भी किया जा सकता है।
+और बार-बार अरचनात्मक और हानिकारक संपादन करने पर आपके सदस्य खाते अथवा आइ॰पी पते को अवरोधित भी किया जा सकता है।
 यदि आपका मानना है कि यह संपादन रचनात्मक है, तो इसे सहेजने के लिये फिर से \"पृष्ठ सहेजें\" का बटन दबाएँ।
-आपके संपादन को पकड़ने वाले नियम का संक्षिप्त विवरण है: \$1",
+आपके संपादन को पकड़ने वाले नियम का संक्षिप्त विवरण है: \$1",
 	'abusefilter-disallowed' => 'इस कार्य को स्वचालित रूप से हानिकारक पाया गया है, अतः इसे करने की अनुमति नहीं है।
 यदि आपका मानना है कि आपका संपादन रचनात्मक था, अपने कार्य की जानकारी कृपया किसी प्रबंधक को दें।
 आपके संपादन को पकड़ने वाले नियम का संक्षिप्त विवरण है: $1',
@@ -12424,7 +12432,6 @@ $messages['hi'] = array(
 	'abusefilter-log-detailedentry-global' => 'वैश्विक फ़िल्टर $1',
 	'abusefilter-log-detailedentry-local' => 'फ़िल्टर $1',
 	'abusefilter-log-detailslink' => 'विस्तॄत विवरण',
-	'abusefilter-log-diff' => 'अंतर',
 	'abusefilter-log-hidelink' => 'दृश्यता समयोजित करें',
 	'abusefilter-log-details-legend' => 'लॉग प्रविष्टि $1 के लिए विवरण',
 	'abusefilter-log-details-var' => 'प्राचल',
@@ -12437,7 +12444,7 @@ $messages['hi'] = array(
 	'abusefilter-log-linkoncontribs' => 'दुरुपयोग लॉग',
 	'abusefilter-log-linkoncontribs-text' => 'इस सदस्य के लिए दुरुपयोग लॉग',
 	'abusefilter-log-hidden' => '(प्रविष्टि छिपी हुई)',
-	'abusefilter-log-hidden-implicit' => '(प्रविष्टि छुपाई गई है क्योंकि अवतरण हटा दिया गया है)',
+	'abusefilter-log-hide' => 'छुपाएँ या दिखाएँ',
 	'abusefilter-log-cannot-see-details' => 'आपके पास इस प्रविष्टि का विस्तृत विवरण देखने की अनुमति नहीं है',
 	'abusefilter-log-details-hidden' => 'आप इस प्रविष्टि का विस्तृत विवरण नहीं देख सकते हैं क्योंकि इसे सार्वजनिक दृष्टि से छुपाया गया है',
 	'abusefilter-log-hide-legend' => 'लॉग प्रविष्टि छुपाएँ',
@@ -14795,7 +14802,7 @@ $messages['ig'] = array(
 	'abusefilter-diff-item' => 'Ihnye',
 );
 
-/** Eastern Canadian (Latin script) (inuktitut) */
+/** Eastern Canadian (Latin script) (Inuktitut) */
 $messages['ike-latn'] = array(
 	'abusefilter-list-edit' => 'Suqusiqpaa',
 );
@@ -15205,7 +15212,7 @@ Kopian manipud idiay teksto ti kahon nga agparang, ken ikabil ditoy a kahon ti t
 	'abusefilter-import-submit' => 'Alaen ti data',
 );
 
-/** Ingush (ГІалгІай Ğalğaj)
+/** Ingush (ГӀалгӀай)
  * @author Amire80
  * @author Sapral Mikail
  */
@@ -15365,6 +15372,7 @@ Lýsing síunnar: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'misnotkunar skrá',
 	'abusefilter-log-linkoncontribs-text' => 'misnotkunar skrá notandans',
 	'abusefilter-log-hidden' => '(falin færsla)',
+	'abusefilter-log-hide' => '(fela eða birta)',
 	'abusefilter-log-details-hidden' => 'Þú getur ekki skoðað nánari upplýsingar um þessa færslu því hún er falin.',
 	'abusefilter-log-hide-legend' => 'Fela færslu',
 	'abusefilter-log-hide-id' => 'Auðkenni færslunnar:',
@@ -16820,6 +16828,7 @@ $messages['km'] = array(
 	'abusefilter-log-details-ip' => 'អាសយដ្ឋាន IP ដើមហេតុ',
 	'abusefilter-log-noactions' => 'ទទេ',
 	'abusefilter-log-linkoncontribs' => 'កំណត់ហេតុ​នៃ​ការបំពានច្បាប់',
+	'abusefilter-log-hide' => 'លាក់ ឬ បង្ហាញ',
 	'abusefilter-log-hide-reason' => 'មូលហេតុ៖',
 	'abusefilter-management' => 'គ្រប់គ្រងតម្រងការបំពានច្បាប់',
 	'abusefilter-list' => 'តម្រងទាំងអស់',
@@ -18492,6 +18501,7 @@ Filterbesjrieving: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'filterlogbook',
 	'abusefilter-log-linkoncontribs-text' => 'Filterlogbook veur deze gebroeker',
 	'abusefilter-log-hidden' => '(meljing verbórge)',
+	'abusefilter-log-hide' => 'tuin of verberg',
 	'abusefilter-log-details-hidden' => 'Doe kins de details van dees meljing neet bekieke ómdet dees verbórge is.',
 	'abusefilter-log-hide-legend' => 'Verberg logbookregel',
 	'abusefilter-log-hide-id' => 'Logbookmeljingsnómmer:',
@@ -18921,6 +18931,7 @@ Filtro aprašymas: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'piktnaudžiavimų protokolas',
 	'abusefilter-log-linkoncontribs-text' => 'Šio naudotojo piktnaudžiavimų protokolas',
 	'abusefilter-log-hidden' => '(paslėptas įrašas)',
+	'abusefilter-log-hide' => 'slėpti arba neslėpti',
 	'abusefilter-log-details-hidden' => 'Negalima peržiūrėti informaciją apie šį įrašą, nes jis yra paslėptas nuo viešo peržiūrėjimo.',
 	'abusefilter-log-hide-legend' => 'Slėpti žurnalo įrašą',
 	'abusefilter-log-hide-id' => 'Žurnalo įrašo ID:',
@@ -19342,6 +19353,7 @@ Filtra apraksts: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'ļaunprātīgo izmantošanu reģistrs',
 	'abusefilter-log-linkoncontribs-text' => 'Ļaunprātīgo izmaiņu reģistrs šim lietotājam',
 	'abusefilter-log-hidden' => '(slēpts ieraksts)',
+	'abusefilter-log-hide' => 'paslēpt vai parādīt',
 	'abusefilter-log-details-hidden' => 'Sīkāka informācija par šo ierakstu nav publiski pieejama.',
 	'abusefilter-log-hide-legend' => 'Slēpt reģistra ierakstu',
 	'abusefilter-log-hide-id' => 'Reģistra ieraksta ID:',
@@ -19695,6 +19707,7 @@ $messages['mg'] = array(
 	'abusefilter-log-noactions' => 'tsy misy',
 	'abusefilter-log-details-diff' => "Fiovana natao tao amin'ilay fanovana",
 	'abusefilter-log-hidden' => '(iditra nasitrika)',
+	'abusefilter-log-hide' => 'asitrika na aseho',
 	'abusefilter-log-hide-reason' => 'Antony :',
 	'abusefilter-logentry-suppress' => 'nanitrika [ny] [[$1]]',
 	'abusefilter-logentry-unsuppress' => "nanala ny fanitrihana [an'i] [[$1]]",
@@ -22318,6 +22331,7 @@ $messages['nds-nl'] = array(
 	'abusefilter-log-noactions' => 'gien',
 	'abusefilter-log-linkoncontribs' => 'filterlogboek',
 	'abusefilter-log-hidden' => '(melding verbörgen)',
+	'abusefilter-log-hide' => 'verbargen of laoten zien',
 	'abusefilter-log-hide-legend' => 'Logboekregel verbargen',
 	'abusefilter-log-hide-id' => 'Logboekmeldingsnummer:',
 	'abusefilter-log-hide-reason' => 'Reden:',
@@ -22484,6 +22498,7 @@ $messages['ne'] = array(
 	'abusefilter-log-details-diff' => 'सम्पादनमा गरिएका परिवर्तनहरु',
 	'abusefilter-log-linkoncontribs' => 'दुर्व्यवहार लग',
 	'abusefilter-log-hidden' => '(प्रविष्टि लुकाइएको)',
+	'abusefilter-log-hide' => 'लुकाउने अथवा देखाउने',
 	'abusefilter-log-hide-legend' => 'लग प्रविष्टि लुकाउने',
 	'abusefilter-log-hide-reason' => 'कारण:',
 	'abusefilter-logentry-suppress' => 'लुकेका "[[$1]]"',
@@ -22751,6 +22766,7 @@ Filterbeschrijving: $7 ($8)',
 	'abusefilter-log-hide-forbidden' => 'U hebt niet de juiste rechten om meldingen in het filterlogboek te verbergen.',
 	'abusefilter-logentry-suppress' => 'heeft [[$1]] verborgen',
 	'abusefilter-logentry-unsuppress' => 'heeft [[$1]] zichtbaar gemaakt',
+	'logentry-abusefilter-hit' => '$1 heeft $4 geactiveerd door de handeling "$5" op $3". Uitgevoerde acties: $6 ($7)',
 	'abusefilter-management' => 'Beheer van filters',
 	'abusefilter-list' => 'Alle filters',
 	'abusefilter-list-id' => 'Filternummer',
@@ -25596,9 +25612,9 @@ $messages['ps'] = array(
 	'abusefilter-log-search-submit' => 'پلټل',
 	'abusefilter-log-detailedentry-local' => 'چاڼګر $1',
 	'abusefilter-log-detailslink' => 'ځانګړنې',
-	'abusefilter-log-diff' => 'توپير',
 	'abusefilter-log-details-val' => 'ارزښت',
 	'abusefilter-log-noactions' => 'هېڅ',
+	'abusefilter-log-hide' => 'پټول يا ښکاره کول',
 	'abusefilter-log-hide-reason' => 'سبب:',
 	'abusefilter-logentry-suppress' => '"[[$1]]" پټول',
 	'abusefilter-logentry-unsuppress' => '"[[$1]]" ناپټول',
@@ -28614,8 +28630,11 @@ $messages['sc'] = array(
 
 /** Sicilian (Sicilianu)
  * @author Aushulz
+ * @author Gmelfi
  */
 $messages['scn'] = array(
+	'abuselog' => 'Riggistru dû filtru anti abbusi',
+	'abusefilter-blocker' => 'Filtru anti abusi',
 	'abusefilter-log-search-user' => 'Utenti:',
 	'abusefilter-log-search-filter' => 'ID firtru:',
 	'abusefilter-log-search-title' => 'Tìtulu:',
@@ -28653,6 +28672,7 @@ $messages['scn'] = array(
 	'abusefilter-edit-builder-op-bool-and' => 'E (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'O (|)',
 	'abusefilter-edit-builder-group-funcs' => 'Funzioni',
+	'abusefilter-edit-builder-funcs-specialratio' => 'Carattiri spiciali supra carattiri tutali (specialratio)',
 	'abusefilter-edit-builder-group-vars' => 'Variabbili',
 	'abusefilter-edit-builder-vars-action' => 'Azzioni',
 	'abusefilter-edit-builder-vars-newsize' => 'Nova grannizza di la paggina',
@@ -29918,6 +29938,7 @@ Përshkrimi i Filtrit: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'Shpërdoro gjurmët e kyçjes',
 	'abusefilter-log-linkoncontribs-text' => 'Shpërdoro gjurmët e kyçjes për këtë përdorues',
 	'abusefilter-log-hidden' => '(të dhënat e fshehura)',
+	'abusefilter-log-hide' => 'Fsheh ose trego',
 	'abusefilter-log-details-hidden' => 'Nuk mund të shihni detajet për këtë shenim sepse është e fshehur për vështrim publik',
 	'abusefilter-log-hide-legend' => 'Fshih shënimet për gjurmët e kyqjes',
 	'abusefilter-log-hide-id' => 'ID shënimet e kyçjes',
@@ -31097,6 +31118,7 @@ $messages['su'] = array(
 	'abusefilter-log-details-ip' => 'Alamat IP asal',
 	'abusefilter-log-noactions' => 'kosong',
 	'abusefilter-log-hidden' => '(éntri disumputkeun)',
+	'abusefilter-log-hide' => 'sumputkeun atawa témbongkeun',
 	'abusefilter-log-hide-legend' => 'Sumputkeun éntri log',
 	'abusefilter-log-hide-id' => 'ID éntri log:',
 	'abusefilter-log-hide-reason' => 'Alesan:',
@@ -31646,6 +31668,7 @@ Filter description: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'முறைகேட்டுப் பதிவேடு',
 	'abusefilter-log-linkoncontribs-text' => 'இப் பயனரின் முறைகேட்டுப் பதிவேடு',
 	'abusefilter-log-hidden' => '(நுழைவு மறைக்கப்பட்டுள்ளது)',
+	'abusefilter-log-hide' => 'மறை அல்லது காட்டு',
 	'abusefilter-log-details-hidden' => 'பொதுவில் காட்டப்படாத பதிவு என்பதால் இதன் விரிவான குறிப்புகளை நீங்கள் பார்க்க இயலாது',
 	'abusefilter-log-hide-legend' => 'பதிவேடு உள்ளீட்டை மறை',
 	'abusefilter-log-hide-id' => 'பதிவின் நுழைவு அடையாளம்',
@@ -32152,7 +32175,7 @@ $messages['tg-cyrl'] = array(
 	'abusefilter-list-edit' => 'Вироиш',
 );
 
-/** Tajik (Latin script) (tojikī)
+/** Tajik (Latin script) (Tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -32253,6 +32276,7 @@ $messages['th'] = array(
 	'abusefilter-log-linkoncontribs' => 'ประวัติการละเมิดกฎ',
 	'abusefilter-log-linkoncontribs-text' => 'บันทึกความไม่เหมาะสมสำหรับผู้ใช้นี้',
 	'abusefilter-log-hidden' => '(รายการถูกซ่อนไว้)',
+	'abusefilter-log-hide' => 'ซ่อนหรือยกเลิกการซ่อน',
 	'abusefilter-log-cannot-see-details' => 'คุณไม่ได้รับอนุญาตให้เห็นรายละเอียดทุกรายการ',
 	'abusefilter-log-details-hidden' => 'คุณไม่สามารถดูรายละเอียดของรายการนี้ เพราะรายการนี้ถูกซ่อนจากการปรากฏแบบสาธารณะ',
 	'abusefilter-log-hide-legend' => 'ซ่อนรายการบันทึก',
@@ -33641,6 +33665,7 @@ $messages['ug-arab'] = array(
 	'abusefilter-log-linkoncontribs' => 'سۈيىئىستىمال خاتىرىسى',
 	'abusefilter-log-linkoncontribs-text' => 'بۇ ئىشلەتكۈچىنىڭ سۈيىئىستىمال خاتىرىسى',
 	'abusefilter-log-hidden' => '(تۈر يوشۇرۇن)',
+	'abusefilter-log-hide' => 'يوشۇر ياكى يوشۇرما',
 	'abusefilter-log-details-hidden' => 'سىز بۇ تۈرنىڭ تەپسىلاتىنى كۆرەلمەيسىز چۈنكى بۇ تۈر ئاممىۋى كۆرۈنۈشتىن يوشۇرۇلغان.',
 	'abusefilter-log-hide-legend' => 'خاتىرە تۈرىنى يوشۇر',
 	'abusefilter-log-hide-id' => 'خاتىرە تۈر ID سى:',
@@ -33888,7 +33913,7 @@ $1 ماس كەلگەن مەشغۇلات چېكىگە يەتتى.",
 	'abusefilter-log-name' => 'سۈيىئىستىمال سۈزگۈچ خاتىرىسى',
 );
 
-/** Uyghur (Latin script) (Uyghurche‎) */
+/** Uyghur (Latin script) (Uyghurche) */
 $messages['ug-latn'] = array(
 	'abusefilter-examine-submit' => 'Izdash',
 );
@@ -34717,7 +34742,7 @@ Copia da la casèla che apare e copia in sta casèla qua, quindi struca "{{int:a
 	'abusefilter-import-submit' => 'Inporta dati',
 );
 
-/** Veps (Vepsän kel')
+/** Veps (Vepsän kel’)
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
