@@ -15,9 +15,11 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter (
 	af_deleted tinyint(1) NOT NULL DEFAULT 0,
 	af_actions varchar(255) NOT NULL DEFAULT '',
 	af_global tinyint(1) NOT NULL DEFAULT 0,
+	af_group varchar(64) binary NOT NULL DEFAULT 'default',
 
 	PRIMARY KEY (af_id),
-	KEY (af_user)
+	KEY (af_user),
+	KEY (af_group,af_enabled,af_id)
 ) /*$wgDBTableOptions*/;
 
 CREATE TABLE /*$wgDBprefix*/abuse_filter_action (
@@ -70,6 +72,7 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter_history (
 	afh_actions BLOB,
 	afh_deleted tinyint(1) NOT NULL DEFAULT 0,
 	afh_changed_fields varchar(255) NOT NULL DEFAULT '',
+	afh_group varchar(64) binary NULL,
 
 	PRIMARY KEY (afh_id),
 	KEY (afh_filter),

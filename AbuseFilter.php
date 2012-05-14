@@ -169,3 +169,6 @@ $wgAbuseFilterBlockDuration = 'indefinite';
 
 // Callback functions for custom actions
 $wgAbuseFilterCustomActionsHandlers = array();
+
+// Valid "filter groups" – used for applying edit filters to certain types of actions
+$wgAbuseFilterValidGroups = array('default');

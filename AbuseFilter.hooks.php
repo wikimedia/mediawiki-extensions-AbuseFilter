@@ -244,6 +244,8 @@ class AbuseFilterHooks {
 			} else {
 				$updater->addExtensionUpdate( array( 'addIndex', 'abuse_filter_log', 'afl_filter_timestamp', "$dir/db_patches/patch-fix-indexes.sqlite.sql", true ) );
 			}
+
+			$updater->addExtensionUpdate( array('addField', 'abuse_filter', 'af_group', "$dir/db_patches/patch-af_group.sql", true ) );
 		} elseif ( $updater->getDB()->getType() == 'postgres' ) {
 			$updater->addExtensionUpdate( array( 'addTable', 'abuse_filter', "$dir/abusefilter.tables.pg.sql", true ) );
 			$updater->addExtensionUpdate( array( 'addTable', 'abuse_filter_history', "$dir/db_patches/patch-abuse_filter_history.pg.sql", true ) );

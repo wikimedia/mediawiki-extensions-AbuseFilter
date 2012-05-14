@@ -103,7 +103,7 @@ class AbuseFilterHistoryPager extends TablePager {
 			'afh_public_comments' => 'abusefilter-history-public',
 			'afh_flags' => 'abusefilter-history-flags',
 			'afh_actions' => 'abusefilter-history-actions',
-			'afh_id' => 'abusefilter-history-diff'
+			'afh_id' => 'abusefilter-history-diff',
 		);
 
 		if ( !$this->mFilter ) {

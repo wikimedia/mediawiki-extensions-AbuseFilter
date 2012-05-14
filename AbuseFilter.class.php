@@ -19,7 +19,8 @@ class AbuseFilter {
 		'af_comments' => 'afh_comments',
 		'af_public_comments' => 'afh_public_comments',
 		'af_deleted' => 'afh_deleted',
-		'af_id' => 'afh_filter'
+		'af_id' => 'afh_filter',
+		'af_group' => 'afh_group',
 	);
 	public static $builderValues = array(
 		'op-arithmetic' => array(
@@ -369,10 +370,11 @@ class AbuseFilter {
 	 * Returns an associative array of filters which were tripped
 	 *
 	 * @param $vars array
+	 * @param $group The filter group to check against.
 	 *
 	 * @return array
 	 */
-	public static function checkAllFilters( $vars ) {
+	public static function checkAllFilters( $vars, $group = 'default' ) {
 		// Fetch from the database.
 		wfProfileIn( __METHOD__ );
 
@@ -382,7 +384,11 @@ class AbuseFilter {
 		$res = $dbr->select(
 			'abuse_filter',
 			'*',
-			array( 'af_enabled' => 1, 'af_deleted' => 0 ),
+			array(
+				'af_enabled' => 1,
+				'af_deleted' => 0,
+				'af_group' => $group,
+			),
 			__METHOD__
 		);
 
@@ -400,7 +406,8 @@ class AbuseFilter {
 				array(
 					'af_enabled' => 1,
 					'af_deleted' => 0,
-					'af_global' => 1
+					'af_global' => 1,
+					'af_group' => $group,
 				),
 				__METHOD__
 			);
@@ -1536,6 +1543,7 @@ class AbuseFilter {
 			'af_enabled',
 			'af_hidden',
 			'af_global',
+			'af_group',
 		);
 		$differences = array();
 
@@ -1919,5 +1927,16 @@ class AbuseFilter {
 			array( 'af_id' => $filterID ),
 			__METHOD__
 		);
+	}
+
+	/**
+	 * Gives either the user-specified name for a group,
+	 * or spits the input back out
+	 * @param $group String: Internal name of the filter group
+	 * @return String A name for that filter group, or the input.
+	 */
+	static function nameGroup($group) {
+		$msg = "abusefilter-group-$group";
+		return wfMessage($msg)->exists() ? wfMessage($msg)->escaped() : $group;
 	}
 }
