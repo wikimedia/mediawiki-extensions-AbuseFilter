@@ -32,10 +32,21 @@ $specialPageAliases['bg'] = array(
 	'AbuseFilter' => array( 'Филтър_срещу_злоупотреби' ),
 );
 
+/** Banjar (Bahasa Banjar) */
+$specialPageAliases['bjn'] = array(
+	'AbuseLog' => array( 'Catatan_panyalahgunaan' ),
+	'AbuseFilter' => array( 'Filter_panyalahgunaan' ),
+);
+
 /** Bosnian (Bosanski) */
 $specialPageAliases['bs'] = array(
 	'AbuseLog' => array( 'ZapisZloupotrebe' ),
 	'AbuseFilter' => array( 'FilterZloupotrebe' ),
+);
+
+/** Catalan (Català) */
+$specialPageAliases['ca'] = array(
+	'AbuseLog' => array( 'Registre_dels_abusos' ),
 );
 
 /** Czech (Česky) */
@@ -126,6 +137,12 @@ $specialPageAliases['gu'] = array(
 $specialPageAliases['he'] = array(
 	'AbuseLog' => array( 'יומן_ההשחתות' ),
 	'AbuseFilter' => array( 'מסנן_ההשחתות' ),
+);
+
+/** Hindi (हिन्दी) */
+$specialPageAliases['hi'] = array(
+	'AbuseLog' => array( 'दुरुपयोग_लॉग', 'दुरुपयोग_लौग' ),
+	'AbuseFilter' => array( 'दुरुपयोग_फ़िल्टर', 'दुरुपयोग_फिल्टर' ),
 );
 
 /** Croatian (Hrvatski) */
@@ -226,8 +243,8 @@ $specialPageAliases['ml'] = array(
 
 /** Marathi (मराठी) */
 $specialPageAliases['mr'] = array(
-	'AbuseLog' => array( 'दुरूपयोगनोंदी' ),
-	'AbuseFilter' => array( 'दुरूपयोगगाळणी' ),
+	'AbuseLog' => array( 'दुरूपयोग_नोंदी' ),
+	'AbuseFilter' => array( 'दुरूपयोग_गाळणी' ),
 );
 
 /** Maltese (Malti) */
