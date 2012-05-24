@@ -1378,6 +1378,7 @@ $messages['ar'] = array(
 	'abusefilter-log-hide-forbidden' => 'ليس لديك صلاحية لإخفاء إدخالات سجل الإساءة',
 	'abusefilter-logentry-suppress' => 'تم إخفاء "[[$1]]"',
 	'abusefilter-logentry-unsuppress' => 'تم إظهار "[[$1]]"',
+	'logentry-abusefilter-hit' => '$1 أثار $4، تنفيذ الإجراء "$5" على $3. الإجراءات المتخذة: $6 ($7)',
 	'abusefilter-management' => 'التحكم بمرشح الإساءة',
 	'abusefilter-list' => 'كل المرشحات',
 	'abusefilter-list-id' => 'رقم المُرشِّح',
@@ -34343,6 +34344,7 @@ $messages['ur'] = array(
 
 /** Vèneto (Vèneto)
  * @author Candalua
+ * @author Frigotoni
  * @author Nemo bis
  * @author Nick1915
  */
@@ -34496,7 +34498,7 @@ Xe stà ragiunto el limite massimo de corispondense, pari al $1% de le azion.",
 	'abusefilter-edit-rules' => 'Condission:',
 	'abusefilter-edit-notes' => "Note:
 :''(private)''",
-	'abusefilter-edit-lastmod' => "Fltro modifegà l'ultima olta:",
+	'abusefilter-edit-lastmod' => "Filtro modifegà l'ultima olta:",
 	'abusefilter-edit-lastmod-text' => '$1 da $2',
 	'abusefilter-edit-hitcount' => 'Corespondense par el filtro:',
 	'abusefilter-edit-consequences' => 'Azioni in caso de corispondensa',
