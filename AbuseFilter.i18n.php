@@ -6726,14 +6726,14 @@ Deskripsiyonê filitreyî: $7 ($8)',
 	'abusefilter-new' => 'Yew filitreyê newî viraze',
 	'abusefilter-return' => 'Îdareyê filitreyî ra reyna şi.',
 	'abusefilter-status-global' => 'Global',
-	'abusefilter-list-options' => 'Tercihan',
+	'abusefilter-list-options' => 'Weçinegi',
 	'abusefilter-list-options-deleted' => 'Filtreyan ke wedariya',
 	'abusefilter-list-options-deleted-only' => 'Teyna filitreyê wedariyayî bimucne',
 	'abusefilter-list-options-deleted-hide' => 'Filitreyê wedariyayî binimne',
 	'abusefilter-list-options-deleted-show' => 'Filitreyê wedariyayî de biker',
 	'abusefilter-list-options-disabled' => 'Filitreyê qefilnaye',
 	'abusefilter-list-options-hidedisabled' => 'Filitreyê qefilnaye binimne',
-	'abusefilter-list-options-submit' => 'Demeye',
+	'abusefilter-list-options-submit' => 'Newen ke',
 	'abusefilter-tools-text' => 'wexta ke filtreya suistimali formule bena nê hacet lazım beni.',
 	'abusefilter-tools-expr' => 'Testoğê Expressionî',
 	'abusefilter-tools-submitexpr' => 'Xulasa',
@@ -7466,6 +7466,7 @@ $messages['ee'] = array(
  * @author Glavkos
  * @author K sal 15
  * @author Konsnos
+ * @author Lou
  * @author Omnipaedista
  * @author ZaDiak
  */
@@ -7550,6 +7551,7 @@ $messages['el'] = array(
 	'abusefilter-log-linkoncontribs-text' => 'Ιστορικό καταχρήσεων για αυτόν τον χρήστη',
 	'abusefilter-log-hidden' => '(κρυφή εγγραφή)',
 	'abusefilter-log-hide' => 'απόκρυψη ή επανεμφάνιση',
+	'abusefilter-log-cannot-see-details' => 'Δεν έχετε δικαιώματα για να δείτε λεπτομέρειες σχετικά με αυτή την εγγραφή.',
 	'abusefilter-log-details-hidden' => 'Δεν μπορείτε να δείτε τις λεπτομέρειες για αυτήν την καταχώρηση, διότι είναι κρυμμένες από τη δημόσια θέα.',
 	'abusefilter-log-hide-legend' => 'Αποκρύψτε το αρχείο καταγραφής',
 	'abusefilter-log-hide-id' => 'Σύνδεση εισόδου ID:',
@@ -17013,6 +17015,7 @@ $messages['kn'] = array(
  * @author Kwj2772
  * @author Pakman
  * @author Yknok29
+ * @author 아라
  */
 $messages['ko'] = array(
 	'abusefilter-desc' => '사용자 편집에 문제가 있는지를 자동으로 검사하는 기능',
@@ -17103,6 +17106,7 @@ $messages['ko'] = array(
 	'abusefilter-log-hide-forbidden' => '당신은 부정 행위 기록 항목을 숨길 권한이 없습니다.',
 	'abusefilter-logentry-suppress' => '[[$1]]을 비공개함',
 	'abusefilter-logentry-unsuppress' => '[[$1]]을 공개함',
+	'logentry-abusefilter-hit' => '$1(이)가 $4(을)를 게재했고 $3에 의해 "$5" 작업을 수행함. 조치: $6 ($7)',
 	'abusefilter-management' => '부정 행위 방지 필터 관리',
 	'abusefilter-list' => '모든 필터',
 	'abusefilter-list-id' => '필터 ID',
@@ -19819,7 +19823,7 @@ $messages['mk'] = array(
 	'right-abusefilter-log-detail' => 'Прегледување на подробности во записите од дневникот на злоупотреби',
 	'right-abusefilter-private' => 'Прегледување на приватни податоци во дневникот на злоупотреби',
 	'right-abusefilter-modify-restricted' => 'Менување на филтри за злоупотреби со ограничени можности за дејствување',
-	'right-abusefilter-revert' => 'Враќање на сите промени на даден филтер за злоупотреби',
+	'right-abusefilter-revert' => 'Отповикување на сите промени на даден филтер за злоупотреби',
 	'right-abusefilter-view-private' => 'Прегледување на филтри за злоупотреби означени како приватни',
 	'right-abusefilter-hide-log' => 'Криење записи во дневникот на злоупотреби',
 	'right-abusefilter-hidden-log' => 'Прегледување на скриени записи во дневникот на злоупотреби',
@@ -19829,7 +19833,7 @@ $messages['mk'] = array(
 	'action-abusefilter-log-detail' => 'прегледување на подробности од записите во дневникот на злоупотреби',
 	'action-abusefilter-private' => 'прегледување на приватни податоци во дневникот на злоупотреби',
 	'action-abusefilter-modify-restricted' => 'менување на филтри за злоупотреби со ограничени можности за дејствување',
-	'action-abusefilter-revert' => 'враќање на сите промени на даден филтер за злоупотреби',
+	'action-abusefilter-revert' => 'отповикување на сите промени извршени од даден филтер за злоупотреби',
 	'action-abusefilter-view-private' => 'прегледување на филтри за злоупотреби означени како приватни',
 	'abusefilter-log' => 'Дневник на филтерот за злоупотреби',
 	'abusefilter-log-summary' => 'Овој дневник прикажува список на сите дејства уловени од филтрите.',
@@ -20115,11 +20119,11 @@ $messages['mk'] = array(
 	'abusefilter-action-rangeblock' => 'Опсежен блок',
 	'abusefilter-action-disallow' => 'Забрани',
 	'abusefilter-revert-title' => 'Врати ги сите промени направени од филтерот $1',
-	'abusefilter-revert-intro' => 'Овој образец служи за враќање на сите промени направени од филтерот за злоупотреби заради филтерот $1.
-Ве молиме внимавајте како ја користите оваа алатка.',
+	'abusefilter-revert-intro' => 'Овој образец служи за отповикување на сите промени направени од филтерот за злоупотреби поради филтерот $1.
+Ве молиме, внимавајте како ја користите оваа алатка.',
 	'abusefilter-revert-preview-item' => '$1: $2 направи $3 на $4.
-Дејства за враќање: $5 ($6)',
-	'abusefilter-revert-search-legend' => 'Одберете дејства на филтерот за враќање',
+Дејства за отповикување: $5 ($6)',
+	'abusefilter-revert-search-legend' => 'Изберете ги дејствата на филтерот што треба да се отповикаат',
 	'abusefilter-revert-periodstart' => 'Почеток на периодот:',
 	'abusefilter-revert-periodend' => 'Крај на периодот:',
 	'abusefilter-revert-search' => 'Одбери дејства',
@@ -20128,9 +20132,9 @@ $messages['mk'] = array(
 Проверете ги внимателно, па кликнете на „потврди“ за да го потврдите избраното.',
 	'abusefilter-revert-confirm' => 'Потврди',
 	'abusefilter-revert-success' => 'Ги вративте сите дејства извршени од филтерот за злоупотреби поради [[Special:AbuseFilter/$1|филтерот $1]].',
-	'abusefilter-revert-reason' => 'Автоматско враќање на сите постапки на филтерот за злоупотреби заради филтерот $1.
+	'abusefilter-revert-reason' => 'Автоматско отповикување на сите постапки на филтерот за злоупотреби поради филтерот $1.
 Наведена причина: $2',
-	'abusefilter-revert-reasonfield' => 'Причина за враќањето:',
+	'abusefilter-revert-reasonfield' => 'Причина за отповикувањето:',
 	'abusefilter-test' => 'Испробување на филтер според претходни уредувања',
 	'abusefilter-test-intro' => 'Оваа страница ви овозможува да проверите филтер внесен во полето подолу според {{PLURAL:$1|последната $1 промена|последните $1  промени}}.
 За да вчитате постоечки филтер, внесете го неговиот ID-број под полето за уредување, и кликнете на копчето „Вчитај“.',
@@ -24380,7 +24384,7 @@ $messages['pdt'] = array(
  */
 $messages['pfl'] = array(
 	'abusefilter-desc' => 'Bnudzd selbschddedisch Heuristike uff Änarunge',
-	'abusefilter' => 'Filda-Oischdellunge fa Missbraisch',
+	'abusefilter' => 'Filda-Oischdellunge gesche Missbraisch',
 	'abuselog' => 'Logbuch fa Missbraisch',
 	'abusefilter-intro' => 'Willkomme uffde Owaflesch fa die Hondhawung vunde Missbraisch-Filda.
 Missbraisch-Filda sind selbschdschdendischi Meschanisme, wu vun allä Heuristike uff alle Änarunge oawende dun.
