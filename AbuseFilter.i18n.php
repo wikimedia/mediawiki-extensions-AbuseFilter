@@ -17083,7 +17083,7 @@ $messages['ko'] = array(
 필터 설명: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => '공통 필터 $1',
 	'abusefilter-log-detailedentry-local' => '필터 $1',
-	'abusefilter-log-detailslink' => '자세한 정보',
+	'abusefilter-log-detailslink' => '자세한 사항',
 	'abusefilter-log-hidelink' => '보이기 설정',
 	'abusefilter-log-details-legend' => '로그 $1에 대한 자세한 정보',
 	'abusefilter-log-details-var' => '변수',
@@ -17116,7 +17116,7 @@ $messages['ko'] = array(
 	'abusefilter-list-visibility' => '공개 여부',
 	'abusefilter-list-hitcount' => '적발 건수',
 	'abusefilter-list-edit' => '편집',
-	'abusefilter-list-details' => '자세한 정보',
+	'abusefilter-list-details' => '자세한 사항',
 	'abusefilter-list-limit' => '페이지당 필터 개수',
 	'abusefilter-list-lastmodified' => '마지막 수정',
 	'abusefilter-hidden' => '비공개',
@@ -21522,9 +21522,11 @@ $messages['myv'] = array(
 );
 
 /** Mazanderani (مازِرونی)
+ * @author Mehdi
  * @author محک
  */
 $messages['mzn'] = array(
+	'abusefilter-edit-tools' => 'ابزارون:',
 	'abusefilter-test-load' => 'باربی‌یشتن',
 );
 
