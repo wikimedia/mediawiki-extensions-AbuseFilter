@@ -27390,6 +27390,7 @@ Copià da \'a caselle de teste ce vide, e \'ngolle jidde sus a quiste cambe de t
  * @author AlexSm
  * @author Ferrer
  * @author HalanTul
+ * @author Kalan
  * @author Lockal
  * @author MaxSem
  * @author VasilievVV
@@ -27633,6 +27634,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-builder-funcs-substr' => 'Подстрока (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'Положение подстроки в строке (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'Замена подстроки в строке (str_replace)',
+	'abusefilter-edit-builder-funcs-rescape' => 'Экранирование строки для использования в регулярных выражениях (rescape)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Установить переменную (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Переменные',
 	'abusefilter-edit-builder-vars-accountname' => 'Имя учётной записи (при создании учётной записи)',
