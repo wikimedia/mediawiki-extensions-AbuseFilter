@@ -11605,6 +11605,7 @@ Churzbschryybig vu dr verletzte Regle: $1',
 	'abusefilter-log-hide-forbidden' => 'Du derfsch d Yytreg vum Missbruuchsfilter-Logbuech nit uusblände.',
 	'abusefilter-logentry-suppress' => 'het [[$1]] uusbländet',
 	'abusefilter-logentry-unsuppress' => 'het [[$1]] sichtbar gmacht',
+	'logentry-abusefilter-hit' => '$1 het bim Ussfüere vo de Aktion „$5“ uff $3 de Filter $4 ussglöst. Usswirkig: $6 ($7)',
 	'abusefilter-management' => 'Missbruuchsfilter-Verwaltig',
 	'abusefilter-list' => 'Alli Filter',
 	'abusefilter-list-id' => 'Filter-ID',
@@ -27386,7 +27387,7 @@ Copià da \'a caselle de teste ce vide, e \'ngolle jidde sus a quiste cambe de t
 	'abusefilter-import-submit' => "'Mborte date",
 );
 
-/** Russian (Русский)
+/** Russian (русский)
  * @author Ahonc
  * @author Aleksandrit
  * @author AlexSm
