@@ -599,7 +599,7 @@ $messages['qqq'] = array(
 * $1 is a link to the log ID with the log ID as description.',
 	'logentry-abusefilter-hit' => 'This message is for a log entry. Parameters:
 * $1 user
-* $3 link to page the action that triggered the filter was made on
+* $3 link to the page, that the action that triggered the filter was made on
 * $4 link to filter
 * $5 action by user
 * $6 actions taken by the filter
@@ -777,7 +777,7 @@ Functional explanation: rmdoubles removes repeated characters in the argument, a
 	'abusefilter-edit-builder-funcs-substr' => "{{doc-important|Do not translate \"'''substr'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-strpos' => "{{doc-important|Do not translate \"'''strpos'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-str_replace' => "{{doc-important|Do not translate \"'''str_replace'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
-	'abusefilter-edit-builder-funcs-rescape' => "{{doc-important|Do not translate \"'''rescape'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
+	'abusefilter-edit-builder-funcs-rescape' => "{{doc-important|Do not translate \"'''rescape'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	'abusefilter-edit-builder-group-vars' => 'Group entry in dropdown menu. {{Identical|Variable}}',
 	'abusefilter-edit-builder-vars-accountname' => 'This variable is used only during account creation and contains the username of the newly created account. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}.',
 	'abusefilter-edit-builder-vars-action' => ' Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}. {{Identical|Action}}',
@@ -6500,7 +6500,7 @@ Bitte überprüfe sie sorgfältig und klicke auf „Bestätigen“, um deine Aus
 	'abusefilter-revert-success' => 'Du hast alle Aktionen des Missbrauchsfilters, die aufgrund von [[Special:AbuseFilter/$1|Filter $1]] vorgenommen wurden, rückgängig gemacht.',
 	'abusefilter-revert-reason' => 'Automatisches Zurücksetzen aller Aktionen des Missbrauchsfilters aufgrund von Filter $1.
 Angegebener Grund: $2',
-	'abusefilter-revert-reasonfield' => 'Grund für das Zurücksetzen:',
+	'abusefilter-revert-reasonfield' => 'Grund für das Rückgängigmachen:',
 	'abusefilter-test' => 'Filter testen',
 	'abusefilter-test-intro' => 'Mit dieser Seite kann ein Filter probeweise auf die {{PLURAL:$1|letzte Änderung|letzten $1 Änderungen}} angewendet werden.
 Um einen bestehenden Filter zu laden, gib seine Filter-ID in das Feld unterhalb des Bearbeiten-Textfeldes ein und klicke auf die „Laden“-Schaltfläche.',
@@ -16025,7 +16025,7 @@ $messages['ja'] = array(
 	'abusefilter-intro' => '不正利用フィルターの管理インターフェイスにようこそ。
 不正利用フィルターは、あらゆる操作に対して自動的な発見的方法を適用する、自動化されたソフトウェア機構です。
 このインターフェイスでは、定義済みのフィルターを一覧表示してそれらを変更できます。',
-	'abusefilter-mustbeeditor' => 'セキュリティ上の理由から、不正利用フィルターを変更できる権限を持つ利用者だけがこのインターフェースを使用できます。',
+	'abusefilter-mustbeeditor' => 'セキュリティ上の理由から、不正利用フィルターを変更できる権限を持つ利用者だけがこのインターフェイスを使用できます。',
 	'abusefilter-warning' => "'''警告'''：行われた操作は自動的に有害と判断されました。
 建設的でない編集は速やかに差し戻されます。
 被害程度の大きい破壊的編集や頻繁な破壊行為は、アカウントまたはIPアドレスのブロックにつながります。
@@ -16039,7 +16039,7 @@ $messages['ja'] = array(
 この措置が誤りであるならば、管理者に連絡してください。
 操作に対して発動した違反規則の概略は次の通りです：$1',
 	'abusefilter-degrouped' => '行なわれた操作は自動的に有害と判断されました。
-そのため操作は実行されず、また、アカウントが乗っ取られていると判断され、全ての権限が剥奪されました。
+そのため操作は実行されず、また、アカウントが乗っ取られていると判断され、すべての権限が剥奪されました。
 この措置が誤りであると考える場合、この操作についての説明を添えてビューロクラットに連絡し、権限の復帰を依頼してください。
 操作に対して発動した違反規則の概略は次の通りです：$1',
 	'abusefilter-autopromote-blocked' => '行なわれた操作は自動的に有害と判断されたため、実行が中断されました。
@@ -17538,6 +17538,7 @@ Name',
 	'abusefilter-log-linkoncontribs-text' => 'Logbooch fum Meßbruchsfelter för dä Metmaacher',
 	'abusefilter-log-hidden' => '(verstoche Enndraach)',
 	'abusefilter-log-hide' => 'Vershteishe udder aanzeije',
+	'abusefilter-log-cannot-see-details' => 'Do häs nit dat Rääsch, de Einzelheite vun heh däm Endraach ze beloore.',
 	'abusefilter-log-details-hidden' => 'Do kanns de Einzelheite vun däm Enndraach nit beloore, weil dä för de Öffentleschkeit vershtoche es.',
 	'abusefilter-log-hide-legend' => 'Endraach em Logbooch vershteishe',
 	'abusefilter-log-hide-id' => 'Kännong vum Endraach em Logbooch:',
@@ -17546,6 +17547,7 @@ Name',
 	'abusefilter-log-hide-forbidden' => 'Do häs nit et Rääsch, Enndrääsch em Meßbruchsfelter singem Logbooch ze versteishe',
 	'abusefilter-logentry-suppress' => 'hät „[[$1]]“ vershtoche',
 	'abusefilter-logentry-unsuppress' => 'hät „[[$1]]“ wider seeschbaa jemaat',
+	'logentry-abusefilter-hit' => '{{GENDER:$1|Dä|Et}|Dä Metmaacher|De|Dat} lhät met „$5“ op dä Sigg „$3“ dä Felter $4 usjelöös, un dä hät bewirk: $6 ($7)',
 	'abusefilter-management' => 'Meßbruchsfellter Verwallde',
 	'abusefilter-list' => 'All Feltere',
 	'abusefilter-list-id' => 'Felter-Räjel',
@@ -17705,6 +17707,7 @@ Makeerunge sullte koot sin, un et sullte kein Sönderzeijshe dren vörkumme.',
 	'abusefilter-edit-builder-funcs-substr' => 'Ene Deijl vun en Zeishe-Reij (<code lang="en">substr</code>)',
 	'abusefilter-edit-builder-funcs-strpos' => 'De Possizjuhn vun enem Deijl vun en Zeishe-Reij (<code lang="en">strpos</code>)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'Ene Deijl vun en Zeishe-Reij ußtuusche jäje en ander Zeishe-Reij (<code lang="en">str_replace</code>)',
+	'abusefilter-edit-builder-funcs-rescape' => 'Dä Escape string als nomaale Täx en enem rejolääre Ußdrock (<code lang="en>rescape</code>)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Don dä Varijable ene Wäät jevve (<code lang="en">set_var</code>)',
 	'abusefilter-edit-builder-group-vars' => 'Varrijabelle',
 	'abusefilter-edit-builder-vars-accountname' => 'Däm Metmaacher singe Name — wi hä ennjeresht wood',
