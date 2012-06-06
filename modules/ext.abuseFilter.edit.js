@@ -1,7 +1,7 @@
 /**
  * AbuseFilter editing stuff
  */
-new ( function( $, mw ) {
+( function( $, mw ) {
 	/**
 	 * Filter textarea
 	 *
@@ -160,9 +160,11 @@ new ( function( $, mw ) {
 		$.get( mw.config.get('wgScript'), {
 				title: 'MediaWiki:' + message,
 				action: 'render'
-			}, function( data ) {
-				$( '#mw-abusefilter-warn-preview' ).html( data )
-		} );
+			},
+			function( data ) {
+				$( '#mw-abusefilter-warn-preview' ).html( data );
+			}
+		);
 	};
 
 	/**
@@ -198,9 +200,22 @@ new ( function( $, mw ) {
 
 		var $exportBox = $( '#mw-abusefilter-export' );
 		$( '#mw-abusefilter-export-link' ).toggle( function() {
-			$exportBox.show()
+			$exportBox.show();
 		}, function() {
 			$exportBox.hide();
 		} );
+
+		$('#mw-abusefilter-edit-group-input').change( function() {
+			var newVal = mw.config.get('wgAbuseFilterDefaultWarningMessage')[$(this).val()];
+			if ( !$('#mw-abusefilter-action-warn-checkbox').is(':checked') ) {
+				if ($('#mw-abusefilter-warn-message-existing').find("option[value='"+newVal+"']").length ) {
+					$('#mw-abusefilter-warn-message-existing').val(newVal);
+					$('#mw-abusefilter-warn-message-other').val('');
+				} else {
+					$('#mw-abusefilter-warn-message-existing').val('other');
+					$('#mw-abusefilter-warn-message-other').val(newVal);
+				}
+			}
+		});
 	} );
 })( jQuery, mediaWiki );

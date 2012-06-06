@@ -18,6 +18,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$filter = $this->mFilter;
 		$history_id = $this->mHistoryID;
 
+		// Add default warning messages
+		$this->exposeWarningMessages();
+
 		if ( $filter == 'new' && !$user->isAllowed( 'abusefilter-modify' ) ) {
 			$out->addWikiMsg( 'abusefilter-edit-notallowed' );
 			return;
@@ -307,7 +310,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		if ( count($wgAbuseFilterValidGroups) > 1 ) {
 			$groupSelector = new XmlSelect(
 				'wpFilterGroup',
-				'mw-abusefilter-edit-group',
+				'mw-abusefilter-edit-group-input',
 				'default'
 			);
 
@@ -509,21 +512,20 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		foreach ( $wgAbuseFilterAvailableActions as $action ) {
 			$output .= $this->buildConsequenceSelector(
-				$action, $setActions[$action], @$actions[$action]['parameters'] );
+				$action, $setActions[$action], @$actions[$action]['parameters'], $row );
 		}
 
 		return $output;
 	}
 
 	/**
-	 * Builds a selector for a single AbuseFilter action.
-	 * @param $action String identifier for the action.
-	 * Should be in $wgAbuseFilterAvailableActions
-	 * @param $set Whether or not the action is set.
-	 * @param $parameters If the action is set up, the parameters for it.
-	 * @return string HTML text for the action editor, or NULL if the $action is invalid.
+	 * @param $action The action to build an editor for
+	 * @param $set Whether or not the action is activated
+	 * @param $parameters Action parameters
+	 * @param $row abuse_filter row object
+	 * @return string
 	 */
-	function buildConsequenceSelector( $action, $set, $parameters ) {
+	function buildConsequenceSelector( $action, $set, $parameters, $row ) {
 		global $wgAbuseFilterAvailableActions;
 
 		if ( !in_array( $action, $wgAbuseFilterAvailableActions ) ) {
@@ -592,6 +594,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					array( 'disabled' => '1', 'class' => 'mw-abusefilter-action-checkbox' ) );
 				return Xml::tags( 'p', null, $checkbox );
 			case 'warn':
+				global $wgAbuseFilterDefaultWarningMessage;
 				$output = '';
 				$checkbox = Xml::checkLabel(
 					wfMsg( 'abusefilter-edit-action-warn' ),
@@ -600,7 +603,17 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					$set,
 					array( 'class' => 'mw-abusefilter-action-checkbox' ) + $cbReadOnlyAttrib );
 				$output .= Xml::tags( 'p', null, $checkbox );
-				$warnMsg = empty( $set ) ? 'abusefilter-warning' : $parameters[0];
+				if ( $set ) {
+					$warnMsg = $parameters[0];
+				} elseif (
+					$row &&
+					$row->af_group &&
+					isset($wgAbuseFilterDefaultWarningMessage[$row->af_group] )
+				) {
+					$warnMsg = $wgAbuseFilterDefaultWarningMessage[$row->af_group];
+				} else {
+					$warnMsg = 'abusefilter-warning';
+				}
 
 				$warnFields['abusefilter-edit-warn-message'] =
 					$this->getExistingSelector( $warnMsg );
@@ -921,5 +934,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		);
 
 		return AbuseFilter::translateFromHistory( $row );
+	}
+
+	protected function exposeWarningMessages() {
+		global $wgOut, $wgAbuseFilterDefaultWarningMessage;
+		$wgOut->addJsConfigVars( 'wgAbuseFilterDefaultWarningMessage', $wgAbuseFilterDefaultWarningMessage );
 	}
 }

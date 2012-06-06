@@ -173,3 +173,8 @@ $wgAbuseFilterCustomActionsHandlers = array();
 
 // Valid "filter groups" – used for applying edit filters to certain types of actions
 $wgAbuseFilterValidGroups = array('default');
+
+// Default warning messages, per filter group
+$wgAbuseFilterDefaultWarningMessage = array(
+	'default' => 'abusefilter-warning',
+);
