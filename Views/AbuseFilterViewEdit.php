@@ -271,7 +271,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			return;
 		}
 
-		$out->setSubtitle( wfMsg( 'abusefilter-edit-subtitle', $filter, $history_id ) );
+		$out->setSubtitle( wfMsg(
+			$filter === 'new' ? 'abusefilter-edit-subtitle-new' : 'abusefilter-edit-subtitle',
+			$filter, $history_id
+		) );
 
 		// Hide hidden filters.
 		if ( ( ( isset( $row->af_hidden ) && $row->af_hidden ) ||

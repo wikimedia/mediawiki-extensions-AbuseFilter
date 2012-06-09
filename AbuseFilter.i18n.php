@@ -170,6 +170,7 @@ Filter description: $7 ($8)',
 
 	// The edit screen
 	'abusefilter-edit-subtitle' => 'Editing filter $1',
+	'abusefilter-edit-subtitle-new' => 'Creating filter',
 	'abusefilter-edit-oldwarning' => "<strong>You are editing an old version of this filter.
 The statistics quoted are for the most recent version of the filter.
 If you save your changes, you will overwrite all changes since the revision you are editing.</strong> &bull;
@@ -671,6 +672,7 @@ $messages['qqq'] = array(
 * $5 is the number of matched actions
 * $6 is a percentage: $5 / $1 * 100',
 	'abusefilter-edit-subtitle' => 'Page subtitle when editing an abuse filter.',
+	'abusefilter-edit-subtitle-new' => 'Page subtitle when creating an abuse filter',
 	'abusefilter-edit-oldwarning' => 'Warning displayed when editing an older version of a filter.',
 	'abusefilter-edit-status-label' => 'Field label for abuse filter statistics.
 {{Identical|Statistics}}',
