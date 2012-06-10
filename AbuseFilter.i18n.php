@@ -1364,7 +1364,7 @@ $messages['ar'] = array(
 	'abusefilter-log-details-private' => 'بيانات سرية',
 	'abusefilter-log-details-ip' => 'عنوان الأيبي المصدر',
 	'abusefilter-log-noactions' => 'لا شيء',
-	'abusefilter-log-details-diff' => 'التغييرات المعمولة في التعديل',
+	'abusefilter-log-details-diff' => 'التغييرات التي أجريت في التعديل',
 	'abusefilter-log-linkoncontribs' => 'سجل الإساءة',
 	'abusefilter-log-linkoncontribs-text' => 'سجل الإساءة لهذا المستخدم',
 	'abusefilter-log-hidden' => '(السجل مخفي)',
@@ -1621,7 +1621,7 @@ $messages['ar'] = array(
 	'abusefilter-action-rangeblock' => 'منع نطاق',
 	'abusefilter-action-disallow' => 'عدم السماح',
 	'abusefilter-revert-title' => 'استرجاع كامل التعديلات للمرشح $1',
-	'abusefilter-revert-intro' => 'هذه الاستمارة تسمح لك باسترجاع كل التغييرات المعمولة بواسطة مرشح الإساءة بسبب المرشح $1.
+	'abusefilter-revert-intro' => 'هذه الاستمارة تسمح لك باسترجاع كل التغييرات التي أجراها مرشح الإساءة بسبب المرشح $1.
 من فضلك احترس عند استخدام هذه الأداة.',
 	'abusefilter-revert-preview-item' => '$1: $2 عمل $3 في $4.
 الأفعال للاسترجاع: $5 ($6)',
@@ -1645,9 +1645,9 @@ $messages['ar'] = array(
 	'abusefilter-test-submit' => 'اختبار',
 	'abusefilter-test-load' => 'تحميل',
 	'abusefilter-test-user' => 'التغييرات بواسطة المستخدم:',
-	'abusefilter-test-period-start' => 'التغييرات المعمولة بعد:',
-	'abusefilter-test-period-end' => 'التغييرات المعمولة قبل:',
-	'abusefilter-test-page' => 'التغييرات المعمولة للصفحة:',
+	'abusefilter-test-period-start' => 'التغييرات التي أجريت بعد:',
+	'abusefilter-test-period-end' => 'التغييرات التي أجريت قبل:',
+	'abusefilter-test-page' => 'التغييرات التي أجريت على الصفحة:',
 	'abusefilter-test-shownegative' => 'اعرض التغييرات التي لا تطابق المرشح',
 	'abusefilter-test-syntaxerr' => 'المرشح الذي أدخلته يحتوي على خطأ صياغة.
 يمكنك تلقي تفسير كامل بواسطة الضغط على زر "التحقق من الصياغة".',
@@ -1669,14 +1669,14 @@ $messages['ar'] = array(
 	'abusefilter-examine-incompatible' => 'التغيير الذي طلبته غير مدعوم بواسطة مرشح الإساءة',
 	'abusefilter-examine-noresults' => 'لا نتائج تم الحصول عليها لمحددات البحث التي وفرتها.',
 	'abusefilter-topnav' => "'''الإبحار في مرشح الإساءة'''",
-	'abusefilter-topnav-home' => 'البيت',
+	'abusefilter-topnav-home' => 'الرئيسية',
 	'abusefilter-topnav-test' => 'اختبار الباتش',
 	'abusefilter-topnav-examine' => 'افحص التعديلات الماضية',
 	'abusefilter-topnav-log' => 'سجل الإساءة',
 	'abusefilter-topnav-tools' => 'أدوات الإصلاح',
 	'abusefilter-topnav-import' => 'استيراد المرشح',
 	'abusefilter-log-name' => 'سجل مرشح الإساءة',
-	'abusefilter-log-header' => 'هذا السجل يعرض ملخصا للتغييرات المعمولة للمرشحات.
+	'abusefilter-log-header' => 'هذا السجل يعرض ملخصا للتغييرات التي أجريت للمرشحات.
 للتفاصيل الكاملة، انظر [[Special:AbuseFilter/history|قائمة]] تغييرات المرشحات الحديثة.',
 	'abusefilter-log-entry-modify' => 'عدل $1 ($2)',
 	'abusefilter-log-noresults' => 'لا توجد نتائج.',
@@ -6734,7 +6734,7 @@ Deskripsiyonê filitreyî: $7 ($8)',
 	'abusefilter-list-options-deleted-show' => 'Filitreyê wedariyayî de biker',
 	'abusefilter-list-options-disabled' => 'Filitreyê qefilnaye',
 	'abusefilter-list-options-hidedisabled' => 'Filitreyê qefilnaye binimne',
-	'abusefilter-list-options-submit' => 'Newen ke',
+	'abusefilter-list-options-submit' => 'Anewen ke',
 	'abusefilter-tools-text' => 'wexta ke filtreya suistimali formule bena nê hacet lazım beni.',
 	'abusefilter-tools-expr' => 'Testê ifadi',
 	'abusefilter-tools-submitexpr' => 'Xulasa',
@@ -6756,7 +6756,7 @@ nê istatiski qey na filtreya.
 	'abusefilter-edit-throttled' => "'''hişyari''': na filtre qey tedbirê pawıtışi bı otomatik battal verdiya.
 %$1 ra zêd resa sinorê hemcıtbiyayişi.",
 	'abusefilter-edit-new' => 'Filtreyê newî',
-	'abusefilter-edit-save' => 'Filitre qeyd bike',
+	'abusefilter-edit-save' => 'Parzumi qeyd ke',
 	'abusefilter-edit-id' => 'IDyê filitreyî',
 	'abusefilter-edit-description' => "Deskripsiyon:
 :''(herkes eşkenî bivîne)''",
@@ -6802,7 +6802,7 @@ wesikaya arêdayoxi: <pre>$1</pre>',
 	'abusefilter-edit-viewhistory' => 'Tarixê ena filitre bivîne',
 	'abusefilter-edit-history' => 'Tarix:',
 	'abusefilter-edit-check' => 'Syntax kontrol bike',
-	'abusefilter-edit-badfilter' => 'Filitre ke ti weçine databese ma de çin o',
+	'abusefilter-edit-badfilter' => 'Parzumo ke şımayê vanê mewcud niyo.',
 	'abusefilter-edit-revert' => 'Vurnayîşî ke ena filitre kerd înan tekrar biyar',
 	'abusefilter-edit-tools' => 'Xecetî:',
 	'abusefilter-edit-test-link' => 'Ena filitre ser vurnayîşê newî test bike',
@@ -6914,7 +6914,7 @@ gani etiketi kılm bıbi u tede karakterê xususi çinibi.',
 	'abusefilter-history-flags' => 'Îkazî',
 	'abusefilter-history-filter' => 'Qeideyê filitre',
 	'abusefilter-history-comments' => 'Xulasayî',
-	'abusefilter-history-actions' => 'Hereketî',
+	'abusefilter-history-actions' => 'Kerdeni',
 	'abusefilter-history-backedit' => 'Filitreyê edîtorî rê reyna şi',
 	'abusefilter-history-deleted' => 'Wedarnaye',
 	'abusefilter-history-filterid' => 'Filitre',
@@ -6955,7 +6955,7 @@ Hereketan ke te wazeni reyna biyar: $5 ($6)',
 	'abusefilter-revert-periodstart' => 'Periyod ke başli ken:',
 	'abusefilter-revert-periodend' => 'Periyod ke qediyen:',
 	'abusefilter-revert-search' => 'Hereketan biweçine',
-	'abusefilter-revert-filter' => 'Filitre:',
+	'abusefilter-revert-filter' => 'Parzum:',
 	'abusefilter-revert-preview-intro' => 'Aşağıdakiler, suistimal filtresi tarafından alınan ve bu eylemle geri alınacak eylemlerdir.
 Lütfen dikkatlice kontrol edin, ve seçiminizi onaylamak için "onayla"ya tıklayın.',
 	'abusefilter-revert-confirm' => 'Konfirme bike',
@@ -16027,16 +16027,16 @@ $messages['ja'] = array(
 このインターフェイスでは、定義済みのフィルターを一覧表示してそれらを変更できます。',
 	'abusefilter-mustbeeditor' => 'セキュリティ上の理由から、不正利用フィルターを変更できる権限を持つ利用者だけがこのインターフェイスを使用できます。',
 	'abusefilter-warning' => "'''警告'''：行われた操作は自動的に有害と判断されました。
-建設的でない編集は速やかに差し戻されます。
-被害程度の大きい破壊的編集や頻繁な破壊行為は、アカウントまたはIPアドレスのブロックにつながります。
-行なった編集が、確かに建設的なものであると考える場合、投稿ボタンを再度クリックしてください。
+建設的ではない編集は速やかに差し戻されます。
+被害程度が大きい破壊的編集や頻繁な破壊行為は、アカウントまたはIPアドレスのブロックにつながります。
+行なった編集が、確かに建設的であると考える場合、投稿ボタンを再度クリックしてください。
 操作に対して発動した違反規則の概略は次の通りです：$1",
 	'abusefilter-disallowed' => '行われた操作は自動的に有害と判断されたため実行できませんでした。
-行なった編集が確かに建設的なものであると考えるなら、管理者に連絡をして、行なおうとしていた操作について知らせてください。
+行なった編集が確かに建設的であると考える場合は、管理者に連絡をして、行なおうとしていた操作について知らせてください。
 操作に対して発動した違反規則の概略は次の通りです：$1',
-	'abusefilter-blocked-display' => '行なわれた操作は自動的に有害と判断されたため、実行が中断されました。
+	'abusefilter-blocked-display' => '行なわれた操作は自動的に有害と判断されたため、実行を中断しました。
 同時に{{SITENAME}}を保護するために、利用者アカウントと関連するすべてのIPアドレスが投稿ブロックされました。
-この措置が誤りであるならば、管理者に連絡してください。
+この措置が誤りである場合は、管理者に連絡してください。
 操作に対して発動した違反規則の概略は次の通りです：$1',
 	'abusefilter-degrouped' => '行なわれた操作は自動的に有害と判断されました。
 そのため操作は実行されず、また、アカウントが乗っ取られていると判断され、すべての権限が剥奪されました。
@@ -16058,7 +16058,7 @@ $messages['ja'] = array(
 	'right-abusefilter-private' => '不正利用記録内の非公開データを閲覧',
 	'right-abusefilter-modify-restricted' => '制限された操作を含む不正利用フィルターを変更',
 	'right-abusefilter-revert' => '指定した不正利用フィルターによるすべての変更を差し戻す',
-	'right-abusefilter-view-private' => '非公開としてマークされたフィルターを閲覧',
+	'right-abusefilter-view-private' => '「非公開」の印が付いたフィルターを閲覧',
 	'right-abusefilter-hide-log' => '不正利用記録の項目を隠す',
 	'right-abusefilter-hidden-log' => '隠された不正利用記録を閲覧',
 	'action-abusefilter-modify' => '不正利用フィルターの変更',
@@ -16068,7 +16068,7 @@ $messages['ja'] = array(
 	'action-abusefilter-private' => '不正利用記録内の非公開データの閲覧',
 	'action-abusefilter-modify-restricted' => '制限された操作を含む不正利用フィルターの変更',
 	'action-abusefilter-revert' => '指定した不正利用フィルターによるすべての変更の差し戻し',
-	'action-abusefilter-view-private' => '非公開としてマークされたフィルターを閲覧',
+	'action-abusefilter-view-private' => '「非公開」の印が付いたフィルターを閲覧',
 	'abusefilter-log' => '不正利用フィルター記録',
 	'abusefilter-log-summary' => 'この記録はフィルターが発動した全操作の一覧を表示しています。',
 	'abusefilter-log-search' => '不正利用記録を検索',
@@ -16173,14 +16173,14 @@ $messages['ja'] = array(
 	'abusefilter-edit-action-blockautopromote' => '利用者の自動承認ステータスを取り消す',
 	'abusefilter-edit-action-degroup' => '利用者をすべての特権グループから除く',
 	'abusefilter-edit-action-block' => '利用者および/またはIPアドレスを編集ブロックする',
-	'abusefilter-edit-action-throttle' => '利用者が設定された速度限界を越えた場合にのみ、対処操作を発動する',
+	'abusefilter-edit-action-throttle' => '利用者が設定された速度限界を越えた場合のみ、対処操作を発動する',
 	'abusefilter-edit-action-rangeblock' => '利用者の発信元を/16レンジでブロックする',
 	'abusefilter-edit-action-tag' => '後で再検討するために編集にタグを付ける',
 	'abusefilter-edit-throttle-count' => '許可される操作数:',
 	'abusefilter-edit-throttle-period' => '期間:',
 	'abusefilter-edit-throttle-seconds' => '$1{{PLURAL:$1|秒}}',
-	'abusefilter-edit-throttle-groups' => "制限をグループ化する:
-:''(一行に一つ、複数項目はコンマで区切る)''",
+	'abusefilter-edit-throttle-groups' => "制限をグループ化する：
+:''(1行に1つ、複数項目はカンマ区切り)''",
 	'abusefilter-edit-warn-message' => '警告に使うシステムメッセージ:',
 	'abusefilter-edit-warn-other' => '他のメッセージ',
 	'abusefilter-edit-warn-other-label' => "他のメッセージのページ名:
@@ -16279,7 +16279,7 @@ $messages['ja'] = array(
 	'abusefilter-edit-builder-vars-user-editcount' => '利用者の編集回数',
 	'abusefilter-edit-builder-vars-user-age' => '利用者アカウントの登録期間',
 	'abusefilter-edit-builder-vars-user-name' => '利用者のアカウント名',
-	'abusefilter-edit-builder-vars-user-groups' => '利用者が属するグループ (明示的でないものも含む)',
+	'abusefilter-edit-builder-vars-user-groups' => '利用者が属するグループ（明示的ではないものも含む）',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'メールアドレスを確認した時刻',
 	'abusefilter-edit-builder-vars-recent-contributors' => '直前10人のページへの投稿者',
 	'abusefilter-edit-builder-vars-all-links' => '新しい本文中のすべての外部リンク',
@@ -16328,7 +16328,7 @@ $messages['ja'] = array(
 	'abusefilter-exception-dividebyzero' => '$1文字目に$2に対するゼロ除算があります。',
 	'abusefilter-exception-unrecognisedvar' => '$1文字目に認識できない変数「$2」があります。',
 	'abusefilter-exception-notenoughargs' => '$1 文字目で呼び出されている関数 $2 の引数が不足しています。
-$3 つの{{PLURAL:$3|引数}}があるべきですが $4 つしかありません。',
+$3 個の{{PLURAL:$3|引数}}があるべきですが $4 個しかありません',
 	'abusefilter-exception-regexfailure' => '$1 文字目の正規表現 "$3" にエラーがあります: "$2"',
 	'abusefilter-exception-overridebuiltin' => '組み込みの変数「$2」を $1文字目で不正に上書きしています。',
 	'abusefilter-exception-outofbounds' => '$1文字目で、存在しない一覧項目 $2 (一覧のサイズは$3) を要求しています。',
@@ -16342,7 +16342,8 @@ $3 つの{{PLURAL:$3|引数}}があるべきですが $4 つしかありませ�
 	'abusefilter-action-rangeblock' => 'レンジブロック',
 	'abusefilter-action-disallow' => '不許可',
 	'abusefilter-revert-title' => 'フィルター $1 によるすべての変更を差し戻す',
-	'abusefilter-revert-intro' => 'このフォームを使うと、フィルター $1 に起因した、不正利用フィルターによるすべての変更を差し戻すことができます。このツールの利用には十分注意して下さい。',
+	'abusefilter-revert-intro' => 'このフォームでは、フィルター $1 に起因する、不正利用フィルターによるすべての変更を差し戻すことができます。
+このツールの使用には十分注意してください。',
 	'abusefilter-revert-preview-item' => '$1に$2が、$4で$3をしました。差し戻す対処操作：$5（$6）',
 	'abusefilter-revert-search-legend' => '不正利用フィルターによる対処操作のうち、差し戻すものを選択する',
 	'abusefilter-revert-periodstart' => '期間始め:',
@@ -16401,10 +16402,10 @@ $3 つの{{PLURAL:$3|引数}}があるべきですが $4 つしかありませ�
 	'abusefilter-diff-pattern' => 'フィルター条件',
 	'abusefilter-diff-invalid' => '要求された版を取得できません',
 	'abusefilter-diff-backhistory' => 'フィルター履歴に戻る',
-	'abusefilter-import-intro' => 'このインターフェイスを使用して、別のウィキからフィルターをインポートできます。
-インポート元のウィキで、編集画面の「{{int:abusefilter-edit-tools}}」下にある「{{int:abusefilter-edit-export}}」をクリックします。
-そこで現れるテキストボックスの内容をコピーし、このテキストボックスにペーストして、「{{int:abusefilter-import-submit}}」をクリックします。',
-	'abusefilter-import-submit' => 'インポート',
+	'abusefilter-import-intro' => 'このインターフェイスを使用して、別のウィキからフィルターを取り込めます。
+取り込み元のウィキで、編集画面の「{{int:abusefilter-edit-tools}}」下にある「{{int:abusefilter-edit-export}}」をクリックします。
+そこで現れるテキストボックスの内容をコピーし、それをこのテキストボックスに貼り付けて、「{{int:abusefilter-import-submit}}」をクリックします。',
+	'abusefilter-import-submit' => '取り込む',
 );
 
 /** Georgian (ქართული)
@@ -17886,6 +17887,7 @@ $messages['ku-latn'] = array(
 	'abusefilter-hidden' => 'Şexsî',
 	'abusefilter-deleted' => 'Hate jêbirin',
 	'abusefilter-new' => 'Fîltreka nû çêke',
+	'abusefilter-list-options' => 'Vebijêrk',
 	'abusefilter-list-options-deleted' => 'Fîltreyên hatine jêbirirn:',
 	'abusefilter-list-options-deleted-only' => 'Tenê fîltreyên jêbûyî nîşan bide',
 	'abusefilter-list-options-submit' => 'Rojanekirin',
@@ -17909,6 +17911,7 @@ $messages['ku-latn'] = array(
 	'abusefilter-test-submit' => 'Test',
 	'abusefilter-examine-user' => 'Bikarhêner:',
 	'abusefilter-examine-title' => 'Sernavê rûpelê:',
+	'abusefilter-examine-submit' => 'Lêgerîn',
 	'abusefilter-topnav-home' => 'Mal',
 );
 
@@ -25457,7 +25460,7 @@ Le tichëtte a dovrìo esse curte, e a dovrìo pa conten-e ëd caràter speciaj.
 	'abusefilter-edit-builder-funcs-substr' => 'Sot-ëstringa (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'Posission ëd la sot-ëstringa ant la stringa (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'Rampiassé la sot-ëstringa con la stringa (str_replace)',
-	'abusefilter-edit-builder-funcs-rescape' => "Stringa d'escape com costant an regex (rescape)",
+	'abusefilter-edit-builder-funcs-rescape' => "Scapé da la stringa coma literal ant l'esspression regolar (rescape)",
 	'abusefilter-edit-builder-funcs-set_var' => 'Definì la variàbil (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Variàbij',
 	'abusefilter-edit-builder-vars-accountname' => 'Nòm dël cont (a la creassion dël cont)',
@@ -33946,13 +33949,14 @@ $messages['ug-latn'] = array(
 	'abusefilter-examine-submit' => 'Izdash',
 );
 
-/** Ukrainian (Українська)
+/** Ukrainian (українська)
  * @author AS
  * @author Ahonc
  * @author Alex Khimich
  * @author JenVan
  * @author Microcell
  * @author NickK
+ * @author Olvin
  * @author Prima klasy4na
  * @author SamOdin
  * @author Тест
@@ -34032,7 +34036,7 @@ $messages['uk'] = array(
 	'abusefilter-log-details-private' => 'Приватні дані',
 	'abusefilter-log-details-ip' => 'Вихідна IP-адреса',
 	'abusefilter-log-noactions' => 'нема',
-	'abusefilter-log-details-diff' => 'Зміни, зроблені при редагуванні',
+	'abusefilter-log-details-diff' => 'Зміни, зроблені редагуванням',
 	'abusefilter-log-linkoncontribs' => 'журнал зловживань',
 	'abusefilter-log-linkoncontribs-text' => 'Журнал зловживань цього користувача',
 	'abusefilter-log-hidden' => '(запис приховано)',
@@ -34226,8 +34230,8 @@ $messages['uk'] = array(
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Час підтвердження адреси ел. пошти',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Останні десять редакторів сторінки',
 	'abusefilter-edit-builder-vars-all-links' => 'Усі зовнішні посилання в новому тексті',
-	'abusefilter-edit-builder-vars-added-links' => 'Усі зовнішні посилання, додані при редагуванні',
-	'abusefilter-edit-builder-vars-removed-links' => 'Усі зовнішні посилання, видалені при редагуванні',
+	'abusefilter-edit-builder-vars-added-links' => 'Усі зовнішні посилання, додані редагуванням',
+	'abusefilter-edit-builder-vars-removed-links' => 'Усі зовнішні посилання, вилучені редагуванням',
 	'abusefilter-edit-builder-vars-old-text' => 'Старий вікітекст, перед редагуванням сторінки',
 	'abusefilter-edit-builder-vars-new-text' => 'Новий вікітекст, після редагування сторінки',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Новий текст сторінки, очищений від розмітки',
@@ -35274,13 +35278,81 @@ $messages['vo'] = array(
 	'abusefilter-examine-submit' => 'Sukön',
 );
 
-/** Walloon (Walon)
+/** Walloon (walon)
  * @author Lucyin
+ * @author Srtxg
  */
 $messages['wa'] = array(
 	'abusefilter-log-hide-reason' => 'Råjhon:',
 	'abusefilter-deleted' => 'Disfacé',
+	'abusefilter-tools-reautoconfirm-user' => 'Uzeu:',
+	'abusefilter-edit-tools' => 'Usteyes:',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Acdicion (+)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Mopliyaedje (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'Divizion (/)',
+	'abusefilter-edit-builder-op-arithmetic-modulo' => 'Modulo (%)',
+	'abusefilter-edit-builder-op-arithmetic-pow' => 'Poûxhance (**)',
+	'abusefilter-edit-builder-group-op-comparison' => 'Operateus di comparåjhon',
+	'abusefilter-edit-builder-op-comparison-equal' => 'Ewal a (==)',
+	'abusefilter-edit-builder-op-comparison-notequal' => 'Diferin di (!=)',
+	'abusefilter-edit-builder-op-comparison-lt' => 'Pus ptit ki (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'Pus grand ki (>)',
+	'abusefilter-edit-builder-op-comparison-lte' => 'Pus ptit ou ewal (<=)',
+	'abusefilter-edit-builder-op-comparison-gte' => 'Pus grand ou ewal (>=)',
+	'abusefilter-edit-builder-group-op-bool' => 'Operateus bouleyins',
+	'abusefilter-edit-builder-op-bool-not' => 'Nén (!)',
+	'abusefilter-edit-builder-op-bool-and' => 'Eyet (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'Ou (|)',
+	'abusefilter-edit-builder-group-misc' => 'Totes sôres',
+	'abusefilter-edit-builder-misc-in' => "å dvins d' ene tchinne di tecse (in)",
+	'abusefilter-edit-builder-misc-like' => 'Corespond å patron (like)',
+	'abusefilter-edit-builder-misc-rlike' => "Corespond a l' erîlêye ratourneure (rlike)",
+	'abusefilter-edit-builder-misc-irlike' => "Corespond a l' erîlêye ratourneure, sins diferince madjusucle/minuscule (irlike)",
+	'abusefilter-edit-builder-misc-contains' => "Li tchinne a hintche a-st å dvins d' leye li cene di droete (contains)",
+	'abusefilter-edit-builder-misc-stringlit' => 'Ene tchinne di tecse literåle ("")',
+	'abusefilter-edit-builder-misc-tern' => 'Operateu ternaire (X ? Y : Z)',
+	'abusefilter-edit-builder-misc-cond' => 'Condicion (if X then Y else Z)',
+	'abusefilter-edit-builder-group-funcs' => 'Fonccions',
+	'abusefilter-edit-builder-funcs-length' => 'Longueur del tchinne (length)',
+	'abusefilter-edit-builder-funcs-lcase' => 'Mete a ptites letes (lcase)',
+	'abusefilter-edit-builder-funcs-ccnorm' => 'Normålijhî les caracteres ambigus (ccnorm)',
+	'abusefilter-edit-builder-funcs-rmdoubles' => 'Rissaetchî les dobe caracteres (rmdoubles)',
+	'abusefilter-edit-builder-funcs-specialratio' => "Rapoirt inte les caracteres sipeciås et l' totå (specialratio)",
+	'abusefilter-edit-builder-funcs-norm' => 'Normalijhî (norm)',
+	'abusefilter-edit-builder-funcs-count' => "Cobén d' côps l' tchinne X si trove dins Y (count)",
+	'abusefilter-edit-builder-funcs-rcount' => "Cobén d' côps l' erîlêye ratourneure X si trove dins Y (rcount)",
+	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Rissaetchî les vudes (rmwhitespace)',
+	'abusefilter-edit-builder-funcs-rmspecials' => 'Rissaetchî les caracteres sipeciås (rmspecial)',
+	'abusefilter-edit-builder-funcs-ip_in_range' => "Trove si ene adresse IP est d' ene fortchete dinêye (ip_in_range)",
+	'abusefilter-edit-builder-funcs-contains-any' => "Cweri après pus d' ene dizo-tchinne dins ene tchinne (contains_any)",
+	'abusefilter-edit-builder-funcs-substr' => 'Dizo-tchinne (substr)',
+	'abusefilter-edit-builder-group-vars' => 'Variåves',
+	'abusefilter-edit-builder-vars-accountname' => "No d' elodjaedje (å moumint d' l' edjîstraedje)",
+	'abusefilter-edit-builder-vars-timestamp' => 'Date Unix do candjmint',
+	'abusefilter-edit-builder-vars-action' => 'Accion',
+	'abusefilter-edit-builder-vars-addedlines' => "Royes radjoutêyes avou l' candjmint",
+	'abusefilter-edit-builder-vars-delta' => "Diferince di grandeu avou l' candjmint",
+	'abusefilter-edit-builder-vars-diff' => 'Diff unifyî des candjmints',
+	'abusefilter-edit-builder-vars-newsize' => 'Novele grandeu del pådje',
+	'abusefilter-edit-builder-vars-oldsize' => 'Grandeu di dvant del pådje',
+	'abusefilter-edit-builder-vars-removedlines' => "Royes disfacêyes avou l' candjmint",
+	'abusefilter-edit-builder-vars-summary' => 'Rascourti do candjmint',
+	'abusefilter-edit-builder-vars-article-id' => 'ID del pådje',
+	'abusefilter-edit-builder-vars-article-ns' => 'Espåce di lomaedje del pådje',
+	'abusefilter-edit-builder-vars-article-text' => "Tite del pådje (sins l' espåce di lomaedje)",
+	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Tite del pådje en etir',
+	'abusefilter-history-timestamp' => 'Date',
+	'abusefilter-history-user' => 'Uzeu',
+	'abusefilter-history-flags' => 'Drapeas',
+	'abusefilter-history-actions' => 'Accions',
 	'abusefilter-history-deleted' => 'Disfacé',
+	'abusefilter-history-filterid' => 'Passete',
+	'abusefilter-history-select-user' => 'Uzeu:',
+	'abusefilter-history-diff' => 'Candjmints',
+	'abusefilter-action-block' => 'Bloker',
+	'abusefilter-examine-user' => 'Uzeu:',
+	'abusefilter-examine-title' => 'Tite del pådje:',
+	'abusefilter-examine-submit' => 'Cweri',
 );
 
 /** Wu (吴语) */
@@ -35925,7 +35997,7 @@ $messages['zh-cn'] = array(
 	'abusefilter-edit-builder-vars-movedfrom-ns' => '要移动的源名字空间',
 );
 
-/** Simplified Chinese (‪中文(简体)‬)
+/** Simplified Chinese (‪中文（简体）‬)
  * @author Anakmalaysia
  * @author Bbqyee
  * @author Bencmq
@@ -35948,7 +36020,7 @@ $messages['zh-cn'] = array(
  */
 $messages['zh-hans'] = array(
 	'abusefilter-desc' => '对编辑行为自动进行条件判定',
-	'abusefilter' => '防滥用过滤器配置',
+	'abusefilter' => '滥用过滤器设置',
 	'abuselog' => '滥用记录',
 	'abusefilter-intro' => '欢迎访问防滥用过滤器管理界面。防滥用过滤器是一个可以针对所有最近编辑动作进行自动化判断的软件系统。本界面包含了现有过滤器的列表，并允许管理人员修改它们。',
 	'abusefilter-mustbeeditor' => '出于安全考虑，只有拥有编辑防滥用过滤器权限的用户方可使用本界面。',
@@ -35966,8 +36038,8 @@ $messages['zh-hans'] = array(
 	'abusefilter-degroupreason' => '由防滥用过滤器自动剥夺所有权限，触发规则描述：$1',
 	'abusefilter-accountreserved' => '此帐户已由防滥用过滤器保留使用。',
 	'right-abusefilter-modify' => '修改防滥用过滤器',
-	'right-abusefilter-view' => '查看防滥用过滤器',
-	'right-abusefilter-log' => '查看滥用记录',
+	'right-abusefilter-view' => '查看滥用过滤器',
+	'right-abusefilter-log' => '查看滥用日志',
 	'right-abusefilter-log-detail' => '查看详细滥用日志',
 	'right-abusefilter-private' => '查看滥用日志中的非公开数据',
 	'right-abusefilter-modify-restricted' => '受限修改防滥用过滤器',
@@ -35976,7 +36048,7 @@ $messages['zh-hans'] = array(
 	'right-abusefilter-hide-log' => '将条目在滥用日志中隐藏',
 	'right-abusefilter-hidden-log' => '查看隐藏的滥用日志条目',
 	'action-abusefilter-modify' => '修改防滥用过滤器',
-	'action-abusefilter-view' => '查看防滥用过滤器',
+	'action-abusefilter-view' => '查看滥用过滤器',
 	'action-abusefilter-log' => '查看滥用日志',
 	'action-abusefilter-log-detail' => '查看详细滥用日志',
 	'action-abusefilter-private' => '查看滥用日志中的非公开数据',
@@ -36219,7 +36291,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-history-public' => '过滤器的公开描述',
 	'abusefilter-history-flags' => '标记',
 	'abusefilter-history-filter' => '过滤器规则',
-	'abusefilter-history-comments' => '注释',
+	'abusefilter-history-comments' => '评论',
 	'abusefilter-history-actions' => '动作',
 	'abusefilter-history-backedit' => '回到过滤器编辑器',
 	'abusefilter-history-deleted' => '删除',
