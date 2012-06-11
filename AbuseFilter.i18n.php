@@ -3090,6 +3090,7 @@ $messages['be-tarask'] = array(
 ў журнале злоўжываньняў.',
 	'abusefilter-logentry-suppress' => 'схаваў «[[$1]]»',
 	'abusefilter-logentry-unsuppress' => 'паказаў «[[$1]]»',
+	'logentry-abusefilter-hit' => '$1 {{#GENDER:$1|выклікаў|выклікала}} спрацоўванье фільтра $4, робячы дзеяньне «$5» на старонцы $3. Прынятая мера: $6 ($7)',
 	'abusefilter-management' => 'Кіраваньне фільтрам злоўжываньняў',
 	'abusefilter-list' => 'Усе фільтры',
 	'abusefilter-list-id' => 'Ідэнтыфікатар фільтру',
@@ -3102,6 +3103,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-list-details' => 'Падрабязнасьці',
 	'abusefilter-list-limit' => 'Колькасьць на старонцы:',
 	'abusefilter-list-lastmodified' => 'Апошняя зьмена',
+	'abusefilter-list-group' => 'Група фільтраў',
 	'abusefilter-hidden' => 'Прыватнае',
 	'abusefilter-unhidden' => 'Публічнае',
 	'abusefilter-enabled' => 'Уключаны',
@@ -3144,6 +3146,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-edit-id' => 'Ідэнтыфікатар фільтру:',
 	'abusefilter-edit-description' => "Апісаньне:
 :''(агульнадаступнае)''",
+	'abusefilter-edit-group' => 'Група фільтраў:',
 	'abusefilter-edit-flags' => 'Сьцягі:',
 	'abusefilter-edit-enabled' => 'Уключыць гэты фільтар',
 	'abusefilter-edit-deleted' => 'Пазначыць як выдалены',
@@ -3242,6 +3245,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-edit-builder-funcs-substr' => 'Падрадок (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'Пазыцыя падрадку ў радку (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'Замена падрадку ў радку (str_replace)',
+	'abusefilter-edit-builder-funcs-rescape' => 'Экранаваньне радка як літэрал у рэгулярных выразах (rescape)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Устанавіць зьменную (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Зьменныя',
 	'abusefilter-edit-builder-vars-accountname' => 'Назва рахунку (on account creation)',
@@ -3402,6 +3406,7 @@ $messages['be-tarask'] = array(
 У крынічнай вікі націсьніце «{{int:abusefilter-edit-export}}» у разьдзеле «{{int:abusefilter-edit-tools}}» інтэрфэйсу рэдагаваньня.
 Скапіруйце з узьнікшага тэкставага поля, і ўстаўце у гэта тэкставае поле, потым націсьніце «{{int:abusefilter-import-submit}}»,',
 	'abusefilter-import-submit' => 'Імпартаваць зьвесткі',
+	'abusefilter-group-default' => 'Перадвызначаная',
 );
 
 /** Bulgarian (Български)
@@ -4020,7 +4025,7 @@ $messages['bo'] = array(
 	'abusefilter-revert-confirm' => 'གཏན་འབེབས།',
 );
 
-/** Breton (Brezhoneg)
+/** Breton (brezhoneg)
  * @author Fohanno
  * @author Fulup
  * @author Gwendal
@@ -4429,6 +4434,7 @@ Evit gouzout hiroc'h, gwelout [[Special:AbuseFilter/history|listenn]] eus kemmo�
 Er wiki orin, klikit war "{{int:abusefilter-edit-export}}" e-barzh "{{int:abusefilter-edit-tools}}" en etrefas aozañ.
 Eilit an takad testenn a teu war-well, ha pegit anezhañ e-barzh an takad testenn-mañ, da heul klikit war "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Enporzhiañ roadennoù',
+	'abusefilter-group-default' => 'Dre ziouer',
 );
 
 /** Bosnian (Bosanski)
@@ -6266,6 +6272,7 @@ Filterbeschreibung: $7 ($8)',
 	'abusefilter-list-details' => 'Details',
 	'abusefilter-list-limit' => 'Anzahl pro Seite:',
 	'abusefilter-list-lastmodified' => 'Zuletzt geändert',
+	'abusefilter-list-group' => 'Filtergruppe',
 	'abusefilter-hidden' => 'Privat',
 	'abusefilter-unhidden' => 'Öffentlich',
 	'abusefilter-enabled' => 'Aktiviert',
@@ -6305,6 +6312,7 @@ Im Durchschnitt betrug ihre Bearbeitungszeit $4 ms und sie benötigten $5 {{PLUR
 	'abusefilter-edit-id' => 'Filterkennung:',
 	'abusefilter-edit-description' => "Beschreibung:
 :''(öffentlich sichtbar)''",
+	'abusefilter-edit-group' => 'Filtergruppe:',
 	'abusefilter-edit-flags' => 'Flags:',
 	'abusefilter-edit-enabled' => 'Filter aktivieren',
 	'abusefilter-edit-deleted' => 'Als gelöscht markieren',
@@ -6563,6 +6571,7 @@ Für genauere Details, siehe [[Special:AbuseFilter/history|die Liste]] der letzt
 Klicke im Quellwiki auf die Schaltfläche „{{int:abusefilter-edit-export}}“ innerhalb von „{{int:abusefilter-edit-tools}}“.
 Kopiere den dort erscheinenden Code, füge ihn hier ein und klicke dann auf die Schaltfläche „{{int:abusefilter-import-submit}}“.',
 	'abusefilter-import-submit' => 'Daten importieren',
+	'abusefilter-group-default' => 'Standard',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -7124,6 +7133,7 @@ Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpo
 	'abusefilter-list-details' => 'Drobnosći',
 	'abusefilter-list-limit' => 'Licba na bok:',
 	'abusefilter-list-lastmodified' => 'Slědny raz změnjony:',
+	'abusefilter-list-group' => 'Filtrowa kupka',
 	'abusefilter-hidden' => 'Priwatny',
 	'abusefilter-unhidden' => 'Zjawny',
 	'abusefilter-enabled' => 'Zmóžnjony',
@@ -7165,6 +7175,7 @@ Jo dojśpił limit wěcej ako $1 % akcijow.",
 	'abusefilter-edit-id' => 'ID filtra:',
 	'abusefilter-edit-description' => "Wopisanje:
 :''(zjawnje widobne)''",
+	'abusefilter-edit-group' => 'Filtrowa kupka:',
 	'abusefilter-edit-flags' => 'Wobznamjenja:',
 	'abusefilter-edit-enabled' => 'Toś ten filter zmóžniś',
 	'abusefilter-edit-deleted' => 'Ako wulašowany markěrowaś',
@@ -7420,6 +7431,7 @@ Za połne drobnostki glědaj [[Special:AbuseFilter/history|lisćinu]] nejnowšyc
 	'abusefilter-import-intro' => 'Móžoš toś ten interfejs wužywaś, aby importěrował filtry z drugich wikijow.
 Klikni w žrědłowem wikiju na "{{int:abusefilter-edit-export}}" pód "{{int:abusefilter-edit-tools}}" na wobźěłowańskem interfejsu. Kopěruj z tekstowego póla, kótarež se pokazujo do toś togo tekstowego póla a klikni pótom na "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'Daty importěrowaś',
+	'abusefilter-group-default' => 'Standard',
 );
 
 /** Central Dusun (Dusun Bundu-liwan)
@@ -11122,6 +11134,7 @@ Descrición do filtro: $7 ($8)',
 	'abusefilter-list-details' => 'Detalles',
 	'abusefilter-list-limit' => 'Número por páxina:',
 	'abusefilter-list-lastmodified' => 'Última modificación',
+	'abusefilter-list-group' => 'Grupo de filtros',
 	'abusefilter-hidden' => 'Privado',
 	'abusefilter-unhidden' => 'Público',
 	'abusefilter-enabled' => 'Activado',
@@ -11163,6 +11176,7 @@ De media, o seu tempo de execución é de $4ms, e consome {{PLURAL:$5|unha condi
 	'abusefilter-edit-id' => 'ID do filtro:',
 	'abusefilter-edit-description' => "Descrición:
 :''(visible publicamente)''",
+	'abusefilter-edit-group' => 'Grupo de filtros:',
 	'abusefilter-edit-flags' => 'Revisións:',
 	'abusefilter-edit-enabled' => 'Permitir este filtro',
 	'abusefilter-edit-deleted' => 'Marcar como borrado',
@@ -11420,6 +11434,7 @@ Para obter máis detalles, vaia [[Special:AbuseFilter/history|á lista]] dos cam
 No wiki de orixe, prema en "{{int:abusefilter-edit-export}}" baixo a opción "{{int:abusefilter-edit-tools}}" na interface de edición.
 Copie a caixa de texto que aparece e péguea nestoutra caixa de texto, logo prema en "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'Importar os datos',
+	'abusefilter-group-default' => 'Predeterminado',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -13244,6 +13259,7 @@ Wopisanje filtra:: $7 ($8)',
 	'abusefilter-list-details' => 'Podrobnosće',
 	'abusefilter-list-limit' => 'Ličba na stronu:',
 	'abusefilter-list-lastmodified' => 'Posledni raz změnjeny:',
+	'abusefilter-list-group' => 'Filtrowa skupina',
 	'abusefilter-hidden' => 'Priwatny',
 	'abusefilter-unhidden' => 'Zjawny',
 	'abusefilter-enabled' => 'Zmóžnjeny',
@@ -13285,6 +13301,7 @@ Limit wjace hač $1 % akcijow je so docpěł.",
 	'abusefilter-edit-id' => 'ID filtra:',
 	'abusefilter-edit-description' => "Wopisanje:
 :''(zjawnje widźomne)''",
+	'abusefilter-edit-group' => 'Filtrowa skupina:',
 	'abusefilter-edit-flags' => 'Chorhojčka:',
 	'abusefilter-edit-enabled' => 'Tutón filter zmóžnić',
 	'abusefilter-edit-deleted' => 'Jako wušmórnjeny markěrować',
@@ -13540,6 +13557,7 @@ Za dospołne podrobnosće hlej [[Special:AbuseFilter/history|lisćinu]] njedawny
 	'abusefilter-import-intro' => 'Móžeš tutón interfejs wužiwać, zo by filtry z druhich wikijow importował.
 Klikń w žórłowym wikiju na "{{int:abusefilter-edit-export}}" pod "{{int:abusefilter-edit-tools}}" na wobdźěłowanskim interfejsu. Kopěruj z jewjaceho so tekstoweho pola do tutoho tekstoweho pola a klikń potom na "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'Daty importować',
+	'abusefilter-group-default' => 'Standard',
 );
 
 /** Haitian (Kreyòl ayisyen)
@@ -15596,7 +15614,7 @@ Til þess að prófa síu sem til er fyrir, settu auðkenni hennar í reitinn h�
 	'abusefilter-diff-backhistory' => 'Aftur í breytingarskrá síunnar',
 );
 
-/** Italian (Italiano)
+/** Italian (italiano)
  * @author Beta16
  * @author Blaisorblade
  * @author BrokenArrow
@@ -15710,6 +15728,7 @@ Descrizione del filtro: $7 ($8)',
 	'abusefilter-list-details' => 'Dettagli',
 	'abusefilter-list-limit' => 'Numero per pagina:',
 	'abusefilter-list-lastmodified' => 'Ultima modifica',
+	'abusefilter-list-group' => 'Gruppo filtri',
 	'abusefilter-hidden' => 'Privato',
 	'abusefilter-unhidden' => 'Pubblico',
 	'abusefilter-enabled' => 'Attivato',
@@ -15752,6 +15771,7 @@ Il suo tempo medio di esecuzione è di $4 ms, e impiega $5 {{PLURAL:$5|condizion
 	'abusefilter-edit-id' => 'ID filtro:',
 	'abusefilter-edit-description' => "Descrizione:
 :''(visibile pubblicamente)''",
+	'abusefilter-edit-group' => 'Gruppo filtri:',
 	'abusefilter-edit-flags' => 'Opzioni:',
 	'abusefilter-edit-enabled' => 'Attiva questo filtro',
 	'abusefilter-edit-deleted' => 'Segna come cancellato',
@@ -16012,6 +16032,7 @@ Per i dettagli completi, consultare [[Special:AbuseFilter/history|l'elenco]] del
 Sul sito wiki d\'origine, fare clic su "{{int:abusefilter-edit-export}}" sotto "{{int:abusefilter-edit-tools}}" nell\'interfaccia di modifica.
 Copiare dalla casella che appare e copiare in questa casella, quindi fare clic su "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Importa dati',
+	'abusefilter-group-default' => 'Predefinito',
 );
 
 /** Japanese (日本語)
@@ -17569,6 +17590,7 @@ Name',
 	'abusefilter-list-details' => 'Einzelheite',
 	'abusefilter-list-limit' => 'Aanzahl pro Sigg:',
 	'abusefilter-list-lastmodified' => 'Et lez jeändert vum aam',
+	'abusefilter-list-group' => 'Felterjropp',
 	'abusefilter-hidden' => 'Nit öffentlesch',
 	'abusefilter-unhidden' => 'Öffentlesch',
 	'abusefilter-enabled' => 'Aanjeschalldt',
@@ -17616,6 +17638,7 @@ Dä hät sing Jrenß övverschredde, un bei mieh wie $1% vun alle Oproofe jejref
 	'abusefilter-edit-id' => 'Felter-Räjel-Nommer:',
 	'abusefilter-edit-description' => "Beschrievong:
 :''(Öffentlesch)''",
+	'abusefilter-edit-group' => 'Felterjropp:',
 	'abusefilter-edit-flags' => 'Fähnscher:',
 	'abusefilter-edit-enabled' => 'Don de Felter-Räjel enschallde',
 	'abusefilter-edit-deleted' => 'Als fottjeschmeße makkeere',
@@ -17716,7 +17739,7 @@ Makeerunge sullte koot sin, un et sullte kein Sönderzeijshe dren vörkumme.',
 	'abusefilter-edit-builder-funcs-substr' => 'Ene Deijl vun en Zeishe-Reij (<code lang="en">substr</code>)',
 	'abusefilter-edit-builder-funcs-strpos' => 'De Possizjuhn vun enem Deijl vun en Zeishe-Reij (<code lang="en">strpos</code>)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'Ene Deijl vun en Zeishe-Reij ußtuusche jäje en ander Zeishe-Reij (<code lang="en">str_replace</code>)',
-	'abusefilter-edit-builder-funcs-rescape' => 'Dä Escape string als nomaale Täx en enem rejolääre Ußdrock (<code lang="en>rescape</code>)',
+	'abusefilter-edit-builder-funcs-rescape' => 'Dä <i lang="en">escape string</i> als nomaale Täx en enem rejolääre Ußdrock (<code lang="en>rescape</code>)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Don dä Varijable ene Wäät jevve (<code lang="en">set_var</code>)',
 	'abusefilter-edit-builder-group-vars' => 'Varrijabelle',
 	'abusefilter-edit-builder-vars-accountname' => 'Däm Metmaacher singe Name — wi hä ennjeresht wood',
@@ -17875,6 +17898,7 @@ Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilte
 	'abusefilter-diff-backhistory' => 'Jangk zeröck op de Leß met de Versione vun däm Felter',
 	'abusefilter-import-intro' => 'Do kanns hee di Schnettshtell bruche, öm Date vun de Meßbruchsfeltere vun andere Wikis noh hee ze empotteere. En dämm Wiki, woh de Date her kumme, doh donn op „{{int:abusefilter-edit-export}}“ unger „{{int:abusefilter-edit-tools}}“ klecke, op dä Sigg zom Felter Ändere. Donn dä Ennhalt vun däm Kaste met Tex, dä dann doh kütt, en hee dä Kaste eren kopeere, un dann donn hee dä Knopp „{{int:abusefilter-import-submit}}“ klecke.',
 	'abusefilter-import-submit' => 'Lohß Jonn!',
+	'abusefilter-group-default' => 'Shtandatt',
 );
 
 /** Kurdish (Latin script) (‪Kurdî (latînî)‬)
@@ -19797,7 +19821,7 @@ $messages['mhr'] = array(
 	'abusefilter-revert-filter' => 'Фильтр:',
 );
 
-/** Macedonian (Македонски)
+/** Macedonian (македонски)
  * @author Bjankuloski06
  * @author Brest
  */
@@ -19906,6 +19930,7 @@ $messages['mk'] = array(
 	'abusefilter-list-details' => 'Подробно',
 	'abusefilter-list-limit' => 'Број по страница:',
 	'abusefilter-list-lastmodified' => 'Последна промена',
+	'abusefilter-list-group' => 'Филтерска група',
 	'abusefilter-hidden' => 'Приватен',
 	'abusefilter-unhidden' => 'Јавен',
 	'abusefilter-enabled' => 'Вклучен',
@@ -19948,6 +19973,7 @@ $messages['mk'] = array(
 	'abusefilter-edit-id' => 'Назнака на филтерот:',
 	'abusefilter-edit-description' => "Опис:
 :''(јавно видлив)''",
+	'abusefilter-edit-group' => 'Филтерска група:',
 	'abusefilter-edit-flags' => 'Знаменца:',
 	'abusefilter-edit-enabled' => 'Овозможи го овој филтер',
 	'abusefilter-edit-deleted' => 'Означи како избришан',
@@ -20208,6 +20234,7 @@ $messages['mk'] = array(
 На изворното вико, кликнете на „{{int:abusefilter-edit-export}}“ под „{{int:abusefilter-edit-tools}}“ во посредникот за уредување.
 Копирајте ја содржината од полето коешто ќе ви се појави, и залепете ја во ова поле, па кликнете на „{{int:abusefilter-import-submit}}“.',
 	'abusefilter-import-submit' => 'Увези податоци',
+	'abusefilter-group-default' => 'По основно',
 );
 
 /** Malayalam (മലയാളം)
