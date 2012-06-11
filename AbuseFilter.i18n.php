@@ -132,6 +132,7 @@ Filter description: $7 ($8)',
 	'abusefilter-list-details' => 'Details',
 	'abusefilter-list-limit' => 'Number per page:',
 	'abusefilter-list-lastmodified' => 'Last modified',
+	'abusefilter-list-group' => 'Filter group',
 	'abusefilter-hidden' => 'Private',
 	'abusefilter-unhidden' => 'Public',
 	'abusefilter-enabled' => 'Enabled',
@@ -182,6 +183,7 @@ It reached the limit of matching more than $1% of actions.",
 	'abusefilter-edit-id' => 'Filter ID:',
 	'abusefilter-edit-description' => "Description:
 :''(publicly viewable)''",
+	'abusefilter-edit-group' => 'Filter group:',
 	'abusefilter-edit-flags' => 'Flags:',
 	'abusefilter-edit-enabled' => 'Enable this filter',
 	'abusefilter-edit-deleted' => 'Mark as deleted',
@@ -466,6 +468,9 @@ For full details, see [[Special:AbuseFilter/history|the list]] of recent filter 
 On the source wiki, click "{{int:abusefilter-edit-export}}" under "{{int:abusefilter-edit-tools}}" on the editing interface.
 Copy from the textbox that appears, and paste it into this textbox, then click "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Import data',
+
+	// Filter grouping
+	'abusefilter-group-default' => 'Default',
 );
 
 /** Message documentation (Message documentation)
@@ -619,6 +624,7 @@ $messages['qqq'] = array(
 	'abusefilter-list-details' => '{{Identical|Details}}',
 	'abusefilter-list-lastmodified' => 'Column header in abuse filter overview for the last modified timestamp for a filter.
 {{Identical|Last modified}}',
+	'abusefilter-list-group' => 'The filter group the edit filter is in.',
 	'abusefilter-hidden' => 'Abuse filter status.
 {{Identical|Private}}',
 	'abusefilter-unhidden' => 'Abuse filter status.
@@ -671,6 +677,7 @@ $messages['qqq'] = array(
 	'abusefilter-edit-id' => 'Field label for filter identifier.
 {{Identical|Filter ID}}',
 	'abusefilter-edit-description' => 'Field label for publicly viewable abuse filter description.',
+	'abusefilter-edit-group' => '"Filter group" a filter is in. Filters can be grouped, and only one group is run per action. The default group, "default", will be used in 99% of cases.',
 	'abusefilter-edit-flags' => 'Field label for abuse filter flags (checkboxes for "hidden", "enabled" and "deleted").
 {{Identical|Flag}}',
 	'abusefilter-edit-enabled' => 'Checkbox label for a filter flag.',
@@ -855,6 +862,7 @@ This is also used in {{msg-mw|Abusefilter-revert-preview-intro}}. When changing 
 * $2 is new user link or old user link. Link description is a user name',
 	'abusefilter-diff-info' => "Header for the box containing the basic information about a user account, displayed on the 'user profile' tab of the [[Special:Preferences|user preferences]] special page.",
 	'abusefilter-import-intro' => "Do not ''translate'' <nowiki>{{int:abusefilter-edit-export}}</nowiki>, <nowiki>{{int:abusefilter-edit-tools}}</nowiki>, and <nowiki>{{int:abusefilter-import-submit}}</nowiki> unless you absolute must substitute any of them.",
+	'abusefilter-group-default' => 'The name for the default filter group. Most filters will be in this group.',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
