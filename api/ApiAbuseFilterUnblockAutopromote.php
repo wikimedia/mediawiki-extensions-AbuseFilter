@@ -75,7 +75,7 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 
 	public function getExamples() {
 		return array(
-			'api.php?action=abusefilterunblockautopromote&user=Bob'
+			"api.php?action=abusefilterunblockautopromote&user=Bob&token=%2B\\"
 		);
 	}
 
