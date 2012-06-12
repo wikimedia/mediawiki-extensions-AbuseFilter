@@ -13978,7 +13978,7 @@ A megjelent szövegdoboz tartalmát ebbe a szövegdobozba másold át, majd katt
 	'abusefilter-import-submit' => 'Adatok importálása',
 );
 
-/** Interlingua (Interlingua)
+/** Interlingua (interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
@@ -14084,6 +14084,7 @@ entratas del registro de abusos.',
 	'abusefilter-list-details' => 'Detalios',
 	'abusefilter-list-limit' => 'Numero per pagina:',
 	'abusefilter-list-lastmodified' => 'Ultime modification',
+	'abusefilter-list-group' => 'Gruppo de filtros',
 	'abusefilter-hidden' => 'Private',
 	'abusefilter-unhidden' => 'Public',
 	'abusefilter-enabled' => 'Activate',
@@ -14125,6 +14126,7 @@ In media, su durata de execution es $4ms, e illo consume $5 {{PLURAL:$5|conditio
 	'abusefilter-edit-id' => 'ID del filtro:',
 	'abusefilter-edit-description' => "Description:
 :''(visibile al publico)''",
+	'abusefilter-edit-group' => 'Gruppo de filtros:',
 	'abusefilter-edit-flags' => 'Bandieras:',
 	'abusefilter-edit-enabled' => 'Activar iste filtro',
 	'abusefilter-edit-deleted' => 'Marcar como delite',
@@ -14383,6 +14385,7 @@ Pro detalios complete, vide [[Special:AbuseFilter/history|le lista]] de cambios 
 In le wiki de origine, clicca "{{int:abusefilter-edit-export}}" sub "{{int:abusefilter-edit-tools}}" in le interfacie de modification.
 Copia le contento del quadro de texto que appare, e colla lo in iste quadro de texto, pois clicca "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'Importar datos',
+	'abusefilter-group-default' => 'Predefinite',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -20329,6 +20332,7 @@ $messages['ml'] = array(
 	'abusefilter-log-hide-forbidden' => 'ദുരുപയോഗ രേഖയിലെ വിവരങ്ങൾ മറയ്ക്കാനുള്ള അനുവാദം താങ്കൾക്കില്ല.',
 	'abusefilter-logentry-suppress' => 'മറയ്ക്കുക [[$1]]',
 	'abusefilter-logentry-unsuppress' => 'മറ നീക്കുക [[$1]]',
+	'logentry-abusefilter-hit' => '$1 നടത്തിയ പ്രവൃത്തി $4-നെ ഉണർത്തി, $3-യിൽ "$5" എന്ന നടപടി എടുക്കുന്നു. എടുത്ത നടപടി: $6 ($7)',
 	'abusefilter-management' => 'ദുരുപയോഗ അരിപ്പ കൈകാര്യം',
 	'abusefilter-list' => 'എല്ലാ അരിപ്പകളും',
 	'abusefilter-list-id' => 'അരിപ്പയുടെ ഐ.ഡി.',
@@ -20341,6 +20345,7 @@ $messages['ml'] = array(
 	'abusefilter-list-details' => 'വിശദാംശങ്ങൾ',
 	'abusefilter-list-limit' => 'ഓരോ താളിലുമുള്ള എണ്ണം:',
 	'abusefilter-list-lastmodified' => 'ഒടുവിൽ മാറ്റം വരുത്തിയത്',
+	'abusefilter-list-group' => 'അരിച്ചെടുക്കൽ ഗണം',
 	'abusefilter-hidden' => 'സ്വകാര്യം',
 	'abusefilter-unhidden' => 'സാർവ്വജനികം',
 	'abusefilter-enabled' => 'സജ്ജമാക്കിയിരിക്കുന്നു',
@@ -20382,6 +20387,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-id' => 'അരിപ്പയുടെ ഐ.ഡി.:',
 	'abusefilter-edit-description' => "വിവരണം:
 :''(പൊതുജന ലഭ്യം)''",
+	'abusefilter-edit-group' => 'അരിച്ചെടുക്കൽ ഗണം:',
 	'abusefilter-edit-flags' => 'പതാകകൾ:',
 	'abusefilter-edit-enabled' => 'ഈ അരിപ്പ സജ്ജമാക്കുക',
 	'abusefilter-edit-deleted' => 'മായ്ച്ചതായി അടയാളപ്പെടുത്തുക',
@@ -20639,6 +20645,7 @@ $messages['ml'] = array(
 സ്രോതസ്സ് വിക്കിയിലെ തിരുത്തുവാനുള്ള ദൃശ്യമണ്ഡലത്തിൽ "{{int:abusefilter-edit-tools}}" എന്നതിനു താഴെയുള്ള "{{int:abusefilter-edit-export}}" ഞെക്കുക.
 അപ്പോൾ കിട്ടുന്ന ടെക്സ്റ്റ്ബോക്സ് പകർത്തി ഈ ടെക്സ്റ്റ്‌‌ബോക്സിൽ നൽകി, "{{int:abusefilter-import-submit}}" ഞെക്കുക.',
 	'abusefilter-import-submit' => 'വിവരങ്ങൾ ഇറക്കുമതി ചെയ്യുക',
+	'abusefilter-group-default' => 'സ്വതേ',
 );
 
 /** Mongolian (Монгол)
@@ -24835,7 +24842,7 @@ Kobiaschda de Qwellcode, fiegschn do oi un gliggschd uff die Schaldflesch „{{i
 	'abusefilter-import-submit' => 'Daade roihole',
 );
 
-/** Polish (Polski)
+/** Polish (polski)
  * @author Airwolf
  * @author Beau
  * @author BeginaFelicysym
@@ -25246,6 +25253,7 @@ Pełne informacje odnajdziesz w [[Special:AbuseFilter/history|rejestrze]] ostatn
 W trybie edycji filtru kliknij w źródłowej wiki „{{int:abusefilter-edit-export}}” przy nagłówku „{{int:abusefilter-edit-tools}}”.
 Skopiuj zawartość pola tekstowego, które się pojawi, i wklej ją do poniższego pola tekstowego, a następnie kliknij przycisk „{{int:abusefilter-import-submit}}”,',
 	'abusefilter-import-submit' => 'Importuj dane',
+	'abusefilter-group-default' => 'Domyślne',
 );
 
 /** Piedmontese (Piemontèis)
@@ -25355,6 +25363,7 @@ Descrission dël filtr: $7 ($8)',
 	'abusefilter-list-details' => 'Detaj',
 	'abusefilter-list-limit' => 'Nùmer për pàgina:',
 	'abusefilter-list-lastmodified' => 'Ùltima modìfica',
+	'abusefilter-list-group' => 'Partìa ëd filtr',
 	'abusefilter-hidden' => 'Privà',
 	'abusefilter-unhidden' => 'Pùblich',
 	'abusefilter-enabled' => 'Abilità',
@@ -25397,6 +25406,7 @@ A l'era rivà al lìmit d'identificassion ëd pi che $1% dj'assion.",
 	'abusefilter-edit-id' => 'Identificativ dël fìlter',
 	'abusefilter-edit-description' => "Descrission:
 :''(visìbil da tuti)''",
+	'abusefilter-edit-group' => 'Partìa ëd filtr:',
 	'abusefilter-edit-flags' => 'Marcador:',
 	'abusefilter-edit-enabled' => "Abilité 's fìlter",
 	'abusefilter-edit-deleted' => 'Marché coma scancelà',
@@ -25656,6 +25666,7 @@ Për ij detaj complet, ch'a bèica [[Special:AbuseFilter/history|la lista]] dle 
 An sla wiki sorgiss, ch'a sgnaca \"{{int:abusefilter-edit-export}}\" sota \"{{int:abusefilter-edit-tools}}\" an sl'antërfacia ëd modìfica.
 Ch'a còpia la casela ëd test ch'a compariss, e ch'a l'ancòla an costa casela ëd test, peui ch'a sgnaca \"{{int:abusefilter-import-submit}}\".",
 	'abusefilter-import-submit' => 'Amporté dij dat',
+	'abusefilter-group-default' => 'Për sòlit',
 );
 
 /** Pashto (پښتو)
@@ -34998,6 +35009,7 @@ Mô tả bộ lọc: $7 ($8)',
 	'abusefilter-list-details' => 'Chi tiết',
 	'abusefilter-list-limit' => 'Số lượng trên mỗi trang:',
 	'abusefilter-list-lastmodified' => 'Chỉnh sửa lần cuối',
+	'abusefilter-list-group' => 'Nhóm bô lọc',
 	'abusefilter-hidden' => 'Riêng tư',
 	'abusefilter-unhidden' => 'Công khai',
 	'abusefilter-enabled' => 'Kích hoạt',
@@ -35036,6 +35048,7 @@ Thời gian chạy trung bình là $4ms, và sử dụng $5 {{PLURAL:$5||}} đi�
 	'abusefilter-edit-id' => 'ID bộ lọc:',
 	'abusefilter-edit-description' => "Mô tả:
 :''(xem được công khai)''",
+	'abusefilter-edit-group' => 'Nhóm bộ lọc:',
 	'abusefilter-edit-flags' => 'Cờ:',
 	'abusefilter-edit-enabled' => 'Kích hoạt bộ lọc này',
 	'abusefilter-edit-deleted' => 'Đánh dấu đã xóa',
@@ -35292,6 +35305,7 @@ Lý do: $2',
 Tại trang sửa đổi của wiki nguồn, hãy bấm “{{int:abusefilter-edit-export}}” dưới đề mục “{{int:abusefilter-edit-tools}}”.
 Sau đó, chép văn bản từ hộp sẽ hiện ra, dán nó vào hộp ở đây, và bấm “{{int:abusefilter-import-submit}}”.',
 	'abusefilter-import-submit' => 'Nhập dữ liệu',
+	'abusefilter-group-default' => 'Mặc định',
 );
 
 /** Volapük (Volapük)
@@ -36055,7 +36069,7 @@ $messages['zh-cn'] = array(
  */
 $messages['zh-hans'] = array(
 	'abusefilter-desc' => '对编辑行为自动进行条件判定',
-	'abusefilter' => '滥用过滤器设置',
+	'abusefilter' => '防滥用过滤器配置',
 	'abuselog' => '滥用记录',
 	'abusefilter-intro' => '欢迎访问防滥用过滤器管理界面。防滥用过滤器是一个可以针对所有最近编辑动作进行自动化判断的软件系统。本界面包含了现有过滤器的列表，并允许管理人员修改它们。',
 	'abusefilter-mustbeeditor' => '出于安全考虑，只有拥有编辑防滥用过滤器权限的用户方可使用本界面。',
@@ -36073,7 +36087,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-degroupreason' => '由防滥用过滤器自动剥夺所有权限，触发规则描述：$1',
 	'abusefilter-accountreserved' => '此帐户已由防滥用过滤器保留使用。',
 	'right-abusefilter-modify' => '修改防滥用过滤器',
-	'right-abusefilter-view' => '查看滥用过滤器',
+	'right-abusefilter-view' => '查看防滥用过滤器',
 	'right-abusefilter-log' => '查看滥用日志',
 	'right-abusefilter-log-detail' => '查看详细滥用日志',
 	'right-abusefilter-private' => '查看滥用日志中的非公开数据',
@@ -36083,7 +36097,7 @@ $messages['zh-hans'] = array(
 	'right-abusefilter-hide-log' => '将条目在滥用日志中隐藏',
 	'right-abusefilter-hidden-log' => '查看隐藏的滥用日志条目',
 	'action-abusefilter-modify' => '修改防滥用过滤器',
-	'action-abusefilter-view' => '查看滥用过滤器',
+	'action-abusefilter-view' => '查看防滥用过滤器',
 	'action-abusefilter-log' => '查看滥用日志',
 	'action-abusefilter-log-detail' => '查看详细滥用日志',
 	'action-abusefilter-private' => '查看滥用日志中的非公开数据',
@@ -36326,7 +36340,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-history-public' => '过滤器的公开描述',
 	'abusefilter-history-flags' => '标记',
 	'abusefilter-history-filter' => '过滤器规则',
-	'abusefilter-history-comments' => '评论',
+	'abusefilter-history-comments' => '注释',
 	'abusefilter-history-actions' => '动作',
 	'abusefilter-history-backedit' => '回到过滤器编辑器',
 	'abusefilter-history-deleted' => '删除',
