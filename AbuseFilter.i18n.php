@@ -8303,7 +8303,7 @@ Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku 
 	'abusefilter-import-submit' => 'Importi datenojn',
 );
 
-/** Spanish (Español)
+/** Spanish (español)
  * @author -jem-
  * @author Aleator
  * @author Alvaro qc
@@ -8426,6 +8426,7 @@ Descripción del filtro: $7 ($8)',
 	'abusefilter-list-details' => 'Detalles',
 	'abusefilter-list-limit' => 'Número por página:',
 	'abusefilter-list-lastmodified' => 'Última modificación',
+	'abusefilter-list-group' => 'Grupo de filtros',
 	'abusefilter-hidden' => 'Privado',
 	'abusefilter-unhidden' => 'Público',
 	'abusefilter-enabled' => 'Habilitado',
@@ -8467,6 +8468,7 @@ El filtro ha sobrepasado el límite de más del $1% acciones.",
 	'abusefilter-edit-save' => 'Guardar filtro',
 	'abusefilter-edit-id' => 'Identificación de filtro:',
 	'abusefilter-edit-description' => ":''(visible públicamente)''",
+	'abusefilter-edit-group' => 'Grupo de filtros:',
 	'abusefilter-edit-flags' => 'Opciones:',
 	'abusefilter-edit-enabled' => 'Habilitar este filtro',
 	'abusefilter-edit-deleted' => 'Marcar como eliminado',
@@ -8725,6 +8727,7 @@ Para detalles completos, ver [[Special:AbuseFilter/history|la lista]] de cambios
 En el wiki fuente, pulsa en «{{int:abusefilter-edit-export}}» bajo «{{int:abusefilter-edit-tools}}» en la interfaz de edición.
 Copia desde el cuadro de texto que aparece, y pegalo dentro de este cuadro de texto, luego pulsa en «{{int:abusefilter-import-submit}}».',
 	'abusefilter-import-submit' => 'Importar datos',
+	'abusefilter-group-default' => 'Predeterminado',
 );
 
 /** Estonian (Eesti)
@@ -17906,6 +17909,7 @@ Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilte
 
 /** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
+ * @author Ghybu
  */
 $messages['ku-latn'] = array(
 	'abusefilter-log-search-user' => 'Bikarhêner:',
@@ -17920,7 +17924,7 @@ $messages['ku-latn'] = array(
 	'abusefilter-list-edit' => 'Biguherîne',
 	'abusefilter-list-details' => 'Detayan',
 	'abusefilter-hidden' => 'Şexsî',
-	'abusefilter-deleted' => 'Hate jêbirin',
+	'abusefilter-deleted' => 'Jêbirî',
 	'abusefilter-new' => 'Fîltreka nû çêke',
 	'abusefilter-list-options' => 'Vebijêrk',
 	'abusefilter-list-options-deleted' => 'Fîltreyên hatine jêbirirn:',
@@ -17941,6 +17945,8 @@ $messages['ku-latn'] = array(
 	'abusefilter-history-filterid' => 'Fîltre',
 	'abusefilter-history-select-user' => 'Bikarhêner:',
 	'abusefilter-action-tag' => 'Nîşankirin',
+	'abusefilter-action-block' => 'Asteng bike',
+	'abusefilter-action-degroup' => 'Ji koman rake',
 	'abusefilter-action-disallow' => 'Nehêle',
 	'abusefilter-revert-filter' => 'Fîltre:',
 	'abusefilter-test-submit' => 'Test',
