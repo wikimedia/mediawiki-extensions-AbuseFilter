@@ -11382,7 +11382,7 @@ Por favor, compróbeas con coidado e prema en "Confirmar" para aceptar a súa se
 	'abusefilter-revert-success' => 'Reverteu todas as accións feitas polo [[Special:AbuseFilter/$1|filtro de abusos $1]].',
 	'abusefilter-revert-reason' => 'Reversión automática de todas as accións feitas polo filtro de abusos $1.
 Motivo dado: $2',
-	'abusefilter-revert-reasonfield' => 'Motivo da reversión:',
+	'abusefilter-revert-reasonfield' => 'Motivo para a reversión:',
 	'abusefilter-test' => 'Probar un filtro coas edicións anteriores',
 	'abusefilter-test-intro' => 'Esta páxina permítelle comprobar, {{PLURAL:$1|co último cambio|cos últimos $1 cambios}}, un filtro inserido na caixa de embaixo.
 Para cargar un filtro existente, teclee o seu ID na caixa que está por baixo da caixa de edición e prema no botón "Cargar".',
