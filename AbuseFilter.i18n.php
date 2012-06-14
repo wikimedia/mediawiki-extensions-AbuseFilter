@@ -2212,7 +2212,7 @@ $messages['as'] = array(
 	'abusefilter-examine-title' => 'পৃষ্ঠাখনৰ শিৰোনামা:',
 );
 
-/** Asturian (Asturianu)
+/** Asturian (asturianu)
  * @author Xuacu
  */
 $messages['ast'] = array(
@@ -2307,7 +2307,7 @@ Descripción de la peñera: $7 ($8)",
 	'abusefilter-list-status' => 'Estáu',
 );
 
-/** Azerbaijani (Azərbaycanca)
+/** Azerbaijani (azərbaycanca)
  * @author Cekli829
  * @author Hydra
  * @author PPerviz
@@ -2974,7 +2974,7 @@ Dé Ówerflächen zoagt a Listen voh olle definierden Füter und dalaabts, dé z
 	'abusefilter-edit-builder-op-bool-xor' => 'XOR (^)',
 );
 
-/** Belarusian (Беларуская)
+/** Belarusian (беларуская)
  * @author LexArt
  * @author Тест
  */
@@ -3409,7 +3409,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-group-default' => 'Перадвызначаная',
 );
 
-/** Bulgarian (Български)
+/** Bulgarian (български)
  * @author DCLXVI
  * @author Spiritia
  * @author Stanqo
@@ -4437,7 +4437,7 @@ Eilit an takad testenn a teu war-well, ha pegit anezhañ e-barzh an takad testen
 	'abusefilter-group-default' => 'Dre ziouer',
 );
 
-/** Bosnian (Bosanski)
+/** Bosnian (bosanski)
  * @author CERminator
  * @author Palapa
  * @author Seha
@@ -4835,7 +4835,7 @@ Kopirajte iz tekstualne kutije koja se pojavi i zalijepite u ovu kutiju, zatim k
 	'abusefilter-import-submit' => 'Uvezi podatke',
 );
 
-/** Catalan (Català)
+/** Catalan (català)
  * @author Aleator
  * @author El libre
  * @author Gemmaa
@@ -5285,7 +5285,7 @@ $messages['ce'] = array(
 	'abusefilter-examine-user' => 'Декъашхо:',
 );
 
-/** Sorani (کوردی) */
+/** Sorani Kurdish (کوردی) */
 $messages['ckb'] = array(
 	'abusefilter-log-search-user' => 'بەکارهێنەر:',
 	'abusefilter-log-search-submit' => 'گەڕان',
@@ -5298,7 +5298,7 @@ $messages['ckb'] = array(
 	'abusefilter-examine-submit' => 'گەڕان',
 );
 
-/** Corsican (Corsu) */
+/** Corsican (corsu) */
 $messages['co'] = array(
 	'abusefilter-log-search-user' => 'Utilizatore:',
 	'abusefilter-list-edit' => 'Mudificà',
@@ -5306,7 +5306,7 @@ $messages['co'] = array(
 	'abusefilter-history-user' => 'Utilizatore',
 );
 
-/** Czech (Česky)
+/** Czech (česky)
  * @author Matěj Grabovský
  * @author Mormegil
  * @author Tchoř
@@ -5787,7 +5787,7 @@ Disgrifiad o'r rheol sy'n cyfateb: $1",
 	'abusefilter-revert-filter' => 'Hidl:',
 );
 
-/** Danish (Dansk)
+/** Danish (dansk)
  * @author Aputtu
  * @author Froztbyte
  * @author Lhademmor
@@ -7473,7 +7473,7 @@ Kointalangan do sinalaguno diti kooturan di kohompit do kinarajanu nopo nga oboy
 	'abusefilter-edit-tools' => 'Tangakakamot:',
 );
 
-/** Ewe (Eʋegbe) */
+/** Ewe (eʋegbe) */
 $messages['ee'] = array(
 	'abusefilter-log-search-submit' => 'Dii',
 	'abusefilter-list-edit' => 'Trɔ asi le eŋu',
@@ -8730,7 +8730,7 @@ Copia desde el cuadro de texto que aparece, y pegalo dentro de este cuadro de te
 	'abusefilter-group-default' => 'Predeterminado',
 );
 
-/** Estonian (Eesti)
+/** Estonian (eesti)
  * @author Avjoska
  * @author Oop
  * @author Pikne
@@ -9134,7 +9134,7 @@ Kopeeri ilmuva tekstikasti sisu, kleebi see sellesse tekstikasti ja seejärel kl
 	'abusefilter-import-submit' => 'Impordi andmed',
 );
 
-/** Basque (Euskara)
+/** Basque (euskara)
  * @author Abel2es
  * @author An13sa
  * @author Joxemai
@@ -9718,7 +9718,7 @@ $messages['fa'] = array(
 	'abusefilter-import-submit' => 'درون‌ریزی اطلاعات',
 );
 
-/** Finnish (Suomi)
+/** Finnish (suomi)
  * @author Cimon Avaro
  * @author Crt
  * @author Ilaiho
@@ -10134,7 +10134,7 @@ Kopioi ilmestyvän tekstikentän sisältö ja liitä se tähän tekstikenttään
 	'abusefilter-import-submit' => 'Tuo tiedot',
 );
 
-/** Faroese (Føroyskt)
+/** Faroese (føroyskt)
  * @author EileenSanda
  */
 $messages['fo'] = array(
@@ -10158,7 +10158,7 @@ Reglu frágreiðing: $1',
 	'action-abusefilter-private' => 'vís privat dáta í misnýtslu logginum',
 );
 
-/** French (Français)
+/** French (français)
  * @author ChrisPtDe
  * @author Crochet.david
  * @author Gomoko
@@ -10581,7 +10581,7 @@ Copiez la zone de texte qui s’affiche et collez-le dans cette zone de texte, p
 	'abusefilter-import-submit' => 'Importer des données',
 );
 
-/** Franco-Provençal (Arpetan)
+/** Franco-Provençal (arpetan)
  * @author Cedric31
  * @author ChrisPtDe
  */
@@ -10989,7 +10989,7 @@ Copiyéd la zona de tèxto que sè montre et pués côlâd-lo dens cela zona de 
 	'abusefilter-import-submit' => 'Importar des balyês',
 );
 
-/** Friulian (Furlan)
+/** Friulian (furlan)
  * @author Klenje
  */
 $messages['fur'] = array(
@@ -11017,13 +11017,13 @@ $messages['fy'] = array(
 	'abusefilter-history-user' => 'Meidogger',
 );
 
-/** Simplified Gan script (‪赣语(简体)‬) */
+/** Simplified Gan script (‪赣语（简体）‬) */
 $messages['gan-hans'] = array(
 	'abusefilter-log-search-submit' => '寻吖',
 	'abusefilter-examine-submit' => '寻吖',
 );
 
-/** Traditional Gan script (‪贛語(繁體)‬)
+/** Traditional Gan script (‪贛語（繁體）‬)
  * @author Symane
  */
 $messages['gan-hant'] = array(
@@ -12753,7 +12753,7 @@ $messages['hi'] = array(
 	'abusefilter-import-submit' => 'डेटा आयात करें',
 );
 
-/** Croatian (Hrvatski)
+/** Croatian (hrvatski)
  * @author Dalibor Bosits
  * @author Ex13
  * @author Roberta F.
@@ -13572,7 +13572,7 @@ $messages['ht'] = array(
 	'abuselog' => 'Jounal pou abi yo',
 );
 
-/** Hungarian (Magyar)
+/** Hungarian (magyar)
  * @author Bdamokos
  * @author Dani
  * @author Dj
@@ -14843,7 +14843,7 @@ $messages['ig'] = array(
 	'abusefilter-diff-item' => 'Ihnye',
 );
 
-/** Eastern Canadian (Latin script) (Inuktitut) */
+/** Eastern Canadian (Latin script) (inuktitut) */
 $messages['ike-latn'] = array(
 	'abusefilter-list-edit' => 'Suqusiqpaa',
 );
@@ -15334,7 +15334,7 @@ $messages['io'] = array(
 	'abusefilter-diff-version' => 'Versiono ye $1 da $2',
 );
 
-/** Icelandic (Íslenska)
+/** Icelandic (íslenska)
  * @author Snævar
  */
 $messages['is'] = array(
@@ -16831,7 +16831,7 @@ $messages['kk-cyrl'] = array(
 	'abusefilter-examine-submit' => 'Іздеу',
 );
 
-/** Kalaallisut (Kalaallisut)
+/** Kalaallisut (kalaallisut)
  * @author Qaqqalik
  */
 $messages['kl'] = array(
@@ -18885,7 +18885,7 @@ Zuuch de [[Special:AbuseFilter/history|lies mit recente filterverangeringe]] veu
 	'abusefilter-import-submit' => 'Veur data in',
 );
 
-/** Lumbaart (Lumbaart)
+/** lumbaart (lumbaart)
  * @author Dakrismeno
  * @author Sprüngli
  */
@@ -18899,7 +18899,7 @@ Li edizion miga construtivi i sarà revertid à bott, e grand o repetud edizion 
 	'abusefilter-diff-pattern' => 'Cundizión di filter',
 );
 
-/** Lingala (Lingála)
+/** Lingala (lingála)
  * @author Eruedin
  */
 $messages['ln'] = array(
@@ -18909,7 +18909,7 @@ $messages['ln'] = array(
 	'abusefilter-log-hide-reason' => 'Ntína:',
 );
 
-/** Lithuanian (Lietuvių)
+/** Lithuanian (lietuvių)
  * @author Eitvys200
  * @author Homo
  * @author Ignas693
@@ -19315,7 +19315,7 @@ Kopijuoti iš teksto lauką, kad pasirodo, ir įklijuokite jį į šį teksto la
 	'abusefilter-import-submit' => 'Importuoti duomenis',
 );
 
-/** Latgalian (Latgaļu)
+/** Latgalian (latgaļu)
  * @author Dark Eagle
  */
 $messages['ltg'] = array(
@@ -19332,7 +19332,7 @@ $messages['ltg'] = array(
 	'abusefilter-examine-user' => 'Lītuotuojs:',
 );
 
-/** Latvian (Latviešu)
+/** Latvian (latviešu)
  * @author GreenZeb
  * @author Marozols
  * @author Papuass
@@ -20654,7 +20654,7 @@ $messages['ml'] = array(
 	'abusefilter-group-default' => 'സ്വതേ',
 );
 
-/** Mongolian (Монгол)
+/** Mongolian (монгол)
  * @author Chinneeb
  */
 $messages['mn'] = array(
@@ -23208,7 +23208,7 @@ Klik "{{int:abusefilter-edit-export}}i" bij "{{int:abusefilter-edit-tools}}".
 Kopieer de tekst die in het bewerkingsvenster verschijnt naar dit bewerkingsvenster en klik dan op "{{int:abusefilter-import-submit}}".',
 );
 
-/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+/** Norwegian Nynorsk (‪norsk (nynorsk)‬)
  * @author Gunnernett
  * @author Harald Khan
  * @author Nghtwlkr
@@ -23618,7 +23618,7 @@ $messages['nso'] = array(
 	'abusefilter-history-user' => 'Mošumiši',
 );
 
-/** Occitan (Occitan)
+/** Occitan (occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
@@ -25784,7 +25784,7 @@ $messages['ps'] = array(
 	'abusefilter-diff-info' => 'بنسټيز مالومات',
 );
 
-/** Portuguese (Português)
+/** Portuguese (português)
  * @author 555
  * @author Giro720
  * @author Hamilton Abreu
@@ -26197,7 +26197,7 @@ Copie da caixa de texto que aparece, coloque nesta caixa de texto e depois cliqu
 	'abusefilter-import-submit' => 'Importar dados',
 );
 
-/** Brazilian Portuguese (Português do Brasil)
+/** Brazilian Portuguese (português do Brasil)
  * @author 555
  * @author Giro720
  * @author Hamilton Abreu
@@ -26635,7 +26635,7 @@ $messages['rif'] = array(
 	'abusefilter-list-edit' => 'Arri',
 );
 
-/** Romanian (Română)
+/** Romanian (română)
  * @author Cin
  * @author Ervinutz
  * @author Firilacroco
@@ -27050,7 +27050,7 @@ Copiați conținutul din caseta care apare și lipiți-l în această casetă de
 	'abusefilter-import-submit' => 'Importă datele',
 );
 
-/** Tarandíne (Tarandíne)
+/** tarandíne (tarandíne)
  * @author Joetaras
  * @author Reder
  */
@@ -28278,7 +28278,7 @@ $messages['sa'] = array(
 	'abusefilter-topnav-home' => 'गृहम्',
 );
 
-/** Sakha (Саха тыла)
+/** Sakha (саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
@@ -28682,7 +28682,7 @@ $3 {{PLURAL:$3|аргумент кэтэһиллэр|аргуменнаах бу
 	'abusefilter-import-submit' => 'Импортаа',
 );
 
-/** Sardinian (Sardu)
+/** Sardinian (sardu)
  * @author Andria
  */
 $messages['sc'] = array(
@@ -28709,7 +28709,7 @@ $messages['sc'] = array(
 	'abusefilter-log-noactions' => 'peruna',
 );
 
-/** Sicilian (Sicilianu)
+/** Sicilian (sicilianu)
  * @author Aushulz
  * @author Gmelfi
  */
@@ -29124,7 +29124,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-import-submit' => 'දත්ත ආයාත කරන්න',
 );
 
-/** Slovak (Slovenčina)
+/** Slovak (slovenčina)
  * @author Helix84
  * @author Mormegil
  * @author Teslaton
@@ -29523,7 +29523,7 @@ Skopírujte ho z textového poľa, kde sa objaví a vložte ho do tohto textové
 	'abusefilter-import-submit' => 'Importovať údaje',
 );
 
-/** Slovenian (Slovenščina)
+/** Slovenian (slovenščina)
  * @author Dbc334
  */
 $messages['sl'] = array(
@@ -29939,7 +29939,7 @@ $messages['so'] = array(
 	'abusefilter-examine-submit' => 'Raadi',
 );
 
-/** Albanian (Shqip)
+/** Albanian (shqip)
  * @author Euriditi
  * @author Marinari
  * @author Vinie007
@@ -30283,7 +30283,7 @@ E pritshme $3 {{PLURAL:$3|argumenti|argumentet}}, mori $4',
 	'abusefilter-import-submit' => 'Importo të dhëna',
 );
 
-/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪српски (ћирилица)‬)
  * @author FriedrickMILBarbarossa
  * @author Rancher
  * @author Sasa Stefanovic
@@ -30633,7 +30633,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-import-submit' => 'Увези податке',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪srpski (latinica)‬)
  * @author FriedrickMILBarbarossa
  * @author Michaello
  * @author Rancher
@@ -31236,7 +31236,7 @@ $messages['su'] = array(
 	'abusefilter-edit-builder-vars-accountname' => 'Landihan (dina nyieun akun)',
 );
 
-/** Swedish (Svenska)
+/** Swedish (svenska)
  * @author Ainali
  * @author Boivie
  * @author Fluff
@@ -32236,7 +32236,7 @@ $messages['te'] = array(
 	'abusefilter-import-submit' => 'భోగట్టాని దిగుమతించు',
 );
 
-/** Tetum (Tetun)
+/** Tetum (tetun)
  * @author MF-Warburg
  */
 $messages['tet'] = array(
@@ -32247,7 +32247,7 @@ $messages['tet'] = array(
 	'abusefilter-examine-submit' => 'Buka',
 );
 
-/** Tajik (Cyrillic script) (Тоҷикӣ)
+/** Tajik (Cyrillic script) (тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -32258,7 +32258,7 @@ $messages['tg-cyrl'] = array(
 	'abusefilter-list-edit' => 'Вироиш',
 );
 
-/** Tajik (Latin script) (Tojikī)
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -33674,7 +33674,7 @@ Görünen metin kutusundan kopyalayın, ve bu metin kutusuna yapıştırın, dah
 	'abusefilter-import-submit' => 'Verileri içe aktar',
 );
 
-/** Tatar (Cyrillic script) (Татарча)
+/** Tatar (Cyrillic script) (татарча)
  * @author Ajdar
  * @author Zahidulla
  * @author Ильнар
@@ -34419,7 +34419,7 @@ $messages['ur'] = array(
 	'abusefilter-log-hide-reason' => 'وجہ:',
 );
 
-/** Vèneto (Vèneto)
+/** vèneto (vèneto)
  * @author Candalua
  * @author Frigotoni
  * @author Nemo bis
@@ -36443,7 +36443,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-import-submit' => '导入数据',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬)
+/** Traditional Chinese (‪中文（繁體）‬)
  * @author Alexsh
  * @author Anakmalaysia
  * @author Bencmq
