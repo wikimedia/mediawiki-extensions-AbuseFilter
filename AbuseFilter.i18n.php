@@ -10171,6 +10171,7 @@ Reglu frágreiðing: $1',
  * @author PieRRoMaN
  * @author Robby
  * @author Sherbrooke
+ * @author Tititou36
  * @author Urhixidur
  * @author Verdy p
  * @author Wyz
@@ -10579,6 +10580,7 @@ Pour plus de détails, voyez [[Special:AbuseFilter/history|la liste]] des modifi
 Sur le wiki d’origine, cliquez sur « {{int:abusefilter-edit-export}} » dans « {{int:abusefilter-edit-tools}} » depuis l’interface d’édition.
 Copiez la zone de texte qui s’affiche et collez-le dans cette zone de texte, puis cliquez sur « {{int:abusefilter-import-submit}} »,',
 	'abusefilter-import-submit' => 'Importer des données',
+	'abusefilter-group-default' => 'Par défaut',
 );
 
 /** Franco-Provençal (arpetan)
@@ -12092,6 +12094,7 @@ $messages['he'] = array(
 	'abusefilter-list-details' => 'פרטים',
 	'abusefilter-list-limit' => 'מספר הרשומות לדף:',
 	'abusefilter-list-lastmodified' => 'שינוי אחרון',
+	'abusefilter-list-group' => 'קבוצת מסננים',
 	'abusefilter-hidden' => 'פרטי',
 	'abusefilter-unhidden' => 'ציבורי',
 	'abusefilter-enabled' => 'מופעל',
@@ -12130,6 +12133,7 @@ $messages['he'] = array(
 	'abusefilter-edit-id' => 'מספר המסנן:',
 	'abusefilter-edit-description' => "תיאור:
 :''(ניתן לצפייה ציבורית)''",
+	'abusefilter-edit-group' => 'קבוצת מסננים:',
 	'abusefilter-edit-flags' => 'אפשרויות:',
 	'abusefilter-edit-enabled' => 'הפעלת מסנן זה',
 	'abusefilter-edit-deleted' => 'סימון כמחוק',
@@ -12387,6 +12391,7 @@ $messages['he'] = array(
 באתר המקור, לחצו על "{{int:abusefilter-edit-export}}" שב"{{int:abusefilter-edit-tools}}" בממשק העריכה.
 העתיקו מתיבת הטקסט המופיעה שם, הדביקו את הטקסט בתיבת הטקסט הזו, ואז לחצו על "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'ייבוא המידע',
+	'abusefilter-group-default' => 'בררת המחדל',
 );
 
 /** Hindi (हिन्दी)
@@ -20793,6 +20798,7 @@ Huraian penapis: $7 ($8)',
 	'abusefilter-list-details' => 'Butiran',
 	'abusefilter-list-limit' => 'Bilangan per laman:',
 	'abusefilter-list-lastmodified' => 'Kali terakhir diubah',
+	'abusefilter-list-group' => 'Kumpulan penapis',
 	'abusefilter-hidden' => 'Rahsia',
 	'abusefilter-unhidden' => 'Umum',
 	'abusefilter-enabled' => 'Dihidupkan',
@@ -20835,6 +20841,7 @@ Ia telah mencapai had pemadanan lebih $1% tindakan.",
 	'abusefilter-edit-id' => 'ID penapis:',
 	'abusefilter-edit-description' => "Keterangan:
 :''(boleh dibaca umum)''",
+	'abusefilter-edit-group' => 'Kumpulan penapis:',
 	'abusefilter-edit-flags' => 'Bendera:',
 	'abusefilter-edit-enabled' => 'Hidupkan penapis ini',
 	'abusefilter-edit-deleted' => 'Tandai sebagai dihapuskan',
@@ -21094,6 +21101,7 @@ Untuk butiran lanjut, lihat [[Special:AbuseFilter/history|senarai]] perubahan pe
 Dalam wiki sumber, klik "{{int:abusefilter-edit-export}}" di bawah "{{int:abusefilter-edit-tools}}" di antara muka penyuntingan.
 Salin dari ruangan teks yang muncul, kemudian tampalkannya ke dalam ruangan teks ini, kemudian klik "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Import data',
+	'abusefilter-group-default' => 'Asali',
 );
 
 /** Maltese (Malti)
@@ -22851,6 +22859,7 @@ Filterbeschrijving: $7 ($8)',
 	'abusefilter-list-details' => 'Details',
 	'abusefilter-list-limit' => 'Aantal per pagina:',
 	'abusefilter-list-lastmodified' => 'Laatste wijziging',
+	'abusefilter-list-group' => 'Filtergroep',
 	'abusefilter-hidden' => 'Beperkt zichtbaar',
 	'abusefilter-unhidden' => 'Openbaar',
 	'abusefilter-enabled' => 'Ingeschakeld',
@@ -22892,6 +22901,7 @@ De gemiddelde looptijd van de filtercontrole is $4ms, en deze gebruikt $5 {{PLUR
 	'abusefilter-edit-id' => 'Filternummer:',
 	'abusefilter-edit-description' => "Beschrijving:
 :''(publiekelijk zichtbaar)''",
+	'abusefilter-edit-group' => 'Filtergroep:',
 	'abusefilter-edit-flags' => 'Markeringen:',
 	'abusefilter-edit-enabled' => 'Dit filter inschakelen',
 	'abusefilter-edit-deleted' => 'Als verwijderd markeren',
@@ -23152,6 +23162,7 @@ Zie de [[Special:AbuseFilter/history|lijst met recente filterwijzigingen]] voor 
 Klik "{{int:abusefilter-edit-export}}i" bij "{{int:abusefilter-edit-tools}}".
 Kopieer de tekst die in het bewerkingsvenster verschijnt naar dit bewerkingsvenster en klik dan op "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Filtergegevens importeren',
+	'abusefilter-group-default' => 'Standaard',
 );
 
 /** ‪Nederlands (informeel)‬ (‪Nederlands (informeel)‬)
