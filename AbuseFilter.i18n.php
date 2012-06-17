@@ -10161,6 +10161,7 @@ Reglu frágreiðing: $1',
 /** French (français)
  * @author ChrisPtDe
  * @author Crochet.david
+ * @author DavidL
  * @author Gomoko
  * @author Grondin
  * @author IAlex
@@ -10279,6 +10280,7 @@ Description du filtre : $7 ($8)',
 	'abusefilter-list-details' => 'Détails',
 	'abusefilter-list-limit' => 'Nombre par page :',
 	'abusefilter-list-lastmodified' => 'Dernière modification',
+	'abusefilter-list-group' => 'Groupe du filtre',
 	'abusefilter-hidden' => 'Privé',
 	'abusefilter-unhidden' => 'Public',
 	'abusefilter-enabled' => 'Activé',
@@ -10321,6 +10323,7 @@ Il a atteint la limite de détection de plus de $1 % des actions.",
 	'abusefilter-edit-id' => 'N° filtre :',
 	'abusefilter-edit-description' => "Description :
 : ''(visible publiquement)''",
+	'abusefilter-edit-group' => 'Groupe du filtre :',
 	'abusefilter-edit-flags' => 'Drapeaux :',
 	'abusefilter-edit-enabled' => 'Activer ce filtre',
 	'abusefilter-edit-deleted' => 'Marquer comme supprimé',
@@ -16176,7 +16179,7 @@ $messages['ja'] = array(
 	'abusefilter-list-options-disabled' => '無効化されたフィルター:',
 	'abusefilter-list-options-hidedisabled' => '無効化されたフィルターを隠す',
 	'abusefilter-list-options-submit' => '更新',
-	'abusefilter-tools-text' => '不正利用フィルターの作成およびデバッグに役立つだろうツールです。',
+	'abusefilter-tools-text' => '不正利用フィルターの作成およびデバッグに役立つ場合があるツールです。',
 	'abusefilter-tools-expr' => '式の試験ツール',
 	'abusefilter-tools-submitexpr' => '評価',
 	'abusefilter-tools-reautoconfirm' => '自動承認ステータスを復元',
@@ -16245,9 +16248,10 @@ $messages['ja'] = array(
 	'abusefilter-edit-export' => 'このフィルターを別のウィキにエクスポートする',
 	'abusefilter-edit-syntaxok' => '構文エラーは検出されませんでした。',
 	'abusefilter-edit-syntaxerr' => '構文エラーの検出: $1',
-	'abusefilter-edit-bad-tags' => 'あなたが指定したタグの1つ以上に不正なものがあります。タグは短く、かつ特殊文字を含んではなりません。',
+	'abusefilter-edit-bad-tags' => '指定したタグには無効なものが1つ以上あります。
+タグは短くする必要があり、特殊文字を含んではなりません。',
 	'abusefilter-edit-notallowed' => 'あなたは不正利用フィルターを作成または編集することが許可されていません',
-	'abusefilter-edit-builder-select' => 'カーソル箇所に追加するものを選択',
+	'abusefilter-edit-builder-select' => 'カーソルの位置に追加するものを選択',
 	'abusefilter-edit-builder-group-op-arithmetic' => '算術演算子',
 	'abusefilter-edit-builder-op-arithmetic-addition' => '加算 (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => '減算 (-)',
@@ -16362,7 +16366,7 @@ $messages['ja'] = array(
 	'abusefilter-exception-unrecognisedkeyword' => '$1文字目に認識できないキーワード $2 があります。',
 	'abusefilter-exception-unexpectedtoken' => '$1文字目に予期せぬトークン「$3」($2型) があります。',
 	'abusefilter-exception-unclosedstring' => '$1文字目から始まる文字列が閉じられていません。',
-	'abusefilter-exception-invalidoperator' => '$1文字目に不正な演算子「$2」があります。',
+	'abusefilter-exception-invalidoperator' => '$1文字目に無効な演算子「$2」があります。',
 	'abusefilter-exception-unrecognisedtoken' => '$1文字目に認識できないトークン「$2」があります。',
 	'abusefilter-exception-noparams' => '$1文字目にある関数「$2」に引数が与えられていません。',
 	'abusefilter-exception-dividebyzero' => '$1文字目に$2に対するゼロ除算があります。',
@@ -16370,7 +16374,7 @@ $messages['ja'] = array(
 	'abusefilter-exception-notenoughargs' => '$1 文字目で呼び出されている関数 $2 の引数が不足しています。
 $3 個の{{PLURAL:$3|引数}}があるべきですが $4 個しかありません',
 	'abusefilter-exception-regexfailure' => '$1 文字目の正規表現 "$3" にエラーがあります: "$2"',
-	'abusefilter-exception-overridebuiltin' => '組み込みの変数「$2」を $1文字目で不正に上書きしています。',
+	'abusefilter-exception-overridebuiltin' => '$1文字目で、組み込みの変数「$2」を不正に上書きしています。',
 	'abusefilter-exception-outofbounds' => '$1文字目で、存在しない一覧項目 $2 (一覧のサイズは$3) を要求しています。',
 	'abusefilter-exception-notlist' => '$1文字目で非配列の配列要素を要求しています。',
 	'abusefilter-action-tag' => 'タグ付け',
@@ -16420,7 +16424,7 @@ $3 個の{{PLURAL:$3|引数}}があるべきですが $4 個しかありませ�
 	'abusefilter-examine-test-button' => 'フィルター試験',
 	'abusefilter-examine-match' => 'フィルターはこの変更に一致しました。',
 	'abusefilter-examine-nomatch' => 'フィルターはこの変更に一致しませんでした。',
-	'abusefilter-examine-syntaxerror' => 'フィルターの構文が不正です',
+	'abusefilter-examine-syntaxerror' => 'フィルターの構文が無効です',
 	'abusefilter-examine-notfound' => 'あなたが要求した変更は見つかりませんでした。',
 	'abusefilter-examine-incompatible' => 'あなたが要求した変更には不正利用フィルターが対応していません。',
 	'abusefilter-examine-noresults' => '指定された検索条件に合致する結果はありませんでした。',
@@ -36074,6 +36078,7 @@ $messages['zh-cn'] = array(
  * @author Gaoxuewei
  * @author Gzdavidwong
  * @author Hydra
+ * @author Hzy980512
  * @author Jimmy xu wrk
  * @author Liangent
  * @author Linforest
@@ -36086,7 +36091,7 @@ $messages['zh-cn'] = array(
  */
 $messages['zh-hans'] = array(
 	'abusefilter-desc' => '对编辑行为自动进行条件判定',
-	'abusefilter' => '防滥用过滤器配置',
+	'abusefilter' => '滥用过滤器设置',
 	'abuselog' => '滥用记录',
 	'abusefilter-intro' => '欢迎访问防滥用过滤器管理界面。防滥用过滤器是一个可以针对所有最近编辑动作进行自动化判断的软件系统。本界面包含了现有过滤器的列表，并允许管理人员修改它们。',
 	'abusefilter-mustbeeditor' => '出于安全考虑，只有拥有编辑防滥用过滤器权限的用户方可使用本界面。',
@@ -36167,6 +36172,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-list-details' => '详情',
 	'abusefilter-list-limit' => '每页显示数量：',
 	'abusefilter-list-lastmodified' => '最后更改',
+	'abusefilter-list-group' => '过滤器组',
 	'abusefilter-hidden' => '非公开',
 	'abusefilter-unhidden' => '公开',
 	'abusefilter-enabled' => '已启用',
@@ -36452,6 +36458,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-diff-backhistory' => '返回过滤器历史页面',
 	'abusefilter-import-intro' => '您可以使用本界面来导入其他wiki的过滤器。在来源处点击过滤器编辑界面处“{{int:abusefilter-edit-tools}}”下的“{{int:abusefilter-edit-export}}”。复制随后出现的文本框中的内容，并粘贴至下方的文本框中，并点击“{{int:abusefilter-import-submit}}”。',
 	'abusefilter-import-submit' => '导入数据',
+	'abusefilter-group-default' => '默认',
 );
 
 /** Traditional Chinese (‪中文（繁體）‬)
