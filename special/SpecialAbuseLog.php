@@ -357,7 +357,9 @@ class SpecialAbuseLog extends SpecialPage {
 				$filter_hidden = AbuseFilter::filterHidden( $filter_id );
 			}
 			if ( $filter_hidden ) {
-				return $wgUser->isAllowed( 'abusefilter-log-detail' ) && AbuseFilterView::canViewPrivate();
+				return $wgUser->isAllowed( 'abusefilter-log-detail' ) && (
+					AbuseFilterView::canViewPrivate() || $wgUser->isAllowed( 'abusefilter-log-private' )
+				);
 			}
 		}
 
