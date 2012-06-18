@@ -16237,8 +16237,9 @@ $messages['ja'] = array(
 	'abusefilter-edit-denied' => 'このフィルターは非公開とされているため、あなたは詳細を閲覧することができません',
 	'abusefilter-edit-main' => 'フィルターの設定',
 	'abusefilter-edit-done-subtitle' => 'フィルターを編集しました',
-	'abusefilter-edit-done' => 'フィルター $1 への変更の保存に成功しました。',
-	'abusefilter-edit-badsyntax' => '指定したフィルターには構文エラーがあります。パーサーからの出力: <pre>$1</pre>',
+	'abusefilter-edit-done' => 'フィルター $1 への変更を保存しました。',
+	'abusefilter-edit-badsyntax' => '指定したフィルターには構文エラーがあります。
+パーサーからの出力：<pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'このフィルターは1つ以上の制限された操作を含んでいるため、あなたには編集できません。制限された操作を追加する権限のある利用者にあなたの望む変更をしてくれるよう頼んでください。',
 	'abusefilter-edit-viewhistory' => 'このフィルターの履歴を閲覧',
 	'abusefilter-edit-history' => '履歴:',
