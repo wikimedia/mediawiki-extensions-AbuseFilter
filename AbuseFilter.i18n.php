@@ -20312,6 +20312,7 @@ $messages['ml'] = array(
 	'right-abusefilter-modify-restricted' => 'പരിമിതപ്പെടുത്തിയിരിക്കുന്ന പ്രവൃത്തികൾ ഉപയോഗിച്ച് ദുരുപയോഗ അരിപ്പ പുതുക്കുക',
 	'right-abusefilter-revert' => 'തന്നിരിക്കുന്ന ദുരുപയോഗ അരിപ്പ ചെയ്ത എല്ലാ മാറ്റങ്ങളും തിരസ്കരിക്കുക',
 	'right-abusefilter-view-private' => 'സ്വകാര്യമെന്ന് അടയാളപ്പെടുത്തിയ ദുരുപയോഗ അരിപ്പകൾ കാണുക',
+	'right-abusefilter-log-private' => 'ദുരുപയോഗ അരിപ്പകൾ സ്വകാര്യമെന്ന് അടയാളപ്പെടുത്തിയ രേഖകൾ കാണുക',
 	'right-abusefilter-hide-log' => 'ദുരുപയോഗരേഖയിലെ വിവരങ്ങൾ മറയ്ക്കുക',
 	'right-abusefilter-hidden-log' => 'മറയ്ക്കപ്പെട്ടിരിക്കുന്ന ദുരുപയോഗ രേഖാ വിവരങ്ങൾ കാണുക',
 	'action-abusefilter-modify' => 'ദുരുപയോഗ അരിപ്പകൾ മെച്ചപ്പെടുത്തുക',
