@@ -370,7 +370,7 @@ class AbuseFilter {
 	 * Returns an associative array of filters which were tripped
 	 *
 	 * @param $vars array
-	 * @param $group The filter group to check against.
+	 * @param $group string The filter group to check against.
 	 *
 	 * @return array
 	 */
@@ -1740,7 +1740,7 @@ class AbuseFilter {
 
 	/**
 	 * @param $title Title
-	 * @param $article Array
+	 * @param $article Array|Article
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function getEditVars( $title, $article = null ) {

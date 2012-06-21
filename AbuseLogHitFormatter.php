@@ -5,10 +5,12 @@
  */
 class AbuseLogHitFormatter extends LogFormatter {
 
+	/**
+	 * @return array
+	 */
 	protected function getMessageParameters() {
 		$entry = $this->entry->getParameters();
 		$params = parent::getMessageParameters();
-
 
 		$filter_title = SpecialPage::getTitleFor( 'AbuseFilter', $entry['filter'] );
 		$filter_caption = $this->msg( 'abusefilter-log-detailedentry-local' )->params( $entry['filter'] );

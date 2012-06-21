@@ -40,9 +40,8 @@ class AbuseFilterVariableHolder {
 			} elseif ( $this->mVars[$variable] instanceof AFPData ) {
 				return $this->mVars[$variable];
 			}
-		} else {
-			return new AFPData();
 		}
+		return new AFPData();
 	}
 
 	/**
@@ -117,8 +116,8 @@ class AbuseFilterVariableHolder {
 		foreach ( $this->mVars as $name => $value ) {
 			if ( $value instanceof AFComputedVariable &&
 						in_array( $value->mMethod, $dbTypes ) ) {
-					$value = $value->compute( $this );
-					$this->setVar( $name, $value );
+				$value = $value->compute( $this );
+				$this->setVar( $name, $value );
 			}
 		}
 	}
