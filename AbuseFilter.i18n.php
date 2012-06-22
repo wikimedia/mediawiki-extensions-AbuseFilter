@@ -1723,7 +1723,7 @@ $messages['arc'] = array(
 	'abusefilter-list-status' => 'ܐܝܟܢܝܘܬܐ',
 	'abusefilter-list-edit' => 'ܫܚܠܦ',
 	'abusefilter-list-details' => 'ܐܪ̈ܝܟܬܐ',
-	'abusefilter-list-limit' => 'ܡܢܝܢܐ ܠܟܠ ܕܦܐ:',
+	'abusefilter-list-limit' => 'ܡܢܝܢܐ ܠܟܠ ܦܐܬܐ:',
 	'abusefilter-deleted' => 'ܫܝܦܐ',
 	'abusefilter-new' => 'ܒܪܝ ܡܨܦܝܢܝܬܐ ܚܕܬܐ',
 	'abusefilter-status-global' => 'ܓܘܢܝܐ',
@@ -7079,6 +7079,7 @@ Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpo
 	'right-abusefilter-modify-restricted' => 'Znjewužywańske filtry z wobgranicowanymi akcijami změniś',
 	'right-abusefilter-revert' => 'Wše změny wót danego znjewužywańskego filtra anulěrowaś',
 	'right-abusefilter-view-private' => 'Znjewužiwańske filtry se woglědaś, kótarež su ako priwatne markěrowane',
+	'right-abusefilter-log-private' => 'Ako priwatne markěrowane protokolowe zapiski znjewužywańskich filtrow se woglědaś',
 	'right-abusefilter-hide-log' => 'Zapiski w znjewužywańskem protokolu schowaś',
 	'right-abusefilter-hidden-log' => 'Schowane zapiski znjewužywańskego protokola pokazaś',
 	'action-abusefilter-modify' => 'znjewužywańske filtry změniś',
@@ -17182,6 +17183,7 @@ $messages['ko'] = array(
 	'abusefilter-list-details' => '자세한 사항',
 	'abusefilter-list-limit' => '페이지당 필터 개수',
 	'abusefilter-list-lastmodified' => '마지막 수정',
+	'abusefilter-list-group' => '필터 그룹',
 	'abusefilter-hidden' => '비공개',
 	'abusefilter-unhidden' => '공개',
 	'abusefilter-enabled' => '활성화됨',
@@ -17208,14 +17210,14 @@ $messages['ko'] = array(
 	'abusefilter-reautoconfirm-none' => '이 계정 ($1)은 자동 인증 상태가 해제된 적이 없습니다.',
 	'abusefilter-reautoconfirm-notallowed' => '당신은 자동 인증 상태를 복구할 권한이 없습니다.',
 	'abusefilter-reautoconfirm-done' => '계정의 자동 인증 상태가 복구되었습니다.',
-	'abusefilter-status' => '최근 $1개의 행위 중 $2개 ($3%)가 부하 한도 $4에 도달했고 $5개($6%)가 현재 활성화된 필터와 일치하였습니다.',
+	'abusefilter-status' => '최근 행위 $1개 중 $2개 ($3%)가 부하 한도 $4에 도달했고 $5개($6%)가 현재 활성화된 필터와 일치하였습니다.',
 	'abusefilter-edit-subtitle' => '필터 $1 편집하기',
 	'abusefilter-edit-oldwarning' => '<strong>당신은 이 필터의 이전 버전을 수정하고 있습니다.
 아래의 통계는 이 필터의 최근 버전에 대한 것입니다.
 당신이 수정한 내용을 저장하면 당신이 편집하고 있는 버전 이후의 모든 수정 사항을 덮어쓰게 됩니다.</strong> &bull;
 [[Special:AbuseFilter/history/$2|이 필터의 역사로 돌아가기]].',
 	'abusefilter-edit-status-label' => '통계:',
-	'abusefilter-edit-status' => '최근 $1개의 행위 중 $2건($3%)이 이 필터와 일치하였습니다.
+	'abusefilter-edit-status' => '최근 행위 $1개 중 $2건($3%)이 이 필터와 일치하였습니다.
 평균적으로 필터의 작동 시간은 $4밀리초이며, $5만큼의 부하가 걸리고 있습니다.',
 	'abusefilter-edit-throttled' => "'''경고''': 이 필터는 안전상의 이유로 자동적으로 비활성화되었습니다.
 필터 일치 비율이 $1%로 한계에 다다랐습니다.",
@@ -17224,6 +17226,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-id' => '필터 ID:',
 	'abusefilter-edit-description' => '설명:
 :(공개됨)',
+	'abusefilter-edit-group' => '필터 그룹:',
 	'abusefilter-edit-flags' => '설정:',
 	'abusefilter-edit-enabled' => '이 필터 활성화하기',
 	'abusefilter-edit-deleted' => '삭제된 것으로 표시',
@@ -17353,7 +17356,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-builder-vars-user-name' => '사용자 계정 이름',
 	'abusefilter-edit-builder-vars-user-groups' => '사용자 권한 그룹 (자동으로 부여된 권한 포함)',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => '이메일이 인증된 시각',
-	'abusefilter-edit-builder-vars-recent-contributors' => '이 문서를 마지막으로 편집한 10명의 편집자',
+	'abusefilter-edit-builder-vars-recent-contributors' => '이 문서를 마지막으로 편집한 편집자 10명',
 	'abusefilter-edit-builder-vars-all-links' => '바뀐 글에 포함된 모든 외부 링크',
 	'abusefilter-edit-builder-vars-added-links' => '편집 중 추가된 모든 바깥 고리',
 	'abusefilter-edit-builder-vars-removed-links' => '편집 중 제거된 모든 바깥 고리',
@@ -17400,7 +17403,7 @@ $messages['ko'] = array(
 	'abusefilter-exception-dividebyzero' => '$1번째 문자에서 $2를 0으로 나누려 하고 있습니다.',
 	'abusefilter-exception-unrecognisedvar' => '$1번째 문자에 알 수 없는 변수 $2가 있습니다.',
 	'abusefilter-exception-notenoughargs' => '$1번째 문자에서 호출한 $2 함수에 변수가 부족합니다.
-$3개의 변수가 있어야 하지만 $4개의 변수가 있습니다.',
+변수 $3개가 있어야 하지만 변수 $4개가 있습니다.',
 	'abusefilter-exception-regexfailure' => '$1번째 글자의 "$3" 정규 표현식에서 오류 발생: "$2"',
 	'abusefilter-exception-overridebuiltin' => '$1번째 문자에서 소프트웨어에 내장된 변수를 덮는 "$2" 변수가 있습니다.',
 	'abusefilter-exception-outofbounds' => '$1번째 문자에서 존재하지 않는 목록 항목 $2(목록 길이 = $3)를 요구하고 있습니다.',
@@ -17484,6 +17487,7 @@ $3개의 변수가 있어야 하지만 $4개의 변수가 있습니다.',
 필터가 있는 위키에서 필터 편집 화면의 "{{int:abusefilter-edit-tools}}"에서 "{{int:abusefilter-edit-export}}"를 클릭하십시오.
 나타나는 글상자의 내용을 복사한 후 붙여넣고, "{{int:abusefilter-import-submit}}"를 클릭하십시오.',
 	'abusefilter-import-submit' => '데이터 가져오기',
+	'abusefilter-group-default' => '기본값',
 );
 
 /** Krio (Krio)
@@ -34987,6 +34991,7 @@ Miêu tả ngắn về quy luật lạm dụng mà tác vụ của bạn gặp p
 	'right-abusefilter-modify-restricted' => 'Chỉnh sửa bộ lọc vi phạm với các hành vi bị hạn chế',
 	'right-abusefilter-revert' => 'Hồi lại tất cả thay đổi theo một bộ lọc vi phạm cho trước',
 	'right-abusefilter-view-private' => 'Xem những bộ lọc phá hoại được đánh dấu riêng tư',
+	'right-abusefilter-log-private' => 'Xem các mục bộ lọc lạm dụng riêng trong nhật trình',
 	'right-abusefilter-hide-log' => 'Ẩn mục trong nhật trình lạm dụng',
 	'right-abusefilter-hidden-log' => 'Xem các mục trong nhật trình lạm dụng',
 	'action-abusefilter-modify' => 'sửa đổi bộ lọc lạm dụng',
