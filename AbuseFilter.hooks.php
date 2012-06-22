@@ -13,7 +13,7 @@ class AbuseFilterHooks {
 	 * @param $editor EditPage instance (object)
 	 * @param $text string Content of the edit box
 	 * @param &$error string Error message to return
-	 * @param $summary Edit summary for page
+	 * @param $summary string Edit summary for page
 	 * @return bool
 	 */
 	public static function onEditFilterMerged( $editor, $text, &$error, $summary ) {
@@ -269,6 +269,7 @@ class AbuseFilterHooks {
 
 	/**
 	 * Updater callback to create the AbuseFilter user after the user tables have been updated.
+	 * @param $updater DatabaseUpdater
 	 */
 	public static function createAbuseFilterUser( $updater ) {
 		$user = User::newFromName( wfMsgForContent( 'abusefilter-blocker' ) );
