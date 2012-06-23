@@ -7039,7 +7039,7 @@ Kutiyê nuştîşî kopye bike u ena kutiyê nuştîş rê na pa u klik bike "{{
 	'abusefilter-import-submit' => 'Malumata zerre ke',
 );
 
-/** Lower Sorbian (Dolnoserbski)
+/** Lower Sorbian (dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
@@ -13177,7 +13177,7 @@ Kopirajte tekst iz okvira koji će se pojaviti, i zalijepite ga u ovaj okvir, a 
 	'abusefilter-import-submit' => 'Uvoz podataka',
 );
 
-/** Upper Sorbian (Hornjoserbsce)
+/** Upper Sorbian (hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
@@ -20760,6 +20760,7 @@ Keterangan peraturan: $1',
 	'right-abusefilter-modify-restricted' => 'Mengubah suai penapis salah guna dengan tindakan-tindakan terhad',
 	'right-abusefilter-revert' => 'Membalikkan semua perubahan oleh penapis salah guna tertentu',
 	'right-abusefilter-view-private' => 'Melihat penapis salah guna yang ditanda rahsia',
+	'right-abusefilter-log-private' => 'Melihat log masukan penapis salah guna yang ditanda rahsia',
 	'right-abusefilter-hide-log' => 'Menyembunyikan entri dalam log penyalahgunaan',
 	'right-abusefilter-hidden-log' => 'Melihat entri log penyalahgunaan yang disembunyikan',
 	'action-abusefilter-modify' => 'mengubah suai penapis salah guna',
