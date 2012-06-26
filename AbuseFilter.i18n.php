@@ -9313,6 +9313,7 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Hooshmand.hasannia
  * @author Huji
  * @author Ladsgroup
  * @author Mjbmr
@@ -9723,6 +9724,7 @@ $messages['fa'] = array(
 در ویکی مبدأ روی «{{int:abusefilter-edit-export}}» زیر «{{int:abusefilter-edit-tools}}» در رابط ویرایشی کلیک کنید.
 از جعبهٔ متنی که نشان داده می‌شود کپی کرده و در این جعبهٔ متن بچسبانید، سپس روی «{{int:abusefilter-import-submit}}» کلیک کنید.',
 	'abusefilter-import-submit' => 'درون‌ریزی اطلاعات',
+	'abusefilter-group-default' => 'پیش‌فرض',
 );
 
 /** Finnish (suomi)
