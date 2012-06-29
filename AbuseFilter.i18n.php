@@ -2224,6 +2224,7 @@ $messages['as'] = array(
 );
 
 /** Asturian (asturianu)
+ * @author Mr.Ajedrez
  * @author Xuacu
  */
 $messages['ast'] = array(
@@ -2267,6 +2268,7 @@ Descripción de la regla: $1",
 	'right-abusefilter-modify-restricted' => "Camudar les peñeres d'abusu con aiciones restrinxíes",
 	'right-abusefilter-revert' => "Revertir tolos cambios fechos por una determinada peñera d'abusu",
 	'right-abusefilter-view-private' => "Ver les peñeres d'abusu marcaes como privaes",
+	'right-abusefilter-log-private' => "Ver entraes del rexistru d'abusos marcaes como privaes",
 	'right-abusefilter-hide-log' => "Anubrir entraes del rexistru d'abusos",
 	'right-abusefilter-hidden-log' => "Ver les entraes anubríes del rexistru d'abusos",
 	'action-abusefilter-modify' => "camudar les peñeres d'abusu",
@@ -2315,7 +2317,37 @@ Descripción de la peñera: $7 ($8)",
 	'abusefilter-log-hide-forbidden' => "Nun tienes permisu p'anubrir entraes del rexistru d'abusos.",
 	'abusefilter-logentry-suppress' => 'anubre "[[$1]]"',
 	'abusefilter-logentry-unsuppress' => 'amuesa "[[$1]]"',
+	'logentry-abusefilter-hit' => '$1 provocó $4, realizando l\'acción "$5" en $3. Acciones tomaes: $6 ($7)',
+	'abusefilter-list' => 'Tolos filtros',
 	'abusefilter-list-status' => 'Estáu',
+	'abusefilter-list-public' => 'Descripción pública',
+	'abusefilter-list-consequences' => 'Consecuencies',
+	'abusefilter-list-visibility' => 'Visibilidá',
+	'abusefilter-list-hitcount' => 'Recuentu de visites',
+	'abusefilter-list-edit' => 'Editar',
+	'abusefilter-list-details' => 'Detalles',
+	'abusefilter-list-limit' => 'Númberu per páxina',
+	'abusefilter-list-lastmodified' => 'Último cambéu',
+	'abusefilter-list-group' => 'Grupu del filtru',
+	'abusefilter-hidden' => 'Priváu',
+	'abusefilter-unhidden' => 'Públicu',
+	'abusefilter-enabled' => 'Activáu',
+	'abusefilter-deleted' => 'Desaniciáu',
+	'abusefilter-disabled' => 'Desactivao',
+	'abusefilter-new' => 'Crear un nuevu filtru',
+	'abusefilter-return' => "Volver a l'alministración del filtru",
+	'abusefilter-status-global' => 'Global',
+	'abusefilter-list-options' => 'Opciones',
+	'abusefilter-list-options-deleted' => 'Filtros borraos:',
+	'abusefilter-list-options-deleted-only' => 'Amosar solu filtros borraos',
+	'abusefilter-list-options-deleted-hide' => 'Despintar filtros borraos',
+	'abusefilter-list-options-deleted-show' => 'Incluyir filtros borraos',
+	'abusefilter-list-options-disabled' => 'Filtros desactivaos:',
+	'abusefilter-list-options-hidedisabled' => 'Despintar filtros desactivaos',
+	'abusefilter-list-options-submit' => 'Anovar',
+	'abusefilter-tools-submitexpr' => 'Evaluar',
+	'abusefilter-tools-reautoconfirm-user' => 'Usuariu:',
+	'abusefilter-tools-reautoconfirm-submit' => 'Re-autoconfirmar',
 );
 
 /** Azerbaijani (azərbaycanca)
