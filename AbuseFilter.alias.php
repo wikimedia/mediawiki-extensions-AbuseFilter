@@ -26,6 +26,12 @@ $specialPageAliases['arz'] = array(
 	'AbuseFilter' => array( 'فيلتر_الاساءه' ),
 );
 
+/** Assamese (অসমীয়া) */
+$specialPageAliases['as'] = array(
+	'AbuseLog' => array( 'অপব্যৱহাৰৰ_অভিলেখ' ),
+	'AbuseFilter' => array( 'অপব্যৱহাৰৰ_চেকনী' ),
+);
+
 /** Bulgarian (български) */
 $specialPageAliases['bg'] = array(
 	'AbuseLog' => array( 'Дневник_на_филтъра' ),
@@ -67,7 +73,7 @@ $specialPageAliases['diq'] = array(
 	'AbuseFilter' => array( 'FiltreyêNenga' ),
 );
 
-/** Lower Sorbian (Dolnoserbski) */
+/** Lower Sorbian (dolnoserbski) */
 $specialPageAliases['dsb'] = array(
 	'AbuseLog' => array( 'Protokol_znjewužywanjow' ),
 	'AbuseFilter' => array( 'Filter_znjewužywanjow' ),
@@ -121,7 +127,7 @@ $specialPageAliases['frp'] = array(
 	'AbuseFilter' => array( 'Filtro_d\'abus', 'FiltroDAbus' ),
 );
 
-/** Galician (Galego) */
+/** Galician (galego) */
 $specialPageAliases['gl'] = array(
 	'AbuseLog' => array( 'Rexistro_de_abusos' ),
 	'AbuseFilter' => array( 'Filtro_de_abusos' ),
@@ -157,7 +163,7 @@ $specialPageAliases['hr'] = array(
 	'AbuseFilter' => array( 'Filtar_zloporaba' ),
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
+/** Upper Sorbian (hornjoserbsce) */
 $specialPageAliases['hsb'] = array(
 	'AbuseLog' => array( 'Protokol_znjewužiwanjow' ),
 	'AbuseFilter' => array( 'Filter_znjewužiwanjow' ),
