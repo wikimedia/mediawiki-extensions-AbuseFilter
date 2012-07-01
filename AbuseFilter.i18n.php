@@ -1268,7 +1268,7 @@ $messages['am'] = array(
 	'abusefilter-edit-history' => 'ታሪክ',
 );
 
-/** Aragonese (Aragonés)
+/** Aragonese (aragonés)
  * @author Juanpabl
  */
 $messages['an'] = array(
@@ -3039,7 +3039,7 @@ $messages['be'] = array(
 	'abusefilter-revert-confirm' => 'Пацвердзіць',
 );
 
-/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
  * @author Cesco
  * @author EugeneZelenko
  * @author Jim-by
@@ -5754,7 +5754,7 @@ Zkopírujte si text, který se objeví v rámečku, vložte ho do tohoto formul�
 	'abusefilter-import-submit' => 'Importovat data',
 );
 
-/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+/** Church Slavic (словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
 $messages['cu'] = array(
@@ -12088,6 +12088,7 @@ $messages['he'] = array(
 	'right-abusefilter-modify-restricted' => 'שינוי מסנני השחתות עם פעולות מוגבלות',
 	'right-abusefilter-revert' => 'שחזור כל השינויים שבוצעו על ידי מסנן השחתות מסוים',
 	'right-abusefilter-view-private' => 'צפייה במסנני ההשחתה שסומנו כפרטיים',
+	'right-abusefilter-log-private' => 'הצגת רשומות יומן של מסנני השחתה שסומנו כפרטיות',
 	'right-abusefilter-hide-log' => 'הסתרת רשומות ביומן ההשחתה',
 	'right-abusefilter-hidden-log' => 'צפייה ברשומות נסתרות ביומן ההשחתה',
 	'action-abusefilter-modify' => 'לשנות את מסנני ההשחתות',
@@ -18007,7 +18008,7 @@ $messages['ku-latn'] = array(
 	'abusefilter-edit-status-label' => 'Statîstîk:',
 	'abusefilter-edit-new' => 'Fîltreya nû',
 	'abusefilter-edit-save' => 'Fîltreyê qeyd bike',
-	'abusefilter-edit-warn-other' => 'Mesaja din',
+	'abusefilter-edit-warn-other' => 'Peyama din',
 	'abusefilter-edit-history' => 'Dîrok:',
 	'abusefilter-edit-builder-op-bool-not' => 'Na (!)',
 	'abusefilter-edit-builder-op-bool-and' => ' Û (&)',
@@ -18238,6 +18239,7 @@ Beschreiwung vum Filter: $7 ($8)',
 	'abusefilter-list-details' => 'Detailer',
 	'abusefilter-list-limit' => 'Zuel pro Säit:',
 	'abusefilter-list-lastmodified' => "Dir d'läscht geännert",
+	'abusefilter-list-group' => 'Filter-Grupp',
 	'abusefilter-hidden' => 'Privat',
 	'abusefilter-unhidden' => 'Ëffentlech',
 	'abusefilter-enabled' => 'Aktivéiert',
@@ -18279,6 +18281,7 @@ En huet méi wéi déi definiéiert Limit vun $1% vun den Aktiounen als schiedle
 	'abusefilter-edit-id' => 'Nummer (ID) vum Filter:',
 	'abusefilter-edit-description' => "Beschreiwung:
 :''(ëffentlech)''",
+	'abusefilter-edit-group' => 'Filter-Grupp:',
 	'abusefilter-edit-flags' => 'Fändelen:',
 	'abusefilter-edit-enabled' => 'Dëse Filter aktivéieren',
 	'abusefilter-edit-deleted' => 'Als geläscht markéieren',
@@ -26411,7 +26414,7 @@ entradas do registro de abusos.',
 	'abusefilter-list-options-deleted-hide' => 'Ocultar filtros eliminados',
 	'abusefilter-list-options-deleted-show' => 'Incluir filtros eliminados',
 	'abusefilter-list-options-disabled' => 'Filtros desativados:',
-	'abusefilter-list-options-hidedisabled' => 'Esconder filtros desativados',
+	'abusefilter-list-options-hidedisabled' => 'Ocultar filtros desativados',
 	'abusefilter-list-options-submit' => 'Atualizar',
 	'abusefilter-tools-text' => 'Aqui estão algumas ferramentas que poderão ser úteis na formulação e depuração dos filtros de abuso.',
 	'abusefilter-tools-expr' => 'Testador de expressões',
@@ -27949,7 +27952,7 @@ $messages['ru'] = array(
 	'abusefilter-import-submit' => 'Импортировать данные',
 );
 
-/** Rusyn (Русиньскый)
+/** Rusyn (русиньскый)
  * @author Dim Grits
  * @author Gazeb
  */
@@ -31763,7 +31766,7 @@ $messages['sw'] = array(
 	'abusefilter-diff-info' => 'Maelezo ya msingi',
 );
 
-/** Silesian (Ślůnski)
+/** Silesian (ślůnski)
  * @author Britscher
  */
 $messages['szl'] = array(
