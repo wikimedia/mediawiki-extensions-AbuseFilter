@@ -6350,6 +6350,7 @@ Filterbeschreibung: $7 ($8)',
 	'abusefilter-status' => 'Von {{PLURAL:$1|der letzten Aktion|den letzten $1 Aktionen}} {{PLURAL:$2|hat eine|haben $2}} ($3 %) den Grenzwert von $4 erreicht.
 {{PLURAL:$5|Eine Aktion|$5 Aktionen}} ($6 %) {{PLURAL:$5|wurde|wurden}} von einem der aktivierten Filter erkannt.',
 	'abusefilter-edit-subtitle' => 'Bearbeite Filter $1',
+	'abusefilter-edit-subtitle-new' => 'Der Filter wird gerade erstellt.',
 	'abusefilter-edit-oldwarning' => '<strong>Du bearbeitest nicht die aktuelle, sondern eine ältere Version dieses Filters. Die Statistik gilt nur für die letzte Version des Filters. Wenn du speicherst, wird diese als aktuelle Version neu gespeichert. </strong> &bull; [[Special:AbuseFilter/history/$2|Zurück zur Versionsgeschichte des Filters]]',
 	'abusefilter-edit-status-label' => 'Statistik:',
 	'abusefilter-edit-status' => 'Von {{PLURAL:$1|der letzten Aktion|den letzten $1 Aktionen}} {{PLURAL:$2|wurde eine|wurden $2}} ($3 %) von diesem Filter erkannt.
@@ -9359,6 +9360,7 @@ $messages['eu'] = array(
  * @author Hooshmand.hasannia
  * @author Huji
  * @author Ladsgroup
+ * @author Leyth
  * @author Mjbmr
  * @author Reza1615
  * @author Sahim
@@ -9467,6 +9469,7 @@ $messages['fa'] = array(
 	'abusefilter-list-details' => 'جزئیات',
 	'abusefilter-list-limit' => 'تعداد در صفحه:',
 	'abusefilter-list-lastmodified' => 'آخرین ویرایش',
+	'abusefilter-list-group' => 'گروه پالایه',
 	'abusefilter-hidden' => 'خصوصی',
 	'abusefilter-unhidden' => 'عمومی',
 	'abusefilter-enabled' => 'فعال',
@@ -9495,6 +9498,7 @@ $messages['fa'] = array(
 	'abusefilter-reautoconfirm-done' => 'وضعیت تأییدشدهٔ حساب بازگردانده شد.',
 	'abusefilter-status' => 'از آخرین $1 {{PLURAL:$1|عمل|عمل}}، $2 ($3٪) به ظرفیت شرایط $4 {{PLURAL:$2|رسید|رسیدند}}، و $5 ($6٪) با یکی از پالایه‌هایی که در حال حاضر فعال است مطابقت {{PLURAL:$5|داشت|داشتند}}.',
 	'abusefilter-edit-subtitle' => 'ویرایش پالایهٔ $1',
+	'abusefilter-edit-subtitle-new' => 'ساختن پالایه',
 	'abusefilter-edit-oldwarning' => '<strong>شما مشغول ویرایش کردن بر روی نسخهٔ قدیمی از پالایه هستید.
 آمار نقل شده بر اساس آخرین نسخهٔ پالایه است.
 اگر دکمه ذخیره را بفشارید تمام تغییرات بعد از نسخه‌ای که ویرایش می‌کنید را رونویسی خواهید کرد.</strong> &bull;
@@ -9509,6 +9513,7 @@ $messages['fa'] = array(
 	'abusefilter-edit-id' => 'شناسهٔ پالایه:',
 	'abusefilter-edit-description' => "توضیحات:
 :''(قابل مشاهده توسط عموم)''",
+	'abusefilter-edit-group' => 'گروه پالایه:',
 	'abusefilter-edit-flags' => 'پرچم‌ها:',
 	'abusefilter-edit-enabled' => 'فعال کردن این پالایه',
 	'abusefilter-edit-deleted' => 'علامت‌زدن به عنوان حذف‌شده',
@@ -11225,6 +11230,7 @@ Descrición do filtro: $7 ($8)',
 	'abusefilter-reautoconfirm-done' => 'Restaurouse o estado de autoconfirmación da conta',
 	'abusefilter-status' => '{{PLURAL:$1|Da última acción|Das $1 últimas accións}}, $2 (o $3%) {{PLURAL:$2|atinxiu|atinxiron}} a condición límite de $4, e $5 (o $6%) {{PLURAL:$5|coincidiu|coincidiron}} cun dos filtros actualmente activados.',
 	'abusefilter-edit-subtitle' => 'Editando o filtro $1',
+	'abusefilter-edit-subtitle-new' => 'Creando un filtro',
 	'abusefilter-edit-oldwarning' => '<strong>Está a editar unha versión vella deste filtro.
 As estatísticas citadas son da versión máis recente do filtro.
 Se garda os seus cambios, sobrescribirá todos os cambios desde a revisión que está editando.</strong> &bull;
@@ -12181,6 +12187,7 @@ $messages['he'] = array(
 	'abusefilter-reautoconfirm-done' => 'החשבון סומן מחדש כמשתמש ותיק',
 	'abusefilter-status' => 'מתוך {{PLURAL:$1|הפעולה האחרונה|$1 הפעולות האחרונות}}, {{PLURAL:$2|אחת ($3%) הגיעה|$2 ($3%) הגיעו}} לגבול התנאי של $4, ו{{PLURAL:$5|אחת ($6%) התאימה|־$5 ($6%) התאימו}} לאחד מהמסננים הפעילים כעת.',
 	'abusefilter-edit-subtitle' => 'עריכת המסנן $1',
+	'abusefilter-edit-subtitle-new' => 'יצירת מסנן',
 	'abusefilter-edit-oldwarning' => '<strong>הנכם עורכים גרסה ישנה של מסנן זה. הסטטיסטיקות המופיעות הינן עבור הגרסה העדכנית ביותר של המסנן. אם תשמרו את השינויים שביצעתם, הם ידרסו את כל השינויים מאז הגרסה שאתם עורכים כעת.</strong> &bull; [[Special:AbuseFilter/history/$2|חזרה להיסטוריית הגרסאות של המסנן]]',
 	'abusefilter-edit-status-label' => 'סטטיסטיקות:',
 	'abusefilter-edit-status' => 'מתוך {{PLURAL:$1|הפעולה האחרונה|$1 הפעולות האחרונות}}, מסנן זה התאים ל־$2 ($3%).
@@ -13355,6 +13362,7 @@ Wopisanje filtra:: $7 ($8)',
 	'abusefilter-reautoconfirm-done' => 'Status awtomatiskeho wobkrućenja konta bu wobnowjeny',
 	'abusefilter-status' => 'Z {{PLURAL:$1|poslednjej akcije|poslednjeju $1 akciji|poslednich $1 akcijow|podslednich $1 akcijow}} {{PLURAL:$2|je $2 ($3 %) docpěła|stej $2 ($3 %) docpěłoj|su $2 ($3 %) docpěli|je $2 ($3 %) docpěło}} limit wuměnjenja $4, a $5 ($6 %)  {{PLURAL:$5| je wotpowědował|stej wotpowědowałoj|su wotpowědowali|je wotpowědowało}} jednomu z filtrow, kotrež su tuchwilu zmóžnjene.',
 	'abusefilter-edit-subtitle' => 'Filter $1 so wobdźěłuje',
+	'abusefilter-edit-subtitle-new' => 'Filter so wutworja',
 	'abusefilter-edit-oldwarning' => '<strong>Wobdźěłuješ staru wersiju tutoho filtra.
 Statistiske podaća su jenož za najnowšu wersiju filtra.
 Jeli swoje změny składuješ, budźeš wšě změny wot wersije, kotruž wobdźěłuješ, přepisować.</strong> &bull;
@@ -15832,6 +15840,7 @@ Descrizione del filtro: $7 ($8)',
 	'abusefilter-reautoconfirm-done' => "Lo stato di autoconfirmed dell'utenza è stato ripristinato",
 	'abusefilter-status' => 'Fra le ultime $1 {{PLURAL:$1|azione|azioni}}, $2 ($3 %) {{PLURAL:$2|ha|hanno}} raggiunto il limite di $4 condizioni e $5 ($6 %) {{PLURAL:$5|ha|hanno}} attivato uno dei filtri attualmente attivi.',
 	'abusefilter-edit-subtitle' => 'Modifica del filtro $1',
+	'abusefilter-edit-subtitle-new' => 'Creazione filtro',
 	'abusefilter-edit-oldwarning' => '<strong>Si sta modificando una versione obsoleta di questo filtro.
 Le statistiche citate si riferiscono alla versione più recente del filtro.
 Salvando le modifiche verranno annullati tutti i cambiamenti apportati da questa versione in poi.</strong> &bull;
@@ -17261,6 +17270,7 @@ $messages['ko'] = array(
 	'abusefilter-reautoconfirm-done' => '계정의 자동 인증 상태가 복구되었습니다.',
 	'abusefilter-status' => '최근 행위 $1개 중 $2개 ($3%)가 부하 한도 $4에 도달했고 $5개($6%)가 현재 활성화된 필터와 일치하였습니다.',
 	'abusefilter-edit-subtitle' => '필터 $1 편집하기',
+	'abusefilter-edit-subtitle-new' => '필터 만들기',
 	'abusefilter-edit-oldwarning' => '<strong>당신은 이 필터의 이전 버전을 수정하고 있습니다.
 아래의 통계는 이 필터의 최근 버전에 대한 것입니다.
 당신이 수정한 내용을 저장하면 당신이 편집하고 있는 버전 이후의 모든 수정 사항을 덮어쓰게 됩니다.</strong> &bull;
@@ -20047,6 +20057,7 @@ $messages['mk'] = array(
 	'abusefilter-reautoconfirm-done' => 'Автопотврдениот статус на сметката е вратен',
 	'abusefilter-status' => 'Од {{PLURAL:$1|последното $1 дејствие|последните $1 дејствија}}, $2 ($3%) го {{PLURAL:$2|достигна|достигнаа}} условното ограничување $4, и $5 ($6%) {{PLURAL:$5|се совпаѓа|се совпаѓаат}} со еден од моментално инсталираните филтри.',
 	'abusefilter-edit-subtitle' => 'Уредување на филтерот $1',
+	'abusefilter-edit-subtitle-new' => 'Создавање на филтер',
 	'abusefilter-edit-oldwarning' => '<strong>Уредувате стара верзија на овој филтер.
 Наведените статистики се однесуваат на најновата верзија на филтерот.
 Ако ги зачувате направените промени, ќе ги поклопите сите промени направени од ревизијата која ја уредувате наваму.</strong> &bull;
@@ -20459,6 +20470,7 @@ $messages['ml'] = array(
 	'abusefilter-reautoconfirm-done' => 'അംഗത്വത്തിന്റെ സ്വയം സ്ഥിരീകൃത സ്ഥിതി പുനഃസ്ഥാപിച്ചിരിക്കുന്നു',
 	'abusefilter-status' => 'ഒടുവിലത്തെ {{PLURAL:$1|പ്രവൃത്തിയിൽ|$1 പ്രവൃത്തികളിൽ}} $2 ($3%) എണ്ണം ഉപാധികളുടെ പരിധിയായ  $4 എത്തിയിരിക്കുന്നു, $5 ($6%) എണ്ണം ഇപ്പോൾ സജ്ജമായിട്ടുള്ള അരിപ്പയിൽ ബാധകമാണ്.',
 	'abusefilter-edit-subtitle' => 'അരിപ്പ $1 തിരുത്തുന്നു',
+	'abusefilter-edit-subtitle-new' => 'അരിപ്പ സൃഷ്ടിക്കുക',
 	'abusefilter-edit-oldwarning' => '<strong>താങ്കൾ ഈ അരിപ്പയുടെ പഴയൊരു പതിപ്പാണ് തിരുത്തുന്നത്.
 ഉദ്ധരിച്ചിരിക്കുന്ന സ്ഥിതിവിവരമാകട്ടെ അരിപ്പയുടെ ഏറ്റവും പുതിയതും.
 താങ്കളുടെ മാറ്റങ്ങൾ സേവ് ചെയ്യുകയാണെങ്കിൽ, താങ്കൾ തിരുത്തിയ നാൾപ്പതിപ്പ് മുതലുള്ള എല്ലാ മാറ്റങ്ങളും നഷ്ടപ്പെടുന്നതാണ്.</strong> &bull;
@@ -22965,6 +22977,7 @@ Filterbeschrijving: $7 ($8)',
 	'abusefilter-reautoconfirm-done' => 'De bevestigde gebruikersstatus van de gebruiker is hersteld',
 	'abusefilter-status' => 'Van de laatste $1 {{PLURAL:$1|handeling|handelingen}}, {{PLURAL:$2|heeft er 1|hebben er $2}} ($3%) de drempelwaarde van $4 bereikt, en {{PLURAL:$5|past|passen}} $5 ($6%) bij één van de huidige ingeschakelde filters.',
 	'abusefilter-edit-subtitle' => 'Bezig met het bewerken van filter $1',
+	'abusefilter-edit-subtitle-new' => 'Bezig met het aanmaken van een filter',
 	'abusefilter-edit-oldwarning' => '<strong>U bent een oude versie van dit  filter aan het bewerken.
 De weergegeven statistieken gelden voor de meest recente versie van het filter.
 Als u uw wijzigingen opslaat, overschrijft u alle wijzigingen die na deze versie zijn gemaakt.</strong> &bull;
@@ -28871,6 +28884,15 @@ $messages['scn'] = array(
 	'abusefilter-examine-title' => 'Titulu di la paggina:',
 	'abusefilter-examine-submit' => 'Cerca',
 	'abusefilter-topnav-home' => 'Paggina principali',
+);
+
+/** Northern Sami (sámegiella)
+ * @author Jeblad
+ */
+$messages['se'] = array(
+	'abusefilter-history-deleted' => 'Sihkkojuvvon',
+	'abusefilter-action-block' => 'Hehtte',
+	'abusefilter-log-noresults' => 'Eai bohtosat',
 );
 
 /** Tachelhit (Tašlḥiyt/ⵜⴰⵛⵍⵃⵉⵜ)
@@ -35146,6 +35168,7 @@ Mô tả bộ lọc: $7 ($8)',
 	'abusefilter-reautoconfirm-done' => 'Đã phục hồi trạng thái tự xác nhận của tài khoản',
 	'abusefilter-status' => 'Chỉ trong $1 {{PLURAL:$1|tác vụ|tác vụ}} cuối, $2 ($3%) tác vụ {{PLURAL:$2|đã|đã}} đạt đến điều kiện giới hạn của $4. $5 ($6%) tác vụ {{PLURAL:$5|đã|đã}} trùng với một trong những bộ lọc hiện đang kích hoạt.',
 	'abusefilter-edit-subtitle' => 'Sửa đổi bộ lọc $1',
+	'abusefilter-edit-subtitle-new' => 'Tạo bộ lọc',
 	'abusefilter-edit-oldwarning' => '<strong>Bạn đang sửa một phiên bản cũ của bộ lọc này. Thống kê được trích ở trên là cho phiên bản mới nhất của bộ lọc. Nếu bạn lưu sửa đổi, bạn sẽ hi đè lên tất cả các thay đổi được thực hiện sau phiên bản mà bạn đang sửa.</strong> &bull; [[Special:AbuseFilter/history/$2|Trở lại lịch sử bộ lọc]]',
 	'abusefilter-edit-status-label' => 'Thống kê:',
 	'abusefilter-edit-status' => 'Trong vòng $1 {{PLURAL:$1|tác vụ|tác vụ}} cuối, bộ lọc này đã so trùng được $2 tác vụ ($3%).
