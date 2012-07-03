@@ -8506,6 +8506,7 @@ Descripción del filtro: $7 ($8)',
 	'abusefilter-reautoconfirm-done' => 'El estado autoconfirmado de la cuenta ha sido restaurado',
 	'abusefilter-status' => 'De las últimas $1 {{PLURAL:$1|acción|acciones}}, $2 ($3%) {{PLURAL:$2|ha|han}} han alcanzado la condición límite de  $4, y $5 ($6%) {{PLURAL:$5|ha|han}} coincidido con uno de los filtros actualmente habilitados.',
 	'abusefilter-edit-subtitle' => 'Editando filtro $1',
+	'abusefilter-edit-subtitle-new' => 'Creando un filtro',
 	'abusefilter-edit-oldwarning' => '<strong>Estás editando una versión antigua de este filtro.
 Las estadísticas citadas son para la más reciente versión del filtro.
 Si grabas tus cambios, reescribiras todos los cambios desde la revisión que estás editando.</strong> &bull;
@@ -10367,6 +10368,7 @@ Description du filtre : $7 ($8)',
 	'abusefilter-reautoconfirm-done' => 'L’état autoconfirmé du compte utilisateur a été rétabli',
 	'abusefilter-status' => '{{PLURAL:$1|Dans la dernière action|Parmi les $1 dernières actions}}, $2 ($3 %) {{PLURAL:$2|a|ont}} atteint la limite des $4 conditions autorisées. Et $5 ($6 %) {{PLURAL:$5|a été détectée|ont été détectées}} par l’un des filtres actuellement activés.',
 	'abusefilter-edit-subtitle' => 'Modification du filtre $1',
+	'abusefilter-edit-subtitle-new' => 'Créer un filtre',
 	'abusefilter-edit-oldwarning' => '<strong>Vous êtes en train de modifier une ancienne version de ce filtre.
 Les statistiques affichées concernent la version la plus récente de celui-ci.
 Si vous enregistrez vos modifications, vous allez écraser tous les changements intervenus depuis la version que vous modifiez.</strong> &bull;
@@ -14189,6 +14191,7 @@ entratas del registro de abusos.',
 	'abusefilter-reautoconfirm-done' => 'Le stato autoconfirmate del conto ha essite restaurate',
 	'abusefilter-status' => 'Del ultime $1 {{PLURAL:$1|action|actiones}}, $2 ($3%) ha attingite le limite de condition definite per $4. $5 ($6%) ha correspondite a un del filtros actualmente active.',
 	'abusefilter-edit-subtitle' => 'Modification del filtro $1',
+	'abusefilter-edit-subtitle-new' => 'Creation de filtro',
 	'abusefilter-edit-oldwarning' => '<strong>Tu modifica al momento un version ancian de iste filtro.
 Le statisticas monstrate es pro le version currente del filtro.
 Si tu immagazina tu modificationes, tu superscribera tote le modificationes facite post le version que tu modifica.</strong> &bull;
@@ -24955,6 +24958,7 @@ Kobiaschda de Qwellcode, fiegschn do oi un gliggschd uff die Schaldflesch „{{i
  * @author BeginaFelicysym
  * @author Derbeth
  * @author Jwitos
+ * @author Lazowik
  * @author Leinad
  * @author Maikking
  * @author Matma Rex
@@ -25003,6 +25007,7 @@ Krótki opis reguły nadużycia, do której Twoja akcji została dopasowana: $1'
 	'right-abusefilter-modify-restricted' => 'Modyfikuj filtry nadużyć z zastrzeżonymi operacjami',
 	'right-abusefilter-revert' => 'Anulowanie wszystkich zmian wykonanych przez podany filtr nadużyć',
 	'right-abusefilter-view-private' => 'Przeglądanie filtrów nadużyć oznaczonych jako prywatne',
+	'right-abusefilter-log-private' => 'Wyświetlanie wpisów do logów filtrów nadużyć oznaczonych jako prywatne',
 	'right-abusefilter-hide-log' => 'Ukrywanie wpisów w rejestrze nadużyć',
 	'right-abusefilter-hidden-log' => 'Podgląd ukrytych wpisów w rejestrze nadużyć',
 	'action-abusefilter-modify' => 'modyfikowania filtru nadużyć',
@@ -25065,6 +25070,7 @@ wpisów w rejestrze nadużyć.',
 	'abusefilter-list-details' => 'Szczegóły',
 	'abusefilter-list-limit' => 'Na stronie',
 	'abusefilter-list-lastmodified' => 'Ostatnio zmieniono',
+	'abusefilter-list-group' => 'Grupa filtru',
 	'abusefilter-hidden' => 'Prywatny',
 	'abusefilter-unhidden' => 'Publiczny',
 	'abusefilter-enabled' => 'Włączony',
@@ -25093,6 +25099,7 @@ wpisów w rejestrze nadużyć.',
 	'abusefilter-reautoconfirm-done' => 'Został przywrócony status automatycznego zatwierdzania zmian wykonywanych przez użytkowników',
 	'abusefilter-status' => 'Z {{PLURAL:$1|ostatniej $1 akcji|ostatnich $1 akcji}}, $2 {{PLURAL:$2|osiągnęła|osiągnęły|osiągnęło}} ($3%) stan limitu $4. $5  {{PLURAL:$5|pasował|pasowały|pasowało}} ($6%) do jednego z obecnie włączonych filtrów.',
 	'abusefilter-edit-subtitle' => 'Edytowanie filtru $1',
+	'abusefilter-edit-subtitle-new' => 'Tworzenie filtru',
 	'abusefilter-edit-oldwarning' => '<strong>Edytujesz starą wersję tego filtru. Statystyka są notowane dla najnowszej wersji filtru. Jeśli zapiszesz zmiany, zostaną nadpisane wszystkie późniejsze wersje niż ta, którą edytujesz.</strong> &bull; [[Special:AbuseFilter/history/$2|Powrót do historii filtru]]',
 	'abusefilter-edit-status-label' => 'Statystyki:',
 	'abusefilter-edit-status' => '{{PLURAL:$1|Dla ostatniej $1 akcji|W ostatnich $1 akcjach}}, ten filtr pasował do $2 ($3%).
@@ -25103,6 +25110,7 @@ wpisów w rejestrze nadużyć.',
 	'abusefilter-edit-id' => 'ID filtru',
 	'abusefilter-edit-description' => "Opis
 :''(publicznie widoczny)''",
+	'abusefilter-edit-group' => 'Grupa filtru',
 	'abusefilter-edit-flags' => 'Flagi:',
 	'abusefilter-edit-enabled' => 'Włącz ten filtr',
 	'abusefilter-edit-deleted' => 'Oznacz jako usunięty',
@@ -25500,6 +25508,7 @@ Descrission dël filtr: $7 ($8)',
 	'abusefilter-reautoconfirm-done' => "Lë stat autoconfirmà dël cont a l'é stàit ripristinà",
 	'abusefilter-status' => "Dj'ùltime $1 {{PLURAL:$1|assion|assion}}, $2 ($3%) {{PLURAL:$2|a l'é|a son}} rivà a la condission lìmit ëd $4, e $5 ($6%) {{PLURAL:$5|a l'é stàita |a son ëstàite}} identificà da un dij filtr abilità al moment.",
 	'abusefilter-edit-subtitle' => 'Modifiché ël filtr $1',
+	'abusefilter-edit-subtitle-new' => 'Creé filtr',
 	'abusefilter-edit-oldwarning' => "<strong>A l'é an camin ch'a modìfica na version veja d'ës fìlter.
 Le statìstiche mostrà a rësguardo la version pì recenta dël fìlter.
 S'a salva soe modìfiche, a-j scrivrà ëdzora a tute ij cangiament fàit a parte dla revision ch'a l'é an camin ch'a modìfica.</strong> &bull;
@@ -26883,6 +26892,7 @@ Descrierea filtrului: $7 ($8)',
 	'abusefilter-reautoconfirm-done' => 'Statutul de autoconfirmat al contului a fost restaurat',
 	'abusefilter-status' => 'Din {{PLURAL:$1|ultima acțiune|ultimele $1 acțiuni|ultimele $1 de acțiuni}}, $2 ($3%) {{PLURAL:$2|a|au}} atins condiția limită de $4 rulări și $5 ($6%) s-{{PLURAL:$5|a|au}} potrivit cu unul dintre filtrele active.',
 	'abusefilter-edit-subtitle' => 'Modificare filtru $1',
+	'abusefilter-edit-subtitle-new' => 'Se creează filtrul',
 	'abusefilter-edit-oldwarning' => '<strong>Modificați o versiune învechită a acestui filtru.
 Statisticile citate sunt pentru cea mai recentă versiune a filtrului.
 Dacă salvați modificările dumneavoastră, veți suprascrie toate modificările efectuate după versiunea pe care o editați.</strong> &bull;
