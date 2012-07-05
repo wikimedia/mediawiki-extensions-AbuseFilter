@@ -6325,7 +6325,7 @@ Filterbeschreibung: $7 ($8)',
 	'abusefilter-log-details-hidden' => 'Du kannst die Details dieses Eintrags nicht einsehen, da sie vor der Öffentlichkeit verborgen sind.',
 	'abusefilter-log-hide-legend' => 'Logbucheintrag verstecken',
 	'abusefilter-log-hide-id' => 'Logbuch-Eintrags-ID:',
-	'abusefilter-log-hide-hidden' => 'Diesen Eintrag öffentlich verbergen',
+	'abusefilter-log-hide-hidden' => 'Diesen Eintrag vor der Öffentlichkeit verbergen',
 	'abusefilter-log-hide-reason' => 'Grund:',
 	'abusefilter-log-hide-forbidden' => 'Du hast nicht die Berechtigung, die Einträge des Missbrauchsfilter-Logbuchs auszublenden.',
 	'abusefilter-logentry-suppress' => 'hat „[[$1]]“ verborgen',
@@ -8947,7 +8947,7 @@ Kui oma muudatused salvestad, kirjutad üle kõik redigeeritavast redaktsioonist
 	'abusefilter-edit-status' => 'Viimasest {{PLURAL:$1|ühest toimingust|$1 toimingust}} on sellele filtrile vastanud $2 ($3%).
 Keskmiselt on selle filtri tööaeg $4 ms ja see kasutab tingimuste ülemmäära {{PLURAL:$5|üht tingimust|$5 tingimust}}.',
 	'abusefilter-edit-throttled' => "'''Hoiatus''': See filter keelati automaatselt ohutuskaalutlusel.
-See ületas $1% toimingutest vastamise piirnormi.",
+See ületas $1% toimingutele vastamise piirnormi.",
 	'abusefilter-edit-new' => 'Uus filter',
 	'abusefilter-edit-save' => 'Salvesta filter',
 	'abusefilter-edit-id' => 'Filtri ID:',
@@ -20941,6 +20941,7 @@ Huraian penapis: $7 ($8)',
 	'abusefilter-reautoconfirm-done' => 'Status sah automatik akaun telah dipulihkan',
 	'abusefilter-status' => '$2 ($3%) daripada $1 tindakan terkini telah mencapai had syarat $4, sementara $5 ($6%) lagi telah berpadan dengan salah satu penapis yang dihidupkan sekarang.',
 	'abusefilter-edit-subtitle' => 'Menyunting penapis $1',
+	'abusefilter-edit-subtitle-new' => 'Membuat penapis',
 	'abusefilter-edit-oldwarning' => '<strong>Anda sedang menyunting versi lama bagi penapis ini.
 Statistik yang dipetik adalah bagi versi terkini bagi penapis ini.
 Jika anda menyimpan perubahan anda, anda akan membatalkan segala perubahan sejak semakan yang anda sunting itu.</strong> &bull;
@@ -33133,6 +33134,7 @@ Paglalarawan ng pansala: $6',
 	'abusefilter-reautoconfirm-done' => 'Muli nang naibalik ang kusang natiyak na kalagayan ng akawnt',
 	'abusefilter-status' => 'Mula sa huling $1 {{PLURAL:$1|kilos|mga kilos}}, $2 ($3%) {{PLURAL:$2|ang|ang mga}} umabot na sa kalakarang hangganan na $4, at $5 ($6%) {{PLURAL:$5|ang|ang mga}} tumugma sa isa sa pangkasalukuyang pinagaganang mga pansala.',
 	'abusefilter-edit-subtitle' => 'Binabago ang pansalang $1',
+	'abusefilter-edit-subtitle-new' => 'Nililikha ang pansala',
 	'abusefilter-edit-oldwarning' => '<strong>Binabago mo ang isang lumang bersyon ng pansalang ito. Ang siniping mga estadistika ay para sa pinakakamakailang bersyon ng pansala. Kapag sinagip mo ang iyong mga pagbabago, mapapatungan mo ang lahat ng mga pagbabago magmula sa rebisyong pinapatnugutan mo.</strong> &bull; [[Special:AbuseFilter/history/$2|Bumalik sa kasaysayan ng pansalang ito]]',
 	'abusefilter-edit-status-label' => 'Mga estadistika:',
 	'abusefilter-edit-status' => 'Mula sa huling $1 na {{PLURAL:$1|kilos|mga kilos}}, tumugma ang pansalang ito sa $2 ($3%).
@@ -34407,6 +34409,7 @@ $messages['uk'] = array(
 	'abusefilter-edit-builder-funcs-substr' => 'Підрядок (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'Положення підрядка в рядку (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'Заміна підрядка в рядку (str_replace)',
+	'abusefilter-edit-builder-funcs-rescape' => 'Екранувати рядок для використання в регулярному вислові (rescape)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Встановити змінну (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Змінні',
 	'abusefilter-edit-builder-vars-accountname' => "Ім'я облікового запису (при створенні облікового запису)",
