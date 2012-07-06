@@ -373,6 +373,12 @@ $specialPageAliases['tr'] = array(
 	'AbuseFilter' => array( 'İstismarSüzgeci', 'DeğişiklikSüzgeci' ),
 );
 
+/** Ukrainian (українська) */
+$specialPageAliases['uk'] = array(
+	'AbuseLog' => array( 'Журнал_зловживань' ),
+	'AbuseFilter' => array( 'Фільтр_редагувань' ),
+);
+
 /** vèneto (vèneto) */
 $specialPageAliases['vec'] = array(
 	'AbuseLog' => array( 'RegistroAbusi' ),
