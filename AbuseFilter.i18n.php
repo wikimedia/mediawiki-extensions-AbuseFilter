@@ -17741,6 +17741,7 @@ Dat woren_er $3%.
 {{PLURAL:$5|Ein dovun es|Dovun sinn_er $5|Keine dovun es}} vun enem aktoäll aktive Fellter jejreffe woode.
 Dat woren_er $6%.',
 	'abusefilter-edit-subtitle' => 'Felter-Räjel „$1“ beärbeide',
+	'abusefilter-edit-subtitle-new' => 'Ben ene Felter aam aanlääje',
 	'abusefilter-edit-oldwarning' => '<strong>Do bes hee en äldere Version vun däm Felter aam ändere.
 De aanjejovve Shtatistike sin ävver för de neuste Version fun däm Felter.
 Wann De Ding Änderunge afshpeishere deihß, dann sin all de Änderunge
@@ -19427,6 +19428,7 @@ Visas detales žiūrėkite filtrų naujausių keitimo [[Special:AbuseFilter/hist
 Šaltinio wiki, spustelėkite "{{int:abusefilter-redaguoti-eksporto}}" pagal "{{int:abusefilter-įrankiai-paantraštė}}" redagavimo sąsaja.
 Kopijuoti iš teksto lauką, kad pasirodo, ir įklijuokite jį į šį teksto lauką, tada spustelėkite "{{int:abusefilter-importo-pateikti}}".',
 	'abusefilter-import-submit' => 'Importuoti duomenis',
+	'abusefilter-group-default' => 'Numatytasis',
 );
 
 /** Latgalian (latgaļu)
