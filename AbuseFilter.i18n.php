@@ -5421,6 +5421,7 @@ Popis pravidla: $1',
 	'right-abusefilter-modify-restricted' => 'Upravování filtrů zneužívání s omezenými opatřeními',
 	'right-abusefilter-revert' => 'Revertování všech změn provedených vybraným filtrem zneužívání',
 	'right-abusefilter-view-private' => 'Prohlížení filtrů zneužití označených jako tajné',
+	'right-abusefilter-log-private' => 'Prohlížení protokolovacích záznamů filtrů zneužívání označených jako tajné',
 	'right-abusefilter-hide-log' => 'Skrývání záznamů v protokolu zneužití',
 	'right-abusefilter-hidden-log' => 'Prohlížení skrytých záznamů v protokolu zneužití',
 	'action-abusefilter-modify' => 'upravovat filtry zneužívání',
@@ -5480,6 +5481,7 @@ Provedená opatření: $6; popis filtru: $7 ($8)',
 	'abusefilter-list-details' => 'Podrobnosti',
 	'abusefilter-list-limit' => 'Položek na stránku:',
 	'abusefilter-list-lastmodified' => 'Poslední změna',
+	'abusefilter-list-group' => 'Skupina filtrů',
 	'abusefilter-hidden' => 'Tajný',
 	'abusefilter-unhidden' => 'Veřejný',
 	'abusefilter-enabled' => 'Zapnutý',
@@ -5508,6 +5510,7 @@ Provedená opatření: $6; popis filtru: $7 ($8)',
 	'abusefilter-reautoconfirm-done' => 'Příznak schváleného uživatele byl obnoven',
 	'abusefilter-status' => '{{PLURAL:$1|Při poslední operaci|Z posledních $2 operací}} {{PLURAL:$2|překročila|překročily|překročilo}} $2 ($3 %) limit $4 podmínek a $5 ($6 %) {{PLURAL:$5|byla zachycena|byly zachyceny|bylo zachyceno}} jedním ze zapnutých filtrů.',
 	'abusefilter-edit-subtitle' => 'Editace filtru $1',
+	'abusefilter-edit-subtitle-new' => 'Vytvoření filtru',
 	'abusefilter-edit-oldwarning' => '<strong>Editujete starší verzi tohoto filtru. Uvedené statistiky platí pro aktuální verzi. Pokud uložíte své změny, přepíšete všechny novější úpravy.</strong> &bull; [[Special:AbuseFilter/history/$2|Vrátit se na historii tohoto filtru]].',
 	'abusefilter-edit-status-label' => 'Statistika:',
 	'abusefilter-edit-status' => 'Z {{PLURAL:$1|1 poslední operace|posledních $1 operací}} tomuto filtru {{PLURAL:$2|odpovídala|odpovídaly|odpovídalo}} $2 ($3 %).
@@ -5519,6 +5522,7 @@ Odpovídalo mu více než dovolený limit $1 % všech operací.",
 	'abusefilter-edit-id' => 'ID filtru:',
 	'abusefilter-edit-description' => "Popis:
 :''(veřejně viditelný)''",
+	'abusefilter-edit-group' => 'Skupina filtrů:',
 	'abusefilter-edit-flags' => 'Příznaky:',
 	'abusefilter-edit-enabled' => 'Zapnout tento filtr',
 	'abusefilter-edit-deleted' => 'Označit filtr za smazaný',
@@ -5777,6 +5781,7 @@ Podrobnější vysvětlení můžete získat kliknutím na tlačítko „Zkontro
 Na zdrojové wiki klikněte v editačním rozhraní na „{{int:abusefilter-edit-export}}“ v sekci „{{int:abusefilter-edit-tools}}“.
 Zkopírujte si text, který se objeví v rámečku, vložte ho do tohoto formuláře a klikněte na „{{int:abusefilter-import-submit}}“.',
 	'abusefilter-import-submit' => 'Importovat data',
+	'abusefilter-group-default' => 'Výchozí',
 );
 
 /** Church Slavic (словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
@@ -7235,6 +7240,7 @@ Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpo
 	'abusefilter-reautoconfirm-done' => 'Status awtomatiskego wobkšuśenja konta jo se wótnowił',
 	'abusefilter-status' => 'Ze {{PLURAL:$1|slědneje akcije|slědneju $1 akciji|slědnych $1 akcijow|slědnych $1 akcijow}} $2 ($3 %) {{PLURAL:$2|jo dojśpiła|stej dojśpiłej|su dojśpili|jo dojśpiło}} limit wuměnjenja $4 a $5 ($6 %) {{PLURAL:$5|jo wótpowědowała|stej wótpowědowałej|su wótpowědowali|jo wótpowědowało}} jadnomu z filtrow, kótarež su tuchylu zmóžnjone.',
 	'abusefilter-edit-subtitle' => 'Filter $1 se wobźěłujo',
+	'abusefilter-edit-subtitle-new' => 'Filter se napórajo',
 	'abusefilter-edit-oldwarning' => '<strong>Wobźěłujoš staru wersiju toś togo filtra.
 Statistiske pódaśa su za nejnowšu wersiju filtra.
 Jolic składujoš swóje změny, buźoš wše změny pśepisowaś, kótarež sy cynił wót wersije, kótaruž wobźěłujoš.</strong> &bull;
@@ -24217,7 +24223,7 @@ $messages['or'] = array(
 	'abusefilter-list-consequences' => 'ପରିଣାମସବୁ',
 	'abusefilter-list-visibility' => 'ଦେଖଣା',
 	'abusefilter-list-hitcount' => 'ଦେଖଣା ଗଣନା',
-	'abusefilter-list-edit' => '<big>ଏହାକୁ ବଦଳାନ୍ତୁ</big>',
+	'abusefilter-list-edit' => 'ସମ୍ପାଦନ',
 	'abusefilter-list-details' => 'ଆହୁରି ଅଧିକ',
 	'abusefilter-list-limit' => 'ପୃଷ୍ଠା ପ୍ରତି ସଂଖ୍ୟା:',
 	'abusefilter-list-lastmodified' => '‍ଶେଷଥର ବଦଳାଯାଇଥିଲା',
