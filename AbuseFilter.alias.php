@@ -363,8 +363,8 @@ $specialPageAliases['sv'] = array(
 
 /** Tagalog (Tagalog) */
 $specialPageAliases['tl'] = array(
-	'AbuseLog' => array( 'Talaan ng pang-aabuso' ),
-	'AbuseFilter' => array( 'Talaan ng pansala' ),
+	'AbuseLog' => array( 'Talaan_ng_pang-aabuso' ),
+	'AbuseFilter' => array( 'Talaan_ng_pansala' ),
 );
 
 /** Turkish (Türkçe) */
