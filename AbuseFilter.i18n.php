@@ -17208,7 +17208,7 @@ $messages['ko'] = array(
 	'right-abusefilter-log' => '부정 행위 기록 보기',
 	'right-abusefilter-log-detail' => '부정 행위 기록의 자세한 내용을 보기',
 	'right-abusefilter-private' => '부정 행위 기록의 비공개 정보를 보기',
-	'right-abusefilter-modify-restricted' => '부정 행위 방지 필터의 제한적인 기능 설정을 변경',
+	'right-abusefilter-modify-restricted' => '부정 행위 방지 필터의 제한적인 기능 설정을 바꾸기',
 	'right-abusefilter-revert' => '주어진 필터에 의한 모든 변경을 되돌리기',
 	'right-abusefilter-view-private' => '비공개된 필터 보기',
 	'right-abusefilter-log-private' => '비공개로 검토한 부정 행위 방지 필터 기록 항목 보기',
@@ -17239,7 +17239,7 @@ $messages['ko'] = array(
 	'abusefilter-log-detailedentry-local' => '필터 $1',
 	'abusefilter-log-detailslink' => '자세한 사항',
 	'abusefilter-log-hidelink' => '보이기 설정',
-	'abusefilter-log-details-legend' => '로그 $1에 대한 자세한 정보',
+	'abusefilter-log-details-legend' => '기록 $1에 대한 자세한 정보',
 	'abusefilter-log-details-var' => '변수',
 	'abusefilter-log-details-val' => '값',
 	'abusefilter-log-details-vars' => '행위 변수',
@@ -17326,7 +17326,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-notes' => '주석:
 :(비공개)',
 	'abusefilter-edit-lastmod' => '필터가 마지막으로 수정된 시각',
-	'abusefilter-edit-lastmod-text' => '$2(이)가 $1에 변경',
+	'abusefilter-edit-lastmod-text' => '$2(이)가 $1에 바꿈',
 	'abusefilter-edit-hitcount' => '필터 적발 건수:',
 	'abusefilter-edit-consequences' => '필터와 일치할 때 취할 조치',
 	'abusefilter-edit-action-warn' => '사용자에게 경고하고 이 행위를 중지',
@@ -17463,7 +17463,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-builder-vars-minor-edit' => '사소한 편집 표시 여부',
 	'abusefilter-edit-builder-vars-file-sha1' => '파일 내용의 SHA1 해시',
 	'abusefilter-filter-log' => '최근 필터의 바뀜',
-	'abusefilter-history' => '부정 행위 방지 필터 #$1에 대한 변경 내력',
+	'abusefilter-history' => '부정 행위 방지 필터 #$1에 대한 바뀜 내역',
 	'abusefilter-history-foruser' => '$1의 편집',
 	'abusefilter-history-hidden' => '숨겨짐',
 	'abusefilter-history-enabled' => '활성화됨',
@@ -27600,6 +27600,7 @@ Copià da \'a caselle de teste ce vide, e \'ngolle jidde sus a quiste cambe de t
  * @author Ahonc
  * @author Aleksandrit
  * @author AlexSm
+ * @author DCamer
  * @author Ferrer
  * @author HalanTul
  * @author Kalan
@@ -27650,6 +27651,7 @@ $messages['ru'] = array(
 	'right-abusefilter-modify-restricted' => 'изменение фильтров с ограничивающими действиями',
 	'right-abusefilter-revert' => 'откат изменений, произведённых фильтром злоупотреблений',
 	'right-abusefilter-view-private' => 'просмотр фильтров злоупотребления, отмеченных как скрытые',
+	'right-abusefilter-log-private' => 'Просмотр записей журнала фильтра злоупотреблений, помеченных как частные',
 	'right-abusefilter-hide-log' => 'сокрытие записей в журнале злоупотреблений',
 	'right-abusefilter-hidden-log' => 'просмотр скрытых записей в журнале злоупотреблений',
 	'action-abusefilter-modify' => 'изменять фильтры злоупотреблений',
@@ -27712,6 +27714,7 @@ $messages['ru'] = array(
 	'abusefilter-list-details' => 'Подробности',
 	'abusefilter-list-limit' => 'Количество на странице:',
 	'abusefilter-list-lastmodified' => 'Последнее изменение',
+	'abusefilter-list-group' => 'Группа фильтра',
 	'abusefilter-hidden' => 'Скрытый',
 	'abusefilter-unhidden' => 'Общедоступное',
 	'abusefilter-enabled' => 'Включён',
@@ -27740,6 +27743,7 @@ $messages['ru'] = array(
 	'abusefilter-reautoconfirm-done' => 'Восстановлен статус автоподтверждения учётной записи',
 	'abusefilter-status' => 'Из $1 {{PLURAL:$1|последнего действия|последних действий|последних действий}}, $2 ($3%) {{PLURAL:$2|попало|попали|попали}} под ограничивающее условие $4, а $5 ($6%) {{PLURAL:$5|соответствует|соответствуют|соответствуют}} одному из включённых в настоящее время фильтров.',
 	'abusefilter-edit-subtitle' => 'Изменение фильтра $1',
+	'abusefilter-edit-subtitle-new' => 'Создание фильтра',
 	'abusefilter-edit-oldwarning' => '<strong>Вы правите старую версию фильтра. Статистика приводится для последней версии фильтра. Если вы сохраните вашу правку, то вы перезапишите сделанные ранее изменения.</strong> &bull; [[Special:AbuseFilter/history/$2|Вернуться к странице истории фильтра]]',
 	'abusefilter-edit-status-label' => 'Статистика:',
 	'abusefilter-edit-status' => 'Из {{PLURAL:$1|последнего $1 действия|последних $1 действий|последних $1 действий}}, этот фильтр соответствует $2 ($3%).
@@ -27750,6 +27754,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-id' => 'ID фильтра:',
 	'abusefilter-edit-description' => "Описание:
 :''(общедоступное)''",
+	'abusefilter-edit-group' => 'Группа фильтра:',
 	'abusefilter-edit-flags' => 'Флаги:',
 	'abusefilter-edit-enabled' => 'Включить этот фильтр',
 	'abusefilter-edit-deleted' => 'Отметить как удалённый',
@@ -28007,6 +28012,7 @@ $messages['ru'] = array(
 В исходной вики, нажмите «{{int:abusefilter-edit-export}}» в разделе «{{int:abusefilter-edit-tools}}» интерфейса редактирования.
 Скопируйте содержание текстового поля, вставьте его на эту страницу и нажмите «{{int:abusefilter-import-submit}}».',
 	'abusefilter-import-submit' => 'Импортировать данные',
+	'abusefilter-group-default' => 'По умолчанию',
 );
 
 /** Rusyn (русиньскый)
