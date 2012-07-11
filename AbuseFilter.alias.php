@@ -271,7 +271,7 @@ $specialPageAliases['mt'] = array(
 	'AbuseFilter' => array( 'FiltruAbbuż' ),
 );
 
-/** Erzya (Эрзянь) */
+/** Erzya (эрзянь) */
 $specialPageAliases['myv'] = array(
 	'AbuseLog' => array( 'АТевсНолдамодо' ),
 	'AbuseFilter' => array( 'АТевсНолдамоньФильтра' ),
@@ -376,7 +376,7 @@ $specialPageAliases['tr'] = array(
 /** Ukrainian (українська) */
 $specialPageAliases['uk'] = array(
 	'AbuseLog' => array( 'Журнал_зловживань' ),
-	'AbuseFilter' => array( 'Фільтр_редагувань' ),
+	'AbuseFilter' => array( 'Фільтр_зловживань' ),
 );
 
 /** vèneto (vèneto) */
