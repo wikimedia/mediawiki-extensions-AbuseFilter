@@ -92,6 +92,7 @@ Filter description: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'global filter $1',
 	'abusefilter-log-detailedentry-local' => 'filter $1',
 	'abusefilter-log-detailslink' => 'details',
+	'abusefilter-log-diff' => 'diff',
 	'abusefilter-log-hidelink' => 'adjust visibility',
 	'abusefilter-log-details-legend' => 'Details for log entry $1',
 	'abusefilter-log-details-var' => 'Variable',
@@ -104,7 +105,7 @@ Filter description: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'abuse log',
 	'abusefilter-log-linkoncontribs-text' => 'Abuse log for this user',
 	'abusefilter-log-hidden' => '(entry hidden)',
-	'abusefilter-log-hide' => 'hide or unhide', // @todo FIXME: Message unused?
+	'abusefilter-log-hidden-implicit' => '(hidden because revision has been deleted)',
 	'abusefilter-log-cannot-see-details' => 'You do not have permission to see details of this entry.',
 	'abusefilter-log-details-hidden' => 'You cannot view the details for this entry because it is hidden from public view.',
 
@@ -865,8 +866,10 @@ This is also used in {{msg-mw|Abusefilter-revert-preview-intro}}. When changing 
 * $1 is new link or old link. Link description is a time stamp
 * $2 is new user link or old user link. Link description is a user name',
 	'abusefilter-diff-info' => "Header for the box containing the basic information about a user account, displayed on the 'user profile' tab of the [[Special:Preferences|user preferences]] special page.",
-	'abusefilter-import-intro' => "Do not ''translate'' <nowiki>{{int:abusefilter-edit-export}}</nowiki>, <nowiki>{{int:abusefilter-edit-tools}}</nowiki>, and <nowiki>{{int:abusefilter-import-submit}}</nowiki> unless you absolute must substitute any of them.",
+	'abusefilter-import-intro' => "Do not ''translate'' <nowiki>{{int:abusefilter-edit-export}}</nowiki>, <nowiki>{{int:abusefilter-tools-subtitle}}</nowiki>, and <nowiki>{{int:abusefilter-import-submit}}</nowiki> unless you absolute must substitute any of them.",
 	'abusefilter-group-default' => 'The name for the default filter group. Most filters will be in this group.',
+	'abusefilter-log-diff' => 'Diff link text to a revision associated with an AbuseFilter log entry',
+	'abusefilter-log-hidden-implicit' => 'Explanatory text to be shown beside an abuse filter log entry if it cannot be viewed due to its corresponding revision being hidden',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -24710,7 +24713,7 @@ Schildarung vum Filda: $7 ($8)',
 	'abusefilter-status' => 'Vunde ledschde {{PLURAL:$1|Agzion|$1 Agzione}} {{PLURAL:$2|hod än|hawn $2}} ($3 %) die Hegschdzahl vun $4 gbrauchd.
 {{PLURAL:$5|Ä Agzion|$5 Agzione}} ($6 %) sin vunem oagschaldene Filda gfunne worre.',
 	'abusefilter-edit-subtitle' => 'Oam Filda $1 schaffe',
-	'abusefilter-edit-oldwarning' => "<strong>Du duschd do oan 'nare alde Version vum Filda schaffe. 
+	'abusefilter-edit-oldwarning' => "<strong>Du duschd do oan 'nare alde Version vum Filda schaffe.
 Die Schdadischdig gild bloß fa die naischd Version vum Filda.
 Won des do schbaischere duschd, iwaschraibschd alle Änarunge, wu saidher gmacht worre sin.</strong> &bull;
 [[Special:AbuseFilter/history/$2|Zrigg zude Gschischd vum Filda]].",
@@ -24897,7 +24900,7 @@ Magse korz un ohni Sondazaische.',
 	'abusefilter-exception-noparams' => "Kä Parameter oan die Fung'gdzion „$2“ baim Zaische $1 iwagewe.",
 	'abusefilter-exception-dividebyzero' => 'Deele vun $2 duasch Null baim Zaische $1 geed ned.',
 	'abusefilter-exception-unrecognisedvar' => 'Ubkonndi Vaänalischi $2 baim Zaische $1.',
-	'abusefilter-exception-notenoughargs' => "S'sin ned gnuch Agumende oan $2 baim Zaische $1 iwagewe worre.  
+	'abusefilter-exception-notenoughargs' => "S'sin ned gnuch Agumende oan $2 baim Zaische $1 iwagewe worre.
 S'brauchd $3 {{PLURAL:$3|Agumend|Agumend}}, hod $4 krischd.",
 	'abusefilter-exception-regexfailure' => 'Fehla im regex „$3“ oam Zaische $1: „$2“',
 	'abusefilter-exception-overridebuiltin' => 'Iwaschraiwe vunde oigbaude Vaänalischi „$2“ oam Zaische $1 isch vabode.',
@@ -30253,7 +30256,7 @@ Ka arritur kufirin e përputhjes së më shumë se $1% veprimeve.",
 	'abusefilter-edit-deleted' => 'Shënjo si të fshirë',
 	'abusefilter-edit-hidden' => 'Fsheh detajet e këtij filtri nga opinioni publik',
 	'abusefilter-edit-rules' => 'Kushtet:',
-	'abusefilter-edit-notes' => "Shënime: 
+	'abusefilter-edit-notes' => "Shënime:
 : ' ' (private) ' '",
 	'abusefilter-edit-lastmod' => 'Filtri i ndryshuar për herë te fundit:',
 	'abusefilter-edit-lastmod-text' => '$1 nga $2',
@@ -31241,7 +31244,7 @@ Sieuwebeskrieuwenge: $7 ($8)',
 	'abusefilter-edit-subtitle' => 'Beoarbaidje Sieuwe $1',
 	'abusefilter-edit-oldwarning' => '<strong>Du beoarbaidest nit ju aktuelle, man ne allere Version fon disse Sieuwe. Ju Statistik jält bloot foar ju lääste Version fon ju Sieuwe. Wan du spiekerst, wäd ju oolde as aktuelle Version näi spiekerd. </strong> &bull; [[Special:AbuseFilter/history/$2|Tourääch tou ju Versionsgeskichte fon ju Sieuwe]]',
 	'abusefilter-edit-status-label' => 'Statistike:',
-	'abusefilter-edit-status' => 'Fon {{PLURAL:$1|ju|do}} lääste {{PLURAL:$1|Aktion|$1 Aktione}} {{PLURAL:$2|wuud|wuuden}} $2 ($3 %) fon disse Sieuwe wierkoand. 
+	'abusefilter-edit-status' => 'Fon {{PLURAL:$1|ju|do}} lääste {{PLURAL:$1|Aktion|$1 Aktione}} {{PLURAL:$2|wuud|wuuden}} $2 ($3 %) fon disse Sieuwe wierkoand.
 In n Truchsnit bedruuch hiere Beoarbaidengstied $4 ms un do benöödigeden $5 {{PLURAL:$5|Bedingenge|Bedingengen}} fon ju ferlööwede Hoochsttaal.',
 	'abusefilter-edit-throttled' => "'''Woarskauenge''': Disse Sieuwe wuud sicherhaidshoolwe automatisk deaktivierd. Ju häd moor as dät definierde Buppeskeed fon $1 % fon do Aktione ärkoand.",
 	'abusefilter-edit-new' => 'Näie Sieuwe',
