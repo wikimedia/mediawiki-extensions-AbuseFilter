@@ -404,7 +404,7 @@ class SpecialAbuseLog extends SpecialPage {
 		if ( !$row->afl_wiki ) {
 			$pageLink = Linker::link( $title );
 			if ( $row->afl_rev_id ) {
-				$diffLink = $sk->link( $title,
+				$diffLink = Linker::link( $title,
 					wfMessage('abusefilter-log-diff')->parse(), array(),
 					array( 'diff' => 'prev', 'oldid' => $row->afl_rev_id ) );
 			}
