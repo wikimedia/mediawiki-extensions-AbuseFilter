@@ -867,16 +867,12 @@ class AbuseFilter {
 		$wgMemc->incr( self::filterMatchesKey() );
 
 		$local_log_ids = array();
-		foreach( $log_rows as $row ) {
-			$dbw->insert( 'abuse_filter_log', $row, __METHOD__ );
-			$local_log_ids[] = $dbw->insertId();
-		}
-
 		global $wgAbuseFilterNotifications;
 		foreach ( $log_rows as $index => $data ) {
 			$data['afl_var_dump'] = $var_dump;
 			$data['afl_id'] = $dbw->nextSequenceValue( 'abuse_filter_log_afl_id_seq' );
 			$dbw->insert( 'abuse_filter_log', $data, __METHOD__ );
+			$local_log_ids[] = $dbw->insertId();
 			if ( $data['afl_id'] === null ) {
 				$data['afl_id'] = $dbw->insertId();
 			}
