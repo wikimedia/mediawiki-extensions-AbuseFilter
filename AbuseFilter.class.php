@@ -1844,6 +1844,11 @@ class AbuseFilter {
 			Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-val' ) );
 		$output .= Xml::tags( 'tr', null, $header ) . "\n";
 
+		if ( !count( $vars ) ) {
+			$output .= Xml::closeElement( 'tbody' ) . Xml::closeElement( 'table' );
+			return $output;
+		}
+
 		// Now, build the body of the table.
 		foreach ( $vars as $key => $value ) {
 			$key = strtolower( $key );
