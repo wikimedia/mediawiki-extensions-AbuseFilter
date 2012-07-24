@@ -1020,7 +1020,7 @@ class AbuseFilter {
 	 *
 	 * @param $stored_dump
 	 *
-	 * @return object|AbuseFilterVariableHolder
+	 * @return object|AbuseFilterVariableHolder|bool
 	 */
 	public static function loadVarDump( $stored_dump ) {
 		wfProfileIn( __METHOD__ );

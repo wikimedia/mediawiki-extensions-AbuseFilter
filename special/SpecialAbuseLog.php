@@ -281,7 +281,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
 
 		// Diff, if available
-		if ( $vars->getVar( 'action' )->toString() == 'edit' ) {
+		if ( $vars && $vars->getVar( 'action' )->toString() == 'edit' ) {
 			$old_wikitext = $vars->getVar( 'old_wikitext' )->toString();
 			$new_wikitext = $vars->getVar( 'new_wikitext' )->toString();
 
