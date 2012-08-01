@@ -665,6 +665,8 @@ class AbuseFilter {
 			$parsed_public_comments = $wgOut->parseInline(
 				self::$filters[$filter]->af_public_comments );
 
+			$global_filter = ( preg_match( '/^global-/', $filter ) == 1);
+
 			if ( !empty( $actions['throttle'] ) ) {
 				$parameters = $actions['throttle']['parameters'];
 				$throttleId = array_shift( $parameters );
@@ -675,7 +677,7 @@ class AbuseFilter {
 				// The rest are throttle-types.
 				foreach ( $parameters as $throttleType ) {
 					$hitThrottle = $hitThrottle || self::isThrottled(
-						$throttleId, $throttleType, $title, $rateCount, $ratePeriod );
+						$throttleId, $throttleType, $title, $rateCount, $ratePeriod, $global_filter );
 				}
 
 				unset( $actions['throttle'] );
@@ -1235,10 +1237,10 @@ class AbuseFilter {
 	 * @param $ratePeriod
 	 * @return bool
 	 */
-	public static function isThrottled( $throttleId, $types, $title, $rateCount, $ratePeriod ) {
+	public static function isThrottled( $throttleId, $types, $title, $rateCount, $ratePeriod, $global=false ) {
 		global $wgMemc;
 
-		$key = self::throttleKey( $throttleId, $types, $title );
+		$key = self::throttleKey( $throttleId, $types, $title, $global );
 		$count = intval( $wgMemc->get( $key ) );
 
 		wfDebugLog( 'AbuseFilter', "Got value $count for throttle key $key\n" );
@@ -1304,7 +1306,7 @@ class AbuseFilter {
 	 * @param $title Title
 	 * @return String
 	 */
-	public static function throttleKey( $throttleId, $type, $title ) {
+	public static function throttleKey( $throttleId, $type, $title, $global=false ) {
 		$types = explode( ',', $type );
 
 		$identifiers = array();
@@ -1314,6 +1316,15 @@ class AbuseFilter {
 		}
 
 		$identifier = implode( ':', $identifiers );
+
+		global $wgAbuseFilterIsCentral, $wgAbuseFilterCentralDB;
+
+		if ( $global && !$wgAbuseFilterIsCentral ) {
+			list ( $globalSite, $globalPrefix ) = wfSplitWikiID( $wgAbuseFilterCentralDB );
+			return wfForeignMemcKey(
+				$globalSite, $globalPrefix,
+				'abusefilter', 'throttle', $throttleId, $type, $identifier );
+		}
 
 		return wfMemcKey( 'abusefilter', 'throttle', $throttleId, $type, $identifier );
 	}
