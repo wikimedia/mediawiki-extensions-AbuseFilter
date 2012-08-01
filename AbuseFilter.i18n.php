@@ -494,6 +494,7 @@ Copy from the textbox that appears, and paste it into this textbox, then click "
  * @author McDutchie
  * @author Meno25
  * @author Mormegil
+ * @author Nemo bis
  * @author Praveenp
  * @author Purodha
  * @author Pxos
@@ -607,13 +608,13 @@ $messages['qqq'] = array(
 * $1 is a link to the log ID with the log ID as description.',
 	'abusefilter-logentry-unsuppress' => 'Log entry when unhiding an abuse filter log entry. Parameters:
 * $1 is a link to the log ID with the log ID as description.',
-	'logentry-abusefilter-hit' => 'This message is for a log entry. Parameters:
+	'logentry-abusefilter-hit' => "This message is for a log entry. Parameters:
 * $1 user
 * $3 link to the page, that the action that triggered the filter was made on
 * $4 link to filter
-* $5 action by user
+* $5 action by user, like 'edit', 'move', 'create' etc.
 * $6 actions taken by the filter
-* $7 action details link',
+* $7 action details link",
 	'abusefilter-management' => 'Title of [[Special:AbuseFilter]]',
 	'abusefilter-list-id' => 'Column header in abuse filter overview for the filter identifier.
 {{Identical|Filter ID}}',
@@ -700,15 +701,15 @@ $messages['qqq'] = array(
 * $5 is the user name which can be used with GENDER',
 	'abusefilter-edit-hitcount' => 'Field label in edit rule form after which the number of filter hits is displayed.',
 	'abusefilter-edit-consequences' => 'Table header in filter version differences.',
-	'abusefilter-edit-action-warn' => 'Checkbox label for filter action.',
-	'abusefilter-edit-action-disallow' => 'Checkbox label for filter action.',
-	'abusefilter-edit-action-flag' => 'Checkbox label for filter action.',
-	'abusefilter-edit-action-blockautopromote' => 'Checkbox label for filter action.',
-	'abusefilter-edit-action-degroup' => 'Checkbox label for filter action.',
-	'abusefilter-edit-action-block' => 'Checkbox label for filter action.',
-	'abusefilter-edit-action-throttle' => 'Checkbox label for filter action.',
-	'abusefilter-edit-action-rangeblock' => 'Checkbox label for filter action.',
-	'abusefilter-edit-action-tag' => 'Checkbox label for filter action.',
+	'abusefilter-edit-action-warn' => '{{doc-abusefilter-action}}',
+	'abusefilter-edit-action-disallow' => '{{doc-abusefilter-action}}',
+	'abusefilter-edit-action-flag' => '{{doc-abusefilter-action}}',
+	'abusefilter-edit-action-blockautopromote' => '{{doc-abusefilter-action}}',
+	'abusefilter-edit-action-degroup' => '{{doc-abusefilter-action}}',
+	'abusefilter-edit-action-block' => '{{doc-abusefilter-action}}',
+	'abusefilter-edit-action-throttle' => '{{doc-abusefilter-action}}',
+	'abusefilter-edit-action-rangeblock' => '{{doc-abusefilter-action}}',
+	'abusefilter-edit-action-tag' => '{{doc-abusefilter-action}}',
 	'abusefilter-edit-throttle-count' => 'Field label for entering the number of allowed hits before triggering the filter consequences.',
 	'abusefilter-edit-throttle-period' => 'Field label for entering a time period.',
 	'abusefilter-edit-throttle-seconds' => 'Throttle period in seconds. Parameters:
@@ -834,8 +835,20 @@ Functional explanation: rmdoubles removes repeated characters in the argument, a
 * $2 is a function name
 * $3 is the number of expected arguments
 * $4 is the number of passed arguments (also supports PLURAL)',
-	'abusefilter-action-tag' => '{{Identical|Tag}}',
-	'abusefilter-action-blockautopromote' => 'Tells that the user is stripped from autoconfirmed status.',
+	'abusefilter-action-tag' => '{{doc-abusefilter-action}}
+
+{{Identical|Tag}}',
+	'abusefilter-action-throttle' => '{{doc-abusefilter-action}}',
+	'abusefilter-action-warn' => '{{doc-abusefilter-action}}',
+	'abusefilter-action-blockautopromote' => '{{doc-abusefilter-action}}
+
+Tells that the user is stripped from autoconfirmed status.',
+	'abusefilter-action-block' => '{{doc-abusefilter-action}}
+
+This appears to be a verb.',
+	'abusefilter-action-degroup' => '{{doc-abusefilter-action}}',
+	'abusefilter-action-rangeblock' => '{{doc-abusefilter-action}}',
+	'abusefilter-action-disallow' => '{{doc-abusefilter-action}}',
 	'abusefilter-revert-title' => 'Caption of [[Special:AbuseFilter/revert/1]] (go to [[Special:AbuseFilter]], open a filter, click “Revert actions taken by this filter”)',
 	'abusefilter-revert-preview-item' => 'Parameters:
 * $1 is a localised time and date
@@ -1344,6 +1357,7 @@ $messages['ar'] = array(
 	'right-abusefilter-modify-restricted' => 'عدل مرشحات الإساءة مع الأفعال المحظورة',
 	'right-abusefilter-revert' => 'استرجع كل التعديلات لمرشح إساءة محدد.',
 	'right-abusefilter-view-private' => 'اعرض مرشحات الإساءة المعلّمة كخاصة',
+	'right-abusefilter-log-private' => 'عرض إدخالات السجل لمرشحات الإساءة المعلمة كخاصة',
 	'right-abusefilter-hide-log' => 'إخفاء إدخالات سجل الإساءة',
 	'right-abusefilter-hidden-log' => 'عرض مدخلات سجل الإساءة المخفية',
 	'action-abusefilter-modify' => 'تعديل مرشحات الإساءة',
@@ -1370,6 +1384,7 @@ $messages['ar'] = array(
 	'abusefilter-log-detailedentry-global' => 'المرشح العام $1',
 	'abusefilter-log-detailedentry-local' => 'المرشح $1',
 	'abusefilter-log-detailslink' => 'التفاصيل',
+	'abusefilter-log-diff' => 'فرق',
 	'abusefilter-log-hidelink' => 'أضبط الرؤية',
 	'abusefilter-log-details-legend' => 'التفاصيل لمدخلة السجل $1',
 	'abusefilter-log-details-var' => 'متغير',
@@ -1382,7 +1397,7 @@ $messages['ar'] = array(
 	'abusefilter-log-linkoncontribs' => 'سجل الإساءة',
 	'abusefilter-log-linkoncontribs-text' => 'سجل الإساءة لهذا المستخدم',
 	'abusefilter-log-hidden' => '(السجل مخفي)',
-	'abusefilter-log-hide' => 'إظهار أو إخفاء',
+	'abusefilter-log-hidden-implicit' => '(مخفي لأنه تم حذف مراجعة)',
 	'abusefilter-log-cannot-see-details' => 'ليس لديك الإذن لمعرفة تفاصيل هذا الإدخال.',
 	'abusefilter-log-details-hidden' => 'لا يمكنك رؤية تفاصيل هذا المدخل، لأنه مخفي من العرض العلني',
 	'abusefilter-log-hide-legend' => 'إخفاء السجل',
@@ -1405,6 +1420,7 @@ $messages['ar'] = array(
 	'abusefilter-list-details' => 'التفاصيل',
 	'abusefilter-list-limit' => 'الرقم لكل صفحة:',
 	'abusefilter-list-lastmodified' => 'آخر تعديل',
+	'abusefilter-list-group' => 'تصفية المجموعة',
 	'abusefilter-hidden' => 'سري',
 	'abusefilter-unhidden' => 'علني',
 	'abusefilter-enabled' => 'مفعل',
@@ -1433,6 +1449,7 @@ $messages['ar'] = array(
 	'abusefilter-reautoconfirm-done' => 'حالة التأكيد التلقائي للحساب تمت استعادتها',
 	'abusefilter-status' => 'من آخر $1 {{PLURAL:$1|فعل|فعل}}، $2 ($3%) {{PLURAL:$2|وصل|وصل}} إلى حد الحالة ل$4. $5 ($6%) {{PLURAL:$5|طابق|طابق}} واحدا من المرشحات المفعلة حاليا.',
 	'abusefilter-edit-subtitle' => 'تعديل المُرشِّح $1',
+	'abusefilter-edit-subtitle-new' => 'أنشئ مُرشِّحًا',
 	'abusefilter-edit-oldwarning' => '<strong>أنت تعدل نسخة قديمة من هذا المرشح.
 الإحصاءات الموجودة هي لأحدث نسخة من المرشح.
 لو أنك حفظت تغييراتك، فستكتب على كل التغييرات منذ المراجعة التي تعدلها.</strong> &bull; [[Special:AbuseFilter/history/$2|رجوع إلى تاريخ هذا المرشح]]',
@@ -1446,6 +1463,7 @@ $messages['ar'] = array(
 	'abusefilter-edit-id' => 'رقم المُرشِّح:',
 	'abusefilter-edit-description' => "الوصف:
 :''(معروض علنيا)''",
+	'abusefilter-edit-group' => 'تصفية المجموعة:',
 	'abusefilter-edit-flags' => 'الأعلام:',
 	'abusefilter-edit-enabled' => 'فعّل هذا المُرشِّح',
 	'abusefilter-edit-deleted' => 'التعليم كمحذوفة',
@@ -1705,6 +1723,7 @@ $messages['ar'] = array(
 في الويكي المصدر، اضغط "{{int:abusefilter-edit-export}}" تحت "{{int:abusefilter-edit-tools}}" في واجهة التعديل.
 انسخ من صندوق النص الذي سيظهر، والصقه إلى صندوق النص هذا، ثم اضغط "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'استيراد البيانات',
+	'abusefilter-group-default' => 'افتراضي',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
@@ -3153,6 +3172,7 @@ $messages['be-tarask'] = array(
 	'right-abusefilter-modify-restricted' => 'зьмена фільтраў злоўжываньняў з абмежавальнымі дзеяньнямі',
 	'right-abusefilter-revert' => 'адкат усіх зьменаў, зробленых фільтрам злоўжываньняў',
 	'right-abusefilter-view-private' => 'прагляд фільтраў злоўжываньняў пазначаных як прыватныя',
+	'right-abusefilter-log-private' => 'Прагляд журнальных запісаў прыватных фільтраў злоўжываньня',
 	'right-abusefilter-hide-log' => 'хаваньне запісаў ў журнале злоўжываньняў',
 	'right-abusefilter-hidden-log' => 'прагляд схаваных запісаў у журнале злоўжываньняў',
 	'action-abusefilter-modify' => 'зьмяніць фільтры злоўжываньняў',
@@ -3179,6 +3199,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-log-detailedentry-global' => 'глябальны фільтар $1',
 	'abusefilter-log-detailedentry-local' => 'фільтар $1',
 	'abusefilter-log-detailslink' => 'падрабязнасьці',
+	'abusefilter-log-diff' => 'розьн',
 	'abusefilter-log-hidelink' => 'зьмяніць бачнасьць',
 	'abusefilter-log-details-legend' => 'Падрабязнасьці запісу ў журнале $1',
 	'abusefilter-log-details-var' => 'Зьменная',
@@ -3191,7 +3212,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-log-linkoncontribs' => 'журнал злоўжываньняў',
 	'abusefilter-log-linkoncontribs-text' => 'Журнал злоўжываньняў гэтага ўдзельніка',
 	'abusefilter-log-hidden' => '(запіс схаваны)',
-	'abusefilter-log-hide' => 'схаваць/паказаць',
+	'abusefilter-log-hidden-implicit' => '(схаваная, бо вэрсія была выдаленая)',
 	'abusefilter-log-cannot-see-details' => 'Вы ня маеце права глядзець падрабязнасьці гэтага запісу.',
 	'abusefilter-log-details-hidden' => 'Вы ня можаце праглядзець падрабязнасьці гэтага запісу,
 таму што ён схаваны ад публічнага прагляду.',
@@ -3245,6 +3266,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-reautoconfirm-done' => 'Адноўлены статус аўтаматычнага пацьверджаньня рахунку',
 	'abusefilter-status' => 'З $1 {{PLURAL:$1|апошняга дзеяньня|апошніх дзеяньняў|апошніх дзеяньняў}}, $2 ($3%) {{PLURAL:$2|трапіла|трапілі|трапілі}} пад абмежаваньне $4, а $5 ($6%) {{PLURAL:$5|адпавядае|адпавядаюць|адпавядаюць}} аднаму з уключаных цяпер фільтраў.',
 	'abusefilter-edit-subtitle' => 'Рэдагаваньне фільтру $1',
+	'abusefilter-edit-subtitle-new' => 'Стварэньне фільтру',
 	'abusefilter-edit-oldwarning' => '<strong>Вы рэдагуеце старую вэрсію гэтага фільтру.
 Статыстыка падаецца для самай новай вэрсіі фільтру.
 Калі Вы захаваеце Вашыя зьмены, Вы скасуеце ўсе зьмены зробленыя раней.</strong> &bull;
@@ -4213,6 +4235,7 @@ Diskrivadenn ar sil : $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'sil hollek $1',
 	'abusefilter-log-detailedentry-local' => 'sil a-enep ar gwallimplijoù $1',
 	'abusefilter-log-detailslink' => 'munudoù',
+	'abusefilter-log-diff' => 'dif',
 	'abusefilter-log-hidelink' => 'spisaat ar gwelusted',
 	'abusefilter-log-details-legend' => 'Munudoù evit kasadenn $1 ar marilh',
 	'abusefilter-log-details-var' => 'Argemmenn',
@@ -4225,7 +4248,7 @@ Diskrivadenn ar sil : $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'Marilh ar siloù a-enep ar gwallimplij',
 	'abusefilter-log-linkoncontribs-text' => 'Marilh ar siloù a-enep ar gwallimplij  evit an implijer-mañ',
 	'abusefilter-log-hidden' => '(moned kuzhet)',
-	'abusefilter-log-hide' => 'kuzhat pe diguzhat',
+	'abusefilter-log-hidden-implicit' => "(kuzhet abalamour m'eo bet diverket ar reizhadenn)",
 	'abusefilter-log-cannot-see-details' => "N'hoc'h ket aotreet da welet ar munudoù evit an enmont-mañ.",
 	'abusefilter-log-details-hidden' => "Ne c'helloc'h ket gwelet munudoù ar moned-mañ dre ma 'z eo kuzhet d'ar selloù publik.",
 	'abusefilter-log-hide-legend' => 'Kuzhat ar moned en deizlevrioù',
@@ -4276,6 +4299,7 @@ Diskrivadenn ar sil : $7 ($8)',
 	'abusefilter-reautoconfirm-done' => "Statudoù emkadarnet eus ar c'hont a zo bet adsavet",
 	'abusefilter-status' => 'E-touesk an/ar $1 {{PLURAL:$1|ober|ober}}, $2 ($3%) {{PLURAL:$2|en deus|ho deus}} tizhet termen ar $4 amplegad, ha $5 ($6%) {{PLURAL:$5|a zo bet|a zo bet}} dinoet gant unan eus ar siloù gweredekaet.',
 	'abusefilter-edit-subtitle' => "Oc'h aozañ ar sil $1",
+	'abusefilter-edit-subtitle-new' => 'O krouiñ ur sil',
 	'abusefilter-edit-oldwarning' => "<strong>O embann emaoc'h ur stumm kozh eus ar sil-mañ.
 Ar stadegoù diskouezet a zo evit ar stumm diwezhañ eus ar sil.
 Ma enrollit ho kemmoù, e flastrit holl ar c'hemmoù bet graet abaoe ar stumm emaoc'h o kemm.</strong> &bull;
@@ -6798,6 +6822,7 @@ Yew deskripsiyonê hereketê tu zerarin: $1',
 	'right-abusefilter-modify-restricted' => 'Filitreyê abuseyî bivurne, pê aksiyonê restrictî',
 	'right-abusefilter-revert' => 'Vurnayîşî ke pê filitreyê abuseyî biy, inan reyna biyar',
 	'right-abusefilter-view-private' => 'Filitreyê abuse yê xasî  bivine',
+	'right-abusefilter-log-private' => 'Xısusi qeydê parzunê ke şıma nışan kerdê ena mocneno',
 	'right-abusefilter-hide-log' => 'Logê abuseyi de vurnayişi binumne',
 	'right-abusefilter-hidden-log' => 'Logê abuse yê numnayî  bivine',
 	'action-abusefilter-modify' => 'filitreyê abuseyî  bivurne',
@@ -6837,6 +6862,7 @@ Deskripsiyonê filitreyî: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'Qeydê parzumi',
 	'abusefilter-log-linkoncontribs-text' => 'Ser eno karber logê abuseyî',
 	'abusefilter-log-hidden' => '(vurnayiş numnayeye)',
+	'abusefilter-log-hidden-implicit' => '(nımteyo deye rewizyon besterneya)',
 	'abusefilter-log-cannot-see-details' => 'Miyan kewtıştê enay rê mısade çıno.',
 	'abusefilter-log-details-hidden' => 'Ti nieşkeno detayanê ena filitre bivîne, çunkî ena filitre kamu ra nimniyayo.',
 	'abusefilter-log-hide-legend' => 'Miyan kewtışa bınımne',
@@ -6876,7 +6902,7 @@ Deskripsiyonê filitreyî: $7 ($8)',
 	'abusefilter-list-options-deleted-show' => 'Filitreyê wedariyayî de biker',
 	'abusefilter-list-options-disabled' => 'Filitreyê qefilnaye',
 	'abusefilter-list-options-hidedisabled' => 'Filitreyê qefilnaye binimne',
-	'abusefilter-list-options-submit' => 'Anewen ke',
+	'abusefilter-list-options-submit' => 'Noroc resn',
 	'abusefilter-tools-text' => 'wexta ke filtreya suistimali formule bena nê hacet lazım beni.',
 	'abusefilter-tools-expr' => 'Testê ifadi',
 	'abusefilter-tools-submitexpr' => 'Xulasa',
@@ -7102,7 +7128,7 @@ Hereketan ke te wazeni reyna biyar: $5 ($6)',
 	'abusefilter-revert-filter' => 'Parzum:',
 	'abusefilter-revert-preview-intro' => 'Aşağıdakiler, suistimal filtresi tarafından alınan ve bu eylemle geri alınacak eylemlerdir.
 Lütfen dikkatlice kontrol edin, ve seçiminizi onaylamak için "onayla"ya tıklayın.',
-	'abusefilter-revert-confirm' => 'Konfirme bike',
+	'abusefilter-revert-confirm' => 'Testiq ke',
 	'abusefilter-revert-success' => '[[Special:AbuseFilter/$1|$1 filtresinden]] dolayı suistimal filtresi tarafından alınan tüm eylemleri geri aldınız.',
 	'abusefilter-revert-reason' => '$1 filtresinden dolayı suistimal filtresi tarafından alınan tüm eylemlerin otomatik geri alımı.
 Verilen sebep: $2',
@@ -7125,9 +7151,9 @@ Qe yew deskripsiyonê ğeletî, "Check Syntax" rê bitexne.',
 	'abusefilter-examine' => 'Vurnayişanê şexsî kontrol bike',
 	'abusefilter-examine-intro' => 'Ena pele ti ra yardim keno ke ti eşkeno variableyan kontrol bike u filitre test bike.',
 	'abusefilter-examine-legend' => 'Vurnayîşê biweçine',
-	'abusefilter-examine-diff' => 'Diff URL:',
+	'abusefilter-examine-diff' => "Ferqê URL'i:",
 	'abusefilter-examine-user' => 'Karber:',
-	'abusefilter-examine-title' => 'Sername:',
+	'abusefilter-examine-title' => 'Sernamey pela:',
 	'abusefilter-examine-submit' => 'Cı geyre',
 	'abusefilter-examine-vars' => 'Ser ena vurnayîşê opsiyonî',
 	'abusefilter-examine-test' => 'Ena vurnayîşî ser filitre ra test bike',
@@ -7161,7 +7187,7 @@ Qe detayanê hemî, bivine [[Special:AbuseFilter/history|liste]]yê vurnayîşê
 Wîkî çimeyî de bine "{{int:abusefilter-edit-tools}}" de "{{int:abusefilter-edit-export}}" klik bike.
 Kutiyê nuştîşî kopye bike u ena kutiyê nuştîş rê na pa u klik bike "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Malumata zerre ke',
-	'abusefilter-group-default' => 'Qısur',
+	'abusefilter-group-default' => 'Hesıbyaye',
 );
 
 /** Lower Sorbian (dolnoserbski)
@@ -12594,6 +12620,7 @@ $messages['hi'] = array(
 	'right-abusefilter-modify-restricted' => 'दुरुपयोग फ़िल्टर को प्रतिबन्धित कार्यों सहित सम्पादित करें',
 	'right-abusefilter-revert' => 'किसी एक दिए गए दुरुपयोग फ़िल्टर द्वारा किये सभी परिवर्तनों को वापिस लें',
 	'right-abusefilter-view-private' => 'वो दुरुपयोग फ़िल्टर देखें जिन्हें निजी चिन्हित किया गया है',
+	'right-abusefilter-log-private' => 'निजी फ़िल्टरों की लॉग प्रविष्टियाँ देखें',
 	'right-abusefilter-hide-log' => 'दुरुपयोग लॉग में प्रविष्टियाँ छिपाएँ',
 	'right-abusefilter-hidden-log' => 'छुपी हुई दुरुपयोग लॉग प्रविष्टियाँ देखें',
 	'action-abusefilter-modify' => 'दुरुपयोग फ़िल्टर संशोधित करें',
@@ -12619,7 +12646,8 @@ $messages['hi'] = array(
 फ़िल्टर विवरण: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'वैश्विक फ़िल्टर $1',
 	'abusefilter-log-detailedentry-local' => 'फ़िल्टर $1',
-	'abusefilter-log-detailslink' => 'विस्तॄत विवरण',
+	'abusefilter-log-detailslink' => 'विस्तृत विवरण',
+	'abusefilter-log-diff' => 'अंतर',
 	'abusefilter-log-hidelink' => 'दृश्यता समयोजित करें',
 	'abusefilter-log-details-legend' => 'लॉग प्रविष्टि $1 के लिए विवरण',
 	'abusefilter-log-details-var' => 'प्राचल',
@@ -12632,7 +12660,7 @@ $messages['hi'] = array(
 	'abusefilter-log-linkoncontribs' => 'दुरुपयोग लॉग',
 	'abusefilter-log-linkoncontribs-text' => 'इस सदस्य के लिए दुरुपयोग लॉग',
 	'abusefilter-log-hidden' => '(प्रविष्टि छिपी हुई)',
-	'abusefilter-log-hide' => 'छुपाएँ या दिखाएँ',
+	'abusefilter-log-hidden-implicit' => '(प्रविष्टि छुपाई गई है क्योंकि अवतरण हटा दिया गया है)',
 	'abusefilter-log-cannot-see-details' => 'आपके पास इस प्रविष्टि का विस्तृत विवरण देखने की अनुमति नहीं है',
 	'abusefilter-log-details-hidden' => 'आप इस प्रविष्टि का विस्तृत विवरण नहीं देख सकते हैं क्योंकि इसे सार्वजनिक दृष्टि से छुपाया गया है',
 	'abusefilter-log-hide-legend' => 'लॉग प्रविष्टि छुपाएँ',
@@ -12640,8 +12668,9 @@ $messages['hi'] = array(
 	'abusefilter-log-hide-hidden' => 'इस प्रविष्टि को सार्वजनिक दृष्टि से छुपाएँ',
 	'abusefilter-log-hide-reason' => 'कारण:',
 	'abusefilter-log-hide-forbidden' => 'आपके पास दुरुपयोग लॉग प्रविष्टियाँ छुपाने की अनुमति नहीं है।',
-	'abusefilter-logentry-suppress' => 'छुपाएँ "[[$1]]"',
+	'abusefilter-logentry-suppress' => '"[[$1]]" को छुपाया',
 	'abusefilter-logentry-unsuppress' => 'ना छुपाएँ "[[$1]]"',
+	'logentry-abusefilter-hit' => '$1 ने $3 पर "$5" किया जिसे $4 ने पकड़ा और निम्न कदम उठाया: $6 ($7)',
 	'abusefilter-management' => 'दुरुपयोग फ़िल्टर प्रबंधन',
 	'abusefilter-list' => 'सभी फ़िल्टर',
 	'abusefilter-list-id' => 'फ़िल्टर आइ॰डी',
@@ -12654,6 +12683,7 @@ $messages['hi'] = array(
 	'abusefilter-list-details' => 'विवरण',
 	'abusefilter-list-limit' => 'प्रति पृष्ठ संख्या:',
 	'abusefilter-list-lastmodified' => 'पिछला संशोधन',
+	'abusefilter-list-group' => 'फ़िल्टर समूह',
 	'abusefilter-hidden' => 'निजी',
 	'abusefilter-unhidden' => 'सार्वजनिक',
 	'abusefilter-enabled' => 'सक्षम',
@@ -17967,7 +17997,7 @@ Makeerunge sullte koot sin, un et sullte kein Sönderzeijshe dren vörkumme.',
 	'abusefilter-edit-builder-vars-user-age' => 'Et Allder fun dämm Metmaacher singe Aanmeldung',
 	'abusefilter-edit-builder-vars-user-name' => 'Däm Metmaacher singe Name',
 	'abusefilter-edit-builder-vars-user-groups' => 'Groppe, woh dä Metmaacher dren es, och öm de Eck eröm',
-	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Zick, woh de Addräß fö de <i lang="en">e-mail</i> beshtätesh woode es',
+	'abusefilter-edit-builder-vars-user-emailconfirm' => 'de Zick, woh de Addräß fö de <i lang="en">e-mail</i> beschtätesch woode es',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'De letzte zehn Metmaacher aan dä Sigg',
 	'abusefilter-edit-builder-vars-all-links' => 'All de Links noh ußserhallef vun däm Wiki en däm neue Enhallt vun dä Sigg',
 	'abusefilter-edit-builder-vars-added-links' => 'All die neue Links die en däm neue Enhallt vun dä Sigg dobei jekumme sen',
@@ -18024,7 +18054,7 @@ Mer han shtatt dämm ävver e $3 „$4“ fevonge.',
 	'abusefilter-action-throttle' => 'Beschrängke',
 	'abusefilter-action-warn' => 'Warne',
 	'abusefilter-action-blockautopromote' => 'Automattesch Beshtätejung ongerdröcke',
-	'abusefilter-action-block' => 'Shperre',
+	'abusefilter-action-block' => 'Schpärre',
 	'abusefilter-action-degroup' => 'us Metmaacher-Jruppe eruß schmiiße',
 	'abusefilter-action-rangeblock' => 'dä Berett Sperre',
 	'abusefilter-action-disallow' => 'Verbeede',
@@ -22608,7 +22638,6 @@ $messages['nds-nl'] = array(
 	'abusefilter-log-noactions' => 'gien',
 	'abusefilter-log-linkoncontribs' => 'filterlogboek',
 	'abusefilter-log-hidden' => '(melding verbörgen)',
-	'abusefilter-log-hide' => 'verbargen of laoten zien',
 	'abusefilter-log-hide-legend' => 'Logboekregel verbargen',
 	'abusefilter-log-hide-id' => 'Logboekmeldingsnummer:',
 	'abusefilter-log-hide-reason' => 'Reden:',
@@ -22623,7 +22652,7 @@ $messages['nds-nl'] = array(
 	'abusefilter-list-hitcount' => 'Antal keer bekeken',
 	'abusefilter-list-edit' => 'Bewarken',
 	'abusefilter-list-details' => 'Details',
-	'abusefilter-list-limit' => 'Antal per pagina:',
+	'abusefilter-list-limit' => 'Antal per zied:',
 	'abusefilter-list-lastmodified' => 'Leste wieziging',
 	'abusefilter-hidden' => 'Beteund',
 	'abusefilter-unhidden' => 'Openbaor',
@@ -22687,12 +22716,12 @@ $messages['nds-nl'] = array(
 	'abusefilter-edit-builder-group-vars' => 'Variabels',
 	'abusefilter-edit-builder-vars-action' => 'Aksie',
 	'abusefilter-edit-builder-vars-delta' => 'Groottewieziging',
-	'abusefilter-edit-builder-vars-newsize' => 'Nieje paginagrootte',
-	'abusefilter-edit-builder-vars-oldsize' => 'Ouwe paginagrootte',
+	'abusefilter-edit-builder-vars-newsize' => 'Nieje ziedgrootte',
+	'abusefilter-edit-builder-vars-oldsize' => 'Ouwe ziedgrootte',
 	'abusefilter-edit-builder-vars-summary' => 'Bewarkingssamenvatting',
-	'abusefilter-edit-builder-vars-article-id' => 'Pagina-ID',
-	'abusefilter-edit-builder-vars-article-ns' => 'Paginanaamruumte',
-	'abusefilter-edit-builder-vars-article-text' => 'Paginanaam (zonder naamruumte)',
+	'abusefilter-edit-builder-vars-article-id' => 'Zied-ID',
+	'abusefilter-edit-builder-vars-article-ns' => 'Ziednaamruumte',
+	'abusefilter-edit-builder-vars-article-text' => 'Ziednaam (zonder naamruumte)',
 	'abusefilter-history-hidden' => 'verbörgen',
 	'abusefilter-history-enabled' => 'An-ezet',
 	'abusefilter-history-global' => 'Globaal',
@@ -33157,6 +33186,7 @@ Paglalarawan ng pansala: $6',
 	'abusefilter-log-detailedentry-global' => 'Pansalang pandaigdigang $1',
 	'abusefilter-log-detailedentry-local' => 'pansalang $1',
 	'abusefilter-log-detailslink' => 'mga detalye',
+	'abusefilter-log-diff' => 'pagkakaiba',
 	'abusefilter-log-hidelink' => 'ayusin ang pagkanakikita',
 	'abusefilter-log-details-legend' => 'Mga detalye para sa ipinasok sa talang $1',
 	'abusefilter-log-details-var' => 'Pabagu-bago',
@@ -33169,6 +33199,7 @@ Paglalarawan ng pansala: $6',
 	'abusefilter-log-linkoncontribs' => 'Tala ng pang-aabuso',
 	'abusefilter-log-linkoncontribs-text' => 'Tala ng Pang-aabuso para sa tagagamit na ito',
 	'abusefilter-log-hidden' => '(nakatago ang ipinasok)',
+	'abusefilter-log-hidden-implicit' => '(nakakubli dahil nabura ang rebisyon)',
 	'abusefilter-log-cannot-see-details' => 'Wala kang pahintulot upang tingnan ang mga detalye ng lahok na ito.',
 	'abusefilter-log-details-hidden' => 'Hindi mo makikita ang mga detalye para sa ipinasok na ito dahil nakatago ito mula sa pagtanaw ng madla.',
 	'abusefilter-log-hide-legend' => 'Itago ang ipinasok sa tala',
@@ -33303,6 +33334,7 @@ Kailangan maiiksi ang mga tatak, at hindi sila dapat maglaman ng natatanging mga
 	'abusefilter-edit-builder-op-bool-not' => 'Hindi (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'At (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'O (|)',
+	'abusefilter-edit-builder-op-bool-xor' => 'XOR (^)',
 	'abusefilter-edit-builder-group-misc' => "Samu't sari",
 	'abusefilter-edit-builder-misc-in' => 'nilalaman ng bagting (in)',
 	'abusefilter-edit-builder-misc-like' => 'Tumutugma sa huwaran (like)',
@@ -34324,6 +34356,7 @@ $messages['uk'] = array(
 	'abusefilter-log-detailedentry-global' => 'глобальний фільтр $1',
 	'abusefilter-log-detailedentry-local' => 'фільтр $1',
 	'abusefilter-log-detailslink' => 'деталі',
+	'abusefilter-log-diff' => 'різн.',
 	'abusefilter-log-hidelink' => 'налаштувати видимість',
 	'abusefilter-log-details-legend' => 'Деталі журнального запису $1',
 	'abusefilter-log-details-var' => 'Змінна',
@@ -34336,6 +34369,7 @@ $messages['uk'] = array(
 	'abusefilter-log-linkoncontribs' => 'журнал зловживань',
 	'abusefilter-log-linkoncontribs-text' => 'Журнал зловживань цього користувача',
 	'abusefilter-log-hidden' => '(запис приховано)',
+	'abusefilter-log-hidden-implicit' => '(приховано, бо версію було вилучено)',
 	'abusefilter-log-cannot-see-details' => 'Ви не маєте дозволу на перегляд відомостей про цей запис.',
 	'abusefilter-log-details-hidden' => 'Ви не можете проглянути докладну інформацію про цей фільтр, оскільки вона прихована від звичайних користувачів.',
 	'abusefilter-log-hide-legend' => 'Сховати запис у журналі',
@@ -34358,6 +34392,7 @@ $messages['uk'] = array(
 	'abusefilter-list-details' => 'Деталі',
 	'abusefilter-list-limit' => 'Кількість на сторінці:',
 	'abusefilter-list-lastmodified' => 'Останні зміни',
+	'abusefilter-list-group' => 'Група фільтру',
 	'abusefilter-hidden' => 'Прихований',
 	'abusefilter-unhidden' => 'Публічний',
 	'abusefilter-enabled' => 'Увімкнений',
@@ -34386,6 +34421,7 @@ $messages['uk'] = array(
 	'abusefilter-reautoconfirm-done' => 'Відновлений статус автопідтвердження облікового запису',
 	'abusefilter-status' => 'Серед $1 {{PLURAL:$1|дії|дій}}, $2 ($3%) {{PLURAL:$2|досягла|досягли}} межі $4. $5 ($6%) {{PLURAL:$5|активізувала|активізували}} один з увімкнених фільтрів.',
 	'abusefilter-edit-subtitle' => 'Редагування фільтру $1',
+	'abusefilter-edit-subtitle-new' => 'Створення фільтру',
 	'abusefilter-edit-oldwarning' => '<strong>Ви редагуєте стару версію цього фільтра. Статистика наведена для найновішої версії фільтра. Якщо ви збережете свої зміни, ви перезапишете усі редагування починаючи з версії, яку ви редагуєте.</strong> &bull; [[Special:AbuseFilter/history/$2|Повернутися до історії цього фільтру]]',
 	'abusefilter-edit-status-label' => 'Статистика:',
 	'abusefilter-edit-status' => 'Серед $1 {{PLURAL:$1|останньої дії|останніх дій|останніх дій}} цей фільтр знайшов {{PLURAL:$2|$2 збіг|$2 збіги|$2 збігів}} ($3%).
@@ -34396,6 +34432,7 @@ $messages['uk'] = array(
 	'abusefilter-edit-id' => 'ІД фільтра:',
 	'abusefilter-edit-description' => "Опис:
 :''(публічний) ''",
+	'abusefilter-edit-group' => 'Група фільтру:',
 	'abusefilter-edit-flags' => 'Прапорці:',
 	'abusefilter-edit-enabled' => 'Увімкнути цей фільтр',
 	'abusefilter-edit-deleted' => 'Позначити як вилучений',
@@ -34654,6 +34691,7 @@ $messages['uk'] = array(
 У джерельній вікі, натисніть «{{int:abusefilter-edit-export}}» у розділі «{{int:abusefilter-edit-tools}}» інтерфейсу редагування.
 Скопіюйте зміст текстового поля, вставте його у цю сторінку і натисніть «{{int:abusefilter-import-submit}}».',
 	'abusefilter-import-submit' => 'Імпортувати дані',
+	'abusefilter-group-default' => 'Стандартна',
 );
 
 /** Urdu (اردو) */
