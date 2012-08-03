@@ -166,6 +166,10 @@ $wgAbuseFilterNotifications = false;
 $wgAbuseFilterCentralDB = null;
 $wgAbuseFilterIsCentral = false;
 
+// Disallow Centralised filters from taking actions that locally
+// block, remove from groups, or revoke permissions
+$wgAbuseFilterDisallowGlobalLocalBlocks = false;
+
 // Block duration
 $wgAbuseFilterBlockDuration = 'indefinite';
 

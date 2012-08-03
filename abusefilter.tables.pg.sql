@@ -57,7 +57,7 @@ CREATE INDEX abuse_filter_log_timestamp ON abuse_filter_log(afl_timestamp);
 CREATE INDEX abuse_filter_log_title     ON abuse_filter_log(afl_namespace, afl_title);
 CREATE INDEX abuse_filter_log_user      ON abuse_filter_log(afl_user);
 CREATE INDEX abuse_filter_log_user_text ON abuse_filter_log(afl_user_text);
-
+CREATE INDEX abuse_filter_log_wiki      ON abuse_filter_log(afl_wiki);
 
 CREATE SEQUENCE abuse_filter_history_afh_id_seq;
 CREATE TABLE abuse_filter_history (

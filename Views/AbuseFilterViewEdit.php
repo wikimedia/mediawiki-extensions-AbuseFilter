@@ -212,6 +212,33 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			$dbw->commit( __METHOD__ );
 
+			// Reset Memcache if this was a global rule
+			if ( $newRow['af_global'] ) {
+				global $wgMemc;
+				$group = 'default';
+				if ( isset( $newRow['af_group'] ) && $newRow['af_group'] != '' ) {
+					$group = $newRow['af_group'];
+				}
+
+				$memcacheRules = array();
+				$res = $dbw->select(
+					'abuse_filter',
+					'*',
+					array(
+						'af_enabled' => 1,
+						'af_deleted' => 0,
+						'af_global' => 1,
+						'af_group' => $group,
+					),
+					__METHOD__
+				);
+				foreach ( $res as $row ) {
+					$memcacheRules[] = $row;
+				}
+
+				$wgMemc->set( AbuseFilter::getGlobalRulesKey( $group ), $memcacheRules );
+			}
+
 			// Logging
 
 			$lp = new LogPage( 'abusefilter' );

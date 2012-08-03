@@ -333,6 +333,13 @@ class AbuseFilterHooks {
 			}
 
 			$updater->addExtensionUpdate( array('addField', 'abuse_filter', 'af_group', "$dir/db_patches/patch-af_group.sql", true ) );
+
+			if ( $updater->getDB()->getType() == 'mysql' ) {
+				$updater->addExtensionUpdate( array( 'addIndex', 'abuse_filter_log', 'wiki_timestamp', "$dir/db_patches/patch-global_logging_wiki-index.sql", true ) );
+			} else {
+				$updater->addExtensionUpdate( array( 'addIndex', 'abuse_filter_log', 'afl_wiki_timestamp', "$dir/db_patches/patch-global_logging_wiki-index.sqlite.sql", true ) );
+			}
+
 		} elseif ( $updater->getDB()->getType() == 'postgres' ) {
 			$updater->addExtensionUpdate( array( 'addTable', 'abuse_filter', "$dir/abusefilter.tables.pg.sql", true ) );
 			$updater->addExtensionUpdate( array( 'addTable', 'abuse_filter_history', "$dir/db_patches/patch-abuse_filter_history.pg.sql", true ) );
@@ -343,6 +350,7 @@ class AbuseFilterHooks {
 			$updater->addExtensionUpdate( array( 'addPgField', 'abuse_filter_log', 'afl_deleted', 'SMALLINT' ) );
 			$updater->addExtensionUpdate( array( 'changeField', 'abuse_filter_log', 'afl_filter', 'TEXT', '' ) );
 			$updater->addExtensionUpdate( array( 'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_ip', "(afl_ip)" ) );
+			$updater->addExtensionUpdate( array( 'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_wiki', "(afl_wiki)" ) );
 		}
 
 		$updater->addExtensionUpdate( array( array( __CLASS__, 'createAbuseFilterUser' ) ) );

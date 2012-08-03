@@ -397,21 +397,34 @@ class AbuseFilter {
 			$filter_matched[$row->af_id] = self::checkFilter( $row, $vars, true );
 		}
 
-		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
+		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral, $wgMemc;
+
 		if ( $wgAbuseFilterCentralDB && !$wgAbuseFilterIsCentral ) {
 			// Global filters
-			$fdb = wfGetDB( DB_SLAVE, array(), $wgAbuseFilterCentralDB );
-			$res = $fdb->select(
-				'abuse_filter',
-				'*',
-				array(
-					'af_enabled' => 1,
-					'af_deleted' => 0,
-					'af_global' => 1,
-					'af_group' => $group,
-				),
-				__METHOD__
-			);
+			$globalRulesKey = self::getGlobalRulesKey( $group );
+			$memcacheRules = $wgMemc->get( $globalRulesKey );
+
+			if ( $memcacheRules ) {
+				$res =  $memcacheRules;
+			} else {
+				$fdb = wfGetDB( DB_SLAVE, array(), $wgAbuseFilterCentralDB );
+				$res = $fdb->select(
+					'abuse_filter',
+					'*',
+					array(
+						'af_enabled' => 1,
+						'af_deleted' => 0,
+						'af_global' => 1,
+						'af_group' => $group,
+					),
+					__METHOD__
+				);
+				$memcacheRules = array();
+				foreach ( $res as $row ) {
+					$memcacheRules[] = $row;
+				}
+				$wgMemc->set( $globalRulesKey, $memcacheRules );
+			}
 
 			foreach( $res as $row ) {
 				$filter_matched['global-' . $row->af_id] =
@@ -661,9 +674,11 @@ class AbuseFilter {
 
 		foreach ( $actionsByFilter as $filter => $actions ) {
 			// Special-case handling for warnings.
-			global $wgOut;
+			global $wgOut, $wgAbuseFilterDisallowGlobalLocalBlocks;
 			$parsed_public_comments = $wgOut->parseInline(
 				self::$filters[$filter]->af_public_comments );
+
+			$global_filter = ( preg_match( '/^global-/', $filter ) == 1);
 
 			$global_filter = ( preg_match( '/^global-/', $filter ) == 1);
 
@@ -684,6 +699,12 @@ class AbuseFilter {
 				if ( !$hitThrottle ) {
 					$actionsTaken[$filter][] = 'throttle';
 					continue;
+				}
+			}
+
+			if ( $wgAbuseFilterDisallowGlobalLocalBlocks && $global_filter ) {
+				foreach ( $blockingActions as $blockingAction ) {
+					unset( $actions[$blockingAction] );
 				}
 			}
 
@@ -1330,6 +1351,24 @@ class AbuseFilter {
 	}
 
 	/**
+	 * @return String
+	 */
+	public static function getGlobalRulesKey( $group ) {
+		global $wgAbuseFilterIsCentral, $wgAbuseFilterCentralDB;
+
+		if ( !$wgAbuseFilterIsCentral ) {
+			list ( $globalSite, $globalPrefix ) = wfSplitWikiID( $wgAbuseFilterCentralDB );
+
+			return wfForeignMemcKey(
+				$globalSite, $globalPrefix,
+				'abusefilter', 'rules', $group
+			);
+		}
+
+		return wfMemcKey( 'abusefilter', 'rules', $group );
+	}
+
+	/**
 	 * @param $user User
 	 * @return String
 	 */
@@ -1338,6 +1377,7 @@ class AbuseFilter {
 	}
 
 	/**
+	 * Update statistics, and disable filters which are over-blocking.
 	 * @param $filters
 	 */
 	public static function recordStats( $filters ) {

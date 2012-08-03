@@ -56,7 +56,8 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter_log (
 	KEY page_timestamp (afl_namespace, afl_title, afl_timestamp),
 	KEY ip_timestamp (afl_ip, afl_timestamp),
 	KEY (afl_rev_id),
-	KEY (afl_log_id)
+	KEY (afl_log_id),
+	KEY wiki_timestamp (afl_wiki, afl_timestamp)
 ) /*$wgDBTableOptions*/;
 
 CREATE TABLE /*$wgDBprefix*/abuse_filter_history (

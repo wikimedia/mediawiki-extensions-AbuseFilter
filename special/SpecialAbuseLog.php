@@ -15,6 +15,8 @@ class SpecialAbuseLog extends SpecialPage {
 	 */
 	protected $mSearchTitle;
 
+	protected $mSearchWiki;
+
 	protected $mSearchFilter;
 
 	public function __construct() {
@@ -68,9 +70,14 @@ class SpecialAbuseLog extends SpecialPage {
 	}
 
 	function loadParameters() {
+		global $wgAbuseFilterIsCentral;
+
 		$request = $this->getRequest();
 
 		$this->mSearchUser = $request->getText( 'wpSearchUser' );
+		if ( $wgAbuseFilterIsCentral ) {
+			$this->mSearchWiki = $request->getText( 'wpSearchWiki' );
+		}
 
 		$t = Title::newFromText( trim( $this->mSearchUser ) );
 		if ( $t ) {
@@ -87,6 +94,8 @@ class SpecialAbuseLog extends SpecialPage {
 	}
 
 	function searchForm() {
+		global $wgAbuseFilterIsCentral;
+
 		$output = Xml::element( 'legend', null, wfMsg( 'abusefilter-log-search' ) );
 		$fields = array();
 
@@ -99,6 +108,13 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 		$fields['abusefilter-log-search-title'] =
 			Xml::input( 'wpSearchTitle', 45, $this->mSearchTitle );
+
+		if ( $wgAbuseFilterIsCentral ) {
+			// Add free form input for wiki name. Would be nice to generate
+			// a select with unique names in the db at some point.
+			$fields['abusefilter-log-search-wiki'] =
+				Xml::input( 'wpSearchWiki', 45, $this->mSearchWiki );
+		}
 
 		$form = Html::hidden( 'title', $this->getTitle()->getPrefixedText() );
 
@@ -204,6 +220,10 @@ class SpecialAbuseLog extends SpecialPage {
 				$conds['afl_user'] = $user->getId();
 				$conds['afl_user_text'] = $user->getName();
 			}
+		}
+
+		if ( $this->mSearchWiki ) {
+			$conds['afl_wiki'] = $this->mSearchWiki;
 		}
 
 		if ( $this->mSearchFilter ) {

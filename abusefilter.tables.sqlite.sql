@@ -48,6 +48,7 @@ CREATE INDEX afl_user_timestamp ON /*$wgDBprefix*/abuse_filter_log (afl_user,afl
 CREATE INDEX afl_timestamp ON /*$wgDBprefix*/abuse_filter_log  (afl_timestamp);
 CREATE INDEX afl_page_timestamp ON /*$wgDBprefix*/abuse_filter_log (afl_namespace, afl_title, afl_timestamp);
 CREATE INDEX afl_ip_timestamp ON /*$wgDBprefix*/abuse_filter_log (afl_ip, afl_timestamp);
+CREATE INDEX afl_wiki_timestamp ON /*$wgDBprefix*/abuse_filter_log (afl_wiki, afl_timestamp);
 
 CREATE TABLE /*$wgDBprefix*/abuse_filter_history (
 	afh_id BIGINT unsigned NOT NULL AUTO_INCREMENT,

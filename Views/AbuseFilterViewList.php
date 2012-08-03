@@ -22,6 +22,8 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$conds = array();
 		$deleted = $request->getVal( 'deletedfilters' );
 		$hidedisabled = $request->getBool( 'hidedisabled' );
+		$scope = $request->getVal( 'rulescope', 'local' );
+
 		if ( $deleted == 'show' ) {
 			# Nothing
 		} elseif ( $deleted == 'only' ) {
@@ -34,11 +36,16 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$conds['af_deleted'] = 0;
 			$conds['af_enabled'] = 1;
 		}
+		if ( $scope == 'global' ) {
+			$conds['af_global'] = 1;
+		}
 
-		$this->showList( $conds, compact( 'deleted', 'hidedisabled' ) );
+		$this->showList( $conds, compact( 'deleted', 'hidedisabled', 'scope' ) );
 	}
 
 	function showList( $conds = array( 'af_deleted' => 0 ), $optarray = array() ) {
+		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
+
 		$output = '';
 		$output .= Xml::element( 'h2', null,
 			wfMsgExt( 'abusefilter-list', array( 'parseinline' ) ) );
@@ -47,6 +54,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 		$deleted = $optarray['deleted'];
 		$hidedisabled = $optarray['hidedisabled'];
+		$scope = $optarray['scope'];
 
 		# Options form
 		$fields = array();
@@ -72,6 +80,25 @@ class AbuseFilterViewList extends AbuseFilterView {
 				'mw-abusefilter-deletedfilters-only',
 				$deleted == 'only'
 			);
+
+		if ( isset( $wgAbuseFilterCentralDB ) && !$wgAbuseFilterIsCentral ) {
+			$fields['abusefilter-list-options-scope'] =
+				Xml::radioLabel(
+					$this->msg( 'abusefilter-list-options-scope-local' )->text(),
+					'rulescope',
+					'local',
+					'mw-abusefilter-rulescope-local',
+					$scope == 'local'
+				) .
+				Xml::radioLabel(
+					$this->msg( 'abusefilter-list-options-scope-global' )->text(),
+					'rulescope',
+					'global',
+					'mw-abusefilter-rulescope-global',
+					$scope == 'global'
+				);
+		}
+
 		$fields['abusefilter-list-options-disabled'] =
 			Xml::checkLabel(
 				wfMsg( 'abusefilter-list-options-hidedisabled' ),
@@ -94,10 +121,18 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 		$output .= $options;
 
-		$output .=
-			$pager->getNavigationBar() .
-			$pager->getBody() .
-			$pager->getNavigationBar();
+		if ( isset( $wgAbuseFilterCentralDB ) && !$wgAbuseFilterIsCentral && $scope == 'global' ) {
+			$globalPager = new GlobalAbuseFilterPager( $this, $conds );
+			$output .=
+				$globalPager->getNavigationBar() .
+				$globalPager->getBody() .
+				$globalPager->getNavigationBar();
+		} else {
+			$output .=
+				$pager->getNavigationBar() .
+				$pager->getBody() .
+				$pager->getNavigationBar();
+		}
 
 		$this->getOutput()->addHTML( $output );
 	}
@@ -293,5 +328,71 @@ class AbuseFilterPager extends TablePager {
 			'af_timestamp'
 		);
 		return in_array( $name, $sortable_fields );
+	}
+}
+
+class GlobalAbuseFilterPager extends AbuseFilterPager {
+
+	function __construct( $page, $conds ) {
+		parent::__construct( $page, $conds );
+		global $wgAbuseFilterCentralDB;
+		$this->mDb = wfGetDB( DB_SLAVE, array(), $wgAbuseFilterCentralDB );
+	}
+
+
+	function formatValue( $name, $value ) {
+		global $wgAbuseFilterCentralDB;
+
+		$lang = $this->getLanguage();
+		$row = $this->mCurrentRow;
+
+		switch( $name ) {
+			case 'af_id':
+				return $lang->formatNum( intval( $value )  );
+			case 'af_public_comments':
+				return $this->getOutput()->parseInline( $value );
+			case 'af_actions':
+				$actions = explode( ',', $value );
+				$displayActions = array();
+				foreach ( $actions as $action ) {
+					$displayActions[] = AbuseFilter::getActionDisplay( $action );
+				}
+				return htmlspecialchars( $lang->commaList( $displayActions ) );
+			case 'af_enabled':
+				$statuses = array();
+				if ( $row->af_deleted ) {
+					$statuses[] = $this->msg( 'abusefilter-deleted' )->parse();
+				} elseif ( $row->af_enabled ) {
+					$statuses[] = $this->msg( 'abusefilter-enabled' )->parse();
+				} else {
+					$statuses[] = $this->msg( 'abusefilter-disabled' )->parse();
+				}
+				if ( $row->af_global ) {
+					$statuses[] = $this->msg( 'abusefilter-status-global' )->parse();
+				}
+
+				return $lang->commaList( $statuses );
+			case 'af_hidden':
+				$msg = $value ? 'abusefilter-hidden' : 'abusefilter-unhidden';
+				return $this->msg( $msg, 'parseinline' )->parse();
+			case 'af_hit_count':
+				// If the rule is hidden, don't show it, even to priviledged local admins
+				if ( $row->af_hidden ) {
+					return '';
+				}
+				return $this->msg( 'abusefilter-hitcount' )->numParams( $value )->parse();
+			case 'af_timestamp':
+				$user = $row->af_user_text;
+				return $this->msg(
+					'abusefilter-edit-lastmod-text',
+					$lang->timeanddate( $value, true ), $user
+				)->parse();
+			case 'af_group':
+				// If this is global, local name probably doesn't exist, but try
+				return AbuseFilter::nameGroup( $value );
+				break;
+			default:
+				throw new MWException( "Unknown row type $name!" );
+		}
 	}
 }

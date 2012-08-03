@@ -82,6 +82,7 @@ Rule description: $1',
 	'abusefilter-log-search-user' => 'User:',
 	'abusefilter-log-search-filter' => 'Filter ID:',
 	'abusefilter-log-search-title' => 'Title:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Search',
 	'abusefilter-log-entry' => '$1: $2 triggered an abuse filter, performing the action "$3" on $4.
 Actions taken: $5;
@@ -151,6 +152,9 @@ Filter description: $7 ($8)',
 	'abusefilter-list-options-deleted-only' => 'Show only deleted filters',
 	'abusefilter-list-options-deleted-hide' => 'Hide deleted filters',
 	'abusefilter-list-options-deleted-show' => 'Include deleted filters',
+	'abusefilter-list-options-scope' => 'Show filters from:',
+	'abusefilter-list-options-scope-local' => 'Local wiki',
+	'abusefilter-list-options-scope-global' => 'Global rules',
 	'abusefilter-list-options-disabled' => 'Disabled filters:',
 	'abusefilter-list-options-hidedisabled' => 'Hide disabled filters',
 	'abusefilter-list-options-submit' => 'Update',
@@ -554,6 +558,7 @@ $messages['qqq'] = array(
 {{Identical|Filter ID}}',
 	'abusefilter-log-search-title' => 'Field label in abuse filter log page.
 {{Identical|Title}}',
+	'abusefilter-log-search-wiki' => 'Label for text field that allows the user to limit search results to a specific wiki, by name.',
 	'abusefilter-log-search-submit' => 'Button text to search log in abuse filter log page.
 {{Identical|Search}}',
 	'abusefilter-log-entry' => 'This message is for a log entry. Parameters:
@@ -651,6 +656,9 @@ $messages['qqq'] = array(
 	'abusefilter-list-options-deleted-only' => 'Radio button label in filter form.',
 	'abusefilter-list-options-deleted-hide' => 'Radio button label in filter form.',
 	'abusefilter-list-options-deleted-show' => 'Radio button label in filter form.',
+	'abusefilter-list-options-scope' => 'Field label in the filter form, for radio buttons selecting which category of filters to show',
+	'abusefilter-list-options-scope-local' => 'Radio button indicating that local rules should be shown',
+	'abusefilter-list-options-scope-global' => 'Radio button indicating that global rules should be shown',
 	'abusefilter-list-options-disabled' => 'Field label in filter form.',
 	'abusefilter-list-options-hidedisabled' => 'Radio button label in filter form.',
 	'abusefilter-list-options-submit' => 'Submit button text in filter form to update a filtered list.
