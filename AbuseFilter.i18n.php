@@ -873,7 +873,7 @@ This is also used in {{msg-mw|Abusefilter-revert-preview-intro}}. When changing 
 	'abusefilter-examine-user' => '{{Identical|User}}',
 	'abusefilter-examine-submit' => '{{Identical|Search}}',
 	'abusefilter-topnav-home' => '{{Identical|Home}}',
-	'abusefilter-log-name' => 'Name of the log, shown in the Special:Log dropdown for the log type selection and in the log header.',
+	'abusefilter-log-name' => '{{doc-logpage}}',
 	'abusefilter-log-entry-modify' => '* $1 is a link to the filter
 * $2 is a link to the filter change details',
 	'abusefilter-diff-title' => 'Similar to {{msg-mw|Difference}}',
@@ -6854,7 +6854,7 @@ Deskripsiyonê filitreyî: $7 ($8)',
 	'abusefilter-log-hidelink' => 'vinayişi eyar bike',
 	'abusefilter-log-details-legend' => 'Detayî ser log entryê $1î',
 	'abusefilter-log-details-var' => 'Vurnayiye',
-	'abusefilter-log-details-val' => 'Deger',
+	'abusefilter-log-details-val' => 'Erc',
 	'abusefilter-log-details-vars' => 'Parametereyê hereketî',
 	'abusefilter-log-details-private' => 'Datayê xasî',
 	'abusefilter-log-details-ip' => 'Adresê IPyê oricinalî',
@@ -6906,7 +6906,7 @@ Deskripsiyonê filitreyî: $7 ($8)',
 	'abusefilter-list-options-submit' => 'Noroc resn',
 	'abusefilter-tools-text' => 'wexta ke filtreya suistimali formule bena nê hacet lazım beni.',
 	'abusefilter-tools-expr' => 'Testê ifadi',
-	'abusefilter-tools-submitexpr' => 'Xulasa',
+	'abusefilter-tools-submitexpr' => 'Bercınê',
 	'abusefilter-tools-reautoconfirm' => 'Weziyetê xob xo araşt kerdışi peyser biya',
 	'abusefilter-tools-reautoconfirm-user' => 'Karber:',
 	'abusefilter-tools-reautoconfirm-submit' => 'Reyna otoconfirme bike',
@@ -7088,7 +7088,7 @@ gani etiketi kılm bıbi u tede karakterê xususi çinibi.',
 	'abusefilter-history-actions' => 'Kerdeni',
 	'abusefilter-history-backedit' => 'Filitreyê edîtorî rê reyna şi',
 	'abusefilter-history-deleted' => 'Wedarnaye',
-	'abusefilter-history-filterid' => 'Filitre',
+	'abusefilter-history-filterid' => 'Avrêc',
 	'abusefilter-history-select-legend' => 'Cı geyrayışi amyayeney fi',
 	'abusefilter-history-select-user' => 'Karber:',
 	'abusefilter-history-select-submit' => 'Amyayeney fi',
@@ -7126,7 +7126,7 @@ Hereketan ke te wazeni reyna biyar: $5 ($6)',
 	'abusefilter-revert-periodstart' => 'Periyod ke başli ken:',
 	'abusefilter-revert-periodend' => 'Periyod ke qediyen:',
 	'abusefilter-revert-search' => 'Hereketan biweçine',
-	'abusefilter-revert-filter' => 'Parzum:',
+	'abusefilter-revert-filter' => 'Avrêc:',
 	'abusefilter-revert-preview-intro' => 'Aşağıdakiler, suistimal filtresi tarafından alınan ve bu eylemle geri alınacak eylemlerdir.
 Lütfen dikkatlice kontrol edin, ve seçiminizi onaylamak için "onayla"ya tıklayın.',
 	'abusefilter-revert-confirm' => 'Testiq ke',
@@ -9467,6 +9467,7 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Erdemaslancan
  * @author Hooshmand.hasannia
  * @author Huji
  * @author Ladsgroup
@@ -9545,6 +9546,7 @@ $messages['fa'] = array(
 	'abusefilter-log-detailedentry-global' => 'پالایهٔ سراسری $1',
 	'abusefilter-log-detailedentry-local' => 'پالایهٔ $1',
 	'abusefilter-log-detailslink' => 'جزئیات',
+	'abusefilter-log-diff' => 'تفاوت',
 	'abusefilter-log-hidelink' => 'تنظیم پدیداری',
 	'abusefilter-log-details-legend' => 'جزئیات برای سیاههٔ ثبت‌شدهٔ $1',
 	'abusefilter-log-details-var' => 'متغیر',
@@ -9557,7 +9559,7 @@ $messages['fa'] = array(
 	'abusefilter-log-linkoncontribs' => 'سیاههٔ خرابکاری',
 	'abusefilter-log-linkoncontribs-text' => 'سیاهه خرابکاری‌ها برای این کاربر',
 	'abusefilter-log-hidden' => '(مورد پنهان)',
-	'abusefilter-log-hide' => 'پنهان یا آشکار کردن',
+	'abusefilter-log-hidden-implicit' => '(پنهان شده چون نسخه حذف شده است)',
 	'abusefilter-log-cannot-see-details' => 'برای مشاهده جزئیات این اطلاعات دسترسی ندارید',
 	'abusefilter-log-details-hidden' => 'شما نمی‌توانید جزئیات این مورد را ببینید چون از دید عموم مخفی شده‌است.',
 	'abusefilter-log-hide-legend' => 'پنهان کردن مورد در سیاهه',
@@ -9820,7 +9822,7 @@ $messages['fa'] = array(
 	'abusefilter-revert-periodstart' => 'شروع بازه زمانی:',
 	'abusefilter-revert-periodend' => 'پایان بازه زمانی:',
 	'abusefilter-revert-search' => 'انتخاب اقدامات',
-	'abusefilter-revert-filter' => 'پالایه:',
+	'abusefilter-revert-filter' => 'فیلتر:',
 	'abusefilter-revert-preview-intro' => 'در زیر اقدامات صورت گرفته توسط پالایهٔ خرابکاری آمده است که توسط این اقدام واگردنی می‌شود.
 لطفاً با دقت آن‌ها را بررسی کنید، و به منظور تأیید انتخاب، روی «تایید» کلیک نمایید.',
 	'abusefilter-revert-confirm' => 'تأیید',
@@ -18356,6 +18358,7 @@ Beschreiwung vum Filter: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'globale Filter $1',
 	'abusefilter-log-detailedentry-local' => 'Filter $1',
 	'abusefilter-log-detailslink' => 'Detailer',
+	'abusefilter-log-diff' => 'Ënnerscheed',
 	'abusefilter-log-hidelink' => 'Siichtbarkeet ajustéieren',
 	'abusefilter-log-details-legend' => "Detailer fir d'Rubrique am Logbuch $1",
 	'abusefilter-log-details-var' => 'Variabel',
@@ -18368,7 +18371,7 @@ Beschreiwung vum Filter: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'Logbuch vum Mëssbrauch',
 	'abusefilter-log-linkoncontribs-text' => 'Logbuch vum M!essbrauch fir dëse Benotzer',
 	'abusefilter-log-hidden' => '(Androung verstoppt)',
-	'abusefilter-log-hide' => 'verstoppen oder nees weisen',
+	'abusefilter-log-hidden-implicit' => "(verstoppt, well d'Versioun geläscht gouf)",
 	'abusefilter-log-cannot-see-details' => 'Dir hutt net déi néideg Rechter fir Detailer hei vun ze gesinn.',
 	'abusefilter-log-details-hidden' => 'Dir kënnt Detailer hei der vun net gesinn well e virun der Ëffentlechkeet verstoppt sinn.',
 	'abusefilter-log-hide-legend' => 'Rubrik am Logbuch verstoppen',
@@ -18588,6 +18591,7 @@ Tags solle kuerz sinn, an et solle keng Spezialzeechen dra sinn.',
 	'abusefilter-history-diff' => 'Ännerungen',
 	'abusefilter-history-error-hidden' => "De Filter deen Dir ugefrot hutt ass verstoppt, an Dir kënnt d'Versiounen dovun net gesinn.",
 	'abusefilter-exception-unexpectedatend' => 'Onerwaarten $2 beim Zeeche(n) $1',
+	'abusefilter-exception-expectednotfound' => 'Op der Positioun $1 gouf e(n) $2 erwaart awer net fonnt (fonnt gouf dofir e(n) $3 mam Wäert $4).',
 	'abusefilter-exception-unrecognisedkeyword' => 'Onerkannt Schlësselwuert $2 beim Zeeche(n) $1.',
 	'abusefilter-exception-unclosedstring' => 'Zeechekette gouf net ofgeschloss, si fänkt mam Zeechen $1 un.',
 	'abusefilter-exception-invalidoperator' => 'Net valabelen Operateur "$2" beim Zeechen $1.',
@@ -18643,7 +18647,7 @@ Dir kënnt eng komplett Erklärung kréien wann Dir op "Syntax nokucken" klickt.
 	'abusefilter-examine-user' => 'Benotzer:',
 	'abusefilter-examine-title' => 'Titel vun der Säit:',
 	'abusefilter-examine-submit' => 'Sichen',
-	'abusefilter-examine-vars' => 'Variabelen, déi fir dës ännerung genréiert goufen',
+	'abusefilter-examine-vars' => 'Variabelen, déi fir dës Ännerung generéiert goufen',
 	'abusefilter-examine-test' => 'Dës Ännerung mat engem Filter testen',
 	'abusefilter-examine-test-button' => 'De Filter ausprobéieren',
 	'abusefilter-examine-match' => 'De Filter erfaast dës Ännerung.',
@@ -18675,6 +18679,7 @@ Fir weider Detailer, kuckt [[Special:AbuseFilter/history|d'Lëscht]] vun de reze
 Klickt op der originaler Wiki op "{{int:abusefilter-edit-export}}"  ënner "{{int:abusefilter-edit-tools}}" op dem Interface vun den Ännerungen.
 Kopéiert vun der Textkëscht déi opgeet an dës Textkëscht a klickt op "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'Donnéeën importéieren',
+	'abusefilter-group-default' => 'Standard',
 );
 
 /** Lezghian (Лезги)
@@ -33522,6 +33527,14 @@ Doon sa pinagmulang wiki, pindutin ang "{{int:abusefilter-edit-export}}" na nasa
 Kopyahin mula sa kahong pangteksto na lilitaw, at idikit ito sa kahong pangtekstong ito, matapos ay pindutin ang "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Angkatin ang dato',
 	'abusefilter-group-default' => 'Likas na pagtatakda',
+);
+
+/** толышә зывон (толышә зывон)
+ * @author Erdemaslancan
+ */
+$messages['tly'] = array(
+	'abusefilter-list-options' => 'Кукон',
+	'abusefilter-history-comments' => 'Мындәриҹот',
 );
 
 /** Tok Pisin (Tok Pisin)
