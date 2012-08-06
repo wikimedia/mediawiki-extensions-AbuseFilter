@@ -16260,6 +16260,7 @@ Copiare dalla casella che appare e copiare in questa casella, quindi fare clic s
  * @author Mizusumashi
  * @author Muttley
  * @author Ohgi
+ * @author Penn Station
  * @author Shirayuki
  * @author Yanajin66
  * @author 青子守歌
@@ -16304,7 +16305,8 @@ $messages['ja'] = array(
 	'right-abusefilter-private' => '不正利用記録内の非公開データを閲覧',
 	'right-abusefilter-modify-restricted' => '制限された操作を含む不正利用フィルターを変更',
 	'right-abusefilter-revert' => '指定した不正利用フィルターによるすべての変更を差し戻す',
-	'right-abusefilter-view-private' => '「非公開」の印が付いたフィルターを閲覧',
+	'right-abusefilter-view-private' => '非公開のフィルターを閲覧',
+	'right-abusefilter-log-private' => '非公開のフィルターログを閲覧',
 	'right-abusefilter-hide-log' => '不正利用記録の項目を隠す',
 	'right-abusefilter-hidden-log' => '隠された不正利用記録を閲覧',
 	'action-abusefilter-modify' => '不正利用フィルターの変更',
@@ -16314,7 +16316,7 @@ $messages['ja'] = array(
 	'action-abusefilter-private' => '不正利用記録内の非公開データの閲覧',
 	'action-abusefilter-modify-restricted' => '制限された操作を含む不正利用フィルターの変更',
 	'action-abusefilter-revert' => '指定した不正利用フィルターによるすべての変更の差し戻し',
-	'action-abusefilter-view-private' => '「非公開」の印が付いたフィルターを閲覧',
+	'action-abusefilter-view-private' => '非公開のフィルターを閲覧',
 	'abusefilter-log' => '不正利用フィルター記録',
 	'abusefilter-log-summary' => 'この記録はフィルターが発動した全操作の一覧を表示しています。',
 	'abusefilter-log-search' => '不正利用記録を検索',
@@ -16331,6 +16333,7 @@ $messages['ja'] = array(
 	'abusefilter-log-detailedentry-global' => 'グローバルフィルター $1',
 	'abusefilter-log-detailedentry-local' => 'フィルター $1',
 	'abusefilter-log-detailslink' => '詳細',
+	'abusefilter-log-diff' => '差分',
 	'abusefilter-log-hidelink' => '閲覧レベルを調整',
 	'abusefilter-log-details-legend' => '記録項目 $1 の詳細',
 	'abusefilter-log-details-var' => '変数',
@@ -16343,7 +16346,7 @@ $messages['ja'] = array(
 	'abusefilter-log-linkoncontribs' => '不正利用記録',
 	'abusefilter-log-linkoncontribs-text' => 'この利用者の不正利用記録',
 	'abusefilter-log-hidden' => '（隠された項目）',
-	'abusefilter-log-hide' => '隠すまたは表示',
+	'abusefilter-log-hidden-implicit' => '(版が削除されているため非表示)',
 	'abusefilter-log-cannot-see-details' => 'この項目の詳細を見る権限がありません。',
 	'abusefilter-log-details-hidden' => 'この項目は公開記録から隠されているため、詳細を見ることができません。',
 	'abusefilter-log-hide-legend' => 'ログ項目を隠す',
@@ -16353,6 +16356,7 @@ $messages['ja'] = array(
 	'abusefilter-log-hide-forbidden' => '不正利用記録の項目を隠す権限がありません。',
 	'abusefilter-logentry-suppress' => '[[$1]]を非公開',
 	'abusefilter-logentry-unsuppress' => '[[$1]]を公開',
+	'logentry-abusefilter-hit' => '$1 が $3 で「$5」操作を行い、 $4 が作動しました。対処操作: $6 ($7)',
 	'abusefilter-management' => '不正利用フィルター管理',
 	'abusefilter-list' => 'すべてのフィルター',
 	'abusefilter-list-id' => 'フィルターID',
@@ -16365,6 +16369,7 @@ $messages['ja'] = array(
 	'abusefilter-list-details' => '詳細',
 	'abusefilter-list-limit' => 'ページごとの数:',
 	'abusefilter-list-lastmodified' => '最終変更',
+	'abusefilter-list-group' => 'フィルターグループ',
 	'abusefilter-hidden' => '非公開',
 	'abusefilter-unhidden' => '公開',
 	'abusefilter-enabled' => '有効',
@@ -16393,6 +16398,7 @@ $messages['ja'] = array(
 	'abusefilter-reautoconfirm-done' => '利用者の自動承認ステータスが復元されました',
 	'abusefilter-status' => '最近の$1{{PLURAL:$1|操作}}のうち、$2件($3%)が$4の条件制限に{{PLURAL:$2|達しました}}。$5件($6%)に対して、現在有効なフィルターの1つが{{PLURAL:$5|発動しました}}。',
 	'abusefilter-edit-subtitle' => 'フィルター $1 を編集中',
+	'abusefilter-edit-subtitle-new' => 'フィルターを作成中',
 	'abusefilter-edit-oldwarning' => '<strong>あなたはこのフィルターの古い版を編集しています。引用されている統計は最新版のフィルターのものです。あなたの変更を保存すると、あなたが編集している版以降の変更をすべて上書きしてしまいます。</strong> &bull; [[Special:AbuseFilter/history/$2|このフィルターの履歴に戻る]]',
 	'abusefilter-edit-status-label' => '統計:',
 	'abusefilter-edit-status' => '最近の$1{{PLURAL:$1|操作}}のうち、このフィルターは$2件($3%)に対して発動しました。平均して、実行時間は$4ミリ秒で$5件の条件制限を消費しました。',
@@ -16402,6 +16408,7 @@ $messages['ja'] = array(
 	'abusefilter-edit-id' => 'フィルターID:',
 	'abusefilter-edit-description' => "説明:
 :''(ログで公開)''",
+	'abusefilter-edit-group' => 'フィルターグループ:',
 	'abusefilter-edit-flags' => 'フラグ:',
 	'abusefilter-edit-enabled' => 'このフィルターを有効にする',
 	'abusefilter-edit-deleted' => '削除する',
@@ -16500,6 +16507,7 @@ $messages['ja'] = array(
 	'abusefilter-edit-builder-funcs-substr' => '部分文字列  (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => '文字列中での部分文字列の位置 (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => '部分文字列を文字列で置換 (str_replace)',
+	'abusefilter-edit-builder-funcs-rescape' => '文字列を正規表現のリテラルとしてエスケープ (rescape)',
 	'abusefilter-edit-builder-funcs-set_var' => '変数を設定 (set_var)',
 	'abusefilter-edit-builder-group-vars' => '変数',
 	'abusefilter-edit-builder-vars-accountname' => 'アカウント名 (アカウント作成時のみ)',
@@ -16654,6 +16662,7 @@ $3 個の{{PLURAL:$3|引数}}があるべきですが $4 個しかありませ�
 取り込み元のウィキで、編集画面の「{{int:abusefilter-edit-tools}}」下にある「{{int:abusefilter-edit-export}}」をクリックします。
 そこで現れるテキストボックスの内容をコピーし、それをこのテキストボックスに貼り付けて、「{{int:abusefilter-import-submit}}」をクリックします。',
 	'abusefilter-import-submit' => '取り込む',
+	'abusefilter-group-default' => '既定',
 );
 
 /** Georgian (ქართული)
