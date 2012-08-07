@@ -199,6 +199,12 @@ $specialPageAliases['id'] = array(
 	'AbuseFilter' => array( 'Filter_penyalahgunaan', 'FilterPenyalahgunaan' ),
 );
 
+/** Icelandic (íslenska) */
+$specialPageAliases['is'] = array(
+	'AbuseLog' => array( 'Misnotkunarskrá' ),
+	'AbuseFilter' => array( 'Misnotkunarsía' ),
+);
+
 /** Italian (italiano) */
 $specialPageAliases['it'] = array(
 	'AbuseLog' => array( 'RegistroAbusi' ),
