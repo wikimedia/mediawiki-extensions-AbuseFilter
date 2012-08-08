@@ -26052,6 +26052,7 @@ $messages['ps'] = array(
  * @author MF-Warburg
  * @author Malafaya
  * @author Pedroca cerebral
+ * @author SandroHc
  * @author Waldir
  */
 $messages['pt'] = array(
@@ -26121,6 +26122,7 @@ Descrição do filtro: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'filtro global $1',
 	'abusefilter-log-detailedentry-local' => 'filtro $1',
 	'abusefilter-log-detailslink' => 'detalhes',
+	'abusefilter-log-diff' => 'diferença',
 	'abusefilter-log-hidelink' => 'ajustar a visibilidade',
 	'abusefilter-log-details-legend' => 'Detalhes da entrada de registo $1',
 	'abusefilter-log-details-var' => 'Variável',
@@ -26133,7 +26135,8 @@ Descrição do filtro: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'registo de abusos',
 	'abusefilter-log-linkoncontribs-text' => 'Registo de Abusos para este utilizador',
 	'abusefilter-log-hidden' => '(entrada ocultada)',
-	'abusefilter-log-hide' => 'ocultar ou revelar',
+	'abusefilter-log-hidden-implicit' => '(oculto porque a revisão foi eliminada)',
+	'abusefilter-log-cannot-see-details' => 'Não tens permissão para ver os detalhes desta entrada.',
 	'abusefilter-log-details-hidden' => 'Não pode ver os detalhes desta entrada porque estes estão ocultados ao público.',
 	'abusefilter-log-hide-legend' => 'Ocultar entrada',
 	'abusefilter-log-hide-id' => 'ID da entrada:',
@@ -26143,6 +26146,7 @@ Descrição do filtro: $7 ($8)',
 entradas do registo de abusos.',
 	'abusefilter-logentry-suppress' => 'ocultou [[$1]]',
 	'abusefilter-logentry-unsuppress' => 'revelou [[$1]]',
+	'logentry-abusefilter-hit' => '$1 acionou o filtro $4, ao executar a ação "$5" no artigo $3. Ações realizadas: $6 ($7)',
 	'abusefilter-management' => 'Gestão do filtro de abusos',
 	'abusefilter-list' => 'Todos os filtros',
 	'abusefilter-list-id' => 'ID do filtro',
@@ -26155,6 +26159,7 @@ entradas do registo de abusos.',
 	'abusefilter-list-details' => 'Detalhes',
 	'abusefilter-list-limit' => 'Número por página:',
 	'abusefilter-list-lastmodified' => 'Última modificação',
+	'abusefilter-list-group' => 'Grupo de filtros',
 	'abusefilter-hidden' => 'Privado',
 	'abusefilter-unhidden' => 'Público',
 	'abusefilter-enabled' => 'Activado',
@@ -26183,6 +26188,7 @@ entradas do registo de abusos.',
 	'abusefilter-reautoconfirm-done' => 'O estado autoconfirmado da conta foi restaurado',
 	'abusefilter-status' => '{{PLURAL:$1|Da última 1 acção|Das últimas $1 acções}}, $2 ($3%) {{PLURAL:$2|atingiu|atingiram}} a condição limite de $4, e $5 ($6%) {{PLURAL:$5|correspondeu|corresponderam}} a um dos filtros neste momento activos.',
 	'abusefilter-edit-subtitle' => 'A editar filtro $1',
+	'abusefilter-edit-subtitle-new' => 'Criando filtro',
 	'abusefilter-edit-oldwarning' => '<strong>Está a editar uma versão antiga deste filtro.
 As estatísticas transcritas são relativas à versão mais recente do filtro.
 Se gravar as suas modificações, irá sobrepor todas as modificações desde a revisão que está a editar.</strong> &bull;
@@ -26197,6 +26203,7 @@ O filtro atingiu o limite de correspondência com mais de $1% de ações.",
 	'abusefilter-edit-id' => 'ID do filtro:',
 	'abusefilter-edit-description' => "Descrição:
 :''(publicamente visível)''",
+	'abusefilter-edit-group' => 'Grupo de filtros:',
 	'abusefilter-edit-flags' => 'Sinalizações:',
 	'abusefilter-edit-enabled' => 'Activar este filtro',
 	'abusefilter-edit-deleted' => 'Marcar como eliminado',
@@ -26455,6 +26462,7 @@ Para detalhes completos, ver [[Special:AbuseFilter/history|a lista]] de alteraç
 Na wiki de origem, clique "{{int:abusefilter-edit-export}}", sob "{{int:abusefilter-edit-tools}}" na interface de edição.
 Copie da caixa de texto que aparece, coloque nesta caixa de texto e depois clique "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Importar dados',
+	'abusefilter-group-default' => 'Padrão',
 );
 
 /** Brazilian Portuguese (português do Brasil)
