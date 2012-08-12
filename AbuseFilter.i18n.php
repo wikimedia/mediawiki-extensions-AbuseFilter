@@ -1738,6 +1738,7 @@ $messages['ar'] = array(
  * @author Michaelovic
  */
 $messages['arc'] = array(
+	'abuselog' => 'ܡܟܬܒܘܬܐ ܕܚܘܒܠܐ',
 	'abusefilter-log-search-user' => 'ܡܦܠܚܢܐ:',
 	'abusefilter-log-search-filter' => 'ܗܝܝܘܬܐ ܕܡܨܦܝܢܝܬܐ:',
 	'abusefilter-log-search-title' => 'ܟܘܢܝܐ:',
@@ -4977,6 +4978,7 @@ Kopirajte iz tekstualne kutije koja se pojavi i zalijepite u ovu kutiju, zatim k
 
 /** Catalan (català)
  * @author Aleator
+ * @author Arnaugir
  * @author El libre
  * @author Gemmaa
  * @author Loupeter
@@ -5028,6 +5030,7 @@ Descripció de la norma:$1",
 	'right-abusefilter-modify-restricted' => "Modificar els filtres d'abús amb accions restringides",
 	'right-abusefilter-revert' => "Revertir totes les modificacions efectuades per un filtre d'abús concret",
 	'right-abusefilter-view-private' => "Veure filtres d'abús marcats com a privats",
+	'right-abusefilter-log-private' => "Mostra les entrades del registre pels filtres d'abús marcats com a privats",
 	'right-abusefilter-hide-log' => "Ocultar entrades al registre d'abusos",
 	'right-abusefilter-hidden-log' => "Veure entrades ocultes al registre d'abusos",
 	'action-abusefilter-modify' => "modifica els filtres d'abús",
@@ -5054,6 +5057,7 @@ Descripció del filtre: $7 ($8)",
 	'abusefilter-log-detailedentry-global' => 'Filtre global $1',
 	'abusefilter-log-detailedentry-local' => 'filtre $1',
 	'abusefilter-log-detailslink' => 'detalls',
+	'abusefilter-log-diff' => 'dif',
 	'abusefilter-log-hidelink' => 'ajustar la visibilitat',
 	'abusefilter-log-details-legend' => "Detalls de l'entrada de registre $1",
 	'abusefilter-log-details-var' => 'Variable',
@@ -5066,6 +5070,8 @@ Descripció del filtre: $7 ($8)",
 	'abusefilter-log-linkoncontribs' => "registre d'abusos",
 	'abusefilter-log-linkoncontribs-text' => "Registre d'abusos d'aquest usuari",
 	'abusefilter-log-hidden' => '(entrada amagada)',
+	'abusefilter-log-hidden-implicit' => '(ocult perquè la revisió ha estat esborrada)',
+	'abusefilter-log-cannot-see-details' => "No tens permisos per veure els detalls d'aquesta entrada.",
 	'abusefilter-log-details-hidden' => "No podeu veure els detalls d'aquesta entrada perquè està restringit l'accés públic.",
 	'abusefilter-log-hide-legend' => 'Amaga entrada de registre',
 	'abusefilter-log-hide-id' => "ID de l'entrada de registre:",
@@ -5086,6 +5092,7 @@ Descripció del filtre: $7 ($8)",
 	'abusefilter-list-details' => 'Detalls',
 	'abusefilter-list-limit' => 'Nombre per pàgina:',
 	'abusefilter-list-lastmodified' => 'Última modificació',
+	'abusefilter-list-group' => 'Grup del filtre',
 	'abusefilter-hidden' => 'Privat',
 	'abusefilter-unhidden' => 'Públic',
 	'abusefilter-enabled' => 'Habilitat',
@@ -5114,6 +5121,7 @@ Descripció del filtre: $7 ($8)",
 	'abusefilter-reautoconfirm-done' => "L'estat de compte autoconfirmat ha estat restaurat",
 	'abusefilter-status' => 'De {{PLURAL:$1|la darrera acció|les darreres $1 accions}}, $2 ($3%) ha{{PLURAL:$2||n}} sobrepassat el límit de $4 condicions autoritzades, i $5 ($6%) ha{{PLURAL:$5||n}} disparat algun dels filtres actualment activats.',
 	'abusefilter-edit-subtitle' => 'Editant el filtre $1',
+	'abusefilter-edit-subtitle-new' => 'Creació de filtre',
 	'abusefilter-edit-oldwarning' => "<strong>Esteu editant una versió vella d'aquest filtre.
 Les estadístiques indicades són de la versió més recent del filtre.
 Si deseu els vostres canvis, revertireu tots els canvis posteriors a aquesta versió.</strong> &bull;
@@ -5128,6 +5136,7 @@ Ha sobrepassat el límit de deteccions del $1% de les accions.",
 	'abusefilter-edit-id' => 'Núm. del filtre:',
 	'abusefilter-edit-description' => "Descripció:
 :''(visible públicament)''",
+	'abusefilter-edit-group' => 'Grup del filtre:',
 	'abusefilter-edit-flags' => 'Marques:',
 	'abusefilter-edit-enabled' => 'Habilita aquest filtre',
 	'abusefilter-edit-deleted' => 'Marca com a eliminat',
@@ -5386,6 +5395,7 @@ Per a més detalls, vegeu [[Special:AbuseFilter/history|la llista]] de canvis re
 Al wiki de font, feu clic a "{{int:abusefilter-Edita-exportació}}" sota "{{int:abusefilter-eines-subtítol}}" en la interfície d\'edició.
 Copiï des de quadre de text que apareix i enganxar-lo a aquest quadre de text, a continuació, feu clic a "{{int:abusefilter-importar-presentar}}".',
 	'abusefilter-import-submit' => 'Importa dades',
+	'abusefilter-group-default' => 'Per defecte',
 );
 
 /** Chechen (нохчийн)
@@ -16426,7 +16436,7 @@ $messages['ja'] = array(
 	'right-abusefilter-private' => '不正利用記録内の非公開データを閲覧',
 	'right-abusefilter-modify-restricted' => '制限された操作を含む不正利用フィルターを変更',
 	'right-abusefilter-revert' => '指定した不正利用フィルターによるすべての変更を差し戻す',
-	'right-abusefilter-view-private' => '非公開のフィルターを閲覧',
+	'right-abusefilter-view-private' => '非公開の不正利用フィルターを閲覧',
 	'right-abusefilter-log-private' => '非公開の不正利用フィルター記録を閲覧',
 	'right-abusefilter-hide-log' => '不正利用記録の項目を隠す',
 	'right-abusefilter-hidden-log' => '隠された不正利用記録を閲覧',
@@ -26067,6 +26077,7 @@ $messages['ps'] = array(
 او ورانکاري او په بيا بيا د نارغوونکې سمونې په ترسره کولو سره به ستاسې په ګڼون او يا هم IP پتې باندې بنديزونه ولګېږي.
 که چېرته تاسې په دې ډاډه ياست چې همدا يو رغوونکی سمون دی، نو تاسې کولای شی چې پر «سپارل» وټوکۍ ترڅو ستاسې د کړنې پخلی وشي.
 د ناوړو کړنو د کړنلارې يوه لنډه څرګندونه چې ستاسې د کړنې همډوله وه، په دې توګه ده: $1",
+	'abusefilter-blocker' => 'د ورانکارۍ چاڼګر',
 	'abusefilter-log-search-user' => 'کارن:',
 	'abusefilter-log-search-filter' => 'د چاڼګر پېژند:',
 	'abusefilter-log-search-title' => 'سرليک:',
@@ -26087,6 +26098,7 @@ $messages['ps'] = array(
 	'abusefilter-list-edit' => 'سمون',
 	'abusefilter-list-details' => 'ځانګړنې',
 	'abusefilter-list-limit' => 'په هر مخ کې شمېر:',
+	'abusefilter-list-group' => 'چاڼګر ډله',
 	'abusefilter-hidden' => 'شخصي',
 	'abusefilter-unhidden' => 'ټولګړی',
 	'abusefilter-enabled' => 'چارن',
@@ -28274,9 +28286,9 @@ $messages['rue'] = array(
 	'abusefilter-desc' => 'Придавать автоматічны геврістікы до едітовань',
 	'abusefilter' => 'Конфіґурація філтрів знеужываня',
 	'abuselog' => 'Запис знеужываня',
-	'abusefilter-intro' => 'Вітайте у інтерфейсі про керованя філтрів знеужываня.
-Філтер знеужываня є автоматічный софтверовый механізм, средством котрого ся вшыткы операції тестують за помочі автоматічных геврістік.
-В тім інтерфейсі можете відїти список дефінованых філтрів і мінити їх.',
+	'abusefilter-intro' => 'Вітайте у інтерфейсї керованя філтрів зловжываня.
+Філтер зловжываня є автоматічный софтверовый механізм, через котрого ся вшыткы операції тестують за помочі автоматічных еврістік.
+В тім інтерфейсї можете видїти список дефінованых філтрів і мінити їх.',
 	'abusefilter-mustbeeditor' => 'З безпечностных причін, лем хоснователї з пвавами зміны філтрів можуть хосновати тот інтерфейс.',
 	'abusefilter-warning' => "'''Увага''': Тота дїя была автоматічно ідентіфікована як шкодлива.
 Неконштруктівны едітованя будуть швыдко ревертованы, в&nbsp;повторяный або заважных припадах може быти ваше конто хоснователя ці IP-адреса заблокованы.
@@ -29538,6 +29550,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-diff-invalid' => 'අයැදූ අනුවාදයන් පමුණුවීමට නොහැක',
 	'abusefilter-diff-backhistory' => 'පෙරහන් ඉතිහාසය වෙත නැවතත්',
 	'abusefilter-import-submit' => 'දත්ත ආයාත කරන්න',
+	'abusefilter-group-default' => 'සාමාන්‍ය',
 );
 
 /** Slovak (slovenčina)
@@ -32125,6 +32138,7 @@ Krůtki uopis zńyłużyćo, ke keremu bůła przipasowano twojo akcyjo: $1',
  * @author Shanmugamp7
  * @author TRYPPN
  * @author செல்வா
+ * @author மதனாஹரன்
  */
 $messages['ta'] = array(
 	'abusefilter-desc' => 'தொகுப்புகள் தானியங்கியாய் முறைவரிசைப்படுத்துதலைச் செயற்படுத்தும்',
@@ -32231,6 +32245,7 @@ Filter description: $7 ($8)',
 	'abusefilter-edit-throttle-count' => 'அனுமதிக்கப்பட வேண்டிய செயல்களின் எண்ணிக்கை:',
 	'abusefilter-edit-throttle-period' => 'கால நேரம்:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|வினாடி|வினாடிகள்}}',
+	'abusefilter-edit-warn-message' => 'எச்சரிக்கைக்காகப் பயன்படுத்துவதற்கான முறைமைச் செய்தி:',
 	'abusefilter-edit-warn-other' => 'மற்ற செய்தி',
 	'abusefilter-edit-warn-actions' => 'செயல்கள்:',
 	'abusefilter-edit-warn-preview' => 'தேர்வு செய்த செய்தியின் முன்தோற்றம் காட்டு',
@@ -32346,6 +32361,7 @@ Filter description: $7 ($8)',
 	'abusefilter-test-period-end' => 'இதற்கு முன்புச் செய்யப்பட்ட மாற்றங்கள்:',
 	'abusefilter-test-page' => 'இப்பக்கத்திற்குச் செய்யப்பட்ட மாற்றங்கள்:',
 	'abusefilter-changeslist-examine' => 'ஆய்வு செய்',
+	'abusefilter-examine' => 'தனியொரு மாற்றங்களை ஆராயவும்',
 	'abusefilter-examine-legend' => 'மாற்றங்களைத் தேர்ந்தெடுக்கவும்',
 	'abusefilter-examine-user' => 'பயனர்:',
 	'abusefilter-examine-title' => 'பக்கத்தின் தலைப்பு:',
@@ -36555,6 +36571,7 @@ $messages['zh-hans'] = array(
 	'right-abusefilter-modify-restricted' => '受限修改防滥用过滤器',
 	'right-abusefilter-revert' => '撤销指定防滥用过滤器作出的所有更改',
 	'right-abusefilter-view-private' => '查看被标记为隐藏的过滤器',
+	'right-abusefilter-log-private' => '查看标记为不公开的过滤器的过滤日志',
 	'right-abusefilter-hide-log' => '将条目在滥用日志中隐藏',
 	'right-abusefilter-hidden-log' => '查看隐藏的滥用日志条目',
 	'action-abusefilter-modify' => '修改防滥用过滤器',
@@ -36600,6 +36617,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-log-hide-forbidden' => '你没有权限去隐藏此滥用记录条目',
 	'abusefilter-logentry-suppress' => ' 隐藏 "[[$1]]"',
 	'abusefilter-logentry-unsuppress' => '取消隐藏 "[[$1]]"',
+	'logentry-abusefilter-hit' => '$1在$3上进行了“$5”操作，触发了$4。采取的动作：$6（$7）',
 	'abusefilter-management' => '滥用过滤器管理',
 	'abusefilter-list' => '所有过滤器',
 	'abusefilter-list-id' => '过滤器ID',
@@ -36652,6 +36670,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-id' => '过滤器ID：',
 	'abusefilter-edit-description' => "描述：
 :''（公开可见）''",
+	'abusefilter-edit-group' => '过滤器组：',
 	'abusefilter-edit-flags' => '标记：',
 	'abusefilter-edit-enabled' => '启用本过滤器',
 	'abusefilter-edit-deleted' => '标记为已删除',
@@ -36749,6 +36768,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-builder-funcs-substr' => '子字符串（substr）',
 	'abusefilter-edit-builder-funcs-strpos' => '子字符串在字符串中的位置（strpos）',
 	'abusefilter-edit-builder-funcs-str_replace' => '在字符串中替换子字符串（str_replace）',
+	'abusefilter-edit-builder-funcs-rescape' => '转义字符串以在正则表达式中使用 (rescape)',
 	'abusefilter-edit-builder-funcs-set_var' => '设置变量（set_var）',
 	'abusefilter-edit-builder-group-vars' => '变量',
 	'abusefilter-edit-builder-vars-accountname' => '帐户（创建时）的名称',
