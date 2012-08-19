@@ -906,6 +906,13 @@ $messages['tru'] = array(
 	'abusefilter-log-search-submit' => 'Krax',
 );
 
+/** Achinese (Acèh)
+ * @author Si Gam Acèh
+ */
+$messages['ace'] = array(
+	'abusefilter-log-search-submit' => 'Mita',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  * @author පසිඳු කාවින්ද
