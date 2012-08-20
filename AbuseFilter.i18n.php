@@ -6601,7 +6601,7 @@ Markierungen sollten kurz sein und sie sollten keine Sonderzeichen beinhalten.',
 	'abusefilter-edit-builder-vars-oldsize' => 'Alte Seitengröße',
 	'abusefilter-edit-builder-vars-removedlines' => 'Durch die Bearbeitung entfernte Zeilen',
 	'abusefilter-edit-builder-vars-summary' => 'Zusammenfassung',
-	'abusefilter-edit-builder-vars-article-id' => 'Seiten-ID',
+	'abusefilter-edit-builder-vars-article-id' => 'Seitenkennnummer',
 	'abusefilter-edit-builder-vars-article-ns' => 'Namensraum der Seite',
 	'abusefilter-edit-builder-vars-article-text' => 'Titel der Seite (ohne Namensraum)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Voller Seitenname',
@@ -16729,7 +16729,7 @@ $messages['ja'] = array(
 	'abusefilter-edit-builder-vars-oldsize' => '古いページのサイズ',
 	'abusefilter-edit-builder-vars-removedlines' => '編集で削除された行',
 	'abusefilter-edit-builder-vars-summary' => '編集の要約や理由',
-	'abusefilter-edit-builder-vars-article-id' => 'ページID',
+	'abusefilter-edit-builder-vars-article-id' => 'ページ ID',
 	'abusefilter-edit-builder-vars-article-ns' => 'ページの名前空間',
 	'abusefilter-edit-builder-vars-article-text' => 'ページ名 (名前空間除く)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => '完全なページ名',
@@ -34368,7 +34368,7 @@ Para sa buong mga detalye, tingnan [[Special:AbuseFilter/history|ang talaan]] ng
 	'abusefilter-diff-title' => 'Mga pagkakaiba sa pagitan ng mga bersyon',
 	'abusefilter-diff-item' => 'Bagay',
 	'abusefilter-diff-version' => 'Bersyong mula sa $1 ni $2',
-	'abusefilter-diff-info' => 'Payak na kabatiran',
+	'abusefilter-diff-info' => 'Saligang kabatiran',
 	'abusefilter-diff-pattern' => 'Mga kalagayan ng pansala',
 	'abusefilter-diff-invalid' => 'Hindi nagawang makuha ang hiniling na mga bersyon',
 	'abusefilter-diff-backhistory' => 'Magbalik sa kasaysayan ng pansala',
@@ -36404,7 +36404,7 @@ Thời gian chạy trung bình là $4ms, và sử dụng $5 {{PLURAL:$5||}} đi�
 	'abusefilter-edit-action-tag' => 'Đánh dấu sửa đổi này để xem xét về sau.',
 	'abusefilter-edit-throttle-count' => 'Số tác vụ cho phép:',
 	'abusefilter-edit-throttle-period' => 'Thời gian:',
-	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|giây|giây}}',
+	'abusefilter-edit-throttle-seconds' => '$1 giây',
 	'abusefilter-edit-throttle-groups' => "Chặn nhóm theo:
 :''(mỗi nhóm 1 dòng, kết hợp với dấu phẩy)''",
 	'abusefilter-edit-warn-message' => 'Thông báo hệ thống dùng để cảnh báo:',
@@ -37798,6 +37798,7 @@ $messages['zh-hans'] = array(
  * @author Mark85296341
  * @author Oapbtommy
  * @author Pbdragonwang
+ * @author Simon Shek
  * @author Skjackey tse
  * @author Waihorace
  * @author Wong128hk
@@ -38193,7 +38194,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-diff-title' => '修訂版本間差異',
 	'abusefilter-diff-item' => '項目',
 	'abusefilter-diff-version' => '在$1由$2所做的修訂版本',
-	'abusefilter-diff-info' => '基本訊息',
+	'abusefilter-diff-info' => '基本資料',
 	'abusefilter-diff-pattern' => '過濾器狀態',
 	'abusefilter-diff-invalid' => '無法取得請求的版本',
 	'abusefilter-diff-backhistory' => '返回過濾器歷史頁面',
