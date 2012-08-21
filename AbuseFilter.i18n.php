@@ -7070,7 +7070,7 @@ gani etiketi kılm bıbi u tede karakterê xususi çinibi.',
 	'abusefilter-edit-builder-vars-oldsize' => 'Ebatê pel ê kihanî',
 	'abusefilter-edit-builder-vars-removedlines' => 'Dizeyan ke nuşte de wedarne',
 	'abusefilter-edit-builder-vars-summary' => 'Qissayê vurnayîşî/sebeb',
-	'abusefilter-edit-builder-vars-article-id' => 'IDyê ripel',
+	'abusefilter-edit-builder-vars-article-id' => 'Nımrey pela',
 	'abusefilter-edit-builder-vars-article-ns' => 'Cayê nameyî ripel',
 	'abusefilter-edit-builder-vars-article-text' => 'Sernameyê ripelî (bê cayênameyî)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Senameyê ripel ê temamî',
@@ -22466,6 +22466,7 @@ $messages['nah'] = array(
 );
 
 /** Norwegian Bokmål (‪norsk (bokmål)‬)
+ * @author Danmichaelo
  * @author Event
  * @author Guaca
  * @author Harald Khan
@@ -22508,6 +22509,7 @@ En kort beskrivelse av misbruksregelen handlingen din brøt er: $1',
 	'right-abusefilter-modify-restricted' => 'Endre filtre med begrensede handlinger',
 	'right-abusefilter-revert' => 'Tilbakestill alle endringer gjort av et gitt misbruksfilter',
 	'right-abusefilter-view-private' => 'Vis misbruksfiltre merket privat',
+	'right-abusefilter-log-private' => 'Vis loggposter fra misbruksfilteret som har blitt markert som private',
 	'right-abusefilter-hide-log' => 'Skjul oppføringer i misbruksloggen',
 	'right-abusefilter-hidden-log' => 'Vis skjulte misbruksloggoppføringer',
 	'action-abusefilter-modify' => 'endre misbruksfilterene',
@@ -22546,6 +22548,7 @@ Filterbeskrivelse: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'misbrukslogg',
 	'abusefilter-log-linkoncontribs-text' => 'Misbrukslogg for denne brukeren',
 	'abusefilter-log-hidden' => '(oppføring skjult)',
+	'abusefilter-log-hidden-implicit' => '(skjult fordi revisjonen har blitt slettet)',
 	'abusefilter-log-cannot-see-details' => 'Du har ikke tillatelse til å se detaljene i dette oppslaget.',
 	'abusefilter-log-details-hidden' => 'Du kan ikke se detaljene for denne oppføringen fordi den er skjult fra offentlig visning.',
 	'abusefilter-log-hide-legend' => 'Skjul loggoppføring',
@@ -22568,6 +22571,7 @@ misbruksloggoppføringer.',
 	'abusefilter-list-details' => 'Detaljer',
 	'abusefilter-list-limit' => 'Antall per side:',
 	'abusefilter-list-lastmodified' => 'Sist endret',
+	'abusefilter-list-group' => 'Filtergruppe',
 	'abusefilter-hidden' => 'Privat',
 	'abusefilter-unhidden' => 'Offentlig',
 	'abusefilter-enabled' => 'Slått på',
@@ -22596,6 +22600,7 @@ misbruksloggoppføringer.',
 	'abusefilter-reautoconfirm-done' => 'Kontoens automatisk godkjent-status har blitt gitt tilbake',
 	'abusefilter-status' => 'Av {{PLURAL:$1|den siste handlingen|de siste $1 handlingene}} har $2 ($3 %) nådd grenseverdien $4. $5 ($6 %) passet med ett av de aktive filterne.',
 	'abusefilter-edit-subtitle' => 'Redigerer filteret $1',
+	'abusefilter-edit-subtitle-new' => 'Oppretter filter',
 	'abusefilter-edit-oldwarning' => '<strong>Du redigerer på en gammel versjon av dette filteret. Statistikken oppgitt er for siste versjon av filteret. Hvis du lagrer dine endringer, vil du overskrive alle endringer siden den revisjonen du redigerer</strong> &bull; [[Special:AbuseFilter/history/$2|Gå tilbake til filterets historikk]]',
 	'abusefilter-edit-status-label' => 'Statistikk:',
 	'abusefilter-edit-status' => 'Av {{PLURAL:$|den siste handlingen|de siste $1 handlingene}} har dette filteret passet med $2 ($3%).
@@ -22605,6 +22610,7 @@ Kjøretiden er i gjennomsnitt på $4ms, og det bruker {{PLURAL:$5|ett vilkår|$5
 	'abusefilter-edit-save' => 'Lagre filter',
 	'abusefilter-edit-id' => 'Filter-ID:',
 	'abusefilter-edit-description' => ":''(vises offentlig)''",
+	'abusefilter-edit-group' => 'Filtergruppe:',
 	'abusefilter-edit-flags' => 'Flagg:',
 	'abusefilter-edit-enabled' => 'Slå på dette filteret',
 	'abusefilter-edit-deleted' => 'Merk som slettet',
@@ -22860,6 +22866,7 @@ For fullstendige detaljer, se [[Special:AbuseFilter/history|listen]] over de sis
 I kildewikien klikker du på «{{int:abusefilter-edit-export}}» under «{{int:abusefilter-edit-tools}}» i redigeringsgrensesnittet.
 Kopier fra tekstruten som kommer frem og lim inn i denne tekstruten. Klikk så på «{{int:abusefilter-import-submit}}».',
 	'abusefilter-import-submit' => 'Importer data',
+	'abusefilter-group-default' => 'Standard',
 );
 
 /** Low German (Plattdüütsch)
