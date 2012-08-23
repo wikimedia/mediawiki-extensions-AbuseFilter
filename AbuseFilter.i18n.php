@@ -13223,6 +13223,7 @@ Opis filtra: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'globalni filtar $1',
 	'abusefilter-log-detailedentry-local' => 'filtar $1',
 	'abusefilter-log-detailslink' => 'detalji',
+	'abusefilter-log-diff' => 'razl',
 	'abusefilter-log-hidelink' => 'prilagodi vidljivost',
 	'abusefilter-log-details-legend' => 'Detalji zapisa $1',
 	'abusefilter-log-details-var' => 'Varijabla',
@@ -13554,6 +13555,7 @@ Za detaljnije informacije, vidi [[Special:AbuseFilter/history|popis]] nedavnih i
 Na izvornoj wiki, kliknite na poveznicu "{{int:abusefilter-edit-export}}" pod "{{int:abusefilter-edit-tools}}" na sučelju za uređivanje.
 Kopirajte tekst iz okvira koji će se pojaviti, i zalijepite ga u ovaj okvir, a zatim kliknite "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Uvoz podataka',
+	'abusefilter-group-default' => 'Zadano',
 );
 
 /** Upper Sorbian (hornjoserbsce)
