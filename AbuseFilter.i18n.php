@@ -12198,6 +12198,7 @@ Kopier de Kode, wu det erschynt, un fieg en do yy, derno druck „{{int:abusefil
 
 /** Gujarati (ગુજરાતી)
  * @author Dineshjk
+ * @author Dsvyas
  * @author KartikMistry
  * @author Vasu thakker
  */
@@ -12209,7 +12210,7 @@ $messages['gu'] = array(
 	'abusefilter-log-detailedentry-global' => 'વૈશ્વિક ગાળક $1',
 	'abusefilter-log-detailedentry-local' => 'ગાળક $1',
 	'abusefilter-log-detailslink' => 'વિગતો',
-	'abusefilter-log-diff' => 'તફાવત',
+	'abusefilter-log-diff' => 'ભેદ',
 	'abusefilter-log-hidelink' => 'દ્રશ્યતા ગોઠવો',
 	'abusefilter-log-details-var' => 'ચલ',
 	'abusefilter-log-details-val' => 'કિંમત',
@@ -16521,11 +16522,11 @@ $messages['ja'] = array(
 	'action-abusefilter-modify' => '不正利用フィルターの変更',
 	'action-abusefilter-view' => '不正利用フィルターの閲覧',
 	'action-abusefilter-log' => '不正利用記録の閲覧',
-	'action-abusefilter-log-detail' => '不正利用記録の詳細項目を閲覧',
+	'action-abusefilter-log-detail' => '不正利用記録の詳細項目の閲覧',
 	'action-abusefilter-private' => '不正利用記録内の非公開データの閲覧',
 	'action-abusefilter-modify-restricted' => '制限された操作を含む不正利用フィルターの変更',
 	'action-abusefilter-revert' => '指定した不正利用フィルターによるすべての変更の差し戻し',
-	'action-abusefilter-view-private' => '非公開の不正利用フィルターを閲覧',
+	'action-abusefilter-view-private' => '非公開の不正利用フィルターの閲覧',
 	'abusefilter-log' => '不正利用フィルター記録',
 	'abusefilter-log-summary' => 'この記録はフィルターが発動した全操作の一覧を表示しています。',
 	'abusefilter-log-search' => '不正利用記録を検索',
