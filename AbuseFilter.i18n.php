@@ -8544,7 +8544,7 @@ Si la acción ha sido errónea, contacte con un administrador.
 Una breve explicación acerca de la regla del filtro antiabusos que ha disparado es: $1',
 	'abusefilter-degrouped' => 'Esta acción ha sido automáticamente identificada como dañina.
 En consecuencia, ha sido deshabilitada, y, sospechando que su cuenta está comprometida, todos sus privilegios han sido revocados.
-Si cree que esta acción es un error, por favor, contacte con un burócrata con una explicación de dicha acción y sus derechos puedrán ser restaurados.
+Si cree que esta acción es un error, por favor, contacte con un burócrata con una explicación de dicha acción y sus derechos podrán ser restaurados.
 Una breve explicación acerca de la regla del filtro que usted ha disparado es: $1',
 	'abusefilter-autopromote-blocked' => 'Esta acción ha sido automáticamente identificada como dañina y por lo tanto ha sido deshabilitada. Además, como medida de seguridad, algunos permisos de usuario que se otorgan automáticamente a cuentas de usuario que contribuyen regularmente en el proyecto le han sido temporalmente revocados. Una breve explicación acerca de la regla del filtro antiabusos que usted ha disparado es: $1',
 	'abusefilter-blocker' => 'Filtro antiabusos',
