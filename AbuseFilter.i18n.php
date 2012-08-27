@@ -5459,17 +5459,48 @@ $messages['ce'] = array(
 	'abusefilter-examine-user' => 'Декъашхо:',
 );
 
-/** Sorani Kurdish (کوردی) */
+/** Sorani Kurdish (کوردی)
+ * @author Calak
+ */
 $messages['ckb'] = array(
+	'abusefilter-blocker' => 'فیلتەری کەڵکاوەژوو',
+	'abusefilter-accountreserved' => 'ئەم ناوە بەکارھێنەرییە بۆ کەڵک وەرگزتن لە فیلتەری کەڵکاوەژوودا گیراوەتەوە.',
+	'abusefilter-log' => 'لۆگی فیلتەری کەڵکاوەژوو',
 	'abusefilter-log-search-user' => 'بەکارهێنەر:',
 	'abusefilter-log-search-submit' => 'گەڕان',
 	'abusefilter-log-hide-reason' => 'هۆکار:',
+	'abusefilter-list-status' => 'ڕەوش',
+	'abusefilter-list-public' => 'تێبینیی گشتی',
+	'abusefilter-list-visibility' => 'دەرکەوتن',
+	'abusefilter-deleted' => 'سڕاوەتەوە',
+	'abusefilter-disabled' => 'ناچالاک',
+	'abusefilter-list-options-deleted-only' => 'تەنیا فیلتەرە سڕاوەکان نیشان بدە',
+	'abusefilter-list-options-deleted-hide' => 'فیلتەرە سڕاوەکان بشارەوە',
+	'abusefilter-list-options-deleted-show' => 'فیلتەرە سڕاوەکان لەخۆبگرەوە',
+	'abusefilter-list-options-disabled' => 'فیلتەرە ناچالاکەکان',
+	'abusefilter-list-options-hidedisabled' => 'فیلتەرە ناچالاکەکان بشارەوە',
+	'abusefilter-list-options-submit' => 'نوێکردنەوە',
 	'abusefilter-tools-reautoconfirm-user' => 'بەکارهێنەر:',
+	'abusefilter-edit-rules' => 'مەرجەکان',
 	'abusefilter-history-user' => 'بەکارهێنەر',
 	'abusefilter-history-select-user' => 'بەکارهێنەر:',
+	'abusefilter-action-tag' => 'تاگ',
+	'abusefilter-action-throttle' => 'سنووردارێتیی خێرایی',
+	'abusefilter-action-warn' => 'ھۆشدار',
+	'abusefilter-action-block' => 'بەربەستن',
+	'abusefilter-action-degroup' => 'لایبە لە گرووپەکان',
+	'abusefilter-action-rangeblock' => 'بەربەستنی چوارچێوەیەک',
+	'abusefilter-action-disallow' => 'بەرگرتن',
 	'abusefilter-revert-confirm' => 'پشتدار بکەرەوە',
+	'abusefilter-test-load' => 'باربکە',
+	'abusefilter-changeslist-examine' => 'تاقیکردنەوە',
 	'abusefilter-examine-user' => 'بەکارهێنەر:',
 	'abusefilter-examine-submit' => 'گەڕان',
+	'abusefilter-diff-title' => 'جیاوازیی نێوان پێداچوونەوەکان',
+	'abusefilter-diff-item' => 'بابەت',
+	'abusefilter-diff-info' => 'زانیاریی سەرەتایی',
+	'abusefilter-diff-pattern' => 'مەرجەکانی فیلتەر',
+	'abusefilter-diff-backhistory' => 'گەڕانەوە بۆ مێژووی فیلتەر',
 );
 
 /** Corsican (corsu) */
@@ -6411,6 +6442,7 @@ Beschreibung der Regel: $1',
 	'abusefilter-log-search-user' => 'Benutzer:',
 	'abusefilter-log-search-filter' => 'Filterkennung:',
 	'abusefilter-log-search-title' => 'Titel:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Suchen',
 	'abusefilter-log-entry' => '$1: $2 löste durch die Aktion „$3“ auf „$4“ einen Missbrauchsfilter aus.
 Filteraktion: „$5“;
@@ -6472,6 +6504,9 @@ Filterbeschreibung: $7 ($8)',
 	'abusefilter-list-options-deleted-only' => 'Nur gelöschte Filter anzeigen',
 	'abusefilter-list-options-deleted-hide' => 'Gelöschte Filter ausblenden',
 	'abusefilter-list-options-deleted-show' => 'Gelöschte Filter einbeziehen',
+	'abusefilter-list-options-scope' => 'Zeige Filter von:',
+	'abusefilter-list-options-scope-local' => 'Lokales Wiki',
+	'abusefilter-list-options-scope-global' => 'Globale Regeln',
 	'abusefilter-list-options-disabled' => 'Deaktivierte Filter:',
 	'abusefilter-list-options-hidedisabled' => 'Deaktivierte Filter ausblenden',
 	'abusefilter-list-options-submit' => 'Aktualisieren',
