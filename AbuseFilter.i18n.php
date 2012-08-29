@@ -5465,13 +5465,14 @@ $messages['ce'] = array(
 $messages['ckb'] = array(
 	'abusefilter-intro' => 'بەخێربێی بۆ پەڕەی بەڕیوەبەرایەتیی فیلتەری کەڵکاوەژوو.
 فیلتەری کەڵکاوەژوو ڕیوشوێنێکی نەرمامێرییە بۆ بەکاربردنی خۆگەڕی پێزانینەکان لە سەر ھەموو کردەوەکان.
-ئەم پەڕەیە پێرستی فیلتەرکان نیشان دەدات و دەھێڵیت گۆڕانکارییان تێدابکرێت.',
+ئەم پەڕەیە پێرستی فیلتەرکان نیشان دەدات و دەھێڵیت گۆڕانکارییان تێدا بکرێت.',
 	'abusefilter-blocker' => 'فیلتەری کەڵکاوەژوو',
 	'abusefilter-accountreserved' => 'ئەم ناوە بەکارھێنەرییە بۆ کەڵک وەرگزتن لە فیلتەری کەڵکاوەژوودا گیراوەتەوە.',
 	'abusefilter-log' => 'لۆگی فیلتەری کەڵکاوەژوو',
 	'abusefilter-log-summary' => 'ئەم لۆگە پێرستێک لە ھەموو کردەوەکانی فیلتەرەکان نیشان دەدات.',
 	'abusefilter-log-search' => 'گەڕانی لۆگی کەڵکاوەژوو',
 	'abusefilter-log-search-user' => 'بەکارهێنەر:',
+	'abusefilter-log-search-filter' => 'پێناسەی فیلتەر:',
 	'abusefilter-log-search-title' => 'ناونیشان:',
 	'abusefilter-log-search-submit' => 'گەڕان',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 $3ی چالاککرد، خەریکی کردەوەی «$4» لەسەر $5 بوو.
@@ -5479,6 +5480,7 @@ $messages['ckb'] = array(
 تێبینیی فیلتەر: $7 ($8)',
 	'abusefilter-log-detailslink' => 'وردەکارییەکان',
 	'abusefilter-log-diff' => 'جیاوازی',
+	'abusefilter-log-noactions' => 'ھیچ',
 	'abusefilter-log-linkoncontribs' => 'فیلتەری کەڵکاوەژوو',
 	'abusefilter-log-hide-reason' => 'هۆکار:',
 	'abusefilter-management' => 'بەڕێوەبەرایەتیی فیلتەری کەڵکاوەژوو',
@@ -5499,6 +5501,7 @@ $messages['ckb'] = array(
 	'abusefilter-hitcount' => '$1 جار',
 	'abusefilter-new' => 'فیلتەرێکی نوێ دروست بکە',
 	'abusefilter-list-options' => 'هەڵبژاردەکان',
+	'abusefilter-list-options-deleted' => 'فیلتەرە سڕاوەکان:',
 	'abusefilter-list-options-deleted-only' => 'تەنیا فیلتەرە سڕاوەکان نیشان بدە',
 	'abusefilter-list-options-deleted-hide' => 'فیلتەرە سڕاوەکان بشارەوە',
 	'abusefilter-list-options-deleted-show' => 'فیلتەرە سڕاوەکان لەخۆبگرەوە',
