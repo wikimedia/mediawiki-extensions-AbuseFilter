@@ -6956,6 +6956,7 @@ Yew deskripsiyonê hereketê tu zerarin: $1',
 	'abusefilter-log-search-user' => 'Karber:',
 	'abusefilter-log-search-filter' => 'IDyê Filitreyî:',
 	'abusefilter-log-search-title' => 'Sername:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Cı geyre',
 	'abusefilter-log-entry' => '$1: $2 filitreyê abuseyî kerd a, ser $4 de hereketê "$3"î kerd.
 Hereket: $5;
@@ -7006,7 +7007,7 @@ Deskripsiyonê filitreyî: $7 ($8)',
 	'abusefilter-hidden' => 'Xasî',
 	'abusefilter-unhidden' => 'Şar',
 	'abusefilter-enabled' => 'Kefılneyayo',
-	'abusefilter-deleted' => 'Besterneya',
+	'abusefilter-deleted' => 'Esteriya',
 	'abusefilter-disabled' => 'qefinayî bîya',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|cıgêno|cıgênê}}',
 	'abusefilter-new' => 'Yew filitreyê newî viraze',
@@ -7017,6 +7018,9 @@ Deskripsiyonê filitreyî: $7 ($8)',
 	'abusefilter-list-options-deleted-only' => 'Teyna filitreyê wedariyayî bimucne',
 	'abusefilter-list-options-deleted-hide' => 'Filitreyê wedariyayî binimne',
 	'abusefilter-list-options-deleted-show' => 'Filitreyê wedariyayî de biker',
+	'abusefilter-list-options-scope' => 'Avrêc ra bımocne:',
+	'abusefilter-list-options-scope-local' => 'Lokale Wiki',
+	'abusefilter-list-options-scope-global' => 'Global lox',
 	'abusefilter-list-options-disabled' => 'Filitreyê qefilnaye',
 	'abusefilter-list-options-hidedisabled' => 'Filitreyê qefilnaye binimne',
 	'abusefilter-list-options-submit' => 'Noroc resn',
@@ -9617,6 +9621,7 @@ $messages['eu'] = array(
  * @author Sahim
  * @author Wayiran
  * @author ZxxZxxZ
+ * @author جواد
  */
 $messages['fa'] = array(
 	'abusefilter-desc' => 'اکتشافات خودکاری را بر روی ویرایش‌های انجام می‌دهد.',
@@ -9660,6 +9665,7 @@ $messages['fa'] = array(
 	'right-abusefilter-modify-restricted' => 'ویرایش پالایه‌های خرابکاری دارای اقدامات محدودکننده',
 	'right-abusefilter-revert' => 'واگردانی تمام تغییرات توسط یک پالایهٔ خرابکاری',
 	'right-abusefilter-view-private' => 'مشاهدهٔ پالایه‌های خرابکاری علامت خورده به عنوان خصوصی',
+	'right-abusefilter-log-private' => 'نمایش ورودی‌های سیاهه‌های خرابکاری خصوصی',
 	'right-abusefilter-hide-log' => 'پنهان‌کردن موارد سیاههٔ خرابکاری',
 	'right-abusefilter-hidden-log' => 'مشاهدهٔ موارد پنهان سیاههٔ خرابکاری',
 	'action-abusefilter-modify' => 'ویرایش پالایه‌های خرابکاری',
@@ -9676,6 +9682,7 @@ $messages['fa'] = array(
 	'abusefilter-log-search-user' => 'کاربر:',
 	'abusefilter-log-search-filter' => 'شناسهٔ پالایه:',
 	'abusefilter-log-search-title' => 'عنوان:',
+	'abusefilter-log-search-wiki' => 'ویکی:',
 	'abusefilter-log-search-submit' => 'جستجو',
 	'abusefilter-log-entry' => '$1: $2 توسط پالایهٔ خرابکاری گرفته شد؛ مشغول اجرای «$3» بر روی $4 بود.
 عمل پالایه: $5؛
@@ -9709,6 +9716,7 @@ $messages['fa'] = array(
 	'abusefilter-log-hide-forbidden' => 'شما دسترسی لازم برای پنهان‌کردن موارد سیاههٔ خرابکاری را ندارید.',
 	'abusefilter-logentry-suppress' => '«[[$1]]» را پنهان کرد',
 	'abusefilter-logentry-unsuppress' => '«[[$1]]» را آشکار کرد',
+	'logentry-abusefilter-hit' => '$1 باعث  $4 ، انجام‌دادن عمل " $5 " در  $3 . اقدامات:  $6  ( $7 )',
 	'abusefilter-management' => 'مدیریت پالایهٔ خرابکاری',
 	'abusefilter-list' => 'تمام پالایه‌ها',
 	'abusefilter-list-id' => 'شناسهٔ پالایه',
@@ -9736,6 +9744,9 @@ $messages['fa'] = array(
 	'abusefilter-list-options-deleted-only' => 'فقط نمایش پالایه‌های حذف‌شده',
 	'abusefilter-list-options-deleted-hide' => 'نهفتن پالایه‌های حذف شده',
 	'abusefilter-list-options-deleted-show' => 'شامل‌شدن پالایه‌های حذف‌شده',
+	'abusefilter-list-options-scope' => 'نمایش فیلترها از:',
+	'abusefilter-list-options-scope-local' => 'ویکی محلی',
+	'abusefilter-list-options-scope-global' => 'قوانین سراسری',
 	'abusefilter-list-options-disabled' => 'پالایه‌های غیرفعال:',
 	'abusefilter-list-options-hidedisabled' => 'نهفتن پالایه‌های غیرفعال',
 	'abusefilter-list-options-submit' => 'به‌روزرسانی',
@@ -9864,6 +9875,7 @@ $messages['fa'] = array(
 	'abusefilter-edit-builder-funcs-substr' => 'زیررشته (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'موقعیت زیررشته در رشته (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'جایگزینی زیررشته با رشته (str_replace)',
+	'abusefilter-edit-builder-funcs-rescape' => 'متن انصراف به صورت تحت‌الفظی (انصراف)',
 	'abusefilter-edit-builder-funcs-set_var' => 'نشاندن متغیر (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'متغیرها',
 	'abusefilter-edit-builder-vars-accountname' => 'نام کاربری (در زمان ایجاد حساب کاربری)',
@@ -17394,6 +17406,7 @@ $messages['ka'] = array(
 	'abusefilter-log-search-user' => 'მომხმარებელი:',
 	'abusefilter-log-search-filter' => 'ფილტრის ID:',
 	'abusefilter-log-search-title' => 'სათაური:',
+	'abusefilter-log-search-wiki' => 'ვიკი:',
 	'abusefilter-log-search-submit' => 'ძიება',
 	'abusefilter-log-detailedentry-global' => 'გლობალური ფილტრი $1',
 	'abusefilter-log-detailedentry-local' => 'ფილტრი $1',
@@ -17446,6 +17459,7 @@ $messages['ka'] = array(
 	'abusefilter-list-options-deleted-only' => 'აჩვენეთ მხოლოდ წაშლილი ფილტრები',
 	'abusefilter-list-options-deleted-hide' => 'დამალეთ წაშლილი ფილტრები',
 	'abusefilter-list-options-deleted-show' => 'აჩვენეთ მხოლოდ წაშლილი ფილტრები',
+	'abusefilter-list-options-scope-local' => 'ადგილობრივი ვიკი',
 	'abusefilter-list-options-disabled' => 'გათიშული ფილტრები:',
 	'abusefilter-list-options-hidedisabled' => 'დამალეთ გათიშული ფილტრები',
 	'abusefilter-list-options-submit' => 'განახლება',
