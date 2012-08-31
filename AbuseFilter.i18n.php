@@ -5474,6 +5474,7 @@ $messages['ckb'] = array(
 	'abusefilter-log-search-user' => 'بەکارهێنەر:',
 	'abusefilter-log-search-filter' => 'پێناسەی فیلتەر:',
 	'abusefilter-log-search-title' => 'ناونیشان:',
+	'abusefilter-log-search-wiki' => 'ویکی:',
 	'abusefilter-log-search-submit' => 'گەڕان',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 $3ی چالاککرد، خەریکی کردەوەی «$4» لەسەر $5 بوو.
 کردەوەی بەڕێوەچوو: $6؛
@@ -21256,6 +21257,7 @@ $messages['ml'] = array(
 	'abusefilter-log-search-user' => 'ഉപയോക്താവ്:',
 	'abusefilter-log-search-filter' => 'അരിപ്പയുടെ ഐ.ഡി.:',
 	'abusefilter-log-search-title' => 'തലക്കെട്ട്:',
+	'abusefilter-log-search-wiki' => 'വിക്കി:',
 	'abusefilter-log-search-submit' => 'തിരയുക',
 	'abusefilter-log-entry' => '$1: $2 ഒരു ദുരുപയോഗ അരിപ്പയെ ഉണർത്തിയിരിക്കുന്നു,  "$3" എന്ന പ്രവൃത്തി $4 എന്നതിൽ ചെയ്യുന്നു.
 എടുത്ത നടപടികൾ: $5;
@@ -21317,6 +21319,9 @@ $messages['ml'] = array(
 	'abusefilter-list-options-deleted-only' => 'മായ്ക്കപ്പെട്ട അരിപ്പകൾ മാത്രം പ്രദർശിപ്പിക്കുക',
 	'abusefilter-list-options-deleted-hide' => 'മായ്ക്കപ്പെട്ട അരിപ്പകൾ മറയ്ക്കുക',
 	'abusefilter-list-options-deleted-show' => 'മായ്ക്കപ്പെട്ട അരിപ്പകൾ ഉൾപ്പെടുത്തുക',
+	'abusefilter-list-options-scope' => 'ഇവിടെനിന്നുള്ള അരിപ്പകൾ പ്രദർശിപ്പിക്കുക:',
+	'abusefilter-list-options-scope-local' => 'പ്രാദേശിക വിക്കി',
+	'abusefilter-list-options-scope-global' => 'ആഗോളനയങ്ങൾ',
 	'abusefilter-list-options-disabled' => 'നിർജ്ജീവമാക്കപ്പെട്ട അരിപ്പകൾ:',
 	'abusefilter-list-options-hidedisabled' => 'നിർജ്ജീവമാക്കപ്പെട്ട അരിപ്പകൾ മറയ്ക്കുക',
 	'abusefilter-list-options-submit' => 'പുതുക്കുക',
