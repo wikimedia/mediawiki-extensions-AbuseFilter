@@ -23875,7 +23875,7 @@ Filterbeschrijving: $7 ($8)',
 	'abusefilter-status' => 'Van de laatste $1 {{PLURAL:$1|handeling|handelingen}}, {{PLURAL:$2|heeft er 1|hebben er $2}} ($3%) de drempelwaarde van $4 bereikt, en {{PLURAL:$5|past|passen}} $5 ($6%) bij één van de huidige ingeschakelde filters.',
 	'abusefilter-edit-subtitle' => 'Bezig met het bewerken van filter $1',
 	'abusefilter-edit-subtitle-new' => 'Bezig met het aanmaken van een filter',
-	'abusefilter-edit-oldwarning' => '<strong>U bent een oude versie van dit  filter aan het bewerken.
+	'abusefilter-edit-oldwarning' => '<strong>U bent een oude versie van dit filter aan het bewerken.
 De weergegeven statistieken gelden voor de meest recente versie van het filter.
 Als u uw wijzigingen opslaat, overschrijft u alle wijzigingen die na deze versie zijn gemaakt.</strong> &bull;
 [[Special:AbuseFilter/history/$2|Terug naar de geschiedenis van dit filter]]',
@@ -23922,7 +23922,7 @@ De gemiddelde looptijd van de filtercontrole is $4ms, en deze gebruikt $5 {{PLUR
 	'abusefilter-edit-warn-preview' => 'Voorvertoning geselecteerd bericht',
 	'abusefilter-edit-warn-edit' => 'Geselecteerd bericht aanmaken/bewerken',
 	'abusefilter-edit-tag-tag' => 'Toe te voegen labels (een per regel):',
-	'abusefilter-edit-denied' => 'U mag de details van dit filter niet bekijken, omdat die niet publiekelijk zichtbaar zijn',
+	'abusefilter-edit-denied' => 'U mag de details van dit filter niet bekijken, omdat die niet openbaar zijn',
 	'abusefilter-edit-main' => 'Filterparameters',
 	'abusefilter-edit-done-subtitle' => 'Filter bewerkt',
 	'abusefilter-edit-done' => 'De wijzigingen aan het filter $1 zijn opgeslagen.',
@@ -32512,6 +32512,7 @@ Beskrivning av utlöst regel: $1',
 	'abusefilter-log-search-user' => 'Användare:',
 	'abusefilter-log-search-filter' => 'Filter-ID:',
 	'abusefilter-log-search-title' => 'Titel:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Sök',
 	'abusefilter-log-entry' => '$1: $2 utlöste ett missbruksfilter genom att göra handlingen "$3" på $4.
 Utförd handling: $5;
@@ -32574,6 +32575,9 @@ missbrukslogg-poster.',
 	'abusefilter-list-options-deleted-only' => 'Visa endast raderade filter',
 	'abusefilter-list-options-deleted-hide' => 'Dölj raderade filter',
 	'abusefilter-list-options-deleted-show' => 'Inkludera raderade filter',
+	'abusefilter-list-options-scope' => 'Visa filter från:',
+	'abusefilter-list-options-scope-local' => 'Lokal wiki',
+	'abusefilter-list-options-scope-global' => 'Globala regler',
 	'abusefilter-list-options-disabled' => 'Avaktiverade filter:',
 	'abusefilter-list-options-hidedisabled' => 'Göm avaktiverade filter',
 	'abusefilter-list-options-submit' => 'Uppdatera',
