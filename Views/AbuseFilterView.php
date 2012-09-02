@@ -53,7 +53,6 @@ abstract class AbuseFilterView extends ContextSource {
 }
 
 class AbuseFilterChangesList extends OldChangesList {
-
 	/**
 	 * @param $s
 	 * @param $rc
@@ -63,7 +62,12 @@ class AbuseFilterChangesList extends OldChangesList {
 		$examineParams = empty( $rc->examineParams ) ? array() : $rc->examineParams;
 
 		$title = SpecialPage::getTitleFor( 'AbuseFilter', 'examine/' . $rc->mAttribs['rc_id'] );
-		$examineLink = Linker::link( $title, wfMsgExt( 'abusefilter-changeslist-examine', 'parseinline' ), array(), $examineParams );
+		$examineLink = Linker::link(
+			$title,
+			$this->msg( 'abusefilter-changeslist-examine' )->parse(),
+			array(),
+			$examineParams
+		);
 
 		$s .= " ($examineLink)";
 

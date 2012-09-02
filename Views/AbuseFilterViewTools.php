@@ -1,6 +1,4 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) )
-	die();
 
 class AbuseFilterViewTools extends AbuseFilterView {
 	function show() {
@@ -21,12 +19,12 @@ class AbuseFilterViewTools extends AbuseFilterView {
 				array(
 					'type' => 'button',
 					'id' => 'mw-abusefilter-submitexpr',
-					'value' => wfMsg( 'abusefilter-tools-submitexpr' ) )
+					'value' => $this->msg( 'abusefilter-tools-submitexpr' )->text() )
 				)
 			);
 			$eval .= Xml::element( 'p', array( 'id' => 'mw-abusefilter-expr-result' ), ' ' );
 		}
-		$eval = Xml::fieldset( wfMsg( 'abusefilter-tools-expr' ), $eval );
+		$eval = Xml::fieldset( $this->msg( 'abusefilter-tools-expr' )->text(), $eval );
 		$out->addHTML( $eval );
 
 		$out->addModules( 'ext.abuseFilter.tools' );
@@ -35,7 +33,7 @@ class AbuseFilterViewTools extends AbuseFilterView {
 			// Hacky little box to re-enable autoconfirmed if it got disabled
 			$rac = '';
 			$rac .= Xml::inputLabel(
-				wfMsg( 'abusefilter-tools-reautoconfirm-user' ),
+				$this->msg( 'abusefilter-tools-reautoconfirm-user' )->text(),
 				'wpReAutoconfirmUser',
 				'reautoconfirm-user',
 				45
@@ -46,10 +44,10 @@ class AbuseFilterViewTools extends AbuseFilterView {
 				array(
 					'type' => 'button',
 					'id' => 'mw-abusefilter-reautoconfirmsubmit',
-					'value' => wfMsg( 'abusefilter-tools-reautoconfirm-submit' )
+					'value' => $this->msg( 'abusefilter-tools-reautoconfirm-submit' )->text()
 				)
 			);
-			$rac = Xml::fieldset( wfMsg( 'abusefilter-tools-reautoconfirm' ), $rac );
+			$rac = Xml::fieldset( $this->msg( 'abusefilter-tools-reautoconfirm' )->text(), $rac );
 			$out->addHTML( $rac );
 		}
 	}

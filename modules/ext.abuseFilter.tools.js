@@ -1,15 +1,12 @@
-/**
- * AbuseFilter tools JS
- */
+// AbuseFilter tools JS
 new ( function( $, mw ) {
-	/**
-	 * Reference to this
-	 */
+	'use strict';
+
+	// Reference to this
+
 	var that = this;
 
-	/**
-	 * Submits the expression to be evaluated
-	 */
+	// Submits the expression to be evaluated
 	this.doExprSubmit = function() {
 		var expr = $( '#wpTestExpr' ).val();
 		$( this ).injectSpinner( 'abusefilter-expr' );
@@ -22,11 +19,8 @@ new ( function( $, mw ) {
 		);
 	};
 
-	/**
-	 * Processes the result of the evaluation
-	 *
-	 * @param {Object} data
-	 */
+	// Processes the result of the evaluation
+	// @param {Object} data
 	this.processExprResult = function( data ) {
 		$.removeSpinner( 'abusefilter-expr' );
 
@@ -34,13 +28,11 @@ new ( function( $, mw ) {
 			.text( data.abusefilterevalexpression.result );
 	};
 
-	/**
-	 * Submits a call to unblock autopromotions for a user
-	 */
+	// Submits a call to unblock autopromotions for a user
 	this.doReautoSubmit = function() {
 		var name = $( '#reautoconfirm-user' ).val();
 
-		if ( name == '' ) {
+		if ( name === '' ) {
 			return;
 		}
 
@@ -55,11 +47,8 @@ new ( function( $, mw ) {
 		);
 	};
 
-	/**
-	 * Processes the result of the unblocking autopromotions for a user
-	 * 
-	 * @param {Object} data
-	 */
+	// Processes the result of the unblocking autopromotions for a user
+	// @param {Object} data
 	this.processReautoconfirm = function( data ) {
 		var msg;
 
@@ -86,4 +75,4 @@ new ( function( $, mw ) {
 		$( '#mw-abusefilter-reautoconfirmsubmit' ).click( that.doReautoSubmit );
 	} );
 
-})( jQuery, mediaWiki );
+} ( jQuery, mediaWiki ) );

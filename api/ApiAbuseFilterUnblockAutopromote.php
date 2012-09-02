@@ -11,7 +11,7 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 
 		if ( $user === false ) {
 			// Oh god this is so bad but this message uses GENDER
-			$msg = wfMsgExt( 'abusefilter-reautoconfirm-none', array( 'parsemag' ), $params['user'] );
+			$msg = wfMessage( 'abusefilter-reautoconfirm-none', $params['user'] )->text();
 			$this->dieUsage( $msg, 'notsuspended' );
 		}
 
@@ -20,7 +20,7 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 
 		if ( !$wgMemc->get( $key ) ) {
 			// Same as above :(
-			$msg = wfMsgExt( 'abusefilter-reautoconfirm-none', array( 'parsemag' ), $params['user'] );
+			$msg = wfMessage( 'abusefilter-reautoconfirm-none', $params['user'] )->text();
 			$this->dieUsage( $msg, 'notsuspended' );
 		}
 

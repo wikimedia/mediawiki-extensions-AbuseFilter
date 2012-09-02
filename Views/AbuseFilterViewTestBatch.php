@@ -1,7 +1,4 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die();
-}
 
 class AbuseFilterViewTestBatch extends AbuseFilterView {
 	// Hard-coded for now.
@@ -19,14 +16,14 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$this->loadParameters();
 
-		$out->setPageTitle( wfMsg( 'abusefilter-test' ) );
+		$out->setPageTitle( $this->msg( 'abusefilter-test' ) );
 		$out->addWikiMsg( 'abusefilter-test-intro', self::$mChangeLimit );
 
 		$output = '';
 		$output .= AbuseFilter::buildEditBox( $this->mFilter, 'wpTestFilter' ) . "\n";
 		$output .=
 			Xml::inputLabel(
-				wfMsg( 'abusefilter-test-load-filter' ),
+				$this->msg( 'abusefilter-test-load-filter' )->text(),
 				'wpInsertFilter',
 				'mw-abusefilter-load-filter',
 				10,
@@ -37,13 +34,16 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 				'input',
 				array(
 					'type' => 'button',
-					'value' => wfMsg( 'abusefilter-test-load' ),
+					'value' => $this->msg( 'abusefilter-test-load' )->text(),
 					'id' => 'mw-abusefilter-load'
 				)
 			);
 		$output = Xml::tags( 'div', array( 'id' => 'mw-abusefilter-test-editor' ), $output );
 
- 		$output .= Xml::tags( 'p', null, Xml::checkLabel( wfMsg( 'abusefilter-test-shownegative' ), 'wpShowNegative', 'wpShowNegative', $this->mShowNegative ) );
+ 		$output .= Xml::tags( 'p', null, Xml::checkLabel(
+				 $this->msg( 'abusefilter-test-shownegative' )->text(),
+				 'wpShowNegative', 'wpShowNegative', $this->mShowNegative )
+		 );
 
 		// Selectory stuff
 		$selectFields = array();
@@ -66,7 +66,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			$output
 		);
 
-		$output = Xml::fieldset( wfMsg( 'abusefilter-test-legend' ), $output );
+		$output = Xml::fieldset( $this->msg( 'abusefilter-test-legend' )->text(), $output );
 
 		$out->addHTML( $output );
 

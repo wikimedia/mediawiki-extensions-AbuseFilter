@@ -1,10 +1,6 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die();
-}
 
 class SpecialAbuseLog extends SpecialPage {
-
 	/**
 	 * @var User
 	 */
@@ -96,7 +92,7 @@ class SpecialAbuseLog extends SpecialPage {
 	function searchForm() {
 		global $wgAbuseFilterIsCentral;
 
-		$output = Xml::element( 'legend', null, wfMsg( 'abusefilter-log-search' ) );
+		$output = Xml::element( 'legend', null, $this->msg( 'abusefilter-log-search' )->text() );
 		$fields = array();
 
 		// Search conditions
@@ -171,7 +167,7 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$form = new HTMLForm( $formInfo, $this->getContext() );
 		$form->setTitle( $this->getTitle() );
-		$form->setWrapperLegend( wfMsgExt( 'abusefilter-log-hide-legend', 'parsemag' ) );
+		$form->setWrapperLegend( $this->msg( 'abusefilter-log-hide-legend' )->text() );
 		$form->addHiddenField( 'hide', $id );
 		$form->setSubmitCallback( array( $this, 'saveHideForm' ) );
 		$form->show();
@@ -294,7 +290,11 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$output = '';
 
-		$output .= Xml::element( 'legend', null, wfMsg( 'abusefilter-log-details-legend', $id ) );
+		$output .= Xml::element(
+			'legend',
+			null,
+			$this->msg( 'abusefilter-log-details-legend', $id )->text()
+		);
 		$output .= Xml::tags( 'p', null, $this->formatRow( $row, false ) );
 
 		// Load data
@@ -322,13 +322,13 @@ class SpecialAbuseLog extends SpecialPage {
 				Xml::tags(
 					'h3',
 					null,
-					wfMsgExt( 'abusefilter-log-details-diff', 'parseinline' )
+					$this->msg( 'abusefilter-log-details-diff' )->parse()
 				);
 
 			$output .= $formattedDiff;
 		}
 
-		$output .= Xml::element( 'h3', null, wfMsg( 'abusefilter-log-details-vars' ) );
+		$output .= Xml::element( 'h3', null, $this->msg( 'abusefilter-log-details-vars' )->text() );
 
 		// Build a table.
 		$output .= AbuseFilter::buildVarDumpTable( $vars );
@@ -336,9 +336,9 @@ class SpecialAbuseLog extends SpecialPage {
 		if ( self::canSeePrivate() ) {
 			// Private stuff, like IPs.
 			$header =
-				Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-var' ) ) .
-				Xml::element( 'th', null, wfMsg( 'abusefilter-log-details-val' ) );
-			$output .= Xml::element( 'h3', null, wfMsg( 'abusefilter-log-details-private' ) );
+				Xml::element( 'th', null, $this->msg( 'abusefilter-log-details-var' )->text() ) .
+				Xml::element( 'th', null, $this->msg( 'abusefilter-log-details-val' )->text() );
+			$output .= Xml::element( 'h3', null, $this->msg( 'abusefilter-log-details-private' )->text() );
 			$output .=
 				Xml::openElement( 'table',
 					array(
@@ -354,7 +354,7 @@ class SpecialAbuseLog extends SpecialPage {
 				Xml::tags( 'tr', null,
 					Xml::element( 'td',
 						array( 'style' => 'width: 30%;' ),
-						wfMsg( 'abusefilter-log-details-ip' )
+						$this->msg( 'abusefilter-log-details-ip' )->text()
 					) .
 					Xml::element( 'td', null, $row->afl_ip )
 				);
@@ -457,7 +457,7 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$actions_taken = $row->afl_actions;
 		if ( !strlen( trim( $actions_taken ) ) ) {
-			$actions_taken = wfMsg( 'abusefilter-log-noactions' );
+			$actions_taken = $this->msg( 'abusefilter-log-noactions' )->text();
 		} else {
 			$actions = explode( ',', $actions_taken );
 			$displayActions = array();
@@ -470,26 +470,25 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$globalIndex = AbuseFilter::decodeGlobalName( $row->afl_filter );
 
-		global $wgOut;
 		if ( $globalIndex ) {
 			// Pull global filter description
 			$parsed_comments =
-				$wgOut->parseInline( AbuseFilter::getGlobalFilterDescription( $globalIndex ) );
+				$this->getOutput()->parseInline( AbuseFilter::getGlobalFilterDescription( $globalIndex ) );
 			$filter_hidden = null;
 		} else {
-			$parsed_comments = $wgOut->parseInline( $row->af_public_comments );
+			$parsed_comments = $this->getOutput()->parseInline( $row->af_public_comments );
 			$filter_hidden = $row->af_hidden;
 		}
 
 		if ( self::canSeeDetails( $row->afl_filter, $filter_hidden ) ) {
 			$examineTitle = SpecialPage::getTitleFor( 'AbuseFilter', 'examine/log/' . $row->afl_id );
-			$detailsLink = Linker::makeKnownLinkObj(
+			$detailsLink = Linker::linkKnown(
 				$this->getTitle($row->afl_id),
-				wfMsg( 'abusefilter-log-detailslink' )
+				$this->msg( 'abusefilter-log-detailslink' )->escaped()
 			);
 			$examineLink = Linker::link(
 				$examineTitle,
-				wfMsgExt( 'abusefilter-changeslist-examine', 'parseinline' ),
+				$this->msg( 'abusefilter-changeslist-examine' )->parse(),
 				array()
 			);
 
@@ -501,11 +500,11 @@ class SpecialAbuseLog extends SpecialPage {
 
 			if ( $user->isAllowed( 'abusefilter-hide-log' ) ) {
 				$hideLink = Linker::link(
-						$this->getTitle(),
-						wfMsg( 'abusefilter-log-hidelink' ),
-						array(),
-						array( 'hide' => $row->afl_id )
-					);
+					$this->getTitle(),
+					$this->msg( 'abusefilter-log-hidelink' )->text(),
+					array(),
+					array( 'hide' => $row->afl_id )
+				);
 
 				$actionLinks[] = $hideLink;
 			}
@@ -523,40 +522,33 @@ class SpecialAbuseLog extends SpecialPage {
 				$linkText = wfMessage( 'abusefilter-log-detailedentry-local' )->numParams( $row->afl_filter )->escaped();
 				$filterLink = Linker::link( $title, $linkText );
 			}
-			$description = wfMsgExt( 'abusefilter-log-detailedentry-meta',
-				array( 'parseinline', 'replaceafter' ),
-				array(
-					$timestamp,
-					$userLink,
-					$filterLink,
-					$row->afl_action,
-					$pageLink,
-					$actions_taken,
-					$parsed_comments,
-					$lang->pipeList( $actionLinks ),
-				)
-			);
+			$description = $this->msg( 'abusefilter-log-detailedentry-meta' )->rawParams(
+				$timestamp,
+				$userLink,
+				$filterLink,
+				$row->afl_action,
+				$pageLink,
+				$actions_taken,
+				$parsed_comments,
+				$lang->pipeList( $actionLinks )
+			)->parse();
 		} else {
-			$description = wfMsgExt(
-				'abusefilter-log-entry',
-				array( 'parseinline', 'replaceafter' ),
-				array(
-					$timestamp,
-					$userLink,
-					$row->afl_action,
-					Linker::link( $title ),
-					$actions_taken,
-					$parsed_comments
-				)
-			);
+			$description = $this->msg( 'abusefilter-log-entry' )->rawParams(
+				$timestamp,
+				$userLink,
+				$row->afl_action,
+				Linker::link( $title ),
+				$actions_taken,
+				$parsed_comments
+			)->parse();
 		}
 
 		if ( self::isHidden( $row ) === true ) {
 			$description .= ' '.
-				wfMsgExt( 'abusefilter-log-hidden', 'parseinline' );
+				$this->msg( 'abusefilter-log-hidden' )->parse();
 		} elseif ( self::isHidden($row) === 'implicit' ) {
 			$description .= ' '.
-				wfMsgExt( 'abusefilter-log-hidden-implicit', 'parseinline' );
+				$this->msg( 'abusefilter-log-hidden-implicit' )->parse();
 		}
 
 		return $li ? Xml::tags( 'li', null, $description ) : $description;
@@ -580,7 +572,7 @@ class SpecialAbuseLog extends SpecialPage {
 	/**
 	 * Given a log entry row, decides whether or not it can be viewed by the public.
 	 *
-	 * @param $row The abuse_filter_log row object.
+	 * @param $row stdClass The abuse_filter_log row object.
 	 *
 	 * @return Mixed true if the item is explicitly hidden, false if it is not.
 	 * 	The string 'implicit' if it is hidden because the corresponding revision is hidden.

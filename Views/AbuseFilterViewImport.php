@@ -1,6 +1,6 @@
 <?php
-class AbuseFilterViewImport extends AbuseFilterView {
 
+class AbuseFilterViewImport extends AbuseFilterView {
 	function show() {
 		$out = $this->getOutput();
 		if ( !$this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
@@ -12,7 +12,7 @@ class AbuseFilterViewImport extends AbuseFilterView {
 
 		$html = Xml::textarea( 'wpImportText', '', 40, 20 );
 		$html .= Xml::submitButton(
-			wfMsg( 'abusefilter-import-submit' ),
+			$this->msg( 'abusefilter-import-submit' )->text(),
 			array( 'accesskey' => 's' )
 		);
 		$url = SpecialPage::getTitleFor( 'AbuseFilter', 'new' )->getFullURL();

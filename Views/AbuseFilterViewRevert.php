@@ -1,7 +1,4 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die();
-}
 
 class AbuseFilterViewRevert extends AbuseFilterView {
 	function show() {
@@ -21,7 +18,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		}
 
 		$out->addWikiMsg( 'abusefilter-revert-intro', $filter );
-		$out->setPageTitle( wfMsg( 'abusefilter-revert-title', $filter ) );
+		$out->setPageTitle( $this->msg( 'abusefilter-revert-title', $filter ) );
 
 		// First, the search form.
 		$searchFields = array();
@@ -43,7 +40,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				$searchForm
 			);
 		$searchForm =
-			Xml::fieldset( wfMsg( 'abusefilter-revert-search-legend' ), $searchForm );
+			Xml::fieldset( $this->msg( 'abusefilter-revert-search-legend' )->text(), $searchForm );
 
 		$out->addHTML( $searchForm );
 
@@ -61,10 +58,8 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 					array( 'AbuseFilter', 'getActionDisplay' ),
 					$result['actions'] );
 
-				$msg = wfMsgExt(
-					'abusefilter-revert-preview-item',
-					array( 'parseinline', 'replaceafter' ),
-					array(
+				$msg = $this->msg( 'abusefilter-revert-preview-item' )
+					->rawParams(
 						$lang->timeanddate( $result['timestamp'], true ),
 						Linker::userLink( $result['userid'], $result['user'] ),
 						$result['action'],
@@ -72,12 +67,11 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 						$lang->commaList( $displayActions ),
 						Linker::link(
 							SpecialPage::getTitleFor( 'AbuseLog' ),
-							wfMsgNoTrans( 'abusefilter-log-detailslink' ),
+							$this->msg( 'abusefilter-log-detailslink' )->escaped(),
 							array(),
 							array( 'details' => $result['id'] )
 						)
-					)
-				);
+				)->parse();
 				$list[] = Xml::tags( 'li', null, $msg );
 			}
 
@@ -90,11 +84,11 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				Html::hidden( 'wpPeriodStart', $this->origPeriodStart ) .
 				Html::hidden( 'wpPeriodEnd', $this->origPeriodEnd ) .
 				Xml::inputLabel(
-					wfMsg( 'abusefilter-revert-reasonfield' ),
+					$this->msg( 'abusefilter-revert-reasonfield' )->text(),
 					'wpReason', 'wpReason', 45
 				) .
 				"\n" .
-				Xml::submitButton( wfMsg( 'abusefilter-revert-confirm' ) );
+				Xml::submitButton( $this->msg( 'abusefilter-revert-confirm' )->text() );
 			$confirmForm = Xml::tags(
 				'form',
 				array(
@@ -182,6 +176,12 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		return true;
 	}
 
+	/**
+	 * @param $action string
+	 * @param $result array
+	 * @return bool
+	 * @throws MWException
+	 */
 	function revertAction( $action, $result ) {
 		switch( $action ) {
 			case 'block':
@@ -195,16 +195,16 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				$log->addEntry(
 					'unblock',
 					Title::makeTitle( NS_USER, $result['user'] ),
-					wfMsgForContent(
+					$this->msg(
 						'abusefilter-revert-reason', $this->mPage->mFilter, $this->mReason
-					)
+					)->inContentLanguage()->text()
 				);
-				break;
+				return true;
 			case 'blockautopromote':
 				global $wgMemc;
 				$wgMemc->delete( AbuseFilter::autopromoteBlockKey(
 					User::newFromId( $result['userid'] ) ) );
-				break;
+				return true;
 			case 'degroup':
 				// Pull the user's groups from the vars.
 				$oldGroups = $result['vars']['USER_GROUPS'];
@@ -229,7 +229,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 				// Don't do anything if there are no groups to add.
 				if ( !count( array_diff( $newGroups, $currentGroups ) ) ) {
-					return;
+					return false;
 				}
 
 				$dbw = wfGetDB( DB_MASTER );
@@ -238,13 +238,17 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 				$log = new LogPage( 'rights' );
 				$log->addEntry( 'rights', $user->getUserPage(),
-					wfMsgForContent(
+					$this->msg(
 						'abusefilter-revert-reason',
 						$this->mPage->mFilter,
 						$this->mReason
-					),
+					)->inContentLanguage()->text(),
 					array( implode( ',', $currentGroups ), implode( ',', $newGroups ) )
 				);
+
+				return true;
 		}
+
+		throw new MWException( 'Invalid action' . $action );
 	}
 }

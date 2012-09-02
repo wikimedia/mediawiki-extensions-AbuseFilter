@@ -1,7 +1,4 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die();
-}
 
 class SpecialAbuseFilter extends SpecialPage {
 	public function __construct() {
@@ -24,7 +21,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		$this->checkPermissions();
 
 		if ( $request->getVal( 'result' ) == 'success' ) {
-			$out->setSubtitle( wfMsg( 'abusefilter-edit-done-subtitle' ) );
+			$out->setSubtitle( $this->msg( 'abusefilter-edit-done-subtitle' ) );
 			$changedFilter = intval( $request->getVal( 'changedfilter' ) );
 			$out->wrapWikiMsg( '<p class="success">$1</p>',
 				array( 'abusefilter-edit-done', $changedFilter ) );

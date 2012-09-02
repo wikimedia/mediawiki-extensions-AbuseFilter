@@ -1,7 +1,5 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die();
-}
+
 /**
 Abuse filter parser.
 Copyright © Victor Vasiliev, 2008. Based on ideas by Andrew Garrett Distributed under GNU GPL v2 terms.
@@ -440,6 +438,7 @@ class AFPData {
 	/** Convert shorteners */
 
 	/**
+	 * @throws MWException
 	 * @return mixed
 	 */
 	public function toNative() {
@@ -514,8 +513,16 @@ class AFPException extends MWException { }
 // Exceptions that we might conceivably want to report to ordinary users
 // (i.e. exceptions that don't represent bugs in the extension itself)
 class AFPUserVisibleException extends AFPException {
+	/**
+	 * @param string $exception_id
+	 * @param int $position
+	 * @param array $params
+	 */
 	function __construct( $exception_id, $position, $params ) {
-		$msg = wfMsgExt( 'abusefilter-exception-' . $exception_id, array(), array_merge( array( $position ), $params ) );
+		$msg = wfMessage(
+			'abusefilter-exception-' . $exception_id,
+			array_merge( array( $position ), $params )
+		)->text();
 		parent::__construct( $msg );
 
 		$this->mExceptionID = $exception_id;
@@ -786,7 +793,7 @@ class AbuseFilterParser {
 	/**
 	 * Handles unexpected characters after the expression
 	 *
-	 * @param $result
+	 * @param $result AFPData
 	 * @throws AFPUserVisibleException
 	 */
 	protected function doLevelEntry( &$result ) {
@@ -799,7 +806,7 @@ class AbuseFilterParser {
 
 	/**
 	 * Handles multiple expressions
-	 * @param $result
+	 * @param $result AFPData
 	 */
 	protected function doLevelSemicolon( &$result ) {
 		do {
@@ -813,9 +820,8 @@ class AbuseFilterParser {
 	/**
 	 * Handles multiple expressions
 	 *
-	 * @param $result
+	 * @param $result AFPData
 	 * @throws AFPUserVisibleException
-	 * @return
 	 */
 	protected function doLevelSet( &$result ) {
 		if ( $this->mCur->type == AFPToken::TID ) {
@@ -880,7 +886,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $result
+	 * @param $result AFPData
 	 * @throws AFPUserVisibleException
 	 */
 	protected function doLevelConditions( &$result ) {
@@ -2184,14 +2190,3 @@ class AbuseFilterParser {
 		return AFPData::castTypes( $val, AFPData::DBool );
 	}
 }
-
- # Taken from http://au2.php.net/manual/en/function.fnmatch.php#71725
- # Attribution: jk at ricochetsolutions dot com
-
-if ( !function_exists( 'fnmatch' ) ) {
-
-	function fnmatch( $pattern, $string ) {
-		return preg_match( "#^" . strtr( preg_quote( $pattern, '#' ), array( '\*' => '.*', '\?' => '.' ) ) . "$#iu", $string );
-	} // end
-
-} // end if

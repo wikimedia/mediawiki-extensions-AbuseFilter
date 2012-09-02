@@ -1,36 +1,28 @@
-/**
- * Filter checking for examine
- */
-new ( function( $, mw ) {
-	/**
-	 * Reference to this
-	 */
-	var that = this;
+// Filter checking for examine
+( function( $, mw ) {
+	'use strict';
 
-	/**
-	 * Syntax result div
-	 *
-	 * @type {jQuery}
-	 */
-	var $syntaxResult = [];
+	// Reference to this
+	var that = this,
+		// Syntax result div
+		// @type {jQuery}
+		$syntaxResult;
 
-	/**
-	 * Tests the filter against an rc event or abuse log entry
-	 */
+	// Tests the filter against an rc event or abuse log entry
 	this.examinerTestFilter = function() {
 		var filter = $( '#wpTestFilter' ).val(),
 			examine = mw.config.get( 'abuseFilterExamine' ),
 			params = {};
 		$( this ).injectSpinner( 'filter-check' );
 
-		if ( examine.type == 'rc' ) {
+		if ( examine.type === 'rc' ) {
 			params = {
 				rcid: examine.id
-			}
+			};
 		} else {
 			params = {
 				logid: examine.id
-			}
+			};
 		}
 
 		// Large amount of data
@@ -43,27 +35,24 @@ new ( function( $, mw ) {
 		);
 	};
 
-	/**
-	 * Processes the results of the filter test
-	 *
-	 * @param {Object} data
-	 */
+	// Processes the results of the filter test
+	// @param {Object} data
 	this.examinerTestProcess = function( data ) {
 		var msg;
 		$.removeSpinner( 'filter-check' );
 
 		if ( data.error !== undefined ) {
 			// Hmm, something went awry
-			if ( data.error.code == 'badsyntax' ) {
+			if ( data.error.code === 'badsyntax' ) {
 				$syntaxResult.attr(
 					'class', 'mw-abusefilter-examine-syntaxerror'
 				);
 				msg = 'abusefilter-examine-syntaxerror';
-			} else if ( data.error.code == 'nosuchrcid'
-				|| data.error.code == 'nosuchlogid'
+			} else if ( data.error.code === 'nosuchrcid'
+				|| data.error.code === 'nosuchlogid'
 			) {
 				msg = 'abusefilter-examine-notfound';
-			} else if ( data.error.code == 'nopermission' ) {
+			} else if ( data.error.code === 'nopermission' ) {
 				return;
 			}
 		} else {
@@ -87,4 +76,4 @@ new ( function( $, mw ) {
 		$syntaxResult = $( '#mw-abusefilter-syntaxresult' );
 		$( '#mw-abusefilter-examine-test' ).click( that.examinerTestFilter );
 	} );
-} )( jQuery, mediaWiki );
+} ( jQuery, mediaWiki ) );

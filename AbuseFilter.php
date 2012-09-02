@@ -23,7 +23,7 @@ $wgExtensionCredits['antispam'][] = array(
 	'url' => 'https://www.mediawiki.org/wiki/Extension:AbuseFilter',
 );
 
-$dir = dirname( __FILE__ );
+$dir = __DIR__;
 $wgExtensionMessagesFiles['AbuseFilter'] =  "$dir/AbuseFilter.i18n.php";
 $wgExtensionMessagesFiles['AbuseFilterAliases'] = "$dir/AbuseFilter.alias.php";
 
@@ -103,7 +103,7 @@ $wgLogActions['suppress/hide-afl'] = 'abusefilter-logentry-suppress';
 $wgLogActions['suppress/unhide-afl'] = 'abusefilter-logentry-unsuppress';
 
 $commonModuleInfo = array(
-	'localBasePath' => dirname( __FILE__ ) . '/modules',
+	'localBasePath' => __DIR__ . '/modules',
 	'remoteExtPath' => 'AbuseFilter/modules',
 );
 
@@ -119,6 +119,7 @@ $wgResourceModules['ext.abuseFilter.edit'] = array(
 		'unknown-error',
 	),
 	'dependencies' => array(
+		'mediawiki.util',
 		'jquery.textSelection',
 		'jquery.spinner',
 	),
@@ -132,6 +133,7 @@ $wgResourceModules['ext.abuseFilter.tools'] = array(
 		'abusefilter-reautoconfirm-done',
 	),
 	'dependencies' => array(
+		'mediawiki.util',
 		'jquery.spinner'
 	),
 ) + $commonModuleInfo;
@@ -143,6 +145,9 @@ $wgResourceModules['ext.abuseFilter.examine'] = array(
 		'abusefilter-examine-nomatch',
 		'abusefilter-examine-syntaxerror',
 		'abusefilter-examine-notfound',
+	),
+	'dependencies' => array(
+		'mediawiki.util',
 	),
 ) + $commonModuleInfo;
 
