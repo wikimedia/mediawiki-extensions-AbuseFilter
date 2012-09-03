@@ -15425,6 +15425,7 @@ Deskripsion ti alagadan: $1',
 	'abusefilter-log-search-user' => 'Agar-aramat:',
 	'abusefilter-log-search-filter' => 'ID ti sagat:',
 	'abusefilter-log-search-title' => 'Titulo:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Biruken',
 	'abusefilter-log-entry' => '$1: Ni $2 ket nakalbitna ti sagat ti panag-abuso, ar-aramidenna ti  "$3" nga aksion idiay $4.
 Dagiti aksion a naaramid: $5;
@@ -15486,6 +15487,9 @@ Deskripsion ti sagat: $7 ($8)',
 	'abusefilter-list-options-deleted-only' => 'Ipakita laeng dagiti naikkat a sagat',
 	'abusefilter-list-options-deleted-hide' => 'Ilemmeng dagiti naikkat a sagat',
 	'abusefilter-list-options-deleted-show' => 'Iraman dagiti naikkat a sagat',
+	'abusefilter-list-options-scope' => 'Ipakita dagiti sagat manipud ti:',
+	'abusefilter-list-options-scope-local' => 'Lokal  a wiki',
+	'abusefilter-list-options-scope-global' => 'Dagiti sangalubongan nga alagaden',
 	'abusefilter-list-options-disabled' => 'Dagiti nabaldado a sagat:',
 	'abusefilter-list-options-hidedisabled' => 'Ilemmeng dagiti nabaldado a sagat',
 	'abusefilter-list-options-submit' => 'Pabaruen',
@@ -16664,7 +16668,7 @@ $messages['ja'] = array(
 	'abusefilter-log-details-diff' => '編集でなされた変更',
 	'abusefilter-log-linkoncontribs' => '不正利用記録',
 	'abusefilter-log-linkoncontribs-text' => 'この利用者の不正利用記録',
-	'abusefilter-log-hidden' => '（隠された項目）',
+	'abusefilter-log-hidden' => '(隠された項目)',
 	'abusefilter-log-hidden-implicit' => '(版が削除されているため非表示)',
 	'abusefilter-log-cannot-see-details' => 'この項目の詳細を見る権限がありません。',
 	'abusefilter-log-details-hidden' => 'この項目は公開記録から隠されているため、詳細を見ることができません。',
@@ -16673,8 +16677,8 @@ $messages['ja'] = array(
 	'abusefilter-log-hide-hidden' => '公開記録から、この項目を隠す',
 	'abusefilter-log-hide-reason' => '理由:',
 	'abusefilter-log-hide-forbidden' => '不正利用記録の項目を隠す権限がありません。',
-	'abusefilter-logentry-suppress' => '[[$1]]を非公開',
-	'abusefilter-logentry-unsuppress' => '[[$1]]を公開',
+	'abusefilter-logentry-suppress' => '「[[$1]]」を非公開',
+	'abusefilter-logentry-unsuppress' => '「[[$1]]」を公開',
 	'logentry-abusefilter-hit' => '$1 が $3 で「$5」操作を行い、 $4 が作動しました。対処操作: $6 ($7)',
 	'abusefilter-management' => '不正利用フィルター管理',
 	'abusefilter-list' => 'すべてのフィルター',
@@ -16745,7 +16749,7 @@ $messages['ja'] = array(
 	'abusefilter-edit-consequences' => '発動したときに取る対処操作',
 	'abusefilter-edit-action-warn' => '利用者に警告を与えてからこれらの対処操作を発動する',
 	'abusefilter-edit-action-disallow' => '問題となっている操作を利用者がするのを防ぐ',
-	'abusefilter-edit-action-flag' => '不正利用記録でこの編集のフラグをたてる',
+	'abusefilter-edit-action-flag' => '不正利用記録でこの編集のフラグを立てる',
 	'abusefilter-edit-action-blockautopromote' => '利用者の自動承認ステータスを取り消す',
 	'abusefilter-edit-action-degroup' => '利用者をすべての特権グループから除く',
 	'abusefilter-edit-action-block' => '利用者および/またはIPアドレスを編集ブロックする',
@@ -16757,7 +16761,7 @@ $messages['ja'] = array(
 	'abusefilter-edit-throttle-seconds' => '$1{{PLURAL:$1|秒}}',
 	'abusefilter-edit-throttle-groups' => "制限をグループ化する：
 :''(1行に1つ、複数項目はカンマ区切り)''",
-	'abusefilter-edit-warn-message' => '警告に使うシステムメッセージ:',
+	'abusefilter-edit-warn-message' => '警告に使用するシステムメッセージ:',
 	'abusefilter-edit-warn-other' => '他のメッセージ',
 	'abusefilter-edit-warn-other-label' => "他のメッセージのページ名:
 :''(接頭辞 MediaWiki は省く)''",
@@ -16782,7 +16786,7 @@ $messages['ja'] = array(
 	'abusefilter-edit-test-link' => 'このフィルターを最近の編集に対して試験する',
 	'abusefilter-edit-export' => 'このフィルターを別のウィキにエクスポートする',
 	'abusefilter-edit-syntaxok' => '構文エラーは検出されませんでした。',
-	'abusefilter-edit-syntaxerr' => '構文エラーの検出: $1',
+	'abusefilter-edit-syntaxerr' => '構文エラーを検出しました: $1',
 	'abusefilter-edit-bad-tags' => '指定したタグには無効なものが1つ以上あります。
 タグは短くする必要があり、特殊文字を含んではなりません。',
 	'abusefilter-edit-notallowed' => 'あなたは不正利用フィルターを作成または編集することが許可されていません',
@@ -16846,7 +16850,7 @@ $messages['ja'] = array(
 	'abusefilter-edit-builder-vars-summary' => '編集の要約や理由',
 	'abusefilter-edit-builder-vars-article-id' => 'ページ ID',
 	'abusefilter-edit-builder-vars-article-ns' => 'ページの名前空間',
-	'abusefilter-edit-builder-vars-article-text' => 'ページ名 (名前空間除く)',
+	'abusefilter-edit-builder-vars-article-text' => 'ページ名 (名前空間を除く)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => '完全なページ名',
 	'abusefilter-edit-builder-vars-movedfrom-id' => '移動元のページID',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => '移動元ページの名前空間',
@@ -16941,10 +16945,10 @@ $3 個の{{PLURAL:$3|引数}}があるべきですが $4 個しかありませ�
 	'abusefilter-test-load-filter' => '読み込むフィルターのID:',
 	'abusefilter-test-submit' => 'テスト',
 	'abusefilter-test-load' => '読み込み',
-	'abusefilter-test-user' => '変更した利用者：',
-	'abusefilter-test-period-start' => 'これ以後の変更：',
-	'abusefilter-test-period-end' => 'これ以前の変更：',
-	'abusefilter-test-page' => '変更されるページ：',
+	'abusefilter-test-user' => '変更した利用者:',
+	'abusefilter-test-period-start' => 'これ以降の変更:',
+	'abusefilter-test-period-end' => 'これ以前の変更:',
+	'abusefilter-test-page' => '変更されるページ:',
 	'abusefilter-test-shownegative' => 'フィルターに一致しない変更を表示する',
 	'abusefilter-test-syntaxerr' => 'あなたが入力したフィルターには構文エラーがあります。「{{int:abusefilter-edit-check}}」ボタンを押して、完全な説明を得ることができます。',
 	'abusefilter-changeslist-examine' => '分析',
@@ -34550,6 +34554,7 @@ $messages['tpi'] = array(
 /** Turkish (Türkçe)
  * @author Emperyan
  * @author Joseph
+ * @author LuCKY
  * @author Mach
  * @author Srhat
  * @author Vito Genovese
@@ -34635,6 +34640,7 @@ Süzgeç açıklaması: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'süzgeç kayıtları',
 	'abusefilter-log-linkoncontribs-text' => 'Bu kullanıcı için suistimal günlüğü',
 	'abusefilter-log-hidden' => '(gizli girdi)',
+	'abusefilter-log-cannot-see-details' => 'Bu giriş detaylarını görebilmek için izniniz yok.',
 	'abusefilter-log-details-hidden' => 'Bu girdinin ayrıntılarını göremezsiniz çünkü herkese açık değil',
 	'abusefilter-log-hide-legend' => 'Günlük girişini gizle',
 	'abusefilter-log-hide-id' => 'Günlük girdi numarası:',
@@ -34656,6 +34662,7 @@ gizlemeye izniniz yok.',
 	'abusefilter-list-details' => 'Detaylar',
 	'abusefilter-list-limit' => 'Sayfa başına sayı:',
 	'abusefilter-list-lastmodified' => 'Son değişiklik',
+	'abusefilter-list-group' => 'Filtre grubu',
 	'abusefilter-hidden' => 'Özel',
 	'abusefilter-unhidden' => 'Genel',
 	'abusefilter-enabled' => 'Etkin',
@@ -34670,6 +34677,8 @@ gizlemeye izniniz yok.',
 	'abusefilter-list-options-deleted-only' => 'Sadece silinmiş süzgeçleri göster',
 	'abusefilter-list-options-deleted-hide' => 'Silinmiş süzgeçleri gizle',
 	'abusefilter-list-options-deleted-show' => 'Silinmiş süzgeçleri içer',
+	'abusefilter-list-options-scope-local' => 'Yerel viki',
+	'abusefilter-list-options-scope-global' => 'Genel kurallar',
 	'abusefilter-list-options-disabled' => 'Devre dışı süzgeçler:',
 	'abusefilter-list-options-hidedisabled' => 'Devre dışı süzgeçleri gizle',
 	'abusefilter-list-options-submit' => 'Güncelle',
@@ -34684,6 +34693,7 @@ gizlemeye izniniz yok.',
 	'abusefilter-reautoconfirm-done' => 'Hesabın otomatik onaylı durumu geri getirildi',
 	'abusefilter-status' => 'Son $1 {{PLURAL:$1|eylemde|eylemde}}, $2 (%$3) filtre $4 koşul sınırına erişti, ve $5 (%$6) eylem şuanda etkin bir filtreyle eşleşti.',
 	'abusefilter-edit-subtitle' => '$1 süzgeci değiştiriliyor',
+	'abusefilter-edit-subtitle-new' => 'Filtre oluşturma',
 	'abusefilter-edit-oldwarning' => '<strong>Bu filtrenin eski bir sürümünü değiştiriyorsunuz.
 Gösterilen istatistikler bu filtrenin en güncel sürümü içindir.
 Eğer değişikliklerinizi kaydederseniz, değişiklik yaptığınız revizyondan itibaren tüm değişikliklerin üzerine yazacaksınız.</strong> &bull;
@@ -34698,6 +34708,7 @@ Eylemlerin %$1'inden fazla eşleşme sınırına erişti.",
 	'abusefilter-edit-id' => 'Süzgeç IDsi:',
 	'abusefilter-edit-description' => "Açıklama:
 :''(umumi olarak görünebilir)''",
+	'abusefilter-edit-group' => 'Filtre grubu:',
 	'abusefilter-edit-flags' => 'İşaretler:',
 	'abusefilter-edit-enabled' => 'Bu süzgeci etkinleştir',
 	'abusefilter-edit-deleted' => 'Silinmiş olarak işaretle',
@@ -34956,6 +34967,7 @@ Tam ayrıntılar için, son filtre değişiklikleri [[Special:AbuseFilter/histor
 Kaynak vikide, değiştirme arayüzünde "{{int:abusefilter-edit-tools}}"ın altındaki "{{int:abusefilter-edit-export}}"a tıklayın.
 Görünen metin kutusundan kopyalayın, ve bu metin kutusuna yapıştırın, daha sonra "{{int:abusefilter-import-submit}}"a tıklayın,',
 	'abusefilter-import-submit' => 'Verileri içe aktar',
+	'abusefilter-group-default' => 'Varsayılan',
 );
 
 /** Tatar (Cyrillic script) (татарча)
