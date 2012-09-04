@@ -426,6 +426,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		foreach ( $checkboxes as $checkboxId ) {
+			// Messages that can be used here:
+			// * abusefilter-edit-enabled
+			// * abusefilter-edit-deleted
+			// * abusefilter-edit-hidden
+			// * abusefilter-edit-global
 			$message = "abusefilter-edit-$checkboxId";
 			$dbField = "af_$checkboxId";
 			$postVar = 'wpFilter' . ucfirst( $checkboxId );
