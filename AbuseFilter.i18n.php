@@ -5569,6 +5569,7 @@ $messages['co'] = array(
 );
 
 /** Czech (česky)
+ * @author Chmee2
  * @author Matěj Grabovský
  * @author Mormegil
  * @author Tchoř
@@ -5630,6 +5631,7 @@ Popis pravidla: $1',
 	'abusefilter-log-search-user' => 'Uživatel:',
 	'abusefilter-log-search-filter' => 'ID filtru:',
 	'abusefilter-log-search-title' => 'Název:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Hledat',
 	'abusefilter-log-entry' => '$1: $2 {{GENDER:$2|spustil|spustila|spustil}} filtr zneužívání při činnosti „$3“ na $4.
 Provedená opatření: $5; popis filtru: $6',
@@ -5689,6 +5691,7 @@ Provedená opatření: $6; popis filtru: $7 ($8)',
 	'abusefilter-list-options-deleted-only' => 'Zobrazit pouze smazané filtry',
 	'abusefilter-list-options-deleted-hide' => 'Skrýt smazané filtry',
 	'abusefilter-list-options-deleted-show' => 'Zobrazit i smazané filtry',
+	'abusefilter-list-options-scope-global' => 'Globální pravidla',
 	'abusefilter-list-options-disabled' => 'Vypnuté filtry:',
 	'abusefilter-list-options-hidedisabled' => 'Skrýt vypnuté filtry',
 	'abusefilter-list-options-submit' => 'Aktualizovat',
@@ -5720,7 +5723,7 @@ Odpovídalo mu více než dovolený limit $1 % všech operací.",
 	'abusefilter-edit-enabled' => 'Zapnout tento filtr',
 	'abusefilter-edit-deleted' => 'Označit filtr za smazaný',
 	'abusefilter-edit-hidden' => 'Skrýt podrobnosti tohoto filtru před veřejností',
-	'abusefilter-edit-global' => 'Tento filtr aplikovat globálně',
+	'abusefilter-edit-global' => 'Globální filtr',
 	'abusefilter-edit-rules' => 'Podmínky:',
 	'abusefilter-edit-notes' => "Poznámky:
 :''(soukromé)''",
@@ -10651,6 +10654,9 @@ Description du filtre : $7 ($8)',
 	'abusefilter-list-options-deleted-only' => 'Ne montrer que les filtres supprimés',
 	'abusefilter-list-options-deleted-hide' => 'Masquer les filtres supprimés',
 	'abusefilter-list-options-deleted-show' => 'Inclure les filtres supprimés',
+	'abusefilter-list-options-scope' => 'Afficher les filtres depuis:',
+	'abusefilter-list-options-scope-local' => 'Wiki local',
+	'abusefilter-list-options-scope-global' => 'Règles globales',
 	'abusefilter-list-options-disabled' => 'Filtres désactivés :',
 	'abusefilter-list-options-hidedisabled' => 'Masquer les filtres désactivés',
 	'abusefilter-list-options-submit' => 'Mettre à jour',
@@ -26086,7 +26092,7 @@ wpisów w rejestrze nadużyć.',
 	'abusefilter-edit-enabled' => 'Włącz ten filtr',
 	'abusefilter-edit-deleted' => 'Oznacz jako usunięty',
 	'abusefilter-edit-hidden' => 'Ukryj szczegóły tego filtru przed publicznym wglądem',
-	'abusefilter-edit-global' => 'Zastosuj ten filtr globalnie',
+	'abusefilter-edit-global' => 'Filtr globalny',
 	'abusefilter-edit-rules' => 'Warunki:',
 	'abusefilter-edit-notes' => "Uwagi
 :''(prywatne)",
