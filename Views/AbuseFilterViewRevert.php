@@ -128,7 +128,8 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 		$results = array();
 		foreach( $res as $row ) {
-			if ( !$row->afl_actions ) {
+			// Don't revert if there was no action, or the action was global
+			if ( !$row->afl_actions || $row->afl_wiki != null ) {
 				continue;
 			}
 
