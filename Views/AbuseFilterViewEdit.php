@@ -56,6 +56,15 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				array( $newRow->mOriginalRow, $newRow->mOriginalActions )
 			);
 
+			// Don't allow adding a new global rule, or updating a
+			// rule that is currently global, without permissions.
+			if ( ( $newRow->af_global == 1 || $newRow->mOriginalRow->af_global == 1 )
+				&& !$this->canEditGlobal()
+			) {
+				$out->addWikiMsg( 'abusefilter-edit-notallowed-global' );
+				return;
+			}
+
 			$origActions = $newRow->mOriginalActions;
 			unset( $newRow->mOriginalRow );
 			unset( $newRow->mOriginalActions );
@@ -319,7 +328,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$readOnlyAttrib = array();
 		$cbReadOnlyAttrib = array(); // For checkboxes
 
-		if ( !$this->canEdit() ) {
+		if ( !$this->canEdit() || ( $row->af_global == 1 && !$this->canEditGlobal() ) ) {
 			$readOnlyAttrib['readonly'] = 'readonly';
 			$cbReadOnlyAttrib['disabled'] = 'disabled';
 		}
@@ -434,6 +443,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$message = "abusefilter-edit-$checkboxId";
 			$dbField = "af_$checkboxId";
 			$postVar = 'wpFilter' . ucfirst( $checkboxId );
+
+			if ( $checkboxId == 'global' && !$this->canEditGlobal() ) {
+				$cbReadOnlyAttrib['disabled'] = 'disabled';
+			}
 
 			$checkbox = Xml::checkLabel(
 				wfMsg( $message ),
