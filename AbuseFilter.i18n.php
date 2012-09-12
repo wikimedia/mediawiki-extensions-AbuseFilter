@@ -2264,6 +2264,7 @@ $messages['as'] = array(
 	'abusefilter-log-search-user' => 'সভ্যৰ নাম:',
 	'abusefilter-log-search-filter' => 'পৰিশ্ৰাৱক আইডি:',
 	'abusefilter-log-search-title' => 'শিৰোনামা',
+	'abusefilter-log-search-wiki' => 'ৱিকি',
 	'abusefilter-log-search-submit' => 'সন্ধান',
 	'abusefilter-log-detailedentry-local' => 'পৰিশ্ৰাৱক $1',
 	'abusefilter-log-detailslink' => 'বিস্তাৰিত',
@@ -2274,6 +2275,7 @@ $messages['as'] = array(
 	'abusefilter-log-hide-reason' => 'কাৰণ:',
 	'abusefilter-logentry-suppress' => '"[[$1]]" লু্কুৱাই ৰাখক',
 	'abusefilter-logentry-unsuppress' => '"[[$1]]" দেখুৱাওক',
+	'abusefilter-list' => 'সকলোৱোৰ ছেকনী',
 	'abusefilter-list-status' => 'স্থিতি',
 	'abusefilter-list-visibility' => 'দৃশ্যমান',
 	'abusefilter-list-edit' => 'সম্পাদনা',
@@ -2286,6 +2288,7 @@ $messages['as'] = array(
 	'abusefilter-disabled' => 'নিষ্ক্ৰিয়',
 	'abusefilter-status-global' => 'গোলকীয়',
 	'abusefilter-list-options' => 'বিকল্পসমূহ',
+	'abusefilter-list-options-scope-local' => 'স্থানীয় ৱিকি',
 	'abusefilter-list-options-submit' => 'আপডেট',
 	'abusefilter-tools-reautoconfirm-user' => 'সদস্য:',
 	'abusefilter-edit-subtitle' => '$1 পৰিশ্ৰাৱক সম্পাদনা',
@@ -6150,6 +6153,7 @@ Disgrifiad o'r rheol sy'n cyfateb: $1",
 
 /** Danish (dansk)
  * @author Aputtu
+ * @author Christian List
  * @author Froztbyte
  * @author Hylle
  * @author Lhademmor
@@ -6292,7 +6296,7 @@ Regelbeskrivelse: $1',
 	'abusefilter-edit-enabled' => 'Aktivér dette filter',
 	'abusefilter-edit-deleted' => 'Markér som slettet',
 	'abusefilter-edit-hidden' => 'Skjul detaljer om dette filter fra offentlig visning',
-	'abusefilter-edit-global' => 'Anvend dette filter globalt',
+	'abusefilter-edit-global' => 'Globalt filter',
 	'abusefilter-edit-rules' => 'Betingelser:',
 	'abusefilter-edit-notes' => "Noter:
 :''(privat)''",
@@ -21870,6 +21874,7 @@ Keterangan peraturan: $1',
 	'abusefilter-log-search-user' => 'Pengguna:',
 	'abusefilter-log-search-filter' => 'ID penapis:',
 	'abusefilter-log-search-title' => 'Tajuk:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Cari',
 	'abusefilter-log-entry' => '$1: $2 mencetuskan penapis salah guna, melakukan tindakan "$3" pada $4.
 Tindakan diambil: $5;
@@ -21931,6 +21936,9 @@ Huraian penapis: $7 ($8)',
 	'abusefilter-list-options-deleted-only' => 'Tunjukkan penapis yang dihapuskan sahaja',
 	'abusefilter-list-options-deleted-hide' => 'Sorokkan penapis yang dihapuskan',
 	'abusefilter-list-options-deleted-show' => 'Sertakan penapis yang dihapuskan',
+	'abusefilter-list-options-scope' => 'Paparkan penapis dari:',
+	'abusefilter-list-options-scope-local' => 'Wiki tempatan',
+	'abusefilter-list-options-scope-global' => 'Peraturan sejagat',
 	'abusefilter-list-options-disabled' => 'Penapis yang dimatikan:',
 	'abusefilter-list-options-hidedisabled' => 'Sorokkan penapis yang dimatikan',
 	'abusefilter-list-options-submit' => 'Kemas kini',
@@ -21965,7 +21973,7 @@ Ia telah mencapai had pemadanan lebih $1% tindakan.",
 	'abusefilter-edit-enabled' => 'Hidupkan penapis ini',
 	'abusefilter-edit-deleted' => 'Tandai sebagai dihapuskan',
 	'abusefilter-edit-hidden' => 'Sorokkan butiran penapis ini daripada tatapan umum',
-	'abusefilter-edit-global' => 'Gunakan penapis ini secara global',
+	'abusefilter-edit-global' => 'Penapis sejagat',
 	'abusefilter-edit-rules' => 'Syarat:',
 	'abusefilter-edit-notes' => "Catatan:
 :''(peribadi)''",
