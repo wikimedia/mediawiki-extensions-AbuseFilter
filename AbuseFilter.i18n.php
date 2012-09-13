@@ -5783,6 +5783,7 @@ Provedená opatření: $6; popis filtru: $7 ($8)',
 	'abusefilter-list-options-deleted-only' => 'Zobrazit pouze smazané filtry',
 	'abusefilter-list-options-deleted-hide' => 'Skrýt smazané filtry',
 	'abusefilter-list-options-deleted-show' => 'Zobrazit i smazané filtry',
+	'abusefilter-list-options-scope' => 'Zobrazit filtry z:',
 	'abusefilter-list-options-scope-local' => 'Místní wiki',
 	'abusefilter-list-options-scope-global' => 'Globální pravidla',
 	'abusefilter-list-options-disabled' => 'Vypnuté filtry:',
@@ -12437,12 +12438,16 @@ Kopier de Kode, wu det erschynt, un fieg en do yy, derno druck „{{int:abusefil
 );
 
 /** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
  * @author Dineshjk
  * @author Dsvyas
  * @author KartikMistry
  * @author Vasu thakker
  */
 $messages['gu'] = array(
+	'abusefilter-desc' => 'સંપાદનો પર સ્વચલિત સંશોધનાત્મક પ્રણાલી લાગુ કરે છે',
+	'abusefilter' => 'દુરુપયોગ ગળણી રૂપરેખા',
+	'abuselog' => 'દુરુપયોગ નોંધ',
 	'abusefilter-mustbeeditor' => 'સુરક્ષા કારણો ખાતર, ફક્ત ઍવા સભ્યો જેની પાસે ખરાબ ફીલ્ટર બદલવાના હક છે તે જ આ ઈન્ટરફેસ નો ઊપયોગ કરી શકે છે.',
 	'abusefilter-log-search-user' => 'સભ્ય:',
 	'abusefilter-log-search-title' => 'શીર્ષક:',
