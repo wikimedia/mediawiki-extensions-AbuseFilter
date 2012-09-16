@@ -22829,6 +22829,7 @@ En kort beskrivelse av misbruksregelen handlingen din brøt er: $1',
 	'abusefilter-log-search-user' => 'Bruker:',
 	'abusefilter-log-search-filter' => 'Filter-ID:',
 	'abusefilter-log-search-title' => 'Tittel:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Søk',
 	'abusefilter-log-entry' => '$1: $2 utløste misbruksfilteret ved å gjøre en $3 på $4.
 Reaksjon: $5;
@@ -22839,6 +22840,7 @@ Filterbeskrivelse: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'globalt filter $1',
 	'abusefilter-log-detailedentry-local' => 'filter $1',
 	'abusefilter-log-detailslink' => 'detaljer',
+	'abusefilter-log-diff' => 'diff',
 	'abusefilter-log-hidelink' => 'juster synlighet',
 	'abusefilter-log-details-legend' => 'Detaljer for loggelement $1',
 	'abusefilter-log-details-var' => 'Variabel',
@@ -22889,6 +22891,9 @@ misbruksloggoppføringer.',
 	'abusefilter-list-options-deleted-only' => 'Vis kun slettede filtre',
 	'abusefilter-list-options-deleted-hide' => 'Skjul slettede filtre',
 	'abusefilter-list-options-deleted-show' => 'Inkluder slettede filtre',
+	'abusefilter-list-options-scope' => 'Vis filtre fra:',
+	'abusefilter-list-options-scope-local' => 'Lokal wiki',
+	'abusefilter-list-options-scope-global' => 'Globale regler',
 	'abusefilter-list-options-disabled' => 'Deaktiverte filtre:',
 	'abusefilter-list-options-hidedisabled' => 'Skjul deaktiverte filtre',
 	'abusefilter-list-options-submit' => 'Oppdater',
@@ -22918,7 +22923,7 @@ Kjøretiden er i gjennomsnitt på $4ms, og det bruker {{PLURAL:$5|ett vilkår|$5
 	'abusefilter-edit-enabled' => 'Slå på dette filteret',
 	'abusefilter-edit-deleted' => 'Merk som slettet',
 	'abusefilter-edit-hidden' => 'Skjul detaljer om dette filteret',
-	'abusefilter-edit-global' => 'Legg til dette filteret globalt',
+	'abusefilter-edit-global' => 'Globalt filter',
 	'abusefilter-edit-rules' => 'Regelverk:',
 	'abusefilter-edit-notes' => ":''(privat)''",
 	'abusefilter-edit-lastmod' => 'Filter sist endret:',
@@ -37792,6 +37797,7 @@ $messages['zh-cn'] = array(
  * @author Bencmq
  * @author Chenxiaoqino
  * @author Chenzw
+ * @author Dimension
  * @author Fantasticfears
  * @author FireJackey
  * @author Gaoxuewei
@@ -37852,6 +37858,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-log-search-user' => '用户：',
 	'abusefilter-log-search-filter' => '过滤器ID：',
 	'abusefilter-log-search-title' => '标题：',
+	'abusefilter-log-search-wiki' => '维基名：',
 	'abusefilter-log-search-submit' => '搜索',
 	'abusefilter-log-entry' => '$1：$2在$4上进行了“$3”的操作，触发了过滤器。采取的行动：$5；过滤器描述：$6',
 	'abusefilter-log-detailedentry-meta' => '$1：$2在$5上进行了“$4”的操作，触发了$3。采取的行动：$6；过滤器描述：$7（$8）',
