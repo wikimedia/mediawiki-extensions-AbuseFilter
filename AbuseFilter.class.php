@@ -1118,7 +1118,9 @@ class AbuseFilter {
 				$block->setBlocker( $filterUser );
 				$block->mReason = wfMsgForContent( 'abusefilter-blockreason', $rule_desc );
 				$block->isHardblock( false );
+				$block->isAutoblocking( true );
 				$block->prevents( 'createaccount', true );
+				$block->prevents( 'editownusertalk', false );
 				$block->mExpiry = SpecialBlock::parseExpiryInput( $wgAbuseFilterBlockDuration );
 
 				$block->insert();
@@ -1131,7 +1133,7 @@ class AbuseFilter {
 				} else {
 					$logParams[] = $wgAbuseFilterBlockDuration;
 				}
-				$logParams[] = 'nocreate, angry-autoblock';
+				$logParams[] = 'nocreate, autoblock';
 
 				$log = new LogPage( 'block' );
 				$log->addEntry( 'block',
@@ -1155,6 +1157,7 @@ class AbuseFilter {
 				$block->mReason = wfMsgForContent( 'abusefilter-blockreason', $rule_desc );
 				$block->isHardblock( false );
 				$block->prevents( 'createaccount', true );
+				$block->prevents( 'editownusertalk', false );
 				$block->mExpiry = SpecialBlock::parseExpiryInput( '1 week' );
 
 				$block->insert();
@@ -1163,7 +1166,7 @@ class AbuseFilter {
 				# Prepare log parameters
 				$logParams = array();
 				$logParams[] = 'indefinite';
-				$logParams[] = 'nocreate, angry-autoblock';
+				$logParams[] = 'nocreate, autoblock';
 
 				$log = new LogPage( 'block' );
 				$log->addEntry( 'block', Title::makeTitle( NS_USER, $range ),
