@@ -12660,6 +12660,7 @@ $messages['he'] = array(
 	'abusefilter-log-search-user' => 'משתמש:',
 	'abusefilter-log-search-filter' => 'מספר המסנן:',
 	'abusefilter-log-search-title' => 'כותרת:',
+	'abusefilter-log-search-wiki' => 'ויקי:',
 	'abusefilter-log-search-submit' => 'חיפוש',
 	'abusefilter-log-entry' => '$1: $2 הפעיל את מסנן ההשחתות כשביצע את הפעולה $3 על $4.
 פעולות שננקטו: $5;
@@ -12721,6 +12722,9 @@ $messages['he'] = array(
 	'abusefilter-list-options-deleted-only' => 'הצגת מסננים שנמחקו בלבד',
 	'abusefilter-list-options-deleted-hide' => 'הסתרת מסננים שנמחקו',
 	'abusefilter-list-options-deleted-show' => 'הכללת מסננים שנמחקו',
+	'abusefilter-list-options-scope' => 'אילו מסננים להציג:',
+	'abusefilter-list-options-scope-local' => 'ויקי מקומי',
+	'abusefilter-list-options-scope-global' => 'חוקים גלובליים',
 	'abusefilter-list-options-disabled' => 'מסננים שבוטלו:',
 	'abusefilter-list-options-hidedisabled' => 'הסתרת מסננים שבוטלו',
 	'abusefilter-list-options-submit' => 'עדכון',
@@ -12751,7 +12755,7 @@ $messages['he'] = array(
 	'abusefilter-edit-enabled' => 'הפעלת מסנן זה',
 	'abusefilter-edit-deleted' => 'סימון כמחוק',
 	'abusefilter-edit-hidden' => 'הסתרת פרטי מסנן זה מצפייה ציבורית',
-	'abusefilter-edit-global' => 'החלת מסנן זה באופן גלובלי',
+	'abusefilter-edit-global' => 'מסנן גלובלי',
 	'abusefilter-edit-rules' => 'תנאים:',
 	'abusefilter-edit-notes' => "הערות:
 :''(פרטי)",
