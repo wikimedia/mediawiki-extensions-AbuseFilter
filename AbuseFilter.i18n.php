@@ -18652,6 +18652,7 @@ De darfs nit en dä Meßbruchsfeltere ierem Logbooch en de Einzelheite erin loor
 	'abusefilter-log-search-user' => 'Metmaacher:',
 	'abusefilter-log-search-filter' => 'Felter-Räjel:',
 	'abusefilter-log-search-title' => 'Tittel:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Söhke!',
 	'abusefilter-log-entry' => "$1: {{GENDER:$2|dä|et|dä Metmaacher|dat|de}} $2 hät met „$3“ op dä Sigg $4
 dä Meßbruchsfelter op der Plan jeroofe, un dä däät dat: $5. De Rääjel explezeet: ''$6''.",
@@ -18713,6 +18714,9 @@ Name',
 	'abusefilter-list-options-deleted-only' => 'Bloß de fottjeschmeße Feltere zeije<br />',
 	'abusefilter-list-options-deleted-hide' => 'De fottjeschmeße Feltere ußblende<br />',
 	'abusefilter-list-options-deleted-show' => 'De fottjeschmeße Feltere metaanzeije<br />',
+	'abusefilter-list-options-scope' => 'Zeisch de Feltere vun:',
+	'abusefilter-list-options-scope-local' => 'Vun heh däm Wiki',
+	'abusefilter-list-options-scope-global' => 'Alljemein Rääjelle',
 	'abusefilter-list-options-disabled' => 'Ußjeschalldt Feltere:',
 	'abusefilter-list-options-hidedisabled' => 'ußblende',
 	'abusefilter-list-options-submit' => 'Lohß Jonn!',
@@ -19225,6 +19229,7 @@ Eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi Är Aktioun reagéiert 
 	'abusefilter-log-search-user' => 'Benotzer:',
 	'abusefilter-log-search-filter' => 'Nummer(ID) vum Filter:',
 	'abusefilter-log-search-title' => 'Titel:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Sichen',
 	'abusefilter-log-entry' => '$1: $2 huet e Mëssbrauchsfilter ausgeléist, bäi der Aktioun $3 op $4.
 Aktioun vum Filter: $5;
@@ -19285,6 +19290,8 @@ Beschreiwung vum Filter: $7 ($8)',
 	'abusefilter-list-options-deleted-only' => 'Nëmme geläschte Filtere weisen',
 	'abusefilter-list-options-deleted-hide' => 'Geläschte Filtere verstoppen',
 	'abusefilter-list-options-deleted-show' => 'Geläschte Filteren matabezéien',
+	'abusefilter-list-options-scope-local' => 'Lokal Wiki',
+	'abusefilter-list-options-scope-global' => 'Global Regelen',
 	'abusefilter-list-options-disabled' => 'Ausgeschalte Filteren',
 	'abusefilter-list-options-hidedisabled' => 'Ausgeschalte Filtere verstoppen',
 	'abusefilter-list-options-submit' => 'Aktualiséieren',
@@ -19298,6 +19305,7 @@ Beschreiwung vum Filter: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => 'Dir hutt net déi néideg Rechter fir de Status "autoconfirmed" zréckzesetzen.',
 	'abusefilter-reautoconfirm-done' => 'Dem Benotzerkont säi Status 2autoconfirmed" gouf zréckgesat',
 	'abusefilter-edit-subtitle' => 'Ännere vum Filter $1',
+	'abusefilter-edit-subtitle-new' => 'Filter uleeën',
 	'abusefilter-edit-oldwarning' => "<strong>Dir sidd amgaang eng al Versioun vum Filter z'änneren.
 D'Statistike sinn déi vun der leschter Versioun vum Filter.
 Wann Dir Är Ännerunge späichert dann iwwerschreiwt Dir all Ännerungen zënter der Versioun déi Dir elo ännert. </strong> &bull;
@@ -19317,7 +19325,7 @@ En huet méi wéi déi definiéiert Limit vun $1% vun den Aktiounen als schiedle
 	'abusefilter-edit-enabled' => 'Dëse Filter aktivéieren',
 	'abusefilter-edit-deleted' => 'Als geläscht markéieren',
 	'abusefilter-edit-hidden' => "Verstop d'Detailer vun dësem Filter virun der Ëffentlechkeet",
-	'abusefilter-edit-global' => 'Dëse Filter global uwenden',
+	'abusefilter-edit-global' => 'Globale Filter',
 	'abusefilter-edit-rules' => 'Conditiounen:',
 	'abusefilter-edit-notes' => "Notizen:
 :''(privat)''",
