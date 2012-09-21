@@ -1133,7 +1133,7 @@ class AbuseFilter {
 				} else {
 					$logParams[] = $wgAbuseFilterBlockDuration;
 				}
-				$logParams[] = 'nocreate, autoblock';
+				$logParams[] = 'nocreate';
 
 				$log = new LogPage( 'block' );
 				$log->addEntry( 'block',
@@ -1166,7 +1166,7 @@ class AbuseFilter {
 				# Prepare log parameters
 				$logParams = array();
 				$logParams[] = 'indefinite';
-				$logParams[] = 'nocreate, autoblock';
+				$logParams[] = 'nocreate';
 
 				$log = new LogPage( 'block' );
 				$log->addEntry( 'block', Title::makeTitle( NS_USER, $range ),
