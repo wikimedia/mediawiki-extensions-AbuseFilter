@@ -809,7 +809,7 @@ class AbuseFilter {
 		);
 
 		// Hack to avoid revealing IPs of people creating accounts
-		if ( !$wgUser->getId() && $action == 'createaccount' ) {
+		if ( !$wgUser->getId() && ( $action == 'createaccount' || $action == 'autocreateaccount' ) ) {
 			$log_template['afl_user_text'] = $vars->getVar( 'accountname' )->toString();
 		}
 
@@ -1727,7 +1727,7 @@ class AbuseFilter {
 	public static function getCreateVarsFromRCRow( $row ) {
 		$vars = new AbuseFilterVariableHolder;
 
-		$vars->setVar( 'ACTION', 'createaccount' );
+		$vars->setVar( 'ACTION', ( $row->rc_log_action == 'autocreate' ) ? 'autocreateaccount' : 'createaccount' );
 
 		$name = Title::makeTitle( $row->rc_namespace, $row->rc_title )->getText();
 		// Add user data if the account was created by a registered user
