@@ -6612,7 +6612,7 @@ Filterbeschreibung: $7 ($8)',
 	'abusefilter-log-detailslink' => 'Details',
 	'abusefilter-log-diff' => 'Unterschied',
 	'abusefilter-log-hidelink' => 'Sichtbarkeit ändern',
-	'abusefilter-log-details-legend' => 'Details für den Logbuch-Eintrag $1',
+	'abusefilter-log-details-legend' => 'Einzelheiten zum Logbuch-Eintrag $1',
 	'abusefilter-log-details-var' => 'Variable',
 	'abusefilter-log-details-val' => 'Wert',
 	'abusefilter-log-details-vars' => 'Aktionsparameter',
@@ -6936,7 +6936,7 @@ Weitere Erläuterungen gibt es bei Klick auf die Schaltfläche „Syntaxprüfung
 	'abusefilter-topnav-import' => 'Filter importieren',
 	'abusefilter-log-name' => 'Missbrauchsfilter-Logbuch',
 	'abusefilter-log-header' => 'Dieses Logbuch zeigt eine Zusammenfassung der Änderungen an Filtern.
-Für genauere Details, siehe [[Special:AbuseFilter/history|die Liste]] der letzten Änderungen an Filtern.',
+Für genauere Einzelheiten, siehe [[Special:AbuseFilter/history|die Liste]] der letzten Änderungen an Filtern.',
 	'abusefilter-log-entry-modify' => 'änderte $1 ($2)',
 	'abusefilter-log-noresults' => 'Keine Ergebnisse',
 	'abusefilter-diff-title' => 'Unterschied zwischen Versionen',
@@ -9149,6 +9149,7 @@ Copia desde el cuadro de texto que aparece, y pegalo dentro de este cuadro de te
 
 /** Estonian (eesti)
  * @author Avjoska
+ * @author Morel
  * @author Oop
  * @author Pikne
  */
@@ -9170,15 +9171,15 @@ Kui arvad muudatuse asjaliku olevat, võta palun teha soovitud muudatuse asjus a
 Sinu toimingule vastanud väärtarvitusfiltri reegli lühikirjeldus: $1',
 	'abusefilter-blocked-display' => 'See toiming on automaatselt kahjulikuks arvatud
 ja sul ei lastud seda sooritada.
-Peale selle, kaitsmaks {{GRAMMAR:partitive|{{SITENAME}}}} on sinu konto ja kõikide seostuvate IP-aadresside redigeerimisõigus blokeeritud.
-Kui tegu on eksitusega, võta palun administraatoriga ühendust.
+Kaitsmaks {{GRAMMAR:partitive|{{SITENAME}}}} on lisaks sellele sinu konto ja kõikide seostuvate IP-aadresside redigeerimisõigus blokeeritud.
+Kui tegu on eksitusega, võta palun ühendust administraatoriga.
 Sinu toimingule vastanud väärtarvitusfiltri reegli lühikirjeldus: $1',
 	'abusefilter-degrouped' => 'See toiming on automaatselt kahjulikuks arvatud.
-Toiming on keelatud ja kuna su kontot võidakse kuritarvitada, on sellelt kõik õigused ära võetud.
+Toiming on keelatud, ja kuna su kontot võidakse kuritarvitada, on sellelt kõik õigused ära võetud.
 Kui tegu on eksitusega, võta palun õiguste tagasisaamiseks bürokraadiga ühendust ja selgita talle, mis põhjusel muudatust teha soovisid.
 Sinu toimingule vastanud väärtarvitusfiltri reegli lühikirjeldus: $1',
 	'abusefilter-autopromote-blocked' => 'See toiming on automaatselt kahjulikuks arvatud ja on seetõttu keelatud.
-Peale selle, turvameetmena on mõned kinnitatud kasutajatele vaikimisi antud õigused sinu kontolt ajutiselt ära võetud.
+Lisaks on turvameetmena mõned kinnitatud kasutajatele vaikimisi antud õigused sinu kontolt ajutiselt ära võetud.
 Sinu toimingule vastanud väärtarvitusfiltri reegli lühikirjeldus: $1',
 	'abusefilter-blocker' => 'Väärtarvitusfilter',
 	'abusefilter-blockreason' => 'Väärtarvitusfilter blokeeris su automaatselt.
@@ -9316,7 +9317,7 @@ See ületas $1% toimingutele vastamise piirnormi.",
 	'abusefilter-edit-action-warn' => 'Päästa toimingud valla pärast kasutaja hoiatamist',
 	'abusefilter-edit-action-disallow' => 'Takista kasutajal antud toimingu sooritamine',
 	'abusefilter-edit-action-flag' => 'Märgi muudatus väärtarvituslogis',
-	'abusefilter-edit-action-blockautopromote' => 'Võta kasutajalt automaatselt kinnitatud kasutaja õigsed ära',
+	'abusefilter-edit-action-blockautopromote' => 'Võta kasutajalt automaatselt kinnitatud kasutaja õigused ära',
 	'abusefilter-edit-action-degroup' => 'Eemalda kasutaja kõigist eesõigustatud rühmadest',
 	'abusefilter-edit-action-block' => 'Keela kasutajal ja/või IP-aadressil redigeerimine',
 	'abusefilter-edit-action-throttle' => 'Päästa toimingud vaid siis valla, kui kasutaja ületab limiidi',
