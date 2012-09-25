@@ -283,7 +283,7 @@ $specialPageAliases['myv'] = array(
 	'AbuseFilter' => array( 'АТевсНолдамоньФильтра' ),
 );
 
-/** Norwegian Bokmål (‪norsk (bokmål)‬) */
+/** Norwegian Bokmål (norsk (bokmål)‎) */
 $specialPageAliases['nb'] = array(
 	'AbuseLog' => array( 'Misbrukslogg' ),
 	'AbuseFilter' => array( 'Misbruksfilter' ),
@@ -301,7 +301,7 @@ $specialPageAliases['nl'] = array(
 	'AbuseFilter' => array( 'Filter', 'Misbruikfilter' ),
 );
 
-/** Norwegian Nynorsk (‪norsk (nynorsk)‬) */
+/** Norwegian Nynorsk (norsk (nynorsk)‎) */
 $specialPageAliases['nn'] = array(
 	'AbuseLog' => array( 'Misbrukslogg' ),
 	'AbuseFilter' => array( 'Misbruksfilter' ),
@@ -409,13 +409,13 @@ $specialPageAliases['yue'] = array(
 	'AbuseFilter' => array( '濫用過濾器' ),
 );
 
-/** Simplified Chinese (‪中文（简体）‬) */
+/** Simplified Chinese (中文（简体）‎) */
 $specialPageAliases['zh-hans'] = array(
 	'AbuseLog' => array( '滥用日志', '过滤日志' ),
 	'AbuseFilter' => array( '防滥用过滤器', '滥用过滤器' ),
 );
 
-/** Traditional Chinese (‪中文（繁體）‬) */
+/** Traditional Chinese (中文（繁體）‎) */
 $specialPageAliases['zh-hant'] = array(
 	'AbuseLog' => array( '過濾日誌' ),
 	'AbuseFilter' => array( '防濫用過濾器' ),
