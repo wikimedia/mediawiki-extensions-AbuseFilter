@@ -4329,6 +4329,7 @@ Diskrivadenn ar sil : $7 ($8)',
 	'abusefilter-list-options-deleted-only' => 'Diskouez ar siloù dilamet hepken',
 	'abusefilter-list-options-deleted-hide' => 'Kuzhar ar siloù dilamet',
 	'abusefilter-list-options-deleted-show' => 'Enklozañ ar siloù dilamet',
+	'abusefilter-list-options-scope-global' => 'Reolennoù hollek',
 	'abusefilter-list-options-disabled' => 'Siloù diweredekaet :',
 	'abusefilter-list-options-hidedisabled' => 'Kuzhat ar siloù diweredekaet',
 	'abusefilter-list-options-submit' => 'Hizivaat',
@@ -21541,7 +21542,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-enabled' => 'ഈ അരിപ്പ സജ്ജമാക്കുക',
 	'abusefilter-edit-deleted' => 'മായ്ച്ചതായി അടയാളപ്പെടുത്തുക',
 	'abusefilter-edit-hidden' => 'പൊതുജന ദൃഷ്ടിയിൽ നിന്നും അരിപ്പയുടെ വിവരങ്ങൾ മറയ്ക്കുക',
-	'abusefilter-edit-global' => 'ഈ അരിപ്പ ആഗോളമായി പ്രാവർത്തികമാക്കുക',
+	'abusefilter-edit-global' => 'ആഗോള അരിപ്പ',
 	'abusefilter-edit-rules' => 'ഉപാധികൾ:',
 	'abusefilter-edit-notes' => "കുറിപ്പുകൾ:
 :''(സ്വകാര്യം)''",
@@ -30200,6 +30201,7 @@ $messages['scn'] = array(
 	'abusefilter-examine-title' => 'Titulu di la paggina:',
 	'abusefilter-examine-submit' => 'Cerca',
 	'abusefilter-topnav-home' => 'Paggina principali',
+	'abusefilter-diff-title' => 'Diffirenzi ntra li virsiuni',
 );
 
 /** Northern Sami (sámegiella)
@@ -32081,7 +32083,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-import-submit' => 'Увези податке',
 );
 
-/** Serbian (Latin script) (‪srpski (latinica)‬)
+/** Serbian (Latin script) (srpski (latinica)‎)
  * @author FriedrickMILBarbarossa
  * @author Michaello
  * @author Rancher
@@ -32155,6 +32157,7 @@ Opis povređenog pravila: $1',
 	'abusefilter-list-hitcount' => 'Brojač pogodaka',
 	'abusefilter-list-edit' => 'Izmeni',
 	'abusefilter-list-details' => 'Detalji',
+	'abusefilter-list-limit' => 'Stavki po stranici:',
 	'abusefilter-list-lastmodified' => 'Poslednja izmena',
 	'abusefilter-hidden' => 'Privatno',
 	'abusefilter-unhidden' => 'Javno',
@@ -32335,11 +32338,15 @@ Zamolite korisnika s određenim ovlašćenjem da napravi izmene umesto vas.',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Tekst stare stranice, bez ikakvih obeležavanja',
 	'abusefilter-edit-builder-vars-old-links' => 'Veze na stranici, pre uređivanja',
 	'abusefilter-edit-builder-vars-old-html' => 'Vikitekst stare stranice, raščlanjen u HTML',
+	'abusefilter-edit-builder-vars-file-sha1' => 'Disperzija SHA1 sadržaja datoteke',
+	'abusefilter-filter-log' => 'Skorašnje izmene filtera',
+	'abusefilter-history-foruser' => 'Izmene od $1',
 	'abusefilter-history-hidden' => 'Sakriveno',
 	'abusefilter-history-enabled' => 'Omogućeno',
 	'abusefilter-history-global' => 'Globalno',
 	'abusefilter-history-timestamp' => 'Vreme',
 	'abusefilter-history-user' => 'Korisnik',
+	'abusefilter-history-public' => 'Javni opis filtera',
 	'abusefilter-history-flags' => 'Zastavice',
 	'abusefilter-history-filter' => 'Pravilo filtera',
 	'abusefilter-history-comments' => 'Komentari',
@@ -32355,8 +32362,11 @@ Zamolite korisnika s određenim ovlašćenjem da napravi izmene umesto vas.',
 	'abusefilter-exception-unexpectedatend' => 'Neočekivano "$2" na karakteru $1.',
 	'abusefilter-exception-expectednotfound' => 'Očekuje se $2 na karakteru $1, nije pronađen (umesto toga nađeno $3 $4).',
 	'abusefilter-exception-unrecognisedkeyword' => 'Nepoznata ključna reč $2 na karakteru $1.',
+	'abusefilter-exception-unexpectedtoken' => 'Neočekivani žeton „$3“ (od vrste $2) kod znaka $1.',
 	'abusefilter-exception-unclosedstring' => 'Nezatvoren string počinje na karakteru $1.',
 	'abusefilter-exception-invalidoperator' => 'Neispravan operator "$2" na karakteru $1.',
+	'abusefilter-exception-unrecognisedtoken' => 'Neprepoznati žeton „$2“ kod znaka $1.',
+	'abusefilter-exception-noparams' => 'Nema navedenih parametara za funkciju „$2“ kod znaka $1.',
 	'abusefilter-exception-dividebyzero' => 'Nedozvoljen pokušaj deljenja $2 nulom, na karakteru $1.',
 	'abusefilter-exception-unrecognisedvar' => 'Nepoznata promenljiva $2 na karakteru $1',
 	'abusefilter-exception-regexfailure' => 'Greška u regularnom izrzu "$3" na karakteru $1: "$2"',
@@ -32364,6 +32374,7 @@ Zamolite korisnika s određenim ovlašćenjem da napravi izmene umesto vas.',
 	'abusefilter-exception-notlist' => 'Zahtevanje člana niza od nečega što nije niz, na karakteru $1.',
 	'abusefilter-action-tag' => 'Oznaka',
 	'abusefilter-action-warn' => 'Upozori',
+	'abusefilter-action-blockautopromote' => 'Blokiraj samounapređivanje',
 	'abusefilter-action-block' => 'Blokiraj',
 	'abusefilter-action-degroup' => 'Izbriši iz grupa',
 	'abusefilter-action-rangeblock' => 'Blok po opsegu',
@@ -32371,6 +32382,8 @@ Zamolite korisnika s određenim ovlašćenjem da napravi izmene umesto vas.',
 	'abusefilter-revert-title' => 'Vrati sve izmene po filteru $1',
 	'abusefilter-revert-preview-item' => '$1: $2 napravio $3 u $4.
 Akcije koje će biti vraćene: $5 ($6)',
+	'abusefilter-revert-periodstart' => 'Početak perioda:',
+	'abusefilter-revert-periodend' => 'Kraj perioda:',
 	'abusefilter-revert-search' => 'Izaberi akcije',
 	'abusefilter-revert-filter' => 'Filter:',
 	'abusefilter-revert-confirm' => 'Potvrdi',
@@ -32397,16 +32410,23 @@ Akcije koje će biti vraćene: $5 ($6)',
 	'abusefilter-examine-nomatch' => 'Filter nije odgovarao ovoj izmeni.',
 	'abusefilter-examine-syntaxerror' => 'Filter ima neispravnu sintaksu',
 	'abusefilter-examine-notfound' => 'Izmena koju ste zatražili nije nađena.',
+	'abusefilter-examine-incompatible' => 'Izmena koju ste tražili nije podržana od filtera protiv zloupotrebe',
 	'abusefilter-examine-noresults' => 'Nisu nađeni pezultati za parametre pretrage koje ste zadali.',
+	'abusefilter-topnav' => "'''Navigacija po filteru protiv zloupotrebe'''",
 	'abusefilter-topnav-home' => 'Na početak',
+	'abusefilter-topnav-test' => 'Grupno isprobavanje',
 	'abusefilter-topnav-examine' => 'Ispitaj prošle izmene',
+	'abusefilter-topnav-log' => 'Istorija zloupotrebe',
 	'abusefilter-topnav-tools' => 'Alati za debagovanje',
 	'abusefilter-topnav-import' => 'Uvezi filter',
 	'abusefilter-log-name' => 'Dnevnik filtera protiv zloupotrebe',
 	'abusefilter-log-entry-modify' => 'izmenio $1 ($2)',
+	'abusefilter-log-noresults' => 'Nema rezultata',
 	'abusefilter-diff-title' => 'Razlike između verzija',
+	'abusefilter-diff-item' => 'Stavka',
 	'abusefilter-diff-version' => 'Verzija iz $1, od $2',
 	'abusefilter-diff-info' => 'Osnovne infomacije',
+	'abusefilter-diff-pattern' => 'Uslovi filtera',
 	'abusefilter-diff-backhistory' => 'Povratak na istoriju filtera',
 	'abusefilter-import-submit' => 'Uvezi podatke',
 );
@@ -38208,7 +38228,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-group-default' => '默认',
 );
 
-/** Traditional Chinese (‪中文（繁體）‬)
+/** Traditional Chinese (中文（繁體）‎)
  * @author Alexsh
  * @author Anakmalaysia
  * @author Bencmq
@@ -38273,6 +38293,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-log-search-user' => '使用者：',
 	'abusefilter-log-search-filter' => '過濾器編號：',
 	'abusefilter-log-search-title' => '標題：',
+	'abusefilter-log-search-wiki' => '維基名：',
 	'abusefilter-log-search-submit' => '搜尋',
 	'abusefilter-log-entry' => '$2於$1觸發防濫用過濾器，於$4執行$3操作。
 採取的行動：$5；
