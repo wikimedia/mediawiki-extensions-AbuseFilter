@@ -1622,7 +1622,7 @@ class AbuseFilter {
 		list( $row2, $actions2 ) = $version_2;
 
 		foreach ( $compareFields as $field ) {
-			if ( $row1->$field != $row2->$field ) {
+			if ( !isset( $row2->$field ) || $row1->$field != $row2->$field ) {
 				$differences[] = $field;
 			}
 		}
