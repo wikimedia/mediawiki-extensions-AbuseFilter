@@ -32,6 +32,12 @@ $specialPageAliases['as'] = array(
 	'AbuseFilter' => array( 'অপব্যৱহাৰৰ_চেকনী' ),
 );
 
+/** Bashkir (башҡортса) */
+$specialPageAliases['ba'] = array(
+	'AbuseLog' => array( 'Насарға_ҡулланыуҙар_журналы' ),
+	'AbuseFilter' => array( 'Насарға_ҡулланыуҙар_фильтры' ),
+);
+
 /** Bulgarian (български) */
 $specialPageAliases['bg'] = array(
 	'AbuseLog' => array( 'Дневник_на_филтъра' ),
