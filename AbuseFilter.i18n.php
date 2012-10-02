@@ -3160,7 +3160,7 @@ $messages['be'] = array(
 	'abusefilter-revert-confirm' => 'Пацвердзіць',
 );
 
-/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (беларуская (тарашкевіца)‎)
  * @author Cesco
  * @author EugeneZelenko
  * @author Jim-by
@@ -6954,7 +6954,21 @@ Kopiere den dort erscheinenden Code, füge ihn hier ein und klicke dann auf die 
 	'abusefilter-group-default' => 'Standard',
 );
 
-/** German (formal address) (‪Deutsch (Sie-Form)‬)
+/** Swiss High German (Schweizer Hochdeutsch)
+ * @author Filzstift
+ * @author Geitost
+ */
+$messages['de-ch'] = array(
+	'abusefilter-log-entry' => '$1: $2 löste durch die Aktion «$3» auf «$4» einen Missbrauchsfilter aus.
+Filteraktion: «$5»;
+Filterbeschreibung: «$6»',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 löste durch die Aktion «$4» auf die Seite «$5» den $3 aus.
+Ergriffene Massnahmen: $6;
+Filterbeschreibung: $7 ($8)',
+	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Leerschläge entfernen (rmwhitespace)',
+);
+
+/** German (formal address) (Deutsch (Sie-Form)‎)
  * @author ChrisiPK
  * @author Giftpflanze
  * @author Kghbln
@@ -11511,13 +11525,13 @@ $messages['ga'] = array(
 	'abusefilter-group-default' => 'réamhshocrú',
 );
 
-/** Simplified Gan script (‪赣语（简体）‬) */
+/** Simplified Gan script (赣语（简体）‎) */
 $messages['gan-hans'] = array(
 	'abusefilter-log-search-submit' => '寻吖',
 	'abusefilter-examine-submit' => '寻吖',
 );
 
-/** Traditional Gan script (‪贛語（繁體）‬)
+/** Traditional Gan script (贛語（繁體）‎)
  * @author Symane
  */
 $messages['gan-hant'] = array(
@@ -12583,7 +12597,7 @@ $messages['gv'] = array(
 	'abusefilter-list-status' => 'Staydys',
 );
 
-/** Hausa (هَوُسَ) */
+/** Hausa (Hausa) */
 $messages['ha'] = array(
 	'abusefilter-log-search-submit' => 'Nema',
 	'abusefilter-log-hide-reason' => 'Dalili:',
@@ -17928,7 +17942,7 @@ $messages['kiu'] = array(
 	'abusefilter-log-search-submit' => 'Cı feteliye',
 );
 
-/** Kazakh (Cyrillic script) (‪қазақша (кирил)‬)
+/** Kazakh (Cyrillic script) (қазақша (кирил)‎)
  * @author GaiJin
  */
 $messages['kk-cyrl'] = array(
@@ -19030,7 +19044,7 @@ Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilte
 	'abusefilter-group-default' => 'Shtandatt',
 );
 
-/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
+/** Kurdish (Latin script) (Kurdî (latînî)‎)
  * @author George Animal
  * @author Ghybu
  */
@@ -22795,7 +22809,7 @@ $messages['nah'] = array(
 	'abusefilter-topnav-home' => 'Pèwalòyàn',
 );
 
-/** Norwegian Bokmål (‪norsk (bokmål)‬)
+/** Norwegian Bokmål (norsk (bokmål)‎)
  * @author Danmichaelo
  * @author Event
  * @author Guaca
@@ -24366,7 +24380,7 @@ Kopieer de tekst die in het bewerkingsvenster verschijnt naar dit bewerkingsvens
 	'abusefilter-group-default' => 'Standaard',
 );
 
-/** ‪Nederlands (informeel)‬ (‪Nederlands (informeel)‬)
+/** Nederlands (informeel)‎ (Nederlands (informeel)‎)
  * @author Siebrand
  */
 $messages['nl-informal'] = array(
@@ -24421,7 +24435,7 @@ Klik "{{int:abusefilter-edit-export}}i" bij "{{int:abusefilter-edit-tools}}".
 Kopieer de tekst die in het bewerkingsvenster verschijnt naar dit bewerkingsvenster en klik dan op "{{int:abusefilter-import-submit}}".',
 );
 
-/** Norwegian Nynorsk (‪norsk (nynorsk)‬)
+/** Norwegian Nynorsk (norsk (nynorsk)‎)
  * @author Gunnernett
  * @author Harald Khan
  * @author Nghtwlkr
@@ -31750,7 +31764,7 @@ E pritshme $3 {{PLURAL:$3|argumenti|argumentet}}, mori $4',
 	'abusefilter-import-submit' => 'Importo të dhëna',
 );
 
-/** Serbian (Cyrillic script) (‪српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (српски (ћирилица)‎)
  * @author FriedrickMILBarbarossa
  * @author Rancher
  * @author Sasa Stefanovic
@@ -37842,7 +37856,7 @@ $messages['zh-cn'] = array(
 	'abusefilter-edit-builder-vars-movedfrom-ns' => '要移动的源名字空间',
 );
 
-/** Simplified Chinese (‪中文（简体）‬)
+/** Simplified Chinese (中文（简体）‎)
  * @author Anakmalaysia
  * @author Bbqyee
  * @author Bencmq
