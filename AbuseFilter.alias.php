@@ -373,6 +373,12 @@ $specialPageAliases['sv'] = array(
 	'AbuseFilter' => array( 'Missbruksfilter' ),
 );
 
+/** Thai (ไทย) */
+$specialPageAliases['th'] = array(
+	'AbuseLog' => array( 'ปูมการละเมิด' ),
+	'AbuseFilter' => array( 'ตัวกรองการละเมิด' ),
+);
+
 /** Tagalog (Tagalog) */
 $specialPageAliases['tl'] = array(
 	'AbuseLog' => array( 'Talaan_ng_pang-aabuso' ),
