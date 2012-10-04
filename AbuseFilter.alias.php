@@ -69,8 +69,8 @@ $specialPageAliases['cs'] = array(
 
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
-	'AbuseLog' => array( 'Missbrauchsfilter-Logbuch', 'Missbrauchfilter-Logbuch' ),
-	'AbuseFilter' => array( 'Missbrauchsfilter', 'Missbrauchfilter' ),
+	'AbuseLog' => array( 'Missbrauchsfilter-Logbuch' ),
+	'AbuseFilter' => array( 'Missbrauchsfilter' ),
 );
 
 /** Zazaki (Zazaki) */
