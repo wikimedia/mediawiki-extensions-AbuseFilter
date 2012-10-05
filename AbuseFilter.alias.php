@@ -20,6 +20,12 @@ $specialPageAliases['ar'] = array(
 	'AbuseFilter' => array( 'مرشح_الإساءة', 'فلتر_الإساءة' ),
 );
 
+/** Aramaic (ܐܪܡܝܐ) */
+$specialPageAliases['arc'] = array(
+	'AbuseLog' => array( 'ܡܟܬܒܘܬܐ_ܕܚܘܒܠܐ' ),
+	'AbuseFilter' => array( 'ܡܨܦܝܢܝܬܐ_ܕܚܘܒܠܐ' ),
+);
+
 /** Egyptian Spoken Arabic (مصرى) */
 $specialPageAliases['arz'] = array(
 	'AbuseLog' => array( 'سجل_الاساءه' ),
