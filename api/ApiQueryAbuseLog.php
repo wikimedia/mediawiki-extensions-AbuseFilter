@@ -108,7 +108,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		foreach ( $res as $row ) {
 			if ( ++$count > $params['limit'] ) {
 				// We've had enough
-				$this->setContinueEnumParameter( 'start', wfTimestamp( TS_ISO_8601, $row->afl_timestamp ) );
+				$ts = new MWTimestamp( $row->afl_timestamp );
+				$this->setContinueEnumParameter( 'start', $ts->getTimestamp( TS_ISO_8601 ) );
 				break;
 			}
 			if ( SpecialAbuseLog::isHidden($row) &&
@@ -141,7 +142,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				$entry['result'] = $row->afl_actions;
 			}
 			if ( $fld_timestamp ) {
-				$entry['timestamp'] = wfTimestamp( TS_ISO_8601, $row->afl_timestamp );
+				$ts = new MWTimestamp( $row->afl_timestamp );
+				$entry['timestamp'] = $ts->getTimestamp( TS_ISO_8601 );
 			}
 			if ( $fld_details ) {
 				$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
@@ -162,7 +164,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			if ( $entry ) {
 				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $entry );
 				if ( !$fit ) {
-					$this->setContinueEnumParameter( 'start', wfTimestamp( TS_ISO_8601, $row->afl_timestamp ) );
+					$ts = new MWTimestamp( $row->afl_timestamp );
+					$this->setContinueEnumParameter( 'start', $ts->getTimestamp( TS_ISO_8601 ) );
 					break;
 				}
 			}

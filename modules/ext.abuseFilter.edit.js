@@ -1,41 +1,29 @@
-/**
- * AbuseFilter editing stuff
- */
+// AbuseFilter editing stuff
 ( function( $, mw ) {
-	/**
-	 * Filter textarea
-	 *
-	 * @var {jQuery}
-	 */
-	var $filterBox = [];
+	'use strict';
 
-	/**
-	 * Reference to this
-	 *
-	 * @var {this}
-	 */
-	var that = this;
+	// Filter textarea
+	// @var {jQuery}
+	var $filterBox = [],
+		// Reference to this
+		// @var {this}
+		that = this,
+		// Returns the currently selected warning message
+		// @returns {String} current warning message
+		getCurrentWarningMessage = function() {
+			var message = $('#mw-abusefilter-warn-message-existing').val();
 
-	/**
-	 * Returns the currently selected warning message
-	 *
-	 * @returns {String} current warning message
-	 */
-	var getCurrentWarningMessage = function() {
-		var message = $('#mw-abusefilter-warn-message-existing').val();
+			if ( message === 'other' ) {
+				message = $('#mw-abusefilter-warn-message-other').val();
+			}
 
-		if ( message == 'other' ) {
-			message = $('#mw-abusefilter-warn-message-other').val();
-		}
+			return message;
+		};
 
-		return message;
-	};
-
-	/**
-	 * Sends the current filter text to be checked for syntax issues
-	 */
+	// Sends the current filter text to be checked for syntax issues
 	this.doSyntaxCheck = function() {
 		var filter = $filterBox.val();
+
 		$( this ).injectSpinner( 'abusefilter-syntaxcheck' );
 		this.disabled = true;
 		$.getJSON(
@@ -47,11 +35,8 @@
 		);
 	};
 
-	/**
-	 * Takes the data retrieved in doSyntaxCheck and processes it
-	 *
-	 * @param {Object} data Data returned from the AJAX request
-	 */
+	// Takes the data retrieved in doSyntaxCheck and processes it
+	// @param {Object} data Data returned from the AJAX request
 	this.processSyntaxResult = function( data ) {
 		data = data.abusefilterchecksyntax;
 		$.removeSpinner( 'abusefilter-syntaxcheck' );
@@ -68,13 +53,14 @@
 			return;
 		}
 
-		if ( data.status == 'ok' ) {
+		if ( data.status === 'ok' ) {
 			// Successful
 			$el.text( mw.msg( 'abusefilter-edit-syntaxok' ) )
 				.attr( 'class', 'mw-abusefilter-syntaxresult-ok' )
 				.data( 'syntaxOk', true );
 		} else {
 			var msg = mw.message( 'abusefilter-edit-syntaxerr', data.message ).toString();
+
 			$el.text( msg )
 				.attr( 'class', 'mw-abusefilter-syntaxresult-error' )
 				.data( 'syntaxOk', false );
@@ -85,14 +71,12 @@
 		}
 	};
 
-	/**
-	 * Adds text to the filter textarea
-	 *
-	 * Fired by a change event rom the #wpFilterBuilder dropdown
-	 */
+	// Adds text to the filter textarea
+	// Fired by a change event rom the #wpFilterBuilder dropdown
 	this.addText = function() {
 		var $filterBuilder = $( '#wpFilterBuilder' );
-		if ( $filterBuilder.prop( 'selectedIndex' ) == 0 ) {
+
+		if ( $filterBuilder.prop( 'selectedIndex' ) === 0 ) {
 			return;
 		}
 
@@ -102,13 +86,11 @@
 		$filterBuilder.prop( 'selectedIndex', 0 );
 	};
 
-	/**
-	 * Fetches a filter from the API and inserts it into the filter box
-	 */
+	// Fetches a filter from the API and inserts it into the filter box
 	this.fetchFilter = function() {
 		var filterId = $( '#mw-abusefilter-load-filter' ).val();
 
-		if ( filterId == '' ) {
+		if ( filterId === '' ) {
 			return;
 		}
 
@@ -131,15 +113,13 @@
 		);
 	};
 
-	/**
-	 * Cycles through all action checkboxes and hides parameter divs
-	 * that don't have checked boxes
-	 */
+	// Cycles through all action checkboxes and hides parameter divs
+	// that don't have checked boxes
 	this.hideDeselectedActions = function() {
 		$( 'input.mw-abusefilter-action-checkbox' ).each( function() {
 			// mw-abusefilter-action-checkbox-{$action}
-			var action = this.id.substr( 31 );
-			var $params = $( '#mw-abusefilter-' + action + '-parameters' );
+			var action = this.id.substr( 31 ),
+				$params = $( '#mw-abusefilter-' + action + '-parameters' );
 
 			if ( $params.length ) {
 				if ( this.checked ) {
@@ -151,9 +131,7 @@
 		} );
 	};
 
-	/**
-	 * Fetches the warning message selected for previewing
-	 */
+	// Fetches the warning message selected for previewing
 	this.previewWarnMessage = function() {
 		var message = getCurrentWarningMessage();
 
@@ -167,23 +145,20 @@
 		);
 	};
 
-	/**
-	 * Redirects browser to the warning message for editing
-	 */
+	// Redirects browser to the warning message for editing
 	this.editWarnMessage = function() {
 		var message = getCurrentWarningMessage();
 
 		window.location = mw.config.get( 'wgScript' ) + '?title=MediaWiki:' +  mw.util.wikiUrlencode( message ) + '&action=edit';
 	};
 
-	/**
-	 * On ready initialization
-	 */
+	// On ready initialization
 	$( function( $ ) {
 		$filterBox = $( '#' + mw.config.get( 'abuseFilterBoxName' ) );
 		// Hide the syntax ok message when the text changes
 		$filterBox.keyup( function() {
 			var $el = $( '#mw-abusefilter-syntaxresult' );
+
 			if ( $el.data( 'syntaxOk' ) ) {
 				$el.hide();
 			}
@@ -205,17 +180,20 @@
 			$exportBox.hide();
 		} );
 
-		$('#mw-abusefilter-edit-group-input').change( function() {
-			var newVal = mw.config.get('wgAbuseFilterDefaultWarningMessage')[$(this).val()];
-			if ( !$('#mw-abusefilter-action-warn-checkbox').is(':checked') ) {
-				if ($('#mw-abusefilter-warn-message-existing').find("option[value='"+newVal+"']").length ) {
-					$('#mw-abusefilter-warn-message-existing').val(newVal);
-					$('#mw-abusefilter-warn-message-other').val('');
+		$( '#mw-abusefilter-edit-group-input' ).change( function () {
+			var newVal = mw.config.get( 'wgAbuseFilterDefaultWarningMessage' )[$( this ).val()];
+
+			if ( !$( '#mw-abusefilter-action-warn-checkbox' ).is( ':checked' ) ) {
+				var $afWarnMessageExisting = $( '#mw-abusefilter-warn-message-existing' ),
+					$afWarnMessageOther = $( '#mw-abusefilter-warn-message-other' );
+				if ( $afWarnMessageExisting.find( "option[value='" + newVal + "']" ).length ) {
+					$afWarnMessageExisting.val( newVal );
+					$afWarnMessageOther.val( '' );
 				} else {
-					$('#mw-abusefilter-warn-message-existing').val('other');
-					$('#mw-abusefilter-warn-message-other').val(newVal);
+					$afWarnMessageExisting.val( 'other' );
+					$afWarnMessageOther.val( newVal );
 				}
 			}
-		});
+		} );
 	} );
-})( jQuery, mediaWiki );
+} ( jQuery, mediaWiki ) );

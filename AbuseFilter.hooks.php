@@ -1,7 +1,4 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die();
-}
 
 class AbuseFilterHooks {
 	static $successful_action_vars = false;
@@ -139,6 +136,7 @@ class AbuseFilterHooks {
 	 * Check if two article objects are identical or have an identical WikiPage
 	 * @param $page1 Article|WikiPage
 	 * @param $page2 Article|WikiPage
+	 * @return bool
 	 */
 	protected static function identicalPageObjects( $page1, $page2 ) {
 		if ( 	( class_exists('MWInit') && MWInit::methodExists( 'Article', 'getPage' ) ) ||
@@ -228,11 +226,14 @@ class AbuseFilterHooks {
 	 * @return bool
 	 */
 	private static function checkNewAccount( $user, &$message, $autocreate ) {
-		if ( $user->getName() == wfMsgForContent( 'abusefilter-blocker' ) ) {
-			$message = wfMsg( 'abusefilter-accountreserved' );
+		if ( $user->getName() == wfMessage( 'abusefilter-blocker' )->inContentLanguage()->text() ) {
+			$message = wfMessage( 'abusefilter-accountreserved' )->text();
+
 			return false;
 		}
+
 		$vars = new AbuseFilterVariableHolder;
+
 		// Add variables only for a registered user, so IP addresses of
 		// new users won't be exposed
 		global $wgUser;
@@ -385,7 +386,7 @@ class AbuseFilterHooks {
 	 * @param $updater DatabaseUpdater
 	 */
 	public static function createAbuseFilterUser( $updater ) {
-		$user = User::newFromName( wfMsgForContent( 'abusefilter-blocker' ) );
+		$user = User::newFromName( wfMessage( 'abusefilter-blocker' )->inContentLanguage()->text() );
 
 		if ( $user && !$updater->updateRowExists( 'create abusefilter-blocker-user' ) ) {
 			if ( !$user->getId() ) {
@@ -416,12 +417,11 @@ class AbuseFilterHooks {
 		global $wgUser;
 		if ( $wgUser->isAllowed( 'abusefilter-log' ) ) {
 				$tools[] = Linker::link(
-				SpecialPage::getTitleFor( 'AbuseLog' ),
-				wfMsg( 'abusefilter-log-linkoncontribs' ),
-				array( 'title' =>
-					wfMsgExt( 'abusefilter-log-linkoncontribs-text', 'parseinline' ) ),
-				array( 'wpSearchUser' => $nt->getText() )
-			);
+					SpecialPage::getTitleFor( 'AbuseLog' ),
+					wfMessage( 'abusefilter-log-linkoncontribs' )->text(),
+					array( 'title' => wfMessage( 'abusefilter-log-linkoncontribs-text' )->parse() ),
+					array( 'wpSearchUser' => $nt->getText() )
+				);
 		}
 		return true;
 	}

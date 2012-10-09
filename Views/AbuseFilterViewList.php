@@ -13,7 +13,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		// New filter button
 		if ( $this->canEdit() ) {
 			$title = $this->getTitle( 'new' );
-			$link = Linker::link( $title, wfMsg( 'abusefilter-new' ) );
+			$link = Linker::link( $title, $this->msg( 'abusefilter-new' )->escaped() );
 			$links = Xml::tags( 'p', null, $link ) . "\n";
 			$out->addHTML( $links );
 		}
@@ -48,7 +48,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 		$output = '';
 		$output .= Xml::element( 'h2', null,
-			wfMsgExt( 'abusefilter-list', array( 'parseinline' ) ) );
+			$this->msg( 'abusefilter-list' )->parse() );
 
 		$pager = new AbuseFilterPager( $this, $conds );
 
@@ -60,21 +60,21 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$fields = array();
 		$fields['abusefilter-list-options-deleted'] =
 			Xml::radioLabel(
-				wfMsg( 'abusefilter-list-options-deleted-show' ),
+				$this->msg( 'abusefilter-list-options-deleted-show' )->text(),
 				'deletedfilters',
 				'show',
 				'mw-abusefilter-deletedfilters-show',
 				$deleted == 'show'
 			) .
 			Xml::radioLabel(
-				wfMsg( 'abusefilter-list-options-deleted-hide' ),
+				$this->msg( 'abusefilter-list-options-deleted-hide' )->text(),
 				'deletedfilters',
 				'hide',
 				'mw-abusefilter-deletedfilters-hide',
 				$deleted == 'hide'
 			) .
 			Xml::radioLabel(
-				wfMsg( 'abusefilter-list-options-deleted-only' ),
+				$this->msg( 'abusefilter-list-options-deleted-only' )->text(),
 				'deletedfilters',
 				'only',
 				'mw-abusefilter-deletedfilters-only',
@@ -101,7 +101,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 		$fields['abusefilter-list-options-disabled'] =
 			Xml::checkLabel(
-				wfMsg( 'abusefilter-list-options-hidedisabled' ),
+				$this->msg( 'abusefilter-list-options-hidedisabled' )->text(),
 				'hidedisabled',
 				'mw-abusefilter-disabledfilters-hide',
 				$hidedisabled
@@ -117,7 +117,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 			),
 			$options
 		);
-		$options = Xml::fieldset( wfMsg( 'abusefilter-list-options' ), $options );
+		$options = Xml::fieldset( $this->msg( 'abusefilter-list-options' )->text(), $options );
 
 		$output .= $options;
 
@@ -148,15 +148,15 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$overflow_percent = sprintf( "%.2f", 100 * $overflow_count / $total_count );
 			$match_percent = sprintf( "%.2f", 100 * $match_count / $total_count );
 
-			$lang = $this->getLanguage();
-			$status = wfMsgExt( 'abusefilter-status', array( 'parseinline' ),
-				$lang->formatNum( $total_count ),
-				$lang->formatNum( $overflow_count ),
-				$lang->formatNum( $overflow_percent ),
-				$lang->formatNum( $wgAbuseFilterConditionLimit ),
-				$lang->formatNum( $match_count ),
-				$lang->formatNum( $match_percent )
-			);
+			$status = $this->msg( 'abusefilter-status' )
+				->numParams(
+					$total_count,
+					$overflow_count,
+					$overflow_percent,
+					$wgAbuseFilterConditionLimit,
+					$match_count,
+					$match_percent
+				)->parse();
 
 			$status = Xml::tags( 'div', array( 'class' => 'mw-abusefilter-status' ), $status );
 			$this->getOutput()->addHTML( $status );
@@ -215,6 +215,7 @@ class AbuseFilterPager extends TablePager {
 			$headers['af_group'] = 'abusefilter-list-group';
 		}
 
+		// @todo FIXME: Replace with $this->msg/wfMessage
 		$headers = array_map( 'wfMsg', $headers );
 
 		return $headers;
@@ -243,31 +244,26 @@ class AbuseFilterPager extends TablePager {
 			case 'af_enabled':
 				$statuses = array();
 				if ( $row->af_deleted ) {
-					$statuses[] = wfMsgExt( 'abusefilter-deleted', 'parseinline' );
+					$statuses[] = $this->msg( 'abusefilter-deleted' )->parse();
 				} elseif ( $row->af_enabled ) {
-					$statuses[] = wfMsgExt( 'abusefilter-enabled', 'parseinline' );
+					$statuses[] = $this->msg( 'abusefilter-enabled' )->parse();
 				} else {
-					$statuses[] = wfMsgExt( 'abusefilter-disabled', 'parseinline' );
+					$statuses[] = $this->msg( 'abusefilter-disabled' )->parse();
 				}
 
 				global $wgAbuseFilterIsCentral;
 				if ( $row->af_global && $wgAbuseFilterIsCentral ) {
-					$statuses[] = wfMsgExt( 'abusefilter-status-global', 'parseinline' );
+					$statuses[] = $this->msg( 'abusefilter-status-global' )->parse();
 				}
 
 				return $lang->commaList( $statuses );
 			case 'af_hidden':
 				$msg = $value ? 'abusefilter-hidden' : 'abusefilter-unhidden';
-				return wfMsgExt( $msg, 'parseinline' );
+				return $this->msg( $msg )->parse();
 			case 'af_hit_count':
-				$count_display = wfMsgExt(
-					'abusefilter-hitcount',
-					array( 'parseinline' ),
-					$lang->formatNum( $value )
-				);
-				// @todo FIXME: makeKnownLinkObj() is deprecated.
+				$count_display = $this->msg( 'abusefilter-hitcount' )->numParams( $value )->parse();
 				if ( SpecialAbuseLog::canSeeDetails( $row->af_id, $row->af_hidden ) ) {
-					$link = Linker::makeKnownLinkObj(
+					$link = Linker::linkKnown(
 						SpecialPage::getTitleFor( 'AbuseLog' ),
 						$count_display,
 						'wpSearchFilter=' . $row->af_id
@@ -287,15 +283,13 @@ class AbuseFilterPager extends TablePager {
 						$row->af_user_text
 					);
 				$user = $row->af_user_text;
-				return wfMsgExt(
-					'abusefilter-edit-lastmod-text',
-					array( 'replaceafter', 'parseinline' ),
-					array( $lang->timeanddate( $value, true ),
+				return $this->msg( 'abusefilter-edit-lastmod-text' )
+					->rawParams( $lang->timeanddate( $value, true ),
 						$userLink,
 						$lang->date( $value, true ),
 						$lang->time( $value, true ),
-						$user )
-				);
+						$user
+				)->parse();
 			case 'af_group':
 				return AbuseFilter::nameGroup( $value );
 				break;
@@ -332,17 +326,13 @@ class AbuseFilterPager extends TablePager {
 }
 
 class GlobalAbuseFilterPager extends AbuseFilterPager {
-
 	function __construct( $page, $conds ) {
 		parent::__construct( $page, $conds );
 		global $wgAbuseFilterCentralDB;
 		$this->mDb = wfGetDB( DB_SLAVE, array(), $wgAbuseFilterCentralDB );
 	}
 
-
 	function formatValue( $name, $value ) {
-		global $wgAbuseFilterCentralDB;
-
 		$lang = $this->getLanguage();
 		$row = $this->mCurrentRow;
 

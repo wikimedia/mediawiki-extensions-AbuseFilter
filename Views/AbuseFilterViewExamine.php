@@ -1,7 +1,4 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die();
-}
 
 class AbuseFilterViewExamine extends AbuseFilterView {
 	public static $examineType = null;
@@ -49,7 +46,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			$selector
 		);
 		$selector = Xml::fieldset(
-			wfMsg( 'abusefilter-examine-legend' ),
+			$this->msg( 'abusefilter-examine-legend' )->text(),
 			$selector
 		);
 		$this->getOutput()->addHTML( $selector );
@@ -139,12 +136,12 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 
 		// Add test bit
 		if ( $this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
-			$tester = Xml::tags( 'h2', null, wfMsgExt( 'abusefilter-examine-test', 'parseinline' ) );
+			$tester = Xml::tags( 'h2', null, $this->msg( 'abusefilter-examine-test' )->parse() );
 			$tester .= AbuseFilter::buildEditBox( $this->mTestFilter, 'wpTestFilter', false );
 			$tester .=
 				"\n" .
 				Xml::inputLabel(
-					wfMsg( 'abusefilter-test-load-filter' ),
+					$this->msg( 'abusefilter-test-load-filter' )->text(),
 					'wpInsertFilter',
 					'mw-abusefilter-load-filter',
 					10,
@@ -155,7 +152,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 					'input',
 					array(
 						'type' => 'button',
-						'value' => wfMsg( 'abusefilter-test-load' ),
+						'value' => $this->msg( 'abusefilter-test-load' )->text(),
 						'id' => 'mw-abusefilter-load'
 					)
 				);
@@ -165,7 +162,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 				Xml::element( 'input',
 					array(
 						'type' => 'button',
-						'value' => wfMsg( 'abusefilter-examine-test-button' ),
+						'value' => $this->msg( 'abusefilter-examine-test-button' )->text(),
 						'id' => 'mw-abusefilter-examine-test'
 					)
 				) .
@@ -179,7 +176,11 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		}
 
 		// Variable dump
-		$html .= Xml::tags( 'h2', null, wfMsgExt( 'abusefilter-examine-vars', 'parseinline' ) );
+		$html .= Xml::tags(
+			'h2',
+			null,
+			$this->msg( 'abusefilter-examine-vars', 'parseinline' )->parse()
+		);
 		$html .= AbuseFilter::buildVarDumpTable( $vars );
 
 		$output->addHTML( $html );
@@ -260,6 +261,6 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	}
 
 	function getEmptyBody() {
-		return wfMsgExt( 'abusefilter-examine-noresults', 'parse' );
+		return $this->msg( 'abusefilter-examine-noresults' )->parseAsBlock();
 	}
 }

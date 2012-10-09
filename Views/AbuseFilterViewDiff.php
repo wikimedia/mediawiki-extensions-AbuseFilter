@@ -1,7 +1,4 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die();
-}
 
 class AbuseFilterViewDiff extends AbuseFilterView {
 	var $mOldVersion = null;
@@ -19,7 +16,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		}
 
 		foreach ( $links as $msg => $title ) {
-			$links[$msg] = Linker::link( $title, wfMsgExt( $msg, 'parseinline' ) );
+			$links[$msg] = Linker::link( $title, $this->msg( $msg )->parse() );
 		}
 
 		$backlinks = $this->getLanguage()->pipeList( $links );
@@ -93,8 +90,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			if ( $other && !$row ) {
 				$t = $this->getTitle(
 					'history/' . $this->mFilter . '/item/' . $other['meta']['history_id'] );
-				global $wgOut;
-				$wgOut->redirect( $t->getFullURL() );
+				$this->getOutput()->redirect( $t->getFullURL() );
 				return null;
 			}
 
@@ -116,8 +112,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			if ( $other && !$row ) {
 				$t = $this->getTitle(
 					'history/' . $this->mFilter . '/item/' . $other['meta']['history_id'] );
-				global $wgOut;
-				$wgOut->redirect( $t->getFullURL() );
+				$this->getOutput()->redirect( $t->getFullURL() );
 				return null;
 			}
 		}
@@ -193,15 +188,15 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 		$headings = '';
 		$headings .= Xml::tags( 'th', null,
-						wfMsgExt( 'abusefilter-diff-item', 'parseinline' ) );
+			$this->msg( 'abusefilter-diff-item' )->parse() );
 		$headings .= Xml::tags( 'th', null,
-			wfMessage( 'abusefilter-diff-version' )
+			$this->msg( 'abusefilter-diff-version' )
 					->rawParams( $oldLink, $oldUserLink )
 					->params( $newVersion['meta']['modified_by_text'] )
 					->parse()
 		);
 		$headings .= Xml::tags( 'th', null,
-			wfMessage('abusefilter-diff-version')
+			$this->msg('abusefilter-diff-version')
 				->rawParams($newLink, $newUserLink)
 				->parse()
 		);
@@ -265,7 +260,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		<tbody>$info</tbody>
 </table>";
 
-		$html = Xml::tags( 'h2', null, wfMsgExt( 'abusefilter-diff-title', 'parseinline' ) ) . $html;
+		$html = Xml::tags( 'h2', null, $this->msg( 'abusefilter-diff-title' )->parse() ) . $html;
 
 		return $html;
 	}
@@ -294,7 +289,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	 * @return String
 	 */
 	function getHeaderRow( $msg ) {
-		$html = wfMsgExt( $msg, 'parseinline' );
+		$html = $this->msg( $msg )->parse();
 		$html = Xml::tags( 'th', array( 'colspan' => 3 ), $html );
 		$html = Xml::tags( 'tr', array( 'class' => 'mw-abusefilter-diff-header' ), $html );
 
@@ -311,7 +306,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	function getSimpleRow( $msg, $old, $new, $format = 'wikitext' ) {
 		$row = '';
 
-		$row .= Xml::tags( 'th', null, wfMsgExt( $msg, 'parseinline' ) );
+		$row .= Xml::tags( 'th', null, $this->msg( $msg )->parse() );
 
 		$oldClass = $newClass = 'mw-abusefilter-diff-context';
 		if ( trim( $old ) != trim( $new ) ) {
@@ -320,9 +315,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		}
 
 		if ( $format == 'wikitext' ) {
-			global $wgOut;
-			$old = $wgOut->parseInline( $old );
-			$new = $wgOut->parseInline( $new );
+			$old = $this->getOutput()->parseInline( $old );
+			$new = $this->getOutput()->parseInline( $new );
 		}
 
 		if ( $format == 'text' ) {
@@ -357,7 +351,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		}
 
 		$row = '';
-		$row .= Xml::tags( 'th', null, wfMsgExt( $msg, 'parseinline' ) );
+		$row .= Xml::tags( 'th', null, $this->msg( $msg )->parse() );
 
 		$diff = new Diff( $old, $new );
 		$formatter = new TableDiffFormatter();

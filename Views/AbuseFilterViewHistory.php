@@ -1,7 +1,4 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die();
-}
 
 class AbuseFilterViewHistory extends AbuseFilterView {
 	function __construct( $page, $params ) {
@@ -14,9 +11,9 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		$filter = $this->mFilter;
 
 		if ( $filter ) {
-			$out->setPageTitle( wfMsg( 'abusefilter-history', $filter ) );
+			$out->setPageTitle( $this->msg( 'abusefilter-history', $filter ) );
 		} else {
-			$out->setPageTitle( wfMsg( 'abusefilter-filter-log' ) );
+			$out->setPageTitle( $this->msg( 'abusefilter-filter-log' ) );
 		}
 
 		# Check perms
@@ -28,14 +25,13 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		}
 
 		# Useful links
-		$sk = $this->getSkin();
 		$links = array();
 		if ( $filter ) {
 			$links['abusefilter-history-backedit'] = $this->getTitle( $filter );
 		}
 
 		foreach ( $links as $msg => $title ) {
-			$links[$msg] = $sk->link( $title, wfMsgExt( $msg, 'parseinline' ) );
+			$links[$msg] = Linker::link( $title, $this->msg( $msg )->parse() );
 		}
 
 		$backlinks = $this->getLanguage()->pipeList( $links );
@@ -45,9 +41,9 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		$user = $this->getRequest()->getText( 'user' );
 		if ( $user ) {
 			$out->setSubtitle(
-				wfMsg(
+				$this->msg(
 					'abusefilter-history-foruser',
-					$sk->userLink( 1 /* We don't really need to get a user ID */, $user ),
+					Linker::userLink( 1 /* We don't really need to get a user ID */, $user ),
 					$user // For GENDER
 				)
 			);
@@ -65,7 +61,8 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			),
 			$filterForm
 		);
-		$filterForm = Xml::fieldset( wfMsg( 'abusefilter-history-select-legend' ), $filterForm );
+		$filterForm = Xml::fieldset( $this->msg( 'abusefilter-history-select-legend' )
+			->text(), $filterForm );
 		$out->addHTML( $filterForm );
 
 		$pager = new AbuseFilterHistoryPager( $filter, $this, $user );
@@ -76,11 +73,10 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 }
 
 class AbuseFilterHistoryPager extends TablePager {
-
 	/**
 	 * @param $filter
-	 * @param $page Article
-	 * @param $user User
+	 * @param $page ContextSource
+	 * @param $user string User name
 	 */
 	function __construct( $filter, $page, $user ) {
 		$this->mFilter = $filter;
@@ -112,6 +108,7 @@ class AbuseFilterHistoryPager extends TablePager {
 			unset( $headers['afh_comments'] );
 		}
 
+		// @todo FIXME: Use $this->msg/wfMessage.
 		$headers = array_map( 'wfMsg', $headers );
 
 		return $headers;
@@ -162,7 +159,7 @@ class AbuseFilterHistoryPager extends TablePager {
 			case 'afh_id':
 				$title = $this->mPage->getTitle(
 							'history/' . $row->afh_filter . "/diff/prev/$value" );
-				$formatted = Linker::link( $title, wfMsgExt( 'abusefilter-history-diff', 'parseinline' ) );
+				$formatted = Linker::link( $title, $this->msg( 'abusefilter-history-diff' )->parse() );
 				break;
 			default:
 				$formatted = "Unable to format $name";
