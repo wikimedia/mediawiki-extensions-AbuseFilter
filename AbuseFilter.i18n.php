@@ -10369,7 +10369,7 @@ Suodatin saavutti yli $1 % täsmäävän toiminnon rajan.",
 	'abusefilter-edit-warn-message' => 'Varoitukseen käytettävä järjestelmäviesti',
 	'abusefilter-edit-warn-other' => 'Muu viesti',
 	'abusefilter-edit-warn-other-label' => "Toisen viestin sivun otsikko:
-:''(Ilman ''Järjestelmäviesti''-etuliitettä)''",
+:''(Ilman Järjestelmäviesti-etuliitettä)''",
 	'abusefilter-edit-warn-actions' => 'Toiminnot',
 	'abusefilter-edit-warn-preview' => 'Esikatsele valittua viestiä',
 	'abusefilter-edit-warn-edit' => 'Luo tai muokkaa valittua viestiä',
