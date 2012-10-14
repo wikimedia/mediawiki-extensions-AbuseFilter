@@ -37242,6 +37242,7 @@ $messages['yi'] = array(
 	'abusefilter-log-search-user' => 'באַניצער',
 	'abusefilter-log-search-filter' => 'פֿילטער נומער:',
 	'abusefilter-log-search-title' => 'טיטל:',
+	'abusefilter-log-search-wiki' => 'וויקי:',
 	'abusefilter-log-search-submit' => 'זוכן',
 	'abusefilter-log-detailedentry-global' => 'גלאבאלער פֿילטער $1',
 	'abusefilter-log-detailedentry-local' => 'פֿילטער $1',
