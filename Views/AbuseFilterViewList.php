@@ -266,7 +266,8 @@ class AbuseFilterPager extends TablePager {
 					$link = Linker::linkKnown(
 						SpecialPage::getTitleFor( 'AbuseLog' ),
 						$count_display,
-						'wpSearchFilter=' . $row->af_id
+						array(),
+						array( 'wpSearchFilter' => $row->af_id )
 					);
 				} else {
 					$link = "";
