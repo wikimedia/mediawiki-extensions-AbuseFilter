@@ -9921,7 +9921,7 @@ $messages['fa'] = array(
 	'abusefilter-edit-enabled' => 'فعال کردن این پالایه',
 	'abusefilter-edit-deleted' => 'علامت‌زدن به عنوان حذف‌شده',
 	'abusefilter-edit-hidden' => 'پنهان‌کردن جزئیات این پالایه از دید عموم',
-	'abusefilter-edit-global' => 'استفاده از این پالایه به طور سراسری',
+	'abusefilter-edit-global' => 'پالایهٔ سراسری',
 	'abusefilter-edit-rules' => 'شروط:',
 	'abusefilter-edit-notes' => "یادداشت:
 :''(خصوصی)''",
@@ -21837,8 +21837,15 @@ $messages['mn'] = array(
 
 /** Marathi (मराठी)
  * @author Htt
+ * @author Mahitgar
  */
 $messages['mr'] = array(
+	'abusefilter-desc' => 'संपादन गाळणी सर्व संपादनांचा सांगितल्याप्रमाणे स्वयंशोध घेते.',
+	'abusefilter' => 'संपादन गाळणी व्यवस्थापन',
+	'abuselog' => 'संपादन गाळणी नोंदी',
+	'abusefilter-intro' => 'संपादन गाळणी व्यवस्थापन प्रणालीत आपले स्वागत आहे.
+
+संपादन गाळणी म्हणजे सर्व संपादनांचा सांगितल्याप्रमाणे स्वयंशोध घेणारी स्वयंचलीत सॉफ्टवेअर प्रणाली असते. हा इंटरफेस तयार केलेल्या गाळण्यांची यादी दाखवतो आणि त्यात सुधारणा करण्यास अनुमती देतो.',
 	'abusefilter-log-details-val' => 'किंमत',
 	'abusefilter-log-noactions' => 'काहीही नाही',
 	'abusefilter-list-status' => 'स्थिती',
