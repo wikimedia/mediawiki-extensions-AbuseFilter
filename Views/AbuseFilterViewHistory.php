@@ -108,8 +108,9 @@ class AbuseFilterHistoryPager extends TablePager {
 			unset( $headers['afh_comments'] );
 		}
 
-		// @todo FIXME: Use $this->msg/wfMessage.
-		$headers = array_map( 'wfMsg', $headers );
+		foreach ( $headers as &$msg ) {
+			$msg = $this->msg( $msg )->text();
+		}
 
 		return $headers;
 	}

@@ -215,8 +215,9 @@ class AbuseFilterPager extends TablePager {
 			$headers['af_group'] = 'abusefilter-list-group';
 		}
 
-		// @todo FIXME: Replace with $this->msg/wfMessage
-		$headers = array_map( 'wfMsg', $headers );
+		foreach ( $headers as &$msg ) {
+			$msg = $this->msg( $msg )->text();
+		}
 
 		return $headers;
 	}
