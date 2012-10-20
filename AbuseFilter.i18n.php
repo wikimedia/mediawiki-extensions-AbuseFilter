@@ -409,7 +409,7 @@ Please check them carefully, and click "confirm" to confirm your selection.',
 	'abusefilter-revert-success' => 'You have reverted all actions taken by the abuse filter due to [[Special:AbuseFilter/$1|filter $1]].',
 	'abusefilter-revert-reason' => 'Automatic revert of all actions taken by the abuse filter due to filter $1.
 Reason given: $2',
-	'abusefilter-revert-reasonfield' => 'Reason for revert:',
+	'abusefilter-revert-reasonfield' => 'Reason:',
 
 	// These messages are for batch checking
 	'abusefilter-test' => 'Test a filter against previous edits',
