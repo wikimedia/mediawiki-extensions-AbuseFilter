@@ -3502,7 +3502,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-revert-success' => 'Вы адкацілі ўсе дзеяньні, выкананыя фільтрам злоўжываньняў [[Special:AbuseFilter/$1|filter $1]].',
 	'abusefilter-revert-reason' => 'Аўтаматычны адкат усіх дзеяньняў, выкананых фільтрам злоўжываньняў $1.
 Пададзеная прычына: $2',
-	'abusefilter-revert-reasonfield' => 'Прычына адкату:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Прычына:',
 	'abusefilter-test' => 'Праверыць фільтар на ўжо зробленых рэдагаваньнях',
 	'abusefilter-test-intro' => 'Гэта старонка дазваляе Вам праверыць фільтар пададзены ў полі ніжэй на $1 {{PLURAL:$1|апошняй зьмене|апошніх зьменах|апошніх зьменах}}.
 Каб загрузіць існуючы фільтар, увядзіце яго ідэнтыфікатар у поле, якое знаходзіцца ніжэй тэкставага поля і націсьніце кнопку «Загрузіць».',
@@ -10706,7 +10706,7 @@ Description du filtre : $7 ($8)',
 	'abusefilter-log-details-private' => 'Données privées',
 	'abusefilter-log-details-ip' => 'Adresse IP d’origine',
 	'abusefilter-log-noactions' => 'néant',
-	'abusefilter-log-details-diff' => 'Changements faits dans la modification',
+	'abusefilter-log-details-diff' => 'Changements faits lors de la modification',
 	'abusefilter-log-linkoncontribs' => 'journal des abus',
 	'abusefilter-log-linkoncontribs-text' => 'Journal des abus de cet utilisateur',
 	'abusefilter-log-hidden' => '(entrée masquée)',
@@ -10884,7 +10884,7 @@ Les balises doivent être courtes et ne pas contenir de caractères spéciaux.',
 	'abusefilter-edit-builder-funcs-set_var' => 'Définir la variable (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Variables',
 	'abusefilter-edit-builder-vars-accountname' => 'Nom du compte (lors de la création du compte)',
-	'abusefilter-edit-builder-vars-timestamp' => 'Timestamp Unix de la modification',
+	'abusefilter-edit-builder-vars-timestamp' => 'Horodatage Unix de la modification',
 	'abusefilter-edit-builder-vars-action' => 'Action',
 	'abusefilter-edit-builder-vars-addedlines' => 'Lignes ajoutées lors de la modification',
 	'abusefilter-edit-builder-vars-delta' => 'Différence de taille lors de la modification',
@@ -10913,7 +10913,7 @@ Les balises doivent être courtes et ne pas contenir de caractères spéciaux.',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Les dix derniers contributeurs de la page',
 	'abusefilter-edit-builder-vars-all-links' => 'Tous les liens externes dans le nouveau texte',
 	'abusefilter-edit-builder-vars-added-links' => 'Tous les liens externes ajoutés dans la modification',
-	'abusefilter-edit-builder-vars-removed-links' => 'Tous les liens externes retirés dans la modification',
+	'abusefilter-edit-builder-vars-removed-links' => 'Tous les liens externes retirés lors de la modification',
 	'abusefilter-edit-builder-vars-old-text' => 'Ancien texte de la page, avant la modification',
 	'abusefilter-edit-builder-vars-new-text' => 'Nouveau texte de la page, après la modification',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nouveau texte de la page, sans aucun balisage',
@@ -10988,8 +10988,8 @@ Veuillez les vérifier attentivement, puis cliquez sur « Confirmer » pour vali
 Motif donné : $2',
 	'abusefilter-revert-reasonfield' => 'Motif de la révocation :', # Fuzzy
 	'abusefilter-test' => 'Tester un filtre sur les précédentes modifications',
-	'abusefilter-test-intro' => 'Cette page vous permet de vérifier sur {{PLURAL:$1|la dernière modification|les $1 dernières modifications}} un filtre saisi dans la zone de texte ci-dessous.
-Pour charger un filtre existant, entrez son identifiant dans le champ sous la zone de texte et cliquez sur le bouton « Charger ».',
+	'abusefilter-test-intro' => 'Cette page vous permet d’appliquer un filtre saisi dans la zone de texte ci-dessous {{PLURAL:$1|à la dernière modification|aux $1 dernières modifications}} .
+Pour charger un filtre existant, entrez son identifiant dans le champ sous la zone de texte et cliquez sur le bouton « {{MediaWiki:Abusefilter-test-load/fr}} ».',
 	'abusefilter-test-legend' => 'Test de filtre',
 	'abusefilter-test-load-filter' => 'Charger le filtre numéro :',
 	'abusefilter-test-submit' => 'Tester',
@@ -11881,7 +11881,7 @@ Por favor, compróbeas con coidado e prema en "Confirmar" para aceptar a súa se
 	'abusefilter-revert-success' => 'Reverteu todas as accións feitas polo [[Special:AbuseFilter/$1|filtro de abusos $1]].',
 	'abusefilter-revert-reason' => 'Reversión automática de todas as accións feitas polo filtro de abusos $1.
 Motivo dado: $2',
-	'abusefilter-revert-reasonfield' => 'Motivo para a reversión:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Motivo:',
 	'abusefilter-test' => 'Probar un filtro coas edicións anteriores',
 	'abusefilter-test-intro' => 'Esta páxina permítelle comprobar, {{PLURAL:$1|co último cambio|cos últimos $1 cambios}}, un filtro inserido na caixa de embaixo.
 Para cargar un filtro existente, teclee o seu ID na caixa que está por baixo da caixa de edición e prema no botón "Cargar".',
@@ -12966,7 +12966,7 @@ $messages['he'] = array(
 	'abusefilter-revert-success' => 'ביטלתם את כל השינויים שבוצעו על ידי מסנן ההשחתות בגלל [[Special:AbuseFilter/$1|המסנן $1]].',
 	'abusefilter-revert-reason' => 'שחזור אוטומטי של כל הפעולות שבוצעו על ידי מסנן ההשחתות בגלל המסנן $1.
 הסיבה שנתנה: $2',
-	'abusefilter-revert-reasonfield' => 'סיבה לשחזור:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'סיבה:',
 	'abusefilter-test' => 'בדיקת מסנן מול עריכות קודמות',
 	'abusefilter-test-intro' => 'דף זה מאפשר לכם לבדוק מסנן המוכנס לתיבה שלהלן מול {{PLURAL:$1|השינוי האחרון|$1 השינויים האחרונים}}.
 כדי לטעון מסנן קיים, כתבו את מספר המסנן שלו לתוך התיבה שמתחת לתיבת העריכה שלהלן, ולחצו על הכפתור "טעינה".',
@@ -16690,7 +16690,7 @@ Verificarle con cura e fare clic su "Conferma" per confermare la selezione.',
 	'abusefilter-revert-success' => 'Sono state annullate tutte le azioni effettuate dal [[Special:AbuseFilter/$1|filtro anti abusi $1]].',
 	'abusefilter-revert-reason' => 'Annullamento automatico di tutte le azioni effettuate dal filtro anti abusi $1.
 Motivo indicato: $2',
-	'abusefilter-revert-reasonfield' => "Motivo dell'annullamento:", # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Motivo:',
 	'abusefilter-test' => 'Verifica un filtro confrontandolo con le modifiche precedenti',
 	'abusefilter-test-intro' => 'Questa pagina consente di verificare il filtro indicato nella casella in basso nei confronti del{{PLURAL:$1|l\'ultima modifica|le ultime $1 modifiche}}.
 Per caricare un filtro esistente, digitare il relativo identificatore nella casella sottostante la casella di testo e fare clic sul pulsante "Carica".',
@@ -18524,7 +18524,7 @@ $messages['ko'] = array(
 	'abusefilter-revert-success' => '[[Special:AbuseFilter/$1|필터 $1]]에 의해 취해진 모든 조치를 되돌렸습니다.',
 	'abusefilter-revert-reason' => '필터 $1에 의해 취해진 모든 조치를 자동으로 되돌림.
 이유: $2',
-	'abusefilter-revert-reasonfield' => '되돌리는 이유:', # Fuzzy
+	'abusefilter-revert-reasonfield' => '이유:',
 	'abusefilter-test' => '과거의 편집에 대해 필터 시험하기',
 	'abusefilter-test-intro' => '이 페이지에서 과거의 편집 $1개에 대해 아래 상자에 입력한 필터를 시험할 수 있습니다.
 이미 존재하는 필터를 불러오려면, 아래 상자에 필터 ID를 입력하고 "불러오기" 버튼을 클릭하십시오.',
@@ -21340,7 +21340,7 @@ $messages['mk'] = array(
 	'abusefilter-revert-success' => 'Ги вративте сите дејства извршени од филтерот за злоупотреби поради [[Special:AbuseFilter/$1|филтерот $1]].',
 	'abusefilter-revert-reason' => 'Автоматско отповикување на сите постапки на филтерот за злоупотреби поради филтерот $1.
 Наведена причина: $2',
-	'abusefilter-revert-reasonfield' => 'Причина за отповикувањето:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Причина:',
 	'abusefilter-test' => 'Испробување на филтер според претходни уредувања',
 	'abusefilter-test-intro' => 'Оваа страница ви овозможува да проверите филтер внесен во полето подолу според {{PLURAL:$1|последната $1 промена|последните $1  промени}}.
 За да вчитате постоечки филтер, внесете го неговиот ID-број под полето за уредување, и кликнете на копчето „Вчитај“.',
@@ -22229,7 +22229,7 @@ Sila buat semakan dengan teliti, kemudian klik "Sahkan" untuk mengesahkan pemili
 	'abusefilter-revert-success' => 'Anda telah membatalkan semua tindakan yang diambil oleh penapis salah guna atas sebab [[Special:AbuseFilter/$1|penapis $1]].',
 	'abusefilter-revert-reason' => 'Pembatalan automatik semua tindakan yang diambil oleh penapis salah guna atas sebab penapis $1.
 Sebab yang diberikan: $2',
-	'abusefilter-revert-reasonfield' => 'Sebab pembatalan:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Sebab:',
 	'abusefilter-test' => 'Uji penapis terhadap suntingan lalu',
 	'abusefilter-test-intro' => 'Laman ini membolehkan anda untuk menyemak penapis yang dimasukkan dalam petak di bawah dengan $1 perubahan terakhir.
 Untuk memuatkan penapis yang sedia ada, taipkan ID penapisnya ke dalam petak di bawah ruangan teks penyuntingan, kemudian klik butang "Muatkan".',
@@ -24338,7 +24338,7 @@ Controleer de terug te draaien maatregelen zorgvuldig, en klik "Bevestigen" om u
 	'abusefilter-revert-confirm' => 'Bevestigen',
 	'abusefilter-revert-success' => 'U hebt alle maatregelen die door het filter via [[Special:AbuseFilter/$1|filter $1]] zijn genomen teruggedraaid.',
 	'abusefilter-revert-reason' => 'Automatisch terugdraaien van alle maatregelen door de midbruikfilter via filter $1. Reden: $2',
-	'abusefilter-revert-reasonfield' => 'Reden voor terugdraaien:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Reden:',
 	'abusefilter-test' => 'Filter tegen eerdere bewerkingen testen',
 	'abusefilter-test-intro' => 'Op deze pagina kunt u een ingegeven filter controleren met de laatste {{PLURAL:$1|wijzing|$1 wijzingen}}.
 Geef een filternummer in om een bestaand filter te laden en klik daarna op de knop "Laden".',
