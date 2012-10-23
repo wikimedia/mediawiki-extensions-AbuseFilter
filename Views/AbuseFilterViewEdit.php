@@ -409,7 +409,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		if ( isset( $row->af_throttled ) && $row->af_throttled ) {
 			global $wgAbuseFilterEmergencyDisableThreshold;
-			$threshold_percent = sprintf( '%.2f', $wgAbuseFilterEmergencyDisableThreshold * 100 );
+
+			// determine emergency disable value for this action
+			$emergencyDisableThreshold = AbuseFilter::getEmergencyValue( $wgAbuseFilterEmergencyDisableThreshold, $row->af_group );
+
+			$threshold_percent = sprintf( '%.2f', $emergencyDisableThreshold * 100 );
 			$flags .= $out->parse(
 				$this->msg( 'abusefilter-edit-throttled' )->numParams( $threshold_percent )->text()
 			);
