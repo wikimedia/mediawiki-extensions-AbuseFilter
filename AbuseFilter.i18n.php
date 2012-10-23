@@ -5998,7 +5998,7 @@ Pečlivě je zkontrolujte a kliknutím na „potvrdit“ můžete jejich vrácen
 	'abusefilter-revert-success' => '{{GRAMMAR:|Vrátil|Vrátila|Vrátili}} jste všechny operace, které filtr zneužití provedl na základě [[Special:AbuseFilter/$1|filtru $1]].',
 	'abusefilter-revert-reason' => 'Automatické vrácení všech operací, které filtr zneužití provedl kvůli filtru $1.
 Uvedený důvod: $2',
-	'abusefilter-revert-reasonfield' => 'Zdůvodnění vrácení:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Důvod:',
 	'abusefilter-test' => 'Test filtru na posledních změnách',
 	'abusefilter-test-intro' => 'Na této stránce můžete otestovat filtr, který zadáte do editačního pole níže, na {{PLURAL:$1|poslední změně|posledních $1 změnách}}.
 Už existující filtr můžete použít tím, že jeho ID napíšete do rámečku pod editačním polem a kliknete na tlačítko „Načíst“.',
@@ -14174,7 +14174,7 @@ Akcije, kotrež maja so cofnyć: $5 ($6)',
 	'abusefilter-revert-success' => 'Sy wšě akcije, kotrež znjewužiwanski filter je na zakładźe [[Special:AbuseFilter/$1|filter $1]] wuwjedł, cofnył.',
 	'abusefilter-revert-reason' => 'Awtomatiske cofnjenje wšěch akcijow, kotrež znjewužiwanski filter je na zakładźe filtra $1 wuwjedł.
 Podata přičina: $2',
-	'abusefilter-revert-reasonfield' => 'Přičina za cofnjenje:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Přičina:',
 	'abusefilter-test' => 'Filter přećiwo předchadnym změnam testować',
 	'abusefilter-test-intro' => 'Tuta strona ći zmóžnja filter, kotryž je w slědowacym kašćiku zapodaty, přećiwo {{PLURAL:$1|poslednjej změnje|poslednimaj $1 změnomaj|poslednim $1 změnam|poslednim $1 změnam}} kontrolować.
 Zo by eksistowacy filter začitał, zapodaj jeho filtrowy ID do kašćika pod wobdźěłowanskim tekstowym kašćikom a klikń na tłóčatko "Začitać".',
@@ -21848,6 +21848,17 @@ $messages['mr'] = array(
 नियमाचे वर्णन:$1',
 	'abusefilter-accountreserved' => 'संपादन गाळणीद्वारे या नावाचे खाते वापरापासून आरक्षित केले आहे.',
 	'right-abusefilter-modify' => 'संपादन गाळणीस बदलवा.',
+	'right-abusefilter-view' => 'संपादन गाळण्या बघा',
+	'right-abusefilter-log' => 'अपवापर क्रमलेख बघा',
+	'right-abusefilter-log-detail' => 'अपवापर क्रमलेखाच्या विस्तृत नोंदी बघा',
+	'right-abusefilter-view-private' => 'खाजगी म्हणून खूण केलेल्या संपादन गाळण्या बघा.',
+	'right-abusefilter-log-private' => 'खाजगी म्हणून नोंदविलेल्या अपवापर क्रमलेखाच्या नोंदी बघा',
+	'right-abusefilter-hide-log' => 'अपवापर क्रमलेखाच्या नोंदी लपवा',
+	'right-abusefilter-hidden-log' => 'अपवापर क्रमलेखाच्या लपविलेल्या नोंदी दाखवा',
+	'abusefilter-log-search' => 'अपवापर क्रमलेख शोधा',
+	'abusefilter-log-entry' => '$1: $2ने अपवापर गाळणी उद्युक्त केली, ज्याने $4 वर "$3" क्रिया केली.
+केलेली कार्यवाही: $5;
+गाळणी वर्णन: $6',
 	'abusefilter-log-details-val' => 'किंमत',
 	'abusefilter-log-noactions' => 'काहीही नाही',
 	'abusefilter-list-status' => 'स्थिती',
@@ -35995,7 +36006,7 @@ $messages['uk'] = array(
 	'abusefilter-revert-success' => 'Ви відкотили всі дії, виконані фільтром редагувань [[Special:AbuseFilter/$1|$1]].',
 	'abusefilter-revert-reason' => 'Автоматичний відкіт всіх дій, виконаних фільтром редагувань $1.
 Вказана причина: $2',
-	'abusefilter-revert-reasonfield' => 'Причина відкоту:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Причина:',
 	'abusefilter-test' => 'Перевірити фільтр на вже зроблених редагуваннях',
 	'abusefilter-test-intro' => 'Ця сторінка дозволяє вам перевірити фільтр, введений в приведене нижче поле, на {{PLURAL:$1|останній $1 зміні|останніх $1 змінах}}.
 Щоб завантажити існуючий фільтр, введіть його ідентифікатор (ID) в текстовое поле під полем редагування і натисніть кнопку «Завантажити».',
