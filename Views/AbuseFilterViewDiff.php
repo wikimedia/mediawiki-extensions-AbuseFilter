@@ -191,13 +191,14 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$this->msg( 'abusefilter-diff-item' )->parse() );
 		$headings .= Xml::tags( 'th', null,
 			$this->msg( 'abusefilter-diff-version' )
-					->rawParams( $oldLink, $oldUserLink )
-					->params( $newVersion['meta']['modified_by_text'] )
-					->parse()
+				->rawParams( $oldLink, $oldUserLink )
+				->params( $newVersion['meta']['modified_by_text'] )
+				->parse()
 		);
 		$headings .= Xml::tags( 'th', null,
-			$this->msg('abusefilter-diff-version')
-				->rawParams($newLink, $newUserLink)
+			$this->msg( 'abusefilter-diff-version' )
+				->rawParams( $newLink, $newUserLink )
+				->params( $newVersion['meta']['modified_by_text'] )
 				->parse()
 		);
 

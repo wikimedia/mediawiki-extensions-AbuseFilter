@@ -465,7 +465,8 @@ For full details, see [[Special:AbuseFilter/history|the list]] of recent filter 
 	// Diffs
 	'abusefilter-diff-title' => 'Differences between versions',
 	'abusefilter-diff-item' => 'Item',
-	'abusefilter-diff-version' => 'Version from $1 by $2',
+	// Dummy GENDER to prevent warnings at translatewiki.net.
+	'abusefilter-diff-version' => 'Version from $1 {{GENDER:$3|by}} $2',
 	'abusefilter-diff-info' => 'Basic information',
 	'abusefilter-diff-pattern' => 'Filter conditions',
 	'abusefilter-diff-invalid' => 'Unable to fetch the requested versions',
@@ -888,8 +889,9 @@ This is also used in {{msg-mw|Abusefilter-revert-preview-intro}}. When changing 
 * $2 is a link to the filter change details',
 	'abusefilter-diff-title' => 'Similar to {{msg-mw|Difference}}',
 	'abusefilter-diff-version' => 'Message is used in two scenarios.
-* $1 is new link or old link. Link description is a time stamp
-* $2 is new user link or old user link. Link description is a user name',
+* $1 is a timestamp, which links to the old version or the new version.
+* $2 is a link to a username.
+* $3 is a raw username, which can be used for GENDER.',
 	'abusefilter-diff-info' => "Header for the box containing the basic information about a user account, displayed on the 'user profile' tab of the [[Special:Preferences|user preferences]] special page.",
 	'abusefilter-import-intro' => "Do not ''translate'' <nowiki>{{int:abusefilter-edit-export}}</nowiki>, <nowiki>{{int:abusefilter-tools-subtitle}}</nowiki>, and <nowiki>{{int:abusefilter-import-submit}}</nowiki> unless you absolute must substitute any of them.",
 	'abusefilter-group-default' => 'The name for the default filter group. Most filters will be in this group.',
