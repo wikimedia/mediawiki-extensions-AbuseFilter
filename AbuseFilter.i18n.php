@@ -1195,7 +1195,7 @@ Aksies wat teruggerol moet word: $5 ($6)",
 	'abusefilter-log-noresults' => 'Geen resultate nie',
 	'abusefilter-diff-title' => 'Verskille tussen weergawes',
 	'abusefilter-diff-item' => 'Item',
-	'abusefilter-diff-version' => 'Weergawe van $1 deur $2',
+	'abusefilter-diff-version' => 'Weergawe van $1 deur $2', # Fuzzy
 	'abusefilter-diff-info' => 'Basiese inligting',
 	'abusefilter-diff-pattern' => 'Filter voorwaardes',
 	'abusefilter-diff-invalid' => 'Kan nie die versoek weergawes te gaan haal',
@@ -1722,7 +1722,7 @@ $messages['ar'] = array(
 	'abusefilter-log-noresults' => 'لا توجد نتائج.',
 	'abusefilter-diff-title' => 'فروقات بين النسخ',
 	'abusefilter-diff-item' => 'عنصر',
-	'abusefilter-diff-version' => 'نسخة من $1 من قبل $2',
+	'abusefilter-diff-version' => 'نسخة من $1 من قبل $2', # Fuzzy
 	'abusefilter-diff-info' => 'معلومات أساسية',
 	'abusefilter-diff-pattern' => 'شروط المرشح',
 	'abusefilter-diff-invalid' => 'ليس بالإمكان إحضار النسخ المطلوبة',
@@ -2221,7 +2221,7 @@ $messages['arz'] = array(
 	'abusefilter-log-entry-modify' => 'عدل $1 ($2)',
 	'abusefilter-diff-title' => 'فروقات بين النسخ',
 	'abusefilter-diff-item' => 'عنصر',
-	'abusefilter-diff-version' => 'نسخه من $1 من قبل $2',
+	'abusefilter-diff-version' => 'نسخه من $1 من قبل $2', # Fuzzy
 	'abusefilter-diff-info' => 'معلومات أساسية',
 	'abusefilter-diff-pattern' => 'شروط المرشح',
 	'abusefilter-diff-invalid' => 'ليس بالإمكان إحضار النسخ المطلوبة',
@@ -3088,7 +3088,7 @@ $3 {{PLURAL:$3|аргумент}} көтөлә, $4 бирелгән.',
 	'abusefilter-log-noresults' => 'Һөҙөмтә юҡ',
 	'abusefilter-diff-title' => 'Өлгөләр араһында айырма',
 	'abusefilter-diff-item' => 'Есем',
-	'abusefilter-diff-version' => '$1 $2 тарафынан булдырылған өлгө',
+	'abusefilter-diff-version' => '$1 $2 тарафынан булдырылған өлгө', # Fuzzy
 	'abusefilter-diff-info' => 'Төп мәғлүмәт',
 	'abusefilter-diff-pattern' => 'Һөҙөү шарттары',
 	'abusefilter-diff-invalid' => 'Һоратылған өлгөләрҙе алып булмай',
@@ -3550,7 +3550,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-log-noresults' => 'Вынікаў няма',
 	'abusefilter-diff-title' => 'Адрозьненьні паміж вэрсіямі',
 	'abusefilter-diff-item' => 'Элемэнт',
-	'abusefilter-diff-version' => 'Вэрсія ад $1 $2',
+	'abusefilter-diff-version' => 'Вэрсія ад $1 $2', # Fuzzy
 	'abusefilter-diff-info' => 'Асноўныя зьвесткі',
 	'abusefilter-diff-pattern' => 'Умовы фільтру',
 	'abusefilter-diff-invalid' => 'Немагчыма атрымаць запытаныя вэрсіі',
@@ -3938,7 +3938,7 @@ $messages['bg'] = array(
 	'abusefilter-log-noresults' => 'Няма резултати',
 	'abusefilter-diff-title' => 'Разлики между версиите',
 	'abusefilter-diff-item' => 'Елемент',
-	'abusefilter-diff-version' => 'Версия от $1 на $2',
+	'abusefilter-diff-version' => 'Версия от $1 на $2', # Fuzzy
 	'abusefilter-diff-info' => 'Основна информация',
 	'abusefilter-diff-pattern' => 'Условия на филтъра',
 	'abusefilter-diff-invalid' => 'Не е възможно извличане на исканите версии',
@@ -4591,7 +4591,7 @@ Evit gouzout hiroc'h, gwelout [[Special:AbuseFilter/history|listenn]] eus kemmo�
 	'abusefilter-log-noresults' => "Disoc'h ebet",
 	'abusefilter-diff-title' => 'Disheñvelderioù etre ar stummoù',
 	'abusefilter-diff-item' => 'Elfenn',
-	'abusefilter-diff-version' => 'Stumm $1 gant $2',
+	'abusefilter-diff-version' => 'Stumm $1 gant $2', # Fuzzy
 	'abusefilter-diff-info' => 'Titouroù diazez',
 	'abusefilter-diff-pattern' => 'Amplegad ar sil',
 	'abusefilter-diff-invalid' => "Ne c'haller ket adkavout ar stummoù goulennet",
@@ -4990,7 +4990,7 @@ Za sve detalje, pogledajte [[Special:AbuseFilter/history|spisak]] nedavnih izmje
 	'abusefilter-log-noresults' => 'Nema rezultata',
 	'abusefilter-diff-title' => 'Razlike između verzija',
 	'abusefilter-diff-item' => 'Stavka',
-	'abusefilter-diff-version' => 'Verzija od $1 od strane $2',
+	'abusefilter-diff-version' => 'Verzija od $1 od strane $2', # Fuzzy
 	'abusefilter-diff-info' => 'Osnovne informacije',
 	'abusefilter-diff-pattern' => 'Uslovi filtera',
 	'abusefilter-diff-invalid' => 'Tražene vezije nisu mogle biti učitane',
@@ -5412,7 +5412,7 @@ Per a més detalls, vegeu [[Special:AbuseFilter/history|la llista]] de canvis re
 	'abusefilter-log-noresults' => 'No hi ha resultats',
 	'abusefilter-diff-title' => 'Diferències entre versions',
 	'abusefilter-diff-item' => 'Ítem',
-	'abusefilter-diff-version' => 'Versió de $1 per $2',
+	'abusefilter-diff-version' => 'Versió de $1 per $2', # Fuzzy
 	'abusefilter-diff-info' => 'Informació bàsica',
 	'abusefilter-diff-pattern' => 'Condicions del filtre',
 	'abusefilter-diff-invalid' => 'No es pot portar les versions sol·licitada',
@@ -6046,7 +6046,7 @@ Podrobnější vysvětlení můžete získat kliknutím na tlačítko „Zkontro
 	'abusefilter-log-noresults' => 'Žádné výsledky',
 	'abusefilter-diff-title' => 'Rozdíly mezi verzemi',
 	'abusefilter-diff-item' => 'Položka',
-	'abusefilter-diff-version' => 'Verze z $1 od $2',
+	'abusefilter-diff-version' => 'Verze z $1 od $2', # Fuzzy
 	'abusefilter-diff-info' => 'Základní informace',
 	'abusefilter-diff-pattern' => 'Podmínky filtru',
 	'abusefilter-diff-invalid' => 'Nepodařilo se načíst požadované verze',
@@ -6497,7 +6497,7 @@ Handlinger som skal tilbagerulles: $5 ($6)',
 	'abusefilter-log-noresults' => 'Ingen resultater',
 	'abusefilter-diff-title' => 'Forskelle mellem versioner',
 	'abusefilter-diff-item' => 'Element',
-	'abusefilter-diff-version' => 'Version fra $1 af $2',
+	'abusefilter-diff-version' => 'Version fra $1 af $2', # Fuzzy
 	'abusefilter-diff-info' => 'Grundlæggende information',
 	'abusefilter-diff-pattern' => 'Filterregler',
 	'abusefilter-diff-invalid' => 'Kunne ikke hente de ønskede versioner',
@@ -6924,7 +6924,7 @@ Für genauere Einzelheiten, siehe [[Special:AbuseFilter/history|die Liste]] der 
 	'abusefilter-log-noresults' => 'Keine Ergebnisse',
 	'abusefilter-diff-title' => 'Unterschied zwischen Versionen',
 	'abusefilter-diff-item' => 'Element',
-	'abusefilter-diff-version' => 'Version vom $1 von $2',
+	'abusefilter-diff-version' => 'Version vom $1 {{GENDER:$3|von}} $2',
 	'abusefilter-diff-info' => 'Basisinformationen',
 	'abusefilter-diff-pattern' => 'Filterregeln',
 	'abusefilter-diff-invalid' => 'Die angeforderte Version kann nicht abgerufen werden',
@@ -7411,7 +7411,7 @@ Qe detayanê hemî, bivine [[Special:AbuseFilter/history|liste]]yê vurnayîşê
 	'abusefilter-log-noresults' => 'Netice çıno',
 	'abusefilter-diff-title' => 'Benatê versiyonan de ferqan',
 	'abusefilter-diff-item' => 'Çêki',
-	'abusefilter-diff-version' => 'Versiyon ke $1 ra pê $2',
+	'abusefilter-diff-version' => 'Versiyon ke $1 ra pê $2', # Fuzzy
 	'abusefilter-diff-info' => 'Seron zanayış',
 	'abusefilter-diff-pattern' => 'Kondisyonê filitre',
 	'abusefilter-diff-invalid' => 'Nieşkenî versiyonê ke ti wazeno fetch bike',
@@ -7818,7 +7818,7 @@ Za połne drobnostki glědaj [[Special:AbuseFilter/history|lisćinu]] nejnowšyc
 	'abusefilter-log-noresults' => 'Žedne wuslědki',
 	'abusefilter-diff-title' => 'Rozdźěle mjazy wersijami',
 	'abusefilter-diff-item' => 'Zapisk',
-	'abusefilter-diff-version' => 'Wersija wót $1 wót $2',
+	'abusefilter-diff-version' => 'Wersija wót $1 wót $2', # Fuzzy
 	'abusefilter-diff-info' => 'Zakładne informacije',
 	'abusefilter-diff-pattern' => 'Filtrowe wuměnjenja',
 	'abusefilter-diff-invalid' => 'Njemóžno pominane wersije wobstaraś',
@@ -8281,7 +8281,7 @@ $3 {{PLURAL:$3|αναμενόμενο κατηγορούμενο|αναμενό�
 	'abusefilter-log-noresults' => 'Κανένα αποτέλεσμα',
 	'abusefilter-diff-title' => 'Διαφορές μεταξύ των εκδόσεων',
 	'abusefilter-diff-item' => 'Αντικείμενο',
-	'abusefilter-diff-version' => 'Έκδοση από $1 από τον $2',
+	'abusefilter-diff-version' => 'Έκδοση από $1 από τον $2', # Fuzzy
 	'abusefilter-diff-info' => 'Βασικές πληροφορίες',
 	'abusefilter-diff-pattern' => 'Όροι φίλτρων',
 	'abusefilter-diff-invalid' => 'Αδύνατη η εξαγωγή των ζητουμένων εκδοχών',
@@ -8697,7 +8697,7 @@ Por plenaj detaloj, vidu [[Special:AbuseFilter/history|la liston]] de lastaj fil
 	'abusefilter-log-noresults' => 'Mankas rezultoj',
 	'abusefilter-diff-title' => 'Diferencoj inter versioj',
 	'abusefilter-diff-item' => 'Ero',
-	'abusefilter-diff-version' => 'Versio de $1 fare de $2',
+	'abusefilter-diff-version' => 'Versio de $1 fare de $2', # Fuzzy
 	'abusefilter-diff-info' => 'Baza informo',
 	'abusefilter-diff-pattern' => 'Filtrilaj kondiĉoj',
 	'abusefilter-diff-invalid' => 'Ne eblas akiri la petitajn versiojn',
@@ -9134,7 +9134,7 @@ Para detalles completos, ver [[Special:AbuseFilter/history|la lista]] de cambios
 	'abusefilter-log-noresults' => 'No hay resultados',
 	'abusefilter-diff-title' => 'Diferencias entre versiones',
 	'abusefilter-diff-item' => 'objeto',
-	'abusefilter-diff-version' => 'Versión de $1 por $2',
+	'abusefilter-diff-version' => 'Versión de $1 por $2', # Fuzzy
 	'abusefilter-diff-info' => 'Información básica',
 	'abusefilter-diff-pattern' => 'Condiciones de filtro',
 	'abusefilter-diff-invalid' => 'Incapaz de traer la versiones solicitadas',
@@ -9547,7 +9547,7 @@ Lisaselgituse jaoks klõpsa nuppu "Kontrolli süntaksit".',
 	'abusefilter-log-noresults' => 'Tulemusi pole',
 	'abusefilter-diff-title' => 'Erinevused versioonide vahel',
 	'abusefilter-diff-item' => 'Üksus',
-	'abusefilter-diff-version' => 'Kasutaja $2 versioon; $1',
+	'abusefilter-diff-version' => 'Kasutaja $2 versioon; $1', # Fuzzy
 	'abusefilter-diff-info' => 'Põhiteave',
 	'abusefilter-diff-pattern' => 'Filtri tingimused',
 	'abusefilter-diff-invalid' => 'Nõutud versioone ei saadud kätte',
@@ -10152,7 +10152,7 @@ $messages['fa'] = array(
 	'abusefilter-log-noresults' => 'بدون نتیجه',
 	'abusefilter-diff-title' => 'تفاوت بین نسخه‌ها',
 	'abusefilter-diff-item' => 'مورد',
-	'abusefilter-diff-version' => 'نسخه از $1 توسط $2',
+	'abusefilter-diff-version' => 'نسخه از $1 توسط $2', # Fuzzy
 	'abusefilter-diff-info' => 'اطلاعات اولیه',
 	'abusefilter-diff-pattern' => 'شروط پالایه',
 	'abusefilter-diff-invalid' => 'ناتوان از واکشی نسخهٔ درخواست شده',
@@ -10574,7 +10574,7 @@ Lisätietoja saat suodattimen [[Special:AbuseFilter/history|viimeisimpien muutos
 	'abusefilter-log-noresults' => 'Ei tuloksia',
 	'abusefilter-diff-title' => 'Versioiden välinen ero',
 	'abusefilter-diff-item' => 'Kohde',
-	'abusefilter-diff-version' => 'Käyttäjän $2 versio $1',
+	'abusefilter-diff-version' => 'Käyttäjän $2 versio $1', # Fuzzy
 	'abusefilter-diff-info' => 'Perustiedot',
 	'abusefilter-diff-pattern' => 'Suodattimen ehdot',
 	'abusefilter-diff-invalid' => 'Pyydettyjä versioita ei voitu hakea',
@@ -11034,7 +11034,7 @@ Pour plus de détails, voyez [[Special:AbuseFilter/history|la liste]] des modifi
 	'abusefilter-log-noresults' => 'Aucun résultat',
 	'abusefilter-diff-title' => 'Différences entre les versions',
 	'abusefilter-diff-item' => 'Article',
-	'abusefilter-diff-version' => 'Version du $1 par $2',
+	'abusefilter-diff-version' => 'Version du $1 par $2', # Fuzzy
 	'abusefilter-diff-info' => 'Informations de base',
 	'abusefilter-diff-pattern' => 'Conditions du filtre',
 	'abusefilter-diff-invalid' => 'Impossible de retrouver les versions demandées',
@@ -11448,7 +11448,7 @@ Por més de dètalys, vêde la [[Special:AbuseFilter/history|lista]] des dèrri�
 	'abusefilter-log-noresults' => 'Gins de rèsultat',
 	'abusefilter-diff-title' => 'Difèrences entre les vèrsions',
 	'abusefilter-diff-item' => 'Articllo',
-	'abusefilter-diff-version' => 'Vèrsion du $1 per $2',
+	'abusefilter-diff-version' => 'Vèrsion du $1 per $2', # Fuzzy
 	'abusefilter-diff-info' => 'Enformacions de bâsa',
 	'abusefilter-diff-pattern' => 'Condicions du filtro',
 	'abusefilter-diff-invalid' => 'Empossiblo de retrovar les vèrsions demandâs',
@@ -11929,7 +11929,7 @@ Para obter máis detalles, vaia [[Special:AbuseFilter/history|á lista]] dos cam
 	'abusefilter-log-noresults' => 'Non hai resultados',
 	'abusefilter-diff-title' => 'Diferenzas entre versións',
 	'abusefilter-diff-item' => 'Elemento',
-	'abusefilter-diff-version' => 'Versión de $1 feita por $2',
+	'abusefilter-diff-version' => 'Versión de $1 feita por $2', # Fuzzy
 	'abusefilter-diff-info' => 'Información básica',
 	'abusefilter-diff-pattern' => 'Condicións do filtro',
 	'abusefilter-diff-invalid' => 'Non se poden atopar as versións solicitadas',
@@ -12438,7 +12438,7 @@ Fir meh Detail lueg d [[Special:AbuseFilter/history|Lischt vu dr letschte Filter
 	'abusefilter-log-noresults' => 'Kei Ergebniss',
 	'abusefilter-diff-title' => 'Unterschid zwische dr Versione',
 	'abusefilter-diff-item' => 'Yytrag',
-	'abusefilter-diff-version' => 'Version vu $1 dur $2',
+	'abusefilter-diff-version' => 'Version vu $1 dur $2', # Fuzzy
 	'abusefilter-diff-info' => 'Basisinformatione',
 	'abusefilter-diff-pattern' => 'Filterbedingige',
 	'abusefilter-diff-invalid' => 'Cha di aagforderete Versione nit finde',
@@ -13014,7 +13014,7 @@ $messages['he'] = array(
 	'abusefilter-log-noresults' => 'אין תוצאות',
 	'abusefilter-diff-title' => 'הבדלים בין גרסאות',
 	'abusefilter-diff-item' => 'פריט',
-	'abusefilter-diff-version' => 'גרסה מ־$1 של $2',
+	'abusefilter-diff-version' => 'גרסה מ־$1 של $2', # Fuzzy
 	'abusefilter-diff-info' => 'מידע בסיסי',
 	'abusefilter-diff-pattern' => 'תנאי המסננים',
 	'abusefilter-diff-invalid' => 'לא ניתן לקבל את הגרסאות המבוקשות',
@@ -13387,7 +13387,7 @@ $messages['hi'] = array(
 	'abusefilter-log-noresults' => 'कोई परिणाम नहीं',
 	'abusefilter-diff-title' => 'अवतरणों के बीच अंतर',
 	'abusefilter-diff-item' => 'आइटम',
-	'abusefilter-diff-version' => 'अवतरण $1 से $2 द्वारा',
+	'abusefilter-diff-version' => 'अवतरण $1 से $2 द्वारा', # Fuzzy
 	'abusefilter-diff-info' => 'मूल जानकारी',
 	'abusefilter-diff-pattern' => 'फ़िल्टर शर्तें',
 	'abusefilter-diff-backhistory' => 'फ़िल्टर इतिहास को वापिस',
@@ -13812,7 +13812,7 @@ Za detaljnije informacije, vidi [[Special:AbuseFilter/history|popis]] nedavnih i
 	'abusefilter-log-noresults' => 'Nema rezultata',
 	'abusefilter-diff-title' => 'Razlike između inačica',
 	'abusefilter-diff-item' => 'Stavka',
-	'abusefilter-diff-version' => 'Inačica stranice $1 suradnika $2',
+	'abusefilter-diff-version' => 'Inačica stranice $1 suradnika $2', # Fuzzy
 	'abusefilter-diff-info' => 'Osnovni podaci',
 	'abusefilter-diff-pattern' => 'Filtar uvjeta',
 	'abusefilter-diff-invalid' => 'Nemoguće je dohvatiti tražene inačice',
@@ -14222,7 +14222,7 @@ Za dospołne podrobnosće hlej [[Special:AbuseFilter/history|lisćinu]] njedawny
 	'abusefilter-log-noresults' => 'Žane wuslědki',
 	'abusefilter-diff-title' => 'Rozdźěle mjez wersijemi',
 	'abusefilter-diff-item' => 'Zapisk',
-	'abusefilter-diff-version' => 'Wersija wot $1 wot $2',
+	'abusefilter-diff-version' => 'Wersija wot $1 wot $2', # Fuzzy
 	'abusefilter-diff-info' => 'Zakładne informacije',
 	'abusefilter-diff-pattern' => 'Filtrowe wuměnjenja',
 	'abusefilter-diff-invalid' => 'Njemóžno požadane wersije wobstarać',
@@ -14643,7 +14643,7 @@ A hiba részletes leírásához kattints az „Ellenőrzés” gombra.',
 	'abusefilter-log-noresults' => 'Nincs találat',
 	'abusefilter-diff-title' => 'Változatok közötti különbségek',
 	'abusefilter-diff-item' => 'Tétel',
-	'abusefilter-diff-version' => '$2 változata ($1)',
+	'abusefilter-diff-version' => '$2 változata ($1)', # Fuzzy
 	'abusefilter-diff-info' => 'Alapvető információk',
 	'abusefilter-diff-pattern' => 'Szűrő feltételek',
 	'abusefilter-diff-invalid' => 'A kért változatokat nem lehet beolvasni',
@@ -15061,7 +15061,7 @@ Pro detalios complete, vide [[Special:AbuseFilter/history|le lista]] de cambios 
 	'abusefilter-log-noresults' => 'Nulle resultato',
 	'abusefilter-diff-title' => 'Differentias inter versiones',
 	'abusefilter-diff-item' => 'Entrata',
-	'abusefilter-diff-version' => 'Version del $1 per $2',
+	'abusefilter-diff-version' => 'Version del $1 per $2', # Fuzzy
 	'abusefilter-diff-info' => 'Informationes basic',
 	'abusefilter-diff-pattern' => 'Conditiones del filtro',
 	'abusefilter-diff-invalid' => 'Impossibile obtener le versiones requestate',
@@ -15479,7 +15479,7 @@ Untuk detail lengkap, lihat [[Special:AbuseFilter/history|daftar]] perubahan fil
 	'abusefilter-log-noresults' => 'Tidak ada hasil',
 	'abusefilter-diff-title' => 'Perbedaan versi',
 	'abusefilter-diff-item' => 'butir',
-	'abusefilter-diff-version' => 'Versi dari $1 oleh $2',
+	'abusefilter-diff-version' => 'Versi dari $1 oleh $2', # Fuzzy
 	'abusefilter-diff-info' => 'Informasi dasar',
 	'abusefilter-diff-pattern' => 'Penyaringan kondisi',
 	'abusefilter-diff-invalid' => 'Tidak dapat menarik versi yang diminta',
@@ -15943,7 +15943,7 @@ Para kadagiti sibubukel adetalye, kitaen [[Special:AbuseFilter/history|ti listaa
 	'abusefilter-log-noresults' => 'Awan dagiti nagbanagan',
 	'abusefilter-diff-title' => 'Nagdudumaan iti baeten dagiti pannakabalbaliw',
 	'abusefilter-diff-item' => 'Banag',
-	'abusefilter-diff-version' => 'Bersion manipud idiay $1 babaen ti $2',
+	'abusefilter-diff-version' => 'Bersion manipud idiay $1 babaen ti $2', # Fuzzy
 	'abusefilter-diff-info' => 'Kangrunaan a pakaammuan',
 	'abusefilter-diff-pattern' => 'Dagiti kasasaad ti sagat',
 	'abusefilter-diff-invalid' => 'Saan a maala dagiti kiniddaw a bersion',
@@ -16315,7 +16315,7 @@ Til þess að prófa síu sem til er fyrir, settu auðkenni hennar í reitinn h�
 	'abusefilter-log-entry-modify' => 'breytti $1 ($2)',
 	'abusefilter-log-noresults' => 'Engar niðurstöður',
 	'abusefilter-diff-title' => 'Munur milli útgáfa',
-	'abusefilter-diff-version' => 'Útgáfa frá $1 eftir $2',
+	'abusefilter-diff-version' => 'Útgáfa frá $1 eftir $2', # Fuzzy
 	'abusefilter-diff-info' => 'Grunnupplýsingar',
 	'abusefilter-diff-invalid' => 'Mistókst að sækja þær útgáfur sem þú óskaðir eftir',
 	'abusefilter-diff-backhistory' => 'Aftur í breytingarskrá síunnar',
@@ -16738,7 +16738,7 @@ Per i dettagli completi, consultare [[Special:AbuseFilter/history|l'elenco]] del
 	'abusefilter-log-noresults' => 'Nessun risultato',
 	'abusefilter-diff-title' => 'Differenze tra le versioni',
 	'abusefilter-diff-item' => 'Elemento',
-	'abusefilter-diff-version' => 'Versione del $1, autore $2',
+	'abusefilter-diff-version' => 'Versione del $1, autore $2', # Fuzzy
 	'abusefilter-diff-info' => 'Informazioni di base',
 	'abusefilter-diff-pattern' => 'Condizioni dei filtri',
 	'abusefilter-diff-invalid' => 'Impossibile caricare le versioni richieste',
@@ -17158,7 +17158,7 @@ $3 個の{{PLURAL:$3|引数}}があるべきですが $4 個しかありませ�
 	'abusefilter-log-noresults' => '結果なし',
 	'abusefilter-diff-title' => '版間での差分',
 	'abusefilter-diff-item' => '項目',
-	'abusefilter-diff-version' => '$1 の $2 による版',
+	'abusefilter-diff-version' => '$1 の $2 による版', # Fuzzy
 	'abusefilter-diff-info' => '基本情報',
 	'abusefilter-diff-pattern' => 'フィルター条件',
 	'abusefilter-diff-invalid' => '要求された版を取得できません',
@@ -17531,7 +17531,7 @@ Kanggo rincian jangkepé, delok [[Special:AbuseFilter/history|daptar]] owah-owah
 	'abusefilter-log-noresults' => 'Ora ana asilé',
 	'abusefilter-diff-title' => 'Prabédhan antar vèrsi',
 	'abusefilter-diff-item' => 'Barang',
-	'abusefilter-diff-version' => 'Vèrsi saka $1 déning $2',
+	'abusefilter-diff-version' => 'Vèrsi saka $1 déning $2', # Fuzzy
 	'abusefilter-diff-info' => 'Informasi dhasar',
 	'abusefilter-diff-pattern' => 'Kahanan saringan',
 	'abusefilter-diff-invalid' => 'Ora bisa njupuk vèrsi sing dikarepaké',
@@ -17906,7 +17906,7 @@ $messages['ka'] = array(
 	'abusefilter-log-noresults' => 'შედეგები არაა',
 	'abusefilter-diff-title' => 'განსხვავება ვერსიებს შორის',
 	'abusefilter-diff-item' => 'ელემენტი',
-	'abusefilter-diff-version' => 'ვერსია $1, $2',
+	'abusefilter-diff-version' => 'ვერსია $1, $2', # Fuzzy
 	'abusefilter-diff-info' => 'ძირითადი ინფორმაცია',
 	'abusefilter-diff-pattern' => 'ფილტრის პირობები',
 	'abusefilter-diff-invalid' => 'ვერ მიიღებთ მოთხოვნილ ვერსიას',
@@ -18139,7 +18139,7 @@ $messages['km'] = array(
 	'abusefilter-log-name' => 'កំណត់ហេតុនៃតម្រងការបំពានច្បាប់',
 	'abusefilter-diff-title' => 'ភាពខុសគ្នានៃកំណែនានា',
 	'abusefilter-diff-item' => 'វត្ថុ​',
-	'abusefilter-diff-version' => 'កំណែពី​ $1 ដោយ $2',
+	'abusefilter-diff-version' => 'កំណែពី​ $1 ដោយ $2', # Fuzzy
 	'abusefilter-diff-info' => 'ព័ត៌មាន​មូលដ្ឋាន​',
 	'abusefilter-diff-pattern' => 'លក្ខខណ្ឌ​តម្រង',
 	'abusefilter-import-submit' => 'នាំចូល​ទិន្នន័យ​',
@@ -18572,7 +18572,7 @@ $messages['ko'] = array(
 	'abusefilter-log-noresults' => '결과가 없습니다.',
 	'abusefilter-diff-title' => '버전 사이의 차이',
 	'abusefilter-diff-item' => '항목',
-	'abusefilter-diff-version' => '$2 사용자가 편집한 $1 버전',
+	'abusefilter-diff-version' => '$2 사용자가 편집한 $1 버전', # Fuzzy
 	'abusefilter-diff-info' => '기본 정보',
 	'abusefilter-diff-pattern' => '필터 규칙',
 	'abusefilter-diff-invalid' => '요청한 버전을 불러올 수 없습니다.',
@@ -19025,7 +19025,7 @@ Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilte
 	'abusefilter-log-noresults' => 'Nix jefonge',
 	'abusefilter-diff-title' => 'De Ungerscheide zwesche de Versione',
 	'abusefilter-diff-item' => 'Jäjeschtand',
-	'abusefilter-diff-version' => 'Version {{GENDER:$2|vum|vum|vun dämm Metmaacher|vum|vun dä}} $2 aam/öm $1',
+	'abusefilter-diff-version' => 'Version {{GENDER:$2|vum|vum|vun dämm Metmaacher|vum|vun dä}} $2 aam/öm $1', # Fuzzy
 	'abusefilter-diff-info' => 'Jrundlääje Aanjabe',
 	'abusefilter-diff-pattern' => 'De Bedengunge vum Felter',
 	'abusefilter-diff-invalid' => 'Mer kunnte de jewönschte Versione nit fenge',
@@ -19576,7 +19576,7 @@ Fir weider Detailer, kuckt [[Special:AbuseFilter/history|d'Lëscht]] vun de reze
 	'abusefilter-log-noresults' => 'Keng Resultater',
 	'abusefilter-diff-title' => 'Ënnerscheeder tëschent Versiounen',
 	'abusefilter-diff-item' => 'Objet',
-	'abusefilter-diff-version' => 'Versioun vum $1 vum $2',
+	'abusefilter-diff-version' => 'Versioun vum $1 vum $2', # Fuzzy
 	'abusefilter-diff-info' => 'Basisinformatiounen',
 	'abusefilter-diff-pattern' => 'Konditioune vum Filter',
 	'abusefilter-diff-invalid' => 'Déi ugefrote Versioune kënnen net fonnt ginn',
@@ -20015,7 +20015,7 @@ Zuuch de [[Special:AbuseFilter/history|lies mit recente filterverangeringe]] veu
 	'abusefilter-log-noresults' => 'Gein resultate',
 	'abusefilter-diff-title' => '(Versjil tösje versies)',
 	'abusefilter-diff-item' => 'Deil',
-	'abusefilter-diff-version' => 'Versie van $1 door $2',
+	'abusefilter-diff-version' => 'Versie van $1 door $2', # Fuzzy
 	'abusefilter-diff-info' => 'Basisinfo',
 	'abusefilter-diff-pattern' => 'Filterveurwaerj',
 	'abusefilter-diff-invalid' => "'t Waas neet meugelik de gevraogde versies op te haole",
@@ -20447,7 +20447,7 @@ Visas detales žiūrėkite filtrų naujausių keitimo [[Special:AbuseFilter/hist
 	'abusefilter-log-noresults' => 'Nėra rezultatų',
 	'abusefilter-diff-title' => 'Skirtumas tarp versijų',
 	'abusefilter-diff-item' => 'Elementas',
-	'abusefilter-diff-version' => 'Versijos nuo $1 iki $2',
+	'abusefilter-diff-version' => 'Versijos nuo $1 iki $2', # Fuzzy
 	'abusefilter-diff-info' => 'Pagrindinė informacija',
 	'abusefilter-diff-pattern' => 'Filtro sąlygos',
 	'abusefilter-diff-invalid' => 'Negalima rasti norimos versijos',
@@ -21388,7 +21388,7 @@ $messages['mk'] = array(
 	'abusefilter-log-noresults' => 'Нема резултати',
 	'abusefilter-diff-title' => 'Разлики помеѓу верзиите',
 	'abusefilter-diff-item' => 'Елемент',
-	'abusefilter-diff-version' => 'Верзија од $1, од $2',
+	'abusefilter-diff-version' => 'Верзија од $1, од $2', # Fuzzy
 	'abusefilter-diff-info' => 'Основни податоци',
 	'abusefilter-diff-pattern' => 'Услови на филтерот',
 	'abusefilter-diff-invalid' => 'Не можам да ги добијам побараните верзии',
@@ -21758,7 +21758,7 @@ $messages['ml'] = array(
 	'abusefilter-revert-success' => '[[Special:AbuseFilter/$1|അരിപ്പ $1]] ഉപയോഗിച്ച് ദുരുപയോഗ അരിപ്പ ചെയ്ത എല്ലാ പ്രവൃത്തികളും മുന്നവസ്ഥയിലേയ്ക്ക് മാറ്റിയിരിക്കുന്നു.',
 	'abusefilter-revert-reason' => 'അരിപ്പ $1 ഉപയോഗിച്ച് ദുരുപയോഗ അരിപ്പ ചെയ്ത എല്ലാ പ്രവൃത്തികളും സ്വയം മുൻപ്രാപനം ചെയ്യുന്നു.
 തന്നിരിക്കുന്ന കാരണം:$2',
-	'abusefilter-revert-reasonfield' => 'മുൻപ്രാപനത്തിനുള്ള കാരണം:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'കാരണം:',
 	'abusefilter-test' => 'മുൻ‌തിരുത്തലുകളിൽ ഒരു അരിപ്പ പരീക്ഷിക്കുക',
 	'abusefilter-test-intro' => 'ഒടുവിലത്തെ {{PLURAL:$1|ഒരു മാറ്റത്തിൽ|$1 മാറ്റങ്ങളിൽ}} താഴെയുള്ള പെട്ടിയിൽ നൽകിയിരിക്കുന്ന അരിപ്പ പരീക്ഷിക്കാൻ ഈ താൾ അനുവദിക്കുന്നു.
 നിലവിലുള്ള ഒരു അരിപ്പ ഉപയോഗിക്കാൻ, അതിന്റെ ഐ.ഡി. തിരുത്തുവാനുള്ള പെട്ടിയുടെ താഴെയുള്ള പെട്ടിയിൽ നൽകിയ ശേഷം, "എടുക്കുക" എന്ന ബട്ടൺ ഞെക്കുക.',
@@ -21804,7 +21804,7 @@ $messages['ml'] = array(
 	'abusefilter-log-noresults' => 'ഫലങ്ങൾ ഒന്നുമില്ല',
 	'abusefilter-diff-title' => 'പതിപ്പുകൾ തമ്മിലുള്ള വ്യത്യാസങ്ങൾ',
 	'abusefilter-diff-item' => 'ഇനം',
-	'abusefilter-diff-version' => '$1-നു $2 സൃഷ്ടിച്ച പതിപ്പ്',
+	'abusefilter-diff-version' => '$1-നു $2 സൃഷ്ടിച്ച പതിപ്പ്', # Fuzzy
 	'abusefilter-diff-info' => 'അടിസ്ഥാന വിവരങ്ങൾ',
 	'abusefilter-diff-pattern' => 'അരിപ്പയിലെ ഉപാധികൾ',
 	'abusefilter-diff-invalid' => 'ആവശ്യപ്പെട്ട പതിപ്പുകൾ ശേഖരിക്കാൻ കഴിയില്ല',
@@ -22288,7 +22288,7 @@ Untuk butiran lanjut, lihat [[Special:AbuseFilter/history|senarai]] perubahan pe
 	'abusefilter-log-noresults' => 'Tiada hasil',
 	'abusefilter-diff-title' => 'Perbezaan antara versi',
 	'abusefilter-diff-item' => 'Butiran',
-	'abusefilter-diff-version' => 'Versi dari $1 oleh $2',
+	'abusefilter-diff-version' => 'Versi dari $1 oleh $2', # Fuzzy
 	'abusefilter-diff-info' => 'Maklumat asas',
 	'abusefilter-diff-pattern' => 'Syarat penapis',
 	'abusefilter-diff-invalid' => 'Versi yang dimohon tidak dapat diambil',
@@ -22682,7 +22682,7 @@ Għal aktar dettalji, ara l-[[Special:AbuseFilter/history|lista]] ta' modifiki r
 	'abusefilter-log-noresults' => 'L-ebda riżultat',
 	'abusefilter-diff-title' => 'Differenzi bejn verżjonijiet',
 	'abusefilter-diff-item' => 'Element',
-	'abusefilter-diff-version' => 'Verżjoni tal-$1 minn $2',
+	'abusefilter-diff-version' => 'Verżjoni tal-$1 minn $2', # Fuzzy
 	'abusefilter-diff-info' => 'Informazzjoni bażika',
 	'abusefilter-diff-pattern' => 'Kondizzjonijiet tal-filtru',
 	'abusefilter-diff-invalid' => 'Ma setgħux jittelgħu l-verżjoni rikjesti',
@@ -23229,7 +23229,7 @@ For fullstendige detaljer, se [[Special:AbuseFilter/history|listen]] over de sis
 	'abusefilter-log-noresults' => 'Ingen resultater',
 	'abusefilter-diff-title' => 'Forskjeller mellom versjoner',
 	'abusefilter-diff-item' => 'Element',
-	'abusefilter-diff-version' => 'Versjon fra $1 av $2',
+	'abusefilter-diff-version' => 'Versjon fra $1 av $2', # Fuzzy
 	'abusefilter-diff-info' => 'Grunnleggende informasjon',
 	'abusefilter-diff-pattern' => 'Filterregler',
 	'abusefilter-diff-invalid' => 'Kunne ikke hente de ønskede versjonene',
@@ -23610,7 +23610,7 @@ För mehr Details, kiek di [[Special:AbuseFilter/history|de List]] mit de lesten
 	'abusefilter-log-entry-modify' => 'hett $1 ($2) ännert',
 	'abusefilter-diff-title' => 'Ünnerscheed twischen Versionen',
 	'abusefilter-diff-item' => 'Indrag',
-	'abusefilter-diff-version' => 'Version vun $1 vun $2',
+	'abusefilter-diff-version' => 'Version vun $1 vun $2', # Fuzzy
 	'abusefilter-diff-info' => 'Basisinformatschoon',
 	'abusefilter-diff-pattern' => 'Filterregeln',
 	'abusefilter-diff-invalid' => 'Kunn de angeven Versionen nich halen',
@@ -23971,7 +23971,7 @@ $messages['ne'] = array(
 	'abusefilter-log-entry-modify' => '$1 ($2) परिवर्तित',
 	'abusefilter-diff-title' => 'संस्करणहरु माझ भिन्नता',
 	'abusefilter-diff-item' => 'सामग्री',
-	'abusefilter-diff-version' => 'संस्करण $1देखि $2द्वारा',
+	'abusefilter-diff-version' => 'संस्करण $1देखि $2द्वारा', # Fuzzy
 	'abusefilter-diff-info' => 'बुनियादी सूचना',
 	'abusefilter-diff-pattern' => 'फिल्टरका अवस्थाहरु',
 	'abusefilter-diff-backhistory' => 'फिल्टर इतिहासतिर फर्किने',
@@ -24397,7 +24397,7 @@ Zie de [[Special:AbuseFilter/history|lijst met recente filterwijzigingen]] voor 
 	'abusefilter-log-noresults' => 'Geen resultaten',
 	'abusefilter-diff-title' => 'Verschillen tussen versies',
 	'abusefilter-diff-item' => 'Item',
-	'abusefilter-diff-version' => 'Versie van $1 door $2',
+	'abusefilter-diff-version' => 'Versie van $1 door $2', # Fuzzy
 	'abusefilter-diff-info' => 'Basisgegevens',
 	'abusefilter-diff-pattern' => 'Filtervoorwaarden',
 	'abusefilter-diff-invalid' => 'Het was niet mogelijk de gevraagde versies op te halen',
@@ -24843,7 +24843,7 @@ For utførlege detaljar, sjå [[Special:AbuseFilter/history|lista]] over dei sis
 	'abusefilter-log-noresults' => 'Ingen resultat',
 	'abusefilter-diff-title' => 'Skilnader mellom versjonar',
 	'abusefilter-diff-item' => 'Element',
-	'abusefilter-diff-version' => 'Versjon frå $1 av $2',
+	'abusefilter-diff-version' => 'Versjon frå $1 av $2', # Fuzzy
 	'abusefilter-diff-info' => 'Grunnleggjande informasjon',
 	'abusefilter-diff-pattern' => 'Filterreglar',
 	'abusefilter-diff-invalid' => 'Kunne ikkje henta dei etterspurde verjsonane',
@@ -25244,7 +25244,7 @@ Per mai de detalhs, vejatz [[Special:AbuseFilter/history|la lista]] dels darriè
 	'abusefilter-log-entry-modify' => 'a modificat $1 ($2)',
 	'abusefilter-diff-title' => 'Diferéncias entre las versions',
 	'abusefilter-diff-item' => 'Article',
-	'abusefilter-diff-version' => 'Version del $1 per $2',
+	'abusefilter-diff-version' => 'Version del $1 per $2', # Fuzzy
 	'abusefilter-diff-info' => 'Informacions basicas',
 	'abusefilter-diff-pattern' => 'Condicions del filtre',
 	'abusefilter-diff-invalid' => 'Impossible de tornar trobar las versions demandadas',
@@ -25601,7 +25601,7 @@ $messages['or'] = array(
 	'abusefilter-log-noresults' => 'ପରିଣାମହୀନ',
 	'abusefilter-diff-title' => 'ସଙ୍କଳନ ଭିତରେ ଥିବା ତଫାତ',
 	'abusefilter-diff-item' => 'ବସ୍ତୁ',
-	'abusefilter-diff-version' => 'ସଂସ୍କରଣ $1 ଠୁ $2 ଦ୍ଵାରା',
+	'abusefilter-diff-version' => 'ସଂସ୍କରଣ $1 ଠୁ $2 ଦ୍ଵାରା', # Fuzzy
 	'abusefilter-diff-info' => 'ସାଧାରଣ ଜାଣିବା କଥା',
 	'abusefilter-diff-pattern' => 'ଛାଣିବା ବିକଳ୍ପସମୂହ',
 	'abusefilter-diff-invalid' => 'ଦରକାରୀ ସଂସ୍କରଣସମୂହ ଖୋଜିବାରେ ଅସଫଳ ହେଲୁ',
@@ -26095,7 +26095,7 @@ Fa Näjares gugschd baide [[Special:AbuseFilter/history|Lischd]] vunde ledschde 
 	'abusefilter-log-noresults' => 'Kä Ergewnis',
 	'abusefilter-diff-title' => 'Unnerschied zwische de Versione',
 	'abusefilter-diff-item' => 'Oidrach',
-	'abusefilter-diff-version' => 'Version vum $1 vun $2',
+	'abusefilter-diff-version' => 'Version vum $1 vun $2', # Fuzzy
 	'abusefilter-diff-info' => 'Grundleschendi Auskinfd',
 	'abusefilter-diff-pattern' => 'Fildareschle',
 	'abusefilter-diff-invalid' => 'Die gwinschd Version konn ned gfunne werre',
@@ -26515,7 +26515,7 @@ Pełne informacje odnajdziesz w [[Special:AbuseFilter/history|rejestrze]] ostatn
 	'abusefilter-log-noresults' => 'Brak wyników',
 	'abusefilter-diff-title' => 'Różnice pomiędzy wersjami',
 	'abusefilter-diff-item' => 'Przedmiot',
-	'abusefilter-diff-version' => 'Wersja z $1 przez $2',
+	'abusefilter-diff-version' => 'Wersja z $1 przez $2', # Fuzzy
 	'abusefilter-diff-info' => 'Podstawowe informacje',
 	'abusefilter-diff-pattern' => 'Warunki filtru',
 	'abusefilter-diff-invalid' => 'Nie można pobrać żądanej wersji',
@@ -26936,7 +26936,7 @@ Për ij detaj complet, ch'a bèica [[Special:AbuseFilter/history|la lista]] dle 
 	'abusefilter-log-noresults' => 'Gnun arzultà',
 	'abusefilter-diff-title' => 'Diferense antra le version',
 	'abusefilter-diff-item' => 'Element',
-	'abusefilter-diff-version' => 'Version dël $1 ëd $2',
+	'abusefilter-diff-version' => 'Version dël $1 ëd $2', # Fuzzy
 	'abusefilter-diff-info' => 'Anformassion ëd base',
 	'abusefilter-diff-pattern' => 'Condission dël filtr',
 	'abusefilter-diff-invalid' => 'Impossìbil trové le version ciamà',
@@ -27480,7 +27480,7 @@ Para detalhes completos, ver [[Special:AbuseFilter/history|a lista]] de alteraç
 	'abusefilter-log-noresults' => 'Não foram encontrados resultados.',
 	'abusefilter-diff-title' => 'Diferenças entre versões',
 	'abusefilter-diff-item' => 'Entrada',
-	'abusefilter-diff-version' => 'Versão de $1 por $2',
+	'abusefilter-diff-version' => 'Versão de $1 por $2', # Fuzzy
 	'abusefilter-diff-info' => 'Informações básicas',
 	'abusefilter-diff-pattern' => 'Condições do filtro',
 	'abusefilter-diff-invalid' => 'Não foi possível obter as versões requeridas',
@@ -27909,7 +27909,7 @@ Para detalhes completos, ver [[Special:AbuseFilter/history|a lista]] de alteraç
 	'abusefilter-log-noresults' => 'Nenhum resultado.',
 	'abusefilter-diff-title' => 'Diferenças entre versões',
 	'abusefilter-diff-item' => 'Entrada',
-	'abusefilter-diff-version' => 'Versão de $1 por $2',
+	'abusefilter-diff-version' => 'Versão de $1 por $2', # Fuzzy
 	'abusefilter-diff-info' => 'Informações básicas',
 	'abusefilter-diff-pattern' => 'Condições do filtro',
 	'abusefilter-diff-invalid' => 'Não foi possível obter as versões requeridas',
@@ -28353,7 +28353,7 @@ Pentru informații complete, vedeți [[Special:AbuseFilter/history|lista]] cu sc
 	'abusefilter-log-noresults' => 'Niciun rezultat',
 	'abusefilter-diff-title' => 'Diferențe între versiuni',
 	'abusefilter-diff-item' => 'Element',
-	'abusefilter-diff-version' => 'Versiune de la $1 de $2',
+	'abusefilter-diff-version' => 'Versiune de la $1 de $2', # Fuzzy
 	'abusefilter-diff-info' => 'Informații de bază',
 	'abusefilter-diff-pattern' => 'Condiții de filtrare',
 	'abusefilter-diff-invalid' => 'Nu se pot aduce versiunile solicitate',
@@ -28758,7 +28758,7 @@ Pè avè cchiù dettaglie, vide [[Special:AbuseFilter/history|'a liste]] de le c
 	'abusefilter-log-noresults' => 'Nisciune resultate',
 	'abusefilter-diff-title' => "Differenze 'mbrà versiune",
 	'abusefilter-diff-item' => 'Elemende',
-	'abusefilter-diff-version' => 'Versione da $1 a $2',
+	'abusefilter-diff-version' => 'Versione da $1 a $2', # Fuzzy
 	'abusefilter-diff-info' => "'Mbormaziune nderra-nderre",
 	'abusefilter-diff-pattern' => "Condiziune d'u filtre:",
 	'abusefilter-diff-invalid' => 'Impossibbele recuperà le versiune rechieste',
@@ -29191,7 +29191,7 @@ $messages['ru'] = array(
 	'abusefilter-log-noresults' => 'Ничего не найдено',
 	'abusefilter-diff-title' => 'Различия между версиями',
 	'abusefilter-diff-item' => 'Элемент',
-	'abusefilter-diff-version' => 'Версия от $1, $2',
+	'abusefilter-diff-version' => 'Версия от $1, $2', # Fuzzy
 	'abusefilter-diff-info' => 'Основные сведения',
 	'abusefilter-diff-pattern' => 'Условия фильтрации',
 	'abusefilter-diff-invalid' => 'Не удаётся получить запрошенные версии',
@@ -29594,7 +29594,7 @@ $messages['rue'] = array(
 	'abusefilter-log-noresults' => 'Жадны ресултаты',
 	'abusefilter-diff-title' => 'Різниця міджі верзіями',
 	'abusefilter-diff-item' => 'Елемент',
-	'abusefilter-diff-version' => 'Верзія од $1, $2',
+	'abusefilter-diff-version' => 'Верзія од $1, $2', # Fuzzy
 	'abusefilter-diff-info' => 'Основны інформації',
 	'abusefilter-diff-pattern' => 'Подмінкы філтрів',
 	'abusefilter-diff-invalid' => 'Не подарило ся обтримати пожадовны верзії',
@@ -30166,7 +30166,7 @@ $3 {{PLURAL:$3|аргумент кэтэһиллэр|аргуменнаах бу
 	'abusefilter-log-noresults' => 'Туох да көстүбэтэ',
 	'abusefilter-diff-title' => 'Барыллары тэҥнээн көрүү',
 	'abusefilter-diff-item' => 'Элэмиэн',
-	'abusefilter-diff-version' => 'Баччатааҕы $1, $2 барыл',
+	'abusefilter-diff-version' => 'Баччатааҕы $1, $2 барыл', # Fuzzy
 	'abusefilter-diff-info' => 'Сүрүн сибидиэнньэлэр',
 	'abusefilter-diff-pattern' => 'Сиидэ туруоруулара',
 	'abusefilter-diff-invalid' => 'Көрдөөбүт барыллары көрөр табыллыбата',
@@ -30624,7 +30624,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-log-noresults' => 'ප්‍රතිඵල නොමැත',
 	'abusefilter-diff-title' => 'අනුවාද අතර වෙනස්කම්',
 	'abusefilter-diff-item' => 'අයිතමය',
-	'abusefilter-diff-version' => '$1 ගෙන් අනුවාදය $2 විසින්',
+	'abusefilter-diff-version' => '$1 ගෙන් අනුවාදය $2 විසින්', # Fuzzy
 	'abusefilter-diff-info' => 'මූලික තොරතුරු',
 	'abusefilter-diff-pattern' => 'පෙරහනේ කොන්දේසි',
 	'abusefilter-diff-invalid' => 'අයැදූ අනුවාදයන් පමුණුවීමට නොහැක',
@@ -31023,7 +31023,7 @@ Podrobnosti nájdete v [[Special:AbuseFilter/history|zozname]] posledných zmien
 	'abusefilter-log-noresults' => 'Žiadne výsledky',
 	'abusefilter-diff-title' => 'Rozdiely medzi verziami',
 	'abusefilter-diff-item' => 'Položka',
-	'abusefilter-diff-version' => 'Verzia od $1, $2',
+	'abusefilter-diff-version' => 'Verzia od $1, $2', # Fuzzy
 	'abusefilter-diff-info' => 'Základné informácie',
 	'abusefilter-diff-pattern' => 'Podmienky filtra',
 	'abusefilter-diff-invalid' => 'Nepodarilo sa získať požadované verzie',
@@ -31440,7 +31440,7 @@ Za vse podrobnosti si oglejte [[Special:AbuseFilter/history|seznam]] zadnjih spr
 	'abusefilter-log-noresults' => 'Ni zadetkov',
 	'abusefilter-diff-title' => 'Razlike med različicami',
 	'abusefilter-diff-item' => 'Postavka',
-	'abusefilter-diff-version' => 'Različica dne $1 od $2',
+	'abusefilter-diff-version' => 'Različica dne $1 od $2', # Fuzzy
 	'abusefilter-diff-info' => 'Osnovni podatki',
 	'abusefilter-diff-pattern' => 'Pogoji filtra',
 	'abusefilter-diff-invalid' => 'Ne morem pridobiti zahtevanih različic',
@@ -32147,7 +32147,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-log-noresults' => 'Нема резултата',
 	'abusefilter-diff-title' => 'Разлике између издања',
 	'abusefilter-diff-item' => 'Ставка',
-	'abusefilter-diff-version' => 'Издање из $1 од $2',
+	'abusefilter-diff-version' => 'Издање из $1 од $2', # Fuzzy
 	'abusefilter-diff-info' => 'Основни подаци',
 	'abusefilter-diff-pattern' => 'Услови филтера',
 	'abusefilter-diff-backhistory' => 'Повратак на историју филтера',
@@ -32495,7 +32495,7 @@ Akcije koje će biti vraćene: $5 ($6)',
 	'abusefilter-log-noresults' => 'Nema rezultata',
 	'abusefilter-diff-title' => 'Razlike između verzija',
 	'abusefilter-diff-item' => 'Stavka',
-	'abusefilter-diff-version' => 'Verzija iz $1, od $2',
+	'abusefilter-diff-version' => 'Verzija iz $1, od $2', # Fuzzy
 	'abusefilter-diff-info' => 'Osnovne infomacije',
 	'abusefilter-diff-pattern' => 'Uslovi filtera',
 	'abusefilter-diff-backhistory' => 'Povratak na istoriju filtera',
@@ -33182,7 +33182,7 @@ För fullständiga detaljer, se [[Special:AbuseFilter/history|listan]] över de 
 	'abusefilter-log-noresults' => 'Inga resultat',
 	'abusefilter-diff-title' => 'Skillnader mellan versioner',
 	'abusefilter-diff-item' => 'Element',
-	'abusefilter-diff-version' => 'Version från $1 av $2',
+	'abusefilter-diff-version' => 'Version från $1 av $2', # Fuzzy
 	'abusefilter-diff-info' => 'Grundläggande information',
 	'abusefilter-diff-pattern' => 'Filtervillkor',
 	'abusefilter-diff-invalid' => 'Kunde inte hämta de önskade versionerna',
@@ -34446,7 +34446,7 @@ Jikme-jik maglumat üçin, soňky filtr üýtgeşmeleriniň [[Special:AbuseFilte
 	'abusefilter-log-entry-modify' => 'üýtgetdi $1 ($2)',
 	'abusefilter-diff-title' => 'Wersiýalaryň aratapawutlary',
 	'abusefilter-diff-item' => 'Element',
-	'abusefilter-diff-version' => '$2 tarapyndan $1 çykgydyndan wersiýa',
+	'abusefilter-diff-version' => '$2 tarapyndan $1 çykgydyndan wersiýa', # Fuzzy
 	'abusefilter-diff-info' => 'Esasy maglumat',
 	'abusefilter-diff-pattern' => 'Filtr şertleri',
 	'abusefilter-diff-invalid' => 'Soralýan wersiýalary alyp bolmaýar',
@@ -34851,7 +34851,7 @@ Para sa buong mga detalye, tingnan [[Special:AbuseFilter/history|ang talaan]] ng
 	'abusefilter-log-noresults' => 'Walang mga resulta',
 	'abusefilter-diff-title' => 'Mga pagkakaiba sa pagitan ng mga bersyon',
 	'abusefilter-diff-item' => 'Bagay',
-	'abusefilter-diff-version' => 'Bersyong mula sa $1 ni $2',
+	'abusefilter-diff-version' => 'Bersyong mula sa $1 ni $2', # Fuzzy
 	'abusefilter-diff-info' => 'Saligang kabatiran',
 	'abusefilter-diff-pattern' => 'Mga kalagayan ng pansala',
 	'abusefilter-diff-invalid' => 'Hindi nagawang makuha ang hiniling na mga bersyon',
@@ -35295,7 +35295,7 @@ Tam ayrıntılar için, son filtre değişiklikleri [[Special:AbuseFilter/histor
 	'abusefilter-log-noresults' => 'Sonuç yok',
 	'abusefilter-diff-title' => 'Sürümler arasındaki farklar',
 	'abusefilter-diff-item' => 'Öğe',
-	'abusefilter-diff-version' => "$1'dan sürüm $2 tarafından",
+	'abusefilter-diff-version' => "$1'dan sürüm $2 tarafından", # Fuzzy
 	'abusefilter-diff-info' => 'Temel bilgiler',
 	'abusefilter-diff-pattern' => 'Filtre koşulları',
 	'abusefilter-diff-invalid' => 'İstenen sürümler alınamıyor',
@@ -36054,7 +36054,7 @@ $messages['uk'] = array(
 	'abusefilter-log-noresults' => 'Немає результатів',
 	'abusefilter-diff-title' => 'Різниця між версіями',
 	'abusefilter-diff-item' => 'Елемент',
-	'abusefilter-diff-version' => 'Версія від $1, $2',
+	'abusefilter-diff-version' => 'Версія від $1, $2', # Fuzzy
 	'abusefilter-diff-info' => 'Основні відомості',
 	'abusefilter-diff-pattern' => 'Умови фільтрації',
 	'abusefilter-diff-invalid' => 'Не вдається отримати запитані версії',
@@ -36650,7 +36650,7 @@ Par i detagli completi, varda [[Special:AbuseFilter/history|l'elenco]] de le mod
 	'abusefilter-log-entry-modify' => 'gà modifegà $1 ($2)',
 	'abusefilter-diff-title' => 'Difarense tra le version',
 	'abusefilter-diff-item' => 'Elemento',
-	'abusefilter-diff-version' => 'Version del $1, fata da $2',
+	'abusefilter-diff-version' => 'Version del $1, fata da $2', # Fuzzy
 	'abusefilter-diff-info' => 'Informassion de base',
 	'abusefilter-diff-pattern' => 'Condission dei filtri',
 	'abusefilter-diff-invalid' => 'No se riesse a cargar le version che ti gà domandà',
@@ -37144,7 +37144,7 @@ Lý do: $2',
 	'abusefilter-log-noresults' => 'Không có kết quả',
 	'abusefilter-diff-title' => 'Khác biệt giữa các phiên bản',
 	'abusefilter-diff-item' => 'Khoản mục',
-	'abusefilter-diff-version' => 'Phiên bản vào $1 bởi $2',
+	'abusefilter-diff-version' => 'Phiên bản vào $1 bởi $2', # Fuzzy
 	'abusefilter-diff-info' => 'Thông tin cơ bản',
 	'abusefilter-diff-pattern' => 'Điều kiện lọc',
 	'abusefilter-diff-invalid' => 'Không thể lấy các phiên bản yêu cầu',
@@ -37886,7 +37886,7 @@ $messages['yue'] = array(
 	'abusefilter-log-entry-modify' => '改咗 $1 ($2)',
 	'abusefilter-diff-title' => '唔同版本之間嘅差異',
 	'abusefilter-diff-item' => '項目',
-	'abusefilter-diff-version' => '響 $1 由 $2 做嘅版本',
+	'abusefilter-diff-version' => '響 $1 由 $2 做嘅版本', # Fuzzy
 	'abusefilter-diff-info' => '基本資訊',
 	'abusefilter-diff-pattern' => '過濾器條件',
 	'abusefilter-diff-invalid' => '唔能夠擷取所需要嘅版本',
@@ -38301,7 +38301,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-log-noresults' => '没有结果',
 	'abusefilter-diff-title' => '版本间的差异',
 	'abusefilter-diff-item' => '项目',
-	'abusefilter-diff-version' => '$1$2的版本',
+	'abusefilter-diff-version' => '$1$2的版本', # Fuzzy
 	'abusefilter-diff-info' => '基本信息',
 	'abusefilter-diff-pattern' => '过滤器状态',
 	'abusefilter-diff-invalid' => '无法获取所请求版本',
@@ -38719,7 +38719,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-log-noresults' => '沒有結果',
 	'abusefilter-diff-title' => '修訂版本間差異',
 	'abusefilter-diff-item' => '項目',
-	'abusefilter-diff-version' => '在$1由$2所做的修訂版本',
+	'abusefilter-diff-version' => '在$1由$2所做的修訂版本', # Fuzzy
 	'abusefilter-diff-info' => '基本資料',
 	'abusefilter-diff-pattern' => '過濾器狀態',
 	'abusefilter-diff-invalid' => '無法取得請求的版本',
