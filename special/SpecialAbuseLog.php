@@ -112,12 +112,10 @@ class SpecialAbuseLog extends SpecialPage {
 				Xml::input( 'wpSearchWiki', 45, $this->mSearchWiki );
 		}
 
-		$form = Html::hidden( 'title', $this->getTitle()->getPrefixedText() );
-
-		$form .= Xml::buildForm( $fields, 'abusefilter-log-search-submit' );
 		$output .= Xml::tags( 'form',
 			array( 'method' => 'get', 'action' => $this->getTitle()->getLocalURL() ),
-			$form );
+			Xml::buildForm( $fields, 'abusefilter-log-search-submit' )
+		);
 		$output = Xml::tags( 'fieldset', null, $output );
 
 		$this->getOutput()->addHTML( $output );
