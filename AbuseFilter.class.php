@@ -108,6 +108,8 @@ class AbuseFilter {
 			'new_html' => 'new-html',
 			'article_restrictions_edit' => 'restrictions-edit',
 			'article_restrictions_move' => 'restrictions-move',
+			'article_restrictions_create' => 'restrictions-create',
+			'article_restrictions_upload' => 'restrictions-upload',
 			'article_recent_contributors' => 'recent-contributors',
 #			'old_text' => 'old-text-stripped', # Disabled, performance
 #			'old_html' => 'old-html', # Disabled, performance
