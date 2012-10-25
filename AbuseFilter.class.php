@@ -864,7 +864,7 @@ class AbuseFilter {
 				$log_rows[] = $thisLog;
 
 				if ( !$globalIndex ) {
-					$logged_local_filters[] = $filter;
+					$logged_local_filters[$filter] = $action;
 				}
 
 				// Global logging
@@ -932,7 +932,7 @@ class AbuseFilter {
 			// Update hit-counter.
 			$dbw->update( 'abuse_filter',
 				array( 'af_hit_count=af_hit_count+1' ),
-				array( 'af_id' => $logged_local_filters ),
+				array( 'af_id' => array_keys( $logged_local_filters ) ),
 				__METHOD__
 			);
 		}
@@ -1456,7 +1456,12 @@ class AbuseFilter {
 		global $wgAbuseFilterEmergencyDisableThreshold, $wgAbuseFilterEmergencyDisableCount,
 			$wgAbuseFilterEmergencyDisableAge, $wgMemc;
 
-		foreach ( $filters as $filter ) {
+		foreach ( $filters as $filter => $action ) {
+			// determine emergency disable values for this action
+			$emergencyDisableThreshold = self::getEmergencyValue( $wgAbuseFilterEmergencyDisableThreshold, $action );
+			$filterEmergencyDisableCount = self::getEmergencyValue( $wgAbuseFilterEmergencyDisableCount, $action );
+			$emergencyDisableAge = self::getEmergencyValue( $wgAbuseFilterEmergencyDisableAge, $action );
+
 			// Increment counter
 			$matchCount = $wgMemc->get( self::filterMatchesKey( $filter ) );
 
@@ -1471,14 +1476,14 @@ class AbuseFilter {
 			// Figure out if the filter is subject to being deleted.
 			$ts = new MWTimestamp( self::$filters[$filter]->af_timestamp );
 			$filter_age = $ts->getTimestamp( TS_UNIX );
-			$throttle_exempt_time = $filter_age + $wgAbuseFilterEmergencyDisableAge;
+			$throttle_exempt_time = $filter_age + $emergencyDisableAge;
 
 			if ( $total && $throttle_exempt_time > time()
-				&& $matchCount > $wgAbuseFilterEmergencyDisableCount
-				&& ( $matchCount / $total ) > $wgAbuseFilterEmergencyDisableThreshold )
+				&& $matchCount > $filterEmergencyDisableCount
+				&& ( $matchCount / $total ) > $emergencyDisableThreshold )
 			{
 				// More than $wgAbuseFilterEmergencyDisableCount matches,
-				// constituting more than $wgAbuseFilterEmergencyDisableThreshold
+				// constituting more than $emergencyDisableThreshold
 				// (a fraction) of last few edits. Disable it.
 				$dbw = wfGetDB( DB_MASTER );
 				$dbw->update( 'abuse_filter',
@@ -1488,6 +1493,15 @@ class AbuseFilter {
 				);
 			}
 		}
+	}
+
+	/**
+	 * @param array $emergencyValue
+	 * @param string $action
+	 * @return mixed
+	 */
+	public static function getEmergencyValue( array $emergencyValue, $action ) {
+		return isset( $emergencyValue[$action] ) ? $emergencyValue[$action] : $emergencyValue['default'];
 	}
 
 	/**
