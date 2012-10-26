@@ -1,6 +1,5 @@
 // AbuseFilter editing stuff
 ( function( $, mw ) {
-	'use strict';
 
 	// Filter textarea
 	// @var {jQuery}

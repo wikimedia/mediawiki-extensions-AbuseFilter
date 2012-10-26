@@ -1,6 +1,5 @@
 // Filter checking for examine
-( function( $, mw ) {
-	'use strict';
+new ( function( $, mw ) {
 
 	// Reference to this
 	var that = this,

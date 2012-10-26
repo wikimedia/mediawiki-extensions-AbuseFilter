@@ -1,6 +1,5 @@
 // AbuseFilter tools JS
 new ( function( $, mw ) {
-	'use strict';
 
 	// Reference to this
 
