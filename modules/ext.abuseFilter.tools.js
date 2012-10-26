@@ -1,5 +1,5 @@
 // AbuseFilter tools JS
-new ( function( $, mw ) {
+( function( $, mw ) {
 
 	// Reference to this
 

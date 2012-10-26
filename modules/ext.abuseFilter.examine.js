@@ -1,5 +1,5 @@
 // Filter checking for examine
-new ( function( $, mw ) {
+( function( $, mw ) {
 
 	// Reference to this
 	var that = this,
