@@ -120,6 +120,7 @@ $wgResourceModules['ext.abuseFilter.edit'] = array(
 	),
 	'dependencies' => array(
 		'mediawiki.util',
+		'mediawiki.api',
 		'jquery.textSelection',
 		'jquery.spinner',
 	),
@@ -131,9 +132,12 @@ $wgResourceModules['ext.abuseFilter.tools'] = array(
 		'abusefilter-reautoconfirm-notallowed',
 		'abusefilter-reautoconfirm-none',
 		'abusefilter-reautoconfirm-done',
+		'unknown-error',
 	),
 	'dependencies' => array(
-		'mediawiki.util',
+		'mediawiki.api',
+		'mediawiki.notify',
+		'user.tokens',
 		'jquery.spinner'
 	),
 ) + $commonModuleInfo;
@@ -145,9 +149,12 @@ $wgResourceModules['ext.abuseFilter.examine'] = array(
 		'abusefilter-examine-nomatch',
 		'abusefilter-examine-syntaxerror',
 		'abusefilter-examine-notfound',
+		'abusefilter-mustbeeditor',
+		'unknown-error',
 	),
 	'dependencies' => array(
-		'mediawiki.util',
+		'jquery.spinner',
+		'mediawiki.api'
 	),
 ) + $commonModuleInfo;
 
