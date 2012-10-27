@@ -24030,6 +24030,7 @@ $messages['niu'] = array(
  * @author Siebrand
  * @author Tjcool007
  * @author Tvdm
+ * @author Wiki13
  */
 $messages['nl'] = array(
 	'abusefilter-desc' => 'Voert automatisch heuristische analyse uit op bewerkingen',
@@ -24320,6 +24321,7 @@ Labels moeten kort zijn en mogen geen speciale tekens bevatten.',
 	'abusefilter-edit-builder-vars-new-html' => 'Verwerkte HTML-broncode van de nieuwe versie',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Beveiligingsniveau voor bewerken van de pagina',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Beveiligingsniveau voor hernoemen van de pagina',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Aanmaakbeveiliging van deze pagina',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Tekst oude pagina, ontdaan van alle opmaak',
 	'abusefilter-edit-builder-vars-old-links' => 'Verwijzingen in de pagina voor de bewerking',
 	'abusefilter-edit-builder-vars-old-html' => 'Wikitext oude pagina in HTML',
@@ -24433,7 +24435,7 @@ Zie de [[Special:AbuseFilter/history|lijst met recente filterwijzigingen]] voor 
 	'abusefilter-log-noresults' => 'Geen resultaten',
 	'abusefilter-diff-title' => 'Verschillen tussen versies',
 	'abusefilter-diff-item' => 'Item',
-	'abusefilter-diff-version' => 'Versie van $1 door $2', # Fuzzy
+	'abusefilter-diff-version' => 'Versie van $1 {{GENDER:$3|door}} $2',
 	'abusefilter-diff-info' => 'Basisgegevens',
 	'abusefilter-diff-pattern' => 'Filtervoorwaarden',
 	'abusefilter-diff-invalid' => 'Het was niet mogelijk de gevraagde versies op te halen',
@@ -26860,6 +26862,8 @@ Le tichëtte a dovrìo esse curte, e a dovrìo pa conten-e ëd caràter speciaj.
 	'abusefilter-edit-builder-vars-new-html' => 'Sorgiss HTML parsificà dla neuva revision',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Livel ëd protession dle modìfiche dla pàgina',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Livel ëd protession për ij tramud ëd la pàgina',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Crea la protession ëd la pàgina',
+	'abusefilter-edit-builder-vars-restrictions-upload' => "Carìa la protession ëd l'archivi",
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Test vej ëd la pàgina, gavà tùit ij marcador',
 	'abusefilter-edit-builder-vars-old-links' => 'Anliure ant la pàgina, prima dla modìfica',
 	'abusefilter-edit-builder-vars-old-html' => 'Vej wikitest ëd la pàgina, parsificà an HTML',
@@ -26926,7 +26930,7 @@ Për piasì, ch'a-j contròla con atension, e che sgnaca \"confirmé\" për conf
 	'abusefilter-revert-success' => "A l'ha revocà tute j'assion fàite dal filtr contra j'abus dovùe a [[Special:AbuseFilter/$1|filtr $1]].",
 	'abusefilter-revert-reason' => "Anulament automàtich ëd tute j'assion fàite dal filtr ëd sicurëssa dovùe al filtr $1.
 Rason dàita: $2",
-	'abusefilter-revert-reasonfield' => 'Rason për porté andré:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Rason:',
 	'abusefilter-test' => 'Prové un filtr an sle veje modìfiche',
 	'abusefilter-test-intro' => 'Sta pàgina a-j përmët ëd verifiché un filtr anserì ant la casela sì-sota an dovrand {{PLURAL:$1|l\'ùltima modìfica|j\'ùltime $1 modìfiche}}.
 Për carié un filtr esistent, ch\'a buta sò identificativ ant la casela sota la casela testual ëd modìfica, e ch\'a sgnaca ël boton "Carié".',
@@ -26972,7 +26976,7 @@ Për ij detaj complet, ch'a bèica [[Special:AbuseFilter/history|la lista]] dle 
 	'abusefilter-log-noresults' => 'Gnun arzultà',
 	'abusefilter-diff-title' => 'Diferense antra le version',
 	'abusefilter-diff-item' => 'Element',
-	'abusefilter-diff-version' => 'Version dël $1 ëd $2', # Fuzzy
+	'abusefilter-diff-version' => 'Version dël $1 {{GENDER:$3|ëd}} $2',
 	'abusefilter-diff-info' => 'Anformassion ëd base',
 	'abusefilter-diff-pattern' => 'Condission dël filtr',
 	'abusefilter-diff-invalid' => 'Impossìbil trové le version ciamà',
@@ -31430,7 +31434,7 @@ Prosimo, skrbno jih preverite in kliknite »Potrdi«, da potrdite izbiro.',
 	'abusefilter-revert-success' => 'Vrnili ste vsa dejanja filtra zlorab zaradi [[Special:AbuseFilter/$1|filtra $1]].',
 	'abusefilter-revert-reason' => 'Samodejna vrnitev vseh dejanj filtra zlorab zaradi filtra $1.
 Podan razlog: $2',
-	'abusefilter-revert-reasonfield' => 'Razlog za vrnitev:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Razlog:',
 	'abusefilter-test' => 'Preizkusi filter s preteklimi urejanji',
 	'abusefilter-test-intro' => 'Ta stran vam omogoča, da preverite filter, vnesen v spodnje polje, ob {{PLURAL:$1|zadnjo $1 spremembo|zadnji $1 spremembi|zadnje $1 spremembe|zadnjih $1 sprememb}}.
 Za nalaganje obstoječega filtra vpišite njegov ID v polje pod urejevalnim besedilnim poljem in kliknite gumb »Naloži«.',
@@ -31476,7 +31480,7 @@ Za vse podrobnosti si oglejte [[Special:AbuseFilter/history|seznam]] zadnjih spr
 	'abusefilter-log-noresults' => 'Ni zadetkov',
 	'abusefilter-diff-title' => 'Razlike med različicami',
 	'abusefilter-diff-item' => 'Postavka',
-	'abusefilter-diff-version' => 'Različica dne $1 od $2', # Fuzzy
+	'abusefilter-diff-version' => 'Različica dne $1 {{GENDER:$3|od}} $2',
 	'abusefilter-diff-info' => 'Osnovni podatki',
 	'abusefilter-diff-pattern' => 'Pogoji filtra',
 	'abusefilter-diff-invalid' => 'Ne morem pridobiti zahtevanih različic',
