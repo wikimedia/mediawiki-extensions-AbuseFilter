@@ -1285,7 +1285,7 @@ $messages['aln'] = array(
 	'abusefilter-log-entry-modify' => 'ndryshuar për herë te $1 ($2)',
 	'abusefilter-diff-title' => 'Dallimet midis versioneve',
 	'abusefilter-diff-item' => 'Artikull',
-	'abusefilter-diff-version' => 'Version nga $1 nga $2',
+	'abusefilter-diff-version' => 'Version nga $1 nga $2', # Fuzzy
 	'abusefilter-diff-info' => 'informata themelore',
 	'abusefilter-diff-pattern' => 'Kushtet Filter',
 	'abusefilter-diff-invalid' => 'Në pamundësi për të shkoj të marr versionet e kërkuar',
@@ -1837,7 +1837,7 @@ $messages['arc'] = array(
 	'abusefilter-topnav-home' => 'ܒܝܬܐ',
 	'abusefilter-topnav-examine' => 'ܒܚܘܪ ܫܘܚܠܦ̈ܐ ܕܕܥܒܪ',
 	'abusefilter-topnav-import' => 'ܡܥܠܢܘܬܐ ܕܡܨܦܝܢܝܬܐ',
-	'abusefilter-diff-version' => 'ܨܚܚܐ ܡܢ $1 ܒܝܕ $2',
+	'abusefilter-diff-version' => 'ܨܚܚܐ ܡܢ $1 ܒܝܕ $2', # Fuzzy
 	'abusefilter-diff-info' => 'ܝܕ̈ܥܬܐ ܪ̈ܫܝܬܐ',
 	'abusefilter-diff-pattern' => 'ܬܢܘ̈ܝ ܕܡܨܦܝܢܝܬܐ',
 	'abusefilter-import-submit' => 'ܡܥܠܢܘܬܐ ܕܓܠܝܬ̈ܐ',
@@ -2702,7 +2702,7 @@ Süzgəcin təsviri: $7 ($8)',
 	'abusefilter-log-noresults' => 'Nəticə yoxdur',
 	'abusefilter-diff-title' => 'Versiyalar arasındakı fərqlər',
 	'abusefilter-diff-item' => 'Element',
-	'abusefilter-diff-version' => '$1-nin versiyası, $2',
+	'abusefilter-diff-version' => '$1-nin versiyası, $2', # Fuzzy
 	'abusefilter-diff-info' => 'Əsas məlumatlar',
 	'abusefilter-diff-pattern' => 'Süzgəcləmə şərtləri',
 );
@@ -5639,7 +5639,7 @@ $messages['ckb'] = array(
 	'abusefilter-log-noresults' => 'هیچ ئەنجامێک نییە',
 	'abusefilter-diff-title' => 'جیاوازیی نێوان پێداچوونەوەکان',
 	'abusefilter-diff-item' => 'بابەت',
-	'abusefilter-diff-version' => 'پێداچوونەوە لە $1 لە لایەن $2',
+	'abusefilter-diff-version' => 'پێداچوونەوە لە $1 لە لایەن $2', # Fuzzy
 	'abusefilter-diff-info' => 'زانیاریی سەرەتایی',
 	'abusefilter-diff-pattern' => 'مەرجەکانی فیلتەر',
 	'abusefilter-diff-backhistory' => 'گەڕانەوە بۆ مێژووی فیلتەر',
@@ -9154,7 +9154,7 @@ Para detalles completos, ver [[Special:AbuseFilter/history|la lista]] de cambios
 	'abusefilter-log-noresults' => 'No hay resultados',
 	'abusefilter-diff-title' => 'Diferencias entre versiones',
 	'abusefilter-diff-item' => 'objeto',
-	'abusefilter-diff-version' => 'Versión de $1 por $2', # Fuzzy
+	'abusefilter-diff-version' => 'Versión desde $1 {{GENDER:$3|por}} $2',
 	'abusefilter-diff-info' => 'Información básica',
 	'abusefilter-diff-pattern' => 'Condiciones de filtro',
 	'abusefilter-diff-invalid' => 'Incapaz de traer la versiones solicitadas',
@@ -15923,7 +15923,7 @@ Pangngaasi nga agan-annad ka a mangkita, ken agtakla ti "pasingkedan" tapno mapa
 	'abusefilter-revert-success' => 'Insublim amin nga aramid a naala babaen ti sagat ti panag-abuso gapu ti [[Special:AbuseFilter/$1|sagat $1]].',
 	'abusefilter-revert-reason' => 'Automatiko a panagisubli iti amin nga aramid nga innala ti sagat ti panag-abuso gapu ti sagat $1.
 Rason a naited: $2',
-	'abusefilter-revert-reasonfield' => 'Rason ti panagisubli:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Rason:',
 	'abusefilter-test' => 'Subokan ti sagat nga gasupiat kadagiti nasakbayan nga inurnos',
 	'abusefilter-test-intro' => 'Daytoy a panid ket agpalubos kenka ti agkita ti sagat a naikabil iti kahon dita baba a naisupiat ti naudi $1 {{PLURAL:$1|a sinukatan|a dagiti sinukatan}}.
 Ti agikarga ti adda a sagat, imakiniliam ti ID ti sagat iti kahon dita baba ti panagurnos a kahon ti teksto, ken agtakla ti "Agkarga" a buton.',
@@ -15969,7 +15969,7 @@ Para kadagiti sibubukel adetalye, kitaen [[Special:AbuseFilter/history|ti listaa
 	'abusefilter-log-noresults' => 'Awan dagiti nagbanagan',
 	'abusefilter-diff-title' => 'Nagdudumaan iti baeten dagiti pannakabalbaliw',
 	'abusefilter-diff-item' => 'Banag',
-	'abusefilter-diff-version' => 'Bersion manipud idiay $1 babaen ti $2', # Fuzzy
+	'abusefilter-diff-version' => 'Bersion manipud idi $1 {{GENDER:$3|babaen ni}} $2',
 	'abusefilter-diff-info' => 'Kangrunaan a pakaammuan',
 	'abusefilter-diff-pattern' => 'Dagiti kasasaad ti sagat',
 	'abusefilter-diff-invalid' => 'Saan a maala dagiti kiniddaw a bersion',
@@ -16059,7 +16059,7 @@ $messages['io'] = array(
 	'abusefilter-examine-title' => 'titulo di pagino:',
 	'abusefilter-examine-submit' => 'Serchez',
 	'abusefilter-examine-test-button' => 'Probez filtrilo',
-	'abusefilter-diff-version' => 'Versiono ye $1 da $2',
+	'abusefilter-diff-version' => 'Versiono ye $1 da $2', # Fuzzy
 );
 
 /** Icelandic (íslenska)
@@ -21727,6 +21727,8 @@ $messages['ml'] = array(
 	'abusefilter-edit-builder-vars-new-html' => 'പുതിയ നാൾപ്പതിപ്പിന്റെ എച്ച്.റ്റി.എം.എൽ. ആയി പാഴ്സ് ചെയ്യപ്പെട്ട സ്രോതസ്സ്',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'താളിന്റെ സംരക്ഷണ മാനം തിരുത്തുക',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'താളിന്റെ സംരക്ഷണ മാനത്തിൽ മാറ്റം വരുത്തുക',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'താളിനുള്ള സംരക്ഷണം സൃഷ്ടിക്കുക',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'താളിനുള്ള സംരക്ഷണം അപ്‌ലോഡ് ചെയ്യുക',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'പഴയ താളിലെ, എന്തെങ്കിലും മാർക്കപ്പുകൾ ഉണ്ടെങ്കിൽ അവ നീക്കിയ ശേഷമുള്ള, എഴുത്ത്',
 	'abusefilter-edit-builder-vars-old-links' => 'തിരുത്തുന്നതിനു മുമ്പ് താളിലുണ്ടായിരുന്ന കണ്ണികൾ',
 	'abusefilter-edit-builder-vars-old-html' => 'എച്ച്.റ്റി.എം.എൽ. ആക്കി പാഴ്സ് ചെയ്യപ്പെട്ട പഴയ താളിലെ വിക്കി എഴുത്തുകൾ',
@@ -24322,6 +24324,7 @@ Labels moeten kort zijn en mogen geen speciale tekens bevatten.',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Beveiligingsniveau voor bewerken van de pagina',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Beveiligingsniveau voor hernoemen van de pagina',
 	'abusefilter-edit-builder-vars-restrictions-create' => 'Aanmaakbeveiliging van deze pagina',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'Uploadbeveiliging van het bestand',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Tekst oude pagina, ontdaan van alle opmaak',
 	'abusefilter-edit-builder-vars-old-links' => 'Verwijzingen in de pagina voor de bewerking',
 	'abusefilter-edit-builder-vars-old-html' => 'Wikitext oude pagina in HTML',
@@ -25725,7 +25728,7 @@ $messages['pdc'] = array(
 	'abusefilter-examine-title' => 'Blattnaame:',
 	'abusefilter-examine-submit' => 'Uffgucke',
 	'abusefilter-topnav-home' => 'Schtaert-Blatt',
-	'abusefilter-diff-version' => 'Version vum $1 vun $2',
+	'abusefilter-diff-version' => 'Version vum $1 vun $2', # Fuzzy
 );
 
 /** Plautdietsch (Plautdietsch)
@@ -37321,13 +37324,17 @@ $messages['yi'] = array(
 ווען איר האַלט אַז די רעדאַקטירונג איז יא קאנסטרוקטיוו, מעגט איר קליקן \"אויפהיטן\" נאכאַמאָל צו באַשטעטיגן זי.
 א קורצע באַשרייבונג פונעם כלל וואס איז געבראכן: \$1",
 	'abusefilter-blocker' => 'פֿילטער',
+	'abusefilter-accountreserved' => 'דער באניצער נאמען איז רעזערווירט פארן קרומבאניץ־פילטער.',
 	'right-abusefilter-modify' => 'ענדערן שעדיקן פֿילטערס',
 	'right-abusefilter-view' => 'באַקוקן שעדיקן פֿילטערס',
 	'right-abusefilter-log' => 'באקוקן פֿילטער־לאגבוך',
+	'right-abusefilter-log-detail' => 'באקוקן פרטימדיק דאס קרומבאניץ־לאגבוך',
+	'right-abusefilter-private' => 'באקוקן פריוואטע דאטן אין קרומבאניץ־לאגבוך',
 	'action-abusefilter-view' => 'באקוקן שעדיקן פֿילטערס',
 	'action-abusefilter-log' => ' באקוקן פֿילטער־לאגבוך',
 	'abusefilter-log' => 'פֿילטער לאגבוך',
-	'abusefilter-log-search-user' => 'באַניצער',
+	'abusefilter-log-search' => 'דורכזוכן קרומבאניץ־לאגבוך',
+	'abusefilter-log-search-user' => 'באַניצער:',
 	'abusefilter-log-search-filter' => 'פֿילטער נומער:',
 	'abusefilter-log-search-title' => 'טיטל:',
 	'abusefilter-log-search-wiki' => 'וויקי:',
@@ -37337,6 +37344,7 @@ $messages['yi'] = array(
 	'abusefilter-log-detailslink' => 'פרטים',
 	'abusefilter-log-details-var' => 'וואַריאַבל',
 	'abusefilter-log-details-val' => 'ווערט',
+	'abusefilter-log-details-vars' => 'אקציע פאראמעטערס',
 	'abusefilter-log-details-private' => 'פריוואטע דאטן',
 	'abusefilter-log-details-ip' => 'IP־אדרעס פון איניציאטאר',
 	'abusefilter-log-noactions' => 'קיין',
@@ -37345,16 +37353,22 @@ $messages['yi'] = array(
 	'abusefilter-log-linkoncontribs-text' => 'שלעכט־באניצן לאגבוך פאר דעם דאזיגן באניצער',
 	'abusefilter-log-cannot-see-details' => 'איר האט נישט ערלויבניש צו זען פרטים פון דעם ווערט.',
 	'abusefilter-log-hide-reason' => 'אורזאַך:',
+	'abusefilter-list' => 'אלע פֿילטערס',
+	'abusefilter-list-id' => 'פֿילטער נומער',
 	'abusefilter-list-status' => 'סטאַטוס',
 	'abusefilter-list-edit' => 'רעדאַקטירן',
 	'abusefilter-list-details' => 'פרטים',
 	'abusefilter-list-limit' => 'צאל אין א בלאט:',
 	'abusefilter-list-lastmodified' => 'לעצט געענדערט',
+	'abusefilter-list-group' => 'פֿילטער גרופע',
 	'abusefilter-hidden' => 'פריוואט',
 	'abusefilter-unhidden' => 'עפֿנטלעך',
 	'abusefilter-enabled' => 'אַקטיוויזירט',
 	'abusefilter-deleted' => 'אויסגעמעקט',
 	'abusefilter-disabled' => 'אָפאַקטיוויזירן',
+	'abusefilter-hitcount' => '$1 {{PLURAL:$1|טרעף|טרעפֿן}}',
+	'abusefilter-new' => 'שאפן א נייעם פילטער',
+	'abusefilter-return' => 'צוריק צו פילטער פארוואלטונג',
 	'abusefilter-status-global' => 'גלאבאַל',
 	'abusefilter-list-options' => 'ברירות',
 	'abusefilter-list-options-submit' => 'דערהײַנטיקן',
@@ -37363,8 +37377,11 @@ $messages['yi'] = array(
 	'abusefilter-edit-new' => 'נײַער פֿילטער',
 	'abusefilter-edit-save' => 'אױפֿהיטן טעקע',
 	'abusefilter-edit-id' => 'פֿילטער נומער:',
+	'abusefilter-edit-group' => 'פֿילטער גרופע:',
 	'abusefilter-edit-flags' => 'פֿענער:',
+	'abusefilter-edit-enabled' => 'אקטיווירן דעם פילטער',
 	'abusefilter-edit-deleted' => 'מארקירן ווי אויסקעמעקט',
+	'abusefilter-edit-hidden' => 'באהאלטן פרטים פון דעם פילטער פון באקוקן עפנטלעך',
 	'abusefilter-edit-global' => 'גלאבאלער פֿילטער',
 	'abusefilter-edit-rules' => 'תנאים:',
 	'abusefilter-edit-notes' => "הערות:
@@ -37373,6 +37390,8 @@ $messages['yi'] = array(
 	'abusefilter-edit-lastmod-text' => '$1 פֿון $2',
 	'abusefilter-edit-hitcount' => 'פֿילטער טרעפֿונגען:',
 	'abusefilter-edit-warn-other' => 'אנדער מעלדונג',
+	'abusefilter-edit-warn-other-label' => "בלאטנאמען  פון אנדער מעלדונג:
+:''(אן מעדיעוויקי פרעפיקס)''",
 	'abusefilter-edit-warn-actions' => 'אַקציעס:',
 	'abusefilter-edit-viewhistory' => 'באקוקן דעם פֿילטערס היסטאריע',
 	'abusefilter-edit-history' => 'היסטאריע:',
@@ -37404,10 +37423,12 @@ $messages['yi'] = array(
 	'abusefilter-edit-builder-vars-movedto-ns' => 'נאמענטייל פון ציל בלאט',
 	'abusefilter-edit-builder-vars-movedto-text' => 'טיטל פון ציל בלאט',
 	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'פולשטענדיקער טיטל פון ציל בלאט',
+	'abusefilter-edit-builder-vars-user-editcount' => 'רעדאקטירונג צאל פון באניצער',
 	'abusefilter-edit-builder-vars-user-age' => 'עלטער פון באניצער־קאנטע',
 	'abusefilter-edit-builder-vars-user-name' => 'נאמען פון באניצער־קאנטע',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'צייט ווען ע־פאסט אדרעס איז געווארן באשטעטיקט',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'לעצטע צען באארבעטער פון דעם בלאט',
+	'abusefilter-history-foruser' => 'ענדערונגען פון $1',
 	'abusefilter-history-hidden' => 'פֿאַרבאָרגן',
 	'abusefilter-history-enabled' => 'אַקטיוויזירט',
 	'abusefilter-history-global' => 'גלאבאַל',
@@ -37425,6 +37446,7 @@ $messages['yi'] = array(
 	'abusefilter-history-select-submit' => 'ראפֿינירן',
 	'abusefilter-history-diff' => 'ענדערונגען',
 	'abusefilter-action-tag' => 'טאַג',
+	'abusefilter-action-throttle' => 'דערשטיקן',
 	'abusefilter-action-warn' => 'וואָרענען',
 	'abusefilter-action-block' => 'פאַרשפּאַרן',
 	'abusefilter-action-degroup' => 'אַוועקנעמען פון גרופּעס',
@@ -37450,12 +37472,13 @@ $messages['yi'] = array(
 	'abusefilter-log-noresults' => 'קיין רעזולטאטן',
 	'abusefilter-diff-title' => 'אונטערשייד צווישן ווערסיעס',
 	'abusefilter-diff-item' => 'איינהייט',
-	'abusefilter-diff-version' => 'ווערסיע פון $1 דורך $2',
+	'abusefilter-diff-version' => 'ווערסיע פון $1 דורך $2', # Fuzzy
 	'abusefilter-diff-info' => 'גרונטלעכע אינפֿארמאַציע',
 	'abusefilter-diff-pattern' => 'פילטער תנאָים',
 	'abusefilter-diff-invalid' => 'מען קען נישט באקומען די געזוכטע ווערסיעס',
 	'abusefilter-diff-backhistory' => 'צוריק צו פֿילטער היסטאריע',
 	'abusefilter-import-submit' => 'אימפארטירן דאַטן',
+	'abusefilter-group-default' => 'גרונטלעך',
 );
 
 /** Yoruba (Yorùbá)
