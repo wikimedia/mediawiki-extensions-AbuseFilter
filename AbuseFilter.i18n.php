@@ -7318,6 +7318,8 @@ gani etiketi kılm bıbi u tede karakterê xususi çinibi.',
 	'abusefilter-edit-builder-vars-new-html' => 'Yeni revizyonun derlenmiş HTML kaynağı',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Seviyeyê kilit kerdişê pele',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Seviyeyê berdişê pele',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Xısusiyeta ena peler vıraze',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'Xısusiyeta dosyayer bar kerê',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Nuştêyê pel ê kihanî, te de markup çini yo',
 	'abusefilter-edit-builder-vars-old-links' => 'gıreyê ke pel deyi, verê vurnayişi',
 	'abusefilter-edit-builder-vars-old-html' => 'pelê vikimetni yo kehen, qey HTML  arêdiya',
@@ -7383,7 +7385,7 @@ Lütfen dikkatlice kontrol edin, ve seçiminizi onaylamak için "onayla"ya tıkl
 	'abusefilter-revert-success' => '[[Special:AbuseFilter/$1|$1 filtresinden]] dolayı suistimal filtresi tarafından alınan tüm eylemleri geri aldınız.',
 	'abusefilter-revert-reason' => '$1 filtresinden dolayı suistimal filtresi tarafından alınan tüm eylemlerin otomatik geri alımı.
 Verilen sebep: $2',
-	'abusefilter-revert-reasonfield' => 'Sebebê reyna ardişî:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Sebeb:',
 	'abusefilter-test' => 'Duştê vurnayîşan rê yew filitre test bike',
 	'abusefilter-test-intro' => 'Bu sayfa, aşağıdaki kutuya girilen bir filtreyi son $1 {{PLURAL:$1|değişikliğe|değişikliğe}} karşı kontrol etmenize izin verir.
 Mevcut bir filtreyi yüklemek için, filtre IDsini değişiklik metin kutusunun altındaki kutuya girin, ve "Yükle" düğmesine tıklayın.',
@@ -7429,7 +7431,7 @@ Qe detayanê hemî, bivine [[Special:AbuseFilter/history|liste]]yê vurnayîşê
 	'abusefilter-log-noresults' => 'Netice çıno',
 	'abusefilter-diff-title' => 'Benatê versiyonan de ferqan',
 	'abusefilter-diff-item' => 'Çêki',
-	'abusefilter-diff-version' => 'Versiyon ke $1 ra pê $2', # Fuzzy
+	'abusefilter-diff-version' => '{{GENDER:$3|Deza}} $2 ra versiyona $1',
 	'abusefilter-diff-info' => 'Seron zanayış',
 	'abusefilter-diff-pattern' => 'Kondisyonê filitre',
 	'abusefilter-diff-invalid' => 'Nieşkenî versiyonê ke ti wazeno fetch bike',
@@ -10942,6 +10944,8 @@ Les balises doivent être courtes et ne pas contenir de caractères spéciaux.',
 	'abusefilter-edit-builder-vars-new-html' => 'Source HTML analysée de la nouvelle version',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Niveau de protection des modifications de la page',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Niveau de protection de renommage de la page',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Créer la protection de la page',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'Protection de téléchargement du fichier',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Texte de l’ancienne page, dépourvu de toute mise en forme',
 	'abusefilter-edit-builder-vars-old-links' => 'Liens dans la page, avant la modification',
 	'abusefilter-edit-builder-vars-old-html' => 'Wikitexte de l’ancienne page, analysé en HTML',
@@ -11008,7 +11012,7 @@ Veuillez les vérifier attentivement, puis cliquez sur « Confirmer » pour vali
 	'abusefilter-revert-success' => 'Vous avez révoqué avec succès toutes les actions entreprises par le filtre antiabus et déclenchées par le [[Special:AbuseFilter/$1|filtre $1]].',
 	'abusefilter-revert-reason' => 'Révocation automatique de toutes les actions entreprises par le filtre antiabus et déclenchées par le filtre $1.
 Motif donné : $2',
-	'abusefilter-revert-reasonfield' => 'Motif de la révocation :', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Motif:',
 	'abusefilter-test' => 'Tester un filtre sur les précédentes modifications',
 	'abusefilter-test-intro' => 'Cette page vous permet d’appliquer un filtre saisi dans la zone de texte ci-dessous {{PLURAL:$1|à la dernière modification|aux $1 dernières modifications}} .
 Pour charger un filtre existant, entrez son identifiant dans le champ sous la zone de texte et cliquez sur le bouton « {{MediaWiki:Abusefilter-test-load/fr}} ».',
@@ -11054,7 +11058,7 @@ Pour plus de détails, voyez [[Special:AbuseFilter/history|la liste]] des modifi
 	'abusefilter-log-noresults' => 'Aucun résultat',
 	'abusefilter-diff-title' => 'Différences entre les versions',
 	'abusefilter-diff-item' => 'Article',
-	'abusefilter-diff-version' => 'Version du $1 par $2', # Fuzzy
+	'abusefilter-diff-version' => 'Version du $1 {{GENDER:$3|par}} $2',
 	'abusefilter-diff-info' => 'Informations de base',
 	'abusefilter-diff-pattern' => 'Conditions du filtre',
 	'abusefilter-diff-invalid' => 'Impossible de retrouver les versions demandées',
@@ -34932,6 +34936,7 @@ $messages['tpi'] = array(
 
 /** Turkish (Türkçe)
  * @author Emperyan
+ * @author Erdemaslancan
  * @author Hedda Gabler
  * @author Joseph
  * @author LuCKY
@@ -35295,7 +35300,7 @@ Lütfen dikkatlice kontrol edin, ve seçiminizi onaylamak için "onayla"ya tıkl
 	'abusefilter-revert-success' => '[[Special:AbuseFilter/$1|$1 filtresinden]] dolayı suistimal filtresi tarafından alınan tüm eylemleri geri aldınız.',
 	'abusefilter-revert-reason' => '$1 filtresinden dolayı suistimal filtresi tarafından alınan tüm eylemlerin otomatik geri alımı.
 Verilen sebep: $2',
-	'abusefilter-revert-reasonfield' => 'Geri alma nedeni:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Neden:',
 	'abusefilter-test' => 'Önceki değişiklikler için bir süzgeci dene',
 	'abusefilter-test-intro' => 'Bu sayfa, aşağıdaki kutuya girilen bir filtreyi son $1 {{PLURAL:$1|değişikliğe|değişikliğe}} karşı kontrol etmenize izin verir.
 Mevcut bir filtreyi yüklemek için, filtre IDsini değişiklik metin kutusunun altındaki kutuya girin, ve "Yükle" düğmesine tıklayın.',
