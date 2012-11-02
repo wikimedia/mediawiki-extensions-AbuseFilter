@@ -300,7 +300,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$out->setSubtitle( $this->msg(
 			$filter === 'new' ? 'abusefilter-edit-subtitle-new' : 'abusefilter-edit-subtitle',
-			$filter, $history_id
+			$this->getLanguage()->formatNum( $filter ), $history_id
 		)->text() );
 
 		// Hide hidden filters.
