@@ -4264,6 +4264,7 @@ Deskrivadur ar reolenn kevreet : $1',
 	'abusefilter-log-search-user' => 'Implijer :',
 	'abusefilter-log-search-filter' => 'Niv. ar sil :',
 	'abusefilter-log-search-title' => 'Titl :',
+	'abusefilter-log-search-wiki' => 'Wiki :',
 	'abusefilter-log-search-submit' => 'Klask',
 	'abusefilter-log-entry' => '$1: $2 en deus lañset ur sil gwallimplij, e-kerzh an ober "$3" war $4.
 Oberoù kemeret : $5;
@@ -4324,6 +4325,7 @@ Diskrivadenn ar sil : $7 ($8)',
 	'abusefilter-list-options-deleted-only' => 'Diskouez ar siloù dilamet hepken',
 	'abusefilter-list-options-deleted-hide' => 'Kuzhar ar siloù dilamet',
 	'abusefilter-list-options-deleted-show' => 'Enklozañ ar siloù dilamet',
+	'abusefilter-list-options-scope-local' => "Wiki lec'hel",
 	'abusefilter-list-options-scope-global' => 'Reolennoù hollek',
 	'abusefilter-list-options-disabled' => 'Siloù diweredekaet :',
 	'abusefilter-list-options-hidedisabled' => 'Kuzhat ar siloù diweredekaet',
@@ -7897,6 +7899,7 @@ $messages['ee'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Aitolos
  * @author Badseed
  * @author Consta
  * @author Crazymadlover
@@ -8255,7 +8258,7 @@ $3 {{PLURAL:$3|αναμενόμενο κατηγορούμενο|αναμενό�
 	'abusefilter-revert-success' => 'Έχετε αναστρέψει όλες τις ενέργειες που πάρθηκαν από το φίλτρο καταχρήσεων εξαιτίας του [[Special:AbuseFilter/$1|φίλτρου $1]].',
 	'abusefilter-revert-reason' => 'Αυτόματη μεταστροφή όλων των δράσεων που ανέλαβε το φίλτρο καταχρήσεων εξ αιτίας του φίλτρου $1.
 Η αιτία που δόθηκε: $2',
-	'abusefilter-revert-reasonfield' => 'Αιτία της αναστροφής:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Αιτία:',
 	'abusefilter-test' => 'Έλεγχος ενός φίλτρου ενάντια σε προηγούμενες επεξεργασίες',
 	'abusefilter-test-intro' => 'Αυτή η σελίδα σου επιτρέπει να ελέγξεις ένα φίλτρο που δόθηκε στο παρακάτω κουτί έναντι {{PLURAL:$1|στη $1 τελευταία αλλαγή|στις $1 τελευταίες αλλαγές}}.
 Για να φορτώσετε ένα υπάρχον φίλτρο, πληκτρολογήστε την ταυτότητά του στο κουτί παρακάτω από το κουτί κειμένου επεξεργασίας, και πατήστε το πλήκτρο "Φόρτωση"".',
@@ -10904,7 +10907,7 @@ Les balises doivent être courtes et ne pas contenir de caractères spéciaux.',
 	'abusefilter-edit-builder-funcs-substr' => 'Sous-chaîne (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'Position de la sous-chaîne dans la chaîne (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'Remplacer la sous-chaîne par la chaîne (str_replace)',
-	'abusefilter-edit-builder-funcs-rescape' => "Échapper la chaîne comme littérale dans l'expression régulière (rescape)",
+	'abusefilter-edit-builder-funcs-rescape' => 'Échapper la chaîne comme littérale dans l’expression rationnelle (rescape)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Définir la variable (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Variables',
 	'abusefilter-edit-builder-vars-accountname' => 'Nom du compte (lors de la création du compte)',
@@ -13044,7 +13047,7 @@ $messages['he'] = array(
 	'abusefilter-log-noresults' => 'אין תוצאות',
 	'abusefilter-diff-title' => 'הבדלים בין גרסאות',
 	'abusefilter-diff-item' => 'פריט',
-	'abusefilter-diff-version' => 'גרסה {{$1|שכתב|שכתבה}} $2  ב־$1', # Fuzzy
+	'abusefilter-diff-version' => 'גרסה {{GENDER:$3|שכתב|שכתבה}} $2 ב־$1',
 	'abusefilter-diff-info' => 'מידע בסיסי',
 	'abusefilter-diff-pattern' => 'תנאי המסננים',
 	'abusefilter-diff-invalid' => 'לא ניתן לקבל את הגרסאות המבוקשות',
@@ -33373,6 +33376,7 @@ $messages['ta'] = array(
 	'abusefilter-log-search-user' => 'பயனர்:',
 	'abusefilter-log-search-filter' => 'வடிகட்டியின் அடையாள எண்:',
 	'abusefilter-log-search-title' => 'தலைப்பு:',
+	'abusefilter-log-search-wiki' => 'விக்கி:',
 	'abusefilter-log-search-submit' => 'தேடு',
 	'abusefilter-log-detailedentry-meta' => '$1: $3  ஆனது $2 ஐத் தொடக்கியது, இதன் பயனாய் $5.
  மீது வினை "$4"  நிகழ்ந்தது.
@@ -33415,6 +33419,7 @@ Filter description: $7 ($8)',
 	'abusefilter-list-details' => 'விளக்கம்',
 	'abusefilter-list-limit' => 'ஒரு பக்கத்துக்கான எண்ணிக்கை',
 	'abusefilter-list-lastmodified' => 'கடைசியாகத் திருத்தப்பட்டது',
+	'abusefilter-list-group' => 'வடிகட்டிக் குழு',
 	'abusefilter-hidden' => 'தனிப்பட்ட',
 	'abusefilter-unhidden' => 'பொதுவான',
 	'abusefilter-enabled' => 'பயன்பாட்டில் உள்ளது',
@@ -33428,6 +33433,7 @@ Filter description: $7 ($8)',
 	'abusefilter-list-options-deleted-only' => 'நீக்கப்பட்ட வடிகட்டிகளை மட்டும் காட்டவும்',
 	'abusefilter-list-options-deleted-hide' => 'அழிக்கப்பட்ட வடிகட்டல்களை மறைக்கவும்',
 	'abusefilter-list-options-deleted-show' => 'அழிக்கப்பட்ட வடிகட்டல்களைச் சேர்த்துக் கொள்ளவும்',
+	'abusefilter-list-options-scope-global' => 'உலக விதிகள்',
 	'abusefilter-list-options-disabled' => 'செயலிழக்கம் செய்யப்பட்ட வடிகட்டிகள்:',
 	'abusefilter-list-options-hidedisabled' => 'செயலிழக்கம் செய்யப்பட்ட வடிகட்டிகளை மறைக்கவும்',
 	'abusefilter-list-options-submit' => 'புதுப்பி',
@@ -33436,13 +33442,18 @@ Filter description: $7 ($8)',
 	'abusefilter-tools-reautoconfirm-user' => 'பயனர்:',
 	'abusefilter-tools-reautoconfirm-submit' => 'திரும்பவும் தானாக உறுதிசெய்',
 	'abusefilter-edit-subtitle' => '$1 வடிகட்டி தொகுக்கப்படுகிறது',
+	'abusefilter-edit-subtitle-new' => 'வடிகட்டியை உருவாக்குகிறது',
 	'abusefilter-edit-status-label' => 'புள்ளிவிவரங்கள்:',
 	'abusefilter-edit-new' => 'புதிய வடிகட்டி',
 	'abusefilter-edit-save' => 'வடிகட்டியைச் சேமிக்கவும்',
 	'abusefilter-edit-id' => 'வடிகட்டியின் அடையாள எண்:',
+	'abusefilter-edit-description' => "விபரிப்பு:
+:''(அனைவரும் காணக்கூடியது)''",
+	'abusefilter-edit-group' => 'வடிகட்டிக் குழு:',
 	'abusefilter-edit-flags' => 'குறிப்புகள்:',
 	'abusefilter-edit-enabled' => 'இந்த வடிகட்டியை செயல் நிலையாக்கு',
 	'abusefilter-edit-deleted' => 'நீக்கப்பட்டதாக குறித்துக்கொள்ளவும்',
+	'abusefilter-edit-global' => 'உலக வடிகட்டி',
 	'abusefilter-edit-rules' => 'கட்டுப்பாடுகள்:',
 	'abusefilter-edit-notes' => "குறிப்புக்கள்:
 :''(தனிப்பட்டது)''",
@@ -33455,6 +33466,8 @@ Filter description: $7 ($8)',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|வினாடி|வினாடிகள்}}',
 	'abusefilter-edit-warn-message' => 'எச்சரிக்கைக்காகப் பயன்படுத்துவதற்கான முறைமைச் செய்தி:',
 	'abusefilter-edit-warn-other' => 'மற்ற செய்தி',
+	'abusefilter-edit-warn-other-label' => "மற்றச் செய்தியின் பக்கப் பெயர்:
+:''(மீடியாவிக்கி முன்னொட்டின்றி)''",
 	'abusefilter-edit-warn-actions' => 'செயல்கள்:',
 	'abusefilter-edit-warn-preview' => 'தேர்வு செய்த செய்தியின் முன்தோற்றம் காட்டு',
 	'abusefilter-edit-warn-edit' => 'தேர்வு செய்த செய்தியை உருவாக்கவும்/தொகுக்கவும்',
@@ -33531,6 +33544,8 @@ Filter description: $7 ($8)',
 	'abusefilter-edit-builder-vars-user-name' => 'பயனர் கணக்கின் பெயர்',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'மின்னஞ்சல் முகவரி உறுதிசெய்யப்பட்ட நேரம்',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'இப்பக்கத்திற்குக் கடைசியாகப் பங்களித்த பத்து பயனர்கள்',
+	'abusefilter-edit-builder-vars-old-text' => 'தொகுப்புக்கு முன்னரான பழைய பக்க விக்கியுரை',
+	'abusefilter-edit-builder-vars-new-text' => 'தொகுப்புக்குப் பின்னரான புதிய பக்க விக்கியுரை',
 	'abusefilter-filter-log' => 'அண்மைய வடிகட்டி மாற்றங்கள்',
 	'abusefilter-history' => 'முறைகேட்டு வடிகட்டி $1 உக்கான வரலாறு',
 	'abusefilter-history-foruser' => '$1 ஆல் செய்த மாற்றங்கள்',
@@ -33572,6 +33587,7 @@ Filter description: $7 ($8)',
 	'abusefilter-changeslist-examine' => 'ஆய்வு செய்',
 	'abusefilter-examine' => 'தனியொரு மாற்றங்களை ஆராயவும்',
 	'abusefilter-examine-legend' => 'மாற்றங்களைத் தேர்ந்தெடுக்கவும்',
+	'abusefilter-examine-diff' => 'மாற்ற உரலி:',
 	'abusefilter-examine-user' => 'பயனர்:',
 	'abusefilter-examine-title' => 'பக்கத்தின் தலைப்பு:',
 	'abusefilter-examine-submit' => 'தேடுக',
@@ -37481,7 +37497,7 @@ $messages['yi'] = array(
 	'abusefilter-log-noresults' => 'קיין רעזולטאטן',
 	'abusefilter-diff-title' => 'אונטערשייד צווישן ווערסיעס',
 	'abusefilter-diff-item' => 'איינהייט',
-	'abusefilter-diff-version' => 'ווערסיע פון $1 דורך $2', # Fuzzy
+	'abusefilter-diff-version' => 'ווערסיע פון $1 {{GENDER:$3|דורך}} $2',
 	'abusefilter-diff-info' => 'גרונטלעכע אינפֿארמאַציע',
 	'abusefilter-diff-pattern' => 'פילטער תנאָים',
 	'abusefilter-diff-invalid' => 'מען קען נישט באקומען די געזוכטע ווערסיעס',
@@ -38005,6 +38021,7 @@ $messages['zh-cn'] = array(
  * @author Wmr89502270
  * @author Xiaomingyan
  * @author Yanmiao liu
+ * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
 	'abusefilter-desc' => '对编辑行为自动进行条件判定',
@@ -38108,6 +38125,8 @@ $messages['zh-hans'] = array(
 	'abusefilter-list-options-deleted-only' => '只显示已删除过滤器',
 	'abusefilter-list-options-deleted-hide' => '隐藏已删除过滤器',
 	'abusefilter-list-options-deleted-show' => '包括已删除过滤器',
+	'abusefilter-list-options-scope' => '显示过滤器自：',
+	'abusefilter-list-options-scope-global' => '全域规则',
 	'abusefilter-list-options-disabled' => '已停用过滤器：',
 	'abusefilter-list-options-hidedisabled' => '隐藏已停用过滤器',
 	'abusefilter-list-options-submit' => '更新',
@@ -38138,7 +38157,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-enabled' => '启用本过滤器',
 	'abusefilter-edit-deleted' => '标记为已删除',
 	'abusefilter-edit-hidden' => '向公众隐藏本过滤器的详细信息',
-	'abusefilter-edit-global' => '全域应用本过滤器', # Fuzzy
+	'abusefilter-edit-global' => '全域过滤器',
 	'abusefilter-edit-rules' => '条件：',
 	'abusefilter-edit-notes' => "注释：
 :''（非公开可见）''",
@@ -38272,6 +38291,8 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-builder-vars-new-html' => '编辑后的新页面，已解析为HTML源码',
 	'abusefilter-edit-builder-vars-restrictions-edit' => '页面的编辑保护级别',
 	'abusefilter-edit-builder-vars-restrictions-move' => '页面的移动保护级别',
+	'abusefilter-edit-builder-vars-restrictions-create' => '创建页面的保护',
+	'abusefilter-edit-builder-vars-restrictions-upload' => '上传文件的保护',
 	'abusefilter-edit-builder-vars-old-text-stripped' => '编辑前的旧页面，去除所有标记',
 	'abusefilter-edit-builder-vars-old-links' => '旧内容中的所有外部链接',
 	'abusefilter-edit-builder-vars-old-html' => '编辑前的旧页面，已解析为HTML源码',
@@ -38333,7 +38354,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-revert-confirm' => '确认',
 	'abusefilter-revert-success' => '你已经撤销了[[Special:AbuseFilter/$1|过滤器$1]]作出的所有操作。',
 	'abusefilter-revert-reason' => '自动撤销了过滤器$1的所有操作，原因如下：$2',
-	'abusefilter-revert-reasonfield' => '撤销原因：', # Fuzzy
+	'abusefilter-revert-reasonfield' => '原因：',
 	'abusefilter-test' => '利用先前的编辑测试过滤器',
 	'abusefilter-test-intro' => '本页允许您检查下方方框中输入的过滤器对最近$1次修改所造成的影响。若要加载其他现有的过滤器，请在方框下面的文本编辑框中输入过滤器的编号，并单击“载入”按钮。',
 	'abusefilter-test-legend' => '测试过滤器',
