@@ -344,7 +344,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				'default'
 			);
 
-			if ( $row->af_group ) {
+			if ( isset( $row->af_group ) && $row->af_group ) {
 				$groupSelector->setDefault($row->af_group);
 			}
 
@@ -633,7 +633,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					$warnMsg = $parameters[0];
 				} elseif (
 					$row &&
-					$row->af_group &&
+					isset( $row->af_group ) && $row->af_group &&
 					isset($wgAbuseFilterDefaultWarningMessage[$row->af_group] )
 				) {
 					$warnMsg = $wgAbuseFilterDefaultWarningMessage[$row->af_group];
