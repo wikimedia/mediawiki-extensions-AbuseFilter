@@ -31131,6 +31131,7 @@ Opis pravila: $1',
 	'right-abusefilter-modify-restricted' => 'Spreminjanje filtrov zlorab z omejenimi dejanji',
 	'right-abusefilter-revert' => 'Povrnitev vse sprememb danega filtra zlorab',
 	'right-abusefilter-view-private' => 'Ogled filtrov zlorab označenih kot zasebni',
+	'right-abusefilter-log-private' => 'Ogled dnevniških vnosov filtra zlorab, označenih kot zasebni',
 	'right-abusefilter-hide-log' => 'Skrivanje vnosov v dnevniku zlorab',
 	'right-abusefilter-hidden-log' => 'Ogled skritih vnosov v dnevniku zlorab',
 	'action-abusefilter-modify' => 'spreminjanje filtrov zlorab',
@@ -31181,6 +31182,7 @@ Opis filtra: $7 ($8)',
 	'abusefilter-log-hide-forbidden' => 'Nimate dovoljenja za skrivanje dnevniških vnosov zlorab.',
 	'abusefilter-logentry-suppress' => 'je skril(-a) »[[$1]]«',
 	'abusefilter-logentry-unsuppress' => 'je prikazal(-a) »[[$1]]«',
+	'logentry-abusefilter-hit' => '$1 je sprožil(-a) $4 z dejanjem »$5« na $3. Ukrepi: $6 ($7)',
 	'abusefilter-management' => 'Upravljanje filtrov zlorab',
 	'abusefilter-list' => 'Vsi filtri',
 	'abusefilter-list-id' => 'ID filtra',
@@ -31380,6 +31382,8 @@ Oznake morajo biti kratne in ne smejo vsebovati posebnih znakov.',
 	'abusefilter-edit-builder-vars-new-html' => 'Razčlenjen izvor HTML nove redakcije',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Uredi stopnjo zaščite strani',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Prestavi stopnjo zaščite strani',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Zaščita strani pred ustvarjanjem',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'Zaščita datoteke pred nalaganjem',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Staro besedilo strani, z odstranjenimi oznakami',
 	'abusefilter-edit-builder-vars-old-links' => 'Povezave na strani, pred urejanjem',
 	'abusefilter-edit-builder-vars-old-html' => 'Staro wikibesedilo strani, razčlenjeno v HTML',
@@ -32828,6 +32832,7 @@ $messages['su'] = array(
 /** Swedish (svenska)
  * @author Ainali
  * @author Boivie
+ * @author Cybjit
  * @author Fluff
  * @author Gabbe.g
  * @author GameOn
@@ -33188,7 +33193,7 @@ missbrukslogg-poster.',
 	'abusefilter-revert-confirm' => 'Bekräfta',
 	'abusefilter-revert-success' => 'Du har återställt alla handlingar som missbruksfiltret gjort på grund av [[Special:AbuseFilter/$1|filter $1]].',
 	'abusefilter-revert-reason' => 'Automatisk återställning av alla handlingar som missbruksfiltret gjort på grund av filter $1. Angiven anledning: $2',
-	'abusefilter-revert-reasonfield' => 'Anledning för återställning:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Anledning:',
 	'abusefilter-test' => 'Testa ett filter mot tidigare redigeringar',
 	'abusefilter-test-intro' => 'Denna sida låter dig kolla upp ett filter inlagt i rutan nedan mot {{PLURAL:$1|den senaste $1 ändringen|de senaste $1 ändringarna}}.
 För att ladda ett existerande filter, skriv dess filter-ID i rutan nedanför redigerings-boxen, och klicka på "Ladda"-knappen.',
@@ -33234,7 +33239,7 @@ För fullständiga detaljer, se [[Special:AbuseFilter/history|listan]] över de 
 	'abusefilter-log-noresults' => 'Inga resultat',
 	'abusefilter-diff-title' => 'Skillnader mellan versioner',
 	'abusefilter-diff-item' => 'Element',
-	'abusefilter-diff-version' => 'Version från $1 av $2', # Fuzzy
+	'abusefilter-diff-version' => 'Version från $1 {{GENDER:$3|av}} $2',
 	'abusefilter-diff-info' => 'Grundläggande information',
 	'abusefilter-diff-pattern' => 'Filtervillkor',
 	'abusefilter-diff-invalid' => 'Kunde inte hämta de önskade versionerna',
