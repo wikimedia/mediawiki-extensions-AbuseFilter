@@ -21872,6 +21872,7 @@ $messages['mn'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author BPositive
  * @author Htt
  * @author Mahitgar
  * @author V.narsikar
@@ -21903,16 +21904,26 @@ $messages['mr'] = array(
 	'right-abusefilter-hide-log' => 'अपवापर क्रमलेखाच्या नोंदी लपवा',
 	'right-abusefilter-hidden-log' => 'अपवापर क्रमलेखाच्या लपविलेल्या नोंदी दाखवा',
 	'abusefilter-log-search' => 'अपवापर क्रमलेख शोधा',
+	'abusefilter-log-search-user' => 'सदस्य:',
+	'abusefilter-log-search-title' => 'शीर्षक:',
+	'abusefilter-log-search-wiki' => 'विकी:',
+	'abusefilter-log-search-submit' => 'शोधा',
 	'abusefilter-log-entry' => '$1: $2ने अपवापर गाळणी उद्युक्त केली, ज्याने $4 वर "$3" क्रिया केली.
 केलेली कार्यवाही: $5;
 गाळणी वर्णन: $6',
+	'abusefilter-log-detailslink' => 'माहिती',
 	'abusefilter-log-details-val' => 'किंमत',
 	'abusefilter-log-noactions' => 'काहीही नाही',
+	'abusefilter-log-hide-reason' => 'कारण:',
 	'abusefilter-list-status' => 'स्थिती',
 	'abusefilter-list-visibility' => 'दृश्यता',
 	'abusefilter-hidden' => 'खासगी',
 	'abusefilter-unhidden' => 'सार्वजनिक',
+	'abusefilter-enabled' => 'कार्यान्वित केले',
+	'abusefilter-deleted' => 'वगळलेले',
 	'abusefilter-list-options' => 'पर्याय',
+	'abusefilter-list-options-submit' => 'अद्ययावत करा',
+	'abusefilter-tools-reautoconfirm-user' => 'सदस्य:',
 	'abusefilter-edit-history' => 'इतिहास:',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'अधिक (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'वजाबाकी (-)',
