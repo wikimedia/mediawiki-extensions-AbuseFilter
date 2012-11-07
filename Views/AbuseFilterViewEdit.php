@@ -373,7 +373,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// Statistics
 			global $wgMemc;
 			$matches_count = $wgMemc->get( AbuseFilter::filterMatchesKey( $filter ) );
-			$total = $wgMemc->get( AbuseFilter::filterUsedKey() );
+			$total = $wgMemc->get( AbuseFilter::filterUsedKey( $row->af_group ) );
 
 			if ( $total > 0 ) {
 				$matches_percent = sprintf( '%.2f', 100 * $matches_count / $total );
