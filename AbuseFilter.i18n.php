@@ -24639,12 +24639,14 @@ Ei kort skildring av misbruksregelen handlinga di braut er: $1',
 	'abusefilter-log-search-user' => 'Brukar:',
 	'abusefilter-log-search-filter' => 'Filter-ID:',
 	'abusefilter-log-search-title' => 'Tittel:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Søk',
 	'abusefilter-log-entry' => '$1: $2 utløyste eit misbruksfilter ved å gjera  handlinga «$3» på $4. Reaksjon: $5; Filterskildring: $6',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 utløyste $3 ved å utføra handlinga «$4» på $5. Reaksjon: $6; Filterskildring: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'globalt filter $1',
 	'abusefilter-log-detailedentry-local' => 'misbruksfilter $1',
 	'abusefilter-log-detailslink' => 'detaljar',
+	'abusefilter-log-diff' => 'skilnad',
 	'abusefilter-log-hidelink' => 'juster synlegheit',
 	'abusefilter-log-details-legend' => 'Detaljar for loggelementet $1',
 	'abusefilter-log-details-var' => 'Variabel',
@@ -24657,6 +24659,7 @@ Ei kort skildring av misbruksregelen handlinga di braut er: $1',
 	'abusefilter-log-linkoncontribs' => 'misbrukslogg',
 	'abusefilter-log-linkoncontribs-text' => 'Misbrukslogg for denne brukaren',
 	'abusefilter-log-hidden' => '(gøymd oppføring)',
+	'abusefilter-log-hidden-implicit' => '(gøymd av di versjonen har vorte sletta)',
 	'abusefilter-log-cannot-see-details' => 'Du har ikkje løyve til å sjå detaljane i oppføringa.',
 	'abusefilter-log-details-hidden' => 'Du kan ikkje sjå detaljane for oppføringa sidan ho er gøymd frå ålmenn vising.',
 	'abusefilter-log-hide-legend' => 'Gøym loggoppføring',
@@ -24718,7 +24721,7 @@ Ei kort skildring av misbruksregelen handlinga di braut er: $1',
 	'abusefilter-edit-enabled' => 'Slå på dette filteret',
 	'abusefilter-edit-deleted' => 'Merk som sletta',
 	'abusefilter-edit-hidden' => 'Løyn detaljar om dette filteret frå offentleg vising',
-	'abusefilter-edit-global' => 'Aktiver dette filteret globalt', # Fuzzy
+	'abusefilter-edit-global' => 'Globalt filter',
 	'abusefilter-edit-rules' => 'Regelverk:',
 	'abusefilter-edit-notes' => "Merknader:
 :''(privat)",
@@ -24916,7 +24919,7 @@ Sjå nøye gjennom dei, og trykk på «Stadfest» for å stadfesta valet ditt.',
 	'abusefilter-revert-success' => 'Du har gjort om alle endringane gjorde av misbruksfilteret gjenom [[Special:AbuseFilter/$1|filter $1]].',
 	'abusefilter-revert-reason' => 'Automatisk omgjering av alle handlingane gjorde av misbruksfilteret gjennom filter $1.
 Grunngjeving: $2',
-	'abusefilter-revert-reasonfield' => 'Grunn for omgjering:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Årsak:',
 	'abusefilter-test' => 'Test eit filter på tidlegare endringar',
 	'abusefilter-test-intro' => 'Denne sida lèt deg testa eit oppgjeve filter på {{PLURAL:$1|den siste endringa|dei siste $1 endringane}}.
 For å lasta inn eit filter som finst frå før, skriv inn filter-ID-en i boksen under endringsboksen og trykk på «Last inn»-knappen',
@@ -24962,7 +24965,7 @@ For utførlege detaljar, sjå [[Special:AbuseFilter/history|lista]] over dei sis
 	'abusefilter-log-noresults' => 'Ingen resultat',
 	'abusefilter-diff-title' => 'Skilnader mellom versjonar',
 	'abusefilter-diff-item' => 'Element',
-	'abusefilter-diff-version' => 'Versjon frå $1 av $2', # Fuzzy
+	'abusefilter-diff-version' => 'Versjon frå $1 {{GENDER:$3|av}} $2',
 	'abusefilter-diff-info' => 'Grunnleggjande informasjon',
 	'abusefilter-diff-pattern' => 'Filterreglar',
 	'abusefilter-diff-invalid' => 'Kunne ikkje henta dei etterspurde verjsonane',
@@ -24971,6 +24974,7 @@ For utførlege detaljar, sjå [[Special:AbuseFilter/history|lista]] over dei sis
 På kjeldewikien trykkjer du på «{{int:abusefilter-edit-export}}» under «{{int:abusefilter-edit-tools}}» på redigeringsgrensesnittet.
 Kopier frå tekstboksen som dukkar opp og lim det inn i tekstboksen her. Trykk so på «{{int:abusefilter-import-submit}}».',
 	'abusefilter-import-submit' => 'Importer data',
+	'abusefilter-group-default' => 'Standard',
 );
 
 /** Nouormand (Nouormand)
@@ -35466,6 +35470,29 @@ $messages['tt-cyrl'] = array(
 	'abusefilter-desc' => 'Үзгәртүләргә эвристик ысуллар кулланырга мөмкинлек бирә.',
 	'abuselog' => 'Яман эшләр журналы',
 	'abusefilter-status-global' => 'Глобаль',
+);
+
+/** Central Atlas Tamazight (ⵜⴰⵎⴰⵣⵉⵖⵜ)
+ * @author Tifinaghes
+ */
+$messages['tzm'] = array(
+	'abusefilter-edit-flags' => 'ⴰⵙⵏⵖⵎⵙ:',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|ⵜⴰⵙⵏⴰⵜ|ⵜⵉⵙⵏⴰⵜⵉⵏ}}',
+	'abusefilter-edit-warn-other' => 'ⵜⴰⴱⵔⴰⵜ ⵏⵏⵉⴹⵏ',
+	'abusefilter-edit-history' => 'ⴰⵎⵣⵔⵓⵢ:',
+	'abusefilter-edit-tools' => 'ⵉⵎⴰⵙⵙⵏ:',
+	'abusefilter-edit-builder-op-arithmetic-modulo' => 'Modulo (%)',
+	'abusefilter-edit-builder-op-bool-and' => 'ⴷ (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'ⵏⵖ (|)',
+	'abusefilter-edit-builder-vars-article-id' => 'ⵓⵟⵟⵓⵏ ⵏ ⵜⴰⵙⵏⴰ (ID)',
+	'abusefilter-history-timestamp' => 'ⴰⴽⵓⴷ',
+	'abusefilter-history-diff' => 'ⵉⴱⴷⴷⴻⵍⵏ',
+	'abusefilter-action-block' => 'ⴰⵙⴳⴷⵍ',
+	'abusefilter-examine-title' => 'ⴰⵣⵡⵉⵍ ⵏ ⵜⴰⵙⵏⴰ:',
+	'abusefilter-examine-submit' => 'ⴰⵔⵣⵣⵓ',
+	'abusefilter-topnav-home' => 'ⴰⵙⵏⵓⴱⴳ',
+	'abusefilter-log-noresults' => 'ⵡⴰⵔ ⵜⵉⵢⴰⴼⵓⵜⵉⵏ',
+	'abusefilter-diff-item' => 'ⴰⴼⵔⴷⵉⵙ',
 );
 
 /** Uyghur (Arabic script) (ئۇيغۇرچە)
