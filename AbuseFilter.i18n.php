@@ -5496,7 +5496,7 @@ $messages['ckb'] = array(
 	'abusefilter-log-search-submit' => 'بگەڕێ',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 $3ی چالاککرد، خەریکی کردەوەی «$4» لەسەر $5 بوو.
 کردەوەی بەڕێوەچوو: $6؛
-تێبینیی فیلتەر: $7 ($8)',
+تێبینیی پاڵوێنە: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'پاڵوێنەی سەرانسەریی $1',
 	'abusefilter-log-detailedentry-local' => 'پاڵوێنەی $1',
 	'abusefilter-log-detailslink' => 'وردەکارییەکان',
@@ -5598,7 +5598,7 @@ $messages['ckb'] = array(
 	'abusefilter-edit-builder-op-comparison-gte' => 'گەورەتر لە یان بەرامبەر لەگەڵ (>=)',
 	'abusefilter-edit-builder-op-bool-and' => 'و (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'یان (|)',
-	'abusefilter-filter-log' => 'دوایین گۆڕانکارییەکانی فیلتەر',
+	'abusefilter-filter-log' => 'دوایین گۆڕانکارییەکانی پاڵوێنە',
 	'abusefilter-history-foruser' => 'گۆڕانکارییەکان لە لایەن $1',
 	'abusefilter-history-hidden' => 'شاراوە',
 	'abusefilter-history-enabled' => 'ڕێگەپێدراو',
@@ -5643,8 +5643,8 @@ $messages['ckb'] = array(
 	'abusefilter-diff-item' => 'بابەت',
 	'abusefilter-diff-version' => 'پێداچوونەوە لە $1 لە لایەن $2', # Fuzzy
 	'abusefilter-diff-info' => 'زانیاریی سەرەتایی',
-	'abusefilter-diff-pattern' => 'مەرجەکانی فیلتەر',
-	'abusefilter-diff-backhistory' => 'گەڕانەوە بۆ مێژووی فیلتەر',
+	'abusefilter-diff-pattern' => 'مەرجەکانی پاڵوێنە',
+	'abusefilter-diff-backhistory' => 'گەڕانەوە بۆ مێژووی پاڵوێنە',
 	'abusefilter-import-intro' => 'دەتوانی لەم پێوەندەرە بۆ ھاوردنی فیلتەرەکان لە ویکییەکانی تردا کەڵک وەربگری.
 لە ویکیی ژیدەردا لە سەر «{{int:abusefilter-edit-export}}» لە ژێرەوەی «{{int:abusefilter-edit-tools}}» لە پێوەندەری دەستکاریدا کرتە بکە.
 دەقی ئەو بۆکسە کە دەردەکەوێ، کۆپی بکە ناو ئەم بۆکسەی ئێرەوە، پاشان لە سەر «{{int:abusefilter-import-submit}}» کرتە بکە.',
@@ -8798,6 +8798,7 @@ Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku 
  * @author Baiji
  * @author BicScope
  * @author Crazymadlover
+ * @author Dalton2
  * @author Dferg
  * @author Fitoschido
  * @author Imre
@@ -8956,8 +8957,8 @@ Las estadísticas citadas son para la más reciente versión del filtro.
 Si grabas tus cambios, reescribiras todos los cambios desde la revisión que estás editando.</strong> &bull;
 [[Special:AbuseFilter/history/$2|Retornar al historial de este filtro]].',
 	'abusefilter-edit-status-label' => 'Estadísticas:',
-	'abusefilter-edit-status' => 'De {{PLURAL:$1|la última acción|las últimas acciones}}, este filtro ha coincido con $2 ($3%).
-En promedio, su tiempo de ejecución es $4ms, y consume $5 {{PLURAL:$5|condición|condiciones}} del limite de condiciones.',
+	'abusefilter-edit-status' => 'De {{PLURAL:$1|la última acción|las últimas acciones}}, este filtro ha coincidido con $2 ($3%).
+En promedio, su tiempo de ejecución es de $4 ms, y consume $5 {{PLURAL:$5|condición|condiciones}} del límite de condiciones.',
 	'abusefilter-edit-throttled' => "'''Atención''': Este filtro ha sido automáticamente deshabilitado como medida de seguridad.
 El filtro ha sobrepasado el límite de más del $1% acciones.",
 	'abusefilter-edit-new' => 'Nuevo filtro',
@@ -19409,6 +19410,7 @@ Beschreiwung vum Filter: $7 ($8)',
 	'abusefilter-list-options-deleted-only' => 'Nëmme geläschte Filtere weisen',
 	'abusefilter-list-options-deleted-hide' => 'Geläschte Filtere verstoppen',
 	'abusefilter-list-options-deleted-show' => 'Geläschte Filteren matabezéien',
+	'abusefilter-list-options-scope' => 'Filtere weise vum:',
 	'abusefilter-list-options-scope-local' => 'Lokal Wiki',
 	'abusefilter-list-options-scope-global' => 'Global Regelen',
 	'abusefilter-list-options-disabled' => 'Ausgeschalte Filteren',
@@ -19629,7 +19631,7 @@ Kuckt se w.e.g. genee no a klickt "Confirméieren" fir Är Wiel ze confirméiere
 	'abusefilter-revert-success' => 'Dir hutt all Aktioune vum Mëssbrauchsfilter, op Grond vum [[Special:AbuseFilter/$1|Filter $1]] zréckgesat.',
 	'abusefilter-revert-reason' => 'All Aktioune vum Mëssbrauchsfilter opgrond vum Filter $1 zrécksetzen.
 Grond: $2',
-	'abusefilter-revert-reasonfield' => "Grond fir d'Zrécksetzen:", # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Grond:',
 	'abusefilter-test' => 'De Filter mat de leschten Ännerungen ausprobéieren',
 	'abusefilter-test-intro' => 'Dës Säit erlaabt Iech et e Filter mat {{PLURAL:$1|der leschter Ännerung| de leschte(n) $1 Ännerungen}} z\'iwwerpréifen.
 Fie e Filter ze uede gitt seng Filter ID an d\'Këscht ënnert der Textkëscht an a klickt op de Knäppche "Lueden".',
@@ -19675,7 +19677,7 @@ Fir weider Detailer, kuckt [[Special:AbuseFilter/history|d'Lëscht]] vun de reze
 	'abusefilter-log-noresults' => 'Keng Resultater',
 	'abusefilter-diff-title' => 'Ënnerscheeder tëschent Versiounen',
 	'abusefilter-diff-item' => 'Objet',
-	'abusefilter-diff-version' => 'Versioun vum $1 vum $2', # Fuzzy
+	'abusefilter-diff-version' => 'Versioun vum $1 {{GENDER:$3|vum}} $2',
 	'abusefilter-diff-info' => 'Basisinformatiounen',
 	'abusefilter-diff-pattern' => 'Konditioune vum Filter',
 	'abusefilter-diff-invalid' => 'Déi ugefrote Versioune kënnen net fonnt ginn',
@@ -25385,6 +25387,7 @@ Copiatz l'airal de tèxte que s’aficha e empegatz-lo dins aqueste airal de tè
  * @author Odisha1
  * @author Psubhashish
  * @author Shisir 1945
+ * @author ଆଶୁତୋଷ କର
  */
 $messages['or'] = array(
 	'abusefilter-desc' => 'ଆପେଆପେ ଅଧିକତର ସମ୍ଭାବନା ସମ୍ପାଦନାରେ ଯୋଡ଼ିଥାଏ',
@@ -25487,6 +25490,8 @@ $messages['or'] = array(
 	'abusefilter-list-options-deleted-only' => 'କେବଳ ଲିଭାଯାଇଥିବା ଛଣାଗୁଡିକ ଦେଖାନ୍ତୁ',
 	'abusefilter-list-options-deleted-hide' => 'ଲିଭାଯାଇଥିବା ଛଣାଗୁଡିକୁ ଲୁଚାନ୍ତୁ',
 	'abusefilter-list-options-deleted-show' => 'ଲିଭାଯାଇଥିବା ଛଣାଗୁଡିକୁ ଏହା ସହ ଯୋଗ କରିବେ',
+	'abusefilter-list-options-scope-local' => 'ସ୍ଥାନୀୟ ଉଇକି',
+	'abusefilter-list-options-scope-global' => 'ସାର୍ବଜନୀନ ନିୟମ ସବୁ',
 	'abusefilter-list-options-disabled' => 'ଅଚଳକରାଯାଇଥିବା ଛଣା:',
 	'abusefilter-list-options-hidedisabled' => 'ବନ୍ଦ କରାଯାଇଥିବା ଛଣାଗୁଡିକୁ ଲୁଚାଇବେ',
 	'abusefilter-list-options-submit' => 'ଅପଡେଟ କରିବେ',
@@ -25641,6 +25646,7 @@ $messages['or'] = array(
 	'abusefilter-edit-builder-vars-new-html' => 'ପାର୍ସ କରାଯାଇଥିବା HTML ମୂଳାଧାରର ନୂଆ ସଂସ୍କରଣ',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'ପୃଷ୍ଠାଟିର ପ୍ରତିରକ୍ଷା ପରିମାଣ ବଦଳାନ୍ତୁ',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'ପୃଷ୍ଠାଟିର ସୁରକ୍ଷା ପରିମାଣ ଘୁଞ୍ଚାନ୍ତୁ',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'ଏହି ଫାଇଲ ପାଇଁ ସୁରକ୍ଷା ଅପଲୋଡ କରିବେ',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'ନୂଆ ପୃଷ୍ଠା ଲେଖା, କୌଣସି ମାର୍କଅପରୁ ବାହାର କରାଗଲା',
 	'abusefilter-edit-builder-vars-old-links' => 'ଏହି ସମ୍ପାଦନା ଆଗରୁ ଏହି ପୃଷ୍ଠାରେ ଥିବା ଲିଙ୍କସମୂହ',
 	'abusefilter-edit-builder-vars-old-html' => 'ପୁରୁଣା ପୃଷ୍ଠା ଉଇକିଟେକ୍ସଟ, HTMLକୁ ପାର୍ସ କରାଯାଇଛି',
