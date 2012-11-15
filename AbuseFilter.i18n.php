@@ -2711,6 +2711,7 @@ Süzgəcin təsviri: $7 ($8)',
  * @author Amir a57
  * @author E THP
  * @author Ebrahimi-amir
+ * @author Mousa
  */
 $messages['azb'] = array(
 	'abusefilter-desc' => 'دوزلیش‌لره ائوریستیک فیلترلرین تطبیق اولونماسینا ایمکان وئریر.',
@@ -2922,7 +2923,7 @@ $messages['azb'] = array(
 	'abusefilter-edit-bad-tags' => 'بئلیرتتیغینیز ائتیکئتلئرین بیر و یا داها چوخ گئچئرسیز.
 و ائتیکئتلئر قیسا اولما‌لی‌دیر، خصوصی کاراکتئر ایچئرمئمئ‌لی‌دیر.',
 	'abusefilter-edit-notallowed' => 'سویستیمال فیلترئلئرینی اولوشتورمایا و یا دئغیشتیرمئیئ ایزنینیز یوخ‌دور',
-	'abusefilter-edit-builder-select' => 'ایملئچتئ ائکلئمئک اوچون بیر سئچیم سئچین',
+	'abusefilter-edit-builder-select' => 'ایشاره‌چی‌یه اکله‌مک اوچون بیر سئچیم سئچین',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'رياضی عملیاتلار',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'توپلاما (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'چیخما (-)',
@@ -2948,11 +2949,11 @@ $messages['azb'] = array(
 	'abusefilter-edit-builder-misc-irlike' => 'رئگیستر نظره آلینماسا، مونتزم ایفاده‌یه مووافیق‌دیر (ایرلیکئ)',
 	'abusefilter-edit-builder-misc-contains' => 'سول دیزی ساغ سئریا‌لی ائهتیوا ائدیر (جونتاینس)',
 	'abusefilter-edit-builder-misc-stringlit' => 'سطر ایفاده‌سی ("")',
-	'abusefilter-edit-builder-misc-tern' => 'تئرنار اوپئراتور (X ؟ ی : ز)',
-	'abusefilter-edit-builder-misc-cond' => 'شرط (ایف X تهئن ی ائلسئ ز)',
+	'abusefilter-edit-builder-misc-tern' => 'اوچلو ایشلتمن (X ? Y : Z)',
+	'abusefilter-edit-builder-misc-cond' => 'شرطی (if X then Y else Z)',
 	'abusefilter-edit-builder-group-funcs' => 'فونکسیا‌لار',
 	'abusefilter-edit-builder-funcs-length' => 'سترین اوزون‌لوغو (لئنگته)',
-	'abusefilter-edit-builder-funcs-lcase' => 'کیچیک هرلرله (لجاسئ)',
+	'abusefilter-edit-builder-funcs-lcase' => 'کیچیک حرفلرله (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'قاریش‌دیریلا کاراکتئرلری نورماللئشتیر (ججنورم)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'جوت-کاراکتئرلری چیخار (رمدووبلئس)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'خصوصی سیموول‌لار / جمعی کاراکتئرلر (ایسپئجیالراتیو)',
@@ -2990,14 +2991,14 @@ $messages['azb'] = array(
 	'abusefilter-history-timestamp' => 'زامان',
 	'abusefilter-history-user' => 'ایستیفاده‌چی',
 	'abusefilter-history-flags' => 'بایراق‌لار:',
-	'abusefilter-history-comments' => 'شرح‌لر',
+	'abusefilter-history-comments' => 'یوروملار',
 	'abusefilter-history-actions' => 'چالیشمالار',
-	'abusefilter-history-deleted' => 'سیلی‌نیب',
+	'abusefilter-history-deleted' => 'سیلینیب',
 	'abusefilter-history-select-user' => 'ایستیفاده‌چی:',
 	'abusefilter-history-select-submit' => 'دقیقلشدیرمک',
 	'abusefilter-history-diff' => 'ديَیشیکلیک‌لر',
 	'abusefilter-action-block' => 'بلوک',
-	'abusefilter-test-submit' => 'تئست',
+	'abusefilter-test-submit' => 'سیناق',
 );
 
 /** Bashkir (башҡортса)
@@ -4476,12 +4477,25 @@ $messages['bn'] = array(
 
 /** Tibetan (བོད་ཡིག)
  * @author Freeyak
+ * @author YeshiTuhden
  */
 $messages['bo'] = array(
 	'abusefilter-log-search-user' => 'བཀོལ་མི།',
 	'abusefilter-log-search-title' => 'ཁ་ཡིག',
+	'abusefilter-log-search-wiki' => 'ལྦེ་ཁེ་',
 	'abusefilter-log-noactions' => 'གང་ཡང་མིན།',
 	'abusefilter-log-details-diff' => 'བཟོ་བཅོས་བྱས་བ།',
+	'abusefilter-list-status' => 'གནས་ས་',
+	'abusefilter-list-edit' => 'བཟོ་བཅོས་',
+	'abusefilter-list-details' => 'ཞིབ་ཁྲ་',
+	'abusefilter-hidden' => 'སྒེར་གཉེར་',
+	'abusefilter-unhidden' => 'དམངས་ཀྱི་',
+	'abusefilter-list-options' => 'འདམ་ང་',
+	'abusefilter-list-options-scope-local' => 'ས་གནས་ཀྱི་ལྦེ་ཁེ་',
+	'abusefilter-list-options-scope-global' => 'འཛམ་གླིང་གི་སྒྲིག་ཁྲིམས་',
+	'abusefilter-edit-warn-other' => 'བརྡ་ཕྲིན་གཞན་',
+	'abusefilter-edit-builder-op-comparison-equal' => 'མཚུངས་',
+	'abusefilter-edit-builder-op-bool-and' => 'དང་་',
 	'abusefilter-history-global' => 'འཛམ་གླིང་།',
 	'abusefilter-history-timestamp' => 'དུས་ཚོད།',
 	'abusefilter-history-user' => 'ཁོངས་མི།',
@@ -5874,9 +5888,9 @@ $messages['ckb'] = array(
 :''(بۆ ھەموو کەس دەبینرێ)''",
 	'abusefilter-edit-group' => 'گرووپی پاڵوێنە:',
 	'abusefilter-edit-flags' => 'ئاڵاکان:',
-	'abusefilter-edit-enabled' => 'ئەم فیلتەرە چالاک بکە',
+	'abusefilter-edit-enabled' => 'ئەم پاڵوێنەیە چالاک بکە',
 	'abusefilter-edit-deleted' => 'وەک سڕدراو دیاریی بکە',
-	'abusefilter-edit-hidden' => 'وردەکارییەکانی ئەم پاڵوێنە لە بەرچاوی گشتی لا ببە',
+	'abusefilter-edit-hidden' => 'وردەکارییەکانی ئەم پاڵوێنەیە لەبەر چاوی گشتی لا ببە',
 	'abusefilter-edit-global' => 'پاڵوێنەی سەرانسەری',
 	'abusefilter-edit-rules' => 'مرجەکان:',
 	'abusefilter-edit-notes' => "تێبینی:
@@ -5989,7 +6003,7 @@ $messages['ckb'] = array(
 	'abusefilter-examine-test' => 'تاقیکردنەوەی ئەم گۆڕانکارییە لەسەر پاڵوێنەیەک',
 	'abusefilter-examine-test-button' => 'تاقیکردنەوەی پاڵوێنە',
 	'abusefilter-examine-syntaxerror' => 'ڕێزمانی پاڵوێنە نادروستە.',
-	'abusefilter-topnav' => 'ڕێدۆزیی فیلتەری کەڵکاوەژوو',
+	'abusefilter-topnav' => 'ڕێدۆزیی پاڵوێنەی کەڵکاوەژوو',
 	'abusefilter-topnav-home' => 'ماڵەوە',
 	'abusefilter-topnav-test' => 'تاقیکردنەوەی بەکۆمەڵ',
 	'abusefilter-topnav-examine' => 'تاقیکردنەوەی دەستکارییەکانی پێشوو',
