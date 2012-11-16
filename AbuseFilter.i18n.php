@@ -2987,16 +2987,70 @@ $messages['azb'] = array(
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'قایناق داشیما صحیفه‌سی‌نین صحیفه ایدسی',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'قایناق داشیما صحیفه‌سی‌نین آد ساحه‌سی',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'قایناق داشیما صحیفه‌سی باش‌لیغی',
+	'abusefilter-edit-builder-vars-movedfrom-prefixedtext' => 'قایناق داشیما صحیفه‌ نین تام باش‌لیغی',
+	'abusefilter-edit-builder-vars-movedto-id' => 'هدف داشیما صحیفه‌سی‌نین صحیفه ایدسی',
+	'abusefilter-edit-builder-vars-movedto-ns' => 'هدف داشیما صحیفه‌سی‌نین آد ساحه‌سی',
+	'abusefilter-edit-builder-vars-movedto-text' => 'هدف داشیما صحیفه‌سی‌نین باش‌لیغی',
+	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'هدف داشیما صحیفه‌سی‌نین تام باش‌لیغی',
+	'abusefilter-edit-builder-vars-user-editcount' => 'ایستیفاده‌چی‌نین دییشدیر سایی',
+	'abusefilter-edit-builder-vars-user-age' => 'حسابین یاشی',
+	'abusefilter-edit-builder-vars-user-name' => 'حسابین آدی',
+	'abusefilter-edit-builder-vars-user-groups' => 'ایستیفاده‌چی‌نین اولدوغو گروه‌لار (ایچینده اولدوق‌لاری داخیل)',
+	'abusefilter-edit-builder-vars-user-emailconfirm' => 'ایمیل پوست عنوانینین دوغرولانما زامانی',
+	'abusefilter-edit-builder-vars-recent-contributors' => 'صحیفنی یئنی‌دن ایشتیراک ائدن سون اون ایستیفاده‌چی',
+	'abusefilter-edit-builder-vars-all-links' => 'یئنی متن‌دکی بوتون خاریجی کئچیدلر',
+	'abusefilter-edit-builder-vars-added-links' => 'دوزلیش زامانی علاوه اولونموش بوتون خاریجی کئچیدلر',
+	'abusefilter-edit-builder-vars-removed-links' => 'دوزلیش زامانی سیلینمیش بوتون خاریجی کئچیدلر',
+	'abusefilter-edit-builder-vars-old-text' => 'کؤهنه صحیفه ویکی متنی، دییشیک‌لیک‌دن قاباق',
+	'abusefilter-edit-builder-vars-new-text' => 'یئنی صحیفه ویکی متنی، دییشیک‌لیک‌دن سونرا',
+	'abusefilter-edit-builder-vars-new-text-stripped' => 'یئنی صحیفه متنی، هر هانسی بیر فورمالاندیرما اولما‌دان',
+	'abusefilter-edit-builder-vars-new-html' => 'یئنی رئویزیونو ییغیلمیش اچ تی ام ال قایناغی',
+	'abusefilter-edit-builder-vars-restrictions-edit' => 'صحیفه‌نین قوروما سویه‌سینی دییش‌دیر',
+	'abusefilter-edit-builder-vars-restrictions-move' => 'صحیفه‌نین قوروما سویه‌سینی داشی',
+	'abusefilter-edit-builder-vars-old-text-stripped' => 'کؤهنه صحیفه متنی، هر هانسی بیر فورمالاندیرما اولما‌دان',
+	'abusefilter-edit-builder-vars-old-links' => 'صحیفه‌دکی علاقه‌لر، دییشیک‌لیک‌دن قاباق',
+	'abusefilter-edit-builder-vars-old-html' => 'کؤهنه صحیفه ویکی متنی، اچ تی ام ال ییغیلدی',
+	'abusefilter-edit-builder-vars-minor-edit' => 'دییشیکلیگین کیچیک اولا‌راق ایشارئتلئنیپ ایشارئتلئنمئیئجئغی',
+	'abusefilter-edit-builder-vars-file-sha1' => 'فایل مزمون‌لارینین SHA1 هاسهی',
+	'abusefilter-filter-log' => 'سون سوزگج دییشیک‌لیک‌لری',
+	'abusefilter-history' => 'سویستیمال فیلتری # $ 1 اوچون دییشیک‌لیک کئچمیشی', # Fuzzy
+	'abusefilter-history-foruser' => '$1-ا گؤره دییش',
 	'abusefilter-history-hidden' => 'گیزله‌دیلیب',
+	'abusefilter-history-enabled' => 'قوشولوب',
+	'abusefilter-history-global' => 'باشاباشجا',
 	'abusefilter-history-timestamp' => 'زامان',
 	'abusefilter-history-user' => 'ایستیفاده‌چی',
+	'abusefilter-history-public' => 'عمومی سوزگج شرحی',
 	'abusefilter-history-flags' => 'بایراق‌لار:',
+	'abusefilter-history-filter' => 'سوزگج قایداسی',
 	'abusefilter-history-comments' => 'یوروملار',
 	'abusefilter-history-actions' => 'چالیشمالار',
+	'abusefilter-history-backedit' => 'سوزگج دییشدیر‌سینه گئری دؤن',
 	'abusefilter-history-deleted' => 'سیلینیب',
+	'abusefilter-history-filterid' => 'سوزگج',
+	'abusefilter-history-select-legend' => 'آختاریشی دقیقلش‌دیرمک',
 	'abusefilter-history-select-user' => 'ایستیفاده‌چی:',
 	'abusefilter-history-select-submit' => 'دقیقلشدیرمک',
 	'abusefilter-history-diff' => 'ديَیشیکلیک‌لر',
+	'abusefilter-history-error-hidden' => 'ایستدیگینیز فیلتر گیزلی، و کئچمیشینی گؤرونتولئیئمئزسینیز.',
+	'abusefilter-exception-unexpectedatend' => '$ 1 کاراکتئرینده گؤزلنیلمز "$ 2".', # Fuzzy
+	'abusefilter-exception-expectednotfound' => '$ 1 کاراکتئرینده بیر $ 2 گؤزلنیلیردی، تاپیلا بیلمه‌دی (یئرینه $ 3 $ 4 تاپیلدی).', # Fuzzy
+	'abusefilter-exception-unrecognisedkeyword' => '$ 1 کاراکتئرینده تانینمایان آچار سؤز $ 2.', # Fuzzy
+	'abusefilter-exception-unexpectedtoken' => '$ 1 کاراکتئرینده گؤزلنیلمه‌ین سیمبول "$ 3" ($ 2 تیپینده).', # Fuzzy
+	'abusefilter-exception-unclosedstring' => '$ 1 کاراکتئرینده باشلایان کاپانمامیش دیزی', # Fuzzy
+	'abusefilter-exception-invalidoperator' => '$ 1 کاراکتئرینده اعتبارسیز اوپئراتور "$ 2".', # Fuzzy
+	'abusefilter-exception-unrecognisedtoken' => '$1 کاراکتئریندئ تانینمایان سیمگئ "$2".',
+	'abusefilter-exception-noparams' => '"$ 2" فونکسیاسینا $ 1 کاراکتئرینده هئچ پارامئتر وئریلمه‌دی.', # Fuzzy
+	'abusefilter-exception-dividebyzero' => '$ 1 کاراکتئرینده $ 2 ایله کورالدیشی صیفیرا بؤلمه جهدی.', # Fuzzy
+	'abusefilter-exception-unrecognisedvar' => '$ 1 کاراکتئرینده تانینمایان دییشن $ 2', # Fuzzy
+	'abusefilter-exception-notenoughargs' => '$ 1 کاراکتئرینده چاغیریلان $ 2 فونکسیاسی اوچون کافی دییشن یوخ.
+$ 3 {{پلورال: $ 3 | دییشن | دییشن}} گؤزلنیلیردی، $ 4 آلیندی', # Fuzzy
+	'abusefilter-exception-regexfailure' => '"$ 3" نیزام‌لی ایفاده‌سی‌نین $ 1 کاراکتئرینده سهو: "$ 2"', # Fuzzy
+	'abusefilter-exception-overridebuiltin' => '$ 1 کاراکتئرینده "$ 2" مسکون دئغیشکئنی‌نین کورالدیشی اعتبارسیز قیلینماسی.', # Fuzzy
+	'abusefilter-exception-outofbounds' => '$ 1 کاراکتئرین‌دکی مؤوجود اولمایان سیاهی ائلئمئنتی $ 2 (سیاهی اؤلچوسو = $ 3) ایستنیر.', # Fuzzy
+	'abusefilter-exception-notlist' => '$ 1 کاراکتئرینده دیزی اولمایان دیزی ائلئمئنتی ایستنیر.', # Fuzzy
+	'abusefilter-action-tag' => 'نیشان',
+	'abusefilter-action-throttle' => 'سوروشمه',
 	'abusefilter-action-block' => 'بلوک',
 	'abusefilter-test-submit' => 'سیناق',
 );
@@ -4493,17 +4547,28 @@ $messages['bo'] = array(
 	'abusefilter-list-options' => 'འདམ་ང་',
 	'abusefilter-list-options-scope-local' => 'ས་གནས་ཀྱི་ལྦེ་ཁེ་',
 	'abusefilter-list-options-scope-global' => 'འཛམ་གླིང་གི་སྒྲིག་ཁྲིམས་',
+	'abusefilter-edit-subtitle-new' => 'ཤིག་ཚགས་བཟོ་ཞིན་',
+	'abusefilter-edit-new' => 'ཤོག་ཚགས་གསར་པ་',
+	'abusefilter-edit-group' => 'ཤོགཚགས་ཚོགས་པ་',
 	'abusefilter-edit-warn-other' => 'བརྡ་ཕྲིན་གཞན་',
+	'abusefilter-edit-done-subtitle' => 'ཤོག་ཚགས་རྩོམ་སྒྲིག་ཚར་',
+	'abusefilter-edit-tools' => 'ལག་ཅ་',
 	'abusefilter-edit-builder-op-comparison-equal' => 'མཚུངས་',
 	'abusefilter-edit-builder-op-bool-and' => 'དང་་',
+	'abusefilter-edit-builder-vars-user-editcount' => 'སྤྱོད་མིའི་གྲངས་ཚད་རྩོམ་སྒྲིག་',
+	'abusefilter-edit-builder-vars-user-age' => 'སྤྱོད་མིའི་ལོ་གྲངས་',
+	'abusefilter-history-hidden' => 'སྦས་སྐུང་བྱས་ཚར་བ་',
 	'abusefilter-history-global' => 'འཛམ་གླིང་།',
 	'abusefilter-history-timestamp' => 'དུས་ཚོད།',
 	'abusefilter-history-user' => 'ཁོངས་མི།',
 	'abusefilter-history-flags' => 'དར་ཆ།',
 	'abusefilter-history-comments' => 'བསམ་ཚུལ།',
 	'abusefilter-history-deleted' => 'གསུབ་ཟིན།',
+	'abusefilter-history-filterid' => 'ཤོག་ཚགས་',
 	'abusefilter-action-warn' => 'ཉེན་བརྡ།',
+	'abusefilter-action-block' => 'བཀག་པ་',
 	'abusefilter-revert-confirm' => 'གཏན་འབེབས།',
+	'abusefilter-log-noresults' => 'འབྲས་བུ་མེད་པ་',
 );
 
 /** Breton (brezhoneg)
@@ -8164,6 +8229,8 @@ Toflicki by mógli krotke byś a njeby mógli specielne znamuška wopśimjeś.',
 	'abusefilter-edit-builder-vars-new-html' => 'Analyzěrowane HTML-žrědło noweje wersije',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Šćitny schójźeńk za wobźěłowanje boka',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Šćitny schóźeńk za pśesuwanje boka',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Napórański šćit boka',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'Nagrawański šćit dataje',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Tekst starego boka, bźez wobznamjenjenjow',
 	'abusefilter-edit-builder-vars-old-links' => 'Wótkaze w boku, pśed wobźěłanim',
 	'abusefilter-edit-builder-vars-old-html' => 'Wikitekst starego boka, do HTML analyzěrowany',
@@ -8227,7 +8294,7 @@ Akcije, kótarež maju se anulěrowaś: $5 ($6)',
 	'abusefilter-revert-confirm' => 'Wobkšuśiś',
 	'abusefilter-revert-success' => 'Sy anulěrował wše akcije, kótarež su se pśewjadli pśez znjewužywański filter na zakłaźe [[Special:AbuseFilter/$1|filtra $1]].',
 	'abusefilter-revert-reason' => 'Awtomatiske anulěrowanje wšych akcijow, kótarež su se pśewjadli pśez znjewužywański filter na zakłaźe filtra $1. Pódana pśicyna: $2',
-	'abusefilter-revert-reasonfield' => 'Pśicyna za anulěrowanje:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Pśicyna:',
 	'abusefilter-test' => 'Filter pśeśiwo pjerwjejšnym tm;enam testowaś',
 	'abusefilter-test-intro' => 'Toś ten bok śi zmóžnja filter, kótaryž sy zapódał w slědujucem kašćiku, pśeśiwo {{PLURAL:$1|slědnej změnje|slědnyma změnoma|slědnym změnam|slědnym změnam}} pśekontrolěrowaś.
 Aby zacytał eksistěrujucy filter, zapódaj jogo filtrowy ID do kašćika pód wobźěłańskim tekstowym kašćikom a klikni na tłocašk "Zacytaś".',
@@ -8273,7 +8340,7 @@ Za połne drobnostki glědaj [[Special:AbuseFilter/history|lisćinu]] nejnowšyc
 	'abusefilter-log-noresults' => 'Žedne wuslědki',
 	'abusefilter-diff-title' => 'Rozdźěle mjazy wersijami',
 	'abusefilter-diff-item' => 'Zapisk',
-	'abusefilter-diff-version' => 'Wersija wót $1 wót $2', # Fuzzy
+	'abusefilter-diff-version' => 'Wersija wót $1 {{GENDER:$3|wót}} $2',
 	'abusefilter-diff-info' => 'Zakładne informacije',
 	'abusefilter-diff-pattern' => 'Filtrowe wuměnjenja',
 	'abusefilter-diff-invalid' => 'Njemóžno pominane wersije wobstaraś',
@@ -38519,6 +38586,7 @@ $messages['zh-cn'] = array(
  * @author Jimmy xu wrk
  * @author Liangent
  * @author Linforest
+ * @author Makecat
  * @author PhiLiP
  * @author Philip <philip.npc@gmail.com>
  * @author Skjackey tse
@@ -38630,6 +38698,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-list-options-deleted-hide' => '隐藏已删除过滤器',
 	'abusefilter-list-options-deleted-show' => '包括已删除过滤器',
 	'abusefilter-list-options-scope' => '显示过滤器自：',
+	'abusefilter-list-options-scope-local' => '地区维基',
 	'abusefilter-list-options-scope-global' => '全域规则',
 	'abusefilter-list-options-disabled' => '已停用过滤器：',
 	'abusefilter-list-options-hidedisabled' => '隐藏已停用过滤器',
@@ -38901,7 +38970,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-log-noresults' => '没有结果',
 	'abusefilter-diff-title' => '版本间的差异',
 	'abusefilter-diff-item' => '项目',
-	'abusefilter-diff-version' => '$1$2的版本', # Fuzzy
+	'abusefilter-diff-version' => '$1{{GENDER:$3|by}}$2的版本', # Fuzzy
 	'abusefilter-diff-info' => '基本信息',
 	'abusefilter-diff-pattern' => '过滤器状态',
 	'abusefilter-diff-invalid' => '无法获取所请求版本',
