@@ -53,6 +53,7 @@ class AbuseFilterHooks {
 		global $wgUser;
 		$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
 		$vars->addHolder( AbuseFilter::generateTitleVars( $title , 'article' ) );
+
 		$vars->setVar( 'action', 'edit' );
 		$vars->setVar( 'summary', $summary );
 		$vars->setVar( 'minor_edit', $editor->minoredit );

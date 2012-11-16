@@ -250,6 +250,13 @@ class AFComputedVariable {
 	function compute( $vars ) {
 		$parameters = $this->mParameters;
 		$result = null;
+
+		if ( !wfRunHooks( 'AbuseFilter-interceptVariable',
+							array( $this->mMethod, $vars, $parameters, &$result ) ) ) {
+			return $result instanceof AFPData
+				? $result : AFPData::newFromPHPVar( $result );
+		}
+
 		switch( $this->mMethod ) {
 			case 'diff':
 				$text1Var = $parameters['oldtext-var'];
@@ -326,7 +333,6 @@ class AFComputedVariable {
 				break;
 			case 'parse-wikitext':
 				// Should ONLY be used when sharing a parse operation with the edit.
-
 				$article = $parameters['article'];
 				if ( $article ) {
 					$textVar = $parameters['wikitext-var'];
@@ -447,7 +453,7 @@ class AFComputedVariable {
 				break;
 			default:
 				if ( wfRunHooks( 'AbuseFilter-computeVariable',
-									array( $this->mMethod, $vars ) ) ) {
+									array( $this->mMethod, $vars, $parameters, &$result ) ) ) {
 					throw new AFPException( 'Unknown variable compute type ' . $this->mMethod );
 				}
 		}
