@@ -67,7 +67,7 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 		$this->addFieldsIf( 'af_pattern', $fld_pattern );
 		$this->addFieldsIf( 'af_actions', $fld_actions );
 		$this->addFieldsIf( 'af_comments', $fld_comments );
-		$this->addFieldsIf( 'af_user_text', $fld_user );
+		$this->addFieldsIf( array( 'af_user', 'af_user_text' ), $fld_user );
 		$this->addFieldsIf( 'af_timestamp', $fld_time );
 
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
@@ -96,6 +96,14 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 
 		$showhidden = $user->isAllowed( 'abusefilter-modify' );
 
+		if ( $fld_user ) {
+			$userIds = array();
+			foreach ( $res as $row ) {
+				$userIds[] = $row->af_user;
+			}
+			UserCache::singleton()->doQuery( $userIds, array(), __METHOD__ );
+		}
+
 		$count = 0;
 		foreach ( $res as $row ) {
 			if ( ++$count > $params['limit'] ) {
@@ -123,7 +131,7 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 				$entry['comments'] = $row->af_comments;
 			}
 			if ( $fld_user ) {
-				$entry['lasteditor'] = $row->af_user_text;
+				$entry['lasteditor'] = UserCache::singleton()->getUserName( $row->af_user, $row->af_user_text );
 			}
 			if ( $fld_time ) {
 				$ts = new MWTimestamp( $row->af_timestamp );
