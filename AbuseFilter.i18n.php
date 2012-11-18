@@ -3103,6 +3103,32 @@ $ 3 {{پلورال: $ 3 | دییشن | دییشن}} گؤزلنیلیردی، $ 4
 	'abusefilter-examine-nomatch' => 'فیلتر بو دییشیک‌لیکله ائشلئشمئدی.',
 	'abusefilter-examine-syntaxerror' => 'فیلترده دوزلیش ختا',
 	'abusefilter-examine-notfound' => 'ایستدیگینیز دییشیک‌لیک تاپیلمادی.',
+	'abusefilter-examine-incompatible' => 'ایستدیگینیز دییشیک‌لیک سیستیمال فیلتری طرفین‌دن دستک‌لنمیر',
+	'abusefilter-examine-noresults' => 'ایستدینیز آختاریش پارامئترلرینه اویغون هئچ بیر نتیجه تاپیلمادی.',
+	'abusefilter-topnav' => "' 'سیستیمال فیلتری ناویقاسیا",
+	'abusefilter-topnav-home' => 'ائو',
+	'abusefilter-topnav-test' => 'پاکئت تئست لشدیرمه',
+	'abusefilter-topnav-examine' => 'کئچمیش دییشیک‌لیک‌لری آراش‌دیر',
+	'abusefilter-topnav-log' => 'سوی-ایستیفاده ژورنا‌لی',
+	'abusefilter-topnav-tools' => 'اشکال آییر ائتمه واسطه‌لری',
+	'abusefilter-topnav-import' => 'فیلتر ایدخا‌لی',
+	'abusefilter-log-name' => 'سیستیمال فیلتری گونده‌لیگی',
+	'abusefilter-log-header' => 'بو گونده‌لیک فیلتردن ائدیلن دییشیک‌لیک‌لرین بیر خلاصه‌سینی گؤستریر.
+تام دئتال‌لار اوچون، سون فیلتر دییشیک‌لیک‌لری [[Special:AbuseFilter/history|سیاهه]] باخین.',
+	'abusefilter-log-entry-modify' => 'دییشدیردی $ 1 ($ 2)', # Fuzzy
+	'abusefilter-log-noresults' => 'نتیجه یوخ‌دور',
+	'abusefilter-diff-title' => 'نسخه لر آراسین‌داکی فرق‌لر',
+	'abusefilter-diff-item' => 'آیتم',
+	'abusefilter-diff-version' => '$1-نین نسخه سی، $2', # Fuzzy
+	'abusefilter-diff-info' => 'اساس معلومات‌لار',
+	'abusefilter-diff-pattern' => 'فیلتر شرط‌لری',
+	'abusefilter-diff-invalid' => 'ایستدیگینیز نسخه لر آلینا بیلمیر',
+	'abusefilter-diff-backhistory' => 'فیلتر کئچمیشینه گئری قاییت',
+	'abusefilter-import-intro' => 'بو اینتئرفئیسی دیگر ویکی فیلترلری ایچه کؤچورمک اوچون ایستیفاده ائده بیلرسینیز.
+قایناق ویکی، دییشدیرمه اینتئرفئیسینده "{{int:abusefilter-edit-export}}" این آلتین‌داکی "{{int:abusefilter-edit-tools}}" آ داخیل اولون.
+گؤرونن متن قوتوسون‌دان کؤچور، و بو متن قوتوسونا یاپیش‌دیرین، داها سونرا "{{int:abusefilter-import-submit}}" آ باسین،',
+	'abusefilter-import-submit' => 'معلومات‌لاری ایچری اؤتور',
+	'abusefilter-group-default' => 'فرض ائدیلن',
 );
 
 /** Bashkir (башҡортса)
