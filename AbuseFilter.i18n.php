@@ -7711,7 +7711,7 @@ Deskripsiyonê filitreyî: $7 ($8)',
 	'abusefilter-list-group' => 'Parzûnê grube',
 	'abusefilter-hidden' => 'Xasî',
 	'abusefilter-unhidden' => 'Şar',
-	'abusefilter-enabled' => 'Kefılneyayo',
+	'abusefilter-enabled' => 'Aktifiyaye',
 	'abusefilter-deleted' => 'Esteriya',
 	'abusefilter-disabled' => 'Astengın',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|cıgêno|cıgênê}}',
@@ -23819,7 +23819,7 @@ Se nøye gjennom disse og klikk på «bekreft» for å bekrefte dette valget.',
 	'abusefilter-revert-success' => 'Du har tilbakestilt alle endringene utført av misbruksfilteret på grunn av [[Special:AbuseFilter/$1|filter $1]].',
 	'abusefilter-revert-reason' => 'Automatisk tilbakestilling av alle handlingene utført av misbruksfilteret på grunn av filter $1.
 Grunnen er gitt som: $2',
-	'abusefilter-revert-reasonfield' => 'Grunn for tilbakestilling:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Årsak:',
 	'abusefilter-test' => 'Test et filter på tidligere redigeringer',
 	'abusefilter-test-intro' => 'Denne siden lar deg teste et filter som du skriver inn i tekstområdet nedenfor mot {{PLURAL:$1|den siste endringen|de $1 siste endringene}}.
 For å laste inn et eksisterende filter, skriv inn filter-ID-en i boksen under tekstområdet og klikk på «Last inn»-knappen',
