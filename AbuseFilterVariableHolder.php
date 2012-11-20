@@ -326,7 +326,7 @@ class AFComputedVariable {
 				break;
 			case 'parse-wikitext':
 				// Should ONLY be used when sharing a parse operation with the edit.
-	
+
 				$article = $parameters['article'];
 				if ( $article ) {
 					$textVar = $parameters['wikitext-var'];
@@ -436,20 +436,14 @@ class AFComputedVariable {
 				break;
 			case 'revision-text-by-id':
 				$rev = Revision::newFromId( $parameters['revid'] );
-				$result = $rev->getText();
+				$result = AbuseFilter::revisionToString( $rev );
 				break;
 			case 'revision-text-by-timestamp':
 				$timestamp = $parameters['timestamp'];
 				$title = Title::makeTitle( $parameters['namespace'], $parameters['title'] );
 				$dbr = wfGetDB( DB_SLAVE );
-
 				$rev = Revision::loadFromTimestamp( $dbr, $title, $timestamp );
-
-				if ( $rev ) {
-					$result = $rev->getText();
-				} else {
-					$result = '';
-				}
+				$result = AbuseFilter::revisionToString( $rev );
 				break;
 			default:
 				if ( wfRunHooks( 'AbuseFilter-computeVariable',

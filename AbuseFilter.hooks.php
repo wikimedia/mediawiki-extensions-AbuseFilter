@@ -37,7 +37,7 @@ class AbuseFilterHooks {
 			if ( !$revision ) {
 				return true;
 			}
-			$oldtext = $revision->getRawText();
+			$oldtext = AbuseFilter::revisionToString( $revision, Revision::RAW );
 		}
 
 		// Cache article object so we can share a parse operation
