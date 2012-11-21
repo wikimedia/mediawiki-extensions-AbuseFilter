@@ -3093,7 +3093,7 @@ $ 3 {{پلورال: $ 3 | دییشن | دییشن}} گؤزلنیلیردی، $ 4
 	'abusefilter-examine-intro' => 'بو صحیفه، سویستیمال فیلتری طرفین‌دن خصوصی بیر دییشیک‌لیک اوچون یارادیلان دییشن‌لری آراشدیرمانیزی، و فیلتردن قارشی تئست ائتمه‌نیزه ایجازه وئرر.',
 	'abusefilter-examine-legend' => 'دییشیک‌لیک‌لر سئچیلمه‌سی',
 	'abusefilter-examine-diff' => 'URL-in فرقی:',
-	'abusefilter-examine-user' => 'ایستفاده چی',
+	'abusefilter-examine-user' => 'ایستفاده‌چی:',
 	'abusefilter-examine-title' => 'صحیفه باشلیقی',
 	'abusefilter-examine-submit' => 'آختار',
 	'abusefilter-examine-vars' => 'بو دییشیک‌لیک اوچون یارادیلان دییشن‌لر',
@@ -6961,7 +6961,7 @@ Tags bør være korte, og de bør ikke indeholde specialtegn.',
 	'abusefilter-edit-builder-vars-user-age' => 'Brugerkontoens alder',
 	'abusefilter-edit-builder-vars-user-name' => 'Brugerkontoens navn',
 	'abusefilter-edit-builder-vars-user-groups' => 'Grupper (heriblandt implicitte) som brugeren er i',
-	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Tidspunkt email-adressen blev bekræftet',
+	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Tidspunkt e-mailadressen blev bekræftet',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Seneste ti brugere som har bidraget til siden',
 	'abusefilter-edit-builder-vars-all-links' => 'Alle eksterne henvisninger i den nye tekst',
 	'abusefilter-edit-builder-vars-added-links' => 'Alle eksterne henvisninger tilføjet i redigeringen',
@@ -36362,6 +36362,7 @@ $messages['ug-latn'] = array(
  * @author AS
  * @author Ahonc
  * @author Alex Khimich
+ * @author Base
  * @author JenVan
  * @author Microcell
  * @author NickK
@@ -36644,7 +36645,7 @@ $messages['uk'] = array(
 	'abusefilter-edit-builder-vars-movedto-ns' => 'Простір назв цільової сторінки перейменування',
 	'abusefilter-edit-builder-vars-movedto-text' => 'Назва цільової сторінки перейменування',
 	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Повна назва цільової сторінки перейменування',
-	'abusefilter-edit-builder-vars-user-editcount' => 'Кількість редагувань користувача',
+	'abusefilter-edit-builder-vars-user-editcount' => 'Число редагувань користувача',
 	'abusefilter-edit-builder-vars-user-age' => 'Вік облікового запису',
 	'abusefilter-edit-builder-vars-user-name' => "Ім'я облікового запису",
 	'abusefilter-edit-builder-vars-user-groups' => 'Групи (включаючи неявні) в яких перебуває користувач',
@@ -39217,7 +39218,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-edit-enabled' => '啟用此過濾器',
 	'abusefilter-edit-deleted' => '標記為已刪除',
 	'abusefilter-edit-hidden' => '對公眾隱藏此過濾器的詳細資料',
-	'abusefilter-edit-global' => '全域套用此過濾器', # Fuzzy
+	'abusefilter-edit-global' => '全域過濾器',
 	'abusefilter-edit-rules' => '條件：',
 	'abusefilter-edit-notes' => "註解：
 :''（私下記錄用）''",
@@ -39465,7 +39466,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-log-noresults' => '沒有結果',
 	'abusefilter-diff-title' => '修訂版本間差異',
 	'abusefilter-diff-item' => '項目',
-	'abusefilter-diff-version' => '在$1由$2所做的修訂版本', # Fuzzy
+	'abusefilter-diff-version' => '在$1{{GENDER:$3|由}}$2所做的修訂版本',
 	'abusefilter-diff-info' => '基本資料',
 	'abusefilter-diff-pattern' => '過濾器狀態',
 	'abusefilter-diff-invalid' => '無法取得請求的版本',
