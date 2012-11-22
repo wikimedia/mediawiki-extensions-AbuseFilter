@@ -355,6 +355,12 @@ $specialPageAliases['sa'] = array(
 	'AbuseFilter' => array( 'दुरुपयोगशोधबन्धन' ),
 );
 
+/** Sicilian (sicilianu) */
+$specialPageAliases['scn'] = array(
+	'AbuseLog' => array( 'RegistroAbusi' ),
+	'AbuseFilter' => array( 'FiltroAntiAbusi' ),
+);
+
 /** Serbo-Croatian (srpskohrvatski / српскохрватски) */
 $specialPageAliases['sh'] = array(
 	'AbuseLog' => array( 'Evidencija_zloupotreba' ),
