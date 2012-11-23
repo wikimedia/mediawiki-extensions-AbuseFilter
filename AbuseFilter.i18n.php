@@ -2913,7 +2913,7 @@ $messages['azb'] = array(
 	'abusefilter-edit-viewhistory' => 'بو سوزگئجین گئچمیشینی گؤر',
 	'abusefilter-edit-history' => 'گئچمیش:',
 	'abusefilter-edit-check' => 'سؤزدیزیمینی کونترول ائت',
-	'abusefilter-edit-badfilter' => 'بئلیرتتیغینیز فیلتئر مؤوجود دئییل',
+	'abusefilter-edit-badfilter' => 'بلیرتدیگینیز فیلتِر یوخدور',
 	'abusefilter-edit-revert' => 'بو فیلترئ تارافین‌دان آلینان ائیلئملئری گئری آل',
 	'abusefilter-edit-tools' => 'آلت‌لر',
 	'abusefilter-edit-test-link' => 'سون دئغیشیکلیکلئرئ قارشی بو سوزگئجی تئست ائت',
@@ -38666,6 +38666,7 @@ $messages['zh-cn'] = array(
  * @author Makecat
  * @author PhiLiP
  * @author Philip <philip.npc@gmail.com>
+ * @author Simon Shek
  * @author Skjackey tse
  * @author Wmr89502270
  * @author Xiaomingyan
@@ -38775,7 +38776,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-list-options-deleted-hide' => '隐藏已删除过滤器',
 	'abusefilter-list-options-deleted-show' => '包括已删除过滤器',
 	'abusefilter-list-options-scope' => '显示过滤器自：',
-	'abusefilter-list-options-scope-local' => '地区维基',
+	'abusefilter-list-options-scope-local' => '本地維基',
 	'abusefilter-list-options-scope-global' => '全域规则',
 	'abusefilter-list-options-disabled' => '已停用过滤器：',
 	'abusefilter-list-options-hidedisabled' => '隐藏已停用过滤器',
@@ -39186,6 +39187,9 @@ $messages['zh-hant'] = array(
 	'abusefilter-list-options-deleted-only' => '僅顯示已刪除的過濾器',
 	'abusefilter-list-options-deleted-hide' => '隱藏已刪除的過濾器',
 	'abusefilter-list-options-deleted-show' => '包含已刪除的過濾器',
+	'abusefilter-list-options-scope' => '顯示篩選器自：',
+	'abusefilter-list-options-scope-local' => '本地維基',
+	'abusefilter-list-options-scope-global' => '全域規則',
 	'abusefilter-list-options-disabled' => '已停用的過濾器：',
 	'abusefilter-list-options-hidedisabled' => '隱藏已停用過濾器',
 	'abusefilter-list-options-submit' => '更新',
@@ -39354,6 +39358,8 @@ $messages['zh-hant'] = array(
 	'abusefilter-edit-builder-vars-new-html' => '解析新版本的HTML源代碼',
 	'abusefilter-edit-builder-vars-restrictions-edit' => '編輯該頁保護等級',
 	'abusefilter-edit-builder-vars-restrictions-move' => '移動該頁保護等級',
+	'abusefilter-edit-builder-vars-restrictions-create' => '建立頁面的保護',
+	'abusefilter-edit-builder-vars-restrictions-upload' => '上載檔案的保護',
 	'abusefilter-edit-builder-vars-old-text-stripped' => '舊頁面純文字，去除任何標記符',
 	'abusefilter-edit-builder-vars-old-links' => '在現下所編輯處連結到該頁',
 	'abusefilter-edit-builder-vars-old-html' => '將舊頁維基文字解析成HTML',
