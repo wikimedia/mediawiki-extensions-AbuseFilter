@@ -2063,4 +2063,37 @@ class AbuseFilter {
 		$msg = "abusefilter-group-$group";
 		return wfMessage($msg)->exists() ? wfMessage($msg)->escaped() : $group;
 	}
+
+	/**
+	 * Look up some text of a revision from its revision id
+	 *
+	 * Note that this is really *some* text, we do not make *any* guarantee
+	 * that this text will be even close to what the user actually sees, or
+	 * that the form is fit for any intended purpose.
+	 *
+	 * Note also that if the revision for any reason is not an Revision
+	 * the function returns with an empty string.
+	 *
+	 * @param Revision $revision a valid revision
+	 * @param $audience Integer: one of:
+	 *      Revision::FOR_PUBLIC       to be displayed to all users
+	 *      Revision::FOR_THIS_USER    to be displayed to the given user
+	 *      Revision::RAW              get the text regardless of permissions
+	 * @return string|null the content of the revision as some kind of string,
+	 * 		or an empty string if it can not be found
+	 */
+	static function revisionToString( $revision, $audience = Revision::FOR_PUBLIC ) {
+		if ( !$revision instanceof Revision ) {
+			return '';
+		}
+		if ( defined( 'MW_SUPPORTS_CONTENTHANDLER' ) ) {
+			$content = $revision->getContent( $audience );
+			$result = $content instanceof TextContent ? $content->getNativeData() : $content->getTextForSearchIndex();
+		} else {
+			// For MediaWiki without contenthandler support (< 1.21)
+			$result = $revision->getText();
+		}
+		return $result;
+	}
+
 }
