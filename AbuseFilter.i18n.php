@@ -1781,6 +1781,7 @@ $messages['arc'] = array(
 	'abusefilter-list-options-submit' => 'ܚܘܕܬܐ',
 	'abusefilter-tools-reautoconfirm-user' => 'ܡܦܠܚܢܐ:',
 	'abusefilter-edit-subtitle' => 'ܫܚܠܦ ܡܨܦܝܢܝܬܐ $1',
+	'abusefilter-edit-status-label' => 'ܚܒܝܫܘܬ ܡܢܝܢܐ',
 	'abusefilter-edit-new' => 'ܡܨܦܝܢܝܬܐ ܚܕܬܐ',
 	'abusefilter-edit-save' => 'ܠܒܘܟ ܡܨܦܝܢܝܬܐ',
 	'abusefilter-edit-id' => 'ܗܝܝܘܬܐ ܕܡܨܦܝܢܝܬܐ:',
@@ -1837,7 +1838,7 @@ $messages['arc'] = array(
 	'abusefilter-topnav-home' => 'ܒܝܬܐ',
 	'abusefilter-topnav-examine' => 'ܒܚܘܪ ܫܘܚܠܦ̈ܐ ܕܕܥܒܪ',
 	'abusefilter-topnav-import' => 'ܡܥܠܢܘܬܐ ܕܡܨܦܝܢܝܬܐ',
-	'abusefilter-diff-version' => 'ܨܚܚܐ ܡܢ $1 ܒܝܕ $2', # Fuzzy
+	'abusefilter-diff-version' => 'ܨܚܚܐ ܡܢ $1 {{GENDER:$3|ܒܝܕ}} $2',
 	'abusefilter-diff-info' => 'ܝܕ̈ܥܬܐ ܪ̈ܫܝܬܐ',
 	'abusefilter-diff-pattern' => 'ܬܢܘ̈ܝ ܕܡܨܦܝܢܝܬܐ',
 	'abusefilter-import-submit' => 'ܡܥܠܢܘܬܐ ܕܓܠܝܬ̈ܐ',
@@ -28171,6 +28172,7 @@ Copie da caixa de texto que aparece, coloque nesta caixa de texto e depois cliqu
  * @author MetalBrasil
  * @author Pedroca cerebral
  * @author Rafael Vargas
+ * @author TheGabrielZaum
  * @author 555
  */
 $messages['pt-br'] = array(
@@ -28533,7 +28535,7 @@ Por favor, verifique-as cuidadosamente e clique "confirmar" para confirmar a sua
 	'abusefilter-revert-success' => 'Reverteu todas as alterações feitas pelo filtro de abusos devido ao [[Special:AbuseFilter/$1|filtro $1]].',
 	'abusefilter-revert-reason' => 'Reversão automática de todas as alterações feitas pelo filtro de abusos devido ao filtro $1.
 Motivo dado: $2',
-	'abusefilter-revert-reasonfield' => 'Motivo da reversão:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Motivo:',
 	'abusefilter-test' => 'Testar um filtro nas edições anteriores',
 	'abusefilter-test-intro' => 'Esta página permite-lhe verificar o filtro introduzido na caixa abaixo {{PLURAL:$1|na última alteração|nas últimas $1 alterações}}.
 Para carregar um filtro existente, insira o ID do filtro na caixa abaixo da caixa de edição, e clique o botão "Carregar".',
@@ -28579,7 +28581,7 @@ Para detalhes completos, ver [[Special:AbuseFilter/history|a lista]] de alteraç
 	'abusefilter-log-noresults' => 'Nenhum resultado.',
 	'abusefilter-diff-title' => 'Diferenças entre versões',
 	'abusefilter-diff-item' => 'Entrada',
-	'abusefilter-diff-version' => 'Versão de $1 por $2', # Fuzzy
+	'abusefilter-diff-version' => 'Versão de $1 {{GENDER:$3|por}} $2',
 	'abusefilter-diff-info' => 'Informações básicas',
 	'abusefilter-diff-pattern' => 'Condições do filtro',
 	'abusefilter-diff-invalid' => 'Não foi possível obter as versões requeridas',
@@ -36660,6 +36662,8 @@ $messages['uk'] = array(
 	'abusefilter-edit-builder-vars-new-html' => 'Проаналізований HTML-код нової версії',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Рівень захисту сторінки від редагувань',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Рівень захисту сторінки від перейменувань',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Захист сторінки від створення',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'Захист від завантаження файлу',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Текст старої сторінки, позбавлений розмітки',
 	'abusefilter-edit-builder-vars-old-links' => 'Посилання на сторінці перед редагуванням',
 	'abusefilter-edit-builder-vars-old-html' => 'Вікітекст старої сторінки, перетворений в HTML',
@@ -36771,7 +36775,7 @@ $messages['uk'] = array(
 	'abusefilter-log-noresults' => 'Немає результатів',
 	'abusefilter-diff-title' => 'Різниця між версіями',
 	'abusefilter-diff-item' => 'Елемент',
-	'abusefilter-diff-version' => 'Версія від $1, $2', # Fuzzy
+	'abusefilter-diff-version' => 'Версія {{GENDER:$3|від}} $1, $2',
 	'abusefilter-diff-info' => 'Основні відомості',
 	'abusefilter-diff-pattern' => 'Умови фільтрації',
 	'abusefilter-diff-invalid' => 'Не вдається отримати запитані версії',
