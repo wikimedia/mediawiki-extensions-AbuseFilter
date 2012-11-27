@@ -301,7 +301,7 @@ $specialPageAliases['nb'] = array(
 	'AbuseFilter' => array( 'Misbruksfilter' ),
 );
 
-/** Nedersaksisch (Nedersaksisch) */
+/** Nedersaksies (Nedersaksies) */
 $specialPageAliases['nds-nl'] = array(
 	'AbuseLog' => array( 'Misbruuklogboek' ),
 	'AbuseFilter' => array( 'Misbruukfilter' ),

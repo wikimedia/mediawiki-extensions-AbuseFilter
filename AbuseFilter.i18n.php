@@ -4003,6 +4003,7 @@ $messages['be-tarask'] = array(
 
 /** Bulgarian (български)
  * @author DCLXVI
+ * @author Simona
  * @author Spiritia
  * @author Stanqo
  * @author Turin
@@ -4082,6 +4083,9 @@ $messages['bg'] = array(
 	'abusefilter-log-linkoncontribs' => 'Дневник на злоупотребите',
 	'abusefilter-log-linkoncontribs-text' => 'Дневник на злоупотребите за този потребител',
 	'abusefilter-log-hidden' => '(скрит запис)',
+	'abusefilter-log-hidden-implicit' => '(скрит, защото редакцията е изтрита)',
+	'abusefilter-log-cannot-see-details' => '
+Вие нямате разрешение да видите подробности за това вписване.',
 	'abusefilter-log-details-hidden' => 'Не можете да прегледате детайлите за този запис, защото той е непубличен.',
 	'abusefilter-log-hide-legend' => 'Скриване на записа в дневника',
 	'abusefilter-log-hide-id' => 'Идентификатор на запис от дневника:',
@@ -4114,6 +4118,7 @@ $messages['bg'] = array(
 	'abusefilter-list-options-deleted-only' => 'Показване само на изтритите филтри',
 	'abusefilter-list-options-deleted-hide' => 'Скриване на изтритите филтри',
 	'abusefilter-list-options-deleted-show' => 'Включване на изтритите филтри',
+	'abusefilter-list-options-scope-local' => 'Местни уики',
 	'abusefilter-list-options-disabled' => 'Изключени филтри:',
 	'abusefilter-list-options-hidedisabled' => 'Скриване на изключените филтри',
 	'abusefilter-list-options-submit' => 'Обновяване',
@@ -4127,6 +4132,7 @@ $messages['bg'] = array(
 	'abusefilter-reautoconfirm-done' => 'Статутът на автоматично потвърден потребител беше възстановен',
 	'abusefilter-status' => 'От {{PLURAL:$1|последното едно действие|последните $1 действия}}, $2 ($3%) {{PLURAL:$2|достигна|достигнаха}} условната граница от $4. $5 ($6%) от тях {{PLURAL:$5|съвпада|съвпадат}} с някой от текущо включените филтри.',
 	'abusefilter-edit-subtitle' => 'Редактиране на филтър $1',
+	'abusefilter-edit-subtitle-new' => 'Създава филтър',
 	'abusefilter-edit-oldwarning' => '<strong>Редактирате остаряла версия на този филтър. Посочените статистики са за последната версия на филтъра. Ако съхраните промените си, ще отмените всички промени, направени след версията, която редактирате.</strong> &bull; [[Special:AbuseFilter/history/$2|Връщане към историята на филтъра]]',
 	'abusefilter-edit-status-label' => 'Статистики:',
 	'abusefilter-edit-status' => 'От {{PLURAL:$1|последното едно действие|последните $1 действия}}, този филтър съвпадна с $2 от тях ($3%).
@@ -4272,6 +4278,7 @@ $messages['bg'] = array(
 	'abusefilter-edit-builder-vars-new-html' => 'Разпознат HTML код на новата редакция',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Ниво на защита срещу редактиране на страницата',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Ниво на защита срещу местене на страницата',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Създай защита на страницата.',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Стар текст на страницата, без форматиране',
 	'abusefilter-edit-builder-vars-old-links' => 'Препратки в страницата преди редакцията',
 	'abusefilter-edit-builder-vars-old-html' => 'Стар уикитекст, разпознат като HTML код',
@@ -10337,6 +10344,7 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Dalba
  * @author Ebraminio
  * @author Erdemaslancan
  * @author Hooshmand.hasannia
@@ -10355,8 +10363,8 @@ $messages['fa'] = array(
 	'abusefilter' => 'پیکربندی پالایهٔ خرابکاری',
 	'abuselog' => 'سیاههٔ خرابکاری',
 	'abusefilter-intro' => 'به صفحهٔ مدیریت پالایهٔ خرابکاری خوش‌آمدید.
-پالایهٔ خرابکاری دستگاهی نرم‌افزاری برای اعمال اکتشافات خودکار روی تمامی اعمال است.
-این صفحه تمام پالایه‌ها را فهرست و امکان تغییر آن‌ها را فراهم می‌کند.',
+پالایهٔ خرابکاری سازوکاری نرم‌افزاری برای اعمال اکتشافات خودکار روی تمامی اعمال است.
+این صفحه تمام پالایه‌های تعریف‌شده را فهرست و امکان تغییر آن‌ها را فراهم می‌کند.',
 	'abusefilter-mustbeeditor' => 'به دلایل امنیتی تنها کاربران دارای دسترسی تغییر پالایه‌های خرابکاری اجازهٔ استفاده از این واسط را دارند.',
 	'abusefilter-warning' => "'''اخطار''': این کار به طور خودکار خطرناک تشخیص داده‌شده‌است.
 ویرایش‌های غیرسازنده به سرعت واگردانی خواهند شد،
@@ -10486,7 +10494,7 @@ $messages['fa'] = array(
 	'abusefilter-reautoconfirm-none' => 'وضعیت تأییدشده {{GENDER:$1|خود|خود|خود}} را از دست نداده‌است.',
 	'abusefilter-reautoconfirm-notallowed' => 'شما اجازه ندارید حالت تأییدشده را بازگردانید.',
 	'abusefilter-reautoconfirm-done' => 'وضعیت تأییدشدهٔ حساب بازگردانده شد.',
-	'abusefilter-status' => 'از آخرین $1 {{PLURAL:$1|عمل|عمل}}، $2 ($3٪) به ظرفیت شرایط $4 {{PLURAL:$2|رسید|رسیدند}}، و $5 ($6٪) با یکی از پالایه‌هایی که در حال حاضر فعال است مطابقت {{PLURAL:$5|داشت|داشتند}}.',
+	'abusefilter-status' => 'از میان $1 {{PLURAL:$1|عمل|عمل}} آخر، $2 مورد ($3٪) به ظرفیت شرایط $4 {{PLURAL:$2|رسید|رسیدند}}، و $5 مورد ($6٪) با یکی از پالایه‌هایی که در حال حاضر فعال است مطابقت {{PLURAL:$5|داشت|داشتند}}.',
 	'abusefilter-edit-subtitle' => 'ویرایش پالایهٔ $1',
 	'abusefilter-edit-subtitle-new' => 'ساختن پالایه',
 	'abusefilter-edit-oldwarning' => '<strong>شما مشغول ویرایش کردن بر روی نسخهٔ قدیمی از پالایه هستید.
@@ -22455,6 +22463,7 @@ $messages['mn'] = array(
  * @author Htt
  * @author Mahitgar
  * @author V.narsikar
+ * @author Ydyashad
  */
 $messages['mr'] = array(
 	'abusefilter-desc' => 'संपादन गाळणी सर्व संपादनांचा सांगितल्याप्रमाणे स्वयंशोध घेते.',
@@ -22485,7 +22494,7 @@ $messages['mr'] = array(
 	'abusefilter-log-search' => 'अपवापर क्रमलेख शोधा',
 	'abusefilter-log-search-user' => 'सदस्य:',
 	'abusefilter-log-search-title' => 'शीर्षक:',
-	'abusefilter-log-search-wiki' => 'विकी:',
+	'abusefilter-log-search-wiki' => 'विकि:',
 	'abusefilter-log-search-submit' => 'शोधा',
 	'abusefilter-log-entry' => '$1: $2ने अपवापर गाळणी उद्युक्त केली, ज्याने $4 वर "$3" क्रिया केली.
 केलेली कार्यवाही: $5;
