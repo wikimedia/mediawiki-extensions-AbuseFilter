@@ -4083,9 +4083,9 @@ $messages['bg'] = array(
 	'abusefilter-log-linkoncontribs' => 'Дневник на злоупотребите',
 	'abusefilter-log-linkoncontribs-text' => 'Дневник на злоупотребите за този потребител',
 	'abusefilter-log-hidden' => '(скрит запис)',
-	'abusefilter-log-hidden-implicit' => '(скрит, защото редакцията е изтрита)',
+	'abusefilter-log-hidden-implicit' => '(скрито заради изтрита версия)',
 	'abusefilter-log-cannot-see-details' => '
-Вие нямате разрешение да видите подробности за това вписване.',
+Вие нямате права за разглеждане на подробности за този запис.',
 	'abusefilter-log-details-hidden' => 'Не можете да прегледате детайлите за този запис, защото той е непубличен.',
 	'abusefilter-log-hide-legend' => 'Скриване на записа в дневника',
 	'abusefilter-log-hide-id' => 'Идентификатор на запис от дневника:',
@@ -4118,7 +4118,7 @@ $messages['bg'] = array(
 	'abusefilter-list-options-deleted-only' => 'Показване само на изтритите филтри',
 	'abusefilter-list-options-deleted-hide' => 'Скриване на изтритите филтри',
 	'abusefilter-list-options-deleted-show' => 'Включване на изтритите филтри',
-	'abusefilter-list-options-scope-local' => 'Местни уики',
+	'abusefilter-list-options-scope-local' => 'Локално уики',
 	'abusefilter-list-options-disabled' => 'Изключени филтри:',
 	'abusefilter-list-options-hidedisabled' => 'Скриване на изключените филтри',
 	'abusefilter-list-options-submit' => 'Обновяване',
@@ -4132,7 +4132,7 @@ $messages['bg'] = array(
 	'abusefilter-reautoconfirm-done' => 'Статутът на автоматично потвърден потребител беше възстановен',
 	'abusefilter-status' => 'От {{PLURAL:$1|последното едно действие|последните $1 действия}}, $2 ($3%) {{PLURAL:$2|достигна|достигнаха}} условната граница от $4. $5 ($6%) от тях {{PLURAL:$5|съвпада|съвпадат}} с някой от текущо включените филтри.',
 	'abusefilter-edit-subtitle' => 'Редактиране на филтър $1',
-	'abusefilter-edit-subtitle-new' => 'Създава филтър',
+	'abusefilter-edit-subtitle-new' => 'Създаване на филтър',
 	'abusefilter-edit-oldwarning' => '<strong>Редактирате остаряла версия на този филтър. Посочените статистики са за последната версия на филтъра. Ако съхраните промените си, ще отмените всички промени, направени след версията, която редактирате.</strong> &bull; [[Special:AbuseFilter/history/$2|Връщане към историята на филтъра]]',
 	'abusefilter-edit-status-label' => 'Статистики:',
 	'abusefilter-edit-status' => 'От {{PLURAL:$1|последното едно действие|последните $1 действия}}, този филтър съвпадна с $2 от тях ($3%).
@@ -4278,7 +4278,7 @@ $messages['bg'] = array(
 	'abusefilter-edit-builder-vars-new-html' => 'Разпознат HTML код на новата редакция',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Ниво на защита срещу редактиране на страницата',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Ниво на защита срещу местене на страницата',
-	'abusefilter-edit-builder-vars-restrictions-create' => 'Създай защита на страницата.',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Създаване на защита за страницата',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Стар текст на страницата, без форматиране',
 	'abusefilter-edit-builder-vars-old-links' => 'Препратки в страницата преди редакцията',
 	'abusefilter-edit-builder-vars-old-html' => 'Стар уикитекст, разпознат като HTML код',
@@ -10779,6 +10779,7 @@ $messages['fa'] = array(
  * @author Cimon Avaro
  * @author Crt
  * @author Ilaiho
+ * @author Nedergard
  * @author Nike
  * @author Olli
  * @author Pxos
@@ -10845,6 +10846,7 @@ Säännön kuvaus: $1',
 	'abusefilter-log-search-user' => 'Käyttäjä:',
 	'abusefilter-log-search-filter' => 'Tunniste',
 	'abusefilter-log-search-title' => 'Otsikko:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Etsi',
 	'abusefilter-log-entry' => '$1: $2 laukaisi väärinkäyttösuodattimen käyttäessään toimintoa ”$3” osoitteessa $4.
 Laukaistut toiminnot: $5
@@ -17482,7 +17484,7 @@ $messages['ja'] = array(
 	'abusefilter-management' => '不正利用フィルター管理',
 	'abusefilter-list' => 'すべてのフィルター',
 	'abusefilter-list-id' => 'フィルターID',
-	'abusefilter-list-status' => '状況',
+	'abusefilter-list-status' => '状態',
 	'abusefilter-list-public' => '公開解説',
 	'abusefilter-list-consequences' => '対処操作',
 	'abusefilter-list-visibility' => '閲覧レベル',
