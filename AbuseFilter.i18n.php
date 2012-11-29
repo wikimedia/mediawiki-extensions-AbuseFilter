@@ -2708,7 +2708,7 @@ Süzgəcin təsviri: $7 ($8)',
 	'abusefilter-diff-pattern' => 'Süzgəcləmə şərtləri',
 );
 
-/** تورکجه (تورکجه)
+/** South Azerbaijani (تورکجه)
  * @author Amir a57
  * @author E THP
  * @author Ebrahimi-amir
@@ -18533,7 +18533,7 @@ $messages['ka'] = array(
 	'abusefilter-log-noresults' => 'შედეგები არაა',
 	'abusefilter-diff-title' => 'განსხვავება ვერსიებს შორის',
 	'abusefilter-diff-item' => 'ელემენტი',
-	'abusefilter-diff-version' => 'ვერსია $1, $2', # Fuzzy
+	'abusefilter-diff-version' => 'ვერსია $1-დან $2-ის {{GENDER:$3|მიერ}}',
 	'abusefilter-diff-info' => 'ძირითადი ინფორმაცია',
 	'abusefilter-diff-pattern' => 'ფილტრის პირობები',
 	'abusefilter-diff-invalid' => 'ვერ მიიღებთ მოთხოვნილ ვერსიას',
@@ -26329,6 +26329,13 @@ $messages['pam'] = array(
 	'abusefilter-log-linkoncontribs' => 'tala ning pamagasamantala',
 	'abusefilter-log-linkoncontribs-text' => 'Pamagsamantalang tala nining talagamit',
 	'abusefilter-log-hidden' => '(makasalikot a pepalub)',
+);
+
+/** Picard (Picard)
+ * @author Geoleplubo
+ */
+$messages['pcd'] = array(
+	'abuselog' => 'Jornal des filtes anti-abus',
 );
 
 /** Deitsch (Deitsch)
@@ -37854,7 +37861,7 @@ Lý do: $2',
 	'abusefilter-examine-legend' => 'Chọn thay đổi',
 	'abusefilter-examine-diff' => 'Địa chỉ URL sai khác:',
 	'abusefilter-examine-user' => 'Thành viên:',
-	'abusefilter-examine-title' => 'Tiêu đề trang:',
+	'abusefilter-examine-title' => 'Tên trang:',
 	'abusefilter-examine-submit' => 'Tìm kiếm',
 	'abusefilter-examine-vars' => 'Biến tạo ra từ thay đổi này',
 	'abusefilter-examine-test' => 'Kiểm thử thay đổi này với một bộ lọc',
