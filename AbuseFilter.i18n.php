@@ -10785,6 +10785,7 @@ $messages['fa'] = array(
  * @author Pxos
  * @author Silvonen
  * @author Str4nd
+ * @author Stryn
  * @author Vililikku
  * @author Zache
  * @author ZeiP
@@ -10844,7 +10845,7 @@ Säännön kuvaus: $1',
 	'abusefilter-log-summary' => 'Tämä loki näyttää luettelon kaikista suodattimiin tarttuneista toiminnoista.',
 	'abusefilter-log-search' => 'Etsi väärinkäyttölokista',
 	'abusefilter-log-search-user' => 'Käyttäjä:',
-	'abusefilter-log-search-filter' => 'Tunniste',
+	'abusefilter-log-search-filter' => 'Tunniste:',
 	'abusefilter-log-search-title' => 'Otsikko:',
 	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Etsi',
@@ -11075,6 +11076,7 @@ Merkintöjen tulisi olla lyhyitä ja ilman erikoismerkkejä.',
 	'abusefilter-edit-builder-vars-new-html' => 'Jäsennetty uuden version HTML-lähdekoodi',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Muokkaa sivun suojausta',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Sivun siirtosuojauksen taso',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Sivun luontisuojaus',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Sivun vanhempi teksti, riisuttuna koodimerkinnöistä',
 	'abusefilter-edit-builder-vars-old-links' => 'Linkit sivulla ennen muokkausta',
 	'abusefilter-edit-builder-vars-old-html' => 'Vanha sivun wikiteksti jäsennettynä HTML:ksi',
@@ -14057,11 +14059,11 @@ Kratak opis pravila sprječavanja zloporaba koji se podudara s vašim uređivanj
 pa je stoga onemogućena.
 Ako vjerujete da je uređivanje smisleno, molimo kontaktirajte administratora, i obavijestite ga o tome što ste pokušali učiniti.
 Kratak opis pravila sprječavanja zlouporabe koji se podudara s vašim uređivanjem je: $1',
-	'abusefilter-blocked-display' => 'Ova akcija je automatski identificirana kao štetna,
+	'abusefilter-blocked-display' => 'Ova je akcija automatski identificirana kao štetna,
 stoga ste spriječeni u njenom izvršavanju.
 Nadalje, kako bi zaštitili {{SITENAME}}, vaš suradnički račun i sve povezane IP adrese su blokirane.
-Ukoliko se ovo dogodilo pogreškom, molimo obratite se administratoru.
-Kratak opis pravila sprječavanja zlouporabe koji se podudara s vašim uređivanjem je: $1',
+Ako se ovo dogodilo pogrješkom, molimo obratite se administratoru.
+Kratak opis pravila sprječavanja zloporabe koji se podudara s vašim uređivanjem je: $1',
 	'abusefilter-degrouped' => 'Ova akcija je automatski identificirana kao štetna.
 Slijedom toga, onemogućena je, budući da postoji sumnja da je vaš račun kompromitiran (ukraden), sva prava su povučena.
 Ukoliko mislite da je ovo pogrješka, molimo Vas da kontaktirate birokrata s objašnjenjem ove akcije, a vaša prava mogu biti vraćena.
@@ -16660,6 +16662,7 @@ $messages['io'] = array(
 );
 
 /** Icelandic (íslenska)
+ * @author S.Örvarr.S
  * @author Snævar
  */
 $messages['is'] = array(
@@ -16717,6 +16720,7 @@ Lýsing síunnar: $1',
 	'abusefilter-log-search-user' => 'Notandi:',
 	'abusefilter-log-search-filter' => 'Síu einkenni:',
 	'abusefilter-log-search-title' => 'Titill:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Leita',
 	'abusefilter-log-entry' => '$1: $2 hrundi af stað misnotkunar síu, með breytingunni "$3" á $4.
 Aðgerðir: $5;
@@ -16738,6 +16742,8 @@ Lýsing síunnar: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'misnotkunar skrá',
 	'abusefilter-log-linkoncontribs-text' => 'misnotkunar skrá notandans',
 	'abusefilter-log-hidden' => '(falin færsla)',
+	'abusefilter-log-hidden-implicit' => '(falið vegna þess að breytingum hefur verið eytt)',
+	'abusefilter-log-cannot-see-details' => 'Þú hefur ekki leyfi til þess að sjá atriði þessarar innfærslu.',
 	'abusefilter-log-details-hidden' => 'Þú getur ekki skoðað nánari upplýsingar um þessa færslu því hún er falin.',
 	'abusefilter-log-hide-legend' => 'Fela færslu',
 	'abusefilter-log-hide-id' => 'Auðkenni færslunnar:',
@@ -16745,6 +16751,7 @@ Lýsing síunnar: $7 ($8)',
 	'abusefilter-log-hide-reason' => 'Ástæða:',
 	'abusefilter-log-hide-forbidden' => 'Þú hefur engin réttindi til að fela færslur í misnotkunar skránni',
 	'abusefilter-logentry-suppress' => 'faldi "[[$1]]"',
+	'abusefilter-logentry-unsuppress' => 'óhaldi „[[$1]]“',
 	'abusefilter-management' => 'Stjórn misnotkunar síunnar',
 	'abusefilter-list' => 'Allar síur',
 	'abusefilter-list-id' => 'Einkenni',
@@ -16756,6 +16763,7 @@ Lýsing síunnar: $7 ($8)',
 	'abusefilter-list-details' => 'Nánar',
 	'abusefilter-list-limit' => 'Fjöldi færslna á síðu:',
 	'abusefilter-list-lastmodified' => 'Síðast breytt',
+	'abusefilter-list-group' => 'Síuhópur',
 	'abusefilter-hidden' => 'Falið',
 	'abusefilter-unhidden' => 'Sýnileg öllum',
 	'abusefilter-enabled' => 'Virk',
@@ -16769,6 +16777,8 @@ Lýsing síunnar: $7 ($8)',
 	'abusefilter-list-options-deleted-only' => 'Sýna eingöngu eyddar síur',
 	'abusefilter-list-options-deleted-hide' => 'Fela eyddar síur',
 	'abusefilter-list-options-deleted-show' => 'Birta eyddar síur',
+	'abusefilter-list-options-scope' => 'Sýna síur frá:',
+	'abusefilter-list-options-scope-local' => 'Staðar-wiki',
 	'abusefilter-list-options-disabled' => 'Óvirkar síur:',
 	'abusefilter-list-options-hidedisabled' => 'Fela óvirkar síur',
 	'abusefilter-list-options-submit' => 'Uppfæra',
@@ -16777,6 +16787,7 @@ Lýsing síunnar: $7 ($8)',
 	'abusefilter-tools-reautoconfirm-user' => 'Notandi:',
 	'abusefilter-status' => 'Yfir síðustu $1 {{PLURAL:$1|aðgerð|aðgerðir}}, $2 ($3%) {{PLURAL:$2|hefur|hafa}} náð skilyrðunum $4, og $5 ($6%) {{PLURAL:$5|hefur|hafa}} passað við eina af þeim síum sem eru virkar.',
 	'abusefilter-edit-subtitle' => 'Breyti síu $1',
+	'abusefilter-edit-subtitle-new' => 'Býr til síu',
 	'abusefilter-edit-oldwarning' => '<strong>ATH: Þú ert að breyta gamalli útgáfu þessarar síu.
 Sú tölfræði sem vitnað er í er fyrir nýjustu útgáfu síunnar.
 Ef þú vistar breytingarnar munu allar breytingar sem gerðar hafa verið á henni frá þeirri útgáfu vera fjarlægðar ef þú vistar.</strong>
@@ -16791,6 +16802,7 @@ Hún passaði við fleiri en $1% breytinga.",
 	'abusefilter-edit-id' => 'Síu einkenni:',
 	'abusefilter-edit-description' => "Lýsing:
 :''(birtist öllum)''",
+	'abusefilter-edit-group' => 'Síuhópur:',
 	'abusefilter-edit-flags' => 'Merkingar:',
 	'abusefilter-edit-enabled' => 'Virkja þessa síu',
 	'abusefilter-edit-deleted' => 'Merkja sem eydda',
@@ -16828,9 +16840,12 @@ Hún passaði við fleiri en $1% breytinga.",
 Frálög þáttarans eru: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Þú getur ekki breytt þessari síu, því hún inniheldur eina eða fleiri takmarkandi afleiðingar.
 Vinsamlegast spurðu notanda sem hefur réttindi að bæta við takmarkandi afleiðingum að gera breytinguna fyrir þig.',
+	'abusefilter-edit-viewhistory' => 'Skoða breytingaskrá þessarar síu',
+	'abusefilter-edit-history' => 'Breytingaskrá:',
 	'abusefilter-edit-check' => 'Athuga málskipan',
 	'abusefilter-edit-badfilter' => 'Sían sem þú tilgreindir er ekki til',
 	'abusefilter-edit-revert' => 'Taka aftur breytingar sem þessi sía hefur gert',
+	'abusefilter-edit-tools' => 'Verkfæri:',
 	'abusefilter-edit-test-link' => 'Prófa síuna á síðustu breytingum',
 	'abusefilter-edit-export' => 'Flytja síuna á annan wiki',
 	'abusefilter-edit-syntaxok' => 'Engar málskipunar villur fundust.',
@@ -16839,10 +16854,13 @@ Vinsamlegast spurðu notanda sem hefur réttindi að bæta við takmarkandi afle
 Tögin eiga að vera stutt og þau mega ekki innihalda sérstök tákn.',
 	'abusefilter-edit-notallowed' => 'Þú getur ekki breytt eða stofnað misnotkunar síu.',
 	'abusefilter-edit-builder-select' => 'Veldu möguleika til að bæta honum við bendilinn.',
+	'abusefilter-edit-builder-group-op-arithmetic' => 'Reikningsaðgerðir',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Plúsa (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Mínusa (-)',
 	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Margfalda (*)',
 	'abusefilter-edit-builder-op-arithmetic-divide' => 'Deila (/)',
+	'abusefilter-edit-builder-op-arithmetic-modulo' => 'Leif (%)',
+	'abusefilter-edit-builder-op-arithmetic-pow' => 'Veldi (**)',
 	'abusefilter-edit-builder-op-comparison-equal' => 'Jafnt og (==)',
 	'abusefilter-edit-builder-op-comparison-notequal' => 'Ekki jafnt og (!=)',
 	'abusefilter-edit-builder-op-comparison-lt' => 'Minna en (<)',
@@ -16852,7 +16870,17 @@ Tögin eiga að vera stutt og þau mega ekki innihalda sérstök tákn.',
 	'abusefilter-edit-builder-op-bool-not' => 'Ekki (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'Og (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Eða (|)',
+	'abusefilter-edit-builder-group-misc' => 'Ýmislegt',
+	'abusefilter-edit-builder-group-funcs' => 'Föll',
+	'abusefilter-edit-builder-funcs-length' => 'Strengjalengd (length)',
+	'abusefilter-edit-builder-group-vars' => 'Breytur',
+	'abusefilter-edit-builder-vars-timestamp' => 'Unix-tímastimpill breytingar',
 	'abusefilter-edit-builder-vars-action' => 'Aðgerð',
+	'abusefilter-edit-builder-vars-addedlines' => 'Línum viðbætt í breytingu',
+	'abusefilter-edit-builder-vars-newsize' => 'Ný skrárstærð',
+	'abusefilter-edit-builder-vars-oldsize' => 'Eldri skrárstærð',
+	'abusefilter-edit-builder-vars-removedlines' => 'Línur fjarlægðar í breytingu',
+	'abusefilter-edit-builder-vars-summary' => 'Breytingarsamantekt/ástæða',
 	'abusefilter-filter-log' => 'Nýlegar breytingar síunnar',
 	'abusefilter-history-foruser' => 'Breytingar eftir $1',
 	'abusefilter-history-hidden' => 'Falið',
@@ -16867,7 +16895,9 @@ Tögin eiga að vera stutt og þau mega ekki innihalda sérstök tákn.',
 	'abusefilter-history-actions' => 'Aðgerðir',
 	'abusefilter-history-deleted' => 'Eytt',
 	'abusefilter-history-filterid' => 'Sía',
+	'abusefilter-history-select-legend' => 'Endurskilgreina leit',
 	'abusefilter-history-select-user' => 'Notandi:',
+	'abusefilter-history-select-submit' => 'Endurskilgreina',
 	'abusefilter-history-diff' => 'Breytingar',
 	'abusefilter-history-error-hidden' => 'Sían sem þú óskaðir eftir er falin og þú getur ekki skoðað breytingarsögu hennar.',
 	'abusefilter-exception-unrecognisedtoken' => 'Óþekktur tóki "$2" á staf $1',
@@ -16938,7 +16968,7 @@ Til þess að prófa síu sem til er fyrir, settu auðkenni hennar í reitinn h�
 	'abusefilter-log-entry-modify' => 'breytti $1 ($2)',
 	'abusefilter-log-noresults' => 'Engar niðurstöður',
 	'abusefilter-diff-title' => 'Munur milli útgáfa',
-	'abusefilter-diff-version' => 'Útgáfa frá $1 eftir $2', # Fuzzy
+	'abusefilter-diff-version' => 'Útgáfa frá $1 {{GENDER:$3|eftir}} $2',
 	'abusefilter-diff-info' => 'Grunnupplýsingar',
 	'abusefilter-diff-invalid' => 'Mistókst að sækja þær útgáfur sem þú óskaðir eftir',
 	'abusefilter-diff-backhistory' => 'Aftur í breytingarskrá síunnar',
@@ -27758,6 +27788,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (português)
+ * @author Bonifácio
  * @author Giro720
  * @author Hamilton Abreu
  * @author Lijealso
@@ -27888,6 +27919,7 @@ entradas do registo de abusos.',
 	'abusefilter-list-options-deleted-only' => 'Mostrar apenas filtros eliminados',
 	'abusefilter-list-options-deleted-hide' => 'Ocultar filtros eliminados',
 	'abusefilter-list-options-deleted-show' => 'Incluir filtros eliminados',
+	'abusefilter-list-options-scope' => 'Mostrar os filtros de:',
 	'abusefilter-list-options-disabled' => 'Filtros desactivados:',
 	'abusefilter-list-options-hidedisabled' => 'Ocultar filtros desactivados',
 	'abusefilter-list-options-submit' => 'Atualizar',
@@ -33770,6 +33802,8 @@ missbrukslogg-poster.',
 	'abusefilter-edit-builder-vars-new-html' => 'Parsad HTML-källkod för den nya versionen',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Skyddsnivå för redigering av sidan',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Skyddsnivå för flytt av sidan',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Skapa skydd för den här sidan',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'Ladda upp skydd för den här filen',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Gammal sidtext, med all kodning borttagen',
 	'abusefilter-edit-builder-vars-old-links' => 'Länkar i denna sida, före redigeringen',
 	'abusefilter-edit-builder-vars-old-html' => 'Gammal sidwikitext, parsad till HTML',
