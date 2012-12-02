@@ -18884,10 +18884,10 @@ $messages['ko'] = array(
 	'abusefilter-log-search-title' => '제목:',
 	'abusefilter-log-search-wiki' => '위키:',
 	'abusefilter-log-search-submit' => '찾기',
-	'abusefilter-log-entry' => '$1: $2 사용자가 $4에서 "$3"하는 중 부정 행위 방지 필터 규칙을 위반하였습니다.
+	'abusefilter-log-entry' => '$1: $2 사용자가 $4에서 "$3"하는 중 부정 행위 방지 필터 규칙을 위반했습니다.
 조치: $5;
 필터 설명: $6',
-	'abusefilter-log-detailedentry-meta' => '$1: $2 사용자가 $5에서 "$4"하는 도중 $3을 위반하였습니다.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 사용자가 $5에서 "$4"하는 도중 $3을 위반했습니다.
 조치: $6;
 필터 설명: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => '공통 필터 $1',
@@ -19227,7 +19227,7 @@ $messages['ko'] = array(
 	'abusefilter-log-name' => '부정 행위 방지 필터 기록',
 	'abusefilter-log-header' => '이 기록은 필터가 바뀜 기록의 요약본을 보여 주고 있습니다.
 자세한 정보는 [[Special:AbuseFilter/history|필터의 최근 바뀜]]을 참조하십시오.',
-	'abusefilter-log-entry-modify' => '$1을 수정함 ($2)',
+	'abusefilter-log-entry-modify' => '사용자가 $1을 수정했습니다 ($2)',
 	'abusefilter-log-noresults' => '결과가 없습니다.',
 	'abusefilter-diff-title' => '버전 사이의 차이',
 	'abusefilter-diff-item' => '항목',
@@ -26476,6 +26476,7 @@ Aus roine Vorsischd hodmada oinischi Räschd voariwwagejend mol g'numme.
 	'abusefilter-log-search-user' => 'Benudza:',
 	'abusefilter-log-search-filter' => 'Filda-ID',
 	'abusefilter-log-search-title' => 'Tidl:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Suche',
 	'abusefilter-log-entry' => '$1: $2 hod midde Hondlung „$3“ uff „$4“ än Missbraisch-Filda ausglesd.
 Moßnoam vum Filda: „$5“;
@@ -26766,7 +26767,7 @@ Gugg druff un drigg doan uff „Bschdedische“, ums auszufiere.',
 	'abusefilter-revert-success' => "Du hoschd alli Agzione rigg'gängisch gmachd, wu vum Missbraisch-Filda noch [[Special:AbuseFilter/$1|Filda $1]] gmachd worre sin.",
 	'abusefilter-revert-reason' => 'Zriggsedze vun alle Agzione vunde Missbraisch-Filda weschem Filda $1.
 Oagewene Grund: $2',
-	'abusefilter-revert-reasonfield' => 'Grund fas Zriggsedze:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Bgrindung:',
 	'abusefilter-test' => "De Filda oan frijare B'aweidunge teschde",
 	'abusefilter-test-intro' => 'Midde Said kennen Filda oande ledschde $1 {{PLURAL: $1|Änarung|Änarunge}} iwabriefd werre.
 Umän Filda, wus schun gewe dud, zu laade, gibschd die Filda-ID une ins Feld oi un drigschd uff "Laade".',
@@ -26812,7 +26813,7 @@ Fa Näjares gugschd baide [[Special:AbuseFilter/history|Lischd]] vunde ledschde 
 	'abusefilter-log-noresults' => 'Kä Ergewnis',
 	'abusefilter-diff-title' => 'Unnerschied zwische de Versione',
 	'abusefilter-diff-item' => 'Oidrach',
-	'abusefilter-diff-version' => 'Version vum $1 vun $2', # Fuzzy
+	'abusefilter-diff-version' => 'Ausgab vum $1 {{GENDER:$3|vun}} $2',
 	'abusefilter-diff-info' => 'Grundleschendi Auskinfd',
 	'abusefilter-diff-pattern' => 'Fildareschle',
 	'abusefilter-diff-invalid' => 'Die gwinschd Version konn ned gfunne werre',

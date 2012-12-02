@@ -241,6 +241,12 @@ $specialPageAliases['ksh'] = array(
 	'AbuseFilter' => array( 'Meßbruchsfellter' ),
 );
 
+/** Cornish (kernowek) */
+$specialPageAliases['kw'] = array(
+	'AbuseLog' => array( 'CovnotenAbusyans' ),
+	'AbuseFilter' => array( 'SidhlaAbusyans' ),
+);
+
 /** Ladino (Ladino) */
 $specialPageAliases['lad'] = array(
 	'AbuseLog' => array( 'Rējistros_de_abuso' ),
