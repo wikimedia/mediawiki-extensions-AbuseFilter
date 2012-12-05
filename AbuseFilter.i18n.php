@@ -2787,7 +2787,7 @@ $messages['azb'] = array(
 	'abusefilter-log-detailslink' => 'اطراف‌لی',
 	'abusefilter-log-diff' => 'فرق',
 	'abusefilter-log-hidelink' => 'گؤرونمنی تنزیمله',
-	'abusefilter-log-details-legend' => 'ژورنالین‌داکی قئیدلر اطراف‌لی شکیلده', # Fuzzy
+	'abusefilter-log-details-legend' => 'جورنالین‌داکی قئیدلر اطراف‌لی شکیلده', # Fuzzy
 	'abusefilter-log-details-var' => 'دییشن',
 	'abusefilter-log-details-val' => 'اهمیتی',
 	'abusefilter-log-details-vars' => 'فالیت پارامئترلری',
@@ -10908,6 +10908,7 @@ Suodattimen kuvaus: $7 ($8)',
 	'abusefilter-list-options-deleted-hide' => 'Piilota poistetut suodattimet',
 	'abusefilter-list-options-deleted-show' => 'Sisällytä poistetut suodattimet',
 	'abusefilter-list-options-scope-local' => 'Paikallinen wiki',
+	'abusefilter-list-options-scope-global' => 'Järjestelmänlaajuiset säännöt',
 	'abusefilter-list-options-disabled' => 'Epäaktiiviset suodattimet:',
 	'abusefilter-list-options-hidedisabled' => 'Piilota epäaktiiviset suodattimet',
 	'abusefilter-list-options-submit' => 'Päivitä',
@@ -27789,6 +27790,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (português)
+ * @author Alchimista
  * @author Bonifácio
  * @author Giro720
  * @author Hamilton Abreu
@@ -27921,6 +27923,8 @@ entradas do registo de abusos.',
 	'abusefilter-list-options-deleted-hide' => 'Ocultar filtros eliminados',
 	'abusefilter-list-options-deleted-show' => 'Incluir filtros eliminados',
 	'abusefilter-list-options-scope' => 'Mostrar os filtros de:',
+	'abusefilter-list-options-scope-local' => 'Wiki local',
+	'abusefilter-list-options-scope-global' => 'Regras globais',
 	'abusefilter-list-options-disabled' => 'Filtros desactivados:',
 	'abusefilter-list-options-hidedisabled' => 'Ocultar filtros desactivados',
 	'abusefilter-list-options-submit' => 'Atualizar',
@@ -27955,7 +27959,7 @@ O filtro atingiu o limite de correspondência com mais de $1% de ações.",
 	'abusefilter-edit-enabled' => 'Activar este filtro',
 	'abusefilter-edit-deleted' => 'Marcar como eliminado',
 	'abusefilter-edit-hidden' => 'Ocultar detalhes deste filtro do visionamento público',
-	'abusefilter-edit-global' => 'Aplicar este filtro globalmente', # Fuzzy
+	'abusefilter-edit-global' => 'Filtro global',
 	'abusefilter-edit-rules' => 'Condições:',
 	'abusefilter-edit-notes' => "Notas:
 :''(privado)",
@@ -28156,7 +28160,7 @@ Por favor, verifique-as cuidadosamente e clique "confirmar" para confirmar a sua
 	'abusefilter-revert-success' => 'Reverteu todas as alterações feitas pelo filtro de abusos devido ao [[Special:AbuseFilter/$1|filtro $1]].',
 	'abusefilter-revert-reason' => 'Reversão automática de todas as alterações feitas pelo filtro de abusos devido ao filtro $1.
 Motivo dado: $2',
-	'abusefilter-revert-reasonfield' => 'Motivo da reversão:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Motivo:',
 	'abusefilter-test' => 'Testar um filtro nas edições anteriores',
 	'abusefilter-test-intro' => 'Esta página permite-lhe verificar o filtro introduzido na caixa abaixo {{PLURAL:$1|na última alteração|nas últimas $1 alterações}}.
 Para carregar um filtro existente, insira o ID do filtro na caixa abaixo da caixa de edição, e clique o botão "Carregar".',
