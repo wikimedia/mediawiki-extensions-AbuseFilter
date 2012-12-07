@@ -32184,10 +32184,12 @@ Nato skopirajte besedilo v prikazanem polju, prilepite ga v to polje in kliknite
 );
 
 /** Somali (Soomaaliga)
+ * @author Abshirdheere
  * @author Maax
  */
 $messages['so'] = array(
 	'abusefilter-log-search-submit' => 'Raadi',
+	'abusefilter-log-noactions' => 'Waxba',
 	'abusefilter-examine-submit' => 'Raadi',
 );
 
