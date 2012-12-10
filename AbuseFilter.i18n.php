@@ -3713,6 +3713,39 @@ Ini nakakaabot sa limit kan ipinag-aampad na sobra $1% kan aksyon.",
 	'abusefilter-edit-flags' => 'Mga bandera',
 	'abusefilter-edit-enabled' => 'Paandaron ining saraan',
 	'abusefilter-edit-deleted' => 'Markadong pinagpura na',
+	'abusefilter-edit-hidden' => 'Tagoon an mga detalye kaining saraan sa pampublikong pagtanaw',
+	'abusefilter-edit-global' => 'Pankinaban na saraan',
+	'abusefilter-edit-rules' => 'Mga Kondisyon:',
+	'abusefilter-edit-notes' => "Mga Giromdomon:
+:''(pribado)''",
+	'abusefilter-edit-lastmod' => 'Pinakahuring pagbabago kan saraan:',
+	'abusefilter-edit-lastmod-text' => '$1 ni $2',
+	'abusefilter-edit-hitcount' => 'Mga igo nin saraan:',
+	'abusefilter-edit-consequences' => 'Nagibong mga aksyon kunsoaring naipag-ampad',
+	'abusefilter-edit-action-warn' => 'Makiblit kaining mga aksyon matapos matawanan an paragamit nin sarong patanid',
+	'abusefilter-edit-action-disallow' => 'Mapugol sa paragamit na gigibohon an aksyon na pinaghahapot',
+	'abusefilter-edit-action-flag' => 'Ibandera an pagliliwat sa laog kan talaan nin abuso',
+	'abusefilter-edit-action-blockautopromote' => 'Minabawi sa estado kan awtomatikong pagkumpirma sa paragamit',
+	'abusefilter-edit-action-degroup' => 'Minapahale sa paragamit gikan sa gabos na grupo na igwang pribilihiyo',
+	'abusefilter-edit-action-block' => 'Kubkubon and paragamit asin/o IP na estada gikan sa pagliliwat',
+	'abusefilter-edit-action-throttle' => 'Minakiblit nin mga aksyon sana kun an paragamit nakatibaklo nin sarong limit sa rata',
+	'abusefilter-edit-action-rangeblock' => 'Kubkubon an /16 gangha gikan sa mga pinaggigikanan nin paragamit',
+	'abusefilter-edit-action-tag' => 'I-tag an pagliliwat para sa kadagdagan na pagrepaso',
+	'abusefilter-edit-throttle-count' => 'Numero kan mga aksyon na ipapasunod:',
+	'abusefilter-edit-throttle-period' => 'Peryodo nin panahon:',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|segundo|mga segundo}}',
+	'abusefilter-edit-warn-other' => 'Iba pang mensahe',
+	'abusefilter-edit-builder-vars-action' => 'An aksyon',
+	'abusefilter-edit-builder-vars-addedlines' => 'Mga linya na pinagdagdag sa pagliliwat',
+	'abusefilter-edit-builder-vars-delta' => 'Paghihira nin kasukulan sa pagliliwat',
+	'abusefilter-edit-builder-vars-diff' => 'Pinagkakasararoan kalaenan sa mga kaliwatan na pinaghimo sa paagi nin pagliliwat',
+	'abusefilter-edit-builder-vars-newsize' => 'Sukol kan baguhong pahina',
+	'abusefilter-edit-builder-vars-oldsize' => 'Lumaong sukol kan pahina',
+	'abusefilter-edit-builder-vars-removedlines' => 'Mga linyang pinagharale sa pagliliwat',
+	'abusefilter-edit-builder-vars-summary' => 'Sumaryo/rason nin pagliliwat',
+	'abusefilter-edit-builder-vars-article-id' => 'ID kan pahina',
+	'abusefilter-edit-builder-vars-article-ns' => 'Pangarang espasyo kan pahina',
+	'abusefilter-edit-builder-vars-article-text' => 'Titulo kan Pahina (mayong pangarang espasyo)',
 );
 
 /** Belarusian (беларуская)
@@ -19983,6 +20016,16 @@ $messages['ku-latn'] = array(
 	'abusefilter-topnav-home' => 'Mal',
 );
 
+/** Kirghiz (Кыргызча)
+ * @author Growingup
+ */
+$messages['ky'] = array(
+	'abusefilter-log-search-user' => 'Катышуучу:',
+	'abusefilter-log-search-submit' => 'Издөө',
+	'abusefilter-list-edit' => 'Оңдоо',
+	'abusefilter-list-options' => 'Параметрлер',
+);
+
 /** Latin (Latina)
  * @author Omnipaedista
  * @author UV
@@ -25203,7 +25246,7 @@ Labels moeten kort zijn en mogen geen speciale tekens bevatten.',
 	'abusefilter-edit-builder-vars-new-html' => 'Verwerkte HTML-broncode van de nieuwe versie',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Beveiligingsniveau voor bewerken van de pagina',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Beveiligingsniveau voor hernoemen van de pagina',
-	'abusefilter-edit-builder-vars-restrictions-create' => 'Aanmaakbeveiliging van deze pagina',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Aanmaakbeveiliging voor de pagina',
 	'abusefilter-edit-builder-vars-restrictions-upload' => 'Uploadbeveiliging van het bestand',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Tekst oude pagina, ontdaan van alle opmaak',
 	'abusefilter-edit-builder-vars-old-links' => 'Verwijzingen in de pagina voor de bewerking',
