@@ -62,6 +62,13 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		if ( $fld_details && !$user->isAllowed( 'abusefilter-log-detail' ) ) {
 			$this->dieUsage( 'You don\'t have permission to view detailed abuse log entries', 'permissiondenied' );
 		}
+		// Match permissions for viewing events on private filters to SpecialAbuseLog (bug 42814)
+		if ( $params['filter']
+			&& AbuseFilter::filterHidden( $params['filter'] )
+			&& !( AbuseFilterView::canViewPrivate() || $user->isAllowed( 'abusefilter-log-private' ) )
+		) {
+			$this->dieUsage( 'You don\'t have permission to view log entries for private filters', 'permissiondenied' );
+		}
 
 		$result = $this->getResult();
 
@@ -87,7 +94,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 
 		$this->addWhereRange( 'afl_timestamp', $params['dir'], $params['start'], $params['end'] );
-		
+
 		$db = $this->getDB();
 		$notDeletedCond = SpecialAbuseLog::getNotDeletedCond($db);
 
@@ -122,7 +129,10 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			$entry = array();
 			if ( $fld_ids ) {
 				$entry['id'] = intval( $row->afl_id );
-				$entry['filter_id'] = intval( $row->afl_filter );
+				$entry['filter_id'] = '';
+				if ( !AbuseFilter::filterHidden( $row->afl_filter ) || SpecialAbuseLog::canSeePrivate() ) {
+					$entry['filter_id'] = intval( $row->afl_filter );
+				}
 			}
 			if ( $fld_filter ) {
 				$entry['filter'] = $row->af_public_comments;
@@ -241,6 +251,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			array( 'invalidtitle', 'title' ),
 			array( 'code' => 'blocked', 'info' => 'You have been blocked from editing' ),
 			array( 'code' => 'permissiondenied', 'info' => 'Permission denied' ),
+			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view log entries for private filters'),
 			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view IP addresses' ),
 			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view detailed abuse log entries' ),
 		) );
