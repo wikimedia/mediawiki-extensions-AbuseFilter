@@ -3557,6 +3557,7 @@ Dé Ówerflächen zoagt a Listen voh olle definierden Füter und dalaabts, dé z
 );
 
 /** Bikol Central (Bikol Central)
+ * @author Filipinayzd
  * @author Geopoet
  */
 $messages['bcl'] = array(
@@ -3608,7 +3609,7 @@ Deskripsyon nin patakaran: $1',
 	'action-abusefilter-log-detail' => 'Tanawon an detalyadong mga entrada sa talaan nin abuso',
 	'action-abusefilter-private' => 'Tanawon an pribadong datos sa laog kan talaan nin abuso',
 	'action-abusefilter-modify-restricted' => 'Hirahon an mga saraan nin abuso na igwang ipinapangalad na mga aksyon',
-	'action-abusefilter-revert' => 'Ibuwelta an gabos na mga kaliwatan na itinao kan saraan nin abuso',
+	'action-abusefilter-revert' => 'isulit sa dati an gabos na mga pagbàgo na itinao kan saraan nin abuso',
 	'action-abusefilter-view-private' => 'Tanawon an mga saraan nin abuso na markadong pribado',
 	'abusefilter-log' => 'Talaan nin saraan sa abuso',
 	'abusefilter-log-summary' => 'Ining talaan nagpapahiling nin sarong listahan kan gabos na mga aksyon na nadakop kan mga saraan',
@@ -3656,7 +3657,7 @@ Deskripsyon kan saraan: $7 ($8)',
 	'abusefilter-list-id' => 'ID kan Saraan',
 	'abusefilter-list-status' => 'Estado',
 	'abusefilter-list-public' => 'Pampublikong paglaladawan',
-	'abusefilter-list-consequences' => 'Mga konsekuwensiya',
+	'abusefilter-list-consequences' => 'Mga kaaabtan',
 	'abusefilter-list-visibility' => 'Bisibilidad',
 	'abusefilter-list-hitcount' => 'Bilang nin tama',
 	'abusefilter-list-edit' => 'Liwaton',
@@ -3685,7 +3686,7 @@ Deskripsyon kan saraan: $7 ($8)',
 	'abusefilter-list-options-hidedisabled' => 'Itago na pinagpauntok na mga saraan',
 	'abusefilter-list-options-submit' => 'Panumpay',
 	'abusefilter-tools-text' => 'Uya an ibang mga kagamitan na bilog na magagamit sa pormulasyon asin paghihinguto kan mga saraan nin abuso.',
-	'abusefilter-tools-expr' => 'Expresyon kan paranamit',
+	'abusefilter-tools-expr' => 'Tagaprobar nin pagpahayag',
 	'abusefilter-tools-submitexpr' => 'Ebaluwaron',
 	'abusefilter-tools-reautoconfirm' => 'Ibalik an awtomatikong pagkumpirma kan estado',
 	'abusefilter-tools-reautoconfirm-user' => 'Paragamit:',
@@ -3707,7 +3708,7 @@ Sa katahawan, an oras nin padalagan $4 ms, asin ini minakonsumo nin $5 {{PLURAL:
 Ini nakakaabot sa limit kan ipinag-aampad na sobra $1% kan aksyon.",
 	'abusefilter-edit-new' => 'Baguhong saraan',
 	'abusefilter-edit-save' => 'Itagama an saraan',
-	'abusefilter-edit-id' => 'ID nin saraan',
+	'abusefilter-edit-id' => 'Pansarà nin ID',
 	'abusefilter-edit-description' => ":''(pampublikong pagpapahiling)''",
 	'abusefilter-edit-group' => 'Grupo nin saraan',
 	'abusefilter-edit-flags' => 'Mga bandera',
@@ -3758,9 +3759,9 @@ Ini nakakaabot sa limit kan ipinag-aampad na sobra $1% kan aksyon.",
 	'abusefilter-edit-builder-vars-movedto-ns' => 'Espasyong-pangaran kan pagbalyo sa pahina nin destinasyon',
 	'abusefilter-edit-builder-vars-movedto-text' => 'Titulo kan pagbalyong destinasyon nin pahina',
 	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Kabilogang titulo kan pagbalyo sa pahina nin destinasyon',
-	'abusefilter-edit-builder-vars-user-editcount' => 'Liwaton an bilang nin paragamit',
-	'abusefilter-edit-builder-vars-user-age' => 'Edad nin panindog kan paragamit',
-	'abusefilter-edit-builder-vars-user-name' => 'Pangaran kan paragamit na panindog',
+	'abusefilter-edit-builder-vars-user-editcount' => 'Bilang nin pagliwat kan paragamit',
+	'abusefilter-edit-builder-vars-user-age' => 'Edad kan panindog nin paragamit',
+	'abusefilter-edit-builder-vars-user-name' => 'Pangaran kan panindog nin paragamit',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Oras an e-surat na estada pinagkumpirma',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Pinakahuring sampulong paragamit mag-aambag sa pahina',
 	'abusefilter-edit-builder-vars-all-links' => 'Gabos na panluwas na kasugpunan yaon sa baguhon na teksto',
@@ -5699,6 +5700,7 @@ Kopirajte iz tekstualne kutije koja se pojavi i zalijepite u ovu kutiju, zatim k
  * @author Gemmaa
  * @author Loupeter
  * @author Paucabot
+ * @author Pitort
  * @author SMP
  * @author Solde
  * @author Ssola
@@ -5763,6 +5765,7 @@ Descripció de la norma:$1",
 	'abusefilter-log-search-user' => 'Usuari:',
 	'abusefilter-log-search-filter' => 'Núm.:',
 	'abusefilter-log-search-title' => 'Títol:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Cerca',
 	'abusefilter-log-entry' => "$1: $2 ha disparat un filtre d'abusos durant l'acció «$3» a $4.
 Accions preses: $5;
@@ -5823,6 +5826,9 @@ Descripció del filtre: $7 ($8)",
 	'abusefilter-list-options-deleted-only' => 'Mostra només els filtres eliminats',
 	'abusefilter-list-options-deleted-hide' => 'Amaga els filtres eliminats',
 	'abusefilter-list-options-deleted-show' => 'Mostra els filtres eliminats',
+	'abusefilter-list-options-scope' => 'Mostra els filtres de:',
+	'abusefilter-list-options-scope-local' => 'Wiki local',
+	'abusefilter-list-options-scope-global' => 'Normes globals',
 	'abusefilter-list-options-disabled' => 'Filtres deshabilitats:',
 	'abusefilter-list-options-hidedisabled' => 'Oculta filtres deshabilitats',
 	'abusefilter-list-options-submit' => 'Actualitza',
@@ -5857,7 +5863,7 @@ Ha sobrepassat el límit de deteccions del $1% de les accions.",
 	'abusefilter-edit-enabled' => 'Habilita aquest filtre',
 	'abusefilter-edit-deleted' => 'Marca com a eliminat',
 	'abusefilter-edit-hidden' => "Amaga detalls d'aquest filtre de la vista pública",
-	'abusefilter-edit-global' => 'Aplica aquest filtre globalment', # Fuzzy
+	'abusefilter-edit-global' => 'Filtre global',
 	'abusefilter-edit-rules' => 'Condicions:',
 	'abusefilter-edit-notes' => "Notes:
 :''(privat)''",
@@ -5991,6 +5997,8 @@ Etiquetes ha de ser curts, i no ha de contenir caràcters especials.',
 	'abusefilter-edit-builder-vars-new-html' => 'Font HTML analitzada de la nova revisió',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Nivell de protecció per a edicions de la pàgina',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Nivell de protecció per a reanomenaments de la pàgina',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Crea el nivell de protecció de la pàgina',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'Nivell de protecció per carregar un fitxer',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Antiga pàgina de text, sense qualsevol format',
 	'abusefilter-edit-builder-vars-old-links' => "Enllaços a la pàgina, abans de l'edició",
 	'abusefilter-edit-builder-vars-old-html' => 'Antiga pàgina de wikitext, passada a HTML',
@@ -6057,7 +6065,7 @@ Si us plau comprovi\'ls amb cura i feu clic a "confirmar" per confirmar la seva 
 	'abusefilter-revert-success' => "Heu revertit totes les accions del filtre d'abusos generades pel [[Special:AbuseFilter/$1|filtre $1]].",
 	'abusefilter-revert-reason' => "Automatic tornar de totes les mesures adoptades pel filtre d'abús a causa de filtre de  $1 .
 Motiu donat:$2",
-	'abusefilter-revert-reasonfield' => 'Raó per la reversió:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Motiu:',
 	'abusefilter-test' => 'Prova un filtre contra les edicions anteriors',
 	'abusefilter-test-intro' => "Aquesta pàgina permet provar sobre {{PLURAL:$1|la darrera edició|les darreres $1 edicions}} un filtre introduït en la caixa de sota.
 Per carregar un filtre existent, escriviu el seu número d'identificació en el camp sota la caixa de text i cliqueu el botó «Carrega».",
@@ -6103,7 +6111,7 @@ Per a més detalls, vegeu [[Special:AbuseFilter/history|la llista]] de canvis re
 	'abusefilter-log-noresults' => 'No hi ha resultats',
 	'abusefilter-diff-title' => 'Diferències entre versions',
 	'abusefilter-diff-item' => 'Ítem',
-	'abusefilter-diff-version' => 'Versió de $1 per $2', # Fuzzy
+	'abusefilter-diff-version' => 'Versió de $1 {{GENDER:$3|per}} $2',
 	'abusefilter-diff-info' => 'Informació bàsica',
 	'abusefilter-diff-pattern' => 'Condicions del filtre',
 	'abusefilter-diff-invalid' => 'No es pot portar les versions sol·licitada',
