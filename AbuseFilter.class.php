@@ -924,7 +924,7 @@ class AbuseFilter {
 					'actions' => $data['afl_actions'],
 					'log'     => $data['afl_id'],
 				) );
-				if ( filterHidden( $data['afl_filter'] ) ) {
+				if ( self::filterHidden( $data['afl_filter'] ) ) {
 					continue;
 				}
 				$entry->publish( 0, $wgAbuseFilterNotifications );
