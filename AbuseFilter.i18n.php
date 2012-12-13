@@ -3015,7 +3015,7 @@ $messages['azb'] = array(
 	'abusefilter-edit-builder-vars-file-sha1' => 'فایل مزمون‌لارینین SHA1 هاسهی',
 	'abusefilter-filter-log' => 'سون سوزگج دییشیک‌لیک‌لری',
 	'abusefilter-history' => 'سویستیمال فیلتری # $ 1 اوچون دییشیک‌لیک کئچمیشی', # Fuzzy
-	'abusefilter-history-foruser' => '$1-ا گؤره دییش',
+	'abusefilter-history-foruser' => '$1 ایله دَییشیکلیکلر',
 	'abusefilter-history-hidden' => 'گیزله‌دیلیب',
 	'abusefilter-history-enabled' => 'قوشولوب',
 	'abusefilter-history-global' => 'باشاباشجا',
@@ -3735,7 +3735,66 @@ Ini nakakaabot sa limit kan ipinag-aampad na sobra $1% kan aksyon.",
 	'abusefilter-edit-throttle-count' => 'Numero kan mga aksyon na ipapasunod:',
 	'abusefilter-edit-throttle-period' => 'Peryodo nin panahon:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|segundo|mga segundo}}',
+	'abusefilter-edit-throttle-groups' => "Pangrupong ngutnol sa paagi nin:
+:''(saro kada linya, ibanhan nin kudlit)''",
+	'abusefilter-edit-warn-message' => 'Pansistemang mensahe na gamiton para sa patanid:',
 	'abusefilter-edit-warn-other' => 'Iba pang mensahe',
+	'abusefilter-edit-warn-other-label' => "Pangaran nin pahina kan ibang mensahe:
+:''(mayo nin MediaWiki enot-panigmit)''",
+	'abusefilter-edit-warn-actions' => 'Mga gibohon:',
+	'abusefilter-edit-warn-preview' => 'Tanawon mga pinagpili na mensahe',
+	'abusefilter-edit-warn-edit' => 'Muknaon/Liwaton pinagpili na mensahe',
+	'abusefilter-edit-tag-tag' => 'Mga tatak na gamiton (saro kada linya):',
+	'abusefilter-edit-denied' => 'Ika dae makakahiling sa mga detalye kaining saraan, nin huli ta ini itinago gikan sa paghiling nin publiko.',
+	'abusefilter-edit-main' => 'Mga parametro nin saraan',
+	'abusefilter-edit-done-subtitle' => 'An saraan pinagliwat',
+	'abusefilter-edit-done' => 'Ika matrayumpong naitagama an saimong mga kaliwatan sa saraan $1.',
+	'abusefilter-edit-badsyntax' => 'Igwa nin kasalaan sa sintaks sa laog kan saraan na saimong pinagkaag.
+An kinaluwasan gikan sa parapasabot iyo na: <pre>$1</pre>',
+	'abusefilter-edit-restricted' => 'Ika dae makakaliwat kaining saraan, nin huli ta ini may laog na saro o dakol na pinagpangalad na mga aksyon.
+Pakihapot sa sarong paragamit na igwang permiso tanganing magdugang kan pinagpangalad na mga aksyon sa paghimo nin kaliwatan para saimo.',
+	'abusefilter-edit-viewhistory' => 'Tanawon an historiya kaining saraan',
+	'abusefilter-edit-check' => 'I-tsek an sintaks',
+	'abusefilter-edit-badfilter' => 'An saraan na saimong pinagkaag bakong eksistido',
+	'abusefilter-edit-revert' => 'Ibuwelta an mga aksyon na pinaghimo kaining saraan',
+	'abusefilter-edit-tools' => 'Mga gagamiton:',
+	'abusefilter-edit-test-link' => 'Prubaran ining saraan kontra sa pinakahuring mga pagliwat',
+	'abusefilter-edit-export' => 'Eksportaron ining saraan pasiring sa ibang wiki',
+	'abusefilter-edit-syntaxok' => 'Mayong sintaks na mga kasalaan an namansayan.',
+	'abusefilter-edit-syntaxerr' => 'Sintaks na kasalaan namansayan: $1',
+	'abusefilter-edit-bad-tags' => 'Sa or dakol kan mga tatak na saimong pinagkaag bakong balido.
+An mga tatak dapat na halipot, asin sinda dapat mayong espesyal na mga karakter.',
+	'abusefilter-edit-notallowed' => 'Ika daeng permiso na magmukna o magliwat kan mga saraan nin abuso',
+	'abusefilter-edit-builder-select' => 'Pilion an opsyon na ipagdugang ini sa kursor',
+	'abusefilter-edit-builder-group-op-arithmetic' => 'Mga operador kan aritmetika',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Kadagdagan (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Kabawasan (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Kapagdakulan (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'Kabarangaan (/)',
+	'abusefilter-edit-builder-op-arithmetic-modulo' => 'Modulo (%)',
+	'abusefilter-edit-builder-op-arithmetic-pow' => 'Panustuson (**)',
+	'abusefilter-edit-builder-group-op-comparison' => 'Pankumparang mga operador',
+	'abusefilter-edit-builder-op-comparison-equal' => 'Parehas sa (==)',
+	'abusefilter-edit-builder-op-comparison-notequal' => 'Bakong parehas sa (!=)',
+	'abusefilter-edit-builder-op-comparison-lt' => 'Hababa kesa (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'Halangkaw kesa (>)',
+	'abusefilter-edit-builder-op-comparison-lte' => 'Hababa kesa o parehas sa (<=)',
+	'abusefilter-edit-builder-op-comparison-gte' => 'Halangkaw sa o parehas sa (>=)',
+	'abusefilter-edit-builder-group-op-bool' => 'Mga operador kan Boolean',
+	'abusefilter-edit-builder-op-bool-not' => 'Bako (!)',
+	'abusefilter-edit-builder-op-bool-and' => 'Asin (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'O (|)',
+	'abusefilter-edit-builder-group-misc' => 'Manlaenlaen',
+	'abusefilter-edit-builder-misc-in' => 'pinaglaog sa kapisian (sa)',
+	'abusefilter-edit-builder-misc-like' => 'Kaampad nin desinyo (muya)',
+	'abusefilter-edit-builder-misc-rlike' => 'Kaampad nin regex (rmuya)',
+	'abusefilter-edit-builder-misc-irlike' => 'Kaampad nin regex, an dutdutan insensitibo (irmuya)',
+	'abusefilter-edit-builder-misc-contains' => 'Panwala na kapisian may laman na pantoong kapisian',
+	'abusefilter-edit-builder-misc-stringlit' => 'Kapisian literal ("")',
+	'abusefilter-edit-builder-misc-tern' => 'Ternaryong operador (X ? Y : Z)',
+	'abusefilter-edit-builder-misc-cond' => 'Kalang-angan (kun X kaya Y o baya Z)',
+	'abusefilter-edit-builder-group-funcs' => 'Mga gibohon',
+	'abusefilter-edit-builder-funcs-length' => 'Laba nin kapisian (laba)',
 	'abusefilter-edit-builder-group-vars' => 'Mga kapilyangan',
 	'abusefilter-edit-builder-vars-accountname' => 'Pangaran nin panindog (sa pagmukna nin panindog)',
 	'abusefilter-edit-builder-vars-timestamp' => 'Unix panmarkang oras nin kaliwatan',
@@ -34944,6 +35003,7 @@ $messages['tg-latn'] = array(
  * @author Harley Hartwell
  * @author Horus
  * @author Korrawit
+ * @author Nullzero
  * @author Octahedron80
  * @author Passawuth
  * @author Woraponboonkerd
@@ -35176,7 +35236,9 @@ $messages['th'] = array(
 	'abusefilter-history-deleted' => 'ถูกลบ',
 	'abusefilter-history-filterid' => 'ตัวกรอง',
 	'abusefilter-history-diff' => 'จำนวนการเปลี่ยนแปลง',
+	'abusefilter-action-disallow' => 'ห้ามการกระทำ',
 	'abusefilter-revert-confirm' => 'ยืนยัน',
+	'abusefilter-test-user' => 'เปลี่ยนโดยผู้ใช้:',
 	'abusefilter-examine-submit' => 'สืบค้น',
 );
 
@@ -39046,6 +39108,7 @@ $messages['zh-cn'] = array(
  * @author Makecat
  * @author PhiLiP
  * @author Philip <philip.npc@gmail.com>
+ * @author Shizhao
  * @author Simon Shek
  * @author Skjackey tse
  * @author Wmr89502270
@@ -39125,7 +39188,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-log-hide-hidden' => '对公众隐藏此日志项目',
 	'abusefilter-log-hide-reason' => '原因：',
 	'abusefilter-log-hide-forbidden' => '你没有权限去隐藏此滥用记录条目',
-	'abusefilter-logentry-suppress' => ' 隐藏 "[[$1]]"',
+	'abusefilter-logentry-suppress' => '隐藏 "[[$1]]"',
 	'abusefilter-logentry-unsuppress' => '取消隐藏 "[[$1]]"',
 	'logentry-abusefilter-hit' => '$1在$3上进行了“$5”操作，触发了$4。采取的动作：$6（$7）',
 	'abusefilter-management' => '滥用过滤器管理',
