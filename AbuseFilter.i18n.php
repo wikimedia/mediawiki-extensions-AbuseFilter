@@ -322,6 +322,7 @@ Tags should be short, and they should not contain special characters.',
 	'abusefilter-edit-builder-vars-user-age' => 'Age of user account',
 	'abusefilter-edit-builder-vars-user-name' => 'Name of user account',
 	'abusefilter-edit-builder-vars-user-groups' => 'Groups (including implicit) user is in',
+	'abusefilter-edit-builder-vars-user-blocked' => 'Whether user is blocked',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Time email address was confirmed',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Last five contributors to the page',
 	'abusefilter-edit-builder-vars-all-links' => 'All external links in the new text',
@@ -819,6 +820,7 @@ Functional explanation: rmdoubles removes repeated characters in the argument, a
 	'abusefilter-edit-builder-vars-movedto-ns' => 'Paraphrased: Namespace of the destination of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}.',
 	'abusefilter-edit-builder-vars-movedto-text' => 'Paraphrased: Name of the destination of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}.',
 	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Paraphrased: Full name of the destination of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}.',
+	'abusefilter-edit-builder-vars-user-blocked' => 'Paraphrased: Boolean value on whether the user is blocked. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}.',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'This variable contains the level of protection required to edit the page. ("Edit" here is not a verb, but an adjective, like "Edit-related protection level"). Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.
 
 See also {{msg-mw|Abusefilter-edit-builder-vars-restrictions-create}}, {{msg-mw|Abusefilter-edit-builder-vars-restrictions-move}}, {{msg-mw|Abusefilter-edit-builder-vars-restrictions-upload}}.',
