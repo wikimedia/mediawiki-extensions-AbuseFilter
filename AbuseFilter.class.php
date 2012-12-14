@@ -86,6 +86,7 @@ class AbuseFilter {
 			'article_namespace' => 'article-ns',
 			'article_text' => 'article-text',
 			'article_prefixedtext' => 'article-prefixedtext',
+#			'article_views' => 'article-views', # May not be enabled, defined in getBuilderValues()
 			'moved_from_articleid' => 'movedfrom-id',
 			'moved_from_namespace' => 'movedfrom-ns',
 			'moved_from_text' => 'movedfrom-text',
@@ -119,6 +120,7 @@ class AbuseFilter {
 			'file_sha1' => 'file-sha1',
 		),
 	);
+
 	public static $editboxName = null;
 
 	/**
@@ -212,6 +214,10 @@ class AbuseFilter {
 		}
 
 		$realValues = self::$builderValues;
+		global $wgDisableCounters;
+		if ( !$wgDisableCounters ) {
+			$realValues['vars']['article_views'] = 'article-views';
+		}
 		wfRunHooks( 'AbuseFilter-builder', array( &$realValues ) );
 
 		return $realValues;
@@ -277,6 +283,10 @@ class AbuseFilter {
 		$vars->setVar( $prefix . '_NAMESPACE', $title->getNamespace() );
 		$vars->setVar( $prefix . '_TEXT', $title->getText() );
 		$vars->setVar( $prefix . '_PREFIXEDTEXT', $title->getPrefixedText() );
+		global $wgDisableCounters;
+		if ( !$wgDisableCounters ) {
+			$vars->setVar( $prefix . '_VIEWS', WikiPage::factory( $title )->getCount() );
+		}
 
 		// Use restrictions.
 		global $wgRestrictionTypes;

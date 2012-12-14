@@ -313,6 +313,7 @@ Tags should be short, and they should not contain special characters.',
 	'abusefilter-edit-builder-vars-article-ns' => 'Page namespace',
 	'abusefilter-edit-builder-vars-article-text' => 'Page title (without namespace)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Full page title',
+	'abusefilter-edit-builder-vars-article-views' => 'Page views',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'Page ID of move source page',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Namespace of move source page',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Title of move source page',
@@ -828,6 +829,7 @@ Functional explanation: rmdoubles removes repeated characters in the argument, a
 	'abusefilter-edit-builder-vars-newsize' => 'New size of the page. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
 	'abusefilter-edit-builder-vars-oldsize' => 'Old size of the page. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
 	'abusefilter-edit-builder-vars-article-ns' => 'The namespace that the page for the trigger is supposed to be in. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-article-views' => 'The number of views that the page has. May not be enabled on all wikis. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}.',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'Paraphrase: The page ID of the page to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Paraphrase: Namespace of the page that is to be moved.
 
