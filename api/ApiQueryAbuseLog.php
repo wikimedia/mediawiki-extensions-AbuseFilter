@@ -55,6 +55,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$fld_result = isset( $prop['result'] );
 		$fld_timestamp = isset( $prop['timestamp'] );
 		$fld_hidden = isset( $prop['hidden'] );
+		$fld_revid = isset( $prop['revid'] );
 
 		if ( $fld_ip && !$user->isAllowed( 'abusefilter-private' ) ) {
 			$this->dieUsage( 'You don\'t have permission to view IP addresses', 'permissiondenied' );
@@ -74,15 +75,16 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 
 		$this->addTables( 'abuse_filter_log' );
 		$this->addFields( 'afl_timestamp' );
-		$this->addFieldsIf( array( 'afl_id', 'afl_filter' ), $fld_ids );
+		$this->addFields( 'afl_rev_id' );
+		$this->addFields( 'afl_deleted' );
+		$this->addFields( 'afl_filter' );
+		$this->addFieldsIf( 'afl_id', $fld_ids );
 		$this->addFieldsIf( 'afl_user_text', $fld_user );
 		$this->addFieldsIf( 'afl_ip', $fld_ip );
 		$this->addFieldsIf( array( 'afl_namespace', 'afl_title' ), $fld_title );
 		$this->addFieldsIf( 'afl_action', $fld_action );
 		$this->addFieldsIf( 'afl_var_dump', $fld_details );
 		$this->addFieldsIf( 'afl_actions', $fld_result );
-		$this->addFieldsIf( 'afl_deleted', $fld_hidden );
-		$this->addFields( 'afl_rev_id' );
 
 		if ( $fld_filter ) {
 			$this->addTables( 'abuse_filter' );
@@ -121,7 +123,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				$this->setContinueEnumParameter( 'start', $ts->getTimestamp( TS_ISO_8601 ) );
 				break;
 			}
-			if ( SpecialAbuseLog::isHidden($row) &&
+			if ( SpecialAbuseLog::isHidden( $row ) &&
 				!SpecialAbuseLog::canSeeHidden( $user )
 			) {
 				continue;
@@ -152,6 +154,12 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			}
 			if ( $fld_result ) {
 				$entry['result'] = $row->afl_actions;
+			}
+			if ( $fld_revid && !is_null( $row->afl_rev_id ) ) {
+				$entry['revid'] = '';
+				if ( !AbuseFilter::filterHidden( $row->afl_filter ) || SpecialAbuseLog::canSeePrivate()	) {
+					$entry['revid'] = $row->afl_rev_id;
+				}
 			}
 			if ( $fld_timestamp ) {
 				$ts = new MWTimestamp( $row->afl_timestamp );
@@ -211,7 +219,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
 			),
 			'prop' => array(
-				ApiBase::PARAM_DFLT => 'ids|user|title|action|result|timestamp|hidden',
+				ApiBase::PARAM_DFLT => 'ids|user|title|action|result|timestamp|hidden|revid',
 				ApiBase::PARAM_TYPE => array(
 					'ids',
 					'filter',
@@ -223,6 +231,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 					'result',
 					'timestamp',
 					'hidden',
+					'revid',
 				),
 				ApiBase::PARAM_ISMULTI => true
 			)
