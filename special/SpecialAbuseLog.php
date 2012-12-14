@@ -445,7 +445,7 @@ class SpecialAbuseLog extends SpecialPage {
 		if ( !$row->afl_wiki ) {
 			// Local user
 			$userLink = Linker::userLink( $row->afl_user, $row->afl_user_text ) .
-					Linker::userToolLinks( $row->afl_user, $row->afl_user_text );
+					Linker::userToolLinks( $row->afl_user, $row->afl_user_text, true );
 		} else {
 			$userLink = WikiMap::foreignUserLink( $row->afl_wiki, $row->afl_user_text );
 			$userLink .= ' (' . WikiMap::getWikiName( $row->afl_wiki ) . ')';
