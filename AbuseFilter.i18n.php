@@ -2255,6 +2255,7 @@ $messages['as'] = array(
 	'abuselog' => 'অপব্যৱহাৰ অভিলেখ',
 	'abusefilter-blocker' => 'অপব্যহাৰ পৰিশ্ৰাৱক',
 	'right-abusefilter-view' => 'অপব্যৱহাৰ চেকনী চাওক',
+	'abusefilter-log' => 'অপব্যৱহা্ৰ পৰিশ্ৰাৱক অভিলেখ',
 	'abusefilter-log-search-user' => 'সভ্যৰ নাম:',
 	'abusefilter-log-search-filter' => 'পৰিশ্ৰাৱক আইডি:',
 	'abusefilter-log-search-title' => 'শিৰোনামা',
@@ -2264,8 +2265,15 @@ $messages['as'] = array(
 	'abusefilter-log-detailslink' => 'বিস্তাৰিত',
 	'abusefilter-log-diff' => 'পাৰ্থক্য',
 	'abusefilter-log-details-val' => 'মান',
+	'abusefilter-log-details-private' => 'ব্যক্তিগত তথ্য',
+	'abusefilter-log-details-ip' => 'আইপি ঠিকনা সংৰক্ষন কৰা হৈছে',
 	'abusefilter-log-noactions' => 'একো নাই',
 	'abusefilter-log-linkoncontribs' => 'অপব্যৱহাৰ অভিলেখ',
+	'abusefilter-log-linkoncontribs-text' => 'এই সদস্যৰ বাবে অপব্যবহাৰ অভিলেখ',
+	'abusefilter-log-hidden' => '(সংযোজন লুকায়িত)',
+	'abusefilter-log-details-hidden' => 'আপনি এই সংযোজনটো বিস্তাৰিত ভাৱে চাব নোৱাৰে, কাৰণ এইটো জনসাধাৰনক প্ৰদৰ্শনৰ পৰা লুকুৱাই ৰখা হৈছে।',
+	'abusefilter-log-hide-legend' => 'অভিলেখ সংযোজন লুকুৱাই ৰাখক',
+	'abusefilter-log-hide-id' => 'অভিলেখ সংযোজনৰ আইডি:',
 	'abusefilter-log-hide-reason' => 'কাৰণ:',
 	'abusefilter-logentry-suppress' => '"[[$1]]" লু্কুৱাই ৰাখক',
 	'abusefilter-logentry-unsuppress' => '"[[$1]]" দেখুৱাওক',
@@ -2292,6 +2300,7 @@ $messages['as'] = array(
 	'abusefilter-edit-save' => 'পৰিশ্ৰাৱক সংৰক্ষণ কৰক',
 	'abusefilter-edit-description' => "বিৱৰণ:
 :''(জনসাধাৰণৰ বাবে উন্মুক্ত)''",
+	'abusefilter-edit-rules' => 'চৰ্তসমূহ:',
 	'abusefilter-edit-notes' => "টোকা:
 :''(ব্যক্তিগত)''",
 	'abusefilter-edit-lastmod-text' => '$1-য়ে $2',
@@ -2730,16 +2739,16 @@ $messages['azb'] = array(
 	'abusefilter-disallowed' => 'بو حرکت آوتوماتیک اولا‌راق زررلی اولا‌راق تعیین اولونموش‌دور،
 و بو سببله ایجازه وئریلمیر.
 اگر دئغیشیکلیغینیزین قورولوش‌چو اولدوغونا اینانیرسینیزسا، لطفاً بیر ایداره‌چی ایله علاقه قورون، و نه ائتمه‌یه چالیشدیغینیز حاقیندا معلوماتلان‌دیرین.
-ائیلئمینیزین ائشلئشتیغی سوی-ایستیفاده قایداسینین قیسا بیر شرحی: $ 1', # Fuzzy
+ائیلئمینیزین ائشلئشتیغی سوی-ایستیفاده قایداسینین قیسا بیر شرحی: $1',
 	'abusefilter-blocked-display' => 'بو حرکت آوتوماتیک اولا‌راق زررلی اولا‌راق تعیین اولونموش‌دور،
 و بونو ائتمه‌نیز اؤنلندی.
 علاوه اولا‌راق، {{سیتئنامئ}} سایتینی قوروماق اوچون، ایستیفاده‌چی حسابینیز و بوتون علاقه‌دار ایپ اونوان‌لاری دییشیک‌لیک ائتمه‌یه مانعه تؤردیلدی.
 اگر بو بیر سهوله میدانا، لطفاً بیر ایداره‌چی ایله علاقه قورون.
-ائیلئمینیزین ائشلئشتیغی سوی-ایستیفاده قایداسینین قیسا بیر شرحی: $ 1', # Fuzzy
+ائیلئمینیزین ائشلئشتیغی سوی-ایستیفاده قایداسینین قیسا بیر شرحی: $1',
 	'abusefilter-degrouped' => 'بو حرکت آوتوماتیک اولا‌راق زررلی اولا‌راق تعیین اولونموش‌دور،
 بو سبب‌دن، ایجازه وئریلممیش‌دیر، و، اونوانینیز تهلوکه‌لی اولدوغون‌دان شوبهلنیلدیگی اوچون، بوتون حقوق‌لار گئری آلیندی​​.
 اگر بونون بیر سهو اولدوغونو دوشونورسونوزسه، خاهیش ائدیریک بو حرکتین شرهیله بیرلیکده بیر بوروکراتلا علاقه قورون، و حاق‌لارینیز بلکه گئری وئریله بیلر.
-ائیلئمینیزین ائشلئشتیغی سوی-ایستیفاده قایداسینین قیسا بیر شرحی: $ 1', # Fuzzy
+ائیلئمینیزین ائشلئشتیغی سوی-ایستیفاده قایداسینین قیسا بیر شرحی: $1',
 	'abusefilter-autopromote-blocked' => 'بو فالیت آوتوماتیک اولا‌راق زیانوئریجی حرکت کیمی دیرلن‌دیریله‌رک قاداغان ائدیلمیش‌دیر.
 بون‌دان باشقا، تهلوکه‌سیزلیک مقصدیله ایستیفاده‌چی حسابینیزدان عادتن قئیده آلینمیش ایستیفاده‌چی حساب‌لاریندا تصویر اولونان بعضی ایمکان‌لار مهدودلاشدیریلمیش‌دیر.
 حرکت‌لرینیزده سوزگج طرفین‌دن مویین اولونموش سوی-ایستیفاده‌لرین تصویری: $1',
@@ -2787,7 +2796,7 @@ $messages['azb'] = array(
 	'abusefilter-log-detailslink' => 'اطراف‌لی',
 	'abusefilter-log-diff' => 'فرق',
 	'abusefilter-log-hidelink' => 'گؤرونمنی تنزیمله',
-	'abusefilter-log-details-legend' => 'جورنالین‌داکی قئیدلر اطراف‌لی شکیلده', # Fuzzy
+	'abusefilter-log-details-legend' => '$1 جورنالین‌داکی قئیدلر اطراف‌لی شکیلده',
 	'abusefilter-log-details-var' => 'دییشن',
 	'abusefilter-log-details-val' => 'اهمیتی',
 	'abusefilter-log-details-vars' => 'فالیت پارامئترلری',
@@ -2851,7 +2860,7 @@ $messages['azb'] = array(
 	'abusefilter-reautoconfirm-none' => 'بو {{GENDER:$1|اوز|اوز|اوز}} آوتوماتیک اونای‌لی دورومو آسکییا آلینمادی.',
 	'abusefilter-reautoconfirm-notallowed' => 'آوتوماتیک اونای‌لی دورومو گئتیرمئیئ یئتکینیز یوخ‌دور.',
 	'abusefilter-reautoconfirm-done' => 'حسابین آوتوماتیک اونای‌لی دورومو گئری گئتیریلدی',
-	'abusefilter-status' => 'سون 1 $ {{جمع: $ 1 | ائیلمدئ | ائیلمدئ}} $ 2 (% $ 3) فیلترئ $ 4 کوشول سینیرینا ائریشتی، و $ 5 (% $ 6) ائیلئم شواندا ائففئکتیو بیر فیلترئیلئ ائشلئشتی.', # Fuzzy
+	'abusefilter-status' => 'سون 1$ {{جمع: $1 | ائیلمدئ | ائیلمدئ}} $2 (% $3) فیلترئ $4 کوشول سینیرینا ائریشتی، و $5 (% $6) ائیلئم شواندا ائففئکتیو بیر فیلترئیلئ ائشلئشتی.', # Fuzzy
 	'abusefilter-edit-subtitle' => '$1 سوزگجی‌نین رئداکته‌سی',
 	'abusefilter-edit-subtitle-new' => 'فیلترئ اولوشتورما',
 	'abusefilter-edit-oldwarning' => '<strong>بو فیلترئنین ائسکی بیر سورومونو دئغیشتیریورسونوز.
@@ -2859,8 +2868,8 @@ $messages['azb'] = array(
 اگر دئغیشیکلیکلئرینیزی کایدئدئرسئنیز، دئغیشیک‌لیک ائتدیگینیز رئویزیون‌دان ایتیبارئن بوتون دئغیشیکلیکلئرین اوزئرینئ یازاجاکسینیز.</strong> &bull;
 [[Special:AbuseFilter/history/$2|بو فیلترئنین گئچمیشینئ گئری قاییت]].',
 	'abusefilter-edit-status-label' => 'ایستاتیستیکا‌لار:',
-	'abusefilter-edit-status' => 'سون 1 $ {{جمع: $ 1 | ائیلئمدئ | ائیلئمدئ}} بو فیلترئیلئ ائشلئشئن $ 2 ($ 3%).
-اورتالامادا، ایش واختی $ 4مس، و کوشول سینیرینین $ 5 کوشولونو توکئتیور.', # Fuzzy
+	'abusefilter-edit-status' => 'سون 1$ {{جمع: $1 | ائیلئمدئ | ائیلئمدئ}} بو فیلترئیلئ ائشلئشئن $2 ($3%).
+اورتالامادا، ایش واختی $4مس، و کوشول سینیرینین $5 کوشولونو توکئتیور.', # Fuzzy
 	'abusefilter-edit-throttled' => "' 'دیققت: بو فیلترئ بیر گووئن‌لیک تئدبیری اولا‌راق اوتوماتیکمان جیرجویت قئیری بیراکیلدی.
 ائیلئملئرین% \$ 1یندئن چوخ ائشلئشمئ سینیرینا ائریشتی.", # Fuzzy
 	'abusefilter-edit-new' => 'یئنی سوزگج',
@@ -2981,7 +2990,7 @@ $messages['azb'] = array(
 	'abusefilter-edit-builder-vars-oldsize' => 'کؤهنه صحیفه‌نین اؤلچوسو',
 	'abusefilter-edit-builder-vars-removedlines' => 'سیلینن سطرلر',
 	'abusefilter-edit-builder-vars-summary' => 'دوزلیش‌لرین تصویری',
-	'abusefilter-edit-builder-vars-article-id' => 'صحیفه اید-سی',
+	'abusefilter-edit-builder-vars-article-id' => 'صحیفه آی‌دی-سی',
 	'abusefilter-edit-builder-vars-article-ns' => 'صحیفه آدلاری ساحه‌سی',
 	'abusefilter-edit-builder-vars-article-text' => 'صحیفه باش‌لیغی (آد ساحه‌سی اولما‌دان)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'صحیفه‌نین تام آدی',
@@ -3034,8 +3043,8 @@ $messages['azb'] = array(
 	'abusefilter-history-select-submit' => 'دقیقلشدیرمک',
 	'abusefilter-history-diff' => 'ديَیشیکلیک‌لر',
 	'abusefilter-history-error-hidden' => 'ایستدیگینیز فیلتر گیزلی، و کئچمیشینی گؤرونتولئیئمئزسینیز.',
-	'abusefilter-exception-unexpectedatend' => '$ 1 کاراکتئرینده گؤزلنیلمز "$ 2".', # Fuzzy
-	'abusefilter-exception-expectednotfound' => '$ 1 کاراکتئرینده بیر $ 2 گؤزلنیلیردی، تاپیلا بیلمه‌دی (یئرینه $ 3 $ 4 تاپیلدی).', # Fuzzy
+	'abusefilter-exception-unexpectedatend' => '$1 کاراکتئرینده گؤزلنیلمز "$2".',
+	'abusefilter-exception-expectednotfound' => '$1 کاراکتئرینده بیر $2 گؤزلنیلیردی، تاپیلا بیلمه‌دی (یئرینه $3 $4 تاپیلدی).',
 	'abusefilter-exception-unrecognisedkeyword' => '$ 1 کاراکتئرینده تانینمایان آچار سؤز $ 2.', # Fuzzy
 	'abusefilter-exception-unexpectedtoken' => '$ 1 کاراکتئرینده گؤزلنیلمه‌ین سیمبول "$ 3" ($ 2 تیپینده).', # Fuzzy
 	'abusefilter-exception-unclosedstring' => '$ 1 کاراکتئرینده باشلایان کاپانمامیش دیزی', # Fuzzy
@@ -3048,7 +3057,7 @@ $messages['azb'] = array(
 $ 3 {{پلورال: $ 3 | دییشن | دییشن}} گؤزلنیلیردی، $ 4 آلیندی', # Fuzzy
 	'abusefilter-exception-regexfailure' => '"$ 3" نیزام‌لی ایفاده‌سی‌نین $ 1 کاراکتئرینده سهو: "$ 2"', # Fuzzy
 	'abusefilter-exception-overridebuiltin' => '$ 1 کاراکتئرینده "$ 2" مسکون دئغیشکئنی‌نین کورالدیشی اعتبارسیز قیلینماسی.', # Fuzzy
-	'abusefilter-exception-outofbounds' => '$ 1 کاراکتئرین‌دکی مؤوجود اولمایان سیاهی ائلئمئنتی $ 2 (سیاهی اؤلچوسو = $ 3) ایستنیر.', # Fuzzy
+	'abusefilter-exception-outofbounds' => '$1 کاراکتئرین‌دکی مؤوجود اولمایان سیاهی ائلئمئنتی $2 (سیاهی اؤلچوسو = $3) ایستنیر.',
 	'abusefilter-exception-notlist' => '$ 1 کاراکتئرینده دیزی اولمایان دیزی ائلئمئنتی ایستنیر.', # Fuzzy
 	'abusefilter-action-tag' => 'نیشان',
 	'abusefilter-action-throttle' => 'سوروشمه',
@@ -3071,9 +3080,9 @@ $ 3 {{پلورال: $ 3 | دییشن | دییشن}} گؤزلنیلیردی، $ 4
 	'abusefilter-revert-preview-intro' => 'آشاغی‌داکی‌لار، سوی-ایستیفاده فیلتری طرفین‌دن آلینان و بو حرکتله گئری آلینا‌جاق تدبیرلردیر.
 خاهیش ائدیریک دقتله نظارت ائدین، و سئچیمینیزی تسدیق ائتمک اوچون "تصدیق" یا باسین.',
 	'abusefilter-revert-confirm' => 'تصدیق ائت',
-	'abusefilter-revert-success' => '[[Special: AbuseFilter / $ 1 | $ 1 filtrindən]] اؤتری سوی-فیلتری طرفین‌دن آلینان بوتون حرکت‌لری گئری آلدینیز.', # Fuzzy
-	'abusefilter-revert-reason' => '$ 1 فیلترین‌دن گؤره سوی-ایستیفاده فیلتری طرفین‌دن آلینان بوتون حرکت‌لرین آوتوماتیک گئری آلیشی.
-وئریلن سبب: $ 2', # Fuzzy
+	'abusefilter-revert-success' => '[[Special: AbuseFilter / $1 | $1 filtrindən]] اؤتری سوی-فیلتری طرفین‌دن آلینان بوتون حرکت‌لری گئری آلدینیز.', # Fuzzy
+	'abusefilter-revert-reason' => '$1 فیلترین‌دن گؤره سوی-ایستیفاده فیلتری طرفین‌دن آلینان بوتون حرکت‌لرین آوتوماتیک گئری آلیشی.
+وئریلن سبب: $2',
 	'abusefilter-revert-reasonfield' => 'قیترمه سببی:',
 	'abusefilter-test' => 'اوولکی دییشیک‌لیک‌لر اوچون بیر سوزگجی دئنئ',
 	'abusefilter-test-intro' => 'بو صحیفه، آشاغی‌داکی قوتویا گیریلن بیر فیلتری سون $ 1 {{PLURAL:$1 | دییشیک‌لییه | دییشیک‌لییه}} قارشی ایداره ائتمه‌نیزه ایجازه وئرر.
@@ -3116,7 +3125,7 @@ $ 3 {{پلورال: $ 3 | دییشن | دییشن}} گؤزلنیلیردی، $ 4
 	'abusefilter-log-name' => 'سیستیمال فیلتری گونده‌لیگی',
 	'abusefilter-log-header' => 'بو گونده‌لیک فیلتردن ائدیلن دییشیک‌لیک‌لرین بیر خلاصه‌سینی گؤستریر.
 تام دئتال‌لار اوچون، سون فیلتر دییشیک‌لیک‌لری [[Special:AbuseFilter/history|سیاهه]] باخین.',
-	'abusefilter-log-entry-modify' => 'دییشدیردی $ 1 ($ 2)', # Fuzzy
+	'abusefilter-log-entry-modify' => 'دییشدیردی $1 ($2)',
 	'abusefilter-log-noresults' => 'نتیجه یوخ‌دور',
 	'abusefilter-diff-title' => 'نسخه لر آراسین‌داکی فرق‌لر',
 	'abusefilter-diff-item' => 'آیتم',
