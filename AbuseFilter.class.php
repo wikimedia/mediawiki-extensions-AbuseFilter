@@ -898,7 +898,7 @@ class AbuseFilter {
 		$wgMemc->incr( self::filterMatchesKey() );
 
 		$local_log_ids = array();
-		global $wgAbuseFilterNotifications;
+		global $wgAbuseFilterNotifications, $wgAbuseFilterNotificationsPrivate;
 		foreach ( $log_rows as $index => $data ) {
 			$data['afl_var_dump'] = $var_dump;
 			$data['afl_id'] = $dbw->nextSequenceValue( 'abuse_filter_log_afl_id_seq' );
@@ -924,7 +924,7 @@ class AbuseFilter {
 					'actions' => $data['afl_actions'],
 					'log'     => $data['afl_id'],
 				) );
-				if ( self::filterHidden( $data['afl_filter'] ) ) {
+				if ( self::filterHidden( $data['afl_filter'] ) && !$wgAbuseFilterNotificationsPrivate ) {
 					continue;
 				}
 				$entry->publish( 0, $wgAbuseFilterNotifications );
