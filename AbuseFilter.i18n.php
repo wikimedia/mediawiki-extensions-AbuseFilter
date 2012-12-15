@@ -174,6 +174,7 @@ Filter description: $7 ($8)',
 	'abusefilter-status' => "Of the last $1 {{PLURAL:$1|action|actions}}, $2 ($3%) {{PLURAL:$2|has|have}} reached the condition limit of $4, and $5 ($6%) {{PLURAL:$5|has|have}} matched one of the filters currently enabled.",
 
 	// The edit screen
+	'abusefilter-edit' => 'Editing abuse filter',
 	'abusefilter-edit-subtitle' => 'Editing filter $1',
 	'abusefilter-edit-subtitle-new' => 'Creating filter',
 	'abusefilter-edit-oldwarning' => "<strong>You are editing an old version of this filter.
@@ -686,6 +687,7 @@ $messages['qqq'] = array(
 * $4 is the maximum number of conditions allowed
 * $5 is the number of matched actions
 * $6 is a percentage: $5 / $1 * 100',
+	'abusefilter-edit' => 'Page title when editing an abuse filter.',
 	'abusefilter-edit-subtitle' => 'Page subtitle when editing an abuse filter.',
 	'abusefilter-edit-subtitle-new' => 'Page subtitle when creating an abuse filter',
 	'abusefilter-edit-oldwarning' => 'Warning displayed when editing an older version of a filter.',

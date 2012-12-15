@@ -15,6 +15,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$user = $this->getUser();
 		$out = $this->getOutput();
 		$request = $this->getRequest();
+		$out->setPageTitle( $this->msg( 'abusefilter-edit' ) );
 
 		$filter = $this->mFilter;
 		$history_id = $this->mHistoryID;
@@ -298,7 +299,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			return false;
 		}
 
-		$out->setSubtitle( $this->msg(
+		$out->addSubtitle( $this->msg(
 			$filter === 'new' ? 'abusefilter-edit-subtitle-new' : 'abusefilter-edit-subtitle',
 			$this->getLanguage()->formatNum( $filter ), $history_id
 		)->text() );
