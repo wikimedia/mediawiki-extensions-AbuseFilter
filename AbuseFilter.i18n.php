@@ -507,6 +507,7 @@ Copy from the textbox that appears, and paste it into this textbox, then click "
  * @author Purodha
  * @author Pxos
  * @author Raymond
+ * @author Shirayuki
  * @author Siebrand
  * @author The Evil IP address
  * @author Translationista
@@ -514,7 +515,7 @@ Copy from the textbox that appears, and paste it into this textbox, then click "
  * @author Yekrats
  */
 $messages['qqq'] = array(
-	'abusefilter-desc' => '{{desc}}',
+	'abusefilter-desc' => '{{desc|name=Abuse Filter|url=http://www.mediawiki.org/wiki/Extension:AbuseFilter}}',
 	'abusefilter' => 'Name of Special:AbuseFilter in Special:SpecialPages and title of special page.',
 	'abuselog' => 'Name of Special:AbuseLog in Special:SpecialPages and title of special page.',
 	'abusefilter-intro' => 'Introduction text for the list of filter rules.',
