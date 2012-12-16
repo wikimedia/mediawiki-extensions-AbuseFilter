@@ -167,6 +167,8 @@ $wgAbuseFilterRestrictedActions = array( 'block', 'degroup' );
 
 // Abuse filter hit notification (available options: rc, udp, rcandudp)
 $wgAbuseFilterNotifications = false;
+// Enable notifications for private filters
+$wgAbuseFilterNotificationsPrivate = false;
 
 // Centralised filters
 $wgAbuseFilterCentralDB = null;
