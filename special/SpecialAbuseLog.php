@@ -528,7 +528,8 @@ class SpecialAbuseLog extends SpecialPage {
 				$pageLink,
 				$actions_taken,
 				$parsed_comments,
-				$lang->pipeList( $actionLinks )
+				$lang->pipeList( $actionLinks ),
+				$row->afl_user_text
 			)->parse();
 		} else {
 			$description = $this->msg( 'abusefilter-log-entry' )->rawParams(
