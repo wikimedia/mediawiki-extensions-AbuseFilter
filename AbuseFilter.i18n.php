@@ -3077,7 +3077,7 @@ $ 3 {{پلورال: $ 3 | دییشن | دییشن}} گؤزلنیلیردی، $ 4
 	'abusefilter-revert-periodstart' => 'دؤورون باشلانغیجی:',
 	'abusefilter-revert-periodend' => 'دؤورون سونو:',
 	'abusefilter-revert-search' => 'فالیت‌لرین سئچیلمه‌سی',
-	'abusefilter-revert-filter' => 'سوزگج:',
+	'abusefilter-revert-filter' => 'سۆزگَج:',
 	'abusefilter-revert-preview-intro' => 'آشاغی‌داکی‌لار، سوی-ایستیفاده فیلتری طرفین‌دن آلینان و بو حرکتله گئری آلینا‌جاق تدبیرلردیر.
 خاهیش ائدیریک دقتله نظارت ائدین، و سئچیمینیزی تسدیق ائتمک اوچون "تصدیق" یا باسین.',
 	'abusefilter-revert-confirm' => 'تصدیق ائت',
