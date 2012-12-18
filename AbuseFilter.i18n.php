@@ -582,8 +582,8 @@ $messages['qqq'] = array(
 * $5 link to page the action that triggered the filter was made on
 * $6 actions taken by the filter
 * $7 comments in filter description
-* $8 action details link
-* $9 link to examine the action (optional).',
+* $8 link to action details, examine, and optional diff
+* $9 raw username',
 	'abusefilter-log-detailedentry-global' => 'Addition in the abuse filter log detail when a filter rule is a global rule. Parameters:
 * $1 is a global filter ID.',
 	'abusefilter-log-detailedentry-local' => 'Addition in the abuse filter log detail when a filter rule is a local rule. Parameters:
