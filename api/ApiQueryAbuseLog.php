@@ -36,8 +36,10 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 
 	public function execute() {
 		$user = $this->getUser();
-		if ( !$user->isAllowed( 'abusefilter-log' ) ) {
-			$this->dieUsage( 'You don\'t have permission to view the abuse log', 'permissiondenied' );
+		$errors = $this->getTitle()->getUserPermissionsErrors( 'abusefilter-log', $user );
+		if ( count( $errors ) ) {
+			$this->dieUsageMsg( $errors[0] );
+			return;
 		}
 
 		$params = $this->extractRequestParams();
@@ -237,9 +239,10 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'invalidtitle', 'title' ),
-			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view the abuse log'),
-			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view IP addresses'),
-			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view detailed abuse log entries'),
+			array( 'code' => 'blocked', 'info' => 'You have been blocked from editing' ),
+			array( 'code' => 'permissiondenied', 'info' => 'Permission denied' ),
+			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view IP addresses' ),
+			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view detailed abuse log entries' ),
 		) );
 	}
 
