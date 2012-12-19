@@ -166,11 +166,14 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				$entry['timestamp'] = $ts->getTimestamp( TS_ISO_8601 );
 			}
 			if ( $fld_details ) {
-				$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
-				if ( $vars instanceof AbuseFilterVariableHolder ) {
-					$entry['details'] = $vars->exportAllVars();
-				} else {
-					$entry['details'] = array_change_key_case( $vars, CASE_LOWER );
+				$entry['details'] = array();
+				if ( !AbuseFilter::filterHidden( $row->afl_filter ) || SpecialAbuseLog::canSeePrivate() ) {
+					$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
+					if ( $vars instanceof AbuseFilterVariableHolder ) {
+						$entry['details'] = $vars->exportAllVars();
+					} else {
+						$entry['details'] = array_change_key_case( $vars, CASE_LOWER );
+					}
 				}
 			}
 
