@@ -1,0 +1,30 @@
+This document describes how event hooks work in the AbuseFilter extension.
+
+For a more comprehensive guide to hooks, navigate to your root MediaWiki
+directory and read docs/hooks.txt.
+
+== Events and parameters ==
+This is a list of known events and parameters; please add to it if you're going
+to add events to the AbuseFilter extension.
+
+'AbuseFilter-builder': Allows overwriting of the builder values returned by AbuseFilter::getBuilderValues
+&$realValues: Builder values
+
+'AbuseFilter-filterAction': Allows overwriting of abusefilter variables in AbuseFilter::filterAction just
+before they're checked against filters.
+&$vars: AbuseFilterVariableHolder with variables
+$title: Title object
+
+'AbuseFilter-interceptVariable': Called before a variable is set in AFComputedVariable::compute to be able to set
+it before the core code runs. Return false to make the function return right after.
+$method: Method to generate the variable
+$vars: AbuseFilterVariableHolder
+$parameters: Parameters with data to compute the value
+&$result: Result of the computation
+
+'AbuseFilter-computeVariable': Like AbuseFilter-interceptVariable but called if the requested method wasn't found.
+Return true to indicate that the method is known to the hook and was computed successful.
+$method: Method to generate the variable
+$vars: AbuseFilterVariableHolder
+$parameters: Parameters with data to compute the value
+&$result: Result of the computation
