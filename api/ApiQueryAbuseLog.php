@@ -64,11 +64,16 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			$this->dieUsage( 'You don\'t have permission to view detailed abuse log entries', 'permissiondenied' );
 		}
 		// Match permissions for viewing events on private filters to SpecialAbuseLog (bug 42814)
-		if ( $params['filter']
-			&& AbuseFilter::filterHidden( $params['filter'] )
-			&& !( AbuseFilterView::canViewPrivate() || $user->isAllowed( 'abusefilter-log-private' ) )
-		) {
-			$this->dieUsage( 'You don\'t have permission to view log entries for private filters', 'permissiondenied' );
+		if ( $params['filter'] && !( AbuseFilterView::canViewPrivate() || $user->isAllowed( 'abusefilter-log-private' ) ) ) {
+			// A specific filter parameter is set but the user isn't allowed to view all filters
+			if ( !is_array( $params['filter'] ) ) {
+				$params['filter'] = array( $params['filter'] );
+			}
+			foreach( $params['filter'] as $filter ) {
+				if ( AbuseFilter::filterHidden( $filter ) ) {
+					$this->dieUsage( 'You don\'t have permission to view log entries for private filters', 'permissiondenied' );
+				}
+			}
 		}
 
 		$result = $this->getResult();
@@ -213,7 +218,9 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			),
 			'user' => null,
 			'title' => null,
-			'filter' => null,
+			'filter' => array(
+				ApiBase::PARAM_ISMULTI => true
+			),
 			'limit' => array(
 				ApiBase::PARAM_DFLT => 10,
 				ApiBase::PARAM_TYPE => 'limit',
