@@ -1681,6 +1681,10 @@ class AbuseFilterParser {
 				array( 'len', 2, count( $args ) )
 			);
 		}
+		if ( $args[0]->type == AFPData::DList ) {
+			// Don't use toString on lists, but count
+			return new AFPData( AFPData::DInt, count( $args[0]->data ) );
+		}
 		$s = $args[0]->toString();
 		return new AFPData( AFPData::DInt, mb_strlen( $s, 'utf-8' ) );
 	}
