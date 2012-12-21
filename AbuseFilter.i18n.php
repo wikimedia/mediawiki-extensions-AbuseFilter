@@ -9220,6 +9220,7 @@ $3 {{PLURAL:$3|αναμενόμενο κατηγορούμενο|αναμενό�
 /** Esperanto (Esperanto)
  * @author AVRS
  * @author Amikeco
+ * @author Objectivesea
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -9374,7 +9375,7 @@ Averaĝe, ĝia plenumtempo estas $4ms, kaj ĝi konsumas $5 {{PLURAL:$5|kondiĉon
 	'abusefilter-edit-enabled' => 'Ŝalti ĉi tiun filtrilon',
 	'abusefilter-edit-deleted' => 'Marki kiel forigitan',
 	'abusefilter-edit-hidden' => 'Kaŝi detalojn pri ĉi tiu filtrilo de publika vido',
-	'abusefilter-edit-global' => 'Apliki ĉi tiun filtrilon ĝenerale', # Fuzzy
+	'abusefilter-edit-global' => 'Filtrilo ĝenerala',
 	'abusefilter-edit-rules' => 'Kondiĉoj:',
 	'abusefilter-edit-notes' => "Notoj:
 :''(privata)",
@@ -9575,7 +9576,7 @@ Bonvolu kontroli ili zorgeme, kaj klaku "konfirmi" por konfirmi via elekto.',
 	'abusefilter-revert-success' => 'Vi malfaris ĉiujn agojn faritajn de la misuzada filtrilo de [[Special:AbuseFilter/$1|filtrilo $1]].',
 	'abusefilter-revert-reason' => 'Aŭtomata restarigo de ĉiuj agoj faritaj de la misuzada filtrilo pro filtrilo $1.
 Kialo donita: $2',
-	'abusefilter-revert-reasonfield' => 'Kialo por malfaro:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Kialo:',
 	'abusefilter-test' => 'Testi filtrilon kontraŭ antaŭaj redaktoj',
 	'abusefilter-test-intro' => 'Ĉi tiu paĝo permesas al vi konsulti filtrilon enigitan en la jena skatolo kontraŭ la {{PLURAL:$1|lasta ŝanĝo|lastaj $1 ŝanĝoj}}.
 Ŝarĝi ekzistantan filtrilon, tajpu ĝian filtrilan identigon en la suba skatolo sub la redakta ilobreto, kaj klaku la butonon "Ŝarĝi".',
@@ -29925,6 +29926,7 @@ $messages['rtm'] = array(
  * @author Aleksandrit
  * @author AlexSm
  * @author DCamer
+ * @author Eleferen
  * @author Ferrer
  * @author HalanTul
  * @author Ignatus
@@ -30288,7 +30290,7 @@ $messages['ru'] = array(
 	'abusefilter-revert-success' => 'Вы откатили все действия, выполненные фильтром злоупотреблений [[Special:AbuseFilter/$1|$1]].',
 	'abusefilter-revert-reason' => 'Автоматический откат всех действий, выполненных фильтром злоупотреблений $1.
 Указанная причина: $2',
-	'abusefilter-revert-reasonfield' => 'Причина отката:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Причина:',
 	'abusefilter-test' => 'Проверить фильтр на уже сделанных правках',
 	'abusefilter-test-intro' => 'Эта страница позволяет вам проверить фильтр, введённый в приведённое ниже поле, на {{PLURAL:$1|последнем $1 изменении|последних $1 изменениях|последних $1 изменениях}}.
 Чтобы загрузить существующий фильтр, введите его ID в текстовое поле под полем редактирования и нажмите кнопку «Загрузить».',
@@ -37013,7 +37015,7 @@ $messages['uk'] = array(
 	'abusefilter-edit-lastmod-text' => '$1 користувачем $2',
 	'abusefilter-edit-hitcount' => 'Спрацьовувань фільтру:',
 	'abusefilter-edit-consequences' => 'Заходи, що вживаються при спрацьовуванні',
-	'abusefilter-edit-action-warn' => 'Уживати ці заходи після попередження користувача',
+	'abusefilter-edit-action-warn' => 'Перед уживанням заходів видати попередження',
 	'abusefilter-edit-action-disallow' => 'Заборонити користувачеві виконати дію',
 	'abusefilter-edit-action-flag' => 'Позначити редагування в журналі зловживань',
 	'abusefilter-edit-action-blockautopromote' => 'Зняти з користувача статус автопідтвердження',
