@@ -196,6 +196,8 @@ class AbuseFilter {
 		$vars->setLazyLoadVar( 'user_blocked', 'simple-user-accessor',
 			array( 'user' => $user->getName(), 'method' => 'isBlocked' ) );
 
+		wfRunHooks( 'AbuseFilter-generateUserVars', array( $vars, $user ) );
+
 		return $vars;
 	}
 
@@ -293,6 +295,8 @@ class AbuseFilter {
 					'title' => $title->getText(),
 					'namespace' => $title->getNamespace()
 				) );
+
+		wfRunHooks( 'AbuseFilter-generateTitleVars', array( $vars, $title, $prefix ) );
 
 		return $vars;
 	}
