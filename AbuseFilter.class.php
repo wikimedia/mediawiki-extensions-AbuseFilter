@@ -1986,14 +1986,18 @@ class AbuseFilter {
 	 * @param $title Title
 	 * @param $sk Skin
 	 * @param $args array
+	 * @param $filterWikilinks bool
 	 * @return String
 	 */
-	static function modifyActionText( $page, $type, $title, $sk, $args ) {
+	static function modifyActionText( $page, $type, $title, $sk, $args, $filterWikilinks ) {
 		list( $history_id, $filter_id ) = $args;
+		$details_title = SpecialPage::getTitleFor( 'AbuseFilter', "history/$filter_id/diff/prev/$history_id" );
+		if ( !$filterWikilinks ) { // Plaintext? Bug 43105
+			return wfMessage( 'abusefilter-log-entry-modify', '[[' . $title->getFullText() . ']]', '[[' . $details_title->getFullText() . ']]' )->text();
+		}
 
 		$filter_link = Linker::link( $title );
 
-		$details_title = SpecialPage::getTitleFor( 'AbuseFilter', "history/$filter_id/diff/prev/$history_id" );
 		$details_text = wfMessage( 'abusefilter-log-detailslink' )->parse();
 		$details_link = Linker::link( $details_title, $details_text );
 
