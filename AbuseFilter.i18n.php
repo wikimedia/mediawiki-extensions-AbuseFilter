@@ -2832,7 +2832,7 @@ $messages['azb'] = array(
 	'abusefilter-list-consequences' => 'نتیجه‌لر',
 	'abusefilter-list-visibility' => 'باخینمالی',
 	'abusefilter-list-hitcount' => 'دییشدیرمه سایی',
-	'abusefilter-list-edit' => 'دَيیشدیر',
+	'abusefilter-list-edit' => 'دَییشدیر',
 	'abusefilter-list-details' => 'دئتال‌لار',
 	'abusefilter-list-limit' => 'صحیفه‌ده میقداری:',
 	'abusefilter-list-lastmodified' => 'سونونجو دوزلیش',
@@ -4336,6 +4336,7 @@ $messages['be-tarask'] = array(
  * @author Stanqo
  * @author Turin
  * @author Петър Петров
+ * @author පසිඳු කාවින්ද
  */
 $messages['bg'] = array(
 	'abusefilter-desc' => 'Прилага автоматични евристики към редакциите.',
@@ -4389,6 +4390,7 @@ $messages['bg'] = array(
 	'abusefilter-log-search-user' => 'Потребител:',
 	'abusefilter-log-search-filter' => 'Идентификатор на филтър:',
 	'abusefilter-log-search-title' => 'Заглавие:',
+	'abusefilter-log-search-wiki' => 'Уики:',
 	'abusefilter-log-search-submit' => 'Търсене',
 	'abusefilter-log-entry' => '$1: $2 задейства защитен филтър, извършвайки действие "$3" на $4.
 Предприети действия: $5;
@@ -4721,6 +4723,7 @@ $messages['bg'] = array(
 В уикито-източник щракнете връзката "{{int:abusefilter-edit-export}}" под заглавието "{{int:abusefilter-edit-tools}}" в интерфейса за редактиране.
 Копирайте съдържанието от текстовата кутия, която ще се появи, и го поставете в тази текстова кутия. След това щракнете на "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Внасяне на данни',
+	'abusefilter-group-default' => 'По подразбиране',
 );
 
 /** Bengali (বাংলা)
@@ -4939,6 +4942,7 @@ $messages['bn'] = array(
 	'abusefilter-diff-pattern' => 'ফিল্টারের শর্তসমূহ',
 	'abusefilter-diff-backhistory' => 'ফিল্টার ইতিহাসে ফিরে যান',
 	'abusefilter-import-submit' => 'উপাত্ত আমদানী',
+	'abusefilter-group-default' => 'পূর্বনির্ধারিত',
 );
 
 /** Tibetan (བོད་ཡིག)
@@ -9662,7 +9666,7 @@ Por plenaj detaloj, vidu [[Special:AbuseFilter/history|la liston]] de lastaj fil
 	'abusefilter-log-noresults' => 'Mankas rezultoj',
 	'abusefilter-diff-title' => 'Diferencoj inter versioj',
 	'abusefilter-diff-item' => 'Ero',
-	'abusefilter-diff-version' => 'Versio de $1 fare de $2', # Fuzzy
+	'abusefilter-diff-version' => 'Versio de $1 {{GENDER:$3|fare de}} $2',
 	'abusefilter-diff-info' => 'Baza informo',
 	'abusefilter-diff-pattern' => 'Filtrilaj kondiĉoj',
 	'abusefilter-diff-invalid' => 'Ne eblas akiri la petitajn versiojn',
@@ -13605,6 +13609,7 @@ $messages['haw'] = array(
 
 /** Hebrew (עברית)
  * @author Amire80
+ * @author Ofrahod
  * @author Rotemliss
  * @author StuB
  * @author YaronSh
@@ -13885,6 +13890,7 @@ $messages['he'] = array(
 	'abusefilter-edit-builder-vars-user-age' => 'הזמן שעבר מאז הרשמת המשתמש',
 	'abusefilter-edit-builder-vars-user-name' => 'שם חשבון המשתמש',
 	'abusefilter-edit-builder-vars-user-groups' => 'קבוצות (כולל קבוצות משתמעות) בהן נמצא המשתמש',
+	'abusefilter-edit-builder-vars-user-blocked' => 'אם המשתמש נחסם',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'התאריך בו אומתה כתובת הדוא"ל',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'חמשת התורמים האחרונים לדף',
 	'abusefilter-edit-builder-vars-all-links' => 'כל הקישורים החיצוניים בטקסט החדש',
@@ -16486,7 +16492,7 @@ Untuk detail lengkap, lihat [[Special:AbuseFilter/history|daftar]] perubahan fil
 	'abusefilter-log-noresults' => 'Tidak ada hasil',
 	'abusefilter-diff-title' => 'Perbedaan versi',
 	'abusefilter-diff-item' => 'butir',
-	'abusefilter-diff-version' => 'Versi dari $1 oleh $2', # Fuzzy
+	'abusefilter-diff-version' => 'Versi dari $1 {{GENDER:$3|oleh}} $2',
 	'abusefilter-diff-info' => 'Informasi dasar',
 	'abusefilter-diff-pattern' => 'Penyaringan kondisi',
 	'abusefilter-diff-invalid' => 'Tidak dapat menarik versi yang diminta',
@@ -19270,6 +19276,7 @@ $messages['km'] = array(
 /** Kannada (ಕನ್ನಡ)
  * @author Akoppad
  * @author Nayvik
+ * @author පසිඳු කාවින්ද
  */
 $messages['kn'] = array(
 	'abusefilter-log-search-title' => 'ಶೀರ್ಷಿಕೆ:',
@@ -19278,6 +19285,7 @@ $messages['kn'] = array(
 	'abusefilter-list-status' => 'ಸ್ಥಾನಮಾನ',
 	'abusefilter-list-edit' => 'ಸಂಪಾದಿಸಿ',
 	'abusefilter-unhidden' => 'ಸಾರ್ವಜನಿಕ',
+	'abusefilter-list-options' => 'ಆಯ್ಕೆಗಳು',
 	'abusefilter-edit-history' => 'ಇತಿಹಾಸ:',
 	'abusefilter-edit-builder-vars-newsize' => 'ಹೊಸ ಪುಟದ ಅಳತೆ',
 	'abusefilter-edit-builder-vars-oldsize' => 'ಹಳೇ  ಪುಟದ ಅಳತೆ',
@@ -21760,6 +21768,7 @@ Filtra apraksts: $7 ($8)',
 	'abusefilter-list-options-deleted-only' => 'Rādīt tikai dzēstos filtrus',
 	'abusefilter-list-options-deleted-hide' => 'Nerādīt dzēstos filtrus',
 	'abusefilter-list-options-deleted-show' => 'Iekļaut dzēstos filtrus',
+	'abusefilter-list-options-scope' => 'Rādīt filtrus no:',
 	'abusefilter-list-options-scope-global' => 'Globālie noteikumi',
 	'abusefilter-list-options-disabled' => 'Atslēgtie filtri:',
 	'abusefilter-list-options-hidedisabled' => 'Nerādīt atslēgtos filtrus',
@@ -23647,7 +23656,7 @@ Dan laħaq il-limitu massimu ta' korrispondenzi, pari għal $1% tal-azzjonijiet.
 	'abusefilter-edit-deleted' => 'Immarka bħala mħassar',
 	'abusefilter-edit-hidden' => "Aħbi dettalji ta' dan il-filtru mill-pubbliku",
 	'abusefilter-edit-global' => 'Filtru globali',
-	'abusefilter-edit-rules' => 'Kondizzjonijiet:',
+	'abusefilter-edit-rules' => 'Kundizzjonijiet:',
 	'abusefilter-edit-notes' => "Noti:
 :''(privati)''",
 	'abusefilter-edit-lastmod' => 'L-aħħar modifika tal-filtru:',
@@ -23687,7 +23696,7 @@ Jekk jogħġbok staqsi utent bil-permessi li jista' jżid azzjonijiet restritti 
 	'abusefilter-edit-viewhistory' => "Ara l-kronoloġija ta' dan il-filtru",
 	'abusefilter-edit-history' => 'Kronoloġija:',
 	'abusefilter-edit-check' => 'Iċċekkja s-sintassi',
-	'abusefilter-edit-badfilter' => 'Dan il-filtru li speċifikajt ma jeżistix',
+	'abusefilter-edit-badfilter' => 'Il-filtru li speċifikajt ma jeżistix',
 	'abusefilter-edit-revert' => "Reġġa' lura l-azzjonijiet meħuda minn dan il-filtru",
 	'abusefilter-edit-tools' => 'Għodda:',
 	'abusefilter-edit-test-link' => 'Ittestja dan il-filtru kontra modifiki riċenti',
@@ -29670,6 +29679,7 @@ Descriziune d'a reghele: $1",
 	'abusefilter-log-search-user' => 'Utende:',
 	'abusefilter-log-search-filter' => "ID d'u filtre:",
 	'abusefilter-log-search-title' => 'Titele:',
+	'abusefilter-log-search-wiki' => 'Uicchi:',
 	'abusefilter-log-search-submit' => 'Cirche',
 	'abusefilter-log-entry' => '$1: $2 innescate \'nu filtre de le abbuse, ca combie l\'aziune "$3" on $4.
 Aziune fatte: $5;
@@ -30041,6 +30051,7 @@ $messages['rtm'] = array(
  * @author Ferrer
  * @author HalanTul
  * @author Ignatus
+ * @author KPu3uC B Poccuu
  * @author Kaganer
  * @author Kalan
  * @author Lockal
@@ -30326,6 +30337,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-builder-vars-user-age' => 'Возраст учётной записи',
 	'abusefilter-edit-builder-vars-user-name' => 'Имя учётной записи',
 	'abusefilter-edit-builder-vars-user-groups' => 'Группы (включая неявные) в которых состоит участник',
+	'abusefilter-edit-builder-vars-user-blocked' => 'Заблокирован ли пользователь',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Время подтверждения адреса эл. почты',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Последние десять редакторов страницы',
 	'abusefilter-edit-builder-vars-all-links' => 'Все внешние ссылки в новом тексте',
@@ -30337,6 +30349,8 @@ $messages['ru'] = array(
 	'abusefilter-edit-builder-vars-new-html' => 'Разобранный HTML-код новой версии',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Уровень защиты страницы от правок',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Уровень защиты страницы от переименований',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Защита создания страницы',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'Защита загрузки файла',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Текст старой страницы, лишённый разметки',
 	'abusefilter-edit-builder-vars-old-links' => 'Ссылки на странице до правки',
 	'abusefilter-edit-builder-vars-old-html' => 'Викитекст старой страницы, преобразованный в HTML',
@@ -34356,6 +34370,7 @@ missbrukslogg-poster.',
 	'abusefilter-edit-builder-vars-user-age' => 'Användarkontots ålder',
 	'abusefilter-edit-builder-vars-user-name' => 'Användarkontots namn',
 	'abusefilter-edit-builder-vars-user-groups' => 'Grupper (inkluderat implicita) användaren är i',
+	'abusefilter-edit-builder-vars-user-blocked' => 'Ifall användaren är blockerad',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Tid e-postadressen blev bekräftad',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'De senaste tio som bidragit till sidan',
 	'abusefilter-edit-builder-vars-all-links' => 'Alla externa länkar i den nya texten',
@@ -34667,6 +34682,7 @@ Filter description: $7 ($8)',
 	'abusefilter-enabled' => 'பயன்பாட்டில் உள்ளது',
 	'abusefilter-deleted' => 'நீக்கப்பட்டது',
 	'abusefilter-disabled' => 'செயலிழக்கம் செய்யப்பட்டுள்ளது',
+	'abusefilter-hitcount' => '$1 {{PLURAL:$1|பொருந்தும் தொகுப்பு|பொருந்தும் தொகுப்புகள்}}',
 	'abusefilter-new' => 'புது வடிகட்டியை உருவாக்கு',
 	'abusefilter-return' => 'விடிகட்டி மேலாண்மைக்கு திரும்பு',
 	'abusefilter-status-global' => 'எங்கும்',
@@ -34675,6 +34691,7 @@ Filter description: $7 ($8)',
 	'abusefilter-list-options-deleted-only' => 'நீக்கப்பட்ட வடிகட்டிகளை மட்டும் காட்டவும்',
 	'abusefilter-list-options-deleted-hide' => 'அழிக்கப்பட்ட வடிகட்டல்களை மறைக்கவும்',
 	'abusefilter-list-options-deleted-show' => 'அழிக்கப்பட்ட வடிகட்டல்களைச் சேர்த்துக் கொள்ளவும்',
+	'abusefilter-list-options-scope-local' => 'உள் விக்கி',
 	'abusefilter-list-options-scope-global' => 'உலக விதிகள்',
 	'abusefilter-list-options-disabled' => 'செயலிழக்கம் செய்யப்பட்ட வடிகட்டிகள்:',
 	'abusefilter-list-options-hidedisabled' => 'செயலிழக்கம் செய்யப்பட்ட வடிகட்டிகளை மறைக்கவும்',
@@ -34683,6 +34700,8 @@ Filter description: $7 ($8)',
 	'abusefilter-tools-reautoconfirm' => 'தானாக உறுதிசெய்யப்பட்ட நிலைமையை திரும்பக்கொண்டுவரவும்',
 	'abusefilter-tools-reautoconfirm-user' => 'பயனர்:',
 	'abusefilter-tools-reautoconfirm-submit' => 'திரும்பவும் தானாக உறுதிசெய்',
+	'abusefilter-reautoconfirm-notallowed' => 'தானாக உறுதியளிக்கப்பட்ட நிலையை மீள்விக்க உங்களுக்கு அனுமதியில்லை.',
+	'abusefilter-reautoconfirm-done' => 'கணக்கின் தானாக உறுதியளிக்கப்பட்ட நிலை மீள்விக்கப்பட்டது.',
 	'abusefilter-edit-subtitle' => '$1 வடிகட்டி தொகுக்கப்படுகிறது',
 	'abusefilter-edit-subtitle-new' => 'வடிகட்டியை உருவாக்குகிறது',
 	'abusefilter-edit-status-label' => 'புள்ளிவிவரங்கள்:',
@@ -34713,7 +34732,10 @@ Filter description: $7 ($8)',
 	'abusefilter-edit-warn-actions' => 'செயல்கள்:',
 	'abusefilter-edit-warn-preview' => 'தேர்வு செய்த செய்தியின் முன்தோற்றம் காட்டு',
 	'abusefilter-edit-warn-edit' => 'தேர்வு செய்த செய்தியை உருவாக்கவும்/தொகுக்கவும்',
+	'abusefilter-edit-denied' => 'இந்த வடிகட்டியின் விவரங்களை நீங்கள் பார்க்க இயலாது, ஏனெனில் இது பொதுப் பார்வையில் இருந்து மறைக்கப்பட்டுள்ளது.',
+	'abusefilter-edit-main' => 'வடிகட்டி அளபுருக்கள்',
 	'abusefilter-edit-done-subtitle' => 'வடிகட்டி தொகுக்கப்பட்டது',
+	'abusefilter-edit-done' => 'வடிகட்டி $1-க்கான உங்கள் மாற்றங்களை நீங்கள் வெற்றிகரமாக சேமித்துள்ளீர்கள்.',
 	'abusefilter-edit-viewhistory' => 'இந்த வடிப்பான் வரலாற்றை காண்',
 	'abusefilter-edit-history' => 'வரலாறு:',
 	'abusefilter-edit-check' => 'தொடரமைப்பை சரிபார்க்கவும்',
@@ -34781,13 +34803,19 @@ Filter description: $7 ($8)',
 	'abusefilter-edit-builder-vars-article-ns' => 'பக்கத்தின் பெயர்வெளி',
 	'abusefilter-edit-builder-vars-article-text' => 'பக்கத்தின் தலைப்பு (பெயர்வெளி இல்லாமல்)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'முழு பக்கத்தின் தலைப்பு',
+	'abusefilter-edit-builder-vars-movedto-text' => 'நகர்த்தல் இலக்குப் பக்கத்தின் தலைப்பு',
 	'abusefilter-edit-builder-vars-user-editcount' => 'பயனரின் தொகுப்புக்களின் எண்ணிக்கை',
 	'abusefilter-edit-builder-vars-user-age' => 'பயனர் கணக்கின் வயது',
 	'abusefilter-edit-builder-vars-user-name' => 'பயனர் கணக்கின் பெயர்',
+	'abusefilter-edit-builder-vars-user-blocked' => 'பயனர் தடைசெய்யப்பட்டுள்ளாரா',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'மின்னஞ்சல் முகவரி உறுதிசெய்யப்பட்ட நேரம்',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'இப்பக்கத்திற்குக் கடைசியாகப் பங்களித்த பத்து பயனர்கள்',
+	'abusefilter-edit-builder-vars-all-links' => 'புதிய உரையில் உள்ள எல்லா வெளியிணைப்புகள்',
+	'abusefilter-edit-builder-vars-added-links' => 'தொகுப்பில் சேர்க்கப்பட்ட எல்லா வெளியிணைப்புகள்',
+	'abusefilter-edit-builder-vars-removed-links' => 'தொகுப்பில் நீக்கப்பட்ட எல்லா வெளியிணைப்புகள்',
 	'abusefilter-edit-builder-vars-old-text' => 'தொகுப்புக்கு முன்னரான பழைய பக்க விக்கியுரை',
 	'abusefilter-edit-builder-vars-new-text' => 'தொகுப்புக்குப் பின்னரான புதிய பக்க விக்கியுரை',
+	'abusefilter-edit-builder-vars-restrictions-edit' => 'பக்கத்தின் காப்புநிலையைத் தொகு',
 	'abusefilter-filter-log' => 'அண்மைய வடிகட்டி மாற்றங்கள்',
 	'abusefilter-history' => 'முறைகேட்டு வடிகட்டி $1 உக்கான வரலாறு',
 	'abusefilter-history-foruser' => '$1 ஆல் செய்த மாற்றங்கள்',
@@ -34840,6 +34868,8 @@ Filter description: $7 ($8)',
 	'abusefilter-topnav-examine' => 'கடந்த திருத்தங்ககளை  ஆய்வு செய்',
 	'abusefilter-topnav-log' => 'முறைகேடு பதிவு',
 	'abusefilter-topnav-tools' => 'பிழை திருத்தும் கருவிகள்',
+	'abusefilter-topnav-import' => 'வடிகட்டியை இறக்குமதி செய்',
+	'abusefilter-log-name' => 'முறைகேடு வடிகட்டிப் பதிகை',
 	'abusefilter-log-noresults' => 'முடிவுகள் ஏதுமில்லை',
 	'abusefilter-diff-title' => 'பதிப்புகளுக்கிடையிலான வேறுபாடு',
 	'abusefilter-diff-item' => 'பொருள்',
@@ -36688,6 +36718,7 @@ $messages['ug-arab'] = array(
 	'right-abusefilter-modify-restricted' => 'چەكلىك مەشغۇلاتتا سۈيىئىستىمال سۈزگۈچىنى ئۆزگەرت',
 	'right-abusefilter-revert' => 'سۈيىئىستىمال سۈزگۈچى ئېلىپ بارغان ھەممە مەشغۇلاتنى ئەسلىگە قايتۇر',
 	'right-abusefilter-view-private' => 'شەخسىيەت بەلگىسى قويۇلغان سۈيىئىستىمال سۈزگۈچىنى كۆرسەت',
+	'right-abusefilter-log-private' => 'ئاشكارىلانمايدىغان سۈزگۈچنىڭ سۈزگەن ئۇچۇرلىرىنى كۆرسىتىدۇ',
 	'right-abusefilter-hide-log' => 'سۈيىئىستىمال خاتىرىسىدىن تۈرنى يوشۇر',
 	'right-abusefilter-hidden-log' => 'سۈيىئىستىمال خاتىرىسىدىكى يوشۇرۇن تۈرلەرنى كۆرسەت',
 	'action-abusefilter-modify' => 'سۈيىئىستىمال سۈزگۈچلەرنى ئۆزگەرت',
@@ -36704,6 +36735,7 @@ $messages['ug-arab'] = array(
 	'abusefilter-log-search-user' => 'ئىشلەتكۈچى:',
 	'abusefilter-log-search-filter' => 'سۈزگۈچ IDسى:',
 	'abusefilter-log-search-title' => 'ماۋزۇ:',
+	'abusefilter-log-search-wiki' => 'ۋىكى:',
 	'abusefilter-log-search-submit' => 'ئىزدە',
 	'abusefilter-log-entry' => '$1: $2 بىر سۈيىئىستىمال سۈزگۈچىگە تەسىر قىلدى. $4 دا "$3" مەشغۇلات ئېلىپ باردى.
 قوللانمغان مەشغۇلات: $5؛
@@ -36714,6 +36746,7 @@ $messages['ug-arab'] = array(
 	'abusefilter-log-detailedentry-global' => 'ئومۇمىيەت سۈزگۈچ $1',
 	'abusefilter-log-detailedentry-local' => '$1 سۈزگۈچ',
 	'abusefilter-log-detailslink' => 'تەپسىلاتى',
+	'abusefilter-log-diff' => 'پەرق',
 	'abusefilter-log-hidelink' => 'كۆرۈنۈشچانلىقىنى تەڭشە',
 	'abusefilter-log-details-legend' => '$1 خاتىرە تۈرىنىڭ تەپسىلاتى',
 	'abusefilter-log-details-var' => 'ئۆزگەرگۈچى مىقدار',
@@ -36726,6 +36759,8 @@ $messages['ug-arab'] = array(
 	'abusefilter-log-linkoncontribs' => 'سۈيىئىستىمال خاتىرىسى',
 	'abusefilter-log-linkoncontribs-text' => 'بۇ ئىشلەتكۈچىنىڭ سۈيىئىستىمال خاتىرىسى',
 	'abusefilter-log-hidden' => '(تۈر يوشۇرۇن)',
+	'abusefilter-log-hidden-implicit' => '(تۈزىتىلگەن نەشرى ئۆچۈرۈلگەنلىكتىن يوشۇرۇلدى)',
+	'abusefilter-log-cannot-see-details' => 'بۇ تۈرنىڭ تەپسىلاتىنى كۆرۈش ھوقۇقىڭىز يوق.',
 	'abusefilter-log-details-hidden' => 'سىز بۇ تۈرنىڭ تەپسىلاتىنى كۆرەلمەيسىز چۈنكى بۇ تۈر ئاممىۋى كۆرۈنۈشتىن يوشۇرۇلغان.',
 	'abusefilter-log-hide-legend' => 'خاتىرە تۈرىنى يوشۇر',
 	'abusefilter-log-hide-id' => 'خاتىرە تۈر ID سى:',
@@ -36734,6 +36769,7 @@ $messages['ug-arab'] = array(
 	'abusefilter-log-hide-forbidden' => 'سۈيىئىستىمال خاتىرە تۈرىنى يوشۇرۇش ھوقۇقىڭىز يوق.',
 	'abusefilter-logentry-suppress' => '"[[$1]]" يوشۇر',
 	'abusefilter-logentry-unsuppress' => '"[[$1]]" يوشۇرما',
+	'logentry-abusefilter-hit' => '$3 دا $1 نىڭ ئېلىپ بارغىنى "$5" مەشغۇلات، يۈرگۈزگەن مەشغۇلاتى: $6 ($7)', # Fuzzy
 	'abusefilter-management' => 'سۈيىئىستىمال سۈزگۈچ باشقۇرۇش',
 	'abusefilter-list' => 'ھەممە سۈزگۈچلەر',
 	'abusefilter-list-id' => 'سۈزگۈچ ID سى',
@@ -36746,6 +36782,7 @@ $messages['ug-arab'] = array(
 	'abusefilter-list-details' => 'تەپسىلاتى',
 	'abusefilter-list-limit' => 'ھەر بەتتىكى سانى:',
 	'abusefilter-list-lastmodified' => 'ئاخىرقى ئۆزگەرتىش',
+	'abusefilter-list-group' => 'سۈزگۈچ گۇرۇپپىسى',
 	'abusefilter-hidden' => 'شەخسىي',
 	'abusefilter-unhidden' => 'ئاشكارا',
 	'abusefilter-enabled' => 'قوزغىتىلغان',
@@ -36760,6 +36797,9 @@ $messages['ug-arab'] = array(
 	'abusefilter-list-options-deleted-only' => 'ئۆچۈرۈلگەن سۈزگۈچنىلا كۆرسەت',
 	'abusefilter-list-options-deleted-hide' => 'ئۆچۈرۈلگەن سۈزگۈچلەرنى يوشۇر',
 	'abusefilter-list-options-deleted-show' => 'ئۆچۈرۈلگەن سۈزگۈچلەرنى ئۆز ئىچىگە ئالىدۇ',
+	'abusefilter-list-options-scope' => 'سۈزگۈچ كۆرسىتىش ئورنى:',
+	'abusefilter-list-options-scope-local' => 'يەرلىك ۋىكى',
+	'abusefilter-list-options-scope-global' => 'ئومۇمىي قائىدە',
 	'abusefilter-list-options-disabled' => 'چەكلەنگەن سۈزگۈچلەر:',
 	'abusefilter-list-options-hidedisabled' => 'چەكلەنگەن سۈزگۈچلەرنى يوشۇر',
 	'abusefilter-list-options-submit' => 'يېڭىلا',
@@ -36772,8 +36812,13 @@ $messages['ug-arab'] = array(
 	'abusefilter-reautoconfirm-none' => 'بۇ {{GENDER:$1|ئىشلەتكۈچى|ئىشلەتكۈچى|ئىشلەتكۈچىلەر}}نىڭ ئۆزلۈكىدىن جەزملەش ھالىتى بىكار قىلىنىپ باقمىغان.',
 	'abusefilter-reautoconfirm-notallowed' => 'ئۆزلۈكىدىن جەزملەش ھالىتىنى ئەسلىگە كەلتۈرۈشىڭىزگە يول قويۇلمىغان.',
 	'abusefilter-reautoconfirm-done' => 'ھېساباتنىڭ ئۆزلۈكىدىن جەزملەش ھالىتى ئەسلىگە كەلتۈرۈلدى',
+	'abusefilter-status' => 'ئاخىرقى $1 {{PLURAL:$1|مەشغۇلات|مەشغۇلات}}تا، $2 ($3%) {{PLURAL:$2|قېتىم|قېتىم}}لىق مەشغۇلات $4 قېتىملىق يۇقىرى چەككە يەتتى، $5 ($6%) {{PLURAL:$5|قېتىم|قېتىم}}لىق تەھرىرلەش قوزغىتىلغان سۈزگۈچنىڭ بىرىنى قوزغاتتى.', # Fuzzy
 	'abusefilter-edit-subtitle' => '$1 سۈزگۈچنى تەھرىرلەۋاتىدۇ',
+	'abusefilter-edit-subtitle-new' => 'سۈزگۈچ قۇرۇش',
+	'abusefilter-edit-oldwarning' => '<strong>سىز بۇ سۈزگۈچنىڭ كونا نەشرىنى تەھرىرلەۋاتىسىز. سىتاتىستىكىدا نەقىل ئېلىۋاتقان سۈزگۈچ ئەڭ يېڭىسى. ئەگەر تەھرىرلىشىڭىزنى ساقلىسىڭىز، تەھرىرلىگەن نەشرىدىن كېيىنكى ھەممە ئۆزگەرتىشلەر قاپلىنىپ كېتىدۇ</strong> &bull;
+[[Special:AbuseFilter/history/$2|بۇ سۈزگۈچنىڭ تارىخ خاتىرىسىگە قايت]].',
 	'abusefilter-edit-status-label' => 'ستاتىستىكا:',
+	'abusefilter-edit-status' => 'ئاخىرقى $1 {{PLURAL:$1|قېتىم|قېتىم}}لىق تەھرىرلەشتە، $2 ($3%) قېتىملىق تەھرىرلەش بۇ سۈزگۈچنى قوزغاتتى. ئۇنىڭ ئوتتۇرىچە ئىجرا قىلىنىش ۋاقتى $4ms (مىللىسېكۇنت)، $5 {{PLURAL:$5|دانە|دانە}} چەكلىمىنى سەرپ قىلدى.', # Fuzzy
 	'abusefilter-edit-throttled' => "'''ئاگاھلاندۇرۇش''': بۇ سۈزگۈچ بىخەتەرلىك سەۋەبىدىن ئۆزلۈكىدىن توختىتىلدى.
 $1 ماس كەلگەن مەشغۇلات چېكىگە يەتتى.",
 	'abusefilter-edit-new' => 'يېڭى سۈزگۈچ',
@@ -36781,11 +36826,12 @@ $1 ماس كەلگەن مەشغۇلات چېكىگە يەتتى.",
 	'abusefilter-edit-id' => 'سۈزگۈچ IDسى:',
 	'abusefilter-edit-description' => "چۈشەندۈرۈش:
 ''(ئاشكارا كۆرۈنۈشچان)'':",
+	'abusefilter-edit-group' => 'سۈزگۈچ گۇرۇپپىسى:',
 	'abusefilter-edit-flags' => 'بەلگەلەر:',
 	'abusefilter-edit-enabled' => 'بۇ سۈزگۈچنى قوزغات',
 	'abusefilter-edit-deleted' => 'ئۆچۈرۈلدى بەلگىسى سال',
 	'abusefilter-edit-hidden' => 'بۇ سۈزگۈچنىڭ تەپسىلىي ئۇچۇرلىرىنى ئاشكارا كۆرۈنۈشتە يوشۇر',
-	'abusefilter-edit-global' => 'بۇ سۈزگۈچنى ئومۇمىيەتتە قوللان', # Fuzzy
+	'abusefilter-edit-global' => 'ئومۇمىي سۈزگۈچ',
 	'abusefilter-edit-rules' => 'شەرتلەر:',
 	'abusefilter-edit-notes' => "ئىزاھاتلار:
 ''(شەخسىي)'':",
@@ -36819,6 +36865,10 @@ $1 ماس كەلگەن مەشغۇلات چېكىگە يەتتى.",
 	'abusefilter-edit-main' => 'سۈزگۈچ پارامېتىرلىرى',
 	'abusefilter-edit-done-subtitle' => 'سۈزگۈچ تەھرىرلەندى',
 	'abusefilter-edit-done' => '$1 سۈزگۈچنىڭ ئۆزگەرتىشىنى مۇۋەپپەقىيەتلىك ساقلىدىڭىز.',
+	'abusefilter-edit-badsyntax' => 'سىز بەلگىلىگەن سۈزگۈچتە تىلقۇرما خاتالىقى مەۋجۇت.
+يەشكۈچنىڭ چىقارغان نەتىجىسى: <pre>$1</pre>',
+	'abusefilter-edit-restricted' => 'بۇ سۈزگۈچنى تەھرىرلىيەلمەيسىز چۈنكى ئۇنىڭدا بىر ياكى بىر قانچە چەكلەنگەن مەشغۇلات بار.
+مۇناسىپ ھوقۇقى بار ئىشلەتكۈچىنىڭ ياردىمىگە ئېرىشىڭ، ئۇ سىزگە ھەمكارلىشىپ مۇناسىپ ئۆزگەرتىش ئېلىپ بارىدۇ.',
 	'abusefilter-edit-viewhistory' => 'بۇ سۈزگۈچنىڭ تارىخىنى كۆرسەت',
 	'abusefilter-edit-history' => 'تارىخ:',
 	'abusefilter-edit-check' => 'تىلقۇرما تەكشۈر',
@@ -36838,6 +36888,7 @@ $1 ماس كەلگەن مەشغۇلات چېكىگە يەتتى.",
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'ئېلىش (-)',
 	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'كۆپەيتىش (*)',
 	'abusefilter-edit-builder-op-arithmetic-divide' => 'بۆلۈش (/)',
+	'abusefilter-edit-builder-op-arithmetic-modulo' => 'مودىل (%)',
 	'abusefilter-edit-builder-op-arithmetic-pow' => 'دەرىجە (**)',
 	'abusefilter-edit-builder-group-op-comparison' => 'سېلىشتۇرۇش ئەمەللىرى',
 	'abusefilter-edit-builder-op-comparison-equal' => 'تەڭ (==)',
@@ -36850,7 +36901,11 @@ $1 ماس كەلگەن مەشغۇلات چېكىگە يەتتى.",
 	'abusefilter-edit-builder-op-bool-not' => 'ئەمەس (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'ۋە (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'ياكى (|)',
+	'abusefilter-edit-builder-group-misc' => 'ئارىلاش تۈرلەر',
 	'abusefilter-edit-builder-misc-in' => 'ھەرپنىڭ ئىچىدە (in)',
+	'abusefilter-edit-builder-misc-like' => 'ماسلاشقان ئەندىزە (like)',
+	'abusefilter-edit-builder-misc-rlike' => 'ماسلاشقان مۇنتىزىم ئىپادە (rlike)',
+	'abusefilter-edit-builder-misc-irlike' => 'ماسلاشقان مۇنتىزىم ئىپادە، چوڭ كىچىك يېزىلىشنى پەرقلەندۈرىدۇ (irlike)',
 	'abusefilter-edit-builder-funcs-count' => 'ھەرپ تىزىقى X نىڭ ھەرپ تىزىقى Y دا كۆرۈلگەن قېتىم سانى （count）',
 	'abusefilter-edit-builder-funcs-rcount' => 'مۇنتىزىم ئىپادە X نىڭ  ھەرپ تىزىقى Y دا ماس كەلگەن قېتىم سانى (rcount)',
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'بوش ھەرپنى چىقىرىۋەت (rmwhitespace)',
@@ -37437,6 +37492,7 @@ $messages['ur'] = array(
 	'abusefilter-log-search' => 'تلاش کے غلط استعمال لاگ ان کریں',
 	'abusefilter-log-search-user' => 'صارف:',
 	'abusefilter-log-search-title' => 'عنوان:',
+	'abusefilter-log-search-wiki' => 'ویکی:',
 	'abusefilter-log-search-submit' => 'تلاش',
 	'abusefilter-log-detailslink' => 'تفصیلات',
 	'abusefilter-log-hidelink' => 'رویت کو ایڈجسٹ',
@@ -38655,6 +38711,7 @@ $messages['yi'] = array(
 	'abusefilter-list' => 'אלע פֿילטערס',
 	'abusefilter-list-id' => 'פֿילטער נומער',
 	'abusefilter-list-status' => 'סטאַטוס',
+	'abusefilter-list-visibility' => 'זעבארקייט',
 	'abusefilter-list-edit' => 'רעדאַקטירן',
 	'abusefilter-list-details' => 'פרטים',
 	'abusefilter-list-limit' => 'צאל אין א בלאט:',
@@ -38670,6 +38727,8 @@ $messages['yi'] = array(
 	'abusefilter-return' => 'צוריק צו פילטער פארוואלטונג',
 	'abusefilter-status-global' => 'גלאבאַל',
 	'abusefilter-list-options' => 'ברירות',
+	'abusefilter-list-options-deleted' => 'אויסגעמעקטע פילטערס',
+	'abusefilter-list-options-deleted-only' => 'ווייזן נאר אויסגעמעקטע פילטערס',
 	'abusefilter-list-options-submit' => 'דערהײַנטיקן',
 	'abusefilter-tools-reautoconfirm-user' => 'באַניצער:',
 	'abusefilter-edit-status-label' => 'סטאַטיסטיק:',
@@ -38688,6 +38747,7 @@ $messages['yi'] = array(
 	'abusefilter-edit-lastmod' => 'פֿילטער לעצטנס געענדערט:',
 	'abusefilter-edit-lastmod-text' => '$1 פֿון $2',
 	'abusefilter-edit-hitcount' => 'פֿילטער טרעפֿונגען:',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|סעקונדע|סעקונדעס}}',
 	'abusefilter-edit-warn-other' => 'אנדער מעלדונג',
 	'abusefilter-edit-warn-other-label' => "בלאטנאמען  פון אנדער מעלדונג:
 :''(אן מעדיעוויקי פרעפיקס)''",
@@ -38703,6 +38763,7 @@ $messages['yi'] = array(
 	'abusefilter-edit-syntaxok' => 'נישט געטראפֿן קיין סינטאקס פֿעלער.',
 	'abusefilter-edit-syntaxerr' => 'סינטאקט פֿעלער געטראפֿן: $1',
 	'abusefilter-edit-notallowed' => 'איר זענט נישט דערלויבט צו שאפֿן אדער רעדאקטירן פילטערס',
+	'abusefilter-edit-builder-group-op-arithmetic' => 'אריטמעטישע אפעראטארן',
 	'abusefilter-edit-builder-op-bool-or' => 'אָדער (|)',
 	'abusefilter-edit-builder-group-funcs' => 'פֿונקציאנען',
 	'abusefilter-edit-builder-group-vars' => 'וואַריאַבלען',
