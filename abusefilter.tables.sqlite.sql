@@ -1,7 +1,7 @@
 -- SQL tables for AbuseFilter extension
 
 CREATE TABLE /*$wgDBprefix*/abuse_filter (
-	af_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
+	af_id BIGINT unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	af_pattern BLOB NOT NULL,
 	af_user BIGINT unsigned NOT NULL,
 	af_user_text varchar(255) binary NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter_action (
 CREATE INDEX afa_consequence ON /*$wgDBprefix*/abuse_filter_action (afa_consequence);
 
 CREATE TABLE /*$wgDBprefix*/abuse_filter_log (
-	afl_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
+	afl_id BIGINT unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	afl_filter varchar(64) binary NOT NULL,
 	afl_user BIGINT unsigned NOT NULL,
 	afl_user_text varchar(255) binary NOT NULL,
@@ -51,7 +51,7 @@ CREATE INDEX afl_ip_timestamp ON /*$wgDBprefix*/abuse_filter_log (afl_ip, afl_ti
 CREATE INDEX afl_wiki_timestamp ON /*$wgDBprefix*/abuse_filter_log (afl_wiki, afl_timestamp);
 
 CREATE TABLE /*$wgDBprefix*/abuse_filter_history (
-	afh_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
+	afh_id BIGINT unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	afh_filter BIGINT unsigned NOT NULL,
 	afh_user BIGINT unsigned NOT NULL,
 	afh_user_text varchar(255) binary NOT NULL,
