@@ -1014,24 +1014,14 @@ class AbuseFilterParser {
 			$this->move();
 			$r2 = new AFPData();
 
-			if ( $op == '&' && !( $result->toBool() ) ) {
+			// We can go on quickly as either one statement with | is true or on with & is false
+			if ( ( $op == '&'  && !$result->toBool() ) || ( $op == '|' && $result->toBool() ) ) {
 				wfProfileIn( __METHOD__ . '-shortcircuit' );
 				$orig = $this->mShortCircuit;
 				$this->mShortCircuit = $this->mAllowShort;
 				$this->doLevelCompares( $r2 );
 				$this->mShortCircuit = $orig;
-				$result = new AFPData( AFPData::DBool, false );
-				wfProfileOut( __METHOD__ . '-shortcircuit' );
-				continue;
-			}
-
-			if ( $op == '|' && $result->toBool() ) {
-				wfProfileIn( __METHOD__ . '-shortcircuit' );
-				$orig = $this->mShortCircuit;
-				$this->mShortCircuit = $this->mAllowShort;
-				$this->doLevelCompares( $r2 );
-				$this->mShortCircuit = $orig;
-				$result = new AFPData( AFPData::DBool, true );
+				$result = new AFPData( AFPData::DBool, $result->toBool() );
 				wfProfileOut( __METHOD__ . '-shortcircuit' );
 				continue;
 			}
