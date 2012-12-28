@@ -27,7 +27,7 @@ This interface shows a list of defined filters, and allows them to be modified."
 	'abusefilter-warning' => "'''Warning''': This action has been automatically identified as harmful.
 Unconstructive edits will be quickly reverted,
 and egregious or repeated unconstructive editing will result in your account or IP address being blocked.
-If you believe this edit to be constructive, you may click Submit again to confirm it.
+If you believe this edit to be constructive, you may submit it again to confirm it.
 A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-disallowed' => "This action has been automatically identified as harmful, and therefore disallowed.
 If you believe your edit was constructive, please inform an administrator of what you were trying to do.
