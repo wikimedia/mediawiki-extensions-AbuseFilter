@@ -65,6 +65,7 @@ Rule description: $1',
 	'right-abusefilter-log-private' => 'View log entries of abuse filters marked as private',
 	'right-abusefilter-hide-log' => 'Hide entries in the abuse log',
 	'right-abusefilter-hidden-log' => 'View hidden abuse log entries',
+	'right-abusefilter-modify-global' => 'Create or modify global abuse filters',
 
 	'action-abusefilter-modify' => 'modify abuse filters',
 	'action-abusefilter-view' => 'view abuse filters',
@@ -246,6 +247,7 @@ Please ask a user with permission to add restricted actions to make the change f
 	'abusefilter-edit-bad-tags' => 'One or more of the tags you specified is not valid.
 Tags should be short, and they should not contain special characters.',
 	'abusefilter-edit-notallowed' => 'You are not permitted to create or edit abuse filters',
+	'abusefilter-edit-notallowed-global' => 'You are not permitted to create or edit global abuse filters',
 
 	// Filter editing helpers
 	'abusefilter-edit-builder-select' => 'Select an option to add it at the cursor',
@@ -547,6 +549,7 @@ $messages['qqq'] = array(
 	'right-abusefilter-log-private' => '{{doc-right|abusefilter-log-private}}',
 	'right-abusefilter-hide-log' => '{{doc-right|abusefilter-hide-log}}',
 	'right-abusefilter-hidden-log' => '{{doc-right|abusefilter-hidden-log}}',
+	'right-abusefilter-modify-global' => '{{doc-right|abusefilter-modify-global}}',
 	'action-abusefilter-modify' => '{{doc-action|abusefilter-modify}}',
 	'action-abusefilter-view' => '{{doc-action|abusefilter-view}}',
 	'action-abusefilter-log' => '{{doc-action|abusefilter-log}}',
@@ -760,6 +763,7 @@ $messages['qqq'] = array(
 * $1 is the reported error.',
 	'abusefilter-edit-bad-tags' => 'Status message for filter test.',
 	'abusefilter-edit-notallowed' => 'Error message when trying to modify a filter while not allowed.',
+	'abusefilter-edit-notallowed-global' => 'Error message when trying to modify a global filter while not allowed.',
 	'abusefilter-edit-builder-select' => 'Default value for dropdown menu that allows inserting abuse filter syntax in the filter definition field.',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Group entry in dropdown menu.',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-op-arithmetic}}.',

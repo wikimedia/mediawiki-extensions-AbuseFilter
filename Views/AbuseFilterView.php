@@ -40,6 +40,21 @@ abstract class AbuseFilterView extends ContextSource {
 	 * @static
 	 * @return bool
 	 */
+	static function canEditGlobal() {
+		global $wgUser;
+		static $canEditGlobal = null;
+
+		if ( is_null( $canEditGlobal ) ) {
+			$canEditGlobal = $wgUser->isAllowed( 'abusefilter-modify-global' );
+		}
+
+		return $canEditGlobal;
+	}
+
+	/**
+	 * @static
+	 * @return bool
+	 */
 	static function canViewPrivate() {
 		global $wgUser;
 		static $canView = null;
