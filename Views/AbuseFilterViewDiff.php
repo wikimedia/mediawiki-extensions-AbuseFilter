@@ -3,6 +3,7 @@
 class AbuseFilterViewDiff extends AbuseFilterView {
 	var $mOldVersion = null;
 	var $mNewVersion = null;
+	var $mNextHistoryId = null;
 	var $mFilter = null;
 
 	function show() {
@@ -16,7 +17,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		}
 
 		foreach ( $links as $msg => $title ) {
-			$links[$msg] = Linker::link( $title, $this->msg( $msg )->parse() );
+			$links[$msg] = Linker::link( $title, $this->msg( $msg )->escaped() );
 		}
 
 		$backlinks = $this->getLanguage()->pipeList( $links );
@@ -24,6 +25,33 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 		if ( $show ) {
 			$out->addHTML( $this->formatDiff() );
+
+			// Next and previous change links
+			$links = array();
+			if ( AbuseFilter::getFirstFilterChange( $this->mFilter ) != $this->mOldVersion['meta']['history_id'] ) {
+				// Create a "previous change" link if this isn't the first change of the given filter
+				$links[] = Linker::link(
+					$this->getTitle(
+						'history/' . $this->mFilter . '/diff/prev/' . $this->mOldVersion['meta']['history_id']
+					),
+					$this->getLanguage()->getArrow( 'backwards' ) . ' ' . $this->msg( 'abusefilter-diff-prev' )->escaped()
+				);
+			}
+
+			if ( !is_null( $this->mNextHistoryId ) ) {
+				// Create a "next change" link if this isn't the last change of the given filter
+				$links[] = Linker::link(
+					$this->getTitle(
+						'history/' . $this->mFilter . '/diff/prev/' . $this->mNextHistoryId
+					),
+					$this->msg( 'abusefilter-diff-next' )->escaped() . ' ' . $this->getLanguage()->getArrow( 'forwards' )
+				);
+			}
+
+			if ( count( $links ) > 0 ) {
+				$backlinks = $this->getLanguage()->pipeList( $links );
+				$out->addHTML( Xml::tags( 'p', null, $backlinks ) );
+			}
 		}
 	}
 
@@ -47,7 +75,33 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			return false;
 		}
 
+		$this->mNextHistoryId = $this->getNextHistoryId( $this->mNewVersion['meta']['history_id'] , 'next' );
+
 		return true;
+	}
+
+	/**
+	 * Get the history ID of the next change
+	 *
+	 * @param $historyId Integer: History id to find next change of
+	 * @return Integer|Null: Id of the next change or null if there isn't one
+	 */
+	function getNextHistoryId( $historyId ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		$row = $dbr->selectRow(
+			'abuse_filter_history',
+			'afh_id',
+			array(
+				'afh_filter' => $this->mFilter,
+				'afh_id > ' . $dbr->addQuotes( $historyId ),
+			),
+			__METHOD__,
+			array( 'ORDER BY' => 'afh_timestamp ASC' )
+		);
+		if ( $row ) {
+			return $row->afh_id;
+		}
+		return null;
 	}
 
 	function loadSpec( $spec, $otherSpec ) {
@@ -106,7 +160,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 					'afh_id>' . $dbr->addQuotes( $other['meta']['history_id'] ),
 				),
 				__METHOD__,
-				array( 'ORDER BY' => 'afh_timestamp DESC' )
+				array( 'ORDER BY' => 'afh_timestamp ASC' )
 			);
 
 			if ( $other && !$row ) {
