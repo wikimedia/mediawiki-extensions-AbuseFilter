@@ -328,7 +328,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$readOnlyAttrib = array();
 		$cbReadOnlyAttrib = array(); // For checkboxes
 
-		if ( !$this->canEdit() || ( $row->af_global == 1 && !$this->canEditGlobal() ) ) {
+		if ( !$this->canEdit() || ( isset( $row->af_global ) && $row->af_global == 1 && !$this->canEditGlobal() ) ) {
 			$readOnlyAttrib['readonly'] = 'readonly';
 			$cbReadOnlyAttrib['disabled'] = 'disabled';
 		}
