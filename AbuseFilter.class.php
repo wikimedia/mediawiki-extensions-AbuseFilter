@@ -129,13 +129,13 @@ class AbuseFilter {
 		$linkDefs = array(
 			'home' => 'Special:AbuseFilter',
 			'recentchanges' => 'Special:AbuseFilter/history',
-			'test' => 'Special:AbuseFilter/test',
 			'examine' => 'Special:AbuseFilter/examine',
 			'log' => 'Special:AbuseLog',
 		);
 
 		if ( $context->getUser()->isAllowed( 'abusefilter-modify' ) ) {
 			$linkDefs = array_merge( $linkDefs, array(
+					'test' => 'Special:AbuseFilter/test',
 					'tools' => 'Special:AbuseFilter/tools',
 					'import' => 'Special:AbuseFilter/import',
 				) );
