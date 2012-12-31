@@ -3269,6 +3269,7 @@ $messages['ba'] = array(
 	'right-abusefilter-log-private' => 'Шәхси тип билдәләнгән насар ҡулланыу фильтры журналының яҙмаларын ҡарау',
 	'right-abusefilter-hide-log' => 'Урынһыҙ файҙаланыуҙар яҙмалары журналындағы яҙмаларҙы йәшереү',
 	'right-abusefilter-hidden-log' => 'Урынһыҙ файҙаланыуҙар яҙмалары журналындағы йәшерен яҙмаларҙы ҡарау',
+	'right-abusefilter-modify-global' => 'Намыҫһыҙ ҡулланыу глобаль фильтрын булдырыу йәки үҙгәртеү',
 	'action-abusefilter-modify' => 'Урынһыҙ файҙаланыу һөҙгөстәрен үҙгәртеү',
 	'action-abusefilter-view' => 'Урынһыҙ файҙаланыу һөҙгөстәрен ҡарау',
 	'action-abusefilter-log' => 'Урынһыҙ файҙаланыу яҙмалары журналын ҡарау',
@@ -6610,6 +6611,7 @@ $messages['co'] = array(
  * @author Matěj Grabovský
  * @author Mormegil
  * @author Tchoř
+ * @author Vks
  */
 $messages['cs'] = array(
 	'abusefilter-desc' => 'Podrobuje editace automatickým heuristikám',
@@ -6622,10 +6624,10 @@ V tomto rozhraní můžete vidět seznam definovaných filtrů a měnit je.',
 	'abusefilter-warning' => "'''Upozornění''': Tato činnost byla automaticky identifikována jako škodlivá.
 Neužitečné editace budou rychle revertovány, v&nbsp;opakovaných nebo závažných případech mohou být váš uživatelský účet či IP adresa zablokovány.
 Pokud považujete svou editaci za správnou, můžete ji potvrdit opětovným kliknutím na Uložit změny.
-Stručný popis pravidla, které vaši činnost označilo za škodlivou: $1",
+Stručný popis pravidla, které vaši činnost označilo za škodlivou: $1", # Fuzzy
 	'abusefilter-disallowed' => 'Tato činnost byla automaticky identifikována jako škodlivá, a&nbsp;proto zakázána.
 Pokud považujete svou editaci za správnou, kontaktujte správce a&nbsp;sdělte jim, o&nbsp;co jste se {{GENDER:|snažil|snažila|snažili}}.
-Stručný popis pravidla, které vaši činnost označilo za škodlivou: $1',
+Stručný popis pravidla, které vaši činnost označilo za škodlivou: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Tato činnost byla automaticky identifikována jako škodlivá, a&nbsp;proto vám bylo zabráněno v&nbsp;jejím provedení.
 Kvůli ochraně {{grammar:2sg|{{SITENAME}}}} byla navíc vašemu uživatelskému účtu a&nbsp;všem s&nbsp;ním spojeným IP adresám zablokována možnost editace.
 Pokud se domníváte, že se jedná o&nbsp;omyl, kontaktujte správce.
@@ -6654,6 +6656,7 @@ Popis pravidla: $1',
 	'right-abusefilter-log-private' => 'Prohlížení protokolovacích záznamů filtrů zneužívání označených jako tajné',
 	'right-abusefilter-hide-log' => 'Skrývání záznamů v protokolu zneužití',
 	'right-abusefilter-hidden-log' => 'Prohlížení skrytých záznamů v protokolu zneužití',
+	'right-abusefilter-modify-global' => 'Vytvořit nebo upravit globální filtr zneužívání',
 	'action-abusefilter-modify' => 'upravovat filtry zneužívání',
 	'action-abusefilter-view' => 'prohlížet si filtry zneužívání',
 	'action-abusefilter-log' => 'prohlížet si protokol zneužití',
@@ -6812,6 +6815,7 @@ Požádejte uživatele s oprávněním přidávat taková opatření, aby potře
 	'abusefilter-edit-bad-tags' => 'Jedna či více uvedených značek nejsou platné.
 Značky by měly být krátké a nesmí obsahovat žádné zvláštní znaky.',
 	'abusefilter-edit-notallowed' => 'Nemáte oprávnění vytvářet nebo editovat filtry zneužívání',
+	'abusefilter-edit-notallowed-global' => 'Nemáte oprávnění vytvářet nebo editovat globální filtry zneužívání',
 	'abusefilter-edit-builder-select' => 'Vyberte položku, bude přidána na místo, kde je kurzor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetické operátory',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Sčítání (+)',
@@ -6885,6 +6889,7 @@ Značky by měly být krátké a nesmí obsahovat žádné zvláštní znaky.',
 	'abusefilter-edit-builder-vars-user-age' => 'Stáří uživatelského účtu',
 	'abusefilter-edit-builder-vars-user-name' => 'Uživatelské jméno',
 	'abusefilter-edit-builder-vars-user-groups' => 'Skupiny (včetně implicitních), do kterých uživatel patří',
+	'abusefilter-edit-builder-vars-user-blocked' => 'Jestli je uživatel zablokovaný',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Čas, kdy byla ověřena e-mailová adresa',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Posledních deset uživatelů, kteří editovali příslušnou stránku',
 	'abusefilter-edit-builder-vars-all-links' => 'Všechny externí odkazy ve výsledném textu',
@@ -7637,11 +7642,11 @@ Diese Oberfläche zeigt eine Liste aller definierten Filter und erlaubt es, dies
 	'abusefilter-mustbeeditor' => 'Aus Sicherheitsgründen dürfen nur Benutzer mit dem Recht zur Änderung von Missbrauchsfiltern diese Schnittstelle verwenden.',
 	'abusefilter-warning' => "'''Achtung''': Diese Aktion wurde als potentiell unkonstruktiv erkannt.
 Solche Beiträge werden meist sehr schnell entfernt. In wiederholten und besonders schlimmen Fällen wird dein Benutzerkonto bzw. deine IP-Adresse gesperrt.
-Wenn du meinst, dass deine Änderung sinnvoll ist, kannst du sie zum Bestätigen erneut speichern.
-Kurzbeschreibung der verletzten Regel: $1", # Fuzzy
+Wenn du meinst, dass diese Aktion sinnvoll ist, kannst du sie zum Bestätigen erneut speichern.
+Kurzbeschreibung der verletzten Regel: $1",
 	'abusefilter-disallowed' => 'Diese Aktion wurde automatisch als schädlich erkannt und deshalb nicht ausgeführt.
-Wenn du denkst, dass dein Beitrag konstruktiv war, wende dich bitte an einen Administrator und schildere ihm, was du versucht hast beizutragen.
-Kurzbeschreibung der verletzten Regel: $1', # Fuzzy
+Wenn du denkst, dass deine Aktion konstruktiv war, wende dich bitte an einen Administrator und schildere ihm, was du versucht hast beizutragen.
+Kurzbeschreibung der verletzten Regel: $1',
 	'abusefilter-blocked-display' => 'Diese Aktion wurde automatisch als schädlich erkannt und nicht ausgeführt.
 Ferner wurden dein Benutzerkonto und alle zugehörigen IP-Adressen gesperrt.
 Wenn du denkst, dass es sich hierbei um einen Fehler handelt, wende dich bitte an einen Administrator.
@@ -9864,6 +9869,7 @@ Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku 
  * @author Remember the dot
  * @author Sanbec
  * @author Savh
+ * @author TheBITLINK
  * @author Translationista
  */
 $messages['es'] = array(
@@ -9908,6 +9914,7 @@ Descripción de la regla disparada: $1',
 	'right-abusefilter-log-private' => 'Ver las entradas de registro de filtros de abuso marcadas como privadas',
 	'right-abusefilter-hide-log' => 'Ocultar entradas en el registro del filtro antiabusos',
 	'right-abusefilter-hidden-log' => 'Ver entradas ocultas en el registro del filtro antiabusos',
+	'right-abusefilter-modify-global' => 'Crear o modificar filtros globales de abusos.',
 	'action-abusefilter-modify' => 'modificar los filtros antiabuso',
 	'action-abusefilter-view' => 'ver los filtros antiabuso',
 	'action-abusefilter-log' => 'ver registro del filtro antiabusos',
@@ -10071,6 +10078,7 @@ Por favor solicita a un usuario con permisos suficientes para agregar acciones r
 	'abusefilter-edit-bad-tags' => 'Una o más de las etiquetas que especificaste no son válidas.
 Las etiquetas deberían ser cortas, y no deberían contener caracteres especiales.',
 	'abusefilter-edit-notallowed' => 'No se te permite crear o editar filtros antiabuso',
+	'abusefilter-edit-notallowed-global' => 'No estas autorizado para crear o editar filtros de abuso globales',
 	'abusefilter-edit-builder-select' => 'Seleccione una opción para agregarla en el cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operadores aritmétricos',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adición (+)',
@@ -10144,6 +10152,7 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-edit-builder-vars-user-age' => 'Antigüedad de la cuenta de usuario',
 	'abusefilter-edit-builder-vars-user-name' => 'Nombre de la cuenta de usuario',
 	'abusefilter-edit-builder-vars-user-groups' => 'Grupos (incluídos aquellos implícitos) en los cuales se encuentra el usuario',
+	'abusefilter-edit-builder-vars-user-blocked' => 'Si el usuario esta bloqueado',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'El tiempo que hace que la dirección de correo electrónico fue confirmada',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Últimos diez usuarios en contribuir en la página',
 	'abusefilter-edit-builder-vars-all-links' => 'Todos los vínculos externos en el nuevo texto',
@@ -11795,11 +11804,11 @@ Cette interface présente une liste des filtres définis, et donne la possibilit
 	'abusefilter-mustbeeditor' => 'Pour des raisons de sécurité, seuls les utilisateurs avec le droit de modifier les filtres antiabus peuvent utiliser cette interface.',
 	'abusefilter-warning' => "<big>'''Avertissement'''</big> : Cette action a été automatiquement identifiée comme nuisible.
 Les modifications non-constructives seront rapidement annulées et les âneries répétées ou outrageantes provoqueront le blocage de votre compte ou de votre adresse IP.
-Si vous êtes convaincu{{GENDER:||e|(e)}} que votre modification est constructive, vous pouvez la soumettre une nouvelle fois pour la confirmer.
-Voici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1", # Fuzzy
-	'abusefilter-disallowed' => 'Cette action a été automatiquement identifiée comme nuisible et a donc été empêchée.
-Si vous êtes convaincu{{GENDER:||e|(e)}} que votre modification était constructive, veuillez contacter un administrateur et l’informer de ce que vous avez essayé de faire.
-Voici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1', # Fuzzy
+Si vous êtes convaincu{{GENDER:||e|(e)}} que cette action est constructive, vous pouvez la soumettre une nouvelle fois pour la confirmer.
+Voici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1",
+	'abusefilter-disallowed' => 'Cette action a été automatiquement identifiée comme nuisible, et a donc été empêchée.
+Si vous êtes convaincu{{GENDER:||e|(e)}} que votre action était constructive, veuillez contacter un administrateur et l’informer de ce que vous avez essayé de faire.
+Voici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1',
 	'abusefilter-blocked-display' => 'Cette action a été automatiquement identifée comme nuisible
 et vous avez déjà été empêché de l’exécuter.
 De plus, pour protéger {{SITENAME}}, votre compte utilisateur et toutes les adresses IP associées ont été bloqués contre toute modification.
@@ -13822,12 +13831,12 @@ $messages['he'] = array(
 	'abusefilter-warning' => "'''אזהרה''': פעולה זו זוהתה באופן אוטומטי כמזיקה.
 עריכות שאינן מועילות ישוחזרו במהרה,
 ועריכות גסות או חזרה על עריכות לא מועילות יגרמו לחסימת החשבון או כתובת ה־IP שלכם.
-אם אתם סבורים שעריכה זו מועילה, תוכלו ללחוץ על \"שמירה\" שוב כדי לאמת אותה.
-תיאור קצר של החוק שפעולתכם הפרה: \$1", # Fuzzy
+אם אתם סבורים שפעולה זו מועילה, תוכלו לאשר אותה באמצעות שליחה חוזרת.
+תיאור קצר של החוק שפעולתכם הפרה: $1",
 	'abusefilter-disallowed' => 'פעולה זו זוהתה באופן אוטומטי כמזיקה,
 ולכן נחסמה.
-אם נראה לכם שעריכתכם הייתה מועילה, אנא צרו קשר עם אחד ממפעילי מערכת, והודיעו לו מה אתם מנסים לעשות.
-תיאור קצר של החוק שפעולתכם הפרה: $1', # Fuzzy
+אם לדעתכם פעולתכם הייתה מועילה, אנא צרו קשר עם אחד ממפעילי מערכת, והודיעו לו מה אתם מנסים לעשות.
+תיאור קצר של החוק שפעולתכם הפרה: $1',
 	'abusefilter-blocked-display' => 'פעולה זו זוהתה באופן אוטומטי כמזיקה,
 והפעלתה נמנעה.
 בנוסף, כדי להגן על {{SITENAME}}, חשבון המשתמש שלכם וכל כתובות ה־IP המשויכות לו נחסמו לעריכה.
@@ -13855,6 +13864,7 @@ $messages['he'] = array(
 	'right-abusefilter-log-private' => 'הצגת רשומות יומן של מסנני השחתה שסומנו כפרטיות',
 	'right-abusefilter-hide-log' => 'הסתרת רשומות ביומן ההשחתה',
 	'right-abusefilter-hidden-log' => 'צפייה ברשומות נסתרות ביומן ההשחתה',
+	'right-abusefilter-modify-global' => 'יצירה או שינוי של מסנני השחתות',
 	'action-abusefilter-modify' => 'לשנות את מסנני ההשחתות',
 	'action-abusefilter-view' => 'לצפות במסנני ההשחתות',
 	'action-abusefilter-log' => 'לצפות ביומן ההשחתות',
@@ -14013,6 +14023,7 @@ $messages['he'] = array(
 	'abusefilter-edit-bad-tags' => 'תגית אחת או יותר מאלו שצוינו אינה תקינה.
 על התגיות להיות קצרות, והן אינן יכולות להכיל תווים מיוחדים.',
 	'abusefilter-edit-notallowed' => 'אינכם מורשים ליצור או לערוך מסנני השחתות',
+	'abusefilter-edit-notallowed-global' => 'אינכם מורשים ליצור או לערוך מסנני השחתות גלובליים',
 	'abusefilter-edit-builder-select' => 'בחרו באפשרות עם הסמן כדי להוסיף אותה',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'אופרטורים חשבוניים',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'חיבור (+)',
@@ -14635,11 +14646,10 @@ Ovo sučelje prikazuje popis definiranih filtara, i omogućuje vam da ih promije
 	'abusefilter-warning' => "'''Upozorenje''': Ova akcija je automatski identificirana kao štetna.
 Nesvrhovita uređivanja biti će brzo uklonjena,
 a prekomjerno ili ponovljeno nesvrhovito uređivanje će uzrokovati da će vaš račun ili IP adresa biti blokirana.
-Ukoliko vjerujete da je vaše uređivanje smisleno, možete ponovo kliknuti Submit da ga potvrdite.
+Ukoliko vjerujete da je vaše uređivanje smisleno, možete ga ponovo poslati da ga potvrdite.
 Kratak opis pravila sprječavanja zloporaba koji se podudara s vašim uređivanjem je: $1",
-	'abusefilter-disallowed' => 'Ova akcija je automatski identificirana kao štetna,
-pa je stoga onemogućena.
-Ako vjerujete da je uređivanje smisleno, molimo kontaktirajte administratora, i obavijestite ga o tome što ste pokušali učiniti.
+	'abusefilter-disallowed' => 'Ova akcija je automatski identificirana kao štetna, pa je stoga onemogućena.
+Ako vjerujete da je uređivanje smisleno, molimo kontaktirajte administratora i obavijestite ga o tome što ste pokušali učiniti.
 Kratak opis pravila sprječavanja zlouporabe koji se podudara s vašim uređivanjem je: $1',
 	'abusefilter-blocked-display' => 'Ova je akcija automatski identificirana kao štetna,
 stoga ste spriječeni u njenom izvršavanju.
@@ -14667,8 +14677,10 @@ Opis pravila: $1',
 	'right-abusefilter-modify-restricted' => 'Izmijeni filtre zloporaba s ograničenim akcijama',
 	'right-abusefilter-revert' => 'Vrati sve promjene koje zadovoljavaju dani filtar',
 	'right-abusefilter-view-private' => 'Prikaži filtre zloporaba označene kao privatne',
+	'right-abusefilter-log-private' => 'Vidi zapise evidencije označene kao privatne',
 	'right-abusefilter-hide-log' => 'Sakrij zapise iz evidencije filtra zloporaba',
 	'right-abusefilter-hidden-log' => 'Prikaži skrivene zapise iz evidencije filtra zloporaba',
+	'right-abusefilter-modify-global' => 'Stvori ili promijeni globalni filtar zloporaba',
 	'action-abusefilter-modify' => 'promijeni filtar zloporaba',
 	'action-abusefilter-view' => 'vidi filtre zloporabe',
 	'action-abusefilter-log' => 'pregled evidencije zloporabe',
@@ -14683,6 +14695,7 @@ Opis pravila: $1',
 	'abusefilter-log-search-user' => 'Suradnik:',
 	'abusefilter-log-search-filter' => 'Filtar ID:',
 	'abusefilter-log-search-title' => 'Naslov:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Traži',
 	'abusefilter-log-entry' => '$1: $2 pokrenuo je filtar zloporabe, vršeći radnju "$3" na $4.
 Poduzete radnje: $5;
@@ -14706,6 +14719,8 @@ Opis filtra: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'Evidencija zloporaba',
 	'abusefilter-log-linkoncontribs-text' => 'Evidencija zloporaba ovog suradnika',
 	'abusefilter-log-hidden' => '(zapis je skriven)',
+	'abusefilter-log-hidden-implicit' => '(skriveno jer je inačica obrisana)',
+	'abusefilter-log-cannot-see-details' => 'Nemate dopuštenje vidjeti potankosti ovog zapisa.',
 	'abusefilter-log-details-hidden' => 'Ne možete vidjeti detalje ovog unosa jer je skriven od javnog pogleda.',
 	'abusefilter-log-hide-legend' => 'Sakrij zapis u evidenciji',
 	'abusefilter-log-hide-id' => 'Identifikacijski broj zapisa:',
@@ -14714,6 +14729,7 @@ Opis filtra: $7 ($8)',
 	'abusefilter-log-hide-forbidden' => 'Nemate dopuštenje za skrivanje zapisa iz evidencije zloporaba.',
 	'abusefilter-logentry-suppress' => 'sakrij "[[$1]]"',
 	'abusefilter-logentry-unsuppress' => 'otkrij "[[$1]]"',
+	'logentry-abusefilter-hit' => '$1 je pokrenuo filtar $4, izvodeći "$5" na stranici $3. Akcija poduzeta: $6 ($7)',
 	'abusefilter-management' => 'Upravljanje filtrima zloporaba',
 	'abusefilter-list' => 'Svi filtri',
 	'abusefilter-list-id' => 'ID filtra',
@@ -14726,6 +14742,7 @@ Opis filtra: $7 ($8)',
 	'abusefilter-list-details' => 'Detalji',
 	'abusefilter-list-limit' => 'Stavki po stranici:',
 	'abusefilter-list-lastmodified' => 'Zadnje uređivanje',
+	'abusefilter-list-group' => 'Skupina filtara',
 	'abusefilter-hidden' => 'Privatno',
 	'abusefilter-unhidden' => 'Javno',
 	'abusefilter-enabled' => 'Omogućeno',
@@ -14740,6 +14757,9 @@ Opis filtra: $7 ($8)',
 	'abusefilter-list-options-deleted-only' => 'Prikaži samo obrisane filtre',
 	'abusefilter-list-options-deleted-hide' => 'Sakrij obrisane filtre',
 	'abusefilter-list-options-deleted-show' => 'Uključi obrisane filtre',
+	'abusefilter-list-options-scope' => 'Prikaži filtre od:',
+	'abusefilter-list-options-scope-local' => 'Lokalni projekt',
+	'abusefilter-list-options-scope-global' => 'Globalna pravila',
 	'abusefilter-list-options-disabled' => 'Onemogućeni filtri:',
 	'abusefilter-list-options-hidedisabled' => 'Sakrij onemogućene filtre',
 	'abusefilter-list-options-submit' => 'Osvježi',
@@ -14754,6 +14774,7 @@ Opis filtra: $7 ($8)',
 	'abusefilter-reautoconfirm-done' => 'Autoconfirmed status je vraćen',
 	'abusefilter-status' => 'Od {{PLURAL:$1|zadnje akcije|zadnje $1 akcije|zadnjih $akcija}}, $2 ($3%) {{PLURAL: $2|dostigla je|dostigle su|dostigle su}} granicu od $4, i $5 ($6%) {{plural: $5|se podudara|se podudaraju|se podudaraju}} s jednim od trenutno omogućenih filtara.',
 	'abusefilter-edit-subtitle' => 'Uređujete filtar $1',
+	'abusefilter-edit-subtitle-new' => 'Stvaram filtar',
 	'abusefilter-edit-oldwarning' => '<strong>Uređujete staru inačicu ovog filtra.
 Iskazane su statistike za najnoviju inačicu filtra.
 Ako spremite svoje promjene, prebrisati ćete sve promjene nastale od inačice koju upravo uređujete.</strong> &bull;
@@ -14768,11 +14789,12 @@ Dostignuta je granicu od podudaranja s više od $1% akcija suradnika.",
 	'abusefilter-edit-id' => 'ID filtra:',
 	'abusefilter-edit-description' => "Opis:
 :''(javno vidljivo)''",
+	'abusefilter-edit-group' => 'Skupina filtara:',
 	'abusefilter-edit-flags' => 'Zastavice:',
 	'abusefilter-edit-enabled' => 'Omogući ovaj filtar',
 	'abusefilter-edit-deleted' => 'Označi izbrisanim',
 	'abusefilter-edit-hidden' => 'Sakrij detalje ovog filtra iz javnog prikaza',
-	'abusefilter-edit-global' => 'Primijeni filtar globalno', # Fuzzy
+	'abusefilter-edit-global' => 'Globalni filtar',
 	'abusefilter-edit-rules' => 'Uvjeti:',
 	'abusefilter-edit-notes' => "Napomene:
 :''(privatno)''",
@@ -14823,6 +14845,7 @@ Zamolite suradnika s pravima dodavanja ograničenih akcija da napravi izmjene um
 	'abusefilter-edit-bad-tags' => 'Jedna ili više oznaka koje ste naveli nije ispravna.
 Oznaka mora biti kratka, i ne bi smjela sadržavati posebne znakove.',
 	'abusefilter-edit-notallowed' => 'Vi ne smijete stvarati ili uređivati filtre zloporaba',
+	'abusefilter-edit-notallowed-global' => 'Ne možete stvarati ili uređivati filtre zloporaba',
 	'abusefilter-edit-builder-select' => 'Odaberite opciju da biste ju dodali na mjestu pokazivača',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetički operatori',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Zbrajanje (+)',
@@ -14867,6 +14890,7 @@ Oznaka mora biti kratka, i ne bi smjela sadržavati posebne znakove.',
 	'abusefilter-edit-builder-funcs-substr' => 'Podstring (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'Pozicija podstringa u stringu/nizu znakova (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'Zamijeni podstring nekim nizom znakova (str_replace)',
+	'abusefilter-edit-builder-funcs-rescape' => "Označi niz znakova (''string'') takvim u regularnom izrazu (rescape)",
 	'abusefilter-edit-builder-funcs-set_var' => 'Postavi varijablu (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Varijable',
 	'abusefilter-edit-builder-vars-accountname' => 'Naziv suradničkog računa (u trenutku stvaranja računa)',
@@ -14895,6 +14919,7 @@ Oznaka mora biti kratka, i ne bi smjela sadržavati posebne znakove.',
 	'abusefilter-edit-builder-vars-user-age' => 'Starost suradničkog računa',
 	'abusefilter-edit-builder-vars-user-name' => 'Ime suradničkog računa',
 	'abusefilter-edit-builder-vars-user-groups' => 'Grupe (uključujući i implicitne) u kojima je suradnik',
+	'abusefilter-edit-builder-vars-user-blocked' => 'Ako je suradnik blokiran',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Vrijeme adrese e-pošte je potvrđeno',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Posljednjih deset suradnika koji su uređivali ovu stranicu',
 	'abusefilter-edit-builder-vars-all-links' => 'Sve vanjske poveznice u novom tekstu',
@@ -14906,6 +14931,8 @@ Oznaka mora biti kratka, i ne bi smjela sadržavati posebne znakove.',
 	'abusefilter-edit-builder-vars-new-html' => 'Raščlanjen HTML izvor nove revizije',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Uredi razinu zaštite stranice',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Premještena razina zaštite stranice',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Zaštiti stranicu',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'Zaštiti datoteku',
 	'abusefilter-edit-builder-vars-old-text-stripped' => "Stari sadržaj stranice, bez ''markup tagova'' (HTML ili XML)",
 	'abusefilter-edit-builder-vars-old-links' => 'Poveznice na stranici, prije uređivanja',
 	'abusefilter-edit-builder-vars-old-html' => 'Wikitekst stare stranice, "parsiran" u HTML',
@@ -14971,7 +14998,7 @@ Molimo provjerite ih pažljivo, i kliknite na "Potvrdi" kako biste potvrdili svo
 	'abusefilter-revert-success' => 'Vratili ste radnje poduzete od strane filtra zloporabe tijekom [[Special:AbuseFilter/$1|filtriranja $1]].',
 	'abusefilter-revert-reason' => 'Automatsko vraćanje svih radnji poduzetih od strane filtra zloporabe tijekom filtriranja $1.
 Razlog dan: $2',
-	'abusefilter-revert-reasonfield' => 'Razlog za vraćanje:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Razlog:',
 	'abusefilter-test' => 'Testiraj filtar s prethodnim uređivanjem',
 	'abusefilter-test-intro' => 'Ova stranica omogućava provjeru filtra unešenog u donji okvir sa zadnjom $ 1 {{PLURAL:$1|promjenom|promjenama}}.
 Za učitavanje postojećeg filtra, upišite ID filtra u okvir ispod okvira za uređenjivanje i kliknite tipku "Učitaj".',
@@ -15017,7 +15044,7 @@ Za detaljnije informacije, vidi [[Special:AbuseFilter/history|popis]] nedavnih i
 	'abusefilter-log-noresults' => 'Nema rezultata',
 	'abusefilter-diff-title' => 'Razlike između inačica',
 	'abusefilter-diff-item' => 'Stavka',
-	'abusefilter-diff-version' => 'Inačica stranice $1 suradnika $2', # Fuzzy
+	'abusefilter-diff-version' => 'Inačica stranice od $1 {{GENDER:$3|suradnika|suradnice}} $2',
 	'abusefilter-diff-info' => 'Osnovni podaci',
 	'abusefilter-diff-pattern' => 'Filtar uvjeta',
 	'abusefilter-diff-invalid' => 'Nemoguće je dohvatiti tražene inačice',
@@ -18045,9 +18072,9 @@ $messages['ja'] = array(
 被害程度が大きい破壊的編集や頻繁な破壊行為は、アカウントまたはIPアドレスのブロックにつながります。
 行なった編集が確かに建設的だと考える場合は、もう一度投稿してください。
 操作に対して発動した違反規則の概略は次の通りです: $1", # Fuzzy
-	'abusefilter-disallowed' => '行われた操作は自動的に有害と判断されたため実行できませんでした。
-行なった編集が確かに建設的であると考える場合は、管理者に連絡をして、行なおうとしていた操作について知らせてください。
-操作に対して発動した違反規則の概略は次の通りです：$1', # Fuzzy
+	'abusefilter-disallowed' => '行なった操作は、有害であると自動的に判断されたため実行できませんでした。
+確かに建設的な操作であると考える場合は、行なおうとしていた操作について管理者にお知らせください。
+操作に対して発動した違反規則の概略は以下の通りです: $1',
 	'abusefilter-blocked-display' => '行なわれた操作は自動的に有害と判断されたため、実行を中断しました。
 同時に{{SITENAME}}を保護するために、利用者アカウントと関連するすべてのIPアドレスが投稿ブロックされました。
 この措置が誤りである場合は、管理者に連絡してください。
@@ -20043,6 +20070,7 @@ Dä es för däm Meßbruchsfelter sing Akßjuhne reserveet.',
 	'right-abusefilter-log-private' => 'As „$prevaat“ makeete Endrääsch em Logbooch beloore',
 	'right-abusefilter-hide-log' => 'Enndrääsch em Logbooch vum Meßbruchsfelter vershteishe',
 	'right-abusefilter-hidden-log' => 'Verstoche Enndrääsch em Logbooch vum Meßbruchsfelter beloore',
+	'right-abusefilter-modify-global' => 'De alljemeine Meßbruchsfeltere aanlääje udder verändere',
 	'action-abusefilter-modify' => 'Do darfs kein Meßbruchsfeltere ändere',
 	'action-abusefilter-view' => 'Do darfs kein Meßbruchsfeltere aanbeloore',
 	'action-abusefilter-log' => 'De darfs nit en dä Meßbruchsfeltere ier Logbooch erin loore',
@@ -20214,6 +20242,7 @@ donn ene Metmaacher dröm frore, dat ze maache, dä dat Rääsch hät.',
 	'abusefilter-edit-bad-tags' => 'Eine udder mieh vun dä Makeerung sin verkeeht, di De aanjejovve häs.
 Makeerunge sullte koot sin, un et sullte kein Sönderzeijshe dren vörkumme.',
 	'abusefilter-edit-notallowed' => 'Do häß nit dat Rääsch, Meßbruchßfelter aanzelääje udder öm_ze_ändere',
+	'abusefilter-edit-notallowed-global' => 'Do häs nit et Rääsch, alljemeine Meßbruchsfeltere aanzelääje udder se ze verändere',
 	'abusefilter-edit-builder-select' => 'Donn ein fun dä Müjjeleschkeite uß dä Leß hee ußwähle, öm se onge aan dä Possizjuhn enzefööje, woh de jraadt aam Schriive bes, woh Dinge Kööser shteiht.',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Zom Räschne',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'zosamme zälle (<code>+</code>)',
@@ -20301,6 +20330,7 @@ Makeerunge sullte koot sin, un et sullte kein Sönderzeijshe dren vörkumme.',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Dä Sigg iere Schotz jäje et Ändere',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Dä Sigg iere Schotz jäje et Ömnenne',
 	'abusefilter-edit-builder-vars-restrictions-create' => 'Schöz di Sigg jääje Neu-Aanlääje',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'Der Schotz för et Huhlaade för di Dattei',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Dä vörijje Tex op dä Sigg, ävver nackisch, oohne Ußzeischnunge',
 	'abusefilter-edit-builder-vars-old-links' => 'Links, die en dä ahle Sigg wore, noch för em Ändere',
 	'abusefilter-edit-builder-vars-old-html' => 'Dä vörijje Wikitex op dä Sigg, ävver ömjemoodelt en <i lang="en">HTML</i>',
@@ -22641,12 +22671,11 @@ $messages['mk'] = array(
 	'abusefilter-warning' => "'''Предупредување''': Ова дејство е автоматски утврдено како штетно.
 Неконструктивните уредувања ќе бидат набргу отстранети,
 а глупавите или упорни некоструктивни уредувања ќе доведат до блокирање на вашата сметка или IP-адреса.
-Ако сметате дека ова уредување е конструктивно, можете повторно да го поднесете за да го потврдите.
-Еве краток опис на правилото за злоупотреби според кое беше утврдено дека сте направиле престап: $1", # Fuzzy
-	'abusefilter-disallowed' => 'Ова дејство е автоматски утврдено како штетно,
-и затоа не е дозволено.
-Ако сметате дека вашето уредување беше конструктивно, контактирајте администратор, и кажете му што впрочем сте сакале да направите.
-Еве краток опис на правилото за злоупотреби според кое беше утврдено дека сте направиле престап: $1', # Fuzzy
+Ако сметате дека оваа постапка е конструктивна, можете повторно да ја поднесете за да ја потврдите.
+Еве краток опис на правилото за злоупотреби според кое беше утврдено дека сте направиле престап: $1",
+	'abusefilter-disallowed' => 'Ова дејство е автоматски утврдено како штетно, и затоа не е дозволено.
+Ако сметате дека вашето уредување беше конструктивно, обратете се администратор, и кажете му што впрочем сте сакале да направите.
+Еве краток опис на правилото за злоупотреби според кое беше утврдено дека сте направиле престап: $1',
 	'abusefilter-blocked-display' => 'Ова дејство е автоматски утврдено како штетно,
 и забрането Ви е да го извршите.
 Покрај ова, за да се заштити {{SITENAME}}, вашата корисничка сметка и сите поврзани IP-адреси се блокирани од уредување.
@@ -25666,6 +25695,52 @@ $messages['ne'] = array(
 	'abusefilter-import-submit' => 'आँकड़ा ल्याउने',
 );
 
+/** Newari (नेपाल भाषा)
+ * @author Eukesh
+ */
+$messages['new'] = array(
+	'abusefilter-log-search-submit' => 'मालादिसँ',
+	'abusefilter-log-diff' => 'पाःगु',
+	'abusefilter-log-noactions' => 'मदूगु',
+	'abusefilter-list-edit' => 'सम्पादन',
+	'abusefilter-list-details' => 'विवरण',
+	'abusefilter-list-limit' => 'ल्या प्रति पौ',
+	'abusefilter-hidden' => 'निजी',
+	'abusefilter-new' => 'न्हुगु फिल्तर दयेकादिसँ',
+	'abusefilter-return' => 'फिल्तर व्यवस्थापनय् लितझासँ',
+	'abusefilter-status-global' => 'ग्लोबल',
+	'abusefilter-edit-tools' => 'ज्याभः',
+	'abusefilter-edit-test-link' => 'थ्व फिल्तरयात नकतिनिया सम्पादननाप जांच यानादिसँ',
+	'abusefilter-edit-export' => 'थ्व फिल्तरयात मेगु विकिइ निर्यात यानादिसँ',
+	'abusefilter-edit-syntaxok' => 'सिन्त्याक्स इरर मलूगु',
+	'abusefilter-edit-syntaxerr' => 'सिन्त्याक्स इरर लुतः: $1',
+	'abusefilter-edit-notallowed' => 'छिके एब्युज फिल्तर दयेकिगु वा सम्पादन यायेगु अधिकार मदु',
+	'abusefilter-edit-notallowed-global' => 'छिके ग्लोबल एब्युज फिल्तर दयेकिगु वा सम्पादन यायेगु अधिकार मदु',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'तनेज्या (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'लिकायेज्या (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'गुणन (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'बायेज्या (/)',
+	'abusefilter-edit-builder-op-comparison-equal' => 'ज्वलाःगु (==)',
+	'abusefilter-edit-builder-op-comparison-lt' => 'स्वया म्हो (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'स्वया अप्व (>)',
+	'abusefilter-edit-builder-op-bool-and' => 'व् (&)',
+	'abusefilter-edit-builder-op-bool-or' => 'वा (|)',
+	'abusefilter-edit-builder-group-misc' => 'मेमेगु',
+	'abusefilter-edit-builder-misc-in' => '(in) पाठय् दूगु',
+	'abusefilter-edit-builder-vars-delta' => 'सम्पादनय् पाःगु आकार',
+	'abusefilter-edit-builder-vars-newsize' => 'न्हुगु पौ साइज',
+	'abusefilter-edit-builder-vars-oldsize' => 'पुलांगु पौ साइज',
+	'abusefilter-edit-builder-vars-removedlines' => 'सम्पादनं लिकाःगु लाइन',
+	'abusefilter-edit-builder-vars-summary' => 'सम्पादनया सार/कारण',
+	'abusefilter-edit-builder-vars-article-id' => 'पौ ID',
+	'abusefilter-edit-builder-vars-article-ns' => 'पौ नेमस्पेस',
+	'abusefilter-edit-builder-vars-article-text' => 'पौया नां (नेमस्पेस मदयेक)',
+	'abusefilter-edit-builder-vars-article-prefixedtext' => 'पूवंगु पौया नां',
+	'abusefilter-history-user' => 'छ्य्‌लामि',
+	'abusefilter-history-diff' => 'हिला',
+	'abusefilter-revert-reasonfield' => 'कारण:',
+);
+
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
@@ -25693,12 +25768,12 @@ Het filtersysteem past automatische heuristiek toe op alle handelingen.
 Via dit scherm worden alle ingestelde filters weergegeven en kunnen ze aangepast worden.',
 	'abusefilter-mustbeeditor' => 'Om veiligheidsredenen hebben alleen gebruikers met het recht om filters te wijzigen de mogelijkheid deze interface te gebruiken.',
 	'abusefilter-warning' => "'''Waarschuwing''': deze handeling is automatisch geïdentificeerd als schadelijk.
-Onconstructieve bewerkingen worden snel teruggedraaid, en herhaald onconstructief bewerken eindigt in een blokkade van uw gebruiker of uw IP-adres.
-Als u denkt dat deze bewerking wel constructief is, bevestig uw handeling dan opnieuw om deze te bevestigen.
-Een korte beschrijving van de regel op basis waarvan uw handeling is tegengehouden: $1", # Fuzzy
+Onconstructieve handeling worden snel teruggedraaid, en herhaald onconstructief bewerken eindigt in een blokkade van uw gebruiker of uw IP-adres.
+Als u denkt dat deze handeling wel constructief is, bevestig uw handeling dan opnieuw.
+Een korte beschrijving van de regel op basis waarvan uw handeling is tegengehouden: $1",
 	'abusefilter-disallowed' => 'Deze handeling is automatisch geïdentificeerd als schadelijk, en daarom niet toegelaten.
-Als u denkt dat uw bewerking wel constructief was, rapporteer dan aan de beheerder wat u probeerde te doen.
-Een korte beschrijving van de regel op basis waarvan uw bewerking is tegengehouden volgt nu: $1', # Fuzzy
+Als u denkt dat uw handeling wel constructief was, rapporteer dan aan de beheerder wat u probeerde te doen.
+Een korte beschrijving van de regel op basis waarvan uw handeling is tegengehouden volgt nu: $1',
 	'abusefilter-blocked-display' => 'Deze handeling is automatisch geïdentificeerd als schadelijk. Daarom is deze niet uitgevoerd.
 Om {{SITENAME}} te beschermen zijn uw gebruiker en alle bijbehorende IP-adressen geblokkeerd.
 Als deze maatregel onterecht is genomen, neem dan contact op met een beheerder.
@@ -25967,9 +26042,9 @@ Labels moeten kort zijn en mogen geen speciale tekens bevatten.',
 	'abusefilter-edit-builder-vars-user-blocked' => 'Of de gebruiker geblokkeerd is',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Tijdstip e-mailbevestiging',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Laatste tien bewerkers van de pagina',
-	'abusefilter-edit-builder-vars-all-links' => 'Alle externe verwijzingen in de nieuwe tekst',
-	'abusefilter-edit-builder-vars-added-links' => 'Alle externe verwijzingen die in deze bewerking zijn toegevoegd',
-	'abusefilter-edit-builder-vars-removed-links' => 'Alle bij deze bewerking toegevoegde externe verwijzingen zijn verwijderd',
+	'abusefilter-edit-builder-vars-all-links' => 'Alle externe koppelingen in de nieuwe tekst',
+	'abusefilter-edit-builder-vars-added-links' => 'Alle externe koppelingen die in deze bewerking zijn toegevoegd',
+	'abusefilter-edit-builder-vars-removed-links' => 'Alle bij deze bewerking toegevoegde externe koppelingen zijn verwijderd',
 	'abusefilter-edit-builder-vars-old-text' => 'Wikitekst van de oude pagina vóór de bewerking',
 	'abusefilter-edit-builder-vars-new-text' => 'Wikitekst van de nieuwe pagina ná de bewerking',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nieuwe paginatekst, ontdaan van opmaakcode',
@@ -25979,7 +26054,7 @@ Labels moeten kort zijn en mogen geen speciale tekens bevatten.',
 	'abusefilter-edit-builder-vars-restrictions-create' => 'Aanmaakbeveiliging voor de pagina',
 	'abusefilter-edit-builder-vars-restrictions-upload' => 'Uploadbeveiliging van het bestand',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Tekst oude pagina, ontdaan van alle opmaak',
-	'abusefilter-edit-builder-vars-old-links' => 'Verwijzingen in de pagina voor de bewerking',
+	'abusefilter-edit-builder-vars-old-links' => 'Koppelingen in de pagina voor de bewerking',
 	'abusefilter-edit-builder-vars-old-html' => 'Wikitext oude pagina in HTML',
 	'abusefilter-edit-builder-vars-minor-edit' => 'Of de bewerking wel of niet als klein gemarkeerd is',
 	'abusefilter-edit-builder-vars-file-sha1' => 'SHA1-hashcode van de bestandsinhoud',
@@ -26108,12 +26183,12 @@ Kopieer de tekst die in het bewerkingsvenster verschijnt naar dit bewerkingsvens
  */
 $messages['nl-informal'] = array(
 	'abusefilter-warning' => "'''Waarschuwing''': deze handeling is automatisch geïdentificeerd als schadelijk.
-Onconstructieve bewerkingen worden snel teruggedraaid, en herhaald onconstructief bewerken eindigt in een blokkade van je gebruiker of je IP-adres.
-Als je denkt dat deze bewerking wel constructief is, bevestig je handeling dan opnieuw om deze te bevestigen.
-Een korte beschrijving van de regel op basis waarvan je handeling is tegengehouden: $1", # Fuzzy
+Onconstructieve handeling worden snel teruggedraaid, en herhaald onconstructief bewerken eindigt in een blokkade van je gebruiker of je IP-adres.
+Als je denkt dat deze handeling wel constructief is, bevestig je handeling dan opnieuw.
+Een korte beschrijving van de regel op basis waarvan uw handeling is tegengehouden: $1",
 	'abusefilter-disallowed' => 'Deze handeling is automatisch geïdentificeerd als schadelijk, en daarom niet toegelaten.
-Als je denkt dat je bewerking wel constructief was, rapporteer dan aan de beheerder wat je probeerde te doen.
-Een korte beschrijving van de regel op basis waarvan je bewerking is tegengehouden volgt nu: $1', # Fuzzy
+Als je denkt dat je handeling wel constructief was, rapporteer dan aan de beheerder wat je probeerde te doen.
+Een korte beschrijving van de regel op basis waarvan je handeling is tegengehouden volgt nu: $1',
 	'abusefilter-blocked-display' => 'Deze handeling is automatisch geïdentificeerd als schadelijk. Daarom is deze niet uitgevoerd.
 Om {{SITENAME}} te beschermen zijn je gebruiker en alle bijbehorende IP-adressen geblokkeerd.
 Als deze maatregel onterecht is genomen, neem dan contact op met een beheerder.
@@ -33738,6 +33813,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-list-details' => 'Детаљи',
 	'abusefilter-list-limit' => 'Ставки по страници:',
 	'abusefilter-list-lastmodified' => 'Последња измена',
+	'abusefilter-list-group' => 'Група филтера',
 	'abusefilter-hidden' => 'Приватно',
 	'abusefilter-unhidden' => 'Јавно',
 	'abusefilter-enabled' => 'Омогућено',
@@ -33752,6 +33828,9 @@ $messages['sr-ec'] = array(
 	'abusefilter-list-options-deleted-only' => 'Прикажи само обрисане филтере',
 	'abusefilter-list-options-deleted-hide' => 'Сакриј обрисане филтере',
 	'abusefilter-list-options-deleted-show' => 'Укључи и обрисане филтере',
+	'abusefilter-list-options-scope' => 'Прикажи филтере од:',
+	'abusefilter-list-options-scope-local' => 'Локални вики',
+	'abusefilter-list-options-scope-global' => 'Глобална правила',
 	'abusefilter-list-options-disabled' => 'Онемогућени филтери:',
 	'abusefilter-list-options-hidedisabled' => 'Сакриј онемогућене филтере',
 	'abusefilter-list-options-submit' => 'Ажурирај',
@@ -33766,6 +33845,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-reautoconfirm-done' => 'Самопотврђени статус је враћен',
 	'abusefilter-status' => 'Од {{PLURAL:$1|последње радње|последње $1 радње|последњих $1 радњи}}, $2 ($3%) {{PLURAL:$2|је достигла|су достигле|је достигло}} ограничење од $4, а $5 ($6%) {{PLURAL:$5|се подудара|се подударају|се подударају}} с једним од тренутно омогућених филтера.',
 	'abusefilter-edit-subtitle' => 'Уређујете филтер $1',
+	'abusefilter-edit-subtitle-new' => 'Прављење филтера',
 	'abusefilter-edit-oldwarning' => '<strong>Уређујете старо издање овог филтера.
 Исказане статистике су за најновије издање.
 Ако сачувате, обрисаћете све измене настале од ревизије коју управо уређујете.</strong> &bull;
@@ -33780,11 +33860,12 @@ $messages['sr-ec'] = array(
 	'abusefilter-edit-id' => 'ИБ филтера:',
 	'abusefilter-edit-description' => "Опис:
 :''(јавно видљиво)''",
+	'abusefilter-edit-group' => 'Група филтера:',
 	'abusefilter-edit-flags' => 'Заставице:',
 	'abusefilter-edit-enabled' => 'Омогући овај филтер',
 	'abusefilter-edit-deleted' => 'Означи као обрисан',
 	'abusefilter-edit-hidden' => 'Сакриј детаље овог филтера из јавног приказа',
-	'abusefilter-edit-global' => 'Примени овај филтер глобално', # Fuzzy
+	'abusefilter-edit-global' => 'Глобални филтер',
 	'abusefilter-edit-rules' => 'Услови:',
 	'abusefilter-edit-notes' => "Напомене:
 :''(приватно)''",
@@ -33967,7 +34048,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-revert-search' => 'Изабери радње',
 	'abusefilter-revert-filter' => 'Филтер:',
 	'abusefilter-revert-confirm' => 'Потврди',
-	'abusefilter-revert-reasonfield' => 'Разлог:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Разлог:',
 	'abusefilter-test' => 'Тестирај филтер према претходним изменама',
 	'abusefilter-test-legend' => 'Тестирање филтера',
 	'abusefilter-test-load-filter' => 'Учитај филтер с назнаком:',
@@ -35865,7 +35946,7 @@ $messages['th'] = array(
 ตัวกรองการละเมิดกฎเป็นซอฟต์แวร์อัตโนมัติในการวิเคราะห์พฤติกรรมของการกระทำทั้งหมด
 อินเตอร์เฟซนี้แสดงรายการของตัวกรองที่กำหนดไว้และสามารถแก้ไขได้',
 	'abusefilter-mustbeeditor' => 'เพื่อความปลอดภัย เฉพาะผู้ใช้ที่มีสิทธิแก้ไขตัวกรองการละเมิดกฎเท่านั้นที่สามารถใช้อินเตอร์เฟซนี้',
-	'abusefilter-warning' => "'''คำเตือน''': การกระทำนี้ได้รับการระบุโดยอัตโนมัติว่าไม่เหมาะสม
+	'abusefilter-warning' => "'''คำเตือน''': การกระทำนี้ถูกระบุว่าไม่เหมาะสมอัตโนมัติ
  การแก้ไขที่ไม่เหมาะสมหรือเป็นภัยต่อระบบจะถูกเปลี่ยนกลับโดยเร็ว
  และการแก้ไขที่ไม่เหมาะสมเป็นอย่างยิ่ง หรือเกิดขึ้นซ้ำหลายครั้งจะส่งผลให้บัญชีหรือที่อยู่ IP ของคุณถูกบล็อค
  หากคุณเชื่อว่าการแก้ไขนี้เป็นการแก้ไขที่เหมาะสมคุณสามารถคลิกส่งอีกครั้งเพื่อยืนยัน
@@ -35873,15 +35954,15 @@ $messages['th'] = array(
 	'abusefilter-disallowed' => 'ปฏิบัติการนี้ได้รับการระบุว่าไม่เหมาะสมอัตโนมัติ จึงไม่ได้รับอนุญาตให้ดำเนินการต่อ
 หากคุณเชื่อว่าการแก้ไขของคุณสร้างสรรค์ โปรดแจ้งผู้ดูแลระบบถึงสิ่งที่คุณพยายามทำ
 คำอธิบายโดยสรุปเกี่ยวกับการละเมิดกฎที่ตรงกับการกระทำของคุณ: $1', # Fuzzy
-	'abusefilter-blocked-display' => 'การดำเนินการนี้ได้รับการระบุโดยอัตโนมัติว่าไม่เหมาะสม
-และระบบได้ป้องกันการดำเนินการนั้นแล้ว
-นอกจากนี้เพื่อเป็นการปกป้องระบบ {{SITENAME}}, บัญชีผู้ใช้และทุกคนที่ใช้ที่อยู่ IP เดียวกันกับคุณได้ถูกบล็อกจากการแก้ไขแล้ว
-หากสิ่งนี้เกิดขึ้นจากความผิดพลาด โปรดติดต่อผู้ดูแลระบบ
-คำอธิบายโดยสรุปเกี่ยวกับการละเมิดกฎที่ตรงกับการกระทำของคุณเป็น : $1',
-	'abusefilter-degrouped' => 'การดำเนินการนี้ได้รับการระบุโดยอัตโนมัติว่าไม่เหมาะสม
-ดังนั้นจึงไม่ได้รับการอนุญาต และเนื่องจากบัญชีของคุณเป็นที่น่าสงสัยว่าเป็นตัวทำลายระบบ สิทธิทั้งหมดได้ถูกเพิกถอน
-หากคุณเชื่อว่าเป็นข้อผิดพลาด โปรดติดต่อผเจ้าหน้าที่พร้อมคำอธิบายของการกระทำนี้ และสิทธิของคุณอาจกลับคืนตามปกติ
-คำอธิบายสั้น ๆ เกี่ยวกับการละเมิดกฎที่ตรงกับการกระทำของคุณ: $1',
+	'abusefilter-blocked-display' => 'การดำเนินการนี้ถูกระบุว่าไม่เหมาะสมอัตโนมัติ
+และคุณถูกกันมิให้ดำเนินการ
+นอกจากนี้ เพื่อเป็นการปกป้องระบบ {{SITENAME}} บัญชีผู้ใช้ของคุณและทุกหมายเลขไอพีที่เกี่ยวข้องถูกบล็อกมิให้แก้ไขแล้ว
+หากสิ่งนี้เกิดจากข้อผิดพลาด โปรดติดต่อผู้ดูแลระบบ
+คำอธิบายโดยสรุปเกี่ยวกับการละเมิดกฎที่ตรงกับการกระทำของคุณคือ: $1',
+	'abusefilter-degrouped' => 'การดำเนินการนี้ถูกระบุว่าไม่เหมาะสมอัตโนมัติ
+ฉะนั้นจึงไม่ได้รับอนุญาต และ เนื่องจากต้องสงสัยว่าบัญชีของคุณเป็นโทษ สิทธิทั้งหมดจึงถูกเพิกถอน
+หากคุณเชื่อว่าเป็นข้อผิดพลาด โปรดติดต่อผู้ดูแลสิทธิแต่งตั้งพร้อมคำอธิบายการกระทำนี้ และคุณอาจได้รับสิทธิคืน
+คำอธิบายโดยสรุปเกี่ยวกับการละเมิดกฎที่ตรงกับการกระทำของคุณคือ: $1',
 	'abusefilter-autopromote-blocked' => 'การดำเนินการนี้ได้รับการระบุโดยอัตโนมัติว่าไม่เหมาะสมและไม่อนุญาตให้ดำเนินการต่อ
 นอกจากนี้ ตามมาตรการรักษาความปลอดภัย สิทธิพิเศษบางอย่างตามปกติของบัญชีผู้ใช้นี้ได้รับการเพิกถอนจากบัญชีของคุณชั่วคราว
 คำอธิบายสั้น ๆ เกี่ยวกับการละเมิดกฎที่ตรงกับการกระทำของคุณ: $1',
@@ -35890,7 +35971,7 @@ $messages['th'] = array(
 รายละเอียดของกฎที่ตรงกัน: $1',
 	'abusefilter-degroupreason' => 'สิทธิถูกตัวกรองการละเมิดกฎริบอัตโนมัติ
 คำอธิบายกฎ: $1',
-	'abusefilter-accountreserved' => 'ชื่อบัญชีนี้มีการสงวนไว้สำหรับการใช้งานโดยตัวกรองการละเมิดกฎ',
+	'abusefilter-accountreserved' => 'ชื่อบัญชีนี้สงวนไว้สำหรับการใช้งานโดยตัวกรองการละเมิดกฎ',
 	'right-abusefilter-modify' => 'แก้ไขตัวกรองการละเมิดกฎ',
 	'right-abusefilter-view' => 'ดูตัวกรองการละเมิดกฎ',
 	'right-abusefilter-log' => 'ดูปูมการละเมิดกฎ',
@@ -35899,6 +35980,7 @@ $messages['th'] = array(
 	'right-abusefilter-modify-restricted' => 'แก้ไขตัวกรองการละเมิดกฎด้วยปฏิบัติการที่กำหนด',
 	'right-abusefilter-revert' => 'ย้อนการเปลี่ยนแปลงโดยตัวกรองการละเมิดกฎที่กำหนดทั้งหมด',
 	'right-abusefilter-view-private' => 'ดูตัวกรองการละเมิดกฎที่กำหนดความเป็นส่วนตัวไว้',
+	'right-abusefilter-log-private' => 'ดูรายการปูมตัวกรองการละเมิดกฎที่ถูกทำครื่องหมายเป็นส่วนตัว',
 	'right-abusefilter-hide-log' => 'รายการที่ซ่อนไว้ในปูมการละเมิดกฎ',
 	'right-abusefilter-hidden-log' => 'ดูรายการปูมการละเมิดกฎที่ซ่อนอยู่',
 	'right-abusefilter-modify-global' => 'สร้างหรือแก้ไขตัวกรองการละเมิดกฎทั่วโลก',
@@ -35927,17 +36009,18 @@ $messages['th'] = array(
 	'abusefilter-log-detailedentry-global' => 'ตัวกรองทั่วไป $1',
 	'abusefilter-log-detailedentry-local' => 'ตัวกรอง $1',
 	'abusefilter-log-detailslink' => 'รายละเอียด',
+	'abusefilter-log-diff' => 'แตกต่าง',
 	'abusefilter-log-hidelink' => 'ปรับการแสดงข้อมูล',
 	'abusefilter-log-details-legend' => 'รายละเอียดสำหรับรายการบันทึก $1',
 	'abusefilter-log-details-var' => 'ตัวแปร',
 	'abusefilter-log-details-val' => 'ค่า',
-	'abusefilter-log-details-vars' => 'พารามิเตอร์การดำเนินการ',
+	'abusefilter-log-details-vars' => 'ตัวแปรเสริมการดำเนินการ',
 	'abusefilter-log-details-private' => 'ข้อมูลส่วนตัว',
 	'abusefilter-log-details-ip' => 'ที่อยู่ไอพีเดิม:',
 	'abusefilter-log-noactions' => 'ไม่มี',
 	'abusefilter-log-details-diff' => 'ความเปลี่ยนแปลงที่เกิดขึ้นจากการแก้ไข',
-	'abusefilter-log-linkoncontribs' => 'ประวัติการละเมิดกฎ',
-	'abusefilter-log-linkoncontribs-text' => 'บันทึกความไม่เหมาะสมสำหรับผู้ใช้นี้',
+	'abusefilter-log-linkoncontribs' => 'ปูมการละเมิดกฎ',
+	'abusefilter-log-linkoncontribs-text' => 'ปูมการละเมิดกฎของผู้ใช้นี้',
 	'abusefilter-log-hidden' => '(รายการถูกซ่อนไว้)',
 	'abusefilter-log-hidden-implicit' => '(ถูกซ่อนเพราะรุ่นถูกลบ)',
 	'abusefilter-log-cannot-see-details' => 'คุณไม่ได้รับอนุญาตให้เห็นรายละเอียดทุกรายการ', # Fuzzy
@@ -35949,13 +36032,15 @@ $messages['th'] = array(
 	'abusefilter-log-hide-forbidden' => 'คุณไม่ได้รับสิทธิ์ในการซ่อนรายการของบันทึกข้อมูลการละเมิดกฎ',
 	'abusefilter-logentry-suppress' => 'ซ่อน "[[$1]]"',
 	'abusefilter-logentry-unsuppress' => 'ไม่ซ่อน "[[$1]]"',
+	'logentry-abusefilter-hit' => '$1 เรียกคำสั่งจาก $4 ขณะกระทำการ "$5" บน $3
+สิ่งที่ตัวกรองดำเนินการ: $6 ($7)',
 	'abusefilter-management' => 'การจัดการตัวกรองการละเมิดกฎ',
 	'abusefilter-list' => 'ตัวกรองทั้งหมด',
-	'abusefilter-list-id' => 'ID ตัวกรอง:',
+	'abusefilter-list-id' => 'หมายเลขประจำตัวกรอง:',
 	'abusefilter-list-status' => 'สถานะ',
 	'abusefilter-list-public' => 'รายละเอียดต่อสาธารณะ',
 	'abusefilter-list-consequences' => 'ผลที่เกิดตามมา',
-	'abusefilter-list-visibility' => 'การแสดงให้เห็น',
+	'abusefilter-list-visibility' => 'ทัศนวิสัย',
 	'abusefilter-list-hitcount' => 'จำนวนการกด',
 	'abusefilter-list-edit' => 'แก้ไข',
 	'abusefilter-list-details' => 'รายละเอียด',
@@ -35978,18 +36063,19 @@ $messages['th'] = array(
 	'abusefilter-list-options-deleted-show' => 'แสดงตัวกรองที่ถูกลบ',
 	'abusefilter-list-options-scope' => 'แสดงตัวกรองจาก:',
 	'abusefilter-list-options-scope-local' => 'วิกิท้องถิ่น',
-	'abusefilter-list-options-disabled' => 'ตัวกรองที่ปิดการใช้งาน:',
-	'abusefilter-list-options-hidedisabled' => 'ซ่อนตัวกรองที่ปิดการใช้งาน',
+	'abusefilter-list-options-scope-global' => 'กฎทั่วโลก',
+	'abusefilter-list-options-disabled' => 'ตัวกรองที่ปิดใช้งาน:',
+	'abusefilter-list-options-hidedisabled' => 'ซ่อนตัวกรองที่ปิดใช้งาน',
 	'abusefilter-list-options-submit' => 'อัปเดต',
 	'abusefilter-tools-text' => 'นี่เป็นเครื่องมือซึ่งอาจเป็นประโยชน์ในการกำหนดและการแก้จุดบกพร่องของตัวกรองการละเมิดกฎ',
 	'abusefilter-tools-expr' => 'ทดสอบการแสดงข้อมูลขาออก',
 	'abusefilter-tools-submitexpr' => 'ประเมินผล',
-	'abusefilter-tools-reautoconfirm' => 'คืนสิทธิ์ผู้ใช้ที่ยืนยันอัตโนมัติ',
+	'abusefilter-tools-reautoconfirm' => 'คืนสิทธิผู้ใช้ยืนยันอัตโนมัติ',
 	'abusefilter-tools-reautoconfirm-user' => 'ชื่อผู้ใช้:',
-	'abusefilter-tools-reautoconfirm-submit' => 'ยืนยันโดยอัตโนมัติอีกครั้งหนึ่ง',
-	'abusefilter-reautoconfirm-none' => '{{GENDER:$1| | |กลุ่ม}}ผู้ใช้ที่ยังไม่มีสถานะที่ยืนยันโดยอัตโนมัติได้ถูกระงับแล้ว',
-	'abusefilter-reautoconfirm-notallowed' => 'คุณไม่ได้รับอนุญาตให้เรียกคืนสถานะที่ยืนยันโดยอัตโนมัติ',
-	'abusefilter-reautoconfirm-done' => 'สถานะที่ยืนยันโดยอัตโนมัติของบัญชีผู้ใช้นี้ได้รับการคืนสภาพแล้ว',
+	'abusefilter-tools-reautoconfirm-submit' => 'ยืนยันอัตโนมัติอีกครั้งหนึ่ง',
+	'abusefilter-reautoconfirm-none' => '{{GENDER:$1| | |กลุ่ม}}ผู้ใช้ที่ยังไม่มีสถานะยืนยันโดยอัตโนมัติได้ถูกระงับแล้ว',
+	'abusefilter-reautoconfirm-notallowed' => 'คุณไม่ได้รับอนุญาตให้คืนสถานะยืนยันอัตโนมัติ',
+	'abusefilter-reautoconfirm-done' => 'สถานะยืนยันอัตโนมัติของบัญชีนี้ได้รับคืนสภาพแล้ว',
 	'abusefilter-status' => 'จาก $1 ปฏิบัติการล่าสุด $2 ($3%) ครั้งถึงขีดจำกัดเงื่อนไขที่ $4 เงื่อนไข และ $5 ($6%) ตรงกับหนึ่งในตัวกรองที่เปิดใช้งานอยู่ปัจจุบัน',
 	'abusefilter-edit-subtitle' => 'แก้ไขตัวกรอง $1',
 	'abusefilter-edit-subtitle-new' => 'สร้างตัวกรอง',
@@ -36011,6 +36097,7 @@ $messages['th'] = array(
 	'abusefilter-edit-enabled' => 'เปิดใช้งานตัวกรองนี้',
 	'abusefilter-edit-deleted' => 'ทำเครื่องหมายว่าลบแล้ว',
 	'abusefilter-edit-hidden' => 'ซ่อนรายละเอียดของตัวกรองนี้ต่อสาธารณะ',
+	'abusefilter-edit-global' => 'ตัวกรองทั่วโลก',
 	'abusefilter-edit-rules' => 'เงื่อนไข:',
 	'abusefilter-edit-notes' => "หมายเหตุ:
 :''(ส่วนตัว)''",
@@ -36021,25 +36108,30 @@ $messages['th'] = array(
 	'abusefilter-edit-action-warn' => 'เรียกใช้การกระทำเหล่านี้หลังจากที่เตือนผู้ใช้นั้นแล้ว',
 	'abusefilter-edit-action-disallow' => 'ป้องกันมิให้ผู้ใช้ดำเนินการกระทำดังกล่าว',
 	'abusefilter-edit-action-flag' => 'บ่งชี้การแก้ไขในปูมการละเมิดกฎ',
-	'abusefilter-edit-action-blockautopromote' => 'ยกเลิกสถานะยืนยันอัตโนมัติของผู้ใช้',
+	'abusefilter-edit-action-blockautopromote' => 'เพิกถอนสถานะยืนยันอัตโนมัติของผู้ใช้',
 	'abusefilter-edit-action-degroup' => 'ลบผู้ใช้ออกจากกลุ่มที่มีสิทธิพิเศษทั้งหมด',
-	'abusefilter-edit-action-block' => 'ระงับผู้ใช้ และ/หรือ หมายเลขไอพีจากการแก้ไข',
+	'abusefilter-edit-action-block' => 'ระงับผู้ใช้ และ/หรือ หมายเลขไอพีมิให้แก้ไข',
 	'abusefilter-edit-action-throttle' => 'เรียกใช้การกระทำเฉพาะในกรณีที่ผู้ใช้ดำเนินการเกินกำหนด',
 	'abusefilter-edit-action-tag' => 'ติดป้ายกำกับการแก้ไขเพื่อตรวจสอบเพิ่มเติม',
 	'abusefilter-edit-throttle-count' => 'จำนวนการกระทำที่อนุญาต:',
 	'abusefilter-edit-throttle-period' => 'ช่วงเวลา:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|วินาที|วินาที}}',
+	'abusefilter-edit-warn-message' => 'ข้อความระบบที่ใช้เป็นคำเตือน',
 	'abusefilter-edit-warn-other' => 'ข้อความอื่นๆ',
 	'abusefilter-edit-warn-actions' => 'การกระทำ:',
 	'abusefilter-edit-warn-preview' => 'แสดงตัวอย่างข้อความที่เลือก',
 	'abusefilter-edit-warn-edit' => 'สร้าง/แก้ไขข้อความที่เลือก',
 	'abusefilter-edit-tag-tag' => 'ป้ายกำกับที่ใช้ (หนึ่งป้ายต่อบรรทัด):',
+	'abusefilter-edit-denied' => 'คุณไม่สามารถดูรายละเอียดของตัวกรองนี้ได้ เพราะถูกซ่อนมิให้สาธารณะชม',
+	'abusefilter-edit-main' => 'ตัวแปรเสริมตัวกรอง',
+	'abusefilter-edit-done-subtitle' => 'แก้ไขตัวกรองแล้ว',
+	'abusefilter-edit-done' => 'คุณบันทึกการเปลี่ยนแปลงไปยังตัวกรอง $1 สำเร็จ',
 	'abusefilter-edit-badsyntax' => 'มีข้อผิดพลาดของวายกสัมพันธ์ในตัวกรองที่คุณระบุ ตัวแจงส่วนส่งออกคือ: <pre>$1</pre>',
 	'abusefilter-edit-viewhistory' => 'ดูประวัติของตัวกรองนี้',
 	'abusefilter-edit-history' => 'ประวัติ:',
 	'abusefilter-edit-check' => 'ตรวจสอบวากยสัมพันธ์',
 	'abusefilter-edit-badfilter' => 'ไม่มีตัวกรองที่คุณระบุ',
-	'abusefilter-edit-revert' => 'ย้อนการกระทำโดยตัวกรองนี้',
+	'abusefilter-edit-revert' => 'ย้อนการดำเนินการโดยตัวกรองนี้',
 	'abusefilter-edit-tools' => 'เครื่องมือ:',
 	'abusefilter-edit-test-link' => 'ทดสอบตัวกรองนี้กับการแก้ไขล่าสุด',
 	'abusefilter-edit-export' => 'ส่งออกตัวกรองนี้ไปยังวิกิอื่น',
@@ -36153,10 +36245,35 @@ $messages['th'] = array(
 	'abusefilter-history-filterid' => 'ตัวกรอง',
 	'abusefilter-history-diff' => 'จำนวนการเปลี่ยนแปลง',
 	'abusefilter-action-tag' => 'ป้ายกำกับ',
+	'abusefilter-action-throttle' => 'ตรงเฉพาะเมื่อเกินขีดจำกัด',
+	'abusefilter-action-warn' => 'เตือน',
+	'abusefilter-action-block' => 'บล็อก',
+	'abusefilter-action-degroup' => 'ถอนจากกลุ่ม',
+	'abusefilter-action-rangeblock' => 'บล็อกเป็นพิสัย',
 	'abusefilter-action-disallow' => 'ห้ามการกระทำ',
+	'abusefilter-revert-title' => 'ย้อนการเปลี่ยนแปลงทั้งหมดโดยตัวกรอง $1',
+	'abusefilter-revert-intro' => 'แบบนี้ให้คุณย้อนการเปลี่ยนแปลงทั้งหมดโดยตัวกรองการละเมิดกฎเนื่องจากตัวกรอง $1 
+โปรดใส่ใจขณะใช้เครื่องมือนี้',
+	'abusefilter-revert-preview-item' => '$1: $2 กระทำการ $3 บน $4
+การดำเนินการที่จะถูกย้อน: $5 ($6)',
+	'abusefilter-revert-search-legend' => 'เลือกการดำเนินการตัวกรองการละเมิดกฎที่จะถูกย้อน',
+	'abusefilter-revert-periodstart' => 'ช่วงเวลาเริ่มต้น:',
+	'abusefilter-revert-periodend' => 'ช่วงเวลาสิ้นสุด:',
+	'abusefilter-revert-search' => 'เลือกปฏิบัติการ',
+	'abusefilter-revert-filter' => 'ตัวกรอง:',
+	'abusefilter-revert-preview-intro' => 'ด้านล่างนี้เป็นการดำเนินการโดยตัวกรองการละเมิดกฎที่จะถูกย้อนโดยปฏิบัติการนี้
+โปรดตรวจสอบอย่างระมัดระวัง และคลิก "ยืนยัน" เพื่อยืนยันการเลือกของคุณ',
 	'abusefilter-revert-confirm' => 'ยืนยัน',
+	'abusefilter-revert-success' => 'คุณย้อนการดำเนินการทั้งหมดโดยตัวกรองการละเมิดกฎเนื่องจาก[[Special:AbuseFilter/$1|ตัวกรอง $1]] แล้ว',
+	'abusefilter-revert-reason' => 'ย้อนการดำเนินการทั้งหมดโดยตัวกรองการละเมิดกฎเนื่องจากตัวกรอง $1 แล้ว
+เหตุผลที่ให้ไว้: $2',
+	'abusefilter-revert-reasonfield' => 'เหตุผล:',
+	'abusefilter-test' => 'ทดสอบตัวกรองกับการแก้ไขที่ผ่านมา',
 	'abusefilter-test-user' => 'เปลี่ยนโดยผู้ใช้:',
+	'abusefilter-test-syntaxerr' => 'ตัวกรองที่คุณกรอกนั้นมีข้อผิดพลาดของวากยสัมพันธ์
+คุณสามารดูคำอธิบายเต็มได้โดยคลิกปุ่ม "ตรวจสอบวากยสัมพันธ์"',
 	'abusefilter-examine-submit' => 'สืบค้น',
+	'abusefilter-examine-test-button' => 'ทดสอบตัวกรอง',
 	'abusefilter-topnav' => "'''ป้ายนำทางตัวกรองการละเมิดกฎ'''",
 	'abusefilter-topnav-home' => 'หน้าแรก',
 	'abusefilter-topnav-test' => 'การทดสอบกลุ่ม',
@@ -36170,6 +36287,11 @@ $messages['th'] = array(
 	'abusefilter-log-entry-modify' => 'แก้ไข $1 ($2)',
 	'abusefilter-log-noresults' => 'ไม่มีผลลัพธ์',
 	'abusefilter-diff-title' => 'ความแตกต่างระหว่างรุ่น',
+	'abusefilter-diff-item' => 'รายการ',
+	'abusefilter-diff-version' => 'รุ่นเมื่อ $1 {{GENDER:$3|โดย}} $2',
+	'abusefilter-diff-info' => 'ข้อมูลเบื้องต้น',
+	'abusefilter-diff-pattern' => 'เงื่อนไขตัวกรอง',
+	'abusefilter-diff-invalid' => 'ไม่สามารถนำรุ่นที่ขอมาได้',
 	'abusefilter-diff-backhistory' => 'กลับไปยังประวัติตัวกรอง',
 	'abusefilter-import-submit' => 'นำเข้าข้อมูล',
 	'abusefilter-group-default' => 'ค่าโดยปริยาย',
@@ -37507,7 +37629,7 @@ $messages['ug-arab'] = array(
 	'abusefilter-log-hide-forbidden' => 'سۈيىئىستىمال خاتىرە تۈرىنى يوشۇرۇش ھوقۇقىڭىز يوق.',
 	'abusefilter-logentry-suppress' => '"[[$1]]" يوشۇر',
 	'abusefilter-logentry-unsuppress' => '"[[$1]]" يوشۇرما',
-	'logentry-abusefilter-hit' => '$3 دا "$5" مەشغۇلاتنى ئېلىپ بارغۇچى $1، مەشغۇلاتى: $6 ($7)', # Fuzzy
+	'logentry-abusefilter-hit' => '$1 بولسا $4 غا تەسىر قىلىپ $3 دا "$5" مەشغۇلاتنى ئېلىپ باردى، مەشغۇلاتى: $6 ($7)',
 	'abusefilter-management' => 'سۈيىئىستىمال سۈزگۈچ باشقۇرۇش',
 	'abusefilter-list' => 'ھەممە سۈزگۈچلەر',
 	'abusefilter-list-id' => 'سۈزگۈچ ID سى',
@@ -37556,7 +37678,7 @@ $messages['ug-arab'] = array(
 	'abusefilter-edit-oldwarning' => '<strong>سىز بۇ سۈزگۈچنىڭ كونا نەشرىنى تەھرىرلەۋاتىسىز. سىتاتىستىكىدا نەقىل ئېلىۋاتقان سۈزگۈچ ئەڭ يېڭىسى. ئەگەر تەھرىرلىشىڭىزنى ساقلىسىڭىز، تەھرىرلىگەن نەشرىدىن كېيىنكى ھەممە ئۆزگەرتىشلەر قاپلىنىپ كېتىدۇ</strong> &bull;
 [[Special:AbuseFilter/history/$2|بۇ سۈزگۈچنىڭ تارىخ خاتىرىسىگە قايت]].',
 	'abusefilter-edit-status-label' => 'ستاتىستىكا:',
-	'abusefilter-edit-status' => 'ئاخىرقى $1 {{PLURAL:$1|قېتىم}}لىق تەھرىرلەشتە، $2 ($3%) قېتىملىق تەھرىرلەش بۇ سۈزگۈچنى قوزغاتتى. ئۇنىڭ ئوتتۇرىچە ئىجرا قىلىنىش ۋاقتى $4ms (مىللىسېكۇنت)، $5 {{PLURAL:$5|دانە}} چەكلىمىنى سەرپ قىلدى.', # Fuzzy
+	'abusefilter-edit-status' => 'ئاخىرقى {{PLURAL:$1|مەشغۇلات}}تا $2 ($3%) قېتىملىق تەھرىرلەش بۇ سۈزگۈچنى قوزغاتتى. ئۇنىڭ ئوتتۇرىچە ئىجرا قىلىنىش ۋاقتى $4 ms (مىللىسېكۇنت)، {{PLURAL:$5|چەكلىمە}}نى سەرپ قىلدى.',
 	'abusefilter-edit-throttled' => "'''ئاگاھلاندۇرۇش''': بۇ سۈزگۈچ بىخەتەرلىك سەۋەبىدىن ئۆزلۈكىدىن توختىتىلدى.
 $1 ماس كەلگەن مەشغۇلات چېكىگە يەتتى.",
 	'abusefilter-edit-new' => 'يېڭى سۈزگۈچ',
@@ -37639,7 +37761,8 @@ $1 ماس كەلگەن مەشغۇلات چېكىگە يەتتى.",
 	'abusefilter-edit-builder-op-bool-not' => 'ئەمەس (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'ۋە (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'ياكى (|)',
-	'abusefilter-edit-builder-group-misc' => 'ئارىلاش تۈرلەر',
+	'abusefilter-edit-builder-op-bool-xor' => 'XOR (^)',
+	'abusefilter-edit-builder-group-misc' => 'باشقىلار',
 	'abusefilter-edit-builder-misc-in' => 'ھەرپنىڭ ئىچىدە (in)',
 	'abusefilter-edit-builder-misc-like' => 'ماسلاشقان ئەندىزە (like)',
 	'abusefilter-edit-builder-misc-rlike' => 'ماسلاشقان مۇنتىزىم ئىپادە (rlike)',
@@ -37666,7 +37789,7 @@ $1 ماس كەلگەن مەشغۇلات چېكىگە يەتتى.",
 	'abusefilter-edit-builder-funcs-str_replace' => 'ھەرپ تىزىقىدا تارماق ھەرپ تىزىقىنى ئالماشتۇر (str_replace)',
 	'abusefilter-edit-builder-funcs-rescape' => 'كۆچمە مەنىدىكى ھەرپ تىزىقىنى مۇنتىزىم ئىپادىدە ئىشلىتىش (rescape)',
 	'abusefilter-edit-builder-funcs-set_var' => 'ئۆزگەرگۈچى تەڭشىكى (set_var)',
-	'abusefilter-edit-builder-group-vars' => 'ئۆزگەرگۈچى مىقدارلار',
+	'abusefilter-edit-builder-group-vars' => 'ئۆزگەرگۈچى مىقدار',
 	'abusefilter-edit-builder-vars-accountname' => 'ھېسابات (قۇرغان ۋاقىتتىكى) ئاتى',
 	'abusefilter-edit-builder-vars-timestamp' => 'ئۆزگىرىشنىڭ Unix ۋاقىت تامغىسى',
 	'abusefilter-edit-builder-vars-action' => 'مەشغۇلات',
@@ -37718,22 +37841,22 @@ $1 ماس كەلگەن مەشغۇلات چېكىگە يەتتى.",
 	'abusefilter-history-hidden' => 'يوشۇرۇن',
 	'abusefilter-history-enabled' => 'قوزغىتىلغان',
 	'abusefilter-history-global' => 'ئومۇمىيەت',
-	'abusefilter-history-timestamp' => 'ۋاقىت',
+	'abusefilter-history-timestamp' => 'سائەت',
 	'abusefilter-history-user' => 'ئىشلەتكۈچى',
 	'abusefilter-history-public' => 'ئاممىۋى سۈزگۈچنىڭ چۈشەندۈرۈشى',
-	'abusefilter-history-flags' => 'بايراقلار:',
+	'abusefilter-history-flags' => 'تاللانمىلار',
 	'abusefilter-history-filter' => 'سۈزگۈچ قائىدىسى',
-	'abusefilter-history-comments' => 'ئىزاھاتلار',
-	'abusefilter-history-actions' => 'مەشغۇلاتلار',
+	'abusefilter-history-comments' => 'ئىزاھات',
+	'abusefilter-history-actions' => 'مەشغۇلات',
 	'abusefilter-history-backedit' => 'سۈزگۈچ تەھرىرلىگۈچكە قايت',
 	'abusefilter-history-deleted' => 'ئۆچۈرۈلگەن',
 	'abusefilter-history-filterid' => 'سۈزگۈچ',
-	'abusefilter-history-select-legend' => 'دەل ئىزدە',
+	'abusefilter-history-select-legend' => 'ئىنچىكە ئىزدەش',
 	'abusefilter-history-select-user' => 'ئىشلەتكۈچى:',
 	'abusefilter-history-select-submit' => 'دەل',
-	'abusefilter-history-diff' => 'ئۆزگىرىش',
+	'abusefilter-history-diff' => 'ئۆزگىرىشلەر',
 	'abusefilter-history-error-hidden' => 'سىز ئىلتىماس قىلغان سۈزگۈچ يوشۇرۇن، ئۇنىڭ تارىخىنى كۆرەلمەيسىز.',
-	'abusefilter-exception-unexpectedatend' => ' $1 ھەرپ تىزىقىدا ئويلاشمىغان "$2" كۆرۈلدى.',
+	'abusefilter-exception-unexpectedatend' => '$1 ھەرپ تىزىقىدا ئويلاشمىغان "$2" كۆرۈلدى.',
 	'abusefilter-exception-expectednotfound' => '$1 ھەرپتە كۈتۈلگەن $2 تېپىلمىدى (ئەمما $3 $4 تېپىلدى).',
 	'abusefilter-exception-unrecognisedkeyword' => '$1 ھەرپتە تونۇيالمايدىغان $2 ھالقىلىق سۆز بار.',
 	'abusefilter-exception-unexpectedtoken' => '$1 ھەرپتە كۈتۈلگەن ($2 تىپتىكى) "$3" بەلگىنى تاپالمىدى.',
@@ -37749,11 +37872,11 @@ $3 {{PLURAL:$3|ئۆزگەرگۈچى}} مۆلچەرلەنگەن، ئېرىشكى�
 	'abusefilter-exception-overridebuiltin' => '$1 ھەرپتىكى قانۇنسىز قاپلايدىغان ئىچكى ئۆزگەرگۈچى "$2".',
 	'abusefilter-exception-outofbounds' => '$1 ھەرپتە مەۋجۇت بولمىغان تىزىم تۈرى $2 (تىزىم ئۇزۇنلۇقى = $3) نى ئىلتىماس قىلدى',
 	'abusefilter-exception-notlist' => '$1 ھەرپتىكى سانلار قاتارى ئەمەسكە سانلار قاتارى تۈرىنى ئىلتىماس قىلدى.',
-	'abusefilter-action-tag' => 'بەلگە',
+	'abusefilter-action-tag' => 'خەتكۈش',
 	'abusefilter-action-throttle' => 'ئېقىم تەڭشەش',
 	'abusefilter-action-warn' => 'ئاگاھلاندۇرۇش',
 	'abusefilter-action-blockautopromote' => 'ئۆزلۈكىدىن ئىجازەتنى توس',
-	'abusefilter-action-block' => 'توس',
+	'abusefilter-action-block' => 'بۆلەك',
 	'abusefilter-action-degroup' => 'گۇرۇپپىدىن چىقىرىۋەت',
 	'abusefilter-action-rangeblock' => 'بۆلەك توسۇلغان',
 	'abusefilter-action-disallow' => 'يول قويما',
@@ -37774,6 +37897,7 @@ $3 {{PLURAL:$3|ئۆزگەرگۈچى}} مۆلچەرلەنگەن، ئېرىشكى�
 سەۋەبى تۆۋەندىكىچە: $2',
 	'abusefilter-revert-reasonfield' => 'سەۋەب:',
 	'abusefilter-test' => 'ئىلگىرىكى تەھرىرلەش ئارقىلىق سۈزگۈچ سىنايدۇ',
+	'abusefilter-test-intro' => 'بۇ بەت سىزنىڭ تۆۋەندىكى قۇتىغا كىرگۈزۈلگەن سۈزگۈچ يېقىنقى $1 {{PLURAL:$1|ئۆزگەرتىش}}نىڭ تەسىرىنى تەكشۈرۈشىڭىزگە يول قويىدۇ. ئەگەر مەۋجۇت  بولغان باشقا سۈزگۈچنى يۈكلەشتە، تۆۋەندىكى قۇتىنىڭ ئاستىدىكى تېكىست قۇتىسىغا سۈزگۈچنىڭ تەرتىپ نومۇرىنى كىرگۈزۈپ، "يۈكلە" توپچىنى چېكىڭ.',
 	'abusefilter-test-legend' => 'سۈزگۈچ سىناق',
 	'abusefilter-test-load-filter' => 'يۈكلىگەن سۈزگۈچ نومۇرى:',
 	'abusefilter-test-submit' => 'سىنا',
@@ -37810,6 +37934,7 @@ $3 {{PLURAL:$3|ئۆزگەرگۈچى}} مۆلچەرلەنگەن، ئېرىشكى�
 	'abusefilter-topnav-tools' => 'سازلاش قورالى',
 	'abusefilter-topnav-import' => 'سۈزگۈچ ئەكىر',
 	'abusefilter-log-name' => 'سۈيىئىستىمال سۈزگۈچ خاتىرىسى',
+	'abusefilter-log-header' => 'بۇ خاتىرە سۈزگۈچ ئېلىپ بارغان ئۆزگەرتىشنىڭ ئۈزۈندىسىنى كۆرسىتىدۇ. خاتىرە تەپسىلاتىنى [[Special:AbuseFilter/history|بۇ تىزىم]]دىن سۈزگۈچنىڭ يېقىنقى ئۆزگەرتىشىدىن كۆرۈڭ.',
 	'abusefilter-log-entry-modify' => 'ئۆزگەرتىلدى $1 ($2)',
 	'abusefilter-log-noresults' => 'نەتىجە يوق',
 	'abusefilter-diff-title' => 'نەشرلىرى ئارىسىدىكى پەرق',
@@ -37819,6 +37944,7 @@ $3 {{PLURAL:$3|ئۆزگەرگۈچى}} مۆلچەرلەنگەن، ئېرىشكى�
 	'abusefilter-diff-pattern' => 'سۈزگۈچ ھالىتى',
 	'abusefilter-diff-invalid' => 'ئىلتىماس قىلغان نەشرىگە ئېرىشەلمەيدۇ',
 	'abusefilter-diff-backhistory' => 'سۈزگۈچ تارىخ بېتىگە قايت',
+	'abusefilter-import-intro' => 'سىز بۇ ئارايۈز ئارقىلىق باشقا ۋىكىدىكى سۈزگۈچنى ئەكىرەلەيسىز. مەنبەدىن سۈزگۈچ تەھرىر ئارايۈزىنى چېكىپ "{{int:abusefilter-edit-tools}}" نىڭ ئاستىدىكى "{{int:abusefilter-edit-export}}"نى چېكىڭ. ئارقىدىن كۆرۈنگەن تېكىست قۇتىسىنىڭ مەزمۇنىنى كۆچۈرۈپ، ئاستىدىكى تېكىست قۇتىسىغا چاپلاڭ ھەمدە "{{int:abusefilter-import-submit}}"نى چېكىڭ.',
 	'abusefilter-import-submit' => 'سانلىق مەلۇمات كىرگۈزۈش',
 	'abusefilter-group-default' => 'كۆڭۈلدىكى',
 );
