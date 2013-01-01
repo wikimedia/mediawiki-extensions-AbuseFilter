@@ -9019,7 +9019,7 @@ $messages['el'] = array(
 Είναι μια σύντομη περιγραφή της παραβίασης με την οποία η ενέργειά σας ταιριάζει είναι: $1", # Fuzzy
 	'abusefilter-disallowed' => 'Αυτή η ενέργεια ταυτοποιήθηκε αυτόματα ως επιβλαβής, και άρα απαγορεύεται.
 Αν πιστεύετε ότι αυτή η επεξεργασία είναι εποικοδομητική, παρακαλώ επικοινωνήστε με έναν διαχειριστή, και πληροφορήστε τον για το τι προσπαθείτε να κάνετε.
-Μια σύντομη περιγραφή του κανόνα καταχρήσεων στο οποίο αντιστοίχησε η ενέργειά σας είναι η εξής: $1',
+Μια σύντομη περιγραφή του κανόνα καταχρήσεων στο οποίο αντιστοίχησε η ενέργειά σας είναι η εξής: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Αυτή η ενέργεια ταυτοποιήθηκε αυτόματα ως επιβλαβής,
 και αποτραπήκατε από το να την εκτελέσετε.
 Επιπλέον, για να προστατευθεί το {{SITENAME}}, ο λογαριασμός χρήστη σας και όλες οι σχετιζόμενες διευθύνσεις IP έχουν φραγεί από τη δυνατότητα επεξεργασίας.
@@ -9408,7 +9408,7 @@ $3 {{PLURAL:$3|αναμενόμενο κατηγορούμενο|αναμενό�
 	'abusefilter-log-noresults' => 'Κανένα αποτέλεσμα',
 	'abusefilter-diff-title' => 'Διαφορές μεταξύ των εκδόσεων',
 	'abusefilter-diff-item' => 'Αντικείμενο',
-	'abusefilter-diff-version' => 'Έκδοση από $1 από τον $2', # Fuzzy
+	'abusefilter-diff-version' => 'Έκδοση από $1 {{GENDER:$3|από}} $2',
 	'abusefilter-diff-info' => 'Βασικές πληροφορίες',
 	'abusefilter-diff-pattern' => 'Όροι φίλτρων',
 	'abusefilter-diff-invalid' => 'Αδύνατη η εξαγωγή των ζητουμένων εκδοχών',
@@ -18859,7 +18859,7 @@ $messages['ka'] = array(
 	'abusefilter-mustbeeditor' => 'უსაფრთხოების შეხედულებიდან გამომდინარე, მხოლოდ ბოროტად გამოყენების ფილტრების შეცვლის უფლების მქონემომხმარებლებს შეუძლიათ ამ ინტერფეისის გამოყენება.',
 	'abusefilter-warning' => "'''ყურადღება''': ეს ქმედება ავტომატურად იქნა მიჩნეული არაკონსტრუქციულად.
 ამგვარი ცვლილებები მეტწილად ძალიან სწრაფად უქმდება. ქმედების განმეორებისას უარეს შემთხვევაში თქვენი ანგარიში ან IP-მისამართი დაიბლოკება.
-თუ თქვენ მიგაჩნიათ, რომ თქვენი გაკეთებული ცვლილება სასარგებლოა, შეგიძლიათ ღილაკზე დაჭერით ხელმეორედ დაადასტუროთ ეს.
+თუ თქვენ მიგაჩნიათ, რომ თქვენი განხორციელებული მოქმედება სასარგებლოა, შეგიძლიათ მიღებით ხელმეორედ დაადასტუროთ ეს.
 დარღვევის მოკლე აღწერა: $1",
 	'abusefilter-blocker' => 'ბოროტად გამოყენების ფილტრი',
 	'abusefilter-blockreason' => 'ავტომატურად დაიბლოკა ბოროტად გამოყენების ფილტრის მიერ.
@@ -26249,11 +26249,11 @@ Misbruksfilteret er ein sjølvgåande mekanisme i programvara som automatisk und
 Dette grensesnittet viser ei liste over definerte filter, og gjer det mogeleg å endra dei.',
 	'abusefilter-mustbeeditor' => 'Av tryggingsgrunnar kan berre brukarar med rett til å endra misbruksfilteret nytta dette oppsettet.',
 	'abusefilter-warning' => "'''Åtvaring:''' Handlinga har automatisk vorte identifisert som skadeleg.
-Ikkje-konstruktive endringar vert raskt gjorde om, og langvarig forstyrrande endring vil føra til at kontoen din eller IP-adressa di vert blokkert. Om du meiner dette er ei konstruktiv endring, trykk «Lagra» igjen for å stadfesta.
-Ei kortfatta skildring av misbruksregelen som handlinga di utløyste er: $1", # Fuzzy
-	'abusefilter-disallowed' => 'Denne handlinga har automatisk vorten identifisert som skadeleg, og er difor ikkje tillaten.
-Om du meiner endringa var konstruktiv, kontakt ein administrator og informer han eller ho om kva du prøvde å få til.
-Ei kortfatta skildring av misbruksregelen som handlinga di utløyste er: $1', # Fuzzy
+Ikkje-konstruktive endringar vert raskt gjorde om, og langvarig forstyrrande endring vil føra til at kontoen din eller IP-adressa di vert blokkert. Meiner du dette er ei konstruktiv handling, kan du lagra henne om att for å stadfesta dette.
+Ei kortfatta skildring av misbruksregelen som handlinga di utløyste er: $1",
+	'abusefilter-disallowed' => 'Denne handlinga har automatisk vorte identifisert som skadeleg, og vart difor ikkje tillaten.
+Om du meiner handlinga di var konstruktiv, informer ein administrator om kva du freista å få til.
+Ei kortfatta skildring av misbruksregelen som handlinga di utløyste er: $1',
 	'abusefilter-blocked-display' => 'Denne handlinga har automatisk vorten identifisert som skadeleg, og du har vorten hindra frå å gjennomføra ho.
 I tillegg har kontoen din og alle IP-adresser assosiert med han vorten blokkert frå å endra {{SITENAME}}. Om dette var ein feil, kontakt ein administrator.
 Ei kortfatta skildring av misbruksregelen som handlinga di utløyste er: $1',
@@ -26277,6 +26277,7 @@ Ei kort skildring av misbruksregelen handlinga di braut er: $1',
 	'right-abusefilter-log-private' => 'Sjå loggoppføringar frå misbruksfilter merkte som private',
 	'right-abusefilter-hide-log' => 'Gøyma oppføringar i misbruksloggen.',
 	'right-abusefilter-hidden-log' => 'Sjå gøymde oppføringar i misbruksloggen',
+	'right-abusefilter-modify-global' => 'Oppretta eller endra globale misbruksfilter',
 	'action-abusefilter-modify' => 'endra misbruksfilter',
 	'action-abusefilter-view' => 'sjå misbruksfilter',
 	'action-abusefilter-log' => 'sjå misbruksloggen',
@@ -26430,6 +26431,7 @@ Spør ein brukar med løyve til å leggja til avgrensa handlingar om han kan å 
 	'abusefilter-edit-bad-tags' => 'Ein eller fleire av merka som du valde er ikkje gyldige.
 Merke skal vera korte og dei skal ikkje innehalda spesialteikn.',
 	'abusefilter-edit-notallowed' => 'Du har ikkje løyve til å korkje oppretta eller endra misbruksfilter',
+	'abusefilter-edit-notallowed-global' => 'Du har ikkje løyve til å korkje oppretta eller endra globale misbruksfilter',
 	'abusefilter-edit-builder-select' => 'Vel noko for å leggja det til på markøren',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetiske operatørar',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Addisjon (+)',
@@ -28372,11 +28374,11 @@ Costa antërfassa a smon na lista ëd fìlter definì e a përmet ëd modifichej
 	'abusefilter-warning' => "'''Atension''': Costa assion a l'è stàita indentificà an automàtich coma danosa.
 Le modificassion nen costrutive a saran tòst anulà,
 e le modìfiche nen costrutive esagerà o arpetùe a mneran al blocagi ëd sò cont o soa adrëssa IP.
-S'a chërd che soa modìfica a l'é costrutiva, a peul torna sgnaché ansima a Mandé për confermela.
-Na curta descrission ëd la régola dj'abus anté ch'a l'é cascà soa modìfica a l'é: $1", # Fuzzy
+S'a chërd che soa assion a l'é costrutiva, a peul torna mandela për confermela.
+Na curta descrission ëd la régola dj'abus anté ch'a l'é cascà soa modìfica a l'é: $1",
 	'abusefilter-disallowed' => "Costa assion a l'é stàita identificà an automàtich coma danosa, e donca ampedìa.
-S'a chërd che soa modìfica a l'era costrutiva, ch'a buta al corent n'aministrator ëd lòn ch'a sërcava ëd fé.
-Na curta descrission ëd la régola dj'abus anté ch'a l'é cascà soa assion a l'é: $1", # Fuzzy
+S'a chërd che soa assion a l'era costrutiva, ch'a buta al corent n'aministrator ëd lòn ch'a sërcava ëd fé.
+Na curta descrission ëd la régola dj'abus anté ch'a l'é cascà soa assion a l'é: $1",
 	'abusefilter-blocked-display' => "Cost'assion a l'é stàita identificà automaticament com pericolosa,
 e a l'ha pa podula fé.
 An pi, për protege {{SITENAME}}, sò cont utent e tute j'adrësse IP associà a son ëstàite blocà dal modifiché.
@@ -34743,14 +34745,14 @@ $messages['sv'] = array(
 Missbruksfiltret är en automatisk mjukvarumekanism som utför automatisk kontroll av alla handlingar.
 Detta gränssnitt visar en lista över definierade filter och gör det möjligt att ändra i dessa.',
 	'abusefilter-mustbeeditor' => 'Av säkerhetsskäl kan bara användare med rätt att modifiera missbruksfiltret använda detta gränssnitt.',
-	'abusefilter-warning' => "'''Varning:''' Handlingen har automatiskt identifierats som skadlig.
+	'abusefilter-warning' => "'''Varning:''' Denna handling har automatiskt identifierats som skadlig.
 Destruktiva redigeringar kommer snabbt att återställas,
 och återkommande förstörande redigeringar kommer leda till att ditt konto eller IP-adress blir blockerad.
-Om du anser att denna redigering är konstruktiv, klicka på \"Spara\" igen för att bekräfta det.
-En kortfattad beskrivning av missbruksregler som din handling utlöste är: \$1", # Fuzzy
+Om du anser att denna handling är konstruktiv, klicka på \"Spara\" igen för att bekräfta det.
+En kortfattad beskrivning av missbruksregler som din handling utlöste är: \$1",
 	'abusefilter-disallowed' => 'Denna handling har automatiskt identifierats som skadlig och tillåts därför inte.
-Om du anser att din redigering var konstruktiv, kontakta en administratör och informera denna om vad du försökte göra.
-En kortfattad beskrivning av missbruksregeln som din handling utlöste är: $1', # Fuzzy
+Om du anser att din handling var konstruktiv, kontakta en administratör och informera denna om vad du försökte göra.
+En kortfattad beskrivning av missbruksregeln som din handling utlöste är: $1',
 	'abusefilter-blocked-display' => 'Denna handling har automatiskt identifierats som skadlig och du har blivit hindrad från att genomföra den.
 Dessutom har ditt användarkonto och alla associerade IP-adresser blivit blockerade från att redigera {{SITENAME}}.
 Om detta var ett fel, var god kontakta en administratör.
@@ -34778,6 +34780,7 @@ Beskrivning av utlöst regel: $1',
 	'right-abusefilter-log-private' => 'Visa loggposter från missbruksfiltret som har markerats som privata',
 	'right-abusefilter-hide-log' => 'Dölja poster i missbruksloggen',
 	'right-abusefilter-hidden-log' => 'Visa  dolda missbruksloggsposter',
+	'right-abusefilter-modify-global' => 'Skapa eller ändra globala missbruksfilter',
 	'action-abusefilter-modify' => 'modifiera missbruksfilter',
 	'action-abusefilter-view' => 'se missbruksfilter',
 	'action-abusefilter-log' => 'se missbruksloggen',
