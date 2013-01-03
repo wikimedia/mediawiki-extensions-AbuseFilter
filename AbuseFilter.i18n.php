@@ -738,8 +738,16 @@ $messages['qqq'] = array(
 	'abusefilter-edit-warn-other-label' => 'Field label for entering a system message key to use as warning text.',
 	'abusefilter-edit-warn-actions' => 'Field label for two action buttons in abuse filter editor. The button texts are {{msg-mw|abusefilter-edit-warn-preview}} and {{msg-mw|abusefilter-edit-warn-edit}}.
 {{Identical|Action}}',
-	'abusefilter-edit-warn-preview' => 'Button text for actions relating to a warning message for an abuse filter.',
-	'abusefilter-edit-warn-edit' => 'Button text for actions relating to a warning message for an abuse filter.',
+	'abusefilter-edit-warn-preview' => 'Button text for actions relating to a warning message for an abuse filter.
+
+See also:
+* {{msg-mw|Abusefilter-edit-warn-actions}}
+* {{msg-mw|Abusefilter-edit-warn-edit}}',
+	'abusefilter-edit-warn-edit' => 'Button text for actions relating to a warning message for an abuse filter.
+
+See also:
+* {{msg-mw|Abusefilter-edit-warn-actions}}
+* {{msg-mw|Abusefilter-edit-warn-preview}}',
 	'abusefilter-edit-tag-tag' => 'Field label for multi line field in which tags can be added for a revision in case the abuse filter applies.',
 	'abusefilter-edit-denied' => 'Text used when a user has to access to filter details.',
 	'abusefilter-edit-main' => 'Fieldset legend for edit filter form.',
