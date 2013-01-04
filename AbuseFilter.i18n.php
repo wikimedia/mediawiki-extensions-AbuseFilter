@@ -9010,6 +9010,7 @@ $messages['ee'] = array(
  * @author Konsnos
  * @author Lou
  * @author Omnipaedista
+ * @author Protnet
  * @author ZaDiak
  */
 $messages['el'] = array(
@@ -9416,7 +9417,7 @@ $3 {{PLURAL:$3|αναμενόμενο κατηγορούμενο|αναμενό�
 	'abusefilter-log-noresults' => 'Κανένα αποτέλεσμα',
 	'abusefilter-diff-title' => 'Διαφορές μεταξύ των εκδόσεων',
 	'abusefilter-diff-item' => 'Αντικείμενο',
-	'abusefilter-diff-version' => 'Έκδοση από $1 {{GENDER:$3|από}} $2',
+	'abusefilter-diff-version' => 'Έκδοση από $1 από {{GENDER:$3|τον|την}} $2',
 	'abusefilter-diff-info' => 'Βασικές πληροφορίες',
 	'abusefilter-diff-pattern' => 'Όροι φίλτρων',
 	'abusefilter-diff-invalid' => 'Αδύνατη η εξαγωγή των ζητουμένων εκδοχών',
@@ -23108,10 +23109,10 @@ $messages['ml'] = array(
 	'abusefilter-warning' => "'''മുന്നറിയിപ്പ്''': ഈ പ്രവൃത്തി ദോഷകരമെന്ന് സ്വയം തിരിച്ചറിഞ്ഞിട്ടുള്ളതാണ്.
 സൃഷ്ടിപരമല്ലാത്ത തിരുത്തലുകൾ അതിവേഗം മുൻപ്രാപനം ചെയ്യുന്നതായിരിക്കും, ദുരുദ്ദേശത്തോടെയുള്ള അല്ലെങ്കിൽ ആവർത്തിച്ചുണ്ടാകുന്ന സൃഷ്ടിപരമല്ലാത്ത തിരുത്തലുകൾ താങ്കളുടെ അംഗത്വത്തെയോ ഐ.പി. വിലാസത്തേയോ വിലക്കുന്നതിൽ എത്തിയേക്കാം.
 താങ്കൾ താങ്കളുടെ തിരുത്തൽ സൃഷ്ടിപരമെന്നു വിശ്വസിക്കുന്നുണ്ടെങ്കിൽ സ്ഥിരീകരിക്കാനായി ദയവായി വീണ്ടും സമർപ്പിക്കുക.
-താങ്കളുടെ പ്രവൃത്തിയിൽ ബാധകമാകുന്ന ദുരുപയോഗ നിയമത്തിന്റെ ലഘുവിവരണം: $1", # Fuzzy
+താങ്കളുടെ പ്രവൃത്തിയിൽ ബാധകമാകുന്ന ദുരുപയോഗ നിയമത്തിന്റെ ലഘുവിവരണം: $1",
 	'abusefilter-disallowed' => 'ഈ പ്രവൃത്തി ദോഷകരമെന്നു സ്വയമേ തിരിച്ചറിഞ്ഞ്, അനുവദിക്കാത്തത് ആകുന്നു.
 താങ്കളുടെ തിരുത്തൽ സൃഷ്ടിപരമാണെന്ന് താങ്കൾ വിശ്വസിക്കുന്നുവെങ്കിൽ, ദയവായി കാര്യനിർവാഹകരിലൊരാളെ ബന്ധപ്പെടുക, താങ്കൾ എന്താണ് ചെയ്യാൻ ശ്രമിച്ചതെന്നറിയിക്കുക.
-താങ്കളുടെ പ്രവൃത്തിയുമായി സാദൃശ്യമുള്ള ദുരുപയോഗ നിയമത്തിന്റെ ലഘുവിവരണം: $1', # Fuzzy
+താങ്കളുടെ പ്രവൃത്തിയുമായി സാദൃശ്യമുള്ള ദുരുപയോഗ നിയമത്തിന്റെ ലഘുവിവരണം: $1',
 	'abusefilter-blocked-display' => 'ഈ പ്രവൃത്തി ദോഷകരമെന്നു സ്വയം തിരിച്ചറിഞ്ഞിട്ടുള്ളതാണ്, ഇതു ചെയ്യുന്നതിൽ നിന്നും താങ്കളെ തടയുന്നതാണ്.
 കൂടുതലായി, {{SITENAME}} സംരക്ഷിക്കുന്നതിനായി താങ്കളുടെ അംഗത്വവും ബന്ധപ്പെട്ട ഐ.പി. വിലാസങ്ങളും തിരുത്തുന്നതിൽ നിന്നും തടയുന്നതാണ്.
 ഇത് പിഴവുമൂലമുണ്ടായതെങ്കിൽ ദയവായി ഒരു കാര്യനിർവാഹകനെ ബന്ധപ്പെടുക.
@@ -23140,6 +23141,7 @@ $messages['ml'] = array(
 	'right-abusefilter-log-private' => 'ദുരുപയോഗ അരിപ്പകൾ സ്വകാര്യമെന്ന് അടയാളപ്പെടുത്തിയ രേഖകൾ കാണുക',
 	'right-abusefilter-hide-log' => 'ദുരുപയോഗരേഖയിലെ വിവരങ്ങൾ മറയ്ക്കുക',
 	'right-abusefilter-hidden-log' => 'മറയ്ക്കപ്പെട്ടിരിക്കുന്ന ദുരുപയോഗ രേഖാ വിവരങ്ങൾ കാണുക',
+	'right-abusefilter-modify-global' => 'ആഗോള ദുരുപയോഗ അരിപ്പകൾ നിർമ്മിക്കുക, പുതുക്കുക',
 	'action-abusefilter-modify' => 'ദുരുപയോഗ അരിപ്പകൾ മെച്ചപ്പെടുത്തുക',
 	'action-abusefilter-view' => 'ദുരുപയോഗ അരിപ്പകൾ കാണുക',
 	'action-abusefilter-log' => 'ദുരുപയോഗ രേഖ കാണുക',
@@ -23303,6 +23305,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-bad-tags' => 'താങ്കൾ നൽകിയ റ്റാഗുകളിൽ ഒന്നോ അതിലധികമോ അസാധുവാണ്.
 റ്റാഗുകൾ ചെറുതും പ്രത്യേക അക്ഷരങ്ങൾ ഉൾക്കൊള്ളാത്തവയും ആയിരിക്കണം.',
 	'abusefilter-edit-notallowed' => 'ദുരുപയോഗ അരിപ്പകൾ തിരുത്താനോ സൃഷ്ടിക്കാനോ താങ്കൾക്ക് അനുമതിയില്ല',
+	'abusefilter-edit-notallowed-global' => 'ആഗോള ദുരുപയോഗ അരിപ്പകൾ നിർമ്മിക്കാൻ അല്ലെങ്കിൽ തിരുത്താൻ താങ്കൾക്ക് അനുവാദമില്ല.',
 	'abusefilter-edit-builder-select' => 'കഴ്‌‌സറിലേയ്ക്ക് ചേർക്കാനായി ഒരു ഐച്ഛികം തിരഞ്ഞെടുക്കുക',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'ഗണന ചിഹ്നങ്ങൾ',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'സങ്കലനം (+)',
@@ -23609,12 +23612,11 @@ Antara muka ini menunjukkan senarai penapis yang ditakrif, dan membenarkan merek
 	'abusefilter-mustbeeditor' => 'Untuk tujuan keselamatan, hanya pengguna dengan hak mengubahsuai penapis salah guna boleh menggunakan antara muka ini.',
 	'abusefilter-warning' => "'''Amaran''': Tindakan ini telah dikenalpasti secara automatik sebagai berbahaya.
 Suntingan yang tidak membina akan dibalikkan dengan segera, dan suntingan tidak membina yang berat atau berulang-ulang akan menyebabkan akaun atau alamat IP anda disekat.
-Jika anda percaya suntingan ini membina, sila tekan Simpan sekali lagi untuk mengesahkankannya.
-Penerangan ringkas tentang peraturan penyalahgunaan yang sepadan dengan tindakan anda ialah: $1", # Fuzzy
-	'abusefilter-disallowed' => 'Tindakan ini telah dikenalpasti secara automatik sebagai berbahaya.,
-dan dengan itu tidak dibenarkan.
-Jika anda percaya suntingan ini berkonstruk, sila hubungi penyelia, dan beritahu mereka mengenai perkara yang anda cuba lakukan.
-Sebuah penerangan ringkas tentang penyalahgunaan peraturan yang berkaitan tindakan anda ialah: $1', # Fuzzy
+Jika anda percaya bahawa tindakan ini membina, sila tekan Simpan sekali lagi untuk mengesahkankannya.
+Penerangan ringkas tentang peraturan penyalahgunaan yang sepadan dengan tindakan anda ialah: $1",
+	'abusefilter-disallowed' => 'Tindakan ini telah dikenalpasti secara automatik sebagai berbahaya, dan oleh itu tidak dibenarkan.
+Jika anda percaya bahawa tindakan anda itu membina, sila hubungi penyelia dan beritahu mereka mengenai perkara yang anda cuba lakukan.
+Satu penerangan ringkas tentang peraturan penyalahgunaan yang sepadan dengan tindakan anda ialah: $1',
 	'abusefilter-blocked-display' => 'Tindakan ini secara automatik telah dikenalpasti sebagai berbahaya,
 dan anda telah dilarang dari meneruskannya.
 Sebagai tambahan, untuk melindungi {{SITENAME}}, akaun pengguna anda, dan semua alamat IP berkaitan telah disekat daripada menyunting.
@@ -32999,11 +33001,11 @@ Vmesnik prikazuje seznam določenih filtrov in omogoča, da jih spremenite.',
 	'abusefilter-warning' => "'''Opozorilo''': To dejanje je bilo samodejno zaznano kot škodljivo.
 Nekoristna urejanja bodo hitro povrnjena,
 nezaslišana ali ponavljajoča nekoristna urejanja pa bodo sledila v blokado vašega računa ali IP-naslova.
-Če verjamete, da je to urejanje koristno, lahko klinete Pošlji znova za njegovo potrditev.
-Kratek opis pravila zlorab, kateremu je ustrezalo vaše dejanje: $1",
+Če verjamete, da je to dejanje koristno, ga lahko ponovno potrdite.
+Kratek opis pravila zlorab, ki mu je ustrezalo vaše dejanje: $1",
 	'abusefilter-disallowed' => 'To dejanje je bilo samodejno zaznano kot škodljivo in je zato prepovedano.
-Če verjamete, da je bilo vaše urejanje koristno, prosimo, obvestite administratorja o tem, kar ste skušali storiti.
-Kratek opis pravila zlorab, kateremu je ustrezalo vaše dejanje: $1',
+Če verjamete, da je bilo vaše dejanje koristno, prosimo, obvestite administratorja o tem, kar ste skušali storiti.
+Kratek opis pravila zlorab, ki mu je ustrezalo vaše dejanje: $1',
 	'abusefilter-blocked-display' => 'To dejanje je bilo samodejno prepoznano kot škodljivo
 in vam je zato bila njegova izvedba preprečena.
 Poleg tega je bilo zavoljo zaščite {{GRAMMAR:rodilnik|{{SITENAME}}}} vašemu uporabniškemu računu in vsem pripadajočim IP-naslovom preprečeno urejanje.
@@ -33033,6 +33035,7 @@ Opis pravila: $1',
 	'right-abusefilter-log-private' => 'Ogled dnevniških vnosov filtra zlorab, označenih kot zasebni',
 	'right-abusefilter-hide-log' => 'Skrivanje vnosov v dnevniku zlorab',
 	'right-abusefilter-hidden-log' => 'Ogled skritih vnosov v dnevniku zlorab',
+	'right-abusefilter-modify-global' => 'Ustvarjanje ali spreminjanje globalnih filtrov zlorab',
 	'action-abusefilter-modify' => 'spreminjanje filtrov zlorab',
 	'action-abusefilter-view' => 'ogled filtra zlorab',
 	'action-abusefilter-log' => 'ogled dnevnika zlorab',
@@ -33197,6 +33200,7 @@ Prosite uporabnika, ki lahko dodaja omejena dejanja, da stori spremembo namesto 
 	'abusefilter-edit-bad-tags' => 'Ena ali več navedenih oznak ni veljavnih.
 Oznake morajo biti kratne in ne smejo vsebovati posebnih znakov.',
 	'abusefilter-edit-notallowed' => 'Ustvarjanje ali urejanje filtrov zlorab vam ni dovoljeno.',
+	'abusefilter-edit-notallowed-global' => 'Nimate dovoljenj za ustvarjanje ali spreminjanje globalnih filtrov zlorab',
 	'abusefilter-edit-builder-select' => 'Izberite možnost, da jo dodate na mesto kazalca',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetični operatorji',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Seštevanje (+)',
@@ -33270,6 +33274,7 @@ Oznake morajo biti kratne in ne smejo vsebovati posebnih znakov.',
 	'abusefilter-edit-builder-vars-user-age' => 'Starost uporabniškega računa',
 	'abusefilter-edit-builder-vars-user-name' => 'Ime uporabniškega računa',
 	'abusefilter-edit-builder-vars-user-groups' => 'Skupine (vključno s posrednimi) v katerih je uporabnik',
+	'abusefilter-edit-builder-vars-user-blocked' => 'Ali je uporabnik blokiran',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Čas, ko je bil e-poštni naslov potrjen',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Zadnjih deset uporabnikov, ki so prispevali strani',
 	'abusefilter-edit-builder-vars-all-links' => 'Vse zunanje povezave v novem besedilu',
