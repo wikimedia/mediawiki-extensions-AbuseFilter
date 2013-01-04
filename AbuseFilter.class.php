@@ -1867,11 +1867,16 @@ class AbuseFilter {
 
 	/**
 	 * @param $title Title
-	 * @param $article Array|Article
+	 * @param $article Page|null
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function getEditVars( $title, $article = null ) {
+	public static function getEditVars( $title, Page $page = null ) {
 		$vars = new AbuseFilterVariableHolder;
+
+		// NOTE: $page may end up remaining null, e.g. if $title points to a special page.
+		if ( !$page && $title->canExist() && $title->exists() ) {
+			$page = WikiPage::factory( $title );
+		}
 
 		$vars->setLazyLoadVar( 'edit_diff', 'diff',
 			array( 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_wikitext' ) );
@@ -1892,7 +1897,7 @@ class AbuseFilter {
 				'namespace' => $title->getNamespace(),
 				'title' => $title->getText(),
 				'text-var' => 'new_wikitext',
-				'article' => $article
+				'article' => $page
 			) );
 		$vars->setLazyLoadVar( 'old_links', 'links-from-wikitext-or-database',
 			array(
@@ -1910,7 +1915,7 @@ class AbuseFilter {
 				'namespace' => $title->getNamespace(),
 				'title' => $title->getText(),
 				'wikitext-var' => 'new_wikitext',
-				'article' => $article
+				'article' => $page
 			) );
 		$vars->setLazyLoadVar( 'new_text', 'strip-html',
 			array( 'html-var' => 'new_html' ) );
@@ -2100,18 +2105,54 @@ class AbuseFilter {
 	 * @return string|null the content of the revision as some kind of string,
 	 * 		or an empty string if it can not be found
 	 */
-	static function revisionToString( $revision, $audience = Revision::FOR_PUBLIC ) {
+	static function revisionToString( $revision, $audience = Revision::FOR_THIS_USER ) {
 		if ( !$revision instanceof Revision ) {
 			return '';
 		}
 		if ( defined( 'MW_SUPPORTS_CONTENTHANDLER' ) ) {
 			$content = $revision->getContent( $audience );
-			$result = $content instanceof TextContent ? $content->getNativeData() : $content->getTextForSearchIndex();
+			if ( !$content instanceof Content ) {
+				return '';
+			}
+			$result = self::contentToString( $content );
 		} else {
 			// For MediaWiki without contenthandler support (< 1.21)
 			$result = $revision->getText();
 		}
 		return $result;
+	}
+
+	/**
+	 * Converts the given Content object to a string.
+	 *
+	 * This uses Content::getNativeData() if $content is an instance of TextContent,
+	 * or Content::getTextForSearchIndex() otherwise.
+	 *
+	 * The hook 'AbuseFilter::contentToString' can be used to override this
+	 * behavior.
+	 *
+	 * @param Content $content
+	 *
+	 * @return string a suitable string representation of the content.
+	 */
+	static function contentToString( Content $content ) {
+		$text = null;
+
+		if ( wfRunHooks( 'AbuseFilter-contentToString', array( $content, &$text ) ) ) {
+			$text = $content instanceof TextContent
+						? $content->getNativeData()
+						: $content->getTextForSearchIndex();
+		}
+
+		if ( is_string( $text ) ) {
+			// bug 20310
+			// XXX: Is this really needed? Should we rather apply PST?
+			$text = str_replace( "\r\n", "\n", $text );
+		} else {
+			$text = '';
+		}
+
+		return $text;
 	}
 
 }

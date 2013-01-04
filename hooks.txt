@@ -17,6 +17,12 @@ $vars: AbuseFilterVariableHolder
 $parameters: Parameters with data to compute the value
 &$result: Result of the computation
 
+'AbuseFilter-contentToString': Called when converting a Content object to a string to which
+filters can be applied. If the hook function returns true, Content::getTextForSearchIndex()
+will be used for non-text content.
+$content: The Content object
+&$text: Set this to the desired text.
+
 'AbuseFilter-filterAction': Allows overwriting of abusefilter variables in AbuseFilter::filterAction just
 before they're checked against filters.
 $vars: AbuseFilterVariableHolder with variables

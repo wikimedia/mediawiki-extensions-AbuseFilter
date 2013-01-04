@@ -347,6 +347,7 @@ class AFComputedVariable {
 				}
 				// Otherwise fall back to database
 			case 'parse-wikitext-nonedit':
+				// TODO: use Content object instead, if available! In any case, use WikiPage, not Article.
 				$article = self::articleFromTitle( $parameters['namespace'], $parameters['title'] );
 				$textVar = $parameters['wikitext-var'];
 
