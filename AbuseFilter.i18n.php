@@ -8557,9 +8557,10 @@ Toś ten pówjerch pokazujo lisćinu definěrowanych filtrow a zmóžnja je změ
 	'abusefilter-mustbeeditor' => 'Z wěstotnych pśicynow mógu jano wužywarje z pšawom znjewužywaśnke filtry změniś toś ten interfejs wužywaś.',
 	'abusefilter-warning' => "'''Warnowanje''': Toś ta akcija jo se awtomatiski identificěrowała ako škódna.
 Njekonstruktiwne změny budu se spěšnje anulěrowaś, a njesromne abo wóspjetowane njekonstruktiwne wobźěłowanje buźo k tomu wjasć, až twójo konto abo twója IP-adresa se blokěrujo.
-Jolic se mysliš, až toś ta změna jo konstruktiwna, móžoš na Znowego wótpósłaś kliknuś, aby ju wobkšuśił. Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpowědujo, jo: $1",
+Jolic se mysliš, až toś ta akcija jo konstruktiwna, móžoš ju znowego składowaś, aby ju wobkšuśił. 
+Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpowědujo, jo: $1",
 	'abusefilter-disallowed' => 'Toś ta akcija jo se awtomatiski identificěrowała ako škódna, a togodla znjemóžniła.
-Jolic se měniš, až twója změna jo była konstruktiwna, staj se z administratorom do zwiska a informěruj jogo, což sy wopytał cyniś.
+Jolic se měniš, až twója akcija jo była konstruktiwna, informěruj administratora, což sy wopytał cyniś.
 Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpowědujo, jo: $1',
 	'abusefilter-blocked-display' => 'Toś ta akcija jo se awtomatiski identificěrowała ako škódna, a jo se śi zawoborało ju wuwjasć.
 Pśidatnje, aby {{SITENAME}} šćitało, blokěruju se twójo wužywarske konto a wše zwězane IP-adrese pśeśiwo wobźěłowanjoju.
@@ -8587,6 +8588,7 @@ Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpo
 	'right-abusefilter-log-private' => 'Ako priwatne markěrowane protokolowe zapiski znjewužywańskich filtrow se woglědaś',
 	'right-abusefilter-hide-log' => 'Zapiski w znjewužywańskem protokolu schowaś',
 	'right-abusefilter-hidden-log' => 'Schowane zapiski znjewužywańskego protokola pokazaś',
+	'right-abusefilter-modify-global' => 'Globalne znjewužywańske filtry napóraś abo změniś',
 	'action-abusefilter-modify' => 'znjewužywańske filtry změniś',
 	'action-abusefilter-view' => 'znjewužywańske filtry se woglědaś',
 	'action-abusefilter-log' => 'znjewužywański protokol se woglědaś',
@@ -8746,6 +8748,7 @@ Pšosym pšos wužywarja z pšawom wobgranicowane akcije pśidaś, aby cynił zm
 	'abusefilter-edit-bad-tags' => 'Jadna abo někotare z pódanych toflickow njejo płaśiwa.
 Toflicki by mógli krotke byś a njeby mógli specielne znamuška wopśimjeś.',
 	'abusefilter-edit-notallowed' => 'Njesmějoš znjewužywańske filtry napóraś abo wobźěłaś',
+	'abusefilter-edit-notallowed-global' => 'Njesmějoš globalne znjewužywańske filtry napóraś abo wobźěłaś',
 	'abusefilter-edit-builder-select' => 'Wubjeŕ opciju, aby ju zasajźił pla kursora',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetiske operatory',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adicija (+)',
@@ -8819,6 +8822,7 @@ Toflicki by mógli krotke byś a njeby mógli specielne znamuška wopśimjeś.',
 	'abusefilter-edit-builder-vars-user-age' => 'Starstwo wužywarskego konta',
 	'abusefilter-edit-builder-vars-user-name' => 'Mě wužywarskego konta',
 	'abusefilter-edit-builder-vars-user-groups' => 'Kupki (teke implicitne), w kótarychž wužywaŕ jo cłonk',
+	'abusefilter-edit-builder-vars-user-blocked' => 'Lěc wužywaŕ jo blokěrowany',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Cas, gaž e-mailowa adresa jo se wobkšuśiła',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Slědnych pěś wobźěłarjow boka',
 	'abusefilter-edit-builder-vars-all-links' => 'Wše eksterne wótkaze w nowem teksće',
@@ -15079,9 +15083,10 @@ Powjerch pokazuje lisćinu definowanych filtrow a dowola je změnić.',
 	'abusefilter-mustbeeditor' => 'Z wěstotnych přičinow móžeja jenož wužiwarjo z prawom znjewužiwanske filtry změnić tutón interfejs wužiwać.',
 	'abusefilter-warning' => "'''Warnowanje''': Tuta akcija bu awtomatisce jako škódna identifikowana.
 Njekonstruktiwne změny budu so spěšnje cofnyć, a njesłyšane abo wospjetowane wobdźěłowanje budźe k tomu wjesć, zo twoje konto abo twoja IP-adresa so blokuje.
-Jeli maš tutu změnu za konstruktiwnu, móžeš znowa na Wotpósłać kliknyć, zo by ju wobkrućił. Krótke wopisanje znjewužiwanskeho prawidła, kotremuž twoja akcija wotpowěduje, je: $1", # Fuzzy
+Jeli maš tutu akciju za konstruktiwnu, móžeš znowa skkadować, zo by ju wobkrućił. 
+Krótke wopisanje znjewužiwanskeho prawidła, kotremuž twoja akcija wotpowěduje, je: $1",
 	'abusefilter-disallowed' => 'Tuta akcija bu awtomatisce jako škódna identifikowana a tohodla znjemóžnjena.
-Jeli wěriš, zo twoja změna je konstruktiwna była, staj so z administratorom do zwiska a informuj jeho, štož sy spytał činić.
+Jeli wěriš, zo twoja akcija je konstruktiwna była, informuj prošu  administratora, štož sy spytał činić.
 Krótke wopisanje znjewužiwanskeho prawidła, kotremuž twoja akcija wotpowěduje, je: $1',
 	'abusefilter-blocked-display' => 'Tuta akcija bu awtomatisce jako škódna identifikowana, a je so ći zadźěwało, ju wuwjesć.
 Přidatnje su so twoje wužiwarske konto a wšě zwjazane IP-addresy přećiwo wobdźěłanju zawrjene, zo by so {{SITENAME}} škitał.
@@ -15108,6 +15113,7 @@ Krótke wopisanje znjewužiwanskeho prawidła, kotremuž twoja akcija wotpowědu
 	'right-abusefilter-log-private' => 'Protokolowe zapiski znjewužiwanskich filtrow jako priwatne markěrować',
 	'right-abusefilter-hide-log' => 'Zapiski w znjewužiwanskim protokolu schować',
 	'right-abusefilter-hidden-log' => 'Zapiski znjewužiwanskeho protokola pokazać',
+	'right-abusefilter-modify-global' => 'Globalne znjewužiwanske filtry wutworić abo změnić',
 	'action-abusefilter-modify' => 'znjewužiwanske filtry změnić',
 	'action-abusefilter-view' => 'znjewužiwanske filtry sej wobhladać',
 	'action-abusefilter-log' => 'znjewužiwanski protokol sej wobhladać',
@@ -15269,6 +15275,7 @@ Limit wjace hač $1 % akcijow je so docpěł.",
 	'abusefilter-edit-bad-tags' => 'Jedna abo wjacore z podatych tafličkow njeje płaćiwa.
 Taflički měli krótke być a njeměli wosebite znamješka wobsahować.',
 	'abusefilter-edit-notallowed' => 'Njesměš znjewužiwanske filtry wutworić abo wobdźěłać',
+	'abusefilter-edit-notallowed-global' => 'Njesměš globalne znjewužiwanske filtry wutworić abo wobdźěłać',
 	'abusefilter-edit-builder-select' => 'wubjer opciju, zo by ju pola kursora zasunył',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetiske operatory',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adicija (+)',
@@ -17646,11 +17653,11 @@ L'interfaccia mostra un elenco dei filtri definiti e ne consente la modifica.",
 	'abusefilter-mustbeeditor' => 'Per motivi di sicurezza, solo gli utenti con il diritto di modificare i filtri anti abusi possono utilizzare questa interfaccia.',
 	'abusefilter-warning' => "'''Attenzione''': Questa azione è stata ritenuta pericolosa in base a una verifica automatica.
 Le modifiche non costruttive verranno prontamente annullate; l'inserimento palese o ripetuto di contributi non costruttivi darà luogo al blocco dell'utenza o del tuo indirizzo IP.
-Se si ritiene che la modifica in questione sia costruttiva, fare nuovamente clic su Invia per confermarla.
-Questa è una breve descrizione della regola di sicurezza che è stata violata: $1", # Fuzzy
-	'abusefilter-disallowed' => 'Questa azione è stata ritenuta pericolosa e quindi impedita in base a una verifica automatica.
-Se si ritiene che la modifica in questione sia costruttiva, contattare un amministratore e informarlo su ciò che si stava tentando di fare.
-Questa è una breve descrizione della regola di sicurezza che è stata violata: $1', # Fuzzy
+Se si ritiene che l'azione in questione sia costruttiva, devi inviarla nuovamente per confermarla.
+Questa è una breve descrizione della regola di sicurezza che è stata violata: $1",
+	'abusefilter-disallowed' => "Questa azione è stata ritenuta pericolosa e quindi impedita in base a una verifica automatica.
+Se si ritiene che l'azione in questione sia costruttiva, contattare un amministratore e informarlo su ciò che si stava tentando di fare.
+Questa è una breve descrizione della regola di sicurezza che è stata violata: $1",
 	'abusefilter-blocked-display' => "Questa azione è stata ritenuta pericolosa e quindi impedita in base a una verifica automatica.
 Inoltre, allo scopo di proteggere {{SITENAME}} l'utenza coinvolta e tutti gli indirizzi IP ad essa associati sono stati bloccati e non possono più effettuare modifiche.
 Se si ritiene che si tratti di un errore, si prega di contattare un amministratore.
@@ -18080,8 +18087,8 @@ $messages['ja'] = array(
 	'abusefilter-warning' => "'''警告''': 行われた操作は自動的に有害と判断されました。
 建設的ではない編集は速やかに差し戻されます。
 被害程度が大きい破壊的編集や頻繁な破壊行為は、アカウントまたはIPアドレスのブロックにつながります。
-行なった編集が確かに建設的だと考える場合は、もう一度投稿してください。
-操作に対して発動した違反規則の概略は次の通りです: $1", # Fuzzy
+行なった操作が確かに建設的だと考える場合は、もう一度投稿してください。
+操作に対して発動した違反規則の概略は次の通りです: $1",
 	'abusefilter-disallowed' => '行なった操作は、有害であると自動的に判断されたため実行できませんでした。
 確かに建設的な操作であると考える場合は、行なおうとしていた操作について管理者にお知らせください。
 操作に対して発動した違反規則の概略は以下の通りです: $1',
@@ -20685,11 +20692,11 @@ Dës Spezialsäit weist eng Lëscht vun definéierte Filteren an erlaabt et dës
 Ännerungen déi net konstruktiv si ginn automatesch zréckgsat,
 a besonnesch schlëmmen oder widderhuelte Fäll gëtt Äre Benotzerkont oder Är IP-Adress gespaart.
 Wann Dir mengt datt Är Ännerung konstruktiv ass kënnt dir nachemol op \"Späichere\" klicke fir ze confirméieren.
-Eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi Är Aktioun reagéiert huet: \$1",
+Eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi Är Aktioun reagéiert huet: \$1", # Fuzzy
 	'abusefilter-disallowed' => 'Dës Aktioun gouf automatesch als schiedlech erkannt,
 an dofir net zougelooss.
 Wann Dir mengt datt Är Ännerung konstruktiv ass, da kontaktéiert w.e.g. en Administrateur, an informéiert deen wat Dir versicht hutt ze maachen.
-Eng kuerz Beschreiwung vun der Mëssbrauchsregel déi op är Aktioun getraff huet ass hei: $1',
+Eng kuerz Beschreiwung vun der Mëssbrauchsregel déi op är Aktioun getraff huet ass hei: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Dës Aktioun gouf automatesch als schiedlech identifizéiert,
 an Dir konnt se dowéint net ausféieren.
 Des weideren, fir {{SITENAME}} ze protegéieren, gouf Äre Benotzerkont an all assoziéiert IP-Adressen automatesch fir all Ännerunge gespaart.
@@ -20941,6 +20948,7 @@ Tags solle kuerz sinn, an et solle keng Spezialzeechen dra sinn.',
 	'abusefilter-edit-builder-vars-user-age' => 'Alter vum Benotzerkont',
 	'abusefilter-edit-builder-vars-user-name' => 'Numm vum Benotzerkont',
 	'abusefilter-edit-builder-vars-user-groups' => 'Gruppen (inklusiv déi implizit) wou de Benotzer dran ass',
+	'abusefilter-edit-builder-vars-user-blocked' => 'Ob de Benotzer gespaart ass',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => "Wéini d'E-Mailadress confirméiert gouf",
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Déi lescht zeng Benotzer déi un dësem Artikel geschafft hunn',
 	'abusefilter-edit-builder-vars-all-links' => 'All extern Linken am neien Text',
@@ -24451,7 +24459,7 @@ $messages['myv'] = array(
 	'abusefilter-log-search-user' => 'Теицясь:',
 	'abusefilter-log-search-filter' => 'Сувтементь ID-зэ:',
 	'abusefilter-log-search-title' => 'Коняксозо:',
-	'abusefilter-log-search-submit' => 'Вешнэмс',
+	'abusefilter-log-search-submit' => 'Вешнемс',
 	'abusefilter-log-detailedentry-local' => 'сувтеме $1',
 	'abusefilter-log-detailslink' => 'мезде моли кортамось',
 	'abusefilter-log-hide-reason' => 'Тувталось:',
@@ -24527,7 +24535,7 @@ $messages['myv'] = array(
 	'abusefilter-changeslist-examine' => 'ванномс',
 	'abusefilter-examine-user' => 'Совицясь:',
 	'abusefilter-examine-title' => 'Лопань коняксось:',
-	'abusefilter-examine-submit' => 'Вешнэмс',
+	'abusefilter-examine-submit' => 'Вешнемс',
 	'abusefilter-examine-test-button' => 'Варчамс сувтементь',
 	'abusefilter-topnav-home' => 'Ушодома таркав',
 	'abusefilter-topnav-log' => 'А тевде тешкстамот',
@@ -36149,6 +36157,8 @@ $messages['th'] = array(
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|วินาที|วินาที}}',
 	'abusefilter-edit-warn-message' => 'ข้อความระบบที่ใช้เป็นคำเตือน',
 	'abusefilter-edit-warn-other' => 'ข้อความอื่นๆ',
+	'abusefilter-edit-warn-other-label' => "ชื่อหน้าของข้อความอื่น:
+:''(โดยไม่มีคำขึ้นต้นมีเดียวิกิ)''",
 	'abusefilter-edit-warn-actions' => 'การกระทำ:',
 	'abusefilter-edit-warn-preview' => 'แสดงตัวอย่างข้อความที่เลือก',
 	'abusefilter-edit-warn-edit' => 'สร้าง/แก้ไขข้อความที่เลือก',
