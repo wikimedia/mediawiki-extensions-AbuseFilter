@@ -7778,6 +7778,7 @@ Filterbeschreibung: $7 ($8)',
 	'abusefilter-reautoconfirm-done' => '„Automatisch bestätigte Benutzer“-Status wurde wiederhergestellt',
 	'abusefilter-status' => 'Von {{PLURAL:$1|der letzten Aktion|den letzten $1 Aktionen}} {{PLURAL:$2|hat eine|haben $2}} ($3 %) den Grenzwert von $4 erreicht.
 {{PLURAL:$5|Eine Aktion|$5 Aktionen}} ($6 %) {{PLURAL:$5|wurde|wurden}} von einem der aktivierten Filter erkannt.',
+	'abusefilter-edit' => 'Missbrauchsfilter bearbeiten',
 	'abusefilter-edit-subtitle' => 'Bearbeite Filter $1',
 	'abusefilter-edit-subtitle-new' => 'Der Filter wird gerade erstellt.',
 	'abusefilter-edit-oldwarning' => '<strong>Du bearbeitest nicht die aktuelle, sondern eine ältere Version dieses Filters. Die Statistik gilt nur für die letzte Version des Filters. Wenn du speicherst, wird diese als aktuelle Version neu gespeichert. </strong> &bull; [[Special:AbuseFilter/history/$2|Zurück zur Versionsgeschichte des Filters]]',
@@ -8679,6 +8680,7 @@ Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpo
 	'abusefilter-reautoconfirm-notallowed' => 'Njesmějoš awtomatiski wobkšuśony status wótnowiś',
 	'abusefilter-reautoconfirm-done' => 'Status awtomatiskego wobkšuśenja konta jo se wótnowił',
 	'abusefilter-status' => 'Ze {{PLURAL:$1|slědneje akcije|slědneju $1 akciji|slědnych $1 akcijow|slědnych $1 akcijow}} $2 ($3 %) {{PLURAL:$2|jo dojśpiła|stej dojśpiłej|su dojśpili|jo dojśpiło}} limit wuměnjenja $4 a $5 ($6 %) {{PLURAL:$5|jo wótpowědowała|stej wótpowědowałej|su wótpowědowali|jo wótpowědowało}} jadnomu z filtrow, kótarež su tuchylu zmóžnjone.',
+	'abusefilter-edit' => 'Znjewužiwański filter wobźěłaś',
 	'abusefilter-edit-subtitle' => 'Filter $1 se wobźěłujo',
 	'abusefilter-edit-subtitle-new' => 'Filter se napórajo',
 	'abusefilter-edit-oldwarning' => '<strong>Wobźěłujoš staru wersiju toś togo filtra.
@@ -11947,6 +11949,7 @@ Description du filtre : $7 ($8)",
 	'abusefilter-reautoconfirm-notallowed' => "Vous n'êtes pas autorisé{{GENDER:||e|(e)}} à rétablir l'état autoconfirmé.",
 	'abusefilter-reautoconfirm-done' => "L'état autoconfirmé du compte utilisateur a été rétabli",
 	'abusefilter-status' => "{{PLURAL:$1|Dans la dernière action|Parmi les $1 dernières actions}}, $2 ($3 %) {{PLURAL:$2|a|ont}} atteint la limite des $4 conditions autorisées. Et $5 ($6 %) {{PLURAL:$5|a été détectée|ont été détectées}} par l'un des filtres actuellement activés.",
+	'abusefilter-edit' => "Modifier le filtre d'abus",
 	'abusefilter-edit-subtitle' => 'Modification du filtre $1',
 	'abusefilter-edit-subtitle-new' => 'Créer un filtre',
 	'abusefilter-edit-oldwarning' => "<strong>Vous êtes en train de modifier une ancienne version de ce filtre.
@@ -12731,12 +12734,11 @@ Esta interface mostra unha lista dos filtros definidos e permite que estes sexan
 	'abusefilter-warning' => "'''Atención:''' Esta acción foi identificada automaticamente como prexudicial.
 As edicións non construtivas serán revertidas decontado,
 e a repetición destas edicións dará como resultado o bloqueo da súa conta ou do seu enderezo IP.
-Se cre que esta edición é construtiva, pode premer outra vez en \"Enviar\" para confirmalo.
-Velaquí hai unha breve descrición da regra de abuso coa que coincide a súa acción: \$1", # Fuzzy
-	'abusefilter-disallowed' => 'Esta acción foi identificada automaticamente como prexudicial
-e por iso non está permitida.
-Se cre que a súa edición foi construtiva, por favor, póñase en contacto cun administrador e infórmelle do que estaba intentando facer.
-Velaquí hai unha breve descrición da regra de abuso coa que coincide a súa acción: $1', # Fuzzy
+Se cre que esta acción é construtiva, pode enviala outra vez para confirmalo.
+Velaquí hai unha breve descrición da regra de abuso coa que coincide a súa acción: $1",
+	'abusefilter-disallowed' => 'Esta acción foi identificada automaticamente como prexudicial e por iso non está permitida.
+Se cre que a súa acción foi construtiva, por favor, informe a un administrador do que estaba intentando facer.
+Velaquí hai unha breve descrición da regra de abuso coa que coincide a súa acción: $1',
 	'abusefilter-blocked-display' => 'Esta acción foi identificada automaticamente como prexudicial
 e impedíuselle que a executase.
 Ademais, para protexer a {{SITENAME}}, a súa conta de usuario e todos os enderezos IP asociados foron bloqueados fronte á edición.
@@ -12857,6 +12859,7 @@ Descrición do filtro: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => 'Non ten os permisos necesarios para restaurar o estado de autoconfirmación.',
 	'abusefilter-reautoconfirm-done' => 'Restaurouse o estado de autoconfirmación da conta',
 	'abusefilter-status' => '{{PLURAL:$1|Da última acción|Das $1 últimas accións}}, $2 (o $3%) {{PLURAL:$2|atinxiu|atinxiron}} a condición límite de $4, e $5 (o $6%) {{PLURAL:$5|coincidiu|coincidiron}} cun dos filtros actualmente activados.',
+	'abusefilter-edit' => 'Editando o filtro de abusos',
 	'abusefilter-edit-subtitle' => 'Editando o filtro $1',
 	'abusefilter-edit-subtitle-new' => 'Creando un filtro',
 	'abusefilter-edit-oldwarning' => '<strong>Está a editar unha versión vella deste filtro.
@@ -14381,7 +14384,7 @@ $messages['hi'] = array(
 	'abusefilter-list-options-deleted-only' => 'केवल हटाए गए फ़िल्टर दिखाएँ',
 	'abusefilter-list-options-deleted-hide' => 'हटाए गए फ़िल्टर छुपाएँ',
 	'abusefilter-list-options-deleted-show' => 'हटाए गए फ़िल्टर शामिल करें',
-	'abusefilter-list-options-scope-local' => 'स्थानिय विकि',
+	'abusefilter-list-options-scope-local' => 'स्थानीय विकी',
 	'abusefilter-list-options-scope-global' => 'वैश्विक नियम',
 	'abusefilter-list-options-disabled' => 'अक्षम किये गए फ़िल्टर:',
 	'abusefilter-list-options-hidedisabled' => 'अक्षम किये गए फ़िल्टर छुपाएँ',
@@ -15016,7 +15019,7 @@ Molimo provjerite ih pažljivo, i kliknite na "Potvrdi" kako biste potvrdili svo
 Razlog dan: $2',
 	'abusefilter-revert-reasonfield' => 'Razlog:',
 	'abusefilter-test' => 'Testiraj filtar s prethodnim uređivanjem',
-	'abusefilter-test-intro' => 'Ova stranica omogućava provjeru filtra unešenog u donji okvir sa zadnjom $ 1 {{PLURAL:$1|promjenom|promjenama}}.
+	'abusefilter-test-intro' => 'Ova stranica omogućava provjeru filtra unešenog u donji okvir sa {{PLURAL:$1|zadnjim $1 uređivanjem|zadnjih $1 uređivanja}}.
 Za učitavanje postojećeg filtra, upišite ID filtra u okvir ispod okvira za uređenjivanje i kliknite tipku "Učitaj".',
 	'abusefilter-test-legend' => 'Testiranje filtra',
 	'abusefilter-test-load-filter' => 'Učitaj ID filtra:',
@@ -15208,6 +15211,7 @@ Wopisanje filtra:: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => 'Njesměš awtomatisce wobkrućeny status wobnowić.',
 	'abusefilter-reautoconfirm-done' => 'Status awtomatiskeho wobkrućenja konta bu wobnowjeny',
 	'abusefilter-status' => 'Z {{PLURAL:$1|poslednjej akcije|poslednjeju $1 akciji|poslednich $1 akcijow|podslednich $1 akcijow}} {{PLURAL:$2|je $2 ($3 %) docpěła|stej $2 ($3 %) docpěłoj|su $2 ($3 %) docpěli|je $2 ($3 %) docpěło}} limit wuměnjenja $4, a $5 ($6 %)  {{PLURAL:$5| je wotpowědował|stej wotpowědowałoj|su wotpowědowali|je wotpowědowało}} jednomu z filtrow, kotrež su tuchwilu zmóžnjene.',
+	'abusefilter-edit' => 'Znjewužiwanski filter wobdźěłać',
 	'abusefilter-edit-subtitle' => 'Filter $1 so wobdźěłuje',
 	'abusefilter-edit-subtitle-new' => 'Filter so wutworja',
 	'abusefilter-edit-oldwarning' => '<strong>Wobdźěłuješ staru wersiju tutoho filtra.
@@ -18215,6 +18219,7 @@ $messages['ja'] = array(
 	'abusefilter-reautoconfirm-notallowed' => 'あなたは自動承認ステータスを復元することが許可されていません。',
 	'abusefilter-reautoconfirm-done' => '利用者の自動承認ステータスが復元されました',
 	'abusefilter-status' => '最近の$1{{PLURAL:$1|操作}}のうち、$2件($3%)が$4の条件制限に{{PLURAL:$2|達しました}}。$5件($6%)に対して、現在有効なフィルターの1つが{{PLURAL:$5|発動しました}}。',
+	'abusefilter-edit' => '不正利用フィルターを編集中',
 	'abusefilter-edit-subtitle' => 'フィルター $1 を編集中',
 	'abusefilter-edit-subtitle-new' => 'フィルターを作成中',
 	'abusefilter-edit-oldwarning' => '<strong>あなたはこのフィルターの古い版を編集しています。引用されている統計は最新版のフィルターのものです。あなたの変更を保存すると、あなたが編集している版以降の変更をすべて上書きしてしまいます。</strong> &bull; [[Special:AbuseFilter/history/$2|このフィルターの履歴に戻る]]',
@@ -19589,6 +19594,7 @@ $messages['kn'] = array(
  * @author Gapo
  * @author Klutzy
  * @author Kwj2772
+ * @author LFM
  * @author Pakman
  * @author Yknok29
  * @author 아라
@@ -19601,15 +19607,12 @@ $messages['ko'] = array(
 부정 행위 방지 필터는 모든 행위에 대해 문제가 있는지 자동적으로 검사하는 소프트웨어입니다.
 이 페이지에서는 필터의 목록을 나열하고 있으며, 필터를 수정할 수 있습니다.',
 	'abusefilter-mustbeeditor' => '보안상의 이유로, 부정 행위 방지 필터 편집 권한을 가진 사용자만이 이 양식을 이용할 수 있습니다.',
-	'abusefilter-warning' => "'''경고''': 현재 행동에 문제가 있다고 판단되었습니다.
-비생산적인 편집은 즉시 되돌려지며,
-이러한 행동이 반복될 경우 계정 및 IP 주소가 차단될 수 있습니다.
-만약 해당 편집에 문제가 없다면, 저장 버튼을 다시 눌러 주세요.
-문제가 된 필터 규칙은 다음과 같습니다: $1", # Fuzzy
-	'abusefilter-disallowed' => '이러한 행위는 자동적으로 해로운 것으로 간주되었습니다.
-따라서 이 행위는 불허되었습니다.
-당신의 편집이 생산적이라고 여기신다면, 관리자에게 문의하여 무엇을 하려 하는지 알려 주세요.
-당신의 행위와 일치하는 규칙을 가진 필터의 간단한 설명은 다음과 같습니다: $1', # Fuzzy
+	'abusefilter-warning' => "'''경고''': 이 작업은 다음 규칙에 따라 유해한 것으로 판단하였습니다. : $1
+비생산적인 편집은 즉시 되돌려지며 그러한 행동이 반복될 경우 계정 및 IP 주소가 차단됩니다.
+만약 해당 작업에 문제가 없다고 생각한다면 저장 버튼을 다시 눌러도 됩니다.", # Fuzzy
+	'abusefilter-disallowed' => '이 작업은 다음 규칙에 따라 오용된 것으로 판단하였습니다. : $1
+따라서 허용하지 않습니다.
+이 작업이 생산적이라면 작업 내용에 관하여 관리자에게 문의하십시오.', # Fuzzy
 	'abusefilter-blocked-display' => '이러한 행위는 해로운 것으로 간주되어 더 이상 행하지 못하게 금지되었습니다.
 그리고 {{SITENAME}}을(를) 보호하기 위해, 당신의 계정과 연관된 IP 주소가 차단되었습니다.
 이 차단이 오류로 인한 것이라면, 관리자에게 문의해주세요.
@@ -22819,6 +22822,7 @@ $messages['mk'] = array(
 	'abusefilter-reautoconfirm-notallowed' => 'Не ви е дозволено да го вратите автопотврдениот статус.',
 	'abusefilter-reautoconfirm-done' => 'Автопотврдениот статус на сметката е вратен',
 	'abusefilter-status' => 'Од {{PLURAL:$1|последното $1 дејствие|последните $1 дејствија}}, $2 ($3%) го {{PLURAL:$2|достигна|достигнаа}} условното ограничување $4, и $5 ($6%) {{PLURAL:$5|се совпаѓа|се совпаѓаат}} со еден од моментално инсталираните филтри.',
+	'abusefilter-edit' => 'Уредување на филтер за злоупотреби',
 	'abusefilter-edit-subtitle' => 'Уредување на филтерот $1',
 	'abusefilter-edit-subtitle-new' => 'Создавање на филтер',
 	'abusefilter-edit-oldwarning' => '<strong>Уредувате стара верзија на овој филтер.
