@@ -115,7 +115,7 @@ class AbuseFilterHooks {
 		}
 
 		$vars->addHolder( AbuseFilter::generateUserVars( $user ) );
-		$vars->addHolder( AbuseFilter::generateTitleVars( $title , 'article' ) );
+		$vars->addHolder( AbuseFilter::generateTitleVars( $title , 'ARTICLE' ) );
 
 		$vars->setVar( 'action', 'edit' );
 		$vars->setVar( 'summary', $summary );

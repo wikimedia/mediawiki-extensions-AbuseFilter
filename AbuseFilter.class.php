@@ -186,17 +186,37 @@ class AbuseFilter {
 	public static function generateUserVars( $user ) {
 		$vars = new AbuseFilterVariableHolder;
 
-		$vars->setLazyLoadVar( 'user_editcount', 'simple-user-accessor',
-			array( 'user' => $user->getName(), 'method' => 'getEditCount' ) );
-		$vars->setVar( 'user_name', $user->getName() );
-		$vars->setLazyLoadVar( 'user_emailconfirm', 'simple-user-accessor',
-			array( 'user' => $user->getName(), 'method' => 'getEmailAuthenticationTimestamp' ) );
+		$vars->setLazyLoadVar(
+			'user_editcount',
+			'simple-user-accessor',
+			array( 'user' => $user, 'method' => 'getEditCount' )
+		);
 
-		$vars->setLazyLoadVar( 'user_age', 'user-age',
-			array( 'user' => $user->getName(), 'asof' => wfTimestampNow() ) );
-		$vars->setLazyLoadVar( 'user_groups', 'user-groups', array( 'user' => $user->getName() ) );
-		$vars->setLazyLoadVar( 'user_blocked', 'simple-user-accessor',
-			array( 'user' => $user->getName(), 'method' => 'isBlocked' ) );
+		$vars->setVar( 'user_name', $user->getName() );
+
+		$vars->setLazyLoadVar(
+			'user_emailconfirm',
+			'simple-user-accessor',
+			array( 'user' => $user, 'method' => 'getEmailAuthenticationTimestamp' )
+		);
+
+		$vars->setLazyLoadVar(
+			'user_age',
+			'user-age',
+			array( 'user' => $user, 'asof' => wfTimestampNow() )
+		);
+
+		$vars->setLazyLoadVar(
+			'user_groups',
+			'simple-user-accessor',
+			array( 'user' => $user, 'method' => 'getEffectiveGroups' )
+		);
+
+		$vars->setLazyLoadVar(
+			'user_blocked',
+			'simple-user-accessor',
+			array( 'user' => $user, 'method' => 'isBlocked' )
+		);
 
 		wfRunHooks( 'AbuseFilter-generateUserVars', array( $vars, $user ) );
 
@@ -341,9 +361,7 @@ class AbuseFilter {
 		/**
 		 * @var $parser AbuseFilterParser
 		 */
-		$parser = new $wgAbuseFilterParserClass;
-
-		$parser->setVars( $vars );
+		$parser = new $wgAbuseFilterParserClass( $vars );
 
 		return $parser->evaluateExpression( $expr );
 	}
@@ -369,9 +387,7 @@ class AbuseFilter {
 			/**
 			 * @var $parser AbuseFilterParser
 			 */
-			$parser = new $wgAbuseFilterParserClass;
-
-			$parser->setVars( $vars );
+			$parser = new $wgAbuseFilterParserClass( $vars );
 		}
 
 		try {
@@ -985,7 +1001,7 @@ class AbuseFilter {
 		// Global stuff
 		if ( count( $logged_global_filters ) ) {
 			$vars->computeDBVars();
-			$global_var_dump = self::storeVarDump( $vars, 'global' );
+			$global_var_dump = self::storeVarDump( $vars, true );
 			$global_var_dump = "stored-text:$global_var_dump";
 			foreach ( $central_log_rows as $index => $data ) {
 				$central_log_rows[$index]['afl_var_dump'] = $global_var_dump;
@@ -1022,7 +1038,7 @@ class AbuseFilter {
 	 * Store a var dump to External Storage or the text table
 	 * Some of this code is stolen from Revision::insertOn and friends
 	 *
-	 * @param $vars array
+	 * @param $vars AbuseFilterVariableHolder
 	 * @param $global bool
 	 *
 	 * @return int
@@ -1032,13 +1048,13 @@ class AbuseFilter {
 
 		global $wgCompressRevisions;
 
-		if ( is_array( $vars ) || is_object( $vars ) ) {
-			$text = serialize( $vars );
-		} else {
-			$text = $vars;
-		}
+		// Get all variables yet set and compute old and new wikitext if not yet done
+		// as those are needed for the diff view on top of the abuse log pages
+		$vars = $vars->dumpAllVars( array( 'old_wikitext', 'new_wikitext' ) );
 
-		$flags = array();
+		// Vars is an array with native PHP data types (non-objects) now
+		$text = serialize( $vars );
+		$flags = array( 'nativeDataArray' );
 
 		if ( $wgCompressRevisions ) {
 			if ( function_exists( 'gzdeflate' ) ) {
@@ -1129,6 +1145,14 @@ class AbuseFilter {
 		}
 
 		$obj = unserialize( $text );
+
+		if ( in_array( 'nativeDataArray', $flags ) ) {
+			$vars = $obj;
+			$obj = new AbuseFilterVariableHolder();
+			foreach( $vars as $key => $value ) {
+				$obj->setVar( $key, $value );
+			}
+		}
 
 		wfProfileOut( __METHOD__ );
 		return $obj;

@@ -27,7 +27,9 @@ class AbuseFilterVariableHolder {
 	}
 
 	/**
-	 * @param $variable
+	 * Get a variable from the current object
+	 *
+	 * @param $variable string
 	 * @return AFPData
 	 */
 	function getVar( $variable ) {
@@ -74,6 +76,8 @@ class AbuseFilterVariableHolder {
 	}
 
 	/**
+	 * Export all variables stored in this object as string
+	 *
 	 * @return array
 	 */
 	function exportAllVars() {
@@ -83,6 +87,55 @@ class AbuseFilterVariableHolder {
 		foreach ( $allVarNames as $varName ) {
 			if ( !in_array( $varName, self::$varBlacklist ) ) {
 				$exported[$varName] = $this->getVar( $varName )->toString();
+			}
+		}
+
+		return $exported;
+	}
+
+	/**
+	* Dump all variables stored in this object in their native types.
+	* If you want a not yet set variable to be included in the results you can either set $compute to an array
+	* with the name of the variable or set $compute to true to compute all not yet set variables.
+	*
+	* @param $compute array|bool Variables we should copute if not yet set
+	* @param $includeUserVars bool Include user set variables
+	* @return array
+	*/
+	public function dumpAllVars( $compute = array(), $includeUserVars = false ) {
+		$allVarNames = array_keys( $this->mVars );
+		$exported = array();
+
+		if ( !$includeUserVars ) {
+			// Compile a list of all variables set by the extension to be able to filter user set ones by name
+			global $wgRestrictionTypes;
+
+			$coreVariables = AbuseFilter::getBuilderValues();
+			$coreVariables = array_keys( $coreVariables['vars'] );
+
+			// Title vars can have several prefixes
+			$prefixes = array( 'ARTICLE', 'MOVED_FROM', 'MOVED_TO', 'FILE' );
+			$titleVars = array( '_ARTICLEID', '_NAMESPACE', '_TEXT', '_PREFIXEDTEXT', '_recent_contributors' );
+			foreach ( $wgRestrictionTypes as $action ) {
+				$titleVars[] = "_restrictions_$action";
+			}
+
+			foreach ( $titleVars as $var ) {
+				foreach ( $prefixes as $prefix )  {
+					$coreVariables[] = $prefix . $var;
+				}
+			}
+			$coreVariables = array_map( 'strtolower', $coreVariables );
+		}
+
+		foreach ( $allVarNames as $varName ) {
+			if (
+				( $includeUserVars || in_array( strtolower( $varName ), $coreVariables ) ) &&
+				// Only include variables set in the extension in case $includeUserVars is false
+				!in_array( $varName, self::$varBlacklist ) &&
+				( $compute === true || ( is_array( $compute ) && in_array( $varName, $compute ) ) ||  $this->mVars[$varName] instanceof AFPData )
+			) {
+				$exported[$varName] = $this->getVar( $varName )->toNative();
 			}
 		}
 
@@ -166,18 +219,32 @@ class AFComputedVariable {
 	}
 
 	/**
-	 * @param $username string
+	 * For backwards compatibility: Get the user object belonging to a certain name
+	 * in case a user name is given as argument. Nowadays user objects are passed
+	 * directly but many old log entries rely on this.
+	 *
+	 * @param $user string|User
 	 * @return User
 	 */
-	static function userObjectFromName( $username ) {
-		if ( isset( self::$userCache[$username] ) ) {
-			return self::$userCache[$username];
-		}
+	static function getUserObject( $user ) {
+		if ( $user instanceof User ) {
+			$username = $user->getName();
+		} else {
+			$username = $user;
+			if ( isset( self::$userCache[$username] ) ) {
+				return self::$userCache[$username];
+			}
 
-		wfDebug( "Couldn't find user $username in cache\n" );
+			wfDebug( "Couldn't find user $username in cache\n" );
+		}
 
 		if ( count( self::$userCache ) > 1000 ) {
 			self::$userCache = array();
+		}
+
+		if ( $user instanceof User ) {
+			$userCache[$username] = $user;
+			return $user;
 		}
 
 		if ( IP::isIPAddress( $username ) ) {
@@ -429,7 +496,7 @@ class AFComputedVariable {
 					throw new MWException( 'No user parameter given.' );
 				}
 
-				$obj = self::userObjectFromName( $user );
+				$obj = self::getUserObject( $user );
 
 				if ( !$obj ) {
 					throw new MWException( "Invalid username $user" );
@@ -440,7 +507,7 @@ class AFComputedVariable {
 			case 'user-age':
 				$user = $parameters['user'];
 				$asOf = $parameters['asof'];
-				$obj = self::userObjectFromName( $user );
+				$obj = self::getUserObject( $user );
 
 				if ( $obj->getId() == 0 ) {
 					$result = 0;
@@ -451,8 +518,9 @@ class AFComputedVariable {
 				$result = wfTimestamp( TS_UNIX, $asOf ) - wfTimestampOrNull( TS_UNIX, $registration );
 				break;
 			case 'user-groups':
+				// Deprecated but needed by old log entries
 				$user = $parameters['user'];
-				$obj = self::userObjectFromName( $user );
+				$obj = self::getUserObject( $user );
 				$result = $obj->getEffectiveGroups();
 				break;
 			case 'length':

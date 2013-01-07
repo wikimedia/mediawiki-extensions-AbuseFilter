@@ -632,8 +632,16 @@ class AbuseFilterParser {
 
 	static $lastHandledToken = array();
 
-	public function __construct() {
+	/**
+	 * Create a new instance
+	 *
+	 * @param $vars AbuseFilterVariableHolder
+	 */
+	public function __construct( $vars = null ) {
 		$this->resetState();
+		if ( $vars instanceof AbuseFilterVariableHolder ) {
+			$this->mVars = $vars;
+		}
 	}
 
 	public function resetState() {
@@ -668,7 +676,6 @@ class AbuseFilterParser {
 	 * @param $value
 	 */
 	public function setVar( $name, $value ) {
-		$name = strtolower( $name );
 		$this->mVars->setVar( $name, $value );
 	}
 
