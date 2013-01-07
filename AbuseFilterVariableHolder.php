@@ -421,10 +421,7 @@ class AFComputedVariable {
 				}
 
 				$registration = $obj->getRegistration();
-				$ts = new MWTimestamp( $asOf );
-				$result =
-					$ts->getTimestamp( TS_UNIX  ) -
-						wfTimestampOrNull( TS_UNIX, $registration );
+				$result = wfTimestamp( TS_UNIX, $asOf ) - wfTimestampOrNull( TS_UNIX, $registration );
 				break;
 			case 'user-groups':
 				$user = $parameters['user'];
