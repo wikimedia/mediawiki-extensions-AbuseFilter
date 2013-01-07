@@ -448,7 +448,7 @@ class AbuseFilter {
 		}
 
 		// Update statistics, and disable filters which are over-blocking.
-		self::recordStats( $filter_matched );
+		self::recordStats( $filter_matched, $group );
 
 		wfProfileOut( __METHOD__ );
 
@@ -776,9 +776,10 @@ class AbuseFilter {
 	/**
 	 * @param $vars AbuseFilterVariableHolder
 	 * @param $title Title
+	 * @param $group string
 	 * @return bool
 	 */
-	public static function filterAction( $vars, $title ) {
+	public static function filterAction( $vars, $title, $group = 'default' ) {
 		global $wgUser, $wgTitle, $wgRequest;
 
 		wfProfileIn( __METHOD__ );
@@ -796,7 +797,7 @@ class AbuseFilter {
 
 		$dbr = wfGetDB( DB_SLAVE );
 
-		$filter_matched = self::checkAllFilters( $vars );
+		$filter_matched = self::checkAllFilters( $vars, $group );
 
 		$matched_filters = array_keys( array_filter( $filter_matched ) );
 
@@ -828,7 +829,7 @@ class AbuseFilter {
 			$log_template['afl_user_text'] = $vars->getVar( 'accountname' )->toString();
 		}
 
-		self::addLogEntries( $actions_taken, $log_template, $action, $vars );
+		self::addLogEntries( $actions_taken, $log_template, $action, $vars, $group );
 
 		$error_msg = $error_msg == '' ? true : $error_msg;
 
@@ -846,7 +847,7 @@ class AbuseFilter {
 	 * @param $vars AbuseFilterVariableHolder
 	 * @return mixed
 	 */
-	public static function addLogEntries( $actions_taken, $log_template, $action, $vars ) {
+	public static function addLogEntries( $actions_taken, $log_template, $action, $vars, $group = 'default' ) {
 		wfProfileIn( __METHOD__ );
 		$dbw = wfGetDB( DB_MASTER );
 
@@ -871,7 +872,7 @@ class AbuseFilter {
 				$log_rows[] = $thisLog;
 
 				if ( !$globalIndex ) {
-					$logged_local_filters[$filter] = $action;
+					$logged_local_filters[] = $filter;
 				}
 
 				// Global logging
@@ -942,7 +943,7 @@ class AbuseFilter {
 			// Update hit-counter.
 			$dbw->update( 'abuse_filter',
 				array( 'af_hit_count=af_hit_count+1' ),
-				array( 'af_id' => array_keys( $logged_local_filters ) ),
+				array( 'af_id' => $logged_local_filters ),
 				__METHOD__
 			);
 		}
@@ -977,8 +978,8 @@ class AbuseFilter {
 		$vars->setVar( 'local_log_ids', $local_log_ids );
 
 		// Check for emergency disabling.
-		$total = $wgMemc->get( AbuseFilter::filterUsedKey() );
-		self::checkEmergencyDisable( $logged_local_filters, $total );
+		$total = $wgMemc->get( AbuseFilter::filterUsedKey( $group ) );
+		self::checkEmergencyDisable( $group, $logged_local_filters, $total );
 
 		wfProfileOut( __METHOD__ . '-hitstats' );
 
@@ -1419,8 +1420,9 @@ class AbuseFilter {
 	/**
 	 * Update statistics, and disable filters which are over-blocking.
 	 * @param $filters
+	 * @param $group
 	 */
-	public static function recordStats( $filters ) {
+	public static function recordStats( $filters, $group = 'default' ) {
 		global $wgAbuseFilterConditionLimit, $wgMemc;
 
 		wfProfileIn( __METHOD__ );
@@ -1430,7 +1432,7 @@ class AbuseFilter {
 
 		// Store some keys...
 		$overflow_key = self::filterLimitReachedKey();
-		$total_key = self::filterUsedKey();
+		$total_key = self::filterUsedKey( $group );
 
 		$total = $wgMemc->get( $total_key );
 
@@ -1459,18 +1461,19 @@ class AbuseFilter {
 	}
 
 	/**
+	 * @param $group
 	 * @param $filters
 	 * @param $total
 	 */
-	public static function checkEmergencyDisable( $filters, $total ) {
+	public static function checkEmergencyDisable( $group, $filters, $total ) {
 		global $wgAbuseFilterEmergencyDisableThreshold, $wgAbuseFilterEmergencyDisableCount,
 			$wgAbuseFilterEmergencyDisableAge, $wgMemc;
 
-		foreach ( $filters as $filter => $action ) {
+		foreach ( $filters as $filter ) {
 			// determine emergency disable values for this action
-			$emergencyDisableThreshold = self::getEmergencyValue( $wgAbuseFilterEmergencyDisableThreshold, $action );
-			$filterEmergencyDisableCount = self::getEmergencyValue( $wgAbuseFilterEmergencyDisableCount, $action );
-			$emergencyDisableAge = self::getEmergencyValue( $wgAbuseFilterEmergencyDisableAge, $action );
+			$emergencyDisableThreshold = self::getEmergencyValue( $wgAbuseFilterEmergencyDisableThreshold, $group );
+			$filterEmergencyDisableCount = self::getEmergencyValue( $wgAbuseFilterEmergencyDisableCount, $group );
+			$emergencyDisableAge = self::getEmergencyValue( $wgAbuseFilterEmergencyDisableAge, $group );
 
 			// Increment counter
 			$matchCount = $wgMemc->get( self::filterMatchesKey( $filter ) );
@@ -1507,11 +1510,11 @@ class AbuseFilter {
 
 	/**
 	 * @param array $emergencyValue
-	 * @param string $action
+	 * @param string $group
 	 * @return mixed
 	 */
-	public static function getEmergencyValue( array $emergencyValue, $action ) {
-		return isset( $emergencyValue[$action] ) ? $emergencyValue[$action] : $emergencyValue['default'];
+	public static function getEmergencyValue( array $emergencyValue, $group ) {
+		return isset( $emergencyValue[$group] ) ? $emergencyValue[$group] : $emergencyValue['default'];
 	}
 
 	/**
@@ -1522,10 +1525,11 @@ class AbuseFilter {
 	}
 
 	/**
+	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @return String
 	 */
-	public static function filterUsedKey() {
-		return wfMemcKey( 'abusefilter', 'stats', 'total' );
+	public static function filterUsedKey( $group = null ) {
+		return wfMemcKey( 'abusefilter', 'stats', 'total', $group );
 	}
 
 	/**

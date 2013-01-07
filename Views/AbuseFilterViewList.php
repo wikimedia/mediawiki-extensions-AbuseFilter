@@ -138,11 +138,14 @@ class AbuseFilterViewList extends AbuseFilterView {
 	}
 
 	function showStatus() {
-		global $wgMemc, $wgAbuseFilterConditionLimit;
+		global $wgMemc, $wgAbuseFilterConditionLimit, $wgAbuseFilterValidGroups;
 
 		$overflow_count = (int)$wgMemc->get( AbuseFilter::filterLimitReachedKey() );
 		$match_count = (int) $wgMemc->get( AbuseFilter::filterMatchesKey() );
-		$total_count = (int)$wgMemc->get( AbuseFilter::filterUsedKey() );
+		$total_count = 0;
+		foreach ( $wgAbuseFilterValidGroups as $group ) {
+			$total_count += (int)$wgMemc->get( AbuseFilter::filterUsedKey( $group ) );
+		}
 
 		if ( $total_count > 0 ) {
 			$overflow_percent = sprintf( "%.2f", 100 * $overflow_count / $total_count );
