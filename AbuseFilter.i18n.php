@@ -803,39 +803,42 @@ See also:
 	'abusefilter-edit-builder-misc-tern' => '{{doc-important|Do not change "X ? Y : Z".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-op-misc}}.',
 	'abusefilter-edit-builder-misc-cond' => '{{doc-important|Do not change "if X then Y else Z".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-op-misc}}.',
 	'abusefilter-edit-builder-group-funcs' => 'Group entry in dropdown menu.',
-	'abusefilter-edit-builder-funcs-length' => "{{doc-important|Do not translate \"'''length'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
-	'abusefilter-edit-builder-funcs-lcase' => "{{doc-important|Do not translate \"'''lcase'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
-	'abusefilter-edit-builder-funcs-ccnorm' => "{{doc-important|Do not translate \"'''ccnorm'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
+	'abusefilter-edit-builder-funcs-length' => "{{doc-important|Do not translate \"'''length'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
+	'abusefilter-edit-builder-funcs-lcase' => "{{doc-important|Do not translate \"'''lcase'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
+	'abusefilter-edit-builder-funcs-ccnorm' => "{{doc-important|Do not translate \"'''ccnorm'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-rmdoubles' => '{{doc-important|Do not translate "\'\'\'rmdoubles\'\'\'".}}
-Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.
+Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.
+
 Functional explanation: rmdoubles removes repeated characters in the argument, and returns the result. For example: "foobybboo" will return "fobybo".',
-	'abusefilter-edit-builder-funcs-specialratio' => "{{doc-important|Do not translate \"'''specialratio'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
-	'abusefilter-edit-builder-funcs-norm' => "{{doc-important|Do not translate \"'''norm'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
-	'abusefilter-edit-builder-funcs-count' => "{{doc-important|Do not translate \"'''count'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
-	'abusefilter-edit-builder-funcs-rcount' => '{{doc-important|Do not translate "rcount".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.',
-	'abusefilter-edit-builder-funcs-rmwhitespace' => "{{doc-important|Do not translate \"'''rmwhitespac)'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
-	'abusefilter-edit-builder-funcs-rmspecials' => "{{doc-important|Do not translate \"'''rmspecials'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
-	'abusefilter-edit-builder-funcs-ip_in_range' => "{{doc-important|Do not translate \"'''ip_in_range'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
-	'abusefilter-edit-builder-funcs-contains-any' => "{{doc-important|Do not translate \"'''contains_any'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
-	'abusefilter-edit-builder-funcs-substr' => "{{doc-important|Do not translate \"'''substr'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
-	'abusefilter-edit-builder-funcs-strpos' => "{{doc-important|Do not translate \"'''strpos'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
-	'abusefilter-edit-builder-funcs-str_replace' => "{{doc-important|Do not translate \"'''str_replace'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-funcs}}.",
+	'abusefilter-edit-builder-funcs-specialratio' => "{{doc-important|Do not translate \"'''specialratio'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
+	'abusefilter-edit-builder-funcs-norm' => "{{doc-important|Do not translate \"'''norm'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
+	'abusefilter-edit-builder-funcs-count' => "{{doc-important|Do not translate \"'''count'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
+	'abusefilter-edit-builder-funcs-rcount' => '{{doc-important|Do not translate "rcount".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.',
+	'abusefilter-edit-builder-funcs-rmwhitespace' => "{{doc-important|Do not translate \"'''rmwhitespac)'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
+	'abusefilter-edit-builder-funcs-rmspecials' => "{{doc-important|Do not translate \"'''rmspecials'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
+	'abusefilter-edit-builder-funcs-ip_in_range' => "{{doc-important|Do not translate \"'''ip_in_range'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
+	'abusefilter-edit-builder-funcs-contains-any' => "{{doc-important|Do not translate \"'''contains_any'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
+	'abusefilter-edit-builder-funcs-substr' => "{{doc-important|Do not translate \"'''substr'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
+	'abusefilter-edit-builder-funcs-strpos' => "{{doc-important|Do not translate \"'''strpos'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
+	'abusefilter-edit-builder-funcs-str_replace' => "{{doc-important|Do not translate \"'''str_replace'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-rescape' => "{{doc-important|Do not translate \"'''rescape'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	'abusefilter-edit-builder-group-vars' => 'Group entry in dropdown menu. {{Identical|Variable}}',
-	'abusefilter-edit-builder-vars-accountname' => 'This variable is used only during account creation and contains the username of the newly created account. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}.',
-	'abusefilter-edit-builder-vars-action' => ' Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}. {{Identical|Action}}',
-	'abusefilter-edit-builder-vars-newsize' => 'New size of the page. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}.',
-	'abusefilter-edit-builder-vars-oldsize' => 'Old size of the page. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}.',
-	'abusefilter-edit-builder-vars-article-ns' => 'The namespace that the page for the trigger is supposed to be in. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}.',
-	'abusefilter-edit-builder-vars-movedfrom-id' => 'Paraphrase: The page ID of the page to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}.',
-	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Paraphrase: Namespace of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}.',
-	'abusefilter-edit-builder-vars-movedfrom-text' => 'Paraphrase: Name of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}.',
-	'abusefilter-edit-builder-vars-movedfrom-prefixedtext' => 'Paraphrase: Full name of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}.',
-	'abusefilter-edit-builder-vars-movedto-id' => 'Paraphrased: Page ID of the destination of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}.',
-	'abusefilter-edit-builder-vars-movedto-ns' => 'Paraphrased: Namespace of the destination of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}.',
-	'abusefilter-edit-builder-vars-movedto-text' => 'Paraphrased: Name of the destination of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}.',
-	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Paraphrased: Full name of the destination of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}.',
-	'abusefilter-edit-builder-vars-user-blocked' => 'Paraphrased: Boolean value on whether the user is blocked. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-group-vars}}.',
+	'abusefilter-edit-builder-vars-accountname' => 'This variable is used only during account creation and contains the username of the newly created account. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-action' => ' Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}. {{Identical|Action}}',
+	'abusefilter-edit-builder-vars-newsize' => 'New size of the page. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-oldsize' => 'Old size of the page. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-article-ns' => 'The namespace that the page for the trigger is supposed to be in. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-movedfrom-id' => 'Paraphrase: The page ID of the page to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Paraphrase: Namespace of the page that is to be moved.
+
+Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-movedfrom-text' => 'Paraphrase: Name of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-movedfrom-prefixedtext' => 'Paraphrase: Full name of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-movedto-id' => 'Paraphrased: Page ID of the destination of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-movedto-ns' => 'Paraphrased: Namespace of the destination of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-movedto-text' => 'Paraphrased: Name of the destination of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Paraphrased: Full name of the destination of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-user-blocked' => 'Paraphrased: Boolean value on whether the user is blocked. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'This variable contains the level of protection required to edit the page. ("Edit" here is not a verb, but an adjective, like "Edit-related protection level"). Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.
 
 See also {{msg-mw|Abusefilter-edit-builder-vars-restrictions-create}}, {{msg-mw|Abusefilter-edit-builder-vars-restrictions-move}}, {{msg-mw|Abusefilter-edit-builder-vars-restrictions-upload}}.',
@@ -17727,7 +17730,7 @@ Descrizione del filtro: $7 ($8)',
 	'abusefilter-log-details-ip' => 'Indirizzo IP di origine',
 	'abusefilter-log-noactions' => 'nessuna',
 	'abusefilter-log-details-diff' => 'Modifiche effettuate',
-	'abusefilter-log-linkoncontribs' => 'registro del filtro anti abusi',
+	'abusefilter-log-linkoncontribs' => 'filtro anti abusi',
 	'abusefilter-log-linkoncontribs-text' => 'Registro del filtro anti abusi relativo a questo utente',
 	'abusefilter-log-hidden' => '(voce nascosta)',
 	'abusefilter-log-hidden-implicit' => '(nascosto perché la revisione è stata eliminata)',
@@ -19607,20 +19610,22 @@ $messages['ko'] = array(
 부정 행위 방지 필터는 모든 행위에 대해 문제가 있는지 자동적으로 검사하는 소프트웨어입니다.
 이 페이지에서는 필터의 목록을 나열하고 있으며, 필터를 수정할 수 있습니다.',
 	'abusefilter-mustbeeditor' => '보안상의 이유로, 부정 행위 방지 필터 편집 권한을 가진 사용자만이 이 양식을 이용할 수 있습니다.',
-	'abusefilter-warning' => "'''경고''': 이 작업은 다음 규칙에 따라 유해한 것으로 판단하였습니다. : $1
-비생산적인 편집은 즉시 되돌려지며 그러한 행동이 반복될 경우 계정 및 IP 주소가 차단됩니다.
-만약 해당 작업에 문제가 없다고 생각한다면 저장 버튼을 다시 눌러도 됩니다.", # Fuzzy
-	'abusefilter-disallowed' => '이 작업은 다음 규칙에 따라 오용된 것으로 판단하였습니다. : $1
-따라서 허용하지 않습니다.
-이 작업이 생산적이라면 작업 내용에 관하여 관리자에게 문의하십시오.', # Fuzzy
-	'abusefilter-blocked-display' => '이러한 행위는 해로운 것으로 간주되어 더 이상 행하지 못하게 금지되었습니다.
-그리고 {{SITENAME}}을(를) 보호하기 위해, 당신의 계정과 연관된 IP 주소가 차단되었습니다.
+	'abusefilter-warning' => "'''경고''': 현재 행동에 문제가 있다고 판단되었습니다.
+비생산적인 편집은 즉시 되돌려지며,
+이러한 행동이 반복될 경우 계정 및 IP 주소가 차단될 수 있습니다.
+만약 해당 행동에 문제가 없다면, 저장 버튼을 다시 눌러 주세요.
+문제가 된 필터 규칙은 다음과 같습니다: $1",
+	'abusefilter-disallowed' => '이 행위는 자동적으로 해로운 것으로 간주되었기 때문에 허가되지 않습니다.
+행동이 생산적이라고 여기신다면, 관리자에게 문의하여 무엇을 하려 하는지 알려 주세요.
+행위와 일치하는 규칙을 가진 필터의 간단한 설명은 다음과 같습니다: $1',
+	'abusefilter-blocked-display' => '이 행위는 해로운 것으로 간주되어 더 이상 행하지 못하게 금지되었습니다.
+그리고 {{SITENAME}}을(를) 보호하기 위해, 계정과 연관된 IP 주소가 차단되었습니다.
 이 차단이 오류로 인한 것이라면, 관리자에게 문의해주세요.
-당신의 행위와 일치한 필터의 간단한 설명은 다음과 같습니다: $1',
+행위와 일치한 필터의 간단한 설명은 다음과 같습니다: $1',
 	'abusefilter-degrouped' => '이러한 행위는 자동적으로 해로운 것으로 간주되었습니다.
-따라서, 당신의 계정이 정상적으로 이용되지 않는다고 의심되어 모든 권한이 해제되었습니다.
-당신이 이 문제가 오류로 인해 생긴 문제라면, 이 행동에 대한 설명과 함께 이 프로젝트의 사무관에게 문의하여 권한 복구를 요청하십시오.
-당신의 행위와 일치하는 필터 규칙에 대한 간단한 설명은 다음과 같습니다: $1',
+따라서 계정이 정상적으로 이용되지 않는다고 의심되어 모든 권한이 해제되었습니다.
+이 문제가 오류로 인해 생긴 문제라면, 이 행동에 대한 설명과 함께 이 프로젝트의 사무관에게 문의하여 권한 복구를 요청하십시오.
+행위와 일치하는 필터 규칙에 대한 간단한 설명은 다음과 같습니다: $1',
 	'abusefilter-autopromote-blocked' => '이 행위는 자동적으로 해로운 것으로 간주되었습니다.
 그리고, 안전상의 이유로 사용자 계정에 부여된 일부 권한이 일시적으로 정지되었습니다.
 문제가 된 필터 규칙은 다음과 같습니다: $1',
@@ -19682,12 +19687,12 @@ $messages['ko'] = array(
 	'abusefilter-log-hidden' => '(항목 숨김)',
 	'abusefilter-log-hidden-implicit' => '(특정 버전이 삭제되었기 때문에 숨겨졌습니다)',
 	'abusefilter-log-cannot-see-details' => '이 항목의 자세한 내용을 볼 권한이 없습니다.',
-	'abusefilter-log-details-hidden' => '이 항목은 비공개로 설정되엇기 때문에, 당신은 이 항목의 자세한 사항을 볼 수 없습니다.',
+	'abusefilter-log-details-hidden' => '이 항목은 비공개로 설정되었기 때문에 이 항목의 자세한 사항을 볼 수 없습니다.',
 	'abusefilter-log-hide-legend' => '기록 항목 숨기기',
 	'abusefilter-log-hide-id' => '기록 항목 ID:',
 	'abusefilter-log-hide-hidden' => '이 항목을 비공개로 설정',
 	'abusefilter-log-hide-reason' => '이유:',
-	'abusefilter-log-hide-forbidden' => '당신은 부정 행위 기록 항목을 숨길 권한이 없습니다.',
+	'abusefilter-log-hide-forbidden' => '부정 행위 기록 항목을 숨길 권한이 없습니다.',
 	'abusefilter-logentry-suppress' => '"[[$1]]"을 비공개함',
 	'abusefilter-logentry-unsuppress' => '[[$1]]을 공개함',
 	'logentry-abusefilter-hit' => '$1 사용자가 $4(을)를 게재했고 $3에 의해 "$5" 작업을 수행했습니다. 조치: $6 ($7)',
@@ -19731,14 +19736,15 @@ $messages['ko'] = array(
 	'abusefilter-tools-reautoconfirm-user' => '사용자:',
 	'abusefilter-tools-reautoconfirm-submit' => '자동 인증 상태 복구',
 	'abusefilter-reautoconfirm-none' => '이 계정 ($1)은 자동 인증 상태가 해제된 적이 없습니다.',
-	'abusefilter-reautoconfirm-notallowed' => '당신은 자동 인증 상태를 복구할 권한이 없습니다.',
+	'abusefilter-reautoconfirm-notallowed' => '자동 인증 상태를 복구할 권한이 없습니다.',
 	'abusefilter-reautoconfirm-done' => '계정의 자동 인증 상태가 복구되었습니다.',
 	'abusefilter-status' => '최근 행위 $1개 중 $2개 ($3%)가 부하 한도 $4에 도달했고 $5개($6%)가 현재 활성화된 필터와 일치하였습니다.',
+	'abusefilter-edit' => '부정 행위 방지 필터 편집 중',
 	'abusefilter-edit-subtitle' => '필터 $1 편집하기',
 	'abusefilter-edit-subtitle-new' => '필터 만들기',
-	'abusefilter-edit-oldwarning' => '<strong>당신은 이 필터의 이전 버전을 수정하고 있습니다.
+	'abusefilter-edit-oldwarning' => '<strong>이 필터의 이전 버전을 수정하고 있습니다.
 아래의 통계는 이 필터의 최근 버전에 대한 것입니다.
-당신이 수정한 내용을 저장하면 당신이 편집하고 있는 버전 이후의 모든 수정 사항을 덮어쓰게 됩니다.</strong> &bull;
+수정한 내용을 저장하면 당신이 편집하고 있는 버전 이후의 모든 수정 사항을 덮어쓰게 됩니다.</strong> &bull;
 [[Special:AbuseFilter/history/$2|이 필터의 역사로 돌아가기]].',
 	'abusefilter-edit-status-label' => '통계:',
 	'abusefilter-edit-status' => '최근 행위 $1개 중 $2건($3%)이 이 필터와 일치하였습니다.
@@ -19920,7 +19926,7 @@ $messages['ko'] = array(
 	'abusefilter-history-select-user' => '사용자:',
 	'abusefilter-history-select-submit' => '가기',
 	'abusefilter-history-diff' => '차이',
-	'abusefilter-history-error-hidden' => '당신이 요청한 필터는 비공개되어 있어 필터의 역사를 볼 수 없습니다.',
+	'abusefilter-history-error-hidden' => '요청한 필터는 비공개되어 있어 필터의 역사를 볼 수 없습니다.',
 	'abusefilter-exception-unexpectedatend' => '$1번째 문자에 예상치 못한 "$2"가 있습니다.',
 	'abusefilter-exception-expectednotfound' => '$1번째 문자에 있어야 할 $2가 발견되지 않았습니다. ($3 $4를 대신 찾아보세요.)',
 	'abusefilter-exception-unrecognisedkeyword' => '$1번째 문자에 알 수 없는 키워드 $2가 있습니다.',
@@ -19974,7 +19980,7 @@ $messages['ko'] = array(
 	'abusefilter-test-period-end' => '특정 판 이전의 편집 찾기:',
 	'abusefilter-test-page' => '특정 문서에 대해 찾기:',
 	'abusefilter-test-shownegative' => '필터와 일치하지 않는 편집을 보이기',
-	'abusefilter-test-syntaxerr' => '당신이 입력한 구문에 오류가 있습니다.
+	'abusefilter-test-syntaxerr' => '입력한 구문에 오류가 있습니다.
 "구문 확인" 버튼을 누르면 자세한 설명을 받을 수 있습니다.',
 	'abusefilter-changeslist-examine' => '검사',
 	'abusefilter-examine' => '특정 편집을 검토',
@@ -19990,9 +19996,9 @@ $messages['ko'] = array(
 	'abusefilter-examine-match' => '이 편집이 필터의 조건에 일치합니다.',
 	'abusefilter-examine-nomatch' => '이 편집이 필터의 조건과 일치하지 않습니다.',
 	'abusefilter-examine-syntaxerror' => '이 필터의 필터 규칙 문법이 잘못되었습니다.',
-	'abusefilter-examine-notfound' => '당신이 요청한 편집을 찾을 수 없습니다.',
-	'abusefilter-examine-incompatible' => '당신이 요청한 편집은 부정 행위 방지 필터에서 지원하지 않습니다.',
-	'abusefilter-examine-noresults' => '당신이 제시한 검색 변수에서 결과가 없습니다.',
+	'abusefilter-examine-notfound' => '요청한 바뀜을 찾을 수 없습니다.',
+	'abusefilter-examine-incompatible' => '요청한 바뀜은 부정 행위 방지 필터에서 지원하지 않습니다.',
+	'abusefilter-examine-noresults' => '제시한 검색 변수에서 결과가 없습니다.',
 	'abusefilter-topnav' => "'''부정 행위 방지 필터 둘러보기'''",
 	'abusefilter-topnav-home' => '홈',
 	'abusefilter-topnav-test' => '필터 시험하기',
@@ -20012,7 +20018,7 @@ $messages['ko'] = array(
 	'abusefilter-diff-pattern' => '필터 규칙',
 	'abusefilter-diff-invalid' => '요청한 버전을 불러올 수 없습니다.',
 	'abusefilter-diff-backhistory' => '필터 역사로 돌아가기',
-	'abusefilter-import-intro' => '당신은 이 양식을 통해 다른 위키에서 필터를 가져올 수 있습니다.
+	'abusefilter-import-intro' => '이 양식을 통해 다른 위키에서 필터를 가져올 수 있습니다.
 필터가 있는 위키에서 필터 편집 화면의 "{{int:abusefilter-edit-tools}}"에서 "{{int:abusefilter-edit-export}}"를 클릭하십시오.
 나타나는 글상자의 내용을 복사한 후 붙여넣고, "{{int:abusefilter-import-submit}}"를 클릭하십시오.',
 	'abusefilter-import-submit' => '데이터 가져오기',
@@ -28540,6 +28546,7 @@ Descrission dël filtr: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => 'It peule pa ripristiné lë stat autoconfirmà.',
 	'abusefilter-reautoconfirm-done' => "Lë stat autoconfirmà dël cont a l'é stàit ripristinà",
 	'abusefilter-status' => "Dj'ùltime $1 {{PLURAL:$1|assion|assion}}, $2 ($3%) {{PLURAL:$2|a l'é|a son}} rivà a la condission lìmit ëd $4, e $5 ($6%) {{PLURAL:$5|a l'é stàita |a son ëstàite}} identificà da un dij filtr abilità al moment.",
+	'abusefilter-edit' => "Modifiché filtr d'abus",
 	'abusefilter-edit-subtitle' => 'Modifiché ël filtr $1',
 	'abusefilter-edit-subtitle-new' => 'Creé un filtr',
 	'abusefilter-edit-oldwarning' => "<strong>A l'é an camin ch'a modìfica na version veja d'ës fìlter.
@@ -39125,12 +39132,12 @@ Trang này có danh sách bộ lọc định trước để cấu hình.',
 	'abusefilter-warning' => "'''Cảnh báo''': Tác vụ này đã được tự động xác định là nguy hại.
 Những sửa đổi không có tính xây dựng sẽ nhanh chóng bị hồi lại,
 và sửa đổi không có tính xây dựng xảy ra thường xuyên và liên tục sẽ dẫn đến việc cấm tài khoản hoặc địa chỉ IP của bạn.
-Nếu bạn tin rằng sửa đổi này là có tính xây dựng, bạn có thể lưu trang một lần nữa để xác nhận điều đó.
-Miêu tả ngắn về quy định nguy hại mà tác vụ của bạn gặp phải là: $1", # Fuzzy
+Nếu bạn tin rằng tác vụ này là có tính xây dựng, bạn có thể lưu trang một lần nữa để xác nhận điều đó.
+Miêu tả ngắn về quy định nguy hại mà tác vụ của bạn gặp phải là: $1",
 	'abusefilter-disallowed' => 'Tác vụ này đã được tự động xác định là nguy hại,
 và do đó không được phép thực hiện.
-Nếu bạn tin rằng sửa đổi của bạn là có tính xây dựng, xin hãy liên hệ với một bảo quản viên, và thông báo cho họ về những điều bạn đang cố gắng làm.
-Miêu tả ngắn về quy định nguy hại mà tác vụ của bạn gặp phải là: $1', # Fuzzy
+Nếu bạn tin rằng tác vụ của bạn là có tính xây dựng, xin hãy liên hệ với một bảo quản viên, và thông báo cho họ về những điều bạn đang cố gắng làm.
+Miêu tả ngắn về quy định nguy hại mà tác vụ của bạn gặp phải là: $1',
 	'abusefilter-blocked-display' => 'Tác vụ này đã được tự động xác định là nguy hại,
 và bị ngăn không cho bạn thực hiện nó.
 Ngoài ra, để bảo vệ {{PAGENAME}}, tài khoản cá nhân của bạn và tất cả các địa chỉ IP đi cùng với nó đã bị cấm sửa đổi.
@@ -39249,6 +39256,7 @@ Mô tả bộ lọc: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => 'Bạn không được phép phục hồi tình trạng tự xác nhận.',
 	'abusefilter-reautoconfirm-done' => 'Đã phục hồi trạng thái tự xác nhận của tài khoản',
 	'abusefilter-status' => 'Chỉ trong $1 {{PLURAL:$1|tác vụ|tác vụ}} cuối, $2 ($3%) tác vụ {{PLURAL:$2|đã|đã}} đạt đến điều kiện giới hạn của $4. $5 ($6%) tác vụ {{PLURAL:$5|đã|đã}} trùng với một trong những bộ lọc hiện đang kích hoạt.',
+	'abusefilter-edit' => 'Sửa đổi bộ lọc lạm dụng',
 	'abusefilter-edit-subtitle' => 'Sửa đổi bộ lọc $1',
 	'abusefilter-edit-subtitle-new' => 'Tạo bộ lọc',
 	'abusefilter-edit-oldwarning' => '<strong>Bạn đang sửa một phiên bản cũ của bộ lọc này. Thống kê được trích ở trên là cho phiên bản mới nhất của bộ lọc. Nếu bạn lưu sửa đổi, bạn sẽ hi đè lên tất cả các thay đổi được thực hiện sau phiên bản mà bạn đang sửa.</strong> &bull; [[Special:AbuseFilter/history/$2|Trở lại lịch sử bộ lọc]]',
