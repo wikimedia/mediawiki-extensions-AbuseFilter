@@ -130,17 +130,8 @@ class AbuseFilterHooks {
 
 		$filter_result = AbuseFilter::filterAction( $vars, $title );
 
-		if ( $filter_result !== true ) {
-			// NOTE: $filter_result is already the wikitext we want to show.
-			//      abusefilter-message is just a dummy.
-
-			// This hack works in 1.21:
-			// $msg = wfMessage( 'abusefilter-message' )->rawParams( $filter_result );
-			// $status->fatal( $msg );
-
-			// This works in 1.20 and older, but causes double escaping and thereby broken formatting.
-			// We'll live with this for now, will be fixed in a follow-up change.
-			$status->fatal( 'abusefilter-message', $filter_result );
+		if ( !$filter_result->isOK() ) {
+			$status->merge( $filter_result );
 			return true; // re-show edit form
 		}
 
@@ -264,9 +255,8 @@ class AbuseFilterHooks {
 
 		$filter_result = AbuseFilter::filterAction( $vars, $oldTitle );
 
-		$error = $filter_result;
-
-		return $filter_result == '' || $filter_result === true;
+		$error = $filter_result->isOK() ? '' : $filter_result->getWikiText();
+		return $filter_result->isOK();
 	}
 
 	/**
@@ -274,9 +264,10 @@ class AbuseFilterHooks {
 	 * @param $user User
 	 * @param $reason string
 	 * @param $error
+	 * @param $status
 	 * @return bool
 	 */
-	public static function onArticleDelete( &$article, &$user, &$reason, &$error ) {
+	public static function onArticleDelete( &$article, &$user, &$reason, &$error, &$status ) {
 		$vars = new AbuseFilterVariableHolder;
 
 		global $wgUser;
@@ -287,9 +278,10 @@ class AbuseFilterHooks {
 
 		$filter_result = AbuseFilter::filterAction( $vars, $article->getTitle() );
 
-		$error = $filter_result;
+		$status->merge( $filter_result );
+		$error = $filter_result->isOK() ? '' : $filter_result->getWikiText();
 
-		return $filter_result == '' || $filter_result === true;
+		return $filter_result->isOK();
 	}
 
 	/**
@@ -320,9 +312,8 @@ class AbuseFilterHooks {
 		$filter_result = AbuseFilter::filterAction(
 			$vars, SpecialPage::getTitleFor( 'Userlogin' ) );
 
-		$message = $filter_result;
-
-		return $filter_result == '' || $filter_result === true;
+		$message = $filter_result->isOK() ? '' : $filter_result->getWikiText();
+		return $filter_result->isOK();
 	}
 
 	/**
@@ -522,11 +513,14 @@ class AbuseFilterHooks {
 
 		$filter_result = AbuseFilter::filterAction( $vars, $title );
 
-		if ( is_string( $filter_result ) ) {
-			$error = $filter_result;
-		}
+		// XXX: HACK: return the first error, as an array containing the message key and
+		//      any parameters.
+		// XXX: $errors may in the future also contain Message objects. Make sure UploadBase can
+		//      deal with us returning that.
+		$errors = array_values( (array)$filter_result->getErrorsArray() );
+		$error = empty( $errors ) ? '' : $errors[0];
 
-		return $filter_result == '' || $filter_result === true;
+		return $filter_result->isOK();
 	}
 
 	/**

@@ -666,12 +666,15 @@ class AbuseFilter {
 	}
 
 	/**
-	 * Returns an array [ list of actions taken by filter, error message to display, if any ]
+	 * Executes a list of actions.
 	 *
 	 * @param $filters array
 	 * @param $title Title
 	 * @param $vars array
-	 * @return array
+	 * @return Status returns the operation's status. $status->isOK() will return true if
+	 *         there were no actions taken, false otherwise. $status->getValue() will return
+	 *         an array listing the actions taken. $status-getErrors(), etc, will provide
+	 *         the errors and warnings to be shown to the user to explain the actions.
 	 */
 	public static function executeFilterActions( $filters, $title, $vars ) {
 		wfProfileIn( __METHOD__ );
@@ -733,10 +736,7 @@ class AbuseFilter {
 					} else {
 						$msg = 'abusefilter-warning';
 					}
-					$messages[] = wfMessage(
-						$msg,
-						array( $parsed_public_comments, $filter )
-					)->parse() . "<br />\n";
+					$messages[] = array( $msg, $parsed_public_comments, $filter );
 
 					$actionsTaken[$filter][] = 'warn';
 
@@ -762,22 +762,50 @@ class AbuseFilter {
 					self::$filters[$filter]->af_public_comments
 				);
 
-				if ( $newMsg ) {
+				if ( $newMsg !== null ) {
 					$messages[] = $newMsg;
 				}
 				$actionsTaken[$filter][] = $action;
 			}
 		}
 
+		$status = self::buildStatus( $actionsTaken, $messages );
+
 		wfProfileOut( __METHOD__ );
-		return array( $actionsTaken, implode( "\n", $messages ) );
+		return $status;
+	}
+
+	/**
+	 * Constructs a Status object as returned by executeFilterActions() from the list of
+	 * actions taken and the corresponding list of messages.
+	 *
+	 * @param array[] $actionsTaken associative array mapping each filter to the list if
+	 *                actions taken because of that filter.
+	 * @param array[] $messages a list if arrays, where each array contains a message key
+	 *                followed by any message parameters.
+	 *
+	 * @todo: change this to accept Message objects. This is only possible from 1.21 onward,
+	 *        because before that, Status::fatal does not accept Message objects.
+	 *
+	 * @return Status
+	 */
+	protected static function buildStatus( array $actionsTaken, array $messages ) {
+		$status = Status::newGood( $actionsTaken );
+
+		foreach ( $messages as $msg ) {
+			// Since MW 1.21, we could just pass Message objects, but in 1.20,
+			// we still have to rely on arrays.
+			call_user_func_array( array( $status, 'fatal' ), $msg );
+		}
+
+		return $status;
 	}
 
 	/**
 	 * @param $vars AbuseFilterVariableHolder
 	 * @param $title Title
 	 * @param $group string
-	 * @return bool
+	 * @return Status
 	 */
 	public static function filterAction( $vars, $title, $group = 'default' ) {
 		global $wgUser, $wgTitle, $wgRequest;
@@ -804,13 +832,15 @@ class AbuseFilter {
 		// Short-cut any remaining code if no filters were hit.
 		if ( count( $matched_filters ) == 0 ) {
 			wfProfileOut( __METHOD__ );
-			return true;
+			return Status::newGood();
 		}
 
 		wfProfileIn( __METHOD__ . '-block' );
 
-		list( $actions_taken, $error_msg ) = self::executeFilterActions(
+		$status = self::executeFilterActions(
 			$matched_filters, $title, $vars );
+
+		$actions_taken = $status->value; // getValue() was introduced only in 1.20
 
 		$action = $vars->getVar( 'ACTION' )->toString();
 
@@ -831,13 +861,11 @@ class AbuseFilter {
 
 		self::addLogEntries( $actions_taken, $log_template, $action, $vars, $group );
 
-		$error_msg = $error_msg == '' ? true : $error_msg;
-
 		wfProfileOut( __METHOD__ . '-block' );
 
 		wfProfileOut( __METHOD__ );
 
-		return $error_msg;
+		return $status;
 	}
 
 	/**
@@ -1108,24 +1136,33 @@ class AbuseFilter {
 	 * @param $title Title
 	 * @param $vars AbuseFilterVariableHolder
 	 * @param $rule_desc
-	 * @return string
+	 *
+	 * @return array|null a message describing the action that was taken,
+	 *         or null if no action was taken. The message is given as an array
+	 *         containing the message key followed by any message parameters.
+	 *
+	 * @note: Returning the message as an array instead of a Message object is
+	 *        needed for compatibility with MW 1.20: we will be constructing a
+	 *        Status object from these messages, and before 1.21, Status did
+	 *        not accept Message objects to be added directly.
 	 */
 	public static function takeConsequenceAction( $action, $parameters, $title,
 		$vars, $rule_desc )
 	{
 		global $wgAbuseFilterCustomActionsHandlers, $wgRequest;
 
-		$display = '';
+		$message = null;
+
 		switch ( $action ) {
 			case 'disallow':
 				if ( strlen( $parameters[0] ) ) {
-					$display .= wfMessage( $parameters[0], array( $rule_desc ) )->parse() . "\n";
+					$message = array( $parameters[0], $rule_desc );
 				} else {
 					// Generic message.
-					$display .= wfMessage(
+					$message = array(
 						'abusefilter-disallowed',
-						array( $rule_desc )
-					)->parse() . "<br />\n";
+						$rule_desc
+					);
 				}
 				break;
 
@@ -1166,10 +1203,10 @@ class AbuseFilter {
 					$logParams, self::getFilterUser()
 				);
 
-				$display .= wfMessage(
+				$message = array(
 					'abusefilter-blocked-display',
-					array( $rule_desc )
-				)->parse() . "<br />\n";
+					$rule_desc
+				);
 				break;
 			case 'rangeblock':
 				$filterUser = AbuseFilter::getFilterUser();
@@ -1203,10 +1240,10 @@ class AbuseFilter {
 					$logParams, self::getFilterUser()
 				);
 
-				$display .= wfMessage(
+				$message = array(
 					'abusefilter-blocked-display',
 					$rule_desc
-				)->parse() . "<br />\n";
+				);
 				break;
 			case 'degroup':
 				global $wgUser;
@@ -1218,10 +1255,10 @@ class AbuseFilter {
 						$wgUser->removeGroup( $group );
 					}
 
-					$display .= wfMessage(
+					$message = array(
 						'abusefilter-degrouped',
-						array( $rule_desc )
-					)->parse() . "<br />\n";
+						$rule_desc
+					);
 
 					// Don't log it if there aren't any groups being removed!
 					if ( !count( $groups ) ) {
@@ -1249,10 +1286,10 @@ class AbuseFilter {
 					$blockPeriod = (int)mt_rand( 3 * 86400, 7 * 86400 ); // Block for 3-7 days.
 					$wgMemc->set( self::autoPromoteBlockKey( $wgUser ), true, $blockPeriod );
 
-					$display .= wfMessage(
+					$message = array(
 						'abusefilter-autopromote-blocked',
-						array( $rule_desc )
-					)->parse() . "<br />\n";
+						$rule_desc
+					);
 				}
 				break;
 
@@ -1278,14 +1315,14 @@ class AbuseFilter {
 						$msg = call_user_func( $custom_function, $action, $parameters, $title, $vars, $rule_desc );
 					}
 					if( isset( $msg ) ) {
-						$display .= wfMessage( $msg )->text() . "<br />\n";
+						$message = array( $msg );
 					}
 				} else {
 					wfDebugLog( 'AbuseFilter', "Unrecognised action $action" );
 				}
 		}
 
-		return $display;
+		return $message;
 	}
 
 	/**
@@ -2111,7 +2148,7 @@ class AbuseFilter {
 		}
 		if ( defined( 'MW_SUPPORTS_CONTENTHANDLER' ) ) {
 			$content = $revision->getContent( $audience );
-			if ( !$content instanceof Content ) {
+			if ( $content === null ) {
 				return '';
 			}
 			$result = self::contentToString( $content );
