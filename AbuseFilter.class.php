@@ -1487,8 +1487,7 @@ class AbuseFilter {
 			$matchCount++;
 
 			// Figure out if the filter is subject to being deleted.
-			$ts = new MWTimestamp( self::$filters[$filter]->af_timestamp );
-			$filter_age = $ts->getTimestamp( TS_UNIX );
+			$filter_age = wfTimestamp( TS_UNIX, self::$filters[$filter]->af_timestamp );
 			$throttle_exempt_time = $filter_age + $emergencyDisableAge;
 
 			if ( $total && $throttle_exempt_time > time()
@@ -1768,9 +1767,8 @@ class AbuseFilter {
 			return null;
 		}
 		if ( $vars ) {
-			$ts = new MWTimestamp( $row->rc_timestamp );
 			$vars->setVar( 'context', 'generated' );
-			$vars->setVar( 'timestamp', $ts->getTimestamp( TS_UNIX ) );
+			$vars->setVar( 'timestamp', wfTimestamp( TS_UNIX, $row->rc_timestamp ) );
 		}
 
 		return $vars;
