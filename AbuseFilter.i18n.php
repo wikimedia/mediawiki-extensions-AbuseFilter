@@ -6650,10 +6650,10 @@ V tomto rozhraní můžete vidět seznam definovaných filtrů a měnit je.',
 	'abusefilter-warning' => "'''Upozornění''': Tato činnost byla automaticky identifikována jako škodlivá.
 Neužitečné editace budou rychle revertovány, v&nbsp;opakovaných nebo závažných případech mohou být váš uživatelský účet či IP adresa zablokovány.
 Pokud považujete svou editaci za správnou, můžete ji potvrdit opětovným kliknutím na Uložit změny.
-Stručný popis pravidla, které vaši činnost označilo za škodlivou: $1", # Fuzzy
+Stručný popis pravidla, které vaši činnost označilo za škodlivou: $1",
 	'abusefilter-disallowed' => 'Tato činnost byla automaticky identifikována jako škodlivá, a&nbsp;proto zakázána.
 Pokud považujete svou editaci za správnou, kontaktujte správce a&nbsp;sdělte jim, o&nbsp;co jste se {{GENDER:|snažil|snažila|snažili}}.
-Stručný popis pravidla, které vaši činnost označilo za škodlivou: $1', # Fuzzy
+Stručný popis pravidla, které vaši činnost označilo za škodlivou: $1',
 	'abusefilter-blocked-display' => 'Tato činnost byla automaticky identifikována jako škodlivá, a&nbsp;proto vám bylo zabráněno v&nbsp;jejím provedení.
 Kvůli ochraně {{grammar:2sg|{{SITENAME}}}} byla navíc vašemu uživatelskému účtu a&nbsp;všem s&nbsp;ním spojeným IP adresám zablokována možnost editace.
 Pokud se domníváte, že se jedná o&nbsp;omyl, kontaktujte správce.
@@ -6773,6 +6773,7 @@ Provedená opatření: $6; popis filtru: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => 'Nemáte oprávnění obnovovat příznak schváleného uživatele.',
 	'abusefilter-reautoconfirm-done' => 'Příznak schváleného uživatele byl obnoven',
 	'abusefilter-status' => '{{PLURAL:$1|Při poslední operaci|Z posledních $2 operací}} {{PLURAL:$2|překročila|překročily|překročilo}} $2 ($3 %) limit $4 podmínek a $5 ($6 %) {{PLURAL:$5|byla zachycena|byly zachyceny|bylo zachyceno}} jedním ze zapnutých filtrů.',
+	'abusefilter-edit' => 'Editace filtru zneužití',
 	'abusefilter-edit-subtitle' => 'Editace filtru $1',
 	'abusefilter-edit-subtitle-new' => 'Vytvoření filtru',
 	'abusefilter-edit-oldwarning' => '<strong>Editujete starší verzi tohoto filtru. Uvedené statistiky platí pro aktuální verzi. Pokud uložíte své změny, přepíšete všechny novější úpravy.</strong> &bull; [[Special:AbuseFilter/history/$2|Vrátit se na historii tohoto filtru]].',
@@ -11324,7 +11325,7 @@ $messages['fa'] = array(
 	'abusefilter-examine-incompatible' => 'تغییری که درخواست کردید توسط پالایهٔ خرابکاری‌ها پشتیبانی نمی‌شود',
 	'abusefilter-examine-noresults' => 'برای پارامترهای جستجویی که ارائه کردید هیچ نتیجه‌ای یافت نشد.',
 	'abusefilter-topnav' => "'''ناوبری پالایهٔ خرابکاری'''",
-	'abusefilter-topnav-home' => 'منزل',
+	'abusefilter-topnav-home' => 'خانه',
 	'abusefilter-topnav-test' => 'آزمودن دسته‌ای',
 	'abusefilter-topnav-examine' => 'آزمودن ویرایش‌های قبلی',
 	'abusefilter-topnav-log' => 'سیاههٔ خرابکاری',
@@ -18452,7 +18453,8 @@ $3 個の{{PLURAL:$3|引数}}があるべきですが $4 個しかありませ�
 	'abusefilter-revert-periodend' => '期間終わり:',
 	'abusefilter-revert-search' => '対処操作を選択',
 	'abusefilter-revert-filter' => 'フィルター:',
-	'abusefilter-revert-preview-intro' => '以下は、この操作によって差し戻される、不正利用フィルターによる対処操作です。注意深く確認し、「{{int:Abusefilter-revert-confirm}}」をクリックして選択を確定してください。',
+	'abusefilter-revert-preview-intro' => '以下は、この操作によって差し戻される、不正利用フィルターによる対処操作です。
+注意深く確認し、「{{int:Abusefilter-revert-confirm}}」をクリックして選択を確定してください。',
 	'abusefilter-revert-confirm' => '確定',
 	'abusefilter-revert-success' => '[[Special:AbuseFilter/$1|フィルター $1]] に起因した、不正利用フィルターによるすべての対処操作を差し戻しました。',
 	'abusefilter-revert-reason' => 'フィルター $1 に起因した、不正利用フィルターによるすべての対処操作の自動差し戻し。理由: $2',
@@ -38052,7 +38054,7 @@ $messages['uk'] = array(
 	'abusefilter-disallowed' => "Ця дія автоматично визначена як шкідлива,
 і тому заборонена.
 Якщо ви вважаєте, що це редагування конструктивне, будь ласка, зверніться до адміністратора і розкажіть йому, що ви хотіли зробити.
-Короткий опис зловживання, яке пов'язане з вашою дією: $1",
+Короткий опис зловживання, яке пов'язане з вашою дією: $1", # Fuzzy
 	'abusefilter-blocked-display' => "Ця дію була автоматично визначена як шкідлива,
 і тому її виконання заборонене.
 Окрім того, для захисту проекту {{SITENAME}} ваш обліковий запис і пов'язані з ним IP-адреси були заблоковані.
@@ -38080,6 +38082,7 @@ $messages['uk'] = array(
 	'right-abusefilter-log-private' => 'Перегляд записів журналу зловживань, помічених як приватні',
 	'right-abusefilter-hide-log' => 'приховання записів у журналі зловживань',
 	'right-abusefilter-hidden-log' => 'Перегляд прихованих записів журналу зловживань',
+	'right-abusefilter-modify-global' => 'Створення, або зміна глобальних фільтрів зловживань',
 	'action-abusefilter-modify' => 'змінювати фільтри редагувань',
 	'action-abusefilter-view' => 'переглядати фільтри редагувань',
 	'action-abusefilter-log' => 'переглядати журнал зловживань',
@@ -38173,6 +38176,7 @@ $messages['uk'] = array(
 	'abusefilter-reautoconfirm-notallowed' => 'Вам не дозволено відновлювати статус автопідтвердження.',
 	'abusefilter-reautoconfirm-done' => 'Відновлений статус автопідтвердження облікового запису',
 	'abusefilter-status' => 'Серед $1 {{PLURAL:$1|дії|дій}}, $2 ($3%) {{PLURAL:$2|досягла|досягли}} межі $4. $5 ($6%) {{PLURAL:$5|активізувала|активізували}} один з увімкнених фільтрів.',
+	'abusefilter-edit' => 'Редагування фільтру зловживань',
 	'abusefilter-edit-subtitle' => 'Редагування фільтру $1',
 	'abusefilter-edit-subtitle-new' => 'Створення фільтру',
 	'abusefilter-edit-oldwarning' => '<strong>Ви редагуєте стару версію цього фільтра. Статистика наведена для найновішої версії фільтра. Якщо ви збережете свої зміни, ви перезапишете усі редагування починаючи з версії, яку ви редагуєте.</strong> &bull; [[Special:AbuseFilter/history/$2|Повернутися до історії цього фільтру]]',
@@ -38240,6 +38244,7 @@ $messages['uk'] = array(
 	'abusefilter-edit-bad-tags' => 'Принаймні одна з вказаних вами міток неправильна.
 Мітка має бути короткою і не має містити спецсимволів.',
 	'abusefilter-edit-notallowed' => 'У вас нема права створювати чи змінювати фільтри редагувань',
+	'abusefilter-edit-notallowed-global' => 'Вам не дозволено створювати, або редагувати глобальні фільтри зловживань',
 	'abusefilter-edit-builder-select' => 'Виберіть пункт, щоб додати на місце курсору',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Арифметичні оператори',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Додавання (+)',
