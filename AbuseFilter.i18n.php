@@ -19759,8 +19759,8 @@ $messages['ko'] = array(
 	'abusefilter-edit-subtitle-new' => '필터 만들기',
 	'abusefilter-edit-oldwarning' => '<strong>이 필터의 이전 버전을 수정하고 있습니다.
 아래의 통계는 이 필터의 최근 버전에 대한 것입니다.
-수정한 내용을 저장하면 당신이 편집하고 있는 버전 이후의 모든 수정 사항을 덮어쓰게 됩니다.</strong> &bull;
-[[Special:AbuseFilter/history/$2|이 필터의 역사로 돌아가기]].',
+바뀜을 저장하면 편집하고 있는 버전 이후의 모든 바뀜을 덮어쓰게 됩니다.</strong> &bull;
+[[Special:AbuseFilter/history/$2|이 필터의 역사로 돌아갑니다]].',
 	'abusefilter-edit-status-label' => '통계:',
 	'abusefilter-edit-status' => '최근 행위 $1개 중 $2건($3%)이 이 필터와 일치하였습니다.
 평균적으로 필터의 작동 시간은 $4밀리초이며, $5만큼의 부하가 걸리고 있습니다.',
@@ -19806,11 +19806,11 @@ $messages['ko'] = array(
 	'abusefilter-edit-warn-preview' => '선택한 메시지 미리 보기',
 	'abusefilter-edit-warn-edit' => '선택한 메시지를 만들기/편집하기',
 	'abusefilter-edit-tag-tag' => '적용할 태그 (1줄당 1개씩):',
-	'abusefilter-edit-denied' => '이 필터는 비공개로 설정되었기 때문에, 당신은 이 필터의 자세한 사항을 볼 수 없습니다.',
+	'abusefilter-edit-denied' => '이 필터는 비공개로 설정되었기 때문에 이 필터의 자세한 사항을 볼 수 없습니다.',
 	'abusefilter-edit-main' => '필터 변수',
 	'abusefilter-edit-done-subtitle' => '필터를 편집함',
 	'abusefilter-edit-done' => '필터 $1을(를) 편집하는 데 성공하였습니다.',
-	'abusefilter-edit-badsyntax' => '당신이 입력한 필터 구문에 오류가 있습니다.
+	'abusefilter-edit-badsyntax' => '입력한 필터 구문에 오류가 있습니다.
 파서 함수의 출력값: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => '이 필터에는 제한된 조치를 취할 수 있게 하는 설정이 포함되어 있어 이 필터를 편집할 수 없습니다.
 필터를 편집하려면 제한된 조치를 설정할 수 있는 권한을 가진 사용자에게 문의하십시오.',
@@ -26412,6 +26412,7 @@ Ei kort skildring av misbruksregelen handlinga di braut er: $1',
 	'abusefilter-reautoconfirm-notallowed' => 'Du har ikkje løyve til å gje attende stoda som automatisk godkjend.',
 	'abusefilter-reautoconfirm-done' => 'Brukarkontoen si stoda som automatisk godkjend er vorten gjeven attende',
 	'abusefilter-status' => 'Av {{PLURAL:$1|den siste handlinga|dei siste $1 handlingane}} har $2 ($3 %) nådd grenseverdien $4. $5 ($6 %) passa med eit av dei aktiverte filtera.',
+	'abusefilter-edit' => 'Endrar misbruksfilter',
 	'abusefilter-edit-subtitle' => 'Endrar filter $1',
 	'abusefilter-edit-subtitle-new' => 'Opprettar filter',
 	'abusefilter-edit-oldwarning' => '<strong>Du endrar ein gammal versjon av dette filteret. Den oppgjevne statistikken gjeld for den seinaste versjonen av filteret. Om du lagrar endringane dine, kjem du til å skriva over alle endringane som blei gjort etter versjonen du no endrar. </strong> &bull; [[Special:AbuseFilter/history/$2|Tilbake til filterhistorikken]]',
@@ -37144,6 +37145,7 @@ $messages['tpi'] = array(
  * @author Emperyan
  * @author Erdemaslancan
  * @author Hedda Gabler
+ * @author Incelemeelemani
  * @author Joseph
  * @author LuCKY
  * @author Mach
@@ -37162,11 +37164,11 @@ Bu arayüz, tanımlı süzgeçlerin listesini gösterir ve değiştirilmelerine 
 Yapıcı olmayan değişiklikler hızlıca geri döndürülecektir,
 ve çok kötü ya da tekrar eden yapıcı olmayan değişiklikler hesabınızın ya da IP adresinizin engellenmesiyle sonuçlanacaktır.
 Eğer bu değişikliğin yapıcı olduğuna inanıyorsanız, onaylamak için tekrar Gönder'e basabilirsiniz.
-Eyleminizin eşleştiği suistimal kuralının kısa bir açıklaması: $1",
+Eyleminizin eşleştiği suistimal kuralının kısa bir açıklaması: $1", # Fuzzy
 	'abusefilter-disallowed' => 'Bu eylem otomatikman zararlı olarak tanımlanmıştır,
 ve bu nedenle izin verilmemektedir.
 Eğer değişikliğinizin yapıcı olduğuna inanıyorsanız, lütfen bir yönetici ile irtibat kurun, ve ne yapmaya çalıştığınız hakkında bilgilendirin.
-Eyleminizin eşleştiği suistimal kuralının kısa bir açıklaması: $1',
+Eyleminizin eşleştiği suistimal kuralının kısa bir açıklaması: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Bu eylem otomatikman zararlı olarak tanımlanmıştır,
 ve bunu yapmanız önlendi.
 Ek olarak, {{SITENAME}} sitesini korumak için, kullanıcı hesabınız ve tüm ilgili IP adresleri değişiklik yapmaya engellendi.
@@ -37306,7 +37308,7 @@ Eylemlerin %$1'inden fazla eşleşme sınırına erişti.",
 	'abusefilter-edit-enabled' => 'Bu süzgeci etkinleştir',
 	'abusefilter-edit-deleted' => 'Silinmiş olarak işaretle',
 	'abusefilter-edit-hidden' => 'Bu süzgecin ayrıntılarını umumi görüşten gizle',
-	'abusefilter-edit-global' => 'Bu filtreyi küresel olarak uygula', # Fuzzy
+	'abusefilter-edit-global' => 'Küresel filtre',
 	'abusefilter-edit-rules' => 'Şartlar:',
 	'abusefilter-edit-notes' => "Notlar:
 :''(özel)''",
@@ -40797,6 +40799,7 @@ $messages['zh-hant'] = array(
 	'right-abusefilter-log-private' => '檢視隱密過濾器的過濾日誌，但不包括隱密過濾器的詳情',
 	'right-abusefilter-hide-log' => '在過濾日誌隱藏此日誌',
 	'right-abusefilter-hidden-log' => '檢視已被隱藏的過濾日誌',
+	'right-abusefilter-modify-global' => '建立或修改全域濫用過濾器',
 	'action-abusefilter-modify' => '修改防濫用過濾器',
 	'action-abusefilter-view' => '檢閱防濫用過濾器',
 	'action-abusefilter-log' => '查閱過濾日誌',
@@ -40890,6 +40893,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-reautoconfirm-notallowed' => '您未被允許回復自動確認資格。',
 	'abusefilter-reautoconfirm-done' => '該帳號的自動確認狀態已被回復',
 	'abusefilter-status' => '在最近$1次操作中，有$2 （$3%）次操作達到條件限制 （$4），另外有$5 （$6%）次操作相配其中一個現有已被啟用過濾器。',
+	'abusefilter-edit' => '編輯濫用過濾器',
 	'abusefilter-edit-subtitle' => '正在編輯過濾器 $1',
 	'abusefilter-edit-subtitle-new' => '創建過濾器',
 	'abusefilter-edit-oldwarning' => '<strong>警告：您正在編輯的是本過濾器的舊版本。
@@ -40960,6 +40964,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-edit-bad-tags' => '一個或更多的標籤不可用。
 標籤不應過長，並且不應包含任何特殊字符。',
 	'abusefilter-edit-notallowed' => '您未被允許建立或編輯防濫用過濾器',
+	'abusefilter-edit-notallowed-global' => '你不允許建立或修改全域濫用過濾器',
 	'abusefilter-edit-builder-select' => '選一選項以加此至游標處',
 	'abusefilter-edit-builder-group-op-arithmetic' => '算術運算符',
 	'abusefilter-edit-builder-op-arithmetic-addition' => '加（+）',
