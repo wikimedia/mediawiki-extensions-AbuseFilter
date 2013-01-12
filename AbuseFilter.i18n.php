@@ -4027,8 +4027,11 @@ $messages['be-tarask'] = array(
 Фільтар злоўжываньняў — аўтаматычны праграмны мэханізм ўжываньня аўтаматычных эўрыстык для ўсіх дзеяньняў.
 Інтэрфэйс паказвае сьпіс усталяваных фільтраў і дае магчымасьць іх зьмены.',
 	'abusefilter-mustbeeditor' => 'Зь меркаваньняў бясьпекі гэтым інтэрфэйсам могуць карыстацца толькі ўдзельнікі, якія маюць права зьмены фільтраў злоўжываньняў.',
-	'abusefilter-warning' => "'''Увага''': Гэтае дзеяньне будзе аўтаматычна лічыцца шкодным. Неканструктыўныя рэдагаваньні будуць скасаваныя, і значныя ці неаднаразовыя неканструктыўныя рэдагаваньні прывядуць да блякаваньня Вашага рахунка ці кампутара. Калі Вы лічыце гэтае рэдагаваньне канструктыўным, Вам неабходна націснуць «Адправіць» яшчэ раз, каб яго пацьвердзіць.
-Кароткі сьпіс злоўжываньняў, зь якімі суадносіцца Вашае дзеяньне тут: $1", # Fuzzy
+	'abusefilter-warning' => "'''Увага''': Гэтае дзеяньне будзе аўтаматычна лічыцца шкодным.
+Неканструктыўныя рэдагаваньні будуць скасаваныя,
+і значныя ці неаднаразовыя неканструктыўныя рэдагаваньні прывядуць да блякаваньня Вашага рахунка ці кампутара.
+Калі Вы лічыце гэтае дзеяньне канструктыўным, Вам неабходна пацьвердзіць яго яшчэ раз.
+Кароткі сьпіс злоўжываньняў, зь якімі суадносіцца Вашае дзеяньне тут: $1",
 	'abusefilter-disallowed' => 'Гэтае дзеяньне было аўтаматычна ідэнтыфікаванае як шкоднае і таму было забароненае.
 Калі Вы ўпэўненыя, што гэта карыснае рэдагаваньне, калі ласка, зьвяжыцеся з адміністратарам і растлумачце яму, што Вы спрабуеце зрабіць.
 Кароткае апісаньне шкоды, зь якой супала Вашае дзеяньне: $1', # Fuzzy
@@ -4153,6 +4156,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-reautoconfirm-notallowed' => 'Вам не дазволена аднаўляць статус аўтаматычнага пацьверджаньня.',
 	'abusefilter-reautoconfirm-done' => 'Адноўлены статус аўтаматычнага пацьверджаньня рахунку',
 	'abusefilter-status' => 'З $1 {{PLURAL:$1|апошняга дзеяньня|апошніх дзеяньняў|апошніх дзеяньняў}}, $2 ($3%) {{PLURAL:$2|трапіла|трапілі|трапілі}} пад абмежаваньне $4, а $5 ($6%) {{PLURAL:$5|адпавядае|адпавядаюць|адпавядаюць}} аднаму з уключаных цяпер фільтраў.',
+	'abusefilter-edit' => 'Рэдагаваньне фільтру злоўжываньняў',
 	'abusefilter-edit-subtitle' => 'Рэдагаваньне фільтру $1',
 	'abusefilter-edit-subtitle-new' => 'Стварэньне фільтру',
 	'abusefilter-edit-oldwarning' => '<strong>Вы рэдагуеце старую вэрсію гэтага фільтру.
@@ -25940,6 +25944,7 @@ Filterbeschrijving: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => 'U hebt geen rechten om de automatisch bevestigde status opnieuw in te stellen.',
 	'abusefilter-reautoconfirm-done' => 'De bevestigde gebruikersstatus van de gebruiker is hersteld',
 	'abusefilter-status' => 'Van de laatste $1 {{PLURAL:$1|handeling|handelingen}}, {{PLURAL:$2|heeft er 1|hebben er $2}} ($3%) de drempelwaarde van $4 bereikt, en {{PLURAL:$5|past|passen}} $5 ($6%) bij één van de huidige ingeschakelde filters.',
+	'abusefilter-edit' => 'Misbruikfilter bewerken',
 	'abusefilter-edit-subtitle' => 'Bezig met het bewerken van filter $1',
 	'abusefilter-edit-subtitle-new' => 'Bezig met het aanmaken van een filter',
 	'abusefilter-edit-oldwarning' => '<strong>U bent een oude versie van dit filter aan het bewerken.
