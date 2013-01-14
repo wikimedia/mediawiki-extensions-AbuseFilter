@@ -262,10 +262,9 @@ class AFComputedVariable {
 			case 'diff':
 				$text1Var = $parameters['oldtext-var'];
 				$text2Var = $parameters['newtext-var'];
-				$text1 = $vars->getVar( $text1Var )->toString();
-				$text2 = $vars->getVar( $text2Var )->toString();
+				$text1 = $vars->getVar( $text1Var )->toString() . "\n";
+				$text2 = $vars->getVar( $text2Var )->toString() . "\n";
 				$result = wfDiff( $text1, $text2 );
-				$result = trim( preg_replace( "/^\\\\ No newline at end of file\n/m", '', $result ) );
 				break;
 			case 'diff-split':
 				$diff = $vars->getVar( $parameters['diff-var'] )->toString();
