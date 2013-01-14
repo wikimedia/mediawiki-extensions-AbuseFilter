@@ -1439,11 +1439,11 @@ $messages['ar'] = array(
 مرشح الإساءة هو ميكانيكية برمجية آلية لتطبيق ضوابط تلقائية لكل الأفعال.
 هذه الواجهة تعرض قائمة بالمرشحات المعرفة، وتسمح بتعديلها.',
 	'abusefilter-mustbeeditor' => 'لأسباب أمنية، المستخدمون ذوو صلاحية تعديل مرشّحات الإساءة فقط يمكنهم استخدام هذه الواجهة.',
-	'abusefilter-warning' => "'' 'الإنذار ''': هذا الإجراء تلقائياً حددت ضارة.
-تعديلات غير بناءة سوف يكون سرعان ما عادت،
- والتحرير غير البناءة فظيعة أو المتكررة ستؤدي إلى حساب الخاص بك أو عنوان IP يتم حظرها.
-إذا كنت تعتقد أن هذا التحرير أن تكون بناءة، قد يقدم عليه مرة أخرى للتأكد من ذلك.
-وصف مختصر لقاعدة الإساءة الذي يقابل العمل الخاص بك:$1", # Fuzzy
+	'abusefilter-warning' => "'''تحذير''': أُعتبر هذا الإجراء ضارًا.
+سيتم استرجاع التعديلات غير البناءة سريعا،
+والتعديل غير البناء المتكرر أو المستمر سيؤدي إلى منع حسابك أو حاسوبك.
+إذا كنت تعتقد أن هذا التعديل بناء، فيمكن أن تضغط \"أرسل\" مرة أخرى لتأكيده.
+وصف مختصر لقاعدة الإساءة التي طابقها فعلك: \$1",
 	'abusefilter-disallowed' => 'هذا الفعل تم التعرف عليه تلقائيا كضار،
 ولذا تم منعه.
 لو كنت تعتقد أن تعديلك بناء، من فضلك اتصل بإداري، وأخبره بما كنت تحاول أن تفعل.
@@ -1583,7 +1583,7 @@ $messages['ar'] = array(
 	'abusefilter-edit-enabled' => 'فعّل هذا المُرشِّح',
 	'abusefilter-edit-deleted' => 'التعليم كمحذوفة',
 	'abusefilter-edit-hidden' => 'إخفاء تفاصيل هذا المرشح من العرض العلني',
-	'abusefilter-edit-global' => 'تصفية عمومي',
+	'abusefilter-edit-global' => 'مرشح عام',
 	'abusefilter-edit-rules' => 'الشروط:',
 	'abusefilter-edit-notes' => "ملاحظات:
 :''(سرية)",
@@ -1830,7 +1830,7 @@ $messages['ar'] = array(
 	'abusefilter-log-noresults' => 'لا توجد نتائج.',
 	'abusefilter-diff-title' => 'فروقات بين النسخ',
 	'abusefilter-diff-item' => 'عنصر',
-	'abusefilter-diff-version' => 'نسخة من  $1   {{GENDER:$3| بها}} $2',
+	'abusefilter-diff-version' => 'نسخة من $1 بواسطة $2', # Fuzzy
 	'abusefilter-diff-info' => 'معلومات أساسية',
 	'abusefilter-diff-pattern' => 'شروط المرشح',
 	'abusefilter-diff-invalid' => 'ليس بالإمكان إحضار النسخ المطلوبة',
@@ -13997,6 +13997,7 @@ $messages['he'] = array(
 	'abusefilter-reautoconfirm-notallowed' => 'אינכם מורשים לסמן מחדש משתמש כמשתמש ותיק.',
 	'abusefilter-reautoconfirm-done' => 'החשבון סומן מחדש כמשתמש ותיק',
 	'abusefilter-status' => 'מתוך {{PLURAL:$1|הפעולה האחרונה|$1 הפעולות האחרונות}}, {{PLURAL:$2|אחת ($3%) הגיעה|$2 ($3%) הגיעו}} לגבול התנאי של $4, ו{{PLURAL:$5|אחת ($6%) התאימה|־$5 ($6%) התאימו}} לאחד מהמסננים הפעילים כעת.',
+	'abusefilter-edit' => 'עריכת מסנן השחתות',
 	'abusefilter-edit-subtitle' => 'עריכת המסנן $1',
 	'abusefilter-edit-subtitle-new' => 'יצירת מסנן',
 	'abusefilter-edit-oldwarning' => '<strong>הנכם עורכים גרסה ישנה של מסנן זה. הסטטיסטיקות המופיעות הינן עבור הגרסה העדכנית ביותר של המסנן. אם תשמרו את השינויים שביצעתם, הם ידרסו את כל השינויים מאז הגרסה שאתם עורכים כעת.</strong> &bull; [[Special:AbuseFilter/history/$2|חזרה להיסטוריית הגרסאות של המסנן]]',
@@ -17805,6 +17806,7 @@ Descrizione del filtro: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => 'Non è consentito ripristinare lo stato di autoconfirmed.',
 	'abusefilter-reautoconfirm-done' => "Lo stato di autoconfirmed dell'utenza è stato ripristinato",
 	'abusefilter-status' => 'Fra le ultime $1 {{PLURAL:$1|azione|azioni}}, $2 ($3 %) {{PLURAL:$2|ha|hanno}} raggiunto il limite di $4 condizioni e $5 ($6 %) {{PLURAL:$5|ha|hanno}} attivato uno dei filtri attualmente attivi.',
+	'abusefilter-edit' => 'Modifica filtro anti abusi',
 	'abusefilter-edit-subtitle' => 'Modifica del filtro $1',
 	'abusefilter-edit-subtitle-new' => 'Creazione filtro',
 	'abusefilter-edit-oldwarning' => '<strong>Si sta modificando una versione obsoleta di questo filtro.
@@ -23745,7 +23747,7 @@ Huraian penapis: $7 ($8)',
 	'abusefilter-list-hitcount' => 'Bilangan hit',
 	'abusefilter-list-edit' => 'Sunting',
 	'abusefilter-list-details' => 'Butiran',
-	'abusefilter-list-limit' => 'Bilangan per laman:',
+	'abusefilter-list-limit' => 'Bilangan sehalaman:',
 	'abusefilter-list-lastmodified' => 'Kali terakhir diubah',
 	'abusefilter-list-group' => 'Kumpulan penapis',
 	'abusefilter-hidden' => 'Rahsia',
@@ -30420,6 +30422,7 @@ Descriziune d\'u filtre: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => "Tu non ge sìnde autorezzate a repristenà 'u state autocunfirmate.",
 	'abusefilter-reautoconfirm-done' => "Ô state de l'account autocunfirmate jè state repristenate",
 	'abusefilter-status' => "De le urteme $1 {{PLURAL:$1|aziune|aziune}}, $2 ($3%) {{PLURAL:$2|hagghie|honne}} raggiunde 'u limite de condiziune de $4, e $5 ($6%) {{PLURAL:$5|hagghie|honne}} iacchiute une de le filtre ce jè ôsce a die abbilitate.",
+	'abusefilter-edit' => "Stoche a cange le filtre de l'abbuse",
 	'abusefilter-edit-subtitle' => "Cangiaminde d'u filtre $1",
 	'abusefilter-edit-subtitle-new' => "Stoche a creje 'nu filtre",
 	'abusefilter-edit-oldwarning' => "<strong>Tu stè a cangianne 'na versiune vècchie de quiste filtre.
@@ -30538,6 +30541,7 @@ Le tag honne da esse curte, e non g'onne a condenè carattere speciale.",
 	'abusefilter-edit-builder-funcs-substr' => 'Sottostringhe (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'Posiziune de sottostringhe in stringhe (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => "Cangià 'na sottostringhe cu 'na stringhe (str_replace)",
+	'abusefilter-edit-builder-funcs-rescape' => "'A stringhe de assute cumme 'nu letterale jndr'à regex (rescape)",
 	'abusefilter-edit-builder-funcs-set_var' => "'Mboste 'a variabbele (set_var)",
 	'abusefilter-edit-builder-group-vars' => 'Variabbele',
 	'abusefilter-edit-builder-vars-accountname' => "Nome d'u cunde utende (o nome d'u cunde utende de ccrejazione)",
@@ -38043,6 +38047,7 @@ $messages['ug-latn'] = array(
  * @author Olvin
  * @author Prima klasy4na
  * @author SamOdin
+ * @author Ата
  * @author Тест
  */
 $messages['uk'] = array(
@@ -38058,10 +38063,9 @@ $messages['uk'] = array(
 грубі або неодноразові неконструктивні редагування призведуть до блокування вашого облікового запису або IP-адреси.
 Якщо ви вважаєте, що це редагування конструктивне, то ви можете ще раз натиснути «Зберегти сторінку», щоб підтвердити редагування.
 Короткий опис зловживання, яке пов'язане з вашою дією: $1", # Fuzzy
-	'abusefilter-disallowed' => "Ця дія автоматично визначена як шкідлива,
-і тому заборонена.
-Якщо ви вважаєте, що це редагування конструктивне, будь ласка, зверніться до адміністратора і розкажіть йому, що ви хотіли зробити.
-Короткий опис зловживання, яке пов'язане з вашою дією: $1", # Fuzzy
+	'abusefilter-disallowed' => 'Ця дія автоматично визначена як шкідлива, і тому заборонена.
+Якщо ви вважаєте, що вона конструктивна, будь ласка, зверніться до адміністратора і розкажіть йому, що ви хотіли зробити.
+Короткий опис правила, яке порушує ваша дія: $1',
 	'abusefilter-blocked-display' => "Ця дію була автоматично визначена як шкідлива,
 і тому її виконання заборонене.
 Окрім того, для захисту проекту {{SITENAME}} ваш обліковий запис і пов'язані з ним IP-адреси були заблоковані.
