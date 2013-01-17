@@ -68,7 +68,13 @@ $wgAPIModules['abusefilterunblockautopromote'] = 'ApiAbuseFilterUnblockAutopromo
 $wgAutoloadClasses['ApiAbuseFilterCheckMatch'] = "$dir/api/ApiAbuseFilterCheckMatch.php";
 $wgAPIModules['abusefiltercheckmatch'] = 'ApiAbuseFilterCheckMatch';
 
-$wgHooks['EditFilterMerged'][] = 'AbuseFilterHooks::onEditFilterMerged';
+
+if ( defined( 'MW_SUPPORTS_CONTENTHANDLER' ) ) {
+	$wgHooks['EditFilterMergedContent'][] = 'AbuseFilterHooks::onEditFilterMergedContent';
+} else {
+	$wgHooks['EditFilterMerged'][] = 'AbuseFilterHooks::onEditFilterMerged';
+}
+
 $wgHooks['GetAutoPromoteGroups'][] = 'AbuseFilterHooks::onGetAutoPromoteGroups';
 $wgHooks['AbortMove'][] = 'AbuseFilterHooks::onAbortMove';
 $wgHooks['AbortNewAccount'][] = 'AbuseFilterHooks::onAbortNewAccount';
