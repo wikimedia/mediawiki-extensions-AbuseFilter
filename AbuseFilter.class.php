@@ -2200,4 +2200,29 @@ class AbuseFilter {
 		return $text;
 	}
 
+	/*
+	 * Get the history ID of the first change to a given filter
+	 *
+	 * @param $filterId integer: Filter id
+	 * @return integer|bool
+	 */
+	public static function getFirstFilterChange( $filterID ) {
+		static $firstChanges = array();
+
+		if ( !isset( $firstChanges[ $filterID ] ) ) {
+			$dbr = wfGetDB( DB_SLAVE );
+			$row = $dbr->selectRow(
+				'abuse_filter_history',
+				'afh_id',
+				array(
+					'afh_filter' => $filterID,
+				),
+				__METHOD__,
+				array( 'ORDER BY' => 'afh_timestamp ASC' )
+			);
+			$firstChanges[$filterID] = $row->afh_id;
+		}
+
+		return $firstChanges[$filterID];
+	}
 }

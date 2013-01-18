@@ -158,9 +158,13 @@ class AbuseFilterHistoryPager extends TablePager {
 				$formatted = Linker::link( $title, $value );
 				break;
 			case 'afh_id':
-				$title = $this->mPage->getTitle(
-							'history/' . $row->afh_filter . "/diff/prev/$value" );
-				$formatted = Linker::link( $title, $this->msg( 'abusefilter-history-diff' )->parse() );
+				$formatted = '';
+				if ( AbuseFilter::getFirstFilterChange( $row->afh_filter ) != $value ) {
+					// Set a link to a diff with the previous version if this isn't the first edit to the filter
+					$title = $this->mPage->getTitle(
+								'history/' . $row->afh_filter . "/diff/prev/$value" );
+					$formatted = Linker::link( $title, $this->msg( 'abusefilter-history-diff' )->parse() );
+				}
 				break;
 			default:
 				$formatted = "Unable to format $name";

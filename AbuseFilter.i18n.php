@@ -478,6 +478,8 @@ For full details, see [[Special:AbuseFilter/history|the list]] of recent filter 
 	'abusefilter-diff-pattern' => 'Filter conditions',
 	'abusefilter-diff-invalid' => 'Unable to fetch the requested versions',
 	'abusefilter-diff-backhistory' => 'Back to filter history',
+	'abusefilter-diff-prev' => 'Older change',
+	'abusefilter-diff-next' => 'Newer change',
 
 	// Import interface
 	'abusefilter-import-intro' => 'You can use this interface to import filters from other wikis.
@@ -929,6 +931,8 @@ This is also used in {{msg-mw|Abusefilter-revert-preview-intro}}. When changing 
 * $2 is a link to a username.
 * $3 is a raw username, which can be used for GENDER.',
 	'abusefilter-diff-info' => "Header for the box containing the basic information about a user account, displayed on the 'user profile' tab of the [[Special:Preferences|user preferences]] special page.",
+	'abusefilter-diff-prev' => 'Link to the diff view for the previous change to this filter',
+	'abusefilter-diff-next' => 'Link to the diff view for the next change to this filter',
 	'abusefilter-import-intro' => "Do not ''translate'' <nowiki>{{int:abusefilter-edit-export}}</nowiki>, <nowiki>{{int:abusefilter-tools-subtitle}}</nowiki>, and <nowiki>{{int:abusefilter-import-submit}}</nowiki> unless you absolute must substitute any of them.",
 	'abusefilter-group-default' => 'The name for the default filter group. Most filters will be in this group.',
 );
