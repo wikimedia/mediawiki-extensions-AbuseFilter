@@ -842,6 +842,8 @@ Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edi
 	'abusefilter-edit-builder-vars-movedto-ns' => 'Paraphrased: Namespace of the destination of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
 	'abusefilter-edit-builder-vars-movedto-text' => 'Paraphrased: Name of the destination of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
 	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Paraphrased: Full name of the destination of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-user-groups' => 'See also:
+* {{msg-mw|Abusefilter-edit-builder-vars-global-user-groups}}',
 	'abusefilter-edit-builder-vars-user-blocked' => 'Paraphrased: Boolean value on whether the user is blocked. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'This variable contains the level of protection required to edit the page. ("Edit" here is not a verb, but an adjective, like "Edit-related protection level"). Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.
 
@@ -931,8 +933,16 @@ This is also used in {{msg-mw|Abusefilter-revert-preview-intro}}. When changing 
 * $2 is a link to a username.
 * $3 is a raw username, which can be used for GENDER.',
 	'abusefilter-diff-info' => "Header for the box containing the basic information about a user account, displayed on the 'user profile' tab of the [[Special:Preferences|user preferences]] special page.",
-	'abusefilter-diff-prev' => 'Link to the diff view for the previous change to this filter',
-	'abusefilter-diff-next' => 'Link to the diff view for the next change to this filter',
+	'abusefilter-diff-prev' => 'Link to the diff view for the previous change to this filter.
+
+See also:
+* {{msg-mw|Abusefilter-diff-next}}
+* {{msg-mw|Previousdiff}} and {{msg-mw|Nextdiff}}',
+	'abusefilter-diff-next' => 'Link to the diff view for the next change to this filter.
+
+See also:
+* {{msg-mw|Abusefilter-diff-prev}}
+* {{msg-mw|Previousdiff}} and {{msg-mw|Nextdiff}}',
 	'abusefilter-import-intro' => "Do not ''translate'' <nowiki>{{int:abusefilter-edit-export}}</nowiki>, <nowiki>{{int:abusefilter-tools-subtitle}}</nowiki>, and <nowiki>{{int:abusefilter-import-submit}}</nowiki> unless you absolute must substitute any of them.",
 	'abusefilter-group-default' => 'The name for the default filter group. Most filters will be in this group.',
 );
@@ -4298,6 +4308,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-edit-builder-vars-article-ns' => 'Прастора назваў старонкі',
 	'abusefilter-edit-builder-vars-article-text' => 'Назва старонкі (без прасторы назваў)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Поўная назва старонкі',
+	'abusefilter-edit-builder-vars-article-views' => 'Праглядаў старонкі',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'Ідэнтыфікатар крыніцы перанесенай старонкі',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Прастора назваў крыніцы перанесенай старонкі',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Назва крыніцы перанесенай старонкі',
@@ -8080,6 +8091,8 @@ Für genauere Einzelheiten, siehe [[Special:AbuseFilter/history|die Liste]] der 
 	'abusefilter-diff-pattern' => 'Filterregeln',
 	'abusefilter-diff-invalid' => 'Die angeforderte Version kann nicht abgerufen werden',
 	'abusefilter-diff-backhistory' => 'Zurück zur Versionsgeschichte des Filters',
+	'abusefilter-diff-prev' => 'Ältere Änderung',
+	'abusefilter-diff-next' => 'Neuere Änderung',
 	'abusefilter-import-intro' => 'Du kannst diese Schnittstelle verwenden, um Filter aus anderen Wikis zu importieren.
 Klicke im Quellwiki auf die Schaltfläche „{{int:abusefilter-edit-export}}“ innerhalb von „{{int:abusefilter-edit-tools}}“.
 Kopiere den dort erscheinenden Code, füge ihn hier ein und klicke dann auf die Schaltfläche „{{int:abusefilter-import-submit}}“.',
@@ -18526,6 +18539,8 @@ $3 個の{{PLURAL:$3|引数}}があるべきですが $4 個しかありませ�
 	'abusefilter-diff-pattern' => 'フィルター条件',
 	'abusefilter-diff-invalid' => '要求された版を取得できません',
 	'abusefilter-diff-backhistory' => 'フィルター履歴に戻る',
+	'abusefilter-diff-prev' => '古い変更',
+	'abusefilter-diff-next' => '新しい変更',
 	'abusefilter-import-intro' => 'このインターフェイスを使用して、別のウィキからフィルターを取り込めます。
 取り込み元のウィキで、編集画面の「{{int:abusefilter-edit-tools}}」下にある「{{int:abusefilter-edit-export}}」をクリックします。
 そこで現れるテキストボックスの内容をコピーし、それをこのテキストボックスに貼り付けて、「{{int:abusefilter-import-submit}}」をクリックします。',
@@ -27633,14 +27648,14 @@ $messages['pfl'] = array(
 Missbraisch-Filda sind selbschdschdendischi Meschanisme, wu vun allä Heuristike uff alle Änarunge oawende dun.
 Die Owafläsch zaischd ä Lischd vun alle Filda, wu ma a änare konn.',
 	'abusefilter-mustbeeditor' => "Weschede Sichahaid derfen bloß Laid mid g'nuch Räschd do mache.",
-	'abusefilter-warning' => "'''Waanung''': Was du so mache wilschd, werd als uu'erwinschd gseje.
-Wenn's nix isch, werds a klai wida zrigg'gsedzd oda g'leschd.
-Wonn des was dudo meamols magschd nix isch, werschd gschberrd.
-Wonn denge duschd, die Änarung isch guud, doan konschd a ruhisch waida mache.
-Ä korzi Schildarung vunde Reschl, wudes ausg'leesd kabd hod isch: $1", # Fuzzy
-	'abusefilter-disallowed' => "Was du do mache wilschd, isch vun allä als schedlisch gseje un deswesche vabode worre.
-Wonn menschd, dasses donoi kead, doann gebäm Adminischdrador Bschaid.
-Ä korzi Schildarung vunde Reschl, wudes ausg'leesd kabd hod isch: $1", # Fuzzy
+	'abusefilter-warning' => "Waanung''': Was du so mache wilschd, werd als uu'erwinschd gseje.
+Wonn's nix isch, werds a glai widda zrigg'gsezd oda gleschd.
+Wonn des was dudo meamols magschd nix isch, werschd gschberd.
+Wonn deng'ge duschd, die Änarung isch guud, doan konschd a ruhisch waida mache.
+Ä korzi Schildarung vunde Reschl, wudes ausgleesd kabd hod isch: $1",
+	'abusefilter-disallowed' => 'Was du do mache wilschd, isch werd als schedlisch gseje un isch deswesche vabode worre.
+Wonn menschd, dasses donoi kead, donn gebäm Adminischdrador Bschaid.
+Ä korzi Schildarung vunde Reschl, wudes ausgleesd kabd hod isch: $1',
 	'abusefilter-blocked-display' => "Was du do mache wilschd, isch vun allä als schedlisch gseje worre un deswesche hoschds a ned mache dirfe.
 Um {{SITENAME}} zschidze, isch doi Kondo un a alli domid vabundene IP-Addresse gschberd worre.
 Wonn menschd, dass des falsch isch, doann gebäm Adminischdrador Bschaid.
@@ -27763,6 +27778,7 @@ Schildarung vum Filda: $7 ($8)',
 	'abusefilter-reautoconfirm-done' => 'De Schdadus "Audomadisch bschdedischda Benudza" isch wida hergschdelld worre',
 	'abusefilter-status' => 'Vunde ledschde {{PLURAL:$1|Agzion|$1 Agzione}} {{PLURAL:$2|hod än|hawn $2}} ($3 %) die Hegschdzahl vun $4 gbrauchd.
 {{PLURAL:$5|Ä Agzion|$5 Agzione}} ($6 %) sin vunem oagschaldene Filda gfunne worre.',
+	'abusefilter-edit' => 'Schaff om Missbraischfilda',
 	'abusefilter-edit-subtitle' => 'Oam Filda $1 schaffe',
 	'abusefilter-edit-subtitle-new' => 'De Filda wead gmachd.',
 	'abusefilter-edit-oldwarning' => "<strong>Du duschd do oan 'nare alde Version vum Filda schaffe.
@@ -27896,6 +27912,7 @@ Magse korz un ohni Sondazaische.',
 	'abusefilter-edit-builder-vars-article-ns' => 'Noamraum vunde Said',
 	'abusefilter-edit-builder-vars-article-text' => 'Tidl vunde Said (ohne Noameraum)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Gonse Tidl vunde Said',
+	'abusefilter-edit-builder-vars-article-views' => 'Saideuffrief',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'Saide-ID vunde Qwellsaid',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Noameraum vunde Qwellsaid',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Tdl vunde Qwellsaid',
@@ -28751,6 +28768,7 @@ Le tichëtte a dovrìo esse curte, e a dovrìo pa conten-e ëd caràter speciaj.
 	'abusefilter-edit-builder-vars-article-ns' => 'Spassi nominal ëd la pàgina',
 	'abusefilter-edit-builder-vars-article-text' => 'Tìtol ëd la pàgina (sensa spassi nominal)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Tìtol complet ëd la pàgina',
+	'abusefilter-edit-builder-vars-article-views' => 'Visualisassion ëd pagina',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'Identificativ ëd la pàgina sorgiss da tramudé',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Spassi nominal ëd la pàgina sorgiss da tramudé',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Tìtol ëd la pàgina sorgiss da tramudé',
@@ -33356,6 +33374,7 @@ Oznake morajo biti kratne in ne smejo vsebovati posebnih znakov.',
 	'abusefilter-edit-builder-vars-article-ns' => 'Imenski prostor strani',
 	'abusefilter-edit-builder-vars-article-text' => 'Naslov strani (brez imenskega prostora)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Polni naslov strani',
+	'abusefilter-edit-builder-vars-article-views' => 'Ogledi strani',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'ID izvorne strani prestavljanja',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Imenski prostor izvorne strani prestavljanja',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Naslov izvorne strani prestavljanja',
@@ -33499,6 +33518,8 @@ Za vse podrobnosti si oglejte [[Special:AbuseFilter/history|seznam]] zadnjih spr
 	'abusefilter-diff-pattern' => 'Pogoji filtra',
 	'abusefilter-diff-invalid' => 'Ne morem pridobiti zahtevanih različic',
 	'abusefilter-diff-backhistory' => 'Nazaj na zgodovino filtra',
+	'abusefilter-diff-prev' => 'Starejša sprememba',
+	'abusefilter-diff-next' => 'Novejša sprememba',
 	'abusefilter-import-intro' => 'Ta vmesnik lahko uporabite za uvoz filtrov iz drugih wikijev.
 Na izvornem wikiju kliknite »{{int:abusefilter-edit-export}}« pod »{{int:abusefilter-edit-tools}}« v urejevalnem vmesniku.
 Nato skopirajte besedilo v prikazanem polju, prilepite ga v to polje in kliknite »{{int:abusefilter-import-submit}}«.',
@@ -38105,11 +38126,11 @@ $messages['uk'] = array(
 Фільтр редагувань це автоматизований механізм застосування автоматичних евристик до дій користувачів.
 Тут наведений список усіх установлених фільтрів, надається можливість їх зміни.',
 	'abusefilter-mustbeeditor' => 'З причин безпеки, тільки користувачі з правом зміни фільтрів редагувань можуть використовувати цей інтерфейс.',
-	'abusefilter-warning' => "'''Увага''': Ця дія була автоматично визначена як шкідлива.
+	'abusefilter-warning' => "'''Увага''': ця дія була автоматично визначена як шкідлива.
 Неконструктивні редагування будуть швидко скасовані,
 грубі або неодноразові неконструктивні редагування призведуть до блокування вашого облікового запису або IP-адреси.
-Якщо ви вважаєте, що це редагування конструктивне, то ви можете ще раз натиснути «Зберегти сторінку», щоб підтвердити редагування.
-Короткий опис зловживання, яке пов'язане з вашою дією: $1", # Fuzzy
+Якщо Ви вважаєте, що це редагування конструктивне, то Ви можете ще раз натиснути «Зберегти сторінку», щоб підтвердити редагування.
+Короткий опис зловживання, на яке схожа Ваша дія: $1",
 	'abusefilter-disallowed' => 'Ця дія автоматично визначена як шкідлива, і тому заборонена.
 Якщо ви вважаєте, що вона конструктивна, будь ласка, зверніться до адміністратора і розкажіть йому, що ви хотіли зробити.
 Короткий опис правила, яке порушує ваша дія: $1',
@@ -38365,6 +38386,7 @@ $messages['uk'] = array(
 	'abusefilter-edit-builder-vars-article-ns' => 'Простір назв сторінки',
 	'abusefilter-edit-builder-vars-article-text' => 'Назва сторінки (без простору назв)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Повна назва сторінки',
+	'abusefilter-edit-builder-vars-article-views' => 'Переглядів сторінки',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'Ідентифікатор сторінки, що перейменовується',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Простір назв сторінки, що перейменовується',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Назва сторінки, що перейменовується',
@@ -38705,6 +38727,7 @@ $messages['ur'] = array(
 /** vèneto (vèneto)
  * @author Candalua
  * @author Frigotoni
+ * @author GatoSelvadego
  * @author Nemo bis
  * @author Nick1915
  */
@@ -38719,10 +38742,10 @@ Sta interfacia la mostra un elenco dei filtri definìi e la parmete de modificar
 	'abusefilter-warning' => "'''Ocio''': sta azion la xe stà ritegnùa pericolosa in base a na verifica automatica.
 Le modifiche mia costrutive le vegnarà prontamente anulà; l'inserimento palese o ripetùo de contributi mia costrutivi el darà luogo al bloco de l'utensa o del to indirizo IP.
 Se te ritien che la modifica in question la sia costrutiva, strucar de novo su Invia par confermarla.
-Sta qua la xe na breve descrission de la regola de sicureza che xe stà violà: $1",
+Sta qua la xe na breve descrission de la regola de sicureza che xe stà violà: $1", # Fuzzy
 	'abusefilter-disallowed' => 'Sta azion la xe stà ritegnùa pericolosa in base a na verifica automatica.
 Se te ritien che la modifica in question la sia costrutiva, par piaser dighelo a un aministrador.
-Sta qua la xe na breve descrission de la regola de sicureza che xe stà violà: $1',
+Sta qua la xe na breve descrission de la regola de sicureza che xe stà violà: $1', # Fuzzy
 	'abusefilter-blocked-display' => "Sta azion la xe stà ritegnùa pericolosa in base a na verifica automatica,
 e quindi te xe stà inpedìo de farla.
 Inoltre, par protegere {{SITENAME}}, l'utensa coivolta e tuti i indirizi IP associà i xe stà blocà e no i pole pi far modifiche.
@@ -38775,7 +38798,7 @@ Azioni intraprese: $6;
 Descrission del filtro: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'filtro globałe $1',
 	'abusefilter-log-detailedentry-local' => 'del filtro $1',
-	'abusefilter-log-detailslink' => 'detagli',
+	'abusefilter-log-detailslink' => 'detaji',
 	'abusefilter-log-hidelink' => 'canbia visibilità',
 	'abusefilter-log-details-legend' => 'Detàji de la voxe de registro $1',
 	'abusefilter-log-details-var' => 'Variabile',
@@ -38805,7 +38828,7 @@ Descrission del filtro: $7 ($8)',
 	'abusefilter-list-visibility' => 'Visibilità',
 	'abusefilter-list-hitcount' => 'Nùmaro de corispondense',
 	'abusefilter-list-edit' => 'Modìfega',
-	'abusefilter-list-details' => 'Detagli',
+	'abusefilter-list-details' => 'Detaji',
 	'abusefilter-list-limit' => 'Nùmaro par pàxena:',
 	'abusefilter-list-lastmodified' => 'Ultima modìfega',
 	'abusefilter-hidden' => 'Privado',
@@ -39463,6 +39486,7 @@ Thẻ phải ngắn, và chúng không nên chứa các ký tự đặc biệt.'
 	'abusefilter-edit-builder-vars-article-ns' => 'Không gian tên chính',
 	'abusefilter-edit-builder-vars-article-text' => 'Tựa đề trang (không có không gian tên)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Tựa đề trang đầy đủ',
+	'abusefilter-edit-builder-vars-article-views' => 'Số lần xem trang',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'Mã số của trang định di chuyển',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Không gian tên của trang định di chuyển',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Tựa đề của trang định di chuyển',
