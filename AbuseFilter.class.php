@@ -284,7 +284,7 @@ class AbuseFilter {
 		$vars->setVar( $prefix . '_TEXT', $title->getText() );
 		$vars->setVar( $prefix . '_PREFIXEDTEXT', $title->getPrefixedText() );
 		global $wgDisableCounters;
-		if ( !$wgDisableCounters ) {
+		if ( !$wgDisableCounters && !$title->isSpecialPage() ) {
 			$vars->setVar( $prefix . '_VIEWS', WikiPage::factory( $title )->getCount() );
 		}
 
