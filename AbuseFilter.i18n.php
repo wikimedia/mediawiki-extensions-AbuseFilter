@@ -3748,10 +3748,10 @@ Ining olay-panlaog minapahiling nin listahan kan pinagpapasabot na mga saraan, a
 	'abusefilter-warning' => "'''Patanid''': Ining aksyon awtomatikong pinagbibisto na pano nin kadelikaduhan.
 An bakong konstraktibong mga pagliliwat tulos-tulos na pinagbabalik, asin an bantadan o paoro-otrong pagliliwat na bakong konstraktibo magreresulta sa sadire mong panindog o IP estada na makukubkob.
 Kun ika nagtutubod na ining pagliwat sarong konstraktibo, mapuwede mong i-klik an Isumite giraray tanganing ikumpirma ini.
-Sarong halipoton na deskripsyon kan patakaran nin abuso na an saimong aksyon naipag-ampad iyo an: $1",
+Sarong halipoton na deskripsyon kan patakaran nin abuso na an saimong aksyon naipag-ampad iyo an: $1", # Fuzzy
 	'abusefilter-disallowed' => 'Ining aksyon awtomatikong pinagmidbid na pano nin kadelikaduhan, asin kaya dae pinagtutugutan.
 Kun ika nagtutubod na an saimong pagliwat sarong konstraktibo, pakipasabot sa administrador kun ano an saimong pinagprubaran na gigibohon.
-Sarong halipoton na deskripsyon kan patakaran nin abuso na an saimong aksyon naipag-ampad iyo an: $1',
+Sarong halipoton na deskripsyon kan patakaran nin abuso na an saimong aksyon naipag-ampad iyo an: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Ining aksyon awtomatikong pinagmidbid na pano nin kadelikaduhan, asin ika pinagpupugulan na papangyarihon ini.
 Sa kadagdagan, tanganing protektaran an {{SITENAME}}, an saimong paragamit na panindog asin an gabos na asosyadong IP na mga estada pinagkubkob gikan sa pagliliwat.
 Kun ini nangyari sa kasalaan, pakikontak an administrador.
@@ -3780,6 +3780,7 @@ Deskripsyon nin patakaran: $1',
 	'right-abusefilter-log-private' => 'Tanawon an mga entrada sa talaan kan mga saraan nin abuso na pinagmarkahan na pribado',
 	'right-abusefilter-hide-log' => 'Itinagong mga entrada na yaon sa talaan nin abuso',
 	'right-abusefilter-hidden-log' => 'Tanawon an itinagong entrada sa talaan kan abuso',
+	'right-abusefilter-modify-global' => 'Muknaon o modipikaron an pankinaban na mga saraan nin abuso',
 	'action-abusefilter-modify' => 'Hirahon an mga saraan nin abuso',
 	'action-abusefilter-view' => 'Tanawon an mga saraan nin abuso',
 	'action-abusefilter-log' => 'Tanawon an talaan nin abuso',
@@ -3872,12 +3873,13 @@ Deskripsyon kan saraan: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => 'Ika dae pinagtutugutan na mabalik kan estado nin awtomatikong pagkumpirma.',
 	'abusefilter-reautoconfirm-done' => 'An estado kan panindog sa awtomatikong pagkumpira ipinagbalik na',
 	'abusefilter-status' => 'Kan nakaaging $1 {{PLURAL:$1|aksyon|mga aksyon}}, $2 ($3%) {{PLURAL:$2|igwa nin|igwang}} kinaabtan na limitasyon nin kondisyon kan $4, asin $5 ($6%) {{PLURAL:$5|igwa nin|igwang}} pinag-ampadan na saro sa mga saraan na sa presente pinagpaandar.',
+	'abusefilter-edit' => 'Pagliliwat kan saraan nin abuso',
 	'abusefilter-edit-subtitle' => 'Saraan nin pagliliwat $1',
 	'abusefilter-edit-subtitle-new' => 'Saraan nin pagmumukna',
-	'abusefilter-edit-oldwarning' => '<makusugon>Ika nagliliwat kan lumaon nang bersyon kaining saraan.
-An estadistikong pinagsambit iyo an para sa pinakahuring bersyon kan saraan.
-Kun saimong itinagama an saimong mga kaliwatan, saimong salalambawan an gabos na mga kaliwatan magpoon sa rebisyon na saimong pinagliliwat. </makusugon> &baka;
-[[Espesyal:AbusoSaraan/historiya/$2|Magbalik pasiring sa historiya kaining saraan]].', # Fuzzy
+	'abusefilter-edit-oldwarning' => '<makusugon>Ika nagliliwat kan lumaong bersyon kaining saraan.
+An estadistikong pinagsambit para sa pinakahuring bersyon kan saraan.
+Kun saimong naitagama an saimong mga kaliwatan, saimong sasalambawan an gabos na mga kaliwatan magpoon pa sa rebisyon na saimong pinagliliwat. </makusugon> &bull;
+[[Special:AbuseFilter/history/$2|Magbalik pasiring sa historiya kaining saraan]].',
 	'abusefilter-edit-status-label' => 'Estadistika:',
 	'abusefilter-edit-status' => 'Kan nakaaging $1 {{PLURAL:$1|aksyon|mga aksyon}}, ini saraan nakapag-ampad sa $2 ($3%).
 Sa katahawan, an oras nin padalagan $4 ms, asin ini minakonsumo nin $5 {{PLURAL:$5|kondisyon|mga kondisyon}} kan limitasyon sa kondisyon.',
@@ -3943,6 +3945,7 @@ Pakihapot sa sarong paragamit na igwang permiso tanganing magdugang kan pinagpan
 	'abusefilter-edit-bad-tags' => 'Sa or dakol kan mga tatak na saimong pinagkaag bakong balido.
 An mga tatak dapat na halipot, asin sinda dapat mayong espesyal na mga karakter.',
 	'abusefilter-edit-notallowed' => 'Ika daeng permiso na magmukna o magliwat kan mga saraan nin abuso',
+	'abusefilter-edit-notallowed-global' => 'Ika mayong permiso na magmukna o magliwat kan pankinaban na mga saraan nin abuso',
 	'abusefilter-edit-builder-select' => 'Pilion an opsyon na ipagdugang ini sa kursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Mga operador kan aritmetika',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Kadagdagan (+)',
@@ -3983,6 +3986,12 @@ An mga tatak dapat na halipot, asin sinda dapat mayong espesyal na mga karakter.
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Halion an puting espasyo (rmwhitespace)',
 	'abusefilter-edit-builder-funcs-rmspecials' => 'Halion an espesyal na mga kurit (rmspecials)',
 	'abusefilter-edit-builder-funcs-ip_in_range' => 'Yaon daw an IP sa ganghaan? (ip_in_range)',
+	'abusefilter-edit-builder-funcs-contains-any' => 'Maghanap nin panunod para sa pankadaklang panrarom na mga kasundan (contains_any)',
+	'abusefilter-edit-builder-funcs-substr' => 'Panrarom na kasundan (substr)',
+	'abusefilter-edit-builder-funcs-strpos' => 'Posisyon kan panrarom na kasundan nin panunod (strpos)',
+	'abusefilter-edit-builder-funcs-str_replace' => 'Ribayan an panrarom na kasundan nin panunod (str_replace)',
+	'abusefilter-edit-builder-funcs-rescape' => 'Eskapo sa panunod bilang literal sa regex (rescape)',
+	'abusefilter-edit-builder-funcs-set_var' => 'Ipuwesto an kapilyangan (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Mga kapilyangan',
 	'abusefilter-edit-builder-vars-accountname' => 'Pangaran nin panindog (sa pagmukna nin panindog)',
 	'abusefilter-edit-builder-vars-timestamp' => 'Unix panmarkang oras nin kaliwatan',
@@ -3998,6 +4007,7 @@ An mga tatak dapat na halipot, asin sinda dapat mayong espesyal na mga karakter.
 	'abusefilter-edit-builder-vars-article-ns' => 'Pangarang espasyo kan pahina',
 	'abusefilter-edit-builder-vars-article-text' => 'Titulo kan Pahina (mayong pangarang espasyo)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Titulo kan Kabilogan nin pahina',
+	'abusefilter-edit-builder-vars-article-views' => 'Mga katanawan nin pahina',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'ID kan pahina nin pagbalyo sa ginikanang pahina',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Espasyong-pangaran nin pagbalyo kan ginikanan',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Titulo kan pagbalyo sa ginikanang pahina',
@@ -4009,6 +4019,8 @@ An mga tatak dapat na halipot, asin sinda dapat mayong espesyal na mga karakter.
 	'abusefilter-edit-builder-vars-user-editcount' => 'Bilang nin pagliwat kan paragamit',
 	'abusefilter-edit-builder-vars-user-age' => 'Edad kan panindog nin paragamit',
 	'abusefilter-edit-builder-vars-user-name' => 'Pangaran kan panindog nin paragamit',
+	'abusefilter-edit-builder-vars-user-groups' => 'An mga grupo (including implicit) na paragamit yaon',
+	'abusefilter-edit-builder-vars-user-blocked' => 'Dawa an paragamit pinagkubkob',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Oras an e-surat na estada pinagkumpirma',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Pinakahuring sampulong paragamit mag-aambag sa pahina',
 	'abusefilter-edit-builder-vars-all-links' => 'Gabos na panluwas na kasugpunan yaon sa baguhon na teksto',
@@ -4021,6 +4033,12 @@ An mga tatak dapat na halipot, asin sinda dapat mayong espesyal na mga karakter.
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Liwaton an grado nin proteksyon kan pahina',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Balyuhon an grade nin proteksyon kan pahina',
 	'abusefilter-edit-builder-vars-restrictions-create' => 'Magmukna nin proteksyon kan pahina',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'Ikarga an proteksyon kan sagunson',
+	'abusefilter-edit-builder-vars-old-text-stripped' => 'An lumang teksto nin pahina, pinagtanggalan nin arinman na markang panindog',
+	'abusefilter-edit-builder-vars-old-links' => 'Mga kasugponan na yaon sa pahina, bago pa man an pagliwat',
+	'abusefilter-edit-builder-vars-old-html' => 'An lumang pahina nin wikitext, pinagpakahulugan sa HTML',
+	'abusefilter-edit-builder-vars-minor-edit' => 'Dawa na bako an pagliwat markado bilang menor',
+	'abusefilter-edit-builder-vars-file-sha1' => 'SHA1 pinutulan kan mga laman nin sagunson',
 	'abusefilter-test-load' => 'Kargahon',
 	'abusefilter-test-user' => 'Mga kaliwatan nin paragamit:',
 	'abusefilter-test-period-start' => 'Mga kaliwatan pinaghimo pagkatapos:',
@@ -12295,6 +12313,8 @@ Pour plus de détails, voyez [[Special:AbuseFilter/history|la liste]] des modifi
 	'abusefilter-diff-pattern' => 'Conditions du filtre',
 	'abusefilter-diff-invalid' => 'Impossible de retrouver les versions demandées',
 	'abusefilter-diff-backhistory' => "Retour à l'historique du filtre",
+	'abusefilter-diff-prev' => 'Changement antérieur',
+	'abusefilter-diff-next' => 'Changement ultérieur',
 	'abusefilter-import-intro' => "Vous pouvez utiliser cette interface pour importer des filtres en provenance d'autres wikis.
 Sur le wiki d'origine, cliquez sur « {{int:abusefilter-edit-export}} » dans « {{int:abusefilter-edit-tools}} » depuis l'interface d'édition.
 Copiez la zone de texte qui s'affiche et collez-le dans cette zone de texte, puis cliquez sur « {{int:abusefilter-import-submit}} »,",
@@ -18137,6 +18157,8 @@ Per i dettagli completi, consultare [[Special:AbuseFilter/history|l'elenco]] del
 	'abusefilter-diff-pattern' => 'Condizioni dei filtri',
 	'abusefilter-diff-invalid' => 'Impossibile caricare le versioni richieste',
 	'abusefilter-diff-backhistory' => 'Torna alla cronologia dei filtri',
+	'abusefilter-diff-prev' => 'Differenza precedente',
+	'abusefilter-diff-next' => 'Differenza successiva',
 	'abusefilter-import-intro' => 'È possibile utilizzare questa interfaccia per importare filtri da altri siti wiki.
 Sul sito wiki d\'origine, fare clic su "{{int:abusefilter-edit-export}}" sotto "{{int:abusefilter-edit-tools}}" nell\'interfaccia di modifica.
 Copiare dalla casella che appare e copiare in questa casella, quindi fare clic su "{{int:abusefilter-import-submit}}".',
@@ -26297,6 +26319,8 @@ Zie de [[Special:AbuseFilter/history|lijst met recente filterwijzigingen]] voor 
 	'abusefilter-diff-pattern' => 'Filtervoorwaarden',
 	'abusefilter-diff-invalid' => 'Het was niet mogelijk de gevraagde versies op te halen',
 	'abusefilter-diff-backhistory' => 'Terug naar de filtergeschiedenis',
+	'abusefilter-diff-prev' => 'Oudere wijziging',
+	'abusefilter-diff-next' => 'Nieuwere wijziging',
 	'abusefilter-import-intro' => 'U kunt deze interface gebruiken om filters van andere wiki\'s te importeren.
 Klik "{{int:abusefilter-edit-export}}i" bij "{{int:abusefilter-edit-tools}}".
 Kopieer de tekst die in het bewerkingsvenster verschijnt naar dit bewerkingsvenster en klik dan op "{{int:abusefilter-import-submit}}".',
@@ -26807,9 +26831,9 @@ Aquesta interfàcia presenta una lista dels filtres definits, e balha la possibi
 Las edicions que son pas constructivas seràn rapidament anulladas,
 e la repeticion de las asinadas del meteis genre provocarà lo blocatge de vòstre compte o de vòstra adreça IP.
 Se sètz convençu{{GENDER:||t|(da)}} que vòstra modificacion es constructiva, la podètz la sometre un còp de mai per la validar.
-Vaquí la descripcion brèva de la règla de l’abús qu'a detectat vòstra accion : $1",
+Vaquí la descripcion brèva de la règla de l’abús qu'a detectat vòstra accion : $1", # Fuzzy
 	'abusefilter-disallowed' => 'Aquesta modificacion es estada automaticament idenficada coma nusibla e, per via de consequéncia, pas permesa.
-Se sètz convençut(uda) que vòstra modificacion èra constructiva, contactatz un administrator, e informatz-lo de quina accion eratz a far : $1',
+Se sètz convençut(uda) que vòstra modificacion èra constructiva, contactatz un administrator, e informatz-lo de quina accion eratz a far : $1', # Fuzzy
 	'abusefilter-blocked-display' => "Aquesta accion es estada identifcada coma nusibla automaticament, e ja sètz estat(ada) empachat(ada) de l’executar.
 En consequéncia, per protegir {{SITENAME}}, vòstre compte d'utilizaire e totas las adreças IP son estadas blocadas en escritura.
 S'aquò es degut a una error, contactatz un administrator.
@@ -27167,6 +27191,8 @@ Per mai de detalhs, vejatz [[Special:AbuseFilter/history|la lista]] dels darriè
 	'abusefilter-diff-pattern' => 'Condicions del filtre',
 	'abusefilter-diff-invalid' => 'Impossible de tornar trobar las versions demandadas',
 	'abusefilter-diff-backhistory' => "Retorn a l'istoric del filtre",
+	'abusefilter-diff-prev' => 'Cambiament anterior',
+	'abusefilter-diff-next' => 'Cambiament ulterior',
 	'abusefilter-import-intro' => "Podètz utilizar aquesta interfàcia per importar de filtres en provenéncia d’autres wikis.
 Sul wiki d’origina, clicatz sus « {{int:abusefilter-edit-export}} » dins « {{int:abusefilter-edit-tools}} » dempuèi l’interfàcia d’edicion.
 Copiatz l'airal de tèxte que s’aficha e empegatz-lo dins aqueste airal de tèxte, puèi clicatz sus « {{int:abusefilter-import-submit}} »,",
@@ -40591,6 +40617,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-reautoconfirm-notallowed' => '你不能恢复自动确认状态。',
 	'abusefilter-reautoconfirm-done' => '该账户的自动确认状态已恢复',
 	'abusefilter-status' => '在最后$1次操作中，有$2（$3%）{{PLURAL:$2|次|次}}操作达到了$4次的条件上限，有$5（$6%）{{PLURAL:$5|次|次}}编辑触发了已启用的过滤器之一。',
+	'abusefilter-edit' => '编辑滥用过滤器',
 	'abusefilter-edit-subtitle' => '编辑过滤器$1',
 	'abusefilter-edit-subtitle-new' => '创建筛选器',
 	'abusefilter-edit-oldwarning' => '<strong>你正在编辑该过滤器的旧版本。统计中引用的是该过滤器的最新版本。如果你保存你的编辑，所编辑版本之后的所有更改均会被覆盖。</strong> &bull;
@@ -40720,6 +40747,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-builder-vars-article-ns' => '页面名字空间',
 	'abusefilter-edit-builder-vars-article-text' => '页面标题（不含名字空间）',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => '完整页面标题',
+	'abusefilter-edit-builder-vars-article-views' => '页面查看次数',
 	'abusefilter-edit-builder-vars-movedfrom-id' => '移动源页面的页面编号',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => '移动源页面的名字空间',
 	'abusefilter-edit-builder-vars-movedfrom-text' => '移动源页面的标题',
@@ -40855,6 +40883,8 @@ $messages['zh-hans'] = array(
 	'abusefilter-diff-pattern' => '过滤器状态',
 	'abusefilter-diff-invalid' => '无法获取所请求版本',
 	'abusefilter-diff-backhistory' => '返回过滤器历史页面',
+	'abusefilter-diff-prev' => '较旧的更改',
+	'abusefilter-diff-next' => '较新的更改',
 	'abusefilter-import-intro' => '您可以使用本界面来导入其他wiki的过滤器。在来源处点击过滤器编辑界面处“{{int:abusefilter-edit-tools}}”下的“{{int:abusefilter-edit-export}}”。复制随后出现的文本框中的内容，并粘贴至下方的文本框中，并点击“{{int:abusefilter-import-submit}}”。',
 	'abusefilter-import-submit' => '导入数据',
 	'abusefilter-group-default' => '默认',
