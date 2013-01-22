@@ -944,7 +944,8 @@ See also:
 * {{msg-mw|Abusefilter-diff-prev}}
 * {{msg-mw|Previousdiff}} and {{msg-mw|Nextdiff}}',
 	'abusefilter-import-intro' => "Do not ''translate'' <nowiki>{{int:abusefilter-edit-export}}</nowiki>, <nowiki>{{int:abusefilter-tools-subtitle}}</nowiki>, and <nowiki>{{int:abusefilter-import-submit}}</nowiki> unless you absolute must substitute any of them.",
-	'abusefilter-group-default' => 'The name for the default filter group. Most filters will be in this group.',
+	'abusefilter-group-default' => 'The name for the default filter group. Most filters will be in this group.
+{{Identical|Default}}',
 );
 
 /** Achinese (Acèh)
@@ -30682,6 +30683,7 @@ Le tag honne da esse curte, e non g'onne a condenè carattere speciale.",
 	'abusefilter-edit-builder-vars-article-ns' => "Namespace d'a pàgene",
 	'abusefilter-edit-builder-vars-article-text' => "Nome d'a pagene (senze namespace)",
 	'abusefilter-edit-builder-vars-article-prefixedtext' => "Titele comblete d'a pàgene",
+	'abusefilter-edit-builder-vars-article-views' => 'Pàggene viste',
 	'abusefilter-edit-builder-vars-movedfrom-id' => "Pagene ID pè mòvere 'a pagene de origgene",
 	'abusefilter-edit-builder-vars-movedfrom-ns' => "Namespace pè mòvere 'a pagene de origgene",
 	'abusefilter-edit-builder-vars-movedfrom-text' => "Titole pè mòvere 'a pagene de origgene",
@@ -30825,6 +30827,8 @@ Pè avè cchiù dettaglie, vide [[Special:AbuseFilter/history|'a liste]] de le c
 	'abusefilter-diff-pattern' => "Condiziune d'u filtre:",
 	'abusefilter-diff-invalid' => 'Impossibbele recuperà le versiune rechieste',
 	'abusefilter-diff-backhistory' => "Torne ad 'u filtre d'a storie",
+	'abusefilter-diff-prev' => 'Cangiamende cchiù vecchie',
+	'abusefilter-diff-next' => 'Cangiamende cchiù nuève',
 	'abusefilter-import-intro' => 'Jè possibbele ausà quèste \'nderfazze pè le filtre de \'mbortazziune da otre wiki.
 Sus ad \'a wiki de origgene, cazzà "{{int:abusefilter-edit-export}}" sutte "{{int:abusefilter-edit-tools}}" sus a le \'nderfazze de le cangiaminde.
 Copià da \'a caselle de teste ce vide, e \'ngolle jidde sus a quiste cambe de teste, cchiù nnande cazze "{{int:abusefilter-import-submit}}".',
@@ -34937,6 +34941,7 @@ $messages['su'] = array(
  * @author Poxnar
  * @author Rotsee
  * @author Sertion
+ * @author Thurs
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
@@ -35100,7 +35105,7 @@ missbrukslogg-poster.',
 	'abusefilter-edit-lastmod-text' => '$1 av $2',
 	'abusefilter-edit-hitcount' => 'Filterträffar:',
 	'abusefilter-edit-consequences' => 'Handlingar som utförs vid träff',
-	'abusefilter-edit-action-warn' => 'Gör dessa handlingar efter att använaren fått en varning',
+	'abusefilter-edit-action-warn' => 'Gör dessa handlingar efter att användaren fått en varning',
 	'abusefilter-edit-action-disallow' => 'Hindra användaren från att utföra handlingen',
 	'abusefilter-edit-action-flag' => 'Flagga redigeringen i missbruksloggen',
 	'abusefilter-edit-action-blockautopromote' => 'Återta användarens status som automatiskt bekräftad',
@@ -39687,6 +39692,8 @@ Lý do: $2',
 	'abusefilter-diff-pattern' => 'Điều kiện lọc',
 	'abusefilter-diff-invalid' => 'Không thể lấy các phiên bản yêu cầu',
 	'abusefilter-diff-backhistory' => 'Trở lại lịch sử bộ lọc',
+	'abusefilter-diff-prev' => 'Thay đổi cũ',
+	'abusefilter-diff-next' => 'Thay đổi sau',
 	'abusefilter-import-intro' => 'Trang này để nhập bộ lọc từ wiki khác.
 Tại trang sửa đổi của wiki nguồn, hãy bấm “{{int:abusefilter-edit-export}}” dưới đề mục “{{int:abusefilter-edit-tools}}”.
 Sau đó, chép văn bản từ hộp sẽ hiện ra, dán nó vào hộp ở đây, và bấm “{{int:abusefilter-import-submit}}”.',
