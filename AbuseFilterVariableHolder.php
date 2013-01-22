@@ -210,6 +210,7 @@ class AFComputedVariable {
 
 		wfDebug( "Creating article object for $namespace:$title in cache\n" );
 
+		// TODO: use WikiPage instead!
 		$t = Title::makeTitle( $namespace, $title );
 		self::$articleCache["$namespace:$title"] = new Article( $t );
 
@@ -281,10 +282,15 @@ class AFComputedVariable {
 			case 'links-from-wikitext':
 				// This should ONLY be used when sharing a parse operation with the edit.
 
+				/* @var WikiPage $article */
 				$article = $parameters['article'];
-				if ( $article ) {
+				if ( $article !== null
+					&& ( !defined( 'MW_SUPPORTS_CONTENTHANDLER' )
+						|| $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) ) {
+
 					$textVar = $parameters['text-var'];
 
+					// XXX: Use prepareContentForEdit. But we need a Content object for that.
 					$new_text = $vars->getVar( $textVar )->toString();
 					$editInfo = $article->prepareTextForEdit( $new_text );
 					$links = array_keys( $editInfo->output->getExternalLinks() );
@@ -294,6 +300,7 @@ class AFComputedVariable {
 				// Otherwise fall back to database
 			case 'links-from-wikitext-nonedit':
 			case 'links-from-wikitext-or-database':
+				// TODO: use Content object instead, if available! In any case, use WikiPage, not Article.
 				$article = self::articleFromTitle(
 					$parameters['namespace'],
 					$parameters['title']
@@ -302,13 +309,20 @@ class AFComputedVariable {
 				if ( $vars->getVar( 'context' )->toString() == 'filter' ) {
 					$links = $this->getLinksFromDB( $article );
 					wfDebug( "AbuseFilter: loading old links from DB\n" );
-				} else {
+				} elseif ( !defined( 'MW_SUPPORTS_CONTENTHANDLER' )
+					|| $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
+
 					wfDebug( "AbuseFilter: loading old links from Parser\n" );
 					$textVar = $parameters['text-var'];
 
 					$wikitext = $vars->getVar( $textVar )->toString();
 					$editInfo = $this->parseNonEditWikitext( $wikitext, $article );
 					$links = array_keys( $editInfo->output->getExternalLinks() );
+				} else {
+					// TODO: Get links from Content object. But we don't have the content object.
+					//      And for non-text content, $wikitext is usually not going to be a valid
+					//      serialization, but rather some dummy text for filtering.
+					$links = array();
 				}
 
 				$result = $links;
@@ -334,9 +348,13 @@ class AFComputedVariable {
 			case 'parse-wikitext':
 				// Should ONLY be used when sharing a parse operation with the edit.
 				$article = $parameters['article'];
-				if ( $article ) {
+
+				if ( $article !== null
+					&& ( !defined( 'MW_SUPPORTS_CONTENTHANDLER' )
+						|| $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) ) {
 					$textVar = $parameters['wikitext-var'];
 
+					// XXX: Use prepareContentForEdit. But we need a Content object for that.
 					$new_text = $vars->getVar( $textVar )->toString();
 					$editInfo = $article->prepareTextForEdit( $new_text );
 					$newHTML = $editInfo->output->getText();
@@ -351,10 +369,19 @@ class AFComputedVariable {
 				$article = self::articleFromTitle( $parameters['namespace'], $parameters['title'] );
 				$textVar = $parameters['wikitext-var'];
 
-				$text = $vars->getVar( $textVar )->toString();
-				$editInfo = $this->parseNonEditWikitext( $text, $article );
+				if ( !defined( 'MW_SUPPORTS_CONTENTHANDLER' )
+					|| $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
 
-				$result = $editInfo->output->getText();
+					$text = $vars->getVar( $textVar )->toString();
+					$editInfo = $this->parseNonEditWikitext( $text, $article );
+					$result = $editInfo->output->getText();
+				} else {
+					// TODO: Parser Output from Content object. But we don't have the content object.
+					//      And for non-text content, $wikitext is usually not going to be a valid
+					//      serialization, but rather some dummy text for filtering.
+					$result = '';
+				}
+
 				break;
 			case 'strip-html':
 				$htmlVar = $parameters['html-var'];
