@@ -928,6 +928,7 @@ This is also used in {{msg-mw|Abusefilter-revert-preview-intro}}. When changing 
 	'abusefilter-log-entry-modify' => '* $1 is a link to the filter
 * $2 is a link to the filter change details',
 	'abusefilter-diff-title' => 'Similar to {{msg-mw|Difference}}',
+	'abusefilter-diff-item' => '{{Identical|Item}}',
 	'abusefilter-diff-version' => 'Message is used in two scenarios.
 * $1 is a timestamp, which links to the old version or the new version.
 * $2 is a link to a username.
@@ -1867,6 +1868,7 @@ $messages['arc'] = array(
 	'abusefilter' => 'ܛܟܣ ܡܨܦܝܢܝܬܐ ܕܚܘܒܠܐ',
 	'abuselog' => 'ܡܟܬܒܘܬܐ ܕܚܘܒܠܐ',
 	'abusefilter-blocker' => 'ܡܨܦܝܢܝܬܐ ܕܚܘܒܠܐ',
+	'abusefilter-log' => 'ܣܓܠܐ ܕܡܨܦܝܢܝܬܐ ܕܚܘܒܠܐ',
 	'abusefilter-log-summary' => 'ܗܢܐ ܣܓܠܐ ܬܚܘܝ ܡܟܬܒܘܬܐ ܕܟܠ ܥܒܕ̈ܐ ܕܒܝܩܝܢ ܒܝܕ ܡܨܦܝܢܝܬ̈ܐ.',
 	'abusefilter-log-search' => 'ܒܨܝ ܡܟܬܒܘܬܐ ܕܚܘܒܠܐ',
 	'abusefilter-log-search-user' => 'ܡܦܠܚܢܐ:',
@@ -1883,6 +1885,7 @@ $messages['arc'] = array(
 	'abusefilter-log-noactions' => 'ܠܐ ܡܕܡ',
 	'abusefilter-log-linkoncontribs' => 'ܡܟܬܒܘܬܐ ܕܚܘܒܠܐ',
 	'abusefilter-log-hide-reason' => 'ܥܠܬܐ:',
+	'abusefilter-management' => 'ܕܘܒܪܐ ܕܡܨܦܝܢܝܬܐ ܕܚܘܒܠܐ',
 	'abusefilter-list' => 'ܟܠ ܡܨܦܝܢܝܬ̈ܐ',
 	'abusefilter-list-id' => 'ܗܝܝܘܬܐ ܕܡܨܦܝܢܝܬܐ',
 	'abusefilter-list-status' => 'ܐܝܟܢܝܘܬܐ',
@@ -1971,7 +1974,7 @@ $messages['arc'] = array(
 	'abusefilter-topnav-log' => 'ܡܟܬܒܘܬܐ ܕܚܘܒܠܐ',
 	'abusefilter-topnav-tools' => 'ܡܐܢ̈ܐ ܕܚܕܬܘܬܐ',
 	'abusefilter-topnav-import' => 'ܡܥܠܢܘܬܐ ܕܡܨܦܝܢܝܬܐ',
-	'abusefilter-log-name' => 'ܡܟܬܒܘܬܐ ܡܨܦܝܢܝܬܐ ܕܚܘܒܠܐ',
+	'abusefilter-log-name' => 'ܣܓܠܐ ܕܡܨܦܝܢܝܬܐ ܕܚܘܒܠܐ',
 	'abusefilter-log-noresults' => 'ܠܝܬ ܦܠܛ̈ܐ',
 	'abusefilter-diff-title' => 'ܦܘܪ̈ܫܐ ܒܝܢܬ ܨܚܚ̈ܐ',
 	'abusefilter-diff-item' => 'ܐܣܛܘܟܣܐ',
@@ -10998,6 +11001,7 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Alireza
  * @author Dalba
  * @author Ebraminio
  * @author Erdemaslancan
@@ -11282,6 +11286,7 @@ $messages['fa'] = array(
 	'abusefilter-edit-builder-vars-article-ns' => 'فضای نام صفحه',
 	'abusefilter-edit-builder-vars-article-text' => 'عنوان صفحه (بدون فضای نام)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'عنوان کامل صفحه',
+	'abusefilter-edit-builder-vars-article-views' => 'بازدیدهای صفحه',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'شناسهٔ صفحهٔ مبدأ انتقال',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'فضای نام صفحهٔ مبدأ انتقال',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'عنوان صفحهٔ مبدأ انتقال',
@@ -11425,6 +11430,8 @@ $messages['fa'] = array(
 	'abusefilter-diff-pattern' => 'شروط پالایه',
 	'abusefilter-diff-invalid' => 'ناتوان از واکشی نسخهٔ درخواست شده',
 	'abusefilter-diff-backhistory' => 'بازگشت به تاریخچهٔ پالایه',
+	'abusefilter-diff-prev' => 'تغییر قدیمی‌تر',
+	'abusefilter-diff-next' => 'تغییر جدیدتر',
 	'abusefilter-import-intro' => 'شما می‌توانید از این رابط برای واردکردن پالایه‌ها از دیگر ویکی‌ها استفاده کنید.
 در ویکی مبدأ روی «{{int:abusefilter-edit-export}}» زیر «{{int:abusefilter-edit-tools}}» در رابط ویرایشی کلیک کنید.
 از جعبهٔ متنی که نشان داده می‌شود کپی کرده و در این جعبهٔ متن بچسبانید، سپس روی «{{int:abusefilter-import-submit}}» کلیک کنید.',
@@ -19715,7 +19722,7 @@ $messages['kn'] = array(
  * @author 아라
  */
 $messages['ko'] = array(
-	'abusefilter-desc' => '사용자 편집을 규칙에 따라 자동으로 검사하는 기능',
+	'abusefilter-desc' => '사용자 편집을 규칙에 따라 자동으로 검사합니다',
 	'abusefilter' => '부정 행위 방지 필터 관리',
 	'abuselog' => '부정 행위 기록',
 	'abusefilter-intro' => '부정 행위 방지 필터 관리 인터페이스를 사용하는 여러분을 환영합니다.
@@ -23426,7 +23433,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-denied' => 'താങ്കൾക്ക് ഈ അരിപ്പയുടെ വിവരങ്ങൾ അറിയാൻ സാദ്ധ്യമല്ല, അത് പൊതുദൃഷ്ടിയിൽ നിന്നും മറയ്ക്കപ്പെട്ടതാണ്.',
 	'abusefilter-edit-main' => 'അരിപ്പയ്ക്കായുള്ള ചരങ്ങൾ',
 	'abusefilter-edit-done-subtitle' => 'അരിപ്പ തിരുത്തി',
-	'abusefilter-edit-done' => 'താങ്കൾ $1 അരിപ്പയിൽ വരുത്തിയ മാറ്റങ്ങൾ വിജയകരമായി സേവ് ചെയ്തിരിക്കുന്നു.',
+	'abusefilter-edit-done' => 'അരിപ്പ $1-ൽ താങ്കൾ വരുത്തിയ മാറ്റങ്ങൾ വിജയകരമായി സേവ് ചെയ്തിരിക്കുന്നു.',
 	'abusefilter-edit-badsyntax' => 'താങ്കൾ നൽകിയ അരിപ്പയിൽ എഴുതിനൽകിയതിൽ പിഴവുണ്ട്.
 പാഴ്സറിന്റെ ഔട്ട്പുട്ട് ഇപ്രകാരമായിരുന്നു: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'താങ്കൾക്ക് ഈ അരിപ്പയിൽ മാറ്റം വരുത്താൻ കഴിയില്ല, കാരണം ഇതിൽ ഒന്നോ അതിലധികമോ പരിമിതപ്പെടുത്തിയ പ്രവൃത്തികളുണ്ട്.
@@ -30886,12 +30893,11 @@ $messages['ru'] = array(
 	'abusefilter-warning' => "'''Внимание'''. Данное действие было автоматически определено как нежелательное.
 Неконструктивные правки будут быстро отменены,
 грубые или неоднократные неконструктивные правки приведут к блокировке вашей учётной записи или IP-адреса.
-Если вы уверены, что это конструктивная правка, вы можете нажать кнопку отправки или сохранения ещё раз.
+Если вы уверены, что это конструктивное действие, вы можете нажать кнопку отправки или сохранения ещё раз.
 Краткое описание правила, с которым было сопоставлено ваше действие: $1", # Fuzzy
-	'abusefilter-disallowed' => 'Данное действие было автоматически определено как вредоносное,
-и потому запрещено.
+	'abusefilter-disallowed' => 'Данное действие было автоматически определено как вредоносное, и потому запрещено.
 Если вы уверены, что это конструктивная правка, пожалуйста, обратитесь к администратору и расскажите, что вы собирались сделать.
-Краткое описание злоупотребления, с которым определено соответствие вашего действия: $1', # Fuzzy
+Краткое описание злоупотребления, с которым определено соответствие вашего действия: $1',
 	'abusefilter-blocked-display' => 'Данное действие было автоматически определено как вредоносное,
 вам было запрещено его выполнение.
 Кроме того, в целях защиты проекта {{SITENAME}}, ваша учётная запись и связанные с ней IP-адреса были заблокированы.
@@ -31013,6 +31019,7 @@ $messages['ru'] = array(
 	'abusefilter-reautoconfirm-notallowed' => 'Вам не разрешено восстанавливать статус автоподтверждения.',
 	'abusefilter-reautoconfirm-done' => 'Восстановлен статус автоподтверждения учётной записи',
 	'abusefilter-status' => 'Из $1 {{PLURAL:$1|последнего действия|последних действий|последних действий}}, $2 ($3%) {{PLURAL:$2|попало|попали|попали}} под ограничивающее условие $4, а $5 ($6%) {{PLURAL:$5|соответствует|соответствуют|соответствуют}} одному из включённых в настоящее время фильтров.',
+	'abusefilter-edit' => 'Править фильтр злоупотреблений',
 	'abusefilter-edit-subtitle' => 'Изменение фильтра $1',
 	'abusefilter-edit-subtitle-new' => 'Создание фильтра',
 	'abusefilter-edit-oldwarning' => '<strong>Вы правите старую версию фильтра. Статистика приводится для последней версии фильтра. Если вы сохраните вашу правку, то вы перезапишите сделанные ранее изменения.</strong> &bull; [[Special:AbuseFilter/history/$2|Вернуться к странице истории фильтра]]',
@@ -31142,6 +31149,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-builder-vars-article-ns' => 'Пространство имён страницы',
 	'abusefilter-edit-builder-vars-article-text' => 'Название страницы (без пространства имён)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Полное название страницы',
+	'abusefilter-edit-builder-vars-article-views' => 'Просмотров страниц',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'ID переименовываемой страницы',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Пространство имён переименовываемой страницы',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Название переименовываемой страницы',
@@ -31284,6 +31292,8 @@ $messages['ru'] = array(
 	'abusefilter-diff-pattern' => 'Условия фильтрации',
 	'abusefilter-diff-invalid' => 'Не удаётся получить запрошенные версии',
 	'abusefilter-diff-backhistory' => 'Вернуться к истории фильтра',
+	'abusefilter-diff-prev' => 'Старые изменения',
+	'abusefilter-diff-next' => 'Новые изменения',
 	'abusefilter-import-intro' => 'Вы можете использовать этот интерфейс для импорта фильтров из других вики.
 В исходной вики, нажмите «{{int:abusefilter-edit-export}}» в разделе «{{int:abusefilter-edit-tools}}» интерфейса редактирования.
 Скопируйте содержание текстового поля, вставьте его на эту страницу и нажмите «{{int:abusefilter-import-submit}}».',
