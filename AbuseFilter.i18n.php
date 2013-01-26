@@ -23246,13 +23246,13 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'abusefilter-desc' => 'തിരുത്തലുകളിൽ സ്വയം പ്രതിരോധപ്രവർത്തനങ്ങൾ നടപ്പിലാക്കുന്നു',
 	'abusefilter' => 'ദുരുപയോഗ അരിപ്പയുടെ ക്രമീകരണങ്ങൾ',
-	'abuselog' => 'ദുരുപയോഗ രേഖ',
-	'abusefilter-intro' => 'ദുരുപയോഗ അരിപ്പയുടെ കൈകാര്യനിർവഹണ മണ്ഡലത്തിലേയ്ക്കു സ്വാഗതം.
-എല്ലാ പ്രവർത്തനങ്ങളിലും അനുഭവപ്പെടാവുന്ന പ്രവൃത്തികൾ സ്വയം ചെയ്യാനുള്ള സോഫ്‌‌റ്റ്‌‌വെയർ സം‌‌വിധാനമാണ് ദുരുപയോഗ അരിപ്പ.
-ഈ ദൃശ്യമണ്ഡലത്തിൽ നിർവചിക്കപ്പെട്ടിരിക്കുന്ന അരിപ്പകളുടെ പട്ടികൾ പ്രദർശിപ്പിക്കുന്നു, അവയിൽ മാറ്റം വരുത്താനും സാധിക്കുന്നതാണ്.',
+	'abuselog' => 'ദുരുപയോഗരേഖ',
+	'abusefilter-intro' => 'ദുരുപയോഗ അരിപ്പയുടെ കൈകാര്യത്തിനുള്ള സമ്പർക്കമുഖത്തിലേയ്ക്ക് സ്വാഗതം.
+എല്ലാവിധത്തിലുള്ള പ്രവർത്തനങ്ങളിലേയും ദോഷകരമായ നടപടികളെ സ്വയംപ്രതിരോധിക്കുന്ന സോഫ്റ്റ്‌വേർ സൗകര്യമാണ് ദുരുപയോഗ അരിപ്പ.
+ഈ സമ്പർക്കമുഖത്തിൽ നിർവചിക്കപ്പെട്ടിരിക്കുന്ന അരിപ്പകളുടെ പട്ടികൾ കാണാനും മാറ്റം വരുത്താനും കഴിയുന്നതാണ്.',
 	'abusefilter-mustbeeditor' => 'സുരക്ഷാ കാരണങ്ങളാൽ, ദുരുപയോഗ അരിപ്പ തിരുത്താൻ അവകാശമുള്ള ഉപയോക്താക്കൾക്ക് മാത്രമേ ഈ സമ്പർക്കമുഖം ഉപയോഗിക്കാൻ കഴിയൂ.',
 	'abusefilter-warning' => "'''മുന്നറിയിപ്പ്''': ഈ പ്രവൃത്തി ദോഷകരമെന്ന് സ്വയം തിരിച്ചറിഞ്ഞിട്ടുള്ളതാണ്.
-സൃഷ്ടിപരമല്ലാത്ത തിരുത്തലുകൾ അതിവേഗം മുൻപ്രാപനം ചെയ്യുന്നതായിരിക്കും, ദുരുദ്ദേശത്തോടെയുള്ള അല്ലെങ്കിൽ ആവർത്തിച്ചുണ്ടാകുന്ന സൃഷ്ടിപരമല്ലാത്ത തിരുത്തലുകൾ താങ്കളുടെ അംഗത്വത്തെയോ ഐ.പി. വിലാസത്തേയോ വിലക്കുന്നതിൽ എത്തിയേക്കാം.
+സൃഷ്ടിപരമല്ലാത്ത തിരുത്തലുകൾ അതിവേഗം മുൻപ്രാപനം ചെയ്യുന്നതായിരിക്കും, ദുരുദ്ദേശത്തോടെയുള്ള അല്ലെങ്കിൽ ആവർത്തിച്ചുണ്ടാകുന്ന സൃഷ്ടിപരമല്ലാത്ത തിരുത്തലുകൾ താങ്കളുടെ അംഗത്വത്തെയോ ഐ.പി. വിലാസത്തേയോ തടയുന്നതിൽ എത്തിയേക്കാം.
 താങ്കൾ താങ്കളുടെ തിരുത്തൽ സൃഷ്ടിപരമെന്നു വിശ്വസിക്കുന്നുണ്ടെങ്കിൽ സ്ഥിരീകരിക്കാനായി ദയവായി വീണ്ടും സമർപ്പിക്കുക.
 താങ്കളുടെ പ്രവൃത്തിയിൽ ബാധകമാകുന്ന ദുരുപയോഗ നിയമത്തിന്റെ ലഘുവിവരണം: $1",
 	'abusefilter-disallowed' => 'ഈ പ്രവൃത്തി ദോഷകരമെന്നു സ്വയമേ തിരിച്ചറിഞ്ഞ്, അനുവദിക്കാത്തത് ആകുന്നു.
@@ -23266,9 +23266,9 @@ $messages['ml'] = array(
 അക്കാരണം കൊണ്ട്, അത് അനുവദിക്കാനാവാത്തതും, താങ്കളുടെ അംഗത്വം സംശയത്തിന്റെ നിഴലിലാവുകയും, എല്ലാ അവകാശങ്ങളും നീക്കുകയും ചെയ്യുന്നതാണ്.
 ഇതെന്തെങ്കിലും പിഴവുമൂലമുണ്ടായതാണെന്നു താങ്കൾ കരുതുന്നുവെങ്കിൽ ഈ പ്രവൃത്തിയ്ക്കുള്ള വിശദീകരണവുമായി ദയവായി ഒരു ബ്യൂറോക്രാറ്റിനെ സമീപിക്കുക, താങ്കളുടെ അവകാശങ്ങൾ പുനഃസ്ഥാപിക്കപ്പെട്ടേയ്ക്കാം.
 താങ്കളുടെ പ്രവൃത്തിയുമായി കണ്ടെത്തിയ ദുരുപയോഗ നിയമത്തിന്റെ ലഘുവിവരണം കൊടുക്കുന്നു: $1',
-	'abusefilter-autopromote-blocked' => 'ഈ പ്രവൃത്തി സ്വയം ദോഷകരമെന്നു കണ്ടെത്തിയിട്ടുണ്ട്, അതനുവദിക്കാൻ സാധിക്കുകയില്ല.
+	'abusefilter-autopromote-blocked' => 'ഈ പ്രവൃത്തി ദോഷകരമെന്നു നിർവ്വചിച്ചിട്ടുണ്ട്, അതിനാൽ അതനുവദിക്കാൻ സാധിക്കുകയില്ല.
 കൂടുതലായി സുരക്ഷാ മാനദണ്ഡമെന്ന നിലയിൽ, മതിപ്പുനേടിയ അംഗത്വങ്ങൾക്ക് സമ്പ്രദായികമായി ലഭിച്ചു പോരുന്ന ചില അവകാശങ്ങൾ താങ്കളുടെ അംഗത്വത്തിൽ നിന്നും താത്കാലികമായി നീക്കം ചെയ്തിരിക്കുന്നു.
-താങ്കളുടെ പ്രവൃത്തിയുമായി ചേർന്നു പ്രവർത്തിച്ച ദുരുപയോഗനിയമത്തിന്റെ ലഘു വിവരണം കാണുക: $1',
+താങ്കളുടെ പ്രവൃത്തിയുമായി ചേർന്നു പ്രവർത്തിച്ച ദുരുപയോഗനിയമത്തിന്റെ ലഘു വിവരണം: $1',
 	'abusefilter-blocker' => 'ദുരുപയോഗ അരിപ്പ',
 	'abusefilter-blockreason' => 'ദുരുപയോഗ അരിപ്പ ഉപയോഗിച്ച് സ്വതേ തടയപ്പെട്ടിരിക്കുന്നു.
 ഒത്തുപോവുന്ന നിയമത്തിന്റെ വിവരണം: $1',
@@ -23277,27 +23277,27 @@ $messages['ml'] = array(
 	'abusefilter-accountreserved' => 'ഈ അംഗത്വനാമം ദുരുപയോഗ അരിപ്പയുടെ ഉപയോഗത്തിനായി മാറ്റിവെച്ചിരിക്കുകയാണ്.',
 	'right-abusefilter-modify' => 'ദുരുപയോഗ അരിപ്പകൾ പുതുക്കുക',
 	'right-abusefilter-view' => 'ദുരുപയോഗ അരിപ്പകൾ കാണുക',
-	'right-abusefilter-log' => 'ദുരുപയോഗ രേഖ കാണുക',
-	'right-abusefilter-log-detail' => 'ദുരുപയോഗ രേഖയിലെ വിവരങ്ങൾ വിശദമായി കാണുക',
-	'right-abusefilter-private' => 'ദുരുപയോഗ രേഖയിലെ സ്വകാര്യ വിവരങ്ങൾ കാണുക',
-	'right-abusefilter-modify-restricted' => 'പരിമിതപ്പെടുത്തിയിരിക്കുന്ന പ്രവൃത്തികൾ ഉപയോഗിച്ച് ദുരുപയോഗ അരിപ്പ പുതുക്കുക',
+	'right-abusefilter-log' => 'ദുരുപയോഗരേഖ കാണുക',
+	'right-abusefilter-log-detail' => 'ദുരുപയോഗരേഖയിലെ വിവരങ്ങൾ വിശദമായി കാണുക',
+	'right-abusefilter-private' => 'ദുരുപയോഗരേഖയിലെ സ്വകാര്യ വിവരങ്ങൾ കാണുക',
+	'right-abusefilter-modify-restricted' => 'പരിമിതപ്പെടുത്തിയിരിക്കുന്ന പ്രവൃത്തികൾക്കായി ദുരുപയോഗ അരിപ്പ പുതുക്കുക',
 	'right-abusefilter-revert' => 'തന്നിരിക്കുന്ന ദുരുപയോഗ അരിപ്പ ചെയ്ത എല്ലാ മാറ്റങ്ങളും തിരസ്കരിക്കുക',
 	'right-abusefilter-view-private' => 'സ്വകാര്യമെന്ന് അടയാളപ്പെടുത്തിയ ദുരുപയോഗ അരിപ്പകൾ കാണുക',
 	'right-abusefilter-log-private' => 'ദുരുപയോഗ അരിപ്പകൾ സ്വകാര്യമെന്ന് അടയാളപ്പെടുത്തിയ രേഖകൾ കാണുക',
 	'right-abusefilter-hide-log' => 'ദുരുപയോഗരേഖയിലെ വിവരങ്ങൾ മറയ്ക്കുക',
-	'right-abusefilter-hidden-log' => 'മറയ്ക്കപ്പെട്ടിരിക്കുന്ന ദുരുപയോഗ രേഖാ വിവരങ്ങൾ കാണുക',
+	'right-abusefilter-hidden-log' => 'ദുരുപയോഗരേഖയിലെ മറയ്ക്കപ്പെട്ട വിവരങ്ങൾ കാണുക',
 	'right-abusefilter-modify-global' => 'ആഗോള ദുരുപയോഗ അരിപ്പകൾ നിർമ്മിക്കുക, പുതുക്കുക',
-	'action-abusefilter-modify' => 'ദുരുപയോഗ അരിപ്പകൾ മെച്ചപ്പെടുത്തുക',
+	'action-abusefilter-modify' => 'ദുരുപയോഗ അരിപ്പകൾ പുതുക്കുക',
 	'action-abusefilter-view' => 'ദുരുപയോഗ അരിപ്പകൾ കാണുക',
-	'action-abusefilter-log' => 'ദുരുപയോഗ രേഖ കാണുക',
-	'action-abusefilter-log-detail' => 'ദുരുപയോഗ രേഖയിലെ ഉൾപ്പെടുത്തലുകളുടെ വിശദവിവരങ്ങൾ കാണുക',
-	'action-abusefilter-private' => 'ദുരുപയോഗ രേഖയിലെ സ്വകാര്യ വിവരങ്ങൾ കാണുക',
-	'action-abusefilter-modify-restricted' => 'പരിമിതപ്പെടുത്തിയ പ്രവർത്തനങ്ങൾ കൊണ്ട് ദുരുപയോഗ അരിപ്പ മെച്ചപ്പെടുത്തുക',
+	'action-abusefilter-log' => 'ദുരുപയോഗരേഖ കാണുക',
+	'action-abusefilter-log-detail' => 'ദുരുപയോഗരേഖയിലെ ഉൾപ്പെടുത്തലുകളുടെ വിശദവിവരങ്ങൾ കാണുക',
+	'action-abusefilter-private' => 'ദുരുപയോഗരേഖയിലെ സ്വകാര്യ വിവരങ്ങൾ കാണുക',
+	'action-abusefilter-modify-restricted' => 'പരിമിതപ്പെടുത്തിയിരിക്കുന്ന പ്രവൃത്തികൾക്കായി ദുരുപയോഗ അരിപ്പ പുതുക്കുക',
 	'action-abusefilter-revert' => 'തന്നിരിക്കുന്ന ദുരുപയോഗ അരിപ്പ ചെയ്ത എല്ലാ മാറ്റങ്ങളും തിരസ്കരിക്കുക',
 	'action-abusefilter-view-private' => 'സ്വകാര്യമെന്ന അടയാളപ്പെടുത്തിയ ദുരുപയോഗ അരിപ്പകൾ കാണുക',
-	'abusefilter-log' => 'ദുരുപയോഗ അരിപ്പയുടെ പ്രവർത്തന രേഖ',
+	'abusefilter-log' => 'ദുരുപയോഗ അരിപ്പയുടെ പ്രവർത്തനരേഖ',
 	'abusefilter-log-summary' => 'അരിപ്പകൾ കണ്ടെത്തിയ എല്ലാ പ്രവൃത്തിയുടേയും പട്ടിക ഈ രേഖയിൽ കാണാം.',
-	'abusefilter-log-search' => 'ദുരുപയോഗ രേഖയിൽ തിരയുക',
+	'abusefilter-log-search' => 'ദുരുപയോഗരേഖയിൽ തിരയുക',
 	'abusefilter-log-search-user' => 'ഉപയോക്താവ്:',
 	'abusefilter-log-search-filter' => 'അരിപ്പയുടെ ഐ.ഡി.:',
 	'abusefilter-log-search-title' => 'തലക്കെട്ട്:',
@@ -23309,8 +23309,8 @@ $messages['ml'] = array(
 	'abusefilter-log-detailedentry-meta' => '$1: $2 $3 അരിപ്പയെ ഉണർത്തിയിരിക്കുന്നു, "$4" എന്ന പ്രവൃത്തി $5 താളിൽ ചെയ്യുന്നു.
 എടുത്ത നടപടി: $6;
 അരിപ്പയുടെ വിവരണം: $7 ($8)',
-	'abusefilter-log-detailedentry-global' => '$1 ആഗോള അരിപ്പ',
-	'abusefilter-log-detailedentry-local' => '$1 അരിപ്പ',
+	'abusefilter-log-detailedentry-global' => 'ആഗോള അരിപ്പ $1',
+	'abusefilter-log-detailedentry-local' => 'അരിപ്പ $1',
 	'abusefilter-log-detailslink' => 'വിവരണങ്ങൾ',
 	'abusefilter-log-diff' => 'വ്യത്യാസം',
 	'abusefilter-log-hidelink' => 'ദൃശ്യത ക്രമീകരിക്കുക',
@@ -23322,8 +23322,8 @@ $messages['ml'] = array(
 	'abusefilter-log-details-ip' => 'ഉത്ഭവിക്കുന്ന ഐ.പി. വിലാസം',
 	'abusefilter-log-noactions' => 'ഒന്നുമില്ല',
 	'abusefilter-log-details-diff' => 'തിരുത്തലിൽ വരുത്തിയ മാറ്റങ്ങൾ',
-	'abusefilter-log-linkoncontribs' => 'ദുരുപയോഗ രേഖ',
-	'abusefilter-log-linkoncontribs-text' => 'ഈ ഉപയോക്താവിന്റെ ദുരുപയോഗ രേഖ',
+	'abusefilter-log-linkoncontribs' => 'ദുരുപയോഗരേഖ',
+	'abusefilter-log-linkoncontribs-text' => 'ഈ ഉപയോക്താവിന്റെ ദുരുപയോഗരേഖ',
 	'abusefilter-log-hidden' => '(വിവരം മറയ്ക്കപ്പെട്ടിരിക്കുന്നു)',
 	'abusefilter-log-hidden-implicit' => '(നാൾപ്പതിപ്പ് മായ്ക്കപ്പെട്ടിരിക്കുന്നതിനാൽ മറച്ചിരിക്കുന്നു)',
 	'abusefilter-log-cannot-see-details' => 'ഈ ഉൾപ്പെടുത്തലിന്റെ വിശദാംശങ്ങൾ കാണാനുള്ള അനുമതി താങ്കൾക്കില്ല.',
@@ -23332,7 +23332,7 @@ $messages['ml'] = array(
 	'abusefilter-log-hide-id' => 'രേഖയിൽ ഉൾപ്പെടുത്തിയതിന്റെ ഐ.ഡി.:',
 	'abusefilter-log-hide-hidden' => 'പൊതുജനദൃഷ്ടിയിൽ നിന്ന് ഈ വിവരം മറയ്ക്കുക',
 	'abusefilter-log-hide-reason' => 'കാരണം:',
-	'abusefilter-log-hide-forbidden' => 'ദുരുപയോഗ രേഖയിലെ വിവരങ്ങൾ മറയ്ക്കാനുള്ള അനുവാദം താങ്കൾക്കില്ല.',
+	'abusefilter-log-hide-forbidden' => 'ദുരുപയോഗരേഖയിലെ വിവരങ്ങൾ മറയ്ക്കാനുള്ള അനുവാദം താങ്കൾക്കില്ല.',
 	'abusefilter-logentry-suppress' => 'മറയ്ക്കുക [[$1]]',
 	'abusefilter-logentry-unsuppress' => 'മറ നീക്കുക [[$1]]',
 	'logentry-abusefilter-hit' => '$1 നടത്തിയ പ്രവൃത്തി $4-നെ ഉണർത്തി, $3-യിൽ "$5" എന്ന നടപടി എടുക്കുന്നു. എടുത്ത നടപടി: $6 ($7)',
@@ -23343,7 +23343,7 @@ $messages['ml'] = array(
 	'abusefilter-list-public' => 'പൊതു വിവരണം',
 	'abusefilter-list-consequences' => 'പരിണതഫലങ്ങൾ',
 	'abusefilter-list-visibility' => 'ദൃശ്യത',
-	'abusefilter-list-hitcount' => 'സന്ദർശന എണ്ണം',
+	'abusefilter-list-hitcount' => 'കുടുങ്ങിയ എണ്ണം',
 	'abusefilter-list-edit' => 'തിരുത്തുക',
 	'abusefilter-list-details' => 'വിശദാംശങ്ങൾ',
 	'abusefilter-list-limit' => 'ഓരോ താളിലുമുള്ള എണ്ണം:',
@@ -23380,7 +23380,7 @@ $messages['ml'] = array(
 	'abusefilter-status' => 'ഒടുവിലത്തെ {{PLURAL:$1|പ്രവൃത്തിയിൽ|$1 പ്രവൃത്തികളിൽ}} $2 ($3%) എണ്ണം ഉപാധികളുടെ പരിധിയായ  $4 എത്തിയിരിക്കുന്നു, $5 ($6%) എണ്ണം ഇപ്പോൾ സജ്ജമായിട്ടുള്ള അരിപ്പയിൽ ബാധകമാണ്.',
 	'abusefilter-edit' => 'ദുരുപയോഗ അരിപ്പ തിരുത്തുന്നു',
 	'abusefilter-edit-subtitle' => 'അരിപ്പ $1 തിരുത്തുന്നു',
-	'abusefilter-edit-subtitle-new' => 'അരിപ്പ സൃഷ്ടിക്കുക',
+	'abusefilter-edit-subtitle-new' => 'അരിപ്പ സൃഷ്ടിക്കുന്നു',
 	'abusefilter-edit-oldwarning' => '<strong>താങ്കൾ ഈ അരിപ്പയുടെ പഴയൊരു പതിപ്പാണ് തിരുത്തുന്നത്.
 ഉദ്ധരിച്ചിരിക്കുന്ന സ്ഥിതിവിവരമാകട്ടെ അരിപ്പയുടെ ഏറ്റവും പുതിയതും.
 താങ്കളുടെ മാറ്റങ്ങൾ സേവ് ചെയ്യുകയാണെങ്കിൽ, താങ്കൾ തിരുത്തിയ നാൾപ്പതിപ്പ് മുതലുള്ള എല്ലാ മാറ്റങ്ങളും നഷ്ടപ്പെടുന്നതാണ്.</strong> &bull;
@@ -23399,7 +23399,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-flags' => 'പതാകകൾ:',
 	'abusefilter-edit-enabled' => 'ഈ അരിപ്പ സജ്ജമാക്കുക',
 	'abusefilter-edit-deleted' => 'മായ്ച്ചതായി അടയാളപ്പെടുത്തുക',
-	'abusefilter-edit-hidden' => 'പൊതുജന ദൃഷ്ടിയിൽ നിന്നും അരിപ്പയുടെ വിവരങ്ങൾ മറയ്ക്കുക',
+	'abusefilter-edit-hidden' => 'പൊതുജനദൃഷ്ടിയിൽ നിന്നും അരിപ്പയുടെ വിവരങ്ങൾ മറയ്ക്കുക',
 	'abusefilter-edit-global' => 'ആഗോള അരിപ്പ',
 	'abusefilter-edit-rules' => 'ഉപാധികൾ:',
 	'abusefilter-edit-notes' => "കുറിപ്പുകൾ:
@@ -23410,7 +23410,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-consequences' => 'ചേർച്ച കണ്ടാൽ കൈക്കൊള്ളേണ്ട നടപടികൾ',
 	'abusefilter-edit-action-warn' => 'ഉപയോക്താവിന് മുന്നറിയിപ്പ് കൊടുത്ത ശേഷം ഈ പ്രവൃത്തികൾ തുടങ്ങുക',
 	'abusefilter-edit-action-disallow' => 'സംശയകരമായ പ്രവൃത്തി ചെയ്യുന്നതിൽ നിന്നും ഉപയോക്താവിനെ തടയുക',
-	'abusefilter-edit-action-flag' => 'ദുരുപയോഗ രേഖയിൽ തിരുത്തലിൽ പതാക ചേർക്കുക',
+	'abusefilter-edit-action-flag' => 'ദുരുപയോഗ രേഖയിൽ തിരുത്തലിന് പതാക ചേർക്കുക',
 	'abusefilter-edit-action-blockautopromote' => 'ഉപയോക്താവിന്റെ സ്വയംസ്ഥിരീകൃത സ്ഥിതി പിൻവലിക്കുക',
 	'abusefilter-edit-action-degroup' => 'എല്ലാ പ്രത്യേക പദവികളുള്ള സംഘങ്ങളിൽ നിന്നും ഉപയോക്താവിനെ നീക്കുക',
 	'abusefilter-edit-action-block' => 'ഉപയോക്താവിനെ ഒപ്പം/അല്ലെങ്കിൽ ഐ.പി. വിലാസത്തെ തിരുത്തുന്നതിൽ നിന്നും തടയുക',
@@ -23480,7 +23480,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-builder-misc-stringlit' => 'പദ എഴുത്ത് ("")',
 	'abusefilter-edit-builder-misc-tern' => 'തൃതീയ ചിഹ്നനം (X ? Y : Z)',
 	'abusefilter-edit-builder-misc-cond' => 'വ്യവസ്ഥാധിഷ്ഠിതം (X എങ്കിൽ Y അല്ലെങ്കിൽ Z)',
-	'abusefilter-edit-builder-group-funcs' => 'കർത്തവ്യങ്ങൾ',
+	'abusefilter-edit-builder-group-funcs' => 'ഫങ്ഷനുകൾ',
 	'abusefilter-edit-builder-funcs-length' => 'പദത്തിന്റെ നീളം (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'ചെറിയക്ഷരങ്ങളിലേയ്ക്ക് (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'ആശയക്കുഴപ്പമുണ്ടാക്കുന്ന അക്ഷരങ്ങൾ നോർമലൈസ് ചെയ്യുക (ccnorm)',
@@ -23561,7 +23561,7 @@ $messages['ml'] = array(
 	'abusefilter-history-filterid' => 'അരിപ്പ',
 	'abusefilter-history-select-legend' => 'പരിഷ്കരിച്ച തിരച്ചിൽ',
 	'abusefilter-history-select-user' => 'ഉപയോക്താവ്:',
-	'abusefilter-history-select-submit' => 'പരിഷ്കൃതം',
+	'abusefilter-history-select-submit' => 'ശുദ്ധീകരിച്ചെടുക്കുക',
 	'abusefilter-history-diff' => 'മാറ്റങ്ങൾ',
 	'abusefilter-history-error-hidden' => 'താങ്കളാവശ്യപ്പെട്ട അരിപ്പ മറയ്ക്കപ്പെട്ടിരിക്കുന്നതിനാൽ, അതിന്റെ നാൾ വഴി താങ്കൾക്ക് ദൃശ്യമല്ല.',
 	'abusefilter-exception-unexpectedatend' => 'അക്ഷരം $1-ൽ അപ്രതീക്ഷിത "$2".',
@@ -23569,7 +23569,7 @@ $messages['ml'] = array(
 	'abusefilter-exception-unrecognisedkeyword' => '$1 അക്ഷരത്തിൽ തിരിച്ചറിയാൻ കഴിയാത്ത അടയാളവാക്ക് $2.',
 	'abusefilter-exception-unexpectedtoken' => '$1 അക്ഷരത്തിൽ പ്രതീക്ഷിക്കാത്ത ചീട്ട് "$3" ($2 തരത്തിലുള്ളത്).',
 	'abusefilter-exception-unclosedstring' => 'അക്ഷരം $1-ൽ അടയ്ക്കാത്ത പദം ഉണ്ട്.',
-	'abusefilter-exception-invalidoperator' => '$1 അക്ഷരത്തിങ്കൽ അസാധുവായ ചിഹനനം "$2".',
+	'abusefilter-exception-invalidoperator' => '$1 അക്ഷരത്തിങ്കൽ അസാധുവായ ഓപ്പറേറ്റർ "$2".',
 	'abusefilter-exception-unrecognisedtoken' => '$1 അക്ഷരത്തിൽ തിരിച്ചറിയപ്പെടാത്ത ചീട്ട് "$2".',
 	'abusefilter-exception-noparams' => '"$2" എന്ന ഫങ്ഷനിൽ $1 അക്ഷരത്തിങ്കൽ നൽകേണ്ട ചരങ്ങൾ നൽകിയിട്ടില്ല.',
 	'abusefilter-exception-dividebyzero' => 'അക്ഷരം $1-ൽ പൂജ്യം കൊണ്ട് $2-വിനെ ഹരിക്കാനുള്ള ആസാധുവായ ശ്രമം.',
@@ -23645,7 +23645,7 @@ $messages['ml'] = array(
 	'abusefilter-log-name' => 'ദുരുപയോഗ അരിപ്പയുടെ ഉപയോഗ രേഖ',
 	'abusefilter-log-header' => 'അരിപ്പകളിൽ വരുത്തിയ മാറ്റങ്ങളുടെ ചുരുക്കം ഈ രേഖയിൽ കാണാവുന്നതാണ്.
 പൂർണ്ണ വിവരങ്ങൾക്ക്, അരിപ്പകളിലെ സമീപകാലമാറ്റങ്ങളുടെ [[Special:AbuseFilter/history|പട്ടിക]] കാണുക.',
-	'abusefilter-log-entry-modify' => '$1 ($2) മാറ്റം വരുത്തി',
+	'abusefilter-log-entry-modify' => '$1 ($2) അരിപ്പയിൽ മാറ്റം വരുത്തി',
 	'abusefilter-log-noresults' => 'ഫലങ്ങൾ ഒന്നുമില്ല',
 	'abusefilter-diff-title' => 'പതിപ്പുകൾ തമ്മിലുള്ള വ്യത്യാസങ്ങൾ',
 	'abusefilter-diff-item' => 'ഇനം',
