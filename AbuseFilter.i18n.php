@@ -2009,11 +2009,11 @@ $messages['arz'] = array(
 هايتم استرجاع التعديلات المضره بسرعه،
 والتعديل المضر المتكرر أو المستمر هايتسبب فيى منع حسابك أو الكمبيوتر بتاعك .
 إذا كنت فاكر إن  التعديل ده بناء، فممكن  تضغط \"أرسل\" مرة تانيه.
-وصف مختصر لقاعدة الإساءة : \$1",
+وصف مختصر لقاعدة الإساءة : \$1", # Fuzzy
 	'abusefilter-disallowed' => 'هذا الفعل تم التعرف عليه تلقائيا كضار،
 ولذا تم منعه.
 لو كنت تعتقد أن تعديلك بناء، من فضلك اتصل بإدارى، وأخبره بما كنت تحاول أن تفعل.
-وصف مختصر لقاعده الإساءه التى طابقها فعلك هو: $1',
+وصف مختصر لقاعده الإساءه التى طابقها فعلك هو: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'هذا الفعل تم التعرف عليه تلقائيا كضار،
 وأنت تم منعك من تنفيذه.
 بالإضافه إلى ذلك، لحمايه {{SITENAME}}، حسابك وكل عناوين الأيبى الملحقه تم منعها من التحرير.
@@ -5194,11 +5194,11 @@ Diskouez a ra an etrefas-mañ ur roll eus ar siloù termenet, hag aotren a ra de
 Ar c'hemmoù diyaus a vo nullet raktal,
 stanket e vo ho kont pe ho chomlec'h IP ma skrivit bleupajoù lies pe dismegañsus.
 Ma soñjit eo ar c'hemm yaus, galloud a rit kinnig anezhañ en-dro evit kadarnaat.
-Un diskrivadur berr eus ar reolenn drougimplij dinoet gantañ ho ober : $1",
+Un diskrivadur berr eus ar reolenn drougimplij dinoet gantañ ho ober : $1", # Fuzzy
 	'abusefilter-disallowed' => "Anavezet eo an ober-mañ evit bezañ noazus,
 harzet eo bet dre-se.
 Ma soñj deoc'h e oa reizh ho kemm, trugarez da vont e darempred gant ur merour, a lavarit ar pezh ho poa c'hoant d'ober.
-Setu un deskrivadur berr eus ar reolenn diskoachañ an drougimplij eo bet dinoet ganti hoc'h oberiadenn : $1",
+Setu un deskrivadur berr eus ar reolenn diskoachañ an drougimplij eo bet dinoet ganti hoc'h oberiadenn : $1", # Fuzzy
 	'abusefilter-blocked-display' => "An ober-mañ a zo anavezet evit bezañ noazus,
 harzet oc'h bet dija war ar poent-mañ.
 Da eil, evit gwareziñ {{SITENAME}}, ho kont implijer hag ho holl chomlec'hioù IP implijet ganeoc'h a zo bet stanket.
@@ -5613,10 +5613,10 @@ Ovaj interfejs prikazuje spisak napravljenih filtera i omogućuje Vam da ih pril
 Izmjene sa lošim namjerama će biti brzo uklonjene,
 i zlonamjerne i destruktivne izmjene rezultiraju blokiranjem Vašeg korisničkog računa ili Vašeg računara.
 Ako mislite da je ovo konstruktivna izmjena, onda je još jednom sačuvajte da bi bila dodana.
-Opis pravila zloupotrebe koje ste možda izmjenom prekršili je vidljiv ovdje: $1",
+Opis pravila zloupotrebe koje ste možda izmjenom prekršili je vidljiv ovdje: $1", # Fuzzy
 	'abusefilter-disallowed' => 'Ova akcija je automatski identificirana kao štetna, i kao takva onemogućena.
 Ako vjerujete da je Vaša izmjena konstruktivna, molimo Vas da kontaktirate administratora, i da ga obavijestite o onome šta namjeravate uraditi.
-Kratki opis pravila ponašanja koje ogovara Vašoj akciji je: $1',
+Kratki opis pravila ponašanja koje ogovara Vašoj akciji je: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Ova akcija je automatski identificirana kao opasna,
 i kao takva onemogućena da se izvrši.
 Dodatno, da bi se zaštitio {{SITENAME}}, Vaš korisnički račun i sve pripadajuće IP adrese su blokirane za uređivanje.
@@ -6439,11 +6439,11 @@ $messages['ce'] = array(
 Хlоттам боцу нийсдарш хира ду, сиха дlа даьхна,
 морса йа, дуккха хlоттам боцу нийсдарш дича, хьан дlавазвалар ле IP-долу меттиг сацор ду.
 Хьо тешна валахь, хlара нийсдара хlоттам болуш хиларна, юхаъ «Дlайахьийта» тlе таlа йе.
-Аш дечуьнца догlуш хилар бакъонца билгалла даьккхина: $1",
+Аш дечуьнца догlуш хилар бакъонца билгалла даьккхина: $1", # Fuzzy
 	'abusefilter-disallowed' => 'Хlара динарг, шаьшха зуламе санна къастийна,
 цун дера ца магийна.
 Нагахь, хьо тешна валахь, хlара нийсдар хlоттам болуш хиларна, дехар до, адаманкуьйгалхочуьнга дийцар, хьо дан воллург.
-Зуламах лаьцна хаам, аш дечуьнца догlуш хилар билгалла даьккхина: $1',
+Зуламах лаьцна хаам, аш дечуьнца догlуш хилар билгалла даьккхина: $1', # Fuzzy
 	'abusefilter-blocker' => 'Зулум литтар',
 	'abusefilter-log-search-user' => 'Декъашхо:',
 	'abusefilter-log-detailedentry-local' => 'литтар $1',
@@ -7234,7 +7234,7 @@ Mae'r rhyngwyneb hwn yn arddangos rhestr o hidlyddion penodedig, sy'n eu galluog
 	'abusefilter-warning' => "'''Rhybudd''': Mae'r weithred hon wedi'i dyfarnu'n awtomatig fel gweithred niweidiol.
 Bydd golygiadau anadeiladol yn cael eu gwrthdroi'n syth, a bydd cyfrif neu gyfeiriad IP defnyddwyr sy'n parhau i olygu'n anadeiladol yn cael eu blocio.
 Os ydych o'r farn fod y golygiad hwn yn adeiladol, gallwch glicio ar Cyflwyno unwaith eto er mwyn ei gadarnhau.
-Disgrifiad byr o'r rheol camddefnydd y mae'ch gweithred chi yn cyfateb ag ef yw: $1",
+Disgrifiad byr o'r rheol camddefnydd y mae'ch gweithred chi yn cyfateb ag ef yw: $1", # Fuzzy
 	'abusefilter-blocker' => 'Hidlydd camddefnydd',
 	'abusefilter-blockreason' => "Blociwyd yn awtomatig gan yr hidlydd camddefnydd.
 Disgrifiad o'r rheol sy'n cyfateb: $1",
@@ -8185,10 +8185,10 @@ $messages['de-formal'] = array(
 	'abusefilter-warning' => "'''Achtung''': Diese Aktion wurde als potentiell unkonstruktiv erkannt.
 Solche Beiträge werden meist sehr schnell entfernt. In wiederholten und besonders schlimmen Fällen wird Ihr Benutzerkonto bzw. Ihre IP-Adresse gesperrt.
 Wenn Sie denken, dass Ihre Änderung konstruktiv war, können Sie sie jedoch mit einem erneuten Klick auf „{{int:savearticle}}“ bestätigen.
-Kurzbeschreibung der verletzten Regel: $1",
+Kurzbeschreibung der verletzten Regel: $1", # Fuzzy
 	'abusefilter-disallowed' => 'Diese Aktion wurde automatisch als schädlich erkannt und deshalb nicht ausgeführt.
 Wenn Sie denken, dass Ihr Beitrag konstruktiv war, wenden Sie sich bitte an einen Administrator und schilderen ihm, was Sie versucht haben beizutragen.
-Kurzbeschreibung der verletzten Regel: $1',
+Kurzbeschreibung der verletzten Regel: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Diese Aktion wurde automatisch als schädlich erkannt und nicht ausgeführt.
 Ferner wurden Ihr Benutzerkonto und alle Ihnen zugehörigen IP-Adressen gesperrt.
 Wenn Sie denken, dass es sich hierbei um einen Fehler handelt, wenden Sie sich bitte an einen Administrator.
@@ -9078,10 +9078,10 @@ Kouroso diti popokito do lis panahas potumboyo, om pabanar dilo do maan modipait
 Niditan di awu nopongo maan pogulio do tiinu,
 om opinsugutan nu nopo do awu momongo niditan nga karaag do akaun nu toi ko maan antabai porotokol intonit ''IP''nu.
 Otumbayaan ko nopo do nopongo iti niditannu, maai nopo kaagu kotiko Pootodo do papatatap dilo.
-Kointalangan do sinalaguno diti kooturan di kohompit do niditannu nopo nga oboyo do: $1",
+Kointalangan do sinalaguno diti kooturan di kohompit do niditannu nopo nga oboyo do: $1", # Fuzzy
 	'abusefilter-disallowed' => 'Kinaraja diti noporianan nointutunan do kikoligogon, om ilo no do awu pasagaon.
 Niditan di awu nopongo maan pogulio do tiinu,
-Otumbayaan ko nopo do nopongo iti niditannu, maai gia sunudai it mintatamong  do nunu daa umbalan nu momonsoi. Kointalangan do sinalaguno diti kooturan di kohompit do kinarajanu nopo nga oboyo do: $1',
+Otumbayaan ko nopo do nopongo iti niditannu, maai gia sunudai it mintatamong  do nunu daa umbalan nu momonsoi. Kointalangan do sinalaguno diti kooturan di kohompit do kinarajanu nopo nga oboyo do: $1', # Fuzzy
 	'abusefilter-blocked-display' => "Kinaraja diti noporianan nointutunan do kikoligogon, om nantaban ko do popotilombus dilo.
 Mooi do otingolig ilo {{SITENAME}} akaun momomogunonu om oinsanan porotokol intonit toi ''IP''nu nga nantaban do mongidit.
 Nung nokosilap iti, maai posunudo do mintatamong.
@@ -11499,6 +11499,7 @@ Säännön kuvaus: $1',
 	'right-abusefilter-log-private' => 'Tarkastella yksityisten väärinkäyttösuodattimien lokitietoja',
 	'right-abusefilter-hide-log' => 'Piilottaa väärinkäyttölokin merkintöjä',
 	'right-abusefilter-hidden-log' => 'Tarkastella väärinkäyttölokin piilotettuja merkintöjä',
+	'right-abusefilter-modify-global' => 'Luoda tai muokata järjestelmänlaajuisia väärinkäyttösuodattimia',
 	'action-abusefilter-modify' => 'muokata väärinkäyttösuodattimia',
 	'action-abusefilter-view' => 'tarkastella väärinkäyttösuodattimia',
 	'action-abusefilter-log' => 'tarkastella väärinkäyttölokia',
@@ -11591,6 +11592,7 @@ Suodattimen kuvaus: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => "Sinulla ei ole oikeutta palauttaa käyttäjätunnusta ryhmään ''automaattisesti hyväksytyt käyttäjät (autoconfirmed)''",
 	'abusefilter-reautoconfirm-done' => "Käyttäjätunnus on nyt palautettu ryhmään ''automaattisesti hyväksytyt käyttäjät (autoconfirmed)''",
 	'abusefilter-status' => 'Viimeisestä $1 {{PLURAL:$1|toiminnosta|toiminnosta}}, $2 ($3 %) {{PLURAL:$2|saavutti|saavutti}} ehtorajan $4, ja $5 ($6 %) {{PLURAL:$5|täsmäsi|täsmäsi}} yhteen nyt käytössä olevista suodattimista.',
+	'abusefilter-edit' => 'Muokataan väärinkäyttösuodatinta',
 	'abusefilter-edit-subtitle' => 'Muokataan suodatinta $1',
 	'abusefilter-edit-subtitle-new' => 'Luodaan suodatinta',
 	'abusefilter-edit-oldwarning' => '<strong>Muokkaat tämän suodattimen vanhaa versiota.
@@ -11866,6 +11868,8 @@ Lisätietoja saat suodattimen [[Special:AbuseFilter/history|viimeisimpien muutos
 	'abusefilter-diff-pattern' => 'Suodattimen ehdot',
 	'abusefilter-diff-invalid' => 'Pyydettyjä versioita ei voitu hakea',
 	'abusefilter-diff-backhistory' => 'Takaisin suodatinhistoriaan',
+	'abusefilter-diff-prev' => 'Vanhempi muutos',
+	'abusefilter-diff-next' => 'Uudempi muutos',
 	'abusefilter-import-intro' => 'Voit käyttää tätä käyttöliittymää suodattimien tuomiseksi muista wikeistä.
 Napsauta ”{{int:abusefilter-edit-export}}” kohdassa ”{{int:abusefilter-edit-tools}}” lähdewikin muokkausnäkymässä.
 Kopioi ilmestyvän tekstikentän sisältö ja liitä se tähän tekstikenttään, jonka jälkeen napsauta ”{{int:abusefilter-import-submit}}”.',
@@ -13369,11 +13373,11 @@ Die Syte zeigt e Lischte vu definierte Filter. D Filter chenne uf däre Syte au 
 Unkonschtruktivi Byyträg wäre zmeischt zimli schnäll usegnuh. In widerholte un bsundersch schlimme Fäll wird Dyy Benutzerkonto bzw. Dyyni IP-Adräss gsperrt.
 Wänn Du dänksch, ass Dyyni Änderig konschtruktiv gsi isch, chasch si aber bstätige, indäm Du nomol uf  „{{int:savearticle}}“ drucksch.
 
-Churzbschryybig vu dr verletzte Regle: '''$1'''",
+Churzbschryybig vu dr verletzte Regle: '''$1'''", # Fuzzy
 	'abusefilter-disallowed' => 'Die Aktion isch automatisch as schädlig erkannt wore un isch wäge däm nit durgfiert wore.
 Wänn Du dänksch, ass Dyyni Änderig konschtruktiv gsi isch, wänd Di bitte an e Ammann un schryyb em, was Du mit Dyynere Änderig hesch welle.
 
-Churzbschryybig vu dr verletzte Regle: $1',
+Churzbschryybig vu dr verletzte Regle: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Die Aktion isch automatisch as schädli erkannt wore un isch nit uusgfiert wore.
 Dezue isch au no Dyy Benutzerkonto un alli IP-Adrässe wu derzue ghere gsperrt wore.
 Wänn Du dänksch, ass des e Fähler isch, no wänd Di bitte an e Ammann.
@@ -16053,11 +16057,11 @@ Iste interfacie monstra un lista de filtros definite, e permitte modificar los.'
 Tote modificationes non constructive essera rapidemente revertite,
 e le repetition flagrante de modificationes non constructive resultara in le blocada de tu conto o adresse IP.
 Si tu crede que iste modification sia constructive, tu pote cliccar Submitter de novo pro confirmar lo.
-Un breve description del regula anti-abuso que detegeva tu action es: $1",
+Un breve description del regula anti-abuso que detegeva tu action es: $1", # Fuzzy
 	'abusefilter-disallowed' => 'Iste action ha essite automaticamente identificate como damnose,
 e per consequente es prohibite.
 Si tu crede que tu modification esseva constructive, per favor contacta un administrator, e informa le/la de lo que tu tentava facer.
-Un breve description del regula de abuso correspondente a tu action es: $1',
+Un breve description del regula de abuso correspondente a tu action es: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Iste action ha essite automaticamente identificate como nocive,
 e tu ha essite impedite de executar lo.
 In addition, pro proteger {{SITENAME}}, tu conto de usator e tote le adresses IP associate ha essite blocate de facer modificationes.
@@ -16952,10 +16956,10 @@ Daytoy nga interface ket ipakita na dagiti listaan dagiti naipalawag a sagat, ke
 	'abusefilter-warning' => "'''Ballaag''': Daytoy nga aramid ket na-automatiko a nanaganan a makadangran.
 Dagiti saan a nasayaat a panag-urnos ket napardas to a maisubli,
 ken dagiti dakes unay wenno naulit a dakes a panag-urnos ket mabanagan a ti pakabilangam wenno ti IP a pagtaengam ket maserraan.
-Ti nababa a deskripsion iti alagaden ti panag-abuso nga inaramid mo a naipada ket: $1",
+Ti nababa a deskripsion iti alagaden ti panag-abuso nga inaramid mo a naipada ket: $1", # Fuzzy
 	'abusefilter-disallowed' => 'Daytoy nga aramid ket na-automatiko a nainaganan a makadangran, ken iti kasta saan a naipalubos.
 No mamati ka nga ti inurnos mo ket nasayaat, pangngaasi ng ipakaammom iti administrador no ania ti padpadasem nga araramiden.
-Ti nababa a deskripsion iti alagaden ti panag-abuso nga inaramid mo a naipada ket: $1',
+Ti nababa a deskripsion iti alagaden ti panag-abuso nga inaramid mo a naipada ket: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Daytoy nga aramid ket na-automatiko a nainaganan a makadangran,
 ken napawilan ka nga agtungpal iti daytoy.
 Ken dadduma pay, tapno masalakniban ti {{SITENAME}}, ti pakabilangam ken amin dagiti nairaman a pagtaengam nga IP ket naserraan ti panag-urnos.
@@ -17452,10 +17456,10 @@ Sían er sjálfvirkt tæki sem gerir sjálfvirkar brjóstvitsfræði athuganir �
 Skaðlegar breytingar verða snögglega teknar til baka,
 og svívirðilegar eða síendurteknar breytingar leiða til banns á notenda eða vistfangi þínu.
 Ef þú telur að þessi breyting sé uppbyggileg, þá mátt þú ýta á Senda aftur til að staðfesta hana.
-Stutt lýsing um misnotkunar síuna sem breyting þín passaði við er: $1",
+Stutt lýsing um misnotkunar síuna sem breyting þín passaði við er: $1", # Fuzzy
 	'abusefilter-disallowed' => 'Þessi aðgerð hefur sjálfvirkt verið merkt sem skaðleg og hefur því verið hafnað.
 Ef þú telur að þessi breyting hafi verið uppbyggileg, hafðu þá samband við möppudýr um það sem þú reyndir að gera.
-Stutt lýsing um misnotkunar síuna sem breyting þín passaði við er: $1',
+Stutt lýsing um misnotkunar síuna sem breyting þín passaði við er: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Þessi aðgerð hefur sjálfvirkt verið merkt sem skaðleg og því er bannað að framkvæma hana.
 Að auki, til þess að verja {{SITENAME}}, hefur notendanafn þitt og það vistfang sem þú notaðir síðast verið bannað.
 Ef villa leiddi þig hingað, hafðu þá samband við möppudýr.
@@ -18633,10 +18637,10 @@ Antarmuka iki nuduhaké daptar saringan sing wis ditemtokaké, lan nglilakaké k
 Suntingan sing ora migunani bakal dibalèkaké,
 lan suntingan sing namung mbolan-mbalèni sarta ora cetha bakal marakaké akun utawa alamat IP Sampéyan diblokir.
 Yèn Sampéyan pitaya suntingan iki migunani, Sampéyan bisa klik Kirim manèh kanggo mesthèkaké.
-Katrangan ringkes aturan planggaran sing padha karo lakuné Sampéyan: $1.",
+Katrangan ringkes aturan planggaran sing padha karo lakuné Sampéyan: $1.", # Fuzzy
 	'abusefilter-disallowed' => 'Laku iki otomatis dianggep mbebayani, lan makané ditolak.
 Yèn Sampéyan pitaya suntingan Sampéyan migunani, mangga lapor pangurus apa sing wis Sampéyan lakoni.
-Katrangan ringkes aturan planggaran sing padha karo lakuné Sampéyan: $1',
+Katrangan ringkes aturan planggaran sing padha karo lakuné Sampéyan: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Laku iki otomatis dianggep mbebayani,
 lan Sampéyan ditolak déning sistem.
 Minangka tambahan, kanggo njagani {{SITENAME}}, akun panganggo lan kabèh sing ana kaitané karo alamat IP Sampéyan wis diblokir saka nyunting.
@@ -21260,10 +21264,10 @@ Via dit sjerm waere alle ingestelde filters waergegaeve en kinne die aangepas wa
 	'abusefilter-warning' => "'''Waarsjuwing''': Dees hanjeling is automatisch geïdentificeerd as sjadelik.
 Onconstructieve bewerkinge waere snel trökgedreid, en herhaald onconstructief bewerke eindig in n blokkade van diene gebroeker of IP.
 As se dinks det dees bewerking waal constructief is, klik dan opnuuj op \"Pagina opslaon\" om de bewerking te bevestige.
-'n Korte besjrieving van de regel op basis waarvan de bewerking is taegegehouwe vólg noe: \$1",
+'n Korte besjrieving van de regel op basis waarvan de bewerking is taegegehouwe vólg noe: \$1", # Fuzzy
 	'abusefilter-disallowed' => "Deze hanjeling is automatisch geïdentificeerd as sjadelik, en daarom neet toegelaote.
 As 't dinkt dat de bewerking waol constructief was, naem dan contact op met 'n beheerder, en informeer hem waat de probeerde te doon.
-'ne Korte besjrieving van de regel op basis waarvan de bewerking is tegegehouwe vólgt noe: $1",
+'ne Korte besjrieving van de regel op basis waarvan de bewerking is tegegehouwe vólgt noe: $1", # Fuzzy
 	'abusefilter-blocked-display' => 'Dees hanjeling is automatisch geïdentificeerd as sjadelik. Daorom is deze neet oetgeveurd.
 Om {{SITENAME}} te besjerme zeen de gebroeker en alle biebeheurende IP-adresse geblokkeerd.
 As deze maotregel onterech is genaome, naem dan contact op mit ne beheerder.
@@ -21694,7 +21698,7 @@ Jei Jūs manote, kad šis pakeitimas yra konstruktyvus, tai patvirtindami, Jūs 
 Trumpas aprašymas piktnaudžiavimo taisyklės, kurią Jūsų veiksmas atitinka, yra: $1', # Fuzzy
 	'abusefilter-disallowed' => 'Šis veiksmas buvo automatiškai identifikuotas kaip kenksmingas ir todėl jis buvo neleistas įvykdyti.
 Jei Jūs galvojate, kad Jūsų pakeitimas buvo konstruktyvus, prašome susisiekti su administratoriumi ir informuoti jį apie tai ką Jūs bandėte daryti.
-Trumpas aprašymas piktnaudžiavimo taisyklės, kurią Jūsų veiksmas atitinka, yra: $1',
+Trumpas aprašymas piktnaudžiavimo taisyklės, kurią Jūsų veiksmas atitinka, yra: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Šis veiksmas buvo automatiškai identifikuotas kaip kenksmingas ir todėl jis buvo neleistas įvykdyti.
 Papildomai, apsaugant {{SITENAME}}, Jūsų naudotojo sąskaita ir visi atitinkami IP adresai buvo blokuoti pakeitimų atlikimui.
 Jei tai įvyko per klaidą, prašome susisiekti su administratoriumi.
@@ -23303,10 +23307,10 @@ $messages['ml'] = array(
 	'abusefilter-log-search-title' => 'തലക്കെട്ട്:',
 	'abusefilter-log-search-wiki' => 'വിക്കി:',
 	'abusefilter-log-search-submit' => 'തിരയുക',
-	'abusefilter-log-entry' => '$1: $2 ഒരു ദുരുപയോഗ അരിപ്പയെ ഉണർത്തിയിരിക്കുന്നു,  "$3" എന്ന പ്രവൃത്തി $4 എന്നതിൽ ചെയ്യുന്നു.
+	'abusefilter-log-entry' => '$1: $2, $4 എന്നതിൽ ചെയ്ത "$3" എന്ന പ്രവൃത്തി ഒരു ദുരുപയോഗ അരിപ്പയെ ഉണർത്തിയിരിക്കുന്നു.
 എടുത്ത നടപടികൾ: $5;
 അരിപ്പയുടെ വിവരണം: $6',
-	'abusefilter-log-detailedentry-meta' => '$1: $2 $3 അരിപ്പയെ ഉണർത്തിയിരിക്കുന്നു, "$4" എന്ന പ്രവൃത്തി $5 താളിൽ ചെയ്യുന്നു.
+	'abusefilter-log-detailedentry-meta' => '$1: $2, $5 എന്നതിൽ ചെയ്ത "$4" എന്ന പ്രവൃത്തി അരിപ്പ $3-നെ ഉണർത്തിയിരിക്കുന്നു.
 എടുത്ത നടപടി: $6;
 അരിപ്പയുടെ വിവരണം: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'ആഗോള അരിപ്പ $1',
@@ -23354,7 +23358,7 @@ $messages['ml'] = array(
 	'abusefilter-enabled' => 'സജ്ജമാക്കിയിരിക്കുന്നു',
 	'abusefilter-deleted' => 'മായ്ച്ചിരിക്കുന്നു',
 	'abusefilter-disabled' => 'നിർജ്ജീവമാക്കപ്പെട്ടിരിക്കുന്നു',
-	'abusefilter-hitcount' => '{{PLURAL:$1|ഒരു എടുത്തുനോക്കൽ|$1 എടുത്തുനോക്കലുകൾ}}',
+	'abusefilter-hitcount' => '{{PLURAL:$1|ഒരു കുടുങ്ങൽ|$1 കുടുങ്ങൽ}}',
 	'abusefilter-new' => 'പുതിയൊരു അരിപ്പ സൃഷ്ടിക്കുക',
 	'abusefilter-return' => 'അരിപ്പയുടെ കൈകാര്യം താളിലേയ്ക്ക് മടങ്ങുക',
 	'abusefilter-status-global' => 'ആഗോളം',
@@ -23375,6 +23379,7 @@ $messages['ml'] = array(
 	'abusefilter-tools-reautoconfirm' => 'സ്വയം സ്ഥിരീകൃത സ്ഥിതി പുനഃസ്ഥാപിക്കുക',
 	'abusefilter-tools-reautoconfirm-user' => 'ഉപയോക്താവ്:',
 	'abusefilter-tools-reautoconfirm-submit' => 'വീണ്ടും സ്വയം സ്ഥിരീകരിക്കുക',
+	'abusefilter-reautoconfirm-none' => 'ആ {{GENDER:$1|ഉപയോക്താവിന്റെ}} സ്വയംസ്ഥിരീകൃത സ്ഥിതി എടുത്തുകളഞ്ഞിട്ടില്ല.',
 	'abusefilter-reautoconfirm-notallowed' => 'സ്വയം സ്ഥിരീകൃത സ്ഥിതി പുനഃസ്ഥാപിക്കാൻ താങ്കൾക്ക് അനുമതിയില്ല.',
 	'abusefilter-reautoconfirm-done' => 'അംഗത്വത്തിന്റെ സ്വയം സ്ഥിരീകൃത സ്ഥിതി പുനഃസ്ഥാപിച്ചിരിക്കുന്നു',
 	'abusefilter-status' => 'ഒടുവിലത്തെ {{PLURAL:$1|പ്രവൃത്തിയിൽ|$1 പ്രവൃത്തികളിൽ}} $2 ($3%) എണ്ണം ഉപാധികളുടെ പരിധിയായ  $4 എത്തിയിരിക്കുന്നു, $5 ($6%) എണ്ണം ഇപ്പോൾ സജ്ജമായിട്ടുള്ള അരിപ്പയിൽ ബാധകമാണ്.',
@@ -23406,7 +23411,7 @@ $messages['ml'] = array(
 :''(സ്വകാര്യം)''",
 	'abusefilter-edit-lastmod' => 'അരിപ്പ അവസാനം പുതുക്കിയത്:',
 	'abusefilter-edit-lastmod-text' => '$1 ചെയ്തത് $2',
-	'abusefilter-edit-hitcount' => 'സന്ദർശനങ്ങൾ അരിച്ചെടുക്കുക:',
+	'abusefilter-edit-hitcount' => 'കുടുങ്ങിയവ അരിച്ചെടുക്കുക:',
 	'abusefilter-edit-consequences' => 'ചേർച്ച കണ്ടാൽ കൈക്കൊള്ളേണ്ട നടപടികൾ',
 	'abusefilter-edit-action-warn' => 'ഉപയോക്താവിന് മുന്നറിയിപ്പ് കൊടുത്ത ശേഷം ഈ പ്രവൃത്തികൾ തുടങ്ങുക',
 	'abusefilter-edit-action-disallow' => 'സംശയകരമായ പ്രവൃത്തി ചെയ്യുന്നതിൽ നിന്നും ഉപയോക്താവിനെ തടയുക',
@@ -23512,6 +23517,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-builder-vars-article-ns' => 'താളിന്റെ നാമമേഖല',
 	'abusefilter-edit-builder-vars-article-text' => 'താളിന്റെ തലക്കെട്ട് (നാമമേഖല ഇല്ലാതെ)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'താളിന്റെ പൂർണ്ണ തലക്കെട്ട്',
+	'abusefilter-edit-builder-vars-article-views' => 'താളിന്റെ എടുത്തുനോക്കലുകൾ',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'മാറ്റേണ്ട സ്രോതസ്സ് താളിന്റെ ഐ.ഡി.',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'മാറ്റേണ്ട സ്രോതസ്സ് താളിന്റെ നാമമേഖല',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'മാറ്റേണ്ട സ്രോതസ്സ് താളിന്റെ തലക്കെട്ട്',
@@ -23654,6 +23660,8 @@ $messages['ml'] = array(
 	'abusefilter-diff-pattern' => 'അരിപ്പയിലെ ഉപാധികൾ',
 	'abusefilter-diff-invalid' => 'ആവശ്യപ്പെട്ട പതിപ്പുകൾ ശേഖരിക്കാൻ കഴിയില്ല',
 	'abusefilter-diff-backhistory' => 'അരിപ്പയുടെ നാൾവഴിയിലേയ്ക്ക് തിരിച്ചുപോവുക',
+	'abusefilter-diff-prev' => 'പഴയ വ്യത്യാസം',
+	'abusefilter-diff-next' => 'പുതിയ വ്യത്യാസം',
 	'abusefilter-import-intro' => 'മറ്റുവിക്കികളിൽ നിന്ന് അരിപ്പകൾ ഇറക്കുമതി ചെയ്യാൻ ഈ ദൃശ്യമണ്ഡലം ഉപയോഗിക്കാവുന്നതാണ്.
 സ്രോതസ്സ് വിക്കിയിലെ തിരുത്തുവാനുള്ള ദൃശ്യമണ്ഡലത്തിൽ "{{int:abusefilter-edit-tools}}" എന്നതിനു താഴെയുള്ള "{{int:abusefilter-edit-export}}" ഞെക്കുക.
 അപ്പോൾ കിട്ടുന്ന ടെക്സ്റ്റ്ബോക്സ് പകർത്തി ഈ ടെക്സ്റ്റ്‌‌ബോക്സിൽ നൽകി, "{{int:abusefilter-import-submit}}" ഞെക്കുക.',
@@ -23696,8 +23704,8 @@ $messages['mr'] = array(
 संपादन गाळणी म्हणजे सर्व संपादनांचा सांगितल्याप्रमाणे स्वयंशोध घेणारी स्वयंचलीत सॉफ्टवेअर प्रणाली असते. हा इंटरफेस तयार केलेल्या गाळण्यांची यादी दाखवतो आणि त्यात सुधारणा करण्यास अनुमती देतो.',
 	'abusefilter-mustbeeditor' => 'सुरक्षेच्या कारणास्तव,फक्त तेच सदस्य या सुविधेचा वापर करु शकतात, ज्यांना संपादक गाळणीत बदल करावयाचा अधिकार आहे.',
 	'abusefilter-warning' => '”’ताकिद”’ आपोआप तपासणीत, आपण नुकतीच केलेली क्रिया ही ’हानीकारक’ म्हणुन  आढळली आहे.
-वाढ न करणारी संपादने ताबडतोब उलवटण्यात येतील, व सततच्या वाढ न करणार्या संपादनांमुळे आपले खाते वा आपला अंकपत्ता अवरुद्ध केल्या जाउ शकतो.जर आपणास वाटते कि हे संपादन योग्य आहे तर आपण ते नक्की करण्यासाठी ”पुन्हा सोपवा’ वर टिचकी मारु शकता.आपल्या क्रियेशी संलग्न, या गाळणीस लागू असलेल्या नियमाचे थोडक्यात वर्णन आहे:$1',
-	'abusefilter-disallowed' => 'आपण नुकतीच केलेली क्रिया ही ’हानीकारक’ म्हणुन  आढळली आहे, व म्हणुन नामंजूर करण्यात आलेली आहे.जर आपणास वाटते कि हे संपादन योग्य आहे तर आपण ते नक्की करण्यासाठी ”पुन्हा सोपवा’ वर टिचकी मारु शकता.आपण नक्की काय करु ईच्छीता याची सुचना कृपया प्रचालकास द्या.आपल्या क्रियेशी संलग्न, या गाळणीस लागू असलेल्या नियमाचे थोडक्यात वर्णन आहे:$1',
+वाढ न करणारी संपादने ताबडतोब उलवटण्यात येतील, व सततच्या वाढ न करणार्या संपादनांमुळे आपले खाते वा आपला अंकपत्ता अवरुद्ध केल्या जाउ शकतो.जर आपणास वाटते कि हे संपादन योग्य आहे तर आपण ते नक्की करण्यासाठी ”पुन्हा सोपवा’ वर टिचकी मारु शकता.आपल्या क्रियेशी संलग्न, या गाळणीस लागू असलेल्या नियमाचे थोडक्यात वर्णन आहे:$1', # Fuzzy
+	'abusefilter-disallowed' => 'आपण नुकतीच केलेली क्रिया ही ’हानीकारक’ म्हणुन  आढळली आहे, व म्हणुन नामंजूर करण्यात आलेली आहे.जर आपणास वाटते कि हे संपादन योग्य आहे तर आपण ते नक्की करण्यासाठी ”पुन्हा सोपवा’ वर टिचकी मारु शकता.आपण नक्की काय करु ईच्छीता याची सुचना कृपया प्रचालकास द्या.आपल्या क्रियेशी संलग्न, या गाळणीस लागू असलेल्या नियमाचे थोडक्यात वर्णन आहे:$1', # Fuzzy
 	'abusefilter-blocked-display' => 'आपण नुकतीच केलेली क्रिया ही ’हानीकारक’ म्हणुन  आढळली आहे, व म्हणुन ती करण्यास आपणास रोधित करण्यात आलेले आहे.{{SITENAME}} सुरक्षित ठेवण्यासाठी,आपले सदस्यखाते व अंकपत्ता संपादनांसाठी अवरुद्ध करण्यात आलेला आहे.जर हे चुकीने घडले असल्यास प्रचालकाशी कृपया संपर्क साधा.आपल्या क्रियेशी संलग्न, या गाळणीस लागू असलेल्या नियमाचे थोडक्यात वर्णन आहे:$1',
 	'abusefilter-blocker' => 'संपादन गाळणी',
 	'abusefilter-blockreason' => 'संपादन गाळणीने आपोआप अवरुद्ध केले.
@@ -25142,7 +25150,7 @@ Wenn du meenst, dat dien Ännern nich negativ is, denn kannst du noch wedder ver
 Dor liggt dat an, dat de Filter meckert: $1", # Fuzzy
 	'abusefilter-disallowed' => 'Diene Akschoon is dör en automaatschen Filter as negativ kennt worrn un is nich verlöövt.
 Wenn du meenst, dat dien Ännern nich negativ is, denn kannst du en Administrater schrieven un em seggen, wat du doon wullst, dat he di helpt.
-Dor liggt dat an, dat de Filter meckert: $1',
+Dor liggt dat an, dat de Filter meckert: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Diene Akschoon is dör en automaatschen Filter as negativ kennt worrn un is nich verlöövt.
 {{SITENAME}} to schulen, sünd dorüm dien Brukerkonto un dien IP-Adress sperrt worrn.
 Wenn du meenst, dat dien Ännern nich negativ is, denn kannst du en Administrater för Help fragen.
@@ -25505,7 +25513,7 @@ Kopeer de Textbox, de dor wiest warrt, un föög den Text in disse Textbox in, k
 	'abusefilter-import-submit' => 'Daten importeren',
 );
 
-/** Nedersaksisch (Nedersaksisch)
+/** Nedersaksies (Nedersaksies)
  * @author Servien
  */
 $messages['nds-nl'] = array(
@@ -25659,10 +25667,10 @@ $messages['ne'] = array(
 ध्वंसात्मक सम्पादन शीघ्र उल्टाइनेछ,
 र जबरजस्ती अथवा ध्वंसात्मक सम्पादन दोहोराएको परिणाम स्वरुप तपाईंको खाता अथवा IP ठेगानामा प्रतिबन्ध लगाइनेछ।
 यदि तपाईं आफ्नो सम्पादन रचनात्मक भएकोमा विश्वस्त हुनुहुन्छ भनें पुनः '''संग्रह गर्नुहोस्'''मा क्लिक गरेर सुनिश्चित गर्नुहोस्।
-दुर्व्यहार नीति जसमा तपाईंको कार्यसित मेल खाइरहेछ, यसको एउटा संक्षिप्त विवरण यस प्रकार छ: $1",
+दुर्व्यहार नीति जसमा तपाईंको कार्यसित मेल खाइरहेछ, यसको एउटा संक्षिप्त विवरण यस प्रकार छ: $1", # Fuzzy
 	'abusefilter-disallowed' => 'यो कार्य हानिकारक भनेर स्वतः चिनियो, अनि यसकारण अनुमति छैन।
 यदि तपाईं आफ्नो सम्पादन रचनात्मक भएकोमा विश्वस्त हुनुहुन्छ भनें कृपया तपाईंले के गर्ने प्रयास गर्नु हुँदै थियो यो कुरा कुनै एक जना प्रबन्धकलाई जनाउनुहोस् ।
-दुर्व्यहार नीति जसमा तपाईंको कार्यसित मेल खाइरहेछ, यसको एउटा संक्षिप्त विवरण यस प्रकार छ: $1',
+दुर्व्यहार नीति जसमा तपाईंको कार्यसित मेल खाइरहेछ, यसको एउटा संक्षिप्त विवरण यस प्रकार छ: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'यो कार्य घातक भनेर स्वतः चिनियो,
 र तपाईंलाई यसको क्रियान्वयनमा रोक लगाइएकोछ।
 अनि {{SITENAME}}को सुरक्षाको निम्ति तपाईंको प्रयोगकर्ता खाता अनि सबै सम्बन्धित आई पी ठेगानाहरुमाथि पनि सम्पादन गर्न रोक
@@ -29154,11 +29162,11 @@ Esta interface mostra uma lista dos filtros definidos e permite que estes sejam 
 As edições não construtivas serão revertidas rapidamente,
 e a repetição destas edições resultará no bloqueio da sua conta ou do seu endereço IP.
 Se crê que esta edição é construtiva, pode clicar novamente o botão \"Enviar\" para confirmá-lo.
-Uma breve descrição da regra de abuso com a qual a sua acção coincidiu é: \$1",
+Uma breve descrição da regra de abuso com a qual a sua acção coincidiu é: \$1", # Fuzzy
 	'abusefilter-disallowed' => 'Esta operação foi identificada automaticamente como prejudicial,
 e foi consequentemente bloqueada.
 Se crê que a sua edição foi construtiva, por favor contacte um administrador, e informe-o do que estava a tentar fazer.
-Uma breve descrição da regra de abuso com a qual a sua acção coincidiu é: $1',
+Uma breve descrição da regra de abuso com a qual a sua acção coincidiu é: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Esta operação foi automaticamente identificada como prejudicial e está impedido de executá-la.
 Adicionalmente, para proteger a {{SITENAME}}, foram bloqueadas as edições pela sua conta e por todos os endereços IP associados.
 Se considera que este bloqueio é indevido, por favor contacte um administrador.
@@ -29582,11 +29590,11 @@ Esta interface mostra uma lista de filtros definidos, e permite que sejam modifi
 As edições não construtivas serão revertidas rapidamente,
 e a repetição destas edições resultará no bloqueio da sua conta ou do seu endereço IP.
 Se você acredita que esta edição é construtiva, pode clicar novamente o botão \"Enviar\" para confirmá-lo.
-Uma breve descrição da regra de abuso com a qual a sua ação coincidiu é: \$1",
+Uma breve descrição da regra de abuso com a qual a sua ação coincidiu é: \$1", # Fuzzy
 	'abusefilter-disallowed' => 'Esta ação foi identificada automaticamente como prejudicial,
 e foi consequentemente bloqueada.
 Se você crê que a sua edição foi construtiva, por favor contate um administrador, e informe-o do que você estava tentando fazer.
-Uma breve descrição da regra de abuso com a qual a sua ação coincidiu é: $1',
+Uma breve descrição da regra de abuso com a qual a sua ação coincidiu é: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Esta ação foi identificada automaticamente como prejudicial,
 e você foi impedido de executá-la.
 Além disso, para proteger o {{SITENAME}}, sua conta de usuário e todos os endereços IP associados foram impedidas de editar.
@@ -31320,7 +31328,7 @@ $messages['rue'] = array(
 	'abusefilter-disallowed' => 'Тота дїя была автоматічно означена як шкодлива,
 і зато заборонена.
 Кідь вірите, же ваше едітованя є конштруктівне, просиме контактуйте адміністратора і дайте му знати, што сьте хотїли зробити.
-Короткый опис правила, котре вашу дїю означіло за шкодливу: $1',
+Короткый опис правила, котре вашу дїю означіло за шкодливу: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Тота дїя была автоматічно означена як шкодлива,
 і зато была заборонена.
 Окрім того про охорону проєкту {{SITENAME}} было вашому конту хоснователя і з ним звязанін IP-адресї зоблоковане едітованя.
@@ -31908,11 +31916,11 @@ $messages['sah'] = array(
 Туһата суох көннөрүүлэр түргэнник сотуллуохтара,
 улахан эбэтэр хаста да оҥоһуллубут буоллахтарына ааккын эбэтэр IP-аадырыскын хааччахтааһыҥҥа тиэрдиэхтэрэ.
 Ол гынан баран, эн туһалаах көннөрүүнү оҥордум диэн эрэнэр буоллаххына, өссө биирдэ \"Бигэргэтии\" тимэҕи баттаан көннөрүүгүн оҥор.
-Эн оҥорбут дьайыыгын кытта ситимнэммит аһара түһүү кылгас ис хоһооно: \$1",
+Эн оҥорбут дьайыыгын кытта ситимнэммит аһара түһүү кылгас ис хоһооно: \$1", # Fuzzy
 	'abusefilter-disallowed' => 'Бу дьайыы апатамаатынан омсолоох курдук бэлиэтэммит,
 онон бобуллубут.
 Ол гынан баран, эн туһалаах көннөрүүнү оҥордум диэн эрэнэр буоллаххына, дьаһабылга тахсан тугу гынаары гынаргын кэпсээ.
-Эн оҥорбут дьайыыгын кытта ситимнэммит аһара түһүү кылгас ис хоһооно: $1',
+Эн оҥорбут дьайыыгын кытта ситимнэммит аһара түһүү кылгас ис хоһооно: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Бу дьайыы апатамаатынан омсолоох курдук бэлиэтэммит,
 онон оҥороруҥ бобуллубут.
 Ону таһынан {{SITENAME}} бырайыагы көмүскүүр соруктаах эн аатыҥ уонна IP-иҥ хааччахтаннылар.
@@ -32799,10 +32807,10 @@ Toto rozhranie zobrazuje zoznam definovaných filtrov a umožňuje ich zmenu.',
 	'abusefilter-mustbeeditor' => 'Z bezpečnostných dôvodov môžu toto rozhraniepoužívať iba používatelia s právom meniť filtre zneužitia.',
 	'abusefilter-warning' => "'''Upozornenie''': Táto činnosť bola automaticky identifikovaná ako škodlivá.
 Nekonštruktívne úpravy budú rýchlo vrátené a zjavné alebo opakované nekonštruktívne zásahy budú mať za následok zablokovanie vášho účtu alebo IP adresy. Ak veríte, že je táto úprava konštruktívna, môžete znova kliknúť na Uložiť, čím ju potvrdíte.
-Stručný popis pravidla zneužitia, ktoré zachytilo vašu úpravu, je: $1",
+Stručný popis pravidla zneužitia, ktoré zachytilo vašu úpravu, je: $1", # Fuzzy
 	'abusefilter-disallowed' => 'Táto činnosť bola automaticky identifikovaná ako škodlivá a preto bola odmietnutá.
 Ak veríte, že je táto úprava konštruktívna, kontaktujte prosím správcu a oznámte im, čo ste sa pokúšali urobiť.
-Stručný popis pravidla zneužitia, ktoré zachytilo vašu úpravu, je: $1',
+Stručný popis pravidla zneužitia, ktoré zachytilo vašu úpravu, je: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Táto činnosť bola automaticky identifikovaná ako škodlivá a preto bola odmietnutá.
 Naviac, na ochranu {{GRAMMAR:genitív|{{SITENAME}}}} boli zablokované úpravy z vášho používateľského účtu a všetkých príslušných IP adries.
 Ak veríte, že to je omyl, kontaktujte prosím správcu.
@@ -33640,10 +33648,10 @@ Kjo ballinë tregon një listë të filtrave të përcaktuara, dhe i lejon ata t
 	'abusefilter-warning' => "' ' ' Kujdes ' ' ' : Ky veprim është identifikuar automatikisht si i dëmshëm.
 Redaktimet jo-konstruktive do të rikthehen shpejt dhe redaktimet skandaloze apo jo-konstruktive të përsëritura do të rezultojë në llogarinë tuaj ose IP adresën si të bllokuara.
 Nëse besoni ky redaktim të jetë konstruktiv, mund të shtypni Paraqit edhe njëherë për ta konfirmuar.
-Një përshkrim i shkurtër i rregullave të shpërdorimit që veprimet tuaja janë përputhur janë: $1",
+Një përshkrim i shkurtër i rregullave të shpërdorimit që veprimet tuaja janë përputhur janë: $1", # Fuzzy
 	'abusefilter-disallowed' => 'Ky veprim është identifikuar automatikisht si i dëmshëm, dhe për këtë arsye i ndaluar.
 Nëse besoni se redaktimi i juaj të jetë konstruktiv, ju lutem informoni administratorin se çfarë ishit duke tentuar të bënit.
-Një përshkrim i shkurtër i rregullave të shpërdorimit që veprimet tuaja janë përputhur janë: $1',
+Një përshkrim i shkurtër i rregullave të shpërdorimit që veprimet tuaja janë përputhur janë: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Ky veprim është identifikuar automatikisht si i dëmshëm,
 dhe ju keni qenë të penguar në ekzekutimin e tij.
 Në mënyrë për të mbrojtur {{SITENAME}} , emri i përdoruesit tuaj dhe të gjitha IP adresat e lidhura janë bllokuar nga redaktimi.
@@ -34686,11 +34694,11 @@ $messages['stq'] = array(
 	'abusefilter-warning' => "'''Woarskauenge''': Disse Aktion wuud automatisk as skoadelk ärkoand.
 Uunkonstruktive Biedraage wäide maast gjucht gau wächhoald. In wierhoalde un besunners läipe Falle wäd dien Account blw. dien IP-Adresse speerd.
 Wan du toankst, dät dien Annerenge konstruktiv waas, koast du ju oawers mäd n näien Klik ap „{{int:savearticle}}“ bestäätigje.
-Kuute Beskrieuwenge fon ju nit beoachtede Räägel: $1",
+Kuute Beskrieuwenge fon ju nit beoachtede Räägel: $1", # Fuzzy
 	'abusefilter-disallowed' => 'Disse Aktion wuud automatisk as skoadelk ärkoand un deeruum nit truchfierd.
 Wan du toankst, dät dien Biedraach konstruktiv waas, weende die dan an n Administrator un skilderje him, wät du fersoacht hääst bietoudreegen.
 
-Kuute Beskrieuwenge fon ju nit beoachtede Räägel: $1',
+Kuute Beskrieuwenge fon ju nit beoachtede Räägel: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Disse Aktion wuud automatisk as skoadelk ärkoand un nit uutfierd.
 Fääre wuud dien Benutseraccount un aal touheerige IP-Adressen speerd.
 Wan du toankst, dät et sik hierbie uum n Failer honnelt, weende die dan an n Administrator.
@@ -35537,10 +35545,10 @@ Interface pozwolo przeglůndać lista zedefińůwanych filtrůw a je pomjyńać.
 	'abusefilter-warning' => "'''Pozůr''': Ta akcyjo bůła automatyczńy uznono szkodzůncům.
 Ńydobre pomjyny bydům cofńynte, a fest złe abo uopakujůnce śe edytowańy skůńczy śe blokadům twojigo kůnta abo IP.
 Eli zwożujesz, że to co robisz je dobre, spamjyntej pomjyny bez „{{int:savearticle}}”.
-Krůtki uopis zńyłużyćo, ke keremu przipasowano twojo akcyjo: $1",
+Krůtki uopis zńyłużyćo, ke keremu przipasowano twojo akcyjo: $1", # Fuzzy
 	'abusefilter-disallowed' => 'Ta akcyjo bůła automatyczńy uznona szkodzůncům a uodćepńynta.
 Eli zwożujesz, że ta edycyjo bůła ajntlichowo, pedź uo tyj sytuacyji administratůrowi.
-Krůtki uopis zńyłużyćo, ke keremu bůła przipasowano twojo akcyjo: $1',
+Krůtki uopis zńyłużyćo, ke keremu bůła przipasowano twojo akcyjo: $1', # Fuzzy
 	'abusefilter-blocker' => 'Filter zńyłużyćów',
 	'right-abusefilter-modify' => 'Pomjyńańy filtrůw zńyłużyćůw',
 	'abusefilter-list-options-submit' => 'Aktualizacyjo',
@@ -35847,10 +35855,10 @@ $messages['te'] = array(
 పసలేని మార్పుచేర్పులు వెంటనే రద్దు చెయ్యబడతాయి,
 కొట్టొచ్చినట్టుగా కనబడే తప్పులు లేదా పదేపదే చేసే పసలేని మార్పుచేర్పులు మీ ఖాతా లేదా ఐపీ అడ్రసు నిషేధానికి దారి తీస్తాయి.
 ఈ మార్పు సరైనదేనని మీరు నమ్మితే, మళ్ళీ పంపించు నొక్కి నిర్ధారించండి.
-మీ చర్యను దుర్వినియోగంగా ఎత్తిచూపిన సదరు నియమం క్లుప్తంగా ఇలా వివరిస్తోంది: $1",
+మీ చర్యను దుర్వినియోగంగా ఎత్తిచూపిన సదరు నియమం క్లుప్తంగా ఇలా వివరిస్తోంది: $1", # Fuzzy
 	'abusefilter-disallowed' => 'ఈ చర్య హానికరమని ఆటోమాటిగ్గా గుర్తించబడింది. అంచేత నిరాకరించాం.
 ఒకవేళ మీ మార్పుచేర్పులు సరైనవని మీరు నమ్మితే, మీరు చెయ్యదలచిన దాని గురించి నిర్వాహకులెవరికైనా తెలియబరచండి.
-మీ చర్యను దుర్వినియోగంగా ఎత్తిచూపిన సదరు నియమం క్లుప్తంగా ఇలా వివరిస్తోంది: $1',
+మీ చర్యను దుర్వినియోగంగా ఎత్తిచూపిన సదరు నియమం క్లుప్తంగా ఇలా వివరిస్తోంది: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'ఈ చర్య హానికరమని ఆటోమాటిగ్గా గుర్తించబడింది. అంచేత దాన్ని చెయ్యకుండా మిమ్మల్ని నిరోధించాం.
 అంతేకాక, {{SITENAME}} ను పరిరక్షించేందుకుగాను, మీ వాడుకరిఖాతా, దానికి సంబంధించిన ఐపీ అడ్రసుల ద్వారా మార్పుచేర్పులు చెయ్యకుండా నిరోధించాం.
 ఒకవేళ ఇది పొరపాటున జరిగి ఉంటే, ఎవరైనా ఒక నిర్వాహకుని సంప్రదించండి.
@@ -36887,11 +36895,11 @@ $messages['tl'] = array(
 Ang Pansala ng Pang-aabuso ay isang kusang mekanismo ng sopwer ng paggamit ng automatikong tulong ng pagkatuto sa lahat ng mga kilos.
 Nagpapakita ang ugnayang-hangganang ito ng isang talaan ng binigyang kahulugang mga pansala, at nagpapahintulot na mabago ang mga ito.',
 	'abusefilter-mustbeeditor' => 'Para sa mga dahilang pangkaligtasan, mga tagagamit lamang na may karapatang baguhin ang mga pansala ng pang-aabuso ang maaaring gumamit ng ugnayang-hangganang ito.',
-	'abusefilter-warning' => "'''Babala''': Ang galaw na ito ay kusang kinilala bilang mapanganib.  Mabilisang ibabalik sa dati ang hindi nakapagpapainam na pagbabago, at magbubunga ang kapansin-pansin at paulit-ulit na hindi maiinam na pagbabago ng pagharang sa akawnt o adres ng IP.  Kung sa tingin mong mainam ang pagbabagong ito, maaaring mong pindutin uli ang Ipasa upang tiyakin ito.  Isang maikling paglalarawan ng alituntunin sa pang-aabuso na tumugma sa iyong galaw ang: $1",
+	'abusefilter-warning' => "'''Babala''': Ang galaw na ito ay kusang kinilala bilang mapanganib.  Mabilisang ibabalik sa dati ang hindi nakapagpapainam na pagbabago, at magbubunga ang kapansin-pansin at paulit-ulit na hindi maiinam na pagbabago ng pagharang sa akawnt o adres ng IP.  Kung sa tingin mong mainam ang pagbabagong ito, maaaring mong pindutin uli ang Ipasa upang tiyakin ito.  Isang maikling paglalarawan ng alituntunin sa pang-aabuso na tumugma sa iyong galaw ang: $1", # Fuzzy
 	'abusefilter-disallowed' => "Ang kilos na ito ay kusang nakilala bilang makakapinsala,
 kaya't hindi pinahintulutan.
 Kung naniniwala kang mabuti ang iyong ginawang pagbabago, makipag-ugnayan sa isang tagapangasiwa, at ipagbigay-alam sa kanila ang kung ano ang sinusubok mong gawin.
-Isang maiksing paglalarawan ng alituntunin sa pang-aabuso na tumugma sa kilos mo ang: $1",
+Isang maiksing paglalarawan ng alituntunin sa pang-aabuso na tumugma sa kilos mo ang: $1", # Fuzzy
 	'abusefilter-blocked-display' => 'Ang kilos na ito ay kusang nakilala bilang makakapinsala,
 at pinigilan ang pagsasakatuparan mo nito.
 Bilang karagdagan, upang mapagsanggalang ang {{SITENAME}}, hinadlangan sa paggawa ng mga pagbabago ang iyong akawnt at lahat ng mga kaugnay na adres ng IP.
@@ -40016,7 +40024,7 @@ $messages['yo'] = array(
 	'abusefilter-mustbeeditor' => 'Fún ìdáàbò, àwọn oníṣe tí wọ́n ní ẹ̀tọ́ láti ṣàtúnṣe àwọn ajọ̀ ìbàjẹ́ nìkan ni wọ́n le lo ìfojúkojú yìí.',
 	'abusefilter-disallowed' => 'Ìgbéṣe yìí ti jẹ́ dídámọ̀ fúnrararẹ̀ bíi eléwu, bíi bẹ́ẹ̀ ó ti jẹ́ dídílọ́nà.
 Tí ẹ bá nígbàgbọ́ pé àtúnṣe yín jẹ́ awúlò, ẹ jọ̀wọ́ ẹ fi tó olùmójútó kan létí ohun tí ẹ fẹ́ ṣe.
-Ìjúwe ní sókí òfin ìbàjẹ́ tí ó bá ìgbéṣe yín mu ni: $1',
+Ìjúwe ní sókí òfin ìbàjẹ́ tí ó bá ìgbéṣe yín mu ni: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'Ìgbéṣe yìí ti jẹ́ dídámọ̀ fúnrararẹ̀ bíi eléwu, bíi bẹ́ẹ̀ ẹ ti jẹ́ dídílọ́nà láti ṣeé.
 Bákannáà láti dá àbò bo {{SITENAME}}, àpamọ́ oníṣe yín àti gbogbo àwọn àdírẹ́sì IP tí wọ́n jọṣe mọ́ọn ti jẹ́ dídílọ́nà láti ṣàtúnṣe.
 Tó bá jẹ́ pé àsìṣe ló ṣẹlẹ̀, ẹ jọ̀wọ́ ẹ fi tó olùmójútó kan létí.
@@ -40111,11 +40119,11 @@ $messages['yue'] = array(
 冇建設性嘅編輯將會好快噉還原，
 同埋過份或者重覆嘅編輯會令到你個戶口或者電腦封鎖。
 如果你相信呢個編輯係有建設性嘅，你可以撳多一下遞交去確認佢。
-一個簡明濫用條件嘅描述同你嘅動作配合嘅係: $1",
+一個簡明濫用條件嘅描述同你嘅動作配合嘅係: $1", # Fuzzy
 	'abusefilter-disallowed' => '呢個動作已經自動認定咗做有害嘅，
 已經唔容許。
 如果你相信呢個編輯係有建設性嘅，請同管理員聯絡，通知佢哋你會試吓點做。
-一個簡明濫用條件嘅描述同你嘅動作配合嘅係: $1',
+一個簡明濫用條件嘅描述同你嘅動作配合嘅係: $1', # Fuzzy
 	'abusefilter-blocked-display' => '呢個動作已經自動認定咗做有害嘅，
 你已經被防止執行佢。
 除此之外，要保謢{{SITENAME}}，你嘅戶口同全部有關嘅IP地址已經全部封鎖，唔畀編輯。
