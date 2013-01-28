@@ -14221,6 +14221,7 @@ $messages['he'] = array(
 	'abusefilter-edit-builder-vars-article-ns' => 'מרחב השם של הדף',
 	'abusefilter-edit-builder-vars-article-text' => 'שם הדף (ללא מרחב השם)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'שם הדף המלא',
+	'abusefilter-edit-builder-vars-article-views' => 'מספר הצגות הדף',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'מספר הדף של דף המקור בהעברה',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'מרחב השם של דף המקור בהעברה',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'שם דף המקור בהעברה',
@@ -14364,6 +14365,8 @@ $messages['he'] = array(
 	'abusefilter-diff-pattern' => 'תנאי המסננים',
 	'abusefilter-diff-invalid' => 'לא ניתן לקבל את הגרסאות המבוקשות',
 	'abusefilter-diff-backhistory' => 'בחזרה להיסטוריית המסנן',
+	'abusefilter-diff-prev' => 'שינוי ישן יותר',
+	'abusefilter-diff-next' => 'שינוי חדש יותר',
 	'abusefilter-import-intro' => 'באפשרותכם להשתמש בממשק זה כדי לייבא מסננים מאתרי ויקי אחרים.
 באתר המקור, לחצו על "{{int:abusefilter-edit-export}}" שב"{{int:abusefilter-edit-tools}}" בממשק העריכה.
 העתיקו מתיבת הטקסט המופיעה שם, הדביקו את הטקסט בתיבת הטקסט הזו, ואז לחצו על "{{int:abusefilter-import-submit}}",',
@@ -19255,6 +19258,7 @@ $messages['ka'] = array(
 	'abusefilter-edit-builder-vars-new-html' => 'ახალი გვერდის სხვადასხვა HTML კოდი',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'გვერდის შესწორებათა დაცვის დონე',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'გვერდის გადრქმევების დაცვის დონე',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'გვერდის შექმნის დაცვა',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'ძველი გვერდის ტექსტი ვიკიფიცირების გარეშე',
 	'abusefilter-edit-builder-vars-old-links' => 'ბმულები გვერდზე შესწორებამდე',
 	'abusefilter-edit-builder-vars-old-html' => 'HTML-ად გადაკეთებული ძველი გვერდის ვიკიტექსტი',
@@ -39848,12 +39852,16 @@ $messages['xal'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['yi'] = array(
+	'abusefilter' => 'שלעכט־באניצן פילטער קאנפיגוראציע',
 	'abuselog' => 'שלעכט־באניצן לאג',
 	'abusefilter-warning' => "'''ווארענונג''': די פעולה איז געווארן אויטאמאַטיש אידענטיציפירט אלס שעדלעך.
 אומקאנסטרוקטיווע באַאַרבעטונגען וועלן גיך ווערן צוריקגעשטעלט,
-און גראבע אדער איבערגעחזרטע אומקאנסטרוקטיווע רעדאַקטירונג וועלן ברענגען צו בלאקירן אײַער קאנטע אדער קאמפיוטער.
+און גראבע אדער איבערגעחזרטע אומקאנסטרוקטיווע רעדאַקטירונג וועלן ברענגען צו בלאקירן אײַער קאנטע אדער IP אדרעס.
 ווען איר האַלט אַז די רעדאַקטירונג איז יא קאנסטרוקטיוו, מעגט איר קליקן \"אויפהיטן\" נאכאַמאָל צו באַשטעטיגן זי.
-א קורצע באַשרייבונג פונעם כלל וואס איז געבראכן: \$1", # Fuzzy
+א קורצע באַשרייבונג פונעם כלל וואס איז געבראכן: \$1",
+	'abusefilter-disallowed' => 'די אקציע האט מען אידענטיפֿיצירט אויטאמאטיש ווי שעדלעך, און דעריבער גע\'אַסרט.
+ווען איר האַלט אַז די רעדאַקטירונג איז יא קאנסטרוקטיוו, מעגט איר קליקן "אויפהיטן" נאכאַמאָל צו באַשטעטיגן זי.
+א קורצע באַשרייבונג פונעם כלל וואס איז געבראכן: $1',
 	'abusefilter-blocker' => 'פֿילטער',
 	'abusefilter-accountreserved' => 'דער באניצער נאמען איז רעזערווירט פארן קרומבאניץ־פילטער.',
 	'right-abusefilter-modify' => 'ענדערן שעדיקן פֿילטערס',
@@ -39864,6 +39872,7 @@ $messages['yi'] = array(
 	'action-abusefilter-view' => 'באקוקן שעדיקן פֿילטערס',
 	'action-abusefilter-log' => ' באקוקן פֿילטער־לאגבוך',
 	'abusefilter-log' => 'פֿילטער לאגבוך',
+	'abusefilter-log-summary' => 'דער לאגבוך ווײַזט א ליסטע פון פעולות געכאפט דורך די פילטערס.',
 	'abusefilter-log-search' => 'דורכזוכן קרומבאניץ־לאגבוך',
 	'abusefilter-log-search-user' => 'באַניצער:',
 	'abusefilter-log-search-filter' => 'פֿילטער נומער:',
@@ -39873,6 +39882,9 @@ $messages['yi'] = array(
 	'abusefilter-log-detailedentry-global' => 'גלאבאלער פֿילטער $1',
 	'abusefilter-log-detailedentry-local' => 'פֿילטער $1',
 	'abusefilter-log-detailslink' => 'פרטים',
+	'abusefilter-log-diff' => 'אונטערשייד',
+	'abusefilter-log-hidelink' => 'ענדערן זעבארקייט',
+	'abusefilter-log-details-legend' => 'פרטים פאר לאגבוך איינהייט $1',
 	'abusefilter-log-details-var' => 'וואַריאַבל',
 	'abusefilter-log-details-val' => 'ווערט',
 	'abusefilter-log-details-vars' => 'אקציע פאראמעטערס',
@@ -39882,12 +39894,16 @@ $messages['yi'] = array(
 	'abusefilter-log-details-diff' => 'ענדערונגען אדורכגעפירט ביי רעדאקטירן',
 	'abusefilter-log-linkoncontribs' => 'שלעכט־באניצן לאג',
 	'abusefilter-log-linkoncontribs-text' => 'שלעכט־באניצן לאגבוך פאר דעם דאזיגן באניצער',
+	'abusefilter-log-hidden' => '(איינהייט באהאלטן)',
 	'abusefilter-log-cannot-see-details' => 'איר האט נישט ערלויבניש צו זען פרטים פון דעם ווערט.',
 	'abusefilter-log-hide-reason' => 'אורזאַך:',
+	'abusefilter-logentry-suppress' => 'האט פארבארגן "[[$1]]"',
+	'abusefilter-logentry-unsuppress' => 'האט געוויזן "[[$1]]"',
 	'abusefilter-list' => 'אלע פֿילטערס',
 	'abusefilter-list-id' => 'פֿילטער נומער',
 	'abusefilter-list-status' => 'סטאַטוס',
 	'abusefilter-list-visibility' => 'זעבארקייט',
+	'abusefilter-list-hitcount' => 'טרעף צאל',
 	'abusefilter-list-edit' => 'רעדאַקטירן',
 	'abusefilter-list-details' => 'פרטים',
 	'abusefilter-list-limit' => 'צאל אין א בלאט:',
@@ -39905,6 +39921,8 @@ $messages['yi'] = array(
 	'abusefilter-list-options' => 'ברירות',
 	'abusefilter-list-options-deleted' => 'אויסגעמעקטע פילטערס',
 	'abusefilter-list-options-deleted-only' => 'ווייזן נאר אויסגעמעקטע פילטערס',
+	'abusefilter-list-options-scope' => 'ווײַזן פילטערס פון:',
+	'abusefilter-list-options-scope-local' => 'לאקאַלע וויקי',
 	'abusefilter-list-options-submit' => 'דערהײַנטיקן',
 	'abusefilter-tools-reautoconfirm-user' => 'באַניצער:',
 	'abusefilter-edit-status-label' => 'סטאַטיסטיק:',

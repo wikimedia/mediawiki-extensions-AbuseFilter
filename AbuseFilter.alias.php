@@ -307,7 +307,7 @@ $specialPageAliases['nb'] = array(
 	'AbuseFilter' => array( 'Misbruksfilter' ),
 );
 
-/** Nedersaksies (Nedersaksies) */
+/** Low Saxon (Netherlands) (Nedersaksies) */
 $specialPageAliases['nds-nl'] = array(
 	'AbuseLog' => array( 'Misbruuklogboek' ),
 	'AbuseFilter' => array( 'Misbruukfilter' ),
