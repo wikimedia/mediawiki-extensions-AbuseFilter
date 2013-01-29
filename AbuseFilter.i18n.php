@@ -19654,7 +19654,7 @@ $messages['km'] = array(
 	'abusefilter-revert-search' => 'ជ្រើសរើស​សកម្មភាព​',
 	'abusefilter-revert-filter' => 'តម្រង៖',
 	'abusefilter-revert-confirm' => 'បញ្ជាក់',
-	'abusefilter-revert-reasonfield' => 'មូលហេតុនៃការត្រឡប់​ទៅ​ដើម​៖', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'មូលហេតុ៖',
 	'abusefilter-test-submit' => 'សាកល្បង',
 	'abusefilter-test-load' => 'ផ្ទុក',
 	'abusefilter-test-user' => 'បំលាស់ប្ដូរ​ដោយ​អ្នកប្រើប្រាស់​៖',
@@ -38629,6 +38629,8 @@ $messages['uk'] = array(
 	'abusefilter-diff-pattern' => 'Умови фільтрації',
 	'abusefilter-diff-invalid' => 'Не вдається отримати запитані версії',
 	'abusefilter-diff-backhistory' => 'Повернутися до історії фільтру',
+	'abusefilter-diff-prev' => 'Попередня зміна',
+	'abusefilter-diff-next' => 'Наступна зміна',
 	'abusefilter-import-intro' => 'Ви можете використовувати цей інтерфейс для імпорту фільтрів з інших вікі.
 У джерельній вікі, натисніть «{{int:abusefilter-edit-export}}» у розділі «{{int:abusefilter-edit-tools}}» інтерфейсу редагування.
 Скопіюйте зміст текстового поля, вставте його у цю сторінку і натисніть «{{int:abusefilter-import-submit}}».',
@@ -40564,9 +40566,9 @@ $messages['zh-hans'] = array(
 	'abusefilter-warning' => "'''警告'''：您的行为被自动识别为具有危害性。
 无意义的编辑会被迅速地回退，
 而过分或重复的无意义编辑会导致您的帐户或IP地址遭到封禁。
-如果您确信您的该次编辑是有意义的，你可以再次点击提交以确认它。
-与您此次行为所匹配的过滤规则概述如下：$1", # Fuzzy
-	'abusefilter-disallowed' => '您的行为被自动识别为具有危害性，并遭到禁止。如果您认为您的该次编辑是有意义的，请联系管理员，并告知他们您尝试做到的事。与您此次行为所匹配的过滤规则概述如下：$1', # Fuzzy
+如果您确信本次操作是有意义的，你可以再次点击提交以确认它。
+与您此次行为所匹配的过滤规则概述如下：$1",
+	'abusefilter-disallowed' => '您的行为被自动识别为具有危害性，并遭到禁止。如果您认为您的该次编辑是有意义的，请联系管理员，并告知他们您尝试做到的事。与您此次行为所匹配的过滤规则概述如下：$1',
 	'abusefilter-blocked-display' => '您的行为被自动识别为具有危害性，并被阻止继续进行。除此以外，为了保护{{SITENAME}}，您的用户帐户以及所有相关联的IP地址都被禁止进行编辑。如果您认为这是系统误判，请联系管理员。与您此次行为所匹配的过滤规则概述如下：$1',
 	'abusefilter-degrouped' => '您的行为被自动识别为具有危害性，并遭到禁止。此外，由于您的帐户被怀疑遭到盗窃，所有权限均已被剥夺。如果您认为这是系统误判，请联系行政员并解释此次行为，或能取回权限。与您此次行为所匹配的过滤规则概述如下：$1',
 	'abusefilter-autopromote-blocked' => '您的行为被自动识别为具有危害性，并遭到禁止。此外，为安全起见，您的帐户被暂时剥夺了部分例行授予已创建帐户的权限。与您此次行为所匹配的过滤规则概述如下：$1',
