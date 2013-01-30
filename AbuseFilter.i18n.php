@@ -4511,6 +4511,8 @@ $messages['be-tarask'] = array(
 	'abusefilter-diff-pattern' => 'Умовы фільтру',
 	'abusefilter-diff-invalid' => 'Немагчыма атрымаць запытаныя вэрсіі',
 	'abusefilter-diff-backhistory' => 'Вярнуцца да гісторыі фільтру',
+	'abusefilter-diff-prev' => 'Папярэднія зьмены',
+	'abusefilter-diff-next' => 'Наступныя зьмены',
 	'abusefilter-import-intro' => 'Вы можаце выкарыстоўваць гэты інтэрфэйс для імпарту фільтраў зь іншых вікі.
 У крынічнай вікі націсьніце «{{int:abusefilter-edit-export}}» у разьдзеле «{{int:abusefilter-edit-tools}}» інтэрфэйсу рэдагаваньня.
 Скапіруйце з узьнікшага тэкставага поля, і ўстаўце у гэта тэкставае поле, потым націсьніце «{{int:abusefilter-import-submit}}»,',
@@ -9544,6 +9546,7 @@ $3 {{PLURAL:$3|αναμενόμενο κατηγορούμενο|αναμενό�
  * @author Amikeco
  * @author Blahma
  * @author Objectivesea
+ * @author Tradukisto
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -9957,6 +9960,8 @@ Por plenaj detaloj, vidu [[Special:AbuseFilter/history|la liston]] de lastaj fil
 	'abusefilter-diff-pattern' => 'Filtrilaj kondiĉoj',
 	'abusefilter-diff-invalid' => 'Ne eblas akiri la petitajn versiojn',
 	'abusefilter-diff-backhistory' => 'Reiri al filtrila historio',
+	'abusefilter-diff-prev' => 'Pli frua ŝanĝo',
+	'abusefilter-diff-next' => 'Pli malfrua ŝanĝo',
 	'abusefilter-import-intro' => 'Vi povas uzi ĉi tiun interfacon por importi filtrilojn de aliaj vikioj.
 En la fonta vikio, klaku "{{int:abusefilter-edit-export}}" sub "{{int:abusefilter-edit-tools}}" en la redakta interfaco.
 Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku "{{int:abusefilter-import-submit}}".',
@@ -24721,6 +24726,7 @@ $messages['nah'] = array(
 
 /** Norwegian Bokmål (norsk (bokmål)‎)
  * @author Danmichaelo
+ * @author EvenT
  * @author Event
  * @author Guaca
  * @author Harald Khan
@@ -24971,6 +24977,7 @@ Mekelappene burde være korte og burde ikke inneholde spesialtegn.',
 	'abusefilter-edit-builder-funcs-substr' => 'Understreng (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'Understrengens posisjon i strengen (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'Erstatt understreng med streng (str_replace)',
+	'abusefilter-edit-builder-funcs-rescape' => 'Escape-streng som litteral i regulæruttrykk (regex/rescape)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Sett variabel (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Variabler',
 	'abusefilter-edit-builder-vars-accountname' => 'Kontonavn (on account creation)',
@@ -25130,6 +25137,8 @@ For fullstendige detaljer, se [[Special:AbuseFilter/history|listen]] over de sis
 	'abusefilter-diff-pattern' => 'Filterregler',
 	'abusefilter-diff-invalid' => 'Kunne ikke hente de ønskede versjonene',
 	'abusefilter-diff-backhistory' => 'Tilbake til filterhistorikk',
+	'abusefilter-diff-prev' => 'Eldre endring',
+	'abusefilter-diff-next' => 'Nyere endring',
 	'abusefilter-import-intro' => 'Du kan bruke dette grensesnittet for å importere filtre fra andre wikier.
 I kildewikien klikker du på «{{int:abusefilter-edit-export}}» under «{{int:abusefilter-edit-tools}}» i redigeringsgrensesnittet.
 Kopier fra tekstruten som kommer frem og lim inn i denne tekstruten. Klikk så på «{{int:abusefilter-import-submit}}».',
@@ -31734,11 +31743,14 @@ $messages['rue'] = array(
 
 /** Sanskrit (संस्कृतम्)
  * @author Ansumang
+ * @author Hemant wikikosh1
  * @author Shubha
  */
 $messages['sa'] = array(
 	'abuselog' => 'दुरुपयुक्तम् अङ्कनम्',
 	'abusefilter-blocker' => 'दुरुपयुक्तं शोधकम्',
+	'abusefilter-blockreason' => 'दुरुपयोगनिःस्यन्दकद्वारा स्वतः एव निरोधितम्।
+सङ्गतस्य नियमस्य वर्णनम्:$1',
 	'abusefilter-accountreserved' => 'दुरुपयुक्तस्य शोधकस्य कृते उपयोगाय इदं योजकनाम आरक्षितं वर्तते ।',
 	'right-abusefilter-modify' => 'दुरुपयुक्तानि शोधकानि संशोध्यन्ताम्',
 	'right-abusefilter-view' => 'दुरुपयुक्तानि शोधकानि दृश्यन्ताम्',
@@ -31753,10 +31765,12 @@ $messages['sa'] = array(
 	'abusefilter-log-search-filter' => 'शोधकस्य अभिज्ञापकम् :',
 	'abusefilter-log-search-title' => 'शीर्षकम् :',
 	'abusefilter-log-search-submit' => 'अन्वेषणम्',
+	'abusefilter-log-detailedentry-global' => 'वैश्विकनिःस्यन्दकम् $1',
 	'abusefilter-log-detailedentry-local' => '$1 शोधकः',
 	'abusefilter-log-detailslink' => 'विवरणम्',
 	'abusefilter-log-diff' => 'भेदः',
 	'abusefilter-log-hidelink' => 'दृश्यतायाः समञ्जनं क्रियताम्',
+	'abusefilter-log-details-legend' => '$1 इति लघुकप्रविष्टये(log entry) विवरणम्',
 	'abusefilter-log-details-var' => 'भङ्गुरम्',
 	'abusefilter-log-details-val' => 'मूल्यम्',
 	'abusefilter-log-details-vars' => 'कार्यस्य परिमितिः',
@@ -31824,7 +31838,9 @@ $messages['sa'] = array(
 	'abusefilter-edit-notes' => "टिप्पणी:
 ''(वैयक्तिकम्)''",
 	'abusefilter-edit-lastmod-text' => '$2 द्वारा $1 इत्यस्य',
+	'abusefilter-edit-throttle-period' => 'कालावधिः:',
 	'abusefilter-edit-history' => 'इतिहास:',
+	'abusefilter-edit-tools' => 'उपकरणानि:',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'अङ्कगणितकारकम्',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'सङ्कलनम् (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'व्यवकलनम् (-)',
