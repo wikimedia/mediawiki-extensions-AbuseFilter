@@ -21684,6 +21684,7 @@ $messages['ln'] = array(
 );
 
 /** Lithuanian (lietuvių)
+ * @author Audriusa
  * @author Eitvys200
  * @author Homo
  * @author Ignas693
@@ -22093,6 +22094,8 @@ Visas detales žiūrėkite filtrų naujausių keitimo [[Special:AbuseFilter/hist
 	'abusefilter-diff-pattern' => 'Filtro sąlygos',
 	'abusefilter-diff-invalid' => 'Negalima rasti norimos versijos',
 	'abusefilter-diff-backhistory' => 'Atgal į filtro istoriją',
+	'abusefilter-diff-prev' => 'Ankstensis keitimas',
+	'abusefilter-diff-next' => 'Vėlesnis keitimas',
 	'abusefilter-import-intro' => 'Galite naudoti šią sąsają importuoti filtrus iš kitų wiki.
 Šaltinio wiki, spustelėkite "{{int:abusefilter-redaguoti-eksporto}}" pagal "{{int:abusefilter-įrankiai-paantraštė}}" redagavimo sąsaja.
 Kopijuoti iš teksto lauką, kad pasirodo, ir įklijuokite jį į šį teksto lauką, tada spustelėkite "{{int:abusefilter-importo-pateikti}}".',
