@@ -5,11 +5,11 @@
 
 require_once ( getenv( 'MW_INSTALL_PATH' ) !== false
 	? getenv( 'MW_INSTALL_PATH' ) . "/maintenance/commandLine.inc"
-	: dirname( __FILE__ ) . '/../../maintenance/commandLine.inc' );
+	: __DIR__ . '/../../maintenance/commandLine.inc' );
 
 $tester = new AbuseFilterParser;
 
-$test_path = dirname( __FILE__ ) . "/tests";
+$test_path = __DIR__ . "/tests";
 $tests = glob( $test_path . "/*.t" );
 
 $check = 0;
