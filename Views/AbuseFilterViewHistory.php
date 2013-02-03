@@ -135,7 +135,7 @@ class AbuseFilterHistoryPager extends TablePager {
 					Linker::userToolLinks( $row->afh_user, $row->afh_user_text );
 				break;
 			case 'afh_public_comments':
-				$formatted = $this->getOutput()->parse( $value );
+				$formatted = htmlspecialchars( $value, ENT_QUOTES, 'UTF-8', false );
 				break;
 			case 'afh_flags':
 				$formatted = AbuseFilter::formatFlags( $value );
