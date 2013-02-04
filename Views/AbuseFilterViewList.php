@@ -236,7 +236,7 @@ class AbuseFilterPager extends TablePager {
 			case 'af_public_comments':
 				return Linker::link(
 					SpecialPage::getTitleFor( 'AbuseFilter', intval( $row->af_id ) ),
-					$this->getOutput()->parseInline( $value )
+					htmlspecialchars( $value, ENT_QUOTES, 'UTF-8', false )
 				);
 			case 'af_actions':
 				$actions = explode( ',', $value );
