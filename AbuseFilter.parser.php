@@ -196,7 +196,7 @@ class AFPData {
 			return new AFPData( self::DBool, false );
 		}
 
-		return new AFPData( self::DBool, in_string( $a, $b ) );
+		return new AFPData( self::DBool, strpos( $b, $a ) !== false );
 	}
 
 	/**
@@ -212,7 +212,7 @@ class AFPData {
 			return new AFPData( self::DBool, false );
 		}
 
-		return new AFPData( self::DBool, in_string( $b, $a ) );
+		return new AFPData( self::DBool, strpos( $a, $b ) !== false );
 	}
 
 	/**
@@ -1603,7 +1603,7 @@ class AbuseFilterParser {
 
 				$offset += strlen( $matches[0] );
 
-				$float = in_string( '.', $input );
+				$float = strpos( $input, '.' ) !== false;
 
 				return array(
 					$float
@@ -1875,7 +1875,7 @@ class AbuseFilterParser {
 		} else {
 			$ok = false;
 			foreach ( $searchStrings as $needle ) {
-				if ( in_string( $needle, $s ) ) {
+				if ( strpos( $s, $needle ) !== false ) {
 					$ok = true;
 					break;
 				}
