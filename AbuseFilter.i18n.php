@@ -7245,6 +7245,7 @@ $messages['cv'] = array(
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  * @author Pwyll
+ * @author Robin Owain
  */
 $messages['cy'] = array(
 	'abusefilter-desc' => "Yn gosod tybiaethau i olygiadau'n awtomatig",
@@ -7304,9 +7305,19 @@ Disgrifiad o'r rheol sy'n cyfateb: $1",
 	'abusefilter-log-hide-legend' => 'Cuddio cofnod log',
 	'abusefilter-list-edit' => 'Golygu',
 	'abusefilter-list-details' => 'Manylion',
+	'abusefilter-list-limit' => 'Nifer ar bob tudalen',
+	'abusefilter-list-lastmodified' => 'Newidiwyd diwethaf',
 	'abusefilter-hidden' => 'Preifat',
 	'abusefilter-unhidden' => 'Cyhoeddus',
 	'abusefilter-enabled' => 'Wedi ei alluogi',
+	'abusefilter-list-options-submit' => 'Diweddaru',
+	'abusefilter-tools-submitexpr' => 'Gwerthuswch',
+	'abusefilter-tools-reautoconfirm-user' => 'Defnyddiwr',
+	'abusefilter-edit-status-label' => 'Ystadegau',
+	'abusefilter-edit-throttle-period' => 'Cyfnod',
+	'abusefilter-edit-warn-other' => 'Negeseuon eraill',
+	'abusefilter-history-user' => 'Defnyddiwr',
+	'abusefilter-history-diff' => 'Newidiadau',
 	'abusefilter-revert-filter' => 'Hidl:',
 );
 
@@ -11036,6 +11047,7 @@ $messages['eu'] = array(
  * @author Ladsgroup
  * @author Leyth
  * @author Mjbmr
+ * @author Pouyana
  * @author Reza1615
  * @author Sahim
  * @author Wayiran
@@ -11179,6 +11191,7 @@ $messages['fa'] = array(
 	'abusefilter-reautoconfirm-notallowed' => 'شما اجازه ندارید حالت تأییدشده را بازگردانید.',
 	'abusefilter-reautoconfirm-done' => 'وضعیت تأییدشدهٔ حساب بازگردانده شد.',
 	'abusefilter-status' => 'از میان $1 {{PLURAL:$1|عمل|عمل}} آخر، $2 مورد ($3٪) به ظرفیت شرایط $4 {{PLURAL:$2|رسید|رسیدند}}، و $5 مورد ($6٪) با یکی از پالایه‌هایی که در حال حاضر فعال است مطابقت {{PLURAL:$5|داشت|داشتند}}.',
+	'abusefilter-edit' => 'ویرایش فیلترهای جلوگیری از سو‌ء استفاده',
 	'abusefilter-edit-subtitle' => 'ویرایش پالایهٔ $1',
 	'abusefilter-edit-subtitle-new' => 'ساختن پالایه',
 	'abusefilter-edit-oldwarning' => '<strong>شما مشغول ویرایش کردن بر روی نسخهٔ قدیمی از پالایه هستید.
@@ -15633,6 +15646,8 @@ Za dospołne podrobnosće hlej [[Special:AbuseFilter/history|lisćinu]] njedawny
 	'abusefilter-diff-pattern' => 'Filtrowe wuměnjenja',
 	'abusefilter-diff-invalid' => 'Njemóžno požadane wersije wobstarać',
 	'abusefilter-diff-backhistory' => 'Wróćo k filtrowym stawiznam',
+	'abusefilter-diff-prev' => 'Starša změna',
+	'abusefilter-diff-next' => 'Nowša změna',
 	'abusefilter-import-intro' => 'Móžeš tutón interfejs wužiwać, zo by filtry z druhich wikijow importował.
 Klikń w žórłowym wikiju na "{{int:abusefilter-edit-export}}" pod "{{int:abusefilter-edit-tools}}" na wobdźěłowanskim interfejsu. Kopěruj z jewjaceho so tekstoweho pola do tutoho tekstoweho pola a klikń potom na "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'Daty importować',
@@ -24782,7 +24797,7 @@ $messages['nah'] = array(
 	'abusefilter-topnav-home' => 'Pèwalòyàn',
 );
 
-/** Norwegian Bokmål (norsk (bokmål)‎)
+/** Norwegian Bokmål (norsk bokmål)
  * @author Danmichaelo
  * @author EvenT
  * @author Event

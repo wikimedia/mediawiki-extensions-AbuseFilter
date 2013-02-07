@@ -301,7 +301,7 @@ $specialPageAliases['myv'] = array(
 	'AbuseFilter' => array( 'АТевсНолдамоньФильтра' ),
 );
 
-/** Norwegian Bokmål (norsk (bokmål)‎) */
+/** Norwegian Bokmål (norsk bokmål) */
 $specialPageAliases['nb'] = array(
 	'AbuseLog' => array( 'Misbrukslogg' ),
 	'AbuseFilter' => array( 'Misbruksfilter' ),
@@ -319,7 +319,7 @@ $specialPageAliases['nl'] = array(
 	'AbuseFilter' => array( 'Filter', 'Misbruikfilter' ),
 );
 
-/** Norwegian Nynorsk (norsk (nynorsk)‎) */
+/** Norwegian Nynorsk (norsk nynorsk) */
 $specialPageAliases['nn'] = array(
 	'AbuseLog' => array( 'Misbrukslogg' ),
 	'AbuseFilter' => array( 'Misbruksfilter' ),
