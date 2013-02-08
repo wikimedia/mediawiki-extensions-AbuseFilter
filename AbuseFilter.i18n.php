@@ -29659,6 +29659,7 @@ Copie da caixa de texto que aparece, coloque nesta caixa de texto e depois cliqu
  * @author Heldergeovane
  * @author Luckas Blade
  * @author MetalBrasil
+ * @author Opraco
  * @author Pedroca cerebral
  * @author Rafael Vargas
  * @author TheGabrielZaum
@@ -29744,7 +29745,7 @@ Descrição do filtro: $7 ($8)',
 	'abusefilter-log-details-ip' => 'Endereço de IP de origem',
 	'abusefilter-log-noactions' => 'nenhum',
 	'abusefilter-log-details-diff' => 'Alterações feitas na edição',
-	'abusefilter-log-linkoncontribs' => 'Registro de abusos',
+	'abusefilter-log-linkoncontribs' => 'registro de abusos',
 	'abusefilter-log-linkoncontribs-text' => 'Registro de Abuso para este usuário',
 	'abusefilter-log-hidden' => '(entrada ocultada)',
 	'abusefilter-log-hidden-implicit' => '(oculto porque a revisão foi eliminada)',
