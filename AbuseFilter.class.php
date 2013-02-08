@@ -688,21 +688,15 @@ class AbuseFilter {
 	 */
 	public static function executeFilterActions( $filters, $title, $vars ) {
 		wfProfileIn( __METHOD__ );
-		static $blockingActions = array(
-			'block',
-			'rangeblock',
-			'degroup',
-			'blockautopromote'
-		);
 
 		$actionsByFilter = self::getConsequencesForFilters( $filters );
 		$actionsTaken = array_fill_keys( $filters, array() );
 
 		$messages = array();
 
+		global $wgOut, $wgAbuseFilterDisallowGlobalLocalBlocks, $wgAbuseFilterRestrictedActions;
 		foreach ( $actionsByFilter as $filter => $actions ) {
 			// Special-case handling for warnings.
-			global $wgOut, $wgAbuseFilterDisallowGlobalLocalBlocks;
 			$parsed_public_comments = $wgOut->parseInline(
 				self::$filters[$filter]->af_public_comments );
 
@@ -729,7 +723,7 @@ class AbuseFilter {
 			}
 
 			if ( $wgAbuseFilterDisallowGlobalLocalBlocks && $global_filter ) {
-				foreach ( $blockingActions as $blockingAction ) {
+				foreach ( $wgAbuseFilterRestrictedActions as $blockingAction ) {
 					unset( $actions[$blockingAction] );
 				}
 			}
@@ -760,7 +754,7 @@ class AbuseFilter {
 			}
 
 			// prevent double warnings
-			if ( count( array_intersect( array_keys( $actions ), $blockingActions ) ) > 0 &&
+			if ( count( array_intersect( array_keys( $actions ), $wgAbuseFilterRestrictedActions ) ) > 0 &&
 					!empty( $actions['disallow'] ) ) {
 				unset( $actions['disallow'] );
 			}
