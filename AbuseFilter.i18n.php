@@ -19180,7 +19180,7 @@ $messages['ka'] = array(
 :''(პირადი)''",
 	'abusefilter-edit-lastmod' => 'ფილტრის ბოლო ცვლილება:',
 	'abusefilter-edit-lastmod-text' => '$1 — $2',
-	'abusefilter-edit-hitcount' => 'ფილტრის фამოქმედება',
+	'abusefilter-edit-hitcount' => 'ფილტრის ამოქმედება:',
 	'abusefilter-edit-consequences' => 'მიღებული ზომები',
 	'abusefilter-edit-action-warn' => 'მიიღეთ ეს ზომები მომხმარებლის გაფრთხილების შემდეგ',
 	'abusefilter-edit-action-disallow' => 'აუკრძალეთ მომხმარებელს მოთხოვნილი მოქმედების განხორციელება',
