@@ -10163,6 +10163,7 @@ Descripción del filtro: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => 'No estás autorizado para restaurar el permiso autoconfirmado a los usuarios.',
 	'abusefilter-reautoconfirm-done' => 'El estado autoconfirmado de la cuenta ha sido restaurado',
 	'abusefilter-status' => 'De las últimas $1 {{PLURAL:$1|acción|acciones}}, $2 ($3%) {{PLURAL:$2|ha|han}} han alcanzado la condición límite de  $4, y $5 ($6%) {{PLURAL:$5|ha|han}} coincidido con uno de los filtros actualmente habilitados.',
+	'abusefilter-edit' => 'Editar el filtro de abuso',
 	'abusefilter-edit-subtitle' => 'Editando filtro $1',
 	'abusefilter-edit-subtitle-new' => 'Creando un filtro',
 	'abusefilter-edit-oldwarning' => '<strong>Estás editando una versión antigua de este filtro.
@@ -10296,6 +10297,7 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-edit-builder-vars-article-ns' => 'Espacio de nombres de la página',
 	'abusefilter-edit-builder-vars-article-text' => 'Título de página (sin espacio de nombre)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Título de página completa',
+	'abusefilter-edit-builder-vars-article-views' => 'Vistas de la página',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'ID de la página fuente a trasladar',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Espacio de nombres de la página fuente a trasladar',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Título de la página fuente a trasladar',
@@ -10438,6 +10440,8 @@ Para detalles completos, ver [[Special:AbuseFilter/history|la lista]] de cambios
 	'abusefilter-diff-pattern' => 'Condiciones de filtro',
 	'abusefilter-diff-invalid' => 'Incapaz de traer la versiones solicitadas',
 	'abusefilter-diff-backhistory' => 'Regresar al historial del filtro',
+	'abusefilter-diff-prev' => 'Cambio anterior',
+	'abusefilter-diff-next' => 'Cambio siguiente',
 	'abusefilter-import-intro' => 'Puedes usar esta interfaz para importar filtros de otros wikis.
 En el wiki fuente, pulsa en «{{int:abusefilter-edit-export}}» bajo «{{int:abusefilter-edit-tools}}» en la interfaz de edición.
 Copia desde el cuadro de texto que aparece, y pegalo dentro de este cuadro de texto, luego pulsa en «{{int:abusefilter-import-submit}}».',
