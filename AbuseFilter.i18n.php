@@ -20909,14 +20909,13 @@ De Mëssbrauchsfilter ass en automatesche Mechanismus deen et erlaabt automatesc
 Dës Spezialsäit weist eng Lëscht vun definéierte Filteren an erlaabt et dës z'änneren.",
 	'abusefilter-mustbeeditor' => "Aus Sécherheetsgrënn kënnen nëmme Benotzer déi d'Recht hunn fir Mëssbrauchsfilteren z'änneren dësen Interface benotzen.",
 	'abusefilter-warning' => "'''Opgepasst''': Dës Aktioun gouf automatesch als geféierlech erkannt.
-Ännerungen déi net konstruktiv si ginn automatesch zréckgsat,
+Ännerungen déi net konstruktiv si ginn automatesch zeréckgsat,
 a besonnesch schlëmmen oder widderhuelte Fäll gëtt Äre Benotzerkont oder Är IP-Adress gespaart.
-Wann Dir mengt datt Är Ännerung konstruktiv ass kënnt dir nachemol op \"Späichere\" klicke fir ze confirméieren.
-Eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi Är Aktioun reagéiert huet: \$1", # Fuzzy
-	'abusefilter-disallowed' => 'Dës Aktioun gouf automatesch als schiedlech erkannt,
-an dofir net zougelooss.
-Wann Dir mengt datt Är Ännerung konstruktiv ass, da kontaktéiert w.e.g. en Administrateur, an informéiert deen wat Dir versicht hutt ze maachen.
-Eng kuerz Beschreiwung vun der Mëssbrauchsregel déi op är Aktioun getraff huet ass hei: $1', # Fuzzy
+Wann Dir mengt datt Är Ännerung konstruktiv ass, kënnt Dir nachemol op \"Späichere\" klicke fir ze confirméieren.
+Eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi Är Aktioun reagéiert huet: \$1",
+	'abusefilter-disallowed' => 'Dës Aktioun gouf automatesch als schiedlech erkannt,an dofir net zougelooss.
+Wann Dir mengt datt Är Ännerung konstruktiv ass, da kontaktéiert w.e.g. en Administrateur, an informéiert deen iwwer dat wat Dir versicht hutt ze maachen.
+Eng kuerz Beschreiwung vun der Mëssbrauchsregel, déi op är Aktioun reagéiert huet, ass: $1',
 	'abusefilter-blocked-display' => 'Dës Aktioun gouf automatesch als schiedlech identifizéiert,
 an Dir konnt se dowéint net ausféieren.
 Des weideren, fir {{SITENAME}} ze protegéieren, gouf Äre Benotzerkont an all assoziéiert IP-Adressen automatesch fir all Ännerunge gespaart.
@@ -21033,6 +21032,7 @@ Beschreiwung vum Filter: $7 ($8)',
 	'abusefilter-reautoconfirm-none' => 'Dësem Benotzer {{GENDER:$1|säin|hiren}}"autoconfirmed"-Status war net opgehuewen.',
 	'abusefilter-reautoconfirm-notallowed' => 'Dir hutt net déi néideg Rechter fir de Status "autoconfirmed" zréckzesetzen.',
 	'abusefilter-reautoconfirm-done' => 'Dem Benotzerkont säi Status 2autoconfirmed" gouf zréckgesat',
+	'abusefilter-edit' => 'Mëssbrauchsfilter änneren',
 	'abusefilter-edit-subtitle' => 'Ännere vum Filter $1',
 	'abusefilter-edit-subtitle-new' => 'Filter uleeën',
 	'abusefilter-edit-oldwarning' => "<strong>Dir sidd amgaang eng al Versioun vum Filter z'änneren.
@@ -21291,6 +21291,8 @@ Fir weider Detailer, kuckt [[Special:AbuseFilter/history|d'Lëscht]] vun de reze
 	'abusefilter-diff-pattern' => 'Konditioune vum Filter',
 	'abusefilter-diff-invalid' => 'Déi ugefrote Versioune kënnen net fonnt ginn',
 	'abusefilter-diff-backhistory' => "Zréck op d'Lëscht vun de Versioune vum Filter",
+	'abusefilter-diff-prev' => 'Méi al Ännerung',
+	'abusefilter-diff-next' => 'Méi nei Ännerung',
 	'abusefilter-import-intro' => 'Dir kënnt dësen Interface benotze fir Filtere vu anere Wikien z\'importéieren.
 Klickt op der originaler Wiki op "{{int:abusefilter-edit-export}}"  ënner "{{int:abusefilter-edit-tools}}" op dem Interface vun den Ännerungen.
 Kopéiert vun der Textkëscht déi opgeet an dës Textkëscht a klickt op "{{int:abusefilter-import-submit}}",',
