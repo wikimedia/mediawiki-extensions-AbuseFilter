@@ -1,0 +1,12 @@
+{
+	"name": "mediawiki/abuse-filter",
+	"type": "mediawiki-extension",
+	"description": "The AbuseFilter extension allows privileged users to set specific controls on actions by users, such as edits, and create automated reactions for certain behaviors.",
+	"homepage": "http://www.mediawiki.org/wiki/Extension:AbuseFilter",
+	"license" : "GPL-2.0+",
+
+	"require": {
+		"composer/installers" : "*",
+		"mediawiki/anti-spoof" : "*"
+	}
+}
