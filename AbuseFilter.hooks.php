@@ -83,7 +83,7 @@ class AbuseFilterHooks {
 		$oldcontent = null;
 
 		$title = $context->getTitle();
-		if ( $title->canExist() && $title->exists() ) {
+		if ( ( $title instanceof Title ) && $title->canExist() && $title->exists() ) {
 			// Make sure we load the latest text saved in database (bug 31656)
 			$page = $context->getWikiPage();
 			$revision = $page->getRevision();

@@ -1920,7 +1920,7 @@ class AbuseFilter {
 		$vars = new AbuseFilterVariableHolder;
 
 		// NOTE: $page may end up remaining null, e.g. if $title points to a special page.
-		if ( !$page && $title->canExist() && $title->exists() ) {
+		if ( !$page && $title instanceof Title && $title->canExist() && $title->exists() ) {
 			$page = WikiPage::factory( $title );
 		}
 
@@ -1938,41 +1938,43 @@ class AbuseFilter {
 			array( 'diff-var' => 'edit_diff', 'line-prefix' => '-' ) );
 
 		// Links
-		$vars->setLazyLoadVar( 'all_links', 'links-from-wikitext',
-			array(
-				'namespace' => $title->getNamespace(),
-				'title' => $title->getText(),
-				'text-var' => 'new_wikitext',
-				'article' => $page
-			) );
-		$vars->setLazyLoadVar( 'old_links', 'links-from-wikitext-or-database',
-			array(
-				'namespace' => $title->getNamespace(),
-				'title' => $title->getText(),
-				'text-var' => 'old_wikitext'
-			) );
 		$vars->setLazyLoadVar( 'added_links', 'link-diff-added',
 			array( 'oldlink-var' => 'old_links', 'newlink-var' => 'all_links' ) );
 		$vars->setLazyLoadVar( 'removed_links', 'link-diff-removed',
 			array( 'oldlink-var' => 'old_links', 'newlink-var' => 'all_links' ) );
-
-		$vars->setLazyLoadVar( 'new_html', 'parse-wikitext',
-			array(
-				'namespace' => $title->getNamespace(),
-				'title' => $title->getText(),
-				'wikitext-var' => 'new_wikitext',
-				'article' => $page
-			) );
 		$vars->setLazyLoadVar( 'new_text', 'strip-html',
 			array( 'html-var' => 'new_html' ) );
-		$vars->setLazyLoadVar( 'old_html', 'parse-wikitext-nonedit',
-			array(
-				'namespace' => $title->getNamespace(),
-				'title' => $title->getText(),
-				'wikitext-var' => 'old_wikitext'
-			) );
 		$vars->setLazyLoadVar( 'old_text', 'strip-html',
 			array( 'html-var' => 'old_html' ) );
+
+		if ( $title instanceof Title ) {
+			$vars->setLazyLoadVar( 'all_links', 'links-from-wikitext',
+				array(
+					'namespace' => $title->getNamespace(),
+					'title' => $title->getText(),
+					'text-var' => 'new_wikitext',
+					'article' => $page
+				) );
+			$vars->setLazyLoadVar( 'old_links', 'links-from-wikitext-or-database',
+				array(
+					'namespace' => $title->getNamespace(),
+					'title' => $title->getText(),
+					'text-var' => 'old_wikitext'
+				) );
+			$vars->setLazyLoadVar( 'new_html', 'parse-wikitext',
+				array(
+					'namespace' => $title->getNamespace(),
+					'title' => $title->getText(),
+					'wikitext-var' => 'new_wikitext',
+					'article' => $page
+				) );
+			$vars->setLazyLoadVar( 'old_html', 'parse-wikitext-nonedit',
+				array(
+					'namespace' => $title->getNamespace(),
+					'title' => $title->getText(),
+					'wikitext-var' => 'old_wikitext'
+				) );
+		}
 
 		return $vars;
 	}
