@@ -9136,6 +9136,14 @@ Kointalangan do sinalaguno diti kooturan di kohompit do kinarajanu nopo nga oboy
 	'abusefilter-edit-tools' => 'Tangakakamot:',
 );
 
+/** Divehi (ދިވެހިބަސް)
+ * @author Ushau97
+ */
+$messages['dv'] = array(
+	'abusefilter-log-detailslink' => 'ތަފްސީލް',
+	'abusefilter-log-hide-reason' => 'ސަބަބު:',
+);
+
 /** Ewe (eʋegbe)
  */
 $messages['ee'] = array(
@@ -11051,6 +11059,7 @@ $messages['eu'] = array(
  * @author Huji
  * @author Ladsgroup
  * @author Leyth
+ * @author Mahdiz
  * @author Mjbmr
  * @author Pouyana
  * @author Reza1615
@@ -11269,6 +11278,7 @@ $messages['fa'] = array(
 	'abusefilter-edit-bad-tags' => 'یک یا چند برچسب مشخص‌شده توسط شما معتبر نیست.
 برچسب‌ها باید کوتاه باشند، و نباید دارای نویسه‌های ویژه باشند.',
 	'abusefilter-edit-notallowed' => 'شما اجازه ندارید که پالایه‌های خرابکاری بسازید یا ویرایش کنید',
+	'abusefilter-edit-notallowed-global' => 'شما اجازه ندارید که پالایه‌های خرابکاری سراسری را بسازید یا ویرایش کنید',
 	'abusefilter-edit-builder-select' => 'گزینه‌ای را انتخاب کنید تا در محل نشانگر اضافه شود',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'عملگرهای حسابی',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'افزودن (+)',
@@ -13043,7 +13053,7 @@ De media, o seu tempo de execución é de $4ms, e consome {{PLURAL:$5|unha condi
 	'abusefilter-edit-notes' => "Notas:
 :''(privado)''",
 	'abusefilter-edit-lastmod' => 'Última modificación do filtro:',
-	'abusefilter-edit-lastmod-text' => 'o $3 ás $4 por $2',
+	'abusefilter-edit-lastmod-text' => '$3 ás $4 por $2',
 	'abusefilter-edit-hitcount' => 'Deteccións do filtro:',
 	'abusefilter-edit-consequences' => 'Accións levadas a cabo na detección',
 	'abusefilter-edit-action-warn' => 'Desencadear estas accións despois de darlle ao usuario un aviso',
