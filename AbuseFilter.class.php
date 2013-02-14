@@ -1777,12 +1777,13 @@ class AbuseFilter {
 		# Process actions
 		$actions_raw = unserialize( $row->afh_actions );
 		$actions_output = array();
-
-		foreach ( $actions_raw as $action => $parameters ) {
-			$actions_output[$action] = array(
-				'action' => $action,
-				'parameters' => $parameters
-			);
+		if ( is_array( $actions_raw ) ) {
+			foreach ( $actions_raw as $action => $parameters ) {
+				$actions_output[$action] = array(
+					'action' => $action,
+					'parameters' => $parameters
+				);
+			}
 		}
 
 		return array( $af_row, $actions_output );
