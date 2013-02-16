@@ -897,7 +897,8 @@ See also {{msg-mw|Abusefilter-edit-builder-vars-restrictions-edit}}, {{msg-mw|Ab
 Tells that the user is stripped from autoconfirmed status.',
 	'abusefilter-action-block' => '{{doc-abusefilter-action}}
 
-This appears to be a verb.',
+This appears to be a verb.
+{{Identical|Block}}',
 	'abusefilter-action-degroup' => '{{doc-abusefilter-action}}',
 	'abusefilter-action-rangeblock' => '{{doc-abusefilter-action}}',
 	'abusefilter-action-disallow' => '{{doc-abusefilter-action}}',
@@ -10475,11 +10476,11 @@ Liidesega saab vaadata määratletud filtrite loendit ja filtreid muuta.',
 	'abusefilter-warning' => "'''Hoiatus''': See toiming on automaatselt kahjulikuks arvatud.
 Ebaasjalikud muudatused eemaldatakse kiiresti
 ning korduvate ja halvimate muudatuste tagajärjel blokeeritakse su konto või IP-aadress.
-Kui arvad selle muudatuse asjaliku olevat, võid selle kinnitamiseks uuesti \"{{int:savearticle}}\" klõpsata.
-Sinu toimingule vastanud väärtarvitusfiltri reegli lühikirjeldus: \$1", # Fuzzy
+Kui arvad selle toimingu asjaliku olevat, võid kinnituseks selle uuesti salvestada.
+Sinu toimingule vastanud väärtarvitusfiltri reegli lühikirjeldus: $1",
 	'abusefilter-disallowed' => 'See toiming on automaatselt kahjulikuks arvatud ja on seetõttu keelatud.
-Kui arvad muudatuse asjaliku olevat, võta palun teha soovitud muudatuse asjus administraatoriga ühendust.
-Sinu toimingule vastanud väärtarvitusfiltri reegli lühikirjeldus: $1', # Fuzzy
+Kui arvad toimingu asjaliku olevat, võta palun teha soovitud muudatuse asjus administraatoriga ühendust.
+Sinu toimingule vastanud väärtarvitusfiltri reegli lühikirjeldus: $1',
 	'abusefilter-blocked-display' => 'See toiming on automaatselt kahjulikuks arvatud
 ja sul ei lastud seda sooritada.
 Kaitsmaks {{GRAMMAR:partitive|{{SITENAME}}}} on lisaks sellele sinu konto ja kõikide seostuvate IP-aadresside redigeerimisõigus blokeeritud.

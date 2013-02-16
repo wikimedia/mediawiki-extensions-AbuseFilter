@@ -415,6 +415,12 @@ $specialPageAliases['uk'] = array(
 	'AbuseFilter' => array( 'Фільтр_зловживань' ),
 );
 
+/** Urdu (اردو) */
+$specialPageAliases['ur'] = array(
+	'AbuseLog' => array( 'نوشتہ_غلط_کاری' ),
+	'AbuseFilter' => array( 'مقطار_غلط_کاری' ),
+);
+
 /** vèneto (vèneto) */
 $specialPageAliases['vec'] = array(
 	'AbuseLog' => array( 'RegistroAbusi' ),
