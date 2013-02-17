@@ -523,8 +523,8 @@ Copy from the textbox that appears, and paste it into this textbox, then click "
  */
 $messages['qqq'] = array(
 	'abusefilter-desc' => '{{desc|name=Abuse Filter|url=http://www.mediawiki.org/wiki/Extension:AbuseFilter}}',
-	'abusefilter' => 'Name of Special:AbuseFilter in Special:SpecialPages and title of special page.',
-	'abuselog' => 'Name of Special:AbuseLog in Special:SpecialPages and title of special page.',
+	'abusefilter' => 'Name of Special:AbuseFilter in [[Special:SpecialPages]] and title of special page.',
+	'abuselog' => 'Name of Special:AbuseLog in [[Special:SpecialPages]] and title of special page.',
 	'abusefilter-intro' => 'Introduction text for the list of filter rules.',
 	'abusefilter-mustbeeditor' => '"No access" message shown when a user does not have access rights.',
 	'abusefilter-warning' => 'A warning message shown when a user tries to save an edit which matches some abuse filter rule. Parameters:
