@@ -11053,6 +11053,7 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Alireza
+ * @author Calak
  * @author Dalba
  * @author Ebraminio
  * @author Erdemaslancan
@@ -11080,11 +11081,11 @@ $messages['fa'] = array(
 	'abusefilter-warning' => "'''اخطار''': این کار به طور خودکار خطرناک تشخیص داده‌شده‌است.
 ویرایش‌های غیرسازنده به سرعت واگردانی خواهند شد،
 و ویرایش‌های عمدی یا مکرر خرابکارانه منجر به بسته شدن حساب یا نشانی آی‌پی شما خواهد شد.
-اگر مطمئنید که این ویرایش مفید است دوباره بر دکمه تأیید بفشارید تا آن را تأیید کنید.
-خلاصه‌ای از توضیح قانون جلوگیری از خرابکاری که با کار شما مطابقت دارد چنین است: $1", # Fuzzy
+اگر مطمئنید که این عمل مفید است باید دوباره آن را تأیید کنید.
+خلاصه‌ای از توضیح قانون جلوگیری از خرابکاری که با کار شما مطابقت دارد چنین است: $1",
 	'abusefilter-disallowed' => 'این کار به طور خودکار خطرناک تشخیص داده شده‌است و بنابراین غیرمجاز است.
-اگر فکر می‌کنید که ویرایشتان درست بوده‌است لطفاً به یکی از مدیران بگویید که چه می‌خواهید بکنید.
-خلاصه‌ای از توضیح قانون جلوگیری از خرابکاری که با کار شما مطابقت دارد چنین است: $1', # Fuzzy
+اگر فکر می‌کنید که عملتان درست بوده‌است لطفاً به یکی از مدیران بگویید که چه می‌خواهید بکنید.
+خلاصه‌ای از توضیح قانون جلوگیری از خرابکاری که با کار شما مطابقت دارد چنین است: $1',
 	'abusefilter-blocked-display' => 'این کار به طور خودکار خطرناک تشخیص داده‌شده است،
 و شما از اجرای آن منع شدید.
 به علاوه، برای حفاظت از {{SITENAME}}، حساب شما و آی‌پی‌های مرتبط با آن به طور خودکار بسته شده‌اند.
@@ -11114,6 +11115,7 @@ $messages['fa'] = array(
 	'right-abusefilter-log-private' => 'نمایش ورودی‌های سیاهه‌های خرابکاری خصوصی',
 	'right-abusefilter-hide-log' => 'پنهان‌کردن موارد سیاههٔ خرابکاری',
 	'right-abusefilter-hidden-log' => 'مشاهدهٔ موارد پنهان سیاههٔ خرابکاری',
+	'right-abusefilter-modify-global' => 'ایجاد یا تغییر پالایه‌های سراسری خرابکاری',
 	'action-abusefilter-modify' => 'ویرایش پالایه‌های خرابکاری',
 	'action-abusefilter-view' => 'مشاهدهٔ پالایه‌های خرابکاری',
 	'action-abusefilter-log' => 'مشاهدهٔ سیاههٔ خرابکاری',
@@ -11974,6 +11976,7 @@ Reglu frágreiðing: $1',
  * @author Sherbrooke
  * @author Tititou36
  * @author Urhixidur
+ * @author VIGNERON
  * @author Verdy p
  * @author Wyz
  * @author Zetud
@@ -12343,7 +12346,7 @@ Veuillez les vérifier attentivement, puis cliquez sur « Confirmer » pour vali
 	'abusefilter-revert-success' => 'Vous avez révoqué avec succès toutes les actions entreprises par le filtre antiabus et déclenchées par le [[Special:AbuseFilter/$1|filtre $1]].',
 	'abusefilter-revert-reason' => 'Révocation automatique de toutes les actions entreprises par le filtre antiabus et déclenchées par le filtre $1.
 Motif donné : $2',
-	'abusefilter-revert-reasonfield' => 'Motif:',
+	'abusefilter-revert-reasonfield' => 'Motif :',
 	'abusefilter-test' => 'Tester un filtre sur les précédentes modifications',
 	'abusefilter-test-intro' => "Cette page vous permet d'appliquer un filtre saisi dans la zone de texte ci-dessous {{PLURAL:$1|à la dernière modification|aux $1 dernières modifications}} .
 Pour charger un filtre existant, entrez son identifiant dans le champ sous la zone de texte et cliquez sur le bouton « {{MediaWiki:Abusefilter-test-load/fr}} ».",
