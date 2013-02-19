@@ -185,8 +185,10 @@ $wgAbuseFilterIsCentral = false;
 // block, remove from groups, or revoke permissions
 $wgAbuseFilterDisallowGlobalLocalBlocks = false;
 
-// Block duration
+// Block duration for logged in users
 $wgAbuseFilterBlockDuration = 'indefinite';
+// Block duration for anonymous users
+$wgAbuseFilterAnonBlockDuration = $wgAbuseFilterBlockDuration;
 
 // Callback functions for custom actions
 $wgAbuseFilterCustomActionsHandlers = array();

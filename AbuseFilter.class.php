@@ -1177,7 +1177,7 @@ class AbuseFilter {
 				break;
 
 			case 'block':
-				global $wgUser, $wgAbuseFilterBlockDuration;
+				global $wgUser, $wgAbuseFilterBlockDuration, $wgAbuseFilterAnonBlockDuration;
 				$filterUser = AbuseFilter::getFilterUser();
 
 				// Create a block.
@@ -1192,8 +1192,9 @@ class AbuseFilter {
 				$block->isAutoblocking( true );
 				$block->prevents( 'createaccount', true );
 				$block->prevents( 'editownusertalk', false );
-				$block->mExpiry = SpecialBlock::parseExpiryInput( $wgAbuseFilterBlockDuration );
 
+				$expiry = $wgUser->isAnon() ? $wgAbuseFilterAnonBlockDuration : $wgAbuseFilterBlockDuration;
+				$block->mExpiry = SpecialBlock::parseExpiryInput( $expiry );
 				$block->insert();
 
 				// Log it
@@ -1202,7 +1203,7 @@ class AbuseFilter {
 				if ( $block->mExpiry == 'infinity' ) {
 					$logParams[] = 'indefinite';
 				} else {
-					$logParams[] = $wgAbuseFilterBlockDuration;
+					$logParams[] = $expiry;
 				}
 				$logParams[] = 'nocreate';
 
