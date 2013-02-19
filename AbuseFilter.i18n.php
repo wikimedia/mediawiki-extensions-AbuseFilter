@@ -935,7 +935,8 @@ This is also used in {{msg-mw|Abusefilter-revert-preview-intro}}. When changing 
 * $1 is a timestamp, which links to the old version or the new version.
 * $2 is a link to a username.
 * $3 is a raw username, which can be used for GENDER.',
-	'abusefilter-diff-info' => "Header for the box containing the basic information about a user account, displayed on the 'user profile' tab of the [[Special:Preferences|user preferences]] special page.",
+	'abusefilter-diff-info' => "Header for the box containing the basic information about a user account, displayed on the 'user profile' tab of the [[Special:Preferences|user preferences]] special page.
+{{Identical|Basic information}}",
 	'abusefilter-diff-prev' => 'Link to the diff view for the previous change to this filter.
 
 See also:
@@ -1436,6 +1437,7 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author ;Hiba;1
+ * @author Abanima
  * @author Aiman titi
  * @author Alnokta
  * @author Bassem JARKAS
@@ -1465,10 +1467,9 @@ $messages['ar'] = array(
 والتعديل غير البناء المتكرر أو المستمر سيؤدي إلى منع حسابك أو حاسوبك.
 إذا كنت تعتقد أن هذا التعديل بناء، فيمكن أن تضغط \"أرسل\" مرة أخرى لتأكيده.
 وصف مختصر لقاعدة الإساءة التي طابقها فعلك: \$1",
-	'abusefilter-disallowed' => 'هذا الفعل تم التعرف عليه تلقائيا كضار،
-ولذا تم منعه.
-لو كنت تعتقد أن تعديلك بناء، من فضلك اتصل بإداري، وأخبره بما كنت تحاول أن تفعل.
-وصف مختصر لقاعدة الإساءة التي طابقها فعلك هو: $1', # Fuzzy
+	'abusefilter-disallowed' => 'هذا الفعل تم التعرف عليه تلقائيا كضار، ولذا تم منعه.
+إذا كنت ترى أن تعديلك بناء، من فضلك اتصل بإداري، وأخبره بما كنت تحاول أن تفعل.
+وصف مختصر لقاعدة الإساءة التي طابقها فعلك هو: $1',
 	'abusefilter-blocked-display' => 'هذا الفعل تم التعرف عليه تلقائيا كضار،
 وأنت تم منعك من تنفيذه.
 بالإضافة إلى ذلك، لحماية {{SITENAME}}، حسابك وكل عناوين الأيبي الملحقة تم منعها من التحرير.
@@ -1575,6 +1576,7 @@ $messages['ar'] = array(
 	'abusefilter-list-options-deleted-show' => 'ضمن المرشحات المحذوفة',
 	'abusefilter-list-options-scope' => 'إظهار المرشحات ضمن مجموعة:',
 	'abusefilter-list-options-scope-local' => 'الويكي المحلية',
+	'abusefilter-list-options-scope-global' => 'القواعد الشاملة',
 	'abusefilter-list-options-disabled' => 'المرشحات المعطلة:',
 	'abusefilter-list-options-hidedisabled' => 'أخفِ المرشحات المعطلة',
 	'abusefilter-list-options-submit' => 'حدّث',
@@ -1588,6 +1590,7 @@ $messages['ar'] = array(
 	'abusefilter-reautoconfirm-notallowed' => 'أنت غير مسموح لك باسترجاع حالة التأكيد التلقائي.',
 	'abusefilter-reautoconfirm-done' => 'حالة التأكيد التلقائي للحساب تمت استعادتها',
 	'abusefilter-status' => 'من آخر $1 {{PLURAL:$1|فعل|فعل}}، $2 ($3%) {{PLURAL:$2|وصل|وصل}} إلى حد الحالة ل$4. $5 ($6%) {{PLURAL:$5|طابق|طابق}} واحدا من المرشحات المفعلة حاليا.',
+	'abusefilter-edit' => 'تحرير مرشح الإساءة',
 	'abusefilter-edit-subtitle' => 'تعديل المُرشِّح $1',
 	'abusefilter-edit-subtitle-new' => 'أنشئ مُرشِّحًا',
 	'abusefilter-edit-oldwarning' => '<strong>أنت تعدل نسخة قديمة من هذا المرشح.
@@ -1658,6 +1661,7 @@ $messages['ar'] = array(
 	'abusefilter-edit-bad-tags' => 'واحدة أو أكثر من الوسوم التي حددتها غير صالحة.
 يجب أن تكون الوسوم قصيرة وألا تحتوي على أحرف خاصة.',
 	'abusefilter-edit-notallowed' => 'لا يسمح لك بإنشاء أو تعديل مرشحات الإساءة',
+	'abusefilter-edit-notallowed-global' => 'لا يسمح لك بإنشاء أو تعديل مرشحات الإساءة الشاملة',
 	'abusefilter-edit-builder-select' => 'اختر خيارا لإضافته عند البكرة',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'معاملات حسابية',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'جمع (+)',
@@ -1720,6 +1724,7 @@ $messages['ar'] = array(
 	'abusefilter-edit-builder-vars-article-ns' => 'نطاق الصفحة',
 	'abusefilter-edit-builder-vars-article-text' => 'عنوان الصفحة (بدون نطاق)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'عنوان الصفحة الكامل',
+	'abusefilter-edit-builder-vars-article-views' => 'عدد مشاهدات الصفحة',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'هوية الصفحة لنقل صفحة المصدر',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'نطاق الصفحة المصدر للنقل',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'عنوان الصفحة المصدر للنقل',
@@ -1732,6 +1737,7 @@ $messages['ar'] = array(
 	'abusefilter-edit-builder-vars-user-age' => 'عمر حساب المستخدم',
 	'abusefilter-edit-builder-vars-user-name' => 'اسم حساب المستخدم',
 	'abusefilter-edit-builder-vars-user-groups' => 'المجموعات (متضمنة غير المباشرة) التي المستخدم فيها',
+	'abusefilter-edit-builder-vars-user-blocked' => 'ما إذا كان المستخدم ممنوعاً',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'وقت تأكيد عنوان البريد الإلكتروني',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'آخر خمسة مساهمين في الصفحة',
 	'abusefilter-edit-builder-vars-all-links' => 'كل الوصلات الخارجية في النص الجديد',
@@ -1743,6 +1749,8 @@ $messages['ar'] = array(
 	'abusefilter-edit-builder-vars-new-html' => 'مصدر HTML المعروض للمراجعة الجديدة',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'مستوى حماية التعديل للصفحة',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'مستوى حماية النقل للصفحة',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'مستوى حماية الإنشاء للصفحة',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'مستوى حماية الرفع للملف',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'نص الصفحة القديم، منزوع منه أي تهيئة',
 	'abusefilter-edit-builder-vars-old-links' => 'الوصلات في الصفحة، قبل التعديل',
 	'abusefilter-edit-builder-vars-old-html' => 'نص ويكي الصفحة القديم، محلل إلى HTML',
@@ -1860,6 +1868,8 @@ $messages['ar'] = array(
 	'abusefilter-diff-pattern' => 'شروط المرشح',
 	'abusefilter-diff-invalid' => 'ليس بالإمكان إحضار النسخ المطلوبة',
 	'abusefilter-diff-backhistory' => 'عودة إلى تاريخ المرشح',
+	'abusefilter-diff-prev' => 'التعديل السابق',
+	'abusefilter-diff-next' => 'التعديل اللاحق',
 	'abusefilter-import-intro' => 'يمكنك استخدام هذه الواجهة لاستيراد المرشحات من الويكيات الأخرى.
 في الويكي المصدر، اضغط "{{int:abusefilter-edit-export}}" تحت "{{int:abusefilter-edit-tools}}" في واجهة التعديل.
 انسخ من صندوق النص الذي سيظهر، والصقه إلى صندوق النص هذا، ثم اضغط "{{int:abusefilter-import-submit}}",',
@@ -11561,7 +11571,7 @@ Säännön kuvaus: $1',
 	'action-abusefilter-view' => 'tarkastella väärinkäyttösuodattimia',
 	'action-abusefilter-log' => 'tarkastella väärinkäyttölokia',
 	'action-abusefilter-log-detail' => 'tarkastella väärinkäyttölokia yksityiskohtaisesti',
-	'action-abusefilter-private' => 'tarkastella yksityistiedoja väärinkäyttölokista',
+	'action-abusefilter-private' => 'tarkastella yksityisiä tietoja väärinkäyttölokista',
 	'action-abusefilter-modify-restricted' => 'muokata väärinkäyttösuodattimia rajoitetuilla toiminnoilla',
 	'action-abusefilter-revert' => 'palauttaa kaikkia muutoksia valitulla väärinkäyttösuodattimella',
 	'action-abusefilter-view-private' => 'tarkastella väärinkäyttösuodattimia, jotka on merkitty yksityisiksi',
@@ -11817,7 +11827,7 @@ Merkintöjen tulisi olla lyhyitä ja ilman erikoismerkkejä.',
 	'abusefilter-filter-log' => 'Suodattimen tuoreet muutokset',
 	'abusefilter-history' => 'Muutoshistoria väärinkäyttösuodattimelle $1',
 	'abusefilter-history-foruser' => 'Käyttäjän $1 muokkaukset',
-	'abusefilter-history-hidden' => 'piilotettu',
+	'abusefilter-history-hidden' => 'Piilotettu',
 	'abusefilter-history-enabled' => 'Aktivoitu',
 	'abusefilter-history-global' => 'Järjestelmänlaajuinen',
 	'abusefilter-history-timestamp' => 'Aika',
