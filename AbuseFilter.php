@@ -170,7 +170,7 @@ $wgAbuseFilterEmergencyDisableAge['default'] = 86400; // One day.
 // Abuse filter parser class
 $wgAbuseFilterParserClass = 'AbuseFilterParser';
 
-$wgAbuseFilterRestrictedActions = array( 'block', 'degroup' );
+$wgAbuseFilterRestrictedActions = array( 'block', 'degroup', 'blockautopromote', 'rangeblock' );
 
 // Abuse filter hit notification (available options: rc, udp, rcandudp)
 $wgAbuseFilterNotifications = false;
