@@ -894,7 +894,7 @@ See also {{msg-mw|Abusefilter-edit-builder-vars-restrictions-edit}}, {{msg-mw|Ab
 	'abusefilter-action-warn' => '{{doc-abusefilter-action}}',
 	'abusefilter-action-blockautopromote' => '{{doc-abusefilter-action}}
 
-Tells that the user is stripped from autoconfirmed status.',
+Option that, if selected, removes the targeted user from the autoconfirmed group: the autoconfimed status is removed from the user reversing the previous "autopromotion" to the status. The user will be autopromoted again automatically after the required number of days have passed.',
 	'abusefilter-action-block' => '{{doc-abusefilter-action}}
 
 This appears to be a verb.
@@ -11868,7 +11868,7 @@ Odotettu $3 {{PLURAL:$3|argumenttia|argumenttia}}, saatu $4.',
 	'abusefilter-action-block' => 'Estä',
 	'abusefilter-action-degroup' => 'Poista ryhmistä',
 	'abusefilter-action-rangeblock' => 'Alue-esto',
-	'abusefilter-action-disallow' => 'Kiellä',
+	'abusefilter-action-disallow' => 'Älä salli',
 	'abusefilter-revert-title' => 'Peru kaikki suodattimen $1 tekemät muutokset',
 	'abusefilter-revert-intro' => 'Tämä lomake antaa sinun palauttaa kaikki muutokset, jotka väärinkäyttösuodatin on tehnyt suodattimen $1 perusteella.
 Käytä tätä työkalua varoen.',
@@ -30588,6 +30588,9 @@ e tu è state bloccate da l'esecuziona soje.
 In aggiundem pe proteggere {{SITENAME}}, 'u cunde utende tune e tutte le indirizze IP associate onne state bloccate pe le cangiaminde.
 Ce quiste ca ha successe ha state 'n'errore, pe piacere condatte 'n'amministratore.
 'Na descrizione veloce de le regole de l'abbuse ca l'aziona toje s'ha scundrate jè: $1",
+	'abusefilter-autopromote-blocked' => "St'azione ha state automaticamende idendificate cumme pericolose e ha state disabbilitate.
+In aggiunde, cumme mesure de securezze, quacche privilegge ca normalende so garandite pe stabbilì le cunde onne state temboraneamende luate da 'u cunde utende tune.
+'Na descriziona veloce d'a regole de l'abbuse sus a quale l'azione s'acchiate jè: $1",
 	'abusefilter-blocker' => 'Filtre de le abbuse',
 	'abusefilter-blockreason' => "Bloccate automatecamènde da 'u filtre de abbuse.
 Descriziune d'a reghele iacchiute: $1",
@@ -36323,13 +36326,13 @@ $messages['th'] = array(
 อินเตอร์เฟซนี้แสดงรายการของตัวกรองที่กำหนดไว้และสามารถแก้ไขได้',
 	'abusefilter-mustbeeditor' => 'เพื่อความปลอดภัย เฉพาะผู้ใช้ที่มีสิทธิแก้ไขตัวกรองการละเมิดกฎเท่านั้นที่สามารถใช้อินเตอร์เฟซนี้',
 	'abusefilter-warning' => "'''คำเตือน''': การกระทำนี้ถูกระบุว่าไม่เหมาะสมอัตโนมัติ
- การแก้ไขที่ไม่เหมาะสมหรือเป็นภัยต่อระบบจะถูกเปลี่ยนกลับโดยเร็ว
- และการแก้ไขที่ไม่เหมาะสมเป็นอย่างยิ่ง หรือเกิดขึ้นซ้ำหลายครั้งจะส่งผลให้บัญชีหรือที่อยู่ IP ของคุณถูกบล็อค
- หากคุณเชื่อว่าการแก้ไขนี้เป็นการแก้ไขที่เหมาะสมคุณสามารถคลิกส่งอีกครั้งเพื่อยืนยัน
- คำอธิบายโดยย่อเกี่ยวกับการละเมิดกฎที่ตรงกับการกระทำของคุณ: $1", # Fuzzy
-	'abusefilter-disallowed' => 'ปฏิบัติการนี้ได้รับการระบุว่าไม่เหมาะสมอัตโนมัติ จึงไม่ได้รับอนุญาตให้ดำเนินการต่อ
-หากคุณเชื่อว่าการแก้ไขของคุณสร้างสรรค์ โปรดแจ้งผู้ดูแลระบบถึงสิ่งที่คุณพยายามทำ
-คำอธิบายโดยสรุปเกี่ยวกับการละเมิดกฎที่ตรงกับการกระทำของคุณ: $1', # Fuzzy
+การแก้ไขที่ไม่เหมาะสมหรือเป็นภัยต่อระบบจะถูกเปลี่ยนกลับโดยเร็ว
+และการแก้ไขที่ไม่เหมาะสมเป็นอย่างยิ่ง หรือเกิดขึ้นซ้ำหลายครั้งจะส่งผลให้บัญชีหรือที่อยู่ IP ของคุณถูกบล็อค
+หากคุณเชื่อว่าการกระทำนี้สร้างสรรค์ คุณอาจส่งอีกครั้งเพื่อยืนยัน
+คำอธิบายอย่างย่อเกี่ยวกับการละเมิดกฎที่ตรงกับการกระทำของคุณ: $1",
+	'abusefilter-disallowed' => 'การกระทำนี้ได้รับการระบุว่าไม่เหมาะสมอัตโนมัติ จึงไม่ได้รับอนุญาตให้ดำเนินการต่อ
+หากคุณเชื่อว่าการกระทำของคุณสร้างสรรค์ โปรดแจ้งผู้ดูแลระบบถึงสิ่งที่คุณพยายามทำ
+คำอธิบายโดยสรุปเกี่ยวกับการละเมิดกฎที่ตรงกับการกระทำของคุณ: $1',
 	'abusefilter-blocked-display' => 'การดำเนินการนี้ถูกระบุว่าไม่เหมาะสมอัตโนมัติ
 และคุณถูกกันมิให้ดำเนินการ
 นอกจากนี้ เพื่อเป็นการปกป้องระบบ {{SITENAME}} บัญชีผู้ใช้ของคุณและทุกหมายเลขไอพีที่เกี่ยวข้องถูกบล็อกมิให้แก้ไขแล้ว
@@ -36399,7 +36402,7 @@ $messages['th'] = array(
 	'abusefilter-log-linkoncontribs-text' => 'ปูมการละเมิดกฎของผู้ใช้นี้',
 	'abusefilter-log-hidden' => '(รายการถูกซ่อนไว้)',
 	'abusefilter-log-hidden-implicit' => '(ถูกซ่อนเพราะรุ่นถูกลบ)',
-	'abusefilter-log-cannot-see-details' => 'คุณไม่ได้รับอนุญาตให้เห็นรายละเอียดทุกรายการ', # Fuzzy
+	'abusefilter-log-cannot-see-details' => 'คุณไม่ได้รับอนุญาตให้เห็นรายละเอียดของรายการนี้',
 	'abusefilter-log-details-hidden' => 'คุณไม่สามารถดูรายละเอียดของรายการนี้ เพราะรายการนี้ถูกซ่อนจากการปรากฏแบบสาธารณะ',
 	'abusefilter-log-hide-legend' => 'ซ่อนรายการปูม',
 	'abusefilter-log-hide-id' => 'ID ของรายการยันทึก:',
@@ -36453,6 +36456,7 @@ $messages['th'] = array(
 	'abusefilter-reautoconfirm-notallowed' => 'คุณไม่ได้รับอนุญาตให้คืนสถานะยืนยันอัตโนมัติ',
 	'abusefilter-reautoconfirm-done' => 'สถานะยืนยันอัตโนมัติของบัญชีนี้ได้รับคืนสภาพแล้ว',
 	'abusefilter-status' => 'จาก $1 ปฏิบัติการล่าสุด $2 ($3%) ครั้งถึงขีดจำกัดเงื่อนไขที่ $4 เงื่อนไข และ $5 ($6%) ตรงกับหนึ่งในตัวกรองที่เปิดใช้งานอยู่ปัจจุบัน',
+	'abusefilter-edit' => 'กำลังแก้ไขตัวกรองการละเมิดกฎ',
 	'abusefilter-edit-subtitle' => 'แก้ไขตัวกรอง $1',
 	'abusefilter-edit-subtitle-new' => 'สร้างตัวกรอง',
 	'abusefilter-edit-oldwarning' => '<strong>คุณกำลังแก้ไขรุ่นเก่าของตัวกรองนี้
@@ -36505,6 +36509,8 @@ $messages['th'] = array(
 	'abusefilter-edit-done-subtitle' => 'แก้ไขตัวกรองแล้ว',
 	'abusefilter-edit-done' => 'คุณบันทึกการเปลี่ยนแปลงไปยังตัวกรอง $1 สำเร็จ',
 	'abusefilter-edit-badsyntax' => 'มีข้อผิดพลาดของวายกสัมพันธ์ในตัวกรองที่คุณระบุ ตัวแจงส่วนส่งออกคือ: <pre>$1</pre>',
+	'abusefilter-edit-restricted' => 'คุณไม่สามารถแก้ไขตัวกรองนี้ เพราะพบการกระทำที่ถูกจำกัด
+โปรดขอให้ผู้ใช้ที่ได้รับอนุญาตเพิ่มการกระทำที่จำกัดเพื่อเปลี่ยนแปลงแทนคุณ',
 	'abusefilter-edit-viewhistory' => 'ดูประวัติของตัวกรองนี้',
 	'abusefilter-edit-history' => 'ประวัติ:',
 	'abusefilter-edit-check' => 'ตรวจสอบวากยสัมพันธ์',
@@ -36515,8 +36521,12 @@ $messages['th'] = array(
 	'abusefilter-edit-export' => 'ส่งออกตัวกรองนี้ไปยังวิกิอื่น',
 	'abusefilter-edit-syntaxok' => 'ไม่พบข้อผิดพลาดของวากยสัมพันธ์',
 	'abusefilter-edit-syntaxerr' => 'พบข้อผิดพลาดของวายกสัมพันธ์: $1',
+	'abusefilter-edit-bad-tags' => 'ป้ายกำกับที่คุณระบุหนึ่งป้ายหรือมากกว่าไม่ถูกต้อง
+ชื่อป้ายกำกับควรสั้น และไม่ควรมีอักขระพิเศษ',
+	'abusefilter-edit-notallowed' => 'คุณไม่ได้รับอนุญาตให้สร้างหรือแก้ไขตัวกรองการละเมิดกฎ',
+	'abusefilter-edit-notallowed-global' => 'คุณไม่ได้รับอนุญาตให้สร้างหรือแก้ไขตัวกรองการละเมิดกฎทั่วโลก',
 	'abusefilter-edit-builder-select' => 'เลือกตัวเลือกเพื่อเพิ่มที่เคอร์เซอร์',
-	'abusefilter-edit-builder-group-op-arithmetic' => 'เครื่องหมายทางคณิตศาสตร์',
+	'abusefilter-edit-builder-group-op-arithmetic' => 'ตัวดำเนินการเลขคณิต',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'การบวก (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'การลบ (-)',
 	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'การคูณ (*)',
@@ -36574,6 +36584,7 @@ $messages['th'] = array(
 	'abusefilter-edit-builder-vars-article-ns' => 'เนมสเปซหน้า',
 	'abusefilter-edit-builder-vars-article-text' => 'ชื่อหน้า (ไม่มีเนมสเปซ)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'ชื่อเต็มหน้า',
+	'abusefilter-edit-builder-vars-article-views' => 'การเข้าชมหน้า',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'หมายเลขประจำหน้าต้นทางที่เปลี่ยนชื่อ',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'เนมสเปซหน้าต้นทางที่เปลี่ยนชื่อ',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'ชื่อหน้าต้นทางที่เปลี่ยนชื่อ',
@@ -36621,7 +36632,11 @@ $messages['th'] = array(
 	'abusefilter-history-backedit' => 'กลับไปยังตัวแก้ไขตัวกรอง',
 	'abusefilter-history-deleted' => 'ถูกลบ',
 	'abusefilter-history-filterid' => 'ตัวกรอง',
+	'abusefilter-history-select-legend' => 'แบ่งละเอียดการค้นหา',
+	'abusefilter-history-select-user' => 'ผู้ใช้:',
+	'abusefilter-history-select-submit' => 'แบ่งละเอียด',
 	'abusefilter-history-diff' => 'จำนวนการเปลี่ยนแปลง',
+	'abusefilter-history-error-hidden' => 'ตัวกรองที่คุณขอถูกซ่อน และคุณไม่สามารถดูประวัติได้',
 	'abusefilter-action-tag' => 'ป้ายกำกับ',
 	'abusefilter-action-throttle' => 'ตรงเฉพาะเมื่อเกินขีดจำกัด',
 	'abusefilter-action-warn' => 'เตือน',
@@ -36671,6 +36686,8 @@ $messages['th'] = array(
 	'abusefilter-diff-pattern' => 'เงื่อนไขตัวกรอง',
 	'abusefilter-diff-invalid' => 'ไม่สามารถนำรุ่นที่ขอมาได้',
 	'abusefilter-diff-backhistory' => 'กลับไปยังประวัติตัวกรอง',
+	'abusefilter-diff-prev' => 'การเปลี่ยนแปลงที่เก่ากว่า',
+	'abusefilter-diff-next' => 'การเปลี่ยนแปลงที่ใหม่กว่า',
 	'abusefilter-import-submit' => 'นำเข้าข้อมูล',
 	'abusefilter-group-default' => 'ค่าโดยปริยาย',
 );
