@@ -1187,7 +1187,13 @@ class AbuseFilter {
 				$block->prevents( 'createaccount', true );
 				$block->prevents( 'editownusertalk', false );
 
-				$expiry = $wgUser->isAnon() ? $wgAbuseFilterAnonBlockDuration : $wgAbuseFilterBlockDuration;
+				if ( $wgUser->isAnon() && $wgAbuseFilterAnonBlockDuration !== null ) {
+					// The user isn't logged in and the anon block duration doesn't default to $wgAbuseFilterBlockDuration
+					$expiry = $wgAbuseFilterAnonBlockDuration;
+				} else {
+					$expiry = $wgAbuseFilterBlockDuration;
+				}
+
 				$block->mExpiry = SpecialBlock::parseExpiryInput( $expiry );
 				$block->insert();
 
