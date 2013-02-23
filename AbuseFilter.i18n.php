@@ -10612,6 +10612,7 @@ Filtri kirjeldus: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => 'Sul pole lubatud automaatselt kinnitatud kasutaja õiguseid tagasi anda.',
 	'abusefilter-reautoconfirm-done' => 'Kontole on automaatselt kinnitatud kasutaja õigused tagasi antud',
 	'abusefilter-status' => 'Viimasest {{PLURAL:$1|ühest toimingust|$1 toimingust}} {{PLURAL:$2|üks|$2}} ($3%) on küündinud tingimuste ülemmäärani $4. {{PLURAL:$5|Üks toiming|$5 toimingut}} ($6%) on vastanud ühele praegu töötavale filtrile.',
+	'abusefilter-edit' => 'Väärtarvitusfiltri muutmine',
 	'abusefilter-edit-subtitle' => 'Filtri $1 muutmine',
 	'abusefilter-edit-subtitle-new' => 'Filtri loomine',
 	'abusefilter-edit-oldwarning' => '<strong>Muudad selle filtri vana versiooni.
@@ -10744,6 +10745,7 @@ Märgised peaks olema lühikesed ja nad ei peaks sisaldama erimärke.',
 	'abusefilter-edit-builder-vars-article-ns' => 'Lehekülje nimeruum',
 	'abusefilter-edit-builder-vars-article-text' => 'Lehekülje pealkiri (nimeruumita)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Lehekülje kogupealkiri',
+	'abusefilter-edit-builder-vars-article-views' => 'Lehekülje vaatamisi',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'Teisaldamise lähtelehekülje ID',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Teisaldamise lähtelehekülje nimeruum',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Teisaldamise lähtelehekülje pealkiri',
@@ -10756,6 +10758,7 @@ Märgised peaks olema lühikesed ja nad ei peaks sisaldama erimärke.',
 	'abusefilter-edit-builder-vars-user-age' => 'Kasutajakonto vanus',
 	'abusefilter-edit-builder-vars-user-name' => 'Kasutajakonto nimi',
 	'abusefilter-edit-builder-vars-user-groups' => 'Rühmad (ka varjatud), mille liige kasutaja on',
+	'abusefilter-edit-builder-vars-user-blocked' => 'Kas kasutaja on blokeeritud?',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'E-posti aadressi kinnitamisaeg',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Viimased kümme lehekülge muutnud kasutajat',
 	'abusefilter-edit-builder-vars-all-links' => 'Kõik uues tekstis sisalduvad välislingid',
@@ -10767,6 +10770,8 @@ Märgised peaks olema lühikesed ja nad ei peaks sisaldama erimärke.',
 	'abusefilter-edit-builder-vars-new-html' => 'Uue redaktsiooni sõelutud HTML-lähtekood',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Lehekülje redigeerimiskaitsetase',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Lehekülje teisaldamiskaitsetase',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Lehekülje loomiskaitse',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'Faili üleslaadimiskaitse',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Vana lehekülje tekst igasuguse märgistuseta',
 	'abusefilter-edit-builder-vars-old-links' => 'Muudatuse-eelsel leheküljel olnud lingid',
 	'abusefilter-edit-builder-vars-old-html' => 'HTML-koodiks sõelutud lehekülje vana vikitekst',
@@ -10881,6 +10886,8 @@ Lisaselgituse jaoks klõpsa nuppu "Kontrolli süntaksit".',
 	'abusefilter-diff-pattern' => 'Filtri tingimused',
 	'abusefilter-diff-invalid' => 'Nõutud versioone ei saadud kätte',
 	'abusefilter-diff-backhistory' => 'Naase filtri ajaloo juurde',
+	'abusefilter-diff-prev' => 'Vanem muudatus',
+	'abusefilter-diff-next' => 'Uuem muudatus',
 	'abusefilter-import-intro' => 'Selle liidese abil saad teistest vikidest filtreid importida.
 Allikvikis klõpsa redigeerimisliidese asukohas "{{int:abusefilter-edit-tools}}" nuppu "{{int:abusefilter-edit-export}}".
 Kopeeri ilmuva tekstikasti sisu, kleebi see sellesse tekstikasti ja seejärel klõpsa nuppu "{{int:abusefilter-import-submit}}".',
@@ -18298,14 +18305,14 @@ $messages['ja'] = array(
 	'abusefilter-blocked-display' => '行なわれた操作は自動的に有害と判断されたため、実行を中断しました。
 同時に{{SITENAME}}を保護するために、利用者アカウントと関連するすべてのIPアドレスが投稿ブロックされました。
 この措置が誤りである場合は、管理者に連絡してください。
-操作に対して発動した違反規則の概略は次の通りです：$1',
+操作に対して発動した違反規則の概略は次の通りです: $1',
 	'abusefilter-degrouped' => '行なわれた操作は自動的に有害と判断されました。
 そのため操作は実行されず、また、アカウントが乗っ取られていると判断され、すべての権限が剥奪されました。
 この措置が誤りであると考える場合、この操作についての説明を添えてビューロクラットに連絡し、権限の復帰を依頼してください。
-操作に対して発動した違反規則の概略は次の通りです：$1',
+操作に対して発動した違反規則の概略は次の通りです: $1',
 	'abusefilter-autopromote-blocked' => '行なわれた操作は自動的に有害と判断されたため、実行が中断されました。
 同時に、安全を守るため、承認されたアカウントに付与されている権限の一部が、一時的にあなたのアカウントから剥奪されました。
-操作に対して発動した違反規則の概略は次の通りです：$1',
+操作に対して発動した違反規則の概略は次の通りです: $1',
 	'abusefilter-blocker' => '不正利用フィルター',
 	'abusefilter-blockreason' => '不正利用フィルターによる自動的なブロック。
 発動した規則の説明: $1',
