@@ -187,8 +187,8 @@ $wgAbuseFilterDisallowGlobalLocalBlocks = false;
 
 // Block duration for logged in users
 $wgAbuseFilterBlockDuration = 'indefinite';
-// Block duration for anonymous users
-$wgAbuseFilterAnonBlockDuration = $wgAbuseFilterBlockDuration;
+// Block duration for anonymous users ($wgAbuseFilterBlockDuration will be used if null)
+$wgAbuseFilterAnonBlockDuration = null;
 
 // Callback functions for custom actions
 $wgAbuseFilterCustomActionsHandlers = array();
