@@ -875,15 +875,15 @@ See also {{msg-mw|Abusefilter-edit-builder-vars-restrictions-edit}}, {{msg-mw|Ab
 	'abusefilter-history-filterid' => '{{Identical|Filter}}',
 	'abusefilter-history-select-user' => '{{Identical|User}}',
 	'abusefilter-exception-unexpectedatend' => "Errormessage from the abuse filter parser.
-
-* $1: Position in the string
-* $2: Unexpected code, i.e. <code>else, then, end, :, '</code>",
-	'abusefilter-exception-expectednotfound' => "Errormessage from the abuse filter parser.
-
-* $1: Position in the string
-* $2: Expected code, i.e. <code>else, then, end, :, '</code>
-* $3: Type of the found code
-* $4: Value of the type",
+Parameters:
+* $1 - Position in the string
+* $2 - Unexpected code, i.e. <code>else, then, end, :, '</code>",
+	'abusefilter-exception-expectednotfound' => "Error message from the abuse filter parser.
+Parameters:
+* $1 - Position in the string
+* $2 - Expected code, i.e. <code>else, then, end, :, '</code>
+* $3 - Type of the found code
+* $4 - Value of the type",
 	'abusefilter-exception-notenoughargs' => '* $1 is a character position (numeral)
 * $2 is a function name
 * $3 is the number of expected arguments
@@ -913,8 +913,8 @@ This appears to be a verb.
 * $6 is link to the log details with {{msg-mw|abusefilter-log-detailslink}} as link description.',
 	'abusefilter-revert-filter' => '{{Identical|Filter}}',
 	'abusefilter-revert-preview-intro' => '"Confirm" is the contents of {{msg-mw|abusefilter-revert-confirm}}.',
-	'abusefilter-revert-confirm' => '{{Identical|Confirm}}
-This is also used in {{msg-mw|Abusefilter-revert-preview-intro}}. When changing this message, please also remember to change that one.',
+	'abusefilter-revert-confirm' => 'This is also used in {{msg-mw|Abusefilter-revert-preview-intro}}. When changing this message, please also remember to change that one.
+{{Identical|Confirm}}',
 	'abusefilter-revert-reason' => 'Parameters:
 * $1 is a filter ID
 * $2 is a reason',
