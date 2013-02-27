@@ -874,7 +874,7 @@ See also {{msg-mw|Abusefilter-edit-builder-vars-restrictions-edit}}, {{msg-mw|Ab
 	'abusefilter-history-deleted' => '{{Identical|Deleted}}',
 	'abusefilter-history-filterid' => '{{Identical|Filter}}',
 	'abusefilter-history-select-user' => '{{Identical|User}}',
-	'abusefilter-exception-unexpectedatend' => "Errormessage from the abuse filter parser.
+	'abusefilter-exception-unexpectedatend' => "Error message from the abuse filter parser.
 Parameters:
 * $1 - Position in the string
 * $2 - Unexpected code, i.e. <code>else, then, end, :, '</code>",
