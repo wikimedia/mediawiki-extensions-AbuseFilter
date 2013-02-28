@@ -493,32 +493,43 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param $saveName
-	 * @param $tempName
-	 * @param $error
+	 * Handler for the UploadVerifyFile hook
+	 *
+	 * @param $upload UploadBase
+	 * @param $mime
+	 * @param $error array
+	 *
 	 * @return bool
 	 */
-	public static function onUploadVerification( $saveName, $tempName, &$error ) {
-		$vars = new AbuseFilterVariableHolder;
+	public static function onUploadVerifyFile( $upload, $mime, &$error ) {
+		global $wgUser, $wgVersion;
 
-		global $wgUser;
-		$title = Title::makeTitle( NS_FILE, $saveName );
+		$vars = new AbuseFilterVariableHolder;
+		$title = $upload->getTitle();
 		$vars->addHolders(
 			AbuseFilter::generateUserVars( $wgUser ),
 			AbuseFilter::generateTitleVars( $title, 'FILE' )
 		);
 
 		$vars->setVar( 'ACTION', 'upload' );
-		$vars->setVar( 'file_sha1', sha1_file( $tempName ) ); // TODO share with save
+
+		// We us the hexadecimal version of the file sha1
+		if ( version_compare( $wgVersion, '1.21', '>=' ) ) {
+			// Use UploadBase::getTempFileSha1Base36 so that we don't have to calculate the sha1 sum again
+			$sha1 = wfBaseConvert( $upload->getTempFileSha1Base36() , 36, 16, 40 );
+		} else {
+			// UploadBase::getTempFileSha1Base36 wasn't public until 1.21
+			$sha1 = sha1_file( $upload->getTempPath() );
+		}
+
+		$vars->setVar( 'file_sha1', $sha1 );
 
 		$filter_result = AbuseFilter::filterAction( $vars, $title );
 
-		// XXX: HACK: return the first error, as an array containing the message key and
-		//      any parameters.
-		// XXX: $errors may in the future also contain Message objects. Make sure UploadBase can
-		//      deal with us returning that.
-		$errors = array_values( (array)$filter_result->getErrorsArray() );
-		$error = empty( $errors ) ? '' : $errors[0];
+		if ( !$filter_result->isOK() ) {
+			$error = $filter_result->getErrorsArray();
+			$error = $error[0];
+		}
 
 		return $filter_result->isOK();
 	}
