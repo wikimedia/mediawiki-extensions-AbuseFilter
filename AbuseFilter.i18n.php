@@ -30588,6 +30588,10 @@ $messages['roa-tara'] = array(
 'U filtre abbuse jè 'nu meccanisme software  pè applechesce l'euristeche automateche a totte le aziune.
 Quèste 'nderfazze fàce vedè 'nu elenghe de filtre definite, e conzente a lòre de essere cangiate.",
 	'abusefilter-mustbeeditor' => "Pè raggione de sicurezze, sule le utinde cu 'u diritte de cangià le filtre abbuse pòtene ausà quèste 'nderfazze.",
+	'abusefilter-warning' => "'''Attenzione''': St'azione ha state automaticamende idendificate cumme pericolose.
+Le cangiaminde non costruttive onne state annullate veloce veloce, e le cangiaminde egregge o repetitive onna resultà sus a 'u cunde tune o l'indirizze IP ca adda avenè bloccate.
+Ce tu cride ca st'azione jè costruttive, tu puè confermarle arrete.
+'Na descriziona veloce d'a regole de l'abbuse ca soddisfe l'aziona toje jè: $1",
 	'abusefilter-disallowed' => "St'azione ha state automaticamende idendificate cumme pericolose e, allore non g'avène conzendite.
 Ce tu cride ca l'aziona toje ere costruttive, pe piacere 'mborme 'n'amministratore de quidde ca tu ste pruvave a fà.
 'Na descrizione veloce d'a regole de l'abbuse sus 'a quale l'aziona toje s'ha scundrate: $1",
@@ -30596,6 +30600,10 @@ e tu è state bloccate da l'esecuziona soje.
 In aggiundem pe proteggere {{SITENAME}}, 'u cunde utende tune e tutte le indirizze IP associate onne state bloccate pe le cangiaminde.
 Ce quiste ca ha successe ha state 'n'errore, pe piacere condatte 'n'amministratore.
 'Na descrizione veloce de le regole de l'abbuse ca l'aziona toje s'ha scundrate jè: $1",
+	'abusefilter-degrouped' => "St'azione ha state automaticamende idendificate cumme pericolose.
+Conseguendemende, ha state disattivate, e, 'u cunde tune jè sospette ca ha state combromesse, tutte le deritte onne state revocate.
+Ce tu cride ca quiste ha state 'n'errore, pe piacere condatte 'nu burocrate cu 'na spiegazione pe st'azione e, le deritte tune avènene repristinate.
+'Na descrizione veloce d'a regole d'abbuse 'a quale ha soddisfatte l'aziona toje jè: $1",
 	'abusefilter-autopromote-blocked' => "St'azione ha state automaticamende idendificate cumme pericolose e ha state disabbilitate.
 In aggiunde, cumme mesure de securezze, quacche privilegge ca normalende so garandite pe stabbilì le cunde onne state temboraneamende luate da 'u cunde utende tune.
 'Na descriziona veloce d'a regole de l'abbuse sus a quale l'azione s'acchiate jè: $1",
