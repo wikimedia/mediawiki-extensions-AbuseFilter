@@ -903,7 +903,7 @@ This appears to be a verb.
 	'abusefilter-action-degroup' => '{{doc-abusefilter-action}}',
 	'abusefilter-action-rangeblock' => '{{doc-abusefilter-action}}',
 	'abusefilter-action-disallow' => '{{doc-abusefilter-action}}',
-	'abusefilter-revert-title' => 'Caption of [[Special:AbuseFilter/revert/1]] (go to [[Special:AbuseFilter]], open a filter, click “Revert actions taken by this filter”)',
+	'abusefilter-revert-title' => 'Caption of [[Special:AbuseFilter/revert/1]] (go to [[Special:AbuseFilter]], open a filter, click "Revert actions taken by this filter")',
 	'abusefilter-revert-preview-item' => 'Parameters:
 * $1 is a localised time and date
 * $2 is the linked user that made a change
@@ -5335,6 +5335,7 @@ Diskrivadenn ar sil : $7 ($8)',
 	'abusefilter-list-options-deleted-only' => 'Diskouez ar siloù dilamet hepken',
 	'abusefilter-list-options-deleted-hide' => 'Kuzhar ar siloù dilamet',
 	'abusefilter-list-options-deleted-show' => 'Enklozañ ar siloù dilamet',
+	'abusefilter-list-options-scope' => 'Diskouez ar siloù adalek :',
 	'abusefilter-list-options-scope-local' => "Wiki lec'hel",
 	'abusefilter-list-options-scope-global' => 'Reolennoù hollek',
 	'abusefilter-list-options-disabled' => 'Siloù diweredekaet :',
@@ -5622,6 +5623,8 @@ Evit gouzout hiroc'h, gwelout [[Special:AbuseFilter/history|listenn]] eus kemmo�
 	'abusefilter-diff-pattern' => 'Amplegad ar sil',
 	'abusefilter-diff-invalid' => "Ne c'haller ket adkavout ar stummoù goulennet",
 	'abusefilter-diff-backhistory' => 'Distreiñ da istor ar sil',
+	'abusefilter-diff-prev' => "Kemm koshoc'h",
+	'abusefilter-diff-next' => "Kemm nevesoc'h",
 	'abusefilter-import-intro' => 'Gallout a rit implijout an etrefas-mañ evit enporzhiañ siloù diwar wikioù all.
 Er wiki orin, klikit war "{{int:abusefilter-edit-export}}" e-barzh "{{int:abusefilter-edit-tools}}" en etrefas aozañ.
 Eilit an takad testenn a teu war-well, ha pegit anezhañ e-barzh an takad testenn-mañ, da heul klikit war "{{int:abusefilter-import-submit}}".',
