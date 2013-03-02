@@ -7340,6 +7340,7 @@ Disgrifiad o'r rheol sy'n cyfateb: $1",
 /** Danish (dansk)
  * @author Aputtu
  * @author Christian List
+ * @author Claus chr
  * @author Froztbyte
  * @author Hylle
  * @author Lhademmor
@@ -7358,12 +7359,12 @@ Denne grænseflade viser en liste over definerede filtre, og gør det muligt at 
 	'abusefilter-warning' => "'''Advarsel:''' Denne handling er automatisk blevet identificeret som skadelig.
 Ikke-konstruktive redigeringer bliver fjernet hurtigt,
 og forstyrrende eller gentagende ikke-konstruktive redigeringer vil føre til at din konto eller ip-adresse bliver blokeret.
-Hvis du mener at dette er en konstruktiv redigering så klik på \"Gem\" igen for at bekræfte.
-En kortfattet beskrivelse af misbrugsreglen som din handling udløste er: \$1", # Fuzzy
+Hvis du mener at dette er en konstruktiv handling så klik på \"Gem\" igen for at bekræfte.
+En kortfattet beskrivelse af misbrugsreglen som din handling udløste er: \$1",
 	'abusefilter-disallowed' => 'Denne handling er automatisk blevet identificeret som skadelig,
 og er derfor ikke tilladt.
 Hvis du mener at din redigering var konstruktiv, så kontakt venligst en administrator, og informer denne om hvad du forsøgte at gøre.
-En kortfattet beskrivelse af misbrugsreglen som din handling udløste er: $1', # Fuzzy
+En kortfattet beskrivelse af misbrugsreglen som din handling udløste er: $1',
 	'abusefilter-blocked-display' => 'Denne handling er automatisk blevet identificeret som skadelig,
 og du er derfor blevet forhindret i at udføre den.
 Herudover, for at beskytte {{SITENAME}}, er din brugerkonto og alle associerede IP-adresser blevet blokeret fra at kunne redigere.
