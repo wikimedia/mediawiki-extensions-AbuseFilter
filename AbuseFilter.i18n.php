@@ -920,7 +920,8 @@ This appears to be a verb.
 * $2 is a reason',
 	'abusefilter-test-intro' => '"Load" refers to the contents of {{msg-mw|abusefilter-test-load}}.',
 	'abusefilter-test-legend' => 'Caption of the fieldset on [[Special:AbuseFilter/test]]',
-	'abusefilter-test-submit' => 'Caption of the submit button on [[Special:AbuseFilter/test]]',
+	'abusefilter-test-submit' => 'Caption of the submit button on [[Special:AbuseFilter/test]].
+{{Identical|Test}}',
 	'abusefilter-test-load' => 'Text on a button, and referred to in {{msg-mw|abusefilter-test-intro}}
 {{Identical|Load}}',
 	'abusefilter-test-syntaxerr' => '"Check Syntax" is the same as {{msg-mw|abusefilter-edit-check}}.',
@@ -2655,6 +2656,7 @@ Descripción de la peñera: $7 ($8)",
 	'abusefilter-tools-submitexpr' => 'Evaluar',
 	'abusefilter-tools-reautoconfirm-user' => 'Usuariu:',
 	'abusefilter-tools-reautoconfirm-submit' => 'Re-autoconfirmar',
+	'abusefilter-edit-flags' => 'Marques:',
 );
 
 /** Azerbaijani (azərbaycanca)
@@ -5423,6 +5425,7 @@ Goulennit mar plij digant un impljier aotreet da ouzhpennañ oberoù bevennet ev
 	'abusefilter-edit-bad-tags' => "Unan pe meur a valizenn bet spisaet ganeoc'h a zo direizh.
 Ar valizennoù a rank bezañ berr, hag hep arouezenn arbennik ebet.",
 	'abusefilter-edit-notallowed' => "N'oc'h ket aotreet evit krouiñ pe kemmañ ar siloù a-enep ar gwallimplij",
+	'abusefilter-edit-notallowed-global' => "N'oc'h ket aotreet evit krouiñ pe kemmañ ar siloù hollek a-enep ar gwallimplij",
 	'abusefilter-edit-builder-select' => "Diuzit un dibarzh evit e ouzhpennañ e lec'h ar reti",
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Oberiataerioù niveroniel',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Sammadenn (+)',
@@ -5483,6 +5486,7 @@ Ar valizennoù a rank bezañ berr, hag hep arouezenn arbennik ebet.",
 	'abusefilter-edit-builder-vars-article-ns' => 'Esaouenn anv ar bajenn',
 	'abusefilter-edit-builder-vars-article-text' => 'Titl ar bajenn (hep an esaouenn anv)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Titl klok ar bajenn',
+	'abusefilter-edit-builder-vars-article-views' => 'Pajennoù gwelet',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'Anv ar bajenn orin da adenvel',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Esaouenn anv ar bajenn orin da adenvel',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Titl ar bajenn orin da adenvel',
@@ -18624,7 +18628,7 @@ $messages['ja'] = array(
 	'abusefilter-exception-unrecognisedvar' => '$1文字目に認識できない変数「$2」があります。',
 	'abusefilter-exception-notenoughargs' => '$1 文字目で呼び出されている関数 $2 の引数が不足しています。
 $3 個の{{PLURAL:$3|引数}}があるべきですが $4 個しかありません',
-	'abusefilter-exception-regexfailure' => '$1 文字目の正規表現 "$3" にエラーがあります: "$2"',
+	'abusefilter-exception-regexfailure' => '$1 文字目の正規表現「$3」にエラーがあります: "$2"',
 	'abusefilter-exception-overridebuiltin' => '$1文字目で、組み込みの変数「$2」を不正に上書きしています。',
 	'abusefilter-exception-outofbounds' => '$1文字目で、存在しない一覧項目 $2 (一覧のサイズは$3) を要求しています。',
 	'abusefilter-exception-notlist' => '$1文字目で非配列の配列要素を要求しています。',
@@ -29849,6 +29853,7 @@ entradas do registro de abusos.',
 	'abusefilter-reautoconfirm-notallowed' => 'Você não está autorizado a restaurar o estado autoconfirmado.',
 	'abusefilter-reautoconfirm-done' => 'O estado autoconfirmado da conta foi restaurado',
 	'abusefilter-status' => '{{PLURAL:$1|Da última 1 ação|Das últimas $1 ações}}, $2 ($3%) {{PLURAL:$2|atingiu|atingiram}} a condição limite de $4, e $5 ($6%) {{PLURAL:$5|correspondeu|corresponderam}} a um dos filtros neste momento ativos.',
+	'abusefilter-edit' => 'Editando um filtro de abusos',
 	'abusefilter-edit-subtitle' => 'Editando filtro $1',
 	'abusefilter-edit-subtitle-new' => 'Criando filtro',
 	'abusefilter-edit-oldwarning' => '<strong>Você está editando uma versão antiga deste filtro.
