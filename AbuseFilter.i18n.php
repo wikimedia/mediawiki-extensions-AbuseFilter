@@ -14997,6 +14997,7 @@ Opis filtra: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => 'Nije vam dozvoljeno vratiti autoconfirmed status.',
 	'abusefilter-reautoconfirm-done' => 'Autoconfirmed status je vraćen',
 	'abusefilter-status' => 'Od {{PLURAL:$1|zadnje akcije|zadnje $1 akcije|zadnjih $akcija}}, $2 ($3%) {{PLURAL: $2|dostigla je|dostigle su|dostigle su}} granicu od $4, i $5 ($6%) {{plural: $5|se podudara|se podudaraju|se podudaraju}} s jednim od trenutno omogućenih filtara.',
+	'abusefilter-edit' => 'Uređivanje filtra zloporaba',
 	'abusefilter-edit-subtitle' => 'Uređujete filtar $1',
 	'abusefilter-edit-subtitle-new' => 'Stvaram filtar',
 	'abusefilter-edit-oldwarning' => '<strong>Uređujete staru inačicu ovog filtra.
@@ -15131,6 +15132,7 @@ Oznaka mora biti kratka, i ne bi smjela sadržavati posebne znakove.',
 	'abusefilter-edit-builder-vars-article-ns' => 'Imenski prostor',
 	'abusefilter-edit-builder-vars-article-text' => 'Ime stranice (bez imenskog prostora)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Puni naslov stranice',
+	'abusefilter-edit-builder-vars-article-views' => 'Pregleda stranice',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'ID broj izvorišne stranice premještanja',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Imenski prostor premještane stranice',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Naslov stranice koju premještate',
@@ -15273,6 +15275,8 @@ Za detaljnije informacije, vidi [[Special:AbuseFilter/history|popis]] nedavnih i
 	'abusefilter-diff-pattern' => 'Filtar uvjeta',
 	'abusefilter-diff-invalid' => 'Nemoguće je dohvatiti tražene inačice',
 	'abusefilter-diff-backhistory' => 'Natrag na povijest filtra',
+	'abusefilter-diff-prev' => 'Staro uređivanje',
+	'abusefilter-diff-next' => 'Novo uređivanje',
 	'abusefilter-import-intro' => 'Možete rabiti ovo sučelje za uvoz filtara s drugih wikija.
 Na izvornoj wiki, kliknite na poveznicu "{{int:abusefilter-edit-export}}" pod "{{int:abusefilter-edit-tools}}" na sučelju za uređivanje.
 Kopirajte tekst iz okvira koji će se pojaviti, i zalijepite ga u ovaj okvir, a zatim kliknite "{{int:abusefilter-import-submit}}".',
@@ -16556,6 +16560,7 @@ Copia le contento del quadro de texto que appare, e colla lo in iste quadro de t
  * @author Irwangatot
  * @author IvanLanin
  * @author Iwan Novirion
+ * @author Kenrick95
  * @author Rex
  */
 $messages['id'] = array(
@@ -16566,10 +16571,10 @@ $messages['id'] = array(
 Filter Penyalahgunaan adalah sebuah mekanisme perangkat lunak yang mengaplikasikan heuristik otomatis terhadap semua tindakan. Antarmuka ini menampilkan sebuah daftar filter yang telah ditetapkan, dan filter-filter ini dapat dimodifikasi.',
 	'abusefilter-mustbeeditor' => "Untuk alasan keamanan, hanya pengguna dengan hak untuk ''memodifikasi filter penyalahgunaan'' saja yang diperbolehkan menggunakan antarmuka ini.",
 	'abusefilter-warning' => "'''Peringatan''': Tindakan ini secara otomatis telah diidentifikasi sebagai tindakan yang merusak.
-Suntingan yang tidak bermanfaat akan segera dikembalikan seperti bentuk semula,
+Suntingan yang tidak bermanfaat akan segera dibatalkan,
 dan suntingan yang tidak jelas serta berulang-ulang akan berakibat dengan diblokirnya akun ataupun alamat IP Anda.
 Jika Anda yakin bahwa suntingan anda adalah suntingan yang bermanfaat, Anda bisa mengklik Kirim sekali lagi untuk mengkonfirmasinya.
-Keterangan singkat tentang peraturan penyalahgunaan yang berkaitan dengan tindakan Anda adalah: $1", # Fuzzy
+Keterangan singkat tentang peraturan penyalahgunaan yang berkaitan dengan tindakan Anda adalah: $1",
 	'abusefilter-disallowed' => 'Tindakan ini secara otomatis telah diidentifikasi sebagai tindakan yang merusak,
 dan karenanya ditolak.
 Jika Anda yakin bahwa suntingan anda adalah suntingan yang bermanfaat, silakan hubungi pengurus, dan informasikan apa yang sedang Anda lakukan.
