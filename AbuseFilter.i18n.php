@@ -9602,6 +9602,17 @@ $3 {{PLURAL:$3|αναμενόμενο κατηγορούμενο|αναμενό�
 	'abusefilter-group-default' => 'Προεπιλογή',
 );
 
+/** British English (British English)
+ * @author Shirayuki
+ */
+$messages['en-gb'] = array(
+	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalise confusable characters (ccnorm)',
+	'abusefilter-edit-builder-funcs-norm' => 'Normalise (norm)',
+	'abusefilter-exception-unrecognisedkeyword' => 'Unrecognised keyword $2 at character $1.',
+	'abusefilter-exception-unrecognisedtoken' => 'Unrecognised token "$2" at character $1.',
+	'abusefilter-exception-unrecognisedvar' => 'Unrecognised variable $2 at character $1',
+);
+
 /** Esperanto (Esperanto)
  * @author AVRS
  * @author Amikeco
@@ -18307,7 +18318,7 @@ $messages['ja'] = array(
 不正利用フィルターは、あらゆる操作に対して自動的な発見的方法を適用する、自動化されたソフトウェア機構です。
 このインターフェイスでは、定義済みのフィルターを一覧表示してそれらを変更できます。',
 	'abusefilter-mustbeeditor' => 'セキュリティ上の理由から、不正利用フィルターを変更できる権限を持つ利用者だけがこのインターフェイスを使用できます。',
-	'abusefilter-warning' => "'''警告''': 行われた操作は自動的に有害と判断されました。
+	'abusefilter-warning' => "'''警告:''' 行われた操作は自動的に有害と判断されました。
 建設的ではない編集は速やかに差し戻されます。
 被害程度が大きい破壊的編集や頻繁な破壊行為は、アカウントまたはIPアドレスのブロックにつながります。
 行なった操作が確かに建設的だと考える場合は、もう一度投稿してください。
@@ -18442,7 +18453,7 @@ $messages['ja'] = array(
 	'abusefilter-edit-oldwarning' => '<strong>あなたはこのフィルターの古い版を編集しています。引用されている統計は最新版のフィルターのものです。あなたの変更を保存すると、あなたが編集している版以降の変更をすべて上書きしてしまいます。</strong> &bull; [[Special:AbuseFilter/history/$2|このフィルターの履歴に戻る]]',
 	'abusefilter-edit-status-label' => '統計:',
 	'abusefilter-edit-status' => '最近の$1{{PLURAL:$1|操作}}のうち、このフィルターは$2件($3%)に対して発動しました。平均して、実行時間は$4ミリ秒で$5件の条件制限を消費しました。',
-	'abusefilter-edit-throttled' => "'''警告''': このフィルターは安全対策により自動的に無効化されました。
+	'abusefilter-edit-throttled' => "'''警告:''' このフィルターは安全対策により自動的に無効化されました。
 操作の$1%以上に一致するという制限に達しました。",
 	'abusefilter-edit-new' => '新規フィルター',
 	'abusefilter-edit-save' => 'フィルターを保存',
@@ -18622,9 +18633,9 @@ $messages['ja'] = array(
 	'abusefilter-history-diff' => '差分',
 	'abusefilter-history-error-hidden' => 'あなたが要求したフィルターは公開されておらず、履歴を閲覧することができません。',
 	'abusefilter-exception-unexpectedatend' => '$1文字目に予期せぬ「$2」があります。',
-	'abusefilter-exception-expectednotfound' => '$1文字目にあるべき $2 が見つかりません(代わりに $3 $4 が使われています)',
+	'abusefilter-exception-expectednotfound' => '$1 文字目にあるべき $2 が見つかりません (代わりに $3 $4 が使用されています)',
 	'abusefilter-exception-unrecognisedkeyword' => '$1文字目に認識できないキーワード $2 があります。',
-	'abusefilter-exception-unexpectedtoken' => '$1文字目に予期せぬトークン「$3」($2型) があります。',
+	'abusefilter-exception-unexpectedtoken' => '$1 文字目に予期せぬトークン「$3」($2 型) があります。',
 	'abusefilter-exception-unclosedstring' => '$1文字目から始まる文字列が閉じられていません。',
 	'abusefilter-exception-invalidoperator' => '$1文字目に無効な演算子「$2」があります。',
 	'abusefilter-exception-unrecognisedtoken' => '$1文字目に認識できないトークン「$2」があります。',
@@ -18635,7 +18646,7 @@ $messages['ja'] = array(
 $3 個の{{PLURAL:$3|引数}}があるべきですが $4 個しかありません',
 	'abusefilter-exception-regexfailure' => '$1 文字目の正規表現「$3」にエラーがあります: "$2"',
 	'abusefilter-exception-overridebuiltin' => '$1文字目で、組み込みの変数「$2」を不正に上書きしています。',
-	'abusefilter-exception-outofbounds' => '$1文字目で、存在しない一覧項目 $2 (一覧のサイズは$3) を要求しています。',
+	'abusefilter-exception-outofbounds' => '$1 文字目で、存在しない一覧項目 $2 (一覧のサイズは $3) を要求しています。',
 	'abusefilter-exception-notlist' => '$1文字目で非配列の配列要素を要求しています。',
 	'abusefilter-action-tag' => 'タグ付け',
 	'abusefilter-action-throttle' => '速度を制限',
