@@ -24,7 +24,7 @@ This interface shows a list of defined filters, and allows them to be modified."
 	'abusefilter-mustbeeditor' => 'For security reasons, only users with the right to modify abuse filters may use this interface.',
 
 	// Hooks
-	'abusefilter-warning' => "'''Warning''': This action has been automatically identified as harmful.
+	'abusefilter-warning' => "'''Warning:''' This action has been automatically identified as harmful.
 Unconstructive edits will be quickly reverted,
 and egregious or repeated unconstructive editing will result in your account or IP address being blocked.
 If you believe this action to be constructive, you may submit it again to confirm it.
@@ -185,7 +185,7 @@ If you save your changes, you will overwrite all changes since the revision you 
 	'abusefilter-edit-status-label' => 'Statistics:',
 	'abusefilter-edit-status' => 'Of the last $1 {{PLURAL:$1|action|actions}}, this filter has matched $2 ($3%).
 On average, its run time is $4 ms, and it consumes $5 {{PLURAL:$5|condition|conditions}} of the condition limit.',
-	'abusefilter-edit-throttled' => "'''Warning''': This filter was automatically disabled as a safety measure.
+	'abusefilter-edit-throttled' => "'''Warning:''' This filter was automatically disabled as a safety measure.
 It reached the limit of matching more than $1% of actions.",
 	'abusefilter-edit-new' => 'New filter',
 	'abusefilter-edit-save' => 'Save filter',
@@ -283,10 +283,10 @@ Tags should be short, and they should not contain special characters.',
 	'abusefilter-edit-builder-group-funcs' => 'Functions',
 	'abusefilter-edit-builder-funcs-length' => 'String length (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'To lower case (lcase)',
-	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalise confusable characters (ccnorm)',
+	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalize confusable characters (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Remove double-characters (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Special characters / total characters (specialratio)',
-	'abusefilter-edit-builder-funcs-norm' => 'Normalise (norm)',
+	'abusefilter-edit-builder-funcs-norm' => 'Normalize (norm)',
 	'abusefilter-edit-builder-funcs-count' => 'Number of times string X appears in string Y (count)',
 	'abusefilter-edit-builder-funcs-rcount' => 'Number of times regex X appears in string Y (rcount)',
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Remove whitespace (rmwhitespace)',
