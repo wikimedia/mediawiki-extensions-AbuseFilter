@@ -381,7 +381,7 @@ Tags should be short, and they should not contain special characters.',
 	'abusefilter-exception-unrecognisedtoken' => 'Unrecognized token "$2" at character $1.',
 	'abusefilter-exception-noparams' => 'No parameters given to function "$2" at character $1.',
 	'abusefilter-exception-dividebyzero' => 'Illegal attempt to divide $2 by zero at character $1.',
-	'abusefilter-exception-unrecognisedvar' => 'Unrecognized variable $2 at character $1',
+	'abusefilter-exception-unrecognisedvar' => 'Unrecognized variable $2 at character $1.',
 	'abusefilter-exception-notenoughargs' => 'Not enough arguments to function $2 called at character $1.
 	Expected $3 {{PLURAL:$3|argument|arguments}}, got $4',
 	'abusefilter-exception-regexfailure' => 'Error in regular expression "$3" at character $1: "$2"',

@@ -519,6 +519,15 @@ class AFPUserVisibleException extends AFPException {
 	 * @param array $params
 	 */
 	function __construct( $exception_id, $position, $params ) {
+		// Give grep a chance to find the usages:
+		// abusefilter-exception-unexpectedatend, abusefilter-exception-expectednotfound
+		// abusefilter-exception-unrecognisedkeyword, abusefilter-exception-unexpectedtoken
+		// abusefilter-exception-unclosedstring, abusefilter-exception-invalidoperator
+		// abusefilter-exception-unrecognisedtoken, abusefilter-exception-noparams
+		// abusefilter-exception-dividebyzero, abusefilter-exception-unrecognisedvar
+		// abusefilter-exception-notenoughargs, abusefilter-exception-regexfailure
+		// abusefilter-exception-overridebuiltin, abusefilter-exception-outofbounds
+		// abusefilter-exception-notlist
 		$msg = wfMessage(
 			'abusefilter-exception-' . $exception_id,
 			array_merge( array( $position ), $params )

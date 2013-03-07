@@ -720,6 +720,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					);
 				return $output;
 			default:
+				// Give grep a chance to find the usages:
+				// abusefilter-edit-action-warn, abusefilter-edit-action-disallow
+				// abusefilter-edit-action-flag, abusefilter-edit-action-blockautopromote
+				// abusefilter-edit-action-degroup, abusefilter-edit-action-block
+				// abusefilter-edit-action-throttle, abusefilter-edit-action-rangeblock
+				// abusefilter-edit-action-tag
 				$message = 'abusefilter-edit-action-' . $action;
 				$form_field = 'wpFilterAction' . ucfirst( $action );
 				$status = $set;
