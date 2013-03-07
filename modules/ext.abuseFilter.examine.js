@@ -1,78 +1,95 @@
-// Filter checking for examine
-( function( $, mw ) {
+/**
+ * Check a filter against a change
+ *
+ * @author John Du Hart
+ * @author Marius Hoch <hoo@online.de>
+ */
 
-	// Reference to this
-	var that = this,
-		// Syntax result div
-		// @type {jQuery}
-		$syntaxResult;
+( function( mw, $ ) {
+	'use strict';
 
-	// Tests the filter against an rc event or abuse log entry
-	this.examinerTestFilter = function() {
+	// Syntax result div
+	// @type {jQuery}
+	var $syntaxResult;
+
+	/**
+	 * Tests the filter against an rc event or abuse log entry
+	 */
+	function examinerTestFilter() {
 		var filter = $( '#wpTestFilter' ).val(),
 			examine = mw.config.get( 'abuseFilterExamine' ),
-			params = {};
+			params = {
+				action: 'abusefiltercheckmatch',
+				filter: filter
+			};
+
 		$( this ).injectSpinner( 'filter-check' );
 
 		if ( examine.type === 'rc' ) {
-			params = {
-				rcid: examine.id
-			};
+			params.rcid = examine.id;
 		} else {
-			params = {
-				logid: examine.id
-			};
+			params.logid = examine.id;
 		}
 
-		// Large amount of data
-		$.post(
-			mw.util.wikiScript( 'api' ), $.extend( params, {
-				action: 'abusefiltercheckmatch',
-				filter: filter,
-				format: 'json'
-			} ), that.examinerTestProcess, 'json'
-		);
-	};
+		// Use post due to the rather large amount of data
+		var api = new mw.Api();
+		api.post( params )
+			.done( examinerTestProcess )
+			.fail( examinerTestProcessFailure );
+	}
 
-	// Processes the results of the filter test
-	// @param {Object} data
-	this.examinerTestProcess = function( data ) {
+	/**
+	 * Processes the results of the filter test
+	 *
+	 * @param {Object} data
+	 */
+	function examinerTestProcess( data ) {
+		var msg, exClass;
+		$.removeSpinner( 'filter-check' );
+
+		if ( data.abusefiltercheckmatch.result ) {
+			exClass = 'mw-abusefilter-examine-match';
+			msg = 'abusefilter-examine-match';
+		} else {
+			exClass = 'mw-abusefilter-examine-nomatch';
+			msg = 'abusefilter-examine-nomatch';
+		}
+		$syntaxResult
+			.attr( 'class', exClass )
+			.text( mw.msg( msg ) )
+			.show();
+	}
+
+	/**
+	 * Processes the results of the filter test in case of an error
+	 *
+	 * @param {string} error Error code returned from the AJAX request
+	 */
+	function examinerTestProcessFailure( error ) {
 		var msg;
 		$.removeSpinner( 'filter-check' );
 
-		if ( data.error !== undefined ) {
-			// Hmm, something went awry
-			if ( data.error.code === 'badsyntax' ) {
-				$syntaxResult.attr(
-					'class', 'mw-abusefilter-examine-syntaxerror'
-				);
-				msg = 'abusefilter-examine-syntaxerror';
-			} else if ( data.error.code === 'nosuchrcid'
-				|| data.error.code === 'nosuchlogid'
-			) {
-				msg = 'abusefilter-examine-notfound';
-			} else if ( data.error.code === 'nopermission' ) {
-				return;
-			}
+		if ( error === 'badsyntax' ) {
+			$syntaxResult.attr(
+				'class', 'mw-abusefilter-examine-syntaxerror'
+			);
+			msg = 'abusefilter-examine-syntaxerror';
+		} else if ( error === 'nosuchrcid' || error === 'nosuchlogid' ) {
+			msg = 'abusefilter-examine-notfound';
+		} else if ( error === 'permissiondenied' ) {
+			// The 'abusefilter-modify' right is needed to use this API
+			msg = 'abusefilter-mustbeeditor';
 		} else {
-			var exClass;
-			if ( data.abusefiltercheckmatch.result ) {
-				exClass = 'mw-abusefilter-examine-match';
-				msg = 'abusefilter-examine-match';
-			} else {
-				exClass = 'mw-abusefilter-examine-nomatch';
-				msg = 'abusefilter-examine-nomatch';
-			}
-			$syntaxResult.attr( 'class', exClass );
+			msg = 'unknown-error';
 		}
 
 		$syntaxResult
 			.text( mw.msg( msg ) )
 			.show();
-	};
+	}
 
-	$( function( $ ) {
+	$( document ).ready( function() {
 		$syntaxResult = $( '#mw-abusefilter-syntaxresult' );
-		$( '#mw-abusefilter-examine-test' ).click( that.examinerTestFilter );
+		$( '#mw-abusefilter-examine-test' ).click( examinerTestFilter );
 	} );
-} ( jQuery, mediaWiki ) );
+} ( mediaWiki, jQuery ) );

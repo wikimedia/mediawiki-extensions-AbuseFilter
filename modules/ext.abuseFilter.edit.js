@@ -1,78 +1,115 @@
-// AbuseFilter editing stuff
-( function( $, mw ) {
+/**
+ * AbuseFilter editing JavaScript
+ *
+ * @author John Du Hart
+ * @author Marius Hoch <hoo@online.de>
+ */
+
+( function( mw, $ ) {
+	'use strict';
 
 	// Filter textarea
 	// @var {jQuery}
-	var $filterBox = [],
-		// Reference to this
-		// @var {this}
-		that = this,
-		// Returns the currently selected warning message
-		// @returns {String} current warning message
-		getCurrentWarningMessage = function() {
-			var message = $('#mw-abusefilter-warn-message-existing').val();
+	var $filterBox;
 
-			if ( message === 'other' ) {
-				message = $('#mw-abusefilter-warn-message-other').val();
-			}
+	/**
+	 * Returns the currently selected warning message
+	 *
+	 * @returns {string} current warning message
+	 */
+	function getCurrentWarningMessage() {
+		var message = $( '#mw-abusefilter-warn-message-existing' ).val();
 
-			return message;
-		};
+		if ( message === 'other' ) {
+			message = $( '#mw-abusefilter-warn-message-other' ).val();
+		}
 
-	// Sends the current filter text to be checked for syntax issues
-	this.doSyntaxCheck = function() {
+		return message;
+	}
+
+	/**
+	 * Sends the current filter text to be checked for syntax issues
+	 */
+	function doSyntaxCheck() {
 		var filter = $filterBox.val();
 
-		$( this ).injectSpinner( 'abusefilter-syntaxcheck' );
-		this.disabled = true;
-		$.getJSON(
-			mw.util.wikiScript( 'api' ), {
-				action: 'abusefilterchecksyntax',
-				filter: filter,
-				format: 'json'
-			}, that.processSyntaxResult
-		);
-	};
+		$( this )
+			.attr( 'disabled', 'disabled' )
+			.injectSpinner( 'abusefilter-syntaxcheck' );
 
-	// Takes the data retrieved in doSyntaxCheck and processes it
-	// @param {Object} data Data returned from the AJAX request
-	this.processSyntaxResult = function( data ) {
-		data = data.abusefilterchecksyntax;
+		var api = new mw.Api();
+		api.get( {
+			action: 'abusefilterchecksyntax',
+			filter: filter
+		} )
+		.done( processSyntaxResult )
+		.fail( processSyntaxResultFailure );
+	}
+
+	/**
+	 * Things always needed after syntax checks
+	 *
+	 * @param {string} resultText
+	 * @param {string} className Class to add
+	 * @param {bool} syntaxOk Is the syntax ok?
+	 */
+	function processSyntaxResultAlways( resultText, className, syntaxOk ) {
 		$.removeSpinner( 'abusefilter-syntaxcheck' );
-		$( '#mw-abusefilter-syntaxcheck' ).removeAttr("disabled");
+		$( '#mw-abusefilter-syntaxcheck' ).removeAttr( 'disabled' );
 
-		var $el = $( '#mw-abusefilter-syntaxresult' )
+		$( '#mw-abusefilter-syntaxresult' )
 			.show()
-			.removeClass('mw-abusefilter-syntaxresult-ok mw-abusefilter-syntaxresult-error');
+			.removeClass( 'mw-abusefilter-syntaxresult-ok mw-abusefilter-syntaxresult-error' )
+			.text( resultText )
+			.addClass( className )
+			.data( 'syntaxOk', syntaxOk );
+	}
 
-		if ( data === undefined ) {
-			$el.text( mw.msg( 'unknown-error' ) )
-				.attr( 'class', 'mw-abusefilter-syntaxresult-error' )
-				.data( 'syntaxOk', false );
-			return;
-		}
+	/**
+	 * Takes the data retrieved in doSyntaxCheck and processes it
+	 *
+	 * @param {Object} data Data returned from the AJAX request
+	 */
+	function processSyntaxResult( data ) {
+		data = data.abusefilterchecksyntax;
 
 		if ( data.status === 'ok' ) {
 			// Successful
-			$el.text( mw.msg( 'abusefilter-edit-syntaxok' ) )
-				.attr( 'class', 'mw-abusefilter-syntaxresult-ok' )
-				.data( 'syntaxOk', true );
+			processSyntaxResultAlways(
+				mw.msg( 'abusefilter-edit-syntaxok' ),
+				'mw-abusefilter-syntaxresult-ok',
+				true
+			);
 		} else {
-			var msg = mw.message( 'abusefilter-edit-syntaxerr', data.message ).toString();
-
-			$el.text( msg )
-				.attr( 'class', 'mw-abusefilter-syntaxresult-error' )
-				.data( 'syntaxOk', false );
+			// Set a custom error message as we're aware of the actual problem
+			processSyntaxResultAlways(
+				mw.message( 'abusefilter-edit-syntaxerr', data.message ).toString(),
+				'mw-abusefilter-syntaxresult-error',
+				false
+			);
 
 			$filterBox
 				.focus()
 				.textSelection( 'setSelection', { start: data.character } );
 		}
-	};
+	}
 
-	// Adds text to the filter textarea
-	// Fired by a change event rom the #wpFilterBuilder dropdown
-	this.addText = function() {
+	/**
+	 * Acts on errors after doSyntaxCheck
+	 */
+	function processSyntaxResultFailure() {
+		processSyntaxResultAlways(
+			mw.msg( 'unknown-error' ),
+			'mw-abusefilter-syntaxresult-error',
+			false
+		);
+	}
+
+	/**
+	 * Adds text to the filter textarea
+	 * Fired by a change event from the #wpFilterBuilder dropdown
+	 */
+	function addText() {
 		var $filterBuilder = $( '#wpFilterBuilder' );
 
 		if ( $filterBuilder.prop( 'selectedIndex' ) === 0 ) {
@@ -83,10 +120,12 @@
 			'encapsulateSelection', { 'pre': $filterBuilder.val() + " " }
 		);
 		$filterBuilder.prop( 'selectedIndex', 0 );
-	};
+	}
 
-	// Fetches a filter from the API and inserts it into the filter box
-	this.fetchFilter = function() {
+	/**
+	 * Fetches a filter from the API and inserts it into the filter box
+	 */
+	function fetchFilter() {
 		var filterId = $( '#mw-abusefilter-load-filter' ).val();
 
 		if ( filterId === '' ) {
@@ -94,27 +133,32 @@
 		}
 
 		$( this ).injectSpinner( 'fetch-spinner' );
-		$.getJSON(
-			mw.util.wikiScript( 'api' ), {
-				action: 'query',
-				format: 'json',
-				list: 'abusefilters',
-				abfprop: 'pattern',
-				abfstartid: filterId,
-				abfendid: filterId,
-				abflimit: 1
-			}, function ( data ) {
-				$.removeSpinner( 'fetch-spinner' );
-				if ( data.query.abusefilters[0] !== undefined ) {
-					$filterBox.text( data.query.abusefilters[0].pattern );
-				}
-			}
-		);
-	};
 
-	// Cycles through all action checkboxes and hides parameter divs
-	// that don't have checked boxes
-	this.hideDeselectedActions = function() {
+		// We just ignore errors or unexisting filters over here
+		var api = new mw.Api();
+		api.get( {
+			action: 'query',
+			list: 'abusefilters',
+			abfprop: 'pattern',
+			abfstartid: filterId,
+			abfendid: filterId,
+			abflimit: 1
+		} )
+		.always( function() {
+			$.removeSpinner( 'fetch-spinner' );
+		} )
+		.done( function( data ) {
+			if ( data.query.abusefilters[0] !== undefined ) {
+				$filterBox.text( data.query.abusefilters[0].pattern );
+			}
+		} );
+	}
+
+	/**
+	 * Cycles through all action checkboxes and hides parameter divs
+	 * that don't have checked boxes
+	 */
+	function hideDeselectedActions() {
 		$( 'input.mw-abusefilter-action-checkbox' ).each( function() {
 			// mw-abusefilter-action-checkbox-{$action}
 			var action = this.id.substr( 31 ),
@@ -128,31 +172,60 @@
 				}
 			}
 		} );
-	};
+	}
 
-	// Fetches the warning message selected for previewing
-	this.previewWarnMessage = function() {
-		var message = getCurrentWarningMessage();
-
-		$.get( mw.config.get('wgScript'), {
-				title: 'MediaWiki:' + message,
+	/**
+	* Fetches the selected warning message for previewing
+	*/
+	function previewWarnMessage() {
+		$.get(
+			mw.config.get( 'wgScript' ), {
+				title: 'MediaWiki:' + getCurrentWarningMessage(),
 				action: 'render'
-			},
-			function( data ) {
-				$( '#mw-abusefilter-warn-preview' ).html( data );
 			}
-		);
-	};
+		)
+		.done( function( messageHtml ) {
+			// Replace $1 with the description of the filter
+			messageHtml = messageHtml.replace(
+				/\$1/g,
+				mw.html.escape( $( 'input[name=wpFilterDescription]' ).val() )
+			);
 
-	// Redirects browser to the warning message for editing
-	this.editWarnMessage = function() {
+			$( '#mw-abusefilter-warn-preview' ).html( messageHtml );
+		} );
+	}
+
+	/**
+	 * Redirects the browser to the warning message for editing
+	 */
+	function editWarnMessage() {
 		var message = getCurrentWarningMessage();
 
 		window.location = mw.config.get( 'wgScript' ) + '?title=MediaWiki:' +  mw.util.wikiUrlencode( message ) + '&action=edit';
-	};
+	}
+
+	/**
+	 * Called if the filter group (#mw-abusefilter-edit-group-input) is changed
+	 */
+	function onFilterGroupChange() {
+		var newVal = mw.config.get( 'wgAbuseFilterDefaultWarningMessage' )[$( this ).val()];
+
+		if ( !$( '#mw-abusefilter-action-warn-checkbox' ).is( ':checked' ) ) {
+			var $afWarnMessageExisting = $( '#mw-abusefilter-warn-message-existing' ),
+				$afWarnMessageOther = $( '#mw-abusefilter-warn-message-other' );
+
+			if ( $afWarnMessageExisting.find( "option[value='" + newVal + "']" ).length ) {
+				$afWarnMessageExisting.val( newVal );
+				$afWarnMessageOther.val( '' );
+			} else {
+				$afWarnMessageExisting.val( 'other' );
+				$afWarnMessageOther.val( newVal );
+			}
+		}
+	}
 
 	// On ready initialization
-	$( function( $ ) {
+	$( document ).ready( function() {
 		$filterBox = $( '#' + mw.config.get( 'abuseFilterBoxName' ) );
 		// Hide the syntax ok message when the text changes
 		$filterBox.keyup( function() {
@@ -163,36 +236,24 @@
 			}
 		} );
 
-		$( '#mw-abusefilter-load' ).click( that.fetchFilter );
-		$( '#mw-abusefilter-warn-preview-button' ).click( that.previewWarnMessage );
-		$( '#mw-abusefilter-warn-edit-button' ).click( that.editWarnMessage );
-		$( 'input.mw-abusefilter-action-checkbox' ).click( that.hideDeselectedActions );
-		that.hideDeselectedActions();
+		$( '#mw-abusefilter-load' ).click( fetchFilter );
+		$( '#mw-abusefilter-warn-preview-button' ).click( previewWarnMessage );
+		$( '#mw-abusefilter-warn-edit-button' ).click( editWarnMessage );
+		$( 'input.mw-abusefilter-action-checkbox' ).click( hideDeselectedActions );
+		hideDeselectedActions();
 
-		$( '#mw-abusefilter-syntaxcheck' ).click( that.doSyntaxCheck );
-		$( '#wpFilterBuilder' ).change( that.addText );
+		$( '#mw-abusefilter-syntaxcheck' ).click( doSyntaxCheck );
+		$( '#wpFilterBuilder' ).change( addText );
+		$( '#mw-abusefilter-edit-group-input' ).change( onFilterGroupChange );
 
 		var $exportBox = $( '#mw-abusefilter-export' );
-		$( '#mw-abusefilter-export-link' ).toggle( function() {
-			$exportBox.show();
-		}, function() {
-			$exportBox.hide();
-		} );
 
-		$( '#mw-abusefilter-edit-group-input' ).change( function () {
-			var newVal = mw.config.get( 'wgAbuseFilterDefaultWarningMessage' )[$( this ).val()];
-
-			if ( !$( '#mw-abusefilter-action-warn-checkbox' ).is( ':checked' ) ) {
-				var $afWarnMessageExisting = $( '#mw-abusefilter-warn-message-existing' ),
-					$afWarnMessageOther = $( '#mw-abusefilter-warn-message-other' );
-				if ( $afWarnMessageExisting.find( "option[value='" + newVal + "']" ).length ) {
-					$afWarnMessageExisting.val( newVal );
-					$afWarnMessageOther.val( '' );
-				} else {
-					$afWarnMessageExisting.val( 'other' );
-					$afWarnMessageOther.val( newVal );
-				}
+		$( '#mw-abusefilter-export-link' ).toggle(
+			function() {
+				$exportBox.show();
+			}, function() {
+				$exportBox.hide();
 			}
-		} );
+		);
 	} );
-} ( jQuery, mediaWiki ) );
+} ( mediaWiki, jQuery ) );
