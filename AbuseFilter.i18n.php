@@ -11245,7 +11245,7 @@ $messages['fa'] = array(
 	'abusefilter-reautoconfirm-notallowed' => 'شما اجازه ندارید حالت تأییدشده را بازگردانید.',
 	'abusefilter-reautoconfirm-done' => 'وضعیت تأییدشدهٔ حساب بازگردانده شد.',
 	'abusefilter-status' => 'از میان $1 {{PLURAL:$1|عمل|عمل}} آخر، $2 مورد ($3٪) به ظرفیت شرایط $4 {{PLURAL:$2|رسید|رسیدند}}، و $5 مورد ($6٪) با یکی از پالایه‌هایی که در حال حاضر فعال است مطابقت {{PLURAL:$5|داشت|داشتند}}.',
-	'abusefilter-edit' => 'ویرایش فیلترهای جلوگیری از سو‌ء استفاده',
+	'abusefilter-edit' => 'ویرایش پالایهٔ خرابکاری',
 	'abusefilter-edit-subtitle' => 'ویرایش پالایهٔ $1',
 	'abusefilter-edit-subtitle-new' => 'ساختن پالایه',
 	'abusefilter-edit-oldwarning' => '<strong>شما مشغول ویرایش کردن بر روی نسخهٔ قدیمی از پالایه هستید.
@@ -11562,10 +11562,9 @@ Tämä käyttöliittymä näyttää luettelon määritellyistä suodattimista, j
 Epäasialliset muokkaukset kumotaan nopeasti ja törkeä tai toistuva häiriköinti johtaa tunnuksesi tai IP-osoitteesi estämiseen.
 Jos muokkauksesi on mielestäsi asiallinen, napsauta Tallenna-painiketta uudelleen.
 Syy: $1", # Fuzzy
-	'abusefilter-disallowed' => 'Muokkauksesi on tunnistettu automaattisesti haitalliseksi
-ja sen tallentaminen on estetty.
+	'abusefilter-disallowed' => 'Muokkauksesi on tunnistettu automaattisesti haitalliseksi ja sen tallentaminen on estetty.
 Jos uskot muokkauksesi olevan asiallinen, ota yhteyttä ylläpitäjään ja kerro, mitä yritit tehdä.
-Syy: $1', # Fuzzy
+Syy: $1',
 	'abusefilter-blocked-display' => 'Muokkauksesi on automaattisesti tunnistettu haitalliseksi
 ja sen suorittaminen on estetty.
 {{GRAMMAR:genitive|{{SITENAME}}}} suojelemiseksi muokkaaminen on estetty tunnukseltasi ja kaikilta siihen liittyviltä IP-osoitteilta.
@@ -17055,19 +17054,20 @@ $messages['ike-latn'] = array(
  */
 $messages['ilo'] = array(
 	'abusefilter-desc' => 'Agikabil kadagiti automatiko a panagsulbar ti parikut kadagiti panag-urnos',
-	'abusefilter' => 'Kita ti panakaaramid ti sagat ti panag-abuso',
+	'abusefilter' => 'Kita ti pannakaaramid ti sagat ti panag-abuso',
 	'abuselog' => 'Listaan ti panag-abuso',
-	'abusefilter-intro' => 'Naragsak nga isasangbay ditoy interface ti pinangasiwaan ti Sagat ti Panag-abuso.
-Ti  Sagat ti Panag-abuso ket automatiko a mekanismo ti software nga agikabil ti automatiko a panagsulbar ti amin a parikut kadagiti aramid.
-Daytoy nga interface ket ipakita na dagiti listaan dagiti naipalawag a sagat, ken maipabalin da a maipasabali.',
-	'abusefilter-mustbeeditor' => 'Para ti panagseguridad a rason, dagiti laeng agus-usar nga addaan ti karbengan nga agpasabali kadagiti sagat ti pinagabuso ti makausar daytoy nga interface.',
+	'abusefilter-intro' => 'Naragsak nga isasangbay ditoy interface a pangasiwaan ti Sagat ti Panag-abuso.
+Ti  Sagat ti Panag-abuso ket automatiko a mekanismo ti sopwer nga agikabil ti automatiko a panagsulbar ti amin a parikut kadagiti aramid.
+Daytoy nga interface ket ipakitana dagiti listaan dagiti naipalawag a sagat, ken mabalinda a masukatan.',
+	'abusefilter-mustbeeditor' => 'Para ti panagseguridad a rason, dagiti laeng agus-usar nga addaan ti karbengan nga agpasabali kadagiti sagat ti panag-abuso ti makausar daytoy nga interface.',
 	'abusefilter-warning' => "'''Ballaag''': Daytoy nga aramid ket na-automatiko a nanaganan a makadangran.
-Dagiti saan a nasayaat a panag-urnos ket napardas to a maisubli,
+Dagiti saan a nasayaat a panag-urnos ket napardasto a maisubli,
 ken dagiti dakes unay wenno naulit a dakes a panag-urnos ket mabanagan a ti pakabilangam wenno ti IP a pagtaengam ket maserraan.
-Ti nababa a deskripsion iti alagaden ti panag-abuso nga inaramid mo a naipada ket: $1", # Fuzzy
+No namatmatika a daytoy a tignay ket nasayaat, mabalinmo nga ipan manen tapno mmapasingkedam.
+Ti nababa a deskripsion iti alagaden ti panag-abuso nga inaramidmo a naipada ket: $1",
 	'abusefilter-disallowed' => 'Daytoy nga aramid ket na-automatiko a nainaganan a makadangran, ken iti kasta saan a naipalubos.
-No mamati ka nga ti inurnos mo ket nasayaat, pangngaasi ng ipakaammom iti administrador no ania ti padpadasem nga araramiden.
-Ti nababa a deskripsion iti alagaden ti panag-abuso nga inaramid mo a naipada ket: $1', # Fuzzy
+No namatmatika a ti tignaymo ket nasayaat, pangngaasi nga ipakaammom iti administrador no ania ti padpadasem nga araramiden.
+Ti nababa a deskripsion iti alagaden ti panag-abuso nga inaramidmo a naipada ket: $1',
 	'abusefilter-blocked-display' => 'Daytoy nga aramid ket na-automatiko a nainaganan a makadangran,
 ken napawilan ka nga agtungpal iti daytoy.
 Ken dadduma pay, tapno masalakniban ti {{SITENAME}}, ti pakabilangam ken amin dagiti nairaman a pagtaengam nga IP ket naserraan ti panag-urnos.
@@ -17097,6 +17097,7 @@ Deskripsion ti alagadan: $1',
 	'right-abusefilter-log-private' => 'Kitaen dagiti nailista iti sagat ti panag-abuso a namarkaan a kas pribado',
 	'right-abusefilter-hide-log' => 'Ilemmeng dagiti naikabil idiay listaan ti panag-abuso',
 	'right-abusefilter-hidden-log' => 'Kitaen dagiti nailemmeng a naikabil dita listaan',
+	'right-abusefilter-modify-global' => 'Agpartuat wenno baliwan dagiti sangalubongan a sagat ti panag-abuso',
 	'action-abusefilter-modify' => 'baliwan dagiti sagat ti panag-abuso',
 	'action-abusefilter-view' => 'kitaen dagiti sagat ti panag-abuso',
 	'action-abusefilter-log' => 'kitaen ti listaan ti panag-abuso',
@@ -17119,14 +17120,14 @@ Deskripsion ti sagat: $6',
 	'abusefilter-log-detailedentry-meta' => '$1: Ni $2 ket nakalbitna ti $3, ar-aramiden a ti  "$4" nga aksion idiay $5.
 Dagiti aksion a naaramid: $6;
 Deskripsion ti sagat: $7 ($8)',
-	'abusefilter-log-detailedentry-global' => 'sangalubungan a sagat $1',
+	'abusefilter-log-detailedentry-global' => 'sangalubongan a sagat $1',
 	'abusefilter-log-detailedentry-local' => 'sagat $1',
 	'abusefilter-log-detailslink' => 'dagiti salaysay',
 	'abusefilter-log-diff' => 'sabali',
 	'abusefilter-log-hidelink' => 'pasayaaten ti panakakita',
 	'abusefilter-log-details-legend' => 'Dagiti salaysay ti naikabil dita listaan $1',
 	'abusefilter-log-details-var' => 'Sabsabali a kita',
-	'abusefilter-log-details-val' => 'Kuwenta',
+	'abusefilter-log-details-val' => 'Pateg',
 	'abusefilter-log-details-vars' => 'Dagiti parametro ti aksion',
 	'abusefilter-log-details-private' => 'Pribado a datos',
 	'abusefilter-log-details-ip' => 'Tinaudan nga IP a pagtaengan',
@@ -17189,6 +17190,7 @@ Deskripsion ti sagat: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => 'Awan ka ti pammalubos nga agisubli ti napasingkedan a kasasaad.',
 	'abusefilter-reautoconfirm-done' => 'Ti napasingkedan a kasasaad iti daytoy a pakabilangan ket naisublin',
 	'abusefilter-status' => 'Ti $1 a naudi {{PLURAL:$1|nga aramid|kadagiti aramid}}, $2 ($3%) {{PLURAL:$2|ket adda|ket adda}} a nakaabot ti kasasaad a patingga iti $4, ken $5 ($6%) {{PLURAL:$5|adda|adda}} ti naipada a maysa a dagiti sagat nga agdama a napabaelan.',
+	'abusefilter-edit' => 'Agur-urnos ti sagat ti panag-abuso',
 	'abusefilter-edit-subtitle' => 'Ururnosen ti sagat $1',
 	'abusefilter-edit-subtitle-new' => 'Agparpartuat ti sagat',
 	'abusefilter-edit-oldwarning' => '<strong>Agur-urnoska ti daan a bersion ti sagat.
@@ -17261,6 +17263,7 @@ Pangngaasi a damagen ti agar-aramat nga adda ti pammalubos nga agnayon kadagiti 
 	'abusefilter-edit-bad-tags' => 'Maysa wenno adu pay kadagiti etiketa a nainaganam ket imbalido.
 Dagiti etiketa ket masapul a nababa, ken saan da kuma nga aglaon dagiti naipangpangruna a karakter.',
 	'abusefilter-edit-notallowed' => 'Awan ti pammalubos mo nga agaramid wenno agurnos kadagiti sagat ti panag-abuso',
+	'abusefilter-edit-notallowed-global' => 'Awan ti pammalubosmo nga agaramid wenno agurnos kadagiti sangalubongan a sagat ti panag-abuso',
 	'abusefilter-edit-builder-select' => 'Agpili ka ti pagpilian nga inayon dita cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Dagiti aritmitik nga agipagpagna',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Nakadagdagupan (+)',
@@ -17305,6 +17308,7 @@ Dagiti etiketa ket masapul a nababa, ken saan da kuma nga aglaon dagiti naipangp
 	'abusefilter-edit-builder-funcs-substr' => 'Apo ti kuerdas (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'Nagtakderan ti apo ti kuerdas idiay kuerdas (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'Sukatan ti apo ti kuerdas iti kuerdas (str_replace)',
+	'abusefilter-edit-builder-funcs-rescape' => 'Panagtalaw a kuerdas a kas literal iti regex (rescape)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Idisso ti sabsabali (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Sabsabali',
 	'abusefilter-edit-builder-vars-accountname' => 'Nagan ti pakabilangan (idi naaramid ti pakabilangan)',
@@ -17321,6 +17325,7 @@ Dagiti etiketa ket masapul a nababa, ken saan da kuma nga aglaon dagiti naipangp
 	'abusefilter-edit-builder-vars-article-ns' => 'Nagan a lugar ti panid',
 	'abusefilter-edit-builder-vars-article-text' => 'Titulo ti panid (nga awan ti nagan a lugar)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Sibubukel a titulo ti panid',
+	'abusefilter-edit-builder-vars-article-views' => 'Dagiti panagkitkita ti panid',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'ID ti panid iti iyalis a taudan ti panid',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Nagan a lugar iti iyalis a taudan ti panid',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Titulo iti  iyalis a taudan ti panid',
@@ -17333,6 +17338,7 @@ Dagiti etiketa ket masapul a nababa, ken saan da kuma nga aglaon dagiti naipangp
 	'abusefilter-edit-builder-vars-user-age' => 'Edad ti pakabilangan ti agar-aramat',
 	'abusefilter-edit-builder-vars-user-name' => 'Nagan ti pakabilangan ti agar-aramat',
 	'abusefilter-edit-builder-vars-user-groups' => 'Dagiti bunggoy (mairaman ti naitalged) nga addaan ti agar-aramat',
+	'abusefilter-edit-builder-vars-user-blocked' => 'No ti agar-aramat ket naserraan',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Oras a napasingkedan ti e-surat a pagtaengan',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Dagiti naudi a sangapulo nga agar-aramat  a nagparawad iti daytoy a panid',
 	'abusefilter-edit-builder-vars-all-links' => 'Dagiti amin nga akin-ruar a panilpo idiay baro a teksto',
@@ -17344,6 +17350,8 @@ Dagiti etiketa ket masapul a nababa, ken saan da kuma nga aglaon dagiti naipangp
 	'abusefilter-edit-builder-vars-new-html' => 'Na parse a HTML a taudan iti baro a panagbaliw',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Akbang ti salaknib ti panag-urnos iti panid',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Akbang ti salaknib ti panagiyalis iti panid',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Agpartuat ti panagsalaknib iti panid',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'Agikarga ti panagsalaknib iti papeles',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Daan a teksto ti panid, a naikkatan iti ania man a naimarka',
 	'abusefilter-edit-builder-vars-old-links' => 'Dagiti panilpo iti panid, sakbay ti pinagurnos',
 	'abusefilter-edit-builder-vars-old-html' => 'Daan a wikitext ti panid, na parse iti HTML',
@@ -17426,7 +17434,7 @@ Ti agikarga ti adda a sagat, imakiniliam ti ID ti sagat iti kahon dita baba ti p
 Maka-awat ka ti sibubukel a palawag babaen ti panag-takla ti "Kitaen ti Gramatika" a buton.',
 	'abusefilter-changeslist-examine' => 'sukimaten',
 	'abusefilter-examine' => 'Sukimaten dagiti tigga maysa a sinusukatan',
-	'abusefilter-examine-intro' => 'Daytoy a panid ket agpalubos kenka nga agsukimat kadagti sabsabali nga inaramid ti Sagat ti Panag-abuso para iti tigga maysa a sinukatan, ken subokan na nga agsupiat kadagiti sagat.',
+	'abusefilter-examine-intro' => 'Daytoy a panid ket agpalubos kenka nga agsukimat kadagti sabsabali nga inaramid ti Sagat ti Panag-abuso para iti tunggal maysa a sinukatan, ken subokanna nga agsupiat kadagiti sagat.',
 	'abusefilter-examine-legend' => 'Agpili kadagiti sinukatan',
 	'abusefilter-examine-diff' => 'Sabali a URL:',
 	'abusefilter-examine-user' => 'Agar-aramat:',
@@ -17449,8 +17457,8 @@ Maka-awat ka ti sibubukel a palawag babaen ti panag-takla ti "Kitaen ti Gramatik
 	'abusefilter-topnav-tools' => 'Ramramit a pagsimpa',
 	'abusefilter-topnav-import' => 'Agala ti sagat',
 	'abusefilter-log-name' => 'Listaan ti Sagat ti Panag-abuso',
-	'abusefilter-log-header' => 'Daytoy a listaan ket agiparang ti pakapukpukan dagiti sinukatan nga iramid para kadagiti sagat.
-Para kadagiti sibubukel adetalye, kitaen [[Special:AbuseFilter/history|ti listaan]] dagiti kaudian panag-sukat ti sagat.',
+	'abusefilter-log-header' => 'Daytoy a listaan ket agiparang ti pakapukpukan dagiti sinukatan nga inaramid para kadagiti sagat.
+Para kadagiti sibubukel a salysay, kitaen [[Special:AbuseFilter/history|ti listaan]] dagiti kaudian panag-sukat ti sagat.',
 	'abusefilter-log-entry-modify' => 'binaliwan $1 ($2)',
 	'abusefilter-log-noresults' => 'Awan dagiti nagbanagan',
 	'abusefilter-diff-title' => 'Nagdudumaan iti baeten dagiti pannakabalbaliw',
@@ -17460,9 +17468,11 @@ Para kadagiti sibubukel adetalye, kitaen [[Special:AbuseFilter/history|ti listaa
 	'abusefilter-diff-pattern' => 'Dagiti kasasaad ti sagat',
 	'abusefilter-diff-invalid' => 'Saan a maala dagiti kiniddaw a bersion',
 	'abusefilter-diff-backhistory' => 'Agsubli idiay pakasaritaan ti sagat',
+	'abusefilter-diff-prev' => 'Nadadaan a panagbaliw',
+	'abusefilter-diff-next' => 'Barbaro a panagbaliw',
 	'abusefilter-import-intro' => 'Mabalinmo nga usaren daytoy nga interface ti agala kadagiti sagat manipud kadagiti sabali a wiki.
-Idiay nataudan a wiki, agtakla ti "{{int:abusefilter-edit-export}}" babaen ti "{{int:abusefilter-edit-tools}}" idiay panag-urnos ti interface.
-Kopiaen manipud idiay testo ti kahon nga agparang, ken ikabil ditoy a kahon ti testo, kalpasan daytoy agtakla ka ti "{{int:abusefilter-import-submit}}".',
+Idiay nataudan a wiki, ipindut ti "{{int:abusefilter-edit-export}}" babaen ti "{{int:abusefilter-edit-tools}}" idiay panag-urnos ti interface.
+Kopiaen manipud idiay testo ti kahon nga agparang, ken ikabil ditoy a kahon ti testo, kalpasan daytoy pindutem ti "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Alaen ti datos',
 	'abusefilter-group-default' => 'Kasisigud',
 );
