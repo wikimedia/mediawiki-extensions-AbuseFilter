@@ -5576,7 +5576,7 @@ Trugarez da wiriañ anezho gant aked, ha klikit war "kadarnaat" evit kadarnaat h
 	'abusefilter-revert-success' => "Diskaret ho peus pep ober graet gant ar sil gwallimplij abalamour d'ar [[Special:AbuseFilter/$1|sil $1]].",
 	'abusefilter-revert-reason' => "Disteurel en un doare emgefreek pep ober graet gant ar sil gwallimplij abalamour d'ar sil $1.
 Abeg roet : $2",
-	'abusefilter-revert-reasonfield' => 'Abeg an distaoladenn :', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Abeg :',
 	'abusefilter-test' => "Amprouiñ ur sil war ar c'hemmoù kozh",
 	'abusefilter-test-intro' => 'Gant ar bajenn-mañ e c\'helloc\'h gwiriañ an/ar $1 {{PLURAL:$1|c\'hemm|c\'hemm}} ziwezhañ eno ur sil roet en takad testenn amañ dindan.
 Evit kargañ ur sil, roit e anv en hedad dindan an takad testenn, ha klikit war ar bouton "Kargañ".',
