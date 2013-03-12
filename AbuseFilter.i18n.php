@@ -7345,6 +7345,7 @@ Disgrifiad o'r rheol sy'n cyfateb: $1",
  * @author Aputtu
  * @author Christian List
  * @author Claus chr
+ * @author Fnielsen
  * @author Froztbyte
  * @author Hylle
  * @author Lhademmor
@@ -7768,6 +7769,8 @@ For fuldstændige oplysninger, se [[Special:AbuseFilter/history|listen]] over de
 	'abusefilter-diff-pattern' => 'Filterregler',
 	'abusefilter-diff-invalid' => 'Kunne ikke hente de ønskede versioner',
 	'abusefilter-diff-backhistory' => 'Tilbage til filterhistorik',
+	'abusefilter-diff-prev' => 'Ældre ændring',
+	'abusefilter-diff-next' => 'Nyere ændring',
 	'abusefilter-import-intro' => 'Du kan bruge denne grænseflade til at importere filtre fra andre wiki-websteder direkte.
 Klik på kilde wiki, "{{int:abusefilter-edit-export}}" under "{{int:abusefilter-edit-tools}}" i redigeringsgrænsefladen.
 Kopiere fra tekstfeltet der vises, og indsætte det i denne tekstboks, og klik derefter på "{{int:abusefilter-import-submit}}".',
@@ -23872,13 +23875,13 @@ $messages['mr'] = array(
 	'abusefilter-accountreserved' => 'संपादन गाळणीद्वारे या नावाचे खाते वापरापासून आरक्षित केले आहे.',
 	'right-abusefilter-modify' => 'संपादन गाळणीस बदलवा.',
 	'right-abusefilter-view' => 'संपादन गाळण्या बघा',
-	'right-abusefilter-log' => 'अपवापर क्रमलेख बघा',
-	'right-abusefilter-log-detail' => 'अपवापर क्रमलेखाच्या विस्तृत नोंदी बघा',
+	'right-abusefilter-log' => 'संपादन गाळणीच्या नोंदी बघा',
+	'right-abusefilter-log-detail' => 'संपादन गाळणी क्रमलेखाच्या विस्तृत नोंदी बघा',
 	'right-abusefilter-view-private' => 'खाजगी म्हणून खूण केलेल्या संपादन गाळण्या बघा.',
 	'right-abusefilter-log-private' => 'खाजगी म्हणून नोंदविलेल्या अपवापर क्रमलेखाच्या नोंदी बघा',
-	'right-abusefilter-hide-log' => 'अपवापर क्रमलेखाच्या नोंदी लपवा',
+	'right-abusefilter-hide-log' => 'संपादन गाळणीतील नोंदी लपवा',
 	'right-abusefilter-hidden-log' => 'अपवापर क्रमलेखाच्या लपविलेल्या नोंदी दाखवा',
-	'abusefilter-log-search' => 'अपवापर क्रमलेख शोधा',
+	'abusefilter-log-search' => 'गाळणी नोंदी शोधा',
 	'abusefilter-log-search-user' => 'सदस्य:',
 	'abusefilter-log-search-title' => 'शीर्षक:',
 	'abusefilter-log-search-wiki' => 'विकि:',
