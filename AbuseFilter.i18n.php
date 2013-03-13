@@ -869,7 +869,7 @@ See also {{msg-mw|Abusefilter-edit-builder-vars-restrictions-edit}}, {{msg-mw|Ab
 {{Identical|Time}}',
 	'abusefilter-history-user' => '{{Identical|User}}',
 	'abusefilter-history-flags' => '{{Identical|Flag}}',
-	'abusefilter-history-comments' => '{{Identical|Comments}}',
+	'abusefilter-history-comments' => '{{Identical|Comment}}',
 	'abusefilter-history-actions' => '{{Identical|Action}}',
 	'abusefilter-history-deleted' => '{{Identical|Deleted}}',
 	'abusefilter-history-filterid' => '{{Identical|Filter}}',
