@@ -703,6 +703,14 @@ $messages['qqq'] = array(
 	'abusefilter-edit-oldwarning' => 'Warning displayed when editing an older version of a filter.',
 	'abusefilter-edit-status-label' => 'Field label for abuse filter statistics.
 {{Identical|Statistics}}',
+	'abusefilter-edit-status' => 'Parameters:
+* $1 - number of actions
+* $2 - matched count
+* $3 - matched percentage
+* $4 - time (in milliseconds)
+* $5 - number of conditions',
+	'abusefilter-edit-throttled' => 'Used as warning message. Parameters:
+* $1 - threshold percentage',
 	'abusefilter-edit-new' => 'Field value in case an edited filter is new.',
 	'abusefilter-edit-save' => 'Submit button text to save a filter.',
 	'abusefilter-edit-id' => 'Field label for filter identifier.
@@ -884,10 +892,55 @@ Parameters:
 * $2 - Expected code, i.e. <code>else, then, end, :, '</code>
 * $3 - Type of the found code
 * $4 - Value of the type",
-	'abusefilter-exception-notenoughargs' => '* $1 is a character position (numeral)
-* $2 is a function name
-* $3 is the number of expected arguments
-* $4 is the number of passed arguments (also supports PLURAL)',
+	'abusefilter-exception-unrecognisedkeyword' => 'Error message from the abuse filter parser.
+Parameters:
+* $1 - Position in the string
+* $2 - Unrecognized keyword',
+	'abusefilter-exception-unexpectedtoken' => 'Error message from the abuse filter parser.
+Parameters:
+* $1 - Position in the string
+* $2 - Type
+* $3 - Unexpected token',
+	'abusefilter-exception-unclosedstring' => 'Error message from the abuse filter parser.
+Parameters:
+* $1 - Position in the string',
+	'abusefilter-exception-invalidoperator' => 'Error message from the abuse filter parser.
+Parameters:
+* $1 - Position in the string
+* $2 - Invalid operator',
+	'abusefilter-exception-unrecognisedtoken' => 'Error message from the abuse filter parser.
+Parameters:
+* $1 - Position in the string
+* $2 - Unrecognized token',
+	'abusefilter-exception-noparams' => 'Error message from the abuse filter parser.
+Parameters:
+* $1 - Position in the string
+* $2 - Function',
+	'abusefilter-exception-dividebyzero' => 'Error message from the abuse filter parser.
+Parameters:
+* $1 - Position in the string
+* $2 - AFPData (integer or float?)',
+	'abusefilter-exception-unrecognisedvar' => 'Error message from the abuse filter parser. Parameters:
+* $1 - Position in the string
+* $2 - Unrecognized variable',
+	'abusefilter-exception-notenoughargs' => 'Error message from the abuse filter parser. Parameters:
+* $1 - position in the string (numeral)
+* $2 - a function name
+* $3 - the number of expected arguments
+* $4 - the number of passed arguments (also supports PLURAL)',
+	'abusefilter-exception-regexfailure' => 'Error message from the abuse filter parser. Parameters:
+* $1 - Position in the string
+* $2 - Error message
+* $3 - Regular expression',
+	'abusefilter-exception-overridebuiltin' => 'Error message from the abuse filter parser. Parameters:
+* $1 - Position in the string
+* $2 - Built-in variable',
+	'abusefilter-exception-outofbounds' => 'Error message from the abuse filter parser. Parameters:
+* $1 - Position in the string
+* $2 - Index
+* $3 - Number of items in list',
+	'abusefilter-exception-notlist' => 'Error message from the abuse filter parser. Parameters:
+* $1 - Position in the string',
 	'abusefilter-action-tag' => '{{doc-abusefilter-action}}
 
 {{Identical|Tag}}',
@@ -904,6 +957,8 @@ This appears to be a verb.
 	'abusefilter-action-rangeblock' => '{{doc-abusefilter-action}}',
 	'abusefilter-action-disallow' => '{{doc-abusefilter-action}}',
 	'abusefilter-revert-title' => 'Caption of [[Special:AbuseFilter/revert/1]] (go to [[Special:AbuseFilter]], open a filter, click "Revert actions taken by this filter")',
+	'abusefilter-revert-intro' => 'Parameters:
+* $1 - filter',
 	'abusefilter-revert-preview-item' => 'Parameters:
 * $1 is a localised time and date
 * $2 is the linked user that made a change
@@ -915,6 +970,8 @@ This appears to be a verb.
 	'abusefilter-revert-preview-intro' => '"Confirm" is the contents of {{msg-mw|abusefilter-revert-confirm}}.',
 	'abusefilter-revert-confirm' => 'This is also used in {{msg-mw|Abusefilter-revert-preview-intro}}. When changing this message, please also remember to change that one.
 {{Identical|Confirm}}',
+	'abusefilter-revert-success' => 'Parameters:
+* $1 - filter',
 	'abusefilter-revert-reason' => 'Parameters:
 * $1 is a filter ID
 * $2 is a reason',
@@ -7351,6 +7408,7 @@ Disgrifiad o'r rheol sy'n cyfateb: $1",
  * @author Lhademmor
  * @author Peter Alberti
  * @author Sarrus
+ * @author Steenth
  * @author Tjernobyl
  */
 $messages['da'] = array(
@@ -7492,6 +7550,7 @@ Filtrere beskrivelse: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => 'Du har ikke tilladelse til at genoprette status som registreret bruger.',
 	'abusefilter-reautoconfirm-done' => 'Kontoens status som registreret bruger er blevet genoprettet',
 	'abusefilter-status' => 'Af de(n) seneste $1 {{PLURAL:$1|handling|handlinger}} er $2 ($3%) nået betingelsesgrænsen på $4, og $5 ($6%) har udløst et af de filtre som i øjeblikket er aktiveret.',
+	'abusefilter-edit' => 'Redigere misbrugsfilter',
 	'abusefilter-edit-subtitle' => 'Redigerer filter $1',
 	'abusefilter-edit-subtitle-new' => 'Opretter filter',
 	'abusefilter-edit-oldwarning' => '<strong>Du redigerer en gammel version af dette filter.
@@ -7626,6 +7685,7 @@ Tags bør være korte, og de bør ikke indeholde specialtegn.',
 	'abusefilter-edit-builder-vars-article-ns' => 'Sidens navnerum',
 	'abusefilter-edit-builder-vars-article-text' => 'Sidetitel (uden navnerum)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Fuld sidetitel',
+	'abusefilter-edit-builder-vars-article-views' => 'Sidevisninger',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'Side-ID på kildeside ved flytning',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Navnerum på kildeside ved flytning',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Titel på kildeside ved flytning',
@@ -30171,6 +30231,7 @@ Copie o conteúdo da caixa de texto exibida, colando-o nesta caixa de texto; em 
 $messages['qu'] = array(
 	'abusefilter' => "Millay ruray ch'illchina churana",
 	'abuselog' => "Millay ruray hallch'a",
+	'abusefilter-blocker' => "Millay ruray ch'illchina",
 	'action-abusefilter-log' => "Millay ruray hallch'ata qhaway",
 	'abusefilter-log' => "Millay ruray hallch'a",
 	'abusefilter-log-linkoncontribs' => "millay ruray hallch'a",
