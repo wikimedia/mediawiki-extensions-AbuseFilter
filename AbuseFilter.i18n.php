@@ -9174,6 +9174,8 @@ Za połne drobnostki glědaj [[Special:AbuseFilter/history|lisćinu]] nejnowšyc
 	'abusefilter-diff-pattern' => 'Filtrowe wuměnjenja',
 	'abusefilter-diff-invalid' => 'Njemóžno pominane wersije wobstaraś',
 	'abusefilter-diff-backhistory' => 'Slědk k filtrowym stawiznam',
+	'abusefilter-diff-prev' => 'Starša změna',
+	'abusefilter-diff-next' => 'Nowša změna',
 	'abusefilter-import-intro' => 'Móžoš toś ten interfejs wužywaś, aby importěrował filtry z drugich wikijow.
 Klikni w žrědłowem wikiju na "{{int:abusefilter-edit-export}}" pód "{{int:abusefilter-edit-tools}}" na wobźěłowańskem interfejsu. Kopěruj z tekstowego póla, kótarež se pokazujo do toś togo tekstowego póla a klikni pótom na "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'Daty importěrowaś',
