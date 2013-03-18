@@ -28439,6 +28439,7 @@ Krótki opis reguły nadużycia, do której Twoja akcji została dopasowana: $1'
 	'right-abusefilter-log-private' => 'Wyświetlanie wpisów do logów filtrów nadużyć oznaczonych jako prywatne',
 	'right-abusefilter-hide-log' => 'Ukrywanie wpisów w rejestrze nadużyć',
 	'right-abusefilter-hidden-log' => 'Podgląd ukrytych wpisów w rejestrze nadużyć',
+	'right-abusefilter-modify-global' => 'tworzyć lub modyfikować globalne filtry nadużyć',
 	'action-abusefilter-modify' => 'modyfikowania filtru nadużyć',
 	'action-abusefilter-view' => 'przeglądania filtrów nadużyć',
 	'action-abusefilter-log' => 'przeglądania rejestru nadużyć',
@@ -28532,6 +28533,7 @@ wpisów w rejestrze nadużyć.',
 	'abusefilter-reautoconfirm-notallowed' => 'Nie masz uprawnień, aby przywrócić statusu automatycznie zatwierdzonego.',
 	'abusefilter-reautoconfirm-done' => 'Został przywrócony status automatycznego zatwierdzania zmian wykonywanych przez użytkowników',
 	'abusefilter-status' => 'Z {{PLURAL:$1|ostatniej $1 akcji|ostatnich $1 akcji}}, $2 {{PLURAL:$2|osiągnęła|osiągnęły|osiągnęło}} ($3%) stan limitu $4. $5  {{PLURAL:$5|pasował|pasowały|pasowało}} ($6%) do jednego z obecnie włączonych filtrów.',
+	'abusefilter-edit' => 'Edytujesz filtr nadużyć',
 	'abusefilter-edit-subtitle' => 'Edytowanie filtru $1',
 	'abusefilter-edit-subtitle-new' => 'Tworzenie filtru',
 	'abusefilter-edit-oldwarning' => '<strong>Edytujesz starą wersję tego filtru. Statystyka są notowane dla najnowszej wersji filtru. Jeśli zapiszesz zmiany, zostaną nadpisane wszystkie późniejsze wersje niż ta, którą edytujesz.</strong> &bull; [[Special:AbuseFilter/history/$2|Powrót do historii filtru]]',
@@ -28598,6 +28600,7 @@ wpisów w rejestrze nadużyć.',
 	'abusefilter-edit-bad-tags' => 'Co najmniej jedno z oznaczeń jest niepoprawne.
 Oznaczenia powinny być krótkie i nie powinny zawierać znaków specjalnych.',
 	'abusefilter-edit-notallowed' => 'Nie posiadasz uprawnienia do tworzenia lub edytowania filtrów nadużyć',
+	'abusefilter-edit-notallowed-global' => 'Nie posiadasz uprawnienia do tworzenia lub edytowania globalnych filtrów nadużyć',
 	'abusefilter-edit-builder-select' => 'Wybierz opcję, aby wkleić ją na pozycji kursora',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operatory arytmetyczne',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Dodawanie (+)',
@@ -28660,6 +28663,7 @@ Oznaczenia powinny być krótkie i nie powinny zawierać znaków specjalnych.',
 	'abusefilter-edit-builder-vars-article-ns' => 'Przestrzeń nazw strony',
 	'abusefilter-edit-builder-vars-article-text' => 'Tytuł strony (bez przestrzeni nazw)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Pełny tytuł strony',
+	'abusefilter-edit-builder-vars-article-views' => 'Liczba odwiedzin strony',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'Identyfikator źródła przenoszonej strony',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Przestrzeń nazw źródła przenoszonej strony',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Tytuł źródła przenoszonej strony',
@@ -28802,6 +28806,8 @@ Pełne informacje odnajdziesz w [[Special:AbuseFilter/history|rejestrze]] ostatn
 	'abusefilter-diff-pattern' => 'Warunki filtru',
 	'abusefilter-diff-invalid' => 'Nie można pobrać żądanej wersji',
 	'abusefilter-diff-backhistory' => 'Powrót do historii filtru',
+	'abusefilter-diff-prev' => 'Poprzednia zmiana',
+	'abusefilter-diff-next' => 'Następna zmiana',
 	'abusefilter-import-intro' => 'Ten interfejs służy do importowania filtrów z innych wiki.
 W trybie edycji filtru kliknij w źródłowej wiki „{{int:abusefilter-edit-export}}” przy nagłówku „{{int:abusefilter-edit-tools}}”.
 Skopiuj zawartość pola tekstowego, które się pojawi, i wklej ją do poniższego pola tekstowego, a następnie kliknij przycisk „{{int:abusefilter-import-submit}}”,',
@@ -35813,6 +35819,7 @@ Krůtki uopis zńyłużyćo, ke keremu bůła przipasowano twojo akcyjo: $1', # 
 );
 
 /** Tamil (தமிழ்)
+ * @author ElangoRamanujam
  * @author Kanags
  * @author Karthi.dr
  * @author Logicwiki
@@ -36019,6 +36026,7 @@ Filter description: $7 ($8)',
 	'abusefilter-edit-builder-vars-article-ns' => 'பக்கத்தின் பெயர்வெளி',
 	'abusefilter-edit-builder-vars-article-text' => 'பக்கத்தின் தலைப்பு (பெயர்வெளி இல்லாமல்)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'முழு பக்கத்தின் தலைப்பு',
+	'abusefilter-edit-builder-vars-article-views' => 'பக்க நோக்குகள்',
 	'abusefilter-edit-builder-vars-movedto-text' => 'நகர்த்தல் இலக்குப் பக்கத்தின் தலைப்பு',
 	'abusefilter-edit-builder-vars-user-editcount' => 'பயனரின் தொகுப்புக்களின் எண்ணிக்கை',
 	'abusefilter-edit-builder-vars-user-age' => 'பயனர் கணக்கின் வயது',
