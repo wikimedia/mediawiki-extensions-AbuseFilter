@@ -5010,6 +5010,7 @@ $messages['bg'] = array(
 /** Bengali (বাংলা)
  * @author Bellayet
  * @author Ehsanulhb
+ * @author Leemon2010
  * @author Nasir8891
  * @author Samritmaity
  * @author Wikitanvir
@@ -5043,6 +5044,7 @@ $messages['bn'] = array(
 	'abusefilter-log-search-user' => 'ব্যবহারকারী:',
 	'abusefilter-log-search-filter' => 'ফিল্টার আইডি:',
 	'abusefilter-log-search-title' => 'শিরোনাম:',
+	'abusefilter-log-search-wiki' => 'উইকি:',
 	'abusefilter-log-search-submit' => 'অনুসন্ধান',
 	'abusefilter-log-detailedentry-global' => 'গ্লোবাল ফিল্টার $1',
 	'abusefilter-log-detailedentry-local' => 'ফিল্টার $1',
@@ -5095,11 +5097,13 @@ $messages['bn'] = array(
 	'abusefilter-list-options-deleted-only' => 'শুধুমাত্র অপসারিত ফিল্টারগুলো দেখাও',
 	'abusefilter-list-options-deleted-hide' => 'অপসারিত ফিল্টারগুলো লুকাও',
 	'abusefilter-list-options-deleted-show' => 'অপসারিত ফিল্টারগুলো যোগ করো',
+	'abusefilter-list-options-scope-local' => 'স্থানীয় উইকি',
 	'abusefilter-list-options-disabled' => 'ফিল্টারগুলো নিষ্ক্রিয় করো',
 	'abusefilter-list-options-hidedisabled' => 'নিষ্ক্রিয় ফিল্টারগুলো লুকাও',
 	'abusefilter-list-options-submit' => 'হালনাগাদ',
 	'abusefilter-tools-expr' => 'এক্সপ্রেশন পরীক্ষক',
 	'abusefilter-tools-reautoconfirm-user' => 'ব্যবহারকারী:',
+	'abusefilter-tools-reautoconfirm-submit' => 'পুনরায়-স্বয়ংক্রিয়ভাবে নিশ্চিত',
 	'abusefilter-edit-subtitle' => '$1 ফিল্টার সম্পাদনা',
 	'abusefilter-edit-subtitle-new' => 'নতুন ফিল্টার তৈরি করুন',
 	'abusefilter-edit-status-label' => 'পরিসংখ্যান:',
