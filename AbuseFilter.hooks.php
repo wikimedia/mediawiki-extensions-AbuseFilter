@@ -152,9 +152,8 @@ class AbuseFilterHooks {
 
 		$vars = self::$successful_action_vars;
 
-		if ( ( $vars->getVar('article_prefixedtext')->toString() !==
-			$article->getTitle()->getPrefixedText() ) ||
-			( $vars->getVar('summary')->toString() !== $summary )
+		if ( $vars->getVar('article_prefixedtext')->toString() !==
+			$article->getTitle()->getPrefixedText()
 		) {
 			return true;
 		}
