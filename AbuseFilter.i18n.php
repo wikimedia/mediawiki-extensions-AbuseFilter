@@ -14120,6 +14120,7 @@ $messages['haw'] = array(
  * @author StuB
  * @author YaronSh
  * @author Yonidebest
+ * @author ערן
  */
 $messages['he'] = array(
 	'abusefilter-desc' => 'ביצוע בדיקות אוטומטיות לעריכות כדי לאתר השחתות',
@@ -14402,7 +14403,7 @@ $messages['he'] = array(
 	'abusefilter-edit-builder-vars-user-groups' => 'קבוצות (כולל קבוצות משתמעות) בהן נמצא המשתמש',
 	'abusefilter-edit-builder-vars-user-blocked' => 'אם המשתמש נחסם',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'התאריך בו אומתה כתובת הדוא"ל',
-	'abusefilter-edit-builder-vars-recent-contributors' => 'חמשת התורמים האחרונים לדף',
+	'abusefilter-edit-builder-vars-recent-contributors' => 'עשרת התורמים האחרונים לדף',
 	'abusefilter-edit-builder-vars-all-links' => 'כל הקישורים החיצוניים בטקסט החדש',
 	'abusefilter-edit-builder-vars-added-links' => 'כל הקישורים החיצוניים שנוספו בעריכה',
 	'abusefilter-edit-builder-vars-removed-links' => 'כל הקישורים החיצוניים שהוסרו בעריכה',
@@ -29387,6 +29388,7 @@ $messages['ps'] = array(
  * @author Malafaya
  * @author Pedroca cerebral
  * @author SandroHc
+ * @author Sarilho1
  * @author Waldir
  * @author 555
  */
@@ -29401,8 +29403,8 @@ Esta interface mostra uma lista dos filtros definidos e permite que estes sejam 
 	'abusefilter-warning' => "'''Aviso:''' esta operação foi identificada de forma automática como prejudicial.
 As edições não construtivas serão revertidas rapidamente,
 e a repetição destas edições resultará no bloqueio da sua conta ou do seu endereço IP.
-Se crê que esta edição é construtiva, pode clicar novamente o botão \"Enviar\" para confirmá-lo.
-Uma breve descrição da regra de abuso com a qual a sua acção coincidiu é: \$1", # Fuzzy
+Se crê que esta ação é construtiva, pode clicar enviar novamente para confirmá-lo.
+Uma breve descrição da regra de abuso com a qual a sua acção coincidiu é: $1",
 	'abusefilter-disallowed' => 'Esta operação foi identificada automaticamente como prejudicial,
 e foi consequentemente bloqueada.
 Se crê que a sua edição foi construtiva, por favor contacte um administrador, e informe-o do que estava a tentar fazer.
