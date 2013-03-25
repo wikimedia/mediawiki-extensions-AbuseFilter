@@ -105,7 +105,29 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$db = $this->getDB();
 		$notDeletedCond = SpecialAbuseLog::getNotDeletedCond($db);
 
-		$this->addWhereIf( array( 'afl_user_text' => $params['user'] ), isset( $params['user'] ) );
+		if ( isset( $params['user'] ) ) {
+			$u = User::newFromName( $params['user'] );
+			if ( $u ) {
+				// Username normalisation
+				$params['user'] = $u->getName();
+				$userId = $u->getId();
+			} elseif( IP::isIPAddress( $params['user'] ) ) {
+				// It's an IP, sanitize it
+				$params['user'] = IP::sanitizeIP( $params['user'] );
+				$userId = 0;
+			}
+
+			if ( isset( $userId ) ) {
+				// Only add the WHERE for user in case it's either a valid user (but not necessary an existing one) or an IP
+				$this->addWhere(
+					array(
+						'afl_user' => $userId,
+						'afl_user_text' => $params['user']
+					)
+				);
+			}
+		}
+
 		$this->addWhereIf( array( 'afl_filter' => $params['filter'] ), isset( $params['filter'] ) );
 		$this->addWhereIf( $notDeletedCond, !SpecialAbuseLog::canSeeHidden( $user ) );
 
