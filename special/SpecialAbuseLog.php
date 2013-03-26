@@ -70,14 +70,17 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$request = $this->getRequest();
 
-		$this->mSearchUser = $request->getText( 'wpSearchUser' );
+		$this->mSearchUser = trim( $request->getText( 'wpSearchUser' ) );
 		if ( $wgAbuseFilterIsCentral ) {
 			$this->mSearchWiki = $request->getText( 'wpSearchWiki' );
 		}
 
-		$t = Title::newFromText( trim( $this->mSearchUser ) );
-		if ( $t ) {
-			$this->mSearchUser = $t->getText(); // Username normalisation
+		$u = User::newFromName( $this->mSearchUser );
+		if ( $u ) {
+			$this->mSearchUser = $u->getName(); // Username normalisation
+		} elseif( IP::isIPAddress( $this->mSearchUser ) ) {
+			// It's an IP
+			$this->mSearchUser = IP::sanitizeIP( $this->mSearchUser );
 		} else {
 			$this->mSearchUser = null;
 		}
@@ -207,7 +210,6 @@ class SpecialAbuseLog extends SpecialPage {
 			$user = User::newFromName( $this->mSearchUser );
 
 			if ( !$user ) {
-				$conds[] = 'afl_ip=afl_user_text';
 				$conds['afl_user'] = 0;
 				$conds['afl_user_text'] = $this->mSearchUser;
 			} else {
