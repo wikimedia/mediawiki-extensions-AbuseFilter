@@ -25372,6 +25372,7 @@ Kopier fra tekstruten som kommer frem og lim inn i denne tekstruten. Klikk så p
 );
 
 /** Low German (Plattdüütsch)
+ * @author Joachim Mos
  * @author Slomox
  */
 $messages['nds'] = array(
@@ -25425,6 +25426,7 @@ Dat liggt dor an: $1',
 	'abusefilter-log-search-user' => 'Bruker:',
 	'abusefilter-log-search-filter' => 'Filter-ID:',
 	'abusefilter-log-search-title' => 'Titel:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Söken',
 	'abusefilter-log-entry' => '$1: $2 hett en Missbruukfilter utlööst, as he de Akschoon „$3“ op „$4“ anwennt hett.
 Filterakschoon: „$5“;
@@ -25672,6 +25674,7 @@ Fraag en Bruker, de verbadene Akschonen tofögen dröff, dat he dat för di deit
 	'abusefilter-exception-overridebuiltin' => 'Verbaden Överschrieven vun inboot Variabel „$2“ bi Teken $1.',
 	'abusefilter-exception-outofbounds' => 'Anfeddern vun en nich vörhannen Listenindrag $2 (Listengrött: $3) bi Teken $1.',
 	'abusefilter-exception-notlist' => 'Anfeddern vun en Arrayelement ut en Nich-Array bi Teken „$1“.',
+	'abusefilter-action-tag' => 'Tag',
 	'abusefilter-action-throttle' => 'Begrenzen',
 	'abusefilter-action-warn' => 'Wohrschauen',
 	'abusefilter-action-blockautopromote' => 'Autopromote sperren',
@@ -25749,6 +25752,7 @@ För mehr Details, kiek di [[Special:AbuseFilter/history|de List]] mit de lesten
 Klick op dat Utgangswiki op „{{int:abusefilter-edit-export}}“ ünner „{{int:abusefilter-edit-tools}}“ bi dat Afänner-Finster.
 Kopeer de Textbox, de dor wiest warrt, un föög den Text in disse Textbox in, klick denn op „{{int:abusefilter-import-submit}}“.',
 	'abusefilter-import-submit' => 'Daten importeren',
+	'abusefilter-group-default' => 'Default',
 );
 
 /** Nedersaksies (Nedersaksies)
@@ -29813,6 +29817,7 @@ Para detalhes completos, ver [[Special:AbuseFilter/history|a lista]] de alteraç
 	'abusefilter-diff-invalid' => 'Não foi possível obter as versões requeridas',
 	'abusefilter-diff-backhistory' => 'Regressar ao histórico do filtro',
 	'abusefilter-diff-prev' => 'Alteração antiga',
+	'abusefilter-diff-next' => 'Alteração recente',
 	'abusefilter-import-intro' => 'Pode usar esta interface para importar filtros de outras wikis.
 Na wiki de origem, clique "{{int:abusefilter-edit-export}}", sob "{{int:abusefilter-edit-tools}}" na interface de edição.
 Copie da caixa de texto que aparece, coloque nesta caixa de texto e depois clique "{{int:abusefilter-import-submit}}".',
@@ -36183,6 +36188,7 @@ $messages['te'] = array(
 	'abusefilter-log-search-user' => 'వాడుకరి:',
 	'abusefilter-log-search-filter' => 'వడపోత ID:',
 	'abusefilter-log-search-title' => 'శీర్షిక:',
+	'abusefilter-log-search-wiki' => 'వికీ:',
 	'abusefilter-log-search-submit' => 'వెతుకు',
 	'abusefilter-log-entry' => '$1: $4లో చర్య "$3"ని చెయ్యడం ద్వారా $2 ఒక దుర్వినియోగ వడపోతని కదిలించారు.
 తీసుకున్న చర్య: $5;
@@ -36239,6 +36245,7 @@ $messages['te'] = array(
 	'abusefilter-list-options-deleted-only' => 'తొలగించిన వడపోతలను మాత్రమే చూపించు',
 	'abusefilter-list-options-deleted-hide' => 'తొలగించిన వడపోతలను దాచు',
 	'abusefilter-list-options-deleted-show' => 'తొలగించిన వడపోతలను చూపించు',
+	'abusefilter-list-options-scope-local' => 'స్థానిక వికీ',
 	'abusefilter-list-options-disabled' => 'అచేతన వడపోతలు:',
 	'abusefilter-list-options-hidedisabled' => 'అచేతన వడపోతలను దాచు',
 	'abusefilter-list-options-submit' => 'తాజాకరించు',
