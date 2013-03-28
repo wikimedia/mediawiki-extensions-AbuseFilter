@@ -561,12 +561,18 @@ class SpecialAbuseLog extends SpecialPage {
 		if ( self::isHidden( $row ) === true ) {
 			$description .= ' '.
 				$this->msg( 'abusefilter-log-hidden' )->parse();
+			$class = 'afl-hidden';
 		} elseif ( self::isHidden($row) === 'implicit' ) {
 			$description .= ' '.
 				$this->msg( 'abusefilter-log-hidden-implicit' )->parse();
 		}
 
-		return $li ? Xml::tags( 'li', null, $description ) : $description;
+		if ( $li ) {
+			return Xml::tags( 'li', isset( $class ) ? array( 'class' => $class ) : null, $description );
+		} else {
+			return Xml::tags( 'span', isset( $class ) ? array( 'class' => $class ) : null, $description );
+		}
+
 	}
 
 	/**
