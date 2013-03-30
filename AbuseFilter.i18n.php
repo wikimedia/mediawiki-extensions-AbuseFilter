@@ -18871,6 +18871,7 @@ Katrangan aturan: $1',
 	'abusefilter-log-search-user' => 'Panganggo:',
 	'abusefilter-log-search-filter' => 'ID saringan:',
 	'abusefilter-log-search-title' => 'Judhul:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Golèk',
 	'abusefilter-log-detailedentry-global' => 'saringan global $1',
 	'abusefilter-log-detailedentry-local' => 'saringan $1',
@@ -18925,6 +18926,7 @@ Katrangan aturan: $1',
 	'abusefilter-list-options-deleted-only' => 'Tuduhaké saringan kabusak waé',
 	'abusefilter-list-options-deleted-hide' => 'Dhelikaké saringan kabusak',
 	'abusefilter-list-options-deleted-show' => 'Kalebukaké saringan kabusak',
+	'abusefilter-list-options-scope-global' => 'Paugeran Donya',
 	'abusefilter-list-options-disabled' => 'Pati saringan:',
 	'abusefilter-list-options-hidedisabled' => 'Dhelikaké saringan sing dipatèni',
 	'abusefilter-list-options-submit' => 'Anyari',
@@ -19130,7 +19132,7 @@ Mangga priksa sing tenan, lan klik "pesthèkaké" kanggo mesthèkaké pilihan Sa
 	'abusefilter-revert-success' => 'Sampéyan wis mbalèkaké kabèh laku sing dilakoni saringan planggaran amarga [[Special:AbuseFilter/$1|saringan $1]].',
 	'abusefilter-revert-reason' => 'Pambalèkan otomatis kabèh laku sing dilakokaké saringan planggaran amarga saringan $1.
 Alesané: $2',
-	'abusefilter-revert-reasonfield' => 'Alesan dibalèkaké', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Alesané:',
 	'abusefilter-test' => 'Jajal saringan tumrap suntingan sakdurungé',
 	'abusefilter-test-intro' => 'Kaca iki nglilakaké Sampéyan mriksa saringan sing dilebokaké nèng kothak ngisor iki tumrap $1 {{PLURAL:$1|owahan|owahan}} pungkasan.
 Kanggo ngemot saringan wis ana, tulis ID saringan nèng njero kothak ngisoré kothak tèks sunting, lan klik tombol "Ngemot".',
@@ -19176,11 +19178,13 @@ Kanggo rincian jangkepé, delok [[Special:AbuseFilter/history|daptar]] owah-owah
 	'abusefilter-log-noresults' => 'Ora ana asilé',
 	'abusefilter-diff-title' => 'Prabédhan antar vèrsi',
 	'abusefilter-diff-item' => 'Barang',
-	'abusefilter-diff-version' => 'Vèrsi saka $1 déning $2', # Fuzzy
+	'abusefilter-diff-version' => 'Vèrsi seka $1 {{GENDER:$3|déning}} $2',
 	'abusefilter-diff-info' => 'Informasi dhasar',
 	'abusefilter-diff-pattern' => 'Kahanan saringan',
 	'abusefilter-diff-invalid' => 'Ora bisa njupuk vèrsi sing dikarepaké',
 	'abusefilter-diff-backhistory' => 'Balik nèng riwayat saringan',
+	'abusefilter-diff-prev' => 'Owahan sing luwih lawas',
+	'abusefilter-diff-next' => 'Owahan sing luwih anyar',
 	'abusefilter-import-intro' => 'Sampéyan bisa nganggo antarmuka iki kanggo ngimpor saringan saka wiki liya.
 Nèng wiki sumber, klik "{{int:abusefilter-edit-export}}" sakisoré "{{int:abusefilter-edit-tools}}" nèng antarmuka panyuntingan.
 Salin saka kothak wedhi sing njedhul, lan tèmplèkaké nèng kothak tèks, banjur klik "{{int:abusefilter-import-submit}}".',
