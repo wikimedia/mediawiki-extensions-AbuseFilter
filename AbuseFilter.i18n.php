@@ -17649,11 +17649,11 @@ Sían er sjálfvirkt tæki sem gerir sjálfvirkar brjóstvitsfræði athuganir �
 	'abusefilter-warning' => "'''Viðvörun:''' Þessi aðgerð hefur sjálfvirkt verið merkt sem skaðleg.
 Skaðlegar breytingar verða snögglega teknar til baka,
 og svívirðilegar eða síendurteknar breytingar leiða til banns á notenda eða vistfangi þínu.
-Ef þú telur að þessi breyting sé uppbyggileg, þá mátt þú ýta á Senda aftur til að staðfesta hana.
-Stutt lýsing um misnotkunar síuna sem breyting þín passaði við er: $1", # Fuzzy
+Ef þú telur að þessi aðgerð sé uppbyggileg, þá mátt þú senda hana aftur til að staðfesta hana.
+Stutt lýsing um misnotkunar síuna sem breyting þín passaði við er: $1",
 	'abusefilter-disallowed' => 'Þessi aðgerð hefur sjálfvirkt verið merkt sem skaðleg og hefur því verið hafnað.
-Ef þú telur að þessi breyting hafi verið uppbyggileg, hafðu þá samband við möppudýr um það sem þú reyndir að gera.
-Stutt lýsing um misnotkunar síuna sem breyting þín passaði við er: $1', # Fuzzy
+Ef þú telur að þessi aðgerð hafi verið uppbyggileg, hafðu þá samband við möppudýr um það sem þú reyndir að gera.
+Stutt lýsing um misnotkunar síuna sem breyting þín passaði við er: $1',
 	'abusefilter-blocked-display' => 'Þessi aðgerð hefur sjálfvirkt verið merkt sem skaðleg og því er bannað að framkvæma hana.
 Að auki, til þess að verja {{SITENAME}}, hefur notendanafn þitt og það vistfang sem þú notaðir síðast verið bannað.
 Ef villa leiddi þig hingað, hafðu þá samband við möppudýr.
@@ -17900,7 +17900,7 @@ Farðu vandlega yfir listann og ýttu á "staðfesta" til að staðfesta valið 
 	'abusefilter-revert-success' => 'Þú hefur tekið aftur allar breytingar misnotkunar [[Special:AbuseFilter/$1|síunnar $1]]',
 	'abusefilter-revert-reason' => 'Tók sjálfvirkt til baka allar breytingar misnotkunar síunnar $1.
 Ástæða: $2',
-	'abusefilter-revert-reasonfield' => 'Ástæða fyrir að taka aftur breytingarnar:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Ástæða:',
 	'abusefilter-test' => 'Prófa síuna gegn fyrri breytingum',
 	'abusefilter-test-intro' => 'Þessi síða leyfir þér að prófa síu gegn síðustu $1 {{PLURAL:$1|breytingu|breytingum}}.
 Til þess að prófa síu sem til er fyrir, settu auðkenni hennar í reitinn hér fyrir neðan og ýttu á "Hlaða".',
@@ -20415,10 +20415,10 @@ Wann De ävver meins, dat Ding Änderung joot es — Automaate künne
 schliißlesch donevve lijje — dann donn räujesch noch ens op
 „{{int:savearticle}}“ klecke, öm dat ze beschtäätejje. Dann weet se aanjenumme.
 Däm Automat sing Rääjel koot explezeet, di do jejreffe hät: \$1", # Fuzzy
-	'abusefilter-disallowed' => 'Unser Automaat för et Prööfe hät dat, wat De jraad affjescheck häs, als verbodde ennjeshtoof. Wann De ävver meins, dat Ding Änderung joot es —
-Automaate künne ens donevve lijje — dann donn dat enem Wiki-Köbes
-verzälle, un schriif och op, wat De donn wollts.
-Däm Automat sing Rääjel koot explezeet, di do jegreffe hät: $1', # Fuzzy
+	'abusefilter-disallowed' => 'Unser Automaht för et Prööfe hät dat, wat De jraad affjescheck häs, als verbodde ennjeshtoof. Wann De ävver meins, dat Ding Änderung joot es —
+Automahte künne ens donevve lijje — dann donn dat enem Wiki-Köbes
+verzälle, un schriiv och op, wat De donn wollts.
+Däm Automaht sing Rääjel koot explezeet, di do jegreffe hät, es: $1',
 	'abusefilter-blocked-display' => 'Unser Automaat för et Prööfe, dä hät dat, wat De jraad affjescheck häs,
 als verbodde ennjeshtoof, un hät et nit zojelohße. Öm dat Wiki hee ze
 schöze, es och Dinge Zohjang jeshperrt woode: Dinge Name als Metmaacher,
@@ -20554,6 +20554,7 @@ de Jränz fun {{PLURAL:$4|ein|$4|nix}} jetroffe odder övverschredde.
 Dat woren_er $3%.
 {{PLURAL:$5|Ein dovun es|Dovun sinn_er $5|Keine dovun es}} vun enem aktoäll aktive Fellter jejreffe woode.
 Dat woren_er $6%.',
+	'abusefilter-edit' => 'Der Meßbruchsfelter enschtälle',
 	'abusefilter-edit-subtitle' => 'Felter-Räjel „$1“ beärbeide',
 	'abusefilter-edit-subtitle-new' => 'Ben ene Felter aam aanlääje',
 	'abusefilter-edit-oldwarning' => '<strong>Do bes hee en äldere Version vun däm Felter aam ändere.
@@ -20691,6 +20692,7 @@ Makeerunge sullte koot sin, un et sullte kein Sönderzeijshe dren vörkumme.',
 	'abusefilter-edit-builder-vars-article-ns' => 'Dat Appachtemang fun dä Sigg',
 	'abusefilter-edit-builder-vars-article-text' => 'Dä Tittel vun dä Sigg (oohne Appachtemang)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Dä komplätte Tittel vun dä Sigg',
+	'abusefilter-edit-builder-vars-article-views' => 'Aanzahl Afroofe vun dä Sigg',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'Dä Quell-Sigg ier Nummer en de Datebank',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Dat Appachtemang fun dä Quell-Sigg',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Dä Tittel vun dä Quell-Sigg',
@@ -20829,11 +20831,13 @@ Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilte
 	'abusefilter-log-noresults' => 'Nix jefonge',
 	'abusefilter-diff-title' => 'De Ungerscheide zwesche de Versione',
 	'abusefilter-diff-item' => 'Jäjeschtand',
-	'abusefilter-diff-version' => 'Version {{GENDER:$2|vum|vum|vun dämm Metmaacher|vum|vun dä}} $2 aam/öm $1', # Fuzzy
+	'abusefilter-diff-version' => 'Version {{GENDER:$3|vum|vum|vun dämm Metmaacher|vum|vun dä}} $2 aam/öm $1', # Fuzzy
 	'abusefilter-diff-info' => 'Jrundlääje Aanjabe',
 	'abusefilter-diff-pattern' => 'De Bedengunge vum Felter',
 	'abusefilter-diff-invalid' => 'Mer kunnte de jewönschte Versione nit fenge',
 	'abusefilter-diff-backhistory' => 'Jangk zeröck op de Leß met de Versione vun däm Felter',
+	'abusefilter-diff-prev' => 'De Änderung dovör zeije',
+	'abusefilter-diff-next' => 'De Änderung donoh zeije',
 	'abusefilter-import-intro' => 'Do kanns hee di Schnettshtell bruche, öm Date vun de Meßbruchsfeltere vun andere Wikis noh hee ze empotteere. En dämm Wiki, woh de Date her kumme, doh donn op „{{int:abusefilter-edit-export}}“ unger „{{int:abusefilter-edit-tools}}“ klecke, op dä Sigg zom Felter Ändere. Donn dä Ennhalt vun däm Kaste met Tex, dä dann doh kütt, en hee dä Kaste eren kopeere, un dann donn hee dä Knopp „{{int:abusefilter-import-submit}}“ klecke.',
 	'abusefilter-import-submit' => 'Lohß Jonn!',
 	'abusefilter-group-default' => 'Shtandatt',
