@@ -893,6 +893,7 @@ class AbuseFilter {
 	 * @param $log_template
 	 * @param $action
 	 * @param $vars AbuseFilterVariableHolder
+	 * @param string $group
 	 * @return mixed
 	 */
 	public static function addLogEntries( $actions_taken, $log_template, $action, $vars, $group = 'default' ) {
@@ -1937,8 +1938,8 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $title Title
-	 * @param $article Page|null
+	 * @param Title $title
+	 * @param null|Page $page
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function getEditVars( $title, Page $page = null ) {
