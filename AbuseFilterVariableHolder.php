@@ -352,13 +352,14 @@ class AFComputedVariable {
 				$article = $parameters['article'];
 				if ( $article !== null
 					&& ( !defined( 'MW_SUPPORTS_CONTENTHANDLER' )
-						|| $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) ) {
-
+						|| $article->getContentModel() === CONTENT_MODEL_WIKITEXT )
+				) {
 					$textVar = $parameters['text-var'];
 
 					// XXX: Use prepareContentForEdit. But we need a Content object for that.
 					$new_text = $vars->getVar( $textVar )->toString();
-					$editInfo = $article->prepareTextForEdit( $new_text );
+					$content = ContentHandler::makeContent( $new_text, $article->getTitle() );
+					$editInfo = $article->prepareContentForEdit( $content );
 					$links = array_keys( $editInfo->output->getExternalLinks() );
 					$result = $links;
 					break;

@@ -308,7 +308,7 @@ class SpecialAbuseLog extends SpecialPage {
 			$diffEngine = new DifferenceEngine;
 
 			$diffEngine->showDiffStyle();
-			$formattedDiff = $diffEngine->generateDiffBody( $old_wikitext, $new_wikitext );
+			$formattedDiff = $diffEngine->generateTextDiffBody( $old_wikitext, $new_wikitext );
 
 			static $colDescriptions = "<col class='diff-marker' />
 				<col class='diff-content' />
