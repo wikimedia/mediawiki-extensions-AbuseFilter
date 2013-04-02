@@ -28,9 +28,13 @@
 	}
 
 	/**
-	 * Sends the current filter text to be checked for syntax issues
+	 * Sends the current filter text to be checked for syntax issues.
+	 *
+	 * @context HTMLElement
+	 * @param {jQuery.Event} e
 	 */
 	function doSyntaxCheck() {
+		/*jshint validthis:true */
 		var filter = $filterBox.val();
 
 		$( this )
@@ -123,9 +127,13 @@
 	}
 
 	/**
-	 * Fetches a filter from the API and inserts it into the filter box
+	 * Fetches a filter from the API and inserts it into the filter box.
+	 *
+	 * @context HTMLElement
+	 * @param {jQuery.Event} e
 	 */
 	function fetchFilter() {
+		/*jshint validthis:true */
 		var filterId = $( '#mw-abusefilter-load-filter' ).val();
 
 		if ( filterId === '' ) {
@@ -205,9 +213,13 @@
 	}
 
 	/**
-	 * Called if the filter group (#mw-abusefilter-edit-group-input) is changed
+	 * Called if the filter group (#mw-abusefilter-edit-group-input) is changed.
+	 *
+	 * @context HTMLELement
+	 * @param {jQuery.Event} e
 	 */
 	function onFilterGroupChange() {
+		/*jshint validthis:true */
 		var newVal = mw.config.get( 'wgAbuseFilterDefaultWarningMessage' )[$( this ).val()];
 
 		if ( !$( '#mw-abusefilter-action-warn-checkbox' ).is( ':checked' ) ) {

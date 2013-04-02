@@ -13,9 +13,13 @@
 	var $syntaxResult;
 
 	/**
-	 * Tests the filter against an rc event or abuse log entry
+	 * Tests the filter against an rc event or abuse log entry.
+	 *
+	 * @context HTMLElement
+	 * @param {jQuery.Event} e
 	 */
 	function examinerTestFilter() {
+		/*jshint validthis:true */
 		var filter = $( '#wpTestFilter' ).val(),
 			examine = mw.config.get( 'abuseFilterExamine' ),
 			params = {

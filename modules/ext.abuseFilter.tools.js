@@ -9,9 +9,12 @@
 	'use strict';
 
 	/**
-	 * Submits the expression to be evaluated
+	 * Submits the expression to be evaluated.
+	 * @context HTMLElement
+	 * @param {jQuery.Event} e
 	 */
 	function doExprSubmit() {
+		/*jshint validthis:true */
 		var expr = $( '#wpTestExpr' ).val();
 		$( this ).injectSpinner( 'abusefilter-expr' );
 
@@ -35,9 +38,12 @@
 	}
 
 	/**
-	 * Submits a call to reautoconfirm a user
+	 * Submits a call to reautoconfirm a user.
+	 * @context HTMLElement
+	 * @param {jQuery.Event} e
 	 */
 	function doReautoSubmit() {
+		/*jshint validthis:true */
 		var name = $( '#reautoconfirm-user' ).val();
 
 		if ( name === '' ) {
