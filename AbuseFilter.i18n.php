@@ -723,7 +723,8 @@ $messages['qqq'] = array(
 	'abusefilter-edit-deleted' => 'Checkbox label for a filter flag.',
 	'abusefilter-edit-hidden' => 'Checkbox label for a filter flag.',
 	'abusefilter-edit-global' => 'Checkbox label for a filter flag.',
-	'abusefilter-edit-rules' => 'Field label for filter rules.',
+	'abusefilter-edit-rules' => 'Field label for filter rules.
+{{Identical|Condition}}',
 	'abusefilter-edit-notes' => 'Field label for filter notes.',
 	'abusefilter-edit-lastmod' => "Field label for filter's last modified timestamp.",
 	'abusefilter-edit-lastmod-text' => 'This message is used on Special:AbuseFilter to indicate the last modified date, time and user for existing rules. Parameters:
@@ -20409,12 +20410,12 @@ Unge es en Leß met de aanjlaate Felter, woh De eröm draan moodelle kanns.',
 affjescheck häs, als wahscheinlesch Kappes odder Meßß ennjeshtoof.
 Beschtußte Änderunge wääde su odder su flöck retuur jenumme.
 Ußjemaate un besönders vill extra shtußßijje Änderunge sorrje doför,
-dat Dinge Zohjang hee jeshperrt weed: Dinge Name als Metmaacher, odder
+dat Dinge Zohjang hee jeschperrt weed: Dinge Name als Metmaacher, odder
 de <i lang=\"en\">IP</i>-Addreß vun Dingem Kompjuter, odder alle beeds sen dann betroffe.
 Wann De ävver meins, dat Ding Änderung joot es — Automaate künne
-schliißlesch donevve lijje — dann donn räujesch noch ens op
+schliißlesch och ens donevve lijje — dann donn räujesch noch ens op
 „{{int:savearticle}}“ klecke, öm dat ze beschtäätejje. Dann weet se aanjenumme.
-Däm Automat sing Rääjel koot explezeet, di do jejreffe hät: \$1", # Fuzzy
+Däm Automat sing Rääjel koot explezeet, di do jejreffe hät, es: \$1",
 	'abusefilter-disallowed' => 'Unser Automaht för et Prööfe hät dat, wat De jraad affjescheck häs, als verbodde ennjeshtoof. Wann De ävver meins, dat Ding Änderung joot es —
 Automahte künne ens donevve lijje — dann donn dat enem Wiki-Köbes
 verzälle, un schriiv och op, wat De donn wollts.
