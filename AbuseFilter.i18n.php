@@ -6111,6 +6111,7 @@ Kopirajte iz tekstualne kutije koja se pojavi i zalijepite u ovu kutiju, zatim k
  * @author Gemmaa
  * @author Loupeter
  * @author Paucabot
+ * @author Pintor Smeargle
  * @author Pitort
  * @author SMP
  * @author Solde
@@ -6386,6 +6387,7 @@ Etiquetes ha de ser curts, i no ha de contenir caràcters especials.',
 	'abusefilter-edit-builder-vars-article-ns' => 'Espai de noms de la pàgina',
 	'abusefilter-edit-builder-vars-article-text' => 'Nom de la pàgina (sense espai de noms)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Nom complet de la pàgina',
+	'abusefilter-edit-builder-vars-article-views' => 'Vistes de la pàgina',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'ID de la pàgina de la font del moviment',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Espai pel nom de la pàgina font a traslladar',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Títol de la pàgina font del moviment',
@@ -6529,6 +6531,8 @@ Per a més detalls, vegeu [[Special:AbuseFilter/history|la llista]] de canvis re
 	'abusefilter-diff-pattern' => 'Condicions del filtre',
 	'abusefilter-diff-invalid' => 'No es pot portar les versions sol·licitada',
 	'abusefilter-diff-backhistory' => "Torna a l'historial del filtre",
+	'abusefilter-diff-prev' => 'Vell canvi',
+	'abusefilter-diff-next' => 'Nou canvi',
 	'abusefilter-import-intro' => 'Vostè pot utilitzar aquesta interfície per filtres d\'importació d\'altres wikis.
 Al wiki de font, feu clic a "{{int:abusefilter-Edita-exportació}}" sota "{{int:abusefilter-eines-subtítol}}" en la interfície d\'edició.
 Copiï des de quadre de text que apareix i enganxar-lo a aquest quadre de text, a continuació, feu clic a "{{int:abusefilter-importar-presentar}}".',
@@ -6873,7 +6877,7 @@ Popis pravidla: $1',
 	'right-abusefilter-log-private' => 'Prohlížení protokolovacích záznamů filtrů zneužívání označených jako tajné',
 	'right-abusefilter-hide-log' => 'Skrývání záznamů v protokolu zneužití',
 	'right-abusefilter-hidden-log' => 'Prohlížení skrytých záznamů v protokolu zneužití',
-	'right-abusefilter-modify-global' => 'Vytvořit nebo upravit globální filtr zneužívání',
+	'right-abusefilter-modify-global' => 'Vytváření a editace globálních filtrů zneužívání',
 	'action-abusefilter-modify' => 'upravovat filtry zneužívání',
 	'action-abusefilter-view' => 'prohlížet si filtry zneužívání',
 	'action-abusefilter-log' => 'prohlížet si protokol zneužití',
@@ -8751,7 +8755,7 @@ Qe yew deskripsiyonê ğeletî, "Check Syntax" rê bitexne.',
 	'abusefilter-examine-nomatch' => 'Filitre, ena vurnayiş match nikeno.',
 	'abusefilter-examine-syntaxerror' => 'Ena filter de yew syntakê ğeletî esta',
 	'abusefilter-examine-notfound' => 'Vurnayîşê ke ti wazenî nieşkenî bivine.',
-	'abusefilter-examine-incompatible' => 'Vurnayîşê ke ti wazenî Abuse Filter destek ni dano',
+	'abusefilter-examine-incompatible' => 'Vurnayışo ke tı wazenay terefê Abuse Filteri ra desteg nêbeno',
 	'abusefilter-examine-noresults' => 'Parametreyê bigêrayîşî ke ti ma ra da are înan de netice çini yo.',
 	'abusefilter-topnav' => "'''Pusulayê Filtre dê peygoş kerdışa'''",
 	'abusefilter-topnav-home' => 'Keye',
