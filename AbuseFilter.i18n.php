@@ -491,10 +491,7 @@ Copy from the textbox that appears, and paste it into this textbox, then click "
 	'abusefilter-group-default' => 'Default',
 );
 
-/** Message documentation (This is the name of the message documentation language code (qqq). Follow the rules of your languages and use small first letter if it doesn't capitalize language names always.
-
-It might be easier to translate it as "translation guidelines" or "translation help".
-{{Identical|Message documentation}})
+/** Message documentation (Message documentation)
  * @author Aotake
  * @author Bennylin
  * @author ChrisiPK
@@ -41403,10 +41400,10 @@ $messages['zh-hant'] = array(
 沒有建設性編輯將會被快速還原，
 嚴重或重複的和建設性的編輯將導致您的帳戶或IP位址被封鎖。
 如果您認為您的編輯是建設性的，您可以點擊提交再次確認。
-跟您操作相配的濫用編輯規則之概述為： $1", # Fuzzy
+跟您操作相配的濫用編輯規則之概述為： $1",
 	'abusefilter-disallowed' => '此操作已被系統自動確認為有害並已被阻止。
 如您認為您的編輯是建設性的，請與管理員聯繫，並告知他們你剛才試辦的事。
-跟您操作相配的濫用編輯規則之概述為： $1', # Fuzzy
+跟您操作相配的濫用編輯規則之概述為： $1',
 	'abusefilter-blocked-display' => '此操作已被系統自動確認為有害，系統已阻止您完成此操作。另外，為了保護{{SITENAME}}，您的帳戶以及所有相關IP地址俱會被封禁，不許作出編輯。如果這是系統誤判，請與管理員聯繫。跟您操作相配的濫用編輯規則之概述為： $1',
 	'abusefilter-degrouped' => '此操作已被系統自動確認為有害。因此，此操作已被阻止。另外，由於您的帳戶密碼涉嫌被盜以致產生破壞，故此所有權限已被撤銷。如果您認為這是系統誤判或人為疏失，請與行政員聯繫並附上解釋。及後，您的權限或可被恢復。跟您操作相配的濫用編輯規則之概述為： $1',
 	'abusefilter-autopromote-blocked' => '此操作已被系統自動確認為有害且已被阻止。另外，基於保安考慮，某些日常授予已創建帳戶的權限已暫時由您的帳戶撤回。跟您操作相配的濫用編輯規則之概述為： $1',
@@ -41654,6 +41651,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-edit-builder-vars-article-ns' => '頁面名字空間',
 	'abusefilter-edit-builder-vars-article-text' => '頁面標題（沒有名字空間）',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => '完整頁面標題',
+	'abusefilter-edit-builder-vars-article-views' => '頁面瀏覽次數',
 	'abusefilter-edit-builder-vars-movedfrom-id' => '要移動的來源頁面頁面編號',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => '要移動的來源名字空間',
 	'abusefilter-edit-builder-vars-movedfrom-text' => '要移動的源頁面標題',
@@ -41797,6 +41795,8 @@ $messages['zh-hant'] = array(
 	'abusefilter-diff-pattern' => '過濾器狀態',
 	'abusefilter-diff-invalid' => '無法取得請求的版本',
 	'abusefilter-diff-backhistory' => '返回過濾器歷史頁面',
+	'abusefilter-diff-prev' => '軟舊的更改',
+	'abusefilter-diff-next' => '軟新的更改',
 	'abusefilter-import-intro' => '您可以使用本介面來導入其他wiki的過濾器。在來源處點擊過濾器編輯介面處“{{int:abusefilter-edit-tools}}”下的“{{int:abusefilter-edit-export}}”。複製隨後出現的文字框中的內容，並複製至下方的文字框中，並點擊“{{int:abusefilter-import-submit}}”。',
 	'abusefilter-import-submit' => '導入數據',
 	'abusefilter-group-default' => '預設',
