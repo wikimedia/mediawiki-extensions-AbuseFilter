@@ -26390,7 +26390,7 @@ Vraag een gebruiker met toestemming om beperkte handelingen toe te voegen om de 
 	'abusefilter-edit-viewhistory' => 'Geschiedenis van het filter bekijken',
 	'abusefilter-edit-history' => 'Geschiedenis:',
 	'abusefilter-edit-check' => 'Syntaxis controleren',
-	'abusefilter-edit-badfilter' => 'Het aangegeven filter bestaat niet',
+	'abusefilter-edit-badfilter' => 'Het opgegeven filter bestaat niet',
 	'abusefilter-edit-revert' => 'De door dit filter genomen maatregelen terugdraaien',
 	'abusefilter-edit-tools' => 'Hulpmiddelen:',
 	'abusefilter-edit-test-link' => 'Dit filter tegen recente bewerkingen testen',
@@ -26526,7 +26526,7 @@ In plaats daarvan is $3 $4 aangetroffen.',
 	'abusefilter-exception-noparams' => 'Er zijn geen parameters opgegeven voor functie "$2" bij karakter $1.',
 	'abusefilter-exception-dividebyzero' => 'Ongeldige poging tot delen van $2 door nul bij karakter $1.',
 	'abusefilter-exception-unrecognisedvar' => 'Onherkenbare variabele $2 bij teken $1',
-	'abusefilter-exception-notenoughargs' => 'Er zijn niet voldoende parameters ingegeven voor de functie $2 die is aangeroepen in karakter $1.
+	'abusefilter-exception-notenoughargs' => 'Er zijn niet voldoende parameters opgegeven voor de functie $2 die is aangeroepen in karakter $1.
 Er {{PLURAL:$3|werd één parameter|werden $3 parameters}} verwacht, en er {{PLURAL:$4|is er één|zijn er $4}} aangetroffen.',
 	'abusefilter-exception-regexfailure' => 'Er is een fout aangetroffen in de reguliere expressie "$3" bij karakter $1: "$2"',
 	'abusefilter-exception-overridebuiltin' => 'De ingebouwde variable "$2" is vervangen bij karakter $1.
@@ -26558,7 +26558,7 @@ Controleer de terug te draaien maatregelen zorgvuldig, en klik "Bevestigen" om u
 	'abusefilter-revert-reason' => 'Automatisch terugdraaien van alle maatregelen door de midbruikfilter via filter $1. Reden: $2',
 	'abusefilter-revert-reasonfield' => 'Reden:',
 	'abusefilter-test' => 'Filter tegen eerdere bewerkingen testen',
-	'abusefilter-test-intro' => 'Op deze pagina kunt u een ingegeven filter controleren met de laatste {{PLURAL:$1|wijzing|$1 wijzingen}}.
+	'abusefilter-test-intro' => 'Op deze pagina kunt u een opgegeven filter controleren met de laatste {{PLURAL:$1|wijzing|$1 wijzingen}}.
 Geef een filternummer in om een bestaand filter te laden en klik daarna op de knop "Laden".',
 	'abusefilter-test-legend' => 'Filter testen',
 	'abusefilter-test-load-filter' => 'Filternummer laden:',
@@ -26659,7 +26659,7 @@ Gebruik dit hulpmiddel zorgvuldig.',
 	'abusefilter-revert-preview-intro' => 'Hieronder staan de maatregelen die het filter heeft genomen die door deze handeling worden teruggedraaid.
 Controleer de terug te draaien maatregelen zorgvuldig, en klik "Bevestigen" om je selectie te bevestigen.',
 	'abusefilter-revert-success' => 'Je hebt alle maatregelen die door het filter via [[Special:AbuseFilter/$1|filter $1]] zijn genomen teruggedraaid.',
-	'abusefilter-test-intro' => 'Op deze pagina kan je een ingegeven filter controleren met de laatste {{PLURAL:$1|wijzing|$1 wijzingen}}.
+	'abusefilter-test-intro' => 'Op deze pagina kan je een opgegeven filter controleren met de laatste {{PLURAL:$1|wijzing|$1 wijzingen}}.
 Geef een filternummer in om een bestaand filter te laden en klik daarna op de knop "Laden".',
 	'abusefilter-test-syntaxerr' => 'Het filter dat je hebt ingevoerd bevat een syntaxisfout.
 Door op "Syntaxis controleren" te klikken krijg je een volledige toelichting.',
