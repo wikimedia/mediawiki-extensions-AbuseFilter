@@ -32,7 +32,7 @@ $specialPageAliases['arz'] = array(
 	'AbuseFilter' => array( 'فيلتر_الاساءه' ),
 );
 
-/** Assamese (অসমীয়া) */
+/** Assamese (অসমীয়া) */
 $specialPageAliases['as'] = array(
 	'AbuseLog' => array( 'অপব্যৱহাৰৰ_অভিলেখ' ),
 	'AbuseFilter' => array( 'অপব্যৱহাৰৰ_চেকনী' ),

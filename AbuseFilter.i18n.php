@@ -16701,6 +16701,7 @@ Keterangan mengenai peraturan terkait: $1',
 	'right-abusefilter-log-private' => 'Lihat entri log filter penyalahgunaan yang ditandai pribadi',
 	'right-abusefilter-hide-log' => 'Sembunyikan entri di dalam log penyalahgunaan',
 	'right-abusefilter-hidden-log' => 'Lihat entri log penyalahgunaan tersembunyi',
+	'right-abusefilter-modify-global' => 'Buat atau ubah filter penyalahgunaan global',
 	'action-abusefilter-modify' => 'memodifikasi filter penyalahgunaan',
 	'action-abusefilter-view' => 'tampilkan filter penyalahgunaan',
 	'action-abusefilter-log' => 'tampilkan log penyalahgunaan',
@@ -16794,6 +16795,7 @@ entri log penyalahgunaan.',
 	'abusefilter-reautoconfirm-notallowed' => 'Anda tidak memiliki hak untuk mengembalikan status konfirmasi otomatis.',
 	'abusefilter-reautoconfirm-done' => 'Status konfirmasi otomatis akun tersebut telah dikembalikan',
 	'abusefilter-status' => 'Dari $1 {{PLURAL:$1|tindakan|tindakan}} terakhir, $2 ($3%) {{PLURAL:$2|telah|telah}} mencapai batasan maksimum $4 kondisi dan $5 ($6%) {{PLURAL:$5|sesuai|sesuai}} dengan salah satu filter yang aktif saat ini.',
+	'abusefilter-edit' => 'Menyunting filter penyalahgunaan',
 	'abusefilter-edit-subtitle' => 'Menyunting filter $1',
 	'abusefilter-edit-subtitle-new' => 'Membuat filter',
 	'abusefilter-edit-oldwarning' => '<strong>Anda sedang menyunting versi lama filter ini.
@@ -16864,6 +16866,7 @@ Mintalah kepada pengguna yang memiliki hak akses untuk menyunting tindakan yang 
 	'abusefilter-edit-bad-tags' => 'Satu atau lebih dari penanda yang anda tentukan tidak sah.
 Penanda harus pendek, dan seharusnya tidak berisi karakter khusus.',
 	'abusefilter-edit-notallowed' => 'Anda tidak diizinkan untuk membuat atau mengedit filter penyalahgunaan',
+	'abusefilter-edit-notallowed-global' => 'Anda tidak diizinkan membuat atau menyunting filter penyalahgunaan global',
 	'abusefilter-edit-builder-select' => 'Pilih sebuah opsi untuk menambahkannya pada kursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operator aritmatika',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Penambahan (+)',
@@ -16908,6 +16911,7 @@ Penanda harus pendek, dan seharusnya tidak berisi karakter khusus.',
 	'abusefilter-edit-builder-funcs-substr' => 'Subkarakter (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'Posisi dari subkarakter pada karakter (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'Ganti subkarakter dengan karakter (str_replace)',
+	'abusefilter-edit-builder-funcs-rescape' => 'Lompati string seperti yang ada di regex (rescape)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Atur variabel (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Variabel',
 	'abusefilter-edit-builder-vars-accountname' => 'Nama pengguna (pada pembuatan akun)',
@@ -16924,6 +16928,7 @@ Penanda harus pendek, dan seharusnya tidak berisi karakter khusus.',
 	'abusefilter-edit-builder-vars-article-ns' => 'Ruangnama halaman',
 	'abusefilter-edit-builder-vars-article-text' => 'Judul Halaman (tanpa ruangnama)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Judul halaman lengkap',
+	'abusefilter-edit-builder-vars-article-views' => 'Kunjungan halaman',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'ID Halaman dari pemindahan halaman sumber',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Ruangnama dari pemindahan halaman sumber',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Judul dari pemindahan halaman sumber',
@@ -17067,6 +17072,8 @@ Untuk detail lengkap, lihat [[Special:AbuseFilter/history|daftar]] perubahan fil
 	'abusefilter-diff-pattern' => 'Penyaringan kondisi',
 	'abusefilter-diff-invalid' => 'Tidak dapat menarik versi yang diminta',
 	'abusefilter-diff-backhistory' => 'Kembali ke sejarah penyaringan',
+	'abusefilter-diff-prev' => 'Perubahan terlama',
+	'abusefilter-diff-next' => 'Perubahan terbaru',
 	'abusefilter-import-intro' => 'Anda dapat menggunakan antarmuka ini untuk mengimpor filter dari wiki lain.
 Pada wiki asal, klik "{{int:abusefilter-edit-export}}" di bawah "{{int:abusefilter-edit-tools}}" pada antarmuka penyuntingan.
 Salin dari kotak teks yang muncul, dan tempelkan di kotak teks ini, lalu klik "{{int:abusefilter-import-submit}}".',
@@ -26185,6 +26192,7 @@ $messages['niu'] = array(
 /** Dutch (Nederlands)
  * @author Annabel
  * @author GerardM
+ * @author JurgenNL
  * @author Mwpnl
  * @author Romaine
  * @author SPQRobin
@@ -26610,7 +26618,7 @@ Zie de [[Special:AbuseFilter/history|lijst met recente filterwijzigingen]] voor 
 	'abusefilter-diff-prev' => 'Oudere wijziging',
 	'abusefilter-diff-next' => 'Nieuwere wijziging',
 	'abusefilter-import-intro' => 'U kunt deze interface gebruiken om filters van andere wiki\'s te importeren.
-Klik "{{int:abusefilter-edit-export}}i" bij "{{int:abusefilter-edit-tools}}".
+Klik "{{int:abusefilter-edit-export}}" bij "{{int:abusefilter-edit-tools}}".
 Kopieer de tekst die in het bewerkingsvenster verschijnt naar dit bewerkingsvenster en klik dan op "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Filtergegevens importeren',
 	'abusefilter-group-default' => 'Standaard',
