@@ -120,8 +120,9 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		// Database query.
 		$res = $dbr->select( 'abuse_filter_log', '*', $conds, __METHOD__ );
 
-		$results = array();
-		foreach( $res as $row ) {
+		$userIds = array();
+		$resultRows = array();
+		foreach ( $res as $row ) {
 			// Don't revert if there was no action, or the action was global
 			if ( !$row->afl_actions || $row->afl_wiki != null ) {
 				continue;
@@ -131,17 +132,24 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			$reversibleActions = array( 'block', 'blockautopromote', 'degroup' );
 			$currentReversibleActions = array_intersect( $actions, $reversibleActions );
 			if ( count( $currentReversibleActions ) ) {
-				$results[] = array(
-					'id' => $row->afl_id,
-					'actions' => $currentReversibleActions,
-					'user' => $row->afl_user_text,
-					'userid' => $row->afl_user,
-					'vars' => AbuseFilter::loadVarDump( $row->afl_var_dump ),
-					'title' => Title::makeTitle( $row->afl_namespace, $row->afl_title ),
-					'action' => $row->afl_action,
-					'timestamp' => $row->afl_timestamp
-				);
+				$resultRows[] = $row;
+				$userIds[] = $row->afl_user;
 			}
+		}
+		UserCache::singleton()->doQuery( $userIds, array(), __METHOD__ );
+
+		$results = array();
+		foreach ( $resultRows as $row ) {
+			$results[] = array(
+				'id' => $row->afl_id,
+				'actions' => $currentReversibleActions,
+				'user' => UserCache::singleton()->getUserName( $row->afl_user, $row->afl_user_text ),
+				'userid' => $row->afl_user,
+				'vars' => AbuseFilter::loadVarDump( $row->afl_var_dump ),
+				'title' => Title::makeTitle( $row->afl_namespace, $row->afl_title ),
+				'action' => $row->afl_action,
+				'timestamp' => $row->afl_timestamp
+			);
 		}
 
 		return $results;
