@@ -28428,6 +28428,7 @@ Kobiaschda de Qwellcode, fiegschn do oi un gliggschd uff die Schaldflesch „{{i
  * @author Leinad
  * @author Maikking
  * @author Matma Rex
+ * @author Odder
  * @author Olgak85
  * @author Sovq
  * @author Sp5uhe
@@ -28723,10 +28724,10 @@ Oznaczenia powinny być krótkie i nie powinny zawierać znaków specjalnych.',
 	'abusefilter-edit-builder-vars-new-text' => 'Nowa treść strony w formacie wiki, po modyfikacji',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nowa treść strony, pozbawiona wszystkich znaczników',
 	'abusefilter-edit-builder-vars-new-html' => 'Sformatowane źródło HTML nowej wersji',
-	'abusefilter-edit-builder-vars-restrictions-edit' => 'Poziom zabezpieczenia strony przed edycją',
-	'abusefilter-edit-builder-vars-restrictions-move' => 'Poziom zabezpieczenia strony przed przeniesieniem',
-	'abusefilter-edit-builder-vars-restrictions-create' => 'Poziom zabezpieczenia strony przed utworzeniem',
-	'abusefilter-edit-builder-vars-restrictions-upload' => 'Poziom zabezpieczenia pliku przed przesłaniem',
+	'abusefilter-edit-builder-vars-restrictions-edit' => 'Stopień zabezpieczenia strony przed edycją',
+	'abusefilter-edit-builder-vars-restrictions-move' => 'Stopień zabezpieczenia strony przed przeniesieniem',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Stopień zabezpieczenia strony przed utworzeniem',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'Stopień zabezpieczenia pliku przed przesłaniem',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Stara treść strony pozbawiona wszystkich znaczników',
 	'abusefilter-edit-builder-vars-old-links' => 'Łącza na stronie przed edycją',
 	'abusefilter-edit-builder-vars-old-html' => 'Stara treść strony w formacie wiki przetworzona na HTML',
