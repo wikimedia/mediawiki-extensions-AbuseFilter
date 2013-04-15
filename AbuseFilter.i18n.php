@@ -4148,17 +4148,92 @@ An mga tatak dapat na halipot, asin sinda dapat mayong espesyal na mga karakter.
 	'abusefilter-history-timestamp' => 'Oras',
 	'abusefilter-history-user' => 'An Paragamit',
 	'abusefilter-history-public' => 'Deskripsyon kan pampublikong saraan',
+	'abusefilter-history-flags' => 'Mga Bandera',
 	'abusefilter-history-filter' => 'Panandayan nin saraan',
 	'abusefilter-history-comments' => 'Mga Komento',
 	'abusefilter-history-actions' => 'Mga aksyon',
 	'abusefilter-history-backedit' => 'Magbuwelta sa paraliwat nin saraan',
+	'abusefilter-history-deleted' => 'Pinagpura na',
+	'abusefilter-history-filterid' => 'Pansara',
+	'abusefilter-history-select-legend' => 'Pinuhon an paghahanap',
+	'abusefilter-history-select-user' => 'Paragamit:',
+	'abusefilter-history-select-submit' => 'Pinuhon',
+	'abusefilter-history-diff' => 'Mga Kaliwatan',
+	'abusefilter-history-error-hidden' => 'An pansara na saimong pinaghahagad nakatago, asin dae mo mahihiling an historiya kaini.',
+	'abusefilter-exception-unexpectedatend' => 'Dae pinag-asahan "$2" sa panggurit na $1.',
+	'abusefilter-exception-expectednotfound' => 'Pinag-asahan an $2 sa panggurit na $1, dae nanagboan (lugod an natagboan an $3 $4).',
+	'abusefilter-exception-unrecognisedkeyword' => 'Bakong rekonisadong susing tataramon na $2 sa panggurit na $1.',
+	'abusefilter-exception-unexpectedtoken' => 'Dae pinag-asahan na pangilip "$3" (kan tipong $2) sa panggurit na $1.',
+	'abusefilter-exception-unclosedstring' => 'Dae nakaseradong pisî na nagpopoon sa panggurit na $1.',
+	'abusefilter-exception-invalidoperator' => 'Imbaliding operador "$2" sa panggurit na $1.',
+	'abusefilter-exception-unrecognisedtoken' => 'Bakong rekonisadong pangilip "$2" sa panggurit na $1.',
+	'abusefilter-exception-noparams' => 'Mayong mga parametrong itinao tanganing humirô sa "$2" sa panggurit na $1.',
+	'abusefilter-exception-dividebyzero' => 'Iligal na pagprubar na bangaon an $2 sa paagi nin sero sa panggurit na $1.',
+	'abusefilter-exception-unrecognisedvar' => 'Bakong rekonisadong kapilyangan na $2 sa panggurit na $1.',
+	'abusefilter-exception-notenoughargs' => 'Bakong igong mga argumento tanganing humirô $2 na pinag-apod sa panggurit na $1.
+   Pinag-asahan na $3{{PLURAL:$3|argumento|mga argumento}}, an nakua $4',
+	'abusefilter-exception-regexfailure' => 'Kasalaan sa regular na ekspresyon na "$3" sa panggurit na $1:"$2"',
+	'abusefilter-exception-overridebuiltin' => 'Iligal na pagsasalambaw kan nakasuknat na kapilyangan "$2" sa panggurit na $1.',
+	'abusefilter-exception-outofbounds' => 'Naghahagad kan dae pa nakamuknang lista nin aytem na $2 (listang sukol = $3) sa panggurit na $1.',
+	'abusefilter-exception-notlist' => 'Naghahagad palangkay nin aytem kan bakong palangkay sa panggurit na $1.',
+	'abusefilter-action-tag' => 'Tatak',
+	'abusefilter-action-throttle' => 'Pangutnol',
+	'abusefilter-action-warn' => 'Tanid',
+	'abusefilter-action-blockautopromote' => 'Bagaton an automatikong pagbalangibog',
+	'abusefilter-action-block' => 'Bagaton',
+	'abusefilter-action-degroup' => 'Tangkason gikan sa mga grupo',
+	'abusefilter-action-rangeblock' => 'Hikwas-nin-bagat',
+	'abusefilter-action-disallow' => 'Dae tinutugot',
+	'abusefilter-revert-title' => 'Balikon an gabos na mga kaliwatan sa paagi kan saraan na $1',
+	'abusefilter-revert-intro' => 'Ining porma minatugot saimo na balikon an gabos na mga kaliwatan na hinimo sa paagi kan saraan nin abuso nin huli sa saraan na $1.
+Paki-ingati tabi an paggagamit kaining palindô.',
+	'abusefilter-revert-preview-item' => '$1:$2 pinaghimong $3 sa $4.
+An aksyon mapupuwedeng balikon: $5($6)',
+	'abusefilter-revert-search-legend' => 'Pilion an aksyon kan saraan nin abuso na mapupuwedeng balikon',
+	'abusefilter-revert-periodstart' => 'Poon kan peryodo:',
+	'abusefilter-revert-periodend' => 'Tapos kan peryodo:',
+	'abusefilter-revert-search' => 'Pilion na mga aksyon',
+	'abusefilter-revert-filter' => 'Saraan:',
+	'abusefilter-revert-preview-intro' => 'Yaon sa ibaba an mga aksyon na ginibo kan saraan nin abuso na ipagbabalik sa paagi kaining aksyon.
+Pakirikisaha sindang maigot, asin i-klik an "kumpirma" sa pagkumpirma kan saimong pinili.',
+	'abusefilter-revert-confirm' => 'Kumpirma',
+	'abusefilter-revert-success' => 'Saimong pinagbalik an gabos na mga aksyon na ginibo kan saraan nin abuso nin huli sa [[Espesyal:AbusongSaraan/$1|saraan $1]].', # Fuzzy
+	'abusefilter-revert-reason' => 'Automatikong balikon an gabos na mga aksyon na ginibo sa paagi kan saraan nin abuso nin huli sa saraan $1.
+Rason na itinao:$2',
+	'abusefilter-revert-reasonfield' => 'Rason:',
+	'abusefilter-test' => 'Testingon an sarong saraan kontra sa dating mga pagliwat',
+	'abusefilter-test-intro' => 'Ining pahina minatugot saimo na rikisahon an sarong saraan na pinag-entra sa laog kan kahon sa ibaba kontra sa huring $1{{PLURAL:$1|kaliwatan|mga kaliwatan}}.
+Sa pagkarga kan eksistidong saraan, tipaho an ID kan saraan sa laog kan kahon na yaon sa ibaba kan pagliwat kan tekstong kahon, asin i-klik and "karga" na pindutan.',
+	'abusefilter-test-legend' => 'Pagprubar nin saraan',
+	'abusefilter-test-load-filter' => 'Ikarga an ID nin saraan:',
+	'abusefilter-test-submit' => 'Prubaran',
 	'abusefilter-test-load' => 'Kargahon',
 	'abusefilter-test-user' => 'Mga kaliwatan nin paragamit:',
 	'abusefilter-test-period-start' => 'Mga kaliwatan pinaghimo pagkatapos:',
 	'abusefilter-test-period-end' => 'Mga kaliwatan na pinaghimo bago pa man:',
 	'abusefilter-test-page' => 'Mga kaliwatan na pinaghimo sa pahina:',
 	'abusefilter-test-shownegative' => 'Ipahiling an mga kaliwatan na dae minaampad sa saraan',
+	'abusefilter-test-syntaxerr' => 'An saraan na saimong pinag-entra pinaglamanan nin sarong sintaks na kasalaan.
+Ika makakaresibe nin sarong bilog na kapaliwanagan sa paagi nin pag-klik kan "Rikisahan an Sintaks" na pindutan.',
+	'abusefilter-changeslist-examine' => 'eksaminon',
+	'abusefilter-examine' => 'Eksaminon an indibidwal na mga kaliwatan',
+	'abusefilter-examine-intro' => 'Ining pahina minatugot saimo na eksaminon an mga kapilyangan na pinagpuyos sa paagi kan Saraan nin Abuso para sa indibidwal na kaliwatan, asin prubaran ini kontra sa mga saraan.',
+	'abusefilter-examine-legend' => 'Pilion an mga kaliwatan',
+	'abusefilter-examine-diff' => 'Laen na URL:',
 	'abusefilter-examine-user' => 'An Paragamit:',
+	'abusefilter-examine-title' => 'Titulo kan pahina:',
+	'abusefilter-examine-submit' => 'Hanapon',
+	'abusefilter-examine-vars' => 'Mga kapilyangan na pinagpuyos para kaining kaliwatan',
+	'abusefilter-examine-test' => 'Prubaran ining kaliwatan kontra sa sarong saraan',
+	'abusefilter-examine-test-button' => 'Prubaran an saraan',
+	'abusefilter-examine-match' => 'An saraan an nagtampad kaining kaliwatan',
+	'abusefilter-examine-nomatch' => 'An saraan dae nagtampad kaining kaliwatan',
+	'abusefilter-examine-syntaxerror' => 'An saraan igwa nin imbalidong sintaks',
+	'abusefilter-examine-notfound' => 'An kaliwatan na saimong pinaghagad dae natatagboan.',
+	'abusefilter-examine-incompatible' => 'An kaliwatan na saimong pinaghahagad bakong suportado kan Saraan nin Abuso',
+	'abusefilter-examine-noresults' => 'Mayong resultang nanagboan para sa mga parametro nin paghahanap na saimong pinagtao.',
+	'abusefilter-topnav' => "'''Nabigasyon kan Saraan nin Abuso'''",
+	'abusefilter-topnav-home' => 'Haróng',
 );
 
 /** Belarusian (беларуская)
@@ -6964,7 +7039,7 @@ Provedená opatření: $6; popis filtru: $7 ($8)',
 	'abusefilter-reautoconfirm-none' => '{{GENDER:$1|Tomuto uživateli|Této uživatelce|Tomuto uživateli}} nebyl příznak schváleného uživatele odebrán.',
 	'abusefilter-reautoconfirm-notallowed' => 'Nemáte oprávnění obnovovat příznak schváleného uživatele.',
 	'abusefilter-reautoconfirm-done' => 'Příznak schváleného uživatele byl obnoven',
-	'abusefilter-status' => '{{PLURAL:$1|Při poslední operaci|Z posledních $2 operací}} {{PLURAL:$2|překročila|překročily|překročilo}} $2 ($3 %) limit $4 podmínek a $5 ($6 %) {{PLURAL:$5|byla zachycena|byly zachyceny|bylo zachyceno}} jedním ze zapnutých filtrů.',
+	'abusefilter-status' => '{{PLURAL:$1|Při poslední operaci|Z posledních $1 operací}} {{PLURAL:$2|překročila|překročily|překročilo}} $2 ($3 %) limit $4 podmínek a $5 ($6 %) {{PLURAL:$5|byla zachycena|byly zachyceny|bylo zachyceno}} jedním ze zapnutých filtrů.',
 	'abusefilter-edit' => 'Editace filtru zneužití',
 	'abusefilter-edit-subtitle' => 'Editace filtru $1',
 	'abusefilter-edit-subtitle-new' => 'Vytvoření filtru',
@@ -9244,10 +9319,23 @@ $messages['dv'] = array(
 );
 
 /** Ewe (eʋegbe)
+ * @author Natsubee
  */
 $messages['ee'] = array(
 	'abusefilter-log-search-submit' => 'Dii',
+	'abusefilter-log-cannot-see-details' => 'Mɔɖeɖe meli bena wòa kpɔ nusiwo woŋlɔ ɖe afisia o.',
+	'abusefilter-log-details-hidden' => 'Wò mateŋu akpɔ nusiwo woŋlɔ ɖe afisia o elabena woɣla wo.',
+	'abusefilter-log-hide-hidden' => 'Ɣla nusiawo tso amewo gbɔ',
+	'abusefilter-logentry-suppress' => 'ɣla "[[$1]]"',
+	'abusefilter-logentry-unsuppress' => 'mega ‎ɣla "[[$1]]" o',
 	'abusefilter-list-edit' => 'Trɔ asi le eŋu',
+	'abusefilter-list-lastmodified' => 'Tɔtrɔ mamlea',
+	'abusefilter-deleted' => 'Wo tutui',
+	'abusefilter-edit-status-label' => 'Akɔntawo',
+	'abusefilter-edit-warn-preview' => 'Kpɔ du tatia do ŋgɔ',
+	'abusefilter-edit-warn-edit' => 'Ŋlɔ/trɔ du tatia',
+	'abusefilter-edit-history' => 'Xoxoawo',
+	'abusefilter-edit-tools' => 'Dɔwɔnuwo',
 	'abusefilter-examine-submit' => 'Dii',
 );
 
@@ -9531,6 +9619,7 @@ $messages['el'] = array(
 	'abusefilter-edit-builder-vars-article-ns' => 'Περιοχή ονομάτων της σελίδας',
 	'abusefilter-edit-builder-vars-article-text' => 'Όνομα σελίδας (χωρίς περιοχή ονόματος)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Πλἠρης τίτλος σελίδας',
+	'abusefilter-edit-builder-vars-article-views' => 'Προβολές σελίδων',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'Σελίδα ταυτότητα της σελίδας προς μετακίνηση',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Χώροι ονομάτων της σελίδας-πηγής προς μετακίνηση',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Τίτλος της μετακίνηησης της σελίδας πηγής',
@@ -9674,6 +9763,8 @@ $3 {{PLURAL:$3|αναμενόμενο κατηγορούμενο|αναμενό�
 	'abusefilter-diff-pattern' => 'Όροι φίλτρων',
 	'abusefilter-diff-invalid' => 'Αδύνατη η εξαγωγή των ζητουμένων εκδοχών',
 	'abusefilter-diff-backhistory' => 'Πίσω στο ιστορικό φίλτρου',
+	'abusefilter-diff-prev' => 'Παλαιότερη αλλαγή',
+	'abusefilter-diff-next' => 'Νεότερη αλλαγή',
 	'abusefilter-import-intro' => 'Μπορείτε να χρησιμοποιήσετε αυτή την επιφάνεια για να εισάγετε φίλτρα από άλλα wiki.
 Στο wiki-πηγή, πατήστε "{{int:abusefilter-edit-export}}" κάτω από "{{int:abusefilter-edit-tools}}" στην επιφάνεια επεξεργασίας.
 Αντιγράψτε από το κουτί κειμένου που εμφανίζεται, και επικολλήστε το σε αυτό το κουτί κειμένου, και πατήστε "{{int:abusefilter-import-submit}}".',
@@ -10135,6 +10226,7 @@ Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku 
  * @author Invadinado
  * @author Locos epraix
  * @author Manuelt15
+ * @author MarcoAurelio
  * @author McDutchie
  * @author Mor
  * @author Pertile
@@ -10146,6 +10238,7 @@ Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku 
  * @author Savh
  * @author TheBITLINK
  * @author Translationista
+ * @author Vivaelcelta
  */
 $messages['es'] = array(
 	'abusefilter-desc' => 'Aplicar automáticamente heurísticas para ediciones',
@@ -10403,7 +10496,7 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-edit-builder-funcs-set_var' => 'Establecer variable (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Variables',
 	'abusefilter-edit-builder-vars-accountname' => 'Nombre de usuario (en la creación de la cuenta)',
-	'abusefilter-edit-builder-vars-timestamp' => 'Fechador Unix de cambio',
+	'abusefilter-edit-builder-vars-timestamp' => 'Hora Unix del cambio',
 	'abusefilter-edit-builder-vars-action' => 'Acción',
 	'abusefilter-edit-builder-vars-addedlines' => 'Lineas añadidas en revisión',
 	'abusefilter-edit-builder-vars-delta' => 'Cambio en tamaño en revisión',
@@ -10454,7 +10547,7 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-history-hidden' => 'Oculto',
 	'abusefilter-history-enabled' => 'Habilitado',
 	'abusefilter-history-global' => 'Global',
-	'abusefilter-history-timestamp' => 'Tiempo',
+	'abusefilter-history-timestamp' => 'Hora',
 	'abusefilter-history-user' => 'Usuario',
 	'abusefilter-history-public' => 'Descripción pública del filtro',
 	'abusefilter-history-flags' => 'Opciones',
@@ -20569,12 +20662,12 @@ Dat woren_er $6%.',
 	'abusefilter-edit' => 'Der Meßbruchsfelter enschtälle',
 	'abusefilter-edit-subtitle' => 'Felter-Räjel „$1“ beärbeide',
 	'abusefilter-edit-subtitle-new' => 'Ben ene Felter aam aanlääje',
-	'abusefilter-edit-oldwarning' => '<strong>Do bes hee en äldere Version vun däm Felter aam ändere.
-De aanjejovve Shtatistike sin ävver för de neuste Version fun däm Felter.
-Wann De Ding Änderunge afshpeishere deihß, dann sin all de Änderunge
-un Äjänzunge fott, die shpääder derbei jekumme sen.</strong> &bull;
-[[Special:AbuseFilter/history/$2|Jangk zeröck op däm Felter sing Versione]].',
-	'abusefilter-edit-status-label' => 'Zahle un Statistike:',
+	'abusefilter-edit-oldwarning' => '<strong>Do bes hee en äldere Väsjohn vun däm Felter aam ändere.
+De aanjejovve Schtatistike sin ävver för de neuste Väsjohn fun däm Felter.
+Wann De Ding Änderonge afschpeishere deihß, dann sin all de Änderonge
+un Äjänzonge fott, di schpääder derbei jekumme sen.</strong> &bull;
+[[Special:AbuseFilter/history/$2|Jangk zeröck op däm Felter sing Väsjohne]].',
+	'abusefilter-edit-status-label' => 'Zahle un Schtatistike:',
 	'abusefilter-edit-status' => '{{PLURAL:$1|De letzte Akßjuhn woodt|Unger de letzte $1 Akßjuhne {{PLURAL:$2|woor_er ein, die|wooren_er $2, die|wood kein}}|Kein Akßjuhn woodt}} vun dämm Felter hee opjejreff{{PLURAL:$1|e|{{PLURAL:$2|e wood|e woode|e}}|e}}. Dat sinn_er $3% jewääse.
 Em Schnett deiht hä {{PLURAL:$4|ein Millisekund|$4 Millisekunde|kein Millisekund}} bruche, un {{PLURAL:$5|ein Bedengung|$5 Bedengunge|kei Bedengunge}} vun de zohjelohße hühßte Zahl.',
 	'abusefilter-edit-throttled' => "'''Opjepaß:''' Dä Felter hee es automattesch ußjeschalldt woode. Zor Sescherheit.
@@ -20852,7 +20945,7 @@ Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilte
 	'abusefilter-diff-next' => 'De Änderung donoh zeije',
 	'abusefilter-import-intro' => 'Do kanns hee di Schnettshtell bruche, öm Date vun de Meßbruchsfeltere vun andere Wikis noh hee ze empotteere. En dämm Wiki, woh de Date her kumme, doh donn op „{{int:abusefilter-edit-export}}“ unger „{{int:abusefilter-edit-tools}}“ klecke, op dä Sigg zom Felter Ändere. Donn dä Ennhalt vun däm Kaste met Tex, dä dann doh kütt, en hee dä Kaste eren kopeere, un dann donn hee dä Knopp „{{int:abusefilter-import-submit}}“ klecke.',
 	'abusefilter-import-submit' => 'Lohß Jonn!',
-	'abusefilter-group-default' => 'Shtandatt',
+	'abusefilter-group-default' => 'Schtandatt',
 );
 
 /** Kurdish (Latin script) (Kurdî (latînî)‎)
@@ -23064,6 +23157,14 @@ $messages['mhr'] = array(
 	'abusefilter-edit-history' => 'Историй', # Fuzzy
 	'abusefilter-history-user' => 'Пайдаланыше',
 	'abusefilter-revert-filter' => 'Фильтр:',
+);
+
+/** Minangkabau (Baso Minangkabau)
+ * @author Iwan Novirion
+ */
+$messages['min'] = array(
+	'abusefilter' => 'Konfigurasi filter panyalahgunoan',
+	'abuselog' => 'Log panyalahgunoan',
 );
 
 /** Macedonian (македонски)
@@ -26619,7 +26720,7 @@ Zie de [[Special:AbuseFilter/history|lijst met recente filterwijzigingen]] voor 
 	'abusefilter-diff-next' => 'Nieuwere wijziging',
 	'abusefilter-import-intro' => 'U kunt deze interface gebruiken om filters van andere wiki\'s te importeren.
 Klik "{{int:abusefilter-edit-export}}" bij "{{int:abusefilter-edit-tools}}".
-Kopieer de tekst die in het bewerkingsvenster verschijnt naar dit bewerkingsvenster en klik dan op "{{int:abusefilter-import-submit}}".',
+Kopieer de tekst die verschijnt naar dit bewerkingsvenster en klik dan op "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Filtergegevens importeren',
 	'abusefilter-group-default' => 'Standaard',
 );
@@ -28445,11 +28546,11 @@ Interfejs pozwala przeglądać listę zdefiniowanych filtrów oraz pozwala na ic
 Niewłaściwe zmiany zostaną szybko wycofane,
 a rażące lub powtarzające się niekonstruktywne edytowanie może spowodować zablokowanie Twojego konta lub adresu IP.
 Jeśli uważasz, że to co robisz ma uzasadnienie, kliknij przycisk „{{int:savearticle}}”, aby zatwierdzić zmiany.
-Krótki opis reguły nadużycia, do której Twoja akcji została dopasowana – $1", # Fuzzy
+Krótki opis reguły nadużycia, do której Twoja akcji została dopasowana – $1",
 	'abusefilter-disallowed' => 'Ta akcja została automatycznie zidentyfikowana jako szkodliwa,
 w związku z tym została odrzucona.
 Jeśli uważasz, że ta edycja była zasadna, skontaktuj się z administratorem i poinformuj go o zaistniałej sytuacji.
-Krótki opis reguły nadużycia, do której Twoja akcji została dopasowana: $1', # Fuzzy
+Krótki opis reguły nadużycia, do której Twoja akcji została dopasowana: $1',
 	'abusefilter-blocked-display' => 'Ta akcja została automatycznie zidentyfikowana jako szkodliwa
 i zostałeś powstrzymany od jej wykonania.
 Ponadto w celu ochrony {{GRAMMAR:MS.lp|{{SITENAME}}}} Twojemu kontu użytkownika i wszystkim powiązanym z nim adresom IP zablokowano możliwość edytowania.
