@@ -283,6 +283,7 @@ Tags should be short, and they should not contain special characters.',
 	'abusefilter-edit-builder-group-funcs' => 'Functions',
 	'abusefilter-edit-builder-funcs-length' => 'String length (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'To lower case (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'To upper case (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalize confusable characters (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Remove double-characters (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Special characters / total characters (specialratio)',
@@ -819,6 +820,7 @@ See also:
 	'abusefilter-edit-builder-group-funcs' => 'Group entry in dropdown menu.',
 	'abusefilter-edit-builder-funcs-length' => "{{doc-important|Do not translate \"'''length'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-lcase' => "{{doc-important|Do not translate \"'''lcase'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
+	'abusefilter-edit-builder-funcs-ucase' => "{{doc-important|Do not translate \"'''ucase'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-ccnorm' => "{{doc-important|Do not translate \"'''ccnorm'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-rmdoubles' => '{{doc-important|Do not translate "\'\'\'rmdoubles\'\'\'".}}
 Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.
@@ -7489,7 +7491,6 @@ Disgrifiad o'r rheol sy'n cyfateb: $1",
 
 /** Danish (dansk)
  * @author Aputtu
- * @author Byrial
  * @author Christian List
  * @author Claus chr
  * @author Fnielsen
@@ -7506,30 +7507,30 @@ $messages['da'] = array(
 	'abusefilter' => 'Konfiguration af misbrugsfilter',
 	'abuselog' => 'Misbrugslog',
 	'abusefilter-intro' => 'Velkommen til grænsefladen for håndtering af misbrugsfilteret.
-Misbrugsfilteret er en automatisk mekanisme i softwaren som udfører automatisk tjeck af alle handlinger.
+Misbrugsfilteret er en automatisk mekanisme i softwaren som udfører automatisk check af alle handlinger.
 Denne grænseflade viser en liste over definerede filtre, og gør det muligt at ændre dem.',
 	'abusefilter-mustbeeditor' => 'Af sikkerhedsmæssige årsager kan denne grænseflade kun bruges af brugere med rettigheder til at ændre misbrugsfiltre.',
 	'abusefilter-warning' => "'''Advarsel:''' Denne handling er automatisk blevet identificeret som skadelig.
 Ikke-konstruktive redigeringer bliver fjernet hurtigt,
-og forstyrrende eller gentagende ikke-konstruktive redigeringer vil føre til at din konto eller IP-adresse bliver blokeret.
-Hvis du mener at dette er en konstruktiv handling, så klik på \"Gem\" igen for at bekræfte.
-Her er kortfattet beskrivelse af misbrugsreglen som din handling udløste: \$1",
+og forstyrrende eller gentagende ikke-konstruktive redigeringer vil føre til at din konto eller ip-adresse bliver blokeret.
+Hvis du mener at dette er en konstruktiv handling så klik på \"Gem\" igen for at bekræfte.
+En kortfattet beskrivelse af misbrugsreglen som din handling udløste er: \$1",
 	'abusefilter-disallowed' => 'Denne handling er automatisk blevet identificeret som skadelig,
 og er derfor ikke tilladt.
 Hvis du mener at din redigering var konstruktiv, så kontakt venligst en administrator, og informer denne om hvad du forsøgte at gøre.
-Her er en kortfattet beskrivelse af misbrugsreglen som din handling udløste: $1',
+En kortfattet beskrivelse af misbrugsreglen som din handling udløste er: $1',
 	'abusefilter-blocked-display' => 'Denne handling er automatisk blevet identificeret som skadelig,
 og du er derfor blevet forhindret i at udføre den.
 Herudover, for at beskytte {{SITENAME}}, er din brugerkonto og alle associerede IP-adresser blevet blokeret fra at kunne redigere.
-Hvis dette er sket som en fejl, så kontakt venligst en administrator.
-Her er en kortfattet beskrivelse af misbrugsreglen som din handling udløste: $1',
+Hvis dette er sket som en fejl så kontakt venligst en administrator.
+En kortfattet beskrivelse af misbrugsreglen som din handling udløste er: $1',
 	'abusefilter-degrouped' => 'Denne handling er automatisk blevet identificeret som skadelig.
 Som konsekvens heraf er den ikke tilladt, og på grund af mistanke om misbrug har din konto mistet alle rettigheder.
 Hvis du mener at dette er sket på grund af en fejl, så kontakt en bureaukrat med en forklaring på denne handling, og dine rettigheder kan genoprettes.
-Her er en kortfattet beskrivelse af misbrugsreglen som din handling udløste: $1',
-	'abusefilter-autopromote-blocked' => 'Denne handling er automatisk blevet identificeret som skadelig, og blevet deaktiveret.
-Hertil kommer, som en sikkerhedsforanstaltning at nogle privilegier som rutinemæssigt tildeles til oprettede kontoer, er inddraget midlertidigt fra din konto.
-Her er kort beskrivelse af misbrugsreglen som din handling udløste: $1',
+En kortfattet beskrivelse af misbrugsreglen som din handling udløste er: $1',
+	'abusefilter-autopromote-blocked' => ' Denne handling er automatisk blevet identificeret som skadelig, og blevet deaktiveret.
+ Hertil kommer, som en sikkerhedsforanstaltning at nogle privilegier som rutinemæssigt tildeles til oprettede kontoer er inddraget midlertidigt fra din konto.
+ En kort beskrivelse af den misbrugsregel som matcher din handling er: $1',
 	'abusefilter-blocker' => 'Misbrugsfilter',
 	'abusefilter-blockreason' => 'Automatisk blokeret af misbrugsfilter.
 Beskrivelse af den udløste regel: $1',
@@ -7537,25 +7538,25 @@ Beskrivelse af den udløste regel: $1',
 Regelbeskrivelse: $1',
 	'abusefilter-accountreserved' => 'Denne konto er reserveret til brug af misbrugsfilteret.',
 	'right-abusefilter-modify' => 'Ændre misbrugsfiltre',
-	'right-abusefilter-view' => 'Se misbrugsfiltre',
-	'right-abusefilter-log' => 'Se misbrugsloggen',
-	'right-abusefilter-log-detail' => 'Se detaljerede punkter i misbrugsloggen',
-	'right-abusefilter-private' => 'Se privat information i misbrugsloggen',
+	'right-abusefilter-view' => 'Vis misbrugsfiltre',
+	'right-abusefilter-log' => 'Vis misbrugsloggen',
+	'right-abusefilter-log-detail' => 'Vis detaljerede punkter i misbrugsloggen',
+	'right-abusefilter-private' => 'Vis privat information i misbrugsloggen',
 	'right-abusefilter-modify-restricted' => 'Ændre misbrugsfiltre med begrænsede handlinger',
 	'right-abusefilter-revert' => 'Tilbagerul alle ændringer udført af et bestemt misbrugsfilter',
-	'right-abusefilter-view-private' => 'Se misbrugsfiltre markeret som private',
-	'right-abusefilter-log-private' => 'Se logposter fra misbrugsfiltre der er markeret som private',
-	'right-abusefilter-hide-log' => 'Skjule poster i misbrugslog',
-	'right-abusefilter-hidden-log' => 'Se skjulte poster i misbrugslog',
-	'right-abusefilter-modify-global' => 'Oprette eller redigere globale misbrugsfiltre',
+	'right-abusefilter-view-private' => 'Vis misbrugsfiltre markeret som private',
+	'right-abusefilter-log-private' => 'Vis logposter fra misbrugsfiltre der er markeret som private',
+	'right-abusefilter-hide-log' => 'Skjul poster i misbrugslog',
+	'right-abusefilter-hidden-log' => 'Vis skjulte poster i misbrugslog',
+	'right-abusefilter-modify-global' => 'Opret eller rediger globale misbrugsfiltre',
 	'action-abusefilter-modify' => 'ændre misbrugsfiltre',
-	'action-abusefilter-view' => 'se misbrugsfiltre',
-	'action-abusefilter-log' => 'se misbrugsloggen',
+	'action-abusefilter-view' => 'vis misbrugsfiltre',
+	'action-abusefilter-log' => 'vis misbrugsloggen',
 	'action-abusefilter-log-detail' => 'vis detaljerede punkter i misbrugsloggen',
-	'action-abusefilter-private' => 'se privat information i misbrugsloggen',
+	'action-abusefilter-private' => 'vis privat information i misbrugsloggen',
 	'action-abusefilter-modify-restricted' => 'ændre misbrugsfiltre med begrænsede handlinger',
-	'action-abusefilter-revert' => 'tilbagerulle alle ændringer udført af et bestemt misbrugsfilter',
-	'action-abusefilter-view-private' => 'se misbrugsfiltre markeret som private',
+	'action-abusefilter-revert' => 'tilbagerul alle ændringer udført af et bestemt misbrugsfilter',
+	'action-abusefilter-view-private' => 'vis misbrugsfiltre markeret som private',
 	'abusefilter-log' => 'Log for misbrugsfilter',
 	'abusefilter-log-summary' => 'Denne log viser en liste over alle handlinger som filtrene har opfanget.',
 	'abusefilter-log-search' => 'Søg i misbrugsloggen',
@@ -7564,12 +7565,12 @@ Regelbeskrivelse: $1',
 	'abusefilter-log-search-title' => 'Titel:',
 	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Søg',
-	'abusefilter-log-entry' => '$1: $2  udløste et misbrugsfilter med handlingen "$3" på $4.
-Foranstaltninger: $5.
-Filterbeskrivelse: $6',
-	'abusefilter-log-detailedentry-meta' => '$1: $2 udløste $3 med handlingen "$4" på $5.
-Foranstaltninger: $6.
-Filterbeskrivelse: $7 ($8)',
+	'abusefilter-log-entry' => '$1: $2  udløste et misbrugsfilter, ved at udføre handlingen "$3" på $4.
+Foranstaltninger: $5;
+Beskrivelse af filteret: $6',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 udløste $3, ved at udføre handlingen "$4" på $5.
+Foranstaltninger: $6;
+Filtrere beskrivelse: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'globalt filter $1',
 	'abusefilter-log-detailedentry-local' => 'filter $1',
 	'abusefilter-log-detailslink' => 'detaljer',
@@ -7586,7 +7587,7 @@ Filterbeskrivelse: $7 ($8)',
 	'abusefilter-log-linkoncontribs' => 'misbrugslog',
 	'abusefilter-log-linkoncontribs-text' => 'Misbrugslog for denne bruger',
 	'abusefilter-log-hidden' => '(post skjult)',
-	'abusefilter-log-hidden-implicit' => '(skjult da versionen er blevet slettet)',
+	'abusefilter-log-hidden-implicit' => '(skjult da revisionen er blevet slettet)',
 	'abusefilter-log-cannot-see-details' => 'Du har ikke tilladelse til at se detaljer om denne post.',
 	'abusefilter-log-details-hidden' => 'Du kan ikke se detaljerne for denne post, fordi den er skjult for offentligheden',
 	'abusefilter-log-hide-legend' => 'Skjul loghandlig',
@@ -7596,7 +7597,7 @@ Filterbeskrivelse: $7 ($8)',
 	'abusefilter-log-hide-forbidden' => 'Du har ikke rettigheder til at skjule misbrugsfilterhandlinger',
 	'abusefilter-logentry-suppress' => 'Skjulte "[[$1]]"',
 	'abusefilter-logentry-unsuppress' => 'Gjorde "[[$1]]" synligt for offentligheden igen',
-	'logentry-abusefilter-hit' => '$1 udløste $4 med handlingen "$5" på $3. Tiltag: $6 ($7)',
+	'logentry-abusefilter-hit' => '$1 udløste $4, under udførelse af handlingen "$5" på $3. Tiltag: $6 ($7)',
 	'abusefilter-management' => 'Håndtering af misbrugsfilter',
 	'abusefilter-list' => 'Alle filtre',
 	'abusefilter-list-id' => 'Filter-ID',
@@ -7608,7 +7609,7 @@ Filterbeskrivelse: $7 ($8)',
 	'abusefilter-list-edit' => 'Redigér',
 	'abusefilter-list-details' => 'Detaljer',
 	'abusefilter-list-limit' => 'Antal pr. side:',
-	'abusefilter-list-lastmodified' => 'Senest ændret',
+	'abusefilter-list-lastmodified' => 'Seneste ændret',
 	'abusefilter-list-group' => 'Filtergruppe',
 	'abusefilter-hidden' => 'Privat',
 	'abusefilter-unhidden' => 'Offentlig',
@@ -7639,19 +7640,19 @@ Filterbeskrivelse: $7 ($8)',
 	'abusefilter-reautoconfirm-none' => 'Den bruger har ikke fået suspenderet sin status som registreret bruger.',
 	'abusefilter-reautoconfirm-notallowed' => 'Du har ikke tilladelse til at genoprette status som registreret bruger.',
 	'abusefilter-reautoconfirm-done' => 'Kontoens status som registreret bruger er blevet genoprettet',
-	'abusefilter-status' => 'Af {{PLURAL:$1|den seneste $1 handling|de seneste $1 handlinger}} har $2 ($3 %) nået betingelsesgrænsen på $4, og $5 ($6 %) har udløst et af de aktuelt aktiverede filtre.',
-	'abusefilter-edit' => 'Redigerer misbrugsfilter',
+	'abusefilter-status' => 'Af de(n) seneste $1 {{PLURAL:$1|handling|handlinger}} er $2 ($3%) nået betingelsesgrænsen på $4, og $5 ($6%) har udløst et af de filtre som i øjeblikket er aktiveret.',
+	'abusefilter-edit' => 'Redigere misbrugsfilter',
 	'abusefilter-edit-subtitle' => 'Redigerer filter $1',
 	'abusefilter-edit-subtitle-new' => 'Opretter filter',
 	'abusefilter-edit-oldwarning' => '<strong>Du redigerer en gammel version af dette filter.
-Den citerede statistik er for den seneste version af filteret.
-Hvis du gemmer dine ændringer, overskriver du alle ændringer siden den version du redigerer.</strong> &bull;
+Den citerede statistik er til den seneste version af filteret.
+Hvis du gemmer dine ændringer, overskriver du alle ændringer siden den revision, du redigerer.</strong> &bull;
 [[Special:AbuseFilter/history/$2|Vend tilbage til dette filters historik]].',
 	'abusefilter-edit-status-label' => 'Statistik:',
-	'abusefilter-edit-status' => 'Af {{PLURAL:$1|den sidste handling|de sidste $1 handlinger}} har dette filter matchet $2 ($3 %).
-I gennemsnit er operationstiden $4 ms, og det optager $5 {{PLURAL:$5|tilstand|tilstande}} af tilstandsgrænsen.',
+	'abusefilter-edit-status' => 'Af {{PLURAL:$1|den sidste handling|de sidste $1 handlinger}}, har dette filter matchet $2 ($3%).
+I gennemsnit, er operationstiden $4 ms, og det optager $5 {{PLURAL:$5|tilstand|tilstande}} af tilstandsgrænsen.',
 	'abusefilter-edit-throttled' => "'''Advarsel''': dette filter blev automatisk deaktiveret som en sikkerhedsforanstaltning.
-Det har nået grænsen ved at matche mere end $1 % af handlingerne.",
+Det har nået grænsen ved at matche mere end $1% af handlingerne.",
 	'abusefilter-edit-new' => 'Nyt filter',
 	'abusefilter-edit-save' => 'Gem filter',
 	'abusefilter-edit-id' => 'Filter-ID:',
@@ -7696,14 +7697,14 @@ Det har nået grænsen ved at matche mere end $1 % af handlingerne.",
 	'abusefilter-edit-main' => 'Filterparametre',
 	'abusefilter-edit-done-subtitle' => 'Filter redigeret',
 	'abusefilter-edit-done' => 'Du har gemt dine ændringer til filteret $1.',
-	'abusefilter-edit-badsyntax' => 'Der er en syntaksfejl i det filter du angav.
+	'abusefilter-edit-badsyntax' => 'Der er en syntaksfejl i det filter, du angav.
 Resultatet fra parseren var: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Du kan ikke redigere dette filter, fordi det indeholder en eller flere begrænsede handlinger.
 Bed en bruger med tilladelse til at tilføje begrænsede handlinger om at lave ændringen for dig.',
 	'abusefilter-edit-viewhistory' => 'Vis dette filters historik',
 	'abusefilter-edit-history' => 'Historik:',
 	'abusefilter-edit-check' => 'Tjek syntaks',
-	'abusefilter-edit-badfilter' => 'Det filter du har angivet findes ikke',
+	'abusefilter-edit-badfilter' => 'Det filter, du har angivet findes ikke',
 	'abusefilter-edit-revert' => 'Tilbagerul handlinger udført af dette filter',
 	'abusefilter-edit-tools' => 'Værktøj:',
 	'abusefilter-edit-test-link' => 'Test dette filter mod seneste ændringer',
@@ -33289,7 +33290,6 @@ Stručný popis pravidla zneužitia, ktoré zachytilo vašu úpravu, je: $1',
 	'abusefilter-log-search-user' => 'Používateľ:',
 	'abusefilter-log-search-filter' => 'ID filtra:',
 	'abusefilter-log-search-title' => 'Názov:',
-	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Hľadať',
 	'abusefilter-log-entry' => '$1: $2 spustil filter zneužití, pri vykonávaní operácie „$3“ na $4.
 Vykonané opatrenia: $5;
@@ -33336,7 +33336,6 @@ Popis filtra: $7 ($8)',
 	'abusefilter-list-details' => 'Podrobnosti',
 	'abusefilter-list-limit' => 'Počet na stránku:',
 	'abusefilter-list-lastmodified' => 'Posledná zmena',
-	'abusefilter-list-group' => 'Skupinový filter',
 	'abusefilter-hidden' => 'Súkromné',
 	'abusefilter-unhidden' => 'Verejné',
 	'abusefilter-enabled' => 'Zapnuté',
@@ -33351,9 +33350,6 @@ Popis filtra: $7 ($8)',
 	'abusefilter-list-options-deleted-only' => 'Zobraziť iba zmazané filtre',
 	'abusefilter-list-options-deleted-hide' => 'Skryť zmazané filtre',
 	'abusefilter-list-options-deleted-show' => 'Vrátane zmazaných filtrov',
-	'abusefilter-list-options-scope' => 'Zobraziť filtre od:',
-	'abusefilter-list-options-scope-local' => 'Lokálna wiki',
-	'abusefilter-list-options-scope-global' => 'Globálne pravidlá',
 	'abusefilter-list-options-disabled' => 'Vypnuté filtre:',
 	'abusefilter-list-options-hidedisabled' => 'Skryť vypnuté filtre',
 	'abusefilter-list-options-submit' => 'Aktualizovať',
@@ -33367,9 +33363,7 @@ Popis filtra: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => 'Nemáte oprávnenie obnoviť stav „registrovaný”.',
 	'abusefilter-reautoconfirm-done' => 'Stav účtu „potvrdený“ bol obnovený',
 	'abusefilter-status' => '{{PLURAL:$1|Posledná $1 operácia|Z posledných $1 operácií}} $2 ($3 %) {{PLURAL:$4|dosiahla|dosiahli|dosiahlo}} hraničnú podmienku $4. $5 ($6 %) {{PLURAL:$5|zodpovedala|zodpovedali|zodpovedalo}} momentálne zapnutým filtrom.',
-	'abusefilter-edit' => 'Úprava filtra zneužití',
 	'abusefilter-edit-subtitle' => 'Úprava filtra $1',
-	'abusefilter-edit-subtitle-new' => 'Vytvorenie filtra',
 	'abusefilter-edit-oldwarning' => '<strong>Upravujete starú verziu tohto filtra. Uvedené štatistiky sa týkajú najnovšej verzie filtra. Ak svoje zmeny uložíte, prepíšete všetky zmeny od revízie, ktorú upravujete.</strong> &bull; [[Special:AbuseFilter/history/$2|Vrátiť sa na históriu tohto filtra]]',
 	'abusefilter-edit-status-label' => 'Štatistika:',
 	'abusefilter-edit-status' => '{{PLURAL:$1|Z poslednej $1 operácie|Z posledných $1 operácií}} tomuto filtru {{PLURAL:$2|zodpovedala|zodpovedali|zodpovedalo}} $2 ($3 %).
@@ -33380,12 +33374,11 @@ Priemerný čas behu je $4 ms a spotrebuje $5 {{PLURAL:$5|podmienku|podmienky|po
 	'abusefilter-edit-id' => 'ID filtra:',
 	'abusefilter-edit-description' => "Popis:
 :''(verejne viditeľný)''",
-	'abusefilter-edit-group' => 'Skupinový filter:',
 	'abusefilter-edit-flags' => 'Príznaky:',
 	'abusefilter-edit-enabled' => 'Zapnúť tento filter',
 	'abusefilter-edit-deleted' => 'Označiť ako zmazané',
 	'abusefilter-edit-hidden' => 'Skryť verejné zobrazovanie podrobností filtra',
-	'abusefilter-edit-global' => 'Globálny filter',
+	'abusefilter-edit-global' => 'Aplikovať tento filter globálne', # Fuzzy
 	'abusefilter-edit-rules' => 'Pravidlá:',
 	'abusefilter-edit-notes' => "Poznámky:
 :''(súkromný)''",
@@ -33434,7 +33427,6 @@ Priemerný čas behu je $4 ms a spotrebuje $5 {{PLURAL:$5|podmienku|podmienky|po
 	'abusefilter-edit-bad-tags' => 'Jedna alebo viac zo značiek, ktoré ste uviedli nie je platných.
 Značky by mali byť krátke a nemali by obsahovať špeciálne znaky.',
 	'abusefilter-edit-notallowed' => 'Nemáte oprávnenie vytvárať alebo meniť filtre zneužití',
-	'abusefilter-edit-notallowed-global' => 'Nemáte oprávnenie vytvárať alebo meniť globálne filtre zneužití',
 	'abusefilter-edit-builder-select' => 'Vyberte voľbu, ktorá sa pridá na miesto, kde je kurzor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetické operátory',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Sčítanie (+)',
@@ -33496,7 +33488,6 @@ Značky by mali byť krátke a nemali by obsahovať špeciálne znaky.',
 	'abusefilter-edit-builder-vars-article-ns' => 'Menný priestor stránok',
 	'abusefilter-edit-builder-vars-article-text' => 'Názov stránky (bez menného priestoru)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Plný názov stránky',
-	'abusefilter-edit-builder-vars-article-views' => 'Zobrazenia stránky',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'ID stránky presunutia zdrojovej stránky',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Menný priestor presunutia zdrojovej stránky',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Názov presunutia zdrojovej stránky',
@@ -33509,7 +33500,6 @@ Značky by mali byť krátke a nemali by obsahovať špeciálne znaky.',
 	'abusefilter-edit-builder-vars-user-age' => 'Vek používateľského účtu',
 	'abusefilter-edit-builder-vars-user-name' => 'Názov používateľského účtu',
 	'abusefilter-edit-builder-vars-user-groups' => 'Skupiny (vrátane implicitných), v ktorých sa používateľ nachádza',
-	'abusefilter-edit-builder-vars-user-blocked' => 'Či je používateľ zablokovaný',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Emailová adresa bola potvrdená',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Poslední piati prispievatelia tejto stránky',
 	'abusefilter-edit-builder-vars-all-links' => 'Všetky externé odkazy v novom texte',
@@ -33521,8 +33511,6 @@ Značky by mali byť krátke a nemali by obsahovať špeciálne znaky.',
 	'abusefilter-edit-builder-vars-new-html' => 'Vytvorený HTML zdroj novej revízie',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Upraviť úroveň zamknutia stránky',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Presunúť úroveň zamknutia stránky',
-	'abusefilter-edit-builder-vars-restrictions-create' => 'Ochrániť stránku',
-	'abusefilter-edit-builder-vars-restrictions-upload' => 'Ochrana súboru pred nahraním',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Starý text stránky zbavený všetkých značiek',
 	'abusefilter-edit-builder-vars-old-links' => 'Odkazy na stránke pred úpravou',
 	'abusefilter-edit-builder-vars-old-html' => 'Starý wikitext stránky prevedený do HTML',
@@ -33588,7 +33576,7 @@ Prosím, pozorne ich skontrolujte a potvrďte svoj výber kliknutím na na „Po
 	'abusefilter-revert-success' => 'Vrátili ste všetky zmeny vykonané filtrom zneužitia [[Special:AbuseFilter/$1|$1]].',
 	'abusefilter-revert-reason' => 'Automatické vrátenie všetkých operácií vykonaných filtrom zneužitia $1.
 Uvedený dôvod: $2',
-	'abusefilter-revert-reasonfield' => 'Dôvod:',
+	'abusefilter-revert-reasonfield' => 'Dôvod vrátenia:', # Fuzzy
 	'abusefilter-test' => 'Otestovať filter na existujúcich úpravách',
 	'abusefilter-test-intro' => 'Táto stránka vám umožňuje otestovať filter zadaný do poľa nižšie na {{PLURAL:$1|posledej úprave|posledých $1 úpravách}}.
 Existujúci filter načítate napísaním jeho ID do poľa pod poľom úprav a kliknuím na tlačidlo „Načítať“.',
@@ -33634,18 +33622,15 @@ Podrobnosti nájdete v [[Special:AbuseFilter/history|zozname]] posledných zmien
 	'abusefilter-log-noresults' => 'Žiadne výsledky',
 	'abusefilter-diff-title' => 'Rozdiely medzi verziami',
 	'abusefilter-diff-item' => 'Položka',
-	'abusefilter-diff-version' => 'Verzia od $1 používateľa $2', # Fuzzy
+	'abusefilter-diff-version' => 'Verzia od $1, $2', # Fuzzy
 	'abusefilter-diff-info' => 'Základné informácie',
 	'abusefilter-diff-pattern' => 'Podmienky filtra',
 	'abusefilter-diff-invalid' => 'Nepodarilo sa získať požadované verzie',
 	'abusefilter-diff-backhistory' => 'Späť na históriu filtra',
-	'abusefilter-diff-prev' => 'Staršia zmena',
-	'abusefilter-diff-next' => 'Novšia zmena',
 	'abusefilter-import-intro' => 'Toto rozhranie môžete použiť na importovanie filtrov z iných wiki.
 Na zdrojovej wiki kliknite na „{{int:Abusefilter-edit-export}}“ v ponuke „{{int:abusefilter-edit-tools}}“ v rozhraní na úpravy.
 Skopírujte ho z textového poľa, kde sa objaví a vložte ho do tohto textového poľa. Potom kliknite na „{{int:abusefilter-import-submit}}“.',
 	'abusefilter-import-submit' => 'Importovať údaje',
-	'abusefilter-group-default' => 'Predvolené',
 );
 
 /** Slovenian (slovenščina)
@@ -41240,7 +41225,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-list-options-deleted-hide' => '隐藏已删除过滤器',
 	'abusefilter-list-options-deleted-show' => '包括已删除过滤器',
 	'abusefilter-list-options-scope' => '显示过滤器自：',
-	'abusefilter-list-options-scope-local' => '本地维基',
+	'abusefilter-list-options-scope-local' => '本地維基',
 	'abusefilter-list-options-scope-global' => '全域规则',
 	'abusefilter-list-options-disabled' => '已停用过滤器：',
 	'abusefilter-list-options-hidedisabled' => '隐藏已停用过滤器',
