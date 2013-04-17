@@ -35,13 +35,13 @@
 	 */
 	function doSyntaxCheck() {
 		/*jshint validthis:true */
-		var filter = $filterBox.val();
+		var filter = $filterBox.val(),
+			api = new mw.Api();
 
 		$( this )
 			.attr( 'disabled', 'disabled' )
 			.injectSpinner( 'abusefilter-syntaxcheck' );
 
-		var api = new mw.Api();
 		api.get( {
 			action: 'abusefilterchecksyntax',
 			filter: filter
@@ -121,7 +121,7 @@
 		}
 
 		$filterBox.textSelection(
-			'encapsulateSelection', { 'pre': $filterBuilder.val() + " " }
+			'encapsulateSelection', { 'pre': $filterBuilder.val() + ' ' }
 		);
 		$filterBuilder.prop( 'selectedIndex', 0 );
 	}
@@ -134,7 +134,8 @@
 	 */
 	function fetchFilter() {
 		/*jshint validthis:true */
-		var filterId = $( '#mw-abusefilter-load-filter' ).val();
+		var filterId = $( '#mw-abusefilter-load-filter' ).val(),
+			api;
 
 		if ( filterId === '' ) {
 			return;
@@ -143,7 +144,7 @@
 		$( this ).injectSpinner( 'fetch-spinner' );
 
 		// We just ignore errors or unexisting filters over here
-		var api = new mw.Api();
+		api = new mw.Api();
 		api.get( {
 			action: 'query',
 			list: 'abusefilters',
@@ -220,13 +221,14 @@
 	 */
 	function onFilterGroupChange() {
 		/*jshint validthis:true */
-		var newVal = mw.config.get( 'wgAbuseFilterDefaultWarningMessage' )[$( this ).val()];
+		var $afWarnMessageExisting, $afWarnMessageOther, newVal;
 
 		if ( !$( '#mw-abusefilter-action-warn-checkbox' ).is( ':checked' ) ) {
-			var $afWarnMessageExisting = $( '#mw-abusefilter-warn-message-existing' ),
-				$afWarnMessageOther = $( '#mw-abusefilter-warn-message-other' );
+			$afWarnMessageExisting = $( '#mw-abusefilter-warn-message-existing' );
+			$afWarnMessageOther = $( '#mw-abusefilter-warn-message-other' );
+			newVal = mw.config.get( 'wgAbuseFilterDefaultWarningMessage' )[$( this ).val()];
 
-			if ( $afWarnMessageExisting.find( "option[value='" + newVal + "']" ).length ) {
+			if ( $afWarnMessageExisting.find( 'option[value=\'' + newVal + '\']' ).length ) {
 				$afWarnMessageExisting.val( newVal );
 				$afWarnMessageOther.val( '' );
 			} else {

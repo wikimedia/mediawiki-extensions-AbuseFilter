@@ -15,10 +15,10 @@
 	 */
 	function doExprSubmit() {
 		/*jshint validthis:true */
-		var expr = $( '#wpTestExpr' ).val();
+		var expr = $( '#wpTestExpr' ).val(),
+			api = new mw.Api();
 		$( this ).injectSpinner( 'abusefilter-expr' );
 
-		var api = new mw.Api();
 		api.get( {
 			action: 'abusefilterevalexpression',
 			expression: expr
@@ -44,7 +44,8 @@
 	 */
 	function doReautoSubmit() {
 		/*jshint validthis:true */
-		var name = $( '#reautoconfirm-user' ).val();
+		var name = $( '#reautoconfirm-user' ).val(),
+			api;
 
 		if ( name === '' ) {
 			return;
@@ -52,7 +53,7 @@
 
 		$( this ).injectSpinner( 'abusefilter-reautoconfirm' );
 
-		var api = new mw.Api();
+		api = new mw.Api();
 		api.post( {
 			action: 'abusefilterunblockautopromote',
 			user: name,

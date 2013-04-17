@@ -25,7 +25,8 @@
 			params = {
 				action: 'abusefiltercheckmatch',
 				filter: filter
-			};
+			},
+			api = new mw.Api();
 
 		$( this ).injectSpinner( 'filter-check' );
 
@@ -36,7 +37,6 @@
 		}
 
 		// Use post due to the rather large amount of data
-		var api = new mw.Api();
 		api.post( params )
 			.done( examinerTestProcess )
 			.fail( examinerTestProcessFailure );
