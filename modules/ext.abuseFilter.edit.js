@@ -42,7 +42,7 @@
 			.attr( 'disabled', 'disabled' )
 			.injectSpinner( 'abusefilter-syntaxcheck' );
 
-		api.get( {
+		api.post( {
 			action: 'abusefilterchecksyntax',
 			filter: filter
 		} )
