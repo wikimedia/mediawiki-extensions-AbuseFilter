@@ -55,6 +55,7 @@ class AbuseFilter {
 		'funcs' => array(
 			'length(string)' => 'length',
 			'lcase(string)' => 'lcase',
+			'ucase(string)' => 'ucase',
 			'ccnorm(string)' => 'ccnorm',
 			'rmdoubles(string)' => 'rmdoubles',
 			'specialratio(string)' => 'specialratio',

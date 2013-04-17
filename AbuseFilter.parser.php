@@ -583,9 +583,10 @@ class AbuseFilterParser {
 	 */
 	var $mVars;
 
-	// length,lcase,ccnorm,rmdoubles,specialratio,rmspecials,norm,count
+	// length,lcase,ucase,ccnorm,rmdoubles,specialratio,rmspecials,norm,count
 	static $mFunctions = array(
 		'lcase' => 'funcLc',
+		'ucase' => 'funcUc',
 		'length' => 'funcLen',
 		'string' => 'castString',
 		'int' => 'castInt',
@@ -1673,6 +1674,25 @@ class AbuseFilterParser {
 		$s = $args[0]->toString();
 		return new AFPData( AFPData::DString, $wgContLang->lc( $s ) );
 	}
+
+	/**
+	 * @param $args
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
+	protected function funcUc( $args ) {
+		global $wgContLang;
+		if ( count( $args ) < 1 ) {
+			throw new AFPUserVisibleException(
+				'notenoughargs',
+				$this->mCur->pos,
+				array( 'uc', 2, count( $args ) )
+			);
+		}
+		$s = $args[0]->toString();
+		return new AFPData( AFPData::DString, $wgContLang->uc( $s ) );
+	}
+
 
 	/**
 	 * @param $args

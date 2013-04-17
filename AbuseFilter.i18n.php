@@ -283,6 +283,7 @@ Tags should be short, and they should not contain special characters.',
 	'abusefilter-edit-builder-group-funcs' => 'Functions',
 	'abusefilter-edit-builder-funcs-length' => 'String length (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'To lower case (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'To upper case (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalize confusable characters (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Remove double-characters (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Special characters / total characters (specialratio)',
@@ -819,6 +820,7 @@ See also:
 	'abusefilter-edit-builder-group-funcs' => 'Group entry in dropdown menu.',
 	'abusefilter-edit-builder-funcs-length' => "{{doc-important|Do not translate \"'''length'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-lcase' => "{{doc-important|Do not translate \"'''lcase'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
+	'abusefilter-edit-builder-funcs-ucase' => "{{doc-important|Do not translate \"'''ucase'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-ccnorm' => "{{doc-important|Do not translate \"'''ccnorm'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-rmdoubles' => '{{doc-important|Do not translate "\'\'\'rmdoubles\'\'\'".}}
 Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.
