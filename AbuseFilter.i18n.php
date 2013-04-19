@@ -845,11 +845,20 @@ Functional explanation: rmdoubles removes repeated characters in the argument, a
 	'abusefilter-edit-builder-funcs-rescape' => "{{doc-important|Do not translate \"'''rescape'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-set_var' => "{{doc-important|Do not translate \"'''set_var'''\".}}
 Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
-	'abusefilter-edit-builder-group-vars' => 'Group entry in dropdown menu. {{Identical|Variable}}',
+	'abusefilter-edit-builder-group-vars' => 'Group entry in dropdown menu.
+{{Identical|Variable}}',
 	'abusefilter-edit-builder-vars-accountname' => 'This variable is used only during account creation and contains the username of the newly created account. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
-	'abusefilter-edit-builder-vars-action' => ' Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}. {{Identical|Action}}',
+	'abusefilter-edit-builder-vars-timestamp' => 'Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-action' => 'Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.
+{{Identical|Action}}',
+	'abusefilter-edit-builder-vars-addedlines' => 'Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-delta' => 'Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-diff' => 'Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
 	'abusefilter-edit-builder-vars-newsize' => 'New size of the page. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
 	'abusefilter-edit-builder-vars-oldsize' => 'Old size of the page. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-removedlines' => 'Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-summary' => 'Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-article-id' => 'Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
 	'abusefilter-edit-builder-vars-article-ns' => 'The namespace that the page for the trigger is supposed to be in. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
 	'abusefilter-edit-builder-vars-article-views' => 'The number of views that the page has. May not be enabled on all wikis. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'Paraphrase: The page ID of the page to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
@@ -3854,13 +3863,14 @@ $messages['bcl'] = array(
 An Saraan nin Abuso sarong awtomatikong mekanismo nin panuklob na awtomatikong pinag-aaplikar na gana sa boot sa gabos na aksyon.
 Ining olay-panlaog minapahiling nin listahan kan pinagpapasabot na mga saraan, asin minatugot na sinda modipikaron.',
 	'abusefilter-mustbeeditor' => 'Para sa panseguridad na mga rason, an mga paragamit sana na igwang karapatan na magmodipikar kan mga saraan nin abuso an makakagamit kaining olay-panlaog.',
-	'abusefilter-warning' => "'''Patanid''': Ining aksyon awtomatikong pinagbibisto na pano nin kadelikaduhan.
-An bakong konstraktibong mga pagliliwat tulos-tulos na pinagbabalik, asin an bantadan o paoro-otrong pagliliwat na bakong konstraktibo magreresulta sa sadire mong panindog o IP estada na makukubkob.
-Kun ika nagtutubod na ining pagliwat sarong konstraktibo, mapuwede mong i-klik an Isumite giraray tanganing ikumpirma ini.
-Sarong halipoton na deskripsyon kan patakaran nin abuso na an saimong aksyon naipag-ampad iyo an: $1", # Fuzzy
-	'abusefilter-disallowed' => 'Ining aksyon awtomatikong pinagmidbid na pano nin kadelikaduhan, asin kaya dae pinagtutugutan.
-Kun ika nagtutubod na an saimong pagliwat sarong konstraktibo, pakipasabot sa administrador kun ano an saimong pinagprubaran na gigibohon.
-Sarong halipoton na deskripsyon kan patakaran nin abuso na an saimong aksyon naipag-ampad iyo an: $1', # Fuzzy
+	'abusefilter-warning' => "'''Patanid''': Ining aksyon awtomatikong pinagpamidbid bilang pano nin kadelikaduhan.
+An bakong konstraktibong mga pagliliwat tulos-tulos na pinagbabalik, asin an bantadan o pauro-otrong pagliliwat na bakong konstraktibo magreresulta sa pagkukubkod kan sadire mong panindog o estada kan IP.
+Kun ika nagtutubod na ining aksyon konstraktibo, 
+mapuwede mong isumite ini giraray tanganing ikumpirma ini.
+Sarong halipoton na deskripsyon kan patakaran nin abuso na an saimong aksyon nainuknó iyo an: $1",
+	'abusefilter-disallowed' => 'Ining aksyon awtomatikong pinagpamidbid na pano nin kadelikaduhan, asin kaya dae pinagtutugutan.
+Kun ika nagtutubod na an saimong aksyon konstraktibo, pakipasabot sa administrador kun ano an saimong pinagprubaran na gigibohon.
+Sarong halipoton na deskripsyon kan patakaran nin abuso na an saimong aksyon nainuknó iyo an: $1',
 	'abusefilter-blocked-display' => 'Ining aksyon awtomatikong pinagmidbid na pano nin kadelikaduhan, asin ika pinagpupugulan na papangyarihon ini.
 Sa kadagdagan, tanganing protektaran an {{SITENAME}}, an saimong paragamit na panindog asin an gabos na asosyadong IP na mga estada pinagkubkob gikan sa pagliliwat.
 Kun ini nangyari sa kasalaan, pakikontak an administrador.
@@ -4086,6 +4096,7 @@ An mga tatak dapat na halipot, asin sinda dapat mayong espesyal na mga karakter.
 	'abusefilter-edit-builder-group-funcs' => 'Mga gibohon',
 	'abusefilter-edit-builder-funcs-length' => 'Laba nin kapisian (laba)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Pasaradit na letra (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'Padarakulang letra (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Pasayunon an makaribong ng mga kurit (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Halion an mga doble-kurit (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Espessyal na mga kurit / kabilogan na mga kurit (specialratio)',
@@ -4206,7 +4217,7 @@ An aksyon mapupuwedeng balikon: $5($6)',
 	'abusefilter-revert-preview-intro' => 'Yaon sa ibaba an mga aksyon na ginibo kan saraan nin abuso na ipagbabalik sa paagi kaining aksyon.
 Pakirikisaha sindang maigot, asin i-klik an "kumpirma" sa pagkumpirma kan saimong pinili.',
 	'abusefilter-revert-confirm' => 'Kumpirma',
-	'abusefilter-revert-success' => 'Saimong pinagbalik an gabos na mga aksyon na ginibo kan saraan nin abuso nin huli sa [[Espesyal:AbusongSaraan/$1|saraan $1]].', # Fuzzy
+	'abusefilter-revert-success' => 'Saimong pinagbalik an gabos na mga aksyon na ginibo sa paagi kan saraan nin abuso nin huli sa [[Espesyal:AbusongSaraan/$1|saraan $1]].', # Fuzzy
 	'abusefilter-revert-reason' => 'Automatikong balikon an gabos na mga aksyon na ginibo sa paagi kan saraan nin abuso nin huli sa saraan $1.
 Rason na itinao:$2',
 	'abusefilter-revert-reasonfield' => 'Rason:',
@@ -4243,6 +4254,29 @@ Ika makakaresibe nin sarong bilog na kapaliwanagan sa paagi nin pag-klik kan "Ri
 	'abusefilter-examine-noresults' => 'Mayong resultang nanagboan para sa mga parametro nin paghahanap na saimong pinagtao.',
 	'abusefilter-topnav' => "'''Nabigasyon kan Saraan nin Abuso'''",
 	'abusefilter-topnav-home' => 'Haróng',
+	'abusefilter-topnav-test' => 'Pagpuprubar kan Grupo',
+	'abusefilter-topnav-examine' => 'Mansayon an nakaaging mga pagliliwat',
+	'abusefilter-topnav-log' => 'Katalaanan nin Abuso',
+	'abusefilter-topnav-tools' => 'Mga Gamit Panhirog',
+	'abusefilter-topnav-import' => 'Importaron an saraan',
+	'abusefilter-log-name' => 'Katalaanan kan Saraan nin Abuso',
+	'abusefilter-log-header' => 'Ining katalaanan nagpapatanaw nin sarong sumaryo nin mga kaliwatan na hinimo sa mga saraan.
+Para sa bilog na mga detalye, hilngon an [[Espesyal:AbusongSaraan/historiya|an lista]] kan pinakahurihan na kaliwatan sa saraan.', # Fuzzy
+	'abusefilter-log-entry-modify' => 'Pinagbago an $1 ($2)',
+	'abusefilter-log-noresults' => 'Mayo nin mga resulta',
+	'abusefilter-diff-title' => 'Mga kalaenan sa tahaw kan mga bersyon',
+	'abusefilter-diff-item' => 'Aytem',
+	'abusefilter-diff-version' => 'Bersyon gikan sa $1 {{GENDER:$3|ni}} $2',
+	'abusefilter-diff-info' => 'Panandayang impormasyon',
+	'abusefilter-diff-pattern' => 'Mga kondisyon nin saraan',
+	'abusefilter-diff-invalid' => 'Dae tabi nakukua an pinaghahagad na mga bersyon',
+	'abusefilter-diff-backhistory' => 'Ibalik sa historiya nin saraan',
+	'abusefilter-diff-prev' => 'Lumaon na kaliwatan',
+	'abusefilter-diff-next' => 'Baguhon na kaliwatan',
+	'abusefilter-import-intro' => 'Saimong magagamit ining olay-panlaog sa pag-importa nin mga saraan gikan sa ibang wikis.
+Sa ginikanang wiki, i-klik an "{{int:abusefilter-edit-export}}" na yaon sa "{{int:abusefilter-edit-tools}}" sa olay-panlaog nin pagliliwat.',
+	'abusefilter-import-submit' => 'Importaron an datos',
+	'abusefilter-group-default' => 'Panugmad',
 );
 
 /** Belarusian (беларуская)
@@ -7150,6 +7184,7 @@ Značky by měly být krátké a nesmí obsahovat žádné zvláštní znaky.',
 	'abusefilter-edit-builder-group-funcs' => 'Funkce',
 	'abusefilter-edit-builder-funcs-length' => 'Délka řetězce (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Převést na malá písmena (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'Převést na velká písmena (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalizovat zaměnitelné znaky (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Odstranit zdvojené znaky (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Speciální znaky / celkem znaků (specialratio)',
@@ -23461,6 +23496,7 @@ $messages['mk'] = array(
 	'abusefilter-edit-builder-group-funcs' => 'Функции',
 	'abusefilter-edit-builder-funcs-length' => 'Должина на низата (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Со мали букви (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'Со големи букви (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Нормализирај ги знаците подлежни на забуна (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Отстрани повторени знаци (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Специјални знаци / вкупно знаци (specialratio)',
