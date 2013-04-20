@@ -4217,7 +4217,7 @@ An aksyon mapupuwedeng balikon: $5($6)',
 	'abusefilter-revert-preview-intro' => 'Yaon sa ibaba an mga aksyon na ginibo kan saraan nin abuso na ipagbabalik sa paagi kaining aksyon.
 Pakirikisaha sindang maigot, asin i-klik an "kumpirma" sa pagkumpirma kan saimong pinili.',
 	'abusefilter-revert-confirm' => 'Kumpirma',
-	'abusefilter-revert-success' => 'Saimong pinagbalik an gabos na mga aksyon na ginibo sa paagi kan saraan nin abuso nin huli sa [[Espesyal:AbusongSaraan/$1|saraan $1]].', # Fuzzy
+	'abusefilter-revert-success' => 'Saimong pinagbalik an gabos na mga aksyong ginibo sa paagi kan saraan nin abuso nin huli sa [[Special:AbuseFilter/$1|saraan $1]].',
 	'abusefilter-revert-reason' => 'Automatikong balikon an gabos na mga aksyon na ginibo sa paagi kan saraan nin abuso nin huli sa saraan $1.
 Rason na itinao:$2',
 	'abusefilter-revert-reasonfield' => 'Rason:',
@@ -4261,7 +4261,7 @@ Ika makakaresibe nin sarong bilog na kapaliwanagan sa paagi nin pag-klik kan "Ri
 	'abusefilter-topnav-import' => 'Importaron an saraan',
 	'abusefilter-log-name' => 'Katalaanan kan Saraan nin Abuso',
 	'abusefilter-log-header' => 'Ining katalaanan nagpapatanaw nin sarong sumaryo nin mga kaliwatan na hinimo sa mga saraan.
-Para sa bilog na mga detalye, hilngon an [[Espesyal:AbusongSaraan/historiya|an lista]] kan pinakahurihan na kaliwatan sa saraan.', # Fuzzy
+Para sa kabilogang detalye, hilngon an [[Special:AbuseFilter/history|an listahan]] kan pinakahurihan na kaliwatan nin saraan.',
 	'abusefilter-log-entry-modify' => 'Pinagbago an $1 ($2)',
 	'abusefilter-log-noresults' => 'Mayo nin mga resulta',
 	'abusefilter-diff-title' => 'Mga kalaenan sa tahaw kan mga bersyon',
@@ -14541,6 +14541,7 @@ $messages['he'] = array(
 	'abusefilter-edit-builder-group-funcs' => 'פונקציות',
 	'abusefilter-edit-builder-funcs-length' => 'אורך המחרוזת (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'המרה לאותיות קטנות (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'לאותיות רישיות (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'נירמול תווים מבלבלים (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'הסרת תווים כפולים (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'תווים מיוחדים / סך כל התווים (specialratio)',
