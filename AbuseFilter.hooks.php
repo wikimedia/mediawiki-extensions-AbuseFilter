@@ -114,8 +114,10 @@ class AbuseFilterHooks {
 			return true;
 		}
 
-		$vars->addHolder( AbuseFilter::generateUserVars( $user ) );
-		$vars->addHolder( AbuseFilter::generateTitleVars( $title , 'ARTICLE' ) );
+		$vars->addHolders(
+			AbuseFilter::generateUserVars( $user ),
+			AbuseFilter::generateTitleVars( $title , 'ARTICLE' )
+		);
 
 		$vars->setVar( 'action', 'edit' );
 		$vars->setVar( 'summary', $summary );
@@ -126,7 +128,7 @@ class AbuseFilterHooks {
 
 		// TODO: set old_content and new_content vars, use them
 
-		$vars->addHolder( AbuseFilter::getEditVars( $title, $page ) );
+		$vars->addHolders( AbuseFilter::getEditVars( $title, $page ) );
 
 		$filter_result = AbuseFilter::filterAction( $vars, $title );
 
@@ -242,12 +244,10 @@ class AbuseFilterHooks {
 		$vars = new AbuseFilterVariableHolder;
 
 		global $wgUser;
-		$vars->addHolder(
-			AbuseFilterVariableHolder::merge(
-				AbuseFilter::generateUserVars( $wgUser ),
-				AbuseFilter::generateTitleVars( $oldTitle, 'MOVED_FROM' ),
-				AbuseFilter::generateTitleVars( $newTitle, 'MOVED_TO' )
-			)
+		$vars->addHolders(
+			AbuseFilter::generateUserVars( $wgUser ),
+			AbuseFilter::generateTitleVars( $oldTitle, 'MOVED_FROM' ),
+			AbuseFilter::generateTitleVars( $newTitle, 'MOVED_TO' )
 		);
 		$vars->setVar( 'SUMMARY', $reason );
 		$vars->setVar( 'ACTION', 'move' );
@@ -270,8 +270,11 @@ class AbuseFilterHooks {
 		$vars = new AbuseFilterVariableHolder;
 
 		global $wgUser;
-		$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
-		$vars->addHolder( AbuseFilter::generateTitleVars( $article->getTitle(), 'ARTICLE' ) );
+		$vars->addHolders(
+			AbuseFilter::generateUserVars( $wgUser ),
+			AbuseFilter::generateTitleVars( $article->getTitle(), 'ARTICLE' )
+		);
+
 		$vars->setVar( 'SUMMARY', $reason );
 		$vars->setVar( 'ACTION', 'delete' );
 
@@ -302,7 +305,7 @@ class AbuseFilterHooks {
 		// new users won't be exposed
 		global $wgUser;
 		if ( $wgUser->getId() ) {
-			$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
+			$vars->addHolders( AbuseFilter::generateUserVars( $wgUser ) );
 		}
 
 		$vars->setVar( 'ACTION', $autocreate ? 'autocreateaccount' : 'createaccount' );
@@ -500,11 +503,9 @@ class AbuseFilterHooks {
 
 		global $wgUser;
 		$title = Title::makeTitle( NS_FILE, $saveName );
-		$vars->addHolder(
-			AbuseFilterVariableHolder::merge(
-				AbuseFilter::generateUserVars( $wgUser ),
-				AbuseFilter::generateTitleVars( $title, 'FILE' )
-			)
+		$vars->addHolders(
+			AbuseFilter::generateUserVars( $wgUser ),
+			AbuseFilter::generateTitleVars( $title, 'FILE' )
 		);
 
 		$vars->setVar( 'ACTION', 'upload' );

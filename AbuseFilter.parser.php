@@ -698,7 +698,7 @@ class AbuseFilterParser {
 				$this->setVar( $name, $var );
 			}
 		} elseif ( $vars instanceof AbuseFilterVariableHolder ) {
-			$this->mVars->addHolder( $vars );
+			$this->mVars->addHolders( $vars );
 		}
 	}
 

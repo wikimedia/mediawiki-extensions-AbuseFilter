@@ -1,6 +1,8 @@
 <?php
 class AbuseFilterVariableHolder {
+
 	var $mVars = array();
+
 	static $varBlacklist = array( 'context' );
 
 	/**
@@ -49,12 +51,9 @@ class AbuseFilterVariableHolder {
 	/**
 	 * @return AbuseFilterVariableHolder
 	 */
-	static function merge() {
+	public static function merge() {
 		$newHolder = new AbuseFilterVariableHolder;
-
-		foreach ( func_get_args() as $addHolder ) {
-			$newHolder->addHolder( $addHolder );
-		}
+		call_user_func_array( array( $newHolder, "addHolders" ), func_get_args() );
 
 		return $newHolder;
 	}
@@ -62,12 +61,26 @@ class AbuseFilterVariableHolder {
 	/**
 	 * @param $addHolder
 	 * @throws MWException
+	 * @deprecated use addHolders() instead
 	 */
-	function addHolder( $addHolder ) {
-		if ( !is_object( $addHolder ) ) {
-			throw new MWException( 'Invalid argument to AbuseFilterVariableHolder::addHolder' );
+	public function addHolder( $addHolder ) {
+		$this->addHolders( $addHolder );
+	}
+
+	/**
+	 * Merge any number of holders given as arguments into this holder.
+	 *
+	 * @throws MWException
+	 */
+	public function addHolders() {
+		$holders = func_get_args();
+
+		foreach ( $holders as $addHolder ) {
+			if ( !is_object( $addHolder ) ) {
+				throw new MWException( 'Invalid argument to AbuseFilterVariableHolder::addHolders' );
+			}
+			$this->mVars = array_merge( $this->mVars, $addHolder->mVars );
 		}
-		$this->mVars = array_merge( $this->mVars, $addHolder->mVars );
 	}
 
 	function __wakeup() {

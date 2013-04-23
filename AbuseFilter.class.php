@@ -1869,7 +1869,7 @@ class AbuseFilter {
 		// Add user data if the account was created by a registered user
 		if ( $row->rc_user && $name != $row->rc_user_text ) {
 			$user = User::newFromName( $row->rc_user_text );
-			$vars->addHolder( self::generateUserVars( $user ) );
+			$vars->addHolders( self::generateUserVars( $user ) );
 		}
 
 		$vars->setVar( 'accountname', $name );
@@ -1891,9 +1891,11 @@ class AbuseFilter {
 			$user->setName( $row->rc_user_text );
 		}
 
-		$vars->addHolder( self::generateUserVars( $user ) );
+		$vars->addHolders(
+			self::generateUserVars( $user ),
+			self::generateTitleVars( $title, 'ARTICLE' )
+		);
 
-		$vars->addHolder( self::generateTitleVars( $title, 'ARTICLE' ) );
 		$vars->setVar( 'ACTION', 'edit' );
 		$vars->setVar( 'SUMMARY', $row->rc_comment );
 		$vars->setVar( 'minor_edit', $row->rc_minor );
@@ -1908,7 +1910,7 @@ class AbuseFilter {
 			$vars->setVar( 'old_wikitext', '' );
 		}
 
-		$vars->addHolder( self::getEditVars( $title ) );
+		$vars->addHolders( self::getEditVars( $title ) );
 
 		return $vars;
 	}
