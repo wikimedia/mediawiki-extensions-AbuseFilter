@@ -23234,11 +23234,12 @@ $messages['mg'] = array(
 
 /** Eastern Mari (олык марий)
  * @author Сай
+ * @author Санюн Вадик
  */
 $messages['mhr'] = array(
 	'abusefilter-log-search-user' => 'Пайдаланыше:',
 	'abusefilter-edit-status-label' => 'Иктешлымаш:',
-	'abusefilter-edit-history' => 'Историй', # Fuzzy
+	'abusefilter-edit-history' => 'Историй:',
 	'abusefilter-history-user' => 'Пайдаланыше',
 	'abusefilter-revert-filter' => 'Фильтр:',
 );
@@ -23249,6 +23250,56 @@ $messages['mhr'] = array(
 $messages['min'] = array(
 	'abusefilter' => 'Konfigurasi filter panyalahgunoan',
 	'abuselog' => 'Log panyalahgunoan',
+	'right-abusefilter-modify' => 'Maubah panyariang panyalahgunoan',
+	'right-abusefilter-view' => 'Manampilan panyariang panyalahgunoan',
+	'right-abusefilter-log' => 'Manampilan log panyalahgunoan',
+	'right-abusefilter-log-detail' => 'Manampilan log panyalahgunoan sacaro rinci',
+	'right-abusefilter-private' => 'Manampilan data paribadi pado log panyalahgunoan',
+	'right-abusefilter-modify-restricted' => 'Maubah panyariang panyalahgunoan jo tindakan tabateh',
+	'right-abusefilter-revert' => 'Mangambalian sado parubahan nan dibuek dek panyariang panyalahgunoan',
+	'right-abusefilter-view-private' => 'Caliak panyariang pangalahgunoan nan ditandoi privat',
+	'right-abusefilter-log-private' => 'Caliak log panyariang pangalahgunoan nan ditandoi privat',
+	'right-abusefilter-hide-log' => 'Suruakan entri dalam log panyariang pangalahgunoan',
+	'right-abusefilter-hidden-log' => 'Caliak log panyalahgunoan nan tasuruak',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|detik}}',
+	'abusefilter-filter-log' => 'Parubahan filter panyariang tabaru',
+	'abusefilter-history' => 'Riwayaik parubahan Sariang Panyalahgunoan #$1',
+	'abusefilter-history-foruser' => 'Diubah dek $1',
+	'abusefilter-history-hidden' => 'Suruakan',
+	'abusefilter-history-enabled' => 'Aktipkan',
+	'abusefilter-history-global' => 'Global',
+	'abusefilter-history-timestamp' => 'Wakatu',
+	'abusefilter-history-user' => 'Pangguno',
+	'abusefilter-history-public' => 'Katarangan panyariang publik',
+	'abusefilter-history-flags' => 'Tando',
+	'abusefilter-history-filter' => 'Aturan sariang',
+	'abusefilter-history-comments' => 'Komentar',
+	'abusefilter-history-actions' => 'Tindakan',
+	'abusefilter-history-backedit' => 'Baliak ka panyuntiang panyariang',
+	'abusefilter-history-deleted' => 'Dihapuih',
+	'abusefilter-history-filterid' => 'Panyariang',
+	'abusefilter-history-select-legend' => 'Cari panyariang',
+	'abusefilter-history-select-user' => 'Pangguno:',
+	'abusefilter-history-select-submit' => 'Manyariang',
+	'abusefilter-history-diff' => 'Parubahan',
+	'abusefilter-history-error-hidden' => 'Panyaring nan Sanak cari disuruakan, dan Sanak indak dapek mancaliak riwayaiknyo.',
+	'abusefilter-topnav' => "'''Navigasi Sariang Panyalahgunoan '''",
+	'abusefilter-topnav-home' => 'Palanta',
+	'abusefilter-topnav-test' => 'Rangkaian pangujian',
+	'abusefilter-topnav-examine' => 'Pariso suntiangan lalu',
+	'abusefilter-topnav-log' => 'Log panyalahgunoan',
+	'abusefilter-topnav-tools' => 'Alaik debugging',
+	'abusefilter-topnav-import' => 'Impor panyariang',
+	'abusefilter-log-name' => 'Log panyariang panyalahgunoan',
+	'abusefilter-log-header' => 'Log iko barisi ringkasan parubahan nan dilakukan pado panyariang.
+Untuak katarangan langkok, caliak [[Special:AbuseFilter/history|daftar]] parubahan filter panyariang tabaru.',
+	'abusefilter-log-entry-modify' => 'pangubahan $1 ($2)',
+	'abusefilter-log-noresults' => 'Indak ado hasil',
+	'abusefilter-diff-title' => 'Pabedoan antaro versi',
+	'abusefilter-diff-item' => 'Item',
+	'abusefilter-diff-version' => 'Versi dari $1 {{GENDER:$3|dek}} $2',
+	'abusefilter-diff-info' => 'Informasi dasar',
+	'abusefilter-diff-pattern' => 'Kondisi panyariangan',
 );
 
 /** Macedonian (македонски)
