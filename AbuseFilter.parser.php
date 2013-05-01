@@ -927,12 +927,12 @@ class AbuseFilterParser {
 
 			$isTrue = $result->toBool();
 
-			if ( $isTrue ) {
+			if ( !$isTrue ) {
 				$scOrig = $this->mShortCircuit;
 				$this->mShortCircuit = $this->mAllowShort;
 			}
 			$this->doLevelConditions( $r1 );
-			if ( $isTrue ) {
+			if ( !$isTrue ) {
 				$this->mShortCircuit = $scOrig;
 			}
 
@@ -947,12 +947,12 @@ class AbuseFilterParser {
 				);
 			$this->move();
 
-			if ( !$isTrue ) {
+			if ( $isTrue ) {
 				$scOrig = $this->mShortCircuit;
 				$this->mShortCircuit = $this->mAllowShort;
 			}
 			$this->doLevelConditions( $r2 );
-			if ( !$isTrue ) {
+			if ( $isTrue ) {
 				$this->mShortCircuit = $scOrig;
 			}
 
@@ -982,12 +982,12 @@ class AbuseFilterParser {
 
 				$isTrue = $result->toBool();
 
-				if ( $isTrue ) {
+				if ( !$isTrue ) {
 					$scOrig = $this->mShortCircuit;
 					$this->mShortCircuit = $this->mAllowShort;
 				}
 				$this->doLevelConditions( $r1 );
-				if ( $isTrue ) {
+				if ( !$isTrue ) {
 					$this->mShortCircuit = $scOrig;
 				}
 
@@ -1002,12 +1002,12 @@ class AbuseFilterParser {
 					);
 				$this->move();
 
-				if ( !$isTrue ) {
+				if ( $isTrue ) {
 					$scOrig = $this->mShortCircuit;
 					$this->mShortCircuit = $this->mAllowShort;
 				}
 				$this->doLevelConditions( $r2 );
-				if ( !$isTrue ) {
+				if ( $isTrue ) {
 					$this->mShortCircuit = $scOrig;
 				}
 
