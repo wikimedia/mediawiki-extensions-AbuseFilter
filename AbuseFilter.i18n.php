@@ -12287,6 +12287,9 @@ Reglu frágreiðing: $1',
 	'abusefilter-tools-expr' => 'Úttrykstestari',
 	'abusefilter-tools-submitexpr' => 'Evaluera',
 	'abusefilter-tools-reautoconfirm-user' => 'Brúkari:',
+	'abusefilter-tools-reautoconfirm-submit' => 'Endur-skráset brúkara',
+	'abusefilter-reautoconfirm-none' => 'Hasin brúkarin hevur ikki fingið {{GENDER:$1|sín|sín|teirra}} status sum váttaður brúkari strikaðan.',
+	'abusefilter-edit-status-label' => 'Hagtøl:',
 );
 
 /** French (français)
@@ -14352,9 +14355,11 @@ $messages['ha'] = array(
 
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
+ * @author Jetlag
  */
 $messages['hak'] = array(
 	'abusefilter-list-edit' => 'Piên-sip',
+	'abusefilter-topnav' => "'''防濫用過濾器導航'''",
 );
 
 /** Hawaiian (Hawai`i)
@@ -29880,7 +29885,7 @@ entradas do registo de abusos.',
 	'abusefilter-list-group' => 'Grupo de filtros',
 	'abusefilter-hidden' => 'Privado',
 	'abusefilter-unhidden' => 'Público',
-	'abusefilter-enabled' => 'Activado',
+	'abusefilter-enabled' => 'Ativado',
 	'abusefilter-deleted' => 'Eliminado',
 	'abusefilter-disabled' => 'Desativado',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|resultado|resultados}}',
@@ -29927,7 +29932,7 @@ O filtro atingiu o limite de correspondência com mais de $1% de ações.",
 :''(publicamente visível)''",
 	'abusefilter-edit-group' => 'Grupo de filtros:',
 	'abusefilter-edit-flags' => 'Sinalizações:',
-	'abusefilter-edit-enabled' => 'Activar este filtro',
+	'abusefilter-edit-enabled' => 'Ativar este filtro',
 	'abusefilter-edit-deleted' => 'Marcar como eliminado',
 	'abusefilter-edit-hidden' => 'Ocultar detalhes deste filtro do visionamento público',
 	'abusefilter-edit-global' => 'Filtro global',
@@ -30079,7 +30084,7 @@ Etiquetas devem ser curtas e não devem conter caracteres especiais.',
 	'abusefilter-history' => 'Histórico de modificações do Filtro de Abusos #$1',
 	'abusefilter-history-foruser' => 'Modificações por $1',
 	'abusefilter-history-hidden' => 'Ocultado',
-	'abusefilter-history-enabled' => 'Activado',
+	'abusefilter-history-enabled' => 'Ativado',
 	'abusefilter-history-global' => 'Global',
 	'abusefilter-history-timestamp' => 'Data',
 	'abusefilter-history-user' => 'Utilizador',
@@ -33864,6 +33869,7 @@ Skopírujte ho z textového poľa, kde sa objaví a vložte ho do tohto textové
 
 /** Slovenian (slovenščina)
  * @author Dbc334
+ * @author Eleassar
  */
 $messages['sl'] = array(
 	'abusefilter-desc' => 'Pri urejanjih uporabi samodejno hevristiko',
@@ -34240,7 +34246,7 @@ Za nalaganje obstoječega filtra vpišite njegov ID v polje pod urejevalnim bese
 	'abusefilter-test-submit' => 'Preizkusi',
 	'abusefilter-test-load' => 'Naloži',
 	'abusefilter-test-user' => 'Spremembe uporabnika:',
-	'abusefilter-test-period-start' => 'Spremembe narejene potem:',
+	'abusefilter-test-period-start' => 'Pozneje napravljene spremembe:',
 	'abusefilter-test-period-end' => 'Spremembe narejene prej:',
 	'abusefilter-test-page' => 'Spremembe na strani:',
 	'abusefilter-test-shownegative' => 'Prikaži spremembe, ki se ne ujemajo s filtrom',
