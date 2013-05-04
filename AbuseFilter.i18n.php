@@ -9366,9 +9366,12 @@ $messages['dv'] = array(
 );
 
 /** Ewe (eʋegbe)
+ * @author Enock4seth
  * @author Natsubee
  */
 $messages['ee'] = array(
+	'abusefilter-log-search-user' => 'Ezãla:',
+	'abusefilter-log-search-title' => 'Tanya:',
 	'abusefilter-log-search-submit' => 'Dii',
 	'abusefilter-log-cannot-see-details' => 'Mɔɖeɖe meli bena wòa kpɔ nusiwo woŋlɔ ɖe afisia o.',
 	'abusefilter-log-details-hidden' => 'Wò mateŋu akpɔ nusiwo woŋlɔ ɖe afisia o elabena woɣla wo.',
@@ -9383,6 +9386,10 @@ $messages['ee'] = array(
 	'abusefilter-edit-warn-edit' => 'Ŋlɔ/trɔ du tatia',
 	'abusefilter-edit-history' => 'Xoxoawo',
 	'abusefilter-edit-tools' => 'Dɔwɔnuwo',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Kpekpeɖeŋu (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Ɖeɖetsome (-)',
+	'abusefilter-edit-builder-op-bool-and' => 'Kple(&)',
+	'abusefilter-edit-builder-op-bool-or' => 'Alo (|)',
 	'abusefilter-examine-submit' => 'Dii',
 );
 
@@ -14358,7 +14365,7 @@ $messages['ha'] = array(
  * @author Jetlag
  */
 $messages['hak'] = array(
-	'abusefilter-list-edit' => 'Piên-sip',
+	'abusefilter-list-edit' => '編寫',
 	'abusefilter-topnav' => "'''防濫用過濾器導航'''",
 );
 
@@ -34653,6 +34660,7 @@ E pritshme $3 {{PLURAL:$3|argumenti|argumentet}}, mori $4',
 
 /** Serbian (Cyrillic script) (српски (ћирилица)‎)
  * @author FriedrickMILBarbarossa
+ * @author Milicevic01
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
@@ -34662,10 +34670,10 @@ $messages['sr-ec'] = array(
 	'abusefilter-desc' => 'Извршава аутоматско хеуристичко филтрирање измена',
 	'abusefilter' => 'Поставке филтера против злоупотребе',
 	'abuselog' => 'Историја злоупотребе',
-	'abusefilter-intro' => 'Добро дошли у сучеље за управљање Филтером против злоупотребе.
+	'abusefilter-intro' => 'Добро дошли у окружење за управљање Филтером против злоупотребе.
 То је софтверски механизам који примењује аутоматску хеуристику за све радње.
-Ово сучеље приказује списак одређених филтера и омогућава вам да их промените.',
-	'abusefilter-mustbeeditor' => 'Из сигурносних разлога, само корисници с правом на измену филтерâ против злоупотребе могу користити ово сучеље.',
+Ово окружење приказује списак одређених филтера и омогућава вам да их промените.',
+	'abusefilter-mustbeeditor' => 'Из сигурносних разлога, само корисници са одговарајућим правима на измену филтерâ против злоупотребе могу користити ово окружење.',
 	'abusefilter-blocker' => 'Филтер против злоупотребе',
 	'abusefilter-blockreason' => 'Блокирани сте од стране филтера против злоупотребе.
 Опис повређеног правила: $1',
@@ -41338,6 +41346,7 @@ $messages['zh-cn'] = array(
  * @author Bencmq
  * @author Chenxiaoqino
  * @author Chenzw
+ * @author Cwek
  * @author Dimension
  * @author Fantasticfears
  * @author FireJackey
@@ -41578,6 +41587,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-builder-group-funcs' => '函数',
 	'abusefilter-edit-builder-funcs-length' => '字符串长度（length）',
 	'abusefilter-edit-builder-funcs-lcase' => '字母小写化（lcase）',
+	'abusefilter-edit-builder-funcs-ucase' => '字母大写',
 	'abusefilter-edit-builder-funcs-ccnorm' => '规范化易混淆字符（ccnorm）',
 	'abusefilter-edit-builder-funcs-rmdoubles' => '去除双字节字符（rmdoubles）',
 	'abusefilter-edit-builder-funcs-specialratio' => '特殊字符比（specialratio）',
