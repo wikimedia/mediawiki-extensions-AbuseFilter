@@ -9381,6 +9381,7 @@ $messages['ee'] = array(
 	'abusefilter-list-edit' => 'Trɔ asi le eŋu',
 	'abusefilter-list-lastmodified' => 'Tɔtrɔ mamlea',
 	'abusefilter-deleted' => 'Wo tutui',
+	'abusefilter-tools-reautoconfirm-user' => 'Ezãla',
 	'abusefilter-edit-status-label' => 'Akɔntawo',
 	'abusefilter-edit-warn-preview' => 'Kpɔ du tatia do ŋgɔ',
 	'abusefilter-edit-warn-edit' => 'Ŋlɔ/trɔ du tatia',
@@ -9388,9 +9389,20 @@ $messages['ee'] = array(
 	'abusefilter-edit-tools' => 'Dɔwɔnuwo',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Kpekpeɖeŋu (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Ɖeɖetsome (-)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'Mamame (/)',
+	'abusefilter-edit-builder-op-comparison-equal' => 'esɔ kpli (==)',
+	'abusefilter-edit-builder-op-comparison-notequal' => 'mesɔ kpli o (!=)',
+	'abusefilter-edit-builder-op-comparison-lt' => 'Ele sue wu (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'Elolo wu (>)',
+	'abusefilter-edit-builder-op-comparison-lte' => 'Ele sue alo esɔ kple (<=)',
+	'abusefilter-edit-builder-op-comparison-gte' => 'Elolo alo esɔ kple (>=)',
 	'abusefilter-edit-builder-op-bool-and' => 'Kple(&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Alo (|)',
+	'abusefilter-test-submit' => 'Do Kpɔ',
+	'abusefilter-test-user' => 'Ezãla ƒe nutɔtrɔwo',
+	'abusefilter-examine-user' => 'Ezãla:',
 	'abusefilter-examine-submit' => 'Dii',
+	'abusefilter-topnav-home' => 'Aƒeme',
 );
 
 /** Greek (Ελληνικά)
