@@ -10303,6 +10303,7 @@ Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku 
  * @author Sanbec
  * @author Savh
  * @author TheBITLINK
+ * @author Tifinaghes
  * @author Translationista
  * @author Vivaelcelta
  */
@@ -10531,7 +10532,7 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-edit-builder-op-comparison-gte' => 'Mayor o igual a (>=)',
 	'abusefilter-edit-builder-group-op-bool' => 'Operadores booleanos',
 	'abusefilter-edit-builder-op-bool-not' => 'No (!)',
-	'abusefilter-edit-builder-op-bool-and' => 'Y (&)',
+	'abusefilter-edit-builder-op-bool-and' => 'ⴷ (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'O (|)',
 	'abusefilter-edit-builder-group-misc' => 'Miscelánea',
 	'abusefilter-edit-builder-misc-in' => 'contenido en la cadena (in)',
