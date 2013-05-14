@@ -6658,6 +6658,7 @@ Copiï des de quadre de text que apareix i enganxar-lo a aquest quadre de text, 
 
 /** Chechen (нохчийн)
  * @author Sasan700
+ * @author Умар
  */
 $messages['ce'] = array(
 	'abuselog' => 'Зулумаш долу тéптар',
@@ -6681,6 +6682,7 @@ $messages['ce'] = array(
 	'abusefilter-log-hidelink' => 'схьагар нисде',
 	'abusefilter-log-noactions' => 'цаоьшу',
 	'abusefilter-log-linkoncontribs' => 'зулуман тептар',
+	'abusefilter-log-hide-reason' => 'Бахьан:',
 	'abusefilter-list-edit' => 'Нисйé',
 	'abusefilter-list-lastmodified' => 'Тlаьххьара хийцамаш',
 	'abusefilter-tools-reautoconfirm-user' => 'Декъашхо:',
@@ -6689,6 +6691,7 @@ $messages['ce'] = array(
 	'abusefilter-history-select-legend' => 'Билгалдакха лахар',
 	'abusefilter-history-select-user' => 'Декъашхо:',
 	'abusefilter-exception-unrecognisedkeyword' => 'Дойзуш доцу оьшуш долу дош $2 оцу меттигца $1.',
+	'abusefilter-revert-reasonfield' => 'Бахьан:',
 	'abusefilter-examine-user' => 'Декъашхо:',
 );
 
@@ -27451,6 +27454,7 @@ Merke skal vera korte og dei skal ikkje innehalda spesialteikn.',
 	'abusefilter-edit-builder-group-funcs' => 'Funksjonar',
 	'abusefilter-edit-builder-funcs-length' => 'Strenglengd (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Gjer om til små bokstavar (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'Gjer om til store bokstavar (lcase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normaliser forvirrande bokstavar (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Fjern doble bokstavar (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Spesialteikn / totalt tal på spesialteikn(specialratio)',
