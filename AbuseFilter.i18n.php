@@ -16517,13 +16517,13 @@ Iste interfacie monstra un lista de filtros definite, e permitte modificar los.'
 	'abusefilter-mustbeeditor' => 'Pro motivos de securitate, solmente le usatores con le permission de modificar le filtros anti-abuso pote usar iste interfacie.',
 	'abusefilter-warning' => "'''Attention:''' Iste action ha essite automaticamente identificate como damnose.
 Tote modificationes non constructive essera rapidemente revertite,
-e le repetition flagrante de modificationes non constructive resultara in le blocada de tu conto o adresse IP.
-Si tu crede que iste modification sia constructive, tu pote cliccar Submitter de novo pro confirmar lo.
-Un breve description del regula anti-abuso que detegeva tu action es: $1", # Fuzzy
+e le modification non constructive flagrante o repetite resultara in le blocada de tu conto o adresse IP.
+Si tu crede que iste action sia constructive, tu pote cliccar Submitter de novo pro confirmar lo.
+Un breve description del regula anti-abuso que detegeva tu action es: $1",
 	'abusefilter-disallowed' => 'Iste action ha essite automaticamente identificate como damnose,
 e per consequente es prohibite.
-Si tu crede que tu modification esseva constructive, per favor contacta un administrator, e informa le/la de lo que tu tentava facer.
-Un breve description del regula de abuso correspondente a tu action es: $1', # Fuzzy
+Si tu crede que tu action esseva constructive, per favor informa un administrator de lo que tu tentava facer.
+Un breve description del regula anti-abuso correspondente a tu action es: $1',
 	'abusefilter-blocked-display' => 'Iste action ha essite automaticamente identificate como nocive,
 e tu ha essite impedite de executar lo.
 In addition, pro proteger {{SITENAME}}, tu conto de usator e tote le adresses IP associate ha essite blocate de facer modificationes.
@@ -16551,6 +16551,7 @@ Un breve description del regula anti-abuso correspondente con tu action es: $1',
 	'right-abusefilter-log-private' => 'Vider entratas de registro de filtros anti-abuso marcate como private',
 	'right-abusefilter-hide-log' => 'Celar entratas in le registro de abusos',
 	'right-abusefilter-hidden-log' => 'Vider entratas celate del registro de abusos',
+	'right-abusefilter-modify-global' => 'Crear o modificar filtros anti-abuso global',
 	'action-abusefilter-modify' => 'modificar le filtros anti-abuso',
 	'action-abusefilter-view' => 'vider le filtros anti-abuso',
 	'action-abusefilter-log' => 'vider le registro de abusos',
@@ -16644,6 +16645,7 @@ entratas del registro de abusos.',
 	'abusefilter-reautoconfirm-notallowed' => 'Tu non es autorisate a restaurar le stato autonconfirmate.',
 	'abusefilter-reautoconfirm-done' => 'Le stato autoconfirmate del conto ha essite restaurate',
 	'abusefilter-status' => 'Del ultime $1 {{PLURAL:$1|action|actiones}}, $2 ($3%) ha attingite le limite de condition definite per $4. $5 ($6%) ha correspondite a un del filtros actualmente active.',
+	'abusefilter-edit' => 'Modificar filtro anti-abuso',
 	'abusefilter-edit-subtitle' => 'Modification del filtro $1',
 	'abusefilter-edit-subtitle-new' => 'Creation de filtro',
 	'abusefilter-edit-oldwarning' => '<strong>Tu modifica al momento un version ancian de iste filtro.
@@ -16714,6 +16716,7 @@ Per favor demanda a un usator con le permission de adder actiones restringite de
 	'abusefilter-edit-bad-tags' => 'Un o plus del etiquettas que tu specificava non es valide.
 Le etiquettas debe esser curte, e non pote continer characteres special.',
 	'abusefilter-edit-notallowed' => 'Tu non ha le permission de crear o modificar filtros anti-abuso.',
+	'abusefilter-edit-notallowed-global' => 'Tu non ha le permission de crear o modificar filtros anti-abuso global',
 	'abusefilter-edit-builder-select' => 'Selige un option pro inserer lo al puncto del cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operatores arithmetic',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Addition (+)',
@@ -16745,6 +16748,7 @@ Le etiquettas debe esser curte, e non pote continer characteres special.',
 	'abusefilter-edit-builder-group-funcs' => 'Functiones',
 	'abusefilter-edit-builder-funcs-length' => 'Longor del serie de characteres (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Verso minusculas (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'Verso majusculas (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalisa le characters confundibile (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Elimina le characteres duple (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Characteres special / total del characteres (specialratio)',
@@ -16775,6 +16779,7 @@ Le etiquettas debe esser curte, e non pote continer characteres special.',
 	'abusefilter-edit-builder-vars-article-ns' => 'Spatio de nomines del pagina',
 	'abusefilter-edit-builder-vars-article-text' => 'Titulo del pagina (sin spatio de nomines)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Titulo integre del pagina',
+	'abusefilter-edit-builder-vars-article-views' => 'Visitas de pagina',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'ID del pagina de origine del renomination',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Spatio de nomines del pagina de origine pro le renomination',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Titulo del pagina de origine pro le renomination',
@@ -16787,6 +16792,7 @@ Le etiquettas debe esser curte, e non pote continer characteres special.',
 	'abusefilter-edit-builder-vars-user-age' => 'Etate del conto de usator',
 	'abusefilter-edit-builder-vars-user-name' => 'Nomine del conto de usator',
 	'abusefilter-edit-builder-vars-user-groups' => 'Le gruppos (includente gruppos implicite) del quales le usator es membro',
+	'abusefilter-edit-builder-vars-user-blocked' => 'Si le usator es blocate',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Quando le adresse de e-mail esseva confirmate',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Le ultime dece usatores que contribueva a iste pagina',
 	'abusefilter-edit-builder-vars-all-links' => 'Tote le ligamines externe in le nove texto',
