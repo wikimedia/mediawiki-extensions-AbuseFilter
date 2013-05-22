@@ -2615,23 +2615,23 @@ $messages['ast'] = array(
 La peñera d'abusos ye un mecanismu de software automatizáu p'aplicar heurística automática a toles aiciones.
 Esta interfaz amuesa la llista de les peñeres definíes, y permite camudales.",
 	'abusefilter-mustbeeditor' => "Por razones de seguridá, solamente los usuarios con permisu pa camudar les peñeres d'abusu pueden usar esta interfaz.",
-	'abusefilter-warning' => "'''Avisu''': Esta aición s'identificó automáticamente como perxudicial.
-Les ediciones non constructives se revertirán dafechu,
+	'abusefilter-warning' => "'''Avisu''': Esta aición identificóse automáticamente como perxudicial.
+les ediciones non constructives revertiránse dafechu,
 y la repetición d'ediciones non constructives tendrá como resultáu el bloquéu de la to cuenta o direición IP.
 Si crees qu'esta aición ye constructiva, pues volver a unviala pa confirmala.
 La descripción curtia de la regla d'abusu que s'activó cola to aición ye: $1",
-	'abusefilter-disallowed' => "Esta aición s'identificó automáticamente como perxudicial y, poro, nun se permite.
+	'abusefilter-disallowed' => "Esta aición identificóse automáticamente como perxudicial y, poro, nun se permite.
 Si pienses que la to aición foi constructiva, por favor, informa a un alministrador de lo que queríes facer.
 Esta ye una descripción curtia de la regla d'abusu que casa cola to aición: $1",
-	'abusefilter-blocked-display' => "Esta aición s'identificó automáticamente como perxudicial, y se te torgó executala.
-Amás, pa protexer a {{SITENAME}}, a la to cuenta d'usuariu y toles direiciones IP asociaes se-yos torgó la edición.
+	'abusefilter-blocked-display' => "Esta aición identificóse automáticamente como perxudicial, y torgósete executala.
+Amás, pa protexer a {{SITENAME}}, a la to cuenta d'usuariu y toles direiciones IP asociaes se-yos torgó editar.
 Si esto asocedió por un fallu, por favor, ponte'n contautu con un alministrador.
 Equí hai una descripción curtia de la regla d'abusu que casa cola to aición: $1",
-	'abusefilter-degrouped' => "Esta aición s'identificó automáticamente como perxudicial.
+	'abusefilter-degrouped' => "Esta aición identificóse automáticamente como perxudicial.
 Como consecuencia, nun se permitió y, como se sospecha que la to cuenta ta comprometida, tolos tos permisos queden torgaos.
 Si crees qu'esto foi por un error, por favor, ponte en contautu con un burócrata apurriendo-y una esplicación d'esta aición y seique se restaurarán los tos permisos.
 Equí hai una descripción curtia de la regla d'abusu que casa cola to aición: $1",
-	'abusefilter-autopromote-blocked' => "Esta aición s'identificó automaticamente como perxudicial, y nun se permitió.
+	'abusefilter-autopromote-blocked' => "Esta aición identificóse automaticamente como perxudicial, y nun se permitió.
 Amás, como midida de seguridá, se-y torgaron de mou temporal a la to cuenta dellos permisos que de vezu se conceden a les cuentes establecíes.
 Equí hai una descripción curtia de la regla d'abusu cola que casa la to aición: $1",
 	'abusefilter-blocker' => "Peñera d'abusos",
@@ -2735,9 +2735,18 @@ Descripción de la peñera: $7 ($8)",
 	'abusefilter-list-options-hidedisabled' => 'Despintar filtros desactivaos',
 	'abusefilter-list-options-submit' => 'Anovar',
 	'abusefilter-tools-text' => "Equí hai delles ferramientes que puen ser afayadices pa formular y depurar los filtros d'abusu.",
+	'abusefilter-tools-expr' => "Probador d'espresiones",
 	'abusefilter-tools-submitexpr' => 'Evaluar',
+	'abusefilter-tools-reautoconfirm' => "Restaurar l'estáu autoconfirmáu",
 	'abusefilter-tools-reautoconfirm-user' => 'Usuariu:',
 	'abusefilter-tools-reautoconfirm-submit' => 'Re-autoconfirmar',
+	'abusefilter-reautoconfirm-none' => "{{GENDER:$1|Esi usuariu|Esa usuaria}} nun tuvo l'estáu d'autoconfirmación suspendíu.",
+	'abusefilter-reautoconfirm-notallowed' => "Nun tien permisu pa restaurar l'estáu d'autoconfirmación.",
+	'abusefilter-reautoconfirm-done' => "Restauróse l'estáu d'autoconfirmación de la cuenta",
+	'abusefilter-status' => '{{PLURAL:$1|De la última aición|De les últimes $1 aiciones}}, $2 ($3%) {{PLURAL:$2|llegó|llegaron}} a condición llende de $4, y $5 ($6%) {{PLURAL:$5|coincidió|coincidieron}} con unu de los filtros actualmente activaos.',
+	'abusefilter-edit' => "Editando la peñera d'abusos",
+	'abusefilter-edit-subtitle' => "Editando'l filtru $1",
+	'abusefilter-edit-subtitle-new' => 'Crear un filtru',
 	'abusefilter-edit-flags' => 'Marques:',
 );
 
