@@ -38,14 +38,14 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		$out->addHTML( Xml::tags( 'p', null, $backlinks ) );
 
 		# For user
-		$user = $this->getRequest()->getText( 'user' );
+		$user = User::getCanonicalName( $this->getRequest()->getText( 'user' ), 'valid' );
 		if ( $user ) {
-			$out->setSubtitle(
+			$out->addSubtitle(
 				$this->msg(
 					'abusefilter-history-foruser',
 					Linker::userLink( 1 /* We don't really need to get a user ID */, $user ),
 					$user // For GENDER
-				)
+				)->text()
 			);
 		}
 
