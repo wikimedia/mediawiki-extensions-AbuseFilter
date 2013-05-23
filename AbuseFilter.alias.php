@@ -231,8 +231,8 @@ $specialPageAliases['ja'] = array(
 
 /** Korean (한국어) */
 $specialPageAliases['ko'] = array(
-	'AbuseLog' => array( '부정행위기록' ),
-	'AbuseFilter' => array( '부정행위필터' ),
+	'AbuseLog' => array( '편집필터기록', '부정행위기록' ),
+	'AbuseFilter' => array( '편집필터', '부정행위필터' ),
 );
 
 /** Colognian (Ripoarisch) */
