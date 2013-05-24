@@ -12479,6 +12479,7 @@ Reglu frágreiðing: $1',
  * @author DavidL
  * @author Gomoko
  * @author Grondin
+ * @author Hello71
  * @author IAlex
  * @author Isildur
  * @author Jean-Frédéric
@@ -12794,7 +12795,7 @@ Les balises doivent être courtes et ne pas contenir de caractères spéciaux.",
 	'abusefilter-edit-builder-vars-new-html' => 'Source HTML analysée de la nouvelle version',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Niveau de protection des modifications de la page',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Niveau de protection de renommage de la page',
-	'abusefilter-edit-builder-vars-restrictions-create' => 'Créer la protection de la page', # Fuzzy
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Créer la protection de la page',
 	'abusefilter-edit-builder-vars-restrictions-upload' => 'Protection de téléchargement du fichier',
 	'abusefilter-edit-builder-vars-old-text-stripped' => "Texte de l'ancienne page, dépourvu de toute mise en forme",
 	'abusefilter-edit-builder-vars-old-links' => 'Liens dans la page, avant la modification',
@@ -23834,7 +23835,7 @@ $messages['mk'] = array(
 	'abusefilter-edit-warn-message' => 'Системска порака за предупредувањето:',
 	'abusefilter-edit-warn-other' => 'Друга порака',
 	'abusefilter-edit-warn-other-label' => "Име на страница на друга порака:
-:''(без префиксот MediaWiki)''",
+:''(без претставката MediaWiki)''",
 	'abusefilter-edit-warn-actions' => 'Дејства:',
 	'abusefilter-edit-warn-preview' => 'Прегледај избрана порака',
 	'abusefilter-edit-warn-edit' => 'Создај/Уреди избрана порака',
@@ -35064,6 +35065,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-log-detailedentry-global' => 'глобални филтер $1',
 	'abusefilter-log-detailedentry-local' => 'филтер $1',
 	'abusefilter-log-detailslink' => 'детаљи',
+	'abusefilter-log-diff' => 'разл',
 	'abusefilter-log-hidelink' => 'подеси видљивост',
 	'abusefilter-log-details-legend' => 'Детаљи уноса $1',
 	'abusefilter-log-details-var' => 'Променљива',
@@ -35381,6 +35383,7 @@ $messages['sr-ec'] = array(
 /** Serbian (Latin script) (srpski (latinica)‎)
  * @author FriedrickMILBarbarossa
  * @author Michaello
+ * @author Milicevic01
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -35423,6 +35426,7 @@ Opis povređenog pravila: $1',
 	'abusefilter-log-detailedentry-global' => 'globalni filter $1',
 	'abusefilter-log-detailedentry-local' => 'filter $1',
 	'abusefilter-log-detailslink' => 'više',
+	'abusefilter-log-diff' => 'razl',
 	'abusefilter-log-hidelink' => 'podesi vidljivost',
 	'abusefilter-log-details-legend' => 'Detalji unosa $1',
 	'abusefilter-log-details-var' => 'Promenljiva',
