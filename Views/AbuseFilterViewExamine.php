@@ -217,7 +217,11 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 
 	function getQueryInfo() {
 		$dbr = wfGetDB( DB_SLAVE );
-		$conds = array( 'rc_user_text' => $this->mPage->mSearchUser );
+		$conds = array(
+			'rc_user_text' => $this->mPage->mSearchUser,
+			'rc_type != ' . RC_EXTERNAL
+		);
+
 		$startTS = strtotime( $this->mPage->mSearchPeriodStart );
 		if ( $startTS ) {
 			$conds[] = 'rc_timestamp>=' . $dbr->addQuotes( $dbr->timestamp( $startTS ) );
