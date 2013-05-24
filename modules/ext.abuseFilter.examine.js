@@ -75,7 +75,7 @@
 
 		if ( error === 'badsyntax' ) {
 			$syntaxResult.attr(
-				'class', 'mw-abusefilter-examine-syntaxerror'
+				'class', 'mw-abusefilter-syntaxresult-error'
 			);
 			msg = 'abusefilter-examine-syntaxerror';
 		} else if ( error === 'nosuchrcid' || error === 'nosuchlogid' ) {
