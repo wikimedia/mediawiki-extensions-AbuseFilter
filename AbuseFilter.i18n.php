@@ -29870,7 +29870,7 @@ Le tichëtte a dovrìo esse curte, e a dovrìo pa conten-e ëd caràter speciaj.
 	'abusefilter-edit-builder-vars-new-html' => 'Sorgiss HTML parsificà dla neuva revision',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Livel ëd protession dle modìfiche dla pàgina',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Livel ëd protession për ij tramud ëd la pàgina',
-	'abusefilter-edit-builder-vars-restrictions-create' => 'Crea la protession ëd la pàgina', # Fuzzy
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Protession ëd creassion ëd la pàgina',
 	'abusefilter-edit-builder-vars-restrictions-upload' => "Carìa la protession ëd l'archivi",
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Test vej ëd la pàgina, gavà tùit ij marcador',
 	'abusefilter-edit-builder-vars-old-links' => 'Anliure ant la pàgina, prima dla modìfica',
