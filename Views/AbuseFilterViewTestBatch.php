@@ -85,7 +85,10 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		}
 		$dbr = wfGetDB( DB_SLAVE );
 
-		$conds = array( 'rc_user_text' => $this->mTestUser );
+		$conds = array(
+			'rc_user_text' => $this->mTestUser,
+			'rc_type != ' . RC_EXTERNAL
+		);
 
 		if ( $this->mTestPeriodStart ) {
 			$conds[] = 'rc_timestamp >= ' .
