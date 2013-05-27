@@ -278,7 +278,7 @@ class AbuseFilter {
 
 		global $wgAbuseFilterConditionLimit;
 
-		if ( self::$condCount > $wgAbuseFilterConditionLimit ) {
+		if ( self::$condLimitEnabled && self::$condCount > $wgAbuseFilterConditionLimit ) {
 			throw new MWException( 'Condition limit reached.' );
 		}
 	}
