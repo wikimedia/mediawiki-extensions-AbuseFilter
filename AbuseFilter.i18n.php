@@ -2896,6 +2896,45 @@ Les etiquetes tendríen de ser curties y nun contener caráuteres especiales.",
 	'abusefilter-edit-builder-vars-user-blocked' => "Si l'usuariu ta bloquiáu",
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Data de confirmación de la direición de corréu electrónicu',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Últimos diez usuarios en collaboraron na páxina',
+	'abusefilter-edit-builder-vars-all-links' => 'Tolos enllaces esternos del nuevu testu',
+	'abusefilter-edit-builder-vars-added-links' => 'Tolos enllaces esternos amestaos na edición',
+	'abusefilter-edit-builder-vars-removed-links' => 'Tolos enllaces esternos desaniciaos na edición',
+	'abusefilter-edit-builder-vars-old-text' => 'Testu wiki vieyu de la páxina, antes de la edición',
+	'abusefilter-edit-builder-vars-new-text' => 'Testu wiki nuevu de la páxina, dempués de la edición',
+	'abusefilter-edit-builder-vars-new-text-stripped' => 'Testu nuevu de la páxina, ensin dengún formatu',
+	'abusefilter-edit-builder-vars-new-html' => 'Fonte HTML analizada de la nueva revisión',
+	'abusefilter-edit-builder-vars-restrictions-edit' => "Nivel de protección d'edición de la páxina",
+	'abusefilter-edit-builder-vars-restrictions-move' => 'Nivel de protección de treslláu de la páxina',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Protección de creación de la páxina',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'Protección de carga del ficheru',
+	'abusefilter-edit-builder-vars-old-text-stripped' => 'Testu antiguu de la páxina, ensin dengún formatu',
+	'abusefilter-edit-builder-vars-old-links' => 'Enllaces de la páxina, enantes de la edición',
+	'abusefilter-edit-builder-vars-old-html' => 'Testu wiki antiguu de la páxina, pasáu a HTML',
+	'abusefilter-edit-builder-vars-minor-edit' => 'Si la edición ta marcada como menor o non',
+	'abusefilter-edit-builder-vars-file-sha1' => 'Hash SHA1 del conteníu del ficheru',
+	'abusefilter-filter-log' => 'Cambios de recién nos filtros',
+	'abusefilter-history' => "Historial de cambios de la peñera d'abusos #$1",
+	'abusefilter-history-foruser' => 'Cambios de $1',
+	'abusefilter-history-hidden' => 'Tapecío',
+	'abusefilter-history-enabled' => 'Activáu',
+	'abusefilter-history-global' => 'Global',
+	'abusefilter-history-timestamp' => 'Data',
+	'abusefilter-history-user' => 'Usuariu',
+	'abusefilter-history-public' => 'Descripción pública del filtru',
+	'abusefilter-history-flags' => 'Marques',
+	'abusefilter-history-filter' => 'Regla del filtru',
+	'abusefilter-history-comments' => 'Comentarios',
+	'abusefilter-history-actions' => 'Aiciones',
+	'abusefilter-history-backedit' => 'Volver al editor de filtros',
+	'abusefilter-history-deleted' => 'Desaniciáu',
+	'abusefilter-history-filterid' => 'Filtru',
+	'abusefilter-history-select-legend' => 'Afinar la gueta',
+	'abusefilter-history-select-user' => 'Usuariu:',
+	'abusefilter-history-select-submit' => 'Afinar',
+	'abusefilter-history-diff' => 'Cambios',
+	'abusefilter-history-error-hidden' => 'El filtru que pidió ta tapecíu y nun pue ver el so historial.',
+	'abusefilter-exception-unexpectedatend' => '"$2" inesperáu nel caráuter $1.',
+	'abusefilter-exception-expectednotfound' => "Esperabase un $2 nel caráuter $1, y nun s'alcontró (en cambio alcontróse $3 $4).",
 );
 
 /** Azerbaijani (azərbaycanca)
@@ -5950,7 +5989,7 @@ Gallout a rit resev un displegadenn glok dre glikañ war ar bouton "Gwiriañ an 
 	'abusefilter-examine-syntaxerror' => 'Direizh eo ereadur ar sil',
 	'abusefilter-examine-notfound' => "N'eo ket bet kavet ar c'hemm ho peus goulennet.",
 	'abusefilter-examine-incompatible' => "N'eo ket ar c'hemm ho peus goulennet embreget gant ar sil gwallimpij",
-	'abusefilter-examine-noresults' => "N'eus disoc'h ebet evit an arventennoù klask ho peus roet.",
+	'abusefilter-examine-noresults' => "N'eus disoc'h ebet evit an arventennoù klask roet ganeoc'h.",
 	'abusefilter-topnav' => "'''Merdeiñ ar sil a-enep ar gwallimplij'''",
 	'abusefilter-topnav-home' => 'Degemer',
 	'abusefilter-topnav-test' => 'Amprouadenn a steudad',
@@ -20031,6 +20070,16 @@ $messages['ka'] = array(
 დააკოპირეთ ტექსტური ველის შიგთავსი, გადმოიტანეთ ამ გვერდზე და დააჭირეთ "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'მონაცემების იმპორტირება',
 	'abusefilter-group-default' => 'სტანდარტული',
+);
+
+/** Kongo (Kongo)
+ * @author Rkupsala
+ */
+$messages['kg'] = array(
+	'abusefilter-examine-user' => 'Kisadi:',
+	'abusefilter-examine-title' => 'Nkûmbu ya mukânda:',
+	'abusefilter-examine-submit' => 'Sosa',
+	'abusefilter-log-entry-modify' => 'me soba $1 ($2)',
 );
 
 /** Khowar (کھوار)
