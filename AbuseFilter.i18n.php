@@ -29000,6 +29000,7 @@ Magse korz un ohni Sondazaische.',
 	'abusefilter-edit-builder-group-funcs' => 'Funktionen',
 	'abusefilter-edit-builder-funcs-length' => 'Leng vunde Zaischefolsch (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Zu Kläbuschdawe änare (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'Zu Großbuschdawe ännare (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Vawexlbari Zaische norme (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Dobbldi Zaische wegnemme (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Sondazaische / Alli Zaische (specialratio)',
@@ -29174,6 +29175,8 @@ Fa Näjares gugschd baide [[Special:AbuseFilter/history|Lischd]] vunde ledschde 
 	'abusefilter-diff-pattern' => 'Fildareschle',
 	'abusefilter-diff-invalid' => 'Die gwinschd Version konn ned gfunne werre',
 	'abusefilter-diff-backhistory' => 'Zurigg zude Gschischd vum Filda',
+	'abusefilter-diff-prev' => 'Eldari Ännarunge',
+	'abusefilter-diff-next' => 'Naijari Ännarunge',
 	'abusefilter-import-intro' => 'Du konschd mide Schniddschdell Filda vun oanare Wikis roihole.
 Im Qwellwiki gligschd uff die Schaldflesch „{{int:abusefilter-edit-export}}“ inahalb vun „{{int:abusefilter-edit-tools}}“ .
 Kobiaschda de Qwellcode, fiegschn do oi un gliggschd uff die Schaldflesch „{{int:abusefilter-import-submit}}“.',
