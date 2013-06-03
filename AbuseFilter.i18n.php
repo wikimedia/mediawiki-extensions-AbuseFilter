@@ -2935,6 +2935,101 @@ Les etiquetes tendríen de ser curties y nun contener caráuteres especiales.",
 	'abusefilter-history-error-hidden' => 'El filtru que pidió ta tapecíu y nun pue ver el so historial.',
 	'abusefilter-exception-unexpectedatend' => '"$2" inesperáu nel caráuter $1.',
 	'abusefilter-exception-expectednotfound' => "Esperabase un $2 nel caráuter $1, y nun s'alcontró (en cambio alcontróse $3 $4).",
+	'abusefilter-exception-unrecognisedkeyword' => 'Pallabra clave non reconocida $2 nel caráuter $1.',
+	'abusefilter-exception-unexpectedtoken' => 'Pase "$3" inesperáu (de tipu $2) nel caráuter $1.',
+	'abusefilter-exception-unclosedstring' => 'Cadena de caráuteres ensin zarrar que principia nel caráuter $1.',
+	'abusefilter-exception-invalidoperator' => 'Operador inválidu "$2" nel caráuter $1.',
+	'abusefilter-exception-unrecognisedtoken' => 'Pase "$2" non reconocíu nel caráuter $1.',
+	'abusefilter-exception-noparams' => 'Nun se dieron parámetros a la función "$2" nel caráuter $1.',
+	'abusefilter-exception-dividebyzero' => 'Intentu illegal de dividir $2 por cero nel caráuter $1.',
+	'abusefilter-exception-unrecognisedvar' => 'Variable $2 non reconocida nel caráuter $1.',
+	'abusefilter-exception-notenoughargs' => 'Non hai argumentos abondo pa la función $2 llamada nel caráuter $1.
+	{{PLURAL:$3|Esperabase un argumentu|Esperabense $3 argumentos}}, tienense $4',
+	'abusefilter-exception-regexfailure' => 'Error na espresión regular "$3" nel caráuter $1: "$2"',
+	'abusefilter-exception-overridebuiltin' => 'Anulación illegal de la variable interna "$2" nel caráuter $1.',
+	'abusefilter-exception-outofbounds' => "Solicitando l'elementu inesistente $2 de la llista (tamañu de la llista = $3) nel caráuter $1.",
+	'abusefilter-exception-notlist' => "Solicitando un elementu de matriz d'una non-matriz nel caráuter $1.",
+	'abusefilter-action-tag' => 'Etiqueta',
+	'abusefilter-action-throttle' => 'Frenar',
+	'abusefilter-action-warn' => 'Avisar',
+	'abusefilter-action-blockautopromote' => 'Bloquiar auto-promoción',
+	'abusefilter-action-block' => 'Bloquiar',
+	'abusefilter-action-degroup' => 'Desaniciar de grupos',
+	'abusefilter-action-rangeblock' => 'Bloquiar rangu',
+	'abusefilter-action-disallow' => 'Nun permitir',
+	'abusefilter-revert-title' => 'Tornar tolos cambios del filtru $1',
+	'abusefilter-revert-intro' => "Esti formulariou permite tornar tolos cambios fechos pola peñera d'abusos por aciu del filtru $1.
+Por favor tenga procuru al usar esta ferramienta.",
+	'abusefilter-revert-preview-item' => '$1: $2 fizo una aición $3 en $4. Aiciones a tornar: $5 ($6)',
+	'abusefilter-revert-search-legend' => "Seleicione les aiciones de la peñera d'abusos a tornar",
+	'abusefilter-revert-periodstart' => 'Principiu del periodu:',
+	'abusefilter-revert-periodend' => 'Fin del periodu:',
+	'abusefilter-revert-search' => 'Seleicionar aiciones',
+	'abusefilter-revert-filter' => 'Filtru:',
+	'abusefilter-revert-preview-intro' => 'Más abaxo tan les aiciones feches pola peñera d\'abusos que se tornarán con esta aición.
+Por favor, compruebelas con procuru y calque "Confirmar" pa confirmar la seleición.',
+	'abusefilter-revert-confirm' => 'Confirmar',
+	'abusefilter-revert-success' => "Tornó toles aiciones feches pola peñera d'abusos causaes pol [[Special:AbuseFilter/$1|filtru $1]].",
+	'abusefilter-revert-reason' => "Torna automática de toles aiciones feches pola peñera d'abusos debíes al filtru $1.
+Motivu dau: $2",
+	'abusefilter-revert-reasonfield' => 'Motivu:',
+	'abusefilter-test' => 'Probar un filtru coles ediciones anteriores',
+	'abusefilter-test-intro' => 'Esta páxina permite probar el filtru escritu nel cuadru d\'abaxo {{PLURAL:$1|col últimu cambiu|colos últimos $1 cambios}}.
+Pa cargar un filtru esistente, escriba la ID del filtru nel cuadru que ta abaxo del cuadru d\'edición de testu, y calque nel botón "Cargar".',
+	'abusefilter-test-legend' => 'Prueba de filtru',
+	'abusefilter-test-load-filter' => 'Cargar el filtru con ID:',
+	'abusefilter-test-submit' => 'Probar',
+	'abusefilter-test-load' => 'Cargar',
+	'abusefilter-test-user' => 'Cambios del usuariu:',
+	'abusefilter-test-period-start' => 'Cambios fechos dempués de:',
+	'abusefilter-test-period-end' => 'Cambios fechos antes de:',
+	'abusefilter-test-page' => 'Cambios fechos na páxina:',
+	'abusefilter-test-shownegative' => 'Ver los cambios que nun casen col filtru',
+	'abusefilter-test-syntaxerr' => 'El filtru qu\'escribió contenía un error de sintaxis.
+Pue recibir una esplicación completa calcando nel botón "Comprobar la sintaxis".',
+	'abusefilter-changeslist-examine' => 'esaminar',
+	'abusefilter-examine' => 'Esaminar los cambios individuales',
+	'abusefilter-examine-intro' => "Esta páxina permite-y esaminar les variables xeneraes pola Peñera d'abusos pa un cambiu individual, y probalu escontra los filtros.",
+	'abusefilter-examine-legend' => 'Seleicionar cambios',
+	'abusefilter-examine-diff' => 'URL de les diferencies:',
+	'abusefilter-examine-user' => 'Usuariu:',
+	'abusefilter-examine-title' => 'Títulu de la páxina:',
+	'abusefilter-examine-submit' => 'Guetar',
+	'abusefilter-examine-vars' => 'Variables xeneraes pa esti cambiu',
+	'abusefilter-examine-test' => 'Probar esti cambiu escontra un filtru',
+	'abusefilter-examine-test-button' => 'Probar el filtru',
+	'abusefilter-examine-match' => 'El filtru casó con esti cambiu.',
+	'abusefilter-examine-nomatch' => 'El filtru nun casó con esti cambiu.',
+	'abusefilter-examine-syntaxerror' => 'El filtru tien una sintaxis inválida',
+	'abusefilter-examine-notfound' => 'El cambiu que solicitó nun pudo alcontrase.',
+	'abusefilter-examine-incompatible' => "El cambiu que solicitó nun tien encontu de la Peñera d'abusos",
+	'abusefilter-examine-noresults' => "Nun s'alcontraron resultaos pa los parámetros de gueta que dio.",
+	'abusefilter-topnav' => "'''Navegación de la Peñera d'abusos'''",
+	'abusefilter-topnav-home' => 'Entamu',
+	'abusefilter-topnav-test' => 'Conxuntu de pruebes',
+	'abusefilter-topnav-examine' => 'Esaminar les ediciones pasaes',
+	'abusefilter-topnav-log' => "Rexistru d'abusos",
+	'abusefilter-topnav-tools' => 'Ferramientes de depuración',
+	'abusefilter-topnav-import' => 'Importar un filtru',
+	'abusefilter-log-name' => "Rexistru de la peñera d'abusos",
+	'abusefilter-log-header' => 'Esti rexistru amuesa un resume de los cambios fechos nos filtros.
+Para ver los detalles completos, visite [[Special:AbuseFilter/history|la llista]] de los cambios recién fechos nos filtros.',
+	'abusefilter-log-entry-modify' => 'camudó $1 ($2)',
+	'abusefilter-log-noresults' => 'Nun hai resultaos',
+	'abusefilter-diff-title' => 'Diferencies ente versiones',
+	'abusefilter-diff-item' => 'Elementu',
+	'abusefilter-diff-version' => 'Versión del $1 fecha {{GENDER:$3|por}} $2',
+	'abusefilter-diff-info' => 'Información básica',
+	'abusefilter-diff-pattern' => 'Condiciones del filtru',
+	'abusefilter-diff-invalid' => 'Non puen alcontrase les versiones solicitaes',
+	'abusefilter-diff-backhistory' => 'Volver al historial del filtru',
+	'abusefilter-diff-prev' => 'Cambiu más antiguu',
+	'abusefilter-diff-next' => 'Cambiu más nuevu',
+	'abusefilter-import-intro' => 'Pue emplegar esta interfaz pa importar filtros d\'otres wikis.
+Na wiki d\'orixe, calque "{{int:abusefilter-edit-export}}" baxo "{{int:abusefilter-edit-tools}}" na interfaz d\'edición.
+Copie del cuadru de testu qu\'apaez y apegue n\'esti cuadru de testu, y darréu calque "{{int:abusefilter-import-submit}}",',
+	'abusefilter-import-submit' => 'Importar datos',
+	'abusefilter-group-default' => 'Predetermináu',
 );
 
 /** Azerbaijani (azərbaycanca)
@@ -6887,6 +6982,7 @@ $messages['ce'] = array(
 	'abusefilter-history-select-legend' => 'Билгалдакха лахар',
 	'abusefilter-history-select-user' => 'Декъашхо:',
 	'abusefilter-exception-unrecognisedkeyword' => 'Дойзуш доцу оьшуш долу дош $2 оцу меттигца $1.',
+	'abusefilter-revert-confirm' => 'Бакъдан',
 	'abusefilter-revert-reasonfield' => 'Бахьан:',
 	'abusefilter-examine-user' => 'Декъашхо:',
 );
@@ -9633,7 +9729,7 @@ $messages['el'] = array(
 Είναι μια σύντομη περιγραφή της παραβίασης με την οποία η ενέργειά σας ταιριάζει είναι: $1", # Fuzzy
 	'abusefilter-disallowed' => 'Αυτή η ενέργεια ταυτοποιήθηκε αυτόματα ως επιβλαβής, και άρα απαγορεύεται.
 Αν πιστεύετε ότι αυτή η επεξεργασία είναι εποικοδομητική, παρακαλώ επικοινωνήστε με έναν διαχειριστή, και πληροφορήστε τον για το τι προσπαθείτε να κάνετε.
-Μια σύντομη περιγραφή του κανόνα καταχρήσεων στο οποίο αντιστοίχησε η ενέργειά σας είναι η εξής: $1', # Fuzzy
+Μια σύντομη περιγραφή του κανόνα καταχρήσεων στο οποίο αντιστοιχήθηκε  η ενέργειά σας είναι η εξής: $1',
 	'abusefilter-blocked-display' => 'Αυτή η ενέργεια ταυτοποιήθηκε αυτόματα ως επιβλαβής,
 και αποτραπήκατε από το να την εκτελέσετε.
 Επιπλέον, για να προστατευθεί το {{SITENAME}}, ο λογαριασμός χρήστη σας και όλες οι σχετιζόμενες διευθύνσεις IP έχουν φραγεί από τη δυνατότητα επεξεργασίας.
@@ -11790,6 +11886,7 @@ $messages['fa'] = array(
 	'abusefilter-edit-builder-group-funcs' => 'توابع',
 	'abusefilter-edit-builder-funcs-length' => 'طول رشته (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'به حروف کوچک (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'به حروف بزرگ (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'بهنجارش نویسه‌های مشوش (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'حذف نویسه‌های دوتایی (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'نویسه‌های ویژه/مجموع نویسه‌ها(specialratio)',
@@ -20076,7 +20173,7 @@ $messages['ka'] = array(
  * @author Rkupsala
  */
 $messages['kg'] = array(
-	'abusefilter-examine-user' => 'Kisadi:',
+	'abusefilter-examine-user' => 'Sadi:',
 	'abusefilter-examine-title' => 'Nkûmbu ya mukânda:',
 	'abusefilter-examine-submit' => 'Sosa',
 	'abusefilter-log-entry-modify' => 'me soba $1 ($2)',
@@ -27562,7 +27659,7 @@ Ei kort skildring av misbruksregelen handlinga di braut er: $1',
 	'abusefilter-list-options-scope-local' => 'Lokal wiki',
 	'abusefilter-list-options-scope-global' => 'Globale reglar',
 	'abusefilter-list-options-disabled' => 'Deaktiverte filter:',
-	'abusefilter-list-options-hidedisabled' => 'Gøym deaktiverte filter',
+	'abusefilter-list-options-hidedisabled' => 'Gøym avslegne filter',
 	'abusefilter-list-options-submit' => 'Oppdater',
 	'abusefilter-tools-text' => 'Her er nokre verktøy som kan vera nyttige for å laga og feilsøkja misbruksfilter.',
 	'abusefilter-tools-expr' => 'Uttrykkstestar',
@@ -32457,7 +32554,7 @@ $messages['rue'] = array(
 	'abusefilter-log-hidelink' => 'управити видительность',
 	'abusefilter-log-details-legend' => 'Детайлы запису $1',
 	'abusefilter-log-details-var' => 'Перемінна',
-	'abusefilter-log-details-val' => 'Годнота',
+	'abusefilter-log-details-val' => 'Значіня',
 	'abusefilter-log-details-vars' => 'Параметры дїї',
 	'abusefilter-log-details-private' => 'Пріватны дата',
 	'abusefilter-log-details-ip' => 'Жрідлова IP-адреса',
@@ -33482,8 +33579,11 @@ $messages['scn'] = array(
 
 /** Northern Sami (sámegiella)
  * @author Jeblad
+ * @author Linnea
  */
 $messages['se'] = array(
+	'abusefilter-log' => 'Boasttogeavahanfiltera logga',
+	'abusefilter-deleted' => 'Sihkkojuvvon',
 	'abusefilter-history-deleted' => 'Sihkkojuvvon',
 	'abusefilter-action-block' => 'Hehtte',
 	'abusefilter-log-noresults' => 'Eai bohtosat',
@@ -36665,6 +36765,7 @@ Krůtki uopis zńyłużyćo, ke keremu bůła przipasowano twojo akcyjo: $1', # 
  * @author Karthi.dr
  * @author Logicwiki
  * @author Shanmugamp7
+ * @author Sodabottle
  * @author TRYPPN
  * @author செல்வா
  * @author மதனாஹரன்
@@ -36716,8 +36817,8 @@ Filter description: $7 ($8)',
 	'abusefilter-log-details-ip' => 'மூல இணைய வழங்கியரின் (IP) முகவரி',
 	'abusefilter-log-noactions' => 'ஒன்றுமில்லை',
 	'abusefilter-log-details-diff' => 'தொகுப்பில் செய்த மாற்றங்க்கள்',
-	'abusefilter-log-linkoncontribs' => 'முறைகேட்டுப் பதிவேடு',
-	'abusefilter-log-linkoncontribs-text' => 'இப் பயனரின் முறைகேட்டுப் பதிவேடு',
+	'abusefilter-log-linkoncontribs' => 'முறைகேடுகள் பதிவேடு',
+	'abusefilter-log-linkoncontribs-text' => 'இப்பயனரின் முறைகேடுகள் பதிவேடு',
 	'abusefilter-log-hidden' => '(நுழைவு மறைக்கப்பட்டுள்ளது)',
 	'abusefilter-log-cannot-see-details' => 'இப் பதிவின் விளக்கவிரிவைக் காண உங்களுக்கு அனுமதி இல்லை.',
 	'abusefilter-log-details-hidden' => 'பொதுவில் காட்டப்படாத பதிவு என்பதால் இதன் விரிவான குறிப்புகளை நீங்கள் பார்க்க இயலாது',
@@ -37579,8 +37680,8 @@ $messages['th'] = array(
 	'abusefilter-edit-builder-vars-all-links' => 'ลิงก์ภายนอกทั้งหมดในข้อความใหม่',
 	'abusefilter-edit-builder-vars-added-links' => 'ลิงก์ภายนอกทั้งหมดที่เพิ่มมาในการแก้ไข',
 	'abusefilter-edit-builder-vars-removed-links' => 'ลิงก์ภายนอกทั้งหมดที่นำออกในการแก้ไข',
-	'abusefilter-edit-builder-vars-old-text' => 'ข้อความวิกิหน้าเก่าก่อนการแก้ไข',
-	'abusefilter-edit-builder-vars-new-text' => 'ข้อความวิกิหน้าเก่าหลังการแก้ไข',
+	'abusefilter-edit-builder-vars-old-text' => 'ข้อความวิกิเก่าก่อนการแก้ไข',
+	'abusefilter-edit-builder-vars-new-text' => 'ข้อความวิกิใหม่หลังการแก้ไข',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'ข้อความหน้าใหม่โดยไม่มีอาร์กอัพใด ๆ',
 	'abusefilter-edit-builder-vars-new-html' => 'โค้ดเอชทีเอ็มแอลแจงส่วนของรุ่นใหม่',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'ระดับการล็อกการแก้ไขหน้า',
