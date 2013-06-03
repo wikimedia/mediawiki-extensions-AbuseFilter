@@ -2499,7 +2499,7 @@ $messages['arz'] = array(
 	'abusefilter-import-submit' => 'استيراد البيانات',
 );
 
-/** Assamese (অসমীয়া)
+/** Assamese (অসমীয়া)
  * @author Bishnu Saikia
  * @author Chaipau
  * @author Psneog
@@ -26637,7 +26637,7 @@ Kopeer de Textbox, de dor wiest warrt, un föög den Text in disse Textbox in, k
 	'abusefilter-group-default' => 'Default',
 );
 
-/** Nedersaksies (Nedersaksies)
+/** Low Saxon (Netherlands) (Nedersaksies)
  * @author Servien
  */
 $messages['nds-nl'] = array(
@@ -28355,7 +28355,7 @@ Copiatz l'airal de tèxte que s’aficha e empegatz-lo dins aqueste airal de tè
 	'abusefilter-import-submit' => 'Importar de donadas',
 );
 
-/** Oriya (ଓଡ଼ିଆ)
+/** Oriya (ଓଡ଼ିଆ)
  * @author Ansumang
  * @author Jnanaranjan Sahu
  * @author Jose77
@@ -30722,6 +30722,7 @@ Copie da caixa de texto que aparece, coloque nesta caixa de texto e depois cliqu
  * @author Hamilton Abreu
  * @author Helder.wiki
  * @author Heldergeovane
+ * @author Luckas
  * @author Luckas Blade
  * @author MetalBrasil
  * @author Opraco
