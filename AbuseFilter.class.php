@@ -1956,7 +1956,7 @@ class AbuseFilter {
 		$vars = new AbuseFilterVariableHolder;
 
 		// NOTE: $page may end up remaining null, e.g. if $title points to a special page.
-		if ( !$page && $title instanceof Title && $title->canExist() && $title->exists() ) {
+		if ( !$page && $title instanceof Title && $title->canExist() ) {
 			$page = WikiPage::factory( $title );
 		}
 
