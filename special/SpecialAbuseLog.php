@@ -308,16 +308,10 @@ class SpecialAbuseLog extends SpecialPage {
 			$diffEngine = new DifferenceEngine;
 
 			$diffEngine->showDiffStyle();
+
 			// Note: generateDiffBody has been deprecated in favour of generateTextDiffBody in 1.21 but we can't use it for b/c
 			$formattedDiff = $diffEngine->generateDiffBody( $old_wikitext, $new_wikitext );
-
-			static $colDescriptions = "<col class='diff-marker' />
-				<col class='diff-content' />
-				<col class='diff-marker' />
-				<col class='diff-content' />";
-
-			$formattedDiff =
-				"<table class='diff'>$colDescriptions<tbody>$formattedDiff</tbody></table>";
+			$formattedDiff = $diffEngine->addHeader( $formattedDiff, '', '' );
 
 			$output .=
 				Xml::tags(
