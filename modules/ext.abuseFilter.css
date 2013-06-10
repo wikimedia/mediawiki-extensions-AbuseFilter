@@ -116,18 +116,21 @@ table.mw-abusefilter-diff th {
 }
 
 /* Name is in site content language */
-/* @noflip */.sitedir-ltr .TablePager_col_af_public_comments {
+/* @noflip */
+.sitedir-ltr .TablePager_col_af_public_comments {
 	direction: ltr;
 }
-/* @noflip */.sitedir-rtl .TablePager_col_af_public_comments {
+
+/* @noflip */
+.sitedir-rtl .TablePager_col_af_public_comments {
 	direction: rtl;
 }
 
 #mw-abusefilter-filter-tools {
-    display: inline;
+	display: inline;
 }
 
 .client-nojs #mw-abusefilter-export-link,
 .client-js #mw-abusefilter-export {
-    display: none;
+	display: none;
 }
