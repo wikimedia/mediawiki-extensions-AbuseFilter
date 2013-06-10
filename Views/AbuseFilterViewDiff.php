@@ -399,7 +399,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$new = explode( "\n", preg_replace( "/\\\r\\\n?/", "\n", $new ) );
 		}
 
-		$diffEngine = new DifferenceEngine;
+		$diffEngine = new DifferenceEngine( $this->getContext() );
 
 		$diffEngine->showDiffStyle();
 
