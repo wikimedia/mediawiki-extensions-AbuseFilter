@@ -243,7 +243,7 @@ $specialPageAliases['ksh'] = array(
 
 /** Cornish (kernowek) */
 $specialPageAliases['kw'] = array(
-	'AbuseLog' => array( 'CovnotenAbusyans' ),
+	'AbuseLog' => array( 'KovnotenAbusyans' ),
 	'AbuseFilter' => array( 'SidhlaAbusyans' ),
 );
 
