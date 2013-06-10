@@ -1,5 +1,40 @@
 <?php
 
+/**
+ * Like TableDiffFormatter, but will always render the full context
+ * (even for empty diffs).
+ *
+ * @private
+ */
+class TableDiffFormatterFullContext extends TableDiffFormatter {
+	/**
+	 * Format a diff.
+	 *
+	 * @param Diff $diff
+	 * @return string The formatted output.
+	 */
+	function format( $diff ) {
+		$xlen = $ylen = 0;
+
+		// Calculate the length of the left and the right side
+		foreach ( $diff->edits as $edit ) {
+			if ( $edit->orig ) {
+				$xlen += count( $edit->orig );
+			}
+			if ( $edit->closing ) {
+				$ylen += count( $edit->closing );
+			}
+		}
+
+		// Just render the diff with no preprocessing
+		$this->_start_diff();
+		$this->_block( 1, $xlen, 1, $ylen, $diff->edits );
+		$end = $this->_end_diff();
+
+		return $end;
+	}
+}
+
 class AbuseFilterViewDiff extends AbuseFilterView {
 	var $mOldVersion = null;
 	var $mNewVersion = null;
@@ -261,30 +296,29 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		// Basic info
 		$info = '';
 		$info .= $this->getHeaderRow( 'abusefilter-diff-info' );
-		$info .= $this->getSimpleRow(
+		$info .= $this->getDiffRow(
 			'abusefilter-edit-description',
 			$oldVersion['info']['description'],
-			$newVersion['info']['description'],
-			'wikitext'
+			$newVersion['info']['description']
 		);
 		global $wgAbuseFilterValidGroups;
-		if ( 
+		if (
 			count($wgAbuseFilterValidGroups) > 1 ||
 			$oldVersion['info']['group'] != $newVersion['info']['group']
 		) {
-			$info .= $this->getSimpleRow(
+			$info .= $this->getDiffRow(
 				'abusefilter-edit-group',
-				AbuseFilter::nameGroup($oldVersion['info']['group']),
-				AbuseFilter::nameGroup($newVersion['info']['group'])
+				AbuseFilter::nameGroup( $oldVersion['info']['group'] ),
+				AbuseFilter::nameGroup( $newVersion['info']['group'] )
 			);
 		}
-		$info .= $this->getSimpleRow(
+		$info .= $this->getDiffRow(
 			'abusefilter-edit-flags',
 			AbuseFilter::formatFlags( $oldVersion['info']['flags'] ),
 			AbuseFilter::formatFlags( $newVersion['info']['flags'] )
 		);
 
-		$info .= $this->getMultiLineRow(
+		$info .= $this->getDiffRow(
 			'abusefilter-edit-notes',
 			$oldVersion['info']['notes'],
 			$newVersion['info']['notes']
@@ -292,7 +326,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 		// Pattern
 		$info .= $this->getHeaderRow( 'abusefilter-diff-pattern' );
-		$info .= $this->getMultiLineRow(
+		$info .= $this->getDiffRow(
 			'abusefilter-edit-rules',
 			$oldVersion['pattern'],
 			$newVersion['pattern'],
@@ -304,16 +338,16 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		$newActions = $this->stringifyActions( $newVersion['actions'] );
 
 		$info .= $this->getHeaderRow( 'abusefilter-edit-consequences' );
-		$info .= $this->getMultiLineRow(
+		$info .= $this->getDiffRow(
 			'abusefilter-edit-consequences',
 			$oldActions,
 			$newActions
 		);
 
-		$html = "<table class='mw-abusefilter-diff'>
-		<thead>$headings</thead>
-		<tbody>$info</tbody>
-</table>";
+		$html = "<table class='wikitable'>
+			<thead>$headings</thead>
+			<tbody>$info</tbody>
+		</table>";
 
 		$html = Xml::tags( 'h2', null, $this->msg( 'abusefilter-diff-title' )->parse() ) . $html;
 
@@ -355,43 +389,9 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	 * @param $msg
 	 * @param $old
 	 * @param $new
-	 * @param string $format
 	 * @return string
 	 */
-	function getSimpleRow( $msg, $old, $new, $format = 'wikitext' ) {
-		$row = '';
-
-		$row .= Xml::tags( 'th', null, $this->msg( $msg )->parse() );
-
-		$oldClass = $newClass = 'mw-abusefilter-diff-context';
-		if ( trim( $old ) != trim( $new ) ) {
-			$oldClass = 'mw-abusefilter-diff-removed';
-			$newClass = 'mw-abusefilter-diff-added';
-		}
-
-		if ( $format == 'wikitext' ) {
-			$old = $this->getOutput()->parseInline( $old );
-			$new = $this->getOutput()->parseInline( $new );
-		}
-
-		if ( $format == 'text' ) {
-			$old = nl2br( htmlspecialchars( $old ) );
-			$new = nl2br( htmlspecialchars( $new ) );
-		}
-
-		$row .= Xml::tags( 'td', array( 'class' => $oldClass ), $old );
-		$row .= Xml::tags( 'td', array( 'class' => $newClass ), $new );
-
-		return Xml::tags( 'tr', null, $row ) . "\n";
-	}
-
-	/**
-	 * @param $msg
-	 * @param $old
-	 * @param $new
-	 * @return string
-	 */
-	function getMultiLineRow( $msg, $old, $new ) {
+	function getDiffRow( $msg, $old, $new ) {
 		if ( !is_array( $old ) ) {
 			$old = explode( "\n", preg_replace( "/\\\r\\\n?/", "\n", $old ) );
 		}
@@ -399,22 +399,18 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$new = explode( "\n", preg_replace( "/\\\r\\\n?/", "\n", $new ) );
 		}
 
-		if ( $old == $new ) {
-			$old = implode( "\n", $old );
-			$new = implode( "\n", $new );
-			return $this->getSimpleRow( $msg, $old, $new, 'text' );
-		}
+		$diffEngine = new DifferenceEngine;
 
-		$row = '';
-		$row .= Xml::tags( 'th', null, $this->msg( $msg )->parse() );
+		$diffEngine->showDiffStyle();
 
+		// We can't use $diffEngine->generateDiffBody since it doesn't allow custom formatters
 		$diff = new Diff( $old, $new );
-		$formatter = new TableDiffFormatter();
-		$formattedDiff = $formatter->format( $diff );
-		$formattedDiff =
-			"<table class='mw-abusefilter-diff-multiline'><tbody>$formattedDiff</tbody></table>";
-		$row .= Xml::tags( 'td', array( 'colspan' => 2 ), $formattedDiff );
+		$formatter = new TableDiffFormatterFullContext();
+		$formattedDiff = $diffEngine->addHeader( $formatter->format( $diff ), '', '' );
 
-		return Xml::tags( 'tr', null, $row ) . "\n";
+		return Xml::tags( 'tr', null,
+			Xml::tags( 'th', null, $this->msg( $msg )->parse() ) .
+			Xml::tags( 'td', array( 'colspan' => 2 ), $formattedDiff )
+		) . "\n";
 	}
 }
