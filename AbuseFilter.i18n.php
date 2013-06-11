@@ -22652,8 +22652,10 @@ Taisyklės aprašymas: $1',
 	'right-abusefilter-modify-restricted' => 'Keisti piktnaudžiavimo filtrus su uždraustais veiksmais',
 	'right-abusefilter-revert' => 'Atmesti visus pakeitimus pagal konkretų piktnaudžiavimų filtrą',
 	'right-abusefilter-view-private' => 'Žiūrėti piktnaudžiavimo filtrus, pažymėtus kaip privatūs.',
+	'right-abusefilter-log-private' => 'Rodyti piktnaudžiavimo filtrų žurnalo įrašus pažymėtus kaip privačius',
 	'right-abusefilter-hide-log' => 'Slėpti piktnaudžiavimo žurnalo įrašus',
 	'right-abusefilter-hidden-log' => 'Peržiūrėti paslėptus piktnaudžiavimo žurnalo įrašus',
+	'right-abusefilter-modify-global' => 'Sukurti arba keisti pasaulio piktnaudžiavimo filtrus',
 	'action-abusefilter-modify' => 'keisti piktnaudžiavimo filtrų',
 	'action-abusefilter-view' => 'peržiūrėti piktnaudžiavimo filtrų',
 	'action-abusefilter-log' => 'peržiūrėti piktnaudžiavimų protokolo',
@@ -22816,6 +22818,7 @@ Prašau kreiptis į vartotoją, turintį teisę naudoti uždraustus veiksmus, at
 	'abusefilter-edit-bad-tags' => 'Vieną ar daugiau žymių, jūsų nurodytų neleistinas.
 Žymos turėtų būti trumpos, ir jose neturėtų būti specialiųjų simbolių.',
 	'abusefilter-edit-notallowed' => 'Jums neleidžiama kurti arba redaguoti piktnaudžiavimo filtrų',
+	'abusefilter-edit-notallowed-global' => 'Jums neleidžiama kurti arba redaguoti piktnaudžiavimo filtrų',
 	'abusefilter-edit-builder-select' => 'Pasirinkite variantą įstatymui kursoriaus pozicijoje',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetinės operacijos',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Sudėtis (+)',
@@ -22847,6 +22850,7 @@ Prašau kreiptis į vartotoją, turintį teisę naudoti uždraustus veiksmus, at
 	'abusefilter-edit-builder-group-funcs' => 'Funkcijos',
 	'abusefilter-edit-builder-funcs-length' => 'Simbolių eilutės ilgis (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Į apatinį registrą (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'Į apatinį registrą (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalizuoti abejotinus simbolius (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Panaikinti dvigubus simbolius (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Specialūs simboliai / visi simboliai (specialratio)',
@@ -22889,6 +22893,7 @@ Prašau kreiptis į vartotoją, turintį teisę naudoti uždraustus veiksmus, at
 	'abusefilter-edit-builder-vars-user-age' => 'Naudotojo sąskaitos amžius',
 	'abusefilter-edit-builder-vars-user-name' => 'Naudotojo sąskaitos vardas',
 	'abusefilter-edit-builder-vars-user-groups' => 'Grupės (imtinai), kurioms naudotojas priklauso',
+	'abusefilter-edit-builder-vars-user-blocked' => 'Ar naudotojas yra užblokuotas',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Laikas kada e-mail adresas buvo patvirtintas',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Paskutiniai dešimt vartotojų, keitusių puslapį',
 	'abusefilter-edit-builder-vars-all-links' => 'Visos išorinės nuorodos naujame tekste',
@@ -22900,6 +22905,8 @@ Prašau kreiptis į vartotoją, turintį teisę naudoti uždraustus veiksmus, at
 	'abusefilter-edit-builder-vars-new-html' => 'Naujos redakcijos HTML tekstas, išskleidus šablonus',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Keistas puslapio apsaugos lygis',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Puslapio pervadinimo apsaugos lygis',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Sukurti puslapio apsaugą',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'Failo įkėlimo apsauga',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Senas puslapio tekstas, išmetus visas žymes',
 	'abusefilter-edit-builder-vars-old-links' => 'Nuorodos puslapyje, prieš redagavimą',
 	'abusefilter-edit-builder-vars-old-html' => 'Seno puslapio wiki teksto HTML, išplėtus šablonus',
@@ -23012,7 +23019,7 @@ Visas detales žiūrėkite filtrų naujausių keitimo [[Special:AbuseFilter/hist
 	'abusefilter-log-noresults' => 'Nėra rezultatų',
 	'abusefilter-diff-title' => 'Skirtumas tarp versijų',
 	'abusefilter-diff-item' => 'Elementas',
-	'abusefilter-diff-version' => 'Versijos nuo $1 iki $2', # Fuzzy
+	'abusefilter-diff-version' => 'Versijos nuo $1 {{GENDER:$3|iki}} $2',
 	'abusefilter-diff-info' => 'Pagrindinė informacija',
 	'abusefilter-diff-pattern' => 'Filtro sąlygos',
 	'abusefilter-diff-invalid' => 'Negalima rasti norimos versijos',
@@ -30384,6 +30391,7 @@ $messages['ps'] = array(
  * @author Alchimista
  * @author Bonifácio
  * @author Giro720
+ * @author GoEThe
  * @author Hamilton Abreu
  * @author Lijealso
  * @author Luckas
@@ -30410,9 +30418,9 @@ e a repetição destas edições resultará no bloqueio da sua conta ou do seu e
 Se crê que esta ação é construtiva, pode clicar enviar novamente para confirmá-lo.
 Uma breve descrição da regra de abuso com a qual a sua acção coincidiu é: $1",
 	'abusefilter-disallowed' => 'Esta operação foi identificada automaticamente como prejudicial,
-e foi consequentemente bloqueada.
+e foi consequentemente desautorizada.
 Se crê que a sua edição foi construtiva, por favor contacte um administrador, e informe-o do que estava a tentar fazer.
-Uma breve descrição da regra de abuso com a qual a sua acção coincidiu é: $1', # Fuzzy
+Uma breve descrição da regra de abuso com a qual a sua acção coincidiu é: $1',
 	'abusefilter-blocked-display' => 'Esta operação foi automaticamente identificada como prejudicial e está impedido de executá-la.
 Adicionalmente, para proteger a {{SITENAME}}, foram bloqueadas as edições pela sua conta e por todos os endereços IP associados.
 Se considera que este bloqueio é indevido, por favor contacte um administrador.
@@ -30639,6 +30647,7 @@ Etiquetas devem ser curtas e não devem conter caracteres especiais.',
 	'abusefilter-edit-builder-group-funcs' => 'Funções',
 	'abusefilter-edit-builder-funcs-length' => 'Comprimento do texto (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Para minúscula (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'Para maiúscula (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalizar caracteres confundíveis (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Remover caracteres duplos (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Caracteres especiais / total de caracteres (specialratio)',
@@ -30694,7 +30703,7 @@ Etiquetas devem ser curtas e não devem conter caracteres especiais.',
 	'abusefilter-edit-builder-vars-new-html' => 'Fonte HTML analisada, da nova revisão',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Nível de protecção de edição da página',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Nível de protecção de movimentação da página',
-	'abusefilter-edit-builder-vars-restrictions-create' => 'Criar protecção de página', # Fuzzy
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Criação de protecção de página',
 	'abusefilter-edit-builder-vars-restrictions-upload' => 'Protecção de ficheiro carregado',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Texto anterior da página, sem a formatação',
 	'abusefilter-edit-builder-vars-old-links' => 'Links na página, antes da edição',
@@ -34506,6 +34515,7 @@ Skopírujte ho z textového poľa, kde sa objaví a vložte ho do tohto textové
 /** Slovenian (slovenščina)
  * @author Dbc334
  * @author Eleassar
+ * @author Emperyan
  */
 $messages['sl'] = array(
 	'abusefilter-desc' => 'Pri urejanjih uporabi samodejno hevristiko',
