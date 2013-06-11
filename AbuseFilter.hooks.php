@@ -506,6 +506,13 @@ class AbuseFilterHooks {
 
 		$vars = new AbuseFilterVariableHolder;
 		$title = $upload->getTitle();
+
+		if ( !$title ) {
+			// If there's no valid title assigned to the upload
+			// it wont proceed anyway, so no point in filtering it.
+			return true;
+		}
+
 		$vars->addHolders(
 			AbuseFilter::generateUserVars( $wgUser ),
 			AbuseFilter::generateTitleVars( $title, 'FILE' )
