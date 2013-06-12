@@ -24868,6 +24868,7 @@ $messages['mr'] = array(
 	'abusefilter-edit-notes' => "नोंदी:
 :''(खाजगी)''",
 	'abusefilter-edit-lastmod' => 'संपादन गाळणीचा शेवटचा फेरबदल:',
+	'abusefilter-edit-tag-tag' => 'खूणवण्याचे संदेश (प्रतीओळ एक):',
 	'abusefilter-edit-history' => 'इतिहास:',
 	'abusefilter-edit-tools' => 'सुविधा:',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'अंकगणितीय कारके (अरीथमॅटीक ऑपरेटर्स)',
@@ -40210,6 +40211,13 @@ $messages['ur'] = array(
 	'abusefilter-diff-info' => 'بنیادی معلومات',
 	'abusefilter-diff-pattern' => 'فلٹر حالات',
 	'abusefilter-group-default' => 'پہلے سے طے شدہ',
+);
+
+/** Uzbek (oʻzbekcha)
+ * @author Sociologist
+ */
+$messages['uz'] = array(
+	'abusefilter-edit-builder-vars-user-name' => 'Hisob yozuvi nomi',
 );
 
 /** vèneto (vèneto)
