@@ -31338,14 +31338,14 @@ $messages['ro'] = array(
 Filtrul de abuzuri este un mecanism software automat care aplică euristici automate tuturor acțiunilor.
 Această interfață afișează o listă de filtre definite și permite modificarea acestora.',
 	'abusefilter-mustbeeditor' => 'Din motive de securitate, doar utilizatorii cu drept de modificare a filtrelor de abuz pot utiliza această interfață.',
-	'abusefilter-warning' => "'''Atenție''': Această acțiune a fost identificată în mod automat ca fiind periculoasă.
+	'abusefilter-warning' => "'''Atenție:''' Această acțiune a fost identificată în mod automat ca fiind periculoasă.
 Modificările neconstructive vor fi rapid înlăturate,
 iar cele evident neconstructive și repetate vor avea ca efect blocarea contului sau adresei IP de la care vă conectați.
-Dacă într-adevăr credeți că această modificare este constructivă, apăsați din nou pe „Trimite” pentru confirmare.
-O descriere sumară a regulii abuzului care se potrivește acțiunii dumneavoastră este: $1", # Fuzzy
+Dacă într-adevăr credeți că această acțiune este constructivă, o puteți retrimite pentru a o confirma.
+O descriere sumară a regulii abuzului care se potrivește acțiunii dumneavoastră este: $1",
 	'abusefilter-disallowed' => 'Această acțiune a fost identificată în mod automat ca fiind periculoasă, din acest motiv fiind refuzată.
-Dacă într-adevăr credeți că modificarea dumneavoastră a fost constructivă, vă rugăm să contactați un administrator și să-l informați despre ceea ce doriți să întreprindeți.
-O descriere sumară a regulii abuzului care se potrivește acțiunii dumneavoastră este: $1', # Fuzzy
+Dacă într-adevăr credeți că acțiunea dumneavoastră a fost constructivă, vă rugăm să contactați un administrator și să-l informați despre ceea ce doriți să întreprindeți.
+O descriere sumară a regulii abuzului care se potrivește acțiunii dumneavoastră este: $1',
 	'abusefilter-blocked-display' => 'Această acțiune a fost identificată în mod automat ca fiind periculoasă;
 drept urmare ați fost împiedicat să o executați.
 În plus, pentru a proteja {{SITENAME}}, contul dumneavoastră și toate adresele IP asociate acestuia au fost blocate de la modificare.
@@ -34780,6 +34780,7 @@ Oznake morajo biti kratne in ne smejo vsebovati posebnih znakov.',
 	'abusefilter-edit-builder-group-funcs' => 'Funkcije',
 	'abusefilter-edit-builder-funcs-length' => 'Dolžina niza (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'V male črke (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'V velike črke (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normaliziraj zamenljive znake (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Odstrani dvojne znake (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Posebni znaki / število znakov (specialratio)',
