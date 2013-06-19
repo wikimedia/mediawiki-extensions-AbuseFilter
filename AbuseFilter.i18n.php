@@ -18527,6 +18527,13 @@ Tögin eiga að vera stutt og þau mega ekki innihalda sérstök tákn.',
 	'abusefilter-edit-builder-vars-oldsize' => 'Eldri skrárstærð',
 	'abusefilter-edit-builder-vars-removedlines' => 'Línur fjarlægðar í breytingu',
 	'abusefilter-edit-builder-vars-summary' => 'Breytingarsamantekt/ástæða',
+	'abusefilter-edit-builder-vars-article-id' => 'Einkennisnúmer síðunnar',
+	'abusefilter-edit-builder-vars-article-ns' => 'Nafnrými síðunnar',
+	'abusefilter-edit-builder-vars-article-text' => 'Titill síðunnar (án nafnrýmis)',
+	'abusefilter-edit-builder-vars-user-editcount' => 'Breytingaheildartala notanda',
+	'abusefilter-edit-builder-vars-user-age' => 'Aldur notandaaðgangs',
+	'abusefilter-edit-builder-vars-user-name' => 'Nafn notandaaðgangs',
+	'abusefilter-edit-builder-vars-user-blocked' => 'Hvort notand sé bannaður',
 	'abusefilter-filter-log' => 'Nýlegar breytingar síunnar',
 	'abusefilter-history-foruser' => 'Breytingar eftir $1',
 	'abusefilter-history-hidden' => 'Falið',
@@ -18565,6 +18572,8 @@ Vinsamlegast farðu varlega á meðan þú notar þetta smáforrit.',
 	'abusefilter-revert-preview-item' => '$1: $2 gerði $3 á $4.
 Aðgerðir sem verða teknar til baka: $5 ($6)',
 	'abusefilter-revert-search-legend' => 'Veldu eina af aðgerðum síunnar sem á að afturkalla',
+	'abusefilter-revert-periodstart' => 'Upphafstímabil:',
+	'abusefilter-revert-periodend' => 'Endatímabil:',
 	'abusefilter-revert-search' => 'Velja aðgerðir',
 	'abusefilter-revert-filter' => 'Sía:',
 	'abusefilter-revert-preview-intro' => 'Fyrir neðan eru þær aðgerðir misnotkunnarsíunnar sem taka á til baka.
@@ -18618,6 +18627,7 @@ Til þess að prófa síu sem til er fyrir, settu auðkenni hennar í reitinn h�
 	'abusefilter-diff-info' => 'Grunnupplýsingar',
 	'abusefilter-diff-invalid' => 'Mistókst að sækja þær útgáfur sem þú óskaðir eftir',
 	'abusefilter-diff-backhistory' => 'Aftur í breytingarskrá síunnar',
+	'abusefilter-diff-next' => 'Nýlegri breytingar',
 );
 
 /** Italian (italiano)
