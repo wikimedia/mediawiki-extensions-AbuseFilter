@@ -4858,6 +4858,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-edit-builder-group-funcs' => 'Функцыі',
 	'abusefilter-edit-builder-funcs-length' => 'Даўжыня радку (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'У малыя літары (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'У вялікія літары (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Нармалізацыя шматзначных сымбаляў (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Выдаленьне паўтараючыся сымбаляў (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Спэцыяльных сымбаляў / усяго сымбаляў (specialratio)',
@@ -29063,57 +29064,57 @@ $messages['pdt'] = array(
  * @author Xqt
  */
 $messages['pfl'] = array(
-	'abusefilter-desc' => 'Bnudzd selbschddendisch Heuristike uff Änarunge',
+	'abusefilter-desc' => 'Bnudzd selbschddendisch Heuristike uff Ännarunge',
 	'abusefilter' => 'Filda-Oischdellunge gesche Missbraisch',
 	'abuselog' => 'Logbuch fa Missbraisch',
-	'abusefilter-intro' => 'Willkomme uffde Owaflesch fa die Hondhawung vunde Missbraisch-Filda.
-Missbraisch-Filda sind selbschdschdendischi Meschanisme, wu vun allä Heuristike uff alle Änarunge oawende dun.
-Die Owafläsch zaischd ä Lischd vun alle Filda, wu ma a änare konn.',
-	'abusefilter-mustbeeditor' => "Weschede Sichahaid derfen bloß Laid mid g'nuch Räschd do mache.",
-	'abusefilter-warning' => "Waanung''': Was du so mache wilschd, werd als uu'erwinschd gseje.
-Wonn's nix isch, werds a glai widda zrigg'gsezd oda gleschd.
+	'abusefilter-intro' => 'Willkumme uffde Owaflesch fa die Hondhawung vunde Missbraisch-Filda.
+Missbraisch-Filda sind selbschdschdendischi Meschanisme, wu vun allä Heuristike uff alle Ännarunge õwende dun.
+Die Owaflesch zaischd ä Lischd vun alle Filda, wu ma a ännare konn.',
+	'abusefilter-mustbeeditor' => 'Weschede Sischahaid derfen bloß Laid mid gnuch Reschd do mache.',
+	'abusefilter-warning' => "'''Bassma uff''': Was du so mache wilschd, werd als uuerwinschd gseje.
+Wonns nix isch, werds a glai widda zrigg'gsezd odda gleschd.
 Wonn des was dudo meamols magschd nix isch, werschd gschberd.
-Wonn deng'ge duschd, die Änarung isch guud, doan konschd a ruhisch waida mache.
+Wonn dengge duschd, die Ännarung isch guud, doan konschd a ruhisch waida mache.
 Ä korzi Schildarung vunde Reschl, wudes ausgleesd kabd hod isch: $1",
-	'abusefilter-disallowed' => 'Was du do mache wilschd, isch werd als schedlisch gseje un isch deswesche vabode worre.
-Wonn menschd, dasses donoi kead, donn gebäm Adminischdrador Bschaid.
+	'abusefilter-disallowed' => 'Was du do mache wilschd, werd als schedlisch gseje un isch deswesche vabode worre.
+Wonn menschd, dasses donoi kead, donn gebem Adminischdrador Bschaid.
 Ä korzi Schildarung vunde Reschl, wudes ausgleesd kabd hod isch: $1',
-	'abusefilter-blocked-display' => "Was du do mache wilschd, isch vun allä als schedlisch gseje worre un deswesche hoschds a ned mache dirfe.
+	'abusefilter-blocked-display' => 'Was du do mache wilschd, isch vun allä als schedlisch gseje worre un deswesche hoschds a ned mache dirfe.
 Um {{SITENAME}} zschidze, isch doi Kondo un a alli domid vabundene IP-Addresse gschberd worre.
-Wonn menschd, dass des falsch isch, doann gebäm Adminischdrador Bschaid.
-Ä korzi Schildarung vunde Reschl, wudes ausg'leesd kabd hod isch: $1",
-	'abusefilter-degrouped' => "Was du do mache wilschd, isch vun allä als schedlisch gseje worre un deswesche hoschds a ned mache dirfe.
-Wail's vielaischd a ganed du selwa bischd, wu do schaffe dud, hodmada alle Räschd mol g'numme.
-Wonn menschd, dass des falsch isch, doann gebäm Bürograd Bschaid un duem alles erkläre.
-Ä korzi Schildarung vunde Reschl, wu valedzd worre isch: $1",
-	'abusefilter-autopromote-blocked' => "Was du do mache wilschd, isch vun allä als schedlisch gseje worre un deswesche hoschds a ned mache dirfe.
-Aus roine Vorsischd hodmada oinischi Räschd voariwwagejend mol g'numme.
-Ä korzi Schildarung vunde Reschl, wu valedzd worre isch: $1",
+Wonn menschd, dass desn Irrdumm isch, doann gebem Adminischdrador Bschaid.
+Ä korzi Schildarung vunde Reschl, wudes ausgleesd kabd hawen isch: $1',
+	'abusefilter-degrouped' => 'Was du do mache wilschd, isch vun allä als schedlisch gseje worre un deswesche hoschds a ned mache dirfe.
+Wails vielaischd a ganed du selwa bischd, wu do schaffe dud, hodmada alle Räschd mol gnumme.
+Wonn menschd, dass des falsch isch, doann gebem Bürograd Bschaid un duem alles erkläre.
+Ä korzi Schildarung vunde Reschl, wu valedzd worre isch: $1',
+	'abusefilter-autopromote-blocked' => 'Was du do mache wilschd, isch vun allä als schedlisch gseje worre un deswesche hoschds a ned mache dirfe.
+Aus roine Vorsischd hodmada oinischi Räschd voariwwagejend mol gnumme.
+Ä korzi Schildarung vunde Reschl, wu valedzd worre isch: $1',
 	'abusefilter-blocker' => 'Filda fa Missbraisch',
-	'abusefilter-blockreason' => 'Du bischd vunäm Filda gschberd worre.
+	'abusefilter-blockreason' => 'Du bischd vunem Filda gschberd worre.
 Ä Schildarung vunde Reschl: $1',
-	'abusefilter-degroupreason' => "Mahodda oinischi Räschd durschn Filda voariwwagejend mol g'numme.
-Ä Schildarung vunde Reschl: $1",
+	'abusefilter-degroupreason' => 'Mahodda oinischi Räschd durschn Filda voariwwagejend mol gnumme.
+Ä Schildarung vunde Reschl: $1',
 	'abusefilter-accountreserved' => 'De Nome isch fade Missbraisch-Filda resawiad.',
-	'right-abusefilter-modify' => 'Oam Missbraisch-Filda schaffe',
-	'right-abusefilter-view' => 'Missbraisch-Filda oagugge',
-	'right-abusefilter-log' => 'Logbuch vum Missbraisch-Filda oagugge',
-	'right-abusefilter-log-detail' => 'Näjares im Logbuch vum Missbraisch-Filda oagugge',
-	'right-abusefilter-private' => 'Briwades im Logbuch vum Missbraisch-Filda oagugge',
-	'right-abusefilter-modify-restricted' => "On Missbraisch-Filda mid oigschr'ngde Agzione schaffe",
-	'right-abusefilter-revert' => "Alle Änarunge vunäm bschdimmde Missbraisch-Filda rigg'gängisch mache",
-	'right-abusefilter-view-private' => 'Briwade Missbraisch-Filda oagugge',
-	'right-abusefilter-log-private' => 'Briwadi Oidräsch vunde Missbraisch-Filda oagugge',
+	'right-abusefilter-modify' => 'Õm Missbraisch-Filda schaffe',
+	'right-abusefilter-view' => 'Missbraisch-Filda õgugge',
+	'right-abusefilter-log' => 'Logbuch vum Missbraisch-Filda õgugge',
+	'right-abusefilter-log-detail' => 'Nejares im Logbuch vum Missbraisch-Filda õgugge',
+	'right-abusefilter-private' => 'Briwades im Logbuch vum Missbraisch-Filda õgugge',
+	'right-abusefilter-modify-restricted' => 'Õn Missbraisch-Filda mid oigschrengdi Agzione schaffe',
+	'right-abusefilter-revert' => "Alle Ännarunge vunem bschdimmde Missbraisch-Filda rigg'gängisch mache",
+	'right-abusefilter-view-private' => 'Briwade Missbraisch-Filda õgugge',
+	'right-abusefilter-log-private' => 'Briwadi Oidräsch vunde Missbraisch-Filda õgugge',
 	'right-abusefilter-hide-log' => 'Oidräsch vum Logbuch fa Missbraisch-Filda vaschdegle',
-	'right-abusefilter-hidden-log' => 'Vaschdegde Oidräsch vum Logbuch fa Missbraisch-Filda oagugge',
+	'right-abusefilter-hidden-log' => 'Vaschdeglde Oidräsch vum Logbuch fa Missbraisch-Filda õgugge',
 	'right-abusefilter-modify-global' => 'Vaäna oder machn globale Missbraisch-Filda',
 	'action-abusefilter-modify' => "n'Missbraisch-Filda ännare",
-	'action-abusefilter-view' => 'Missbraisch-Filda oagugge',
+	'action-abusefilter-view' => 'Missbraisch-Filda õgugge',
 	'action-abusefilter-log' => 'Logbuch vum Missbraisch-Filda õgugge',
-	'action-abusefilter-log-detail' => 'Näjares im Logbuch vum Missbraisch-Filda õgugge',
+	'action-abusefilter-log-detail' => 'Nejares im Logbuch vum Missbraisch-Filda õgugge',
 	'action-abusefilter-private' => 'Briwades im Logbuch vum Missbraisch-Filda õgugge',
 	'action-abusefilter-modify-restricted' => 'Õn Missbraisch-Filda mid oigschrengdi Agzione schaffe',
-	'action-abusefilter-revert' => "Alle Ännarunge vunäm bschdimmde Missbraisch-Filda rigg'gengisch mache",
+	'action-abusefilter-revert' => "Alle Ännarunge vunem bschdimmde Missbraisch-Filda rigg'gengisch mache",
 	'action-abusefilter-view-private' => 'Briwade Missbraisch-Filda õgugge',
 	'abusefilter-log' => 'Logbuch fa Missbraisch-Filda',
 	'abusefilter-log-summary' => "S'Logbuch zaischd ä Lischd vunde Ablaif, wude Filda uffgschnabbd hod.",
@@ -31450,6 +31451,7 @@ Descrierea regulii: $1',
 	'right-abusefilter-log-private' => 'Vizualizează intrările în jurnalul filtrelor de abuz marcate ca private',
 	'right-abusefilter-hide-log' => 'Ascunde intrările în jurnalul de abuzuri',
 	'right-abusefilter-hidden-log' => 'Vizualizează intrările ascunse din jurnalul de abuzuri',
+	'right-abusefilter-modify-global' => 'Creează sau modifică filtre globale de abuz',
 	'action-abusefilter-modify' => 'modifică filtrele de abuz',
 	'action-abusefilter-view' => 'vezi filtrele de abuzare',
 	'action-abusefilter-log' => 'vezi jurnalul de abuzare',
@@ -31542,6 +31544,7 @@ Descrierea filtrului: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => 'Nu ai dreptul de a restaura un statut autoconfirmat.',
 	'abusefilter-reautoconfirm-done' => 'Statutul de autoconfirmat al contului a fost restaurat',
 	'abusefilter-status' => 'Din {{PLURAL:$1|ultima acțiune|ultimele $1 acțiuni|ultimele $1 de acțiuni}}, $2 ($3%) {{PLURAL:$2|a|au}} atins condiția limită de $4 rulări și $5 ($6%) s-{{PLURAL:$5|a|au}} potrivit cu unul dintre filtrele active.',
+	'abusefilter-edit' => 'Modificare filtru abuz',
 	'abusefilter-edit-subtitle' => 'Modificare filtru $1',
 	'abusefilter-edit-subtitle-new' => 'Se creează filtrul',
 	'abusefilter-edit-oldwarning' => '<strong>Modificați o versiune învechită a acestui filtru.
@@ -31612,6 +31615,7 @@ Rugați un utilizator cu permisiuni de adăugare a acțiunilor restricționate s
 	'abusefilter-edit-bad-tags' => 'Una sau mai multe dintre etichetele pe care le-ați specificat nu este/sunt corectă/e.
 Etichetele trebuie să fie scurte și nu trebuie să conțină caractere speciale.',
 	'abusefilter-edit-notallowed' => 'Nu aveți permisiunea de a crea sau modifica filtre de abuz',
+	'abusefilter-edit-notallowed-global' => 'Nu vă sunt permise crearea sau modificarea filtrelor globale de abuz',
 	'abusefilter-edit-builder-select' => 'Selectați opțiunea care să fie adăugată la cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operatori aritmetici',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adunare (+)',
@@ -31643,6 +31647,7 @@ Etichetele trebuie să fie scurte și nu trebuie să conțină caractere special
 	'abusefilter-edit-builder-group-funcs' => 'Funcții',
 	'abusefilter-edit-builder-funcs-length' => 'Lungimea șirului (lungime)',
 	'abusefilter-edit-builder-funcs-lcase' => 'În majuscule (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'Convertire în majuscule (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalizează caracterele confuze (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Şterge caracterele duble (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Caractere speciale / total caractere (specialratio)',
@@ -31672,6 +31677,7 @@ Etichetele trebuie să fie scurte și nu trebuie să conțină caractere special
 	'abusefilter-edit-builder-vars-article-ns' => 'Spațiul de nume al paginii',
 	'abusefilter-edit-builder-vars-article-text' => 'Titlul paginii (fără spațiu de nume)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Titlul complet al paginii',
+	'abusefilter-edit-builder-vars-article-views' => 'Vizualizări ale paginii',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'ID-ul paginii sursă de redenumit',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Spațiul de nume al paginii sursă de redenumit',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Titlul paginii sursă de redenumit',
@@ -31815,6 +31821,8 @@ Pentru informații complete, vedeți [[Special:AbuseFilter/history|lista]] cu sc
 	'abusefilter-diff-pattern' => 'Condiții de filtrare',
 	'abusefilter-diff-invalid' => 'Nu se pot aduce versiunile solicitate',
 	'abusefilter-diff-backhistory' => 'Înapoi la istoricul filtrului',
+	'abusefilter-diff-prev' => 'Modificare anterioară',
+	'abusefilter-diff-next' => 'Modificare ulterioară',
 	'abusefilter-import-intro' => 'Puteți folosi această interfață pentru a importa filtre din alte wikiuri.
 În wikiul sursă, apăsați „{{int:abusefilter-edit-export}}” din „{{int:abusefilter-edit-tools}}”, în cadrul interfeței de editare.
 Copiați conținutul din caseta care apare și lipiți-l în această casetă de text, după care apăsați „{{int:abusefilter-import-submit}}”.',
@@ -41616,6 +41624,7 @@ Tó bá jẹ́ pé àsìṣe ló ṣẹlẹ̀, ẹ jọ̀wọ́ ẹ fi tó olùm
 	'abusefilter-log-search-user' => 'Oníṣe:',
 	'abusefilter-log-search-filter' => 'Nọ́mbà Ìdámọ̀ Ajọ̀:',
 	'abusefilter-log-search-title' => 'Àkọlé:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Àwárí',
 	'abusefilter-log-noactions' => 'kankan',
 	'abusefilter-log-details-diff' => 'Àwọn ìyípadà nínú àtúnṣe',
