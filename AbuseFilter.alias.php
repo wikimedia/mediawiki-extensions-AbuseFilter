@@ -67,6 +67,12 @@ $specialPageAliases['ca'] = array(
 	'AbuseLog' => array( 'Registre_dels_abusos' ),
 );
 
+/** Chechen (нохчийн) */
+$specialPageAliases['ce'] = array(
+	'AbuseLog' => array( 'Зулам_литтаран_тептар' ),
+	'AbuseFilter' => array( 'Зулам_литтар' ),
+);
+
 /** Czech (česky) */
 $specialPageAliases['cs'] = array(
 	'AbuseLog' => array( 'Záznam_filtrů_zneužití' ),

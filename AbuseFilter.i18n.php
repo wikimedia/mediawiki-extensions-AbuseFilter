@@ -29068,9 +29068,9 @@ $messages['pfl'] = array(
 	'abusefilter' => 'Siewb-Oischdellunge gesche Missbraisch',
 	'abuselog' => 'Logbuch fa Missbraisch',
 	'abusefilter-intro' => 'Willkumme uffde Owaflesch fa die Hondhawung vunde Missbraisch-Siewb.
-Missbraisch-Siewb sind selbschdschdendischi Voarischdunge, wu vun allä Medoode uff alle Ännarunge õwende dun.
+Missbraisch-Siewb sind selbschdschdendischi Voarischdunge, wu vun alle Medoode uff alle Ännarunge õwende dun.
 Die Owaflesch zaischd ä Lischd vun alle Siewb, wu ma a ännare konn.',
-	'abusefilter-mustbeeditor' => 'Weschede Sischahaid derfen bloß Laid mid gnuch Reschd do mache.',
+	'abusefilter-mustbeeditor' => 'Weschede Sischahaid derfn bloß Laid mid gnuch Reschd do mache.',
 	'abusefilter-warning' => "'''Bassma uff''': Was du so mache wilschd, wead als uuerwinschd gseje.
 Wonns nix isch, weads a glai widda zrigg'gsezd odda gleschd.
 Wonn des was dudo meamols magschd nix isch, weaschd gschberd.
@@ -29101,7 +29101,7 @@ Aus roine Vorsischd hodmada oinischi Räschd voariwwagejend mol gnumme.
 	'right-abusefilter-log' => 'Logbuch vum Missbraisch-Siewb õgugge',
 	'right-abusefilter-log-detail' => 'Nejares im Logbuch vum Missbraisch-Siewb õgugge',
 	'right-abusefilter-private' => 'Briwades im Logbuch vum Missbraisch-Siewb õgugge',
-	'right-abusefilter-modify-restricted' => 'Õn Missbraisch-Siewb mid oigschrengdi Maßnohme schaffe',
+	'right-abusefilter-modify-restricted' => 'Õn Missbraisch-Siewb mid oigschrengdi Maßnõhme schaffe',
 	'right-abusefilter-revert' => "Alli Ännarunge vunem bschdimmde Missbraisch-Siewb rigg'gängisch mache",
 	'right-abusefilter-view-private' => 'Briwade Missbraisch-Siewb õgugge',
 	'right-abusefilter-log-private' => 'Briwadi Oidräsch vunde Missbraisch-Siewb õgugge',
@@ -29113,7 +29113,7 @@ Aus roine Vorsischd hodmada oinischi Räschd voariwwagejend mol gnumme.
 	'action-abusefilter-log' => 'Logbuch vum Missbraisch-Siewb õgugge',
 	'action-abusefilter-log-detail' => 'Nejares im Logbuch vum Missbraisch-Siewb õgugge',
 	'action-abusefilter-private' => 'Briwades im Logbuch vum Missbraisch-Siewb õgugge',
-	'action-abusefilter-modify-restricted' => 'Õn Missbraisch-Siewb midd oigschrengdi Maßnohme schaffe',
+	'action-abusefilter-modify-restricted' => 'Õn Missbraisch-Siewb midd oigschrengdi Maßnõhme schaffe',
 	'action-abusefilter-revert' => "Alle Ännarunge vunem bschdimmde Missbraisch-Siewb rigg'gengisch mache",
 	'action-abusefilter-view-private' => 'Briwade Missbraisch-Siewb õgugge',
 	'abusefilter-log' => 'Logbuch fa Missbraisch-Siewb',
@@ -29138,7 +29138,7 @@ Schildarung vum Siewb: $7 ($8)',
 	'abusefilter-log-details-legend' => 'Nejares zum Oidrach $1 vum Logbuch',
 	'abusefilter-log-details-var' => 'Vaänalischi',
 	'abusefilter-log-details-val' => 'Werd',
-	'abusefilter-log-details-vars' => 'Greeß fa Maßnohme',
+	'abusefilter-log-details-vars' => 'Greeß fa Maßnõhme',
 	'abusefilter-log-details-private' => 'Briwadi Daade',
 	'abusefilter-log-details-ip' => 'Uaschbrungs-IP-Adress',
 	'abusefilter-log-noactions' => 'känn',
