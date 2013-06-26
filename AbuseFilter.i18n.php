@@ -249,6 +249,7 @@ Please ask a user with permission to add restricted actions to make the change f
 Tags should be short, and they should not contain special characters.',
 	'abusefilter-edit-notallowed' => 'You are not permitted to create or edit abuse filters',
 	'abusefilter-edit-notallowed-global' => 'You are not permitted to create or edit global abuse filters',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'Custom warning messages are not supported for global filters',
 
 	// Filter editing helpers
 	'abusefilter-edit-builder-select' => 'Select an option to add it at the cursor',
@@ -794,6 +795,7 @@ See also:
 	'abusefilter-edit-bad-tags' => 'Status message for filter test.',
 	'abusefilter-edit-notallowed' => 'Error message when trying to modify a filter while not allowed.',
 	'abusefilter-edit-notallowed-global' => 'Error message when trying to modify a global filter while not allowed.',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'Error message when trying to add a custom warning message to a global filter, which is not allowed.',
 	'abusefilter-edit-builder-select' => 'Default value for dropdown menu that allows inserting abuse filter syntax in the filter definition field.',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Group entry in dropdown menu.',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-op-arithmetic}}.',

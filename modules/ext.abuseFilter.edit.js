@@ -238,6 +238,24 @@
 		}
 	}
 
+	/**
+	 * Remove the options for warning messages if the filter is set to global
+	 */
+	function toggleCustomMessages() {
+		// Use the table over here as hideDeselectedActions might alter the visibility of the div
+		var $warnOptions = $( '#mw-abusefilter-warn-parameters > table' );
+
+		if ( $( '#wpFilterGlobal' ).is( ':checked' ) ) {
+			// It's a global filter, so use the default message and hide the option from the user
+			$( '#mw-abusefilter-warn-message-existing option[value="abusefilter-warning"]' )
+				.prop( 'selected', true );
+
+			$warnOptions.hide();
+		} else {
+			$warnOptions.show();
+		}
+	}
+
 	// On ready initialization
 	$( document ).ready( function() {
 		$filterBox = $( '#' + mw.config.get( 'abuseFilterBoxName' ) );
@@ -255,6 +273,9 @@
 		$( '#mw-abusefilter-warn-edit-button' ).click( editWarnMessage );
 		$( 'input.mw-abusefilter-action-checkbox' ).click( hideDeselectedActions );
 		hideDeselectedActions();
+
+		$( '#wpFilterGlobal' ).change( toggleCustomMessages );
+		toggleCustomMessages();
 
 		$( '#mw-abusefilter-syntaxcheck' ).click( doSyntaxCheck );
 		$( '#wpFilterBuilder' ).change( addText );

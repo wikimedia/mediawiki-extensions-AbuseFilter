@@ -66,6 +66,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				return;
 			}
 
+			// Don't allow custom messages on global rules
+			if ( $newRow->af_global == 1 && $request->getVal( 'wpFilterWarnMessage' ) !== 'abusefilter-warning' ) {
+				$out->addWikiMsg( 'abusefilter-edit-notallowed-global-custom-msg' );
+				return;
+			}
+
 			$origActions = $newRow->mOriginalActions;
 			unset( $newRow->mOriginalRow );
 			unset( $newRow->mOriginalActions );
