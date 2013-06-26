@@ -400,17 +400,6 @@ class SpecialAbuseLog extends SpecialPage {
 		return $wgUser->isAllowed( 'abusefilter-hidden-log' );
 	}
 
-	function doBatchLookups() {
-		$this->mResult->seek( 0 );
-
-		$userIds = array();
-		foreach ( $this->mResult as $row ) {
-			$userIds[] = $row->afl_user;
-		}
-
-		UserCache::singleton()->doQuery( $userIds, array( 'userpage', 'usertalk' ), __METHOD__ );
-	}
-
 	/**
 	 * @param $row
 	 * @param $li bool
@@ -450,14 +439,12 @@ class SpecialAbuseLog extends SpecialPage {
 			}
 		}
 
-		$name = UserCache::singleton()->getUserName( $row->afl_user, $row->afl_user_text );
-
 		if ( !$row->afl_wiki ) {
 			// Local user
-			$userLink = Linker::userLink( $row->afl_user, $name ) .
-					Linker::userToolLinks( $row->afl_user, $name, true );
+			$userLink = Linker::userLink( $row->afl_user, $row->afl_user_text ) .
+					Linker::userToolLinks( $row->afl_user, $row->afl_user_text, true );
 		} else {
-			$userLink = WikiMap::foreignUserLink( $row->afl_wiki, $name );
+			$userLink = WikiMap::foreignUserLink( $row->afl_wiki, $row->afl_user_text );
 			$userLink .= ' (' . WikiMap::getWikiName( $row->afl_wiki ) . ')';
 		}
 

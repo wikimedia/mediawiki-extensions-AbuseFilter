@@ -185,7 +185,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			'meta' => array(
 				'history_id' => $row->afh_id,
 				'modified_by' => $row->afh_user,
-				'modified_by_text' => UserCache::singleton()->getUserName( $row->afh_user, $row->afh_user_text ),
+				'modified_by_text' => $row->afh_user_text,
 				'modified' => $row->afh_timestamp,
 			),
 			'info' => array(

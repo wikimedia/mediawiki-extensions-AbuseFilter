@@ -225,17 +225,6 @@ class AbuseFilterPager extends TablePager {
 		return $headers;
 	}
 
-	function doBatchLookups() {
-		$this->mResult->seek( 0 );
-
-		$userIds = array();
-		foreach ( $this->mResult as $row ) {
-			$userIds[] = $row->af_user;
-		}
-
-		UserCache::singleton()->doQuery( $userIds, array( 'userpage', 'usertalk' ), __METHOD__ );
-	}
-
 	function formatValue( $name, $value ) {
 		$lang = $this->getLanguage();
 		$row = $this->mCurrentRow;
@@ -289,22 +278,22 @@ class AbuseFilterPager extends TablePager {
 				}
 				return $link;
 			case 'af_timestamp':
-				$name = UserCache::singleton()->getUserName( $row->af_user, $row->af_user_text );
 				$userLink =
 					Linker::userLink(
 						$row->af_user,
-						$name
+						$row->af_user_text
 					) .
 					Linker::userToolLinks(
 						$row->af_user,
-						$name
+						$row->af_user_text
 					);
+				$user = $row->af_user_text;
 				return $this->msg( 'abusefilter-edit-lastmod-text' )
 					->rawParams( $lang->timeanddate( $value, true ),
 						$userLink,
 						$lang->date( $value, true ),
 						$lang->time( $value, true ),
-						$name
+						$user
 				)->parse();
 			case 'af_group':
 				return AbuseFilter::nameGroup( $value );
@@ -388,9 +377,10 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 				}
 				return $this->msg( 'abusefilter-hitcount' )->numParams( $value )->parse();
 			case 'af_timestamp':
+				$user = $row->af_user_text;
 				return $this->msg(
 					'abusefilter-edit-lastmod-text',
-					$lang->timeanddate( $value, true ), UserCache::singleton()->getUserName( $row->af_user, $row->af_user_text )
+					$lang->timeanddate( $value, true ), $user
 				)->parse();
 			case 'af_group':
 				// If this is global, local name probably doesn't exist, but try

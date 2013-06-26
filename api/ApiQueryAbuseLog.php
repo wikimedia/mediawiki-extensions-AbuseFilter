@@ -84,7 +84,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$this->addFields( 'afl_deleted' );
 		$this->addFields( 'afl_filter' );
 		$this->addFieldsIf( 'afl_id', $fld_ids );
-		$this->addFieldsIf( array( 'afl_user', 'afl_user_text' ), $fld_user );
+		$this->addFieldsIf( 'afl_user_text', $fld_user );
 		$this->addFieldsIf( 'afl_ip', $fld_ip );
 		$this->addFieldsIf( array( 'afl_namespace', 'afl_title' ), $fld_title );
 		$this->addFieldsIf( 'afl_action', $fld_action );
@@ -142,12 +142,6 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		}
 		$res = $this->select( __METHOD__ );
 
-		$userIds = array();
-		foreach ( $res as $row ) {
-			$userIds[] = $row->afl_user;
-		}
-		UserCache::singleton()->doQuery( $userIds, array(), __METHOD__ );
-
 		$count = 0;
 		foreach ( $res as $row ) {
 			if ( ++$count > $params['limit'] ) {
@@ -173,7 +167,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				$entry['filter'] = $row->af_public_comments;
 			}
 			if ( $fld_user ) {
-				$entry['user'] = UserCache::singleton()->getUserName( $row->afl_user, $row->afl_user_text );
+				$entry['user'] = $row->afl_user_text;
 			}
 			if ( $fld_ip ) {
 				$entry['ip'] = $row->afl_ip;

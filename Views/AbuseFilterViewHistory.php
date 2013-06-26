@@ -115,15 +115,6 @@ class AbuseFilterHistoryPager extends TablePager {
 		return $headers;
 	}
 
-	function doBatchLookups() {
-		$userIds = array();
-		foreach ( $this->mResult as $row ) {
-			$userIds[] = $row->afh_user;
-		}
-
-		UserCache::singleton()->doQuery( $userIds, array( 'userpage', 'usertalk' ), __METHOD__ );
-	}
-
 	function formatValue( $name, $value ) {
 		$lang = $this->getLanguage();
 
@@ -139,10 +130,9 @@ class AbuseFilterHistoryPager extends TablePager {
 				$formatted = Linker::link( $title, $lang->timeanddate( $row->afh_timestamp, true ) );
 				break;
 			case 'afh_user_text':
-				$name = UserCache::singleton()->getUserName( $row->afh_user, $row->afh_user_text );
 				$formatted =
-					Linker::userLink( $row->afh_user, $name ) . ' ' .
-					Linker::userToolLinks( $row->afh_user, $name );
+					Linker::userLink( $row->afh_user, $row->afh_user_text ) . ' ' .
+					Linker::userToolLinks( $row->afh_user, $row->afh_user_text );
 				break;
 			case 'afh_public_comments':
 				$formatted = htmlspecialchars( $value, ENT_QUOTES, 'UTF-8', false );

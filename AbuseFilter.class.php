@@ -957,13 +957,6 @@ class AbuseFilter {
 
 		$local_log_ids = array();
 		global $wgAbuseFilterNotifications, $wgAbuseFilterNotificationsPrivate;
-
-		$userIds = array();
-		foreach ( $log_rows as $index => $data ) {
-			$userIds[] = $data['afl_user'];
-		}
-		UserCache::singleton()->doQuery( $userIds, array(), __METHOD__ );
-
 		foreach ( $log_rows as $index => $data ) {
 			$data['afl_var_dump'] = $var_dump;
 			$data['afl_id'] = $dbw->nextSequenceValue( 'abuse_filter_log_afl_id_seq' );
@@ -978,7 +971,7 @@ class AbuseFilter {
 				// Construct a user object
 				$user = new User();
 				$user->setId( $data['afl_user'] );
-				$user->setName( UserCache::singleton()->getUserName( $data['afl_user'], $data['afl_user_text'] ) );
+				$user->setName( $data['afl_user_text'] );
 				$entry->setPerformer( $user );
 				// Set action target
 				$entry->setTarget( Title::makeTitle( $data['afl_namespace'], $data['afl_title'] ) );

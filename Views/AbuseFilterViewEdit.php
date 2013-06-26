@@ -477,11 +477,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				)
 			);
 			// Last modification details
-			$userName = UserCache::singleton()->getUserName( $row->af_user, $row->af_user_text );
-
 			$userLink =
-				Linker::userLink( $row->af_user, $userName ) .
-				Linker::userToolLinks( $row->af_user, $userName );
+				Linker::userLink( $row->af_user, $row->af_user_text ) .
+				Linker::userToolLinks( $row->af_user, $row->af_user_text );
+			$userName = $row->af_user_text;
 			$fields['abusefilter-edit-lastmod'] =
 				$this->msg( 'abusefilter-edit-lastmod-text' )
 				->rawParams(
