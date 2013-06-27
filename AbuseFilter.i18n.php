@@ -1003,6 +1003,7 @@ This appears to be a verb.
 {{Identical|Load}}',
 	'abusefilter-test-syntaxerr' => '"Check Syntax" is the same as {{msg-mw|abusefilter-edit-check}}.',
 	'abusefilter-examine-user' => '{{Identical|User}}',
+	'abusefilter-examine-title' => '{{Identical|Page title}}',
 	'abusefilter-examine-submit' => '{{Identical|Search}}',
 	'abusefilter-topnav-home' => '{{Identical|Home}}',
 	'abusefilter-log-name' => '{{doc-logpage}}',
@@ -7031,6 +7032,7 @@ $messages['ce'] = array(
 	'abusefilter-topnav-home' => 'Юьхьигé',
 	'abusefilter-topnav-examine' => 'Хийцамашка къестош хьажар',
 	'abusefilter-diff-title' => 'Версешан башхалла',
+	'abusefilter-group-default' => 'Iад йитарца',
 );
 
 /** Sorani Kurdish (کوردی)
