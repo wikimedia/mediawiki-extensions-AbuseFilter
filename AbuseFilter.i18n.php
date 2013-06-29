@@ -525,7 +525,8 @@ Copy from the textbox that appears, and paste it into this textbox, then click "
 $messages['qqq'] = array(
 	'abusefilter-desc' => '{{desc|name=Abuse Filter|url=http://www.mediawiki.org/wiki/Extension:AbuseFilter}}',
 	'abusefilter' => '{{doc-special|AbuseFilter}}',
-	'abuselog' => '{{doc-special|AbuseLog}}',
+	'abuselog' => '{{doc-special|AbuseLog}}
+{{Identical|Abuse log}}',
 	'abusefilter-intro' => 'Introduction text for the list of filter rules.',
 	'abusefilter-mustbeeditor' => '"No access" message shown when a user does not have access rights.',
 	'abusefilter-warning' => 'A warning message shown when a user tries to save an edit which matches some abuse filter rule. Parameters:
@@ -613,7 +614,8 @@ $messages['qqq'] = array(
 	'abusefilter-log-noactions' => 'Text displayed in Special:AbuseLog when a rule was triggered, but no action was taken.
 {{Identical|None}}',
 	'abusefilter-log-details-diff' => 'Header for differences between two edits in log details.',
-	'abusefilter-log-linkoncontribs' => 'Link text added on [[Special:Contributions]] and other relevant special pages.',
+	'abusefilter-log-linkoncontribs' => 'Link text added on [[Special:Contributions]] and other relevant special pages.
+{{Identical|Abuse log}}',
 	'abusefilter-log-linkoncontribs-text' => 'Title for link added on [[Special:Contributions]] and other relevant special pages.',
 	'abusefilter-log-hidden' => 'Text for a hidden log entry.',
 	'abusefilter-log-hidden-implicit' => 'Explanatory text to be shown beside an abuse filter log entry if it cannot be viewed due to its corresponding revision being hidden',
@@ -669,7 +671,8 @@ Followed by the fieldset label {{msg-mw|Abusefilter-list-options}}.',
 * $1 is the number of hits.',
 	'abusefilter-new' => 'Link text for creating a new abuse filter.',
 	'abusefilter-return' => 'Link displayed when filtering abuse filters without results.',
-	'abusefilter-status-global' => 'Abuse filter status. Means that it is active on all wikis in a farm.',
+	'abusefilter-status-global' => 'Abuse filter status. Means that it is active on all wikis in a farm.
+{{Identical|Global}}',
 	'abusefilter-list-options' => 'Fieldset legend for abuse filter filter options.
 {{Identical|Options}}',
 	'abusefilter-list-options-deleted' => 'Field label in filter form.',
@@ -677,7 +680,8 @@ Followed by the fieldset label {{msg-mw|Abusefilter-list-options}}.',
 	'abusefilter-list-options-deleted-hide' => 'Radio button label in filter form.',
 	'abusefilter-list-options-deleted-show' => 'Radio button label in filter form.',
 	'abusefilter-list-options-scope' => 'Field label in the filter form, for radio buttons selecting which category of filters to show',
-	'abusefilter-list-options-scope-local' => 'Radio button indicating that local rules should be shown',
+	'abusefilter-list-options-scope-local' => 'Radio button indicating that local rules should be shown.
+{{Identical|Local wiki}}',
 	'abusefilter-list-options-scope-global' => 'Radio button indicating that global rules should be shown',
 	'abusefilter-list-options-disabled' => 'Field label in filter form.',
 	'abusefilter-list-options-hidedisabled' => 'Radio button label in filter form.',
@@ -814,7 +818,8 @@ See also:
 	'abusefilter-edit-builder-op-bool-and' => 'Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-op-bool}}.',
 	'abusefilter-edit-builder-op-bool-or' => 'Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-op-bool}}.',
 	'abusefilter-edit-builder-op-bool-xor' => 'Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-op-bool}}. {{optional}}',
-	'abusefilter-edit-builder-group-misc' => 'Group entry in dropdown menu.',
+	'abusefilter-edit-builder-group-misc' => 'Group entry in dropdown menu.
+{{Identical|Miscellaneous}}',
 	'abusefilter-edit-builder-misc-in' => '{{doc-important|Do not translate "in".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|Abusefilter-edit-builder-group-misc}}.',
 	'abusefilter-edit-builder-misc-like' => '{{doc-important|Do not translate "like".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|Abusefilter-edit-builder-group-misc}}.',
 	'abusefilter-edit-builder-misc-rlike' => '{{doc-important|Do not translate "rlike".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|Abusefilter-edit-builder-group-misc}}.',
@@ -892,6 +897,7 @@ See also {{msg-mw|Abusefilter-edit-builder-vars-restrictions-edit}}, {{msg-mw|Ab
 * (optional) $2 is the plain text user name",
 	'abusefilter-history-hidden' => '{{Identical|Hidden}}',
 	'abusefilter-history-enabled' => '{{Identical|Enabled}}',
+	'abusefilter-history-global' => '{{Identical|Global}}',
 	'abusefilter-history-timestamp' => 'Used in history page of a filter.
 
 {{Identical|Time}}',
@@ -902,6 +908,7 @@ See also {{msg-mw|Abusefilter-edit-builder-vars-restrictions-edit}}, {{msg-mw|Ab
 	'abusefilter-history-deleted' => '{{Identical|Deleted}}',
 	'abusefilter-history-filterid' => '{{Identical|Filter}}',
 	'abusefilter-history-select-user' => '{{Identical|User}}',
+	'abusefilter-history-diff' => '{{Identical|Change}}',
 	'abusefilter-exception-unexpectedatend' => "Error message from the abuse filter parser.
 Parameters:
 * $1 - Position in the string
@@ -995,6 +1002,7 @@ This appears to be a verb.
 	'abusefilter-revert-reason' => 'Parameters:
 * $1 is a filter ID
 * $2 is a reason',
+	'abusefilter-revert-reasonfield' => '{{Identical|Reason}}',
 	'abusefilter-test-intro' => '"Load" refers to the contents of {{msg-mw|abusefilter-test-load}}.',
 	'abusefilter-test-legend' => 'Caption of the fieldset on [[Special:AbuseFilter/test]]',
 	'abusefilter-test-submit' => 'Caption of the submit button on [[Special:AbuseFilter/test]].
@@ -1006,9 +1014,11 @@ This appears to be a verb.
 	'abusefilter-examine-title' => '{{Identical|Page title}}',
 	'abusefilter-examine-submit' => '{{Identical|Search}}',
 	'abusefilter-topnav-home' => '{{Identical|Home}}',
+	'abusefilter-topnav-log' => '{{Identical|Abuse log}}',
 	'abusefilter-log-name' => '{{doc-logpage}}',
 	'abusefilter-log-entry-modify' => '* $1 is a link to the filter
 * $2 is a link to the filter change details',
+	'abusefilter-log-noresults' => '{{Identical|No result}}',
 	'abusefilter-diff-title' => 'Similar to {{msg-mw|Difference}}',
 	'abusefilter-diff-item' => '{{Identical|Item}}',
 	'abusefilter-diff-version' => 'Message is used in two scenarios.
@@ -10196,6 +10206,7 @@ $messages['en-gb'] = array(
  * @author AVRS
  * @author Amikeco
  * @author Blahma
+ * @author KuboF
  * @author Objectivesea
  * @author Tradukisto
  * @author Yekrats
@@ -10443,7 +10454,7 @@ Etikedoj devas esti mallonga, kaj ili ne devas enhavi specialajn signojn.',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Specialaj signoj / ĉiuj signoj (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Normigi (norm)',
 	'abusefilter-edit-builder-funcs-count' => 'Nombro de fojoj ke bitĉeno X aperas en bitĉeno Y (count)',
-	'abusefilter-edit-builder-funcs-rcount' => 'Kiom  regulara esprimo X aperas en signoĉeno Y (rcount)',
+	'abusefilter-edit-builder-funcs-rcount' => 'Kiom da fojoj regulara esprimo X aperas en signoĉeno Y (rcount)',
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Forigi blankspacon (rmwhitespace)',
 	'abusefilter-edit-builder-funcs-rmspecials' => 'Forigi specialajn signojn (rmspecials)',
 	'abusefilter-edit-builder-funcs-ip_in_range' => 'Ĉu IP-adreso estas en intervalo? (ip_in_range)',
@@ -10520,7 +10531,7 @@ Etikedoj devas esti mallonga, kaj ili ne devas enhavi specialajn signojn.',
 	'abusefilter-history-select-submit' => 'Rafini',
 	'abusefilter-history-diff' => 'Ŝanĝoj',
 	'abusefilter-history-error-hidden' => 'La filtrilo kiun vi petis estas kaŝita, kaj vi ne povas vidi ĝian historion.',
-	'abusefilter-exception-unexpectedatend' => 'Neatentita "$2" ĉe signo $1.',
+	'abusefilter-exception-unexpectedatend' => 'Neatendita "$2" ĉe signo $1.',
 	'abusefilter-exception-expectednotfound' => 'Atentis $2 ĉe signo $1, ne estis trovita (trovis $3 $4 anstataŭe).',
 	'abusefilter-exception-unrecognisedkeyword' => 'Nekonata ŝlosilvorto $2 ĉe signo $1.',
 	'abusefilter-exception-unexpectedtoken' => 'Neatentita tokeno "$3" (de tipo $2) ĉe signo $1.',
@@ -29505,6 +29516,7 @@ Kobiaschda de Qwellcode, fiegschn do oi un gliggschd uff die Schaldflesch „{{i
  * @author Olgak85
  * @author Sovq
  * @author Sp5uhe
+ * @author Woytecr
  */
 $messages['pl'] = array(
 	'abusefilter-desc' => 'Zastosowanie automatycznej heurystyki do edycji',
@@ -29744,6 +29756,7 @@ Oznaczenia powinny być krótkie i nie powinny zawierać znaków specjalnych.',
 	'abusefilter-edit-builder-group-funcs' => 'Funkcje',
 	'abusefilter-edit-builder-funcs-length' => 'Długość ciągu znaków (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Na małe litery (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'Na duże litery (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalizacja kłopotliwych znaków (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Usuwanie powtarzających się znaków (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Znaki specjalne / suma znaków (specialratio)',
@@ -36833,7 +36846,7 @@ Kopiera från textrutan som kommer fram och klistra in det till denna ruta. Klic
  */
 $messages['sw'] = array(
 	'abusefilter-log-search-user' => 'Mtumiaji:',
-	'abusefilter-log-search-title' => 'Cheo:',
+	'abusefilter-log-search-title' => 'Kichwa:',
 	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Tafuta',
 	'abusefilter-log-detailslink' => 'Maelezo zaidi',
