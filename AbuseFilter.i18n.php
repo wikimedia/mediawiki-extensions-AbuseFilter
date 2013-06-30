@@ -533,22 +533,27 @@ $messages['qqq'] = array(
 	'abusefilter-intro' => 'Introduction text for the list of filter rules.',
 	'abusefilter-mustbeeditor' => '"No access" message shown when a user does not have access rights.',
 	'abusefilter-warning' => 'A warning message shown when a user tries to save an edit which matches some abuse filter rule. Parameters:
-* $1 is a short description of the abuse filter rule which triggered this action.',
+* $1 is a short description of the abuse filter rule which triggered this action
+* $2 is the filter id',
 	'abusefilter-disallowed' => 'Message given to user because of a triggered filter. Parameters:
-* $1 is a filter description.',
+* $1 is a filter description
+* $2 is the filter id',
 	'abusefilter-blocked-display' => 'Message given to user because of a triggered filter. Parameters:
-* * $1 is a filter description.',
+* $1 is a filter description
+* $2 is the filter id',
 	'abusefilter-degrouped' => 'Message given to user because of a triggered filter. Parameters:
-* * $1 is a filter description.',
+* $1 is a filter description
+* $2 is the filter id',
 	'abusefilter-autopromote-blocked' => 'Message given to user because of a triggered filter. Parameters:
-* $1 is a filter description.',
+* $1 is a filter description
+* $2 is the filter id',
 	'abusefilter-blocker' => 'Username of reserved user for abuse filter actions.',
 	'abusefilter-blockreason' => 'Message given to user because of a triggered filter. Parameters:
-* $1 is a filter description.',
-	'abusefilter-degroupreason' => 'Used as log entry when removal of the user from all privileged groups performed by Abuse filter.
-
-Parameters:
-* $1 - rule description (reason)',
+* $1 is a filter description
+* $2 is the filter id',
+	'abusefilter-degroupreason' => 'Used as log entry when removal of the user from all privileged groups performed by Abuse filter. Parameters:
+* $1 is the filter description (reason)
+* $2 is the filter id',
 	'abusefilter-accountreserved' => 'Message given when trying to register a reserved account name for AbuseFilter actions.',
 	'right-abusefilter-modify' => '{{doc-right|abusefilter-modify}}',
 	'right-abusefilter-view' => '{{doc-right|abusefilter-view}}',

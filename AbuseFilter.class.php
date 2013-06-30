@@ -787,7 +787,8 @@ class AbuseFilter {
 			foreach ( $actions as $action => $info ) {
 				$newMsg = self::takeConsequenceAction(
 					$action, $info['parameters'], $title, $vars,
-					self::$filters[$filter]->af_public_comments
+					self::$filters[$filter]->af_public_comments,
+					$filter
 				);
 
 				if ( $newMsg !== null ) {
@@ -1196,6 +1197,7 @@ class AbuseFilter {
 	 * @param $title Title
 	 * @param $vars AbuseFilterVariableHolder
 	 * @param $rule_desc
+	 * @param $rule_number int|string
 	 *
 	 * @return array|null a message describing the action that was taken,
 	 *         or null if no action was taken. The message is given as an array
@@ -1207,7 +1209,7 @@ class AbuseFilter {
 	 *        not accept Message objects to be added directly.
 	 */
 	public static function takeConsequenceAction( $action, $parameters, $title,
-		$vars, $rule_desc )
+		$vars, $rule_desc, $rule_number )
 	{
 		global $wgAbuseFilterCustomActionsHandlers, $wgRequest;
 
@@ -1216,12 +1218,13 @@ class AbuseFilter {
 		switch ( $action ) {
 			case 'disallow':
 				if ( strlen( $parameters[0] ) ) {
-					$message = array( $parameters[0], $rule_desc );
+					$message = array( $parameters[0], $rule_desc, $rule_number );
 				} else {
 					// Generic message.
 					$message = array(
 						'abusefilter-disallowed',
-						$rule_desc
+						$rule_desc,
+						$rule_number
 					);
 				}
 				break;
@@ -1236,7 +1239,8 @@ class AbuseFilter {
 				$block->setBlocker( $filterUser );
 				$block->mReason = wfMessage(
 					'abusefilter-blockreason',
-					$rule_desc
+					$rule_desc,
+					$rule_number
 				)->inContentLanguage()->text();
 				$block->isHardblock( false );
 				$block->isAutoblocking( true );
@@ -1266,13 +1270,14 @@ class AbuseFilter {
 				$log = new LogPage( 'block' );
 				$log->addEntry( 'block',
 					Title::makeTitle( NS_USER, $wgUser->getName() ),
-					wfMessage( 'abusefilter-blockreason', $rule_desc )->inContentLanguage()->text(),
+					wfMessage( 'abusefilter-blockreason', $rule_desc, $rule_number )->inContentLanguage()->text(),
 					$logParams, self::getFilterUser()
 				);
 
 				$message = array(
 					'abusefilter-blocked-display',
-					$rule_desc
+					$rule_desc,
+					$rule_number
 				);
 				break;
 			case 'rangeblock':
@@ -1286,7 +1291,8 @@ class AbuseFilter {
 				$block->setBlocker( $filterUser );
 				$block->mReason = wfMessage(
 					'abusefilter-blockreason',
-					$rule_desc
+					$rule_desc,
+					$rule_number
 				)->inContentLanguage()->text();
 				$block->isHardblock( false );
 				$block->prevents( 'createaccount', true );
@@ -1303,13 +1309,14 @@ class AbuseFilter {
 
 				$log = new LogPage( 'block' );
 				$log->addEntry( 'block', Title::makeTitle( NS_USER, $range ),
-					wfMessage( 'abusefilter-blockreason', $rule_desc )->inContentLanguage()->text(),
+					wfMessage( 'abusefilter-blockreason', $rule_desc, $rule_number )->inContentLanguage()->text(),
 					$logParams, self::getFilterUser()
 				);
 
 				$message = array(
 					'abusefilter-blocked-display',
-					$rule_desc
+					$rule_desc,
+					$rule_number
 				);
 				break;
 			case 'degroup':
@@ -1324,7 +1331,8 @@ class AbuseFilter {
 
 					$message = array(
 						'abusefilter-degrouped',
-						$rule_desc
+						$rule_desc,
+						$rule_number
 					);
 
 					// Don't log it if there aren't any groups being removed!
@@ -1337,7 +1345,7 @@ class AbuseFilter {
 
 					$log->addEntry( 'rights',
 						$wgUser->getUserPage(),
-						wfMessage( 'abusefilter-degroupreason', $rule_desc )->inContentLanguage()->text(),
+						wfMessage( 'abusefilter-degroupreason', $rule_desc, $rule_number )->inContentLanguage()->text(),
 						array(
 							implode( ', ', $groups ),
 							''
@@ -1355,7 +1363,8 @@ class AbuseFilter {
 
 					$message = array(
 						'abusefilter-autopromote-blocked',
-						$rule_desc
+						$rule_desc,
+						$rule_number
 					);
 				}
 				break;
@@ -1379,7 +1388,7 @@ class AbuseFilter {
 				if( isset( $wgAbuseFilterCustomActionsHandlers[$action] ) ) {
 					$custom_function = $wgAbuseFilterCustomActionsHandlers[$action];
 					if( is_callable( $custom_function ) ) {
-						$msg = call_user_func( $custom_function, $action, $parameters, $title, $vars, $rule_desc );
+						$msg = call_user_func( $custom_function, $action, $parameters, $title, $vars, $rule_desc, $rule_number );
 					}
 					if( isset( $msg ) ) {
 						$message = array( $msg );
