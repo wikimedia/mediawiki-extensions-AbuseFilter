@@ -5,21 +5,21 @@
 
 require_once ( getenv( 'MW_INSTALL_PATH' ) !== false
 	? getenv( 'MW_INSTALL_PATH' ) . "/maintenance/commandLine.inc"
-	: __DIR__ . '/../../maintenance/commandLine.inc' );
+	: __DIR__ . '/../../../maintenance/commandLine.inc' );
 
 $tester = new AbuseFilterParser;
 
-$test_path = __DIR__ . "/tests";
+$test_path = __DIR__ . "/parserTests";
 $tests = glob( $test_path . "/*.t" );
 
 $check = 0;
 $pass = 0;
 
 foreach ( $tests as $test ) {
-	$result = substr( $test, 0, - 2 ) . ".r";
+	$result = substr( $test, 0, -2 ) . ".r";
 
 	$rule = trim( file_get_contents( $test ) );
-	$output = ( $cont = trim( file_get_contents( $result ) ) ) == 'MATCH';
+	$output = trim( file_get_contents( $result ) ) == 'MATCH';
 
 	$testname = basename( $test );
 

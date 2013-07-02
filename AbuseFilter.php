@@ -18,7 +18,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['antispam'][] = array(
 	'path' => __FILE__,
 	'name' => 'Abuse Filter',
-	'author' => array( 'Andrew Garrett', 'River Tarnell', 'Victor Vasiliev' ),
+	'author' => array( 'Andrew Garrett', 'River Tarnell', 'Victor Vasiliev', 'Marius Hoch' ),
 	'descriptionmsg' => 'abusefilter-desc',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:AbuseFilter',
 );
@@ -88,6 +88,7 @@ $wgHooks['UploadVerifyFile'][] = 'AbuseFilterHooks::onUploadVerifyFile';
 $wgHooks['MakeGlobalVariablesScript'][] = 'AbuseFilterHooks::onMakeGlobalVariablesScript';
 $wgHooks['ArticleSaveComplete'][] = 'AbuseFilterHooks::onArticleSaveComplete';
 $wgHooks['APIEditBeforeSave'][] = 'AbuseFilterHooks::onAPIEditBeforeSave';
+$wgHooks['UnitTestsList'][] = 'AbuseFilterHooks::onUnitTestsList';
 
 $wgAvailableRights[] = 'abusefilter-modify';
 $wgAvailableRights[] = 'abusefilter-log-detail';

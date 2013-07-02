@@ -619,4 +619,23 @@ class AbuseFilterHooks {
 		}
 		return true;
 	}
+
+	/**
+	 * Hook to add PHPUnit test cases.
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnitTestsList
+	 *
+	 * @param array $files
+	 *
+	 * @return bool
+	 */
+	public static function onUnitTestsList( array &$files ) {
+		$testDir = __DIR__ . '/tests/phpunit';
+
+		$files = array_merge(
+			$files,
+			glob( $testDir . '/*Test.php' )
+		);
+
+		return true;
+	}
 }
