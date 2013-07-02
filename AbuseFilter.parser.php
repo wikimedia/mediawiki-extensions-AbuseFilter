@@ -1926,13 +1926,21 @@ class AbuseFilterParser {
 	 * @return mixed
 	 */
 	protected function ccnorm( $s ) {
-		static $equivset = null;
 		static $replacementArray = null;
 
-		if ( is_null( $equivset ) || is_null( $replacementArray ) ) {
+		if ( is_null( $replacementArray ) ) {
 			global $IP;
-			require_once( "$IP/extensions/AntiSpoof/equivset.php" );
-			$replacementArray = new ReplacementArray( $equivset );
+			if ( is_readable( "$IP/extensions/AntiSpoof/equivset.php" ) ) {
+				require "$IP/extensions/AntiSpoof/equivset.php";
+				$replacementArray = new ReplacementArray( $equivset );
+			} else {
+				// AntiSpoof isn't available, so just create a dummy
+				wfDebugLog(
+					'AbuseFilter',
+					"Can't compute normalized string (ccnorm) as the AntiSpoof Extension isn't isntalled."
+				);
+				$replacementArray = new ReplacementArray( array() );
+			}
 		}
 
 		return $replacementArray->replace( $s );
