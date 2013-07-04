@@ -7510,6 +7510,7 @@ Požádejte uživatele s oprávněním přidávat taková opatření, aby potře
 Značky by měly být krátké a nesmí obsahovat žádné zvláštní znaky.',
 	'abusefilter-edit-notallowed' => 'Nemáte oprávnění vytvářet nebo editovat filtry zneužívání',
 	'abusefilter-edit-notallowed-global' => 'Nemáte oprávnění vytvářet nebo editovat globální filtry zneužívání',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'U globálních filtrů nejsou podporována vlastní varovná hlášení.',
 	'abusefilter-edit-builder-select' => 'Vyberte položku, bude přidána na místo, kde je kurzor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetické operátory',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Sčítání (+)',
@@ -13857,6 +13858,7 @@ Por favor, pregúntelle a un usuario cos permisos necesarios para engadir acció
 As etiquetas deberían ser curtas e non conter caracteres especiais.',
 	'abusefilter-edit-notallowed' => 'Non ten os permisos necesarios para crear ou editar filtros de abusos',
 	'abusefilter-edit-notallowed-global' => 'Non ten os permisos necesarios para crear ou editar filtros de abusos globais',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'Os filtros globais non soportan as mensaxes de aviso personalizadas',
 	'abusefilter-edit-builder-select' => 'Seleccione unha opción para engadila ao cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operadores aritméticos',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Suma (+)',
@@ -17547,6 +17549,7 @@ Mintalah kepada pengguna yang memiliki hak akses untuk menyunting tindakan yang 
 Penanda harus pendek, dan seharusnya tidak berisi karakter khusus.',
 	'abusefilter-edit-notallowed' => 'Anda tidak diizinkan untuk membuat atau mengedit filter penyalahgunaan',
 	'abusefilter-edit-notallowed-global' => 'Anda tidak diizinkan membuat atau menyunting filter penyalahgunaan global',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'Pesan peringatan kustom tidak didukung untuk filter global',
 	'abusefilter-edit-builder-select' => 'Pilih sebuah opsi untuk menambahkannya pada kursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operator aritmatika',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Penambahan (+)',
@@ -24133,6 +24136,7 @@ $messages['mk'] = array(
 Ознаките треба да бидат кратки, и не треба да содржат специјални знаци.',
 	'abusefilter-edit-notallowed' => 'Не ви е дозволено да создавате или уредувате филтри за злоупотреби',
 	'abusefilter-edit-notallowed-global' => 'Не ви е дозволено да создавате или уредувате глобални филтри за злоупотреби',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'Глобалните филтри не поддржуваат кориснички-зададени предупредувања',
 	'abusefilter-edit-builder-select' => 'Одберете можност за додавање кај курсорот',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Аритметички оператори',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Собирање (+)',
@@ -25288,6 +25292,7 @@ Sila minta pengguna yang ada kebenaran untuk menambahkan tindakan tersekat supay
 Tag sepatutnya ringkas dan tidak mengandungi aksara khas.',
 	'abusefilter-edit-notallowed' => 'Anda tidak dibenarkan mencipta atau menyunting penapis salah guna',
 	'abusefilter-edit-notallowed-global' => 'Anda tidak dibenarkan mencipta atau menyunting penapis salah guna sejagat',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'Pesanan amaran tersuai tidak disokong untuk penapis global',
 	'abusefilter-edit-builder-select' => 'Pilih satu pilihan untuk ditambahkan pada kursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Pengoperasi aritmetik',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Campur (+)',
@@ -42569,6 +42574,7 @@ $messages['zh-hans'] = array(
  * @author Pbdragonwang
  * @author Simon Shek
  * @author Skjackey tse
+ * @author StephDC
  * @author Waihorace
  * @author Wong128hk
  * @author Wrightbus
@@ -42773,6 +42779,7 @@ $messages['zh-hant'] = array(
 標籤不應過長，並且不應包含任何特殊字符。',
 	'abusefilter-edit-notallowed' => '您未被允許建立或編輯防濫用過濾器',
 	'abusefilter-edit-notallowed-global' => '你不允許建立或修改全域濫用過濾器',
+	'abusefilter-edit-notallowed-global-custom-msg' => '全域篩檢程式不提供對於自訂警告訊息的支援',
 	'abusefilter-edit-builder-select' => '選一選項以加此至游標處',
 	'abusefilter-edit-builder-group-op-arithmetic' => '算術運算符',
 	'abusefilter-edit-builder-op-arithmetic-addition' => '加（+）',
