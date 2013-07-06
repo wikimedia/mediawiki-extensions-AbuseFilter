@@ -16479,6 +16479,7 @@ $messages['ht'] = array(
 
 /** Hungarian (magyar)
  * @author Bdamokos
+ * @author Bináris
  * @author Dani
  * @author Dj
  * @author Dunee
@@ -16622,7 +16623,7 @@ A vandálszűrő leírása: $7 ($8)',
 	'abusefilter-reautoconfirm-none' => 'Ennek a szerkesztőnek nem függesztették fel a megerősített státuszát',
 	'abusefilter-reautoconfirm-notallowed' => 'Nincs jogosultságod a megerősített státusz visszaállítására.',
 	'abusefilter-reautoconfirm-done' => 'A szerkesztő megerősített státusza visszaállításra került',
-	'abusefilter-status' => 'Az előző $1 műveletből $2 ($3%) érte el a beállított, $4 feltételkorlátot, és $5 ($6%) akadt fenn a jelenleg bekapcsolt szűrők egyikén.',
+	'abusefilter-status' => 'Az előző $1 műveletből $2 ($3%) érte el a beállított $4 feltételkorlátot, és $5 ($6%) akadt fenn a jelenleg bekapcsolt szűrők egyikén.',
 	'abusefilter-edit-subtitle' => 'A(z) $1 szűrő szerkesztése',
 	'abusefilter-edit-subtitle-new' => 'Szűrő létrehozása',
 	'abusefilter-edit-oldwarning' => '<strong>Most a szűrő egyik régebbi változatát szerkeszted. A megjelölt statisztikák a szűrő jelenlegi állapotát tükrözik. Ha elmented a változtatásokat, akkor azzal az összes köztes változatot felülírod.</strong> &bull; [[Special:AbuseFilter/history/$2|Vissza a szűrő laptörténetébe]].',
