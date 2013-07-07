@@ -824,8 +824,14 @@ See also:
 {{Identical|Miscellaneous}}',
 	'abusefilter-edit-builder-misc-in' => '{{doc-important|Do not translate "in".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|Abusefilter-edit-builder-group-misc}}.',
 	'abusefilter-edit-builder-misc-like' => '{{doc-important|Do not translate "like".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|Abusefilter-edit-builder-group-misc}}.',
-	'abusefilter-edit-builder-misc-rlike' => '{{doc-important|Do not translate "rlike".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|Abusefilter-edit-builder-group-misc}}.',
-	'abusefilter-edit-builder-misc-irlike' => '{{doc-important|Do not translate "irlike".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|Abusefilter-edit-builder-group-misc}}.',
+	'abusefilter-edit-builder-misc-rlike' => '{{doc-important|Do not translate "rlike".}}
+Abuse filter syntax option in a dropdown from the group {{msg-mw|Abusefilter-edit-builder-group-misc}}.
+
+"regex" stands for "regular expression".',
+	'abusefilter-edit-builder-misc-irlike' => '{{doc-important|Do not translate "irlike".}}
+Abuse filter syntax option in a dropdown from the group {{msg-mw|Abusefilter-edit-builder-group-misc}}.
+
+"regex" stands for "regular expression".',
 	'abusefilter-edit-builder-misc-contains' => '{{doc-important|Do not translate "contains".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|Abusefilter-edit-builder-group-misc}}.',
 	'abusefilter-edit-builder-misc-stringlit' => 'Abuse filter syntax option in a dropdown from the group {{msg-mw|Abusefilter-edit-builder-group-misc}}.',
 	'abusefilter-edit-builder-misc-tern' => '{{doc-important|Do not change "X ? Y : Z".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|Abusefilter-edit-builder-group-misc}}.',
@@ -842,7 +848,10 @@ Functional explanation: rmdoubles removes repeated characters in the argument, a
 	'abusefilter-edit-builder-funcs-specialratio' => "{{doc-important|Do not translate \"'''specialratio'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-norm' => "{{doc-important|Do not translate \"'''norm'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-count' => "{{doc-important|Do not translate \"'''count'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
-	'abusefilter-edit-builder-funcs-rcount' => '{{doc-important|Do not translate "rcount".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.',
+	'abusefilter-edit-builder-funcs-rcount' => '{{doc-important|Do not translate "rcount".}}
+Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.
+
+"regex" stands for "regular expression".',
 	'abusefilter-edit-builder-funcs-rmwhitespace' => "{{doc-important|Do not translate \"'''rmwhitespac)'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-rmspecials' => "{{doc-important|Do not translate \"'''rmspecials'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-ip_in_range' => "{{doc-important|Do not translate \"'''ip_in_range'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
@@ -850,7 +859,10 @@ Functional explanation: rmdoubles removes repeated characters in the argument, a
 	'abusefilter-edit-builder-funcs-substr' => "{{doc-important|Do not translate \"'''substr'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-strpos' => "{{doc-important|Do not translate \"'''strpos'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-str_replace' => "{{doc-important|Do not translate \"'''str_replace'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
-	'abusefilter-edit-builder-funcs-rescape' => "{{doc-important|Do not translate \"'''rescape'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
+	'abusefilter-edit-builder-funcs-rescape' => '{{doc-important|Do not translate "\'\'\'rescape\'\'\'".}}
+Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.
+
+"regex" stands for "regular expression".',
 	'abusefilter-edit-builder-funcs-set_var' => "{{doc-important|Do not translate \"'''set_var'''\".}}
 Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	'abusefilter-edit-builder-group-vars' => 'Group entry in dropdown menu.
@@ -22035,6 +22047,7 @@ Tags solle kuerz sinn, an et solle keng Spezialzeechen dra sinn.',
 	'abusefilter-edit-builder-vars-article-ns' => 'Nummraum vun der Säit',
 	'abusefilter-edit-builder-vars-article-text' => 'Titel vun der Säit (ouni Nummraum)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Ganzen Titel vun der Säit',
+	'abusefilter-edit-builder-vars-article-views' => "Zuel wéi dacks d'Säit gewise gouf",
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'Säiten-ID vun der Säit déi geréckelt gëtt',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Nummraum vun der Säit déi geréckelt gëtt',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Titel vun der Säit déi geréckelt gëtt',
