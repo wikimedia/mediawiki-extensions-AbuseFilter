@@ -87,6 +87,7 @@ $wgHooks['ContributionsToolLinks'][] = 'AbuseFilterHooks::onContributionsToolLin
 $wgHooks['UploadVerifyFile'][] = 'AbuseFilterHooks::onUploadVerifyFile';
 $wgHooks['MakeGlobalVariablesScript'][] = 'AbuseFilterHooks::onMakeGlobalVariablesScript';
 $wgHooks['ArticleSaveComplete'][] = 'AbuseFilterHooks::onArticleSaveComplete';
+$wgHooks['APIEditBeforeSave'][] = 'AbuseFilterHooks::onAPIEditBeforeSave';
 
 $wgAvailableRights[] = 'abusefilter-modify';
 $wgAvailableRights[] = 'abusefilter-log-detail';
