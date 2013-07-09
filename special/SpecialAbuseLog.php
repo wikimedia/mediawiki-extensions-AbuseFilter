@@ -533,7 +533,7 @@ class SpecialAbuseLog extends SpecialPage {
 				$timestamp,
 				$userLink,
 				$row->afl_action,
-				Linker::link( $title ),
+				$pageLink,
 				$actions_taken,
 				$parsed_comments
 			)->parse();
