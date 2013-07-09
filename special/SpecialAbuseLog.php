@@ -88,7 +88,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$this->mSearchTitle = $request->getText( 'wpSearchTitle' );
 		$this->mSearchFilter = null;
 		if ( self::canSeeDetails() ) {
-			$this->mSearchFilter = $request->getIntOrNull( 'wpSearchFilter' );
+			$this->mSearchFilter = $request->getText( 'wpSearchFilter' );
 		}
 	}
 
@@ -288,9 +288,7 @@ class SpecialAbuseLog extends SpecialPage {
 			return;
 		}
 
-		$output = '';
-
-		$output .= Xml::element(
+		$output = Xml::element(
 			'legend',
 			null,
 			$this->msg( 'abusefilter-log-details-legend', $id )->text()

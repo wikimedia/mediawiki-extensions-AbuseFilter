@@ -159,8 +159,11 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			if ( $fld_ids ) {
 				$entry['id'] = intval( $row->afl_id );
 				$entry['filter_id'] = '';
-				if ( !AbuseFilter::filterHidden( $row->afl_filter ) || SpecialAbuseLog::canSeeHidden() ) {
-					$entry['filter_id'] = intval( $row->afl_filter );
+				if ( !AbuseFilter::filterHidden( $row->afl_filter )
+					|| AbuseFilterView::canViewPrivate()
+					|| $this->getUser()->isAllowed( 'abusefilter-log-private' )
+				) {
+					$entry['filter_id'] = $row->afl_filter;
 				}
 			}
 			if ( $fld_filter ) {
