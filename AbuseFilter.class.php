@@ -641,10 +641,7 @@ class AbuseFilter {
 
 		if ( count( $globalFilters ) ) {
 			$fdb = wfGetDB( DB_SLAVE, array(), $wgAbuseFilterCentralDB );
-			$consequences = array_merge(
-				$consequences,
-				self::loadConsequencesFromDB( $fdb, $globalFilters, 'global-' )
-			);
+			$consequences = $consequences + self::loadConsequencesFromDB( $fdb, $globalFilters, 'global-' );
 		}
 
 		return $consequences;
