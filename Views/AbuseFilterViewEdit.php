@@ -59,9 +59,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			// Don't allow adding a new global rule, or updating a
 			// rule that is currently global, without permissions.
-			if ( ( $newRow->af_global == 1 || $newRow->mOriginalRow->af_global == 1 )
-				&& !$this->canEditGlobal()
-			) {
+			if ( !$this->canEditFilter( $newRow ) || !$this->canEditFilter( $newRow->mOriginalRow ) ) {
 				$out->addWikiMsg( 'abusefilter-edit-notallowed-global' );
 				return;
 			}
@@ -335,7 +333,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$readOnlyAttrib = array();
 		$cbReadOnlyAttrib = array(); // For checkboxes
 
-		if ( !$this->canEdit() || ( isset( $row->af_global ) && $row->af_global == 1 && !$this->canEditGlobal() ) ) {
+		if ( !$this->canEditFilter( $row ) ) {
 			$readOnlyAttrib['readonly'] = 'readonly';
 			$cbReadOnlyAttrib['disabled'] = 'disabled';
 		}
@@ -405,7 +403,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$row->af_pattern,
 			'wpFilterRules',
 			true,
-			$this->canEdit()
+			$this->canEditFilter( $row )
 		);
 		$fields['abusefilter-edit-notes'] = Xml::textarea(
 			'wpFilterNotes',
@@ -519,7 +517,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$this->buildConsequenceEditor( $row, $actions )
 		);
 
-		if ( $this->canEdit() ) {
+		if ( $this->canEditFilter( $row ) ) {
 			$form .= Xml::submitButton(
 				$this->msg( 'abusefilter-edit-save' )->text(),
 				array( 'accesskey' => 's' )
@@ -585,7 +583,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$readOnlyAttrib = array();
 		$cbReadOnlyAttrib = array(); // For checkboxes
 
-		if ( !$this->canEdit() ) {
+		if ( !$this->canEditFilter( $row ) ) {
 			$readOnlyAttrib['readonly'] = 'readonly';
 			$cbReadOnlyAttrib['disabled'] = 'disabled';
 		}

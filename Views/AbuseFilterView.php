@@ -22,33 +22,31 @@ abstract class AbuseFilterView extends ContextSource {
 	abstract function show();
 
 	/**
-	 * @static
 	 * @return bool
 	 */
-	static function canEdit() {
-		global $wgUser;
-		static $canEdit = null;
-
-		if ( is_null( $canEdit ) ) {
-			$canEdit = $wgUser->isAllowed( 'abusefilter-modify' );
-		}
-
-		return $canEdit;
+	public function canEdit() {
+		return $this->getUser()->isAllowed( 'abusefilter-modify' );
 	}
 
 	/**
-	 * @static
 	 * @return bool
 	 */
-	static function canEditGlobal() {
-		global $wgUser;
-		static $canEditGlobal = null;
+	public function canEditGlobal() {
+		return $this->getUser()->isAllowed( 'abusefilter-modify-global' );
+	}
 
-		if ( is_null( $canEditGlobal ) ) {
-			$canEditGlobal = $wgUser->isAllowed( 'abusefilter-modify-global' );
-		}
-
-		return $canEditGlobal;
+	/**
+	 * Whether the user can edit the given filter.
+	 *
+	 * @param object $row Filter row
+	 *
+	 * @return bool
+	 */
+	public function canEditFilter( $row ) {
+		return (
+			$this->canEdit() &&
+			!( isset( $row->af_global ) && $row->af_global == 1 && !$this->canEditGlobal() )
+		);
 	}
 
 	/**
@@ -60,7 +58,7 @@ abstract class AbuseFilterView extends ContextSource {
 		static $canView = null;
 
 		if ( is_null( $canView ) ) {
-			$canView = self::canEdit() || $wgUser->isAllowed( 'abusefilter-view-private' );
+			$canView = $wgUser->isAllowedAny( 'abusefilter-modify', 'abusefilter-view-private' );
 		}
 
 		return $canView;
