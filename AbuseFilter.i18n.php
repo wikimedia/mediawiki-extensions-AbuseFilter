@@ -4853,6 +4853,7 @@ $messages['be-tarask'] = array(
 Меткі павінны быць кароткімі, і яны не павінны ўтрымліваць спэцыяльныя сымбалі.',
 	'abusefilter-edit-notallowed' => 'Вы ня маеце правоў на стварэньне альбо рэдагаваньне фільтраў злоўжываньняў',
 	'abusefilter-edit-notallowed-global' => 'Вы ня маеце правоў на стварэньне альбо рэдагаваньне глябальных фільтраў злоўжываньняў',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'Пабочныя папярэджаньні ў глябальных фільтрах не падтрымліваюцца',
 	'abusefilter-edit-builder-select' => 'Выберыце парамэтар, каб дадаць яго',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Арытмэтычныя апэратары',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Складаньне (+)',
@@ -8350,6 +8351,7 @@ Kopiere fra tekstfeltet der vises, og indsætte det i denne tekstboks, og klik d
  * @author Giftpflanze
  * @author Kghbln
  * @author Leithian
+ * @author MF-Warburg
  * @author Merlissimo
  * @author Metalhead64
  * @author Pill
@@ -8427,7 +8429,7 @@ Filterbeschreibung: „$6“',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 löste durch die Aktion „$4“ auf die Seite „$5“ den $3 aus.
 Ergriffene Maßnahmen: $6;
 Filterbeschreibung: $7 ($8)',
-	'abusefilter-log-detailedentry-global' => 'globaler Filter $1',
+	'abusefilter-log-detailedentry-global' => 'globalen Filter $1',
 	'abusefilter-log-detailedentry-local' => 'Filter $1',
 	'abusefilter-log-detailslink' => 'Details',
 	'abusefilter-log-diff' => 'Unterschied',
@@ -11318,6 +11320,7 @@ Palu muudatus teha kasutajal, kellel on õigus lisada piiratud ligipääsuga toi
 Märgised peaks olema lühikesed ja nad ei peaks sisaldama erimärke.',
 	'abusefilter-edit-notallowed' => 'Sul pole lubatud väärtarvitusfiltreid luua ega muuta.',
 	'abusefilter-edit-notallowed-global' => 'Sul pole lubatud globaalseid filtreid luua ega muuta.',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'Globaalsed filtrid ei toeta kohandatud hoiatussõnumeid.',
 	'abusefilter-edit-builder-select' => 'Vali kursori kohale lisatav',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmeetilised tehted',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Liitmine (+)',
