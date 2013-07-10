@@ -243,7 +243,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$result = $pager->getResult();
 		if( $result && $result->numRows() !== 0 ) {
 			$out->addHTML( $pager->getNavigationBar() .
-					Xml::tags( 'ul', null, $pager->getBody() ) .
+					Xml::tags( 'ul', array( 'class' => 'plainlinks' ), $pager->getBody() ) .
 					$pager->getNavigationBar() );
 		} else {
 			$out->addWikiMsg( 'abusefilter-log-noresults' );
