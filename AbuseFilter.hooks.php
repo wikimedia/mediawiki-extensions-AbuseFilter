@@ -132,8 +132,9 @@ class AbuseFilterHooks {
 		// Some edits are running through multiple hooks, but we only want to filter them once
 		if ( isset( $title->editAlreadyFiltered ) ) {
 			return true;
+		} elseif ( $title ) {
+			$title->editAlreadyFiltered = true;
 		}
-		$title->editAlreadyFiltered = true;
 
 		self::$successful_action_vars = false;
 		self::$last_edit_page = false;
