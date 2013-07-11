@@ -3072,6 +3072,13 @@ Copie del cuadru de testu qu\'apaez y apegue n\'esti cuadru de testu, y darréu 
 	'abusefilter-group-default' => 'Predetermináu',
 );
 
+/** Avaric (авар)
+ * @author Умар
+ */
+$messages['av'] = array(
+	'abusefilter-list-edit' => 'Хисизабизе',
+);
+
 /** Azerbaijani (azərbaycanca)
  * @author AZISS
  * @author Cekli829
@@ -7746,6 +7753,7 @@ $messages['cu'] = array(
 	'abusefilter-log-search-user' => 'по́льꙃєватєл҄ь :',
 	'abusefilter-log-search-title' => 'страницѧ имѧ :',
 	'abusefilter-log-hide-reason' => 'какъ съмꙑслъ :',
+	'abusefilter-list-options-submit' => 'оновити',
 	'abusefilter-tools-reautoconfirm-user' => 'польꙃєватєл҄ь :',
 	'abusefilter-edit-status-label' => 'статїстїка :',
 	'abusefilter-edit-history' => 'їсторїꙗ :',
@@ -7757,6 +7765,7 @@ $messages['cu'] = array(
 	'abusefilter-history-user' => 'польꙃєватєл҄ь',
 	'abusefilter-history-select-user' => 'польꙃєватєл҄ь :',
 	'abusefilter-history-diff' => 'мѣнꙑ',
+	'abusefilter-action-tag' => 'мѣтъка',
 	'abusefilter-action-block' => 'ꙁагради',
 	'abusefilter-revert-reasonfield' => 'какъ съмꙑслъ :',
 	'abusefilter-test-submit' => 'искоушєниѥ',
@@ -28792,7 +28801,7 @@ $messages['or'] = array(
 	'abusefilter-edit-throttle-groups' => "ଦଳ ଗୋଳିଆଘାଣ୍ଟିଆର କାରଣ:
 :''(ଧାଡ଼ି ପ୍ରତି ଗୋଟିଏ, କମା ଦେଇ ଅଲଗା କରାଯାଇଛି)''",
 	'abusefilter-edit-warn-message' => 'ଚେତାବନୀ ପାଇଁ ବ୍ୟବହାର ହେବାକୁ ଥିବା ସିଷ୍ଟମ ମେସେଜ:',
-	'abusefilter-edit-warn-other' => 'ଅଲଗା ସନ୍ଦେଶ',
+	'abusefilter-edit-warn-other' => 'ଭିନ୍ନ ମେସେଜ',
 	'abusefilter-edit-warn-other-label' => "ବାକି ସନ୍ଦେଶର ପୃଷ୍ଠା ନାମ:
 :''(ମିଡ଼ିଆଉଇକି ଉପସର୍ଗ ବିନା)''",
 	'abusefilter-edit-warn-actions' => 'କାମସବୁ:',
