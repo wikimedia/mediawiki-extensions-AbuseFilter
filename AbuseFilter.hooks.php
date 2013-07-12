@@ -15,13 +15,11 @@ class AbuseFilterHooks {
 	 *
 	 * @param EditPage $editPage
 	 * @param string $text New text of the article (has yet to be saved)
-	 * @param array &$resultArr Data in this array will be added to the API result
+	 * @param array &$result Data in this array will be added to the API result
 	 *
 	 * @return bool
 	 */
 	public static function onAPIEditBeforeSave( $editPage, $text, &$result ) {
-		global $wgUser;
-
 		$context = $editPage->mArticle->getContext();
 
 		$status = Status::newGood();
@@ -31,7 +29,7 @@ class AbuseFilterHooks {
 		// poor man's PST, see bug 20310
 		$text = str_replace( "\r\n", "\n", $text );
 
-		$continue = self::filterEdit( $context, null, $text, $status, $summary, $wgUser, $minoredit );
+		$continue = self::filterEdit( $context, null, $text, $status, $summary, $minoredit );
 
 		if ( !$status->isOK() ) {
 			$msg = $status->getErrorsArray();
@@ -68,8 +66,6 @@ class AbuseFilterHooks {
 	 * @return bool
 	 */
 	public static function onEditFilterMerged( $editor, $text, &$error, $summary ) {
-		global $wgUser;
-
 		$context = $editor->mArticle->getContext();
 
 		$status = Status::newGood();
@@ -78,7 +74,7 @@ class AbuseFilterHooks {
 		// poor man's PST, see bug 20310
 		$text = str_replace( "\r\n", "\n", $text );
 
-		$continue = self::filterEdit( $context, null, $text, $status, $summary, $wgUser, $minoredit );
+		$continue = self::filterEdit( $context, null, $text, $status, $summary, $minoredit );
 
 		if ( !$status->isOK() ) {
 			$error = $status->getWikiText();
@@ -104,7 +100,7 @@ class AbuseFilterHooks {
 
 		$text = AbuseFilter::contentToString( $content, Revision::RAW );
 
-		$continue = self::filterEdit( $context, $content, $text, $status, $summary, $user, $minoredit );
+		$continue = self::filterEdit( $context, $content, $text, $status, $summary, $minoredit );
 		return $continue;
 	}
 
@@ -117,13 +113,12 @@ class AbuseFilterHooks {
 	 * @param string $text new page content (subject of filtering)
 	 * @param Status $status  Error message to return
 	 * @param string $summary Edit summary for page
-	 * @param User $user the user performing the edit
 	 * @param bool $minoredit whether this is a minor edit according to the user.
 	 *
 	 * @return bool
 	 */
 	public static function filterEdit( IContextSource $context, $content, $text,
-				Status $status, $summary, User $user, $minoredit ) {
+				Status $status, $summary, $minoredit ) {
 		// Load vars
 		$vars = new AbuseFilterVariableHolder();
 
@@ -138,6 +133,8 @@ class AbuseFilterHooks {
 
 		self::$successful_action_vars = false;
 		self::$last_edit_page = false;
+
+		$user = $context->getUser();
 
 		// Check for null edits.
 		$oldtext = '';
