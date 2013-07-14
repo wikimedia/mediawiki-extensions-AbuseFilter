@@ -10690,6 +10690,7 @@ Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku 
  * @author Imre
  * @author Invadinado
  * @author Locos epraix
+ * @author Luis Felipe Schenone
  * @author Manuelt15
  * @author MarcoAurelio
  * @author McDutchie
@@ -10915,6 +10916,7 @@ Por favor solicita a un usuario con permisos suficientes para agregar acciones r
 Las etiquetas deberían ser cortas, y no deberían contener caracteres especiales.',
 	'abusefilter-edit-notallowed' => 'No se te permite crear o editar filtros antiabuso',
 	'abusefilter-edit-notallowed-global' => 'No estas autorizado para crear o editar filtros de abuso globales',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'Los mensajes de alerta personalizados no admiten filtros globales',
 	'abusefilter-edit-builder-select' => 'Seleccione una opción para agregarla en el cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operadores aritmétricos',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adición (+)',
@@ -24929,7 +24931,7 @@ $messages['mr'] = array(
 	'abusefilter-list-public' => 'सार्वजनिक विवरण',
 	'abusefilter-list-consequences' => 'परिणाम',
 	'abusefilter-list-visibility' => 'दृश्यता',
-	'abusefilter-list-hitcount' => 'झेल संख्या',
+	'abusefilter-list-hitcount' => 'ठोक(हिट) संख्या',
 	'abusefilter-list-edit' => 'संपादन करा',
 	'abusefilter-list-details' => 'तपशील',
 	'abusefilter-list-limit' => 'प्रतिपान दर्शनीय संख्या',
@@ -24980,7 +24982,7 @@ $messages['mr'] = array(
 	'abusefilter-edit-lastmod' => 'संपादन गाळणीचा शेवटचा फेरबदल:',
 	'abusefilter-edit-hitcount' => 'गाळणीने पेललेले झेल',
 	'abusefilter-edit-action-disallow' => 'संबंधीत कृती करण्यापासून, उपयोगकर्त्यास थांबवा',
-	'abusefilter-edit-action-flag' => 'संपादन गाळणी नोंदीत टिपण्या साठी पताका लावा',
+	'abusefilter-edit-action-flag' => 'संपादन गाळणी नोंदीत टिपण्यासाठी पताका लावा',
 	'abusefilter-edit-action-throttle' => "केवळ विशीष्ट 'दर मर्यादा'(रेट लिमीट) ओलांडल्यासच, कृती करा",
 	'abusefilter-edit-action-tag' => 'संपादनाच्या पुढील समीक्षणाकरता खूणवा',
 	'abusefilter-edit-warn-message' => 'पुर्व/सजगता सूचना देण्यासाठी व्यवस्था संदेश निवडा:',
@@ -24991,7 +24993,7 @@ $messages['mr'] = array(
 	'abusefilter-edit-warn-preview' => 'निवडलेल्या संदेशाची झलक',
 	'abusefilter-edit-warn-edit' => 'निवडलेला संदेश तयार करा/ संपादीत करा',
 	'abusefilter-edit-tag-tag' => 'खूणवण्याचे संदेश (प्रतीओळ एक):',
-	'abusefilter-edit-denied' => 'सार्वजनीक दृश्यते पासून झाकलेले असल्यामुळे या गाळणीचे विवरण आपण पाहू शकत नाही.',
+	'abusefilter-edit-denied' => 'सार्वजनीक दृश्यतेपासून झाकलेले असल्यामुळे या गाळणीचे विवरण आपण पाहू शकत नाही.',
 	'abusefilter-edit-main' => 'गाळणी प्राचले (पॅरामीटर्स)',
 	'abusefilter-edit-done-subtitle' => 'गाळणी संपादीत झाली',
 	'abusefilter-edit-done' => 'गाळणी $1 ला आपण केलेले बदल यशस्वीरित्या जतन झाले आहेत.',
@@ -25002,7 +25004,7 @@ $messages['mr'] = array(
 	'abusefilter-edit-tools' => 'सुविधा:',
 	'abusefilter-edit-test-link' => 'हि गाळणी अलिकडील बदलांसोबत तपासा',
 	'abusefilter-edit-export' => 'हि गाळणी दुसऱ्या विकिस निर्यात करा',
-	'abusefilter-edit-builder-select' => 'कर्सरच्या जागी जोडण्याकरता सुयोग्य पर्याय निवडा',
+	'abusefilter-edit-builder-select' => 'सरकरेषेच्या(कर्सरच्या) जागी जोडण्याकरता सुयोग्य पर्याय निवडा',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'अंकगणितीय कारके (अरीथमॅटीक ऑपरेटर्स)',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'अधिक (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'वजाबाकी (-)',
@@ -25049,8 +25051,8 @@ $messages['mr'] = array(
 	'abusefilter-edit-builder-vars-all-links' => 'नवीन मजकुरातील सर्व बाह्यदुवे',
 	'abusefilter-edit-builder-vars-added-links' => 'संपादनात जोडलेले सर्व बाह्यदुवे',
 	'abusefilter-edit-builder-vars-removed-links' => 'संपादनातून वगळलेले सर्व बाह्यदुवे',
-	'abusefilter-edit-builder-vars-old-text' => 'संपादन पूर्व, पानामधील मागचा विकिमजकुर',
-	'abusefilter-edit-builder-vars-new-text' => 'संपादना नंतरचा,नवा पृष्ठ मजकुर',
+	'abusefilter-edit-builder-vars-old-text' => 'पानातील, संपादनपूर्व स्थितीतील,मागील विकिमजकुर',
+	'abusefilter-edit-builder-vars-new-text' => 'संपादनानंतरचा,नवा पृष्ठ मजकुर',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'पानाचा संपादन सुरक्षास्तर',
 	'abusefilter-edit-builder-vars-old-links' => 'संपादना पुर्वीचे ,पानातील दुवे',
 	'abusefilter-edit-builder-vars-minor-edit' => 'संपादनातील बदल छोटा म्हणून दर्शविला जातो आहे अथवा नाही',
@@ -30570,6 +30572,7 @@ $messages['ps'] = array(
  * @author Giro720
  * @author GoEThe
  * @author Hamilton Abreu
+ * @author Helder.wiki
  * @author Lijealso
  * @author Luckas
  * @author MF-Warburg
@@ -30659,7 +30662,7 @@ Descrição do filtro: $7 ($8)',
 	'abusefilter-log-details-vars' => 'Parâmetros de acção',
 	'abusefilter-log-details-private' => 'Dados privados',
 	'abusefilter-log-details-ip' => 'Endereço IP de origem',
-	'abusefilter-log-noactions' => 'nenhum',
+	'abusefilter-log-noactions' => 'nenhuma',
 	'abusefilter-log-details-diff' => 'Modificações feitas na edição',
 	'abusefilter-log-linkoncontribs' => 'registo de abusos',
 	'abusefilter-log-linkoncontribs-text' => 'Registo de Abusos para este utilizador',
@@ -31103,7 +31106,7 @@ Descrição do filtro: $7 ($8)',
 	'abusefilter-log-details-vars' => 'Parâmetros de ação',
 	'abusefilter-log-details-private' => 'Dados privados',
 	'abusefilter-log-details-ip' => 'Endereço de IP de origem',
-	'abusefilter-log-noactions' => 'nenhum',
+	'abusefilter-log-noactions' => 'nenhuma',
 	'abusefilter-log-details-diff' => 'Alterações feitas na edição',
 	'abusefilter-log-linkoncontribs' => 'registro de abusos',
 	'abusefilter-log-linkoncontribs-text' => 'Registro de Abuso para este usuário',
