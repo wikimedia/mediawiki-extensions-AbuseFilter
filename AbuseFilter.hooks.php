@@ -33,23 +33,26 @@ class AbuseFilterHooks {
 
 		if ( !$status->isOK() ) {
 			$msg = $status->getErrorsArray();
+			$msg = $msg[0];
 
 			// Use the error message key name as error code, the first parameter is the filter description.
-			if ( $msg[0] instanceof Message ) {
+			if ( $msg instanceof Message ) {
 				// For forward compatibility: In case we switch over towards using Message objects someday.
 				// (see the todo for AbuseFilter::buildStatus)
-				$code = $msg[0]->getKey();
-				$filterDescription = $msg[0]->getParams();
+				$code = $msg->getKey();
+				$filterDescription = $msg->getParams();
 				$filterDescription = $filterDescription[0];
+				$warning = $msg->parse();
 			} else {
-				$code = $msg[0][0];
-				$filterDescription = $msg[0][1];
+				$code = array_shift( $msg );
+				$filterDescription = $msg[0];
+				$warning = wfMessage( $code )->params( $msg )->parse();
 			}
 
 			$result = array(
 				'code' => $code,
 				'info' => 'Hit AbuseFilter: ' . $filterDescription,
-				'warning' => $status->getHTML()
+				'warning' => $warning
 			);
 		}
 
