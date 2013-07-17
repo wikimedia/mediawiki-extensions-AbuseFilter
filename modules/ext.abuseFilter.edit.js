@@ -134,7 +134,7 @@
 	 */
 	function fetchFilter() {
 		/*jshint validthis:true */
-		var filterId = $( '#mw-abusefilter-load-filter' ).val(),
+		var filterId = $.trim( $( '#mw-abusefilter-load-filter' ).val() ),
 			api;
 
 		if ( filterId === '' ) {
@@ -158,7 +158,7 @@
 		} )
 		.done( function( data ) {
 			if ( data.query.abusefilters[0] !== undefined ) {
-				$filterBox.text( data.query.abusefilters[0].pattern );
+				$filterBox.val( data.query.abusefilters[0].pattern );
 			}
 		} );
 	}
@@ -256,8 +256,22 @@
 		}
 	}
 
+	/**
+	 * Called if the user presses a key in the load filter field
+	 *
+	 * @context HTMLELement
+	 * @param {jQuery.Event} e
+	 */
+	function onFilterKeypress( e ) {
+		if ( e.type === 'keypress' && e.which === 13 ) {
+			e.preventDefault();
+			$( '#mw-abusefilter-load' ).click();
+		}
+	}
+
 	// On ready initialization
 	$( document ).ready( function() {
+		var $exportBox = $( '#mw-abusefilter-export' );
 		$filterBox = $( '#' + mw.config.get( 'abuseFilterBoxName' ) );
 		// Hide the syntax ok message when the text changes
 		$filterBox.keyup( function() {
@@ -269,6 +283,7 @@
 		} );
 
 		$( '#mw-abusefilter-load' ).click( fetchFilter );
+		$( '#mw-abusefilter-load-filter' ).keypress( onFilterKeypress );
 		$( '#mw-abusefilter-warn-preview-button' ).click( previewWarnMessage );
 		$( '#mw-abusefilter-warn-edit-button' ).click( editWarnMessage );
 		$( 'input.mw-abusefilter-action-checkbox' ).click( hideDeselectedActions );
@@ -280,8 +295,6 @@
 		$( '#mw-abusefilter-syntaxcheck' ).click( doSyntaxCheck );
 		$( '#wpFilterBuilder' ).change( addText );
 		$( '#mw-abusefilter-edit-group-input' ).change( onFilterGroupChange );
-
-		var $exportBox = $( '#mw-abusefilter-export' );
 
 		$( '#mw-abusefilter-export-link' ).toggle(
 			function() {
