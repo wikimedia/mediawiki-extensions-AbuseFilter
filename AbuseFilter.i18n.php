@@ -14846,6 +14846,7 @@ $messages['haw'] = array(
  * @author StuB
  * @author YaronSh
  * @author Yonidebest
+ * @author אור שפירא
  * @author ערן
  */
 $messages['he'] = array(
@@ -15053,6 +15054,7 @@ $messages['he'] = array(
 על התגיות להיות קצרות, והן אינן יכולות להכיל תווים מיוחדים.',
 	'abusefilter-edit-notallowed' => 'אינכם מורשים ליצור או לערוך מסנני השחתות',
 	'abusefilter-edit-notallowed-global' => 'אינכם מורשים ליצור או לערוך מסנני השחתות גלובליים',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'הודעות אזהרה מותאמים אישית אינם נתמכים עבור מסננים כלליים',
 	'abusefilter-edit-builder-select' => 'בחרו באפשרות עם הסמן כדי להוסיף אותה',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'אופרטורים חשבוניים',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'חיבור (+)',
@@ -42250,6 +42252,7 @@ $messages['zh-cn'] = array(
  * @author Anakmalaysia
  * @author Bbqyee
  * @author Bencmq
+ * @author Byfserag
  * @author Chenxiaoqino
  * @author Chenzw
  * @author Cwek
@@ -42461,6 +42464,7 @@ $messages['zh-hans'] = array(
 标签不应过长，并且不应包含任何特殊字符。',
 	'abusefilter-edit-notallowed' => '您未被允许创建或编辑防滥用过滤器',
 	'abusefilter-edit-notallowed-global' => '您未被允许创建或编辑全域防滥用过滤器',
+	'abusefilter-edit-notallowed-global-custom-msg' => '对于全局过滤器，不支持自定义警告消息',
 	'abusefilter-edit-builder-select' => '选择需添加到光标处的选项',
 	'abusefilter-edit-builder-group-op-arithmetic' => '算术运算符',
 	'abusefilter-edit-builder-op-arithmetic-addition' => '加（+）',
