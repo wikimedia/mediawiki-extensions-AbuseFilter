@@ -103,7 +103,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$this->addWhereRange( 'afl_timestamp', $params['dir'], $params['start'], $params['end'] );
 
 		$db = $this->getDB();
-		$notDeletedCond = SpecialAbuseLog::getNotDeletedCond($db);
+		$notDeletedCond = SpecialAbuseLog::getNotDeletedCond( $db );
 
 		if ( isset( $params['user'] ) ) {
 			$u = User::newFromName( $params['user'] );
@@ -155,14 +155,13 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			) {
 				continue;
 			}
+			$canSeeDetails = SpecialAbuseLog::canSeeDetails( $row->afl_filter );
+
 			$entry = array();
 			if ( $fld_ids ) {
 				$entry['id'] = intval( $row->afl_id );
 				$entry['filter_id'] = '';
-				if ( !AbuseFilter::filterHidden( $row->afl_filter )
-					|| AbuseFilterView::canViewPrivate()
-					|| $this->getUser()->isAllowed( 'abusefilter-log-private' )
-				) {
+				if ( $canSeeDetails ) {
 					$entry['filter_id'] = $row->afl_filter;
 				}
 			}
@@ -187,7 +186,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			}
 			if ( $fld_revid && !is_null( $row->afl_rev_id ) ) {
 				$entry['revid'] = '';
-				if ( !AbuseFilter::filterHidden( $row->afl_filter ) || SpecialAbuseLog::canSeePrivate()	) {
+				if ( $canSeeDetails ) {
 					$entry['revid'] = $row->afl_rev_id;
 				}
 			}
@@ -197,7 +196,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			}
 			if ( $fld_details ) {
 				$entry['details'] = array();
-				if ( !AbuseFilter::filterHidden( $row->afl_filter ) || SpecialAbuseLog::canSeePrivate() ) {
+				if ( $canSeeDetails ) {
 					$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
 					if ( $vars instanceof AbuseFilterVariableHolder ) {
 						$entry['details'] = $vars->exportAllVars();
