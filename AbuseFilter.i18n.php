@@ -26095,6 +26095,21 @@ $messages['nah'] = array(
 	'abusefilter-topnav-home' => 'Pèwalòyàn',
 );
 
+/** Neapolitan (Nnapulitano)
+ * @author Chelin
+ */
+$messages['nap'] = array(
+	'abusefilter-log-search-title' => 'Titulo:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
+	'abusefilter-log-search-submit' => 'Truova',
+	'abusefilter-log-noactions' => 'nisciuno',
+	'abusefilter-log-hide-reason' => 'Mutivo:',
+	'abusefilter-list-edit' => 'Càgna',
+	'abusefilter-unhidden' => 'Pubbreco',
+	'abusefilter-enabled' => 'Attivato',
+	'abusefilter-deleted' => 'Canciellato',
+);
+
 /** Norwegian Bokmål (norsk bokmål)
  * @author Danmichaelo
  * @author EvenT
@@ -28739,7 +28754,7 @@ $messages['or'] = array(
 	'abusefilter-list-consequences' => 'ପରିଣାମସବୁ',
 	'abusefilter-list-visibility' => 'ଦେଖଣା',
 	'abusefilter-list-hitcount' => 'ଦେଖଣା ଗଣନା',
-	'abusefilter-list-edit' => 'ସମ୍ପାଦନା (Edit)',
+	'abusefilter-list-edit' => 'ସମ୍ପାଦନା',
 	'abusefilter-list-details' => 'ଆହୁରି ଅଧିକ',
 	'abusefilter-list-limit' => 'ପୃଷ୍ଠା ପ୍ରତି ସଂଖ୍ୟା:',
 	'abusefilter-list-lastmodified' => '‍ଶେଷଥର ବଦଳାଯାଇଥିଲା',
@@ -30831,8 +30846,8 @@ O filtro atingiu o limite de correspondência com mais de $1% de ações.",
 	'abusefilter-edit-warn-other-label' => "Nome da página de outra mensagem:
 :''(sem prefixo MediaWiki)''",
 	'abusefilter-edit-warn-actions' => 'Ações:',
-	'abusefilter-edit-warn-preview' => 'Antever mensagem seleccionada',
-	'abusefilter-edit-warn-edit' => 'Criar/Editar mensagem seleccionada',
+	'abusefilter-edit-warn-preview' => 'Antever mensagem selecionada',
+	'abusefilter-edit-warn-edit' => 'Criar/Editar mensagem selecionada',
 	'abusefilter-edit-tag-tag' => 'Etiquetas a aplicar (uma por linha):',
 	'abusefilter-edit-denied' => 'Não pode ver detalhes deste filtro, porque ele está ocultado de vista pública',
 	'abusefilter-edit-main' => 'Parâmetros do filtro',
@@ -33963,6 +33978,59 @@ $messages['se'] = array(
 	'abusefilter-log-noresults' => 'Eai bohtosat',
 );
 
+/** Serbo-Croatian (srpskohrvatski / српскохрватски)
+ * @author OC Ripper
+ */
+$messages['sh'] = array(
+	'abusefilter-desc' => 'Dodaje automatske heuristike izmjenama.',
+	'abusefilter' => 'Konfiguracija filtera za zloupotrebu',
+	'abuselog' => 'Evidencija zloupotreba',
+	'abusefilter-intro' => 'Dobrodošli u interfejs upravljanja filterom zloupotreba.
+Filter zloupotreba je automatizirani softverski mehanizam za pravljenje automatskih heuristika za sve akcije.
+Ovaj interfejs prikazuje spisak napravljenih filtera i omogućuje Vam da ih prilagodite.',
+	'abusefilter-mustbeeditor' => 'Iz sigurnosnih razloga, samo korisnici sa pravom da promijene filtere zloupotrebe mogu koristiti ovaj interfejs.',
+	'abusefilter-warning' => "'''Upozorenje''': Ova akcija je automatski identificirana kao štetna.
+Nekonstruktivna uređivanja biti će brzo uklonjena,
+a prekomjerno ili ponovljeno nekonstruktivno uređivanje će uzrokovati da vaš račun ili IP adresa budu blokirani.
+Ukoliko vjerujete da je vaše uređivanje konstruktivno, možete ga ponovo poslati da ga potvrdite.
+Kratak opis pravila sprječavanja zloupotreaba koji se podudara s vašim uređivanjem je: $1",
+	'abusefilter-disallowed' => 'Ova akcija je automatski identificirana kao štetna, pa je stoga onemogućena.
+Ako vjerujete da je uređivanje konstruktivno, molimo kontaktirajte administratora i obavijestite ga o tome što ste pokušali učiniti.
+Kratak opis pravila spriječavanja zloupotrebe koji se podudara s vašim uređivanjem je: $1',
+	'abusefilter-blocked-display' => 'Ova akcija je automatski identificirana kao opasna,
+i kao takva onemogućena da se izvrši.
+Dodatno, da bi se zaštitio {{SITENAME}}, Vaš korisnički račun i sve pripadajuće IP adrese su blokirane za uređivanje.
+Ako se desila greška, molimo da kontaktirate administratora.
+Kratki opis prekršenih pravila koja odgovaraju Vašoj akciji je: $1',
+	'abusefilter-degrouped' => 'Ova akcija je automatski prepoznata kao štetna.
+U skladu s tim je onemogućena, a sumnja se da je Vaš račun kompromitovan, sva Vaša prava su povučena.
+Ako mislite da je ovo greška, molimo da kontaktirate birokratu sa objašnjenjem ove akcije te će tada Vaša prava biti vraćena.
+Kratki opis kršenja pravila koja su prekršena Vašom akcijom je: $1',
+	'abusefilter-autopromote-blocked' => 'Ova akcija je automatski identificirana kao opasna i onemogućena je.
+Dodatno, kao mjera zaštite, neke privilegije, koje su obično date potvrđenim računima su privremeno oduzete za Vaš račun.
+Kratki opis prekršenih pravila koje se odnose na Vašu akciju je: $1',
+	'abusefilter-blocker' => 'Filter zloupotreba',
+	'abusefilter-blockreason' => 'Automatski blokirano od strane filtera za zloupoterbu. Opis povrijeđenog pravila: $1',
+	'abusefilter-degroupreason' => 'Prava su automatski oduzeta od strane filtera za zloupotrebu. Opis pravila: $1',
+	'abusefilter-accountreserved' => 'Ovaj korisnički račun je rezervisan za upotrebu od strane filtera za zloupotrebu.',
+	'right-abusefilter-modify' => 'Modificiraj filtere za zloupotrebu',
+	'right-abusefilter-view' => 'Pogledaj filtere za zloupotrebu',
+	'right-abusefilter-log' => 'Pogledaj evidenciju zloupotrebe',
+	'right-abusefilter-log-detail' => 'Pogledaj detaljne unose u evidenciji zloupotrebe',
+	'right-abusefilter-private' => 'Pogledaj privatne podatke u evidenciji zloupotrebe.',
+	'right-abusefilter-modify-restricted' => 'Mijenjanje filtera zloupotrebe sa ograničenim akcijama',
+	'right-abusefilter-revert' => 'Vrati sve izmjene date od filtera zloupotreba',
+	'right-abusefilter-view-private' => 'Pregled filtera zloupotrebe koji su označeni kao privatni',
+	'right-abusefilter-log-private' => 'Vidi unose evidencije zloupotrebe označene kao privatne',
+	'right-abusefilter-hide-log' => 'Sakrij unose u evidenciji zloupotreba',
+	'right-abusefilter-hidden-log' => 'Pogledaj skrivene unose u evidenciji zloupotreba',
+	'right-abusefilter-modify-global' => 'Stvori ili promijeni globalni filter zloupotreba',
+	'action-abusefilter-modify' => 'Modificiraj filtere zloupotrebe',
+	'action-abusefilter-view' => 'Pogledaj filtere zloupotreba',
+	'action-abusefilter-log' => 'Pogledaj evidenciju zloupotreba',
+	'action-abusefilter-log-detail' => 'Vidi detaljne unose evidencije zloupotreba',
+);
+
 /** Tachelhit (Tašlḥiyt/ⵜⴰⵛⵍⵃⵉⵜ)
  * @author Dalinanir
  */
@@ -34977,6 +35045,7 @@ Prosite uporabnika, ki lahko dodaja omejena dejanja, da stori spremembo namesto 
 Oznake morajo biti kratne in ne smejo vsebovati posebnih znakov.',
 	'abusefilter-edit-notallowed' => 'Ustvarjanje ali urejanje filtrov zlorab vam ni dovoljeno.',
 	'abusefilter-edit-notallowed-global' => 'Nimate dovoljenj za ustvarjanje ali spreminjanje globalnih filtrov zlorab',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'Opozorilna sporočila po meri niso podprta za globalne filtre',
 	'abusefilter-edit-builder-select' => 'Izberite možnost, da jo dodate na mesto kazalca',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetični operatorji',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Seštevanje (+)',
@@ -41616,6 +41685,7 @@ $messages['yi'] = array(
 	'abusefilter-log-linkoncontribs' => 'שלעכט־באניצן לאג',
 	'abusefilter-log-linkoncontribs-text' => 'שלעכט־באניצן לאגבוך פאר דעם דאזיגן באניצער',
 	'abusefilter-log-hidden' => '(איינהייט באהאלטן)',
+	'abusefilter-log-hidden-implicit' => '(באהאלטן ווייל ווערסיע איז געווארן אויסגעמעקט)',
 	'abusefilter-log-cannot-see-details' => 'איר האט נישט ערלויבניש צו זען פרטים פון דעם ווערט.',
 	'abusefilter-log-hide-reason' => 'אורזאַך:',
 	'abusefilter-logentry-suppress' => 'האט פארבארגן "[[$1]]"',
@@ -41642,10 +41712,15 @@ $messages['yi'] = array(
 	'abusefilter-list-options' => 'ברירות',
 	'abusefilter-list-options-deleted' => 'אויסגעמעקטע פילטערס',
 	'abusefilter-list-options-deleted-only' => 'ווייזן נאר אויסגעמעקטע פילטערס',
+	'abusefilter-list-options-deleted-hide' => 'באהאלטן אויסגעמעקטן פילטערס',
+	'abusefilter-list-options-deleted-show' => 'איינשליסן באהאלטענע פילטערס',
 	'abusefilter-list-options-scope' => 'ווײַזן פילטערס פון:',
 	'abusefilter-list-options-scope-local' => 'לאקאַלע וויקי',
+	'abusefilter-list-options-scope-global' => 'גלאבאלע כללים',
 	'abusefilter-list-options-submit' => 'דערהײַנטיקן',
 	'abusefilter-tools-reautoconfirm-user' => 'באַניצער:',
+	'abusefilter-edit-subtitle' => 'רעדאקטירן פילטער $1',
+	'abusefilter-edit-subtitle-new' => 'שאפן פילטער',
 	'abusefilter-edit-status-label' => 'סטאַטיסטיק:',
 	'abusefilter-edit-new' => 'נײַער פֿילטער',
 	'abusefilter-edit-save' => 'אױפֿהיטן טעקע',
@@ -41679,13 +41754,32 @@ $messages['yi'] = array(
 	'abusefilter-edit-syntaxerr' => 'סינטאקט פֿעלער געטראפֿן: $1',
 	'abusefilter-edit-notallowed' => 'איר זענט נישט דערלויבט צו שאפֿן אדער רעדאקטירן פילטערס',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'אריטמעטישע אפעראטארן',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'צוגאב (+)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'טאפלען (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'צעטיילן (/)',
+	'abusefilter-edit-builder-op-arithmetic-pow' => 'פאטענץ (**)',
+	'abusefilter-edit-builder-group-op-comparison' => 'פארגלייכס אפעראטארן',
+	'abusefilter-edit-builder-op-comparison-equal' => 'גלייך צו (==)',
+	'abusefilter-edit-builder-op-comparison-notequal' => 'נישט גלייך צו (!=)',
+	'abusefilter-edit-builder-op-comparison-lt' => 'ווינציקער ווי (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'גרעסער ווי (>)',
+	'abusefilter-edit-builder-op-bool-not' => 'נישט (!)',
+	'abusefilter-edit-builder-op-bool-and' => 'און (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'אָדער (|)',
+	'abusefilter-edit-builder-group-misc' => 'פארשידנס',
+	'abusefilter-edit-builder-misc-in' => 'אנטהאלטן אין שנורל (in)',
+	'abusefilter-edit-builder-misc-like' => 'פאסט צו מוסטער (like)',
+	'abusefilter-edit-builder-misc-contains' => 'לינקע שנורל אנטהאלט רעכטע שנורל (contains)',
 	'abusefilter-edit-builder-group-funcs' => 'פֿונקציאנען',
+	'abusefilter-edit-builder-funcs-length' => 'לענג פון שנורל (length)',
 	'abusefilter-edit-builder-group-vars' => 'וואַריאַבלען',
 	'abusefilter-edit-builder-vars-accountname' => 'קאנטע נאמען (ביים שאפֿן קאנטע)',
 	'abusefilter-edit-builder-vars-timestamp' => 'צײַטשטעמפל פון ענדערונג אין יוניקס פֿארמאט',
 	'abusefilter-edit-builder-vars-action' => 'אַקציע',
 	'abusefilter-edit-builder-vars-addedlines' => 'שורות צוגעלייגט בײַם ענדערן',
+	'abusefilter-edit-builder-vars-newsize' => 'נייע בלאט גרייס',
+	'abusefilter-edit-builder-vars-oldsize' => 'אלטע בלאט גרייס',
+	'abusefilter-edit-builder-vars-removedlines' => 'שורות אראפגענומען בײַם רעדאקטירן',
 	'abusefilter-edit-builder-vars-article-id' => 'בלאט נומער',
 	'abusefilter-edit-builder-vars-article-ns' => 'בלאט נאמענטייל',
 	'abusefilter-edit-builder-vars-article-text' => 'בלאט טיטל (אן נאמענטייל)',
@@ -41701,6 +41795,7 @@ $messages['yi'] = array(
 	'abusefilter-edit-builder-vars-user-editcount' => 'רעדאקטירונג צאל פון באניצער',
 	'abusefilter-edit-builder-vars-user-age' => 'עלטער פון באניצער־קאנטע',
 	'abusefilter-edit-builder-vars-user-name' => 'נאמען פון באניצער־קאנטע',
+	'abusefilter-edit-builder-vars-user-blocked' => 'צי באניצער איז בלאקירט',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'צייט ווען ע־פאסט אדרעס איז געווארן באשטעטיקט',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'לעצטע צען באארבעטער פון דעם בלאט',
 	'abusefilter-history-foruser' => 'ענדערונגען פון $1',
@@ -41732,11 +41827,13 @@ $messages['yi'] = array(
 	'abusefilter-revert-periodend' => 'תקופה סוף',
 	'abusefilter-revert-filter' => 'פֿילטער:',
 	'abusefilter-revert-confirm' => 'באַשטעטיקן',
+	'abusefilter-revert-reasonfield' => 'אורזאַך:',
 	'abusefilter-test-submit' => 'פּרובירן',
 	'abusefilter-test-load' => 'אָנלאָדן',
 	'abusefilter-test-user' => 'ענדערונגען פֿון באניצער:',
 	'abusefilter-test-period-start' => 'ענדערונגען זײַט:',
 	'abusefilter-test-period-end' => 'ענדערונגען פֿאר:',
+	'abusefilter-changeslist-examine' => 'בודק זיין',
 	'abusefilter-examine-user' => 'באַניצער:',
 	'abusefilter-examine-title' => 'בלאַטנאָמען:',
 	'abusefilter-examine-submit' => 'זוכן',
@@ -41752,6 +41849,8 @@ $messages['yi'] = array(
 	'abusefilter-diff-pattern' => 'פילטער תנאָים',
 	'abusefilter-diff-invalid' => 'מען קען נישט באקומען די געזוכטע ווערסיעס',
 	'abusefilter-diff-backhistory' => 'צוריק צו פֿילטער היסטאריע',
+	'abusefilter-diff-prev' => 'עלטערע ענדערונג',
+	'abusefilter-diff-next' => 'נײַערע ענדערונג',
 	'abusefilter-import-submit' => 'אימפארטירן דאַטן',
 	'abusefilter-group-default' => 'גרונטלעך',
 );
