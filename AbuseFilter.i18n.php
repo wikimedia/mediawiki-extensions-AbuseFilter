@@ -7753,6 +7753,7 @@ Zkopírujte si text, který se objeví v rámečku, vložte ho do tohoto formul�
 $messages['cu'] = array(
 	'abusefilter-log-search-user' => 'по́льꙃєватєл҄ь :',
 	'abusefilter-log-search-title' => 'страницѧ имѧ :',
+	'abusefilter-log-search-submit' => 'ищи',
 	'abusefilter-log-hide-reason' => 'какъ съмꙑслъ :',
 	'abusefilter-list-options-submit' => 'оновити',
 	'abusefilter-tools-reautoconfirm-user' => 'польꙃєватєл҄ь :',
@@ -30855,8 +30856,8 @@ O filtro atingiu o limite de correspondência com mais de $1% de ações.",
 	'abusefilter-edit-done' => 'Gravou com sucesso as alterações ao filtro $1.',
 	'abusefilter-edit-badsyntax' => 'Há um erro de sintaxe no filtro que especificou.
 O resultado de saída do analisador foi: <pre>$1</pre>',
-	'abusefilter-edit-restricted' => 'Não pode editar este filtro, porque ele contém uma ou mais acções restritas.
-Por favor, peça a um utilizador com permissão de adicionamento de acções restritas para efectuar a alteração por si.',
+	'abusefilter-edit-restricted' => 'Não pode editar este filtro, porque ele contém uma ou mais ações restritas.
+Por favor, peça a um utilizador com permissão de adicionamento de ações restritas para efetuar a alteração por si.',
 	'abusefilter-edit-viewhistory' => 'Ver o histórico deste filtro',
 	'abusefilter-edit-history' => 'Histórico:',
 	'abusefilter-edit-check' => 'Verificar sintaxe',
@@ -31021,7 +31022,7 @@ Acções a reverter: $5 ($6)',
 	'abusefilter-revert-search' => 'Selecionar ações',
 	'abusefilter-revert-filter' => 'Filtro:',
 	'abusefilter-revert-preview-intro' => 'Abaixo estão as alterações feitas pelo filtro de abusos que serão revertidas por esta operação.
-Por favor, verifique-as cuidadosamente e clique "confirmar" para confirmar a sua selecção.',
+Por favor, verifique-as cuidadosamente e clique "confirmar" para confirmar a sua seleção.',
 	'abusefilter-revert-confirm' => 'Confirmar',
 	'abusefilter-revert-success' => 'Reverteu todas as alterações feitas pelo filtro de abusos devido ao [[Special:AbuseFilter/$1|filtro $1]].',
 	'abusefilter-revert-reason' => 'Reversão automática de todas as alterações feitas pelo filtro de abusos devido ao filtro $1.
