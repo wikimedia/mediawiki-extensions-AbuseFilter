@@ -7019,8 +7019,12 @@ $messages['ce'] = array(
 Нагахь, хьо тешна валахь, хlара нийсдар хlоттам болуш хиларна, дехар до, адаманкуьйгалхочуьнга дийцар, хьо дан воллург.
 Зуламах лаьцна хаам, аш дечуьнца догlуш хилар билгалла даьккхина: $1', # Fuzzy
 	'abusefilter-blocker' => 'Зулум литтар',
+	'abusefilter-log' => 'Зулум литтаран тептар',
+	'abusefilter-log-summary' => 'ХӀокху тептар чохь гойту литтаран карийнарш.',
+	'abusefilter-log-search' => 'Зуламан тептар чохь лахар',
 	'abusefilter-log-search-user' => 'Декъашхо:',
 	'abusefilter-log-search-filter' => 'ID литтаран:',
+	'abusefilter-log-search-title' => 'Корта:',
 	'abusefilter-log-detailedentry-local' => 'литтар $1',
 	'abusefilter-log-detailslink' => 'мадарра',
 	'abusefilter-log-hidelink' => 'схьагар нисде',
@@ -7052,6 +7056,7 @@ $messages['ce'] = array(
 	'abusefilter-edit-group' => 'Литтаран тоба:',
 	'abusefilter-edit-lastmod' => 'Тlаьххьара литтаран хийцам:',
 	'abusefilter-edit-warn-other' => 'Кхин хаам',
+	'abusefilter-edit-builder-vars-user-name' => 'Декъашхон цӀе',
 	'abusefilter-filter-log' => 'Литтаран тӏаьхьара бина хийцамаш',
 	'abusefilter-history-user' => 'Декъашхо',
 	'abusefilter-history-select-legend' => 'Билгалдакха лахар',
@@ -7062,9 +7067,11 @@ $messages['ce'] = array(
 	'abusefilter-revert-reasonfield' => 'Бахьан:',
 	'abusefilter-examine' => 'Хийцамашка къестош хьажар',
 	'abusefilter-examine-user' => 'Декъашхо:',
+	'abusefilter-examine-noresults' => 'Жоп дехарца хӀума ца карийна оцу параметаршца.',
 	'abusefilter-topnav' => 'Зуламан литтаран навигаци',
 	'abusefilter-topnav-home' => 'Юьхьигé',
 	'abusefilter-topnav-examine' => 'Хийцамашка къестош хьажар',
+	'abusefilter-log-name' => 'Зулум литтаран тептар',
 	'abusefilter-diff-title' => 'Версешан башхалла',
 	'abusefilter-group-default' => 'Iад йитарца',
 );
@@ -7751,7 +7758,7 @@ Zkopírujte si text, který se objeví v rámečku, vložte ho do tohoto formul�
  * @author ОйЛ
  */
 $messages['cu'] = array(
-	'abusefilter-log-search-user' => 'по́льꙃєватєл҄ь :',
+	'abusefilter-log-search-user' => 'польꙃєватєл҄ь :',
 	'abusefilter-log-search-title' => 'страницѧ имѧ :',
 	'abusefilter-log-search-submit' => 'ищи',
 	'abusefilter-log-hide-reason' => 'какъ съмꙑслъ :',
@@ -12191,6 +12198,7 @@ $messages['fa'] = array(
  * @author Olli
  * @author Pxos
  * @author Silvonen
+ * @author Snidata
  * @author Str4nd
  * @author Stryn
  * @author VezonThunder
@@ -12439,6 +12447,7 @@ Merkintöjen tulisi olla lyhyitä ja ilman erikoismerkkejä.',
 	'abusefilter-edit-builder-group-funcs' => 'Funktiot',
 	'abusefilter-edit-builder-funcs-length' => 'Merkkijonon pituus (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Muuta pienaakkosiksi (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'Muuta suuraakkosiksi (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalisoi hämäävät merkit (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Poista kaksoismerkit (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Erikoismerkit / merkit yhteensä (specialratio)',
@@ -24915,6 +24924,7 @@ $messages['mr'] = array(
 	'abusefilter-log-detailedentry-meta' => '$1: $2 ने $3 ला कार्यान्वित केले, $5 वर "$4"  ही क्रिया केली.
 कार्यवाही केली : $6;
 गाळणीचे वर्णन : $7 ($8)',
+	'abusefilter-log-detailedentry-global' => 'वैश्विक गाळणी $1',
 	'abusefilter-log-detailedentry-local' => 'गाळणी $1',
 	'abusefilter-log-detailslink' => 'माहिती',
 	'abusefilter-log-diff' => 'फरक',
@@ -24922,12 +24932,22 @@ $messages['mr'] = array(
 	'abusefilter-log-details-legend' => 'नोंदवहीतील कलम $1 चा तपशील',
 	'abusefilter-log-details-var' => 'चल (व्हॅरिएबल)',
 	'abusefilter-log-details-val' => 'किंमत (व्हॅल्यू)',
+	'abusefilter-log-details-vars' => 'कार्य प्राचल',
+	'abusefilter-log-details-private' => 'खाजगी मजकूर',
+	'abusefilter-log-details-ip' => 'ज्या मुळ अंकपत्त्याहून',
 	'abusefilter-log-noactions' => 'काहीही नाही',
 	'abusefilter-log-details-diff' => 'संपादनात केलेले बदल',
 	'abusefilter-log-linkoncontribs' => 'संपादन गाळणी नोंदी',
 	'abusefilter-log-linkoncontribs-text' => 'गाळणीने टिपलेल्या या सदस्याच्या नोंदी',
+	'abusefilter-log-hidden' => '(नोंद लपविलेली आहे)',
+	'abusefilter-log-hidden-implicit' => '(लपविलेली, कारण संस्करण वगळण्यात आले आहे)',
+	'abusefilter-log-cannot-see-details' => 'या नोंदीचा तपशिल बघण्यास आपणास परवानगी नाही.',
+	'abusefilter-log-details-hidden' => 'या नोंदीचा तपशिल आपण बघु शकत नाही कारण तिची सार्वजनिक दृष्यता लपविलेली आहे.',
+	'abusefilter-log-hide-legend' => 'नोंदेची(लॉग) नोंद(एंट्री) लपवा',
 	'abusefilter-log-hide-id' => 'टिपलेल्या नोंदीचा क्रमांक',
+	'abusefilter-log-hide-hidden' => 'ही नोंद सार्वजनिक दृष्यतेपासून लपवा',
 	'abusefilter-log-hide-reason' => 'कारण:',
+	'abusefilter-log-hide-forbidden' => 'आपणास दुरुपयोग गाळणीच्या नोंदवहीतील नोंदी लपविण्याची परवानगी नाही.',
 	'abusefilter-management' => 'संपादन गाळणी व्यवस्थापन',
 	'abusefilter-list' => 'सर्व गाळण्या',
 	'abusefilter-list-id' => 'गाळणी क्रमांक',
