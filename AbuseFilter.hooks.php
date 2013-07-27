@@ -264,9 +264,7 @@ class AbuseFilterHooks {
 	 * @return bool
 	 */
 	protected static function identicalPageObjects( $page1, $page2 ) {
-		if ( 	( class_exists('MWInit') && MWInit::methodExists( 'Article', 'getPage' ) ) ||
-			( !class_exists('MWInit') && method_exists('Article', 'getPage') )
-		) {
+		if ( method_exists('Article', 'getPage') ) {
 			$wpage1 = ( $page1 instanceof Article ) ? $page1->getPage() : $page1;
 			$wpage2 = ( $page2 instanceof Article ) ? $page2->getPage() : $page2;
 			return ( $wpage1 === $wpage2 );
