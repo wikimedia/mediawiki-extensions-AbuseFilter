@@ -695,8 +695,11 @@ Followed by the fieldset label {{msg-mw|Abusefilter-list-options}}.',
 	'abusefilter-tools-reautoconfirm-user' => 'Field label. See {{msg-mw|group-autoconfirmed}} for concept translation.
 {{Identical|User}}',
 	'abusefilter-tools-reautoconfirm-submit' => 'Submit button text to add a user to the autoconfirmed user group. See {{msg-mw|group-autoconfirmed}} for concept translation.',
-	'abusefilter-reautoconfirm-none' => 'Error text in case a user has not had their autoconfirmed status revoked. See {{msg-mw|group-autoconfirmed}} for concept translation.
-* $1 is the target user name used for GENDER',
+	'abusefilter-reautoconfirm-none' => '{{doc-singularthey}}
+Error text in case a user has not had their autoconfirmed status revoked. See {{msg-mw|group-autoconfirmed}} for concept translation.
+
+Parameters:
+* $1 - the target user name used for GENDER',
 	'abusefilter-reautoconfirm-notallowed' => 'Error text when trying to perform an action the user cannot perform. See {{msg-mw|group-autoconfirmed}} for concept translation.',
 	'abusefilter-reautoconfirm-done' => 'See {{msg-mw|group-autoconfirmed}} for concept translation.
 * $1 is the target user name (optional, used for GENDER).',
@@ -32693,6 +32696,7 @@ $messages['rtm'] = array(
  * @author Kalan
  * @author Lockal
  * @author MaxSem
+ * @author NBS
  * @author VasilievVV
  * @author Александр Сигачёв
  * @author Сrower
@@ -32887,7 +32891,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-done-subtitle' => 'Фильтр исправлен',
 	'abusefilter-edit-done' => 'Вы успешно сохранили изменения в фильтре $1.',
 	'abusefilter-edit-badsyntax' => 'В указанном фильтре обнаружены синтаксические ошибки. Парсер выдал следующее сообщение: <pre>$1</pre>',
-	'abusefilter-edit-restricted' => 'Вы не можете изменить этот фильтр, так как он содержит одно или несколько ограничивающих действий. Пожалуйста, попросите участника с соответствующими правами добавить изменить фильтр для вас.',
+	'abusefilter-edit-restricted' => 'Вы не можете изменить этот фильтр, так как он содержит одно или несколько ограничивающих действий. Пожалуйста, попросите участника с соответствующими правами сделать требуемые изменения.',
 	'abusefilter-edit-viewhistory' => 'Показать историю этого фильтра',
 	'abusefilter-edit-history' => 'История:',
 	'abusefilter-edit-check' => 'Проверить синтаксис',
@@ -41285,6 +41289,7 @@ $messages['vep'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Baonguyen21022003
  * @author Minh Nguyen
  * @author Vinhtantran
  */
@@ -41311,7 +41316,7 @@ Ngoài ra, để bảo vệ {{PAGENAME}}, tài khoản cá nhân của bạn và
 Nếu điều này xảy ra do nhầm lẫn, xin hãy liên hệ với một bảo quản viên.
 Miêu tả ngắn về quy định nguy hại mà tác vụ của bạn gặp phải là: $1',
 	'abusefilter-degrouped' => 'Tác vụ này đã được tự động xác định là nguy hại.
-Do đó, bạn không được phép thực hiện, và, vì tài khoản của bạn bị nghi là bị đánh cắp, tất cả các quyền đã bị gỡ bỏ.
+Do đó, bạn không được phép thực hiện, vì tài khoản của bạn bị nghi là bị đánh cắp, tất cả các quyền đã bị thu hồi.
 Nếu bạn tin rằng điều này xảy ra do nhầm lẫn, xin hãy liên hệ với một hành chính viên cùng với lời giải thích cho tác vụ của mình, quyền của bạn có thể được phục hồi.
 Miêu tả ngắn về quy định nguy hại mà tác vụ của bạn gặp phải là: $1',
 	'abusefilter-autopromote-blocked' => 'Tác vụ này đã được tự động xác định là nguy hại, và bạn không được phép thực hiện nó.
