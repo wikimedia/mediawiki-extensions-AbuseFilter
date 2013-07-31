@@ -7242,6 +7242,7 @@ $messages['ckb'] = array(
 	'right-abusefilter-modify' => 'دەستکاریی پاڵوێنەکانی کەڵکاوەژوو',
 	'right-abusefilter-view' => 'دیتنی پاڵوێنەکانی کەڵکاوەژوو',
 	'right-abusefilter-log' => 'دیتنی لۆگی کەڵکاوەژوو',
+	'right-abusefilter-log-detail' => 'دیتنی وردەکارییەکانی بابەتەکانی لۆگی کەڵکاوەژوو',
 	'action-abusefilter-modify' => 'دەستکاریی پاڵوێنەکانی کەڵکاوەژوو',
 	'action-abusefilter-view' => 'دیتنی پاڵوێنەکانی کەڵکاوەژوو',
 	'action-abusefilter-log' => 'دیتنی لۆگی کەڵکاوەژوو',
@@ -10037,7 +10038,7 @@ $messages['el'] = array(
 	'abusefilter-log-search-user' => 'Χρήστης:',
 	'abusefilter-log-search-filter' => 'Ταυτοποίηση φίλτρου:',
 	'abusefilter-log-search-title' => 'Τίτλος:',
-	'abusefilter-log-search-wiki' => 'Βίκι:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Αναζήτηση',
 	'abusefilter-log-entry' => '$1: Ο $2 προκάλεσε ένα φίλτρο καταχρήσεων, εκτελώντας την ενέργεια "$3" στο $4.
 Ενέργειες που λήφθηκαν: $5;
@@ -10058,8 +10059,8 @@ $messages['el'] = array(
 	'abusefilter-log-details-ip' => 'Διεύθυνση IP της προέλευσης',
 	'abusefilter-log-noactions' => 'καμία',
 	'abusefilter-log-details-diff' => 'Αλλαγές που πραγματοποιήθηκαν κατά την επεξεργασία',
-	'abusefilter-log-linkoncontribs' => 'ιστορικό καταχρήσεων',
-	'abusefilter-log-linkoncontribs-text' => 'Ιστορικό καταχρήσεων για αυτόν τον χρήστη',
+	'abusefilter-log-linkoncontribs' => 'καταγραφές καταχρήσεων',
+	'abusefilter-log-linkoncontribs-text' => 'Καταγραφές καταχρήσεων για αυτόν τον χρήστη',
 	'abusefilter-log-hidden' => '(κρυφή εγγραφή)',
 	'abusefilter-log-cannot-see-details' => 'Δεν έχετε δικαιώματα για να δείτε λεπτομέρειες σχετικά με αυτή την εγγραφή.',
 	'abusefilter-log-details-hidden' => 'Δεν μπορείτε να δείτε τις λεπτομέρειες για αυτήν την καταχώρηση, διότι είναι κρυμμένες από τη δημόσια θέα.',
@@ -10089,17 +10090,17 @@ $messages['el'] = array(
 	'abusefilter-deleted' => 'Διαγραμμένο',
 	'abusefilter-disabled' => 'Απενεργοποιημένο',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|αποτέλεσμα|αποτελέσματα}}',
-	'abusefilter-new' => 'Δημιουργήστε ένα νέο φίλτρο',
-	'abusefilter-return' => 'επιστροφή στη διαχείριση φίλτρων',
+	'abusefilter-new' => 'Δημιουργία νέου φίλτρου',
+	'abusefilter-return' => 'Επιστροφή στη διαχείριση φίλτρων',
 	'abusefilter-status-global' => 'Καθολικό',
 	'abusefilter-list-options' => 'Επιλογές',
-	'abusefilter-list-options-deleted' => 'Διεγραμμένα φίλτρα:',
-	'abusefilter-list-options-deleted-only' => 'Εμφάνιση μόνο των διεγραμμένων φίλτρων',
-	'abusefilter-list-options-deleted-hide' => 'Απόκρυψη διεγραμμένων φίλτρων',
-	'abusefilter-list-options-deleted-show' => 'Συμπερίληψη διεγραμμένων φίλτρων',
+	'abusefilter-list-options-deleted' => 'Διαγεγραμμένα φίλτρα:',
+	'abusefilter-list-options-deleted-only' => 'Εμφάνιση μόνο διαγεγραμμένων φίλτρων',
+	'abusefilter-list-options-deleted-hide' => 'Απόκρυψη διαγεγραμμένων φίλτρων',
+	'abusefilter-list-options-deleted-show' => 'Συμπερίληψη διαγεγραμμένων φίλτρων',
 	'abusefilter-list-options-scope' => 'Εμφάνιση φίλτρων από:',
-	'abusefilter-list-options-scope-local' => 'Τοπικό βίκι',
-	'abusefilter-list-options-scope-global' => 'Παγκόσμιοι κανόνες',
+	'abusefilter-list-options-scope-local' => 'Τοπικό wiki',
+	'abusefilter-list-options-scope-global' => 'Καθολικοί κανόνες',
 	'abusefilter-list-options-disabled' => 'Απενεργοποιημένα φίλτρα:',
 	'abusefilter-list-options-hidedisabled' => 'Απόκρυψη απενεργοποιημένων φίλτρων',
 	'abusefilter-list-options-submit' => 'Ενημέρωση',
@@ -10132,7 +10133,7 @@ $messages['el'] = array(
 	'abusefilter-edit-group' => 'Ομάδα φίλτρου:',
 	'abusefilter-edit-flags' => 'Σημαίες:',
 	'abusefilter-edit-enabled' => 'Ενεργοποίηση αυτού του φίλτρου',
-	'abusefilter-edit-deleted' => 'Σήμανση ως διεγραμμένο',
+	'abusefilter-edit-deleted' => 'Σήμανση ως διαγεγραμμένο',
 	'abusefilter-edit-hidden' => 'Απόκρυψη λεπτομερειών αυτού του φίλτρου από τη δημόσια θέα',
 	'abusefilter-edit-global' => 'Καθολικό φίλτρο',
 	'abusefilter-edit-rules' => 'Συνθήκες:',
@@ -10147,7 +10148,7 @@ $messages['el'] = array(
 	'abusefilter-edit-action-flag' => 'Επισήμανση με σημαία αυτής της επεξεργασίας στο ιστορικό καταχρήσεων',
 	'abusefilter-edit-action-blockautopromote' => 'Ανάκληση της ιδιότητας αυτοεπιβεβαιωμένου χρήστη',
 	'abusefilter-edit-action-degroup' => 'Αφαίρεσε τον χρήστη από όλες τις ομάδες δικαιωμάτων',
-	'abusefilter-edit-action-block' => 'Φραγή του χρήστη και/ή της διεύθυνσης IP από την επεξεργασία',
+	'abusefilter-edit-action-block' => 'Φραγή χρήστη ή/και διεύθυνσης IP από την επεξεργασία',
 	'abusefilter-edit-action-throttle' => 'Πρόκληση τέτοιων ενεργειών μόνο αν ο χρήστης ξεπεράσει ένα όριο ρυθμού',
 	'abusefilter-edit-action-rangeblock' => 'Φραγή της εμβέλειας IP /16 από όπου προέρχεται ο χρήστης.',
 	'abusefilter-edit-action-tag' => 'Σήμανση της επεξεργασίας με ετικέτα για περαιτέρω επιθεώρηση',
@@ -16015,8 +16016,8 @@ Dostignuta je granicu od podudaranja s više od $1% akcija suradnika.",
 	'abusefilter-edit-throttle-count' => 'Broj omogućenih akcija:',
 	'abusefilter-edit-throttle-period' => 'Vremensko razdoblje:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|sekunda|sekunde|sekundi}}',
-	'abusefilter-edit-throttle-groups' => "Grupno usporavanje prema:
-:''(jedan po retku, zajedno s zarezima)''",
+	'abusefilter-edit-throttle-groups' => "Skupno usporavanje prema:
+:''(jedan po retku, zajedno sa zarezima)''",
 	'abusefilter-edit-warn-message' => 'Poruka sustava koja će biti rabljena za upozorenje:',
 	'abusefilter-edit-warn-other' => 'Ostale poruke',
 	'abusefilter-edit-warn-other-label' => "Ime stranice druge poruke:
@@ -16029,7 +16030,7 @@ Dostignuta je granicu od podudaranja s više od $1% akcija suradnika.",
 	'abusefilter-edit-main' => 'Parametri filtra',
 	'abusefilter-edit-done-subtitle' => 'Filtar je uređen',
 	'abusefilter-edit-done' => 'Uspješno ste spremili promjene filtra $1.',
-	'abusefilter-edit-badsyntax' => "Sintaktička pogreška u filtru koji ste naveli. Izlaz iz ''parsera'' bio je:
+	'abusefilter-edit-badsyntax' => "Sintaktička pogrješka u filtru koji ste naveli. Izlaz iz ''parsera'' bio je:
 <pre>$1</pre>",
 	'abusefilter-edit-restricted' => 'Ne možete uređivati ovaj filtar, jer on sadrži jednu ili više ograničenih akcija.
 Zamolite suradnika s pravima dodavanja ograničenih akcija da napravi izmjene umjesto Vas.',
@@ -16041,8 +16042,8 @@ Zamolite suradnika s pravima dodavanja ograničenih akcija da napravi izmjene um
 	'abusefilter-edit-tools' => 'Alati:',
 	'abusefilter-edit-test-link' => 'Testiraj ovaj filtar s nedavnim izmjenama na projektu',
 	'abusefilter-edit-export' => 'Izvezi ovaj filtar na neki drugi wiki',
-	'abusefilter-edit-syntaxok' => 'Nema sintaksnih pogrešaka.',
-	'abusefilter-edit-syntaxerr' => 'Sintaktička pogreška: $1',
+	'abusefilter-edit-syntaxok' => 'Nema sintaksnih pogrješaka.',
+	'abusefilter-edit-syntaxerr' => 'Sintaktička pogrješka: $1',
 	'abusefilter-edit-bad-tags' => 'Jedna ili više oznaka koje ste naveli nije ispravna.
 Oznaka mora biti kratka, i ne bi smjela sadržavati posebne znakove.',
 	'abusefilter-edit-notallowed' => 'Vi ne smijete stvarati ili uređivati filtre zloporaba',
@@ -41316,7 +41317,7 @@ Ngoài ra, để bảo vệ {{PAGENAME}}, tài khoản cá nhân của bạn và
 Nếu điều này xảy ra do nhầm lẫn, xin hãy liên hệ với một bảo quản viên.
 Miêu tả ngắn về quy định nguy hại mà tác vụ của bạn gặp phải là: $1',
 	'abusefilter-degrouped' => 'Tác vụ này đã được tự động xác định là nguy hại.
-Do đó, bạn không được phép thực hiện, vì tài khoản của bạn bị nghi là bị đánh cắp, tất cả các quyền đã bị thu hồi.
+Do đó, bạn không được phép thực hiện; vì tài khoản của bạn bị nghi là bị đánh cắp, tất cả các quyền đã bị thu hồi.
 Nếu bạn tin rằng điều này xảy ra do nhầm lẫn, xin hãy liên hệ với một hành chính viên cùng với lời giải thích cho tác vụ của mình, quyền của bạn có thể được phục hồi.
 Miêu tả ngắn về quy định nguy hại mà tác vụ của bạn gặp phải là: $1',
 	'abusefilter-autopromote-blocked' => 'Tác vụ này đã được tự động xác định là nguy hại, và bạn không được phép thực hiện nó.

@@ -277,6 +277,12 @@ $specialPageAliases['mg'] = array(
 	'AbuseFilter' => array( 'Fanakanam-panararaotana' ),
 );
 
+/** Minangkabau (Baso Minangkabau) */
+$specialPageAliases['min'] = array(
+	'AbuseLog' => array( 'CatatanPanyalahgunoan' ),
+	'AbuseFilter' => array( 'SariangPanyalahgunoan' ),
+);
+
 /** Macedonian (македонски) */
 $specialPageAliases['mk'] = array(
 	'AbuseLog' => array( 'ДневникНаЗлоупотреба' ),
