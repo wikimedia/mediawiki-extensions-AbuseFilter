@@ -745,6 +745,12 @@ class AbuseFilter {
 			if ( !empty( $actions['warn'] ) ) {
 				$parameters = $actions['warn']['parameters'];
 				$warnKey = 'abusefilter-warned-' . md5($title->getPrefixedText()) . '-' . $filter;
+
+				// Make sure the session is started prior to using it
+				if ( session_id() === '' ) {
+					wfSetupSession();
+				}
+
 				if ( !isset( $_SESSION[$warnKey] ) || !$_SESSION[$warnKey] ) {
 					$_SESSION[$warnKey] = true;
 
