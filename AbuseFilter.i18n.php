@@ -11140,7 +11140,7 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-edit-builder-vars-oldsize' => 'Antiguo tamaño de la página',
 	'abusefilter-edit-builder-vars-removedlines' => 'Líneas eliminadas en la edición',
 	'abusefilter-edit-builder-vars-summary' => 'Resumen de edición/razón',
-	'abusefilter-edit-builder-vars-article-id' => 'ID de página',
+	'abusefilter-edit-builder-vars-article-id' => 'Id. de página',
 	'abusefilter-edit-builder-vars-article-ns' => 'Espacio de nombres de la página',
 	'abusefilter-edit-builder-vars-article-text' => 'Título de página (sin espacio de nombre)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Título de página completa',
@@ -11241,7 +11241,7 @@ Razón dada: $2',
 	'abusefilter-test-intro' => 'Esta página te permite verificar un filtro introducido en la tabla de abajo contra {{PLURAL:$1|el último cambio|los últimos $1 cambios}}.
 Para cargar un filtro existente, escribe el ID del filtro dentro de la tabla debajo del texto de tabla, y pulsa en el botón «Cargar».',
 	'abusefilter-test-legend' => 'Prueba de filtro',
-	'abusefilter-test-load-filter' => 'Cargar filtro ID:',
+	'abusefilter-test-load-filter' => 'Cargar id. de filtro:',
 	'abusefilter-test-submit' => 'Prueba',
 	'abusefilter-test-load' => 'Cargar',
 	'abusefilter-test-user' => 'Cambios por usuario:',
@@ -20900,8 +20900,8 @@ $messages['ko'] = array(
 	'abusefilter-intro' => '편집 필터 관리 인터페이스를 사용하는 여러분을 환영합니다.
 편집 필터는 모든 행위에 대해 문제가 있는지 자동적으로 검사하는 소프트웨어입니다.
 이 페이지에는 정의된 필터 목록이 보여지며, 필터를 수정할 수 있습니다.',
-	'abusefilter-mustbeeditor' => '보안상의 이유로, 편집 필터 편집 권한을 가진 사용자만이 이 양식을 이용할 수 있습니다.',
-	'abusefilter-warning' => "'''경고''': 현재 행동에 문제가 있다고 판단되었습니다.
+	'abusefilter-mustbeeditor' => '보안상의 이유로, 편집 필터 편집 권한을 가진 사용자만이 이 양식을 사용할 수 있습니다.',
+	'abusefilter-warning' => "'''경고:''' 현재 행동에 문제가 있다고 판단되었습니다.
 비생산적인 편집은 즉시 되돌려지며,
 이러한 행동이 반복될 경우 계정 및 IP 주소가 차단될 수 있습니다.
 만약 해당 행동에 문제가 없다면, 저장 버튼을 다시 눌러 주세요.
@@ -20914,7 +20914,7 @@ $messages['ko'] = array(
 이 차단이 오류로 인한 것이라면, 관리자에게 문의해주세요.
 행위와 일치한 필터의 간단한 설명은 다음과 같습니다: $1',
 	'abusefilter-degrouped' => '이러한 행위는 자동적으로 해로운 것으로 간주되었습니다.
-따라서 계정이 정상적으로 이용되지 않는다고 의심되어 모든 권한이 해제되었습니다.
+따라서 계정이 정상적으로 사용되지 않는다고 의심되어 모든 권한이 해제되었습니다.
 이 문제가 오류로 인해 생긴 문제라면, 이 행동에 대한 설명과 함께 이 프로젝트의 사무관에게 문의하여 권한 복구를 요청하십시오.
 행위와 일치하는 필터 규칙에 대한 간단한 설명은 다음과 같습니다: $1',
 	'abusefilter-autopromote-blocked' => '이 행위는 자동적으로 해로운 것으로 간주되었습니다.
@@ -20925,8 +20925,8 @@ $messages['ko'] = array(
 일치하는 규칙에 대한 설명: $1',
 	'abusefilter-degroupreason' => '편집 필터에 의해 자동적으로 권한이 해제되었습니다.
 규칙 설명: $1',
-	'abusefilter-accountreserved' => '이 계정은 편집 필터 이용을 위해 지정되어 있습니다.',
-	'right-abusefilter-modify' => '편집 필터 편집',
+	'abusefilter-accountreserved' => '이 계정 이름은 편집 필터 사용을 위해 지정되어 있습니다.',
+	'right-abusefilter-modify' => '편집 필터 수정',
 	'right-abusefilter-view' => '편집 필터 보기',
 	'right-abusefilter-log' => '편집 필터 기록 보기',
 	'right-abusefilter-log-detail' => '편집 필터 기록의 자세한 내용 보기',
@@ -21026,10 +21026,10 @@ $messages['ko'] = array(
 	'abusefilter-tools-reautoconfirm' => '자동 인증 상태를 복구',
 	'abusefilter-tools-reautoconfirm-user' => '사용자:',
 	'abusefilter-tools-reautoconfirm-submit' => '자동 인증 상태 복구',
-	'abusefilter-reautoconfirm-none' => '이 계정 ($1)은 자동 인증 상태가 해제된 적이 없습니다.',
+	'abusefilter-reautoconfirm-none' => '이 사용자는 {{GENDER:$1}}자동 인증 상태가 중단된 적이 없습니다.',
 	'abusefilter-reautoconfirm-notallowed' => '자동 인증 상태를 복구할 권한이 없습니다.',
 	'abusefilter-reautoconfirm-done' => '계정의 자동 인증 상태가 복구되었습니다.',
-	'abusefilter-status' => '최근 행위 $1개 중 $2개 ($3%)가 부하 한도 $4에 도달했고 $5개($6%)가 현재 활성화된 필터와 일치하였습니다.',
+	'abusefilter-status' => '최근 {{PLURAL:$1|행위}} $1개 중 $2개 ($3%)가 부하 한도 $4에 도달{{PLURAL:$2|했고}} $5개($6%)가 현재 활성화된 필터와 일치{{PLURAL:$5|했습니다}}.',
 	'abusefilter-edit' => '편집 필터 편집 중',
 	'abusefilter-edit-subtitle' => '필터 $1 편집하기',
 	'abusefilter-edit-subtitle-new' => '필터 만들기',
@@ -21038,8 +21038,8 @@ $messages['ko'] = array(
 바뀜을 저장하면 편집하고 있는 버전 이후의 모든 바뀜을 덮어쓰게 됩니다.</strong> &bull;
 [[Special:AbuseFilter/history/$2|이 필터의 역사로 돌아갑니다]].',
 	'abusefilter-edit-status-label' => '통계:',
-	'abusefilter-edit-status' => '최근 행위 $1개 중 $2건($3%)이 이 필터와 일치하였습니다.
-평균적으로 필터의 작동 시간은 $4밀리초이며, $5만큼의 부하가 걸리고 있습니다.',
+	'abusefilter-edit-status' => '최근 {{PLURAL:$1|행위}} $1개 중 $2건($3%)이 이 필터와 일치하였습니다.
+평균적으로 필터의 작동 시간은 $4밀리초이며, $5만큼의 {{PLURAL:$5|부하}}가 걸리고 있습니다.',
 	'abusefilter-edit-throttled' => "'''경고''': 이 필터는 안전상의 이유로 자동적으로 비활성화되었습니다.
 필터 일치 비율이 $1%로 한계에 다다랐습니다.",
 	'abusefilter-edit-new' => '새 필터',
@@ -21071,7 +21071,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-action-tag' => '나중에 검토를 위해 태그하기',
 	'abusefilter-edit-throttle-count' => '허용 횟수:',
 	'abusefilter-edit-throttle-period' => '주기:',
-	'abusefilter-edit-throttle-seconds' => '{{PLURAL:$1|$1초}}',
+	'abusefilter-edit-throttle-seconds' => '$1{{PLURAL:$1|초}}',
 	'abusefilter-edit-throttle-groups' => '속도 제한 단위:
 :(1줄당 1개씩, 콤마 사용 가능)',
 	'abusefilter-edit-warn-message' => '경고할 때 사용할 시스템 메시지:',
@@ -21232,7 +21232,7 @@ $messages['ko'] = array(
 	'abusefilter-exception-dividebyzero' => '$1번째 문자에서 $2를 0으로 나누려 하고 있습니다.',
 	'abusefilter-exception-unrecognisedvar' => '$1번째 문자에 알 수 없는 변수 $2가 있습니다.',
 	'abusefilter-exception-notenoughargs' => '$1번째 문자에서 호출한 $2 함수에 변수가 부족합니다.
-변수 $3개가 있어야 하지만 변수 $4개가 있습니다.',
+{{PLURAL:$3|변수}} $3개가 있어야 하지만 $4개가 있습니다.',
 	'abusefilter-exception-regexfailure' => '$1번째 글자의 "$3" 정규 표현식에서 오류 발생: "$2"',
 	'abusefilter-exception-overridebuiltin' => '$1번째 문자에서 소프트웨어에 내장된 변수를 덮는 "$2" 변수가 있습니다.',
 	'abusefilter-exception-outofbounds' => '$1번째 문자에서 존재하지 않는 목록 항목 $2(목록 길이 = $3)를 요구하고 있습니다.',
@@ -21263,7 +21263,7 @@ $messages['ko'] = array(
 이유: $2',
 	'abusefilter-revert-reasonfield' => '이유:',
 	'abusefilter-test' => '과거의 편집에 대해 필터 시험하기',
-	'abusefilter-test-intro' => '이 페이지에서 과거의 편집 $1개에 대해 아래 상자에 입력한 필터를 시험할 수 있습니다.
+	'abusefilter-test-intro' => '이 페이지에서 과거의 {{PLURAL:$1|바뀐 편집}} $1개에 대해 아래 상자에 입력한 필터를 시험할 수 있습니다.
 이미 존재하는 필터를 불러오려면, 아래 상자에 필터 ID를 입력하고 "불러오기" 버튼을 클릭하십시오.',
 	'abusefilter-test-legend' => '필터 시험하기',
 	'abusefilter-test-load-filter' => '불러올 필터 번호:',
@@ -38850,6 +38850,7 @@ Peýda bolan tekst gutusyndan göçürip alyň we ony şu tekst gutusyna ýelmä
 
 /** Tagalog (Tagalog)
  * @author AnakngAraw
+ * @author Jojit fb
  */
 $messages['tl'] = array(
 	'abusefilter-desc' => 'Naghahain ng mga kusang gabay-aral/heuristiko sa mga pamamatnugot',
@@ -38989,7 +38990,7 @@ Paglalarawan ng pansala: $6',
 Sa karaniwan, ang oras ng pagtakbo nito ay $4ms, at gumugugol ng $5 na {{PLURAL:$5|kundisyon|mga kundisyon}} ng hangganan ng kundisyon.',
 	'abusefilter-edit-throttled' => "'''Babala''': Kusang hindi pinagana ang pansalang ito bilang isang pamamaraang pangkaligtasan. Umabot na ito sa hangganan ng pagtugma sa mahigit kaysa $1% na mga kilos.",
 	'abusefilter-edit-new' => 'Bagong pansala',
-	'abusefilter-edit-save' => 'Sagipin ang pansala',
+	'abusefilter-edit-save' => 'Itala ang pansala',
 	'abusefilter-edit-id' => 'ID ng pansala:',
 	'abusefilter-edit-description' => "Paglalarawan:
 :''(matatanaw ng madla)''",
@@ -39031,7 +39032,7 @@ Sa karaniwan, ang oras ng pagtakbo nito ay $4ms, at gumugugol ng $5 na {{PLURAL:
 	'abusefilter-edit-denied' => 'Hindi mo maaaring tingnan ang mga detalye ng pansalang ito, dahil nakatago ito mula sa pagtanaw ng madla.',
 	'abusefilter-edit-main' => 'Mga parametro ng pansala',
 	'abusefilter-edit-done-subtitle' => 'Binagong pansala',
-	'abusefilter-edit-done' => 'Matagumpay mong nasagip ang mga pagbabago mo sa pansalang $1.',
+	'abusefilter-edit-done' => 'Matagumpay mong naitala ang iyong mga binago sa [[Special:AbuseFilter/$1|pansalang $1]].', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'May isang kamalian ng palaugnayan sa loob ng tinukoy mong pansala. Ang kinalabasan mula sa banghay ay: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Hindi mo mababago ang pansalang ito, dahil naglalaman ito ng isa o mahigit pang mga pinagbabawal na mga kilos. Pakihiling sa isang tagagamit na may pahintulot na magdagdag ng pinagbabawal na mga kilos na gawin ang pagbabago para sa iyo.',
 	'abusefilter-edit-viewhistory' => 'Kasaysayan ng pansalang ito',
@@ -41954,6 +41955,7 @@ $messages['yi'] = array(
 	'abusefilter-list' => 'אלע פֿילטערס',
 	'abusefilter-list-id' => 'פֿילטער נומער',
 	'abusefilter-list-status' => 'סטאַטוס',
+	'abusefilter-list-consequences' => 'קאנסעקווענצן',
 	'abusefilter-list-visibility' => 'זעבארקייט',
 	'abusefilter-list-hitcount' => 'טרעף צאל',
 	'abusefilter-list-edit' => 'רעדאַקטירן',
@@ -41979,7 +41981,10 @@ $messages['yi'] = array(
 	'abusefilter-list-options-scope-local' => 'לאקאַלע וויקי',
 	'abusefilter-list-options-scope-global' => 'גלאבאלע כללים',
 	'abusefilter-list-options-submit' => 'דערהײַנטיקן',
+	'abusefilter-tools-submitexpr' => 'אפשאצן',
+	'abusefilter-tools-reautoconfirm' => 'צוריקשטעלן אויטא־באשטעטיקטן סטאטוס',
 	'abusefilter-tools-reautoconfirm-user' => 'באַניצער:',
+	'abusefilter-tools-reautoconfirm-submit' => 'ווידער אויטא־באשטעטיקן',
 	'abusefilter-edit-subtitle' => 'רעדאקטירן פילטער $1',
 	'abusefilter-edit-subtitle-new' => 'שאפן פילטער',
 	'abusefilter-edit-status-label' => 'סטאַטיסטיק:',
