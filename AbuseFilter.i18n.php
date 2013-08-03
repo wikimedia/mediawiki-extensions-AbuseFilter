@@ -4409,6 +4409,7 @@ Pakihapot sa sarong paragamit na igwang permiso tanganing magdugang kan pinagpan
 An mga tatak dapat na halipot, asin sinda dapat mayong espesyal na mga karakter.',
 	'abusefilter-edit-notallowed' => 'Ika daeng permiso na magmukna o magliwat kan mga saraan nin abuso',
 	'abusefilter-edit-notallowed-global' => 'Ika mayong permiso na magmukna o magliwat kan pankinaban na mga saraan nin abuso',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'An kustombre kan mga mensahe nin patanid bakong suportado para sa pankinabanon na mga saraan',
 	'abusefilter-edit-builder-select' => 'Pilion an opsyon na ipagdugang ini sa kursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Mga operador kan aritmetika',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Kadagdagan (+)',
@@ -12373,7 +12374,7 @@ Tämä käyttöliittymä näyttää luettelon määritellyistä suodattimista, j
 	'abusefilter-warning' => "'''Varoitus''': Tämä muokkaus on automaattisesti tunnistettu haitalliseksi.
 Epäasialliset muokkaukset kumotaan nopeasti ja törkeä tai toistuva häiriköinti johtaa tunnuksesi tai IP-osoitteesi estämiseen.
 Jos muokkauksesi on mielestäsi asiallinen, napsauta Tallenna-painiketta uudelleen.
-Syy: $1", # Fuzzy
+Lyhyt kuvaus säännöstä jota sovellettiin: $1",
 	'abusefilter-disallowed' => 'Muokkauksesi on tunnistettu automaattisesti haitalliseksi ja sen tallentaminen on estetty.
 Jos uskot muokkauksesi olevan asiallinen, ota yhteyttä ylläpitäjään ja kerro, mitä yritit tehdä.
 Syy: $1',
@@ -25268,6 +25269,15 @@ $messages['mr'] = array(
 	'abusefilter-edit-builder-vars-article-ns' => 'पान नामविश्व',
 	'abusefilter-edit-builder-vars-article-text' => 'पानाचे शीर्षक (नामविश्वा शिवाय)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'पानाचे पूर्ण नाव',
+	'abusefilter-edit-builder-vars-article-views' => 'पानांची दृष्यता',
+	'abusefilter-edit-builder-vars-movedfrom-id' => 'स्थानांतराचे स्रोत पानाची पान ओळखण',
+	'abusefilter-edit-builder-vars-movedfrom-ns' => 'स्थानांतराच्या स्रोत पानाचे नामविश्व',
+	'abusefilter-edit-builder-vars-movedfrom-text' => 'स्थानांतराच्या स्रोत पानाचे शीर्षक',
+	'abusefilter-edit-builder-vars-movedfrom-prefixedtext' => 'स्थानांतराच्या स्रोत पानाचा पूर्ण मथळा',
+	'abusefilter-edit-builder-vars-movedto-id' => 'स्थानांतराच्या गंतव्य पानाची पान ओळखण',
+	'abusefilter-edit-builder-vars-movedto-ns' => 'स्थानांतराच्या गंतव्य पानाचे नामविश्व',
+	'abusefilter-edit-builder-vars-movedto-text' => 'स्थानांतराच्या गंतव्य पानाचे शीर्षक',
+	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'स्थानांतराच्या गंतव्य पानाचा पूर्ण मथळा',
 	'abusefilter-edit-builder-vars-user-editcount' => 'सदस्य संपादन संख्या',
 	'abusefilter-edit-builder-vars-user-age' => 'सदस्य खात्याचे वय',
 	'abusefilter-edit-builder-vars-user-name' => 'सदस्य खात्याचे नाव',
@@ -25282,6 +25292,7 @@ $messages['mr'] = array(
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'पानाचा संपादन सुरक्षास्तर',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'या पानाची सुरक्षा पातळी हलवा',
 	'abusefilter-edit-builder-vars-restrictions-create' => 'या पानास सुरक्षित करा',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'संचिकेच्या सुरक्षेचे अपभारण करा',
 	'abusefilter-edit-builder-vars-old-links' => 'संपादना पुर्वीचे ,पानातील दुवे',
 	'abusefilter-edit-builder-vars-minor-edit' => 'संपादनातील बदल छोटा म्हणून दर्शविला जातो आहे अथवा नाही',
 	'abusefilter-edit-builder-vars-file-sha1' => 'संचिका मजकुराचा SHA1 hash',
@@ -25307,9 +25318,12 @@ $messages['mr'] = array(
 	'abusefilter-history-diff' => 'बदल',
 	'abusefilter-history-error-hidden' => 'आपण विनंती केलेली गाळणी दृश्य नाही,आपण तिचा इतिहास पाहू शकत नाही.',
 	'abusefilter-exception-unexpectedatend' => '$1 अक्षरगटीकेपाशी अनपेक्षीत "$2".',
+	'abusefilter-exception-expectednotfound' => 'Expected a  at character $1 वर्णात $2 हवे होते,सापडले नाही(त्याएवजी $3 $4 सापडले)',
 	'abusefilter-action-tag' => 'खूणवा',
 	'abusefilter-action-throttle' => 'प्ररोध (थ्रॉटल)',
 	'abusefilter-action-warn' => 'सूचीत करा',
+	'abusefilter-action-block' => 'प्रतिबंधित करा',
+	'abusefilter-action-degroup' => 'गटांमधून वगळा',
 	'abusefilter-action-disallow' => 'नामंजुर',
 	'abusefilter-revert-title' => 'गाळणी $1 ने केलेले सर्व बदल उलटवा',
 	'abusefilter-revert-intro' => 'हे आवेदन दुरुपयोग गाळणीच्या, गाळणी $1 ने केलेले सर्व बदल उलटविण्यास मदत करते.
@@ -33845,7 +33859,7 @@ $messages['sah'] = array(
 	'abusefilter-list-options-disabled' => 'Холбоммотох сиидэлэр:',
 	'abusefilter-list-options-hidedisabled' => 'Холбоммотох сиидэлэри көрдөрүмэ',
 	'abusefilter-list-options-submit' => 'Саҥарт',
-	'abusefilter-tools-text' => 'Манна омсо сиидэлэрин туруорууларын уларытарга уонна сөпкө суруйарга аналлаах үнүстүрүмүөннэр көстөллөр.',
+	'abusefilter-tools-text' => 'Манна омсо сиидэлэрин туруорууларын уларытарга уонна сөпкө суруйарга аналлаах сэп-сэбиргэл көстөр.',
 	'abusefilter-tools-expr' => 'Этиини тургутуу',
 	'abusefilter-tools-submitexpr' => 'Тургутан көр',
 	'abusefilter-tools-reautoconfirm' => '«autoconfirmed» туругу төннөр',
@@ -33917,7 +33931,7 @@ $messages['sah'] = array(
 	'abusefilter-edit-check' => 'Синтаксиһын бэрэбиэкэлээ',
 	'abusefilter-edit-badfilter' => 'Эн ыйбыт сиидэҥ суох ээ',
 	'abusefilter-edit-revert' => 'Сиидэ оҥорбутун сотон, чөлүгэр түһэр',
-	'abusefilter-edit-tools' => 'Үнүстүрүмүөннэр:',
+	'abusefilter-edit-tools' => 'Сэп-сэбиргэл:',
 	'abusefilter-edit-test-link' => 'Бу сиидэни саҥа уларытыыларга боруобалыырга',
 	'abusefilter-edit-export' => 'Бу сиидэни атын биикигэ таһаар',
 	'abusefilter-edit-syntaxok' => 'Синтаксис алҕастара көстүбэтилэр.',
@@ -34065,7 +34079,7 @@ $3 {{PLURAL:$3|аргумент кэтэһиллэр|аргуменнаах бу
 	'abusefilter-revert-periodend' => 'Бүтүүтэ:',
 	'abusefilter-revert-search' => 'Дьайыылары талыы',
 	'abusefilter-revert-filter' => 'Сиидэ:',
-	'abusefilter-revert-preview-intro' => 'Аллара омсо сиидэтэ оҥорбут дьайыыларыттан төннөрүллэллэрэ кордөрүлүннэ.
+	'abusefilter-revert-preview-intro' => 'Аллара омсо сиидэтэ оҥорбут дьайыыларыттан төннөрүллэллэрэ көрдөрүлүннэ.
 Бука диэн сыныйан көрөн баран "бигэргэтии" диэни баттаа.',
 	'abusefilter-revert-confirm' => 'Бигэргэтии',
 	'abusefilter-revert-success' => '[[Special:AbuseFilter/$1|$1 сиидэ]] оҥорбут дьайыыларын барытын көтүрдүҥ.',
@@ -34108,7 +34122,7 @@ $3 {{PLURAL:$3|аргумент кэтэһиллэр|аргуменнаах бу
 	'abusefilter-topnav-test' => 'Бакыатынан тургутуу',
 	'abusefilter-topnav-examine' => 'Бүтэһик улартыылары үөрэтии',
 	'abusefilter-topnav-log' => 'Омсо сурунаала',
-	'abusefilter-topnav-tools' => 'Өрөмүөн үнүстүрүмүөннэрэ',
+	'abusefilter-topnav-tools' => 'Өрөмүөн сэбиргэлэ',
 	'abusefilter-topnav-import' => 'Сиидэни импортааһын',
 	'abusefilter-log-name' => 'Омсо сиидэтин сурунаала',
 	'abusefilter-log-header' => 'Бу сурунаалга туох баар сиидэлэргэ оҥоһуллубут улартыылар суруллаллар.
