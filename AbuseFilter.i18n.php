@@ -25370,6 +25370,7 @@ $messages['mr'] = array(
 	'abusefilter-examine-user' => 'सदस्य:',
 	'abusefilter-examine-title' => 'पृष्ठ शीर्षक:',
 	'abusefilter-examine-submit' => 'शोध',
+	'abusefilter-examine-vars' => 'या बदलाबाबतची निर्मित अस्थिरके',
 	'abusefilter-examine-test' => 'या बदलाची गाळणीद्वारे चाचणी करा',
 	'abusefilter-examine-test-button' => 'गाळणीची चाचणी करा',
 	'abusefilter-examine-match' => 'या बदलास गाळणीने आत्मसात केले.',
