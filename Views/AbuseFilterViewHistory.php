@@ -153,10 +153,6 @@ class AbuseFilterHistoryPager extends TablePager {
 
 				$formatted = $display_actions;
 				break;
-			case 'afh_filter':
-				$title = $this->mPage->getTitle( strval( $value ) );
-				$formatted = Linker::link( $title, $value );
-				break;
 			case 'afh_id':
 				$formatted = '';
 				if ( AbuseFilter::getFirstFilterChange( $row->afh_filter ) != $value ) {
