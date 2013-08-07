@@ -21074,7 +21074,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-throttle-period' => '주기:',
 	'abusefilter-edit-throttle-seconds' => '$1{{PLURAL:$1|초}}',
 	'abusefilter-edit-throttle-groups' => '속도 제한 단위:
-:(1줄당 1개씩, 콤마 사용 가능)',
+:(1줄당 1개씩, 쉼표로 여러 항목 구분)',
 	'abusefilter-edit-warn-message' => '경고할 때 사용할 시스템 메시지:',
 	'abusefilter-edit-warn-other' => '다른 메시지',
 	'abusefilter-edit-warn-other-label' => '다른 메시지의 이름:
