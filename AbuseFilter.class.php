@@ -107,6 +107,7 @@ class AbuseFilter {
 			'added_links' => 'added-links',
 			'removed_links' => 'removed-links',
 			'all_links' => 'all-links',
+			'new_pst' => 'new-pst',
 			'new_text' => 'new-text-stripped',
 			'new_html' => 'new-html',
 			'article_restrictions_edit' => 'restrictions-edit',
@@ -1992,6 +1993,14 @@ class AbuseFilter {
 					'namespace' => $title->getNamespace(),
 					'title' => $title->getText(),
 					'text-var' => 'old_wikitext'
+				) );
+			$vars->setLazyLoadVar( 'new_pst', 'parse-wikitext',
+				array(
+					'namespace' => $title->getNamespace(),
+					'title' => $title->getText(),
+					'wikitext-var' => 'new_wikitext',
+					'article' => $page,
+					'pst' => true,
 				) );
 			$vars->setLazyLoadVar( 'new_html', 'parse-wikitext',
 				array(

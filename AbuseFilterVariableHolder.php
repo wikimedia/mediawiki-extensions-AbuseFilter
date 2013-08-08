@@ -437,10 +437,14 @@ class AFComputedVariable {
 					// XXX: Use prepareContentForEdit. But we need a Content object for that.
 					$new_text = $vars->getVar( $textVar )->toString();
 					$editInfo = $article->prepareTextForEdit( $new_text );
-					$newHTML = $editInfo->output->getText();
-					// Kill the PP limit comments. Ideally we'd just remove these by not setting the
-					// parser option, but then we can't share a parse operation with the edit, which is bad.
-					$result = preg_replace( '/<!--\s*NewPP limit report[^>]*-->\s*$/si', '', $newHTML );
+					if ( isset( $parameters['pst'] ) && $parameters['pst'] ) {
+						$result = $editInfo->pstContent->serialize( $editInfo->format );
+					} else {
+						$newHTML = $editInfo->output->getText();
+						// Kill the PP limit comments. Ideally we'd just remove these by not setting the
+						// parser option, but then we can't share a parse operation with the edit, which is bad.
+						$result = preg_replace( '/<!--\s*NewPP limit report[^>]*-->\s*$/si', '', $newHTML );
+					}
 					break;
 				}
 				// Otherwise fall back to database
@@ -452,9 +456,14 @@ class AFComputedVariable {
 				if ( !defined( 'MW_SUPPORTS_CONTENTHANDLER' )
 					|| $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
 
-					$text = $vars->getVar( $textVar )->toString();
-					$editInfo = $this->parseNonEditWikitext( $text, $article );
-					$result = $editInfo->output->getText();
+					if ( isset( $parameters['pst'] ) && $parameters['pst'] ) {
+						// $textVar is already PSTed when it's not loaded from an ongoing edit.
+						$result = $vars->getVar( $textVar )->toString();
+					} else {
+						$text = $vars->getVar( $textVar )->toString();
+						$editInfo = $this->parseNonEditWikitext( $text, $article );
+						$result = $editInfo->output->getText();
+					}
 				} else {
 					// TODO: Parser Output from Content object. But we don't have the content object.
 					//      And for non-text content, $wikitext is usually not going to be a valid
