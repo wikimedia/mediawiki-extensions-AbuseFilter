@@ -13250,6 +13250,7 @@ Les balises doivent être courtes et ne pas contenir de caractères spéciaux.",
 	'abusefilter-edit-builder-vars-removed-links' => 'Tous les liens externes retirés lors de la modification',
 	'abusefilter-edit-builder-vars-old-text' => 'Ancien texte de la page, avant la modification',
 	'abusefilter-edit-builder-vars-new-text' => 'Nouveau texte de la page, après la modification',
+	'abusefilter-edit-builder-vars-new-pst' => 'Wikitexte de la nouvelle page, transformé avant enregistrement',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nouveau texte de la page, sans aucun balisage',
 	'abusefilter-edit-builder-vars-new-html' => 'Source HTML analysée de la nouvelle version',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Niveau de protection des modifications de la page',
@@ -24448,6 +24449,7 @@ $messages['mk'] = array(
 	'abusefilter-edit-builder-vars-removed-links' => 'Сите надворешни врски отстранети во уредувањето',
 	'abusefilter-edit-builder-vars-old-text' => 'Стар викитекст, пред уредувањето',
 	'abusefilter-edit-builder-vars-new-text' => 'Нов викитекст по уредувањето',
+	'abusefilter-edit-builder-vars-new-pst' => 'Викитекст за нова страница, претворен пред зачувување',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Нов текст на страницата, исчистен од секакви ознаки',
 	'abusefilter-edit-builder-vars-new-html' => 'Парсиран HTML-извор на новата ревизија',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Ниво на заштита на страницата од уредувања',
@@ -42665,6 +42667,7 @@ $messages['zh-cn'] = array(
  * @author Jimmy xu wrk
  * @author Liangent
  * @author Linforest
+ * @author Liuxinyu970226
  * @author Makecat
  * @author PhiLiP
  * @author Philip <philip.npc@gmail.com>
@@ -42948,6 +42951,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-builder-vars-removed-links' => '新内容中移除的所有外部链接',
 	'abusefilter-edit-builder-vars-old-text' => '编辑前的旧页面，wiki代码格式',
 	'abusefilter-edit-builder-vars-new-text' => '编辑后的新页面，wiki代码格式',
+	'abusefilter-edit-builder-vars-new-pst' => '新页面维基语言，预保存转换',
 	'abusefilter-edit-builder-vars-new-text-stripped' => '编辑后的新页面，去除所有标记',
 	'abusefilter-edit-builder-vars-new-html' => '编辑后的新页面，已解析为HTML源码',
 	'abusefilter-edit-builder-vars-restrictions-edit' => '页面的编辑保护级别',
