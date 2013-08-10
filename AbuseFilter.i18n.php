@@ -4951,6 +4951,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-edit-builder-vars-removed-links' => 'Усе вонкавыя спасылкі выдаленыя ў рэдагаваньні',
 	'abusefilter-edit-builder-vars-old-text' => 'Стары вікі-тэкст, да рэдагаваньня',
 	'abusefilter-edit-builder-vars-new-text' => 'Новы вікі-тэкст, пасьля рэдагаваньня',
+	'abusefilter-edit-builder-vars-new-pst' => 'Вікітэкст новай старонкі, трансфармаваны перад захаваньнем',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Новы тэкст старонкі, ачышчаны ад усіх пазнакаў',
 	'abusefilter-edit-builder-vars-new-html' => 'Разабраны HTML-код новай вэрсіі',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Узровень абароны старонкі ад рэдагаваньняў',
@@ -18922,7 +18923,7 @@ Questa è una breve descrizione della regola di sicurezza che è stata violata: 
 	'abusefilter-blockreason' => 'Bloccato automaticamente dal filtro anti abusi.
 Descrizione della regola corrispondente: $1',
 	'abusefilter-degroupreason' => 'Diritti rimossi automaticamente dal filtro anti abusi. Descrizione della regola: $1',
-	'abusefilter-accountreserved' => 'Questo account è riservato al filtro anti abusi.',
+	'abusefilter-accountreserved' => 'Questo nome utente è riservato al filtro anti abusi.',
 	'right-abusefilter-modify' => 'Modifica i filtri anti abusi',
 	'right-abusefilter-view' => 'Visualizza i filtri anti abusi',
 	'right-abusefilter-log' => 'Visualizza il registro del filtro anti abusi',
@@ -25717,6 +25718,7 @@ Tag sepatutnya ringkas dan tidak mengandungi aksara khas.',
 	'abusefilter-edit-builder-vars-removed-links' => 'Semua pautan luar yang dipadamkan dalam suntingan',
 	'abusefilter-edit-builder-vars-old-text' => 'Teks wiki laman lama, sebelum disunting',
 	'abusefilter-edit-builder-vars-new-text' => 'Teks wiki laman baru, selepas disunting',
+	'abusefilter-edit-builder-vars-new-pst' => 'Wikiteks halaman baru, prasimpan diubah',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Teks laman baru tanpa sebarang penanda',
 	'abusefilter-edit-builder-vars-new-html' => 'Sumber HTML terhurai bagi semakan baru',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Tahap perlindungan penyuntingan laman',
@@ -32580,6 +32582,7 @@ Le tag honne da esse curte, e non g'onne a condenè carattere speciale.",
 	'abusefilter-edit-builder-vars-removed-links' => "Totte le link esterne luàte jndr'à lle cangiaminde",
 	'abusefilter-edit-builder-vars-old-text' => 'Vècchie pagene wikitext, prime de le cangiaminde',
 	'abusefilter-edit-builder-vars-new-text' => 'Nuève pagene wikitext, dope le cangiaminde',
+	'abusefilter-edit-builder-vars-new-pst' => 'Pàgena nove de uicchiteste, trasformate in pre-reggistrazione',
 	'abusefilter-edit-builder-vars-new-text-stripped' => "Teste d'a pagene nuève, cu ogne markup luàte",
 	'abusefilter-edit-builder-vars-new-html' => "Analise d'a sorgende HTML d'a revisiune nuève",
 	'abusefilter-edit-builder-vars-restrictions-edit' => "Cange 'u levelle de protezione d'a pagene",
@@ -40206,6 +40209,7 @@ $messages['ug-latn'] = array(
  * @author AS
  * @author Ahonc
  * @author Alex Khimich
+ * @author Andriykopanytsia
  * @author Base
  * @author JenVan
  * @author Microcell
@@ -40507,6 +40511,7 @@ $messages['uk'] = array(
 	'abusefilter-edit-builder-vars-removed-links' => 'Усі зовнішні посилання, вилучені редагуванням',
 	'abusefilter-edit-builder-vars-old-text' => 'Старий вікітекст, перед редагуванням сторінки',
 	'abusefilter-edit-builder-vars-new-text' => 'Новий вікітекст, після редагування сторінки',
+	'abusefilter-edit-builder-vars-new-pst' => 'Нова сторінка вікітексту з попередньо збереженим перетворенням',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Новий текст сторінки, очищений від розмітки',
 	'abusefilter-edit-builder-vars-new-html' => 'Проаналізований HTML-код нової версії',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Рівень захисту сторінки від редагувань',
