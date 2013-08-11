@@ -17424,6 +17424,7 @@ Le etiquettas debe esser curte, e non pote continer characteres special.',
 	'abusefilter-edit-builder-vars-removed-links' => 'Tote le ligamines externe eliminate in le modification',
 	'abusefilter-edit-builder-vars-old-text' => 'Le wikitexto ancian del pagina, ante le modification',
 	'abusefilter-edit-builder-vars-new-text' => 'Le wikitexto nove del pagina, post le modification',
+	'abusefilter-edit-builder-vars-new-pst' => 'Wikitexto del nove pagina, transformate ante salveguarda',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nove texto del pagina, disproviste de marcation',
 	'abusefilter-edit-builder-vars-new-html' => 'Codice-fonte del nove version transformate in HTML',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Nivello de protection pro le modification del pagina',
@@ -17564,6 +17565,7 @@ Copia le contento del quadro de texto que appare, e colla lo in iste quadro de t
  * @author Iwan Novirion
  * @author Kenrick95
  * @author Rex
+ * @author Rv77ax
  */
 $messages['id'] = array(
 	'abusefilter-desc' => 'Memberlakukan pemeriksaan heuristik otomatis atas kontribusi pengguna.',
@@ -17577,10 +17579,10 @@ Suntingan yang tidak bermanfaat akan segera dibatalkan,
 dan suntingan yang tidak jelas serta berulang-ulang akan berakibat dengan diblokirnya akun ataupun alamat IP Anda.
 Jika Anda yakin bahwa suntingan anda adalah suntingan yang bermanfaat, Anda bisa mengklik Kirim sekali lagi untuk mengkonfirmasinya.
 Keterangan singkat tentang peraturan penyalahgunaan yang berkaitan dengan tindakan Anda adalah: $1",
-	'abusefilter-disallowed' => 'Tindakan ini secara otomatis telah diidentifikasi sebagai tindakan yang merusak,
+	'abusefilter-disallowed' => 'Aksi ini secara otomatis telah diidentifikasi sebagai tindakan yang merusak,
 dan karenanya ditolak.
 Jika Anda yakin bahwa suntingan anda adalah suntingan yang bermanfaat, silakan hubungi pengurus, dan informasikan apa yang sedang Anda lakukan.
-Keterangan singkat tentang peraturan penyalahgunaan yang berkaitan dengan tindakan Anda adalah: $1', # Fuzzy
+Keterangan singkat tentang peraturan penyalahgunaan yang berkaitan dengan aksi Anda adalah: $1',
 	'abusefilter-blocked-display' => 'Tindakan ini secara otomatis telah diidentifikasi sebagai tindakan yang merusak,
 dan sistem telah mencegah tindakan anda tersebut.
 Sebagai tambahan, untuk melindungi {{SITENAME}}, akun pengguna anda dan semua alamat IP yang terkait telah diblokir.
@@ -17808,6 +17810,7 @@ Penanda harus pendek, dan seharusnya tidak berisi karakter khusus.',
 	'abusefilter-edit-builder-group-funcs' => 'Fungsi',
 	'abusefilter-edit-builder-funcs-length' => 'Panjang karakter (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Menjadi huruf kecil (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'Ke huruf besar (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normalisasi karakter membingungkan (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Buang karakter-ganda (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Karakter khusus / jumlah karakter (specialratio)',
@@ -17859,6 +17862,7 @@ Penanda harus pendek, dan seharusnya tidak berisi karakter khusus.',
 	'abusefilter-edit-builder-vars-removed-links' => 'Semua pranala luar yang dihapus dalam penyuntingan',
 	'abusefilter-edit-builder-vars-old-text' => 'Teks wiki yang lama, sebelum penyuntingan',
 	'abusefilter-edit-builder-vars-new-text' => 'Teks wiki halaman baru, setelah penyuntingan',
+	'abusefilter-edit-builder-vars-new-pst' => 'Halaman baru teks wiki, pemindahan pra-penyimpanan',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Teks halaman baru, menghilangkan markah apa pun',
 	'abusefilter-edit-builder-vars-new-html' => 'Pengurai sumber HTML dari revisi baru',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Sunting tingkat pelindungan halaman',
@@ -31327,9 +31331,9 @@ Para carregar um filtro existente, insira o ID do filtro na caixa abaixo da caix
 	'abusefilter-test-load-filter' => 'Carregar filtro com ID:',
 	'abusefilter-test-submit' => 'Testar',
 	'abusefilter-test-load' => 'Carregar',
-	'abusefilter-test-user' => 'Modificações pelo utilizador:',
-	'abusefilter-test-period-start' => 'Modificações feitas após:',
-	'abusefilter-test-period-end' => 'Modificações feitas antes de:',
+	'abusefilter-test-user' => 'Alterações pelo utilizador:',
+	'abusefilter-test-period-start' => 'Alterações feitas após:',
+	'abusefilter-test-period-end' => 'Alterações feitas antes de:',
 	'abusefilter-test-page' => 'Alterações à página:',
 	'abusefilter-test-shownegative' => 'Mostrar alterações que não correspondam ao filtro',
 	'abusefilter-test-syntaxerr' => 'O filtro que introduziu continha um erro de sintaxe.
@@ -31771,9 +31775,9 @@ Para carregar um filtro existente, insira o ID do filtro na caixa abaixo da caix
 	'abusefilter-test-load-filter' => 'Carregar filtro com ID:',
 	'abusefilter-test-submit' => 'Testar',
 	'abusefilter-test-load' => 'Carregar',
-	'abusefilter-test-user' => 'Modificações pelo usuário:',
+	'abusefilter-test-user' => 'Alterações pelo usuário:',
 	'abusefilter-test-period-start' => 'Alterações feitas depois:',
-	'abusefilter-test-period-end' => 'Modificações feitas antes de:',
+	'abusefilter-test-period-end' => 'Alterações feitas antes de:',
 	'abusefilter-test-page' => 'Alterações à página:',
 	'abusefilter-test-shownegative' => 'Mostrar alterações que não correspondam ao filtro',
 	'abusefilter-test-syntaxerr' => 'O filtro que introduziu continha um erro de sintaxe.

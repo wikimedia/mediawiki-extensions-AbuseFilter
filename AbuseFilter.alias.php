@@ -67,6 +67,12 @@ $specialPageAliases['ca'] = array(
 	'AbuseLog' => array( 'Registre_dels_abusos' ),
 );
 
+/** Min Dong Chinese (Mìng-dĕ̤ng-ngṳ̄) */
+$specialPageAliases['cdo'] = array(
+	'AbuseLog' => array( '亂使其日誌' ),
+	'AbuseFilter' => array( '亂使其過濾' ),
+);
+
 /** Chechen (нохчийн) */
 $specialPageAliases['ce'] = array(
 	'AbuseLog' => array( 'Зулам_литтаран_тептар' ),
