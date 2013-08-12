@@ -7068,6 +7068,7 @@ $messages['ce'] = array(
 	'abusefilter-list-group' => 'Литтаран тоба',
 	'abusefilter-unhidden' => 'Массарна лело йиш йолуш',
 	'abusefilter-disabled' => 'ДӀадайина',
+	'abusefilter-hitcount' => '$1 {{PLURAL:$1|болх бар}}',
 	'abusefilter-new' => 'Кхолла керла литтар',
 	'abusefilter-list-options' => 'Параметраш',
 	'abusefilter-list-options-deleted' => 'ДӀадаьхина долу литтарш:',
