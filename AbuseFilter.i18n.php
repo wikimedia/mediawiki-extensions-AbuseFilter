@@ -21205,6 +21205,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-builder-vars-removed-links' => '편집 중 제거된 모든 바깥 링크',
 	'abusefilter-edit-builder-vars-old-text' => '편집 전 문서의 내용 (위키문법)',
 	'abusefilter-edit-builder-vars-new-text' => '편집 후 문서의 내용 (위키문법)',
+	'abusefilter-edit-builder-vars-new-pst' => '새 문서 위키 텍스트, 변환을 미리 저장',
 	'abusefilter-edit-builder-vars-new-text-stripped' => '편집 후 문서의 마크업을 제거한 내용',
 	'abusefilter-edit-builder-vars-new-html' => '편집 후의 HTML 소스',
 	'abusefilter-edit-builder-vars-restrictions-edit' => '문서 보호 수준 (편집)',
