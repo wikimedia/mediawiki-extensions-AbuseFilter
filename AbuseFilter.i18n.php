@@ -7786,6 +7786,7 @@ Značky by měly být krátké a nesmí obsahovat žádné zvláštní znaky.',
 	'abusefilter-edit-builder-vars-removed-links' => 'Všechny externí odkazy odstraněné při editaci',
 	'abusefilter-edit-builder-vars-old-text' => 'Původní zdrojový text stránky před editací',
 	'abusefilter-edit-builder-vars-new-text' => 'Nový zdrojový text stránky po editaci',
+	'abusefilter-edit-builder-vars-new-pst' => 'Wikitext nové stránky po transformaci před uložením',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nový text stránky zbavený formátování',
 	'abusefilter-edit-builder-vars-new-html' => 'Vygenerovaný HTML kód nové verze',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Úroveň zamčení stránky pro editaci',
@@ -30954,6 +30955,7 @@ $messages['ps'] = array(
  * @author MF-Warburg
  * @author Malafaya
  * @author McDutchie
+ * @author OTAVIO1981
  * @author Pedroca cerebral
  * @author SandroHc
  * @author Sarilho1
@@ -31255,6 +31257,7 @@ Etiquetas devem ser curtas e não devem conter caracteres especiais.',
 	'abusefilter-edit-builder-vars-removed-links' => 'Todos os links externos removidos na edição',
 	'abusefilter-edit-builder-vars-old-text' => 'Texto Wiki anterior da página, antes da edição',
 	'abusefilter-edit-builder-vars-new-text' => 'Texto Wiki novo da página, após a edição',
+	'abusefilter-edit-builder-vars-new-pst' => 'Nova página wikitext, pré-salvar transformado',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nova página de texto, sem qualquer formatação',
 	'abusefilter-edit-builder-vars-new-html' => 'Fonte HTML analisada, da nova revisão',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Nível de proteção de edição da página',
@@ -36102,6 +36105,8 @@ $messages['sr-ec'] = array(
 	'abusefilter-edit-export' => 'Извези овај филтер на други вики',
 	'abusefilter-edit-syntaxok' => 'Нема синтаксних грешака.',
 	'abusefilter-edit-syntaxerr' => 'Откривена је синтактичка грешка: $1',
+	'abusefilter-edit-bad-tags' => 'Једна или више ознака које сте навели нису валидне.
+Ознака мора бити кратка и не би требала имати специјалне карактере.',
 	'abusefilter-edit-notallowed' => 'Није вам дозвољено да правите или уређујете филтере против злоупотребе',
 	'abusefilter-edit-builder-select' => 'Изаберите могућност за додавање на показивач',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Аритметички оператори',
@@ -41633,6 +41638,7 @@ Thẻ phải ngắn, và chúng không nên chứa các ký tự đặc biệt.'
 	'abusefilter-edit-builder-vars-removed-links' => 'Tất cả các liên kết ngoài bị xóa trong sửa đổi',
 	'abusefilter-edit-builder-vars-old-text' => 'Mã wiki cũ của trang, trước khi sửa đổi',
 	'abusefilter-edit-builder-vars-new-text' => 'Mã wiki mới của trang, sau khi sửa đổi',
+	'abusefilter-edit-builder-vars-new-pst' => 'Văn bản wiki của trang mới ở dạng chuyển đổi trước khi lưu',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nội dung mới của trang, bỏ các mã đánh dấu',
 	'abusefilter-edit-builder-vars-new-html' => 'Phân tích mã HTML của phiên bản mới',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Mức khóa sửa đổi của trang',
