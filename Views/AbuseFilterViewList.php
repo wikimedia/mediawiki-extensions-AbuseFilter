@@ -380,7 +380,11 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 				$user = $row->af_user_text;
 				return $this->msg(
 					'abusefilter-edit-lastmod-text',
-					$lang->timeanddate( $value, true ), $user
+					$lang->timeanddate( $value, true ),
+					$user,
+					$lang->date( $value, true ),
+					$lang->time( $value, true ),
+					$user
 				)->parse();
 			case 'af_group':
 				// If this is global, local name probably doesn't exist, but try
