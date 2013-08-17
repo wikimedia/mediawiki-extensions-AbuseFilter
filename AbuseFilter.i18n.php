@@ -8122,7 +8122,7 @@ $messages['da'] = array(
 	'abusefilter' => 'Konfiguration af misbrugsfilter',
 	'abuselog' => 'Misbrugslog',
 	'abusefilter-intro' => 'Velkommen til grænsefladen for håndtering af misbrugsfilteret.
-Misbrugsfilteret er en automatisk mekanisme i softwaren som udfører automatisk tjeck af alle handlinger.
+Misbrugsfilteret er en automatisk mekanisme i softwaren som udfører automatisk tjek af alle handlinger.
 Denne grænseflade viser en liste over definerede filtre, og gør det muligt at ændre dem.',
 	'abusefilter-mustbeeditor' => 'Af sikkerhedsmæssige årsager kan denne grænseflade kun bruges af brugere med rettigheder til at ændre misbrugsfiltre.',
 	'abusefilter-warning' => "'''Advarsel:''' Denne handling er automatisk blevet identificeret som skadelig.
