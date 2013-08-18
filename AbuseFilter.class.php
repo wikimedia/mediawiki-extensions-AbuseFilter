@@ -1683,6 +1683,10 @@ class AbuseFilter {
 			$builder .= Xml::option( wfMessage( 'abusefilter-edit-builder-select' )->text() );
 
 			foreach ( $dropDown as $group => $values ) {
+				// Give grep a chance to find the usages:
+				// abusefilter-edit-builder-group-op-arithmetic, abusefilter-edit-builder-group-op-comparison,
+				// abusefilter-edit-builder-group-op-bool, abusefilter-edit-builder-group-misc,
+				// abusefilter-edit-builder-group-funcs, abusefilter-edit-builder-group-vars
 				$builder .=
 					Xml::openElement(
 						'optgroup',
@@ -1825,6 +1829,10 @@ class AbuseFilter {
 	 * @return String
 	 */
 	static function getActionDisplay( $action ) {
+		// Give grep a chance to find the usages:
+		// abusefilter-action-tag, abusefilter-action-throttle, abusefilter-action-warn,
+		// abusefilter-action-blockautopromote, abusefilter-action-block, abusefilter-action-degroup,
+		// abusefilter-action-rangeblock, abusefilter-action-disallow
 		$display = wfMessage( "abusefilter-action-$action" )->text();
 		$display = wfMessage( "abusefilter-action-$action", $display )->isDisabled() ? $action : $display;
 		return $display;
@@ -2172,6 +2180,7 @@ class AbuseFilter {
 	 * @return String A name for that filter group, or the input.
 	 */
 	static function nameGroup($group) {
+		// Give grep a chance to find the usages: abusefilter-group-default
 		$msg = "abusefilter-group-$group";
 		return wfMessage($msg)->exists() ? wfMessage($msg)->escaped() : $group;
 	}
