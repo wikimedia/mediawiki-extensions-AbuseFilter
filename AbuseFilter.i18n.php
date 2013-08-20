@@ -4496,6 +4496,7 @@ An mga tatak dapat na halipot, asin sinda dapat mayong espesyal na mga karakter.
 	'abusefilter-edit-builder-vars-removed-links' => 'Gabos na panluwas na kasugpunan pinaghale sa pagliwat',
 	'abusefilter-edit-builder-vars-old-text' => 'Wiki-teksto kan lumaong pahina, bago pa man an pagliwat',
 	'abusefilter-edit-builder-vars-new-text' => 'Wiki-teksto kan baguhon na pahina, matapos na magliwat',
+	'abusefilter-edit-builder-vars-new-pst' => 'Bagong pahina kan wikiteksto, enot na tinagama pinagbago',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Teksto kan baguhon na pahina, hinukwasan kan arin man ma markang patindog',
 	'abusefilter-edit-builder-vars-new-html' => 'Panabuton and ginikanan kan HTML kan baguhong rebisyon',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Liwaton an grado nin proteksyon kan pahina',
