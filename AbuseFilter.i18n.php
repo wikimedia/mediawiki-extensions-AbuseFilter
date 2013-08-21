@@ -19196,6 +19196,7 @@ Le etichette devono essere corte e non contenere caratteri speciali.',
 	'abusefilter-edit-builder-vars-removed-links' => 'Tutti i collegamenti esterni rimossi dalla modifica',
 	'abusefilter-edit-builder-vars-old-text' => 'Vecchio testo sorgente della pagina, precedente alla modifica',
 	'abusefilter-edit-builder-vars-new-text' => 'Nuovo testo sorgente della pagina, successivo alla modifica',
+	'abusefilter-edit-builder-vars-new-pst' => 'Nuovo testo sorgente della pagina, successivo alla trasformazione presalvataggio',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nuovo testo della pagina, con il markup rimosso',
 	'abusefilter-edit-builder-vars-new-html' => 'Sorgente HTML elaborato della nuova versione',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Livello di protezione della pagina per le modifiche',
@@ -26748,7 +26749,7 @@ Mekelappene burde være korte og burde ikke inneholde spesialtegn.',
 	'abusefilter-exception-unexpectedatend' => 'Uventet «$2» ved tegn nummer $1.t',
 	'abusefilter-exception-expectednotfound' => 'Forventet en $2 ved tegn nummer $1, men fant det ikke (fant $3 $4 istedet).',
 	'abusefilter-exception-unrecognisedkeyword' => 'Ukjent nøkkelord $2 ved tegn nummer $1.',
-	'abusefilter-exception-unexpectedtoken' => 'Uventet token «$3» (av type $2) ved tegn nummer $1.',
+	'abusefilter-exception-unexpectedtoken' => 'Uventet nøkkel «$3» (av type $2) ved tegn nummer $1.',
 	'abusefilter-exception-unclosedstring' => 'Åpen streng som starter ved tegn nummer $1.',
 	'abusefilter-exception-invalidoperator' => 'Ugyldig operatør «$2» ved tegn nummer $1.',
 	'abusefilter-exception-unrecognisedtoken' => 'Ukjent tegn «$2» ved tegn nummer $1.',
@@ -40260,7 +40261,7 @@ $messages['uk'] = array(
 	'abusefilter-disallowed' => 'Ця дія автоматично визначена як шкідлива, і тому заборонена.
 Якщо ви вважаєте, що вона конструктивна, будь ласка, зверніться до адміністратора і розкажіть йому, що ви хотіли зробити.
 Короткий опис правила, яке порушує ваша дія: $1',
-	'abusefilter-blocked-display' => "Ця дію була автоматично визначена як шкідлива,
+	'abusefilter-blocked-display' => "Ця дія була автоматично визначена як шкідлива,
 і тому її виконання заборонене.
 Окрім того, для захисту проекту {{SITENAME}} ваш обліковий запис і пов'язані з ним IP-адреси були заблоковані.
 Якщо ви вважаєте це помилковим, то зв'яжіться з адміністратором.
