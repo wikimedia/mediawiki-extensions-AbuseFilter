@@ -544,7 +544,10 @@ $messages['qqq'] = array(
 	'abusefilter-blocker' => 'Username of reserved user for abuse filter actions.',
 	'abusefilter-blockreason' => 'Message given to user because of a triggered filter. Parameters:
 * $1 is a filter description.',
-	'abusefilter-degroupreason' => 'Reason of removal of the user from all privileged groups performed by Abuse filter.',
+	'abusefilter-degroupreason' => 'Used as log entry when removal of the user from all privileged groups performed by Abuse filter.
+
+Parameters:
+* $1 - rule description (reason)',
 	'abusefilter-accountreserved' => 'Message given when trying to register a reserved account name for AbuseFilter actions.',
 	'right-abusefilter-modify' => '{{doc-right|abusefilter-modify}}',
 	'right-abusefilter-view' => '{{doc-right|abusefilter-view}}',
@@ -712,9 +715,19 @@ Parameters:
 * $5 is the number of matched actions
 * $6 is a percentage: $5 / $1 * 100',
 	'abusefilter-edit' => 'Page title when editing an abuse filter.',
-	'abusefilter-edit-subtitle' => 'Page subtitle when editing an abuse filter.',
-	'abusefilter-edit-subtitle-new' => 'Page subtitle when creating an abuse filter',
-	'abusefilter-edit-oldwarning' => 'Warning displayed when editing an older version of a filter.',
+	'abusefilter-edit-subtitle' => 'Page subtitle when editing an abuse filter. Parameters:
+* $1 - filter ID
+* $2 - (Unused) history ID
+See also:
+* {{msg-mw|Abusefilter-edit-subtitle-new}} - if the filter ID is "new".',
+	'abusefilter-edit-subtitle-new' => 'Page subtitle when creating an abuse filter. Parameters:
+* $1 - (Unused) filter ID
+* $2 - (Unused) history ID
+See also:
+* {{msg-mw|Abusefilter-edit-subtitle}} - if editing the existing filter',
+	'abusefilter-edit-oldwarning' => 'Warning displayed when editing an older version of a filter. Parameters:
+* $1 - (Unused) history ID
+* $2 - filter ID',
 	'abusefilter-edit-status-label' => 'Field label for abuse filter statistics.
 {{Identical|Statistics}}',
 	'abusefilter-edit-status' => 'Parameters:
@@ -912,7 +925,15 @@ See also {{msg-mw|Abusefilter-edit-builder-vars-restrictions-edit}}, {{msg-mw|Ab
 	'abusefilter-edit-builder-vars-restrictions-upload' => 'This variable contains the level of protection required to upload a file. ("Upload" here is not a verb, but an adjective, like "Upload-related protection level"). Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.
 
 See also {{msg-mw|Abusefilter-edit-builder-vars-restrictions-edit}}, {{msg-mw|Abusefilter-edit-builder-vars-restrictions-move}}, {{msg-mw|Abusefilter-edit-builder-vars-restrictions-create}}.',
-	'abusefilter-history' => '"Change history" is the "history of changes"',
+	'abusefilter-filter-log' => 'Used as page title.',
+	'abusefilter-history' => 'Used as page title.
+
+"Change history" is the "history of changes"
+
+Parameters:
+* $1 - filter ID
+
+If the filter ID is not specified, {{msg-mw|Abusefilter-filter-log}} will be used.',
 	'abusefilter-history-foruser' => "* $1 is a link to the changing user's page
 * (optional) $2 is the plain text user name",
 	'abusefilter-history-hidden' => '{{Identical|Hidden}}',
@@ -1003,7 +1024,10 @@ This appears to be a verb.
 	'abusefilter-action-degroup' => '{{doc-abusefilter-action}}',
 	'abusefilter-action-rangeblock' => '{{doc-abusefilter-action}}',
 	'abusefilter-action-disallow' => '{{doc-abusefilter-action}}',
-	'abusefilter-revert-title' => 'Caption of [[Special:AbuseFilter/revert/1]] (go to [[Special:AbuseFilter]], open a filter, click "Revert actions taken by this filter")',
+	'abusefilter-revert-title' => 'Used as page title of [[Special:AbuseFilter/revert/1]] (go to [[Special:AbuseFilter]], open a filter, click "Revert actions taken by this filter").
+
+Parameters:
+* $1 - filter ID',
 	'abusefilter-revert-intro' => 'Parameters:
 * $1 - filter',
 	'abusefilter-revert-preview-item' => 'Parameters:
@@ -1023,7 +1047,14 @@ This appears to be a verb.
 * $1 is a filter ID
 * $2 is a reason',
 	'abusefilter-revert-reasonfield' => '{{Identical|Reason}}',
-	'abusefilter-test-intro' => '"Load" refers to the contents of {{msg-mw|abusefilter-test-load}}.',
+	'abusefilter-test-intro' => 'Used as intro text.
+
+The page title is {{msg-mw|Abusefilter-test}}.
+
+"Load" refers to the contents of {{msg-mw|abusefilter-test-load}}.
+
+Parameters:
+* $1 - limit of changes; 100 (hard-coded)',
 	'abusefilter-test-legend' => 'Caption of the fieldset on [[Special:AbuseFilter/test]]',
 	'abusefilter-test-submit' => 'Caption of the submit button on [[Special:AbuseFilter/test]].
 {{Identical|Test}}',
@@ -25057,7 +25088,7 @@ $messages['mn'] = array(
 $messages['mr'] = array(
 	'abusefilter-desc' => 'संपादन गाळणी सर्व संपादनांचा सांगितल्याप्रमाणे स्वयंशोध घेते.',
 	'abusefilter' => 'संपादन गाळणी व्यवस्थापन',
-	'abuselog' => 'संपादन गाळणी नोंदी',
+	'abuselog' => 'गैरवापर नोंदी',
 	'abusefilter-intro' => 'संपादन गाळणी व्यवस्थापन प्रणालीत आपले स्वागत आहे.
 
 संपादन गाळणी म्हणजे सर्व संपादनांचा सांगितल्याप्रमाणे स्वयंशोध घेणारी स्वयंचलित सॉफ्टवेअर प्रणाली असते. हा इंटरफेस तयार केलेल्या गाळण्यांची यादी दाखवतो आणि त्यात सुधारणा करण्यास अनुमती देतो.',
@@ -25067,7 +25098,7 @@ $messages['mr'] = array(
 आपणास हे संपादन सुयोग्य असल्याची खात्री असेल तर आपण ते नक्की करण्यासाठी ”पुन्हा सोपवा’ वर टिचकी मारू शकता.आपल्या क्रियेशी संलग्न, या गाळणीस लागू असलेल्या नियमाचे थोडक्यात वर्णन आहे:$1",
 	'abusefilter-disallowed' => "आपण नुकतीच केलेली क्रिया/लेखन/संपादन अभिप्रेत संकेतास अनुसरून नसावी / 'अयोग्य' असावी अथवा 'साशंकीत’ म्हणून स्वयमेव ज्ञात झाली आहे, आणि  नामंजूर करण्यात आलेली आहे.आपली क्रिया रचनात्मक असल्याचे जर आपणास वाटत असेल तर,कृपया ,आपण नेमके काय करू इच्छित होता/प्रयत्न करत होता याची माहिती, संपादन गाळणीच्या अनपेक्षीत क्रिया  विषयक चर्चा पानावर प्रचालकांना द्या. आपल्या क्रियेशी संलग्न, या गाळणीस लागू असलेल्या नियमाचे थोडक्यात वर्णन आहे:$1",
 	'abusefilter-blocked-display' => "आपण नुकतीच केलेली क्रिया ही ’अभिप्रेत संकेतास अनुसरून नसलेली' / 'अयोग्य'  असल्याची नोंद संपादन गाळणीने स्वयमेव केली आहे, व म्हणून ती क्रिया करण्यास आपणास रोधित करण्यात आलेले आहे.{{SITENAME}} सुरक्षित ठेवण्यासाठी,आपले सदस्यखाते व अंकपत्ता संपादनांसाठी अवरुद्ध करण्यात आलेला आहे.जर हे चुकीने घडले असल्यास संपादन गाळणी चर्चा पानावर प्रचालकाशी कृपया संपर्क साधा.आपल्या क्रियेशी संलग्न, या गाळणीस लागू असलेल्या नियमाचे थोडक्यात वर्णन आहे:$1",
-	'abusefilter-degrouped' => 'ही क्रिया हानीकारक म्हणुन स्वयंचलीतरित्या निवडल्या गेली आहे.म्हणुन तीस परवानगी नाकारण्यात येते, व,आपले खात्याबद्दल रदबदली केल्या गेल्याच्या शंकेमुळेआपले सर्व अधिकार रद्द करण्यात आलेले आलेले आहेत. आपणास जर विश्वास आहे कि हे चुकीमुळे झालेले आहे तर या क्रियेच्या स्पष्टीकरणासह प्रशासकाशी कृपया संपर्क साधा त्यामुळे आपले अधिकार आपणास पुनर्प्राप्त होतील.आपल्या क्रियेबाबत जुळणा-या दुरुपयोग नियमाचे थोडक्यात वर्णन आहे :$1',
+	'abusefilter-degrouped' => 'ही क्रिया हानीकारक म्हणुन स्वयंचलीतरित्या निवडल्या गेली आहे.म्हणुन तीस परवानगी नाकारण्यात येते, व,आपले खात्याबद्दल रदबदली केल्या गेल्याच्या शंकेमुळे आपले सर्व अधिकार रद्द करण्यात आलेले आलेले आहेत. आपणास जर खात्री आहे कि हे चुकीमुळे झालेले आहे तर या क्रियेच्या स्पष्टीकरणासह प्रशासकाशी कृपया संपर्क साधा ,त्यामुळे आपले अधिकार आपणास पुनर्प्राप्त होतील.आपल्या क्रियेशी जुळणा-या दुरुपयोग नियमाचे थोडक्यात वर्णन आहे :$1',
 	'abusefilter-autopromote-blocked' => '
 ही क्रिया हानीकारक म्हणुन स्वयंचलीतरित्या निवडल्या गेली आहे.म्हणुन तीस परवानगी नाकारण्यात येते.याव्यतिरिक्त,सुरक्षिततेचे उपाय म्हणुन,खाते सुरू ठेवण्यासाठी देण्यात आलेल्या काही नित्याच्या सोयी आपल्या खात्यातुन रद्द करण्यात आलेल्या आहेत.
 आपल्या क्रियेबाबत जुळणा-या दुरुपयोग नियमाचे थोडक्यात वर्णन आहे :$1',
@@ -25098,7 +25129,7 @@ $messages['mr'] = array(
 	'action-abusefilter-revert' => 'येथे दिलेल्या संपादन गाळणीने केलेले सर्व बदल पूर्वपदास न्या.',
 	'action-abusefilter-view-private' => 'खासगी म्हणुन नोंदविलेल्या संपादन गाळण्या बघा.',
 	'abusefilter-log' => 'गाळणीने टिपलेल्या नोंदी',
-	'abusefilter-log-summary' => 'ही नोंदवही गाळण्याद्वारे पकडलेल्या सर्व क्रियांची यादी दाखविते.',
+	'abusefilter-log-summary' => 'ही नोंदवही गाळण्यांद्वारे पकडलेल्या सर्व क्रियांची यादी दाखविते.',
 	'abusefilter-log-search' => 'गाळणी नोंदी शोधा',
 	'abusefilter-log-search-user' => 'सदस्य:',
 	'abusefilter-log-search-filter' => 'गाळणी क्रमांक',
@@ -25126,7 +25157,7 @@ $messages['mr'] = array(
 	'abusefilter-log-details-diff' => 'संपादनात केलेले बदल',
 	'abusefilter-log-linkoncontribs' => 'संपादन गाळणी नोंदी',
 	'abusefilter-log-linkoncontribs-text' => 'गाळणीने टिपलेल्या या सदस्याच्या नोंदी',
-	'abusefilter-log-hidden' => '(नोंद लपविलेली आहे)',
+	'abusefilter-log-hidden' => '(प्रविष्टी लपविलेली आहे)',
 	'abusefilter-log-hidden-implicit' => '(लपविलेली, कारण संस्करण वगळण्यात आले आहे)',
 	'abusefilter-log-cannot-see-details' => 'या नोंदीचा तपशिल बघण्यास आपणास परवानगी नाही.',
 	'abusefilter-log-details-hidden' => 'या नोंदीचा तपशिल आपण बघु शकत नाही कारण तिची सार्वजनिक दृष्यता लपविलेली आहे.',
@@ -25161,9 +25192,9 @@ $messages['mr'] = array(
 	'abusefilter-return' => 'संपादन गाळकाकडे वापस',
 	'abusefilter-status-global' => 'वैश्विक',
 	'abusefilter-list-options' => 'पर्याय',
-	'abusefilter-list-options-deleted' => 'गाळण्या वगळा',
+	'abusefilter-list-options-deleted' => 'वगळलेल्या गाळण्या',
 	'abusefilter-list-options-deleted-only' => 'केवळ वगळलेल्या गाळण्या दाखवा',
-	'abusefilter-list-options-deleted-hide' => 'वगळलेल्या संपादन गाळण्या दाखवू नका',
+	'abusefilter-list-options-deleted-hide' => 'वगळलेल्या संपादन गाळण्या लपवा',
 	'abusefilter-list-options-deleted-show' => 'वगळलेल्या गाळण्या अंतर्भूत करा',
 	'abusefilter-list-options-scope' => 'च्या पासूनच्या गाळण्या दाखवा:',
 	'abusefilter-list-options-scope-local' => 'स्थानिक विकि',
@@ -25171,7 +25202,7 @@ $messages['mr'] = array(
 	'abusefilter-list-options-disabled' => 'अकार्यान्वित संपादन गाळण्या',
 	'abusefilter-list-options-hidedisabled' => 'अकार्यान्वित संपादन गाळण्या लपवा',
 	'abusefilter-list-options-submit' => 'अद्ययावत करा',
-	'abusefilter-tools-text' => 'येथे खाली, संपादन गाळणी तयारीस आणि त्रुटी शोधनास उपयूक्त सुविधा उपलब्ध आहेत.',
+	'abusefilter-tools-text' => 'येथे खाली, संपादन गाळणी तयारीस आणि गणकदोष निवारण्यास उपयूक्त सुविधा उपलब्ध आहेत.',
 	'abusefilter-tools-expr' => 'पदावली (एक्सप्रेशन) परिक्षक',
 	'abusefilter-tools-submitexpr' => 'मुल्यमापन करा',
 	'abusefilter-tools-reautoconfirm' => 'स्वयंशाबीत(ऑटोकन्फर्म) स्थिती पुनर्स्थापित करा',
@@ -25198,7 +25229,7 @@ $messages['mr'] = array(
 	'abusefilter-edit-group' => 'गाळणी गट',
 	'abusefilter-edit-flags' => 'पताका:',
 	'abusefilter-edit-enabled' => 'या संपादन गाळणीस कार्यान्वित करा',
-	'abusefilter-edit-deleted' => 'वगळल्याचे नोंदवा',
+	'abusefilter-edit-deleted' => 'वगळल्याची खूण करा',
 	'abusefilter-edit-hidden' => 'या गाळणीच्या विवरणाची सार्वजनिक दृश्यता झाका',
 	'abusefilter-edit-global' => 'वैश्विक गाळणी',
 	'abusefilter-edit-rules' => 'शर्ती',
@@ -25233,15 +25264,15 @@ $messages['mr'] = array(
 	'abusefilter-edit-done-subtitle' => 'गाळणी संपादीत झाली',
 	'abusefilter-edit-done' => 'गाळणी $1 ला आपण केलेले बदल यशस्वीरित्या जतन झाले आहेत.',
 	'abusefilter-edit-badsyntax' => 'आपण नमूद केलेल्या गाळणीत वाक्यरचनेची त्रूटी आहे. पार्सरक्रियेची निष्पत्ती अशी होती:<pre>$1</pre>',
-	'abusefilter-edit-restricted' => 'आपणास या गाळणीच्या संपादनाची परवानगी नाही, कारण त्यात एक किंवा एकाधिक प्रतिब्ंधित क्रिया आहेत.प्रतिबंधित क्रिया जोडण्याची/संपादण्याची परवानगी असणाऱ्या सदस्यास, आपल्या वतीने, हा बदल करण्यास कृपया सांगा.',
+	'abusefilter-edit-restricted' => 'आपणास या गाळणीच्या संपादनाची परवानगी नाही, कारण त्यात एक किंवा एकाधिक प्रतिबंधित क्रिया आहेत.प्रतिबंधित क्रिया जोडण्याची/संपादण्याची परवानगी असणाऱ्या सदस्यास, आपल्या वतीने, हा बदल करण्यास कृपया सांगा.',
 	'abusefilter-edit-viewhistory' => 'या गाळणीचा इतिहास पहा',
 	'abusefilter-edit-history' => 'इतिहास:',
 	'abusefilter-edit-check' => 'वाक्यविन्यास (सिंटॅक्स) तपासा',
 	'abusefilter-edit-badfilter' => 'आपण नमूद केलेली गाळणी अस्तीत्वात नाही',
 	'abusefilter-edit-revert' => 'गाळणीने केलेली कार्यवाही परत फिरवा(उलटवा)',
-	'abusefilter-edit-tools' => 'सुविधा:',
-	'abusefilter-edit-test-link' => 'हि गाळणी अलिकडील बदलांसोबत तपासा',
-	'abusefilter-edit-export' => 'हि गाळणी दुसऱ्या विकिस निर्यात करा',
+	'abusefilter-edit-tools' => 'साधने:',
+	'abusefilter-edit-test-link' => 'ही गाळणी अलिकडील बदलांसोबत तपासा',
+	'abusefilter-edit-export' => 'ही गाळणी दुसऱ्या विकिस निर्यात करा',
 	'abusefilter-edit-syntaxok' => 'वाक्यरचनेच्या चुका आढळल्या नाहीत.',
 	'abusefilter-edit-syntaxerr' => 'वाक्यरचनेत चुक आढळली: $1',
 	'abusefilter-edit-bad-tags' => "आपण प्रस्तुत केलेल्या एक किंवा एकाधिक खूणपताका अवैध आहेत.
@@ -25250,7 +25281,7 @@ $messages['mr'] = array(
 	'abusefilter-edit-notallowed' => 'आपणास दुरुपयोग गाळणीच्या निर्मितीची अथवा संपादनाची परवानगी नाही.',
 	'abusefilter-edit-notallowed-global' => 'आपणास वैश्विक दुरुपयोग गाळणीच्या निर्मितीची अथवा संपादनाची परवानगी नाही.',
 	'abusefilter-edit-notallowed-global-custom-msg' => 'वैश्विक गाळणीसाठी परंपरागत संदेश सहाय्यीभूत नाहीत.',
-	'abusefilter-edit-builder-select' => 'सरकरेषेच्या(कर्सरच्या) जागी जोडण्याकरता सुयोग्य पर्याय निवडा',
+	'abusefilter-edit-builder-select' => 'सरकबाणाच्या(कर्सरच्या) जागी जोडण्याकरता सुयोग्य पर्याय निवडा',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'अंकगणितीय कारके (अरीथमॅटीक ऑपरेटर्स)',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'अधिक (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'वजाबाकी (-)',
@@ -25269,7 +25300,7 @@ $messages['mr'] = array(
 	'abusefilter-edit-builder-op-bool-not' => 'नाही (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'आणि (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'किंवा (|)',
-	'abusefilter-edit-builder-group-misc' => 'विविध',
+	'abusefilter-edit-builder-group-misc' => 'फुटकळ',
 	'abusefilter-edit-builder-misc-in' => 'स्ट्रींग मध्ये आहे (in)',
 	'abusefilter-edit-builder-misc-like' => 'पॅटर्न पद्धती जुळवते (like)',
 	'abusefilter-edit-builder-misc-rlike' => 'रिजेक्स regex जुळवते (rlike)',
@@ -25284,7 +25315,7 @@ $messages['mr'] = array(
 	'abusefilter-edit-builder-funcs-specialratio' => 'विशेष कॅरेक्टर्स/एकूण कॅरेक्टर्स  (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'नियमित (norm)',
 	'abusefilter-edit-builder-funcs-count' => "तंतू(स्ट्रिंग) 'क्ष' तंतू 'य' मध्ये किती वेळा येतो त्याची संख्या(count)",
-	'abusefilter-edit-builder-funcs-rmspecials' => 'विषेष कॅरेक्टर्स हटवा(rmspecials)',
+	'abusefilter-edit-builder-funcs-rmspecials' => 'विशेष कॅरेक्टर्स हटवा(rmspecials)',
 	'abusefilter-edit-builder-funcs-substr' => 'सबस्ट्रिंग (substr)',
 	'abusefilter-edit-builder-group-vars' => 'चल घटक (व्हॅरिएबल्स)',
 	'abusefilter-edit-builder-vars-accountname' => 'खात्याचे नाव (खाते तयार केल्यावर)',
@@ -25312,9 +25343,9 @@ $messages['mr'] = array(
 	'abusefilter-edit-builder-vars-user-editcount' => 'सदस्य संपादन संख्या',
 	'abusefilter-edit-builder-vars-user-age' => 'सदस्य खात्याचे वय',
 	'abusefilter-edit-builder-vars-user-name' => 'सदस्य खात्याचे नाव',
-	'abusefilter-edit-builder-vars-user-blocked' => 'सदस्य प्रतिबंधीत आहे का',
+	'abusefilter-edit-builder-vars-user-blocked' => 'सदस्य प्रतिबंधीत आहे काय',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'इमेल पत्ता सुनिश्चित केल्याची वेळ',
-	'abusefilter-edit-builder-vars-recent-contributors' => 'पानात योगदान केलेले मागचे दहा सदस्य',
+	'abusefilter-edit-builder-vars-recent-contributors' => 'पानात योगदान केलेले मागील दहा सदस्य',
 	'abusefilter-edit-builder-vars-all-links' => 'नवीन मजकुरातील सर्व बाह्यदुवे',
 	'abusefilter-edit-builder-vars-added-links' => 'संपादनात जोडलेले सर्व बाह्यदुवे',
 	'abusefilter-edit-builder-vars-removed-links' => 'संपादनातून वगळलेले सर्व बाह्यदुवे',
@@ -25340,7 +25371,7 @@ $messages['mr'] = array(
 	'abusefilter-history-filter' => 'गाळणीचे नियम',
 	'abusefilter-history-comments' => 'टिप्पणी',
 	'abusefilter-history-actions' => 'क्रिया',
-	'abusefilter-history-backedit' => 'संपादन गाळणीकडे परत��',
+	'abusefilter-history-backedit' => 'गाळणी संपादकाकडे परत',
 	'abusefilter-history-deleted' => 'वगळले',
 	'abusefilter-history-filterid' => 'गाळणी',
 	'abusefilter-history-select-legend' => 'परिष्कृत शोध',
@@ -25349,7 +25380,7 @@ $messages['mr'] = array(
 	'abusefilter-history-diff' => 'बदल',
 	'abusefilter-history-error-hidden' => 'आपण विनंती केलेली गाळणी दृश्य नाही,आपण तिचा इतिहास पाहू शकत नाही.',
 	'abusefilter-exception-unexpectedatend' => '$1 अक्षरगटीकेपाशी अनपेक्षीत "$2".',
-	'abusefilter-exception-expectednotfound' => 'Expected a  at character $1 वर्णात $2 हवे होते,सापडले नाही(त्याएवजी $3 $4 सापडले)',
+	'abusefilter-exception-expectednotfound' => '$1 वर्णात $2 हवे होते,सापडले नाही(त्याएवजी $3 $4 सापडले)',
 	'abusefilter-exception-unrecognisedkeyword' => 'वर्ण $1 येथे अनोळखी कूटशब्द $2.',
 	'abusefilter-exception-unexpectedtoken' => 'वर्ण  $1 वर($2 प्रकारचे) अनपेक्षित टोकन "$3".',
 	'abusefilter-exception-unclosedstring' => '$1 वर्णावर सुरू झालेला अ-बंद तंतू.',
@@ -25359,7 +25390,7 @@ $messages['mr'] = array(
 	'abusefilter-exception-dividebyzero' => '$1 वर्णावर $2 ला शून्याने विभाजण्याचा अवैधानिक प्रयत्न.',
 	'abusefilter-exception-unrecognisedvar' => '$1 वर्णावर अनोळखी चल $2.',
 	'abusefilter-exception-overridebuiltin' => '$1 वर्णावर अनुबंधित चलांची अवैध चढाई "$2".',
-	'abusefilter-action-tag' => 'खूणवा',
+	'abusefilter-action-tag' => 'खूणपताका',
 	'abusefilter-action-throttle' => 'प्ररोध (थ्रॉटल)',
 	'abusefilter-action-warn' => 'सूचीत करा',
 	'abusefilter-action-block' => 'प्रतिबंधित करा',
@@ -25385,9 +25416,9 @@ $messages['mr'] = array(
 	'abusefilter-test-intro' => "खालच्या पेटीत टाकलेली गाळणी, मागील $1 {{PLURAL:$1|बदलावर|बदलांवर}} तपासण्यास, हे पान आपणास परवानगी देते. 
 सध्याची गाळणी प्रभारण(लोड) करण्यास, त्या गाळणीची ओळखण(आयडी) खालील पेटीत टंका व 'प्रभारण' कळीवर टिचकी मारा.",
 	'abusefilter-test-legend' => 'संपादन गाळणी चाचणी',
-	'abusefilter-test-load-filter' => 'चढवा संपादन�� गाळणी क्रमांक:',
+	'abusefilter-test-load-filter' => 'संपादनगाळणी क्रमांक प्रभारण करा:',
 	'abusefilter-test-submit' => 'चाचणी',
-	'abusefilter-test-load' => 'चढवा',
+	'abusefilter-test-load' => 'भारण करा',
 	'abusefilter-test-user' => 'सदस्याचे बदल:',
 	'abusefilter-test-period-start' => 'तारखे नंतर केलेले बदल:',
 	'abusefilter-test-period-end' => 'तारखे आधी केलेले बदल:',
@@ -25415,22 +25446,22 @@ $messages['mr'] = array(
 	'abusefilter-topnav-test' => 'बॅच परिक्षण',
 	'abusefilter-topnav-examine' => 'मागील संपादने तपासा',
 	'abusefilter-topnav-log' => 'संपादन गाळणीने टिपलेल्या नोंदी',
-	'abusefilter-topnav-tools' => 'त्रुटी शोधक सुविधा',
+	'abusefilter-topnav-tools' => 'गणकदोष निवारक साधने',
 	'abusefilter-topnav-import' => 'संपादन गाळणी आयात करा',
 	'abusefilter-log-name' => 'गाळणीने टिपलेल्या नोंदी',
 	'abusefilter-log-header' => 'हा क्रमालेख संपादन गाळण्यात केलेल्या बदलांचे संक्षिप्त विवरण दाखवतो.
 पूर्ण विवरणा करिता ,संपादन गाळण्यांमधील अलिकडील बदलांची  [[Special:AbuseFilter/history| हि यादी]] पाहा.',
 	'abusefilter-log-entry-modify' => 'फेरबदल $1 ($2)',
 	'abusefilter-log-noresults' => 'निकाल नाहीत',
-	'abusefilter-diff-title' => 'आवृत्त्यांच्या दरम्यान फरक',
+	'abusefilter-diff-title' => 'आवृत्त्यांच्या दरम्यानचा फरक',
 	'abusefilter-diff-item' => 'बाब',
 	'abusefilter-diff-version' => 'आवृत्ती $1 पासून  {{GENDER:$3|कडून}} $2',
-	'abusefilter-diff-info' => 'किमान माहिती',
+	'abusefilter-diff-info' => 'मूलभूत माहिती',
 	'abusefilter-diff-pattern' => 'गाळणीच्या शर्ती',
 	'abusefilter-diff-invalid' => 'विनंती केलेल्या आवृत्त्या शेंदण्यात असफल',
 	'abusefilter-diff-backhistory' => 'गाळणी इतिहासाकडे परत',
 	'abusefilter-diff-prev' => 'जुने बदल',
-	'abusefilter-diff-next' => 'नवे बदल',
+	'abusefilter-diff-next' => 'नविनतम बदल',
 	'abusefilter-import-submit' => 'विदा(डाटा) आयात',
 	'abusefilter-group-default' => 'अविचल (डिफॉल्ट)',
 );
