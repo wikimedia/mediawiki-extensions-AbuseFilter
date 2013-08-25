@@ -5515,6 +5515,7 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Aftab1995
  * @author Bellayet
  * @author Ehsanulhb
  * @author Leemon2010
@@ -5717,7 +5718,7 @@ $messages['bn'] = array(
 	'abusefilter-revert-periodstart' => 'সময় শুরু:',
 	'abusefilter-revert-filter' => 'ফিল্টার:',
 	'abusefilter-revert-confirm' => 'নিশ্চিত করুন',
-	'abusefilter-revert-reasonfield' => 'বাতিলের কারণ:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'কারণ:',
 	'abusefilter-test-submit' => 'পরীক্ষণ',
 	'abusefilter-test-load' => 'লোড',
 	'abusefilter-examine-legend' => 'পরিবর্তন নির্বাচন',
