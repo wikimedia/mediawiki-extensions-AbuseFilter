@@ -5943,7 +5943,7 @@ Tizhout a ra termen an dinoiñ muioc'h evit $1% eus an oberoù.",
 	'abusefilter-edit-enabled' => 'Gweredekaat ar sil-mañ',
 	'abusefilter-edit-deleted' => 'Merkañ evel diverket',
 	'abusefilter-edit-hidden' => "Kuzhat munudoù ar sil-mañ d'ar selloù publik",
-	'abusefilter-edit-global' => 'Arloañ ar sil-mañ en un doare hollek', # Fuzzy
+	'abusefilter-edit-global' => 'Sil hollek',
 	'abusefilter-edit-rules' => 'Divizoù :',
 	'abusefilter-edit-notes' => "Notennoù :
 :''(prevez)''",
@@ -14201,6 +14201,7 @@ As etiquetas deberían ser curtas e non conter caracteres especiais.',
 	'abusefilter-edit-builder-vars-removed-links' => 'Todas as ligazóns externas eliminadas na edición',
 	'abusefilter-edit-builder-vars-old-text' => 'Texto wiki vello da páxina, antes da edición',
 	'abusefilter-edit-builder-vars-new-text' => 'Texto wiki novo da páxina, despois da edición',
+	'abusefilter-edit-builder-vars-new-pst' => 'Texto wiki novo da páxina, transformado despois de gardar',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Texto novo da páxina, sen ningunha marca',
 	'abusefilter-edit-builder-vars-new-html' => 'Fonte HTML transformada na nova revisión',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Nivel de protección de edición da páxina',
@@ -28611,13 +28612,13 @@ $messages['oc'] = array(
 Lo filtre antiabuses es un mecanisme logicial automatizat que permet d'aplicar d'euristicas predefinidas a totas las accions.
 Aquesta interfàcia presenta una lista dels filtres definits, e balha la possibilitat de los modificar.",
 	'abusefilter-mustbeeditor' => 'Per de rasons de seguretat, sols los utilizaires amb lo drech de modificar los filtres antiabuses pòdon utilizar aquesta interfàcia.',
-	'abusefilter-warning' => "'''Avertiment''' : Aquesta accion es estada identificada automaticament coma nosibla.
+	'abusefilter-warning' => "<big>'''Avertiment'''</big> : Aquesta accion es estada identificada automaticament coma nosibla.
 Las edicions que son pas constructivas seràn rapidament anulladas,
 e la repeticion de las asinadas del meteis genre provocarà lo blocatge de vòstre compte o de vòstra adreça IP.
 Se sètz convençu{{GENDER:||t|(da)}} que vòstra modificacion es constructiva, la podètz la sometre un còp de mai per la validar.
-Vaquí la descripcion brèva de la règla de l’abús qu'a detectat vòstra accion : $1", # Fuzzy
+Vaquí la descripcion brèva de la règla de l’abús qu'a detectat vòstra accion : $1",
 	'abusefilter-disallowed' => 'Aquesta modificacion es estada automaticament idenficada coma nusibla e, per via de consequéncia, pas permesa.
-Se sètz convençut(uda) que vòstra modificacion èra constructiva, contactatz un administrator, e informatz-lo de quina accion eratz a far : $1', # Fuzzy
+Se sètz convençu{{GENDER:||t|(da)}} que vòstra modificacion èra constructiva, contactatz un administrator, e informatz-lo de quina accion eratz a far : $1',
 	'abusefilter-blocked-display' => "Aquesta accion es estada identifcada coma nusibla automaticament, e ja sètz estat(ada) empachat(ada) de l’executar.
 En consequéncia, per protegir {{SITENAME}}, vòstre compte d'utilizaire e totas las adreças IP son estadas blocadas en escritura.
 S'aquò es degut a una error, contactatz un administrator.
