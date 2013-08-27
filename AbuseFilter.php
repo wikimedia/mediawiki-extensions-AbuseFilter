@@ -209,3 +209,5 @@ $wgAbuseFilterValidGroups = array('default');
 $wgAbuseFilterDefaultWarningMessage = array(
 	'default' => 'abusefilter-warning',
 );
+
+$wgAbuseFilterLogIPMaxAge  = 3 * 30 * 24 * 3600; // 3 months
