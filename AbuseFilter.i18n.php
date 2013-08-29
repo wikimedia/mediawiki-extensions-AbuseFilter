@@ -19713,7 +19713,7 @@ $messages['ja'] = array(
 	'abusefilter-exception-notenoughargs' => '$1 文字目で呼び出されている関数 $2 の引数が不足しています。
 $3 個の{{PLURAL:$3|引数}}があるべきですが $4 個しかありません',
 	'abusefilter-exception-regexfailure' => '$1 文字目の正規表現「$3」にエラーがあります: "$2"',
-	'abusefilter-exception-overridebuiltin' => '$1文字目で、組み込みの変数「$2」を不正に上書きしています。',
+	'abusefilter-exception-overridebuiltin' => '$1 文字目で、組み込みの変数「$2」に誤って上書きしてしまっています。',
 	'abusefilter-exception-outofbounds' => '$1 文字目で、存在しない一覧項目 $2 (一覧のサイズは $3) を要求しています。',
 	'abusefilter-exception-notlist' => '$1文字目で非配列の配列要素を要求しています。',
 	'abusefilter-action-tag' => 'タグ付け',
@@ -42737,6 +42737,7 @@ $messages['zh-cn'] = array(
  * @author Makecat
  * @author PhiLiP
  * @author Philip <philip.npc@gmail.com>
+ * @author Shirayuki
  * @author Shizhao
  * @author Simon Shek
  * @author Skjackey tse
@@ -42863,7 +42864,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-reautoconfirm-none' => '该用户的自动确认状态并没有被撤销过',
 	'abusefilter-reautoconfirm-notallowed' => '你不能恢复自动确认状态。',
 	'abusefilter-reautoconfirm-done' => '该账户的自动确认状态已恢复',
-	'abusefilter-status' => '在最后$1次操作中，有$2（$3%）{{PLURAL:$2|次|次}}操作达到了$4次的条件上限，有$5（$6%）{{PLURAL:$5|次|次}}编辑触发了已启用的过滤器之一。',
+	'abusefilter-status' => '在最后$1次操作中，有$2（$3%）{{PLURAL:$2|次}}操作达到了$4次的条件上限，有$5（$6%）{{PLURAL:$5|次}}编辑触发了已启用的过滤器之一。',
 	'abusefilter-edit' => '编辑滥用过滤器',
 	'abusefilter-edit-subtitle' => '编辑过滤器$1',
 	'abusefilter-edit-subtitle-new' => '创建筛选器',
@@ -42901,7 +42902,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-action-tag' => '标记该编辑以供进一步检查',
 	'abusefilter-edit-throttle-count' => '允许的操作次数：',
 	'abusefilter-edit-throttle-period' => '时长：',
-	'abusefilter-edit-throttle-seconds' => '$1{{PLURAL:$1|秒|秒}}',
+	'abusefilter-edit-throttle-seconds' => '$1{{PLURAL:$1|秒}}',
 	'abusefilter-edit-throttle-groups' => "受限群组：
 :''（每行一个，且以半角逗号相连）''",
 	'abusefilter-edit-warn-message' => '用作警告的系统消息：',
