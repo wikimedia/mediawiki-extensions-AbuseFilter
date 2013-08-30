@@ -993,12 +993,18 @@ class AbuseFilter {
 			}
 		}
 
+		$method = __METHOD__;
+
 		if ( count( $logged_local_filters ) ) {
 			// Update hit-counter.
-			$dbw->update( 'abuse_filter',
-				array( 'af_hit_count=af_hit_count+1' ),
-				array( 'af_id' => $logged_local_filters ),
-				__METHOD__
+			$dbw->onTransactionPreCommitOrIdle(
+				function() use ( $dbw, $logged_local_filters, $method ) {
+					$dbw->update( 'abuse_filter',
+						array( 'af_hit_count=af_hit_count+1' ),
+						array( 'af_id' => $logged_local_filters ),
+						$method
+					);
+				}
 			);
 		}
 
@@ -1021,10 +1027,14 @@ class AbuseFilter {
 				$global_log_ids[] = $dbw->insertId();
 			}
 
-			$fdb->update( 'abuse_filter',
-				array( 'af_hit_count=af_hit_count+1' ),
-				array( 'af_id' => $logged_global_filters ),
-				__METHOD__
+			$fdb->onTransactionPreCommitOrIdle(
+				function() use ( $fdb, $logged_local_filters, $method ) {
+					$fdb->update( 'abuse_filter',
+						array( 'af_hit_count=af_hit_count+1' ),
+						array( 'af_id' => $logged_global_filters ),
+						$method
+					);
+				}
 			);
 		}
 
