@@ -939,8 +939,9 @@ If the filter ID is not specified, {{msg-mw|Abusefilter-filter-log}} will be use
 	'abusefilter-history-hidden' => '{{Identical|Hidden}}',
 	'abusefilter-history-enabled' => '{{Identical|Enabled}}',
 	'abusefilter-history-global' => '{{Identical|Global}}',
-	'abusefilter-history-timestamp' => 'Used in history page of a filter.
+	'abusefilter-history-timestamp' => 'Used as table column header in history page of a filter.
 
+Translate "Time" as "Timestamp" (time and date).
 {{Identical|Time}}',
 	'abusefilter-history-user' => '{{Identical|User}}',
 	'abusefilter-history-flags' => '{{Identical|Flag}}',
@@ -1064,8 +1065,27 @@ Parameters:
 	'abusefilter-examine-user' => '{{Identical|User}}',
 	'abusefilter-examine-title' => '{{Identical|Page title}}',
 	'abusefilter-examine-submit' => '{{Identical|Search}}',
-	'abusefilter-topnav-home' => '{{Identical|Home}}',
-	'abusefilter-topnav-log' => '{{Identical|Abuse log}}',
+	'abusefilter-topnav' => 'Used as header for navigation links which have the following link texts:
+* {{msg-mw|Abusefilter-topnav-home}}
+* {{msg-mw|Abusefilter-topnav-test}}
+* {{msg-mw|Abusefilter-topnav-examine}}
+* {{msg-mw|Abusefilter-topnav-log}}
+* {{msg-mw|Abusefilter-topnav-tools}}
+* {{msg-mw|Abusefilter-topnav-import}}',
+	'abusefilter-topnav-home' => 'Used as link text. The link points to [[Special:AbuseFilter]].
+{{Identical|Home}}',
+	'abusefilter-topnav-test' => 'Used as link text in the navigation toolbar.',
+	'abusefilter-topnav-examine' => 'Used as link text in the navigation toolbar.
+
+The link points to [[Special:AbuseFilter/examine]].',
+	'abusefilter-topnav-log' => 'Used as link text in the navigation toolbar.
+
+The link points to [[Special:AbuseFilter/history]].
+{{Identical|Abuse log}}',
+	'abusefilter-topnav-tools' => 'Used as link text in the navigation toolbar.',
+	'abusefilter-topnav-import' => 'Used as link text in the navigation toolbar.
+
+The link points to [[Special:AbuseLog]].',
 	'abusefilter-log-name' => '{{doc-logpage}}',
 	'abusefilter-log-entry-modify' => '* $1 is a link to the filter
 * $2 is a link to the filter change details',
@@ -8076,6 +8096,9 @@ Mae'r rhyngwyneb hwn yn arddangos rhestr o hidlyddion penodedig, sy'n eu galluog
 Bydd golygiadau anadeiladol yn cael eu gwrthdroi'n syth, a bydd cyfrif neu gyfeiriad IP defnyddwyr sy'n parhau i olygu'n anadeiladol yn cael eu blocio.
 Os ydych o'r farn fod y weithred hon yn adeiladol, gallwch ei chyflwyno unwaith eto er mwyn ei chadarnhau.
 Disgrifiad byr o'r rheol camddefnydd y mae'ch gweithred chi yn cyfateb ag ef yw: $1",
+	'abusefilter-disallowed' => "Clustnododd y meddalwedd y weithred hon yn un niweidiol, felly ni weithredwyd hi.
+Os ydych yn meddwl bod y weithred o ddefnydd, rhowch wybod i weinyddwr am ddiben y weithred.
+Dyma ddisgrifiad byr o'r rheol camddefnydd yr oedd y weithred yn cyfateb iddi: $1",
 	'abusefilter-blocker' => 'Hidlydd camddefnydd',
 	'abusefilter-blockreason' => "Blociwyd yn awtomatig gan yr hidlydd camddefnydd.
 Disgrifiad o'r rheol sy'n cyfateb: $1",
@@ -19687,7 +19710,7 @@ $messages['ja'] = array(
 	'abusefilter-history-hidden' => '非表示',
 	'abusefilter-history-enabled' => '有効',
 	'abusefilter-history-global' => 'グローバル',
-	'abusefilter-history-timestamp' => '時刻',
+	'abusefilter-history-timestamp' => '日時',
 	'abusefilter-history-user' => '利用者',
 	'abusefilter-history-public' => 'フィルターの公開解説',
 	'abusefilter-history-flags' => 'フラグ',
@@ -31439,6 +31462,7 @@ Copie da caixa de texto que aparece, coloque nesta caixa de texto e depois cliqu
 );
 
 /** Brazilian Portuguese (português do Brasil)
+ * @author Fúlvio
  * @author Giro720
  * @author Hamilton Abreu
  * @author Helder.wiki
@@ -31667,6 +31691,7 @@ Por favor, peça a um usuário com permissão de adicionamento de ações restri
 Etiquetas devem ser curtas e não devem conter caracteres especiais.',
 	'abusefilter-edit-notallowed' => 'Você não tem permissão para criar ou editar filtros de abuso',
 	'abusefilter-edit-notallowed-global' => 'Você não está autorizada a criar ou editar filtros de abuso globais',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'Mensagens de advertência personalizados não são suportadas por filtros globais',
 	'abusefilter-edit-builder-select' => 'Selecione uma opção para inserir no cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operadores aritméticos',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adição (+)',
