@@ -1087,8 +1087,9 @@ The link points to [[Special:AbuseFilter/history]].
 
 The link points to [[Special:AbuseLog]].',
 	'abusefilter-log-name' => '{{doc-logpage}}',
-	'abusefilter-log-entry-modify' => '* $1 is a link to the filter
-* $2 is a link to the filter change details',
+	'abusefilter-log-entry-modify' => 'Parameters:
+* $1 - a link to the filter
+* $2 - a link to the filter change details',
 	'abusefilter-log-noresults' => '{{Identical|No result}}',
 	'abusefilter-diff-title' => 'Similar to {{msg-mw|Difference}}',
 	'abusefilter-diff-item' => '{{Identical|Item}}',
@@ -5818,11 +5819,11 @@ Diskouez a ra an etrefas-mañ ur roll eus ar siloù termenet, hag aotren a ra de
 Ar c'hemmoù diyaus a vo nullet raktal,
 stanket e vo ho kont pe ho chomlec'h IP ma skrivit bleupajoù lies pe dismegañsus.
 Ma soñjit eo ar c'hemm yaus, galloud a rit kinnig anezhañ en-dro evit kadarnaat.
-Un diskrivadur berr eus ar reolenn drougimplij dinoet gantañ ho ober : $1", # Fuzzy
+Un diskrivadur berr eus ar reolenn drougimplij dinoet gantañ ho ober : $1",
 	'abusefilter-disallowed' => "Anavezet eo an ober-mañ evit bezañ noazus,
 harzet eo bet dre-se.
 Ma soñj deoc'h e oa reizh ho kemm, trugarez da vont e darempred gant ur merour, a lavarit ar pezh ho poa c'hoant d'ober.
-Setu un deskrivadur berr eus ar reolenn diskoachañ an drougimplij eo bet dinoet ganti hoc'h oberiadenn : $1", # Fuzzy
+Setu un deskrivadur berr eus ar reolenn diskoachañ an drougimplij eo bet dinoet ganti hoc'h oberiadenn : $1",
 	'abusefilter-blocked-display' => "An ober-mañ a zo anavezet evit bezañ noazus,
 harzet oc'h bet dija war ar poent-mañ.
 Da eil, evit gwareziñ {{SITENAME}}, ho kont implijer hag ho holl chomlec'hioù IP implijet ganeoc'h a zo bet stanket.
@@ -7103,7 +7104,7 @@ $messages['ce'] = array(
 	'abusefilter-log-details-legend' => '$1 тептаран дӀаяздаршка ма-дарра хьажар',
 	'abusefilter-log-details-var' => 'Хийцаме',
 	'abusefilter-log-details-val' => 'МаьӀна',
-	'abusefilter-log-details-vars' => 'Дина чун параметраш',
+	'abusefilter-log-details-vars' => 'Дечунна параметраш',
 	'abusefilter-log-noactions' => 'цаоьшу',
 	'abusefilter-log-details-diff' => 'Нисдар чохь бина хийцамаш',
 	'abusefilter-log-linkoncontribs' => 'зуламаш долу тéптар',
