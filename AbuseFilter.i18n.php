@@ -20972,6 +20972,7 @@ $messages['kn'] = array(
  * @author LFM
  * @author Pakman
  * @author Yknok29
+ * @author 관인생략
  * @author 아라
  */
 $messages['ko'] = array(
@@ -21136,7 +21137,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-global' => '전역 필터',
 	'abusefilter-edit-rules' => '필터 규칙:',
 	'abusefilter-edit-notes' => '주석:
-:(비공개)',
+:"(비공개)"',
 	'abusefilter-edit-lastmod' => '필터가 마지막으로 수정된 시각',
 	'abusefilter-edit-lastmod-text' => '$2(이)가 $1에 바꿈',
 	'abusefilter-edit-hitcount' => '필터 적발 건수:',
