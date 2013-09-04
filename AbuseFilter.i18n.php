@@ -754,12 +754,14 @@ See also:
 {{Identical|Condition}}',
 	'abusefilter-edit-notes' => 'Field label for filter notes.',
 	'abusefilter-edit-lastmod' => "Field label for filter's last modified timestamp.",
-	'abusefilter-edit-lastmod-text' => 'This message is used on Special:AbuseFilter to indicate the last modified date, time and user for existing rules. Parameters:
-* $1 is a time and date (duplicated in $3 and $4)
-* $2 is a link to a user page with a user name as link text, followed by a series of related links
-* $3 is the date
-* $4 is the time
-* $5 is the user name which can be used with GENDER',
+	'abusefilter-edit-lastmod-text' => 'This message is used on [[Special:AbuseFilter]] to indicate the last modified date, time and user for existing rules.
+
+Parameters:
+* $1 - a time and date (duplicated in $3 and $4)
+* $2 - a link to a user page with a user name as link text, followed by a series of related links
+* $3 - (Optional) the date
+* $4 - (Optional) the time
+* $5 - (Optional) the username, for GENDER support',
 	'abusefilter-edit-hitcount' => 'Field label in edit rule form after which the number of filter hits is displayed.',
 	'abusefilter-edit-consequences' => 'Table header in filter version differences.',
 	'abusefilter-edit-action-warn' => '{{doc-abusefilter-action}}',
@@ -854,7 +856,8 @@ Abuse filter syntax option in a dropdown from the group {{msg-mw|Abusefilter-edi
 	'abusefilter-edit-builder-misc-stringlit' => 'Abuse filter syntax option in a dropdown from the group {{msg-mw|Abusefilter-edit-builder-group-misc}}.',
 	'abusefilter-edit-builder-misc-tern' => '{{doc-important|Do not change "X ? Y : Z".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|Abusefilter-edit-builder-group-misc}}.',
 	'abusefilter-edit-builder-misc-cond' => '{{doc-important|Do not change "if X then Y else Z".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|Abusefilter-edit-builder-group-misc}}.',
-	'abusefilter-edit-builder-group-funcs' => 'Group entry in dropdown menu.',
+	'abusefilter-edit-builder-group-funcs' => 'Group entry in dropdown menu.
+{{Identical|Function}}',
 	'abusefilter-edit-builder-funcs-length' => "{{doc-important|Do not translate \"'''length'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-lcase' => "{{doc-important|Do not translate \"'''lcase'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	'abusefilter-edit-builder-funcs-ucase' => "{{doc-important|Do not translate \"'''ucase'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
@@ -6215,7 +6218,7 @@ Evit gouzout hiroc'h, gwelout [[Special:AbuseFilter/history|listenn]] eus kemmo�
 	'abusefilter-log-noresults' => "Disoc'h ebet",
 	'abusefilter-diff-title' => 'Disheñvelderioù etre ar stummoù',
 	'abusefilter-diff-item' => 'Elfenn',
-	'abusefilter-diff-version' => 'Stumm $1 gant $2', # Fuzzy
+	'abusefilter-diff-version' => 'Stumm eus $1 {{GENDER:$3|gant}} $2',
 	'abusefilter-diff-info' => 'Titouroù diazez',
 	'abusefilter-diff-pattern' => 'Amplegad ar sil',
 	'abusefilter-diff-invalid' => "Ne c'haller ket adkavout ar stummoù goulennet",
@@ -21136,8 +21139,8 @@ $messages['ko'] = array(
 	'abusefilter-edit-hidden' => '일반 사용자가 필터의 세부 사항을 보지 못하도록 숨기기',
 	'abusefilter-edit-global' => '전역 필터',
 	'abusefilter-edit-rules' => '필터 규칙:',
-	'abusefilter-edit-notes' => '주석:
-:"(비공개)"',
+	'abusefilter-edit-notes' => "주석:
+:''(비공개)''",
 	'abusefilter-edit-lastmod' => '필터가 마지막으로 수정된 시각',
 	'abusefilter-edit-lastmod-text' => '$2(이)가 $1에 바꿈',
 	'abusefilter-edit-hitcount' => '필터 적발 건수:',
