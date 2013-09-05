@@ -6640,6 +6640,7 @@ Kopirajte iz tekstualne kutije koja se pojavi i zalijepite u ovu kutiju, zatim k
  * @author Paucabot
  * @author Pintor Smeargle
  * @author Pitort
+ * @author Qllach
  * @author SMP
  * @author Sociologist
  * @author Solde
@@ -6654,14 +6655,14 @@ $messages['ca'] = array(
 Aquest filtre és un mecanisme del programari per aplicar heurística automàtica a totes les accions.
 Aquesta interfície mostra una llista dels filtres definits i permet modificar-los.",
 	'abusefilter-mustbeeditor' => "Per raons de seguretat, només poden utilitzar aquesta interfície els usuaris amb permisos per a modificar els filtres d'abusos.",
-	'abusefilter-warning' => "'''Avís''': Aquesta acció ha estat identificada automàticament com a perniciosa.
+	'abusefilter-warning' => "'''Avís:''' Aquesta acció ha estat identificada automàticament com a perniciosa.
 Les edicions no constructives seran revertides ràpidament,
 i la reiterada edició de forma no constructiva pot comportar el bloqueig del vostre compte o adreça IP.
-Si creieu que aquesta edició és constructiva, podeu clicar novament el botó Desa per a confirmar-ho.
-A continuació us mostrem una breu descripció de la regla d'abús que ha identificat la vostra acció: $1", # Fuzzy
-	'abusefilter-disallowed' => "Aquesta acció ha estat automàticament identifica com nocius i per tant rebutjat.
-Si vostè creu que el seu editar va ser constructives, si us plau informar a un administrador de què estava intentant fer.
-Una breu descripció de la regla de l'abús que coincidien amb la seva acció és:$1", # Fuzzy
+Si creieu que aquesta acció és constructiva, podeu tornar-la a enviar per a confirmar-la.
+A continuació us mostrem una breu descripció de la regla d'abús que ha identificat la vostra acció: $1",
+	'abusefilter-disallowed' => "Aquesta acció ha estat automàticament identificada com a nociva i per tant rebutjada.
+Si creieu que la vostra acció era constructiva, si us plau informeu un administrador de què estàveu intentant fer.
+Una breu descripció de la regla d'abús amb què coincidia la vostra acció és: $1",
 	'abusefilter-blocked-display' => "Aquesta acció s'ha identificat automàticament com perjudicials
  i li ha impedit executar-lo.
 A més a més, per protegir {{SITENAME}}, el seu compte d'usuari i tots associats adreces d'IP s'han blocat des d'edició.
@@ -33263,14 +33264,14 @@ $messages['rue'] = array(
 Філтер зловжываня є автоматічный софтверовый механізм, через котрого ся вшыткы операції тестують за помочі автоматічных еврістік.
 В тім інтерфейсї можете видїти список дефінованых філтрів і мінити їх.',
 	'abusefilter-mustbeeditor' => 'З беспечностных причін, лем хоснователї з правами зміны філтрів можуть хосновати тот інтерфейс.',
-	'abusefilter-warning' => "'''Увага''': Тота дїя была автоматічно ідентіфікована як шкодлива.
+	'abusefilter-warning' => "'''Позірь:''' Тота дїя была автоматічно ідентіфікована як шкодлива.
 Неконштруктівны едітованя будуть швыдко ревертованы, в&nbsp;повторяный або заважных припадах може быти ваше конто хоснователя ці IP-адреса заблокованы.
-Кідь поважуєте своє едітованя за правилне, можете го підтвердити кликнутём на Уложыти зміны.
-Короткый опис правила, котре вашу дїю означіло за шкодливу : $1", # Fuzzy
+Кідь тримете свою дїю за правилну, можете єй підтвердити кликнутём на Уложыти зміны.
+Куртый опис правила, котре вашу дїю означіло за шкодливу : $1",
 	'abusefilter-disallowed' => 'Тота дїя была автоматічно означена як шкодлива,
 і зато заборонена.
 Кідь вірите, же ваше едітованя є конштруктівне, просиме контактуйте адміністратора і дайте му знати, што сьте хотїли зробити.
-Короткый опис правила, котре вашу дїю означіло за шкодливу: $1', # Fuzzy
+Короткый опис правила, котре вашу дїю означіло за шкодливу: $1',
 	'abusefilter-blocked-display' => 'Тота дїя была автоматічно означена як шкодлива,
 і зато была заборонена.
 Окрім того про охорону проєкту {{SITENAME}} было вашому конту хоснователя і з ним звязанін IP-адресї зоблоковане едітованя.
