@@ -590,15 +590,15 @@ Parameters:
 * $5 actions taken by the filter
 * $6 comments in filter description.',
 	'abusefilter-log-detailedentry-meta' => 'This message is for a log entry. Parameters:
-* $1 timestamp
-* $2 user
-* $3 link to filter
-* $4 action by user
-* $5 link to page the action that triggered the filter was made on
-* $6 actions taken by the filter
-* $7 comments in filter description
-* $8 link to action details, examine, and optional diff
-* $9 raw username',
+* $1 - timestamp
+* $2 - user
+* $3 - link to filter
+* $4 - action by user
+* $5 - link to page the action that triggered the filter was made on
+* $6 - actions taken by the filter
+* $7 - comments in filter description
+* $8 - link to action details, examine, and optional diff
+* $9 - (Optional) raw username, for GENDER support',
 	'abusefilter-log-detailedentry-global' => 'Addition in the abuse filter log detail when a filter rule is a global rule. Parameters:
 * $1 is a global filter ID.',
 	'abusefilter-log-detailedentry-local' => 'Addition in the abuse filter log detail when a filter rule is a local rule. Parameters:
@@ -8132,6 +8132,7 @@ Disgrifiad o'r rheol sy'n cyfateb: $1",
 	'abusefilter-log-search-user' => 'Defnyddiwr:',
 	'abusefilter-log-search-filter' => 'ID Hidlydd:',
 	'abusefilter-log-search-title' => 'Teitl:',
+	'abusefilter-log-search-wiki' => 'Wici:',
 	'abusefilter-log-search-submit' => 'Chwilio',
 	'abusefilter-log-detailedentry-global' => 'hidlydd eang $1',
 	'abusefilter-log-detailedentry-local' => 'hidlydd $1',
@@ -31176,7 +31177,7 @@ entradas do registo de abusos.',
 	'abusefilter-reautoconfirm-none' => 'Não foi suspendido o estado autoconfirmado {{GENDER:$1|desse utilizador|dessa utilizadora|desse utilizador}}.',
 	'abusefilter-reautoconfirm-notallowed' => 'Não está autorizado a repor o estado autoconfirmado.',
 	'abusefilter-reautoconfirm-done' => 'O estado autoconfirmado da conta foi restaurado',
-	'abusefilter-status' => '{{PLURAL:$1|Da última 1 ação|Das últimas $1 ações}}, $2 ($3%) {{PLURAL:$2|atingiu|atingiram}} a condição limite de $4, e $5 ($6%) {{PLURAL:$5|correspondeu|corresponderam}} a um dos filtros neste momento ativos.',
+	'abusefilter-status' => '{{PLURAL:$1|Da última 1 ação|Das últimas $1 ações}}, $2 ($3%) {{PLURAL:$2|atingiu|atingiram}} o limite de $4 condições, e $5 ($6%) {{PLURAL:$5|correspondeu|corresponderam}} a um dos filtros neste momento ativos.',
 	'abusefilter-edit' => 'Editar Filtro de abusos',
 	'abusefilter-edit-subtitle' => 'A editar filtro $1',
 	'abusefilter-edit-subtitle-new' => 'Criando filtro',
@@ -31622,7 +31623,7 @@ entradas do registro de abusos.',
 	'abusefilter-reautoconfirm-none' => 'Não foi suspensa o estatuto autoconfirmado {{GENDER:$1|desse usuário|dessa usuária|desses usuários}}.',
 	'abusefilter-reautoconfirm-notallowed' => 'Você não está autorizado a restaurar o estado autoconfirmado.',
 	'abusefilter-reautoconfirm-done' => 'O estado autoconfirmado da conta foi restaurado',
-	'abusefilter-status' => '{{PLURAL:$1|Da última 1 ação|Das últimas $1 ações}}, $2 ($3%) {{PLURAL:$2|atingiu|atingiram}} a condição limite de $4, e $5 ($6%) {{PLURAL:$5|correspondeu|corresponderam}} a um dos filtros neste momento ativos.',
+	'abusefilter-status' => '{{PLURAL:$1|Da última 1 ação|Das últimas $1 ações}}, $2 ($3%) {{PLURAL:$2|atingiu|atingiram}} o limite de $4 condições, e $5 ($6%) {{PLURAL:$5|correspondeu|corresponderam}} a um dos filtros neste momento ativos.',
 	'abusefilter-edit' => 'Editando um filtro de abusos',
 	'abusefilter-edit-subtitle' => 'Editando filtro $1',
 	'abusefilter-edit-subtitle-new' => 'Criando filtro',
