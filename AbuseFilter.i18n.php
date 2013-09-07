@@ -15556,8 +15556,8 @@ $messages['hi'] = array(
 साथ ही, सुरक्षा कदम के तौर पे, पंजीकृत खातों को दिये जाने वाले कुछ आम अधिकार आपके खाते से अस्थायी रूप से वापिस ले लिये गए हैं।
 आपके संपादन को पकड़ने वाले नियम का संक्षिप्त विवरण है: $1',
 	'abusefilter-blocker' => 'दुरुपयोग फ़िल्टर',
-	'abusefilter-blockreason' => 'दुरुपयोग फ़िल्टर द्वारा स्वचालित रूप से अवरुद्ध
-पकड़ने वाले नियम का संक्षिप्त विवरण है: $1',
+	'abusefilter-blockreason' => 'दुरुपयोग फ़िल्टर द्वारा स्वचालित रूप से अवरुद्ध।
+पकड़ने वाले नियम का संक्षिप्त विवरण है: $1',
 	'abusefilter-degroupreason' => 'सदस्य अधिकार दुरुपयोग फ़िल्टर द्वारा स्वचालित रूप से वापिस ले लिये गए हैं।
 पकड़ने वाले नियम का संक्षिप्त विवरण है: $1',
 	'abusefilter-accountreserved' => 'यह सदस्य नाम दुरुपयोग फ़िल्टर के उपयोग के लिए आरक्षित है।',
@@ -28674,6 +28674,7 @@ Una descripcion brèva de la règla d’abús que vòstra accion a desenclavat e
 	'right-abusefilter-modify-restricted' => "Modificar los filtres d'abús qu'an d'accions restrenchas",
 	'right-abusefilter-revert' => "Revocar totas las modificacions efectuadas per un filtre d'abús",
 	'right-abusefilter-view-private' => "Vejatz los filtres d'abuses marcats coma privats",
+	'right-abusefilter-log-private' => 'Veire las entradas del jornal dels filtres antiabuses marcat coma privadas',
 	'right-abusefilter-hide-log' => "Amagar d'entradas dins lo jornal dels abuses",
 	'right-abusefilter-hidden-log' => 'Veire las entradas amagadas del jornal dels abuses',
 	'right-abusefilter-modify-global' => "Crear o modificar los filtres globals d'abuses",
@@ -28715,6 +28716,7 @@ Descripcion del filtre : $7 ($8)",
 	'abusefilter-log-linkoncontribs' => 'Jornal dels abuses',
 	'abusefilter-log-linkoncontribs-text' => "Jornal dels abuses d'aqueste utilizaire",
 	'abusefilter-log-hidden' => '(entrada amagada)',
+	'abusefilter-log-hidden-implicit' => '(amagada perque la version es estada suprimida)',
 	'abusefilter-log-hide-legend' => "Amagar l'entrada dins los jornals",
 	'abusefilter-log-hide-id' => "Identificant de l'entrada de jornal :",
 	'abusefilter-log-hide-reason' => 'Motiu :',
