@@ -20922,6 +20922,7 @@ $messages['km'] = array(
 	'abusefilter-topnav-log' => 'កំណត់ហេតុ​នៃ​ការបំពានច្បាប់',
 	'abusefilter-topnav-import' => 'នាំចូល​តម្រង​',
 	'abusefilter-log-name' => 'កំណត់ហេតុនៃតម្រងការបំពានច្បាប់',
+	'abusefilter-log-noresults' => 'គ្មានលទ្ធផល',
 	'abusefilter-diff-title' => 'ភាពខុសគ្នានៃកំណែនានា',
 	'abusefilter-diff-item' => 'វត្ថុ​',
 	'abusefilter-diff-version' => 'កំណែពី​ $1 ដោយ $2', # Fuzzy
