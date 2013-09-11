@@ -1112,7 +1112,7 @@ See also:
 See also:
 * {{msg-mw|Abusefilter-diff-prev}}
 * {{msg-mw|Previousdiff}} and {{msg-mw|Nextdiff}}',
-	'abusefilter-import-intro' => "Do not ''translate'' <nowiki>{{int:abusefilter-edit-export}}</nowiki>, <nowiki>{{int:abusefilter-tools-subtitle}}</nowiki>, and <nowiki>{{int:abusefilter-import-submit}}</nowiki> unless you absolute must substitute any of them.",
+	'abusefilter-import-intro' => '{{doc-important|Do not translate <code><nowiki>{{int:abusefilter-edit-export}}</nowiki></code>, <code><nowiki>{{int:abusefilter-tools-subtitle}}</nowiki></code>, and <code><nowiki>{{int:abusefilter-import-submit}}</nowiki></code> unless you absolute must substitute any of them.}}',
 	'abusefilter-group-default' => 'The name for the default filter group. Most filters will be in this group.
 {{Identical|Default}}',
 );
