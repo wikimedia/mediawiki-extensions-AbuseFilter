@@ -810,9 +810,15 @@ See also:
 	'abusefilter-edit-badfilter' => 'User warning when referencing a filter ID that does not exist.',
 	'abusefilter-edit-revert' => 'Link text for reverting to an older version of a filter.',
 	'abusefilter-edit-tools' => 'Field label for a list of tool links.
+
+Used in:
+* {{msg-mw|Abusefilter-import-intro}}
 {{Identical|Tools}}',
 	'abusefilter-edit-test-link' => 'Link text for link to a form to test a filter. Accompanying label is {{msg-mw|abusefilter-edit-tools}}.',
-	'abusefilter-edit-export' => 'Link text for link to create  filter. Accompanying label is {{msg-mw|abusefilter-edit-tools}}.',
+	'abusefilter-edit-export' => 'Link text for link to create  filter. Accompanying label is {{msg-mw|abusefilter-edit-tools}}.
+
+Used in:
+* {{msg-mw|Abusefilter-import-intro}}',
 	'abusefilter-edit-syntaxok' => 'Status message for filter test.',
 	'abusefilter-edit-syntaxerr' => 'Status message for filter test. Parameters:
 * $1 is the reported error.',
@@ -1112,7 +1118,18 @@ See also:
 See also:
 * {{msg-mw|Abusefilter-diff-prev}}
 * {{msg-mw|Previousdiff}} and {{msg-mw|Nextdiff}}',
-	'abusefilter-import-intro' => '{{doc-important|Do not translate <code><nowiki>{{int:abusefilter-edit-export}}</nowiki></code>, <code><nowiki>{{int:abusefilter-tools-subtitle}}</nowiki></code>, and <code><nowiki>{{int:abusefilter-import-submit}}</nowiki></code> unless you absolute must substitute any of them.}}',
+	'abusefilter-import-intro' => '{{doc-important|Do not translate <code><nowiki>{{int:abusefilter-edit-export}}</nowiki></code>, <code><nowiki>{{int:abusefilter-tools-subtitle}}</nowiki></code>, and <code><nowiki>{{int:abusefilter-import-submit}}</nowiki></code> unless you absolute must substitute any of them.}}
+
+Refers to:
+* {{msg-mw|Abusefilter-edit-export}}
+* {{msg-mw|Abusefilter-edit-tools}}
+* {{msg-mw|Abusefilter-import-submit}}',
+	'abusefilter-import-submit' => 'Used as label for the Submit button.
+
+Preceded by the textarea.
+
+Used in:
+* {{msg-mw|Abusefilter-import-intro}}.',
 	'abusefilter-group-default' => 'The name for the default filter group. Most filters will be in this group.
 {{Identical|Default}}',
 );
