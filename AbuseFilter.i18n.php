@@ -1622,6 +1622,7 @@ $messages['an'] = array(
  * @author Abanima
  * @author Aiman titi
  * @author Alnokta
+ * @author Asaifm
  * @author Bassem JARKAS
  * @author Ciphers
  * @author DRIHEM
@@ -1876,6 +1877,7 @@ $messages['ar'] = array(
 	'abusefilter-edit-builder-group-funcs' => 'دوال',
 	'abusefilter-edit-builder-funcs-length' => 'طول السلسلة (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'إلى حروف صغيرة (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'إستخدام أحرف كبيرة',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'معادلة الحروف المختلطة (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'إزالة الحروف المزدوجة (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'حروف خاصة / إجمالي الحروف (specialratio)',
@@ -22427,8 +22429,8 @@ Tags solle kuerz sinn, an et solle keng Spezialzeechen dra sinn.',
 	'abusefilter-action-rangeblock' => 'Spär vum Beräich',
 	'abusefilter-action-disallow' => 'Net erlaben',
 	'abusefilter-revert-title' => 'All Ännerungen duerch de Filter $1 zrécksetzen',
-	'abusefilter-revert-intro' => 'Dëse Formulaire erlaabt et fir all Ännerunge vum Mëssbrauchsfilterm duerchde Filter $1 zréckzesetzen.
-Benotzt dës Fonctioun w.e.g. nëmmen wann Dir hir Konsequenzen ofschätze kënnt.',
+	'abusefilter-revert-intro' => 'Dëse Formulaire erlaabt et fir all Ännerunge vum Mëssbrauchsfilterm duerch de Filter $1 zréckzesetzen.
+Benotzt dës Funktioun w.e.g. nëmme wann Dir hir Konsequenzen ofschätze kënnt.',
 	'abusefilter-revert-preview-item' => '$1: $2 huet $3 op $4 gemaach.
 Aktiounen déi zréckgesat ginn: $5 ($6)',
 	'abusefilter-revert-search-legend' => 'Mëssbrauchsfilteren erauswielen déi zréckgesat solle ginn',
@@ -22455,8 +22457,8 @@ Fie e Filter ze uede gitt seng Filter ID an d\'Këscht ënnert der Textkëscht a
 	'abusefilter-test-period-end' => 'Ännerungen déi virdru gemaach goufen:',
 	'abusefilter-test-page' => 'Ännerungen déi op dëser Säit gemaach goufen',
 	'abusefilter-test-shownegative' => 'Ännerunge weisen déi net op de Filter passen',
-	'abusefilter-test-syntaxerr' => 'am Filter deen dir aginn hutt ass e Syntaxfeeler.
-Dir kënnt eng komplett Erklärung kréien wann Dir op "Syntax nokucken" klickt.',
+	'abusefilter-test-syntaxerr' => 'am Filter deen Dir aginn hutt ass e Syntaxfeeler.
+Dir kënnt eng komplett Erklärung kréie wann Dir op "Syntax nokucken" klickt.',
 	'abusefilter-changeslist-examine' => 'ënnersichen',
 	'abusefilter-examine' => 'Individuell Ännerungen ënnersichen',
 	'abusefilter-examine-intro' => "Dës Säit erlaabt et d'Variabelen déi vun engem Mëssbrauchsfilter fir eng Ännerung generéiert goufen z'ënnersichen a se mat de Filteren ze testen.",
@@ -27731,6 +27733,7 @@ $messages['niu'] = array(
  * @author Romaine
  * @author SPQRobin
  * @author Siebrand
+ * @author Southparkfan
  * @author Tjcool007
  * @author Tvdm
  * @author Wiki13
@@ -28027,6 +28030,7 @@ Labels moeten kort zijn en mogen geen speciale tekens bevatten.',
 	'abusefilter-edit-builder-vars-removed-links' => 'Alle bij deze bewerking toegevoegde externe koppelingen zijn verwijderd',
 	'abusefilter-edit-builder-vars-old-text' => 'Wikitekst van de oude pagina vóór de bewerking',
 	'abusefilter-edit-builder-vars-new-text' => 'Wikitekst van de nieuwe pagina ná de bewerking',
+	'abusefilter-edit-builder-vars-new-pst' => 'Nieuwe pagina wikitext, pre-opslaan getransformeerd',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nieuwe paginatekst, ontdaan van opmaakcode',
 	'abusefilter-edit-builder-vars-new-html' => 'Verwerkte HTML-broncode van de nieuwe versie',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Beveiligingsniveau voor bewerken van de pagina',
