@@ -15107,6 +15107,7 @@ $messages['haw'] = array(
 
 /** Hebrew (עברית)
  * @author Amire80
+ * @author Guycn1
  * @author Ofrahod
  * @author Rotemliss
  * @author StuB
@@ -15128,24 +15129,25 @@ $messages['he'] = array(
 ועריכות גסות או חזרה על עריכות לא מועילות יגרמו לחסימת החשבון או כתובת ה־IP שלכם.
 אם אתם סבורים שפעולה זו מועילה, תוכלו לאשר אותה באמצעות שליחה חוזרת.
 תיאור קצר של החוק שפעולתכם הפרה: $1",
-	'abusefilter-disallowed' => 'פעולה זו זוהתה באופן אוטומטי כמזיקה,
-ולכן נחסמה.
-אם לדעתכם פעולתכם הייתה מועילה, אנא צרו קשר עם אחד ממפעילי מערכת, והודיעו לו מה אתם מנסים לעשות.
-תיאור קצר של החוק שפעולתכם הפרה: $1',
+	'abusefilter-disallowed' => 'פעולה זו זוהתה באופן אוטומטי כמזיקה, ולכן נמנעה.
+
+אם לדעתכם פעולתכם הייתה מועילה, אנא צרו קשר עם [[Special:ListUsers/sysop|מפעילי המערכת]] והודיעו להם מה אתם מנסים לעשות.
+
+תיאור קצר של החוק שפעולתכם הפרה: $1', # Fuzzy
 	'abusefilter-blocked-display' => 'פעולה זו זוהתה באופן אוטומטי כמזיקה,
 והפעלתה נמנעה.
 בנוסף, כדי להגן על {{SITENAME}}, חשבון המשתמש שלכם וכל כתובות ה־IP המשויכות לו נחסמו לעריכה.
 אם פעולתכם אירעה בטעות, אנא צרו קשר עם מפעיל מערכת.
 תיאור קצר של החוק שפעולתכם הפרה: $1',
 	'abusefilter-degrouped' => 'פעולה זו זוהתה באופן אוטומטי כמזיקה.
-עקב כך הפעולה נחסמה, ומאחר שחשבונכם חשוד בכך שנפרץ לצורכי הונאה, כל הרשאותיכם נשללו.
-אם אתם מאמינים שזוהי שגיאה, אנא צרו קשר עם ביורוקרט והסבירו לו פעולה זו וייתכן כי הרשאותיכם יוחזרו לכם.
+כתוצאה מזה, היא לא אופשרה, ומאחר שיש חשד שחשבונכם נפרץ, כל הרשאותיכם נשללו.
+אם אתם מאמינים שזוהי שגיאה, אנא צרו קשר עם ביורוקרט, הסבירו את הפעולה הזאת, וייתכן שההרשאות שלכם ישוחזרו.
 תיאור קצר של החוק שפעולתכם הפרה: $1',
-	'abusefilter-autopromote-blocked' => 'פעולה זו זוהתה באופן אוטומטי כמזיקה, ולכן נחסמה.
-בנוסף, כאמצעי בטיחות, הרשאות הניתנות לחשבונות של משתמשים ותיקים נשללו באופן זמני מחשבונכם.
+	'abusefilter-autopromote-blocked' => 'פעולה זו זוהתה באופן אוטומטי כמזיקה, ולכן לא אופשרה.
+בנוסף, כאמצעי בטיחות, הרשאות הניתנות לחשבונות ותיקים נשללו באופן זמני מחשבונכם.
 תיאור קצר של החוק שפעולתכם הפרה: $1',
 	'abusefilter-blocker' => 'מסנן השחתות',
-	'abusefilter-blockreason' => 'בוצעה חסימה אוטומטית על ידי מסנן ההשחתות. תיאור החוק התואם: $1',
+	'abusefilter-blockreason' => 'נחסם אוטומטית על־ידי מסנן ההשחתות. תיאור החוק התואם: $1',
 	'abusefilter-degroupreason' => 'ההרשאות נשללו אוטומטית על ידי מסנן ההשחתות. תיאור החוק: $1',
 	'abusefilter-accountreserved' => 'שם משתמש זה שמור לשימושו של מסנן ההשחתות.',
 	'right-abusefilter-modify' => 'שינוי מסנני ההשחתות',
@@ -15321,7 +15323,7 @@ $messages['he'] = array(
 	'abusefilter-edit-notallowed' => 'אינכם מורשים ליצור או לערוך מסנני השחתות',
 	'abusefilter-edit-notallowed-global' => 'אינכם מורשים ליצור או לערוך מסנני השחתות גלובליים',
 	'abusefilter-edit-notallowed-global-custom-msg' => 'הודעות אזהרה מותאמים אישית אינם נתמכים עבור מסננים כלליים',
-	'abusefilter-edit-builder-select' => 'בחרו באפשרות עם הסמן כדי להוסיף אותה',
+	'abusefilter-edit-builder-select' => 'בחרו באפשרות עם הסמן כדי להוסיפה',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'אופרטורים חשבוניים',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'חיבור (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'חיסור (-)',
@@ -15534,7 +15536,7 @@ $messages['he'] = array(
 באתר המקור, לחצו על "{{int:abusefilter-edit-export}}" שב"{{int:abusefilter-edit-tools}}" בממשק העריכה.
 העתיקו מתיבת הטקסט המופיעה שם, הדביקו את הטקסט בתיבת הטקסט הזו, ואז לחצו על "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'ייבוא המידע',
-	'abusefilter-group-default' => 'בררת המחדל',
+	'abusefilter-group-default' => 'ברירת המחדל',
 );
 
 /** Hindi (हिन्दी)
@@ -22101,6 +22103,7 @@ Deskripsyón del filtro alcançado: $1',
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
  * @author Robby
+ * @author Soued031
  */
 $messages['lb'] = array(
 	'abusefilter-desc' => 'Applizéiert automatesch Heuristiken op Ännerungen',
@@ -22447,7 +22450,7 @@ Grond: $2',
 	'abusefilter-revert-reasonfield' => 'Grond:',
 	'abusefilter-test' => 'De Filter mat de leschten Ännerungen ausprobéieren',
 	'abusefilter-test-intro' => 'Dës Säit erlaabt Iech et e Filter mat {{PLURAL:$1|der leschter Ännerung| de leschte(n) $1 Ännerungen}} z\'iwwerpréifen.
-Fie e Filter ze uede gitt seng Filter ID an d\'Këscht ënnert der Textkëscht an a klickt op de Knäppche "Lueden".',
+Fir e Filter z\'uede gitt seng Filter ID an d\'Këscht ënner der Textkëscht an a klickt op de Knäppche "Lueden".',
 	'abusefilter-test-legend' => 'Test vum Filter',
 	'abusefilter-test-load-filter' => 'Luede vum Filter mat der ID:',
 	'abusefilter-test-submit' => 'Test',
