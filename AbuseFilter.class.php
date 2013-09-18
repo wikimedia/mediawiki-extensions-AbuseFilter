@@ -1464,7 +1464,7 @@ class AbuseFilter {
 			$identifiers[] = self::throttleIdentifier( $subtype, $title );
 		}
 
-		$identifier = implode( ':', $identifiers );
+		$identifier = sha1( implode( ':', $identifiers ) );
 
 		global $wgAbuseFilterIsCentral, $wgAbuseFilterCentralDB;
 
