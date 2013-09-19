@@ -30057,6 +30057,7 @@ Kobiaschda de Qwellcode, fiegschn do oi un gliggschd uff die Schaldflesch „{{i
  * @author Airwolf
  * @author Beau
  * @author BeginaFelicysym
+ * @author Clamira
  * @author Derbeth
  * @author Jwitos
  * @author Lazowik
@@ -30076,7 +30077,7 @@ $messages['pl'] = array(
 	'abusefilter-intro' => 'Zarządzanie filtrem nadużyć.
 Filtr nadużyć jest to oprogramowanie automatycznego stosowania heurystyki do wszystkich akcji.
 Interfejs pozwala przeglądać listę zdefiniowanych filtrów oraz pozwala na ich modyfikowanie.',
-	'abusefilter-mustbeeditor' => 'Ze względów bezpieczeństwa z tego interfejsu mogą korzystać wyłącznie użytkownicy posiadający uprawnienie do zmieniania filtrów nadużyć.',
+	'abusefilter-mustbeeditor' => 'Ze względów bezpieczeństwa z tego interfejsu mogą korzystać wyłącznie użytkownicy posiadający uprawnienia do zmieniania filtrów nadużyć.',
 	'abusefilter-warning' => "'''Uwaga''' Twoje działanie zostało automatycznie zidentyfikowane jako szkodliwe.
 Niewłaściwe zmiany zostaną szybko wycofane,
 a rażące lub powtarzające się niekonstruktywne edytowanie może spowodować zablokowanie Twojego konta lub adresu IP.
@@ -30228,7 +30229,7 @@ wpisów w rejestrze nadużyć.',
 	'abusefilter-edit-global' => 'Filtr globalny',
 	'abusefilter-edit-rules' => 'Warunki:',
 	'abusefilter-edit-notes' => "Uwagi
-:''(prywatne)",
+:''(prywatne)''",
 	'abusefilter-edit-lastmod' => 'Ostatnia modyfikacja filtru',
 	'abusefilter-edit-lastmod-text' => '$1 przez $2',
 	'abusefilter-edit-hitcount' => 'Trafienia filtru:',
@@ -30359,7 +30360,7 @@ Oznaczenia powinny być krótkie i nie powinny zawierać znaków specjalnych.',
 	'abusefilter-edit-builder-vars-removed-links' => 'Wszystkie linki zewnętrzne usunięte w edycji',
 	'abusefilter-edit-builder-vars-old-text' => 'Stara treść strony w formacie wiki, przed modyfikacją',
 	'abusefilter-edit-builder-vars-new-text' => 'Nowa treść strony w formacie wiki, po modyfikacji',
-	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nowa treść strony, pozbawiona wszystkich znaczników',
+	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nowa treść strony pozbawiona wszystkich znaczników',
 	'abusefilter-edit-builder-vars-new-html' => 'Sformatowane źródło HTML nowej wersji',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Stopień zabezpieczenia strony przed edycją',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Stopień zabezpieczenia strony przed przeniesieniem',
@@ -30390,7 +30391,7 @@ Oznaczenia powinny być krótkie i nie powinny zawierać znaków specjalnych.',
 	'abusefilter-history-select-user' => 'Użytkownik',
 	'abusefilter-history-select-submit' => 'Wykonaj',
 	'abusefilter-history-diff' => 'Zmiany',
-	'abusefilter-history-error-hidden' => 'Nie można wyświetlić historii ponieważ wybrany filtr jest ukryty.',
+	'abusefilter-history-error-hidden' => 'Nie można wyświetlić historii, ponieważ wybrany filtr jest ukryty.',
 	'abusefilter-exception-unexpectedatend' => 'Nieoczekiwane „$2”, znak $1.',
 	'abusefilter-exception-expectednotfound' => 'Bezskutecznie oczekiwano $2, znak nr $1 (odnaleziono natomiast $3 $4)',
 	'abusefilter-exception-unrecognisedkeyword' => 'Nierozpoznane słowo $2, znak nr $1.',
@@ -30472,7 +30473,7 @@ Pełne wyjaśnienie dostępne jest po kliknięciu przycisku „Sprawdź składni
 	'abusefilter-log-name' => 'Rejestr filtru nadużyć',
 	'abusefilter-log-header' => 'Rejestr zawiera zestawienie zmian wprowadzanych w filtrach.
 Pełne informacje odnajdziesz w [[Special:AbuseFilter/history|rejestrze]] ostatnich zmian w filtrach.',
-	'abusefilter-log-entry-modify' => 'zmodyfikował $1 ($2)',
+	'abusefilter-log-entry-modify' => 'zmodyfikował filtr $1 ($2)',
 	'abusefilter-log-noresults' => 'Brak wyników',
 	'abusefilter-diff-title' => 'Różnice pomiędzy wersjami',
 	'abusefilter-diff-item' => 'Przedmiot',
