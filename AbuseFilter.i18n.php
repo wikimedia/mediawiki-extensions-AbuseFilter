@@ -604,7 +604,7 @@ Parameters:
 	'abusefilter-log-detailedentry-local' => 'Addition in the abuse filter log detail when a filter rule is a local rule. Parameters:
 * $1 is a local filter ID.',
 	'abusefilter-log-detailslink' => 'Link text for a link to abuse filter log details.
-{{Identical|Details}}',
+{{Identical|Detail}}',
 	'abusefilter-log-diff' => 'Diff link text to a revision associated with an AbuseFilter log entry',
 	'abusefilter-log-hidelink' => 'Link text in abuse filter log line to hide (when visible) or show (when hidden) a link to the log entry details.',
 	'abusefilter-log-details-legend' => 'Legend for abuse filter log entry details. Parameters:
@@ -657,7 +657,7 @@ Followed by the fieldset label {{msg-mw|Abusefilter-list-options}}.',
 	'abusefilter-list-hitcount' => 'Column header in abuse filter overview for the number of times the filter was triggered.',
 	'abusefilter-list-edit' => 'Probably the verb "to edit" (instead of the noun "an edit").
 {{Identical|Edit}}',
-	'abusefilter-list-details' => '{{Identical|Details}}',
+	'abusefilter-list-details' => '{{Identical|Detail}}',
 	'abusefilter-list-limit' => 'Used as label for the Limit selector in the form.',
 	'abusefilter-list-lastmodified' => 'Column header in abuse filter overview for the last modified timestamp for a filter.
 {{Identical|Last modified}}',
