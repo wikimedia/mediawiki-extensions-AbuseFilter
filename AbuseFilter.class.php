@@ -837,6 +837,10 @@ class AbuseFilter {
 
 		wfProfileIn( __METHOD__ );
 
+		$context = RequestContext::getMain();
+		$oldContextTitle = $context->getTitle();
+
+		$oldWgTitle = $wgTitle;
 		if ( !$wgTitle ) {
 			$wgTitle = SpecialPage::getTitleFor( 'AbuseFilter' );
 		}
@@ -854,39 +858,48 @@ class AbuseFilter {
 
 		$matched_filters = array_keys( array_filter( $filter_matched ) );
 
-		// Short-cut any remaining code if no filters were hit.
 		if ( count( $matched_filters ) == 0 ) {
-			wfProfileOut( __METHOD__ );
-			return Status::newGood();
+			$status = Status::newGood();
+		} else {
+			wfProfileIn( __METHOD__ . '-block' );
+
+			$status = self::executeFilterActions(
+				$matched_filters, $title, $vars );
+
+			$actions_taken = $status->value; // getValue() was introduced only in 1.20
+
+			$action = $vars->getVar( 'ACTION' )->toString();
+
+			// Create a template
+			$log_template = array(
+				'afl_user' => $wgUser->getId(),
+				'afl_user_text' => $wgUser->getName(),
+				'afl_timestamp' => $dbr->timestamp( wfTimestampNow() ),
+				'afl_namespace' => $title->getNamespace(),
+				'afl_title' => $title->getDBkey(),
+				'afl_ip' => $wgRequest->getIP()
+			);
+
+			// Hack to avoid revealing IPs of people creating accounts
+			if ( !$wgUser->getId() && ( $action == 'createaccount' || $action == 'autocreateaccount' ) ) {
+				$log_template['afl_user_text'] = $vars->getVar( 'accountname' )->toString();
+			}
+
+			self::addLogEntries( $actions_taken, $log_template, $action, $vars, $group );
+
+			wfProfileOut( __METHOD__ . '-block' );
 		}
 
-		wfProfileIn( __METHOD__ . '-block' );
-
-		$status = self::executeFilterActions(
-			$matched_filters, $title, $vars );
-
-		$actions_taken = $status->value; // getValue() was introduced only in 1.20
-
-		$action = $vars->getVar( 'ACTION' )->toString();
-
-		// Create a template
-		$log_template = array(
-			'afl_user' => $wgUser->getId(),
-			'afl_user_text' => $wgUser->getName(),
-			'afl_timestamp' => $dbr->timestamp( wfTimestampNow() ),
-			'afl_namespace' => $title->getNamespace(),
-			'afl_title' => $title->getDBkey(),
-			'afl_ip' => $wgRequest->getIP()
-		);
-
-		// Hack to avoid revealing IPs of people creating accounts
-		if ( !$wgUser->getId() && ( $action == 'createaccount' || $action == 'autocreateaccount' ) ) {
-			$log_template['afl_user_text'] = $vars->getVar( 'accountname' )->toString();
+		// Bug 53498: If we screwed around with $wgTitle, reset it so the title
+		// is correctly picked up from the request later. Do the same for the
+		// main RequestContext, because that might have picked up the bogus
+		// title from $wgTitle.
+		if ( $wgTitle !== $oldWgTitle ) {
+			$wgTitle = $oldWgTitle;
 		}
-
-		self::addLogEntries( $actions_taken, $log_template, $action, $vars, $group );
-
-		wfProfileOut( __METHOD__ . '-block' );
+		if ( $context->getTitle() !== $oldContextTitle ) {
+			$context->setTitle( $oldContextTitle );
+		}
 
 		wfProfileOut( __METHOD__ );
 
