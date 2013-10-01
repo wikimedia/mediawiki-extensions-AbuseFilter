@@ -113,6 +113,8 @@ class AbuseFilter {
 			'removed_links' => 'removed-links',
 			'all_links' => 'all-links',
 			'new_pst' => 'new-pst',
+			'edit_diff_pst' => 'diff-pst',
+			'added_lines_pst' => 'addedlines-pst',
 			'new_text' => 'new-text-stripped',
 			'new_html' => 'new-html',
 			'article_restrictions_edit' => 'restrictions-edit',
@@ -2012,6 +2014,8 @@ class AbuseFilter {
 
 		$vars->setLazyLoadVar( 'edit_diff', 'diff',
 			array( 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_wikitext' ) );
+		$vars->setLazyLoadVar( 'edit_diff_pst', 'diff',
+			array( 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_pst' ) );
 		$vars->setLazyLoadVar( 'new_size', 'length', array( 'length-var' => 'new_wikitext' ) );
 		$vars->setLazyLoadVar( 'old_size', 'length', array( 'length-var' => 'old_wikitext' ) );
 		$vars->setLazyLoadVar( 'edit_delta', 'subtract',
@@ -2022,6 +2026,8 @@ class AbuseFilter {
 			array( 'diff-var' => 'edit_diff', 'line-prefix' => '+' ) );
 		$vars->setLazyLoadVar( 'removed_lines', 'diff-split',
 			array( 'diff-var' => 'edit_diff', 'line-prefix' => '-' ) );
+		$vars->setLazyLoadVar( 'added_lines_pst', 'diff-split',
+			array( 'diff-var' => 'edit_diff_pst', 'line-prefix' => '+' ) );
 
 		// Links
 		$vars->setLazyLoadVar( 'added_links', 'link-diff-added',

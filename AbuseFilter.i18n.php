@@ -339,6 +339,8 @@ Tags should be short, and they should not contain special characters.',
 	'abusefilter-edit-builder-vars-old-text' => 'Old page wikitext, before the edit',
 	'abusefilter-edit-builder-vars-new-text' => 'New page wikitext, after the edit',
 	'abusefilter-edit-builder-vars-new-pst' => 'New page wikitext, pre-save transformed',
+	'abusefilter-edit-builder-vars-diff-pst' => 'Unified diff of changes made by edit, pre-save transformed',
+	'abusefilter-edit-builder-vars-addedlines-pst' => 'Lines added in edit, pre-save transformed',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'New page text, stripped of any markup',
 	'abusefilter-edit-builder-vars-new-html' => 'Parsed HTML source of the new revision',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Last ten users to contribute to the page',
@@ -946,6 +948,8 @@ Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edi
 * {{msg-mw|Abusefilter-edit-builder-vars-global-user-groups}}',
 	'abusefilter-edit-builder-vars-user-blocked' => 'Paraphrased: Boolean value on whether the user is blocked. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
 	'abusefilter-edit-builder-vars-new-pst' => 'Paraphrased: The output wikitext after pre-save transform is applied to new_wikitext. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-diff-pst' => 'Paraphrased: Edit diff of new_pst against old_wikitext. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-addedlines-pst' => 'Paraphrased: Added lines in edit_diff_pst. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'This variable contains the level of protection required to edit the page. ("Edit" here is not a verb, but an adjective, like "Edit-related protection level"). Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.
 
 See also {{msg-mw|Abusefilter-edit-builder-vars-restrictions-create}}, {{msg-mw|Abusefilter-edit-builder-vars-restrictions-move}}, {{msg-mw|Abusefilter-edit-builder-vars-restrictions-upload}}.',
