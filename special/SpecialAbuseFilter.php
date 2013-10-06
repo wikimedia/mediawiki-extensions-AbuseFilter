@@ -23,8 +23,14 @@ class SpecialAbuseFilter extends SpecialPage {
 		if ( $request->getVal( 'result' ) == 'success' ) {
 			$out->setSubtitle( $this->msg( 'abusefilter-edit-done-subtitle' ) );
 			$changedFilter = intval( $request->getVal( 'changedfilter' ) );
+			$changeId = intval( $request->getVal( 'changeid' ) );
 			$out->wrapWikiMsg( '<p class="success">$1</p>',
-				array( 'abusefilter-edit-done', $this->getLanguage()->formatNum( $changedFilter ) ) );
+				array(
+					'abusefilter-edit-done',
+					$this->getLanguage()->formatNum( $changedFilter ),
+					$changeId
+				)
+			);
 		}
 
 		$this->mHistoryID = null;

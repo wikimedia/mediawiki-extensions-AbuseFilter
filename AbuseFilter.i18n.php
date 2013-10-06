@@ -230,7 +230,7 @@ It reached the limit of matching more than $1% of actions.",
 	'abusefilter-edit-denied' => "You may not view details of this filter, because it is hidden from public view.",
 	'abusefilter-edit-main' => 'Filter parameters',
 	'abusefilter-edit-done-subtitle' => 'Filter edited',
-	'abusefilter-edit-done' => "You have successfully saved your changes to filter $1.",
+	'abusefilter-edit-done' => "[[Special:AbuseFilter/history/$1/diff/prev/$2|Your changes]] to [[Special:AbuseFilter/$1|filter $1]] have been saved.",
 	'abusefilter-edit-badsyntax' => "There is a syntax error in the filter you specified.
 The output from the parser was: <pre>$1</pre>",
 	'abusefilter-edit-restricted' => 'You cannot edit this filter, because it contains one or more restricted actions.

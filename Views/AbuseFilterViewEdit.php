@@ -268,7 +268,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			AbuseFilter::resetFilterProfile( $new_id );
 
 			$out->redirect(
-				$this->getTitle()->getLocalURL( 'result=success&changedfilter=' . $new_id ) );
+				$this->getTitle()->getLocalURL(
+					array(
+						'result' => 'success',
+						'changedfilter' => $new_id,
+						'changeid' => $history_id,
+					) 
+				)
+			);
 		} else {
 			if ( $history_id ) {
 				$out->addWikiMsg(
