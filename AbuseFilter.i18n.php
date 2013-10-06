@@ -32863,6 +32863,7 @@ $messages['rtm'] = array(
  * @author Lockal
  * @author MaxSem
  * @author NBS
+ * @author Okras
  * @author VasilievVV
  * @author Александр Сигачёв
  * @author Сrower
@@ -33157,6 +33158,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-builder-vars-removed-links' => 'Все внешние ссылки, удалённые в правке',
 	'abusefilter-edit-builder-vars-old-text' => 'Старый викитекст, до правки страницы',
 	'abusefilter-edit-builder-vars-new-text' => 'Новый викитекст, после правки страницы',
+	'abusefilter-edit-builder-vars-new-pst' => 'Викитекст новой страницы, преобразованный перед сохранением',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Новый текст страницы, очищенный от разметки',
 	'abusefilter-edit-builder-vars-new-html' => 'Разобранный HTML-код новой версии',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Уровень защиты страницы от правок',
