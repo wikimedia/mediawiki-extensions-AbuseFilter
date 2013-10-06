@@ -959,7 +959,7 @@ Translate "Time" as "Timestamp" (time and date).
 	'abusefilter-history-actions' => '{{Identical|Action}}',
 	'abusefilter-history-deleted' => '{{Identical|Deleted}}',
 	'abusefilter-history-filterid' => '{{Identical|Filter}}',
-	'abusefilter-history-select-user' => 'Used as label for the "User" input box.
+	'abusefilter-history-select-user' => 'Used as label for the "User" input box. Field takes a username to filter events by.
 {{Identical|User}}',
 	'abusefilter-history-diff' => '{{Identical|Change}}',
 	'abusefilter-exception-unexpectedatend' => "Error message from the abuse filter parser.
@@ -20998,6 +20998,7 @@ $messages['kn'] = array(
  * @author Albamhandae
  * @author ChongDae
  * @author Gapo
+ * @author Hym411
  * @author Klutzy
  * @author Kwj2772
  * @author LFM
@@ -21315,7 +21316,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-builder-vars-minor-edit' => '사소한 편집 표시 여부',
 	'abusefilter-edit-builder-vars-file-sha1' => '파일 내용의 SHA1 해시',
 	'abusefilter-filter-log' => '최근 필터의 바뀜',
-	'abusefilter-history' => '부정 행위 방지 필터 #$1에 대한 바뀜 내역',
+	'abusefilter-history' => '부정 행위 방지 필터 #$1에 대한 편집 역사',
 	'abusefilter-history-foruser' => '$1의 편집',
 	'abusefilter-history-hidden' => '숨겨짐',
 	'abusefilter-history-enabled' => '활성화됨',
@@ -24907,6 +24908,7 @@ $messages['ml'] = array(
 റ്റാഗുകൾ ചെറുതും പ്രത്യേക അക്ഷരങ്ങൾ ഉൾക്കൊള്ളാത്തവയും ആയിരിക്കണം.',
 	'abusefilter-edit-notallowed' => 'ദുരുപയോഗ അരിപ്പകൾ തിരുത്താനോ സൃഷ്ടിക്കാനോ താങ്കൾക്ക് അനുമതിയില്ല',
 	'abusefilter-edit-notallowed-global' => 'ആഗോള ദുരുപയോഗ അരിപ്പകൾ നിർമ്മിക്കാൻ അല്ലെങ്കിൽ തിരുത്താൻ താങ്കൾക്ക് അനുവാദമില്ല.',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'ആഗോള അരിപ്പകൾക്ക് ഐച്ഛിക മുന്നറിയിപ്പ് സന്ദേശങ്ങൾ സാദ്ധ്യമല്ല',
 	'abusefilter-edit-builder-select' => 'കഴ്‌‌സറിലേയ്ക്ക് ചേർക്കാനായി ഒരു ഐച്ഛികം തിരഞ്ഞെടുക്കുക',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'ഗണന ചിഹ്നങ്ങൾ',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'സങ്കലനം (+)',
@@ -24938,6 +24940,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-builder-group-funcs' => 'ഫങ്ഷനുകൾ',
 	'abusefilter-edit-builder-funcs-length' => 'പദത്തിന്റെ നീളം (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'ചെറിയക്ഷരങ്ങളിലേയ്ക്ക് (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'വലിയ അക്ഷരങ്ങളിലേയ്ക്ക് (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'ആശയക്കുഴപ്പമുണ്ടാക്കുന്ന അക്ഷരങ്ങൾ നോർമലൈസ് ചെയ്യുക (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'ഇരട്ട അക്ഷരങ്ങൾ നീക്കം ചെയ്യുക (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'പ്രത്യേകാക്ഷരങ്ങൾ /ആകെ അക്ഷരങ്ങൾ (specialratio)',
