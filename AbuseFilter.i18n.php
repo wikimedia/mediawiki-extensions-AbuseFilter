@@ -505,6 +505,7 @@ Copy from the textbox that appears, and paste it into this textbox, then click "
  * @author Huji
  * @author Iwan Novirion
  * @author Jon Harald Søby
+ * @author Krenair
  * @author Krinkle
  * @author Kwj2772
  * @author Lejonel
@@ -799,7 +800,8 @@ See also:
 	'abusefilter-edit-main' => 'Fieldset legend for edit filter form.',
 	'abusefilter-edit-done-subtitle' => 'Page subtitle when as filter was edited and saved.',
 	'abusefilter-edit-done' => 'Text displayed to a user after editing a filter. Parameters:
-* $1 is a filter ID.',
+* $1 is a filter ID.
+* $2 is the ID of the change itself.',
 	'abusefilter-edit-badsyntax' => 'Message to warn a user that a filter could not be edited for a given reason. Parameters:
 * $1 is a parser error text.',
 	'abusefilter-edit-restricted' => 'Message to warn a user that a filter could not be edited for a given reason.',
@@ -12652,7 +12654,7 @@ Suodatin saavutti yli $1 % täsmäävän toiminnon rajan.",
 	'abusefilter-edit-denied' => 'Et voi tarkastella tämän suodattimen yksityiskohtia, koska ne eivät ole julkisesti näkyvillä.',
 	'abusefilter-edit-main' => 'Suodattimen parametrit',
 	'abusefilter-edit-done-subtitle' => 'Suodatinta muokattu',
-	'abusefilter-edit-done' => 'Muutokset suodattimeen $1 tallennettiin onnistuneesti.',
+	'abusefilter-edit-done' => 'Muutokset suodattimeen $1 tallennettiin onnistuneesti.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Määrittämässäsi suodattimessa on syntaksivirhe.
 Jäsentimen palaute: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Et voi muuttaa tätä suodatinta, koska se sisältää yhden tai useamman rajoitetun toiminnon.
@@ -15309,7 +15311,7 @@ $messages['he'] = array(
 	'abusefilter-edit-denied' => 'אינכם יכולים לצפות בפרטים של מסנן זה, כיוון שהוא מוסתר מעיני הציבור.',
 	'abusefilter-edit-main' => 'הפרמטרים של המסנן',
 	'abusefilter-edit-done-subtitle' => 'המסנן נערך',
-	'abusefilter-edit-done' => 'השינויים שביצעתם במסנן $1 נשמרו בהצלחה.',
+	'abusefilter-edit-done' => 'השינויים שביצעתם במסנן $1 נשמרו בהצלחה.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'ישנה שגיאת תחביר במסנן שציינתם. הפלט מהמפענח הוא: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'אינכם יכולים לערוך את המסנן, כיוון שהוא כולל פעולה מוגבלת אחת או יותר. אנא בקשו ממשתמש עם הרשאה להוספת פעולות מוגבלות לעשות את השינוי עבורכם.',
 	'abusefilter-edit-viewhistory' => 'צפייה בהיסטוריית הגרסאות של המסנן',
@@ -21199,7 +21201,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-denied' => '이 필터는 비공개로 설정되었기 때문에 이 필터의 자세한 사항을 볼 수 없습니다.',
 	'abusefilter-edit-main' => '필터 변수',
 	'abusefilter-edit-done-subtitle' => '필터를 편집함',
-	'abusefilter-edit-done' => '필터 $1을(를) 편집하는 데 성공하였습니다.',
+	'abusefilter-edit-done' => '필터 $1을(를) 편집하는 데 성공하였습니다.', # Fuzzy
 	'abusefilter-edit-badsyntax' => '입력한 필터 구문에 오류가 있습니다.
 파서 함수의 출력값: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => '이 필터에는 제한된 조치를 취할 수 있게 하는 설정이 포함되어 있어 이 필터를 편집할 수 없습니다.
@@ -21331,7 +21333,7 @@ $messages['ko'] = array(
 	'abusefilter-history-backedit' => '필터 편집기로 돌아가기',
 	'abusefilter-history-deleted' => '삭제됨',
 	'abusefilter-history-filterid' => '필터',
-	'abusefilter-history-select-legend' => '특정 사용자의 편집 내역 찾기',
+	'abusefilter-history-select-legend' => '특정 사용자의 편집 찾기',
 	'abusefilter-history-select-user' => '사용자:',
 	'abusefilter-history-select-submit' => '필터',
 	'abusefilter-history-diff' => '차이',
@@ -22295,7 +22297,7 @@ En huet méi wéi déi definiéiert Limit vun $1% vun den Aktiounen als schiedle
 	'abusefilter-edit-denied' => 'Dir kënnt Detailer vun dësem Filter net gesinn, well se virum Public verstoppt sinn',
 	'abusefilter-edit-main' => 'Parametere vum Filter',
 	'abusefilter-edit-done-subtitle' => 'Filter geännert',
-	'abusefilter-edit-done' => 'Dir hutt är Ännerunge vum Filter $1 ofgespäichert.',
+	'abusefilter-edit-done' => 'Dir hutt är Ännerunge vum Filter $1 ofgespäichert.', # Fuzzy
 	'abusefilter-edit-badsyntax' => "Et ass e Syntaxfeeler an dem Filter deen Dir uginn hutt.
 D'Resultat vum Parser war: <pre>$1</pre>",
 	'abusefilter-edit-restricted' => "Dir kënnt dëse Filter net ännere well eng oder méi restriktiv Aktiounen drasti fir déi ee méi Rechter brauch.
@@ -24889,7 +24891,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-denied' => 'താങ്കൾക്ക് ഈ അരിപ്പയുടെ വിവരങ്ങൾ അറിയാൻ സാദ്ധ്യമല്ല, അത് പൊതുദൃഷ്ടിയിൽ നിന്നും മറയ്ക്കപ്പെട്ടതാണ്.',
 	'abusefilter-edit-main' => 'അരിപ്പയ്ക്കായുള്ള ചരങ്ങൾ',
 	'abusefilter-edit-done-subtitle' => 'അരിപ്പ തിരുത്തി',
-	'abusefilter-edit-done' => 'അരിപ്പ $1-ൽ താങ്കൾ വരുത്തിയ മാറ്റങ്ങൾ വിജയകരമായി സേവ് ചെയ്തിരിക്കുന്നു.',
+	'abusefilter-edit-done' => 'അരിപ്പ $1-ൽ താങ്കൾ വരുത്തിയ മാറ്റങ്ങൾ വിജയകരമായി സേവ് ചെയ്തിരിക്കുന്നു.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'താങ്കൾ നൽകിയ അരിപ്പയിൽ എഴുതിനൽകിയതിൽ പിഴവുണ്ട്.
 പാഴ്സറിന്റെ ഔട്ട്പുട്ട് ഇപ്രകാരമായിരുന്നു: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'താങ്കൾക്ക് ഈ അരിപ്പയിൽ മാറ്റം വരുത്താൻ കഴിയില്ല, കാരണം ഇതിൽ ഒന്നോ അതിലധികമോ പരിമിതപ്പെടുത്തിയ പ്രവൃത്തികളുണ്ട്.
@@ -33056,7 +33058,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-denied' => 'Вы не можете просмотреть подробную информацию об этом фильтре, так как она скрыта от обычных участников.',
 	'abusefilter-edit-main' => 'Параметры фильтра',
 	'abusefilter-edit-done-subtitle' => 'Фильтр исправлен',
-	'abusefilter-edit-done' => 'Вы успешно сохранили изменения в фильтре $1.',
+	'abusefilter-edit-done' => 'Вы успешно сохранили изменения в фильтре $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'В указанном фильтре обнаружены синтаксические ошибки. Парсер выдал следующее сообщение: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Вы не можете изменить этот фильтр, так как он содержит одно или несколько ограничивающих действий. Пожалуйста, попросите участника с соответствующими правами сделать требуемые изменения.',
 	'abusefilter-edit-viewhistory' => 'Показать историю этого фильтра',
@@ -43418,7 +43420,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-edit-denied' => '因為這是不公開的，您不可參閱此過濾器的詳情。',
 	'abusefilter-edit-main' => '過濾器參數',
 	'abusefilter-edit-done-subtitle' => '已修訂過濾器',
-	'abusefilter-edit-done' => '您對過濾器$1的修改已成功儲存。',
+	'abusefilter-edit-done' => '您對過濾器$1的修改已成功儲存。', # Fuzzy
 	'abusefilter-edit-badsyntax' => '您指定的過濾器中有語法錯誤。
 語法分析器的輸出為：<pre>$1</pre>',
 	'abusefilter-edit-restricted' => '您無法編輯本過濾器，因為它包含了一種或以上的有限動作。
