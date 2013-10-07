@@ -273,7 +273,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						'result' => 'success',
 						'changedfilter' => $new_id,
 						'changeid' => $history_id,
-					) 
+					)
 				)
 			);
 		} else {
