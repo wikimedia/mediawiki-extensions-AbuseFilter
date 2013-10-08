@@ -800,8 +800,8 @@ See also:
 	'abusefilter-edit-main' => 'Fieldset legend for edit filter form.',
 	'abusefilter-edit-done-subtitle' => 'Page subtitle when as filter was edited and saved.',
 	'abusefilter-edit-done' => 'Text displayed to a user after editing a filter. Parameters:
-* $1 is a filter ID.
-* $2 is the ID of the change itself.',
+* $1 - a filter ID
+* $2 - the ID of the change itself',
 	'abusefilter-edit-badsyntax' => 'Message to warn a user that a filter could not be edited for a given reason. Parameters:
 * $1 is a parser error text.',
 	'abusefilter-edit-restricted' => 'Message to warn a user that a filter could not be edited for a given reason.',
@@ -1276,7 +1276,7 @@ Hierdie koppelvlak toon 'n lys van gedefinieer filters, en kan hulle verander wo
 	'abusefilter-edit-warn-preview' => 'Voorskou gekose boodskap',
 	'abusefilter-edit-warn-edit' => 'Skep/wysig gekose boodskap',
 	'abusefilter-edit-tag-tag' => 'Tags om aansoek te doen (een per lyn):',
-	'abusefilter-edit-denied' => 'Jy kan nie view details van hierdie filter nie, want dit is weggesteek uit die openbare oog.',
+	'abusefilter-edit-denied' => 'Jy kan nie view details van hierdie filter nie, want dit is weggesteek uit die openbare oog.', # Fuzzy
 	'abusefilter-edit-main' => 'Filter-parameters',
 	'abusefilter-edit-done-subtitle' => 'Filter gewysig',
 	'abusefilter-edit-restricted' => "Jy kan dit nie wysig hierdie filter, want dit bevat een of meer beperkte aksies.
@@ -1463,10 +1463,10 @@ $messages['aln'] = array(
 	'abusefilter-edit-warn-preview' => 'Preview zgjedhur mesazh',
 	'abusefilter-edit-warn-edit' => 'Krijo / Edito mesazhin e zgjedhur',
 	'abusefilter-edit-tag-tag' => 'Tags për të aplikuar (një për çdo rresht):',
-	'abusefilter-edit-denied' => 'Ju nuk mund të shihni detajet e këtij filtri, sepse ajo është e fshehur prej pamjes publike.',
+	'abusefilter-edit-denied' => 'Ju nuk mund të shihni detajet e këtij filtri, sepse ajo është e fshehur prej pamjes publike.', # Fuzzy
 	'abusefilter-edit-main' => 'parametrave Filter',
 	'abusefilter-edit-done-subtitle' => 'Filter redaktuar',
-	'abusefilter-edit-done' => 'Ju keni ruajtur me sukses ndryshimet tuaja për të filtruar $1.',
+	'abusefilter-edit-done' => 'Ju keni ruajtur me sukses ndryshimet tuaja për të filtruar $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Nuk është një gabim i sintaksës në filtër të caktuar. Prodhimit nga parser ishte: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Ju nuk mund të modifikoni këtë filtër, sepse përmban një ose më shumë veprime të kufizuara. Ju lutem, kërkoni një përdorues me leje për të shtuar veprime të kufizuara për të bërë ndryshimin për ju.',
 	'abusefilter-edit-viewhistory' => 'Shiko historinë e këtij filtri i',
@@ -1828,10 +1828,10 @@ $messages['ar'] = array(
 	'abusefilter-edit-warn-preview' => 'أظهر العرض المسبق للرسالة المختارة',
 	'abusefilter-edit-warn-edit' => 'أنشيء/عدل الرسالة المختارة',
 	'abusefilter-edit-tag-tag' => 'الوسوم للتنفيذ (واحد لكل سطر):',
-	'abusefilter-edit-denied' => 'أنت لا يمكنك رؤية تفاصيل هذا المرشح، لأنه مخفي من العرض العلني',
+	'abusefilter-edit-denied' => 'أنت لا يمكنك رؤية تفاصيل هذا المرشح، لأنه مخفي من العرض العلني', # Fuzzy
 	'abusefilter-edit-main' => 'مُحدّدات المُرشِّح',
 	'abusefilter-edit-done-subtitle' => 'تم تعديل المُرشِّح',
-	'abusefilter-edit-done' => 'أنت حفظت بنجاح تغييراتك للمرشح $1.',
+	'abusefilter-edit-done' => 'أنت حفظت بنجاح تغييراتك للمرشح $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'هناك خطأ صياغة في المرشح الذي حددته. الخرج من المحلل كان: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'أنت لا يمكنك تعديل هذا المرشح، لأنه يحتوي على واحد أو أكثر من الأفعال المحظورة.
 من فضلك سل مستخدما ذا سماح إضافة الأفعال المحظورة ليفعل التغيير لك.',
@@ -2383,10 +2383,10 @@ $messages['arz'] = array(
 	'abusefilter-edit-warn-preview' => 'أظهر العرض المسبق للرساله المختارة',
 	'abusefilter-edit-warn-edit' => 'أنشيء/عدل الرساله المختارة',
 	'abusefilter-edit-tag-tag' => 'الوسوم للتنفيذ (واحد لكل سطر):',
-	'abusefilter-edit-denied' => 'أنت لا يمكنك رؤيه تفاصيل هذا المرشح، لأنه مخفى من العرض العلني',
+	'abusefilter-edit-denied' => 'أنت لا يمكنك رؤيه تفاصيل هذا المرشح، لأنه مخفى من العرض العلني', # Fuzzy
 	'abusefilter-edit-main' => 'مُحدّدات المُرشِّح',
 	'abusefilter-edit-done-subtitle' => 'تم تعديل المُرشِّح',
-	'abusefilter-edit-done' => 'أنت حفظت بنجاح تغييراتك للمرشح $1.',
+	'abusefilter-edit-done' => 'أنت حفظت بنجاح تغييراتك للمرشح $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'هناك خطأ صياغه فى المرشح الذى حددته. الخرج من المحلل كان: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'أنت لا يمكنك تعديل هذا المرشح، لأنه يحتوى على واحد أو أكثر من الأفعال المحظوره.
 من فضلك سل مستخدما ذا سماح إضافه الأفعال المحظوره ليفعل التغيير لك.',
@@ -2919,10 +2919,10 @@ Alcanzó la llende de coincidir con más del $1% de les aiciones.",
 	'abusefilter-edit-warn-preview' => 'Vista previa del mensaxe seleicionáu',
 	'abusefilter-edit-warn-edit' => 'Crear/Editar el mensaxe seleicionáu',
 	'abusefilter-edit-tag-tag' => 'Etiquetes a aplicar (una por llinia):',
-	'abusefilter-edit-denied' => "Nun pues ver los detalles d'esti filtru, porque ta tapecíu de la vista pública.",
+	'abusefilter-edit-denied' => "Nun pues ver los detalles d'esti filtru, porque ta tapecíu de la vista pública.", # Fuzzy
 	'abusefilter-edit-main' => 'Parámetros del filtru',
 	'abusefilter-edit-done-subtitle' => 'Filtru editáu',
-	'abusefilter-edit-done' => 'Guardó correutamente los cambios nel filtru $1.',
+	'abusefilter-edit-done' => 'Guardó correutamente los cambios nel filtru $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => "Hai un error de sintaxis nel filtru qu'especificó.
 La salida del analizador foi: <pre>$1</pre>",
 	'abusefilter-edit-restricted' => "Nun pue editar esti filtru, porque contién una o más aiciones restrinxíes.
@@ -3602,10 +3602,10 @@ $messages['azb'] = array(
 	'abusefilter-edit-warn-preview' => 'سئچیلمیش مئساژی باخما',
 	'abusefilter-edit-warn-edit' => 'سئچیلمیش مئساژی یارات / دییش‌دیر',
 	'abusefilter-edit-tag-tag' => 'تطبیق اولونا‌جاق ائتیکئتلئر (هر سطره بیر دنه):',
-	'abusefilter-edit-denied' => 'بو سوزگج اوچون دئتال‌لاری گؤره بیلمزسینیز، چونکی عمومی گؤرونوش‌دن گیزلنمیش',
+	'abusefilter-edit-denied' => 'بو سوزگج اوچون دئتال‌لاری گؤره بیلمزسینیز، چونکی عمومی گؤرونوش‌دن گیزلنمیش', # Fuzzy
 	'abusefilter-edit-main' => 'سوزگج دییشن‌لری',
 	'abusefilter-edit-done-subtitle' => 'فیلتر دوزلدیلیب',
-	'abusefilter-edit-done' => '$1 سوزگئجی ایچین دئغیشیکلیکلئرینیز باشارییلا کایدئدیلدی.',
+	'abusefilter-edit-done' => '$1 سوزگئجی ایچین دئغیشیکلیکلئرینیز باشارییلا کایدئدیلدی.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'ایفاده ائتدیگینیز فیلتردن بیر سینتاکسیس سهوی وار.
 دئرلئییجی‌نین چیکتی‌سی: <پرئ> $ 1 </ پرئ>', # Fuzzy
 	'abusefilter-edit-restricted' => 'بو فیلترئیی دئغیشتیرئمئزسینیز، چونکو بیر وئیا داها فازلا کیسیت‌لی ائیلئم ایچئریور.
@@ -4023,10 +4023,10 @@ $messages['ba'] = array(
 	'abusefilter-edit-warn-preview' => 'Һайланған хәбәрҙе ҡарап сығыу',
 	'abusefilter-edit-warn-edit' => 'Һайланған хәбәрҙе Булдырырға/Үҙгәртергә',
 	'abusefilter-edit-tag-tag' => 'Ҡулланыла торған билдәләр (һәр юлға берҙе):',
-	'abusefilter-edit-denied' => 'Һеҙ был һөҙгөс тураһында ентекле мәғлүмәт ҡарай алмайһығыҙ, сөнки ул дөйөм ҡарауҙан йәшерелгән.',
+	'abusefilter-edit-denied' => 'Һеҙ был һөҙгөс тураһында ентекле мәғлүмәт ҡарай алмайһығыҙ, сөнки ул дөйөм ҡарауҙан йәшерелгән.', # Fuzzy
 	'abusefilter-edit-main' => 'Һөҙгөстөң параметрҙары',
 	'abusefilter-edit-done-subtitle' => 'Һөҙгөс үҙгәртелде',
-	'abusefilter-edit-done' => 'Һеҙ $1 һөҙгөсөндәге үҙгәртеүҙәрҙе уңышлы һаҡланығыҙ',
+	'abusefilter-edit-done' => 'Һеҙ $1 һөҙгөсөндәге үҙгәртеүҙәрҙе уңышлы һаҡланығыҙ', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Билдәләнгән һөҙгөстә синтаксик хаталар бар.
 Уҡыу ҡоралы түбәндәге хәбәрҙе ҡайтарҙы: $1',
 	'abusefilter-edit-restricted' => 'Һеҙ был һөҙгөстө үҙгәртә алмайһығыҙ, сөнки уның бер йәки бер нисә сикләүсе ғәмәле бар.
@@ -4468,10 +4468,10 @@ Ini nakakaabot sa limit kan ipinag-aampad na sobra $1% kan aksyon.",
 	'abusefilter-edit-warn-preview' => 'Tanawon mga pinagpili na mensahe',
 	'abusefilter-edit-warn-edit' => 'Muknaon/Liwaton pinagpili na mensahe',
 	'abusefilter-edit-tag-tag' => 'Mga tatak na gamiton (saro kada linya):',
-	'abusefilter-edit-denied' => 'Ika dae makakahiling sa mga detalye kaining saraan, nin huli ta ini itinago gikan sa paghiling nin publiko.',
+	'abusefilter-edit-denied' => 'Ika dae makakahiling sa mga detalye kaining saraan, nin huli ta ini itinago gikan sa paghiling nin publiko.', # Fuzzy
 	'abusefilter-edit-main' => 'Mga parametro nin saraan',
 	'abusefilter-edit-done-subtitle' => 'An saraan pinagliwat',
-	'abusefilter-edit-done' => 'Ika matrayumpong naitagama an saimong mga kaliwatan sa saraan $1.',
+	'abusefilter-edit-done' => 'Ika matrayumpong naitagama an saimong mga kaliwatan sa saraan $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Igwa nin kasalaan sa sintaks sa laog kan saraan na saimong pinagkaag.
 An kinaluwasan gikan sa parapasabot iyo na: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Ika dae makakaliwat kaining saraan, nin huli ta ini may laog na saro o dakol na pinagpangalad na mga aksyon.
@@ -4925,10 +4925,10 @@ $messages['be-tarask'] = array(
 	'abusefilter-edit-warn-preview' => 'Папярэдні прагляд выбранага паведамленьня',
 	'abusefilter-edit-warn-edit' => 'Стварыць/рэдагаваць выбранае паведамленьне',
 	'abusefilter-edit-tag-tag' => 'Ужываемыя тэгі (па адным на радок):',
-	'abusefilter-edit-denied' => 'Вы ня можаце праглядзець дэталі гэтага фільтру, таму што яны схаваныя ад агульнага прагляду',
+	'abusefilter-edit-denied' => 'Вы ня можаце праглядзець дэталі гэтага фільтру, таму што яны схаваныя ад агульнага прагляду', # Fuzzy
 	'abusefilter-edit-main' => 'Парамэтры фільтру',
 	'abusefilter-edit-done-subtitle' => 'Фільтар быў адрэдагаваны',
-	'abusefilter-edit-done' => 'Вы пасьпяхова захавалі Вашы зьмены ў фільтры $1.',
+	'abusefilter-edit-done' => 'Вы пасьпяхова захавалі Вашы зьмены ў фільтры $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'У пазначаным фільтры знойдзеная сынтаксычная памылка.
 Паведамленьне парсэра: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Вы ня можаце рэдагаваць гэты фільтар, таму што ён утрымлівае адно ці болей абмежаваных дзеяньняў.
@@ -5340,10 +5340,10 @@ $messages['bg'] = array(
 	'abusefilter-edit-warn-preview' => 'Предварителен преглед на избраното съобщение',
 	'abusefilter-edit-warn-edit' => 'Създаване или редактиране на избраното съобщение',
 	'abusefilter-edit-tag-tag' => 'Етикети за прилагане (по един на ред):',
-	'abusefilter-edit-denied' => 'Не можете да видите детайлите на този филтър, защото не са общодостъпни',
+	'abusefilter-edit-denied' => 'Не можете да видите детайлите на този филтър, защото не са общодостъпни', # Fuzzy
 	'abusefilter-edit-main' => 'Параметри на филтъра',
 	'abusefilter-edit-done-subtitle' => 'Филтърът беше редактиран',
-	'abusefilter-edit-done' => 'Промените във филтъра $1 бяха съхранени успешно.',
+	'abusefilter-edit-done' => 'Промените във филтъра $1 бяха съхранени успешно.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'В зададения филтър има синтактична грешка.  Резултатът от парсера е: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Не можете да редактирате този филтър, понеже той съдържа едно или повече действия, ограничени по потребителска група.
 Моля, помолете потребител със съответните права да добави вместо вас във филтъра тези ограничени действия.',
@@ -6020,10 +6020,10 @@ Tizhout a ra termen an dinoiñ muioc'h evit $1% eus an oberoù.",
 	'abusefilter-edit-warn-preview' => 'Rakwelet ar gemennadenn dibabet',
 	'abusefilter-edit-warn-edit' => 'Krouiñ/Kemmañ ar gemennadenn diuzet',
 	'abusefilter-edit-tag-tag' => 'Balizenn da arloañ (unan dre linenn) :',
-	'abusefilter-edit-denied' => "Ne c'helloc'h ket gwelet munudoù ar sil-mañ dre ma 'z eo kuzhet d'ar selloù publik",
+	'abusefilter-edit-denied' => "Ne c'helloc'h ket gwelet munudoù ar sil-mañ dre ma 'z eo kuzhet d'ar selloù publik", # Fuzzy
 	'abusefilter-edit-main' => 'Arventennoù ar sil',
 	'abusefilter-edit-done-subtitle' => 'Sil aozet',
-	'abusefilter-edit-done' => "Enrollet-mat eo bet ho kemmoù d'ar sil $1.",
+	'abusefilter-edit-done' => "Enrollet-mat eo bet ho kemmoù d'ar sil $1.", # Fuzzy
 	'abusefilter-edit-badsyntax' => "Ur fazi ereadurezh a zo e-barzh ar sil-mañ.
 Disoc'h ar parser a oa : <pre>$1</pre>",
 	'abusefilter-edit-restricted' => "Ne c'helloc'h ket kemmañ ar sil-mañ, peogwir ez eus unan pe meur a oberoù bevennet.
@@ -6429,10 +6429,10 @@ Opis filtera: $6',
 	'abusefilter-edit-warn-preview' => 'Pregledaj odabranu poruku',
 	'abusefilter-edit-warn-edit' => 'Napravi/uredi odabranu poruku',
 	'abusefilter-edit-tag-tag' => 'Oznake za primjenu (jedna po redu):',
-	'abusefilter-edit-denied' => 'Možda nećete vidjeti detalje ovog filtera, zato što je sakriven za javni pregled',
+	'abusefilter-edit-denied' => 'Možda nećete vidjeti detalje ovog filtera, zato što je sakriven za javni pregled', # Fuzzy
 	'abusefilter-edit-main' => 'Parametri filtera',
 	'abusefilter-edit-done-subtitle' => 'Filter izmjenjen',
-	'abusefilter-edit-done' => 'Vi ste uspješno sačuvali Vaše izmjene na filteru $1.',
+	'abusefilter-edit-done' => 'Vi ste uspješno sačuvali Vaše izmjene na filteru $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Sintaksna greška u filteru koji ste označili. Zadnji izgled gramatičke definicije je bio:
 <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Ne možete uređivati ovaj filter, jer on sadrži jednu ili više ograničenih akcija.
@@ -6859,10 +6859,10 @@ Ha sobrepassat el límit de deteccions del $1% de les accions.",
 	'abusefilter-edit-warn-preview' => 'Previsualitza el missatge seleccionat',
 	'abusefilter-edit-warn-edit' => 'Creau/Editau el missatge seleccionat',
 	'abusefilter-edit-tag-tag' => 'Etiquetes a aplicar (una per línia):',
-	'abusefilter-edit-denied' => "No podeu veure els detalls d'aquest filtre ja que està restringit el seu accés públic.",
+	'abusefilter-edit-denied' => "No podeu veure els detalls d'aquest filtre ja que està restringit el seu accés públic.", # Fuzzy
 	'abusefilter-edit-main' => 'Paràmetres de filtre',
 	'abusefilter-edit-done-subtitle' => 'Filtre editat',
-	'abusefilter-edit-done' => "Els vostres canvis al filtre $1 s'han desat correctament.",
+	'abusefilter-edit-done' => "Els vostres canvis al filtre $1 s'han desat correctament.", # Fuzzy
 	'abusefilter-edit-badsyntax' => "Hi ha un error de sintaxi en el filtre que heu especificat.
 La producció de l'analitzador era:<pre>$1</pre>",
 	'abusefilter-edit-restricted' => "No es pot editar aquest filtre, perquè conté un o més accions restringides.
@@ -7447,10 +7447,10 @@ $messages['ckb'] = array(
 	'abusefilter-edit-warn-preview' => 'پێشبینینی پەیامی ھەڵبژێردراو نیشانبدە',
 	'abusefilter-edit-warn-edit' => 'پەیامی ھەڵبژێردراو دروست/دەستکاری بکە',
 	'abusefilter-edit-tag-tag' => 'تاگەکان بۆ چەسپاندن (ھەر کامیان لە دێڕێکدا):',
-	'abusefilter-edit-denied' => 'ناتوانی وردەکارییەکانی ئەم پاڵوێنەیە ببینی، چونکوو لەبەر چاوی گشتی شاردراوەتەوە.',
+	'abusefilter-edit-denied' => 'ناتوانی وردەکارییەکانی ئەم پاڵوێنەیە ببینی، چونکوو لەبەر چاوی گشتی شاردراوەتەوە.', # Fuzzy
 	'abusefilter-edit-main' => 'پارامەترەکانی پاڵوێنە',
 	'abusefilter-edit-done-subtitle' => 'پاڵوێنە دەستکاری کرا',
-	'abusefilter-edit-done' => 'سەرکەوتووانە گۆڕانکارییەکانت لە پاڵوێنەی $1دا پاشەکەوت کرد.',
+	'abusefilter-edit-done' => 'سەرکەوتووانە گۆڕانکارییەکانت لە پاڵوێنەی $1دا پاشەکەوت کرد.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'ھەڵەیەکی ڕێنووسی ھەیە لەو پاڵوێنەیە دەستنیشانت کردوە.
 دەرھاتی پاڵوێنە ئەمە بوو: <pre>$1</pre>',
 	'abusefilter-edit-viewhistory' => 'مێژووی ئەم پاڵوێنەیە ببینە',
@@ -7765,10 +7765,10 @@ Odpovídalo mu více než dovolený limit $1 % všech operací.",
 	'abusefilter-edit-warn-preview' => 'Zobrazit náhled zvoleného hlášení',
 	'abusefilter-edit-warn-edit' => 'Vytvořit/editovat zvolené hlášení',
 	'abusefilter-edit-tag-tag' => 'Přidat značky (jedna na řádek):',
-	'abusefilter-edit-denied' => 'U tohoto filtru si nemůžete prohlédnout podrobnosti, protože byly před veřejností skryty.',
+	'abusefilter-edit-denied' => 'U tohoto filtru si nemůžete prohlédnout podrobnosti, protože byly před veřejností skryty.', # Fuzzy
 	'abusefilter-edit-main' => 'Parametry filtru',
 	'abusefilter-edit-done-subtitle' => 'Filtr upraven',
-	'abusefilter-edit-done' => 'Úspěšně jste {{GENDER:|uložil|uložila|uložili}} změny filtru $1.',
+	'abusefilter-edit-done' => 'Úspěšně jste {{GENDER:|uložil|uložila|uložili}} změny filtru $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Zadaný filtr obsahuje syntaktickou chybu. Výstup z parseru: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Nemáte oprávnění editovat tento filtr, neboť obsahuje jedno nebo více opatření s omezeným přístupem.
 Požádejte uživatele s oprávněním přidávat taková opatření, aby potřebnou změnu provedl za vás.',
@@ -8396,10 +8396,10 @@ Det har nået grænsen ved at matche mere end $1 % af handlingerne.",
 	'abusefilter-edit-warn-preview' => 'Forhåndsvis valgt meddelelse',
 	'abusefilter-edit-warn-edit' => 'Opret/redigér valgt meddelelse',
 	'abusefilter-edit-tag-tag' => 'Mærker som skal anvendes (et pr. linje):',
-	'abusefilter-edit-denied' => 'Du kan ikke se detaljerne i dette filter, da det er skjult for offentligheden.',
+	'abusefilter-edit-denied' => 'Du kan ikke se detaljerne i dette filter, da det er skjult for offentligheden.', # Fuzzy
 	'abusefilter-edit-main' => 'Filterparametre',
 	'abusefilter-edit-done-subtitle' => 'Filter redigeret',
-	'abusefilter-edit-done' => 'Du har gemt dine ændringer til filteret $1.',
+	'abusefilter-edit-done' => 'Du har gemt dine ændringer til filteret $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Der er en syntaksfejl i det filter du angav.
 Resultatet fra parseren var: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Du kan ikke redigere dette filter, fordi det indeholder en eller flere begrænsede handlinger.
@@ -8842,7 +8842,7 @@ Im Durchschnitt betrug die Bearbeitungszeit $4 ms und sie benötigten {{PLURAL:$
 	'abusefilter-edit-denied' => 'Du kannst die Details dieses Filters nicht einsehen, weil sie versteckt sind.',
 	'abusefilter-edit-main' => 'Filterparameter',
 	'abusefilter-edit-done-subtitle' => 'Filter bearbeitet',
-	'abusefilter-edit-done' => 'Deine Änderungen am Filter $1 wurden erfolgreich gespeichert.',
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Deine Änderungen]] am [[Special:AbuseFilter/$1|Filter $1]] wurden erfolgreich gespeichert.',
 	'abusefilter-edit-badsyntax' => 'Der von dir spezifizierte Filter enthält einen Syntaxfehler. Die Parserausgabe lautete: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Du kannst diesen Filter nicht bearbeiten, weil er eine oder mehrere verbotene Aktionen enthält.
 Bitte einen Benutzer, der verbotene Aktionen hinzufügen kann, darum, die Änderung für dich vorzunehmen.',
@@ -9126,8 +9126,8 @@ Beschreibung der Regel: $1',
 	'abusefilter-log-hide-forbidden' => 'Sie haben nicht die Berechtigung, die Einträge des Missbrauchsfilter-Logbuchs auszublenden.',
 	'abusefilter-reautoconfirm-notallowed' => 'Sie sind nicht berechtigt, Benutzer wieder zu automatisch bestätigten Benutzern zu machen.',
 	'abusefilter-edit-oldwarning' => '<strong>Sie bearbeiten nicht die aktuelle, sondern eine ältere Version dieses Filters. Die Statistik gilt nur für die letzte Version des Filters. Wenn Sie speichern, wird diese als aktuelle Version neu gespeichert. </strong> &bull; [[Special:AbuseFilter/history/$2|Zurück zur Versionsgeschichte des Filters]]',
-	'abusefilter-edit-denied' => 'Sie können die Details dieses Filters nicht einsehen, weil sie versteckt sind.',
-	'abusefilter-edit-done' => 'Ihre Änderungen am Filter $1 wurden erfolgreich gespeichert.',
+	'abusefilter-edit-denied' => 'Sie können die Details dieses Filters nicht einsehen, weil sie versteckt sind.', # Fuzzy
+	'abusefilter-edit-done' => 'Ihre Änderungen am Filter $1 wurden erfolgreich gespeichert.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Der von Ihnen spezifizierte Filter enthält einen Syntaxfehler. Die Parserausgabe lautete: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Sie können diesen Filter nicht bearbeiten, weil er eine oder mehrere verbotene Aktionen enthält.
 Bitten Sie einen Benutzer, der verbotene Aktionen hinzufügen kann, darum, die Änderung für Sie vorzunehmen.',
@@ -9336,10 +9336,10 @@ nê istatiski qey na filtreya.
 	'abusefilter-edit-warn-preview' => 'Mesaj ke ti weçîne ay verqeyd bike',
 	'abusefilter-edit-warn-edit' => 'Mesaj ke ti weçîne ay bivurne',
 	'abusefilter-edit-tag-tag' => 'etiketê ke tetbiq beni (her satır re yew heb):',
-	'abusefilter-edit-denied' => 'Ti nieşkeno detayanê ena filitre bivîne, çunkî ena filitre kamu ra nimniyayo.',
+	'abusefilter-edit-denied' => 'Ti nieşkeno detayanê ena filitre bivîne, çunkî ena filitre kamu ra nimniyayo.', # Fuzzy
 	'abusefilter-edit-main' => 'Parametreyan filitre bike',
 	'abusefilter-edit-done-subtitle' => 'Vurnayîşî filitre bike',
-	'abusefilter-edit-done' => 'Ti vurnayîşî ke ser filitre $1kerd, înan qeyd biy.',
+	'abusefilter-edit-done' => 'Ti vurnayîşî ke ser filitre $1kerd, înan qeyd biy.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'filtreya ke şıma nişane kerdo tede xetaya sentaksi esta.
 wesikaya arêdayoxi: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'şıma nêeşkeni na filtre bıvurni çunke tede karo qedexebiyaye esto.',
@@ -9750,10 +9750,10 @@ Jo dojśpił limit wěcej ako $1 % akcijow.",
 	'abusefilter-edit-warn-preview' => 'Pśeglěd wubraneje powěźeńki',
 	'abusefilter-edit-warn-edit' => 'Wubranu powěźeńku napóraś/wobźěłaś',
 	'abusefilter-edit-tag-tag' => 'Toflicki, kótarež maju se nałožyś (jadna na smužku):',
-	'abusefilter-edit-denied' => 'Njamóžośo drobnosći toś togo filtra wiźeś, dokulaž jo pśed zjawneym zwobranjenim schowany.',
+	'abusefilter-edit-denied' => 'Njamóžośo drobnosći toś togo filtra wiźeś, dokulaž jo pśed zjawneym zwobranjenim schowany.', # Fuzzy
 	'abusefilter-edit-main' => 'Filtrowe parametry',
 	'abusefilter-edit-done-subtitle' => 'Filter wobźěłany',
-	'abusefilter-edit-done' => 'Sy swóje změny filtra $1 wuspěšnje składł.',
+	'abusefilter-edit-done' => 'Sy swóje změny filtra $1 wuspěšnje składł.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'W filtrje, kótaryž sy pódał, wopśimujo zmólku.
 Wudaśe parsera jo było: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Njamóžoš toś ten filter wobźěłaś, dokulaž wopśimujo jadnu wobgranicowanu akciju abo někotare wobgranicowane akcije.
@@ -10268,10 +10268,10 @@ $messages['el'] = array(
 	'abusefilter-edit-warn-preview' => 'Προεπισκόπηση του επιλεγμένου μηνύματος',
 	'abusefilter-edit-warn-edit' => 'Δημιουργία/Επεξεργασία επιλεγμένων μηνυμάτων',
 	'abusefilter-edit-tag-tag' => 'Ετικέτες για να επικολληθούν (μία ανά γραμμή):',
-	'abusefilter-edit-denied' => 'Δεν μπορείτε να δείτε τις λεπτομέρειες αυτού του φίλτρου, γιατί έχουν αποκρυφθεί από τη δημόσια θέα.',
+	'abusefilter-edit-denied' => 'Δεν μπορείτε να δείτε τις λεπτομέρειες αυτού του φίλτρου, γιατί έχουν αποκρυφθεί από τη δημόσια θέα.', # Fuzzy
 	'abusefilter-edit-main' => 'Παράμετροι φίλτρου',
 	'abusefilter-edit-done-subtitle' => 'Επεξεργασμένο φίλτρο',
-	'abusefilter-edit-done' => 'Οι αλλαγές σας στο φίλτρο $1 έχουν αποθηκεφθεί επιτυχώς.',
+	'abusefilter-edit-done' => 'Οι αλλαγές σας στο φίλτρο $1 έχουν αποθηκεφθεί επιτυχώς.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Υπάρχει ένα συντακτικό λάθος στο φίλτρο που δώσατε.
 Το αποτέλεσμα από τον λεξιαναλυτή ήταν: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Δεν μπορείτε να επεξεργαστείτε αυτό το φίλτρο, γιατί περιέχει μία ή περισσότερες περιορισμένες ενέργειες.
@@ -10708,10 +10708,10 @@ Averaĝe, ĝia plenumtempo estas $4ms, kaj ĝi konsumas $5 {{PLURAL:$5|kondiĉon
 	'abusefilter-edit-warn-preview' => 'Antaŭvidi elektitan mesaĝon',
 	'abusefilter-edit-warn-edit' => 'Krei/Redakti elektitan mesaĝon',
 	'abusefilter-edit-tag-tag' => 'Etikedoj por aldoni (po unu por linio):',
-	'abusefilter-edit-denied' => 'Vi ne rajtas vidi detalojn pri ĉi tiu filtrilo, ĉar ĝi estas kaŝita de publika vido',
+	'abusefilter-edit-denied' => 'Vi ne rajtas vidi detalojn pri ĉi tiu filtrilo, ĉar ĝi estas kaŝita de publika vido', # Fuzzy
 	'abusefilter-edit-main' => 'Filtraj parametroj',
 	'abusefilter-edit-done-subtitle' => 'Filtrilo redaktita',
-	'abusefilter-edit-done' => 'Vi sukcese konservis viajn ŝanĝojn al filtrilo $1.',
+	'abusefilter-edit-done' => 'Vi sukcese konservis viajn ŝanĝojn al filtrilo $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Estas sintaksa eraro en la filtrilo kiun vi specifigis.
 La eligo de la sintaksa analizilo estis: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Vi ne povas redakti ĉi tiun filtrilon, ĉar ĝi enhavas unu aŭ pliajn malpermesitajn agojn.
@@ -11160,10 +11160,10 @@ El filtro ha sobrepasado el límite de más del $1% acciones.",
 	'abusefilter-edit-warn-preview' => 'Previsualizar mensaje seleccionado',
 	'abusefilter-edit-warn-edit' => 'Crear o editar el mensaje seleccionado',
 	'abusefilter-edit-tag-tag' => 'Etiquetas a aplicar (una por línea):',
-	'abusefilter-edit-denied' => 'No puede ver detalles de este filtro porque es privado',
+	'abusefilter-edit-denied' => 'No puede ver detalles de este filtro porque es privado', # Fuzzy
 	'abusefilter-edit-main' => 'Parámetros de filtro',
 	'abusefilter-edit-done-subtitle' => 'Filtro editado',
-	'abusefilter-edit-done' => 'Ha guardado sus cambios al filtro $1 con éxito.',
+	'abusefilter-edit-done' => 'Ha guardado sus cambios al filtro $1 con éxito.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Hay un error de sintaxis en el filtro que especificó.
 El resultado del analizador fue: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'No puedes editar este filtro, porque contiene una o más acciones restringidas.
@@ -11592,10 +11592,10 @@ See ületas $1% toimingutele vastamise piirnormi.",
 	'abusefilter-edit-warn-preview' => 'Valitud sõnumi eelvaade',
 	'abusefilter-edit-warn-edit' => 'Loo valitud sõnum või muuda seda',
 	'abusefilter-edit-tag-tag' => 'Kasutatavad märgised (rea kohta üks):',
-	'abusefilter-edit-denied' => 'Sa ei või selle filtri üksikasju vaadata, sest see on üldsuse eest peidetud.',
+	'abusefilter-edit-denied' => 'Sa ei või selle filtri üksikasju vaadata, sest see on üldsuse eest peidetud.', # Fuzzy
 	'abusefilter-edit-main' => 'Filtri näitajad',
 	'abusefilter-edit-done-subtitle' => 'Filter muudetud',
-	'abusefilter-edit-done' => 'Filtrile $1 tehtud muudatused on edukalt salvestatud.',
+	'abusefilter-edit-done' => 'Filtrile $1 tehtud muudatused on edukalt salvestatud.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Määratletud filtris on süntaksiviga.
 Parseri väljund oli: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Sa ei saa seda filtrit muuta, sest see sisaldab üht või enamat piiratud ligipääsuga toimingut.
@@ -12207,10 +12207,10 @@ $messages['fa'] = array(
 	'abusefilter-edit-warn-preview' => 'پیش‌نمایش پیام انتخاب شده',
 	'abusefilter-edit-warn-edit' => 'ایجاد/ویرایش پیام انتخاب شده',
 	'abusefilter-edit-tag-tag' => 'برچسب‌ها (هر کدام در یک خط):',
-	'abusefilter-edit-denied' => 'شما نمی‌توانید جزئیات این پالایه را ببینید، زیرا از دید عموم پنهان شده‌است.',
+	'abusefilter-edit-denied' => 'شما نمی‌توانید جزئیات این پالایه را ببینید، زیرا از دید عموم پنهان شده‌است.', # Fuzzy
 	'abusefilter-edit-main' => 'پارامترهای پالایه',
 	'abusefilter-edit-done-subtitle' => 'پالایه ویرایش شد',
-	'abusefilter-edit-done' => 'شما تغییرات‌تان را در پالایهٔ $1 با موفقیت ذخیره کردید.',
+	'abusefilter-edit-done' => 'شما تغییرات‌تان را در پالایهٔ $1 با موفقیت ذخیره کردید.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'یک خطای نحوی در پالایه‌ای که مشخص کردید وجود دارد.
 خروجی تحلیلگر این بود: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'شما نمی‌توانید این پالایه را ویرایش کنید، چون حاوی یک یا چند اقدام محدودشده است.
@@ -12651,7 +12651,7 @@ Suodatin saavutti yli $1 % täsmäävän toiminnon rajan.",
 	'abusefilter-edit-warn-preview' => 'Esikatsele valittua viestiä',
 	'abusefilter-edit-warn-edit' => 'Luo tai muokkaa valittua viestiä',
 	'abusefilter-edit-tag-tag' => 'Käytettävät merkinnät (yksi per rivi):',
-	'abusefilter-edit-denied' => 'Et voi tarkastella tämän suodattimen yksityiskohtia, koska ne eivät ole julkisesti näkyvillä.',
+	'abusefilter-edit-denied' => 'Et voi tarkastella tämän suodattimen yksityiskohtia, koska ne eivät ole julkisesti näkyvillä.', # Fuzzy
 	'abusefilter-edit-main' => 'Suodattimen parametrit',
 	'abusefilter-edit-done-subtitle' => 'Suodatinta muokattu',
 	'abusefilter-edit-done' => 'Muutokset suodattimeen $1 tallennettiin onnistuneesti.', # Fuzzy
@@ -13236,10 +13236,10 @@ Il a atteint la limite de détection de plus de $1 % des actions.",
 	'abusefilter-edit-warn-preview' => 'Prévisualiser le message sélectionné',
 	'abusefilter-edit-warn-edit' => 'Créer ou modifier le message sélectionné',
 	'abusefilter-edit-tag-tag' => 'Balises à appliquer (une par ligne) :',
-	'abusefilter-edit-denied' => "Vous ne pouvez pas voir les détails de ce filtre parce qu'il est caché à la vue du public",
+	'abusefilter-edit-denied' => 'Vous ne pouvez pas voir les détails de ce filtre, parce qu’il est caché à la vue du public',
 	'abusefilter-edit-main' => 'Paramètres du filtre',
 	'abusefilter-edit-done-subtitle' => 'Filtre modifié',
-	'abusefilter-edit-done' => 'Vous avez enregistré avec succès vos modifications du filtre $1.',
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Vos modifications]] au [[Special:AbuseFilter/$1|filtre $1]] ont été enregistrées.',
 	'abusefilter-edit-badsyntax' => "Le filtre que vous avez spécifié comporte une erreur de syntaxe.
 Le résultat de l'analyseur syntaxique était : <pre>$1</pre>",
 	'abusefilter-edit-restricted' => "Vous ne pouvez pas modifier ce filtre parce qu'il contient une ou plusieurs actions restreintes.
@@ -13665,10 +13665,10 @@ Il at avengiê la limita de dètèccion de més de $1 % de les accions.",
 	'abusefilter-edit-warn-preview' => 'Prèvisualisar lo mèssâjo chouèsi',
 	'abusefilter-edit-warn-edit' => 'Fâre / changiér lo mèssâjo chouèsi',
 	'abusefilter-edit-tag-tag' => 'Balises a aplicar (yona per legne) :',
-	'abusefilter-edit-denied' => 'Vos pouede pas vêre los dètalys de cél filtro perce qu’il est cachiê a la vua du publico.',
+	'abusefilter-edit-denied' => 'Vos pouede pas vêre los dètalys de cél filtro perce qu’il est cachiê a la vua du publico.', # Fuzzy
 	'abusefilter-edit-main' => 'Paramètres du filtro',
 	'abusefilter-edit-done-subtitle' => 'Filtro changiê',
-	'abusefilter-edit-done' => 'Vos éd encartâ avouéc reusséta voutros changements du filtro $1.',
+	'abusefilter-edit-done' => 'Vos éd encartâ avouéc reusséta voutros changements du filtro $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Lo filtro que vos éd spècefiâ at una èrror de sintaxa.
 Lo rèsultat du parsor ére : <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Vos pouede pas changiér cél filtro perce que contint yona ou ben un mouél d’accions rètrentes.
@@ -14151,10 +14151,10 @@ De media, o seu tempo de execución é de $4ms, e consome {{PLURAL:$5|unha condi
 	'abusefilter-edit-warn-preview' => 'Vista previa da mensaxe seleccionada',
 	'abusefilter-edit-warn-edit' => 'Crear/Editar a mensaxe seleccionada',
 	'abusefilter-edit-tag-tag' => 'Etiquetas a aplicar (unha por liña):',
-	'abusefilter-edit-denied' => 'Non pode ollar os detalles deste filtro porque está agochado da vista pública.',
+	'abusefilter-edit-denied' => 'Non pode ollar os detalles deste filtro porque está agochado da vista pública.', # Fuzzy
 	'abusefilter-edit-main' => 'Parámetros do filtro',
 	'abusefilter-edit-done-subtitle' => 'Filtro editado',
-	'abusefilter-edit-done' => 'Gardou con éxito os cambios que fixo no filtro $1.',
+	'abusefilter-edit-done' => 'Gardou con éxito os cambios que fixo no filtro $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Hai un erro de sintaxe no filtro que especificou. A función analítica de saída foi: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Non pode editar este filtro, dado que contén unha ou máis accións restrinxidas.
 Por favor, pregúntelle a un usuario cos permisos necesarios para engadir accións restrinxidas se pode facer o cambio por vostede.',
@@ -14672,10 +14672,10 @@ Churzbschryybig vu dr verletzte Regle: $1',
 	'abusefilter-edit-warn-preview' => 'Vorschau uusgwehlti Nochricht',
 	'abusefilter-edit-warn-edit' => 'Leg uusgwehlti Nochricht aa oder bearbeit si',
 	'abusefilter-edit-tag-tag' => 'Giltigi Label (eis pro Zyyle):',
-	'abusefilter-edit-denied' => 'Du chasch d Detail vu däm Filter nit bschaue, wel si versteckt sin.',
+	'abusefilter-edit-denied' => 'Du chasch d Detail vu däm Filter nit bschaue, wel si versteckt sin.', # Fuzzy
 	'abusefilter-edit-main' => 'Filterparameter',
 	'abusefilter-edit-done-subtitle' => 'Filter bearbeitet',
-	'abusefilter-edit-done' => 'Dyyni Änderige am Filter $1 sin erfolgryych gspycheret wore.',
+	'abusefilter-edit-done' => 'Dyyni Änderige am Filter $1 sin erfolgryych gspycheret wore.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Im Filter, wu Du spezifiziert hesch, het s e Syntaxfähler. D Parseruusgab isch: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Du chasch dää Filter nit bearbeite, wel s do eini oder meh bschränkti Aktione din het. Bitte frog e Benutzer, wu s Rächt het, bschränkti Aktion zuezfiege, ass är des fir Dii macht.',
 	'abusefilter-edit-viewhistory' => 'Versionsgschicht vum Filter aaluege',
@@ -15089,7 +15089,7 @@ $messages['ha'] = array(
 	'abusefilter-examine-submit' => 'Nema',
 );
 
-/** Hakka (Hak-kâ-fa)
+/** Hakka (客家語/Hak-kâ-ngî)
  * @author Hakka
  * @author Jetlag
  */
@@ -15308,7 +15308,7 @@ $messages['he'] = array(
 	'abusefilter-edit-warn-preview' => 'תצוגה מקדימה של ההודעה שנבחרה',
 	'abusefilter-edit-warn-edit' => 'יצירת/עריכת ההודעה שנבחרה',
 	'abusefilter-edit-tag-tag' => 'סימונים אפשריים (אחד בשורה):',
-	'abusefilter-edit-denied' => 'אינכם יכולים לצפות בפרטים של מסנן זה, כיוון שהוא מוסתר מעיני הציבור.',
+	'abusefilter-edit-denied' => 'אינכם יכולים לצפות בפרטים של מסנן זה, כיוון שהוא מוסתר מעיני הציבור.', # Fuzzy
 	'abusefilter-edit-main' => 'הפרמטרים של המסנן',
 	'abusefilter-edit-done-subtitle' => 'המסנן נערך',
 	'abusefilter-edit-done' => 'השינויים שביצעתם במסנן $1 נשמרו בהצלחה.', # Fuzzy
@@ -15738,10 +15738,10 @@ $messages['hi'] = array(
 	'abusefilter-edit-warn-preview' => 'चुने हुए सन्देश का पूर्वावलोकन करें',
 	'abusefilter-edit-warn-edit' => 'चुना हुआ सन्देश बनाएँ अथवा संपादित करें',
 	'abusefilter-edit-tag-tag' => 'लगाए जाने वाले टैग (एक प्रति लाइन)',
-	'abusefilter-edit-denied' => 'आप इस फ़िल्टर का विवरण नहीं देख सकते हैं, क्योंकि यह सार्वजनिक दृष्टि से छुपा हुआ है।',
+	'abusefilter-edit-denied' => 'आप इस फ़िल्टर का विवरण नहीं देख सकते हैं, क्योंकि यह सार्वजनिक दृष्टि से छुपा हुआ है।', # Fuzzy
 	'abusefilter-edit-main' => 'फ़िल्टर प्राचल',
 	'abusefilter-edit-done-subtitle' => 'फ़िल्टर संपादित हो गया',
-	'abusefilter-edit-done' => 'आपके द्वारा फ़िल्टर $1 में किये बदलाव सहेजे गए हैं।',
+	'abusefilter-edit-done' => 'आपके द्वारा फ़िल्टर $1 में किये बदलाव सहेजे गए हैं।', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'आपके द्वारा बताए फ़िल्टर में सिंटेक्स त्रुटि है।
 पार्सर की आउटपुट थी: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'आप इस फ़िल्टर को सम्पादित नहीं कर सकते हैं, क्योंकि इसमें एक या अधिक प्रतिबन्धित कार्यों का प्रयोग है।
@@ -16135,10 +16135,10 @@ Dostignuta je granicu od podudaranja s više od $1% akcija suradnika.",
 	'abusefilter-edit-warn-preview' => 'Predpregled odabrane poruke',
 	'abusefilter-edit-warn-edit' => 'Kreiraj/Uredi odabranu poruku',
 	'abusefilter-edit-tag-tag' => 'Bilješka za primjenu (jedna po retku):',
-	'abusefilter-edit-denied' => 'Možda nećete vidjeti detalje ovog filtra, zato što je skriven od javnog pregleda',
+	'abusefilter-edit-denied' => 'Možda nećete vidjeti detalje ovog filtra, zato što je skriven od javnog pregleda', # Fuzzy
 	'abusefilter-edit-main' => 'Parametri filtra',
 	'abusefilter-edit-done-subtitle' => 'Filtar je uređen',
-	'abusefilter-edit-done' => 'Uspješno ste spremili promjene filtra $1.',
+	'abusefilter-edit-done' => 'Uspješno ste spremili promjene filtra $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => "Sintaktička pogrješka u filtru koji ste naveli. Izlaz iz ''parsera'' bio je:
 <pre>$1</pre>",
 	'abusefilter-edit-restricted' => 'Ne možete uređivati ovaj filtar, jer on sadrži jednu ili više ograničenih akcija.
@@ -16557,10 +16557,10 @@ Limit wjace hač $1 % akcijow je so docpěł.",
 	'abusefilter-edit-warn-preview' => 'Přehlad wubraneje powěsće',
 	'abusefilter-edit-warn-edit' => 'Wubranu powěsć wutworić/wobdźěłać',
 	'abusefilter-edit-tag-tag' => 'Taflički, kotrež maja so nałožić (jedna na linku):',
-	'abusefilter-edit-denied' => 'Njemóžeš sej podrobnosće tutoho filtra wobhladać, dokelž je před zjawnym wobhladanjom schowany.',
+	'abusefilter-edit-denied' => 'Njemóžeš sej podrobnosće tutoho filtra wobhladać, dokelž je před zjawnym wobhladanjom schowany.', # Fuzzy
 	'abusefilter-edit-main' => 'Filtrowe parametry',
 	'abusefilter-edit-done-subtitle' => 'Fitler wobdźěłany',
-	'abusefilter-edit-done' => 'Sy swoje změny filtra $1 wuspěšnje składował.',
+	'abusefilter-edit-done' => 'Sy swoje změny filtra $1 wuspěšnje składował.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Filter, kotryž sy podał, wobsahuje syntaktiski zmylk. Wudaće parsera bě: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Njemóžeš tutón filter wobdźěłać, dokelž wobsahuje jednu wobmjezowanu akciju abo wjacore wobmjezowane akcije. Prošu proš wužiwarja z prawom wobmjezowane akcije přidać, zo by změnu za tebje činił.',
 	'abusefilter-edit-viewhistory' => 'Stawizny tutoho filtra zwobraznić',
@@ -16993,10 +16993,10 @@ mert a műveletek több, mint $1%-ánál egyezést talált.",
 	'abusefilter-edit-warn-preview' => 'Kiválasztott üzenet előnézete',
 	'abusefilter-edit-warn-edit' => 'Kiválasztott üzenet létrehozása / szerkesztése',
 	'abusefilter-edit-tag-tag' => 'Címkék (soronként egy):',
-	'abusefilter-edit-denied' => 'Nem tekintheted meg a szűrő tulajdonságait, mert el vannak rejtve a nyilvánosság elől',
+	'abusefilter-edit-denied' => 'Nem tekintheted meg a szűrő tulajdonságait, mert el vannak rejtve a nyilvánosság elől', # Fuzzy
 	'abusefilter-edit-main' => 'A szűrő tulajdonságai',
 	'abusefilter-edit-done-subtitle' => 'A szűrő módosítva',
-	'abusefilter-edit-done' => 'Sikeresen megváltoztattad a(z) $1 szűrő tulajdonságait.',
+	'abusefilter-edit-done' => 'Sikeresen megváltoztattad a(z) $1 szűrő tulajdonságait.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Szintaktikai hiba található az általad megadott szűrőben.
 Az elemző kimenete a következő volt: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Nem szerkesztheted a szűrőt, mert az egy vagy több korlátozott hozzáférésű műveletet tartalmaz.
@@ -17415,10 +17415,10 @@ In media, su durata de execution es $4ms, e illo consume $5 {{PLURAL:$5|conditio
 	'abusefilter-edit-warn-preview' => 'Previsualisar le messages seligite',
 	'abusefilter-edit-warn-edit' => 'Crear/modificar le messages seligite',
 	'abusefilter-edit-tag-tag' => 'Etiquettas a applicar (un per linea):',
-	'abusefilter-edit-denied' => 'Tu non pote vider le detalios de iste filtro, proque illo es celate al vista del publico.',
+	'abusefilter-edit-denied' => 'Tu non pote vider le detalios de iste filtro, proque illo es celate al vista del publico.', # Fuzzy
 	'abusefilter-edit-main' => 'Parametros del filtro',
 	'abusefilter-edit-done-subtitle' => 'Filtro modificate',
-	'abusefilter-edit-done' => 'Tu ha immagazinate tu modificationes al filtro $1 con successo.',
+	'abusefilter-edit-done' => 'Tu ha immagazinate tu modificationes al filtro $1 con successo.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Il ha un error de syntaxe in le filtro que tu specificava. Le resultato del analysator syntactic esseva: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Tu non pote modificar iste filtro, proque illo contine un o plus actiones restringite.
 Per favor demanda a un usator con le permission de adder actiones restringite de facer le modification pro te.',
@@ -17852,10 +17852,10 @@ Secara rata-rata, waktu yang dibutuhkan adalah $4ms dan mengkonsumsi $5 {{PLURAL
 	'abusefilter-edit-warn-preview' => 'Pratayang pesan yang dipilih',
 	'abusefilter-edit-warn-edit' => 'Buat/Sunting pesan yang dipilih',
 	'abusefilter-edit-tag-tag' => 'Tag yang digunakan (satu per baris):',
-	'abusefilter-edit-denied' => 'Anda tidak dapat melihat rincian filter ini, karena rincian filter telah disembunyikan dari publik',
+	'abusefilter-edit-denied' => 'Anda tidak dapat melihat rincian filter ini, karena rincian filter telah disembunyikan dari publik', # Fuzzy
 	'abusefilter-edit-main' => 'Parameter filter',
 	'abusefilter-edit-done-subtitle' => 'Filter telah disunting',
-	'abusefilter-edit-done' => 'Anda berhasil menyimpan perubahan filter $1.',
+	'abusefilter-edit-done' => 'Anda berhasil menyimpan perubahan filter $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Terdapat kesalahan sintaksis dalam filter yang Anda masukkan. Hasil dari parser adalah:
 <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Anda tidak dapat menyunting filter ini, karena mengandung satu atau lebih tindakan yang dibatasi.
@@ -18340,10 +18340,10 @@ Naabotan  na ti patingga iti panagipada ti kaadu a $1% kadagiti inar-aramid.",
 	'abusefilter-edit-warn-preview' => 'Ipadas ti napili a mensahe',
 	'abusefilter-edit-warn-edit' => 'Agaramid/Agurnos ti napili a mensahe',
 	'abusefilter-edit-tag-tag' => 'Dagiti etiketa nga idangep (maysa tunggal maysa a linia) :',
-	'abusefilter-edit-denied' => 'Saan mo a makita dagiti detalye iti daytoy a sagat, ngamin ket nailemmeng ti panagkita a publiko.',
+	'abusefilter-edit-denied' => 'Saan mo a makita dagiti detalye iti daytoy a sagat, ngamin ket nailemmeng ti panagkita a publiko.', # Fuzzy
 	'abusefilter-edit-main' => 'Dagiti parametro ti sagat',
 	'abusefilter-edit-done-subtitle' => 'Naurnos ti sagat',
-	'abusefilter-edit-done' => 'Nag-balligi ka a nagidulin kadagiti panagsukat mo ti sagat $1.',
+	'abusefilter-edit-done' => 'Nag-balligi ka a nagidulin kadagiti panagsukat mo ti sagat $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Adda gramatika a biddut idiay sagat a nainaganam.
 Ti nagparang manipud idiay parser ket: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Saan mo a maurnos daytoy a sagat, ngamin ket naglaon ti maysa wenno adu a maiparit a dagiti aramid.
@@ -18827,10 +18827,10 @@ Hún passaði við fleiri en $1% breytinga.",
 	'abusefilter-edit-warn-preview' => 'Forskoða valin skilaboð',
 	'abusefilter-edit-warn-edit' => 'Stofna/Breyta völdum skilaboðum',
 	'abusefilter-edit-tag-tag' => 'Tög sem eiga að gilda (eitt á línu):',
-	'abusefilter-edit-denied' => 'Þú getur ekki skoðað nánari upplýsingar um þessa síu, því hún er falin.',
+	'abusefilter-edit-denied' => 'Þú getur ekki skoðað nánari upplýsingar um þessa síu, því hún er falin.', # Fuzzy
 	'abusefilter-edit-main' => 'Stikar síunnar',
 	'abusefilter-edit-done-subtitle' => 'Síu breytt',
-	'abusefilter-edit-done' => 'Tókst að vista breytingar þínar á síu $1.',
+	'abusefilter-edit-done' => 'Tókst að vista breytingar þínar á síu $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Það er villa í málskipun síunnar sem þú hefur tilgreint.
 Frálög þáttarans eru: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Þú getur ekki breytt þessari síu, því hún inniheldur eina eða fleiri takmarkandi afleiðingar.
@@ -19180,10 +19180,10 @@ Il suo tempo medio di esecuzione è di $4 ms, e impiega $5 {{PLURAL:$5|condizion
 	'abusefilter-edit-warn-preview' => 'Anteprima messaggio selezionato',
 	'abusefilter-edit-warn-edit' => 'Crea o modifica il messaggio selezionato',
 	'abusefilter-edit-tag-tag' => 'Etichette da aggiungere (una per riga):',
-	'abusefilter-edit-denied' => 'I dettagli di questo filtro non sono accessibili in quanto nascosti al pubblico.',
+	'abusefilter-edit-denied' => 'I dettagli di questo filtro non sono accessibili in quanto nascosti al pubblico.', # Fuzzy
 	'abusefilter-edit-main' => 'Parametri del filtro',
 	'abusefilter-edit-done-subtitle' => 'Filtro modificato',
-	'abusefilter-edit-done' => 'Le modifiche al filtro $1 sono state salvate correttamente.',
+	'abusefilter-edit-done' => 'Le modifiche al filtro $1 sono state salvate correttamente.', # Fuzzy
 	'abusefilter-edit-badsyntax' => "Il filtro specificato contiene un errore di sintassi.
 Di seguito viene riportato l'output del parser: <pre>$1</pre>",
 	'abusefilter-edit-restricted' => "Non è possibile modificare questo filtro in quanto contiene delle azioni riservate.
@@ -19618,10 +19618,10 @@ $messages['ja'] = array(
 	'abusefilter-edit-warn-preview' => '選択したメッセージをプレビュー',
 	'abusefilter-edit-warn-edit' => '選択したメッセージを作成または編集',
 	'abusefilter-edit-tag-tag' => '適用するタグ (一行に一つ):',
-	'abusefilter-edit-denied' => 'このフィルターは非公開とされているため、あなたは詳細を閲覧できません。',
+	'abusefilter-edit-denied' => 'このフィルターは非公開とされているため、あなたは詳細を閲覧できません。', # Fuzzy
 	'abusefilter-edit-main' => 'フィルターの設定',
 	'abusefilter-edit-done-subtitle' => 'フィルターを編集しました',
-	'abusefilter-edit-done' => 'フィルター $1 への変更を保存しました。',
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/$1|フィルター $1]] への[[Special:AbuseFilter/history/$1/diff/prev/$2|変更]]を保存しました。',
 	'abusefilter-edit-badsyntax' => '指定したフィルターには構文エラーがあります。
 パーサーからの出力: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'このフィルターは1つ以上の制限された操作を含んでいるため、あなたには編集できません。
@@ -20018,10 +20018,10 @@ Iki wis ngranggèh luwih saka $1% laku sing padha.",
 	'abusefilter-edit-warn-preview' => 'Pratayang layang kapilih',
 	'abusefilter-edit-warn-edit' => 'Gawé/Sunting layang kapilih',
 	'abusefilter-edit-tag-tag' => 'Tag kanggo dipatrapaké (siji per baris):',
-	'abusefilter-edit-denied' => 'Sampéyan mungkin ora ndelok rincian saka saringan iki amarga kuwi pancen didhelikaké saka umum.',
+	'abusefilter-edit-denied' => 'Sampéyan mungkin ora ndelok rincian saka saringan iki amarga kuwi pancen didhelikaké saka umum.', # Fuzzy
 	'abusefilter-edit-main' => 'Paramètèr saringan',
 	'abusefilter-edit-done-subtitle' => 'Saringan disunting',
-	'abusefilter-edit-done' => 'Sampéyan sukses nyimpen owahan Sampéyan nèng saringan $1.',
+	'abusefilter-edit-done' => 'Sampéyan sukses nyimpen owahan Sampéyan nèng saringan $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Ana kasalahan sintaks nèng saringan sing Sampéyan lebokaké.
 Weton saka parser yakuwi: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Sampéyan ora bisa nyunting saringan ini amarga iki kaisi siji utawa luwih laku sing diwatesi.
@@ -20395,10 +20395,10 @@ $messages['ka'] = array(
 	'abusefilter-edit-warn-preview' => 'არჩეული შეტყობინების წინასწარ გადახევა',
 	'abusefilter-edit-warn-edit' => 'შექმენით/შეასწორეთ არჩეული შეტყობინება',
 	'abusefilter-edit-tag-tag' => 'გამოყენებადი მონიშვნები (თითო ხაზზე)',
-	'abusefilter-edit-denied' => 'თქვენ ვერ იხილავთ დამატებით ინფორმაციას ამ ფილტრის შესახებ, რადგანაც ის დამალულია ჩვეულებრივი მომხმარებლებისთვის.',
+	'abusefilter-edit-denied' => 'თქვენ ვერ იხილავთ დამატებით ინფორმაციას ამ ფილტრის შესახებ, რადგანაც ის დამალულია ჩვეულებრივი მომხმარებლებისთვის.', # Fuzzy
 	'abusefilter-edit-main' => 'ფილტრის პარამეტრები',
 	'abusefilter-edit-done-subtitle' => 'ფილტრი გასწორებულია',
-	'abusefilter-edit-done' => 'თქვენ წარმატებით შეინახეთ ცვლილებები ფილტრ  $1-ში.',
+	'abusefilter-edit-done' => 'თქვენ წარმატებით შეინახეთ ცვლილებები ფილტრ  $1-ში.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'მოთხოვმოლ ფილტრში აღმოჩენილია სინტაქსური შეცდომა. პარსერმა გამოგზავნა ამგვარი შეტყობინება -  <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'თქვენ არ შეგიძლიათ არჩეული ფილტრის შესწორება რადგანაც იგი შეიცავს ერთ ან რამდენიმე შეზუდვას. გთხოვთ მიმართოთ შესაბამისი უფლებების მქონე მომხმარებელს.',
 	'abusefilter-edit-viewhistory' => 'ამ ფილტრის ისტორიის ჩვენაბა',
@@ -20847,10 +20847,10 @@ $messages['km'] = array(
 	'abusefilter-edit-warn-actions' => 'សកម្មភាព៖',
 	'abusefilter-edit-warn-preview' => 'មើល​ជាមុន​សារ​ដែល​បាន​ជ្រើសរើស​',
 	'abusefilter-edit-warn-edit' => 'បង្កើត​/កែ​សម្រួល​សារ​ដែល​បាន​ជ្រើស​យក​',
-	'abusefilter-edit-denied' => 'អ្នកមិនអាចមើលព័ត៌មានលំអិតអំពីតម្រងនេះទេ ព្រោះវាត្រូវបានលាក់មិនឱ្យមើលជាសាធារណៈ',
+	'abusefilter-edit-denied' => 'អ្នកមិនអាចមើលព័ត៌មានលំអិតអំពីតម្រងនេះទេ ព្រោះវាត្រូវបានលាក់មិនឱ្យមើលជាសាធារណៈ', # Fuzzy
 	'abusefilter-edit-main' => 'ប៉ារ៉ាម៉ែត្រតម្រង',
 	'abusefilter-edit-done-subtitle' => 'តម្រងត្រូវបានកែសម្រួល',
-	'abusefilter-edit-done' => 'អ្នកបានរក្សាទុកបំលាស់ប្ដូរចំពោះតម្រង $1 ដោយជោគជ័យ។',
+	'abusefilter-edit-done' => 'អ្នកបានរក្សាទុកបំលាស់ប្ដូរចំពោះតម្រង $1 ដោយជោគជ័យ។', # Fuzzy
 	'abusefilter-edit-viewhistory' => 'មើលប្រវត្តិរបស់តម្រងនេះ',
 	'abusefilter-edit-history' => 'ប្រវត្តិ៖',
 	'abusefilter-edit-check' => 'ពិនិត្យវាក្យសម្ពន្ធ(syntax)',
@@ -21198,7 +21198,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-warn-preview' => '선택한 메시지 미리 보기',
 	'abusefilter-edit-warn-edit' => '선택한 메시지를 만들기/편집하기',
 	'abusefilter-edit-tag-tag' => '적용할 태그 (1줄당 1개씩):',
-	'abusefilter-edit-denied' => '이 필터는 비공개로 설정되었기 때문에 이 필터의 자세한 사항을 볼 수 없습니다.',
+	'abusefilter-edit-denied' => '이 필터는 비공개로 설정되었기 때문에 이 필터의 자세한 사항을 볼 수 없습니다.', # Fuzzy
 	'abusefilter-edit-main' => '필터 변수',
 	'abusefilter-edit-done-subtitle' => '필터를 편집함',
 	'abusefilter-edit-done' => '필터 $1을(를) 편집하는 데 성공하였습니다.', # Fuzzy
@@ -21662,10 +21662,10 @@ Dä hät sing Jrenß övverschredde, un bei mieh wie $1% vun alle Oproofe jejref
 	'abusefilter-edit-warn-preview' => 'De ußjesoohte Nohreesch ier Vör-Ansich zeije',
 	'abusefilter-edit-warn-edit' => 'De ußjesohte Nohreesch aanlääje udder ändere',
 	'abusefilter-edit-tag-tag' => 'De Makeerunge för aan de Änderung ze pappe, jeede schön extra, en en Reih för sesch jeschrevve:',
-	'abusefilter-edit-denied' => 'Do kanns nit all de Einzelheite vun däm Fellter beloore, weil se för de Öffentleschkeit vershtoche sen.',
+	'abusefilter-edit-denied' => 'Do kanns nit all de Einzelheite vun däm Fellter beloore, weil se för de Öffentleschkeit vershtoche sen.', # Fuzzy
 	'abusefilter-edit-main' => 'Parrameetere för dä Felter',
 	'abusefilter-edit-done-subtitle' => 'Felter jeändert',
-	'abusefilter-edit-done' => 'Ding Änderunge aan däm Felter „$1“ sin jez ennjedraare.',
+	'abusefilter-edit-done' => 'Ding Änderunge aan däm Felter „$1“ sin jez ennjedraare.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'En däm Fellter, dä De aanjejovve häs, es ene Fähler dren.
 Dat Projramm för de Süntaks ze prööfe, säät: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Dä Felter hee darfs De nit ändere. Der Jrond is, dat winischßdens ein
@@ -21950,7 +21950,7 @@ $messages['ku-latn'] = array(
 	'abusefilter-topnav-home' => 'Mal',
 );
 
-/** Kirghiz (Кыргызча)
+/** Kyrgyz (Кыргызча)
  * @author Growingup
  */
 $messages['ky'] = array(
@@ -22294,7 +22294,7 @@ En huet méi wéi déi definiéiert Limit vun $1% vun den Aktiounen als schiedle
 	'abusefilter-edit-warn-actions' => 'Aktiounen:',
 	'abusefilter-edit-warn-preview' => 'De gewielte Message kucken ouni ofzespäicheren',
 	'abusefilter-edit-warn-edit' => 'De gewielte Systemmessage uleeën/änneren',
-	'abusefilter-edit-denied' => 'Dir kënnt Detailer vun dësem Filter net gesinn, well se virum Public verstoppt sinn',
+	'abusefilter-edit-denied' => 'Dir kënnt Detailer vun dësem Filter net gesinn, well se virum Public verstoppt sinn.',
 	'abusefilter-edit-main' => 'Parametere vum Filter',
 	'abusefilter-edit-done-subtitle' => 'Filter geännert',
 	'abusefilter-edit-done' => 'Dir hutt är Ännerunge vum Filter $1 ofgespäichert.', # Fuzzy
@@ -22723,10 +22723,10 @@ De gemiddelde louptied van de filtercontrole is $4ms, en deze gebroek $5 {{PLURA
 	'abusefilter-edit-warn-preview' => 'Veurvertuun geselkteerd brich',
 	'abusefilter-edit-warn-edit' => 'Maak/bewèrk gesillekteerd berich',
 	'abusefilter-edit-tag-tag' => 'Te zètte teg (eine perlien):',
-	'abusefilter-edit-denied' => 'De moogs de details dezer filter neet bekieke, omdet die neet zichber vrielik zeen.',
+	'abusefilter-edit-denied' => 'De moogs de details dezer filter neet bekieke, omdet die neet zichber vrielik zeen.', # Fuzzy
 	'abusefilter-edit-main' => 'Filterparamaeter',
 	'abusefilter-edit-done-subtitle' => 'Filter bewèrk',
-	'abusefilter-edit-done' => 'De wieziginge aan de filter $1 zeen opgeslage.',
+	'abusefilter-edit-done' => 'De wieziginge aan de filter $1 zeen opgeslage.', # Fuzzy
 	'abusefilter-edit-badsyntax' => "d'r Zit 'n syntaxisfout in de opgegaeve filter.
 De oetveur van de parser waas: <pre>$1</pre>",
 	'abusefilter-edit-restricted' => "Doe kins deze filter neet bewèrken ómdet dezen ein of mier beperkde hanjelinge bevat.
@@ -23168,10 +23168,10 @@ Jei įrašysite pakeitimus, jūs perrašysite visus pakeitimus, darytus po dabar
 	'abusefilter-edit-warn-preview' => 'Peržiūrėti pasirinktą pranešimą',
 	'abusefilter-edit-warn-edit' => 'Sukurti/Redaguoti pasirinktą pranešimą',
 	'abusefilter-edit-tag-tag' => 'Naudojamos žymės (po vieną eilutėje):',
-	'abusefilter-edit-denied' => 'Jūs negalite matyti šio filtro detalių, kadangi jis yra paslėptas nuo viešojo matymo.',
+	'abusefilter-edit-denied' => 'Jūs negalite matyti šio filtro detalių, kadangi jis yra paslėptas nuo viešojo matymo.', # Fuzzy
 	'abusefilter-edit-main' => 'Filtro parametrai',
 	'abusefilter-edit-done-subtitle' => 'Filtras pakeistas',
-	'abusefilter-edit-done' => 'Jūs sėkmingai išsaugojote savo pakeitimus filtrui $1.',
+	'abusefilter-edit-done' => 'Jūs sėkmingai išsaugojote savo pakeitimus filtrui $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Jūsų nurodytame filtre yra sintaksinė klaida.
 Išskleidus buvo gautas tekstas: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Jūs negalite redaguoti šio filtro, kadangi jis turi vieną arba daugiau uždraustų veiksmų.
@@ -23607,10 +23607,10 @@ Tas sasniedza $1% no atļauto darbību limita.",
 	'abusefilter-edit-warn-preview' => 'Priekšskatīt izvēlēto paziņojumu',
 	'abusefilter-edit-warn-edit' => 'Izveidot/Rediģēt izvēlēto paziņojumu',
 	'abusefilter-edit-tag-tag' => 'Piemērojamās iezīmes (pa vienai katrā rindiņā):',
-	'abusefilter-edit-denied' => 'Sīkāka informācija par šo filtru nav publiski pieejama.',
+	'abusefilter-edit-denied' => 'Sīkāka informācija par šo filtru nav publiski pieejama.', # Fuzzy
 	'abusefilter-edit-main' => 'Filtra parametri',
 	'abusefilter-edit-done-subtitle' => 'Filtra rediģēšana pabeigta',
-	'abusefilter-edit-done' => 'Jūs esat veiksmīgi saglabājis izmaiņas filtram $1.',
+	'abusefilter-edit-done' => 'Jūs esat veiksmīgi saglabājis izmaiņas filtram $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Norādītajā filtrā ir sintakses kļūda.
 Parsētāja izvads:<pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Tu nevari rediģēt šo filtru, jo tas satur vienu vai vairākas ierobežotās darbības.
@@ -24211,7 +24211,7 @@ Katarangan panyariang: $7 ($8)',
 :''(ciek per barih, pisahan jo koma)''",
 	'abusefilter-edit-main' => 'Parameter sariang',
 	'abusefilter-edit-done-subtitle' => 'Sariang lah disuntiang',
-	'abusefilter-edit-done' => 'Sanak barasil manyimpan parubahan panyariang $1.',
+	'abusefilter-edit-done' => 'Sanak barasil manyimpan parubahan panyariang $1.', # Fuzzy
 	'abusefilter-edit-history' => 'Riwayaik:',
 	'abusefilter-filter-log' => 'Parubahan panyariang tabaru',
 	'abusefilter-history' => 'Riwayaik parubahan Sariang Panyalahgunoan #$1',
@@ -24456,10 +24456,10 @@ $messages['mk'] = array(
 	'abusefilter-edit-warn-preview' => 'Прегледај избрана порака',
 	'abusefilter-edit-warn-edit' => 'Создај/Уреди избрана порака',
 	'abusefilter-edit-tag-tag' => 'Ознаки за применување (една по ред):',
-	'abusefilter-edit-denied' => 'Не можете да ги гледате подробностите на овој филтер бидејќи е скриен за јавноста.',
+	'abusefilter-edit-denied' => 'Не можете да ги гледате подробностите на овој филтер бидејќи е скриен за јавноста.', # Fuzzy
 	'abusefilter-edit-main' => 'Параметри на филтерот',
 	'abusefilter-edit-done-subtitle' => 'Филтерот е уреден',
-	'abusefilter-edit-done' => 'Успешно ги зачувавте промените во филтерот $1.',
+	'abusefilter-edit-done' => 'Успешно ги зачувавте промените во филтерот $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Во назначениот филтер има синтаксна грешка.
 Изводот од парсерот е: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Не можете да го уредувате овој филтер бидејќи содржи еден или повеќе ограничени дејствија.
@@ -24888,7 +24888,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-warn-preview' => 'തിരഞ്ഞെടുത്ത സന്ദേശത്തിന്റെ പ്രിവ്യൂ കാണുക',
 	'abusefilter-edit-warn-edit' => 'തിരഞ്ഞെടുത്ത സന്ദേശം സൃഷ്ടിക്കുക/തിരുത്തുക',
 	'abusefilter-edit-tag-tag' => 'ബാധകമാക്കേണ്ട റ്റാഗുകൾ (ഒരു വരിയിൽ ഒന്നു വീതം):',
-	'abusefilter-edit-denied' => 'താങ്കൾക്ക് ഈ അരിപ്പയുടെ വിവരങ്ങൾ അറിയാൻ സാദ്ധ്യമല്ല, അത് പൊതുദൃഷ്ടിയിൽ നിന്നും മറയ്ക്കപ്പെട്ടതാണ്.',
+	'abusefilter-edit-denied' => 'താങ്കൾക്ക് ഈ അരിപ്പയുടെ വിവരങ്ങൾ അറിയാൻ സാദ്ധ്യമല്ല, അത് പൊതുദൃഷ്ടിയിൽ നിന്നും മറയ്ക്കപ്പെട്ടതാണ്.', # Fuzzy
 	'abusefilter-edit-main' => 'അരിപ്പയ്ക്കായുള്ള ചരങ്ങൾ',
 	'abusefilter-edit-done-subtitle' => 'അരിപ്പ തിരുത്തി',
 	'abusefilter-edit-done' => 'അരിപ്പ $1-ൽ താങ്കൾ വരുത്തിയ മാറ്റങ്ങൾ വിജയകരമായി സേവ് ചെയ്തിരിക്കുന്നു.', # Fuzzy
@@ -25325,10 +25325,10 @@ $messages['mr'] = array(
 	'abusefilter-edit-warn-preview' => 'निवडलेल्या संदेशाची झलक',
 	'abusefilter-edit-warn-edit' => 'निवडलेला संदेश तयार करा/ संपादीत करा',
 	'abusefilter-edit-tag-tag' => 'खूणवण्याचे संदेश (प्रतीओळ एक):',
-	'abusefilter-edit-denied' => 'सार्वजनीक दृश्यतेपासून झाकलेले असल्यामुळे या गाळणीचे विवरण आपण पाहू शकत नाही.',
+	'abusefilter-edit-denied' => 'सार्वजनीक दृश्यतेपासून झाकलेले असल्यामुळे या गाळणीचे विवरण आपण पाहू शकत नाही.', # Fuzzy
 	'abusefilter-edit-main' => 'गाळणी प्राचले (पॅरामीटर्स)',
 	'abusefilter-edit-done-subtitle' => 'गाळणी संपादीत झाली',
-	'abusefilter-edit-done' => 'गाळणी $1 ला आपण केलेले बदल यशस्वीरित्या जतन झाले आहेत.',
+	'abusefilter-edit-done' => 'गाळणी $1 ला आपण केलेले बदल यशस्वीरित्या जतन झाले आहेत.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'आपण नमूद केलेल्या गाळणीत वाक्यरचनेची त्रूटी आहे. पार्सरक्रियेची निष्पत्ती अशी होती:<pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'आपणास या गाळणीच्या संपादनाची परवानगी नाही, कारण त्यात एक किंवा एकाधिक प्रतिबंधित क्रिया आहेत.प्रतिबंधित क्रिया जोडण्याची/संपादण्याची परवानगी असणाऱ्या सदस्यास, आपल्या वतीने, हा बदल करण्यास कृपया सांगा.',
 	'abusefilter-edit-viewhistory' => 'या गाळणीचा इतिहास पहा',
@@ -25729,10 +25729,10 @@ Ia telah mencapai had pemadanan lebih $1% tindakan.",
 	'abusefilter-edit-warn-preview' => 'Pralihat pesanan yang dipilih',
 	'abusefilter-edit-warn-edit' => 'Cipta/Sunting pesanan yang dipilih',
 	'abusefilter-edit-tag-tag' => 'Tag untuk digunakan (satu sebaris):',
-	'abusefilter-edit-denied' => 'Anda tidak boleh melihat butiran bagi penapis ini kerana ia disembunyikan daripada pandangan awam.',
+	'abusefilter-edit-denied' => 'Anda tidak boleh melihat butiran bagi penapis ini kerana ia disembunyikan daripada pandangan awam.', # Fuzzy
 	'abusefilter-edit-main' => 'Parameter penapis',
 	'abusefilter-edit-done-subtitle' => 'Penapis disunting',
-	'abusefilter-edit-done' => 'Anda berjaya menyimpan perubahan anda kepada penapis $1.',
+	'abusefilter-edit-done' => 'Anda berjaya menyimpan perubahan anda kepada penapis $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Terdapat ralat sintaks dalam penapis yang anda nyatakan.
 Output dari parser itu ialah: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Anda tidak boleh menyunting penapis ini kerana ia mengandungi tindakan yang tersekat.
@@ -26158,10 +26158,10 @@ Dan laħaq il-limitu massimu ta' korrispondenzi, pari għal $1% tal-azzjonijiet.
 	'abusefilter-edit-warn-preview' => 'Dehra proviżorja tal-messaġġ magħżul',
 	'abusefilter-edit-warn-edit' => 'Oħloq/Immodifika l-messaġġ magħżul',
 	'abusefilter-edit-tag-tag' => 'Tikketti xi żżid (waħda kull linja):',
-	'abusefilter-edit-denied' => "Ma tistax tara d-dettalji ta' dan il-filtru minħabba li huma moħbija mill-pubbliku.",
+	'abusefilter-edit-denied' => "Ma tistax tara d-dettalji ta' dan il-filtru minħabba li huma moħbija mill-pubbliku.", # Fuzzy
 	'abusefilter-edit-main' => 'Parametri tal-filtru',
 	'abusefilter-edit-done-subtitle' => 'Filtru modifikat',
-	'abusefilter-edit-done' => 'Il-modifiki tiegħek fil-filtru $1 ġew salvati.',
+	'abusefilter-edit-done' => 'Il-modifiki tiegħek fil-filtru $1 ġew salvati.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Hemm żball fis-sintassi fil-filtru li speċifikajt.
 Ir-riżultat tal-parser kien: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => "Ma tistax timmodifika dan il-filtru minħabba li għandu xi azzjonijiet riservati.
@@ -26504,7 +26504,7 @@ $messages['nah'] = array(
 	'abusefilter-topnav-home' => 'Pèwalòyàn',
 );
 
-/** Neapolitan (Nnapulitano)
+/** Neapolitan (Napulitano)
  * @author Chelin
  */
 $messages['nap'] = array(
@@ -26707,10 +26707,10 @@ Kjøretiden er i gjennomsnitt på $4ms, og det bruker {{PLURAL:$5|ett vilkår|$5
 	'abusefilter-edit-warn-preview' => 'Forhåndsvis valgt melding',
 	'abusefilter-edit-warn-edit' => 'Opprett/rediger valgt melding',
 	'abusefilter-edit-tag-tag' => 'Merkelapper å aktivere (en per linje):',
-	'abusefilter-edit-denied' => 'Du kan ikke se detaljene i dette filteret, fordi de er skjult fra offentligheten',
+	'abusefilter-edit-denied' => 'Du kan ikke se detaljene i dette filteret, fordi de er skjult fra offentligheten', # Fuzzy
 	'abusefilter-edit-main' => 'Filterparametere',
 	'abusefilter-edit-done-subtitle' => 'Filter redigert',
-	'abusefilter-edit-done' => 'Du har lagret endringene dine i filter $1.',
+	'abusefilter-edit-done' => 'Du har lagret endringene dine i filter $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Det er en syntaksfeil i filteret du anga. Resultatet fra fortolkeren var: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Du kan ikke redigere dette filteret, fordi det inneholder en eller flere begrensede handlinger.
 Spør en bruker med rettigheter til å legge til begrensede handlinger om å legge til endringen for deg.',
@@ -27107,10 +27107,10 @@ In’n Dörsnidd is de Looptied $4 ms.', # Fuzzy
 	'abusefilter-edit-warn-preview' => 'Vörschau vun de utwählt Systemnaricht',
 	'abusefilter-edit-warn-edit' => 'Utwählt Systemnaricht opstellen/ännern',
 	'abusefilter-edit-tag-tag' => 'totofögen Labels (een per Reeg):',
-	'abusefilter-edit-denied' => 'Du kannst de Details för dissen Filter nich ankieken, de sünd versteken.',
+	'abusefilter-edit-denied' => 'Du kannst de Details för dissen Filter nich ankieken, de sünd versteken.', # Fuzzy
 	'abusefilter-edit-main' => 'Filterparameters',
 	'abusefilter-edit-done-subtitle' => 'Filter ännert',
-	'abusefilter-edit-done' => 'Dien Ännern an’n Filter $1 sünd nu spiekert.',
+	'abusefilter-edit-done' => 'Dien Ännern an’n Filter $1 sünd nu spiekert.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'De vun di angeven Filter hett en Syntaxfehler.
 De Parserutgaav weer: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Du kannst dissen Filter nich ännern, dor sünd een oder mehr verbadene Akschonen in.
@@ -27936,10 +27936,10 @@ De gemiddelde looptijd van de filtercontrole is $4ms, en deze gebruikt $5 {{PLUR
 	'abusefilter-edit-warn-preview' => 'Voorvertoning geselecteerd bericht',
 	'abusefilter-edit-warn-edit' => 'Geselecteerd bericht aanmaken/bewerken',
 	'abusefilter-edit-tag-tag' => 'Toe te voegen labels (een per regel):',
-	'abusefilter-edit-denied' => 'U mag de details van dit filter niet bekijken, omdat die niet openbaar zijn',
+	'abusefilter-edit-denied' => 'U mag de details van dit filter niet bekijken, omdat die niet openbaar zijn', # Fuzzy
 	'abusefilter-edit-main' => 'Filterparameters',
 	'abusefilter-edit-done-subtitle' => 'Filter bewerkt',
-	'abusefilter-edit-done' => 'De wijzigingen aan het filter $1 zijn opgeslagen.',
+	'abusefilter-edit-done' => 'De wijzigingen aan het filter $1 zijn opgeslagen.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Er zit een syntaxisfout in de opgegeven filter.
 De uitvoer van de parser was: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'U kunt dit filter niet bewerken omdat die één of meerdere beperkte handelingen bevat.
@@ -28206,7 +28206,7 @@ Een korte beschrijving van de regel op basis waarvan je bewerking is tegengehoud
 De weergegeven statistieken gelden voor de meest recente versie van het filter.
 Als je je wijzigingen opslaat, overschrijf je alle wijzigingen die na deze versie zijn gemaakt.</strong> &bull;
 [[Special:AbuseFilter/history/$2|Terug naar de geschiedenis van dit filter]]',
-	'abusefilter-edit-denied' => 'Je mag de details van dit filter niet bekijken, omdat die niet publiekelijk zichtbaar zijn',
+	'abusefilter-edit-denied' => 'Je mag de details van dit filter niet bekijken, omdat die niet publiekelijk zichtbaar zijn', # Fuzzy
 	'abusefilter-edit-restricted' => 'Je kunt dit filter niet bewerken omdat die één of meerdere beperkte handelingen bevat.
 Vraag een gebruiker met toestemming om beperkte handelingen toe te voegen om de wijziging voor je te maken.',
 	'abusefilter-edit-bad-tags' => 'Een of meer van de labels die je hebt opgegeven is niet geldig.
@@ -28410,10 +28410,10 @@ Ei kort skildring av misbruksregelen handlinga di braut er: $1',
 	'abusefilter-edit-warn-preview' => 'Førehandsvis vald melding',
 	'abusefilter-edit-warn-edit' => 'Opprett/endra vald melding',
 	'abusefilter-edit-tag-tag' => 'Merke som skal verta lagde til (eitt per line):',
-	'abusefilter-edit-denied' => 'Du kan ikkje sjå detaljane i filteret sidan det er løynt for ålmenta.',
+	'abusefilter-edit-denied' => 'Du kan ikkje sjå detaljane i filteret sidan det er løynt for ålmenta.', # Fuzzy
 	'abusefilter-edit-main' => 'Filterparametrar',
 	'abusefilter-edit-done-subtitle' => 'Filter endra',
-	'abusefilter-edit-done' => 'Du har lagra endringane dine i filter $1.',
+	'abusefilter-edit-done' => 'Du har lagra endringane dine i filter $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Det finst ein syntaksfeil i filteret du oppgav. Resultatet frå fortolkaren var: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Du kan ikkje endra dette filteret, av di det inneheld éin eller fleire avgrensa handlingar.
 Spør ein brukar med løyve til å leggja til avgrensa handlingar om han kan å gjera endringa for deg.',
@@ -28847,10 +28847,10 @@ En mejana, la durada d'execucion d'aqueste filtre es de $4 ms e utiliza $5 condi
 	'abusefilter-edit-warn-preview' => 'Previsualizar los messatges seleccionats',
 	'abusefilter-edit-warn-edit' => 'Crear / modificar lo messatge seleccionat',
 	'abusefilter-edit-tag-tag' => "Etiqueta d'aplicar (una per linha) :",
-	'abusefilter-edit-denied' => "Podètz pas veire los detalhs d'aqueste filtre perque es amagat a la vista del public",
+	'abusefilter-edit-denied' => "Podètz pas veire los detalhs d'aqueste filtre perque es amagat a la vista del public", # Fuzzy
 	'abusefilter-edit-main' => 'Paramètres del filtre',
 	'abusefilter-edit-done-subtitle' => 'Filtre modificat',
-	'abusefilter-edit-done' => 'Avètz salvadas vòstras modificacions amb succès dins lo filtre $1.',
+	'abusefilter-edit-done' => 'Avètz salvadas vòstras modificacions amb succès dins lo filtre $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => "I a una error de sintaxi dins lo filtre qu'avètz especificat. Lo resultat del parser èra : <pre>$1</pre>",
 	'abusefilter-edit-restricted' => "Podètz pas modificar aqueste filtre perque conten una o mantuna accion restrenchas. Demandatz a un utilizaire qu'a lo drech de modificar los filtres amb d'accions restrenchas de far la modificacion per vos.",
 	'abusefilter-edit-viewhistory' => "Veire l’istoric d'aqueste filtre",
@@ -29245,10 +29245,10 @@ $messages['or'] = array(
 	'abusefilter-edit-warn-preview' => 'ବଛାଯାଇଥିବା ସନ୍ଦେଶସବୁର ଦେଖଣା',
 	'abusefilter-edit-warn-edit' => 'ବଛାଯାଇଥିବା ସନ୍ଦେଶ ତିଆରି/ସମ୍ପାଦନା କରିବେ',
 	'abusefilter-edit-tag-tag' => 'ଦେବାପାଇଁ ଚିହ୍ନ (ଧାଡ଼ି ପ୍ରତି ଗୋଟିଏ):',
-	'abusefilter-edit-denied' => 'ଆପଣ ଏହି ଏଣ୍ଟ୍ରି ଉପରେ ବିଶେଷ କିଛି ଜାଣିପାରିବେ ନାହିଁ କାରଣ ଏହା ସାଧାରଣ ନଜର ଆଢୁଆଳରେ ରଖାଯାଇଛି ।',
+	'abusefilter-edit-denied' => 'ଆପଣ ଏହି ଏଣ୍ଟ୍ରି ଉପରେ ବିଶେଷ କିଛି ଜାଣିପାରିବେ ନାହିଁ କାରଣ ଏହା ସାଧାରଣ ନଜର ଆଢୁଆଳରେ ରଖାଯାଇଛି ।', # Fuzzy
 	'abusefilter-edit-main' => 'ଛଣା ନିୟାମକସମୂହ',
 	'abusefilter-edit-done-subtitle' => 'ଛଣାଟିକୁ ବଦଳାଗଲା',
-	'abusefilter-edit-done' => 'ଆପଣ $1 ଛଣାରେ ଆପଣଙ୍କ ବଦଳଗୁଡିକୁ ସଫଳଭାବେ ସାଇତିଛନ୍ତି ।',
+	'abusefilter-edit-done' => 'ଆପଣ $1 ଛଣାରେ ଆପଣଙ୍କ ବଦଳଗୁଡିକୁ ସଫଳଭାବେ ସାଇତିଛନ୍ତି ।', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'ଆପଣ ଦେଇଥିବା ଛଣାରେ ଏକ ସିଣ୍ଟାକ୍ସ ଭୁଲ ରହିଛି ।
 ପାର୍ସରରେ ଥିବା ଫଳାଫଳ: <pre>$1</pre>',
 	'abusefilter-edit-viewhistory' => 'ଏହି ଛଣାର ଇତିହାସ ଦେଖିବେ',
@@ -29824,10 +29824,10 @@ Im Schnidd hodda dodvu $4 ms un $5 {{PLURAL:$5|Bedingung|Bedingunge}} vunde Hegs
 	'abusefilter-edit-warn-preview' => 'Voaschau vunde gwelde Sischdemnochrischd',
 	'abusefilter-edit-warn-edit' => "Gweldi Nochrischd easchdelle/b'aawaide",
 	'abusefilter-edit-tag-tag' => 'Edikedde vawende (äns bro Zail):',
-	'abusefilter-edit-denied' => "Du konschda Nejares iwade Siewb ned õgugge, s'isch vaschdeggld.",
+	'abusefilter-edit-denied' => "Du konschda Nejares iwade Siewb ned õgugge, s'isch vaschdeggld.", # Fuzzy
 	'abusefilter-edit-main' => 'Siewb Kenngreeß',
 	'abusefilter-edit-done-subtitle' => "Siewb g'änad",
-	'abusefilter-edit-done' => 'Du hoschd die Ännarunge õm Siewb $1 gschbaischad.',
+	'abusefilter-edit-done' => 'Du hoschd die Ännarunge õm Siewb $1 gschbaischad.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Doi Siewb hoddn Sindaxfehla.
 De Parser hodd ausgewwe: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Du konschd õn dem Siewb ned schaffe, waila vabodene Maßnõhme hodd.
@@ -30264,10 +30264,10 @@ wpisów w rejestrze nadużyć.',
 	'abusefilter-edit-warn-preview' => 'Podgląd wybranego komunikatu',
 	'abusefilter-edit-warn-edit' => 'Utwórz lub edytuj wybrany komunikat',
 	'abusefilter-edit-tag-tag' => 'Oznaczenia do zastosowania (po jednym w wierszu):',
-	'abusefilter-edit-denied' => 'Nie możesz zobaczyć szczegółów tego filtru, ponieważ jest ukryty przed publicznym wglądem',
+	'abusefilter-edit-denied' => 'Nie możesz zobaczyć szczegółów tego filtru, ponieważ jest ukryty przed publicznym wglądem', # Fuzzy
 	'abusefilter-edit-main' => 'Ustawienia filtru',
 	'abusefilter-edit-done-subtitle' => 'Filtr został zmodyfikowany',
-	'abusefilter-edit-done' => 'Zmiany w filtrze $1 zostały zapisane.',
+	'abusefilter-edit-done' => 'Zmiany w filtrze $1 zostały zapisane.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'W edytowanym przez Ciebie filtrze wystąpił błąd składni. Parser zwrócił: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Nie możesz zmienić ustawień tego filtru, ponieważ zawiera on jedną lub więcej zastrzeżoną operację. Zwróć się do użytkownika z właściwymi uprawnieniami o wykonanie tej zmiany.',
 	'abusefilter-edit-viewhistory' => 'Zobacz historię tego filtru',
@@ -30694,10 +30694,10 @@ A l'era rivà al lìmit d'identificassion ëd pi che $1% dj'assion.",
 	'abusefilter-edit-warn-preview' => 'Previsualisé ël mëssagi selessionà',
 	'abusefilter-edit-warn-edit' => 'Creé o modifiché ël mëssagi selessionà',
 	'abusefilter-edit-tag-tag' => 'Tichëtte da apliché (un-a për linia):',
-	'abusefilter-edit-denied' => "It peule pa vardé ij detaj dë sto filtr, përchè a l'é stërmà da la vista pùblica.",
+	'abusefilter-edit-denied' => "It peule pa vardé ij detaj dë sto filtr, përchè a l'é stërmà da la vista pùblica.", # Fuzzy
 	'abusefilter-edit-main' => 'Paràmetr dël filtr',
 	'abusefilter-edit-done-subtitle' => 'Filtr modificà',
-	'abusefilter-edit-done' => "A l'ha salvà për da bin soe modìfiche al fìlter $1.",
+	'abusefilter-edit-done' => "A l'ha salvà për da bin soe modìfiche al fìlter $1.", # Fuzzy
 	'abusefilter-edit-badsyntax' => "A-i é n'eror ëd sintassi ant ël filtr ch'it l'has specificà.
 L'arzultà dal parser a l'era: <pre>$1</pre>",
 	'abusefilter-edit-restricted' => "A peul pa modifiché ës filtr, përchè a conten un-a o pi assion limità.
@@ -31267,10 +31267,10 @@ O filtro atingiu o limite de correspondência com mais de $1% de ações.",
 	'abusefilter-edit-warn-preview' => 'Antever mensagem selecionada',
 	'abusefilter-edit-warn-edit' => 'Criar/Editar mensagem selecionada',
 	'abusefilter-edit-tag-tag' => 'Etiquetas a aplicar (uma por linha):',
-	'abusefilter-edit-denied' => 'Não pode ver detalhes deste filtro, porque ele está ocultado de vista pública',
+	'abusefilter-edit-denied' => 'Não pode ver detalhes deste filtro, porque ele está ocultado de vista pública', # Fuzzy
 	'abusefilter-edit-main' => 'Parâmetros do filtro',
 	'abusefilter-edit-done-subtitle' => 'Filtro editado',
-	'abusefilter-edit-done' => 'Gravou com sucesso as alterações ao filtro $1.',
+	'abusefilter-edit-done' => 'Gravou com sucesso as alterações ao filtro $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Há um erro de sintaxe no filtro que especificou.
 O resultado de saída do analisador foi: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Não pode editar este filtro, porque ele contém uma ou mais ações restritas.
@@ -31713,10 +31713,10 @@ O filtro atingiu o limite de correspondência com mais de $1% de ações.",
 	'abusefilter-edit-warn-preview' => 'Prever mensagem selecionada',
 	'abusefilter-edit-warn-edit' => 'Criar/Editar mensagem selecionada',
 	'abusefilter-edit-tag-tag' => 'Etiquetas a aplicar (uma por linha):',
-	'abusefilter-edit-denied' => 'Você não pode ver detalhes deste filtro, porque ele está ocultado da visualização pública',
+	'abusefilter-edit-denied' => 'Você não pode ver detalhes deste filtro, porque ele está ocultado da visualização pública', # Fuzzy
 	'abusefilter-edit-main' => 'Parâmetros do filtro',
 	'abusefilter-edit-done-subtitle' => 'Filtro editado',
-	'abusefilter-edit-done' => 'Você salvou com sucesso as suas alterações no filtro $1.',
+	'abusefilter-edit-done' => 'Você salvou com sucesso as suas alterações no filtro $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Há um erro de sintaxe no filtro que especificou.
 O resultado de saída do analisador foi: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Você não pode editar este filtro, porque ele contém uma ou mais ações restritas.
@@ -32175,10 +32175,10 @@ Dacă salvați modificările dumneavoastră, veți suprascrie toate modificăril
 	'abusefilter-edit-warn-preview' => 'Previzualizați mesajul ales',
 	'abusefilter-edit-warn-edit' => 'Creați/Editați mesajul selectat',
 	'abusefilter-edit-tag-tag' => 'Marcaje de aplicat (unul pe linie):',
-	'abusefilter-edit-denied' => 'S-ar putea să nu vezi detaliile acestui filtru, deoarece a fost ascuns publicului',
+	'abusefilter-edit-denied' => 'S-ar putea să nu vezi detaliile acestui filtru, deoarece a fost ascuns publicului', # Fuzzy
 	'abusefilter-edit-main' => 'Parametrii filtrului',
 	'abusefilter-edit-done-subtitle' => 'Filtru modificat',
-	'abusefilter-edit-done' => 'Modificările filtrului $1 au fost salvate cu succes.',
+	'abusefilter-edit-done' => 'Modificările filtrului $1 au fost salvate cu succes.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Există o eroare de sintaxă în filtrul specificat. Analizatorul a întors eroarea: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Nu puteți modifica acest filtru, deoarece conține una sau mai multe acțiuni restricționate.
 Rugați un utilizator cu permisiuni de adăugare a acțiunilor restricționate să efectueze modificarea pentru dumneavoastră.',
@@ -32603,10 +32603,10 @@ Hagghe raggiunde 'u limite de matching cchiù abbinà $1% de le aziune.",
 	'abusefilter-edit-warn-preview' => "Fa l'andeprime d'u messagge scacchiate",
 	'abusefilter-edit-warn-edit' => "Ccreje/Cange 'u messagge scacchiate",
 	'abusefilter-edit-tag-tag' => 'Etichette da applecà (une pè righe):',
-	'abusefilter-edit-denied' => "L'utinde non ge pòte uardà le dettaglie de quiste filtre, piccè jè scunnute da 'a viste d'u pubbleche.",
+	'abusefilter-edit-denied' => "L'utinde non ge pòte uardà le dettaglie de quiste filtre, piccè jè scunnute da 'a viste d'u pubbleche.", # Fuzzy
 	'abusefilter-edit-main' => "Parametre d'u filtre",
 	'abusefilter-edit-done-subtitle' => 'Filtre cangiate',
-	'abusefilter-edit-done' => "Tu hé salvate cu successe le cangiaminde toje ad 'u filtre $1.",
+	'abusefilter-edit-done' => "Tu hé salvate cu successe le cangiaminde toje ad 'u filtre $1.", # Fuzzy
 	'abusefilter-edit-badsyntax' => "Se iacchie 'nu errore de sindasse jndr'à lle filtre specifecate.
 L'uscite d'u parser jè state: <pre>$1</pre>",
 	'abusefilter-edit-restricted' => "Non g'ète possibbele cangià 'u filtre, piccè jidde tène une o cchiù aziune restrette.
@@ -33055,7 +33055,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-warn-preview' => 'Предпросмотр выбранного сообщения',
 	'abusefilter-edit-warn-edit' => 'Создать/Изменить выбранное сообщение',
 	'abusefilter-edit-tag-tag' => 'Применяемые метки (по одной на строку):',
-	'abusefilter-edit-denied' => 'Вы не можете просмотреть подробную информацию об этом фильтре, так как она скрыта от обычных участников.',
+	'abusefilter-edit-denied' => 'Вы не можете просмотреть подробную информацию об этом фильтре, так как она скрыта от обычных участников.', # Fuzzy
 	'abusefilter-edit-main' => 'Параметры фильтра',
 	'abusefilter-edit-done-subtitle' => 'Фильтр исправлен',
 	'abusefilter-edit-done' => 'Вы успешно сохранили изменения в фильтре $1.', # Fuzzy
@@ -33481,10 +33481,10 @@ $messages['rue'] = array(
 	'abusefilter-edit-warn-preview' => 'Зобразити нагляд выбраного повідомлїня',
 	'abusefilter-edit-warn-edit' => 'Створити/едітовати выбране повідомлїня',
 	'abusefilter-edit-tag-tag' => 'Придати значкы (єдна на рядок):',
-	'abusefilter-edit-denied' => 'У того філтру сі не можете посмотрити детайлы, бо были схованы перед публічном приступом.',
+	'abusefilter-edit-denied' => 'У того філтру сі не можете посмотрити детайлы, бо были схованы перед публічном приступом.', # Fuzzy
 	'abusefilter-edit-main' => 'Параметры філтра',
 	'abusefilter-edit-done-subtitle' => 'Філтер зміненый',
-	'abusefilter-edit-done' => 'Успішно сьте {{GENDER:|уложыв|уложыла|уложыли}} зміны філтру $1.',
+	'abusefilter-edit-done' => 'Успішно сьте {{GENDER:|уложыв|уложыла|уложыли}} зміны філтру $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Заданый філтер обсягує сінтаксічну хыбу. Выступ з парсеру: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Не маєте права едітовати тот філтер, бо обсягує єдно або веце опатрїнь з обмедженым приступом.
 Пожадайте хоснователя з правами придавати такы опатрїня, абы потребну зміну выконав намісто вас.',
@@ -34071,10 +34071,10 @@ $messages['sah'] = array(
 	'abusefilter-edit-warn-preview' => 'Талбыт суруккун ыытыах иннинэ көрүү',
 	'abusefilter-edit-warn-edit' => 'Талбыт суруккун уларытыы/саҥаттан суруйуу',
 	'abusefilter-edit-tag-tag' => 'Туттуллар бэлиэлэр (устуруокаҕа биирдии):',
-	'abusefilter-edit-denied' => 'Бу сиидэ туһунан сиһилии көрөр кыаҕыҥ суох, тоҕо диэтэххэ ол көннөрү кыттааччыларга көстүбэт.',
+	'abusefilter-edit-denied' => 'Бу сиидэ туһунан сиһилии көрөр кыаҕыҥ суох, тоҕо диэтэххэ ол көннөрү кыттааччыларга көстүбэт.', # Fuzzy
 	'abusefilter-edit-main' => 'Сиидэ туруоруулара',
 	'abusefilter-edit-done-subtitle' => 'Сиидэ уларыйда',
-	'abusefilter-edit-done' => '$1 сиидэҕэ уларытыы оҥорбутуҥ сөпкө бигэргэтилиннэ.',
+	'abusefilter-edit-done' => '$1 сиидэҕэ уларытыы оҥорбутуҥ сөпкө бигэргэтилиннэ.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Ыйыллыбыт сиидэҕэ синтаксис сыыһата булуллубут.
 Парсер бу биллэриини таһаарда: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Бу сиидэни уларытар кыаҕыҥ суох, тоҕо диэтэххэ биир эбэтэр хас да хааччахтыыр дьайыылаах.
@@ -34634,10 +34634,10 @@ A brief description of the abuse rule which your action matched is: $1", # Fuzzy
 	'abusefilter-edit-warn-preview' => 'තෝරාගත් පණිවුඩය පෙන්වන්න',
 	'abusefilter-edit-warn-edit' => 'තෝරාගත් පණිවුඩය තනන්න/සංස්කරණය කරන්න',
 	'abusefilter-edit-tag-tag' => 'යෙදීමට ඇති ටැගයන් (පේළියකට එකයි):',
-	'abusefilter-edit-denied' => 'ඔබ විසින් මෙම පෙරහන සඳහා තොරතුරු නැරඹීම නොකළ යුතුය, මන්ද එය පොදු දර්ශනයෙන් සඟවා ඇත.',
+	'abusefilter-edit-denied' => 'ඔබ විසින් මෙම පෙරහන සඳහා තොරතුරු නැරඹීම නොකළ යුතුය, මන්ද එය පොදු දර්ශනයෙන් සඟවා ඇත.', # Fuzzy
 	'abusefilter-edit-main' => 'පෙරහනේ පරාමිතීන්',
 	'abusefilter-edit-done-subtitle' => 'පෙරහන සංස්කරණය කරන ලදී',
-	'abusefilter-edit-done' => 'ඔබ විසින් $1 පෙරහන වෙත ඔබේ වෙනස්කම් සාර්ථකව සුරකින ලදී.',
+	'abusefilter-edit-done' => 'ඔබ විසින් $1 පෙරහන වෙත ඔබේ වෙනස්කම් සාර්ථකව සුරකින ලදී.', # Fuzzy
 	'abusefilter-edit-viewhistory' => 'මෙම පෙරහනේ ඉතිහාසය නරඹන්න',
 	'abusefilter-edit-history' => 'ඉතිහාසය:',
 	'abusefilter-edit-check' => 'කාරක රීති පිරික්සන්න',
@@ -35022,10 +35022,10 @@ Priemerný čas behu je $4 ms a spotrebuje $5 {{PLURAL:$5|podmienku|podmienky|po
 	'abusefilter-edit-warn-preview' => 'Zobraziť náhľad vybranej správy',
 	'abusefilter-edit-warn-edit' => 'Vytvoriť/upraviť vybranú správu',
 	'abusefilter-edit-tag-tag' => 'Označiť nasledovnými značkami (jednu na riadok):',
-	'abusefilter-edit-denied' => 'Nemôžete zobraziť podrobnosti toho filtra, pretože jeho verejné zobrazovanie je vypnuté',
+	'abusefilter-edit-denied' => 'Nemôžete zobraziť podrobnosti toho filtra, pretože jeho verejné zobrazovanie je vypnuté', # Fuzzy
 	'abusefilter-edit-main' => 'Parametre filtra',
 	'abusefilter-edit-done-subtitle' => 'Filter bol upravený',
-	'abusefilter-edit-done' => 'Úspešne ste uložili zmeny filtra $1.',
+	'abusefilter-edit-done' => 'Úspešne ste uložili zmeny filtra $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Filter, ktorý ste zadali, obsahuje syntaktickú chybu. Výstup syntaktického analyzátora: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Nemôžete upravovať tento filter, pretože obsahuje jednu alebo viac obmedzených operácií. Prosím, požiadajte používateľa s potrebným oprávnením, aby za vás vykonal túto zmenu.',
 	'abusefilter-edit-viewhistory' => 'Zobraziť históriu tohto filtra',
@@ -35450,10 +35450,10 @@ Dosegel je mejo ujemanja več kot $1 % dejanj.",
 	'abusefilter-edit-warn-preview' => 'Predogled izbranega sporočila',
 	'abusefilter-edit-warn-edit' => 'Ustvari/Uredi izbrano sporočilo',
 	'abusefilter-edit-tag-tag' => 'Uporabljene oznake (ena na vrstico):',
-	'abusefilter-edit-denied' => 'Ne morete si ogledati podrobnosti tega filtra, ker je skrit pred javnim vpogledom.',
+	'abusefilter-edit-denied' => 'Ne morete si ogledati podrobnosti tega filtra, ker je skrit pred javnim vpogledom.', # Fuzzy
 	'abusefilter-edit-main' => 'Parametri filtra',
 	'abusefilter-edit-done-subtitle' => 'Filter je urejen',
-	'abusefilter-edit-done' => 'Uspešno ste shranili spremembe filtra $1.',
+	'abusefilter-edit-done' => 'Uspešno ste shranili spremembe filtra $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'V navedenem filtru je skladenjska napaka.
 Rezultat razčlenjevalnika je bil: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Ne morete urediti tega filtra, ker vsebuje eno ali več omejenih dejanj.
@@ -35877,10 +35877,10 @@ Ka arritur kufirin e përputhjes së më shumë se $1% veprimeve.",
 	'abusefilter-edit-warn-preview' => 'Inspekto porosinë e selektuar',
 	'abusefilter-edit-warn-edit' => 'Krijo / Redakto porosinë e zgjedhur',
 	'abusefilter-edit-tag-tag' => 'Etiketimet për aplikim (një për rresht):',
-	'abusefilter-edit-denied' => 'Ju mund të mos i shihni detajet e këtij filtri, sepse është e fshehur për vështrim publik',
+	'abusefilter-edit-denied' => 'Ju mund të mos i shihni detajet e këtij filtri, sepse është e fshehur për vështrim publik', # Fuzzy
 	'abusefilter-edit-main' => 'Parametrat e filterit',
 	'abusefilter-edit-done-subtitle' => 'Filtri i redaktuar',
-	'abusefilter-edit-done' => 'Ju keni ruajtur me sukses ndryshimet tuaja për filterin $1 .',
+	'abusefilter-edit-done' => 'Ju keni ruajtur me sukses ndryshimet tuaja për filterin $1 .', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Është gabim sintakse në filtrin që keni specifikuar.
 Prodhimi nga analiza gramatikore ishte: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Nuk mund të redaktoni këtë filtër, sepse përmban një apo më shumë veprime të kufizuara.
@@ -36206,10 +36206,10 @@ $messages['sr-ec'] = array(
 	'abusefilter-edit-warn-preview' => 'Прегледај изабрану поруку',
 	'abusefilter-edit-warn-edit' => 'Направи/уреди изабрану поруку',
 	'abusefilter-edit-tag-tag' => 'Ознаке (једна по реду):',
-	'abusefilter-edit-denied' => 'Можда нећете видети детаље овог филтера јер је сакривен из јавног приказа.',
+	'abusefilter-edit-denied' => 'Можда нећете видети детаље овог филтера јер је сакривен из јавног приказа.', # Fuzzy
 	'abusefilter-edit-main' => 'Параметри филтера',
 	'abusefilter-edit-done-subtitle' => 'Филтер је уређен',
-	'abusefilter-edit-done' => 'Успешно сте сачували измене филтера $1.',
+	'abusefilter-edit-done' => 'Успешно сте сачували измене филтера $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Наведени филтер има синтаксну грешку.
 Излаз из рашчлањивача био је: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Не можете уређивати овај филтер јер садржи једну или више ограничених радњи.
@@ -36565,10 +36565,10 @@ Dostignuto je ograničenje podudaranja s više od $1% radnji.",
 	'abusefilter-edit-warn-preview' => 'Pregledaj izabranu poruku',
 	'abusefilter-edit-warn-edit' => 'Napravi/uredi izabranu poruku',
 	'abusefilter-edit-tag-tag' => 'Oznake (jedna po redu):',
-	'abusefilter-edit-denied' => 'Možda nećete videti detalje ovog filtera jer je sakriven iz javnog prikaza.',
+	'abusefilter-edit-denied' => 'Možda nećete videti detalje ovog filtera jer je sakriven iz javnog prikaza.', # Fuzzy
 	'abusefilter-edit-main' => 'Parametri filtera',
 	'abusefilter-edit-done-subtitle' => 'Filter izmenjen',
-	'abusefilter-edit-done' => 'Uspešno ste sačuvali izmene filtera $1.',
+	'abusefilter-edit-done' => 'Uspešno ste sačuvali izmene filtera $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Navedeni filter ima sintaksnu grešku.
 Izlaz iz raščlanjivača bio je: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Ne možete uređivati ovaj filter jer sadrži jednu ili više ograničenih radnji.
@@ -36908,10 +36908,10 @@ In n Truchsnit bedruuch hiere Beoarbaidengstied $4 ms un do benöödigeden $5 {{
 	'abusefilter-edit-throttle-groups' => "Räägele foar ju Gruppendröisel:
 :''(een pro Riege, ferbiende mäd Kommata)''",
 	'abusefilter-edit-warn-message' => 'Systemättergjucht foar ju Woarskauenge:',
-	'abusefilter-edit-denied' => 'Du koast do Details fon disse Sieuwe nit ienkiekje, deeruum dät do ferstopped sunt',
+	'abusefilter-edit-denied' => 'Du koast do Details fon disse Sieuwe nit ienkiekje, deeruum dät do ferstopped sunt', # Fuzzy
 	'abusefilter-edit-main' => 'Sieuweparametere',
 	'abusefilter-edit-done-subtitle' => 'Sieuwe beoarbaided',
-	'abusefilter-edit-done' => 'Dien Annerengen an ju Sieuwe $1 wuuden mäd Ärfoulch spiekerd.',
+	'abusefilter-edit-done' => 'Dien Annerengen an ju Sieuwe $1 wuuden mäd Ärfoulch spiekerd.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Ju fon die spezifizierde Sieuwe änthaalt n Syntaxfailer. Ju Parseruutgoawe lutte: <pre>$1</pre>',
 	'abusefilter-edit-viewhistory' => 'Versionsgeskichte fon ju Sieuwe bekiekje',
 	'abusefilter-edit-history' => 'Geskichte:',
@@ -37239,10 +37239,10 @@ missbrukslogg-poster.',
 	'abusefilter-edit-warn-preview' => 'Förhandsgranska valt meddelande',
 	'abusefilter-edit-warn-edit' => 'Skapa/redigera valt meddelande',
 	'abusefilter-edit-tag-tag' => 'Märken att lägga på (en per rad):',
-	'abusefilter-edit-denied' => 'Du kan inte se detta filters detaljer eftersom de är dolda för allmänheten.',
+	'abusefilter-edit-denied' => 'Du kan inte se detta filters detaljer eftersom de är dolda för allmänheten.', # Fuzzy
 	'abusefilter-edit-main' => 'Filterparametrar',
 	'abusefilter-edit-done-subtitle' => 'Filter redigerat',
-	'abusefilter-edit-done' => 'Du har sparat dina ändringar i filter $1.',
+	'abusefilter-edit-done' => 'Du har sparat dina ändringar i filter $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Det är ett syntaxfel i filtret du angav. Resultatet från parsern var: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Du kan inte ändra detta filter eftersom det innehåller en eller fler begränsade handlingar. Vänligen fråga en användare med behörighet att lägga till begränsade handlingar om han eller hon kan göra ändringen åt dig.',
 	'abusefilter-edit-viewhistory' => 'Visa det här filtrets historik',
@@ -37527,7 +37527,7 @@ $messages['sw'] = array(
 	'abusefilter-edit-warn-actions' => 'Vitendo:',
 	'abusefilter-edit-main' => 'Vigezo vya chujio',
 	'abusefilter-edit-done-subtitle' => 'Chujio imehaririwa',
-	'abusefilter-edit-done' => 'Umefaulu kuhifadhi mabadiliko yako kwa chujio $1.',
+	'abusefilter-edit-done' => 'Umefaulu kuhifadhi mabadiliko yako kwa chujio $1.', # Fuzzy
 	'abusefilter-edit-viewhistory' => 'Tazama historia ya chujio hii',
 	'abusefilter-edit-history' => 'Historia:',
 	'abusefilter-edit-check' => 'Angalia sintaksia',
@@ -37777,10 +37777,10 @@ Filter description: $7 ($8)',
 	'abusefilter-edit-warn-actions' => 'செயல்கள்:',
 	'abusefilter-edit-warn-preview' => 'தேர்வு செய்த செய்தியின் முன்தோற்றம் காட்டு',
 	'abusefilter-edit-warn-edit' => 'தேர்வு செய்த செய்தியை உருவாக்கவும்/தொகுக்கவும்',
-	'abusefilter-edit-denied' => 'இந்த வடிகட்டியின் விவரங்களை நீங்கள் பார்க்க இயலாது, ஏனெனில் இது பொதுப் பார்வையில் இருந்து மறைக்கப்பட்டுள்ளது.',
+	'abusefilter-edit-denied' => 'இந்த வடிகட்டியின் விவரங்களை நீங்கள் பார்க்க இயலாது, ஏனெனில் இது பொதுப் பார்வையில் இருந்து மறைக்கப்பட்டுள்ளது.', # Fuzzy
 	'abusefilter-edit-main' => 'வடிகட்டி அளபுருக்கள்',
 	'abusefilter-edit-done-subtitle' => 'வடிகட்டி தொகுக்கப்பட்டது',
-	'abusefilter-edit-done' => 'வடிகட்டி $1-க்கான உங்கள் மாற்றங்களை நீங்கள் வெற்றிகரமாக சேமித்துள்ளீர்கள்.',
+	'abusefilter-edit-done' => 'வடிகட்டி $1-க்கான உங்கள் மாற்றங்களை நீங்கள் வெற்றிகரமாக சேமித்துள்ளீர்கள்.', # Fuzzy
 	'abusefilter-edit-viewhistory' => 'இந்த வடிப்பான் வரலாற்றை காண்',
 	'abusefilter-edit-history' => 'வரலாறு:',
 	'abusefilter-edit-check' => 'தொடரமைப்பை சரிபார்க்கவும்',
@@ -38087,10 +38087,10 @@ $messages['te'] = array(
 	'abusefilter-edit-warn-preview' => 'ఎంచుకున్న సందేశాన్ని మునుజూడండి',
 	'abusefilter-edit-warn-edit' => 'ఎంచుకున్న సందేశాన్ని సృష్టించండి/మార్చండి',
 	'abusefilter-edit-tag-tag' => 'వర్తింపజేయాల్సిన ట్యాగులు (పంక్తికి ఒకటి చొప్పున):',
-	'abusefilter-edit-denied' => 'ఈ వడపోత యొక్క వివరాలని మీరు చూడలేరు, ఎందుకంటే దీన్ని బహిరంగ వీక్షణం నుండి దాచేసారు.',
+	'abusefilter-edit-denied' => 'ఈ వడపోత యొక్క వివరాలని మీరు చూడలేరు, ఎందుకంటే దీన్ని బహిరంగ వీక్షణం నుండి దాచేసారు.', # Fuzzy
 	'abusefilter-edit-main' => 'వడపోత పరామితులు',
 	'abusefilter-edit-done-subtitle' => 'వడపోతని మార్చారు',
-	'abusefilter-edit-done' => '$1 వడపోతకి మీ మార్పులని విజయవంతగా భద్రపరిచారు.',
+	'abusefilter-edit-done' => '$1 వడపోతకి మీ మార్పులని విజయవంతగా భద్రపరిచారు.', # Fuzzy
 	'abusefilter-edit-viewhistory' => 'ఈ వడపోత యొక్క చరిత్రని చూడండి',
 	'abusefilter-edit-history' => 'చరిత్ర:',
 	'abusefilter-edit-badfilter' => 'మీరు పేర్కొన్న వడపోత లేనే లేదు',
@@ -38460,10 +38460,10 @@ $messages['th'] = array(
 	'abusefilter-edit-warn-preview' => 'แสดงตัวอย่างข้อความที่เลือก',
 	'abusefilter-edit-warn-edit' => 'สร้าง/แก้ไขข้อความที่เลือก',
 	'abusefilter-edit-tag-tag' => 'ป้ายกำกับที่ใช้ (หนึ่งป้ายต่อบรรทัด):',
-	'abusefilter-edit-denied' => 'คุณไม่สามารถดูรายละเอียดของตัวกรองนี้ได้ เพราะถูกซ่อนมิให้สาธารณะชม',
+	'abusefilter-edit-denied' => 'คุณไม่สามารถดูรายละเอียดของตัวกรองนี้ได้ เพราะถูกซ่อนมิให้สาธารณะชม', # Fuzzy
 	'abusefilter-edit-main' => 'ตัวแปรเสริมตัวกรอง',
 	'abusefilter-edit-done-subtitle' => 'แก้ไขตัวกรองแล้ว',
-	'abusefilter-edit-done' => 'คุณบันทึกการเปลี่ยนแปลงไปยังตัวกรอง $1 สำเร็จ',
+	'abusefilter-edit-done' => 'คุณบันทึกการเปลี่ยนแปลงไปยังตัวกรอง $1 สำเร็จ', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'มีข้อผิดพลาดของวายกสัมพันธ์ในตัวกรองที่คุณระบุ ตัวแจงส่วนส่งออกคือ: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'คุณไม่สามารถแก้ไขตัวกรองนี้ เพราะพบการกระทำที่ถูกจำกัด
 โปรดขอให้ผู้ใช้ที่ได้รับอนุญาตเพิ่มการกระทำที่จำกัดแทนคุณ',
@@ -38818,10 +38818,10 @@ Ol hereketleriň %$1 sanysyndan artykmaç gabat gelme çägine baryp ýetdi.",
 	'abusefilter-edit-warn-preview' => 'Saýlanylan habarlaşygy deslapky synla',
 	'abusefilter-edit-warn-edit' => 'Saýlanylan habarlaşygy döret/redaktirle',
 	'abusefilter-edit-tag-tag' => 'Berjaý edilmeli tegler (her setire biri):',
-	'abusefilter-edit-denied' => 'Bu filtr üçin jikme-jiklikleri görüp bilmeýärsiňiz, çünki jemgyýetçilikden gizlenilipdir',
+	'abusefilter-edit-denied' => 'Bu filtr üçin jikme-jiklikleri görüp bilmeýärsiňiz, çünki jemgyýetçilikden gizlenilipdir', # Fuzzy
 	'abusefilter-edit-main' => 'Filtr parametrleri',
 	'abusefilter-edit-done-subtitle' => 'Filtr redaktirlendi',
-	'abusefilter-edit-done' => '$1 filtri üçin üýtgeşmeleriňiz şowly ýazdyryldy.',
+	'abusefilter-edit-done' => '$1 filtri üçin üýtgeşmeleriňiz şowly ýazdyryldy.', # Fuzzy
 	'abusefilter-edit-viewhistory' => 'Bu filtriň geçmişini görkez',
 	'abusefilter-edit-history' => 'Geçmiş:',
 	'abusefilter-edit-check' => 'Sintaksisi barla',
@@ -39199,7 +39199,7 @@ Sa karaniwan, ang oras ng pagtakbo nito ay $4ms, at gumugugol ng $5 na {{PLURAL:
 	'abusefilter-edit-warn-preview' => 'Paunang tingnan muna ang piniling mensahe',
 	'abusefilter-edit-warn-edit' => 'Likhain/Baguhin ang piniling mensahe',
 	'abusefilter-edit-tag-tag' => 'Mga tatak na gagamitin (isa sa bawat guhit):',
-	'abusefilter-edit-denied' => 'Hindi mo maaaring tingnan ang mga detalye ng pansalang ito, dahil nakatago ito mula sa pagtanaw ng madla.',
+	'abusefilter-edit-denied' => 'Hindi mo maaaring tingnan ang mga detalye ng pansalang ito, dahil nakatago ito mula sa pagtanaw ng madla.', # Fuzzy
 	'abusefilter-edit-main' => 'Mga parametro ng pansala',
 	'abusefilter-edit-done-subtitle' => 'Binagong pansala',
 	'abusefilter-edit-done' => 'Matagumpay mong naitala ang iyong mga binago sa [[Special:AbuseFilter/$1|pansalang $1]].', # Fuzzy
@@ -39646,10 +39646,10 @@ Eylemlerin %$1'inden fazla eşleşme sınırına erişti.",
 	'abusefilter-edit-warn-preview' => 'Seçili mesajı önizle',
 	'abusefilter-edit-warn-edit' => 'Seçili mesajı oluştur/değiştir',
 	'abusefilter-edit-tag-tag' => 'Uygulanacak etiketler (her satıra bir tane):',
-	'abusefilter-edit-denied' => 'Bu süzgeç için ayrıntıları göremezsiniz, çünkü umumi görünümden gizlenmiş',
+	'abusefilter-edit-denied' => 'Bu süzgeç için ayrıntıları göremezsiniz, çünkü umumi görünümden gizlenmiş', # Fuzzy
 	'abusefilter-edit-main' => 'Süzgeç değişkenleri',
 	'abusefilter-edit-done-subtitle' => 'Süzgeç değiştirildi',
-	'abusefilter-edit-done' => '$1 süzgeci için değişiklikleriniz başarıyla kaydedildi.',
+	'abusefilter-edit-done' => '$1 süzgeci için değişiklikleriniz başarıyla kaydedildi.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Belirttiğiniz filtrede bir söz dizimi hatası var.
 Derleyicinin çıktısı: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Bu filtreyi değiştiremezsiniz, çünkü bir veya daha fazla kısıtlı eylem içeriyor.
@@ -40101,10 +40101,10 @@ $1 ماس كەلگەن مەشغۇلات چېكىگە يەتتى.",
 	'abusefilter-edit-warn-preview' => 'تاللانغان ئۇچۇرنى ئالدىن كۆزەت',
 	'abusefilter-edit-warn-edit' => 'تاللىغان ئۇچۇرنى قۇر/تەھرىرلە',
 	'abusefilter-edit-tag-tag' => 'قوللىنىدىغان بەلگەلەر(ھەر قۇرغا بىردىن):',
-	'abusefilter-edit-denied' => 'بۇ سۈزگۈچنىڭ تەپسىلاتىنى كۆرەلمەيسىز چۈنكى ئۇ ئاممىۋى كۆرۈنۈشتىن يوشۇرۇلغان.',
+	'abusefilter-edit-denied' => 'بۇ سۈزگۈچنىڭ تەپسىلاتىنى كۆرەلمەيسىز چۈنكى ئۇ ئاممىۋى كۆرۈنۈشتىن يوشۇرۇلغان.', # Fuzzy
 	'abusefilter-edit-main' => 'سۈزگۈچ پارامېتىرلىرى',
 	'abusefilter-edit-done-subtitle' => 'سۈزگۈچ تەھرىرلەندى',
-	'abusefilter-edit-done' => '$1 سۈزگۈچنىڭ ئۆزگەرتىشىنى مۇۋەپپەقىيەتلىك ساقلىدىڭىز.',
+	'abusefilter-edit-done' => '$1 سۈزگۈچنىڭ ئۆزگەرتىشىنى مۇۋەپپەقىيەتلىك ساقلىدىڭىز.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'سىز بەلگىلىگەن سۈزگۈچتە تىلقۇرما خاتالىقى مەۋجۇت.
 يەشكۈچنىڭ چىقارغان نەتىجىسى: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'بۇ سۈزگۈچنى تەھرىرلىيەلمەيسىز چۈنكى ئۇنىڭدا بىر ياكى بىر قانچە چەكلەنگەن مەشغۇلات بار.
@@ -40538,10 +40538,10 @@ $messages['uk'] = array(
 	'abusefilter-edit-warn-preview' => 'Попередній перегляд вибраного повідомлення',
 	'abusefilter-edit-warn-edit' => 'Створити/редагувати вибране повідомлення',
 	'abusefilter-edit-tag-tag' => 'Присвоювані мітки (по одному на рядок):',
-	'abusefilter-edit-denied' => 'Ви не можете проглянути докладну інформацію про цей фільтр, оскільки вона прихована від звичайних користувачів.',
+	'abusefilter-edit-denied' => 'Ви не можете проглянути докладну інформацію про цей фільтр, бо вона прихована від публічного перегляду.',
 	'abusefilter-edit-main' => 'Параметри фільтра',
 	'abusefilter-edit-done-subtitle' => 'Фільтр змінено',
-	'abusefilter-edit-done' => 'Ви успішно зберегли зміни у фільтрі $1.',
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Ваші зміни]] на [[Special:AbuseFilter/$1|фільтр $1]] вже збережено.',
 	'abusefilter-edit-badsyntax' => 'У вказному вами фільтрі є синтаксична помилка.
 Синтаксичний аналізатор видав таке повідомлення: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Ви не можете змінити цей фільтр, оскільки він містить одну або декілька обмежуючих дій. Будь ласка, попросіть користувача з відповідними правами змінити фільтр для вас.',
@@ -41154,10 +41154,10 @@ Xe stà ragiunto el limite massimo de corispondense, pari al $1% de le azion.",
 	'abusefilter-edit-warn-preview' => 'Anteprima del messajo selessionà',
 	'abusefilter-edit-warn-edit' => 'Crèa/Modìfega el messajo selessionà',
 	'abusefilter-edit-tag-tag' => 'Tag da aplicar (uno par riga):',
-	'abusefilter-edit-denied' => 'No te podi védar i detagli de sto filtro, parché i xe sconti al pùblico.',
+	'abusefilter-edit-denied' => 'No te podi védar i detagli de sto filtro, parché i xe sconti al pùblico.', # Fuzzy
 	'abusefilter-edit-main' => 'Parametri del filtro',
 	'abusefilter-edit-done-subtitle' => 'Filtro modifegà',
-	'abusefilter-edit-done' => 'Te ghè salvà i to canbiamenti al filtro $1.',
+	'abusefilter-edit-done' => 'Te ghè salvà i to canbiamenti al filtro $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => "Ghe xe un eròr de sintassi in tel filtro che te ghè specificà.
 De seguito vien riportà l'output del parser: <pre>$1</pre>",
 	'abusefilter-edit-restricted' => "No se pole modificare sto filtro in quanto el contien dele azioni riservà.
@@ -41652,10 +41652,10 @@ Thời gian chạy trung bình là $4ms, và sử dụng $5 {{PLURAL:$5||}} đi�
 	'abusefilter-edit-warn-preview' => 'Xem trước thông điệp được chọn',
 	'abusefilter-edit-warn-edit' => 'Tạo/Sửa thông điệp được chọn',
 	'abusefilter-edit-tag-tag' => 'Áp dụng thẻ đánh dấu (một thẻ một dòng):',
-	'abusefilter-edit-denied' => 'Bạn không thể xem chi tiết bộ lọc này, vì nó đã được ẩn khỏi mọi người',
+	'abusefilter-edit-denied' => 'Bạn không thể xem chi tiết bộ lọc này, vì nó đã được ẩn khỏi mọi người', # Fuzzy
 	'abusefilter-edit-main' => 'Tham số bộ lọc',
 	'abusefilter-edit-done-subtitle' => 'Bộ lọc được sửa',
-	'abusefilter-edit-done' => 'Bạn đã lưu thành công các thay đổi với bộ lọc $1.',
+	'abusefilter-edit-done' => 'Bạn đã lưu thành công các thay đổi với bộ lọc $1.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Có lỗi cú pháp trong bộ lọc bạn chỉ định. Đầu ra của bộ phân tích cú pháp là: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Bạn không thể sửa đổi bộ lọc này, vì nó có chứa một hoặc nhiều tác vụ bị hạn chế.
 Xin hãy yêu cầu một thành viên có quyền thêm các tác vụ hạn chế để thực hiện thay đổi cho bạn.',
@@ -42550,10 +42550,10 @@ $messages['yue'] = array(
 	'abusefilter-edit-warn-preview' => '預覽揀咗嘅訊息',
 	'abusefilter-edit-warn-edit' => '開/編輯揀咗嘅訊息',
 	'abusefilter-edit-tag-tag' => '摘嘅名 (一行一個):',
-	'abusefilter-edit-denied' => '你唔係以去睇呢個過濾器嘅細節，因為響公共顯示度隱藏咗。',
+	'abusefilter-edit-denied' => '你唔係以去睇呢個過濾器嘅細節，因為響公共顯示度隱藏咗。', # Fuzzy
 	'abusefilter-edit-main' => '過濾器參數',
 	'abusefilter-edit-done-subtitle' => '改咗嘅過濾器',
-	'abusefilter-edit-done' => '你已經成功噉保存你嘅修改做過濾器$1。',
+	'abusefilter-edit-done' => '你已經成功噉保存你嘅修改做過濾器$1。', # Fuzzy
 	'abusefilter-edit-badsyntax' => '你所指定嘅過濾器有語法錯誤。
 個處理器嘅輸出係: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => '你唔可以改呢個過濾器，由於佢有一個或者更多限制咗嘅動作。
@@ -42986,10 +42986,10 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-warn-preview' => '预览所选消息',
 	'abusefilter-edit-warn-edit' => '创建／编辑所选消息',
 	'abusefilter-edit-tag-tag' => '欲应用的标签（每行一个）：',
-	'abusefilter-edit-denied' => '您无法查看该过滤器的详情，因为它已设定为向公众隐藏。',
+	'abusefilter-edit-denied' => '您无法查看该过滤器的详情，因为它已设定为向公众隐藏。', # Fuzzy
 	'abusefilter-edit-main' => '过滤器参数',
 	'abusefilter-edit-done-subtitle' => '已编辑过滤器',
-	'abusefilter-edit-done' => '您已成功保存您对过滤器$1的修改。',
+	'abusefilter-edit-done' => '您已成功保存您对过滤器$1的修改。', # Fuzzy
 	'abusefilter-edit-badsyntax' => '您指定的过滤器中存有语法错误。解析器的输出结果为：<pre>$1</pre>',
 	'abusefilter-edit-restricted' => '您无法编辑此过滤器，因为其中包含一个或多个受限操作。请寻求拥有相应权限用户的帮助，以协助您作出相应修改。',
 	'abusefilter-edit-viewhistory' => '查看过滤器历史',
@@ -43417,7 +43417,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-edit-warn-preview' => '預覽選定訊息',
 	'abusefilter-edit-warn-edit' => '創建/編輯選定訊息',
 	'abusefilter-edit-tag-tag' => '欲套用的標籤（每一行一個）：',
-	'abusefilter-edit-denied' => '因為這是不公開的，您不可參閱此過濾器的詳情。',
+	'abusefilter-edit-denied' => '因為這是不公開的，您不可參閱此過濾器的詳情。', # Fuzzy
 	'abusefilter-edit-main' => '過濾器參數',
 	'abusefilter-edit-done-subtitle' => '已修訂過濾器',
 	'abusefilter-edit-done' => '您對過濾器$1的修改已成功儲存。', # Fuzzy
