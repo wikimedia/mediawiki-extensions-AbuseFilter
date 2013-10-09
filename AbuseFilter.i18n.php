@@ -22297,7 +22297,7 @@ En huet méi wéi déi definiéiert Limit vun $1% vun den Aktiounen als schiedle
 	'abusefilter-edit-denied' => 'Dir kënnt Detailer vun dësem Filter net gesinn, well se virum Public verstoppt sinn.',
 	'abusefilter-edit-main' => 'Parametere vum Filter',
 	'abusefilter-edit-done-subtitle' => 'Filter geännert',
-	'abusefilter-edit-done' => 'Dir hutt är Ännerunge vum Filter $1 ofgespäichert.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Är Ännerungen]] vum [[Special:AbuseFilter/$1|Filter $1]] goufe gespäichert.',
 	'abusefilter-edit-badsyntax' => "Et ass e Syntaxfeeler an dem Filter deen Dir uginn hutt.
 D'Resultat vum Parser war: <pre>$1</pre>",
 	'abusefilter-edit-restricted' => "Dir kënnt dëse Filter net ännere well eng oder méi restriktiv Aktiounen drasti fir déi ee méi Rechter brauch.
@@ -31372,7 +31372,7 @@ Etiquetas devem ser curtas e não devem conter caracteres especiais.',
 	'abusefilter-edit-builder-vars-removed-links' => 'Todos os links externos removidos na edição',
 	'abusefilter-edit-builder-vars-old-text' => 'Texto Wiki anterior da página, antes da edição',
 	'abusefilter-edit-builder-vars-new-text' => 'Texto Wiki novo da página, após a edição',
-	'abusefilter-edit-builder-vars-new-pst' => 'Nova página wikitext, pré-salvar transformado',
+	'abusefilter-edit-builder-vars-new-pst' => 'Texto wiki novo, transformado pré-gravação',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nova página de texto, sem qualquer formatação',
 	'abusefilter-edit-builder-vars-new-html' => 'Fonte HTML analisada, da nova revisão',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Nível de proteção de edição da página',
@@ -32389,7 +32389,7 @@ Puteți primi o explicație completă apăsând pe butonul „Verifică sintaxa�
 	'abusefilter-topnav-log' => 'Jurnal abuzuri',
 	'abusefilter-topnav-tools' => 'Unelte de depanare',
 	'abusefilter-topnav-import' => 'Importă filtru',
-	'abusefilter-log-name' => 'Jurnalul filtrului de abuzare',
+	'abusefilter-log-name' => 'Jurnal filtru abuz',
 	'abusefilter-log-header' => 'Acest jurnal afișează un rezumat de schimbări realizate de filtre.
 Pentru informații complete, vedeți [[Special:AbuseFilter/history|lista]] cu schimbările ale filtrului recente.',
 	'abusefilter-log-entry-modify' => 'a modificat $1 ($2)',
@@ -42986,10 +42986,10 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-warn-preview' => '预览所选消息',
 	'abusefilter-edit-warn-edit' => '创建／编辑所选消息',
 	'abusefilter-edit-tag-tag' => '欲应用的标签（每行一个）：',
-	'abusefilter-edit-denied' => '您无法查看该过滤器的详情，因为它已设定为向公众隐藏。', # Fuzzy
+	'abusefilter-edit-denied' => '您无法查看该过滤器的详情，因为它已设定为向公众隐藏。',
 	'abusefilter-edit-main' => '过滤器参数',
 	'abusefilter-edit-done-subtitle' => '已编辑过滤器',
-	'abusefilter-edit-done' => '您已成功保存您对过滤器$1的修改。', # Fuzzy
+	'abusefilter-edit-done' => '您已成功保存您对[[Special:AbuseFilter/$1|过滤器$1]]的[[Special:AbuseFilter/history/$1/diff/prev/$2|修改]]。',
 	'abusefilter-edit-badsyntax' => '您指定的过滤器中存有语法错误。解析器的输出结果为：<pre>$1</pre>',
 	'abusefilter-edit-restricted' => '您无法编辑此过滤器，因为其中包含一个或多个受限操作。请寻求拥有相应权限用户的帮助，以协助您作出相应修改。',
 	'abusefilter-edit-viewhistory' => '查看过滤器历史',
