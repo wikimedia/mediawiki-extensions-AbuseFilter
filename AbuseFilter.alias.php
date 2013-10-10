@@ -340,8 +340,8 @@ $specialPageAliases['nl'] = array(
 
 /** Norwegian Nynorsk (norsk nynorsk) */
 $specialPageAliases['nn'] = array(
-	'AbuseLog' => array( 'Misbrukslogg' ),
-	'AbuseFilter' => array( 'Misbruksfilter' ),
+	'AbuseLog' => array( 'Misbrukslogg', 'Endringsfilterlogg' ),
+	'AbuseFilter' => array( 'Misbruksfilter', 'Endringsfilter' ),
 );
 
 /** Occitan (occitan) */

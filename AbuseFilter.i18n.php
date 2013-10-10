@@ -28417,7 +28417,7 @@ Ei kort skildring av misbruksregelen handlinga di braut er: $1',
 	'abusefilter-edit-badsyntax' => 'Det finst ein syntaksfeil i filteret du oppgav. Resultatet frå fortolkaren var: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Du kan ikkje endra dette filteret, av di det inneheld éin eller fleire avgrensa handlingar.
 Spør ein brukar med løyve til å leggja til avgrensa handlingar om han kan å gjera endringa for deg.',
-	'abusefilter-edit-viewhistory' => 'Syn historikken til filteret',
+	'abusefilter-edit-viewhistory' => 'Sjå historikken til filteret',
 	'abusefilter-edit-history' => 'Historikk:',
 	'abusefilter-edit-check' => 'Saumfar syntaks',
 	'abusefilter-edit-badfilter' => 'Du oppgav eit filter som ikkje finst',
