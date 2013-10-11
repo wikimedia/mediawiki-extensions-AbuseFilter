@@ -15562,14 +15562,14 @@ $messages['hi'] = array(
 दुरुपयोग फ़िल्टर सभी कार्यों पर स्वतः शोध प्रणाली लागू करने का एक स्वचालित सॉफ़्टवेयर है।
 यह अंतरफल परिभाषित फ़िल्टरों की एक सूची दिखाता है, और यहाँ पर उन्हें संपादित किया जा सकता है।',
 	'abusefilter-mustbeeditor' => 'सुरक्षा कारणों के लिए, इस पृष्ठ का प्रयोग केवल वही सदस्य कर सकते हैं जिन्हें दुरुपयोग फ़िल्टर को संपादित करने का अधिकार है।',
-	'abusefilter-warning' => "'''चेतावनी''':इस कार्य को स्वचालित रूप से हानिकारक पाया गया है।
+	'abusefilter-warning' => "'''चेतावनी''': इस कार्य को स्वचालित रूप से हानिकारक पाया गया है।
 अरचनात्मक संपादनों को शीघ्र पूर्ववत कर दिया जाएगा,
 और बार-बार अरचनात्मक और हानिकारक संपादन करने पर आपके सदस्य खाते अथवा आइ॰पी पते को अवरोधित भी किया जा सकता है।
-यदि आपका मानना है कि यह संपादन रचनात्मक है, तो इसे सहेजने के लिये फिर से \"पृष्ठ सहेजें\" का बटन दबाएँ।
-आपके संपादन को पकड़ने वाले नियम का संक्षिप्त विवरण है: \$1", # Fuzzy
+यदि आपका मानना है कि यह कार्य रचनात्मक है, तो इसे सहेजने के लिये फिर से \"पृष्ठ सहेजें\" का बटन दबाएँ।
+आपके संपादन को पकड़ने वाले नियम का संक्षिप्त विवरण है: \$1",
 	'abusefilter-disallowed' => 'इस कार्य को स्वचालित रूप से हानिकारक पाया गया है, अतः इसे करने की अनुमति नहीं है।
-यदि आपका मानना है कि आपका संपादन रचनात्मक था, अपने कार्य की जानकारी कृपया किसी प्रबंधक को दें।
-आपके संपादन को पकड़ने वाले नियम का संक्षिप्त विवरण है: $1', # Fuzzy
+यदि आपका मानना है कि आपका कार्य रचनात्मक था, अपने कार्य की जानकारी कृपया किसी प्रबंधक को दें।
+आपके संपादन को पकड़ने वाले नियम का संक्षिप्त विवरण है: $1',
 	'abusefilter-blocked-display' => 'इस कार्य को स्वचालित रूप से हानिकारक पाया गया है,
 और आपको ऐसा करने से रोका गया है।
 इसके साथ, {{SITENAME}} की सुरक्षा के लिये आपके सदस्य खाते और सभी सम्बंधित आइ॰पी पतों को संपादन से अवरोधित कर दिया गया है।
@@ -15599,6 +15599,7 @@ $messages['hi'] = array(
 	'right-abusefilter-log-private' => 'निजी फ़िल्टरों की लॉग प्रविष्टियाँ देखें',
 	'right-abusefilter-hide-log' => 'दुरुपयोग लॉग में प्रविष्टियाँ छिपाएँ',
 	'right-abusefilter-hidden-log' => 'छुपी हुई दुरुपयोग लॉग प्रविष्टियाँ देखें',
+	'right-abusefilter-modify-global' => 'वैश्विक दुरुपयोग फ़िल्टर बनाएँ अथवा संशोधित करें',
 	'action-abusefilter-modify' => 'दुरुपयोग फ़िल्टर संशोधित करें',
 	'action-abusefilter-view' => 'दुरुपयोग फ़िल्टर देखें',
 	'action-abusefilter-log' => 'दुरुपयोग लॉग देखें',
@@ -15675,6 +15676,7 @@ $messages['hi'] = array(
 	'abusefilter-list-options-deleted-only' => 'केवल हटाए गए फ़िल्टर दिखाएँ',
 	'abusefilter-list-options-deleted-hide' => 'हटाए गए फ़िल्टर छुपाएँ',
 	'abusefilter-list-options-deleted-show' => 'हटाए गए फ़िल्टर शामिल करें',
+	'abusefilter-list-options-scope' => 'इस श्रेणी से फ़िल्टर दिखाएँ:',
 	'abusefilter-list-options-scope-local' => 'स्थानीय विकी',
 	'abusefilter-list-options-scope-global' => 'वैश्विक नियम',
 	'abusefilter-list-options-disabled' => 'अक्षम किये गए फ़िल्टर:',
@@ -15683,14 +15685,15 @@ $messages['hi'] = array(
 	'abusefilter-tools-text' => 'ये कुछ उपकरण हैं जो दुरुपयोग फ़िल्टर बनाने और डीबग करने में सहायक होंगे।',
 	'abusefilter-tools-expr' => 'अभिव्यक्ति परीक्षक',
 	'abusefilter-tools-submitexpr' => 'जाँचें',
-	'abusefilter-tools-reautoconfirm' => 'स्वतः परीक्षित स्थिति पर वापिस लाएँ',
+	'abusefilter-tools-reautoconfirm' => 'स्वतः स्थापित स्थिति पर वापिस लाएँ',
 	'abusefilter-tools-reautoconfirm-user' => 'सदस्य:',
-	'abusefilter-tools-reautoconfirm-submit' => 'पुनः स्वतः परीक्षित बनाएँ',
-	'abusefilter-reautoconfirm-none' => 'उस सदस्य का स्वतः परीक्षित अधिकार वापिस नहीं लिया गया है।',
-	'abusefilter-reautoconfirm-notallowed' => 'आप स्वतः परीक्षित अधिकार वापिस नहीं दे सकते।',
-	'abusefilter-reautoconfirm-done' => 'सदस्य का स्वतः परीक्षित अधिकार लौटा दिया गया है',
+	'abusefilter-tools-reautoconfirm-submit' => 'पुनः स्वतः स्थापित बनाएँ',
+	'abusefilter-reautoconfirm-none' => 'उस सदस्य का स्वतः स्थापित अधिकार वापिस नहीं लिया गया है।',
+	'abusefilter-reautoconfirm-notallowed' => 'आप स्वतः स्थापित अधिकार वापिस नहीं दे सकते।',
+	'abusefilter-reautoconfirm-done' => 'सदस्य का स्वतः स्थापित अधिकार लौटा दिया गया है',
 	'abusefilter-status' => 'पिछले $1 {{PLURAL:$1|कार्य|कार्यों}} में से $2 ($3%) ने $4 शर्तों की शर्त सीमा को पार किया है, और $5 ($6%) कार्य फ़िल्टरों द्वारा पकड़े गए हैं।',
-	'abusefilter-edit-subtitle' => 'फ़िल्टर संपादन $1',
+	'abusefilter-edit' => 'दुरुपयोग फ़िल्टर सम्पादन',
+	'abusefilter-edit-subtitle' => 'फ़िल्टर $1 सम्पादन',
 	'abusefilter-edit-subtitle-new' => 'फ़िल्टर बनायें',
 	'abusefilter-edit-oldwarning' => '<strong>आप फ़िल्टर का एक पुराना अवतरण सम्पादित कर रहे हैं।
 दिये गए आँकड़े फ़िल्टर के नवीनतम अवतरण के लिये हैं।
@@ -15722,7 +15725,7 @@ $messages['hi'] = array(
 	'abusefilter-edit-action-warn' => 'सदस्य को चेतावनी देने के बाद ये कार्य करें',
 	'abusefilter-edit-action-disallow' => 'सदस्य को फ़िल्टर द्वारा पकड़ा कार्य करने से रोकें',
 	'abusefilter-edit-action-flag' => 'दुरुपयोग लॉग में संपादन को चिन्हित करें',
-	'abusefilter-edit-action-blockautopromote' => 'सदस्य का स्वतः परीक्षित अधिकार वापिस लें',
+	'abusefilter-edit-action-blockautopromote' => 'सदस्य का स्वतः स्थापित अधिकार वापिस लें',
 	'abusefilter-edit-action-degroup' => 'सदस्य को सभी सदस्य समूहों से हटाएँ',
 	'abusefilter-edit-action-block' => 'सदस्य और/या आइ॰पी पते को संपादन करने से अवरोधित करें',
 	'abusefilter-edit-action-throttle' => 'कदम तभी उठाएँ अगर सदस्य रेट सीमा के पार जाए',
@@ -15738,10 +15741,10 @@ $messages['hi'] = array(
 	'abusefilter-edit-warn-preview' => 'चुने हुए सन्देश का पूर्वावलोकन करें',
 	'abusefilter-edit-warn-edit' => 'चुना हुआ सन्देश बनाएँ अथवा संपादित करें',
 	'abusefilter-edit-tag-tag' => 'लगाए जाने वाले टैग (एक प्रति लाइन)',
-	'abusefilter-edit-denied' => 'आप इस फ़िल्टर का विवरण नहीं देख सकते हैं, क्योंकि यह सार्वजनिक दृष्टि से छुपा हुआ है।', # Fuzzy
+	'abusefilter-edit-denied' => 'आप इस फ़िल्टर का विवरण नहीं देख सकते हैं, क्योंकि यह सार्वजनिक दृष्टि से छुपा हुआ है।',
 	'abusefilter-edit-main' => 'फ़िल्टर प्राचल',
 	'abusefilter-edit-done-subtitle' => 'फ़िल्टर संपादित हो गया',
-	'abusefilter-edit-done' => 'आपके द्वारा फ़िल्टर $1 में किये बदलाव सहेजे गए हैं।', # Fuzzy
+	'abusefilter-edit-done' => 'आपके द्वारा [[Special:AbuseFilter/$1|फ़िल्टर $1]] में किये [[Special:AbuseFilter/history/$1/diff/prev/$2|बदलाव]] सहेजे गए हैं।',
 	'abusefilter-edit-badsyntax' => 'आपके द्वारा बताए फ़िल्टर में सिंटेक्स त्रुटि है।
 पार्सर की आउटपुट थी: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'आप इस फ़िल्टर को सम्पादित नहीं कर सकते हैं, क्योंकि इसमें एक या अधिक प्रतिबन्धित कार्यों का प्रयोग है।
@@ -15759,6 +15762,8 @@ $messages['hi'] = array(
 	'abusefilter-edit-bad-tags' => 'आपके द्वारा बताए गए टैग वैध नहीं हैं।
  टैग छोटे होने चाहियें, और उनमें विशेष कैरैक्टर नहीं होने चाहियें।',
 	'abusefilter-edit-notallowed' => 'आपको दुरुपयोग फ़िल्टर बनाने अथवा संपादित करने की अनुमति नहीं है',
+	'abusefilter-edit-notallowed-global' => 'आपको वैश्विक दुरुपयोग फ़िल्टर बनाने अथवा संशोधित करने की अनुमति नहीं है',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'वैश्विक फ़िल्टरों में विशिष्ट चेतावनी सन्देश समर्थित नहीं हैं',
 	'abusefilter-edit-builder-select' => 'जहाँ कर्सर है वहाँ जोड़ने के लिये कोई विकल्प चुनें',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'अंकगणित ऑपरेटर',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'योग (+)',
@@ -15912,7 +15917,7 @@ $messages['hi'] = array(
 	'abusefilter-log-noresults' => 'कोई परिणाम नहीं',
 	'abusefilter-diff-title' => 'अवतरणों के बीच अंतर',
 	'abusefilter-diff-item' => 'आइटम',
-	'abusefilter-diff-version' => 'अवतरण $1 से $2 द्वारा', # Fuzzy
+	'abusefilter-diff-version' => 'अवतरण $1 से $2 {{GENDER:$3|द्वारा}}',
 	'abusefilter-diff-info' => 'मूल जानकारी',
 	'abusefilter-diff-pattern' => 'फ़िल्टर शर्तें',
 	'abusefilter-diff-backhistory' => 'फ़िल्टर इतिहास को वापिस',
@@ -19180,10 +19185,10 @@ Il suo tempo medio di esecuzione è di $4 ms, e impiega $5 {{PLURAL:$5|condizion
 	'abusefilter-edit-warn-preview' => 'Anteprima messaggio selezionato',
 	'abusefilter-edit-warn-edit' => 'Crea o modifica il messaggio selezionato',
 	'abusefilter-edit-tag-tag' => 'Etichette da aggiungere (una per riga):',
-	'abusefilter-edit-denied' => 'I dettagli di questo filtro non sono accessibili in quanto nascosti al pubblico.', # Fuzzy
+	'abusefilter-edit-denied' => 'Non è possibile visualizzare i dettagli di questo filtro, in quanto nascosto al pubblico.',
 	'abusefilter-edit-main' => 'Parametri del filtro',
 	'abusefilter-edit-done-subtitle' => 'Filtro modificato',
-	'abusefilter-edit-done' => 'Le modifiche al filtro $1 sono state salvate correttamente.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Le modifiche]] al [[Special:AbuseFilter/$1|filtro $1]] sono state salvate correttamente.',
 	'abusefilter-edit-badsyntax' => "Il filtro specificato contiene un errore di sintassi.
 Di seguito viene riportato l'output del parser: <pre>$1</pre>",
 	'abusefilter-edit-restricted' => "Non è possibile modificare questo filtro in quanto contiene delle azioni riservate.
