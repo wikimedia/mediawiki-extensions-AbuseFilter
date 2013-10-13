@@ -22273,7 +22273,7 @@ En huet méi wéi déi definiéiert Limit vun $1% vun den Aktiounen als schiedle
 	'abusefilter-edit-deleted' => 'Als geläscht markéieren',
 	'abusefilter-edit-hidden' => "Verstop d'Detailer vun dësem Filter virun der Ëffentlechkeet",
 	'abusefilter-edit-global' => 'Globale Filter',
-	'abusefilter-edit-rules' => 'Conditiounen:',
+	'abusefilter-edit-rules' => 'Konditiounen:',
 	'abusefilter-edit-notes' => "Notizen:
 :''(privat)''",
 	'abusefilter-edit-lastmod' => "De Filter gouf fir d'lescht geännert",
@@ -41658,7 +41658,7 @@ Thời gian chạy trung bình là $4ms, và sử dụng $5 {{PLURAL:$5||}} đi�
 	'abusefilter-edit-warn-preview' => 'Xem trước thông điệp được chọn',
 	'abusefilter-edit-warn-edit' => 'Tạo/Sửa thông điệp được chọn',
 	'abusefilter-edit-tag-tag' => 'Áp dụng thẻ đánh dấu (một thẻ một dòng):',
-	'abusefilter-edit-denied' => 'Bạn không thể xem chi tiết bộ lọc này, vì nó đã được ẩn khỏi mọi người', # Fuzzy
+	'abusefilter-edit-denied' => 'Bạn có thể không xem thông tin chi tiết của bộ lọc này, bởi vì nó ẩn từ công chúng xem.',
 	'abusefilter-edit-main' => 'Tham số bộ lọc',
 	'abusefilter-edit-done-subtitle' => 'Bộ lọc được sửa',
 	'abusefilter-edit-done' => 'Bạn đã lưu thành công các thay đổi với bộ lọc $1.', # Fuzzy
