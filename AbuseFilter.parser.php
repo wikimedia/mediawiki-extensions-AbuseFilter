@@ -1930,6 +1930,9 @@ class AbuseFilterParser {
 		if ( is_null( $replacementArray ) ) {
 			global $IP;
 			if ( is_readable( "$IP/extensions/AntiSpoof/equivset.php" ) ) {
+				// Satisfy analyzer.
+				$equivset = null;
+				// Contains a map of characters in $equivset.
 				require "$IP/extensions/AntiSpoof/equivset.php";
 				$replacementArray = new ReplacementArray( $equivset );
 			} else {
