@@ -8396,10 +8396,10 @@ Det har nået grænsen ved at matche mere end $1 % af handlingerne.",
 	'abusefilter-edit-warn-preview' => 'Forhåndsvis valgt meddelelse',
 	'abusefilter-edit-warn-edit' => 'Opret/redigér valgt meddelelse',
 	'abusefilter-edit-tag-tag' => 'Mærker som skal anvendes (et pr. linje):',
-	'abusefilter-edit-denied' => 'Du kan ikke se detaljerne i dette filter, da det er skjult for offentligheden.', # Fuzzy
+	'abusefilter-edit-denied' => 'Du kan ikke se detaljerne i dette filter, da det er skjult for offentligheden.',
 	'abusefilter-edit-main' => 'Filterparametre',
 	'abusefilter-edit-done-subtitle' => 'Filter redigeret',
-	'abusefilter-edit-done' => 'Du har gemt dine ændringer til filteret $1.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Dine ændringer]] til [[Special:AbuseFilter/$1|filter $1]] er blevet gemt.',
 	'abusefilter-edit-badsyntax' => 'Der er en syntaksfejl i det filter du angav.
 Resultatet fra parseren var: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Du kan ikke redigere dette filter, fordi det indeholder en eller flere begrænsede handlinger.
@@ -8502,6 +8502,7 @@ Tags bør være korte, og de bør ikke indeholde specialtegn.',
 	'abusefilter-edit-builder-vars-removed-links' => 'Alle eksterne henvisninger fjernet i redigeringen',
 	'abusefilter-edit-builder-vars-old-text' => 'Den gamle sides wikitekst, før redigeringen',
 	'abusefilter-edit-builder-vars-new-text' => 'Den nye sides wikitekst, efter redigeringen',
+	'abusefilter-edit-builder-vars-new-pst' => 'Ny side wikitekst, transformeret før den er gemt',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Ny sidetekst, uden opmarkering',
 	'abusefilter-edit-builder-vars-new-html' => 'Tolket HTML-kildekode for den nye revision',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Beskyttelsesniveau for redigering af siden',
