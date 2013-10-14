@@ -1041,7 +1041,7 @@ class AbuseFilter {
 			}
 
 			$fdb->onTransactionPreCommitOrIdle(
-				function() use ( $fdb, $logged_local_filters, $method ) {
+				function() use ( $fdb, $logged_global_filters, $method ) {
 					$fdb->update( 'abuse_filter',
 						array( 'af_hit_count=af_hit_count+1' ),
 						array( 'af_id' => $logged_global_filters ),
