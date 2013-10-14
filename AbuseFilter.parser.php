@@ -707,8 +707,7 @@ class AbuseFilterParser {
 	 */
 	protected function move( ) {
 		wfProfileIn( __METHOD__ );
-		list( $val, $type, $code, $offset ) =
-			self::nextToken( $this->mCode, $this->mPos );
+		list( $val, $type, , $offset ) = self::nextToken( $this->mCode, $this->mPos );
 
 		$token = new AFPToken( $type, $val, $this->mPos );
 		$this->mPos = $offset;
