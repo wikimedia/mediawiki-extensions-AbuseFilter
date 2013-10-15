@@ -707,8 +707,7 @@ class AbuseFilterParser {
 	 */
 	protected function move( ) {
 		wfProfileIn( __METHOD__ );
-		list( $val, $type, $code, $offset ) =
-			self::nextToken( $this->mCode, $this->mPos );
+		list( $val, $type, , $offset ) = self::nextToken( $this->mCode, $this->mPos );
 
 		$token = new AFPToken( $type, $val, $this->mPos );
 		$this->mPos = $offset;
@@ -1931,6 +1930,9 @@ class AbuseFilterParser {
 		if ( is_null( $replacementArray ) ) {
 			global $IP;
 			if ( is_readable( "$IP/extensions/AntiSpoof/equivset.php" ) ) {
+				// Satisfy analyzer.
+				$equivset = null;
+				// Contains a map of characters in $equivset.
 				require "$IP/extensions/AntiSpoof/equivset.php";
 				$replacementArray = new ReplacementArray( $equivset );
 			} else {

@@ -29,7 +29,7 @@ class AbuseFilterHooks {
 		// poor man's PST, see bug 20310
 		$text = str_replace( "\r\n", "\n", $text );
 
-		$continue = self::filterEdit( $context, null, $text, $status, $summary, $minoredit );
+		self::filterEdit( $context, null, $text, $status, $summary, $minoredit );
 
 		if ( !$status->isOK() ) {
 			$msg = $status->getErrorsArray();

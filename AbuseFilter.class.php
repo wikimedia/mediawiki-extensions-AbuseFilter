@@ -974,7 +974,7 @@ class AbuseFilter {
 
 		$local_log_ids = array();
 		global $wgAbuseFilterNotifications, $wgAbuseFilterNotificationsPrivate;
-		foreach ( $log_rows as $index => $data ) {
+		foreach ( $log_rows as $data ) {
 			$data['afl_var_dump'] = $var_dump;
 			$data['afl_id'] = $dbw->nextSequenceValue( 'abuse_filter_log_afl_id_seq' );
 			$dbw->insert( 'abuse_filter_log', $data, __METHOD__ );
