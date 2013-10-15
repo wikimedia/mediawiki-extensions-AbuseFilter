@@ -467,7 +467,7 @@ $specialPageAliases['yue'] = array(
 /** Simplified Chinese (中文（简体）‎) */
 $specialPageAliases['zh-hans'] = array(
 	'AbuseLog' => array( '滥用日志', '过滤日志' ),
-	'AbuseFilter' => array( '防滥用过滤器', '滥用过滤器' ),
+	'AbuseFilter' => array( '滥用过滤器', '防滥用过滤器' ),
 );
 
 /** Traditional Chinese (中文（繁體）‎) */

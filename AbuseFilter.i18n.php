@@ -21207,7 +21207,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-denied' => '이 필터는 비공개로 설정되었기 때문에 이 필터의 자세한 사항을 볼 수 없습니다.',
 	'abusefilter-edit-main' => '필터 변수',
 	'abusefilter-edit-done-subtitle' => '필터를 편집함',
-	'abusefilter-edit-done' => '필터 $1을(를) 편집하는 데 성공하였습니다.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/$1|필터 $1]]에 대한 [[Special:AbuseFilter/history/$1/diff/prev/$2|당신의 편집]]이 저장되었습니다.',
 	'abusefilter-edit-badsyntax' => '입력한 필터 구문에 오류가 있습니다.
 파서 함수의 출력값: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => '이 필터에는 제한된 조치를 취할 수 있게 하는 설정이 포함되어 있어 이 필터를 편집할 수 없습니다.
@@ -30072,6 +30072,7 @@ Kobiaschda de Qwellcode, fiegschn do oi un gliggschd uff die Schaldflesch „{{i
  * @author Airwolf
  * @author Beau
  * @author BeginaFelicysym
+ * @author Chrumps
  * @author Clamira
  * @author Derbeth
  * @author Jwitos
@@ -30228,8 +30229,8 @@ wpisów w rejestrze nadużyć.',
 	'abusefilter-edit-subtitle-new' => 'Tworzenie filtru',
 	'abusefilter-edit-oldwarning' => '<strong>Edytujesz starą wersję tego filtru. Statystyka są notowane dla najnowszej wersji filtru. Jeśli zapiszesz zmiany, zostaną nadpisane wszystkie późniejsze wersje niż ta, którą edytujesz.</strong> &bull; [[Special:AbuseFilter/history/$2|Powrót do historii filtru]]',
 	'abusefilter-edit-status-label' => 'Statystyki:',
-	'abusefilter-edit-status' => '{{PLURAL:$1|Dla ostatniej $1 akcji|W ostatnich $1 akcjach}}, ten filtr pasował do $2 ($3%).
-Średni czas wykonania wyniósł $4ms. Wykorzystano $5 {{PLURAL:$5|warunek|warunki|warunków}} z limitu.',
+	'abusefilter-edit-status' => '{{PLURAL:$1|Dla ostatniej $1 akcji|W ostatnich $1 akcjach}} ten filtr pasował do $2 ($3%).
+Średni czas wykonania wyniósł $4 ms. Wykorzystano $5 {{PLURAL:$5|warunek|warunki|warunków}} z limitu.',
 	'abusefilter-edit-throttled' => "'''Uwaga''': Ten filtr został automatycznie wyłączony jako środek bezpieczeństwa. Został osiągnięty limit dopasowań na poziomie większym $1% akcji.",
 	'abusefilter-edit-new' => 'Nowy filtr',
 	'abusefilter-edit-save' => 'Zapisz filtr',
@@ -30240,15 +30241,15 @@ wpisów w rejestrze nadużyć.',
 	'abusefilter-edit-flags' => 'Flagi:',
 	'abusefilter-edit-enabled' => 'Włącz ten filtr',
 	'abusefilter-edit-deleted' => 'Oznacz jako usunięty',
-	'abusefilter-edit-hidden' => 'Ukryj szczegóły tego filtru przed publicznym wglądem',
+	'abusefilter-edit-hidden' => 'Ukryj szczegóły tego filtru przed widokiem publicznym',
 	'abusefilter-edit-global' => 'Filtr globalny',
 	'abusefilter-edit-rules' => 'Warunki:',
 	'abusefilter-edit-notes' => "Uwagi
 :''(prywatne)''",
-	'abusefilter-edit-lastmod' => 'Ostatnia modyfikacja filtru',
+	'abusefilter-edit-lastmod' => 'Ostatnia modyfikacja filtru:',
 	'abusefilter-edit-lastmod-text' => '$1 przez $2',
 	'abusefilter-edit-hitcount' => 'Trafienia filtru:',
-	'abusefilter-edit-consequences' => 'Akcje podejmowane w sytuacji dopasowania',
+	'abusefilter-edit-consequences' => 'Akcje podejmowane w przypadku dopasowania',
 	'abusefilter-edit-action-warn' => 'Uruchom te akcje po ostrzeżeniu użytkownika',
 	'abusefilter-edit-action-disallow' => 'Uniemożliwiaj użytkownikowi wykonanie akcji',
 	'abusefilter-edit-action-flag' => 'Oznacz edycję w rejestrze nadużyć',
@@ -30257,7 +30258,7 @@ wpisów w rejestrze nadużyć.',
 	'abusefilter-edit-action-block' => 'Zablokuj użytkownikowi i/lub adresowi IP możliwość edycji',
 	'abusefilter-edit-action-throttle' => 'Uruchom akcje tylko wtedy, gdy użytkownik przekroczy poziom limitu',
 	'abusefilter-edit-action-rangeblock' => 'Zablokuj zakres /16 adresów, z którego pochodzi użytkownik',
-	'abusefilter-edit-action-tag' => 'Oznacz edycję do późniejszego sprawdzenia.',
+	'abusefilter-edit-action-tag' => 'Oznacz edycję do późniejszego sprawdzenia',
 	'abusefilter-edit-throttle-count' => 'Liczba dozwolonych akcji',
 	'abusefilter-edit-throttle-period' => 'Okres',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|sekunda|sekundy|sekund}}',
@@ -30271,10 +30272,10 @@ wpisów w rejestrze nadużyć.',
 	'abusefilter-edit-warn-preview' => 'Podgląd wybranego komunikatu',
 	'abusefilter-edit-warn-edit' => 'Utwórz lub edytuj wybrany komunikat',
 	'abusefilter-edit-tag-tag' => 'Oznaczenia do zastosowania (po jednym w wierszu):',
-	'abusefilter-edit-denied' => 'Nie możesz zobaczyć szczegółów tego filtru, ponieważ jest ukryty przed publicznym wglądem', # Fuzzy
+	'abusefilter-edit-denied' => 'Nie możesz zobaczyć szczegółów tego filtru, ponieważ jest ukryty przed widokiem publicznym.',
 	'abusefilter-edit-main' => 'Ustawienia filtru',
 	'abusefilter-edit-done-subtitle' => 'Filtr został zmodyfikowany',
-	'abusefilter-edit-done' => 'Zmiany w filtrze $1 zostały zapisane.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Twoje zmiany]] w [[Special:AbuseFilter/$1|filtrze $1]] zostały zapisane.',
 	'abusefilter-edit-badsyntax' => 'W edytowanym przez Ciebie filtrze wystąpił błąd składni. Parser zwrócił: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Nie możesz zmienić ustawień tego filtru, ponieważ zawiera on jedną lub więcej zastrzeżoną operację. Zwróć się do użytkownika z właściwymi uprawnieniami o wykonanie tej zmiany.',
 	'abusefilter-edit-viewhistory' => 'Zobacz historię tego filtru',
@@ -30449,7 +30450,7 @@ Powód: $2',
 	'abusefilter-revert-reasonfield' => 'Powód:',
 	'abusefilter-test' => 'Sprawdź działanie filtru na poprzedniej edycji',
 	'abusefilter-test-intro' => 'Strona pozwala na sprawdzenie wybranego w polu poniżej filtru przy zastosowaniu go do {{PLURAL:$1|ostatniej edycji|ostatnich $1 edycji}}.
-Aby załadować istniejący filtr, wprowadź jego ID do pola znajdującego się poniżej pola tekstowego i kliknij guzik „Załaduj”.',
+Aby załadować istniejący filtr, wprowadź jego ID do pola znajdującego się poniżej pola tekstowego i kliknij przycisk „Załaduj”.',
 	'abusefilter-test-legend' => 'Testowanie filtru',
 	'abusefilter-test-load-filter' => 'Załaduj filtr z identyfikatorem',
 	'abusefilter-test-submit' => 'Testuj',
@@ -41659,7 +41660,7 @@ Thời gian chạy trung bình là $4ms, và sử dụng $5 {{PLURAL:$5||}} đi�
 	'abusefilter-edit-warn-preview' => 'Xem trước thông điệp được chọn',
 	'abusefilter-edit-warn-edit' => 'Tạo/Sửa thông điệp được chọn',
 	'abusefilter-edit-tag-tag' => 'Áp dụng thẻ đánh dấu (một thẻ một dòng):',
-	'abusefilter-edit-denied' => 'Bạn có thể không xem thông tin chi tiết của bộ lọc này, bởi vì nó ẩn từ công chúng xem.',
+	'abusefilter-edit-denied' => 'Bạn không có quyền xem thông tin chi tiết của bộ lọc này, bởi vì nó được ẩn khỏi công chúng.',
 	'abusefilter-edit-main' => 'Tham số bộ lọc',
 	'abusefilter-edit-done-subtitle' => 'Bộ lọc được sửa',
 	'abusefilter-edit-done' => 'Bạn đã lưu thành công các thay đổi với bộ lọc $1.', # Fuzzy
