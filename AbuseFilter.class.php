@@ -345,9 +345,7 @@ class AbuseFilter {
 	public static function checkSyntax( $filter ) {
 		global $wgAbuseFilterParserClass;
 
-		/**
-		 * @var $parser AbuseFilterParser
-		 */
+		/** @var $parser AbuseFilterParser */
 		$parser = new $wgAbuseFilterParserClass;
 
 		return $parser->checkSyntax( $filter );
@@ -365,9 +363,7 @@ class AbuseFilter {
 			return 'BADSYNTAX';
 		}
 
-		/**
-		 * @var $parser AbuseFilterParser
-		 */
+		/** @var $parser AbuseFilterParser */
 		$parser = new $wgAbuseFilterParserClass( $vars );
 
 		return $parser->evaluateExpression( $expr );
@@ -391,9 +387,7 @@ class AbuseFilter {
 		wfProfileIn( __METHOD__ );
 
 		if ( is_null( $parser ) || $keepVars == 'resetvars' ) {
-			/**
-			 * @var $parser AbuseFilterParser
-			 */
+			/** @var $parser AbuseFilterParser */
 			$parser = new $wgAbuseFilterParserClass( $vars );
 		}
 
@@ -2157,9 +2151,7 @@ class AbuseFilter {
 	 * @return String
 	 */
 	static function formatAction( $action, $parameters ) {
-		/*
-		 * @var $wgLang Language
-		 */
+		/** @var $wgLang Language */
 		global $wgLang;
 		if ( count( $parameters ) == 0 ) {
 			$displayAction = AbuseFilter::getActionDisplay( $action );
@@ -2176,9 +2168,7 @@ class AbuseFilter {
 	 * @return string
 	 */
 	static function formatFlags( $value ) {
-		/*
-		 * @var $wgLang Language
-		 */
+		/** @var $wgLang Language */
 		global $wgLang;
 		$flags = array_filter( explode( ',', $value ) );
 		$flags_display = array();

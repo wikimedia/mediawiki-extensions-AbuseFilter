@@ -49,9 +49,9 @@ class AFPToken {
 	const TComma = 'T_COMMA';
 	const TStatementSeparator = 'T_STATEMENT_SEPARATOR';
 
-	var $type;
-	var $value;
-	var $pos;
+	public $type;
+	public $value;
+	public $pos;
 
 	public function __construct( $type = self::TNone, $value = null, $pos = 0 ) {
 		$this->type = $type;
@@ -69,8 +69,8 @@ class AFPData {
 	const DFloat  = 'float';
 	const DList   = 'list';
 
-	var $type;
-	var $data;
+	public $type;
+	public $data;
 
 	/**
 	 * @param string $type
@@ -499,7 +499,7 @@ class AFPData {
 }
 
 class AFPParserState {
-	var $pos, $token, $lastInput;
+	public $pos, $token, $lastInput;
 
 	public function __construct( $token, $pos ) {
 		$this->token = $token;
@@ -576,12 +576,12 @@ class AFPRegexErrorHandler {
 }
 
 class AbuseFilterParser {
-	var $mParams, $mCode, $mTokens, $mPos, $mCur, $mShortCircuit, $mAllowShort, $mLen;
+	public $mParams, $mCode, $mTokens, $mPos, $mCur, $mShortCircuit, $mAllowShort, $mLen;
 
 	/**
 	 * @var AbuseFilterVariableHolder
 	 */
-	var $mVars;
+	public $mVars;
 
 	// length,lcase,ucase,ccnorm,rmdoubles,specialratio,rmspecials,norm,count
 	static $mFunctions = array(

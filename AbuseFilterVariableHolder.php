@@ -1,7 +1,6 @@
 <?php
 class AbuseFilterVariableHolder {
-
-	var $mVars = array();
+	public $mVars = array();
 
 	static $varBlacklist = array( 'context' );
 
@@ -191,7 +190,7 @@ class AbuseFilterVariableHolder {
 }
 
 class AFComputedVariable {
-	var $mMethod, $mParameters;
+	public $mMethod, $mParameters;
 	static $userCache = array();
 	static $articleCache = array();
 

@@ -36,10 +36,10 @@ class TableDiffFormatterFullContext extends TableDiffFormatter {
 }
 
 class AbuseFilterViewDiff extends AbuseFilterView {
-	var $mOldVersion = null;
-	var $mNewVersion = null;
-	var $mNextHistoryId = null;
-	var $mFilter = null;
+	public $mOldVersion = null;
+	public $mNewVersion = null;
+	public $mNextHistoryId = null;
+	public $mFilter = null;
 
 	function show() {
 		$show = $this->loadData();
