@@ -1429,7 +1429,7 @@ class AbuseFilter {
 	/**
 	 * @param $type
 	 * @param $title Title
-	 * @return Int|string
+	 * @return int|string
 	 */
 	public static function throttleIdentifier( $type, $title ) {
 		global $wgUser, $wgRequest;
@@ -1453,9 +1453,13 @@ class AbuseFilter {
 				$identifier = $wgUser->getEditCount();
 				break;
 			case 'site':
-				return 1;
+				$identifier = 1;
+				break;
 			case 'page':
-				return $title->getPrefixedText();
+				$identifier = $title->getPrefixedText();
+				break;
+			default:
+				$identifier = 0;
 		}
 
 		return $identifier;
