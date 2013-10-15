@@ -499,6 +499,7 @@ class AbuseFilter {
 	public static function checkFilter( $row, $vars, $profile = false, $prefix = '' ) {
 		$filterID = $prefix . $row->af_id;
 
+		$startConds = $startTime = null;
 		if ( $profile ) {
 			$startConds = self::$condCount;
 			$startTime = microtime( true );

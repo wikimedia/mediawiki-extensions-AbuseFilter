@@ -118,6 +118,7 @@ class AbuseFilterVariableHolder {
 	public function dumpAllVars( $compute = array(), $includeUserVars = false ) {
 		$allVarNames = array_keys( $this->mVars );
 		$exported = array();
+		$coreVariables = array();
 
 		if ( !$includeUserVars ) {
 			// Compile a list of all variables set by the extension to be able to filter user set ones by name

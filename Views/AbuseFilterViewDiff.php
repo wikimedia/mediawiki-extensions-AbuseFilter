@@ -147,6 +147,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			return $cache[$spec];
 
 		$dbr = wfGetDB( DB_SLAVE );
+		$row = null;
 		if ( is_numeric( $spec ) ) {
 			$row = $dbr->selectRow(
 				'abuse_filter_history',
@@ -182,7 +183,6 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 				$this->getOutput()->redirect( $t->getFullURL() );
 				return null;
 			}
-
 		} elseif ( $spec == 'next' && !in_array( $otherSpec, $dependentSpecs ) ) {
 			// cached
 			$other = $this->loadSpec( $otherSpec, $spec );

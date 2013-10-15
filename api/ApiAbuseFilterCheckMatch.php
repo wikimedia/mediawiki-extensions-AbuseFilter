@@ -10,6 +10,7 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 			$this->dieUsage( 'You don\'t have permission to test abuse filters', 'permissiondenied' );
 		}
 
+		$vars = null;
 		if ( $params['vars'] ) {
 			$vars = FormatJson::decode( $params['vars'], true );
 		} elseif ( $params['rcid'] ) {
