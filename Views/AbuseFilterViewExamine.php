@@ -4,6 +4,9 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	public static $examineType = null;
 	public static $examineId = null;
 
+	public $mCounter, $mSearchUser, $mSearchPeriodStart, $mSearchPeriodEnd,
+		$mTestFilter;
+
 	function show() {
 		$out = $this->getOutput();
 		$out->setPageTitle( $this->msg( 'abusefilter-examine' ) );
@@ -209,6 +212,10 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 }
 
 class AbuseFilterExaminePager extends ReverseChronologicalPager {
+	/**
+	 * @param AbuseFilterViewExamine $page
+	 * @param AbuseFilterChangesList $changesList
+	 */
 	function __construct( $page, $changesList ) {
 		parent::__construct();
 		$this->mChangesList = $changesList;

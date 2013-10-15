@@ -1,6 +1,8 @@
 <?php
 
 class SpecialAbuseFilter extends SpecialPage {
+	public $mFilter, $mHistoryID;
+
 	public function __construct() {
 		parent::__construct( 'AbuseFilter', 'abusefilter-view' );
 	}
@@ -100,6 +102,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		// Links at the top
 		AbuseFilter::addNavigationLinks( $this->getContext(), $pageType );
 
+		/** @var AbuseFilterView $v */
 		$v = new $view( $this, $params );
 		$v->show();
 	}

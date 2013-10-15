@@ -1,6 +1,9 @@
 <?php
 
 class AbuseFilterViewRevert extends AbuseFilterView {
+	public $origPeriodStart, $origPeriodEnd, $mPeriodStart, $mPeriodEnd,
+		$mReason;
+
 	function show() {
 		$filter = $this->mPage->mFilter;
 

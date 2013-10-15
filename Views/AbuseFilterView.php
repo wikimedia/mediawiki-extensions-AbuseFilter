@@ -1,8 +1,10 @@
 <?php
 
 abstract class AbuseFilterView extends ContextSource {
+	public $mFilter, $mHistoryID, $mSubmit;
+
 	/**
-	 * @param $page SpecialPage
+	 * @param $page SpecialAbuseFilter
 	 * @param $params array
 	 */
 	function __construct( $page, $params ) {

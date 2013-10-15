@@ -207,8 +207,8 @@ class AFComputedVariable {
 	 * It's like Article::prepareTextForEdit, but not for editing (old wikitext usually)
 	 *
 	 *
-	 * @param $wikitext String
-	 * @param $article Article
+	 * @param string $wikitext
+	 * @param WikiPage $article
 	 *
 	 * @return object
 	 */
@@ -298,7 +298,7 @@ class AFComputedVariable {
 	}
 
 	/**
-	 * @param $article Article
+	 * @param WikiPage $article
 	 * @return array
 	 */
 	static function getLinksFromDB( $article ) {

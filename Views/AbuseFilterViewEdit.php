@@ -2,7 +2,7 @@
 
 class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
-	 * @param SpecialPage $page
+	 * @param SpecialAbuseFilter $page
 	 * @param array $params
 	 */
 	function __construct( $page, $params ) {

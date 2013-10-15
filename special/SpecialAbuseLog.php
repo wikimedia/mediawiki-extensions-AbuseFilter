@@ -590,7 +590,6 @@ class SpecialAbuseLog extends SpecialPage {
 }
 
 class AbuseLogPager extends ReverseChronologicalPager {
-
 	/**
 	 * @var HtmlForm
 	 */
@@ -602,7 +601,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	public $mConds;
 
 	/**
-	 * @param $form
+	 * @param SpecialAbuseLog $form
 	 * @param array $conds
 	 * @param bool $details
 	 */
