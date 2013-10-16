@@ -22321,6 +22321,7 @@ Frot w.e.g. e Benotzer mat de Rechter fir restriktiv Aktioune fir d'Ännerung fi
 	'abusefilter-edit-bad-tags' => 'Een oder méi vun den Tags déi Dir uginn hutt ass net valabel.
 Tags solle kuerz sinn, an et solle keng Spezialzeechen dra sinn.',
 	'abusefilter-edit-notallowed' => "Et ass Iech net erlaabt fir Mëssbrauchsfilteren unzeleeën oder z'änneren",
+	'abusefilter-edit-notallowed-global' => 'Dir däerft keng global Mëssbrauchsfilteren uleeën oder änneren',
 	'abusefilter-edit-builder-select' => 'Wielt eng Optioun eraus fir se do anzesetzen wou de Cursor steet',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Arithmetesch Operateuren',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Additioun (+)',
