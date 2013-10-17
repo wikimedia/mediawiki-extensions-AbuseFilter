@@ -7098,6 +7098,7 @@ Copiï des de quadre de text que apareix i enganxar-lo a aquest quadre de text, 
  * @author Умар
  */
 $messages['ce'] = array(
+	'abusefilter' => 'Зулам литтар нисдар',
 	'abuselog' => 'Зуламаш долу тéптар',
 	'abusefilter-intro' => 'Марша догlийла, зулам литтаран Урхаллийн агlон тlе.
 Зулам литтар, декъашхоша деш долу, зуламан дуьхьала, шаьшха болх бо гlирс бу.
