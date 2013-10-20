@@ -7114,6 +7114,7 @@ $messages['ce'] = array(
 Нагахь, хьо тешна валахь, хlара нийсдар хlоттам болуш хиларна, дехар до, адаманкуьйгалхочуьнга дийцар, хьо дан воллург.
 Зуламах лаьцна хаам, аш дечуьнца догlуш хилар билгалла даьккхина: $1', # Fuzzy
 	'abusefilter-blocker' => 'Зулум литтар',
+	'abusefilter-accountreserved' => 'ХӀара декъашхочун дӀаяздар билгал дина зулам литтаро лела да.',
 	'abusefilter-log' => 'Зулам литтаран тептар',
 	'abusefilter-log-summary' => 'ХӀокху тептар чохь гойту литтаран карийнарш.',
 	'abusefilter-log-search' => 'Зуламан тептар чохь лахар',
@@ -11594,10 +11595,10 @@ See ületas $1% toimingutele vastamise piirnormi.",
 	'abusefilter-edit-warn-preview' => 'Valitud sõnumi eelvaade',
 	'abusefilter-edit-warn-edit' => 'Loo valitud sõnum või muuda seda',
 	'abusefilter-edit-tag-tag' => 'Kasutatavad märgised (rea kohta üks):',
-	'abusefilter-edit-denied' => 'Sa ei või selle filtri üksikasju vaadata, sest see on üldsuse eest peidetud.', # Fuzzy
+	'abusefilter-edit-denied' => 'Sa ei või selle filtri üksikasju vaadata, sest see on üldsuse eest peidetud.',
 	'abusefilter-edit-main' => 'Filtri näitajad',
 	'abusefilter-edit-done-subtitle' => 'Filter muudetud',
-	'abusefilter-edit-done' => 'Filtrile $1 tehtud muudatused on edukalt salvestatud.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Muudatused]], mille tegid [[Special:AbuseFilter/$1|filtrile $1]], on edukalt salvestatud.',
 	'abusefilter-edit-badsyntax' => 'Määratletud filtris on süntaksiviga.
 Parseri väljund oli: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Sa ei saa seda filtrit muuta, sest see sisaldab üht või enamat piiratud ligipääsuga toimingut.
@@ -12456,6 +12457,7 @@ $messages['fa'] = array(
  * @author Nike
  * @author Olli
  * @author Pxos
+ * @author Samoasambia
  * @author Silvonen
  * @author Snidata
  * @author Str4nd
@@ -12476,7 +12478,7 @@ Tämä käyttöliittymä näyttää luettelon määritellyistä suodattimista ja
 	'abusefilter-warning' => "'''Varoitus''': Tämä muokkaus on automaattisesti tunnistettu haitalliseksi.
 Epäasialliset muokkaukset kumotaan nopeasti ja törkeä tai toistuva häiriköinti johtaa tunnuksesi tai IP-osoitteesi estämiseen.
 Jos muokkauksesi on mielestäsi asiallinen, napsauta Tallenna-painiketta uudelleen.
-Lyhyt kuvaus säännöstä jota sovellettiin: $1",
+Lyhyt kuvaus säännöstä, jota sovellettiin: $1",
 	'abusefilter-disallowed' => 'Muokkauksesi on tunnistettu automaattisesti haitalliseksi ja sen tallentaminen on estetty.
 Jos uskot muokkauksesi olevan asiallinen, ota yhteyttä ylläpitäjään ja kerro, mitä yritit tehdä.
 Syy: $1',
@@ -12653,10 +12655,10 @@ Suodatin saavutti yli $1 % täsmäävän toiminnon rajan.",
 	'abusefilter-edit-warn-preview' => 'Esikatsele valittua viestiä',
 	'abusefilter-edit-warn-edit' => 'Luo tai muokkaa valittua viestiä',
 	'abusefilter-edit-tag-tag' => 'Käytettävät merkinnät (yksi per rivi):',
-	'abusefilter-edit-denied' => 'Et voi tarkastella tämän suodattimen yksityiskohtia, koska ne eivät ole julkisesti näkyvillä.', # Fuzzy
+	'abusefilter-edit-denied' => 'Et voi tarkastella tämän suodattimen yksityiskohtia, koska ne eivät ole julkisesti näkyvillä.',
 	'abusefilter-edit-main' => 'Suodattimen parametrit',
 	'abusefilter-edit-done-subtitle' => 'Suodatinta muokattu',
-	'abusefilter-edit-done' => 'Muutokset suodattimeen $1 tallennettiin onnistuneesti.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Muutokset]] [[Special:AbuseFilter/$1|suodattimeen $1]] tallennettiin onnistuneesti.',
 	'abusefilter-edit-badsyntax' => 'Määrittämässäsi suodattimessa on syntaksivirhe.
 Jäsentimen palaute: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Et voi muuttaa tätä suodatinta, koska se sisältää yhden tai useamman rajoitetun toiminnon.
@@ -15310,10 +15312,10 @@ $messages['he'] = array(
 	'abusefilter-edit-warn-preview' => 'תצוגה מקדימה של ההודעה שנבחרה',
 	'abusefilter-edit-warn-edit' => 'יצירת/עריכת ההודעה שנבחרה',
 	'abusefilter-edit-tag-tag' => 'סימונים אפשריים (אחד בשורה):',
-	'abusefilter-edit-denied' => 'אינכם יכולים לצפות בפרטים של מסנן זה, כיוון שהוא מוסתר מעיני הציבור.', # Fuzzy
+	'abusefilter-edit-denied' => 'אינכם יכולים לצפות בפרטים של מסנן זה, כי הוא מוסתר מעיני הציבור.',
 	'abusefilter-edit-main' => 'הפרמטרים של המסנן',
 	'abusefilter-edit-done-subtitle' => 'המסנן נערך',
-	'abusefilter-edit-done' => 'השינויים שביצעתם במסנן $1 נשמרו בהצלחה.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|השינויים שלכם]] במסנן [[Special:AbuseFilter/$1|$1]] נשמרו.',
 	'abusefilter-edit-badsyntax' => 'ישנה שגיאת תחביר במסנן שציינתם. הפלט מהמפענח הוא: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'אינכם יכולים לערוך את המסנן, כיוון שהוא כולל פעולה מוגבלת אחת או יותר. אנא בקשו ממשתמש עם הרשאה להוספת פעולות מוגבלות לעשות את השינוי עבורכם.',
 	'abusefilter-edit-viewhistory' => 'צפייה בהיסטוריית הגרסאות של המסנן',
@@ -36088,7 +36090,7 @@ $messages['sr-ec'] = array(
 	'action-abusefilter-modify-restricted' => 'мењање филтера против злоупотребе с ограниченим радњама',
 	'action-abusefilter-revert' => 'враћање свих измена које је направио филтер против злоупотребе',
 	'action-abusefilter-view-private' => 'прегледање приватних филтера против злоупотребе',
-	'abusefilter-log' => 'Дневник филтера против злоупотребе',
+	'abusefilter-log' => 'Историја филтера против злоупотребе',
 	'abusefilter-log-summary' => 'Овај извештај приказује списак свих радњи које су извршили филтери.',
 	'abusefilter-log-search' => 'Претрага извештаја злоупотребе',
 	'abusefilter-log-search-user' => 'Корисник:',
@@ -36096,6 +36098,9 @@ $messages['sr-ec'] = array(
 	'abusefilter-log-search-title' => 'Наслов:',
 	'abusefilter-log-search-wiki' => 'Вики:',
 	'abusefilter-log-search-submit' => 'Претражи',
+	'abusefilter-log-entry' => '$1: $2 је активирао филтер, изводећи радњу „$3“ на страници $4.
+Предузете радње: $5;
+Опис филтера: $6',
 	'abusefilter-log-detailedentry-global' => 'глобални филтер $1',
 	'abusefilter-log-detailedentry-local' => 'филтер $1',
 	'abusefilter-log-detailslink' => 'детаљи',
@@ -36401,7 +36406,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-topnav-log' => 'Историја злоупотребе',
 	'abusefilter-topnav-tools' => 'Алати за дебаговање',
 	'abusefilter-topnav-import' => 'Увези филтер',
-	'abusefilter-log-name' => 'Дневник филтера против злоупотребе',
+	'abusefilter-log-name' => 'Историја филтера против злоупотребе',
 	'abusefilter-log-entry-modify' => 'изменио $1 ($2)',
 	'abusefilter-log-noresults' => 'Нема резултата',
 	'abusefilter-diff-title' => 'Разлике између издања',
@@ -36456,13 +36461,16 @@ Opis povređenog pravila: $1',
 	'action-abusefilter-modify-restricted' => 'menjanje filtera protiv zloupotrebe s ograničenim radnjama',
 	'action-abusefilter-revert' => 'vraćanje svih izmena koje je napravio filter protiv zloupotrebe',
 	'action-abusefilter-view-private' => 'pregledanje privatnih filtera protiv zloupotrebe',
-	'abusefilter-log' => 'Dnevnik filtera protiv zloupotrebe',
+	'abusefilter-log' => 'Istorija filtera protiv zloupotrebe',
 	'abusefilter-log-summary' => 'Ovaj izveštaj prikazuje spisak svih radnji koje su izvršili filteri.',
 	'abusefilter-log-search' => 'Pretraga izveštaja zloupotrebe',
 	'abusefilter-log-search-user' => 'Korisnik:',
 	'abusefilter-log-search-filter' => 'IB filtera:',
 	'abusefilter-log-search-title' => 'Naslov:',
 	'abusefilter-log-search-submit' => 'Pretraga',
+	'abusefilter-log-entry' => '$1: $2 je aktivirao filter, izvodeći radnju „$3“ na stranici $4.
+Preduzete radnje: $5;
+Opis filtera: $6',
 	'abusefilter-log-detailedentry-global' => 'globalni filter $1',
 	'abusefilter-log-detailedentry-local' => 'filter $1',
 	'abusefilter-log-detailslink' => 'više',
@@ -36758,7 +36766,7 @@ Akcije koje će biti vraćene: $5 ($6)',
 	'abusefilter-topnav-log' => 'Istorija zloupotrebe',
 	'abusefilter-topnav-tools' => 'Alati za debagovanje',
 	'abusefilter-topnav-import' => 'Uvezi filter',
-	'abusefilter-log-name' => 'Dnevnik filtera protiv zloupotrebe',
+	'abusefilter-log-name' => 'Istorija filtera protiv zloupotrebe',
 	'abusefilter-log-entry-modify' => 'izmenio $1 ($2)',
 	'abusefilter-log-noresults' => 'Nema rezultata',
 	'abusefilter-diff-title' => 'Razlike između verzija',
