@@ -815,7 +815,7 @@ See also:
 
 Used in:
 * {{msg-mw|Abusefilter-import-intro}}
-{{Identical|Tools}}',
+{{Identical|Tool}}',
 	'abusefilter-edit-test-link' => 'Link text for link to a form to test a filter. Accompanying label is {{msg-mw|abusefilter-edit-tools}}.',
 	'abusefilter-edit-export' => 'Link text for link to create  filter. Accompanying label is {{msg-mw|abusefilter-edit-tools}}.
 
@@ -3832,6 +3832,7 @@ $ 3 {{پلورال: $ 3 | دییشن | دییشن}} گؤزلنیلیردی، $ 4
 );
 
 /** Bashkir (башҡортса)
+ * @author Alfiya55
  * @author Assele
  * @author Comp1089
  * @author Haqmar
@@ -3846,8 +3847,8 @@ $messages['ba'] = array(
 Урынһыҙ файҙаланыуҙар һөҙгөсө ҡатнашыусыларҙың ҡулланыуына яраҡлаштырылған автоматик механизм булып тора. Исемлектә бөтә ҡуйылған һөҙгөстәр күрһәтелгән, һәм уларҙы уҙгәртеү мөмкинлеге бирелгән.',
 	'abusefilter-mustbeeditor' => 'Хәүефһеҙлек маҡсаттарында был интерфейсты урынһыҙ файҙаланыуҙар һөҙгөсөн үҙгәртеү хоҡуғы булған ҡатнашыусылар ғына үҙгәртә ала.',
 	'abusefilter-warning' => "'''Иғтибар!''' Был ғәмәл автоматик рәүештә зыянлы тип билдәләнде. Эшлекһеҙ төҙәтеүҙәр тиҙ арала юйыласаҡ, тупаҫ төҙәтеүҙәр һәм ҡабатланған эшлекһеҙ төҙәтеүҙәр һеҙҙең иҫәп яҙмағыҙ йәки IP-адресығыҙ бикләнеүгә килтерәсәк.
-Әгәр был төҙәтеү эшлекле тип уйлаһағыҙ, \"Яҙҙырып ҡуйырға\" төймәһенә тағы баҫығыҙ.
-Һеҙҙең ғәмәлегеҙҙе зыянлы тип билдәләүсе ҡағиҙәнең ҡыҫҡаса тасуирламаһы: \$1", # Fuzzy
+Әгәр был төҙәтеү эшлекле тип уйлаһағыҙ, ебәреү йә һаҡлау төймәһенә тағы баҫығыҙ.
+Һеҙҙең ғәмәлегеҙҙе зыянлы тип билдәләүсе ҡағиҙәнең ҡыҫҡаса тасуирламаһы: $1",
 	'abusefilter-disallowed' => 'Был ғәмәл автоматик рәүештә зыянлы тип билдәләнде, шуға күрә рөхсәт ителмәй.
 Әгәр был төҙәтеү эшлекле тип уйлаһағыҙ, хакимгә мәрәжәғәт итегеҙ һәм нимә эшләргә тырышҡанығыҙҙы аңлатығыҙ.
 Һеҙҙең ғәмәлегеҙҙе зыянлы тип билдәләүсе ҡағиҙәнең ҡыҫҡаса тасуирламаһы: $1.',
@@ -3972,6 +3973,7 @@ $messages['ba'] = array(
 	'abusefilter-reautoconfirm-notallowed' => 'Һеҙгә "үҙенән-үҙе раҫланған" торошон тергеҙеү рөхсәт ителмәй.',
 	'abusefilter-reautoconfirm-done' => 'Иҫәп яҙмаһының "үҙенән-үҙе раҫланған" торошо тергеҙелгән.',
 	'abusefilter-status' => 'Һуңғы $1 {{PLURAL:$1|ғәмәлдән}} $2 ғәмәл ($3%) $4 сикләү шартына эләкте, $5 ғәмәл ($6%) хәҙерге ваҡытта эшләүсе һөҙгөстәрҙең береһенә тап килә.',
+	'abusefilter-edit' => 'Яуыз ниәттә файҙаланыуҙар һөҙгөсөн төҙәтергә',
 	'abusefilter-edit-subtitle' => '$1 һөҙгөсөн үҙгәртеү',
 	'abusefilter-edit-subtitle-new' => 'Фильтр яһау',
 	'abusefilter-edit-oldwarning' => '<strong>Һеҙ был һөҙгөстөң иҫке өлгөһөн үҙгәртәһегеҙ.
@@ -4023,10 +4025,10 @@ $messages['ba'] = array(
 	'abusefilter-edit-warn-preview' => 'Һайланған хәбәрҙе ҡарап сығыу',
 	'abusefilter-edit-warn-edit' => 'Һайланған хәбәрҙе Булдырырға/Үҙгәртергә',
 	'abusefilter-edit-tag-tag' => 'Ҡулланыла торған билдәләр (һәр юлға берҙе):',
-	'abusefilter-edit-denied' => 'Һеҙ был һөҙгөс тураһында ентекле мәғлүмәт ҡарай алмайһығыҙ, сөнки ул дөйөм ҡарауҙан йәшерелгән.', # Fuzzy
+	'abusefilter-edit-denied' => 'Һеҙ был һөҙгөс тураһында ентекле мәғлүмәт ҡарай алмайһығыҙ, сөнки ул дөйөм ҡарауҙан йәшерелгән.',
 	'abusefilter-edit-main' => 'Һөҙгөстөң параметрҙары',
 	'abusefilter-edit-done-subtitle' => 'Һөҙгөс үҙгәртелде',
-	'abusefilter-edit-done' => 'Һеҙ $1 һөҙгөсөндәге үҙгәртеүҙәрҙе уңышлы һаҡланығыҙ', # Fuzzy
+	'abusefilter-edit-done' => 'Һеҙ $1 һөҙгөсөндәге $2 үҙгәртеүҙәрҙе уңышлы һаҡланығыҙ.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'Билдәләнгән һөҙгөстә синтаксик хаталар бар.
 Уҡыу ҡоралы түбәндәге хәбәрҙе ҡайтарҙы: $1',
 	'abusefilter-edit-restricted' => 'Һеҙ был һөҙгөстө үҙгәртә алмайһығыҙ, сөнки уның бер йәки бер нисә сикләүсе ғәмәле бар.
@@ -4045,6 +4047,7 @@ $messages['ba'] = array(
 Билдә ҡыҫҡа булырға тейеш, һам унда махсус хәрефтәр булмаҫҡа тейеш.',
 	'abusefilter-edit-notallowed' => 'Һеҙҙең урынһыҙ файҙаланыу һөҙгөстәрен булдырыу йәки үҙгәртеү хоҡуғығыҙ юҡ.',
 	'abusefilter-edit-notallowed-global' => 'Һеҙҙең урынһыҙ файҙаланыу һөҙгөстәрен булдырыу йәки үҙгәртеү хоҡуғығыҙ юҡ.',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'Файҙаланыусыларға иҫкәртеү хәбәрҙәре өсөн глобаль һөҙгөстәр ҡулланылмай',
 	'abusefilter-edit-builder-select' => 'Исемлектән өҫтәр өсөн юл һайлағыҙ',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Арифметик операторҙар',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Ҡушыу (+)',
@@ -4076,6 +4079,7 @@ $messages['ba'] = array(
 	'abusefilter-edit-builder-group-funcs' => 'Функциялар',
 	'abusefilter-edit-builder-funcs-length' => 'Юл оҙонлоғо (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Бәләкәй хәрефтәргә күсерергә (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'Юғарғы регистрға',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Күп мәғәнәле хәрефтәрҙе нормалләштерегә (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Ҡабатланған хәрефтәрҙе юйырға (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Махсус хәрефтәр / бөтә хәрефтәр (specialratio)',
@@ -4106,6 +4110,7 @@ $messages['ba'] = array(
 	'abusefilter-edit-builder-vars-article-ns' => 'Биттең исемдәр арауығы',
 	'abusefilter-edit-builder-vars-article-text' => 'Биттең исеме (исемдәр арауыҡһыҙ)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Биттең тулы исеме',
+	'abusefilter-edit-builder-vars-article-views' => 'Биттәрҙе байҡау',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'Исеме үҙгәртелә торған биттең идентификаторы',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Исеме үҙгәртелә торған биттең исемдәр арауығы',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Исеме үҙгәртелә торған биттең исеме',
@@ -4126,6 +4131,7 @@ $messages['ba'] = array(
 	'abusefilter-edit-builder-vars-removed-links' => 'Үҙгәртеүҙә юйылған бөтә тышҡы һылтанмалар',
 	'abusefilter-edit-builder-vars-old-text' => 'Элекке викитекст, битте үҙгәрткәнгә тиклем',
 	'abusefilter-edit-builder-vars-new-text' => 'Яңы викитекст, битте үҙгәрткәндән һуң',
+	'abusefilter-edit-builder-vars-new-pst' => 'Яңы биттең һаҡлар алдынан үҙгәртелгән  викитексы',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Биттең яңы эстәлеге, билдәләрҙән таҙартылған',
 	'abusefilter-edit-builder-vars-new-html' => 'Яңы өлгөнөң HTML-сығанағы',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Биттең үҙгәртеүҙәрҙән һаҡланыу дәрәжәһе',
@@ -4249,6 +4255,8 @@ $3 {{PLURAL:$3|аргумент}} көтөлә, $4 бирелгән.',
 	'abusefilter-diff-pattern' => 'Һөҙөү шарттары',
 	'abusefilter-diff-invalid' => 'Һоратылған өлгөләрҙе алып булмай',
 	'abusefilter-diff-backhistory' => 'Һөҙгөстөң тарихына кире ҡайтырға',
+	'abusefilter-diff-prev' => 'Элекке үҙгәрештәр',
+	'abusefilter-diff-next' => 'Яңы үҙгәрештәр',
 	'abusefilter-import-intro' => 'Һеҙ был интерфейсты башҡа вики проекттарҙан Һөҙгөстәрҙе индереү өсөн ҡуллана алаһығыҙ.
 Сығанаҡ вики проектта, мөхәррирләү ҡоралының "{{int:abusefilter-edit-tools}}" бүлегендә "{{int:abusefilter-edit-export}}" төймәһенә баҫығыҙ.
 Килеп сыҡҡан юлдың эстәлеген был юлға күсерегеҙ һәм "{{int:abusefilter-import-submit}}" төймәһенә баҫығыҙ.',
@@ -7115,6 +7123,18 @@ $messages['ce'] = array(
 Зуламах лаьцна хаам, аш дечуьнца догlуш хилар билгалла даьккхина: $1', # Fuzzy
 	'abusefilter-blocker' => 'Зулум литтар',
 	'abusefilter-accountreserved' => 'ХӀара декъашхочун дӀаяздар билгал дина зулам литтаро лела да.',
+	'right-abusefilter-modify' => 'зулам литтаран хийцам',
+	'right-abusefilter-view' => 'зулам литтарршка хьажар',
+	'right-abusefilter-log' => 'зулам литтаран тептаре хьажар',
+	'right-abusefilter-log-detail' => 'зулам литтаран тептар чура ма-дарра долу дӀаяздаршка хьажар',
+	'right-abusefilter-modify-restricted' => 'дихкина долу зулам литтарш хийцар',
+	'right-abusefilter-revert' => 'зулам литтарс бина хийцамаш юхабахар',
+	'right-abusefilter-log-private' => 'Зулам литтаран тептар чура долахь хилар билгал дина долу дӀаяздаршка хьажар',
+	'right-abusefilter-hide-log' => 'зулам литтаран тептар чура къайлаха долу дӀаяздаршка хьажар',
+	'right-abusefilter-hidden-log' => 'зулам литтаран тептар чура къайлаха долу дӀаяздаршка хьажар',
+	'right-abusefilter-modify-global' => 'зулам литтарш кхоллар я хийцар',
+	'action-abusefilter-private' => 'зулам литтаран тептар чура долара хаамашка хьажар',
+	'action-abusefilter-view-private' => 'къайлаха долу зулам литтаршка хьажар',
 	'abusefilter-log' => 'Зулам литтаран тептар',
 	'abusefilter-log-summary' => 'ХӀокху тептар чохь гойту литтаран карийнарш.',
 	'abusefilter-log-search' => 'Зуламан тептар чохь лахар',
@@ -7212,6 +7232,7 @@ $messages['ce'] = array(
 	'abusefilter-edit-export' => 'Экспорт де хӀара литтар кхечу вики чу',
 	'abusefilter-edit-syntaxok' => 'Синтаксисан гӀалаташ ца карийна.',
 	'abusefilter-edit-syntaxerr' => 'Синтаксисан гӀалаташ карийна: $1',
+	'abusefilter-edit-notallowed-global' => 'Хьан бакъонаш яц зулам литтарш кхолла я хийца',
 	'abusefilter-edit-builder-select' => 'ТӀетоха харжа пункт',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Арифметикан оператораш',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Вовшахтохар (+)',
@@ -12033,7 +12054,7 @@ $messages['fa'] = array(
 و ویرایش‌های عمدی یا مکرر خرابکارانه منجر به بسته شدن حساب یا نشانی آی‌پی شما خواهد شد.
 اگر مطمئنید که این عمل مفید است باید دوباره آن را تأیید کنید.
 خلاصه‌ای از توضیح قانون جلوگیری از خرابکاری که با کار شما مطابقت دارد چنین است: $1",
-	'abusefilter-disallowed' => 'این کار به طور خودکار خطرناک تشخیص داده شده‌است و بنابراین غیرمجاز است.
+	'abusefilter-disallowed' => 'این کار به طور خودکار خطرناک تشخیص داده شده‌است و بنابراین نامجاز است.
 اگر فکر می‌کنید که عملتان درست بوده‌است لطفاً به یکی از مدیران بگویید که چه می‌خواهید بکنید.
 خلاصه‌ای از توضیح قانون جلوگیری از خرابکاری که با کار شما مطابقت دارد چنین است: $1',
 	'abusefilter-blocked-display' => 'این کار به طور خودکار خطرناک تشخیص داده‌شده است،
@@ -12109,7 +12130,7 @@ $messages['fa'] = array(
 	'abusefilter-log-details-hidden' => 'شما نمی‌توانید جزئیات این مورد را ببینید چون از دید عموم مخفی شده‌است.',
 	'abusefilter-log-hide-legend' => 'پنهان کردن مورد در سیاهه',
 	'abusefilter-log-hide-id' => 'شناسه مورد در سیاهه:',
-	'abusefilter-log-hide-hidden' => 'پنهان کردن این مورد از دید عموم',
+	'abusefilter-log-hide-hidden' => 'پنهان‌کردن این مورد از دید عموم',
 	'abusefilter-log-hide-reason' => 'دلیل:',
 	'abusefilter-log-hide-forbidden' => 'شما دسترسی لازم برای پنهان‌کردن موارد سیاههٔ خرابکاری را ندارید.',
 	'abusefilter-logentry-suppress' => '«[[$1]]» را پنهان کرد',
@@ -12177,7 +12198,7 @@ $messages['fa'] = array(
 :''(قابل مشاهده توسط عموم)''",
 	'abusefilter-edit-group' => 'گروه پالایه:',
 	'abusefilter-edit-flags' => 'پرچم‌ها:',
-	'abusefilter-edit-enabled' => 'فعال کردن این پالایه',
+	'abusefilter-edit-enabled' => 'فعال‌کردن این پالایه',
 	'abusefilter-edit-deleted' => 'علامت‌زدن به‌عنوان حذف‌شده',
 	'abusefilter-edit-hidden' => 'پنهان‌کردن جزئیات این پالایه از دید عموم',
 	'abusefilter-edit-global' => 'پالایهٔ سراسری',
@@ -12356,12 +12377,12 @@ $messages['fa'] = array(
 	'abusefilter-exception-invalidoperator' => 'عملگر نامعتبر «$2» در نویسهٔ $1.',
 	'abusefilter-exception-unrecognisedtoken' => 'نشانهٔ ناشناختهٔ «$2» در نویسهٔ $1.',
 	'abusefilter-exception-noparams' => 'هیچ پارامتری به تابع «$2» در نویسهٔ $1 داده نشده‌است.',
-	'abusefilter-exception-dividebyzero' => 'تلاش غیرمجاز برای تقسیم $2 بر صفر در نویسهٔ $1.',
+	'abusefilter-exception-dividebyzero' => 'تلاش نامحاز برای تقسیم $2 بر صفر در نویسهٔ $1.',
 	'abusefilter-exception-unrecognisedvar' => 'متغیر ناشناختهٔ $2 در نویسهٔ $1.',
 	'abusefilter-exception-notenoughargs' => 'پارامترهای داده‌شده به تابع $2 در نویسهٔ $1 کافی نبود.
 در حالی که انتظار $3 پارامتر می‌رفت، $4 پارامتر به‌دست آمد',
 	'abusefilter-exception-regexfailure' => 'خطا در عبارات باقاعده «$3» در نویسهٔ $1: «$2»',
-	'abusefilter-exception-overridebuiltin' => 'بی‌اعتبار ساختن غیرمجاز متغیر درونی «$2» در نویسه $1.',
+	'abusefilter-exception-overridebuiltin' => 'بی‌اعتبار ساختن نامجاز متغیر درونی «$2» در نویسه $1.',
 	'abusefilter-exception-outofbounds' => 'درخواست مورد ناموجود $2 از فهرست (اندازهٔ فهرست = $3) در نویسهٔ $1.',
 	'abusefilter-exception-notlist' => 'درخواست مورد آرایه از غیر آرایه در نویسه $1.',
 	'abusefilter-action-tag' => 'برچسب',
@@ -24729,11 +24750,11 @@ $messages['ml'] = array(
 ഇത് പിഴവുമൂലമുണ്ടായതെങ്കിൽ ദയവായി ഒരു കാര്യനിർവാഹകനെ ബന്ധപ്പെടുക.
 താങ്കളുടെ പ്രവൃത്തിയുമായി ഒത്തുപോകുന്ന ദുരുപയോഗനിയമത്തിന്റെ ലഘുവിവരണം കാണുക: $1',
 	'abusefilter-degrouped' => 'ഈ പ്രവൃത്തി ദോഷകരമെന്ന് സ്വയം തിരിച്ചറിഞ്ഞിട്ടുള്ളതാണ്.
-അക്കാരണം കൊണ്ട്, അതിനാലത് അനുവദിക്കാനാകില്ല, ഇക്കാരണം കൊണ്ട് താങ്കളുടെ അംഗത്വം സംശയത്തിന്റെ നിഴലിലാവുകയും, എല്ലാ അവകാശങ്ങളും നീക്കുകയും ചെയ്യുന്നതാണ്.
+തത്ഫലമായത് അനുവദിക്കാനാകില്ല, ഇക്കാരണം കൊണ്ട് താങ്കളുടെ അംഗത്വം സംശയത്തിന്റെ നിഴലിലാവുകയും, എല്ലാ അവകാശങ്ങളും നീക്കുകയും ചെയ്യുന്നതാണ്.
 ഇതെന്തെങ്കിലും പിഴവുമൂലമുണ്ടായതാണെന്നു താങ്കൾ കരുതുന്നുവെങ്കിൽ ഈ പ്രവൃത്തിയ്ക്കുള്ള വിശദീകരണവുമായി ദയവായി ഒരു ബ്യൂറോക്രാറ്റിനെ സമീപിക്കുക, താങ്കളുടെ അവകാശങ്ങൾ പുനഃസ്ഥാപിക്കപ്പെട്ടേയ്ക്കാം.
-താങ്കളുടെ പ്രവൃത്തിയുമായി കണ്ടെത്തിയ ദുരുപയോഗ നിയമത്തിന്റെ ലഘുവിവരണം കൊടുക്കുന്നു: $1',
+താങ്കളുടെ പ്രവൃത്തിയുമായി സാദൃശ്യമുള്ള ദുരുപയോഗ നിയമത്തിന്റെ ലഘുവിവരണം: $1',
 	'abusefilter-autopromote-blocked' => 'ഈ പ്രവൃത്തി ദോഷകരമെന്ന് സ്വയം തിരിച്ചറിഞ്ഞിട്ടുള്ളതാണ്, അതിനാലത് അനുവദിക്കാനാകില്ല, കൂടുതലായി സുരക്ഷാ മാനദണ്ഡമെന്ന നിലയിൽ, മതിപ്പുനേടിയ അംഗത്വങ്ങൾക്ക് സമ്പ്രദായികമായി ലഭിച്ചു പോരുന്ന ചില അവകാശങ്ങൾ താങ്കളുടെ അംഗത്വത്തിൽ നിന്നും താത്കാലികമായി നീക്കം ചെയ്തിരിക്കുന്നു.
-താങ്കളുടെ പ്രവൃത്തിയുമായി ചേർന്നു പ്രവർത്തിച്ച ദുരുപയോഗനിയമത്തിന്റെ ലഘു വിവരണം: $1',
+താങ്കളുടെ പ്രവൃത്തിയുമായി സാദൃശ്യമുള്ള ദുരുപയോഗ നിയമത്തിന്റെ ലഘുവിവരണം: $1',
 	'abusefilter-blocker' => 'ദുരുപയോഗ അരിപ്പ',
 	'abusefilter-blockreason' => 'ദുരുപയോഗ അരിപ്പ ഉപയോഗിച്ച് സ്വതേ തടയപ്പെട്ടിരിക്കുന്നു.
 ഒത്തുപോവുന്ന നിയമത്തിന്റെ വിവരണം: $1',
