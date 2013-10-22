@@ -42190,6 +42190,7 @@ $messages['yi'] = array(
 	'abusefilter-list-options-scope' => 'ווײַזן פילטערס פון:',
 	'abusefilter-list-options-scope-local' => 'לאקאַלע וויקי',
 	'abusefilter-list-options-scope-global' => 'גלאבאלע כללים',
+	'abusefilter-list-options-disabled' => 'אומאקטיווירטע פֿילטערס:',
 	'abusefilter-list-options-submit' => 'דערהײַנטיקן',
 	'abusefilter-tools-submitexpr' => 'אפשאצן',
 	'abusefilter-tools-reautoconfirm' => 'צוריקשטעלן אויטא־באשטעטיקטן סטאטוס',
