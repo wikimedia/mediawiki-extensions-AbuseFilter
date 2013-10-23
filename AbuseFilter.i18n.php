@@ -17445,10 +17445,10 @@ In media, su durata de execution es $4ms, e illo consume $5 {{PLURAL:$5|conditio
 	'abusefilter-edit-warn-preview' => 'Previsualisar le messages seligite',
 	'abusefilter-edit-warn-edit' => 'Crear/modificar le messages seligite',
 	'abusefilter-edit-tag-tag' => 'Etiquettas a applicar (un per linea):',
-	'abusefilter-edit-denied' => 'Tu non pote vider le detalios de iste filtro, proque illo es celate al vista del publico.', # Fuzzy
+	'abusefilter-edit-denied' => 'Tu non pote vider le detalios de iste filtro, perque illo es celate al vista public.',
 	'abusefilter-edit-main' => 'Parametros del filtro',
 	'abusefilter-edit-done-subtitle' => 'Filtro modificate',
-	'abusefilter-edit-done' => 'Tu ha immagazinate tu modificationes al filtro $1 con successo.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Tu modificationes]] al [[Special:AbuseFilter/$1|filtro $1]] ha essite salveguardate.',
 	'abusefilter-edit-badsyntax' => 'Il ha un error de syntaxe in le filtro que tu specificava. Le resultato del analysator syntactic esseva: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Tu non pote modificar iste filtro, proque illo contine un o plus actiones restringite.
 Per favor demanda a un usator con le permission de adder actiones restringite de facer le modification pro te.',
