@@ -37072,6 +37072,7 @@ $messages['su'] = array(
 
 /** Swedish (svenska)
  * @author Ainali
+ * @author Bengt B
  * @author Boivie
  * @author Cybjit
  * @author Fluff
@@ -37089,6 +37090,7 @@ $messages['su'] = array(
  * @author Poxnar
  * @author Rotsee
  * @author Sertion
+ * @author Skalman
  * @author Thurs
  * @author WikiPhoenix
  */
@@ -37276,10 +37278,10 @@ missbrukslogg-poster.',
 	'abusefilter-edit-warn-preview' => 'Förhandsgranska valt meddelande',
 	'abusefilter-edit-warn-edit' => 'Skapa/redigera valt meddelande',
 	'abusefilter-edit-tag-tag' => 'Märken att lägga på (en per rad):',
-	'abusefilter-edit-denied' => 'Du kan inte se detta filters detaljer eftersom de är dolda för allmänheten.', # Fuzzy
+	'abusefilter-edit-denied' => 'Du kan inte se detaljer för detta filtret, eftersom det är dolt från allmänheten.',
 	'abusefilter-edit-main' => 'Filterparametrar',
 	'abusefilter-edit-done-subtitle' => 'Filter redigerat',
-	'abusefilter-edit-done' => 'Du har sparat dina ändringar i filter $1.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Dina ändringar]] på [[Special:AbuseFilter/$1|filter $1]] har sparats.',
 	'abusefilter-edit-badsyntax' => 'Det är ett syntaxfel i filtret du angav. Resultatet från parsern var: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Du kan inte ändra detta filter eftersom det innehåller en eller fler begränsade handlingar. Vänligen fråga en användare med behörighet att lägga till begränsade handlingar om han eller hon kan göra ändringen åt dig.',
 	'abusefilter-edit-viewhistory' => 'Visa det här filtrets historik',
@@ -37295,6 +37297,7 @@ missbrukslogg-poster.',
 	'abusefilter-edit-bad-tags' => 'En eller flera av de märken du angav är inte giltigt. Märken skall vara korta och de får inte innehålla några specialtecken.',
 	'abusefilter-edit-notallowed' => 'Du har inte tillåtelse att skapa eller ändra missbruksfilter',
 	'abusefilter-edit-notallowed-global' => 'Du har inte tillåtelse att skapa eller ändra globala missbruksfilter',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'Anpassade varningsmeddelanden stöds inte för globala filter',
 	'abusefilter-edit-builder-select' => 'Ange ett alternativ för att lägga till det vid markören',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetiska operatorer',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Addition (+)',
@@ -37340,6 +37343,7 @@ missbrukslogg-poster.',
 	'abusefilter-edit-builder-funcs-substr' => 'Delsträng (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'Delsträngens position i strängen (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'Ersätt delsträng med sträng (str_replace)',
+	'abusefilter-edit-builder-funcs-rescape' => 'Escapa strängen i regex (rescape)',
 	'abusefilter-edit-builder-funcs-set_var' => 'Ställ in variabel (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Variabler',
 	'abusefilter-edit-builder-vars-accountname' => 'Kontonamn (on account creation)',
@@ -37377,6 +37381,7 @@ missbrukslogg-poster.',
 	'abusefilter-edit-builder-vars-removed-links' => 'Alla externa länkar borttagna i redigeringen',
 	'abusefilter-edit-builder-vars-old-text' => 'Sidans gamla wikitext, före redigeringen',
 	'abusefilter-edit-builder-vars-new-text' => 'Sidans nya wikitext, efter redigeringen',
+	'abusefilter-edit-builder-vars-new-pst' => 'Ny sida wikitext förändrades innan den sparades',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Ny sidtext, strippad från eventuell markup',
 	'abusefilter-edit-builder-vars-new-html' => 'Parsad HTML-källkod för den nya versionen',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Skyddsnivå för redigering av sidan',
