@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * The default view used in Special:AbuseFilter
+ */
 class AbuseFilterViewList extends AbuseFilterView {
 	function show() {
 		$out = $this->getOutput();
@@ -167,6 +170,9 @@ class AbuseFilterViewList extends AbuseFilterView {
 	}
 }
 
+/**
+ * Class to build paginated filter list
+ */
 // Probably no need to autoload this class, as it will only be called from the class above.
 class AbuseFilterPager extends TablePager {
 	function __construct( $page, $conds ) {
@@ -330,6 +336,9 @@ class AbuseFilterPager extends TablePager {
 	}
 }
 
+/**
+ * Class to build paginated filter list for wikis using global abuse filters
+ */
 class GlobalAbuseFilterPager extends AbuseFilterPager {
 	function __construct( $page, $conds ) {
 		parent::__construct( $page, $conds );
