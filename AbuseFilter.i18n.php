@@ -7601,6 +7601,7 @@ $messages['co'] = array(
 /** Czech (česky)
  * @author Chmee2
  * @author Matěj Grabovský
+ * @author Michaelbrabec
  * @author Mormegil
  * @author Tchoř
  * @author Vks
@@ -7788,10 +7789,10 @@ Odpovídalo mu více než dovolený limit $1 % všech operací.",
 	'abusefilter-edit-warn-preview' => 'Zobrazit náhled zvoleného hlášení',
 	'abusefilter-edit-warn-edit' => 'Vytvořit/editovat zvolené hlášení',
 	'abusefilter-edit-tag-tag' => 'Přidat značky (jedna na řádek):',
-	'abusefilter-edit-denied' => 'U tohoto filtru si nemůžete prohlédnout podrobnosti, protože byly před veřejností skryty.', # Fuzzy
+	'abusefilter-edit-denied' => 'Nemůžete se podívat na detaily tohoto filteru, protože není veřejný',
 	'abusefilter-edit-main' => 'Parametry filtru',
 	'abusefilter-edit-done-subtitle' => 'Filtr upraven',
-	'abusefilter-edit-done' => 'Úspěšně jste {{GENDER:|uložil|uložila|uložili}} změny filtru $1.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Vaše úpravy]] na [[Special:AbuseFilter/$1|filter $1]] byly uloženy.',
 	'abusefilter-edit-badsyntax' => 'Zadaný filtr obsahuje syntaktickou chybu. Výstup z parseru: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Nemáte oprávnění editovat tento filtr, neboť obsahuje jedno nebo více opatření s omezeným přístupem.
 Požádejte uživatele s oprávněním přidávat taková opatření, aby potřebnou změnu provedl za vás.',
@@ -28878,10 +28879,10 @@ En mejana, la durada d'execucion d'aqueste filtre es de $4 ms e utiliza $5 condi
 	'abusefilter-edit-warn-preview' => 'Previsualizar los messatges seleccionats',
 	'abusefilter-edit-warn-edit' => 'Crear / modificar lo messatge seleccionat',
 	'abusefilter-edit-tag-tag' => "Etiqueta d'aplicar (una per linha) :",
-	'abusefilter-edit-denied' => "Podètz pas veire los detalhs d'aqueste filtre perque es amagat a la vista del public", # Fuzzy
+	'abusefilter-edit-denied' => "Podètz pas veire los detalhs d'aqueste filtre, perque es amagat a la vista del public",
 	'abusefilter-edit-main' => 'Paramètres del filtre',
 	'abusefilter-edit-done-subtitle' => 'Filtre modificat',
-	'abusefilter-edit-done' => 'Avètz salvadas vòstras modificacions amb succès dins lo filtre $1.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Vòstras modificacions]] al [[Special:AbuseFilter/$1|filtre $1]] son estadas enregistradas.',
 	'abusefilter-edit-badsyntax' => "I a una error de sintaxi dins lo filtre qu'avètz especificat. Lo resultat del parser èra : <pre>$1</pre>",
 	'abusefilter-edit-restricted' => "Podètz pas modificar aqueste filtre perque conten una o mantuna accion restrenchas. Demandatz a un utilizaire qu'a lo drech de modificar los filtres amb d'accions restrenchas de far la modificacion per vos.",
 	'abusefilter-edit-viewhistory' => "Veire l’istoric d'aqueste filtre",
