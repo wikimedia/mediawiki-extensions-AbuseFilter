@@ -702,6 +702,7 @@ class AbuseFilter {
 	 *         the errors and warnings to be shown to the user to explain the actions.
 	 */
 	public static function executeFilterActions( $filters, $title, $vars ) {
+		global $wgMainCacheType;
 		wfProfileIn( __METHOD__ );
 
 		$actionsByFilter = self::getConsequencesForFilters( $filters );
@@ -717,7 +718,9 @@ class AbuseFilter {
 
 			$global_filter = ( preg_match( '/^global-/', $filter ) == 1);
 
-			if ( !empty( $actions['throttle'] ) ) {
+			// If the filter is throttled and throttling is available via object
+			// caching, check to see if the user has hit the throttle.
+			if ( !empty( $actions['throttle'] ) && $wgMainCacheType !== CACHE_NONE ) {
 				$parameters = $actions['throttle']['parameters'];
 				$throttleId = array_shift( $parameters );
 				list( $rateCount, $ratePeriod ) = explode( ',', array_shift( $parameters ) );

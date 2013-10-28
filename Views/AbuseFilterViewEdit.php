@@ -581,7 +581,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @return string
 	 */
 	function buildConsequenceSelector( $action, $set, $parameters, $row ) {
-		global $wgAbuseFilterAvailableActions;
+		global $wgAbuseFilterAvailableActions, $wgMainCacheType;
 
 		if ( !in_array( $action, $wgAbuseFilterAvailableActions ) ) {
 			return '';
@@ -597,6 +597,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		switch( $action ) {
 			case 'throttle':
+				// Throttling is only available via object caching
+				if ( $wgMainCacheType === CACHE_NONE ) {
+					return '';
+				}
 				$throttleSettings = Xml::checkLabel(
 					$this->msg( 'abusefilter-edit-action-throttle' )->text(),
 					'wpFilterActionThrottle',
