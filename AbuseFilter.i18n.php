@@ -11295,7 +11295,7 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-edit-builder-vars-new-html' => 'Fuente HTML analizada de la nueva revisión',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Editar nivel de protección de la página',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Trasladar el nivel de protección de la página',
-	'abusefilter-edit-builder-vars-restrictions-create' => 'Crear la protección de la página',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Protección para la creación de la página',
 	'abusefilter-edit-builder-vars-restrictions-upload' => 'Actualizar la protección del archivo',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Texto de página antiguo, libre de revisiones',
 	'abusefilter-edit-builder-vars-old-links' => 'Vínculos en la página, antes de la edición',
@@ -12418,7 +12418,7 @@ $messages['fa'] = array(
 	'abusefilter-test-legend' => 'آزمایش پالایه',
 	'abusefilter-test-load-filter' => 'بارگذاری پالایهٔ شماره:',
 	'abusefilter-test-submit' => 'آزمایش',
-	'abusefilter-test-load' => 'بارگذاری',
+	'abusefilter-test-load' => 'بارگیری',
 	'abusefilter-test-user' => 'تغییرات کاربر:',
 	'abusefilter-test-period-start' => 'تغییرات انجام شده بعد از:',
 	'abusefilter-test-period-end' => 'تغییرات انجام شده پیش از:',
@@ -13374,7 +13374,7 @@ Les balises doivent être courtes et ne pas contenir de caractères spéciaux.",
 	'abusefilter-edit-builder-vars-new-html' => 'Source HTML analysée de la nouvelle version',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Niveau de protection des modifications de la page',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Niveau de protection de renommage de la page',
-	'abusefilter-edit-builder-vars-restrictions-create' => 'Créer la protection de la page',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Protection pour la création de la page',
 	'abusefilter-edit-builder-vars-restrictions-upload' => 'Protection de téléchargement du fichier',
 	'abusefilter-edit-builder-vars-old-text-stripped' => "Texte de l'ancienne page, dépourvu de toute mise en forme",
 	'abusefilter-edit-builder-vars-old-links' => 'Liens dans la page, avant la modification',
@@ -13505,6 +13505,7 @@ Copiez la zone de texte qui s'affiche et collez-le dans cette zone de texte, pui
 /** Franco-Provençal (arpetan)
  * @author Cedric31
  * @author ChrisPtDe
+ * @author McDutchie
  */
 $messages['frp'] = array(
 	'abusefilter-desc' => 'Aplique des heristiques ôtomatiques ux changements.',
@@ -13797,7 +13798,7 @@ Les balises dêvont étre côrtes et pués pas avêr de caractèros spèciâls.'
 	'abusefilter-edit-builder-vars-new-html' => 'Sôrsa HTML parsâ de la novèla vèrsion',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Nivél de protèccion des changements de la pâge',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Nivél de protèccion des changements de nom de la pâge',
-	'abusefilter-edit-builder-vars-restrictions-create' => 'Fâre la protèccion de la pâge',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Protèccion de creacion de la pâge', # Fuzzy
 	'abusefilter-edit-builder-vars-restrictions-upload' => 'Protèccion de tèlèchargement du fichiér',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Viely tèxto de la pâge, sen gins de balisâjo',
 	'abusefilter-edit-builder-vars-old-links' => 'Lims dens la pâge, devant lo changement',
@@ -17557,7 +17558,7 @@ Le etiquettas debe esser curte, e non pote continer characteres special.',
 	'abusefilter-edit-builder-vars-new-html' => 'Codice-fonte del nove version transformate in HTML',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Nivello de protection pro le modification del pagina',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Nivello de protection pro le renomination del pagina',
-	'abusefilter-edit-builder-vars-restrictions-create' => 'Protection pro crear le pagina',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Protection pro le creation del pagina',
 	'abusefilter-edit-builder-vars-restrictions-upload' => 'Protection pro incargar le file',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Le texto ancian del pagina, disfacite de omne notation',
 	'abusefilter-edit-builder-vars-old-links' => 'Ligamines in le pagina, ante le modification',
@@ -26558,6 +26559,7 @@ $messages['nap'] = array(
  * @author Guaca
  * @author Harald Khan
  * @author Laaknor
+ * @author McDutchie
  * @author Nghtwlkr
  * @author Njardarlogar
  * @author Stigmj
@@ -26848,7 +26850,7 @@ Mekelappene burde være korte og burde ikke inneholde spesialtegn.',
 	'abusefilter-edit-builder-vars-new-html' => 'Tolket HTML-kode for den nye versjonen',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Beskyttelsesnivå for redigering av siden',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Beskyttelsesnivå for flytting av siden',
-	'abusefilter-edit-builder-vars-restrictions-create' => 'Opprett beskyttelse for siden',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Beskytt siden mot opprettelse',
 	'abusefilter-edit-builder-vars-restrictions-upload' => 'Opplastingsbeskyttelse for filen',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Gammel sidetekst, renset for all koding',
 	'abusefilter-edit-builder-vars-old-links' => 'Lenker på denne siden, før redigeringen',
@@ -28944,6 +28946,7 @@ Las balisas devon èsser cortas e conténer pas de caractèrs especials.",
 	'abusefilter-edit-builder-funcs-substr' => 'Soscadena (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'Posicion de la soscadena dins la cadena (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'Remplaçar la soscadena per una cadena (str_replace)',
+	'abusefilter-edit-builder-funcs-rescape' => "Escapar la cadena coma literala dins l'expression racionala (rescape)",
 	'abusefilter-edit-builder-funcs-set_var' => 'Definir la variabla (set_var)',
 	'abusefilter-edit-builder-group-vars' => 'Variablas',
 	'abusefilter-edit-builder-vars-accountname' => 'Nom del compte (al moment de la creacion del compte)',
@@ -28985,7 +28988,7 @@ Las balisas devon èsser cortas e conténer pas de caractèrs especials.",
 	'abusefilter-edit-builder-vars-new-html' => 'Tèxte de la version novèla transformat en HTML',
 	'abusefilter-edit-builder-vars-restrictions-edit' => "Nivèl de proteccion d'edicion de la pagina",
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Nivèl de proteccion de cambiament de nom de la pagina',
-	'abusefilter-edit-builder-vars-restrictions-create' => 'Crear la proteccion de la pagina',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Crear una proteccion per la pagina',
 	'abusefilter-edit-builder-vars-restrictions-upload' => 'Proteccion de telecargament del fichièr',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Tèxte de la pagina anciana, desprovesit de tota mesa en forma',
 	'abusefilter-edit-builder-vars-old-links' => 'Ligams dins la pagina, abans la modificacion',
@@ -31410,7 +31413,7 @@ Etiquetas devem ser curtas e não devem conter caracteres especiais.',
 	'abusefilter-edit-builder-vars-new-html' => 'Fonte HTML analisada, da nova revisão',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Nível de proteção de edição da página',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Nível de proteção de movimentação da página',
-	'abusefilter-edit-builder-vars-restrictions-create' => 'Criação de proteção de página',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Proteção para a criação da página',
 	'abusefilter-edit-builder-vars-restrictions-upload' => 'Proteção de ficheiro carregado',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Texto anterior da página, sem a formatação',
 	'abusefilter-edit-builder-vars-old-links' => 'Links na página, antes da edição',
@@ -32445,6 +32448,7 @@ Copiați conținutul din caseta care apare și lipiți-l în această casetă de
 
 /** tarandíne (tarandíne)
  * @author Joetaras
+ * @author McDutchie
  * @author Reder
  */
 $messages['roa-tara'] = array(
@@ -32748,7 +32752,7 @@ Le tag honne da esse curte, e non g'onne a condenè carattere speciale.",
 	'abusefilter-edit-builder-vars-new-html' => "Analise d'a sorgende HTML d'a revisiune nuève",
 	'abusefilter-edit-builder-vars-restrictions-edit' => "Cange 'u levelle de protezione d'a pagene",
 	'abusefilter-edit-builder-vars-restrictions-move' => "Spuèste 'u levelle de protezione d'a pagene",
-	'abusefilter-edit-builder-vars-restrictions-create' => "Ccreje 'a protezione de sta pàgene",
+	'abusefilter-edit-builder-vars-restrictions-create' => "Ccreje 'a protezione de sta pàgene", # Fuzzy
 	'abusefilter-edit-builder-vars-restrictions-upload' => "Careche 'a protezzione d'u file",
 	'abusefilter-edit-builder-vars-old-text-stripped' => "Teste d'a pagene vècchie, cu ogne markup luàte",
 	'abusefilter-edit-builder-vars-old-links' => "Cullegaminde jndr'à pagene, prime de le cangiaminde",
@@ -37085,6 +37089,7 @@ $messages['su'] = array(
  * @author Lokal Profil
  * @author M.M.S.
  * @author MagnusA
+ * @author McDutchie
  * @author Najami
  * @author Nghtwlkr
  * @author Njaelkies Lea
@@ -37388,7 +37393,7 @@ missbrukslogg-poster.',
 	'abusefilter-edit-builder-vars-new-html' => 'Parsad HTML-källkod för den nya versionen',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Skyddsnivå för redigering av sidan',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Skyddsnivå för flytt av sidan',
-	'abusefilter-edit-builder-vars-restrictions-create' => 'Skapa skydd för den här sidan',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Skydd mot sidans skapelse',
 	'abusefilter-edit-builder-vars-restrictions-upload' => 'Ladda upp skydd för den här filen',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Gammal sidtext, med all kodning borttagen',
 	'abusefilter-edit-builder-vars-old-links' => 'Länkar i denna sida, före redigeringen',
