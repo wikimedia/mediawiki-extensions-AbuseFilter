@@ -4028,7 +4028,7 @@ $messages['ba'] = array(
 	'abusefilter-edit-denied' => 'Һеҙ был һөҙгөс тураһында ентекле мәғлүмәт ҡарай алмайһығыҙ, сөнки ул дөйөм ҡарауҙан йәшерелгән.',
 	'abusefilter-edit-main' => 'Һөҙгөстөң параметрҙары',
 	'abusefilter-edit-done-subtitle' => 'Һөҙгөс үҙгәртелде',
-	'abusefilter-edit-done' => 'Һеҙ $1 һөҙгөсөндәге $2 үҙгәртеүҙәрҙе уңышлы һаҡланығыҙ.', # Fuzzy
+	'abusefilter-edit-done' => 'Һеҙ [[Special:AbuseFilter/$1|һөҙгөсөндә $1]] [[Special:AbuseFilter/history/$1/diff/prev/$2үҙгәртеүҙәрҙе]] уңышлы һаҡланығыҙ.',
 	'abusefilter-edit-badsyntax' => 'Билдәләнгән һөҙгөстә синтаксик хаталар бар.
 Уҡыу ҡоралы түбәндәге хәбәрҙе ҡайтарҙы: $1',
 	'abusefilter-edit-restricted' => 'Һеҙ был һөҙгөстө үҙгәртә алмайһығыҙ, сөнки уның бер йәки бер нисә сикләүсе ғәмәле бар.
@@ -4476,10 +4476,10 @@ Ini nakakaabot sa limit kan ipinag-aampad na sobra $1% kan aksyon.",
 	'abusefilter-edit-warn-preview' => 'Tanawon mga pinagpili na mensahe',
 	'abusefilter-edit-warn-edit' => 'Muknaon/Liwaton pinagpili na mensahe',
 	'abusefilter-edit-tag-tag' => 'Mga tatak na gamiton (saro kada linya):',
-	'abusefilter-edit-denied' => 'Ika dae makakahiling sa mga detalye kaining saraan, nin huli ta ini itinago gikan sa paghiling nin publiko.', # Fuzzy
+	'abusefilter-edit-denied' => 'Ika dae makakahiling sa mga detalye kaining saraan, nin huli ta ini itinago gikan sa paghiling nin publiko.',
 	'abusefilter-edit-main' => 'Mga parametro nin saraan',
 	'abusefilter-edit-done-subtitle' => 'An saraan pinagliwat',
-	'abusefilter-edit-done' => 'Ika matrayumpong naitagama an saimong mga kaliwatan sa saraan $1.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|An Saimong mga kaliwatan]] pasiring sa [[Special:AbuseFilter/$1|filter $1]] pinagtagama na.',
 	'abusefilter-edit-badsyntax' => 'Igwa nin kasalaan sa sintaks sa laog kan saraan na saimong pinagkaag.
 An kinaluwasan gikan sa parapasabot iyo na: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Ika dae makakaliwat kaining saraan, nin huli ta ini may laog na saro o dakol na pinagpangalad na mga aksyon.
@@ -10973,6 +10973,7 @@ Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku 
  * @author Alvaro qc
  * @author Armando-Martin
  * @author Baiji
+ * @author Benfutbol10
  * @author BicScope
  * @author Crazymadlover
  * @author Dalton2
@@ -11185,7 +11186,7 @@ El filtro ha sobrepasado el límite de más del $1% acciones.",
 	'abusefilter-edit-warn-preview' => 'Previsualizar mensaje seleccionado',
 	'abusefilter-edit-warn-edit' => 'Crear o editar el mensaje seleccionado',
 	'abusefilter-edit-tag-tag' => 'Etiquetas a aplicar (una por línea):',
-	'abusefilter-edit-denied' => 'No puede ver detalles de este filtro porque es privado', # Fuzzy
+	'abusefilter-edit-denied' => 'No puedes ver detalles de este filtro porque es privado',
 	'abusefilter-edit-main' => 'Parámetros de filtro',
 	'abusefilter-edit-done-subtitle' => 'Filtro editado',
 	'abusefilter-edit-done' => 'Ha guardado sus cambios al filtro $1 con éxito.', # Fuzzy
@@ -31999,6 +32000,7 @@ $messages['qu'] = array(
 	'abusefilter-log-linkoncontribs' => "millay ruray hallch'a",
 	'abusefilter-log-linkoncontribs-text' => "Kay ruraqpaq millay ruray hallch'a",
 	'abusefilter-edit-warn-actions' => 'Ruraykuna:',
+	'abusefilter-revert-confirm' => 'Takyachiy',
 );
 
 /** Tarifit (Tarifit)
@@ -41946,13 +41948,39 @@ $messages['vo'] = array(
 	'abusefilter-log-search-title' => 'Tiäd:',
 	'abusefilter-log-search-submit' => 'Sukön',
 	'abusefilter-log-detailslink' => 'pats',
+	'abusefilter-log-diff' => 'dif',
 	'abusefilter-log-details-val' => 'Völad',
 	'abusefilter-log-noactions' => 'nonik',
+	'abusefilter-log-hide-reason' => 'Kod:',
 	'abusefilter-list-details' => 'Pats',
+	'abusefilter-list-options' => 'Välots',
+	'abusefilter-list-options-deleted' => 'Suls pemoüköls:',
 	'abusefilter-tools-reautoconfirm-user' => 'Geban:',
 	'abusefilter-edit-status-label' => 'Statits:',
 	'abusefilter-edit-lastmod-text' => '$1, fa $2',
+	'abusefilter-edit-warn-actions' => 'Dunots:',
+	'abusefilter-edit-history' => 'Jenotem:',
+	'abusefilter-edit-tools' => 'Stums:',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Saedam (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Näedam (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Naedam (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'Müedam (/)',
+	'abusefilter-edit-builder-group-funcs' => 'Dunods',
+	'abusefilter-edit-builder-vars-action' => 'Dunot',
+	'abusefilter-history-foruser' => 'Votükams fa $1',
+	'abusefilter-history-hidden' => 'Klänedik',
+	'abusefilter-history-timestamp' => 'Tim',
 	'abusefilter-history-user' => 'Geban',
+	'abusefilter-history-filterid' => 'Sul',
+	'abusefilter-history-select-user' => 'Geban:',
+	'abusefilter-history-diff' => 'Votükams',
+	'abusefilter-action-throttle' => 'Nevifükön',
+	'abusefilter-action-warn' => 'Nunedön',
+	'abusefilter-action-block' => 'Blokön',
+	'abusefilter-revert-reasonfield' => 'Kod:',
+	'abusefilter-changeslist-examine' => 'xamön',
+	'abusefilter-examine-user' => 'Geban:',
+	'abusefilter-examine-title' => 'Padatiäd:',
 	'abusefilter-examine-submit' => 'Sukön',
 );
 
