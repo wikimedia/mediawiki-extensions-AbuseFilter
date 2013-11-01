@@ -5,7 +5,7 @@ class ApiAbuseFilterCheckSyntax extends ApiBase {
 	public function execute() {
 		// "Anti-DoS"
 		if ( !$this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
-			$this->dieUsageMsg( 'permissiondenied' );
+			$this->dieUsage( 'You don\'t have permission to check syntax of abuse filters', 'permissiondenied' );
 		}
 
 		$params = $this->extractRequestParams();
@@ -48,7 +48,7 @@ class ApiAbuseFilterCheckSyntax extends ApiBase {
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'permissiondenied' ),
+			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to check syntax of abuse filters' ),
 		) );
 	}
 
