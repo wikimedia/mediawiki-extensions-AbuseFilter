@@ -80,7 +80,7 @@ $specialPageAliases['ce'] = array(
 	'AbuseFilter' => array( 'Зулам_литтар' ),
 );
 
-/** Czech (česky) */
+/** Czech (čeština) */
 $specialPageAliases['cs'] = array(
 	'AbuseLog' => array( 'Záznam_filtrů_zneužití' ),
 	'AbuseFilter' => array( 'Filtry_zneužití' ),

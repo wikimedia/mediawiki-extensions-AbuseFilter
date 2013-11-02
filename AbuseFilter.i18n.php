@@ -7598,7 +7598,7 @@ $messages['co'] = array(
 	'abusefilter-history-user' => 'Utilizatore',
 );
 
-/** Czech (česky)
+/** Czech (čeština)
  * @author Chmee2
  * @author Matěj Grabovský
  * @author Michaelbrabec
@@ -22163,7 +22163,7 @@ Eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi Är Aktioun reagéiert 
 Wann Dir mengt datt Är Ännerung konstruktiv ass, da kontaktéiert w.e.g. en Administrateur, an informéiert deen iwwer dat wat Dir versicht hutt ze maachen.
 Eng kuerz Beschreiwung vun der Mëssbrauchsregel, déi op är Aktioun reagéiert huet, ass: $1',
 	'abusefilter-blocked-display' => 'Dës Aktioun gouf automatesch als schiedlech identifizéiert,
-an Dir konnt se dowéint net ausféieren.
+an Dir konnt se dowéinst net ausféieren.
 Des weideren, fir {{SITENAME}} ze protegéieren, gouf Äre Benotzerkont an all assoziéiert IP-Adressen automatesch fir all Ännerunge gespaart.
 Wann dëst irrtèmlech geschitt ass da kontaktéiert w.e.g. en Adminstrateur.
 Hei ass eng kuerz Beschreiwung vun der mëssbrauchsregel op déi Är Aktioun gepasst huet: $1',
@@ -22394,8 +22394,8 @@ Tags solle kuerz sinn, an et solle keng Spezialzeechen dra sinn.',
 	'abusefilter-edit-builder-vars-timestamp' => 'Unix-Zäitstempel vun der Ännerung',
 	'abusefilter-edit-builder-vars-action' => 'Aktioun',
 	'abusefilter-edit-builder-vars-addedlines' => 'Linnen déi bei der Ännerung derbäigesat goufen',
-	'abusefilter-edit-builder-vars-delta' => 'Ännerung vun der Gréisst vun der Säit bäi der Ännerung',
-	'abusefilter-edit-builder-vars-diff' => 'Gesamtënnerscheed vun den Ännrungen déi bäi der Ännerung gemaach goufen',
+	'abusefilter-edit-builder-vars-delta' => 'Ännerung vun der Gréisst vun der Säit bei der Ännerung',
+	'abusefilter-edit-builder-vars-diff' => 'Gesamtënnerscheed vun den Ännrungen déi bei der Ännerung gemaach goufen',
 	'abusefilter-edit-builder-vars-newsize' => 'Nei Säitegréisst',
 	'abusefilter-edit-builder-vars-oldsize' => 'Al Säitegréisst',
 	'abusefilter-edit-builder-vars-removedlines' => 'Linnen déi der Ännerung ewechgeholl goufen',
@@ -22421,8 +22421,8 @@ Tags solle kuerz sinn, an et solle keng Spezialzeechen dra sinn.',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => "Wéini d'E-Mailadress confirméiert gouf",
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Déi lescht zeng Benotzer déi un dësem Artikel geschafft hunn',
 	'abusefilter-edit-builder-vars-all-links' => 'All extern Linken am neien Text',
-	'abusefilter-edit-builder-vars-added-links' => 'All extern Linken déi bäi der Ännerung derbäigesat goufen',
-	'abusefilter-edit-builder-vars-removed-links' => 'All extern Linken déi bäi der Ännerung ewechgeholl goufen',
+	'abusefilter-edit-builder-vars-added-links' => 'All extern Linken déi bei der Ännerung derbäigesat goufen',
+	'abusefilter-edit-builder-vars-removed-links' => 'All extern Linken déi bei der Ännerung ewechgeholl goufen',
 	'abusefilter-edit-builder-vars-old-text' => 'Alen Text op der Säit, virun der Ännerung',
 	'abusefilter-edit-builder-vars-new-text' => 'Neien Text op der Säit, no der Ännerung',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Neien Text vun der Säit ouni iergendwellech Formatéierung',
@@ -30988,7 +30988,7 @@ $messages['ps'] = array(
 	'abusefilter-log-hide-reason' => 'سبب:',
 	'abusefilter-logentry-suppress' => '"[[$1]]" پټول',
 	'abusefilter-logentry-unsuppress' => '"[[$1]]" ناپټول',
-	'abusefilter-list' => 'ټول چاڼګران',
+	'abusefilter-list' => 'ټول چاڼگران',
 	'abusefilter-list-id' => 'د چاڼگر پېژند',
 	'abusefilter-list-status' => 'دريځ',
 	'abusefilter-list-consequences' => 'عواقب',
