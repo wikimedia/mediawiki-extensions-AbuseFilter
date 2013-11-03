@@ -8197,6 +8197,11 @@ Disgrifiad o'r rheol sy'n cyfateb: $1",
 	'abusefilter-log-hidden' => '(cofnod cuddiedig)',
 	'abusefilter-log-details-hidden' => "Ni allwch weld manylion y cofnod hwn am ei fod wedi ei guddio o'r golwg.",
 	'abusefilter-log-hide-legend' => 'Cuddio cofnod log',
+	'abusefilter-log-hide-reason' => 'Rheswm:',
+	'abusefilter-list' => 'Pob hidl',
+	'abusefilter-list-id' => 'ID yr hidl',
+	'abusefilter-list-status' => 'Statws',
+	'abusefilter-list-public' => 'Disgrifiad cyhoeddus',
 	'abusefilter-list-edit' => 'Golygu',
 	'abusefilter-list-details' => 'Manylion',
 	'abusefilter-list-limit' => 'Nifer ar bob tudalen',
@@ -8204,10 +8209,16 @@ Disgrifiad o'r rheol sy'n cyfateb: $1",
 	'abusefilter-hidden' => 'Preifat',
 	'abusefilter-unhidden' => 'Cyhoeddus',
 	'abusefilter-enabled' => 'Wedi ei alluogi',
+	'abusefilter-list-options' => 'Dewisiadau',
 	'abusefilter-list-options-submit' => 'Diweddaru',
 	'abusefilter-tools-submitexpr' => 'Gwerthuswch',
 	'abusefilter-tools-reautoconfirm-user' => 'Defnyddiwr',
 	'abusefilter-edit-status-label' => 'Ystadegau',
+	'abusefilter-edit-new' => 'Hidl newydd',
+	'abusefilter-edit-save' => 'Cadwer yr hidl',
+	'abusefilter-edit-id' => 'ID yr hidl:',
+	'abusefilter-edit-description' => 'Disgrifiad:
+:"(yn weladwy i\'r cyhoedd)"',
 	'abusefilter-edit-throttle-period' => 'Cyfnod',
 	'abusefilter-edit-warn-other' => 'Negeseuon eraill',
 	'abusefilter-history-user' => 'Defnyddiwr',
@@ -22205,10 +22216,10 @@ Eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi Är Aktioun reagéiert 
 	'abusefilter-log-search-title' => 'Titel:',
 	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Sichen',
-	'abusefilter-log-entry' => '$1: $2 huet e Mëssbrauchsfilter ausgeléist, bäi der Aktioun $3 op $4.
+	'abusefilter-log-entry' => '$1: $2 huet e Mëssbrauchsfilter ausgeléist, bei der Aktioun $3 op $4.
 Aktioun vum Filter: $5;
 Beschreiwung vum Filter: $6',
-	'abusefilter-log-detailedentry-meta' => '$1: $2 huet e Mëssbrauchsfilter $3 ausgeléist, bäi der Aktioun $4 op $5.
+	'abusefilter-log-detailedentry-meta' => '$1: $2 huet e Mëssbrauchsfilter $3 ausgeléist, bei der Aktioun $4 op $5.
 Aktioun vum Filter: $6;
 Beschreiwung vum Filter: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'globale Filter $1',
@@ -22287,7 +22298,7 @@ D'Statistike sinn déi vun der leschter Versioun vum Filter.
 Wann Dir Är Ännerunge späichert dann iwwerschreiwt Dir all Ännerungen zënter der Versioun déi Dir elo ännert. </strong> &bull;
 [[Special:AbuseFilter/history/$2|Zréck op d'Versiounsgeschicht vun  dësem Filter]].",
 	'abusefilter-edit-status-label' => 'Statistiken:',
-	'abusefilter-edit-status' => 'Dëse Filter huet bäi {{PLURAL:$1|der leschter Aktioun|de leschte(n) $1 Aktiounen}}, $2 mol ($3%) ugeschloen.
+	'abusefilter-edit-status' => 'Dëse Filter huet bei {{PLURAL:$1|der leschter Aktioun|de leschte(n) $1 Aktiounen}}, $2 mol ($3%) ugeschloen.
 Am Duerchschnëtt brauch en dofir $4ms a benotzt dobäi $5 {{PLURAL:$5|Konditioun|Konditioune}} vun der Konditiouns-Limit.',
 	'abusefilter-edit-throttled' => "'''Warnung''': Dëse Filter gouf aus Séchertheetsgrënn automatsch ausgeschalt.
 En huet méi wéi déi definiéiert Limit vun $1% vun den Aktiounen als schiedlech agestuft.",
