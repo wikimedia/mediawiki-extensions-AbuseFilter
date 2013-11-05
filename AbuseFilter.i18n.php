@@ -12138,7 +12138,7 @@ $messages['fa'] = array(
 	'abusefilter-log-linkoncontribs' => 'سیاههٔ خرابکاری',
 	'abusefilter-log-linkoncontribs-text' => 'سیاهه خرابکاری‌ها برای این کاربر',
 	'abusefilter-log-hidden' => '(مورد پنهان)',
-	'abusefilter-log-hidden-implicit' => '(پنهان شده چون نسخه حذف شده است)',
+	'abusefilter-log-hidden-implicit' => '(پنهان‌شده چون نسخه حذف شده است)',
 	'abusefilter-log-cannot-see-details' => 'برای مشاهده جزئیات این اطلاعات دسترسی ندارید',
 	'abusefilter-log-details-hidden' => 'شما نمی‌توانید جزئیات این مورد را ببینید چون از دید عموم مخفی شده‌است.',
 	'abusefilter-log-hide-legend' => 'پنهان کردن مورد در سیاهه',
@@ -31109,6 +31109,7 @@ $messages['ps'] = array(
 /** Portuguese (português)
  * @author Alchimista
  * @author Bonifácio
+ * @author Fúlvio
  * @author Giro720
  * @author GoEThe
  * @author Hamilton Abreu
@@ -31315,10 +31316,10 @@ O filtro atingiu o limite de correspondência com mais de $1% de ações.",
 	'abusefilter-edit-warn-preview' => 'Antever mensagem selecionada',
 	'abusefilter-edit-warn-edit' => 'Criar/Editar mensagem selecionada',
 	'abusefilter-edit-tag-tag' => 'Etiquetas a aplicar (uma por linha):',
-	'abusefilter-edit-denied' => 'Não pode ver detalhes deste filtro, porque ele está ocultado de vista pública', # Fuzzy
+	'abusefilter-edit-denied' => 'Não pode ver detalhes deste filtro, porque ele está ocultado de vista pública.',
 	'abusefilter-edit-main' => 'Parâmetros do filtro',
 	'abusefilter-edit-done-subtitle' => 'Filtro editado',
-	'abusefilter-edit-done' => 'Gravou com sucesso as alterações ao filtro $1.', # Fuzzy
+	'abusefilter-edit-done' => 'Gravou com sucesso as [[Special:AbuseFilter/history/$1/diff/prev/$2|alterações]] ao [[Special:AbuseFilter/$1|filtro $1]].',
 	'abusefilter-edit-badsyntax' => 'Há um erro de sintaxe no filtro que especificou.
 O resultado de saída do analisador foi: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Não pode editar este filtro, porque ele contém uma ou mais ações restritas.
@@ -31337,6 +31338,7 @@ Por favor, peça a um utilizador com permissão de adicionamento de ações rest
 Etiquetas devem ser curtas e não devem conter caracteres especiais.',
 	'abusefilter-edit-notallowed' => 'Não tem permissão de criar ou editar filtros de abuso',
 	'abusefilter-edit-notallowed-global' => 'Não tem permissão para criar ou editar filtros de abuso',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'Mensagens de advertência personalizadas não são aceitas por filtros globais',
 	'abusefilter-edit-builder-select' => 'Selecione uma opção para inserir no cursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operadores aritméticos',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adição (+)',
