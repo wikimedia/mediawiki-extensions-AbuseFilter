@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This class contains most of the business logic of AbuseFilter. It consists of mostly
+ * static functions that handle activities such as parsing edits, applying filters,
+ * logging actions, etc.
+ */
 class AbuseFilter {
 	public static $statsStoragePeriod = 86400;
 	public static $tokenCache = array();
