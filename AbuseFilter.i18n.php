@@ -42912,7 +42912,7 @@ $messages['zh-cn'] = array(
  */
 $messages['zh-hans'] = array(
 	'abusefilter-desc' => '对编辑行为自动进行条件判定',
-	'abusefilter' => '滥用过滤器设置',
+	'abusefilter' => '滥用过滤器配置',
 	'abuselog' => '滥用日志',
 	'abusefilter-intro' => '欢迎访问防滥用过滤器管理界面。防滥用过滤器是一个可以针对所有最近编辑动作进行自动化判断的软件系统。本界面包含了现有过滤器的列表，并允许管理人员修改它们。',
 	'abusefilter-mustbeeditor' => '出于安全考虑，只有拥有编辑防滥用过滤器权限的用户方可使用本界面。',
@@ -43235,7 +43235,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-action-warn' => '警告',
 	'abusefilter-action-blockautopromote' => '禁止自动授权',
 	'abusefilter-action-block' => '封禁',
-	'abusefilter-action-degroup' => '从用户群组中移除',
+	'abusefilter-action-degroup' => '从用户组移除',
 	'abusefilter-action-rangeblock' => '段封禁',
 	'abusefilter-action-disallow' => '阻止',
 	'abusefilter-revert-title' => '撤销过滤器$1作出的所有操作',
