@@ -11200,7 +11200,7 @@ El filtro ha sobrepasado el límite de más del $1% acciones.",
 	'abusefilter-edit-denied' => 'No puedes ver detalles de este filtro porque es privado',
 	'abusefilter-edit-main' => 'Parámetros de filtro',
 	'abusefilter-edit-done-subtitle' => 'Filtro editado',
-	'abusefilter-edit-done' => 'Ha guardado sus cambios al filtro $1 con éxito.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Tus cambios]] al [[Special:AbuseFilter/$1|filtro $1]] han sido guardados.',
 	'abusefilter-edit-badsyntax' => 'Hay un error de sintaxis en el filtro que especificó.
 El resultado del analizador fue: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'No puedes editar este filtro, porque contiene una o más acciones restringidas.
