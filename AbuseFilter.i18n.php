@@ -5839,6 +5839,7 @@ $messages['bo'] = array(
  * @author Fohanno
  * @author Fulup
  * @author Gwendal
+ * @author VIGNERON
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -6028,10 +6029,10 @@ Tizhout a ra termen an dinoiñ muioc'h evit $1% eus an oberoù.",
 	'abusefilter-edit-warn-preview' => 'Rakwelet ar gemennadenn dibabet',
 	'abusefilter-edit-warn-edit' => 'Krouiñ/Kemmañ ar gemennadenn diuzet',
 	'abusefilter-edit-tag-tag' => 'Balizenn da arloañ (unan dre linenn) :',
-	'abusefilter-edit-denied' => "Ne c'helloc'h ket gwelet munudoù ar sil-mañ dre ma 'z eo kuzhet d'ar selloù publik", # Fuzzy
+	'abusefilter-edit-denied' => "Ne c'helloc'h ket gwelet munudoù ar sil-mañ dre ma 'z eo kuzhet d'ar selloù publik.",
 	'abusefilter-edit-main' => 'Arventennoù ar sil',
 	'abusefilter-edit-done-subtitle' => 'Sil aozet',
-	'abusefilter-edit-done' => "Enrollet-mat eo bet ho kemmoù d'ar sil $1.", # Fuzzy
+	'abusefilter-edit-done' => "Enrollet-mat eo bet [[Special:AbuseFilter/history/$1/diff/prev/$2|ho kemmoù]] d'ar [[Special:AbuseFilter/$1|sil $1]].",
 	'abusefilter-edit-badsyntax' => "Ur fazi ereadurezh a zo e-barzh ar sil-mañ.
 Disoc'h ar parser a oa : <pre>$1</pre>",
 	'abusefilter-edit-restricted' => "Ne c'helloc'h ket kemmañ ar sil-mañ, peogwir ez eus unan pe meur a oberoù bevennet.
@@ -20440,10 +20441,10 @@ $messages['ka'] = array(
 	'abusefilter-edit-warn-preview' => 'არჩეული შეტყობინების წინასწარ გადახევა',
 	'abusefilter-edit-warn-edit' => 'შექმენით/შეასწორეთ არჩეული შეტყობინება',
 	'abusefilter-edit-tag-tag' => 'გამოყენებადი მონიშვნები (თითო ხაზზე)',
-	'abusefilter-edit-denied' => 'თქვენ ვერ იხილავთ დამატებით ინფორმაციას ამ ფილტრის შესახებ, რადგანაც ის დამალულია ჩვეულებრივი მომხმარებლებისთვის.', # Fuzzy
+	'abusefilter-edit-denied' => 'You may not view details of this filter, because it is hidden from public view.',
 	'abusefilter-edit-main' => 'ფილტრის პარამეტრები',
 	'abusefilter-edit-done-subtitle' => 'ფილტრი გასწორებულია',
-	'abusefilter-edit-done' => 'თქვენ წარმატებით შეინახეთ ცვლილებები ფილტრ  $1-ში.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Your changes]] to [[Special:AbuseFilter/$1|filter $1]] have been saved.',
 	'abusefilter-edit-badsyntax' => 'მოთხოვმოლ ფილტრში აღმოჩენილია სინტაქსური შეცდომა. პარსერმა გამოგზავნა ამგვარი შეტყობინება -  <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'თქვენ არ შეგიძლიათ არჩეული ფილტრის შესწორება რადგანაც იგი შეიცავს ერთ ან რამდენიმე შეზუდვას. გთხოვთ მიმართოთ შესაბამისი უფლებების მქონე მომხმარებელს.',
 	'abusefilter-edit-viewhistory' => 'ამ ფილტრის ისტორიის ჩვენაბა',
