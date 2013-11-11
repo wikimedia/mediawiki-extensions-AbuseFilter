@@ -13074,6 +13074,7 @@ Reglu frágreiðing: $1',
  * @author Isildur
  * @author Jean-Frédéric
  * @author Kropotkine 113
+ * @author Ltrlg
  * @author McDutchie
  * @author Metroitendo
  * @author Peter17
@@ -13095,7 +13096,7 @@ $messages['fr'] = array(
 Le filtre antiabus est un mécanisme logiciel automatisé qui permet d'appliquer des heuristiques prédéfinies à toutes les actions.
 Cette interface présente une liste des filtres définis, et donne la possibilité de les modifier.",
 	'abusefilter-mustbeeditor' => 'Pour des raisons de sécurité, seuls les utilisateurs avec le droit de modifier les filtres antiabus peuvent utiliser cette interface.',
-	'abusefilter-warning' => "<big>'''Avertissement'''</big> : Cette action a été automatiquement identifiée comme nuisible.
+	'abusefilter-warning' => "'''Avertissement :''' cette action a été automatiquement identifiée comme nuisible.
 Les modifications non-constructives seront rapidement annulées et les âneries répétées ou outrageantes provoqueront le blocage de votre compte ou de votre adresse IP.
 Si vous êtes convaincu{{GENDER:||e|(e)}} que cette action est constructive, vous pouvez la soumettre une nouvelle fois pour la confirmer.
 Voici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1",
@@ -22050,6 +22051,7 @@ $messages['ky'] = array(
 );
 
 /** Latin (Latina)
+ * @author Autokrator
  * @author Omnipaedista
  * @author UV
  */
@@ -22067,6 +22069,7 @@ $messages['la'] = array(
 	'abusefilter-list-edit' => 'Recensere',
 	'abusefilter-deleted' => 'Abrogatum',
 	'abusefilter-status-global' => 'Globalis',
+	'abusefilter-list-options' => 'Praeferentiae',
 	'abusefilter-tools-reautoconfirm-user' => 'Usor:',
 	'abusefilter-edit-status-label' => 'Statistica:',
 	'abusefilter-edit-throttle-period' => 'Periodus temporalis:',
