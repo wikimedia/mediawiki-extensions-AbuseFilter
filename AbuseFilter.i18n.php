@@ -9182,6 +9182,7 @@ Um einen bestehenden Filter zu laden, geben Sie seine Filter-ID in das Feld unte
 /** Zazaki (Zazaki)
  * @author Aspar
  * @author Erdemaslancan
+ * @author Gorizon
  * @author Mirzali
  * @author Xoser
  */
@@ -9197,11 +9198,11 @@ Ena pele yew listeyê filitreyî mucneno u vurnayîşan rê destur dano.',
 Vurnayışê zerarıni be lerze dariyenê we,
 u vurnayışo xırabın ya zi zerarın neticey xo hesabê şıma de vêneno ya zi IP-adresa şıma bloke bena.
 Şıma ke fıkıriyenê no vurnayış hewlo, şenê be tesdiqkerdış ney qeyd kerê.
-Suistımalkerdışê qeydey sero yew arezekerdışo kılmo ke hereketê şıma eyar keno: $1", # Fuzzy
+Suistımalkerdışê qeydey sero yew arezekerdışo kılmo ke hereketê şıma eyar keno: $1",
 	'abusefilter-disallowed' => 'Ena hereket hewl niyo u zerar dano,
 ayra destur çini yo.
 Eka ti van vurnayîşê xo konstraktif o ya zi hewl o, yew îdare kerdoğê sîteyî rê mesaj bişirave.
-Yew deskripsiyonê hereketê tu zerarin: $1', # Fuzzy
+Yew deskripsiyonê hereketê tu zerarin: $1',
 	'abusefilter-blocked-display' => 'Ena hereket hewl niyo u zerar dano,
 aye ra ti niekeno qeyd bike.
 Eyni zemun de, qe pawitişê {{SITENAME}}î hesab u IPyê tu blok biyo.
@@ -9231,17 +9232,18 @@ Yew deskripsiyonê hereketê tu zerarin: $1',
 	'right-abusefilter-log-private' => 'Xısusi qeydê parzunê ke şıma nışan kerdê ena mocneno',
 	'right-abusefilter-hide-log' => 'Logê abuseyi de vurnayişi binumne',
 	'right-abusefilter-hidden-log' => 'Logê abuse yê numnayî  bivine',
+	'right-abusefilter-modify-global' => 'Global filtrya nenga vıraz yana timar ke',
 	'action-abusefilter-modify' => 'filitreyê abuseyî  bivurne',
 	'action-abusefilter-view' => 'Filitreyê abuseyî  bivine',
 	'action-abusefilter-log' => 'Rocekanê peygoş kerdışa bıvinê',
-	'action-abusefilter-log-detail' => 'logê abuse yê detayî  bivine',
-	'action-abusefilter-private' => 'datayê xasî  logê abuseyî  de bivine',
+	'action-abusefilter-log-detail' => 'Qeydé detayan de rocekan de nenga bıvin',
+	'action-abusefilter-private' => 'Bağse malumaté qeydané  nenga bıvin',
 	'action-abusefilter-modify-restricted' => 'filitreyê abuseyî bivurne, pê aksiyonê restrictî',
 	'action-abusefilter-revert' => 'vurnayîşî ke pê filitreyê abuseyî biy, inan reyna biyar',
 	'action-abusefilter-view-private' => 'Filitreyê abuse yê xasî  bivine',
 	'abusefilter-log' => 'Rocekê filtre de peygoş kerdışan',
 	'abusefilter-log-summary' => 'Ena log de yew di hereket estê ke pê filitreyî tepişiyo.',
-	'abusefilter-log-search' => 'Logê abuseyî de bigêre',
+	'abusefilter-log-search' => 'Bıgeyr qeydé rocekan dé nenga',
 	'abusefilter-log-search-user' => 'Karber:',
 	'abusefilter-log-search-filter' => 'IDyê Filitreyî:',
 	'abusefilter-log-search-title' => 'Sername:',
@@ -9267,7 +9269,7 @@ Deskripsiyonê filitreyî: $7 ($8)',
 	'abusefilter-log-noactions' => 'ne',
 	'abusefilter-log-details-diff' => 'Ena nuşteyî de vurnayîşî',
 	'abusefilter-log-linkoncontribs' => 'Qeydê parzumi',
-	'abusefilter-log-linkoncontribs-text' => 'Ser eno karber logê abuseyî',
+	'abusefilter-log-linkoncontribs-text' => 'Qeydé karberi roceka nengan',
 	'abusefilter-log-hidden' => '(vurnayiş numnayeye)',
 	'abusefilter-log-hidden-implicit' => '(nımteyo deye rewizyon besterneya)',
 	'abusefilter-log-cannot-see-details' => 'Miyan kewtıştê enay rê mısade çıno.',
@@ -9323,6 +9325,7 @@ Deskripsiyonê filitreyî: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => 'desthelatiyê şıma çino şıma otomatik-tesdiqkerdış  biyari.',
 	'abusefilter-reautoconfirm-done' => 'halê otomatik-tesdiqkerdışê hesabi tepiya ameyo',
 	'abusefilter-status' => '$1 {{PLURAL:$1|karo|karo}} peyin de, $2 (%$3) filtre $4 resa sinorê şerti u $5 (%$6) kar yew filtreya aktif de hemcıt bı.',
+	'abusefilter-edit' => 'Filtreya nengan timar kerış',
 	'abusefilter-edit-subtitle' => 'Filitreyê $1î ho vurneno',
 	'abusefilter-edit-subtitle-new' => 'Vıraştışê parzûni',
 	'abusefilter-edit-oldwarning' => '<strong>şıma (hê) revizyonê no filtreyi vurneni.
@@ -9354,7 +9357,7 @@ nê istatiski qey na filtreya.
 	'abusefilter-edit-consequences' => 'Çi wext maç biy, ena herketan kerd',
 	'abusefilter-edit-action-warn' => 'Peni ra karber îkaz biy, enê herketan biker',
 	'abusefilter-edit-action-disallow' => 'Ena karber rê destur medî ke ena herket biker',
-	'abusefilter-edit-action-flag' => 'Vurnayîşê ke logê abuseyî de îkaz biya',
+	'abusefilter-edit-action-flag' => 'Qeydé vırnayışané kerocekan de nengandı mor ke',
 	'abusefilter-edit-action-blockautopromote' => 'Statuyê karber ê otokonfirmasyonî iptal bike',
 	'abusefilter-edit-action-degroup' => 'Ena karber grupan ra wedarne',
 	'abusefilter-edit-action-block' => 'Karber u/ya zi adresê karberî blok bike',
@@ -9373,10 +9376,10 @@ nê istatiski qey na filtreya.
 	'abusefilter-edit-warn-preview' => 'Mesaj ke ti weçîne ay verqeyd bike',
 	'abusefilter-edit-warn-edit' => 'Mesaj ke ti weçîne ay bivurne',
 	'abusefilter-edit-tag-tag' => 'etiketê ke tetbiq beni (her satır re yew heb):',
-	'abusefilter-edit-denied' => 'Ti nieşkeno detayanê ena filitre bivîne, çunkî ena filitre kamu ra nimniyayo.', # Fuzzy
+	'abusefilter-edit-denied' => 'Ti nieşkeno detayanê ena filitre bivîne, çunkî ena filitre kamu ra nimniyayo.',
 	'abusefilter-edit-main' => 'Parametreyan filitre bike',
 	'abusefilter-edit-done-subtitle' => 'Vurnayîşî filitre bike',
-	'abusefilter-edit-done' => 'Ti vurnayîşî ke ser filitre $1kerd, înan qeyd biy.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Timara to]] ra [[Special:AbuseFilter/$1|filtre da $1]] bıyo star',
 	'abusefilter-edit-badsyntax' => 'filtreya ke şıma nişane kerdo tede xetaya sentaksi esta.
 wesikaya arêdayoxi: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'şıma nêeşkeni na filtre bıvurni çunke tede karo qedexebiyaye esto.',
@@ -9393,6 +9396,7 @@ wesikaya arêdayoxi: <pre>$1</pre>',
 	'abusefilter-edit-bad-tags' => 'etiketê ke şıma nişane kerdo tede nemeqbuli esti.
 gani etiketi kılm bıbi u tede karakterê xususi çinibi.',
 	'abusefilter-edit-notallowed' => 'desturê şıma çino şıma filtreya suistimali vırazi ya zi bıvurni',
+	'abusefilter-edit-notallowed-global' => 'desturê şıma çino şıma filtreya nenga vırazi ya zi bıvurni',
 	'abusefilter-edit-builder-select' => 'İmleçte eklemek için bir seçenek seçin',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operasyonê arîtmetîkî',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'De kerdiş (+)',
@@ -9455,6 +9459,7 @@ gani etiketi kılm bıbi u tede karakterê xususi çinibi.',
 	'abusefilter-edit-builder-vars-article-ns' => 'Cayê nameyî ripel',
 	'abusefilter-edit-builder-vars-article-text' => 'Sernameyê ripelî (bê cayênameyî)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Senameyê ripel ê temamî',
+	'abusefilter-edit-builder-vars-article-views' => 'Perer bıvin',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'IDyê ripelî ke çimeyê ripelî ke neqil biyo',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Cayê nameyî ke ripelê çimeyî ke neqil biyo',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Sernameyê ripelê çimeyî ke neqil biyo',
@@ -9584,7 +9589,7 @@ Qe yew deskripsiyonê ğeletî, "Check Syntax" rê bitexne.',
 	'abusefilter-topnav-log' => 'Roceke peygoş kerdışa',
 	'abusefilter-topnav-tools' => 'Hacetê texmîr kerdişî',
 	'abusefilter-topnav-import' => 'Filitre împort bike',
-	'abusefilter-log-name' => 'Logê Abuse Filter',
+	'abusefilter-log-name' => 'Qeydé filtran dé nengan',
 	'abusefilter-log-header' => 'Ena log yew qisse mucneno ke ey de vurnayîşê filitreyî esta.
 Qe detayanê hemî, bivine [[Special:AbuseFilter/history|liste]]yê vurnayîşê filitreyî.',
 	'abusefilter-log-entry-modify' => '$1 vurna ($2)',
@@ -9596,6 +9601,8 @@ Qe detayanê hemî, bivine [[Special:AbuseFilter/history|liste]]yê vurnayîşê
 	'abusefilter-diff-pattern' => 'Kondisyonê filitre',
 	'abusefilter-diff-invalid' => 'Nieşkenî versiyonê ke ti wazeno fetch bike',
 	'abusefilter-diff-backhistory' => 'Tarixê filitreyî reyna şi',
+	'abusefilter-diff-prev' => 'vırnayışey vereyni',
+	'abusefilter-diff-next' => 'Vırnayışy newyeni',
 	'abusefilter-import-intro' => 'Ti eşkeno ser ena ripel de wîkîyî binan ra filitre împort bike.
 Wîkî çimeyî de bine "{{int:abusefilter-edit-tools}}" de "{{int:abusefilter-edit-export}}" klik bike.
 Kutiyê nuştîşî kopye bike u ena kutiyê nuştîş rê na pa u klik bike "{{int:abusefilter-import-submit}}".',
@@ -12671,7 +12678,7 @@ Suodatin saavutti yli $1 % täsmäävän toiminnon rajan.",
 	'abusefilter-edit-consequences' => 'Suoritettavat toimenpiteet, kun muokkaus on aktivoinut tämän suodattimen',
 	'abusefilter-edit-action-warn' => 'Käynnistä nämä toimenpiteet sen jälkeen, kun käyttäjälle on annettu varoitus',
 	'abusefilter-edit-action-disallow' => 'Estä käyttäjää suorittamasta kyseistä toimenpidettä',
-	'abusefilter-edit-action-flag' => 'Merkitse muokkaus väärinkäyttölokiin',
+	'abusefilter-edit-action-flag' => 'Kirjaa muokkaus väärinkäyttölokiin',
 	'abusefilter-edit-action-blockautopromote' => "Poista käyttäjä ryhmästä ''automaattisesti hyväksytyt käyttäjät (autoconfirmed)''",
 	'abusefilter-edit-action-degroup' => 'Poista käyttäjä kaikista ryhmistä, joilla on erityisoikeuksia',
 	'abusefilter-edit-action-block' => 'Aseta käyttäjälle ja/tai IP-osoitteelle muokkausesto',
@@ -12685,7 +12692,7 @@ Suodatin saavutti yli $1 % täsmäävän toiminnon rajan.",
 :''(yksi per rivi, yhdistä pilkun avulla)''",
 	'abusefilter-edit-warn-message' => 'Varoitukseen käytettävä järjestelmäviesti:',
 	'abusefilter-edit-warn-other' => 'Muu viesti',
-	'abusefilter-edit-warn-other-label' => "Toisen viestin sivun otsikko:
+	'abusefilter-edit-warn-other-label' => "Muun viestin sivun otsikko:
 :''(ilman Järjestelmäviesti-etuliitettä)''",
 	'abusefilter-edit-warn-actions' => 'Toiminnot:',
 	'abusefilter-edit-warn-preview' => 'Esikatsele valittua viestiä',
@@ -12807,7 +12814,7 @@ Merkintöjen tulisi olla lyhyitä ja ilman erikoismerkkejä.',
 	'abusefilter-edit-builder-vars-old-html' => 'Vanha sivun wikiteksti jäsennettynä HTML:ksi',
 	'abusefilter-edit-builder-vars-minor-edit' => 'Onko muokkaus merkitty pieneksi muutokseksi vai ei',
 	'abusefilter-edit-builder-vars-file-sha1' => 'Tiedoston sisällön SHA1-tiiviste',
-	'abusefilter-filter-log' => 'Suodattimen tuoreet muutokset',
+	'abusefilter-filter-log' => 'Tuoreet muutokset suodattimiin',
 	'abusefilter-history' => 'Muutoshistoria väärinkäyttösuodattimelle numero $1',
 	'abusefilter-history-foruser' => 'Käyttäjän $1 muokkaukset',
 	'abusefilter-history-hidden' => 'Piilotettu',
@@ -13936,6 +13943,17 @@ Sur lo vouiqui d’origina, clicâd dessus « {{int:abusefilter-edit-export}} »
 Copiyéd la zona de tèxto que sè montre et pués côlâd-lo dens cela zona de tèxto, et pués clicâd dessus « {{int:abusefilter-import-submit}} ».',
 	'abusefilter-import-submit' => 'Importar des balyês',
 	'abusefilter-group-default' => 'Per dèfôt',
+);
+
+/** Northern Frisian (Nordfriisk)
+ * @author Murma174
+ */
+$messages['frr'] = array(
+	'abusefilter' => 'Masbrük-filter',
+	'abuselog' => 'Masbrük-filter logbuk',
+	'abusefilter-blocker' => 'Masbrük-filter',
+	'abusefilter-management' => 'Masbrük-filter auersicht',
+	'abusefilter-list' => 'Aaltumaal',
 );
 
 /** Friulian (furlan)
@@ -36136,7 +36154,7 @@ $messages['sr-ec'] = array(
 	'action-abusefilter-modify-restricted' => 'мењање филтера против злоупотребе с ограниченим радњама',
 	'action-abusefilter-revert' => 'враћање свих измена које је направио филтер против злоупотребе',
 	'action-abusefilter-view-private' => 'прегледање приватних филтера против злоупотребе',
-	'abusefilter-log' => 'Историја филтера против злоупотребе',
+	'abusefilter-log' => 'Дневник филтера против злоупотребе',
 	'abusefilter-log-summary' => 'Овај извештај приказује списак свих радњи које су извршили филтери.',
 	'abusefilter-log-search' => 'Претрага извештаја злоупотребе',
 	'abusefilter-log-search-user' => 'Корисник:',
@@ -36452,7 +36470,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-topnav-log' => 'Историја злоупотребе',
 	'abusefilter-topnav-tools' => 'Алати за дебаговање',
 	'abusefilter-topnav-import' => 'Увези филтер',
-	'abusefilter-log-name' => 'Историја филтера против злоупотребе',
+	'abusefilter-log-name' => 'Дневник филтера против злоупотребе',
 	'abusefilter-log-entry-modify' => 'изменио $1 ($2)',
 	'abusefilter-log-noresults' => 'Нема резултата',
 	'abusefilter-diff-title' => 'Разлике између издања',
@@ -36507,7 +36525,7 @@ Opis povređenog pravila: $1',
 	'action-abusefilter-modify-restricted' => 'menjanje filtera protiv zloupotrebe s ograničenim radnjama',
 	'action-abusefilter-revert' => 'vraćanje svih izmena koje je napravio filter protiv zloupotrebe',
 	'action-abusefilter-view-private' => 'pregledanje privatnih filtera protiv zloupotrebe',
-	'abusefilter-log' => 'Istorija filtera protiv zloupotrebe',
+	'abusefilter-log' => 'Dnevnik filtera protiv zloupotrebe',
 	'abusefilter-log-summary' => 'Ovaj izveštaj prikazuje spisak svih radnji koje su izvršili filteri.',
 	'abusefilter-log-search' => 'Pretraga izveštaja zloupotrebe',
 	'abusefilter-log-search-user' => 'Korisnik:',
@@ -36812,7 +36830,7 @@ Akcije koje će biti vraćene: $5 ($6)',
 	'abusefilter-topnav-log' => 'Istorija zloupotrebe',
 	'abusefilter-topnav-tools' => 'Alati za debagovanje',
 	'abusefilter-topnav-import' => 'Uvezi filter',
-	'abusefilter-log-name' => 'Istorija filtera protiv zloupotrebe',
+	'abusefilter-log-name' => 'Dnevnik filtera protiv zloupotrebe',
 	'abusefilter-log-entry-modify' => 'izmenio $1 ($2)',
 	'abusefilter-log-noresults' => 'Nema rezultata',
 	'abusefilter-diff-title' => 'Razlike između verzija',
