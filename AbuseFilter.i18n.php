@@ -27399,21 +27399,83 @@ Kopeer de Textbox, de dor wiest warrt, un föög den Text in disse Textbox in, k
  * @author Servien
  */
 $messages['nds-nl'] = array(
+	'abusefilter-desc' => 'Voert automaties heuristiese analyse uut op bewarkingen',
+	'abusefilter' => 'Filterinstellingen',
+	'abuselog' => 'Filterlogboek',
+	'abusefilter-intro' => 'Welkom bie t beheerscharm veur bewarkingsfilters.
+t Filtersysteem past automatiese heuristiek toe op alle haandelingen.
+Dit scharm löt alle in-estelden filters zien, en gif de meugelikheid ze an te passen.',
+	'abusefilter-mustbeeditor' => 'Um veiligheidsredens hebben allinnig gebrukers mit t recht um misbruukfilters te wiezigen de meugelikheid dit beheerscharm te gebruken.',
+	'abusefilter-warning' => "'''Waorschuwing''': disse haandeling wörden automaties as schaolik ezien.
+Onkonstruktieve haandelingen wörden gauw weerummedreid, en herhaoldelik onkonstruktief bewarken eindigt in n blokkering van joew gebruker of IP-adres.
+A'j denken dat disse haandeling wel konstruktief is, bevestig joew haandeling dan nogmaols.
+n Korte beschrieving van de regel op baosis waorvan joew haandeling tegenehölden is: $1",
+	'abusefilter-disallowed' => "Disse haandeling wörden automaties as schaolik ezien, en is daorumme niet toe-estaon.
+A'j denken dat joew haandeling wel konstruktief was, meld dan an de beheerder wa'j probeerden te doon.
+n Korte beschrieving van de regel op baosis waorvan joew haandeling tegenehölden is: $1",
+	'abusefilter-blocked-display' => 'Disse haandeling wörden automaties as schaolik ezien, en is daorumme niet uutevoerd.
+Um {{SITENAME}} te bescharmen bin joew gebruker en alle IP-adressen die daorbie heuren eblokkeerd.
+As disse maotregel onterecht eneumen is, neem dan kontakt op mit n beheerder.
+n Korte beschrieving van de regel op baosis waorvan joew haandeling tegenehölden is: $1',
+	'abusefilter-degrouped' => "Disse haandeling wörden automaties as schaolik ezien. 
+Umdat vastesteld is dat disse gebruker meugelik deur n aander misbruukt wörden, bin alle rechten in-etrökken.
+As disse maotregel onterecht eneumen is, neem dan kontakt op mit n burokraot, en vertel hum wa'j zojuust edaon hebben, zodat joew rechten hersteld kunnen wörden.
+n Korte beschrieving van de regel op baosis waorvan joew haandeling tegenehölden is: $1",
+	'abusefilter-autopromote-blocked' => 'Disse haandeling wörden automaties as schaolik ezien, en is daorumme niet uutevoerd.
+As anvullende veiligsheidsmaotregel bin n stuk of wat rechten die automaties toe-ekend bin tiejelik in-etrökken veur joew gebruker.
+n Korte beschrieving van de regel op baosis waorvan joew haandeling tegenehölden is: $1',
+	'abusefilter-blocker' => 'Misbruukfilter',
+	'abusefilter-blockreason' => 'Automaties eblokkeerd deur de misbruukfilter.
+Beschrieving van de regel die hierveur zörgden: $1',
+	'abusefilter-degroupreason' => 'Rechten bin automaties in-etrökken deur de misbruukfilter. Regelbeschrieving: $1',
 	'abusefilter-accountreserved' => 'Disse gebrukersnaam is ereserveerd veur de misbruukfilter',
+	'right-abusefilter-modify' => 'Misbruukfilters wiezigen',
+	'right-abusefilter-view' => 'Misbruukfilters bekieken',
+	'right-abusefilter-log' => 't Misbruukfilterlogboek bekieken',
+	'right-abusefilter-log-detail' => 'Details van misbruuklogboekregels bekieken',
+	'right-abusefilter-private' => 'Priveegegevens in t misbruuklogboek bekieken',
+	'right-abusefilter-modify-restricted' => 'Misbruukfilters mit beteunden haandelingen wiezigen',
+	'right-abusefilter-revert' => 'Alle wiezigingen deur n misbruukfilter weerummedreien',
+	'right-abusefilter-view-private' => 'Misbruukfilters bekieken die as privee emarkeerd bin',
+	'right-abusefilter-log-private' => 'Logboekregels bekieken veur misbruukfilter die emarkeerd bin as privee',
+	'right-abusefilter-hide-log' => 'Meldinging in t misbruukfilterlogboek verbargen',
+	'right-abusefilter-hidden-log' => 'Verbörgen misbruuklogboekregels bekieken',
+	'right-abusefilter-modify-global' => 'Globale misbruukfilters anmaken of anpassen',
+	'action-abusefilter-modify' => 'misbruukfilters wiezigen',
+	'action-abusefilter-view' => 'misbruukfilters bekieken',
+	'action-abusefilter-log' => 't misbruukfilterlogboek bekieken',
+	'action-abusefilter-log-detail' => 'details van misbruuklogboekregels bekieken',
+	'action-abusefilter-private' => 'priveegegevens in t misbruuklogboek bekieken',
+	'action-abusefilter-modify-restricted' => 'misbruukfilters mit beteunden haandelingen wiezigen',
+	'action-abusefilter-revert' => 'alle wiezigingen deur n misbruukfilter weerummedreien',
+	'action-abusefilter-view-private' => 'misbruukfilters bekieken die as privee emarkeerd bin',
+	'abusefilter-log' => 'Misbruukfilterlogboek',
+	'abusefilter-log-summary' => 'Dit logboek löt n lieste zien van haandelingen die de filters op-evöngen hebben.',
+	'abusefilter-log-search' => 't Misbruukfilterlogboek deurzeuken',
 	'abusefilter-log-search-user' => 'Gebruker:',
 	'abusefilter-log-search-filter' => 'Filternummer:',
 	'abusefilter-log-search-title' => 'Titel:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Zeuken',
+	'abusefilter-log-entry' => '$1: $2 zörgden derveur dat n misbruukfilter aofgung bie t uutvoeren van de haandeling "$3" op $4.
+Eneumen maotregel: $5.
+Filterbeschrieving: $6',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 zörgden derveur dat $3 aofgung bie t uutvoeren van de haandeling "$4" op $5.
+Eneumen maotregel: $6.
+Filterbeschrieving: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'globale filter $1',
 	'abusefilter-log-detailedentry-local' => 'filter $1',
 	'abusefilter-log-detailslink' => 'details',
+	'abusefilter-log-diff' => 'wiezig',
 	'abusefilter-log-hidelink' => 'zichtbaorheid anpassen',
+	'abusefilter-log-details-legend' => 'Details veur logboekregel $1',
 	'abusefilter-log-details-var' => 'Variabel',
 	'abusefilter-log-details-val' => 'Weerde',
 	'abusefilter-log-details-vars' => 'Maotregelparameters',
 	'abusefilter-log-details-private' => 'Beparkt zichtbaore gegevens',
 	'abusefilter-log-details-ip' => 'IP-adres',
 	'abusefilter-log-noactions' => 'gien',
+	'abusefilter-log-details-diff' => 'Wiezigingen in de bewarking',
 	'abusefilter-log-linkoncontribs' => 'filterlogboek',
 	'abusefilter-log-hidden' => '(melding verbörgen)',
 	'abusefilter-log-hide-legend' => 'Logboekregel verbargen',
@@ -27432,6 +27494,7 @@ $messages['nds-nl'] = array(
 	'abusefilter-list-details' => 'Details',
 	'abusefilter-list-limit' => 'Antal per zied:',
 	'abusefilter-list-lastmodified' => 'Leste wieziging',
+	'abusefilter-list-group' => 'Filtergroep',
 	'abusefilter-hidden' => 'Beteund',
 	'abusefilter-unhidden' => 'Openbaor',
 	'abusefilter-enabled' => 'An-ezet',
@@ -27441,22 +27504,28 @@ $messages['nds-nl'] = array(
 	'abusefilter-new' => 'Nieje filter anmaken',
 	'abusefilter-status-global' => 'Globaal',
 	'abusefilter-list-options' => 'Opsies',
+	'abusefilter-list-options-scope-local' => 'Lokale wiki',
+	'abusefilter-list-options-scope-global' => 'Globale regels',
 	'abusefilter-list-options-submit' => 'Biewarken',
 	'abusefilter-tools-expr' => 'Expressietester',
 	'abusefilter-tools-submitexpr' => 'Evalueren',
 	'abusefilter-tools-reautoconfirm-user' => 'Gebruker:',
 	'abusefilter-tools-reautoconfirm-submit' => 'Opniej automaties bevestigen',
+	'abusefilter-edit-status-label' => 'Staotistieken:',
 	'abusefilter-edit-new' => 'Nieje filter',
 	'abusefilter-edit-save' => 'Filter opslaon',
 	'abusefilter-edit-id' => 'Filternummer:',
 	'abusefilter-edit-description' => "Beschrieving:
 :''(publiekelik zichtbaor)''",
+	'abusefilter-edit-group' => 'Filtergroep:',
 	'abusefilter-edit-flags' => 'Markeringen:',
 	'abusefilter-edit-enabled' => 'Dit filter anzetten',
 	'abusefilter-edit-rules' => 'Regels:',
 	'abusefilter-edit-notes' => "Opmarkingen:
 :''(beparkt zichtbaor)''",
 	'abusefilter-edit-lastmod-text' => 'deur $2 op $3 um $4',
+	'abusefilter-edit-hitcount' => 'Filtertreffers:',
+	'abusefilter-edit-throttle-period' => 'Tiedspanne:',
 	'abusefilter-edit-warn-other' => 'Aander bericht',
 	'abusefilter-edit-warn-actions' => 'Haandelingen:',
 	'abusefilter-edit-main' => 'Filterparameters',
