@@ -7298,6 +7298,7 @@ $messages['ce'] = array(
 	'abusefilter-exception-unexpectedtoken' => 'Евзаш йоцу знак «$3» (тайп: $2) оцу $1 меттигца.',
 	'abusefilter-exception-unrecognisedtoken' => 'Евзаш йоцу знак «$2» оцу $1 меттигца.',
 	'abusefilter-action-tag' => 'Билгало',
+	'abusefilter-action-degroup' => 'Тобан чура дӀадаккхар',
 	'abusefilter-action-disallow' => 'ДӀадайар',
 	'abusefilter-revert-filter' => 'Литтар:',
 	'abusefilter-revert-confirm' => 'Бакъдан',
