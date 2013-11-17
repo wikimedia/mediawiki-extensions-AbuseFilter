@@ -7245,6 +7245,7 @@ $messages['ce'] = array(
 	'abusefilter-edit-builder-group-op-bool' => 'Боолен оператораш',
 	'abusefilter-edit-builder-group-misc' => 'Тайп-тайпанара',
 	'abusefilter-edit-builder-group-funcs' => 'Функцеш',
+	'abusefilter-edit-builder-funcs-rmspecials' => 'ДӀаяха леррина символаш (rmspecials)',
 	'abusefilter-edit-builder-group-vars' => 'Хийцаме',
 	'abusefilter-edit-builder-vars-timestamp' => 'Хийцам бина Unix-хан',
 	'abusefilter-edit-builder-vars-action' => 'Дийраш',
