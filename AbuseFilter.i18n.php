@@ -9185,6 +9185,7 @@ Um einen bestehenden Filter zu laden, geben Sie seine Filter-ID in das Feld unte
  * @author Aspar
  * @author Erdemaslancan
  * @author Gorizon
+ * @author Marmase
  * @author Mirzali
  * @author Xoser
  */
@@ -9297,7 +9298,7 @@ Deskripsiyonê filitreyî: $7 ($8)',
 	'abusefilter-list-limit' => 'Amarî ser yew pel:',
 	'abusefilter-list-lastmodified' => 'Vurnayîşê tewr penî',
 	'abusefilter-list-group' => 'Parzûnê grube',
-	'abusefilter-hidden' => 'Xasî',
+	'abusefilter-hidden' => 'Bağse',
 	'abusefilter-unhidden' => 'Şar',
 	'abusefilter-enabled' => 'Aktifiyaye',
 	'abusefilter-deleted' => 'Esteriya',
@@ -27880,6 +27881,7 @@ $messages['niu'] = array(
  * @author Annabel
  * @author GerardM
  * @author JurgenNL
+ * @author McDutchie
  * @author Mwpnl
  * @author Romaine
  * @author SPQRobin
@@ -27934,11 +27936,11 @@ Beschrijving van de regel die dit heeft veroorzaakt: $1',
 	'right-abusefilter-modify-global' => 'Globale misbruikfilters aanmaken of aanpassen',
 	'action-abusefilter-modify' => 'filters te wijzigen',
 	'action-abusefilter-view' => 'filters te bekijken',
-	'action-abusefilter-log' => 'filterlogboek te bekijken',
+	'action-abusefilter-log' => 'het filterlogboek te bekijken',
 	'action-abusefilter-log-detail' => 'gedetailleerde filterlogboekvermeldingen te bekijken',
 	'action-abusefilter-private' => 'privégegevens in het filterlogboek te bekijken',
 	'action-abusefilter-modify-restricted' => 'filters met beperkte handelingen te wijzigen',
-	'action-abusefilter-revert' => 'alle wijzigingen door een bepaalde filter terug te draaien',
+	'action-abusefilter-revert' => 'alle wijzigingen door een bepaald filter terug te draaien',
 	'action-abusefilter-view-private' => 'als beperkt zichtbaar gemarkeerde filters te bekijken',
 	'abusefilter-log' => 'Filterlogboek',
 	'abusefilter-log-summary' => 'Dit logboek geeft een lijst weer van handelingen die opgevangen zijn door filters.',
