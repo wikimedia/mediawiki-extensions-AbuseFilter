@@ -1065,7 +1065,7 @@ Parameters:
 
 The page title is {{msg-mw|Abusefilter-test}}.
 
-"Load" refers to the contents of {{msg-mw|abusefilter-test-load}}.
+Refers to {{msg-mw|Abusefilter-test-load}}.
 
 Parameters:
 * $1 - limit of changes; 100 (hard-coded)',
@@ -7307,7 +7307,7 @@ $messages['ce'] = array(
 	'abusefilter-test' => 'Литтаран нисдарш хьажа',
 	'abusefilter-test-intro' => 'ХӀокху агӀорахь хьан йиш ю лахахь гайтинчу {{PLURAL:$1|тӀехьарчу $1 хийцаман|тӀехьарчу $1 хийцамашан}} литтарш хьажа.
 
-Долуш долу литтар чудаккха тадаран коран лахахь дӀаязде цуьнан ID тӀакха тӀетаӀе кнопка «Чудаккха»',
+Долуш долу литтар чудаккха тадаран коран лахахь дӀаязде цуьнан ID тӀакха тӀетаӀе кнопка «Чудаккха»', # Fuzzy
 	'abusefilter-test-legend' => 'Литтаре хьажар',
 	'abusefilter-test-load-filter' => 'Чудаккха литтар ID тӀера:',
 	'abusefilter-test-submit' => 'Хьажа',
@@ -9059,7 +9059,7 @@ Angegebener Grund: $2',
 	'abusefilter-revert-reasonfield' => 'Grund:',
 	'abusefilter-test' => 'Filter testen',
 	'abusefilter-test-intro' => 'Mit dieser Seite kann ein Filter probeweise auf die {{PLURAL:$1|letzte Änderung|letzten $1 Änderungen}} angewendet werden.
-Um einen bestehenden Filter zu laden, gib seine Filter-ID in das Feld unterhalb des Bearbeiten-Textfeldes ein und klicke auf die „Laden“-Schaltfläche.',
+Um einen bestehenden Filter zu laden, gib seine Filter-ID in das Feld unterhalb des Bearbeiten-Textfeldes ein und klicke auf die „{{int:abusefilter-test-load}}“-Schaltfläche.',
 	'abusefilter-test-legend' => 'Filter testen',
 	'abusefilter-test-load-filter' => 'Filter-ID laden:',
 	'abusefilter-test-submit' => 'Testen',
@@ -9556,7 +9556,7 @@ Verilen sebep: $2',
 	'abusefilter-revert-reasonfield' => 'Sebeb:',
 	'abusefilter-test' => 'Duştê vurnayîşan rê yew filitre test bike',
 	'abusefilter-test-intro' => 'Bu sayfa, aşağıdaki kutuya girilen bir filtreyi son $1 {{PLURAL:$1|değişikliğe|değişikliğe}} karşı kontrol etmenize izin verir.
-Mevcut bir filtreyi yüklemek için, filtre IDsini değişiklik metin kutusunun altındaki kutuya girin, ve "Yükle" düğmesine tıklayın.',
+Mevcut bir filtreyi yüklemek için, filtre IDsini değişiklik metin kutusunun altındaki kutuya girin, ve "Yükle" düğmesine tıklayın.', # Fuzzy
 	'abusefilter-test-legend' => 'Testê filitreyî',
 	'abusefilter-test-load-filter' => 'IDyê filitre bar bike',
 	'abusefilter-test-submit' => 'Test',
@@ -11001,6 +11001,7 @@ Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku 
  * @author Dalton2
  * @author Dferg
  * @author Fitoschido
+ * @author Ihojose
  * @author Imre
  * @author Invadinado
  * @author Locos epraix
@@ -11314,6 +11315,7 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-edit-builder-vars-removed-links' => 'Todos los vínculos externos eliminados en la edición',
 	'abusefilter-edit-builder-vars-old-text' => 'Antigua página de wikitexto, antes de la edición',
 	'abusefilter-edit-builder-vars-new-text' => 'Nuevo wikitexto de la página, después de la edición',
+	'abusefilter-edit-builder-vars-new-pst' => 'Nueva página de wikitexto, pre-guardar transformado',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nuevo texto de página, libre de cualquier revisión',
 	'abusefilter-edit-builder-vars-new-html' => 'Fuente HTML analizada de la nueva revisión',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Editar nivel de protección de la página',
@@ -12821,7 +12823,7 @@ Merkintöjen tulisi olla lyhyitä ja ilman erikoismerkkejä.',
 	'abusefilter-history' => 'Muutoshistoria väärinkäyttösuodattimelle numero $1',
 	'abusefilter-history-foruser' => 'Käyttäjän $1 muokkaukset',
 	'abusefilter-history-hidden' => 'Piilotettu',
-	'abusefilter-history-enabled' => 'Otettu käyttöön',
+	'abusefilter-history-enabled' => 'On käytössä',
 	'abusefilter-history-global' => 'Järjestelmänlaajuinen',
 	'abusefilter-history-timestamp' => 'Aika',
 	'abusefilter-history-user' => 'Käyttäjä',
@@ -12829,7 +12831,7 @@ Merkintöjen tulisi olla lyhyitä ja ilman erikoismerkkejä.',
 	'abusefilter-history-flags' => 'Ominaisuudet',
 	'abusefilter-history-filter' => 'Suodatinsääntö',
 	'abusefilter-history-comments' => 'Kommentit',
-	'abusefilter-history-actions' => 'Toiminnot',
+	'abusefilter-history-actions' => 'Toimenpiteet',
 	'abusefilter-history-backedit' => 'Palaa suodattimen muokkaamiseen',
 	'abusefilter-history-deleted' => 'Poistettu',
 	'abusefilter-history-filterid' => 'Suodatin',
@@ -12881,7 +12883,7 @@ Annettu syy: $2',
 	'abusefilter-revert-reasonfield' => 'Syy:',
 	'abusefilter-test' => 'Kokeile suodatinta aikaisempiin muokkauksiin',
 	'abusefilter-test-intro' => 'Tällä sivulla voit tarkistaa alla olevaan kenttään syötetyn suodattimen viimeisintä $1 {{PLURAL:$1|muutosta}} vasten.
-Lataa olemassa oleva suodatin kirjoittamalla sen tunnistenumero tekstikentän alapuolella olevaan kenttään ja napsauta ”Lataa”-painiketta.',
+Lataa olemassa oleva suodatin kirjoittamalla sen tunnistenumero tekstikentän alapuolella olevaan kenttään ja napsauta ”Lataa”-painiketta.', # Fuzzy
 	'abusefilter-test-legend' => 'Suodattimen kokeilu',
 	'abusefilter-test-load-filter' => 'Lataa suodatin numero:',
 	'abusefilter-test-submit' => 'Kokeile',
@@ -13468,8 +13470,8 @@ Veuillez les vérifier attentivement, puis cliquez sur « Confirmer » pour vali
 Motif donné : $2',
 	'abusefilter-revert-reasonfield' => 'Motif :',
 	'abusefilter-test' => 'Tester un filtre sur les précédentes modifications',
-	'abusefilter-test-intro' => "Cette page vous permet d'appliquer un filtre saisi dans la zone de texte ci-dessous {{PLURAL:$1|à la dernière modification|aux $1 dernières modifications}} .
-Pour charger un filtre existant, entrez son identifiant dans le champ sous la zone de texte et cliquez sur le bouton « {{MediaWiki:Abusefilter-test-load/fr}} ».",
+	'abusefilter-test-intro' => 'Cette page vous permet d’appliquer un filtre saisi dans la zone de texte ci-dessous {{PLURAL:$1|à la dernière modification|aux $1 dernières modifications}}.
+Pour charger un filtre existant, entrez son identifiant dans le champ sous la zone de texte et cliquez sur le bouton « {{int:abusefilter-test-load}} ».',
 	'abusefilter-test-legend' => 'Test de filtre',
 	'abusefilter-test-load-filter' => 'Charger le filtre numéro :',
 	'abusefilter-test-submit' => 'Tester',
@@ -15550,8 +15552,8 @@ $messages['he'] = array(
 הסיבה שנתנה: $2',
 	'abusefilter-revert-reasonfield' => 'סיבה:',
 	'abusefilter-test' => 'בדיקת מסנן מול עריכות קודמות',
-	'abusefilter-test-intro' => 'דף זה מאפשר לכם לבדוק מסנן המוכנס לתיבה שלהלן מול {{PLURAL:$1|השינוי האחרון|$1 השינויים האחרונים}}.
-כדי לטעון מסנן קיים, כתבו את מספר המסנן שלו לתוך התיבה שמתחת לתיבת העריכה שלהלן, ולחצו על הכפתור "טעינה".',
+	'abusefilter-test-intro' => 'דף זה מאפשר לכם לבדוק מסנן שהוכנס לתיבה להלן מול {{PLURAL:$1|השינוי האחרון|$1 השינויים האחרונים}}.
+כדי לטעון מסנן קיים, הזין את מספר המסנן שלו לתוך התיבה שמתחת לתיבת העריכה שלהלן, ולחצו על הכפתור "{{int:abusefilter-test-load}}".',
 	'abusefilter-test-legend' => 'בדיקת מסנן',
 	'abusefilter-test-load-filter' => 'טעינת מסנן מספר:',
 	'abusefilter-test-submit' => 'בדיקה',
@@ -19686,7 +19688,7 @@ $messages['ja'] = array(
 	'abusefilter-edit-warn-preview' => '選択したメッセージをプレビュー',
 	'abusefilter-edit-warn-edit' => '選択したメッセージを作成または編集',
 	'abusefilter-edit-tag-tag' => '適用するタグ (一行に一つ):',
-	'abusefilter-edit-denied' => 'このフィルターは非公開とされているため、あなたは詳細を閲覧できません。', # Fuzzy
+	'abusefilter-edit-denied' => 'このフィルターは非公開とされているため、あなたは詳細を閲覧できません。',
 	'abusefilter-edit-main' => 'フィルターの設定',
 	'abusefilter-edit-done-subtitle' => 'フィルターを編集しました',
 	'abusefilter-edit-done' => '[[Special:AbuseFilter/$1|フィルター $1]] への[[Special:AbuseFilter/history/$1/diff/prev/$2|変更]]を保存しました。',
@@ -19866,7 +19868,7 @@ $3 個の{{PLURAL:$3|引数}}があるべきですが $4 個しかありませ�
 	'abusefilter-revert-reason' => 'フィルター $1 に起因した、不正利用フィルターによるすべての対処操作の自動差し戻し。理由: $2',
 	'abusefilter-revert-reasonfield' => '理由:',
 	'abusefilter-test' => 'フィルターを過去の編集に対して試験する',
-	'abusefilter-test-intro' => 'このページでは、下のボックスに入力したフィルターを過去 $1件の{{PLURAL:$1|変更}}に対してテストできます。既存のフィルターを読み込むには、そのフィルターIDを編集テキストボックスの下のボックスに入力し、「{{int:Abusefilter-test-load}}」ボタンを押します。',
+	'abusefilter-test-intro' => 'このページでは、下のボックスに入力したフィルターを過去 $1件の{{PLURAL:$1|変更}}に対してテストできます。既存のフィルターを読み込むには、そのフィルターIDを編集テキストボックスの下のボックスに入力し、「{{int:abusefilter-test-load}}」ボタンを押します。',
 	'abusefilter-test-legend' => 'フィルターのテスト',
 	'abusefilter-test-load-filter' => '読み込むフィルターのID:',
 	'abusefilter-test-submit' => 'テスト',
@@ -28260,7 +28262,7 @@ Controleer de terug te draaien maatregelen zorgvuldig, en klik "Bevestigen" om u
 	'abusefilter-revert-reasonfield' => 'Reden:',
 	'abusefilter-test' => 'Filter tegen eerdere bewerkingen testen',
 	'abusefilter-test-intro' => 'Op deze pagina kunt u een opgegeven filter controleren met de laatste {{PLURAL:$1|wijzing|$1 wijzingen}}.
-Geef een filternummer in om een bestaand filter te laden en klik daarna op de knop "Laden".',
+Geef een filternummer in om een bestaand filter te laden en klik daarna op de knop "Laden".', # Fuzzy
 	'abusefilter-test-legend' => 'Filter testen',
 	'abusefilter-test-load-filter' => 'Filternummer laden:',
 	'abusefilter-test-submit' => 'Testen',
@@ -33381,8 +33383,8 @@ $messages['ru'] = array(
 Указанная причина: $2',
 	'abusefilter-revert-reasonfield' => 'Причина:',
 	'abusefilter-test' => 'Проверить фильтр на уже сделанных правках',
-	'abusefilter-test-intro' => 'Эта страница позволяет вам проверить фильтр, введённый в приведённое ниже поле, на {{PLURAL:$1|последнем $1 изменении|последних $1 изменениях|последних $1 изменениях}}.
-Чтобы загрузить существующий фильтр, введите его ID в текстовое поле под полем редактирования и нажмите кнопку «Загрузить».',
+	'abusefilter-test-intro' => 'Эта страница позволяет вам проверить фильтр, введённый в приведённое ниже поле, на {{PLURAL:$1|последнем $1 изменении|последних $1 изменениях}}.
+Чтобы загрузить существующий фильтр, введите его ID в текстовое поле под полем редактирования и нажмите кнопку «{{int:abusefilter-test-load}}».',
 	'abusefilter-test-legend' => 'Проверка фильтра',
 	'abusefilter-test-load-filter' => 'Загрузить фильтр с ID:',
 	'abusefilter-test-submit' => 'Проверить',
@@ -40877,8 +40879,8 @@ $messages['uk'] = array(
 Вказана причина: $2',
 	'abusefilter-revert-reasonfield' => 'Причина:',
 	'abusefilter-test' => 'Перевірити фільтр на вже зроблених редагуваннях',
-	'abusefilter-test-intro' => 'Ця сторінка дозволяє вам перевірити фільтр, введений в приведене нижче поле, на {{PLURAL:$1|останній $1 зміні|останніх $1 змінах}}.
-Щоб завантажити існуючий фільтр, введіть його ідентифікатор (ID) в текстовое поле під полем редагування і натисніть кнопку «Завантажити».',
+	'abusefilter-test-intro' => 'Ця сторінка дозволяє вам перевірити фільтр, введений у наведене нижче поле, на {{PLURAL:$1|останній $1 зміні|останніх $1 змінах}}.
+Щоб завантажити існуючий фільтр, введіть його ідентифікатор (ID) у текстове поле під полем редагування і натисніть кнопку  "{{int:abusefilter-test-load}}".',
 	'abusefilter-test-legend' => 'Перевірка фільтру',
 	'abusefilter-test-load-filter' => 'Завантажити фільтр з ID:',
 	'abusefilter-test-submit' => 'Перевірити',
