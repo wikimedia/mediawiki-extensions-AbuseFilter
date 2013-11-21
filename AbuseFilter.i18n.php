@@ -1023,21 +1023,43 @@ Parameters:
 * $3 - Number of items in list',
 	'abusefilter-exception-notlist' => 'Error message from the abuse filter parser. Parameters:
 * $1 - Position in the string',
-	'abusefilter-action-tag' => '{{doc-abusefilter-action}}
+	'abusefilter-action-tag' => "{{doc-abusefilter-action}}
 
-{{Identical|Tag}}',
+The edit or change can be 'tagged' with a particular tag, which will be shown on Recent Changes, contributions, logs, new pages, history, and everywhere else. 
+
+This is a verb in the imperative form.
+
+{{Identical|Tag}}",
 	'abusefilter-action-throttle' => '{{doc-abusefilter-action}}',
 	'abusefilter-action-warn' => '{{doc-abusefilter-action}}',
-	'abusefilter-action-blockautopromote' => '{{doc-abusefilter-action}}
+	'abusefilter-action-blockautopromote' => "{{doc-abusefilter-action}}
 
-Option that, if selected, removes the targeted user from the autoconfirmed group: the autoconfimed status is removed from the user reversing the previous "autopromotion" to the status. The user will be autopromoted again automatically after the required number of days have passed.',
+'''Revoking auto-promoted groups'''
+
+To '''block autopromote''' means that actions matching the filter will cause the user in question to be barred from receiving any extra groups from \$wgAutoPromote for a period ranging from 3 to 7 days (random). 
+Additional information available: https://www.mediawiki.org/wiki/Extension:AbuseFilter/Actions",
 	'abusefilter-action-block' => '{{doc-abusefilter-action}}
 
-This appears to be a verb.
+Users matching the filter will be blocked indefinitely, with a descriptive block summary indicating the rule that was triggered.
+
+This is a verb.
 {{Identical|Block}}',
-	'abusefilter-action-degroup' => '{{doc-abusefilter-action}}',
-	'abusefilter-action-rangeblock' => '{{doc-abusefilter-action}}',
-	'abusefilter-action-disallow' => '{{doc-abusefilter-action}}',
+	'abusefilter-action-degroup' => "{{doc-abusefilter-action}}
+
+'''Removing from privileged groups'''
+
+Users matching the filter will be '''removed from all privileged groups''' (sysop, bureaucrat, etc). A descriptive summary will be used, detailing the rule that was triggered. 
+Additional information: https://www.mediawiki.org/wiki/Extension:AbuseFilter/Actions",
+	'abusefilter-action-rangeblock' => "{{doc-abusefilter-action}}
+
+'''Range-block'''
+
+Somewhat of a 'nuclear option', the entire /16 range from which the rule was triggered will be blocked for 24 hours.
+
+This is a verb in the imperative form.",
+	'abusefilter-action-disallow' => "{{doc-abusefilter-action}}
+
+To '''disallow''' actions means that actions matching the filter will be '''prevented''', and a descriptive error message will be shown. Additional information: https://www.mediawiki.org/wiki/Extension:AbuseFilter/Actions",
 	'abusefilter-revert-title' => 'Used as page title of [[Special:AbuseFilter/revert/1]] (go to [[Special:AbuseFilter]], open a filter, click "Revert actions taken by this filter").
 
 Parameters:
@@ -9051,7 +9073,7 @@ Aktionen, die rückgängig gemacht werden: $5 ($6)',
 	'abusefilter-revert-search' => 'Aktionen auswählen:',
 	'abusefilter-revert-filter' => 'Filter:',
 	'abusefilter-revert-preview-intro' => 'Unten stehen die Aktionen des Missbrauchsfilters, die hiermit rückgängig gemacht werden.
-Bitte überprüfe sie sorgfältig und klicke auf „Bestätigen“, um deine Auswahl zu bestätigen.',
+Bitte überprüfe sie sorgfältig und klicke auf „{{int:abusefilter-revert-confirm}}“, um deine Auswahl zu bestätigen.',
 	'abusefilter-revert-confirm' => 'Bestätigen',
 	'abusefilter-revert-success' => 'Du hast alle Aktionen des Missbrauchsfilters, die aufgrund von [[Special:AbuseFilter/$1|Filter $1]] vorgenommen wurden, rückgängig gemacht.',
 	'abusefilter-revert-reason' => 'Automatisches Zurücksetzen aller Aktionen des Missbrauchsfilters aufgrund von Filter $1.
@@ -9070,7 +9092,7 @@ Um einen bestehenden Filter zu laden, gib seine Filter-ID in das Feld unterhalb 
 	'abusefilter-test-page' => 'Änderungen an der Seite:',
 	'abusefilter-test-shownegative' => 'Änderungen anzeigen, die nicht auf den Filter passen',
 	'abusefilter-test-syntaxerr' => 'Der eingegebene Filter enthält einen Syntaxfehler.
-Weitere Erläuterungen gibt es bei Klick auf die Schaltfläche „Syntaxprüfung“.',
+Weitere Erläuterungen gibt es bei Klick auf die Schaltfläche „{{int:abusefilter-edit-check}}“.',
 	'abusefilter-changeslist-examine' => 'untersuchen',
 	'abusefilter-examine' => 'Einzelne Änderungen untersuchen',
 	'abusefilter-examine-intro' => 'Auf dieser Seite können die Variablen, die der Missbrauchsfilter für eine Änderung generiert hat, untersucht werden und probeweise Filter darauf angewendet werden.',
@@ -9548,7 +9570,7 @@ Hereketan ke te wazeni reyna biyar: $5 ($6)',
 	'abusefilter-revert-search' => 'Hereketan biweçine',
 	'abusefilter-revert-filter' => 'Avrêc:',
 	'abusefilter-revert-preview-intro' => 'Aşağıdakiler, suistimal filtresi tarafından alınan ve bu eylemle geri alınacak eylemlerdir.
-Lütfen dikkatlice kontrol edin, ve seçiminizi onaylamak için "onayla"ya tıklayın.',
+Lütfen dikkatlice kontrol edin, ve seçiminizi onaylamak için "onayla"ya tıklayın.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Testiq ke',
 	'abusefilter-revert-success' => '[[Special:AbuseFilter/$1|$1 filtresinden]] dolayı suistimal filtresi tarafından alınan tüm eylemleri geri aldınız.',
 	'abusefilter-revert-reason' => '$1 filtresinden dolayı suistimal filtresi tarafından alınan tüm eylemlerin otomatik geri alımı.
@@ -9567,7 +9589,7 @@ Mevcut bir filtreyi yüklemek için, filtre IDsini değişiklik metin kutusunun 
 	'abusefilter-test-page' => 'Vurnayişan ser pelan:',
 	'abusefilter-test-shownegative' => 'Vurnayîşan ke filitre match nikena înan bimucne',
 	'abusefilter-test-syntaxerr' => 'Filitreyê tu de yew ğeletê syntaxî esto.
-Qe yew deskripsiyonê ğeletî, "Check Syntax" rê bitexne.',
+Qe yew deskripsiyonê ğeletî, "Check Syntax" rê bitexne.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'kontrol bike',
 	'abusefilter-examine' => 'Vurnayişanê şexsî kontrol bike',
 	'abusefilter-examine-intro' => 'Ena pele ti ra yardim keno ke ti eşkeno variableyan kontrol bike u filitre test bike.',
@@ -11382,7 +11404,7 @@ Acciones a ser revertidas: $5 ($6)',
 	'abusefilter-revert-periodend' => 'Fin de periodo:',
 	'abusefilter-revert-search' => 'Seleccionar acciones',
 	'abusefilter-revert-filter' => 'Filtro:',
-	'abusefilter-revert-preview-intro' => 'Debajo están las acciones tomadas por el filtro de abuso que serán revertidas por esta acción. Por favor verifícalos cuidadosamente, y haz clic en "confirmar" para confirmar tu selección.',
+	'abusefilter-revert-preview-intro' => 'Debajo están las acciones tomadas por el filtro de abuso que serán revertidas por esta acción. Por favor verifícalos cuidadosamente, y haz clic en "confirmar" para confirmar tu selección.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Confirmar',
 	'abusefilter-revert-success' => 'Has revertido todas las acciones tomadas por el filtro de abuso debido al [[Special:AbuseFilter/$1|filtro $1]].',
 	'abusefilter-revert-reason' => 'Reversión automática de todas las acciones tomadas por el filtro de abuso debido al filtro $1.
@@ -11401,7 +11423,7 @@ Para cargar un filtro existente, escribe el ID del filtro dentro de la tabla deb
 	'abusefilter-test-page' => 'Cambios hechos a la página:',
 	'abusefilter-test-shownegative' => 'Mostrar cambios que no coinciden con el filtro',
 	'abusefilter-test-syntaxerr' => 'El filtro que has ingresado contiene un error de sintaxis.
-Puedes recibir una completa explicación haciendo click en el botón "Verificar sintaxis".',
+Puedes recibir una completa explicación haciendo click en el botón "Verificar sintaxis".', # Fuzzy
 	'abusefilter-changeslist-examine' => 'examinar',
 	'abusefilter-examine' => 'Examinar cambios individuales',
 	'abusefilter-examine-intro' => 'Esta página te permite examinar las variables generadas por el filtro de abuso para un cambio individual, y lo prueba contra los filtros.',
@@ -12590,16 +12612,16 @@ Suodattimen kuvaus: $7 ($8)',
 	'abusefilter-log-details-var' => 'Muuttuja',
 	'abusefilter-log-details-val' => 'Arvo',
 	'abusefilter-log-details-vars' => 'Toimintoparametrit',
-	'abusefilter-log-details-private' => 'Yksityinen tieto',
+	'abusefilter-log-details-private' => 'Yksityiset tiedot',
 	'abusefilter-log-details-ip' => 'Alkuperäinen IP-osoite',
 	'abusefilter-log-noactions' => 'ei mitään',
 	'abusefilter-log-details-diff' => 'Muutokset, jotka tehtiin muokkauksessa',
 	'abusefilter-log-linkoncontribs' => 'väärinkäyttöloki',
 	'abusefilter-log-linkoncontribs-text' => 'Väärinkäyttöloki tälle käyttäjälle',
-	'abusefilter-log-hidden' => '(piilotettu merkintä)',
+	'abusefilter-log-hidden' => '(merkintä on piilotettu)',
 	'abusefilter-log-hidden-implicit' => '(piilotettu, koska versio on poistettu)',
-	'abusefilter-log-cannot-see-details' => 'Sinulla ei ole oikeutta nähdä tämän merkinnän tietoja.',
-	'abusefilter-log-details-hidden' => 'Et voi katsella tämän merkinnän tietoja, koska se on piilotettu julkiselta näkyvyydeltä.',
+	'abusefilter-log-cannot-see-details' => 'Sinulla ei ole oikeutta nähdä tämän lokimerkinnän tietoja.',
+	'abusefilter-log-details-hidden' => 'Et voi nähdä tämän lokimerkinnän tietoja, koska merkintä on piilotettu eikä ole julkisesti näkyvissä.',
 	'abusefilter-log-hide-legend' => 'Piilota lokimerkintä',
 	'abusefilter-log-hide-id' => 'Lokimerkinnän tunniste:',
 	'abusefilter-log-hide-hidden' => 'Piilota tämä merkintä julkiselta näkymiseltä',
@@ -12656,7 +12678,7 @@ Suodattimen kuvaus: $7 ($8)',
 	'abusefilter-edit-subtitle-new' => 'Luodaan suodatinta',
 	'abusefilter-edit-oldwarning' => '<strong>Muokkaat tämän suodattimen vanhaa versiota.
 Annetut tilastot ovat suodattimen uusimmalle versiolle.
-Jos tallennat muutoksesi, yliajat kaikki muokkaamasi version jälkeen tehdyt muutokset.</strong> &bull;
+Jos tallennat muutoksesi, tuhoat samalla kaikki tämän version jälkeen tehdyt muutokset.</strong> &bull;
 [[Special:AbuseFilter/history/$2|Palaa suodattimen historiaan]].',
 	'abusefilter-edit-status-label' => 'Tilastot:',
 	'abusefilter-edit-status' => 'Viimeisestä $1 toiminnosta tämä suodatin täsmäsi $2 kertaa ($3 %).
@@ -12674,7 +12696,7 @@ Suodatin saavutti yli $1 % täsmäävän toiminnon rajan.",
 	'abusefilter-edit-deleted' => 'Merkitse poistetuksi',
 	'abusefilter-edit-hidden' => 'Piilota suodattimen yksityiskohdat julkiselta näkyvyydeltä',
 	'abusefilter-edit-global' => 'Järjestelmänlaajuinen suodatin',
-	'abusefilter-edit-rules' => 'Ehdot:',
+	'abusefilter-edit-rules' => 'Ehtolauseet:',
 	'abusefilter-edit-notes' => "Huomautukset:
 :''(yksityinen)''",
 	'abusefilter-edit-lastmod' => 'Suodatinta viimeksi muutettu:',
@@ -12715,9 +12737,9 @@ Pyydä rajoitettujen toimintojen lisäämiseen tarvittavien oikeuksien haltijalt
 	'abusefilter-edit-history' => 'Historia:',
 	'abusefilter-edit-check' => 'Tarkista syntaksi',
 	'abusefilter-edit-badfilter' => 'Määrittelemääsi suodatinta ei ole',
-	'abusefilter-edit-revert' => 'Kumoa tämän suodattimen tekemät toiminnot',
+	'abusefilter-edit-revert' => 'Peräytä tämän suodattimen tekemät toiminnot',
 	'abusefilter-edit-tools' => 'Työkalut:',
-	'abusefilter-edit-test-link' => 'Kokeile suodatinta tuoreisiin muokkauksiin',
+	'abusefilter-edit-test-link' => 'Kokeile tätä suodatinta tuoreisiin muokkauksiin',
 	'abusefilter-edit-export' => 'Vie tämä suodatin toiseen wikiin',
 	'abusefilter-edit-syntaxok' => 'Ei havaittuja syntaksivirheitä.',
 	'abusefilter-edit-syntaxerr' => 'Syntaksivirhe havaittu: $1',
@@ -12860,9 +12882,9 @@ Odotettu $3 {{PLURAL:$3|argumenttia|argumenttia}}, saatu $4.',
 	'abusefilter-action-throttle' => 'Rajoita muokkausmäärää',
 	'abusefilter-action-warn' => 'Varoita',
 	'abusefilter-action-blockautopromote' => 'Estä autopromote',
-	'abusefilter-action-block' => 'Estä',
+	'abusefilter-action-block' => 'Aseta muokkausesto',
 	'abusefilter-action-degroup' => 'Poista ryhmistä',
-	'abusefilter-action-rangeblock' => 'Avaruusesto',
+	'abusefilter-action-rangeblock' => 'Aseta avaruusesto',
 	'abusefilter-action-disallow' => 'Älä salli',
 	'abusefilter-revert-title' => 'Peru kaikki suodattimen $1 tekemät muutokset',
 	'abusefilter-revert-intro' => 'Tämä lomake antaa sinun palauttaa kaikki muutokset, jotka väärinkäyttösuodatin on tehnyt suodattimen $1 perusteella.
@@ -12875,7 +12897,7 @@ Kumottavat toiminnot: $5 ($6)',
 	'abusefilter-revert-search' => 'Valitse toiminnot',
 	'abusefilter-revert-filter' => 'Suodatin:',
 	'abusefilter-revert-preview-intro' => 'Alla olevat väärinkäyttösuodattimen tekemät toiminnot kumotaan tällä toiminnolla.
-Tarkista ne huolellisesti, ja napsauta ”vahvista” vahvistaaksesi valinnan.',
+Tarkista ne huolellisesti, ja napsauta ”vahvista” vahvistaaksesi valinnan.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Vahvista',
 	'abusefilter-revert-success' => 'Palautit kaikki väärinkäyttösuodattimen toimet [[Special:AbuseFilter/$1|suodattimen $1]] takia.',
 	'abusefilter-revert-reason' => 'Väärinkäyttösuodattimen kaikkien toimintojen automaattinen palautus suodattimen $1 takia.
@@ -12894,7 +12916,7 @@ Lataa olemassa oleva suodatin kirjoittamalla sen tunnistenumero tekstikentän al
 	'abusefilter-test-page' => 'Muutokset, jotka on tehty sivulle:',
 	'abusefilter-test-shownegative' => 'Näytä muutokset, jotka eivät täsmää suodattimen kanssa',
 	'abusefilter-test-syntaxerr' => 'Suodatin, jonka syötit, sisälsi syntaksivirheen.
-Lisätietoja saat napsauttamalla ”Tarkista syntaksi” -painiketta.',
+Lisätietoja saat napsauttamalla ”Tarkista syntaksi” -painiketta.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'tutki',
 	'abusefilter-examine' => 'Tutki yksittäisiä muutoksia',
 	'abusefilter-examine-intro' => 'Tällä sivulla voit tutkia väärinkäyttösuodattimen muuttujia yksittäisen muutoksen suhteen ja testata sitä suodattimilla.',
@@ -13462,8 +13484,8 @@ Actions à révoquer : $5 ($6)',
 	'abusefilter-revert-periodend' => 'Fin de la période :',
 	'abusefilter-revert-search' => 'Sélectionner les actions',
 	'abusefilter-revert-filter' => 'Filtre :',
-	'abusefilter-revert-preview-intro' => 'Voici les actions réalisées par le filtre antiabus, qui seront révoquées par cette action.
-Veuillez les vérifier attentivement, puis cliquez sur « Confirmer » pour valider votre sélection.',
+	'abusefilter-revert-preview-intro' => 'Voici les actions réalisées par le filtre anti-abus, qui seront révoquées par cette action.
+Veuillez les vérifier attentivement, puis cliquez sur « {{int:abusefilter-revert-confirm}} » pour valider votre sélection.',
 	'abusefilter-revert-confirm' => 'Confirmer',
 	'abusefilter-revert-success' => 'Vous avez révoqué avec succès toutes les actions entreprises par le filtre antiabus et déclenchées par le [[Special:AbuseFilter/$1|filtre $1]].',
 	'abusefilter-revert-reason' => 'Révocation automatique de toutes les actions entreprises par le filtre antiabus et déclenchées par le filtre $1.
@@ -13482,7 +13504,7 @@ Pour charger un filtre existant, entrez son identifiant dans le champ sous la zo
 	'abusefilter-test-page' => 'Modifications apportées à la page :',
 	'abusefilter-test-shownegative' => 'Afficher les modifications non prises en compte par le filtre',
 	'abusefilter-test-syntaxerr' => 'Le filtre que vous avez saisi contient une erreur de syntaxe.
-Vous pouvez recevoir une explication complète en cliquant sur le bouton « Vérifier la syntaxe ».',
+Vous pouvez recevoir une explication complète en cliquant sur le bouton « {{int:abusefilter-edit-check}} ».',
 	'abusefilter-changeslist-examine' => 'examiner',
 	'abusefilter-examine' => 'Examiner des modifications individuelles',
 	'abusefilter-examine-intro' => "Cette page vous permet d'examiner les variables générées pour une modification individuelle par le filtre antiabus et de les tester avec les filtres.",
@@ -15545,7 +15567,7 @@ $messages['he'] = array(
 	'abusefilter-revert-search' => 'בחירת פעולות',
 	'abusefilter-revert-filter' => 'מסנן:',
 	'abusefilter-revert-preview-intro' => 'להלן הפעולות שבוצעו על ידי מסנן ההשחתות ושישוחזרו כולן על ידי פעולה זו.
-אנא בידקו אותן בזהירות, ולחצו על "אישור" כדי לאשר את בחירתכם.',
+אנא בדקו אותן בזהירות, ולחצו על "{{int:abusefilter-revert-confirm}}" כדי לאשר את בחירתכם.',
 	'abusefilter-revert-confirm' => 'אישור',
 	'abusefilter-revert-success' => 'ביטלתם את כל השינויים שבוצעו על ידי מסנן ההשחתות בגלל [[Special:AbuseFilter/$1|המסנן $1]].',
 	'abusefilter-revert-reason' => 'שחזור אוטומטי של כל הפעולות שבוצעו על ידי מסנן ההשחתות בגלל המסנן $1.
@@ -15564,7 +15586,7 @@ $messages['he'] = array(
 	'abusefilter-test-page' => 'שינויים שבוצעו בדף:',
 	'abusefilter-test-shownegative' => 'הצגת שינויים שאינם תואמים את המסנן',
 	'abusefilter-test-syntaxerr' => 'במסנן שהכנסתם יש שגיאת תחביר.
-באפשרותכם לקבל הסבר מלא באמצעות לחיצה על הכפתור "בדיקת תחביר".',
+באפשרותכם לקבל הסבר מלא באמצעות לחיצה על הכפתור "{{int:abusefilter-edit-check}}".',
 	'abusefilter-changeslist-examine' => 'בדיקה',
 	'abusefilter-examine' => 'בדיקת שינויים ספציפיים',
 	'abusefilter-examine-intro' => 'דף זה מאפשר לכם לבדוק את המשתנים שמייצר מסנן ההשחתות עבור שינוי ספציפי, ולבדוק זאת אל מול המסננים.',
@@ -19862,7 +19884,7 @@ $3 個の{{PLURAL:$3|引数}}があるべきですが $4 個しかありませ�
 	'abusefilter-revert-search' => '対処操作を選択',
 	'abusefilter-revert-filter' => 'フィルター:',
 	'abusefilter-revert-preview-intro' => '以下は、この操作によって差し戻される、不正利用フィルターによる対処操作です。
-注意深く確認し、「{{int:Abusefilter-revert-confirm}}」をクリックして選択を確定してください。',
+注意深く確認し、「{{int:Abusefilter-revert-confirm}}」をクリックして選択を確定してください。', # Fuzzy
 	'abusefilter-revert-confirm' => '確定',
 	'abusefilter-revert-success' => '[[Special:AbuseFilter/$1|フィルター $1]] に起因した、不正利用フィルターによるすべての対処操作を差し戻しました。',
 	'abusefilter-revert-reason' => 'フィルター $1 に起因した、不正利用フィルターによるすべての対処操作の自動差し戻し。理由: $2',
@@ -19878,7 +19900,7 @@ $3 個の{{PLURAL:$3|引数}}があるべきですが $4 個しかありませ�
 	'abusefilter-test-period-end' => 'これ以前の変更:',
 	'abusefilter-test-page' => '変更されるページ:',
 	'abusefilter-test-shownegative' => 'フィルターに一致しない変更を表示する',
-	'abusefilter-test-syntaxerr' => 'あなたが入力したフィルターには構文エラーがあります。「{{int:abusefilter-edit-check}}」ボタンを押して、完全な説明を得ることができます。',
+	'abusefilter-test-syntaxerr' => 'あなたが入力したフィルターには構文エラーがあります。「{{int:abusefilter-edit-check}}」ボタンを押して、完全な説明を得ることができます。', # Fuzzy
 	'abusefilter-changeslist-examine' => '分析',
 	'abusefilter-examine' => '個別の変更を分析する',
 	'abusefilter-examine-intro' => 'このページでは不正利用フィルターが個別の編集に対して生成した変数を分析し、フィルターに対してそれを試験することができます。',
@@ -28255,7 +28277,7 @@ Terug te draaien maatregelen: $5 ($6)',
 	'abusefilter-revert-search' => 'Maatregelen selecteren',
 	'abusefilter-revert-filter' => 'Filter:',
 	'abusefilter-revert-preview-intro' => 'Hieronder staan de maatregelen die het filter heeft genomen die door deze handeling worden teruggedraaid.
-Controleer de terug te draaien maatregelen zorgvuldig, en klik "Bevestigen" om uw selectie te bevestigen.',
+Controleer de terug te draaien maatregelen zorgvuldig, en klik "Bevestigen" om uw selectie te bevestigen.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Bevestigen',
 	'abusefilter-revert-success' => 'U hebt alle maatregelen die door het filter via [[Special:AbuseFilter/$1|filter $1]] zijn genomen teruggedraaid.',
 	'abusefilter-revert-reason' => 'Automatisch terugdraaien van alle maatregelen door de midbruikfilter via filter $1. Reden: $2',
@@ -28273,7 +28295,7 @@ Geef een filternummer in om een bestaand filter te laden en klik daarna op de kn
 	'abusefilter-test-page' => 'Wijzigingen aan pagina:',
 	'abusefilter-test-shownegative' => 'Wijzigingen weergeven die niet aan het filter voldoen',
 	'abusefilter-test-syntaxerr' => 'Het filter dat u hebt ingevoerd bevat een syntaxisfout.
-Door op "Syntaxis controleren" te klikken krijgt u een volledige toelichting.',
+Door op "Syntaxis controleren" te klikken krijgt u een volledige toelichting.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'onderzoeken',
 	'abusefilter-examine' => 'Individuele wijzigingen onderzoeken',
 	'abusefilter-examine-intro' => 'Via deze pagina kunt u de door het filter aangemaakte variabelen voor een individuele wijziging onderzoeken, en deze testen tegen filters.',
@@ -28449,7 +28471,7 @@ Ei kort skildring av misbruksregelen handlinga di braut er: $1',
 	'abusefilter-log-details-private' => 'Privat informasjon',
 	'abusefilter-log-details-ip' => 'Opphavs-IP',
 	'abusefilter-log-noactions' => 'ingen',
-	'abusefilter-log-details-diff' => 'Endringar gjorde i redigeringa',
+	'abusefilter-log-details-diff' => 'Endringar gjorde i endringa',
 	'abusefilter-log-linkoncontribs' => 'misbrukslogg',
 	'abusefilter-log-linkoncontribs-text' => 'Misbrukslogg for denne brukaren',
 	'abusefilter-log-hidden' => '(gøymd oppføring)',
@@ -28666,7 +28688,7 @@ Merke skal vera korte og dei skal ikkje innehalda spesialteikn.',
 	'abusefilter-edit-builder-vars-restrictions-create' => 'Opprettingsvernet til sida',
 	'abusefilter-edit-builder-vars-restrictions-upload' => 'Opplastingsvernet til fila',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Gamal sidetekst, med all koding teken vekk',
-	'abusefilter-edit-builder-vars-old-links' => 'Lenker på denne sida, før redigeringa',
+	'abusefilter-edit-builder-vars-old-links' => 'Lenkjer på sida, før endringa',
 	'abusefilter-edit-builder-vars-old-html' => 'Gamal wikitekst på sida, tolka til HTML',
 	'abusefilter-edit-builder-vars-minor-edit' => 'Om endringa er markert som småplukk eller ikkje',
 	'abusefilter-edit-builder-vars-file-sha1' => 'SHA1-hash av filinnhald',
@@ -28725,7 +28747,7 @@ Handlingar som  skal verta gjorde om: $5 ($6)',
 	'abusefilter-revert-search' => 'Vel handlingar',
 	'abusefilter-revert-filter' => 'Filter:',
 	'abusefilter-revert-preview-intro' => 'Under er handlingane gjorde av misbruksfilteret som vil verta gjorde om av denne handlinga.
-Sjå nøye gjennom dei, og trykk på «Stadfest» for å stadfesta valet ditt.',
+Sjå nøye gjennom dei, og trykk på «Stadfest» for å stadfesta valet ditt.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Stadfest',
 	'abusefilter-revert-success' => 'Du har gjort om alle endringane gjorde av misbruksfilteret gjenom [[Special:AbuseFilter/$1|filter $1]].',
 	'abusefilter-revert-reason' => 'Automatisk omgjering av alle handlingane gjorde av misbruksfilteret gjennom filter $1.
@@ -28733,7 +28755,7 @@ Grunngjeving: $2',
 	'abusefilter-revert-reasonfield' => 'Årsak:',
 	'abusefilter-test' => 'Test eit filter på tidlegare endringar',
 	'abusefilter-test-intro' => 'Denne sida lèt deg testa eit oppgjeve filter på {{PLURAL:$1|den siste endringa|dei siste $1 endringane}}.
-For å lasta inn eit filter som finst frå før, skriv inn filter-ID-en i boksen under endringsboksen og trykk på «Last inn»-knappen',
+For å lasta inn eit filter som finst frå før, skriv inn filter-ID-en i boksen under endringsboksen og trykk på «Last inn»-knappen', # Fuzzy
 	'abusefilter-test-legend' => 'Filtertesting',
 	'abusefilter-test-load-filter' => 'Last filter-ID:',
 	'abusefilter-test-submit' => 'Test',
@@ -28744,7 +28766,7 @@ For å lasta inn eit filter som finst frå før, skriv inn filter-ID-en i boksen
 	'abusefilter-test-page' => 'Endringa gjorde på sida:',
 	'abusefilter-test-shownegative' => 'Vis endringar som ikkje passar med filteret',
 	'abusefilter-test-syntaxerr' => 'Du skreiv inn eit filter som inneheld ein syntaksfeil.
-Du kan sjå ei utførleg skildring ved å trykka på «Saumfar syntaks»-knappen.',
+Du kan sjå ei utførleg skildring ved å trykka på «Saumfar syntaks»-knappen.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'undersøk',
 	'abusefilter-examine' => 'Granska einskilde endringar',
 	'abusefilter-examine-intro' => 'Denne sida lèt deg undesøkja variablane laga av misbruksfilteret for ei einskild endring, og lèt deg òg testa filter på henne.',
@@ -33376,7 +33398,7 @@ $messages['ru'] = array(
 	'abusefilter-revert-search' => 'Выбор действий',
 	'abusefilter-revert-filter' => 'Фильтр:',
 	'abusefilter-revert-preview-intro' => 'Ниже приведены выполненные фильтром злоупотреблений действия, которые будут отменены.
-Пожалуйста, внимательно их проверьте и нажмите «подтвердить».',
+Пожалуйста, внимательно их проверьте и нажмите «{{int:abusefilter-revert-confirm}}», чтоб подтвердить свой выбор.',
 	'abusefilter-revert-confirm' => 'Подтвердить',
 	'abusefilter-revert-success' => 'Вы откатили все действия, выполненные фильтром злоупотреблений [[Special:AbuseFilter/$1|$1]].',
 	'abusefilter-revert-reason' => 'Автоматический откат всех действий, выполненных фильтром злоупотреблений $1.
@@ -33395,7 +33417,7 @@ $messages['ru'] = array(
 	'abusefilter-test-page' => 'Изменения сделаны на странице:',
 	'abusefilter-test-shownegative' => 'Показывать изменения, не попадающие под фильтр',
 	'abusefilter-test-syntaxerr' => 'Введённый вами фильтр содержит синтаксическую ошибку.
-Вы можете получить подробное объяснение, нажав на кнопку «Проверить синтаксис».',
+Вы можете получить подробное объяснение, нажав на кнопку «{{int:abusefilter-edit-check}}».',
 	'abusefilter-changeslist-examine' => 'просмотреть',
 	'abusefilter-examine' => 'Просмотр отдельных изменений',
 	'abusefilter-examine-intro' => 'Эта страница позволяет вам просмотреть переменные, созданные фильтром злоупотреблений для отдельной правки и проверить их в фильтрах.',
@@ -40872,7 +40894,7 @@ $messages['uk'] = array(
 	'abusefilter-revert-search' => 'Вибір дій',
 	'abusefilter-revert-filter' => 'Фільтр:',
 	'abusefilter-revert-preview-intro' => 'Нижче приведені виконані фільтром редагувань дії, які будуть скасовані.
-Будь ласка, уважно їх перевірте та натисність «підтвердити».',
+Будь ласка, уважно їх перевірте та натисніть "{{int:abusefilter-revert-confirm}}" для підтвердження виділеного.',
 	'abusefilter-revert-confirm' => 'Підтвердити',
 	'abusefilter-revert-success' => 'Ви відкотили всі дії, виконані фільтром редагувань [[Special:AbuseFilter/$1|$1]].',
 	'abusefilter-revert-reason' => 'Автоматичний відкіт всіх дій, виконаних фільтром редагувань $1.
@@ -40891,7 +40913,7 @@ $messages['uk'] = array(
 	'abusefilter-test-page' => 'Зміни на сторінці:',
 	'abusefilter-test-shownegative' => 'Показувати зміни, які не попадають під фільтр',
 	'abusefilter-test-syntaxerr' => 'Введений вами фільтр містить синтаксичну помилку.
-Ви можете отримати докладне пояснення, натиснувши на «Перевірити синтаксис».',
+Ви можете отримати докладне пояснення, натиснувши кнопку "{{int:abusefilter-edit-check}}"',
 	'abusefilter-changeslist-examine' => 'переглянути',
 	'abusefilter-examine' => 'Перегляд окремих змін',
 	'abusefilter-examine-intro' => 'Ця сторінка дозволяє вам переглянути змінні, створені фільтром редагувань для окремої зміни і перевірити їх у фільтрах.',
