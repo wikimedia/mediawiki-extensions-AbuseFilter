@@ -414,7 +414,7 @@ Actions to be reverted: $5 ($6)',
 	'abusefilter-revert-search' => 'Select actions',
 	'abusefilter-revert-filter' => 'Filter:',
 	'abusefilter-revert-preview-intro' => 'Below are the actions taken by the abuse filter that will be reverted by this action.
-Please check them carefully, and click "confirm" to confirm your selection.',
+Please check them carefully, and click "{{int:abusefilter-revert-confirm}}" to confirm your selection.',
 	'abusefilter-revert-confirm' => 'Confirm',
 	'abusefilter-revert-success' => 'You have reverted all actions taken by the abuse filter due to [[Special:AbuseFilter/$1|filter $1]].',
 	'abusefilter-revert-reason' => 'Automatic revert of all actions taken by the abuse filter due to filter $1.
@@ -435,7 +435,7 @@ To load an existing filter, type its filter ID into the box below the edit textb
 	'abusefilter-test-page' => 'Changes made to page:',
 	'abusefilter-test-shownegative' => 'Show changes that do not match the filter',
 	'abusefilter-test-syntaxerr' => 'The filter you entered contained a syntax error.
-You can receive a full explanation by clicking the "Check Syntax" button.',
+You can receive a full explanation by clicking the "{{int:abusefilter-edit-check}}" button.',
 	'abusefilter-changeslist-examine' => 'examine',
 
 	// And these messages are for examining specific actions.
@@ -1074,7 +1074,7 @@ Parameters:
 {{Identical|Test}}',
 	'abusefilter-test-load' => 'Text on a button, and referred to in {{msg-mw|abusefilter-test-intro}}
 {{Identical|Load}}',
-	'abusefilter-test-syntaxerr' => '"Check Syntax" is the same as {{msg-mw|abusefilter-edit-check}}.',
+	'abusefilter-test-syntaxerr' => 'Refers to {{msg-mw|abusefilter-edit-check}}.',
 	'abusefilter-examine-user' => '{{Identical|User}}',
 	'abusefilter-examine-title' => '{{Identical|Page title}}',
 	'abusefilter-examine-submit' => '{{Identical|Search}}',
