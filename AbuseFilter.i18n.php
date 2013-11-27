@@ -10593,6 +10593,7 @@ $messages['en-gb'] = array(
  * @author Blahma
  * @author KuboF
  * @author Objectivesea
+ * @author Tlustulimu
  * @author Tradukisto
  * @author Yekrats
  */
@@ -10606,12 +10607,12 @@ La Misuzada Filtrilo estas aŭtomata programara ilo por apliki aŭtomata heŭris
 	'abusefilter-mustbeeditor' => 'Pro sekurecaj kialoj, nur uzantoj kun la rajto modifi maluzadajn filtrilojn povas uzi ĉi tiun interfacon.',
 	'abusefilter-warning' => "'''Averto''': Ĉi tiu ago estis aŭtomate identigita kiel malhelpema.
 Malkonstruktivaj redaktoj rapide estos malfaritaj,
-kaj ĉi tia ega aŭ ripetita redaktado rezultos, ke via konto aŭ komputilo estos forbarita.
+kaj ĉi tia ega aŭ ripetita malkonstruktiva redaktado rezultos, ke via konto aŭ komputilo estos forbarita.
 Se vi kredas ke ĉi tiu redakto estas ja konstruktiva, vi povas klaki Konservi denove por konfirmi ĝin.
-Mallonga priskribo pri la regulo de misuzado kiun via ago kongruis estas: $1", # Fuzzy
+Mallonga priskribo pri la regulo de misuzado kiun via ago kongruis estas: $1",
 	'abusefilter-disallowed' => 'Ĉi tiu ago estis aŭtomate identigita kiel damaĝa, kaj do estis malpermesita.
-Se vi kredas ke via redakto estis utila, bonvolu kontakti administranton, kaj informi ilin pri kion vi volis fari.
-Mallonga priskribo de la misuza regulo kiun via ago kongruis estas: $1', # Fuzzy
+Se vi kredas ke via redakto estis konstruktiva, bonvolu kontakti administranton, kaj informi lin pri kion vi provis fari.
+Mallonga priskribo de la misuza regulo, kiun via ago kongruis, estas: $1',
 	'abusefilter-blocked-display' => 'Ĉi tiu ago estis aŭtomate taksita kiel malhelpa,
 kaj vi estis preventita farinte ĝin.
 Plue, por protekti {{SITENAME}}n, via uzanto-konto kaj ĉiuj ĉi-ligitaj IP-adresoj estis forbaritaj de redaktado.
@@ -10640,6 +10641,7 @@ Priskribo de regulo: $1',
 	'right-abusefilter-log-private' => 'Vidi protokoleroj de misuzadaj filtriloj, kiuj estas markitaj kiel privataj',
 	'right-abusefilter-hide-log' => 'Kaŝi liniojn en la protokolo de misuzado',
 	'right-abusefilter-hidden-log' => 'Vidi kaŝitajn liniojn en la protokolo de misuzado',
+	'right-abusefilter-modify-global' => 'Krei aŭ modifi ĝeneralajn misuzajn filtrilojn',
 	'action-abusefilter-modify' => 'modifi misuzadajn filtrilojn',
 	'action-abusefilter-view' => 'vidi misuzadajn filtrilojn',
 	'action-abusefilter-log' => 'vidi la protokolon pri misuzado',
@@ -10732,6 +10734,7 @@ Filtrila priskribo: $7 ($8)',
 	'abusefilter-reautoconfirm-notallowed' => 'Vi ne rajtas restarigi statuson de aŭtomata konfirmado',
 	'abusefilter-reautoconfirm-done' => 'Statuso de aŭtomata konfirmado estis restarigita',
 	'abusefilter-status' => 'El la lastaj $1 {{PLURAL:$1|lasta 1 ago|lastaj $1 agoj}}, $2 ($3%) atingis la kondiĉa limo de $4, kaj $5 ($6%) kongruis unu el la ŝaltataj filtriloj.',
+	'abusefilter-edit' => 'Redakti misuzan filtrilon',
 	'abusefilter-edit-subtitle' => 'Redaktis filtrilon $1',
 	'abusefilter-edit-subtitle-new' => 'Krei filtron',
 	'abusefilter-edit-oldwarning' => '<strong>Vi redaktas malnovan version de ĉi tiu filtrilo.
@@ -10782,10 +10785,10 @@ Averaĝe, ĝia plenumtempo estas $4ms, kaj ĝi konsumas $5 {{PLURAL:$5|kondiĉon
 	'abusefilter-edit-warn-preview' => 'Antaŭvidi elektitan mesaĝon',
 	'abusefilter-edit-warn-edit' => 'Krei/Redakti elektitan mesaĝon',
 	'abusefilter-edit-tag-tag' => 'Etikedoj por aldoni (po unu por linio):',
-	'abusefilter-edit-denied' => 'Vi ne rajtas vidi detalojn pri ĉi tiu filtrilo, ĉar ĝi estas kaŝita de publika vido', # Fuzzy
+	'abusefilter-edit-denied' => 'Vi ne rajtas vidi detalojn pri ĉi tiu filtrilo, ĉar ĝi estas kaŝita de publika vido',
 	'abusefilter-edit-main' => 'Filtraj parametroj',
 	'abusefilter-edit-done-subtitle' => 'Filtrilo redaktita',
-	'abusefilter-edit-done' => 'Vi sukcese konservis viajn ŝanĝojn al filtrilo $1.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Viaj ŝanĝoj]] de [[Special:AbuseFilter/$1|filtrilo $1]] estis konservitaj.',
 	'abusefilter-edit-badsyntax' => 'Estas sintaksa eraro en la filtrilo kiun vi specifigis.
 La eligo de la sintaksa analizilo estis: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Vi ne povas redakti ĉi tiun filtrilon, ĉar ĝi enhavas unu aŭ pliajn malpermesitajn agojn.
@@ -10803,6 +10806,8 @@ Bonvolu peti uzanton kun rajton por aldoni limigitajn agojn fari ĉi tian ŝanĝ
 	'abusefilter-edit-bad-tags' => 'Unu aŭ pliaj de la etikedoj kiun vi specifigis ne estas valida.
 Etikedoj devas esti mallonga, kaj ili ne devas enhavi specialajn signojn.',
 	'abusefilter-edit-notallowed' => 'Vi ne rajtas krei aŭ redakti misuzadajn filtrilojn',
+	'abusefilter-edit-notallowed-global' => 'Vi ne rajtas krei aŭ redakti ĝeneralajn misuzadajn filtrilojn.',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'Propraj avertaj mesaĝoj ne estas subtenataj por ĝeneralaj filtriloj.',
 	'abusefilter-edit-builder-select' => 'Elektu opcion por aldoni ĝin ĉe la kursoro',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Matematikaj operacioj',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Adicio (+)',
@@ -10834,6 +10839,7 @@ Etikedoj devas esti mallonga, kaj ili ne devas enhavi specialajn signojn.',
 	'abusefilter-edit-builder-group-funcs' => 'Funkcioj',
 	'abusefilter-edit-builder-funcs-length' => 'Longeco de bitĉeno (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Minuskligi (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'Konverti al majuskloj (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normaligi konfuzeblajn signojn (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Forigi duoblajn signojn (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Specialaj signoj / ĉiuj signoj (specialratio)',
@@ -10864,6 +10870,7 @@ Etikedoj devas esti mallonga, kaj ili ne devas enhavi specialajn signojn.',
 	'abusefilter-edit-builder-vars-article-ns' => 'Paĝa nomspaco',
 	'abusefilter-edit-builder-vars-article-text' => 'Paĝa titolo (sen nomspaco)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Plena paĝa titolo',
+	'abusefilter-edit-builder-vars-article-views' => 'Rigardado de paĝoj',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'Paĝa identigo de movota fonta paĝo',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Nomspaco de movada fontpaĝo',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Titolo de mova fonta paĝo',
@@ -10884,6 +10891,7 @@ Etikedoj devas esti mallonga, kaj ili ne devas enhavi specialajn signojn.',
 	'abusefilter-edit-builder-vars-removed-links' => 'Ĉiuj eksteraj ligiloj forigitaj en la redakto',
 	'abusefilter-edit-builder-vars-old-text' => 'Malnova paĝa vikiteksto, antaŭ la redakto',
 	'abusefilter-edit-builder-vars-new-text' => 'Nova paĝo de vikiteksto, post la redakto',
+	'abusefilter-edit-builder-vars-new-pst' => 'Nova vikiteksto de paĝo, transformita antaŭ la konservado',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nova paĝa teksto, forviŝita de iuj marklingvaĵoj',
 	'abusefilter-edit-builder-vars-new-html' => 'Sintakse analizita HTML-fonto de la nova revizio',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Ŝanĝi protektnivelon de la paĝo',
@@ -10950,16 +10958,16 @@ Agoj por malfari: $5 ($6)',
 	'abusefilter-revert-periodend' => 'Fino de intervalo:',
 	'abusefilter-revert-search' => 'Elekti agojn',
 	'abusefilter-revert-filter' => 'Filtrilo:',
-	'abusefilter-revert-preview-intro' => 'Jen agoj faritaj de la misuzada filtrilo kiu estos restarigita de ĉi tiu ago.
-Bonvolu kontroli ili zorgeme, kaj klaku "konfirmi" por konfirmi via elekto.',
+	'abusefilter-revert-preview-intro' => 'Malsupre estas la agoj de la misuza filtrilo, kiuj estos malfarataj per ĉi tiu ago.
+Bonvolu kontroli ilin zorgeme kaj klaku sur „{{int:abusefilter-revert-confirm}}“, por konfirmi vian elekton.',
 	'abusefilter-revert-confirm' => 'Konfirmi',
 	'abusefilter-revert-success' => 'Vi malfaris ĉiujn agojn faritajn de la misuzada filtrilo de [[Special:AbuseFilter/$1|filtrilo $1]].',
 	'abusefilter-revert-reason' => 'Aŭtomata restarigo de ĉiuj agoj faritaj de la misuzada filtrilo pro filtrilo $1.
 Kialo donita: $2',
 	'abusefilter-revert-reasonfield' => 'Kialo:',
 	'abusefilter-test' => 'Testi filtrilon kontraŭ antaŭaj redaktoj',
-	'abusefilter-test-intro' => 'Ĉi tiu paĝo permesas al vi konsulti filtrilon enigitan en la jena skatolo kontraŭ la {{PLURAL:$1|lasta ŝanĝo|lastaj $1 ŝanĝoj}}.
-Ŝarĝi ekzistantan filtrilon, tajpu ĝian filtrilan identigon en la suba skatolo sub la redakta ilobreto, kaj klaku la butonon "Ŝarĝi".',
+	'abusefilter-test-intro' => 'Ĉi tiu paĝo ebligas al vi konsulti filtrilon enigitan en la malsupra skatolo kontraŭ la {{PLURAL:$1|lasta ŝanĝo|lastaj $1 ŝanĝoj}}.
+Por ŝarĝi ekzistantan filtrilon, tajpu ĝian filtrilan identigilon en la malsupra skatolo sub la redakta ilobreto, kaj klaku la butonon "{{int:abusefilter-test-load}}".',
 	'abusefilter-test-legend' => 'Filtrila testado',
 	'abusefilter-test-load-filter' => 'Filtrila identigo por ŝarĝi:',
 	'abusefilter-test-submit' => 'Testi',
@@ -10969,8 +10977,8 @@ Kialo donita: $2',
 	'abusefilter-test-period-end' => 'Ŝanĝoj faritaj antaŭ:',
 	'abusefilter-test-page' => 'Ŝanĝoj faritaj al paĝo:',
 	'abusefilter-test-shownegative' => 'Montri ŝanĝojn ne kongrantajn la filtrilon',
-	'abusefilter-test-syntaxerr' => 'La filtrilo kiun vi enigis enhavis sintaksan eraron.
-Vi povas ricevi plenan eksplikon per klakante la butonon "Kontroli Sintakson".',
+	'abusefilter-test-syntaxerr' => 'La filtrilo, kiun vi enigis, enhavis sintaksan eraron.
+Vi povas ricevi plenan eksplikon per klakado al la butono "{{int:abusefilter-edit-check}}".',
 	'abusefilter-changeslist-examine' => 'vidi',
 	'abusefilter-examine' => 'Rigardi individuajn ŝanĝojn',
 	'abusefilter-examine-intro' => 'Ĉi tiu paĝo permesas al vi rigardi la variablojn generitajn de la Misuzada Filtrilo por individua ŝanĝo, kaj testi ĝin per filtriloj.',
@@ -43135,8 +43143,8 @@ $messages['zh-hans'] = array(
 	'abusefilter-log-search-title' => '标题：',
 	'abusefilter-log-search-wiki' => '维基名：',
 	'abusefilter-log-search-submit' => '搜索',
-	'abusefilter-log-entry' => '$1：$2在$4上进行了“$3”的操作，触发了过滤器。采取的行动：$5；过滤器描述：$6',
-	'abusefilter-log-detailedentry-meta' => '$1：$2在$5上进行了“$4”的操作，触发了$3。采取的行动：$6；过滤器描述：$7（$8）',
+	'abusefilter-log-entry' => '$1：$2在$4执行操作“$3”时触发了过滤器。采取的行动：$5。过滤器说明：$6',
+	'abusefilter-log-detailedentry-meta' => '$1：$2在$5执行操作“$4”时触发了$3。采取的行动：$6；过滤器说明：$7（$8）',
 	'abusefilter-log-detailedentry-global' => '全域过滤器$1',
 	'abusefilter-log-detailedentry-local' => '过滤器$1',
 	'abusefilter-log-detailslink' => '详情',
@@ -43163,7 +43171,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-log-hide-forbidden' => '你没有权限去隐藏此滥用记录条目',
 	'abusefilter-logentry-suppress' => '隐藏 "[[$1]]"',
 	'abusefilter-logentry-unsuppress' => '取消隐藏 "[[$1]]"',
-	'logentry-abusefilter-hit' => '$1在$3上进行了“$5”操作，触发了$4。采取的动作：$6（$7）',
+	'logentry-abusefilter-hit' => '$1在$3执行操作“$5”时触发了$4。采取的行动：$6（$7）',
 	'abusefilter-management' => '滥用过滤器管理',
 	'abusefilter-list' => '所有过滤器',
 	'abusefilter-list-id' => '过滤器ID',
