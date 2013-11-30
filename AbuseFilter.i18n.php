@@ -2255,8 +2255,8 @@ $messages['arz'] = array(
 	'abusefilter-warning' => "'''تحذير''': الإجراء ده أُعتبر  مضر.
 هايتم استرجاع التعديلات المضره بسرعه،
 والتعديل المضر المتكرر أو المستمر هايتسبب فيى منع حسابك أو الكمبيوتر بتاعك .
-إذا كنت فاكر إن  التعديل ده بناء، فممكن  تضغط \"أرسل\" مرة تانيه.
-وصف مختصر لقاعدة الإساءة : \$1", # Fuzzy
+إذا كنت فاكر إن  التعديل ده كويس، فممكن  تضغط \"أرسل\" مرة تانيه.
+وصف مختصر لقاعدة الإساءه : \$1",
 	'abusefilter-disallowed' => 'هذا الفعل تم التعرف عليه تلقائيا كضار،
 ولذا تم منعه.
 لو كنت تعتقد أن تعديلك بناء، من فضلك اتصل بإدارى، وأخبره بما كنت تحاول أن تفعل.
@@ -2300,6 +2300,7 @@ $messages['arz'] = array(
 	'abusefilter-log-search-user' => 'المستخدم:',
 	'abusefilter-log-search-filter' => 'رقم المُرشِّح:',
 	'abusefilter-log-search-title' => 'العنوان:',
+	'abusefilter-log-search-wiki' => 'ويكى',
 	'abusefilter-log-search-submit' => 'ابحث',
 	'abusefilter-log-entry' => '$1: $2 فعل مرشح إساءه، مؤديا الفعل "$3" فى $4.
 الأفعال المتخذة: $5;
@@ -2310,6 +2311,7 @@ $messages['arz'] = array(
 	'abusefilter-log-detailedentry-global' => 'المرشح العام $1',
 	'abusefilter-log-detailedentry-local' => 'المرشح $1',
 	'abusefilter-log-detailslink' => 'التفاصيل',
+	'abusefilter-log-diff' => 'التغيير',
 	'abusefilter-log-details-legend' => 'التفاصيل لمدخله السجل $1',
 	'abusefilter-log-details-var' => 'متغير',
 	'abusefilter-log-details-val' => 'قيمة',
@@ -2571,7 +2573,7 @@ $messages['arz'] = array(
 	'abusefilter-revert-search' => 'اختر الأفعال',
 	'abusefilter-revert-filter' => 'مرشح:',
 	'abusefilter-revert-preview-intro' => 'بالأسفل الأفعال المتخذه بواسطه مرشح الإساءه والتى سيتم استرجاعها بواسطه هذا الفعل.
-من فضلك تحقق منها بحرص، واضغط "تأكيد" لتأكيد اختيارك.',
+من فضلك تحقق منها بحرص، واضغط "تأكيد" لتأكيد اختيارك.', # Fuzzy
 	'abusefilter-revert-confirm' => 'تأكيد',
 	'abusefilter-revert-success' => 'لقد قمت باسترجاع كامل التعديلات التى قام بها مرشح الإساءه وفقا [[Special:AbuseFilter/$1|للمرشح $1]].',
 	'abusefilter-revert-reason' => 'استرجاع تلقائى لكل الأفعال المتخذه بواسطه مرشح الإساءه بسبب المرشح $1.
@@ -2579,7 +2581,7 @@ $messages['arz'] = array(
 	'abusefilter-revert-reasonfield' => 'سبب الاسترجاع', # Fuzzy
 	'abusefilter-test' => 'اختبار المرشح على تعديلات سابقة',
 	'abusefilter-test-intro' => 'هذه الصفحه تسمح لك بالتحقق من مرشح مدخل فى الصندوق بالأسفل ضد آخر $1 {{PLURAL:$1|تغيير|تغيير}}.
-لتحميل مرشح موجود، اكتب رقم المرشح الخاص به فى الصندوق بأسفل صندوق نص التعديل، واضغط زر "تحميل".',
+لتحميل مرشح موجود، اكتب رقم المرشح الخاص به فى الصندوق بأسفل صندوق نص التعديل، واضغط زر "تحميل".', # Fuzzy
 	'abusefilter-test-legend' => 'اختبار المرشح',
 	'abusefilter-test-load-filter' => 'تحميل رمز تعريف المرشح:',
 	'abusefilter-test-submit' => 'اختبار',
@@ -2590,7 +2592,7 @@ $messages['arz'] = array(
 	'abusefilter-test-page' => 'التغييرات المعموله للصفحة:',
 	'abusefilter-test-shownegative' => 'اعرض التغييرات التى لا تطابق المرشح',
 	'abusefilter-test-syntaxerr' => 'المرشح الذى أدخلته يحتوى على خطأ صياغه.
-يمكنك تلقى تفسير كامل بواسطه الضغط على زر "التحقق من الصياغة".',
+يمكنك تلقى تفسير كامل بواسطه الضغط على زر "التحقق من الصياغة".', # Fuzzy
 	'abusefilter-changeslist-examine' => 'افحص',
 	'abusefilter-examine' => 'افحص التغييرات الفردية',
 	'abusefilter-examine-intro' => 'هذه الصفحه تسمح لك بفحص المتغيرات المولده بواسطه مرشح الإساءه لتغيير فردى، واختبارها ضد المرشحات.',
@@ -21484,7 +21486,7 @@ $messages['ko'] = array(
 	'abusefilter-revert-search' => '동작 선택하기',
 	'abusefilter-revert-filter' => '필터:',
 	'abusefilter-revert-preview-intro' => '다음은 이 동작을 통해 복구될 부정 행위 방지 필터의 동작의 목록입니다.
-주의를 기울여 검토한 후에 "확인" 버튼을 클릭하십시오.', # Fuzzy
+주의를 기울여 검토한 후에 "{{int:abusefilter-revert-confirm}}" 버튼을 클릭하십시오.',
 	'abusefilter-revert-confirm' => '확인',
 	'abusefilter-revert-success' => '[[Special:AbuseFilter/$1|필터 $1]]에 의해 취해진 모든 조치를 되돌렸습니다.',
 	'abusefilter-revert-reason' => '필터 $1에 의해 취해진 모든 조치를 자동으로 되돌림.
@@ -21492,7 +21494,7 @@ $messages['ko'] = array(
 	'abusefilter-revert-reasonfield' => '이유:',
 	'abusefilter-test' => '과거의 편집에 대해 필터 시험하기',
 	'abusefilter-test-intro' => '이 페이지에서 과거의 {{PLURAL:$1|바뀐 편집}} $1개에 대해 아래 상자에 입력한 필터를 시험할 수 있습니다.
-이미 존재하는 필터를 불러오려면, 아래 상자에 필터 ID를 입력하고 "불러오기" 버튼을 클릭하십시오.', # Fuzzy
+이미 존재하는 필터를 불러오려면, 아래 상자에 필터 ID를 입력하고 "{{int:abusefilter-test-load}}" 버튼을 클릭하십시오.',
 	'abusefilter-test-legend' => '필터 시험하기',
 	'abusefilter-test-load-filter' => '불러올 필터 번호:',
 	'abusefilter-test-submit' => '시험',
@@ -21503,7 +21505,7 @@ $messages['ko'] = array(
 	'abusefilter-test-page' => '바뀌는 문서:',
 	'abusefilter-test-shownegative' => '필터와 일치하지 않는 편집을 보이기',
 	'abusefilter-test-syntaxerr' => '입력한 구문에 오류가 있습니다.
-"구문 확인" 버튼을 누르면 자세한 설명을 받을 수 있습니다.', # Fuzzy
+"{{int:abusefilter-edit-check}}" 버튼을 누르면 자세한 설명을 받을 수 있습니다.',
 	'abusefilter-changeslist-examine' => '검사',
 	'abusefilter-examine' => '특정 편집을 검토',
 	'abusefilter-examine-intro' => '이 문서에서 각각의 편집에 대해 부정 행위 방지 필터가 생성한 변수를 검사하고 필터에 대해 시험해볼 수 있습니다.',
@@ -36299,7 +36301,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-log-details-ip' => 'Изворна ИП адреса',
 	'abusefilter-log-noactions' => 'ништа',
 	'abusefilter-log-details-diff' => 'Измене направљене при уређивању',
-	'abusefilter-log-linkoncontribs' => 'историја злоупотребе',
+	'abusefilter-log-linkoncontribs' => 'дневник злоупотребе',
 	'abusefilter-log-linkoncontribs-text' => 'Извештај злоупотребе овог корисника',
 	'abusefilter-log-hidden' => '(унос је сакривен)',
 	'abusefilter-log-cannot-see-details' => 'Немате овлашћење да видите детаље овог уноса.',
@@ -36550,7 +36552,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-exception-overridebuiltin' => 'Недозвољено мењање променљиве „$2“ на карактеру $1.',
 	'abusefilter-exception-outofbounds' => 'Захтевање непостојеће ставке у списку $2 (величина списка = $3) код знака $1.',
 	'abusefilter-exception-notlist' => 'Захтевање ставке низа за објекат који није низ код знака $1.',
-	'abusefilter-action-tag' => 'Ознака',
+	'abusefilter-action-tag' => 'Означено',
 	'abusefilter-action-throttle' => 'Успори',
 	'abusefilter-action-warn' => 'Упозори',
 	'abusefilter-action-blockautopromote' => 'Блокирај самоунапређивање',
@@ -36693,7 +36695,7 @@ Opis filtera: $7 ($8)',
 	'abusefilter-log-details-ip' => 'Izvorna IP adresa',
 	'abusefilter-log-noactions' => 'ništa',
 	'abusefilter-log-details-diff' => 'Promene napravljene izmenom',
-	'abusefilter-log-linkoncontribs' => 'izveštaj zloupotrebe',
+	'abusefilter-log-linkoncontribs' => 'dnevnik zloupotrebe',
 	'abusefilter-log-linkoncontribs-text' => 'Izveštaj zloupotrebe ovog korisnika',
 	'abusefilter-log-hidden' => '(unos je sakriven)',
 	'abusefilter-log-cannot-see-details' => 'Nemate ovlašćenje da vidite detalje ovog unosa.',
@@ -36934,7 +36936,7 @@ Zamolite korisnika s određenim ovlašćenjem da napravi izmene umesto vas.',
 	'abusefilter-exception-overridebuiltin' => 'Nedozvoljeno menjanje promenljive „$2“ na karakteru $1.',
 	'abusefilter-exception-outofbounds' => 'Zahtevanje nepostojećeg elementa spiska $2 (veličina spiska = $3) na karakteru $1.',
 	'abusefilter-exception-notlist' => 'Zahtevanje člana niza od nečega što nije niz, na karakteru $1.',
-	'abusefilter-action-tag' => 'Oznaka',
+	'abusefilter-action-tag' => 'Označeno',
 	'abusefilter-action-warn' => 'Upozori',
 	'abusefilter-action-blockautopromote' => 'Blokiraj samounapređivanje',
 	'abusefilter-action-block' => 'Blokiraj',
@@ -36985,7 +36987,7 @@ Da biste dobili detaljno objašnjenje kliknite na dugme „{{int:abusefilter-edi
 	'abusefilter-examine-incompatible' => 'Izmena koju ste tražili nije podržana od filtera protiv zloupotrebe',
 	'abusefilter-examine-noresults' => 'Nisu nađeni pezultati za parametre pretrage koje ste zadali.',
 	'abusefilter-topnav' => "'''Navigacija po filteru protiv zloupotrebe'''",
-	'abusefilter-topnav-home' => 'Na početak',
+	'abusefilter-topnav-home' => 'Početna',
 	'abusefilter-topnav-test' => 'Grupno isprobavanje',
 	'abusefilter-topnav-examine' => 'Ispitaj prošle izmene',
 	'abusefilter-topnav-log' => 'Istorija zloupotrebe',
