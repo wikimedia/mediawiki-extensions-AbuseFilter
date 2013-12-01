@@ -6692,6 +6692,7 @@ Kopirajte iz tekstualne kutije koja se pojavi i zalijepite u ovu kutiju, zatim k
 
 /** Catalan (català)
  * @author Aleator
+ * @author Alvaro Vidal-Abarca
  * @author Arnaugir
  * @author El libre
  * @author Gemmaa
@@ -6895,10 +6896,10 @@ Ha sobrepassat el límit de deteccions del $1% de les accions.",
 	'abusefilter-edit-warn-preview' => 'Previsualitza el missatge seleccionat',
 	'abusefilter-edit-warn-edit' => 'Creau/Editau el missatge seleccionat',
 	'abusefilter-edit-tag-tag' => 'Etiquetes a aplicar (una per línia):',
-	'abusefilter-edit-denied' => "No podeu veure els detalls d'aquest filtre ja que està restringit el seu accés públic.", # Fuzzy
+	'abusefilter-edit-denied' => "No podeu veure els detalls d'aquest filtre ja que està restringit el seu accés públic.",
 	'abusefilter-edit-main' => 'Paràmetres de filtre',
 	'abusefilter-edit-done-subtitle' => 'Filtre editat',
-	'abusefilter-edit-done' => "Els vostres canvis al filtre $1 s'han desat correctament.", # Fuzzy
+	'abusefilter-edit-done' => "[[Special:AbuseFilter/history/$1/diff/prev/$2|Els vostres canvis]] al [[Special:AbuseFilter/$1|filtre $1]] s'han desat correctament.",
 	'abusefilter-edit-badsyntax' => "Hi ha un error de sintaxi en el filtre que heu especificat.
 La producció de l'analitzador era:<pre>$1</pre>",
 	'abusefilter-edit-restricted' => "No es pot editar aquest filtre, perquè conté un o més accions restringides.
@@ -7063,16 +7064,16 @@ Accions de ser tornat:  $5  ( $6 )',
 	'abusefilter-revert-periodend' => 'Fi del període:',
 	'abusefilter-revert-search' => 'Seleccionau les accions',
 	'abusefilter-revert-filter' => 'Filtre:',
-	'abusefilter-revert-preview-intro' => 'A continuació es presenten les mesures adoptades pel filtre d\'abús que es tornat per aquesta acció.
-Si us plau comprovi\'ls amb cura i feu clic a "confirmar" per confirmar la seva selecció.', # Fuzzy
+	'abusefilter-revert-preview-intro' => 'A continuació es presenten les mesures adoptades pel filtre d\'abús que es revertiran amb aquesta acció.
+Si us plau comproveu-les amb cura i feu clic a "{{int:abusefilter-revert-confirm}}" per confirmar la vostra selecció.',
 	'abusefilter-revert-confirm' => 'Confirma',
 	'abusefilter-revert-success' => "Heu revertit totes les accions del filtre d'abusos generades pel [[Special:AbuseFilter/$1|filtre $1]].",
 	'abusefilter-revert-reason' => "Automatic tornar de totes les mesures adoptades pel filtre d'abús a causa de filtre de  $1 .
 Motiu donat:$2",
 	'abusefilter-revert-reasonfield' => 'Motiu:',
 	'abusefilter-test' => 'Prova un filtre contra les edicions anteriors',
-	'abusefilter-test-intro' => "Aquesta pàgina permet provar sobre {{PLURAL:$1|la darrera edició|les darreres $1 edicions}} un filtre introduït en la caixa de sota.
-Per carregar un filtre existent, escriviu el seu número d'identificació en el camp sota la caixa de text i cliqueu el botó «Carrega».", # Fuzzy
+	'abusefilter-test-intro' => 'Aquesta pàgina us permet comprovar un filtre entrar en el camp de sota respecte els últims $1 {{PLURAL:$1|canvi|canvis}}.
+Per carregar un filtre existent, escriviu el seu número d\'identificació en el camp sota la caixa de text i cliqueu el botó "{{int:abusefilter-test-load}}".',
 	'abusefilter-test-legend' => 'Prova de filtre',
 	'abusefilter-test-load-filter' => 'Carrega el filtre número:',
 	'abusefilter-test-submit' => 'Prova',
@@ -7083,7 +7084,7 @@ Per carregar un filtre existent, escriviu el seu número d'identificació en el 
 	'abusefilter-test-page' => 'Canvis fets a la pàgina:',
 	'abusefilter-test-shownegative' => 'Mostra els canvis que no coincideixen amb el filtre',
 	'abusefilter-test-syntaxerr' => 'El filtre que heu escrit conté un error de sintaxi.
-Vostè pot rebre una plena explicació fent clic al botó de "Comprovació de sintaxi".', # Fuzzy
+Vostè pot rebre una explicació completa fent clic al botó de "{{int:abusefilter-edit-check}}".',
 	'abusefilter-changeslist-examine' => 'examinar',
 	'abusefilter-examine' => 'Examinar els canvis individuals',
 	'abusefilter-examine-intro' => "Aquesta pàgina us permet examinar les variables generades pel filtre d'abusos per a una modificació concreta i provar-les amb els filtres.",
@@ -22572,8 +22573,8 @@ Kuckt se w.e.g. genee no a klickt "{{int:abusefilter-revert-confirm}}" fir Är W
 Grond: $2',
 	'abusefilter-revert-reasonfield' => 'Grond:',
 	'abusefilter-test' => 'De Filter mat de leschten Ännerungen ausprobéieren',
-	'abusefilter-test-intro' => 'Dës Säit erlaabt Iech et e Filter mat {{PLURAL:$1|der leschter Ännerung| de leschte(n) $1 Ännerungen}} z\'iwwerpréifen.
-Fir e Filter z\'uede gitt seng Filter ID an d\'Këscht ënner der Textkëscht an a klickt op de Knäppche "Lueden".', # Fuzzy
+	'abusefilter-test-intro' => 'Dës Säit erlaabt Iech et e Filter mat {{PLURAL:$1|der leschter Ännerung|de leschte(n) $1 Ännerungen}} z\'iwwerpréifen.
+Fir e Filter ze luede gitt seng Filter ID an d\'Këscht ënner der Textkëscht an a klickt op de Knäppche "{{int:abusefilter-test-load}}".',
 	'abusefilter-test-legend' => 'Test vum Filter',
 	'abusefilter-test-load-filter' => 'Luede vum Filter mat der ID:',
 	'abusefilter-test-submit' => 'Test',
