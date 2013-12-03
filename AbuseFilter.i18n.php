@@ -8730,7 +8730,7 @@ $messages['de'] = array(
 Der Missbrauchsfilter ist ein automatischer Mechanismus, welcher automatische Heuristiken auf alle Änderungen anwendet.
 Diese Oberfläche zeigt eine Liste aller definierten Filter und erlaubt es, diese zu verändern.',
 	'abusefilter-mustbeeditor' => 'Aus Sicherheitsgründen dürfen nur Benutzer mit dem Recht zur Änderung von Missbrauchsfiltern diese Schnittstelle verwenden.',
-	'abusefilter-warning' => "'''Achtung''': Diese Aktion wurde als potentiell unkonstruktiv erkannt.
+	'abusefilter-warning' => "'''Achtung:''' Diese Aktion wurde als potentiell unkonstruktiv erkannt.
 Solche Beiträge werden meist sehr schnell entfernt. In wiederholten und besonders schlimmen Fällen wird dein Benutzerkonto bzw. deine IP-Adresse gesperrt.
 Wenn du meinst, dass diese Aktion sinnvoll ist, kannst du sie zum Bestätigen erneut speichern.
 Kurzbeschreibung der verletzten Regel: $1",
@@ -9167,10 +9167,10 @@ Filterbeschreibung: $7 ($8)',
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
-	'abusefilter-warning' => "'''Achtung''': Diese Aktion wurde als potentiell unkonstruktiv erkannt.
+	'abusefilter-warning' => "'''Achtung:''' Diese Aktion wurde als potentiell unkonstruktiv erkannt.
 Solche Beiträge werden meist sehr schnell entfernt. In wiederholten und besonders schlimmen Fällen wird Ihr Benutzerkonto bzw. Ihre IP-Adresse gesperrt.
-Wenn Sie denken, dass Ihre Änderung konstruktiv war, können Sie sie jedoch mit einem erneuten Klick auf „{{int:savearticle}}“ bestätigen.
-Kurzbeschreibung der verletzten Regel: $1", # Fuzzy
+Wenn Sie meinen, dass diese Aktion sinnvoll ist, können Sie sie zum Bestätigen erneut speichern.
+Kurzbeschreibung der verletzten Regel: $1",
 	'abusefilter-disallowed' => 'Diese Aktion wurde automatisch als schädlich erkannt und deshalb nicht ausgeführt.
 Wenn Sie denken, dass Ihr Beitrag konstruktiv war, wenden Sie sich bitte an einen Administrator und schilderen ihm, was Sie versucht haben beizutragen.
 Kurzbeschreibung der verletzten Regel: $1', # Fuzzy
@@ -9202,10 +9202,10 @@ Bitten Sie einen Benutzer, der verbotene Aktionen hinzufügen kann, darum, die �
 	'abusefilter-revert-intro' => 'Mit diesem Formular können alle Änderungen durch den Missbrauchsfilter aufgrund von Filter $1 rückgängig gemacht werden.
 Bitte verwenden Sie dieses Werkzeug mit Vorsicht.',
 	'abusefilter-revert-preview-intro' => 'Unten stehen die Aktionen des Missbrauchsfilters, die hiermit rückgängig gemacht werden.
-Bitte überprüfen Sie sie sorgfältig und klicken Sie auf „Bestätigen“, um Ihre Auswahl zu bestätigen.',
+Bitte überprüfen Sie sie sorgfältig und klicken Sie auf „Bestätigen“, um Ihre Auswahl zu bestätigen.', # Fuzzy
 	'abusefilter-revert-success' => 'Sie haben alle Aktionen des Missbrauchsfilters, die aufgrund von [[Special:AbuseFilter/$1|Filter $1]] vorgenommen wurden, rückgängig gemacht.',
 	'abusefilter-test-intro' => 'Mit dieser Seite kann ein Filter probeweise auf die {{PLURAL:$1|letzte Änderung|letzten $1 Änderungen}} angewendet werden.
-Um einen bestehenden Filter zu laden, geben Sie seine Filter-ID in das Feld unterhalb des Bearbeiten-Textfeldes ein und klicken Sie auf den „Laden“-Button.',
+Um einen bestehenden Filter zu laden, geben Sie seine Filter-ID in das Feld unterhalb des Bearbeiten-Textfeldes ein und klicken Sie auf den „Laden“-Button.', # Fuzzy
 	'abusefilter-import-intro' => 'Sie können diese Schnittstelle verwenden, um Filter aus anderen Wikis zu importieren. Klicken Sie im Quellwiki auf die Schaltfläche „<abusefilter-edit-export>“ innerhalb von „<abusefilter-tools-subtitle>“. Kopieren Sie dort den erscheinenden Code, fügen Sie ihn hier ein und klicken Sie dann auf die Schaltfläche „<abusefilter-import-submit>“.',
 );
 
@@ -12615,10 +12615,10 @@ Säännön kuvaus: $1',
 	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Etsi',
 	'abusefilter-log-entry' => '$1: $2 laukaisi väärinkäyttösuodattimen käyttäessään toimintoa ”$3” kohteessa $4.
-Laukaistut toiminnot: $5;
+Toimenpiteet: $5;
 Suodattimen kuvaus: $6',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 laukaisi suodattimen $3 käyttäessään toimintoa ”$4” kohteessa $5.
-Laukaistut toiminnot: $6;
+Toimenpiteet: $6;
 Suodattimen kuvaus: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'järjestelmänlaajuinen suodatin $1',
 	'abusefilter-log-detailedentry-local' => 'suodatin $1',
@@ -14426,7 +14426,7 @@ Por favor, teña coidado con esta ferramenta.',
 	'abusefilter-revert-periodend' => 'Fin do período:',
 	'abusefilter-revert-search' => 'Seleccionar as accións',
 	'abusefilter-revert-filter' => 'Filtro:',
-	'abusefilter-revert-preview-intro' => 'Embaixo están as accións levadas a cabo polo filtro de abuso que serán revertidas con esta acción.
+	'abusefilter-revert-preview-intro' => 'A continuación están as accións levadas a cabo polo filtro de abusos que serán revertidas con esta acción.
 Por favor, compróbeas con coidado e prema en "{{int:abusefilter-revert-confirm}}" para confirmar a súa selección.',
 	'abusefilter-revert-confirm' => 'Confirmar',
 	'abusefilter-revert-success' => 'Reverteu todas as accións feitas polo [[Special:AbuseFilter/$1|filtro de abusos $1]].',
@@ -28299,14 +28299,14 @@ Terug te draaien maatregelen: $5 ($6)',
 	'abusefilter-revert-search' => 'Maatregelen selecteren',
 	'abusefilter-revert-filter' => 'Filter:',
 	'abusefilter-revert-preview-intro' => 'Hieronder staan de maatregelen die het filter heeft genomen die door deze handeling worden teruggedraaid.
-Controleer de terug te draaien maatregelen zorgvuldig, en klik "Bevestigen" om uw selectie te bevestigen.', # Fuzzy
+Controleer de terug te draaien maatregelen zorgvuldig, en klik "{{int:abusefilter-revert-confirm}}" om uw selectie te bevestigen.',
 	'abusefilter-revert-confirm' => 'Bevestigen',
 	'abusefilter-revert-success' => 'U hebt alle maatregelen die door het filter via [[Special:AbuseFilter/$1|filter $1]] zijn genomen teruggedraaid.',
 	'abusefilter-revert-reason' => 'Automatisch terugdraaien van alle maatregelen door de midbruikfilter via filter $1. Reden: $2',
 	'abusefilter-revert-reasonfield' => 'Reden:',
 	'abusefilter-test' => 'Filter tegen eerdere bewerkingen testen',
 	'abusefilter-test-intro' => 'Op deze pagina kunt u een opgegeven filter controleren met de laatste {{PLURAL:$1|wijzing|$1 wijzingen}}.
-Geef een filternummer in om een bestaand filter te laden en klik daarna op de knop "Laden".', # Fuzzy
+Geef een filternummer in om een bestaand filter te laden en klik daarna op de knop "{{int:abusefilter-test-load}}".',
 	'abusefilter-test-legend' => 'Filter testen',
 	'abusefilter-test-load-filter' => 'Filternummer laden:',
 	'abusefilter-test-submit' => 'Testen',
@@ -28317,7 +28317,7 @@ Geef een filternummer in om een bestaand filter te laden en klik daarna op de kn
 	'abusefilter-test-page' => 'Wijzigingen aan pagina:',
 	'abusefilter-test-shownegative' => 'Wijzigingen weergeven die niet aan het filter voldoen',
 	'abusefilter-test-syntaxerr' => 'Het filter dat u hebt ingevoerd bevat een syntaxisfout.
-Door op "Syntaxis controleren" te klikken krijgt u een volledige toelichting.', # Fuzzy
+Door op "{{int:abusefilter-edit-check}}" te klikken krijgt u een volledige toelichting.',
 	'abusefilter-changeslist-examine' => 'onderzoeken',
 	'abusefilter-examine' => 'Individuele wijzigingen onderzoeken',
 	'abusefilter-examine-intro' => 'Via deze pagina kunt u de door het filter aangemaakte variabelen voor een individuele wijziging onderzoeken, en deze testen tegen filters.',
@@ -40744,7 +40744,7 @@ $messages['uk'] = array(
 	'abusefilter-reautoconfirm-notallowed' => 'Вам не дозволено відновлювати статус автопідтвердження.',
 	'abusefilter-reautoconfirm-done' => 'Відновлений статус автопідтвердження облікового запису',
 	'abusefilter-status' => 'Серед $1 {{PLURAL:$1|дії|дій}}, $2 ($3%) {{PLURAL:$2|досягла|досягли}} межі $4. $5 ($6%) {{PLURAL:$5|активізувала|активізували}} один з увімкнених фільтрів.',
-	'abusefilter-edit' => 'Редагування фільтру зловживань',
+	'abusefilter-edit' => 'Зміна фільтру редагувань',
 	'abusefilter-edit-subtitle' => 'Редагування фільтру $1',
 	'abusefilter-edit-subtitle-new' => 'Створення фільтру',
 	'abusefilter-edit-oldwarning' => '<strong>Ви редагуєте стару версію цього фільтра. Статистика наведена для найновішої версії фільтра. Якщо ви збережете свої зміни, ви перезапишете усі редагування починаючи з версії, яку ви редагуєте.</strong> &bull; [[Special:AbuseFilter/history/$2|Повернутися до історії цього фільтру]]',
@@ -41002,14 +41002,14 @@ $messages['uk'] = array(
 	'abusefilter-examine-notfound' => 'Вказану вами зміну не знайдено.',
 	'abusefilter-examine-incompatible' => 'Фільтр редагувань не підтримує вказану вами зміну',
 	'abusefilter-examine-noresults' => 'Нічого не знайдено за запитом із заданими параметрами.',
-	'abusefilter-topnav' => "'''Навігація по Фільтру зловживань'''",
+	'abusefilter-topnav' => "'''Навігація по Фільтру редагувань'''",
 	'abusefilter-topnav-home' => 'Список',
 	'abusefilter-topnav-test' => 'Пакетна перевірка',
 	'abusefilter-topnav-examine' => 'Перевірка останніх редагувань',
 	'abusefilter-topnav-log' => 'Журнал зловживань',
 	'abusefilter-topnav-tools' => 'Засоби зневадження',
 	'abusefilter-topnav-import' => 'Імпорт фільтру',
-	'abusefilter-log-name' => 'Журнал фільтру зловживань',
+	'abusefilter-log-name' => 'Журнал фільтру редагувань',
 	'abusefilter-log-header' => 'У цей журнал записуються описи змін, зроблених у фільтрах.
 Подробиці можна знайти в [[Special:AbuseFilter/history|списку]] останніх змін фільтрів.',
 	'abusefilter-log-entry-modify' => 'змінив $1 ($2)',

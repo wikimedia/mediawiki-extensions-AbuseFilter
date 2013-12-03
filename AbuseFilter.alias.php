@@ -431,7 +431,7 @@ $specialPageAliases['tr'] = array(
 /** Ukrainian (українська) */
 $specialPageAliases['uk'] = array(
 	'AbuseLog' => array( 'Журнал_зловживань' ),
-	'AbuseFilter' => array( 'Фільтр_зловживань' ),
+	'AbuseFilter' => array( 'Фільтр_редагувань', 'Фільтр_зловживань' ),
 );
 
 /** Urdu (اردو) */
