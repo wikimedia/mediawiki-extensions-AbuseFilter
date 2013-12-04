@@ -31697,6 +31697,7 @@ Copie da caixa de texto que aparece, coloque nesta caixa de texto e depois cliqu
 );
 
 /** Brazilian Portuguese (português do Brasil)
+ * @author Cainamarques
  * @author Fúlvio
  * @author Giro720
  * @author Hamilton Abreu
@@ -31904,10 +31905,10 @@ O filtro atingiu o limite de correspondência com mais de $1% de ações.",
 	'abusefilter-edit-warn-preview' => 'Prever mensagem selecionada',
 	'abusefilter-edit-warn-edit' => 'Criar/Editar mensagem selecionada',
 	'abusefilter-edit-tag-tag' => 'Etiquetas a aplicar (uma por linha):',
-	'abusefilter-edit-denied' => 'Você não pode ver detalhes deste filtro, porque ele está ocultado da visualização pública', # Fuzzy
+	'abusefilter-edit-denied' => 'Você não pode ver os detalhes deste filtro porque ele está ocultado da visualização pública.',
 	'abusefilter-edit-main' => 'Parâmetros do filtro',
 	'abusefilter-edit-done-subtitle' => 'Filtro editado',
-	'abusefilter-edit-done' => 'Você salvou com sucesso as suas alterações no filtro $1.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Suas alterações]] ao [[Special:AbuseFilter/$1|filtro $1]] foram salvas.',
 	'abusefilter-edit-badsyntax' => 'Há um erro de sintaxe no filtro que especificou.
 O resultado de saída do analisador foi: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Você não pode editar este filtro, porque ele contém uma ou mais ações restritas.
@@ -32077,7 +32078,7 @@ Ações a reverter: $5 ($6)',
 	'abusefilter-revert-search' => 'Selecionar ações',
 	'abusefilter-revert-filter' => 'Filtro:',
 	'abusefilter-revert-preview-intro' => 'Abaixo estão as alterações feitas pelo filtro de abusos que serão revertidas por esta operação.
-Por favor, verifique-as cuidadosamente e clique "confirmar" para confirmar a sua seleção.',
+Por favor, verifique-as cuidadosamente e clique "confirmar" para confirmar a sua seleção.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Confirmar',
 	'abusefilter-revert-success' => 'Reverteu todas as alterações feitas pelo filtro de abusos devido ao [[Special:AbuseFilter/$1|filtro $1]].',
 	'abusefilter-revert-reason' => 'Reversão automática de todas as alterações feitas pelo filtro de abusos devido ao filtro $1.
@@ -32085,7 +32086,7 @@ Motivo dado: $2',
 	'abusefilter-revert-reasonfield' => 'Motivo:',
 	'abusefilter-test' => 'Testar um filtro nas edições anteriores',
 	'abusefilter-test-intro' => 'Esta página permite-lhe verificar o filtro introduzido na caixa abaixo {{PLURAL:$1|na última alteração|nas últimas $1 alterações}}.
-Para carregar um filtro existente, insira o ID do filtro na caixa abaixo da caixa de edição, e clique o botão "Carregar".',
+Para carregar um filtro existente, insira o ID do filtro na caixa abaixo da caixa de edição, e clique o botão "Carregar".', # Fuzzy
 	'abusefilter-test-legend' => 'Teste de filtro',
 	'abusefilter-test-load-filter' => 'Carregar filtro com ID:',
 	'abusefilter-test-submit' => 'Testar',
@@ -32096,7 +32097,7 @@ Para carregar um filtro existente, insira o ID do filtro na caixa abaixo da caix
 	'abusefilter-test-page' => 'Alterações à página:',
 	'abusefilter-test-shownegative' => 'Mostrar alterações que não correspondam ao filtro',
 	'abusefilter-test-syntaxerr' => 'O filtro que introduziu continha um erro de sintaxe.
-Para ver uma explicação completa clique o botão "Verificar sintaxe".',
+Para ver uma explicação completa clique o botão "Verificar sintaxe".', # Fuzzy
 	'abusefilter-changeslist-examine' => 'examinar',
 	'abusefilter-examine' => 'Examinar alterações individuais',
 	'abusefilter-examine-intro' => 'Esta página permite-lhe examinar as variáveis geradas pelo Filtro de Abusos para uma alteração individual, e testá-la com os filtros.',
