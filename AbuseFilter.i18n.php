@@ -2024,7 +2024,7 @@ $messages['ar'] = array(
 	'abusefilter-revert-search' => 'اختر الأفعال',
 	'abusefilter-revert-filter' => 'مرشح:',
 	'abusefilter-revert-preview-intro' => 'بالأسفل الأفعال المتخذة بواسطة مرشح الإساءة والتي سيتم استرجاعها بواسطة هذا الفعل.
-من فضلك تحقق منها بحرص، واضغط "تأكيد" لتأكيد اختيارك.',
+من فضلك تحقق منها بحرص، واضغط "تأكيد" لتأكيد اختيارك.', # Fuzzy
 	'abusefilter-revert-confirm' => 'تأكيد',
 	'abusefilter-revert-success' => 'لقد قمت باسترجاع كامل التعديلات التي قام بها مرشح الإساءة وفقا [[Special:AbuseFilter/$1|للمرشح $1]].',
 	'abusefilter-revert-reason' => 'استرجاع تلقائي لكل الأفعال المتخذة بواسطة مرشح الإساءة بسبب المرشح $1.
@@ -2032,7 +2032,7 @@ $messages['ar'] = array(
 	'abusefilter-revert-reasonfield' => 'السبب:',
 	'abusefilter-test' => 'اختبار المرشح على تعديلات سابقة',
 	'abusefilter-test-intro' => 'هذه الصفحة تسمح لك بالتحقق من مرشح مدخل في الصندوق بالأسفل ضد آخر $1 {{PLURAL:$1|تغيير|تغيير}}.
-لتحميل مرشح موجود، اكتب رقم المرشح الخاص به في الصندوق بأسفل صندوق نص التعديل، واضغط زر "تحميل".',
+لتحميل مرشح موجود، اكتب رقم المرشح الخاص به في الصندوق بأسفل صندوق نص التعديل، واضغط زر "تحميل".', # Fuzzy
 	'abusefilter-test-legend' => 'اختبار المرشح',
 	'abusefilter-test-load-filter' => 'تحميل رمز تعريف المرشح:',
 	'abusefilter-test-submit' => 'اختبار',
@@ -2043,7 +2043,7 @@ $messages['ar'] = array(
 	'abusefilter-test-page' => 'التغييرات التي أجريت على الصفحة:',
 	'abusefilter-test-shownegative' => 'اعرض التغييرات التي لا تطابق المرشح',
 	'abusefilter-test-syntaxerr' => 'المرشح الذي أدخلته يحتوي على خطأ صياغة.
-يمكنك تلقي تفسير كامل بواسطة الضغط على زر "التحقق من الصياغة".',
+يمكنك تلقي تفسير كامل بواسطة الضغط على زر "التحقق من الصياغة".', # Fuzzy
 	'abusefilter-changeslist-examine' => 'افحص',
 	'abusefilter-examine' => 'افحص التغييرات الفردية',
 	'abusefilter-examine-intro' => 'هذه الصفحة تسمح لك بفحص المتغيرات المولدة بواسطة مرشح الإساءة لتغيير فردي، واختبارها ضد المرشحات.',
@@ -3118,7 +3118,7 @@ Por favor tenga procuru al usar esta ferramienta.",
 	'abusefilter-revert-search' => 'Seleicionar aiciones',
 	'abusefilter-revert-filter' => 'Filtru:',
 	'abusefilter-revert-preview-intro' => 'Más abaxo tan les aiciones feches pola peñera d\'abusos que se tornarán con esta aición.
-Por favor, compruebelas con procuru y calque "Confirmar" pa confirmar la seleición.',
+Por favor, compruebelas con procuru y calque "Confirmar" pa confirmar la seleición.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Confirmar',
 	'abusefilter-revert-success' => "Tornó toles aiciones feches pola peñera d'abusos causaes pol [[Special:AbuseFilter/$1|filtru $1]].",
 	'abusefilter-revert-reason' => "Torna automática de toles aiciones feches pola peñera d'abusos debíes al filtru $1.
@@ -3126,7 +3126,7 @@ Motivu dau: $2",
 	'abusefilter-revert-reasonfield' => 'Motivu:',
 	'abusefilter-test' => 'Probar un filtru coles ediciones anteriores',
 	'abusefilter-test-intro' => 'Esta páxina permite probar el filtru escritu nel cuadru d\'abaxo {{PLURAL:$1|col últimu cambiu|colos últimos $1 cambios}}.
-Pa cargar un filtru esistente, escriba la ID del filtru nel cuadru que ta abaxo del cuadru d\'edición de testu, y calque nel botón "Cargar".',
+Pa cargar un filtru esistente, escriba la ID del filtru nel cuadru que ta abaxo del cuadru d\'edición de testu, y calque nel botón "Cargar".', # Fuzzy
 	'abusefilter-test-legend' => 'Prueba de filtru',
 	'abusefilter-test-load-filter' => 'Cargar el filtru con ID:',
 	'abusefilter-test-submit' => 'Probar',
@@ -3137,7 +3137,7 @@ Pa cargar un filtru esistente, escriba la ID del filtru nel cuadru que ta abaxo 
 	'abusefilter-test-page' => 'Cambios fechos na páxina:',
 	'abusefilter-test-shownegative' => 'Ver los cambios que nun casen col filtru',
 	'abusefilter-test-syntaxerr' => 'El filtru qu\'escribió contenía un error de sintaxis.
-Pue recibir una esplicación completa calcando nel botón "Comprobar la sintaxis".',
+Pue recibir una esplicación completa calcando nel botón "Comprobar la sintaxis".', # Fuzzy
 	'abusefilter-changeslist-examine' => 'esaminar',
 	'abusefilter-examine' => 'Esaminar los cambios individuales',
 	'abusefilter-examine-intro' => "Esta páxina permite-y esaminar les variables xeneraes pola Peñera d'abusos pa un cambiu individual, y probalu escontra los filtros.",
@@ -3794,7 +3794,7 @@ $ 3 {{پلورال: $ 3 | دییشن | دییشن}} گؤزلنیلیردی، $ 4
 	'abusefilter-revert-search' => 'فالیت‌لرین سئچیلمه‌سی',
 	'abusefilter-revert-filter' => 'سۆزگَج:',
 	'abusefilter-revert-preview-intro' => 'آشاغی‌داکی‌لار، سوی-ایستیفاده فیلتری طرفین‌دن آلینان و بو حرکتله گئری آلینا‌جاق تدبیرلردیر.
-خاهیش ائدیریک دقتله نظارت ائدین، و سئچیمینیزی تسدیق ائتمک اوچون "تصدیق" یا باسین.',
+خاهیش ائدیریک دقتله نظارت ائدین، و سئچیمینیزی تسدیق ائتمک اوچون "تصدیق" یا باسین.', # Fuzzy
 	'abusefilter-revert-confirm' => 'تصدیق ائت',
 	'abusefilter-revert-success' => '[[Special: AbuseFilter / $1 | $1 filtrindən]] اؤتری سوی-فیلتری طرفین‌دن آلینان بوتون حرکت‌لری گئری آلدینیز.', # Fuzzy
 	'abusefilter-revert-reason' => '$1 فیلترین‌دن گؤره سوی-ایستیفاده فیلتری طرفین‌دن آلینان بوتون حرکت‌لرین آوتوماتیک گئری آلیشی.
@@ -3802,7 +3802,7 @@ $ 3 {{پلورال: $ 3 | دییشن | دییشن}} گؤزلنیلیردی، $ 4
 	'abusefilter-revert-reasonfield' => 'قیترمه سببی:',
 	'abusefilter-test' => 'اوولکی دییشیک‌لیک‌لر اوچون بیر سوزگجی دئنئ',
 	'abusefilter-test-intro' => 'بو صحیفه، آشاغی‌داکی قوتویا گیریلن بیر فیلتری سون $ 1 {{PLURAL:$1 | دییشیک‌لییه | دییشیک‌لییه}} قارشی ایداره ائتمه‌نیزه ایجازه وئرر.
-مؤوجود بیر فیلتری یوکلمک اوچون، فیلتر ایدسینی دییشیک‌لیک متن قوتوسونون آلتین‌داکی قوتویا داخیل ائدین، و "یوکلئ" دویمه‌سینی باسین.',
+مؤوجود بیر فیلتری یوکلمک اوچون، فیلتر ایدسینی دییشیک‌لیک متن قوتوسونون آلتین‌داکی قوتویا داخیل ائدین، و "یوکلئ" دویمه‌سینی باسین.', # Fuzzy
 	'abusefilter-test-legend' => 'فیلترین تستی',
 	'abusefilter-test-load-filter' => 'اید-سی بو اولان سوزگجی یوکله:',
 	'abusefilter-test-submit' => 'سیناق',
@@ -3813,7 +3813,7 @@ $ 3 {{پلورال: $ 3 | دییشن | دییشن}} گؤزلنیلیردی، $ 4
 	'abusefilter-test-page' => 'دییشیک‌لیک‌لر بو صحیفه‌ده ائدیلیب:',
 	'abusefilter-test-shownegative' => 'سوزگئچلئ ائشلئشمئیئن دئییشیک لیک لری گؤستئر',
 	'abusefilter-test-syntaxerr' => 'داخیل فیلتر سؤز سهوی ایچردی.
-"سؤزدیزیمینی ایداره ائت" دویمه‌سینه باسا‌راق تام بیر شرح آلا بیلرسینیز.',
+"سؤزدیزیمینی ایداره ائت" دویمه‌سینه باسا‌راق تام بیر شرح آلا بیلرسینیز.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'اینجئلئ',
 	'abusefilter-examine' => 'فردی دییشیک‌لیک‌لری آراش‌دیر',
 	'abusefilter-examine-intro' => 'بو صحیفه، سویستیمال فیلتری طرفین‌دن خصوصی بیر دییشیک‌لیک اوچون یارادیلان دییشن‌لری آراشدیرمانیزی، و فیلتردن قارشی تئست ائتمه‌نیزه ایجازه وئرر.',
@@ -4225,7 +4225,7 @@ $3 {{PLURAL:$3|аргумент}} көтөлә, $4 бирелгән.',
 	'abusefilter-revert-search' => 'Ғәмәлдәрҙе һайларға',
 	'abusefilter-revert-filter' => 'Һөҙгөс:',
 	'abusefilter-revert-preview-intro' => 'Түбәндә урынһыҙ файҙаланыуҙар һөҙгөсөнөң был ғәмәл тарафынан кире алынасаҡ ғәмәлдәре килтерелгән.
-Зинһар, уны иғтибар менән тикшерегеҙ һәм һайлауығыҙҙы раҫлау өсөн "Раҫларға" төймәһенә баҫығыҙ.',
+Зинһар, уны иғтибар менән тикшерегеҙ һәм һайлауығыҙҙы раҫлау өсөн "Раҫларға" төймәһенә баҫығыҙ.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Раҫларға',
 	'abusefilter-revert-success' => 'Һеҙ [[Special:AbuseFilter/$1| $1 урынһыҙ файҙаланыуҙар һөҙгөсө]] тарафынан башҡарылған бөтә ғәмәлдәрҙе кире алдығыҙ.',
 	'abusefilter-revert-reason' => '$1 урынһыҙ файҙаланыуҙар һөҙгөсө  тарафынан башҡарылған бөтә ғәмәлдәрҙе автоматик рәүештә кире алыу.
@@ -4233,7 +4233,7 @@ $3 {{PLURAL:$3|аргумент}} көтөлә, $4 бирелгән.',
 	'abusefilter-revert-reasonfield' => 'Сәбәп:',
 	'abusefilter-test' => 'Һөҙгөстө керетелгән үҙгәртеүҙәрҙә тикшерергә',
 	'abusefilter-test-intro' => 'Был бит һеҙгә түбәндәге юлға керетелгән һөҙгөстө һуңғы $1 {{PLURAL:$1|үҙгәртеүҙә}} тикшерергә мөмкинлек бирә.
-Кәрәкле һөҙгөстө сығарыу өсөн, уның идентификаторын мөхәррирләү юлы аҫтындағы юлға керетегеҙ һәм "Сығарырға" төймәһенә баҫығыҙ.',
+Кәрәкле һөҙгөстө сығарыу өсөн, уның идентификаторын мөхәррирләү юлы аҫтындағы юлға керетегеҙ һәм "Сығарырға" төймәһенә баҫығыҙ.', # Fuzzy
 	'abusefilter-test-legend' => 'Һөҙгөстө  тикшереү',
 	'abusefilter-test-load-filter' => 'Сығарыла торған һөҙгөстөң идентификаторы:',
 	'abusefilter-test-submit' => 'Тикшерергә',
@@ -4244,7 +4244,7 @@ $3 {{PLURAL:$3|аргумент}} көтөлә, $4 бирелгән.',
 	'abusefilter-test-page' => 'Үҙгәрештәр керетелгән бит:',
 	'abusefilter-test-shownegative' => 'Һөҙгөскә эләкмәгән үҙгәртеүҙәрҙе күрһәтергә',
 	'abusefilter-test-syntaxerr' => 'Беҙ кереткән һөҙгөстә синтаксик хата бар.
-Һеҙ "Синтаксисты тикшерергә" төймәһенә баҫып, ентекле аңлатма ала алаһығыҙ.',
+Һеҙ "Синтаксисты тикшерергә" төймәһенә баҫып, ентекле аңлатма ала алаһығыҙ.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'ҡарап сығырға',
 	'abusefilter-examine' => 'Айырым үҙгәртеүҙәрҙе ҡарап сығыу',
 	'abusefilter-examine-intro' => 'Был бит урынһыҙ файҙаланыуҙар һөҙгөсө тарафынан айырым үҙгәртеү өсөн булдырылған уҙгәреүсән дәүмәлдәрҙе ҡарап сығырға һәм уларҙы Һөҙгөстәрҙә тикшерергә мөмкинлек бирә.',
@@ -4676,7 +4676,7 @@ An aksyon mapupuwedeng balikon: $5($6)',
 	'abusefilter-revert-search' => 'Pilion na mga aksyon',
 	'abusefilter-revert-filter' => 'Saraan:',
 	'abusefilter-revert-preview-intro' => 'Yaon sa ibaba an mga aksyon na ginibo kan saraan nin abuso na ipagbabalik sa paagi kaining aksyon.
-Pakirikisaha sindang maigot, asin i-klik an "kumpirma" sa pagkumpirma kan saimong pinili.',
+Pakirikisaha sindang maigot, asin i-klik an "kumpirma" sa pagkumpirma kan saimong pinili.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Kumpirma',
 	'abusefilter-revert-success' => 'Saimong pinagbalik an gabos na mga aksyong ginibo sa paagi kan saraan nin abuso nin huli sa [[Special:AbuseFilter/$1|saraan $1]].',
 	'abusefilter-revert-reason' => 'Automatikong balikon an gabos na mga aksyon na ginibo sa paagi kan saraan nin abuso nin huli sa saraan $1.
@@ -4684,7 +4684,7 @@ Rason na itinao:$2',
 	'abusefilter-revert-reasonfield' => 'Rason:',
 	'abusefilter-test' => 'Testingon an sarong saraan kontra sa dating mga pagliwat',
 	'abusefilter-test-intro' => 'Ining pahina minatugot saimo na rikisahon an sarong saraan na pinag-entra sa laog kan kahon sa ibaba kontra sa huring $1{{PLURAL:$1|kaliwatan|mga kaliwatan}}.
-Sa pagkarga kan eksistidong saraan, tipaho an ID kan saraan sa laog kan kahon na yaon sa ibaba kan pagliwat kan tekstong kahon, asin i-klik and "karga" na pindutan.',
+Sa pagkarga kan eksistidong saraan, tipaho an ID kan saraan sa laog kan kahon na yaon sa ibaba kan pagliwat kan tekstong kahon, asin i-klik and "karga" na pindutan.', # Fuzzy
 	'abusefilter-test-legend' => 'Pagprubar nin saraan',
 	'abusefilter-test-load-filter' => 'Ikarga an ID nin saraan:',
 	'abusefilter-test-submit' => 'Prubaran',
@@ -4695,7 +4695,7 @@ Sa pagkarga kan eksistidong saraan, tipaho an ID kan saraan sa laog kan kahon na
 	'abusefilter-test-page' => 'Mga kaliwatan na pinaghimo sa pahina:',
 	'abusefilter-test-shownegative' => 'Ipahiling an mga kaliwatan na dae minaampad sa saraan',
 	'abusefilter-test-syntaxerr' => 'An saraan na saimong pinag-entra pinaglamanan nin sarong sintaks na kasalaan.
-Ika makakaresibe nin sarong bilog na kapaliwanagan sa paagi nin pag-klik kan "Rikisahan an Sintaks" na pindutan.',
+Ika makakaresibe nin sarong bilog na kapaliwanagan sa paagi nin pag-klik kan "Rikisahan an Sintaks" na pindutan.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'eksaminon',
 	'abusefilter-examine' => 'Eksaminon an indibidwal na mga kaliwatan',
 	'abusefilter-examine-intro' => 'Ining pahina minatugot saimo na eksaminon an mga kapilyangan na pinagpuyos sa paagi kan Saraan nin Abuso para sa indibidwal na kaliwatan, asin prubaran ini kontra sa mga saraan.',
@@ -5133,7 +5133,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-revert-search' => 'Выбар дзеяньняў',
 	'abusefilter-revert-filter' => 'Фільтар:',
 	'abusefilter-revert-preview-intro' => 'Ніжэй знаходзяцца дзеяньні, выкананыя фільтрам злоўжываньняў, якія будуць адкачаныя.
-Калі ласка, праверце іх уважліва і націсьніце «пацьвердзіць», каб пацьвердзіць Вашае дзеяньне.',
+Калі ласка, праверце іх уважліва і націсьніце «пацьвердзіць», каб пацьвердзіць Вашае дзеяньне.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Пацьвердзіць',
 	'abusefilter-revert-success' => 'Вы адкацілі ўсе дзеяньні, выкананыя фільтрам злоўжываньняў [[Special:AbuseFilter/$1|filter $1]].',
 	'abusefilter-revert-reason' => 'Аўтаматычны адкат усіх дзеяньняў, выкананых фільтрам злоўжываньняў $1.
@@ -5141,7 +5141,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-revert-reasonfield' => 'Прычына:',
 	'abusefilter-test' => 'Праверыць фільтар на ўжо зробленых рэдагаваньнях',
 	'abusefilter-test-intro' => 'Гэта старонка дазваляе Вам праверыць фільтар пададзены ў полі ніжэй на $1 {{PLURAL:$1|апошняй зьмене|апошніх зьменах|апошніх зьменах}}.
-Каб загрузіць існуючы фільтар, увядзіце яго ідэнтыфікатар у поле, якое знаходзіцца ніжэй тэкставага поля і націсьніце кнопку «Загрузіць».',
+Каб загрузіць існуючы фільтар, увядзіце яго ідэнтыфікатар у поле, якое знаходзіцца ніжэй тэкставага поля і націсьніце кнопку «Загрузіць».', # Fuzzy
 	'abusefilter-test-legend' => 'Праверка фільтру',
 	'abusefilter-test-load-filter' => 'Загрузіць фільтар з ідэнтыфікатарам:',
 	'abusefilter-test-submit' => 'Праверыць',
@@ -5152,7 +5152,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-test-page' => 'Зьмены, зробленыя на старонцы:',
 	'abusefilter-test-shownegative' => 'Паказаць зьмены, якія не супадаюць зь фільтрам',
 	'abusefilter-test-syntaxerr' => 'Фільтар, які Вы ўвялі, утрымлівае сынтаксычную памылку.
-Вы можаце атрымаць поўнае тлумачэньне, калі націсьніце на кнопку «Праверыць сынтаксіс».',
+Вы можаце атрымаць поўнае тлумачэньне, калі націсьніце на кнопку «Праверыць сынтаксіс».', # Fuzzy
 	'abusefilter-changeslist-examine' => 'праверыць',
 	'abusefilter-examine' => 'Праверыць індывідуальныя зьмены',
 	'abusefilter-examine-intro' => 'Гэтая старонка дазваляе Вам праверыць зьменныя, створаныя фільтрам злоўжываньняў для індывідуальных зьменаў, і праверыць іх на фільтрах.',
@@ -5535,7 +5535,7 @@ $messages['bg'] = array(
 	'abusefilter-revert-search' => 'Избор на действия',
 	'abusefilter-revert-filter' => 'Филтър:',
 	'abusefilter-revert-preview-intro' => 'По-долу е даден списък от действията, предприети от филтъра срещу злоупотреби, които ще бъдат върнати с това действие.
-Моля, внимателно ги проверете, и щракнете бутона, за да потвърдите избора си.',
+Моля, внимателно ги проверете, и щракнете бутона, за да потвърдите избора си.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Потвърждаване',
 	'abusefilter-revert-success' => 'Вие върнахте всички действия, предприети от филтъра срещу злоупотреби, поради [[Special:AbuseFilter/$1|филтър $1]].',
 	'abusefilter-revert-reason' => 'Автоматична отмяна на всички действия, извършени от филтъра срещу злоупотребите, по причина филтър $1.
@@ -5543,7 +5543,7 @@ $messages['bg'] = array(
 	'abusefilter-revert-reasonfield' => 'Причина за отмяната:', # Fuzzy
 	'abusefilter-test' => 'Тестване на филтъра по отношение на предишни редакции',
 	'abusefilter-test-intro' => 'Тази страница позволява да се провери филтър, въведен в долната кутия относно {{PLURAL:$1|последната|последните}} $1 {{PLURAL:$1|промяна|промени}}.
-За да заредите съществуващ филтър, въведете идентификатора му в кутията под текстовата кутия за редактиране и щракнете на бутона "Зареждане".',
+За да заредите съществуващ филтър, въведете идентификатора му в кутията под текстовата кутия за редактиране и щракнете на бутона "Зареждане".', # Fuzzy
 	'abusefilter-test-legend' => 'Изпробване на филтъра',
 	'abusefilter-test-load-filter' => 'Зареждане на филтър с ID:',
 	'abusefilter-test-submit' => 'Изпробване',
@@ -5554,7 +5554,7 @@ $messages['bg'] = array(
 	'abusefilter-test-page' => 'Промени по страницата:',
 	'abusefilter-test-shownegative' => 'Показване на промените, които не съвпадат с филтъра',
 	'abusefilter-test-syntaxerr' => 'Въведеният филтър съдържа синтактична грешка.
-Пълно обяснение за грешката е достъпно при щракване на бутона "Проверка на синтаксиса".',
+Пълно обяснение за грешката е достъпно при щракване на бутона "Проверка на синтаксиса".', # Fuzzy
 	'abusefilter-changeslist-examine' => 'изследване',
 	'abusefilter-examine' => 'Проверка на отделните промени',
 	'abusefilter-examine-intro' => 'Тази страница дава възможност да се изследват променливите, генерирани от Филтъра срещу злоупотреби за дадена отделна редакция, и тя да бъде тествана по отношение на филтрите.',
@@ -6226,7 +6226,7 @@ Oberezhioù da adlakaat : $5 ($6)',
 	'abusefilter-revert-search' => 'Dibab an obererezhioù',
 	'abusefilter-revert-filter' => 'Sil :',
 	'abusefilter-revert-preview-intro' => 'Sed aze an oberoù graet gant ar sil gwallimplij hag a vo diskaret gant an ober-mañ.
-Trugarez da wiriañ anezho gant aked, ha klikit war "kadarnaat" evit kadarnaat ho tibaboù.',
+Trugarez da wiriañ anezho gant aked, ha klikit war "kadarnaat" evit kadarnaat ho tibaboù.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Kadarnaat',
 	'abusefilter-revert-success' => "Diskaret ho peus pep ober graet gant ar sil gwallimplij abalamour d'ar [[Special:AbuseFilter/$1|sil $1]].",
 	'abusefilter-revert-reason' => "Disteurel en un doare emgefreek pep ober graet gant ar sil gwallimplij abalamour d'ar sil $1.
@@ -6234,7 +6234,7 @@ Abeg roet : $2",
 	'abusefilter-revert-reasonfield' => 'Abeg :',
 	'abusefilter-test' => "Amprouiñ ur sil war ar c'hemmoù kozh",
 	'abusefilter-test-intro' => 'Gant ar bajenn-mañ e c\'helloc\'h gwiriañ an/ar $1 {{PLURAL:$1|c\'hemm|c\'hemm}} ziwezhañ eno ur sil roet en takad testenn amañ dindan.
-Evit kargañ ur sil, roit e anv en hedad dindan an takad testenn, ha klikit war ar bouton "Kargañ".',
+Evit kargañ ur sil, roit e anv en hedad dindan an takad testenn, ha klikit war ar bouton "Kargañ".', # Fuzzy
 	'abusefilter-test-legend' => 'Amprouadenn sil',
 	'abusefilter-test-load-filter' => 'Kargañ ar sil niverenn :',
 	'abusefilter-test-submit' => 'Amprouiñ',
@@ -6245,7 +6245,7 @@ Evit kargañ ur sil, roit e anv en hedad dindan an takad testenn, ha klikit war 
 	'abusefilter-test-page' => 'Kemmoù graet war ar bajenn :',
 	'abusefilter-test-shownegative' => "Diskouez ar c'hemmoù ha n'int ket kemeret e kont gant ar sil",
 	'abusefilter-test-syntaxerr' => 'Ar sil ho peus roet a zo ennañ ur fazi ereadurezh.
-Gallout a rit resev un displegadenn glok dre glikañ war ar bouton "Gwiriañ an ereadur".',
+Gallout a rit resev un displegadenn glok dre glikañ war ar bouton "Gwiriañ an ereadur".', # Fuzzy
 	'abusefilter-changeslist-examine' => 'arsellet',
 	'abusefilter-examine' => "Studiañ ar c'hemmoù hiniennel",
 	'abusefilter-examine-intro' => "Gant ar bajenn-mañ e c'heller ensellout an argemmennoù krouet gant ar sil gwallimplij evit ar c'hemmoù hinnienel, hag arnodiñ anezho gant ar siloù.",
@@ -6629,14 +6629,14 @@ Molimo Vas da dobro pazite pri korištenju ovoj alata.',
 	'abusefilter-revert-search' => 'Odaberi akcije',
 	'abusefilter-revert-filter' => 'Filter:',
 	'abusefilter-revert-preview-intro' => 'Ispod su prikazane akcije koje je poduzeo filter zloupotreba koje će se vratiti putem ove akcije.
-Molimo da ih pažljivo provjerite, te kliknete "potvrdi" da potvrdite Vaš odabir.',
+Molimo da ih pažljivo provjerite, te kliknete "potvrdi" da potvrdite Vaš odabir.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Potvrdi',
 	'abusefilter-revert-success' => 'Vratili ste sve akcije koje je poduzeo filter zloupotreba zbog [[Special:AbuseFilter/$1|filtera $1]].',
 	'abusefilter-revert-reason' => 'Automatskp vraćanje svih akcija koje je načinio filter zloupotreba zbog filtera $1.
 Navedeni razlog: $2',
 	'abusefilter-revert-reasonfield' => 'Razlog za vraćanje:', # Fuzzy
 	'abusefilter-test' => 'Testiraj filter protiv ranijih izmjena',
-	'abusefilter-test-intro' => 'Ova stranica Vam omogućuje da provjerite filter koji je unesen u kutiju ispod protiv {{PLURAL:$1|zadnje $1 izmjene|zadnje $1 izmjene|zadnjih $1 izmjena}}. Da napunite postojeći filter, unesite filter ID u kutiju ispod kutije za uređivanje i pritisnite dugme "Napuni".',
+	'abusefilter-test-intro' => 'Ova stranica Vam omogućuje da provjerite filter koji je unesen u kutiju ispod protiv {{PLURAL:$1|zadnje $1 izmjene|zadnje $1 izmjene|zadnjih $1 izmjena}}. Da napunite postojeći filter, unesite filter ID u kutiju ispod kutije za uređivanje i pritisnite dugme "Napuni".', # Fuzzy
 	'abusefilter-test-legend' => 'Testiranje filtera',
 	'abusefilter-test-load-filter' => 'Učitaj filter ID:',
 	'abusefilter-test-submit' => 'Testiraj',
@@ -6647,7 +6647,7 @@ Navedeni razlog: $2',
 	'abusefilter-test-page' => 'Izmjene napravljene na stranici:',
 	'abusefilter-test-shownegative' => 'Prikaži promjene koje ne odgovaraju filteru',
 	'abusefilter-test-syntaxerr' => 'Filter koji ste unijeli sadrži sintaksnu grešku.
-Možete dobiti potpuno objašnjenje klikanje na dugme "Provjeri sintaksu".',
+Možete dobiti potpuno objašnjenje klikanje na dugme "Provjeri sintaksu".', # Fuzzy
 	'abusefilter-changeslist-examine' => 'ispitaj',
 	'abusefilter-examine' => 'Ispitaj lične promjene',
 	'abusefilter-examine-intro' => 'Ova stranica Vam omogućuje da ispitate promjenjive koje je napravio filter zloupotreba za određeno uređivanje i da ih isprobate na filterima.',
@@ -7993,7 +7993,7 @@ Operace, které se mají vrátit: $5 ($6)',
 	'abusefilter-revert-search' => 'Vybrat operace',
 	'abusefilter-revert-filter' => 'Filtr:',
 	'abusefilter-revert-preview-intro' => 'Níže jsou uvedeny operace provedené filtrem zneužívání, které budou tímto vráceny.
-Pečlivě je zkontrolujte a kliknutím na „potvrdit“ můžete jejich vrácení schválit.',
+Pečlivě je zkontrolujte a kliknutím na „potvrdit“ můžete jejich vrácení schválit.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Potvrdit',
 	'abusefilter-revert-success' => '{{GRAMMAR:|Vrátil|Vrátila|Vrátili}} jste všechny operace, které filtr zneužití provedl na základě [[Special:AbuseFilter/$1|filtru $1]].',
 	'abusefilter-revert-reason' => 'Automatické vrácení všech operací, které filtr zneužití provedl kvůli filtru $1.
@@ -8001,7 +8001,7 @@ Uvedený důvod: $2',
 	'abusefilter-revert-reasonfield' => 'Důvod:',
 	'abusefilter-test' => 'Test filtru na posledních změnách',
 	'abusefilter-test-intro' => 'Na této stránce můžete otestovat filtr, který zadáte do editačního pole níže, na {{PLURAL:$1|poslední změně|posledních $1 změnách}}.
-Už existující filtr můžete použít tím, že jeho ID napíšete do rámečku pod editačním polem a kliknete na tlačítko „Načíst“.',
+Už existující filtr můžete použít tím, že jeho ID napíšete do rámečku pod editačním polem a kliknete na tlačítko „Načíst“.', # Fuzzy
 	'abusefilter-test-legend' => 'Test filtru',
 	'abusefilter-test-load-filter' => 'Načíst filtr s ID:',
 	'abusefilter-test-submit' => 'Otestovat',
@@ -8012,7 +8012,7 @@ Už existující filtr můžete použít tím, že jeho ID napíšete do rámeč
 	'abusefilter-test-page' => 'Změněná stránka:',
 	'abusefilter-test-shownegative' => 'Zobrazit i změny, které filtru nevyhovují',
 	'abusefilter-test-syntaxerr' => 'Zadaný filtr obsahuje syntaktickou chybu.
-Podrobnější vysvětlení můžete získat kliknutím na tlačítko „Zkontrolovat syntaxi“.',
+Podrobnější vysvětlení můžete získat kliknutím na tlačítko „Zkontrolovat syntaxi“.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'prozkoumat',
 	'abusefilter-examine' => 'Prozkoumat jednotlivé editace',
 	'abusefilter-examine-intro' => 'Na této stránce budete moci u zvolené editace prozkoumat proměnné, které pro ni Filtr zneužívání vygeneroval, a otestovat na ní filtry.',
@@ -8058,7 +8058,7 @@ Zkopírujte si text, který se objeví v rámečku, vložte ho do tohoto formul�
 	'abusefilter-group-default' => 'Výchozí',
 );
 
-/** Church Slavic (словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+/** Church Slavic (словѣньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
 $messages['cu'] = array(
@@ -9460,6 +9460,7 @@ gani etiketi kılm bıbi u tede karakterê xususi çinibi.',
 	'abusefilter-edit-builder-group-funcs' => 'Fonksiyonî',
 	'abusefilter-edit-builder-funcs-length' => 'Derganîyê stringî (dergî)',
 	'abusefilter-edit-builder-funcs-lcase' => 'Herfê qickekî (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'Herfa gırd (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Karektaran ke karberan şweş kenî înan normalize bike  (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Karektaranê herdi wedarne (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Karekteranê xasî / karekteranê hemî (specialratio)',
@@ -9503,6 +9504,7 @@ gani etiketi kılm bıbi u tede karakterê xususi çinibi.',
 	'abusefilter-edit-builder-vars-user-age' => 'Serre hesabê karberî',
 	'abusefilter-edit-builder-vars-user-name' => 'Nameyê hesab ê karberî',
 	'abusefilter-edit-builder-vars-user-groups' => 'Grupê  (including implicit) kerberî ho zerrî de',
+	'abusefilter-edit-builder-vars-user-blocked' => 'Blokeya kerberi esta çıniya',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Wextê ke adresê emaîlî konfirme biy',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Des karberê penî ser ena ripel de hebitiyê',
 	'abusefilter-edit-builder-vars-all-links' => 'Nuşteyê newe de linkanê hericiyan ê hemî',
@@ -9595,7 +9597,7 @@ Mevcut bir filtreyi yüklemek için, filtre IDsini değişiklik metin kutusunun 
 	'abusefilter-test-page' => 'Vurnayişan ser pelan:',
 	'abusefilter-test-shownegative' => 'Vurnayîşan ke filitre match nikena înan bimucne',
 	'abusefilter-test-syntaxerr' => 'Filitreyê tu de yew ğeletê syntaxî esto.
-Qe yew deskripsiyonê ğeletî, "Check Syntax" rê bitexne.', # Fuzzy
+Qe yew deskripsiyonê ğeletî, "{{int:abusefilter-edit-check}}" rê bitexne.',
 	'abusefilter-changeslist-examine' => 'kontrol bike',
 	'abusefilter-examine' => 'Vurnayişanê şexsî kontrol bike',
 	'abusefilter-examine-intro' => 'Ena pele ti ra yardim keno ke ti eşkeno variableyan kontrol bike u filitre test bike.',
@@ -13926,7 +13928,7 @@ Accions a rr : $5 ($6)',
 	'abusefilter-revert-search' => 'Chouèsir les accions',
 	'abusefilter-revert-filter' => 'Filtro :',
 	'abusefilter-revert-preview-intro' => 'Vê-que les accions rèalisâs per lo filtro d’abus, que seront rèvocâs per cela accion.
-Les volyéd controlar bien, et pués clicâd dessus « Confirmar » por validar voutron chouèx.',
+Les volyéd controlar bien, et pués clicâd dessus « Confirmar » por validar voutron chouèx.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Confirmar',
 	'abusefilter-revert-success' => 'Vos éd rèvocâ avouéc reusséta totes les accions entreprêses per lo filtro d’abus et dècllenchiês per lo [[Special:AbuseFilter/$1|filtro $1]].',
 	'abusefilter-revert-reason' => 'Rèvocacion ôtomatica de totes les accions entreprêses per lo filtro d’abus et dècllenchiês per lo filtro $1.
@@ -13934,7 +13936,7 @@ Rêson balyê : $2',
 	'abusefilter-revert-reasonfield' => 'Rêson :',
 	'abusefilter-test' => 'Èprovar un filtro sur los changements devant',
 	'abusefilter-test-intro' => 'Ceta pâge vos pèrmèt de controlar sur {{PLURAL:$1|lo dèrriér changement|los $1 dèrriérs changements}} un filtro buchiê dens la zona de tèxto ce-desot.
-Por chargiér un filtro ègzistent, buchiéd son numerô dens lo champ desot la zona de tèxto et pués clicâd sur lo boton « Chargiér ».',
+Por chargiér un filtro ègzistent, buchiéd son numerô dens lo champ desot la zona de tèxto et pués clicâd sur lo boton « Chargiér ».', # Fuzzy
 	'abusefilter-test-legend' => 'Èprôva de filtro',
 	'abusefilter-test-load-filter' => 'Chargiér lo filtro numerô :',
 	'abusefilter-test-submit' => 'Èprovar',
@@ -13945,7 +13947,7 @@ Por chargiér un filtro ègzistent, buchiéd son numerô dens lo champ desot la 
 	'abusefilter-test-page' => 'Changements aplicâs a la pâge :',
 	'abusefilter-test-shownegative' => 'Fâre vêre los changements pas prês en compto per lo filtro',
 	'abusefilter-test-syntaxerr' => 'Lo filtro que vos éd buchiê contint una èrror de sintaxa.
-Vos pouede recêvre una èxplicacion complèta en cliquent sur lo boton « Controlar la sintaxa ».',
+Vos pouede recêvre una èxplicacion complèta en cliquent sur lo boton « Controlar la sintaxa ».', # Fuzzy
 	'abusefilter-changeslist-examine' => 'ègzamenar',
 	'abusefilter-examine' => 'Ègzamenar des changements particuliérs',
 	'abusefilter-examine-intro' => 'Ceta pâge vos pèrmèt d’ègzamenar les variâbles fêtes por un changement particuliér per lo filtro d’abus et pués de les èprovar avouéc los filtros.',
@@ -14941,14 +14943,14 @@ Bitte bii sorgfältig, wänn Du des Wärchzyyg bruuchsch.',
 	'abusefilter-revert-search' => 'Wehl Aktione uus',
 	'abusefilter-revert-filter' => 'Filter:',
 	'abusefilter-revert-preview-intro' => 'Do unte sin d Aktion vum Missbruuchfilter, wu dur die Aktion zrugggsetzt wäre.
-Bitte prief si sorgfältig un druck "Bstätige" go Dyyni Uuswahl bstätige.',
+Bitte prief si sorgfältig un druck "Bstätige" go Dyyni Uuswahl bstätige.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Bstätige',
 	'abusefilter-revert-success' => 'Du hesch alli  Aktionen zrugggsetzt, wu vum Missbruuchsfilter mgacht wore sin wäg em [[Special:AbuseFilter/$1|Filter $1]].',
 	'abusefilter-revert-reason' => 'Alli Aktione vum Missbruuchsfilter automatisch zrugggsetzt wäg em Filter $1.
 Grund: $2',
 	'abusefilter-revert-reasonfield' => 'Grund:',
 	'abusefilter-test' => 'E Filter gege friejeri Bearbeitige teschte',
-	'abusefilter-test-intro' => 'Die Syte macht s megli mit eme Filter, wu unte im Chäschtli yygee isch, di {{PLURAL:$1|letscht Änderig|letschte $1 Änderige}} z priefe. Go ne Filter lade, wu s het, gib d Filter-ID vun em in s Chäschtli unten yy un druck uf "Lade".',
+	'abusefilter-test-intro' => 'Die Syte macht s megli mit eme Filter, wu unte im Chäschtli yygee isch, di {{PLURAL:$1|letscht Änderig|letschte $1 Änderige}} z priefe. Go ne Filter lade, wu s het, gib d Filter-ID vun em in s Chäschtli unten yy un druck uf "Lade".', # Fuzzy
 	'abusefilter-test-legend' => 'Filtertescht',
 	'abusefilter-test-load-filter' => 'Filter-ID lade:',
 	'abusefilter-test-submit' => 'Tescht',
@@ -14959,7 +14961,7 @@ Grund: $2',
 	'abusefilter-test-page' => 'Änderige an dr Syte:',
 	'abusefilter-test-shownegative' => 'Änderige zeige, wu nit zuem Filter stimme',
 	'abusefilter-test-syntaxerr' => 'Im Filter, wu Du yygee hesch, het s e Syntax-Fähler.
-Du chasch e vollständigi Erklärig iberchu, wänn du uf „Check Syntax” drucksch.',
+Du chasch e vollständigi Erklärig iberchu, wänn du uf „Check Syntax” drucksch.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'Iberpriefe',
 	'abusefilter-examine' => 'Individuälli Änderige iberpriefe',
 	'abusefilter-examine-intro' => 'Die Syte erlaubt Dir, d Variable, wu vum Missbruuchsfilter aagleit wore sin, uf individuälli Änderige z iberpriefe un si nomol gege Filter z teschte.',
@@ -16415,7 +16417,7 @@ Molimo, budite pažljivi rabeći ovaj alat.',
 	'abusefilter-revert-search' => 'Odaberite radnje',
 	'abusefilter-revert-filter' => 'Filtar:',
 	'abusefilter-revert-preview-intro' => 'U nastavku se nalaze akcije koje je napravio filtar sprječavanja zloporaba koji će biti uklonjene ovom akcijom.
-Molimo provjerite ih pažljivo, i kliknite na "Potvrdi" kako biste potvrdili svoj izbor.',
+Molimo provjerite ih pažljivo, i kliknite na "Potvrdi" kako biste potvrdili svoj izbor.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Potvrdi',
 	'abusefilter-revert-success' => 'Vratili ste radnje poduzete od strane filtra zloporabe tijekom [[Special:AbuseFilter/$1|filtriranja $1]].',
 	'abusefilter-revert-reason' => 'Automatsko vraćanje svih radnji poduzetih od strane filtra zloporabe tijekom filtriranja $1.
@@ -16423,7 +16425,7 @@ Razlog dan: $2',
 	'abusefilter-revert-reasonfield' => 'Razlog:',
 	'abusefilter-test' => 'Testiraj filtar s prethodnim uređivanjem',
 	'abusefilter-test-intro' => 'Ova stranica omogućava provjeru filtra unešenog u donji okvir sa {{PLURAL:$1|zadnjim $1 uređivanjem|zadnjih $1 uređivanja}}.
-Za učitavanje postojećeg filtra, upišite ID filtra u okvir ispod okvira za uređenjivanje i kliknite tipku "Učitaj".',
+Za učitavanje postojećeg filtra, upišite ID filtra u okvir ispod okvira za uređenjivanje i kliknite tipku "Učitaj".', # Fuzzy
 	'abusefilter-test-legend' => 'Testiranje filtra',
 	'abusefilter-test-load-filter' => 'Učitaj ID filtra:',
 	'abusefilter-test-submit' => 'Test',
@@ -16434,7 +16436,7 @@ Za učitavanje postojećeg filtra, upišite ID filtra u okvir ispod okvira za ur
 	'abusefilter-test-page' => 'Promjene napravljene na stranici:',
 	'abusefilter-test-shownegative' => 'Pokaži izmjene koje se ne podudaraju s filtrom',
 	'abusefilter-test-syntaxerr' => 'Filtar koji ste unijeli sadrži sintaktičku pogrešku.
-Možete primiti puno objašnjenje pogreške klikom na gumb "Provjeri sintaksu".',
+Možete primiti puno objašnjenje pogreške klikom na gumb "Provjeri sintaksu".', # Fuzzy
 	'abusefilter-changeslist-examine' => 'ispitaj',
 	'abusefilter-examine' => 'Ispitivanje pojedinačnih izmjena',
 	'abusefilter-examine-intro' => 'Ova stranica omogućava ispitivanje varijabli generiranih od strane filtra zloporaba za pojedinu izmjenu i njihovo testiranje u filtru.',
@@ -17274,7 +17276,7 @@ Visszavonásra váló műveletek: $5 ($6)',
 	'abusefilter-revert-search' => 'Műveletek kiválasztása',
 	'abusefilter-revert-filter' => 'Szűrő:',
 	'abusefilter-revert-preview-intro' => 'Ez a művelet a vandálszűrő alábbi műveleteit fogja visszavonni.
-Alaposan nézd át, hogy mi fog történni, és csak utána kattints a „Biztosan” gombra.',
+Alaposan nézd át, hogy mi fog történni, és csak utána kattints a „Biztosan” gombra.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Megerősítés',
 	'abusefilter-revert-success' => 'A(z) [[Special:AbuseFilter/$1|$1 szűrő]] miatt visszavontad a vandálszűrő összes műveletét.',
 	'abusefilter-revert-reason' => 'A(z) $1 szűrő miatt a vandálszűrő összes művelete automatikus visszavonásra kerül.
@@ -17282,7 +17284,7 @@ Indoklás: $2',
 	'abusefilter-revert-reasonfield' => 'Indoklás:',
 	'abusefilter-test' => 'Szűrő kipróbálása korábbi szerkesztésekkel',
 	'abusefilter-test-intro' => 'Ezen a lapon a lenti szövegdobozba beírt szűrő eredményességét próbálhatod ki az utolsó $1 szerkesztésen.
-Létező szűrő betöltéséhez a szerkesztési mező alá írd be a szűrő számát és kattints a „Betöltés” gombra.',
+Létező szűrő betöltéséhez a szerkesztési mező alá írd be a szűrő számát és kattints a „Betöltés” gombra.', # Fuzzy
 	'abusefilter-test-legend' => 'Szűrő tesztelése',
 	'abusefilter-test-load-filter' => 'Szűrő azonosító szerinti betöltése:',
 	'abusefilter-test-submit' => 'Na mutasd!',
@@ -17293,7 +17295,7 @@ Létező szűrő betöltéséhez a szerkesztési mező alá írd be a szűrő sz
 	'abusefilter-test-page' => 'Az oldal változtatásai:',
 	'abusefilter-test-shownegative' => 'A szűrőn fenn nem akadt változtatások megmutatása',
 	'abusefilter-test-syntaxerr' => 'A beírt szűrőd szintaktikai hibát tartalmaz.
-A hiba részletes leírásához kattints az „Ellenőrzés” gombra.',
+A hiba részletes leírásához kattints az „Ellenőrzés” gombra.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'megvizsgál',
 	'abusefilter-examine' => 'Egyedi változtatások megvizsgálása',
 	'abusefilter-examine-intro' => 'Ezen az oldalon megnézheted, hogy a vandálszűrő egy adott változtatásra milyen változókat generál, majd ezeket átfuttathatod a szűrőkön.',
@@ -18139,7 +18141,7 @@ Aksi yang dikembalikan: $5 ($6)',
 	'abusefilter-revert-search' => 'Pilih tindakan',
 	'abusefilter-revert-filter' => 'Penyaring:',
 	'abusefilter-revert-preview-intro' => 'Berikut adalah tindakan yang dilakukan oleh filter penyalahgunaan yang akan dikembalikan oleh tindakan ini.
-Harap periksa dengan saksama, dan klik "konfirmasikan" untuk mengkonfirmasikan pilihan Anda.',
+Harap periksa dengan saksama, dan klik "konfirmasikan" untuk mengkonfirmasikan pilihan Anda.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Konfirmasi',
 	'abusefilter-revert-success' => 'Anda telah mengembalikan semua tindakan yang dilakukan filter penyalahgunaan karena [[Special:AbuseFilter/$1|filter $1]].',
 	'abusefilter-revert-reason' => 'Pengembalian otomatis terhadap semua tindakan yang dilakukan filter penyalahgunaan karena filter $1.
@@ -18147,7 +18149,7 @@ Alasan yang diberikan: $2',
 	'abusefilter-revert-reasonfield' => 'Alasan:',
 	'abusefilter-test' => 'Uji penyaringan terhadap suntingan sebelumnya',
 	'abusefilter-test-intro' => 'Halaman ini memungkinkan Anda untuk mengecek suatu filter yang dimasukkan pada kotak di bawah terhadap $1 {{PLURAL:$1|perubahan|perubahan}} terakhir.
-Untuk memuat suatu filter yang telah ada, tikkan ID filternya ke dalam kotak di bawah kotak suntingan, dan klik tombol "Muatkan".',
+Untuk memuat suatu filter yang telah ada, tikkan ID filternya ke dalam kotak di bawah kotak suntingan, dan klik tombol "Muatkan".', # Fuzzy
 	'abusefilter-test-legend' => 'Saring pengujian',
 	'abusefilter-test-load-filter' => 'Muat penyaringan ID:',
 	'abusefilter-test-submit' => 'Ujicoba',
@@ -18158,7 +18160,7 @@ Untuk memuat suatu filter yang telah ada, tikkan ID filternya ke dalam kotak di 
 	'abusefilter-test-page' => 'Perubahan dilakukan pada halaman:',
 	'abusefilter-test-shownegative' => 'Lihat perubahan yang tidak sama dengan penyaringan',
 	'abusefilter-test-syntaxerr' => 'Penyaringan yang Anda masukkan mengandung kesalahan sintaks.
-Anda dapat menerima penjelasan lengkap dengan menekan tombol "Periksa Sintaks".',
+Anda dapat menerima penjelasan lengkap dengan menekan tombol "Periksa Sintaks".', # Fuzzy
 	'abusefilter-changeslist-examine' => 'periksa',
 	'abusefilter-examine' => 'Teliti perubahan tersendiri',
 	'abusefilter-examine-intro' => 'Halaman ini memungkinkan Anda untuk memeriksa variabel yang dihasilkan Filter Penyalahgunaan untuk suatu perubahan individu, dan mengujinya terhadap filter.',
@@ -18623,7 +18625,7 @@ Dagiti aramid nga isublin ton: $5 ($6)',
 	'abusefilter-revert-search' => 'Agpili kadagiti aramid',
 	'abusefilter-revert-filter' => 'Sagat:',
 	'abusefilter-revert-preview-intro' => 'Dita baba ket dagiti aramid ti sagat ti panag-abuso nga isublin to daytoy nga aktion.
-Pangngaasi nga agan-annad ka a mangkita, ken agtakla ti "pasingkedan" tapno mapasingkedam ti napilim.',
+Pangngaasi nga agan-annad ka a mangkita, ken agtakla ti "pasingkedan" tapno mapasingkedam ti napilim.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Pasingkedan',
 	'abusefilter-revert-success' => 'Insublim amin nga aramid a naala babaen ti sagat ti panag-abuso gapu ti [[Special:AbuseFilter/$1|sagat $1]].',
 	'abusefilter-revert-reason' => 'Automatiko a panagisubli iti amin nga aramid nga innala ti sagat ti panag-abuso gapu ti sagat $1.
@@ -18631,7 +18633,7 @@ Rason a naited: $2',
 	'abusefilter-revert-reasonfield' => 'Rason:',
 	'abusefilter-test' => 'Subokan ti sagat nga gasupiat kadagiti nasakbayan nga inurnos',
 	'abusefilter-test-intro' => 'Daytoy a panid ket agpalubos kenka ti agkita ti sagat a naikabil iti kahon dita baba a naisupiat ti naudi $1 {{PLURAL:$1|a sinukatan|a dagiti sinukatan}}.
-Ti agikarga ti adda a sagat, imakiniliam ti ID ti sagat iti kahon dita baba ti panagurnos a kahon ti teksto, ken agtakla ti "Agkarga" a buton.',
+Ti agikarga ti adda a sagat, imakiniliam ti ID ti sagat iti kahon dita baba ti panagurnos a kahon ti teksto, ken agtakla ti "Agkarga" a buton.', # Fuzzy
 	'abusefilter-test-legend' => 'Agsubsubok ti sagat',
 	'abusefilter-test-load-filter' => 'Ikarga ti ID ti sagat:',
 	'abusefilter-test-submit' => 'Subokan',
@@ -18642,7 +18644,7 @@ Ti agikarga ti adda a sagat, imakiniliam ti ID ti sagat iti kahon dita baba ti p
 	'abusefilter-test-page' => 'Dagiti inaramid iti panid:',
 	'abusefilter-test-shownegative' => 'Iparang dagiti sinukatan a saan a maikapada ti sagat',
 	'abusefilter-test-syntaxerr' => 'Ti sagat nga inkabil mo ket naglaon ti biddut a gramatika.
-Maka-awat ka ti sibubukel a palawag babaen ti panag-takla ti "Kitaen ti Gramatika" a buton.',
+Maka-awat ka ti sibubukel a palawag babaen ti panag-takla ti "Kitaen ti Gramatika" a buton.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'sukimaten',
 	'abusefilter-examine' => 'Sukimaten dagiti tigga maysa a sinusukatan',
 	'abusefilter-examine-intro' => 'Daytoy a panid ket agpalubos kenka nga agsukimat kadagti sabsabali nga inaramid ti Sagat ti Panag-abuso para iti tunggal maysa a sinukatan, ken subokanna nga agsupiat kadagiti sagat.',
@@ -19039,7 +19041,7 @@ Aðgerðir sem verða teknar til baka: $5 ($6)',
 	'abusefilter-revert-search' => 'Velja aðgerðir',
 	'abusefilter-revert-filter' => 'Sía:',
 	'abusefilter-revert-preview-intro' => 'Fyrir neðan eru þær aðgerðir misnotkunnarsíunnar sem taka á til baka.
-Farðu vandlega yfir listann og ýttu á "staðfesta" til að staðfesta valið þitt.',
+Farðu vandlega yfir listann og ýttu á "staðfesta" til að staðfesta valið þitt.', # Fuzzy
 	'abusefilter-revert-confirm' => 'staðfesta',
 	'abusefilter-revert-success' => 'Þú hefur tekið aftur allar breytingar misnotkunar [[Special:AbuseFilter/$1|síunnar $1]]',
 	'abusefilter-revert-reason' => 'Tók sjálfvirkt til baka allar breytingar misnotkunar síunnar $1.
@@ -19047,7 +19049,7 @@ Farðu vandlega yfir listann og ýttu á "staðfesta" til að staðfesta valið 
 	'abusefilter-revert-reasonfield' => 'Ástæða:',
 	'abusefilter-test' => 'Prófa síuna gegn fyrri breytingum',
 	'abusefilter-test-intro' => 'Þessi síða leyfir þér að prófa síu gegn síðustu $1 {{PLURAL:$1|breytingu|breytingum}}.
-Til þess að prófa síu sem til er fyrir, settu auðkenni hennar í reitinn hér fyrir neðan og ýttu á "Hlaða".',
+Til þess að prófa síu sem til er fyrir, settu auðkenni hennar í reitinn hér fyrir neðan og ýttu á "Hlaða".', # Fuzzy
 	'abusefilter-test-legend' => 'Síu prófun',
 	'abusefilter-test-load-filter' => 'Auðkenni síunnar:',
 	'abusefilter-test-submit' => 'Prófun',
@@ -19058,7 +19060,7 @@ Til þess að prófa síu sem til er fyrir, settu auðkenni hennar í reitinn h�
 	'abusefilter-test-page' => 'Breytingar á síðu:',
 	'abusefilter-test-shownegative' => 'Sýna breytingar sem samsvara ekki síunni.',
 	'abusefilter-test-syntaxerr' => 'Sían inniheldur málskipunarvillu.
-Þú getur fengið tæmandi útskýringu með því að ýta á "Athuga málskipun".',
+Þú getur fengið tæmandi útskýringu með því að ýta á "Athuga málskipun".', # Fuzzy
 	'abusefilter-changeslist-examine' => 'athuga',
 	'abusefilter-examine' => 'Athuga einstakar breytingar',
 	'abusefilter-examine-intro' => 'Þessi síða gerir þér kleyft að athuga breytur misnotkunar síunnar fyrir einstakar breytingar og prófa þær gegn síu.',
@@ -20279,7 +20281,7 @@ Laku sing dibalèkaké: $5 ($6)',
 	'abusefilter-revert-search' => 'Pilih laku',
 	'abusefilter-revert-filter' => 'Saringan:',
 	'abusefilter-revert-preview-intro' => 'Ngisor iki laku sing dilakoni saringan planggaran sing arep dibalèkaké déning laku iki.
-Mangga priksa sing tenan, lan klik "pesthèkaké" kanggo mesthèkaké pilihan Sampéyan.',
+Mangga priksa sing tenan, lan klik "pesthèkaké" kanggo mesthèkaké pilihan Sampéyan.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Pesthèkaké',
 	'abusefilter-revert-success' => 'Sampéyan wis mbalèkaké kabèh laku sing dilakoni saringan planggaran amarga [[Special:AbuseFilter/$1|saringan $1]].',
 	'abusefilter-revert-reason' => 'Pambalèkan otomatis kabèh laku sing dilakokaké saringan planggaran amarga saringan $1.
@@ -20287,7 +20289,7 @@ Alesané: $2',
 	'abusefilter-revert-reasonfield' => 'Alesané:',
 	'abusefilter-test' => 'Jajal saringan tumrap suntingan sakdurungé',
 	'abusefilter-test-intro' => 'Kaca iki nglilakaké Sampéyan mriksa saringan sing dilebokaké nèng kothak ngisor iki tumrap $1 {{PLURAL:$1|owahan|owahan}} pungkasan.
-Kanggo ngemot saringan wis ana, tulis ID saringan nèng njero kothak ngisoré kothak tèks sunting, lan klik tombol "Ngemot".',
+Kanggo ngemot saringan wis ana, tulis ID saringan nèng njero kothak ngisoré kothak tèks sunting, lan klik tombol "Ngemot".', # Fuzzy
 	'abusefilter-test-legend' => 'Panjajalan saringan',
 	'abusefilter-test-load-filter' => 'Emot ID saringan:',
 	'abusefilter-test-submit' => 'Jajal',
@@ -20298,7 +20300,7 @@ Kanggo ngemot saringan wis ana, tulis ID saringan nèng njero kothak ngisoré ko
 	'abusefilter-test-page' => 'Owahan digawé nèng kaca:',
 	'abusefilter-test-shownegative' => 'Tuduhaké owahan sing cocok karo saringan',
 	'abusefilter-test-syntaxerr' => 'Saringan sing Sampéyan lebokaké ngalami kasalahan sintaks.
-Sampéyan bisa nampa pawedharan jangkep mawa ngeklik pencètan "Priksa Sintaks".',
+Sampéyan bisa nampa pawedharan jangkep mawa ngeklik pencètan "Priksa Sintaks".', # Fuzzy
 	'abusefilter-changeslist-examine' => 'uji',
 	'abusefilter-examine' => 'Uji owahan individu',
 	'abusefilter-examine-intro' => 'Kaca iki nglilakaké Sampéyan nguji variabèl saka Saringan Planggaran kanggo sawiji owahan individu, lan jajal tumrap saringan.',
@@ -20666,7 +20668,7 @@ $messages['ka'] = array(
 	'abusefilter-revert-search' => 'აირჩიეთ მოქმედება',
 	'abusefilter-revert-filter' => 'ფილტრი:',
 	'abusefilter-revert-preview-intro' => 'ქვემოთ მოცემულია ფილტრის ის მოქმედებები, რომლებიც აქედან უნდა გაუქმდეს.
-გთხოვთ, შეამოწმეთ ისინი ყურადღებით და თქვენი არჩევანის დასადასტურებლად დააჭირეთ ღილაკს „დადასტურება“.',
+გთხოვთ, შეამოწმეთ ისინი ყურადღებით და თქვენი არჩევანის დასადასტურებლად დააჭირეთ ღილაკს „დადასტურება“.', # Fuzzy
 	'abusefilter-revert-confirm' => 'დადასტურება',
 	'abusefilter-revert-success' => 'თქვენ ბოროტად გამოყენების ფილტრის ყველა ის ცვლილება გააუქმეთ, რომლებიც [[Special:AbuseFilter/$1|$1 ფილტრის]] მიზეზით გაკეთდა.',
 	'abusefilter-revert-reason' => 'ბოროტად გამოყენების ფილტრის ყოველი ქმედების ავტომატურად გაუქმება $1 ფილტრის მიზეზით.
@@ -20683,7 +20685,7 @@ $messages['ka'] = array(
 	'abusefilter-test-page' => 'ცვლილებები გაკეთდა გვერდში:',
 	'abusefilter-test-shownegative' => 'იმ ცვლილებების ჩვენება, რომლებიც ფილტრს არ ერგებიან',
 	'abusefilter-test-syntaxerr' => 'მოცემული ფილტრი შეიცავს სინტაქსურ შეცდომას.
-დამატებითი შენიშვნების სანახავად დააჭირეთ ღილაკს „სინტაქსის შემოწმება“',
+დამატებითი შენიშვნების სანახავად დააჭირეთ ღილაკს „სინტაქსის შემოწმება“', # Fuzzy
 	'abusefilter-changeslist-examine' => 'ნახვა',
 	'abusefilter-examine' => 'ცალკეული რედაქტირებების ხილვა',
 	'abusefilter-examine-legend' => 'არჩეული ცვლილებები',
@@ -21951,14 +21953,14 @@ Bes ävver förseschtesch met esu jet!',
 	'abusefilter-revert-search' => 'Änderunge ußsöke',
 	'abusefilter-revert-filter' => 'Felter:',
 	'abusefilter-revert-preview-intro' => 'Hee küt de Leß met däm Meßbruchsfelter singe Akßjuhne, di jez retuur jemaat wäde.
-Donn se joot aanbekike, un donn „{{int:abusefilter-revert-confirm}}“ klecke, öm Ding Ußwahl ze beshtäätejje.',
+Donn se joot aanbekike, un donn „{{int:abusefilter-revert-confirm}}“ klecke, öm Ding Ußwahl ze beshtäätejje.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Jo, su soll et sin!',
 	'abusefilter-revert-success' => 'Do häs alle Änderunge zeröck jenumme, di dä Meßbruchsfelter opjrund fun dä [[Special:AbuseFilter/$1|Räjel $1]] jemaat hät.',
 	'abusefilter-revert-reason' => 'All Änderunge zeröck nämme, die dä Meßbruchßfelter opjrond vun dä Räjel $1 jemaat hät. Der aanjejovve Jrund es: $2',
 	'abusefilter-revert-reasonfield' => 'Der Jrond:',
 	'abusefilter-test' => 'Donn dä Felter met fröjere Änderunge ußprobeere',
 	'abusefilter-test-intro' => 'Hee met kanns De ene Felter övverpröfe aan de {{PLURAL:$1|de letzte Änderung|de $1 {{lcfirst:{{int:recentchanges}}}}|nix, mer han nämmlesch kein letzte Änderung}} em Wiki.
-Öm ene Felter jelaade ze krejje, dä ald doh es, donn däm sing Nommer in däm Feld onger däm Kaste enjävve, un donn op dä Knopp „{{int:abusefilter-test-load}}“ klecke.',
+Öm ene Felter jelaade ze krejje, dä ald doh es, donn däm sing Nommer in däm Feld onger däm Kaste enjävve, un donn op dä Knopp „{{int:abusefilter-test-load}}“ klecke.', # Fuzzy
 	'abusefilter-test-legend' => 'Felter Pröfe',
 	'abusefilter-test-load-filter' => 'Felter-Räjel för zem Laade:',
 	'abusefilter-test-submit' => 'Pröfe!',
@@ -21969,7 +21971,7 @@ Donn se joot aanbekike, un donn „{{int:abusefilter-revert-confirm}}“ klecke,
 	'abusefilter-test-page' => 'Änderonge, di aan dä Sigg jemaat woode sin:',
 	'abusefilter-test-shownegative' => 'Zeich de Änderunge, die dä Felter nit jrief',
 	'abusefilter-test-syntaxerr' => 'Ding Räjel för dä Felter hät en kapodde Süntaks.
-Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilter-edit-check}}“ klecke.',
+Wann De dat jenouer explizeet han wells, dann donn dä Knopp „{{int:abusefilter-edit-check}}“ klecke.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'jenou aankike',
 	'abusefilter-examine' => 'Einzel Änderunge jenou aankike',
 	'abusefilter-examine-intro' => 'Op dä Sigg hee kanns De de Date inspezeere, die dä Meßbruchsfelter uß en bestemmpte Änderung aam Wiki erußjetrocke hät, un Do kanns domet och einzel Räjelle pröve.',
@@ -23007,7 +23009,7 @@ Truuk te dreie maotregele: $5 ($6)",
 	'abusefilter-revert-search' => 'Selecteer maotregele',
 	'abusefilter-revert-filter' => 'Filter:',
 	'abusefilter-revert-preview-intro' => 'Hie ónger sjtaon de maotregele die de misbroekfilter haet genomme die door deze hanjeling waere truukgedreid.
-Controleer de truuk te dreie maotregele zorgvuldig, en klik "bevestig" óm dien selectie te bevestige.',
+Controleer de truuk te dreie maotregele zorgvuldig, en klik "bevestig" óm dien selectie te bevestige.', # Fuzzy
 	'abusefilter-revert-confirm' => 'bevestig',
 	'abusefilter-revert-success' => 'Doe höbs alle maotregele die door de misbroekfilter via [[Special:AbuseFilter/$1|filter $1]] zeen genomme truukgedreid.',
 	'abusefilter-revert-reason' => 'Autematis truukdreie van alle maotregele door de misbroekfilter via filter $1.
@@ -23015,7 +23017,7 @@ Raej: $2',
 	'abusefilter-revert-reasonfield' => 'Raeje veur truukdreiing:', # Fuzzy
 	'abusefilter-test' => "Tes 'ne filter taenge eerdere bewirkinge",
 	'abusefilter-test-intro' => 'Op dees pazjena kins se \'ne ingegaeve filter controlere met de letste {{PLURAL:$1|wiezing|$1 wiezinge}}.
-Gaef \'n filternummer in om \'ne bestaonde filter te laje, en klik daonao op de knoep "Laaje".',
+Gaef \'n filternummer in om \'ne bestaonde filter te laje, en klik daonao op de knoep "Laaje".', # Fuzzy
 	'abusefilter-test-legend' => 'Tes filter',
 	'abusefilter-test-load-filter' => 'Filternummer laje:',
 	'abusefilter-test-submit' => 'Tes',
@@ -23026,7 +23028,7 @@ Gaef \'n filternummer in om \'ne bestaonde filter te laje, en klik daonao op de 
 	'abusefilter-test-page' => 'Verangeringe aan pagina:',
 	'abusefilter-test-shownegative' => 'Toean verangeringe die neet aan de filter voldoon',
 	'abusefilter-test-syntaxerr' => 'De filter daen se haes ingeveurd bevat \'n syntaxisfout.
-Door op "Syntaxis controleren" te klikke kriegs se \'n volledige toelichting.',
+Door op "Syntaxis controleren" te klikke kriegs se \'n volledige toelichting.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'óngerzeuk',
 	'abusefilter-examine' => 'Óngerzeuk individueel verangeringe',
 	'abusefilter-examine-intro' => "Via dees pagina kins se de door de filter aangemaakde variabele veur 'n individueel verangering óngerzeuken en dees teste taenge filters.",
@@ -23456,7 +23458,7 @@ Veiksmas buvo atšauktas: $5 ($6)',
 	'abusefilter-revert-search' => 'Pasirinkite veiksmus',
 	'abusefilter-revert-filter' => 'Filtras:',
 	'abusefilter-revert-preview-intro' => 'Žemiau yra veiksmai, kurių imasi piktnaudžiavimo filtrą, kuris bus grąžinti šį ieškiniu.
-Prašome atidžiai juos patikrinti, ir spustelėkite "patvirtinti", patvirtinkite savo pasirinkimą.',
+Prašome atidžiai juos patikrinti, ir spustelėkite "patvirtinti", patvirtinkite savo pasirinkimą.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Patvirtinti',
 	'abusefilter-revert-success' => 'Jūs grįžo dėl piktnaudžiavimo filtro dėl visų veiksmų [[specialus: AbuseFilter / $1 |filter  $1 ]].', # Fuzzy
 	'abusefilter-revert-reason' => 'Automatinis sugrąžinti, visi veiksmai, kurių imasi piktnaudžiavimo filtrą, dėl filtro  $1 .
@@ -23464,7 +23466,7 @@ Priežastis:$2',
 	'abusefilter-revert-reasonfield' => 'Priežastis:',
 	'abusefilter-test' => 'Testuoti filtrą paskutiniams keitimams',
 	'abusefilter-test-intro' => 'Šis puslapis Jums leidžia patikrinti Jūsų įvestą į žemiau esantį įvedimo lauką filtrą {{PLURAL:$1|paskutiniam|paskutiniams}} $1 {{PLURAL:$1|pakeitimui|pakeitimams|pakeitimų}}.
-Kad pakrauti esantį filtrą, įveskite šio filtro ID į žemiau įvedimo lauko esanti tekstinį laukelį ir paspauskite butoną "Pakrauti".',
+Kad pakrauti esantį filtrą, įveskite šio filtro ID į žemiau įvedimo lauko esanti tekstinį laukelį ir paspauskite butoną "Pakrauti".', # Fuzzy
 	'abusefilter-test-legend' => 'Filtro testavimas',
 	'abusefilter-test-load-filter' => 'Pakrauto filtro ID:',
 	'abusefilter-test-submit' => 'Testuoti',
@@ -23475,7 +23477,7 @@ Kad pakrauti esantį filtrą, įveskite šio filtro ID į žemiau įvedimo lauko
 	'abusefilter-test-page' => 'Pakeitimai atlikti puslapiui:',
 	'abusefilter-test-shownegative' => 'Parodyti pakeitimus, kurie neatitinka filtro',
 	'abusefilter-test-syntaxerr' => 'Filtras, kurį Jūs įvedėte, turi sintaksinę klaidą.
-Jūs galite gauti pilną paaiškinimą, jei paspausite butoną "Patikrinti sintaksę"',
+Jūs galite gauti pilną paaiškinimą, jei paspausite butoną "Patikrinti sintaksę"', # Fuzzy
 	'abusefilter-changeslist-examine' => 'tikrinti',
 	'abusefilter-examine' => 'Tikrinti atskirus pakeitimus',
 	'abusefilter-examine-intro' => 'Šis puslapis Jums leidžia patikrinti piktnaudžiavimo filtro generuojamus kintamuosius kiekvienam konkrečiam atvejui ir jį testuoti atitinkamuose filtruose.',
@@ -23902,7 +23904,7 @@ Darbības, kas tiks atceltas: $5 ($6)',
 	'abusefilter-test-page' => 'Lapai veiktās izmaiņas:',
 	'abusefilter-test-shownegative' => 'Rādīt izmaiņas, kuras neatbilst filtram',
 	'abusefilter-test-syntaxerr' => 'Tavs ievadītais filtrs saturēja sintakses kļūdu.
-Pilnu paskaidrojumu vari saņemt, noklikšķinot uz pogas "Pārbadīt sintaksi".',
+Pilnu paskaidrojumu vari saņemt, noklikšķinot uz pogas "Pārbadīt sintaksi".', # Fuzzy
 	'abusefilter-changeslist-examine' => 'izmeklēt',
 	'abusefilter-examine' => 'Izmeklēt personiskās izmaiņas',
 	'abusefilter-examine-legend' => 'Izvēlēties izmaiņas',
@@ -25175,7 +25177,7 @@ $messages['ml'] = array(
 	'abusefilter-revert-search' => 'പ്രവൃത്തികൾ തിരഞ്ഞെടുക്കുക',
 	'abusefilter-revert-filter' => 'അരിപ്പ:',
 	'abusefilter-revert-preview-intro' => 'ഈ പ്രവൃത്തി ചെയ്താൽ മുൻപ്രാപനം ചെയ്യപ്പെടുന്ന പ്രവൃത്തികൾ താഴെ കൊടുത്തിരിക്കുന്നു.
-ദയവായി അവ ശ്രദ്ധയോടെ പരിശോധിക്കുക, താങ്കൾ തിരഞ്ഞെടുത്തവ സ്ഥിരീകരിക്കാനായി "സ്ഥിരീകരിക്കുക" ഞെക്കുക.',
+ദയവായി അവ ശ്രദ്ധയോടെ പരിശോധിക്കുക, താങ്കൾ തിരഞ്ഞെടുത്തവ സ്ഥിരീകരിക്കാനായി "സ്ഥിരീകരിക്കുക" ഞെക്കുക.', # Fuzzy
 	'abusefilter-revert-confirm' => 'സ്ഥിരീകരിക്കുക',
 	'abusefilter-revert-success' => '[[Special:AbuseFilter/$1|അരിപ്പ $1]] ഉപയോഗിച്ച് ദുരുപയോഗ അരിപ്പ ചെയ്ത എല്ലാ പ്രവൃത്തികളും മുന്നവസ്ഥയിലേയ്ക്ക് മാറ്റിയിരിക്കുന്നു.',
 	'abusefilter-revert-reason' => 'അരിപ്പ $1 ഉപയോഗിച്ച് ദുരുപയോഗ അരിപ്പ ചെയ്ത എല്ലാ പ്രവൃത്തികളും സ്വയം മുൻപ്രാപനം ചെയ്യുന്നു.
@@ -25183,7 +25185,7 @@ $messages['ml'] = array(
 	'abusefilter-revert-reasonfield' => 'കാരണം:',
 	'abusefilter-test' => 'മുൻ‌തിരുത്തലുകളിൽ ഒരു അരിപ്പ പരീക്ഷിക്കുക',
 	'abusefilter-test-intro' => 'ഒടുവിലത്തെ {{PLURAL:$1|ഒരു മാറ്റത്തിൽ|$1 മാറ്റങ്ങളിൽ}} താഴെയുള്ള പെട്ടിയിൽ നൽകിയിരിക്കുന്ന അരിപ്പ പരീക്ഷിക്കാൻ ഈ താൾ അനുവദിക്കുന്നു.
-നിലവിലുള്ള ഒരു അരിപ്പ ഉപയോഗിക്കാൻ, അതിന്റെ ഐ.ഡി. തിരുത്തുവാനുള്ള പെട്ടിയുടെ താഴെയുള്ള പെട്ടിയിൽ നൽകിയ ശേഷം, "എടുക്കുക" എന്ന ബട്ടൺ ഞെക്കുക.',
+നിലവിലുള്ള ഒരു അരിപ്പ ഉപയോഗിക്കാൻ, അതിന്റെ ഐ.ഡി. തിരുത്തുവാനുള്ള പെട്ടിയുടെ താഴെയുള്ള പെട്ടിയിൽ നൽകിയ ശേഷം, "എടുക്കുക" എന്ന ബട്ടൺ ഞെക്കുക.', # Fuzzy
 	'abusefilter-test-legend' => 'അരിപ്പയുടെ പരീക്ഷണം',
 	'abusefilter-test-load-filter' => 'അരിപ്പയുടെ ഐ.ഡി. എടുക്കുക:',
 	'abusefilter-test-submit' => 'പരീക്ഷിയ്ക്കുക',
@@ -25194,7 +25196,7 @@ $messages['ml'] = array(
 	'abusefilter-test-page' => 'താളിൽ വരുത്തിയ മാറ്റങ്ങൾ:',
 	'abusefilter-test-shownegative' => 'അരിപ്പയുമായി യോജിക്കാത്ത മാറ്റങ്ങൾ പ്രദർശിപ്പിക്കുക',
 	'abusefilter-test-syntaxerr' => 'താങ്കൾ നൽകിയ അരിപ്പയുടെ എഴുത്തുരീതിയിൽ പിശകുണ്ട്.
-"എഴുത്തുരീതി പരിശോധിക്കുക" എന്ന ബട്ടൺ ഞെക്കിയാൽ താങ്കൾക്ക് പൂർണ്ണമായ വിശദീകരണം ലഭിക്കുന്നതാണ്.',
+"എഴുത്തുരീതി പരിശോധിക്കുക" എന്ന ബട്ടൺ ഞെക്കിയാൽ താങ്കൾക്ക് പൂർണ്ണമായ വിശദീകരണം ലഭിക്കുന്നതാണ്.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'പരിശോധിക്കുക',
 	'abusefilter-examine' => 'ഒറ്റയൊറ്റ മാറ്റങ്ങൾ പരിശോധിക്കുക',
 	'abusefilter-examine-intro' => 'ഓരോ ഒറ്റയൊറ്റ മാറ്റത്തിനും ദുരുപയോഗ അരിപ്പ സൃഷ്ടിക്കുന്ന ചരങ്ങൾ പരിശോധിക്കാൻ ഈ താൾ താങ്കളെ അനുവദിക്കുന്നു, ഒപ്പം അത് അരിപ്പകളിൽ പരീക്ഷിക്കാവുന്നതുമാണ്.',
@@ -25588,7 +25590,7 @@ $messages['mr'] = array(
 	'abusefilter-revert-periodend' => 'कालावधी समाप्त:',
 	'abusefilter-revert-search' => 'क्रिया निवडा',
 	'abusefilter-revert-filter' => 'गाळणी:',
-	'abusefilter-revert-preview-intro' => 'दुरुपयोग गाळणीने केलेली कार्यवाही खाली नमूद आहे. या क्रियेद्वारे ती  उलटविली जाईल.कृपया त्याची खबरदारीने तपासणी करा व आपली निवड नक्की करण्यासाठी "नक्की करा" हे टिचका.',
+	'abusefilter-revert-preview-intro' => 'दुरुपयोग गाळणीने केलेली कार्यवाही खाली नमूद आहे. या क्रियेद्वारे ती  उलटविली जाईल.कृपया त्याची खबरदारीने तपासणी करा व आपली निवड नक्की करण्यासाठी "नक्की करा" हे टिचका.', # Fuzzy
 	'abusefilter-revert-confirm' => 'नक्की करा',
 	'abusefilter-revert-success' => 'आपण दुरुपयोग गाळणीच्या [[Special:AbuseFilter/$1|गाळणी $1]]ने केलेले  सर्व बदल आपण उलटविले आहेत.',
 	'abusefilter-revert-reason' => 'दुरुपयोग गाळणीच्या, गाळणी $1 ने केलेले सर्व क्रिया स्वयंचलितरित्या उलटवा.
@@ -25596,7 +25598,7 @@ $messages['mr'] = array(
 	'abusefilter-revert-reasonfield' => 'कारण:',
 	'abusefilter-test' => 'मागील संपादनांवर गाळणीचे परिक्षण करा',
 	'abusefilter-test-intro' => "खालच्या पेटीत टाकलेली गाळणी, मागील $1 {{PLURAL:$1|बदलावर|बदलांवर}} तपासण्यास, हे पान आपणास परवानगी देते. 
-सध्याची गाळणी प्रभारण(लोड) करण्यास, त्या गाळणीची ओळखण(आयडी) खालील पेटीत टंका व 'प्रभारण' कळीवर टिचकी मारा.",
+सध्याची गाळणी प्रभारण(लोड) करण्यास, त्या गाळणीची ओळखण(आयडी) खालील पेटीत टंका व 'प्रभारण' कळीवर टिचकी मारा.", # Fuzzy
 	'abusefilter-test-legend' => 'संपादन गाळणी चाचणी',
 	'abusefilter-test-load-filter' => 'संपादनगाळणी क्रमांक प्रभारण करा:',
 	'abusefilter-test-submit' => 'चाचणी',
@@ -25606,7 +25608,7 @@ $messages['mr'] = array(
 	'abusefilter-test-period-end' => 'तारखे आधी केलेले बदल:',
 	'abusefilter-test-page' => 'बदल तपासावयाच्या पानाचे शीर्षक:',
 	'abusefilter-test-shownegative' => 'संपादन गाळणीशी जुळत नसलेले बदल दाखवा',
-	'abusefilter-test-syntaxerr' => "आपण टाकलेल्या गाळणीच्या नावात दोष आहे.'वाक्यविन्यास तपासा' कळीवर टिचकल्यावर याचे पूर्ण उत्तर मिळेल.",
+	'abusefilter-test-syntaxerr' => "आपण टाकलेल्या गाळणीच्या नावात दोष आहे.'वाक्यविन्यास तपासा' कळीवर टिचकल्यावर याचे पूर्ण उत्तर मिळेल.", # Fuzzy
 	'abusefilter-changeslist-examine' => 'तपासा',
 	'abusefilter-examine' => 'प्रत्येक बदल तपासा',
 	'abusefilter-examine-intro' => "हे पान, आपणास दुरुपयोग गाळणीने उत्पादित नेमक्या बदलाचे 'व्हॅरिएबल्स' तपासण्यास व गाळणीत त्याच्या चाचणीस परवानगी देते.",
@@ -26019,7 +26021,7 @@ Tindakan yang hendak dibatalkan: $5 ($6)',
 	'abusefilter-revert-search' => 'Pilih tindakan',
 	'abusefilter-revert-filter' => 'Penapis:',
 	'abusefilter-revert-preview-intro' => 'Berikut ialah tindakan yang diambil oleh penapis salah guna yang akan diterbalikkan oleh tindakan ini.
-Sila buat semakan dengan teliti, kemudian klik "Sahkan" untuk mengesahkan pemilihan anda.',
+Sila buat semakan dengan teliti, kemudian klik "Sahkan" untuk mengesahkan pemilihan anda.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Sahkan',
 	'abusefilter-revert-success' => 'Anda telah membatalkan semua tindakan yang diambil oleh penapis salah guna atas sebab [[Special:AbuseFilter/$1|penapis $1]].',
 	'abusefilter-revert-reason' => 'Pembatalan automatik semua tindakan yang diambil oleh penapis salah guna atas sebab penapis $1.
@@ -26027,7 +26029,7 @@ Sebab yang diberikan: $2',
 	'abusefilter-revert-reasonfield' => 'Sebab:',
 	'abusefilter-test' => 'Uji penapis terhadap suntingan lalu',
 	'abusefilter-test-intro' => 'Laman ini membolehkan anda untuk menyemak penapis yang dimasukkan dalam petak di bawah dengan $1 perubahan terakhir.
-Untuk memuatkan penapis yang sedia ada, taipkan ID penapisnya ke dalam petak di bawah ruangan teks penyuntingan, kemudian klik butang "Muatkan".',
+Untuk memuatkan penapis yang sedia ada, taipkan ID penapisnya ke dalam petak di bawah ruangan teks penyuntingan, kemudian klik butang "Muatkan".', # Fuzzy
 	'abusefilter-test-legend' => 'Ujian penapis',
 	'abusefilter-test-load-filter' => 'ID penapis muatan:',
 	'abusefilter-test-submit' => 'Uji',
@@ -26038,7 +26040,7 @@ Untuk memuatkan penapis yang sedia ada, taipkan ID penapisnya ke dalam petak di 
 	'abusefilter-test-page' => 'Perubahan pada laman:',
 	'abusefilter-test-shownegative' => 'Tunjukkan perubahan yang tidak sepadan dengan penapis',
 	'abusefilter-test-syntaxerr' => 'Penapis yang anda isikan itu ada ralat sintaks.
-Anda boleh menerima penjelasan penuh dengan mengklik butang "Semak sintaks".',
+Anda boleh menerima penjelasan penuh dengan mengklik butang "Semak sintaks".', # Fuzzy
 	'abusefilter-changeslist-examine' => 'periksa',
 	'abusefilter-examine' => 'Periksa perubahan satu demi satu',
 	'abusefilter-examine-intro' => 'Laman ini membolehkan anda memeriksa pembolehubah yang dijana oleh Penapis Salah Guna untuk satu perubahan tertentu, dan mengujinya dengan penapis.',
@@ -26422,13 +26424,13 @@ Azzjonijiet x'jitħassru: $5 ($6)",
 	'abusefilter-revert-periodend' => 'Tmiem tal-perjodu:',
 	'abusefilter-revert-search' => 'Agħżel l-azzjonijiet',
 	'abusefilter-revert-filter' => 'Filtru:',
-	'abusefilter-revert-preview-intro' => 'Hawn taħt hawn l-azzjonijiet meħuda mill-filtru tal-abbuż li se jiġu mreġġa\' lura permezz ta\' din l-azzjoni. Jekk jogħġbok iċċekkjahom sewwa u agħfas fuq "Ikkonferma" sabiex tikkonferma l-għażla tiegħek.',
+	'abusefilter-revert-preview-intro' => 'Hawn taħt hawn l-azzjonijiet meħuda mill-filtru tal-abbuż li se jiġu mreġġa\' lura permezz ta\' din l-azzjoni. Jekk jogħġbok iċċekkjahom sewwa u agħfas fuq "Ikkonferma" sabiex tikkonferma l-għażla tiegħek.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Ikkonferma',
 	'abusefilter-revert-success' => 'Għadek kif reġġajt lura l-azzjonijiet kollha meħuda mill-[[Special:AbuseFilter/$1|iltru tal-abbuż $1]].',
 	'abusefilter-revert-reasonfield' => 'Raġuni:',
 	'abusefilter-test' => 'Ivverifika filtru billi tikkonfrontaħ mal-modifiki preċedenti',
 	'abusefilter-test-intro' => 'Din il-paġna tħallik tiċċekkja filtru mdaħħal fil-kaxxa hawn taħt kontra l-aħħar {{PLURAL:$1|tibdila|$1 tibdiliet}}.
-Sabiex ittella\' filtru eżistenti, ikteb l-ID fil-filtru fil-kaxxa hawn taħt u agħfas il-buttuna "Tella\'".',
+Sabiex ittella\' filtru eżistenti, ikteb l-ID fil-filtru fil-kaxxa hawn taħt u agħfas il-buttuna "Tella\'".', # Fuzzy
 	'abusefilter-test-legend' => 'Ivverifika l-filtri',
 	'abusefilter-test-load-filter' => "Tella' filtru skont l-ID:",
 	'abusefilter-test-submit' => 'Ivverifika',
@@ -26439,7 +26441,7 @@ Sabiex ittella\' filtru eżistenti, ikteb l-ID fil-filtru fil-kaxxa hawn taħt u
 	'abusefilter-test-page' => 'Modifiki li saru fuq il-paġna:',
 	'abusefilter-test-shownegative' => 'Uri modifiki li ma jaqblux mal-filtru',
 	'abusefilter-test-syntaxerr' => 'Il-filtru li daħħal kellu żball fis-sintassi.
-Biex tikseb spjegazzjoni kompluta, iklikkja l-buttuna "Iċċekkja s-sintassi",',
+Biex tikseb spjegazzjoni kompluta, iklikkja l-buttuna "Iċċekkja s-sintassi",', # Fuzzy
 	'abusefilter-changeslist-examine' => 'eżamina',
 	'abusefilter-examine' => 'Eżamina modifiki individwali',
 	'abusefilter-examine-intro' => 'Din il-paġna tħallik teżamina l-varjabbli ġenerati mill-Filtru tal-Abbuż għal modifika partikulari, u tittestjaha kontra l-filtri.',
@@ -27382,7 +27384,7 @@ Akschonen, de trüchsett warrt: $5 ($6)',
 	'abusefilter-revert-search' => 'Akschonen utwählen',
 	'abusefilter-revert-filter' => 'Filter:',
 	'abusefilter-revert-preview-intro' => 'Ünnen staht de Akschonen vun’n Missbruukfilter, de dormit trüchsett warrt.
-Kiek jem good dör un klick denn op „{{int:Abusefilter-revert-confirm}}“, dat du dien Utwahl bestätigst.',
+Kiek jem good dör un klick denn op „{{int:Abusefilter-revert-confirm}}“, dat du dien Utwahl bestätigst.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Tostimmen',
 	'abusefilter-revert-success' => 'Du hest all Akschonen vun’n Missbruukfilter vunwegen [[Special:AbuseFilter/$1|Filter $1]] trüchsett.',
 	'abusefilter-revert-reason' => 'Automaatsch Trüchsetten vun all Akschonen vun’n Missbruukfilter vunwegen Filter $1.
@@ -27390,7 +27392,7 @@ Grund: $2',
 	'abusefilter-revert-reasonfield' => 'Grund för Trüchdreihn:', # Fuzzy
 	'abusefilter-test' => 'Den Filter gegen öllere Ännern testen.',
 	'abusefilter-test-intro' => 'Mit disse Sied kann en Filter testwies op {{PLURAL:$1|dat leste Ännern|de lesten $1 Ännern}} anwennt warrn.
-En vörhannen Filter to laden, geev sien Filter-ID in dat Feld ünner dat Änner-Finster an un klick op den „Laden“-Knopp.',
+En vörhannen Filter to laden, geev sien Filter-ID in dat Feld ünner dat Änner-Finster an un klick op den „Laden“-Knopp.', # Fuzzy
 	'abusefilter-test-legend' => 'Filter testen',
 	'abusefilter-test-load-filter' => 'Filter-ID laden:',
 	'abusefilter-test-submit' => 'Testen',
@@ -27401,7 +27403,7 @@ En vörhannen Filter to laden, geev sien Filter-ID in dat Feld ünner dat Änner
 	'abusefilter-test-page' => 'Ännern an de Sied:',
 	'abusefilter-test-shownegative' => 'Wies Ännern, de nich to’n Filter passt',
 	'abusefilter-test-syntaxerr' => 'De angeven Filter hett en Syntaxfehler.
-Wenn du op „{{int:Abusefilter-edit-check}}“ klickst, kriggst du dor mehr Infos to.',
+Wenn du op „{{int:Abusefilter-edit-check}}“ klickst, kriggst du dor mehr Infos to.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'ünnersöken',
 	'abusefilter-examine' => 'Enkelte Ännern ünnersöken',
 	'abusefilter-examine-intro' => 'Op disse Sied köönt de Variabeln ünnersöcht warrn, de de Missbruukfilter för en Ännern opstellt hett, un testwies mit Filters utprobeert warrn.',
@@ -27838,7 +27840,7 @@ $messages['ne'] = array(
 	'abusefilter-revert-confirm' => 'निश्चय गर्ने',
 	'abusefilter-revert-reasonfield' => 'फर्काउने कारण:', # Fuzzy
 	'abusefilter-test-intro' => 'यस पृष्ठले {{PLURAL:$1|पछिल्लो परिवर्तन|पछिल्ला परिवर्तनहरु}}को तल बाकसमा दिएको  फिल्टर जाँच्ने तपाईंलाई अनुमति दिन्छ।
-वर्तमान फिल्टर लोड गर्न, यसको फिल्टर आई डी तलको सम्पादन पाठ बाकसमा दिनुहोस्, र लोड गर्ने बटनमा क्लिक गर्नुहोस्।',
+वर्तमान फिल्टर लोड गर्न, यसको फिल्टर आई डी तलको सम्पादन पाठ बाकसमा दिनुहोस्, र लोड गर्ने बटनमा क्लिक गर्नुहोस्।', # Fuzzy
 	'abusefilter-test-load-filter' => 'फिल्टर आइ डि लोड गर्ने:',
 	'abusefilter-test-submit' => 'जाँच गर्ने',
 	'abusefilter-test-load' => 'लोड गर्ने',
@@ -28404,12 +28406,12 @@ Labels moeten kort zijn en mogen geen speciale tekens bevatten.',
 	'abusefilter-revert-intro' => 'Via dit formulier kan je alle wijzigingen die door het filter via filter $1 gemaakt zijn terugdraaien.
 Gebruik dit hulpmiddel zorgvuldig.',
 	'abusefilter-revert-preview-intro' => 'Hieronder staan de maatregelen die het filter heeft genomen die door deze handeling worden teruggedraaid.
-Controleer de terug te draaien maatregelen zorgvuldig, en klik "Bevestigen" om je selectie te bevestigen.',
+Controleer de terug te draaien maatregelen zorgvuldig, en klik "Bevestigen" om je selectie te bevestigen.', # Fuzzy
 	'abusefilter-revert-success' => 'Je hebt alle maatregelen die door het filter via [[Special:AbuseFilter/$1|filter $1]] zijn genomen teruggedraaid.',
 	'abusefilter-test-intro' => 'Op deze pagina kan je een opgegeven filter controleren met de laatste {{PLURAL:$1|wijzing|$1 wijzingen}}.
-Geef een filternummer in om een bestaand filter te laden en klik daarna op de knop "Laden".',
+Geef een filternummer in om een bestaand filter te laden en klik daarna op de knop "Laden".', # Fuzzy
 	'abusefilter-test-syntaxerr' => 'Het filter dat je hebt ingevoerd bevat een syntaxisfout.
-Door op "Syntaxis controleren" te klikken krijg je een volledige toelichting.',
+Door op "Syntaxis controleren" te klikken krijg je een volledige toelichting.', # Fuzzy
 	'abusefilter-examine-intro' => 'Via deze pagina kan je de door het filter aangemaakte variabelen voor een individuele wijziging onderzoeken, en deze testen tegen filters.',
 	'abusefilter-examine-notfound' => 'De wijziging die je hebt opgevraagd is niet aangetroffen.',
 	'abusefilter-examine-incompatible' => 'Het filter ondersteunt de wijziging die je hebt opgevraagd niet',
@@ -29202,7 +29204,7 @@ Accions de revocar : $5 ($6)',
 	'abusefilter-revert-periodend' => 'Fin del periòde :',
 	'abusefilter-revert-search' => 'Seleccionar las accions',
 	'abusefilter-revert-filter' => 'Filtre :',
-	'abusefilter-revert-preview-intro' => 'Las accions entrepresas per aqueste filtre e que seràn revocadas per aquesta accion son afichadas çaijós. Verificatz-las amb atencion e clicatz « Confirmar » per confirmar la seleccion.',
+	'abusefilter-revert-preview-intro' => 'Las accions entrepresas per aqueste filtre e que seràn revocadas per aquesta accion son afichadas çaijós. Verificatz-las amb atencion e clicatz « Confirmar » per confirmar la seleccion.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Confirmar',
 	'abusefilter-revert-success' => "Avètz revocat amb succès totas las accions entrepresas pel filtre d'abuses degut al [[Special:AbuseFilter/$1|filtre $1]]",
 	'abusefilter-revert-reason' => 'Revocacion automatica de totas las accions entrepresas pel filtre $1.
@@ -29210,7 +29212,7 @@ Rason balhada : $2',
 	'abusefilter-revert-reasonfield' => 'Motiu :',
 	'abusefilter-test' => 'Testar un filtre amb las modificacions precedentas',
 	'abusefilter-test-intro' => 'Aquesta pagina vos permet de verificar un filtre entrat dins la bóstia çaijós amb las $1 darrièras {{PLURAL:$1|modificacion|modificacions}}.
-Per cargar un filtre existent, picatz son ID dins la bóstia en dejós de la bóstia de tèxte e quichatz sul boton « Cargar ».',
+Per cargar un filtre existent, picatz son ID dins la bóstia en dejós de la bóstia de tèxte e quichatz sul boton « Cargar ».', # Fuzzy
 	'abusefilter-test-legend' => 'Tèst de filtre',
 	'abusefilter-test-load-filter' => "Cambiar lo filtre amb l'ID :",
 	'abusefilter-test-submit' => 'Testar',
@@ -29221,7 +29223,7 @@ Per cargar un filtre existent, picatz son ID dins la bóstia en dejós de la bó
 	'abusefilter-test-page' => 'Modificacions aportadas a la pagina :',
 	'abusefilter-test-shownegative' => 'Afichar los cambiaments que correspòndon pas al filtre',
 	'abusefilter-test-syntaxerr' => "Lo filtre qu'avètz picat conten una error de sintaxi.
-Podètz recebre una explicacion completa en clicant sul boton « Verificar la sintaxi ».",
+Podètz recebre una explicacion completa en clicant sul boton « Verificar la sintaxi ».", # Fuzzy
 	'abusefilter-changeslist-examine' => 'examinar',
 	'abusefilter-examine' => 'Examinar de modificacions individualament',
 	'abusefilter-examine-intro' => "Aquesta pagina vos permet d'examinar las variablas generidas pel filtre dels abuses per de modificacions individualas e las testar amb los filtres.",
@@ -30184,7 +30186,7 @@ Agzione, wu rigg'gängisch gmachd werren: $5 ($6)",
 	'abusefilter-revert-search' => 'Agzione wehle:',
 	'abusefilter-revert-filter' => 'Filda:',
 	'abusefilter-revert-preview-intro' => 'Une sin die Agzione vum Missbraisch-Filda, wu dodmid rigggängisch gmachd werren.
-Gugg druff un drigg doan uff „Bschdedische“, ums auszufiere.',
+Gugg druff un drigg doan uff „Bschdedische“, ums auszufiere.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Bschdedische',
 	'abusefilter-revert-success' => "Du hoschd alli Agzione rigg'gängisch gmachd, wu vum Missbraisch-Filda noch [[Special:AbuseFilter/$1|Filda $1]] gmachd worre sin.",
 	'abusefilter-revert-reason' => 'Zriggsedze vun alle Agzione vunde Missbraisch-Filda weschem Filda $1.
@@ -30192,7 +30194,7 @@ Oagewene Grund: $2',
 	'abusefilter-revert-reasonfield' => 'Bgrindung:',
 	'abusefilter-test' => "De Filda oan frijare B'aweidunge teschde",
 	'abusefilter-test-intro' => 'Midde Said kennen Filda oande ledschde $1 {{PLURAL: $1|Änarung|Änarunge}} iwabriefd werre.
-Umän Filda, wus schun gewe dud, zu laade, gibschd die Filda-ID une ins Feld oi un drigschd uff "Laade".',
+Umän Filda, wus schun gewe dud, zu laade, gibschd die Filda-ID une ins Feld oi un drigschd uff "Laade".', # Fuzzy
 	'abusefilter-test-legend' => 'Filda teschde',
 	'abusefilter-test-load-filter' => 'Filda-ID laade:',
 	'abusefilter-test-submit' => 'Teschd',
@@ -30203,7 +30205,7 @@ Umän Filda, wus schun gewe dud, zu laade, gibschd die Filda-ID une ins Feld oi 
 	'abusefilter-test-page' => 'Änarunge onde Said:',
 	'abusefilter-test-shownegative' => 'Zaisch Änarunge, wu ned uff de Filda basse dun',
 	'abusefilter-test-syntaxerr' => 'Doin Filda hodn Sindaxfehla.
-Fa waidares gligschd uff „Sindaxbriefung“.',
+Fa waidares gligschd uff „Sindaxbriefung“.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'unasuche',
 	'abusefilter-examine' => 'Änzelni Änarunge nochgugge',
 	'abusefilter-examine-intro' => 'Uff de Said konschd die Vaänalische, wude Missbraisch-Filda fa ä Änarung gmachd hod, unasuche un geschede Filda teschde.',
@@ -31054,7 +31056,7 @@ Assion da porté andré: $5 ($6)",
 	'abusefilter-revert-search' => "Selessioné j'assion",
 	'abusefilter-revert-filter' => 'Filtr:',
 	'abusefilter-revert-preview-intro' => "Sota a-i son j'assion fàite dal filtr contra j'abus che a saran revocà da cost'assion.
-Për piasì, ch'a-j contròla con atension, e che sgnaca \"confirmé\" për confirmé soa selession.",
+Për piasì, ch'a-j contròla con atension, e che sgnaca \"confirmé\" për confirmé soa selession.", # Fuzzy
 	'abusefilter-revert-confirm' => 'Conferma',
 	'abusefilter-revert-success' => "A l'ha revocà tute j'assion fàite dal filtr contra j'abus dovùe a [[Special:AbuseFilter/$1|filtr $1]].",
 	'abusefilter-revert-reason' => "Anulament automàtich ëd tute j'assion fàite dal filtr ëd sicurëssa dovùe al filtr $1.
@@ -31062,7 +31064,7 @@ Rason dàita: $2",
 	'abusefilter-revert-reasonfield' => 'Rason:',
 	'abusefilter-test' => 'Prové un filtr an sle veje modìfiche',
 	'abusefilter-test-intro' => 'Sta pàgina a-j përmët ëd verifiché un filtr anserì ant la casela sì-sota an dovrand {{PLURAL:$1|l\'ùltima modìfica|j\'ùltime $1 modìfiche}}.
-Për carié un filtr esistent, ch\'a buta sò identificativ ant la casela sota la casela testual ëd modìfica, e ch\'a sgnaca ël boton "Carié".',
+Për carié un filtr esistent, ch\'a buta sò identificativ ant la casela sota la casela testual ëd modìfica, e ch\'a sgnaca ël boton "Carié".', # Fuzzy
 	'abusefilter-test-legend' => 'Preuva dël filtr',
 	'abusefilter-test-load-filter' => "Carié ël nùmer d'identificassion dël filtr:",
 	'abusefilter-test-submit' => 'Preuva',
@@ -31073,7 +31075,7 @@ Për carié un filtr esistent, ch\'a buta sò identificativ ant la casela sota l
 	'abusefilter-test-page' => 'Cambi fàit a la pàgina:',
 	'abusefilter-test-shownegative' => 'Smon-e le modìfiche nen pijà an considerassion dal filtr',
 	'abusefilter-test-syntaxerr' => "El filtr ch'a l'ha anserì a contnìa n'eror ëd sintassi.
-A peul arsèive na spiegassion completa an sgnacand ël boton \"Controlé la sintassi\".",
+A peul arsèive na spiegassion completa an sgnacand ël boton \"Controlé la sintassi\".", # Fuzzy
 	'abusefilter-changeslist-examine' => 'esàmina',
 	'abusefilter-examine' => 'Esaminé dle modìfiche individuaj',
 	'abusefilter-examine-intro' => "Sta pàgina a-j përmët d'esaminé le variàbij generà dal Filtr contra j'abus për na modìfica individual, e ëd proveje con ij filtr.",
@@ -31631,7 +31633,7 @@ Ações a reverter: $5 ($6)',
 	'abusefilter-revert-search' => 'Selecionar ações',
 	'abusefilter-revert-filter' => 'Filtro:',
 	'abusefilter-revert-preview-intro' => 'Abaixo estão as alterações feitas pelo filtro de abusos que serão revertidas por esta operação.
-Por favor, verifique-as cuidadosamente e clique "confirmar" para confirmar a sua seleção.',
+Por favor, verifique-as cuidadosamente e clique "confirmar" para confirmar a sua seleção.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Confirmar',
 	'abusefilter-revert-success' => 'Reverteu todas as alterações feitas pelo filtro de abusos devido ao [[Special:AbuseFilter/$1|filtro $1]].',
 	'abusefilter-revert-reason' => 'Reversão automática de todas as alterações feitas pelo filtro de abusos devido ao filtro $1.
@@ -31639,7 +31641,7 @@ Motivo dado: $2',
 	'abusefilter-revert-reasonfield' => 'Motivo:',
 	'abusefilter-test' => 'Testar um filtro nas edições anteriores',
 	'abusefilter-test-intro' => 'Esta página permite-lhe verificar o filtro introduzido na caixa abaixo {{PLURAL:$1|na última alteração|nas últimas $1 alterações}}.
-Para carregar um filtro existente, insira o ID do filtro na caixa abaixo da caixa de edição, e clique o botão "Carregar".',
+Para carregar um filtro existente, insira o ID do filtro na caixa abaixo da caixa de edição, e clique o botão "Carregar".', # Fuzzy
 	'abusefilter-test-legend' => 'Teste de filtro',
 	'abusefilter-test-load-filter' => 'Carregar filtro com ID:',
 	'abusefilter-test-submit' => 'Testar',
@@ -31650,7 +31652,7 @@ Para carregar um filtro existente, insira o ID do filtro na caixa abaixo da caix
 	'abusefilter-test-page' => 'Alterações à página:',
 	'abusefilter-test-shownegative' => 'Mostrar alterações que não correspondam ao filtro',
 	'abusefilter-test-syntaxerr' => 'O filtro que introduziu continha um erro de sintaxe.
-Para ver uma explicação completa clique o botão "Verificar sintaxe".',
+Para ver uma explicação completa clique o botão "Verificar sintaxe".', # Fuzzy
 	'abusefilter-changeslist-examine' => 'examinar',
 	'abusefilter-examine' => 'Examinar alterações individuais',
 	'abusefilter-examine-intro' => 'Esta página permite-lhe examinar as variáveis geradas pelo Filtro de Abusos para uma alteração individual, e testá-la com os filtros.',
@@ -32538,7 +32540,7 @@ Acțiunile ce vor fi anulate: $5 ($6)',
 	'abusefilter-revert-search' => 'Marchează acțiunile',
 	'abusefilter-revert-filter' => 'Filtru:',
 	'abusefilter-revert-preview-intro' => 'Mai jos sunt acțiunile întreprinse de filtrul de abuzuri care vor fi anulate prin această acțiune.
-Vă rugăm să le verificați cu atenție și să apăsați pe "Confirmă" pentru a confirma selecția.',
+Vă rugăm să le verificați cu atenție și să apăsați pe "Confirmă" pentru a confirma selecția.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Confirmă',
 	'abusefilter-revert-success' => 'Ați anulat toate acțiunile filtrului de abuzuri datorate [[Special:AbuseFilter/$1|regulii $1]].',
 	'abusefilter-revert-reason' => 'Revenire automată a tuturor acțiunilor întreprinse de către abuzarea filtrului din cauza filtrului $1.
@@ -32546,7 +32548,7 @@ Motivul dat: $2',
 	'abusefilter-revert-reasonfield' => 'Motiv:',
 	'abusefilter-test' => 'Testați un filtru împotriva editărilor anterioare',
 	'abusefilter-test-intro' => 'Această pagină vă permite să verificați regula din căsuța de mai jos față de {{PLURAL:$1|ultima|ultimele}} {{PLURAL:$1|schimbare|$1 schimbări}}.
-Pentru a încărca o regulă existentă, introduceți IDul regulii în căsuța de mai jos și apăsați pe butonul "Încarcă".',
+Pentru a încărca o regulă existentă, introduceți IDul regulii în căsuța de mai jos și apăsați pe butonul "Încarcă".', # Fuzzy
 	'abusefilter-test-legend' => 'Testarea filtrului',
 	'abusefilter-test-load-filter' => 'Încarcă identitatea filtrului:',
 	'abusefilter-test-submit' => 'Testează',
@@ -32557,7 +32559,7 @@ Pentru a încărca o regulă existentă, introduceți IDul regulii în căsuța 
 	'abusefilter-test-page' => 'Schimbări aduse paginii:',
 	'abusefilter-test-shownegative' => 'Arată schimbările care nu se potrivesc filtrului',
 	'abusefilter-test-syntaxerr' => 'Regula pe care ați introdus-o conține o eroare de sintaxă.
-Puteți primi o explicație completă apăsând pe butonul „Verifică sintaxa”.',
+Puteți primi o explicație completă apăsând pe butonul „Verifică sintaxa”.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'examinează',
 	'abusefilter-examine' => 'Examinare schimbări individuale',
 	'abusefilter-examine-intro' => 'Această pagină vă permite să examinați variabilele generate de filtrul de abuzuri pentru o modificare și să o treceți prin filtre.',
@@ -32972,7 +32974,7 @@ Aziune ca honne da essere reconvertite: $5 ($6)",
 	'abusefilter-revert-search' => "Scacchie l'aziune",
 	'abusefilter-revert-filter' => 'Filtre:',
 	'abusefilter-revert-preview-intro' => "Aqquà d'abbasce ce stonne elengate le aziune combiute da 'u filtre de le abbuse ca honne da essere repristenate da quèste aziune.
-Se preghe de verifecà attentamènde, e de cazzà \"conferme\" pè confermà 'a selezione.",
+Se preghe de verifecà attentamènde, e de cazzà \"conferme\" pè confermà 'a selezione.", # Fuzzy
 	'abusefilter-revert-confirm' => 'Conferme',
 	'abusefilter-revert-success' => " Tu hé repristenate totte le aziune combiute da 'u filtre de le abbuse a cause d'u [[Special:AbuseFilter/$1|filtre $1]].",
 	'abusefilter-revert-reason' => "Repristene automateche de totte le aziune combiute da 'u filtre de le abbuse a cause d'u filtre $1.
@@ -32980,7 +32982,7 @@ Raggione date: $2",
 	'abusefilter-revert-reasonfield' => 'Mutive:',
 	'abusefilter-test' => "Prove 'nu filtre condre le cangiaminde precedende",
 	'abusefilter-test-intro' => "Quèste pagene te conzente de condrollà 'nu filtre 'nzerite jndr'à caselle aqquà d'abbasce condre le urteme \$1 {{PLURAL:\$1|cangiaminde|cangiaminde}}.
-Pè carecà 'nu filtre esistende, diggetà l'ID d'u filtre jndr'à caselle sutte 'a caselle de teste de le cangiaminde, e cazze 'u pulsande \"Careche\".",
+Pè carecà 'nu filtre esistende, diggetà l'ID d'u filtre jndr'à caselle sutte 'a caselle de teste de le cangiaminde, e cazze 'u pulsande \"Careche\".", # Fuzzy
 	'abusefilter-test-legend' => 'Test de le filtre',
 	'abusefilter-test-load-filter' => "Careche 'u filtre ID:",
 	'abusefilter-test-submit' => 'Test',
@@ -32991,7 +32993,7 @@ Pè carecà 'nu filtre esistende, diggetà l'ID d'u filtre jndr'à caselle sutte
 	'abusefilter-test-page' => "Cangiaminde fatte a 'a pàgene:",
 	'abusefilter-test-shownegative' => "Fàce vedè sule le cangiaminde ca non ge sonde correspondende ad 'u filtre",
 	'abusefilter-test-syntaxerr' => "'U filtre ca tu hé fatte trasère tène 'nu errore de sindasse.
-Tu pòte avè 'na spiegaziune comblete ce cazze 'u pulsande \"Condrolle Sindasse\".",
+Tu pòte avè 'na spiegaziune comblete ce cazze 'u pulsande \"Condrolle Sindasse\".", # Fuzzy
 	'abusefilter-changeslist-examine' => 'esamine',
 	'abusefilter-examine' => 'Esamine le cangiaminde individuale',
 	'abusefilter-examine-intro' => "Quèste pagene conzente de esaminà le variabbele generate da 'u filtre de le abbuse pè 'nu cangiaminde individuale, e prove jidde condre le filtre.",
@@ -33842,7 +33844,7 @@ $messages['rue'] = array(
 	'abusefilter-revert-search' => 'Выбер дїй',
 	'abusefilter-revert-filter' => 'Філтер:',
 	'abusefilter-revert-preview-intro' => 'Ниже сурь уведены дїї выконаны філтром знеужываня, котры тов дїёв будуть навернуты.
-Старостливо їх перевірте і клікнутём на "підтвердити" можете їх навернутя схвалити.',
+Старостливо їх перевірте і клікнутём на "підтвердити" можете їх навернутя схвалити.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Підтвердити',
 	'abusefilter-revert-success' => '{{GRAMMAR:|Вернув|Вернула|Вернули}} сьте вшыткы дїї, котры філтер знеужываня выконав на базї [[Special:AbuseFilter/$1|філтру $1]].',
 	'abusefilter-revert-reason' => 'Автоматічне вернутя вшыткых змін, котры філтер знеужытя выконав про філтер $1.
@@ -33850,7 +33852,7 @@ $messages['rue'] = array(
 	'abusefilter-revert-reasonfield' => 'Прічіна:',
 	'abusefilter-test' => 'Перевірити філтер на послїднїх змінах',
 	'abusefilter-test-intro' => 'На тій сторінцї можете отестовати філтер, котрый задате до едіточного поля ниже, на {{PLURAL:$1|послїднїй змінї|послїднїх $1 змінах}}.
-Уж /ствуючій філтер можете хосновати так, же ёго ідентіфікатор напичете до рамику під едітачным полём і клікнете на клапку „Начітати“.',
+Уж /ствуючій філтер можете хосновати так, же ёго ідентіфікатор напичете до рамику під едітачным полём і клікнете на клапку „Начітати“.', # Fuzzy
 	'abusefilter-test-legend' => 'Перевірка філтру',
 	'abusefilter-test-load-filter' => 'Начітати філтер з ID:',
 	'abusefilter-test-submit' => 'Перевірити',
@@ -33861,7 +33863,7 @@ $messages['rue'] = array(
 	'abusefilter-test-page' => 'Зміны на сторінцї:',
 	'abusefilter-test-shownegative' => 'Указати зміны, котры не пасують про філтер',
 	'abusefilter-test-syntaxerr' => 'Уведженый філтер обсягує сінтаксічну хыну.
-Детайлнїше пояснїня можете здобыти клікнутём на клапку „Перевірити сінтаксіс“.',
+Детайлнїше пояснїня можете здобыти клікнутём на клапку „Перевірити сінтаксіс“.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'проскумати',
 	'abusefilter-examine' => 'Проскумати єднотвливы зміны',
 	'abusefilter-examine-intro' => 'На тій сторінцї будете мочі у зволеного едітованя проскумати перемінны, котры про них Філтер знеужываня выґенеровав, і отестовати на ній філтры.',
@@ -34427,7 +34429,7 @@ $3 {{PLURAL:$3|аргумент кэтэһиллэр|аргуменнаах бу
 	'abusefilter-revert-search' => 'Дьайыылары талыы',
 	'abusefilter-revert-filter' => 'Сиидэ:',
 	'abusefilter-revert-preview-intro' => 'Аллара омсо сиидэтэ оҥорбут дьайыыларыттан төннөрүллэллэрэ көрдөрүлүннэ.
-Бука диэн сыныйан көрөн баран "бигэргэтии" диэни баттаа.',
+Бука диэн сыныйан көрөн баран "бигэргэтии" диэни баттаа.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Бигэргэтии',
 	'abusefilter-revert-success' => '[[Special:AbuseFilter/$1|$1 сиидэ]] оҥорбут дьайыыларын барытын көтүрдүҥ.',
 	'abusefilter-revert-reason' => '$1 сиидэ оҥорбут дьайыыларын аптамаатынан көтүрүү.
@@ -34435,7 +34437,7 @@ $3 {{PLURAL:$3|аргумент кэтэһиллэр|аргуменнаах бу
 	'abusefilter-revert-reasonfield' => 'Төннөрүү төрүөтэ:', # Fuzzy
 	'abusefilter-test' => 'Урут оҥоһуллубут көннөрүүлэргэ сиидэни тургутуу',
 	'abusefilter-test-intro' => 'Бу сирэй аллараа түннүккэ киллэриллибит сиидэни бүтэһик {{PLURAL:$1|$1 көннөрүү көмөтүнэн|$1 көннөрүүлэр көмөлөрүнэн}} тургутарга туттуллар.
-Баар сиидэни киллэрэргэ кини нүөмэрин тиэкис түннүгэр (эрэдээксийэ түннүгүн анныгар) суруй уонна "Киллэр" тимэҕи баттаа.',
+Баар сиидэни киллэрэргэ кини нүөмэрин тиэкис түннүгэр (эрэдээксийэ түннүгүн анныгар) суруй уонна "Киллэр" тимэҕи баттаа.', # Fuzzy
 	'abusefilter-test-legend' => 'Сиидэни тургутуу',
 	'abusefilter-test-load-filter' => 'Маннык нүөмэрдээх сиидэни киллэр:',
 	'abusefilter-test-submit' => 'Тургутуу',
@@ -34446,7 +34448,7 @@ $3 {{PLURAL:$3|аргумент кэтэһиллэр|аргуменнаах бу
 	'abusefilter-test-page' => 'Сирэйгэ оҥоһуллубут уларытыылар:',
 	'abusefilter-test-shownegative' => 'Сиидэҕэ түбэспэт уларытыылары көрдөр',
 	'abusefilter-test-syntaxerr' => 'Килэрбит сиидэҥ синтаксиска сыыһалаах.
-Сиһилии бу туһунан "Синтаксиһын тургут" тимэҕи баттаатаххына билиэххин сөп.',
+Сиһилии бу туһунан "Синтаксиһын тургут" тимэҕи баттаатаххына билиэххин сөп.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'көрөргө',
 	'abusefilter-examine' => 'Биирдиилээн уларытыылары көрүү',
 	'abusefilter-examine-intro' => 'Бу сирэй көмөтүнэн омсо сиидэтэ оҥорбут барылларын биирдиилээн көрүөххэ сөп уонна олору тургутан көрүөххэ сөп.',
@@ -34992,7 +34994,7 @@ A brief description of the abuse rule which your action matched is: $1", # Fuzzy
 	'abusefilter-test-page' => 'පිටුවට සිදු කෙරූ වෙනස්කම්:',
 	'abusefilter-test-shownegative' => 'පෙරහනට නොගැලපෙන වෙනස්කම් පෙන්වන්න',
 	'abusefilter-test-syntaxerr' => 'ඔබ යෙදූ පෙරහන සතුව කාරකරීති දෝෂයක් ඇත.
-ඔබට "කාරක රීති පිරික්සන්න" බොත්තම එබීමෙන් සම්පූර්ණ පැහැදිලිකිරීමක් ලබා ගත හැක.',
+ඔබට "කාරක රීති පිරික්සන්න" බොත්තම එබීමෙන් සම්පූර්ණ පැහැදිලිකිරීමක් ලබා ගත හැක.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'විභාග කරන්න',
 	'abusefilter-examine' => 'තනි පිටු විභාග කරන්න',
 	'abusefilter-examine-legend' => 'වෙනස්කම් තෝරන්න',
@@ -35384,7 +35386,7 @@ Prosím, buďte opatrní pri používaní tohto nástroja.',
 	'abusefilter-revert-search' => 'Vyberte operácie',
 	'abusefilter-revert-filter' => 'Filter:',
 	'abusefilter-revert-preview-intro' => 'Dolu je zoznam operácií vykonaných filtrom zneužitia, ktoré táto operácia vráti.
-Prosím, pozorne ich skontrolujte a potvrďte svoj výber kliknutím na na „Potvrdiť“.',
+Prosím, pozorne ich skontrolujte a potvrďte svoj výber kliknutím na na „Potvrdiť“.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Potvrdiť',
 	'abusefilter-revert-success' => 'Vrátili ste všetky zmeny vykonané filtrom zneužitia [[Special:AbuseFilter/$1|$1]].',
 	'abusefilter-revert-reason' => 'Automatické vrátenie všetkých operácií vykonaných filtrom zneužitia $1.
@@ -35392,7 +35394,7 @@ Uvedený dôvod: $2',
 	'abusefilter-revert-reasonfield' => 'Dôvod:',
 	'abusefilter-test' => 'Otestovať filter na existujúcich úpravách',
 	'abusefilter-test-intro' => 'Táto stránka vám umožňuje otestovať filter zadaný do poľa nižšie na {{PLURAL:$1|posledej úprave|posledých $1 úpravách}}.
-Existujúci filter načítate napísaním jeho ID do poľa pod poľom úprav a kliknuím na tlačidlo „Načítať“.',
+Existujúci filter načítate napísaním jeho ID do poľa pod poľom úprav a kliknuím na tlačidlo „Načítať“.', # Fuzzy
 	'abusefilter-test-legend' => 'Test filtra',
 	'abusefilter-test-load-filter' => 'Načítať filter s ID:',
 	'abusefilter-test-submit' => 'Otestovať',
@@ -35403,7 +35405,7 @@ Existujúci filter načítate napísaním jeho ID do poľa pod poľom úprav a k
 	'abusefilter-test-page' => 'Vykonané zmeny stránky:',
 	'abusefilter-test-shownegative' => 'Zobraziť úpravy, ktoré nezodpovedajú filtru',
 	'abusefilter-test-syntaxerr' => 'Filter, ktorý ste zadali obsahoval syntaktickú chybu.
-Kompletné vysvetlenie dostanete po kliknutí na tlačidlo „Skontrolovať syntax“.',
+Kompletné vysvetlenie dostanete po kliknutí na tlačidlo „Skontrolovať syntax“.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'preskúmať',
 	'abusefilter-examine' => 'Preskúmať jednotlivé zmeny',
 	'abusefilter-examine-intro' => 'Táto stránka vám umožňuje preskúmať premenné vytvorené Filtrom zneužití pre jednotlivé zmeny a otestovať ich voči filtrom.',
@@ -35818,7 +35820,7 @@ Dejanja, ki bodo vrnjena: $5 ($6)',
 	'abusefilter-revert-search' => 'Izberite dejanja',
 	'abusefilter-revert-filter' => 'Filter:',
 	'abusefilter-revert-preview-intro' => 'Spodaj se nahajajo dejanja filtra zlorab, ki bodo vrnjena s tem dejanjem.
-Prosimo, skrbno jih preverite in kliknite »Potrdi«, da potrdite izbiro.',
+Prosimo, skrbno jih preverite in kliknite »Potrdi«, da potrdite izbiro.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Potrdi',
 	'abusefilter-revert-success' => 'Vrnili ste vsa dejanja filtra zlorab zaradi [[Special:AbuseFilter/$1|filtra $1]].',
 	'abusefilter-revert-reason' => 'Samodejna vrnitev vseh dejanj filtra zlorab zaradi filtra $1.
@@ -35826,7 +35828,7 @@ Podan razlog: $2',
 	'abusefilter-revert-reasonfield' => 'Razlog:',
 	'abusefilter-test' => 'Preizkusi filter s preteklimi urejanji',
 	'abusefilter-test-intro' => 'Ta stran vam omogoča, da preverite filter, vnesen v spodnje polje, ob {{PLURAL:$1|zadnjo $1 spremembo|zadnji $1 spremembi|zadnje $1 spremembe|zadnjih $1 sprememb}}.
-Za nalaganje obstoječega filtra vpišite njegov ID v polje pod urejevalnim besedilnim poljem in kliknite gumb »Naloži«.',
+Za nalaganje obstoječega filtra vpišite njegov ID v polje pod urejevalnim besedilnim poljem in kliknite gumb »Naloži«.', # Fuzzy
 	'abusefilter-test-legend' => 'Preizkušanje filtrov',
 	'abusefilter-test-load-filter' => 'Naloži filter ID:',
 	'abusefilter-test-submit' => 'Preizkusi',
@@ -35837,7 +35839,7 @@ Za nalaganje obstoječega filtra vpišite njegov ID v polje pod urejevalnim bese
 	'abusefilter-test-page' => 'Spremembe na strani:',
 	'abusefilter-test-shownegative' => 'Prikaži spremembe, ki se ne ujemajo s filtrom',
 	'abusefilter-test-syntaxerr' => 'Vnesen filter vsebuje skladenjsko napako.
-Polno pojasnilo lahko dobite s klikom na gumb »Preveri skladnjo«.',
+Polno pojasnilo lahko dobite s klikom na gumb »Preveri skladnjo«.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'preuči',
 	'abusefilter-examine' => 'Preuči posamezne spremembe',
 	'abusefilter-examine-intro' => 'Ta stran vam omogoča preverjanje spremenljivk, ki jih ustvari filter zlorab, za posamezno spremembo in jo preizkusi ob filtrih.',
@@ -38866,7 +38868,7 @@ $messages['th'] = array(
 	'abusefilter-revert-search' => 'เลือกการกระทำ',
 	'abusefilter-revert-filter' => 'ตัวกรอง:',
 	'abusefilter-revert-preview-intro' => 'ด้านล่างนี้เป็นการกระทำโดยตัวกรองการละเมิดกฎที่จะถูกย้อนในปฏิบัติการนี้
-โปรดตรวจสอบอย่างระมัดระวัง และคลิก "ยืนยัน" เพื่อยืนยันการเลือกของคุณ',
+โปรดตรวจสอบอย่างระมัดระวัง และคลิก "ยืนยัน" เพื่อยืนยันการเลือกของคุณ', # Fuzzy
 	'abusefilter-revert-confirm' => 'ยืนยัน',
 	'abusefilter-revert-success' => 'คุณย้อนการกระทำทั้งหมดโดยตัวกรองการละเมิดกฎเนื่องจาก[[Special:AbuseFilter/$1|ตัวกรอง $1]] แล้ว',
 	'abusefilter-revert-reason' => 'ย้อนการกระทำทั้งหมดโดยตัวกรองการละเมิดกฎเนื่องจากตัวกรอง $1 แล้ว
@@ -38874,7 +38876,7 @@ $messages['th'] = array(
 	'abusefilter-revert-reasonfield' => 'เหตุผล:',
 	'abusefilter-test' => 'ทดสอบตัวกรองกับการแก้ไขที่ผ่านมา',
 	'abusefilter-test-intro' => 'หน้านี้ให้คุณตรวจสอบตัวกรองที่กรอกในกล่องด้านล่างกับการแก้ไขล่าสุด $1 การแก้ไข
-ในการโหลดตัวกรองที่มีอยู่แล้ว พิมพ์หมายเลขประจำตัวกรอกในกล่องด้านล่างกล่องข้อความแก้ไข และคลิกปุ่ม "โหลด"',
+ในการโหลดตัวกรองที่มีอยู่แล้ว พิมพ์หมายเลขประจำตัวกรอกในกล่องด้านล่างกล่องข้อความแก้ไข และคลิกปุ่ม "โหลด"', # Fuzzy
 	'abusefilter-test-legend' => 'การทดสอบตัวกรอง',
 	'abusefilter-test-load-filter' => 'โหลดตัวกรองหมายเลข:',
 	'abusefilter-test-submit' => 'ทดสอบ',
@@ -38885,7 +38887,7 @@ $messages['th'] = array(
 	'abusefilter-test-page' => 'การเปลี่ยนแปลงไปยังหน้า:',
 	'abusefilter-test-shownegative' => 'แสดงการเปลี่ยนแปลงที่ไม่ตรงกับตัวกรอง',
 	'abusefilter-test-syntaxerr' => 'ตัวกรองที่คุณกรอกนั้นมีวากยสัมพันธ์ผิดพลาด
-คุณสามารถดูคำอธิบายเต็มได้โดยคลิกปุ่ม "ตรวจสอบวากยสัมพันธ์"',
+คุณสามารถดูคำอธิบายเต็มได้โดยคลิกปุ่ม "ตรวจสอบวากยสัมพันธ์"', # Fuzzy
 	'abusefilter-changeslist-examine' => 'ตรวจสอบ',
 	'abusefilter-examine' => 'ตรวจสอบการเปลี่ยนแปลงจำเพาะ',
 	'abusefilter-examine-intro' => 'หน้านี้ให้คุณตรวจสอบตัวแปรที่ตัวกรองการละเมิดกฎสร้างสำหรับการเปลี่ยนแปลงจำเพาะ และทดสอบกับตัวกรอง',
@@ -39616,14 +39618,14 @@ Mag-ingat lamang sana sa paggamit ng kagamitang ito.',
 	'abusefilter-revert-search' => 'Piliin ang mga kilos',
 	'abusefilter-revert-filter' => 'Pansala:',
 	'abusefilter-revert-preview-intro' => 'Nasa ibaba ang lahat ng mga kilos na isinagawa ng pansala ng pang-aabuso na ibabalik sa dati ng galaw na ito.
-Pakisuring may pag-iingat ang mga ito, at pindutin ang "tiyakin" upang tiyakin ang pinili mo.',
+Pakisuring may pag-iingat ang mga ito, at pindutin ang "tiyakin" upang tiyakin ang pinili mo.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Tiyakin',
 	'abusefilter-revert-success' => 'Ibinalik mong lahat ang ng mga kilos na isinagawa ng pansala ng pang-aabuso dahil sa [[Special:AbuseFilter/$1|pansalang $1]].',
 	'abusefilter-revert-reason' => 'Kusang pagbabalik sa dati para sa lahat ng mga kilos na ginawa ng pansala ng pang-aabuso dahil sa pansalang $1.
 Ibinigay na dahilan: $2',
 	'abusefilter-revert-reasonfield' => 'Dahilan para sa pagbabalik sa dati:', # Fuzzy
 	'abusefilter-test' => 'Subukin ang isang pansala laban sa dating mga pagbabago',
-	'abusefilter-test-intro' => 'Nagpapahintulot ang pahinang ito na masuri mo ang isang pansalang ipinasok sa loob ng kahong nasa ibaba laban sa huling {{PLURAL:$1|pagbabago|mga pagbabago}}. Upang maikarga ang isang umiiral na pansala, makinilyahin ang ID ng pansalang ito sa loob ng kahong nasa ibaba ng kahong pangteksto ng pagbabago, at pindutin ang pindutang "Ikarga".',
+	'abusefilter-test-intro' => 'Nagpapahintulot ang pahinang ito na masuri mo ang isang pansalang ipinasok sa loob ng kahong nasa ibaba laban sa huling {{PLURAL:$1|pagbabago|mga pagbabago}}. Upang maikarga ang isang umiiral na pansala, makinilyahin ang ID ng pansalang ito sa loob ng kahong nasa ibaba ng kahong pangteksto ng pagbabago, at pindutin ang pindutang "Ikarga".', # Fuzzy
 	'abusefilter-test-legend' => 'Pagsubok ng pansala',
 	'abusefilter-test-load-filter' => 'Ikarga ang ID ng pansala:',
 	'abusefilter-test-submit' => 'Subukin',
@@ -39634,7 +39636,7 @@ Ibinigay na dahilan: $2',
 	'abusefilter-test-page' => 'Mga pagbabagong ginawa sa pahina:',
 	'abusefilter-test-shownegative' => 'Ipakita ang mga pagbabagong hindi tumutugma sa pansala',
 	'abusefilter-test-syntaxerr' => 'Ang ipinasok mong pansala ay naglalaman ng isang kamalian sa palaugnayan.
-Makakatanggap ka ng isang buong paliwanag sa pamamagitan ng pagpindot sa pindutang "Suriin ang Palaugnayan".',
+Makakatanggap ka ng isang buong paliwanag sa pamamagitan ng pagpindot sa pindutang "Suriin ang Palaugnayan".', # Fuzzy
 	'abusefilter-changeslist-examine' => 'siyasatin',
 	'abusefilter-examine' => 'Siyasatin ang magkakabukod na mga pagbabago',
 	'abusefilter-examine-intro' => 'Nagpapahintulot ang pahinang ito na masiyasat mo ang mga pabagu-bagong ginagawa ng Pansala ng Pang-aabuso para sa isang bukod na pagbabago, at subukin ito laban sa mga pansala.',
@@ -40538,14 +40540,14 @@ $3 {{PLURAL:$3|ئۆزگەرگۈچى}} مۆلچەرلەنگەن، ئېرىشكى�
 	'abusefilter-revert-periodend' => 'ئاخىرلىشىش ۋاقتى:',
 	'abusefilter-revert-search' => 'مەشغۇلاتنى تاللاڭ',
 	'abusefilter-revert-filter' => 'سۈزگۈچ:',
-	'abusefilter-revert-preview-intro' => 'تۆۋەندە بۇ قېتىمقى مەشغۇلات ئەسلىگە قايتۇرىدىغان سۈزگۈچنى قالايمىغان ئىشلىتىدىغان مەشغۇلاتلار كۆرسىتىلدى. تۆۋەندىكى ھەر قايسى تۈرلەرنى تەپسىلىي تەكشۈرۈپ، «جەزملە» توپچىنى چېكىپ تاللىشىڭىزنى جەزملەڭ.',
+	'abusefilter-revert-preview-intro' => 'تۆۋەندە بۇ قېتىمقى مەشغۇلات ئەسلىگە قايتۇرىدىغان سۈزگۈچنى قالايمىغان ئىشلىتىدىغان مەشغۇلاتلار كۆرسىتىلدى. تۆۋەندىكى ھەر قايسى تۈرلەرنى تەپسىلىي تەكشۈرۈپ، «جەزملە» توپچىنى چېكىپ تاللىشىڭىزنى جەزملەڭ.', # Fuzzy
 	'abusefilter-revert-confirm' => 'جەزملە',
 	'abusefilter-revert-success' => 'سىز  [[Special:AbuseFilter/$1|سۈزگۈچ $1]] ئېلىپ بارغان ھەممە مەشغۇلاتنى ئەسلىگە قايتۇردىڭىز.',
 	'abusefilter-revert-reason' => 'سۈزگۈچ $1 نىڭ ئېلىپ بارغان ھەممە مەشغۇلاتىنى ئۆزلۈكىدىن ئەسلىگە قايتۇردى،
 سەۋەبى تۆۋەندىكىچە: $2',
 	'abusefilter-revert-reasonfield' => 'سەۋەب:',
 	'abusefilter-test' => 'ئىلگىرىكى تەھرىرلەش ئارقىلىق سۈزگۈچ سىنايدۇ',
-	'abusefilter-test-intro' => 'بۇ بەت سىزنىڭ تۆۋەندىكى قۇتىغا كىرگۈزۈلگەن سۈزگۈچ يېقىنقى $1 {{PLURAL:$1|ئۆزگەرتىش}}نىڭ تەسىرىنى تەكشۈرۈشىڭىزگە يول قويىدۇ. ئەگەر مەۋجۇت  بولغان باشقا سۈزگۈچنى يۈكلەشتە، تۆۋەندىكى قۇتىنىڭ ئاستىدىكى تېكىست قۇتىسىغا سۈزگۈچنىڭ تەرتىپ نومۇرىنى كىرگۈزۈپ، "يۈكلە" توپچىنى چېكىڭ.',
+	'abusefilter-test-intro' => 'بۇ بەت سىزنىڭ تۆۋەندىكى قۇتىغا كىرگۈزۈلگەن سۈزگۈچ يېقىنقى $1 {{PLURAL:$1|ئۆزگەرتىش}}نىڭ تەسىرىنى تەكشۈرۈشىڭىزگە يول قويىدۇ. ئەگەر مەۋجۇت  بولغان باشقا سۈزگۈچنى يۈكلەشتە، تۆۋەندىكى قۇتىنىڭ ئاستىدىكى تېكىست قۇتىسىغا سۈزگۈچنىڭ تەرتىپ نومۇرىنى كىرگۈزۈپ، "يۈكلە" توپچىنى چېكىڭ.', # Fuzzy
 	'abusefilter-test-legend' => 'سۈزگۈچ سىناق',
 	'abusefilter-test-load-filter' => 'يۈكلىگەن سۈزگۈچ نومۇرى:',
 	'abusefilter-test-submit' => 'سىنا',
@@ -40556,7 +40558,7 @@ $3 {{PLURAL:$3|ئۆزگەرگۈچى}} مۆلچەرلەنگەن، ئېرىشكى�
 	'abusefilter-test-page' => 'بەتنىڭ ئۆزگىرىشى:',
 	'abusefilter-test-shownegative' => 'سۈزگۈچ بىلەن ماسلاشمىغان ئۆزگەرتىشنى كۆرسەت',
 	'abusefilter-test-syntaxerr' => 'سىز كىرگۈزگەن سۈزگۈچنىڭ تىلقۇرما خاتالىقى بار.
-«تىلقۇرما تەكشۈر» توپچىنى چېكىپ تىلقۇرما خاتالىقىنى تەكشۈرۈپ تەپسىلىي چۈشەندۈرۈشكە ئېرىشەلەيسىز.',
+«تىلقۇرما تەكشۈر» توپچىنى چېكىپ تىلقۇرما خاتالىقىنى تەكشۈرۈپ تەپسىلىي چۈشەندۈرۈشكە ئېرىشەلەيسىز.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'تەكشۈرۈش',
 	'abusefilter-examine' => 'ئايرىم ئۆزگىرىشنى تەكشۈر',
 	'abusefilter-examine-intro' => 'بۇ بەت سىزنىڭ سۈيئىستىمال سۈزگۈچ ئارقىلىق مەلۇم قېتىملىق ئايرىم ئۆزگەرتىشكە ئاساسەن پەيدا بولغان ئۆزگەرگۈچى مىقدارنى تەكشۈرۈشىڭىزگە يول قويىدۇ ھەمدە سۈزگۈچ ئارقىلىق سىنايدۇ.',
@@ -41586,7 +41588,7 @@ Azion da anular: $5 ($6)',
 	'abusefilter-revert-search' => 'Selessiona azioni',
 	'abusefilter-revert-filter' => 'Filtro:',
 	'abusefilter-revert-preview-intro' => 'Qua ghe xe le azion fate dal filtro anti abusi che vegnarà anulà da st\'azion.
-Verifica con cura e struca su "Conferma" par confermare la selession.',
+Verifica con cura e struca su "Conferma" par confermare la selession.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Conferma',
 	'abusefilter-revert-success' => 'Te ghè anulà tute le azion fate dal [[Special:AbuseFilter/$1|filtro anti abusi $1]].',
 	'abusefilter-revert-reason' => 'Anulamento automatico de tute le azion fate dal filtro anti abusi $1.
@@ -41594,7 +41596,7 @@ Motivo indicà: $2',
 	'abusefilter-revert-reasonfield' => "Motivassion de l'anulamento:", # Fuzzy
 	'abusefilter-test' => 'Verifica un filtro confrontandolo co le modifiche precedenti',
 	'abusefilter-test-intro' => 'Sta pagina la consente de verificare el filtro indicà nella casella in basso nei confronti de {{PLURAL:$1|l\'ultima modifica|le ultime $1 modifiche}}.
-Par caricare un filtro esistente, digita el relativo identificator ne la casèla soto la casèla de testo e struca "Carica".',
+Par caricare un filtro esistente, digita el relativo identificator ne la casèla soto la casèla de testo e struca "Carica".', # Fuzzy
 	'abusefilter-test-legend' => 'Verifica dei filtri',
 	'abusefilter-test-load-filter' => 'Carga el filtro con ID:',
 	'abusefilter-test-submit' => 'Verifica',
@@ -41605,7 +41607,7 @@ Par caricare un filtro esistente, digita el relativo identificator ne la casèla
 	'abusefilter-test-page' => 'Canbiamenti fati a la pagina:',
 	'abusefilter-test-shownegative' => 'Fà védar le modifiche che no corisponde al filtro',
 	'abusefilter-test-syntaxerr' => 'El filtro inserìo el gà un eror de sintassi.
-Struca su "Verifica sintassi" par la spiegassion conpleta.',
+Struca su "Verifica sintassi" par la spiegassion conpleta.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'esàmina',
 	'abusefilter-examine' => 'Esàmina i singoli canbiamenti',
 	'abusefilter-examine-intro' => 'Sta pagina la consente de esaminare le variabili generà dal filtro anti abusi par na particolare modifica, e de proar el funsionamento dei filtri su de essa.',
@@ -42092,7 +42094,7 @@ Tác vụ sắp bị hồi: $5 ($6)',
 	'abusefilter-revert-search' => 'Chọn tác vụ',
 	'abusefilter-revert-filter' => 'Bộ lọc:',
 	'abusefilter-revert-preview-intro' => 'Dưới đây là các tác vụ do bộ lọc vi phạm thực hiện sẽ được hồi lại theo tác vụ này.
-Xin hãy kiểm tra lại chúng kỹ lưỡng, và nhấn “Xác nhận” để xác nhận sự lựa chọn của bạn.',
+Xin hãy kiểm tra lại chúng kỹ lưỡng, và nhấn “Xác nhận” để xác nhận sự lựa chọn của bạn.', # Fuzzy
 	'abusefilter-revert-confirm' => 'Xác nhận',
 	'abusefilter-revert-success' => 'Bạn đã hồi tất cả các tác vụ của bộ lọc vi phạm vì [[Special:AbuseFilter/$1|bộ lọc $1]].',
 	'abusefilter-revert-reason' => 'Hồi tự động tất cả các tác vụ do bộ lọc vi phạm thực hiện do bộ lọc $1.
@@ -42100,7 +42102,7 @@ Lý do: $2',
 	'abusefilter-revert-reasonfield' => 'Lý do:',
 	'abusefilter-test' => 'Kiểm thử bộ lọc với các sửa đổi trước',
 	'abusefilter-test-intro' => 'Trang này cho phép bạn kiểm tra một bộ lọc được gõ vào hộp dưới đây trên $1 {{PLURAL:$1|sửa đổi|sửa đổi}} cuối.
-Để tải một bộ lọc hiện có, hãy gõ mã bộ lọc vào hộp phía dưới hộp sửa đổi, và nhấn nút “Tải”.',
+Để tải một bộ lọc hiện có, hãy gõ mã bộ lọc vào hộp phía dưới hộp sửa đổi, và nhấn nút “Tải”.', # Fuzzy
 	'abusefilter-test-legend' => 'Đang kiểm thử bộ lọc',
 	'abusefilter-test-load-filter' => 'Tải mã bộ lọc:',
 	'abusefilter-test-submit' => 'Kiểm thử',
@@ -42110,7 +42112,7 @@ Lý do: $2',
 	'abusefilter-test-period-end' => 'Thay đổi thực hiện trước:',
 	'abusefilter-test-page' => 'Các thay đổi tại trang:',
 	'abusefilter-test-shownegative' => 'Hiển thị thay đổi không trùng với bộ lọc',
-	'abusefilter-test-syntaxerr' => 'Bộ lọc được nhập vào có lỗi cú pháp. Hãy bấm nút “Kiểm tra cú pháp” để đọc chi tiết đầy đủ.',
+	'abusefilter-test-syntaxerr' => 'Bộ lọc được nhập vào có lỗi cú pháp. Hãy bấm nút “Kiểm tra cú pháp” để đọc chi tiết đầy đủ.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'kiểm tra',
 	'abusefilter-examine' => 'Kiểm tra từng thay đổi một',
 	'abusefilter-examine-intro' => 'Trang này cho phép bạn kiểm tra các biến do Bộ lọc Vi phạm tạo ra đối với từng thay đổi cụ thể, và kiểm thử nó với các bộ lọc.',
@@ -43012,7 +43014,7 @@ $messages['yue'] = array(
 	'abusefilter-revert-search' => '揀動作',
 	'abusefilter-revert-filter' => '過濾器:',
 	'abusefilter-revert-preview-intro' => '下面係呢個動作將會復原由濫用過濾器嘅動作。
-請小心檢查，再撳『確認』去確認你嘅選擇。',
+請小心檢查，再撳『確認』去確認你嘅選擇。', # Fuzzy
 	'abusefilter-revert-confirm' => '確認',
 	'abusefilter-revert-success' => '你已經復原咗由[[Special:AbuseFilter/$1|過濾器$1]]做咗嘅全部動作。',
 	'abusefilter-revert-reason' => '自動復原由過濾器$1做咗嘅全部動作。
@@ -43020,7 +43022,7 @@ $messages['yue'] = array(
 	'abusefilter-revert-reasonfield' => '復原嘅原因:', # Fuzzy
 	'abusefilter-test' => '用之前嘅編輯去試過濾器',
 	'abusefilter-test-intro' => '呢一版容許你用下面輸入個盒去檢查針對之前$1次更改嘅過濾器。
-要載入現有嘅過濾器，響編輯盒下面盒嘅輸入佢嘅過濾器ID，再撳『載入』掣。',
+要載入現有嘅過濾器，響編輯盒下面盒嘅輸入佢嘅過濾器ID，再撳『載入』掣。', # Fuzzy
 	'abusefilter-test-legend' => '試緊過濾器',
 	'abusefilter-test-load-filter' => '載入過濾器ID:',
 	'abusefilter-test-submit' => '測試',
@@ -43031,7 +43033,7 @@ $messages['yue'] = array(
 	'abusefilter-test-page' => '對頁更改過嘅嘢:',
 	'abusefilter-test-shownegative' => '顯示唔配合過濾器嘅更改',
 	'abusefilter-test-syntaxerr' => '你所輸入嘅過濾器有語法錯誤。
-你可以撳『檢查語法』掣去收一個完整嘅解釋。',
+你可以撳『檢查語法』掣去收一個完整嘅解釋。', # Fuzzy
 	'abusefilter-changeslist-examine' => '查吓',
 	'abusefilter-examine' => '查個別更改',
 	'abusefilter-examine-intro' => '呢一版容許你去查吓一次個別更改由濫用過濾器產生嘅變數，再由過濾器測試。',
