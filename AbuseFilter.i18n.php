@@ -7199,6 +7199,7 @@ $messages['ce'] = array(
 	'abusefilter-list-visibility' => 'Гуш хилар',
 	'abusefilter-list-hitcount' => 'Болх бар',
 	'abusefilter-list-edit' => 'Нисйé',
+	'abusefilter-list-details' => 'Мадарра',
 	'abusefilter-list-limit' => 'Дукхалла:',
 	'abusefilter-list-lastmodified' => 'Тlаьххьара хийцамаш',
 	'abusefilter-list-group' => 'Литтаран тоба',
@@ -7270,6 +7271,8 @@ $messages['ce'] = array(
 	'abusefilter-edit-builder-op-arithmetic-divide' => 'Декъар (/)',
 	'abusefilter-edit-builder-op-arithmetic-pow' => 'Барам (**)',
 	'abusefilter-edit-builder-group-op-comparison' => 'Дустаран оператораш',
+	'abusefilter-edit-builder-op-comparison-lte' => 'Къезиг я нийса (<=)',
+	'abusefilter-edit-builder-op-comparison-gte' => 'Дуккха я нийса (>=)',
 	'abusefilter-edit-builder-group-op-bool' => 'Боолен оператораш',
 	'abusefilter-edit-builder-group-misc' => 'Тайп-тайпанара',
 	'abusefilter-edit-builder-group-funcs' => 'Функцеш',
@@ -7294,6 +7297,7 @@ $messages['ce'] = array(
 	'abusefilter-edit-builder-vars-user-age' => 'Декъашхочун дӀаяздаран хан',
 	'abusefilter-edit-builder-vars-user-name' => 'Декъашхочун цӀе',
 	'abusefilter-edit-builder-vars-user-groups' => 'Декъашхочун тобанаш',
+	'abusefilter-edit-builder-vars-user-blocked' => 'Блоктоьхна юй',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Электрони почтан адрес бакъдина хан',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'ТӀаьхьара агӀона хийцамаш бина итт декъашхо',
 	'abusefilter-edit-builder-vars-all-links' => 'Йозанан арахьара хьажорагаш',
@@ -12472,7 +12476,7 @@ $messages['fa'] = array(
 	'abusefilter-revert-search' => 'انتخاب اقدامات',
 	'abusefilter-revert-filter' => 'فیلتر:',
 	'abusefilter-revert-preview-intro' => 'در زیر اقدامات صورت گرفته توسط پالایهٔ خرابکاری آمده است که توسط این اقدام واگردنی می‌شود.
-لطفاً با دقت آن‌ها را بررسی کنید، و به منظور تأیید انتخاب، روی «تایید» کلیک نمایید.', # Fuzzy
+لطفاً با دقت آن‌ها را بررسی کنید، و به منظور تأیید انتخاب، روی «{{int:abusefilter-revert-confirm}}» کلیک نمایید.',
 	'abusefilter-revert-confirm' => 'تأیید',
 	'abusefilter-revert-success' => 'شما همهٔ اقدام‌های صورت گرفته توسط پالایهٔ خرابکاری به دلیل [[Special:AbuseFilter/$1|پالایهٔ $1]] را واگردانی کرده‌اید.',
 	'abusefilter-revert-reason' => 'واگردانی خودکار همهٔ اقدام‌های صورت‌گرفته توسط پالایهٔ خرابکاری به دلیل پالایهٔ $1.
@@ -12480,7 +12484,7 @@ $messages['fa'] = array(
 	'abusefilter-revert-reasonfield' => 'دلیل:',
 	'abusefilter-test' => 'آزمودن پالایه در برابر ویرایش‌های قبلی',
 	'abusefilter-test-intro' => 'این صفحه به شما اجازهٔ بررسی پالایهٔ واردشده در جعبهٔ زیر در برابر $1 تغییر اخیر را می‌دهد.
-برای بارکردن یکی از پالایه‌های موجود، شناسهٔ آن را در جعبهٔ زیر جعبهٔ ویرایش وارد کنید، و بر روی دکمهٔ «بارگذاری» کلیک کنید.', # Fuzzy
+برای بارکردن یکی از پالایه‌های موجود، شناسهٔ آن را در جعبهٔ زیر جعبهٔ ویرایش وارد کنید، و بر روی دکمهٔ «{{int:abusefilter-test-load}}» کلیک کنید.',
 	'abusefilter-test-legend' => 'آزمایش پالایه',
 	'abusefilter-test-load-filter' => 'بارگذاری پالایهٔ شماره:',
 	'abusefilter-test-submit' => 'آزمایش',
@@ -12491,7 +12495,7 @@ $messages['fa'] = array(
 	'abusefilter-test-page' => 'تغییرات انجام شده در صفحه:',
 	'abusefilter-test-shownegative' => 'تغییراتی که با پالایه مطابقت ندارد را نشان بده',
 	'abusefilter-test-syntaxerr' => 'پالایه‌ای که وارد کردید دارای یک خطای نحوی است.
-شما می‌توانید توضیح کاملی را با کلیک کردن روی دکمه «بررسی نحوی» ببینید.', # Fuzzy
+شما می‌توانید توضیح کاملی را با کلیک کردن روی دکمه «{{int:abusefilter-edit-check}}» ببینید.',
 	'abusefilter-changeslist-examine' => 'آزمودن',
 	'abusefilter-examine' => 'بررسی تک تک تغییرات',
 	'abusefilter-examine-intro' => 'این صفحه اجازهٔ بررسی متغیرهای تولیدشده توسط پالایهٔ خرابکاری برای یک تغییری، و آزمودنش در برابر پالایه‌ها را می‌دهد.',
