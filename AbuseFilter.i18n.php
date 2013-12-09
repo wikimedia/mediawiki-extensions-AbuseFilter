@@ -9432,6 +9432,7 @@ wesikaya arêdayoxi: <pre>$1</pre>',
 gani etiketi kılm bıbi u tede karakterê xususi çinibi.',
 	'abusefilter-edit-notallowed' => 'desturê şıma çino şıma filtreya suistimali vırazi ya zi bıvurni',
 	'abusefilter-edit-notallowed-global' => 'desturê şıma çino şıma filtreya nenga vırazi ya zi bıvurni',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'Masecé bağse ikazan qandé global avréca tesdiq névinené',
 	'abusefilter-edit-builder-select' => 'İmleçte eklemek için bir seçenek seçin',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Operasyonê arîtmetîkî',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'De kerdiş (+)',
@@ -9516,6 +9517,7 @@ gani etiketi kılm bıbi u tede karakterê xususi çinibi.',
 	'abusefilter-edit-builder-vars-removed-links' => 'Vurnayîşê newe de linkanê hericiyan ê wedariyaye',
 	'abusefilter-edit-builder-vars-old-text' => 'Wîkîtextê ripel kihan, verniyê vurnayîşî',
 	'abusefilter-edit-builder-vars-new-text' => 'pelê wikimetni yo newe: badê vurnayiş',
+	'abusefilter-edit-builder-vars-new-pst' => 'Wiki metina perda newi, çerğé verqayt bi',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nuştêyê pel ê newî, te de markup çini yo',
 	'abusefilter-edit-builder-vars-new-html' => 'Yeni revizyonun derlenmiş HTML kaynağı',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Seviyeyê kilit kerdişê pele',
@@ -9581,16 +9583,16 @@ Hereketan ke te wazeni reyna biyar: $5 ($6)',
 	'abusefilter-revert-periodend' => 'Periyod ke qediyen:',
 	'abusefilter-revert-search' => 'Hereketan biweçine',
 	'abusefilter-revert-filter' => 'Avrêc:',
-	'abusefilter-revert-preview-intro' => 'Aşağıdakiler, suistimal filtresi tarafından alınan ve bu eylemle geri alınacak eylemlerdir.
-Lütfen dikkatlice kontrol edin, ve seçiminizi onaylamak için "onayla"ya tıklayın.', # Fuzzy
+	'abusefilter-revert-preview-intro' => 'Cérdé, na icraat qeydé nengan sera édé peysr bıgériyé.
+Reca keme qontrol keré u weçınişa ğo "{{int:abusefilter-revert-confirm}}"  bıploğné.',
 	'abusefilter-revert-confirm' => 'Testiq ke',
 	'abusefilter-revert-success' => '[[Special:AbuseFilter/$1|$1 filtresinden]] dolayı suistimal filtresi tarafından alınan tüm eylemleri geri aldınız.',
 	'abusefilter-revert-reason' => '$1 filtresinden dolayı suistimal filtresi tarafından alınan tüm eylemlerin otomatik geri alımı.
 Verilen sebep: $2',
 	'abusefilter-revert-reasonfield' => 'Sebeb:',
 	'abusefilter-test' => 'Duştê vurnayîşan rê yew filitre test bike',
-	'abusefilter-test-intro' => 'Bu sayfa, aşağıdaki kutuya girilen bir filtreyi son $1 {{PLURAL:$1|değişikliğe|değişikliğe}} karşı kontrol etmenize izin verir.
-Mevcut bir filtreyi yüklemek için, filtre IDsini değişiklik metin kutusunun altındaki kutuya girin, ve "Yükle" düğmesine tıklayın.', # Fuzzy
+	'abusefilter-test-intro' => 'Na per, cerra şına zu filtreda qutuyer u peyni $1 {{PLURAL:$1|vırnayışer|vırnayışan}} qontrol kerdışiré şımaré icazet dano.
+Mevcud zu filtra barkerdışiré, vırnayışa ID\'a filtré dekeré qutiya metini miyan u "{{int:abusefilter-test-load}}" bıploğné.',
 	'abusefilter-test-legend' => 'Testê filitreyî',
 	'abusefilter-test-load-filter' => 'IDyê filitre bar bike',
 	'abusefilter-test-submit' => 'Test',
