@@ -12574,9 +12574,9 @@ Tämä käyttöliittymä näyttää luettelon määritellyistä suodattimista ja
 Epäasialliset muokkaukset kumotaan nopeasti ja törkeä tai toistuva häiriköinti johtaa tunnuksesi tai IP-osoitteesi estämiseen.
 Jos muokkauksesi on mielestäsi asiallinen, napsauta Tallenna-painiketta uudelleen.
 Lyhyt kuvaus säännöstä, jota sovellettiin: $1",
-	'abusefilter-disallowed' => 'Muokkauksesi on tunnistettu automaattisesti haitalliseksi ja sen tallentaminen on estetty.
-Jos uskot muokkauksesi olevan asiallinen, ota yhteyttä ylläpitäjään ja kerro, mitä yritit tehdä.
-Syy: $1',
+	'abusefilter-disallowed' => 'Tämä toiminto on automaattisesti tunnistettu haitalliseksi ja tästä syystä sen suorittamista ei ole sallittu.
+Jos olet sitä mieltä, että toimenpiteesi on asiallinen, ota yhteyttä ylläpitäjään ja kerro, mitä yritit tehdä.
+Laukaisemasi väärinkäyttösuodattimen säännön lyhyt kuvaus on: $1',
 	'abusefilter-blocked-display' => 'Muokkauksesi on automaattisesti tunnistettu haitalliseksi
 ja sen suorittaminen on estetty.
 {{GRAMMAR:genitive|{{SITENAME}}}} suojelemiseksi muokkaaminen on estetty tunnukseltasi ja kaikilta siihen liittyviltä IP-osoitteilta.
@@ -12590,7 +12590,8 @@ Lyhyt kuvaus väärinkäyttösuodattimen säännöstä, joka täsmää toimenpit
 Turvallisuussyistä jotkin rutiininomaisesti peruskäyttäjille myönnetyt etuoikeudet on väliaikaisesti poistettu käyttäjätunnukseltasi.
 Väärinkäyttösuodatinsäännön kuvaus, joka vastasi suorittamaasi toimenpidettä, on kuvattu lyhyesti täällä: $1',
 	'abusefilter-blocker' => 'Väärinkäyttösuodatin',
-	'abusefilter-blockreason' => 'Automaattisen väärinkäyttösuodattimen estämä. Syy: $1',
+	'abusefilter-blockreason' => 'Automaattisesti estetty väärinkäyttösuodattimella.
+Toimintoa vastaavan säännön kuvaus: $1',
 	'abusefilter-degroupreason' => 'Oikeudet automaattisesti poistettu väärinkäyttösuodattimen toimesta.
 Säännön kuvaus: $1',
 	'abusefilter-accountreserved' => 'Tämä käyttäjätunnus on varattu väärinkäyttösuodattimen käyttöön.',
@@ -12654,7 +12655,7 @@ Suodattimen kuvaus: $7 ($8)',
 	'abusefilter-log-hide-forbidden' => 'Sinulla ei ole oikeutta piilottaa väärinkäyttölokin merkintöjä.',
 	'abusefilter-logentry-suppress' => 'piilotti merkinnän [[$1]]',
 	'abusefilter-logentry-unsuppress' => 'palautti merkinnän [[$1]] näkyviin',
-	'logentry-abusefilter-hit' => '$1 laukaisi suodattimen $4 suorittaessaan toiminnon "$5" sivuun $3. Laukaistut toiminnot: $6 ($7)',
+	'logentry-abusefilter-hit' => '$1 laukaisi suodattimen $4 suorittaessaan toiminnon "$5" kohteessa $3. Toimenpiteet: $6 ($7)',
 	'abusefilter-management' => 'Väärinkäyttösuodattimen hallinta',
 	'abusefilter-list' => 'Kaikki suodattimet',
 	'abusefilter-list-id' => 'Suodatin nro',
@@ -12736,7 +12737,7 @@ Suodatin saavutti yli $1 % täsmäävän toiminnon rajan.",
 	'abusefilter-edit-action-block' => 'Aseta käyttäjälle ja/tai IP-osoitteelle muokkausesto',
 	'abusefilter-edit-action-throttle' => 'Laukaise toiminnot vain jos käyttäjä ylittää rajan',
 	'abusefilter-edit-action-rangeblock' => 'Estä /16-alue, josta käyttäjä tulee',
-	'abusefilter-edit-action-tag' => 'Merkitse muokkaus lisätarkastelun kohteeksi',
+	'abusefilter-edit-action-tag' => 'Merkkaa muokkaus lisätarkastelun kohteeksi',
 	'abusefilter-edit-throttle-count' => 'Toimintojen sallittu määrä:',
 	'abusefilter-edit-throttle-period' => 'Aikaväli:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|sekunti|sekuntia}}',
@@ -12749,7 +12750,7 @@ Suodatin saavutti yli $1 % täsmäävän toiminnon rajan.",
 	'abusefilter-edit-warn-actions' => 'Toiminnot:',
 	'abusefilter-edit-warn-preview' => 'Esikatsele valittua viestiä',
 	'abusefilter-edit-warn-edit' => 'Luo tai muokkaa valittua viestiä',
-	'abusefilter-edit-tag-tag' => 'Käytettävät merkinnät (yksi per rivi):',
+	'abusefilter-edit-tag-tag' => 'Käytettävät merkkaukset (yksi per rivi):',
 	'abusefilter-edit-denied' => 'Et voi tarkastella tämän suodattimen yksityiskohtia, koska ne eivät ole julkisesti näkyvillä.',
 	'abusefilter-edit-main' => 'Suodattimen parametrit',
 	'abusefilter-edit-done-subtitle' => 'Suodatinta muokattu',
@@ -12768,8 +12769,8 @@ Pyydä rajoitettujen toimintojen lisäämiseen tarvittavien oikeuksien haltijalt
 	'abusefilter-edit-export' => 'Vie tämä suodatin toiseen wikiin',
 	'abusefilter-edit-syntaxok' => 'Ei havaittuja syntaksivirheitä.',
 	'abusefilter-edit-syntaxerr' => 'Syntaksivirhe havaittu: $1',
-	'abusefilter-edit-bad-tags' => 'Yksi tai useampi määrittämistäsi merkinnöistä ei kelpaa.
-Merkintöjen tulisi olla lyhyitä ja ilman erikoismerkkejä.',
+	'abusefilter-edit-bad-tags' => 'Yksi tai useampi määrittämistäsi merkkauksista (tags) ei kelpaa.
+Merkkausten tulisi olla lyhyitä ja ilman erikoismerkkejä.',
 	'abusefilter-edit-notallowed' => 'Sinulla ei ole oikeutta luoda tai muokata väärinkäyttösuodattimia',
 	'abusefilter-edit-notallowed-global' => 'Sinulla ei ole oikeutta luoda tai muokata järjestelmänlaajuisia väärinkäyttösuodattimia',
 	'abusefilter-edit-notallowed-global-custom-msg' => 'Räätälöityjä varoitusviestejä ei voi liittää järjestelmänlaajuisiin suodattimiin',
@@ -12903,7 +12904,7 @@ Odotettu $3 {{PLURAL:$3|argumenttia|argumenttia}}, saatu $4.',
 	'abusefilter-exception-overridebuiltin' => 'Laiton sisäänrakennetun muuttujan ”$2” päällekirjoitus merkissä $1.',
 	'abusefilter-exception-outofbounds' => 'Pyydetty olematonta listaelementtiä $2 (listan koko on $3) merkissä $1.',
 	'abusefilter-exception-notlist' => 'Pyydetty taulukkoelementtiä ei-taulukolta merkissä $1.',
-	'abusefilter-action-tag' => 'Merkitse',
+	'abusefilter-action-tag' => 'Merkkaa',
 	'abusefilter-action-throttle' => 'Rajoita muokkausmäärää',
 	'abusefilter-action-warn' => 'Varoita',
 	'abusefilter-action-blockautopromote' => 'Estä autopromote',
@@ -12911,20 +12912,20 @@ Odotettu $3 {{PLURAL:$3|argumenttia|argumenttia}}, saatu $4.',
 	'abusefilter-action-degroup' => 'Poista ryhmistä',
 	'abusefilter-action-rangeblock' => 'Aseta avaruusesto',
 	'abusefilter-action-disallow' => 'Älä salli',
-	'abusefilter-revert-title' => 'Peru kaikki suodattimen $1 tekemät muutokset',
-	'abusefilter-revert-intro' => 'Tämä lomake antaa sinun palauttaa kaikki muutokset, jotka väärinkäyttösuodatin on tehnyt suodattimen $1 ehtojen perusteella.
+	'abusefilter-revert-title' => 'Peruuta kaikki suodattimen $1 tekemät muutokset',
+	'abusefilter-revert-intro' => 'Tämä lomake antaa sinun peruuttaa kaikki muutokset, jotka väärinkäyttösuodatin on tehnyt suodattimen $1 ehtojen perusteella.
 Käytä tätä työkalua varoen.',
-	'abusefilter-revert-preview-item' => '$1: käyttäjä $2 teki toiminnon $3 kohteessa $4.
-Peruttavat toiminnot: $5 ($6)',
+	'abusefilter-revert-preview-item' => '$1: käyttäjä $2 käytti toimintoa "$3" kohteessa $4.
+Peruttavat toimenpiteet ovat: $5 ($6)',
 	'abusefilter-revert-search-legend' => 'Valitse suodattimen toimenpiteet, jotka haluat peruuttaa',
 	'abusefilter-revert-periodstart' => 'Aikaväli alkaa:',
 	'abusefilter-revert-periodend' => 'Aikaväli loppuu:',
 	'abusefilter-revert-search' => 'Valitse toimenpiteet',
 	'abusefilter-revert-filter' => 'Suodatin:',
-	'abusefilter-revert-preview-intro' => 'Alla ovat ne väärinkäyttösuodattimen tekemät toimenpiteet, jotka peruutetaan tällä toiminnolla.
-Tarkista ne huolellisesti ja paina "{{int:abusefilter-revert-confirm}}" vahvistaaksesi tekemäsi valinnan.',
+	'abusefilter-revert-preview-intro' => 'Alla ovat ne väärinkäyttösuodattimen suorittamat toimenpiteet, jotka peruutetaan tällä toiminnolla.
+Tarkista ne huolellisesti ja paina "{{int:abusefilter-revert-confirm}}", niin toimenpiteet peruutetaan.',
 	'abusefilter-revert-confirm' => 'Vahvista',
-	'abusefilter-revert-success' => 'Olet peruuttanut kaikki ne toimenpiteet, jotka väärinkäyttösuodatin teki [[Special:AbuseFilter/$1|suodattimen $1]] ehtojen mukaisesti.',
+	'abusefilter-revert-success' => 'Olet peruuttanut kaikki toimenpiteet, jotka väärinkäyttösuodatin teki [[Special:AbuseFilter/$1|suodattimen $1]] ehtojen mukaisesti.',
 	'abusefilter-revert-reason' => 'Kaikkien toimenpiteiden automaattinen peruuttaminen, jotka väärinkäyttösuodatin oli tehnyt suodattimen $1 ehtojen mukaisesti.
 Annettu syy: $2',
 	'abusefilter-revert-reasonfield' => 'Syy:',
@@ -37311,6 +37312,7 @@ $messages['su'] = array(
  * @author Sertion
  * @author Skalman
  * @author Thurs
+ * @author Tobulos1
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
@@ -37664,7 +37666,7 @@ missbrukslogg-poster.',
 	'abusefilter-revert-periodend' => 'Periodslut:',
 	'abusefilter-revert-search' => 'Välj handlingar',
 	'abusefilter-revert-filter' => 'Filter:',
-	'abusefilter-revert-preview-intro' => 'Nedan är de handlingar som är gjorda av missbruksfiltret som kommer att återställas av denna handling. Vänligen kontrollera dem noggrant, och klicka "bekräfta" för att bekräfta ditt val.', # Fuzzy
+	'abusefilter-revert-preview-intro' => 'Nedan är de handlingar som är gjorda av missbruksfiltret som kommer att återställas av denna handling. Vänligen kontrollera dem noggrant, och klicka "{{int:abusefilter-revert-confirm}}" för att bekräfta ditt val.',
 	'abusefilter-revert-confirm' => 'Bekräfta',
 	'abusefilter-revert-success' => 'Du har återställt alla handlingar som missbruksfiltret gjort på grund av [[Special:AbuseFilter/$1|filter $1]].',
 	'abusefilter-revert-reason' => 'Automatisk återställning av alla handlingar som missbruksfiltret gjort på grund av filter $1. Angiven anledning: $2',
@@ -37682,7 +37684,7 @@ För att ladda ett existerande filter, skriv dess filter-ID i rutan nedanför re
 	'abusefilter-test-page' => 'Ändringar på sidan:',
 	'abusefilter-test-shownegative' => 'Visa ändringar som inte matchar filtret',
 	'abusefilter-test-syntaxerr' => 'Det filter du skrev in innehöll ett syntaxfel.
-Du kan se en fullständig förklaring genom att klicka på "Kontrollera syntax"-knappen', # Fuzzy
+Du kan se en fullständig förklaring genom att klicka på knappen "{{int:abusefilter-edit-check}}".',
 	'abusefilter-changeslist-examine' => 'undersök',
 	'abusefilter-examine' => 'Undersök enstaka ändringar',
 	'abusefilter-examine-intro' => 'Denna sida låter dig undersöka variablerna skapade av missbruksfiltret för en enstaka ändring, och testa den mot filter.',
