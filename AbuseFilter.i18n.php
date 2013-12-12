@@ -12307,7 +12307,7 @@ $messages['fa'] = array(
 	'abusefilter-edit-denied' => 'شما نمی‌توانید جزئیات این پالایه را ببینید، زیرا از دید عموم پنهان شده‌است.',
 	'abusefilter-edit-main' => 'پارامترهای پالایه',
 	'abusefilter-edit-done-subtitle' => 'پالایه ویرایش شد',
-	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|تغییرات شما]] در [[Special:AbuseFilter/$1|پالایهٔ $1]] با موفقیت ذخیره‌شد.',
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/{{formatnum:$1|R}}/diff/prev/$2|تغییرات شما]] در [[Special:AbuseFilter/{{formatnum:$1|R}}|پالایهٔ $1]] با موفقیت ذخیره‌شد.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'یک خطای نحوی در پالایه‌ای که مشخص کردید وجود دارد.
 خروجی تحلیلگر این بود: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'شما نمی‌توانید این پالایه را ویرایش کنید، چون حاوی یک یا چند اقدام محدودشده است.
@@ -43306,7 +43306,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-revert' => '撤销过滤器作出的操作',
 	'abusefilter-edit-tools' => '工具：',
 	'abusefilter-edit-test-link' => '以最近的编辑测试本过滤器',
-	'abusefilter-edit-export' => '导出本过滤器',
+	'abusefilter-edit-export' => '导出此过滤器',
 	'abusefilter-edit-syntaxok' => '没有检测到语法错误。',
 	'abusefilter-edit-syntaxerr' => '检测到语法错误：$1',
 	'abusefilter-edit-bad-tags' => '一个或更多的标签不可用。
