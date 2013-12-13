@@ -8640,7 +8640,7 @@ Handlinger som skal tilbagerulles: $5 ($6)',
 	'abusefilter-revert-search' => 'Vælg handlinger',
 	'abusefilter-revert-filter' => 'Filter:',
 	'abusefilter-revert-preview-intro' => 'Nedenfor er de foranstaltninger, som misbrugsfilteret har taget, der vil blive tilbageført af denne handling.
-Kontroller dem omhyggeligt, og klik på "bekræft" for at bekræfte dit valg.', # Fuzzy
+Kontroller dem omhyggeligt, og klik på "{{int:abusefilter-revert-confirm}}" for at bekræfte dit valg.',
 	'abusefilter-revert-confirm' => 'Bekræft',
 	'abusefilter-revert-success' => 'Du har gendannet alle foranstaltninger, udført af misbrugsfilteret, som skyldes [[Special:AbuseFilter/$1|filter $1]].',
 	'abusefilter-revert-reason' => 'Automatisk gendannelse af alle handlinger udført af misbrugsfilteret på grund af filter $1.
@@ -8648,7 +8648,7 @@ Begrundelse: $2',
 	'abusefilter-revert-reasonfield' => 'Begrundelse:',
 	'abusefilter-test' => 'Test et filter mod tidligere redigeringer',
 	'abusefilter-test-intro' => 'På denne side kan du kontrollere et filter, der er indtastet i boksen nedenfor mod {{PLURAL:$1|den sidste ændring|de sidste $1 ændringer}}.
-For at indlæse et eksisterende filter, skrive dets filter-ID i boksen under Rediger tekstboksen, og klik på knappen "Indlæs".', # Fuzzy
+For at indlæse et eksisterende filter, skriv dets filter-ID i boksen under Rediger tekstboksen, og klik på knappen "{{int:abusefilter-test-load}}".',
 	'abusefilter-test-legend' => 'Filtertesting',
 	'abusefilter-test-load-filter' => 'Indlæs filter-ID:',
 	'abusefilter-test-submit' => 'Test',
@@ -8659,7 +8659,7 @@ For at indlæse et eksisterende filter, skrive dets filter-ID i boksen under Red
 	'abusefilter-test-page' => 'Ændringer udført på side:',
 	'abusefilter-test-shownegative' => 'Vis ændringer som ikke matcher filteret',
 	'abusefilter-test-syntaxerr' => 'Det filter, du angav indeholdt en fejl i syntaksen.
-Du kan modtage en fuld forklaring ved at klikke på knappen "Tjek syntaks".', # Fuzzy
+Du kan modtage en fuld forklaring ved at klikke på knappen "{{int:abusefilter-edit-check}}".',
 	'abusefilter-changeslist-examine' => 'undersøg',
 	'abusefilter-examine' => 'Undersøg enkelte ændringer',
 	'abusefilter-examine-intro' => 'Denne side lader dig undersøge variablerne genereret af misbrugsfilteret for en enkelt ændring, og teste den mod filtre.',
@@ -12307,7 +12307,7 @@ $messages['fa'] = array(
 	'abusefilter-edit-denied' => 'شما نمی‌توانید جزئیات این پالایه را ببینید، زیرا از دید عموم پنهان شده‌است.',
 	'abusefilter-edit-main' => 'پارامترهای پالایه',
 	'abusefilter-edit-done-subtitle' => 'پالایه ویرایش شد',
-	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/{{formatnum:$1|R}}/diff/prev/$2|تغییرات شما]] در [[Special:AbuseFilter/{{formatnum:$1|R}}|پالایهٔ $1]] با موفقیت ذخیره‌شد.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/{{formatnum:$1|R}}/diff/prev/$2|تغییرات شما]] در [[Special:AbuseFilter/{{formatnum:$1|R}}|پالایهٔ $1]] ذخیره‌شد.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'یک خطای نحوی در پالایه‌ای که مشخص کردید وجود دارد.
 خروجی تحلیلگر این بود: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'شما نمی‌توانید این پالایه را ویرایش کنید، چون حاوی یک یا چند اقدام محدودشده است.
@@ -24838,7 +24838,7 @@ $messages['ml'] = array(
 സൃഷ്ടിപരമല്ലാത്ത തിരുത്തലുകൾ അതിവേഗം മുൻപ്രാപനം ചെയ്യുന്നതായിരിക്കും, ദുരുദ്ദേശത്തോടെയുള്ള അല്ലെങ്കിൽ ആവർത്തിച്ചുണ്ടാകുന്ന സൃഷ്ടിപരമല്ലാത്ത തിരുത്തലുകൾ താങ്കളുടെ അംഗത്വത്തെയോ ഐ.പി. വിലാസത്തേയോ തടയുന്നതിൽ എത്തിയേക്കാം.
 താങ്കൾ താങ്കളുടെ തിരുത്തൽ സൃഷ്ടിപരമെന്നു വിശ്വസിക്കുന്നുണ്ടെങ്കിൽ സ്ഥിരീകരിക്കാനായി ദയവായി വീണ്ടും സമർപ്പിക്കുക.
 താങ്കളുടെ പ്രവൃത്തിയിൽ ബാധകമാകുന്ന ദുരുപയോഗ നിയമത്തിന്റെ ലഘുവിവരണം: $1",
-	'abusefilter-disallowed' => 'ഈ പ്രവൃത്തി ദോഷകരമെന്ന് സ്വയം തിരിച്ചറിഞ്ഞിട്ടുള്ളതാണ്, അതിനാലത് അനുവദിക്കാനാകില്ല. താങ്കളുടെ തിരുത്തൽ സൃഷ്ടിപരമാണെന്ന് താങ്കൾ വിശ്വസിക്കുന്നുവെങ്കിൽ, ദയവായി കാര്യനിർവാഹകരിലൊരാളെ ബന്ധപ്പെടുക, താങ്കൾ എന്താണ് ചെയ്യാൻ ശ്രമിച്ചതെന്നറിയിക്കുക.
+	'abusefilter-disallowed' => 'ഈ പ്രവൃത്തി ദോഷകരമെന്ന് സ്വയം തിരിച്ചറിഞ്ഞിട്ടുള്ളതാണ്, അതിനാലത് അനുവദിക്കാനാകില്ല. താങ്കളുടെ തിരുത്ത് സൃഷ്ടിപരമാണെന്ന് താങ്കൾ വിശ്വസിക്കുന്നുവെങ്കിൽ, ദയവായി കാര്യനിർവാഹകരിലൊരാളെ ബന്ധപ്പെടുക, താങ്കൾ എന്താണ് ചെയ്യാൻ ശ്രമിച്ചതെന്നറിയിക്കുക.
 താങ്കളുടെ പ്രവൃത്തിയുമായി സാദൃശ്യമുള്ള ദുരുപയോഗ നിയമത്തിന്റെ ലഘുവിവരണം: $1',
 	'abusefilter-blocked-display' => 'ഈ പ്രവൃത്തി ദോഷകരമെന്നു സ്വയം തിരിച്ചറിഞ്ഞിട്ടുള്ളതാണ്, ഇതു ചെയ്യുന്നതിൽ നിന്നും താങ്കളെ തടയുന്നതാണ്.
 കൂടുതലായി, {{SITENAME}} സംരക്ഷിക്കുന്നതിനായി താങ്കളുടെ അംഗത്വവും ബന്ധപ്പെട്ട ഐ.പി. വിലാസങ്ങളും തിരുത്തുന്നതിൽ നിന്നും തടയുന്നതാണ്.
@@ -24998,7 +24998,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-action-block' => 'ഉപയോക്താവിനെ ഒപ്പം/അല്ലെങ്കിൽ ഐ.പി. വിലാസത്തെ തിരുത്തുന്നതിൽ നിന്നും തടയുക',
 	'abusefilter-edit-action-throttle' => 'ഉപയോക്താവ് പരിധി കടന്നാൽ മാത്രം പ്രവൃത്തികൾ തുടങ്ങുക',
 	'abusefilter-edit-action-rangeblock' => 'ഉപയോക്താവ് കടന്നുവരുന്ന /16 പരിധി തടയുക',
-	'abusefilter-edit-action-tag' => 'മറ്റൊരു സംശോധനത്തിലെ തിരുത്തൽ റ്റാഗ് ചെയ്യുക',
+	'abusefilter-edit-action-tag' => 'കൂടുതൽ സംശോധനത്തിനായി തിരുത്ത് റ്റാഗ് ചെയ്യുക',
 	'abusefilter-edit-throttle-count' => 'അനുവദിക്കപ്പെട്ടിരിക്കുന്ന പ്രവർത്തനങ്ങളുടെ എണ്ണം:',
 	'abusefilter-edit-throttle-period' => 'കാലയളവ്:',
 	'abusefilter-edit-throttle-seconds' => '{{PLURAL:$1|ഒരു സെക്കന്റ്|$1 സെക്കന്റുകൾ}}',
