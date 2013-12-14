@@ -21083,6 +21083,7 @@ $messages['km'] = array(
 
 /** Kannada (ಕನ್ನಡ)
  * @author Akoppad
+ * @author Dimension10
  * @author Nayvik
  * @author පසිඳු කාවින්ද
  */
@@ -21115,6 +21116,7 @@ $messages['kn'] = array(
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'ಹಳೆಯ ಪುಟ ಪಠ್ಯ,  ಯಾವುದೇ ಮಾರ್ಕ್ಅಪ್ ತೆಗೆಯಲಾದ',
 	'abusefilter-edit-builder-vars-old-links' => '
 ಪುಟದಲ್ಲಿನ ಸಂಪರ್ಕ ಕೊಂಡಿಗಳು, ತಿದ್ದು ಪಡಿಯ ಮೊದಲು',
+	'abusefilter-history-comments' => 'ಟಿಪ್ಪಣಿಗಳು',
 	'abusefilter-history-select-submit' => 'ಸಂಸ್ಕರಿಸ',
 	'abusefilter-examine-submit' => 'ಹುಡುಕು',
 );
@@ -22484,7 +22486,7 @@ Tags solle kuerz sinn, an et solle keng Spezialzeechen dra sinn.',
 	'abusefilter-edit-builder-vars-accountname' => 'Numm vum Benotzerkont (beim Uleeë vum Benotzerkont)',
 	'abusefilter-edit-builder-vars-timestamp' => 'Unix-Zäitstempel vun der Ännerung',
 	'abusefilter-edit-builder-vars-action' => 'Aktioun',
-	'abusefilter-edit-builder-vars-addedlines' => 'Linnen déi bei der Ännerung derbäigesat goufen',
+	'abusefilter-edit-builder-vars-addedlines' => 'Linnen déi bei der Ännerung dobäigesat goufen',
 	'abusefilter-edit-builder-vars-delta' => 'Ännerung vun der Gréisst vun der Säit bei der Ännerung',
 	'abusefilter-edit-builder-vars-diff' => 'Gesamtënnerscheed vun den Ännrungen déi bei der Ännerung gemaach goufen',
 	'abusefilter-edit-builder-vars-newsize' => 'Nei Säitegréisst',
@@ -31640,7 +31642,7 @@ Ações a reverter: $5 ($6)',
 	'abusefilter-revert-search' => 'Selecionar ações',
 	'abusefilter-revert-filter' => 'Filtro:',
 	'abusefilter-revert-preview-intro' => 'Abaixo estão as alterações feitas pelo filtro de abusos que serão revertidas por esta operação.
-Por favor, verifique-as cuidadosamente e clique "confirmar" para confirmar a sua seleção.', # Fuzzy
+Por favor, verifique-as cuidadosamente e clique em "{{int:abusefilter-revert-confirm}}" para confirmar a sua seleção.',
 	'abusefilter-revert-confirm' => 'Confirmar',
 	'abusefilter-revert-success' => 'Reverteu todas as alterações feitas pelo filtro de abusos devido ao [[Special:AbuseFilter/$1|filtro $1]].',
 	'abusefilter-revert-reason' => 'Reversão automática de todas as alterações feitas pelo filtro de abusos devido ao filtro $1.
@@ -32173,6 +32175,15 @@ $messages['qu'] = array(
 $messages['rif'] = array(
 	'abusefilter-log-search-submit' => 'Tarzzut',
 	'abusefilter-list-edit' => 'Arri',
+);
+
+/** Romansh (rumantsch)
+ * @author Kazu89
+ */
+$messages['rm'] = array(
+	'abuselog' => "Protocol dal filter d'abus",
+	'abusefilter-log-linkoncontribs' => "protocol dal filter d'abus",
+	'abusefilter-topnav-log' => "Protocol dal filter d'abus",
 );
 
 /** Romanian (română)
@@ -36264,9 +36275,21 @@ $messages['sr-ec'] = array(
 	'abusefilter-mustbeeditor' => 'Из сигурносних разлога, само корисници са одговарајућим правима на измену филтерâ против злоупотребе могу користити ово окружење.',
 	'abusefilter-warning' => "'''Упозорење''': Аутоматски филтер је препознао ову измену као потенцијално штетну. Неконструктивне измене ће бити враћене и могу да доведу до забране уређивања. Уколико сматрате да измена ипак јесте конструктивна, кликните још једанпут на дугме „Сачувај страницу“.
 Кратак опис правила злоупотребе који сте активирали: $1",
+	'abusefilter-disallowed' => 'Аутоматски филтер је препознао ову измену као потенцијално штетну и стога је није дозволио.
+Уколико сматрате да измена ипак јесте конструктивна, обавестите неког од администратора о томе шта покушавате да учините.
+Кратак опис повређеног правила: $1',
+	'abusefilter-blocked-display' => 'Аутоматски филтер је препознао ову измену као потенцијално штетну и није вам допуштено да је извршите.
+Осим тога, да би се заштититио/ла {{SITENAME}}, ваш налог и одговарајуће ИП адресе су блокиране.
+Уколико се ово догодило грешком, контактирајте неког од администратора.
+Кратак опис повређеног правила: $1',
+	'abusefilter-degrouped' => 'Аутоматски филтер је препознао ову измену као потенцијално штетну.
+Стога измена није дозвољена, а уклоњена су вам и сва овлашћења која сте имали. Уколико сматрате да је до тога дошло грешком, контактирајте неког од бирократа, објасните шта сте урадили и овлашћења ће вам можда бити враћена.
+Кратак опис повређеног правила: $1',
 	'abusefilter-blocker' => 'Филтер против злоупотребе',
 	'abusefilter-blockreason' => 'Блокирани сте од стране филтера против злоупотребе.
 Опис повређеног правила: $1',
+	'abusefilter-degroupreason' => 'Филтер је аутоматски уклонио овлашћења.
+Опис правила: $1',
 	'right-abusefilter-modify' => 'уређивање филтера против злоупотребе',
 	'right-abusefilter-view' => 'прегледање филтера против злоупотребе',
 	'right-abusefilter-log' => 'прегледање извештаја злоупотребе',
@@ -36526,6 +36549,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Текст старе странице, без икаквих обележавања',
 	'abusefilter-edit-builder-vars-old-links' => 'Везе на страници, пре уређивања',
 	'abusefilter-edit-builder-vars-old-html' => 'Викитекст старе странице, рашчлањен у HTML',
+	'abusefilter-edit-builder-vars-minor-edit' => 'Да ли је измена била означена као мала',
 	'abusefilter-edit-builder-vars-file-sha1' => 'Дисперзија SHA1 садржаја датотеке',
 	'abusefilter-filter-log' => 'Скорашње измене филтера',
 	'abusefilter-history-foruser' => 'Измене од $1',
@@ -36659,9 +36683,21 @@ Ovo sučelje prikazuje spisak određenih filtera i omogućava vam da ih promenit
 	'abusefilter-mustbeeditor' => 'Iz sigurnosnih razloga, samo korisnici s pravom na izmenu filterâ protiv zloupotrebe mogu koristiti ovo sučelje.',
 	'abusefilter-warning' => "'''Upozorenje''': Automatski filter je prepoznao ovu izmenu kao potencijalno štetnu. Nekonstruktivne izmene će biti vraćene i mogu da dovedu do zabrane uređivanja. Ukoliko smatrate da izmena ipak jeste konstruktivna, kliknite još jedanput na dugme „Sačuvaj stranicu“.
 Kratak opis pravila zloupotrebe koji ste aktivirali: $1",
+	'abusefilter-disallowed' => 'Automatski filter je prepoznao ovu izmenu kao potencijalno štetnu i stoga je nije dozvolio.
+Ukoliko smatrate da izmena ipak jeste konstruktivna, obavestite nekog od administratora o tome šta pokušavate da učinite.
+Kratak opis povređenog pravila: $1',
+	'abusefilter-blocked-display' => 'Automatski filter je prepoznao ovu izmenu kao potencijalno štetnu i nije vam dopušteno da je izvršite.
+Osim toga, da bi se zaštititio/la {{SITENAME}}, vaš nalog i odgovarajuće IP adrese su blokirane.
+Ukoliko se ovo dogodilo greškom, kontaktirajte nekog od administratora.
+Kratak opis povređenog pravila: $1',
+	'abusefilter-degrouped' => 'Automatski filter je prepoznao ovu izmenu kao potencijalno štetnu.
+Stoga izmena nije dozvoljena, a uklonjena su vam i sva ovlašćenja koja ste imali. Ukoliko smatrate da je do toga došlo greškom, kontaktirajte nekog od birokrata, objasnite šta ste uradili i ovlašćenja će vam možda biti vraćena.
+Kratak opis povređenog pravila: $1',
 	'abusefilter-blocker' => 'Filter protiv zloupotrebe',
 	'abusefilter-blockreason' => 'Blokirani ste od strane filtera protiv zloupotrebe.
 Opis povređenog pravila: $1',
+	'abusefilter-degroupreason' => 'Filter je automatski uklonio ovlašćenja.
+Opis pravila: $1',
 	'right-abusefilter-modify' => 'uređivanje filtera protiv zloupotrebe',
 	'right-abusefilter-view' => 'pregledanje filtera protiv zloupotrebe',
 	'right-abusefilter-log' => 'pregledanje izveštaja zloupotrebe',
@@ -36910,6 +36946,7 @@ Zamolite korisnika s određenim ovlašćenjem da napravi izmene umesto vas.',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Tekst stare stranice, bez ikakvih obeležavanja',
 	'abusefilter-edit-builder-vars-old-links' => 'Veze na stranici, pre uređivanja',
 	'abusefilter-edit-builder-vars-old-html' => 'Vikitekst stare stranice, raščlanjen u HTML',
+	'abusefilter-edit-builder-vars-minor-edit' => 'Da li je izmena bila označena kao mala',
 	'abusefilter-edit-builder-vars-file-sha1' => 'Disperzija SHA1 sadržaja datoteke',
 	'abusefilter-filter-log' => 'Skorašnje izmene filtera',
 	'abusefilter-history-foruser' => 'Izmene od $1',
