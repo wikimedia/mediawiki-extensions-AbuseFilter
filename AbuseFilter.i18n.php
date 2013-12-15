@@ -22381,7 +22381,7 @@ Wann Dir Är Ännerunge späichert dann iwwerschreiwt Dir all Ännerungen zënte
 [[Special:AbuseFilter/history/$2|Zréck op d'Versiounsgeschicht vun  dësem Filter]].",
 	'abusefilter-edit-status-label' => 'Statistiken:',
 	'abusefilter-edit-status' => 'Dëse Filter huet bei {{PLURAL:$1|der leschter Aktioun|de leschte(n) $1 Aktiounen}}, $2 mol ($3%) ugeschloen.
-Am Duerchschnëtt brauch en dofir $4ms a benotzt dobäi $5 {{PLURAL:$5|Konditioun|Konditioune}} vun der Konditiouns-Limit.',
+Am Duerchschnëtt brauch en dofir $4ms a benotzt derbäi $5 {{PLURAL:$5|Konditioun|Konditioune}} vun der Konditiouns-Limit.',
 	'abusefilter-edit-throttled' => "'''Warnung''': Dëse Filter gouf aus Séchertheetsgrënn automatsch ausgeschalt.
 En huet méi wéi déi definiéiert Limit vun $1% vun den Aktiounen als schiedlech agestuft.",
 	'abusefilter-edit-new' => 'Neie Filter',
@@ -22486,7 +22486,7 @@ Tags solle kuerz sinn, an et solle keng Spezialzeechen dra sinn.',
 	'abusefilter-edit-builder-vars-accountname' => 'Numm vum Benotzerkont (beim Uleeë vum Benotzerkont)',
 	'abusefilter-edit-builder-vars-timestamp' => 'Unix-Zäitstempel vun der Ännerung',
 	'abusefilter-edit-builder-vars-action' => 'Aktioun',
-	'abusefilter-edit-builder-vars-addedlines' => 'Linnen déi bei der Ännerung dobäigesat goufen',
+	'abusefilter-edit-builder-vars-addedlines' => 'Linnen déi bei der Ännerung derbäigesat goufen',
 	'abusefilter-edit-builder-vars-delta' => 'Ännerung vun der Gréisst vun der Säit bei der Ännerung',
 	'abusefilter-edit-builder-vars-diff' => 'Gesamtënnerscheed vun den Ännrungen déi bei der Ännerung gemaach goufen',
 	'abusefilter-edit-builder-vars-newsize' => 'Nei Säitegréisst',
@@ -32182,8 +32182,10 @@ $messages['rif'] = array(
  */
 $messages['rm'] = array(
 	'abuselog' => "Protocol dal filter d'abus",
+	'abusefilter-log' => "Protocol dal filter d'abus",
 	'abusefilter-log-linkoncontribs' => "protocol dal filter d'abus",
 	'abusefilter-topnav-log' => "Protocol dal filter d'abus",
+	'abusefilter-log-name' => "Protocol dal filter d'abus",
 );
 
 /** Romanian (română)
