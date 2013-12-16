@@ -7372,6 +7372,7 @@ $messages['ce'] = array(
 	'abusefilter-diff-info' => 'АгӀонах болу бовзам',
 	'abusefilter-diff-pattern' => 'Литтаран хьал',
 	'abusefilter-diff-backhistory' => 'ЮхагӀо литтаран истори йолче',
+	'abusefilter-diff-prev' => 'Шира хийцамаш',
 	'abusefilter-import-intro' => 'ХӀокху агӀонехь хьан йиш ю кхечу вики чура литтарш импорт дан.
 ДӀайолалун вики чохь  «{{int:abusefilter-edit-tools}}» чохь тӀетаӀе «{{int:abusefilter-edit-export}}».
 Чулацаман копи якхкхе хӀокху агӀона чу йилина тӀетаӀе «{{int:abusefilter-import-submit}}».',
@@ -8168,6 +8169,7 @@ $messages['cv'] = array(
 );
 
 /** Welsh (Cymraeg)
+ * @author Cymrodor
  * @author Lloffiwr
  * @author Pwyll
  * @author Robin Owain
@@ -8250,7 +8252,7 @@ Disgrifiad o'r rheol sy'n cyfateb: $1",
 	'abusefilter-tools-reautoconfirm-user' => 'Defnyddiwr',
 	'abusefilter-edit-status-label' => 'Ystadegau',
 	'abusefilter-edit-new' => 'Hidl newydd',
-	'abusefilter-edit-save' => 'Cadwer yr hidl',
+	'abusefilter-edit-save' => "Cadw'r hidlydd",
 	'abusefilter-edit-id' => 'ID yr hidl:',
 	'abusefilter-edit-description' => 'Disgrifiad:
 :"(yn weladwy i\'r cyhoedd)"',
