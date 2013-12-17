@@ -12078,7 +12078,7 @@ $messages['eu'] = array(
 	'abusefilter-test-user' => 'Erabiltzaileak egindako aldaketak:',
 	'abusefilter-test-period-start' => 'Geroago egindako aldaketak:',
 	'abusefilter-test-period-end' => 'Lehenago egindako aldaketak:',
-	'abusefilter-test-page' => 'Orrialdeari egindako aldaketak:',
+	'abusefilter-test-page' => 'Orriari egindako aldaketak:',
 	'abusefilter-changeslist-examine' => 'aztertu',
 	'abusefilter-examine-legend' => 'Aldaketak aukeratu',
 	'abusefilter-examine-user' => 'Lankide:',
@@ -22383,7 +22383,7 @@ Wann Dir Är Ännerunge späichert dann iwwerschreiwt Dir all Ännerungen zënte
 [[Special:AbuseFilter/history/$2|Zréck op d'Versiounsgeschicht vun  dësem Filter]].",
 	'abusefilter-edit-status-label' => 'Statistiken:',
 	'abusefilter-edit-status' => 'Dëse Filter huet bei {{PLURAL:$1|der leschter Aktioun|de leschte(n) $1 Aktiounen}}, $2 mol ($3%) ugeschloen.
-Am Duerchschnëtt brauch en dofir $4ms a benotzt derbäi $5 {{PLURAL:$5|Konditioun|Konditioune}} vun der Konditiouns-Limit.',
+Am Duerchschnëtt brauch en dofir $4ms a benotzt dobäi $5 {{PLURAL:$5|Konditioun|Konditioune}} vun der Konditiouns-Limit.',
 	'abusefilter-edit-throttled' => "'''Warnung''': Dëse Filter gouf aus Séchertheetsgrënn automatsch ausgeschalt.
 En huet méi wéi déi definiéiert Limit vun $1% vun den Aktiounen als schiedlech agestuft.",
 	'abusefilter-edit-new' => 'Neie Filter',
