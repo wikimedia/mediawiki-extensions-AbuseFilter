@@ -14446,7 +14446,7 @@ Motivo dado: $2',
 	'abusefilter-revert-reasonfield' => 'Motivo:',
 	'abusefilter-test' => 'Probar un filtro coas edicións anteriores',
 	'abusefilter-test-intro' => 'Esta páxina permítelle comprobar, {{PLURAL:$1|co último cambio|cos últimos $1 cambios}}, un filtro inserido na caixa de embaixo.
-Para cargar un filtro existente, escriba o seu ID na caixa que está por baixo da caixa de edición e prema no botón "Cargar".', # Fuzzy
+Para cargar un filtro existente, escriba o seu ID na caixa que está por baixo da caixa de edición e prema no botón "{{int:abusefilter-test-load}}".',
 	'abusefilter-test-legend' => 'Proba do filtro',
 	'abusefilter-test-load-filter' => 'Cargar o filtro co ID:',
 	'abusefilter-test-submit' => 'Probar',
@@ -14457,7 +14457,7 @@ Para cargar un filtro existente, escriba o seu ID na caixa que está por baixo d
 	'abusefilter-test-page' => 'Cambios feitos na páxina:',
 	'abusefilter-test-shownegative' => 'Mostrar os cambios que non coincidan co filtro',
 	'abusefilter-test-syntaxerr' => 'O filtro que introduciu contiña un erro na súa sintaxe.
-Pode obter unha explicación completa premendo no botón "Comprobar a sintaxe".', # Fuzzy
+Pode obter unha explicación completa premendo no botón "{{int:abusefilter-edit-check}}".',
 	'abusefilter-changeslist-examine' => 'examinar',
 	'abusefilter-examine' => 'Examinar os cambios individuais',
 	'abusefilter-examine-intro' => 'Esta páxina permítelle examinar as variables xeradas polo filtro de abusos dos cambios dun individuo e probalos con outros filtros.',
@@ -28610,10 +28610,10 @@ Ei kort skildring av misbruksregelen handlinga di braut er: $1',
 	'abusefilter-edit-warn-preview' => 'Førehandsvis vald melding',
 	'abusefilter-edit-warn-edit' => 'Opprett/endra vald melding',
 	'abusefilter-edit-tag-tag' => 'Merke som skal verta lagde til (eitt per line):',
-	'abusefilter-edit-denied' => 'Du kan ikkje sjå detaljane i filteret sidan det er løynt for ålmenta.', # Fuzzy
+	'abusefilter-edit-denied' => 'Du kan ikkje sjå detaljane for filteret sidan det er løynt frå offentleg vising.',
 	'abusefilter-edit-main' => 'Filterparametrar',
 	'abusefilter-edit-done-subtitle' => 'Filter endra',
-	'abusefilter-edit-done' => 'Du har lagra endringane dine i filter $1.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Endringane dine]] i [[Special:AbuseFilter/$1|filter $1]] har vorte lagra.',
 	'abusefilter-edit-badsyntax' => 'Det finst ein syntaksfeil i filteret du oppgav. Resultatet frå fortolkaren var: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Du kan ikkje endra dette filteret, av di det inneheld éin eller fleire avgrensa handlingar.
 Spør ein brukar med løyve til å leggja til avgrensa handlingar om han kan å gjera endringa for deg.',
