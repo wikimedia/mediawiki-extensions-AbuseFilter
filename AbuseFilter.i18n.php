@@ -15278,11 +15278,11 @@ $messages['he'] = array(
 	'right-abusefilter-log-detail' => 'צפייה ביומן ההשחתות המפורט',
 	'right-abusefilter-private' => 'צפייה במידע אישי ביומן ההשחתות',
 	'right-abusefilter-modify-restricted' => 'שינוי מסנני השחתות עם פעולות מוגבלות',
-	'right-abusefilter-revert' => 'שחזור כל השינויים שבוצעו על ידי מסנן השחתות מסוים',
-	'right-abusefilter-view-private' => 'צפייה במסנני ההשחתה שסומנו כפרטיים',
-	'right-abusefilter-log-private' => 'הצגת רשומות יומן של מסנני השחתה שסומנו כפרטיות',
-	'right-abusefilter-hide-log' => 'הסתרת רשומות ביומן ההשחתה',
-	'right-abusefilter-hidden-log' => 'צפייה ברשומות נסתרות ביומן ההשחתה',
+	'right-abusefilter-revert' => 'שחזור כל השינויים שבוצעו על־ידי מסנן השחתות מסוים',
+	'right-abusefilter-view-private' => 'צפייה במסנני השחתות שסומנו כפרטיים',
+	'right-abusefilter-log-private' => 'הצגת רשומות יומן של מסנני השחתות שסומנו כפרטיים',
+	'right-abusefilter-hide-log' => 'הסתרת רשומות ביומן ההשחתות',
+	'right-abusefilter-hidden-log' => 'צפייה ברשומות מוסתרות ביומן ההשחתות',
 	'right-abusefilter-modify-global' => 'יצירה או שינוי של מסנני השחתות',
 	'action-abusefilter-modify' => 'לשנות את מסנני ההשחתות',
 	'action-abusefilter-view' => 'לצפות במסנני ההשחתות',
@@ -31134,12 +31134,19 @@ Ch'a còpia la casela ëd test ch'a compariss, e ch'a l'ancòla an costa casela 
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'abuselog' => 'د ورانکارۍ يادښت',
 	'abusefilter-warning' => "'''گواښنه''': همدا کړنه په اتوماتيک ډول زيانمنه وپېژندل شوه.
 نارغوونکې سمونې به ډېر ژر پر شا خپلې پخوانۍ بڼې ته واړول شي،
 ورانکاري او په بيا بيا نارغوونکې سمونې ترسره کول به ستاسې په گڼون او يا هم IP پتې باندې د بنديزونو سبب شي.
 که چېرته تاسې په دې ډاډه ياست چې همدا يو رغوونکی سمون دی، نو تاسې کولای شی چې پر «سپارل» وټوکۍ چې ستاسې د کړنې پخلی وشي.
 د ناوړو کړنو د کړنلارې يوه لنډه څرگندونه چې ستاسې د کړنې همډوله وه، په دې توگه ده: $1", # Fuzzy
 	'abusefilter-blocker' => 'د ورانکارۍ چاڼگر',
+	'right-abusefilter-modify' => 'د ورانکارۍ چاڼگرونه بدلول',
+	'right-abusefilter-view' => 'د ورانکارۍ چاڼگرونه کتل',
+	'right-abusefilter-log' => 'د ورانکارۍ يادښت کتل',
+	'action-abusefilter-view' => 'د ورانکارۍ چاڼگرونه کتل',
+	'action-abusefilter-log' => 'د ورانکارۍ يادښت کتل',
+	'abusefilter-log' => 'د ورانکارۍ چاڼگر يادښت',
 	'abusefilter-log-search-user' => 'کارن:',
 	'abusefilter-log-search-filter' => 'د چاڼگر پېژند:',
 	'abusefilter-log-search-title' => 'سرليک:',
@@ -31214,6 +31221,7 @@ $messages['ps'] = array(
 	'abusefilter-edit-builder-vars-article-id' => 'د مخ پېژند',
 	'abusefilter-edit-builder-vars-article-ns' => 'د مخ نوم-تشيال',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'د مخ بشپړ سرليک',
+	'abusefilter-edit-builder-vars-article-views' => 'د مخ د کتلو شمېر',
 	'abusefilter-edit-builder-vars-user-editcount' => 'د کارن سمون شمېر',
 	'abusefilter-edit-builder-vars-user-age' => 'د گڼون عمر',
 	'abusefilter-edit-builder-vars-user-name' => 'د گڼون نوم',
@@ -34609,6 +34617,19 @@ $messages['scn'] = array(
 	'abusefilter-examine-submit' => 'Cerca',
 	'abusefilter-topnav-home' => 'Paggina principali',
 	'abusefilter-diff-title' => 'Diffirenzi ntra li virsiuni',
+);
+
+/** Sassaresu (Sassaresu)
+ * @author Jun Misugi
+ */
+$messages['sdc'] = array(
+	'abusefilter-log-search-user' => 'Utenti:',
+	'abusefilter-log-search-title' => 'Tìturu',
+	'abusefilter-log-search-wiki' => 'Vichi:',
+	'abusefilter-log-search-submit' => 'Zercha',
+	'abusefilter-list-edit' => 'Mudifiggà',
+	'abusefilter-deleted' => 'Canzilladdu',
+	'abusefilter-list-options-scope-local' => 'Vichi lucari',
 );
 
 /** Northern Sami (sámegiella)
