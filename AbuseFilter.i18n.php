@@ -7998,7 +7998,7 @@ Operace, které se mají vrátit: $5 ($6)',
 	'abusefilter-revert-search' => 'Vybrat operace',
 	'abusefilter-revert-filter' => 'Filtr:',
 	'abusefilter-revert-preview-intro' => 'Níže jsou uvedeny operace provedené filtrem zneužívání, které budou tímto vráceny.
-Pečlivě je zkontrolujte a kliknutím na „potvrdit“ můžete jejich vrácení schválit.', # Fuzzy
+Pečlivě je zkontrolujte a kliknutím na „{{int:abusefilter-revert-confirm}}“ můžete jejich vrácení schválit.',
 	'abusefilter-revert-confirm' => 'Potvrdit',
 	'abusefilter-revert-success' => '{{GRAMMAR:|Vrátil|Vrátila|Vrátili}} jste všechny operace, které filtr zneužití provedl na základě [[Special:AbuseFilter/$1|filtru $1]].',
 	'abusefilter-revert-reason' => 'Automatické vrácení všech operací, které filtr zneužití provedl kvůli filtru $1.
@@ -8006,7 +8006,7 @@ Uvedený důvod: $2',
 	'abusefilter-revert-reasonfield' => 'Důvod:',
 	'abusefilter-test' => 'Test filtru na posledních změnách',
 	'abusefilter-test-intro' => 'Na této stránce můžete otestovat filtr, který zadáte do editačního pole níže, na {{PLURAL:$1|poslední změně|posledních $1 změnách}}.
-Už existující filtr můžete použít tím, že jeho ID napíšete do rámečku pod editačním polem a kliknete na tlačítko „Načíst“.', # Fuzzy
+Už existující filtr můžete použít tím, že jeho ID napíšete do rámečku pod editačním polem a kliknete na tlačítko „{{int:abusefilter-test-load}}“.',
 	'abusefilter-test-legend' => 'Test filtru',
 	'abusefilter-test-load-filter' => 'Načíst filtr s ID:',
 	'abusefilter-test-submit' => 'Otestovat',
@@ -8017,7 +8017,7 @@ Už existující filtr můžete použít tím, že jeho ID napíšete do rámeč
 	'abusefilter-test-page' => 'Změněná stránka:',
 	'abusefilter-test-shownegative' => 'Zobrazit i změny, které filtru nevyhovují',
 	'abusefilter-test-syntaxerr' => 'Zadaný filtr obsahuje syntaktickou chybu.
-Podrobnější vysvětlení můžete získat kliknutím na tlačítko „Zkontrolovat syntaxi“.', # Fuzzy
+Podrobnější vysvětlení můžete získat kliknutím na tlačítko „{{int:abusefilter-edit-check}}“.',
 	'abusefilter-changeslist-examine' => 'prozkoumat',
 	'abusefilter-examine' => 'Prozkoumat jednotlivé editace',
 	'abusefilter-examine-intro' => 'Na této stránce budete moci u zvolené editace prozkoumat proměnné, které pro ni Filtr zneužívání vygeneroval, a otestovat na ní filtry.',
@@ -24888,10 +24888,10 @@ $messages['ml'] = array(
 	'abusefilter-log-search-title' => 'തലക്കെട്ട്:',
 	'abusefilter-log-search-wiki' => 'വിക്കി:',
 	'abusefilter-log-search-submit' => 'തിരയുക',
-	'abusefilter-log-entry' => '$1: $2, $4 എന്നതിൽ ചെയ്ത "$3" എന്ന പ്രവൃത്തി ഒരു ദുരുപയോഗ അരിപ്പയെ ഉണർത്തിയിരിക്കുന്നു.
+	'abusefilter-log-entry' => '$1: $4 എന്ന താളിൽ $2 ചെയ്ത "$3" എന്ന പ്രവൃത്തി ഒരു ദുരുപയോഗ അരിപ്പയെ ഉണർത്തിയിരിക്കുന്നു.
 എടുത്ത നടപടികൾ: $5;
 അരിപ്പയുടെ വിവരണം: $6',
-	'abusefilter-log-detailedentry-meta' => '$1: $2, $5 എന്നതിൽ ചെയ്ത "$4" എന്ന പ്രവൃത്തി അരിപ്പ $3-നെ ഉണർത്തിയിരിക്കുന്നു.
+	'abusefilter-log-detailedentry-meta' => '$1: $5 എന്ന താളിൽ  $2 ചെയ്ത "$4" എന്ന പ്രവൃത്തി $3-നെ ഉണർത്തിയിരിക്കുന്നു.
 എടുത്ത നടപടി: $6;
 അരിപ്പയുടെ വിവരണം: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'ആഗോള അരിപ്പ $1',
@@ -25176,7 +25176,7 @@ $messages['ml'] = array(
 	'abusefilter-action-block' => 'തടയുക',
 	'abusefilter-action-degroup' => 'സംഘങ്ങളിൽ നിന്ന് നീക്കംചെയ്യുക',
 	'abusefilter-action-rangeblock' => 'പരിധിയടച്ച്-തടയൽ',
-	'abusefilter-action-disallow' => 'അനുവദിക്കാതിരിക്കുക',
+	'abusefilter-action-disallow' => 'അനുവദിക്കാതിരിക്കൽ',
 	'abusefilter-revert-title' => '$1 അരിപ്പ ചെയ്ത എല്ലാ മാറ്റങ്ങളും തിരസ്കരിക്കുക',
 	'abusefilter-revert-intro' => 'അരിപ്പ $1 മൂലം ദുരുപയോഗ അരിപ്പ ചെയ്ത എല്ലാ തിരുത്തലുകളും ഈ ഫോം ഉപയോഗിച്ച് താങ്കൾക്ക് മുൻപ്രാപനം ചെയ്യാൻ കഴിയുന്നതാണ്.
 ഈ ഉപകരണം ഉപയോഗിക്കുമ്പോൾ ദയവായി ശ്രദ്ധ പുലർത്തുക.',
