@@ -909,7 +909,8 @@ Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edi
 	'abusefilter-edit-builder-vars-oldsize' => 'Old size of the page. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
 	'abusefilter-edit-builder-vars-removedlines' => 'Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
 	'abusefilter-edit-builder-vars-summary' => 'Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
-	'abusefilter-edit-builder-vars-article-id' => 'Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
+	'abusefilter-edit-builder-vars-article-id' => 'Abuse filter syntax option in a dropdown from the group {{msg-mw|Abusefilter-edit-builder-group-vars}}.
+{{Identical|Page ID}}',
 	'abusefilter-edit-builder-vars-article-ns' => 'The namespace that the page for the trigger is supposed to be in. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
 	'abusefilter-edit-builder-vars-article-views' => 'The number of views that the page has. May not be enabled on all wikis. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'Paraphrase: The page ID of the page to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.',
@@ -36310,11 +36311,15 @@ $messages['sr-ec'] = array(
 	'abusefilter-degrouped' => 'Аутоматски филтер је препознао ову измену као потенцијално штетну.
 Стога измена није дозвољена, а уклоњена су вам и сва овлашћења која сте имали. Уколико сматрате да је до тога дошло грешком, контактирајте неког од бирократа, објасните шта сте урадили и овлашћења ће вам можда бити враћена.
 Кратак опис повређеног правила: $1',
+	'abusefilter-autopromote-blocked' => 'Аутоматски филтер је препознао ову измену као потенцијално штетну и стога је није дозволио.
+Осим тога, из предострожности су вам привремено уклоњена одређена овлашћења.
+Кратак опис повређеног правила: $1',
 	'abusefilter-blocker' => 'Филтер против злоупотребе',
 	'abusefilter-blockreason' => 'Блокирани сте од стране филтера против злоупотребе.
 Опис повређеног правила: $1',
 	'abusefilter-degroupreason' => 'Филтер је аутоматски уклонио овлашћења.
 Опис правила: $1',
+	'abusefilter-accountreserved' => 'Ово корисничко име је резервисано од стране филтера против злоупотребе.',
 	'right-abusefilter-modify' => 'уређивање филтера против злоупотребе',
 	'right-abusefilter-view' => 'прегледање филтера против злоупотребе',
 	'right-abusefilter-log' => 'прегледање извештаја злоупотребе',
