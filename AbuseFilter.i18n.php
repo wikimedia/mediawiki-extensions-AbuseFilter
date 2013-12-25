@@ -7359,6 +7359,7 @@ $messages['ce'] = array(
 	'abusefilter-history-flags' => 'Байракхаш',
 	'abusefilter-history-actions' => 'Дийраш',
 	'abusefilter-history-backedit' => 'ЮхагӀо литтар тадечу',
+	'abusefilter-history-deleted' => 'ДӀаяьккхина',
 	'abusefilter-history-filterid' => 'Литтар',
 	'abusefilter-history-select-legend' => 'Билгалдакха лахар',
 	'abusefilter-history-select-user' => 'Декъашхо:',
@@ -7403,6 +7404,9 @@ $messages['ce'] = array(
 	'abusefilter-topnav-tools' => 'Нисяран гӀирс',
 	'abusefilter-topnav-import' => 'Литтаран импорт',
 	'abusefilter-log-name' => 'Зулам литтаран тептар',
+	'abusefilter-log-header' => 'ХӀокху тептар чохь гойту литтаран чохь бина хийцамаш.
+Мадарра [[Special:AbuseFilter/history|хьажа тӀеххьара бина литтаран хийцамашка]].',
+	'abusefilter-log-entry-modify' => 'хийцина $1 ($2)',
 	'abusefilter-log-noresults' => 'ХӀума ца карийна',
 	'abusefilter-diff-title' => 'Версешан башхалла',
 	'abusefilter-diff-version' => '{{GENDER:$3|Декъашхочун}} $2 верси цу $1 хан',
@@ -12136,6 +12140,7 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Alireza
+ * @author Armin1392
  * @author Calak
  * @author Dalba
  * @author Ebraminio
@@ -12346,7 +12351,7 @@ $messages['fa'] = array(
 	'abusefilter-edit-denied' => 'شما نمی‌توانید جزئیات این پالایه را ببینید، زیرا از دید عموم پنهان شده‌است.',
 	'abusefilter-edit-main' => 'پارامترهای پالایه',
 	'abusefilter-edit-done-subtitle' => 'پالایه ویرایش شد',
-	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/{{formatnum:$1|R}}/diff/prev/$2|تغییرات شما]] در [[Special:AbuseFilter/{{formatnum:$1|R}}|پالایهٔ $1]] ذخیره‌شد.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/{{formatnum:$1|R}}/diff/prev/$2|]] تغییرات شما در [[Special:AbuseFilter/{{formatnum:$1|R}}|پالایهٔ $1]] ذخیره‌شد.', # Fuzzy
 	'abusefilter-edit-badsyntax' => 'یک خطای نحوی در پالایه‌ای که مشخص کردید وجود دارد.
 خروجی تحلیلگر این بود: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'شما نمی‌توانید این پالایه را ویرایش کنید، چون حاوی یک یا چند اقدام محدودشده است.
@@ -39892,7 +39897,7 @@ Kural açıklaması: $1',
 	'abusefilter-log-entry' => '$1: $2 bir suistimal filtresini tetikledi, $4 sayfasında "$3" eylemi yapılıyor.
 Yapılan eylemler: $5;
 Filtre açıklaması: $6',
-	'abusefilter-log-detailedentry-meta' => '$1: $2, $3 tetikledi, $5 sayfasında "$4" eylemi yapılıyor.
+	'abusefilter-log-detailedentry-meta' => '$1: $2, tetiklediği süzgeç: $3, $5 sayfasında "$4" eylemini yaptı.
 Yapılan eylemler: $6;
 Süzgeç açıklaması: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'küresel süzgeç $1',
@@ -39900,14 +39905,14 @@ Süzgeç açıklaması: $7 ($8)',
 	'abusefilter-log-detailslink' => 'detaylar',
 	'abusefilter-log-diff' => 'fark',
 	'abusefilter-log-hidelink' => 'görünürlüğü ayarla',
-	'abusefilter-log-details-legend' => '$1 günlük girdisi için ayrıntılar',
+	'abusefilter-log-details-legend' => '$1 numaralı günlük girdisinin ayrıntıları',
 	'abusefilter-log-details-var' => 'Değişken',
 	'abusefilter-log-details-val' => 'Değer',
 	'abusefilter-log-details-vars' => 'Eylem parametreleri',
 	'abusefilter-log-details-private' => 'Özel veri',
 	'abusefilter-log-details-ip' => 'Kaynak IP adresi',
 	'abusefilter-log-noactions' => 'yok',
-	'abusefilter-log-details-diff' => 'Değişiklikte düzenleme yapılmış',
+	'abusefilter-log-details-diff' => 'Düzenleme yapılan değişiklikler',
 	'abusefilter-log-linkoncontribs' => 'süzgeç kayıtları',
 	'abusefilter-log-linkoncontribs-text' => 'Bu kullanıcı için suistimal günlüğü',
 	'abusefilter-log-hidden' => '(gizli girdi)',
@@ -39956,7 +39961,7 @@ gizlemeye izniniz yok.',
 	'abusefilter-list-options-disabled' => 'Devre dışı süzgeçler:',
 	'abusefilter-list-options-hidedisabled' => 'Devre dışı süzgeçleri gizle',
 	'abusefilter-list-options-submit' => 'Güncelle',
-	'abusefilter-tools-text' => 'Bunlar, suistimal filtrelerini formüle ederken ve hata ayıklarken yararlı olabilecek bazı araçlar.',
+	'abusefilter-tools-text' => 'Burada suistimal filtrelerini formüle ederken ve hata ayıklarken yararlı olabilecek bazı araçlar bulunmaktadır.',
 	'abusefilter-tools-expr' => 'İfade testi',
 	'abusefilter-tools-submitexpr' => 'Değerlendir',
 	'abusefilter-tools-reautoconfirm' => 'Otomatik onaylı durumu geri getir',
@@ -39974,8 +39979,8 @@ Gösterilen istatistikler bu filtrenin en güncel sürümü içindir.
 Eğer değişikliklerinizi kaydederseniz, değişiklik yaptığınız revizyondan itibaren tüm değişikliklerin üzerine yazacaksınız.</strong> &bull;
 [[Special:AbuseFilter/history/$2|Bu filtrenin geçmişine geri dön]].',
 	'abusefilter-edit-status-label' => 'İstatistikler:',
-	'abusefilter-edit-status' => 'Son $1 {{PLURAL:$1|eylemde|eylemde}}, bu filtreyle eşleşen $2 ($3%).
-Ortalamada, çalışma süresi $4ms, ve koşul sınırının $5 koşulunu tüketiyor.',
+	'abusefilter-edit-status' => 'Son $1 {{PLURAL:$1|eylemde|eylemde}}, $2 eylem ($3%) oranında bu filtreyle eşleşti.
+Ortalama çalışma süresi $4ms olan bu süzgeç koşul sınırının $5 koşulunu tüketiyor.',
 	'abusefilter-edit-throttled' => "'''Uyarı''': Bu filtre bir güvenlik tedbiri olarak otomatikman devre dışı bırakıldı.
 Eylemlerin %$1'inden fazla eşleşme sınırına erişti.",
 	'abusefilter-edit-new' => 'Yeni süzgeç',
@@ -39987,7 +39992,7 @@ Eylemlerin %$1'inden fazla eşleşme sınırına erişti.",
 	'abusefilter-edit-flags' => 'İşaretler:',
 	'abusefilter-edit-enabled' => 'Bu süzgeci etkinleştir',
 	'abusefilter-edit-deleted' => 'Silinmiş olarak işaretle',
-	'abusefilter-edit-hidden' => 'Bu süzgecin ayrıntılarını umumi görüşten gizle',
+	'abusefilter-edit-hidden' => 'Bu süzgecin ayrıntılarını genel görünümden gizle',
 	'abusefilter-edit-global' => 'Küresel filtre',
 	'abusefilter-edit-rules' => 'Şartlar:',
 	'abusefilter-edit-notes' => "Notlar:
@@ -43350,7 +43355,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-status' => '在最后$1次操作中，有$2（$3%）{{PLURAL:$2|次}}操作达到了$4次的条件上限，有$5（$6%）{{PLURAL:$5|次}}编辑触发了已启用的过滤器之一。',
 	'abusefilter-edit' => '编辑滥用过滤器',
 	'abusefilter-edit-subtitle' => '编辑过滤器$1',
-	'abusefilter-edit-subtitle-new' => '创建筛选器',
+	'abusefilter-edit-subtitle-new' => '创建过滤器',
 	'abusefilter-edit-oldwarning' => '<strong>你正在编辑该过滤器的旧版本。统计中引用的是该过滤器的最新版本。如果你保存你的编辑，所编辑版本之后的所有更改均会被覆盖。</strong> &bull;
 [[Special:AbuseFilter/history/$2|返回该过滤器的历史记录]]。',
 	'abusefilter-edit-status-label' => '统计：',
