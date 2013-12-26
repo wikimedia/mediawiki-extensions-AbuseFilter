@@ -986,22 +986,32 @@ class AbuseFilter {
 				$data['afl_id'] = $dbw->insertId();
 			}
 
+			$entry = new ManualLogEntry( 'abusefilter', 'hit' );
+			// Construct a user object
+			$user = User::newFromId( $data['afl_user'] );
+			$user->setName( $data['afl_user_text'] );
+			$entry->setPerformer( $user );
+			// Set action target
+			$entry->setTarget( Title::makeTitle( $data['afl_namespace'], $data['afl_title'] ) );
+			// Additional info
+			$entry->setParameters( array(
+				'action'  => $data['afl_action'],
+				'filter'  => $data['afl_filter'],
+				'actions' => $data['afl_actions'],
+				'log'     => $data['afl_id'],
+			) );
+
+			// Send data to CheckUser if installed and we
+			// aren't already sending a notification to recentchanges
+			// Requires MW 1.23+
+			if ( is_callable( 'CheckUserHooks::updateCheckUserData' )
+				&& is_callable( 'ManualLogEntry::getRecentChange' )
+				&& strpos( $wgAbuseFilterNotifications, 'rc' ) === false ) {
+				$rc = $entry->getRecentChange();
+				CheckUserHooks::updateCheckUserData( $rc );
+			}
+
 			if ( $wgAbuseFilterNotifications !== false ) {
-				$entry = new ManualLogEntry( 'abusefilter', 'hit' );
-				// Construct a user object
-				$user = new User();
-				$user->setId( $data['afl_user'] );
-				$user->setName( $data['afl_user_text'] );
-				$entry->setPerformer( $user );
-				// Set action target
-				$entry->setTarget( Title::makeTitle( $data['afl_namespace'], $data['afl_title'] ) );
-				// Additional info
-				$entry->setParameters( array(
-					'action'  => $data['afl_action'],
-					'filter'  => $data['afl_filter'],
-					'actions' => $data['afl_actions'],
-					'log'     => $data['afl_id'],
-				) );
 				if ( self::filterHidden( $data['afl_filter'] ) && !$wgAbuseFilterNotificationsPrivate ) {
 					continue;
 				}
