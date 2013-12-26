@@ -7259,7 +7259,7 @@ $messages['ce'] = array(
 	'abusefilter-edit-new' => 'Керла литтар',
 	'abusefilter-edit-save' => 'Ӏалашде литтар',
 	'abusefilter-edit-id' => 'ID литтаран',
-	'abusefilter-edit-description' => "Сурт хӀоттор:
+	'abusefilter-edit-description' => "Цуьнах лаьцна:
 :''(Массарна гуш)''",
 	'abusefilter-edit-group' => 'Литтаран тоба:',
 	'abusefilter-edit-flags' => 'Байракхаш:',
@@ -12351,7 +12351,7 @@ $messages['fa'] = array(
 	'abusefilter-edit-denied' => 'شما نمی‌توانید جزئیات این پالایه را ببینید، زیرا از دید عموم پنهان شده‌است.',
 	'abusefilter-edit-main' => 'پارامترهای پالایه',
 	'abusefilter-edit-done-subtitle' => 'پالایه ویرایش شد',
-	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/{{formatnum:$1|R}}/diff/prev/$2|]] تغییرات شما در [[Special:AbuseFilter/{{formatnum:$1|R}}|پالایهٔ $1]] ذخیره‌شد.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|تغییرات شما]] در [[Special:AbuseFilter/$1|filter $1]] ذخیره شده‌است.',
 	'abusefilter-edit-badsyntax' => 'یک خطای نحوی در پالایه‌ای که مشخص کردید وجود دارد.
 خروجی تحلیلگر این بود: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'شما نمی‌توانید این پالایه را ویرایش کنید، چون حاوی یک یا چند اقدام محدودشده است.
