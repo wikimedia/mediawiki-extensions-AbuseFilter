@@ -7,6 +7,15 @@ class SpecialAbuseFilter extends SpecialPage {
 		parent::__construct( 'AbuseFilter', 'abusefilter-view' );
 	}
 
+	/**
+	 * Back-compat function for pre-1.23 MediaWiki versions
+	 * @param bool|string $subpage
+	 * @return Title
+	 */
+	public function getPageTitle( $subpage = false ) {
+		return self::getTitleFor( $this->getName(), $subpage );
+	}
+
 	public function execute( $subpage ) {
 		$out = $this->getOutput();
 		$request = $this->getRequest();

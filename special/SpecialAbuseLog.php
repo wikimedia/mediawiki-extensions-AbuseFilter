@@ -19,6 +19,15 @@ class SpecialAbuseLog extends SpecialPage {
 		parent::__construct( 'AbuseLog', 'abusefilter-log' );
 	}
 
+	/**
+	 * Back-compat function for pre-1.23 MediaWiki versions
+	 * @param bool|string $subpage
+	 * @return Title
+	 */
+	public function getPageTitle( $subpage = false ) {
+		return self::getTitleFor( $this->getName(), $subpage );
+	}
+
 	public function execute( $parameter ) {
 		$out = $this->getOutput();
 		$request = $this->getRequest();
