@@ -18,7 +18,7 @@ abstract class AbuseFilterView extends ContextSource {
 	 * @return Title
 	 */
 	function getTitle( $subpage = '' ) {
-		return $this->mPage->getTitle( $subpage );
+		return $this->mPage->getPageTitle( $subpage );
 	}
 
 	abstract function show();

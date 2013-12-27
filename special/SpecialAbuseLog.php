@@ -37,7 +37,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$out->addModuleStyles( 'ext.abuseFilter' );
 
 		// Are we allowed?
-		$errors = $this->getTitle()->getUserPermissionsErrors(
+		$errors = $this->getPageTitle()->getUserPermissionsErrors(
 			'abusefilter-log', $this->getUser(), true, array( 'ns-specialprotected' ) );
 		if ( count( $errors ) ) {
 			// Go away.
@@ -116,7 +116,7 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 
 		$output .= Xml::tags( 'form',
-			array( 'method' => 'get', 'action' => $this->getTitle()->getLocalURL() ),
+			array( 'method' => 'get', 'action' => $this->getPageTitle()->getLocalURL() ),
 			Xml::buildForm( $fields, 'abusefilter-log-search-submit' )
 		);
 		$output = Xml::tags( 'fieldset', null, $output );
@@ -167,7 +167,7 @@ class SpecialAbuseLog extends SpecialPage {
 		);
 
 		$form = new HTMLForm( $formInfo, $this->getContext() );
-		$form->setTitle( $this->getTitle() );
+		$form->setTitle( $this->getPageTitle() );
 		$form->setWrapperLegend( $this->msg( 'abusefilter-log-hide-legend' )->text() );
 		$form->addHiddenField( 'hide', $id );
 		$form->setSubmitCallback( array( $this, 'saveHideForm' ) );
@@ -193,7 +193,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$logPage = new LogPage( 'suppress' );
 		$action = $fields['hidden'] ? 'hide-afl' : 'unhide-afl';
 
-		$logPage->addEntry( $action, $this->getTitle( $logid ), $fields['reason'] );
+		$logPage->addEntry( $action, $this->getPageTitle( $logid ), $fields['reason'] );
 
 		$this->getOutput()->redirect( SpecialPage::getTitleFor( 'AbuseLog' )->getFullURL() );
 
@@ -476,7 +476,7 @@ class SpecialAbuseLog extends SpecialPage {
 		if ( self::canSeeDetails( $row->afl_filter, $filter_hidden ) ) {
 			$examineTitle = SpecialPage::getTitleFor( 'AbuseFilter', 'examine/log/' . $row->afl_id );
 			$detailsLink = Linker::linkKnown(
-				$this->getTitle($row->afl_id),
+				$this->getPageTitle($row->afl_id),
 				$this->msg( 'abusefilter-log-detailslink' )->escaped()
 			);
 			$examineLink = Linker::link(
@@ -493,7 +493,7 @@ class SpecialAbuseLog extends SpecialPage {
 
 			if ( $user->isAllowed( 'abusefilter-hide-log' ) ) {
 				$hideLink = Linker::link(
-					$this->getTitle(),
+					$this->getPageTitle(),
 					$this->msg( 'abusefilter-log-hidelink' )->text(),
 					array(),
 					array( 'hide' => $row->afl_id )
