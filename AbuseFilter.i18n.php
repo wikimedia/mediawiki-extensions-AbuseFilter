@@ -2639,6 +2639,7 @@ $messages['arz'] = array(
  * @author Bishnu Saikia
  * @author Britul
  * @author Chaipau
+ * @author Gitartha.bordoloi
  * @author Psneog
  */
 $messages['as'] = array(
@@ -2746,6 +2747,7 @@ $messages['as'] = array(
 	'abusefilter-examine-user' => 'সদস্য:',
 	'abusefilter-examine-title' => 'পৃষ্ঠাখনৰ শিৰোনামা:',
 	'abusefilter-examine-submit' => 'সন্ধান কৰক',
+	'abusefilter-examine-noresults' => "আপুনি দিয়া সন্ধান পাৰামিটাৰৰ বাবে একো ফলাফল পোৱা নগ'ল",
 	'abusefilter-topnav-home' => 'বেটুপাত',
 	'abusefilter-topnav-log' => 'অপব্যৱহাৰ অভিলেখ',
 	'abusefilter-log-noresults' => 'ফলাফল নাই',
@@ -9591,7 +9593,7 @@ gani etiketi kılm bıbi u tede karakterê xususi çinibi.',
 	'abusefilter-history-select-legend' => 'Cı geyrayışi amyayeney fi',
 	'abusefilter-history-select-user' => 'Karber:',
 	'abusefilter-history-select-submit' => 'Amyayeney fi',
-	'abusefilter-history-diff' => 'Vırnayışi',
+	'abusefilter-history-diff' => 'Vurnayışi',
 	'abusefilter-history-error-hidden' => 'filtreya ke şıma waşto nımteyo u şıma nêeşkeni hal-verinê aye bıvini.',
 	'abusefilter-exception-unexpectedatend' => 'karakterê $1\'i  "$2" texmin nêbene.',
 	'abusefilter-exception-expectednotfound' => '$1 karakterinde bir $2 bekleniyordu, bulunamadı (yerine $3 $4 bulundu).',
@@ -21232,7 +21234,7 @@ $messages['ko'] = array(
 	'action-abusefilter-revert' => '주어진 필터에 의한 모든 바뀜을 되돌릴',
 	'action-abusefilter-view-private' => '비공개된 필터를 볼',
 	'abusefilter-log' => '편집 필터 기록',
-	'abusefilter-log-summary' => '이 기록은 필터 규칙과 일치하는 모든 행위에 대한 목록을 보여 주고 있습니다.',
+	'abusefilter-log-summary' => '이 기록은 필터 규칙과 일치하는 모든 행위에 대한 목록을 보여줍니다.',
 	'abusefilter-log-search' => '편집 필터 기록 검색',
 	'abusefilter-log-search-user' => '사용자:',
 	'abusefilter-log-search-filter' => '필터 ID:',
@@ -21587,7 +21589,7 @@ $messages['ko'] = array(
 	'abusefilter-topnav-tools' => '디버그 도구',
 	'abusefilter-topnav-import' => '필터 가져오기',
 	'abusefilter-log-name' => '부정 행위 방지 필터 기록',
-	'abusefilter-log-header' => '이 기록은 필터가 바뀜 기록의 요약본을 보여 주고 있습니다.
+	'abusefilter-log-header' => '이 기록은 필터가 바뀜 기록의 요약본을 보여줍니다.
 자세한 정보는 [[Special:AbuseFilter/history|필터의 최근 바뀜]]을 참조하십시오.',
 	'abusefilter-log-entry-modify' => '사용자가 $1을 수정했습니다 ($2)',
 	'abusefilter-log-noresults' => '결과가 없습니다.',
@@ -39843,11 +39845,11 @@ Bu arayüz, tanımlı süzgeçlerin listesini gösterir ve değiştirilmelerine 
 Yapıcı olmayan değişiklikler hızlıca geri döndürülecektir,
 ve çok kötü ya da tekrar eden yapıcı olmayan değişiklikler hesabınızın ya da IP adresinizin engellenmesiyle sonuçlanacaktır.
 Eğer bu değişikliğin yapıcı olduğuna inanıyorsanız, onaylamak için tekrar Gönder'e basabilirsiniz.
-Eyleminizin eşleştiği suistimal kuralının kısa bir açıklaması: $1", # Fuzzy
+Eyleminizin eşleştiği suistimal kuralının kısa bir açıklaması: $1",
 	'abusefilter-disallowed' => 'Bu eylem otomatikman zararlı olarak tanımlanmıştır,
 ve bu nedenle izin verilmemektedir.
 Eğer değişikliğinizin yapıcı olduğuna inanıyorsanız, lütfen bir yönetici ile irtibat kurun, ve ne yapmaya çalıştığınız hakkında bilgilendirin.
-Eyleminizin eşleştiği suistimal kuralının kısa bir açıklaması: $1', # Fuzzy
+Eyleminizin eşleştiği suistimal kuralının kısa bir açıklaması: $1',
 	'abusefilter-blocked-display' => 'Bu eylem otomatikman zararlı olarak tanımlanmıştır,
 ve bunu yapmanız önlendi.
 Ek olarak, {{SITENAME}} sitesini korumak için, kullanıcı hesabınız ve tüm ilgili IP adresleri değişiklik yapmaya engellendi.
