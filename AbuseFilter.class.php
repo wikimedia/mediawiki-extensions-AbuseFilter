@@ -373,22 +373,22 @@ class AbuseFilter {
 	 * @param $conds
 	 * @param $vars
 	 * @param $ignoreError bool
-	 * @param $keepVars string
 	 * @return bool
 	 * @throws Exception
 	 */
 	public static function checkConditions(
-		$conds, $vars, $ignoreError = true, $keepVars = 'resetvars'
+		$conds, $vars, $ignoreError = true
 	) {
 		global $wgAbuseFilterParserClass;
 
-		static $parser;
+		static $parser, $lastVars;
 
 		wfProfileIn( __METHOD__ );
 
-		if ( is_null( $parser ) || $keepVars == 'resetvars' ) {
+		if ( is_null( $parser ) || $vars !== $lastVars ) {
 			/** @var $parser AbuseFilterParser */
 			$parser = new $wgAbuseFilterParserClass( $vars );
+			$lastVars = $vars;
 		}
 
 		try {
@@ -507,8 +507,7 @@ class AbuseFilter {
 		if ( self::checkConditions(
 			$pattern,
 			$vars,
-			true /* ignore errors */,
-			'keepvars'
+			true /* ignore errors */
 		) ) {
 			// Record match.
 			$result = true;
