@@ -24864,8 +24864,8 @@ $messages['mk'] = array(
 	'abusefilter-diff-prev' => 'Постара промена',
 	'abusefilter-diff-next' => 'Понова промена',
 	'abusefilter-import-intro' => 'Овој посредник служи за увезување на филтри од други викија.
-На изворното вико, кликнете на „{{int:abusefilter-edit-export}}“ под „{{int:abusefilter-edit-tools}}“ во посредникот за уредување.
-Копирајте ја содржината од полето коешто ќе ви се појави, и залепете ја во ова поле, па кликнете на „{{int:abusefilter-import-submit}}“.',
+На изворното вико, стиснете на „{{int:abusefilter-edit-export}}“ под „{{int:abusefilter-edit-tools}}“ во посредникот за уредување.
+Копирајте ја содржината од полето коешто ќе ви се појави, и залепете ја во ова поле, па стиснете на „{{int:abusefilter-import-submit}}“.',
 	'abusefilter-import-submit' => 'Увези податоци',
 	'abusefilter-group-default' => 'По основно',
 );
