@@ -17,13 +17,13 @@ class PurgeOldLogIPData extends Maintenance {
 	public function execute() {
 		global $wgAbuseFilterLogIPMaxAge;
 
-		$this->output( "Purging old IP Address data from abuse_filter_log..." );
+		$this->output( "Purging old IP Address data from abuse_filter_log...\n" );
 		$dbw = wfGetDB( DB_MASTER );
 
 		$count = 0;
 		while ( true ) {
 			$dbw->begin();
-			$res = $dbw->update(
+			$dbw->update(
 				'abuse_filter_log',
 				array( 'afl_ip' => '' ),
 				array(
@@ -35,14 +35,15 @@ class PurgeOldLogIPData extends Maintenance {
 			);
 			$count += $dbw->affectedRows();
 			$dbw->commit();
-			if ( $res->numRows() < $this->mBatchSize ) {
+			if ( $dbw->affectedRows() < $this->mBatchSize ) {
 				break; // all updated
 			}
+			$this->output( "$count\n" );
 
 			wfWaitForSlaves();
 		}
 
-		$this->output( $count . " rows.\n" );
+		$this->output( "$count rows.\n" );
 
 		$this->output( "Done.\n" );
 	}
