@@ -484,17 +484,11 @@ class SpecialAbuseLog extends SpecialPage {
 
 		if ( self::canSeeDetails( $row->afl_filter, $filter_hidden ) ) {
 			$examineTitle = SpecialPage::getTitleFor( 'AbuseFilter', 'examine/log/' . $row->afl_id );
-			$detailsLink = Linker::linkKnown(
-				$this->getPageTitle($row->afl_id),
-				$this->msg( 'abusefilter-log-detailslink' )->escaped()
-			);
 			$examineLink = Linker::link(
 				$examineTitle,
 				$this->msg( 'abusefilter-changeslist-examine' )->parse(),
 				array()
 			);
-
-			$actionLinks[] = $detailsLink;
 			$actionLinks[] = $examineLink;
 
 			if ($diffLink)
