@@ -2706,7 +2706,7 @@ $messages['as'] = array(
 :''(জনসাধাৰণৰ বাবে উন্মুক্ত)''",
 	'abusefilter-edit-rules' => 'চৰ্তসমূহ:',
 	'abusefilter-edit-notes' => "টোকা:
-:''(ব্যক্তিগত)''",
+:''(ব্যক্তিগত)''", # Fuzzy
 	'abusefilter-edit-lastmod-text' => '$1-য়ে $2',
 	'abusefilter-edit-hitcount' => 'পৰিশ্ৰাৱক হিট গণনা:',
 	'abusefilter-edit-warn-other' => 'অন্য সংবাদসমূহ',
@@ -3976,7 +3976,7 @@ $messages['ba'] = array(
 	'abusefilter-enabled' => 'Асыҡ',
 	'abusefilter-deleted' => 'Юйылған',
 	'abusefilter-disabled' => 'Ябыҡ',
-	'abusefilter-hitcount' => '$1 {{PLURAL:$1|башҡарылыу}}',
+	'abusefilter-hitcount' => '$1 {{PLURAL:$1|башҡарылыу}}', # Fuzzy
 	'abusefilter-new' => 'Яңы һөҙгөс булдырырға',
 	'abusefilter-return' => 'Һөҙгөстәр менән идаралауға ҡайтырға',
 	'abusefilter-status-global' => 'Дөйөм',
@@ -4000,7 +4000,7 @@ $messages['ba'] = array(
 	'abusefilter-reautoconfirm-none' => 'Был {{GENDER:$1|ҡатнашыусының}} "үҙенән-үҙе раҫланған" торошо һүндерелмәгән.',
 	'abusefilter-reautoconfirm-notallowed' => 'Һеҙгә "үҙенән-үҙе раҫланған" торошон тергеҙеү рөхсәт ителмәй.',
 	'abusefilter-reautoconfirm-done' => 'Иҫәп яҙмаһының "үҙенән-үҙе раҫланған" торошо тергеҙелгән.',
-	'abusefilter-status' => 'Һуңғы $1 {{PLURAL:$1|ғәмәлдән}} $2 ғәмәл ($3%) $4 сикләү шартына эләкте, $5 ғәмәл ($6%) хәҙерге ваҡытта эшләүсе һөҙгөстәрҙең береһенә тап килә.',
+	'abusefilter-status' => 'Һуңғы $1 {{PLURAL:$1|ғәмәлдән}} $2 ғәмәл ($3%) $4 сикләү шартына эләкте, $5 ғәмәл ($6%) хәҙерге ваҡытта эшләүсе һөҙгөстәрҙең береһенә тап килә.', # Fuzzy
 	'abusefilter-edit' => 'Яуыз ниәттә файҙаланыуҙар һөҙгөсөн төҙәтергә',
 	'abusefilter-edit-subtitle' => '$1 һөҙгөсөн үҙгәртеү',
 	'abusefilter-edit-subtitle-new' => 'Фильтр яһау',
@@ -4009,8 +4009,8 @@ $messages['ba'] = array(
 Әгәр үҙгәртеүҙәрегеҙҙе һаҡлаһағыҙ, һеҙ әле үҙгәрткән өлгөнән һуңғы барлыҡ үҙгәртеүҙәрҙең өҫтөнә яҙҙырасаҡһығыҙ.</strong> &bull;
 [[Special:AbuseFilter/history/$2|Һөҙгөстөң тарихы битенә кире ҡайтырға]].',
 	'abusefilter-edit-status-label' => 'Статистика:',
-	'abusefilter-edit-status' => 'Һуңғы $1 {{PLURAL:$1|ғәмәлдән}} был һөҙгөс $2 ғәмәл менән ($3%) тап килә.
-Уның уртаса башҡарылыу ваҡыты — $4 мс, ул сикләү шартынан $5 {{PLURAL:$5|шарт}} ҡуллана.',
+	'abusefilter-edit-status' => 'Һуңғы $1 {{PLURAL:$1|1=ғәмәлдән}} был һөҙгөс $2 ғәмәл менән ($3%) тап килә.
+Уның уртаса башҡарылыу ваҡыты — $4 мс, ул сикләү шартынан $5 {{PLURAL:$5|шарт}} ҡуллана.', # Fuzzy
 	'abusefilter-edit-throttled' => "'''Иҫкәрмә''': Был һөҙгөс һаҡлыҡ маҡсаттарында үҙенән-үҙе һүндерелде.
 Уның тап килеү һаны — $1% ғәмәлдән күберәк — билдәләнгән сиктән ашты.",
 	'abusefilter-edit-new' => 'Яңы һөҙгөс',
@@ -4026,7 +4026,7 @@ $messages['ba'] = array(
 	'abusefilter-edit-global' => 'Глобаль фильтр',
 	'abusefilter-edit-rules' => 'Шарттар:',
 	'abusefilter-edit-notes' => "Иҫкәрмәләр:
-:''(шәхси)''",
+:''(шәхси)''", # Fuzzy
 	'abusefilter-edit-lastmod' => 'Һөҙгөстөң һүңғы үҙгәртеүҙәре:',
 	'abusefilter-edit-lastmod-text' => '$1 $2 тарафынан',
 	'abusefilter-edit-hitcount' => 'Һөҙгөстөң башҡарылыу һаны:',
@@ -4042,7 +4042,7 @@ $messages['ba'] = array(
 	'abusefilter-edit-action-tag' => 'Үҙгәртеүҙе артабанғы тикшереү өсөн билдәләргә',
 	'abusefilter-edit-throttle-count' => 'Рөхсәт ителгән ғәмәлдәр һаны:',
 	'abusefilter-edit-throttle-period' => 'Ваҡыт арауығы:',
-	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|секунд|секунд}}',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|1=секунд|секунд}}', # Fuzzy
 	'abusefilter-edit-throttle-groups' => "Группалар буйынса тарайтыу:
 :''(һәр юлға берҙе, өтөрҙәр менән айырырға)''",
 	'abusefilter-edit-warn-message' => 'Иҫкәрмә өсөн ҡулланылған система хәбәре:',
@@ -4203,7 +4203,7 @@ $messages['ba'] = array(
 	'abusefilter-exception-dividebyzero' => '$1 урында $2 һанын нулгә бүлеү хатаһы.',
 	'abusefilter-exception-unrecognisedvar' => '$1 урында танылмаған $2 үҙгәреүсән дәүмәле.',
 	'abusefilter-exception-notenoughargs' => '$1 урында $2 функцияһына аргументтар етмәй.
-$3 {{PLURAL:$3|аргумент}} көтөлә, $4 бирелгән.',
+$3 {{PLURAL:$3|аргумент}} көтөлә, $4 бирелгән.', # Fuzzy
 	'abusefilter-exception-regexfailure' => '$1 урында "$3" регуляр аңлатмаһында хата: "$2"',
 	'abusefilter-exception-overridebuiltin' => '$1 урында $2 индерелгән үҙгәреүсән дәүмәленең өҫтөнә яҙҙырылыуы хатаһы.',
 	'abusefilter-exception-outofbounds' => '$1 урында исемлектә булмаған $2 есемен һорау (исемлектең күләме = $3).',
@@ -4934,7 +4934,7 @@ $messages['be-tarask'] = array(
 	'abusefilter-edit-global' => 'Глябальны фільтар',
 	'abusefilter-edit-rules' => 'Умовы:',
 	'abusefilter-edit-notes' => "Заўвагі:
-:''(прыватныя)",
+:''(прыватныя)", # Fuzzy
 	'abusefilter-edit-lastmod' => 'Апошняя зьмена фільтру:',
 	'abusefilter-edit-lastmod-text' => '$1 удзельнікам $2',
 	'abusefilter-edit-hitcount' => 'Выкананьняў фільтру:',
@@ -7233,7 +7233,7 @@ $messages['ce'] = array(
 	'abusefilter-hidden' => 'Къайладаьккхинарг',
 	'abusefilter-unhidden' => 'Массарна лело йиш йолуш',
 	'abusefilter-disabled' => 'ДӀадайина',
-	'abusefilter-hitcount' => '$1 {{PLURAL:$1|болх бар}}',
+	'abusefilter-hitcount' => '$1 {{PLURAL:$1|болх бар}}', # Fuzzy
 	'abusefilter-new' => 'Кхолла керла литтар',
 	'abusefilter-list-options' => 'Параметраш',
 	'abusefilter-list-options-deleted' => 'ДӀадаьхина долу литтарш:',
@@ -7250,7 +7250,7 @@ $messages['ce'] = array(
 	'abusefilter-tools-reautoconfirm-user' => 'Декъашхо:',
 	'abusefilter-tools-reautoconfirm-submit' => 'Юху ша тӀелацар',
 	'abusefilter-reautoconfirm-none' => 'ХӀокху {{GENDER:$1|декъашхочун}} дӀаяздар ша бакъдеш йолу статус йолуш ю.',
-	'abusefilter-status' => '$1 неха {{PLURAL:$1|тӀехьара динарг|тӀехьара динарш}}, $2 ($3%) {{PLURAL:$2|нисделла}} литтаран дӀакъовлар чу хӀокху $4 хьолехь, кхин $5 ($6%) {{PLURAL:$5|цхьаьнадогӀуш}} ду хӀинца долуш долу цхьан литтаран дӀакъовларца.',
+	'abusefilter-status' => '$1 неха {{PLURAL:$1|1=тӀехьара динарг|тӀехьара динарш}}, $2 ($3%) {{PLURAL:$2|нисделла}} литтаран дӀакъовлар чу хӀокху $4 хьолехь, кхин $5 ($6%) {{PLURAL:$5|цхьаьнадогӀуш}} ду хӀинца долуш долу цхьан литтаран дӀакъовларца.', # Fuzzy
 	'abusefilter-edit' => 'Зулам литтаран хийцамбар',
 	'abusefilter-edit-subtitle' => 'Литтаран хийцам $1',
 	'abusefilter-edit-subtitle-new' => 'Литтаран хьал',
@@ -7270,7 +7270,7 @@ $messages['ce'] = array(
 	'abusefilter-edit-global' => 'глобальни литтар',
 	'abusefilter-edit-rules' => 'Хьал:',
 	'abusefilter-edit-notes' => "Билгалдаккхар:
-:''(къайла)''",
+:''(къайла)''", # Fuzzy
 	'abusefilter-edit-lastmod' => 'Тlаьххьара литтаран хийцам:',
 	'abusefilter-edit-lastmod-text' => '$1 — $2',
 	'abusefilter-edit-hitcount' => 'Литтаран болх бола балийтар:',
@@ -7286,7 +7286,7 @@ $messages['ce'] = array(
 	'abusefilter-edit-action-tag' => 'Билгал де нисдар кхин хьажа',
 	'abusefilter-edit-throttle-count' => 'Шордина динаршан дуккхалла:',
 	'abusefilter-edit-throttle-period' => 'Хенан дакъа:',
-	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|секунд}}',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|секунд}}', # Fuzzy
 	'abusefilter-edit-warn-message' => 'ДӀахьедарна системин хаамаш:',
 	'abusefilter-edit-warn-other' => 'Кхин хаам',
 	'abusefilter-edit-warn-actions' => 'Дийраш:',
@@ -7376,7 +7376,7 @@ $messages['ce'] = array(
 	'abusefilter-revert-confirm' => 'Бакъдан',
 	'abusefilter-revert-reasonfield' => 'Бахьан:',
 	'abusefilter-test' => 'Литтаран нисдарш хьажа',
-	'abusefilter-test-intro' => 'ХӀокху агӀорахь хьан йиш ю лахахь гайтинчу {{PLURAL:$1|тӀехьарчу $1 хийцаман|тӀехьарчу $1 хийцамашан}} литтарш хьажа.
+	'abusefilter-test-intro' => 'ХӀокху агӀорахь хьан йиш ю лахахь гайтинчу {{PLURAL:$1|1=тӀехьарчу $1 хийцаман|тӀехьарчу $1 хийцамашан}} литтарш хьажа.
 
 Долуш долу литтар чудаккха тадаран коран лахахь дӀаязде цуьнан ID тӀакха тӀетаӀе кнопка «Чудаккха»', # Fuzzy
 	'abusefilter-test-legend' => 'Литтаре хьажар',
@@ -9429,7 +9429,7 @@ nê istatiski qey na filtreya.
 	'abusefilter-edit-global' => 'Global avrêc',
 	'abusefilter-edit-rules' => 'Şartî:',
 	'abusefilter-edit-notes' => "Notî:
-:''(xasî)''",
+:''(xasî)''", # Fuzzy
 	'abusefilter-edit-lastmod' => 'Ena filitre ke twer peni de vurnaye biya:',
 	'abusefilter-edit-lastmod-text' => 'pê $2, $1',
 	'abusefilter-edit-hitcount' => 'Reytingê filitreyî',
@@ -21341,7 +21341,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-global' => '전역 필터',
 	'abusefilter-edit-rules' => '필터 규칙:',
 	'abusefilter-edit-notes' => "주석:
-:''(비공개)''",
+:''(비공개)''", # Fuzzy
 	'abusefilter-edit-lastmod' => '필터가 마지막으로 수정된 시각',
 	'abusefilter-edit-lastmod-text' => '$2(이)가 $1에 바꿈',
 	'abusefilter-edit-hitcount' => '필터 적발 건수:',
@@ -24602,7 +24602,7 @@ $messages['mk'] = array(
 	'abusefilter-edit-global' => 'Глобален филтер',
 	'abusefilter-edit-rules' => 'Услови:',
 	'abusefilter-edit-notes' => "Белешки:
-:''(приватни)''",
+:''(приватни)''", # Fuzzy
 	'abusefilter-edit-lastmod' => 'Неодамна изменети филтри:',
 	'abusefilter-edit-lastmod-text' => '$1 од $2',
 	'abusefilter-edit-hitcount' => 'Погодоци на филтерот:',
@@ -26589,7 +26589,7 @@ $messages['myv'] = array(
 	'abusefilter-edit-flags' => 'Флагтнэ:',
 	'abusefilter-edit-enabled' => 'Тевс нолдавозо сувтемесь',
 	'abusefilter-edit-deleted' => 'Тешкстамс нардазекс',
-	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|секунда|секундат}}',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|1=секунда|секундат}}', # Fuzzy
 	'abusefilter-edit-main' => 'Сувтемень параметратне',
 	'abusefilter-edit-done-subtitle' => 'Сувтемесь витнезь-петнезь',
 	'abusefilter-edit-viewhistory' => 'Ванномс те сувтементь юронзо-путовксонзо',
@@ -33251,7 +33251,7 @@ $messages['ru'] = array(
 	'abusefilter-enabled' => 'Включён',
 	'abusefilter-deleted' => 'Удалён',
 	'abusefilter-disabled' => 'Выключен',
-	'abusefilter-hitcount' => '$1 {{PLURAL:$1|срабатывание|срабатывания|срабатываний}}',
+	'abusefilter-hitcount' => '$1 {{PLURAL:$1|срабатывание|срабатываний|срабатывания}}', # Fuzzy
 	'abusefilter-new' => 'Создать новый фильтр',
 	'abusefilter-return' => 'Вернуться к управлению фильтрами',
 	'abusefilter-status-global' => 'Глобальный',
@@ -33275,14 +33275,14 @@ $messages['ru'] = array(
 	'abusefilter-reautoconfirm-none' => 'У {{GENDER:$1|этого участника|этой участницы}} не отключён статус автоподтверждения.',
 	'abusefilter-reautoconfirm-notallowed' => 'Вам не разрешено восстанавливать статус автоподтверждения.',
 	'abusefilter-reautoconfirm-done' => 'Восстановлен статус автоподтверждения учётной записи',
-	'abusefilter-status' => 'Из $1 {{PLURAL:$1|последнего действия|последних действий|последних действий}}, $2 ($3%) {{PLURAL:$2|попало|попали|попали}} под ограничивающее условие $4, а $5 ($6%) {{PLURAL:$5|соответствует|соответствуют|соответствуют}} одному из включённых в настоящее время фильтров.',
+	'abusefilter-status' => 'Из $1 {{PLURAL:$1|последнего действия|последних действий|последних действий}}, $2 ($3%) {{PLURAL:$2|попало|попали|попали}} под ограничивающее условие $4, а $5 ($6%) {{PLURAL:$5|соответствует|соответствуют|соответствуют}} одному из включённых в настоящее время фильтров.', # Fuzzy
 	'abusefilter-edit' => 'Править фильтр злоупотреблений',
 	'abusefilter-edit-subtitle' => 'Изменение фильтра $1',
 	'abusefilter-edit-subtitle-new' => 'Создание фильтра',
 	'abusefilter-edit-oldwarning' => '<strong>Вы правите старую версию фильтра. Статистика приводится для последней версии фильтра. Если вы сохраните вашу правку, то вы перезапишите сделанные ранее изменения.</strong> &bull; [[Special:AbuseFilter/history/$2|Вернуться к странице истории фильтра]]',
 	'abusefilter-edit-status-label' => 'Статистика:',
 	'abusefilter-edit-status' => 'Из {{PLURAL:$1|последнего $1 действия|последних $1 действий|последних $1 действий}}, этот фильтр соответствует $2 ($3%).
-Среднее время его работы — $4 мс, он использует $5 {{PLURAL:$5|условие|условия|условий}} из лимита условий.',
+Среднее время его работы — $4 мс, он использует $5 {{PLURAL:$5|условие|условий|условия}} из лимита условий.', # Fuzzy
 	'abusefilter-edit-throttled' => "'''Предупреждение.''' Этот фильтр был автоматически отключён в качестве меры предосторожности. Процент его срабатываний превысил $1 % от всех действий.",
 	'abusefilter-edit-new' => 'Новый фильтр',
 	'abusefilter-edit-save' => 'Сохранить фильтр',
@@ -33297,7 +33297,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-global' => 'Глобальный фильтр',
 	'abusefilter-edit-rules' => 'Условия:',
 	'abusefilter-edit-notes' => "Примечания:
-:''(приватные)''",
+:''(приватные)''", # Fuzzy
 	'abusefilter-edit-lastmod' => 'Последнее изменение фильтра:',
 	'abusefilter-edit-lastmod-text' => '$1 — $2',
 	'abusefilter-edit-hitcount' => 'Срабатываний фильтра:',
@@ -33313,7 +33313,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-action-tag' => 'Отметить правку для дальнейшей проверки',
 	'abusefilter-edit-throttle-count' => 'Количество разрешённых действий:',
 	'abusefilter-edit-throttle-period' => 'Отрезок времени:',
-	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|секунда|секунды|секунд}}',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|секунда|секунд|секунды}}', # Fuzzy
 	'abusefilter-edit-throttle-groups' => "Сужение по группам:
 :''(по одному на строке, соединения запятыми)''",
 	'abusefilter-edit-warn-message' => 'Системное сообщение для предупреждений:',
@@ -33473,7 +33473,7 @@ $messages['ru'] = array(
 	'abusefilter-exception-dividebyzero' => 'Попытка деления $2 на ноль в позиции $1.',
 	'abusefilter-exception-unrecognisedvar' => 'Неопознанная переменная $2 в позиции $1',
 	'abusefilter-exception-notenoughargs' => 'Не хватает аргументов в функции $2, вызываемой в позиции $1.
-Ожидается $3 {{PLURAL:$3|аргумент|аргумента|аргументов}}, {{PLURAL:$4|получен|получено|получено}} $4',
+Ожидается $3 {{PLURAL:$3|аргумент|аргументов|аргумента}}, {{PLURAL:$4|получен|получено|получено}} $4', # Fuzzy
 	'abusefilter-exception-regexfailure' => 'Ошибка в регулярном выражении «$3» в позиции $1: «$2»',
 	'abusefilter-exception-overridebuiltin' => 'Недопустимое переопределение встроенной переменной «$2» в позиции $1.',
 	'abusefilter-exception-outofbounds' => 'Запрос несуществующего элемента списка $2 (размер списка = $3) в позиции $1.',
@@ -33503,8 +33503,8 @@ $messages['ru'] = array(
 Указанная причина: $2',
 	'abusefilter-revert-reasonfield' => 'Причина:',
 	'abusefilter-test' => 'Проверить фильтр на уже сделанных правках',
-	'abusefilter-test-intro' => 'Эта страница позволяет вам проверить фильтр, введённый в приведённое ниже поле, на {{PLURAL:$1|последнем $1 изменении|последних $1 изменениях}}.
-Чтобы загрузить существующий фильтр, введите его ID в текстовое поле под полем редактирования и нажмите кнопку «{{int:abusefilter-test-load}}».',
+	'abusefilter-test-intro' => 'Эта страница позволяет вам проверить фильтр, введённый в приведённое ниже поле, на {{PLURAL:$1|1=последнем $1 изменении|последних $1 изменениях}}.
+Чтобы загрузить существующий фильтр, введите его ID в текстовое поле под полем редактирования и нажмите кнопку «{{int:abusefilter-test-load}}».', # Fuzzy
 	'abusefilter-test-legend' => 'Проверка фильтра',
 	'abusefilter-test-load-filter' => 'Загрузить фильтр с ID:',
 	'abusefilter-test-submit' => 'Проверить',
@@ -36886,7 +36886,7 @@ Dostignuto je ograničenje podudaranja s više od $1% radnji.",
 	'abusefilter-edit-hidden' => 'Sakrij detalje ovog filtera iz javnog prikaza',
 	'abusefilter-edit-rules' => 'Uslovi:',
 	'abusefilter-edit-notes' => "Napomene:
-:''(privatno)''",
+:''(privatno)''", # Fuzzy
 	'abusefilter-edit-lastmod' => 'Poslednja izmena filtera:',
 	'abusefilter-edit-lastmod-text' => '$3, $4 od {{GENDER:$5|korisnika|korisnice|korisnika}} $2',
 	'abusefilter-edit-hitcount' => 'Pogoci filtera:',
@@ -36902,7 +36902,7 @@ Dostignuto je ograničenje podudaranja s više od $1% radnji.",
 	'abusefilter-edit-action-tag' => 'Označi izmenu za budući pregled',
 	'abusefilter-edit-throttle-count' => 'Broj dozvoljenih radnji:',
 	'abusefilter-edit-throttle-period' => 'Vremenski period:',
-	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|sekunda|sekundi}}',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|1=sekunda|sekundi}}', # Fuzzy
 	'abusefilter-edit-throttle-groups' => "Grupno usporavanje prema:
 :''(jedan po redu, zajedno sa zapetama)''",
 	'abusefilter-edit-warn-message' => 'Sistemska poruka koja će se koristiti za upozorenje:',
@@ -39997,7 +39997,7 @@ Eylemlerin %$1'inden fazla eşleşme sınırına erişti.",
 	'abusefilter-edit-global' => 'Küresel filtre',
 	'abusefilter-edit-rules' => 'Şartlar:',
 	'abusefilter-edit-notes' => "Notlar:
-:''(özel)''",
+:''(özel)''", # Fuzzy
 	'abusefilter-edit-lastmod' => 'Süzgeci son değiştiren:',
 	'abusefilter-edit-lastmod-text' => '$1 tarihinde $2 tarafından',
 	'abusefilter-edit-hitcount' => 'Filtre hitleri:',
@@ -40875,7 +40875,7 @@ $messages['uk'] = array(
 	'abusefilter-reautoconfirm-none' => 'У {{GENDER:$1|цього користувача|цієї користувачки}} не відключений статус автопідтвердження.',
 	'abusefilter-reautoconfirm-notallowed' => 'Вам не дозволено відновлювати статус автопідтвердження.',
 	'abusefilter-reautoconfirm-done' => 'Відновлений статус автопідтвердження облікового запису',
-	'abusefilter-status' => 'Серед $1 {{PLURAL:$1|дії|дій}}, $2 ($3%) {{PLURAL:$2|досягла|досягли}} межі $4. $5 ($6%) {{PLURAL:$5|активізувала|активізували}} один з увімкнених фільтрів.',
+	'abusefilter-status' => 'Серед $1 {{PLURAL:$1|1=дії|дій}}, $2 ($3%) {{PLURAL:$2|1=досягла|досягли}} межі $4. $5 ($6%) {{PLURAL:$5|1=активізувала|активізували}} один з увімкнених фільтрів.',
 	'abusefilter-edit' => 'Зміна фільтру редагувань',
 	'abusefilter-edit-subtitle' => 'Редагування фільтру $1',
 	'abusefilter-edit-subtitle-new' => 'Створення фільтру',
@@ -40897,7 +40897,7 @@ $messages['uk'] = array(
 	'abusefilter-edit-global' => 'Глобальний фільтр',
 	'abusefilter-edit-rules' => 'Умови:',
 	'abusefilter-edit-notes' => "Примітки:
-:''(приватні)",
+:''(приватні)", # Fuzzy
 	'abusefilter-edit-lastmod' => 'Остання зміна фільтру:',
 	'abusefilter-edit-lastmod-text' => '$1 користувачем $2',
 	'abusefilter-edit-hitcount' => 'Спрацьовувань фільтру:',
@@ -41104,7 +41104,7 @@ $messages['uk'] = array(
 Вказана причина: $2',
 	'abusefilter-revert-reasonfield' => 'Причина:',
 	'abusefilter-test' => 'Перевірити фільтр на вже зроблених редагуваннях',
-	'abusefilter-test-intro' => 'Ця сторінка дозволяє вам перевірити фільтр, введений у наведене нижче поле, на {{PLURAL:$1|останній $1 зміні|останніх $1 змінах}}.
+	'abusefilter-test-intro' => 'Ця сторінка дозволяє вам перевірити фільтр, введений у наведене нижче поле, на {{PLURAL:$1|1=останній $1 зміні|останніх $1 змінах}}.
 Щоб завантажити існуючий фільтр, введіть його ідентифікатор (ID) у текстове поле під полем редагування і натисніть кнопку  "{{int:abusefilter-test-load}}".',
 	'abusefilter-test-legend' => 'Перевірка фільтру',
 	'abusefilter-test-load-filter' => 'Завантажити фільтр з ID:',
@@ -43652,6 +43652,7 @@ $messages['zh-hans'] = array(
  * @author Waihorace
  * @author Wong128hk
  * @author Wrightbus
+ * @author Yfdyh000
  * @author Zanhsieh
  */
 $messages['zh-hant'] = array(
@@ -43808,7 +43809,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-edit-global' => '全域過濾器',
 	'abusefilter-edit-rules' => '條件：',
 	'abusefilter-edit-notes' => "註解：
-:''（私下記錄用）''",
+:''（私下記錄用）''", # Fuzzy
 	'abusefilter-edit-lastmod' => '過濾器最近修改：',
 	'abusefilter-edit-lastmod-text' => '於 $1 由 $2 修改',
 	'abusefilter-edit-hitcount' => '過濾器觸發次數：',
@@ -44067,7 +44068,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-diff-invalid' => '無法取得請求的版本',
 	'abusefilter-diff-backhistory' => '返回過濾器歷史頁面',
 	'abusefilter-diff-prev' => '軟舊的更改',
-	'abusefilter-diff-next' => '軟新的更改',
+	'abusefilter-diff-next' => '较新的更改',
 	'abusefilter-import-intro' => '您可以使用本介面來導入其他wiki的過濾器。在來源處點擊過濾器編輯介面處“{{int:abusefilter-edit-tools}}”下的“{{int:abusefilter-edit-export}}”。複製隨後出現的文字框中的內容，並複製至下方的文字框中，並點擊“{{int:abusefilter-import-submit}}”。',
 	'abusefilter-import-submit' => '導入數據',
 	'abusefilter-group-default' => '預設',
