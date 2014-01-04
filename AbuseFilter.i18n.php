@@ -435,6 +435,7 @@ To load an existing filter, type its filter ID into the box below the edit textb
 	'abusefilter-test-shownegative' => 'Show changes that do not match the filter',
 	'abusefilter-test-syntaxerr' => 'The filter you entered contained a syntax error.
 You can receive a full explanation by clicking the "{{int:abusefilter-edit-check}}" button.',
+	'abusefilter-test-badtitle' => 'The page title you entered was invalid. It may contain one or more characters that cannot be used in titles.',
 	'abusefilter-changeslist-examine' => 'examine',
 
 	// And these messages are for examining specific actions.
@@ -1099,6 +1100,7 @@ Parameters:
 	'abusefilter-test-load' => 'Text on a button, and referred to in {{msg-mw|abusefilter-test-intro}}
 {{Identical|Load}}',
 	'abusefilter-test-syntaxerr' => 'Refers to {{msg-mw|Abusefilter-edit-check}}.',
+	'abusefilter-test-badtitle' => 'Message if a bad title is entered on [[Special:AbuseFilter/test]]',
 	'abusefilter-examine-user' => '{{Identical|User}}',
 	'abusefilter-examine-title' => '{{Identical|Page title}}',
 	'abusefilter-examine-submit' => '{{Identical|Search}}',

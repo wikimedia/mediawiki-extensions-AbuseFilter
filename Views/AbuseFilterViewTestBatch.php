@@ -103,8 +103,13 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		}
 		if ( $this->mTestPage ) {
 			$title = Title::newFromText( $this->mTestPage );
-			$conds['rc_namespace'] = $title->getNamespace();
-			$conds['rc_title'] = $title->getDBkey();
+			if ( $title instanceof Title ) {
+				$conds['rc_namespace'] = $title->getNamespace();
+				$conds['rc_title'] = $title->getDBkey();
+			} else {
+				$out->addWikiMsg( 'abusefilter-test-badtitle' );
+				return;
+			}
 		}
 
 		// Get our ChangesList
