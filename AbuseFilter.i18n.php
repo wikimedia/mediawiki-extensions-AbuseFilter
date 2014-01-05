@@ -81,7 +81,7 @@ Rule description: $1',
 	'abusefilter-log-summary' => 'This log shows a list of all actions caught by the filters.',
 	'abusefilter-log-search' => 'Search the abuse log',
 	'abusefilter-log-search-user' => 'User:',
-	'abusefilter-log-search-filter' => 'Filter ID:',
+	'abusefilter-log-search-filter' => 'Filter IDs (separate with pipes):',
 	'abusefilter-log-search-title' => 'Title:',
 	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Search',
@@ -113,6 +113,7 @@ Filter description: $7 ($8)',
 	'abusefilter-log-hidden-implicit' => '(hidden because revision has been deleted)',
 	'abusefilter-log-cannot-see-details' => 'You do not have permission to see details of this entry.',
 	'abusefilter-log-details-hidden' => 'You cannot view the details for this entry because it is hidden from public view.',
+	'abusefilter-log-private-not-included' => 'One or more of the filter IDs you specified are private. Because you are not allowed to view details of private filters, these filters have not been searched for.',
 
 	// Hiding log entries
 	'abusefilter-log-hide-legend' => 'Hide log entry',
@@ -585,8 +586,7 @@ $messages['qqq'] = array(
 	'abusefilter-log-search' => 'Caption of a fieldset for filter definition on [[Special:AbuseLog]]',
 	'abusefilter-log-search-user' => 'Field label in abuse filter log page.
 {{Identical|User}}',
-	'abusefilter-log-search-filter' => 'Field label in abuse filter log page.
-{{Identical|Filter ID}}',
+	'abusefilter-log-search-filter' => 'Field label in abuse filter log page.',
 	'abusefilter-log-search-title' => 'Field label in abuse filter log page.
 {{Identical|Title}}',
 	'abusefilter-log-search-wiki' => 'Label for text field that allows the user to limit search results to a specific wiki, by name.
@@ -648,6 +648,7 @@ $messages['qqq'] = array(
 	'abusefilter-log-hidden-implicit' => 'Explanatory text to be shown beside an abuse filter log entry if it cannot be viewed due to its corresponding revision being hidden',
 	'abusefilter-log-cannot-see-details' => 'Message show instead of log row details for users without permissions to see them.',
 	'abusefilter-log-details-hidden' => 'Message shown instead of log row details when those are hidden.',
+	'abusefilter-log-private-not-included' => 'Message shown when an unauthorized user searches by ID for private filters.',
 	'abusefilter-log-hide-legend' => 'Legend for form to hide a log entry.',
 	'abusefilter-log-hide-id' => 'Field label in form to hide a log entry.',
 	'abusefilter-log-hide-hidden' => 'Checkbox label in form to hide a log entry.',
