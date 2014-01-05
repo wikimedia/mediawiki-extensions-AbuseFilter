@@ -2920,7 +2920,7 @@ Alcanzó la llende de coincidir con más del $1% de les aiciones.",
 	'abusefilter-edit-global' => 'Filtru global',
 	'abusefilter-edit-rules' => 'Condiciones:',
 	'abusefilter-edit-notes' => "Notes:
-:''(privao)''",
+:''(privao)''", # Fuzzy
 	'abusefilter-edit-lastmod' => 'Últimu cambiu del filtru:',
 	'abusefilter-edit-lastmod-text' => '$3 a les $4 por $2',
 	'abusefilter-edit-hitcount' => 'Activaciones del filtru:',
@@ -2936,7 +2936,7 @@ Alcanzó la llende de coincidir con más del $1% de les aiciones.",
 	'abusefilter-edit-action-tag' => 'Etiquetar la edición pa revisión posterior',
 	'abusefilter-edit-throttle-count' => "Númberu d'aiciones a permitir:",
 	'abusefilter-edit-throttle-period' => 'Periodu de tiempu:',
-	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL: $1|segundu|segundos}}',
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|segundu|segundos}}',
 	'abusefilter-edit-throttle-groups' => "Agrupar la regulación por:
 :''(unu por llinia, combinar con comes)''",
 	'abusefilter-edit-warn-message' => 'Mensaxe del sistema a usar pal avisu:',
@@ -8482,8 +8482,7 @@ Det har nået grænsen ved at matche mere end $1 % af handlingerne.",
 	'abusefilter-edit-hidden' => 'Skjul detaljer om dette filter fra offentlig visning',
 	'abusefilter-edit-global' => 'Globalt filter',
 	'abusefilter-edit-rules' => 'Betingelser:',
-	'abusefilter-edit-notes' => "Noter:
-:''(privat)''",
+	'abusefilter-edit-notes' => 'Noter:',
 	'abusefilter-edit-lastmod' => 'Filter senest ændret:',
 	'abusefilter-edit-lastmod-text' => '$1 af $2',
 	'abusefilter-edit-hitcount' => 'Filtertræf:',
@@ -8926,8 +8925,7 @@ Im Durchschnitt betrug die Bearbeitungszeit $4 ms und sie benötigten {{PLURAL:$
 	'abusefilter-edit-hidden' => 'Details des Filters nicht öffentlich anzeigen',
 	'abusefilter-edit-global' => 'Globaler Filter',
 	'abusefilter-edit-rules' => 'Bedingungen:',
-	'abusefilter-edit-notes' => "Notizen:
-:''(privat)''",
+	'abusefilter-edit-notes' => 'Notizen:',
 	'abusefilter-edit-lastmod' => 'Letzte Bearbeitung des Filters:',
 	'abusefilter-edit-lastmod-text' => '$3, $4 Uhr von $2',
 	'abusefilter-edit-hitcount' => 'Treffer des Filters:',
@@ -12152,6 +12150,7 @@ $messages['eu'] = array(
  * @author Leyth
  * @author Mahdiz
  * @author Mjbmr
+ * @author Omidh
  * @author Pouyana
  * @author Reza1615
  * @author Sahim
@@ -12321,8 +12320,7 @@ $messages['fa'] = array(
 	'abusefilter-edit-hidden' => 'پنهان‌کردن جزئیات این پالایه از دید عموم',
 	'abusefilter-edit-global' => 'پالایهٔ سراسری',
 	'abusefilter-edit-rules' => 'شروط:',
-	'abusefilter-edit-notes' => "یادداشت:
-:''(خصوصی)''",
+	'abusefilter-edit-notes' => 'یادداشت‌ها:',
 	'abusefilter-edit-lastmod' => 'آخرین ویرایش پالایه:',
 	'abusefilter-edit-lastmod-text' => '$1 توسط $2',
 	'abusefilter-edit-hitcount' => 'موارد مطابق با پالایه:',
@@ -13170,6 +13168,7 @@ Reglu frágreiðing: $1',
 
 /** French (français)
  * @author ChrisPtDe
+ * @author Cquoi
  * @author Crochet.david
  * @author DavidL
  * @author Gomoko
@@ -13354,8 +13353,7 @@ Il a atteint la limite de détection de plus de $1 % des actions.",
 	'abusefilter-edit-hidden' => 'Cacher les détails de ce filtre à la vue publique',
 	'abusefilter-edit-global' => 'Filtre global',
 	'abusefilter-edit-rules' => 'Conditions :',
-	'abusefilter-edit-notes' => "Notes :
-: ''(privé)''",
+	'abusefilter-edit-notes' => 'Notes :',
 	'abusefilter-edit-lastmod' => 'Dernière modification du filtre :',
 	'abusefilter-edit-lastmod-text' => '$1 par $2',
 	'abusefilter-edit-hitcount' => 'Nombre de détections du filtre :',
@@ -15439,8 +15437,7 @@ $messages['he'] = array(
 	'abusefilter-edit-hidden' => 'הסתרת פרטי מסנן זה מצפייה ציבורית',
 	'abusefilter-edit-global' => 'מסנן גלובלי',
 	'abusefilter-edit-rules' => 'תנאים:',
-	'abusefilter-edit-notes' => "הערות:
-:''(פרטי)",
+	'abusefilter-edit-notes' => 'הערות:',
 	'abusefilter-edit-lastmod' => 'המסנן שונה לאחרונה:',
 	'abusefilter-edit-lastmod-text' => '$1 על ידי $2',
 	'abusefilter-edit-hitcount' => 'פעולות שסוננו:',
@@ -16246,7 +16243,7 @@ Opis filtra: $7 ($8)',
 	'abusefilter-reautoconfirm-none' => 'Ovom suradniku {{GENDER:$1|njegov|njen}} status automatski potvrđeni nije bio suspendiran.',
 	'abusefilter-reautoconfirm-notallowed' => 'Nije vam dozvoljeno vratiti autoconfirmed status.',
 	'abusefilter-reautoconfirm-done' => 'Autoconfirmed status je vraćen',
-	'abusefilter-status' => 'Od {{PLURAL:$1|zadnje akcije|zadnje $1 akcije|zadnjih $akcija}}, $2 ($3%) {{PLURAL: $2|dostigla je|dostigle su|dostigle su}} granicu od $4, i $5 ($6%) {{plural: $5|se podudara|se podudaraju|se podudaraju}} s jednim od trenutno omogućenih filtara.',
+	'abusefilter-status' => 'Od {{PLURAL:$1|zadnje akcije|zadnje $1 akcije|zadnjih $akcija}}, $2 ($3%) {{PLURAL:$2|dostigla je|dostigle su|dostigle su}} granicu od $4, i $5 ($6%) {{PLURAL:$5|1=se podudara|se podudaraju}} s jednim od trenutno omogućenih filtara.', # Fuzzy
 	'abusefilter-edit' => 'Uređivanje filtra zloporaba',
 	'abusefilter-edit-subtitle' => 'Uređujete filtar $1',
 	'abusefilter-edit-subtitle-new' => 'Stvaram filtar',
@@ -16272,7 +16269,7 @@ Dostignuta je granicu od podudaranja s više od $1% akcija suradnika.",
 	'abusefilter-edit-global' => 'Globalni filtar',
 	'abusefilter-edit-rules' => 'Uvjeti:',
 	'abusefilter-edit-notes' => "Napomene:
-:''(privatno)''",
+:''(privatno)''", # Fuzzy
 	'abusefilter-edit-lastmod' => 'Zadnja izmjena filtra:',
 	'abusefilter-edit-lastmod-text' => '$1 suradnika $2',
 	'abusefilter-edit-hitcount' => 'Broj poklapanja filtra:',
@@ -16446,7 +16443,7 @@ Oznaka mora biti kratka, i ne bi smjela sadržavati posebne znakove.',
 	'abusefilter-exception-dividebyzero' => 'Nevaljan pokušaj dijeljenja $2 s nulom kod znaka $1.',
 	'abusefilter-exception-unrecognisedvar' => 'Neprepoznata varijabla $2 kod znaka $1',
 	'abusefilter-exception-notenoughargs' => 'Nema dovoljno argumenata za funkciju $2 pozvanu kod znaka $1.
-{{PLURAL: $3|Očekivan je $3 argument|Očekivana su $3 argumenta|Očekivano je $3 argumenata}}, dobiveno je $4',
+{{PLURAL:$3|Očekivan je $3 argument|Očekivana su $3 argumenta|Očekivano je $3 argumenata}}, dobiveno je $4',
 	'abusefilter-exception-regexfailure' => 'Pogreška u regularnom izrazu "$3" kod znaka $1: "$2"',
 	'abusefilter-exception-overridebuiltin' => 'Nevaljana zamjena predefinirane varijable "$2" kod znaka $1.',
 	'abusefilter-exception-outofbounds' => 'Traženje nepostojećeg elementa popisa $2 (veličina popisa = $3) kod znaka $1.',
@@ -17554,8 +17551,7 @@ In media, su durata de execution es $4ms, e illo consume $5 {{PLURAL:$5|conditio
 	'abusefilter-edit-hidden' => 'Celar del publico le detalios de iste filtro',
 	'abusefilter-edit-global' => 'Filtro global',
 	'abusefilter-edit-rules' => 'Conditiones:',
-	'abusefilter-edit-notes' => "Notas:
-:''(private)''",
+	'abusefilter-edit-notes' => 'Notas:',
 	'abusefilter-edit-lastmod' => 'Ultime modification del filtro:',
 	'abusefilter-edit-lastmod-text' => '$1 per $2',
 	'abusefilter-edit-hitcount' => 'Accessos al filtro:',
@@ -19757,8 +19753,7 @@ $messages['ja'] = array(
 	'abusefilter-edit-hidden' => 'このフィルターの詳細を公開しない',
 	'abusefilter-edit-global' => 'グローバル フィルター',
 	'abusefilter-edit-rules' => '条件:',
-	'abusefilter-edit-notes' => "メモ:
-:''(ログで非公開)''",
+	'abusefilter-edit-notes' => 'メモ:',
 	'abusefilter-edit-lastmod' => 'フィルターの最終変更:',
 	'abusefilter-edit-lastmod-text' => '$1に、$2による',
 	'abusefilter-edit-hitcount' => 'フィルターが発動した回数:',
@@ -21169,6 +21164,7 @@ $messages['kn'] = array(
 /** Korean (한국어)
  * @author Albamhandae
  * @author ChongDae
+ * @author Freebiekr
  * @author Gapo
  * @author Hym411
  * @author Klutzy
@@ -21340,8 +21336,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-hidden' => '일반 사용자가 필터의 세부 사항을 보지 못하도록 숨기기',
 	'abusefilter-edit-global' => '전역 필터',
 	'abusefilter-edit-rules' => '필터 규칙:',
-	'abusefilter-edit-notes' => "주석:
-:''(비공개)''", # Fuzzy
+	'abusefilter-edit-notes' => '참고:',
 	'abusefilter-edit-lastmod' => '필터가 마지막으로 수정된 시각',
 	'abusefilter-edit-lastmod-text' => '$2(이)가 $1에 바꿈',
 	'abusefilter-edit-hitcount' => '필터 적발 건수:',
@@ -22441,8 +22436,7 @@ En huet méi wéi déi definiéiert Limit vun $1% vun den Aktiounen als schiedle
 	'abusefilter-edit-hidden' => "Verstop d'Detailer vun dësem Filter virun der Ëffentlechkeet",
 	'abusefilter-edit-global' => 'Globale Filter',
 	'abusefilter-edit-rules' => 'Konditiounen:',
-	'abusefilter-edit-notes' => "Notizen:
-:''(privat)''",
+	'abusefilter-edit-notes' => 'Notizen:',
 	'abusefilter-edit-lastmod' => "De Filter gouf fir d'lescht geännert",
 	'abusefilter-edit-lastmod-text' => '$1 vum $2',
 	'abusefilter-edit-hitcount' => 'Teffer vum Filter:',
@@ -24601,8 +24595,7 @@ $messages['mk'] = array(
 	'abusefilter-edit-hidden' => 'Скриј ги за јавноста информациите за овој филтер',
 	'abusefilter-edit-global' => 'Глобален филтер',
 	'abusefilter-edit-rules' => 'Услови:',
-	'abusefilter-edit-notes' => "Белешки:
-:''(приватни)''", # Fuzzy
+	'abusefilter-edit-notes' => 'Белешки:',
 	'abusefilter-edit-lastmod' => 'Неодамна изменети филтри:',
 	'abusefilter-edit-lastmod-text' => '$1 од $2',
 	'abusefilter-edit-hitcount' => 'Погодоци на филтерот:',
@@ -25031,8 +25024,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-hidden' => 'പൊതുജനദൃഷ്ടിയിൽ നിന്നും അരിപ്പയുടെ വിവരങ്ങൾ മറയ്ക്കുക',
 	'abusefilter-edit-global' => 'ആഗോള അരിപ്പ',
 	'abusefilter-edit-rules' => 'ഉപാധികൾ:',
-	'abusefilter-edit-notes' => "കുറിപ്പുകൾ:
-:''(സ്വകാര്യം)''",
+	'abusefilter-edit-notes' => 'കുറിപ്പുകൾ:',
 	'abusefilter-edit-lastmod' => 'അരിപ്പ അവസാനം പുതുക്കിയത്:',
 	'abusefilter-edit-lastmod-text' => '$1 ചെയ്തത് $2',
 	'abusefilter-edit-hitcount' => 'കുടുങ്ങിയവ അരിച്ചെടുക്കുക:',
@@ -25231,7 +25223,7 @@ $messages['ml'] = array(
 	'abusefilter-revert-search' => 'പ്രവൃത്തികൾ തിരഞ്ഞെടുക്കുക',
 	'abusefilter-revert-filter' => 'അരിപ്പ:',
 	'abusefilter-revert-preview-intro' => 'ഈ പ്രവൃത്തി ചെയ്താൽ മുൻപ്രാപനം ചെയ്യപ്പെടുന്ന പ്രവൃത്തികൾ താഴെ കൊടുത്തിരിക്കുന്നു.
-ദയവായി അവ ശ്രദ്ധയോടെ പരിശോധിക്കുക, താങ്കൾ തിരഞ്ഞെടുത്തവ സ്ഥിരീകരിക്കാനായി "സ്ഥിരീകരിക്കുക" ഞെക്കുക.', # Fuzzy
+ദയവായി അവ ശ്രദ്ധയോടെ പരിശോധിക്കുക, താങ്കൾ തിരഞ്ഞെടുത്തവ സ്ഥിരീകരിക്കാനായി "{{int:abusefilter-revert-confirm}}" ഞെക്കുക.',
 	'abusefilter-revert-confirm' => 'സ്ഥിരീകരിക്കുക',
 	'abusefilter-revert-success' => '[[Special:AbuseFilter/$1|അരിപ്പ $1]] ഉപയോഗിച്ച് ദുരുപയോഗ അരിപ്പ ചെയ്ത എല്ലാ പ്രവൃത്തികളും മുന്നവസ്ഥയിലേയ്ക്ക് മാറ്റിയിരിക്കുന്നു.',
 	'abusefilter-revert-reason' => 'അരിപ്പ $1 ഉപയോഗിച്ച് ദുരുപയോഗ അരിപ്പ ചെയ്ത എല്ലാ പ്രവൃത്തികളും സ്വയം മുൻപ്രാപനം ചെയ്യുന്നു.
@@ -25239,7 +25231,7 @@ $messages['ml'] = array(
 	'abusefilter-revert-reasonfield' => 'കാരണം:',
 	'abusefilter-test' => 'മുൻ‌തിരുത്തലുകളിൽ ഒരു അരിപ്പ പരീക്ഷിക്കുക',
 	'abusefilter-test-intro' => 'ഒടുവിലത്തെ {{PLURAL:$1|ഒരു മാറ്റത്തിൽ|$1 മാറ്റങ്ങളിൽ}} താഴെയുള്ള പെട്ടിയിൽ നൽകിയിരിക്കുന്ന അരിപ്പ പരീക്ഷിക്കാൻ ഈ താൾ അനുവദിക്കുന്നു.
-നിലവിലുള്ള ഒരു അരിപ്പ ഉപയോഗിക്കാൻ, അതിന്റെ ഐ.ഡി. തിരുത്തുവാനുള്ള പെട്ടിയുടെ താഴെയുള്ള പെട്ടിയിൽ നൽകിയ ശേഷം, "എടുക്കുക" എന്ന ബട്ടൺ ഞെക്കുക.', # Fuzzy
+നിലവിലുള്ള ഒരു അരിപ്പ ഉപയോഗിക്കാൻ, അതിന്റെ ഐ.ഡി. തിരുത്തുവാനുള്ള പെട്ടിയുടെ താഴെയുള്ള പെട്ടിയിൽ നൽകിയ ശേഷം, "{{int:abusefilter-test-load}}" എന്ന ബട്ടൺ ഞെക്കുക.',
 	'abusefilter-test-legend' => 'അരിപ്പയുടെ പരീക്ഷണം',
 	'abusefilter-test-load-filter' => 'അരിപ്പയുടെ ഐ.ഡി. എടുക്കുക:',
 	'abusefilter-test-submit' => 'പരീക്ഷിയ്ക്കുക',
@@ -25250,7 +25242,7 @@ $messages['ml'] = array(
 	'abusefilter-test-page' => 'താളിൽ വരുത്തിയ മാറ്റങ്ങൾ:',
 	'abusefilter-test-shownegative' => 'അരിപ്പയുമായി യോജിക്കാത്ത മാറ്റങ്ങൾ പ്രദർശിപ്പിക്കുക',
 	'abusefilter-test-syntaxerr' => 'താങ്കൾ നൽകിയ അരിപ്പയുടെ എഴുത്തുരീതിയിൽ പിശകുണ്ട്.
-"എഴുത്തുരീതി പരിശോധിക്കുക" എന്ന ബട്ടൺ ഞെക്കിയാൽ താങ്കൾക്ക് പൂർണ്ണമായ വിശദീകരണം ലഭിക്കുന്നതാണ്.', # Fuzzy
+"{{int:abusefilter-edit-check}}" എന്ന ബട്ടൺ ഞെക്കിയാൽ താങ്കൾക്ക് പൂർണ്ണമായ വിശദീകരണം ലഭിക്കുന്നതാണ്.',
 	'abusefilter-changeslist-examine' => 'പരിശോധിക്കുക',
 	'abusefilter-examine' => 'ഒറ്റയൊറ്റ മാറ്റങ്ങൾ പരിശോധിക്കുക',
 	'abusefilter-examine-intro' => 'ഓരോ ഒറ്റയൊറ്റ മാറ്റത്തിനും ദുരുപയോഗ അരിപ്പ സൃഷ്ടിക്കുന്ന ചരങ്ങൾ പരിശോധിക്കാൻ ഈ താൾ താങ്കളെ അനുവദിക്കുന്നു, ഒപ്പം അത് അരിപ്പകളിൽ പരീക്ഷിക്കാവുന്നതുമാണ്.',
@@ -25708,6 +25700,7 @@ $messages['mr'] = array(
  * @author Anakmalaysia
  * @author Aurora
  * @author Aviator
+ * @author Diagramma Della Verita
  * @author Izzudin
  * @author Kurniasan
  * @author Zamwan
@@ -25873,8 +25866,7 @@ Ia telah mencapai had pemadanan lebih $1% tindakan.",
 	'abusefilter-edit-hidden' => 'Sorokkan butiran penapis ini daripada tatapan umum',
 	'abusefilter-edit-global' => 'Penapis sejagat',
 	'abusefilter-edit-rules' => 'Syarat:',
-	'abusefilter-edit-notes' => "Catatan:
-:''(peribadi)''",
+	'abusefilter-edit-notes' => 'Nota-Nota:',
 	'abusefilter-edit-lastmod' => 'Kali terakhir penapis diubahsuai:',
 	'abusefilter-edit-lastmod-text' => '$1, oleh $2',
 	'abusefilter-edit-hitcount' => 'Hit penapis:',
@@ -30041,7 +30033,7 @@ Im Schnidd hodda dodvu $4 ms un $5 {{PLURAL:$5|Bedingung|Bedingunge}} vunde Hegs
 	'abusefilter-edit-global' => 'Globals Siewb',
 	'abusefilter-edit-rules' => 'Bedingunge:',
 	'abusefilter-edit-notes' => "Nodize:
-:''(briwad)''",
+:''(briwad)''", # Fuzzy
 	'abusefilter-edit-lastmod' => 'Ledschdi Ännarung vum Siewb:',
 	'abusefilter-edit-lastmod-text' => '$1 vun $2',
 	'abusefilter-edit-hitcount' => 'Siewb Dreffa:',
@@ -30247,8 +30239,8 @@ Gugg druff un drigg doan uff „Bschdedische“, ums auszufiere.', # Fuzzy
 Oagewene Grund: $2',
 	'abusefilter-revert-reasonfield' => 'Bgrindung:',
 	'abusefilter-test' => "De Filda oan frijare B'aweidunge teschde",
-	'abusefilter-test-intro' => 'Midde Said kennen Filda oande ledschde $1 {{PLURAL: $1|Änarung|Änarunge}} iwabriefd werre.
-Umän Filda, wus schun gewe dud, zu laade, gibschd die Filda-ID une ins Feld oi un drigschd uff "Laade".', # Fuzzy
+	'abusefilter-test-intro' => 'Midde Said kennen Filda oande ledschde $1 {{PLURAL:$1|Änarung|Änarunge}} iwabriefd werre.
+Umän Filda, wus schun gewe dud, zu laade, gibschd die Filda-ID une ins Feld oi un drigschd uff "Laade".',
 	'abusefilter-test-legend' => 'Filda teschde',
 	'abusefilter-test-load-filter' => 'Filda-ID laade:',
 	'abusefilter-test-submit' => 'Teschd',
@@ -32415,8 +32407,7 @@ Dacă salvați modificările dumneavoastră, veți suprascrie toate modificăril
 	'abusefilter-edit-hidden' => 'Ascunde publicului detaliile acestui filtru',
 	'abusefilter-edit-global' => 'Filtru global',
 	'abusefilter-edit-rules' => 'Condiții:',
-	'abusefilter-edit-notes' => "Note:
-:''(private)",
+	'abusefilter-edit-notes' => 'Note:',
 	'abusefilter-edit-lastmod' => 'Ultima modificare filtru:',
 	'abusefilter-edit-lastmod-text' => '$1 de $2',
 	'abusefilter-edit-hitcount' => 'Potriviri filtru:',
@@ -42586,8 +42577,7 @@ $messages['yi'] = array(
 	'abusefilter-edit-hidden' => 'באהאלטן פרטים פון דעם פילטער פון באקוקן עפנטלעך',
 	'abusefilter-edit-global' => 'גלאבאלער פֿילטער',
 	'abusefilter-edit-rules' => 'תנאים:',
-	'abusefilter-edit-notes' => "הערות:
-:''(פריוואט)''",
+	'abusefilter-edit-notes' => 'הערות:',
 	'abusefilter-edit-lastmod' => 'פֿילטער לעצטנס געענדערט:',
 	'abusefilter-edit-lastmod-text' => '$1 פֿון $2',
 	'abusefilter-edit-hitcount' => 'פֿילטער טרעפֿונגען:',
@@ -43374,8 +43364,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-hidden' => '向公众隐藏本过滤器的详细信息',
 	'abusefilter-edit-global' => '全域过滤器',
 	'abusefilter-edit-rules' => '条件：',
-	'abusefilter-edit-notes' => "注释：
-:''（非公开可见）''",
+	'abusefilter-edit-notes' => '注释：',
 	'abusefilter-edit-lastmod' => '过滤器最后更改：',
 	'abusefilter-edit-lastmod-text' => '$1，$2',
 	'abusefilter-edit-hitcount' => '过滤器触发数：',
