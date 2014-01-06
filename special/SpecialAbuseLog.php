@@ -409,10 +409,10 @@ class SpecialAbuseLog extends SpecialPage {
 
 	/**
 	 * @param $row
-	 * @param $li bool
+	 * @param $isListItem bool
 	 * @return String
 	 */
-	function formatRow( $row, $li = true ) {
+	function formatRow( $row, $isListItem = true ) {
 		$user = $this->getUser();
 		$lang = $this->getLanguage();
 
@@ -483,6 +483,14 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 
 		if ( self::canSeeDetails( $row->afl_filter, $filter_hidden ) ) {
+			if( $isListItem ) {
+				$detailsLink = Linker::linkKnown(
+					$this->getPageTitle($row->afl_id),
+					$this->msg( 'abusefilter-log-detailslink' )->escaped()
+				);
+				$actionLinks[] = $detailsLink;
+			}
+
 			$examineTitle = SpecialPage::getTitleFor( 'AbuseFilter', 'examine/log/' . $row->afl_id );
 			$examineLink = Linker::link(
 				$examineTitle,
@@ -549,7 +557,7 @@ class SpecialAbuseLog extends SpecialPage {
 				$this->msg( 'abusefilter-log-hidden-implicit' )->parse();
 		}
 
-		if ( $li ) {
+		if ( $isListItem ) {
 			return Xml::tags( 'li', isset( $class ) ? array( 'class' => $class ) : null, $description );
 		} else {
 			return Xml::tags( 'span', isset( $class ) ? array( 'class' => $class ) : null, $description );
