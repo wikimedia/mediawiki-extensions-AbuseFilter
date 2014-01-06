@@ -530,13 +530,19 @@ class SpecialAbuseLog extends SpecialPage {
 				$row->afl_user_text
 			)->parse();
 		} else {
-			$description = $this->msg( 'abusefilter-log-entry' )->rawParams(
+			if ( $diffLink ) {
+				$msg = 'abusefilter-log-entry-withdiff';
+			} else {
+				$msg = 'abusefilter-log-entry';
+			}
+			$description = $this->msg( $msg )->rawParams(
 				$timestamp,
 				$userLink,
 				$row->afl_action,
 				$pageLink,
 				$actions_taken,
-				$parsed_comments
+				$parsed_comments,
+				$diffLink // Passing $7 to 'abusefilter-log-entry' will do nothing, as it's not used.
 			)->parse();
 		}
 
