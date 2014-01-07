@@ -7333,6 +7333,7 @@ $messages['ce'] = array(
 	'abusefilter-edit-builder-vars-article-ns' => 'АгӀона цӀерийн меттиг',
 	'abusefilter-edit-builder-vars-article-text' => 'АгӀона цӀе (цӀерийн меттиг йоцуш)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'АгӀона юьзина цӀе',
+	'abusefilter-edit-builder-vars-article-views' => 'АгӀонашка хьаьжина',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'ЦӀе хуьйцуш йолу агӀонан ID',
 	'abusefilter-edit-builder-vars-movedto-id' => 'ЦӀе хуьйцуш йолу Ӏалашонан агӀонан ID',
 	'abusefilter-edit-builder-vars-user-editcount' => 'Декъашхочун нисдаршан дукхалла',
@@ -9696,6 +9697,7 @@ Kutiyê nuştîşî kopye bike u ena kutiyê nuştîş rê na pa u klik bike "{{
 );
 
 /** Lower Sorbian (dolnoserbski)
+ * @author Derbeth
  * @author Michawiki
  */
 $messages['dsb'] = array(
@@ -9824,7 +9826,7 @@ Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpo
 	'abusefilter-tools-reautoconfirm' => 'Awtomatiski wobkšuśony status wótnowiś',
 	'abusefilter-tools-reautoconfirm-user' => 'Wužywaŕ:',
 	'abusefilter-tools-reautoconfirm-submit' => 'Znowego awtomatiski wobkšuśiś',
-	'abusefilter-reautoconfirm-none' => '{{GENDER:$1Toś ten wužywaŕ||Toś tomu wužiwarjeju|Toś tej wužywarce}} njejo se zajmjeł {{GENDER:$1|jogo|jeje}} awtomatiski wobkšuśony status.',
+	'abusefilter-reautoconfirm-none' => '{{GENDER:$1Toś ten wužywaŕ||Toś tomu wužywarjeju|Toś tej wužywarce}} njejo se změnił {{GENDER:$1|jogo|jeje}} awtomatiski wobkšuśony status.',
 	'abusefilter-reautoconfirm-notallowed' => 'Njesmějoš awtomatiski wobkšuśony status wótnowiś',
 	'abusefilter-reautoconfirm-done' => 'Status awtomatiskego wobkšuśenja konta jo se wótnowił',
 	'abusefilter-status' => 'Ze {{PLURAL:$1|slědneje akcije|slědneju $1 akciji|slědnych $1 akcijow|slědnych $1 akcijow}} $2 ($3 %) {{PLURAL:$2|jo dojśpiła|stej dojśpiłej|su dojśpili|jo dojśpiło}} limit wuměnjenja $4 a $5 ($6 %) {{PLURAL:$5|jo wótpowědowała|stej wótpowědowałej|su wótpowědowali|jo wótpowědowało}} jadnomu z filtrow, kótarež su tuchylu zmóžnjone.',
@@ -9852,7 +9854,7 @@ Jo dojśpił limit wěcej ako $1 % akcijow.",
 	'abusefilter-edit-global' => 'Globalny filter',
 	'abusefilter-edit-rules' => 'Wuměnjenja::',
 	'abusefilter-edit-notes' => "Pśipomnjeśa:
-:'' (priwatne)''",
+:'' (priwatne)''", # Fuzzy
 	'abusefilter-edit-lastmod' => 'filter slědny raz změnjony:',
 	'abusefilter-edit-lastmod-text' => '$1 wót $2',
 	'abusefilter-edit-hitcount' => 'Licba filtrowych trefarjow:',
@@ -33268,14 +33270,14 @@ $messages['ru'] = array(
 	'abusefilter-reautoconfirm-none' => 'У {{GENDER:$1|этого участника|этой участницы}} не отключён статус автоподтверждения.',
 	'abusefilter-reautoconfirm-notallowed' => 'Вам не разрешено восстанавливать статус автоподтверждения.',
 	'abusefilter-reautoconfirm-done' => 'Восстановлен статус автоподтверждения учётной записи',
-	'abusefilter-status' => 'Из $1 {{PLURAL:$1|последнего действия|последних действий|последних действий}}, $2 ($3%) {{PLURAL:$2|попало|попали|попали}} под ограничивающее условие $4, а $5 ($6%) {{PLURAL:$5|соответствует|соответствуют|соответствуют}} одному из включённых в настоящее время фильтров.', # Fuzzy
+	'abusefilter-status' => 'Из $1 {{PLURAL:$1|последнего действия|последних действий}}, $2 ($3%) {{PLURAL:$2|попало|попали}} под ограничивающее условие $4, а $5 ($6%) {{PLURAL:$5|соответствует|соответствуют}} одному из включённых в настоящее время фильтров.',
 	'abusefilter-edit' => 'Править фильтр злоупотреблений',
 	'abusefilter-edit-subtitle' => 'Изменение фильтра $1',
 	'abusefilter-edit-subtitle-new' => 'Создание фильтра',
 	'abusefilter-edit-oldwarning' => '<strong>Вы правите старую версию фильтра. Статистика приводится для последней версии фильтра. Если вы сохраните вашу правку, то вы перезапишите сделанные ранее изменения.</strong> &bull; [[Special:AbuseFilter/history/$2|Вернуться к странице истории фильтра]]',
 	'abusefilter-edit-status-label' => 'Статистика:',
-	'abusefilter-edit-status' => 'Из {{PLURAL:$1|последнего $1 действия|последних $1 действий|последних $1 действий}}, этот фильтр соответствует $2 ($3%).
-Среднее время его работы — $4 мс, он использует $5 {{PLURAL:$5|условие|условий|условия}} из лимита условий.', # Fuzzy
+	'abusefilter-edit-status' => 'Из {{PLURAL:$1|последнего $1 действия|последних $1 действий}}, этот фильтр соответствует $2 ($3%).
+Среднее время его работы — $4 мс, он использует $5 {{PLURAL:$5|условие|условий|условия}} из лимита условий.',
 	'abusefilter-edit-throttled' => "'''Предупреждение.''' Этот фильтр был автоматически отключён в качестве меры предосторожности. Процент его срабатываний превысил $1 % от всех действий.",
 	'abusefilter-edit-new' => 'Новый фильтр',
 	'abusefilter-edit-save' => 'Сохранить фильтр',
@@ -33289,8 +33291,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-hidden' => 'Скрыть подробности этого фильтра от обычных участников',
 	'abusefilter-edit-global' => 'Глобальный фильтр',
 	'abusefilter-edit-rules' => 'Условия:',
-	'abusefilter-edit-notes' => "Примечания:
-:''(приватные)''", # Fuzzy
+	'abusefilter-edit-notes' => 'Примечания:',
 	'abusefilter-edit-lastmod' => 'Последнее изменение фильтра:',
 	'abusefilter-edit-lastmod-text' => '$1 — $2',
 	'abusefilter-edit-hitcount' => 'Срабатываний фильтра:',
@@ -33306,7 +33307,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-action-tag' => 'Отметить правку для дальнейшей проверки',
 	'abusefilter-edit-throttle-count' => 'Количество разрешённых действий:',
 	'abusefilter-edit-throttle-period' => 'Отрезок времени:',
-	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|секунда|секунд|секунды}}', # Fuzzy
+	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|секунда|секунд|секунды}}',
 	'abusefilter-edit-throttle-groups' => "Сужение по группам:
 :''(по одному на строке, соединения запятыми)''",
 	'abusefilter-edit-warn-message' => 'Системное сообщение для предупреждений:',
@@ -33466,7 +33467,7 @@ $messages['ru'] = array(
 	'abusefilter-exception-dividebyzero' => 'Попытка деления $2 на ноль в позиции $1.',
 	'abusefilter-exception-unrecognisedvar' => 'Неопознанная переменная $2 в позиции $1',
 	'abusefilter-exception-notenoughargs' => 'Не хватает аргументов в функции $2, вызываемой в позиции $1.
-Ожидается $3 {{PLURAL:$3|аргумент|аргументов|аргумента}}, {{PLURAL:$4|получен|получено|получено}} $4', # Fuzzy
+Ожидается $3 {{PLURAL:$3|аргумент|аргументов|аргумента}}, {{PLURAL:$4|получен|получено}} $4',
 	'abusefilter-exception-regexfailure' => 'Ошибка в регулярном выражении «$3» в позиции $1: «$2»',
 	'abusefilter-exception-overridebuiltin' => 'Недопустимое переопределение встроенной переменной «$2» в позиции $1.',
 	'abusefilter-exception-outofbounds' => 'Запрос несуществующего элемента списка $2 (размер списка = $3) в позиции $1.',
@@ -33496,8 +33497,8 @@ $messages['ru'] = array(
 Указанная причина: $2',
 	'abusefilter-revert-reasonfield' => 'Причина:',
 	'abusefilter-test' => 'Проверить фильтр на уже сделанных правках',
-	'abusefilter-test-intro' => 'Эта страница позволяет вам проверить фильтр, введённый в приведённое ниже поле, на {{PLURAL:$1|1=последнем $1 изменении|последних $1 изменениях}}.
-Чтобы загрузить существующий фильтр, введите его ID в текстовое поле под полем редактирования и нажмите кнопку «{{int:abusefilter-test-load}}».', # Fuzzy
+	'abusefilter-test-intro' => 'Эта страница позволяет вам проверить фильтр, введённый в нижележащее поле, на {{PLURAL:$1|$1 последнем изменении|$1 последних изменениях|1=последнем изменении}}.
+Чтобы загрузить существующий фильтр, введите его идентификатор в текстовое поле под полем редактирования и нажмите кнопку «{{int:abusefilter-test-load}}».',
 	'abusefilter-test-legend' => 'Проверка фильтра',
 	'abusefilter-test-load-filter' => 'Загрузить фильтр с ID:',
 	'abusefilter-test-submit' => 'Проверить',
@@ -37573,8 +37574,7 @@ missbrukslogg-poster.',
 	'abusefilter-edit-hidden' => 'Dölj detaljer om detta filter',
 	'abusefilter-edit-global' => 'Globalt filter',
 	'abusefilter-edit-rules' => 'Regelverk:',
-	'abusefilter-edit-notes' => "Noteringar:
-:''(privat)",
+	'abusefilter-edit-notes' => 'Noteringar:',
 	'abusefilter-edit-lastmod' => 'Filter senast ändrat:',
 	'abusefilter-edit-lastmod-text' => '$1 av $2',
 	'abusefilter-edit-hitcount' => 'Filterträffar:',
@@ -38012,6 +38012,7 @@ Krůtki uopis zńyłużyćo, ke keremu bůła przipasowano twojo akcyjo: $1', # 
  * @author Shanmugamp7
  * @author Sodabottle
  * @author TRYPPN
+ * @author கௌசிக் பிரபு
  * @author செல்வா
  * @author மதனாஹரன்
  */
@@ -38126,8 +38127,7 @@ Filter description: $7 ($8)',
 	'abusefilter-edit-deleted' => 'நீக்கப்பட்டதாக குறித்துக்கொள்ளவும்',
 	'abusefilter-edit-global' => 'உலக வடிகட்டி',
 	'abusefilter-edit-rules' => 'கட்டுப்பாடுகள்:',
-	'abusefilter-edit-notes' => "குறிப்புக்கள்:
-:''(தனிப்பட்டது)''",
+	'abusefilter-edit-notes' => 'குறிப்புக்கள்:',
 	'abusefilter-edit-consequences' => 'பொருந்திவந்தபோது செய்த செயல்கள்',
 	'abusefilter-edit-action-blockautopromote' => 'இப்பயனரின் தானாக உறுதிசெய்யப்பட்ட நிலையை இரத்து செய்.',
 	'abusefilter-edit-action-block' => 'இந்த பயனர் அல்லது ஐ.பி-ஐ தொகுக்க அனுமதிக்காதே',
