@@ -9853,8 +9853,7 @@ Jo dojśpił limit wěcej ako $1 % akcijow.",
 	'abusefilter-edit-hidden' => 'Drobnosći toś togo filtra pśed zjawnym zwobraznjenim schowaś',
 	'abusefilter-edit-global' => 'Globalny filter',
 	'abusefilter-edit-rules' => 'Wuměnjenja::',
-	'abusefilter-edit-notes' => "Pśipomnjeśa:
-:'' (priwatne)''", # Fuzzy
+	'abusefilter-edit-notes' => 'Pśipomnjeśa:',
 	'abusefilter-edit-lastmod' => 'filter slědny raz změnjony:',
 	'abusefilter-edit-lastmod-text' => '$1 wót $2',
 	'abusefilter-edit-hitcount' => 'Licba filtrowych trefarjow:',
