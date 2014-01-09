@@ -2674,7 +2674,7 @@ $messages['as'] = array(
 	'abusefilter-log-detailedentry-local' => 'পৰিশ্ৰাৱক $1',
 	'abusefilter-log-detailslink' => 'বিস্তাৰিত',
 	'abusefilter-log-diff' => 'পাৰ্থক্য',
-	'abusefilter-log-hidelink' => 'প্রদর্শনযোগ্যতা ঠিক কৰক ।',
+	'abusefilter-log-hidelink' => 'প্রদর্শনযোগ্যতা ঠিক কৰক',
 	'abusefilter-log-details-var' => 'চলক',
 	'abusefilter-log-details-val' => 'মান',
 	'abusefilter-log-details-vars' => 'কার্য্যৰ প্রাচলসমূহ',
@@ -8847,6 +8847,9 @@ Beschreibung der Regel: $1',
 	'abusefilter-log-entry' => '$1: $2 löste durch die Aktion „$3“ auf „$4“ einen Missbrauchsfilter aus.
 Filteraktion: „$5“;
 Filterbeschreibung: „$6“',
+	'abusefilter-log-entry-withdiff' => '$1: $2 hat mit der Aktion „$3“ auf der Seite $4 einen Missbrauchsfilter ausgelöst.
+Unternommene Aktionen: $5;
+Filterbeschreibung: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 löste durch die Aktion „$4“ auf die Seite „$5“ den $3 aus.
 Ergriffene Maßnahmen: $6;
 Filterbeschreibung: $7 ($8)',
@@ -9450,7 +9453,7 @@ nê istatiski qey na filtreya.
 	'abusefilter-edit-consequences' => 'Çi wext maç biy, ena herketan kerd',
 	'abusefilter-edit-action-warn' => 'Peni ra karber îkaz biy, enê herketan biker',
 	'abusefilter-edit-action-disallow' => 'Ena karber rê destur medî ke ena herket biker',
-	'abusefilter-edit-action-flag' => 'Qeydé vırnayışané kerocekan de nengandı mor ke',
+	'abusefilter-edit-action-flag' => 'Vurnayışan qeydê nêrayiye de mor ke',
 	'abusefilter-edit-action-blockautopromote' => 'Statuyê karber ê otokonfirmasyonî iptal bike',
 	'abusefilter-edit-action-degroup' => 'Ena karber grupan ra wedarne',
 	'abusefilter-edit-action-block' => 'Karber u/ya zi adresê karberî blok bike',
@@ -21618,6 +21621,13 @@ $messages['ko'] = array(
 	'abusefilter-group-default' => '기본값',
 );
 
+/** Karachay-Balkar (къарачай-малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'abusefilter-list-options-submit' => 'Джангырт',
+);
+
 /** Krio (Krio)
  * @author Jose77
  */
@@ -23761,8 +23771,7 @@ Tas sasniedza $1% no atļauto darbību limita.",
 	'abusefilter-edit-hidden' => 'Liegt šī filtra papildinformācijas publisku apskati',
 	'abusefilter-edit-global' => 'Globāls filtrs',
 	'abusefilter-edit-rules' => 'Nosacījumi:',
-	'abusefilter-edit-notes' => "Piezīmes:
-:''(privāts)''",
+	'abusefilter-edit-notes' => 'Piezīmes:',
 	'abusefilter-edit-lastmod' => 'Pēdējoreiz filtrs izmainīts:',
 	'abusefilter-edit-lastmod-text' => '$1 — $2',
 	'abusefilter-edit-hitcount' => 'Filtra trāpījumu skaits:',
