@@ -88,6 +88,9 @@ Rule description: $1',
 	'abusefilter-log-entry' => '$1: $2 triggered an abuse filter, performing the action "$3" on $4.
 Actions taken: $5;
 Filter description: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 triggered an abuse filter, performing the action "$3" on $4.
+Actions taken: $5;
+Filter description: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 triggered $3, performing the action "$4" on $5.
 Actions taken: $6;
 Filter description: $7 ($8)',
@@ -594,6 +597,14 @@ $messages['qqq'] = array(
 * $4 link to page the action that triggered the filter was made on
 * $5 actions taken by the filter
 * $6 comments in filter description.',
+	'abusefilter-log-entry-withdiff' => 'This message is for a log entry. Parameters:
+* $1 timestamp
+* $2 user
+* $3 action by user
+* $4 link to page the action that triggered the filter was made on
+* $5 actions taken by the filter
+* $6 comments in filter description
+* $7 link to diff.',
 	'abusefilter-log-detailedentry-meta' => 'This message is for a log entry. Parameters:
 * $1 - timestamp
 * $2 - user
