@@ -415,7 +415,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$fields['abusefilter-edit-notes'] = Xml::textarea(
 			'wpFilterNotes',
 			( isset( $row->af_comments ) ? $row->af_comments . "\n" : "\n" ),
-			40, 5,
+			40, 15,
 			$readOnlyAttrib
 		);
 
