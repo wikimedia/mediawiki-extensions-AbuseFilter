@@ -591,20 +591,22 @@ $messages['qqq'] = array(
 	'abusefilter-log-search-submit' => 'Button text to search log in abuse filter log page.
 {{Identical|Search}}',
 	'abusefilter-log-entry' => 'This message is for a log entry. Parameters:
-* $1 timestamp
-* $2 user
-* $3 action by user
-* $4 link to page the action that triggered the filter was made on
-* $5 actions taken by the filter
-* $6 comments in filter description.',
+* $1 - timestamp
+* $2 - user
+* $3 - action by user
+* $4 - link to page the action that triggered the filter was made on
+* $5 - actions taken by the filter
+* $6 - comments in filter description
+{{Related|Abusefilter-log}}',
 	'abusefilter-log-entry-withdiff' => 'This message is for a log entry. Parameters:
-* $1 timestamp
-* $2 user
-* $3 action by user
-* $4 link to page the action that triggered the filter was made on
-* $5 actions taken by the filter
-* $6 comments in filter description
-* $7 link to diff.',
+* $1 - timestamp
+* $2 - user
+* $3 - action by user
+* $4 - link to page the action that triggered the filter was made on
+* $5 - actions taken by the filter
+* $6 - comments in filter description
+* $7 - link to diff
+{{Related|Abusefilter-log}}',
 	'abusefilter-log-detailedentry-meta' => 'This message is for a log entry. Parameters:
 * $1 - timestamp
 * $2 - user
@@ -614,7 +616,8 @@ $messages['qqq'] = array(
 * $6 - actions taken by the filter
 * $7 - comments in filter description
 * $8 - link to action details, examine, and optional diff
-* $9 - (Optional) raw username, for GENDER support',
+* $9 - (Optional) raw username, for GENDER support
+{{Related|Abusefilter-log}}',
 	'abusefilter-log-detailedentry-global' => 'Addition in the abuse filter log detail when a filter rule is a global rule. Parameters:
 * $1 is a global filter ID.',
 	'abusefilter-log-detailedentry-local' => 'Addition in the abuse filter log detail when a filter rule is a local rule. Parameters:
@@ -2838,6 +2841,9 @@ Descripción de la regla: $1",
 	'abusefilter-log-entry' => "$1: $2 disparó una peñera d'abusu al facer l'aición «$3» en $4.
 Midíes tomaes: $5;
 Descripción de la peñera: $6",
+	'abusefilter-log-entry-withdiff' => '$1: $2 disparó un filtru d\'abusu, faciendo la aición "$3" en $4.
+Aiciones desendolcaes: $5;
+Descripción del filtru: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => "$1: $2 disparó $3 al facer l'aición «$4» en $5.
 Midíes tomaes: $6;
 Descripción de la peñera: $7 ($8)",
@@ -9773,6 +9779,9 @@ Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpo
 	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Pytaś',
 	'abusefilter-log-entry' => '$1: $2 jo znjewužywański filter zapušćił a cynił akciju $3 na $4. Wuwjeźone akcije: $5; Wopisanje filtra: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 jo znjewužywański filter zapušćił a cynił akciju $3 na $4.
+Wuwjeźone akcije: $5;
+Wopisanje filtra: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 jo zapušćił $3 a jo pśewjadł akciju "$4" na $5. Wuwjeźone akcije: $6; Wopisanje filtra: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'globalny filter $1',
 	'abusefilter-log-detailedentry-local' => 'filter $1',
@@ -12243,6 +12252,9 @@ $messages['fa'] = array(
 	'abusefilter-log-entry' => '$1: $2 توسط پالایهٔ خرابکاری گرفته شد؛ مشغول اجرای «$3» بر روی $4 بود.
 عمل پالایه: $5؛
 توضیحات پالایه: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 یک فیلتر سوء مصرف به کار انداخته شده، در حال انجام عمل "$3" در $4 است.‌
+عملیات صورت گرفته: $5؛
+توضیحات فیلر: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 $3 را در حالی که قصد داشت عمل «$4» را روی $5 انجام دهد فعال کرد.
 اقدام صورت‌گرفته: $6؛
 توضیحات پالایه: $7 ($8)',
@@ -13275,6 +13287,9 @@ Description de la règle associée : $1',
 	'abusefilter-log-entry' => "$1 : $2 a déclenché un filtre antiabus, lors de l'action « $3 » sur $4.
 Actions prises : $5 ;
 Description du filtre : $6",
+	'abusefilter-log-entry-withdiff' => '$1 : $2 a déclenché un filtre anti-abus, en effectuant l’action « $3 » sur $4.
+Action entreprise : $5 ;
+Description du filtre : $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => "$1 : $2 a déclenché le $3, lors de l'action « $4 » sur $5.
 Actions prises : $6 ;
 Description du filtre : $7 ($8)",
@@ -16613,6 +16628,9 @@ Krótke wopisanje znjewužiwanskeho prawidła, kotremuž twoja akcija wotpowědu
 	'abusefilter-log-entry' => '$1: $2 pušći znjewužiwanski filter přez wuwjedźenje akcije "$3" na $4.
 Přewjedźene akcije: $5;
 Wopisanje filtra: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 pušći znjewužiwanski filter přez wuwjedźenje akcije "$3" na $4.
+Přewjedźene akcije: $5;
+Wopisanje filtra: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 pušći $3 přez wuwjedźenje akcije "$4" na $5.
 Přewjedźene akcije: $6;
 Wopisanje filtra:: $7 ($8)',
@@ -16709,8 +16727,7 @@ Limit wjace hač $1 % akcijow je so docpěł.",
 	'abusefilter-edit-hidden' => 'Podrobnosće před zjawnym wobhldanjom schować',
 	'abusefilter-edit-global' => 'Globalny filter',
 	'abusefilter-edit-rules' => 'Wuměnjenja:',
-	'abusefilter-edit-notes' => "Přispomnjenki:
-:''(priwatne)",
+	'abusefilter-edit-notes' => 'Přispomnjenki:',
 	'abusefilter-edit-lastmod' => 'Filter posledni raz změnjeny:',
 	'abusefilter-edit-lastmod-text' => '$1 wot $2',
 	'abusefilter-edit-hitcount' => 'Trjechene filtra:',
@@ -19237,6 +19254,9 @@ Descrizione della regola corrispondente: $1',
 	'abusefilter-log-entry' => '$1: $2 ha provocato l\'attivazione di un filtro anti abusi con l\'azione "$3" su $4.
 Azioni intraprese: $5;
 Descrizione del filtro: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 ha provocato l\'attivazione di un filtro anti abusi con l\'azione "$3" su $4.
+Azioni intraprese: $5;
+Descrizione del filtro: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 ha provocato l\'attivazione $3 con l\'azione "$4" su $5.
 Azioni intraprese: $6;
 Descrizione del filtro: $7 ($8)',
@@ -19334,8 +19354,7 @@ Il suo tempo medio di esecuzione è di $4 ms, e impiega $5 {{PLURAL:$5|condizion
 	'abusefilter-edit-hidden' => 'Nascondi i dettagli di questo filtro al pubblico',
 	'abusefilter-edit-global' => 'Filtro globale',
 	'abusefilter-edit-rules' => 'Condizioni:',
-	'abusefilter-edit-notes' => "Note:
-:''(privato)''",
+	'abusefilter-edit-notes' => 'Note:',
 	'abusefilter-edit-lastmod' => 'Ultima modifica al filtro:',
 	'abusefilter-edit-lastmod-text' => '$1 da parte di $2',
 	'abusefilter-edit-hitcount' => 'Corrispondenze per il filtro:',
@@ -19679,6 +19698,9 @@ $messages['ja'] = array(
 	'abusefilter-log-entry' => '$1: $2 が $4 で「$3」操作を行い不正利用フィルターが発動しました。
 対処操作: $5、
 フィルター解説: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 が $4 で「$3」操作を行い不正利用フィルターが発動しました。
+対処操作: $5、
+フィルター解説: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1に$2が$5で「$4」操作を行い、$3が発動しました。
 対処操作: $6
 フィルター解説: $7 ($8)',
@@ -23165,6 +23187,13 @@ $messages['ln'] = array(
 	'abusefilter-log-hide-reason' => 'Ntína:',
 );
 
+/** لوری (لوری)
+ * @author Mogoeilor
+ */
+$messages['lrc'] = array(
+	'abusefilter-edit-notes' => 'نيسنيا:',
+);
+
 /** Lithuanian (lietuvių)
  * @author Audriusa
  * @author Eitvys200
@@ -24521,6 +24550,9 @@ $messages['mk'] = array(
 	'abusefilter-log-entry' => '$1: $2 предизвика филтер на злоупотреби, извршувајќи го дејството „$3“ на $4.
 Преземени мерки: $5;
 Опис од филтерот: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 предизвика филтер на злоупотреби, извртшувајќи го дејството „$3“ на $4.
+Преземени мерки: $5;
+Опис од филтерот: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 предизвика $3, извршувајќи го дејството „$4“ на $5.
 Преземени мерки: $6;
 Опис од филтерот: $7 ($8)',
@@ -25487,8 +25519,7 @@ $messages['mr'] = array(
 	'abusefilter-edit-hidden' => 'या गाळणीच्या विवरणाची सार्वजनिक दृश्यता झाका',
 	'abusefilter-edit-global' => 'वैश्विक गाळणी',
 	'abusefilter-edit-rules' => 'शर्ती',
-	'abusefilter-edit-notes' => "नोंदी:
-:''(खाजगी)''",
+	'abusefilter-edit-notes' => 'टिपा:',
 	'abusefilter-edit-lastmod' => 'संपादन गाळणीचा शेवटचा फेरबदल:',
 	'abusefilter-edit-lastmod-text' => '$1 द्वारा $2',
 	'abusefilter-edit-hitcount' => 'गाळणीने पेललेले झेल',
@@ -25513,10 +25544,10 @@ $messages['mr'] = array(
 	'abusefilter-edit-warn-preview' => 'निवडलेल्या संदेशाची झलक',
 	'abusefilter-edit-warn-edit' => 'निवडलेला संदेश तयार करा/ संपादीत करा',
 	'abusefilter-edit-tag-tag' => 'खूणवण्याचे संदेश (प्रतीओळ एक):',
-	'abusefilter-edit-denied' => 'सार्वजनीक दृश्यतेपासून झाकलेले असल्यामुळे या गाळणीचे विवरण आपण पाहू शकत नाही.', # Fuzzy
+	'abusefilter-edit-denied' => 'सार्वजनीक दृश्यतेपासून झाकलेले असल्यामुळे या गाळणीचे विवरण आपण पाहू शकत नाही.',
 	'abusefilter-edit-main' => 'गाळणी प्राचले (पॅरामीटर्स)',
 	'abusefilter-edit-done-subtitle' => 'गाळणी संपादीत झाली',
-	'abusefilter-edit-done' => 'गाळणी $1 ला आपण केलेले बदल यशस्वीरित्या जतन झाले आहेत.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/$1|गाळणी $1]] ला केलेले [[Special:AbuseFilter/history/$1/diff/prev/$2|आपले बदल]] जतन करण्यात आलेले आहेत.',
 	'abusefilter-edit-badsyntax' => 'आपण नमूद केलेल्या गाळणीत वाक्यरचनेची त्रूटी आहे. पार्सरक्रियेची निष्पत्ती अशी होती:<pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'आपणास या गाळणीच्या संपादनाची परवानगी नाही, कारण त्यात एक किंवा एकाधिक प्रतिबंधित क्रिया आहेत.प्रतिबंधित क्रिया जोडण्याची/संपादण्याची परवानगी असणाऱ्या सदस्यास, आपल्या वतीने, हा बदल करण्यास कृपया सांगा.',
 	'abusefilter-edit-viewhistory' => 'या गाळणीचा इतिहास पहा',
@@ -25660,15 +25691,17 @@ $messages['mr'] = array(
 	'abusefilter-revert-periodend' => 'कालावधी समाप्त:',
 	'abusefilter-revert-search' => 'क्रिया निवडा',
 	'abusefilter-revert-filter' => 'गाळणी:',
-	'abusefilter-revert-preview-intro' => 'दुरुपयोग गाळणीने केलेली कार्यवाही खाली नमूद आहे. या क्रियेद्वारे ती  उलटविली जाईल.कृपया त्याची खबरदारीने तपासणी करा व आपली निवड नक्की करण्यासाठी "नक्की करा" हे टिचका.', # Fuzzy
+	'abusefilter-revert-preview-intro' => 'दुरुपयोग गाळणीने केलेली कार्यवाही जी खाली नमूद आहे, या क्रियेद्वारे उलटविल्या जाईल.     
+
+कृपया त्याची सावधानतापुर्वक तपासणी करा व आपली निवड नक्की करण्यासाठी "{{int:abusefilter-revert-confirm}}" हे टिचका.',
 	'abusefilter-revert-confirm' => 'नक्की करा',
 	'abusefilter-revert-success' => 'आपण दुरुपयोग गाळणीच्या [[Special:AbuseFilter/$1|गाळणी $1]]ने केलेले  सर्व बदल आपण उलटविले आहेत.',
 	'abusefilter-revert-reason' => 'दुरुपयोग गाळणीच्या, गाळणी $1 ने केलेले सर्व क्रिया स्वयंचलितरित्या उलटवा.
 दिलेले कारण:$2',
 	'abusefilter-revert-reasonfield' => 'कारण:',
 	'abusefilter-test' => 'मागील संपादनांवर गाळणीचे परिक्षण करा',
-	'abusefilter-test-intro' => "खालच्या पेटीत टाकलेली गाळणी, मागील $1 {{PLURAL:$1|बदलावर|बदलांवर}} तपासण्यास, हे पान आपणास परवानगी देते. 
-सध्याची गाळणी प्रभारण(लोड) करण्यास, त्या गाळणीची ओळखण(आयडी) खालील पेटीत टंका व 'प्रभारण' कळीवर टिचकी मारा.", # Fuzzy
+	'abusefilter-test-intro' => 'खालच्या पेटीत टाकलेली गाळणी, मागील $1 {{PLURAL:$1|बदलावर|बदलांवर}} तपासण्यास, हे पान आपणास परवानगी देते. 
+सध्याची गाळणी प्रभारण(लोड) करण्यास, त्या गाळणीची ओळखण(आयडी) खालील पेटीत टंका व "{{int:abusefilter-test-load}}" कळीवर टिचकी मारा.',
 	'abusefilter-test-legend' => 'संपादन गाळणी चाचणी',
 	'abusefilter-test-load-filter' => 'संपादनगाळणी क्रमांक प्रभारण करा:',
 	'abusefilter-test-submit' => 'चाचणी',
@@ -25678,7 +25711,7 @@ $messages['mr'] = array(
 	'abusefilter-test-period-end' => 'तारखे आधी केलेले बदल:',
 	'abusefilter-test-page' => 'बदल तपासावयाच्या पानाचे शीर्षक:',
 	'abusefilter-test-shownegative' => 'संपादन गाळणीशी जुळत नसलेले बदल दाखवा',
-	'abusefilter-test-syntaxerr' => "आपण टाकलेल्या गाळणीच्या नावात दोष आहे.'वाक्यविन्यास तपासा' कळीवर टिचकल्यावर याचे पूर्ण उत्तर मिळेल.", # Fuzzy
+	'abusefilter-test-syntaxerr' => 'आपण टाकलेल्या गाळणीच्या नावात वाक्यरचना दोष आहे."{{int:abusefilter-edit-check}}"  कळीवर टिचकल्यावर याचे पूर्ण स्पष्टीकरण मिळेल.',
 	'abusefilter-changeslist-examine' => 'तपासा',
 	'abusefilter-examine' => 'प्रत्येक बदल तपासा',
 	'abusefilter-examine-intro' => "हे पान, आपणास दुरुपयोग गाळणीने उत्पादित नेमक्या बदलाचे 'व्हॅरिएबल्स' तपासण्यास व गाळणीत त्याच्या चाचणीस परवानगी देते.",
@@ -36500,7 +36533,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-edit-global' => 'Глобални филтер',
 	'abusefilter-edit-rules' => 'Услови:',
 	'abusefilter-edit-notes' => "Напомене:
-:''(приватно)''",
+:''(приватно)''", # Fuzzy
 	'abusefilter-edit-lastmod' => 'Последња измена филтера:',
 	'abusefilter-edit-lastmod-text' => '$3, $4 од {{GENDER:$5|корисника|кориснице|корисника}} $2',
 	'abusefilter-edit-hitcount' => 'Погоци филтера:',
@@ -36637,6 +36670,7 @@ $messages['sr-ec'] = array(
 	'abusefilter-edit-builder-vars-minor-edit' => 'Да ли је измена била означена као мала',
 	'abusefilter-edit-builder-vars-file-sha1' => 'Дисперзија SHA1 садржаја датотеке',
 	'abusefilter-filter-log' => 'Скорашње измене филтера',
+	'abusefilter-history' => 'Историја измена филтера #$1',
 	'abusefilter-history-foruser' => 'Измене од $1',
 	'abusefilter-history-hidden' => 'Сакривено',
 	'abusefilter-history-enabled' => 'Омогућено',
@@ -36685,6 +36719,7 @@ $messages['sr-ec'] = array(
 Будите пажљиви при коришћењу ове алатке.',
 	'abusefilter-revert-preview-item' => '$1: $2 {{GENDER:$2|је направио|је направила|је направио}} $3 на $4.
 Радње за враћање: $5 ($6)',
+	'abusefilter-revert-search-legend' => 'Изабери радње филтера злоупотребе које требају бити враћене',
 	'abusefilter-revert-periodstart' => 'Почетак периода:',
 	'abusefilter-revert-periodend' => 'Крај периода:',
 	'abusefilter-revert-search' => 'Изабери радње',
@@ -37034,6 +37069,7 @@ Zamolite korisnika s određenim ovlašćenjem da napravi izmene umesto vas.',
 	'abusefilter-edit-builder-vars-minor-edit' => 'Da li je izmena bila označena kao mala',
 	'abusefilter-edit-builder-vars-file-sha1' => 'Disperzija SHA1 sadržaja datoteke',
 	'abusefilter-filter-log' => 'Skorašnje izmene filtera',
+	'abusefilter-history' => 'Istorija izmena filtera #$1',
 	'abusefilter-history-foruser' => 'Izmene od $1',
 	'abusefilter-history-hidden' => 'Sakriveno',
 	'abusefilter-history-enabled' => 'Omogućeno',
@@ -37081,6 +37117,7 @@ Zamolite korisnika s određenim ovlašćenjem da napravi izmene umesto vas.',
 Budite pažljivi pri korišćenju ove alatke.',
 	'abusefilter-revert-preview-item' => '$1: $2 napravio $3 u $4.
 Akcije koje će biti vraćene: $5 ($6)',
+	'abusefilter-revert-search-legend' => 'Izaberi radnje filtera zloupotrebe koje trebaju biti vraćene',
 	'abusefilter-revert-periodstart' => 'Početak perioda:',
 	'abusefilter-revert-periodend' => 'Kraj perioda:',
 	'abusefilter-revert-search' => 'Izaberi akcije',
@@ -40813,6 +40850,9 @@ $messages['uk'] = array(
 	'abusefilter-log-entry' => '$1: $2 запустив фільтр редагувань, виконуючи "$3" на сторінці $4.
 Ужиті заходи: $5.
 Опис фільтру: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 запустив фільтр редагувань, виконуючи "$3" на сторінці $4.
+Ужиті заходи: $5.
+Опис фільтру: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 запустив $3, виконуючи "$4" на сторінці "$5".
 Вжиті заходи: $6.
 Опис фільтру: $7 ($8)',
