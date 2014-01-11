@@ -28034,6 +28034,7 @@ $messages['niu'] = array(
  * @author JurgenNL
  * @author McDutchie
  * @author Mwpnl
+ * @author Niknetniko
  * @author Romaine
  * @author SPQRobin
  * @author Siebrand
@@ -28200,8 +28201,7 @@ De gemiddelde looptijd van de filtercontrole is $4ms, en deze gebruikt $5 {{PLUR
 	'abusefilter-edit-hidden' => 'Details van dit filter niet openbaar maken',
 	'abusefilter-edit-global' => 'Globaal filter',
 	'abusefilter-edit-rules' => 'Regels:',
-	'abusefilter-edit-notes' => "Opmerkingen:
-:''(beperkt zichtbaar)''",
+	'abusefilter-edit-notes' => 'Opmerkingen:',
 	'abusefilter-edit-lastmod' => 'Filter laatst aangepast:',
 	'abusefilter-edit-lastmod-text' => 'door $2 op $3 om $4',
 	'abusefilter-edit-hitcount' => 'Hits filteren:',
@@ -33249,6 +33249,9 @@ $messages['ru'] = array(
 	'abusefilter-log-entry' => '$1: $2 вызвал срабатывание фильтра злоупотреблений, действие «$3» на странице $4.
 Предпринятие меры: $5.
 Описание фильтра: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 вызвало срабатывание фильтра, было выполнено действие «$3» для $4.
+Выполнено действие: $5;
+Описание фильтра: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 вызвал срабатывание $3, действие «$4» на странице $5.
 Предпринятые меры: $6.
 Описание фильтра: $7 ($8)',
@@ -43331,6 +43334,9 @@ $messages['zh-hans'] = array(
 	'abusefilter-log-search-wiki' => '维基名：',
 	'abusefilter-log-search-submit' => '搜索',
 	'abusefilter-log-entry' => '$1：$2在$4执行操作“$3”时触发了过滤器。采取的行动：$5。过滤器说明：$6',
+	'abusefilter-log-entry-withdiff' => '$1：$2在$4执行操作“$3”时触发了过滤器。
+采取的行动：$5；
+过滤器说明：$6（$7）',
 	'abusefilter-log-detailedentry-meta' => '$1：$2在$5执行操作“$4”时触发了$3。采取的行动：$6；过滤器说明：$7（$8）',
 	'abusefilter-log-detailedentry-global' => '全域过滤器$1',
 	'abusefilter-log-detailedentry-local' => '过滤器$1',
