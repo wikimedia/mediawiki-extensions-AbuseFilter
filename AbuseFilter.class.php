@@ -1721,7 +1721,7 @@ class AbuseFilter {
 		}
 
 		$rules = rtrim( $rules ) . "\n";
-		$rules = Xml::textarea( $textName, $rules, 40, 5, $textareaAttrib );
+		$rules = Xml::textarea( $textName, $rules, 40, 15, $textareaAttrib );
 
 		if ( $canEdit ) {
 			$dropDown = self::getBuilderValues();
