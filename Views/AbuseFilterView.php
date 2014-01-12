@@ -84,7 +84,7 @@ class AbuseFilterChangesList extends OldChangesList {
 			$examineParams
 		);
 
-		$s .= " ($examineLink)";
+		$s .= ' '.$this->msg( 'parentheses' )->rawParams( $examineLink )->escaped();
 
 		# If we have a match..
 		if ( isset( $rc->filterResult ) ) {
