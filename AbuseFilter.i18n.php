@@ -6051,7 +6051,7 @@ Tizhout a ra termen an dinoiñ muioc'h evit $1% eus an oberoù.",
 	'abusefilter-edit-global' => 'Sil hollek',
 	'abusefilter-edit-rules' => 'Divizoù :',
 	'abusefilter-edit-notes' => "Notennoù :
-:''(prevez)''",
+:''(prevez)''", # Fuzzy
 	'abusefilter-edit-lastmod' => "Kemm diwezhañ degaset d'ar sil :",
 	'abusefilter-edit-lastmod-text' => '$1 dre $2',
 	'abusefilter-edit-hitcount' => 'Niver a gavadennoù ar sil :',
@@ -6268,7 +6268,7 @@ Evit kargañ ur sil, roit e anv en hedad dindan an takad testenn, ha klikit war 
 	'abusefilter-test-page' => 'Kemmoù graet war ar bajenn :',
 	'abusefilter-test-shownegative' => "Diskouez ar c'hemmoù ha n'int ket kemeret e kont gant ar sil",
 	'abusefilter-test-syntaxerr' => 'Ar sil ho peus roet a zo ennañ ur fazi ereadurezh.
-Gallout a rit resev un displegadenn glok dre glikañ war ar bouton "Gwiriañ an ereadur".', # Fuzzy
+Gallout a rit resev un displegadenn glok dre glikañ war ar bouton "{{int:abusefilter-edit-check}}".',
 	'abusefilter-changeslist-examine' => 'arsellet',
 	'abusefilter-examine' => "Studiañ ar c'hemmoù hiniennel",
 	'abusefilter-examine-intro' => "Gant ar bajenn-mañ e c'heller ensellout an argemmennoù krouet gant ar sil gwallimplij evit ar c'hemmoù hinnienel, hag arnodiñ anezho gant ar siloù.",
@@ -8342,7 +8342,7 @@ Disgrifiad o'r rheol sy'n cyfateb: $1",
  * @author Tjernobyl
  */
 $messages['da'] = array(
-	'abusefilter-desc' => 'Anvender automatiske filtre på redigeringer',
+	'abusefilter-desc' => 'Anvender automatiske heuristikker på redigeringer',
 	'abusefilter' => 'Konfiguration af misbrugsfilter',
 	'abuselog' => 'Misbrugslog',
 	'abusefilter-intro' => 'Velkommen til grænsefladen for håndtering af misbrugsfilteret.
@@ -8367,7 +8367,7 @@ Her er en kortfattet beskrivelse af misbrugsreglen som din handling udløste: $1
 Som konsekvens heraf er den ikke tilladt, og på grund af mistanke om misbrug har din konto mistet alle rettigheder.
 Hvis du mener at dette er sket på grund af en fejl, så kontakt en bureaukrat med en forklaring på denne handling, og dine rettigheder kan genoprettes.
 Her er en kortfattet beskrivelse af misbrugsreglen som din handling udløste: $1',
-	'abusefilter-autopromote-blocked' => 'Denne handling er automatisk blevet identificeret som skadelig, og blevet deaktiveret.
+	'abusefilter-autopromote-blocked' => 'Denne handling er automatisk blevet identificeret som skadelig, og det er ikke tilladt.
 Hertil kommer, som en sikkerhedsforanstaltning at nogle privilegier som rutinemæssigt tildeles til oprettede kontoer, er inddraget midlertidigt fra din konto.
 Her er kort beskrivelse af misbrugsreglen som din handling udløste: $1',
 	'abusefilter-blocker' => 'Misbrugsfilter',
@@ -8407,6 +8407,9 @@ Regelbeskrivelse: $1',
 	'abusefilter-log-entry' => '$1: $2  udløste et misbrugsfilter med handlingen "$3" på $4.
 Foranstaltninger: $5.
 Filterbeskrivelse: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 udløste et misbrugsfilter med handlingen "$3" på $4.
+Foranstaltninger: $5;
+Filterbeskrivelse: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 udløste $3 med handlingen "$4" på $5.
 Foranstaltninger: $6.
 Filterbeskrivelse: $7 ($8)',
@@ -10230,6 +10233,7 @@ $messages['ee'] = array(
  * @author Badseed
  * @author Consta
  * @author Crazymadlover
+ * @author Flyax
  * @author Geraki
  * @author Glavkos
  * @author K sal 15
@@ -10397,7 +10401,7 @@ $messages['el'] = array(
 	'abusefilter-edit-global' => 'Καθολικό φίλτρο',
 	'abusefilter-edit-rules' => 'Συνθήκες:',
 	'abusefilter-edit-notes' => "Σημειώσεις:
-:''(ιδιωτικό)''",
+:''(ιδιωτικό)''", # Fuzzy
 	'abusefilter-edit-lastmod' => 'Το φίλτρο τροποποιήθηκε τελευταία φορά:',
 	'abusefilter-edit-lastmod-text' => '$1 από $2',
 	'abusefilter-edit-hitcount' => 'Αποτελέσματα φίλτρου:',
@@ -10427,7 +10431,7 @@ $messages['el'] = array(
 	'abusefilter-edit-denied' => 'Δεν μπορείτε να δείτε τις λεπτομέρειες αυτού του φίλτρου, γιατί έχουν αποκρυφθεί από τη δημόσια θέα.', # Fuzzy
 	'abusefilter-edit-main' => 'Παράμετροι φίλτρου',
 	'abusefilter-edit-done-subtitle' => 'Επεξεργασμένο φίλτρο',
-	'abusefilter-edit-done' => 'Οι αλλαγές σας στο φίλτρο $1 έχουν αποθηκεφθεί επιτυχώς.', # Fuzzy
+	'abusefilter-edit-done' => 'Οι [[Special:AbuseFilter/history/$1/diff/prev/$2|αλλαγές]] σας στο [[Special:AbuseFilter/$1|φίλτρο $1]] έχουν αποθηκευτεί επιτυχώς.',
 	'abusefilter-edit-badsyntax' => 'Υπάρχει ένα συντακτικό λάθος στο φίλτρο που δώσατε.
 Το αποτέλεσμα από τον λεξιαναλυτή ήταν: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Δεν μπορείτε να επεξεργαστείτε αυτό το φίλτρο, γιατί περιέχει μία ή περισσότερες περιορισμένες ενέργειες.
@@ -14217,6 +14221,9 @@ Velaquí hai unha breve descrición da regra de abuso coa que coincide a súa ac
 	'abusefilter-log-entry' => '$1: $2 accionou un filtro de abusos, ao levar a cabo a acción "$3" na páxina "$4".
 Medidas tomadas: $5.
 Descrición do filtro: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 accionou un filtro de abusos, ao levar a cabo a acción "$3" na páxina "$4".
+Medidas tomadas: $5.
+Descrición do filtro: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 accionou $3, ao levar a cabo a acción "$4" na páxina "$5".
 Medidas tomadas: $6.
 Descrición do filtro: $7 ($8)',
@@ -14313,8 +14320,7 @@ De media, o seu tempo de execución é de $4ms, e consome {{PLURAL:$5|unha condi
 	'abusefilter-edit-hidden' => 'Agochar os detalles deste filtro da vista pública',
 	'abusefilter-edit-global' => 'Filtro global',
 	'abusefilter-edit-rules' => 'Condicións:',
-	'abusefilter-edit-notes' => "Notas:
-:''(privado)''",
+	'abusefilter-edit-notes' => 'Notas:',
 	'abusefilter-edit-lastmod' => 'Última modificación do filtro:',
 	'abusefilter-edit-lastmod-text' => '$3 ás $4 por $2',
 	'abusefilter-edit-hitcount' => 'Deteccións do filtro:',
@@ -41407,7 +41413,14 @@ $messages['ur'] = array(
  * @author Sociologist
  */
 $messages['uz'] = array(
+	'abuselog' => 'Filtrlash qaydlari',
+	'right-abusefilter-log' => 'filtrlash qaydlarini koʻrish',
+	'action-abusefilter-log' => 'filtrlash qaydlarini koʻrish',
+	'abusefilter-log' => 'Filtrlash qaydlari',
+	'abusefilter-log-linkoncontribs' => 'filtrlash qaydlari',
+	'abusefilter-log-linkoncontribs-text' => 'Ushbu foydalanuvchi haqida filtrlash qaydlaridagi yozuvlar',
 	'abusefilter-edit-builder-vars-user-name' => 'Hisob yozuvi nomi',
+	'abusefilter-log-name' => 'Filtrlash qaydlari',
 );
 
 /** vèneto (vèneto)
@@ -41969,7 +41982,10 @@ Miêu tả ngắn về quy định nguy hại mà tác vụ của bạn gặp ph
 	'abusefilter-log-search-title' => 'Tựa đề:',
 	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Tìm kiếm',
-	'abusefilter-log-entry' => '$1: $2 đã kích hoạt bộ lọc sai phạm, thực hiện tác động “$3” vào lúc $4. Tác vụ diễn ra: $5; Mô tả bộ lọc: $6',
+	'abusefilter-log-entry' => '$1: $2 đã kích hoạt bộ lọc sai phạm, thực hiện tác động “$3” vào lúc $4. Tác vụ diễn ra: $5; Miêu tả bộ lọc: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 đã kích hoạt bộ lọc sai phạm, thực hiện tác động “$3” vào lúc $4.
+Tác vụ diễn ra: $5;
+Miêu tả bộ lọc: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 đã kích hoạt $3, thực hiện tác vụ “$4” trên $5.
 Tác vụ thực hiện: $6;
 Mô tả bộ lọc: $7 ($8)',
