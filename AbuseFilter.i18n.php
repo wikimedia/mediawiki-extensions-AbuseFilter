@@ -21042,8 +21042,7 @@ $messages['km'] = array(
 	'abusefilter-edit-hidden' => 'លាក់ព័ត៌មានលំអិតអំពី​តម្រងនេះ មិនឱ្យមើលជាសាធារណៈ',
 	'abusefilter-edit-global' => 'តម្រងសាកល',
 	'abusefilter-edit-rules' => 'លក្ខខណ្ឌ:',
-	'abusefilter-edit-notes' => "សម្គាល់:
-:''(ឯកជន)",
+	'abusefilter-edit-notes' => 'សម្គាល់:',
 	'abusefilter-edit-lastmod' => 'តម្រងដែលត្រូវបានកែប្រែចុងក្រោយ:',
 	'abusefilter-edit-lastmod-text' => '$1 ដោយ $2',
 	'abusefilter-edit-action-block' => 'ហាមឃាត់អ្នកប្រើប្រាស់ និង/ឬអាសយដ្ឋានIPពីការកែប្រែ',
@@ -21056,10 +21055,10 @@ $messages['km'] = array(
 	'abusefilter-edit-warn-actions' => 'សកម្មភាព៖',
 	'abusefilter-edit-warn-preview' => 'មើល​ជាមុន​សារ​ដែល​បាន​ជ្រើសរើស​',
 	'abusefilter-edit-warn-edit' => 'បង្កើត​/កែ​សម្រួល​សារ​ដែល​បាន​ជ្រើស​យក​',
-	'abusefilter-edit-denied' => 'អ្នកមិនអាចមើលព័ត៌មានលំអិតអំពីតម្រងនេះទេ ព្រោះវាត្រូវបានលាក់មិនឱ្យមើលជាសាធារណៈ', # Fuzzy
+	'abusefilter-edit-denied' => 'អ្នកមិនអាចមើលព័ត៌មានលម្អិតអំពីតម្រងនេះទេ ព្រោះវាត្រូវបានលាក់មិនឱ្យមើលជាសាធារណៈ។',
 	'abusefilter-edit-main' => 'ប៉ារ៉ាម៉ែត្រតម្រង',
 	'abusefilter-edit-done-subtitle' => 'តម្រងត្រូវបានកែសម្រួល',
-	'abusefilter-edit-done' => 'អ្នកបានរក្សាទុកបំលាស់ប្ដូរចំពោះតម្រង $1 ដោយជោគជ័យ។', # Fuzzy
+	'abusefilter-edit-done' => '[Special:AbuseFilter/history/$1/diff/prev/$2|ការកែប្រែរបស់អ្នក]] លើ[[Special:AbuseFilter/$1|តម្រង $1]] ត្រូវបានរក្សាទុក។', # Fuzzy
 	'abusefilter-edit-viewhistory' => 'មើលប្រវត្តិរបស់តម្រងនេះ',
 	'abusefilter-edit-history' => 'ប្រវត្តិ៖',
 	'abusefilter-edit-check' => 'ពិនិត្យវាក្យសម្ពន្ធ(syntax)',
@@ -21161,7 +21160,7 @@ $messages['km'] = array(
 	'abusefilter-log-noresults' => 'គ្មានលទ្ធផល',
 	'abusefilter-diff-title' => 'ភាពខុសគ្នានៃកំណែនានា',
 	'abusefilter-diff-item' => 'វត្ថុ​',
-	'abusefilter-diff-version' => 'កំណែពី​ $1 ដោយ $2', # Fuzzy
+	'abusefilter-diff-version' => 'កំណែពី $1 {{GENDER:$3|ដោយ}} $2',
 	'abusefilter-diff-info' => 'ព័ត៌មាន​មូលដ្ឋាន​',
 	'abusefilter-diff-pattern' => 'លក្ខខណ្ឌ​តម្រង',
 	'abusefilter-import-submit' => 'នាំចូល​ទិន្នន័យ​',
@@ -21285,6 +21284,9 @@ $messages['ko'] = array(
 	'abusefilter-log-entry' => '$1: $2 사용자가 $4에서 "$3"하는 중 편집 필터 규칙을 위반했습니다.
 조치: $5;
 필터 설명: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2가 $4 에서 "$3" 행동을 하던 중 편집 필터를 위반했습니다.
+조치: $5;
+필터 설명: $6($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 사용자가 $5에서 "$4"하는 도중 $3을 위반했습니다.
 조치: $6;
 필터 설명: $7 ($8)',
