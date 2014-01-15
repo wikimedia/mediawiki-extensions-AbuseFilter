@@ -6052,8 +6052,7 @@ Tizhout a ra termen an dinoiñ muioc'h evit $1% eus an oberoù.",
 	'abusefilter-edit-hidden' => "Kuzhat munudoù ar sil-mañ d'ar selloù publik",
 	'abusefilter-edit-global' => 'Sil hollek',
 	'abusefilter-edit-rules' => 'Divizoù :',
-	'abusefilter-edit-notes' => "Notennoù :
-:''(prevez)''", # Fuzzy
+	'abusefilter-edit-notes' => 'Notennoù :',
 	'abusefilter-edit-lastmod' => "Kemm diwezhañ degaset d'ar sil :",
 	'abusefilter-edit-lastmod-text' => '$1 dre $2',
 	'abusefilter-edit-hitcount' => 'Niver a gavadennoù ar sil :',
@@ -9175,6 +9174,7 @@ Um einen bestehenden Filter zu laden, gib seine Filter-ID in das Feld unterhalb 
 	'abusefilter-test-shownegative' => 'Änderungen anzeigen, die nicht auf den Filter passen',
 	'abusefilter-test-syntaxerr' => 'Der eingegebene Filter enthält einen Syntaxfehler.
 Weitere Erläuterungen gibt es bei Klick auf die Schaltfläche „{{int:abusefilter-edit-check}}“.',
+	'abusefilter-test-badtitle' => 'Der eingegebene Seitentitel war ungültig. Er enthält möglicherweise ein oder mehrere Zeichen, die nicht in Titeln verwendet werden können.',
 	'abusefilter-changeslist-examine' => 'untersuchen',
 	'abusefilter-examine' => 'Einzelne Änderungen untersuchen',
 	'abusefilter-examine-intro' => 'Auf dieser Seite können die Variablen, die der Missbrauchsfilter für eine Änderung generiert hat, untersucht werden und probeweise Filter darauf angewendet werden.',
@@ -11738,8 +11738,7 @@ See ületas $1% toimingutele vastamise piirnormi.",
 	'abusefilter-edit-hidden' => 'Peida selle filtri üksikasjad avalikust vaatest',
 	'abusefilter-edit-global' => 'Globaalne filter',
 	'abusefilter-edit-rules' => 'Tingimused:',
-	'abusefilter-edit-notes' => "Märkmed:
-:''(isiklik)''",
+	'abusefilter-edit-notes' => 'Märkmed:',
 	'abusefilter-edit-lastmod' => 'Filtrit viimati muudetud:',
 	'abusefilter-edit-lastmod-text' => '$1. Muutja: $2',
 	'abusefilter-edit-hitcount' => 'Filtri tabamused:',
@@ -12579,6 +12578,7 @@ $messages['fa'] = array(
 	'abusefilter-test-shownegative' => 'تغییراتی که با پالایه مطابقت ندارد را نشان بده',
 	'abusefilter-test-syntaxerr' => 'پالایه‌ای که وارد کردید دارای یک خطای نحوی است.
 شما می‌توانید توضیح کاملی را با کلیک کردن روی دکمه «{{int:abusefilter-edit-check}}» ببینید.',
+	'abusefilter-test-badtitle' => 'عنوان صفحه‌ای که وارد کردید، نامعتبر بود. ممکن است شامل یک خصیصه یا خصیصه‌های بیشتری باشد که نمی‌تواند در عنون‌ها استفاده شود.',
 	'abusefilter-changeslist-examine' => 'آزمودن',
 	'abusefilter-examine' => 'بررسی تک تک تغییرات',
 	'abusefilter-examine-intro' => 'این صفحه اجازهٔ بررسی متغیرهای تولیدشده توسط پالایهٔ خرابکاری برای یک تغییری، و آزمودنش در برابر پالایه‌ها را می‌دهد.',
@@ -13614,6 +13614,7 @@ Pour charger un filtre existant, entrez son identifiant dans le champ sous la zo
 	'abusefilter-test-shownegative' => 'Afficher les modifications non prises en compte par le filtre',
 	'abusefilter-test-syntaxerr' => 'Le filtre que vous avez saisi contient une erreur de syntaxe.
 Vous pouvez recevoir une explication complète en cliquant sur le bouton « {{int:abusefilter-edit-check}} ».',
+	'abusefilter-test-badtitle' => 'La titre de page que vous avez saisi n’est pas valide. Il se peut qu’il contienne un ou plusieurs caractères interdits dans les titres.',
 	'abusefilter-changeslist-examine' => 'examiner',
 	'abusefilter-examine' => 'Examiner des modifications individuelles',
 	'abusefilter-examine-intro' => "Cette page vous permet d'examiner les variables générées pour une modification individuelle par le filtre antiabus et de les tester avec les filtres.",
@@ -14541,6 +14542,7 @@ Para cargar un filtro existente, escriba o seu ID na caixa que está por baixo d
 	'abusefilter-test-shownegative' => 'Mostrar os cambios que non coincidan co filtro',
 	'abusefilter-test-syntaxerr' => 'O filtro que introduciu contiña un erro na súa sintaxe.
 Pode obter unha explicación completa premendo no botón "{{int:abusefilter-edit-check}}".',
+	'abusefilter-test-badtitle' => 'O título de páxina que tecleou é inválido. Pode ser que conteña un ou máis caracteres que non se poden usar nos títulos.',
 	'abusefilter-changeslist-examine' => 'examinar',
 	'abusefilter-examine' => 'Examinar os cambios individuais',
 	'abusefilter-examine-intro' => 'Esta páxina permítelle examinar as variables xeradas polo filtro de abusos dos cambios dun individuo e probalos con outros filtros.',
@@ -19584,6 +19586,7 @@ Per caricare un filtro esistente, digita il relativo identificatore nella casell
 	'abusefilter-test-shownegative' => 'Mostra le modifiche che non corrispondono al filtro',
 	'abusefilter-test-syntaxerr' => 'Il filtro inserito contiene un errore di sintassi.
 Per ottenere una spiegazione completa, fai clic sul pulsante "{{int:abusefilter-edit-check}}".',
+	'abusefilter-test-badtitle' => 'Il titolo della pagina che hai inserito non è valido; contiene uno o più caratteri che non possono essere utilizzati nei titoli.',
 	'abusefilter-changeslist-examine' => 'esamina',
 	'abusefilter-examine' => 'Esamina le singole modifiche',
 	'abusefilter-examine-intro' => 'Questa pagina consente di esaminare le variabili generate dal filtro anti abusi per una particolare modifica, e di provare il funzionamento dei filtri su di essa.',
@@ -21218,6 +21221,7 @@ $messages['kn'] = array(
  * @author Kwj2772
  * @author LFM
  * @author Pakman
+ * @author Priviet
  * @author Yknok29
  * @author 관인생략
  * @author 아라
@@ -21608,6 +21612,7 @@ $messages['ko'] = array(
 	'abusefilter-test-shownegative' => '필터와 일치하지 않는 편집을 보이기',
 	'abusefilter-test-syntaxerr' => '입력한 구문에 오류가 있습니다.
 "{{int:abusefilter-edit-check}}" 버튼을 누르면 자세한 설명을 받을 수 있습니다.',
+	'abusefilter-test-badtitle' => '입력하신 문서 제목이 잘못되었습니다. 제목에 사용할 수 없는 하나 이상의 문자를 포함하고 있을 수 있습니다.',
 	'abusefilter-changeslist-examine' => '검사',
 	'abusefilter-examine' => '특정 편집을 검토',
 	'abusefilter-examine-intro' => '이 문서에서 각각의 편집에 대해 부정 행위 방지 필터가 생성한 변수를 검사하고 필터에 대해 시험해볼 수 있습니다.',
@@ -24883,6 +24888,7 @@ $messages['mk'] = array(
 	'abusefilter-test-shownegative' => 'Прикажи промени кои не се совпаѓаат со филтерот',
 	'abusefilter-test-syntaxerr' => 'Внесениот филтер содржи синтаксна грешка.
 Ќе добиете целосно образложение ако стиснете на копчето „{{int:abusefilter-edit-check}}“.',
+	'abusefilter-test-badtitle' => 'Внесениот наслов на страницата е неважечки. Може да содржи еден или повеќе знаци што не се допуштени во наслови.',
 	'abusefilter-changeslist-examine' => 'прегледај',
 	'abusefilter-examine' => 'Разгледување на поединечни промени',
 	'abusefilter-examine-intro' => 'Оваа страница служи за прегледување на променливите создадени од Филтерот за злоупотреби за поединечна промена, и нивно тестирање со филтри.',
@@ -25722,6 +25728,7 @@ $messages['mr'] = array(
 	'abusefilter-test-page' => 'बदल तपासावयाच्या पानाचे शीर्षक:',
 	'abusefilter-test-shownegative' => 'संपादन गाळणीशी जुळत नसलेले बदल दाखवा',
 	'abusefilter-test-syntaxerr' => 'आपण टाकलेल्या गाळणीच्या नावात वाक्यरचना दोष आहे."{{int:abusefilter-edit-check}}"  कळीवर टिचकल्यावर याचे पूर्ण स्पष्टीकरण मिळेल.',
+	'abusefilter-test-badtitle' => 'आपण टाकलेले लेखनाव अवैध आहे.त्यात एक किंवा एकाधिक असे वर्ण आहेत जे शीर्षकात वापरल्या जात नाहीत.',
 	'abusefilter-changeslist-examine' => 'तपासा',
 	'abusefilter-examine' => 'प्रत्येक बदल तपासा',
 	'abusefilter-examine-intro' => "हे पान, आपणास दुरुपयोग गाळणीने उत्पादित नेमक्या बदलाचे 'व्हॅरिएबल्स' तपासण्यास व गाळणीत त्याच्या चाचणीस परवानगी देते.",
@@ -33575,6 +33582,7 @@ $messages['ru'] = array(
 	'abusefilter-test-shownegative' => 'Показывать изменения, не попадающие под фильтр',
 	'abusefilter-test-syntaxerr' => 'Введённый вами фильтр содержит синтаксическую ошибку.
 Вы можете получить подробное объяснение, нажав на кнопку «{{int:abusefilter-edit-check}}».',
+	'abusefilter-test-badtitle' => 'Заголовок страниц, который вы ввели, некорректен. Возможно, он содержит один или более символов, которые нельзя использовать в названиях.',
 	'abusefilter-changeslist-examine' => 'просмотреть',
 	'abusefilter-examine' => 'Просмотр отдельных изменений',
 	'abusefilter-examine-intro' => 'Эта страница позволяет вам просмотреть переменные, созданные фильтром злоупотреблений для отдельной правки и проверить их в фильтрах.',
