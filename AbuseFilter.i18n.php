@@ -4794,6 +4794,7 @@ $messages['be'] = array(
  * @author Red Winged Duck
  * @author Renessaince
  * @author Wizardist
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
 	'abusefilter-desc' => 'Прыстасоўвае аўтаматычную эўрыстыку да рэдагаваньняў.',
@@ -4941,7 +4942,7 @@ $messages['be-tarask'] = array(
 [[Special:AbuseFilter/history/$2|Вярнуцца да гісторыі гэтага фільтру]].',
 	'abusefilter-edit-status-label' => 'Статыстыка:',
 	'abusefilter-edit-status' => 'З $1 {{PLURAL:$1|апошняга дзеяньня|апошніх дзеяньняў|апошніх дзеяньняў}} $2 ($3%) {{PLURAL:$2|адпавядала гэтаму фільтру|адпавядалі гэтаму фільтру|адпавядалі гэтаму фільтру}}.
-У сярэднім, ужываньне фільтру працягвалася $4 мс і выкарыстоўвала $5 {{PLURAL:$5|умову|умовы|умоваў}} з ліміту ўмоваў.',
+У сярэднім, выкананьне фільтру працягвалася $4 мс і выкарыстоўвала $5 {{PLURAL:$5|умову|умовы|умоваў}} зь ліміту ўмоваў.', # Fuzzy
 	'abusefilter-edit-throttled' => "'''Папярэджаньне''': Гэты фільтар быў аўтаматычна выключаны ў мэтах бясьпекі.
 Быў дасягнуты ліміт адпаведнасьцяў на ўзроўні болей за $1% дзеяньняў.",
 	'abusefilter-edit-new' => 'Новы фільтар',
@@ -6317,6 +6318,7 @@ Eilit an takad testenn a teu war-well, ha pegit anezhañ e-barzh an takad testen
 
 /** Bosnian (bosanski)
  * @author CERminator
+ * @author Edinwiki
  * @author Palapa
  * @author Seha
  * @author Sociologist
@@ -6333,10 +6335,10 @@ Ovaj interfejs prikazuje spisak napravljenih filtera i omogućuje Vam da ih pril
 Izmjene sa lošim namjerama će biti brzo uklonjene,
 i zlonamjerne i destruktivne izmjene rezultiraju blokiranjem Vašeg korisničkog računa ili Vašeg računara.
 Ako mislite da je ovo konstruktivna izmjena, onda je još jednom sačuvajte da bi bila dodana.
-Opis pravila zloupotrebe koje ste možda izmjenom prekršili je vidljiv ovdje: $1", # Fuzzy
+Opis pravila zloupotrebe koje ste možda izmjenom prekršili je vidljiv ovdje: $1",
 	'abusefilter-disallowed' => 'Ova akcija je automatski identificirana kao štetna, i kao takva onemogućena.
 Ako vjerujete da je Vaša izmjena konstruktivna, molimo Vas da kontaktirate administratora, i da ga obavijestite o onome šta namjeravate uraditi.
-Kratki opis pravila ponašanja koje ogovara Vašoj akciji je: $1', # Fuzzy
+Kratki opis pravila ponašanja koje ogovara Vašoj akciji je: $1',
 	'abusefilter-blocked-display' => 'Ova akcija je automatski identificirana kao opasna,
 i kao takva onemogućena da se izvrši.
 Dodatno, da bi se zaštitio {{SITENAME}}, Vaš korisnički račun i sve pripadajuće IP adrese su blokirane za uređivanje.
@@ -6361,8 +6363,10 @@ Kratki opis prekršenih pravila koje se odnose na Vašu akciju je: $1',
 	'right-abusefilter-modify-restricted' => 'Mijenjanje filtera zloupotrebe sa ograničenim akcijama',
 	'right-abusefilter-revert' => 'Vrati sve izmjene date od filtera zloupotreba',
 	'right-abusefilter-view-private' => 'Pregled filtera zloupotrebe koji su označeni kao lični',
+	'right-abusefilter-log-private' => 'Vidi unose evidencije zloupotrebe koje su označene kao privatne',
 	'right-abusefilter-hide-log' => 'Sakrij unose u zapisniku zloupotreba',
 	'right-abusefilter-hidden-log' => 'Pogledaj skrivene podatke u dnevniku',
+	'right-abusefilter-modify-global' => 'Stvori ili promijeni globalni filter zloupotreba',
 	'action-abusefilter-modify' => 'izmijeni filtere zloupotrebe',
 	'action-abusefilter-view' => 'pregledaj filtere zloupotrebe',
 	'action-abusefilter-log' => 'vidi zapisnik zloupotrebe',
@@ -6377,14 +6381,19 @@ Kratki opis prekršenih pravila koje se odnose na Vašu akciju je: $1',
 	'abusefilter-log-search-user' => 'Korisnik:',
 	'abusefilter-log-search-filter' => 'Filtriraj ID:',
 	'abusefilter-log-search-title' => 'Naslov:',
+	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Traži',
 	'abusefilter-log-entry' => '$1: Korisnik $2 je pokrenuo filter za zloupotrebu, napravivši akciju "$3" na $4.
 Napravljena akcija: $5;
 Opis filtera: $6',
+	'abusefilter-log-entry-withdiff' => '$1: Korisnik $2 je pokrenuo filter za zloupotrebu, napravivši akciju "$3" na stranici $4.
+Napravljena akcija: $5;
+Opis filtera: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: Korisnik $2 pokrenuo $3, napravivši akciju "$4" na $5. Napravljena akcija: $6; Opis filtera: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'globalni filter $1',
 	'abusefilter-log-detailedentry-local' => 'filter $1',
 	'abusefilter-log-detailslink' => 'detalji',
+	'abusefilter-log-diff' => 'razl',
 	'abusefilter-log-hidelink' => 'podesi vidljivost',
 	'abusefilter-log-details-legend' => 'Detalji podataka u logu $1',
 	'abusefilter-log-details-var' => 'Varijabla (promjenjiva)',
@@ -6397,6 +6406,8 @@ Opis filtera: $6',
 	'abusefilter-log-linkoncontribs' => 'zapisnik zloupotrebe',
 	'abusefilter-log-linkoncontribs-text' => 'Zapisnik zloupotrebe za ovog korisnika',
 	'abusefilter-log-hidden' => '(stavka sakrivena)',
+	'abusefilter-log-hidden-implicit' => '(sakriveno jer je revizija obrisana)',
+	'abusefilter-log-cannot-see-details' => 'Nemate odobrenje vidjeti detalje ovog zapisa.',
 	'abusefilter-log-details-hidden' => 'Možda nećete vidjeti detalje ove stavke, zato što je sakrivena za javni pregled.',
 	'abusefilter-log-hide-legend' => 'Sakrij stavku zapisnika',
 	'abusefilter-log-hide-id' => 'ID stavke zapisa:',
@@ -6405,6 +6416,7 @@ Opis filtera: $6',
 	'abusefilter-log-hide-forbidden' => 'Nemate dopuštenje da sakrijete stavke zapisa zloupotrebe.',
 	'abusefilter-logentry-suppress' => 'sakr [[$1]]',
 	'abusefilter-logentry-unsuppress' => 'otkr [[$1]]',
+	'logentry-abusefilter-hit' => 'Korisnik $1 je pokrenuo filter $4, izvodeći "$5" na stranici $3. Akcija poduzeta: $6 ($7)',
 	'abusefilter-management' => 'Podešavanje filtera za zloupotrebu',
 	'abusefilter-list' => 'Svi filteri',
 	'abusefilter-list-id' => 'ID filtera',
@@ -6417,6 +6429,7 @@ Opis filtera: $6',
 	'abusefilter-list-details' => 'Detalji',
 	'abusefilter-list-limit' => 'Broj po stranici:',
 	'abusefilter-list-lastmodified' => 'Zadnja modifikacija',
+	'abusefilter-list-group' => 'Grupa filtera',
 	'abusefilter-hidden' => 'Privatno',
 	'abusefilter-unhidden' => 'Javno',
 	'abusefilter-enabled' => 'Uključen/a',
@@ -6431,6 +6444,9 @@ Opis filtera: $6',
 	'abusefilter-list-options-deleted-only' => 'Pokaži samo obrisane filtere',
 	'abusefilter-list-options-deleted-hide' => 'Sakrij obrisane filtere',
 	'abusefilter-list-options-deleted-show' => 'Pripoji i obrisane filtere',
+	'abusefilter-list-options-scope' => 'Prikaži filtere od:',
+	'abusefilter-list-options-scope-local' => 'Lokalna wiki',
+	'abusefilter-list-options-scope-global' => 'Globalna pravila',
 	'abusefilter-list-options-disabled' => 'Isključeni filteri:',
 	'abusefilter-list-options-hidedisabled' => 'Sakrij isključene filtere',
 	'abusefilter-list-options-submit' => 'Ažuriraj',
@@ -6444,7 +6460,9 @@ Opis filtera: $6',
 	'abusefilter-reautoconfirm-notallowed' => 'Vi nemate ovlašćenje da povratite automatski potvrđen status.',
 	'abusefilter-reautoconfirm-done' => 'Status potvrđenog korisnika je vraćen',
 	'abusefilter-status' => 'Zadnja/e $1 {{PLURAL:$1|akcija|akcije}}, $2 ($3%) {{PLURAL:$2|je|su}} dovele do ograničenja limita od $4. $5 ($6%) {{PLURAL:$5|je|su}} pogodila/e jedan od trenutno uključenih filtera.',
+	'abusefilter-edit' => 'Uređivanje filtera zloupotrebe',
 	'abusefilter-edit-subtitle' => 'Uredi filter $1',
+	'abusefilter-edit-subtitle-new' => 'Pravim filter',
 	'abusefilter-edit-oldwarning' => '<strong>Mijenjate jednu staru varijantu ovog filtera. Pokazane statistike su za najviše aktivne filtere. Ako sačuvate izmjenu izbrisaćete sve izmjene napravljene od reverta koji pravite.</strong> &bull; [[Special:AbuseFilter/history/$2|Vrati se na historiju ovog filtera]]',
 	'abusefilter-edit-status-label' => 'Statistike:',
 	'abusefilter-edit-status' => 'Od {{PLURAL:$1|zadnje $1 akcije|zadnje $1 akcije|zadnjih $1 akcija}}, ovaj filter je pogođen $2 puta ($3%). Prosječno, njegovo vrijeme pokretanja je $4ms, a utrošio je $5 {{PLURAL:$5|uslova|uslova}} unutar ograničenja uslova.',
@@ -6454,14 +6472,14 @@ Opis filtera: $6',
 	'abusefilter-edit-id' => 'ID filtera:',
 	'abusefilter-edit-description' => "Opis:
 :''(javno vidljiv)''",
+	'abusefilter-edit-group' => 'Grupa filtera',
 	'abusefilter-edit-flags' => 'Zastave:',
 	'abusefilter-edit-enabled' => 'Uključi ovaj filter',
 	'abusefilter-edit-deleted' => 'Markiraj kao obrisano',
 	'abusefilter-edit-hidden' => 'Sakrij detalje ovog filter za javne preglede',
-	'abusefilter-edit-global' => 'Primijeni ovaj filter globalno', # Fuzzy
+	'abusefilter-edit-global' => 'Globalni filter',
 	'abusefilter-edit-rules' => 'Uslovi:',
-	'abusefilter-edit-notes' => "Notiraj:
-:''(privatno)",
+	'abusefilter-edit-notes' => 'Note:',
 	'abusefilter-edit-lastmod' => 'Filter zadnji put modificiran:',
 	'abusefilter-edit-lastmod-text' => '$1 od strane $2',
 	'abusefilter-edit-hitcount' => 'Pogotci filtera:',
@@ -6488,10 +6506,10 @@ Opis filtera: $6',
 	'abusefilter-edit-warn-preview' => 'Pregledaj odabranu poruku',
 	'abusefilter-edit-warn-edit' => 'Napravi/uredi odabranu poruku',
 	'abusefilter-edit-tag-tag' => 'Oznake za primjenu (jedna po redu):',
-	'abusefilter-edit-denied' => 'Možda nećete vidjeti detalje ovog filtera, zato što je sakriven za javni pregled', # Fuzzy
+	'abusefilter-edit-denied' => 'Možda nećete vidjeti detalje ovog filtera, zato što su sakriveni za javni pregled.',
 	'abusefilter-edit-main' => 'Parametri filtera',
 	'abusefilter-edit-done-subtitle' => 'Filter izmjenjen',
-	'abusefilter-edit-done' => 'Vi ste uspješno sačuvali Vaše izmjene na filteru $1.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Vaše izmjene]] na [[Special:AbuseFilter/$1|filteru $1]] su sačuvane.',
 	'abusefilter-edit-badsyntax' => 'Sintaksna greška u filteru koji ste označili. Zadnji izgled gramatičke definicije je bio:
 <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Ne možete uređivati ovaj filter, jer on sadrži jednu ili više ograničenih akcija.
@@ -6509,6 +6527,8 @@ Zamolite korisnika sa dopuštenjima za dodavanje ograničenih akcija da napravi 
 	'abusefilter-edit-bad-tags' => 'Jedna ili više oznaka koje ste naveli nije valjana.
 Oznake trebaju biti kratke i ne bi smjele sadržavati posebne znakove.',
 	'abusefilter-edit-notallowed' => 'Nije Vam dopušteno da pravite ili uređujete filtere zloupotrebe',
+	'abusefilter-edit-notallowed-global' => 'Nije Vam dopušteno da pravite ili uređujete globalne filtere zloupotrebe',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'Posebne poruke za upozorenja nisu podržane za globalne filtere',
 	'abusefilter-edit-builder-select' => 'Izaberite jednu opciju da biste je dodali na kursor',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmetički operatori',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Sabiranje (+)',
@@ -6540,7 +6560,8 @@ Oznake trebaju biti kratke i ne bi smjele sadržavati posebne znakove.',
 	'abusefilter-edit-builder-misc-cond' => 'Uslovljeno (if X then Y else Z)',
 	'abusefilter-edit-builder-group-funcs' => 'funkcije',
 	'abusefilter-edit-builder-funcs-length' => 'Dužina linije (dužina)',
-	'abusefilter-edit-builder-funcs-lcase' => 'Za niži slučaj (lcase)',
+	'abusefilter-edit-builder-funcs-lcase' => 'Mala slova (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'Velika slova (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'Normaliziraj zbunjujuće karaktere (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Skloni duple karaktere (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Specijalni karakteri/ svi karakteri (specialratio)',
@@ -6570,6 +6591,7 @@ Oznake trebaju biti kratke i ne bi smjele sadržavati posebne znakove.',
 	'abusefilter-edit-builder-vars-article-ns' => 'Imenski prostor stranice',
 	'abusefilter-edit-builder-vars-article-text' => 'Naslov stanice (without namespace)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'Puni naslov stranice',
+	'abusefilter-edit-builder-vars-article-views' => 'Pregleda stranice',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'ID preusmjerene izvorne stranice',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Imenski prostor izvorne stranice',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Naslov preusmjerene izvorne stranice',
@@ -6582,6 +6604,7 @@ Oznake trebaju biti kratke i ne bi smjele sadržavati posebne znakove.',
 	'abusefilter-edit-builder-vars-user-age' => 'Starost korisničkog računa',
 	'abusefilter-edit-builder-vars-user-name' => 'Ime korisničkog računa',
 	'abusefilter-edit-builder-vars-user-groups' => 'Grupiraj (including implicit) korisnike u',
+	'abusefilter-edit-builder-vars-user-blocked' => 'Da li je korisnik blokiran',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Vrijeme u kojem je e-mail adresa bila potvrđena',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'Posljednjih pet urednika stranice',
 	'abusefilter-edit-builder-vars-all-links' => 'Svi linkovi kao tekst nove stranice',
@@ -6589,10 +6612,13 @@ Oznake trebaju biti kratke i ne bi smjele sadržavati posebne znakove.',
 	'abusefilter-edit-builder-vars-removed-links' => 'Linkovi uklonjeni sa stranice',
 	'abusefilter-edit-builder-vars-old-text' => 'Stari wikitekst stranice, prije uređivanja',
 	'abusefilter-edit-builder-vars-new-text' => 'Nova stranica wikiteksta, nakon uređivanja',
+	'abusefilter-edit-builder-vars-new-pst' => 'Novi wikitekst stranice, prilagođeno za sačuvanje',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Tekst nove stranice, bez ikakvih obilježavanja',
 	'abusefilter-edit-builder-vars-new-html' => 'Parsirani HTML izvor nove revizije',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Uredi nivo zaštite stranice',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Premjesti nivo zaštite stranice',
+	'abusefilter-edit-builder-vars-restrictions-create' => 'Zaštita za pravljenje stranice',
+	'abusefilter-edit-builder-vars-restrictions-upload' => 'Zaštita za postavljanje datoteke',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Tekst sa stare stranice, uklonjene sve oznake',
 	'abusefilter-edit-builder-vars-old-links' => 'Linkovi na stranici, prije uređivanja',
 	'abusefilter-edit-builder-vars-old-html' => 'Wikitekst stare stranice, parsiran u HTML',
@@ -6653,12 +6679,12 @@ Molimo Vas da dobro pazite pri korištenju ovoj alata.',
 	'abusefilter-revert-search' => 'Odaberi akcije',
 	'abusefilter-revert-filter' => 'Filter:',
 	'abusefilter-revert-preview-intro' => 'Ispod su prikazane akcije koje je poduzeo filter zloupotreba koje će se vratiti putem ove akcije.
-Molimo da ih pažljivo provjerite, te kliknete "potvrdi" da potvrdite Vaš odabir.', # Fuzzy
+Molimo da ih pažljivo provjerite, te kliknete "{{int:abusefilter-revert-confirm}}" da potvrdite Vaš odabir.',
 	'abusefilter-revert-confirm' => 'Potvrdi',
 	'abusefilter-revert-success' => 'Vratili ste sve akcije koje je poduzeo filter zloupotreba zbog [[Special:AbuseFilter/$1|filtera $1]].',
 	'abusefilter-revert-reason' => 'Automatskp vraćanje svih akcija koje je načinio filter zloupotreba zbog filtera $1.
 Navedeni razlog: $2',
-	'abusefilter-revert-reasonfield' => 'Razlog za vraćanje:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Razlog:',
 	'abusefilter-test' => 'Testiraj filter protiv ranijih izmjena',
 	'abusefilter-test-intro' => 'Ova stranica Vam omogućuje da provjerite filter koji je unesen u kutiju ispod protiv {{PLURAL:$1|zadnje $1 izmjene|zadnje $1 izmjene|zadnjih $1 izmjena}}. Da napunite postojeći filter, unesite filter ID u kutiju ispod kutije za uređivanje i pritisnite dugme "Napuni".', # Fuzzy
 	'abusefilter-test-legend' => 'Testiranje filtera',
@@ -6703,15 +6729,18 @@ Za sve detalje, pogledajte [[Special:AbuseFilter/history|spisak]] nedavnih izmje
 	'abusefilter-log-noresults' => 'Nema rezultata',
 	'abusefilter-diff-title' => 'Razlike između verzija',
 	'abusefilter-diff-item' => 'Stavka',
-	'abusefilter-diff-version' => 'Verzija od $1 od strane $2', # Fuzzy
+	'abusefilter-diff-version' => 'Verzija od $1 {{GENDER:$3|od strane}} $2',
 	'abusefilter-diff-info' => 'Osnovne informacije',
 	'abusefilter-diff-pattern' => 'Uslovi filtera',
 	'abusefilter-diff-invalid' => 'Tražene vezije nisu mogle biti učitane',
 	'abusefilter-diff-backhistory' => 'Nazad na historiju filtera',
+	'abusefilter-diff-prev' => 'Starije uređivanje',
+	'abusefilter-diff-next' => 'Novije uređivanje',
 	'abusefilter-import-intro' => 'Možete koristiti ovaj interfejs za uvoz filtera sa drugih wikija.
 U izvornoj wiki, kliknite na "{{int:abusefilter-edit-export}}" u meniju "{{int:abusefilter-edit-tools}}" u interfejsu uređivanja.
 Kopirajte iz tekstualne kutije koja se pojavi i zalijepite u ovu kutiju, zatim kliknite na "{{int:abusefilter-import-submit}}",',
 	'abusefilter-import-submit' => 'Uvezi podatke',
+	'abusefilter-group-default' => 'Standardno',
 );
 
 /** Catalan (català)
@@ -7769,6 +7798,9 @@ Popis pravidla: $1',
 	'abusefilter-log-search-submit' => 'Hledat',
 	'abusefilter-log-entry' => '$1: $2 {{GENDER:$2|spustil|spustila|spustil}} filtr zneužívání při činnosti „$3“ na $4.
 Provedená opatření: $5; popis filtru: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 {{GENDER:$2|spustil|spustila}} filtr zneužití při činnosti „$3“ na $4.
+Provedená opatření: $5;
+popis filtru: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 {{GENDER:$2|spustil|spustila|spustil}} $3 při činnosti „$4“ na $5.
 Provedená opatření: $6; popis filtru: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'globální filtr $1',
@@ -7862,8 +7894,7 @@ Odpovídalo mu více než dovolený limit $1 % všech operací.",
 	'abusefilter-edit-hidden' => 'Skrýt podrobnosti tohoto filtru před veřejností',
 	'abusefilter-edit-global' => 'Globální filtr',
 	'abusefilter-edit-rules' => 'Podmínky:',
-	'abusefilter-edit-notes' => "Poznámky:
-:''(soukromé)''",
+	'abusefilter-edit-notes' => 'Poznámky:',
 	'abusefilter-edit-lastmod' => 'Poslední změna filtru:',
 	'abusefilter-edit-lastmod-text' => '$1, $2',
 	'abusefilter-edit-hitcount' => 'Zásahy filtru:',
@@ -8083,6 +8114,7 @@ Už existující filtr můžete použít tím, že jeho ID napíšete do rámeč
 	'abusefilter-test-shownegative' => 'Zobrazit i změny, které filtru nevyhovují',
 	'abusefilter-test-syntaxerr' => 'Zadaný filtr obsahuje syntaktickou chybu.
 Podrobnější vysvětlení můžete získat kliknutím na tlačítko „{{int:abusefilter-edit-check}}“.',
+	'abusefilter-test-badtitle' => 'Zadaný název stránky je neplatný. Možná obsahuje jeden či více znaků, které nelze v názvech stránek používat.',
 	'abusefilter-changeslist-examine' => 'prozkoumat',
 	'abusefilter-examine' => 'Prozkoumat jednotlivé editace',
 	'abusefilter-examine-intro' => 'Na této stránce budete moci u zvolené editace prozkoumat proměnné, které pro ni Filtr zneužívání vygeneroval, a otestovat na ní filtry.',
@@ -10099,6 +10131,7 @@ Aby zacytał eksistěrujucy filter, zapódaj jogo filtrowy ID do kašćika pód 
 	'abusefilter-test-shownegative' => 'Změny pokazaś, kótarež njewótpowěduju filtroju',
 	'abusefilter-test-syntaxerr' => 'Filter, kótaryž sy zapódał, jo wopśimjeł syntaksowu zmólku.
 Pśez kliknjenje na tłocašk "{{int:abusefilter-edit-check}} móžoš połne wujasnjenje dostaś.',
+	'abusefilter-test-badtitle' => 'Titel boka, kótaryž sy zapódał, jo njepłaśiwy był. Wopśimujo snaź znamuška, kótarež njedaju se w titelu wužywaś.',
 	'abusefilter-changeslist-examine' => 'pśepytowaś',
 	'abusefilter-examine' => 'Jadnotliwe změny pśepytowaś',
 	'abusefilter-examine-intro' => 'Toś ten bok śi zmóžnja wariable pśespytowaś, kótarež su se napórali pśez znjewužywański filter za jadnotliwu změnu a ju pśeśiwo tiltram testowaś.',
@@ -16955,6 +16988,7 @@ Zo by eksistowacy filter začitał, zapodaj jeho filtrowy ID do kašćika pod wo
 	'abusefilter-test-shownegative' => 'Změny pokazać, kotrež filtrej njewotpowěduja',
 	'abusefilter-test-syntaxerr' => 'Filter, kotryž sy zapodał, je syntaksowy zmylk wobsahował.
 Přez kliknjenje na tłóčatko "{{int:abusefilter-edit-check}}" móžeš połne wujasnjenje dóstać.',
+	'abusefilter-test-badtitle' => 'Titul strony, kotryž sy zapodał, je njepłaćiwy był. Wobsahuje snano znamješka, kotrež njehodźa so w titulu wužiwać.',
 	'abusefilter-changeslist-examine' => 'přepytować',
 	'abusefilter-examine' => 'Jednotliwe změny přepytować',
 	'abusefilter-examine-intro' => 'Tuta strona ći zmóžnja wariable přepytać, kotrež buchu wot znjewužiwanskeho filtra za jednotliwu změnu spłodźene a ju přećiwo filtram testować.',
@@ -20024,6 +20058,7 @@ $3 個の{{PLURAL:$3|引数}}があるべきですが $4 個しかありませ�
 	'abusefilter-test-shownegative' => 'フィルターに一致しない変更を表示する',
 	'abusefilter-test-syntaxerr' => 'あなたが入力したフィルターには構文エラーがあります。
 「{{int:abusefilter-edit-check}}」ボタンをクリックして、完全な説明を得ることができます。',
+	'abusefilter-test-badtitle' => '入力したページ名は無効です。ページ名に使用できない文字を含んでいる可能性があります。',
 	'abusefilter-changeslist-examine' => '分析',
 	'abusefilter-examine' => '個別の変更を分析する',
 	'abusefilter-examine-intro' => 'このページでは不正利用フィルターが個別の編集に対して生成した変数を分析し、フィルターに対してそれを試験することができます。',
@@ -27774,6 +27809,7 @@ Filterbeschrieving: $7 ($8)',
 /** Nepali (नेपाली)
  * @author Bhawani Gautam
  * @author Bhawani Gautam Rhk
+ * @author Krish Dulal
  * @author RajeshPandey
  * @author सरोज कुमार ढकाल
  */
@@ -27811,6 +27847,7 @@ $messages['ne'] = array(
 	'abusefilter-log-search-user' => 'प्रयोगकर्ता:',
 	'abusefilter-log-search-filter' => 'फिल्टर परिचय:',
 	'abusefilter-log-search-title' => 'शीर्षक:',
+	'abusefilter-log-search-wiki' => 'विकी:',
 	'abusefilter-log-search-submit' => 'खोज्नुहोस्',
 	'abusefilter-log-detailedentry-global' => ' विश्वव्यापी फिल्टर "$1" \\',
 	'abusefilter-log-detailedentry-local' => '$1 फिल्टर गर्ने',
@@ -27869,7 +27906,7 @@ $messages['ne'] = array(
 	'abusefilter-edit-deleted' => 'मेटिएको भनी चिन्ह लगाउने',
 	'abusefilter-edit-rules' => 'शर्तहरु:',
 	'abusefilter-edit-notes' => "टिप्पणी:
-:''(निजि)''",
+:''(निजि)''", # Fuzzy
 	'abusefilter-edit-lastmod' => 'पछिल्लो संशोधित फिल्टर',
 	'abusefilter-edit-lastmod-text' => '$2ले $1लाई',
 	'abusefilter-edit-action-degroup' => 'सबै विशेषाधिकार प्राप्त समूहबाट प्रयोगकर्तालाई निकाल्ने',
@@ -42310,6 +42347,7 @@ Lý do: $2',
 	'abusefilter-test-page' => 'Các thay đổi tại trang:',
 	'abusefilter-test-shownegative' => 'Hiển thị thay đổi không trùng với bộ lọc',
 	'abusefilter-test-syntaxerr' => 'Bộ lọc được nhập vào có lỗi cú pháp. Hãy bấm nút “{{int:abusefilter-edit-check}}” để đọc chi tiết đầy đủ.',
+	'abusefilter-test-badtitle' => 'Bạn đã nhập một tên trang không hợp lệ. Nó có thể có những ký tự không thể dùng trong tên trang.',
 	'abusefilter-changeslist-examine' => 'kiểm tra',
 	'abusefilter-examine' => 'Kiểm tra từng thay đổi một',
 	'abusefilter-examine-intro' => 'Trang này cho phép bạn kiểm tra các biến do Bộ lọc Vi phạm tạo ra đối với từng thay đổi cụ thể, và kiểm thử nó với các bộ lọc.',
