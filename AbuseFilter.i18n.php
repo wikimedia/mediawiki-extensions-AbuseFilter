@@ -7388,7 +7388,7 @@ $messages['ce'] = array(
 	'abusefilter-edit-builder-vars-user-name' => 'Декъашхочун цӀе',
 	'abusefilter-edit-builder-vars-user-groups' => 'Декъашхочун тобанаш',
 	'abusefilter-edit-builder-vars-user-blocked' => 'Блоктоьхна юй',
-	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Электрони почтан адрес бакъдина хан',
+	'abusefilter-edit-builder-vars-user-emailconfirm' => 'Электронан почтан адрес бакъдина хан',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'ТӀаьхьара агӀона хийцамаш бина итт декъашхо',
 	'abusefilter-edit-builder-vars-all-links' => 'Йозанан арахьара хьажорагаш',
 	'abusefilter-edit-builder-vars-added-links' => 'Нисдар чохь тӀетоьхина ерриге арахьара хьажорагаш',
@@ -12109,7 +12109,7 @@ $messages['eu'] = array(
 	'abusefilter-edit-deleted' => 'Markatu ezabatua gisa',
 	'abusefilter-edit-rules' => 'Baldintzak:',
 	'abusefilter-edit-notes' => "Oharrak:
-:''(pribatua)''",
+:''(pribatua)''", # Fuzzy
 	'abusefilter-edit-action-block' => 'Erabiltzailea eta/edo IP helbidea blokeatu ediziorik egin ez dezan',
 	'abusefilter-edit-throttle-count' => 'Baimendu beharreko ekintza kopurua',
 	'abusefilter-edit-throttle-period' => 'Denbora periodoa:',
@@ -12197,7 +12197,7 @@ $messages['eu'] = array(
 	'abusefilter-topnav-tools' => 'Arazketarako tresnak',
 	'abusefilter-topnav-import' => 'Iragazkia inportatu',
 	'abusefilter-log-noresults' => 'Emaitzik ez',
-	'abusefilter-diff-title' => 'Bertsioen arteko ezberdintasunak',
+	'abusefilter-diff-title' => 'Bertsioen arteko aldeak',
 	'abusefilter-diff-item' => 'Elementua',
 	'abusefilter-diff-info' => 'Oinarrizko informazioa',
 	'abusefilter-import-submit' => 'Datuak inportatu',
@@ -21019,7 +21019,7 @@ $messages['km'] = array(
 	'abusefilter-log-search-submit' => 'ស្វែងរក',
 	'abusefilter-log-detailedentry-global' => 'តម្រងសាកល​ $1',
 	'abusefilter-log-detailedentry-local' => 'តម្រង $1',
-	'abusefilter-log-detailslink' => 'សេក្តីលំអិត',
+	'abusefilter-log-detailslink' => 'សេចក្តីលម្អិត',
 	'abusefilter-log-diff' => 'ប្រៀបធៀប',
 	'abusefilter-log-hidelink' => 'កែសម្រួលគំឃើញ',
 	'abusefilter-log-details-legend' => 'ព័ត៌មានលំអិតអំពីកំណត់ហេតុ $1',
@@ -24676,7 +24676,7 @@ $messages['mk'] = array(
 	'abusefilter-reautoconfirm-none' => 'На {{GENDER:$1|тој корисник не му бил |таа корисничка не ѝ бил}} замрзнуван статусот на автопотврденост.',
 	'abusefilter-reautoconfirm-notallowed' => 'Не ви е дозволено да го вратите автопотврдениот статус.',
 	'abusefilter-reautoconfirm-done' => 'Автопотврдениот статус на сметката е вратен',
-	'abusefilter-status' => 'Од {{PLURAL:$1|последното $1 дејствие|последните $1 дејствија}}, $2 ($3%) го {{PLURAL:$2|достигна|достигнаа}} условното ограничување $4, и $5 ($6%) {{PLURAL:$5|се совпаѓа|се совпаѓаат}} со еден од моментално инсталираните филтри.',
+	'abusefilter-status' => 'Од {{PLURAL:$1|последното $1 дејствие|последните $1 дејствија}}, $2 ($3%) го {{PLURAL:$2|достигна|достигнаа}} условното ограничување $4, и $5 ($6%) {{PLURAL:$5|се совпаѓа|се совпаѓаат}} со еден од тековно вклучените филтри.',
 	'abusefilter-edit' => 'Уредување на филтер за злоупотреби',
 	'abusefilter-edit-subtitle' => 'Уредување на филтерот $1',
 	'abusefilter-edit-subtitle-new' => 'Создавање на филтер',
@@ -43343,6 +43343,7 @@ $messages['zh-cn'] = array(
  * @author Makecat
  * @author PhiLiP
  * @author Philip <philip.npc@gmail.com>
+ * @author Qiyue2001
  * @author Shirayuki
  * @author Shizhao
  * @author Simon Shek
@@ -43709,6 +43710,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-test-page' => '对页面的更改：',
 	'abusefilter-test-shownegative' => '显示不与过滤器匹配的更改',
 	'abusefilter-test-syntaxerr' => '您所输入的过滤器存有语法错误。请点击“{{int:abusefilter-edit-check}}”按钮进行语法检查，并获取详细解释。',
+	'abusefilter-test-badtitle' => '您输入的页面标题无效。它可能包含无法作为标题使用的一个或多个字符。',
 	'abusefilter-changeslist-examine' => '检查',
 	'abusefilter-examine' => '检查单独更改',
 	'abusefilter-examine-intro' => '本页面允许您检查防滥用过滤器根据某次单独更改所生成的变量，并使用过滤器进行测试。',
