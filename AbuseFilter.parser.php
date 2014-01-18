@@ -1787,8 +1787,12 @@ class AbuseFilterParser {
 			$haystack = $args[1]->toString();
 
 			$count = 0;
-			while ( ( $offset = strpos( $haystack, $needle, $offset + 1 ) ) !== false ) {
-				$count++;
+
+			// Bug #60203: Keep empty parameters from causing PHP warnings
+			if ( $needle !== '' ) {
+				while ( ( $offset = strpos( $haystack, $needle, $offset + 1 ) ) !== false ) {
+					$count++;
+				}
 			}
 		}
 
@@ -1910,7 +1914,8 @@ class AbuseFilterParser {
 		} else {
 			$ok = false;
 			foreach ( $searchStrings as $needle ) {
-				if ( strpos( $s, $needle ) !== false ) {
+				// Bug #60203: Keep empty parameters from causing PHP warnings
+				if ( $needle !== '' && strpos( $s, $needle ) !== false ) {
 					$ok = true;
 					break;
 				}
@@ -2099,6 +2104,11 @@ class AbuseFilterParser {
 
 		$haystack = $args[0]->toString();
 		$needle = $args[1]->toString();
+
+		// Bug #60203: Keep empty parameters from causing PHP warnings
+		if ( $needle === '' ) {
+			return new AFPData( AFPData::DInt, -1 );
+		}
 
 		if ( isset( $args[2] ) ) {
 			$offset = $args[2]->toInt();
