@@ -11672,12 +11672,16 @@ Reegli kirjeldus: $1',
 	'abusefilter-log-search-title' => 'Pealkiri:',
 	'abusefilter-log-search-wiki' => 'Viki:',
 	'abusefilter-log-search-submit' => 'Otsi',
-	'abusefilter-log-entry' => '$1: $2 vallandas väärtarvitusfiltri, sooritades leheküljel $4 tegevust "$3".
-Toiming: $5. Filtri kirjeldus: $6',
+	'abusefilter-log-entry' => '$1: $2 vallandas väärtarvitusfiltri, sooritades leheküljel "$4" tegevust "$3".
+Filtritoiming: $5;
+Filtri kirjeldus: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 vallandas väärtarvitusfiltri, sooritades leheküljel "$4" tegevust "$3".
+Filtri sooritatud toiming: $5;
+Filtri kirjeldus: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 vallandas $3, sooritades leheküljel $5 tegevust "$4".
 Filtri sooritatud toiming: $6;
 Filtri kirjeldus: $7 ($8)',
-	'abusefilter-log-detailedentry-global' => 'globaalfilter $1',
+	'abusefilter-log-detailedentry-global' => 'globaalfiltri $1',
 	'abusefilter-log-detailedentry-local' => 'filtri $1',
 	'abusefilter-log-detailslink' => 'üksikasjad',
 	'abusefilter-log-diff' => 'erin',
@@ -11902,14 +11906,14 @@ Märgised peaks olema lühikesed ja nad ei peaks sisaldama erimärke.',
 	'abusefilter-edit-builder-vars-old-text' => 'Muudatuse-eelse lehekülje vikitekst',
 	'abusefilter-edit-builder-vars-new-text' => 'Muudatuse-järgse lehekülje vikitekst',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Uus lehekülje tekst igasuguse märgistuseta',
-	'abusefilter-edit-builder-vars-new-html' => 'Uue redaktsiooni sõelutud HTML-lähtekood',
+	'abusefilter-edit-builder-vars-new-html' => 'Uue redaktsiooni liigendatud HTML-lähtekood',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Lehekülje redigeerimiskaitsetase',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Lehekülje teisaldamiskaitsetase',
 	'abusefilter-edit-builder-vars-restrictions-create' => 'Lehekülje loomiskaitse',
 	'abusefilter-edit-builder-vars-restrictions-upload' => 'Faili üleslaadimiskaitse',
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'Vana lehekülje tekst igasuguse märgistuseta',
 	'abusefilter-edit-builder-vars-old-links' => 'Muudatuse-eelsel leheküljel olnud lingid',
-	'abusefilter-edit-builder-vars-old-html' => 'HTML-koodiks sõelutud lehekülje vana vikitekst',
+	'abusefilter-edit-builder-vars-old-html' => 'Lehekülje vana HTML-koodiks liigendaud vikitekst',
 	'abusefilter-edit-builder-vars-minor-edit' => 'Kas märgitud pisimuudatuseks?',
 	'abusefilter-edit-builder-vars-file-sha1' => 'Faili sisu SHA1-räsi',
 	'abusefilter-filter-log' => 'Viimased filtri muudatused',
@@ -35808,8 +35812,7 @@ Dosegel je mejo ujemanja več kot $1 % dejanj.",
 	'abusefilter-edit-hidden' => 'Skrij podrobnosti tega filtra pred javnim vpogledom',
 	'abusefilter-edit-global' => 'Globalni filter',
 	'abusefilter-edit-rules' => 'Pogoji:',
-	'abusefilter-edit-notes' => "Opombe:
-:''(zasebno)''",
+	'abusefilter-edit-notes' => 'Opombe:',
 	'abusefilter-edit-lastmod' => 'Zadnja sprememba filtra:',
 	'abusefilter-edit-lastmod-text' => 'dne $1 s strani $2',
 	'abusefilter-edit-hitcount' => 'Zadetki filtra:',
@@ -35836,10 +35839,10 @@ Dosegel je mejo ujemanja več kot $1 % dejanj.",
 	'abusefilter-edit-warn-preview' => 'Predogled izbranega sporočila',
 	'abusefilter-edit-warn-edit' => 'Ustvari/Uredi izbrano sporočilo',
 	'abusefilter-edit-tag-tag' => 'Uporabljene oznake (ena na vrstico):',
-	'abusefilter-edit-denied' => 'Ne morete si ogledati podrobnosti tega filtra, ker je skrit pred javnim vpogledom.', # Fuzzy
+	'abusefilter-edit-denied' => 'Ne morete si ogledati podrobnosti filtra, ker je skrit pred javnim pogledom.',
 	'abusefilter-edit-main' => 'Parametri filtra',
 	'abusefilter-edit-done-subtitle' => 'Filter je urejen',
-	'abusefilter-edit-done' => 'Uspešno ste shranili spremembe filtra $1.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Svoje spremembe]] [[Special:AbuseFilter/$1|filtra $1]] ste uspešno shranili.',
 	'abusefilter-edit-badsyntax' => 'V navedenem filtru je skladenjska napaka.
 Rezultat razčlenjevalnika je bil: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Ne morete urediti tega filtra, ker vsebuje eno ali več omejenih dejanj.
@@ -36010,7 +36013,7 @@ Dejanja, ki bodo vrnjena: $5 ($6)',
 	'abusefilter-revert-search' => 'Izberite dejanja',
 	'abusefilter-revert-filter' => 'Filter:',
 	'abusefilter-revert-preview-intro' => 'Spodaj se nahajajo dejanja filtra zlorab, ki bodo vrnjena s tem dejanjem.
-Prosimo, skrbno jih preverite in kliknite »Potrdi«, da potrdite izbiro.', # Fuzzy
+Prosimo, skrbno jih preverite in kliknite »{{int:abusefilter-revert-confirm}}«, da potrdite izbiro.',
 	'abusefilter-revert-confirm' => 'Potrdi',
 	'abusefilter-revert-success' => 'Vrnili ste vsa dejanja filtra zlorab zaradi [[Special:AbuseFilter/$1|filtra $1]].',
 	'abusefilter-revert-reason' => 'Samodejna vrnitev vseh dejanj filtra zlorab zaradi filtra $1.
@@ -36018,7 +36021,7 @@ Podan razlog: $2',
 	'abusefilter-revert-reasonfield' => 'Razlog:',
 	'abusefilter-test' => 'Preizkusi filter s preteklimi urejanji',
 	'abusefilter-test-intro' => 'Ta stran vam omogoča, da preverite filter, vnesen v spodnje polje, ob {{PLURAL:$1|zadnjo $1 spremembo|zadnji $1 spremembi|zadnje $1 spremembe|zadnjih $1 sprememb}}.
-Za nalaganje obstoječega filtra vpišite njegov ID v polje pod urejevalnim besedilnim poljem in kliknite gumb »Naloži«.', # Fuzzy
+Za nalaganje obstoječega filtra vpišite njegov ID v polje pod urejevalnim besedilnim poljem in kliknite gumb »{{int:abusefilter-test-load}}«.',
 	'abusefilter-test-legend' => 'Preizkušanje filtrov',
 	'abusefilter-test-load-filter' => 'Naloži filter ID:',
 	'abusefilter-test-submit' => 'Preizkusi',
@@ -36029,7 +36032,8 @@ Za nalaganje obstoječega filtra vpišite njegov ID v polje pod urejevalnim bese
 	'abusefilter-test-page' => 'Spremembe na strani:',
 	'abusefilter-test-shownegative' => 'Prikaži spremembe, ki se ne ujemajo s filtrom',
 	'abusefilter-test-syntaxerr' => 'Vnesen filter vsebuje skladenjsko napako.
-Polno pojasnilo lahko dobite s klikom na gumb »Preveri skladnjo«.', # Fuzzy
+Polno pojasnilo lahko dobite s klikom na gumb »{{int:abusefilter-edit-check}}«.',
+	'abusefilter-test-badtitle' => 'Vneseni naslov strani ni veljaven. Vsebuje enega ali več znakov, ki jih ni mogoče uporabiti v naslovih.',
 	'abusefilter-changeslist-examine' => 'preuči',
 	'abusefilter-examine' => 'Preuči posamezne spremembe',
 	'abusefilter-examine-intro' => 'Ta stran vam omogoča preverjanje spremenljivk, ki jih ustvari filter zlorab, za posamezno spremembo in jo preizkusi ob filtrih.',
@@ -38097,6 +38101,7 @@ $messages['sw'] = array(
 
 /** Silesian (ślůnski)
  * @author Britscher
+ * @author Krol111
  */
 $messages['szl'] = array(
 	'abusefilter-desc' => 'Automatyczno heurystyko do edycyj',
@@ -38106,13 +38111,13 @@ $messages['szl'] = array(
 Register zńyłużyćów je program, kery automatyczńy używo heurystyka do wszyjskich akcyj.
 Interface pozwolo przeglůndać lista zedefińůwanych filtrůw a je pomjyńać.',
 	'abusefilter-mustbeeditor' => 'Lo bezpjyczyństwa, tyn interface mogům używać jyno używocze, kere majům prawo pomjyńać filter zńyłużyćów.',
-	'abusefilter-warning' => "'''Pozůr''': Ta akcyjo bůła automatyczńy uznono szkodzůncům.
-Ńydobre pomjyny bydům cofńynte, a fest złe abo uopakujůnce śe edytowańy skůńczy śe blokadům twojigo kůnta abo IP.
-Eli zwożujesz, że to co robisz je dobre, spamjyntej pomjyny bez „{{int:savearticle}}”.
-Krůtki uopis zńyłużyćo, ke keremu przipasowano twojo akcyjo: $1", # Fuzzy
-	'abusefilter-disallowed' => 'Ta akcyjo bůła automatyczńy uznona szkodzůncům a uodćepńynta.
-Eli zwożujesz, że ta edycyjo bůła ajntlichowo, pedź uo tyj sytuacyji administratůrowi.
-Krůtki uopis zńyłużyćo, ke keremu bůła przipasowano twojo akcyjo: $1', # Fuzzy
+	'abusefilter-warning' => "'''Pozůr''': Ta akcyjo bůła automatyczńy uznono szkodzůnco.
+Felerne pomjyny bydům cofńynte nazod, a fest złe abo uopakujůnce śe edytowańy skůńczy śe zwarćem twojigo kůnta abo IP.
+Eli uważosz, aże to co żeś zrobjůł je dobre, spamjyntej pomjany bez „{{int:savearticle}}”.
+Krůtki uopis regli zńyłużyćo, keremu przipasowano twojo akcyjo: $1",
+	'abusefilter-disallowed' => 'Ta akcyjo bůła automatyczńy uznona szkodzůnco i uodćepńynto.
+Eli uważosz, aże ta edycyjo bůła ajntlichowo, pedź uo tyj sytuacyji administratůrowi.
+Krůtki uopis regla zńyłużyćo, keremu bůła przipasowano twojo akcyjo: $1',
 	'abusefilter-blocker' => 'Filter zńyłużyćów',
 	'right-abusefilter-modify' => 'Pomjyńańy filtrůw zńyłużyćůw',
 	'abusefilter-list-options-submit' => 'Aktualizacyjo',
@@ -41225,6 +41230,7 @@ $messages['uk'] = array(
 	'abusefilter-test-shownegative' => 'Показувати зміни, які не попадають під фільтр',
 	'abusefilter-test-syntaxerr' => 'Введений вами фільтр містить синтаксичну помилку.
 Ви можете отримати докладне пояснення, натиснувши кнопку "{{int:abusefilter-edit-check}}"',
+	'abusefilter-test-badtitle' => 'Вами введено хибний заголовок сторінки. Можливо, він містить один або кілька символів, які не можна вживати у назвах.',
 	'abusefilter-changeslist-examine' => 'переглянути',
 	'abusefilter-examine' => 'Перегляд окремих змін',
 	'abusefilter-examine-intro' => 'Ця сторінка дозволяє вам переглянути змінні, створені фільтром редагувань для окремої зміни і перевірити їх у фільтрах.',
