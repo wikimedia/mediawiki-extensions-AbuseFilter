@@ -3163,6 +3163,7 @@ Pa cargar un filtru esistente, escriba la ID del filtru nel cuadru que ta abaxo 
 	'abusefilter-test-shownegative' => 'Ver los cambios que nun casen col filtru',
 	'abusefilter-test-syntaxerr' => 'El filtru qu\'escribió contenía un error de sintaxis.
 Pue recibir una esplicación completa calcando nel botón "{{int:abusefilter-edit-check}}".',
+	'abusefilter-test-badtitle' => "El títulu de páxina qu'escribió ye inválidu. Pue contener unu o más caráuteres que nun puen usase nos títulos.",
 	'abusefilter-changeslist-examine' => 'esaminar',
 	'abusefilter-examine' => 'Esaminar los cambios individuales',
 	'abusefilter-examine-intro' => "Esta páxina permite-y esaminar les variables xeneraes pola Peñera d'abusos pa un cambiu individual, y probalu escontra los filtros.",
@@ -25882,6 +25883,9 @@ Keterangan peraturan: $1',
 	'abusefilter-log-entry' => '$1: $2 mencetuskan penapis salah guna, melakukan tindakan "$3" pada $4.
 Tindakan diambil: $5;
 Huraian penapis: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 telah mencetuskan penapis salah guna dengan melakukan tindakan "$3" di $4.
+Tindakan diambil: $5;
+Keterangan penapis: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 mencetuskan $3, melakukan tindakan "$4" pada $5.
 Tindakan diambil: $6;
 Huraian penapis: $7 ($8)',
@@ -26006,10 +26010,10 @@ Ia telah mencapai had pemadanan lebih $1% tindakan.",
 	'abusefilter-edit-warn-preview' => 'Pralihat pesanan yang dipilih',
 	'abusefilter-edit-warn-edit' => 'Cipta/Sunting pesanan yang dipilih',
 	'abusefilter-edit-tag-tag' => 'Tag untuk digunakan (satu sebaris):',
-	'abusefilter-edit-denied' => 'Anda tidak boleh melihat butiran bagi penapis ini kerana ia disembunyikan daripada pandangan awam.', # Fuzzy
+	'abusefilter-edit-denied' => 'Anda tidak boleh melihat butiran bagi penapis ini kerana ia disembunyikan daripada pandangan awam.',
 	'abusefilter-edit-main' => 'Parameter penapis',
 	'abusefilter-edit-done-subtitle' => 'Penapis disunting',
-	'abusefilter-edit-done' => 'Anda berjaya menyimpan perubahan anda kepada penapis $1.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Pengubahan anda]] pada [[Special:AbuseFilter/$1|penapis $1]] telah disimpan.',
 	'abusefilter-edit-badsyntax' => 'Terdapat ralat sintaks dalam penapis yang anda nyatakan.
 Output dari parser itu ialah: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Anda tidak boleh menyunting penapis ini kerana ia mengandungi tindakan yang tersekat.
@@ -26180,7 +26184,7 @@ Tindakan yang hendak dibatalkan: $5 ($6)',
 	'abusefilter-revert-search' => 'Pilih tindakan',
 	'abusefilter-revert-filter' => 'Penapis:',
 	'abusefilter-revert-preview-intro' => 'Berikut ialah tindakan yang diambil oleh penapis salah guna yang akan diterbalikkan oleh tindakan ini.
-Sila buat semakan dengan teliti, kemudian klik "Sahkan" untuk mengesahkan pemilihan anda.', # Fuzzy
+Sila buat semakan dengan teliti, kemudian klik "{{int:abusefilter-revert-confirm}}" untuk mengesahkan pemilihan anda.',
 	'abusefilter-revert-confirm' => 'Sahkan',
 	'abusefilter-revert-success' => 'Anda telah membatalkan semua tindakan yang diambil oleh penapis salah guna atas sebab [[Special:AbuseFilter/$1|penapis $1]].',
 	'abusefilter-revert-reason' => 'Pembatalan automatik semua tindakan yang diambil oleh penapis salah guna atas sebab penapis $1.
@@ -26188,7 +26192,7 @@ Sebab yang diberikan: $2',
 	'abusefilter-revert-reasonfield' => 'Sebab:',
 	'abusefilter-test' => 'Uji penapis terhadap suntingan lalu',
 	'abusefilter-test-intro' => 'Laman ini membolehkan anda untuk menyemak penapis yang dimasukkan dalam petak di bawah dengan $1 perubahan terakhir.
-Untuk memuatkan penapis yang sedia ada, taipkan ID penapisnya ke dalam petak di bawah ruangan teks penyuntingan, kemudian klik butang "Muatkan".', # Fuzzy
+Untuk memuatkan penapis yang sedia ada, taipkan ID penapisnya ke dalam petak di bawah ruangan teks penyuntingan, kemudian klik butang "{{int:abusefilter-test-load}}".',
 	'abusefilter-test-legend' => 'Ujian penapis',
 	'abusefilter-test-load-filter' => 'ID penapis muatan:',
 	'abusefilter-test-submit' => 'Uji',
@@ -26199,7 +26203,8 @@ Untuk memuatkan penapis yang sedia ada, taipkan ID penapisnya ke dalam petak di 
 	'abusefilter-test-page' => 'Perubahan pada laman:',
 	'abusefilter-test-shownegative' => 'Tunjukkan perubahan yang tidak sepadan dengan penapis',
 	'abusefilter-test-syntaxerr' => 'Penapis yang anda isikan itu ada ralat sintaks.
-Anda boleh menerima penjelasan penuh dengan mengklik butang "Semak sintaks".', # Fuzzy
+Anda boleh menerima penjelasan penuh dengan mengklik butang "{{int:abusefilter-edit-check}}".',
+	'abusefilter-test-badtitle' => 'Tajuk halaman yang anda isikan itu tidak sah. Ia mungkin mengandungi aksara yang tidak boleh digunakan dalam tajuk.',
 	'abusefilter-changeslist-examine' => 'periksa',
 	'abusefilter-examine' => 'Periksa perubahan satu demi satu',
 	'abusefilter-examine-intro' => 'Laman ini membolehkan anda memeriksa pembolehubah yang dijana oleh Penapis Salah Guna untuk satu perubahan tertentu, dan mengujinya dengan penapis.',
@@ -43765,6 +43770,7 @@ $messages['zh-hans'] = array(
  * @author Bencmq
  * @author Ch.Andrew
  * @author Cwlin0416
+ * @author EagerLin
  * @author Gzdavidwong
  * @author Horacewai2
  * @author Jimmy xu wrk
@@ -44158,6 +44164,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-test-shownegative' => '顯示與過濾器不匹配的更改',
 	'abusefilter-test-syntaxerr' => '您輸入的過濾器有語法錯誤。
 請按下「語法檢查」鈕以取得完整說明。', # Fuzzy
+	'abusefilter-test-badtitle' => '您輸入的頁面標題無效。它可能包含無法作為標題使用的一個或多個字符。',
 	'abusefilter-changeslist-examine' => '檢查',
 	'abusefilter-examine' => '檢查個別更改',
 	'abusefilter-examine-intro' => '本頁讓您檢視由防濫用過濾器為個別變更所產生的變數，並測試其相對應的過濾器。',
