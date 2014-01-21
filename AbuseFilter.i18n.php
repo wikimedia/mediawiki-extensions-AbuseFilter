@@ -13252,6 +13252,7 @@ Reglu frágreiðing: $1',
  * @author Cquoi
  * @author Crochet.david
  * @author DavidL
+ * @author Dr Brains
  * @author Gomoko
  * @author Grondin
  * @author Hello71
@@ -13326,7 +13327,7 @@ Description de la règle associée : $1',
 	'action-abusefilter-modify-restricted' => 'modifier les filtres antiabus avec des actions restreintes',
 	'action-abusefilter-revert' => 'révoquer toutes les modifications selon un filtre antiabus donné',
 	'action-abusefilter-view-private' => 'voir les filtres antiabus marqués comme privés',
-	'abusefilter-log' => 'Journal du filtre antiabus',
+	'abusefilter-log' => 'Journal des déclenchements du filtre antiabus',
 	'abusefilter-log-summary' => 'Ce journal affiche une liste des actions détectées par les filtres.',
 	'abusefilter-log-search' => 'Rechercher dans le journal des filtres antiabus',
 	'abusefilter-log-search-user' => 'Utilisateur :',
@@ -13685,7 +13686,7 @@ Vous pouvez recevoir une explication complète en cliquant sur le bouton « {{
 	'abusefilter-topnav-log' => 'Journal antiabus',
 	'abusefilter-topnav-tools' => 'Outils de déboguage',
 	'abusefilter-topnav-import' => 'Importer un filtre',
-	'abusefilter-log-name' => 'Journal du filtre antiabus',
+	'abusefilter-log-name' => 'Journal des modifications du filtre antiabus',
 	'abusefilter-log-header' => 'Ce journal affiche un résumé des modifications faites aux filtres.
 Pour plus de détails, voyez [[Special:AbuseFilter/history|la liste]] des modifications récentes du filtre.',
 	'abusefilter-log-entry-modify' => 'a modifié $1 ($2)',
@@ -20982,10 +20983,136 @@ $messages['kiu'] = array(
 );
 
 /** Kazakh (Cyrillic script) (қазақша (кирил)‎)
+ * @author Arystanbek
  * @author GaiJin
  */
 $messages['kk-cyrl'] = array(
+	'abusefilter' => 'Қиянат жасауды сүзгілеу ішкіқұрылымы',
+	'abuselog' => 'Қиянат жасау журналы',
+	'abusefilter-intro' => 'Қиянат жасауды сүзгілеу интерфейс басқармасына қош келдіңіз. Қиянат жасауды сүзгілеу барлық әрекеттерді автоматты түрде сүзгілейтін автоматтандырылған бағдарламалық жасақтама механизмі. Бұл интерфейс нақты сүзгілердің тізімін көретуде және оларды өзгеруге мүмкіндік береді.',
+	'abusefilter-blocker' => 'Қиянат жасауды сүзгілеу',
+	'right-abusefilter-modify' => 'Сүзгіні өзгерту',
+	'right-abusefilter-view' => 'Сүзгіні қарау',
+	'right-abusefilter-log' => 'Қиянат жасау журналын қарау',
+	'right-abusefilter-log-detail' => 'Бұзақылық жасау журнал жазбасынан толығырақ қарау',
+	'right-abusefilter-private' => 'Бұзақылық жасау журналынан жеке деректерін қарау',
+	'right-abusefilter-modify-restricted' => 'Қиянаттауды сүзгілеу сүзгісінен шектеу әрекеттерін өзгерту',
+	'right-abusefilter-revert' => 'Осы қиянаттауды сүзгілеу сүзгісіндегі барлық өзгертулерді қайтару',
+	'right-abusefilter-hidden-log' => 'Жасырылған бұзақылық жасау журнал жазбасынан қарау',
+	'right-abusefilter-modify-global' => 'Ғаламдық қиянаттауды сүзгілеу сүзгісін жасау немесе өзгерту',
+	'action-abusefilter-modify' => 'сүзгіні өзгерту',
+	'action-abusefilter-view' => 'сүзгіні қарау',
+	'action-abusefilter-log' => 'Қиянат жасау журналын қарау',
+	'action-abusefilter-log-detail' => 'бұзақылық жасау журнал жазбасынан толығырақ қарау',
+	'action-abusefilter-private' => 'бұзақылық жасау журналынан жеке деректерін қарау',
+	'action-abusefilter-modify-restricted' => 'қиянаттауды сүзгілеу сүзгісінен шектеу әрекеттерін өзгерту',
+	'action-abusefilter-revert' => 'осы қиянаттауды сүзгілеу сүзгісіндегі барлық өзгертулерді қайтару',
+	'abusefilter-log' => 'Бұзақылық жасауды сүзгілеу журналы',
+	'abusefilter-log-summary' => 'Бұл журналда сүзгілердің жасалуына қатысты барлық әрекеттер тізімі көртетілген.',
+	'abusefilter-log-search' => 'Қиянаттау журналынан іздеу',
+	'abusefilter-log-search-user' => 'Қатысушы:',
+	'abusefilter-log-search-filter' => 'Сүзгі ID-і:',
+	'abusefilter-log-search-title' => 'Атауы:',
+	'abusefilter-log-search-wiki' => 'Уики:',
 	'abusefilter-log-search-submit' => 'Іздеу',
+	'abusefilter-log-entry' => '$1: $2 қиянаттауды сүзгілеу сүзгісін шақырды, $4 бетіндегі орындалу әрекеті: "$3".
+Әрекет көрінісі: $5;
+Сүзгі сипаттамасы: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 қиянаттауды сүзгілеу сүзгісін шақырды, $4 бетіндегі орындалу әрекеті: "$3".
+Әрекет көрінісі: $5;
+Сүзгі сипаттамасы: $6 \'\'\'($7)\'\'\'',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 $3 сүзгісін шақырды, $4 бетіндегі орындалу әрекеті: "$5".
+Әрекет көрінісі: $6;
+Сүзгі сипаттамасы: $7 \'\'\'($8)\'\'\'',
+	'abusefilter-log-detailedentry-global' => 'ғаламдық сүзгі $1',
+	'abusefilter-log-detailedentry-local' => 'сүзгі: $1',
+	'abusefilter-log-detailslink' => 'егжей-тегжейі',
+	'abusefilter-log-diff' => 'айырм.',
+	'abusefilter-log-hidelink' => 'көрінісін баптау',
+	'abusefilter-log-details-legend' => '$1 журнал жазбасының егжей-тегжейі',
+	'abusefilter-log-details-var' => 'Айнымалылар',
+	'abusefilter-log-details-val' => 'Мәні:',
+	'abusefilter-log-details-vars' => 'Әрекет параметрлері',
+	'abusefilter-log-details-private' => 'Жеке деректері',
+	'abusefilter-log-details-ip' => 'Қайнар IP мекен жайы',
+	'abusefilter-log-noactions' => 'Ешқандай',
+	'abusefilter-log-details-diff' => 'Өңдеп жасаған өзгерістері',
+	'abusefilter-log-linkoncontribs' => 'Қиянат жасау журналы',
+	'abusefilter-log-linkoncontribs-text' => 'Бұл қатысушының қиянат жасау журналы',
+	'abusefilter-log-hidden' => '(жазба жасырылған)',
+	'abusefilter-log-hidden-implicit' => '(жасырылған себебі нұсқасы жойылған)',
+	'abusefilter-log-cannot-see-details' => 'Бұл жазбаның егжей-тегжейін көру рұқсатыңыз жоқ.',
+	'abusefilter-log-details-hidden' => 'Бұл жазба барлық қатысушыларға көрінуі жасырылғандықтан  егжей-тегжейін көре алмайсыз.',
+	'abusefilter-log-hide-legend' => 'Журнал жазбасын жасыру',
+	'abusefilter-log-hide-id' => 'Журнал жазба ID-і:',
+	'abusefilter-log-hide-hidden' => 'Бұл жазба барлық қатысушыларға көрсетпеу',
+	'abusefilter-log-hide-reason' => 'Себебі:',
+	'abusefilter-log-hide-forbidden' => 'Қиянаттау журнал енгізілімдерін жасыруға рұқсатыңыз жоқ',
+	'abusefilter-logentry-suppress' => '"[[$1]]" дегенді жасыру',
+	'abusefilter-logentry-unsuppress' => '"[[$1]]" дегенді жасырмау',
+	'logentry-abusefilter-hit' => '$1 $4 сүзгісін шақырды, $3 бетіндегі орындалу әрекеті: "$5".
+Әрекет көрінісі: $6 ($7)',
+	'abusefilter-management' => 'Қиянаттауды сүзгілеу сүзгі басқармасы',
+	'abusefilter-list' => 'Барлық сүзгілер',
+	'abusefilter-list-id' => 'Сүзгі ID-і',
+	'abusefilter-list-status' => 'Статусы',
+	'abusefilter-list-public' => 'Негізгі сипаттамасы',
+	'abusefilter-list-consequences' => 'Нәтижелері',
+	'abusefilter-list-visibility' => 'Көрінісі',
+	'abusefilter-list-hitcount' => 'Ұшырасу саны',
+	'abusefilter-list-edit' => 'Өңдеу',
+	'abusefilter-list-details' => 'Егжей-тегжейі',
+	'abusefilter-list-limit' => 'Бет сайын саны:',
+	'abusefilter-list-lastmodified' => 'Соңғы өзгерілуі',
+	'abusefilter-list-group' => 'Сүзгі тобы',
+	'abusefilter-hidden' => 'Жеке',
+	'abusefilter-unhidden' => 'Барлық қатысушыларға',
+	'abusefilter-enabled' => 'Қосылған',
+	'abusefilter-deleted' => 'Жойылған',
+	'abusefilter-disabled' => 'Ажыратылған',
+	'abusefilter-hitcount' => '$1 рет ұшырасқан',
+	'abusefilter-new' => 'Жаңа сүзгі бастау',
+	'abusefilter-return' => 'Сүзгі басқармасына қайта оралу',
+	'abusefilter-status-global' => 'Ғаламдық',
+	'abusefilter-list-options' => 'Талғаулар',
+	'abusefilter-list-options-deleted' => 'Жойылған сүзгілер:',
+	'abusefilter-list-options-deleted-only' => 'Тек жойылған сүзгілерду көрсету',
+	'abusefilter-list-options-deleted-hide' => 'Жойылған сүзгілерді жасыру',
+	'abusefilter-list-options-deleted-show' => 'Жойылған сүзгілерді қоса көрсету',
+	'abusefilter-list-options-scope' => 'Сүзгілерді мынадан бастап көрсету',
+	'abusefilter-list-options-scope-local' => 'Жергілікті уики',
+	'abusefilter-list-options-scope-global' => 'Ғаламдық ережелер',
+	'abusefilter-list-options-disabled' => 'Ажыратылған сүзгілер:',
+	'abusefilter-list-options-hidedisabled' => 'Ажыратылған сүзгілерді жасыру',
+	'abusefilter-list-options-submit' => 'Жаңарту',
+	'abusefilter-tools-expr' => 'Өрнекті тексеру',
+	'abusefilter-tools-submitexpr' => 'Есептеу',
+	'abusefilter-tools-reautoconfirm' => 'Өздікті құптау статусын қалпына келтіру',
+	'abusefilter-tools-reautoconfirm-user' => 'Қатысушы:',
+	'abusefilter-tools-reautoconfirm-submit' => 'Қайта өздікті құптау',
+	'abusefilter-reautoconfirm-notallowed' => 'Өздікті құптау статусыңызды қалпына келтіре алмайсыз.',
+	'abusefilter-reautoconfirm-done' => 'Тіркеліміңіздің өздікті құптау статусы қалпына келтірілді',
+	'abusefilter-edit' => 'Қиянаттауды қақпайлау сүзгісі өңделуде',
+	'abusefilter-edit-subtitle' => '$1 сүзгісі өңделуде',
+	'abusefilter-edit-subtitle-new' => 'Сүзгіні жасау',
+	'abusefilter-edit-status-label' => 'Статистика:',
+	'abusefilter-edit-new' => 'Жаңа сүзгі',
+	'abusefilter-edit-save' => 'Сүзгіні сақтау',
+	'abusefilter-edit-id' => 'Сүзгі ID-і:',
+	'abusefilter-edit-description' => "Сипаттамасы:
+:''(барлық қатысушыларға көрінулі)''",
+	'abusefilter-edit-group' => 'Сүзгі тобы:',
+	'abusefilter-edit-flags' => 'Жалаушалары:',
+	'abusefilter-edit-enabled' => 'Бұл сүзгіні қосу',
+	'abusefilter-edit-deleted' => 'Жойылды деп белгілеу',
+	'abusefilter-edit-hidden' => 'Барлық қатысушыларға бұл сүзгінің енжей-тегжейін жасыру',
+	'abusefilter-edit-global' => 'Ғаламдық сүзгі',
+	'abusefilter-edit-rules' => 'Шарттары:',
+	'abusefilter-edit-notes' => 'Белгілері:',
+	'abusefilter-edit-lastmod' => 'Сүзгі соңғы рет өзгертілді:',
+	'abusefilter-edit-lastmod-text' => '$1 кезінде $2 есімді қатысушы',
+	'abusefilter-edit-hitcount' => 'Сүзгі ұшырасуы:',
+	'abusefilter-edit-consequences' => 'Сәйкес келу кезінде қабылдау әрекеттері',
 	'abusefilter-examine-submit' => 'Іздеу',
 );
 
@@ -28107,6 +28234,7 @@ $messages['niu'] = array(
 
 /** Dutch (Nederlands)
  * @author Annabel
+ * @author Arent
  * @author GerardM
  * @author JurgenNL
  * @author McDutchie
@@ -28182,6 +28310,9 @@ Beschrijving van de regel die dit heeft veroorzaakt: $1',
 	'abusefilter-log-entry' => '$1: $2 liet een filter afgaan bij het uitvoeren handeling "$3" op $4.
 Genomen maatregel: $5.
 Filterbeschrijving: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 activeerde een misbruikfilter, waardoor actie "$3" wordt uitgevoerd op $4. 
+Acties uitgevoerd: $5; 
+Filterbeschrijving: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 heeft $3 laten afgaan tijdens het uitvoeren van de handeling "$4" op $5.
 Genomen maatregel: $6.
 Filterbeschrijving: $7 ($8)',
@@ -28500,6 +28631,7 @@ Geef een filternummer in om een bestaand filter te laden en klik daarna op de kn
 	'abusefilter-test-shownegative' => 'Wijzigingen weergeven die niet aan het filter voldoen',
 	'abusefilter-test-syntaxerr' => 'Het filter dat u hebt ingevoerd bevat een syntaxisfout.
 Door op "{{int:abusefilter-edit-check}}" te klikken krijgt u een volledige toelichting.',
+	'abusefilter-test-badtitle' => 'De titel van de pagina die u hebt ingevoerd is ongeldig. Deze bevat een of meer tekens die niet kunnen worden gebruikt in titels.',
 	'abusefilter-changeslist-examine' => 'onderzoeken',
 	'abusefilter-examine' => 'Individuele wijzigingen onderzoeken',
 	'abusefilter-examine-intro' => 'Via deze pagina kunt u de door het filter aangemaakte variabelen voor een individuele wijziging onderzoeken, en deze testen tegen filters.',
