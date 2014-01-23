@@ -32023,7 +32023,6 @@ Copie da caixa de texto que aparece, coloque nesta caixa de texto e depois cliqu
  * @author Giro720
  * @author Hamilton Abreu
  * @author Helder.wiki
- * @author Heldergeovane
  * @author Luckas
  * @author Luckas Blade
  * @author MetalBrasil
