@@ -251,8 +251,7 @@ class AbuseFilterHistoryPager extends TablePager {
 	}
 
 	/**
-	 * Title used for self-links. Override this if you want to be able to
-	 * use a title other than $wgTitle
+	 * Title used for self-links.
 	 *
 	 * @return Title
 	 */
