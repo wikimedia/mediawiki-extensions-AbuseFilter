@@ -21006,6 +21006,8 @@ $messages['kk-cyrl'] = array(
 	'abuselog' => 'Қиянат жасау журналы',
 	'abusefilter-intro' => 'Қиянат жасауды сүзгілеу интерфейс басқармасына қош келдіңіз. Қиянат жасауды сүзгілеу барлық әрекеттерді автоматты түрде сүзгілейтін автоматтандырылған бағдарламалық жасақтама механизмі. Бұл интерфейс нақты сүзгілердің тізімін көретуде және оларды өзгеруге мүмкіндік береді.',
 	'abusefilter-blocker' => 'Қиянат жасауды сүзгілеу',
+	'abusefilter-blockreason' => 'Қиянаттауды сүзгілеу сүзгіші арқылы автоматты бұғатталды.
+Ережеге сәйкес сипаттамасы:$1',
 	'right-abusefilter-modify' => 'Сүзгішті өзгерту',
 	'right-abusefilter-view' => 'Сүзгішті қарау',
 	'right-abusefilter-log' => 'Қиянат жасау журналын қарау',
@@ -21013,6 +21015,7 @@ $messages['kk-cyrl'] = array(
 	'right-abusefilter-private' => 'Бұзақылық жасау журналынан жеке деректерін қарау',
 	'right-abusefilter-modify-restricted' => 'Қиянаттауды сүзгілеу сүзгішінен шектеу әрекеттерін өзгерту',
 	'right-abusefilter-revert' => 'Осы қиянаттауды сүзгілеу сүзгішіндегі барлық өзгертулерді қайтару',
+	'right-abusefilter-hide-log' => 'Қиянаттау журналынан енгізілімдерді жасыру',
 	'right-abusefilter-hidden-log' => 'Жасырылған бұзақылық жасау журнал жазбасынан қарау',
 	'right-abusefilter-modify-global' => 'Ғаламдық қиянаттауды сүзгілеу сүзгішін жасау немесе өзгерту',
 	'action-abusefilter-modify' => 'қиянаттауды сүзгілеу сүзгішін өзгерту',
@@ -21030,15 +21033,15 @@ $messages['kk-cyrl'] = array(
 	'abusefilter-log-search-title' => 'Атауы:',
 	'abusefilter-log-search-wiki' => 'Уики:',
 	'abusefilter-log-search-submit' => 'Іздеу',
-	'abusefilter-log-entry' => '$1: $2 қиянаттауды сүзгілеу сүзгісін шақырды, $4 бетіндегі орындалу әрекеті: "$3".
-Әрекет көрінісі: $5;
+	'abusefilter-log-entry' => '$1: $2 қиянаттауды сүзгілеу сүзгішін шақырды, $4 бетіндегі орындалу әрекеті: <<$3>>.
+Қолданылған шара: $5;
 Сүзгі сипаттамасы: $6',
-	'abusefilter-log-entry-withdiff' => '$1: $2 қиянаттауды сүзгілеу сүзгісін шақырды, $4 бетіндегі орындалу әрекеті: "$3".
-Әрекет көрінісі: $5;
-Сүзгі сипаттамасы: $6 \'\'\'($7)\'\'\'',
-	'abusefilter-log-detailedentry-meta' => '$1: $2 $3 сүзгісін шақырды, $5 бетіндегі орындалу әрекеті: "$4".
-Әрекет көрінісі: $6;
-Сүзгі сипаттамасы: $7 ($8)',
+	'abusefilter-log-entry-withdiff' => "$1: $2 қиянаттауды сүзгілеу сүзгісін шақырды, $4 бетіндегі орындалу әрекеті: <<$3>>.
+Қолданылған шара: $5;
+Сүзгі сипаттамасы: $6 '''($7)'''",
+	'abusefilter-log-detailedentry-meta' => '$1: $2 $3 сүзгішін шақырды, $5 бетіндегі орындалу әрекеті: <<$4>>.
+Қолданылған шара: $6;
+Сүзгіш сипаттамасы: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'ғаламдық сүзгіш $1',
 	'abusefilter-log-detailedentry-local' => 'сүзгіш: $1',
 	'abusefilter-log-detailslink' => 'егжей-тегжейі',
@@ -21065,8 +21068,8 @@ $messages['kk-cyrl'] = array(
 	'abusefilter-log-hide-forbidden' => 'Қиянаттау журнал енгізілімдерін жасыруға рұқсатыңыз жоқ.',
 	'abusefilter-logentry-suppress' => '"[[$1]]" дегенді жасыру',
 	'abusefilter-logentry-unsuppress' => '"[[$1]]" дегенді жасырмау',
-	'logentry-abusefilter-hit' => '$1 $4 сүзгісін шақырды, $3 бетіндегі орындалу әрекеті: "$5".
-Әрекет көрінісі: $6 ($7)',
+	'logentry-abusefilter-hit' => '$1 $4 сүзгісін шақырды, $3 бетіндегі орындалу әрекеті: <<$5>>.
+Қолданылған шара: $6 ($7)',
 	'abusefilter-management' => 'Қиянаттауды сүзгілеу сүзгіш басқармасы',
 	'abusefilter-list' => 'Барлық сүзгіштер',
 	'abusefilter-list-id' => 'Сүзгіш ID-і',
@@ -21107,6 +21110,7 @@ $messages['kk-cyrl'] = array(
 	'abusefilter-tools-reautoconfirm-submit' => 'Қайта өздікті құптау',
 	'abusefilter-reautoconfirm-notallowed' => 'Өздікті құптау статусыңызды қалпына келтіре алмайсыз.',
 	'abusefilter-reautoconfirm-done' => 'Тіркеліміңіздің өздікті құптау статусы қалпына келтірілді',
+	'abusefilter-status' => 'Соңғы $1 әрекеттің, $2 ($3) $4 жағдайы жоғарғы шегіне жеткен, оның $5 ($6) қазіргі белсендендірілген сүзгіштердің біріне сәйкес келген.',
 	'abusefilter-edit' => 'Қиянаттауды қақпайлау сүзгіші өңделуде',
 	'abusefilter-edit-subtitle' => '$1 сүзгіші өңделуде',
 	'abusefilter-edit-subtitle-new' => 'Сүзгішті жасау',
@@ -21125,14 +21129,22 @@ $messages['kk-cyrl'] = array(
 	'abusefilter-edit-rules' => 'Шарттары:',
 	'abusefilter-edit-notes' => 'Белгілері:',
 	'abusefilter-edit-lastmod' => 'Сүзгіш соңғы рет өзгертілді:',
-	'abusefilter-edit-lastmod-text' => '$1 — $5',
+	'abusefilter-edit-lastmod-text' => '$1 — $2',
 	'abusefilter-edit-hitcount' => 'Сүзгіш ұшырасуы:',
 	'abusefilter-edit-consequences' => 'Сәйкес келу кезінде қабылдау әрекеттері',
+	'abusefilter-edit-action-warn' => 'Қатысушыға ескерту жасау шарасын қолдану',
+	'abusefilter-edit-action-disallow' => 'Қатысушыға сұраным әрекетіне тыйым салу',
+	'abusefilter-edit-action-flag' => 'Қиянаттау журналында өңдемені белгілеу',
+	'abusefilter-edit-action-blockautopromote' => 'Қатысушылардың өздікті құпталған статусын алып тастау',
+	'abusefilter-edit-action-degroup' => 'Қатысушыны жеңілдік топтарынан алып тастау',
+	'abusefilter-edit-action-block' => 'Қатысушыны және/немесе IP мекен жайды өңдеуден бұғаттау',
+	'abusefilter-edit-action-tag' => 'Бұдан кейінгі тексерулер үшін өңдемені белгілеу',
+	'abusefilter-edit-throttle-count' => 'Рұқсат етілген әрекеттер саны:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|секунт|секунт}}',
 	'abusefilter-edit-warn-message' => 'Ескерту үшін жүйе хабарын қолдану:',
 	'abusefilter-edit-warn-other' => 'Басқа хабар',
 	'abusefilter-edit-warn-other-label' => "Басқа хабар бетінің аты:
-:''(МедиаУики префиксімен)''",
+:''(МедиаУики префиксінсіз)''",
 	'abusefilter-edit-warn-actions' => 'Әрекеттер:',
 	'abusefilter-edit-warn-preview' => 'Таңдалған хабарды қарап көру',
 	'abusefilter-edit-warn-edit' => 'Таңдалған хабарды бастау/өңдеу',
@@ -21150,6 +21162,18 @@ $messages['kk-cyrl'] = array(
 	'abusefilter-edit-export' => 'Бұл сүзгішті басқа уикиге экспорттау',
 	'abusefilter-edit-syntaxok' => 'Синтаксис қатесі табылмады.',
 	'abusefilter-edit-syntaxerr' => 'Синтаксис қатесі табылды: $1',
+	'abusefilter-edit-builder-op-arithmetic-addition' => 'Қосулар (+)',
+	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Азайтулар (-)',
+	'abusefilter-edit-builder-op-arithmetic-multiplication' => 'Көбейту (*)',
+	'abusefilter-edit-builder-op-arithmetic-divide' => 'Бөлу (/)',
+	'abusefilter-edit-builder-op-arithmetic-pow' => 'Қуат (**)',
+	'abusefilter-edit-builder-group-op-comparison' => 'Салыстыру амалдары',
+	'abusefilter-edit-builder-op-comparison-equal' => 'Теңелу (==)',
+	'abusefilter-edit-builder-op-comparison-notequal' => 'Теңеспеу (!=)',
+	'abusefilter-edit-builder-op-comparison-lt' => 'Аздау (<)',
+	'abusefilter-edit-builder-op-comparison-gt' => 'Үлкендеу (>)',
+	'abusefilter-edit-builder-op-comparison-lte' => 'Азырақ немесе тең (<=)',
+	'abusefilter-edit-builder-op-comparison-gte' => 'Үлкенірек немесе тең (>=)',
 	'abusefilter-edit-builder-op-bool-and' => 'Және (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Немесе (|)',
 	'abusefilter-edit-builder-group-misc' => 'Әртүрлі',
@@ -21217,6 +21241,7 @@ $messages['kk-cyrl'] = array(
 	'abusefilter-test-period-end' => 'Бұрын жасалған өзгерістер:',
 	'abusefilter-test-page' => 'Беттегі жасалған өзгерістер:',
 	'abusefilter-test-shownegative' => 'Сүзгіш есептемеген өзгерістерді көрсету',
+	'abusefilter-changeslist-examine' => 'тексеру',
 	'abusefilter-examine-legend' => 'Өзгерістерді таңдау',
 	'abusefilter-examine-diff' => 'URL айырм:',
 	'abusefilter-examine-user' => 'Қатысушы:',
@@ -41554,6 +41579,8 @@ $messages['uk'] = array(
 	'abusefilter-edit-builder-vars-old-text' => 'Старий вікітекст, перед редагуванням сторінки',
 	'abusefilter-edit-builder-vars-new-text' => 'Новий вікітекст, після редагування сторінки',
 	'abusefilter-edit-builder-vars-new-pst' => 'Нова сторінка вікітексту з попередньо збереженим перетворенням',
+	'abusefilter-edit-builder-vars-diff-pst' => 'Уніфікований diff змін у процесі редагування, перетворених перед збереженням',
+	'abusefilter-edit-builder-vars-addedlines-pst' => 'Рядки, додані при редагуванні, перетворені перед збереженням',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Новий текст сторінки, очищений від розмітки',
 	'abusefilter-edit-builder-vars-new-html' => 'Проаналізований HTML-код нової версії',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Рівень захисту сторінки від редагувань',
@@ -42385,6 +42412,7 @@ $messages['vep'] = array(
  * @author Baonguyen21022003
  * @author Minh Nguyen
  * @author Vinhtantran
+ * @author Withoutaname
  */
 $messages['vi'] = array(
 	'abusefilter-desc' => 'Áp dụng heuristic tự động vào các sửa đổi',
@@ -42792,7 +42820,7 @@ Lý do: $2',
 	'abusefilter-topnav-import' => 'Nhập bộ lọc',
 	'abusefilter-log-name' => 'Nhật trình bộ lọc sai phạm',
 	'abusefilter-log-header' => 'Nhật trình này tóm lại các thay đổi bộ lọc. Hãy xem các chi tiết đầy đủ trong danh sách các [[Special:AbuseFilter/history|thay đổi bộ lọc gần đây]].',
-	'abusefilter-log-entry-modify' => 'đã sửa đổi $1 ($2)',
+	'abusefilter-log-entry-modify' => 'sửa đổi $1 ($2)',
 	'abusefilter-log-noresults' => 'Không có kết quả',
 	'abusefilter-diff-title' => 'Khác biệt giữa các phiên bản',
 	'abusefilter-diff-item' => 'Khoản mục',
