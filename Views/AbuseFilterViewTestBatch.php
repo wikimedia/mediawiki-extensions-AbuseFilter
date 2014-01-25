@@ -43,7 +43,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			);
 		$output = Xml::tags( 'div', array( 'id' => 'mw-abusefilter-test-editor' ), $output );
 
- 		$output .= Xml::tags( 'p', null, Xml::checkLabel(
+		$output .= Xml::tags( 'p', null, Xml::checkLabel(
 				 $this->msg( 'abusefilter-test-shownegative' )->text(),
 				 'wpShowNegative', 'wpShowNegative', $this->mShowNegative )
 		 );
