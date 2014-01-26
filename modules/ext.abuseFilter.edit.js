@@ -210,7 +210,7 @@
 	function editWarnMessage() {
 		var message = getCurrentWarningMessage();
 
-		window.location = mw.config.get( 'wgScript' ) + '?title=MediaWiki:' +  mw.util.wikiUrlencode( message ) + '&action=edit';
+		window.location = mw.config.get( 'wgScript' ) + '?title=MediaWiki:' +  mw.util.wikiUrlencode( message ) + '&action=edit&preload=MediaWiki:abusefilter-warning';
 	}
 
 	/**
