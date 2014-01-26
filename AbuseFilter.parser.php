@@ -1344,6 +1344,7 @@ class AbuseFilterParser {
 				} elseif ( $tok == "null" ) {
 					$result = new AFPData();
 				} else {
+					wfProfileOut( __METHOD__ );
 					throw new AFPUserVisibleException(
 						'unrecognisedkeyword',
 						$this->mCur->pos,
@@ -1352,9 +1353,11 @@ class AbuseFilterParser {
 				}
 				break;
 			case AFPToken::TNone:
+				wfProfileOut( __METHOD__ );
 				return; // Handled at entry level
 			case AFPToken::TBrace:
 				if ( $this->mCur->value == ')' ) {
+					wfProfileOut( __METHOD__ );
 					return; // Handled at the entry level
 				}
 			case AFPToken::TSquareBracket:
