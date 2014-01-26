@@ -1678,6 +1678,7 @@ $messages['an'] = array(
  * @author Asaifm
  * @author Bassem JARKAS
  * @author Ciphers
+ * @author Claw eg
  * @author DRIHEM
  * @author Loya
  * @author Meno25
@@ -1753,6 +1754,9 @@ $messages['ar'] = array(
 	'abusefilter-log-entry' => '$1: $2 فعل مرشح إساءة، مؤديا الفعل "$3" في $4.
 الأفعال المتخذة: $5;
 وصف المرشح: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 فعل مرشح إساءة، مؤديا الفعل "$3" في $4.
+الأفعال المتخذة: $5؛
+وصف المرشح: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 أطلق $3، مؤديا الفعل "$4" في $5.
 الأفعال المتخذة: $6;
 وصف المرشح: $7 ($8)',
@@ -1849,8 +1853,7 @@ $messages['ar'] = array(
 	'abusefilter-edit-hidden' => 'إخفاء تفاصيل هذا المرشح من العرض العلني',
 	'abusefilter-edit-global' => 'مرشح عام',
 	'abusefilter-edit-rules' => 'الشروط:',
-	'abusefilter-edit-notes' => "ملاحظات:
-:''(سرية)",
+	'abusefilter-edit-notes' => 'ملاحظات:',
 	'abusefilter-edit-lastmod' => 'رشح المعدل آخرا',
 	'abusefilter-edit-lastmod-text' => '$1 بواسطة $2',
 	'abusefilter-edit-hitcount' => 'ضربات المُرشِّح:',
@@ -1877,10 +1880,10 @@ $messages['ar'] = array(
 	'abusefilter-edit-warn-preview' => 'أظهر العرض المسبق للرسالة المختارة',
 	'abusefilter-edit-warn-edit' => 'أنشيء/عدل الرسالة المختارة',
 	'abusefilter-edit-tag-tag' => 'الوسوم للتنفيذ (واحد لكل سطر):',
-	'abusefilter-edit-denied' => 'أنت لا يمكنك رؤية تفاصيل هذا المرشح، لأنه مخفي من العرض العلني', # Fuzzy
+	'abusefilter-edit-denied' => 'قد لا يمكنك رؤية تفاصيل هذا المرشح، لأنه مخفي من العرض العلني.',
 	'abusefilter-edit-main' => 'مُحدّدات المُرشِّح',
 	'abusefilter-edit-done-subtitle' => 'تم تعديل المُرشِّح',
-	'abusefilter-edit-done' => 'أنت حفظت بنجاح تغييراتك للمرشح $1.', # Fuzzy
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|تغييراتك]] إلى [[Special:AbuseFilter/$1|filter $1]] قد حفظت.',
 	'abusefilter-edit-badsyntax' => 'هناك خطأ صياغة في المرشح الذي حددته. الخرج من المحلل كان: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'أنت لا يمكنك تعديل هذا المرشح، لأنه يحتوي على واحد أو أكثر من الأفعال المحظورة.
 من فضلك سل مستخدما ذا سماح إضافة الأفعال المحظورة ليفعل التغيير لك.',
@@ -1898,6 +1901,7 @@ $messages['ar'] = array(
 يجب أن تكون الوسوم قصيرة وألا تحتوي على أحرف خاصة.',
 	'abusefilter-edit-notallowed' => 'لا يسمح لك بإنشاء أو تعديل مرشحات الإساءة',
 	'abusefilter-edit-notallowed-global' => 'لا يسمح لك بإنشاء أو تعديل مرشحات الإساءة الشاملة',
+	'abusefilter-edit-notallowed-global-custom-msg' => 'رسائل تحذير مخصصة غير معتمدة للمرشحات العالمية',
 	'abusefilter-edit-builder-select' => 'اختر خيارا لإضافته عند البكرة',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'معاملات حسابية',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'جمع (+)',
@@ -2069,6 +2073,7 @@ $messages['ar'] = array(
 	'abusefilter-test-shownegative' => 'اعرض التغييرات التي لا تطابق المرشح',
 	'abusefilter-test-syntaxerr' => 'المرشح الذي أدخلته يحتوي على خطأ صياغة.
 يمكنك تلقي تفسير كامل بواسطة الضغط على زر "التحقق من الصياغة".', # Fuzzy
+	'abusefilter-test-badtitle' => 'عنوان الصفحة الذي أدخلته غير صالح. قد يحتوي على حرف أو أكثر لا يمكن استخدامه في العناوين.',
 	'abusefilter-changeslist-examine' => 'افحص',
 	'abusefilter-examine' => 'افحص التغييرات الفردية',
 	'abusefilter-examine-intro' => 'هذه الصفحة تسمح لك بفحص المتغيرات المولدة بواسطة مرشح الإساءة لتغيير فردي، واختبارها ضد المرشحات.',
@@ -11159,6 +11164,7 @@ Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku 
  * @author Baiji
  * @author Benfutbol10
  * @author BicScope
+ * @author Carlitosag
  * @author Ciencia Al Poder
  * @author Crazymadlover
  * @author Dalton2
@@ -11250,6 +11256,9 @@ Descripción de la regla disparada: $1',
 	'abusefilter-log-entry' => '$1: $2 disparó un filtro de edición realizando la acción "$3" en $4.
 Acciones tomadas: $5;
 Descripción del filtro: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 disparó un filtro por abuso, realizando la acción "$3" en $4.
+Acciones tomadas: $5;
+Descripción del filtro: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 disparó $3 realizando la acción "$4" en $5.
 Acciones tomadas: $6;
 Descripción del filtro: $7 ($8)',
@@ -11480,6 +11489,8 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-edit-builder-vars-old-text' => 'Antiguo wikitexto de la página, antes de la edición',
 	'abusefilter-edit-builder-vars-new-text' => 'Nuevo wikitexto de la página, después de la edición',
 	'abusefilter-edit-builder-vars-new-pst' => 'Nuevo wikitexto de la página, aplicando transformaciones pre-guardado',
+	'abusefilter-edit-builder-vars-diff-pst' => 'Unificado diff de cambios por edición, pre-guardado transformado',
+	'abusefilter-edit-builder-vars-addedlines-pst' => 'Líneas guardadas en edición, guarda previa de transformado.',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nuevo texto de página, libre de cualquier elemento de marcado',
 	'abusefilter-edit-builder-vars-new-html' => 'Fuente HTML analizada de la nueva revisión',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Nivel de protección para la edición de la página',
@@ -11566,6 +11577,7 @@ Para cargar un filtro existente, escribe el ID del filtro dentro de la tabla deb
 	'abusefilter-test-shownegative' => 'Mostrar cambios que no coincidan con el filtro',
 	'abusefilter-test-syntaxerr' => 'El filtro que has ingresado contiene un error de sintaxis.
 Puedes recibir una explicación completa haciendo clic en el botón "{{int:abusefilter-edit-check}}".',
+	'abusefilter-test-badtitle' => 'El título de página introducido no era válido. Puede contener uno o más caracteres que no se pueden utilizar en títulos.',
 	'abusefilter-changeslist-examine' => 'examinar',
 	'abusefilter-examine' => 'Examinar cambios individuales',
 	'abusefilter-examine-intro' => 'Esta página te permite examinar las variables generadas por el filtro de abuso para un cambio individual, y probarlas contra los filtros.',
@@ -21632,7 +21644,7 @@ $messages['ko'] = array(
 	'abusefilter-log-details-legend' => '기록 $1에 대한 자세한 정보',
 	'abusefilter-log-details-var' => '변수',
 	'abusefilter-log-details-val' => '값',
-	'abusefilter-log-details-vars' => '행위 변수',
+	'abusefilter-log-details-vars' => '명령 변수',
 	'abusefilter-log-details-private' => '비공개 정보',
 	'abusefilter-log-details-ip' => '사용자의 IP 주소',
 	'abusefilter-log-noactions' => '없음',
@@ -21720,7 +21732,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-rules' => '필터 규칙:',
 	'abusefilter-edit-notes' => '참고:',
 	'abusefilter-edit-lastmod' => '필터가 마지막으로 수정된 시각',
-	'abusefilter-edit-lastmod-text' => '$2(이)가 $1에 바꿈',
+	'abusefilter-edit-lastmod-text' => '$2 사용자가 $1에 바꿈',
 	'abusefilter-edit-hitcount' => '필터 적발 건수:',
 	'abusefilter-edit-consequences' => '필터와 일치할 때 취할 조치',
 	'abusefilter-edit-action-warn' => '사용자에게 경고하고 이 행위를 중지',
@@ -21818,7 +21830,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-builder-funcs-set_var' => '변수 설정 (set_var)',
 	'abusefilter-edit-builder-group-vars' => '변수',
 	'abusefilter-edit-builder-vars-accountname' => '계정 이름 (계정 만들 때)',
-	'abusefilter-edit-builder-vars-timestamp' => '바뀐 시점의 유닉스 타임스탬프',
+	'abusefilter-edit-builder-vars-timestamp' => '바뀐 시점의 유닉스 시간 기록',
 	'abusefilter-edit-builder-vars-action' => '행위',
 	'abusefilter-edit-builder-vars-addedlines' => '편집 중 추가된 줄',
 	'abusefilter-edit-builder-vars-delta' => '편집에서의 문서 크기 변화',
@@ -21919,7 +21931,7 @@ $messages['ko'] = array(
 	'abusefilter-revert-search-legend' => '부정 행위 방지 필터의 동작 중 되돌릴 동작 선택하기',
 	'abusefilter-revert-periodstart' => '시작 시간:',
 	'abusefilter-revert-periodend' => '마지막 시간:',
-	'abusefilter-revert-search' => '동작 선택하기',
+	'abusefilter-revert-search' => '명령 선택하기',
 	'abusefilter-revert-filter' => '필터:',
 	'abusefilter-revert-preview-intro' => '다음은 이 동작을 통해 복구될 부정 행위 방지 필터의 동작의 목록입니다.
 주의를 기울여 검토한 후에 "{{int:abusefilter-revert-confirm}}" 버튼을 클릭하십시오.',
@@ -21944,7 +21956,7 @@ $messages['ko'] = array(
 "{{int:abusefilter-edit-check}}" 버튼을 누르면 자세한 설명을 받을 수 있습니다.',
 	'abusefilter-test-badtitle' => '입력하신 문서 제목이 잘못되었습니다. 제목에 사용할 수 없는 하나 이상의 문자를 포함하고 있을 수 있습니다.',
 	'abusefilter-changeslist-examine' => '검사',
-	'abusefilter-examine' => '특정 편집을 검토',
+	'abusefilter-examine' => '특정 편집을 검사',
 	'abusefilter-examine-intro' => '이 문서에서 각각의 편집에 대해 부정 행위 방지 필터가 생성한 변수를 검사하고 필터에 대해 시험해볼 수 있습니다.',
 	'abusefilter-examine-legend' => '편집 선택하기',
 	'abusefilter-examine-diff' => '차이 URL:',
@@ -35185,7 +35197,10 @@ Opis filtera: $7 ($8)',
 	'abusefilter-log-linkoncontribs-text' => 'Izveštaj zloupotrebe ovog korisnika',
 	'abusefilter-logentry-suppress' => 'sakrij „[[$1]]“',
 	'abusefilter-logentry-unsuppress' => 'prikaži „[[$1]]“',
+	'abusefilter-list' => 'Svi filteri',
 	'abusefilter-hidden' => 'Privatno',
+	'abusefilter-unhidden' => 'Javno',
+	'abusefilter-disabled' => 'Onemogućeno',
 	'abusefilter-return' => 'Nazad na upravljanje filterima',
 	'abusefilter-list-options-submit' => 'Ažuriraj',
 	'abusefilter-tools-text' => 'Ovde se nalaze alatke koje su korisne za ispravljanje grešaka na filteru protiv zloupotrebe.',
@@ -35197,7 +35212,12 @@ Opis filtera: $7 ($8)',
 	'abusefilter-reautoconfirm-none' => 'Samopotvrđeni status ovog korisnika nikada nije bio ukinut.',
 	'abusefilter-reautoconfirm-notallowed' => 'Nije vam dozvoljeno da vratite samopotvrđeni status.',
 	'abusefilter-edit' => 'Uređivanje filtera zloupotrebe',
+	'abusefilter-edit-action-disallow' => 'Spreči korisnika da izvrši dotičnu akciju',
+	'abusefilter-edit-action-flag' => 'Označi izmenu u izveštaju zloupotrebe',
+	'abusefilter-edit-action-blockautopromote' => 'Vrati samopotvrđeni status korisnika',
+	'abusefilter-edit-action-degroup' => 'Ukloni korisnika iz svih korisničkih grupa',
 	'abusefilter-edit-action-block' => 'Blokiraj izmene korisnika i/ili IP adrese',
+	'abusefilter-edit-action-rangeblock' => 'Blokiraj /16 opseg IP adresa korisnika',
 	'abusefilter-history' => 'Historija izmjena filtera #$1',
 	'abusefilter-history-foruser' => 'Izmene od $1',
 	'abusefilter-history-hidden' => 'Sakriveno',
@@ -35217,6 +35237,7 @@ Opis filtera: $7 ($8)',
 	'abusefilter-history-select-user' => 'Korisnik:',
 	'abusefilter-history-select-submit' => 'Pročisti',
 	'abusefilter-history-diff' => 'Izmjene',
+	'abusefilter-history-error-hidden' => 'Traženi filter je sakriven, i zato ne možete da vidite njegovu istoriju.',
 	'abusefilter-action-blockautopromote' => 'Blokiraj samounapređivanje',
 	'abusefilter-action-block' => 'Blokiraj',
 	'abusefilter-action-degroup' => 'Ukloni iz grupa',
@@ -40542,8 +40563,7 @@ Eylemlerin %$1'inden fazla eşleşme sınırına erişti.",
 	'abusefilter-edit-hidden' => 'Bu süzgecin ayrıntılarını genel görünümden gizle',
 	'abusefilter-edit-global' => 'Küresel filtre',
 	'abusefilter-edit-rules' => 'Şartlar:',
-	'abusefilter-edit-notes' => "Notlar:
-:''(özel)''", # Fuzzy
+	'abusefilter-edit-notes' => 'Notlar:',
 	'abusefilter-edit-lastmod' => 'Süzgeci son değiştiren:',
 	'abusefilter-edit-lastmod-text' => '$1 tarihinde $2 tarafından',
 	'abusefilter-edit-hitcount' => 'Filtre hitleri:',
