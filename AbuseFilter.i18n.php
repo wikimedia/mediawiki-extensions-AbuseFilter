@@ -8037,6 +8037,8 @@ Značky by měly být krátké a nesmí obsahovat žádné zvláštní znaky.',
 	'abusefilter-edit-builder-vars-old-text' => 'Původní zdrojový text stránky před editací',
 	'abusefilter-edit-builder-vars-new-text' => 'Nový zdrojový text stránky po editaci',
 	'abusefilter-edit-builder-vars-new-pst' => 'Wikitext nové stránky po transformaci před uložením',
+	'abusefilter-edit-builder-vars-diff-pst' => 'Unifikovaný diff změn způsobených editací, po transformaci před uložením',
+	'abusefilter-edit-builder-vars-addedlines-pst' => 'Řádky přidané při editaci, po transformaci před uložením',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nový text stránky zbavený formátování',
 	'abusefilter-edit-builder-vars-new-html' => 'Vygenerovaný HTML kód nové verze',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Úroveň zamčení stránky pro editaci',
@@ -11187,6 +11189,7 @@ Kopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku 
  * @author Remember the dot
  * @author Sanbec
  * @author Savh
+ * @author Sethladan
  * @author TheBITLINK
  * @author Tifinaghes
  * @author Translationista
@@ -11489,8 +11492,8 @@ Las etiquetas deberían ser cortas, y no deberían contener caracteres especiale
 	'abusefilter-edit-builder-vars-old-text' => 'Antiguo wikitexto de la página, antes de la edición',
 	'abusefilter-edit-builder-vars-new-text' => 'Nuevo wikitexto de la página, después de la edición',
 	'abusefilter-edit-builder-vars-new-pst' => 'Nuevo wikitexto de la página, aplicando transformaciones pre-guardado',
-	'abusefilter-edit-builder-vars-diff-pst' => 'Unificado diff de cambios por edición, pre-guardado transformado',
-	'abusefilter-edit-builder-vars-addedlines-pst' => 'Líneas guardadas en edición, guarda previa de transformado.',
+	'abusefilter-edit-builder-vars-diff-pst' => 'Diff unificado de cambios por edición, pre-guardado transformado',
+	'abusefilter-edit-builder-vars-addedlines-pst' => 'Líneas añadidas en la edición, la edición pre-guardada fue transformada.',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nuevo texto de página, libre de cualquier elemento de marcado',
 	'abusefilter-edit-builder-vars-new-html' => 'Fuente HTML analizada de la nueva revisión',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Nivel de protección para la edición de la página',
@@ -12714,11 +12717,11 @@ Lyhyt kuvaus säännöstä, jota sovellettiin: $1",
 	'abusefilter-disallowed' => 'Tämä toiminto on automaattisesti tunnistettu haitalliseksi ja tästä syystä sen suorittamista ei ole sallittu.
 Jos olet sitä mieltä, että toimenpiteesi on asiallinen, ota yhteyttä ylläpitäjään ja kerro, mitä yritit tehdä.
 Laukaisemasi väärinkäyttösuodattimen säännön lyhyt kuvaus on: $1',
-	'abusefilter-blocked-display' => 'Muokkauksesi on automaattisesti tunnistettu haitalliseksi
+	'abusefilter-blocked-display' => 'Muokkauksesi on automaattisesti tunnistettu haitalliseksi,
 ja sen suorittaminen on estetty.
 {{GRAMMAR:genitive|{{SITENAME}}}} suojelemiseksi muokkaaminen on estetty tunnukseltasi ja kaikilta siihen liittyviltä IP-osoitteilta.
 Ota yhteyttä ylläpitäjään mikäli on tapahtunut virhe.
-Syy: $1',
+Väärinkäytön estämisen sääntölauseen lyhyt kuvausteksti on: $1',
 	'abusefilter-degrouped' => 'Tämä toimenpide on automaattisesti tunnistettu haitalliseksi.
 Siitä johtuen sitä ei ole sallittu, ja koska käyttäjätilisi on epäilty olevan murrettu, sen kaikki oikeudet on peruttu.
 Mikäli tämä on ollut mielestäsi erehdys, ota yhteyttä byrokraattiin ja esitä perustelusi tälle toimenpiteelle, niin oikeutesi saatetaan palauttaa.
@@ -12763,6 +12766,9 @@ Säännön kuvaus: $1',
 	'abusefilter-log-entry' => '$1: $2 laukaisi väärinkäyttösuodattimen käyttäessään toimintoa ”$3” kohteessa $4.
 Toimenpiteet: $5;
 Suodattimen kuvaus: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 laukaisi väärinkäyttösuodattimen käyttäessään toimintoa ”$3” kohteessa $4.
+Toimenpiteet: $5;
+Suodattimen kuvaus: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 laukaisi suodattimen $3 käyttäessään toimintoa ”$4” kohteessa $5.
 Toimenpiteet: $6;
 Suodattimen kuvaus: $7 ($8)',
@@ -12992,6 +12998,9 @@ Merkkausten tulisi olla lyhyitä ja ilman erikoismerkkejä.',
 	'abusefilter-edit-builder-vars-removed-links' => 'Kaikki muokkauksessa poistetut ulkoiset linkit',
 	'abusefilter-edit-builder-vars-old-text' => 'Sivun vanha wikiteksti, ennen muokkausta',
 	'abusefilter-edit-builder-vars-new-text' => 'Sivun uusi wikiteksti, muokkauksen jälkeen',
+	'abusefilter-edit-builder-vars-new-pst' => 'Uuden sivun wikiteksti, "pre-save transformed"',
+	'abusefilter-edit-builder-vars-diff-pst' => 'Yhdistetty eroavaisuus (diffi) muutoksista, jotka on tehty muokkauksessa, "pre-save transformed"',
+	'abusefilter-edit-builder-vars-addedlines-pst' => 'Muokkauksessa lisätyt rivit, "pre-save transformed"',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Sivun uusin tekstimuoto, riisuttuna kaikista koodimerkinnöistä',
 	'abusefilter-edit-builder-vars-new-html' => 'Jäsennetty uuden version HTML-lähdekoodi',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Muuta sivun suojausta',
@@ -13041,7 +13050,7 @@ Odotettu $3 {{PLURAL:$3|argumenttia|argumenttia}}, saatu $4.',
 	'abusefilter-exception-outofbounds' => 'Pyydetty olematonta listaelementtiä $2 (listan koko on $3) merkissä $1.',
 	'abusefilter-exception-notlist' => 'Pyydetty taulukkoelementtiä ei-taulukolta merkissä $1.',
 	'abusefilter-action-tag' => 'Merkkaa',
-	'abusefilter-action-throttle' => 'Rajoita muokkausmäärää',
+	'abusefilter-action-throttle' => 'Rajoita',
 	'abusefilter-action-warn' => 'Varoita',
 	'abusefilter-action-blockautopromote' => 'Estä autopromote',
 	'abusefilter-action-block' => 'Aseta muokkausesto',
@@ -14601,7 +14610,7 @@ Para cargar un filtro existente, escriba o seu ID na caixa que está por baixo d
 	'abusefilter-test-shownegative' => 'Mostrar os cambios que non coincidan co filtro',
 	'abusefilter-test-syntaxerr' => 'O filtro que introduciu contiña un erro na súa sintaxe.
 Pode obter unha explicación completa premendo no botón "{{int:abusefilter-edit-check}}".',
-	'abusefilter-test-badtitle' => 'O título de páxina que tecleou é inválido. Pode ser que conteña un ou máis caracteres que non se poden usar nos títulos.',
+	'abusefilter-test-badtitle' => 'O título de páxina que inseriu non é válido. Se cadra, contén un ou máis caracteres que non se poden usar nos títulos.',
 	'abusefilter-changeslist-examine' => 'examinar',
 	'abusefilter-examine' => 'Examinar os cambios individuais',
 	'abusefilter-examine-intro' => 'Esta páxina permítelle examinar as variables xeradas polo filtro de abusos dos cambios dun individuo e probalos con outros filtros.',
@@ -15982,7 +15991,7 @@ $messages['hi'] = array(
 	'abusefilter-edit-global' => 'वैश्विक फ़िल्टर',
 	'abusefilter-edit-rules' => 'शर्तें:',
 	'abusefilter-edit-notes' => "नोट्स:
-''(निजी)''",
+''(निजी)''", # Fuzzy
 	'abusefilter-edit-lastmod' => 'फ़िल्टर का अंतिम संशोधन:',
 	'abusefilter-edit-lastmod-text' => '$2 द्वारा $1 को',
 	'abusefilter-edit-hitcount' => 'फ़िल्टर हिट गिनती:',
@@ -28194,7 +28203,7 @@ $messages['ne'] = array(
 	'abusefilter-disabled' => 'निरस्त',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|हिट|हिटहरु}}',
 	'abusefilter-new' => 'नयाँ फिल्टर बनाउने',
-	'abusefilter-status-global' => 'वैश्विक',
+	'abusefilter-status-global' => 'विश्वव्यापी',
 	'abusefilter-list-options' => 'विकल्पहरु',
 	'abusefilter-list-options-deleted' => 'मेटाइएका फिल्टहरु:',
 	'abusefilter-list-options-deleted-only' => 'मेटाइएका फिल्टहरु मात्र देखाउनुहोस्',
@@ -28283,7 +28292,7 @@ $messages['ne'] = array(
 	'abusefilter-history-foruser' => '$1द्वारा परिवर्तन',
 	'abusefilter-history-hidden' => 'लुकेको',
 	'abusefilter-history-enabled' => 'सक्रिय',
-	'abusefilter-history-global' => 'वैश्विक',
+	'abusefilter-history-global' => 'विश्वव्यापी',
 	'abusefilter-history-timestamp' => 'समय',
 	'abusefilter-history-user' => 'प्रयोगकर्ता',
 	'abusefilter-history-public' => 'सार्वजनिक फिल्टर विवरण',
@@ -33402,7 +33411,7 @@ Le tag honne da esse curte, e non g'onne a condenè carattere speciale.",
 	'abusefilter-edit-builder-vars-new-html' => "Analise d'a sorgende HTML d'a revisiune nuève",
 	'abusefilter-edit-builder-vars-restrictions-edit' => "Cange 'u levelle de protezione d'a pagene",
 	'abusefilter-edit-builder-vars-restrictions-move' => "Spuèste 'u levelle de protezione d'a pagene",
-	'abusefilter-edit-builder-vars-restrictions-create' => "Ccreje 'a protezione de sta pàgene", # Fuzzy
+	'abusefilter-edit-builder-vars-restrictions-create' => "Ccreje 'a protezione d'a pàgene",
 	'abusefilter-edit-builder-vars-restrictions-upload' => "Careche 'a protezzione d'u file",
 	'abusefilter-edit-builder-vars-old-text-stripped' => "Teste d'a pagene vècchie, cu ogne markup luàte",
 	'abusefilter-edit-builder-vars-old-links' => "Cullegaminde jndr'à pagene, prime de le cangiaminde",
@@ -33464,8 +33473,8 @@ Aziune ca honne da essere reconvertite: $5 ($6)",
 	'abusefilter-revert-periodend' => "Fine d'u periode:",
 	'abusefilter-revert-search' => "Scacchie l'aziune",
 	'abusefilter-revert-filter' => 'Filtre:',
-	'abusefilter-revert-preview-intro' => "Aqquà d'abbasce ce stonne elengate le aziune combiute da 'u filtre de le abbuse ca honne da essere repristenate da quèste aziune.
-Se preghe de verifecà attentamènde, e de cazzà \"conferme\" pè confermà 'a selezione.", # Fuzzy
+	'abusefilter-revert-preview-intro' => 'Aqquà abbasce stonne elengate le aziune combiute da \'u filtre de le abbuse ca onna essere repristenate da sta azione.
+Pe piacere verifiche attentamènde, e cazze "{{int:abusefilter-revert-confirm}}" pe confermà \'a selezione.',
 	'abusefilter-revert-confirm' => 'Conferme',
 	'abusefilter-revert-success' => " Tu hé repristenate totte le aziune combiute da 'u filtre de le abbuse a cause d'u [[Special:AbuseFilter/$1|filtre $1]].",
 	'abusefilter-revert-reason' => "Repristene automateche de totte le aziune combiute da 'u filtre de le abbuse a cause d'u filtre $1.
@@ -35238,6 +35247,7 @@ Opis filtera: $7 ($8)',
 	'abusefilter-history-select-submit' => 'Pročisti',
 	'abusefilter-history-diff' => 'Izmjene',
 	'abusefilter-history-error-hidden' => 'Traženi filter je sakriven, i zato ne možete da vidite njegovu istoriju.',
+	'abusefilter-action-tag' => 'Tag',
 	'abusefilter-action-blockautopromote' => 'Blokiraj samounapređivanje',
 	'abusefilter-action-block' => 'Blokiraj',
 	'abusefilter-action-degroup' => 'Ukloni iz grupa',
@@ -43119,6 +43129,8 @@ $messages['yi'] = array(
 	'abusefilter-log-hidden' => '(איינהייט באהאלטן)',
 	'abusefilter-log-hidden-implicit' => '(באהאלטן ווייל ווערסיע איז געווארן אויסגעמעקט)',
 	'abusefilter-log-cannot-see-details' => 'איר האט נישט ערלויבניש צו זען פרטים פון דעם ווערט.',
+	'abusefilter-log-hide-legend' => 'באהאלטן לאגבוך איינגאב',
+	'abusefilter-log-hide-id' => 'לאגבוך איינגאב ID:',
 	'abusefilter-log-hide-reason' => 'אורזאַך:',
 	'abusefilter-logentry-suppress' => 'האט פארבארגן "[[$1]]"',
 	'abusefilter-logentry-unsuppress' => 'האט געוויזן "[[$1]]"',
@@ -44094,6 +44106,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-builder-vars-old-text' => '编辑前的旧页面，wiki代码格式',
 	'abusefilter-edit-builder-vars-new-text' => '编辑后的新页面，wiki代码格式',
 	'abusefilter-edit-builder-vars-new-pst' => '新页面维基语言，预保存转换',
+	'abusefilter-edit-builder-vars-addedlines-pst' => '编辑中加入了行，并在保存前转换',
 	'abusefilter-edit-builder-vars-new-text-stripped' => '编辑后的新页面，去除所有标记',
 	'abusefilter-edit-builder-vars-new-html' => '编辑后的新页面，已解析为HTML源码',
 	'abusefilter-edit-builder-vars-restrictions-edit' => '页面的编辑保护级别',
