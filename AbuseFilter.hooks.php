@@ -487,6 +487,19 @@ class AbuseFilterHooks {
 				$updater->addExtensionUpdate( array( 'addIndex', 'abuse_filter_log', 'afl_wiki_timestamp', "$dir/db_patches/patch-global_logging_wiki-index.sqlite.sql", true ) );
 			}
 
+			if ( $updater->getDB()->getType() == 'mysql' ) {
+				$updater->addExtensionUpdate( array( 'modifyField', 'abuse_filter_log', 'afl_namespace', "$dir/db_patches/patch-afl-namespace_int.sql", true ) );
+			} else {
+				//$updater->addExtensionUpdate( array( 'modifyField', 'abuse_filter_log', 'afl_namespace', "$dir/db_patches/patch-afl-namespace_int.sqlite.sql", true ) );
+				/*
+				TODO: modify a column in sqlite, which do not support such things
+				create backup, drop, create with new schema, copy, drop backup
+
+				or simply see https://www.mediawiki.org/wiki/Manual:SQLite#About_SQLite :
+				Several extensions are known to have database update or installation issues with SQLite: AbuseFilter, ...
+				*/
+			}
+
 		} elseif ( $updater->getDB()->getType() == 'postgres' ) {
 			$updater->addExtensionUpdate( array( 'addTable', 'abuse_filter', "$dir/abusefilter.tables.pg.sql", true ) );
 			$updater->addExtensionUpdate( array( 'addTable', 'abuse_filter_history', "$dir/db_patches/patch-abuse_filter_history.pg.sql", true ) );
@@ -498,6 +511,7 @@ class AbuseFilterHooks {
 			$updater->addExtensionUpdate( array( 'changeField', 'abuse_filter_log', 'afl_filter', 'TEXT', '' ) );
 			$updater->addExtensionUpdate( array( 'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_ip', "(afl_ip)" ) );
 			$updater->addExtensionUpdate( array( 'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_wiki', "(afl_wiki)" ) );
+			$updater->addExtensionUpdate( array( 'changeField', 'abuse_filter_log', 'afl_namespace', "INTEGER" ) );
 		}
 
 		$updater->addExtensionUpdate( array( array( __CLASS__, 'createAbuseFilterUser' ) ) );
