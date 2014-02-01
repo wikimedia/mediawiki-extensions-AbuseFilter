@@ -3086,6 +3086,8 @@ Les etiquetes tendríen de ser curties y nun contener caráuteres especiales.",
 	'abusefilter-edit-builder-vars-old-text' => 'Testu wiki vieyu de la páxina, antes de la edición',
 	'abusefilter-edit-builder-vars-new-text' => 'Testu wiki nuevu de la páxina, dempués de la edición',
 	'abusefilter-edit-builder-vars-new-pst' => 'Nuevu testu wiki de la páxina, tresformáu por pre-guardar',
+	'abusefilter-edit-builder-vars-diff-pst' => 'Diff unificáu de los cambios fechos por edición, tresformaos por pre-guardáu',
+	'abusefilter-edit-builder-vars-addedlines-pst' => 'Llinies amestaes na edición, tresformaes por pre-guardáu',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Testu nuevu de la páxina, ensin dengún formatu',
 	'abusefilter-edit-builder-vars-new-html' => 'Fonte HTML analizada de la nueva revisión',
 	'abusefilter-edit-builder-vars-restrictions-edit' => "Nivel de protección d'edición de la páxina",
@@ -7201,19 +7203,19 @@ $messages['ce'] = array(
 	'abusefilter-desc' => 'Нисдарийн тӀе литтарш тоха йиш хуьлуьйту.',
 	'abusefilter' => 'Зулам литтар нисдар',
 	'abuselog' => 'Зуламаш долу тéптар',
-	'abusefilter-intro' => 'Марша догlийла, зулам литтаран Урхаллийн агlон тlе.
-Зулам литтар, декъашхоша деш долу, зуламан дуьхьала, шаьшха болх бо гlирс бу.
-Кхузахь балийна, массо а, литтарийн могlам, хийца аьтто а болуш.',
+	'abusefilter-intro' => 'Марша догӀийла, зулам литтаран Урхаллин агӀон тӀе.
+Зулам литтар, декъашхоша деш долу, зуламан дуьхьала, шаьшха болх бо гӀирс бу.
+Кхузахь балийна, массо а, литтарийн могӀам, хийца аьтто а болуш.',
 	'abusefilter-mustbeeditor' => 'Кхерамазаллийн lалашонца, зулам литтар хийца йиш йолу декъашхойн бен, бакъо яц хlара юкъардакъа лело.',
-	'abusefilter-warning' => "'''Тидаме'''. Хlара динарг, шаьшха къастийна ца оьшуш санна.
-Хlоттам боцу нийсдарш хира ду, сиха дlа даьхна,
-морса йа, дуккха хlоттам боцу нийсдарш дича, хьан дlавазвалар ле IP-долу меттиг сацор ду.
-Хьо тешна валахь, хlара нийсдара хlоттам болуш хиларна, юхаъ «Дlайахьийта» тlе таlа йе.
-Аш дечуьнца догlуш хилар бакъонца билгалла даьккхина: $1", # Fuzzy
-	'abusefilter-disallowed' => 'Хlара динарг, шаьшха зуламе санна къастийна,
+	'abusefilter-warning' => "''Тидаме'''. ХӀара динарг, шаьшха къастийна ца оьшуш санна.
+ХӀоттам боцу нийсдарш хира ду, сиха дӀадаьхна,
+морса йа, дуккха хӀоттам боцу нийсдарш дича, хьан декъашхочун дӀаяздар ле IP-адресна блоктухур ю.
+Хьо тешна валахь, хӀара нийсдара хӀоттам болуш хиларна, юхаъ «ДӀайахьийта» тӀе таӀа йе.
+Аш дечуьнца догӀуш хилар бакъонца билгалла даьккхина: $1",
+	'abusefilter-disallowed' => 'ХӀара динарг, шаьшха зуламе санна къастийна,
 цун дера ца магийна.
-Нагахь, хьо тешна валахь, хlара нийсдар хlоттам болуш хиларна, дехар до, адаманкуьйгалхочуьнга дийцар, хьо дан воллург.
-Зуламах лаьцна хаам, аш дечуьнца догlуш хилар билгалла даьккхина: $1', # Fuzzy
+Нагахь, шу тешна делахь, хӀара нийсдар хӀоттам болуш хиларна, дехар до, куьйгалхочуьнга дийцар, шу дан гӀертарг.
+Зуламах лаьцна хаам, аш дечуьнца догӀуш хилар билгалла даьккхина: $1',
 	'abusefilter-blocker' => 'Зулум литтар',
 	'abusefilter-blockreason' => 'Зулам литтаро автоматически блоктоьхна. Цунах лаьцна: $1',
 	'abusefilter-accountreserved' => 'ХӀара декъашхочун дӀаяздар билгал дина зулам литтаро лела да.',
@@ -7743,6 +7745,7 @@ $messages['co'] = array(
  * @author Matěj Grabovský
  * @author Michaelbrabec
  * @author Mormegil
+ * @author Paxt
  * @author Tchoř
  * @author Vks
  */
@@ -7808,7 +7811,7 @@ Popis pravidla: $1',
 	'abusefilter-log-search-submit' => 'Hledat',
 	'abusefilter-log-entry' => '$1: $2 {{GENDER:$2|spustil|spustila|spustil}} filtr zneužívání při činnosti „$3“ na $4.
 Provedená opatření: $5; popis filtru: $6',
-	'abusefilter-log-entry-withdiff' => '$1: $2 {{GENDER:$2|spustil|spustila}} filtr zneužití při činnosti „$3“ na $4.
+	'abusefilter-log-entry-withdiff' => '$1: $2 {{GENDER:$2|spustil|spustila}} filtr zneužití při činnosti "$3" na $4.
 Provedená opatření: $5;
 popis filtru: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 {{GENDER:$2|spustil|spustila|spustil}} $3 při činnosti „$4“ na $5.
@@ -8037,7 +8040,7 @@ Značky by měly být krátké a nesmí obsahovat žádné zvláštní znaky.',
 	'abusefilter-edit-builder-vars-old-text' => 'Původní zdrojový text stránky před editací',
 	'abusefilter-edit-builder-vars-new-text' => 'Nový zdrojový text stránky po editaci',
 	'abusefilter-edit-builder-vars-new-pst' => 'Wikitext nové stránky po transformaci před uložením',
-	'abusefilter-edit-builder-vars-diff-pst' => 'Unifikovaný diff změn způsobených editací, po transformaci před uložením',
+	'abusefilter-edit-builder-vars-diff-pst' => 'Unifikovaný rozdíl změn způsobených editací, po transformaci před uložením',
 	'abusefilter-edit-builder-vars-addedlines-pst' => 'Řádky přidané při editaci, po transformaci před uložením',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nový text stránky zbavený formátování',
 	'abusefilter-edit-builder-vars-new-html' => 'Vygenerovaný HTML kód nové verze',
@@ -14523,7 +14526,9 @@ As etiquetas deberían ser curtas e non conter caracteres especiais.',
 	'abusefilter-edit-builder-vars-removed-links' => 'Todas as ligazóns externas eliminadas na edición',
 	'abusefilter-edit-builder-vars-old-text' => 'Texto wiki vello da páxina, antes da edición',
 	'abusefilter-edit-builder-vars-new-text' => 'Texto wiki novo da páxina, despois da edición',
-	'abusefilter-edit-builder-vars-new-pst' => 'Texto wiki novo da páxina, transformado despois de gardar',
+	'abusefilter-edit-builder-vars-new-pst' => 'Texto wiki novo da páxina, transformado antes de gardar',
+	'abusefilter-edit-builder-vars-diff-pst' => 'Diferenza unificada das modificacións feitas pola edición, transformada antes de gardar',
+	'abusefilter-edit-builder-vars-addedlines-pst' => 'Liñas engadidas na edición, transformadas antes de gardar',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Texto novo da páxina, sen ningunha marca',
 	'abusefilter-edit-builder-vars-new-html' => 'Fonte HTML transformada na nova revisión',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Nivel de protección de edición da páxina',
@@ -35227,6 +35232,7 @@ Opis filtera: $7 ($8)',
 	'abusefilter-edit-action-degroup' => 'Ukloni korisnika iz svih korisničkih grupa',
 	'abusefilter-edit-action-block' => 'Blokiraj izmene korisnika i/ili IP adrese',
 	'abusefilter-edit-action-rangeblock' => 'Blokiraj /16 opseg IP adresa korisnika',
+	'abusefilter-edit-action-tag' => 'Označi izmenu za dalji pregled',
 	'abusefilter-history' => 'Historija izmjena filtera #$1',
 	'abusefilter-history-foruser' => 'Izmene od $1',
 	'abusefilter-history-hidden' => 'Sakriveno',
@@ -35248,6 +35254,7 @@ Opis filtera: $7 ($8)',
 	'abusefilter-history-diff' => 'Izmjene',
 	'abusefilter-history-error-hidden' => 'Traženi filter je sakriven, i zato ne možete da vidite njegovu istoriju.',
 	'abusefilter-action-tag' => 'Tag',
+	'abusefilter-action-throttle' => 'Uspori',
 	'abusefilter-action-blockautopromote' => 'Blokiraj samounapređivanje',
 	'abusefilter-action-block' => 'Blokiraj',
 	'abusefilter-action-degroup' => 'Ukloni iz grupa',
@@ -42850,7 +42857,7 @@ Lý do: $2',
 	'abusefilter-topnav-import' => 'Nhập bộ lọc',
 	'abusefilter-log-name' => 'Nhật trình bộ lọc sai phạm',
 	'abusefilter-log-header' => 'Nhật trình này tóm lại các thay đổi bộ lọc. Hãy xem các chi tiết đầy đủ trong danh sách các [[Special:AbuseFilter/history|thay đổi bộ lọc gần đây]].',
-	'abusefilter-log-entry-modify' => 'sửa đổi $1 ($2)',
+	'abusefilter-log-entry-modify' => 'đã sửa đổi $1 ($2)',
 	'abusefilter-log-noresults' => 'Không có kết quả',
 	'abusefilter-diff-title' => 'Khác biệt giữa các phiên bản',
 	'abusefilter-diff-item' => 'Khoản mục',
