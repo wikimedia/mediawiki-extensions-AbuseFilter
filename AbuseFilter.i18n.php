@@ -7743,6 +7743,7 @@ $messages['co'] = array(
 /** Czech (čeština)
  * @author Chmee2
  * @author Matěj Grabovský
+ * @author Matěj Suchánek
  * @author Michaelbrabec
  * @author Mormegil
  * @author Paxt
@@ -7937,7 +7938,7 @@ Odpovídalo mu více než dovolený limit $1 % všech operací.",
 	'abusefilter-edit-denied' => 'Nemůžete se podívat na detaily tohoto filteru, protože není veřejný',
 	'abusefilter-edit-main' => 'Parametry filtru',
 	'abusefilter-edit-done-subtitle' => 'Filtr upraven',
-	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Vaše úpravy]] na [[Special:AbuseFilter/$1|filter $1]] byly uloženy.',
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Vaše úpravy]] [[Special:AbuseFilter/$1|filtru $1]] byly uloženy.',
 	'abusefilter-edit-badsyntax' => 'Zadaný filtr obsahuje syntaktickou chybu. Výstup z parseru: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Nemáte oprávnění editovat tento filtr, neboť obsahuje jedno nebo více opatření s omezeným přístupem.
 Požádejte uživatele s oprávněním přidávat taková opatření, aby potřebnou změnu provedl za vás.',
@@ -12553,6 +12554,8 @@ $messages['fa'] = array(
 	'abusefilter-edit-builder-vars-old-text' => 'ویکی‌متن قدیمی صفحه، قبل از ویرایش',
 	'abusefilter-edit-builder-vars-new-text' => 'ویکی‌متن جدید صفحه، بعد از ویرایش',
 	'abusefilter-edit-builder-vars-new-pst' => 'صفحهٔ جدید ویکی‌متن، پیش از ذخیره تغییر یافت',
+	'abusefilter-edit-builder-vars-diff-pst' => 'یکی کردن تفاوت تغییرات ساخته شده توسط ویرایش، از قبل ذخیره شده تبدیل شده',
+	'abusefilter-edit-builder-vars-addedlines-pst' => 'خطوط اضافه شده در ویرایش، از قبل ذخیره شده تبدیل شده',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'متن جدید صفحه، بدون نشانه‌گذاری‌ها',
 	'abusefilter-edit-builder-vars-new-html' => 'کد اچ‌تی‌ام‌ال تجزیه شده از نسخه جدید',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'سطح محافظت صفحه برای ویرایش',
@@ -15427,7 +15430,8 @@ $messages['he'] = array(
 בנוסף, כאמצעי בטיחות, הרשאות הניתנות לחשבונות ותיקים נשללו באופן זמני מחשבונכם.
 תיאור קצר של החוק שפעולתכם הפרה: $1',
 	'abusefilter-blocker' => 'מסנן השחתות',
-	'abusefilter-blockreason' => 'נחסם אוטומטית על־ידי מסנן ההשחתות. תיאור החוק התואם: $1',
+	'abusefilter-blockreason' => 'נחסם אוטומטית על־ידי מסנן ההשחתות.
+תיאור החוק התואם: $1',
 	'abusefilter-degroupreason' => 'ההרשאות נשללו אוטומטית על ידי מסנן ההשחתות. תיאור החוק: $1',
 	'abusefilter-accountreserved' => 'שם משתמש זה שמור לשימושו של מסנן ההשחתות.',
 	'right-abusefilter-modify' => 'שינוי מסנני ההשחתות',
@@ -30756,6 +30760,7 @@ Kobiaschda de Qwellcode, fiegschn do oi un gliggschd uff die Schaldflesch „{{i
  * @author Matma Rex
  * @author Odder
  * @author Olgak85
+ * @author Peter Bowman
  * @author Sovq
  * @author Sp5uhe
  * @author Woytecr
@@ -30901,7 +30906,7 @@ wpisów w rejestrze nadużyć.',
 	'abusefilter-edit' => 'Edytujesz filtr nadużyć',
 	'abusefilter-edit-subtitle' => 'Edytowanie filtru $1',
 	'abusefilter-edit-subtitle-new' => 'Tworzenie filtru',
-	'abusefilter-edit-oldwarning' => '<strong>Edytujesz starą wersję tego filtru. Statystyka są notowane dla najnowszej wersji filtru. Jeśli zapiszesz zmiany, zostaną nadpisane wszystkie późniejsze wersje niż ta, którą edytujesz.</strong> &bull; [[Special:AbuseFilter/history/$2|Powrót do historii filtru]]',
+	'abusefilter-edit-oldwarning' => '<strong>Edytujesz starą wersję tego filtru. Statystyki są notowane dla najnowszej wersji filtru. Jeśli zapiszesz zmiany, zostaną nadpisane wszystkie późniejsze wersje od tej, którą edytujesz.</strong> &bull; [[Special:AbuseFilter/history/$2|Powrót do historii filtru]]',
 	'abusefilter-edit-status-label' => 'Statystyki:',
 	'abusefilter-edit-status' => '{{PLURAL:$1|Dla ostatniej $1 akcji|W ostatnich $1 akcjach}} ten filtr pasował do $2 ($3%).
 Średni czas wykonania wyniósł $4 ms. Wykorzystano $5 {{PLURAL:$5|warunek|warunki|warunków}} z limitu.',
@@ -38072,6 +38077,9 @@ Beskrivning av utlöst regel: $1',
 	'abusefilter-log-entry' => '$1: $2 utlöste ett missbruksfilter genom att göra handlingen "$3" på $4.
 Utförd handling: $5;
 Filterbeskrivning: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 utlöste ett missbruksfilter genom att göra handlingen "$3" på $4.
+Utförd handling: $5;
+Filterbeskrivning: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 utlöste $3, genom att göra handlingen "$4" på $5.
 Utförd handling: $6;
 Filterbeskrivning: $7 ($8)',
@@ -38296,6 +38304,8 @@ missbrukslogg-poster.',
 	'abusefilter-edit-builder-vars-old-text' => 'Sidans gamla wikitext, före redigeringen',
 	'abusefilter-edit-builder-vars-new-text' => 'Sidans nya wikitext, efter redigeringen',
 	'abusefilter-edit-builder-vars-new-pst' => 'Ny sida wikitext förändrades innan den sparades',
+	'abusefilter-edit-builder-vars-diff-pst' => 'Sammanslagen diff av ändringarna gjorda under redigering, innan de sparades',
+	'abusefilter-edit-builder-vars-addedlines-pst' => 'Rader tillagda under redigering, innan den sparades',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Ny sidtext, strippad från eventuell markup',
 	'abusefilter-edit-builder-vars-new-html' => 'Parsad HTML-källkod för den nya versionen',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Skyddsnivå för redigering av sidan',
@@ -38378,6 +38388,7 @@ För att ladda ett existerande filter, skriv dess filter-ID i rutan nedanför re
 	'abusefilter-test-shownegative' => 'Visa ändringar som inte matchar filtret',
 	'abusefilter-test-syntaxerr' => 'Det filter du skrev in innehöll ett syntaxfel.
 Du kan se en fullständig förklaring genom att klicka på knappen "{{int:abusefilter-edit-check}}".',
+	'abusefilter-test-badtitle' => 'Sidrubriken du angett är ogiltigt. Den kan innehålla ett eller flera tecken som inte kan användas i rubriker.',
 	'abusefilter-changeslist-examine' => 'undersök',
 	'abusefilter-examine' => 'Undersök enstaka ändringar',
 	'abusefilter-examine-intro' => 'Denna sida låter dig undersöka variablerna skapade av missbruksfiltret för en enstaka ändring, och testa den mot filter.',
@@ -43108,6 +43119,7 @@ $messages['yi'] = array(
 	'right-abusefilter-log' => 'באקוקן פֿילטער־לאגבוך',
 	'right-abusefilter-log-detail' => 'באקוקן פרטימדיק דאס קרומבאניץ־לאגבוך',
 	'right-abusefilter-private' => 'באקוקן פריוואטע דאטן אין קרומבאניץ־לאגבוך',
+	'action-abusefilter-modify' => 'מאדיפֿיצירן שעדיקן פֿילטערס',
 	'action-abusefilter-view' => 'באקוקן שעדיקן פֿילטערס',
 	'action-abusefilter-log' => ' באקוקן פֿילטער־לאגבוך',
 	'abusefilter-log' => 'פֿילטער לאגבוך',
