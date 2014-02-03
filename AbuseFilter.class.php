@@ -1625,12 +1625,15 @@ class AbuseFilter {
 				// More than $wgAbuseFilterEmergencyDisableCount matches,
 				// constituting more than $emergencyDisableThreshold
 				// (a fraction) of last few edits. Disable it.
+				$method = __METHOD__;
 				$dbw = wfGetDB( DB_MASTER );
-				$dbw->update( 'abuse_filter',
-					array( 'af_throttled' => 1 ),
-					array( 'af_id' => $filter ),
-					__METHOD__
-				);
+				$dbw->onTransactionIdle( function() use ( $dbw, $filter, $method ) {
+					$dbw->update( 'abuse_filter',
+						array( 'af_throttled' => 1 ),
+						array( 'af_id' => $filter ),
+						$method
+					);
+				} );
 			}
 		}
 	}
