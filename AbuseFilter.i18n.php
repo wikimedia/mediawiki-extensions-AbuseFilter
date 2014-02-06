@@ -29308,7 +29308,7 @@ Du kan sjå ei utførleg skildring ved å trykka på «Saumfar syntaks»-knappen
 	'abusefilter-topnav-test' => 'Gruppetesting',
 	'abusefilter-topnav-examine' => 'Gransk tidlegare endringar',
 	'abusefilter-topnav-log' => 'Endringsfilterlogg',
-	'abusefilter-topnav-tools' => 'Feilsøkingsverkty',
+	'abusefilter-topnav-tools' => 'Feilsøkingsverktøy',
 	'abusefilter-topnav-import' => 'Importer filter',
 	'abusefilter-log-name' => 'Logg for endringsfilter',
 	'abusefilter-log-header' => 'Denne loggen viser eit samandrag av endringar gjorde i filtera.
