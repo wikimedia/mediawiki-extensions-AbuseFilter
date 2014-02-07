@@ -606,7 +606,7 @@ class AbuseFilterHooks {
 	 * @return bool
 	 */
 	public static function onMakeGlobalVariablesScript( array &$vars ) {
-		if ( AbuseFilter::$editboxName !== null ) {
+		if ( isset( AbuseFilter::$editboxName ) && AbuseFilter::$editboxName !== null ) {
 			$vars['abuseFilterBoxName'] = AbuseFilter::$editboxName;
 		}
 
