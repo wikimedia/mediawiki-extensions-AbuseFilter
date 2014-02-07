@@ -12065,6 +12065,7 @@ Kopeeri ilmuva tekstikasti sisu, kleebi see sellesse tekstikasti ja seejärel kl
  * @author An13sa
  * @author Joxemai
  * @author Kobazulo
+ * @author Subi
  * @author Theklan
  * @author Unai Fdz. de Betoño
  * @author Xabier Armendaritz
@@ -12210,7 +12211,7 @@ $messages['eu'] = array(
 	'abusefilter-revert-search' => 'Ekintzak hautatu',
 	'abusefilter-revert-filter' => 'Iragazkia:',
 	'abusefilter-revert-confirm' => 'Berretsi',
-	'abusefilter-revert-reasonfield' => 'Leheneratzeko arrazoia:', # Fuzzy
+	'abusefilter-revert-reasonfield' => 'Arrazoia:',
 	'abusefilter-test-load' => 'Kargatu',
 	'abusefilter-test-user' => 'Erabiltzaileak egindako aldaketak:',
 	'abusefilter-test-period-start' => 'Geroago egindako aldaketak:',
@@ -29061,7 +29062,7 @@ Ei kort skildring av misbruksregelen handlinga di braut er: $1',
 	'abusefilter-edit-description' => ":''(vert vist offentleg)''",
 	'abusefilter-edit-group' => 'Filtergruppe:',
 	'abusefilter-edit-flags' => 'Flagg:',
-	'abusefilter-edit-enabled' => 'Slå på dette filteret',
+	'abusefilter-edit-enabled' => 'Slå på filteret',
 	'abusefilter-edit-deleted' => 'Merk som sletta',
 	'abusefilter-edit-hidden' => 'Løyn detaljar om dette filteret frå offentleg vising',
 	'abusefilter-edit-global' => 'Globalt filter',
@@ -29074,8 +29075,8 @@ Ei kort skildring av misbruksregelen handlinga di braut er: $1',
 	'abusefilter-edit-consequences' => 'Handlingar gjennomførte ved treff',
 	'abusefilter-edit-action-warn' => 'Utfør desse handlingane etter å ha åtvara brukaren',
 	'abusefilter-edit-action-disallow' => 'Hindra brukaren frå å utføra handlinga',
-	'abusefilter-edit-action-flag' => 'Flagg endringa i misbruksloggen',
-	'abusefilter-edit-action-blockautopromote' => 'Fjerna stoda til brukaren som automatisk godkjend',
+	'abusefilter-edit-action-flag' => 'Flagg endringa i endringsfilterloggen',
+	'abusefilter-edit-action-blockautopromote' => 'Fjern stoda til brukaren som automatisk godkjend',
 	'abusefilter-edit-action-degroup' => 'Fjern brukaren frå alle privilegerte grupper',
 	'abusefilter-edit-action-block' => 'Blokker brukaren og/eller IP-adressa',
 	'abusefilter-edit-action-throttle' => 'Gjennomfør berre om brukaren gjer det fleire gonger',
@@ -29085,7 +29086,7 @@ Ei kort skildring av misbruksregelen handlinga di braut er: $1',
 	'abusefilter-edit-throttle-period' => 'Tidsperiode:',
 	'abusefilter-edit-throttle-seconds' => '{{PLURAL:$1|eitt sekund|$1 sekund}}',
 	'abusefilter-edit-throttle-groups' => "Grupper snøggleik etter:
-:''(ein for kvar lina, kombiner med komma)''",
+:''(eitt for kvar line, kombiner med komma)''",
 	'abusefilter-edit-warn-message' => 'Systemmelding som skal verta nytta for åtvaringar:',
 	'abusefilter-edit-warn-other' => 'Anna melding',
 	'abusefilter-edit-warn-other-label' => "Sidenamn på anna melding:
@@ -29107,7 +29108,7 @@ Spør ein brukar med løyve til å leggja til avgrensa handlingar om han kan å 
 	'abusefilter-edit-badfilter' => 'Du oppgav eit filter som ikkje finst',
 	'abusefilter-edit-revert' => 'Gjer om handlingar gjorde av dette filteret',
 	'abusefilter-edit-tools' => 'Verktøy:',
-	'abusefilter-edit-test-link' => 'Test dette filteret på nylege endringar',
+	'abusefilter-edit-test-link' => 'Test filteret på nylege endringar',
 	'abusefilter-edit-export' => 'Eksporter dette filteret til ein annan wiki',
 	'abusefilter-edit-syntaxok' => 'Fann ingen syntaksfeil.',
 	'abusefilter-edit-syntaxerr' => 'Fann syntaksfeil: $1',
