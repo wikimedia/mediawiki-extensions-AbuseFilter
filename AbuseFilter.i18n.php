@@ -7732,12 +7732,14 @@ $messages['ckb'] = array(
 );
 
 /** Corsican (corsu)
+ * @author Paulu
  */
 $messages['co'] = array(
 	'abusefilter-log-search-user' => 'Utilizatore:',
 	'abusefilter-list-edit' => 'Mudificà',
 	'abusefilter-edit-history' => 'Cronolugia:',
 	'abusefilter-history-user' => 'Utilizatore',
+	'abusefilter-examine-user' => 'Cuntributore:',
 );
 
 /** Czech (čeština)
@@ -13163,6 +13165,10 @@ og tú sleppur ikki at fremja tað í verki.
 Harumframt, fyri at verja {{SITENAME}}, er tín brúkarakonta og allar IP adressur, sum kunnu setast í samband við hana, blivin sperrað, so tú ikki sleppur at rætta.
 Um hetta er hent av misgáum, vinarliga set teg so í samband við ein administrator.
 Ein stutt frágreiðing um tað slagið av misnýtslu, ið tín handling passaði saman við er: $1',
+	'abusefilter-degrouped' => 'Henda handlingin er sjálvvirkandi blivin skrásett sum skaðilig.
+Tí varð hon ikki loyvd, og sum avleiðing av at tín konta er undir illgruna fyri at vera misbrúkt, hevur kontan hjá tær mist øll rættindi.
+Um tú heldur, at hetta er ein feilur, vinarliga set teg í samband við ein embætismann (byrokrat) har ið tú greiður frá um hesa hending, so kann tað henda, at tú fært tíni rættindi aftur.
+Her er ein stutt frágreiðing av misnýtsluregluni, ið tín handling útloysti: $1',
 	'abusefilter-blocker' => 'Misnýtslufiltur',
 	'abusefilter-blockreason' => 'Sjálvvirkandi sperrað av misnýtslufilturi.
 Frágreiðing av passandi reglu: $1',
@@ -13186,11 +13192,17 @@ Reglu frágreiðing: $1',
 	'action-abusefilter-log' => 'vís misnýtslu loggin',
 	'action-abusefilter-log-detail' => 'vís smálutir í misnýtslu loggunum',
 	'action-abusefilter-private' => 'vís privat dáta í misnýtslu logginum',
+	'abusefilter-log' => 'Loggur fyri misnýtslufiltur',
+	'abusefilter-log-summary' => 'Hesin loggurin vísir ein lista við øllum hendingum, sum misnýtslufilturi hevur fangað.',
+	'abusefilter-log-search' => 'Leita í misnýtslulogginum',
 	'abusefilter-log-search-user' => 'Brúkari:',
 	'abusefilter-log-search-filter' => 'Filtur ID:',
 	'abusefilter-log-search-title' => 'Heiti:',
 	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Leita',
+	'abusefilter-log-entry' => '$1: $2 aktiveraði eitt misnýtslufiltur, við at fremja hesa handling "$3" á $4.
+Fyrivarni tikið: $5;
+Filturfrágreiðing: $6',
 	'abusefilter-log-detailedentry-global' => 'globalt filtur $1',
 	'abusefilter-log-detailedentry-local' => 'filtur $1',
 	'abusefilter-log-detailslink' => 'smálutir',
@@ -13252,9 +13264,16 @@ Reglu frágreiðing: $1',
 	'abusefilter-tools-text' => 'Her eru nøkur tól, sum kunnu vera brúkbar til at formulera og feilsøkja misnýtslufiltur.',
 	'abusefilter-tools-expr' => 'Úttrykstestari',
 	'abusefilter-tools-submitexpr' => 'Evaluera',
+	'abusefilter-tools-reautoconfirm' => 'Endurskapa status sum sjálvvirkandi váttaður brúkari',
 	'abusefilter-tools-reautoconfirm-user' => 'Brúkari:',
 	'abusefilter-tools-reautoconfirm-submit' => 'Endur-skráset brúkara',
 	'abusefilter-reautoconfirm-none' => 'Hasin brúkarin hevur ikki fingið {{GENDER:$1|sín|sín|teirra}} status sum váttaður brúkari strikaðan.',
+	'abusefilter-reautoconfirm-notallowed' => 'Tú hevur ikki loyvi til at endurskapa status sum sjálvvirkandi váttaður brúkari.',
+	'abusefilter-reautoconfirm-done' => 'Status hjá kontuni sum sjálvvirkandi váttaður brúkari er nú endurstovnað',
+	'abusefilter-status' => 'Av seinastu $1 {{PLURAL:$1|handlingini|handlingunum}}, $2 ($3%) {{PLURAL:$2|hevur|hava}} nátt markið $4, og $5 ($6%) {{PLURAL:$5|hevur|hava}} útloyst eitt av filtrunum, sum í løtuni er gjørt virkið.',
+	'abusefilter-edit' => 'Rætta misnýtslufiltur',
+	'abusefilter-edit-subtitle' => 'Rætta filtur $1',
+	'abusefilter-edit-subtitle-new' => 'Stovna filtur',
 	'abusefilter-edit-status-label' => 'Hagtøl:',
 	'abusefilter-edit-new' => 'Nýtt filtur',
 	'abusefilter-edit-save' => 'Goym filtur',
@@ -13262,8 +13281,13 @@ Reglu frágreiðing: $1',
 	'abusefilter-edit-flags' => 'Fløgg:',
 	'abusefilter-edit-enabled' => 'Ger hetta filtrið virkið',
 	'abusefilter-edit-deleted' => 'Merk sum slettað',
+	'abusefilter-edit-notes' => 'Viðmerkingar:',
 	'abusefilter-edit-throttle-period' => 'Tíðarskeið:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|sekund|sekundir}}',
+	'abusefilter-edit-warn-other' => 'Onnur boð',
+	'abusefilter-edit-warn-actions' => 'Handlingar:',
+	'abusefilter-edit-warn-preview' => 'Forskoðan av valdu boðum',
+	'abusefilter-edit-warn-edit' => 'Stovna/rætta valda boði',
 	'abusefilter-edit-history' => 'Søga:',
 	'abusefilter-edit-tools' => 'Tól:',
 	'abusefilter-edit-builder-op-comparison-equal' => 'Tað sama sum (==)',
@@ -13275,6 +13299,13 @@ Reglu frágreiðing: $1',
 	'abusefilter-edit-builder-op-bool-not' => 'Ikki (!)',
 	'abusefilter-edit-builder-op-bool-and' => 'Og (&)',
 	'abusefilter-edit-builder-op-bool-or' => 'Ella (|)',
+	'abusefilter-edit-builder-vars-newsize' => 'Nýggj síðustødd',
+	'abusefilter-edit-builder-vars-oldsize' => 'Gomul síðustødd',
+	'abusefilter-edit-builder-vars-removedlines' => 'Linjur tiknar burtur í rætting',
+	'abusefilter-edit-builder-vars-summary' => 'Samandráttur av rætting',
+	'abusefilter-edit-builder-vars-article-id' => 'Síðu ID',
+	'abusefilter-edit-builder-vars-article-ns' => 'Navnarúmið hjá síðuni',
+	'abusefilter-edit-builder-vars-article-text' => 'Síðuheiti (uttan navnarúm)',
 );
 
 /** French (français)
@@ -22940,6 +22971,7 @@ Tags solle kuerz sinn, an et solle keng Spezialzeechen dra sinn.',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'Duebel-Buchstawen ewechhuelen (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'Spezalbuchstawen / Total vun de Buchstawen(Zeechen) (specialratio)',
 	'abusefilter-edit-builder-funcs-norm' => 'Normaliséieren (norm)',
+	'abusefilter-edit-builder-funcs-count' => 'Zuel vun de Kéiere wou de String X am String Y virkënnt (count)',
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Espacen eraushuelen (rmwhitespace)',
 	'abusefilter-edit-builder-funcs-rmspecials' => 'Spezialzeechen ewechhuelen (rmspecials)',
 	'abusefilter-edit-builder-funcs-ip_in_range' => "Ass d'IP-Adress am Beräich? (ip_in_range)",
@@ -22982,6 +23014,7 @@ Tags solle kuerz sinn, an et solle keng Spezialzeechen dra sinn.',
 	'abusefilter-edit-builder-vars-removed-links' => 'All extern Linken déi bei der Ännerung ewechgeholl goufen',
 	'abusefilter-edit-builder-vars-old-text' => 'Alen Text op der Säit, virun der Ännerung',
 	'abusefilter-edit-builder-vars-new-text' => 'Neien Text op der Säit, no der Ännerung',
+	'abusefilter-edit-builder-vars-new-pst' => 'Wikitext vun der neier Säit, virum Späicheren ëmgewandelt',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Neien Text vun der Säit ouni iergendwellech Formatéierung',
 	'abusefilter-edit-builder-vars-new-html' => 'Geparseden HTML Quelltext vun der neier Versioun',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Niveau vun der Spär vun der Säit',
