@@ -7441,8 +7441,7 @@ $messages['ce'] = array(
 	'abusefilter-revert-reasonfield' => 'Бахьан:',
 	'abusefilter-test' => 'Литтаран нисдарш хьажа',
 	'abusefilter-test-intro' => 'ХӀокху агӀорахь хьан йиш ю лахахь гайтинчу {{PLURAL:$1|1=тӀехьарчу $1 хийцаман|тӀехьарчу $1 хийцамашан}} литтарш хьажа.
-
-Долуш долу литтар чудаккха тадаран коран лахахь дӀаязде цуьнан ID тӀакха тӀетаӀе кнопка «Чудаккха»', # Fuzzy
+Долуш долу литтар чудаккха тадаран коран лахахь дӀаязде цуьнан ID тӀакха тӀетаӀе кнопка  «{{int:abusefilter-test-load}}»',
 	'abusefilter-test-legend' => 'Литтаре хьажар',
 	'abusefilter-test-load-filter' => 'Чудаккха литтар ID тӀера:',
 	'abusefilter-test-submit' => 'Хьажа',
@@ -12548,7 +12547,7 @@ $messages['fa'] = array(
 	'abusefilter-edit-builder-vars-user-name' => 'نام حساب کاربری',
 	'abusefilter-edit-builder-vars-user-groups' => 'گروه‌هایی که کاربر (ولو به طور ضمنی) در آن است',
 	'abusefilter-edit-builder-vars-user-blocked' => 'بسته‌بودن کاربر',
-	'abusefilter-edit-builder-vars-user-emailconfirm' => 'زمان تأیید نشانی پست الکترونیکی',
+	'abusefilter-edit-builder-vars-user-emailconfirm' => 'زمان تأیید نشانی رایانامه',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'آخرین ده کاربری که در صفحه مشارکت کرده‌اند',
 	'abusefilter-edit-builder-vars-all-links' => 'تمام پیوندهای خارجی در متن جدید',
 	'abusefilter-edit-builder-vars-added-links' => 'تمام پیوندهای خارجی اضافه شده در ویرایش',
@@ -25399,6 +25398,9 @@ $messages['ml'] = array(
 	'abusefilter-log-entry' => '$1: $4 എന്ന താളിൽ $2 ചെയ്ത "$3" എന്ന പ്രവൃത്തി ഒരു ദുരുപയോഗ അരിപ്പയെ ഉണർത്തിയിരിക്കുന്നു.
 എടുത്ത നടപടികൾ: $5;
 അരിപ്പയുടെ വിവരണം: $6',
+	'abusefilter-log-entry-withdiff' => "$4 എന്ന താളിൽ $1-നു $2 ചെയ്ത ''$3'' എന്ന പ്രവൃത്തി ഒരു ദുരുപയോഗ അരിപ്പയെ ഉണർത്തിയിരിക്കുന്നു.
+എടുത്ത നടപടികൾ: $5;
+അരിപ്പയുടെ വിവരണം: $6 ($7)",
 	'abusefilter-log-detailedentry-meta' => '$1: $5 എന്ന താളിൽ  $2 ചെയ്ത "$4" എന്ന പ്രവൃത്തി $3-നെ ഉണർത്തിയിരിക്കുന്നു.
 എടുത്ത നടപടി: $6;
 അരിപ്പയുടെ വിവരണം: $7 ($8)',
@@ -25629,6 +25631,8 @@ $messages['ml'] = array(
 	'abusefilter-edit-builder-vars-old-text' => 'തിരുത്തലിനു മുമ്പുള്ള, പഴയ താളിലെ വിക്കി എഴുത്ത്',
 	'abusefilter-edit-builder-vars-new-text' => 'തിരുത്തലിനു ശേഷമുള്ള, പുതിയ താളിലെ വിക്കി എഴുത്ത്',
 	'abusefilter-edit-builder-vars-new-pst' => 'പുതിയ വിക്കിഎഴുത്ത് താൾ, സേവ് ചെയ്യുന്നതിനു മുമ്പ് തന്നെ മാറ്റിയിരിക്കുന്നു',
+	'abusefilter-edit-builder-vars-diff-pst' => 'സേവ് നടപ്പിലാകുന്നതിനുമുമ്പേ എടുത്ത, തിരുത്തലിലെ മാറ്റങ്ങളുടെ ആകെ വ്യത്യാസം',
+	'abusefilter-edit-builder-vars-addedlines-pst' => 'സേവ് നടപ്പിലാകുന്നതിനു മുമ്പേ എടുത്ത, തിരുത്തലിൽ കൂട്ടിച്ചേർക്കപ്പെട്ട വരികൾ',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'പുതിയ താളിലെ, എന്തെങ്കിലും മാർക്കപ്പുകൾ ഉണ്ടെങ്കിൽ അവ നീക്കിയ ശേഷമുള്ള, എഴുത്ത്',
 	'abusefilter-edit-builder-vars-new-html' => 'പുതിയ നാൾപ്പതിപ്പിന്റെ എച്ച്.റ്റി.എം.എൽ. ആയി പാഴ്സ് ചെയ്യപ്പെട്ട സ്രോതസ്സ്',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'താളിന്റെ സംരക്ഷണ മാനം തിരുത്തുക',
@@ -25715,6 +25719,7 @@ $messages['ml'] = array(
 	'abusefilter-test-shownegative' => 'അരിപ്പയുമായി യോജിക്കാത്ത മാറ്റങ്ങൾ പ്രദർശിപ്പിക്കുക',
 	'abusefilter-test-syntaxerr' => 'താങ്കൾ നൽകിയ അരിപ്പയുടെ എഴുത്തുരീതിയിൽ പിശകുണ്ട്.
 "{{int:abusefilter-edit-check}}" എന്ന ബട്ടൺ ഞെക്കിയാൽ താങ്കൾക്ക് പൂർണ്ണമായ വിശദീകരണം ലഭിക്കുന്നതാണ്.',
+	'abusefilter-test-badtitle' => 'താങ്കൾ നൽകിയ താളിന്റെ തലക്കെട്ട് അസാധുവാണ്. തലക്കെട്ടിൽ ഉപയോഗിക്കാൻ പാടില്ലാത്ത ഒന്നോ അതിലധികമോ അക്ഷരങ്ങൾ അതിലുണ്ട്.',
 	'abusefilter-changeslist-examine' => 'പരിശോധിക്കുക',
 	'abusefilter-examine' => 'ഒറ്റയൊറ്റ മാറ്റങ്ങൾ പരിശോധിക്കുക',
 	'abusefilter-examine-intro' => 'ഓരോ ഒറ്റയൊറ്റ മാറ്റത്തിനും ദുരുപയോഗ അരിപ്പ സൃഷ്ടിക്കുന്ന ചരങ്ങൾ പരിശോധിക്കാൻ ഈ താൾ താങ്കളെ അനുവദിക്കുന്നു, ഒപ്പം അത് അരിപ്പകളിൽ പരീക്ഷിക്കാവുന്നതുമാണ്.',
