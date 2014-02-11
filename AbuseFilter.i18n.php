@@ -38954,11 +38954,11 @@ $messages['te'] = array(
 	'abusefilter-warning' => "'''హెచ్చరిక”’: ఈ చర్య హానికరమని ఆటోమాటిగ్గా గుర్తించబడింది.
 పసలేని మార్పుచేర్పులు వెంటనే రద్దు చెయ్యబడతాయి,
 కొట్టొచ్చినట్టుగా కనబడే తప్పులు లేదా పదేపదే చేసే పసలేని మార్పుచేర్పులు మీ ఖాతా లేదా ఐపీ అడ్రసు నిషేధానికి దారి తీస్తాయి.
-ఈ మార్పు సరైనదేనని మీరు నమ్మితే, మళ్ళీ పంపించు నొక్కి నిర్ధారించండి.
-మీ చర్యను దుర్వినియోగంగా ఎత్తిచూపిన సదరు నియమం క్లుప్తంగా ఇలా వివరిస్తోంది: $1", # Fuzzy
+ఈ మార్పు సరైనదేనని మీరు నమ్మితే, మళ్ళీ పంపించి, నిర్ధారించండి.
+మీ చర్యను దుశ్చర్యగా భావించేందుకు దారితీసిన నియమం క్లుప్తంగా ఇలా వివరిస్తోంది: $1",
 	'abusefilter-disallowed' => 'ఈ చర్య హానికరమని ఆటోమాటిగ్గా గుర్తించబడింది. అంచేత నిరాకరించాం.
 ఒకవేళ మీ మార్పుచేర్పులు సరైనవని మీరు నమ్మితే, మీరు చెయ్యదలచిన దాని గురించి నిర్వాహకులెవరికైనా తెలియబరచండి.
-మీ చర్యను దుర్వినియోగంగా ఎత్తిచూపిన సదరు నియమం క్లుప్తంగా ఇలా వివరిస్తోంది: $1', # Fuzzy
+మీ చర్యను దుశ్చర్యగా భావించడానికి దారితీసిన నియమం క్లుప్తంగా ఇలా వివరిస్తోంది: $1',
 	'abusefilter-blocked-display' => 'ఈ చర్య హానికరమని ఆటోమాటిగ్గా గుర్తించబడింది. అంచేత దాన్ని చెయ్యకుండా మిమ్మల్ని నిరోధించాం.
 అంతేకాక, {{SITENAME}} ను పరిరక్షించేందుకుగాను, మీ వాడుకరిఖాతా, దానికి సంబంధించిన ఐపీ అడ్రసుల ద్వారా మార్పుచేర్పులు చెయ్యకుండా నిరోధించాం.
 ఒకవేళ ఇది పొరపాటున జరిగి ఉంటే, ఎవరైనా ఒక నిర్వాహకుని సంప్రదించండి.
@@ -39005,6 +39005,9 @@ $messages['te'] = array(
 	'abusefilter-log-entry' => '$1: $4లో చర్య "$3"ని చెయ్యడం ద్వారా $2 ఒక దుర్వినియోగ వడపోతని కదిలించారు.
 తీసుకున్న చర్య: $5;
 వడపోత వివరణ: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 $4 లో "$3" పని చేసి, దుశ్చర్య వడపోతను ప్రేరేపించారు.
+తీసుకున్న చర్య: $5;
+వడపోత వివరం: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '↓ $1: $2, $3 ను ప్రయోగించారు. దాంతో $5 పై "$4" చర్య జరిగింది.
 జరిగిన చర్యలు: $6;
 వడపోతకం వివరణ: $7 ($8)',
@@ -39023,6 +39026,8 @@ $messages['te'] = array(
 	'abusefilter-log-linkoncontribs' => 'దుర్వినియోగాల చిట్టా',
 	'abusefilter-log-linkoncontribs-text' => 'ఈ వాడుకరి యొక్క దుర్వినియోగాల చిట్టా',
 	'abusefilter-log-hidden' => '(పద్దుని దాచారు)',
+	'abusefilter-log-hidden-implicit' => '(కూర్పును తొలగించారు కాబట్టి, అది దాచబడింది)',
+	'abusefilter-log-cannot-see-details' => 'ఈ ఎంట్రీ వివరాలు చూసే అనుమతి మీకు లేదు.',
 	'abusefilter-log-details-hidden' => 'ఈ పద్దు యొక్క వివరాలని మీరు చూడలేరు, ఎందుకంటే దీన్ని బహిరంగ వీక్షణం నుండి దాచేసారు.',
 	'abusefilter-log-hide-legend' => 'చిట్టా పద్దుని దాచండి',
 	'abusefilter-log-hide-id' => 'చిట్టా పద్దు ID:',
@@ -39031,6 +39036,7 @@ $messages['te'] = array(
 	'abusefilter-log-hide-forbidden' => 'దుర్వినియోగ చిట్టా పద్దులను దాచే అనుమతి మీకు లేదు.',
 	'abusefilter-logentry-suppress' => '"[[$1]]"ని దాచారు',
 	'abusefilter-logentry-unsuppress' => '"[[$1]]"ని చూపించారు',
+	'logentry-abusefilter-hit' => '$1, పేజీ $3 లో "$5" పని చేసి, $4 ను ప్రేరేపించారు. తీసుకున్న చర్య: $6 ($7)',
 	'abusefilter-management' => 'దుర్వినియోగ వడపోతల నిర్వహణ',
 	'abusefilter-list' => 'అన్ని వడపోతలు',
 	'abusefilter-list-id' => 'వడపోత ID',
@@ -39043,6 +39049,7 @@ $messages['te'] = array(
 	'abusefilter-list-details' => 'వివరాలు',
 	'abusefilter-list-limit' => 'పుటకి అంశాల సంఖ్య:',
 	'abusefilter-list-lastmodified' => 'చివరి మార్పు',
+	'abusefilter-list-group' => 'వడపోత గుంపు',
 	'abusefilter-hidden' => 'అంతరంగికం',
 	'abusefilter-unhidden' => 'బహిరంగం',
 	'abusefilter-enabled' => 'సచేతనం',
@@ -39057,7 +39064,9 @@ $messages['te'] = array(
 	'abusefilter-list-options-deleted-only' => 'తొలగించిన వడపోతలను మాత్రమే చూపించు',
 	'abusefilter-list-options-deleted-hide' => 'తొలగించిన వడపోతలను దాచు',
 	'abusefilter-list-options-deleted-show' => 'తొలగించిన వడపోతలను చూపించు',
+	'abusefilter-list-options-scope' => 'ఇక్కడి నుంచి వడపోతలను చూపించు:',
 	'abusefilter-list-options-scope-local' => 'స్థానిక వికీ',
+	'abusefilter-list-options-scope-global' => 'సార్వత్రిక నియమాలు',
 	'abusefilter-list-options-disabled' => 'అచేతన వడపోతలు:',
 	'abusefilter-list-options-hidedisabled' => 'అచేతన వడపోతలను దాచు',
 	'abusefilter-list-options-submit' => 'తాజాకరించు',
@@ -39066,23 +39075,31 @@ $messages['te'] = array(
 	'abusefilter-tools-submitexpr' => 'పరీక్షించు',
 	'abusefilter-tools-reautoconfirm-user' => 'వాడుకరి:',
 	'abusefilter-status' => 'గత $1 {{PLURAL:$1|చర్య|చర్యల}}లో $2 ($3%) కండిషన్ల పరిమితి అయిన $4ను {{PLURAL:$2|చేరుకుంది|చేరుకున్నాయి}}, మరొక $5 ($6%) ప్రస్తుతం చేతనంగా ఉన్న వడపోతలలో ఒకదానితో {{PLURAL:$5|సరిపోలుతోంది|సరిపోలుతున్నాయి}}.',
+	'abusefilter-edit' => 'దుశ్చర్య వడపోతను మారుస్తున్నారు',
 	'abusefilter-edit-subtitle' => '$1 జల్లెడను దిద్దుతున్నారు',
+	'abusefilter-edit-subtitle-new' => 'వడపోతను సృష్టిస్తున్నారు',
 	'abusefilter-edit-status-label' => 'గణాంకాలు:',
+	'abusefilter-edit-status' => 'గత $1 {{PLURAL:$1|చర్యలో|చర్యలలో}}, ఈ వడపోత $2 సార్లు సరిపోలింది ($3%).
+సగటున అది నడిచిన సమయం $4 ms, అది నిబంధనల పరిమితిలో $5 {{PLURAL:$5|నిబంధనను|నిబంధనలను}} వినియోగిస్తుంది.',
+	'abusefilter-edit-throttled' => "'''హెచ్చరిక:'' భద్రత రీత్యా ఈ వడపోతను ఆటోమాటిగ్గా అశక్తం చేసాం.
+అది $1% కంటే ఎక్కువ చర్యల పరిమితిని చేరింది.",
 	'abusefilter-edit-new' => 'కొత్త జల్లెడ',
 	'abusefilter-edit-save' => 'జల్లెడ భద్రపరచు',
 	'abusefilter-edit-id' => 'వడపోత ID:',
 	'abusefilter-edit-description' => "వివరణ:
 :''(బహిరంగంగా కనిపిస్తుంది)''",
+	'abusefilter-edit-group' => 'వడపోత గుంపు:',
 	'abusefilter-edit-enabled' => 'ఈ వడపోతని చేతనం చేయి',
 	'abusefilter-edit-deleted' => 'తొలగించినట్లుగా గుర్తించు',
 	'abusefilter-edit-hidden' => 'ఈ వడపోత యొక్క వివరాలని బహిరంగపరచకుండా దాచు',
-	'abusefilter-edit-global' => 'ఈ వడపోతని సార్వత్రికంగా ఆపాదించు', # Fuzzy
+	'abusefilter-edit-global' => 'సార్వత్రిక వడపోత',
 	'abusefilter-edit-rules' => 'నిబంధనలు:',
 	'abusefilter-edit-notes' => 'గమనికలు:',
 	'abusefilter-edit-lastmod' => 'వడపోత చివరి మార్పు:',
 	'abusefilter-edit-lastmod-text' => '$1న  $2చే',
 	'abusefilter-edit-hitcount' => 'జల్లెడ హిట్లు:',
 	'abusefilter-edit-consequences' => 'జోడి కుదిరినప్పుడు తీసుకున్న చర్యలు',
+	'abusefilter-edit-action-warn' => 'వాడుకరికి ఒక హెచ్చరిక చేసాక, ఈ చర్యలను ప్రేరేపించు',
 	'abusefilter-edit-action-disallow' => 'వాడుకరి చేసే ఈ చర్యను నిరాకరించు',
 	'abusefilter-edit-action-block' => 'ఈ వాడుకరిని/ఐపీ చిరునామాను దిద్దుబాట్లు చేయకుండా నిషేధించు',
 	'abusefilter-edit-throttle-count' => 'అనుమతించాల్సిన చర్యల సంఖ్య:',
