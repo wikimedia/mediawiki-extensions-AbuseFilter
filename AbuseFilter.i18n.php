@@ -44228,6 +44228,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-builder-vars-old-text' => '编辑前的旧页面，wiki代码格式',
 	'abusefilter-edit-builder-vars-new-text' => '编辑后的新页面，wiki代码格式',
 	'abusefilter-edit-builder-vars-new-pst' => '新页面维基语言，预保存转换',
+	'abusefilter-edit-builder-vars-diff-pst' => '统一所有由编辑、预保存转换更改的差异',
 	'abusefilter-edit-builder-vars-addedlines-pst' => '编辑中加入了行，并在保存前转换',
 	'abusefilter-edit-builder-vars-new-text-stripped' => '编辑后的新页面，去除所有标记',
 	'abusefilter-edit-builder-vars-new-html' => '编辑后的新页面，已解析为HTML源码',
@@ -44366,6 +44367,7 @@ $messages['zh-hans'] = array(
  * @author Jimmy xu wrk
  * @author Justincheng12345
  * @author Liangent
+ * @author Liuxinyu970226
  * @author Mark85296341
  * @author Oapbtommy
  * @author Pbdragonwang
@@ -44436,6 +44438,9 @@ $messages['zh-hant'] = array(
 	'abusefilter-log-entry' => '$2於$1觸發防濫用過濾器，於$4執行$3操作。
 採取的行動：$5；
 過濾器描述：$6',
+	'abusefilter-log-entry-withdiff' => '$1：$2於$4執行操作「$3」時觸發濫用過濾器。
+所採取之行動：$5；
+過濾器說明：$6（$7）',
 	'abusefilter-log-detailedentry-meta' => '$2於$1觸發$3，於$5執行$4操作。
 採取的行動：$6；
 過濾器描述：$7（$8）',
@@ -44531,8 +44536,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-edit-hidden' => '對公眾隱藏此過濾器的詳細資料',
 	'abusefilter-edit-global' => '全域過濾器',
 	'abusefilter-edit-rules' => '條件：',
-	'abusefilter-edit-notes' => "註解：
-:''（私下記錄用）''", # Fuzzy
+	'abusefilter-edit-notes' => '註解：',
 	'abusefilter-edit-lastmod' => '過濾器最近修改：',
 	'abusefilter-edit-lastmod-text' => '於 $1 由 $2 修改',
 	'abusefilter-edit-hitcount' => '過濾器觸發次數：',
@@ -44667,6 +44671,8 @@ $messages['zh-hant'] = array(
 	'abusefilter-edit-builder-vars-old-text' => '在現下所編輯處之前貼上舊頁的維基文字',
 	'abusefilter-edit-builder-vars-new-text' => '在現下所編輯處之後貼上新頁的維基文字',
 	'abusefilter-edit-builder-vars-new-pst' => '新頁面維基文字，預儲存轉換',
+	'abusefilter-edit-builder-vars-diff-pst' => '統一所有由編輯、保存前轉換所作出之差異',
+	'abusefilter-edit-builder-vars-addedlines-pst' => '編輯中已加入行，並於保存前轉換',
 	'abusefilter-edit-builder-vars-new-text-stripped' => '新建該頁文字，並去除任何的標記',
 	'abusefilter-edit-builder-vars-new-html' => '解析新版本的HTML源代碼',
 	'abusefilter-edit-builder-vars-restrictions-edit' => '編輯該頁保護等級',
@@ -44734,7 +44740,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-revert-search' => '選擇動作',
 	'abusefilter-revert-filter' => '搜尋：',
 	'abusefilter-revert-preview-intro' => '下面列出了本次操作將要還原的防濫用過濾器操作。
-請仔細逐一檢查，並按下「確認」按鈕確認您的選擇。', # Fuzzy
+請仔細逐一檢查，並按下「{{int:abusefilter-revert-confirm}}」按鈕確認您的選擇。',
 	'abusefilter-revert-confirm' => '確認',
 	'abusefilter-revert-success' => '您已回復了防濫用[[Special:AbuseFilter/$1|過濾器 $1]]作出的所有動作。',
 	'abusefilter-revert-reason' => '自動回復防濫用過濾器$1的所有動作。
@@ -44742,7 +44748,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-revert-reasonfield' => '原因：',
 	'abusefilter-test' => '利用先前的編輯測試過濾器',
 	'abusefilter-test-intro' => '本頁讓您檢視下方方框中輸入的過濾器對最近$1次修改所造成的影響。
-若要載入其他現行的過濾器，請於編輯文字框下面的方框中鍵入其對應編號，然後按下「載入」鈕。', # Fuzzy
+若要載入其他現行的過濾器，請於編輯文字框下面的方框中鍵入其對應編號，然後按下「{{int:abusefilter-test-load}}」鈕。',
 	'abusefilter-test-legend' => '過濾器測試中',
 	'abusefilter-test-load-filter' => '載入過濾器編號：',
 	'abusefilter-test-submit' => '測試',
@@ -44753,7 +44759,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-test-page' => '對頁面的更改：',
 	'abusefilter-test-shownegative' => '顯示與過濾器不匹配的更改',
 	'abusefilter-test-syntaxerr' => '您輸入的過濾器有語法錯誤。
-請按下「語法檢查」鈕以取得完整說明。', # Fuzzy
+請按下「{{int:abusefilter-edit-check}}」鈕以取得完整說明。',
 	'abusefilter-test-badtitle' => '您輸入的頁面標題無效。它可能包含無法作為標題使用的一個或多個字符。',
 	'abusefilter-changeslist-examine' => '檢查',
 	'abusefilter-examine' => '檢查個別更改',
