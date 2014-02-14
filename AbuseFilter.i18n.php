@@ -11601,7 +11601,7 @@ Puedes recibir una explicación completa haciendo clic en el botón "{{int:abuse
 	'abusefilter-examine-nomatch' => 'El filtro no coincidió con este cambio.',
 	'abusefilter-examine-syntaxerror' => 'El filtro tiene una sintaxis no válida',
 	'abusefilter-examine-notfound' => 'El cambio que has solicitado no ha podido ser encontrado.',
-	'abusefilter-examine-incompatible' => 'El cambio que ha solicitado no está soportado por el filtro antiabusos',
+	'abusefilter-examine-incompatible' => 'El cambio solicitado no es compatible con el filtro antiabusos',
 	'abusefilter-examine-noresults' => 'No se ha encontrado ningún resultado para los parámetros de búsqueda que has proporcionado.',
 	'abusefilter-topnav' => "'''Barra de navegación del filtro antiabusos'''",
 	'abusefilter-topnav-home' => 'Inicio',
@@ -25079,7 +25079,7 @@ $messages['mk'] = array(
 	'abusefilter-edit-action-tag' => 'Означи го уредувањето за понатамошна проверка',
 	'abusefilter-edit-throttle-count' => 'Број на дозволени дејства:',
 	'abusefilter-edit-throttle-period' => 'Временски период:',
-	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|секунда|секунди}}',
+	'abusefilter-edit-throttle-seconds' => '{{PLURAL:$1|една секунда|$1 секунди}}',
 	'abusefilter-edit-throttle-groups' => "Истисок по групи:
 :''(еден по ред, комбинирање со запирки)''",
 	'abusefilter-edit-warn-message' => 'Системска порака за предупредувањето:',
@@ -43513,6 +43513,7 @@ Tó bá jẹ́ pé àsìṣe ló ṣẹlẹ̀, ẹ jọ̀wọ́ ẹ fi tó olùm
 );
 
 /** Cantonese (粵語)
+ * @author Antonytse
  * @author Horacewai2
  * @author Shinjiman
  * @author Waihorace
@@ -43654,8 +43655,7 @@ $messages['yue'] = array(
 	'abusefilter-edit-hidden' => '隱藏呢個過濾器響公共顯示嘅細節',
 	'abusefilter-edit-global' => '全域應用呢個過濾器', # Fuzzy
 	'abusefilter-edit-rules' => '條件:',
-	'abusefilter-edit-notes' => "咪模:
-:''(私人)''",
+	'abusefilter-edit-notes' => '筆記：',
 	'abusefilter-edit-lastmod' => '過濾器上次修改:',
 	'abusefilter-edit-lastmod-text' => '響$1由$2改',
 	'abusefilter-edit-hitcount' => '過濾器觸發次數:',
