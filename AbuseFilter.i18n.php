@@ -13684,7 +13684,7 @@ $3 {{PLURAL:$3|argument demandé|arguments demandés}}, $4 obtenu{{PLURAL:$4||s}
 	'abusefilter-exception-notlist' => "Demande d'un élément de tableau appliquée à un non-tableau au caractère $1.",
 	'abusefilter-action-tag' => 'Baliser',
 	'abusefilter-action-throttle' => 'Limiter les modifications',
-	'abusefilter-action-warn' => "Avertir l'utilisateur",
+	'abusefilter-action-warn' => 'Avertir l’utilisateur',
 	'abusefilter-action-blockautopromote' => 'Bloquer la promotion automatique',
 	'abusefilter-action-block' => 'Bloquer',
 	'abusefilter-action-degroup' => 'Exclure des groupes',
@@ -38946,6 +38946,7 @@ Filter description: $7 ($8)',
 /** Telugu (తెలుగు)
  * @author Chaduvari
  * @author Kiranmayee
+ * @author Ravichandra
  * @author Veeven
  * @author వైజాసత్య
  */
@@ -39095,6 +39096,7 @@ $messages['te'] = array(
 	'abusefilter-edit-description' => "వివరణ:
 :''(బహిరంగంగా కనిపిస్తుంది)''",
 	'abusefilter-edit-group' => 'వడపోత గుంపు:',
+	'abusefilter-edit-flags' => 'పతాకలు:',
 	'abusefilter-edit-enabled' => 'ఈ వడపోతని చేతనం చేయి',
 	'abusefilter-edit-deleted' => 'తొలగించినట్లుగా గుర్తించు',
 	'abusefilter-edit-hidden' => 'ఈ వడపోత యొక్క వివరాలని బహిరంగపరచకుండా దాచు',
@@ -39190,6 +39192,7 @@ $messages['te'] = array(
 	'abusefilter-edit-builder-vars-article-ns' => 'పేజీ పేరుబరి',
 	'abusefilter-edit-builder-vars-article-text' => 'పేజీ శీర్షిక (పేరుబరి లేకుండా)',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => 'పేజీ పూర్తి శీర్షిక',
+	'abusefilter-edit-builder-vars-article-views' => 'పుట వీక్షణలు',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'తరలింపు మూల పుట యొక్క పుట ID',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'తరలింపు మూల పుట యొక్క పేరుబరి',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'తరలింపు మూల పుట యొక్క శీర్షిక',
@@ -39202,6 +39205,7 @@ $messages['te'] = array(
 	'abusefilter-edit-builder-vars-user-age' => 'వాడుకరి ఖాతా యొక్క వయసు',
 	'abusefilter-edit-builder-vars-user-name' => 'వాడుకరి ఖాతా యొక్క పేరు',
 	'abusefilter-edit-builder-vars-user-groups' => 'వాడుకరి ఉన్న (అవ్యక్తమైన వాటితో సహా) గుంపులు',
+	'abusefilter-edit-builder-vars-user-blocked' => 'వాడుకరి నిరోధించబడి ఉన్నారా',
 	'abusefilter-edit-builder-vars-user-emailconfirm' => 'ఈమెయిలు చిరునామాని నిర్ధారించిన సమయం',
 	'abusefilter-edit-builder-vars-recent-contributors' => 'ఈ పుటకి తోడ్పడిన చివరి పదుగురు వాడుకరులు',
 	'abusefilter-edit-builder-vars-all-links' => 'కొత్త పాఠ్యం లోని అన్ని బయటి లంకెలు',
@@ -39218,10 +39222,13 @@ $messages['te'] = array(
 	'abusefilter-filter-log' => 'ఇటీవలి వడపోతల మార్పులు',
 	'abusefilter-history' => 'దుర్వినియోగ వడపోత #$1 యొక్క మార్పుల చరిత్ర',
 	'abusefilter-history-foruser' => '$1 యొక్క మార్పులు',
+	'abusefilter-history-hidden' => 'దాచినది',
+	'abusefilter-history-enabled' => 'చేతనమైంది',
 	'abusefilter-history-global' => 'సార్వత్రిక',
 	'abusefilter-history-timestamp' => 'సమయం',
 	'abusefilter-history-user' => 'వాడుకరి',
 	'abusefilter-history-public' => 'వడపోత బహిరంగ వివరణ',
+	'abusefilter-history-flags' => 'పతాకలు',
 	'abusefilter-history-filter' => 'వడపోత నియమం',
 	'abusefilter-history-comments' => 'వ్యాఖ్యలు',
 	'abusefilter-history-actions' => 'చర్యలు',
@@ -39236,6 +39243,7 @@ $messages['te'] = array(
 	'abusefilter-exception-unrecognisedkeyword' => '$1వ అక్షరం వద్ద గుర్తుతెలియని కీపదం $2.',
 	'abusefilter-exception-invalidoperator' => '$1వ అక్షరం వద్ద చెల్లని కారకం "$2".',
 	'abusefilter-exception-unrecognisedvar' => '$1వ అక్షరం వద్ద గుర్తుతెలియని చరరాశి $2',
+	'abusefilter-action-tag' => 'పట్టీ',
 	'abusefilter-action-warn' => 'హెచ్చరించు',
 	'abusefilter-action-block' => 'నిరోధించు',
 	'abusefilter-action-degroup' => 'గుంపుల నుండి తొలగించు',
