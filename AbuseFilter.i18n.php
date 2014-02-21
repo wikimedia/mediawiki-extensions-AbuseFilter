@@ -28969,10 +28969,10 @@ $messages['nn'] = array(
 	'abusefilter-desc' => 'Legg automatisk til heuristikk til endringar.',
 	'abusefilter' => 'Konfigurasjon av endringsfilter',
 	'abuselog' => 'Endringsfilterlogg',
-	'abusefilter-intro' => 'Velkomen til grensesnittet for handsaming av misbruksfilteret.
-Misbruksfilteret er ein sjølvgåande mekanisme i programvara som automatisk undersøkjer alle handlingar.
+	'abusefilter-intro' => 'Velkomen til grensesnittet for handsaming av endringsfilteret.
+Endringsfilteret er ein sjølvgåande mekanisme i programvara som automatisk undersøkjer alle handlingar.
 Dette grensesnittet viser ei liste over definerte filter, og gjer det mogeleg å endra dei.',
-	'abusefilter-mustbeeditor' => 'Av tryggingsgrunnar kan berre brukarar med rett til å endra misbruksfilteret nytta dette oppsettet.',
+	'abusefilter-mustbeeditor' => 'Av tryggingsgrunnar kan berre brukarar med rett til å endra endringsfilteret nytta dette grensesnittet.',
 	'abusefilter-warning' => "'''Åtvaring:''' Handlinga har automatisk vorte identifisert som skadeleg.
 Ikkje-konstruktive endringar vert raskt gjorde om, og langvarig forstyrrande endring vil føra til at kontoen din eller IP-adressa di vert blokkert. Meiner du dette er ei konstruktiv handling, kan du lagra henne om att for å stadfesta dette.
 Ei kortfatta skildring av misbruksregelen som handlinga di utløyste er: $1",
@@ -28990,7 +28990,7 @@ Ei kort skildring av misbruksregelen handlinga di braut er: $1',
 	'abusefilter-blocker' => 'Endringsfilter',
 	'abusefilter-blockreason' => 'Automatisk blokkert av misbruksfilteret. Regelskildring: $1',
 	'abusefilter-degroupreason' => 'Rettar fjerna automatisk av misbruksfilteret. Regelskildring: $1',
-	'abusefilter-accountreserved' => 'Denne kontoen er reservert for bruk av misbruksfilteret.',
+	'abusefilter-accountreserved' => 'Denne kontoen er reservert for bruk av endringsfilteret.',
 	'right-abusefilter-modify' => 'Endra endringsfilter',
 	'right-abusefilter-view' => 'Sjå endringsfilter',
 	'right-abusefilter-log' => 'Sjå misbruksloggen',
@@ -29255,7 +29255,7 @@ Merke skal vera korte og dei skal ikkje innehalda spesialteikn.',
 	'abusefilter-edit-builder-vars-minor-edit' => 'Om endringa er markert som småplukk eller ikkje',
 	'abusefilter-edit-builder-vars-file-sha1' => 'SHA1-hash av filinnhald',
 	'abusefilter-filter-log' => 'Nylege filterendringar',
-	'abusefilter-history' => 'Endringshistorikk for misbruksfilteret $1',
+	'abusefilter-history' => 'Endringshistorikk for endringsfilter #$1',
 	'abusefilter-history-foruser' => 'Endringar av $1',
 	'abusefilter-history-hidden' => 'løynd',
 	'abusefilter-history-enabled' => 'aktivert',
@@ -29300,7 +29300,7 @@ Venta {{PLURAL:$3|eitt argument|$3 argument}}, fekk $4',
 	'abusefilter-action-rangeblock' => 'Intervallblokker',
 	'abusefilter-action-disallow' => 'Nekt',
 	'abusefilter-revert-title' => 'Gjer om alle endringane til filteret $1',
-	'abusefilter-revert-intro' => 'Dette skjemaet lèt deg gjera om alle endringane gjorde av misbruksfilteret gjennom filteret $1. Ver varsam når du nyttar dette verktyet.',
+	'abusefilter-revert-intro' => 'Dette skjemaet lèt deg attenderulla alle endringane gjorde av endringsfilteret gjennom filter $1. Ver varsam når du nyttar dette verktøyet.',
 	'abusefilter-revert-preview-item' => '$1: $2 gjorde ei $3 på $4.
 Handlingar som  skal verta gjorde om: $5 ($6)',
 	'abusefilter-revert-search-legend' => 'Vel misbruksfilterhandlingar som skal gjerast om',
@@ -29308,11 +29308,11 @@ Handlingar som  skal verta gjorde om: $5 ($6)',
 	'abusefilter-revert-periodend' => 'Periodeslutt:',
 	'abusefilter-revert-search' => 'Vel handlingar',
 	'abusefilter-revert-filter' => 'Filter:',
-	'abusefilter-revert-preview-intro' => 'Under er handlingane gjorde av misbruksfilteret som vil verta gjorde om av denne handlinga.
-Sjå nøye gjennom dei, og trykk på «Stadfest» for å stadfesta valet ditt.', # Fuzzy
+	'abusefilter-revert-preview-intro' => 'Under er handlingane gjorde av endringsfilteret som vil attenderullast av denne handlinga.
+Sjå nøye gjennom dei, og klikk på «{{int:abusefilter-revert-confirm}}» for å stadfesta valet ditt.',
 	'abusefilter-revert-confirm' => 'Stadfest',
-	'abusefilter-revert-success' => 'Du har gjort om alle endringane gjorde av misbruksfilteret gjenom [[Special:AbuseFilter/$1|filter $1]].',
-	'abusefilter-revert-reason' => 'Automatisk omgjering av alle handlingane gjorde av misbruksfilteret gjennom filter $1.
+	'abusefilter-revert-success' => 'Du har attenderulla alle endringane gjorde av endringsfilteret gjenom [[Special:AbuseFilter/$1|filter $1]].',
+	'abusefilter-revert-reason' => 'Automatisk attenderulling av alle handlingane gjorde av endringsfilteret gjennom filter $1.
 Grunngjeving: $2',
 	'abusefilter-revert-reasonfield' => 'Årsak:',
 	'abusefilter-test' => 'Test eit filter på tidlegare endringar',
@@ -29331,7 +29331,7 @@ For å lasta inn eit filter som finst frå før, skriv inn filter-ID-en i boksen
 Du kan sjå ei utførleg skildring ved å trykka på «Saumfar syntaks»-knappen.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'undersøk',
 	'abusefilter-examine' => 'Granska einskilde endringar',
-	'abusefilter-examine-intro' => 'Denne sida lèt deg undesøkja variablane laga av misbruksfilteret for ei einskild endring, og lèt deg òg testa filter på henne.',
+	'abusefilter-examine-intro' => 'Denne sida lèt deg undesøkja variablane laga av endringsfilteret for ei einskild endring, og lèt deg òg testa filter på henne.',
 	'abusefilter-examine-legend' => 'Vel endringar',
 	'abusefilter-examine-diff' => 'Skilnadsadressa:',
 	'abusefilter-examine-user' => 'Brukar:',
