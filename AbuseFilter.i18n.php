@@ -7936,7 +7936,7 @@ Odpovídalo mu více než dovolený limit $1 % všech operací.",
 	'abusefilter-edit-warn-preview' => 'Zobrazit náhled zvoleného hlášení',
 	'abusefilter-edit-warn-edit' => 'Vytvořit/editovat zvolené hlášení',
 	'abusefilter-edit-tag-tag' => 'Přidat značky (jedna na řádek):',
-	'abusefilter-edit-denied' => 'Nemůžete se podívat na detaily tohoto filteru, protože není veřejný',
+	'abusefilter-edit-denied' => 'Nemůžete se podívat na detaily tohoto filtru, protože není veřejný',
 	'abusefilter-edit-main' => 'Parametry filtru',
 	'abusefilter-edit-done-subtitle' => 'Filtr upraven',
 	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Vaše úpravy]] [[Special:AbuseFilter/$1|filtru $1]] byly uloženy.',
@@ -23056,6 +23056,7 @@ Tags solle kuerz sinn, an et solle keng Spezialzeechen dra sinn.',
 	'abusefilter-exception-noparams' => 'Keng Parameter ugi fir d\'Funktioun "$2" beim Zeechen $1',
 	'abusefilter-exception-dividebyzero' => 'Versuch fir $2 duerch null ze dividéieren beim Buchstaw $1.',
 	'abusefilter-exception-unrecognisedvar' => 'Onerkannt Variabel $2 beim Zeechen $1',
+	'abusefilter-exception-overridebuiltin' => 'Illegaalt Iwwerschreiwe vun der agebauter Variabel "$2" beim Zeechen $1.',
 	'abusefilter-exception-outofbounds' => 'Ufro vum Element - dat et net gëtt - vun der Lëscht $2 (Gréisst vun der Lëscht = $3) beim Zeeche(n) $1.',
 	'abusefilter-action-tag' => 'Markéieren',
 	'abusefilter-action-throttle' => 'Lues maachen',
@@ -25097,7 +25098,7 @@ $messages['mk'] = array(
 	'abusefilter-edit-done-subtitle' => 'Филтерот е уреден',
 	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Вашите измени]] во [[Special:AbuseFilter/$1|филтерот $1]] се зачувани.',
 	'abusefilter-edit-badsyntax' => 'Во назначениот филтер има синтаксна грешка.
-Изводот од парсерот е: <pre>$1</pre>',
+Изводот од расчленувачот е: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Не можете да го уредувате овој филтер бидејќи содржи еден или повеќе ограничени дејствија.
 Побарајте овие промени за вас да ги направи некој корисник со дозвола за додавање на ограничени дејства.',
 	'abusefilter-edit-viewhistory' => 'Преглед на историјата на филтерот',
@@ -30872,6 +30873,9 @@ Krótki opis reguły nadużycia, do której Twoja akcji została dopasowana: $1'
 	'abusefilter-log-entry' => '$1: $2 uruchomił filtr nadużyć, wykonał „$3” na $4.
 Podjęta akcja: $5.
 Opis filtru: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 uruchomił filtr nadużyć, wykonał „$3” na $4.
+Podjęta akcja: $5;
+Opis filtru: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: $2 uruchomił $3, wykonał „$4” na $5.
 Podjęta akcja: $6.
 Opis filtru: $7 ($8)',
@@ -31183,6 +31187,7 @@ Aby załadować istniejący filtr, wprowadź jego ID do pola znajdującego się 
 	'abusefilter-test-shownegative' => 'Pokaż zmiany, które nie pasują do filtru',
 	'abusefilter-test-syntaxerr' => 'Wykryto błąd składni we wprowadzonym filtrze.
 Pełne wyjaśnienie dostępne jest po kliknięciu przycisku „{{int:abusefilter-edit-check}}”.',
+	'abusefilter-test-badtitle' => 'Wprowadzony przez Ciebie tytuł strony jest nieprawidłowy. Zawiera jeden lub więcej znaków, które nie mogą być używane w tytułach.',
 	'abusefilter-changeslist-examine' => 'sprawdź',
 	'abusefilter-examine' => 'Sprawdź pojedyncze zmiany',
 	'abusefilter-examine-intro' => 'Strona pozwala sprawdzić zmienne utworzone przez filtr nadużyć dla każdej zmiany oraz sprawdzić ją przy pomocy filtrów.',
@@ -31876,10 +31881,13 @@ Descrição da regra correspondida: $1',
 	'abusefilter-log-search-title' => 'Título:',
 	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Pesquisar',
-	'abusefilter-log-entry' => '$1: $2 despoletou um filtro de abuso, executando a operação "$3" em $4.
+	'abusefilter-log-entry' => '$1: $2 desencadeou um filtro de abusos ao executar a operação "$3" em $4.
 Ações tomadas: $5;
 Descrição do filtro: $6',
-	'abusefilter-log-detailedentry-meta' => '$1: $2 despoletou o $3, executando a operação "$4" em $5.
+	'abusefilter-log-entry-withdiff' => '$1: $2 desencadeou um filtro de abusos ao executar a operação "$3" em $4.
+Ações tomadas: $5;
+Descrição do filtro: $6 ($7)',
+	'abusefilter-log-detailedentry-meta' => '$1: $2 desencadeou o filtro $3 ao executar a operação "$4" em $5.
 Ações tomadas: $6;
 Descrição do filtro: $7 ($8)',
 	'abusefilter-log-detailedentry-global' => 'filtro global $1',
@@ -32108,9 +32116,11 @@ Etiquetas devem ser curtas e não devem conter caracteres especiais.',
 	'abusefilter-edit-builder-vars-all-links' => 'Todos os links externos no novo texto',
 	'abusefilter-edit-builder-vars-added-links' => 'Todos os links externos adicionados na edição',
 	'abusefilter-edit-builder-vars-removed-links' => 'Todos os links externos removidos na edição',
-	'abusefilter-edit-builder-vars-old-text' => 'Texto Wiki anterior da página, antes da edição',
-	'abusefilter-edit-builder-vars-new-text' => 'Texto Wiki novo da página, após a edição',
-	'abusefilter-edit-builder-vars-new-pst' => 'Texto wiki novo, transformado pré-gravação',
+	'abusefilter-edit-builder-vars-old-text' => 'Texto wiki anterior da página, antes da edição',
+	'abusefilter-edit-builder-vars-new-text' => 'Texto wiki novo da página, após a edição',
+	'abusefilter-edit-builder-vars-new-pst' => 'Texto wiki novo, transformado antes da gravação',
+	'abusefilter-edit-builder-vars-diff-pst' => 'Diferenças unificadas das alterações nesta edição, transformadas antes da gravação',
+	'abusefilter-edit-builder-vars-addedlines-pst' => 'Linhas adicionadas na edição, transformadas antes da gravação',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nova página de texto, sem qualquer formatação',
 	'abusefilter-edit-builder-vars-new-html' => 'Fonte HTML analisada, da nova revisão',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Nível de proteção de edição da página',
@@ -32185,8 +32195,8 @@ Por favor, verifique-as cuidadosamente e clique em "{{int:abusefilter-revert-con
 Motivo dado: $2',
 	'abusefilter-revert-reasonfield' => 'Motivo:',
 	'abusefilter-test' => 'Testar um filtro nas edições anteriores',
-	'abusefilter-test-intro' => 'Esta página permite-lhe verificar o filtro introduzido na caixa abaixo {{PLURAL:$1|na última alteração|nas últimas $1 alterações}}.
-Para carregar um filtro existente, insira o ID do filtro na caixa abaixo da caixa de edição, e clique o botão "Carregar".', # Fuzzy
+	'abusefilter-test-intro' => 'Esta página permite-lhe verificar o filtro introduzido na caixa abaixo contra {{PLURAL:$1|a última alteração|as últimas $1 alterações}}.
+Para carregar um filtro existente, insira a identificação (ID) do filtro na caixa abaixo da caixa de edição, e clique o botão "{{int:abusefilter-test-load}}".',
 	'abusefilter-test-legend' => 'Teste de filtro',
 	'abusefilter-test-load-filter' => 'Carregar filtro com ID:',
 	'abusefilter-test-submit' => 'Testar',
@@ -32197,7 +32207,8 @@ Para carregar um filtro existente, insira o ID do filtro na caixa abaixo da caix
 	'abusefilter-test-page' => 'Alterações à página:',
 	'abusefilter-test-shownegative' => 'Mostrar alterações que não correspondam ao filtro',
 	'abusefilter-test-syntaxerr' => 'O filtro que introduziu continha um erro de sintaxe.
-Para ver uma explicação completa clique o botão "Verificar sintaxe".', # Fuzzy
+Para ver uma explicação completa clique o botão "{{int:abusefilter-edit-check}}".',
+	'abusefilter-test-badtitle' => 'O título de página que inseriu não é válido. Talvez contenha um ou mais caracteres que não podem ser usados nos títulos.',
 	'abusefilter-changeslist-examine' => 'examinar',
 	'abusefilter-examine' => 'Examinar alterações individuais',
 	'abusefilter-examine-intro' => 'Esta página permite-lhe examinar as variáveis geradas pelo Filtro de Abusos para uma alteração individual, e testá-la com os filtros.',
