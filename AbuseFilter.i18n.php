@@ -35158,6 +35158,24 @@ $messages['scn'] = array(
 	'abusefilter-diff-title' => 'Diffirenzi ntra li virsiuni',
 );
 
+/** Scots (Scots)
+ * @author John Reid
+ */
+$messages['sco'] = array(
+	'abusefilter-desc' => 'Applies autæmatic heuristics til edits',
+	'abusefilter' => 'Abuiss filter confeeguration',
+	'abuselog' => 'Abuiss log',
+	'abusefilter-intro' => 'Welcome til the Abuiss Filter management interface.
+The Abuiss Filter is aen autæmated saffware mechanism o appliein autæmatic heuristics til aw actions.
+This interface shaws ae leet o defined filters, an permits theim tae be modified.',
+	'abusefilter-mustbeeditor' => 'Fer securitie raisons, yinly uisers wi the richt tae modify abuiss filters can uise this interface.',
+	'abusefilter-warning' => "'''Warnishment:''' This action haes been autæmaticly ideentified aes harmful.
+Onconstructive eidits will be quickly reverted,
+an egregious or repeated onconstructive eiditin will result in yer accoont or IP address bein blockit.
+Gif ye true this action tae be constructive, ye can haun it in again tae confirm it.
+Ae brief description o the abuiss rule that yer action matched is: $1",
+);
+
 /** Sassaresu (Sassaresu)
  * @author Jun Misugi
  */
@@ -39029,6 +39047,7 @@ $messages['te'] = array(
 	'abusefilter-log-detailedentry-local' => 'వడపోత $1',
 	'abusefilter-log-detailslink' => 'వివరాలు',
 	'abusefilter-log-diff' => 'తేడాలు',
+	'abusefilter-log-hidelink' => 'ప్రత్యక్షతను సవరించండి',
 	'abusefilter-log-details-legend' => 'చిట్టా పద్దు $1కి వివరాలు',
 	'abusefilter-log-details-var' => 'చరరాశి',
 	'abusefilter-log-details-val' => 'విలువ',
