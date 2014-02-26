@@ -37788,6 +37788,7 @@ Za više informacija pogledajte [[Special:AbuseFilter/history|pregled]] skorašn
 	'abusefilter-diff-pattern' => 'Uslovi filtera',
 	'abusefilter-diff-backhistory' => 'Povratak na istoriju filtera',
 	'abusefilter-import-submit' => 'Uvezi podatke',
+	'abusefilter-group-default' => 'Podrazumevano',
 );
 
 /** Seeltersk (Seeltersk)
