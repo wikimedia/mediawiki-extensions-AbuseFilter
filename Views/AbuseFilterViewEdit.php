@@ -507,7 +507,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		// Add export
-		$exportText = json_encode( array( 'row' => $row, 'actions' => $actions ) );
+		$exportText = FormatJson::encode( array( 'row' => $row, 'actions' => $actions ) );
 		$tools .= Xml::tags( 'a', array( 'href' => '#', 'id' => 'mw-abusefilter-export-link' ),
 			$this->msg( 'abusefilter-edit-export' )->parse() );
 		$tools .= Xml::element( 'textarea',
@@ -899,7 +899,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Check for importing
 		$import = $request->getVal( 'wpImportText' );
 		if ( $import ) {
-			$data = json_decode( $import );
+			$data = FormatJson::decode( $import );
 
 			$importRow = $data->row;
 			$actions = wfObjectToArray( $data->actions );
