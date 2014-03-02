@@ -9769,7 +9769,7 @@ Qe detayanê hemî, bivine [[Special:AbuseFilter/history|liste]]yê vurnayîşê
 Wîkî çimeyî de bine "{{int:abusefilter-edit-tools}}" de "{{int:abusefilter-edit-export}}" klik bike.
 Kutiyê nuştîşî kopye bike u ena kutiyê nuştîş rê na pa u klik bike "{{int:abusefilter-import-submit}}".',
 	'abusefilter-import-submit' => 'Malumata zerre ke',
-	'abusefilter-group-default' => 'Hesıbyaye',
+	'abusefilter-group-default' => 'Hesabiyaye',
 );
 
 /** Lower Sorbian (dolnoserbski)
@@ -12916,14 +12916,14 @@ Pyydä rajoitettujen toimintojen lisäämiseen tarvittavien oikeuksien haltijalt
 	'abusefilter-edit-tools' => 'Työkalut:',
 	'abusefilter-edit-test-link' => 'Kokeile tätä suodatinta tuoreisiin muokkauksiin',
 	'abusefilter-edit-export' => 'Vie tämä suodatin toiseen wikiin',
-	'abusefilter-edit-syntaxok' => 'Ei havaittuja syntaksivirheitä.',
+	'abusefilter-edit-syntaxok' => 'Ei syntaksivirheitä havaittu.',
 	'abusefilter-edit-syntaxerr' => 'Syntaksivirhe havaittu: $1',
 	'abusefilter-edit-bad-tags' => 'Yksi tai useampi määrittämistäsi merkkauksista (tags) ei kelpaa.
 Merkkausten tulisi olla lyhyitä ja ilman erikoismerkkejä.',
 	'abusefilter-edit-notallowed' => 'Sinulla ei ole oikeutta luoda tai muokata väärinkäyttösuodattimia',
 	'abusefilter-edit-notallowed-global' => 'Sinulla ei ole oikeutta luoda tai muokata järjestelmänlaajuisia väärinkäyttösuodattimia',
 	'abusefilter-edit-notallowed-global-custom-msg' => 'Räätälöityjä varoitusviestejä ei voi liittää järjestelmänlaajuisiin suodattimiin',
-	'abusefilter-edit-builder-select' => 'Valitse vaihtoehdoista lisätäksesi sen kohdistimen kohdalle',
+	'abusefilter-edit-builder-select' => 'Valitse tästä vaihtoehto joka lisätään kohdistimen jälkeen',
 	'abusefilter-edit-builder-group-op-arithmetic' => 'Aritmeettiset operaattorit',
 	'abusefilter-edit-builder-op-arithmetic-addition' => 'Lisäys (+)',
 	'abusefilter-edit-builder-op-arithmetic-subtraction' => 'Vähennys (-)',
@@ -12992,7 +12992,7 @@ Merkkausten tulisi olla lyhyitä ja ilman erikoismerkkejä.',
 	'abusefilter-edit-builder-vars-movedto-id' => 'Siirron kohdesivun tunnistenumero',
 	'abusefilter-edit-builder-vars-movedto-ns' => 'Siirron kohdesivun nimiavaruus',
 	'abusefilter-edit-builder-vars-movedto-text' => 'Siirron kohdesivun nimi',
-	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Koko nimi siirrettävän sivun kohdesivulle',
+	'abusefilter-edit-builder-vars-movedto-prefixedtext' => 'Siirron kohdesivun koko nimi',
 	'abusefilter-edit-builder-vars-user-editcount' => 'Käyttäjän muokkausmäärä',
 	'abusefilter-edit-builder-vars-user-age' => 'Käyttäjätunnuksen ikä',
 	'abusefilter-edit-builder-vars-user-name' => 'Käyttäjätunnuksen nimi',
@@ -13010,7 +13010,7 @@ Merkkausten tulisi olla lyhyitä ja ilman erikoismerkkejä.',
 	'abusefilter-edit-builder-vars-addedlines-pst' => 'Muokkauksessa lisätyt rivit, "pre-save transformed"',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Sivun uusin tekstimuoto, riisuttuna kaikista koodimerkinnöistä',
 	'abusefilter-edit-builder-vars-new-html' => 'Jäsennetty uuden version HTML-lähdekoodi',
-	'abusefilter-edit-builder-vars-restrictions-edit' => 'Muuta sivun suojausta',
+	'abusefilter-edit-builder-vars-restrictions-edit' => 'Sivun muokkaussuojauksen taso',
 	'abusefilter-edit-builder-vars-restrictions-move' => 'Sivun siirtosuojauksen taso',
 	'abusefilter-edit-builder-vars-restrictions-create' => 'Sivun luontisuojaus',
 	'abusefilter-edit-builder-vars-restrictions-upload' => 'Tiedoston tallennussuojaus',
@@ -13019,7 +13019,7 @@ Merkkausten tulisi olla lyhyitä ja ilman erikoismerkkejä.',
 	'abusefilter-edit-builder-vars-old-html' => 'Vanha sivun wikiteksti jäsennettynä HTML:ksi',
 	'abusefilter-edit-builder-vars-minor-edit' => 'Onko muokkaus merkitty pieneksi muutokseksi vai ei',
 	'abusefilter-edit-builder-vars-file-sha1' => 'Tiedoston sisällön SHA1-tiiviste',
-	'abusefilter-filter-log' => 'Tuoreet muutokset suodattimiin',
+	'abusefilter-filter-log' => 'Suodattimien viimeisimmät muutokset',
 	'abusefilter-history' => 'Muutoshistoria väärinkäyttösuodattimelle numero $1',
 	'abusefilter-history-foruser' => 'Käyttäjän $1 muokkaukset',
 	'abusefilter-history-hidden' => 'Piilotettu',
@@ -13082,8 +13082,8 @@ Tarkista ne huolellisesti ja paina "{{int:abusefilter-revert-confirm}}", niin to
 Annettu syy: $2',
 	'abusefilter-revert-reasonfield' => 'Syy:',
 	'abusefilter-test' => 'Kokeile suodatinta aikaisempiin muokkauksiin',
-	'abusefilter-test-intro' => 'Tällä sivulla voit tarkistaa alla olevaan kenttään syötetyn suodattimen viimeisintä $1 {{PLURAL:$1|muutosta}} vasten.
-Lataa olemassa oleva suodatin kirjoittamalla sen tunnistenumero tekstikentän alapuolella olevaan kenttään ja napsauta ”Lataa”-painiketta.', # Fuzzy
+	'abusefilter-test-intro' => 'Tällä sivulla voit tutkia alla olevaan kenttään syötetyn suodattimen toimintaa viimeisintä $1 {{PLURAL:$1|muutosta}} vasten.
+Lataa olemassa oleva suodatin kirjoittamalla sen tunnistenumero tekstikentän alapuolella olevaan kenttään ja napsauta ”{{int:abusefilter-test-load}}”-painiketta.',
 	'abusefilter-test-legend' => 'Suodattimen kokeilu',
 	'abusefilter-test-load-filter' => 'Lataa suodatin numero:',
 	'abusefilter-test-submit' => 'Kokeile',
@@ -13094,7 +13094,7 @@ Lataa olemassa oleva suodatin kirjoittamalla sen tunnistenumero tekstikentän al
 	'abusefilter-test-page' => 'Muutokset, jotka on tehty sivulle:',
 	'abusefilter-test-shownegative' => 'Näytä muutokset, jotka eivät täsmää suodattimen kanssa',
 	'abusefilter-test-syntaxerr' => 'Suodatin, jonka syötit, sisälsi syntaksivirheen.
-Lisätietoja saat napsauttamalla ”Tarkista syntaksi” -painiketta.', # Fuzzy
+Lisätietoja saat napsauttamalla ”{int:abusefilter-edit-check}}” -painiketta.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'tutki',
 	'abusefilter-examine' => 'Tutki yksittäisiä muutoksia',
 	'abusefilter-examine-intro' => 'Tällä sivulla voit tutkia väärinkäyttösuodattimen muuttujia yksittäisen muutoksen suhteen ja testata sitä suodattimilla.',
@@ -13126,7 +13126,7 @@ Lisätietoja saat suodattimen [[Special:AbuseFilter/history|viimeisimpien muutos
 	'abusefilter-log-noresults' => 'Ei tuloksia',
 	'abusefilter-diff-title' => 'Versioiden välinen ero',
 	'abusefilter-diff-item' => 'Kohde',
-	'abusefilter-diff-version' => 'Versio päivätty $1 käyttäjältä $2.', # Fuzzy
+	'abusefilter-diff-version' => 'Versio päivätty $1 {{GENDER:$3|käyttäjältä}} $2.',
 	'abusefilter-diff-info' => 'Perustiedot',
 	'abusefilter-diff-pattern' => 'Suodattimen ehdot',
 	'abusefilter-diff-invalid' => 'Pyydettyjä versioita ei voitu hakea',
@@ -13137,7 +13137,7 @@ Lisätietoja saat suodattimen [[Special:AbuseFilter/history|viimeisimpien muutos
 Napsauta ”{{int:abusefilter-edit-export}}” kohdassa ”{{int:abusefilter-edit-tools}}” lähdewikin muokkausnäkymässä.
 Kopioi ilmestyvän tekstikentän sisältö ja liitä se tähän tekstikenttään, jonka jälkeen napsauta ”{{int:abusefilter-import-submit}}”.',
 	'abusefilter-import-submit' => 'Tuo tiedot',
-	'abusefilter-group-default' => 'Oletus',
+	'abusefilter-group-default' => 'Yleinen',
 );
 
 /** Faroese (føroyskt)
@@ -17133,6 +17133,7 @@ $messages['ht'] = array(
  * @author Dunee
  * @author Glanthor Reviol
  * @author Misibacsi
+ * @author Tacsipacsi
  * @author Tgr
  */
 $messages['hu'] = array(
@@ -17143,15 +17144,15 @@ $messages['hu'] = array(
 A Vandálszűrő egy automatizált szoftver, ami minden műveletnél automatikus heurisztikát alkalmaz.
 Itt tekintheted át és módosíthatod a szűrőket.',
 	'abusefilter-mustbeeditor' => 'Biztonsági okokból csak az erre feljogosított szerkesztők módosíthatják a szűrőket és használhatják ezt a felületet.',
-	'abusefilter-warning' => "'''Figyelmeztetés''': ez a művelet károsnak lett minősítve.
+	'abusefilter-warning' => "'''Figyelmeztetés:''' ez a művelet károsnak lett minősítve.
 A nem építő jellegű szerkesztések gyorsan vissza lesznek vonva,
 a többszöri ilyen jellegű szerkesztés a felhasználói fiók vagy az IP-cím blokkolását vonja maga után.
 Ha biztos vagy benne, hogy a szerkesztésed építő jellegű, kattints az Elküld gombra a megerősítéshez.
-A visszaélési szabály rövid leírása, amelynek az általad végzett művelet megfelelt: $1", # Fuzzy
+A visszaélési szabály rövid leírása, amelynek az általad végzett művelet megfelelt: $1",
 	'abusefilter-disallowed' => 'Ez a művelet automatikusan károsnak lett minősítve, így
 nem hajtható végre.
-Ha úgy gondolod, hogy a szerkesztésed építő jellegű, lépj kapcsolatba egy adminisztrátorral, és jelezd neki, hogy mit szerettél volna csinálni.
-A visszaélési szabály rövid leírása, amelynek az általad végzett művelet megfelelt: $1', # Fuzzy
+Ha úgy gondolod, hogy az általad végzett művelet építő jellegű, lépj kapcsolatba egy adminisztrátorral, és jelezd neki, hogy mit szerettél volna csinálni.
+A visszaélési szabály rövid leírása, amelynek az általad végzett művelet megfelelt: $1',
 	'abusefilter-blocked-display' => 'Ez a művelet automatikusan károsnak lett minősítve,
 így nem hajtható végre.
 A(z) {{SITENAME}} védelme érdekében a szerkesztői fiókodat és az összes hozzátartozó IP címet blokkoltuk.
@@ -17292,8 +17293,7 @@ mert a műveletek több, mint $1%-ánál egyezést talált.",
 	'abusefilter-edit-hidden' => 'A szűrő adatainak elrejtése',
 	'abusefilter-edit-global' => 'Globális szűrő',
 	'abusefilter-edit-rules' => 'Feltételek:',
-	'abusefilter-edit-notes' => "Megjegyzések:
-:''(privát)''",
+	'abusefilter-edit-notes' => 'Megjegyzések:',
 	'abusefilter-edit-lastmod' => 'Utoljára módosította:',
 	'abusefilter-edit-lastmod-text' => '$2, $1-kor',
 	'abusefilter-edit-hitcount' => 'Találatok:',
@@ -17320,10 +17320,10 @@ mert a műveletek több, mint $1%-ánál egyezést talált.",
 	'abusefilter-edit-warn-preview' => 'Kiválasztott üzenet előnézete',
 	'abusefilter-edit-warn-edit' => 'Kiválasztott üzenet létrehozása / szerkesztése',
 	'abusefilter-edit-tag-tag' => 'Címkék (soronként egy):',
-	'abusefilter-edit-denied' => 'Nem tekintheted meg a szűrő tulajdonságait, mert el vannak rejtve a nyilvánosság elől', # Fuzzy
+	'abusefilter-edit-denied' => 'Nem tekintheted meg a szűrő tulajdonságait, mert el vannak rejtve a nyilvánosság elől.',
 	'abusefilter-edit-main' => 'A szűrő tulajdonságai',
 	'abusefilter-edit-done-subtitle' => 'A szűrő módosítva',
-	'abusefilter-edit-done' => 'Sikeresen megváltoztattad a(z) $1 szűrő tulajdonságait.', # Fuzzy
+	'abusefilter-edit-done' => 'Sikeresen [[Special:AbuseFilter/history/$1/diff/prev/$2|megváltoztattad]] a(z) [[Special:AbuseFilter/$1|$1]] szűrő tulajdonságait.',
 	'abusefilter-edit-badsyntax' => 'Szintaktikai hiba található az általad megadott szűrőben.
 Az elemző kimenete a következő volt: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Nem szerkesztheted a szűrőt, mert az egy vagy több korlátozott hozzáférésű műveletet tartalmaz.
@@ -17488,7 +17488,7 @@ Visszavonásra váló műveletek: $5 ($6)',
 	'abusefilter-revert-search' => 'Műveletek kiválasztása',
 	'abusefilter-revert-filter' => 'Szűrő:',
 	'abusefilter-revert-preview-intro' => 'Ez a művelet a vandálszűrő alábbi műveleteit fogja visszavonni.
-Alaposan nézd át, hogy mi fog történni, és csak utána kattints a „Biztosan” gombra.', # Fuzzy
+Alaposan nézd át, hogy mi fog történni, és csak utána kattints a „{{int:abusefilter-revert-confirm}}” gombra.',
 	'abusefilter-revert-confirm' => 'Megerősítés',
 	'abusefilter-revert-success' => 'A(z) [[Special:AbuseFilter/$1|$1 szűrő]] miatt visszavontad a vandálszűrő összes műveletét.',
 	'abusefilter-revert-reason' => 'A(z) $1 szűrő miatt a vandálszűrő összes művelete automatikus visszavonásra kerül.
@@ -17496,7 +17496,7 @@ Indoklás: $2',
 	'abusefilter-revert-reasonfield' => 'Indoklás:',
 	'abusefilter-test' => 'Szűrő kipróbálása korábbi szerkesztésekkel',
 	'abusefilter-test-intro' => 'Ezen a lapon a lenti szövegdobozba beírt szűrő eredményességét próbálhatod ki az utolsó $1 szerkesztésen.
-Létező szűrő betöltéséhez a szerkesztési mező alá írd be a szűrő számát és kattints a „Betöltés” gombra.', # Fuzzy
+Létező szűrő betöltéséhez a szerkesztési mező alá írd be a szűrő számát és kattints a „{{int:abusefilter-test-load}}” gombra.',
 	'abusefilter-test-legend' => 'Szűrő tesztelése',
 	'abusefilter-test-load-filter' => 'Szűrő azonosító szerinti betöltése:',
 	'abusefilter-test-submit' => 'Na mutasd!',
@@ -17507,7 +17507,7 @@ Létező szűrő betöltéséhez a szerkesztési mező alá írd be a szűrő sz
 	'abusefilter-test-page' => 'Az oldal változtatásai:',
 	'abusefilter-test-shownegative' => 'A szűrőn fenn nem akadt változtatások megmutatása',
 	'abusefilter-test-syntaxerr' => 'A beírt szűrőd szintaktikai hibát tartalmaz.
-A hiba részletes leírásához kattints az „Ellenőrzés” gombra.', # Fuzzy
+A hiba részletes leírásához kattints az „{{int:abusefilter-edit-check}}” gombra.',
 	'abusefilter-changeslist-examine' => 'megvizsgál',
 	'abusefilter-examine' => 'Egyedi változtatások megvizsgálása',
 	'abusefilter-examine-intro' => 'Ezen az oldalon megnézheted, hogy a vandálszűrő egy adott változtatásra milyen változókat generál, majd ezeket átfuttathatod a szűrőkön.',
@@ -22060,10 +22060,11 @@ $messages['krc'] = array(
 
 /** Krio (Krio)
  * @author Jose77
+ * @author Protostar
  */
 $messages['kri'] = array(
-	'abusefilter-log-search-submit' => 'Luk foh am',
-	'abusefilter-list-edit' => 'Chenj',
+	'abusefilter-log-search-submit' => 'Sarch',
+	'abusefilter-list-edit' => 'Èdit',
 	'abusefilter-edit-history' => 'Istri', # Fuzzy
 );
 
@@ -25770,6 +25771,7 @@ $messages['ml'] = array(
 
 /** Mongolian (монгол)
  * @author Chinneeb
+ * @author MongolWiki
  * @author Wisdom
  */
 $messages['mn'] = array(
@@ -25783,6 +25785,7 @@ $messages['mn'] = array(
 	'right-abusefilter-modify' => 'Доромжлол шүүгчид өөрчлөлт хийх',
 	'abusefilter-log-search-submit' => 'Хайх',
 	'abusefilter-history-comments' => 'Тайлбар',
+	'abusefilter-action-tag' => 'Шошго',
 	'abusefilter-revert-filter' => 'Шүүлтүүр:',
 	'abusefilter-examine-submit' => 'Хайх',
 );
@@ -32135,7 +32138,7 @@ Etiquetas devem ser curtas e não devem conter caracteres especiais.',
 	'abusefilter-filter-log' => 'Modificações recentes de filtros',
 	'abusefilter-history' => 'Histórico de modificações do Filtro de Abusos #$1',
 	'abusefilter-history-foruser' => 'Modificações por $1',
-	'abusefilter-history-hidden' => 'Ocultado',
+	'abusefilter-history-hidden' => 'Oculto',
 	'abusefilter-history-enabled' => 'Ativado',
 	'abusefilter-history-global' => 'Global',
 	'abusefilter-history-timestamp' => 'Data',
@@ -39048,7 +39051,7 @@ $messages['te'] = array(
 	'abusefilter-log-detailedentry-local' => 'వడపోత $1',
 	'abusefilter-log-detailslink' => 'వివరాలు',
 	'abusefilter-log-diff' => 'తేడాలు',
-	'abusefilter-log-hidelink' => 'ప్రత్యక్షతను సవరించండి',
+	'abusefilter-log-hidelink' => 'దృశ్యతను సవరించండి',
 	'abusefilter-log-details-legend' => 'చిట్టా పద్దు $1కి వివరాలు',
 	'abusefilter-log-details-var' => 'చరరాశి',
 	'abusefilter-log-details-val' => 'విలువ',
@@ -39274,7 +39277,7 @@ $messages['te'] = array(
 	'abusefilter-exception-unrecognisedkeyword' => '$1వ అక్షరం వద్ద గుర్తుతెలియని కీపదం $2.',
 	'abusefilter-exception-invalidoperator' => '$1వ అక్షరం వద్ద చెల్లని కారకం "$2".',
 	'abusefilter-exception-unrecognisedvar' => '$1వ అక్షరం వద్ద గుర్తుతెలియని చరరాశి $2',
-	'abusefilter-action-tag' => 'పట్టీ',
+	'abusefilter-action-tag' => 'ట్యాగు',
 	'abusefilter-action-warn' => 'హెచ్చరించు',
 	'abusefilter-action-block' => 'నిరోధించు',
 	'abusefilter-action-degroup' => 'గుంపుల నుండి తొలగించు',
