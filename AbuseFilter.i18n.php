@@ -29333,7 +29333,7 @@ For å lasta inn eit filter som finst frå før, skriv inn filter-ID-en i boksen
 	'abusefilter-test-syntaxerr' => 'Du skreiv inn eit filter som inneheld ein syntaksfeil.
 Du kan sjå ei utførleg skildring ved å trykka på «Saumfar syntaks»-knappen.', # Fuzzy
 	'abusefilter-changeslist-examine' => 'undersøk',
-	'abusefilter-examine' => 'Granska einskilde endringar',
+	'abusefilter-examine' => 'Gransk einskildendringar',
 	'abusefilter-examine-intro' => 'Denne sida lèt deg undesøkja variablane laga av endringsfilteret for ei einskild endring, og lèt deg òg testa filter på henne.',
 	'abusefilter-examine-legend' => 'Vel endringar',
 	'abusefilter-examine-diff' => 'Skilnadsadressa:',
@@ -39266,7 +39266,7 @@ $messages['te'] = array(
 	'abusefilter-history-filter' => 'వడపోత నియమం',
 	'abusefilter-history-comments' => 'వ్యాఖ్యలు',
 	'abusefilter-history-actions' => 'చర్యలు',
-	'abusefilter-history-backedit' => 'తిరిగి వడపోత పరికరానికి',
+	'abusefilter-history-backedit' => 'తిరిగి వడపోత సవరణకు',
 	'abusefilter-history-deleted' => 'తొలగించారు',
 	'abusefilter-history-filterid' => 'వడపోత',
 	'abusefilter-history-select-legend' => 'అన్వేషణని మెరుగుపరచండి',
@@ -39277,7 +39277,7 @@ $messages['te'] = array(
 	'abusefilter-exception-unexpectedatend' => '$1 వ అక్షరం దగ్గర "$2" ని ఊహించలేదు.',
 	'abusefilter-exception-expectednotfound' => '$1 అక్షరం వద్ద $2 ఉండాలి, కానీ లేదు (దానిబదులుగా $3 $4 ఉంది).',
 	'abusefilter-exception-unrecognisedkeyword' => '$1వ అక్షరం వద్ద గుర్తుతెలియని కీపదం $2.',
-	'abusefilter-exception-unexpectedtoken' => '$1 వ అక్షరం దగ్గర $2 రకానికి చెందిన "$3" ని ఊహించలేదు.',
+	'abusefilter-exception-unexpectedtoken' => 'కారెక్టరు $1 దగ్గర ఊహించని టోకెన్ "$3" ($2 రకానికి చెందినది).',
 	'abusefilter-exception-invalidoperator' => '$1వ అక్షరం వద్ద చెల్లని కారకం "$2".',
 	'abusefilter-exception-unrecognisedtoken' => '$1వ అక్షరం వద్ద గుర్తుతెలియని టోకెను "$2".',
 	'abusefilter-exception-noparams' => '$1వ అక్షరం వద్ద "$2" ఫంక్షనుకు ఏ పరామితులూ ఇవ్వలేదు.',
