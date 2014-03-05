@@ -16262,6 +16262,7 @@ $messages['hif-latn'] = array(
 /** Croatian (hrvatski)
  * @author Dalibor Bosits
  * @author Ex13
+ * @author MaGa
  * @author Roberta F.
  * @author SpeedyGonsales
  */
@@ -16371,7 +16372,7 @@ Opis filtra: $7 ($8)',
 	'abusefilter-list-edit' => 'Uredi',
 	'abusefilter-list-details' => 'Detalji',
 	'abusefilter-list-limit' => 'Stavki po stranici:',
-	'abusefilter-list-lastmodified' => 'Zadnje uređivanje',
+	'abusefilter-list-lastmodified' => 'Posljednje uređivanje',
 	'abusefilter-list-group' => 'Skupina filtara',
 	'abusefilter-hidden' => 'Privatno',
 	'abusefilter-unhidden' => 'Javno',
@@ -16402,7 +16403,7 @@ Opis filtra: $7 ($8)',
 	'abusefilter-reautoconfirm-none' => 'Ovom suradniku {{GENDER:$1|njegov|njen}} status automatski potvrđeni nije bio suspendiran.',
 	'abusefilter-reautoconfirm-notallowed' => 'Nije vam dozvoljeno vratiti autoconfirmed status.',
 	'abusefilter-reautoconfirm-done' => 'Autoconfirmed status je vraćen',
-	'abusefilter-status' => 'Od {{PLURAL:$1|zadnje akcije|zadnje $1 akcije|zadnjih $akcija}}, $2 ($3%) {{PLURAL:$2|dostigla je|dostigle su|dostigle su}} granicu od $4, i $5 ($6%) {{PLURAL:$5|1=se podudara|se podudaraju}} s jednim od trenutno omogućenih filtara.', # Fuzzy
+	'abusefilter-status' => 'Od {{PLURAL:$1|posljednje akcije|posljednje $1 akcije|posljednjih $1 akcija}}, $2 ($3%) {{PLURAL:$2|dostigla je|dostigle su|dostigle su}} granicu od $4, i $5 ($6%) {{PLURAL:$5|1=se podudara|se podudaraju}} s jednim od trenutno omogućenih filtara.', # Fuzzy
 	'abusefilter-edit' => 'Uređivanje filtra zloporaba',
 	'abusefilter-edit-subtitle' => 'Uređujete filtar $1',
 	'abusefilter-edit-subtitle-new' => 'Stvaram filtar',
@@ -16411,8 +16412,8 @@ Iskazane su statistike za najnoviju inačicu filtra.
 Ako spremite svoje promjene, prebrisati ćete sve promjene nastale od inačice koju upravo uređujete.</strong> &bull;
 [[Special:AbuseFilter/history/$2|Povratak na povijest stranice ovog filtra]].',
 	'abusefilter-edit-status-label' => 'Statistike:',
-	'abusefilter-edit-status' => 'Od {{PLURAL:$1|zadnjih akcije|zadnje $1 akcije|zadnjih $1 akcija}}, ovaj filtar poklopio se $2 ($3%).
-U prosjeku, njegovo radno vrijeme je $4ms, a troši  $5 {{PLURAL:$5|uvjet|uvjeta|uvjeta}} od granice.',
+	'abusefilter-edit-status' => 'Od {{PLURAL:$1|posljednje akcije|posljednje $1 akcije|posljednjih $1 akcija}}, ovaj filtar poklopio se $2 ($3%).
+U prosjeku, njegovo radno vrijeme je $4ms, a troši  $5 {{PLURAL:$5|uvjet|uvjeta|uvjeta}} od granice.', # Fuzzy
 	'abusefilter-edit-throttled' => "'''Upozorenje''': Ovaj filtar je automatski deaktiviran kao mjera sigurnosti.
 Dostignuta je granicu od podudaranja s više od $1% akcija suradnika.",
 	'abusefilter-edit-new' => 'Novi filtar',
@@ -16429,7 +16430,7 @@ Dostignuta je granicu od podudaranja s više od $1% akcija suradnika.",
 	'abusefilter-edit-rules' => 'Uvjeti:',
 	'abusefilter-edit-notes' => "Napomene:
 :''(privatno)''", # Fuzzy
-	'abusefilter-edit-lastmod' => 'Zadnja izmjena filtra:',
+	'abusefilter-edit-lastmod' => 'Posljednja izmjena filtra:',
 	'abusefilter-edit-lastmod-text' => '$1 suradnika $2',
 	'abusefilter-edit-hitcount' => 'Broj poklapanja filtra:',
 	'abusefilter-edit-consequences' => 'Radnje poduzete kod podudaranja',
@@ -16632,8 +16633,8 @@ Molimo provjerite ih pažljivo, i kliknite na "Potvrdi" kako biste potvrdili svo
 Razlog dan: $2',
 	'abusefilter-revert-reasonfield' => 'Razlog:',
 	'abusefilter-test' => 'Testiraj filtar s prethodnim uređivanjem',
-	'abusefilter-test-intro' => 'Ova stranica omogućava provjeru filtra unešenog u donji okvir sa {{PLURAL:$1|zadnjim $1 uređivanjem|zadnjih $1 uređivanja}}.
-Za učitavanje postojećeg filtra, upišite ID filtra u okvir ispod okvira za uređenjivanje i kliknite tipku "Učitaj".', # Fuzzy
+	'abusefilter-test-intro' => 'Ova stranica omogućava provjeru filtra unešenog u donji okvir s {{PLURAL:$1|posljednjim $1 uređivanjem|posljednjih $1 uređivanja}}.
+Za učitavanje postojećeg filtra, upišite ID filtra u okvir ispod okvira za uređenjivanje i kliknite tipku "Učitaj".',
 	'abusefilter-test-legend' => 'Testiranje filtra',
 	'abusefilter-test-load-filter' => 'Učitaj ID filtra:',
 	'abusefilter-test-submit' => 'Test',
