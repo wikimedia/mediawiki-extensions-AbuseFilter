@@ -9030,10 +9030,10 @@ Im Durchschnitt betrug die Bearbeitungszeit $4 ms und sie benötigten {{PLURAL:$
 	'abusefilter-edit-warn-preview' => 'Vorschau der gewählten Systemnachricht',
 	'abusefilter-edit-warn-edit' => 'Gewählte Systemnachricht erstellen/bearbeiten',
 	'abusefilter-edit-tag-tag' => 'Gültige Benennungen (eine pro Zeile):',
-	'abusefilter-edit-denied' => 'Du kannst die Details dieses Filters nicht einsehen, weil sie versteckt sind.',
+	'abusefilter-edit-denied' => 'Du kannst die Einzelheiten zu diesem Filter nicht einsehen, weil sie versteckt sind.',
 	'abusefilter-edit-main' => 'Filterparameter',
 	'abusefilter-edit-done-subtitle' => 'Filter bearbeitet',
-	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Deine Änderungen]] am [[Special:AbuseFilter/$1|Filter $1]] wurden erfolgreich gespeichert.',
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Deine Änderungen]] am [[Special:AbuseFilter/$1|Filter „$1“]] wurden erfolgreich gespeichert.',
 	'abusefilter-edit-badsyntax' => 'Der von dir spezifizierte Filter enthält einen Syntaxfehler. Die Parserausgabe lautete: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Du kannst diesen Filter nicht bearbeiten, weil er eine oder mehrere verbotene Aktionen enthält.
 Bitte einen Benutzer, der verbotene Aktionen hinzufügen kann, darum, die Änderung für dich vorzunehmen.',
@@ -9204,8 +9204,8 @@ Aktionen, die rückgängig gemacht werden: $5 ($6)',
 	'abusefilter-revert-periodend' => 'Ende des Zeitraums:',
 	'abusefilter-revert-search' => 'Aktionen auswählen:',
 	'abusefilter-revert-filter' => 'Filter:',
-	'abusefilter-revert-preview-intro' => 'Unten stehen die Aktionen des Missbrauchsfilters, die hiermit rückgängig gemacht werden.
-Bitte überprüfe sie sorgfältig und klicke auf „{{int:abusefilter-revert-confirm}}“, um deine Auswahl zu bestätigen.',
+	'abusefilter-revert-preview-intro' => 'Unten sind die Aktionen des Missbrauchsfilters angegeben, die hiermit rückgängig gemacht werden.
+Bitte überprüfe sie sorgfältig und klicke dann auf „{{int:abusefilter-revert-confirm}}“, um deine Auswahl zu bestätigen.',
 	'abusefilter-revert-confirm' => 'Bestätigen',
 	'abusefilter-revert-success' => 'Du hast alle Aktionen des Missbrauchsfilters, die aufgrund von [[Special:AbuseFilter/$1|Filter $1]] vorgenommen wurden, rückgängig gemacht.',
 	'abusefilter-revert-reason' => 'Automatisches Zurücksetzen aller Aktionen des Missbrauchsfilters aufgrund von Filter $1.
@@ -9299,8 +9299,8 @@ Solche Beiträge werden meist sehr schnell entfernt. In wiederholten und besonde
 Wenn Sie meinen, dass diese Aktion sinnvoll ist, können Sie sie zum Bestätigen erneut speichern.
 Kurzbeschreibung der verletzten Regel: $1",
 	'abusefilter-disallowed' => 'Diese Aktion wurde automatisch als schädlich erkannt und deshalb nicht ausgeführt.
-Wenn Sie denken, dass Ihr Beitrag konstruktiv war, wenden Sie sich bitte an einen Administrator und schilderen ihm, was Sie versucht haben beizutragen.
-Kurzbeschreibung der verletzten Regel: $1', # Fuzzy
+Sofern Sie denken, dass Ihr Beitrag konstruktiv war, wenden Sie sich bitte an einen Administrator und schildern ihm, was Sie beizutragen versucht haben.
+Kurzbeschreibung der verletzten Regel: $1',
 	'abusefilter-blocked-display' => 'Diese Aktion wurde automatisch als schädlich erkannt und nicht ausgeführt.
 Ferner wurden Ihr Benutzerkonto und alle Ihnen zugehörigen IP-Adressen gesperrt.
 Wenn Sie denken, dass es sich hierbei um einen Fehler handelt, wenden Sie sich bitte an einen Administrator.
@@ -9320,16 +9320,16 @@ Beschreibung der Regel: $1',
 	'abusefilter-log-hide-forbidden' => 'Sie haben nicht die Berechtigung, die Einträge des Missbrauchsfilter-Logbuchs auszublenden.',
 	'abusefilter-reautoconfirm-notallowed' => 'Sie sind nicht berechtigt, Benutzer wieder zu automatisch bestätigten Benutzern zu machen.',
 	'abusefilter-edit-oldwarning' => '<strong>Sie bearbeiten nicht die aktuelle, sondern eine ältere Version dieses Filters. Die Statistik gilt nur für die letzte Version des Filters. Wenn Sie speichern, wird diese als aktuelle Version neu gespeichert. </strong> &bull; [[Special:AbuseFilter/history/$2|Zurück zur Versionsgeschichte des Filters]]',
-	'abusefilter-edit-denied' => 'Sie können die Details dieses Filters nicht einsehen, weil sie versteckt sind.', # Fuzzy
-	'abusefilter-edit-done' => 'Ihre Änderungen am Filter $1 wurden erfolgreich gespeichert.', # Fuzzy
+	'abusefilter-edit-denied' => 'Sie können die Einzelheiten zu diesem Filter nicht einsehen, da sie verborgen sind.',
+	'abusefilter-edit-done' => '[[Special:AbuseFilter/history/$1/diff/prev/$2|Ihre Änderungen]] am [[Special:AbuseFilter/$1|Filter „$1“]] wurden erfolgreich gespeichert.',
 	'abusefilter-edit-badsyntax' => 'Der von Ihnen spezifizierte Filter enthält einen Syntaxfehler. Die Parserausgabe lautete: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'Sie können diesen Filter nicht bearbeiten, weil er eine oder mehrere verbotene Aktionen enthält.
 Bitten Sie einen Benutzer, der verbotene Aktionen hinzufügen kann, darum, die Änderung für Sie vorzunehmen.',
 	'abusefilter-edit-notallowed' => 'Es ist Ihnen nicht erlaubt, Missbrauchsfilter zu erstellen oder zu bearbeiten',
 	'abusefilter-revert-intro' => 'Mit diesem Formular können alle Änderungen durch den Missbrauchsfilter aufgrund von Filter $1 rückgängig gemacht werden.
 Bitte verwenden Sie dieses Werkzeug mit Vorsicht.',
-	'abusefilter-revert-preview-intro' => 'Unten stehen die Aktionen des Missbrauchsfilters, die hiermit rückgängig gemacht werden.
-Bitte überprüfen Sie sie sorgfältig und klicken Sie auf „Bestätigen“, um Ihre Auswahl zu bestätigen.', # Fuzzy
+	'abusefilter-revert-preview-intro' => 'Unten sind die Aktionen des Missbrauchsfilters angegeben, die hiermit rückgängig gemacht werden.
+Bitte überprüfen Sie sie sorgfältig und klicken Sie dann auf „{{int:abusefilter-revert-confirm}}“, um Ihre Auswahl zu bestätigen.',
 	'abusefilter-revert-success' => 'Sie haben alle Aktionen des Missbrauchsfilters, die aufgrund von [[Special:AbuseFilter/$1|Filter $1]] vorgenommen wurden, rückgängig gemacht.',
 	'abusefilter-test-intro' => 'Mit dieser Seite kann ein Filter probeweise auf die {{PLURAL:$1|letzte Änderung|letzten $1 Änderungen}} angewendet werden.
 Um einen bestehenden Filter zu laden, geben Sie seine Filter-ID in das Feld unterhalb des Bearbeiten-Textfeldes ein und klicken Sie auf den „Laden“-Button.', # Fuzzy
@@ -15298,8 +15298,7 @@ $messages['gu'] = array(
 	'abusefilter-edit-enabled' => 'આ ગાળક સક્રિય કરો',
 	'abusefilter-edit-global' => 'વૈશ્વીક ગાળક',
 	'abusefilter-edit-rules' => 'શરતો:',
-	'abusefilter-edit-notes' => "નોંધો:
-:''(ખાનગી)''",
+	'abusefilter-edit-notes' => 'નોંધો:',
 	'abusefilter-edit-lastmod-text' => '$1, $2 દ્વારા',
 	'abusefilter-edit-throttle-period' => 'સમયગાળો:',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|સેકંડ|સેકંડો}}',
@@ -24939,11 +24938,11 @@ $messages['mk'] = array(
 	'right-abusefilter-view' => 'Преглед на филтрите за злоупотреба',
 	'right-abusefilter-log' => 'Преглед на дневникот на злоупотреби',
 	'right-abusefilter-log-detail' => 'Прегледување на подробности во записите од дневникот на злоупотреби',
-	'right-abusefilter-private' => 'Прегледување на приватни податоци во дневникот на злоупотреби',
+	'right-abusefilter-private' => 'Прегледување на лични податоци во дневникот на злоупотреби',
 	'right-abusefilter-modify-restricted' => 'Менување на филтри за злоупотреби со ограничени можности за дејствување',
 	'right-abusefilter-revert' => 'Отповикување на сите промени на даден филтер за злоупотреби',
-	'right-abusefilter-view-private' => 'Прегледување на филтри за злоупотреби означени како приватни',
-	'right-abusefilter-log-private' => 'Преглед на дневнички записи за филтри на злоупотреба означени како приватни',
+	'right-abusefilter-view-private' => 'Прегледување на филтри за злоупотреби означени како лични',
+	'right-abusefilter-log-private' => 'Преглед на дневнички записи за филтри на злоупотреба означени како лични',
 	'right-abusefilter-hide-log' => 'Криење записи во дневникот на злоупотреби',
 	'right-abusefilter-hidden-log' => 'Прегледување на скриени записи во дневникот на злоупотреби',
 	'right-abusefilter-modify-global' => 'Создавање или менување на глобални филтри за злоупотреби',
@@ -24951,10 +24950,10 @@ $messages['mk'] = array(
 	'action-abusefilter-view' => 'прегледување на филтри за злоупотреби',
 	'action-abusefilter-log' => 'прегледување на дневникот за злоупотреби',
 	'action-abusefilter-log-detail' => 'прегледување на подробности од записите во дневникот на злоупотреби',
-	'action-abusefilter-private' => 'прегледување на приватни податоци во дневникот на злоупотреби',
+	'action-abusefilter-private' => 'прегледување на лични податоци во дневникот на злоупотреби',
 	'action-abusefilter-modify-restricted' => 'менување на филтри за злоупотреби со ограничени можности за дејствување',
 	'action-abusefilter-revert' => 'отповикување на сите промени извршени од даден филтер за злоупотреби',
-	'action-abusefilter-view-private' => 'прегледување на филтри за злоупотреби означени како приватни',
+	'action-abusefilter-view-private' => 'прегледување на филтри за злоупотреби означени како лични',
 	'abusefilter-log' => 'Дневник на филтерот за злоупотреби',
 	'abusefilter-log-summary' => 'Овој дневник прикажува список на сите дејства уловени од филтрите.',
 	'abusefilter-log-search' => 'Пребарај по дневникот на злоупотреби',
@@ -24981,7 +24980,7 @@ $messages['mk'] = array(
 	'abusefilter-log-details-var' => 'Променлива',
 	'abusefilter-log-details-val' => 'Вредност',
 	'abusefilter-log-details-vars' => 'Параметри на дејството',
-	'abusefilter-log-details-private' => 'Приватни податоци',
+	'abusefilter-log-details-private' => 'Лични податоци',
 	'abusefilter-log-details-ip' => 'Исходна IP-адреса',
 	'abusefilter-log-noactions' => 'нема',
 	'abusefilter-log-details-diff' => 'Направени промени при уредувањето',
@@ -25013,7 +25012,7 @@ $messages['mk'] = array(
 	'abusefilter-list-limit' => 'Број по страница:',
 	'abusefilter-list-lastmodified' => 'Последна промена',
 	'abusefilter-list-group' => 'Филтерска група',
-	'abusefilter-hidden' => 'Приватен',
+	'abusefilter-hidden' => 'Личен',
 	'abusefilter-unhidden' => 'Јавен',
 	'abusefilter-enabled' => 'Вклучен',
 	'abusefilter-deleted' => 'Избришан',
