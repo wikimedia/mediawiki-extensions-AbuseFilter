@@ -10066,6 +10066,8 @@ Toflicki by mógli krotke byś a njeby mógli specielne znamuška wopśimjeś.',
 	'abusefilter-edit-builder-vars-old-text' => 'Stary wikitekst boka, do wobźěłanja',
 	'abusefilter-edit-builder-vars-new-text' => 'Nowy wikitekst boka, pó wobźěłanju',
 	'abusefilter-edit-builder-vars-new-pst' => 'Nowy wikitekst boka, pśed składowanim pśetwórjony',
+	'abusefilter-edit-builder-vars-diff-pst' => 'Zjadnośony rozdźěl změnow pó wobźěłowanju, pśed składowanim pśetwórjony',
+	'abusefilter-edit-builder-vars-addedlines-pst' => 'Smužki pśidane we wobźěłowanju, pśed składowanim pśetwórjone',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nowy tekst boka, bźez wobznamjenjeńskego teksta',
 	'abusefilter-edit-builder-vars-new-html' => 'Analyzěrowane HTML-žrědło noweje wersije',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Šćitny schójźeńk za wobźěłowanje boka',
@@ -16984,6 +16986,8 @@ Taflički měli krótke być a njeměli wosebite znamješka wobsahować.',
 	'abusefilter-edit-builder-vars-old-text' => 'Stary wikitekst strony do změny',
 	'abusefilter-edit-builder-vars-new-text' => 'Nowy wikitekst strony po změnje',
 	'abusefilter-edit-builder-vars-new-pst' => 'Nowy wikitekst strony, před składowanjom přetworjeny',
+	'abusefilter-edit-builder-vars-diff-pst' => 'Zjednoćeny rozdźěl změnow po wobdźěłowanju, před składowanjom přetworjeny',
+	'abusefilter-edit-builder-vars-addedlines-pst' => 'Linki přidate we wobdźěłowanju, před składowanjom přetworjene',
 	'abusefilter-edit-builder-vars-new-text-stripped' => 'Nowy tekst strony, bjez woznamjenjenskeho teksta',
 	'abusefilter-edit-builder-vars-new-html' => 'Analyzowane HTML-žórło noweje wersije',
 	'abusefilter-edit-builder-vars-restrictions-edit' => 'Škitnu runinu strony wobdźěłać',
@@ -31852,7 +31856,7 @@ Além disso, como medida de segurança, alguns privilégios automaticamente conc
 Segue-se uma breve descrição da regra de prevenção de abuso com a qual a sua ação coincidiu: $1',
 	'abusefilter-blocker' => 'Filtro de abusos',
 	'abusefilter-blockreason' => 'Automaticamente bloqueado pelo filtro de abusos.
-Descrição da regra correspondida: $1',
+Descrição da regra com a qual a ação coincidiu: $1',
 	'abusefilter-degroupreason' => 'Direitos automaticamente retirados pelo filtro de abusos. Descrição da regra: $1',
 	'abusefilter-accountreserved' => 'Este nome de conta está reservado para uso pelo filtro de abusos.',
 	'right-abusefilter-modify' => 'Modificar filtros de abuso',
@@ -39552,7 +39556,7 @@ $messages['th'] = array(
 	'abusefilter-edit-global' => 'ตัวกรองทั่วโลก',
 	'abusefilter-edit-rules' => 'เงื่อนไข:',
 	'abusefilter-edit-notes' => "หมายเหตุ:
-:''(ส่วนตัว)''",
+:''(ส่วนตัว)''", # Fuzzy
 	'abusefilter-edit-lastmod' => 'ดัดแปรตัวกรองล่าสุด:',
 	'abusefilter-edit-lastmod-text' => '$1 โดย $2',
 	'abusefilter-edit-hitcount' => 'จำนวนการเรียกตัวกรอง:',
@@ -39580,7 +39584,7 @@ $messages['th'] = array(
 	'abusefilter-edit-denied' => 'คุณไม่สามารถดูรายละเอียดของตัวกรองนี้ได้ เพราะถูกซ่อนมิให้สาธารณะชม', # Fuzzy
 	'abusefilter-edit-main' => 'ตัวแปรเสริมตัวกรอง',
 	'abusefilter-edit-done-subtitle' => 'แก้ไขตัวกรองแล้ว',
-	'abusefilter-edit-done' => 'คุณบันทึกการเปลี่ยนแปลงไปยังตัวกรอง $1 สำเร็จ', # Fuzzy
+	'abusefilter-edit-done' => 'บันทึก[[Special:AbuseFilter/history/$1/diff/prev/$2|การเปลี่ยนแปลงของคุณ]]ใน[[Special:AbuseFilter/$1|ตัวกรอง $1]] แล้ว',
 	'abusefilter-edit-badsyntax' => 'มีข้อผิดพลาดของวายกสัมพันธ์ในตัวกรองที่คุณระบุ ตัวแจงส่วนส่งออกคือ: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'คุณไม่สามารถแก้ไขตัวกรองนี้ เพราะพบการกระทำที่ถูกจำกัด
 โปรดขอให้ผู้ใช้ที่ได้รับอนุญาตเพิ่มการกระทำที่จำกัดแทนคุณ',
@@ -39730,7 +39734,7 @@ $messages['th'] = array(
 	'abusefilter-revert-search' => 'เลือกการกระทำ',
 	'abusefilter-revert-filter' => 'ตัวกรอง:',
 	'abusefilter-revert-preview-intro' => 'ด้านล่างนี้เป็นการกระทำโดยตัวกรองการละเมิดกฎที่จะถูกย้อนในปฏิบัติการนี้
-โปรดตรวจสอบอย่างระมัดระวัง และคลิก "ยืนยัน" เพื่อยืนยันการเลือกของคุณ', # Fuzzy
+โปรดตรวจสอบอย่างระมัดระวัง และคลิก "{{int:abusefilter-revert-confirm}}" เพื่อยืนยันการเลือกของคุณ',
 	'abusefilter-revert-confirm' => 'ยืนยัน',
 	'abusefilter-revert-success' => 'คุณย้อนการกระทำทั้งหมดโดยตัวกรองการละเมิดกฎเนื่องจาก[[Special:AbuseFilter/$1|ตัวกรอง $1]] แล้ว',
 	'abusefilter-revert-reason' => 'ย้อนการกระทำทั้งหมดโดยตัวกรองการละเมิดกฎเนื่องจากตัวกรอง $1 แล้ว
