@@ -6,7 +6,7 @@
 	"license" : "GPL-2.0+",
 
 	"require": {
-		"composer/installers" : "*",
-		"mediawiki/anti-spoof" : "*"
+		"composer/installers" : "dev-master",
+		"mediawiki/anti-spoof" : "dev-master"
 	}
 }
