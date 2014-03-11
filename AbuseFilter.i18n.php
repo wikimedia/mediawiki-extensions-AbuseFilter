@@ -18626,7 +18626,7 @@ Deskripsion ti sagat: $7 ($8)',
 	'abusefilter-reautoconfirm-none' => 'Dayta nga agar-aramat ket saan pay a nasuspende {{GENDER:$1|ti|ti|dagiti}} automatiko a napasingkedan a kassaad.',
 	'abusefilter-reautoconfirm-notallowed' => 'Saanka a mapalubosan a mangisubli ti automatiko a napasingkedan a kasasaad.',
 	'abusefilter-reautoconfirm-done' => 'Naisublin ti automatiko a napasingkedan a kasasaad ti pakabilangan',
-	'abusefilter-status' => 'Iti naudi a $1 a {{PLURAL:$1|tignay|tigtignay}}, $2 ($3%) {{PLURAL:$2|ket|ket}} nakaabot ti patingga a kasasaad iti $4, ken $5 ($6%) {{PLURAL:$5|ket|ket}} naipada iti maysa kadagiti sagat nga agdama a napakabaelan.', # Fuzzy
+	'abusefilter-status' => 'Iti naudi a $1 a {{PLURAL:$1|tignay|tigtignay}}, $2 ($3%) ket {{PLURAL:$2|adda|addaan}} a nakaabot ti patingga a kasasaad iti $4, ken $5 ($6%) ket {{PLURAL:$5|adda|addaan}} a naipada iti maysa kadagiti sagat nga agdama a napakabaelan.',
 	'abusefilter-edit' => 'Agur-urnos ti sagat ti panag-abuso',
 	'abusefilter-edit-subtitle' => 'U-rurnosen ti sagat $1',
 	'abusefilter-edit-subtitle-new' => 'Agparpartuat ti sagat',
@@ -38203,7 +38203,7 @@ missbrukslogg-poster.',
 	'abusefilter-list' => 'Alla filter',
 	'abusefilter-list-id' => 'Filter-ID',
 	'abusefilter-list-status' => 'Status',
-	'abusefilter-list-public' => 'Allmän beskrivning',
+	'abusefilter-list-public' => 'Offentlig beskrivning',
 	'abusefilter-list-consequences' => 'Konsekvenser',
 	'abusefilter-list-visibility' => 'Synlighet',
 	'abusefilter-list-hitcount' => 'Träffräknare',
@@ -38213,7 +38213,7 @@ missbrukslogg-poster.',
 	'abusefilter-list-lastmodified' => 'Senast modifierat',
 	'abusefilter-list-group' => 'Filtergrupp',
 	'abusefilter-hidden' => 'Privat',
-	'abusefilter-unhidden' => 'Allmän',
+	'abusefilter-unhidden' => 'Offentlig',
 	'abusefilter-enabled' => 'Aktiverat',
 	'abusefilter-deleted' => 'Raderad',
 	'abusefilter-disabled' => 'Avaktiverat',
@@ -39408,10 +39408,10 @@ $messages['th'] = array(
 	'abusefilter-intro' => 'ยินดีต้อนรับสู่อินเตอร์เฟซการจัดการตัวกรองการละเมิดกฎ
 ตัวกรองการละเมิดกฎเป็นซอฟต์แวร์อัตโนมัติในการวิเคราะห์พฤติกรรมการกระทำทั้งหมด
 อินเตอร์เฟซนี้แสดงรายการตัวกรองที่กำหนดไว้และสามารถแก้ไขได้',
-	'abusefilter-mustbeeditor' => 'เพื่อความปลอดภัย เฉพาะผู้ใช้ที่มีสิทธิแก้ไขตัวกรองการละเมิดกฎเท่านั้นที่สามารถใช้อินเตอร์เฟซนี้',
+	'abusefilter-mustbeeditor' => 'เฉพาะผู้ใช้ที่มีสิทธิแก้ไขตัวกรองการละเมิดกฎเท่านั้นที่สามารถใช้อินเตอร์เฟซนี้ เพื่อความปลอดภัย',
 	'abusefilter-warning' => "'''คำเตือน''': การกระทำนี้ถูกระบุว่าไม่เหมาะสมอัตโนมัติ
-การแก้ไขที่ไม่เหมาะสมหรือเป็นภัยต่อระบบจะถูกเปลี่ยนกลับโดยเร็ว
-และการแก้ไขที่ไม่สร้างสรรค์อย่างยิ่ง หรือเกิดซ้ำหลายครั้งจะส่งผลให้บัญชีหรือเลขที่อยู่ไอพีของคุณถูกบล็อก
+การแก้ไขที่ไม่เหมาะสมหรือเป็นภัยต่อระบบจะถูกย้อนกลับโดยเร็ว
+และการแก้ไขที่ไม่สร้างสรรค์อย่างยิ่ง หรือซ้ำหลายครั้งจะส่งผลให้บัญชีหรือเลขที่อยู่ไอพีของคุณถูกบล็อก
 หากคุณเชื่อว่าการกระทำนี้สร้างสรรค์ คุณอาจส่งอีกครั้งเพื่อยืนยัน
 คำอธิบายอย่างย่อเกี่ยวกับการละเมิดกฎที่ตรงกับการกระทำของคุณ: $1",
 	'abusefilter-disallowed' => 'การกระทำนี้ถูกระบุว่าไม่เหมาะสมอัตโนมัติ จึงไม่ได้รับอนุญาตให้ดำเนินการต่อ
@@ -39466,6 +39466,9 @@ $messages['th'] = array(
 	'abusefilter-log-entry' => '$1: ผู้ใช้ $2 ถูกตรวจจับตัวกรองการละเมิดกฎ ขณะกระทำการ "$3" บน $4
 สิ่งที่ตัวกรองดำเนินการ: $5;
 คำอธิบายตัวกรอง: $6',
+	'abusefilter-log-entry-withdiff' => '$1: $2 เรียกคำสั่งจากตัวกรองการละเมิดกฎ ขณะกระทำการ "$3" ในหน้า $4
+สิ่งที่ตัวกรองดำเนินการ: $5
+รายละเอียดตัวกรอง: $6 ($7)',
 	'abusefilter-log-detailedentry-meta' => '$1: ผู้ใช้ $2 เรียกคำสั่งจาก $3 ขณะกระทำการ "$4" บน $5
 สิ่งที่ตัวกรองดำเนินการ: $6;
 คำอธิบายตัวกรอง: $7 ($8)',
@@ -39524,7 +39527,7 @@ $messages['th'] = array(
 	'abusefilter-list-options-deleted-only' => 'แสดงเฉพาะตัวกรองที่ถูกลบ',
 	'abusefilter-list-options-deleted-hide' => 'ซ่อนตัวกรองที่ถูกลบ',
 	'abusefilter-list-options-deleted-show' => 'รวมตัวกรองที่ถูกลบ',
-	'abusefilter-list-options-scope' => 'แสดงตัวกรองจาก:',
+	'abusefilter-list-options-scope' => 'แสดงตัวกรองตั้งแต่:',
 	'abusefilter-list-options-scope-local' => 'วิกิท้องถิ่น',
 	'abusefilter-list-options-scope-global' => 'กฎทั่วโลก',
 	'abusefilter-list-options-disabled' => 'ตัวกรองที่ปิดใช้งาน:',
@@ -39536,7 +39539,7 @@ $messages['th'] = array(
 	'abusefilter-tools-reautoconfirm' => 'คืนสถานะยืนยันอัตโนมัติ',
 	'abusefilter-tools-reautoconfirm-user' => 'ผู้ใช้:',
 	'abusefilter-tools-reautoconfirm-submit' => 'ยืนยันอัตโนมัติอีกครั้ง',
-	'abusefilter-reautoconfirm-none' => '{{GENDER:$1| | |กลุ่ม}}ผู้ใช้นั้นยังไม่ถูกพักสถานะยืนยันอัตโนมัติ',
+	'abusefilter-reautoconfirm-none' => '{{GENDER:$1| | |กลุ่ม}}ผู้ใช้นั้นยังไม่ถูกระงับสถานะยืนยันอัตโนมัติ',
 	'abusefilter-reautoconfirm-notallowed' => 'คุณไม่ได้รับอนุญาตให้คืนสถานะยืนยันอัตโนมัติ',
 	'abusefilter-reautoconfirm-done' => 'บัญชีได้รับสถานะยืนยันอัตโนมัติคืนแล้ว',
 	'abusefilter-status' => 'จาก $1 การกระทำล่าสุด $2 ($3%) ครั้งถึงขีดจำกัดเงื่อนไขที่ $4 เงื่อนไข และ $5 ($6%) การกระทำ ตรงกับหนึ่งในตัวกรองที่ปัจจุบันเปิดใช้งานอยู่',
@@ -39563,8 +39566,7 @@ $messages['th'] = array(
 	'abusefilter-edit-hidden' => 'ซ่อนรายละเอียดของตัวกรองนี้ต่อสาธารณะ',
 	'abusefilter-edit-global' => 'ตัวกรองทั่วโลก',
 	'abusefilter-edit-rules' => 'เงื่อนไข:',
-	'abusefilter-edit-notes' => "หมายเหตุ:
-:''(ส่วนตัว)''", # Fuzzy
+	'abusefilter-edit-notes' => 'หมายเหตุ:',
 	'abusefilter-edit-lastmod' => 'ดัดแปรตัวกรองล่าสุด:',
 	'abusefilter-edit-lastmod-text' => '$1 โดย $2',
 	'abusefilter-edit-hitcount' => 'จำนวนการเรียกตัวกรอง:',
@@ -39589,7 +39591,7 @@ $messages['th'] = array(
 	'abusefilter-edit-warn-preview' => 'แสดงตัวอย่างข้อความที่เลือก',
 	'abusefilter-edit-warn-edit' => 'สร้าง/แก้ไขข้อความที่เลือก',
 	'abusefilter-edit-tag-tag' => 'ป้ายกำกับที่ใช้ (หนึ่งป้ายต่อบรรทัด):',
-	'abusefilter-edit-denied' => 'คุณไม่สามารถดูรายละเอียดของตัวกรองนี้ได้ เพราะถูกซ่อนมิให้สาธารณะชม', # Fuzzy
+	'abusefilter-edit-denied' => 'คุณไม่สามารถดูรายละเอียดของตัวกรองนี้ได้ เพราะถูกซ่อนมิให้สาธารณะชม',
 	'abusefilter-edit-main' => 'ตัวแปรเสริมตัวกรอง',
 	'abusefilter-edit-done-subtitle' => 'แก้ไขตัวกรองแล้ว',
 	'abusefilter-edit-done' => 'บันทึก[[Special:AbuseFilter/history/$1/diff/prev/$2|การเปลี่ยนแปลงของคุณ]]ใน[[Special:AbuseFilter/$1|ตัวกรอง $1]] แล้ว',
@@ -39641,6 +39643,7 @@ $messages['th'] = array(
 	'abusefilter-edit-builder-group-funcs' => 'ฟังก์ชัน',
 	'abusefilter-edit-builder-funcs-length' => 'ความยาวสายอักขระ (length)',
 	'abusefilter-edit-builder-funcs-lcase' => 'เปลื่ยนเป็นตัวเล็ก (lcase)',
+	'abusefilter-edit-builder-funcs-ucase' => 'เปลี่ยนเป็นตัวใหญ่ (ucase)',
 	'abusefilter-edit-builder-funcs-ccnorm' => 'ทำให้อักขระที่สับสนเป็นปกติ (ccnorm)',
 	'abusefilter-edit-builder-funcs-rmdoubles' => 'นำอักขระคู่ออก (rmdoubles)',
 	'abusefilter-edit-builder-funcs-specialratio' => 'อักขระพิเศษ / อักขระรวม (specialratio)',
@@ -39750,7 +39753,7 @@ $messages['th'] = array(
 	'abusefilter-revert-reasonfield' => 'เหตุผล:',
 	'abusefilter-test' => 'ทดสอบตัวกรองกับการแก้ไขที่ผ่านมา',
 	'abusefilter-test-intro' => 'หน้านี้ให้คุณตรวจสอบตัวกรองที่กรอกในกล่องด้านล่างกับการแก้ไขล่าสุด $1 การแก้ไข
-ในการโหลดตัวกรองที่มีอยู่แล้ว พิมพ์หมายเลขประจำตัวกรอกในกล่องด้านล่างกล่องข้อความแก้ไข และคลิกปุ่ม "โหลด"', # Fuzzy
+ในการโหลดตัวกรองที่มีอยู่แล้ว พิมพ์หมายเลขประจำตัวกรอกในกล่องด้านล่างกล่องข้อความแก้ไข และคลิกปุ่ม "{{int:abusefilter-test-load}}"',
 	'abusefilter-test-legend' => 'การทดสอบตัวกรอง',
 	'abusefilter-test-load-filter' => 'โหลดตัวกรองหมายเลข:',
 	'abusefilter-test-submit' => 'ทดสอบ',
@@ -39761,7 +39764,8 @@ $messages['th'] = array(
 	'abusefilter-test-page' => 'การเปลี่ยนแปลงไปยังหน้า:',
 	'abusefilter-test-shownegative' => 'แสดงการเปลี่ยนแปลงที่ไม่ตรงกับตัวกรอง',
 	'abusefilter-test-syntaxerr' => 'ตัวกรองที่คุณกรอกนั้นมีวากยสัมพันธ์ผิดพลาด
-คุณสามารถดูคำอธิบายเต็มได้โดยคลิกปุ่ม "ตรวจสอบวากยสัมพันธ์"', # Fuzzy
+คุณสามารถดูคำอธิบายเต็มได้โดยคลิกปุ่ม "{{int:abusefilter-edit-check}}"',
+	'abusefilter-test-badtitle' => 'ชื่อหน้าที่คุณกรอกไม่สมเหตุสมผล โดยอาจมีอักขระที่ไม่สามารถใช้เป็นชื่อเรื่อง',
 	'abusefilter-changeslist-examine' => 'ตรวจสอบ',
 	'abusefilter-examine' => 'ตรวจสอบการเปลี่ยนแปลงจำเพาะ',
 	'abusefilter-examine-intro' => 'หน้านี้ให้คุณตรวจสอบตัวแปรที่ตัวกรองการละเมิดกฎสร้างสำหรับการเปลี่ยนแปลงจำเพาะ และทดสอบกับตัวกรอง',
