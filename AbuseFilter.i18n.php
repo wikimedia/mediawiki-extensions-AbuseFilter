@@ -15410,12 +15410,13 @@ $messages['hak'] = array(
 
 /** Hawaiian (Hawai`i)
  * @author Kalani
+ * @author Kolonahe
  * @author Singularity
  */
 $messages['haw'] = array(
 	'abusefilter-log-search-submit' => 'Huli',
-	'abusefilter-list-edit' => 'E hoʻololi',
-	'abusefilter-edit-status-label' => 'Papa helu', # Fuzzy
+	'abusefilter-list-edit' => 'Hoʻololi',
+	'abusefilter-edit-status-label' => 'ʻIkepilihelu',
 	'abusefilter-edit-history' => 'Mōʻaukala:',
 	'abusefilter-examine-submit' => 'Huli',
 );
@@ -29562,8 +29563,7 @@ En mejana, la durada d'execucion d'aqueste filtre es de $4 ms e utiliza $5 condi
 	'abusefilter-edit-hidden' => "Amagar los detalhs d'aqueste filtre a la vista publica",
 	'abusefilter-edit-global' => 'Filtre global',
 	'abusefilter-edit-rules' => 'Condicions :',
-	'abusefilter-edit-notes' => "Nòtas :
-:''(privat)''",
+	'abusefilter-edit-notes' => 'Nòtas :',
 	'abusefilter-edit-lastmod' => 'Filtre modificat en darrièr :',
 	'abusefilter-edit-lastmod-text' => '$1 per $2',
 	'abusefilter-edit-hitcount' => 'Visitas del filtre :',
@@ -42125,7 +42125,9 @@ $messages['uz'] = array(
 	'abusefilter-log' => 'Filtrlash qaydlari',
 	'abusefilter-log-linkoncontribs' => 'filtrlash qaydlari',
 	'abusefilter-log-linkoncontribs-text' => 'Ushbu foydalanuvchi haqida filtrlash qaydlaridagi yozuvlar',
+	'abusefilter-log-hide-reason' => 'Sabab:',
 	'abusefilter-edit-builder-vars-user-name' => 'Hisob yozuvi nomi',
+	'abusefilter-revert-reasonfield' => 'Sabab:',
 	'abusefilter-log-name' => 'Filtrlash qaydlari',
 );
 
