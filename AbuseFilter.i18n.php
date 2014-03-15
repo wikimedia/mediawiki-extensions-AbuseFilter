@@ -7275,7 +7275,7 @@ $messages['ce'] = array(
 	'abusefilter-log-hide-legend' => 'Къайладаккха тептар чура дӀаяздар',
 	'abusefilter-log-hide-id' => 'Тептаран ID дӀаяздарш:',
 	'abusefilter-log-hide-hidden' => 'Къайладаккха хӀара дӀаяздар',
-	'abusefilter-log-hide-reason' => 'Бахьан:',
+	'abusefilter-log-hide-reason' => 'Бахьна:',
 	'abusefilter-log-hide-forbidden' => 'Зуламан тептар чура дӀаяздарш къайладаха хьа бакъо яц.',
 	'abusefilter-logentry-suppress' => 'къайладаккха [[$1]]',
 	'abusefilter-logentry-unsuppress' => 'гайта [[$1]]',
@@ -7438,7 +7438,7 @@ $messages['ce'] = array(
 	'abusefilter-action-disallow' => 'ДӀадайар',
 	'abusefilter-revert-filter' => 'Литтар:',
 	'abusefilter-revert-confirm' => 'Бакъдан',
-	'abusefilter-revert-reasonfield' => 'Бахьан:',
+	'abusefilter-revert-reasonfield' => 'Бахьна:',
 	'abusefilter-test' => 'Литтаран нисдарш хьажа',
 	'abusefilter-test-intro' => 'ХӀокху агӀорахь хьан йиш ю лахахь гайтинчу {{PLURAL:$1|1=тӀехьарчу $1 хийцаман|тӀехьарчу $1 хийцамашан}} литтарш хьажа.
 Долуш долу литтар чудаккха тадаран коран лахахь дӀаязде цуьнан ID тӀакха тӀетаӀе кнопка  «{{int:abusefilter-test-load}}»',
@@ -18924,6 +18924,7 @@ Kopiaen manipud ti kahon ti testo nga agparang, ken ipegket iti daytoy a kahon t
 /** Ingush (ГӀалгӀай)
  * @author Amire80
  * @author Sapral Mikail
+ * @author Умар
  */
 $messages['inh'] = array(
 	'abusefilter-log-search-user' => 'Дакъалаьцархо:',
@@ -29663,7 +29664,7 @@ Las balisas devon èsser cortas e conténer pas de caractèrs especials.",
 	'abusefilter-edit-builder-vars-action' => 'Accion',
 	'abusefilter-edit-builder-vars-addedlines' => 'Linhas apondudas al moment de la modificacion',
 	'abusefilter-edit-builder-vars-delta' => 'Talha modificada al moment de la modificacion',
-	'abusefilter-edit-builder-vars-diff' => 'Diffs unificats dels cambiaments faches al moment de la modificacion',
+	'abusefilter-edit-builder-vars-diff' => 'Diff unificat dels cambiaments faches al moment de la modificacion',
 	'abusefilter-edit-builder-vars-newsize' => 'Talha de la pagina novèla',
 	'abusefilter-edit-builder-vars-oldsize' => 'Talha de la pagina anciana',
 	'abusefilter-edit-builder-vars-removedlines' => 'Linhas suprimidas al moment de la modificacion',
@@ -33663,9 +33664,9 @@ $messages['ru'] = array(
 Краткое описание злоупотребления, с которым определено соответствие вашего действия: $1',
 	'abusefilter-blocked-display' => 'Данное действие было автоматически определено как вредоносное,
 вам было запрещено его выполнение.
-Кроме того, в целях защиты проекта {{SITENAME}}, ваша учётная запись и связанные с ней IP-адреса были заблокированы.
+Кроме того, в целях защиты {{grammar:genitive|{{SITENAME}}}}, ваша учётная запись и связанные с ней IP-адреса были заблокированы.
 Если вы видите в этом ошибку, пожалуйста, свяжитесь с администратором.
-Краткое описание злоупотребления, с которым определено соответствие вашего действия: $1',
+Краткое описание злоупотребления, определённого фильтром в вашем действии: $1',
 	'abusefilter-degrouped' => 'Данное действие было автоматически определено как вредоносное.
 Таким образом, действие не было выполнено, ваша учётная запись считается скомпрометированной, с неё сняты все права.
 Если вы считаете, что это ошибка, пожалуйста, свяжитесь с бюрократом и объясните ему ваши действия, тогда ваши права будут восстановлены.
