@@ -9851,7 +9851,7 @@ Krotke wopisanje znjewužywańskego pšawidła, kótaremuž twója akcija wótpo
 	'abusefilter-log-summary' => 'Toś ten protokol pokazujo liscínu wšych pśez filtry pópadnjonych akcijow.',
 	'abusefilter-log-search' => 'Protokol znjewužywanjow pytaś',
 	'abusefilter-log-search-user' => 'Wužywaŕ:',
-	'abusefilter-log-search-filter' => 'ID filtra:',
+	'abusefilter-log-search-filter' => 'ID filtrow (źělone pśez padorowne smužki):',
 	'abusefilter-log-search-title' => 'Titel:',
 	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Pytaś',
@@ -9879,6 +9879,7 @@ Wopisanje filtra: $6 ($7)',
 	'abusefilter-log-hidden-implicit' => '(schowany, dokulaž wersija jo se wulašowała)',
 	'abusefilter-log-cannot-see-details' => 'Njamaš pšawo se drobnostki toś togo zapiska woglědaś.',
 	'abusefilter-log-details-hidden' => 'Njamóžoš drobnostki za toś ten zapisk pokazaś, dokulaž jo pśed zjawnosću schowany.',
+	'abusefilter-log-private-not-included' => 'Jaden filtrowy ID abo někotare ID, kótarež sy pódał, su priwatne. Dokulaž njesmějośo se drobnostki priwatnch filtrow woglědaś, se toś te filtry njepytaju.',
 	'abusefilter-log-hide-legend' => 'Protokolowy zapisk schowaś',
 	'abusefilter-log-hide-id' => 'ID protokolowego zapiska:',
 	'abusefilter-log-hide-hidden' => 'Toś ten zapisk zjawnje schowaś',
@@ -11718,7 +11719,7 @@ Reegli kirjeldus: $1',
 	'abusefilter-log-summary' => 'Selles logis on loetletud tegevused, mille filtrid on tabanud.',
 	'abusefilter-log-search' => 'Otsimine väärtarvituslogist',
 	'abusefilter-log-search-user' => 'Kasutaja:',
-	'abusefilter-log-search-filter' => 'Filtri ID:',
+	'abusefilter-log-search-filter' => 'Filtri-IDd (eraldatud püstkriipsudega):',
 	'abusefilter-log-search-title' => 'Pealkiri:',
 	'abusefilter-log-search-wiki' => 'Viki:',
 	'abusefilter-log-search-submit' => 'Otsi',
@@ -16813,6 +16814,7 @@ Wopisanje filtra:: $7 ($8)',
 	'abusefilter-log-hidden-implicit' => '(schowany, dokelž wersija je so zhašała)',
 	'abusefilter-log-cannot-see-details' => 'Nimaš prawo sej podrobnosće tutoho zapiska wobhladać.',
 	'abusefilter-log-details-hidden' => 'Njemóžeš sej podrobnosće za tutón zapisk wobhladać, dokelž je před zjawnosću schowany.',
+	'abusefilter-log-private-not-included' => 'Jedyn filtrowy ID abo wjacore ID, kotrež sy podał, su priwatne. Dokelž njesměće sej podrobnosće priwatnch filtrow wobhladać, so tute filtry njepytaja.',
 	'abusefilter-log-hide-legend' => 'Protokolowy zapisk schować',
 	'abusefilter-log-hide-id' => 'ID protokoloweho zapiska:',
 	'abusefilter-log-hide-hidden' => 'Zapis před zjawnosću schować',
@@ -22836,7 +22838,7 @@ Eng kuerz Beschreiwung vun der Mëssbrauchsregel op déi Är Aktioun reagéiert 
 	'abusefilter-log-summary' => 'Dëst Logbuch weist eng Lëscht vun allen Aktiounen déi duerch Filteren opgefaang goufen.',
 	'abusefilter-log-search' => "D'Lëscht vum Mëssbrauch duerchsichen",
 	'abusefilter-log-search-user' => 'Benotzer:',
-	'abusefilter-log-search-filter' => 'Nummer(ID) vum Filter (mat vertikale Strécher(|) trennen:', # Fuzzy
+	'abusefilter-log-search-filter' => 'Nummer(ID) vum Filter (mat vertikale Strécher(|) trennen):',
 	'abusefilter-log-search-title' => 'Titel:',
 	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Sichen',
@@ -29533,6 +29535,7 @@ Descripcion del filtre : $7 ($8)",
 	'abusefilter-log-hidden-implicit' => '(amagada perque la version es estada suprimida)',
 	'abusefilter-log-hide-legend' => "Amagar l'entrada dins los jornals",
 	'abusefilter-log-hide-id' => "Identificant de l'entrada de jornal :",
+	'abusefilter-log-hide-hidden' => 'Amagar aquesta entrada a la vista del public',
 	'abusefilter-log-hide-reason' => 'Motiu :',
 	'abusefilter-logentry-suppress' => 'a amagat [[$1]]',
 	'abusefilter-logentry-unsuppress' => 'a desamagat [[$1]]',
@@ -29794,15 +29797,16 @@ Accions de revocar : $5 ($6)',
 	'abusefilter-revert-periodend' => 'Fin del periòde :',
 	'abusefilter-revert-search' => 'Seleccionar las accions',
 	'abusefilter-revert-filter' => 'Filtre :',
-	'abusefilter-revert-preview-intro' => 'Las accions entrepresas per aqueste filtre e que seràn revocadas per aquesta accion son afichadas çaijós. Verificatz-las amb atencion e clicatz « Confirmar » per confirmar la seleccion.', # Fuzzy
+	'abusefilter-revert-preview-intro' => 'Aquí las accions realizadas pel filtre antiabusses, que seràn revocadas per aquesta accion.
+Verificatz-las menimosament, puèi clicatz sus « {{int:abusefilter-revert-confirm}} » per validar vòstra seleccion.',
 	'abusefilter-revert-confirm' => 'Confirmar',
 	'abusefilter-revert-success' => "Avètz revocat amb succès totas las accions entrepresas pel filtre d'abuses degut al [[Special:AbuseFilter/$1|filtre $1]]",
 	'abusefilter-revert-reason' => 'Revocacion automatica de totas las accions entrepresas pel filtre $1.
 Rason balhada : $2',
 	'abusefilter-revert-reasonfield' => 'Motiu :',
 	'abusefilter-test' => 'Testar un filtre amb las modificacions precedentas',
-	'abusefilter-test-intro' => 'Aquesta pagina vos permet de verificar un filtre entrat dins la bóstia çaijós amb las $1 darrièras {{PLURAL:$1|modificacion|modificacions}}.
-Per cargar un filtre existent, picatz son ID dins la bóstia en dejós de la bóstia de tèxte e quichatz sul boton « Cargar ».', # Fuzzy
+	'abusefilter-test-intro' => "Aquesta pagina vos permet d'aplicar un filtre entrat dins la zòna de tèxte çaijós {{PLURAL:$1|a la darrièra modificacion|a las $1 darrièras modificacions}}.
+Per cargar un filtre existent, picatz son identificant dins la bóstia en dejós de la zòna de tèxte e quichatz sul boton « {{int:abusefilter-test-load}} ».",
 	'abusefilter-test-legend' => 'Tèst de filtre',
 	'abusefilter-test-load-filter' => "Cambiar lo filtre amb l'ID :",
 	'abusefilter-test-submit' => 'Testar',
@@ -29813,7 +29817,7 @@ Per cargar un filtre existent, picatz son ID dins la bóstia en dejós de la bó
 	'abusefilter-test-page' => 'Modificacions aportadas a la pagina :',
 	'abusefilter-test-shownegative' => 'Afichar los cambiaments que correspòndon pas al filtre',
 	'abusefilter-test-syntaxerr' => "Lo filtre qu'avètz picat conten una error de sintaxi.
-Podètz recebre una explicacion completa en clicant sul boton « Verificar la sintaxi ».", # Fuzzy
+Podètz recebre una explicacion completa en clicant sul boton « {{int:abusefilter-edit-check}} ».",
 	'abusefilter-changeslist-examine' => 'examinar',
 	'abusefilter-examine' => 'Examinar de modificacions individualament',
 	'abusefilter-examine-intro' => "Aquesta pagina vos permet d'examinar las variablas generidas pel filtre dels abuses per de modificacions individualas e las testar amb los filtres.",
@@ -30858,6 +30862,7 @@ Kobiaschda de Qwellcode, fiegschn do oi un gliggschd uff die Schaldflesch „{{i
  * @author Peter Bowman
  * @author Sovq
  * @author Sp5uhe
+ * @author Ty221
  * @author Woytecr
  */
 $messages['pl'] = array(
@@ -30917,7 +30922,7 @@ Krótki opis reguły nadużycia, do której Twoja akcji została dopasowana: $1'
 	'abusefilter-log-summary' => 'Ten rejestr zawiera spis wszystkich działań wychwyconych przez filtry.',
 	'abusefilter-log-search' => 'Szukaj w rejestrze nadużyć',
 	'abusefilter-log-search-user' => 'Użytkownik',
-	'abusefilter-log-search-filter' => 'ID filtru:',
+	'abusefilter-log-search-filter' => 'ID filtru:', # Fuzzy
 	'abusefilter-log-search-title' => 'Tytuł strony',
 	'abusefilter-log-search-wiki' => 'Wiki:',
 	'abusefilter-log-search-submit' => 'Szukaj',
@@ -30949,6 +30954,7 @@ Opis filtru: $7 ($8)',
 	'abusefilter-log-hidden-implicit' => '(ukryto, ponieważ usunięto wersję)',
 	'abusefilter-log-cannot-see-details' => 'Nie masz uprawnień do przeglądania szczegółów tego wpisu.',
 	'abusefilter-log-details-hidden' => 'Nie możesz zobaczyć szczegółów tego wpisu, ponieważ jest ukryty przed widokiem publicznym.',
+	'abusefilter-log-private-not-included' => 'Jeden lub więcej filtrów identyfikatorów określono jako prywatne. Ponieważ nie jest dozwolone, aby wyświetlić szczegóły prywatnych filtrów, filtry te nie zostały przeszukane.',
 	'abusefilter-log-hide-legend' => 'Ukryj wpis w rejestrze',
 	'abusefilter-log-hide-id' => 'Identyfikator wpisu w rejestrze',
 	'abusefilter-log-hide-hidden' => 'Ukryj ten wpis przed widokiem publicznym',
@@ -35229,6 +35235,8 @@ This interface shaws ae leet o defined filters, n permits thaim tae be modified.
 Onconstructeeve eedits will be quicklie reverted, n egregioos or repeated onconstructeeve eeeditin will result in yer accoont or IP address bein blockit.
 Gif ye true this action tae be constructeeve, ye can haun it in again tae confirm it.
 Ae brief descreeption o the abuiss rule that yer action matched is: $1",
+	'abusefilter-log-search-filter' => 'Filter IDs (separate wi pipes):',
+	'abusefilter-log-private-not-included' => "Yin or mair o the filter IDs that ye speceefied ar private. Cause ye'r na permitit tae see details o private filters, thir filters hae na been raked fer.",
 );
 
 /** Sassaresu (Sassaresu)
@@ -43347,7 +43355,7 @@ A brief description of the abuse rule which your action matched is: $1',
 	'abusefilter-log-summary' => 'דער לאגבוך ווײַזט א ליסטע פון פעולות געכאפט דורך די פילטערס.',
 	'abusefilter-log-search' => 'דורכזוכן קרומבאניץ־לאגבוך',
 	'abusefilter-log-search-user' => 'באַניצער:',
-	'abusefilter-log-search-filter' => 'פֿילטער נומער:', # Fuzzy
+	'abusefilter-log-search-filter' => "פֿילטער נומערן (שיידל מיט רערן '|')",
 	'abusefilter-log-search-title' => 'טיטל:',
 	'abusefilter-log-search-wiki' => 'וויקי:',
 	'abusefilter-log-search-submit' => 'זוכן',
@@ -44089,8 +44097,8 @@ $messages['zh-hans'] = array(
 	'abusefilter-degrouped' => '您的行为被自动识别为具有危害性，并遭到禁止。此外，由于您的帐户被怀疑遭到盗窃，所有权限均已被剥夺。如果您认为这是系统误判，请联系行政员并解释此次行为，或能取回权限。与您此次行为所匹配的过滤规则概述如下：$1',
 	'abusefilter-autopromote-blocked' => '您的行为被自动识别为具有危害性，并遭到禁止。此外，为安全起见，您的帐户被暂时剥夺了部分例行授予已创建帐户的权限。与您此次行为所匹配的过滤规则概述如下：$1',
 	'abusefilter-blocker' => '防滥用过滤器',
-	'abusefilter-blockreason' => '由防滥用过滤器自动封禁。触发规则描述：$1',
-	'abusefilter-degroupreason' => '由防滥用过滤器自动剥夺所有权限，触发规则描述：$1',
+	'abusefilter-blockreason' => '被滥用过滤器自动封禁。匹配的规则的说明：$1',
+	'abusefilter-degroupreason' => '权限被滥用过滤器自动剥夺。规则说明：$1',
 	'abusefilter-accountreserved' => '此帐户已由防滥用过滤器保留使用。',
 	'right-abusefilter-modify' => '修改防滥用过滤器',
 	'right-abusefilter-view' => '查看滥用过滤器',
@@ -44156,7 +44164,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-list' => '所有过滤器',
 	'abusefilter-list-id' => '过滤器ID',
 	'abusefilter-list-status' => '状态',
-	'abusefilter-list-public' => '公开描述',
+	'abusefilter-list-public' => '公开说明',
 	'abusefilter-list-consequences' => '处理',
 	'abusefilter-list-visibility' => '公开级别',
 	'abusefilter-list-hitcount' => '触发数',
@@ -44206,7 +44214,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-new' => '新建过滤器',
 	'abusefilter-edit-save' => '保存过滤器',
 	'abusefilter-edit-id' => '过滤器ID：',
-	'abusefilter-edit-description' => "描述：
+	'abusefilter-edit-description' => "说明：
 :''（公开可见）''",
 	'abusefilter-edit-group' => '过滤器组：',
 	'abusefilter-edit-flags' => '标记：',
@@ -44369,7 +44377,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-history-global' => '全局',
 	'abusefilter-history-timestamp' => '时间',
 	'abusefilter-history-user' => '用户',
-	'abusefilter-history-public' => '过滤器的公开描述',
+	'abusefilter-history-public' => '公开过滤器说明',
 	'abusefilter-history-flags' => '标记',
 	'abusefilter-history-filter' => '过滤器规则',
 	'abusefilter-history-comments' => '注释',
