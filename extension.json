@@ -225,6 +225,7 @@
 		"ChangeTagsListActive": "AbuseFilterHooks::onChangeTagsListActive",
 		"LoadExtensionSchemaUpdates": "AbuseFilterHooks::onLoadExtensionSchemaUpdates",
 		"ContributionsToolLinks": "AbuseFilterHooks::onContributionsToolLinks",
+		"HistoryPageToolLinks": "AbuseFilterHooks::onHistoryPageToolLinks",
 		"UploadVerifyUpload": "AbuseFilterHooks::onUploadVerifyUpload",
 		"UploadStashFile": "AbuseFilterHooks::onUploadStashFile",
 		"MakeGlobalVariablesScript": "AbuseFilterHooks::onMakeGlobalVariablesScript",

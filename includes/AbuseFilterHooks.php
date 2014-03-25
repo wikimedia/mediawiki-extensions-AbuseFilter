@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\Database;
 
@@ -633,6 +634,27 @@ class AbuseFilterHooks {
 				[ 'title' => $sp->msg( 'abusefilter-log-linkoncontribs-text',
 					$username )->text() ],
 				[ 'wpSearchUser' => $username ]
+			);
+		}
+	}
+
+	/**
+	 * @param IContextSource $context
+	 * @param LinkRenderer $linkRenderer
+	 * @param string[] &$links
+	 */
+	public static function onHistoryPageToolLinks(
+		IContextSource $context,
+		LinkRenderer $linkRenderer,
+		array &$links
+	) {
+		$user = $context->getUser();
+		if ( $user->isAllowed( 'abusefilter-log' ) ) {
+			$links[] = $linkRenderer->makeLink(
+				SpecialPage::getTitleFor( 'AbuseLog' ),
+				$context->msg( 'abusefilter-log-linkonhistory' )->text(),
+				[ 'title' => $context->msg( 'abusefilter-log-linkonhistory-text' )->text() ],
+				[ 'wpSearchTitle' => $context->getTitle()->getPrefixedText() ]
 			);
 		}
 	}
