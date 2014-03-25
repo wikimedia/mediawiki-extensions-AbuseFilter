@@ -1,0 +1,40 @@
+{
+    "@metadata": {
+        "authors": [
+            "Akoppad",
+            "Dimension10",
+            "Nayvik",
+            "පසිඳු කාවින්ද"
+        ]
+    },
+    "abusefilter-log-search-title": "ಶೀರ್ಷಿಕೆ:",
+    "abusefilter-log-search-submit": "ಹುಡುಕು",
+    "abusefilter-log-hide-reason": "ಕಾರಣ:",
+    "abusefilter-list-status": "ಸ್ಥಾನಮಾನ",
+    "abusefilter-list-edit": "ಸಂಪಾದಿಸಿ",
+    "abusefilter-unhidden": "ಸಾರ್ವಜನಿಕ",
+    "abusefilter-list-options": "ಆಯ್ಕೆಗಳು",
+    "abusefilter-edit-history": "ಇತಿಹಾಸ:",
+    "abusefilter-edit-builder-vars-newsize": "ಹೊಸ ಪುಟದ ಅಳತೆ",
+    "abusefilter-edit-builder-vars-oldsize": "ಹಳೇ  ಪುಟದ ಅಳತೆ",
+    "abusefilter-edit-builder-vars-removedlines": "ತಿದ್ದಿದಾಗ ತೆಗೆದ ಸಾಲುಗಳು",
+    "abusefilter-edit-builder-vars-summary": "ತಿದ್ದಿದಕ್ಕೆ ಸಂಕ್ಷೇಪವಾದ/ಕಾರಣ",
+    "abusefilter-edit-builder-vars-article-id": "ಪುಟದ ID",
+    "abusefilter-edit-builder-vars-article-prefixedtext": "ಪೂರ್ಣ ಪುಟದ ಹೆಸರು",
+    "abusefilter-edit-builder-vars-user-emailconfirm": "ಸಮಯ ಮತ್ತು ಇಮೇಲ್ ದೃಢೀಕರಿಸಲಪಟ್ಟಿದೆ",
+    "abusefilter-edit-builder-vars-recent-contributors": "ಕಳೆದ ಹತ್ತು ಜನ ಸಂಪಾದಕರು ಈ ಪುಟಕ್ಕೆ ಕೊಡುಗೆ ನೀಡಿದ್ದಾರೆ",
+    "abusefilter-edit-builder-vars-all-links": "ಹೊಸ ಪಠ್ಯದಲ್ಲಿ ಎಲ್ಲಾ ಬಾಹ್ಯ ಸಂಪರ್ಕ ಕೊಂಡಿಗಳು",
+    "abusefilter-edit-builder-vars-added-links": "ಎಲ್ಲಾ ಬಾಹ್ಯ ಸಂಪರ್ಕ ಕೊಂಡಿಗಳು ತಿದ್ದು ಪಡಿಯಲ್ಲಿ  ಸೇರಿಸಲಾಯಿತು",
+    "abusefilter-edit-builder-vars-removed-links": "ಎಲ್ಲಾ ಬಾಹ್ಯ ಸಂಪರ್ಕ ಕೊಂಡಿಗಳು ತಿದ್ದು ಪಡಿಯಲ್ಲಿ  ಅಳಿಸಲಾಗಿದೆ",
+    "abusefilter-edit-builder-vars-old-text": "ಹಳೇ wikitext ಪುಟ , ತಿದ್ದು ಪಡಿಯ ಮೊದಲು",
+    "abusefilter-edit-builder-vars-new-text": "ಹೊಸ wikitext ಪುಟ , ತಿದ್ದು ಪಡಿಯ ನಂತರ",
+    "abusefilter-edit-builder-vars-restrictions-edit": "ಪುಟದ ಸಂರಕ್ಷಣೆ ಮಟ್ಟವನ್ನು ತಿದ್ದು ಪಡಿಸಿ",
+    "abusefilter-edit-builder-vars-restrictions-move": "ಪುಟದ ಸಂರಕ್ಷಣೆ ಮಟ್ಟವನ್ನು ಸರಿಸಿ",
+    "abusefilter-edit-builder-vars-restrictions-create": "ಪುಟ ರಕ್ಷಣೆ ರಚಿಸಿ",
+    "abusefilter-edit-builder-vars-restrictions-upload": "ಫೈಲ್ ರಕ್ಷಣೆ ನಕಲೆರಿಸಿ",
+    "abusefilter-edit-builder-vars-old-text-stripped": "ಹಳೆಯ ಪುಟ ಪಠ್ಯ,  ಯಾವುದೇ ಮಾರ್ಕ್ಅಪ್ ತೆಗೆಯಲಾದ",
+    "abusefilter-edit-builder-vars-old-links": "\nಪುಟದಲ್ಲಿನ ಸಂಪರ್ಕ ಕೊಂಡಿಗಳು, ತಿದ್ದು ಪಡಿಯ ಮೊದಲು",
+    "abusefilter-history-comments": "ಟಿಪ್ಪಣಿಗಳು",
+    "abusefilter-history-select-submit": "ಸಂಸ್ಕರಿಸ",
+    "abusefilter-examine-submit": "ಹುಡುಕು"
+}

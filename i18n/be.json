@@ -1,0 +1,23 @@
+{
+    "@metadata": {
+        "authors": [
+            "LexArt",
+            "Тест"
+        ]
+    },
+    "abusefilter-log-search-user": "Удзельнік:",
+    "abusefilter-log-search-title": "Загаловак:",
+    "abusefilter-log-hide-reason": "Прычына:",
+    "abusefilter-list-edit": "Правіць",
+    "abusefilter-edit-status-label": "Статыстыка:",
+    "abusefilter-edit-warn-actions": "Дзеянні:",
+    "abusefilter-edit-history": "Гісторыя:",
+    "abusefilter-edit-builder-op-bool-not": "Не (!)",
+    "abusefilter-edit-builder-op-bool-and": "І (&)",
+    "abusefilter-edit-builder-op-bool-or": "Або (|)",
+    "abusefilter-edit-builder-group-funcs": "Функцыі",
+    "abusefilter-history-timestamp": "Час",
+    "abusefilter-history-comments": "Каментары",
+    "abusefilter-revert-filter": "Фільтр:",
+    "abusefilter-revert-confirm": "Пацвердзіць"
+}

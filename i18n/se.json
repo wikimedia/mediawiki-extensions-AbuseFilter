@@ -1,0 +1,13 @@
+{
+    "@metadata": {
+        "authors": [
+            "Jeblad",
+            "Linnea"
+        ]
+    },
+    "abusefilter-log": "Boasttogeavahanfiltera logga",
+    "abusefilter-deleted": "Sihkkojuvvon",
+    "abusefilter-history-deleted": "Sihkkojuvvon",
+    "abusefilter-action-block": "Hehtte",
+    "abusefilter-log-noresults": "Eai bohtosat"
+}

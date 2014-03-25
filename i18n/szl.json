@@ -1,0 +1,18 @@
+{
+    "@metadata": {
+        "authors": [
+            "Britscher",
+            "Krol111"
+        ]
+    },
+    "abusefilter-desc": "Automatyczno heurystyko do edycyj",
+    "abusefilter": "Konfiguracyjo filtra zńyłużyćůw",
+    "abuselog": "↓Register zńyłużyćůw",
+    "abusefilter-intro": "Regiyrowańy registrym zńyłużyćów\nRegister zńyłużyćów je program, kery automatyczńy używo heurystyka do wszyjskich akcyj.\nInterface pozwolo przeglůndać lista zedefińůwanych filtrůw a je pomjyńać.",
+    "abusefilter-mustbeeditor": "Lo bezpjyczyństwa, tyn interface mogům używać jyno używocze, kere majům prawo pomjyńać filter zńyłużyćów.",
+    "abusefilter-warning": "'''Pozůr''': Ta akcyjo bůła automatyczńy uznono szkodzůnco.\nFelerne pomjyny bydům cofńynte nazod, a fest złe abo uopakujůnce śe edytowańy skůńczy śe zwarćem twojigo kůnta abo IP.\nEli uważosz, aże to co żeś zrobjůł je dobre, spamjyntej pomjany bez „{{int:savearticle}}”.\nKrůtki uopis regli zńyłużyćo, keremu przipasowano twojo akcyjo: $1",
+    "abusefilter-disallowed": "Ta akcyjo bůła automatyczńy uznona szkodzůnco i uodćepńynto.\nEli uważosz, aże ta edycyjo bůła ajntlichowo, pedź uo tyj sytuacyji administratůrowi.\nKrůtki uopis regla zńyłużyćo, keremu bůła przipasowano twojo akcyjo: $1",
+    "abusefilter-blocker": "Filter zńyłużyćów",
+    "right-abusefilter-modify": "Pomjyńańy filtrůw zńyłużyćůw",
+    "abusefilter-list-options-submit": "Aktualizacyjo"
+}

@@ -1,0 +1,14 @@
+{
+    "@metadata": {
+        "authors": [
+            "Dakrismeno",
+            "Sprüngli"
+        ]
+    },
+    "abusefilter-desc": "L'aplica de l'heuristega automatega a li edizion",
+    "abusefilter": "Configuration del filter d'abus",
+    "abuselog": "Diari d'abus",
+    "abusefilter-warning": "Chetsa azion a l'è staida automatigament identifiada en tant che dagnousa.\nLi edizion miga construtivi i sarà revertid à bott, e grand o repetud edizion mia constructivi i resultarà end al cost cunt o ordenadour blocad. Se cas che creghée che chesta edizion la sighi construtiva, a podée clicar Sotmet de nœuv per confirmar-la. Una curta descripzion de la regula d'abus che la vosta edizion l'ha rencontrad a l'è: $1",
+    "abusefilter-diff-info": "Infurmazión de bas",
+    "abusefilter-diff-pattern": "Cundizión di filter"
+}

@@ -1,0 +1,16 @@
+{
+    "@metadata": {
+        "authors": [
+            "Chelin"
+        ]
+    },
+    "abusefilter-log-search-title": "Titulo:",
+    "abusefilter-log-search-wiki": "Wiki:",
+    "abusefilter-log-search-submit": "Truova",
+    "abusefilter-log-noactions": "nisciuno",
+    "abusefilter-log-hide-reason": "Mutivo:",
+    "abusefilter-list-edit": "Càgna",
+    "abusefilter-unhidden": "Pubbreco",
+    "abusefilter-enabled": "Attivato",
+    "abusefilter-deleted": "Canciellato"
+}

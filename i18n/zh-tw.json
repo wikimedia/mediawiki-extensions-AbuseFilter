@@ -1,0 +1,19 @@
+{
+    "@metadata": {
+        "authors": [
+            "Gzdavidwong",
+            "Pbdragonwang"
+        ]
+    },
+    "abuselog": "過濾日誌",
+    "abusefilter-edit-builder-vars-addedlines": "編輯增加了行數",
+    "abusefilter-edit-builder-vars-delta": "編輯改變了大小",
+    "abusefilter-edit-builder-vars-diff": "編輯造成了統一的變化",
+    "abusefilter-edit-builder-vars-newsize": "新頁面大小",
+    "abusefilter-edit-builder-vars-oldsize": "舊頁面大小",
+    "abusefilter-edit-builder-vars-article-id": "頁面ID",
+    "abusefilter-edit-builder-vars-article-ns": "頁面名字空間",
+    "abusefilter-edit-builder-vars-article-text": "頁面標題（沒有名字空間）",
+    "abusefilter-edit-builder-vars-movedfrom-id": "要移動的源頁面頁面ID",
+    "abusefilter-edit-builder-vars-movedfrom-ns": "要移動的源名字空間"
+}

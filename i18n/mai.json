@@ -1,0 +1,30 @@
+{
+    "@metadata": {
+        "authors": [
+            "Vinitutpal"
+        ]
+    },
+    "abusefilter-blocker": "फिल्टरक दुरुपयोग",
+    "right-abusefilter-modify": "ख़राब फ़िल्टर के ठीक करू",
+    "right-abusefilter-view": "ख़राब फ़िल्टर के देखू",
+    "abusefilter-log-search-user": "प्रयोक्ता",
+    "abusefilter-log-search-title": "शीर्षक",
+    "abusefilter-log-search-submit": "ताकू",
+    "abusefilter-log-detailslink": "विस्तार",
+    "abusefilter-list-edit": "संपादन",
+    "abusefilter-enabled": "सक्षम",
+    "abusefilter-deleted": "मेटाउ",
+    "abusefilter-return": "प्रबंधन फ़िल्टर मे घुरू",
+    "abusefilter-status-global": "वैश्विक",
+    "abusefilter-list-options": "विकल्प",
+    "abusefilter-list-options-deleted": "मिटायल फ़िल्टर",
+    "abusefilter-list-options-deleted-only": "मिटायल फ़िल्टर के देखाऊ",
+    "abusefilter-list-options-deleted-hide": "मिटायल फ़िल्टर के नुकाऊ",
+    "abusefilter-list-options-deleted-show": "हटायल गेल फ़िल्टर्स मे शामिल करू",
+    "abusefilter-list-options-disabled": "अयोग्य फ़िल्टर",
+    "abusefilter-list-options-hidedisabled": "अयोग्य फ़िल्टर के नुकाऊ",
+    "abusefilter-list-options-submit": "अद्यतन",
+    "abusefilter-tools-submitexpr": "मूल्यांकन",
+    "abusefilter-tools-reautoconfirm-user": "प्रयोक्ता",
+    "abusefilter-edit-deleted": "मिटाबै के निशान दियो"
+}

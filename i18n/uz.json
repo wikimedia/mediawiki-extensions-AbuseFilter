@@ -1,0 +1,17 @@
+{
+    "@metadata": {
+        "authors": [
+            "Sociologist"
+        ]
+    },
+    "abuselog": "Filtrlash qaydlari",
+    "right-abusefilter-log": "filtrlash qaydlarini koʻrish",
+    "action-abusefilter-log": "filtrlash qaydlarini koʻrish",
+    "abusefilter-log": "Filtrlash qaydlari",
+    "abusefilter-log-linkoncontribs": "filtrlash qaydlari",
+    "abusefilter-log-linkoncontribs-text": "Ushbu foydalanuvchi haqida filtrlash qaydlaridagi yozuvlar",
+    "abusefilter-log-hide-reason": "Sabab:",
+    "abusefilter-edit-builder-vars-user-name": "Hisob yozuvi nomi",
+    "abusefilter-revert-reasonfield": "Sabab:",
+    "abusefilter-log-name": "Filtrlash qaydlari"
+}
