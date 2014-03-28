@@ -84,7 +84,7 @@
     "abusefilter-edit-builder-op-arithmetic-modulo": "শতাংশ (%)",
     "abusefilter-edit-builder-op-comparison-equal": "সমান (==)",
     "abusefilter-edit-builder-op-bool-not": "নহয় (!)",
-    "abusefilter-edit-builder-op-bool-and": "আৰু (&)",
+    "abusefilter-edit-builder-op-bool-and": "আৰু (\u0026)",
     "abusefilter-edit-builder-op-bool-or": "বা (|)",
     "abusefilter-edit-builder-group-misc": "অন্যান্য",
     "abusefilter-edit-builder-vars-action": "কাৰ্য",
