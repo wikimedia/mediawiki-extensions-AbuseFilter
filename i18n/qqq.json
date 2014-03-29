@@ -106,7 +106,7 @@
     "abusefilter-logentry-unsuppress": "Log entry when unhiding an abuse filter log entry. Parameters:\n* $1 is a link to the log ID with the log ID as description.",
     "logentry-abusefilter-hit": "This message is for a log entry. Parameters:\n* $1 user\n* $3 link to the page, that the action that triggered the filter was made on\n* $4 link to filter\n* $5 action by user, like 'edit', 'move', 'create' etc.\n* $6 actions taken by the filter\n* $7 action details link",
     "abusefilter-management": "Title of [[Special:AbuseFilter]]",
-    "abusefilter-list": "Used as HTML \u003Ccode\u003E\u003Cnowiki\u003E\u003Ch2\u003E\u003C/nowiki\u003E\u003C/code\u003E heading.\n\nFollowed by the fieldset label {{msg-mw|Abusefilter-list-options}}.",
+    "abusefilter-list": "Used as HTML <code><nowiki><h2></nowiki></code> heading.\n\nFollowed by the fieldset label {{msg-mw|Abusefilter-list-options}}.",
     "abusefilter-list-id": "Column header in abuse filter overview for the filter identifier.\n{{Identical|Filter ID}}",
     "abusefilter-list-status": "Column header in abuse filter overview for the filter status.\n{{Identical|Status}}",
     "abusefilter-list-public": "Column header in abuse filter overview for the public filter description.",
@@ -305,8 +305,8 @@
     "abusefilter-history-filterid": "{{Identical|Filter}}",
     "abusefilter-history-select-user": "Used as label for the \"User\" input box. Field takes a username to filter events by.\n{{Identical|User}}",
     "abusefilter-history-diff": "{{Identical|Change}}",
-    "abusefilter-exception-unexpectedatend": "Error message from the abuse filter parser.\nParameters:\n* $1 - Position in the string\n* $2 - Unexpected code, i.e. \u003Ccode\u003Eelse, then, end, :, '\u003C/code\u003E",
-    "abusefilter-exception-expectednotfound": "Error message from the abuse filter parser.\nParameters:\n* $1 - Position in the string\n* $2 - Expected code, i.e. \u003Ccode\u003Eelse, then, end, :, '\u003C/code\u003E\n* $3 - Type of the found code\n* $4 - Value of the type",
+    "abusefilter-exception-unexpectedatend": "Error message from the abuse filter parser.\nParameters:\n* $1 - Position in the string\n* $2 - Unexpected code, i.e. <code>else, then, end, :, '</code>",
+    "abusefilter-exception-expectednotfound": "Error message from the abuse filter parser.\nParameters:\n* $1 - Position in the string\n* $2 - Expected code, i.e. <code>else, then, end, :, '</code>\n* $3 - Type of the found code\n* $4 - Value of the type",
     "abusefilter-exception-unrecognisedkeyword": "Error message from the abuse filter parser.\nParameters:\n* $1 - Position in the string\n* $2 - Unrecognized keyword",
     "abusefilter-exception-unexpectedtoken": "Error message from the abuse filter parser.\nParameters:\n* $1 - Position in the string\n* $2 - Type\n* $3 - Unexpected token",
     "abusefilter-exception-unclosedstring": "Error message from the abuse filter parser.\nParameters:\n* $1 - Position in the string",
@@ -362,7 +362,7 @@
     "abusefilter-diff-info": "Header for the box containing the basic information about a user account, displayed on the 'user profile' tab of the [[Special:Preferences|user preferences]] special page.\n{{Identical|Basic information}}",
     "abusefilter-diff-prev": "Link to the diff view for the previous change to this filter.\n\nSee also:\n* {{msg-mw|Abusefilter-diff-next}}\n* {{msg-mw|Previousdiff}} and {{msg-mw|Nextdiff}}",
     "abusefilter-diff-next": "Link to the diff view for the next change to this filter.\n\nSee also:\n* {{msg-mw|Abusefilter-diff-prev}}\n* {{msg-mw|Previousdiff}} and {{msg-mw|Nextdiff}}",
-    "abusefilter-import-intro": "{{doc-important|Do not translate \u003Ccode\u003E\u003Cnowiki\u003E{{int:abusefilter-edit-export}}\u003C/nowiki\u003E\u003C/code\u003E, \u003Ccode\u003E\u003Cnowiki\u003E{{int:abusefilter-tools-subtitle}}\u003C/nowiki\u003E\u003C/code\u003E, and \u003Ccode\u003E\u003Cnowiki\u003E{{int:abusefilter-import-submit}}\u003C/nowiki\u003E\u003C/code\u003E unless you absolute must substitute any of them.}}\n\nRefers to:\n* {{msg-mw|Abusefilter-edit-export}}\n* {{msg-mw|Abusefilter-edit-tools}}\n* {{msg-mw|Abusefilter-import-submit}}",
+    "abusefilter-import-intro": "{{doc-important|Do not translate <code><nowiki>{{int:abusefilter-edit-export}}</nowiki></code>, <code><nowiki>{{int:abusefilter-tools-subtitle}}</nowiki></code>, and <code><nowiki>{{int:abusefilter-import-submit}}</nowiki></code> unless you absolute must substitute any of them.}}\n\nRefers to:\n* {{msg-mw|Abusefilter-edit-export}}\n* {{msg-mw|Abusefilter-edit-tools}}\n* {{msg-mw|Abusefilter-import-submit}}",
     "abusefilter-import-submit": "Used as label for the Submit button.\n\nPreceded by the textarea.\n\nUsed in:\n* {{msg-mw|Abusefilter-import-intro}}.",
     "abusefilter-group-default": "The name for the default filter group. Most filters will be in this group.\n{{Identical|Default}}"
 }
