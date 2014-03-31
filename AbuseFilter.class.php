@@ -105,6 +105,7 @@ class AbuseFilter {
 			'user_age' => 'user-age',
 			'user_name' => 'user-name',
 			'user_groups' => 'user-groups',
+			'user_rights' => 'user-rights',
 			'user_blocked' => 'user-blocked',
 			'user_emailconfirm' => 'user-emailconfirm',
 			'old_wikitext' => 'old-text',
@@ -219,6 +220,12 @@ class AbuseFilter {
 			'user_groups',
 			'simple-user-accessor',
 			array( 'user' => $user, 'method' => 'getEffectiveGroups' )
+		);
+
+		$vars->setLazyLoadVar(
+			'user_rights',
+			'simple-user-accessor',
+			array( 'user' => $user, 'method' => 'getRights' )
 		);
 
 		$vars->setLazyLoadVar(

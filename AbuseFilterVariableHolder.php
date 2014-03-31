@@ -175,6 +175,7 @@ class AbuseFilterVariableHolder {
 			'simple-user-accessor',
 			'user-age',
 			'user-groups',
+			'user-rights',
 			'revision-text-by-id',
 			'revision-text-by-timestamp'
 		);

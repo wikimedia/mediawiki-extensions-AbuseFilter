@@ -1,7 +1,8 @@
 {
     "@metadata": {
         "authors": [
-            "Andrew Garrett"
+            "Andrew Garrett",
+            "Kunal Mehta"
         ]
     },
     "abusefilter-desc": "Applies automatic heuristics to edits",
@@ -259,6 +260,7 @@
     "abusefilter-edit-builder-vars-user-age": "Age of user account",
     "abusefilter-edit-builder-vars-user-name": "Name of user account",
     "abusefilter-edit-builder-vars-user-groups": "Groups (including implicit) user is in",
+    "abusefilter-edit-builder-vars-user-rights": "Rights that a user has",
     "abusefilter-edit-builder-vars-user-blocked": "Whether user is blocked",
     "abusefilter-edit-builder-vars-user-emailconfirm": "Time email address was confirmed",
     "abusefilter-edit-builder-vars-recent-contributors": "Last ten users to contribute to the page",
