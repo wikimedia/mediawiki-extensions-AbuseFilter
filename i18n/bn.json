@@ -36,7 +36,7 @@
     "abusefilter-log": "অপব্যবহার ফিল্টার লগ",
     "abusefilter-log-search": "অপব্যবহার লগে অনুসন্ধান করুন",
     "abusefilter-log-search-user": "ব্যবহারকারী:",
-    "abusefilter-log-search-filter": "ফিল্টার আইডি:",
+    "abusefilter-log-search-filter": "ফিল্টার আইডি (পাইপ দিয়ে আলাদা):",
     "abusefilter-log-search-title": "শিরোনাম:",
     "abusefilter-log-search-wiki": "উইকি:",
     "abusefilter-log-search-submit": "অনুসন্ধান",
