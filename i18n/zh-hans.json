@@ -31,7 +31,8 @@
             "Wmr89502270",
             "Xiaomingyan",
             "Yanmiao liu",
-            "Yfdyh000"
+            "Yfdyh000",
+            "Zhangjintao"
         ]
     },
     "abusefilter-desc": "对编辑行为自动进行条件判定",
@@ -98,6 +99,7 @@
     "abusefilter-log-hidden-implicit": "（因为修订已被删除而隐藏）",
     "abusefilter-log-cannot-see-details": "您没有权限去查看这个记录条目的细节。",
     "abusefilter-log-details-hidden": "你无法查看详细信息，因为此条目已被从公共范围隐藏。",
+    "abusefilter-log-private-not-included": "你指定的ID中有部分是私有的。因为你没有查看这些私有筛选器的权限，因此不会搜索私有筛选器的结果 。",
     "abusefilter-log-hide-legend": "隐藏日志条目",
     "abusefilter-log-hide-id": "日志记录ID：",
     "abusefilter-log-hide-hidden": "对公众隐藏此日志项目",
