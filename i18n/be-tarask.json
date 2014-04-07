@@ -142,7 +142,7 @@
     "abusefilter-edit-hidden": "Схаваць падрабязнасьці гэтага фільтру ад агульнага прагляду",
     "abusefilter-edit-global": "Глябальны фільтар",
     "abusefilter-edit-rules": "Умовы:",
-    "abusefilter-edit-notes": "Заўвагі:\n:''(прыватныя)",
+    "abusefilter-edit-notes": "Заўвагі:",
     "abusefilter-edit-lastmod": "Апошняя зьмена фільтру:",
     "abusefilter-edit-lastmod-text": "$1 удзельнікам $2",
     "abusefilter-edit-hitcount": "Выкананьняў фільтру:",

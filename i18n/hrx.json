@@ -4,6 +4,8 @@
             "Paul Beppler"
         ]
     },
+    "abusefilter-desc": "Wennet automatische Heuristike uff Beoorbeitunge an",
+    "abusefilter": "Missbrauchsfilter-Einstellunge",
     "abuselog": "Missbrauchsfilter-Logbuch",
     "abusefilter-blocker": "Missbrauchsfilter",
     "right-abusefilter-modify": "Missbrauchsfilter beoorbeite",

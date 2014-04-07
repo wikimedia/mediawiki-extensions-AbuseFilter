@@ -18,7 +18,8 @@
             "Sovq",
             "Sp5uhe",
             "Ty221",
-            "Woytecr"
+            "Woytecr",
+            "Pan Cube"
         ]
     },
     "abusefilter-desc": "Zastosowanie automatycznej heurystyki do edycji",
@@ -199,6 +200,7 @@
     "abusefilter-edit-bad-tags": "Co najmniej jedno z oznaczeń jest niepoprawne.\nOznaczenia powinny być krótkie i nie powinny zawierać znaków specjalnych.",
     "abusefilter-edit-notallowed": "Nie posiadasz uprawnienia do tworzenia lub edytowania filtrów nadużyć",
     "abusefilter-edit-notallowed-global": "Nie posiadasz uprawnienia do tworzenia lub edytowania globalnych filtrów nadużyć",
+    "abusefilter-edit-notallowed-global-custom-msg": "Niestandardowe komunikaty ostrzegawcze nie są obsługiwane przez filtry globalne",
     "abusefilter-edit-builder-select": "Wybierz opcję, aby wkleić ją na pozycji kursora",
     "abusefilter-edit-builder-group-op-arithmetic": "Operatory arytmetyczne",
     "abusefilter-edit-builder-op-arithmetic-addition": "Dodawanie (+)",
@@ -283,6 +285,7 @@
     "abusefilter-edit-builder-vars-removed-links": "Wszystkie linki zewnętrzne usunięte w edycji",
     "abusefilter-edit-builder-vars-old-text": "Stara treść strony w formacie wiki, przed modyfikacją",
     "abusefilter-edit-builder-vars-new-text": "Nowa treść strony w formacie wiki, po modyfikacji",
+    "abusefilter-edit-builder-vars-new-pst": "Nowa strona Wikitekstu, wstępnie zapisane przekształcone",
     "abusefilter-edit-builder-vars-new-text-stripped": "Nowa treść strony pozbawiona wszystkich znaczników",
     "abusefilter-edit-builder-vars-new-html": "Sformatowane źródło HTML nowej wersji",
     "abusefilter-edit-builder-vars-restrictions-edit": "Stopień zabezpieczenia strony przed edycją",
