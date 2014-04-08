@@ -104,7 +104,7 @@
     "abusefilter-edit-hidden": "وردەکارییەکانی ئەم پاڵوێنەیە لەبەر چاوی گشتی لا ببە",
     "abusefilter-edit-global": "پاڵوێنەی سەرانسەری",
     "abusefilter-edit-rules": "مەرجەکان:",
-    "abusefilter-edit-notes": "تێبینی:\n:''(تاکەکەسی)''",
+    "abusefilter-edit-notes": "تێبینییەکان:",
     "abusefilter-edit-lastmod": "پاڵوێنە دواجار گۆڕدراوە لە:",
     "abusefilter-edit-lastmod-text": "$1 بەدەستی $2",
     "abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|چرکە|چرکە}}",
