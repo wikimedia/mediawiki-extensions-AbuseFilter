@@ -380,7 +380,7 @@
     "abusefilter-log-entry-modify": "$1 vurna ($2)",
     "abusefilter-log-noresults": "Netice çıno",
     "abusefilter-diff-title": "Benatê versiyonan de ferqan",
-    "abusefilter-diff-item": "Obje",
+    "abusefilter-diff-item": "Unsur",
     "abusefilter-diff-version": "{{GENDER:$3|Rêza}} $2 ra versiyoni $1",
     "abusefilter-diff-info": "Seron zanayış",
     "abusefilter-diff-pattern": "Kondisyonê filitre",
