@@ -365,7 +365,7 @@
     "abusefilter-changeslist-examine": "검사",
     "abusefilter-examine": "특정 편집을 검사",
     "abusefilter-examine-intro": "이 문서에서 각각의 편집에 대해 부정 행위 방지 필터가 생성한 변수를 검사하고 필터에 대해 시험해볼 수 있습니다.",
-    "abusefilter-examine-legend": "편집 선택하기",
+    "abusefilter-examine-legend": "바뀐 편집 선택",
     "abusefilter-examine-diff": "차이 URL:",
     "abusefilter-examine-user": "사용자:",
     "abusefilter-examine-title": "문서 제목:",

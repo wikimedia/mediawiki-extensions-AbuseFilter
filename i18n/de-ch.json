@@ -8,5 +8,6 @@
     "abusefilter-log-entry": "$1: $2 löste durch die Aktion «$3» auf «$4» einen Missbrauchsfilter aus.\nFilteraktion: «$5»;\nFilterbeschreibung: «$6»",
     "abusefilter-log-detailedentry-meta": "$1: $2 löste durch die Aktion «$4» auf die Seite «$5» den $3 aus.\nErgriffene Massnahmen: $6;\nFilterbeschreibung: $7 ($8)",
     "abusefilter-edit-action-blockautopromote": "Den Status «Automatisch bestätigter Benutzer» entziehen.",
+    "abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Deine Änderungen]] am [[Special:AbuseFilter/$1|Filter «$1»]] wurden erfolgreich gespeichert.",
     "abusefilter-edit-builder-funcs-rmwhitespace": "Leerschläge entfernen (rmwhitespace)"
 }
