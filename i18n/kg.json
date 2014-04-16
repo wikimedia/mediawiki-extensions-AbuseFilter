@@ -1,11 +1,11 @@
 {
-    "@metadata": {
-        "authors": [
-            "Rkupsala"
-        ]
-    },
-    "abusefilter-examine-user": "Sadi:",
-    "abusefilter-examine-title": "Nkûmbu ya mukânda:",
-    "abusefilter-examine-submit": "Sosa",
-    "abusefilter-log-entry-modify": "me soba $1 ($2)"
+	"@metadata": {
+		"authors": [
+			"Rkupsala"
+		]
+	},
+	"abusefilter-examine-user": "Sadi:",
+	"abusefilter-examine-title": "Nkûmbu ya mukânda:",
+	"abusefilter-examine-submit": "Sosa",
+	"abusefilter-log-entry-modify": "me soba $1 ($2)"
 }

@@ -1,9 +1,9 @@
 {
-    "@metadata": {
-        "authors": [
-            "Slomox"
-        ]
-    },
-    "abusefilter-log-search-user": "Brucker:",
-    "abusefilter-history-user": "Brucker"
+	"@metadata": {
+		"authors": [
+			"Slomox"
+		]
+	},
+	"abusefilter-log-search-user": "Brucker:",
+	"abusefilter-history-user": "Brucker"
 }

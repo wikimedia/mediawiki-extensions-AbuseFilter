@@ -1,10 +1,10 @@
 {
-    "@metadata": {
-        "authors": [
-            "Masterches"
-        ]
-    },
-    "abusefilter-desc": "Aplike avètisman otomatik lè genyen modifikasyon",
-    "abusefilter": "Konfigirasyon filt tout abi yo",
-    "abuselog": "Jounal pou abi yo"
+	"@metadata": {
+		"authors": [
+			"Masterches"
+		]
+	},
+	"abusefilter-desc": "Aplike avètisman otomatik lè genyen modifikasyon",
+	"abusefilter": "Konfigirasyon filt tout abi yo",
+	"abuselog": "Jounal pou abi yo"
 }

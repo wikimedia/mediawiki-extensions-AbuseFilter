@@ -1,6 +1,4 @@
 {
-    "@metadata": {
-        "authors": []
-    },
-    "abusefilter-log-hide-reason": "理由："
+	"@metadata": [],
+	"abusefilter-log-hide-reason": "理由："
 }

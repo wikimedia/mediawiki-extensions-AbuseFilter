@@ -1,12 +1,12 @@
 {
-    "@metadata": {
-        "authors": [
-            "Paulu"
-        ]
-    },
-    "abusefilter-log-search-user": "Utilizatore:",
-    "abusefilter-list-edit": "Mudificà",
-    "abusefilter-edit-history": "Cronolugia:",
-    "abusefilter-history-user": "Utilizatore",
-    "abusefilter-examine-user": "Cuntributore:"
+	"@metadata": {
+		"authors": [
+			"Paulu"
+		]
+	},
+	"abusefilter-log-search-user": "Utilizatore:",
+	"abusefilter-list-edit": "Mudificà",
+	"abusefilter-edit-history": "Cronolugia:",
+	"abusefilter-history-user": "Utilizatore",
+	"abusefilter-examine-user": "Cuntributore:"
 }
