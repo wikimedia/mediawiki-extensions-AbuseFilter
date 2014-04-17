@@ -4,6 +4,24 @@
 			"Iltever"
 		]
 	},
+	"abuselog": "Джорукъдан чыгъыуланы журналы",
+	"abusefilter-log-search-title": "Башлыкъ:",
+	"abusefilter-log-search-wiki": "Википроект:",
+	"abusefilter-log-search-submit": "Изле",
+	"abusefilter-log-detailedentry-local": "$1 фильтрни",
+	"abusefilter-log-detailslink": "айгъакълаула",
+	"abusefilter-log-diff": "башх.",
+	"abusefilter-log-noactions": "джокъду",
 	"abusefilter-log-linkoncontribs": "джорукъдан чыгъыуланы журналы",
+	"abusefilter-log-hide-reason": "Чурум:",
+	"abusefilter-logentry-suppress": "[[$1]] джашыр",
+	"abusefilter-logentry-unsuppress": "[[$1]] кёгюз",
+	"abusefilter-list-id": "Фильтрни ID'си",
+	"abusefilter-list-status": "Статус",
+	"abusefilter-list-edit": "Тюрлендир",
+	"abusefilter-list-details": "Айгъакълаула",
+	"abusefilter-list-limit": "Бетлени саны:",
+	"abusefilter-disabled": "Джукъланыбды",
+	"abusefilter-list-options": "Параметрле",
 	"abusefilter-list-options-submit": "Джангырт"
 }
