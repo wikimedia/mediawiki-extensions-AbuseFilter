@@ -389,7 +389,7 @@
 	"abusefilter-log-name": "부정 행위 방지 필터 기록",
 	"abusefilter-log-header": "이 기록은 필터가 바뀜 기록의 요약본을 보여줍니다.\n자세한 정보는 [[Special:AbuseFilter/history|필터의 최근 바뀜]]을 참조하십시오.",
 	"abusefilter-log-entry-modify": "사용자가 $1을 수정했습니다 ($2)",
-	"abusefilter-log-noresults": "결과가 없습니다.",
+	"abusefilter-log-noresults": "결과 없음",
 	"abusefilter-diff-title": "버전 사이의 차이",
 	"abusefilter-diff-item": "항목",
 	"abusefilter-diff-version": "$2 사용자{{GENDER:$3|가}} 편집한 $1 버전",
