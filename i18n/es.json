@@ -102,6 +102,7 @@
 	"abusefilter-log-hidden-implicit": "(oculto porque se ha eliminado la revisión)",
 	"abusefilter-log-cannot-see-details": "No tienes permiso para ver los detalles de esta entrada.",
 	"abusefilter-log-details-hidden": "No puedes ver los detalles de esta entrada porque ésta es privada.",
+	"abusefilter-log-private-not-included": "Uno o más de los identificadores de filtro que has especificado son privados. Debido a que no tienes permitido ver los detalles de los filtros privados, estos filtros no se han buscado.",
 	"abusefilter-log-hide-legend": "Ocultar entrada del registro",
 	"abusefilter-log-hide-id": "ID de la entrada del registro:",
 	"abusefilter-log-hide-hidden": "Ocultar esta entrada de la vista pública",

@@ -58,7 +58,7 @@
 	"abusefilter-log-summary": "Tämä loki näyttää luettelon kaikista suodattimiin tarttuneista toiminnoista.",
 	"abusefilter-log-search": "Etsi väärinkäyttölokista",
 	"abusefilter-log-search-user": "Käyttäjä:",
-	"abusefilter-log-search-filter": "Suodattimen numero:",
+	"abusefilter-log-search-filter": "Suodattimen numero (erota pystyviivoilla):",
 	"abusefilter-log-search-title": "Kohteen nimi:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Etsi",
