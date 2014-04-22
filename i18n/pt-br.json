@@ -348,7 +348,7 @@
 	"abusefilter-revert-reason": "Reversão automática de todas as alterações feitas pelo filtro de abusos devido ao filtro $1.\nMotivo dado: $2",
 	"abusefilter-revert-reasonfield": "Motivo:",
 	"abusefilter-test": "Testar um filtro nas edições anteriores",
-	"abusefilter-test-intro": "Esta página permite-lhe verificar o filtro introduzido na caixa abaixo diante da(s) última(s) {{PLURAL:$1|alteração|alterações}}.\nPara carregar um filtro existente, insira o ID do filtro na caixa abaixo da caixa de edição, e clique o botão \"{{int:abusefilter-test-load}}\".",
+	"abusefilter-test-intro": "Esta página permite verificar um filtro introduzido na caixa abaixo diante {{PLURAL:$1|da última alteração|das últimas alterações}}.\nPara carregar um filtro existente, insira o ID do filtro na caixa abaixo da caixa de edição e clique no botão \"{{int:abusefilter-test-load}}\".",
 	"abusefilter-test-legend": "Teste de filtro",
 	"abusefilter-test-load-filter": "Carregar filtro com ID:",
 	"abusefilter-test-submit": "Testar",
