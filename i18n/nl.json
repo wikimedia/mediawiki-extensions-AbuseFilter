@@ -14,7 +14,8 @@
 			"Southparkfan",
 			"Tjcool007",
 			"Tvdm",
-			"Wiki13"
+			"Wiki13",
+			"Sjoerddebruin"
 		]
 	},
 	"abusefilter-desc": "Voert automatisch heuristische analyse uit op bewerkingen",
@@ -176,7 +177,7 @@
 	"abusefilter-edit-warn-preview": "Voorvertoning geselecteerd bericht",
 	"abusefilter-edit-warn-edit": "Geselecteerd bericht aanmaken/bewerken",
 	"abusefilter-edit-tag-tag": "Toe te voegen labels (een per regel):",
-	"abusefilter-edit-denied": "U mag de details van dit filter niet bekijken, omdat die niet openbaar zijn",
+	"abusefilter-edit-denied": "U mag de details van dit filter niet bekijken, omdat die niet openbaar zijn.",
 	"abusefilter-edit-main": "Filterparameters",
 	"abusefilter-edit-done-subtitle": "Filter bewerkt",
 	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Uw wijzigingen]] aan [[Special:AbuseFilter/$1|filter $1]] zijn opgeslagen.",
