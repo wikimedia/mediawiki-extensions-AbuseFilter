@@ -8,7 +8,8 @@
 			"Iwan Novirion",
 			"Kenrick95",
 			"Rex",
-			"Rv77ax"
+			"Rv77ax",
+			"C5st4wr6ch"
 		]
 	},
 	"abusefilter-desc": "Memberlakukan pemeriksaan heuristik otomatis atas kontribusi pengguna.",
@@ -74,6 +75,7 @@
 	"abusefilter-log-hidden-implicit": "(disembunyikan karena revisi telah dihapus)",
 	"abusefilter-log-cannot-see-details": "Anda tidak diizinkan untuk melihat rincian entri ini.",
 	"abusefilter-log-details-hidden": "Anda tidak dapat melihat rincian entri ini karena telah disembunyikan dari publik.",
+	"abusefilter-log-private-not-included": "Satu atau lebih filter ID yang Anda tentukan adalah pribadi. Karena Anda tidak diizinkan untuk melihat rincian filter pribadi, filter-filter ini tidak akan dicari.",
 	"abusefilter-log-hide-legend": "Sembunyikan entri log",
 	"abusefilter-log-hide-id": "ID entri log:",
 	"abusefilter-log-hide-hidden": "Sembunyikan entri ini dari publik",
