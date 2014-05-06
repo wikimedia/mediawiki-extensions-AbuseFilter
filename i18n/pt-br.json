@@ -268,7 +268,7 @@
 	"abusefilter-edit-builder-vars-movedto-text": "Título da página destino da movimentação",
 	"abusefilter-edit-builder-vars-movedto-prefixedtext": "Título completo da página destino da movimentação",
 	"abusefilter-edit-builder-vars-user-editcount": "Contagem de edições do usuário",
-	"abusefilter-edit-builder-vars-user-age": "Idade da conta de utilizador",
+	"abusefilter-edit-builder-vars-user-age": "Idade da conta de usuário",
 	"abusefilter-edit-builder-vars-user-name": "Nome da conta de usuário",
 	"abusefilter-edit-builder-vars-user-groups": "Grupos (incluindo implícitos) nos quais o usuário se encontra",
 	"abusefilter-edit-builder-vars-user-blocked": "Se o usuário está bloqueado",

@@ -337,7 +337,7 @@
 	"abusefilter-revert-periodend": "Periode selesai:",
 	"abusefilter-revert-search": "Pilih tindakan",
 	"abusefilter-revert-filter": "Penyaring:",
-	"abusefilter-revert-preview-intro": "Berikut adalah tindakan yang dilakukan oleh filter penyalahgunaan yang akan dikembalikan oleh tindakan ini.\nHarap periksa dengan saksama, dan klik \"konfirmasikan\" untuk mengkonfirmasikan pilihan Anda.",
+	"abusefilter-revert-preview-intro": "Berikut adalah tindakan yang dilakukan oleh filter penyalahgunaan yang akan dikembalikan oleh tindakan ini.\nHarap periksa dengan saksama, dan klik \"{{int:abusefilter-revert-confirm}}\" untuk mengkonfirmasikan pilihan Anda.",
 	"abusefilter-revert-confirm": "Konfirmasi",
 	"abusefilter-revert-success": "Anda telah mengembalikan semua tindakan yang dilakukan filter penyalahgunaan karena [[Special:AbuseFilter/$1|filter $1]].",
 	"abusefilter-revert-reason": "Pengembalian otomatis terhadap semua tindakan yang dilakukan filter penyalahgunaan karena filter $1.\nAlasan yang diberikan: $2",
