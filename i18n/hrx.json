@@ -320,6 +320,7 @@
 	"abusefilter-examine-match": "Der Filter erfasst die Ännrung.",
 	"abusefilter-examine-nomatch": "Der Filter erfasst die Ännrung net.",
 	"abusefilter-examine-syntaxerror": "Die Syntax von dem Filter ist ungültich",
+	"abusefilter-examine-notfound": "Die ongebne Ännrung konnt net gefund sin.",
 	"abusefilter-topnav": "'''Missbrauchsfilter-Navigation'''",
 	"abusefilter-topnav-home": "Startseit",
 	"abusefilter-topnav-test": "Regle teste",
