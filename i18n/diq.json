@@ -208,7 +208,7 @@
 	"abusefilter-edit-builder-op-bool-or": "Ya zi (|)",
 	"abusefilter-edit-builder-op-bool-xor": "XOR (^)",
 	"abusefilter-edit-builder-group-misc": "Binan",
-	"abusefilter-edit-builder-misc-in": "Rêz da (in) de esto",
+	"abusefilter-edit-builder-misc-in": "rêza de esto (in)",
 	"abusefilter-edit-builder-misc-like": "Pattern meç keno",
 	"abusefilter-edit-builder-misc-rlike": "Reqex meç keno (rlike)",
 	"abusefilter-edit-builder-misc-irlike": "Şıkiyeno ra ifadeyo nizamın, nuştışo qıc u gırd (irlike)",
