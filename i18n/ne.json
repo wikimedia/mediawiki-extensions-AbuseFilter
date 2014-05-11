@@ -197,7 +197,7 @@
 	"abusefilter-topnav-log": "दुर्व्यवहार लग",
 	"abusefilter-topnav-tools": "डिबगिंग औजार",
 	"abusefilter-log-entry-modify": "$1 ($2) परिवर्तित",
-	"abusefilter-diff-title": "संस्करणहरु माझ भिन्नता",
+	"abusefilter-diff-title": "संस्करणहरूबीच भिन्नता",
 	"abusefilter-diff-item": "सामग्री",
 	"abusefilter-diff-version": "संस्करण $1देखि $2द्वारा",
 	"abusefilter-diff-info": "बुनियादी सूचना",

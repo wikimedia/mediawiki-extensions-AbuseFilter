@@ -80,6 +80,7 @@
 	"abusefilter-log-hidden-implicit": "(특정 버전이 삭제되었기 때문에 숨겨졌습니다)",
 	"abusefilter-log-cannot-see-details": "이 항목의 자세한 내용을 볼 권한이 없습니다.",
 	"abusefilter-log-details-hidden": "이 항목은 비공개로 설정되었기 때문에 이 항목의 자세한 사항을 볼 수 없습니다.",
+	"abusefilter-log-private-not-included": "하나 혹은 이상의 지정한 필터 ID는 비공개 필터입니다. 비공개 필터를 볼 수 있는 권한이 없기 때문에, 필터는 검색되지 않았습니다.",
 	"abusefilter-log-hide-legend": "기록 항목 숨기기",
 	"abusefilter-log-hide-id": "기록 항목 ID:",
 	"abusefilter-log-hide-hidden": "이 항목을 비공개로 설정",
