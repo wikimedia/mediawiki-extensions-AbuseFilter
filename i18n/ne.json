@@ -84,7 +84,7 @@
 	"abusefilter-edit-enabled": "यस फिल्टरलाई सक्रिय गर्ने",
 	"abusefilter-edit-deleted": "मेटिएको भनी चिन्ह लगाउने",
 	"abusefilter-edit-rules": "शर्तहरु:",
-	"abusefilter-edit-notes": "टिप्पणी:\n:''(निजि)''",
+	"abusefilter-edit-notes": "टिप्पणी:",
 	"abusefilter-edit-lastmod": "पछिल्लो संशोधित फिल्टर",
 	"abusefilter-edit-lastmod-text": "$2ले $1लाई",
 	"abusefilter-edit-action-degroup": "सबै विशेषाधिकार प्राप्त समूहबाट प्रयोगकर्तालाई निकाल्ने",
