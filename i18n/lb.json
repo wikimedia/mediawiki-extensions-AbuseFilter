@@ -342,7 +342,7 @@
 	"abusefilter-examine-vars": "Variabelen, déi fir dës Ännerung generéiert goufen",
 	"abusefilter-examine-test": "Dës Ännerung mat engem Filter testen",
 	"abusefilter-examine-test-button": "De Filter ausprobéieren",
-	"abusefilter-examine-match": "De Filter erfaast dës Ännerung.",
+	"abusefilter-examine-match": "De Filter erfaasst dës Ännerung.",
 	"abusefilter-examine-nomatch": "De Filter erfaasst dës Ännerung net.",
 	"abusefilter-examine-syntaxerror": "D'Syntax vun dësem Filter ass net valabel",
 	"abusefilter-examine-notfound": "Déi Ännerung déi dir gefrot hutt gouf net fonnt.",
