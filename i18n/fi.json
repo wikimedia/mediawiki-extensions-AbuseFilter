@@ -134,7 +134,7 @@
 	"abusefilter-reautoconfirm-none": "Tätä käyttäjää ei ole poistettu ryhmästä ''automaattisesti hyväksytyt käyttäjät (autoconfirmed)''",
 	"abusefilter-reautoconfirm-notallowed": "Sinulla ei ole oikeutta palauttaa käyttäjätunnusta ryhmään ''automaattisesti hyväksytyt käyttäjät (autoconfirmed)''",
 	"abusefilter-reautoconfirm-done": "Käyttäjätunnus on nyt palautettu ryhmään ''automaattisesti hyväksytyt käyttäjät (autoconfirmed)''",
-	"abusefilter-status": "Viimeisestä $1 {{PLURAL:$1|toiminnosta|toiminnosta}}, $2 ($3 %) {{PLURAL:$2|saavutti|saavutti}} ehtorajan $4, ja $5 ($6 %) {{PLURAL:$5|täsmäsi|täsmäsi}} yhteen nyt käytössä olevista suodattimista.",
+	"abusefilter-status": "Viimeisestä $1 {{PLURAL:$1|toiminnosta}} $2 ($3 %) on {{PLURAL:$2|saavuttanut}} ehtorajan $4, ja $5 ($6 %) on {{PLURAL:$5|täsmännyt}} johonkin tällä hetkellä käytössä olevista suodattimista.",
 	"abusefilter-edit": "Muokataan väärinkäyttösuodatinta",
 	"abusefilter-edit-subtitle": "Muokataan suodatinta $1",
 	"abusefilter-edit-subtitle-new": "Luodaan suodatinta",
