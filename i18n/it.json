@@ -76,7 +76,7 @@
 	"abusefilter-log-linkoncontribs": "filtro anti abusi",
 	"abusefilter-log-linkoncontribs-text": "Registro del filtro anti abusi relativo a questo utente",
 	"abusefilter-log-hidden": "(voce nascosta)",
-	"abusefilter-log-hidden-implicit": "(nascosto perché la revisione è stata eliminata)",
+	"abusefilter-log-hidden-implicit": "(nascosto perché la versione è stata eliminata)",
 	"abusefilter-log-cannot-see-details": "Non hai il permesso di vedere i dettagli di questa voce del registro.",
 	"abusefilter-log-details-hidden": "Non è possibile visualizzare i dettagli di questa voce, in quanto nascosta al pubblico.",
 	"abusefilter-log-private-not-included": "Uno o più ID filtro che hai indicato sono privati. Poiché non puoi visualizzare i dettagli dei filtri privati, questi filtri non sono stati cercati.",
