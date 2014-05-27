@@ -151,6 +151,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$newRow['af_throttled'] = $newRow['af_throttled'] && !$newRow['af_enabled'];
 			$newRow['af_id'] = $new_id; // ID.
 
+			// T67807
+			// integer 1's & 0's might be better understood than booleans
+			$newRow['af_enabled'] = (int) $newRow['af_enabled'];
+			$newRow['af_hidden'] = (int) $newRow['af_hidden'];
+			$newRow['af_throttled'] = (int) $newRow['af_throttled'];
+			$newRow['af_deleted'] = (int) $newRow['af_deleted'];
+			$newRow['af_global'] = (int) $newRow['af_global'];
+
 			$dbw->replace( 'abuse_filter', array( 'af_id' ), $newRow, __METHOD__ );
 
 			if ( $is_new ) {
