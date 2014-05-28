@@ -811,6 +811,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$obj->af_enabled = 1;
 			$obj->af_hidden = 0;
 			$obj->af_global = 0;
+			$obj->af_throttled = 0;
 			return array( $obj, array() );
 		}
 
