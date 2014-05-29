@@ -130,8 +130,8 @@ $specialPageAliases['et'] = array(
 
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
-	'AbuseLog' => array( 'سیاهه_خرابکاری' ),
-	'AbuseFilter' => array( 'پالایه_خرابکاری' ),
+	'AbuseLog' => array( 'سیاههٔ_خرابکاری', 'سیاهه_خرابکاری' ),
+	'AbuseFilter' => array( 'پالایهٔ_خرابکاری', 'پالایه_خرابکاری' ),
 );
 
 /** Finnish (suomi) */
