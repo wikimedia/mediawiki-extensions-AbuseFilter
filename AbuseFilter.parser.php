@@ -1942,12 +1942,18 @@ class AbuseFilterParser {
 				$equivset = null;
 				// Contains a map of characters in $equivset.
 				require "$IP/extensions/AntiSpoof/equivset.php";
+
+				// strtr in ReplacementArray->replace() doesn't like this.
+				if ( isset( $equivset[''] ) ) {
+					unset( $equivset[''] );
+				}
+
 				$replacementArray = new ReplacementArray( $equivset );
 			} else {
 				// AntiSpoof isn't available, so just create a dummy
 				wfDebugLog(
 					'AbuseFilter',
-					"Can't compute normalized string (ccnorm) as the AntiSpoof Extension isn't isntalled."
+					"Can't compute normalized string (ccnorm) as the AntiSpoof Extension isn't installed."
 				);
 				$replacementArray = new ReplacementArray( array() );
 			}
