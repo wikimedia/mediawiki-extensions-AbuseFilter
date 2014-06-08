@@ -272,7 +272,7 @@
 	"abusefilter-edit-builder-vars-restrictions-edit": "Επεξεργασία του επιπέδου προστασίας της σελίδας",
 	"abusefilter-edit-builder-vars-restrictions-move": "Μετακίνηση του επιπέδου προστασίας της σελίδας",
 	"abusefilter-edit-builder-vars-restrictions-create": "Δημιουργία προστασίας της σελίδας",
-	"abusefilter-edit-builder-vars-restrictions-upload": "Φόρτωση προστασίας του αρχείου",
+	"abusefilter-edit-builder-vars-restrictions-upload": "Προστασία ανεβάσματος του αρχείου",
 	"abusefilter-edit-builder-vars-old-text-stripped": "Παλιό κείμενο σελίδας, χώρις κάποια σύνταξη markup",
 	"abusefilter-edit-builder-vars-old-links": "Σύνδεσμοι στην σελίδα πριν από την επεξεργασία",
 	"abusefilter-edit-builder-vars-old-html": "Παλιό βικικείμενο σελίδας, λεξιαναλυμένο σε HTML",
