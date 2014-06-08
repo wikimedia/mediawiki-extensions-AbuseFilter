@@ -296,11 +296,10 @@
 		$( '#wpFilterBuilder' ).change( addText );
 		$( '#mw-abusefilter-edit-group-input' ).change( onFilterGroupChange );
 
-		$( '#mw-abusefilter-export-link' ).toggle(
-			function() {
-				$exportBox.show();
-			}, function() {
-				$exportBox.hide();
+		$( '#mw-abusefilter-export-link' ).click(
+			function( e ) {
+				e.preventDefault();
+				$exportBox.toggle();
 			}
 		);
 	} );
