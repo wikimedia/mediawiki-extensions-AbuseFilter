@@ -1393,7 +1393,11 @@ class AbuseFilter {
 							$vars->getVar( 'ACTION' )->toString()
 					) );
 
-				AbuseFilter::$tagsToSet[$actionID] = $parameters;
+				if ( !isset( AbuseFilter::$tagsToSet[$actionID] ) ) {
+					AbuseFilter::$tagsToSet[$actionID] = $parameters;
+				} else {
+					AbuseFilter::$tagsToSet[$actionID] = array_merge( AbuseFilter::$tagsToSet[$actionID], $parameters );
+				}
 				break;
 			default:
 				if( isset( $wgAbuseFilterCustomActionsHandlers[$action] ) ) {
