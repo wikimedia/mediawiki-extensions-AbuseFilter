@@ -60,7 +60,7 @@
 	"abusefilter-log-summary": "Este registro mostra uma lista de todas as ações capturadas pelos filtros.",
 	"abusefilter-log-search": "Pesquisar o registo de abusos",
 	"abusefilter-log-search-user": "Utilizador:",
-	"abusefilter-log-search-filter": "Filtrar IDs (separar com \"||\"):",
+	"abusefilter-log-search-filter": "ID dos filtros (separar com barras verticais):",
 	"abusefilter-log-search-title": "Título:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Pesquisar",

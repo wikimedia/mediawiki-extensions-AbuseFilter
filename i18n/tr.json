@@ -9,7 +9,8 @@
 			"LuCKY",
 			"Mach",
 			"Srhat",
-			"Vito Genovese"
+			"Vito Genovese",
+			"Ayrıntılı Bilgi"
 		]
 	},
 	"abusefilter-desc": "Değişikliklere otomatik bulucu yöntemler uygular",
@@ -50,7 +51,7 @@
 	"abusefilter-log-summary": "Bu günlük, süzgeçlere yakalanan tüm eylemlerin bir listesini gösterir.",
 	"abusefilter-log-search": "Suistimal günlüğünü ara",
 	"abusefilter-log-search-user": "Kullanıcı:",
-	"abusefilter-log-search-filter": "Süzgeç IDsi:",
+	"abusefilter-log-search-filter": "Süzgeç IDsi(\"|\" işareti ile ayrıldı):",
 	"abusefilter-log-search-title": "Başlık:",
 	"abusefilter-log-search-wiki": "Viki:",
 	"abusefilter-log-search-submit": "Ara",

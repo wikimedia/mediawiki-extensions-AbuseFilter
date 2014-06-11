@@ -57,7 +57,7 @@
 	"abusefilter-log-summary": "Este registro mostra uma lista de todas as ações capturadas pelos filtros.",
 	"abusefilter-log-search": "Pesquisar o registro de abusos",
 	"abusefilter-log-search-user": "Usuário:",
-	"abusefilter-log-search-filter": "Identificação de filtro:",
+	"abusefilter-log-search-filter": "ID dos filtros (separar com barras verticais):",
 	"abusefilter-log-search-title": "Título:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Pesquisar",
