@@ -84,6 +84,7 @@
 	"abusefilter-log-hidden-implicit": "(piilotettu, koska versio on poistettu)",
 	"abusefilter-log-cannot-see-details": "Sinulla ei ole oikeutta nähdä tämän lokimerkinnän tietoja.",
 	"abusefilter-log-details-hidden": "Et voi nähdä tämän lokimerkinnän tietoja, koska merkintä on piilotettu eikä ole julkisesti näkyvissä.",
+	"abusefilter-log-private-not-included": "Yksi tai useampi määrittämäsi suodattimen numero on suljettu ulkopuolisilta. Koska sinulla ei ole lupaa nähdä yksityisten suodattimien tietoja, näitä suodattimia ei ole haettu.",
 	"abusefilter-log-hide-legend": "Piilota lokimerkintä",
 	"abusefilter-log-hide-id": "Lokimerkinnän tunnusnumero:",
 	"abusefilter-log-hide-hidden": "Piilota tämä merkintä julkiselta näkymiseltä",
