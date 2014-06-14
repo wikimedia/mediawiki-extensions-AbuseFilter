@@ -42,7 +42,7 @@
 	"abusefilter-log-summary": "ეს ჟურნალი აჩვენებს ყველა იმ მოქმედების სიას, რომელიც ფილტრმა დაიჭირა.",
 	"abusefilter-log-search": "ბოროტად გამოყენების ფილტრის ჟურნალის ძიება",
 	"abusefilter-log-search-user": "მომხმარებელი:",
-	"abusefilter-log-search-filter": "ფილტრის ID:",
+	"abusefilter-log-search-filter": "ფილტრის ID (ვერტიკალური ხაზით გაყოფილი):",
 	"abusefilter-log-search-title": "სათაური:",
 	"abusefilter-log-search-wiki": "ვიკი:",
 	"abusefilter-log-search-submit": "ძიება",
