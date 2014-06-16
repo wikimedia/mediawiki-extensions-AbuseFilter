@@ -274,6 +274,7 @@
 	"abusefilter-edit-builder-vars-new-text": "Новы вікі-тэкст, пасьля рэдагаваньня",
 	"abusefilter-edit-builder-vars-new-pst": "Вікітэкст новай старонкі, трансфармаваны перад захаваньнем",
 	"abusefilter-edit-builder-vars-diff-pst": "Уніфікаваная розьніца зьменаў у працэсе рэдагаваньня, ператвораная перад захаваньнем",
+	"abusefilter-edit-builder-vars-addedlines-pst": "Радкі, дададзеныя пры рэдагаваньні, ператвораныя перад захаваньнем",
 	"abusefilter-edit-builder-vars-new-text-stripped": "Новы тэкст старонкі, ачышчаны ад усіх пазнакаў",
 	"abusefilter-edit-builder-vars-new-html": "Разабраны HTML-код новай вэрсіі",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Узровень абароны старонкі ад рэдагаваньняў",
