@@ -32,7 +32,8 @@
 			"Xiaomingyan",
 			"Yanmiao liu",
 			"Yfdyh000",
-			"Zhangjintao"
+			"Zhangjintao",
+			"Mywood"
 		]
 	},
 	"abusefilter-desc": "对编辑行为自动进行条件判定",
@@ -331,7 +332,7 @@
 	"abusefilter-history-select-legend": "精确搜索",
 	"abusefilter-history-select-user": "用户：",
 	"abusefilter-history-select-submit": "重新查询",
-	"abusefilter-history-diff": "修订",
+	"abusefilter-history-diff": "更改",
 	"abusefilter-history-error-hidden": "您所请求的过滤器是隐藏的，因此您无法查看其历史。",
 	"abusefilter-exception-unexpectedatend": "字符$1处出现意料外的“$2”。",
 	"abusefilter-exception-expectednotfound": "字符$1处未找到预期的$2（但找到了$3 $4）。",

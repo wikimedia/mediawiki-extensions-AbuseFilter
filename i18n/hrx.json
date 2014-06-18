@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Paul Beppler"
+			"Paul Beppler",
+			"Tahir mq"
 		]
 	},
 	"abusefilter-desc": "Wennet automatische Heuristike uff Beoorbeitunge an",
@@ -160,10 +161,10 @@
 	"abusefilter-edit-notallowed-global-custom-msg": "Benutzerdefinierte Warnnachrichte werre für globale Filter net unnerstützt.",
 	"abusefilter-edit-builder-select": "Wähl en Option aus, um se am Kursor einzufüche",
 	"abusefilter-edit-builder-group-op-arithmetic": "Arithmetische Operatore",
-	"abusefilter-edit-builder-op-arithmetic-addition": "Addition (+)",
+	"abusefilter-edit-builder-op-arithmetic-addition": "جمع (+)",
 	"abusefilter-edit-builder-op-arithmetic-subtraction": "Subtraktion (-)",
 	"abusefilter-edit-builder-op-arithmetic-multiplication": "Multiplikation (*)",
-	"abusefilter-edit-builder-op-arithmetic-divide": "Division (/)",
+	"abusefilter-edit-builder-op-arithmetic-divide": "تقسیم (/)",
 	"abusefilter-edit-builder-op-arithmetic-modulo": "Modulo (%)",
 	"abusefilter-edit-builder-op-arithmetic-pow": "Potenz (**)",
 	"abusefilter-edit-builder-group-op-comparison": "Vergleichsoperatore",
