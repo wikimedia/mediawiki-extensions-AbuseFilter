@@ -311,6 +311,7 @@
 	"abusefilter-revert-reason": "Automatsko vraćanje svih radnji koje je načinio filter $1.\nRazlog: $2",
 	"abusefilter-revert-reasonfield": "Razlog za revert:",
 	"abusefilter-test": "Testiraj filter na prethodne izmene",
+	"abusefilter-test-intro": "Ova stranica vam omogućava da proverite filter iz donje kutijice na {{PLURAL:$1|poslednju $1 izmenu|poslednje $1 izmene|poslednjih $1 izmena}}.\nDa biste učitali postojeći filter, unesite njegov ID u kutijicu ispod polja za uređivanje i klinkite na dugme „Učitaj“.",
 	"abusefilter-test-legend": "Testiranje filtera",
 	"abusefilter-test-load-filter": "Učitaj ID filtera:",
 	"abusefilter-test-submit": "Test",

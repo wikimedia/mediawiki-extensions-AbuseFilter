@@ -35,7 +35,8 @@
 			"TheBITLINK",
 			"Tifinaghes",
 			"Translationista",
-			"Vivaelcelta"
+			"Vivaelcelta",
+			"Themasterriot"
 		]
 	},
 	"abusefilter-desc": "Aplicar automáticamente heurísticas para ediciones",
@@ -76,7 +77,7 @@
 	"abusefilter-log-summary": "Este registro muestra una lista de todas las acciones detectadas por los filtros.",
 	"abusefilter-log-search": "Buscar en el registro de abusos",
 	"abusefilter-log-search-user": "Usuario:",
-	"abusefilter-log-search-filter": "Filtrar identificadores (separar con plecas):",
+	"abusefilter-log-search-filter": "Filtrar identificadores (separar con barras verticales):",
 	"abusefilter-log-search-title": "Título:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Buscar",
