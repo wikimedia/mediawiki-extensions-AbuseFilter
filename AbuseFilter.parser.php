@@ -69,6 +69,18 @@ class AFPData {
 	const DFloat  = 'float';
 	const DList   = 'list';
 
+	// Translation table mapping shell-style wildcards to PCRE equivalents.
+	// Derived from <http://www.php.net/manual/en/function.fnmatch.php#100207>
+	private static $wildcardMap = array(
+		'\*'   => '.*',
+		'\.'   => '\.',
+		'\?'   => '.',
+		'\['   => '[',
+		'\[\!' => '[^',
+		'\\'   => '\\\\',
+		'\]'   => ']',
+	);
+
 	public $type;
 	public $data;
 
@@ -247,9 +259,9 @@ class AFPData {
 	 */
 	public static function keywordLike( $str, $pattern ) {
 		$str = $str->toString();
-		$pattern = $pattern->toString();
+		$pattern = '#^' . strtr( preg_quote( $pattern->toString(), '#' ), self::$wildcardMap ) . '$#u';
 		wfSuppressWarnings();
-		$result = fnmatch( $pattern, $str );
+		$result = preg_match( $pattern, $str );
 		wfRestoreWarnings();
 		return new AFPData( self::DBool, (bool)$result );
 	}
