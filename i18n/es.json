@@ -347,7 +347,7 @@
 	"abusefilter-exception-dividebyzero": "Intento ilegal de dividir $2 entre cero en carácter $1.",
 	"abusefilter-exception-unrecognisedvar": "Variable no reconocida $2 en el carácter $1",
 	"abusefilter-exception-notenoughargs": "No se han proporcionado todos los argumentos necesarios a la función $2, llamada en el carácter $1.\nSe {{PLURAL:$3|esperaba|esperaban}} $3 {{PLURAL:$3|argumento|argumentos}} y se {{PLURAL:$4|ha|han}} proporcionado $4.",
-	"abusefilter-exception-regexfailure": "Error en expresión regular \"$3\" en carácter $1: \"$2\"",
+	"abusefilter-exception-regexfailure": "Error en la expresión regular «$3» en el carácter $1: «$2»",
 	"abusefilter-exception-overridebuiltin": "Anulación incorrecta de la variable «$2» en el carácter $1.",
 	"abusefilter-exception-outofbounds": "Solicitando objeto de listado no existente $2 (tamaño del listado = $3) en el carácter $1.",
 	"abusefilter-exception-notlist": "Solicitando un objeto de matriz en un objeto que no es una matriz, en el carácter $1.",

@@ -332,7 +332,7 @@
 	"abusefilter-action-block": "Blokir",
 	"abusefilter-action-degroup": "Keluarkan dari kelompok",
 	"abusefilter-action-rangeblock": "Batasan blokir",
-	"abusefilter-action-disallow": "tidak diijinkan",
+	"abusefilter-action-disallow": "tidak diizinkan",
 	"abusefilter-revert-title": "Mengembalikan perubahan dari penyaringan $1",
 	"abusefilter-revert-intro": "Isian ini memungkinkan Anda mengembalikan semua perubahan yang dibuat oleh filter penyalahgunaan karena filter $1.\nHarap berhati-hati dalam menggunakan alat ini.",
 	"abusefilter-revert-preview-item": "$1: $2 melakukan $3 pada $4.\nAksi yang dikembalikan: $5 ($6)",
