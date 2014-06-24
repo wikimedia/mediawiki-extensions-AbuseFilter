@@ -2,9 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"LexArt",
-			"Тест"
+			"Тест",
+			"Mikalai Udodau"
 		]
 	},
+	"abuselog": "Журнал злоўжыванняў",
+	"right-abusefilter-log": "Глядзець журнал злоўжыванняў",
 	"abusefilter-log-search-user": "Удзельнік:",
 	"abusefilter-log-search-title": "Загаловак:",
 	"abusefilter-log-hide-reason": "Прычына:",
