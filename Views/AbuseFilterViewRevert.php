@@ -175,7 +175,11 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				$this->revertAction( $action, $result );
 			}
 		}
-		$this->getOutput()->addWikiMsg( 'abusefilter-revert-success', $filter );
+		$this->getOutput()->addWikiMsg(
+			'abusefilter-revert-success',
+			$filter,
+			$this->getLanguage()->formatNum( $filter )
+		);
 
 		return true;
 	}
