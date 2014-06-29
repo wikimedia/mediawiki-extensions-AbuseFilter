@@ -184,7 +184,7 @@
 	"abusefilter-edit-denied": "شما نمی‌توانید جزئیات این پالایه را ببینید، زیرا از دید عموم پنهان شده‌است.",
 	"abusefilter-edit-main": "پارامترهای پالایه",
 	"abusefilter-edit-done-subtitle": "پالایه ویرایش شد",
-	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|تغییرات شما]] در [[Special:AbuseFilter/$1|filter $1]] ذخیره شده‌است.",
+	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|تغییرات شما]] در [[Special:AbuseFilter/$1|پالایه $1]] ذخیره شده‌است.",
 	"abusefilter-edit-badsyntax": "یک خطای نحوی در پالایه‌ای که مشخص کردید وجود دارد.\nخروجی تحلیلگر این بود: <pre>$1</pre>",
 	"abusefilter-edit-restricted": "شما نمی‌توانید این پالایه را ویرایش کنید، چون حاوی یک یا چند اقدام محدودشده است.\nلطفاً به منظور انجام تغییر، از یک کاربر با دسترسی اقدام‌های محدودشده درخواست کنید.",
 	"abusefilter-edit-viewhistory": "نمایش تاریخچهٔ این پالایه",
