@@ -336,7 +336,7 @@
 	"abusefilter-revert-search": "Hereketan biweçine",
 	"abusefilter-revert-filter": "Avrêc:",
 	"abusefilter-revert-preview-intro": "Cérdé, na icraat qeydé nengan sera édé peysr bıgériyé.\nReca keme qontrol keré u weçınişa ğo \"{{int:abusefilter-revert-confirm}}\"  bıploğné.",
-	"abusefilter-revert-confirm": "Testiq ke",
+	"abusefilter-revert-confirm": "Tesdiq ke",
 	"abusefilter-revert-success": "[[Special:AbuseFilter/$1|$1 filtresinden]] dolayı suistimal filtresi tarafından alınan tüm eylemleri geri aldınız.",
 	"abusefilter-revert-reason": "$1 filtresinden dolayı suistimal filtresi tarafından alınan tüm eylemlerin otomatik geri alımı.\nVerilen sebep: $2",
 	"abusefilter-revert-reasonfield": "Sebeb:",
