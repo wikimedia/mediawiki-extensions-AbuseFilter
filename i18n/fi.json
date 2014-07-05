@@ -256,7 +256,7 @@
 	"abusefilter-edit-builder-vars-oldsize": "Vanhan sivun koko",
 	"abusefilter-edit-builder-vars-removedlines": "Muokkauksessa poistettujen rivien määrä",
 	"abusefilter-edit-builder-vars-summary": "Yhteenveto",
-	"abusefilter-edit-builder-vars-article-id": "Sivun tunniste",
+	"abusefilter-edit-builder-vars-article-id": "Sivun tunnistenumero",
 	"abusefilter-edit-builder-vars-article-ns": "Sivun nimiavaruus",
 	"abusefilter-edit-builder-vars-article-text": "Sivun nimi (ilman nimiavaruutta)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Sivun koko nimi",
