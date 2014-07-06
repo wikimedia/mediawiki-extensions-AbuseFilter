@@ -38,8 +38,9 @@ class SpecialAbuseFilter extends SpecialPage {
 			$out->wrapWikiMsg( '<p class="success">$1</p>',
 				array(
 					'abusefilter-edit-done',
-					$this->getLanguage()->formatNum( $changedFilter ),
-					$changeId
+					$changedFilter,
+					$changeId,
+					$this->getLanguage()->formatNum( $changedFilter )
 				)
 			);
 		}
