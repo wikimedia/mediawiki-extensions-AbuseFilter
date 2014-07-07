@@ -304,7 +304,7 @@
 	"abusefilter-revert-filter": "Filtru:",
 	"abusefilter-revert-preview-intro": "Hawn taħt hawn l-azzjonijiet meħuda mill-filtru tal-abbuż li se jiġu mreġġa' lura permezz ta' din l-azzjoni. Jekk jogħġbok iċċekkjahom sewwa u agħfas fuq \"Ikkonferma\" sabiex tikkonferma l-għażla tiegħek.",
 	"abusefilter-revert-confirm": "Ikkonferma",
-	"abusefilter-revert-success": "Għadek kif reġġajt lura l-azzjonijiet kollha meħuda mill-[[Special:AbuseFilter/$1|iltru tal-abbuż $1]].",
+	"abusefilter-revert-success": "Għadek kif reġġajt lura l-azzjonijiet kollha meħuda mill-[[Special:AbuseFilter/$1|iltru tal-abbuż $2]].",
 	"abusefilter-revert-reasonfield": "Raġuni:",
 	"abusefilter-test": "Ivverifika filtru billi tikkonfrontaħ mal-modifiki preċedenti",
 	"abusefilter-test-intro": "Din il-paġna tħallik tiċċekkja filtru mdaħħal fil-kaxxa hawn taħt kontra l-aħħar {{PLURAL:$1|tibdila|$1 tibdiliet}}.\nSabiex ittella' filtru eżistenti, ikteb l-ID fil-filtru fil-kaxxa hawn taħt u agħfas il-buttuna \"Tella'\".",

@@ -288,7 +288,7 @@
 	"abusefilter-revert-filter": "Saringan:",
 	"abusefilter-revert-preview-intro": "Ngisor iki laku sing dilakoni saringan planggaran sing arep dibalèkaké déning laku iki.\nMangga priksa sing tenan, lan klik \"pesthèkaké\" kanggo mesthèkaké pilihan Sampéyan.",
 	"abusefilter-revert-confirm": "Pesthèkaké",
-	"abusefilter-revert-success": "Sampéyan wis mbalèkaké kabèh laku sing dilakoni saringan planggaran amarga [[Special:AbuseFilter/$1|saringan $1]].",
+	"abusefilter-revert-success": "Sampéyan wis mbalèkaké kabèh laku sing dilakoni saringan planggaran amarga [[Special:AbuseFilter/$1|saringan $2]].",
 	"abusefilter-revert-reason": "Pambalèkan otomatis kabèh laku sing dilakokaké saringan planggaran amarga saringan $1.\nAlesané: $2",
 	"abusefilter-revert-reasonfield": "Alesané:",
 	"abusefilter-test": "Jajal saringan tumrap suntingan sakdurungé",

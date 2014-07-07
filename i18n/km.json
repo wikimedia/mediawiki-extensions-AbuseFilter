@@ -112,7 +112,7 @@
 	"abusefilter-edit-denied": "អ្នកមិនអាចមើលព័ត៌មានលម្អិតអំពីតម្រងនេះទេ ព្រោះវាត្រូវបានលាក់មិនឱ្យមើលជាសាធារណៈ។",
 	"abusefilter-edit-main": "ប៉ារ៉ាម៉ែត្រតម្រង",
 	"abusefilter-edit-done-subtitle": "តម្រងត្រូវបានកែសម្រួល",
-	"abusefilter-edit-done": "[Special:AbuseFilter/history/$1/diff/prev/$2|ការកែប្រែរបស់អ្នក]] លើ[[Special:AbuseFilter/$1|តម្រង $1]] ត្រូវបានរក្សាទុក។",
+	"abusefilter-edit-done": "[Special:AbuseFilter/history/$1/diff/prev/$2|ការកែប្រែរបស់អ្នក]] លើ[[Special:AbuseFilter/$1|តម្រង $3]] ត្រូវបានរក្សាទុក។",
 	"abusefilter-edit-viewhistory": "មើលប្រវត្តិរបស់តម្រងនេះ",
 	"abusefilter-edit-history": "ប្រវត្តិ៖",
 	"abusefilter-edit-check": "ពិនិត្យវាក្យសម្ពន្ធ(syntax)",

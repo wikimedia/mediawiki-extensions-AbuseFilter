@@ -322,7 +322,7 @@
 	"abusefilter-revert-filter": "Filtro :",
 	"abusefilter-revert-preview-intro": "Vê-que les accions rèalisâs per lo filtro d’abus, que seront rèvocâs per cela accion.\nLes volyéd controlar bien, et pués clicâd dessus « Confirmar » por validar voutron chouèx.",
 	"abusefilter-revert-confirm": "Confirmar",
-	"abusefilter-revert-success": "Vos éd rèvocâ avouéc reusséta totes les accions entreprêses per lo filtro d’abus et dècllenchiês per lo [[Special:AbuseFilter/$1|filtro $1]].",
+	"abusefilter-revert-success": "Vos éd rèvocâ avouéc reusséta totes les accions entreprêses per lo filtro d’abus et dècllenchiês per lo [[Special:AbuseFilter/$1|filtro $2]].",
 	"abusefilter-revert-reason": "Rèvocacion ôtomatica de totes les accions entreprêses per lo filtro d’abus et dècllenchiês per lo filtro $1.\nRêson balyê : $2",
 	"abusefilter-revert-reasonfield": "Rêson :",
 	"abusefilter-test": "Èprovar un filtro sur los changements devant",

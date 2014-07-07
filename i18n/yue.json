@@ -299,7 +299,7 @@
 	"abusefilter-revert-filter": "過濾器:",
 	"abusefilter-revert-preview-intro": "下面係呢個動作將會復原由濫用過濾器嘅動作。\n請小心檢查，再撳『確認』去確認你嘅選擇。",
 	"abusefilter-revert-confirm": "確認",
-	"abusefilter-revert-success": "你已經復原咗由[[Special:AbuseFilter/$1|過濾器$1]]做咗嘅全部動作。",
+	"abusefilter-revert-success": "你已經復原咗由[[Special:AbuseFilter/$1|過濾器$2]]做咗嘅全部動作。",
 	"abusefilter-revert-reason": "自動復原由過濾器$1做咗嘅全部動作。\n畀咗嘅原因: $2",
 	"abusefilter-revert-reasonfield": "復原嘅原因:",
 	"abusefilter-test": "用之前嘅編輯去試過濾器",

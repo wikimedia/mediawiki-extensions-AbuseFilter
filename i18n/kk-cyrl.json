@@ -148,7 +148,7 @@
 	"abusefilter-edit-denied": "Бұл сүзгіш барлық қатысушыларға көрінуі жасырылғандықтан  егжей-тегжейін көре алмайсыз.",
 	"abusefilter-edit-main": "Сүзгіш параметрлері",
 	"abusefilter-edit-done-subtitle": "Сүзгіш өңделді",
-	"abusefilter-edit-done": "[[Special:AbuseFilter/$1|$1 сүзгішіндегі]] [[Special:AbuseFilter/history/$1/diff/prev/$2|өзгертулеріңіз]] сақталды.",
+	"abusefilter-edit-done": "[[Special:AbuseFilter/$1|$3 сүзгішіндегі]] [[Special:AbuseFilter/history/$1/diff/prev/$2|өзгертулеріңіз]] сақталды.",
 	"abusefilter-edit-viewhistory": "Бұл сүзгіштің тарихын қарау",
 	"abusefilter-edit-history": "Тарихы:",
 	"abusefilter-edit-check": "Синтаксисін тексеру",

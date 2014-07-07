@@ -11,7 +11,8 @@
 			"Penn Station",
 			"Shirayuki",
 			"Yanajin66",
-			"青子守歌"
+			"青子守歌",
+			"Rxy"
 		]
 	},
 	"abusefilter-desc": "編集に対して、自動的な経験則を適用する",
@@ -175,7 +176,7 @@
 	"abusefilter-edit-denied": "このフィルターは非公開とされているため、あなたは詳細を閲覧できません。",
 	"abusefilter-edit-main": "フィルターの設定",
 	"abusefilter-edit-done-subtitle": "フィルターを編集しました",
-	"abusefilter-edit-done": "[[Special:AbuseFilter/$1|フィルター $1]] への[[Special:AbuseFilter/history/$1/diff/prev/$2|変更]]を保存しました。",
+	"abusefilter-edit-done": "[[Special:AbuseFilter/$1|フィルター $3]] への[[Special:AbuseFilter/history/$1/diff/prev/$2|変更]]を保存しました。",
 	"abusefilter-edit-badsyntax": "指定したフィルターには構文エラーがあります。\nパーサーからの出力: <pre>$1</pre>",
 	"abusefilter-edit-restricted": "このフィルターは1つ以上の制限された操作を含んでいるため、あなたには編集できません。\n制限された操作を追加する権限のある利用者にあなたの望む変更をしてくれるよう頼んでください。",
 	"abusefilter-edit-viewhistory": "このフィルターの履歴を閲覧",
@@ -342,7 +343,7 @@
 	"abusefilter-revert-filter": "フィルター:",
 	"abusefilter-revert-preview-intro": "以下は、この操作によって差し戻される、不正利用フィルターによる対処操作です。\n注意深く確認し、「{{int:abusefilter-revert-confirm}}」をクリックして選択を確定してください。",
 	"abusefilter-revert-confirm": "確定",
-	"abusefilter-revert-success": "[[Special:AbuseFilter/$1|フィルター $1]] に起因した、不正利用フィルターによるすべての対処操作を差し戻しました。",
+	"abusefilter-revert-success": "[[Special:AbuseFilter/$1|フィルター $2]] に起因した、不正利用フィルターによるすべての対処操作を差し戻しました。",
 	"abusefilter-revert-reason": "フィルター $1 に起因した、不正利用フィルターによるすべての対処操作の自動差し戻し。理由: $2",
 	"abusefilter-revert-reasonfield": "理由:",
 	"abusefilter-test": "フィルターを過去の編集に対して試験する",

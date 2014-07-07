@@ -337,7 +337,7 @@
 	"abusefilter-revert-filter": "Filtru:",
 	"abusefilter-revert-preview-intro": "Mai jos sunt acțiunile întreprinse de filtrul de abuzuri care vor fi anulate prin această acțiune.\nVă rugăm să le verificați cu atenție și să apăsați pe \"Confirmă\" pentru a confirma selecția.",
 	"abusefilter-revert-confirm": "Confirmă",
-	"abusefilter-revert-success": "Ați anulat toate acțiunile filtrului de abuzuri datorate [[Special:AbuseFilter/$1|regulii $1]].",
+	"abusefilter-revert-success": "Ați anulat toate acțiunile filtrului de abuzuri datorate [[Special:AbuseFilter/$1|regulii $2]].",
 	"abusefilter-revert-reason": "Revenire automată a tuturor acțiunilor întreprinse de către abuzarea filtrului din cauza filtrului $1.\nMotivul dat: $2",
 	"abusefilter-revert-reasonfield": "Motiv:",
 	"abusefilter-test": "Testați un filtru împotriva editărilor anterioare",

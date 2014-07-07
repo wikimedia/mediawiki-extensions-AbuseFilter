@@ -333,7 +333,7 @@
 	"abusefilter-revert-filter": "Filtre:",
 	"abusefilter-revert-preview-intro": "Aqquà abbasce stonne elengate le aziune combiute da 'u filtre de le abbuse ca onna essere repristenate da sta azione.\nPe piacere verifiche attentamènde, e cazze \"{{int:abusefilter-revert-confirm}}\" pe confermà 'a selezione.",
 	"abusefilter-revert-confirm": "Conferme",
-	"abusefilter-revert-success": " Tu hé repristenate totte le aziune combiute da 'u filtre de le abbuse a cause d'u [[Special:AbuseFilter/$1|filtre $1]].",
+	"abusefilter-revert-success": " Tu hé repristenate totte le aziune combiute da 'u filtre de le abbuse a cause d'u [[Special:AbuseFilter/$1|filtre $2]].",
 	"abusefilter-revert-reason": "Repristene automateche de totte le aziune combiute da 'u filtre de le abbuse a cause d'u filtre $1.\nRaggione date: $2",
 	"abusefilter-revert-reasonfield": "Mutive:",
 	"abusefilter-test": "Prove 'nu filtre condre le cangiaminde precedende",

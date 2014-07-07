@@ -301,7 +301,7 @@
 	"abusefilter-revert-filter": "مرشح:",
 	"abusefilter-revert-preview-intro": "بالأسفل الأفعال المتخذه بواسطه مرشح الإساءه والتى سيتم استرجاعها بواسطه هذا الفعل.\nمن فضلك تحقق منها بحرص، واضغط \"تأكيد\" لتأكيد اختيارك.",
 	"abusefilter-revert-confirm": "تأكيد",
-	"abusefilter-revert-success": "لقد قمت باسترجاع كامل التعديلات التى قام بها مرشح الإساءه وفقا [[Special:AbuseFilter/$1|للمرشح $1]].",
+	"abusefilter-revert-success": "لقد قمت باسترجاع كامل التعديلات التى قام بها مرشح الإساءه وفقا [[Special:AbuseFilter/$1|للمرشح $2]].",
 	"abusefilter-revert-reason": "استرجاع تلقائى لكل الأفعال المتخذه بواسطه مرشح الإساءه بسبب المرشح $1.\nالسبب المعطى: $2",
 	"abusefilter-revert-reasonfield": "سبب الاسترجاع",
 	"abusefilter-test": "اختبار المرشح على تعديلات سابقة",

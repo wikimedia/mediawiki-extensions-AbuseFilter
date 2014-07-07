@@ -335,7 +335,7 @@
 	"abusefilter-revert-filter": "Filtras:",
 	"abusefilter-revert-preview-intro": "Žemiau yra veiksmai, kurių imasi piktnaudžiavimo filtrą, kuris bus grąžinti šį ieškiniu.\nPrašome atidžiai juos patikrinti, ir spustelėkite \"patvirtinti\", patvirtinkite savo pasirinkimą.",
 	"abusefilter-revert-confirm": "Patvirtinti",
-	"abusefilter-revert-success": "Jūs grįžo dėl piktnaudžiavimo filtro dėl visų veiksmų [[specialus: AbuseFilter / $1 |filter  $1 ]].",
+	"abusefilter-revert-success": "!Jūs grįžo dėl piktnaudžiavimo filtro dėl visų veiksmų [[specialus:AbuseFilter/$1|filter  $2]].",
 	"abusefilter-revert-reason": "Automatinis sugrąžinti, visi veiksmai, kurių imasi piktnaudžiavimo filtrą, dėl filtro  $1 .\nPriežastis:$2",
 	"abusefilter-revert-reasonfield": "Priežastis:",
 	"abusefilter-test": "Testuoti filtrą paskutiniams keitimams",

@@ -122,7 +122,7 @@
 	"abusefilter-edit-denied": "ناتوانی وردەکارییەکانی ئەم پاڵوێنەیە ببینی، چونکوو لەبەر چاوی گشتی شاردراوەتەوە.",
 	"abusefilter-edit-main": "پارامەترەکانی پاڵوێنە",
 	"abusefilter-edit-done-subtitle": "پاڵوێنە دەستکاری کرا",
-	"abusefilter-edit-done": "سەرکەوتووانە [[Special:AbuseFilter/history/$1/diff/prev/$2|گۆڕانکارییەکانت]] لە [[Special:AbuseFilter/$1|پاڵوێنەی $1]]دا پاشەکەوت کرا.",
+	"abusefilter-edit-done": "سەرکەوتووانە [[Special:AbuseFilter/history/$1/diff/prev/$2|گۆڕانکارییەکانت]] لە [[Special:AbuseFilter/$1|پاڵوێنەی $3]]دا پاشەکەوت کرا.",
 	"abusefilter-edit-badsyntax": "ھەڵەیەکی ڕێنووسی ھەیە لەو پاڵوێنەیە دەستنیشانت کردوە.\nدەرھاتی پاڵوێنە ئەمە بوو: <pre>$1</pre>",
 	"abusefilter-edit-viewhistory": "مێژووی ئەم پاڵوێنەیە ببینە",
 	"abusefilter-edit-history": "مێژوو:",

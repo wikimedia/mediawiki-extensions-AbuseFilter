@@ -329,7 +329,7 @@
 	"abusefilter-revert-filter": "Filda:",
 	"abusefilter-revert-preview-intro": "Une sin die Agzione vum Missbraisch-Filda, wu dodmid rigggängisch gmachd werren.\nGugg druff un drigg doan uff „Bschdedische“, ums auszufiere.",
 	"abusefilter-revert-confirm": "Bschdedische",
-	"abusefilter-revert-success": "Du hoschd alli Agzione rigg'gängisch gmachd, wu vum Missbraisch-Filda noch [[Special:AbuseFilter/$1|Filda $1]] gmachd worre sin.",
+	"abusefilter-revert-success": "Du hoschd alli Agzione rigg'gängisch gmachd, wu vum Missbraisch-Filda noch [[Special:AbuseFilter/$1|Filda $2]] gmachd worre sin.",
 	"abusefilter-revert-reason": "Zriggsedze vun alle Agzione vunde Missbraisch-Filda weschem Filda $1.\nOagewene Grund: $2",
 	"abusefilter-revert-reasonfield": "Bgrindung:",
 	"abusefilter-test": "De Filda oan frijare B'aweidunge teschde",

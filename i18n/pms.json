@@ -329,7 +329,7 @@
 	"abusefilter-revert-filter": "Filtr:",
 	"abusefilter-revert-preview-intro": "Sota a-i son j'assion fàite dal filtr contra j'abus che a saran revocà da cost'assion.\nPër piasì, ch'a-j contròla con atension, e che sgnaca \"confirmé\" për confirmé soa selession.",
 	"abusefilter-revert-confirm": "Conferma",
-	"abusefilter-revert-success": "A l'ha revocà tute j'assion fàite dal filtr contra j'abus dovùe a [[Special:AbuseFilter/$1|filtr $1]].",
+	"abusefilter-revert-success": "A l'ha revocà tute j'assion fàite dal filtr contra j'abus dovùe al [[Special:AbuseFilter/$1|filtr $2]].",
 	"abusefilter-revert-reason": "Anulament automàtich ëd tute j'assion fàite dal filtr ëd sicurëssa dovùe al filtr $1.\nRason dàita: $2",
 	"abusefilter-revert-reasonfield": "Rason:",
 	"abusefilter-test": "Prové un filtr an sle veje modìfiche",

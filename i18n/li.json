@@ -308,7 +308,7 @@
 	"abusefilter-revert-filter": "Filter:",
 	"abusefilter-revert-preview-intro": "Hie ónger sjtaon de maotregele die de misbroekfilter haet genomme die door deze hanjeling waere truukgedreid.\nControleer de truuk te dreie maotregele zorgvuldig, en klik \"bevestig\" óm dien selectie te bevestige.",
 	"abusefilter-revert-confirm": "bevestig",
-	"abusefilter-revert-success": "Doe höbs alle maotregele die door de misbroekfilter via [[Special:AbuseFilter/$1|filter $1]] zeen genomme truukgedreid.",
+	"abusefilter-revert-success": "Doe höbs alle maotregele die door de misbroekfilter via [[Special:AbuseFilter/$1|filter $2]] zeen genomme truukgedreid.",
 	"abusefilter-revert-reason": "Autematis truukdreie van alle maotregele door de misbroekfilter via filter $1.\nRaej: $2",
 	"abusefilter-revert-reasonfield": "Raeje veur truukdreiing:",
 	"abusefilter-test": "Tes 'ne filter taenge eerdere bewirkinge",

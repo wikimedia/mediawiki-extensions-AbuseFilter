@@ -169,7 +169,7 @@
 	"abusefilter-edit-denied": "आप इस फ़िल्टर का विवरण नहीं देख सकते हैं, क्योंकि यह सार्वजनिक दृष्टि से छुपा हुआ है।",
 	"abusefilter-edit-main": "फ़िल्टर प्राचल",
 	"abusefilter-edit-done-subtitle": "फ़िल्टर संपादित हो गया",
-	"abusefilter-edit-done": "आपके द्वारा [[Special:AbuseFilter/$1|फ़िल्टर $1]] में किये [[Special:AbuseFilter/history/$1/diff/prev/$2|बदलाव]] सहेजे गए हैं।",
+	"abusefilter-edit-done": "आपके द्वारा [[Special:AbuseFilter/$1|फ़िल्टर $3]] में किये [[Special:AbuseFilter/history/$1/diff/prev/$2|बदलाव]] सहेजे गए हैं।",
 	"abusefilter-edit-badsyntax": "आपके द्वारा बताए फ़िल्टर में सिंटेक्स त्रुटि है।\nपार्सर की आउटपुट थी: <pre>$1</pre>",
 	"abusefilter-edit-restricted": "आप इस फ़िल्टर को सम्पादित नहीं कर सकते हैं, क्योंकि इसमें एक या अधिक प्रतिबन्धित कार्यों का प्रयोग है।\nकृपया बदलाव करने के लिये किसी ऐसे सदस्य से अनुरोध करें जिसे प्रतिबन्धित कार्यों सहित दुरुपयोग फ़िल्टर का सम्पादन करने का अधिकार हो।",
 	"abusefilter-edit-viewhistory": "इस फ़िल्टर का इतिहास देखें",

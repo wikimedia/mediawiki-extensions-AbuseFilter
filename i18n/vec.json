@@ -311,7 +311,7 @@
 	"abusefilter-revert-filter": "Filtro:",
 	"abusefilter-revert-preview-intro": "Qua ghe xe le azion fate dal filtro anti abusi che vegnarà anulà da st'azion.\nVerifica con cura e struca su \"Conferma\" par confermare la selession.",
 	"abusefilter-revert-confirm": "Conferma",
-	"abusefilter-revert-success": "Te ghè anulà tute le azion fate dal [[Special:AbuseFilter/$1|filtro anti abusi $1]].",
+	"abusefilter-revert-success": "Te ghè anulà tute le azion fate dal [[Special:AbuseFilter/$1|filtro anti abusi $2]].",
 	"abusefilter-revert-reason": "Anulamento automatico de tute le azion fate dal filtro anti abusi $1.\nMotivo indicà: $2",
 	"abusefilter-revert-reasonfield": "Motivassion de l'anulamento:",
 	"abusefilter-test": "Verifica un filtro confrontandolo co le modifiche precedenti",

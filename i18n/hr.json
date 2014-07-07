@@ -331,7 +331,7 @@
 	"abusefilter-revert-filter": "Filtar:",
 	"abusefilter-revert-preview-intro": "U nastavku se nalaze akcije koje je napravio filtar sprječavanja zloporaba koji će biti uklonjene ovom akcijom.\nMolimo provjerite ih pažljivo, i kliknite na \"Potvrdi\" kako biste potvrdili svoj izbor.",
 	"abusefilter-revert-confirm": "Potvrdi",
-	"abusefilter-revert-success": "Vratili ste radnje poduzete od strane filtra zloporabe tijekom [[Special:AbuseFilter/$1|filtriranja $1]].",
+	"abusefilter-revert-success": "Vratili ste radnje poduzete od strane filtra zloporabe tijekom [[Special:AbuseFilter/$1|filtriranja $2]].",
 	"abusefilter-revert-reason": "Automatsko vraćanje svih radnji poduzetih od strane filtra zloporabe tijekom filtriranja $1.\nRazlog dan: $2",
 	"abusefilter-revert-reasonfield": "Razlog:",
 	"abusefilter-test": "Testiraj filtar s prethodnim uređivanjem",

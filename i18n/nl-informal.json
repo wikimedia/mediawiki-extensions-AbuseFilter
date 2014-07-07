@@ -22,7 +22,7 @@
 	"abusefilter-history-error-hidden": "Het filter dat je hebt opgevraagd is verborgen en je kunt de geschiedenis niet bekijken.",
 	"abusefilter-revert-intro": "Via dit formulier kan je alle wijzigingen die door het filter via filter $1 gemaakt zijn terugdraaien.\nGebruik dit hulpmiddel zorgvuldig.",
 	"abusefilter-revert-preview-intro": "Hieronder staan de maatregelen die het filter heeft genomen die door deze handeling worden teruggedraaid.\nControleer de terug te draaien maatregelen zorgvuldig, en klik \"Bevestigen\" om je selectie te bevestigen.",
-	"abusefilter-revert-success": "Je hebt alle maatregelen die door het filter via [[Special:AbuseFilter/$1|filter $1]] zijn genomen teruggedraaid.",
+	"abusefilter-revert-success": "Je hebt alle maatregelen die door het filter via [[Special:AbuseFilter/$1|filter $2]] zijn genomen teruggedraaid.",
 	"abusefilter-test-intro": "Op deze pagina kan je een opgegeven filter controleren met de laatste {{PLURAL:$1|wijzing|$1 wijzingen}}.\nGeef een filternummer in om een bestaand filter te laden en klik daarna op de knop \"Laden\".",
 	"abusefilter-test-syntaxerr": "Het filter dat je hebt ingevoerd bevat een syntaxisfout.\nDoor op \"Syntaxis controleren\" te klikken krijg je een volledige toelichting.",
 	"abusefilter-examine-intro": "Via deze pagina kan je de door het filter aangemaakte variabelen voor een individuele wijziging onderzoeken, en deze testen tegen filters.",

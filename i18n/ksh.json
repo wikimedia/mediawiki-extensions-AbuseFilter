@@ -329,7 +329,7 @@
 	"abusefilter-revert-filter": "Felter:",
 	"abusefilter-revert-preview-intro": "Hee küt de Leß met däm Meßbruchsfelter singe Akßjuhne, di jez retuur jemaat wäde.\nDonn se joot aanbekike, un donn „{{int:abusefilter-revert-confirm}}“ klecke, öm Ding Ußwahl ze beshtäätejje.",
 	"abusefilter-revert-confirm": "Jo, su soll et sin!",
-	"abusefilter-revert-success": "Do häs alle Änderunge zeröck jenumme, di dä Meßbruchsfelter opjrund fun dä [[Special:AbuseFilter/$1|Räjel $1]] jemaat hät.",
+	"abusefilter-revert-success": "Do häs alle Änderunge zeröck jenumme, di dä Meßbruchsfelter opjrund fun dä [[Special:AbuseFilter/$1|Räjel $2]] jemaat hät.",
 	"abusefilter-revert-reason": "All Änderunge zeröck nämme, die dä Meßbruchßfelter opjrond vun dä Räjel $1 jemaat hät. Der aanjejovve Jrund es: $2",
 	"abusefilter-revert-reasonfield": "Der Jrond:",
 	"abusefilter-test": "Donn dä Felter met fröjere Änderunge ußprobeere",

@@ -155,7 +155,7 @@
 	"abusefilter-edit-denied": "ఈ వడపోత వివరాలను మీరు చూడలేరు. ఎందుకంటే దీన్ని బహిరంగ వీక్షణం నుండి దాచేసారు.",
 	"abusefilter-edit-main": "వడపోత పరామితులు",
 	"abusefilter-edit-done-subtitle": "వడపోతని మార్చారు",
-	"abusefilter-edit-done": "[[Special:AbuseFilter/$1|వడపోత $1]] లో [[Special:AbuseFilter/history/$1/diff/prev/$2|మీరు చేసిన మార్పులను]] భద్రపరచాం.",
+	"abusefilter-edit-done": "[[Special:AbuseFilter/$1|వడపోత $3]] లో [[Special:AbuseFilter/history/$1/diff/prev/$2|మీరు చేసిన మార్పులను]] భద్రపరచాం.",
 	"abusefilter-edit-badsyntax": "మీరిచ్చిన వడపోతలో ఓ సింటాక్స్ దోషం ఉంది.\nపార్సరు నుంచి వచ్చిన ఔట్‍పుట్ ఇది: <pre>$1</pre>",
 	"abusefilter-edit-restricted": "ఈ వడపోతను మీరు మార్చలేరు. ఎంచేతంటే, అందులో ఒకటో, మరిన్నో నిరోధిత చర్యలున్నాయి.\nనిరోధిత చర్యలకు అనుమతులు కలిగిన వాడుకరిని అడిగి, సదరు మార్పును చేయించుకోండి.",
 	"abusefilter-edit-viewhistory": "ఈ వడపోత యొక్క చరిత్రని చూడండి",

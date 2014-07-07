@@ -327,7 +327,7 @@
 	"abusefilter-revert-filter": "Filter:",
 	"abusefilter-revert-preview-intro": "Dolu je zoznam operácií vykonaných filtrom zneužitia, ktoré táto operácia vráti.\nProsím, pozorne ich skontrolujte a potvrďte svoj výber kliknutím na na „Potvrdiť“.",
 	"abusefilter-revert-confirm": "Potvrdiť",
-	"abusefilter-revert-success": "Vrátili ste všetky zmeny vykonané filtrom zneužitia [[Special:AbuseFilter/$1|$1]].",
+	"abusefilter-revert-success": "Vrátili ste všetky zmeny vykonané filtrom zneužitia [[Special:AbuseFilter/$1|$2]].",
 	"abusefilter-revert-reason": "Automatické vrátenie všetkých operácií vykonaných filtrom zneužitia $1.\nUvedený dôvod: $2",
 	"abusefilter-revert-reasonfield": "Dôvod:",
 	"abusefilter-test": "Otestovať filter na existujúcich úpravách",

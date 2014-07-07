@@ -289,7 +289,7 @@
 	"abusefilter-revert-filter": "Filter:",
 	"abusefilter-revert-preview-intro": "Ünnen staht de Akschonen vun’n Missbruukfilter, de dormit trüchsett warrt.\nKiek jem good dör un klick denn op „{{int:Abusefilter-revert-confirm}}“, dat du dien Utwahl bestätigst.",
 	"abusefilter-revert-confirm": "Tostimmen",
-	"abusefilter-revert-success": "Du hest all Akschonen vun’n Missbruukfilter vunwegen [[Special:AbuseFilter/$1|Filter $1]] trüchsett.",
+	"abusefilter-revert-success": "Du hest all Akschonen vun’n Missbruukfilter vunwegen [[Special:AbuseFilter/$1|Filter $2]] trüchsett.",
 	"abusefilter-revert-reason": "Automaatsch Trüchsetten vun all Akschonen vun’n Missbruukfilter vunwegen Filter $1.\nGrund: $2",
 	"abusefilter-revert-reasonfield": "Grund för Trüchdreihn:",
 	"abusefilter-test": "Den Filter gegen öllere Ännern testen.",

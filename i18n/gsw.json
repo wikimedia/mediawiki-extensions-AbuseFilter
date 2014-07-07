@@ -325,7 +325,7 @@
 	"abusefilter-revert-filter": "Filter:",
 	"abusefilter-revert-preview-intro": "Do unte sin d Aktion vum Missbruuchfilter, wu dur die Aktion zrugggsetzt wäre.\nBitte prief si sorgfältig un druck \"Bstätige\" go Dyyni Uuswahl bstätige.",
 	"abusefilter-revert-confirm": "Bstätige",
-	"abusefilter-revert-success": "Du hesch alli  Aktionen zrugggsetzt, wu vum Missbruuchsfilter mgacht wore sin wäg em [[Special:AbuseFilter/$1|Filter $1]].",
+	"abusefilter-revert-success": "Du hesch alli  Aktionen zrugggsetzt, wu vum Missbruuchsfilter mgacht wore sin wäg em [[Special:AbuseFilter/$1|Filter $2]].",
 	"abusefilter-revert-reason": "Alli Aktione vum Missbruuchsfilter automatisch zrugggsetzt wäg em Filter $1.\nGrund: $2",
 	"abusefilter-revert-reasonfield": "Grund:",
 	"abusefilter-test": "E Filter gege friejeri Bearbeitige teschte",

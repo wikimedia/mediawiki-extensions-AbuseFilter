@@ -19,7 +19,8 @@
 			"SandroHc",
 			"Sarilho1",
 			"Waldir",
-			"555"
+			"555",
+			"Vitorvicentevalente"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas às edições.",
@@ -184,7 +185,7 @@
 	"abusefilter-edit-denied": "Não pode ver detalhes deste filtro, porque ele está ocultado de vista pública.",
 	"abusefilter-edit-main": "Parâmetros do filtro",
 	"abusefilter-edit-done-subtitle": "Filtro editado",
-	"abusefilter-edit-done": "Gravou com sucesso as [[Special:AbuseFilter/history/$1/diff/prev/$2|alterações]] ao [[Special:AbuseFilter/$1|filtro $1]].",
+	"abusefilter-edit-done": "Gravou com sucesso as [[Special:AbuseFilter/history/$1/diff/prev/$2|alterações]] ao [[Special:AbuseFilter/$1|filtro $3]].",
 	"abusefilter-edit-badsyntax": "Há um erro de sintaxe no filtro que especificou.\nO resultado de saída do analisador foi: <pre>$1</pre>",
 	"abusefilter-edit-restricted": "Não pode editar este filtro, porque ele contém uma ou mais ações restritas.\nPor favor, peça a um utilizador com permissão de adicionamento de ações restritas para efetuar a alteração por si.",
 	"abusefilter-edit-viewhistory": "Ver o histórico deste filtro",
@@ -276,6 +277,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Idade da conta de utilizador",
 	"abusefilter-edit-builder-vars-user-name": "Nome da conta de utilizador",
 	"abusefilter-edit-builder-vars-user-groups": "Grupos (incluindo implícitos) nos quais o utilizador se encontra",
+	"abusefilter-edit-builder-vars-user-rights": "Privilégios que o(a) utilizador(a) tem",
 	"abusefilter-edit-builder-vars-user-blocked": "Se o utilizador está bloqueado",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Há quanto tempo o endereço de correio electrónico foi confirmado",
 	"abusefilter-edit-builder-vars-recent-contributors": "Últimos dez utilizadores que colaboraram na página",
@@ -352,7 +354,7 @@
 	"abusefilter-revert-filter": "Filtro:",
 	"abusefilter-revert-preview-intro": "Abaixo estão as alterações feitas pelo filtro de abusos que serão revertidas por esta operação.\nPor favor, verifique-as cuidadosamente e clique em \"{{int:abusefilter-revert-confirm}}\" para confirmar a sua seleção.",
 	"abusefilter-revert-confirm": "Confirmar",
-	"abusefilter-revert-success": "Reverteu todas as alterações feitas pelo filtro de abusos devido ao [[Special:AbuseFilter/$1|filtro $1]].",
+	"abusefilter-revert-success": "Reverteu todas as alterações feitas pelo filtro de abusos devido ao [[Special:AbuseFilter/$1|filtro $2]].",
 	"abusefilter-revert-reason": "Reversão automática de todas as alterações feitas pelo filtro de abusos devido ao filtro $1.\nMotivo dado: $2",
 	"abusefilter-revert-reasonfield": "Motivo:",
 	"abusefilter-test": "Testar um filtro nas edições anteriores",

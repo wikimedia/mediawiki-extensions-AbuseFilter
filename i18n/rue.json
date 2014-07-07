@@ -324,7 +324,7 @@
 	"abusefilter-revert-filter": "Філтер:",
 	"abusefilter-revert-preview-intro": "Ниже сурь уведены дїї выконаны філтром знеужываня, котры тов дїёв будуть навернуты.\nСтаростливо їх перевірте і клікнутём на \"підтвердити\" можете їх навернутя схвалити.",
 	"abusefilter-revert-confirm": "Підтвердити",
-	"abusefilter-revert-success": "{{GRAMMAR:|Вернув|Вернула|Вернули}} сьте вшыткы дїї, котры філтер знеужываня выконав на базї [[Special:AbuseFilter/$1|філтру $1]].",
+	"abusefilter-revert-success": "{{GRAMMAR:|Вернув|Вернула|Вернули}} сьте вшыткы дїї, котры філтер знеужываня выконав на базї [[Special:AbuseFilter/$1|філтру $2]].",
 	"abusefilter-revert-reason": "Автоматічне вернутя вшыткых змін, котры філтер знеужытя выконав про філтер $1.\nДана причіня: $2",
 	"abusefilter-revert-reasonfield": "Прічіна:",
 	"abusefilter-test": "Перевірити філтер на послїднїх змінах",
