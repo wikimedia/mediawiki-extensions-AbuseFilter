@@ -276,6 +276,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Возраст учётной записи",
 	"abusefilter-edit-builder-vars-user-name": "Имя учётной записи",
 	"abusefilter-edit-builder-vars-user-groups": "Группы (включая неявные) в которых состоит участник",
+	"abusefilter-edit-builder-vars-user-rights": "Права, которые есть у участника",
 	"abusefilter-edit-builder-vars-user-blocked": "Заблокирован ли пользователь",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Время подтверждения адреса эл. почты",
 	"abusefilter-edit-builder-vars-recent-contributors": "Последние десять редакторов страницы",

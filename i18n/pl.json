@@ -277,6 +277,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Wiek konta użytkownika",
 	"abusefilter-edit-builder-vars-user-name": "Nazwa konta użytkownika",
 	"abusefilter-edit-builder-vars-user-groups": "Grupy (w tym ukryte), do których należy użytkownik",
+	"abusefilter-edit-builder-vars-user-rights": "Uprawnienia, które ma użytkownik",
 	"abusefilter-edit-builder-vars-user-blocked": "Czy użytkownik jest zablokowany",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Czas zatwierdzenia adresu e‐mail",
 	"abusefilter-edit-builder-vars-recent-contributors": "Ostatnie dziesięć osób edytujących stronę",

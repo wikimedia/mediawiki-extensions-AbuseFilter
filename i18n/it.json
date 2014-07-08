@@ -12,7 +12,8 @@
 			"Nemo bis",
 			"Pietrodn",
 			"Valepert",
-			"Ximo17"
+			"Ximo17",
+			"Ankabel"
 		]
 	},
 	"abusefilter-desc": "Applica un'euristica automatica alle modifiche.",
@@ -270,6 +271,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Età dell'account utente",
 	"abusefilter-edit-builder-vars-user-name": "Nome utente",
 	"abusefilter-edit-builder-vars-user-groups": "Gruppi cui l'utente appartiene (anche implicitamente)",
+	"abusefilter-edit-builder-vars-user-rights": "Diritti che un utente ha",
 	"abusefilter-edit-builder-vars-user-blocked": "Se l'utente è bloccato",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Data e ora di conferma dell'indirizzo e-mail",
 	"abusefilter-edit-builder-vars-recent-contributors": "Ultimi dieci utenti che hanno contribuito alla pagina",

@@ -282,6 +282,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Âge du compte utilisateur",
 	"abusefilter-edit-builder-vars-user-name": "Nom du compte utilisateur",
 	"abusefilter-edit-builder-vars-user-groups": "Groupes (y compris implicites) dont l'utilisateur est membre",
+	"abusefilter-edit-builder-vars-user-rights": "Droits qu’a un utilisateur",
 	"abusefilter-edit-builder-vars-user-blocked": "Si l'utilisateur est bloqué",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Temps depuis la confirmation de l'adresse courriel",
 	"abusefilter-edit-builder-vars-recent-contributors": "Les dix derniers contributeurs de la page",

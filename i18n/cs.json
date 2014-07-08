@@ -265,6 +265,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Stáří uživatelského účtu",
 	"abusefilter-edit-builder-vars-user-name": "Uživatelské jméno",
 	"abusefilter-edit-builder-vars-user-groups": "Skupiny (včetně implicitních), do kterých uživatel patří",
+	"abusefilter-edit-builder-vars-user-rights": "Práva, která má uživatel",
 	"abusefilter-edit-builder-vars-user-blocked": "Jestli je uživatel zablokovaný",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Čas, kdy byla ověřena e-mailová adresa",
 	"abusefilter-edit-builder-vars-recent-contributors": "Posledních deset uživatelů, kteří editovali příslušnou stránku",

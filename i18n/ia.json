@@ -258,6 +258,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Etate del conto de usator",
 	"abusefilter-edit-builder-vars-user-name": "Nomine del conto de usator",
 	"abusefilter-edit-builder-vars-user-groups": "Le gruppos (includente gruppos implicite) del quales le usator es membro",
+	"abusefilter-edit-builder-vars-user-rights": "Derectos que un usator ha",
 	"abusefilter-edit-builder-vars-user-blocked": "Si le usator es blocate",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Quando le adresse de e-mail esseva confirmate",
 	"abusefilter-edit-builder-vars-recent-contributors": "Le ultime dece usatores que contribueva a iste pagina",

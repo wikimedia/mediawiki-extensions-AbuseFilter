@@ -269,6 +269,7 @@
 	"abusefilter-edit-builder-vars-user-age": "הזמן שעבר מאז הרשמת המשתמש",
 	"abusefilter-edit-builder-vars-user-name": "שם חשבון המשתמש",
 	"abusefilter-edit-builder-vars-user-groups": "קבוצות (כולל קבוצות משתמעות) בהן נמצא המשתמש",
+	"abusefilter-edit-builder-vars-user-rights": "הרשאות שיש למשתמש",
 	"abusefilter-edit-builder-vars-user-blocked": "אם המשתמש נחסם",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "התאריך בו אומתה כתובת הדוא\"ל",
 	"abusefilter-edit-builder-vars-recent-contributors": "עשרת התורמים האחרונים לדף",
