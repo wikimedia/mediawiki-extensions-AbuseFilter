@@ -264,6 +264,7 @@
     "abusefilter-edit-builder-vars-user-blocked": "Whether user is blocked",
     "abusefilter-edit-builder-vars-user-emailconfirm": "Time email address was confirmed",
     "abusefilter-edit-builder-vars-recent-contributors": "Last ten users to contribute to the page",
+    "abusefilter-edit-builder-vars-first-contributor": "First user to contribute to the page",
     "abusefilter-edit-builder-vars-all-links": "All external links in the new text",
     "abusefilter-edit-builder-vars-added-links": "All external links added in the edit",
     "abusefilter-edit-builder-vars-removed-links": "All external links removed in the edit",

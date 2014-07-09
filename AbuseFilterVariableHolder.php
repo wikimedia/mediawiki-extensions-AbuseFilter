@@ -504,6 +504,17 @@ class AFComputedVariable {
 				}
 				$result = $users;
 				break;
+			case 'load-first-author':
+				$title = Title::makeTitle( $parameters['namespace'], $parameters['title'] );
+
+				$revision = $title->getFirstRevision();
+				if ( $revision ) {
+					$result = $revision->getUserText();
+				} else {
+					$result = '';
+				}
+
+				break;
 			case 'get-page-restrictions':
 				$action = $parameters['action'];
 				$title = Title::makeTitle( $parameters['namespace'], $parameters['title'] );

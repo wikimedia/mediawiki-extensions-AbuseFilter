@@ -123,6 +123,7 @@ class AbuseFilter {
 			'article_restrictions_create' => 'restrictions-create',
 			'article_restrictions_upload' => 'restrictions-upload',
 			'article_recent_contributors' => 'recent-contributors',
+			'article_first_contributor' => 'first-contributor',
 #			'old_text' => 'old-text-stripped', # Disabled, performance
 #			'old_html' => 'old-html', # Disabled, performance
 			'old_links' => 'old-links',
@@ -338,6 +339,12 @@ class AbuseFilter {
 		$vars->setLazyLoadVar( "{$prefix}_recent_contributors", 'load-recent-authors',
 				array(
 					'cutoff' => wfTimestampNow(),
+					'title' => $title->getText(),
+					'namespace' => $title->getNamespace()
+				) );
+
+		$vars->setLazyLoadVar( "{$prefix}_first_contributor", 'load-first-author',
+				array(
 					'title' => $title->getText(),
 					'namespace' => $title->getNamespace()
 				) );
