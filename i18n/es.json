@@ -36,7 +36,8 @@
 			"Tifinaghes",
 			"Translationista",
 			"Vivaelcelta",
-			"Themasterriot"
+			"Themasterriot",
+			"Macofe"
 		]
 	},
 	"abusefilter-desc": "Aplicar automáticamente heurísticas para ediciones",
@@ -293,6 +294,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Antigüedad de la cuenta de usuario",
 	"abusefilter-edit-builder-vars-user-name": "Nombre de la cuenta de usuario",
 	"abusefilter-edit-builder-vars-user-groups": "Grupos (incluidos aquellos implícitos) a los que pertenece el usuario",
+	"abusefilter-edit-builder-vars-user-rights": "Derechos que tiene un usuario",
 	"abusefilter-edit-builder-vars-user-blocked": "Si el usuario esta bloqueado",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "El tiempo que hace que la dirección de correo electrónico fue confirmada",
 	"abusefilter-edit-builder-vars-recent-contributors": "Últimos diez usuarios en contribuir en la página",

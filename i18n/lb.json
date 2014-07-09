@@ -246,6 +246,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Alter vum Benotzerkont",
 	"abusefilter-edit-builder-vars-user-name": "Numm vum Benotzerkont",
 	"abusefilter-edit-builder-vars-user-groups": "Gruppen (inklusiv déi implizit) wou de Benotzer dran ass",
+	"abusefilter-edit-builder-vars-user-rights": "Rechter déi e Benotzer huet",
 	"abusefilter-edit-builder-vars-user-blocked": "Ob de Benotzer gespaart ass",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Wéini d'E-Mailadress confirméiert gouf",
 	"abusefilter-edit-builder-vars-recent-contributors": "Déi lescht zeng Benotzer déi un dësem Artikel geschafft hunn",

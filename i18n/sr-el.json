@@ -153,7 +153,7 @@
 	"abusefilter-edit-denied": "Možda nećete videti detalje ovog filtera jer je sakriven iz javnog prikaza.",
 	"abusefilter-edit-main": "Parametri filtera",
 	"abusefilter-edit-done-subtitle": "Filter izmenjen",
-	"abusefilter-edit-done": "Uspešno ste sačuvali izmene filtera $1.",
+	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Vaše izmene]] [[Special:AbuseFilter/$1|filtera $3]] su sačuvane.",
 	"abusefilter-edit-badsyntax": "Navedeni filter ima sintaksnu grešku.\nIzlaz iz raščlanjivača bio je: <pre>$1</pre>",
 	"abusefilter-edit-restricted": "Ne možete uređivati ovaj filter jer sadrži jednu ili više ograničenih radnji.\nZamolite korisnika s određenim ovlašćenjem da napravi izmene umesto vas.",
 	"abusefilter-edit-viewhistory": "Pogledaj istoriju filtera",

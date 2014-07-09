@@ -34,7 +34,8 @@
 			"Yfdyh000",
 			"Zhangjintao",
 			"Mywood",
-			"Impersonator 1"
+			"Impersonator 1",
+			"NigelSoft"
 		]
 	},
 	"abusefilter-desc": "对编辑行为自动进行条件判定",
@@ -292,6 +293,7 @@
 	"abusefilter-edit-builder-vars-user-age": "用户账户年龄",
 	"abusefilter-edit-builder-vars-user-name": "用户账户名称",
 	"abusefilter-edit-builder-vars-user-groups": "用户所在群组（包括隐藏群组）",
+	"abusefilter-edit-builder-vars-user-rights": "用户拥有的权限",
 	"abusefilter-edit-builder-vars-user-blocked": "用户是否被封禁",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "电子邮件地址得到确认的时间",
 	"abusefilter-edit-builder-vars-recent-contributors": "最后十位对该页面贡献的用户",
