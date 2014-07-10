@@ -640,6 +640,20 @@ class AbuseFilterHooks {
 	}
 
 	/**
+	 * Tables that Extension:UserMerge needs to update
+	 *
+	 * @param array $updateFields
+	 * @return bool
+	 */
+	public static function onUserMergeAccountFields( array &$updateFields ) {
+		$updateFields[] = array( 'abuse_filter', 'af_user', 'af_user_text' );
+		$updateFields[] = array( 'abuse_filter_log', 'afl_user', 'afl_user_text' );
+		$updateFields[] = array( 'abuse_filter_history', 'afh_user', 'afh_user_text' );
+
+		return true;
+	}
+
+	/**
 	 * Hook to add PHPUnit test cases.
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnitTestsList
 	 *
