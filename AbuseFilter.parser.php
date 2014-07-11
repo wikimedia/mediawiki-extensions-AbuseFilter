@@ -73,6 +73,8 @@ class AFPData {
 	// Derived from <http://www.php.net/manual/en/function.fnmatch.php#100207>
 	private static $wildcardMap = array(
 		'\*'   => '.*',
+		'\+'   => '\+',
+		'\-'   => '\-',
 		'\.'   => '\.',
 		'\?'   => '.',
 		'\['   => '[',
