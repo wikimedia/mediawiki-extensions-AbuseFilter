@@ -10,7 +10,8 @@
 			"Mach",
 			"Srhat",
 			"Vito Genovese",
-			"Ayrıntılı Bilgi"
+			"Ayrıntılı Bilgi",
+			"Sayginer"
 		]
 	},
 	"abusefilter-desc": "Değişikliklere otomatik bulucu yöntemler uygular",
@@ -264,6 +265,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Kullanıcı hesabının yaşı",
 	"abusefilter-edit-builder-vars-user-name": "Kullanıcı hesabının adı",
 	"abusefilter-edit-builder-vars-user-groups": "Kullanıcının olduğu gruplar (içinde oldukları dahil)",
+	"abusefilter-edit-builder-vars-user-rights": "Kullanıcının sahip olduğu haklar",
 	"abusefilter-edit-builder-vars-user-blocked": "Kullanıcının engelli olup olmadığı",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "E-posta adresinin doğrulanma zamanı",
 	"abusefilter-edit-builder-vars-recent-contributors": "Sayfaya katkıda bulunan son on kullanıcı",
