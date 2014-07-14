@@ -267,6 +267,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Umur pengguna",
 	"abusefilter-edit-builder-vars-user-name": "Nama pengguna",
 	"abusefilter-edit-builder-vars-user-groups": "Kelompok (selengkapnya) pengguna dalam",
+	"abusefilter-edit-builder-vars-user-rights": "Hak bahwa pengguna memiliki",
 	"abusefilter-edit-builder-vars-user-blocked": "Apakah pengguna diblokir",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Waktu konfirmasi alamat surel",
 	"abusefilter-edit-builder-vars-recent-contributors": "Sepuluh pengguna terakhir kontributor halaman",

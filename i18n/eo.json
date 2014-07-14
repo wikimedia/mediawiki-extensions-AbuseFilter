@@ -49,7 +49,7 @@
 	"abusefilter-log-summary": "Ĉi tiu protokolo montras liston de ĉiuj agoj kaptitaj de la filtriloj.",
 	"abusefilter-log-search": "Serĉi la protokolon de misuzo",
 	"abusefilter-log-search-user": "Uzanto:",
-	"abusefilter-log-search-filter": "Identigo de filtrilo:",
+	"abusefilter-log-search-filter": "Identigo de filtrilo (apartiĝi per vertikalaj strekoj):",
 	"abusefilter-log-search-title": "Titolo:",
 	"abusefilter-log-search-wiki": "Vikio:",
 	"abusefilter-log-search-submit": "Serĉi",
