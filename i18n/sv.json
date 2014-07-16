@@ -24,7 +24,8 @@
 			"Skalman",
 			"Thurs",
 			"Tobulos1",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Jopparn"
 		]
 	},
 	"abusefilter-desc": "Tillämpar automatiska filter på redigeringar",
@@ -281,6 +282,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Användarkontots ålder",
 	"abusefilter-edit-builder-vars-user-name": "Användarkontots namn",
 	"abusefilter-edit-builder-vars-user-groups": "Grupper (inkluderat implicita) användaren är i",
+	"abusefilter-edit-builder-vars-user-rights": "Rättigheter som en användare har",
 	"abusefilter-edit-builder-vars-user-blocked": "Ifall användaren är blockerad",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Tid e-postadressen blev bekräftad",
 	"abusefilter-edit-builder-vars-recent-contributors": "De senaste tio som bidragit till sidan",
