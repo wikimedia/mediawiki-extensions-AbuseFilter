@@ -259,6 +259,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Antigüedá de la cuenta del usuariu",
 	"abusefilter-edit-builder-vars-user-name": "Nome de la cuenta del usuariu",
 	"abusefilter-edit-builder-vars-user-groups": "Grupos (incluyendo los implícitos) nos que ta l'usuariu",
+	"abusefilter-edit-builder-vars-user-rights": "Permisos que tien un usuariu",
 	"abusefilter-edit-builder-vars-user-blocked": "Si l'usuariu ta bloquiáu",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Data de confirmación de la direición de corréu electrónicu",
 	"abusefilter-edit-builder-vars-recent-contributors": "Últimos diez usuarios en collaboraron na páxina",
