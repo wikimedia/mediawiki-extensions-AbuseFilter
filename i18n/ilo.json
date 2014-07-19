@@ -258,6 +258,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Edad ti pakabilangan ti agar-aramat",
 	"abusefilter-edit-builder-vars-user-name": "Nagan ti pakabilangan ti agar-aramat",
 	"abusefilter-edit-builder-vars-user-groups": "Grupgrupo (mairaman ti naitalged) nga ayan ti agar-aramat",
+	"abusefilter-edit-builder-vars-user-rights": "Dagiti adda a karbengan ti agar-aramat",
 	"abusefilter-edit-builder-vars-user-blocked": "No ti agar-aramat ket naserraan",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Oras a napasingkedan ti esurat a pagtaengan",
 	"abusefilter-edit-builder-vars-recent-contributors": "Dagiti naudi a sangapulo nga agar-aramat a nagparawad iti daytoy a panid",

@@ -350,7 +350,7 @@
 	"abusefilter-test-period-end": "Cambios fechos antes de:",
 	"abusefilter-test-page": "Cambios fechos na páxina:",
 	"abusefilter-test-shownegative": "Ver los cambios que nun casen col filtru",
-	"abusefilter-test-syntaxerr": "El filtru qu'escribió contenía un error de sintaxis.\nPue recibir una esplicación completa calcando nel botón \"{{int:abusefilter-edit-check}}\".",
+	"abusefilter-test-syntaxerr": "El filtru qu'escribisti contenía un error de sintaxis.\nPues recibir una esplicación completa calcando nel botón \"{{int:abusefilter-edit-check}}\".",
 	"abusefilter-test-badtitle": "El títulu de páxina qu'escribió ye inválidu. Pue contener unu o más caráuteres que nun puen usase nos títulos.",
 	"abusefilter-changeslist-examine": "esaminar",
 	"abusefilter-examine": "Esaminar los cambios individuales",
@@ -389,7 +389,7 @@
 	"abusefilter-diff-backhistory": "Volver al historial del filtru",
 	"abusefilter-diff-prev": "Cambiu más antiguu",
 	"abusefilter-diff-next": "Cambiu más nuevu",
-	"abusefilter-import-intro": "Pue emplegar esta interfaz pa importar filtros d'otres wikis.\nNa wiki d'orixe, calque \"{{int:abusefilter-edit-export}}\" baxo \"{{int:abusefilter-edit-tools}}\" na interfaz d'edición.\nCopie del cuadru de testu qu'apaez y apegue n'esti cuadru de testu, y darréu calque \"{{int:abusefilter-import-submit}}\",",
+	"abusefilter-import-intro": "Pues emplegar esta interfaz pa importar filtros d'otres wikis.\nNa wiki d'orixe, calca \"{{int:abusefilter-edit-export}}\" baxo \"{{int:abusefilter-edit-tools}}\" na interfaz d'edición.\nCopia del cuadru de testu qu'apaez y apega nesti cuadru de testu, y darréu calca \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "Importar datos",
 	"abusefilter-group-default": "Predetermináu"
 }
