@@ -909,7 +909,7 @@ class AbuseFilter {
 		if ( $wgTitle !== $oldWgTitle ) {
 			$wgTitle = $oldWgTitle;
 		}
-		if ( $context->getTitle() !== $oldContextTitle ) {
+		if ( $context->getTitle() !== $oldContextTitle && $oldContextTitle instanceof Title ) {
 			$context->setTitle( $oldContextTitle );
 		}
 
