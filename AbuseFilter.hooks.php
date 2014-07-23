@@ -302,6 +302,14 @@ class AbuseFilterHooks {
 		$vars = new AbuseFilterVariableHolder;
 
 		global $wgUser;
+		// HACK: This is a secret userright so system actions
+		// can bypass AbuseFilter. Should not be assigned to
+		// normal users. This should be turned into a proper
+		// userright in bug 67936.
+		if ( $wgUser->isAllowed( 'abusefilter-bypass' ) ) {
+			return true;
+		}
+
 		$vars->addHolders(
 			AbuseFilter::generateUserVars( $wgUser ),
 			AbuseFilter::generateTitleVars( $oldTitle, 'MOVED_FROM' ),
