@@ -258,6 +258,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Starost uporabniškega računa",
 	"abusefilter-edit-builder-vars-user-name": "Ime uporabniškega računa",
 	"abusefilter-edit-builder-vars-user-groups": "Skupine (vključno s posrednimi) v katerih je uporabnik",
+	"abusefilter-edit-builder-vars-user-rights": "Pravice, ki jih ima uporabnik",
 	"abusefilter-edit-builder-vars-user-blocked": "Ali je uporabnik blokiran",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Čas, ko je bil e-poštni naslov potrjen",
 	"abusefilter-edit-builder-vars-recent-contributors": "Zadnjih deset uporabnikov, ki so prispevali strani",
