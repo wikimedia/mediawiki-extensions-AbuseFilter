@@ -19,7 +19,7 @@
 			api = new mw.Api();
 		$( this ).injectSpinner( 'abusefilter-expr' );
 
-		api.get( {
+		api.post( {
 			action: 'abusefilterevalexpression',
 			expression: expr
 		} )
