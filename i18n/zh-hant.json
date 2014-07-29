@@ -138,7 +138,7 @@
 	"abusefilter-tools-expr": "表達式測試器",
 	"abusefilter-tools-submitexpr": "評估",
 	"abusefilter-tools-reautoconfirm": "回復自動確認狀態",
-	"abusefilter-tools-reautoconfirm-user": "使用者",
+	"abusefilter-tools-reautoconfirm-user": "使用者：",
 	"abusefilter-tools-reautoconfirm-submit": "重新自動確認",
 	"abusefilter-reautoconfirm-none": "該用戶之自動確認狀態並沒有被撤銷過。",
 	"abusefilter-reautoconfirm-notallowed": "您未被允許回復自動確認資格。",
