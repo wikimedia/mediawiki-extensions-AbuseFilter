@@ -319,6 +319,7 @@ class SpecialAbuseLog extends SpecialPage {
 
 		// Load data
 		$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
+		$out->addJsConfigVars( 'wgAbuseFilterVariables', $vars->dumpAllVars( true ) );
 
 		// Diff, if available
 		if ( $vars && $vars->getVar( 'action' )->toString() == 'edit' ) {

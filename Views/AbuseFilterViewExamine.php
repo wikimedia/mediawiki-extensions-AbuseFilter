@@ -79,9 +79,9 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		// Get data
 		$dbr = wfGetDB( DB_SLAVE );
 		$row = $dbr->selectRow( 'recentchanges', '*', array( 'rc_id' => $rcid ), __METHOD__ );
-
+		$out = $this->getOutput();
 		if ( !$row ) {
-			$this->getOutput()->addWikiMsg( 'abusefilter-examine-notfound' );
+			$out->addWikiMsg( 'abusefilter-examine-notfound' );
 			return;
 		}
 
@@ -89,7 +89,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		self::$examineId = $rcid;
 
 		$vars = AbuseFilter::getVarsFromRCRow( $row );
-
+		$out->addJsConfigVars( 'wgAbuseFilterVariables', $vars->dumpAllVars( true ) );
 		$this->showExaminer( $vars );
 	}
 
@@ -97,9 +97,10 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		// Get data
 		$dbr = wfGetDB( DB_SLAVE );
 		$row = $dbr->selectRow( 'abuse_filter_log', '*', array( 'afl_id' => $logid ), __METHOD__ );
+		$out = $this->getOutput();
 
 		if ( !$row ) {
-			$this->getOutput()->addWikiMsg( 'abusefilter-examine-notfound' );
+			$out->addWikiMsg( 'abusefilter-examine-notfound' );
 			return;
 		}
 
@@ -107,17 +108,17 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		self::$examineId = $logid;
 
 		if ( !SpecialAbuseLog::canSeeDetails( $row->afl_filter ) ) {
-			$this->getOutput()->addWikiMsg( 'abusefilter-log-cannot-see-details' );
+			$out->addWikiMsg( 'abusefilter-log-cannot-see-details' );
 			return;
 		}
 
 		if ( $row->afl_deleted && !SpecialAbuseLog::canSeeHidden() ) {
-			$this->getOutput()->addWikiMsg( 'abusefilter-log-details-hidden' );
+			$out->addWikiMsg( 'abusefilter-log-details-hidden' );
 			return;
 		}
 
 		$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
-
+		$out->addJsConfigVars( 'wgAbuseFilterVariables', $vars->dumpAllVars( true ) );
 		$this->showExaminer( $vars );
 	}
 
