@@ -126,6 +126,7 @@ $wgResourceModules['ext.abuseFilter.edit'] = array(
 	'messages' => array(
 		'abusefilter-edit-syntaxok',
 		'abusefilter-edit-syntaxerr',
+		'abusefilter-http-error',
 		'unknown-error',
 	),
 	'dependencies' => array(
@@ -142,6 +143,7 @@ $wgResourceModules['ext.abuseFilter.tools'] = array(
 		'abusefilter-reautoconfirm-notallowed',
 		'abusefilter-reautoconfirm-none',
 		'abusefilter-reautoconfirm-done',
+		'abusefilter-http-error',
 		'unknown-error',
 	),
 	'dependencies' => array(
@@ -160,6 +162,7 @@ $wgResourceModules['ext.abuseFilter.examine'] = array(
 		'abusefilter-examine-syntaxerror',
 		'abusefilter-examine-notfound',
 		'abusefilter-mustbeeditor',
+		'abusefilter-http-error',
 		'unknown-error',
 	),
 	'dependencies' => array(

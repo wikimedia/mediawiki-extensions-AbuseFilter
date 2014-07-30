@@ -365,5 +365,6 @@
 	"abusefilter-diff-next": "Link to the diff view for the next change to this filter.\n\nSee also:\n* {{msg-mw|Abusefilter-diff-prev}}\n* {{msg-mw|Previousdiff}} and {{msg-mw|Nextdiff}}",
 	"abusefilter-import-intro": "{{doc-important|Do not translate <code><nowiki>{{int:abusefilter-edit-export}}</nowiki></code>, <code><nowiki>{{int:abusefilter-tools-subtitle}}</nowiki></code>, and <code><nowiki>{{int:abusefilter-import-submit}}</nowiki></code> unless you absolute must substitute any of them.}}\n\nRefers to:\n* {{msg-mw|Abusefilter-edit-export}}\n* {{msg-mw|Abusefilter-edit-tools}}\n* {{msg-mw|Abusefilter-import-submit}}",
 	"abusefilter-import-submit": "Used as label for the Submit button.\n\nPreceded by the textarea.\n\nUsed in:\n* {{msg-mw|Abusefilter-import-intro}}.",
-	"abusefilter-group-default": "The name for the default filter group. Most filters will be in this group.\n{{Identical|Default}}"
+	"abusefilter-group-default": "The name for the default filter group. Most filters will be in this group.\n{{Identical|Default}}",
+	"abusefilter-http-error": "Error message for HTTP requests. Parameters:\n* $1 - HTTP response code."
 }

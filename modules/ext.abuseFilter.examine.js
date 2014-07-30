@@ -68,8 +68,9 @@
 	 * Processes the results of the filter test in case of an error
 	 *
 	 * @param {string} error Error code returned from the AJAX request
+	 * @param {Object} details Details about the error
 	 */
-	function examinerTestProcessFailure( error ) {
+	function examinerTestProcessFailure( error, details ) {
 		var msg;
 		$.removeSpinner( 'filter-check' );
 
@@ -83,12 +84,14 @@
 		} else if ( error === 'permissiondenied' ) {
 			// The 'abusefilter-modify' right is needed to use this API
 			msg = 'abusefilter-mustbeeditor';
+		} else if ( error === 'http' ) {
+			msg = 'abusefilter-http-error';
 		} else {
 			msg = 'unknown-error';
 		}
 
 		$syntaxResult
-			.text( mw.msg( msg ) )
+			.text( mw.msg( msg, details && details.exception ) )
 			.show();
 	}
 

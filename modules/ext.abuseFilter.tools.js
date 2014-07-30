@@ -23,11 +23,11 @@
 			action: 'abusefilterevalexpression',
 			expression: expr
 		} )
-		.fail( function() {
+		.fail( function( error, details ) {
+			var msg = error === 'http' ? 'abusefilter-http-error' : 'unknown-error';
 			$.removeSpinner( 'abusefilter-expr' );
-
 			$( '#mw-abusefilter-expr-result' )
-				.text( mw.msg( 'unknown-error' ) );
+				.text( mw.msg( msg, details.exception ) );
 		} )
 		.done( function( data ) {
 			$.removeSpinner( 'abusefilter-expr' );
@@ -88,6 +88,9 @@
 		switch ( errorCode ) {
 			case 'permissiondenied':
 				msg = mw.msg( 'abusefilter-reautoconfirm-notallowed' );
+				break;
+			case 'http':
+				msg = mw.msg( 'abusefilter-http-error', data && data.exception );
 				break;
 			case 'notsuspended':
 				msg = data.error.info;
