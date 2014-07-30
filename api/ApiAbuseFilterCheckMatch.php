@@ -12,7 +12,11 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 
 		$vars = null;
 		if ( $params['vars'] ) {
-			$vars = FormatJson::decode( $params['vars'], true );
+			$vars = new AbuseFilterVariableHolder;
+			$pairs = FormatJson::decode( $params['vars'], true );
+			foreach ( $pairs as $name => $value ) {
+				$vars->setVar( $name, $value );
+			}
 		} elseif ( $params['rcid'] ) {
 			$dbr = wfGetDB( DB_SLAVE );
 			$row = $dbr->selectRow(
