@@ -350,6 +350,12 @@ $specialPageAliases['oc'] = array(
 	'AbuseFilter' => array( 'Filtre_d\'abuses', 'FiltredAbuses', 'FilterAbus' ),
 );
 
+/** Punjabi (ਪੰਜਾਬੀ) */
+$specialPageAliases['pa'] = array(
+	'AbuseLog' => array( 'ਕੁਵਰਤੋਂ_ਦਾ_ਚਿੱਠਾ' ),
+	'AbuseFilter' => array( 'ਕੁਵਰਤੋਂ_ਛਣਨੀ' ),
+);
+
 /** Polish (polski) */
 $specialPageAliases['pl'] = array(
 	'AbuseLog' => array( 'Rejestr_nadużyć' ),
