@@ -200,7 +200,7 @@
 	"abusefilter-edit-revert": "恢復此過濾器進行過的操作",
 	"abusefilter-edit-tools": "工具：",
 	"abusefilter-edit-test-link": "以最近編輯測試此過濾器",
-	"abusefilter-edit-export": "導出本過濾器",
+	"abusefilter-edit-export": "匯出本過濾器",
 	"abusefilter-edit-syntaxok": "沒有檢測到語法錯誤。",
 	"abusefilter-edit-syntaxerr": "檢測到語法錯誤：$1",
 	"abusefilter-edit-bad-tags": "一個或更多的標籤不可用。\n標籤不應過長，並且不應包含任何特殊字符。",
@@ -414,6 +414,6 @@
 	"abusefilter-diff-prev": "軟舊的更改",
 	"abusefilter-diff-next": "较新的更改",
 	"abusefilter-import-intro": "您可以使用本介面來導入其他wiki的過濾器。在來源處點擊過濾器編輯介面處“{{int:abusefilter-edit-tools}}”下的“{{int:abusefilter-edit-export}}”。複製隨後出現的文字框中的內容，並複製至下方的文字框中，並點擊“{{int:abusefilter-import-submit}}”。",
-	"abusefilter-import-submit": "導入數據",
+	"abusefilter-import-submit": "匯入資料",
 	"abusefilter-group-default": "預設"
 }
