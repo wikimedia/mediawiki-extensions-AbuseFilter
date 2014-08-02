@@ -340,5 +340,6 @@
 	"abusefilter-diff-next": "Керла хийцамаш",
 	"abusefilter-import-intro": "ХӀокху агӀонехь хьан йиш ю кхечу вики чура литтарш импорт дан.\nДӀайолалун вики чохь  «{{int:abusefilter-edit-tools}}» чохь тӀетаӀе «{{int:abusefilter-edit-export}}».\nЧулацаман копи якхкхе хӀокху агӀона чу йилина тӀетаӀе «{{int:abusefilter-import-submit}}».",
 	"abusefilter-import-submit": "Хаамаш импорт бе",
-	"abusefilter-group-default": "Iад йитарца"
+	"abusefilter-group-default": "Iад йитарца",
+	"abusefilter-http-error": "Даьлла гӀалат HTTP: $1"
 }

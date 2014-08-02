@@ -409,5 +409,6 @@
 	"abusefilter-diff-next": "Alteração recente",
 	"abusefilter-import-intro": "Pode usar esta interface para importar filtros de outras wikis.\nNa wiki de origem, clique \"{{int:abusefilter-edit-export}}\", sob \"{{int:abusefilter-edit-tools}}\" na interface de edição.\nCopie da caixa de texto que aparece, coloque nesta caixa de texto e depois clique \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "Importar dados",
-	"abusefilter-group-default": "Padrão"
+	"abusefilter-group-default": "Padrão",
+	"abusefilter-http-error": "Ocorreu um erro HTTP: $1."
 }
