@@ -231,5 +231,6 @@
 	"abusefilter-diff-prev": "עלטערע ענדערונג",
 	"abusefilter-diff-next": "נײַערע ענדערונג",
 	"abusefilter-import-submit": "אימפארטירן דאַטן",
-	"abusefilter-group-default": "גרונטלעך"
+	"abusefilter-group-default": "גרונטלעך",
+	"abusefilter-http-error": "א HTTP גרײַז האט פאַסירט: $1"
 }

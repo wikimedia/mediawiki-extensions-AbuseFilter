@@ -391,5 +391,6 @@
 	"abusefilter-diff-next": "Cambiu más nuevu",
 	"abusefilter-import-intro": "Pues emplegar esta interfaz pa importar filtros d'otres wikis.\nNa wiki d'orixe, calca \"{{int:abusefilter-edit-export}}\" baxo \"{{int:abusefilter-edit-tools}}\" na interfaz d'edición.\nCopia del cuadru de testu qu'apaez y apega nesti cuadru de testu, y darréu calca \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "Importar datos",
-	"abusefilter-group-default": "Predetermináu"
+	"abusefilter-group-default": "Predetermináu",
+	"abusefilter-http-error": "Hebo un error HTTP: $1."
 }

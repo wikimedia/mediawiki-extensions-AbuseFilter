@@ -409,5 +409,6 @@
 	"abusefilter-diff-next": "Новые изменения",
 	"abusefilter-import-intro": "Вы можете использовать этот интерфейс для импорта фильтров из других вики.\nВ исходной вики, нажмите «{{int:abusefilter-edit-export}}» в разделе «{{int:abusefilter-edit-tools}}» интерфейса редактирования.\nСкопируйте содержание текстового поля, вставьте его на эту страницу и нажмите «{{int:abusefilter-import-submit}}».",
 	"abusefilter-import-submit": "Импортировать данные",
-	"abusefilter-group-default": "По умолчанию"
+	"abusefilter-group-default": "По умолчанию",
+	"abusefilter-http-error": "Произошла ошибка HTTP: $1."
 }
