@@ -13,7 +13,8 @@
 			"Prima klasy4na",
 			"SamOdin",
 			"Ата",
-			"Тест"
+			"Тест",
+			"Mykola Swarnyk"
 		]
 	},
 	"abusefilter-desc": "Застосовує до редагувань автоматичні евристики.",
@@ -403,5 +404,6 @@
 	"abusefilter-diff-next": "Наступна зміна",
 	"abusefilter-import-intro": "Ви можете використовувати цей інтерфейс для імпорту фільтрів з інших вікі.\nУ джерельній вікі, натисніть «{{int:abusefilter-edit-export}}» у розділі «{{int:abusefilter-edit-tools}}» інтерфейсу редагування.\nСкопіюйте зміст текстового поля, вставте його у цю сторінку і натисніть «{{int:abusefilter-import-submit}}».",
 	"abusefilter-import-submit": "Імпортувати дані",
-	"abusefilter-group-default": "Стандартна"
+	"abusefilter-group-default": "Стандартна",
+	"abusefilter-http-error": "Сталася помилка HTTP:  $1."
 }

@@ -414,5 +414,6 @@
 	"abusefilter-diff-next": "Nyare förändring",
 	"abusefilter-import-intro": "Du kan använda detta gränssnitt till att importera filter från andra wikier.\nI källwikin klickar du på \"{{int:abusefilter-edit-export}}\" under \"{{int:abusefilter-edit-tools}}\" i redigeringsgränsnittet.\nKopiera från textrutan som kommer fram och klistra in det till denna ruta. Klicka sedan på \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "Importera data",
-	"abusefilter-group-default": "Standard"
+	"abusefilter-group-default": "Standard",
+	"abusefilter-http-error": "Ett HTTP-fel uppstod: $1."
 }
