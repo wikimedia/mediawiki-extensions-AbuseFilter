@@ -12,7 +12,8 @@
 			"Shirayuki",
 			"Yanajin66",
 			"青子守歌",
-			"Rxy"
+			"Rxy",
+			"Takot"
 		]
 	},
 	"abusefilter-desc": "編集に対して、自動的な経験則を適用する",
@@ -79,6 +80,7 @@
 	"abusefilter-log-hidden-implicit": "(版が削除されているため非表示)",
 	"abusefilter-log-cannot-see-details": "この項目の詳細を見る権限がありません。",
 	"abusefilter-log-details-hidden": "この項目は公開記録から隠されているため、あなたは詳細を閲覧できません。",
+	"abusefilter-log-private-not-included": "指定したフィルターIDのうち一つ以上はプライベート状態です。プライベートになっているフィルターの詳細を見ることは許可されていないため、これらのフィルターは検索されません。",
 	"abusefilter-log-hide-legend": "ログ項目を隠す",
 	"abusefilter-log-hide-id": "ログ項目ID:",
 	"abusefilter-log-hide-hidden": "公開記録から、この項目を隠す",
@@ -269,6 +271,7 @@
 	"abusefilter-edit-builder-vars-user-age": "利用者アカウントの登録期間",
 	"abusefilter-edit-builder-vars-user-name": "利用者のアカウント名",
 	"abusefilter-edit-builder-vars-user-groups": "利用者が属するグループ (明示的ではないものも含む)",
+	"abusefilter-edit-builder-vars-user-rights": "ユーザーが持っている権限",
 	"abusefilter-edit-builder-vars-user-blocked": "利用者がブロックされているかどうか",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "メールアドレスを確認した時刻",
 	"abusefilter-edit-builder-vars-recent-contributors": "直前10人のページへの投稿者",
@@ -278,6 +281,8 @@
 	"abusefilter-edit-builder-vars-old-text": "編集前の古いウィキテキスト",
 	"abusefilter-edit-builder-vars-new-text": "編集後の新しいウィキテキスト",
 	"abusefilter-edit-builder-vars-new-pst": "保存前変換適用後の新しいウィキテキスト",
+	"abusefilter-edit-builder-vars-diff-pst": "編集による変更のUnified diff 形式差分 (pre-saveの変換前)",
+	"abusefilter-edit-builder-vars-addedlines-pst": "編集で追加された行 (pre-saveの変換前)",
 	"abusefilter-edit-builder-vars-new-text-stripped": "マークアップを除く新しい本文",
 	"abusefilter-edit-builder-vars-new-html": "新しい版のパース済みHTMLソース",
 	"abusefilter-edit-builder-vars-restrictions-edit": "ページの編集保護レベル",
@@ -398,5 +403,6 @@
 	"abusefilter-diff-next": "新しい変更",
 	"abusefilter-import-intro": "このインターフェイスを使用して、別のウィキからフィルターを取り込めます。\n取り込み元のウィキで、編集画面の「{{int:abusefilter-edit-tools}}」下にある「{{int:abusefilter-edit-export}}」をクリックします。\nそこで現れるテキストボックスの内容をコピーし、それをこのテキストボックスに貼り付けて、「{{int:abusefilter-import-submit}}」をクリックします。",
 	"abusefilter-import-submit": "取り込む",
-	"abusefilter-group-default": "既定"
+	"abusefilter-group-default": "既定",
+	"abusefilter-http-error": "HTTPエラーが発生: $1"
 }

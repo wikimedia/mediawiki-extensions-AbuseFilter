@@ -359,7 +359,7 @@
 	"abusefilter-action-blockautopromote": "Bloquear la recepción de permisos de usuario obtenidos automáticamente",
 	"abusefilter-action-block": "Bloquear",
 	"abusefilter-action-degroup": "Eliminar de los grupos",
-	"abusefilter-action-rangeblock": "Bloqueo de rango",
+	"abusefilter-action-rangeblock": "Bloqueo por intervalo",
 	"abusefilter-action-disallow": "No permitir",
 	"abusefilter-revert-title": "Revertir todos los cambios hechos por el filtro $1",
 	"abusefilter-revert-intro": "Este formulario permite revertir todos los cambios hechos por el filtro antiabusos debido al filtro $1.\nPor favor ten cuidado al usar esta herramienta.",

@@ -304,8 +304,8 @@ $specialPageAliases['ml'] = array(
 
 /** Marathi (मराठी) */
 $specialPageAliases['mr'] = array(
-	'AbuseLog' => array( 'दुरूपयोग_नोंदी' ),
-	'AbuseFilter' => array( 'दुरूपयोग_गाळणी' ),
+	'AbuseLog' => array( 'संपादनगाळणी_नोंदी' ),
+	'AbuseFilter' => array( 'संपादन_गाळणी' ),
 );
 
 /** Maltese (Malti) */

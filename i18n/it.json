@@ -403,5 +403,6 @@
 	"abusefilter-diff-next": "Differenza successiva",
 	"abusefilter-import-intro": "È possibile utilizzare questa interfaccia per importare filtri da altri siti wiki.\nSul sito wiki d'origine, fare clic su \"{{int:abusefilter-edit-export}}\" sotto \"{{int:abusefilter-edit-tools}}\" nell'interfaccia di modifica.\nCopiare dalla casella che appare e copiare in questa casella, quindi fare clic su \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "Importa dati",
-	"abusefilter-group-default": "Predefinito"
+	"abusefilter-group-default": "Predefinito",
+	"abusefilter-http-error": "Si è verificato un errore HTTP: $1."
 }

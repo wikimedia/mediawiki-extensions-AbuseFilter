@@ -329,7 +329,7 @@
 	"abusefilter-log-header": "ХӀокху тептар чохь гойту литтаран чохь бина хийцамаш.\nМадарра [[Special:AbuseFilter/history|хьажа тӀеххьара бина литтаран хийцамашка]].",
 	"abusefilter-log-entry-modify": "хийцина $1 ($2)",
 	"abusefilter-log-noresults": "ХӀума ца карийна",
-	"abusefilter-diff-title": "Версешан башхалла",
+	"abusefilter-diff-title": "Версийн башхалла",
 	"abusefilter-diff-item": "Элемент",
 	"abusefilter-diff-version": "{{GENDER:$3|Декъашхочун}} $2 верси цу $1 хан",
 	"abusefilter-diff-info": "АгӀонах болу бовзам",

@@ -339,7 +339,7 @@
 	"abusefilter-action-tag": "برچسب",
 	"abusefilter-action-throttle": "محدودیت سرعت",
 	"abusefilter-action-warn": "هشدار",
-	"abusefilter-action-blockautopromote": "ترفیع خودکار قطع دسترسی",
+	"abusefilter-action-blockautopromote": "قطع ارتقاء خودکار",
 	"abusefilter-action-block": "بستن",
 	"abusefilter-action-degroup": "حذف از گروه‌ها",
 	"abusefilter-action-rangeblock": "بستن یک بازه",
@@ -409,5 +409,6 @@
 	"abusefilter-diff-next": "تغییر جدیدتر",
 	"abusefilter-import-intro": "شما می‌توانید از این رابط برای واردکردن پالایه‌ها از دیگر ویکی‌ها استفاده کنید.\nدر ویکی مبدأ روی «{{int:abusefilter-edit-export}}» زیر «{{int:abusefilter-edit-tools}}» در رابط ویرایشی کلیک کنید.\nاز جعبهٔ متنی که نشان داده می‌شود کپی کرده و در این جعبهٔ متن بچسبانید، سپس روی «{{int:abusefilter-import-submit}}» کلیک کنید.",
 	"abusefilter-import-submit": "درون‌ریزی اطلاعات",
-	"abusefilter-group-default": "پیش‌فرض"
+	"abusefilter-group-default": "پیش‌فرض",
+	"abusefilter-http-error": "خطای اچ‌تی‌تی‌پی رخ داد: $1"
 }

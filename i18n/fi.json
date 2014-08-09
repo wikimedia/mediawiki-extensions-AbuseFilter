@@ -273,6 +273,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Käyttäjätunnuksen ikä",
 	"abusefilter-edit-builder-vars-user-name": "Käyttäjätunnuksen nimi",
 	"abusefilter-edit-builder-vars-user-groups": "Ryhmät (myös implisiittiset), joissa käyttäjä on",
+	"abusefilter-edit-builder-vars-user-rights": "Oikeudet, jotka käyttäjällä on",
 	"abusefilter-edit-builder-vars-user-blocked": "Onko käyttäjä estetty",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Sähköpostiosoite vahvistettiin",
 	"abusefilter-edit-builder-vars-recent-contributors": "Sivun viimeisimmät kymmenen muokkaajaa",
@@ -404,5 +405,6 @@
 	"abusefilter-diff-next": "Uudempi muutos",
 	"abusefilter-import-intro": "Voit käyttää tätä käyttöliittymää suodattimien tuomiseksi muista wikeistä.\nNapsauta ”{{int:abusefilter-edit-export}}” kohdassa ”{{int:abusefilter-edit-tools}}” lähdewikin muokkausnäkymässä.\nKopioi ilmestyvän tekstikentän sisältö ja liitä se tähän tekstikenttään, jonka jälkeen napsauta ”{{int:abusefilter-import-submit}}”.",
 	"abusefilter-import-submit": "Tuo tiedot",
-	"abusefilter-group-default": "Yleinen"
+	"abusefilter-group-default": "Yleinen",
+	"abusefilter-http-error": "Tapahtui HTTP-virhe: $1."
 }
