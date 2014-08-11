@@ -51,6 +51,12 @@ $specialPageAliases['bg'] = array(
 	'AbuseFilter' => array( 'Филтър_срещу_злоупотреби' ),
 );
 
+/** Bhojpuri (भोजपुरी) */
+$specialPageAliases['bho'] = array(
+	'AbuseLog' => array( 'दुरुपयोगी_छनित_पृष्ठ' ),
+	'AbuseFilter' => array( 'दुरुपयोगी_छनित_फिल्टर' ),
+);
+
 /** Banjar (Bahasa Banjar) */
 $specialPageAliases['bjn'] = array(
 	'AbuseLog' => array( 'Catatan_panyalahgunaan' ),
