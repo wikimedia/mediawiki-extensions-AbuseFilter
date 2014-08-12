@@ -29,7 +29,8 @@
 			"The Evil IP address",
 			"Translationista",
 			"Umherirrender",
-			"Yekrats"
+			"Yekrats",
+			"Liuxinyu970226"
 		]
 	},
 	"abusefilter-desc": "{{desc|name=Abuse Filter|url=http://www.mediawiki.org/wiki/Extension:AbuseFilter}}",
@@ -166,7 +167,7 @@
 	"abusefilter-edit-hidden": "Checkbox label for a filter flag.",
 	"abusefilter-edit-global": "Checkbox label for a filter flag.",
 	"abusefilter-edit-rules": "Field label for filter rules.\n{{Identical|Condition}}",
-	"abusefilter-edit-notes": "Field label for filter notes.",
+	"abusefilter-edit-notes": "Field label for filter notes.\n{{Identical|Note}}",
 	"abusefilter-edit-lastmod": "Field label for filter's last modified timestamp.",
 	"abusefilter-edit-lastmod-text": "This message is used on [[Special:AbuseFilter]] to indicate the last modified date, time and user for existing rules.\n\nParameters:\n* $1 - a time and date (duplicated in $3 and $4)\n* $2 - a link to a user page with a user name as link text, followed by a series of related links\n* $3 - (Optional) the date\n* $4 - (Optional) the time\n* $5 - (Optional) the username, for GENDER support",
 	"abusefilter-edit-hitcount": "Field label in edit rule form after which the number of filter hits is displayed.",
