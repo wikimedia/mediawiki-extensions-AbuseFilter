@@ -15,7 +15,8 @@
 			"Tjcool007",
 			"Tvdm",
 			"Wiki13",
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Trijnstel"
 		]
 	},
 	"abusefilter-desc": "Voert automatisch heuristische analyse uit op bewerkingen",
@@ -41,7 +42,7 @@
 	"right-abusefilter-revert": "Alle wijzigingen door een filter terugdraaien",
 	"right-abusefilter-view-private": "Als beperkt zichtbaar gemarkeerde filters bekijken",
 	"right-abusefilter-log-private": "Logboekregels bekijken voor misbruikfilter die gemarkeerd zijn als privé",
-	"right-abusefilter-hide-log": "Meldinging in het filterlogboek verbergen",
+	"right-abusefilter-hide-log": "Meldingen in het filterlogboek verbergen",
 	"right-abusefilter-hidden-log": "Verborgen meldingen in het filterlogboek bekijken",
 	"right-abusefilter-modify-global": "Globale misbruikfilters aanmaken of aanpassen",
 	"action-abusefilter-modify": "filters te wijzigen",
