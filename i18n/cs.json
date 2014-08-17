@@ -397,5 +397,6 @@
 	"abusefilter-diff-next": "Novější změna",
 	"abusefilter-import-intro": "Pomocí tohoto rozhraní můžete importovat filtry z jiných wiki.\nNa zdrojové wiki klikněte v editačním rozhraní na „{{int:abusefilter-edit-export}}“ v sekci „{{int:abusefilter-edit-tools}}“.\nZkopírujte si text, který se objeví v rámečku, vložte ho do tohoto formuláře a klikněte na „{{int:abusefilter-import-submit}}“.",
 	"abusefilter-import-submit": "Importovat data",
-	"abusefilter-group-default": "Výchozí"
+	"abusefilter-group-default": "Výchozí",
+	"abusefilter-http-error": "Došlo k chybě HTTP: $1."
 }

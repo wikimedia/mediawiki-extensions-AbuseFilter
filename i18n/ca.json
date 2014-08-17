@@ -395,5 +395,6 @@
 	"abusefilter-diff-next": "Nou canvi",
 	"abusefilter-import-intro": "Vostè pot utilitzar aquesta interfície per filtres d'importació d'altres wikis.\nAl wiki de font, feu clic a \"{{int:abusefilter-Edita-exportació}}\" sota \"{{int:abusefilter-eines-subtítol}}\" en la interfície d'edició.\nCopiï des de quadre de text que apareix i enganxar-lo a aquest quadre de text, a continuació, feu clic a \"{{int:abusefilter-importar-presentar}}\".",
 	"abusefilter-import-submit": "Importa dades",
-	"abusefilter-group-default": "Per defecte"
+	"abusefilter-group-default": "Per defecte",
+	"abusefilter-http-error": "S’ha produït un error d’HTTP: $1."
 }
