@@ -385,5 +385,6 @@
 	"abusefilter-diff-next": "Baguhon na kaliwatan",
 	"abusefilter-import-intro": "Saimong magagamit ining olay-panlaog sa pag-importa nin mga saraan gikan sa ibang wikis.\nSa ginikanang wiki, i-klik an \"{{int:abusefilter-edit-export}}\" na yaon sa \"{{int:abusefilter-edit-tools}}\" sa olay-panlaog nin pagliliwat.",
 	"abusefilter-import-submit": "Importaron an datos",
-	"abusefilter-group-default": "Panugmad"
+	"abusefilter-group-default": "Panugmad",
+	"abusefilter-http-error": "Sarong HTTP na kasalaan an nangyari: $1."
 }
