@@ -328,7 +328,7 @@
 	"abusefilter-exception-unrecognisedtoken": "Nierozpoznany symbol „$2”, znak nr $1.",
 	"abusefilter-exception-noparams": "Brak parametrów w wywołaniu funkcji „$2”, znak nr $1.",
 	"abusefilter-exception-dividebyzero": "Próba dzielenia $2 przez zero, znak nr $1.",
-	"abusefilter-exception-unrecognisedvar": "Nierozpoznana zmienna $2, znak nr $1",
+	"abusefilter-exception-unrecognisedvar": "Nierozpoznana zmienna $2, znak nr $1.",
 	"abusefilter-exception-notenoughargs": "Zbyt mało argumentów dla funkcji $2, wywołanie – znak $1.\nOczekiwano $3 {{PLURAL:$3|argumentu|argumentów}}, użyto $4",
 	"abusefilter-exception-regexfailure": "Błąd w wyrażeniu regularnym „$3” na znaku $1 – „$2”",
 	"abusefilter-exception-overridebuiltin": "Nielegalne nadpisanie wbudowanej zmiennej „$2” – znak $1.",
@@ -405,7 +405,7 @@
 	"abusefilter-diff-backhistory": "Powrót do historii filtru",
 	"abusefilter-diff-prev": "Poprzednia zmiana",
 	"abusefilter-diff-next": "Następna zmiana",
-	"abusefilter-import-intro": "Ten interfejs służy do importowania filtrów z innych wiki.\nW trybie edycji filtru kliknij w źródłowej wiki „{{int:abusefilter-edit-export}}” przy nagłówku „{{int:abusefilter-edit-tools}}”.\nSkopiuj zawartość pola tekstowego, które się pojawi, i wklej ją do poniższego pola tekstowego, a następnie kliknij przycisk „{{int:abusefilter-import-submit}}”,",
+	"abusefilter-import-intro": "Ten interfejs służy do importowania filtrów z innych wiki.\nW trybie edycji filtru kliknij w źródłowej wiki „{{int:abusefilter-edit-export}}” przy nagłówku „{{int:abusefilter-edit-tools}}”.\nSkopiuj zawartość pola tekstowego, które się pojawi, i wklej ją do poniższego pola tekstowego, a następnie kliknij przycisk „{{int:abusefilter-import-submit}}”.",
 	"abusefilter-import-submit": "Importuj dane",
 	"abusefilter-group-default": "Domyślne",
 	"abusefilter-http-error": "Wystąpił błąd HTTP: $1."

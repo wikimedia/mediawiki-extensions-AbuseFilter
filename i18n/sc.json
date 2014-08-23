@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Andria",
-			"Uharteko"
+			"Uharteko",
+			"Taxandru"
 		]
 	},
 	"abuselog": "Registru de is abusos",
@@ -17,7 +18,7 @@
 	"action-abusefilter-private": "ammustra is datos privados in su registru de is abusos",
 	"abusefilter-log": "Registru de su filtru contra s'abusu",
 	"abusefilter-log-search": "Chirca in su registru de su filtru contra s'abusu",
-	"abusefilter-log-search-user": "Utente:",
+	"abusefilter-log-search-user": "Usuàriu:",
 	"abusefilter-log-search-filter": "Identidade de su filtru:",
 	"abusefilter-log-search-title": "Tìtulu:",
 	"abusefilter-log-search-submit": "Chirca",

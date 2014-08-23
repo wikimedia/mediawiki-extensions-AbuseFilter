@@ -273,6 +273,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Bestaansduur gebruiker",
 	"abusefilter-edit-builder-vars-user-name": "Gebruikersnaam",
 	"abusefilter-edit-builder-vars-user-groups": "Groepen (inclusief impliciete) waar gebruiker lid van is",
+	"abusefilter-edit-builder-vars-user-rights": "Recht wat een gebruiker heeft",
 	"abusefilter-edit-builder-vars-user-blocked": "Of de gebruiker geblokkeerd is",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Tijdstip e-mailbevestiging",
 	"abusefilter-edit-builder-vars-recent-contributors": "Laatste tien bewerkers van de pagina",
@@ -404,5 +405,6 @@
 	"abusefilter-diff-next": "Nieuwere wijziging",
 	"abusefilter-import-intro": "U kunt deze interface gebruiken om filters van andere wiki's te importeren.\nKlik \"{{int:abusefilter-edit-export}}\" bij \"{{int:abusefilter-edit-tools}}\".\nKopieer de tekst die verschijnt naar dit bewerkingsvenster en klik dan op \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "Filtergegevens importeren",
-	"abusefilter-group-default": "Standaard"
+	"abusefilter-group-default": "Standaard",
+	"abusefilter-http-error": "Er is een HTTP-fout opgetreden: $1."
 }

@@ -7,7 +7,8 @@
 			"Stanqo",
 			"Turin",
 			"Петър Петров",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"StanProg"
 		]
 	},
 	"abusefilter-desc": "Прилага автоматични евристики към редакциите.",
@@ -127,7 +128,7 @@
 	"abusefilter-edit-hidden": "Скриване на детайлите за този филтър от публичен достъп",
 	"abusefilter-edit-global": "Глобално приложение на този филтър",
 	"abusefilter-edit-rules": "Условия:",
-	"abusefilter-edit-notes": "Забележки:\n:''(скрити)",
+	"abusefilter-edit-notes": "Забележки:",
 	"abusefilter-edit-lastmod": "Последна промяна на филтъра:",
 	"abusefilter-edit-lastmod-text": "$1 от $2",
 	"abusefilter-edit-hitcount": "Съвпадения на филтъра:",

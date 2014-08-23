@@ -160,7 +160,7 @@
 	"abusefilter-edit-action-flag": "Evidenzia la modifica nel registro del filtro anti abusi",
 	"abusefilter-edit-action-blockautopromote": "Revoca lo stato di autoconfirmed dell'utente",
 	"abusefilter-edit-action-degroup": "Rimuovi l'utente da tutti i gruppi privilegiati",
-	"abusefilter-edit-action-block": "Impedisci le modifiche all'utenza o indirizzo IP",
+	"abusefilter-edit-action-block": "Impedisci ogni ulteriore modifica all'utenza o indirizzo IP",
 	"abusefilter-edit-action-throttle": "Attiva le azioni solo se l'utente supera un limite predeterminato",
 	"abusefilter-edit-action-rangeblock": "Blocca l'intervallo /16 di origine dell'utente.",
 	"abusefilter-edit-action-tag": "Evidenzia la modifica per una verifica ulteriore.",
