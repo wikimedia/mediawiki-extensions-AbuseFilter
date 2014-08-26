@@ -50,7 +50,7 @@
 	"action-abusefilter-revert": "לשחזר את כל השינויים שבוצעו על ידי מסנן השחתות מסוים",
 	"action-abusefilter-view-private": "לצפות במסנני ההשחתה שסומנו כפרטיים",
 	"abusefilter-log": "יומן מסנן ההשחתות",
-	"abusefilter-log-summary": "יומן זה מציג את כל הפעולות שנתפסו על ידי המסננים.",
+	"abusefilter-log-summary": "יומן זה מציג רשימה של כל הפעולות שנתפסו על־ידי המסננים.",
 	"abusefilter-log-search": "חיפוש ביומן ההשחתות",
 	"abusefilter-log-search-user": "משתמש:",
 	"abusefilter-log-search-filter": "מספרי מסננים (להפריד בתווי '|'):",
