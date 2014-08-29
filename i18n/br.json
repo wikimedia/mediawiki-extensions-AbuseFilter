@@ -383,5 +383,6 @@
 	"abusefilter-diff-next": "Kemm nevesoc'h",
 	"abusefilter-import-intro": "Gallout a rit implijout an etrefas-mañ evit enporzhiañ siloù diwar wikioù all.\nEr wiki orin, klikit war \"{{int:abusefilter-edit-export}}\" e-barzh \"{{int:abusefilter-edit-tools}}\" en etrefas aozañ.\nEilit an takad testenn a teu war-well, ha pegit anezhañ e-barzh an takad testenn-mañ, da heul klikit war \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "Enporzhiañ roadennoù",
-	"abusefilter-group-default": "Dre ziouer"
+	"abusefilter-group-default": "Dre ziouer",
+	"abusefilter-http-error": "Ur fazi HTTP zo bet : $1"
 }
