@@ -58,13 +58,6 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 		return 'Unblocks a user from receiving autopromotions due to an abusefilter consequence';
 	}
 
-	public function getPossibleErrors() {
-		return array_merge( parent::getPossibleErrors(), array(
-			array( 'code' => 'notsuspended', 'info' => 'That user has not had their autoconfirmed status suspended'),
-			array( 'code' => 'permissiondenied', 'info' => 'You do not have permissions to unblock autopromotion' ),
-		) );
-	}
-
 	public function needsToken() {
 		return 'csrf';
 	}

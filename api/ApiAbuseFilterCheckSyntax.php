@@ -46,12 +46,6 @@ class ApiAbuseFilterCheckSyntax extends ApiBase {
 		);
 	}
 
-	public function getPossibleErrors() {
-		return array_merge( parent::getPossibleErrors(), array(
-			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to check syntax of abuse filters' ),
-		) );
-	}
-
 	public function getExamples() {
 		return array(
 			'api.php?action=abusefilterchecksyntax&filter="foo"',

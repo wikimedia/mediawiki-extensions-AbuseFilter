@@ -94,18 +94,6 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 		);
 	}
 
-	public function getPossibleErrors() {
-		return array_merge( parent::getPossibleErrors(),
-			$this->getRequireOnlyOneParameterErrorMessages( array( 'vars', 'rcid', 'logid' ) ),
-			array(
-				array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to test abuse filters' ),
-				array( 'nosuchrcid' ),
-				array( 'code' => 'nosuchlogid', 'info' => 'There is no abuselog entry with the id given' ),
-				array( 'code' => 'badsyntax', 'info' => 'The filter has invalid syntax' ),
-			)
-		);
-	}
-
 	public function getExamples() {
 		return array(
 			'api.php?action=abusefiltercheckmatch&filter=!("autoconfirmed"%20in%20user_groups)&rcid=15'
