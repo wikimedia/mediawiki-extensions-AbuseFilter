@@ -484,6 +484,6 @@ $specialPageAliases['zh-hans'] = array(
 
 /** Traditional Chinese (中文（繁體）‎) */
 $specialPageAliases['zh-hant'] = array(
-	'AbuseLog' => array( '過濾日誌' ),
-	'AbuseFilter' => array( '防濫用過濾器' ),
+	'AbuseLog' => array( '濫用日誌' ),
+	'AbuseFilter' => array( '濫用過濾器' ),
 );

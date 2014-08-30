@@ -20,7 +20,8 @@
 			"Wayiran",
 			"ZxxZxxZ",
 			"جواد",
-			"Rtemis"
+			"Rtemis",
+			"Alirezaaa"
 		]
 	},
 	"abusefilter-desc": "اکتشافات خودکاری را بر روی ویرایش‌های انجام می‌دهد.",
@@ -115,7 +116,7 @@
 	"abusefilter-deleted": "حذف شده",
 	"abusefilter-disabled": "غیرفعال",
 	"abusefilter-hitcount": "$1 مورد پیدا {{PLURAL:$1|شد|شدند}}",
-	"abusefilter-new": "ایجاد یک پالایهٔ جدید",
+	"abusefilter-new": "ایجاد یک پالایهٔ تازه",
 	"abusefilter-return": "بازگشت به مدیریت پالایه",
 	"abusefilter-status-global": "سراسری",
 	"abusefilter-list-options": "تنظیمات",
@@ -146,7 +147,7 @@
 	"abusefilter-edit-status-label": "آمار:",
 	"abusefilter-edit-status": "از آخرین $1 {{PLURAL:$1|عمل|عمل}}، این پالایه با $2 ($3٪) مطابقت داشت.\nبه طور متوسط این پالایه در مدت $4 میلی‌ثانیه اجرا می‌شود و $5 شرط از ظرفیت شرایط را مصرف می‌کند.",
 	"abusefilter-edit-throttled": "هشدار: این پالایه به دلایل امنیتی به طور خودکار غیرفعال شد.\nاین پالایه به ظرفیت مطابقت بیش از $1٪ اقدام‌ها رسید.",
-	"abusefilter-edit-new": "پالایه‌ای جدید",
+	"abusefilter-edit-new": "پالایه‌ای تازه",
 	"abusefilter-edit-save": "ذخیرهٔ پالایه",
 	"abusefilter-edit-id": "شناسهٔ پالایه:",
 	"abusefilter-edit-description": "توضیحات:\n:''(قابل مشاهده توسط عموم)''",
