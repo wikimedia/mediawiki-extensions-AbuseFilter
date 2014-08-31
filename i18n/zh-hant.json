@@ -173,7 +173,7 @@
 	"abusefilter-edit-action-blockautopromote": "撤銷使用者自動確認狀態",
 	"abusefilter-edit-action-degroup": "從所有已授權的群組中移除該使用者",
 	"abusefilter-edit-action-block": "禁止該使用者及/或 IP 位址進行編輯",
-	"abusefilter-edit-action-throttle": "僅在使用者超過頻率限制後觸發操作",
+	"abusefilter-edit-action-throttle": "僅在使用者超過頻率限制後觸發動作",
 	"abusefilter-edit-action-rangeblock": "封鎖使用者來源位置的 /16 子網段區間。",
 	"abusefilter-edit-action-tag": "標記該編輯需要進一步審查",
 	"abusefilter-edit-throttle-count": "允許的操作次數：",
