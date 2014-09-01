@@ -251,6 +251,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Atge del compte d'utilizaire",
 	"abusefilter-edit-builder-vars-user-name": "Nom del compte d'utilizaire",
 	"abusefilter-edit-builder-vars-user-groups": "Gropes (qu'incluisson los que son implicits) de l'utilizaire dins",
+	"abusefilter-edit-builder-vars-user-rights": "Dreches qu’a un utilizaire",
 	"abusefilter-edit-builder-vars-user-blocked": "Se l'utilizaire es blocat",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "L’ora de l'adreça del corrièr electronic es estada confirmada",
 	"abusefilter-edit-builder-vars-recent-contributors": "Dètz darrièrs contributors de l'article",
@@ -378,5 +379,6 @@
 	"abusefilter-diff-next": "Cambiament ulterior",
 	"abusefilter-import-intro": "Podètz utilizar aquesta interfàcia per importar de filtres en provenéncia d’autres wikis.\nSul wiki d’origina, clicatz sus « {{int:abusefilter-edit-export}} » dins « {{int:abusefilter-edit-tools}} » dempuèi l’interfàcia d’edicion.\nCopiatz l'airal de tèxte que s’aficha e empegatz-lo dins aqueste airal de tèxte, puèi clicatz sus « {{int:abusefilter-import-submit}} »,",
 	"abusefilter-import-submit": "Importar de donadas",
-	"abusefilter-group-default": "Per defaut"
+	"abusefilter-group-default": "Per defaut",
+	"abusefilter-http-error": "Una error HTTP s’es produsida : $1."
 }
