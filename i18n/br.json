@@ -333,7 +333,7 @@
 	"abusefilter-revert-reason": "Disteurel en un doare emgefreek pep ober graet gant ar sil gwallimplij abalamour d'ar sil $1.\nAbeg roet : $2",
 	"abusefilter-revert-reasonfield": "Abeg :",
 	"abusefilter-test": "Amprouiñ ur sil war ar c'hemmoù kozh",
-	"abusefilter-test-intro": "Gant ar bajenn-mañ e c'helloc'h gwiriañ an/ar $1 {{PLURAL:$1|c'hemm|c'hemm}} ziwezhañ eno ur sil roet en takad testenn amañ dindan.\nEvit kargañ ur sil, roit e anv en hedad dindan an takad testenn, ha klikit war ar bouton \"Kargañ\".",
+	"abusefilter-test-intro": "Gant ar bajenn-mañ e c'helloc'h gwiriañ an/ar $1 {{PLURAL:$1|c'hemm|kemm}} diwezhañ enno ur sil roet er voest amañ dindan.\nEvit kargañ ur sil, roit e anv en hedad dindan an takad testenn, ha klikit war ar bouton  \"{{int:abusefilter-test-load}}\".",
 	"abusefilter-test-legend": "Amprouadenn sil",
 	"abusefilter-test-load-filter": "Kargañ ar sil niverenn :",
 	"abusefilter-test-submit": "Amprouiñ",
