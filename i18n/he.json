@@ -59,7 +59,7 @@
 	"abusefilter-log-search-submit": "חיפוש",
 	"abusefilter-log-entry": "$1: $2 הפעיל את מסנן ההשחתות, כשביצע את הפעולה \"$3\" על $4.\nפעולות שננקטו: $5;\nתיאור המסנן: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 {{GENDER:$2|הפעיל|הפעילה}} מסנן השחתות, כאשר {{GENDER:$2|ביצע|ביצעה}} את הפעולה \"$3\" בדף $4.\nהפעולה שנעשתה: $5;\nתיאור המסנן: $6 ($7)",
-	"abusefilter-log-detailedentry-meta": "$1: $2 {{GENDER:$9|הפעיל|הפעילה}} את $3, כש{{GENDER:$9|ביצע|ביצעה}} את הפעולה \"$4\" על $5.\nהפעולות שננקטו: $6;\nתיאור המסנן: $7 ($8)",
+	"abusefilter-log-detailedentry-meta": "$1: $2 {{GENDER:$2|הפעיל|הפעילה}} את $3, {{GENDER:$2|כשביצע|כשביצעה}} את הפעולה \"$4\" על $5.\nהפעולות שננקטו: $6;\nתיאור המסנן: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "המסנן הגלובלי $1",
 	"abusefilter-log-detailedentry-local": "המסנן $1",
 	"abusefilter-log-detailslink": "פרטים",
