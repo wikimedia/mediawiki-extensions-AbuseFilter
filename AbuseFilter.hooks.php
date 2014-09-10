@@ -139,9 +139,7 @@ class AbuseFilterHooks {
 
 		$user = $context->getUser();
 
-		// Check for null edits.
 		$oldtext = '';
-		$oldcontent = null;
 
 		if ( ( $title instanceof Title ) && $title->canExist() && $title->exists() ) {
 			// Make sure we load the latest text saved in database (bug 31656)
@@ -161,17 +159,17 @@ class AbuseFilterHooks {
 			// Cache article object so we can share a parse operation
 			$articleCacheKey = $title->getNamespace() . ':' . $title->getText();
 			AFComputedVariable::$articleCache[$articleCacheKey] = $page;
+
+			// Don't trigger for null edits.
+			if ( $content && isset( $oldcontent ) && $content->equals( $oldcontent ) ) {
+				// Compare Content objects if available
+				return true;
+			} elseif ( strcmp( $oldtext, $text ) == 0 ) {
+				// Otherwise, compare strings
+				return true;
+			}
 		} else {
 			$page = null;
-		}
-
-		// Don't trigger for null edits.
-		if ( $content && $oldcontent && $oldcontent->equals( $content ) ) {
-			// Compare Content objects if available
-			return true;
-		} else if ( strcmp( $oldtext, $text ) == 0 ) {
-			// Otherwise, compare strings
-			return true;
 		}
 
 		$vars->addHolders(
