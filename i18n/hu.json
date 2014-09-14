@@ -9,7 +9,8 @@
 			"Glanthor Reviol",
 			"Misibacsi",
 			"Tacsipacsi",
-			"Tgr"
+			"Tgr",
+			"Samat"
 		]
 	},
 	"abusefilter-desc": "Automatikus heurisztikát alkalmaz a szerkesztésekre.",
@@ -27,13 +28,13 @@
 	"abusefilter-degroupreason": "A Vandálszűrő automatikusan visszavonta a jogokat.\nA visszaélési szabály rövid leírása: $1",
 	"abusefilter-accountreserved": "Ez a szerkesztői fiók a Vandálszűrőnek van fenntartva.",
 	"right-abusefilter-modify": "vandálszűrők módosítása",
-	"right-abusefilter-view": "Vandálszűrők megtekintése",
-	"right-abusefilter-log": "A Vandálszűrő naplójának megtekintése",
+	"right-abusefilter-view": "vandálszűrők megtekintése",
+	"right-abusefilter-log": "a Vandálszűrő naplójának megtekintése",
 	"right-abusefilter-log-detail": "Részletes Vandálszűrő-naplóbejegyzések",
 	"right-abusefilter-private": "személyes adatok megtekintése a Vandálszűrő naplójában",
 	"right-abusefilter-modify-restricted": "vandálszűrők módosítása korlátozott hozzáféréssel",
 	"right-abusefilter-revert": "Egy adott vandálszűrő által okozott összes változtatás visszavonása",
-	"right-abusefilter-view-private": "Privátként megjelölt vandálszűrők megtekintése",
+	"right-abusefilter-view-private": "privátként megjelölt vandálszűrők megtekintése",
 	"right-abusefilter-log-private": "A vandálszűrő privátnak jelölt bejegyzéseinek megjelenítése",
 	"right-abusefilter-hide-log": "bejegyzések elrejtése a vandálszűrő naplójában",
 	"right-abusefilter-hidden-log": "a vandálszűrő-napló rejtett bejegyzéseinek megtekintése",
