@@ -181,6 +181,7 @@
 	"abusefilter-edit-syntaxerr": "Otkrivena je sintaksna greška: $1",
 	"abusefilter-edit-bad-tags": "Jedna ili više oznaka koje ste naveli nisu validne.\nOznaka mora biti kratka i ne bi trebala imati specijalne karaktere.",
 	"abusefilter-edit-notallowed": "Nije vam dozvoljeno da pravite ili uređujete filtere protiv zloupotrebe",
+	"abusefilter-edit-notallowed-global": "Nije vam dozvoljeno da pravite ili uređujete globalne filtere protiv zloupotrebe",
 	"abusefilter-edit-builder-select": "Izaberite opciju koju ćete dodati kursoru",
 	"abusefilter-edit-builder-group-op-arithmetic": "Aritmetičke operacije",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Sabiranje (+)",
