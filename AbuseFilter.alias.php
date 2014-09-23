@@ -200,7 +200,7 @@ $specialPageAliases['hsb'] = array(
 	'AbuseFilter' => array( 'Filter_znjewužiwanjow' ),
 );
 
-/** 湘语 (湘语) */
+/** Xiang Chinese (湘语) */
 $specialPageAliases['hsn'] = array(
 	'AbuseLog' => array( '滥用日志' ),
 	'AbuseFilter' => array( '滥用过滤器' ),
@@ -452,7 +452,7 @@ $specialPageAliases['ur'] = array(
 	'AbuseFilter' => array( 'مقطار_غلط_کاری' ),
 );
 
-/** vèneto (vèneto) */
+/** Venetian (vèneto) */
 $specialPageAliases['vec'] = array(
 	'AbuseLog' => array( 'RegistroAbusi' ),
 	'AbuseFilter' => array( 'FiltroAbusi' ),
