@@ -47,7 +47,7 @@
 	"abusefilter-log-search-wiki": "Wiki :",
 	"abusefilter-log-search-submit": "Recercar",
 	"abusefilter-log-entry": "$1 : $2 a desenclavat un filtre dels abuses, qu'executa l'accion « $3 » sus $4.\nAccions presas : $5 ;\nDescripcion del filtre : $6",
-	"abusefilter-log-detailedentry-meta": "$1 : $2 a desenclavat lo $3, en executant l'accion « $4 » sur $5.\nAccions presas : $6 ;\nDescripcion del filtre : $7 ($8)",
+	"abusefilter-log-detailedentry-meta": "$1 : $2 a desenclavat lo $3, en executant l'accion « $4 » sus « $5 ».\nAccions presas : $6 ;\nDescripcion del filtre : $7 ($8)",
 	"abusefilter-log-detailedentry-global": "filtre global $1",
 	"abusefilter-log-detailedentry-local": "filtre $1 dels abuses",
 	"abusefilter-log-detailslink": "detalhs",
