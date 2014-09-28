@@ -112,7 +112,7 @@
 	"abusefilter-log-hide-forbidden": "No tienes permiso para ocultar entradas del registro de antiabusos",
 	"abusefilter-logentry-suppress": "ocultó «[[$1]]»",
 	"abusefilter-logentry-unsuppress": "mostró «[[$1]]»",
-	"logentry-abusefilter-hit": "$1 disparó $4, realizando la acción \"$5\" en $3. Medidas adoptadas: $6 ($7)",
+	"logentry-abusefilter-hit": "$1 activó $4 al realizar la acción «$5» en $3. Medidas adoptadas: $6 ($7)",
 	"abusefilter-management": "Administración del filtro antiabusos",
 	"abusefilter-list": "Todos los filtros",
 	"abusefilter-list-id": "Identificación de filtro",
