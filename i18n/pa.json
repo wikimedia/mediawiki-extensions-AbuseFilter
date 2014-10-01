@@ -25,7 +25,7 @@
 	"abusefilter-status-global": "ਗਲੋਬਲ",
 	"abusefilter-list-options-scope-local": "ਮਕਾਮੀ ਵਿਕੀ",
 	"abusefilter-list-options-submit": "ਅੱਪਡੇਟ",
-	"abusefilter-tools-reautoconfirm-user": "ਯੂਜ਼ਰ:",
+	"abusefilter-tools-reautoconfirm-user": "ਵਰਤੋਂਕਾਰ:",
 	"abusefilter-edit-notes": "ਟਿੱਪਣੀਆਂ:\n:''(ਨਿੱਜੀ}''",
 	"abusefilter-edit-throttle-period": "ਸਮੇਂ ਦੀ ਮਿਆਦ:",
 	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|ਸਕਿੰਟ}}",
