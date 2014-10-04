@@ -55,17 +55,19 @@ table.mw-abusefilter-list-scrollable {
 
 #mw-abusefilter-throttle-parameters,
 #mw-abusefilter-warn-parameters,
+#mw-abusefilter-disallow-parameters,
 #mw-abusefilter-tag-parameters,
 #mw-abusefilter-block-parameters {
 	width: 50%;
 	padding-left: 3em;
 }
 
-.mw-abusefilter-warn-preview-buttons {
+.mw-abusefilter-preview-buttons {
 	text-align: center;
 }
 
-#mw-abusefilter-warn-preview {
+#mw-abusefilter-warn-preview,
+#mw-abusefilter-disallow-preview {
 	border: 1px solid #a2a9b1;
 	margin: 2em;
 	padding: 1em;

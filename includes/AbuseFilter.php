@@ -960,7 +960,7 @@ class AbuseFilter {
 					$session[$warnKey] = true;
 
 					// Threaten them a little bit
-					if ( !empty( $parameters[0] ) && strlen( $parameters[0] ) ) {
+					if ( isset( $parameters[0] ) ) {
 						$msg = $parameters[0];
 					} else {
 						$msg = 'abusefilter-warning';
@@ -2291,9 +2291,10 @@ class AbuseFilter {
 		}
 
 		// Don't allow custom messages on global rules
-		if ( $newRow->af_global == 1 &&
-			$request->getVal( 'wpFilterWarnMessage' ) !== 'abusefilter-warning'
-		) {
+		if ( $newRow->af_global == 1 && (
+				$request->getVal( 'wpFilterWarnMessage' ) !== 'abusefilter-warning' ||
+				$request->getVal( 'wpFilterDisallowMessage' ) !== 'abusefilter-disallowed'
+		) ) {
 			$validationStatus->fatal( 'abusefilter-edit-notallowed-global-custom-msg' );
 			return $validationStatus;
 		}

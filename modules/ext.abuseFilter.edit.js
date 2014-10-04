@@ -18,20 +18,22 @@
 		// @var {boolean} To determine what editor to use
 		useAce = false,
 		// Infused OOUI elements
-		togglePreviewButton,
-		messageExisting,
-		messageOther;
+		toggleWarnPreviewButton, warnMessageExisting, warnMessageOther,
+		toggleDisallowPreviewButton, disallowMessageExisting, disallowMessageOther;
 
 	/**
-	 * Returns the currently selected warning message
+	 * Returns the currently selected warning or disallow message.
 	 *
+	 * @param {string} action The action to get the message for
 	 * @return {string} current warning message
 	 */
-	function getCurrentWarningMessage() {
-		var message = messageExisting.getValue();
+	function getCurrentMessage( action ) {
+		var existing = action === 'warn' ? warnMessageExisting : disallowMessageExisting,
+			other = action === 'warn' ? warnMessageOther : disallowMessageOther,
+			message = existing.getValue();
 
 		if ( message === 'other' ) {
-			message = messageOther.getValue();
+			message = other.getValue();
 		}
 
 		return message;
@@ -72,7 +74,7 @@
 	}
 
 	/**
-	 * Takes the data retrieved in doSyntaxCheck and processes it
+	 * Takes the data retrieved in doSyntaxCheck and processes it.
 	 *
 	 * @param {Object} data Data returned from the AJAX request
 	 */
@@ -110,7 +112,7 @@
 	}
 
 	/**
-	 * Acts on errors after doSyntaxCheck
+	 * Acts on errors after doSyntaxCheck.
 	 *
 	 * @param {string} error Error code returned from the AJAX request
 	 * @param {Object} details Details about the error
@@ -147,7 +149,7 @@
 	}
 
 	/**
-	 * Adds text to the filter textarea
+	 * Adds text to the filter textarea.
 	 * Fired by a change event from the #wpFilterBuilder dropdown
 	 */
 	function addText() {
@@ -209,7 +211,7 @@
 	}
 
 	/**
-	 * Cycles through all action checkboxes and hides parameter divs
+	 * Cycles through all action checkboxes and hides parameter divs.
 	 * that don't have checked boxes
 	 */
 	function hideDeselectedActions() {
@@ -229,18 +231,22 @@
 	}
 
 	/**
-	 * Fetches the selected warning message for previewing
+	 * Fetches the selected warning message for previewing.
+	 *
+	 * @param {string} action The action the message refers to
 	 */
-	function previewWarnMessage() {
+	function previewMessage( action ) {
 		var api = new mw.Api(),
 			args = [
 				'<nowiki>' + $( 'input[name=wpFilterDescription]' ).val() + '</nowiki>',
 				$( '#mw-abusefilter-edit-id' ).children().last().text()
 			],
-			message = getCurrentWarningMessage(),
-			isVisible = $( '#mw-abusefilter-warn-preview' ).is( ':visible' );
+			message = getCurrentMessage( action ),
+			// mw-abusefilter-warn-preview, mw-abusefilter-disallow-preview
+			$element = $( '#mw-abusefilter-' + action + '-preview' ),
+			previewButton = action === 'warn' ? toggleWarnPreviewButton : toggleDisallowPreviewButton;
 
-		if ( !isVisible ) {
+		if ( !$element.is( ':visible' ) ) {
 			api.get( {
 				action: 'query',
 				meta: 'allmessages',
@@ -255,27 +261,30 @@
 						title: 'MediaWiki:' + message
 					} )
 						.done( function ( html ) {
-							$( '#mw-abusefilter-warn-preview' ).show().html( html );
-							togglePreviewButton.setFlags(
+							$element.show().html( html );
+							previewButton.setFlags(
 								{ destructive: true, progressive: false }
 							);
 						} );
 				} );
 		} else {
-			$( '#mw-abusefilter-warn-preview' ).hide();
-			togglePreviewButton.setFlags( { destructive: false, progressive: true } );
+			$element.hide();
+			previewButton.setFlags( { destructive: false, progressive: true } );
 		}
 	}
 
 	/**
-	 * Redirects the browser to the warning message for editing
+	 * Redirects the browser to the message for editing.
+	 *
+	 * @param {string} action The action for which the message is used
 	 */
-	function editWarnMessage() {
-		var message = getCurrentWarningMessage();
+	function editMessage( action ) {
+		var message = getCurrentMessage( action ),
+			defaultMsg = action === 'warn' ? 'warning' : 'disallowed';
 
 		window.location = mw.config.get( 'wgScript' ) +
 			'?title=MediaWiki:' + mw.util.wikiUrlencode( message ) +
-			'&action=edit&preload=MediaWiki:abusefilter-warning';
+			'&action=edit&preload=MediaWiki:abusefilter-' + defaultMsg;
 	}
 
 	/**
@@ -285,7 +294,7 @@
 	 * @param {jQuery.Event} e The event fired when the function is called
 	 */
 	function onFilterGroupChange() {
-		var $afWarnMessageExisting, newVal;
+		var $afWarnMessageExisting, $afDisallowMessageExisting, newVal;
 
 		if ( !$( '#mw-abusefilter-action-warn-checkbox' ).is( ':checked' ) ) {
 			$afWarnMessageExisting = $( '#mw-abusefilter-warn-message-existing select' );
@@ -293,33 +302,50 @@
 
 			if ( $afWarnMessageExisting.find( 'option[value=\'' + newVal + '\']' ).length ) {
 				$afWarnMessageExisting.val( newVal );
-				messageOther.setValue( '' );
+				warnMessageOther.setValue( '' );
 			} else {
 				$afWarnMessageExisting.val( 'other' );
-				messageOther.setValue( newVal );
+				warnMessageOther.setValue( newVal );
+			}
+		}
+
+		if ( !$( '#mw-abusefilter-action-disallow-checkbox' ).is( ':checked' ) ) {
+			$afDisallowMessageExisting = $( '#mw-abusefilter-disallow-message-existing select' );
+			newVal = mw.config.get( 'wgAbuseFilterDefaultDisallowMessage' )[ $( this ).val() ];
+
+			if ( $afDisallowMessageExisting.find( 'option[value=\'' + newVal + '\']' ).length ) {
+				$afDisallowMessageExisting.val( newVal );
+				disallowMessageOther.setValue( '' );
+			} else {
+				$afDisallowMessageExisting.val( 'other' );
+				disallowMessageOther.setValue( newVal );
 			}
 		}
 	}
 
 	/**
-	 * Remove the options for warning messages if the filter is set to global
+	 * Remove the options for warning and disallow messages if the filter is set to global.
 	 */
 	function toggleCustomMessages() {
 		// Use the table over here as hideDeselectedActions might alter the visibility of the div
-		var $warnOptions = $( '#mw-abusefilter-warn-parameters > table' );
+		var $warnOptions = $( '#mw-abusefilter-warn-parameters > table' ),
+			$disallowOptions = $( '#mw-abusefilter-disallow-parameters > table' );
 
 		if ( $( '#wpFilterGlobal' ).is( ':checked' ) ) {
 			// It's a global filter, so use the default message and hide the option from the user
-			messageExisting.setValue( 'abusefilter-warning' );
+			warnMessageExisting.setValue( 'abusefilter-warning' );
+			disallowMessageExisting.setValue( 'abusefilter-disallowed' );
 
 			$warnOptions.hide();
+			$disallowOptions.hide();
 		} else {
 			$warnOptions.show();
+			$disallowOptions.show();
 		}
 	}
 
 	/**
-	 * Called if the user presses a key in the load filter field
+	 * Called if the user presses a key in the load filter field.
 	 *
 	 * @context HTMLELement
 	 * @param {jQuery.Event} e The event fired when the function is called
@@ -374,9 +400,12 @@
 				$tagContainer.append( tagField.$element );
 			}
 
-			togglePreviewButton = OO.ui.infuse( $( '#mw-abusefilter-warn-preview-button' ) );
-			messageExisting = OO.ui.infuse( $( '#mw-abusefilter-warn-message-existing' ) );
-			messageOther = OO.ui.infuse( $( '#mw-abusefilter-warn-message-other' ) );
+			toggleWarnPreviewButton = OO.ui.infuse( $( '#mw-abusefilter-warn-preview-button' ) );
+			warnMessageExisting = OO.ui.infuse( $( '#mw-abusefilter-warn-message-existing' ) );
+			warnMessageOther = OO.ui.infuse( $( '#mw-abusefilter-warn-message-other' ) );
+			toggleDisallowPreviewButton = OO.ui.infuse( $( '#mw-abusefilter-disallow-preview-button' ) );
+			disallowMessageExisting = OO.ui.infuse( $( '#mw-abusefilter-disallow-message-existing' ) );
+			disallowMessageOther = OO.ui.infuse( $( '#mw-abusefilter-disallow-message-other' ) );
 		}
 
 		$plainTextBox = $( '#' + mw.config.get( 'abuseFilterBoxName' ) );
@@ -439,8 +468,18 @@
 
 		if ( isFilterEditor ) {
 			// Add logic for flags and consequences
-			$( '#mw-abusefilter-warn-preview-button' ).click( previewWarnMessage );
-			$( '#mw-abusefilter-warn-edit-button' ).click( editWarnMessage );
+			$( '#mw-abusefilter-warn-preview-button' ).click(
+				function () { previewMessage( 'warn' ); }
+			);
+			$( '#mw-abusefilter-disallow-preview-button' ).click(
+				function () { previewMessage( 'disallow' ); }
+			);
+			$( '#mw-abusefilter-warn-edit-button' ).click(
+				function () { editMessage( 'warn' ); }
+			);
+			$( '#mw-abusefilter-disallow-edit-button' ).click(
+				function () { editMessage( 'disallow' ); }
+			);
 			$( '.mw-abusefilter-action-checkbox input' ).click( hideDeselectedActions );
 			hideDeselectedActions();
 
