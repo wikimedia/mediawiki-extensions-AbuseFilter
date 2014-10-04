@@ -676,7 +676,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					Xml::input(
 						'wpFilterWarnMessageOther',
 						45,
-						$warnMsg ? $warnMsg : 'abusefilter-warning-',
+						$warnMsg,
 						array( 'id' => 'mw-abusefilter-warn-message-other' ) + $cbReadOnlyAttrib
 					);
 
