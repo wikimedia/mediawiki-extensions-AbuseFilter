@@ -264,6 +264,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "Дали корисникот е блокиран",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Време кога била потврдена е-поштата",
 	"abusefilter-edit-builder-vars-recent-contributors": "Последните десет уредници на страницата",
+	"abusefilter-edit-builder-vars-first-contributor": "Прв уредник на страницата",
 	"abusefilter-edit-builder-vars-all-links": "Сите надворешни врски во новиот текст",
 	"abusefilter-edit-builder-vars-added-links": "Сите надворешни врски додадени во уредувањето",
 	"abusefilter-edit-builder-vars-removed-links": "Сите надворешни врски отстранети во уредувањето",

@@ -19,7 +19,8 @@
 			"VasilievVV",
 			"Александр Сигачёв",
 			"Сrower",
-			"Meshkov.a"
+			"Meshkov.a",
+			"Striking Blue"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам.",
@@ -281,6 +282,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "Заблокирован ли пользователь",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Время подтверждения адреса эл. почты",
 	"abusefilter-edit-builder-vars-recent-contributors": "Последние десять редакторов страницы",
+	"abusefilter-edit-builder-vars-first-contributor": "Первый пользователь, внёсший вклад в страницу",
 	"abusefilter-edit-builder-vars-all-links": "Все внешние ссылки в новом тексте",
 	"abusefilter-edit-builder-vars-added-links": "Все внешние ссылки, добавленные в правке",
 	"abusefilter-edit-builder-vars-removed-links": "Все внешние ссылки, удалённые в правке",

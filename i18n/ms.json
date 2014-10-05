@@ -48,7 +48,7 @@
 	"abusefilter-log-summary": "Log ini menunjukkan senarai bagi semua tindakan yang ditangkap oleh penapis.",
 	"abusefilter-log-search": "Cari dalam log penyalahgunaan",
 	"abusefilter-log-search-user": "Pengguna:",
-	"abusefilter-log-search-filter": "ID penapis:",
+	"abusefilter-log-search-filter": "ID penapis (asingkan dengan tanda paip \"|\"):",
 	"abusefilter-log-search-title": "Tajuk:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Cari",

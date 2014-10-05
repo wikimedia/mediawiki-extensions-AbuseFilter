@@ -280,6 +280,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "Benutzer ist gesperrt",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Zeitpunkt, an dem die E-Mail-Adresse bestätigt wurde",
 	"abusefilter-edit-builder-vars-recent-contributors": "Die letzten zehn Bearbeiter der Seite",
+	"abusefilter-edit-builder-vars-first-contributor": "Erster Autor der Seite",
 	"abusefilter-edit-builder-vars-all-links": "Alle externen Links im neuen Text",
 	"abusefilter-edit-builder-vars-added-links": "Alle durch die Bearbeitung hinzugefügten externen Links",
 	"abusefilter-edit-builder-vars-removed-links": "Alle durch die Bearbeitung entfernten externen Links",
