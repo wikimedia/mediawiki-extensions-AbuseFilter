@@ -286,6 +286,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "Si l'utilisateur est bloqué",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Temps depuis la confirmation de l'adresse courriel",
 	"abusefilter-edit-builder-vars-recent-contributors": "Les dix derniers contributeurs de la page",
+	"abusefilter-edit-builder-vars-first-contributor": "Premier utilisateur à contribuer à cette page",
 	"abusefilter-edit-builder-vars-all-links": "Tous les liens externes dans le nouveau texte",
 	"abusefilter-edit-builder-vars-added-links": "Tous les liens externes ajoutés dans la modification",
 	"abusefilter-edit-builder-vars-removed-links": "Tous les liens externes retirés lors de la modification",

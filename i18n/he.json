@@ -273,6 +273,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "אם המשתמש נחסם",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "התאריך בו אומתה כתובת הדוא\"ל",
 	"abusefilter-edit-builder-vars-recent-contributors": "עשרת התורמים האחרונים לדף",
+	"abusefilter-edit-builder-vars-first-contributor": "המשתמש הראשון שתורם לדף",
 	"abusefilter-edit-builder-vars-all-links": "כל הקישורים החיצוניים בטקסט החדש",
 	"abusefilter-edit-builder-vars-added-links": "כל הקישורים החיצוניים שנוספו בעריכה",
 	"abusefilter-edit-builder-vars-removed-links": "כל הקישורים החיצוניים שהוסרו בעריכה",

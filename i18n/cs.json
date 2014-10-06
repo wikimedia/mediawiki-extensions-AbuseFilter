@@ -269,6 +269,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "Jestli je uživatel zablokovaný",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Čas, kdy byla ověřena e-mailová adresa",
 	"abusefilter-edit-builder-vars-recent-contributors": "Posledních deset uživatelů, kteří editovali příslušnou stránku",
+	"abusefilter-edit-builder-vars-first-contributor": "První autor této stránky",
 	"abusefilter-edit-builder-vars-all-links": "Všechny externí odkazy ve výsledném textu",
 	"abusefilter-edit-builder-vars-added-links": "Všechny externí odkazy přidané při editaci",
 	"abusefilter-edit-builder-vars-removed-links": "Všechny externí odkazy odstraněné při editaci",

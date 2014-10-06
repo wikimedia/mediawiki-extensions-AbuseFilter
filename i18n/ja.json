@@ -275,6 +275,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "利用者がブロックされているかどうか",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "メールアドレスを確認した時刻",
 	"abusefilter-edit-builder-vars-recent-contributors": "直前10人のページへの投稿者",
+	"abusefilter-edit-builder-vars-first-contributor": "ページヘの最初の投稿者",
 	"abusefilter-edit-builder-vars-all-links": "新しい本文中のすべての外部リンク",
 	"abusefilter-edit-builder-vars-added-links": "編集で追加されたすべての外部リンク",
 	"abusefilter-edit-builder-vars-removed-links": "編集で除去されたすべての外部リンク",
