@@ -14,7 +14,8 @@
 			"SamOdin",
 			"Ата",
 			"Тест",
-			"Mykola Swarnyk"
+			"Mykola Swarnyk",
+			"Olion"
 		]
 	},
 	"abusefilter-desc": "Застосовує до редагувань автоматичні евристики.",
@@ -276,6 +277,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "Якщо користувача заблоковано",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Час підтвердження адреси ел. пошти",
 	"abusefilter-edit-builder-vars-recent-contributors": "Останні десять редакторів сторінки",
+	"abusefilter-edit-builder-vars-first-contributor": "Користувач, що створив цю сторінку",
 	"abusefilter-edit-builder-vars-all-links": "Усі зовнішні посилання в новому тексті",
 	"abusefilter-edit-builder-vars-added-links": "Усі зовнішні посилання, додані редагуванням",
 	"abusefilter-edit-builder-vars-removed-links": "Усі зовнішні посилання, вилучені редагуванням",

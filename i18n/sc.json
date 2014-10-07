@@ -19,7 +19,7 @@
 	"abusefilter-log": "Registru de su filtru contra s'abusu",
 	"abusefilter-log-search": "Chirca in su registru de su filtru contra s'abusu",
 	"abusefilter-log-search-user": "Impitadore:",
-	"abusefilter-log-search-filter": "Identidade de su filtru:",
+	"abusefilter-log-search-filter": "ID filtru (separadas dae \"|\"):",
 	"abusefilter-log-search-title": "Tìtulu:",
 	"abusefilter-log-search-submit": "Chirca",
 	"abusefilter-log-detailedentry-global": "filtru globale $1",

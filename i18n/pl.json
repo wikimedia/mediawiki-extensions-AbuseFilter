@@ -19,7 +19,8 @@
 			"Sp5uhe",
 			"Ty221",
 			"Woytecr",
-			"Pan Cube"
+			"Pan Cube",
+			"Vengir"
 		]
 	},
 	"abusefilter-desc": "Zastosowanie automatycznej heurystyki do edycji",
@@ -281,6 +282,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "Czy użytkownik jest zablokowany",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Czas zatwierdzenia adresu e‐mail",
 	"abusefilter-edit-builder-vars-recent-contributors": "Ostatnie dziesięć osób edytujących stronę",
+	"abusefilter-edit-builder-vars-first-contributor": "Pierwszy edytor strony",
 	"abusefilter-edit-builder-vars-all-links": "Wszystkie linki zewnętrzne w nowych tekstach",
 	"abusefilter-edit-builder-vars-added-links": "Wszystkie linki zewnętrzne dodane w edycji",
 	"abusefilter-edit-builder-vars-removed-links": "Wszystkie linki zewnętrzne usunięte w edycji",

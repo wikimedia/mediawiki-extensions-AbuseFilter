@@ -286,6 +286,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "Ifall användaren är blockerad",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Tid e-postadressen blev bekräftad",
 	"abusefilter-edit-builder-vars-recent-contributors": "De senaste tio som bidragit till sidan",
+	"abusefilter-edit-builder-vars-first-contributor": "Första användare att bidra till sidan",
 	"abusefilter-edit-builder-vars-all-links": "Alla externa länkar i den nya texten",
 	"abusefilter-edit-builder-vars-added-links": "Alla externa länkar tillagda i redigeringen",
 	"abusefilter-edit-builder-vars-removed-links": "Alla externa länkar borttagna i redigeringen",

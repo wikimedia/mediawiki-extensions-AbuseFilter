@@ -298,6 +298,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "用户是否被封禁",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "电子邮件地址得到确认的时间",
 	"abusefilter-edit-builder-vars-recent-contributors": "最后十位对该页面贡献的用户",
+	"abusefilter-edit-builder-vars-first-contributor": "贡献页面的第一位用户",
 	"abusefilter-edit-builder-vars-all-links": "新内容中的所有外部链接",
 	"abusefilter-edit-builder-vars-added-links": "新内容中新增的所有外部链接",
 	"abusefilter-edit-builder-vars-removed-links": "新内容中移除的所有外部链接",
