@@ -263,6 +263,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "Si l'usuariu ta bloquiáu",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Data de confirmación de la direición de corréu electrónicu",
 	"abusefilter-edit-builder-vars-recent-contributors": "Últimos diez usuarios en collaboraron na páxina",
+	"abusefilter-edit-builder-vars-first-contributor": "Primer usuariu que collaboró na páxina",
 	"abusefilter-edit-builder-vars-all-links": "Tolos enllaces esternos del nuevu testu",
 	"abusefilter-edit-builder-vars-added-links": "Tolos enllaces esternos amestaos na edición",
 	"abusefilter-edit-builder-vars-removed-links": "Tolos enllaces esternos desaniciaos na edición",
