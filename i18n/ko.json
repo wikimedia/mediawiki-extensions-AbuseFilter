@@ -13,7 +13,8 @@
 			"Priviet",
 			"Yknok29",
 			"관인생략",
-			"아라"
+			"아라",
+			"Revi"
 		]
 	},
 	"abusefilter-desc": "사용자 편집을 규칙에 따라 자동으로 검사합니다",
@@ -271,9 +272,11 @@
 	"abusefilter-edit-builder-vars-user-age": "계정 만든 후 지난 시간",
 	"abusefilter-edit-builder-vars-user-name": "사용자 계정 이름",
 	"abusefilter-edit-builder-vars-user-groups": "사용자 권한 그룹 (자동으로 부여된 권한 포함)",
+	"abusefilter-edit-builder-vars-user-rights": "사용자가 가진 권한",
 	"abusefilter-edit-builder-vars-user-blocked": "사용자의 차단 여부",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "이메일이 인증된 시각",
 	"abusefilter-edit-builder-vars-recent-contributors": "이 문서를 마지막으로 편집한 편집자 10명",
+	"abusefilter-edit-builder-vars-first-contributor": "이 문서에 처음으로 기여한 사용자",
 	"abusefilter-edit-builder-vars-all-links": "바뀐 글에 포함된 모든 바깥 링크",
 	"abusefilter-edit-builder-vars-added-links": "편집 중 추가된 모든 바깥 링크",
 	"abusefilter-edit-builder-vars-removed-links": "편집 중 제거된 모든 바깥 링크",
@@ -402,5 +405,6 @@
 	"abusefilter-diff-next": "다음 바뀜",
 	"abusefilter-import-intro": "이 양식을 통해 다른 위키에서 필터를 가져올 수 있습니다.\n필터가 있는 위키에서 필터 편집 화면의 \"{{int:abusefilter-edit-tools}}\"에서 \"{{int:abusefilter-edit-export}}\"를 클릭하십시오.\n나타나는 글상자의 내용을 복사한 후 붙여넣고, \"{{int:abusefilter-import-submit}}\"를 클릭하십시오.",
 	"abusefilter-import-submit": "데이터 가져오기",
-	"abusefilter-group-default": "기본값"
+	"abusefilter-group-default": "기본값",
+	"abusefilter-http-error": "HTTP 오류가 발생했습니다: $1"
 }
