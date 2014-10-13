@@ -196,6 +196,7 @@
 	"abusefilter-edit-syntaxerr": "S'ha detectat un error de sintaxi: $1",
 	"abusefilter-edit-bad-tags": "Un o més de les etiquetes que heu especificat no és vàlid.\nEtiquetes ha de ser curts, i no ha de contenir caràcters especials.",
 	"abusefilter-edit-notallowed": "No teniu permisos per crear o modificar filtres d'abusos",
+	"abusefilter-edit-notallowed-global": "No teniu permís per crear o editar els filtres d’abusos globals",
 	"abusefilter-edit-builder-select": "Seleccionau una opció per afegir-la al cursor",
 	"abusefilter-edit-builder-group-op-arithmetic": "Operadors aritmètics",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Suma (+)",
