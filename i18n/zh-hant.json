@@ -287,6 +287,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "使用者是否被封鎖",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "電子郵件地址的確認時間",
 	"abusefilter-edit-builder-vars-recent-contributors": "最近十位貢獻給該頁面的使用者",
+	"abusefilter-edit-builder-vars-first-contributor": "貢獻該頁面的第一位使用者",
 	"abusefilter-edit-builder-vars-all-links": "所有一開始加入的外部連結",
 	"abusefilter-edit-builder-vars-added-links": "所有編輯後加入的外部連結",
 	"abusefilter-edit-builder-vars-removed-links": "所有編輯後移除的外部連結",
