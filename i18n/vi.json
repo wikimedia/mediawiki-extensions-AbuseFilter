@@ -264,7 +264,8 @@
 	"abusefilter-edit-builder-vars-user-rights": "Các quyền của người dùng",
 	"abusefilter-edit-builder-vars-user-blocked": "Người dùng bị cấm hay không",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Thời gian kể từ khi địa chỉ thư điện tử được xác nhận",
-	"abusefilter-edit-builder-vars-recent-contributors": "Mười thahf viên cuối đóng góp vào trang",
+	"abusefilter-edit-builder-vars-recent-contributors": "Mười người dùng cuối đóng góp vào trang",
+	"abusefilter-edit-builder-vars-first-contributor": "Người dùng đầu tiên đóng góp vào trang",
 	"abusefilter-edit-builder-vars-all-links": "Tất cả các liên kết ngoài trong nội dung mới thêm vào",
 	"abusefilter-edit-builder-vars-added-links": "Tất cả các liên kết ngoài được thêm trong sửa đổi",
 	"abusefilter-edit-builder-vars-removed-links": "Tất cả các liên kết ngoài bị xóa trong sửa đổi",
@@ -393,5 +394,6 @@
 	"abusefilter-diff-next": "Thay đổi sau",
 	"abusefilter-import-intro": "Trang này để nhập bộ lọc từ wiki khác.\nTại trang sửa đổi của wiki nguồn, hãy bấm “{{int:abusefilter-edit-export}}” dưới đề mục “{{int:abusefilter-edit-tools}}”.\nSau đó, chép văn bản từ hộp sẽ hiện ra, dán nó vào hộp ở đây, và bấm “{{int:abusefilter-import-submit}}”.",
 	"abusefilter-import-submit": "Nhập dữ liệu",
-	"abusefilter-group-default": "Mặc định"
+	"abusefilter-group-default": "Mặc định",
+	"abusefilter-http-error": "Đã xuất hiện lỗi HTTP: $1."
 }
