@@ -60,7 +60,7 @@
 	"abusefilter-log-summary": "Aquest registre mostra una llista de totes les accions detectades pels filtres.",
 	"abusefilter-log-search": "Cerca al registre d'abusos",
 	"abusefilter-log-search-user": "Usuari:",
-	"abusefilter-log-search-filter": "Filtres IDs (separats amb carres verticals):",
+	"abusefilter-log-search-filter": "Filtra ids. (separats amb carres verticals):",
 	"abusefilter-log-search-title": "Títol:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Cerca",
