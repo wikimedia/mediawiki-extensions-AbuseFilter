@@ -288,6 +288,22 @@ class AbuseFilterHooks {
 		return true;
 	}
 
+	public static function onMovePageCheckPermissions( Title $oldTitle, Title $newTitle, User $user, $reason, Status $status ) {
+		$vars = new AbuseFilterVariableHolder;
+		$vars->addHolders(
+			AbuseFilter::generateUserVars( $user ),
+			AbuseFilter::generateTitleVars( $oldTitle, 'MOVED_FROM' ),
+			AbuseFilter::generateTitleVars( $newTitle, 'MOVED_TO' )
+		);
+		$vars->setVar( 'SUMMARY', $reason );
+		$vars->setVar( 'ACTION', 'move' );
+
+		$result = AbuseFilter::filterAction( $vars, $oldTitle );
+		$status->merge( $result );
+
+		return $result->isOK();
+	}
+
 	/**
 	 * @param $oldTitle Title
 	 * @param $newTitle Title
@@ -297,8 +313,6 @@ class AbuseFilterHooks {
 	 * @return bool
 	 */
 	public static function onAbortMove( $oldTitle, $newTitle, $user, &$error, $reason ) {
-		$vars = new AbuseFilterVariableHolder;
-
 		global $wgUser;
 		// HACK: This is a secret userright so system actions
 		// can bypass AbuseFilter. Should not be assigned to
@@ -308,18 +322,13 @@ class AbuseFilterHooks {
 			return true;
 		}
 
-		$vars->addHolders(
-			AbuseFilter::generateUserVars( $wgUser ),
-			AbuseFilter::generateTitleVars( $oldTitle, 'MOVED_FROM' ),
-			AbuseFilter::generateTitleVars( $newTitle, 'MOVED_TO' )
-		);
-		$vars->setVar( 'SUMMARY', $reason );
-		$vars->setVar( 'ACTION', 'move' );
+		$status = new Status();
+		self::onMovePageCheckPermissions( $oldTitle, $newTitle, $wgUser, $reason, $status );
+		if ( !$status->isOK() ) {
+			$error = $status->getHTML();
+		}
 
-		$filter_result = AbuseFilter::filterAction( $vars, $oldTitle );
-
-		$error = $filter_result->isOK() ? '' : $filter_result->getWikiText();
-		return $filter_result->isOK();
+		return $status->isOK();
 	}
 
 	/**

@@ -78,6 +78,7 @@ if ( defined( 'MW_SUPPORTS_CONTENTHANDLER' ) ) {
 
 $wgHooks['GetAutoPromoteGroups'][] = 'AbuseFilterHooks::onGetAutoPromoteGroups';
 $wgHooks['AbortMove'][] = 'AbuseFilterHooks::onAbortMove';
+$wgHooks['MovePageCheckPermissions'][] = 'AbuseFilterHooks::onMovePageCheckPermissions';
 $wgHooks['AbortNewAccount'][] = 'AbuseFilterHooks::onAbortNewAccount';
 $wgHooks['AbortAutoAccount'][] = 'AbuseFilterHooks::onAbortAutoAccount';
 $wgHooks['ArticleDelete'][] = 'AbuseFilterHooks::onArticleDelete';
