@@ -277,6 +277,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "Of de gebruiker geblokkeerd is",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Tijdstip e-mailbevestiging",
 	"abusefilter-edit-builder-vars-recent-contributors": "Laatste tien bewerkers van de pagina",
+	"abusefilter-edit-builder-vars-first-contributor": "Eerste gebruiker die heeft bijgedragen aan de pagina",
 	"abusefilter-edit-builder-vars-all-links": "Alle externe koppelingen in de nieuwe tekst",
 	"abusefilter-edit-builder-vars-added-links": "Alle externe koppelingen die in deze bewerking zijn toegevoegd",
 	"abusefilter-edit-builder-vars-removed-links": "Alle bij deze bewerking toegevoegde externe koppelingen zijn verwijderd",
