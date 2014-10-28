@@ -238,7 +238,9 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 					'newer',
 					'older'
 				),
-				ApiBase::PARAM_DFLT => 'older'
+				ApiBase::PARAM_DFLT => 'older',
+				/** @todo Once support for MediaWiki < 1.25 is dropped, just use ApiBase::PARAM_HELP_MSG directly */
+				constant( 'ApiBase::PARAM_HELP_MSG' ) ?: '' => 'api-help-param-direction',
 			),
 			'user' => null,
 			'title' => null,
@@ -272,6 +274,9 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		);
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getParamDescription() {
 		return array(
 			'start' => 'The timestamp to start enumerating from',
@@ -285,10 +290,16 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		);
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getDescription() {
 		return 'Show events that were caught by one of the abuse filters.';
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getExamples() {
 		return array(
 			'api.php?action=query&list=abuselog',
@@ -296,7 +307,15 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		);
 	}
 
-	public function getVersion() {
-		return __CLASS__ . ': $Id$';
+	/**
+	 * @see ApiBase::getExamplesMessages()
+	 */
+	protected function getExamplesMessages() {
+		return array(
+			'action=query&list=abuselog'
+				=> 'apihelp-query+abuselog-example-1',
+			'action=query&list=abuselog&afltitle=API'
+				=> 'apihelp-query+abuselog-example-2',
+		);
 	}
 }

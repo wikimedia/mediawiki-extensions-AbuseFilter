@@ -164,7 +164,9 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 					'older',
 					'newer'
 				),
-				ApiBase::PARAM_DFLT => 'newer'
+				ApiBase::PARAM_DFLT => 'newer',
+				/** @todo Once support for MediaWiki < 1.25 is dropped, just use ApiBase::PARAM_HELP_MSG directly */
+				constant( 'ApiBase::PARAM_HELP_MSG' ) ?: '' => 'api-help-param-direction',
 			),
 			'show' => array(
 				ApiBase::PARAM_ISMULTI => true,
@@ -203,6 +205,9 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 		);
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getParamDescription() {
 		return array(
 			'startid' => 'The filter id to start enumerating from',
@@ -214,10 +219,16 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 		);
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getDescription() {
 		return 'Show details of the abuse filters.';
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getExamples() {
 		return array(
 			'api.php?action=query&list=abusefilters&abfshow=enabled|!private',
@@ -225,7 +236,15 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 		);
 	}
 
-	public function getVersion() {
-		return __CLASS__ . ': $Id$';
+	/**
+	 * @see ApiBase::getExamplesMessages()
+	 */
+	protected function getExamplesMessages() {
+		return array(
+			'action=query&list=abusefilters&abfshow=enabled|!private'
+				=> 'apihelp-query+abusefilters-example-1',
+			'action=query&list=abusefilters&abfprop=id|description|pattern'
+				=> 'apihelp-query+abusefilters-example-2',
+		);
 	}
 }
