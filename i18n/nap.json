@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chelin"
+			"Chelin",
+			"C.R."
 		]
 	},
+	"abusefilter-desc": "Appreca n'euristica automateca a 'e cagnamiente",
+	"abusefilter": "Configurazion d' 'o filtro anti abbuse",
+	"abuselog": "Riggistro 'e ll'abbuse",
 	"abusefilter-log-search-title": "Titulo:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Truova",
