@@ -34,7 +34,7 @@
 	"abusefilter-autopromote-blocked": "Aquesta acció s'ha identificat automàticament com perjudicial, i ha estat deshabilitat.\nA més a més, com a mesura de seguretat, alguns privilegis concedits habitualment per establir comptes han estat revocats temporalment del seu compte.\nUna breu descripció de la regla de l'abús que coincidien amb la seva acció és:$1",
 	"abusefilter-blocker": "Filtre d'abús",
 	"abusefilter-blockreason": "Blocat automàticament pel filtre d'abús.\nDescripció de la regla aplicada: $1",
-	"abusefilter-degroupreason": "Drets despulla automàticament pel filtre d'abús.\nDescripció de la norma:$1",
+	"abusefilter-degroupreason": "Drets retirats automàticament pel filtre d'abús.\nDescripció de la regla: $1",
 	"abusefilter-accountreserved": "Aquest compte està reservat per al seu ús pel filtre d'abús.",
 	"right-abusefilter-modify": "Modificar els filtres d'abús",
 	"right-abusefilter-view": "Veure filtres d'abús",
@@ -396,7 +396,7 @@
 	"abusefilter-diff-backhistory": "Torna a l'historial del filtre",
 	"abusefilter-diff-prev": "Vell canvi",
 	"abusefilter-diff-next": "Nou canvi",
-	"abusefilter-import-intro": "Vostè pot utilitzar aquesta interfície per filtres d'importació d'altres wikis.\nAl wiki de font, feu clic a \"{{int:abusefilter-Edita-exportació}}\" sota \"{{int:abusefilter-eines-subtítol}}\" en la interfície d'edició.\nCopiï des de quadre de text que apareix i enganxar-lo a aquest quadre de text, a continuació, feu clic a \"{{int:abusefilter-importar-presentar}}\".",
+	"abusefilter-import-intro": "Podeu utilitzar aquesta interfície per importar filtres d'altres wikis.\nEn el wiki d'origen, feu clic a «{{int:abusefilter-edit-export}}» sota «{{int:abusefilter-edit-tools}}» en la interfície d'edició.\nCopieu del quadre de text que apareix i enganxeu-lo a aquest quadre de text, a continuació feu clic a «{{int:abusefilter-import-submit}}».",
 	"abusefilter-import-submit": "Importa dades",
 	"abusefilter-group-default": "Per defecte",
 	"abusefilter-http-error": "S’ha produït un error d’HTTP: $1."
