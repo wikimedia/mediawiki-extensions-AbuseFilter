@@ -79,7 +79,7 @@
 	"abusefilter-log-search-user": "用户：",
 	"abusefilter-log-search-filter": "过滤器ID（以竖线分隔）：",
 	"abusefilter-log-search-title": "标题：",
-	"abusefilter-log-search-wiki": "维基名：",
+	"abusefilter-log-search-wiki": "维基：",
 	"abusefilter-log-search-submit": "搜索",
 	"abusefilter-log-entry": "$1：$2在$4执行操作“$3”时触发了过滤器。采取的行动：$5。过滤器说明：$6",
 	"abusefilter-log-entry-withdiff": "$1：$2在$4执行操作“$3”时触发了过滤器。\n采取的行动：$5；\n过滤器说明：$6（$7）",
