@@ -8,6 +8,8 @@
 	"abusefilter-desc": "Appreca n'euristica automateca a 'e cagnamiente",
 	"abusefilter": "Configurazion d' 'o filtro anti abbuse",
 	"abuselog": "Riggistro 'e ll'abbuse",
+	"abusefilter-intro": "Bemmenuto dint'a l'interfazze 'e gistione 'e filtre anti-abbuse.\n'O filtro abbuse è nu meccanismo software pe' n'apprecà euristeche automateche a tutte l'aziune.\nChist'interfazze fà vedè n'elenco 'e filtre definite, e cunzente a chiste d'essere cagnate.",
+	"abusefilter-mustbeeditor": "Pe mutive 'e sicurezza, sulamente l'utente ch' 'e deritte 'e cagnà 'e filtre abbuse ponno ausà sta nterfazza.",
 	"abusefilter-log-search-title": "Titulo:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Truova",
