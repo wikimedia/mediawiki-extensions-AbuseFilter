@@ -224,7 +224,7 @@
 	"abusefilter-edit-builder-op-comparison-equal": "Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-op-comparison}}.",
 	"abusefilter-edit-builder-op-comparison-notequal": "Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-op-comparison}}.",
 	"abusefilter-edit-builder-op-comparison-lt": "Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-op-comparison}}.\n{{Identical|Less than}}",
-	"abusefilter-edit-builder-op-comparison-gt": "Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-op-comparison}}.",
+	"abusefilter-edit-builder-op-comparison-gt": "Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-op-comparison}}.\n{{Identical|Greater than}}",
 	"abusefilter-edit-builder-op-comparison-lte": "Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-op-comparison}}.",
 	"abusefilter-edit-builder-op-comparison-gte": "Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-op-comparison}}.",
 	"abusefilter-edit-builder-group-op-bool": "Group entry in dropdown menu.",
