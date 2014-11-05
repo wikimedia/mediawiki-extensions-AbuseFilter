@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Pyt",
-			"Snakesteuben"
+			"Snakesteuben",
+			"Robin0van0der0vliet"
 		]
 	},
 	"abusefilter-desc": "Fiert automatyske heuristyske analyse út op bewurkings",
@@ -10,6 +11,8 @@
 	"abusefilter-log-search-user": "Meidogger:",
 	"abusefilter-log-search-submit": "Sykje",
 	"abusefilter-log-noactions": "gjin",
-	"abusefilter-list-edit": "Wizigje",
-	"abusefilter-history-user": "Meidogger"
+	"abusefilter-list-edit": "Bewurkje",
+	"abusefilter-edit-history": "Skiednis:",
+	"abusefilter-history-user": "Meidogger",
+	"abusefilter-examine-submit": "Sykje"
 }
