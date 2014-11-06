@@ -12,6 +12,8 @@
 	"abusefilter-log-search-submit": "Sykje",
 	"abusefilter-log-noactions": "gjin",
 	"abusefilter-list-edit": "Bewurkje",
+	"abusefilter-list-options": "Opsjes",
+	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekonde|sekonden}}",
 	"abusefilter-edit-history": "Skiednis:",
 	"abusefilter-history-user": "Meidogger",
 	"abusefilter-examine-submit": "Sykje"
