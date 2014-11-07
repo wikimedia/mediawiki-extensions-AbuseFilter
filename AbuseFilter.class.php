@@ -429,7 +429,7 @@ class AbuseFilter {
 	 * Returns an associative array of filters which were tripped
 	 *
 	 * @param $vars array
-	 * @param $group string The filter group to check against.
+	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 *
 	 * @return array
 	 */
@@ -848,7 +848,7 @@ class AbuseFilter {
 	/**
 	 * @param $vars AbuseFilterVariableHolder
 	 * @param $title Title
-	 * @param $group string
+	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @return Status
 	 */
 	public static function filterAction( $vars, $title, $group = 'default' ) {
@@ -930,7 +930,7 @@ class AbuseFilter {
 	 * @param $log_template
 	 * @param $action
 	 * @param $vars AbuseFilterVariableHolder
-	 * @param string $group
+	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @return mixed
 	 */
 	public static function addLogEntries( $actions_taken, $log_template, $action, $vars, $group = 'default' ) {
@@ -1537,7 +1537,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $group
+	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @return String
 	 */
 	public static function getGlobalRulesKey( $group ) {
@@ -1566,7 +1566,7 @@ class AbuseFilter {
 	/**
 	 * Update statistics, and disable filters which are over-blocking.
 	 * @param $filters
-	 * @param $group
+	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 */
 	public static function recordStats( $filters, $group = 'default' ) {
 		global $wgAbuseFilterConditionLimit, $wgMemc;
@@ -1607,7 +1607,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $group
+	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @param $filters
 	 * @param $total
 	 */
@@ -1658,7 +1658,7 @@ class AbuseFilter {
 
 	/**
 	 * @param array $emergencyValue
-	 * @param string $group
+	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @return mixed
 	 */
 	public static function getEmergencyValue( array $emergencyValue, $group ) {
@@ -2244,7 +2244,7 @@ class AbuseFilter {
 	/**
 	 * Gives either the user-specified name for a group,
 	 * or spits the input back out
-	 * @param $group String: Internal name of the filter group
+	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @return String A name for that filter group, or the input.
 	 */
 	static function nameGroup($group) {
