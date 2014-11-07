@@ -1585,7 +1585,7 @@ class AbuseFilter {
 		$storage_period = self::$statsStoragePeriod;
 
 		if ( !$total || $total > 10000 ) {
-			// This is for if the total doesn't exist, or has gone past 1000.
+			// This is for if the total doesn't exist, or has gone past 10,000.
 			// Recreate all the keys at the same time, so they expire together.
 			$wgMemc->set( $total_key, 0, $storage_period );
 			$wgMemc->set( $overflow_key, 0, $storage_period );
