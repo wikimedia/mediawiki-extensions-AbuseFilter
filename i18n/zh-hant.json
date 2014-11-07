@@ -285,7 +285,7 @@
 	"abusefilter-edit-builder-vars-user-groups": "群組使用者所在 (含隱含群組)",
 	"abusefilter-edit-builder-vars-user-rights": "使用者擁有的權限",
 	"abusefilter-edit-builder-vars-user-blocked": "使用者是否被封鎖",
-	"abusefilter-edit-builder-vars-user-emailconfirm": "電子郵件地址的確認時間",
+	"abusefilter-edit-builder-vars-user-emailconfirm": "電子郵件位址的確認時間",
 	"abusefilter-edit-builder-vars-recent-contributors": "最近十位貢獻給該頁面的使用者",
 	"abusefilter-edit-builder-vars-first-contributor": "貢獻該頁面的第一位使用者",
 	"abusefilter-edit-builder-vars-all-links": "所有一開始加入的外部連結",
