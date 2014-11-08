@@ -12,7 +12,8 @@
 			"Njardarlogar",
 			"Stigmj",
 			"Cocu",
-			"Jeblad"
+			"Jeblad",
+			"Chameleon222"
 		]
 	},
 	"abusefilter-desc": "Legger automatisk til heuristikk til redigeringer.",
@@ -269,9 +270,11 @@
 	"abusefilter-edit-builder-vars-user-age": "Kontoalder",
 	"abusefilter-edit-builder-vars-user-name": "Kontonavn",
 	"abusefilter-edit-builder-vars-user-groups": "Grupper (inkludert implisitte) bruker er i",
+	"abusefilter-edit-builder-vars-user-rights": "Rettigheter som en bruker har",
 	"abusefilter-edit-builder-vars-user-blocked": "Hvorvidt brukeren er blokkert",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Tid e-postadresse ble bekreftet",
 	"abusefilter-edit-builder-vars-recent-contributors": "De siste ti bidragsyterene til siden",
+	"abusefilter-edit-builder-vars-first-contributor": "Første bidragsyter til siden",
 	"abusefilter-edit-builder-vars-all-links": "Alle eksterne lenker i den nye teksten",
 	"abusefilter-edit-builder-vars-added-links": "Alle eksterne lenker lagt til i endringen",
 	"abusefilter-edit-builder-vars-removed-links": "Alle eksterne lenker fjernet i endringen",
@@ -400,5 +403,6 @@
 	"abusefilter-diff-next": "Nyere endring",
 	"abusefilter-import-intro": "Du kan bruke dette grensesnittet for å importere filtre fra andre wikier.\nI kildewikien klikker du på «{{int:abusefilter-edit-export}}» under «{{int:abusefilter-edit-tools}}» i redigeringsgrensesnittet.\nKopier fra tekstruten som kommer frem og lim inn i denne tekstruten. Klikk så på «{{int:abusefilter-import-submit}}».",
 	"abusefilter-import-submit": "Importer data",
-	"abusefilter-group-default": "Standard"
+	"abusefilter-group-default": "Standard",
+	"abusefilter-http-error": "En HTTP-feil oppstod: $1"
 }
