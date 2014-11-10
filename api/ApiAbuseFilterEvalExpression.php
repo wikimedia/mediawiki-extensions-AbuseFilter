@@ -17,25 +17,40 @@ class ApiAbuseFilterEvalExpression extends ApiBase {
 		);
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getParamDescription() {
 		return array(
 			'expression' => 'The expression to evaluate',
 		);
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getDescription() {
 		return array(
 			'Evaluates an AbuseFilter expression'
 		);
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getExamples() {
 		return array(
 			'api.php?action=abusefilterevalexpression&expression=lcase("FOO")'
 		);
 	}
 
-	public function getVersion() {
-		return __CLASS__ . ': $Id$';
+	/**
+	 * @see ApiBase::getExamplesMessages()
+	 */
+	protected function getExamplesMessages() {
+		return array(
+			'action=abusefilterevalexpression&expression=lcase("FOO")'
+				=> 'apihelp-abusefilterevalexpression-example-1',
+		);
 	}
 }
