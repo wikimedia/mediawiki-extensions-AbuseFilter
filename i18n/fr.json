@@ -25,7 +25,8 @@
 			"VIGNERON",
 			"Verdy p",
 			"Wyz",
-			"Zetud"
+			"Zetud",
+			"Orlodrim"
 		]
 	},
 	"abusefilter-desc": "Applique des heuristiques automatiques aux modifications",
@@ -416,5 +417,29 @@
 	"abusefilter-import-intro": "Vous pouvez utiliser cette interface pour importer des filtres en provenance d'autres wikis.\nSur le wiki d'origine, cliquez sur « {{int:abusefilter-edit-export}} » dans « {{int:abusefilter-edit-tools}} » depuis l'interface d'édition.\nCopiez la zone de texte qui s'affiche et collez-le dans cette zone de texte, puis cliquez sur « {{int:abusefilter-import-submit}} »,",
 	"abusefilter-import-submit": "Importer des données",
 	"abusefilter-group-default": "Par défaut",
-	"abusefilter-http-error": "Une erreur HTTP s’est produite : $1."
+	"abusefilter-http-error": "Une erreur HTTP s’est produite : $1.",
+	"apihelp-abusefiltercheckmatch-param-rcid": "ID de la modification récente sur laquelle tester le filtre.",
+	"apihelp-abusefiltercheckmatch-param-logid": "ID de l’entrée du journal du filtre antiabus sur laquelle tester le filtre.",
+	"apihelp-abusefiltercheckmatch-example-1": "Vérifie si la modification récente d'ID 15 est détectée par un filtre simple",
+	"apihelp-abusefilterchecksyntax-description": "Vérifier la syntaxe d’un filtre antiabus.",
+	"apihelp-abusefilterchecksyntax-param-filter": "Le texte complet du filtre dont la syntaxe doit être vérifiée.",
+	"apihelp-abusefilterchecksyntax-example-1": "Vérifier la syntaxe d'un filtre valide",
+	"apihelp-abusefilterchecksyntax-example-2": "Vérifier la syntaxe d'un filtre invalide",
+	"apihelp-abusefilterevalexpression-description": "Évalue une expression du filtre antiabus.",
+	"apihelp-abusefilterevalexpression-param-expression": "L'expression à évaluer.",
+	"apihelp-abusefilterevalexpression-example-1": "Évaluer une expression simple",
+	"apihelp-abusefilterunblockautopromote-description": "Annule le blocage par un filtre antiabus des promotions automatiques de statut d’un utilisateur.",
+	"apihelp-abusefilterunblockautopromote-param-user": "Nom de l'utilisateur à débloquer.",
+	"apihelp-abusefilterunblockautopromote-example-1": "Supprime le blocage des promotions automatiques de statut pour [[User:Example]]",
+	"apihelp-query+abusefilters-description": "Afficher les détails des filtres antiabus.",
+	"apihelp-query+abusefilters-param-startid": "Numéro de filtre auquel commencer l’énumération.",
+	"apihelp-query+abusefilters-param-endid": "Numéro de filtre auquel terminer l’énumération.",
+	"apihelp-query+abusefilters-param-show": "Afficher seulement les filtres correspondant à ces critères.",
+	"apihelp-query+abusefilters-param-limit": "Le nombre maximum de filtres à renvoyer.",
+	"apihelp-query+abusefilters-param-prop": "Quelles propriétés obtenir.",
+	"apihelp-query+abusefilters-example-1": "Afficher les filtres publics activés.",
+	"apihelp-query+abusefilters-example-2": "Afficher certains détails sur les filtres.",
+	"apihelp-query+abuselog-description": "Afficher les événements détectés par l’un des filtres antiabus.",
+	"apihelp-query+abuselog-param-start": "L’horodatage auquel commencer l’énumération.",
+	"apihelp-query+abuselog-param-end": "L’horodatage auquel terminer l’énumération."
 }

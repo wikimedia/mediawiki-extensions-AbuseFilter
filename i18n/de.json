@@ -410,5 +410,6 @@
 	"abusefilter-import-intro": "Du kannst diese Schnittstelle verwenden, um Filter aus anderen Wikis zu importieren.\nKlicke im Quellwiki auf die Schaltfläche „{{int:abusefilter-edit-export}}“ innerhalb von „{{int:abusefilter-edit-tools}}“.\nKopiere den dort erscheinenden Code, füge ihn hier ein und klicke dann auf die Schaltfläche „{{int:abusefilter-import-submit}}“.",
 	"abusefilter-import-submit": "Daten importieren",
 	"abusefilter-group-default": "Standard",
-	"abusefilter-http-error": "Ein HTTP-Fehler ist aufgetreten: $1."
+	"abusefilter-http-error": "Ein HTTP-Fehler ist aufgetreten: $1.",
+	"apihelp-query+abusefilters-example-1": "Aktivierte öffentliche Filter auflisten"
 }
