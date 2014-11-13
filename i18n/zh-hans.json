@@ -428,5 +428,8 @@
 	"abusefilter-import-intro": "您可以使用本界面来导入其他wiki的过滤器。在来源处点击过滤器编辑界面处“{{int:abusefilter-edit-tools}}”下的“{{int:abusefilter-edit-export}}”。复制随后出现的文本框中的内容，并粘贴至下方的文本框中，并点击“{{int:abusefilter-import-submit}}”。",
 	"abusefilter-import-submit": "导入数据",
 	"abusefilter-group-default": "默认",
-	"abusefilter-http-error": "发生一个HTTP错误：$1。"
+	"abusefilter-http-error": "发生一个HTTP错误：$1。",
+	"apihelp-query+abuselog-param-prop": "要获得的属性。",
+	"apihelp-query+abuselog-example-1": "显示最近日志记录",
+	"apihelp-query+abuselog-example-2": "显示[[API]]的最近日志记录"
 }
