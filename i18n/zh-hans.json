@@ -429,6 +429,11 @@
 	"abusefilter-import-submit": "导入数据",
 	"abusefilter-group-default": "默认",
 	"abusefilter-http-error": "发生一个HTTP错误：$1。",
+	"apihelp-abusefilterevalexpression-param-expression": "要评估的表达式。",
+	"apihelp-abusefilterevalexpression-example-1": "评估一个简单的表达式",
+	"apihelp-abusefilterunblockautopromote-param-user": "您希望解封的用户的用户名。",
+	"apihelp-abusefilterunblockautopromote-example-1": "移除对[[User:Example]]的自动提升封禁",
+	"apihelp-query+abusefilters-param-prop": "要获取的属性。",
 	"apihelp-query+abuselog-param-prop": "要获得的属性。",
 	"apihelp-query+abuselog-example-1": "显示最近日志记录",
 	"apihelp-query+abuselog-example-2": "显示[[API]]的最近日志记录"
