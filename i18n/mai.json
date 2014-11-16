@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vinitutpal"
+			"Vinitutpal",
+			"बिप्लब आनन्द"
 		]
 	},
+	"abuselog": "दुरुपयोग लग",
 	"abusefilter-blocker": "फिल्टरक दुरुपयोग",
 	"right-abusefilter-modify": "ख़राब फ़िल्टर के ठीक करू",
 	"right-abusefilter-view": "ख़राब फ़िल्टर के देखू",

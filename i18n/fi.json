@@ -277,7 +277,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "Onko käyttäjä estetty",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Sähköpostiosoite vahvistettiin",
 	"abusefilter-edit-builder-vars-recent-contributors": "Sivun viimeisimmät kymmenen muokkaajaa",
-	"abusefilter-edit-builder-vars-first-contributor": "Ensimmäinen käyttäjä, joka on muokannut sivua",
+	"abusefilter-edit-builder-vars-first-contributor": "Sivun ensimmäinen muokkaaja",
 	"abusefilter-edit-builder-vars-all-links": "Kaikki ulkoiset linkit uudessa tekstissä",
 	"abusefilter-edit-builder-vars-added-links": "Kaikki muokkauksessa lisätyt ulkoiset linkit",
 	"abusefilter-edit-builder-vars-removed-links": "Kaikki muokkauksessa poistetut ulkoiset linkit",
