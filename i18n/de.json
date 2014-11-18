@@ -411,5 +411,6 @@
 	"abusefilter-import-submit": "Daten importieren",
 	"abusefilter-group-default": "Standard",
 	"abusefilter-http-error": "Ein HTTP-Fehler ist aufgetreten: $1.",
+	"apihelp-query+abusefilters-param-limit": "Die maximale Anzahl aufzulistender Filter.",
 	"apihelp-query+abusefilters-example-1": "Aktivierte öffentliche Filter auflisten"
 }
