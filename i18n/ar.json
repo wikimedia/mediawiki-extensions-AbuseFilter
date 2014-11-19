@@ -277,6 +277,7 @@
 	"abusefilter-edit-builder-vars-user-age": "عمر حساب المستخدم",
 	"abusefilter-edit-builder-vars-user-name": "اسم حساب المستخدم",
 	"abusefilter-edit-builder-vars-user-groups": "المجموعات (متضمنة غير المباشرة) التي المستخدم فيها",
+	"abusefilter-edit-builder-vars-user-rights": "الصلاحيات التي يمتلكها المستخدم",
 	"abusefilter-edit-builder-vars-user-blocked": "ما إذا كان المستخدم ممنوعاً",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "وقت تأكيد عنوان البريد الإلكتروني",
 	"abusefilter-edit-builder-vars-recent-contributors": "آخر خمسة مساهمين في الصفحة",
