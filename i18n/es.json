@@ -427,5 +427,13 @@
 	"abusefilter-import-intro": "Puedes usar esta interfaz para importar filtros de otros wikis.\nEn el wiki fuente, pulsa en «{{int:abusefilter-edit-export}}» bajo «{{int:abusefilter-edit-tools}}» en la interfaz de edición.\nCopia desde el cuadro de texto que aparece, y pégalo dentro de este cuadro de texto, luego pulsa en «{{int:abusefilter-import-submit}}».",
 	"abusefilter-import-submit": "Importar datos",
 	"abusefilter-group-default": "Predeterminado",
-	"abusefilter-http-error": "Se produjo un error de HTTP: $1."
+	"abusefilter-http-error": "Se produjo un error de HTTP: $1.",
+	"apihelp-query+abusefilters-param-show": "Sólo mostrar los filtros que cumplan con estos criterios.",
+	"apihelp-query+abusefilters-param-limit": "El número máximo de filtros a listar.",
+	"apihelp-query+abusefilters-param-prop": "Qué propiedades obtener",
+	"apihelp-query+abusefilters-example-1": "Listar los filtros públicos habilitados",
+	"apihelp-query+abusefilters-example-2": "Mostrar algunos detalles acerca de los filtros",
+	"apihelp-query+abuselog-description": "Mostrar eventos que fueron detectados por uno de los filtros antiabusos.",
+	"apihelp-query+abuselog-param-start": "El sello de tiempo para comenzar la enumeración",
+	"apihelp-query+abuselog-example-2": "Mostrar entradas recientes del registro para [[API]]"
 }
