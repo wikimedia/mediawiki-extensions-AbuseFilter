@@ -368,6 +368,10 @@
 	"abusefilter-diff-pattern": "Kondizzjonijiet tal-filtru",
 	"abusefilter-diff-invalid": "Ma setgħux jittelgħu l-verżjoni rikjesti",
 	"abusefilter-diff-backhistory": "Lura għall-kronoloġija tal-filtru",
+	"abusefilter-diff-prev": "Bidla ta' qabel",
+	"abusefilter-diff-next": "Bidla ta' wara",
 	"abusefilter-import-intro": "Inti tista' tuża din l-interfaċċa sabiex timporta filtri minn wikis oħrajn.\nFuq il-wiki fejn jinsab is-sors, iklikkja \"{{int:abusefilter-edit-export}}\" taħt \"{{int:abusefilter-edit-tools}}\" fuq l-interfaċċa tal-immodifikar.\nIkkopja mill-kaxxa li tidher u itfagħha f'din il-kaxxa, u imbagħad iklikkja \"{{int:abusefilter-import-submit}}\".",
-	"abusefilter-import-submit": "Importa informazzjoni"
+	"abusefilter-import-submit": "Importa informazzjoni",
+	"abusefilter-group-default": "Predefinit",
+	"abusefilter-http-error": "Sar żball tal-HTTP: $1"
 }
