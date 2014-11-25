@@ -271,7 +271,7 @@
 	"abusefilter-topnav-tools": "Дұрыстау құралдары",
 	"abusefilter-topnav-import": "Сүзгішті импорттау",
 	"abusefilter-log-name": "Қиянаттауды сүзгілеу журналы",
-	"abusefilter-log-entry-modify": "$1 өзгерілді ($2)",
+	"abusefilter-log-entry-modify": "$1 өзгерті ($2)",
 	"abusefilter-log-noresults": "Нәтиже жоқ",
 	"abusefilter-diff-title": "Түзетулер арасындағы айырмашылық",
 	"abusefilter-diff-item": "Дана",
