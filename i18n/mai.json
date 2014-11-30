@@ -7,6 +7,7 @@
 	},
 	"abuselog": "दुरुपयोग लग",
 	"abusefilter-blocker": "फिल्टरक दुरुपयोग",
+	"abusefilter-accountreserved": "ई प्रयोक्ता नाम दुरुपयोग फिल्टर के उपयोग के लेल आरक्षित अछि।",
 	"right-abusefilter-modify": "ख़राब फ़िल्टर के ठीक करू",
 	"right-abusefilter-view": "ख़राब फ़िल्टर के देखू",
 	"abusefilter-log-search-user": "प्रयोक्ता",
