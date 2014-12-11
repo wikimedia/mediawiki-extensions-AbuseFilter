@@ -418,6 +418,9 @@
 	"abusefilter-import-submit": "Importer des données",
 	"abusefilter-group-default": "Par défaut",
 	"abusefilter-http-error": "Une erreur HTTP s’est produite : $1.",
+	"apihelp-abusefiltercheckmatch-description": "Cocher pour voir si un AbuseFilter correspond à un ensemble de variables, événement AbuseFilter tracé par l’éditeur.\n\nvars, rcid ou logid est obligatoire, mais un seul d’entre eux doit être utilisé.",
+	"apihelp-abusefiltercheckmatch-param-filter": "Le texte complet du filtre pour vérifier une correspondance.",
+	"apihelp-abusefiltercheckmatch-param-vars": "Tableau JSON encodé de variables à tester.",
 	"apihelp-abusefiltercheckmatch-param-rcid": "ID de la modification récente sur laquelle tester le filtre.",
 	"apihelp-abusefiltercheckmatch-param-logid": "ID de l’entrée du journal du filtre antiabus sur laquelle tester le filtre.",
 	"apihelp-abusefiltercheckmatch-example-1": "Vérifie si la modification récente d’ID 15 est détectée par un filtre simple",
@@ -441,5 +444,12 @@
 	"apihelp-query+abusefilters-example-2": "Afficher certains détails sur les filtres.",
 	"apihelp-query+abuselog-description": "Afficher les événements détectés par l’un des filtres antiabus.",
 	"apihelp-query+abuselog-param-start": "L’horodatage auquel commencer l’énumération.",
-	"apihelp-query+abuselog-param-end": "L’horodatage auquel terminer l’énumération."
+	"apihelp-query+abuselog-param-end": "L’horodatage auquel terminer l’énumération.",
+	"apihelp-query+abuselog-param-user": "Afficher uniquement les entrées faites par un utilisateur ou une adresse IP donné.",
+	"apihelp-query+abuselog-param-title": "Afficher uniquement les entrées se produisant sur une page donnée.",
+	"apihelp-query+abuselog-param-filter": "Afficher uniquement les entrées capturées par un ID de filtre donné.",
+	"apihelp-query+abuselog-param-limit": "Le nombre maximal d’entrées à liter.",
+	"apihelp-query+abuselog-param-prop": "Quelles propriétés obtenir.",
+	"apihelp-query+abuselog-example-1": "Afficher les entrées récentes du journal",
+	"apihelp-query+abuselog-example-2": "Afficher les entrées récentes du journal pour [[API]]"
 }

@@ -376,7 +376,7 @@
 	"abusefilter-log-noresults": "Nincs találat",
 	"abusefilter-diff-title": "Változatok közötti különbségek",
 	"abusefilter-diff-item": "Tétel",
-	"abusefilter-diff-version": "$2 változata ($1)",
+	"abusefilter-diff-version": "$2 {{GENDER:$3|változata}} ($1)",
 	"abusefilter-diff-info": "Alapvető információk",
 	"abusefilter-diff-pattern": "Szűrő feltételek",
 	"abusefilter-diff-invalid": "A kért változatokat nem lehet beolvasni",

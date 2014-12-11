@@ -428,5 +428,5 @@
 	"apihelp-query+abuselog-param-limit": "Макс. број на ставки во исписот.",
 	"apihelp-query+abuselog-param-prop": "Кои својства да се дадат.",
 	"apihelp-query+abuselog-example-1": "Прикажи ги скорешните дневнички ставки",
-	"apihelp-query+abuselog-example-2": "Прикажи ги скорешните дневнички ставки за [[API|прилогот]] (API)"
+	"apihelp-query+abuselog-example-2": "Прикажи ги скорешните дневнички ставки за [[API|извршникот]] (API)"
 }
