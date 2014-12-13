@@ -429,6 +429,7 @@
 	"abusefilter-import-submit": "导入数据",
 	"abusefilter-group-default": "默认",
 	"abusefilter-http-error": "发生一个HTTP错误：$1。",
+	"apihelp-abusefiltercheckmatch-param-logid": "用以检查的滥用过滤器日志ID。",
 	"apihelp-abusefiltercheckmatch-example-1": "测试最近更改ID15是否匹配简单过滤器",
 	"apihelp-abusefilterevalexpression-param-expression": "要评估的表达式。",
 	"apihelp-abusefilterevalexpression-example-1": "评估一个简单的表达式",
