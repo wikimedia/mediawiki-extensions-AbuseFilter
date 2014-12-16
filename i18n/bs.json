@@ -47,7 +47,7 @@
 	"abusefilter-log-summary": "Ovaj zapisnik prikazuje spisak svih akcija koje su zadržali filteri.",
 	"abusefilter-log-search": "Pretraži log zloupotrebe",
 	"abusefilter-log-search-user": "Korisnik:",
-	"abusefilter-log-search-filter": "Filtriraj ID:",
+	"abusefilter-log-search-filter": "Filtriraj ID-ove (odvoji sa cijevima):",
 	"abusefilter-log-search-title": "Naslov:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Traži",
@@ -233,6 +233,7 @@
 	"abusefilter-edit-builder-funcs-substr": "Podznakovi (substr)",
 	"abusefilter-edit-builder-funcs-strpos": "Pozicija podgrupe unutar grupe znakova (strpos)",
 	"abusefilter-edit-builder-funcs-str_replace": "Zamijeni podznakove sa znakovima (str_replace)",
+	"abusefilter-edit-builder-funcs-rescape": "Izbjegni doslovne niske u regexu (rescape)",
 	"abusefilter-edit-builder-funcs-set_var": "Postavi varijable (set_var)",
 	"abusefilter-edit-builder-group-vars": "Promijenjive",
 	"abusefilter-edit-builder-vars-accountname": "Broj računa (on account creation)",
@@ -262,6 +263,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Starost korisničkog računa",
 	"abusefilter-edit-builder-vars-user-name": "Ime korisničkog računa",
 	"abusefilter-edit-builder-vars-user-groups": "Grupiraj (including implicit) korisnike u",
+	"abusefilter-edit-builder-vars-user-rights": "Prava koja korisnik ima",
 	"abusefilter-edit-builder-vars-user-blocked": "Da li je korisnik blokiran",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Vrijeme u kojem je e-mail adresa bila potvrđena",
 	"abusefilter-edit-builder-vars-recent-contributors": "Posljednjih pet urednika stranice",
@@ -340,7 +342,7 @@
 	"abusefilter-revert-reason": "Automatskp vraćanje svih akcija koje je načinio filter zloupotreba zbog filtera $1.\nNavedeni razlog: $2",
 	"abusefilter-revert-reasonfield": "Razlog:",
 	"abusefilter-test": "Testiraj filter protiv ranijih izmjena",
-	"abusefilter-test-intro": "Ova stranica Vam omogućuje da provjerite filter koji je unesen u kutiju ispod protiv {{PLURAL:$1|zadnje $1 izmjene|zadnje $1 izmjene|zadnjih $1 izmjena}}. Da napunite postojeći filter, unesite filter ID u kutiju ispod kutije za uređivanje i pritisnite dugme \"Napuni\".",
+	"abusefilter-test-intro": "Ova stranica Vam omogućava da provjerite filter koji je unesen u kutiju ispod protiv {{PLURAL:$1|zadnje $1 izmjene|zadnje $1 izmjene|zadnjih $1 izmjena}}. Da napunite postojeći filter, unesite filter ID u kutiju ispod kutije za uređivanje i pritisnite dugme \"Napuni\".",
 	"abusefilter-test-legend": "Testiranje filtera",
 	"abusefilter-test-load-filter": "Učitaj filter ID:",
 	"abusefilter-test-submit": "Testiraj",
@@ -390,5 +392,6 @@
 	"abusefilter-diff-next": "Novije uređivanje",
 	"abusefilter-import-intro": "Možete koristiti ovaj interfejs za uvoz filtera sa drugih wikija.\nU izvornoj wiki, kliknite na \"{{int:abusefilter-edit-export}}\" u meniju \"{{int:abusefilter-edit-tools}}\" u interfejsu uređivanja.\nKopirajte iz tekstualne kutije koja se pojavi i zalijepite u ovu kutiju, zatim kliknite na \"{{int:abusefilter-import-submit}}\",",
 	"abusefilter-import-submit": "Uvezi podatke",
-	"abusefilter-group-default": "Standardno"
+	"abusefilter-group-default": "Standardno",
+	"abusefilter-http-error": "Pojavila se HTTP greška: $1."
 }
