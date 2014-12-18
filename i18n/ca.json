@@ -177,7 +177,7 @@
 	"abusefilter-edit-warn-other-label": "Nom de la pàgina d'altres missatge:\n: ' (sense prefix MediaWiki) '",
 	"abusefilter-edit-warn-actions": "Accions:",
 	"abusefilter-edit-warn-preview": "Previsualitza el missatge seleccionat",
-	"abusefilter-edit-warn-edit": "Creau/Editau el missatge seleccionat",
+	"abusefilter-edit-warn-edit": "Crea o modifica el missatge seleccionat",
 	"abusefilter-edit-tag-tag": "Etiquetes a aplicar (una per línia):",
 	"abusefilter-edit-denied": "No podeu veure els detalls d'aquest filtre ja que està restringit el seu accés públic.",
 	"abusefilter-edit-main": "Paràmetres de filtre",

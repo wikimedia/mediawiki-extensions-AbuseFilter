@@ -391,7 +391,7 @@
 	"abusefilter-changeslist-examine": "检查",
 	"abusefilter-examine": "检查单独更改",
 	"abusefilter-examine-intro": "本页面允许您检查防滥用过滤器根据某次单独更改所生成的变量，并使用过滤器进行测试。",
-	"abusefilter-examine-legend": "选择更改：",
+	"abusefilter-examine-legend": "选择更改",
 	"abusefilter-examine-diff": "URL差异：",
 	"abusefilter-examine-user": "用户：",
 	"abusefilter-examine-title": "页面名称：",

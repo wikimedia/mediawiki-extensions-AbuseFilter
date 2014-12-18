@@ -416,5 +416,10 @@
 	"abusefilter-import-intro": "Du kan använda detta gränssnitt till att importera filter från andra wikier.\nI källwikin klickar du på \"{{int:abusefilter-edit-export}}\" under \"{{int:abusefilter-edit-tools}}\" i redigeringsgränsnittet.\nKopiera från textrutan som kommer fram och klistra in det till denna ruta. Klicka sedan på \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "Importera data",
 	"abusefilter-group-default": "Standard",
-	"abusefilter-http-error": "Ett HTTP-fel uppstod: $1."
+	"abusefilter-http-error": "Ett HTTP-fel uppstod: $1.",
+	"apihelp-abusefilterchecksyntax-example-1": "Kontrollera syntax för ett giltigt filter",
+	"apihelp-abusefilterchecksyntax-example-2": "Kontrollera syntax för ett ogiltigt filter",
+	"apihelp-abusefilterevalexpression-description": "Utvärdera ett AbuseFilter-uttryck.",
+	"apihelp-abusefilterevalexpression-param-expression": "Uttrycket att utvärdera.",
+	"apihelp-query+abuselog-param-prop": "Vilka egenskaper att hämta."
 }
