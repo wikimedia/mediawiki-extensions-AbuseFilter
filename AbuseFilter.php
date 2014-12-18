@@ -32,24 +32,35 @@ $wgAutoloadClasses['AbuseFilter'] = "$dir/AbuseFilter.class.php";
 $wgAutoloadClasses['AbuseFilterParser'] = "$dir/AbuseFilter.parser.php";
 $wgAutoloadClasses['AbuseFilterHooks'] = "$dir/AbuseFilter.hooks.php";
 $wgAutoloadClasses['SpecialAbuseLog'] = "$dir/special/SpecialAbuseLog.php";
+$wgAutoloadClasses['AbuseLogPager'] = "$dir/special/SpecialAbuseLog.php";
 $wgAutoloadClasses['SpecialAbuseFilter'] = "$dir/special/SpecialAbuseFilter.php";
 $wgAutoloadClasses['AbuseLogHitFormatter'] = "$dir/AbuseLogHitFormatter.php";
 
 $wgAutoloadClasses['AbuseFilterViewList'] = "$dir/Views/AbuseFilterViewList.php";
+$wgAutoloadClasses['AbuseFilterPager'] = "$dir/Views/AbuseFilterViewList.php";
+$wgAutoloadClasses['GlobalAbuseFilterPager'] = "$dir/Views/AbuseFilterViewList.php";
 $wgAutoloadClasses['AbuseFilterView'] = "$dir/Views/AbuseFilterView.php";
 $wgAutoloadClasses['AbuseFilterViewEdit'] = "$dir/Views/AbuseFilterViewEdit.php";
 $wgAutoloadClasses['AbuseFilterViewTools'] = "$dir/Views/AbuseFilterViewTools.php";
 $wgAutoloadClasses['AbuseFilterViewHistory'] = "$dir/Views/AbuseFilterViewHistory.php";
+$wgAutoloadClasses['AbuseFilterHistoryPager'] = "$dir/Views/AbuseFilterViewHistory.php";
 $wgAutoloadClasses['AbuseFilterViewRevert'] = "$dir/Views/AbuseFilterViewRevert.php";
 $wgAutoloadClasses['AbuseFilterViewTestBatch'] = "$dir/Views/AbuseFilterViewTestBatch.php";
 $wgAutoloadClasses['AbuseFilterViewExamine'] = "$dir/Views/AbuseFilterViewExamine.php";
-$wgAutoloadClasses['AbuseFilterChangesList'] = "$dir/Views/AbuseFilterViewExamine.php";
+$wgAutoloadClasses['AbuseFilterExaminePager'] = "$dir/Views/AbuseFilterViewExamine.php";
+$wgAutoloadClasses['AbuseFilterChangesList'] = "$dir/Views/AbuseFilterView.php";
 $wgAutoloadClasses['AbuseFilterViewDiff'] = "$dir/Views/AbuseFilterViewDiff.php";
+$wgAutoloadClasses['TableDiffFormatterFullContext'] = "$dir/Views/AbuseFilterViewDiff.php";
 $wgAutoloadClasses['AbuseFilterViewImport'] = "$dir/Views/AbuseFilterViewImport.php";
 
 $wgAutoloadClasses['AbuseFilterVariableHolder'] = "$dir/AbuseFilterVariableHolder.php";
 $wgAutoloadClasses['AFComputedVariable'] = "$dir/AbuseFilterVariableHolder.php";
 $wgAutoloadClasses['AFPData'] = "$dir/AbuseFilter.parser.php";
+$wgAutoloadClasses['AFPException'] = "$dir/AbuseFilter.parser.php";
+$wgAutoloadClasses['AFPParserState'] = "$dir/AbuseFilter.parser.php";
+$wgAutoloadClasses['AFPRegexErrorHandler'] = "$dir/AbuseFilter.parser.php";
+$wgAutoloadClasses['AFPToken'] = "$dir/AbuseFilter.parser.php";
+$wgAutoloadClasses['AFPUserVisibleException'] = "$dir/AbuseFilter.parser.php";
 
 $wgSpecialPages['AbuseLog'] = 'SpecialAbuseLog';
 $wgSpecialPages['AbuseFilter'] = 'SpecialAbuseFilter';
