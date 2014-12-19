@@ -263,6 +263,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "Se o usuario está ou non bloqueado",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Data de confirmación do enderezo de correo electrónico",
 	"abusefilter-edit-builder-vars-recent-contributors": "Os últimos dez editores do artigo",
+	"abusefilter-edit-builder-vars-first-contributor": "Primeiro editor en editar a páxina",
 	"abusefilter-edit-builder-vars-all-links": "Todas as ligazóns externas do novo texto",
 	"abusefilter-edit-builder-vars-added-links": "Todas as ligazóns externas engadidas na edición",
 	"abusefilter-edit-builder-vars-removed-links": "Todas as ligazóns externas eliminadas na edición",
@@ -392,5 +393,6 @@
 	"abusefilter-import-intro": "Pode empregar esta interface para importar filtros doutros wikis.\nNo wiki de orixe, prema en \"{{int:abusefilter-edit-export}}\" baixo a opción \"{{int:abusefilter-edit-tools}}\" na interface de edición.\nCopie a caixa de texto que aparece e péguea nestoutra caixa de texto, logo prema en \"{{int:abusefilter-import-submit}}\",",
 	"abusefilter-import-submit": "Importar os datos",
 	"abusefilter-group-default": "Predeterminado",
-	"abusefilter-http-error": "Produciuse un erro HTTP: $1"
+	"abusefilter-http-error": "Produciuse un erro HTTP: $1",
+	"apihelp-abusefiltercheckmatch-description": "Revise se un AbuseFilter concorda cun conxunto de variables, evento de rexistro de editor AbuseFilter.\n\nvars, rcid ou logid se necesita aínda que só un pode ser usado."
 }
