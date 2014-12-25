@@ -229,7 +229,11 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 
 		if ( $this->mSearchWiki ) {
-			$conds['afl_wiki'] = $this->mSearchWiki;
+			if ( $this->mSearchWiki == wfWikiID() ) {
+				$conds['afl_wiki'] = null;
+			} else {
+				$conds['afl_wiki'] = $this->mSearchWiki;
+			}
 		}
 
 		if ( $this->mSearchFilter ) {
