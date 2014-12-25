@@ -83,7 +83,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			// Add a button down the bottom.
 			$confirmForm =
 				Html::hidden( 'editToken', $user->getEditToken( "abusefilter-revert-$filter" ) ) .
-				Html::hidden( 'title', $this->getTitle( "revert/$filter" )->getPrefixedText() ) .
+				Html::hidden( 'title', $this->getTitle( "revert/$filter" )->getPrefixedDBkey() ) .
 				Html::hidden( 'wpPeriodStart', $this->origPeriodStart ) .
 				Html::hidden( 'wpPeriodEnd', $this->origPeriodEnd ) .
 				Xml::inputLabel(

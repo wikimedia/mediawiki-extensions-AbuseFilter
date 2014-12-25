@@ -40,7 +40,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 
 		$selector .= Xml::buildForm( $selectFields, 'abusefilter-examine-submit' );
 		$selector .= Html::hidden( 'submit', 1 );
-		$selector .= Html::hidden( 'title', $this->getTitle( 'examine' )->getPrefixedText() );
+		$selector .= Html::hidden( 'title', $this->getTitle( 'examine' )->getPrefixedDBkey() );
 		$selector = Xml::tags( 'form',
 			array(
 				'action' => $this->getTitle( 'examine' )->getLocalURL(),

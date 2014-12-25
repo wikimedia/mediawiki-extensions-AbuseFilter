@@ -126,7 +126,8 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$output .= Xml::tags( 'form',
 			array( 'method' => 'get', 'action' => $this->getPageTitle()->getLocalURL() ),
-			Xml::buildForm( $fields, 'abusefilter-log-search-submit' )
+			Xml::buildForm( $fields, 'abusefilter-log-search-submit' ) .
+			Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() )
 		);
 		$output = Xml::tags( 'fieldset', null, $output );
 

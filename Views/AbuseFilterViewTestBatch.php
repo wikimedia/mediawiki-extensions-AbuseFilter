@@ -60,7 +60,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$output .= Xml::buildForm( $selectFields, 'abusefilter-test-submit' );
 
-		$output .= Html::hidden( 'title', $this->getTitle( 'test' )->getPrefixedText() );
+		$output .= Html::hidden( 'title', $this->getTitle( 'test' )->getPrefixedDBkey() );
 		$output = Xml::tags( 'form',
 			array(
 				'action' => $this->getTitle( 'test' )->getLocalURL(),

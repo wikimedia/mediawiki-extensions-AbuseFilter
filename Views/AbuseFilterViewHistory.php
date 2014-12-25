@@ -53,7 +53,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		$fields['abusefilter-history-select-user'] = Xml::input( 'user', 45, $user );
 
 		$filterForm = Xml::buildForm( $fields, 'abusefilter-history-select-submit' );
-		$filterForm .= "\n" . Html::hidden( 'title', $this->getTitle( "history/$filter" ) );
+		$filterForm .= "\n" . Html::hidden( 'title', $this->getTitle( "history/$filter" )->getPrefixedDBkey() );
 		$filterForm = Xml::tags( 'form',
 			array(
 				'action' => $this->getTitle( "history/$filter" )->getLocalURL(),

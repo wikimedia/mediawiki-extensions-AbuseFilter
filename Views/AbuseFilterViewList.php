@@ -112,7 +112,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$fields['abusefilter-list-limit'] = $pager->getLimitSelect();
 
 		$options = Xml::buildForm( $fields, 'abusefilter-list-options-submit' );
-		$options .= Html::hidden( 'title', $this->getTitle()->getPrefixedText() );
+		$options .= Html::hidden( 'title', $this->getTitle()->getPrefixedDBkey() );
 		$options = Xml::tags( 'form',
 			array(
 				'method' => 'get',
