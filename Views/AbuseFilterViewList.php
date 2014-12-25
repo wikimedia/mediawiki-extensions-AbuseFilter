@@ -5,6 +5,8 @@
  */
 class AbuseFilterViewList extends AbuseFilterView {
 	function show() {
+		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
+
 		$out = $this->getOutput();
 		$request = $this->getRequest();
 
@@ -25,7 +27,12 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$conds = array();
 		$deleted = $request->getVal( 'deletedfilters' );
 		$hidedisabled = $request->getBool( 'hidedisabled' );
-		$scope = $request->getVal( 'rulescope', 'local' );
+		$defaultscope = 'all';
+		if ( isset( $wgAbuseFilterCentralDB ) && !$wgAbuseFilterIsCentral ) {
+			// Show on remote wikis as default only local filters
+			$defaultscope = 'local';
+		}
+		$scope = $request->getVal( 'rulescope', $defaultscope );
 
 		if ( $deleted == 'show' ) {
 			# Nothing
@@ -39,7 +46,10 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$conds['af_deleted'] = 0;
 			$conds['af_enabled'] = 1;
 		}
-		if ( $scope == 'global' ) {
+
+		if ( $scope == 'local' ) {
+			$conds['af_global'] = 0;
+		} elseif ( $scope == 'global' ) {
 			$conds['af_global'] = 1;
 		}
 
@@ -84,7 +94,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 				$deleted == 'only'
 			);
 
-		if ( isset( $wgAbuseFilterCentralDB ) && !$wgAbuseFilterIsCentral ) {
+		if ( isset( $wgAbuseFilterCentralDB ) ) {
 			$fields['abusefilter-list-options-scope'] =
 				Xml::radioLabel(
 					$this->msg( 'abusefilter-list-options-scope-local' )->text(),
@@ -100,6 +110,18 @@ class AbuseFilterViewList extends AbuseFilterView {
 					'mw-abusefilter-rulescope-global',
 					$scope == 'global'
 				);
+
+			if ( $wgAbuseFilterIsCentral ) {
+				// For central wiki: add third scope option
+				$fields['abusefilter-list-options-scope'] .=
+					Xml::radioLabel(
+						$this->msg( 'abusefilter-list-options-scope-all' )->text(),
+						'rulescope',
+						'all',
+						'mw-abusefilter-rulescope-all',
+						$scope == 'all'
+				);
+			}
 		}
 
 		$fields['abusefilter-list-options-disabled'] =
