@@ -262,6 +262,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "Si le usator es blocate",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Quando le adresse de e-mail esseva confirmate",
 	"abusefilter-edit-builder-vars-recent-contributors": "Le ultime dece usatores que contribueva a iste pagina",
+	"abusefilter-edit-builder-vars-first-contributor": "Le prime usator a contribuer al pagina",
 	"abusefilter-edit-builder-vars-all-links": "Tote le ligamines externe in le nove texto",
 	"abusefilter-edit-builder-vars-added-links": "Tote le ligamines externe addite in le modification",
 	"abusefilter-edit-builder-vars-removed-links": "Tote le ligamines externe eliminate in le modification",
