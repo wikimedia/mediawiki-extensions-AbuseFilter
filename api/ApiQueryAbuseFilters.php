@@ -148,7 +148,11 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 				}
 			}
 		}
-		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'filter' );
+		if ( defined( 'ApiResult::META_CONTENT' ) ) {
+			$result->defineIndexedTagName( array( 'query', $this->getModuleName() ), 'filter' );
+		} else {
+			$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'filter' );
+		}
 	}
 
 	public function getAllowedParams() {
