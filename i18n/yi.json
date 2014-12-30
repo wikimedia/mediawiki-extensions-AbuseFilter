@@ -3,7 +3,8 @@
 		"authors": [
 			"Imre",
 			"פוילישער",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Har-wradim"
 		]
 	},
 	"abusefilter-desc": "ווענדט אויטאמאטישע הייריסטיק צו רעדאקטירונגען",
@@ -133,8 +134,8 @@
 	"abusefilter-edit-tools": "געצייג:",
 	"abusefilter-edit-test-link": "קאנטראלירן דעם פֿילטער קעגן לעצטיקע רעדאקטירונגען",
 	"abusefilter-edit-export": "עקספארטירן דעם פֿילטער אין אן אנדער וויקי",
-	"abusefilter-edit-syntaxok": "נישט געטראפֿן קיין סינטאקס פֿעלער.",
-	"abusefilter-edit-syntaxerr": "סינטאקט פֿעלער געטראפֿן: $1",
+	"abusefilter-edit-syntaxok": "נישט געטראָפן קיין סינטאַקס פעלערן.",
+	"abusefilter-edit-syntaxerr": "סינטאַקס פעלער געטראָפן: $1",
 	"abusefilter-edit-notallowed": "איר זענט נישט דערלויבט צו שאפֿן אדער רעדאקטירן פילטערס",
 	"abusefilter-edit-builder-group-op-arithmetic": "אריטמעטישע אפעראטארן",
 	"abusefilter-edit-builder-op-arithmetic-addition": "צוגאב (+)",
