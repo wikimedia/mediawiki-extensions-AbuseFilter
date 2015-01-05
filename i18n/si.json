@@ -5,7 +5,8 @@
 			"පසිඳු කාවින්ද",
 			"බිඟුවා",
 			"ශ්වෙත",
-			"සුරනිමල"
+			"සුරනිමල",
+			"Susith Chandira Gts"
 		]
 	},
 	"abusefilter-desc": "සංස්කරණ සඳහා ස්වයංක්‍රීය විවරණෝපයෝගී යෙදේ",
@@ -128,7 +129,7 @@
 	"abusefilter-edit-hidden": "පොදු දර්ශනයෙන් මෙම පෙරහනේ ඇති තොරතුරු සඟවන්න",
 	"abusefilter-edit-global": "ගෝලීය පෙරහන",
 	"abusefilter-edit-rules": "කොන්දේසි:",
-	"abusefilter-edit-notes": "සටහන්:\n:''(පෞද්ගලික)''",
+	"abusefilter-edit-notes": "සටහන්:",
 	"abusefilter-edit-lastmod": "පෙරහන අවසන් වරට වෙනස් කලේ:",
 	"abusefilter-edit-lastmod-text": "$2 විසින් $1",
 	"abusefilter-edit-hitcount": "පෙරහන් වැදීම්:",
