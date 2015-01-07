@@ -117,7 +117,7 @@
 	"abusefilter-edit-flags": "Bayraqlar:",
 	"abusefilter-edit-deleted": "Silinmiş kimi qeyd et",
 	"abusefilter-edit-rules": "Şərtlər:",
-	"abusefilter-edit-notes": "Qeydlər:\n:''(özəl)''",
+	"abusefilter-edit-notes": "Qeydlər:",
 	"abusefilter-edit-lastmod": "Son dəyişikliklər süzgəci:",
 	"abusefilter-edit-lastmod-text": "$1 tərəfindən $2",
 	"abusefilter-edit-hitcount": "Filtrin işləməsi:",
@@ -228,7 +228,7 @@
 	"abusefilter-log-noresults": "Nəticə yoxdur",
 	"abusefilter-diff-title": "Versiyalar arasındakı fərqlər",
 	"abusefilter-diff-item": "Element",
-	"abusefilter-diff-version": "$1-nin versiyası, $2",
+	"abusefilter-diff-version": "$2 adlı istifadəçinin $1 tarixli versiyası",
 	"abusefilter-diff-info": "Əsas məlumatlar",
 	"abusefilter-diff-pattern": "Süzgəcləmə şərtləri"
 }
