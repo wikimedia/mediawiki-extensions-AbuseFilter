@@ -129,6 +129,7 @@ class AbuseFilter {
 			'old_links' => 'old-links',
 			'minor_edit' => 'minor-edit',
 			'file_sha1' => 'file-sha1',
+			'file_size' => 'file-size',
 		),
 	);
 

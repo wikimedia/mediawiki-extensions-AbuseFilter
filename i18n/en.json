@@ -284,6 +284,7 @@
 	"abusefilter-edit-builder-vars-old-html": "Old page wikitext, parsed into HTML",
 	"abusefilter-edit-builder-vars-minor-edit": "Whether or not the edit is marked as minor",
 	"abusefilter-edit-builder-vars-file-sha1": "SHA1 hash of file contents",
+	"abusefilter-edit-builder-vars-file-size": "Size of the file in bytes",
 	"abusefilter-filter-log": "Recent filter changes",
 	"abusefilter-history": "Change history for Abuse Filter #$1",
 	"abusefilter-history-foruser": "Changes by $1",

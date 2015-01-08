@@ -617,6 +617,7 @@ class AbuseFilterHooks {
 		}
 
 		$vars->setVar( 'file_sha1', $sha1 );
+		$vars->setVar( 'file_size', $upload->getFileSize() );
 
 		$filter_result = AbuseFilter::filterAction( $vars, $title );
 
