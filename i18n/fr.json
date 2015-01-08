@@ -26,7 +26,8 @@
 			"Verdy p",
 			"Wyz",
 			"Zetud",
-			"Orlodrim"
+			"Orlodrim",
+			"0x010C"
 		]
 	},
 	"abusefilter-desc": "Applique des heuristiques automatiques aux modifications",
@@ -307,6 +308,7 @@
 	"abusefilter-edit-builder-vars-old-html": "Wikitexte de l'ancienne page, analysé en HTML",
 	"abusefilter-edit-builder-vars-minor-edit": "Si la modification est marquée comme mineure ou non",
 	"abusefilter-edit-builder-vars-file-sha1": "hachage SHA1 du contenu du fichier",
+	"abusefilter-edit-builder-vars-file-size": "Taille du fichier en bits",
 	"abusefilter-filter-log": "Modifications récentes des filtres",
 	"abusefilter-history": "Historique des modifications du filtre antiabus n° $1",
 	"abusefilter-history-foruser": "Modifications par $1",

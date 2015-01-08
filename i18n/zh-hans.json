@@ -318,6 +318,7 @@
 	"abusefilter-edit-builder-vars-old-html": "编辑前的旧页面，已解析为HTML源码",
 	"abusefilter-edit-builder-vars-minor-edit": "编辑是否被标记为小修改",
 	"abusefilter-edit-builder-vars-file-sha1": "文件内容的SHA1值",
+	"abusefilter-edit-builder-vars-file-size": "文件大小，单位字节",
 	"abusefilter-filter-log": "最近过滤器更改",
 	"abusefilter-history": "滥用过滤器#$1的更改历史",
 	"abusefilter-history-foruser": "由$1作出的修改",
