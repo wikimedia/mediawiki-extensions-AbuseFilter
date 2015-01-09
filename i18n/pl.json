@@ -300,6 +300,7 @@
 	"abusefilter-edit-builder-vars-old-html": "Stara treść strony w formacie wiki przetworzona na HTML",
 	"abusefilter-edit-builder-vars-minor-edit": "Czy edycja oznaczona jest jako drobna",
 	"abusefilter-edit-builder-vars-file-sha1": "Skrót SHA1 zawartości pliku",
+	"abusefilter-edit-builder-vars-file-size": "Rozmiar pliku w bajtach",
 	"abusefilter-filter-log": "Ostatnie zmiany ustawień filtru",
 	"abusefilter-history": "Historia zmian dla filtru nr $1",
 	"abusefilter-history-foruser": "Zmiany wykonane przez $1",

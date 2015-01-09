@@ -8,7 +8,8 @@
 			"Kaustubh",
 			"Kumar",
 			"Siddhartha Ghai",
-			"Wikiuser13"
+			"Wikiuser13",
+			"संजीव कुमार"
 		]
 	},
 	"abusefilter-desc": "संपादनों पर स्वतः शोध प्रणाली का प्रयोग लागू करता है",
@@ -260,6 +261,7 @@
 	"abusefilter-edit-builder-vars-restrictions-move": "पृष्ठ का स्थानान्तरण सुरक्षा स्तर",
 	"abusefilter-edit-builder-vars-old-links": "सम्पादन से पहले पृष्ठ में कड़ियाँ",
 	"abusefilter-edit-builder-vars-file-sha1": "फ़ाइल सामग्री की SHA1 hash",
+	"abusefilter-edit-builder-vars-file-size": "बाइट्स में फाइल का आकार",
 	"abusefilter-filter-log": "हाल ही में हुए फ़िल्टर बदलाव",
 	"abusefilter-history": "दुरुपयोग फ़िल्टर #$1 का परिवर्तन इतिहास",
 	"abusefilter-history-foruser": "$1 द्वारा परिवर्तन",

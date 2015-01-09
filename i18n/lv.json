@@ -262,6 +262,7 @@
 	"abusefilter-edit-builder-vars-old-html": "Vecais lapas vikiteksts parsēts HTML formātā",
 	"abusefilter-edit-builder-vars-minor-edit": "Vai labojums atzīmēts kā maznozīmīgs",
 	"abusefilter-edit-builder-vars-file-sha1": "SHA1 jaucējfunkcija faila saturam",
+	"abusefilter-edit-builder-vars-file-size": "Faila izmērs baitos",
 	"abusefilter-filter-log": "Pēdējās filtru izmaiņas",
 	"abusefilter-history": "Izmaiņu hronoloģija ļaunprātīgās izmantošanas filtram #$1",
 	"abusefilter-history-foruser": "$1 izmaiņas",

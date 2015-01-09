@@ -364,7 +364,7 @@
 	"abusefilter-topnav-tools": "Алати за дебаговање",
 	"abusefilter-topnav-import": "Увези филтер",
 	"abusefilter-log-name": "Дневник филтера против злоупотребе",
-	"abusefilter-log-header": "Овде је приказан сажетак измена које су направили филтери.\nЗа више информација погледајте [[Special:AbuseFilter/history|преглед]] скорашњих измена.",
+	"abusefilter-log-header": "Овде је приказан сажетак измена начињених над филтерима.\nЗа више информација погледајте [[Special:AbuseFilter/history|преглед]] скорашњих измена.",
 	"abusefilter-log-entry-modify": "је изменио $1 ($2)",
 	"abusefilter-log-noresults": "Нема резултата",
 	"abusefilter-diff-title": "Разлике између издања",

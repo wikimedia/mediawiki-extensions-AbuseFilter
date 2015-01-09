@@ -283,6 +283,7 @@
 	"abusefilter-edit-builder-vars-old-html": "Teks wiki laman lama yang dihurai dalam HTML",
 	"abusefilter-edit-builder-vars-minor-edit": "Sama ada suntingan itu ditandai sebagai kecil",
 	"abusefilter-edit-builder-vars-file-sha1": "Cincangan SHa1 kandungan fail",
+	"abusefilter-edit-builder-vars-file-size": "Saiz fail (bait)",
 	"abusefilter-filter-log": "Perubahan penapis terkini",
 	"abusefilter-history": "Sejarah perubahan Penapis Salah Guna #$1",
 	"abusefilter-history-foruser": "Perubahan oleh $1",

@@ -307,6 +307,7 @@
 	"abusefilter-edit-builder-vars-old-html": "舊頁面 Wikitext，已解析為 HTML",
 	"abusefilter-edit-builder-vars-minor-edit": "是否將編輯標示為小修訂",
 	"abusefilter-edit-builder-vars-file-sha1": "檔案內容的 SHA1 雜湊值",
+	"abusefilter-edit-builder-vars-file-size": "文件大小（單位：位元組）",
 	"abusefilter-filter-log": "最近過濾器變更",
 	"abusefilter-history": "濫用過濾器 #$1 的修訂歷史",
 	"abusefilter-history-foruser": "由 $1 所作的變更",

@@ -363,7 +363,7 @@
 	"abusefilter-topnav-tools": "Alati za debagovanje",
 	"abusefilter-topnav-import": "Uvezi filter",
 	"abusefilter-log-name": "Dnevnik filtera protiv zloupotrebe",
-	"abusefilter-log-header": "Ovde je prikazan sažetak izmena koje su napravili filteri.\nZa više informacija pogledajte [[Special:AbuseFilter/history|pregled]] skorašnjih izmena.",
+	"abusefilter-log-header": "Ovde je prikazan sažetak izmena načinjenih nad filterima.\nZa više informacija pogledajte [[Special:AbuseFilter/history|pregled]] skorašnjih izmena.",
 	"abusefilter-log-entry-modify": "je izmenio $1 ($2)",
 	"abusefilter-log-noresults": "Nema rezultata",
 	"abusefilter-diff-title": "Razlike između verzija",

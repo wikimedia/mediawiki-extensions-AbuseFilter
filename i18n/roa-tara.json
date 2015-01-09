@@ -279,6 +279,7 @@
 	"abusefilter-edit-builder-vars-old-html": "Vècche pagene wikitext, analizzate sus HTML",
 	"abusefilter-edit-builder-vars-minor-edit": "Ce o none ce 'u cangiaminde jè condrassignate cumme minore",
 	"abusefilter-edit-builder-vars-file-sha1": "SHA1 miskulanze d'u condenute de le file",
+	"abusefilter-edit-builder-vars-file-size": "Dimenzione d'u file in byte",
 	"abusefilter-filter-log": "Cangiaminde recende d'u filtre",
 	"abusefilter-history": "Cronologgie de le cangiaminde pè le filtre de le abbuse #$1",
 	"abusefilter-history-foruser": "Cangiate da $1",
