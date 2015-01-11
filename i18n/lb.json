@@ -266,6 +266,7 @@
 	"abusefilter-edit-builder-vars-old-html": "Wikitext vun der aler Säit, an HTML-Format",
 	"abusefilter-edit-builder-vars-minor-edit": "Ob d'Ännerung als kleng markéiert gëtt oder net",
 	"abusefilter-edit-builder-vars-file-sha1": "SHA1-Hash vum Inhalt vum Fichier",
+	"abusefilter-edit-builder-vars-file-size": "Gréisst vum Fichier a Bytes",
 	"abusefilter-filter-log": "Rezent Ännerunge vu Filteren",
 	"abusefilter-history": "Historique vun den Ännerunge vum Mëssbrauchsfilter #$1",
 	"abusefilter-history-foruser": "Ännerunge vum $1",
