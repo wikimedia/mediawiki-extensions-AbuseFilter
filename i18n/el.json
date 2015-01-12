@@ -13,7 +13,8 @@
 			"Lou",
 			"Omnipaedista",
 			"Protnet",
-			"ZaDiak"
+			"ZaDiak",
+			"Αντιγόνη"
 		]
 	},
 	"abusefilter-desc": "Εφαρμόζει αυτόματη ανίχνευση σε επεξεργασίες",
@@ -285,6 +286,7 @@
 	"abusefilter-edit-builder-vars-old-html": "Παλιό βικικείμενο σελίδας, λεξιαναλυμένο σε HTML",
 	"abusefilter-edit-builder-vars-minor-edit": "Εάν η επεξεργασία σημαίνεται ως μικρή",
 	"abusefilter-edit-builder-vars-file-sha1": "SHA1 hash των περιεχομένων του αρχείου",
+	"abusefilter-edit-builder-vars-file-size": "Το μέγεθος του αρχείου σε bytes",
 	"abusefilter-filter-log": "Πρόσφατες αλλαγές φίλτρων",
 	"abusefilter-history": "Αλλαγή ιστορικού για το Φίλτρο Καταχρήσεων #$1",
 	"abusefilter-history-foruser": "Αλλαγές από τον $1",

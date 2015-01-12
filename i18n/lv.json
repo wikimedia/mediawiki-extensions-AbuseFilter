@@ -118,7 +118,7 @@
 	"abusefilter-edit-subtitle-new": "Filtra izveide",
 	"abusefilter-edit-oldwarning": "<strong>Tu rediģē vecu šī filtra versiju.\nRedzamā statistika atbilst jaunākajai filtra versijai.\nJa tu saglabāsi savus labojumus, tiks pārrakstītas visas izmaiņas versijās, kas ir jaunākas par to, kuru tu rediģē.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Atgriezties pie filtra izmaiņu hronoloģijas]].",
 	"abusefilter-edit-status-label": "Statistika:",
-	"abusefilter-edit-status": "No {{PLURAL:$1|pēdējām|pēdējās|pēdējām}} $1 {{PLURAL:$1|darbībām|darbības|darbībām}} šis filtrs attiecās uz $2 ($3%).\nVidēji tā darbības laiks ir $4ms, un tas izlieto $5 {{PLURAL:$5|nosacījumus|nosacījumu|nosacījumus}} no nosacījumu limitu.",
+	"abusefilter-edit-status": "No {{PLURAL:$1|pēdējām|pēdējās|pēdējām}} $1 {{PLURAL:$1|darbībām|darbības|darbībām}} šis filtrs attiecās uz $2 ($3%).\nVidēji tā darbības laiks ir $4 ms, un tas izlieto $5 {{PLURAL:$5|nosacījumus|nosacījumu|nosacījumus}} no nosacījumu limitu.",
 	"abusefilter-edit-throttled": "'''Brīdinājums''': Drošības iemeslu dēļ šis filtrs tika automātiski atslēgts.\nTas sasniedza $1% no atļauto darbību limita.",
 	"abusefilter-edit-new": "Jauns filtrs",
 	"abusefilter-edit-save": "Saglabāt filtru",

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Michawiki"
+			"Michawiki",
+			"J budissin"
 		]
 	},
 	"abusefilter-desc": "Nałožuje awtomatisku heuristiku na změny.",
@@ -258,9 +259,11 @@
 	"abusefilter-edit-builder-vars-user-age": "Staroba wužiwarskeho konta",
 	"abusefilter-edit-builder-vars-user-name": "Mjeno wužiwarskeho konta",
 	"abusefilter-edit-builder-vars-user-groups": "Skupiny (tež implicitne), w kotrychž wužiwar je čłon",
+	"abusefilter-edit-builder-vars-user-rights": "Prawa, kiž ma wužiwar",
 	"abusefilter-edit-builder-vars-user-blocked": "Hač wužiwar je zablokowany",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Čas, hdyž e-mejlowa adresa je so wobkrućiła",
 	"abusefilter-edit-builder-vars-recent-contributors": "Poslednich pjeć wobdźěłarjow strony",
+	"abusefilter-edit-builder-vars-first-contributor": "Prěni wužiwar, kotryž wobdźěła stronu",
 	"abusefilter-edit-builder-vars-all-links": "Wšě eksterne wotkzay w nowym teksće",
 	"abusefilter-edit-builder-vars-added-links": "Wšě přez změnu přidate eksterne wotkazy",
 	"abusefilter-edit-builder-vars-removed-links": "Wšě přez změnu wotstronjene eksterne wotkazy",
@@ -280,6 +283,7 @@
 	"abusefilter-edit-builder-vars-old-html": "Wikitekst stareje strony, do HTML analyzowany",
 	"abusefilter-edit-builder-vars-minor-edit": "Hač změna so jako snadna markěruje abo nic",
 	"abusefilter-edit-builder-vars-file-sha1": "Haš SHA1 datajoweho wobsaha",
+	"abusefilter-edit-builder-vars-file-size": "Wulkosć dataje w bajtach",
 	"abusefilter-filter-log": "Aktualne filtrowe změny",
 	"abusefilter-history": "Stawizny za znjewužiwanski filter #$1 změnić",
 	"abusefilter-history-foruser": "Změny wot $1",
@@ -389,5 +393,9 @@
 	"abusefilter-diff-next": "Nowša změna",
 	"abusefilter-import-intro": "Móžeš tutón interfejs wužiwać, zo by filtry z druhich wikijow importował.\nKlikń w žórłowym wikiju na \"{{int:abusefilter-edit-export}}\" pod \"{{int:abusefilter-edit-tools}}\" na wobdźěłowanskim interfejsu. Kopěruj z jewjaceho so tekstoweho pola do tutoho tekstoweho pola a klikń potom na \"{{int:abusefilter-import-submit}}\",",
 	"abusefilter-import-submit": "Daty importować",
-	"abusefilter-group-default": "Standard"
+	"abusefilter-group-default": "Standard",
+	"abusefilter-http-error": "Zmylk wustupi: $1",
+	"apihelp-abusefilterchecksyntax-example-1": "Syntaksu płaćiweho filtra přepruwować",
+	"apihelp-abusefilterchecksyntax-example-2": "Syntaksu njepłaćiweho filtra přepruwować",
+	"apihelp-abusefilterunblockautopromote-param-user": "Mjeno wužiwarja, kotrehož chceš dopušćić"
 }
