@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Arystanbek",
-			"GaiJin"
+			"GaiJin",
+			"Нұрлан Рахымжанов"
 		]
 	},
 	"abusefilter": "Қиянат жасауды сүзгілеу ішкіқұрылымы",
@@ -203,7 +204,7 @@
 	"abusefilter-edit-builder-vars-all-links": "Жаңа мәтінде барлық сыртқы сілтемелер",
 	"abusefilter-edit-builder-vars-added-links": "Өңдемеде қосылған барлық сыртқы сілтемелер",
 	"abusefilter-edit-builder-vars-removed-links": "Өңдемеде барлық сыртқы сілтемлер аласталған",
-	"abusefilter-edit-builder-vars-old-text": "Өңдемеден бұрыңғы беттің ескі уикимәтіні",
+	"abusefilter-edit-builder-vars-old-text": "Осы беттің ағымдағы өңдемеден бұрынғы ескі уикимәтіні",
 	"abusefilter-edit-builder-vars-new-text": "Өңдемеден кейінгі бетің жаңа уикимәтіні",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Беттің өңдеуден қорғау деңгейі",
 	"abusefilter-edit-builder-vars-restrictions-move": "Беттің жылжытудан қорғау деңгейі",
