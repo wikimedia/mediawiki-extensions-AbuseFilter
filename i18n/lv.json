@@ -43,7 +43,7 @@
 	"abusefilter-log-summary": "Šis reģistrs satur sarakstu ar visām filtru konstatētajām darbībām.",
 	"abusefilter-log-search": "Meklēt ļaunprātīgo izmantošanu reģistrā",
 	"abusefilter-log-search-user": "Lietotājs:",
-	"abusefilter-log-search-filter": "Filtra ID:",
+	"abusefilter-log-search-filter": "Filtru ID (jāatdala ar vertikālu svītru):",
 	"abusefilter-log-search-title": "Nosaukums:",
 	"abusefilter-log-search-submit": "Meklēt",
 	"abusefilter-log-entry": "$1: $2 iedarbināja ļaunprātīgās izmantošanas filtru, veicot darbību \"$3\" lapā $4.\nFiltra veiktās darbības: $5;\nFiltra apraksts: $6",
