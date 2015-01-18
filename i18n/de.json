@@ -424,6 +424,7 @@
 	"apihelp-query+abusefilters-param-limit": "Die maximale Anzahl aufzulistender Filter.",
 	"apihelp-query+abusefilters-example-1": "Aktivierte öffentliche Filter auflisten",
 	"apihelp-query+abusefilters-example-2": "Einige Einzelheiten über Filter anzeigen",
+	"apihelp-query+abuselog-description": "Ereignisse anzeigen, die von einem der Missbrauchsfilter erfasst wurden.",
 	"apihelp-query+abuselog-example-1": "Zeigt die letzten Logbucheinträge",
 	"apihelp-query+abuselog-example-2": "Zeigt die letzten Logbucheinträge für [[API]]"
 }
