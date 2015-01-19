@@ -165,7 +165,7 @@
 	"abusefilter-edit-warn-preview": "Valitud sõnumi eelvaade",
 	"abusefilter-edit-warn-edit": "Loo valitud sõnum või muuda seda",
 	"abusefilter-edit-tag-tag": "Kasutatavad märgised (rea kohta üks):",
-	"abusefilter-edit-denied": "Sa ei või selle filtri üksikasju vaadata, sest see on üldsuse eest peidetud.",
+	"abusefilter-edit-denied": "Sa ei saa selle filtri üksikasju vaadata, sest need pole avalikud.",
 	"abusefilter-edit-main": "Filtri näitajad",
 	"abusefilter-edit-done-subtitle": "Filter muudetud",
 	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Muudatused]], mille tegid [[Special:AbuseFilter/$1|filtrile $3]], on edukalt salvestatud.",
