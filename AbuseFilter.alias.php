@@ -39,6 +39,12 @@ $specialPageAliases['as'] = array(
 	'AbuseFilter' => array( 'অপব্যৱহাৰৰ_চেকনী' ),
 );
 
+/** Avaric (авар) */
+$specialPageAliases['av'] = array(
+	'AbuseLog' => array( 'Ихтияразда_мугъ_чІван_бегьуоарел_пишаби_гьабиялъул_журнал' ),
+	'AbuseFilter' => array( 'Ихтияразда_мугъ_чІван_бегьуоарел_пишаби_гьабиял_рацІцІин' ),
+);
+
 /** Bashkir (башҡортса) */
 $specialPageAliases['ba'] = array(
 	'AbuseLog' => array( 'Насарға_ҡулланыуҙар_журналы' ),
@@ -312,6 +318,12 @@ $specialPageAliases['ml'] = array(
 $specialPageAliases['mr'] = array(
 	'AbuseLog' => array( 'संपादनगाळणी_नोंदी' ),
 	'AbuseFilter' => array( 'संपादन_गाळणी' ),
+);
+
+/** Malay (Bahasa Melayu) */
+$specialPageAliases['ms'] = array(
+	'AbuseLog' => array( 'Log_penyalahgunaan' ),
+	'AbuseFilter' => array( 'Penapis_penyalahgunaan' ),
 );
 
 /** Maltese (Malti) */

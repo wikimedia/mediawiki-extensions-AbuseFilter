@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Умар"
+			"Умар",
+			"Аль-Гимравий"
 		]
 	},
-	"abusefilter-list-edit": "Хисизабизе"
+	"abusefilter-list-edit": "Хисизабизе",
+	"abusefilter-edit-action-block": "ГІахьалчи яги IP-адрес блокалда лъезе"
 }

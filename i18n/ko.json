@@ -391,7 +391,7 @@
 	"abusefilter-topnav-log": "부정 행위 기록",
 	"abusefilter-topnav-tools": "디버그 도구",
 	"abusefilter-topnav-import": "필터 가져오기",
-	"abusefilter-log-name": "부정 행위 방지 필터 기록",
+	"abusefilter-log-name": "편집 필터 기록",
 	"abusefilter-log-header": "이 기록은 필터가 바뀜 기록의 요약본을 보여줍니다.\n자세한 정보는 [[Special:AbuseFilter/history|필터의 최근 바뀜]]을 참조하십시오.",
 	"abusefilter-log-entry-modify": "사용자가 $1을 수정했습니다 ($2)",
 	"abusefilter-log-noresults": "결과 없음",
