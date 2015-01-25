@@ -4,7 +4,8 @@
 			"Baonguyen21022003",
 			"Minh Nguyen",
 			"Vinhtantran",
-			"Withoutaname"
+			"Withoutaname",
+			"Dinhxuanduyet"
 		]
 	},
 	"abusefilter-desc": "Áp dụng heuristic tự động vào các sửa đổi",
@@ -285,6 +286,7 @@
 	"abusefilter-edit-builder-vars-old-html": "Mã wiki cũ của trang, được xử lý thành HTML",
 	"abusefilter-edit-builder-vars-minor-edit": "Có gọi sửa đổi nhỏ hay không",
 	"abusefilter-edit-builder-vars-file-sha1": "Số băm SHA1 của nội dung cập tin",
+	"abusefilter-edit-builder-vars-file-size": "Kích thước của file dạng byte",
 	"abusefilter-filter-log": "Các thay đổi bộ lọc gần đây",
 	"abusefilter-history": "Lịch sử các thay đổi của Bộ Lọc Vi Phạm $1",
 	"abusefilter-history-foruser": "Thay đổi bởi $1",
@@ -395,5 +397,12 @@
 	"abusefilter-import-intro": "Trang này để nhập bộ lọc từ wiki khác.\nTại trang sửa đổi của wiki nguồn, hãy bấm “{{int:abusefilter-edit-export}}” dưới đề mục “{{int:abusefilter-edit-tools}}”.\nSau đó, chép văn bản từ hộp sẽ hiện ra, dán nó vào hộp ở đây, và bấm “{{int:abusefilter-import-submit}}”.",
 	"abusefilter-import-submit": "Nhập dữ liệu",
 	"abusefilter-group-default": "Mặc định",
-	"abusefilter-http-error": "Đã xuất hiện lỗi HTTP: $1."
+	"abusefilter-http-error": "Đã xuất hiện lỗi HTTP: $1.",
+	"apihelp-abusefiltercheckmatch-description": "Đánh dấu vào đây để kiểm tra xem nếu một AbuseFilter (bộ lọc lạm dụng) có khớp với tập hợp các biến hay không, trình biên tập đã ghi vào sự kiện của AbuseFilter.\n\nvars, rcid hoặc logid được yêu cầu tuy nhiên chỉ một trong số đó có thể sẽ được dùng.",
+	"apihelp-abusefilterchecksyntax-example-1": "Kiểm tra cú pháp của một bộ lọc hợp lệ",
+	"apihelp-abusefilterchecksyntax-example-2": "Kiểm tra cú pháp của một bộ lọc không hợp lệ",
+	"apihelp-abusefilterevalexpression-description": "Đánh giá một biểu thức AbuseFilter.",
+	"apihelp-abusefilterevalexpression-example-1": "Đánh giá một biểu thức đơn giản",
+	"apihelp-abusefilterunblockautopromote-param-user": "Tên người dùng của người dùng mà bạn muốn bỏ khóa.",
+	"apihelp-query+abuselog-param-prop": "Thuộc tính mà bạn muốn lấy."
 }
