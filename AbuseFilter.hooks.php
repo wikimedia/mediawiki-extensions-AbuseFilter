@@ -354,7 +354,7 @@ class AbuseFilterHooks {
 		$filter_result = AbuseFilter::filterAction( $vars, $article->getTitle() );
 
 		$status->merge( $filter_result );
-		$error = $filter_result->isOK() ? '' : $filter_result->getWikiText();
+		$error = $filter_result->isOK() ? '' : $filter_result->getHTML();
 
 		return $filter_result->isOK();
 	}
