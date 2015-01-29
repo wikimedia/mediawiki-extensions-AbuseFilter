@@ -442,29 +442,50 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param $emptyTags array
+	 * @param array $tags
+	 * @param bool $enabled
 	 * @return bool
 	 */
-	public static function onListDefinedTags( &$emptyTags ) {
+	private static function fetchAllTags( array &$tags, $enabled ) {
 		# This is a pretty awful hack.
 		$dbr = wfGetDB( DB_SLAVE );
 
+		$where = array( 'afa_consequence' => 'tag' );
+		if ( $enabled ) {
+			$where['af_enabled'] = true;
+		}
 		$res = $dbr->select(
 			array( 'abuse_filter_action', 'abuse_filter' ),
 			'afa_parameters',
-			array( 'afa_consequence' => 'tag', 'af_enabled' => true ),
+			$where,
 			__METHOD__,
 			array(),
 			array( 'abuse_filter' => array( 'INNER JOIN', 'afa_filter=af_id' ) )
 		);
 
 		foreach ( $res as $row ) {
-			$emptyTags = array_filter(
-				array_merge( explode( "\n", $row->afa_parameters ), $emptyTags )
+			$tags = array_filter(
+				array_merge( explode( "\n", $row->afa_parameters ), $tags )
 			);
 		}
 
 		return true;
+	}
+
+	/**
+	 * @param array $tags
+	 * @return bool
+	 */
+	public static function onListDefinedTags( array &$tags ) {
+		return self::fetchAllTags( $tags, false );
+	}
+
+	/**
+	 * @param array $tags
+	 * @return bool
+	 */
+	public static function onChangeTagsListActive( array &$tags ) {
+		return self::fetchAllTags( $tags, true );
 	}
 
 	/**

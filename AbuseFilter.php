@@ -95,6 +95,7 @@ $wgHooks['AbortAutoAccount'][] = 'AbuseFilterHooks::onAbortAutoAccount';
 $wgHooks['ArticleDelete'][] = 'AbuseFilterHooks::onArticleDelete';
 $wgHooks['RecentChange_save'][] = 'AbuseFilterHooks::onRecentChangeSave';
 $wgHooks['ListDefinedTags'][] = 'AbuseFilterHooks::onListDefinedTags';
+$wgHooks['ChangeTagsListActive'][] = 'AbuseFilterHooks::onChangeTagsListActive';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'AbuseFilterHooks::onLoadExtensionSchemaUpdates';
 $wgHooks['ContributionsToolLinks'][] = 'AbuseFilterHooks::onContributionsToolLinks';
 $wgHooks['UploadVerifyFile'][] = 'AbuseFilterHooks::onUploadVerifyFile';
