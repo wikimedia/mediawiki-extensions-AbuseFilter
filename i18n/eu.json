@@ -93,6 +93,7 @@
 	"abusefilter-edit-history": "Historia:",
 	"abusefilter-edit-check": "Egiaztatu sintaxia",
 	"abusefilter-edit-tools": "Tresnak:",
+	"abusefilter-edit-export": "Esportatu iragazki hau beste wiki batera",
 	"abusefilter-edit-syntaxok": "Ez da sintaxi-errorerik aurkitu",
 	"abusefilter-edit-syntaxerr": "Sintaxi-errorea detektatu da: $1",
 	"abusefilter-edit-builder-group-op-arithmetic": "Eragile aritmetikoak",

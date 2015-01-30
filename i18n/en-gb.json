@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Chase me ladies, I'm the Cavalry"
 		]
 	},
+	"abusefilter-desc": "Applies automatic heuristics to edits",
+	"abusefilter": "Abuse filter configuration",
+	"abuselog": "Abuse log",
 	"abusefilter-edit-builder-funcs-ccnorm": "Normalise confusable characters (ccnorm)",
 	"abusefilter-edit-builder-funcs-norm": "Normalise (norm)",
 	"abusefilter-exception-unrecognisedkeyword": "Unrecognised keyword $2 at character $1.",
