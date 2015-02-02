@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Aushulz",
-			"Gmelfi"
+			"Gmelfi",
+			"Pippinu"
 		]
 	},
 	"abuselog": "Riggistru dû filtru anti abbusi",
@@ -50,6 +51,26 @@
 	"abusefilter-edit-builder-vars-newsize": "Nova grannizza di la paggina",
 	"abusefilter-edit-builder-vars-oldsize": "Vecchia grannizza di la paggina",
 	"abusefilter-edit-builder-vars-article-id": "ID di la paggina",
+	"abusefilter-edit-builder-vars-movedfrom-text": "Tìtulu dâ pàggina orìggini dû spustamentu",
+	"abusefilter-edit-builder-vars-movedfrom-prefixedtext": "Tìtulu cumpletu dâ pàggina orìggini dû spustamentu",
+	"abusefilter-edit-builder-vars-movedto-id": "ID dâ pàggina distinazzioni dû spustamentu",
+	"abusefilter-edit-builder-vars-movedto-ns": "Namespace dâ pàggina distinazzioni dû spustamentu",
+	"abusefilter-edit-builder-vars-movedto-text": "Tìtulu dâ pàggina distinazzioni dû spustamentu",
+	"abusefilter-edit-builder-vars-movedto-prefixedtext": "Tìtulu cumpletu dâ pàggina distinazzioni dû spustamentu",
+	"abusefilter-edit-builder-vars-user-editcount": "Cuntìggiu dî canciamenti di l'utenti",
+	"abusefilter-edit-builder-vars-user-age": "Anzianità dû cuntu di l'utenti",
+	"abusefilter-edit-builder-vars-user-name": "Nomu dû cuntu di l'utenti",
+	"abusefilter-edit-builder-vars-user-groups": "Gruppi (cuntannu chiddi mpliciti) dî quali l'utenti fa' parti",
+	"abusefilter-edit-builder-vars-user-rights": "Dritti chi' n'utenti havi",
+	"abusefilter-edit-builder-vars-user-blocked": "Si' l'utenti è bluccatu",
+	"abusefilter-edit-builder-vars-user-emailconfirm": "Data e ura quannu lu nnirizzu di posta elittrònica fu' cunvalidatu",
+	"abusefilter-edit-builder-vars-recent-contributors": "Ùrtimi deci utenti chi' cuntribbuèru â pàggina",
+	"abusefilter-edit-builder-vars-first-contributor": "Primu utenti chi' cuntribbuìu â pàggina",
+	"abusefilter-edit-builder-vars-all-links": "Tutti li culligamenti esterni ntô testu novu",
+	"abusefilter-edit-builder-vars-added-links": "Tutti li culligamenti esterni agghiunciuti ntô canciamentu",
+	"abusefilter-edit-builder-vars-removed-links": "Tutti li culligamenti esterni livati ntô canciamentu",
+	"abusefilter-edit-builder-vars-old-text": "Wikitestu vecchiu dâ pàggina, avanti dû canciamentu",
+	"abusefilter-edit-builder-vars-new-text": "Wikitestu novu dâ pàggina, appressu dû canciamentu",
 	"abusefilter-history-foruser": "Canciamenti fatti di $1",
 	"abusefilter-history-hidden": "Ammucciatu",
 	"abusefilter-history-enabled": "Attivatu",
