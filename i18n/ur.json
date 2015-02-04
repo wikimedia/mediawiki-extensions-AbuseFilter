@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"عثمان خان شاہ"
 		]
 	},
 	"abusefilter": "غلط استعمال فلٹر ترتیب",
@@ -131,6 +132,7 @@
 	"abusefilter-edit-builder-vars-added-links": "اس ترمیم میں شامل تمام بیرونی لنکس",
 	"abusefilter-edit-builder-vars-removed-links": "تمام بیرونی روابط کی ترمیم میں ہٹا دیا جاتا",
 	"abusefilter-edit-builder-vars-new-text-stripped": "نیا صفحہ ٹیکسٹ ، کسی بھی تدوین چھین لیا",
+	"abusefilter-edit-builder-vars-restrictions-edit": "اس صفحے کے حفاظتی مراحل میں ترمیم کریں",
 	"abusefilter-history-hidden": "پوشیدہ",
 	"abusefilter-history-enabled": "فعال",
 	"abusefilter-history-global": "عالمی",
