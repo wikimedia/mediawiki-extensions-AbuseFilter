@@ -400,8 +400,6 @@ class AbuseFilter {
 
 		static $parser, $lastVars;
 
-		wfProfileIn( __METHOD__ );
-
 		if ( is_null( $parser ) || $vars !== $lastVars ) {
 			/** @var $parser AbuseFilterParser */
 			$parser = new $wgAbuseFilterParserClass( $vars );
@@ -421,8 +419,6 @@ class AbuseFilter {
 			}
 		}
 
-		wfProfileOut( __METHOD__ );
-
 		return $result;
 	}
 
@@ -436,8 +432,6 @@ class AbuseFilter {
 	 */
 	public static function checkAllFilters( $vars, $group = 'default' ) {
 		// Fetch from the database.
-		wfProfileIn( __METHOD__ );
-
 		$filter_matched = array();
 
 		$dbr = wfGetDB( DB_SLAVE );
@@ -493,8 +487,6 @@ class AbuseFilter {
 
 		// Update statistics, and disable filters which are over-blocking.
 		self::recordStats( $filter_matched, $group );
-
-		wfProfileOut( __METHOD__ );
 
 		return $filter_matched;
 	}
@@ -719,7 +711,6 @@ class AbuseFilter {
 	 */
 	public static function executeFilterActions( $filters, $title, $vars ) {
 		global $wgMainCacheType;
-		wfProfileIn( __METHOD__ );
 
 		$actionsByFilter = self::getConsequencesForFilters( $filters );
 		$actionsTaken = array_fill_keys( $filters, array() );
@@ -814,10 +805,7 @@ class AbuseFilter {
 			}
 		}
 
-		$status = self::buildStatus( $actionsTaken, $messages );
-
-		wfProfileOut( __METHOD__ );
-		return $status;
+		return self::buildStatus( $actionsTaken, $messages );
 	}
 
 	/**
@@ -854,8 +842,6 @@ class AbuseFilter {
 	 */
 	public static function filterAction( $vars, $title, $group = 'default' ) {
 		global $wgUser, $wgTitle, $wgRequest;
-
-		wfProfileIn( __METHOD__ );
 
 		$context = RequestContext::getMain();
 		$oldContextTitle = $context->getTitle();
@@ -921,8 +907,6 @@ class AbuseFilter {
 			$context->setTitle( $oldContextTitle );
 		}
 
-		wfProfileOut( __METHOD__ );
-
 		return $status;
 	}
 
@@ -935,7 +919,6 @@ class AbuseFilter {
 	 * @return mixed
 	 */
 	public static function addLogEntries( $actions_taken, $log_template, $action, $vars, $group = 'default' ) {
-		wfProfileIn( __METHOD__ );
 		$dbw = wfGetDB( DB_MASTER );
 
 		$central_log_template = array(
@@ -977,7 +960,6 @@ class AbuseFilter {
 		}
 
 		if ( !count( $log_rows ) ) {
-			wfProfileOut( __METHOD__ );
 			return;
 		}
 
@@ -1089,8 +1071,6 @@ class AbuseFilter {
 		self::checkEmergencyDisable( $group, $logged_local_filters, $total );
 
 		wfProfileOut( __METHOD__ . '-hitstats' );
-
-		wfProfileOut( __METHOD__ );
 	}
 
 	/**
@@ -1103,8 +1083,6 @@ class AbuseFilter {
 	 * @return int
 	 */
 	public static function storeVarDump( $vars, $global = false ) {
-		wfProfileIn( __METHOD__ );
-
 		global $wgCompressRevisions;
 
 		// Get all variables yet set and compute old and new wikitext if not yet done
@@ -1134,7 +1112,6 @@ class AbuseFilter {
 
 			if ( !$text ) {
 				// Not mission-critical, just return nothing
-				wfProfileOut( __METHOD__ );
 				return null;
 			}
 		}
@@ -1153,10 +1130,7 @@ class AbuseFilter {
 				'old_flags' => implode( ',', $flags ),
 			), __METHOD__
 		);
-		$text_id = $dbw->insertId();
-		wfProfileOut( __METHOD__ );
-
-		return $text_id;
+		return $dbw->insertId();
 	}
 
 	/**
@@ -1168,11 +1142,8 @@ class AbuseFilter {
 	 * @return object|AbuseFilterVariableHolder|bool
 	 */
 	public static function loadVarDump( $stored_dump ) {
-		wfProfileIn( __METHOD__ );
-
 		// Back-compat
 		if ( strpos( $stored_dump, 'stored-text:' ) === false ) {
-			wfProfileOut( __METHOD__ );
 			return unserialize( $stored_dump );
 		}
 
@@ -1188,7 +1159,6 @@ class AbuseFilter {
 		);
 
 		if ( !$text_row ) {
-			wfProfileOut( __METHOD__ );
 			return new AbuseFilterVariableHolder;
 		}
 
@@ -1213,7 +1183,6 @@ class AbuseFilter {
 			}
 		}
 
-		wfProfileOut( __METHOD__ );
 		return $obj;
 	}
 
@@ -1572,8 +1541,6 @@ class AbuseFilter {
 	public static function recordStats( $filters, $group = 'default' ) {
 		global $wgAbuseFilterConditionLimit, $wgMemc;
 
-		wfProfileIn( __METHOD__ );
-
 		// Figure out if we've triggered overflows and blocks.
 		$overflow_triggered = ( self::$condCount > $wgAbuseFilterConditionLimit );
 
@@ -1604,7 +1571,6 @@ class AbuseFilter {
 		if ( $overflow_triggered ) {
 			$wgMemc->incr( $overflow_key );
 		}
-		wfProfileOut( __METHOD__ );
 	}
 
 	/**

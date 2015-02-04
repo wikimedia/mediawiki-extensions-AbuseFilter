@@ -719,13 +719,12 @@ class AbuseFilterParser {
 	/**
 	 * @return AFPToken
 	 */
-	protected function move( ) {
-		wfProfileIn( __METHOD__ );
+	protected function move() {
 		list( $val, $type, , $offset ) = self::nextToken( $this->mCode, $this->mPos );
 
 		$token = new AFPToken( $type, $val, $this->mPos );
 		$this->mPos = $offset;
-		wfProfileOut( __METHOD__ );
+
 		return $this->mCur = $token;
 	}
 
@@ -757,7 +756,6 @@ class AbuseFilterParser {
 		}
 
 		$braces = 1;
-		wfProfileIn( __METHOD__ );
 		while ( $this->mCur->type != AFPToken::TNone && $braces > 0 ) {
 			$this->move();
 			if ( $this->mCur->type == AFPToken::TBrace ) {
@@ -768,7 +766,6 @@ class AbuseFilterParser {
 				}
 			}
 		}
-		wfProfileOut( __METHOD__ );
 		if ( !( $this->mCur->type == AFPToken::TBrace && $this->mCur->value == ')' ) )
 			throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos, array( ')' ) );
 	}
@@ -1058,9 +1055,7 @@ class AbuseFilterParser {
 
 			$this->doLevelCompares( $r2 );
 
-			wfProfileIn( __METHOD__ );
 			$result = AFPData::boolOp( $result, $r2, $op );
-			wfProfileOut( __METHOD__ );
 		}
 	}
 
@@ -1076,9 +1071,7 @@ class AbuseFilterParser {
 			$this->move();
 			$r2 = new AFPData();
 			$this->doLevelSumRels( $r2 );
-			wfProfileIn( __METHOD__ );
 			$result = AFPData::compareOp( $result, $r2, $op );
-			wfProfileOut( __METHOD__ );
 		}
 	}
 
@@ -1087,7 +1080,6 @@ class AbuseFilterParser {
 	 */
 	protected function doLevelSumRels( &$result ) {
 		$this->doLevelMulRels( $result );
-		wfProfileIn( __METHOD__ );
 		$ops = array( '+', '-' );
 		while ( $this->mCur->type == AFPToken::TOp && in_array( $this->mCur->value, $ops ) ) {
 			$op = $this->mCur->value;
@@ -1101,7 +1093,6 @@ class AbuseFilterParser {
 				$result = AFPData::sub( $result, $r2 );
 			}
 		}
-		wfProfileOut( __METHOD__ );
 	}
 
 	/**
@@ -1109,7 +1100,6 @@ class AbuseFilterParser {
 	 */
 	protected function doLevelMulRels( &$result ) {
 		$this->doLevelPow( $result );
-		wfProfileIn( __METHOD__ );
 		$ops = array( '*', '/', '%' );
 		while ( $this->mCur->type == AFPToken::TOp && in_array( $this->mCur->value, $ops ) ) {
 			$op = $this->mCur->value;
@@ -1118,7 +1108,6 @@ class AbuseFilterParser {
 			$this->doLevelPow( $r2 );
 			$result = AFPData::mulRel( $result, $r2, $op, $this->mCur->pos );
 		}
-		wfProfileOut( __METHOD__ );
 	}
 
 	/**
@@ -1126,14 +1115,12 @@ class AbuseFilterParser {
 	 */
 	protected function doLevelPow( &$result ) {
 		$this->doLevelBoolInvert( $result );
-		wfProfileIn( __METHOD__ );
 		while ( $this->mCur->type == AFPToken::TOp && $this->mCur->value == '**' ) {
 			$this->move();
 			$expanent = new AFPData();
 			$this->doLevelBoolInvert( $expanent );
 			$result = AFPData::pow( $result, $expanent );
 		}
-		wfProfileOut( __METHOD__ );
 	}
 
 	/**
@@ -1143,9 +1130,7 @@ class AbuseFilterParser {
 		if ( $this->mCur->type == AFPToken::TOp && $this->mCur->value == '!' ) {
 			$this->move();
 			$this->doLevelSpecialWords( $result );
-			wfProfileIn( __METHOD__ );
 			$result = AFPData::boolInvert( $result );
-			wfProfileOut( __METHOD__ );
 		} else {
 			$this->doLevelSpecialWords( $result );
 		}
@@ -1176,12 +1161,9 @@ class AbuseFilterParser {
 				return; // The result doesn't matter.
 			}
 
-			wfProfileIn( __METHOD__ );
-
 			wfProfileIn( __METHOD__ . "-$func" );
 			$result = AFPData::$func( $result, $r2, $this->mCur->pos );
 			wfProfileOut( __METHOD__ . "-$func" );
-			wfProfileOut( __METHOD__ );
 		}
 	}
 
@@ -1193,11 +1175,9 @@ class AbuseFilterParser {
 		if ( $this->mCur->type == AFPToken::TOp && ( $op == "+" || $op == "-" ) ) {
 			$this->move();
 			$this->doLevelListElements( $result );
-			wfProfileIn( __METHOD__ );
 			if ( $op == '-' ) {
 				$result = AFPData::unaryMinus( $result );
 			}
-			wfProfileOut( __METHOD__ );
 		} else {
 			$this->doLevelListElements( $result );
 		}
@@ -1259,7 +1239,6 @@ class AbuseFilterParser {
 	 */
 	protected function doLevelFunction( &$result ) {
 		if ( $this->mCur->type == AFPToken::TID && isset( self::$mFunctions[$this->mCur->value] ) ) {
-			wfProfileIn( __METHOD__ );
 			$func = self::$mFunctions[$this->mCur->value];
 			$this->move();
 			if ( $this->mCur->type != AFPToken::TBrace || $this->mCur->value != '(' ) {
@@ -1276,7 +1255,6 @@ class AbuseFilterParser {
 			if ( $this->mShortCircuit ) {
 				$this->skipOverBraces();
 				$this->move();
-				wfProfileOut( __METHOD__ );
 				return; // The result doesn't matter.
 			}
 
@@ -1319,7 +1297,6 @@ class AbuseFilterParser {
 			}
 
 			wfProfileOut( __METHOD__ . "-$func" );
-			wfProfileOut( __METHOD__ );
 		} else {
 			$this->doLevelAtom( $result );
 		}
@@ -1331,7 +1308,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function doLevelAtom( &$result ) {
-		wfProfileIn( __METHOD__ );
 		$tok = $this->mCur->value;
 		switch( $this->mCur->type ) {
 			case AFPToken::TID:
@@ -1358,7 +1334,6 @@ class AbuseFilterParser {
 				} elseif ( $tok == "null" ) {
 					$result = new AFPData();
 				} else {
-					wfProfileOut( __METHOD__ );
 					throw new AFPUserVisibleException(
 						'unrecognisedkeyword',
 						$this->mCur->pos,
@@ -1367,11 +1342,9 @@ class AbuseFilterParser {
 				}
 				break;
 			case AFPToken::TNone:
-				wfProfileOut( __METHOD__ );
 				return; // Handled at entry level
 			case AFPToken::TBrace:
 				if ( $this->mCur->value == ')' ) {
-					wfProfileOut( __METHOD__ );
 					return; // Handled at the entry level
 				}
 			case AFPToken::TSquareBracket:
@@ -1410,7 +1383,6 @@ class AbuseFilterParser {
 				);
 		}
 		$this->move();
-		wfProfileOut( __METHOD__ );
 	}
 
 	/* End of levels */
@@ -1421,22 +1393,18 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function getVarValue( $var ) {
-		wfProfileIn( __METHOD__ );
 		$var = strtolower( $var );
 		$builderValues = AbuseFilter::getBuilderValues();
 		if ( !( array_key_exists( $var, $builderValues['vars'] )
 				|| $this->mVars->varIsSet( $var ) ) ) {
 			// If the variable is invalid, throw an exception
-			wfProfileOut( __METHOD__ );
 			throw new AFPUserVisibleException(
 				'unrecognisedvar',
 				$this->mCur->pos,
 				array( $var )
 			);
 		} else {
-			$val = $this->mVars->getVar( $var );
-			wfProfileOut( __METHOD__ );
-			return $val;
+			return $this->mVars->getVar( $var );
 		}
 	}
 
