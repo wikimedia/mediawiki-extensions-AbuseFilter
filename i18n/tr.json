@@ -11,7 +11,8 @@
 			"Srhat",
 			"Vito Genovese",
 			"Ayrıntılı Bilgi",
-			"Sayginer"
+			"Sayginer",
+			"Mavrikant"
 		]
 	},
 	"abusefilter-desc": "Değişikliklere otomatik bulucu yöntemler uygular",
@@ -166,7 +167,7 @@
 	"abusefilter-edit-throttle-groups": "Grup kısma yapan:\n:''(her satıra bir tane, virgülle birleştirin)''",
 	"abusefilter-edit-warn-message": "Uyarı için kullanılan sistem mesajı:",
 	"abusefilter-edit-warn-other": "Diğer mesaj",
-	"abusefilter-edit-warn-other-label": "Diğer mesajın sayfa adı:\n:''(MedyaViki öneki olmadan)''",
+	"abusefilter-edit-warn-other-label": "Diğer mesajın sayfa adı:\n:''(MediaWiki ön eki olmadan)''",
 	"abusefilter-edit-warn-actions": "Eylemler:",
 	"abusefilter-edit-warn-preview": "Seçili mesajı önizle",
 	"abusefilter-edit-warn-edit": "Seçili mesajı oluştur/değiştir",
