@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Elisardojm",
-			"Toliño"
+			"Toliño",
+			"Banjo"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas ás edicións",
@@ -283,6 +284,7 @@
 	"abusefilter-edit-builder-vars-old-html": "Texto wiki vello da páxina, analizado en HTML",
 	"abusefilter-edit-builder-vars-minor-edit": "Se a edición está marcada como menor ou non",
 	"abusefilter-edit-builder-vars-file-sha1": "Hash SHA1 dos contidos do ficheiro",
+	"abusefilter-edit-builder-vars-file-size": "Tamaño do ficheiro en bytes",
 	"abusefilter-filter-log": "Cambios recentes nos filtros",
 	"abusefilter-history": "Historial de cambios do filtro de abusos nº$1",
 	"abusefilter-history-foruser": "Cambios feitos por $1",
