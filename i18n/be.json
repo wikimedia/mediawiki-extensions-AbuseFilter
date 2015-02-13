@@ -3,7 +3,8 @@
 		"authors": [
 			"LexArt",
 			"Тест",
-			"Mikalai Udodau"
+			"Mikalai Udodau",
+			"Дзяніс Тутэйшы"
 		]
 	},
 	"abusefilter": "Настройкі фільтра злоўжыванняў",
@@ -21,7 +22,7 @@
 	"abusefilter-edit-new": "Новы фільтр",
 	"abusefilter-edit-save": "Запісаць фільтр",
 	"abusefilter-edit-throttle-period": "Перыяд часу:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|секунда|секунды|секундаў}}",
+	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|секунда|секунды|секунд}}",
 	"abusefilter-edit-warn-actions": "Дзеянні:",
 	"abusefilter-edit-history": "Гісторыя:",
 	"abusefilter-edit-builder-op-bool-not": "Не (!)",
