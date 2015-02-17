@@ -21,6 +21,7 @@ $wgExtensionCredits['antispam'][] = array(
 	'author' => array( 'Andrew Garrett', 'River Tarnell', 'Victor Vasiliev', 'Marius Hoch' ),
 	'descriptionmsg' => 'abusefilter-desc',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:AbuseFilter',
+	'license-name' => 'GPL-2.0+',
 );
 
 $dir = __DIR__;
@@ -228,4 +229,6 @@ $wgAbuseFilterDefaultWarningMessage = array(
 	'default' => 'abusefilter-warning',
 );
 
+// Age used as cutoff when purging old IP log data.
+// Used by maintenance script purgeOldLogIPData.php
 $wgAbuseFilterLogIPMaxAge  = 3 * 30 * 24 * 3600; // 3 months
