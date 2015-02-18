@@ -71,6 +71,7 @@
 	"abusefilter-log-hidden-implicit": "(peidetud, sest redaktsioon on kustutatud)",
 	"abusefilter-log-cannot-see-details": "Sul pole õigust näha üksikasju selle sissekande kohta.",
 	"abusefilter-log-details-hidden": "Sa ei saa selle sissekande üksikasju vaadata, sest see on üldsuse eest peidetud.",
+	"abusefilter-log-private-not-included": "Määratud identifikaatoritest vähemalt üks vastab erafiltrile. Kuna sul pole lubatud vaadata erafiltrite andmeid, siis neid filtreid ei otsitud.",
 	"abusefilter-log-hide-legend": "Peida logisissekanne",
 	"abusefilter-log-hide-id": "Logisissekande ID:",
 	"abusefilter-log-hide-hidden": "Peida see sissekanne üldsuse eest",
@@ -106,9 +107,10 @@
 	"abusefilter-list-options-deleted-only": "Näita ainult kustutatud filtreid",
 	"abusefilter-list-options-deleted-hide": "Peida kustutatud filtrid",
 	"abusefilter-list-options-deleted-show": "Kaasa kustutatud filtrid",
-	"abusefilter-list-options-scope": "Näidatakse filtreid alates:",
-	"abusefilter-list-options-scope-local": "Kohalik viki",
-	"abusefilter-list-options-scope-global": "Globaalsed reeglid",
+	"abusefilter-list-options-scope": "Näita filtreid:",
+	"abusefilter-list-options-scope-local": "Ainult kohalikud reeglid",
+	"abusefilter-list-options-scope-global": "Ainult globaalsed reeglid",
+	"abusefilter-list-options-scope-all": "Kohalikud ja globaalsed reeglid",
 	"abusefilter-list-options-disabled": "Keelatud filtrid:",
 	"abusefilter-list-options-hidedisabled": "Peida keelatud filtrid",
 	"abusefilter-list-options-submit": "Uuenda",
@@ -386,5 +388,6 @@
 	"abusefilter-diff-next": "Uuem muudatus",
 	"abusefilter-import-intro": "Selle liidese abil saad teistest vikidest filtreid importida.\nAllikvikis klõpsa redigeerimisliidese asukohas \"{{int:abusefilter-edit-tools}}\" nuppu \"{{int:abusefilter-edit-export}}\".\nKopeeri ilmuva tekstikasti sisu, kleebi see sellesse tekstikasti ja seejärel klõpsa nuppu \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "Impordi andmed",
-	"abusefilter-group-default": "Tavaline"
+	"abusefilter-group-default": "Tavaline",
+	"abusefilter-http-error": "Esines HTTP-tõrge: $1."
 }

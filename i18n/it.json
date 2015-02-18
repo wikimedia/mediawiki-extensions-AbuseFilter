@@ -14,7 +14,8 @@
 			"Valepert",
 			"Ximo17",
 			"Ankabel",
-			"Chiara.Graziani1991"
+			"Chiara.Graziani1991",
+			"Nivit"
 		]
 	},
 	"abusefilter-desc": "Applica un'euristica automatica alle modifiche.",
@@ -120,6 +121,7 @@
 	"abusefilter-list-options-scope": "Mostra filtri da:",
 	"abusefilter-list-options-scope-local": "Wiki locale",
 	"abusefilter-list-options-scope-global": "Regole globali",
+	"abusefilter-list-options-scope-all": "Regole locali e globali",
 	"abusefilter-list-options-disabled": "Filtri disattivati:",
 	"abusefilter-list-options-hidedisabled": "Nascondi i filtri disattivati",
 	"abusefilter-list-options-submit": "Aggiorna",

@@ -20,7 +20,8 @@
 			"Vriullop",
 			"Fitoschido",
 			"Jmarchn",
-			"Toniher"
+			"Toniher",
+			"Macofe"
 		]
 	},
 	"abusefilter-desc": "Aplica heurística automàtica a les edicions",
@@ -120,7 +121,7 @@
 	"abusefilter-list-options-deleted-only": "Mostra només els filtres eliminats",
 	"abusefilter-list-options-deleted-hide": "Amaga els filtres eliminats",
 	"abusefilter-list-options-deleted-show": "Mostra els filtres eliminats",
-	"abusefilter-list-options-scope": "Mostra els filtres de:",
+	"abusefilter-list-options-scope": "Mostra els filtres:",
 	"abusefilter-list-options-scope-local": "Wiki local",
 	"abusefilter-list-options-scope-global": "Normes globals",
 	"abusefilter-list-options-disabled": "Filtres deshabilitats:",
