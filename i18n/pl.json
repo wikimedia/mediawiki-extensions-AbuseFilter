@@ -123,7 +123,7 @@
 	"abusefilter-list-options-deleted-only": "pokaż wyłącznie usunięte filtry",
 	"abusefilter-list-options-deleted-hide": "ukryj usunięte filtry",
 	"abusefilter-list-options-deleted-show": "dołącz usunięte filtry",
-	"abusefilter-list-options-scope": "Pokaż filtry z:",
+	"abusefilter-list-options-scope": "Pokaż filtry:",
 	"abusefilter-list-options-scope-local": "Lokalna wiki",
 	"abusefilter-list-options-scope-global": "Globalne zasady",
 	"abusefilter-list-options-disabled": "Wyłączone filtry:",
