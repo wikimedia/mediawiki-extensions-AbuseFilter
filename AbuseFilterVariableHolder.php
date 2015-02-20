@@ -488,14 +488,20 @@ class AFComputedVariable {
 				}
 
 				$dbr = wfGetDB( DB_SLAVE );
-				$res = $dbr->select( 'revision',
-					'DISTINCT rev_user_text',
+				$sqlTmp = $dbr->selectSQLText(
+					'revision',
+					array( 'rev_user_text', 'rev_timestamp' ),
 					array(
 						'rev_page' => $title->getArticleID(),
-						'rev_timestamp<' . $dbr->addQuotes( $dbr->timestamp( $cutOff ) )
+						'rev_timestamp < ' . $dbr->addQuotes( $dbr->timestamp( $cutOff ) )
 					),
 					__METHOD__,
-					array( 'ORDER BY' => 'rev_timestamp DESC', 'LIMIT' => 10 )
+					// Some pages have < 10 authors but many revisions (e.g. bot pages)
+					array( 'ORDER BY' => 'rev_timestamp DESC', 'LIMIT' => 100 )
+				);
+				$res = $dbr->query(
+					"SELECT rev_user_text FROM ($sqlTmp) AS tmp " .
+					"GROUP BY rev_user_text ORDER BY MAX(rev_timestamp) DESC LIMIT 10"
 				);
 
 				$users = array();
