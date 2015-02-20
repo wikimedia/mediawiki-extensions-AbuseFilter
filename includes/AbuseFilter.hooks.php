@@ -603,6 +603,14 @@ class AbuseFilterHooks {
 				'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_wiki', "(afl_wiki)" ] );
 			$updater->addExtensionUpdate( [
 				'changeField', 'abuse_filter_log', 'afl_namespace', "INTEGER", '' ] );
+			$updater->addExtensionUpdate( [
+				'addPgField', 'abuse_filter', 'af_group', "TEXT NOT NULL DEFAULT 'default'" ] );
+			$updater->addExtensionUpdate( [
+				'addPgExtIndex', 'abuse_filter', 'abuse_filter_group_enabled_id',
+				"(af_group, af_enabled, af_id)"
+			] );
+			$updater->addExtensionUpdate( [
+				'addPgField', 'abuse_filter_history', 'afh_group', "TEXT" ] );
 		}
 
 		$updater->addExtensionUpdate( [ [ __CLASS__, 'createAbuseFilterUser' ] ] );

@@ -21,9 +21,11 @@ CREATE TABLE abuse_filter (
     af_throttled        SMALLINT     NOT NULL             DEFAULT 0,
     af_deleted          SMALLINT     NOT NULL             DEFAULT 0,
     af_actions          TEXT         NOT NULL             DEFAULT '',
-    af_global           SMALLINT     NOT NULL             DEFAULT 0
+    af_global           SMALLINT     NOT NULL             DEFAULT 0,
+    af_group            TEXT         NOT NULL             DEFAULT 'default'
 );
 CREATE INDEX abuse_filter_user ON abuse_filter(af_user);
+CREATE INDEX abuse_filter_group_enabled_id ON abuse_filter(af_group,af_enabled,af_id);
 
 
 CREATE TABLE abuse_filter_action (
@@ -72,7 +74,8 @@ CREATE TABLE abuse_filter_history (
     afh_public_comments  TEXT         NOT NULL,
     afh_actions          TEXT         NOT NULL,
     afh_deleted          SMALLINT     NOT NULL             DEFAULT 0,
-    afh_changed_fields   TEXT         NOT NULL             DEFAULT ''
+    afh_changed_fields   TEXT         NOT NULL             DEFAULT '',
+    afh_group            TEXT         NULL
 );
 CREATE INDEX abuse_filter_history_filter    ON abuse_filter_history(afh_filter);
 CREATE INDEX abuse_filter_history_user      ON abuse_filter_history(afh_user);
