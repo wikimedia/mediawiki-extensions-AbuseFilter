@@ -27,7 +27,8 @@
 			"Wyz",
 			"Zetud",
 			"Orlodrim",
-			"0x010C"
+			"0x010C",
+			"Nicolapps"
 		]
 	},
 	"abusefilter-desc": "Applique des heuristiques automatiques aux modifications",
@@ -131,7 +132,7 @@
 	"abusefilter-list-options-deleted-hide": "Masquer les filtres supprimés",
 	"abusefilter-list-options-deleted-show": "Inclure les filtres supprimés",
 	"abusefilter-list-options-scope": "Afficher les filtres depuis:",
-	"abusefilter-list-options-scope-local": "Wiki local",
+	"abusefilter-list-options-scope-local": "Règles locales uniquement",
 	"abusefilter-list-options-scope-global": "Règles globales",
 	"abusefilter-list-options-disabled": "Filtres désactivés :",
 	"abusefilter-list-options-hidedisabled": "Masquer les filtres désactivés",
