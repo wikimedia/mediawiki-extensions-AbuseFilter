@@ -28,7 +28,8 @@
 			"Zetud",
 			"Orlodrim",
 			"0x010C",
-			"Nicolapps"
+			"Nicolapps",
+			"Linedwell"
 		]
 	},
 	"abusefilter-desc": "Applique des heuristiques automatiques aux modifications",
@@ -131,9 +132,10 @@
 	"abusefilter-list-options-deleted-only": "Ne montrer que les filtres supprimés",
 	"abusefilter-list-options-deleted-hide": "Masquer les filtres supprimés",
 	"abusefilter-list-options-deleted-show": "Inclure les filtres supprimés",
-	"abusefilter-list-options-scope": "Afficher les filtres depuis:",
+	"abusefilter-list-options-scope": "Afficher les filtres :",
 	"abusefilter-list-options-scope-local": "Règles locales uniquement",
-	"abusefilter-list-options-scope-global": "Règles globales",
+	"abusefilter-list-options-scope-global": "Règles locales uniquement",
+	"abusefilter-list-options-scope-all": "Règles locales et globales",
 	"abusefilter-list-options-disabled": "Filtres désactivés :",
 	"abusefilter-list-options-hidedisabled": "Masquer les filtres désactivés",
 	"abusefilter-list-options-submit": "Mettre à jour",
