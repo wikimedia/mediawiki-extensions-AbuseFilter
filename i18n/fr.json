@@ -29,7 +29,8 @@
 			"Orlodrim",
 			"0x010C",
 			"Nicolapps",
-			"Linedwell"
+			"Linedwell",
+			"Hercule"
 		]
 	},
 	"abusefilter-desc": "Applique des heuristiques automatiques aux modifications",
@@ -37,10 +38,10 @@
 	"abuselog": "Journal des filtres antiabus",
 	"abusefilter-intro": "Bienvenue dans l'interface de gestion des filtres antiabus.\nLe filtre antiabus est un mécanisme logiciel automatisé qui permet d'appliquer des heuristiques prédéfinies à toutes les actions.\nCette interface présente une liste des filtres définis, et donne la possibilité de les modifier.",
 	"abusefilter-mustbeeditor": "Pour des raisons de sécurité, seuls les utilisateurs avec le droit de modifier les filtres antiabus peuvent utiliser cette interface.",
-	"abusefilter-warning": "'''Avertissement :''' cette action a été automatiquement identifiée comme nuisible.\nLes modifications non-constructives seront rapidement annulées et les âneries répétées ou outrageantes provoqueront le blocage de votre compte ou de votre adresse IP.\nSi vous êtes convaincu{{GENDER:||e|(e)}} que cette action est constructive, vous pouvez la soumettre une nouvelle fois pour la confirmer.\nVoici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1",
-	"abusefilter-disallowed": "Cette action a été automatiquement identifiée comme nuisible, et a donc été empêchée.\nSi vous êtes convaincu{{GENDER:||e|(e)}} que votre action était constructive, veuillez contacter un administrateur et l'informer de ce que vous avez essayé de faire.\nVoici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1",
+	"abusefilter-warning": "'''Avertissement :''' cette action a été automatiquement identifiée comme nuisible.\nLes modifications non-constructives seront rapidement annulées et les âneries répétées ou outrageantes provoqueront le blocage de votre compte ou de votre adresse IP.\nSi vous estimez que cette action est constructive, vous pouvez la soumettre une nouvelle fois pour la confirmer.\nVoici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1",
+	"abusefilter-disallowed": "Cette action a été automatiquement identifiée comme nuisible, et a donc été empêchée.\nSi vous pensez que votre action était constructive, veuillez contacter un administrateur et l'informer de ce que vous avez essayé de faire.\nVoici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1",
 	"abusefilter-blocked-display": "Cette action a été automatiquement identifée comme nuisible\net vous avez déjà été empêché de l'exécuter.\nDe plus, pour protéger {{SITENAME}}, votre compte utilisateur et toutes les adresses IP associées ont été bloqués contre toute modification.\nSi ceci est dû à une erreur, veuillez contacter un administrateur.\nVoici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1",
-	"abusefilter-degrouped": "Cette action a été automatiquement identifiée comme nuisible.\nEn conséquence, elle a été interdite et, puisque votre compte est suspecté de compromission, tous vos droits ont été retirés.\nSi vous êtes convaincu{{GENDER:||e|(e)}} que cela est dû à une erreur, veuillez contacter un bureaucrate avec une explication de cette action afin de rétablir vos droits.\nVoici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1",
+	"abusefilter-degrouped": "Cette action a été automatiquement identifiée comme nuisible.\nEn conséquence, elle a été interdite et, puisque votre compte est suspecté de compromission, tous vos droits ont été retirés.\nSi vous pensez que cela est dû à une erreur, veuillez contacter un bureaucrate avec une explication de cette action afin de rétablir vos droits.\nVoici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1",
 	"abusefilter-autopromote-blocked": "Cette action a été automatiquement identifiée comme nuisible et a donc été empêchée.\nEn conséquence, à titre de mesure de sécurité, quelques privilèges accordés d'habitude pour les comptes établis ont été retirés temporairement de votre compte.\nVoici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1",
 	"abusefilter-blocker": "Filtre antiabus",
 	"abusefilter-blockreason": "Bloqué automatiquement par le filtre antiabus.\nDescription de la règle associée : $1",
@@ -146,7 +147,7 @@
 	"abusefilter-tools-reautoconfirm-user": "Utilisateur :",
 	"abusefilter-tools-reautoconfirm-submit": "Autoconfirmer à nouveau",
 	"abusefilter-reautoconfirm-none": "Le statut autoconfirmé de {{GENDER:$1|cet utilisateur|cette utilisatrice}} n'a pas été suspendu.",
-	"abusefilter-reautoconfirm-notallowed": "Vous n'êtes pas autorisé{{GENDER:||e|(e)}} à rétablir l'état autoconfirmé.",
+	"abusefilter-reautoconfirm-notallowed": "Vous ne pouvez pas rétablir l'état autoconfirmé.",
 	"abusefilter-reautoconfirm-done": "L'état autoconfirmé du compte utilisateur a été rétabli",
 	"abusefilter-status": "{{PLURAL:$1|Dans la dernière action|Parmi les $1 dernières actions}}, $2 ($3 %) {{PLURAL:$2|a|ont}} atteint la limite des $4 conditions autorisées. Et $5 ($6 %) {{PLURAL:$5|a été détectée|ont été détectées}} par l'un des filtres actuellement activés.",
 	"abusefilter-edit": "Modifier le filtre d'abus",

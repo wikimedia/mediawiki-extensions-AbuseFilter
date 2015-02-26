@@ -105,9 +105,10 @@
 	"abusefilter-list-options-deleted-only": "Amosar solu filtros borraos",
 	"abusefilter-list-options-deleted-hide": "Despintar filtros borraos",
 	"abusefilter-list-options-deleted-show": "Incluyir filtros borraos",
-	"abusefilter-list-options-scope": "Amosar los filtros de:",
-	"abusefilter-list-options-scope-local": "Wiki llocal",
-	"abusefilter-list-options-scope-global": "Regles globales",
+	"abusefilter-list-options-scope": "Amosar los filtros:",
+	"abusefilter-list-options-scope-local": "Sólo regles llocales",
+	"abusefilter-list-options-scope-global": "Sólo regles globales",
+	"abusefilter-list-options-scope-all": "Regles llocales y globales",
 	"abusefilter-list-options-disabled": "Filtros desactivaos:",
 	"abusefilter-list-options-hidedisabled": "Despintar filtros desactivaos",
 	"abusefilter-list-options-submit": "Anovar",
@@ -283,6 +284,7 @@
 	"abusefilter-edit-builder-vars-old-html": "Testu wiki antiguu de la páxina, pasáu a HTML",
 	"abusefilter-edit-builder-vars-minor-edit": "Si la edición ta marcada como menor o non",
 	"abusefilter-edit-builder-vars-file-sha1": "Hash SHA1 del conteníu del ficheru",
+	"abusefilter-edit-builder-vars-file-size": "Tamañu del ficheru en bytes",
 	"abusefilter-filter-log": "Cambios de recién nos filtros",
 	"abusefilter-history": "Historial de cambios de la peñera d'abusos #$1",
 	"abusefilter-history-foruser": "Cambios de $1",
@@ -393,5 +395,8 @@
 	"abusefilter-import-intro": "Pues emplegar esta interfaz pa importar filtros d'otres wikis.\nNa wiki d'orixe, calca \"{{int:abusefilter-edit-export}}\" baxo \"{{int:abusefilter-edit-tools}}\" na interfaz d'edición.\nCopia del cuadru de testu qu'apaez y apega nesti cuadru de testu, y darréu calca \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "Importar datos",
 	"abusefilter-group-default": "Predetermináu",
-	"abusefilter-http-error": "Hebo un error HTTP: $1."
+	"abusefilter-http-error": "Hebo un error HTTP: $1.",
+	"apihelp-abusefiltercheckmatch-description": "Revisa pa ver si un AbuseFilter casa con un conxuntu de variables, socesu d'editor rexistráu d'AbuseFilter.\n\nNecesítase vars, rcid o logid, anque sólo pue usase unu.",
+	"apihelp-abusefiltercheckmatch-param-filter": "El testu completu del filtru a comprobar pa una coincidencia.",
+	"apihelp-abusefiltercheckmatch-param-vars": "Matriz de variables codificaes en JSON escontra la que comprobar."
 }
