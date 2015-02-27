@@ -106,8 +106,8 @@ $specialPageAliases['de'] = array(
 
 /** Zazaki (Zazaki) */
 $specialPageAliases['diq'] = array(
-	'AbuseLog' => array( 'DekewtışéNenga' ),
-	'AbuseFilter' => array( 'AvrécéNenga' ),
+	'AbuseLog' => array( 'QeydêKedweriye' ),
+	'AbuseFilter' => array( 'ParzûnêKedweriye' ),
 );
 
 /** Lower Sorbian (dolnoserbski) */
