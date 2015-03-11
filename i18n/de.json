@@ -413,6 +413,7 @@
 	"abusefilter-import-submit": "Daten importieren",
 	"abusefilter-group-default": "Standard",
 	"abusefilter-http-error": "Ein HTTP-Fehler ist aufgetreten: $1.",
+	"apihelp-abusefiltercheckmatch-param-filter": "Der vollständige Filtertext, der für einen Treffer überprüft werden soll.",
 	"apihelp-abusefilterchecksyntax-description": "Prüft die Syntax eines Missbrauchfilters.",
 	"apihelp-abusefilterchecksyntax-example-1": "Syntax eines gültigen Filters prüfen",
 	"apihelp-abusefilterchecksyntax-example-2": "Syntax eines ungültigen Filters prüfen",
