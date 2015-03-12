@@ -109,6 +109,7 @@
 	"abusefilter-list-options-scope": "Mostrar os filtros:",
 	"abusefilter-list-options-scope-local": "Só regras locais",
 	"abusefilter-list-options-scope-global": "Só regras globais",
+	"abusefilter-list-options-scope-all": "Regras locais e globais",
 	"abusefilter-list-options-disabled": "Filtros desactivados:",
 	"abusefilter-list-options-hidedisabled": "Agochar os filtros deshabilitados",
 	"abusefilter-list-options-submit": "Actualizar",
