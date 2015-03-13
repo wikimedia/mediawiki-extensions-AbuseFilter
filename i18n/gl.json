@@ -411,7 +411,7 @@
 	"apihelp-query+abusefilters-example-1": "Listar os filtros públicos habilitados",
 	"apihelp-query+abusefilters-example-2": "Mostrar algúns detalles sobre os filtros",
 	"apihelp-query+abuselog-description": "Mostrar eventos que foron detectados por un dos filtros antiabusos.",
-	"apihelp-query+abuselog-param-start": "Selo de tempo para comenzar a enumeración",
+	"apihelp-query+abuselog-param-start": "Selo de tempo para comezar a enumeración",
 	"apihelp-query+abuselog-param-end": "Selo de tempo para rematar a enumeración.",
 	"apihelp-query+abuselog-param-user": "Só mostrar entradas feitas por un usuario ou dirección IP dados.",
 	"apihelp-query+abuselog-param-title": "Só mostrar entradas ocorridas nunha páxina dada.",
