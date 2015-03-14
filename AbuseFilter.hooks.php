@@ -450,7 +450,7 @@ class AbuseFilterHooks {
 		# This is a pretty awful hack.
 		$dbr = wfGetDB( DB_SLAVE );
 
-		$where = array( 'afa_consequence' => 'tag' );
+		$where = array( 'afa_consequence' => 'tag', 'af_deleted' => false );
 		if ( $enabled ) {
 			$where['af_enabled'] = true;
 		}
