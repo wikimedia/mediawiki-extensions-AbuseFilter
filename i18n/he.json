@@ -405,5 +405,11 @@
 	"abusefilter-import-intro": "באפשרותכם להשתמש בממשק זה כדי לייבא מסננים מאתרי ויקי אחרים.\nבאתר המקור, לחצו על \"{{int:abusefilter-edit-export}}\" שב\"{{int:abusefilter-edit-tools}}\" בממשק העריכה.\nהעתיקו מתיבת הטקסט המופיעה שם, הדביקו את הטקסט בתיבת הטקסט הזאת, ולאחר מכן לחצו על \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "ייבוא המידע",
 	"abusefilter-group-default": "ברירת המחדל",
-	"abusefilter-http-error": "אירעה שגיאת HTTP עם ההודעה הבאה: $1"
+	"abusefilter-http-error": "אירעה שגיאת HTTP עם ההודעה הבאה: $1",
+	"apihelp-abusefiltercheckmatch-param-rcid": "מזהה בשינויים האחרונים לבדוק כנגדו",
+	"apihelp-abusefiltercheckmatch-param-logid": "מזהה ביומן מסנן השחתות לבדוק כנגדו",
+	"apihelp-abusefilterchecksyntax-description": "בדיקת תחזיר של מסנן השחתות.",
+	"apihelp-abusefilterchecksyntax-param-filter": "הטקסט המלא של המסנן לבדיקת תחביר עבורו.",
+	"apihelp-abusefilterchecksyntax-example-1": "בדיקת תחביר למסנן תקין",
+	"apihelp-abusefilterchecksyntax-example-2": "בדיקת תחביר למסנן לא תקין"
 }
