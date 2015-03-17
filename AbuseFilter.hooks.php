@@ -4,6 +4,8 @@ use MediaWiki\Auth\AuthManager;
 use MediaWiki\MediaWikiServices;
 
 class AbuseFilterHooks {
+	const FETCH_ALL_TAGS_KEY = 'abusefilter-fetch-all-tags';
+
 	public static $successful_action_vars = false;
 	/** @var WikiPage|Article|bool */
 	public static $last_edit_page = false; // make sure edit filter & edit save hooks match
@@ -477,53 +479,90 @@ class AbuseFilterHooks {
 	}
 
 	/**
+	 * Purge all cache related to tags, both within AbuseFilter and in core
+	 */
+	public static function purgeTagCache() {
+		ChangeTags::purgeTagCacheAll();
+
+		$services = MediaWikiServices::getInstance();
+		$cache = $services->getMainWANObjectCache();
+
+		$cache->delete(
+			$cache->makeKey( self::FETCH_ALL_TAGS_KEY, 0 )
+		);
+
+		$cache->delete(
+			$cache->makeKey( self::FETCH_ALL_TAGS_KEY, 1 )
+		);
+	}
+
+	/**
 	 * @param array $tags
 	 * @param bool $enabled
 	 * @return bool
 	 */
 	private static function fetchAllTags( array &$tags, $enabled ) {
-		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
+		$services = MediaWikiServices::getInstance();
+		$cache = $services->getMainWANObjectCache();
 
-		# This is a pretty awful hack.
-		$dbr = wfGetDB( DB_SLAVE );
+		$tags = $cache->getWithSetCallback(
+			// Key to store the cached value under
+			$cache->makeKey( self::FETCH_ALL_TAGS_KEY, (int) $enabled ),
 
-		$where = [ 'afa_consequence' => 'tag', 'af_deleted' => false ];
-		if ( $enabled ) {
-			$where['af_enabled'] = true;
-		}
-		$res = $dbr->select(
-			[ 'abuse_filter_action', 'abuse_filter' ],
-			'afa_parameters',
-			$where,
-			__METHOD__,
-			[],
-			[ 'abuse_filter' => [ 'INNER JOIN', 'afa_filter=af_id' ] ]
-		);
+			// Time-to-live (in seconds)
+			$cache::TTL_MINUTE,
 
-		foreach ( $res as $row ) {
-			$tags = array_filter(
-				array_merge( explode( "\n", $row->afa_parameters ), $tags )
-			);
-		}
+			// Function that derives the new key value
+			function ( $oldValue, &$ttl, array &$setOpts ) use ( $enabled, $tags ) {
+				global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
 
-		if ( $wgAbuseFilterCentralDB && !$wgAbuseFilterIsCentral ) {
-			$dbr = wfGetDB( DB_SLAVE, [], $wgAbuseFilterCentralDB );
-			$where['af_global'] = 1;
-			$res = $dbr->select(
-				[ 'abuse_filter_action', 'abuse_filter' ],
-				'afa_parameters',
-				$where,
-				__METHOD__,
-				[],
-				[ 'abuse_filter' => [ 'INNER JOIN', 'afa_filter=af_id' ] ]
-			);
+				$dbr = wfGetDB( DB_REPLICA );
+				// Account for any snapshot/replica DB lag
+				$setOpts += Database::getCacheSetOptions( $dbr );
 
-			foreach ( $res as $row ) {
-				$tags = array_filter(
-					array_merge( explode( "\n", $row->afa_parameters ), $tags )
+				# This is a pretty awful hack.
+
+				$where = [ 'afa_consequence' => 'tag', 'af_deleted' => false ];
+				if ( $enabled ) {
+					$where['af_enabled'] = true;
+				}
+				$res = $dbr->select(
+					[ 'abuse_filter_action', 'abuse_filter' ],
+					'afa_parameters',
+					$where,
+					__METHOD__,
+					[],
+					[ 'abuse_filter' => [ 'INNER JOIN', 'afa_filter=af_id' ] ]
 				);
+
+				foreach ( $res as $row ) {
+					$tags = array_filter(
+						array_merge( explode( "\n", $row->afa_parameters ), $tags )
+					);
+				}
+
+				if ( $wgAbuseFilterCentralDB && !$wgAbuseFilterIsCentral ) {
+					$dbr = wfGetDB( DB_SLAVE, [], $wgAbuseFilterCentralDB );
+					$where['af_global'] = 1;
+					$res = $dbr->select(
+						[ 'abuse_filter_action', 'abuse_filter' ],
+						'afa_parameters',
+						$where,
+						__METHOD__,
+						[],
+						[ 'abuse_filter' => [ 'INNER JOIN', 'afa_filter=af_id' ] ]
+					);
+
+					foreach ( $res as $row ) {
+						$tags = array_filter(
+							array_merge( explode( "\n", $row->afa_parameters ), $tags )
+						);
+					}
+				}
+
+				return $tags;
 			}
-		}
+		);
 
 		return true;
 	}
