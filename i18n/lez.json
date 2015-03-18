@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Namik"
+			"Namik",
+			"Soul Train"
 		]
 	},
 	"abusefilter-log-search-user": "Иштиракчи:",
@@ -9,9 +10,11 @@
 	"abusefilter-log-noactions": "садни",
 	"abusefilter-log-hide-reason": "Кар",
 	"abusefilter-list-edit": "Дегишарун",
-	"abusefilter-deleted": "Къакъудун",
+	"abusefilter-deleted": "Алудун",
 	"abusefilter-edit-history": "Тарих",
 	"abusefilter-edit-builder-op-bool-not": "Ваъ (!)",
 	"abusefilter-edit-builder-op-bool-and": "ва",
+	"abusefilter-action-block": "Блокарун",
+	"abusefilter-action-degroup": "КӀеретӀдикай акъудун",
 	"abusefilter-topnav-home": "КIвал"
 }
