@@ -168,7 +168,7 @@
 	"abusefilter-edit-action-flag": "Die Bearbeitung im Missbrauchsfilter-Logbuch markieren.",
 	"abusefilter-edit-action-blockautopromote": "Den Status „Automatisch bestätigter Benutzer“ entziehen.",
 	"abusefilter-edit-action-degroup": "Benutzer aus allen Gruppen mit Sonderrechten entfernen",
-	"abusefilter-edit-action-block": "Benutzer/IP-Adresse sperren",
+	"abusefilter-edit-action-block": "IP-Adresse/Benutzer sperren",
 	"abusefilter-edit-action-throttle": "Die Aktion nur auslösen, sofern der Benutzer ein bestimmtes Limit überschreitet.",
 	"abusefilter-edit-action-rangeblock": "/16-Range sperren, aus der der Benutzer stammt",
 	"abusefilter-edit-action-tag": "Die Bearbeitung für eine spätere Überprüfung markieren.",
