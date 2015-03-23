@@ -33,7 +33,7 @@
 			"Liuxinyu970226"
 		]
 	},
-	"abusefilter-desc": "{{desc|name=Abuse Filter|url=http://www.mediawiki.org/wiki/Extension:AbuseFilter}}",
+	"abusefilter-desc": "{{desc|name=Abuse Filter|url=https://www.mediawiki.org/wiki/Extension:AbuseFilter}}",
 	"abusefilter": "{{doc-special|AbuseFilter}}",
 	"abuselog": "{{doc-special|AbuseLog}}\n{{Identical|Abuse log}}",
 	"abusefilter-intro": "Introduction text for the list of filter rules.",
