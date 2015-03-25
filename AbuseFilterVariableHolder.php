@@ -363,10 +363,17 @@ class AFComputedVariable {
 				// This should ONLY be used when sharing a parse operation with the edit.
 
 				/* @var WikiPage $article */
-				$article = $parameters['article'];
-				if ( $article !== null
-					&& ( !defined( 'MW_SUPPORTS_CONTENTHANDLER' )
-						|| $article->getContentModel() === CONTENT_MODEL_WIKITEXT )
+				if ( isset( $parameters['article'] ) ) {
+					$article = $parameters['article'];
+				} else {
+					$article = self::articleFromTitle(
+						$parameters['namespace'],
+						$parameters['title']
+					);
+				}
+				if (
+					!defined( 'MW_SUPPORTS_CONTENTHANDLER' ) ||
+					$article->getContentModel() === CONTENT_MODEL_WIKITEXT
 				) {
 					$textVar = $parameters['text-var'];
 
@@ -428,11 +435,18 @@ class AFComputedVariable {
 				break;
 			case 'parse-wikitext':
 				// Should ONLY be used when sharing a parse operation with the edit.
-				$article = $parameters['article'];
-
-				if ( $article !== null
-					&& ( !defined( 'MW_SUPPORTS_CONTENTHANDLER' )
-						|| $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) ) {
+				if ( isset( $parameters['article'] ) ) {
+					$article = $parameters['article'];
+				} else {
+					$article = self::articleFromTitle(
+						$parameters['namespace'],
+						$parameters['title']
+					);
+				}
+				if (
+					!defined( 'MW_SUPPORTS_CONTENTHANDLER' ) ||
+					$article->getContentModel() === CONTENT_MODEL_WIKITEXT
+				) {
 					$textVar = $parameters['wikitext-var'];
 
 					// XXX: Use prepareContentForEdit. But we need a Content object for that.
