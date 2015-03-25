@@ -277,6 +277,9 @@ class AbuseFilter {
 		} else {
 			$dbr = wfGetDB( DB_SLAVE );
 		}
+		if ( $filter === 'new' ) {
+			return false;
+		};
 		$hidden = $dbr->selectField(
 			'abuse_filter',
 			'af_hidden',
