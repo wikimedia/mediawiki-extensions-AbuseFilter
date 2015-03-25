@@ -1146,8 +1146,17 @@ class AbuseFilter {
 	 */
 	public static function loadVarDump( $stored_dump ) {
 		// Back-compat
-		if ( strpos( $stored_dump, 'stored-text:' ) === false ) {
-			return unserialize( $stored_dump );
+		if ( substr( $stored_dump, 0, strlen( 'stored-text:' ) ) !== 'stored-text:' ) {
+			$data = unserialize( $stored_dump );
+			if ( is_array( $data ) ) {
+				$vh = new AbuseFilterVariableHolder;
+				foreach ( $data as $name => $value ) {
+					$vh->setVar( $name, $value );
+				}
+				return $vh;
+			} else {
+				return $data;
+			}
 		}
 
 		$text_id = substr( $stored_dump, strlen( 'stored-text:' ) );
