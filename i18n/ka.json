@@ -6,7 +6,8 @@
 			"Dawid Deutschland",
 			"Malafaya",
 			"Temuri rajavi",
-			"გიორგიმელა"
+			"გიორგიმელა",
+			"Otogi"
 		]
 	},
 	"abusefilter-desc": "საშუალებას იძლევა რედაქტირებისას გამოიყენოს ევრისტიკული ფილტრები",
@@ -359,7 +360,7 @@
 	"abusefilter-diff-backhistory": "ფილტრის ისტორიაში დაბრუნება",
 	"abusefilter-diff-prev": "ძველი ცვლილება",
 	"abusefilter-diff-next": "ახალი ცვლილება",
-	"abusefilter-import-intro": "თქვენ შეგიძლიათ გამოიყენოთეს ინტერფეისი სხვა ვიკებიდან ფილტრების იმპორტირებისათვის.\nვიკის წყაროში, დააჭირეთ \"{{int:abusefilter-edit-export}}\" რედაქტირების ინტერფეისის \"{{int:abusefilter-edit-tools}}\" განყოფილებაში.\nდააკოპირეთ ტექსტური ველის შიგთავსი, გადმოიტანეთ ამ გვერდზე და დააჭირეთ \"{{int:abusefilter-import-submit}}\".",
+	"abusefilter-import-intro": "თქვენ შეგიძლიათ გამოიყენოთეს ინტერფეისი სხვა ვიკებიდან ფილტრების იმპორტირებისათვის.\nვიკის წყაროში, დააჭირეთ „{{int:abusefilter-edit-export}}“ რედაქტირების ინტერფეისის „{{int:abusefilter-edit-tools}}“ განყოფილებაში.\nდააკოპირეთ ტექსტური ველის შიგთავსი, გადმოიტანეთ ამ გვერდზე და დააჭირეთ „{{int:abusefilter-import-submit}}“.",
 	"abusefilter-import-submit": "მონაცემების იმპორტირება",
 	"abusefilter-group-default": "სტანდარტული"
 }

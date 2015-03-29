@@ -15,7 +15,8 @@
 			"Ата",
 			"Тест",
 			"Mykola Swarnyk",
-			"Olion"
+			"Olion",
+			"DonDrakon"
 		]
 	},
 	"abusefilter-desc": "Застосовує до редагувань автоматичні евристики.",
@@ -118,9 +119,10 @@
 	"abusefilter-list-options-deleted-only": "Показати лише вилучені фільтри",
 	"abusefilter-list-options-deleted-hide": "Приховати вилучені фільтри",
 	"abusefilter-list-options-deleted-show": "Включити вилучені фільтри",
-	"abusefilter-list-options-scope": "Показати фільтри починаючи з:",
-	"abusefilter-list-options-scope-local": "Локальна вікі",
-	"abusefilter-list-options-scope-global": "Глобальні правила",
+	"abusefilter-list-options-scope": "Показати фільтри:",
+	"abusefilter-list-options-scope-local": "Тільки локальні правила",
+	"abusefilter-list-options-scope-global": "Тільки глобальні правила",
+	"abusefilter-list-options-scope-all": "Локальні і глобальні правила",
 	"abusefilter-list-options-disabled": "Відключені фільтри:",
 	"abusefilter-list-options-hidedisabled": "Приховати відключені фільтри:",
 	"abusefilter-list-options-submit": "Оновити",
@@ -297,6 +299,7 @@
 	"abusefilter-edit-builder-vars-old-html": "Вікітекст старої сторінки, перетворений в HTML",
 	"abusefilter-edit-builder-vars-minor-edit": "Чи було редагування позначене як незначне",
 	"abusefilter-edit-builder-vars-file-sha1": "SHA1-хеш вмісту файлу",
+	"abusefilter-edit-builder-vars-file-size": "Розмір файлу у байтах",
 	"abusefilter-filter-log": "Нові зміни фільтрів",
 	"abusefilter-history": "Історія змін фільтра редагувань #$1",
 	"abusefilter-history-foruser": "Зміни, зроблені $1",
@@ -407,5 +410,6 @@
 	"abusefilter-import-intro": "Ви можете використовувати цей інтерфейс для імпорту фільтрів з інших вікі.\nУ джерельній вікі, натисніть «{{int:abusefilter-edit-export}}» у розділі «{{int:abusefilter-edit-tools}}» інтерфейсу редагування.\nСкопіюйте зміст текстового поля, вставте його у цю сторінку і натисніть «{{int:abusefilter-import-submit}}».",
 	"abusefilter-import-submit": "Імпортувати дані",
 	"abusefilter-group-default": "Стандартна",
-	"abusefilter-http-error": "Сталася помилка HTTP:  $1."
+	"abusefilter-http-error": "Сталася помилка HTTP:  $1.",
+	"apihelp-abusefiltercheckmatch-param-filter": "Повнотекстовий фільтр для перевірки на відповідність."
 }
