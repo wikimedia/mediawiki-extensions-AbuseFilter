@@ -86,6 +86,7 @@
 	"abusefilter-list-consequences": "Consequences",
 	"abusefilter-list-visibility": "Visibility",
 	"abusefilter-list-hitcount": "Hit count",
+	"abusefilter-list-lasthit": "Last hit",
 	"abusefilter-list-edit": "Edit",
 	"abusefilter-list-details": "Details",
 	"abusefilter-list-limit": "Number per page:",
