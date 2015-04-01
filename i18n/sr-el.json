@@ -67,6 +67,7 @@
 	"abusefilter-log-linkoncontribs": "dnevnik zloupotrebe",
 	"abusefilter-log-linkoncontribs-text": "Izveštaj zloupotrebe ovog korisnika",
 	"abusefilter-log-hidden": "(unos je sakriven)",
+	"abusefilter-log-hidden-implicit": "(skriveno zato što je izmena obrisana)",
 	"abusefilter-log-cannot-see-details": "Nemate ovlašćenje da vidite detalje ovog unosa.",
 	"abusefilter-log-details-hidden": "Ne možete da vidite detalje ovog filtera jer su sakriveni.",
 	"abusefilter-log-hide-legend": "Sakrij unos u izveštaju",
