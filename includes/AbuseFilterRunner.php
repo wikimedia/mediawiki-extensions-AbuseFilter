@@ -156,7 +156,7 @@ class AbuseFilterRunner {
 			$result['runtime']
 		);
 		$this->recordPerFilterProfiling( $result['profiling'] );
-		$this->recordStats( $result['condCount'] );
+		$this->recordStats( $result['condCount'], $result['runtime'], (bool)$matchedFilters );
 
 		if ( count( $matchedFilters ) === 0 ) {
 			return Status::newGood();
@@ -348,6 +348,7 @@ class AbuseFilterRunner {
 			}
 		}
 
+		// Tag the action if the condition limit was hit
 		if ( $this->parser->getCondCount() > $wgAbuseFilterConditionLimit ) {
 			$actionID = $this->getTaggingID();
 			AbuseFilter::bufferTagsToSetByAction( [ $actionID => [ 'abusefilter-condition-limit' ] ] );
@@ -477,34 +478,62 @@ class AbuseFilterRunner {
 	 * Update global statistics
 	 *
 	 * @param int $condsUsed The amount of used conditions
+	 * @param float $totalTime Time taken, in milliseconds
+	 * @param bool $anyMatch Whether at least one filter matched the action
 	 */
-	protected function recordStats( $condsUsed ) {
-		global $wgAbuseFilterConditionLimit, $wgAbuseFilterProfileActionsCap;
-
+	protected function recordStats( $condsUsed, $totalTime, $anyMatch ) {
+		$profileKey = AbuseFilter::filterProfileGroupKey( $this->group );
 		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
 
-		$overflowKey = AbuseFilter::filterLimitReachedKey();
-		$totalKey = AbuseFilter::filterUsedKey( $this->group );
+		// Note: All related data is stored in a single memcache entry and updated via merge()
+		// to avoid race conditions where partial updates on competing instances corrupt the data.
+		$stash->merge(
+			$profileKey,
+			function ( $cache, $key, $profile ) use ( $condsUsed, $totalTime, $anyMatch ) {
+				global $wgAbuseFilterConditionLimit, $wgAbuseFilterProfileActionsCap;
 
-		$total = $stash->get( $totalKey );
+				if ( $profile === false || $profile['total'] > $wgAbuseFilterProfileActionsCap ) {
+					// This is for if the total doesn't exist, or has gone past $wgAbuseFilterProfileActionsCap.
+					// Recreate all the keys at the same time, so they expire together.
 
-		$storagePeriod = AbuseFilter::$statsStoragePeriod;
+					$profile = [
+						// Total number of actions observed
+						'total' => 0,
+						// Number of actions ending by exceeding condition limit
+						'overflow' => 0,
+						// Total time of execution of all observed actions
+						'total-time' => 0,
+						// Total number of conditions from all observed actions
+						'total-cond' => 0,
+						// Total number of filters matched
+						'matches' => 0
+					];
 
-		if ( !$total || $total > $wgAbuseFilterProfileActionsCap ) {
-			// This is for if the total doesn't exist, or has gone past the limit.
-			// Recreate all the keys at the same time, so they expire together.
-			$stash->set( $totalKey, 0, $storagePeriod );
-			$stash->set( $overflowKey, 0, $storagePeriod );
+					// @fixme We should also call resetFilterProfile, but this isn't the right place:
+					// it should probably be done before updating any profiling data, for instance
+					// before calling recordRuntimeProfilingResult. Note that resetting
+					// it for filters passed in here is enough, as profiling for other (=disabled) filters
+					// will be reset upon re-enabling them.
+				}
 
-			$stash->set( AbuseFilter::filterMatchesKey(), 0, $storagePeriod );
-		}
+				$profile['total']++;
+				$profile['total-time'] += $totalTime;
+				$profile['total-cond'] += $condsUsed;
 
-		$stash->incr( $totalKey );
+				// Increment overflow counter, if our condition limit overflowed
+				if ( $condsUsed > $wgAbuseFilterConditionLimit ) {
+					$profile['overflow']++;
+				}
 
-		// Increment overflow counter, if our condition limit overflowed
-		if ( $condsUsed > $wgAbuseFilterConditionLimit ) {
-			$stash->incr( $overflowKey );
-		}
+				// Increment counter by 1 if there was at least one match
+				if ( $anyMatch ) {
+					$profile['matches']++;
+				}
+
+				return $profile;
+			},
+			AbuseFilter::$statsStoragePeriod
+		);
 	}
 
 	/**
@@ -1105,11 +1134,6 @@ class AbuseFilterRunner {
 		// To distinguish from stuff stored directly
 		$varDump = "stored-text:$varDump";
 
-		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
-
-		// Increment trigger counter
-		$stash->incr( AbuseFilter::filterMatchesKey() );
-
 		$localLogIDs = [];
 		global $wgAbuseFilterNotifications, $wgAbuseFilterNotificationsPrivate;
 		foreach ( $logRows as $data ) {
@@ -1237,7 +1261,8 @@ class AbuseFilterRunner {
 		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
 		// @ToDo this is an amount between 1 and AbuseFilterProfileActionsCap, which means that the
 		// reliability of this number may strongly vary. We should instead use a fixed one.
-		$totalActions = $stash->get( AbuseFilter::filterUsedKey( $this->group ) );
+		$groupProfile = $stash->get( AbuseFilter::filterProfileGroupKey( $this->group ) );
+		$totalActions = $groupProfile['total'];
 
 		foreach ( $filters as $filter ) {
 			$threshold = AbuseFilter::getEmergencyValue( 'threshold', $this->group );

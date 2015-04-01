@@ -1735,9 +1735,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @param array $actionParams Details of the action we need to execute to trigger filters
 	 * @param array $expectedGlobal Expected global stats
 	 * @param array $expectedPerFilter Expected stats for every created filter
-	 * @covers AbuseFilter::filterMatchesKey
-	 * @covers AbuseFilter::filterUsedKey
-	 * @covers AbuseFilter::filterLimitReachedKey
+	 * @covers AbuseFilter::filterProfileKey
+	 * @covers AbuseFilter::filterProfileGroupKey
 	 * @covers AbuseFilter::getFilterProfile
 	 * @covers AbuseFilterRunner::checkAllFilters
 	 * @covers AbuseFilterRunner::recordStats
@@ -1762,10 +1761,11 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 
 		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
 		// Global stats shown on the top of Special:AbuseFilter
+		$globalStats = $stash->get( AbuseFilter::filterProfileGroupKey( 'default' ) );
 		$actualGlobalStats = [
-			'totalMatches' => $stash->get( AbuseFilter::filterMatchesKey() ),
-			'totalActions' => $stash->get( AbuseFilter::filterUsedKey( 'default' ) ),
-			'totalOverflows' => $stash->get( AbuseFilter::filterLimitReachedKey() )
+			'totalMatches' => $globalStats['matches'],
+			'totalActions' => $globalStats['total'],
+			'totalOverflows' => $globalStats['overflow']
 		];
 		$this->assertSame(
 			$expectedGlobal,
