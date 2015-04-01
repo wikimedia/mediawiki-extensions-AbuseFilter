@@ -154,7 +154,8 @@ class AbuseFilterVariableHolder {
 				'_NAMESPACE',
 				'_TITLE',
 				'_PREFIXEDTITLE',
-				'_recent_contributors'
+				'_recent_contributors',
+				'_age',
 			];
 			foreach ( $wgRestrictionTypes as $action ) {
 				$titleVars[] = "_restrictions_$action";
@@ -204,6 +205,7 @@ class AbuseFilterVariableHolder {
 		static $dbTypes = [
 			'links-from-wikitext-or-database',
 			'load-recent-authors',
+			'page-age',
 			'get-page-restrictions',
 			'simple-user-accessor',
 			'user-age',
