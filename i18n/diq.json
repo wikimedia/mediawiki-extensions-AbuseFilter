@@ -343,7 +343,7 @@
 	"abusefilter-test": "Duştê vurnayîşan rê yew filitre test bike",
 	"abusefilter-test-intro": "Na per, cerra şına zu filtreda qutuyer u peyni $1 {{PLURAL:$1|vırnayışer|vırnayışan}} qontrol kerdışiré şımaré icazet dano.\nMevcud zu filtra barkerdışiré, vırnayışa ID'a filtré dekeré qutiya metini miyan u \"{{int:abusefilter-test-load}}\" bıploğné.",
 	"abusefilter-test-legend": "Testê filitreyî",
-	"abusefilter-test-load-filter": "IDyê filitre bar bike",
+	"abusefilter-test-load-filter": "Kamiya filtreyi bar ke:",
 	"abusefilter-test-submit": "Test",
 	"abusefilter-test-load": "Bar ke",
 	"abusefilter-test-user": "Vurnayîşê eno karber:",

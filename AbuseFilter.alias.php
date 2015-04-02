@@ -284,6 +284,12 @@ $specialPageAliases['lb'] = array(
 	'AbuseFilter' => array( 'Mëssbrauchsfilter' ),
 );
 
+/** لوری (لوری) */
+$specialPageAliases['lrc'] = array(
+	'AbuseLog' => array( 'پهرستنومه_خراوکاری' ),
+	'AbuseFilter' => array( 'فیلتر_خراوکاری' ),
+);
+
 /** Lithuanian (lietuvių) */
 $specialPageAliases['lt'] = array(
 	'AbuseLog' => array( 'Piktnaudžiavimų_sąrašas' ),
