@@ -5,7 +5,7 @@
 			"Chuvash2014"
 		]
 	},
-	"abusefilter-log-search-user": "Усăкуракан:",
+	"abusefilter-log-search-user": "Усă куракан:",
 	"abusefilter-log-search-filter": "Ала идентификаторӗ",
 	"abusefilter-log-search-title": "Пуҫелӗк:",
 	"abusefilter-log-search-wiki": "Википроект:",
@@ -43,7 +43,7 @@
 	"abusefilter-enabled": "Хускатнă",
 	"abusefilter-deleted": "Тӗплен",
 	"abusefilter-disabled": "Чарнă",
-	"abusefilter-tools-reautoconfirm-user": "Усăкуракан:",
+	"abusefilter-tools-reautoconfirm-user": "Усă куракан:",
 	"abusefilter-edit-new": "Ҫӗнӗ ала",
 	"abusefilter-edit-save": "Алана ҫырса хур",
 	"abusefilter-edit-id": "Ала идентификаторӗ",
@@ -69,11 +69,12 @@
 	"abusefilter-edit-builder-op-bool-not": "МАР (!)",
 	"abusefilter-edit-builder-op-bool-and": "ТАТА (&)",
 	"abusefilter-edit-builder-op-bool-or": "Е (|)",
+	"abusefilter-history-user": "Хутшăнакан",
 	"abusefilter-history-deleted": "Тӗпленӗ",
 	"abusefilter-history-filterid": "Ала",
-	"abusefilter-history-select-user": "Усăкуракан:",
+	"abusefilter-history-select-user": "Усă куракан:",
 	"abusefilter-history-diff": "Улшӑнусем",
-	"abusefilter-examine-user": "Усăкуракан:",
+	"abusefilter-examine-user": "Усă куракан:",
 	"abusefilter-examine-submit": "Туп",
 	"abusefilter-topnav-home": "Килелле"
 }

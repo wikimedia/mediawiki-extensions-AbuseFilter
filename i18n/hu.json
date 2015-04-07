@@ -51,7 +51,7 @@
 	"abusefilter-log-summary": "Ezen a lapon láthatóak a vandálszűrők által elkapott műveletek.",
 	"abusefilter-log-search": "Keresés a Vandálszűrő naplójában",
 	"abusefilter-log-search-user": "Szerkesztő:",
-	"abusefilter-log-search-filter": "Szűrőazonosító:",
+	"abusefilter-log-search-filter": "Szűrőazonosítók (függőleges vonallal elválasztva):",
 	"abusefilter-log-search-title": "Cím:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Keresés",

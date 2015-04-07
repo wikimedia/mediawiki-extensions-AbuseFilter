@@ -57,6 +57,12 @@ $specialPageAliases['bg'] = array(
 	'AbuseFilter' => array( 'Филтър_срещу_злоупотреби' ),
 );
 
+/** Western Balochi (بلوچی رخشانی) */
+$specialPageAliases['bgn'] = array(
+	'AbuseLog' => array( 'خرابکاری_ئی_سیاهه' ),
+	'AbuseFilter' => array( 'خرابکاری_ئی_پیلتر' ),
+);
+
 /** Bhojpuri (भोजपुरी) */
 $specialPageAliases['bho'] = array(
 	'AbuseLog' => array( 'दुरुपयोगी_छनित_पृष्ठ' ),
