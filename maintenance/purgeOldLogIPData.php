@@ -19,29 +19,34 @@ class PurgeOldLogIPData extends Maintenance {
 
 		$this->output( "Purging old IP Address data from abuse_filter_log...\n" );
 		$dbw = wfGetDB( DB_MASTER );
+		$cutoffUnix = time() - $wgAbuseFilterLogIPMaxAge;
 
 		$count = 0;
-		while ( true ) {
-			$dbw->begin();
-			$dbw->update(
+		do {
+			$ids = $dbw->selectFieldValues(
 				'abuse_filter_log',
-				array( 'afl_ip' => '' ),
+				'afl_id',
 				array(
 					'afl_ip <> ""',
-					"afl_timestamp < " . $dbw->addQuotes( $dbw->timestamp( time() - $wgAbuseFilterLogIPMaxAge ) )
+					"afl_timestamp < " . $dbw->addQuotes( $dbw->timestamp( $cutoffUnix ) )
 				),
 				__METHOD__,
 				array( 'LIMIT' => $this->mBatchSize )
 			);
-			$count += $dbw->affectedRows();
-			$dbw->commit();
-			if ( $dbw->affectedRows() < $this->mBatchSize ) {
-				break; // all updated
-			}
-			$this->output( "$count\n" );
 
-			wfWaitForSlaves();
-		}
+			if ( $ids ) {
+				$dbw->update(
+					'abuse_filter_log',
+					array( 'afl_ip' => '' ),
+					array( 'afl_id' => $ids ),
+					__METHOD__
+				);
+				$count += $dbw->affectedRows();
+				$this->output( "$count\n" );
+
+				wfWaitForSlaves();
+			}
+		} while ( count( $ids ) >= $this->mBatchSize );
 
 		$this->output( "$count rows.\n" );
 
