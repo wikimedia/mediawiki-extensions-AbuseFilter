@@ -173,7 +173,7 @@
 	"abusefilter-edit-done-subtitle": "Filtrilo redaktita",
 	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Viaj ŝanĝoj]] de [[Special:AbuseFilter/$1|filtrilo $3]] estis konservitaj.",
 	"abusefilter-edit-badsyntax": "Estas sintaksa eraro en la filtrilo kiun vi specifigis.\nLa eligo de la sintaksa analizilo estis: <pre>$1</pre>",
-	"abusefilter-edit-restricted": "Vi ne povas redakti ĉi tiun filtrilon, ĉar ĝi enhavas unu aŭ pliajn malpermesitajn agojn.\nBonvolu peti uzanton kun rajton por aldoni limigitajn agojn fari ĉi tian ŝanĝon por vi.",
+	"abusefilter-edit-restricted": "Vi ne povas redakti ĉi tiun filtrilon, ĉar ĝi enhavas unu aŭ pliajn limigitajn agojn.\nBonvolu peti uzanton kun rajto, aldoni limigitajn agojn, fari ĉi tian ŝanĝon por vi.",
 	"abusefilter-edit-viewhistory": "Vidi historion de ĉi tiu filtrilo",
 	"abusefilter-edit-history": "Historio:",
 	"abusefilter-edit-check": "Kontroli sintakson",
