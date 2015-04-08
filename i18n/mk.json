@@ -179,7 +179,7 @@
 	"abusefilter-edit-tools": "Алатки:",
 	"abusefilter-edit-test-link": "Испробај го филтеров со скорешните уредувања",
 	"abusefilter-edit-export": "Извези го филтеров во друго вики",
-	"abusefilter-edit-syntaxok": "Нема пронајдено синтаксни грешки.",
+	"abusefilter-edit-syntaxok": "Не пронајдов синтаксни грешки.",
 	"abusefilter-edit-syntaxerr": "Пронајдена е синтаксна грешка: $1",
 	"abusefilter-edit-bad-tags": "Еден или повеќе назначени ознаки се неважечки.\nОзнаките треба да бидат кратки, и не треба да содржат псоебни знаци.",
 	"abusefilter-edit-notallowed": "Не ви е дозволено да создавате или уредувате филтри за злоупотреби",
