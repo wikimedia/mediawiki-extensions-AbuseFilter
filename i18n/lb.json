@@ -105,6 +105,7 @@
 	"abusefilter-list-options-scope": "Filtere weisen:",
 	"abusefilter-list-options-scope-local": "Nëmme lokal Regelen",
 	"abusefilter-list-options-scope-global": "Nëmme global Regelen",
+	"abusefilter-list-options-scope-all": "Lokal a global Regelen",
 	"abusefilter-list-options-disabled": "Ausgeschalte Filteren",
 	"abusefilter-list-options-hidedisabled": "Ausgeschalte Filtere verstoppen",
 	"abusefilter-list-options-submit": "Aktualiséieren",
@@ -375,6 +376,7 @@
 	"abusefilter-group-default": "Standard",
 	"abusefilter-http-error": "Et ass en HTTP-Feeler geschitt: $1.",
 	"apihelp-abusefilterchecksyntax-description": "Syntax vun engem Mëssbrauchsfilter nokucken.",
+	"apihelp-abusefilterchecksyntax-example-1": "Syntax vun engem valabele Filter nokucken",
 	"apihelp-query+abusefilters-description": "Detailer vum Mëssbrauchsfilter weisen",
 	"apihelp-query+abusefilters-example-2": "E puer Detailer iwwer Filtere weisen"
 }
