@@ -251,6 +251,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "Ob de Benotzer gespaart ass",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Wéini d'E-Mailadress confirméiert gouf",
 	"abusefilter-edit-builder-vars-recent-contributors": "Déi lescht zeng Benotzer déi un dësem Artikel geschafft hunn",
+	"abusefilter-edit-builder-vars-first-contributor": "Éischte Benotzer deen un der Säit geschafft huet",
 	"abusefilter-edit-builder-vars-all-links": "All extern Linken am neien Text",
 	"abusefilter-edit-builder-vars-added-links": "All extern Linken déi bei der Ännerung derbäigesat goufen",
 	"abusefilter-edit-builder-vars-removed-links": "All extern Linken déi bei der Ännerung ewechgeholl goufen",
@@ -377,6 +378,7 @@
 	"abusefilter-http-error": "Et ass en HTTP-Feeler geschitt: $1.",
 	"apihelp-abusefilterchecksyntax-description": "Syntax vun engem Mëssbrauchsfilter nokucken.",
 	"apihelp-abusefilterchecksyntax-example-1": "Syntax vun engem valabele Filter nokucken",
+	"apihelp-abusefilterunblockautopromote-param-user": "Benotzernumm vum Benotzer dem seng Spär dir ophiewe wëllt.",
 	"apihelp-query+abusefilters-description": "Detailer vum Mëssbrauchsfilter weisen",
 	"apihelp-query+abusefilters-example-2": "E puer Detailer iwwer Filtere weisen"
 }
