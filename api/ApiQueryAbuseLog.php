@@ -36,7 +36,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 
 	public function execute() {
 		$user = $this->getUser();
-		$errors = $this->getTitle()->getUserPermissionsErrors( 'abusefilter-log', $user );
+		$errors = $this->getTitle()->getUserPermissionsErrors(
+			'abusefilter-log', $user, true, array( 'ns-specialprotected' ) );
 		if ( count( $errors ) ) {
 			$this->dieUsageMsg( $errors[0] );
 			return;
