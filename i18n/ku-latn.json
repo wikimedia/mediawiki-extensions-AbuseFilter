@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"George Animal",
-			"Ghybu"
+			"Ghybu",
+			"Bikarhêner"
 		]
 	},
 	"abusefilter-log-search-user": "Bikarhêner:",
@@ -19,6 +20,7 @@
 	"abusefilter-hidden": "Şexsî",
 	"abusefilter-deleted": "Jêbirî",
 	"abusefilter-new": "Fîltreka nû çêke",
+	"abusefilter-status-global": "Global",
 	"abusefilter-list-options": "Vebijêrk",
 	"abusefilter-list-options-deleted": "Fîltreyên hatine jêbirirn:",
 	"abusefilter-list-options-deleted-only": "Tenê fîltreyên jêbûyî nîşan bide",
@@ -33,6 +35,7 @@
 	"abusefilter-edit-builder-op-bool-not": "Na (!)",
 	"abusefilter-edit-builder-op-bool-and": " Û (&)",
 	"abusefilter-edit-builder-vars-newsize": "Dirêjiya rûpela nû",
+	"abusefilter-history-global": "Global",
 	"abusefilter-history-timestamp": "Dem",
 	"abusefilter-history-user": "Bikarhêner",
 	"abusefilter-history-deleted": "Hate jêbirin",
