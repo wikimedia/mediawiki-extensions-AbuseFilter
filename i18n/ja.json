@@ -14,7 +14,8 @@
 			"青子守歌",
 			"Rxy",
 			"Takot",
-			"Otokoume"
+			"Otokoume",
+			"2nd-player"
 		]
 	},
 	"abusefilter-desc": "編集に対して、自動的な経験則を適用する",
@@ -406,5 +407,8 @@
 	"abusefilter-import-intro": "このインターフェイスを使用して、別のウィキからフィルターを取り込めます。\n取り込み元のウィキで、編集画面の「{{int:abusefilter-edit-tools}}」下にある「{{int:abusefilter-edit-export}}」をクリックします。\nそこで現れるテキストボックスの内容をコピーし、それをこのテキストボックスに貼り付けて、「{{int:abusefilter-import-submit}}」をクリックします。",
 	"abusefilter-import-submit": "取り込む",
 	"abusefilter-group-default": "既定",
-	"abusefilter-http-error": "HTTPエラーが発生: $1"
+	"abusefilter-http-error": "HTTPエラーが発生: $1",
+	"apihelp-query+abusefilters-param-limit": "表示するフィルターの最大数。",
+	"apihelp-query+abusefilters-example-1": "有効化されている公開フィルターを一覧表示する",
+	"apihelp-query+abuselog-example-1": "最近の不正利用記録を表示する"
 }
