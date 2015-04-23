@@ -209,7 +209,7 @@
 	"abusefilter-edit-builder-misc-like": "Coincide col patrón (like)",
 	"abusefilter-edit-builder-misc-rlike": "Coincide con espresión regular (rlike)",
 	"abusefilter-edit-builder-misc-irlike": "Coincide cola espresión regular, ensin distinguir mayúscules y minúscules (irlike)",
-	"abusefilter-edit-builder-misc-contains": "A cadena izquierda contién la cadena drecha (contains)",
+	"abusefilter-edit-builder-misc-contains": "La cadena izquierda contien la cadena drecha (contains)",
 	"abusefilter-edit-builder-misc-stringlit": "Cadena lliteral (\"\")",
 	"abusefilter-edit-builder-misc-tern": "Operador ternariu (X ? Y : Z)",
 	"abusefilter-edit-builder-misc-cond": "Condicional (if X then Y else Z)",
@@ -398,5 +398,15 @@
 	"abusefilter-http-error": "Hebo un error HTTP: $1.",
 	"apihelp-abusefiltercheckmatch-description": "Revisa pa ver si un AbuseFilter casa con un conxuntu de variables, socesu d'editor rexistráu d'AbuseFilter.\n\nNecesítase vars, rcid o logid, anque sólo pue usase unu.",
 	"apihelp-abusefiltercheckmatch-param-filter": "El testu completu del filtru a comprobar pa una coincidencia.",
-	"apihelp-abusefiltercheckmatch-param-vars": "Matriz de variables codificaes en JSON escontra la que comprobar."
+	"apihelp-abusefiltercheckmatch-param-vars": "Matriz de variables codificaes en JSON escontra la que comprobar.",
+	"apihelp-abusefiltercheckmatch-param-rcid": "ID del cambiu reciente nel que comprobar.",
+	"apihelp-abusefiltercheckmatch-param-logid": "ID del rexistru de la peñera d'abusos nel que comprobar o filtro.",
+	"apihelp-abusefiltercheckmatch-example-1": "Comprobar si'l cambiu reciente cola ID 15 concuaya con un filtru simple",
+	"apihelp-abusefilterchecksyntax-description": "Comprobar la sintaxis d'un filtru de la Peñera d'abusos.",
+	"apihelp-abusefilterchecksyntax-param-filter": "El testu completu del filtru nel que comprobar la sintaxis.",
+	"apihelp-abusefilterchecksyntax-example-1": "Comprobar la sintaxis d'un filtru válidu",
+	"apihelp-abusefilterchecksyntax-example-2": "Comprobar la sintaxis d'un filtru inválidu",
+	"apihelp-abusefilterevalexpression-description": "Evaluar una espresión de la Peñera d'abusos.",
+	"apihelp-abusefilterevalexpression-param-expression": "La espresión a evaluar.",
+	"apihelp-abusefilterevalexpression-example-1": "Evaluar una espresión simple"
 }
