@@ -15,7 +15,8 @@
 			"Rxy",
 			"Takot",
 			"Otokoume",
-			"2nd-player"
+			"2nd-player",
+			"W.CC"
 		]
 	},
 	"abusefilter-desc": "編集に対して、自動的な経験則を適用する",
@@ -119,8 +120,9 @@
 	"abusefilter-list-options-deleted-hide": "削除されたものを表示しない",
 	"abusefilter-list-options-deleted-show": "削除されたものを含める",
 	"abusefilter-list-options-scope": "フィルターから表示:",
-	"abusefilter-list-options-scope-local": "ローカル ウィキ",
-	"abusefilter-list-options-scope-global": "グローバル規則",
+	"abusefilter-list-options-scope-local": "ローカル規則のみ",
+	"abusefilter-list-options-scope-global": "グローバル規則のみ",
+	"abusefilter-list-options-scope-all": "ローカルおよびグローバル規則",
 	"abusefilter-list-options-disabled": "無効化されたフィルター:",
 	"abusefilter-list-options-hidedisabled": "無効化されたフィルターを隠す",
 	"abusefilter-list-options-submit": "更新",

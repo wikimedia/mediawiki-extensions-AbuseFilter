@@ -408,5 +408,16 @@
 	"apihelp-abusefilterchecksyntax-example-2": "Comprobar la sintaxis d'un filtru inválidu",
 	"apihelp-abusefilterevalexpression-description": "Evaluar una espresión de la Peñera d'abusos.",
 	"apihelp-abusefilterevalexpression-param-expression": "La espresión a evaluar.",
-	"apihelp-abusefilterevalexpression-example-1": "Evaluar una espresión simple"
+	"apihelp-abusefilterevalexpression-example-1": "Evaluar una espresión simple",
+	"apihelp-abusefilterunblockautopromote-description": "Desbloquia a un usuariu de recibir autopromociones como consecuencia de la peñera d'abusos.",
+	"apihelp-abusefilterunblockautopromote-param-user": "Nome del usuariu que vas desbloquiar.",
+	"apihelp-abusefilterunblockautopromote-example-1": "Quitar el bloquéu por auto-promoción de [[User:Example]]",
+	"apihelp-query+abusefilters-description": "Amosar detalles de los filtros d'abusos.",
+	"apihelp-query+abusefilters-param-startid": "ID del filtru dende'l que principiar la enumeración.",
+	"apihelp-query+abusefilters-param-endid": "ID del filtru nel que finar la enumeración.",
+	"apihelp-query+abusefilters-param-show": "Amosar sólo los filtros que cumplan con estos criterios.",
+	"apihelp-query+abusefilters-param-limit": "El númberu máximu de filtros a poner na llista.",
+	"apihelp-query+abusefilters-param-prop": "Qué propiedaes algamar.",
+	"apihelp-query+abusefilters-example-1": "Llista de los filtros públicos activaos",
+	"apihelp-query+abusefilters-example-2": "Amosar dellos detalles de los filtros"
 }
