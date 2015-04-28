@@ -133,6 +133,7 @@ $commonModuleInfo = array(
 );
 
 $wgResourceModules['ext.abuseFilter'] = array(
+	'position' => 'top',
 	'styles' => 'ext.abuseFilter.css',
 ) + $commonModuleInfo;
 
