@@ -3,7 +3,8 @@
 		"authors": [
 			"Ansumang",
 			"Hemant wikikosh1",
-			"Shubha"
+			"Shubha",
+			"NehalDaveND"
 		]
 	},
 	"abuselog": "दुरुपयुक्तम् अङ्कनम्",
@@ -174,5 +175,5 @@
 	"abusefilter-diff-invalid": "अपेक्षितसंस्करणानां प्राप्तिः अशक्या",
 	"abusefilter-diff-backhistory": "शोधकेतिहासं प्रति निवर्तनम्",
 	"abusefilter-import-submit": "दत्तांशायातः",
-	"abusefilter-group-default": "पूर्वनिविष्टम्"
+	"abusefilter-group-default": "यदभावे"
 }
