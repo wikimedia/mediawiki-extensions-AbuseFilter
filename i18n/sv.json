@@ -26,7 +26,8 @@
 			"Tobulos1",
 			"WikiPhoenix",
 			"Jopparn",
-			"Marfuas"
+			"Marfuas",
+			"Josve05a"
 		]
 	},
 	"abusefilter-desc": "Tillämpar automatiska filter på redigeringar",
@@ -99,7 +100,7 @@
 	"abusefilter-log-hide-hidden": "Dölj denna posten från allmän visning",
 	"abusefilter-log-hide-reason": "Orsak:",
 	"abusefilter-log-hide-forbidden": "Du har inte behörighet att dölja\nmissbrukslogg-poster.",
-	"abusefilter-logentry-suppress": "Dolde \"[[$1]]\"",
+	"abusefilter-logentry-suppress": "dolde \"[[$1]]\"",
 	"abusefilter-logentry-unsuppress": "visade \"[[$1]]\"",
 	"logentry-abusefilter-hit": "$1 utlöste $4, utförde åtgärden \"$5\" på  $3. Åtgärder: $6 ($7)",
 	"abusefilter-management": "Hantering av missbruksfilter",
