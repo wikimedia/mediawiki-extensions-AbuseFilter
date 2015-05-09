@@ -7,7 +7,8 @@
 			"Leemon2010",
 			"Nasir8891",
 			"Samritmaity",
-			"Wikitanvir"
+			"Wikitanvir",
+			"Aftabuzzaman"
 		]
 	},
 	"abusefilter-desc": "সম্পাদনায় স্বয়ংক্রিয় অনুসন্ধানমূলক পদ্ধতি প্রযোজ্য।",
@@ -111,6 +112,7 @@
 	"abusefilter-edit-enabled": "এই ফিল্টারটি সক্রিয় করো",
 	"abusefilter-edit-deleted": "অপসারিত হিসেবে চিহ্নিত করো",
 	"abusefilter-edit-hidden": "জনসাধারণের প্রদর্শনক্ষমতা থেকে এই ফিল্টারটি লুকাও",
+	"abusefilter-edit-global": "বৈশ্বিক ফিল্টার",
 	"abusefilter-edit-rules": "শর্ত:",
 	"abusefilter-edit-notes": "টীকা:",
 	"abusefilter-edit-lastmod": "ফিল্টার সর্বশেষ পরিবর্তিত হয়েছিলো:",
@@ -122,6 +124,7 @@
 	"abusefilter-edit-warn-other": "অন্য বার্তা",
 	"abusefilter-edit-warn-actions": "অ্যাকশনসমূহ:",
 	"abusefilter-edit-warn-preview": "নির্বাচিত বার্তার প্রাকদর্শন",
+	"abusefilter-edit-warn-edit": "নির্বাচিত বার্তা তৈরি/সম্পাদনা করুন",
 	"abusefilter-edit-main": "ফিল্টার প্যারামিটারসমূহ",
 	"abusefilter-edit-done-subtitle": "ফিল্টার সম্পাদিত",
 	"abusefilter-edit-viewhistory": "এই ফিল্টারের ইতিহাস দেখুন",
@@ -131,6 +134,7 @@
 	"abusefilter-edit-builder-op-arithmetic-subtraction": "বিয়োগ (-)",
 	"abusefilter-edit-builder-op-arithmetic-multiplication": "গুন (*)",
 	"abusefilter-edit-builder-op-arithmetic-divide": "ভাগ (/)",
+	"abusefilter-edit-builder-op-arithmetic-modulo": "মডুলো (%)",
 	"abusefilter-edit-builder-op-arithmetic-pow": "ঘাত (**)",
 	"abusefilter-edit-builder-group-op-comparison": "তুলনামূলক অপারেটরসমূহ",
 	"abusefilter-edit-builder-op-comparison-equal": "সমান (==)",
