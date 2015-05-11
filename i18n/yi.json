@@ -237,6 +237,7 @@
 	"abusefilter-revert-preview-item": "$1: $2 האט אדורכגעפירט $3 אויף $4.\nאקציעס צו ווערן צוריקגעשטעלט: $5 ($6)",
 	"abusefilter-revert-periodstart": "תקופה אָנהייב:",
 	"abusefilter-revert-periodend": "תקופה סוף",
+	"abusefilter-revert-search": "קלויבט פעולות",
 	"abusefilter-revert-filter": "פֿילטער:",
 	"abusefilter-revert-confirm": "באַשטעטיקן",
 	"abusefilter-revert-reasonfield": "אורזאַך:",
