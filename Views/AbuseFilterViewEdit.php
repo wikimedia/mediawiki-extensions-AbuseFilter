@@ -260,10 +260,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			$lp->addEntry( 'modify', $this->getTitle( $new_id ), '', array( $history_id, $new_id ) );
 
-			// Special-case stuff for tags -- purge the tag list cache.
+			// Purge the tag list cache so the fetchAllTags hook applies tag changes
 			if ( isset( $actions['tag'] ) ) {
-				global $wgMemc;
-				$wgMemc->delete( wfMemcKey( 'valid-tags' ) );
+				ChangeTags::purgeTagCacheAll();
 			}
 
 			AbuseFilter::resetFilterProfile( $new_id );
