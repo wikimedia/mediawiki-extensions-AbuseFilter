@@ -27,7 +27,7 @@ $specialPageAliases['arc'] = array(
 	'AbuseFilter' => array( 'ܡܨܦܝܢܝܬܐ_ܕܚܘܒܠܐ' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Arabic (مصرى) */
 $specialPageAliases['arz'] = array(
 	'AbuseLog' => array( 'سجل_الاساءه' ),
 	'AbuseFilter' => array( 'فيلتر_الاساءه' ),
@@ -164,7 +164,7 @@ $specialPageAliases['fr'] = array(
 	'AbuseFilter' => array( 'Filtre_antiabus', 'Filtre_anti-abus', 'FiltreAntiabus', 'Filtre_d\'abus', 'FiltredAbus', 'FilterAbus' ),
 );
 
-/** Franco-Provençal (arpetan) */
+/** Arpitan (arpetan) */
 $specialPageAliases['frp'] = array(
 	'AbuseLog' => array( 'Jornal_des_abus', 'JornalDesAbus' ),
 	'AbuseFilter' => array( 'Filtro_d\'abus', 'FiltroDAbus' ),
@@ -290,7 +290,7 @@ $specialPageAliases['lb'] = array(
 	'AbuseFilter' => array( 'Mëssbrauchsfilter' ),
 );
 
-/** لوری (لوری) */
+/** لوری مینجایی (لوری مینجایی) */
 $specialPageAliases['lrc'] = array(
 	'AbuseLog' => array( 'پهرستنومه_خراوکاری' ),
 	'AbuseFilter' => array( 'فیلتر_خراوکاری' ),
