@@ -434,6 +434,8 @@ class AbuseFilter {
 	 * @return array
 	 */
 	public static function checkAllFilters( $vars, $group = 'default' ) {
+		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
+
 		// Fetch from the database.
 		$filter_matched = array();
 
@@ -453,34 +455,36 @@ class AbuseFilter {
 			$filter_matched[$row->af_id] = self::checkFilter( $row, $vars, true );
 		}
 
-		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral, $wgMemc;
-
 		if ( $wgAbuseFilterCentralDB && !$wgAbuseFilterIsCentral ) {
 			// Global filters
 			$globalRulesKey = self::getGlobalRulesKey( $group );
-			$memcacheRules = $wgMemc->get( $globalRulesKey );
 
-			if ( $memcacheRules ) {
-				$res =  $memcacheRules;
-			} else {
-				$fdb = wfGetDB( DB_SLAVE, array(), $wgAbuseFilterCentralDB );
-				$res = $fdb->select(
-					'abuse_filter',
-					'*',
-					array(
-						'af_enabled' => 1,
-						'af_deleted' => 0,
-						'af_global' => 1,
-						'af_group' => $group,
-					),
-					__METHOD__
-				);
-				$memcacheRules = array();
-				foreach ( $res as $row ) {
-					$memcacheRules[] = $row;
-				}
-				$wgMemc->set( $globalRulesKey, $memcacheRules );
-			}
+			$fname = __METHOD__;
+			$res = ObjectCache::getMainWANInstance()->getWithSetCallback(
+				$globalRulesKey,
+				function() use ( $group, $fname ) {
+					global $wgAbuseFilterCentralDB;
+
+					$fdb = wfGetLB( $wgAbuseFilterCentralDB )->getConnectionRef(
+						DB_SLAVE, array(), $wgAbuseFilterCentralDB
+					);
+
+					return iterator_to_array( $fdb->select(
+						'abuse_filter',
+						'*',
+						array(
+							'af_enabled' => 1,
+							'af_deleted' => 0,
+							'af_global' => 1,
+							'af_group' => $group,
+						),
+						$fname
+					) );
+				},
+				0,
+				array( $globalRulesKey ),
+				array( 'lockTSE' => 300 )
+			);
 
 			foreach( $res as $row ) {
 				$filter_matched['global-' . $row->af_id] =
