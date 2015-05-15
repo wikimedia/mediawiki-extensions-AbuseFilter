@@ -623,6 +623,10 @@ class SpecialAbuseLog extends SpecialPage {
 
 		return (bool)$row->afl_deleted;
 	}
+
+	protected function getGroupName() {
+		return 'changes';
+	}
 }
 
 class AbuseLogPager extends ReverseChronologicalPager {

@@ -65,8 +65,6 @@ $wgAutoloadClasses['AFPUserVisibleException'] = "$dir/AbuseFilter.parser.php";
 
 $wgSpecialPages['AbuseLog'] = 'SpecialAbuseLog';
 $wgSpecialPages['AbuseFilter'] = 'SpecialAbuseFilter';
-$wgSpecialPageGroups['AbuseLog'] = 'changes';
-$wgSpecialPageGroups['AbuseFilter'] = 'wiki';
 
 $wgAutoloadClasses['ApiQueryAbuseLog'] = "$dir/api/ApiQueryAbuseLog.php";
 $wgAPIListModules['abuselog'] = 'ApiQueryAbuseLog';

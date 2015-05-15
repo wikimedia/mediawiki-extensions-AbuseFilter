@@ -125,4 +125,8 @@ class SpecialAbuseFilter extends SpecialPage {
 		}
 		$this->mFilter = $filter;
 	}
+
+	protected function getGroupName() {
+		return 'wiki';
+	}
 }
