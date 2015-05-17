@@ -318,6 +318,7 @@
 	"abusefilter-exception-overridebuiltin": "Sisseehitatud muutuja \"$2\" reeglitevastane ülekirjutus märgi $1 juures.",
 	"abusefilter-exception-outofbounds": "Päring olematu loendiüksuse $2 (loendi suurus: $3) kohta $1. märgi juures.",
 	"abusefilter-action-tag": "Märgista",
+	"abusefilter-action-throttle": "Drosselda",
 	"abusefilter-action-warn": "Hoiata",
 	"abusefilter-action-block": "Blokeeri",
 	"abusefilter-action-degroup": "Eemalda rühmadest",

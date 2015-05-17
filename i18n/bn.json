@@ -92,7 +92,9 @@
 	"abusefilter-list-options-deleted-only": "শুধুমাত্র অপসারিত ফিল্টারগুলো দেখাও",
 	"abusefilter-list-options-deleted-hide": "অপসারিত ফিল্টারগুলো লুকাও",
 	"abusefilter-list-options-deleted-show": "অপসারিত ফিল্টারগুলো যোগ করো",
-	"abusefilter-list-options-scope-local": "স্থানীয় উইকি",
+	"abusefilter-list-options-scope-local": "স্থানীয় নিয়ম শুধুমাত্র",
+	"abusefilter-list-options-scope-global": "বৈশ্বিক নিয়ম শুধুমাত্র",
+	"abusefilter-list-options-scope-all": "স্থানীয় এবং বৈশ্বিক নিয়ম",
 	"abusefilter-list-options-disabled": "ফিল্টারগুলো নিষ্ক্রিয় করো",
 	"abusefilter-list-options-hidedisabled": "নিষ্ক্রিয় ফিল্টারগুলো লুকাও",
 	"abusefilter-list-options-submit": "হালনাগাদ",
@@ -169,6 +171,7 @@
 	"abusefilter-edit-builder-vars-article-ns": "পাতার নামস্থান",
 	"abusefilter-edit-builder-vars-article-text": "পাতার শিরোনাম (নামস্থান ছাড়া)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "পাতার পুরো শিরোনাম",
+	"abusefilter-edit-builder-vars-article-views": "পাতা দর্শন",
 	"abusefilter-edit-builder-vars-movedfrom-id": "সরিয়ে নেওয়া পাতার উৎস পাতার আইডি",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "সরিয়ে নেওয়া পাতার উৎস পাতার নামস্থান",
 	"abusefilter-edit-builder-vars-movedfrom-text": "সরিয়ে নেওয়া পাতার উৎস পাতার শিরোনাম",
@@ -225,9 +228,11 @@
 	"abusefilter-log-name": "অপব্যবহার ফিল্টার লগ",
 	"abusefilter-log-entry-modify": "$1 পরিবর্তন করেছেন ($2)",
 	"abusefilter-log-noresults": "ফলাফল নাই",
+	"abusefilter-diff-version": "$2 {{GENDER:$3|কর্তৃক}} $1 থেকে সংস্করণ",
 	"abusefilter-diff-info": "সাধারণ তথ্য",
 	"abusefilter-diff-pattern": "ফিল্টারের শর্তসমূহ",
 	"abusefilter-diff-backhistory": "ফিল্টার ইতিহাসে ফিরে যান",
 	"abusefilter-import-submit": "উপাত্ত আমদানী",
-	"abusefilter-group-default": "পূর্বনির্ধারিত"
+	"abusefilter-group-default": "পূর্বনির্ধারিত",
+	"abusefilter-http-error": "একটি HTTP ত্রুটি ঘটেছে: $1।"
 }

@@ -10,7 +10,8 @@
 			"TRYPPN",
 			"கௌசிக் பிரபு",
 			"செல்வா",
-			"மதனாஹரன்"
+			"மதனாஹரன்",
+			"Balajijagadesh"
 		]
 	},
 	"abusefilter-desc": "தொகுப்புகள் தானியங்கியாய் முறைவரிசைப்படுத்துதலைச் செயற்படுத்தும்",
@@ -95,6 +96,7 @@
 	"abusefilter-list-options-deleted-only": "நீக்கப்பட்ட வடிகட்டிகளை மட்டும் காட்டவும்",
 	"abusefilter-list-options-deleted-hide": "அழிக்கப்பட்ட வடிகட்டல்களை மறைக்கவும்",
 	"abusefilter-list-options-deleted-show": "அழிக்கப்பட்ட வடிகட்டல்களைச் சேர்த்துக் கொள்ளவும்",
+	"abusefilter-list-options-scope": "வடிக்கட்டிகளைக் காட்டுக",
 	"abusefilter-list-options-scope-local": "உள் விக்கி",
 	"abusefilter-list-options-scope-global": "உலக விதிகள்",
 	"abusefilter-list-options-disabled": "செயலிழக்கம் செய்யப்பட்ட வடிகட்டிகள்:",
@@ -209,6 +211,7 @@
 	"abusefilter-edit-builder-vars-user-editcount": "பயனரின் தொகுப்புக்களின் எண்ணிக்கை",
 	"abusefilter-edit-builder-vars-user-age": "பயனர் கணக்கின் வயது",
 	"abusefilter-edit-builder-vars-user-name": "பயனர் கணக்கின் பெயர்",
+	"abusefilter-edit-builder-vars-user-rights": "பயனர்களின் உரிமைகள்",
 	"abusefilter-edit-builder-vars-user-blocked": "பயனர் தடைசெய்யப்பட்டுள்ளாரா",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "மின்னஞ்சல் முகவரி உறுதிசெய்யப்பட்ட நேரம்",
 	"abusefilter-edit-builder-vars-recent-contributors": "இப்பக்கத்திற்குக் கடைசியாகப் பங்களித்த பத்து பயனர்கள்",
@@ -239,6 +242,7 @@
 	"abusefilter-history-select-submit": "பண்படுத்து",
 	"abusefilter-history-diff": "மாற்றங்கள்",
 	"abusefilter-action-tag": "குறிச்சொல்",
+	"abusefilter-action-throttle": "நெரித்துக",
 	"abusefilter-action-warn": "எச்சரி",
 	"abusefilter-action-block": "தடு",
 	"abusefilter-action-degroup": "குழுக்களில் இருந்து விலக்கு",
@@ -268,6 +272,7 @@
 	"abusefilter-examine-nomatch": "வடிகட்டியானது இந்த மாற்றத்துடன் ஒத்துவரவில்லை.",
 	"abusefilter-topnav": "'''முறைகேடு வடிகட்டி வழிசெலுத்துதல்",
 	"abusefilter-topnav-home": "முகப்பு",
+	"abusefilter-topnav-test": "தொகுதி சோதனை",
 	"abusefilter-topnav-examine": "கடந்த திருத்தங்ககளை  ஆய்வு செய்",
 	"abusefilter-topnav-log": "முறைகேடு பதிவு",
 	"abusefilter-topnav-tools": "பிழை திருத்தும் கருவிகள்",

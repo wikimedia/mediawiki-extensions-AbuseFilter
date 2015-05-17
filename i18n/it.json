@@ -410,5 +410,6 @@
 	"abusefilter-import-submit": "Importa dati",
 	"abusefilter-group-default": "Predefinito",
 	"abusefilter-http-error": "Si è verificato un errore HTTP: $1.",
+	"apihelp-abusefilterevalexpression-param-expression": "L'espressione da valutare.",
 	"apihelp-abusefilterevalexpression-example-1": "Calcolare una semplice espressione"
 }
