@@ -54,11 +54,17 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 			$this->dieUsage( 'The filter has invalid syntax', 'badsyntax' );
 		}
 
-		$result = AbuseFilter::checkConditions( $params['filter'], $vars );
+		$result = array(
+			'result' => AbuseFilter::checkConditions( $params['filter'], $vars ),
+		);
+		if ( defined( 'ApiResult::META_CONTENT' ) ) {
+			$result[ApiResult::META_BC_BOOLS][] = 'result';
+		}
+
 		$this->getResult()->addValue(
 			null,
 			$this->getModuleName(),
-			array( 'result' => $result )
+			$result
 		);
 	}
 
