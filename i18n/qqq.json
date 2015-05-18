@@ -30,7 +30,8 @@
 			"Translationista",
 			"Umherirrender",
 			"Yekrats",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Legoktm"
 		]
 	},
 	"abusefilter-desc": "{{desc|name=Abuse Filter|url=https://www.mediawiki.org/wiki/Extension:AbuseFilter}}",
@@ -310,6 +311,7 @@
 	"abusefilter-history-filterid": "{{Identical|Filter}}",
 	"abusefilter-history-select-user": "Used as label for the \"User\" input box. Field takes a username to filter events by.\n{{Identical|User}}",
 	"abusefilter-history-diff": "{{Identical|Change}}",
+	"abusefilter-history-error-hidden": "Error message shown to user if the filter they are trying to view is hidden and they do not have permission to view it.",
 	"abusefilter-exception-unexpectedatend": "Error message from the abuse filter parser.\nParameters:\n* $1 - Position in the string\n* $2 - Unexpected code, i.e. <code>else, then, end, :, '</code>",
 	"abusefilter-exception-expectednotfound": "Error message from the abuse filter parser.\nParameters:\n* $1 - Position in the string\n* $2 - Expected code, i.e. <code>else, then, end, :, '</code>\n* $3 - Type of the found code\n* $4 - Value of the type",
 	"abusefilter-exception-unrecognisedkeyword": "Error message from the abuse filter parser.\nParameters:\n* $1 - Position in the string\n* $2 - Unrecognized keyword",
@@ -351,6 +353,7 @@
 	"abusefilter-examine-user": "{{Identical|User}}",
 	"abusefilter-examine-title": "{{Identical|Page title}}",
 	"abusefilter-examine-submit": "{{Identical|Search}}",
+	"abusefilter-examine-syntaxerror": "Error message shown when the user's input has a syntax error.",
 	"abusefilter-topnav": "Used as header for navigation links which have the following link texts:\n* {{msg-mw|Abusefilter-topnav-home}}\n* {{msg-mw|Abusefilter-topnav-test}}\n* {{msg-mw|Abusefilter-topnav-examine}}\n* {{msg-mw|Abusefilter-topnav-log}}\n* {{msg-mw|Abusefilter-topnav-tools}}\n* {{msg-mw|Abusefilter-topnav-import}}",
 	"abusefilter-topnav-home": "Used as link text. The link points to [[Special:AbuseFilter]].\n{{Identical|Home}}",
 	"abusefilter-topnav-test": "Used as link text in the navigation toolbar.",

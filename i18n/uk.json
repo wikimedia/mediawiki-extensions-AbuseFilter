@@ -412,5 +412,9 @@
 	"abusefilter-import-submit": "Імпортувати дані",
 	"abusefilter-group-default": "Стандартна",
 	"abusefilter-http-error": "Сталася помилка HTTP:  $1.",
-	"apihelp-abusefiltercheckmatch-param-filter": "Повнотекстовий фільтр для перевірки на відповідність."
+	"apihelp-abusefiltercheckmatch-param-filter": "Повнотекстовий фільтр для перевірки на відповідність.",
+	"apihelp-query+abuselog-param-limit": "Максимальна кількість елементів для переліку.",
+	"apihelp-query+abuselog-param-prop": "Які властивості отримати.",
+	"apihelp-query+abuselog-example-1": "Показати останні записи в журналі",
+	"apihelp-query+abuselog-example-2": "Показати останні записи в журналі [[API]]"
 }
