@@ -7,12 +7,16 @@
 			"Stephenwanjau"
 		]
 	},
+	"abuselog": "Kumbukumbu ya matumizi mabaya",
+	"right-abusefilter-modify": "Rekebisha cinchungi vya unyanyasaji",
+	"right-abusefilter-view": "Tazama vichungi vya unyanyasaji",
 	"abusefilter-log-search-user": "Mtumiaji:",
 	"abusefilter-log-search-title": "Kichwa:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Tafuta",
 	"abusefilter-log-detailslink": "Maelezo zaidi",
 	"abusefilter-log-details-var": "Kibadili",
+	"abusefilter-log-details-val": "Thamani",
 	"abusefilter-log-details-private": "Data binafsi",
 	"abusefilter-log-noactions": "usichague",
 	"abusefilter-log-hide-reason": "Sababu:",

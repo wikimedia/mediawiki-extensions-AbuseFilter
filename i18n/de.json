@@ -145,7 +145,7 @@
 	"abusefilter-edit-subtitle-new": "Filter erstellen",
 	"abusefilter-edit-oldwarning": "<strong>Du bearbeitest nicht die aktuelle, sondern eine ältere Version dieses Filters. Die Statistik gilt nur für die letzte Version des Filters. Wenn du speicherst, wird diese als aktuelle Version neu gespeichert. </strong> &bull; [[Special:AbuseFilter/history/$2|Zurück zur Versionsgeschichte des Filters]]",
 	"abusefilter-edit-status-label": "Statistik:",
-	"abusefilter-edit-status": "Von {{PLURAL:$1|der letzten Aktion|den letzten $1 Aktionen}} {{PLURAL:$2|wurde eine|wurden $2}} ($3 %) von diesem Filter erkannt.\nIm Durchschnitt betrug die Bearbeitungszeit $4 ms und sie benötigten {{PLURAL:$5|eine Bedingung|$5 Bedingungen}} der erlaubten Höchstzahl.",
+	"abusefilter-edit-status": "Von {{PLURAL:$1|der letzten Aktion|den letzten $1 Aktionen}} {{PLURAL:$2|wurde eine|wurden $2}} ($3 %) von diesem Filter erkannt.",
 	"abusefilter-edit-throttled": "'''Warnung''': Dieser Filter wurde sicherheitshalber automatisch deaktiviert. Er hat mehr als die definierte Obergrenze von $1 % der Aktionen erkannt.",
 	"abusefilter-edit-new": "Neuer Filter",
 	"abusefilter-edit-save": "Filter speichern",

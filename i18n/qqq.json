@@ -156,7 +156,7 @@
 	"abusefilter-edit-subtitle-new": "Page subtitle when creating an abuse filter. Parameters:\n* $1 - (Unused) filter ID\n* $2 - (Unused) history ID\nSee also:\n* {{msg-mw|Abusefilter-edit-subtitle}} - if editing the existing filter",
 	"abusefilter-edit-oldwarning": "Warning displayed when editing an older version of a filter. Parameters:\n* $1 - (Unused) history ID\n* $2 - filter ID",
 	"abusefilter-edit-status-label": "Field label for abuse filter statistics.\n{{Identical|Statistics}}",
-	"abusefilter-edit-status": "Parameters:\n* $1 - number of actions\n* $2 - matched count\n* $3 - matched percentage\n",
+	"abusefilter-edit-status": "Parameters:\n* $1 - number of actions\n* $2 - matched count\n* $3 - matched percentage",
 	"abusefilter-edit-throttled": "Used as warning message. Parameters:\n* $1 - threshold percentage",
 	"abusefilter-edit-new": "Field value in case an edited filter is new.",
 	"abusefilter-edit-save": "Submit button text to save a filter.",

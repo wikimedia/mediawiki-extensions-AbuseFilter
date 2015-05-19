@@ -105,9 +105,10 @@
 	"abusefilter-list-options-deleted-only": "മായ്ക്കപ്പെട്ട അരിപ്പകൾ മാത്രം പ്രദർശിപ്പിക്കുക",
 	"abusefilter-list-options-deleted-hide": "മായ്ക്കപ്പെട്ട അരിപ്പകൾ മറയ്ക്കുക",
 	"abusefilter-list-options-deleted-show": "മായ്ക്കപ്പെട്ട അരിപ്പകൾ ഉൾപ്പെടുത്തുക",
-	"abusefilter-list-options-scope": "ഇവിടെനിന്നുള്ള അരിപ്പകൾ പ്രദർശിപ്പിക്കുക:",
-	"abusefilter-list-options-scope-local": "പ്രാദേശിക വിക്കി",
-	"abusefilter-list-options-scope-global": "ആഗോളനയങ്ങൾ",
+	"abusefilter-list-options-scope": "അരിപ്പകൾ പ്രദർശിപ്പിക്കുക:",
+	"abusefilter-list-options-scope-local": "പ്രാദേശിക നയങ്ങൾ മാത്രം",
+	"abusefilter-list-options-scope-global": "ആഗോളനയങ്ങൾ മാത്രം",
+	"abusefilter-list-options-scope-all": "പ്രാദേശിക ആഗോള നയങ്ങൾ",
 	"abusefilter-list-options-disabled": "നിർജ്ജീവമാക്കപ്പെട്ട അരിപ്പകൾ:",
 	"abusefilter-list-options-hidedisabled": "നിർജ്ജീവമാക്കപ്പെട്ട അരിപ്പകൾ മറയ്ക്കുക",
 	"abusefilter-list-options-submit": "പുതുക്കുക",
@@ -282,6 +283,7 @@
 	"abusefilter-edit-builder-vars-old-html": "എച്ച്.റ്റി.എം.എൽ. ആക്കി പാഴ്സ് ചെയ്യപ്പെട്ട പഴയ താളിലെ വിക്കി എഴുത്തുകൾ",
 	"abusefilter-edit-builder-vars-minor-edit": "തിരുത്തൽ ചെറുതിരുത്തൽ ആയി അടയാളപ്പെടുത്തണോ?",
 	"abusefilter-edit-builder-vars-file-sha1": "പ്രമാണത്തിന്റെ ഉള്ളടക്കത്തിന്റെ SHA1 ഹാഷ്",
+	"abusefilter-edit-builder-vars-file-size": "പ്രമാണത്തിന്റെ വലിപ്പം ബൈറ്റ്സിൽ",
 	"abusefilter-filter-log": "അരിപ്പ ഉപയോഗിച്ച് ചെയ്ത സമീപകാല മാറ്റങ്ങൾ",
 	"abusefilter-history": "\"#$1\" ദുരുപയോഗ അരിപ്പയുടെ മാറ്റങ്ങളുടെ ചരിത്രം",
 	"abusefilter-history-foruser": "$1 വരുത്തിയ മാറ്റങ്ങൾ",
@@ -391,5 +393,6 @@
 	"abusefilter-import-intro": "മറ്റുവിക്കികളിൽ നിന്ന് അരിപ്പകൾ ഇറക്കുമതി ചെയ്യാൻ ഈ ദൃശ്യമണ്ഡലം ഉപയോഗിക്കാവുന്നതാണ്.\nസ്രോതസ്സ് വിക്കിയിലെ തിരുത്തുവാനുള്ള ദൃശ്യമണ്ഡലത്തിൽ \"{{int:abusefilter-edit-tools}}\" എന്നതിനു താഴെയുള്ള \"{{int:abusefilter-edit-export}}\" ഞെക്കുക.\nഅപ്പോൾ കിട്ടുന്ന ടെക്സ്റ്റ്ബോക്സ് പകർത്തി ഈ ടെക്സ്റ്റ്‌‌ബോക്സിൽ നൽകി, \"{{int:abusefilter-import-submit}}\" ഞെക്കുക.",
 	"abusefilter-import-submit": "വിവരങ്ങൾ ഇറക്കുമതി ചെയ്യുക",
 	"abusefilter-group-default": "സ്വതേ",
-	"abusefilter-http-error": "ഒരു എച്ച്.റ്റി.റ്റി.പി. പിഴവ് സംഭവിച്ചിരിക്കുന്നു: $1"
+	"abusefilter-http-error": "ഒരു എച്ച്.റ്റി.റ്റി.പി. പിഴവ് സംഭവിച്ചിരിക്കുന്നു: $1",
+	"apihelp-abusefiltercheckmatch-param-filter": "അരിപ്പയിലെ മൊത്തം എഴുത്തും ഒത്തുപോകുന്നുണ്ടോയെന്ന് പരിശോധിക്കുക."
 }

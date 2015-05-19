@@ -109,6 +109,7 @@
 	"abusefilter-list-options-scope": "Прикажи филтере:",
 	"abusefilter-list-options-scope-local": "Само локална правила",
 	"abusefilter-list-options-scope-global": "Само глобална правила",
+	"abusefilter-list-options-scope-all": "Локална и глобална правила",
 	"abusefilter-list-options-disabled": "Онемогућени филтери:",
 	"abusefilter-list-options-hidedisabled": "Сакриј онемогућене филтере",
 	"abusefilter-list-options-submit": "Ажурирај",
