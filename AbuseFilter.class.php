@@ -539,77 +539,10 @@ class AbuseFilter {
 			$timeTaken = $endTime - $startTime;
 			$condsUsed = $endConds - $startConds;
 
-			self::recordProfilingResult( $row->af_id, $timeTaken, $condsUsed );
+			// @TODO: log slow/complex filters
 		}
 
 		return $result;
-	}
-
-	/**
-	 * @param $filter
-	 */
-	public static function resetFilterProfile( $filter ) {
-		global $wgMemc;
-		$countKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'count' );
-		$totalKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'total' );
-
-		$wgMemc->delete( $countKey );
-		$wgMemc->delete( $totalKey );
-	}
-
-	/**
-	 * @param $filter
-	 * @param $time
-	 * @param $conds
-	 */
-	public static function recordProfilingResult( $filter, $time, $conds ) {
-		global $wgMemc;
-
-		$countKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'count' );
-		$totalKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'total' );
-		$totalCondKey = wfMemcKey( 'abusefilter', 'profile-conds', 'total' );
-
-		$curCount = $wgMemc->get( $countKey );
-		$curTotal = $wgMemc->get( $totalKey );
-		$curTotalConds = $wgMemc->get( $totalCondKey );
-
-		if ( $curCount ) {
-			$wgMemc->set( $totalCondKey, $curTotalConds + $conds, 3600 );
-			$wgMemc->set( $totalKey, $curTotal + $time, 3600 );
-			$wgMemc->incr( $countKey );
-		} else {
-			$wgMemc->set( $countKey, 1, 3600 );
-			$wgMemc->set( $totalKey, $time, 3600 );
-			$wgMemc->set( $totalCondKey, $conds, 3600 );
-		}
-	}
-
-	/**
-	 * @param $filter
-	 * @return array
-	 */
-	public static function getFilterProfile( $filter ) {
-		global $wgMemc;
-
-		$countKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'count' );
-		$totalKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'total' );
-		$totalCondKey = wfMemcKey( 'abusefilter', 'profile-conds', 'total' );
-
-		$curCount = $wgMemc->get( $countKey );
-		$curTotal = $wgMemc->get( $totalKey );
-		$curTotalConds = $wgMemc->get( $totalCondKey );
-
-		if ( !$curCount ) {
-			return array( 0, 0 );
-		}
-
-		$timeProfile = ( $curTotal / $curCount ) * 1000; // 1000 ms in a sec
-		$timeProfile = round( $timeProfile, 2 ); // Return in ms, rounded to 2dp
-
-		$condProfile = ( $curTotalConds / $curCount );
-		$condProfile = round( $condProfile, 0 );
-
-		return array( $timeProfile, $condProfile );
 	}
 
 	/**
