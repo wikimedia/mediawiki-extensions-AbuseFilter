@@ -128,7 +128,7 @@
 	"abusefilter-edit-subtitle-new": "Stoche a creje 'nu filtre",
 	"abusefilter-edit-oldwarning": "<strong>Tu stè a cangianne 'na versiune vècchie de quiste filtre.\nLe statisteche citate sonde pè 'a versiune cchiù recende de quiste filtre.\nCe tu salve le cangiaminde toje, tu pòte sovrascrivere totte le cangiaminde combiute d'a revisione ca tu stè a cangià.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Torne sus 'a storie de quiste filtre]].",
 	"abusefilter-edit-status-label": "Statisteche:",
-	"abusefilter-edit-status": "De le urteme $1 {{PLURAL:$1|aziune|aziune}}, quiste filtre hagghie iacchiute $2 ($3%).\nJndr'à medie, 'u soje timbe jè de $4ms, e conzume $5 {{PLURAL:$5|condiziune|condiziune}} d'u limite de condiziune.",
+	"abusefilter-edit-status": "De le urteme $1 {{PLURAL:$1|azione|aziune}}, quiste filtre ave soddisfatte $2 ($3%).",
 	"abusefilter-edit-throttled": "'''Attenziune''': Quiste fltre jè state automatecamènde ddisabbiletate cumme mesure de sicurezze.\nHagghe raggiunde 'u limite de matching cchiù abbinà $1% de le aziune.",
 	"abusefilter-edit-new": "Filtre nueve",
 	"abusefilter-edit-save": "Reggistre 'u filtre",

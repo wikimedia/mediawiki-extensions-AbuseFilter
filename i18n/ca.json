@@ -142,7 +142,7 @@
 	"abusefilter-edit-subtitle-new": "Creació de filtre",
 	"abusefilter-edit-oldwarning": "<strong>Esteu editant una versió vella d'aquest filtre.\nLes estadístiques indicades són de la versió més recent del filtre.\nSi deseu els vostres canvis, revertireu tots els canvis posteriors a aquesta versió.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Torna a l'historial d'aquest filtre]].",
 	"abusefilter-edit-status-label": "Estadístiques:",
-	"abusefilter-edit-status": "De {{PLURAL:$1|la darrera acció|les $1 darreres accions}} aquest filtre n'ha detectat $2 ($3%).\nDe mitjana, la seva durada d'execució és de $4 ms i utilitza $5 {{PLURAL:$5|condició|condicions}} del límit total.",
+	"abusefilter-edit-status": "De {{PLURAL:$1|la darrera acció|les $1 darreres accions}} aquest filtre n'ha detectat $2 ($3%).",
 	"abusefilter-edit-throttled": "'''Atenció''': Aquest filtre s'ha desactivat automàticament com a mesura de seguretat.\nHa sobrepassat el límit de deteccions del $1% de les accions.",
 	"abusefilter-edit-new": "Nou filtre",
 	"abusefilter-edit-save": "Desa filtre",

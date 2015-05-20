@@ -422,6 +422,7 @@
 	"abusefilter-group-default": "Standard",
 	"abusefilter-http-error": "Ett HTTP-fel uppstod: $1.",
 	"apihelp-abusefiltercheckmatch-param-vars": "JSON-kodad lista av variabler att testa mot.",
+	"apihelp-abusefilterchecksyntax-description": "Kontrollera syntax för ett AbuseFilter-filter.",
 	"apihelp-abusefilterchecksyntax-param-filter": "Den fulla texten att kontrollera syntaxen på.",
 	"apihelp-abusefilterchecksyntax-example-1": "Kontrollera syntax för ett giltigt filter",
 	"apihelp-abusefilterchecksyntax-example-2": "Kontrollera syntax för ett ogiltigt filter",
