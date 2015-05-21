@@ -15,16 +15,15 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 			$this->dieUsage( $msg, 'notsuspended' );
 		}
 
-		global $wgMemc;
 		$key = AbuseFilter::autoPromoteBlockKey( $user );
-
-		if ( !$wgMemc->get( $key ) ) {
+		$stash = ObjectCache::getMainStashInstance();
+		if ( !$stash->get( $key ) ) {
 			// Same as above :(
 			$msg = wfMessage( 'abusefilter-reautoconfirm-none', $params['user'] )->text();
 			$this->dieUsage( $msg, 'notsuspended' );
 		}
 
-		$wgMemc->delete( $key );
+		$stash->delete( $key );
 
 		$res = array( 'user' => $params['user'] );
 		$this->getResult()->addValue( null, $this->getModuleName(), $res );
