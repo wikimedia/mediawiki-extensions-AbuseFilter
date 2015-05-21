@@ -153,6 +153,7 @@
 	"abusefilter-edit-builder-group-funcs": "काम सभ",
 	"abusefilter-edit-builder-funcs-length": "स्ट्रिंग लंबाई (length)",
 	"abusefilter-edit-builder-funcs-lcase": "लोअर केस के (lcase)",
+	"abusefilter-edit-builder-funcs-ucase": "ऊपर केस के लेल(ucase)",
 	"abusefilter-edit-builder-funcs-norm": "नियमित (norm)",
 	"abusefilter-edit-builder-funcs-substr": "सबस्ट्रिंग (substr)",
 	"abusefilter-edit-builder-group-vars": "अस्थायी",
