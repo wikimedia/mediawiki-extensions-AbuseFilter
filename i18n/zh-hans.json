@@ -161,7 +161,7 @@
 	"abusefilter-edit-subtitle-new": "创建过滤器",
 	"abusefilter-edit-oldwarning": "<strong>你正在编辑该过滤器的旧版本。统计中引用的是该过滤器的最新版本。如果你保存你的编辑，所编辑版本之后的所有更改均会被覆盖。</strong> &bull;\n[[Special:AbuseFilter/history/$2|返回该过滤器的历史记录]]。",
 	"abusefilter-edit-status-label": "统计：",
-	"abusefilter-edit-status": "在最后的$1次编辑中，有$2（$3%）次编辑触发了本过滤器。其平均运行时间为$4ms（毫秒），消耗了$5条限制。",
+	"abusefilter-edit-status": "在最近的$1次{{PLURAL:$1|操作}}中，有$2（$3%）次触发了本过滤器。",
 	"abusefilter-edit-throttled": "'''警告'''：本过滤器已因安全问题自动停用。它已超过$1%个匹配操作的上限。",
 	"abusefilter-edit-new": "新建过滤器",
 	"abusefilter-edit-save": "保存过滤器",

@@ -20,7 +20,8 @@
 			"Ty221",
 			"Woytecr",
 			"Pan Cube",
-			"Vengir"
+			"Vengir",
+			"Halibutt"
 		]
 	},
 	"abusefilter-desc": "Zastosowanie automatycznej heurystyki do edycji",
@@ -412,5 +413,10 @@
 	"abusefilter-import-intro": "Ten interfejs służy do importowania filtrów z innych wiki.\nW trybie edycji filtru kliknij w źródłowej wiki „{{int:abusefilter-edit-export}}” przy nagłówku „{{int:abusefilter-edit-tools}}”.\nSkopiuj zawartość pola tekstowego, które się pojawi, i wklej ją do poniższego pola tekstowego, a następnie kliknij przycisk „{{int:abusefilter-import-submit}}”.",
 	"abusefilter-import-submit": "Importuj dane",
 	"abusefilter-group-default": "Domyślne",
-	"abusefilter-http-error": "Wystąpił błąd HTTP: $1."
+	"abusefilter-http-error": "Wystąpił błąd HTTP: $1.",
+	"apihelp-abusefilterchecksyntax-description": "Sprawdź składnię filtra AbuseFilter.",
+	"apihelp-abusefilterevalexpression-param-expression": "Wyrażenie do sprawdzenia.",
+	"apihelp-query+abusefilters-example-1": "Lista uruchomionych filtrów publicznych",
+	"apihelp-query+abusefilters-example-2": "Pokaż szczegóły dotyczące filtrów",
+	"apihelp-query+abuselog-description": "Pokaż zdarzenia wyłapane przez jeden z filtrów nadużyć."
 }
