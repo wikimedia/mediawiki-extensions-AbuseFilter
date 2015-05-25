@@ -175,6 +175,7 @@
 	"abusefilter-edit-builder-op-bool-and": "Және (&)",
 	"abusefilter-edit-builder-op-bool-or": "Немесе (|)",
 	"abusefilter-edit-builder-group-misc": "Әртүрлі",
+	"abusefilter-edit-builder-group-funcs": "Функциялар",
 	"abusefilter-edit-builder-group-vars": "Айнымалылар",
 	"abusefilter-edit-builder-vars-accountname": "Тіркелім аты (аккаунт тіркеу кезінде)",
 	"abusefilter-edit-builder-vars-action": "Әрекет",
@@ -284,5 +285,6 @@
 	"abusefilter-diff-prev": "Алдыңғы өзгеріс",
 	"abusefilter-diff-next": "Жаңалау өзгерісі",
 	"abusefilter-import-submit": "Деректерді импорттау",
-	"abusefilter-group-default": "Әдепкі"
+	"abusefilter-group-default": "Әдепкі",
+	"abusefilter-http-error": "HTTP қатесі кездесті: $1"
 }
