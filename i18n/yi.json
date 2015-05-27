@@ -108,7 +108,7 @@
 	"abusefilter-edit-subtitle": "רעדאקטירן פילטער $1",
 	"abusefilter-edit-subtitle-new": "שאפן פילטער",
 	"abusefilter-edit-status-label": "סטאַטיסטיק:",
-	"abusefilter-edit-status": "פון די לעצטע $1 {{PLURAL:$1|פעולה|פעולות}}, האט דער פילטער צוגעפאסט $2 ($3%).\nדורכשניטלעך איז זיין לויף־צײַט $4 מיליסעקונדעס, און ער ניצט אויס $5 {{PLURAL:$5|באדינג|באדינגען}} פון דער באדינג־באגרענעצונג.",
+	"abusefilter-edit-status": "פון די לעצטע $1 {{PLURAL:$1|פעולה|פעולות}}, האט דער פילטער צוגעפאסט $2 ($3%).",
 	"abusefilter-edit-new": "נײַער פֿילטער",
 	"abusefilter-edit-save": "אױפֿהיטן טעקע",
 	"abusefilter-edit-id": "פֿילטער נומער:",
