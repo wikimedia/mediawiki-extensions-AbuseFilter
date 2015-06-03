@@ -25,7 +25,8 @@
 			"Yfdyh000",
 			"Zanhsieh",
 			"S8321414",
-			"LNDDYL"
+			"LNDDYL",
+			"Zhxy 519"
 		]
 	},
 	"abusefilter-desc": "套用自動啟發式演算法於編輯",
@@ -285,7 +286,7 @@
 	"abusefilter-edit-builder-vars-user-name": "使用者帳號名稱",
 	"abusefilter-edit-builder-vars-user-groups": "群組使用者所在 (含隱含群組)",
 	"abusefilter-edit-builder-vars-user-rights": "使用者擁有的權限",
-	"abusefilter-edit-builder-vars-user-blocked": "使用者是否被封鎖",
+	"abusefilter-edit-builder-vars-user-blocked": "用戶是否被封禁",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "電子郵件地址的確認時間",
 	"abusefilter-edit-builder-vars-recent-contributors": "最近十位貢獻給該頁面的使用者",
 	"abusefilter-edit-builder-vars-first-contributor": "貢獻該頁面的第一位使用者",
