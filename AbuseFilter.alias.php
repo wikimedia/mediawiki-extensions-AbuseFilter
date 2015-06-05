@@ -292,8 +292,8 @@ $specialPageAliases['lb'] = array(
 
 /** Northern Luri (لوری مینجایی) */
 $specialPageAliases['lrc'] = array(
-	'AbuseLog' => array( 'پهرستنومه_خراوکاری' ),
-	'AbuseFilter' => array( 'فیلتر_خراوکاری' ),
+	'AbuseLog' => array( 'پئھرستنوٙمە_خئراڤکاری' ),
+	'AbuseFilter' => array( 'فیلتئر_خئراڤکاری' ),
 );
 
 /** Lithuanian (lietuvių) */
