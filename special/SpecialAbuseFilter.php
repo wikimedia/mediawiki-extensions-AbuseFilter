@@ -61,6 +61,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		if ( $subpage == 'tools' ) {
 			$view = 'AbuseFilterViewTools';
 			$pageType = 'tools';
+			$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 		}
 
 		if ( count( $params ) == 2 && $params[0] == 'revert' && is_numeric( $params[1] ) ) {
@@ -72,11 +73,13 @@ class SpecialAbuseFilter extends SpecialPage {
 		if ( count( $params ) && $params[0] == 'test' ) {
 			$view = 'AbuseFilterViewTestBatch';
 			$pageType = 'test';
+			$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 		}
 
 		if ( count( $params ) && $params[0] == 'examine' ) {
 			$view = 'AbuseFilterViewExamine';
 			$pageType = 'examine';
+			$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 		}
 
 		if ( !empty( $params[0] ) && ( $params[0] == 'history' || $params[0] == 'log' ) ) {
