@@ -6,7 +6,8 @@
 			"Krish Dulal",
 			"RajeshPandey",
 			"सरोज कुमार ढकाल",
-			"बिप्लब आनन्द"
+			"बिप्लब आनन्द",
+			"राम प्रसाद जोशी"
 		]
 	},
 	"abusefilter-desc": "स्वचालित अनुमानित सम्पादनहरुकोनिम्ति लागु हुन्छ",
@@ -25,7 +26,7 @@
 	"right-abusefilter-private": "दुरुपयोग लगमा व्यक्तिगत डेटा हर्ने",
 	"action-abusefilter-modify": "दुर्व्यवहार फिल्टर परिवर्तन गर्ने",
 	"action-abusefilter-view": "दुर्व्यवहार फिल्टरहरु हेर्ने",
-	"action-abusefilter-log": "दुरुपयोग लगहरु हेर्नुहोस् \\",
+	"action-abusefilter-log": "दुरुपयोग लगहरू हेर्नुहोस् \\",
 	"action-abusefilter-log-detail": "विस्तृत दुरुपयोग लग प्रविष्टीहरु हेर्नुहोस् \\",
 	"abusefilter-log": "दुर्व्यवहार लग",
 	"abusefilter-log-search": "दुर्व्यवहार लग खोज्ने",

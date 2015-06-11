@@ -174,7 +174,7 @@
 	"abusefilter-edit-warn-actions": "פעולות:",
 	"abusefilter-edit-warn-preview": "תצוגה מקדימה של ההודעה שנבחרה",
 	"abusefilter-edit-warn-edit": "יצירת/עריכת ההודעה שנבחרה",
-	"abusefilter-edit-tag-tag": "סימונים אפשריים (אחד בשורה):",
+	"abusefilter-edit-tag-tag": "אילו [[Special:Tags|תגים]] להחיל (אחד בשורה):",
 	"abusefilter-edit-denied": "אין באפשרותך לצפות בפרטים של מסנן זה, כי הוא מוסתר מעיני הציבור.",
 	"abusefilter-edit-main": "הפרמטרים של המסנן",
 	"abusefilter-edit-done-subtitle": "המסנן נערך",

@@ -182,7 +182,7 @@
 	"abusefilter-edit-warn-actions": "Aktionen:",
 	"abusefilter-edit-warn-preview": "Vorschau der gewählten Systemnachricht",
 	"abusefilter-edit-warn-edit": "Gewählte Systemnachricht erstellen/bearbeiten",
-	"abusefilter-edit-tag-tag": "Gültige Benennungen (eine pro Zeile):",
+	"abusefilter-edit-tag-tag": "Gültige [[Special:Tags|Benennungen]] (eine pro Zeile):",
 	"abusefilter-edit-denied": "Du kannst die Einzelheiten zu diesem Filter nicht einsehen, weil sie versteckt sind.",
 	"abusefilter-edit-main": "Filterparameter",
 	"abusefilter-edit-done-subtitle": "Filter bearbeitet",
