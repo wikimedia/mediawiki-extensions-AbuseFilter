@@ -171,7 +171,7 @@
 	"abusefilter-edit-warn-actions": "Operace:",
 	"abusefilter-edit-warn-preview": "Zobrazit náhled zvoleného hlášení",
 	"abusefilter-edit-warn-edit": "Vytvořit/editovat zvolené hlášení",
-	"abusefilter-edit-tag-tag": "Přidat značky (jedna na řádek):",
+	"abusefilter-edit-tag-tag": "[[Special:Tags|Značky]], které se mají přidat (jedna na řádek):",
 	"abusefilter-edit-denied": "Nemůžete se podívat na detaily tohoto filtru, protože není veřejný",
 	"abusefilter-edit-main": "Parametry filtru",
 	"abusefilter-edit-done-subtitle": "Filtr upraven",

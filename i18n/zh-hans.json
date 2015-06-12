@@ -198,7 +198,7 @@
 	"abusefilter-edit-warn-actions": "操作：",
 	"abusefilter-edit-warn-preview": "预览所选消息",
 	"abusefilter-edit-warn-edit": "创建／编辑所选消息",
-	"abusefilter-edit-tag-tag": "欲应用的标签（每行一个）：",
+	"abusefilter-edit-tag-tag": "欲应用的[[Special:Tags|标签]]（每行一个）：",
 	"abusefilter-edit-denied": "您无法查看该过滤器的详情，因为它已设定为向公众隐藏。",
 	"abusefilter-edit-main": "过滤器参数",
 	"abusefilter-edit-done-subtitle": "已编辑过滤器",

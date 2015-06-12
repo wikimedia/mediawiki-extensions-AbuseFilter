@@ -71,7 +71,7 @@
 	"abusefilter-log-detailedentry-global": "filtro global $1",
 	"abusefilter-log-detailedentry-local": "filtro $1",
 	"abusefilter-log-detailslink": "detalhes",
-	"abusefilter-log-diff": "diff",
+	"abusefilter-log-diff": "dif",
 	"abusefilter-log-hidelink": "ajustar a visibilidade",
 	"abusefilter-log-details-legend": "Detalhes para entrada de registro $1",
 	"abusefilter-log-details-var": "Variável",

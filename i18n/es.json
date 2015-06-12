@@ -200,7 +200,7 @@
 	"abusefilter-edit-warn-actions": "Acciones:",
 	"abusefilter-edit-warn-preview": "Previsualizar mensaje seleccionado",
 	"abusefilter-edit-warn-edit": "Crear o editar el mensaje seleccionado",
-	"abusefilter-edit-tag-tag": "Etiquetas a aplicar (una por línea):",
+	"abusefilter-edit-tag-tag": "[[Special:Tags|Etiquetas]] que se aplicarán (una por línea):",
 	"abusefilter-edit-denied": "No puedes ver detalles de este filtro porque es privado",
 	"abusefilter-edit-main": "Parámetros de filtro",
 	"abusefilter-edit-done-subtitle": "Filtro editado",
