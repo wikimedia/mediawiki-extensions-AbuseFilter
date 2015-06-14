@@ -290,7 +290,7 @@ $specialPageAliases['lb'] = array(
 	'AbuseFilter' => array( 'Mëssbrauchsfilter' ),
 );
 
-/** Northern Luri (لوری مینجایی) */
+/** Northern Luri (لۊری شومالی) */
 $specialPageAliases['lrc'] = array(
 	'AbuseLog' => array( 'پئھرستنوٙمە_خئراڤکاری' ),
 	'AbuseFilter' => array( 'فیلتئر_خئراڤکاری' ),
