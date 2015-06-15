@@ -182,7 +182,7 @@
 	"abusefilter-edit-warn-actions": "Действия:",
 	"abusefilter-edit-warn-preview": "Предпросмотр выбранного сообщения",
 	"abusefilter-edit-warn-edit": "Создать/Изменить выбранное сообщение",
-	"abusefilter-edit-tag-tag": "Применяемые метки (по одной на строку):",
+	"abusefilter-edit-tag-tag": "Применяемые [[Special:Tags|метки]] (по одной на строку):",
 	"abusefilter-edit-denied": "Вы не можете просмотреть подробную информацию об этом фильтре, так как она скрыта от обычных участников.",
 	"abusefilter-edit-main": "Параметры фильтра",
 	"abusefilter-edit-done-subtitle": "Фильтр исправлен",
