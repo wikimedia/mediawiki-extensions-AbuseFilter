@@ -166,7 +166,7 @@
 	"abusefilter-edit-warn-actions": "Toimingud:",
 	"abusefilter-edit-warn-preview": "Valitud sõnumi eelvaade",
 	"abusefilter-edit-warn-edit": "Loo valitud sõnum või muuda seda",
-	"abusefilter-edit-tag-tag": "Kasutatavad märgised (rea kohta üks):",
+	"abusefilter-edit-tag-tag": "Kasutatavad [[Special:Tags|märgised]] (rea kohta üks):",
 	"abusefilter-edit-denied": "Sa ei saa selle filtri üksikasju vaadata, sest need pole avalikud.",
 	"abusefilter-edit-main": "Filtri näitajad",
 	"abusefilter-edit-done-subtitle": "Filter muudetud",

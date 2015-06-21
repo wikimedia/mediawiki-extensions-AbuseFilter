@@ -15,7 +15,8 @@
 			"관인생략",
 			"아라",
 			"Revi",
-			"IRTC1015"
+			"IRTC1015",
+			"Alex00728"
 		]
 	},
 	"abusefilter-desc": "사용자 편집을 규칙에 따라 자동으로 검사합니다",
@@ -177,7 +178,7 @@
 	"abusefilter-edit-warn-actions": "동작:",
 	"abusefilter-edit-warn-preview": "선택한 메시지 미리 보기",
 	"abusefilter-edit-warn-edit": "선택한 메시지를 만들기/편집하기",
-	"abusefilter-edit-tag-tag": "적용할 태그 (1줄당 1개씩):",
+	"abusefilter-edit-tag-tag": "적용할 [[Special:Tags|태그]] (1줄당 1개씩):",
 	"abusefilter-edit-denied": "이 필터는 비공개로 설정되었기 때문에 이 필터의 자세한 사항을 볼 수 없습니다.",
 	"abusefilter-edit-main": "필터 변수",
 	"abusefilter-edit-done-subtitle": "필터 편집됨",

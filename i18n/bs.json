@@ -6,7 +6,8 @@
 			"Palapa",
 			"Seha",
 			"Sociologist",
-			"KWiki"
+			"KWiki",
+			"Srdjan m"
 		]
 	},
 	"abusefilter-desc": "Dodaje automatske heuristike izmjenama.",
@@ -253,7 +254,7 @@
 	"abusefilter-edit-builder-vars-article-views": "Pregleda stranice",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID preusmjerene izvorne stranice",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Imenski prostor izvorne stranice",
-	"abusefilter-edit-builder-vars-movedfrom-text": "Naslov preusmjerene izvorne stranice",
+	"abusefilter-edit-builder-vars-movedfrom-text": "Naslov premještene izvorne stranice",
 	"abusefilter-edit-builder-vars-movedfrom-prefixedtext": "Puni naslov izvorne stranice koja se premješta",
 	"abusefilter-edit-builder-vars-movedto-id": "ID stranice na koju se premješta",
 	"abusefilter-edit-builder-vars-movedto-ns": "Imenski prostor stranice na koju se premješta",
