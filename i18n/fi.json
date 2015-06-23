@@ -178,7 +178,7 @@
 	"abusefilter-edit-warn-actions": "Toiminnot:",
 	"abusefilter-edit-warn-preview": "Esikatsele valittua viestiä",
 	"abusefilter-edit-warn-edit": "Luo tai muokkaa valittua viestiä",
-	"abusefilter-edit-tag-tag": "Käytettävät merkkaukset (yksi per rivi):",
+	"abusefilter-edit-tag-tag": "Käytettävät [[Special:Tags|merkkaukset]] (yksi per rivi):",
 	"abusefilter-edit-denied": "Et voi tarkastella tämän suodattimen yksityiskohtia, koska ne eivät ole julkisesti näkyvillä.",
 	"abusefilter-edit-main": "Suodattimen parametrit",
 	"abusefilter-edit-done-subtitle": "Suodatinta muokattu",
