@@ -282,6 +282,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "ما إذا كان المستخدم ممنوعاً",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "وقت تأكيد عنوان البريد الإلكتروني",
 	"abusefilter-edit-builder-vars-recent-contributors": "آخر خمسة مساهمين في الصفحة",
+	"abusefilter-edit-builder-vars-first-contributor": "أول مستخدم ساهم في الصفحة",
 	"abusefilter-edit-builder-vars-all-links": "كل الوصلات الخارجية في النص الجديد",
 	"abusefilter-edit-builder-vars-added-links": "كل الوصلات الخارجية المضافة في التعديل",
 	"abusefilter-edit-builder-vars-removed-links": "كل الوصلات الخارجية المزالة في التعديل",

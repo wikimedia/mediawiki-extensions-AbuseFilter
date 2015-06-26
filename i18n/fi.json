@@ -120,9 +120,10 @@
 	"abusefilter-list-options-deleted-only": "Näytä vain poistetut suodattimet",
 	"abusefilter-list-options-deleted-hide": "Piilota poistetut suodattimet",
 	"abusefilter-list-options-deleted-show": "Sisällytä poistetut suodattimet",
-	"abusefilter-list-options-scope": "Näytä seuraavat suodattimet:",
-	"abusefilter-list-options-scope-local": "Paikallinen wiki",
-	"abusefilter-list-options-scope-global": "Järjestelmänlaajuiset säännöt",
+	"abusefilter-list-options-scope": "Näytä suodattimista:",
+	"abusefilter-list-options-scope-local": "Vain paikalliset säännöt",
+	"abusefilter-list-options-scope-global": "Vain järjestelmänlaajuiset säännöt",
+	"abusefilter-list-options-scope-all": "Paikalliset ja järjestelmänlaajuiset säännöt",
 	"abusefilter-list-options-disabled": "Käytöstä poistetut suodattimet:",
 	"abusefilter-list-options-hidedisabled": "Piilota käytöstä poistetut suodattimet",
 	"abusefilter-list-options-submit": "Päivitä",
@@ -408,5 +409,7 @@
 	"abusefilter-import-intro": "Voit käyttää tätä käyttöliittymää suodattimien tuomiseksi muista wikeistä.\nNapsauta ”{{int:abusefilter-edit-export}}” kohdassa ”{{int:abusefilter-edit-tools}}” lähdewikin muokkausnäkymässä.\nKopioi ilmestyvän tekstikentän sisältö ja liitä se tähän tekstikenttään, jonka jälkeen napsauta ”{{int:abusefilter-import-submit}}”.",
 	"abusefilter-import-submit": "Tuo tiedot",
 	"abusefilter-group-default": "Yleinen",
-	"abusefilter-http-error": "Tapahtui HTTP-virhe: $1."
+	"abusefilter-http-error": "Tapahtui HTTP-virhe: $1.",
+	"apihelp-abusefilterchecksyntax-example-1": "Tarkasta kelvollisen suodattimen ehtolauserakenne",
+	"apihelp-abusefilterchecksyntax-example-2": "Tarkasta epäkelvon suodattimen ehtolauserakenne"
 }

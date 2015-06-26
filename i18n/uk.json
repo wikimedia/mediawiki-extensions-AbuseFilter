@@ -179,7 +179,7 @@
 	"abusefilter-edit-warn-actions": "Дії:",
 	"abusefilter-edit-warn-preview": "Попередній перегляд вибраного повідомлення",
 	"abusefilter-edit-warn-edit": "Створити/редагувати вибране повідомлення",
-	"abusefilter-edit-tag-tag": "Присвоювані мітки (по одному на рядок):",
+	"abusefilter-edit-tag-tag": "Присвоювані [[Special:Tags|мітки]] (по одній у рядку):",
 	"abusefilter-edit-denied": "Ви не можете проглянути докладну інформацію про цей фільтр, бо вона прихована від публічного перегляду.",
 	"abusefilter-edit-main": "Параметри фільтра",
 	"abusefilter-edit-done-subtitle": "Фільтр змінено",
