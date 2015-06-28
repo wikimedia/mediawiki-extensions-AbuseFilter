@@ -286,7 +286,7 @@ class AbuseFilter {
 			array( 'af_id' => $filter ),
 			__METHOD__
 		);
-		return $hidden ? true : false;
+		return (bool)$hidden;
 	}
 
 	/**
@@ -317,7 +317,7 @@ class AbuseFilter {
 		$vars = new AbuseFilterVariableHolder;
 
 		if ( !$title ) {
-			return new AbuseFilterVariableHolder;
+			return $vars;
 		}
 
 		$vars->setVar( $prefix . '_ARTICLEID', $title->getArticleID() );
