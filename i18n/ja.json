@@ -16,7 +16,8 @@
 			"Takot",
 			"Otokoume",
 			"2nd-player",
-			"W.CC"
+			"W.CC",
+			"Sujiniku"
 		]
 	},
 	"abusefilter-desc": "編集に対して、自動的な経験則を適用する",
@@ -119,7 +120,7 @@
 	"abusefilter-list-options-deleted-only": "削除されたもののみ表示",
 	"abusefilter-list-options-deleted-hide": "削除されたものを表示しない",
 	"abusefilter-list-options-deleted-show": "削除されたものを含める",
-	"abusefilter-list-options-scope": "フィルターから表示:",
+	"abusefilter-list-options-scope": "フィルターを表示:",
 	"abusefilter-list-options-scope-local": "ローカル規則のみ",
 	"abusefilter-list-options-scope-global": "グローバル規則のみ",
 	"abusefilter-list-options-scope-all": "ローカルおよびグローバル規則",
@@ -141,7 +142,7 @@
 	"abusefilter-edit-subtitle-new": "フィルターを作成中",
 	"abusefilter-edit-oldwarning": "<strong>あなたはこのフィルターの古い版を編集しています。引用されている統計は最新版のフィルターのものです。あなたの変更を保存すると、あなたが編集している版以降の変更をすべて上書きしてしまいます。</strong> &bull; [[Special:AbuseFilter/history/$2|このフィルターの履歴に戻る]]",
 	"abusefilter-edit-status-label": "統計:",
-	"abusefilter-edit-status": "最近の$1{{PLURAL:$1|操作}}のうち、このフィルターは$2件($3%)に対して発動しました。平均して、実行時間は$4ミリ秒で$5件の条件制限を消費しました。",
+	"abusefilter-edit-status": "最近の$1{{PLURAL:$1|操作}}のうち、このフィルターは$2件($3%)に対して発動しました。",
 	"abusefilter-edit-throttled": "'''警告:''' このフィルターは安全対策により自動的に無効化されました。\n操作の$1%以上に一致するという制限に達しました。",
 	"abusefilter-edit-new": "新規フィルター",
 	"abusefilter-edit-save": "フィルターを保存",
@@ -178,7 +179,7 @@
 	"abusefilter-edit-warn-actions": "操作:",
 	"abusefilter-edit-warn-preview": "選択したメッセージをプレビュー",
 	"abusefilter-edit-warn-edit": "選択したメッセージを作成または編集",
-	"abusefilter-edit-tag-tag": "適用するタグ (一行に一つ):",
+	"abusefilter-edit-tag-tag": "適用する[[Special:Tags|タグ]] (一行に一つ):",
 	"abusefilter-edit-denied": "このフィルターは非公開とされているため、あなたは詳細を閲覧できません。",
 	"abusefilter-edit-main": "フィルターの設定",
 	"abusefilter-edit-done-subtitle": "フィルターを編集しました",
