@@ -324,9 +324,16 @@ class AbuseFilter {
 		$vars->setVar( $prefix . '_NAMESPACE', $title->getNamespace() );
 		$vars->setVar( $prefix . '_TEXT', $title->getText() );
 		$vars->setVar( $prefix . '_PREFIXEDTEXT', $title->getPrefixedText() );
+
 		global $wgDisableCounters;
 		if ( !$wgDisableCounters && !$title->isSpecialPage() ) {
-			$vars->setVar( $prefix . '_VIEWS', WikiPage::factory( $title )->getCount() );
+			// Support: MediaWiki 1.24 and earlier
+			if ( method_exists( 'WikiPage', 'getCount' ) ) {
+				$vars->setVar( $prefix . '_VIEWS', WikiPage::factory( $title )->getCount() );
+			// Support: MediaWiki 1.25+ with HitCounters extension
+			} elseif ( method_exists( 'HitCounters\HitCounters', 'getCount' ) ) {
+				$vars->setVar( $prefix . '_VIEWS', HitCounters\HitCounters::getCount( $title ) );
+			}
 		}
 
 		// Use restrictions.
