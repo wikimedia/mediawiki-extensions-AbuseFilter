@@ -26,7 +26,6 @@ $wgExtensionCredits['antispam'][] = array(
 
 $dir = __DIR__;
 $wgMessagesDirs['AbuseFilter'] = "$dir/i18n";
-$wgExtensionMessagesFiles['AbuseFilter'] = "$dir/AbuseFilter.i18n.php";
 $wgExtensionMessagesFiles['AbuseFilterAliases'] = "$dir/AbuseFilter.alias.php";
 
 $wgAutoloadClasses['AbuseFilter'] = "$dir/AbuseFilter.class.php";
