@@ -423,6 +423,8 @@
 	"apihelp-abusefilterevalexpression-example-1": "Evaluiert einen einfachen Ausdruck",
 	"apihelp-abusefilterunblockautopromote-param-user": "Benutzername des Benutzers, den du freigeben möchtest.",
 	"apihelp-query+abusefilters-description": "Einzelheiten über die Missbrauchsfilter anzeigen.",
+	"apihelp-query+abusefilters-param-startid": "Die Filterkennung, bei der die Aufzählung beginnen soll.",
+	"apihelp-query+abusefilters-param-endid": "Die Filterkennung, bei der die Aufzählung enden soll.",
 	"apihelp-query+abusefilters-param-show": "Nur Filter anzeigen, die diese Kriterien erfüllen.",
 	"apihelp-query+abusefilters-param-limit": "Die maximale Anzahl aufzulistender Filter.",
 	"apihelp-query+abusefilters-example-1": "Aktivierte öffentliche Filter auflisten",
