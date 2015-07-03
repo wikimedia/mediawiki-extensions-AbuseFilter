@@ -431,6 +431,7 @@
 	"apihelp-query+abusefilters-example-2": "Einige Einzelheiten über Filter anzeigen",
 	"apihelp-query+abuselog-description": "Ereignisse anzeigen, die von einem der Missbrauchsfilter erfasst wurden.",
 	"apihelp-query+abuselog-param-user": "Nur Einträge von einem angegebenen Benutzer oder einer IP-Adresse anzeigen.",
+	"apihelp-query+abuselog-param-title": "Zeigt nur Einträge, die auf einer angegebenen Seite erscheinen.",
 	"apihelp-query+abuselog-param-limit": "Die maximale Anzahl der aufzulistenden Einträge.",
 	"apihelp-query+abuselog-example-1": "Zeigt die letzten Logbucheinträge",
 	"apihelp-query+abuselog-example-2": "Zeigt die letzten Logbucheinträge für [[API]]"
