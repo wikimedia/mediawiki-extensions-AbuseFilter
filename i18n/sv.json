@@ -189,7 +189,7 @@
 	"abusefilter-edit-warn-actions": "Åtgärder:",
 	"abusefilter-edit-warn-preview": "Förhandsgranska valt meddelande",
 	"abusefilter-edit-warn-edit": "Skapa/redigera valt meddelande",
-	"abusefilter-edit-tag-tag": "Märken att lägga på (en per rad):",
+	"abusefilter-edit-tag-tag": "[[Special:Tags|Märken]] att lägga på (en per rad):",
 	"abusefilter-edit-denied": "Du kan inte se detaljer för detta filtret, eftersom det är dolt från allmänheten.",
 	"abusefilter-edit-main": "Filterparametrar",
 	"abusefilter-edit-done-subtitle": "Filter redigerat",
