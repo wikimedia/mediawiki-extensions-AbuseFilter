@@ -7,7 +7,8 @@
 			"Seha",
 			"Sociologist",
 			"KWiki",
-			"Srdjan m"
+			"Srdjan m",
+			"Semso98"
 		]
 	},
 	"abusefilter-desc": "Dodaje automatske heuristike izmjenama.",
@@ -109,9 +110,9 @@
 	"abusefilter-list-options-deleted-only": "Pokaži samo obrisane filtere",
 	"abusefilter-list-options-deleted-hide": "Sakrij obrisane filtere",
 	"abusefilter-list-options-deleted-show": "Pripoji i obrisane filtere",
-	"abusefilter-list-options-scope": "Prikaži filtere od:",
-	"abusefilter-list-options-scope-local": "Lokalna wiki",
-	"abusefilter-list-options-scope-global": "Globalna pravila",
+	"abusefilter-list-options-scope": "Prikaži filtere:",
+	"abusefilter-list-options-scope-local": "Samo lokalna pravila",
+	"abusefilter-list-options-scope-global": "Samo globalna pravila",
 	"abusefilter-list-options-disabled": "Isključeni filteri:",
 	"abusefilter-list-options-hidedisabled": "Sakrij isključene filtere",
 	"abusefilter-list-options-submit": "Ažuriraj",
