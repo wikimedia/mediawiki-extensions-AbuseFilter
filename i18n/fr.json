@@ -31,7 +31,8 @@
 			"Nicolapps",
 			"Linedwell",
 			"Hercule",
-			"Macofe"
+			"Macofe",
+			"TomT0m"
 		]
 	},
 	"abusefilter-desc": "Applique des heuristiques automatiques aux modifications",
@@ -193,7 +194,7 @@
 	"abusefilter-edit-warn-actions": "Actions :",
 	"abusefilter-edit-warn-preview": "Prévisualiser le message sélectionné",
 	"abusefilter-edit-warn-edit": "Créer ou modifier le message sélectionné",
-	"abusefilter-edit-tag-tag": "Balises à appliquer (une par ligne) :",
+	"abusefilter-edit-tag-tag": "[[Special:Tags|Balises]] à appliquer (une par ligne) :",
 	"abusefilter-edit-denied": "Vous ne pouvez pas voir les détails de ce filtre, parce qu’il est caché à la vue du public",
 	"abusefilter-edit-main": "Paramètres du filtre",
 	"abusefilter-edit-done-subtitle": "Filtre modifié",

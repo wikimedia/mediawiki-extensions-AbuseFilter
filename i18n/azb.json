@@ -4,7 +4,8 @@
 			"Amir a57",
 			"E THP",
 			"Ebrahimi-amir",
-			"Mousa"
+			"Mousa",
+			"Koroğlu"
 		]
 	},
 	"abusefilter-desc": "دوزلیش‌لره ائوریستیک فیلترلرین تطبیق اولونماسینا ایمکان وئریر.",
@@ -43,7 +44,7 @@
 	"abusefilter-log": "سوی-ایستیفاده سوزگجی ژورنا‌لی",
 	"abusefilter-log-summary": "بو ژورنالدا سوزگج‌لر طرفین‌دن مویین اولونموش بوتون فالیت‌لر تصویر اولونوب.",
 	"abusefilter-log-search": "سوی-ایستیفاده ژورنالیندا آختاریش",
-	"abusefilter-log-search-user": "ایستیفاده‌چی:",
+	"abusefilter-log-search-user": "ایشلدنː",
 	"abusefilter-log-search-filter": "آی-دی سوزگجی:",
 	"abusefilter-log-search-title": "باشلیق:",
 	"abusefilter-log-search-wiki": "ویکی:",
@@ -276,7 +277,7 @@
 	"abusefilter-history-enabled": "قوشولوب",
 	"abusefilter-history-global": "باشاباشجا",
 	"abusefilter-history-timestamp": "زامان",
-	"abusefilter-history-user": "ایستیفاده‌چی",
+	"abusefilter-history-user": "ایشلدن",
 	"abusefilter-history-public": "عمومی سوزگج شرحی",
 	"abusefilter-history-flags": "بایراق‌لار:",
 	"abusefilter-history-filter": "سوزگج قایداسی",
