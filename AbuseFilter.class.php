@@ -1307,10 +1307,12 @@ class AbuseFilter {
 
 				break;
 			case 'blockautopromote':
-				global $wgUser, $wgMemc;
+				global $wgUser;
 				if ( !$wgUser->isAnon() ) {
 					$blockPeriod = (int)mt_rand( 3 * 86400, 7 * 86400 ); // Block for 3-7 days.
-					$wgMemc->set( self::autoPromoteBlockKey( $wgUser ), true, $blockPeriod );
+					ObjectCache::getMainStashInstance()->set(
+						self::autoPromoteBlockKey( $wgUser ), true, $blockPeriod
+					);
 
 					$message = array(
 						'abusefilter-autopromote-blocked',

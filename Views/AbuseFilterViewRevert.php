@@ -209,9 +209,9 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				);
 				return true;
 			case 'blockautopromote':
-				global $wgMemc;
-				$wgMemc->delete( AbuseFilter::autopromoteBlockKey(
-					User::newFromId( $result['userid'] ) ) );
+				ObjectCache::getMainStashInstance()->delete(
+					AbuseFilter::autopromoteBlockKey( User::newFromId( $result['userid'] ) )
+				);
 				return true;
 			case 'degroup':
 				// Pull the user's groups from the vars.
