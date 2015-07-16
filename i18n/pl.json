@@ -183,7 +183,7 @@
 	"abusefilter-edit-warn-actions": "Operacje:",
 	"abusefilter-edit-warn-preview": "Podgląd wybranego komunikatu",
 	"abusefilter-edit-warn-edit": "Utwórz lub edytuj wybrany komunikat",
-	"abusefilter-edit-tag-tag": "Oznaczenia do zastosowania (po jednym w wierszu):",
+	"abusefilter-edit-tag-tag": "[[Special:Tags|Znaczniki]] do zastosowania (po jednym w wierszu):",
 	"abusefilter-edit-denied": "Nie możesz zobaczyć szczegółów tego filtru, ponieważ jest ukryty przed widokiem publicznym.",
 	"abusefilter-edit-main": "Ustawienia filtru",
 	"abusefilter-edit-done-subtitle": "Filtr został zmodyfikowany",
