@@ -32,7 +32,8 @@
 			"Linedwell",
 			"Hercule",
 			"Macofe",
-			"TomT0m"
+			"TomT0m",
+			"Wladek92"
 		]
 	},
 	"abusefilter-desc": "Applique des heuristiques automatiques aux modifications",
@@ -116,6 +117,7 @@
 	"abusefilter-list-consequences": "Conséquences",
 	"abusefilter-list-visibility": "Visibilité",
 	"abusefilter-list-hitcount": "Nombre de détections",
+	"abusefilter-list-lasthit": "Dernier accès",
 	"abusefilter-list-edit": "Modifier",
 	"abusefilter-list-details": "Détails",
 	"abusefilter-list-limit": "Nombre par page :",
