@@ -120,6 +120,7 @@
 	"abusefilter-list-consequences": "处理",
 	"abusefilter-list-visibility": "公开级别",
 	"abusefilter-list-hitcount": "触发数",
+	"abusefilter-list-lasthit": "最近触发",
 	"abusefilter-list-edit": "编辑",
 	"abusefilter-list-details": "详情",
 	"abusefilter-list-limit": "每页显示数量：",
