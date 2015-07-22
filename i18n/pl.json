@@ -21,7 +21,8 @@
 			"Woytecr",
 			"Pan Cube",
 			"Vengir",
-			"Halibutt"
+			"Halibutt",
+			"Openbk"
 		]
 	},
 	"abusefilter-desc": "Zastosowanie automatycznej heurystyki do edycji",
@@ -49,7 +50,7 @@
 	"right-abusefilter-log-private": "Wyświetlanie wpisów do logów filtrów nadużyć oznaczonych jako prywatne",
 	"right-abusefilter-hide-log": "Ukrywanie wpisów w rejestrze nadużyć",
 	"right-abusefilter-hidden-log": "Podgląd ukrytych wpisów w rejestrze nadużyć",
-	"right-abusefilter-modify-global": "tworzyć lub modyfikować globalne filtry nadużyć",
+	"right-abusefilter-modify-global": "Tworzenie lub modyfikowanie globalnych filtrów nadużyć",
 	"action-abusefilter-modify": "modyfikowania filtru nadużyć",
 	"action-abusefilter-view": "przeglądania filtrów nadużyć",
 	"action-abusefilter-log": "przeglądania rejestru nadużyć",
