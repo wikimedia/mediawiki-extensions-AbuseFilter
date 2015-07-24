@@ -141,7 +141,7 @@
 	"abusefilter-edit-rules": "Dagiti kasasaad:",
 	"abusefilter-edit-notes": "Dagiti nota:",
 	"abusefilter-edit-lastmod": "Kinaudi a nabaliwan ti sagat:",
-	"abusefilter-edit-lastmod-text": "$1 babaen ti $2",
+	"abusefilter-edit-lastmod-text": "$1 babaen ni $2",
 	"abusefilter-edit-hitcount": "Dagiti napuntaan ti sagat:",
 	"abusefilter-edit-consequences": "Dagiti tignay a naaramid no naipada",
 	"abusefilter-edit-action-warn": "Kalbiten dagitoy a tignay kalpasan a naballaagan ti agar-aramat",

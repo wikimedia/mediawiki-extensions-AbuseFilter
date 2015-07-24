@@ -100,7 +100,7 @@
 	"abusefilter-unhidden": "Javno",
 	"abusefilter-enabled": "Uključen/a",
 	"abusefilter-deleted": "Obrisan/a",
-	"abusefilter-disabled": "Isključen/a",
+	"abusefilter-disabled": "Isključeno",
 	"abusefilter-hitcount": "$1 {{PLURAL:$1|pogodak|pogotci}}",
 	"abusefilter-new": "Napravi novi filter",
 	"abusefilter-return": "Nazad na upravljanje filterima",
