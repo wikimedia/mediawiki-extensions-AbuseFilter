@@ -115,7 +115,6 @@
 	"abusefilter-list-consequences": "Column header in abuse filter overview for the filter consequences.",
 	"abusefilter-list-visibility": "Column header in abuse filter overview for the public filter visibility.\n{{Identical|Visibility}}",
 	"abusefilter-list-hitcount": "Column header in abuse filter overview for the number of times the filter was triggered.",
-	"abusefilter-list-lasthit": "Column header in abuse filter overview for the last timestamp in which the filter was triggered.",
 	"abusefilter-list-edit": "Probably the verb \"to edit\" (instead of the noun \"an edit\").\n{{Identical|Edit}}",
 	"abusefilter-list-details": "{{Identical|Detail}}",
 	"abusefilter-list-limit": "Used as label for the Limit selector in the form.",
