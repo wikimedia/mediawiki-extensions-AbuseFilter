@@ -205,7 +205,7 @@ class AbuseFilterPager extends TablePager {
 
 	function getQueryInfo() {
 		return array(
-			'tables' => array( 'abuse_filter', 'abuse_filter_log', ),
+			'tables' => array( 'abuse_filter' ),
 			'fields' => array(
 				'af_id',
 				'af_enabled',
@@ -219,16 +219,8 @@ class AbuseFilterPager extends TablePager {
 				'af_user',
 				'af_actions',
 				'af_group',
-				'afl_timestamp' => 'MAX(afl_timestamp)',
 			),
 			'conds' => $this->mConds,
-			'options' => array( 'GROUP BY' => 'af_id' ),
-			'join_conds' => array(
-				'abuse_filter_log' => array(
-					'LEFT JOIN',
-					'af_id=afl_filter'
-				)
-			)
 		);
 	}
 
@@ -247,7 +239,6 @@ class AbuseFilterPager extends TablePager {
 			'af_timestamp' => 'abusefilter-list-lastmodified',
 			'af_hidden' => 'abusefilter-list-visibility',
 			'af_hit_count' => 'abusefilter-list-hitcount',
-			'afl_timestamp' => 'abusefilter-list-lasthit',
 		);
 
 		global $wgAbuseFilterValidGroups;
@@ -314,12 +305,6 @@ class AbuseFilterPager extends TablePager {
 					$link = "";
 				}
 				return $link;
-			case 'afl_timestamp':
-				$timestamp = '';
-				if ( $row->afl_timestamp && SpecialAbuseLog::canSeeDetails( $row->af_id, $row->af_hidden ) ) {
-					$timestamp = $lang->timeanddate( $row->afl_timestamp, true );
-				}
-				return $timestamp;
 			case 'af_timestamp':
 				$userLink =
 					Linker::userLink(
@@ -422,12 +407,6 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 					return '';
 				}
 				return $this->msg( 'abusefilter-hitcount' )->numParams( $value )->parse();
-			case 'afl_timestamp':
-				$timestamp = '';
-				if ( !$row->af_hidden && $row->afl_timestamp ) {
-					$timestamp = $lang->timeanddate( $row->afl_timestamp, true );
-				}
-				return $timestamp;
 			case 'af_timestamp':
 				$user = $row->af_user_text;
 				return $this->msg(
