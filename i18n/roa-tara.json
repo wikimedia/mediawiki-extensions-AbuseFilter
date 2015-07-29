@@ -165,7 +165,7 @@
 	"abusefilter-edit-warn-actions": "Aziune:",
 	"abusefilter-edit-warn-preview": "Fa l'andeprime d'u messagge scacchiate",
 	"abusefilter-edit-warn-edit": "Ccreje/Cange 'u messagge scacchiate",
-	"abusefilter-edit-tag-tag": "Etichette da applecà (une pè righe):",
+	"abusefilter-edit-tag-tag": "[[Special:Tags|Tag]] da applecà (une pè righe):",
 	"abusefilter-edit-denied": "Non ge puè uardà le dettaglie de stu filtre, purcé jè scunnute da 'a viste d'u pubbleche.",
 	"abusefilter-edit-main": "Parametre d'u filtre",
 	"abusefilter-edit-done-subtitle": "Filtre cangiate",
