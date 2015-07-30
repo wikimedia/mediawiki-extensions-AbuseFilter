@@ -108,6 +108,7 @@
 	"abusefilter-list-options-scope": "Prikaži filtere:",
 	"abusefilter-list-options-scope-local": "Samo lokalna pravila",
 	"abusefilter-list-options-scope-global": "Samo globalna pravila",
+	"abusefilter-list-options-scope-all": "Lokalna i globalna pravila",
 	"abusefilter-list-options-disabled": "Onemogućeni filteri:",
 	"abusefilter-list-options-hidedisabled": "Sakrij onemogućene filtere",
 	"abusefilter-list-options-submit": "Ažuriraj",

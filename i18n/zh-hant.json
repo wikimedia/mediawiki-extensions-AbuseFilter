@@ -146,7 +146,7 @@
 	"abusefilter-reautoconfirm-none": "該使用者之自動確認狀態並沒有被停止過。",
 	"abusefilter-reautoconfirm-notallowed": "您未被允許還原自動確認狀態。",
 	"abusefilter-reautoconfirm-done": "該帳號的自動確認狀態已被還原",
-	"abusefilter-status": "在最近 $1 次操作中，有 $2 ($3%) 次操作達到$4次的比較條件限制，且有 $5 ($6%) 次操作符合其中一個已開啟的過濾器。",
+	"abusefilter-status": "在最近 $1 次操作中，有 $2 ($3%) 次操作達到 $4 次的比較條件限制，且有 $5 ($6%) 次操作符合其中一個已開啟的過濾器。",
 	"abusefilter-edit": "正在編輯濫用過濾器",
 	"abusefilter-edit-subtitle": "正在編輯過濾器 $1",
 	"abusefilter-edit-subtitle-new": "正在建立過濾器",
