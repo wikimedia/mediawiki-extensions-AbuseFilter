@@ -149,7 +149,7 @@
 	"abusefilter-edit-rules": "Kondisi:",
 	"abusefilter-edit-notes": "Catatan:",
 	"abusefilter-edit-lastmod": "Filter terakhir diubah:",
-	"abusefilter-edit-lastmod-text": "$1 sampai $2",
+	"abusefilter-edit-lastmod-text": "$1 oleh $2",
 	"abusefilter-edit-hitcount": "Perhitungan filter:",
 	"abusefilter-edit-consequences": "Tindakan yang diambil ketika mengenai sasaran",
 	"abusefilter-edit-action-warn": "Picu tindakan ini setelah memberikan peringatan kepada pengguna",
