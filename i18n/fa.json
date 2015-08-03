@@ -282,7 +282,7 @@
 	"abusefilter-edit-builder-vars-user-groups": "گروه‌هایی که کاربر (ولو به طور ضمنی) در آن است",
 	"abusefilter-edit-builder-vars-user-rights": "اختیاراتی که یک کاربر دارد",
 	"abusefilter-edit-builder-vars-user-blocked": "بسته‌بودن کاربر",
-	"abusefilter-edit-builder-vars-user-emailconfirm": "آدرس ایمیل زمان تأیید شد",
+	"abusefilter-edit-builder-vars-user-emailconfirm": "نشانی ایمیل زمان تأیید شد",
 	"abusefilter-edit-builder-vars-recent-contributors": "آخرین ده کاربری که در صفحه مشارکت کرده‌اند",
 	"abusefilter-edit-builder-vars-first-contributor": "اولین کاربری که در صفحه مشارکت کرده‌است",
 	"abusefilter-edit-builder-vars-all-links": "تمام پیوندهای خارجی در متن تازه",
