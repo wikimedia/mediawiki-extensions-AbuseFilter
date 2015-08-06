@@ -333,7 +333,7 @@ class AFComputedVariable {
 		$parameters = $this->mParameters;
 		$result = null;
 
-		if ( !wfRunHooks( 'AbuseFilter-interceptVariable',
+		if ( !Hooks::run( 'AbuseFilter-interceptVariable',
 							array( $this->mMethod, $vars, $parameters, &$result ) ) ) {
 			return $result instanceof AFPData
 				? $result : AFPData::newFromPHPVar( $result );
@@ -599,7 +599,7 @@ class AFComputedVariable {
 				$result = AbuseFilter::revisionToString( $rev );
 				break;
 			default:
-				if ( wfRunHooks( 'AbuseFilter-computeVariable',
+				if ( Hooks::run( 'AbuseFilter-computeVariable',
 									array( $this->mMethod, $vars, $parameters, &$result ) ) ) {
 					throw new AFPException( 'Unknown variable compute type ' . $this->mMethod );
 				}

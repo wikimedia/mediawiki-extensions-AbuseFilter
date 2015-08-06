@@ -236,7 +236,7 @@ class AbuseFilter {
 			array( 'user' => $user, 'method' => 'isBlocked' )
 		);
 
-		wfRunHooks( 'AbuseFilter-generateUserVars', array( $vars, $user ) );
+		Hooks::run( 'AbuseFilter-generateUserVars', array( $vars, $user ) );
 
 		return $vars;
 	}
@@ -256,7 +256,7 @@ class AbuseFilter {
 		if ( !$wgDisableCounters ) {
 			$realValues['vars']['article_views'] = 'article-views';
 		}
-		wfRunHooks( 'AbuseFilter-builder', array( &$realValues ) );
+		Hooks::run( 'AbuseFilter-builder', array( &$realValues ) );
 
 		return $realValues;
 	}
@@ -360,7 +360,7 @@ class AbuseFilter {
 					'namespace' => $title->getNamespace()
 				) );
 
-		wfRunHooks( 'AbuseFilter-generateTitleVars', array( $vars, $title, $prefix ) );
+		Hooks::run( 'AbuseFilter-generateTitleVars', array( $vars, $title, $prefix ) );
 
 		return $vars;
 	}
@@ -799,7 +799,7 @@ class AbuseFilter {
 		}
 
 		// Add vars from extensions
-		wfRunHooks( 'AbuseFilter-filterAction', array( &$vars, $title ) );
+		Hooks::run( 'AbuseFilter-filterAction', array( &$vars, $title ) );
 
 		// Set context
 		$vars->setVar( 'context', 'filter' );
@@ -2229,7 +2229,7 @@ class AbuseFilter {
 	static function contentToString( Content $content ) {
 		$text = null;
 
-		if ( wfRunHooks( 'AbuseFilter-contentToString', array( $content, &$text ) ) ) {
+		if ( Hooks::run( 'AbuseFilter-contentToString', array( $content, &$text ) ) ) {
 			$text = $content instanceof TextContent
 						? $content->getNativeData()
 						: $content->getTextForSearchIndex();
