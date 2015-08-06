@@ -277,9 +277,11 @@ class AbuseFilterHooks {
 	 * @return bool
 	 */
 	public static function onGetAutoPromoteGroups( $user, &$promote ) {
-		$key = AbuseFilter::autoPromoteBlockKey( $user );
-		if ( ObjectCache::getMainStashInstance()->get( $key ) ) {
-			$promote = array();
+		if ( $promote ) {
+			$key = AbuseFilter::autoPromoteBlockKey( $user );
+			if ( ObjectCache::getMainStashInstance()->get( $key ) ) {
+				$promote = array();
+			}
 		}
 
 		return true;
