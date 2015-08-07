@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Sasan700",
-			"Умар"
+			"Умар",
+			"Исмаил Садуев"
 		]
 	},
 	"abusefilter-desc": "Нисдарийн тӀе литтарш тоха йиш хуьлуьйту.",
@@ -139,7 +140,7 @@
 	"abusefilter-edit-hitcount": "Литтаран болх бола балийтар:",
 	"abusefilter-edit-consequences": "Кхочушбеш болу барам",
 	"abusefilter-edit-action-warn": "Кхочушде декъашхочунга дӀахьедар динчултӀехьа",
-	"abusefilter-edit-action-disallow": "Бехкам бе декъашхочо дечун",
+	"abusefilter-edit-action-disallow": "Бехкам-бе декъашхочо дечунна",
 	"abusefilter-edit-action-flag": "Зулам литтаран тептар чохь билгалде нисдар",
 	"abusefilter-edit-action-blockautopromote": "Схьаяккха декъашхочун дӀаяздар ша бакъдеш йолу статус",
 	"abusefilter-edit-action-degroup": "ДӀаваккха (яккха) декъашхо тобашан юкъар",
