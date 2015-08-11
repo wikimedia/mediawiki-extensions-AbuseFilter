@@ -114,7 +114,7 @@
 	"abusefilter-edit-subtitle-new": "Býr til síu",
 	"abusefilter-edit-oldwarning": "<strong>ATH: Þú ert að breyta gamalli útgáfu þessarar síu.\nSú tölfræði sem vitnað er í er fyrir nýjustu útgáfu síunnar.\nEf þú vistar breytingarnar munu allar breytingar sem gerðar hafa verið á henni frá þeirri útgáfu vera fjarlægðar ef þú vistar.</strong>\n[[Special:AbuseFilter/history/$2|Fara aftur á breytingarskrá síunnar]]",
 	"abusefilter-edit-status-label": "Tölfræði:",
-	"abusefilter-edit-status": "Af síðustu $1 {{PLURAL:$1|aðgerð|aðgerðum}} hefur þessi sía passað við $2 ($3%).\nAð meðaltali tekur vinnsla síunnar $4 ms og eyðir $5 {{PLURAL:$5|skilyrði|skilyrðum}} af hámarksfjölda skilyrða.",
+	"abusefilter-edit-status": "Af síðustu $1 {{PLURAL:$1|aðgerð|aðgerðum}} hefur þessi sía passað við $2 ($3%).",
 	"abusefilter-edit-throttled": "'''Viðvörun''': Sían var sjálfvirkt óvirkjuð sem öryggisráðstöfun.\nHún passaði við fleiri en $1% breytinga.",
 	"abusefilter-edit-new": "Ný sía",
 	"abusefilter-edit-save": "Vista síu",
