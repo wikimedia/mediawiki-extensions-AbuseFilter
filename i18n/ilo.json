@@ -122,7 +122,7 @@
 	"abusefilter-reautoconfirm-done": "Naisublin ti automatiko a napasingkedan a kasasaad ti pakabilangan",
 	"abusefilter-status": "Iti naudi a $1 a {{PLURAL:$1|tignay|tigtignay}}, $2 ($3%) ket {{PLURAL:$2|adda|addaan}} a nakaabot ti patingga a kasasaad iti $4, ken $5 ($6%) ket {{PLURAL:$5|adda|addaan}} a naipada iti maysa kadagiti sagat nga agdama a napakabaelan.",
 	"abusefilter-edit": "Agur-urnos iti sagat ti panagabuso",
-	"abusefilter-edit-subtitle": "U-rurnosen ti sagat $1",
+	"abusefilter-edit-subtitle": "Ur-urnosen ti sagat $1",
 	"abusefilter-edit-subtitle-new": "Agparpartuat ti sagat",
 	"abusefilter-edit-oldwarning": "<strong>Agur-urnoska iti daan a bersion ti sagat.\nDagiti estadistika a naibaga ket ti agdama a bersion ti sagat.\nNo idulinmo dagiti binaliwan, masuratamto manen amin a binaliwam manipud ti rebison nga ur-urnosem.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Agsubli idiay pakasaritaan ti sagat]].",
 	"abusefilter-edit-status-label": "Estadistika:",
