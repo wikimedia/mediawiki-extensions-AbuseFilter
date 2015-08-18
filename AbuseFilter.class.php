@@ -2072,7 +2072,7 @@ class AbuseFilter {
 
 			if ( is_null( $value ) )
 				$value = '';
-			$value = Xml::element( 'div', array( 'class' => 'mw-abuselog-var-value' ), $value );
+			$value = Xml::element( 'div', array( 'class' => 'mw-abuselog-var-value' ), $value, false );
 
 			$trow =
 				Xml::tags( 'td', array( 'class' => 'mw-abuselog-var' ), $keyDisplay ) .
