@@ -590,7 +590,7 @@ class AFPRegexErrorHandler {
 }
 
 class AbuseFilterParser {
-	public $mParams, $mCode, $mTokens, $mPos, $mCur, $mShortCircuit, $mAllowShort, $mLen;
+	public $mCode, $mTokens, $mPos, $mCur, $mShortCircuit, $mAllowShort, $mLen;
 
 	/**
 	 * @var AbuseFilterVariableHolder
@@ -669,7 +669,6 @@ class AbuseFilterParser {
 	}
 
 	public function resetState() {
-		$this->mParams = array();
 		$this->mCode = '';
 		$this->mTokens = array();
 		$this->mVars = new AbuseFilterVariableHolder;
