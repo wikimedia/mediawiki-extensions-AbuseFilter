@@ -64,7 +64,7 @@ class AddMissingLoggingEntries extends Maintenance {
 					'log_timestamp' => $row->afh_timestamp,
 					'log_user' => $row->afh_user,
 					'log_namespace' => -1,
-					'log_title' => SpecialPage::getLocalNameFor( 'AbuseFilter' ) . '/' . $row->afh_filter,
+					'log_title' => SpecialPageFactory::getLocalNameFor( 'AbuseFilter' ) . '/' . $row->afh_filter,
 					'log_params' => $row->afh_id . '\n' . $row->afh_filter,
 					'log_deleted' => $row->afh_deleted,
 					'log_user_text' => $row->afh_user_text,
