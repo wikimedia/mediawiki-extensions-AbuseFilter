@@ -25,7 +25,7 @@ class AddMissingLoggingEntries extends Maintenance {
 
 		// Because the timestamp matches aren't exact (sometimes a couple of seconds off), we need to check all our results and ignore those that do actually have log entries
 		foreach ( $afhResult as $row ) {
-			$logParams[] = $row->afh_id . '\n' . $row->afh_filter;
+			$logParams[] = $row->afh_id . "\n" . $row->afh_filter;
 			$afhRows[$row->afh_id] = $row;
 		}
 
@@ -41,7 +41,7 @@ class AddMissingLoggingEntries extends Maintenance {
 		);
 
 		foreach ( $logResult as $row ) {
-			$params = explode( "\\n", $row->log_params ); // id . '\n' . filter
+			$params = explode( "\n", $row->log_params ); // id . '\n' . filter
 			$afhId = $params[0]; // id
 			unset( $afhRows[$afhId] ); // Forget this row had any issues - it just has a different timestamp in the log
 		}
