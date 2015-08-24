@@ -7,7 +7,15 @@
 	"abusefilter": "Masbrük-filter",
 	"abuselog": "Masbrük-filter logbuk",
 	"abusefilter-blocker": "Masbrük-filter",
+	"right-abusefilter-log": "Masbrükfilter-logbuk uunluke",
+	"right-abusefilter-log-detail": "Ütjwidjet masbrükfilter-logbuk uunluke",
+	"action-abusefilter-log": "at masbrükfilter-logbuk uuntulukin",
+	"action-abusefilter-log-detail": "det ütjwidjet masbrükfilter-logbuk uuntulukin",
 	"abusefilter-log": "Masbrükfilter-logbuk",
+	"abusefilter-log-search": "Masbrükfilter-logbuk trochschük",
+	"abusefilter-log-linkoncontribs": "Masbrükfilter-logbuk",
+	"abusefilter-log-linkoncontribs-text": "Masbrükfilter-logbuk för didiar brüker",
 	"abusefilter-management": "Masbrük-filter auersicht",
-	"abusefilter-list": "Aaltumaal"
+	"abusefilter-list": "Aaltumaal",
+	"abusefilter-log-name": "Masbrükfilter-logbuk"
 }
