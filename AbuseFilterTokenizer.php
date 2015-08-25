@@ -55,7 +55,7 @@ class AbuseFilterTokenizer {
 	);
 
 	/**
-	 * @param $code
+	 * @param string $code
 	 * @return array
 	 * @throws AFPException
 	 * @throws AFPUserVisibleException
@@ -87,8 +87,8 @@ class AbuseFilterTokenizer {
 	}
 
 	/**
-	 * @param $code
-	 * @param $offset
+	 * @param string $code
+	 * @param integer &$offset
 	 * @return AFPToken
 	 * @throws AFPException
 	 * @throws AFPUserVisibleException
@@ -172,9 +172,10 @@ class AbuseFilterTokenizer {
 	}
 
 	/**
-	 * @param $code
-	 * @param $offset
-	 * @return array
+	 * @param string $code
+	 * @param int &$offset
+	 * @param int $start
+	 * @return AFPToken
 	 * @throws AFPException
 	 * @throws AFPUserVisibleException
 	 */
