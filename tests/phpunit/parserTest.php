@@ -77,23 +77,23 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * Ensure that AbsueFilterParser::OPERATOR_RE matches the contents
-	 * and order of AbuseFilterParser::$mOps.
+	 * Ensure that AbsueFilterTokenizer::OPERATOR_RE matches the contents
+	 * and order of AbuseFilterTokenizer::$operators.
 	 */
 	public function testOperatorRe() {
 		$operatorRe = '/(' . implode( '|', array_map( function ( $op ) {
 			return preg_quote( $op, '/' );
-		}, AbuseFilterParser::$mOps ) ) . ')/A';
-		$this->assertEquals( $operatorRe, AbuseFilterParser::OPERATOR_RE );
+		}, AbuseFilterTokenizer::$operators ) ) . ')/A';
+		$this->assertEquals( $operatorRe, AbuseFilterTokenizer::OPERATOR_RE );
 	}
 
 	/**
-	 * Ensure that AbsueFilterParser::RADIX_RE matches the contents
-	 * and order of AbuseFilterParser::$mBases.
+	 * Ensure that AbsueFilterTokenizer::RADIX_RE matches the contents
+	 * and order of AbuseFilterTokenizer::$bases.
 	 */
 	public function testRadixRe() {
-		$baseClass = implode( '', array_keys( AbuseFilterParser::$mBases ) );
+		$baseClass = implode( '', array_keys( AbuseFilterTokenizer::$bases ) );
 		$radixRe = "/([0-9A-Fa-f]+(?:\.\d*)?|\.\d+)([$baseClass])?/Au";
-		$this->assertEquals( $radixRe, AbuseFilterParser::RADIX_RE );
+		$this->assertEquals( $radixRe, AbuseFilterTokenizer::RADIX_RE );
 	}
 }

@@ -30,6 +30,7 @@ $wgExtensionMessagesFiles['AbuseFilterAliases'] = "$dir/AbuseFilter.alias.php";
 
 $wgAutoloadClasses['AbuseFilter'] = "$dir/AbuseFilter.class.php";
 $wgAutoloadClasses['AbuseFilterParser'] = "$dir/AbuseFilter.parser.php";
+$wgAutoloadClasses['AbuseFilterTokenizer'] = "$dir/AbuseFilterTokenizer.php";
 $wgAutoloadClasses['AbuseFilterHooks'] = "$dir/AbuseFilter.hooks.php";
 $wgAutoloadClasses['SpecialAbuseLog'] = "$dir/special/SpecialAbuseLog.php";
 $wgAutoloadClasses['AbuseLogPager'] = "$dir/special/SpecialAbuseLog.php";
