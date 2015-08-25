@@ -22,7 +22,8 @@
 			"Pan Cube",
 			"Vengir",
 			"Halibutt",
-			"Openbk"
+			"Openbk",
+			"The Polish"
 		]
 	},
 	"abusefilter-desc": "Zastosowanie automatycznej heurystyki do edycji",
@@ -417,7 +418,10 @@
 	"abusefilter-http-error": "Wystąpił błąd HTTP: $1.",
 	"apihelp-abusefilterchecksyntax-description": "Sprawdź składnię filtra AbuseFilter.",
 	"apihelp-abusefilterevalexpression-param-expression": "Wyrażenie do sprawdzenia.",
+	"apihelp-query+abusefilters-description": "Pokaż szczegóły filtrów nadużyć.",
 	"apihelp-query+abusefilters-example-1": "Lista uruchomionych filtrów publicznych",
 	"apihelp-query+abusefilters-example-2": "Pokaż szczegóły dotyczące filtrów",
-	"apihelp-query+abuselog-description": "Pokaż zdarzenia wyłapane przez jeden z filtrów nadużyć."
+	"apihelp-query+abuselog-description": "Pokaż zdarzenia wyłapane przez jeden z filtrów nadużyć.",
+	"apihelp-query+abuselog-param-prop": "Jakie właściwości uzyskać.",
+	"apihelp-query+abuselog-example-2": "Pokaż ostatnie wpisy w dzienniku [[API]]"
 }
