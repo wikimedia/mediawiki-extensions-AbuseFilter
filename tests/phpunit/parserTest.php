@@ -75,4 +75,25 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 
 		return $tests;
 	}
+
+	/**
+	 * Ensure that AbsueFilterParser::OPERATOR_RE matches the contents
+	 * and order of AbuseFilterParser::$mOps.
+	 */
+	public function testOperatorRe() {
+		$operatorRe = '/(' . implode( '|', array_map( function ( $op ) {
+			return preg_quote( $op, '/' );
+		}, AbuseFilterParser::$mOps ) ) . ')/A';
+		$this->assertEquals( $operatorRe, AbuseFilterParser::OPERATOR_RE );
+	}
+
+	/**
+	 * Ensure that AbsueFilterParser::RADIX_RE matches the contents
+	 * and order of AbuseFilterParser::$mBases.
+	 */
+	public function testRadixRe() {
+		$baseClass = implode( '', array_keys( AbuseFilterParser::$mBases ) );
+		$radixRe = "/([0-9A-Fa-f]+(?:\.\d*)?|\.\d+)([$baseClass])?/Au";
+		$this->assertEquals( $radixRe, AbuseFilterParser::RADIX_RE );
+	}
 }
