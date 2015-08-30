@@ -4,7 +4,8 @@
 			"Antonytse",
 			"Horacewai2",
 			"Shinjiman",
-			"Waihorace"
+			"Waihorace",
+			"Wong128hk"
 		]
 	},
 	"abusefilter-desc": "應用自動行為到編輯",
@@ -141,7 +142,7 @@
 	"abusefilter-edit-denied": "你唔係以去睇呢個過濾器嘅細節，因為響公共顯示度隱藏咗。",
 	"abusefilter-edit-main": "過濾器參數",
 	"abusefilter-edit-done-subtitle": "改咗嘅過濾器",
-	"abusefilter-edit-done": "你已經成功噉保存[[Special:AbuseFilter/history/$1/diff/prev/$2|你嘅修改]]做[[Special:AbuseFilter/$1|過濾器$1]]。",
+	"abusefilter-edit-done": "[[Special:AbuseFilter/$1|過濾器$3]]經已[[Special:AbuseFilter/history/$1/diff/prev/$2|改咗]]。",
 	"abusefilter-edit-badsyntax": "你所指定嘅過濾器有語法錯誤。\n個處理器嘅輸出係: <pre>$1</pre>",
 	"abusefilter-edit-restricted": "你唔可以改呢個過濾器，由於佢有一個或者更多限制咗嘅動作。\n問一位有權限嘅用戶去幫你改，去加限制咗嘅動作。",
 	"abusefilter-edit-viewhistory": "睇呢個過濾器嘅歷史",
