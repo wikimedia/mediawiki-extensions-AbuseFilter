@@ -378,7 +378,7 @@
 	"apihelp-abusefiltercheckmatch-param-filter": "{{doc-apihelp-param|abusefiltercheckmatch|filter}}",
 	"apihelp-abusefiltercheckmatch-param-vars": "{{doc-apihelp-param|abusefiltercheckmatch|vars}}",
 	"apihelp-abusefiltercheckmatch-param-rcid": "{{doc-apihelp-param|abusefiltercheckmatch|rcid}}",
-	"apihelp-abusefiltercheckmatch-param-logid": "{{doc-apihelp-param|abusefiltercheckmatch|logid}}",
+	"apihelp-abusefiltercheckmatch-param-logid": "The \"log ID\" is the numerical identifier of an entry in the log of the abuse filter extensions. \"Check against\" means said ID is used to control a check over abuse filter functioning related to the respective log entry.\n----\n{{doc-apihelp-param|abusefiltercheckmatch|logid}}",
 	"apihelp-abusefiltercheckmatch-example-1": "{{doc-apihelp-example|abusefiltercheckmatch}}",
 	"apihelp-abusefilterchecksyntax-description": "{{doc-apihelp-description|abusefilterchecksyntax}}",
 	"apihelp-abusefilterchecksyntax-param-filter": "{{doc-apihelp-param|abusefilterchecksyntax|filter}}",
