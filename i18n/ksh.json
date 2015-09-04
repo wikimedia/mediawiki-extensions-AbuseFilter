@@ -398,7 +398,7 @@
 	"apihelp-abusefiltercheckmatch-param-filter": "Dä kumplätt Täx vum Fellter, öm för ene Träffer ze lohre.",
 	"apihelp-abusefiltercheckmatch-param-vars": "Ene Saz vun Varrejahble em <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"JavaScript Object Notation\">JSON</i>-Fommahd, öm doh jähje ze pröhve.",
 	"apihelp-abusefiltercheckmatch-param-rcid": "En Kännong us de {{lcfirst:{{int:recentchanges}}}}, öm doh jähje ze pröhve.",
-	"apihelp-abusefiltercheckmatch-param-logid": "En Kännong us dem Meßbruchsfelter sinem Logbohch, öm doh jähje ze pröhve.",
+	"apihelp-abusefiltercheckmatch-param-logid": "En Kännong us dem Meßbruchsfelter singem Logbohch, öm doh jähje ze pröhve.",
 	"apihelp-abusefiltercheckmatch-example-1": "Donn pröhve, of de Kännong <kbd>15</kbd> us de {{lcfirst:{{int:recentchanges}}}} obb ene eijnfache Felter paß.",
 	"apihelp-abusefilterchecksyntax-description": "Donn de Sünntax vun enem beschtemmpte Felter vum Meßbruchsfelter pröhve.",
 	"apihelp-abusefilterchecksyntax-param-filter": "Dä kumplätt Täx vum Fellter, öm de Süntax ze pröhfe.",
