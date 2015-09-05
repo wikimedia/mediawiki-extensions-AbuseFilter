@@ -20,7 +20,8 @@
 			"W (aka Wuzur)",
 			"Wikifan",
 			"Xqt",
-			"Luke081515"
+			"Luke081515",
+			"J. 'mach' wust"
 		]
 	},
 	"abusefilter-desc": "Wendet automatische Heuristiken auf Bearbeitungen an",
@@ -136,7 +137,7 @@
 	"abusefilter-tools-reautoconfirm": "„Automatisch bestätigte Benutzer“-Status wiederherstellen",
 	"abusefilter-tools-reautoconfirm-user": "Benutzer:",
 	"abusefilter-tools-reautoconfirm-submit": "Wieder zum automatisch bestätigten Benutzer machen",
-	"abusefilter-reautoconfirm-none": "{{GENDER:$1|Diesem Benutzer|Dieser Benutzerin|Diesem Benutzer}} ist der „Automatisch bestätigte Benutzer“-Status nicht entzogen worden.",
+	"abusefilter-reautoconfirm-none": "{{GENDER:$1|Diesem Benutzer|Dieser Benutzerin}} ist der „Automatisch bestätigte Benutzer“-Status nicht entzogen worden.",
 	"abusefilter-reautoconfirm-notallowed": "Du bist nicht berechtigt, Benutzer wieder zu automatisch bestätigten Benutzern zu machen.",
 	"abusefilter-reautoconfirm-done": "„Automatisch bestätigte Benutzer“-Status wurde wiederhergestellt",
 	"abusefilter-status": "Von {{PLURAL:$1|der letzten Aktion|den letzten $1 Aktionen}} {{PLURAL:$2|hat eine|haben $2}} ($3 %) den Grenzwert von $4 erreicht.\n{{PLURAL:$5|Eine Aktion|$5 Aktionen}} ($6 %) {{PLURAL:$5|wurde|wurden}} von einem der aktivierten Filter erkannt.",
