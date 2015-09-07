@@ -116,7 +116,7 @@
 	"abusefilter-tools-reautoconfirm": "„Bstätigter-Benutzer“-Status widerhärstelle",
 	"abusefilter-tools-reautoconfirm-user": "Benutzer:",
 	"abusefilter-tools-reautoconfirm-submit": "Wider zum bstätigte Benutzer mache",
-	"abusefilter-reautoconfirm-none": "{{GENDER:$1|Däm Benutzer|Däre Benutzeri|Däm Benutzer}} isch dr Status „Bstätigter Benutzer“ nit entzoge wore.",
+	"abusefilter-reautoconfirm-none": "{{GENDER:$1|Däm Benutzer|Däre Benutzeri}} isch dr Status „Bstätigter Benutzer“ nit entzoge wore.",
 	"abusefilter-reautoconfirm-notallowed": "Du bisch nit berächtigt, Benutzer wider zue bstätigte Benutzer z mache.",
 	"abusefilter-reautoconfirm-done": "Dr Status vum Benutzerkonto as \"bstätigte Benutzer\" isch widerhärgstellt wore",
 	"abusefilter-status": "Vu {{PLURAL:$1|dr letschte Aktion|dr letschte $1 Aktione}} {{PLURAL:$2|het eini|hän $2}} ($3 %) dr Gränzwärt vu $4 erreicht. $5 ($6 %) {{PLURAL:$5|isch|sin}} vu eim vu dr grad aktivierte Filter erkannt wore.",
