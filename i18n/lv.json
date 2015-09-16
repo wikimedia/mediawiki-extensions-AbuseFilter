@@ -4,7 +4,8 @@
 			"GreenZeb",
 			"Marozols",
 			"Papuass",
-			"Nemo bis"
+			"Nemo bis",
+			"Edgars2007"
 		]
 	},
 	"abusefilter-desc": "Pielieto automātiskas heiristikas labojumiem",
@@ -109,7 +110,7 @@
 	"abusefilter-tools-expr": "Izteiksmes pārbaude",
 	"abusefilter-tools-submitexpr": "Novērtēt",
 	"abusefilter-tools-reautoconfirm": "Atjaunot automātiski apstiprināto statusu",
-	"abusefilter-tools-reautoconfirm-user": "Lietotājs:",
+	"abusefilter-tools-reautoconfirm-user": "Dalībnieks:",
 	"abusefilter-tools-reautoconfirm-submit": "Atkārtoti veikt automātisko apstiprināšanu",
 	"abusefilter-reautoconfirm-none": "{{GENDER:$1|Šim lietotājam|Šai lietotājai|Šiem lietotājiem}} nav ticis pārtraukts automātiski apstiprinātais statuss.",
 	"abusefilter-reautoconfirm-notallowed": "Tev nav tiesību atjaunot automātiski apstiprināto statusu.",
@@ -282,7 +283,7 @@
 	"abusefilter-history-deleted": "Dzēsts",
 	"abusefilter-history-filterid": "Filtrs",
 	"abusefilter-history-select-legend": "Precizēt meklēšanas kritērijus",
-	"abusefilter-history-select-user": "Lietotājs:",
+	"abusefilter-history-select-user": "Dalībnieks:",
 	"abusefilter-history-select-submit": "Precizēt",
 	"abusefilter-history-diff": "Izmaiņas",
 	"abusefilter-history-error-hidden": "Pieprasītais filtrs ir paslēpts, tāpēc tā izmaiņu hronoloģija nav pieejama",

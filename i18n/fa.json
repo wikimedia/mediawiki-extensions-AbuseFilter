@@ -184,7 +184,7 @@
 	"abusefilter-edit-warn-actions": "اقدامات:",
 	"abusefilter-edit-warn-preview": "پیش‌نمایش پیام انتخاب‌شده",
 	"abusefilter-edit-warn-edit": "ایجاد/ویرایش پیام انتخاب‌شده",
-	"abusefilter-edit-tag-tag": "برچسب‌ها (هر کدام در یک خط):",
+	"abusefilter-edit-tag-tag": "[[Special:Tags|برچسب‌ها]] (هر کدام در یک خط):",
 	"abusefilter-edit-denied": "شما نمی‌توانید جزئیات این پالایه را ببینید، زیرا از دید عموم پنهان شده‌است.",
 	"abusefilter-edit-main": "پارامترهای پالایه",
 	"abusefilter-edit-done-subtitle": "پالایه ویرایش شد",
