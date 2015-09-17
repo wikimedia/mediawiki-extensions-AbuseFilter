@@ -559,20 +559,25 @@ class AbuseFilterHooks {
 	 * @param $updater DatabaseUpdater
 	 */
 	public static function createAbuseFilterUser( $updater ) {
-		$user = User::newFromName( wfMessage( 'abusefilter-blocker' )->inContentLanguage()->text() );
+		$username = wfMessage( 'abusefilter-blocker' )->inContentLanguage()->text();
+		$user = User::newFromName( $username );
 
 		if ( $user && !$updater->updateRowExists( 'create abusefilter-blocker-user' ) ) {
-			if ( !$user->getId() ) {
-				$user->addToDatabase();
-				$user->saveSettings();
-				# Increment site_stats.ss_users
-				$ssu = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
-				$ssu->doUpdate();
+			if ( method_exists( 'User', 'newSystemUser' ) ) {
+				$user = User::newSystemUser( $username, array( 'steal' => true ) );
 			} else {
-				// Sorry dude, we need this account.
-				$user->setPassword( null );
-				$user->setEmail( null );
-				$user->saveSettings();
+				if ( !$user->getId() ) {
+					$user->addToDatabase();
+					$user->saveSettings();
+					# Increment site_stats.ss_users
+					$ssu = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
+					$ssu->doUpdate();
+				} else {
+					// Sorry dude, we need this account.
+					$user->setPassword( null );
+					$user->setEmail( null );
+					$user->saveSettings();
+				}
 			}
 			$updater->insertUpdateRow( 'create abusefilter-blocker-user' );
 			# Promote user so it doesn't look too crazy.

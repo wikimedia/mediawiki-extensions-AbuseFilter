@@ -1617,26 +1617,31 @@ class AbuseFilter {
 	 * @return User
 	 */
 	public static function getFilterUser() {
-		$user = User::newFromName( wfMessage( 'abusefilter-blocker' )->inContentLanguage()->text() );
-		$user->load();
-		if ( $user->getId() && $user->mPassword == '' ) {
-			// Already set up.
-			return $user;
-		}
-
-		// Not set up. Create it.
-		if ( !$user->getId() ) {
-			print 'Trying to create account -- user id is ' . $user->getId();
-			$user->addToDatabase();
-			$user->saveSettings();
-			// Increment site_stats.ss_users
-			$ssu = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
-			$ssu->doUpdate();
+		$username = wfMessage( 'abusefilter-blocker' )->inContentLanguage()->text();
+		if ( method_exists( 'User', 'newSystemUser' ) ) {
+			$user = User::newSystemUser( $username, array( 'steal' => true ) );
 		} else {
-			// Take over the account
-			$user->setPassword( null );
-			$user->setEmail( null );
-			$user->saveSettings();
+			$user = User::newFromName( $username );
+			$user->load();
+			if ( $user->getId() && $user->mPassword == '' ) {
+				// Already set up.
+				return $user;
+			}
+
+			// Not set up. Create it.
+			if ( !$user->getId() ) {
+				print 'Trying to create account -- user id is ' . $user->getId();
+				$user->addToDatabase();
+				$user->saveSettings();
+				// Increment site_stats.ss_users
+				$ssu = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
+				$ssu->doUpdate();
+			} else {
+				// Take over the account
+				$user->setPassword( null );
+				$user->setEmail( null );
+				$user->saveSettings();
+			}
 		}
 
 		// Promote user so it doesn't look too crazy.
