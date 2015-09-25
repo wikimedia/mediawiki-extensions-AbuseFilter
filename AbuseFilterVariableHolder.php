@@ -515,7 +515,8 @@ class AFComputedVariable {
 				);
 				$res = $dbr->query(
 					"SELECT rev_user_text FROM ($sqlTmp) AS tmp " .
-					"GROUP BY rev_user_text ORDER BY MAX(rev_timestamp) DESC LIMIT 10"
+					"GROUP BY rev_user_text ORDER BY MAX(rev_timestamp) DESC LIMIT 10",
+					__METHOD__
 				);
 
 				$users = array();
