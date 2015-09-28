@@ -62,17 +62,25 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			$this->dieUsage( 'You don\'t have permission to view IP addresses', 'permissiondenied' );
 		}
 		if ( $fld_details && !$user->isAllowed( 'abusefilter-log-detail' ) ) {
-			$this->dieUsage( 'You don\'t have permission to view detailed abuse log entries', 'permissiondenied' );
+			$this->dieUsage(
+				'You don\'t have permission to view detailed abuse log entries',
+				'permissiondenied'
+			);
 		}
 		// Match permissions for viewing events on private filters to SpecialAbuseLog (bug 42814)
-		if ( $params['filter'] && !( AbuseFilterView::canViewPrivate() || $user->isAllowed( 'abusefilter-log-private' ) ) ) {
+		if ( $params['filter'] &&
+			!( AbuseFilterView::canViewPrivate() || $user->isAllowed( 'abusefilter-log-private' ) )
+		) {
 			// A specific filter parameter is set but the user isn't allowed to view all filters
 			if ( !is_array( $params['filter'] ) ) {
 				$params['filter'] = array( $params['filter'] );
 			}
-			foreach( $params['filter'] as $filter ) {
+			foreach ( $params['filter'] as $filter ) {
 				if ( AbuseFilter::filterHidden( $filter ) ) {
-					$this->dieUsage( 'You don\'t have permission to view log entries for private filters', 'permissiondenied' );
+					$this->dieUsage(
+						'You don\'t have permission to view log entries for private filters',
+						'permissiondenied'
+					);
 				}
 			}
 		}
@@ -119,7 +127,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			}
 
 			if ( isset( $userId ) ) {
-				// Only add the WHERE for user in case it's either a valid user (but not necessary an existing one) or an IP
+				// Only add the WHERE for user in case it's either a valid user
+				// (but not necessary an existing one) or an IP.
 				$this->addWhere(
 					array(
 						'afl_user' => $userId,
@@ -244,7 +253,9 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 					'older'
 				),
 				ApiBase::PARAM_DFLT => 'older',
-				/** @todo Once support for MediaWiki < 1.25 is dropped, just use ApiBase::PARAM_HELP_MSG directly */
+				/** @todo Once support for MediaWiki < 1.25 is dropped,
+				 *  just use ApiBase::PARAM_HELP_MSG directly
+				 */
 				constant( 'ApiBase::PARAM_HELP_MSG' ) ?: '' => 'api-help-param-direction',
 			),
 			'user' => null,

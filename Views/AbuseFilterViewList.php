@@ -242,7 +242,7 @@ class AbuseFilterPager extends TablePager {
 		);
 
 		global $wgAbuseFilterValidGroups;
-		if ( count($wgAbuseFilterValidGroups) > 1 ) {
+		if ( count( $wgAbuseFilterValidGroups ) > 1 ) {
 			$headers['af_group'] = 'abusefilter-list-group';
 		}
 
@@ -257,10 +257,12 @@ class AbuseFilterPager extends TablePager {
 		$lang = $this->getLanguage();
 		$row = $this->mCurrentRow;
 
-		switch( $name ) {
+		switch ( $name ) {
 			case 'af_id':
 				return Linker::link(
-					SpecialPage::getTitleFor( 'AbuseFilter', intval( $value ) ), $lang->formatNum( intval( $value ) ) );
+					SpecialPage::getTitleFor( 'AbuseFilter', intval( $value ) ),
+					$lang->formatNum( intval( $value ) )
+				);
 			case 'af_public_comments':
 				return Linker::link(
 					SpecialPage::getTitleFor( 'AbuseFilter', intval( $row->af_id ) ),
@@ -372,9 +374,9 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 		$lang = $this->getLanguage();
 		$row = $this->mCurrentRow;
 
-		switch( $name ) {
+		switch ( $name ) {
 			case 'af_id':
-				return $lang->formatNum( intval( $value )  );
+				return $lang->formatNum( intval( $value ) );
 			case 'af_public_comments':
 				return $this->getOutput()->parseInline( $value );
 			case 'af_actions':

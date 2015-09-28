@@ -81,7 +81,10 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 			if ( ( isset( $show['enabled'] ) && isset( $show['!enabled'] ) )
 					|| ( isset( $show['deleted'] ) && isset( $show['!deleted'] ) )
 					|| ( isset( $show['private'] ) && isset( $show['!private'] ) ) ) {
-					$this->dieUsage( 'Incorrect parameter - mutually exclusive values may not be supplied', 'show' );
+					$this->dieUsage(
+						'Incorrect parameter - mutually exclusive values may not be supplied',
+						'show'
+					);
 			}
 
 			$this->addWhereIf( 'af_enabled = 0', isset( $show['!enabled'] ) );
@@ -169,7 +172,9 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 					'newer'
 				),
 				ApiBase::PARAM_DFLT => 'newer',
-				/** @todo Once support for MediaWiki < 1.25 is dropped, just use ApiBase::PARAM_HELP_MSG directly */
+				/** @todo Once support for MediaWiki < 1.25 is dropped,
+				 *  just use ApiBase::PARAM_HELP_MSG directly
+				 */
 				constant( 'ApiBase::PARAM_HELP_MSG' ) ?: '' => 'api-help-param-direction',
 			),
 			'show' => array(

@@ -63,13 +63,16 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 			// Next and previous change links
 			$links = array();
-			if ( AbuseFilter::getFirstFilterChange( $this->mFilter ) != $this->mOldVersion['meta']['history_id'] ) {
+			if ( AbuseFilter::getFirstFilterChange( $this->mFilter ) !=
+				$this->mOldVersion['meta']['history_id']
+			) {
 				// Create a "previous change" link if this isn't the first change of the given filter
 				$links[] = Linker::link(
 					$this->getTitle(
 						'history/' . $this->mFilter . '/diff/prev/' . $this->mOldVersion['meta']['history_id']
 					),
-					$this->getLanguage()->getArrow( 'backwards' ) . ' ' . $this->msg( 'abusefilter-diff-prev' )->escaped()
+					$this->getLanguage()->getArrow( 'backwards' ) .
+						' ' . $this->msg( 'abusefilter-diff-prev' )->escaped()
 				);
 			}
 
@@ -79,7 +82,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 					$this->getTitle(
 						'history/' . $this->mFilter . '/diff/prev/' . $this->mNextHistoryId
 					),
-					$this->msg( 'abusefilter-diff-next' )->escaped() . ' ' . $this->getLanguage()->getArrow( 'forwards' )
+					$this->msg( 'abusefilter-diff-next' )->escaped() .
+						' ' . $this->getLanguage()->getArrow( 'forwards' )
 				);
 			}
 
@@ -110,7 +114,10 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			return false;
 		}
 
-		$this->mNextHistoryId = $this->getNextHistoryId( $this->mNewVersion['meta']['history_id'] , 'next' );
+		$this->mNextHistoryId = $this->getNextHistoryId(
+			$this->mNewVersion['meta']['history_id'],
+			'next'
+		);
 
 		return true;
 	}
@@ -303,7 +310,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		);
 		global $wgAbuseFilterValidGroups;
 		if (
-			count($wgAbuseFilterValidGroups) > 1 ||
+			count( $wgAbuseFilterValidGroups ) > 1 ||
 			$oldVersion['info']['group'] != $newVersion['info']['group']
 		) {
 			$info .= $this->getDiffRow(

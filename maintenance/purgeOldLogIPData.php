@@ -3,14 +3,14 @@
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
 } else {
-	$IP = dirname( __FILE__ ) . '/../../..';
+	$IP = __DIR__ . '/../../..';
 }
-require_once( "$IP/maintenance/Maintenance.php" );
+require_once "$IP/maintenance/Maintenance.php";
 
 class PurgeOldLogIPData extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = "Purge old IP Address data from AbuseFilter logs";
+		$this->mDescription = 'Purge old IP Address data from AbuseFilter logs';
 		$this->setBatchSize( 200 );
 	}
 
@@ -56,4 +56,4 @@ class PurgeOldLogIPData extends Maintenance {
 }
 
 $maintClass = "PurgeOldLogIPData";
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once RUN_MAINTENANCE_IF_MAIN;

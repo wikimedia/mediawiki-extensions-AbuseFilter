@@ -66,7 +66,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 
 			// Don't allow custom messages on global rules
-			if ( $newRow->af_global == 1 && $request->getVal( 'wpFilterWarnMessage' ) !== 'abusefilter-warning' ) {
+			if ( $newRow->af_global == 1 &&
+				$request->getVal( 'wpFilterWarnMessage' ) !== 'abusefilter-warning'
+			) {
 				$out->addWikiMsg( 'abusefilter-edit-notallowed-global-custom-msg' );
 				return;
 			}
@@ -278,7 +280,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param $error string An error message to show above the filter box.
 	 * @param $filter int The filter ID
 	 * @param $history_id int The history ID of the filter, if applicable. Otherwise null
-	 * @return bool|string False if there is a failure building the editor, otherwise the HTML text for the editor.
+	 * @return bool|string False if there is a failure building the editor,
+	 *   otherwise the HTML text for the editor.
 	 */
 	function buildFilterEditor( $error, $filter, $history_id = null ) {
 		if ( $filter === null ) {
@@ -328,7 +331,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$fields = array();
 
 		$fields['abusefilter-edit-id'] =
-			$this->mFilter == 'new' ? $this->msg( 'abusefilter-edit-new' )->text() : $lang->formatNum( $filter );
+			$this->mFilter == 'new' ?
+				$this->msg( 'abusefilter-edit-new' )->text() :
+				$lang->formatNum( $filter );
 		$fields['abusefilter-edit-description'] =
 			Xml::input(
 				'wpFilterDescription',
@@ -338,7 +343,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			);
 
 		global $wgAbuseFilterValidGroups;
-		if ( count($wgAbuseFilterValidGroups) > 1 ) {
+		if ( count( $wgAbuseFilterValidGroups ) > 1 ) {
 			$groupSelector = new XmlSelect(
 				'wpFilterGroup',
 				'mw-abusefilter-edit-group-input',
@@ -346,11 +351,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			);
 
 			if ( isset( $row->af_group ) && $row->af_group ) {
-				$groupSelector->setDefault($row->af_group);
+				$groupSelector->setDefault( $row->af_group );
 			}
 
-			foreach( $wgAbuseFilterValidGroups as $group ) {
-				$groupSelector->addOption( AbuseFilter::nameGroup($group), $group );
+			foreach ( $wgAbuseFilterValidGroups as $group ) {
+				$groupSelector->addOption( AbuseFilter::nameGroup( $group ), $group );
 			}
 
 			$fields['abusefilter-edit-group'] = $groupSelector->getHTML();
@@ -411,7 +416,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			global $wgAbuseFilterEmergencyDisableThreshold;
 
 			// determine emergency disable value for this action
-			$emergencyDisableThreshold = AbuseFilter::getEmergencyValue( $wgAbuseFilterEmergencyDisableThreshold, $row->af_group );
+			$emergencyDisableThreshold = AbuseFilter::getEmergencyValue(
+				$wgAbuseFilterEmergencyDisableThreshold,
+				$row->af_group
+			);
 
 			$threshold_percent = sprintf( '%.2f', $emergencyDisableThreshold * 100 );
 			$flags .= $out->parse(
@@ -545,8 +553,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$output = '';
 
 		foreach ( $wgAbuseFilterAvailableActions as $action ) {
+			MediaWiki\suppressWarnings();
+			$params = $actions[$action]['parameters'];
+			MediaWiki\restoreWarnings();
 			$output .= $this->buildConsequenceSelector(
-				$action, $setActions[$action], @$actions[$action]['parameters'], $row );
+				$action, $setActions[$action], $params, $row );
 		}
 
 		return $output;
@@ -574,7 +585,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$cbReadOnlyAttrib['disabled'] = 'disabled';
 		}
 
-		switch( $action ) {
+		switch ( $action ) {
 			case 'throttle':
 				// Throttling is only available via object caching
 				if ( $wgMainCacheType === CACHE_NONE ) {
@@ -585,7 +596,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					'wpFilterActionThrottle',
 					"mw-abusefilter-action-checkbox-$action",
 					$set,
-					array(  'class' => 'mw-abusefilter-action-checkbox' ) + $cbReadOnlyAttrib );
+					array( 'class' => 'mw-abusefilter-action-checkbox' ) + $cbReadOnlyAttrib );
 				$throttleFields = array();
 
 				if ( $set ) {
@@ -642,7 +653,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				} elseif (
 					$row &&
 					isset( $row->af_group ) && $row->af_group &&
-					isset($wgAbuseFilterDefaultWarningMessage[$row->af_group] )
+					isset( $wgAbuseFilterDefaultWarningMessage[$row->af_group] )
 				) {
 					$warnMsg = $wgAbuseFilterDefaultWarningMessage[$row->af_group];
 				} else {
@@ -762,7 +773,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$existingSelector->addOption( 'abusefilter-warning' );
 
 		$lang = $this->getLanguage();
-		foreach( $res as $row ) {
+		foreach ( $res as $row ) {
 			if ( $lang->lcfirst( $row->page_title ) == $lang->lcfirst( $warnMsg ) ) {
 				$existingSelector->setDefault( $lang->lcfirst( $warnMsg ) );
 			}
@@ -833,7 +844,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			array( 'afa_filter' => $id ),
 			__METHOD__
 		);
-		foreach( $res as $actionRow ) {
+
+		foreach ( $res as $actionRow ) {
 			$thisAction = array();
 			$thisAction['action'] = $actionRow->afa_consequence;
 			$thisAction['parameters'] = explode( "\n", $actionRow->afa_parameters );
@@ -979,6 +991,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 	protected function exposeWarningMessages() {
 		global $wgOut, $wgAbuseFilterDefaultWarningMessage;
-		$wgOut->addJsConfigVars( 'wgAbuseFilterDefaultWarningMessage', $wgAbuseFilterDefaultWarningMessage );
+		$wgOut->addJsConfigVars(
+			'wgAbuseFilterDefaultWarningMessage',
+			$wgAbuseFilterDefaultWarningMessage
+		);
 	}
 }

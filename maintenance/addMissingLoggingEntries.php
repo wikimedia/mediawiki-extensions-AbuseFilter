@@ -4,7 +4,7 @@ if ( getenv( 'MW_INSTALL_PATH' ) ) {
 } else {
 	$IP = dirname( __FILE__ ) . '/../../..';
 }
-require_once( "$IP/maintenance/Maintenance.php" );
+require_once "$IP/maintenance/Maintenance.php";
 
 /**
  * Adds rows missing per https://bugzilla.wikimedia.org/show_bug.cgi?id=52919
@@ -14,16 +14,23 @@ class AddMissingLoggingEntries extends Maintenance {
 		$logParams = array();
 		$afhRows = array();
 
-		$afhResult = wfGetDB( DB_SLAVE, 'vslow' )->select( // Find all entries in abuse_filter_history without logging entry of same timestamp
+		// Find all entries in abuse_filter_history without logging entry of same timestamp
+		$afhResult = wfGetDB( DB_SLAVE, 'vslow' )->select(
 			array( 'abuse_filter_history', 'logging' ),
 			array( 'afh_id', 'afh_filter', 'afh_timestamp', 'afh_user', 'afh_deleted', 'afh_user_text' ),
 			array( 'log_id IS NULL' ),
 			__METHOD__,
 			array(),
-			array( 'logging' => array( 'LEFT JOIN', 'afh_timestamp = log_timestamp AND SUBSTRING_INDEX(log_params, \'\n\', 1) = afh_id AND log_type = \'abusefilter\'' ) )
+			array( 'logging' => array(
+				'LEFT JOIN',
+				'afh_timestamp = log_timestamp AND ' .
+					'SUBSTRING_INDEX(log_params, \'\n\', 1) = afh_id AND log_type = \'abusefilter\''
+			) )
 		);
 
-		// Because the timestamp matches aren't exact (sometimes a couple of seconds off), we need to check all our results and ignore those that do actually have log entries
+		// Because the timestamp matches aren't exact (sometimes a couple of
+		// seconds off), we need to check all our results and ignore those that
+		// do actually have log entries
 		foreach ( $afhResult as $row ) {
 			$logParams[] = $row->afh_id . "\n" . $row->afh_filter;
 			$afhRows[$row->afh_id] = $row;
@@ -43,7 +50,8 @@ class AddMissingLoggingEntries extends Maintenance {
 		foreach ( $logResult as $row ) {
 			$params = explode( "\n", $row->log_params ); // id . '\n' . filter
 			$afhId = $params[0]; // id
-			unset( $afhRows[$afhId] ); // Forget this row had any issues - it just has a different timestamp in the log
+			// Forget this row had any issues - it just has a different timestamp in the log
+			unset( $afhRows[$afhId] );
 		}
 
 		if ( !count( $afhRows ) ) {

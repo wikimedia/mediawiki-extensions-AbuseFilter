@@ -3,4 +3,5 @@
 .*.swp
 /extensions/
 /vendor/
+node_modules/
 /composer.lock

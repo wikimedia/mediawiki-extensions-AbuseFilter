@@ -3,19 +3,20 @@
  * Tokenizer for AbuseFilter rules.
  */
 class AbuseFilterTokenizer {
-
 	/** @var int Tokenizer cache version. Increment this when changing the syntax. **/
 	const CACHE_VERSION = 1;
 	const COMMENT_START_RE = '/\s*\/\*/A';
 	const ID_SYMBOL_RE = '/[0-9A-Za-z_]+/A';
+	// @codingStandardsIgnoreStart Ignore long line.
 	const OPERATOR_RE = '/(\!\=\=|\!\=|\!|\*\*|\*|\/|\+|\-|%|&|\||\^|\:\=|\?|\:|\<\=|\<|\>\=|\>|\=\=\=|\=\=|\=)/A';
+	// @codingStandardsIgnoreEnd
 	const RADIX_RE = '/([0-9A-Fa-f]+(?:\.\d*)?|\.\d+)([bxo])?/Au';
 	const WHITESPACE = "\011\012\013\014\015\040";
 
 	// Order is important. The punctuation-matching regex requires that
 	//  ** comes before *, etc. They are sorted to make it easy to spot
 	//  such errors.
-	static $operators = array(
+	public static $operators = array(
 		'!==', '!=', '!',   // Inequality
 		'**', '*',          // Multiplication/exponentiation
 		'/', '+', '-', '%', // Other arithmetic
@@ -27,29 +28,29 @@ class AbuseFilterTokenizer {
 		'===', '==', '=',   // Equality
 	);
 
-	static $punctuation = array(
-		',' => AFPToken::TComma,
-		'(' => AFPToken::TBrace,
-		')' => AFPToken::TBrace,
-		'[' => AFPToken::TSquareBracket,
-		']' => AFPToken::TSquareBracket,
-		';' => AFPToken::TStatementSeparator,
+	public static $punctuation = array(
+		',' => AFPToken::TCOMMA,
+		'(' => AFPToken::TBRACE,
+		')' => AFPToken::TBRACE,
+		'[' => AFPToken::TSQUAREBRACKET,
+		']' => AFPToken::TSQUAREBRACKET,
+		';' => AFPToken::TSTATEMENTSEPARATOR,
 	);
 
-	static $bases = array(
+	public static $bases = array(
 		'b' => 2,
 		'x' => 16,
 		'o' => 8
 	);
 
-	static $baseCharsRe = array(
+	public static $baseCharsRe = array(
 		2  => '/^[01]+$/',
 		8  => '/^[0-8]+$/',
 		16 => '/^[0-9A-Fa-f]+$/',
 		10 => '/^[0-9.]+$/',
 	);
 
-	static $keywords = array(
+	public static $keywords = array(
 		'in', 'like', 'true', 'false', 'null', 'contains', 'matches',
 		'rlike', 'irlike', 'regex', 'if', 'then', 'else', 'end',
 	);
@@ -116,7 +117,7 @@ class AbuseFilterTokenizer {
 		// Spaces
 		$offset += strspn( $code, self::WHITESPACE, $offset );
 		if ( $offset >= strlen( $code ) ) {
-			return new AFPToken( AFPToken::TNone, '', $start );
+			return new AFPToken( AFPToken::TNONE, '', $start );
 		}
 
 		$chr = $code[$offset];
@@ -138,7 +139,7 @@ class AbuseFilterTokenizer {
 		if ( preg_match( self::OPERATOR_RE, $code, $matches, 0, $offset ) ) {
 			$token = $matches[0];
 			$offset += strlen( $token );
-			return new AFPToken( AFPToken::TOp, $token, $start );
+			return new AFPToken( AFPToken::TOP, $token, $start );
 		}
 
 		// Numbers
@@ -162,8 +163,8 @@ class AbuseFilterTokenizer {
 				$num = $base !== 10 ? base_convert( $input, $base, 10 ) : $input;
 				$offset += strlen( $token );
 				return ( strpos( $input, '.' ) !== false )
-					? new AFPToken( AFPToken::TFloat, floatval( $num ), $start )
-					: new AFPToken( AFPToken::TInt, intval( $num ), $start );
+					? new AFPToken( AFPToken::TFLOAT, floatval( $num ), $start )
+					: new AFPToken( AFPToken::TINT, intval( $num ), $start );
 			}
 		}
 
@@ -173,7 +174,7 @@ class AbuseFilterTokenizer {
 			$token = $matches[0];
 			$offset += strlen( $token );
 			$type = in_array( $token, self::$keywords )
-				? AFPToken::TKeyword
+				? AFPToken::TKEYWORD
 				: AFPToken::TID;
 			return new AFPToken( $type, $token, $start );
 		}
@@ -198,7 +199,7 @@ class AbuseFilterTokenizer {
 		while ( $offset < $length ) {
 			if ( $code[$offset] === $type ) {
 				$offset++;
-				return new AFPToken( AFPToken::TString, $token, $start );
+				return new AFPToken( AFPToken::TSTRING, $token, $start );
 			}
 
 			// Performance: Use a PHP function (implemented in C)
@@ -208,7 +209,7 @@ class AbuseFilterTokenizer {
 				$token .= substr( $code, $offset, $addLength );
 				$offset += $addLength;
 			} elseif ( $code[$offset] == '\\' ) {
-				switch( $code[$offset + 1] ) {
+				switch ( $code[$offset + 1] ) {
 					case '\\':
 						$token .= '\\';
 						break;

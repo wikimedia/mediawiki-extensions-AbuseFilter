@@ -15,7 +15,7 @@ class AbuseLogHitFormatter extends LogFormatter {
 		$filter_title = SpecialPage::getTitleFor( 'AbuseFilter', $entry['filter'] );
 		$filter_caption = $this->msg( 'abusefilter-log-detailedentry-local' )->params( $entry['filter'] );
 		$log_title = SpecialPage::getTitleFor( 'AbuseLog', $entry['log'] );
-		$log_caption = $this->msg('abusefilter-log-detailslink' );
+		$log_caption = $this->msg( 'abusefilter-log-detailslink' );
 
 		$params[4] = $entry['action'];
 
@@ -48,7 +48,8 @@ class AbuseLogHitFormatter extends LogFormatter {
 		$params[5] = $actions_taken;
 
 		// Bad things happen if the numbers are not in correct order
-		ksort($params);
+		ksort( $params );
+
 		return $params;
 	}
 }

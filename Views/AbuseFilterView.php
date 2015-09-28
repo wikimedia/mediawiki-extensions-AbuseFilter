@@ -97,5 +97,6 @@ class AbuseFilterChangesList extends OldChangesList {
 	}
 
 	// Kill rollback links.
-	public function insertRollback( &$s, &$rc ) { }
+	public function insertRollback( &$s, &$rc ) {
+	}
 }

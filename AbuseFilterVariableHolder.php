@@ -2,7 +2,7 @@
 class AbuseFilterVariableHolder {
 	public $mVars = array();
 
-	static $varBlacklist = array( 'context' );
+	public static $varBlacklist = array( 'context' );
 
 	/**
 	 * @param $variable
@@ -106,21 +106,23 @@ class AbuseFilterVariableHolder {
 	}
 
 	/**
-	* Dump all variables stored in this object in their native types.
-	* If you want a not yet set variable to be included in the results you can either set $compute to an array
-	* with the name of the variable or set $compute to true to compute all not yet set variables.
-	*
-	* @param $compute array|bool Variables we should copute if not yet set
-	* @param $includeUserVars bool Include user set variables
-	* @return array
-	*/
+	 * Dump all variables stored in this object in their native types.
+	 * If you want a not yet set variable to be included in the results you can
+	 * either set $compute to an array with the name of the variable or set
+	 * $compute to true to compute all not yet set variables.
+	 *
+	 * @param $compute array|bool Variables we should copute if not yet set
+	 * @param $includeUserVars bool Include user set variables
+	 * @return array
+	 */
 	public function dumpAllVars( $compute = array(), $includeUserVars = false ) {
 		$allVarNames = array_keys( $this->mVars );
 		$exported = array();
 		$coreVariables = array();
 
 		if ( !$includeUserVars ) {
-			// Compile a list of all variables set by the extension to be able to filter user set ones by name
+			// Compile a list of all variables set by the extension to be able
+			// to filter user set ones by name
 			global $wgRestrictionTypes;
 
 			$coreVariables = AbuseFilter::getBuilderValues();
@@ -128,7 +130,13 @@ class AbuseFilterVariableHolder {
 
 			// Title vars can have several prefixes
 			$prefixes = array( 'ARTICLE', 'MOVED_FROM', 'MOVED_TO', 'FILE' );
-			$titleVars = array( '_ARTICLEID', '_NAMESPACE', '_TEXT', '_PREFIXEDTEXT', '_recent_contributors' );
+			$titleVars = array(
+				'_ARTICLEID',
+				'_NAMESPACE',
+				'_TEXT',
+				'_PREFIXEDTEXT',
+				'_recent_contributors'
+			);
 			foreach ( $wgRestrictionTypes as $action ) {
 				$titleVars[] = "_restrictions_$action";
 			}
@@ -146,7 +154,10 @@ class AbuseFilterVariableHolder {
 				( $includeUserVars || in_array( strtolower( $varName ), $coreVariables ) ) &&
 				// Only include variables set in the extension in case $includeUserVars is false
 				!in_array( $varName, self::$varBlacklist ) &&
-				( $compute === true || ( is_array( $compute ) && in_array( $varName, $compute ) ) ||  $this->mVars[$varName] instanceof AFPData )
+				( $compute === true ||
+					( is_array( $compute ) && in_array( $varName, $compute ) ) ||
+					$this->mVars[$varName] instanceof AFPData
+				)
 			) {
 				$exported[$varName] = $this->getVar( $varName )->toNative();
 			}
@@ -192,8 +203,8 @@ class AbuseFilterVariableHolder {
 
 class AFComputedVariable {
 	public $mMethod, $mParameters;
-	static $userCache = array();
-	static $articleCache = array();
+	public static $userCache = array();
+	public static $articleCache = array();
 
 	/**
 	 * @param $method
@@ -317,7 +328,7 @@ class AFComputedVariable {
 			__METHOD__
 		);
 		$links = array();
-		foreach( $res as $row ) {
+		foreach ( $res as $row ) {
 			$links[] = $row->el_to;
 		}
 		return $links;
@@ -339,7 +350,7 @@ class AFComputedVariable {
 				? $result : AFPData::newFromPHPVar( $result );
 		}
 
-		switch( $this->mMethod ) {
+		switch ( $this->mMethod ) {
 			case 'diff':
 				$text1Var = $parameters['oldtext-var'];
 				$text2Var = $parameters['newtext-var'];

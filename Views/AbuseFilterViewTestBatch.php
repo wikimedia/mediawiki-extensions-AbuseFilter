@@ -2,7 +2,7 @@
 
 class AbuseFilterViewTestBatch extends AbuseFilterView {
 	// Hard-coded for now.
-	static $mChangeLimit = 100;
+	protected static $mChangeLimit = 100;
 
 	public $mShowNegative, $mTestPeriodStart, $mTestPeriodEnd, $mTestPage,
 		$mTestUser;
@@ -126,7 +126,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$counter = 1;
 
-		foreach( $res as $row ) {
+		foreach ( $res as $row ) {
 			$vars = AbuseFilter::getVarsFromRCRow( $row );
 
 			if ( !$vars ) {

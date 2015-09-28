@@ -10,8 +10,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @ingroup Extensions
  * @author Andrew Garrett <andrew@epstone.net>
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
- * Includes GFDL-licensed images retrieved from http://commons.wikimedia.org/wiki/File:Yes_check.svg
- * and http://commons.wikimedia.org/wiki/File:Red_x.svg -- both have been downsampled and converted to PNG.
+ * Includes GFDL-licensed images retrieved from
+ * http://commons.wikimedia.org/wiki/File:Yes_check.svg and
+ * http://commons.wikimedia.org/wiki/File:Red_x.svg -- both have been
+ * downsampled and converted to PNG.
  * @link http://www.mediawiki.org/wiki/Extension:AbuseFilter Documentation
  */
 
@@ -73,7 +75,8 @@ $wgAutoloadClasses['ApiAbuseFilterCheckSyntax'] = "$dir/api/ApiAbuseFilterCheckS
 $wgAPIModules['abusefilterchecksyntax'] = 'ApiAbuseFilterCheckSyntax';
 $wgAutoloadClasses['ApiAbuseFilterEvalExpression'] = "$dir/api/ApiAbuseFilterEvalExpression.php";
 $wgAPIModules['abusefilterevalexpression'] = 'ApiAbuseFilterEvalExpression';
-$wgAutoloadClasses['ApiAbuseFilterUnblockAutopromote'] = "$dir/api/ApiAbuseFilterUnblockAutopromote.php";
+$wgAutoloadClasses['ApiAbuseFilterUnblockAutopromote'] =
+	"$dir/api/ApiAbuseFilterUnblockAutopromote.php";
 $wgAPIModules['abusefilterunblockautopromote'] = 'ApiAbuseFilterUnblockAutopromote';
 $wgAutoloadClasses['ApiAbuseFilterCheckMatch'] = "$dir/api/ApiAbuseFilterCheckMatch.php";
 $wgAPIModules['abusefiltercheckmatch'] = 'ApiAbuseFilterCheckMatch';
@@ -112,8 +115,8 @@ $wgAvailableRights[] = 'abusefilter-hide-log';
 $wgAvailableRights[] = 'abusefilter-modify-global';
 
 $wgLogTypes[] = 'abusefilter';
-$wgLogNames['abusefilter']          = 'abusefilter-log-name';
-$wgLogHeaders['abusefilter']        = 'abusefilter-log-header';
+$wgLogNames['abusefilter'] = 'abusefilter-log-name';
+$wgLogHeaders['abusefilter'] = 'abusefilter-log-header';
 $wgLogActionsHandlers['abusefilter/modify'] = array( 'AbuseFilter', 'modifyActionText' );
 $wgLogActionsHandlers['abusefilter/hit'] = 'AbuseLogHitFormatter';
 $wgLogActions['suppress/hide-afl'] = 'abusefilter-logentry-suppress';
@@ -125,65 +128,75 @@ $commonModuleInfo = array(
 );
 
 $wgResourceModules['ext.abuseFilter'] = array(
-	'position' => 'top',
-	'styles' => 'ext.abuseFilter.css',
-) + $commonModuleInfo;
+		'position' => 'top',
+		'styles' => 'ext.abuseFilter.css',
+	) + $commonModuleInfo;
 
 $wgResourceModules['ext.abuseFilter.edit'] = array(
-	'scripts' => 'ext.abuseFilter.edit.js',
-	'messages' => array(
-		'abusefilter-edit-syntaxok',
-		'abusefilter-edit-syntaxerr',
-		'abusefilter-http-error',
-		'unknown-error',
-	),
-	'dependencies' => array(
-		'mediawiki.util',
-		'mediawiki.api',
-		'jquery.textSelection',
-		'jquery.spinner',
-	),
-) + $commonModuleInfo;
+		'scripts' => 'ext.abuseFilter.edit.js',
+		'messages' => array(
+			'abusefilter-edit-syntaxok',
+			'abusefilter-edit-syntaxerr',
+			'abusefilter-http-error',
+			'unknown-error',
+		),
+		'dependencies' => array(
+			'mediawiki.util',
+			'mediawiki.api',
+			'jquery.textSelection',
+			'jquery.spinner',
+		),
+	) + $commonModuleInfo;
 
 $wgResourceModules['ext.abuseFilter.tools'] = array(
-	'scripts' => 'ext.abuseFilter.tools.js',
-	'messages' => array(
-		'abusefilter-reautoconfirm-notallowed',
-		'abusefilter-reautoconfirm-none',
-		'abusefilter-reautoconfirm-done',
-		'abusefilter-http-error',
-		'unknown-error',
-	),
-	'dependencies' => array(
-		'mediawiki.api',
-		'mediawiki.notify',
-		'user.tokens',
-		'jquery.spinner'
-	),
-) + $commonModuleInfo;
+		'scripts' => 'ext.abuseFilter.tools.js',
+		'messages' => array(
+			'abusefilter-reautoconfirm-notallowed',
+			'abusefilter-reautoconfirm-none',
+			'abusefilter-reautoconfirm-done',
+			'abusefilter-http-error',
+			'unknown-error',
+		),
+		'dependencies' => array(
+			'mediawiki.api',
+			'mediawiki.notify',
+			'user.tokens',
+			'jquery.spinner'
+		),
+	) + $commonModuleInfo;
 
 $wgResourceModules['ext.abuseFilter.examine'] = array(
-	'scripts' => 'ext.abuseFilter.examine.js',
-	'messages' => array(
-		'abusefilter-examine-match',
-		'abusefilter-examine-nomatch',
-		'abusefilter-examine-syntaxerror',
-		'abusefilter-examine-notfound',
-		'abusefilter-mustbeeditor',
-		'abusefilter-http-error',
-		'unknown-error',
-	),
-	'dependencies' => array(
-		'jquery.spinner',
-		'mediawiki.api'
-	),
-) + $commonModuleInfo;
+		'scripts' => 'ext.abuseFilter.examine.js',
+		'messages' => array(
+			'abusefilter-examine-match',
+			'abusefilter-examine-nomatch',
+			'abusefilter-examine-syntaxerror',
+			'abusefilter-examine-notfound',
+			'abusefilter-mustbeeditor',
+			'abusefilter-http-error',
+			'unknown-error',
+		),
+		'dependencies' => array(
+			'jquery.spinner',
+			'mediawiki.api'
+		),
+	) + $commonModuleInfo;
 
-$wgAbuseFilterAvailableActions = array( 'flag', 'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'degroup', 'tag' );
+$wgAbuseFilterAvailableActions = array(
+	'flag',
+	'throttle',
+	'warn',
+	'disallow',
+	'blockautopromote',
+	'block',
+	'degroup',
+	'tag'
+);
 
 $wgAbuseFilterConditionLimit = 1000;
 
-// Disable filters if they match more than X edits, constituting more than Y% of the last Z edits, if they have been changed in the last S seconds
+// Disable filters if they match more than X edits, constituting more than Y%
+// of the last Z edits, if they have been changed in the last S seconds.
 $wgAbuseFilterEmergencyDisableThreshold['default'] = 0.05;
 $wgAbuseFilterEmergencyDisableCount['default'] = 2;
 $wgAbuseFilterEmergencyDisableAge['default'] = 86400; // One day.
@@ -215,7 +228,7 @@ $wgAbuseFilterAnonBlockDuration = null;
 $wgAbuseFilterCustomActionsHandlers = array();
 
 // Valid "filter groups" – used for applying edit filters to certain types of actions
-$wgAbuseFilterValidGroups = array('default');
+$wgAbuseFilterValidGroups = array( 'default' );
 
 // Default warning messages, per filter group
 $wgAbuseFilterDefaultWarningMessage = array(
@@ -224,4 +237,4 @@ $wgAbuseFilterDefaultWarningMessage = array(
 
 // Age used as cutoff when purging old IP log data.
 // Used by maintenance script purgeOldLogIPData.php
-$wgAbuseFilterLogIPMaxAge  = 3 * 30 * 24 * 3600; // 3 months
+$wgAbuseFilterLogIPMaxAge = 3 * 30 * 24 * 3600; // 3 months
