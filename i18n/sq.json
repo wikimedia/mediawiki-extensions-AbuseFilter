@@ -3,7 +3,8 @@
 		"authors": [
 			"Euriditi",
 			"Marinari",
-			"Vinie007"
+			"Vinie007",
+			"Kosovastar"
 		]
 	},
 	"abusefilter-desc": "Zbaton automatikisht deduktimin e redaktimeve",
@@ -106,7 +107,7 @@
 	"abusefilter-tools-reautoconfirm-user": "Përdoruesi:",
 	"abusefilter-tools-reautoconfirm-submit": "Ri-autokonfirmo",
 	"abusefilter-reautoconfirm-none": "Ky përdorues nuk ka pasur {{GENDER:$1|të tij|të saj|të tyre}} statusin e autokonfirmuar të pezulluar",
-	"abusefilter-reautoconfirm-notallowed": "Ju nuk jeni i lejuar për të rivendosur statusin e autoconfirmimit",
+	"abusefilter-reautoconfirm-notallowed": "Ti nuk je i autorizuar për të rivendosur statusin e konfirmimit automatik.",
 	"abusefilter-reautoconfirm-done": "Statusi i autokonfirmuar i llogarisë është rivendosur",
 	"abusefilter-status": "fundit $1 {{PLURAL:$1|veprimi i|veprimet e }}, $2 ($3%) {{PLURAL:$2|ka|kanë}} arritur kufirin e përcaktuar të $4, dhe $5 ($6%) {{PLURAL:$5|ka|kanë}} përputhje me një nga filtrat aktual të aktivizuar.",
 	"abusefilter-edit-subtitle": "Duke redaktuar filtrin $1",
