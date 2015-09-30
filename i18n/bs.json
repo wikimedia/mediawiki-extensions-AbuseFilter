@@ -381,7 +381,7 @@
 	"abusefilter-topnav-import": "Filter uvoza",
 	"abusefilter-log-name": "Zapisnik filtera zloupotrebe",
 	"abusefilter-log-header": "Ovaj zapisnik prikazuje sažetak izmjena napravljenih na filterima.\nZa sve detalje, pogledajte [[Special:AbuseFilter/history|spisak]] nedavnih izmjena filtera.",
-	"abusefilter-log-entry-modify": "izmijenjeno $1 ($2)",
+	"abusefilter-log-entry-modify": "izmijenio/la je $1 ($2)",
 	"abusefilter-log-noresults": "Nema rezultata",
 	"abusefilter-diff-title": "Razlike između verzija",
 	"abusefilter-diff-item": "Stavka",
