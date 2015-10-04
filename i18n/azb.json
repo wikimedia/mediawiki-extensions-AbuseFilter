@@ -5,7 +5,8 @@
 			"E THP",
 			"Ebrahimi-amir",
 			"Mousa",
-			"Koroğlu"
+			"Koroğlu",
+			"Macofe"
 		]
 	},
 	"abusefilter-desc": "دوزلیش‌لره ائوریستیک فیلترلرین تطبیق اولونماسینا ایمکان وئریر.",
@@ -213,7 +214,7 @@
 	"abusefilter-edit-builder-funcs-length": "سترین اوزون‌لوغو (لئنگته)",
 	"abusefilter-edit-builder-funcs-lcase": "کیچیک حرفلرله (lcase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "قاریش‌دیریلا کاراکتئرلری نورماللئشتیر (ججنورم)",
-	"abusefilter-edit-builder-funcs-rmdoubles": "جوت-کاراکتئرلری چیخار (رمدووبلئس)",
+	"abusefilter-edit-builder-funcs-rmdoubles": "جوت-کاراکتئرلری چیخار (rmdoubles)",
 	"abusefilter-edit-builder-funcs-specialratio": "خصوصی سیموول‌لار / جمعی کاراکتئرلر (ایسپئجیالراتیو)",
 	"abusefilter-edit-builder-funcs-norm": "نورماللئشتیر (نورما)",
 	"abusefilter-edit-builder-funcs-count": "X سئریالینین ی دیزی‌سی ایچینده گؤرونمه سایی (جوونت",

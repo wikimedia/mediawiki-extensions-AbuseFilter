@@ -6,7 +6,8 @@
 			"බිඟුවා",
 			"ශ්වෙත",
 			"සුරනිමල",
-			"Susith Chandira Gts"
+			"Susith Chandira Gts",
+			"Macofe"
 		]
 	},
 	"abusefilter-desc": "සංස්කරණ සඳහා ස්වයංක්‍රීය විවරණෝපයෝගී යෙදේ",
@@ -201,7 +202,7 @@
 	"abusefilter-edit-builder-funcs-length": "තන්තුවේ දිග (දුර)",
 	"abusefilter-edit-builder-funcs-lcase": "To lower case (lcase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "ව්‍යාකූල අක්ෂරයන් සමනය කරන්න (ව්‍යාඅස)",
-	"abusefilter-edit-builder-funcs-rmdoubles": "ද්විත්ව-අක්ෂරයන් ඉවත් කරන්න (ද්අඉවත්)",
+	"abusefilter-edit-builder-funcs-rmdoubles": "ද්විත්ව-අක්ෂරයන් ඉවත් කරන්න (rmdoubles)",
 	"abusefilter-edit-builder-funcs-specialratio": "විශේෂ අක්ෂර /අක්ෂර එකතුව(specialratio)",
 	"abusefilter-edit-builder-funcs-norm": "යථා තත්වයට පත් කිරීම (ප්‍රමත)",
 	"abusefilter-edit-builder-funcs-count": "Y තන්තුව මත X තන්තුව පෙනීසිටින වාර ගණන (count)",

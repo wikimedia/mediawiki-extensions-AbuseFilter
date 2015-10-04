@@ -16,7 +16,8 @@
 			"아라",
 			"Revi",
 			"IRTC1015",
-			"Alex00728"
+			"Alex00728",
+			"Macofe"
 		]
 	},
 	"abusefilter-desc": "사용자 편집을 규칙에 따라 자동으로 검사합니다",
@@ -233,7 +234,7 @@
 	"abusefilter-edit-builder-funcs-lcase": "소문자로 변환 (lcase)",
 	"abusefilter-edit-builder-funcs-ucase": "대문자로 변환 (ucase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "혼동되는 글자를 정규화 (ccnorm)",
-	"abusefilter-edit-builder-funcs-rmdoubles": "중복되는 글자를 제거 (rmdouble)",
+	"abusefilter-edit-builder-funcs-rmdoubles": "중복되는 글자를 제거 (rmdoubles)",
 	"abusefilter-edit-builder-funcs-specialratio": "특수 문자 비율 (specialratio)",
 	"abusefilter-edit-builder-funcs-norm": "정규화 (norm)",
 	"abusefilter-edit-builder-funcs-count": "문자열 Y 안의 문자열 X의 반복 횟수 (count)",
