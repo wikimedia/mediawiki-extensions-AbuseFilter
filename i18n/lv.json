@@ -116,6 +116,7 @@
 	"abusefilter-reautoconfirm-notallowed": "Tev nav tiesību atjaunot automātiski apstiprināto statusu.",
 	"abusefilter-reautoconfirm-done": "Konta automātiski apstiprinātais status atjaunots",
 	"abusefilter-status": "No {{PLURAL:$1|pēdējām|pēdējās|pēdējām}} $1 {{PLURAL:$1|darbībām|darbības|darbībām}} $2 ($3%) ir sasniegušas $4 {{PLURAL:$4|nosacījumu|nosacījuma|nosacījumu}} limitu, un $5 ($6%) atbilst kādam no spēkā esošajiem filtriem.",
+	"abusefilter-edit": "Ļaunprātīgās izmantošanas filtra labošana",
 	"abusefilter-edit-subtitle": "Tiek rediģēts filtrs $1",
 	"abusefilter-edit-subtitle-new": "Filtra izveide",
 	"abusefilter-edit-oldwarning": "<strong>Tu rediģē vecu šī filtra versiju.\nRedzamā statistika atbilst jaunākajai filtra versijai.\nJa tu saglabāsi savus labojumus, tiks pārrakstītas visas izmaiņas versijās, kas ir jaunākas par to, kuru tu rediģē.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Atgriezties pie filtra izmaiņu hronoloģijas]].",
