@@ -469,7 +469,8 @@ class AbuseFilter {
 			$fname = __METHOD__;
 			$res = ObjectCache::getMainWANInstance()->getWithSetCallback(
 				$globalRulesKey,
-				function() use ( $group, $fname ) {
+				WANObjectCache::TTL_INDEFINITE,
+				function () use ( $group, $fname ) {
 					global $wgAbuseFilterCentralDB;
 
 					$fdb = wfGetLB( $wgAbuseFilterCentralDB )->getConnectionRef(
@@ -488,9 +489,10 @@ class AbuseFilter {
 						$fname
 					) );
 				},
-				0,
-				array( $globalRulesKey ),
-				array( 'lockTSE' => 300 )
+				array(
+					'checkKeys' => array( $globalRulesKey ),
+					'lockTSE' => 300
+				)
 			);
 
 			foreach( $res as $row ) {
