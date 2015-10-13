@@ -134,7 +134,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$newRow['af_user'] = $user->getId();
 			$newRow['af_user_text'] = $user->getName();
 
-			$dbw->begin( __METHOD__ );
+			$dbw->startAtomic( __METHOD__ );
 
 			// Insert MAIN row.
 			if ( $filter == 'new' ) {
@@ -225,7 +225,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 			$dbw->insert( 'abuse_filter_action', $actionsRows, __METHOD__ );
 
-			$dbw->commit( __METHOD__ );
+			$dbw->endAtomic( __METHOD__ );
 
 			// Reset Memcache if this was a global rule
 			if ( $newRow['af_global'] ) {
