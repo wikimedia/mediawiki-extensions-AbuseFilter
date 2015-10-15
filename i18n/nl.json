@@ -16,7 +16,8 @@
 			"Tvdm",
 			"Wiki13",
 			"Sjoerddebruin",
-			"Trijnstel"
+			"Trijnstel",
+			"JaapDeKleine"
 		]
 	},
 	"abusefilter-desc": "Voert automatisch heuristische analyse uit op bewerkingen",
@@ -178,7 +179,7 @@
 	"abusefilter-edit-warn-actions": "Handelingen:",
 	"abusefilter-edit-warn-preview": "Voorvertoning geselecteerd bericht",
 	"abusefilter-edit-warn-edit": "Geselecteerd bericht aanmaken/bewerken",
-	"abusefilter-edit-tag-tag": "Toe te voegen labels (een per regel):",
+	"abusefilter-edit-tag-tag": "[[Special:Tags|Tags]] toe te passen (één per regel):",
 	"abusefilter-edit-denied": "U mag de details van dit filter niet bekijken, omdat die niet openbaar zijn.",
 	"abusefilter-edit-main": "Filterparameters",
 	"abusefilter-edit-done-subtitle": "Filter bewerkt",
