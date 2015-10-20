@@ -446,6 +446,8 @@ class AbuseFilterHooks {
 	 * @return bool
 	 */
 	private static function fetchAllTags( array &$tags, $enabled ) {
+		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
+
 		# This is a pretty awful hack.
 		$dbr = wfGetDB( DB_SLAVE );
 
@@ -466,6 +468,25 @@ class AbuseFilterHooks {
 			$tags = array_filter(
 				array_merge( explode( "\n", $row->afa_parameters ), $tags )
 			);
+		}
+
+		if ( $wgAbuseFilterCentralDB && !$wgAbuseFilterIsCentral ) {
+			$dbr = wfGetDB( DB_SLAVE, array(), $wgAbuseFilterCentralDB );
+			$where['af_global'] = 1;
+			$res = $dbr->select(
+				array( 'abuse_filter_action', 'abuse_filter' ),
+				'afa_parameters',
+				$where,
+				__METHOD__,
+				array(),
+				array( 'abuse_filter' => array( 'INNER JOIN', 'afa_filter=af_id' ) )
+			);
+
+			foreach ( $res as $row ) {
+				$tags = array_filter(
+					array_merge( explode( "\n", $row->afa_parameters ), $tags )
+				);
+			}
 		}
 
 		return true;
