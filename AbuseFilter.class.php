@@ -1206,25 +1206,24 @@ class AbuseFilter {
 				}
 
 				$block->mExpiry = SpecialBlock::parseExpiryInput( $expiry );
-				$block->insert();
+				if ( $block->insert() ) {
+					// Log it if successful
+					# Prepare log parameters
+					$logParams = array();
+					if ( $block->mExpiry == 'infinity' ) {
+						$logParams[] = 'indefinite';
+					} else {
+						$logParams[] = $expiry;
+					}
+					$logParams[] = 'nocreate';
 
-				// Log it
-				# Prepare log parameters
-				$logParams = array();
-				if ( $block->mExpiry == 'infinity' ) {
-					$logParams[] = 'indefinite';
-				} else {
-					$logParams[] = $expiry;
+					$log = new LogPage( 'block' );
+					$log->addEntry( 'block',
+						Title::makeTitle( NS_USER, $wgUser->getName() ),
+						wfMessage( 'abusefilter-blockreason', $rule_desc, $rule_number )->inContentLanguage()->text(),
+						$logParams, self::getFilterUser()
+					);
 				}
-				$logParams[] = 'nocreate';
-
-				$log = new LogPage( 'block' );
-				$log->addEntry( 'block',
-					Title::makeTitle( NS_USER, $wgUser->getName() ),
-					wfMessage( 'abusefilter-blockreason', $rule_desc, $rule_number )->inContentLanguage()->text(),
-					$logParams, self::getFilterUser()
-				);
-
 				$message = array(
 					'abusefilter-blocked-display',
 					$rule_desc,
@@ -1250,20 +1249,19 @@ class AbuseFilter {
 				$block->prevents( 'editownusertalk', false );
 				$block->mExpiry = SpecialBlock::parseExpiryInput( '1 week' );
 
-				$block->insert();
+				if ( $block->insert() ) {
+					// Log it if the block was successful
+					# Prepare log parameters
+					$logParams = array();
+					$logParams[] = 'indefinite';
+					$logParams[] = 'nocreate';
 
-				// Log it
-				# Prepare log parameters
-				$logParams = array();
-				$logParams[] = 'indefinite';
-				$logParams[] = 'nocreate';
-
-				$log = new LogPage( 'block' );
-				$log->addEntry( 'block', Title::makeTitle( NS_USER, $range ),
-					wfMessage( 'abusefilter-blockreason', $rule_desc, $rule_number )->inContentLanguage()->text(),
-					$logParams, self::getFilterUser()
-				);
-
+					$log = new LogPage( 'block' );
+					$log->addEntry( 'block', Title::makeTitle( NS_USER, $range ),
+						wfMessage( 'abusefilter-blockreason', $rule_desc, $rule_number )->inContentLanguage()->text(),
+						$logParams, self::getFilterUser()
+					);
+				}
 				$message = array(
 					'abusefilter-blocked-display',
 					$rule_desc,
