@@ -287,14 +287,13 @@ class AFPData {
 			$pattern .= 'i';
 		}
 
-		$handler = new AFPRegexErrorHandler( $pattern, $pos );
-		try {
-			$handler->install();
-			$result = preg_match( $pattern, $str );
-			$handler->restore();
-		} catch ( Exception $e ) {
-			$handler->restore();
-			throw $e;
+		$result = preg_match( $pattern, $str );
+		if ( $result === false ) {
+			throw new AFPUserVisibleException(
+				'regexfailure',
+				$pos,
+				array( 'unspecified error in preg_match()', $pattern )
+			);
 		}
 		return new AFPData( self::DBool, (bool)$result );
 	}
@@ -550,41 +549,6 @@ class AFPUserVisibleException extends AFPException {
 		$this->mExceptionID = $exception_id;
 		$this->mPosition = $position;
 		$this->mParams = $params;
-	}
-}
-
-class AFPRegexErrorHandler {
-	function __construct( $regex, $pos ) {
-		$this->regex = $regex;
-		$this->pos = $pos;
-	}
-
-	/**
-	 * @param $errno
-	 * @param $errstr
-	 * @param $errfile
-	 * @param $errline
-	 * @param $context
-	 * @return bool
-	 * @throws AFPUserVisibleException
-	 */
-	function handleError( $errno, $errstr, $errfile, $errline, $context ) {
-		if ( error_reporting() == 0 ) {
-			return true;
-		}
-		throw new AFPUserVisibleException(
-			'regexfailure',
-			$this->pos,
-			array( $errstr, $this->regex )
-		);
-	}
-
-	function install() {
-		set_error_handler( array( $this, 'handleError' ) );
-	}
-
-	function restore() {
-		restore_error_handler();
 	}
 }
 
@@ -1564,14 +1528,13 @@ class AbuseFilterParser {
 
 			$matches = array();
 
-			$handler = new AFPRegexErrorHandler( $needle, $this->mCur->pos );
-			try {
-				$handler->install();
-				$count = preg_match_all( $needle, $haystack, $matches );
-				$handler->restore();
-			} catch ( Exception $e ) {
-				$handler->restore();
-				throw $e;
+			$count = preg_match_all( $needle, $haystack, $matches );
+			if ( $count === false ) {
+				throw new AFPUserVisibleException(
+					'regexfailure',
+					$this->mCur->pos,
+					array( 'unspecified error in preg_match_all()', $needle )
+				);
 			}
 		}
 

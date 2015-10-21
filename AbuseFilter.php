@@ -59,7 +59,6 @@ $wgAutoloadClasses['AFComputedVariable'] = "$dir/AbuseFilterVariableHolder.php";
 $wgAutoloadClasses['AFPData'] = "$dir/AbuseFilter.parser.php";
 $wgAutoloadClasses['AFPException'] = "$dir/AbuseFilter.parser.php";
 $wgAutoloadClasses['AFPParserState'] = "$dir/AbuseFilter.parser.php";
-$wgAutoloadClasses['AFPRegexErrorHandler'] = "$dir/AbuseFilter.parser.php";
 $wgAutoloadClasses['AFPToken'] = "$dir/AbuseFilter.parser.php";
 $wgAutoloadClasses['AFPUserVisibleException'] = "$dir/AbuseFilter.parser.php";
 
