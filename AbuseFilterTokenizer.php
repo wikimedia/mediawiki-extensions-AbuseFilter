@@ -67,21 +67,32 @@ class AbuseFilterTokenizer {
 			$tokenizerCache = ObjectCache::newAccelerator( array(), 'hash' );
 		}
 
+		static $stats = null;
+
+		if ( !$stats ) {
+			$stats = RequestContext::getMain()->getStats();
+		}
+
 		$cacheKey = wfGlobalCacheKey( __CLASS__, self::CACHE_VERSION, crc32( $code ) );
+
 		$tokens = $tokenizerCache->get( $cacheKey );
 
-		if ( !$tokens ) {
-			$tokens = array();
-			$curPos = 0;
-
-			do {
-				$prevPos = $curPos;
-				$token = self::nextToken( $code, $curPos );
-				$tokens[ $token->pos ] = array( $token, $curPos );
-			} while ( $curPos !== $prevPos );
-
-			$tokenizerCache->set( $cacheKey, $tokens, 600 );
+		if ( $tokens ) {
+			$stats->increment( 'AbuseFilter.tokenizerCache.hit' );
+			return $tokens;
 		}
+
+		$stats->increment( 'AbuseFilter.tokenizerCache.miss' );
+		$tokens = array();
+		$curPos = 0;
+
+		do {
+			$prevPos = $curPos;
+			$token = self::nextToken( $code, $curPos );
+			$tokens[ $token->pos ] = array( $token, $curPos );
+		} while ( $curPos !== $prevPos );
+
+		$tokenizerCache->set( $cacheKey, $tokens, 600 );
 
 		return $tokens;
 	}
