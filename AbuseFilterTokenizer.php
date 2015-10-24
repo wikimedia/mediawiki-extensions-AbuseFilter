@@ -92,7 +92,7 @@ class AbuseFilterTokenizer {
 			$tokens[ $token->pos ] = array( $token, $curPos );
 		} while ( $curPos !== $prevPos );
 
-		$tokenizerCache->set( $cacheKey, $tokens, 600 );
+		$tokenizerCache->set( $cacheKey, $tokens, 60 * 60 * 24 );
 
 		return $tokens;
 	}
