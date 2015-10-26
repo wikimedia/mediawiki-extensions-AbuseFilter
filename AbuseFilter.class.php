@@ -349,7 +349,6 @@ class AbuseFilter {
 
 		$vars->setLazyLoadVar( "{$prefix}_recent_contributors", 'load-recent-authors',
 				array(
-					'cutoff' => wfTimestampNow(),
 					'title' => $title->getText(),
 					'namespace' => $title->getNamespace()
 				) );

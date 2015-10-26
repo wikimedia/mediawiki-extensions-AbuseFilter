@@ -493,9 +493,7 @@ class AFComputedVariable {
 				$result = StringUtils::delimiterReplace( '<', '>', '', $html );
 				break;
 			case 'load-recent-authors':
-				$cutOff = $parameters['cutoff'];
 				$title = Title::makeTitle( $parameters['namespace'], $parameters['title'] );
-
 				if ( !$title->exists() ) {
 					$result = '';
 					break;
@@ -505,10 +503,7 @@ class AFComputedVariable {
 				$sqlTmp = $dbr->selectSQLText(
 					'revision',
 					array( 'rev_user_text', 'rev_timestamp' ),
-					array(
-						'rev_page' => $title->getArticleID(),
-						'rev_timestamp < ' . $dbr->addQuotes( $dbr->timestamp( $cutOff ) )
-					),
+					array( 'rev_page' => $title->getArticleID() ),
 					__METHOD__,
 					// Some pages have < 10 authors but many revisions (e.g. bot pages)
 					array( 'ORDER BY' => 'rev_timestamp DESC', 'LIMIT' => 100 )
