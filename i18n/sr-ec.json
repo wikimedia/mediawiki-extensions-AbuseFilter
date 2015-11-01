@@ -265,7 +265,7 @@
 	"abusefilter-edit-builder-vars-removed-links": "Све спољашње везе уклоњене у измени",
 	"abusefilter-edit-builder-vars-old-text": "Стари викитекст пре измене",
 	"abusefilter-edit-builder-vars-new-text": "Нови викитекст после измене",
-	"abusefilter-edit-builder-vars-new-text-stripped": "Текст нове странице. без икаквих обележавања",
+	"abusefilter-edit-builder-vars-new-text-stripped": "Текст нове странице, без икаквих обележавања",
 	"abusefilter-edit-builder-vars-new-html": "Рашчлањени HTML извор нове измене",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Степен заштите странице (уређивање)",
 	"abusefilter-edit-builder-vars-restrictions-move": "Степен заштите странице (премештање)",
