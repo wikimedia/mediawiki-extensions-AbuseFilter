@@ -77,7 +77,7 @@
 	"abusefilter-log-private-not-included": "आपण नमूद केलेले एक वा एकाधिक गाळणी ओळखणी ह्या खाजगी आहेत.ह्या गाळण्यांचा शोध घेतल्या गेला नाही कारण, या खाजगी गाळण्यांचा तपशिल बघण्याची आपणास परवानगी नाही.",
 	"abusefilter-log-hide-legend": "नोंदेची(लॉग) नोंद(एंट्री) लपवा",
 	"abusefilter-log-hide-id": "टिपलेल्या नोंदीचा क्रमांक",
-	"abusefilter-log-hide-hidden": "ही नोंद सार्वजनिक दृष्यतेपासून लपवा",
+	"abusefilter-log-hide-hidden": "ही नोंद सार्वजनिक दृश्यतेपासून लपवा",
 	"abusefilter-log-hide-reason": "कारण:",
 	"abusefilter-log-hide-forbidden": "आपणास दुरुपयोग गाळणीच्या नोंदवहीतील नोंदी लपविण्याची परवानगी नाही.",
 	"abusefilter-logentry-suppress": "\"[[$1]]\" लपविले",
