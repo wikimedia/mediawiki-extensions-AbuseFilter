@@ -6,7 +6,8 @@
 			"Rancher",
 			"Sasa Stefanovic",
 			"Жељко Тодоровић",
-			"Михајло Анђелковић"
+			"Михајло Анђелковић",
+			"Сербијана"
 		]
 	},
 	"abusefilter-desc": "Извршава аутоматско хеуристичко филтрирање измена",
@@ -258,7 +259,7 @@
 	"abusefilter-edit-builder-vars-user-name": "Назив корисничког налога",
 	"abusefilter-edit-builder-vars-user-groups": "Групе (укључујући посредне) у којима је корисник",
 	"abusefilter-edit-builder-vars-user-rights": "Права која корисник има",
-	"abusefilter-edit-builder-vars-user-emailconfirm": "Време када је е-адреса потврђена",
+	"abusefilter-edit-builder-vars-user-emailconfirm": "Време када је имејл адреса потврђена",
 	"abusefilter-edit-builder-vars-recent-contributors": "Последњих десет уредника странице",
 	"abusefilter-edit-builder-vars-all-links": "Све спољашње везе у новом тексту",
 	"abusefilter-edit-builder-vars-added-links": "Све спољашње везе додате у измени",
