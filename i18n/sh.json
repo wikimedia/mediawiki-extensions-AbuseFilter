@@ -48,7 +48,7 @@
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Pretraži",
 	"abusefilter-log-entry": "$1: $2 je aktivirao filter, izvodeći radnju „$3“ na stranici $4. Preduzete radnje: $5; Opis filtera: $6",
-	"abusefilter-log-entry-withdiff": "$1: $2 triggered an abuse filter, performing the action \"$3\" on $4. Actions taken: $5; Filter description: $6 ($7)",
+	"abusefilter-log-entry-withdiff": "$1: Korisnik $2 je pokrenuo filter za zloupotrebu, napravivši akciju \"$3\" na stranici $4.\nNapravljena akcija: $5;\nOpis filtera: $6 ($7)",
 	"abusefilter-log-detailedentry-meta": "$1: $2 je aktivirao $3, izvodeći radnju „$4“ na stranici $5.\nPreduzete radnje: $6;\nOpis filtera: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "globalni filter $1",
 	"abusefilter-log-detailedentry-local": "filter $1",
