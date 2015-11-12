@@ -398,7 +398,7 @@
 	"abusefilter-diff-version": "Versjon fra $1 {{GENDER:$3|av}} $2",
 	"abusefilter-diff-info": "Grunnleggende informasjon",
 	"abusefilter-diff-pattern": "Filterregler",
-	"abusefilter-diff-invalid": "Kunne ikke hente de ønskede versjonene",
+	"abusefilter-diff-invalid": "Klarte ikke å hente de ønskede versjonene",
 	"abusefilter-diff-backhistory": "Tilbake til filterhistorikk",
 	"abusefilter-diff-prev": "Eldre endring",
 	"abusefilter-diff-next": "Nyere endring",
