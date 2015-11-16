@@ -168,7 +168,7 @@
 	"abusefilter-edit-warn-actions": "Дзеяньні:",
 	"abusefilter-edit-warn-preview": "Папярэдні прагляд выбранага паведамленьня",
 	"abusefilter-edit-warn-edit": "Стварыць/рэдагаваць выбранае паведамленьне",
-	"abusefilter-edit-tag-tag": "Ужываемыя тэгі (па адным на радок):",
+	"abusefilter-edit-tag-tag": "Ужываемыя [[Special:Tags|тэгі]] (па адным на радок):",
 	"abusefilter-edit-denied": "Вы ня можаце праглядзець дэталі гэтага фільтру, таму што яны схаваныя ад агульнага прагляду.",
 	"abusefilter-edit-main": "Парамэтры фільтру",
 	"abusefilter-edit-done-subtitle": "Фільтар быў адрэдагаваны",
