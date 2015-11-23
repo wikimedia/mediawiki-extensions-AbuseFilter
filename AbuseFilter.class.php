@@ -2204,16 +2204,13 @@ class AbuseFilter {
 		if ( !$revision instanceof Revision ) {
 			return '';
 		}
-		if ( defined( 'MW_SUPPORTS_CONTENTHANDLER' ) ) {
-			$content = $revision->getContent( $audience );
-			if ( $content === null ) {
-				return '';
-			}
-			$result = self::contentToString( $content );
-		} else {
-			// For MediaWiki without contenthandler support (< 1.21)
-			$result = $revision->getText();
+
+		$content = $revision->getContent( $audience );
+		if ( $content === null ) {
+			return '';
 		}
+		$result = self::contentToString( $content );
+
 		return $result;
 	}
 
