@@ -60,33 +60,6 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * Entry points for MediaWiki hook 'EditFilterMerged' (MW 1.20 and earlier)
-	 *
-	 * @param $editor EditPage instance (object)
-	 * @param $text string Content of the edit box
-	 * @param &$error string Error message to return
-	 * @param $summary string Edit summary for page
-	 * @return bool
-	 */
-	public static function onEditFilterMerged( $editor, $text, &$error, $summary ) {
-		$context = $editor->mArticle->getContext();
-
-		$status = Status::newGood();
-		$minoredit = $editor->minoredit;
-
-		// poor man's PST, see bug 20310
-		$text = str_replace( "\r\n", "\n", $text );
-
-		$continue = self::filterEdit( $context, null, $text, $status, $summary, $minoredit );
-
-		if ( !$status->isOK() ) {
-			$error = $status->getWikiText();
-		}
-
-		return $continue;
-	}
-
-	/**
 	 * Entry points for MediaWiki hook 'EditFilterMergedContent' (MW 1.21 and later)
 	 *
 	 * @param IContextSource $context the context of the edit

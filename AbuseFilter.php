@@ -79,12 +79,7 @@ $wgAutoloadClasses['ApiAbuseFilterCheckMatch'] = "$dir/api/ApiAbuseFilterCheckMa
 $wgAPIModules['abusefiltercheckmatch'] = 'ApiAbuseFilterCheckMatch';
 
 
-if ( defined( 'MW_SUPPORTS_CONTENTHANDLER' ) ) {
-	$wgHooks['EditFilterMergedContent'][] = 'AbuseFilterHooks::onEditFilterMergedContent';
-} else {
-	$wgHooks['EditFilterMerged'][] = 'AbuseFilterHooks::onEditFilterMerged';
-}
-
+$wgHooks['EditFilterMergedContent'][] = 'AbuseFilterHooks::onEditFilterMergedContent';
 $wgHooks['GetAutoPromoteGroups'][] = 'AbuseFilterHooks::onGetAutoPromoteGroups';
 $wgHooks['AbortMove'][] = 'AbuseFilterHooks::onAbortMove';
 $wgHooks['MovePageCheckPermissions'][] = 'AbuseFilterHooks::onMovePageCheckPermissions';
