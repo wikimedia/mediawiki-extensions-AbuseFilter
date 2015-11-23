@@ -371,10 +371,7 @@ class AFComputedVariable {
 						$parameters['title']
 					);
 				}
-				if (
-					!defined( 'MW_SUPPORTS_CONTENTHANDLER' ) ||
-					$article->getContentModel() === CONTENT_MODEL_WIKITEXT
-				) {
+				if ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
 					$textVar = $parameters['text-var'];
 
 					// XXX: Use prepareContentForEdit. But we need a Content object for that.
@@ -397,8 +394,7 @@ class AFComputedVariable {
 				if ( $vars->getVar( 'context' )->toString() == 'filter' ) {
 					$links = $this->getLinksFromDB( $article );
 					wfDebug( "AbuseFilter: loading old links from DB\n" );
-				} elseif ( !defined( 'MW_SUPPORTS_CONTENTHANDLER' )
-					|| $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
+				} elseif ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
 
 					wfDebug( "AbuseFilter: loading old links from Parser\n" );
 					$textVar = $parameters['text-var'];
@@ -443,10 +439,7 @@ class AFComputedVariable {
 						$parameters['title']
 					);
 				}
-				if (
-					!defined( 'MW_SUPPORTS_CONTENTHANDLER' ) ||
-					$article->getContentModel() === CONTENT_MODEL_WIKITEXT
-				) {
+				if ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
 					$textVar = $parameters['wikitext-var'];
 
 					// XXX: Use prepareContentForEdit. But we need a Content object for that.
@@ -468,8 +461,7 @@ class AFComputedVariable {
 				$article = self::articleFromTitle( $parameters['namespace'], $parameters['title'] );
 				$textVar = $parameters['wikitext-var'];
 
-				if ( !defined( 'MW_SUPPORTS_CONTENTHANDLER' )
-					|| $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
+				if ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
 
 					if ( isset( $parameters['pst'] ) && $parameters['pst'] ) {
 						// $textVar is already PSTed when it's not loaded from an ongoing edit.
