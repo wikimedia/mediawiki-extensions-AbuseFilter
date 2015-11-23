@@ -122,12 +122,8 @@ class AbuseFilterHooks {
 				return true;
 			}
 
-			if ( defined( 'MW_SUPPORTS_CONTENTHANDLER' ) ) {
-				$oldcontent = $revision->getContent( Revision::RAW );
-				$oldtext = AbuseFilter::contentToString( $oldcontent );
-			} else {
-				$oldtext = AbuseFilter::revisionToString( $revision, Revision::RAW );
-			}
+			$oldcontent = $revision->getContent( Revision::RAW );
+			$oldtext = AbuseFilter::contentToString( $oldcontent );
 
 			// Cache article object so we can share a parse operation
 			$articleCacheKey = $title->getNamespace() . ':' . $title->getText();
