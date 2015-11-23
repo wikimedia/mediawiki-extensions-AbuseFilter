@@ -653,14 +653,9 @@ class AbuseFilterHooks {
 
 		$vars->setVar( 'ACTION', 'upload' );
 
-		// We us the hexadecimal version of the file sha1
-		if ( version_compare( $wgVersion, '1.21', '>=' ) ) {
-			// Use UploadBase::getTempFileSha1Base36 so that we don't have to calculate the sha1 sum again
-			$sha1 = wfBaseConvert( $upload->getTempFileSha1Base36() , 36, 16, 40 );
-		} else {
-			// UploadBase::getTempFileSha1Base36 wasn't public until 1.21
-			$sha1 = sha1_file( $upload->getTempPath() );
-		}
+		// We use the hexadecimal version of the file sha1.
+		// Use UploadBase::getTempFileSha1Base36 so that we don't have to calculate the sha1 sum again
+		$sha1 = wfBaseConvert( $upload->getTempFileSha1Base36() , 36, 16, 40 );
 
 		$vars->setVar( 'file_sha1', $sha1 );
 		$vars->setVar( 'file_size', $upload->getFileSize() );
