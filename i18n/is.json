@@ -147,7 +147,7 @@
 	"abusefilter-edit-warn-actions": "Aðgerðir:",
 	"abusefilter-edit-warn-preview": "Forskoða valin skilaboð",
 	"abusefilter-edit-warn-edit": "Stofna/Breyta völdum skilaboðum",
-	"abusefilter-edit-tag-tag": "Tög sem eiga að gilda (eitt á línu):",
+	"abusefilter-edit-tag-tag": "[[Special:Tags|Tög]] sem eiga að gilda (eitt á línu):",
 	"abusefilter-edit-denied": "Þú getur ekki skoðað nánari upplýsingar um þessa síu, því hún er falin.",
 	"abusefilter-edit-main": "Stikar síunnar",
 	"abusefilter-edit-done-subtitle": "Síu breytt",
