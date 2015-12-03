@@ -5,7 +5,7 @@
 		]
 	},
 	"abusefilter-desc": "Agipakat kadagiti automatiko a panagsolbar iti parikut kadagiti panagurnos",
-	"abusefilter": "Konpigurasion ti sagat ti panagabuso",
+	"abusefilter": "Kompigurasion ti sagat ti panagabuso",
 	"abuselog": "Listaan ti panagabuso",
 	"abusefilter-intro": "Naragsak nga isasangbay ditoy interface ti pangasiwaan ti Sagat ti Panagabuso.\nTi Sagat ti Panagabuso ket automatiko a mekanismo ti sopwer nga agikabil ti automatiko a panagsolbar ti amin a parikut kadagiti amin a tignay.\nDaytoy nga interface ket ipakitana dagiti listaan dagiti naipalawag a sagat, ken mangipalubos kaniada a mabaliwan.",
 	"abusefilter-mustbeeditor": "Para kadagiti rason ti seguridad, dagiti laeng agus-usar nga addaan iti karbengan a mangbaliw kadagiti sagat ti panagabuso ti makausar iti daytoy nga interface.",
