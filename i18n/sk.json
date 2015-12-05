@@ -4,7 +4,8 @@
 			"Helix84",
 			"Mormegil",
 			"Teslaton",
-			"Sudo77(new)"
+			"Sudo77(new)",
+			"Kusavica"
 		]
 	},
 	"abusefilter-desc": "Vykonáva automatickú heuristiku úprav.",
@@ -105,7 +106,7 @@
 	"abusefilter-list-options-deleted-only": "Zobraziť iba zmazané filtre",
 	"abusefilter-list-options-deleted-hide": "Skryť zmazané filtre",
 	"abusefilter-list-options-deleted-show": "Vrátane zmazaných filtrov",
-	"abusefilter-list-options-scope": "Zobraziť filtre od:",
+	"abusefilter-list-options-scope": "Zobraziť filtre:",
 	"abusefilter-list-options-scope-local": "Lokálna wiki",
 	"abusefilter-list-options-scope-global": "Globálne pravidlá",
 	"abusefilter-list-options-scope-all": "Lokálne aj globálne pravidlá",
