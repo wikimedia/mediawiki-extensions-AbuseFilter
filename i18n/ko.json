@@ -224,7 +224,7 @@
 	"abusefilter-edit-builder-misc-in": "문자열에 포함 (in)",
 	"abusefilter-edit-builder-misc-like": "패턴 일치 (like)",
 	"abusefilter-edit-builder-misc-rlike": "정규 표현식 일치 (rlike)",
-	"abusefilter-edit-builder-misc-irlike": "정규 표현식 일치, 대소문자 구분 안함 (irlike)",
+	"abusefilter-edit-builder-misc-irlike": "정규 표현식 일치, 대소문자 구분하지 않음 (irlike)",
 	"abusefilter-edit-builder-misc-contains": "왼쪽 문자열이 오른쪽 문자열을 포함 (contains)",
 	"abusefilter-edit-builder-misc-stringlit": "문자열 그대로 (\"\")",
 	"abusefilter-edit-builder-misc-tern": "3단 연산자 (X ? Y : Z)",
