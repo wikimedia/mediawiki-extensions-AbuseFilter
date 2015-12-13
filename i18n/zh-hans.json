@@ -36,7 +36,8 @@
 			"Mywood",
 			"Impersonator 1",
 			"NigelSoft",
-			"Duolaimi"
+			"Duolaimi",
+			"范"
 		]
 	},
 	"abusefilter-desc": "对编辑行为自动进行条件判定",
@@ -58,7 +59,7 @@
 	"right-abusefilter-log": "查看滥用日志",
 	"right-abusefilter-log-detail": "查看详细滥用日志",
 	"right-abusefilter-private": "查看滥用日志中的非公开数据",
-	"right-abusefilter-modify-restricted": "受限修改防滥用过滤器",
+	"right-abusefilter-modify-restricted": "修改包含受限动作的防滥用过滤器",
 	"right-abusefilter-revert": "撤销指定防滥用过滤器作出的所有更改",
 	"right-abusefilter-view-private": "查看被标记为隐藏的过滤器",
 	"right-abusefilter-log-private": "查看标记为不公开的过滤器的过滤日志",
