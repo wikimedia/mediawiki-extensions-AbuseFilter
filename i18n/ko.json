@@ -292,7 +292,7 @@
 	"abusefilter-edit-builder-vars-new-text-stripped": "편집 후 문서의 마크업을 제거한 내용",
 	"abusefilter-edit-builder-vars-new-html": "편집 후의 HTML 소스",
 	"abusefilter-edit-builder-vars-restrictions-edit": "문서 편집 보호 수준",
-	"abusefilter-edit-builder-vars-restrictions-move": "문서 옮기기 보호 수준",
+	"abusefilter-edit-builder-vars-restrictions-move": "문서 이동 보호 수준",
 	"abusefilter-edit-builder-vars-restrictions-create": "문서의 만들기 보호 설정",
 	"abusefilter-edit-builder-vars-restrictions-upload": "파일의 올리기 보호 설정",
 	"abusefilter-edit-builder-vars-old-text-stripped": "마크업을 제외한 편집 전의 문서 내용",

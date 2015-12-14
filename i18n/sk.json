@@ -371,7 +371,7 @@
 	"abusefilter-topnav-log": "Záznam zneužití",
 	"abusefilter-topnav-tools": "Ladiace nástroje",
 	"abusefilter-topnav-import": "Importovať filter",
-	"abusefilter-log-name": "Záznam Filtra zneužití",
+	"abusefilter-log-name": "Záznam filtra zneužití",
 	"abusefilter-log-header": "Tento záznam zobrazuje súhrn zmien filtrov.\nPodrobnosti nájdete v [[Special:AbuseFilter/history|zozname]] posledných zmien filtrov.",
 	"abusefilter-log-entry-modify": "zmenil $1 ($2)",
 	"abusefilter-log-noresults": "Žiadne výsledky",
