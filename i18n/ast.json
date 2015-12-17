@@ -170,7 +170,7 @@
 	"abusefilter-edit-done-subtitle": "Filtru editáu",
 	"abusefilter-edit-done": "Guardáronse [[Special:AbuseFilter/history/$1/diff/prev/$2|los sos cambios]] nel [[Special:AbuseFilter/$1|filtru $3]].",
 	"abusefilter-edit-badsyntax": "Hai un error de sintaxis nel filtru qu'especificó.\nLa salida del analizador foi: <pre>$1</pre>",
-	"abusefilter-edit-restricted": "Nun pue editar esti filtru, porque contién una o más aiciones restrinxíes.\nPor favor pida a un usuariu con permisu p'amestar aiciones restrinxíes que faiga el cambiu.",
+	"abusefilter-edit-restricted": "Nun puedes editar esti filtru, porque contien una o más aiciones restrinxíes.\nPor favor pide a un usuariu con permisu p'amestar aiciones restrinxíes que faiga el cambiu.",
 	"abusefilter-edit-viewhistory": "Ver l'historial d'esti filtru",
 	"abusefilter-edit-history": "Historial:",
 	"abusefilter-edit-check": "Comprobar la sintaxis",
