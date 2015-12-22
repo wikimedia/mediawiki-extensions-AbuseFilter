@@ -181,7 +181,7 @@
 	"abusefilter-edit-warn-other-label": "Nome da página de outra mensagem:\n:''(sem prefixo MediaWiki)''",
 	"abusefilter-edit-warn-actions": "Ações:",
 	"abusefilter-edit-warn-preview": "Prever mensagem selecionada",
-	"abusefilter-edit-warn-edit": "Criar/Editar mensagem selecionada",
+	"abusefilter-edit-warn-edit": "Criar/editar mensagem selecionada",
 	"abusefilter-edit-tag-tag": "Etiquetas a aplicar (uma por linha):",
 	"abusefilter-edit-denied": "Você não pode ver os detalhes deste filtro porque ele está ocultado da visualização pública.",
 	"abusefilter-edit-main": "Parâmetros do filtro",

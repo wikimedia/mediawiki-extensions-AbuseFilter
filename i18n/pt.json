@@ -21,7 +21,8 @@
 			"Waldir",
 			"555",
 			"Vitorvicentevalente",
-			"He7d3r"
+			"He7d3r",
+			"Opraco"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas às edições.",
@@ -182,7 +183,7 @@
 	"abusefilter-edit-warn-other-label": "Nome da página de outra mensagem:\n:''(sem prefixo MediaWiki)''",
 	"abusefilter-edit-warn-actions": "Ações:",
 	"abusefilter-edit-warn-preview": "Antever mensagem selecionada",
-	"abusefilter-edit-warn-edit": "Criar/Editar mensagem selecionada",
+	"abusefilter-edit-warn-edit": "Criar/editar mensagem selecionada",
 	"abusefilter-edit-tag-tag": "[[Special:Tags|Etiquetas]] a aplicar (uma por linha):",
 	"abusefilter-edit-denied": "Não pode ver detalhes deste filtro, porque ele está ocultado de vista pública.",
 	"abusefilter-edit-main": "Parâmetros do filtro",
