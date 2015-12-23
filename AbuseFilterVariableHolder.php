@@ -490,27 +490,25 @@ class AFComputedVariable {
 					$result = '';
 					break;
 				}
-
-				$dbr = wfGetDB( DB_SLAVE );
-				$sqlTmp = $dbr->selectSQLText(
+				// Get the last 100 edit authors with a trivial query (avoid T116557)
+				$revAuthors = wfGetDB( DB_SLAVE )->selectFieldValues(
 					'revision',
-					array( 'rev_user_text', 'rev_timestamp' ),
+					'rev_user_text',
 					array( 'rev_page' => $title->getArticleID() ),
 					__METHOD__,
 					// Some pages have < 10 authors but many revisions (e.g. bot pages)
 					array( 'ORDER BY' => 'rev_timestamp DESC', 'LIMIT' => 100 )
 				);
-				$res = $dbr->query(
-					"SELECT rev_user_text FROM ($sqlTmp) AS tmp " .
-					"GROUP BY rev_user_text ORDER BY MAX(rev_timestamp) DESC LIMIT 10",
-					__METHOD__
-				);
-
+				// Get the last 10 distinct authors within this set of edits
 				$users = array();
-				foreach( $res as $row ) {
-					$users[] = $row->rev_user_text;
+				foreach ( $revAuthors as $author ) {
+					$users[$author] = 1;
+					if ( count( $users ) >= 10 ) {
+						break;
+					}
 				}
-				$result = $users;
+
+				$result = array_keys( $users );
 				break;
 			case 'load-first-author':
 				$title = Title::makeTitle( $parameters['namespace'], $parameters['title'] );
