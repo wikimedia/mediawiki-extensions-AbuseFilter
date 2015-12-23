@@ -26,7 +26,7 @@
 	"abusefilter-log-hide-id": "Журнал ҫырӑвӗн идентификаторӗ:",
 	"abusefilter-log-hide-reason": "Сӑлтав:",
 	"abusefilter-logentry-suppress": "[[$1]] пытар",
-	"abusefilter-logentry-unsuppress": "[[$1]] кӑтарт",
+	"abusefilter-logentry-unsuppress": "\"[[$1]]\" кăтарт",
 	"abusefilter-list": "Мӗн пур ала",
 	"abusefilter-list-id": "Ала идентификаторӗ",
 	"abusefilter-list-status": "Лару-тӑру",
