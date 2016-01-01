@@ -92,7 +92,7 @@
 	"abusefilter-unhidden": "İctimai",
 	"abusefilter-enabled": "Qoşulub",
 	"abusefilter-deleted": "Sil",
-	"abusefilter-disabled": "Ayrılıb",
+	"abusefilter-disabled": "Söndürülüb",
 	"abusefilter-hitcount": "$1 {{PLURAL:$1|hit|hitlər}}",
 	"abusefilter-new": "Yeni süzəc yarat",
 	"abusefilter-return": "Süzgəclərin idarə olunmasına qayıtmaq",
