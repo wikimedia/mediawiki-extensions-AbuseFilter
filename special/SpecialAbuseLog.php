@@ -532,8 +532,9 @@ class SpecialAbuseLog extends SpecialPage {
 			);
 			$actionLinks[] = $examineLink;
 
-			if ( $diffLink )
+			if ( $diffLink ) {
 				$actionLinks[] = $diffLink;
+			}
 
 			if ( $user->isAllowed( 'abusefilter-hide-log' ) ) {
 				$hideLink = Linker::linkKnown(

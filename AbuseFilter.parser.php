@@ -722,8 +722,9 @@ class AbuseFilterParser {
 				}
 			}
 		}
-		if ( !( $this->mCur->type == AFPToken::TBRACE && $this->mCur->value == ')' ) )
+		if ( !( $this->mCur->type == AFPToken::TBRACE && $this->mCur->value == ')' ) ) {
 			throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos, array( ')' ) );
+		}
 	}
 
 	/**
@@ -884,7 +885,7 @@ class AbuseFilterParser {
 			$this->move();
 			$this->doLevelBoolOps( $result );
 
-			if ( !( $this->mCur->type == AFPToken::TKEYWORD && $this->mCur->value == 'then' ) )
+			if ( !( $this->mCur->type == AFPToken::TKEYWORD && $this->mCur->value == 'then' ) ) {
 				throw new AFPUserVisibleException( 'expectednotfound',
 					$this->mCur->pos,
 					array(
@@ -893,6 +894,7 @@ class AbuseFilterParser {
 						$this->mCur->value
 					)
 				);
+			}
 			$this->move();
 
 			$r1 = new AFPData();
@@ -909,7 +911,7 @@ class AbuseFilterParser {
 				$this->mShortCircuit = $scOrig;
 			}
 
-			if ( !( $this->mCur->type == AFPToken::TKEYWORD && $this->mCur->value == 'else' ) )
+			if ( !( $this->mCur->type == AFPToken::TKEYWORD && $this->mCur->value == 'else' ) ) {
 				throw new AFPUserVisibleException( 'expectednotfound',
 					$this->mCur->pos,
 					array(
@@ -918,6 +920,7 @@ class AbuseFilterParser {
 						$this->mCur->value
 					)
 				);
+			}
 			$this->move();
 
 			if ( $isTrue ) {
@@ -929,7 +932,7 @@ class AbuseFilterParser {
 				$this->mShortCircuit = $scOrig;
 			}
 
-			if ( !( $this->mCur->type == AFPToken::TKEYWORD && $this->mCur->value == 'end' ) )
+			if ( !( $this->mCur->type == AFPToken::TKEYWORD && $this->mCur->value == 'end' ) ) {
 				throw new AFPUserVisibleException( 'expectednotfound',
 					$this->mCur->pos,
 					array(
@@ -938,6 +941,7 @@ class AbuseFilterParser {
 						$this->mCur->value
 					)
 				);
+			}
 			$this->move();
 
 			if ( $result->toBool() ) {
@@ -963,7 +967,7 @@ class AbuseFilterParser {
 					$this->mShortCircuit = $scOrig;
 				}
 
-				if ( !( $this->mCur->type == AFPToken::TOP && $this->mCur->value == ':' ) )
+				if ( !( $this->mCur->type == AFPToken::TOP && $this->mCur->value == ':' ) ) {
 					throw new AFPUserVisibleException( 'expectednotfound',
 						$this->mCur->pos,
 						array(
@@ -972,6 +976,7 @@ class AbuseFilterParser {
 							$this->mCur->value
 						)
 					);
+				}
 				$this->move();
 
 				if ( $isTrue ) {
@@ -1202,12 +1207,13 @@ class AbuseFilterParser {
 			} else {
 				$this->doLevelSemicolon( $result );
 			}
-			if ( !( $this->mCur->type == AFPToken::TBRACE && $this->mCur->value == ')' ) )
+			if ( !( $this->mCur->type == AFPToken::TBRACE && $this->mCur->value == ')' ) ) {
 				throw new AFPUserVisibleException(
 					'expectednotfound',
 					$this->mCur->pos,
 					array( ')', $this->mCur->type, $this->mCur->value )
 				);
+			}
 			$this->move();
 		} else {
 			$this->doLevelFunction( $result );
@@ -1876,8 +1882,9 @@ class AbuseFilterParser {
 			$result = mb_strpos( $haystack, $needle );
 		}
 
-		if ( $result === false )
+		if ( $result === false ) {
 			$result = -1;
+		}
 
 		return new AFPData( AFPData::DINT, $result );
 	}

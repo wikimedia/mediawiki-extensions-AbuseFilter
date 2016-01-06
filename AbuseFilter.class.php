@@ -1948,10 +1948,11 @@ class AbuseFilter {
 				) + $noTestAttrib );
 		}
 
-		if ( $addResultDiv )
+		if ( $addResultDiv ) {
 			$rules .= Xml::element( 'div',
 				array( 'id' => 'mw-abusefilter-syntaxresult', 'style' => 'display: none;' ),
 				'&#160;' );
+		}
 
 		// Add script
 		$wgOut->addModules( 'ext.abuseFilter.edit' );
@@ -2305,8 +2306,9 @@ class AbuseFilter {
 				$keyDisplay = Xml::element( 'code', null, $key );
 			}
 
-			if ( is_null( $value ) )
+			if ( is_null( $value ) ) {
 				$value = '';
+			}
 			$value = Xml::element( 'div', array( 'class' => 'mw-abuselog-var-value' ), $value, false );
 
 			$trow =

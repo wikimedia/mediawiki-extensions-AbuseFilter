@@ -970,8 +970,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					} elseif ( $action == 'warn' ) {
 						$specMsg = $request->getVal( 'wpFilterWarnMessage' );
 
-						if ( $specMsg == 'other' )
+						if ( $specMsg == 'other' ) {
 							$specMsg = $request->getVal( 'wpFilterWarnMessageOther' );
+						}
 
 						$parameters[0] = $specMsg;
 					} elseif ( $action == 'tag' ) {

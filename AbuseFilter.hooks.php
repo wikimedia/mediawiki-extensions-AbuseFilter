@@ -453,15 +453,16 @@ class AbuseFilterHooks {
 			$title->getPrefixedText(), $recentChange->mAttribs['rc_user_text'], $action
 		) );
 
-		if ( !empty( AbuseFilter::$tagsToSet[$actionID] )
-			&& count( $tags = AbuseFilter::$tagsToSet[$actionID] )
-		) {
-			ChangeTags::addTags(
-				$tags,
-				$recentChange->mAttribs['rc_id'],
-				$recentChange->mAttribs['rc_this_oldid'],
-				$recentChange->mAttribs['rc_logid']
-			);
+		if ( !empty( AbuseFilter::$tagsToSet[$actionID] ) ) {
+			$tags = AbuseFilter::$tagsToSet[$actionID];
+			if ( count( $tags ) ) {
+				ChangeTags::addTags(
+					$tags,
+					$recentChange->mAttribs['rc_id'],
+					$recentChange->mAttribs['rc_this_oldid'],
+					$recentChange->mAttribs['rc_logid']
+				);
+			}
 		}
 
 		return true;
@@ -541,7 +542,7 @@ class AbuseFilterHooks {
 	 * @return bool
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
-		$dir = dirname( __FILE__ );
+		$dir = __DIR__;
 
 		if ( $updater->getDB()->getType() == 'mysql' || $updater->getDB()->getType() == 'sqlite' ) {
 			if ( $updater->getDB()->getType() == 'mysql' ) {

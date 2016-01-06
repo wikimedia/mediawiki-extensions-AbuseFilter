@@ -150,8 +150,9 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		static $dependentSpecs = array( 'prev', 'next' );
 		static $cache = array();
 
-		if ( isset( $cache[$spec] ) )
+		if ( isset( $cache[$spec] ) ) {
 			return $cache[$spec];
+		}
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$row = null;
