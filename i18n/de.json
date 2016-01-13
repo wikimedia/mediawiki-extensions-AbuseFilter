@@ -21,7 +21,8 @@
 			"Wikifan",
 			"Xqt",
 			"Luke081515",
-			"J. 'mach' wust"
+			"J. 'mach' wust",
+			"Predatorix"
 		]
 	},
 	"abusefilter-desc": "Wendet automatische Heuristiken auf Bearbeitungen an",
@@ -440,6 +441,7 @@
 	"apihelp-query+abuselog-param-title": "Zeigt nur Einträge, die auf einer angegebenen Seite erscheinen.",
 	"apihelp-query+abuselog-param-filter": "Zeigt nur Einträge an, die von einer angegebenen Filterkennung erfasst wurden.",
 	"apihelp-query+abuselog-param-limit": "Die maximale Anzahl der aufzulistenden Einträge.",
+	"apihelp-query+abuselog-param-prop": "Welche Eigenschaften abgerufen werden sollen.",
 	"apihelp-query+abuselog-example-1": "Zeigt die letzten Logbucheinträge",
 	"apihelp-query+abuselog-example-2": "Zeigt die letzten Logbucheinträge für [[API]]"
 }
