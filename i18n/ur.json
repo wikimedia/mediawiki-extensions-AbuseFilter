@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"පසිඳු කාවින්ද",
-			"عثمان خان شاہ"
+			"عثمان خان شاہ",
+			"Muhammad Shuaib"
 		]
 	},
 	"abusefilter": "غلط استعمال فلٹر ترتیب",
@@ -67,6 +68,7 @@
 	"abusefilter-list-options-deleted-only": "شو صرف حذف فلٹر کر",
 	"abusefilter-list-options-deleted-hide": "فلٹر چھپائیں حذف کر دی ہے",
 	"abusefilter-list-options-deleted-show": "خارج کردہ فلٹر شامل ہیں",
+	"abusefilter-list-options-scope": "مقطارات دکھائیں:",
 	"abusefilter-list-options-disabled": "معذور فلٹر:",
 	"abusefilter-list-options-hidedisabled": "چھپائیں فلٹر غیر فعال کر دیا",
 	"abusefilter-list-options-submit": "اپ ڈیٹ",
