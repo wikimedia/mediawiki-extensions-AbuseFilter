@@ -20,7 +20,8 @@
 			"Dianakc",
 			"He7d3r",
 			"Teles",
-			"Araceletorres"
+			"Araceletorres",
+			"HenriqueCrang"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas às edições.",
@@ -182,7 +183,7 @@
 	"abusefilter-edit-warn-actions": "Ações:",
 	"abusefilter-edit-warn-preview": "Prever mensagem selecionada",
 	"abusefilter-edit-warn-edit": "Criar/editar mensagem selecionada",
-	"abusefilter-edit-tag-tag": "Etiquetas a aplicar (uma por linha):",
+	"abusefilter-edit-tag-tag": "[[Special:Tags|Etiquetas]] a aplicar (uma por linha):",
 	"abusefilter-edit-denied": "Você não pode ver os detalhes deste filtro porque ele está ocultado da visualização pública.",
 	"abusefilter-edit-main": "Parâmetros do filtro",
 	"abusefilter-edit-done-subtitle": "Filtro editado",
