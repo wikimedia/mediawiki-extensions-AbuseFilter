@@ -501,25 +501,8 @@ class AFComputedVariable {
 					$result = '';
 					break;
 				}
-				// Get the last 100 edit authors with a trivial query (avoid T116557)
-				$revAuthors = wfGetDB( DB_SLAVE )->selectFieldValues(
-					'revision',
-					'rev_user_text',
-					array( 'rev_page' => $title->getArticleID() ),
-					__METHOD__,
-					// Some pages have < 10 authors but many revisions (e.g. bot pages)
-					array( 'ORDER BY' => 'rev_timestamp DESC', 'LIMIT' => 100 )
-				);
-				// Get the last 10 distinct authors within this set of edits
-				$users = array();
-				foreach ( $revAuthors as $author ) {
-					$users[$author] = 1;
-					if ( count( $users ) >= 10 ) {
-						break;
-					}
-				}
 
-				$result = array_keys( $users );
+				$result = self::getLastPageAuthors( $title );
 				break;
 			case 'load-first-author':
 				$title = Title::makeTitle( $parameters['namespace'], $parameters['title'] );
@@ -604,5 +587,45 @@ class AFComputedVariable {
 
 		return $result instanceof AFPData
 			? $result : AFPData::newFromPHPVar( $result );
+	}
+
+	/**
+	 * @param Title $title
+	 * @return string[] List of the last 10 (unique) authors from $title
+	 */
+	public static function getLastPageAuthors( Title $title ) {
+		if ( !$title->exists() ) {
+			return array();
+		}
+
+		$cache = ObjectCache::getMainWANInstance();
+
+		return $cache->getWithSetCallback(
+			$cache->makeKey( 'last-10-authors', 'revision', $title->getLatestRevID() ),
+			$cache::TTL_MINUTE,
+			function ( $oldValue, &$ttl, array &$setOpts ) use ( $title ) {
+				$dbr = wfGetDB( DB_SLAVE );
+				$setOpts += Database::getCacheSetOptions( $dbr );
+				// Get the last 100 edit authors with a trivial query (avoid T116557)
+				$revAuthors = $dbr->selectFieldValues(
+					'revision',
+					'rev_user_text',
+					array( 'rev_page' => $title->getArticleID() ),
+					__METHOD__,
+					// Some pages have < 10 authors but many revisions (e.g. bot pages)
+					array( 'ORDER BY' => 'rev_timestamp DESC', 'LIMIT' => 100 )
+				);
+				// Get the last 10 distinct authors within this set of edits
+				$users = array();
+				foreach ( $revAuthors as $author ) {
+					$users[$author] = 1;
+					if ( count( $users ) >= 10 ) {
+						break;
+					}
+				}
+
+				return array_keys( $users );
+			}
+		);
 	}
 }

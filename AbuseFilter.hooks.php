@@ -728,6 +728,19 @@ class AbuseFilterHooks {
 	}
 
 	/**
+	 * Warms the cache for getLastPageAuthors() - T116557
+	 *
+	 * @param WikiPage $page
+	 * @param Content $content
+	 * @param ParserOutput $output
+	 */
+	public static function onParserOutputStashForEdit(
+		WikiPage $page, Content $content, ParserOutput $output
+	) {
+		AFComputedVariable::getLastPageAuthors( $page->getTitle() );
+	}
+
+	/**
 	 * Hook to add PHPUnit test cases.
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnitTestsList
 	 *

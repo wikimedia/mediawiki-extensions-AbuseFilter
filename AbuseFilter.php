@@ -99,6 +99,7 @@ $wgHooks['MakeGlobalVariablesScript'][] = 'AbuseFilterHooks::onMakeGlobalVariabl
 $wgHooks['ArticleSaveComplete'][] = 'AbuseFilterHooks::onArticleSaveComplete';
 $wgHooks['APIEditBeforeSave'][] = 'AbuseFilterHooks::onAPIEditBeforeSave';
 $wgHooks['UserMergeAccountFields'][] = 'AbuseFilterHooks::onUserMergeAccountFields';
+$wgHooks['ParserOutputStashForEdit'][] = 'AbuseFilterHooks::onParserOutputStashForEdit';
 $wgHooks['UnitTestsList'][] = 'AbuseFilterHooks::onUnitTestsList';
 
 $wgAvailableRights[] = 'abusefilter-modify';
