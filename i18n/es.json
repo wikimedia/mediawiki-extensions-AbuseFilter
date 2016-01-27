@@ -255,7 +255,7 @@
 	"abusefilter-edit-builder-funcs-ucase": "A mayúsculas (ucase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "Normalizar caracteres confusos (ccnorm)",
 	"abusefilter-edit-builder-funcs-rmdoubles": "Quitar caracteres dobles (rmdoubles)",
-	"abusefilter-edit-builder-funcs-specialratio": "Carácteres especiales / carácteres totales (specialratio)",
+	"abusefilter-edit-builder-funcs-specialratio": "Caracteres especiales / caracteres totales (specialratio)",
 	"abusefilter-edit-builder-funcs-norm": "Normalizar (norm)",
 	"abusefilter-edit-builder-funcs-count": "Número de veces que la cadena X aparece en la cadena Y (count)",
 	"abusefilter-edit-builder-funcs-rcount": "Número de veces que la expresión regular X aparece en la cadena Y (rcount)",
