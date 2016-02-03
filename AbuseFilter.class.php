@@ -827,10 +827,14 @@ class AbuseFilter {
 
 			$action = $vars->getVar( 'ACTION' )->toString();
 
+			// If $wgUser isn't safe to load (e.g. a failure during
+			// AbortAutoAccount), create a dummy anonymous user instead.
+			$user = $wgUser->isSafeToLoad() ? $wgUser : new User;
+
 			// Create a template
 			$log_template = array(
-				'afl_user' => $wgUser->getId(),
-				'afl_user_text' => $wgUser->getName(),
+				'afl_user' => $user->getId(),
+				'afl_user_text' => $user->getName(),
 				'afl_timestamp' => $dbr->timestamp( wfTimestampNow() ),
 				'afl_namespace' => $title->getNamespace(),
 				'afl_title' => $title->getDBkey(),
@@ -838,7 +842,7 @@ class AbuseFilter {
 			);
 
 			// Hack to avoid revealing IPs of people creating accounts
-			if ( !$wgUser->getId() && ( $action == 'createaccount' || $action == 'autocreateaccount' ) ) {
+			if ( !$user->getId() && ( $action == 'createaccount' || $action == 'autocreateaccount' ) ) {
 				$log_template['afl_user_text'] = $vars->getVar( 'accountname' )->toString();
 			}
 
