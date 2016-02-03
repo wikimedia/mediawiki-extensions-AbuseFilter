@@ -351,7 +351,7 @@ class AbuseFilterHooks {
 		// Add variables only for a registered user, so IP addresses of
 		// new users won't be exposed
 		global $wgUser;
-		if ( $wgUser->getId() ) {
+		if ( !$autocreate && $wgUser->getId() ) {
 			$vars->addHolders( AbuseFilter::generateUserVars( $wgUser ) );
 		}
 
