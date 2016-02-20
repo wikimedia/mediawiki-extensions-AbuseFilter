@@ -7,7 +7,8 @@
 			"Odisha1",
 			"Psubhashish",
 			"Shisir 1945",
-			"ଆଶୁତୋଷ କର"
+			"ଆଶୁତୋଷ କର",
+			"MKar"
 		]
 	},
 	"abusefilter-desc": "ଆପେଆପେ ଅଧିକତର ସମ୍ଭାବନା ସମ୍ପାଦନାରେ ଯୋଡ଼ିଥାଏ",
@@ -230,7 +231,7 @@
 	"abusefilter-edit-builder-vars-movedfrom-id": "ଘୁଞ୍ଚାହେବା ମୂଳାଧାର ପୃଷ୍ଠା ID",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "ଘୁଞ୍ଚାହେବା ମୂଳାଧାର ପୃଷ୍ଠାର ନେମସ୍ପେସ",
 	"abusefilter-edit-builder-vars-movedfrom-text": "ଘୁଞ୍ଚାଯିବା ମୂଳାଧାର ପୃଷ୍ଠାର ନାମ",
-	"abusefilter-edit-builder-vars-movedfrom-prefixedtext": "ଘୁଞ୍ଚାଯିବା ମୂଳାଧାର ପୃଷ୍ଠାର ପୁରା ନାମ",
+	"abusefilter-edit-builder-vars-movedfrom-prefixedtext": "ଘୁଞ୍ଚାଯିବା ମୂଳପୃଷ୍ଠାର ପୂରା ନାମ",
 	"abusefilter-edit-builder-vars-movedto-id": "ଘୁଞ୍ଚାଯିବା ଲକ୍ଷ ପୃଷ୍ଠାର ପୃଷ୍ଠା ID",
 	"abusefilter-edit-builder-vars-movedto-ns": "ଘୁଞ୍ଚାଯିବା ଲକ୍ଷ ପୃଷ୍ଠାର ପୃଷ୍ଠାର ନେମସ୍ପେସ",
 	"abusefilter-edit-builder-vars-movedto-text": "ଘୁଞ୍ଚାଯିବା ଲକ୍ଷ ପୃଷ୍ଠାର ପୃଷ୍ଠାର ନାମ",
