@@ -6,7 +6,7 @@
 	"curly": true,
 	"eqeqeq": true,
 	"immed": true,
-	"latedef": true,
+	"latedef": "nofunc",
 	"newcap": true,
 	"noarg": true,
 	"noempty": true,
@@ -23,9 +23,9 @@
 	// Enforcing
 	// Environment
 	"browser": true,
+	"jquery": true,
 
-	"predef": [
-		"mediaWiki",
-		"jQuery"
-	]
+	"globals": {
+		"mediaWiki": false
+	}
 }
