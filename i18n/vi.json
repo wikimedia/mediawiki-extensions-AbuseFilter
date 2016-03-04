@@ -5,7 +5,8 @@
 			"Minh Nguyen",
 			"Vinhtantran",
 			"Withoutaname",
-			"Dinhxuanduyet"
+			"Dinhxuanduyet",
+			"Trần Nguyễn Minh Huy"
 		]
 	},
 	"abusefilter-desc": "Áp dụng heuristic tự động vào các sửa đổi",
@@ -185,8 +186,8 @@
 	"abusefilter-edit-syntaxok": "Không tìm thấy lỗi cú pháp.",
 	"abusefilter-edit-syntaxerr": "Có lỗi cú pháp: $1",
 	"abusefilter-edit-bad-tags": "Một hoặc một số thẻ bạn chỉ định không hợp lệ.\nThẻ phải ngắn, và chúng không nên chứa các ký tự đặc biệt.",
-	"abusefilter-edit-notallowed": "Bạn không có phép tạo hay sửa đổi bộ lọc sai phạm.",
-	"abusefilter-edit-notallowed-global": "Bạn không có phép tạo hay sửa đổi bộ lọc sai phạm toàn cầu.",
+	"abusefilter-edit-notallowed": "Bạn không được phép tạo hay sửa đổi bộ lọc sai phạm.",
+	"abusefilter-edit-notallowed-global": "Bạn không được phép tạo hay sửa đổi bộ lọc sai phạm toàn cầu.",
 	"abusefilter-edit-notallowed-global-custom-msg": "Bộ lọc toàn cầu không hỗ trợ thông điệp cảnh báo tùy biến",
 	"abusefilter-edit-builder-select": "Lựa một tùy chọn để thêm nó vào con trỏ",
 	"abusefilter-edit-builder-group-op-arithmetic": "Toán tử số học",
