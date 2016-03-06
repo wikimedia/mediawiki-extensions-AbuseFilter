@@ -3,7 +3,8 @@
 		"authors": [
 			"Autokrator",
 			"Omnipaedista",
-			"UV"
+			"UV",
+			"Laurentianus"
 		]
 	},
 	"abusefilter": "Configuratio filtri iniuriarum",
@@ -19,7 +20,7 @@
 	"abusefilter-list-edit": "Recensere",
 	"abusefilter-deleted": "Abrogatum",
 	"abusefilter-status-global": "Globalis",
-	"abusefilter-list-options": "Praeferentiae",
+	"abusefilter-list-options": "Modi",
 	"abusefilter-tools-reautoconfirm-user": "Usor:",
 	"abusefilter-edit-status-label": "Statistica:",
 	"abusefilter-edit-throttle-period": "Periodus temporalis:",
