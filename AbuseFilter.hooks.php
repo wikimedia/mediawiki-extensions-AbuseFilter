@@ -20,6 +20,12 @@ class AbuseFilterHooks {
 	 * @return bool
 	 */
 	public static function onAPIEditBeforeSave( $editPage, $text, &$result ) {
+		if ( $editPage->undidRev > 0 ) {
+			// This hook is also (unlike the non-API hooks) being run on undo,
+			// but we don't want to filter in that case. T126861
+			return true;
+		}
+
 		$context = $editPage->mArticle->getContext();
 
 		$status = Status::newGood();
