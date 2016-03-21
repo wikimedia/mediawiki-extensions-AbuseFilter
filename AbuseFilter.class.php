@@ -1193,23 +1193,7 @@ class AbuseFilter {
 				break;
 
 			case 'block':
-				global $wgUser, $wgAbuseFilterBlockDuration, $wgAbuseFilterAnonBlockDuration;
-				$filterUser = AbuseFilter::getFilterUser();
-
-				// Create a block.
-				$block = new Block;
-				$block->setTarget( $wgUser->getName() );
-				$block->setBlocker( $filterUser );
-				$block->mReason = wfMessage(
-					'abusefilter-blockreason',
-					$rule_desc,
-					$rule_number
-				)->inContentLanguage()->text();
-				$block->isHardblock( false );
-				$block->isAutoblocking( true );
-				$block->prevents( 'createaccount', true );
-				$block->prevents( 'editownusertalk', false );
-
+				global $wgAbuseFilterBlockDuration, $wgAbuseFilterAnonBlockDuration, $wgUser;
 				if ( $wgUser->isAnon() && $wgAbuseFilterAnonBlockDuration !== null ) {
 					// The user isn't logged in and the anon block duration
 					// doesn't default to $wgAbuseFilterBlockDuration.
@@ -1218,25 +1202,16 @@ class AbuseFilter {
 					$expiry = $wgAbuseFilterBlockDuration;
 				}
 
-				$block->mExpiry = SpecialBlock::parseExpiryInput( $expiry );
-				if ( $block->insert() ) {
-					// Log it if successful
-					# Prepare log parameters
-					$logParams = array();
-					if ( $block->mExpiry == 'infinity' ) {
-						$logParams[] = 'indefinite';
-					} else {
-						$logParams[] = $expiry;
-					}
-					$logParams[] = 'nocreate';
+				self::doAbuseFilterBlock(
+					array(
+						'desc' => $rule_desc,
+						'number' => $rule_number
+					),
+					$wgUser->getName(),
+					$expiry,
+					true
+				);
 
-					$log = new LogPage( 'block' );
-					$log->addEntry( 'block',
-						Title::makeTitle( NS_USER, $wgUser->getName() ),
-						wfMessage( 'abusefilter-blockreason', $rule_desc, $rule_number )->inContentLanguage()->text(),
-						$logParams, self::getFilterUser()
-					);
-				}
 				$message = array(
 					'abusefilter-blocked-display',
 					$rule_desc,
@@ -1244,37 +1219,16 @@ class AbuseFilter {
 				);
 				break;
 			case 'rangeblock':
-				$filterUser = AbuseFilter::getFilterUser();
+				self::doAbuseFilterBlock(
+					array(
+						'desc' => $rule_desc,
+						'number' => $rule_number
+					),
+					IP::sanitizeRange( $wgRequest->getIP() . '/16' ),
+					'1 week',
+					false
+				);
 
-				$range = IP::sanitizeRange( $wgRequest->getIP() . '/16' );
-
-				// Create a block.
-				$block = new Block;
-				$block->setTarget( $range );
-				$block->setBlocker( $filterUser );
-				$block->mReason = wfMessage(
-					'abusefilter-blockreason',
-					$rule_desc,
-					$rule_number
-				)->inContentLanguage()->text();
-				$block->isHardblock( false );
-				$block->prevents( 'createaccount', true );
-				$block->prevents( 'editownusertalk', false );
-				$block->mExpiry = SpecialBlock::parseExpiryInput( '1 week' );
-
-				if ( $block->insert() ) {
-					// Log it if the block was successful
-					# Prepare log parameters
-					$logParams = array();
-					$logParams[] = 'indefinite';
-					$logParams[] = 'nocreate';
-
-					$log = new LogPage( 'block' );
-					$log->addEntry( 'block', Title::makeTitle( NS_USER, $range ),
-						wfMessage( 'abusefilter-blockreason', $rule_desc, $rule_number )->inContentLanguage()->text(),
-						$logParams, self::getFilterUser()
-					);
-				}
 				$message = array(
 					'abusefilter-blocked-display',
 					$rule_desc,
@@ -1382,6 +1336,56 @@ class AbuseFilter {
 		}
 
 		return $message;
+	}
+
+	/**
+	 * Perform a block by the AbuseFilter system user
+	 * @param array $rule should have 'desc' and 'number'
+	 * @param string $target
+	 * @param string $expiry
+	 * @param bool $isAutoBlock
+	 */
+	protected static function doAbuseFilterBlock( array $rule, $target, $expiry, $isAutoBlock ) {
+		$filterUser = AbuseFilter::getFilterUser();
+		$reason = wfMessage(
+			'abusefilter-blockreason',
+			$rule['desc'], $rule['number']
+		)->inContentLanguage()->text();
+
+		$block = new Block();
+		$block->setTarget( $target );
+		$block->setBlocker( $filterUser );
+		$block->mReason = $reason;
+		$block->isHardblock( false );
+		$block->isAutoblocking( $isAutoBlock );
+		$block->prevents( 'createaccount', true );
+		$block->prevents( 'editownusertalk', false );
+		$block->mExpiry = SpecialBlock::parseExpiryInput( $expiry );
+
+		$success = $block->insert();
+
+		if ( $success ) {
+			// Log it only if the block was successful
+			$logParams = array();
+			$logParams['5::duration'] = ( $block->mExpiry === 'infinity' )
+				? 'indefinite'
+				: $expiry;
+			$flags = array( 'anononly' , 'nocreate' );
+			if ( !$block->isAutoblocking() && !IP::isIPAddress( $target ) ) {
+				// Conditionally added same as SpecialBlock
+				$flags[] = 'noautoblock';
+			}
+			$logParams['6::flags'] = implode( ',', $flags );
+
+			$logEntry = new ManualLogEntry( 'block', 'block' );
+			$logEntry->setTarget( Title::makeTitle( NS_USER, $target ) );
+			$logEntry->setComment( $reason );
+			$logEntry->setPerformer( $filterUser );
+			$logEntry->setParameters( $logParams );
+			$blockIds = array_merge( array( $success['id'] ), $success['autoIds'] );
+			$logEntry->setRelations( array( 'ipb_id' => $blockIds ) );
+			$logEntry->publish( $logEntry->insert() );
+		}
 	}
 
 	/**
