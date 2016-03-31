@@ -1370,7 +1370,7 @@ class AbuseFilter {
 			$logParams['5::duration'] = ( $block->mExpiry === 'infinity' )
 				? 'indefinite'
 				: $expiry;
-			$flags = array( 'anononly' , 'nocreate' );
+			$flags = array( 'nocreate' );
 			if ( !$block->isAutoblocking() && !IP::isIPAddress( $target ) ) {
 				// Conditionally added same as SpecialBlock
 				$flags[] = 'noautoblock';
