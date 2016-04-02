@@ -333,9 +333,7 @@ class SpecialAbuseLog extends SpecialPage {
 
 			$diffEngine->showDiffStyle();
 
-			// Note: generateDiffBody has been deprecated in favour of
-			// generateTextDiffBody in 1.21 but we can't use it for b/c.
-			$formattedDiff = $diffEngine->generateDiffBody( $old_wikitext, $new_wikitext );
+			$formattedDiff = $diffEngine->generateTextDiffBody( $old_wikitext, $new_wikitext );
 			$formattedDiff = $diffEngine->addHeader( $formattedDiff, '', '' );
 
 			$output .=
