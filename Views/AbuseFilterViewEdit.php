@@ -980,7 +980,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
 	 * Loads historical data in a form that the editor can understand.
 	 * @param $id int History ID
-	 * @return array In the usual format:
+	 * @return array|bool False if the history ID is not valid, otherwise array in the usual format:
 	 * First element contains the abuse_filter row (as it was).
 	 * Second element contains an array of abuse_filter_action rows.
 	 */
@@ -993,6 +993,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			array( 'afh_id' => $id ),
 			__METHOD__
 		);
+
+		if ( !$row ) {
+			return false;
+		}
 
 		return AbuseFilter::translateFromHistory( $row );
 	}
