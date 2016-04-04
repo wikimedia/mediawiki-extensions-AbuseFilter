@@ -1981,7 +1981,7 @@ class AbuseFilter {
 		$params = array_values( DatabaseLogEntry::newFromRow( $row )->getParameters() );
 
 		$oldTitle = Title::makeTitle( $row->rc_namespace, $row->rc_title );
-		$newTitle = Title::makeTitle( $params[1], $params[0] );
+		$newTitle = Title::newFromText( $params[0] );
 
 		$vars = AbuseFilterVariableHolder::merge(
 			AbuseFilter::generateUserVars( $user ),
