@@ -130,6 +130,11 @@ class AbuseFilter {
 			'minor_edit' => 'minor-edit',
 			'file_sha1' => 'file-sha1',
 			'file_size' => 'file-size',
+			'file_mime' => 'file-mime',
+			'file_mediatype' => 'file-mediatype',
+			'file_width' => 'file-width',
+			'file_height' => 'file-height',
+			'file_bits_per_channel' => 'file-bits-per-channel',
 		),
 	);
 

@@ -688,6 +688,14 @@ class AbuseFilterHooks {
 		$vars->setVar( 'file_sha1', $sha1 );
 		$vars->setVar( 'file_size', $upload->getFileSize() );
 
+		// UploadBase makes it absolutely impossible to get these out of it, even though it knows them.
+		$props = FSFile::getPropsFromPath( $upload->getTempPath() );
+		$vars->setVar( 'file_mime', $props['mime'] );
+		$vars->setVar( 'file_mediatype', MimeMagic::singleton()->getMediaType( null, $props['mime'] ) );
+		$vars->setVar( 'file_width', $props['width'] );
+		$vars->setVar( 'file_height', $props['height'] );
+		$vars->setVar( 'file_bits_per_channel', $props['bits'] );
+
 		$filter_result = AbuseFilter::filterAction( $vars, $title );
 
 		if ( !$filter_result->isOK() ) {
