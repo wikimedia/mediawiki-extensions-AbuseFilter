@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Erikoo"
+			"Erikoo",
+			"Ninjastrikers"
 		]
 	},
 	"abusefilter-log-search-user": "အသုံးပြုသူ -",
 	"abusefilter-log-search-title": "ခေါင်းစဉ် :",
-	"abusefilter-log-search-submit": "ရှာ​ဖွေ​ရန်​",
+	"abusefilter-log-search-submit": "ရှာဖွေရန်",
 	"abusefilter-log-noactions": "အမည်ညွှန်းမရှိ",
-	"abusefilter-log-hide-reason": "အ​ကြောင်း​ပြ​ချက်:"
+	"abusefilter-log-hide-reason": "အ​ကြောင်း​ပြ​ချက်:",
+	"abusefilter-examine-submit": "ရှာဖွေရန်"
 }

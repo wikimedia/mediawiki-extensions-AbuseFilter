@@ -9,7 +9,8 @@
 			"Theklan",
 			"Unai Fdz. de Betoño",
 			"Xabier Armendaritz",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Sator"
 		]
 	},
 	"abusefilter-desc": "Edizioei heuristika automatikoa aplikatzen die",
@@ -138,6 +139,7 @@
 	"abusefilter-edit-builder-vars-user-name": "Lankide kontuaren izena",
 	"abusefilter-edit-builder-vars-user-groups": "Lankidearen taldeak (inplizituak barne)",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "E-posta egiaztatu zenetik igarotako denbora",
+	"abusefilter-edit-builder-vars-file-width": "Fitxategiaren zabalera pixeletan",
 	"abusefilter-history-hidden": "ezkutatua",
 	"abusefilter-history-enabled": "Gaitua",
 	"abusefilter-history-global": "Globala",
