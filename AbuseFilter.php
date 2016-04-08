@@ -239,3 +239,6 @@ $wgAbuseFilterDefaultWarningMessage = array(
 // Age used as cutoff when purging old IP log data.
 // Used by maintenance script purgeOldLogIPData.php
 $wgAbuseFilterLogIPMaxAge = 3 * 30 * 24 * 3600; // 3 months
+
+// Whether to record the time taken and number of conditions used by each filter.
+$wgAbuseFilterProfile = false;
