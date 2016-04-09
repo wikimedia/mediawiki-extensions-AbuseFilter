@@ -7,9 +7,8 @@ class AbuseFilterTokenizer {
 	const CACHE_VERSION = 1;
 	const COMMENT_START_RE = '/\s*\/\*/A';
 	const ID_SYMBOL_RE = '/[0-9A-Za-z_]+/A';
-	// @codingStandardsIgnoreStart Ignore long line.
-	const OPERATOR_RE = '/(\!\=\=|\!\=|\!|\*\*|\*|\/|\+|\-|%|&|\||\^|\:\=|\?|\:|\<\=|\<|\>\=|\>|\=\=\=|\=\=|\=)/A';
-	// @codingStandardsIgnoreEnd
+	const OPERATOR_RE =
+		'/(\!\=\=|\!\=|\!|\*\*|\*|\/|\+|\-|%|&|\||\^|\:\=|\?|\:|\<\=|\<|\>\=|\>|\=\=\=|\=\=|\=)/A';
 	const RADIX_RE = '/([0-9A-Fa-f]+(?:\.\d*)?|\.\d+)([bxo])?/Au';
 	const WHITESPACE = "\011\012\013\014\015\040";
 

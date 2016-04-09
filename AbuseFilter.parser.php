@@ -1324,9 +1324,7 @@ class AbuseFilterParser {
 			case AFPToken::TSQUAREBRACKET:
 				if ( $this->mCur->value == '[' ) {
 					$list = array();
-					// @codingStandardsIgnoreStart Space beforsemi-colon ignored.
-					for ( ; ; ) {
-						// @codingStandardsIgnoreEnd
+					while ( true ) {
 						$this->move();
 						if ( $this->mCur->type == AFPToken::TSQUAREBRACKET && $this->mCur->value == ']' ) {
 							break;
