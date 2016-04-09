@@ -77,7 +77,7 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * Ensure that AbsueFilterTokenizer::OPERATOR_RE matches the contents
+	 * Ensure that AbuseFilterTokenizer::OPERATOR_RE matches the contents
 	 * and order of AbuseFilterTokenizer::$operators.
 	 */
 	public function testOperatorRe() {
@@ -88,12 +88,41 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * Ensure that AbsueFilterTokenizer::RADIX_RE matches the contents
+	 * Ensure that AbuseFilterTokenizer::RADIX_RE matches the contents
 	 * and order of AbuseFilterTokenizer::$bases.
 	 */
 	public function testRadixRe() {
 		$baseClass = implode( '', array_keys( AbuseFilterTokenizer::$bases ) );
 		$radixRe = "/([0-9A-Fa-f]+(?:\.\d*)?|\.\d+)([$baseClass])?/Au";
 		$this->assertEquals( $radixRe, AbuseFilterTokenizer::RADIX_RE );
+	}
+
+	/**
+	 * Ensure the number of conditions counted for given expressions is right.
+	 *
+	 * @dataProvider condCountCases
+	 */
+	public function testCondCount( $rule, $expected ) {
+		$parser = self::getParser();
+		// Set some variables for convenience writing test cases
+		$parser->setVars( array_combine( range( 'a', 'f' ), range( 'a', 'f' ) ) );
+		$countBefore = AbuseFilter::$condCount;
+		$parser->parse( $rule );
+		$countAfter = AbuseFilter::$condCount;
+		$actual = $countAfter - $countBefore;
+		$this->assertEquals( $expected, $actual, 'Condition count for ' . $rule );
+	}
+
+	/**
+	 * @return array
+	 */
+	public function condCountCases() {
+		return array(
+			array( '(((a == b)))', 1 ),
+			array( 'contains_any(a, b, c)', 1 ),
+			array( 'a == b == c', 2 ),
+			array( 'a in b + c in d + e in f', 3 ),
+			array( 'true', 0 ),
+		);
 	}
 }
