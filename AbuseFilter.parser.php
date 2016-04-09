@@ -1023,6 +1023,9 @@ class AbuseFilterParser {
 			$this->move();
 			$r2 = new AFPData();
 			$this->doLevelSumRels( $r2 );
+			if ( $this->mShortCircuit ) {
+				break; // The result doesn't matter.
+			}
 			AbuseFilter::triggerLimiter();
 			$result = AFPData::compareOp( $result, $r2, $op );
 		}
@@ -1039,6 +1042,9 @@ class AbuseFilterParser {
 			$this->move();
 			$r2 = new AFPData();
 			$this->doLevelMulRels( $r2 );
+			if ( $this->mShortCircuit ) {
+				break; // The result doesn't matter.
+			}
 			if ( $op == '+' ) {
 				$result = AFPData::sum( $result, $r2 );
 			}
@@ -1059,6 +1065,9 @@ class AbuseFilterParser {
 			$this->move();
 			$r2 = new AFPData();
 			$this->doLevelPow( $r2 );
+			if ( $this->mShortCircuit ) {
+				break; // The result doesn't matter.
+			}
 			$result = AFPData::mulRel( $result, $r2, $op, $this->mCur->pos );
 		}
 	}
@@ -1072,6 +1081,9 @@ class AbuseFilterParser {
 			$this->move();
 			$expanent = new AFPData();
 			$this->doLevelBoolInvert( $expanent );
+			if ( $this->mShortCircuit ) {
+				break; // The result doesn't matter.
+			}
 			$result = AFPData::pow( $result, $expanent );
 		}
 	}
@@ -1083,6 +1095,9 @@ class AbuseFilterParser {
 		if ( $this->mCur->type == AFPToken::TOP && $this->mCur->value == '!' ) {
 			$this->move();
 			$this->doLevelSpecialWords( $result );
+			if ( $this->mShortCircuit ) {
+				return; // The result doesn't matter.
+			}
 			$result = AFPData::boolInvert( $result );
 		} else {
 			$this->doLevelSpecialWords( $result );
@@ -1129,6 +1144,9 @@ class AbuseFilterParser {
 		if ( $this->mCur->type == AFPToken::TOP && ( $op == "+" || $op == "-" ) ) {
 			$this->move();
 			$this->doLevelListElements( $result );
+			if ( $this->mShortCircuit ) {
+				return; // The result doesn't matter.
+			}
 			if ( $op == '-' ) {
 				$result = AFPData::unaryMinus( $result );
 			}
