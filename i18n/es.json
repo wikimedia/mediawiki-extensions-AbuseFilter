@@ -38,7 +38,8 @@
 			"Vivaelcelta",
 			"Themasterriot",
 			"Macofe",
-			"Ryo567"
+			"Ryo567",
+			"AlvaroMolina"
 		]
 	},
 	"abusefilter-desc": "Aplicar automáticamente heurísticas para ediciones",
@@ -325,6 +326,7 @@
 	"abusefilter-edit-builder-vars-file-mediatype": "Tipo del archivo multimedia",
 	"abusefilter-edit-builder-vars-file-width": "Ancho del archivo en píxeles",
 	"abusefilter-edit-builder-vars-file-height": "Altura del archivo en píxeles",
+	"abusefilter-edit-builder-vars-file-bits-per-channel": "Bits por canal de color del archivo",
 	"abusefilter-filter-log": "Cambios recientes de filtros",
 	"abusefilter-history": "Historial de cambios del filtro antiabusos n.º $1",
 	"abusefilter-history-foruser": "Cambios por $1",

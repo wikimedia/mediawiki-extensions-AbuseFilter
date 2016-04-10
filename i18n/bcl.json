@@ -308,7 +308,7 @@
 	"abusefilter-exception-noparams": "Mayong mga parametrong itinao tanganing humirô sa \"$2\" sa panggurit na $1.",
 	"abusefilter-exception-dividebyzero": "Iligal na pagprubar na bangaon an $2 sa paagi nin sero sa panggurit na $1.",
 	"abusefilter-exception-unrecognisedvar": "Bakong rekonisadong kapilyangan na $2 sa panggurit na $1.",
-	"abusefilter-exception-notenoughargs": "Bakong igong mga argumento tanganing humirô $2 na pinag-apod sa panggurit na $1.\n   Pinag-asahan na $3{{PLURAL:$3|argumento|mga argumento}}, an nakua $4",
+	"abusefilter-exception-notenoughargs": "Bakong igong mga argumento tanganing humirô $2 na pinag-apod sa panggurit na $1.\nPinag-asahan na $3{{PLURAL:$3|argumento|mga argumento}}, an nakua $4",
 	"abusefilter-exception-regexfailure": "Kasalaan sa regular na ekspresyon na \"$3\" sa panggurit na $1:\"$2\"",
 	"abusefilter-exception-overridebuiltin": "Iligal na pagsasalambaw kan nakasuknat na kapilyangan \"$2\" sa panggurit na $1.",
 	"abusefilter-exception-outofbounds": "Naghahagad kan dae pa nakamuknang lista nin aytem na $2 (listang sukol = $3) sa panggurit na $1.",

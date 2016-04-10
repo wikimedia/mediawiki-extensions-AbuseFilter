@@ -320,7 +320,7 @@
 	"abusefilter-exception-noparams": "कैरैक्टर $1 पर फ़ंक्शन \"$2\" को कोई प्राचल नहीं दिये गए हैं।",
 	"abusefilter-exception-dividebyzero": "कैरैक्टर $1 पर $2 को शून्य से भाग देने का अवैध प्रयत्न पाया गया।",
 	"abusefilter-exception-unrecognisedvar": "कैरैक्टर $1 पर अज्ञात प्राचल $2 पाया गया।",
-	"abusefilter-exception-notenoughargs": "कैरैक्टर $1 पर प्रयुक्त फ़ंक्शन $2 के लिये प्राचल पूर्ण नहीं हैं।\n $3 {{PLURAL:$3|प्राचल|प्राचलों}} की अपेक्षा की थी, $4 प्राचल {{PLURAL:$4|मिला|मिले}}।",
+	"abusefilter-exception-notenoughargs": "कैरैक्टर $1 पर प्रयुक्त फ़ंक्शन $2 के लिये प्राचल पूर्ण नहीं हैं।\n$3 {{PLURAL:$3|प्राचल|प्राचलों}} की अपेक्षा की थी, $4 प्राचल {{PLURAL:$4|मिला|मिले}}।",
 	"abusefilter-exception-regexfailure": "कैरैक्टर $1 पर regex \"$3\" में त्रुटि: \"$2\"",
 	"abusefilter-exception-overridebuiltin": "अवैध रूप से भीतरी वेरियबल  \"$2\" को कैरेक्टर $1 ओवरराइड किया गया है।",
 	"abusefilter-exception-outofbounds": "निवेदन कर रहे हैं अनुपस्थित सूची आइटम $2 (सूची साइज़ = $3) कैरेक्टर $1 पर।",

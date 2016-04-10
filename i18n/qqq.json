@@ -32,7 +32,8 @@
 			"Yekrats",
 			"Liuxinyu970226",
 			"Legoktm",
-			"Pikne"
+			"Pikne",
+			"Amire80"
 		]
 	},
 	"abusefilter-desc": "{{desc|name=Abuse Filter|url=https://www.mediawiki.org/wiki/Extension:AbuseFilter}}",
@@ -144,7 +145,7 @@
 	"abusefilter-list-options-submit": "Submit button text in filter form to update a filtered list.\n{{Identical|Update}}",
 	"abusefilter-tools-text": "Introduction test for abuse filter tools.",
 	"abusefilter-tools-expr": "Fieldset legend for form to test a filter expression.",
-	"abusefilter-tools-submitexpr": "Submit button text to test a filter expression.",
+	"abusefilter-tools-submitexpr": "Submit button label to test a filter expression.",
 	"abusefilter-tools-reautoconfirm": "Fieldset legend for a form to add a user to the autoconfirmed group again.",
 	"abusefilter-tools-reautoconfirm-user": "Field label. See {{msg-mw|group-autoconfirmed}} for concept translation.\n{{Identical|User}}",
 	"abusefilter-tools-reautoconfirm-submit": "Submit button text to add a user to the autoconfirmed user group. See {{msg-mw|group-autoconfirmed}} for concept translation.",
