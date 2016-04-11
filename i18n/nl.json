@@ -17,7 +17,8 @@
 			"Wiki13",
 			"Sjoerddebruin",
 			"Trijnstel",
-			"JaapDeKleine"
+			"JaapDeKleine",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Voert automatisch heuristische analyse uit op bewerkingen",
@@ -143,6 +144,7 @@
 	"abusefilter-edit-oldwarning": "<strong>U bent een oude versie van dit filter aan het bewerken.\nDe weergegeven statistieken gelden voor de meest recente versie van het filter.\nAls u uw wijzigingen opslaat, overschrijft u alle wijzigingen die na deze versie zijn gemaakt.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Terug naar de geschiedenis van dit filter]]",
 	"abusefilter-edit-status-label": "Statistieken:",
 	"abusefilter-edit-status": "{{PLURAL:$1|De laatste handeling voldeed|Van de laatste $1 handelingen voldeden er $2}} aan dit filter ($3%).",
+	"abusefilter-edit-status-profile": "{{PLURAL:$1|De laatste handeling voldeed|Van de laatste $1 handelingen voldeden er $2}} aan dit filter ($3%).\nDe gemiddelde looptijd van de filtercontrole is $4ms, en deze gebruikt $5 {{PLURAL:$5|conditie|condities}} van de conditielimiet.",
 	"abusefilter-edit-throttled": "'''Waarschuwing''': dit filter is als veiligheidsmaatregel automatisch uitgeschakeld. De limiet van voldoen aan meer dan $1% van de handelingen is bereikt.",
 	"abusefilter-edit-new": "Nieuw filter",
 	"abusefilter-edit-save": "Filter opslaan",

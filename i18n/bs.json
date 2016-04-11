@@ -8,7 +8,8 @@
 			"Sociologist",
 			"KWiki",
 			"Srdjan m",
-			"Semso98"
+			"Semso98",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Dodaje automatske heuristike izmjenama.",
@@ -132,6 +133,7 @@
 	"abusefilter-edit-oldwarning": "<strong>Mijenjate jednu staru varijantu ovog filtera. Pokazane statistike su za najviše aktivne filtere. Ako sačuvate izmjenu izbrisaćete sve izmjene napravljene od reverta koji pravite.</strong> &bull; [[Special:AbuseFilter/history/$2|Vrati se na historiju ovog filtera]]",
 	"abusefilter-edit-status-label": "Statistike:",
 	"abusefilter-edit-status": "Od {{PLURAL:$1|posljednje $1 akcije|posljednje $1 akcije|posljednjih $1 akcija}} ovaj filter je pogođen $2 puta ($3%). Prosječno, njegovo vrijeme pokretanja je $4ms, a utrošio je $5 {{PLURAL:$5|uvjet|uvjeta}} unutar ograničenja uvjeta.",
+	"abusefilter-edit-status-profile": "Od {{PLURAL:$1|posljednje $1 akcije|posljednje $1 akcije|posljednjih $1 akcija}} ovaj filter je pogođen $2 puta ($3%). Prosječno, njegovo vrijeme pokretanja je $4ms, a utrošio je $5 {{PLURAL:$5|uvjet|uvjeta}} unutar ograničenja uvjeta.",
 	"abusefilter-edit-throttled": "'''Upozorenje''': Ovaj filter je automatski isključen iz sigurnosnih razloga. Dostigao je limit od $1% pogođenih akcija.",
 	"abusefilter-edit-new": "Novi filter",
 	"abusefilter-edit-save": "Sačuvaj filter",

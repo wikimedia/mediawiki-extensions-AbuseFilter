@@ -5,7 +5,8 @@
 			"Frigotoni",
 			"GatoSelvadego",
 			"Nemo bis",
-			"Nick1915"
+			"Nick1915",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Àplica dele eurìstiche automatiche a le modifiche.",
@@ -114,7 +115,8 @@
 	"abusefilter-edit-subtitle": "Modìfega del filtro $1",
 	"abusefilter-edit-oldwarning": "<strong>Te sì drio modificar na version vecia del filtro.\nLe statistiche cità le se riferisse a la version pi nova del filtro.\nSalvando le modifiche vegnarà anulà tuti i canbiamenti fati da sta version in poi.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Ritorna a la cronologia del filtro]].",
 	"abusefilter-edit-status-label": "Statìsteghe:",
-	"abusefilter-edit-status": "Rispeto {{PLURAL:$1|a l'azion pi recente|a le $1 azioni pi recenti}}, sto filtro el gà catà $2 {{PLURAL:$2|corispondensa|corispondense}} ($3 %).\nEl so tempo medio de esecuzion xe de $4 ms, e impiega $5 {{PLURAL:$5|condizione|condizioni}} del limite de condizioni.",
+	"abusefilter-edit-status": "Rispeto {{PLURAL:$1|a l'azion pi recente|a le $1 azioni pi recenti}}, sto filtro el gà catà $2 {{PLURAL:$2|corispondensa|corispondense}} ($3 %).",
+	"abusefilter-edit-status-profile": "Rispeto {{PLURAL:$1|a l'azion pi recente|a le $1 azioni pi recenti}}, sto filtro el gà catà $2 {{PLURAL:$2|corispondensa|corispondense}} ($3 %).\nEl so tempo medio de esecuzion xe de $4 ms, e impiega $5 {{PLURAL:$5|condizione|condizioni}} del limite de condizioni.",
 	"abusefilter-edit-throttled": "'''Ocio''': sto filtro el xe stà disativà automaticamente par sicuressa.\nXe stà ragiunto el limite massimo de corispondense, pari al $1% de le azion.",
 	"abusefilter-edit-new": "Filtro novo",
 	"abusefilter-edit-save": "Salva filtro",

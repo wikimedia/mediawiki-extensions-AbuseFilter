@@ -10,7 +10,8 @@
 			"Siddhartha Ghai",
 			"Wikiuser13",
 			"संजीव कुमार",
-			"Hindustanilanguage"
+			"Hindustanilanguage",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "संपादनों पर स्वतः शोध प्रणाली का प्रयोग लागू करता है",
@@ -134,6 +135,7 @@
 	"abusefilter-edit-oldwarning": "<strong>आप फ़िल्टर का एक पुराना अवतरण सम्पादित कर रहे हैं।\nदिये गए आँकड़े फ़िल्टर के नवीनतम अवतरण के लिये हैं।\nयदि आप अपने बदलाव संजोते हैं, आप इस अवतरण के बाद हुए सभी बदलावों को खारिज कर देंगे।</strong>&bull;\n[[Special:AbuseFilter/history/$2|इस फ़िल्टर के इतिहास को लौटें]]।",
 	"abusefilter-edit-status-label": "आँकड़े:",
 	"abusefilter-edit-status": "पिछले $1 {{PLURAL:$1|कार्य|कार्यों}} में से इस फ़िल्टर द्वारा $2 ($3%) पकड़े गए हैं।",
+	"abusefilter-edit-status-profile": "पिछले $1 {{PLURAL:$1|कार्य|कार्यों}} में से इस फ़िल्टर द्वारा $2 ($3%) पकड़े गए हैं।\nइसका औसत रन-टाइम $4 ms है, और यह शर्त सीमा में से $5 {{PLURAL:$5|शर्त|शर्तों}} का प्रयोग करता है।",
 	"abusefilter-edit-throttled": "'''चेतावनी''': इस फ़िल्टर ने $1% से अधिक कार्यों को पकड़ने की सीमा पार कर ली है।\nअतः सुरक्षा कदम के तौर पर इसे स्वचालित रूप से बंद कर दिया गया है।",
 	"abusefilter-edit-new": "नया फ़िल्टर",
 	"abusefilter-edit-save": "फ़िल्टर सहेजें",

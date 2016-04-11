@@ -10,7 +10,8 @@
 			"Perkunas",
 			"Tomasdd",
 			"Vogone",
-			"Vpovilaitis"
+			"Vpovilaitis",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Pakeitimų tikrinimui naudojamas automatinis euristinis tikrinimas",
@@ -133,6 +134,7 @@
 	"abusefilter-edit-oldwarning": "<strong>Jūs keičiate seną šio filtro versiją.\nRodoma statistika paskaičiuota paskutinei filtro versijai.\nJei įrašysite pakeitimus, jūs perrašysite visus pakeitimus, darytus po dabar redaguojamos versijos.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Grįžti į šio failo istoriją]].",
 	"abusefilter-edit-status-label": "Statistika:",
 	"abusefilter-edit-status": "{{PLURAL:$1|Paskutinis|Paskutiniai|Paskutinių}} $1 {{PLURAL:$1|veiksmas|veiksmai|veiksmų}}, Šį filtrą atitiko $2 ($3%). Vidutinis jų vykdymo laikas yra $4ms, sunaudota $5 {{PLURAL:$5|sąlyga|sąlygos|sąlygų}} iš limito.",
+	"abusefilter-edit-status-profile": "{{PLURAL:$1|Paskutinis|Paskutiniai|Paskutinių}} $1 {{PLURAL:$1|veiksmas|veiksmai|veiksmų}}, Šį filtrą atitiko $2 ($3%). Vidutinis jų vykdymo laikas yra $4ms, sunaudota $5 {{PLURAL:$5|sąlyga|sąlygos|sąlygų}} iš limito.",
 	"abusefilter-edit-throttled": "'''Įspėjimas''': Šis filtras saugumo sumetimais buvo automatiškai išjungtas. Jo atitikimų skaičius pasiekė $1% veiksmų ribą.",
 	"abusefilter-edit-new": "Naujas filtras",
 	"abusefilter-edit-save": "Išsaugoti filtrą",

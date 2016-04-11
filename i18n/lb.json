@@ -3,7 +3,8 @@
 		"authors": [
 			"Les Meloures",
 			"Robby",
-			"Soued031"
+			"Soued031",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Applizéiert automatesch Heuristiken op Ännerungen",
@@ -125,6 +126,7 @@
 	"abusefilter-edit-oldwarning": "<strong>Dir sidd am Gaang eng al Versioun vum Filter z'änneren.\nD'Statistike sinn déi vun der leschter Versioun vum Filter.\nWann Dir Är Ännerunge späichert dann iwwerschreiwt Dir all Ännerungen zënter der Versioun déi Dir elo ännert. </strong> &bull;\n[[Special:AbuseFilter/history/$2|Zréck op d'Versiounsgeschicht vun  dësem Filter]].",
 	"abusefilter-edit-status-label": "Statistiken:",
 	"abusefilter-edit-status": "Dëse Filter huet bei {{PLURAL:$1|der leschter Aktioun|de leschte(n) $1 Aktiounen}}, $2 mol ($3%) ugeschloen.",
+	"abusefilter-edit-status-profile": "Dëse Filter huet bei {{PLURAL:$1|der leschter Aktioun|de leschte(n) $1 Aktiounen}}, $2 mol ($3%) ugeschloen.\nAm Duerchschnëtt brauch en dofir $4ms a benotzt dobäi $5 {{PLURAL:$5|Konditioun|Konditioune}} vun der Konditiouns-Limit.",
 	"abusefilter-edit-throttled": "'''Warnung''': Dëse Filter gouf aus Séchertheetsgrënn automatsch ausgeschalt.\nEn huet méi wéi déi definiéiert Limit vun $1% vun den Aktiounen als schiedlech agestuft.",
 	"abusefilter-edit-new": "Neie Filter",
 	"abusefilter-edit-save": "Filter späicheren",

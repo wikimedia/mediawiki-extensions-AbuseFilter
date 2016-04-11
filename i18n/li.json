@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ooswesthoesbes",
-			"Pahles"
+			"Pahles",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Veurtj automatisch heuristische analyse oet op bewerkinge",
@@ -111,7 +112,8 @@
 	"abusefilter-edit-subtitle": "Bewèrkendje filter $1",
 	"abusefilter-edit-oldwarning": "<strong>Doe bös 'n aaj versie van deze filter aan 't bewerke.\nDe weergegaeve statistieke gelje veur de lèste versie van de filter.\nEs 't öch wieziginge opsleit, euversjrief t'r alle wijziginge die nao deze versie zeen gemaak.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Trögk no de gesjiedenis van deze filter]]",
 	"abusefilter-edit-status-label": "Euverzich:",
-	"abusefilter-edit-status": "{{PLURAL:$1|De leste hanjeling vóldeej|Van de leste $1 hanjelinge vóldeje d'r $2}} aan deze filter ($3%).\nDe gemiddelde louptied van de filtercontrole is $4ms, en deze gebroek $5 {{PLURAL:$5|conditie|condities}} van de conditielimiet.",
+	"abusefilter-edit-status": "{{PLURAL:$1|De leste hanjeling vóldeej|Van de leste $1 hanjelinge vóldeje d'r $2}} aan deze filter ($3%).",
+	"abusefilter-edit-status-profile": "{{PLURAL:$1|De leste hanjeling vóldeej|Van de leste $1 hanjelinge vóldeje d'r $2}} aan deze filter ($3%).\nDe gemiddelde louptied van de filtercontrole is $4ms, en deze gebroek $5 {{PLURAL:$5|conditie|condities}} van de conditielimiet.",
 	"abusefilter-edit-throttled": "'''Waorsjoewing''': deze filter is es veiligheidsmaotregel autematis oetgezat. De limiet van vóldoon aan mier es $1% van de hanjelinge is bereik.",
 	"abusefilter-edit-new": "Nuuje filter",
 	"abusefilter-edit-save": "Slaon filter óp",

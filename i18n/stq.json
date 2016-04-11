@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pyt"
+			"Pyt",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Woant automatiske Heuristike ap Annerengen an.",
@@ -92,7 +93,8 @@
 	"abusefilter-edit-subtitle": "Beoarbaidje Sieuwe $1",
 	"abusefilter-edit-oldwarning": "<strong>Du beoarbaidest nit ju aktuelle, man ne allere Version fon disse Sieuwe. Ju Statistik jält bloot foar ju lääste Version fon ju Sieuwe. Wan du spiekerst, wäd ju oolde as aktuelle Version näi spiekerd. </strong> &bull; [[Special:AbuseFilter/history/$2|Tourääch tou ju Versionsgeskichte fon ju Sieuwe]]",
 	"abusefilter-edit-status-label": "Statistike:",
-	"abusefilter-edit-status": "Fon {{PLURAL:$1|ju|do}} lääste {{PLURAL:$1|Aktion|$1 Aktione}} {{PLURAL:$2|wuud|wuuden}} $2 ($3 %) fon disse Sieuwe wierkoand.\nIn n Truchsnit bedruuch hiere Beoarbaidengstied $4 ms un do benöödigeden $5 {{PLURAL:$5|Bedingenge|Bedingengen}} fon ju ferlööwede Hoochsttaal.",
+	"abusefilter-edit-status": "Fon {{PLURAL:$1|ju|do}} lääste {{PLURAL:$1|Aktion|$1 Aktione}} {{PLURAL:$2|wuud|wuuden}} $2 ($3 %) fon disse Sieuwe wierkoand.",
+	"abusefilter-edit-status-profile": "Fon {{PLURAL:$1|ju|do}} lääste {{PLURAL:$1|Aktion|$1 Aktione}} {{PLURAL:$2|wuud|wuuden}} $2 ($3 %) fon disse Sieuwe wierkoand.\nIn n Truchsnit bedruuch hiere Beoarbaidengstied $4 ms un do benöödigeden $5 {{PLURAL:$5|Bedingenge|Bedingengen}} fon ju ferlööwede Hoochsttaal.",
 	"abusefilter-edit-throttled": "'''Woarskauenge''': Disse Sieuwe wuud sicherhaidshoolwe automatisk deaktivierd. Ju häd moor as dät definierde Buppeskeed fon $1 % fon do Aktione ärkoand.",
 	"abusefilter-edit-new": "Näie Sieuwe",
 	"abusefilter-edit-save": "Sieuwe spiekerje",

@@ -7,7 +7,8 @@
 			"Diagramma Della Verita",
 			"Izzudin",
 			"Kurniasan",
-			"Zamwan"
+			"Zamwan",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Mengenakan heuristik automatik pada suntingan.",
@@ -132,7 +133,8 @@
 	"abusefilter-edit-subtitle-new": "Membuat penapis",
 	"abusefilter-edit-oldwarning": "<strong>Anda sedang menyunting versi lama bagi penapis ini.\nStatistik yang dipetik adalah bagi versi terkini bagi penapis ini.\nJika anda menyimpan perubahan anda, anda akan membatalkan segala perubahan sejak semakan yang anda sunting itu.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Kembali ke sejarah penapis ini]].",
 	"abusefilter-edit-status-label": "Statistik:",
-	"abusefilter-edit-status": "Penapis ini telah memadani $2 ($3%) daripada $1 tindakan terkini.\nSecara puratanya, masa berjalannya adalah $4ms, dan ia mengambil $5 syarat daripada had syarat.",
+	"abusefilter-edit-status": "Penapis ini telah memadani $2 ($3%) daripada $1 tindakan terkini.",
+	"abusefilter-edit-status-profile": "Penapis ini telah memadani $2 ($3%) daripada $1 tindakan terkini.\nSecara puratanya, masa berjalannya adalah $4ms, dan ia mengambil $5 syarat daripada had syarat.",
 	"abusefilter-edit-throttled": "'''Amaran''': Penapis ini telah dimatikan secara automatik sebagai langkah keselamatan.\nIa telah mencapai had pemadanan lebih $1% tindakan.",
 	"abusefilter-edit-new": "Penapis baru",
 	"abusefilter-edit-save": "Simpan penapis",

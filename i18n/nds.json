@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Joachim Mos",
-			"Slomox"
+			"Slomox",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Föhrt automaatsch heuristische Analysen op Ännern ut",
@@ -99,6 +100,7 @@
 	"abusefilter-edit-oldwarning": "<strong>Du ännerst jüst en ole Version vun’n Filter.\nDe Statistik gellt blot för de jüngste Version vun’n Filter.\nWenn du spiekerst, warrt all Ännern överschreven, de sieddem an’n Filter maakt worrn sünd.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Trüch na de Versionsgeschicht vun’n Filter]].",
 	"abusefilter-edit-status-label": "Statistiken:",
 	"abusefilter-edit-status": "Vun de {{PLURAL:$1|leste een Akschoon|lesten $1 Akschonen}} hett de Filter op $2 ($3 %) passt.\nIn’n Dörsnidd is de Looptied $4 ms.",
+	"abusefilter-edit-status-profile": "Vun de {{PLURAL:$1|leste een Akschoon|lesten $1 Akschonen}} hett de Filter op $2 ($3 %) passt.\nIn’n Dörsnidd is de Looptied $4 ms.",
 	"abusefilter-edit-throttled": "'''Wohrschau''': Disse Filter is ut Sekerheitsgrünn automaatsch utschalt worrn. He hett bi mehr as de angeven Bövergrenz vun $1 % vun all Akschonen meckert.",
 	"abusefilter-edit-new": "Nee Filter",
 	"abusefilter-edit-save": "Filter spiekern",

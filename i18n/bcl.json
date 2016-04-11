@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Filipinayzd",
-			"Geopoet"
+			"Geopoet",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Pinapadanay an awtomatikong gana sa boot na mga pagliliwat",
@@ -125,6 +126,7 @@
 	"abusefilter-edit-oldwarning": "<makusugon>Ika nagliliwat kan lumaong bersyon kaining saraan.\nAn estadistikong pinagsambit para sa pinakahuring bersyon kan saraan.\nKun saimong naitagama an saimong mga kaliwatan, saimong sasalambawan an gabos na mga kaliwatan magpoon pa sa rebisyon na saimong pinagliliwat. </makusugon> &bull;\n[[Special:AbuseFilter/history/$2|Magbalik pasiring sa historiya kaining saraan]].",
 	"abusefilter-edit-status-label": "Estadistika:",
 	"abusefilter-edit-status": "Kan nakaaging $1 {{PLURAL:$1|aksyon|mga aksyon}}, ining saraan nakapagtampad sa $2 ($3%).",
+	"abusefilter-edit-status-profile": "Kan nakaaging $1 {{PLURAL:$1|aksyon|mga aksyon}}, ini saraan nakapag-ampad sa $2 ($3%).\nSa katahawan, an oras nin padalagan $4 ms, asin ini minakonsumo nin $5 {{PLURAL:$5|kondisyon|mga kondisyon}} kan limitasyon sa kondisyon.",
 	"abusefilter-edit-throttled": "'''Patanid''': Ining saraan awtomatikong pinagpauntok bilang sarong gamit nin kaligtasan.\nIni nakakaabot sa limit kan ipinag-aampad na sobra $1% kan aksyon.",
 	"abusefilter-edit-new": "Baguhong saraan",
 	"abusefilter-edit-save": "Itagama an saraan",

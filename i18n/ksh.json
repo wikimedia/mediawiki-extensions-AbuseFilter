@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Purodha"
+			"Purodha",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Dä Meßbruchsfelter deit Änderunge aan Sigge met Heurestikke pröfe.",
@@ -126,7 +127,8 @@
 	"abusefilter-edit-subtitle-new": "Ben ene Felter aam aanlääje",
 	"abusefilter-edit-oldwarning": "<strong>Do bes hee en äldere Väsjohn vun däm Felter aam ändere.\nDe aanjejovve Schtatistike sin ävver för de neuste Väsjohn fun däm Felter.\nWann De Ding Änderonge afschpeishere deihß, dann sin all de Änderonge\nun Äjänzonge fott, di schpääder derbei jekumme sen.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Jangk zeröck op däm Felter sing Väsjohne]].",
 	"abusefilter-edit-status-label": "Zahle un Schtatistike:",
-	"abusefilter-edit-status": "{{PLURAL:$1|De letzte Akßjuhn woodt|Unger de letzte $1 Akßjuhne {{PLURAL:$2|woor_er ein, die|wooren_er $2, die|wood kein}}|Kein Akßjuhn woodt}} vun dämm Felter hee opjejreff{{PLURAL:$1|e|{{PLURAL:$2|e wood|e woode|e}}|e}}. Dat sinn_er $3% jewääse.\nEm Schnett deiht hä {{PLURAL:$4|ein Millisekund|$4 Millisekunde|kein Millisekund}} bruche, un {{PLURAL:$5|ein Bedengung|$5 Bedengunge|kei Bedengunge}} vun de zohjelohße hühßte Zahl.",
+	"abusefilter-edit-status": "{{PLURAL:$1|De letzte Akßjuhn woodt|Unger de letzte $1 Akßjuhne {{PLURAL:$2|woor_er ein, die|wooren_er $2, die|wood kein}}|Kein Akßjuhn woodt}} vun dämm Felter hee opjejreff{{PLURAL:$1|e|{{PLURAL:$2|e wood|e woode|e}}|e}}. Dat sinn_er $3% jewääse.",
+	"abusefilter-edit-status-profile": "{{PLURAL:$1|De letzte Akßjuhn woodt|Unger de letzte $1 Akßjuhne {{PLURAL:$2|woor_er ein, die|wooren_er $2, die|wood kein}}|Kein Akßjuhn woodt}} vun dämm Felter hee opjejreff{{PLURAL:$1|e|{{PLURAL:$2|e wood|e woode|e}}|e}}. Dat sinn_er $3% jewääse.\nEm Schnett deiht hä {{PLURAL:$4|ein Millisekund|$4 Millisekunde|kein Millisekund}} bruche, un {{PLURAL:$5|ein Bedengung|$5 Bedengunge|kei Bedengunge}} vun de zohjelohße hühßte Zahl.",
 	"abusefilter-edit-throttled": "'''Opjepaß:''' Dä Felter hee es automattesch ußjeschalldt woode. Zor Sescherheit.\nDä hät sing Jrenß övverschredde, un bei mieh wie $1% vun alle Oproofe jejreffe.",
 	"abusefilter-edit-new": "Neu Felter-Räjel",
 	"abusefilter-edit-save": "Faßhallde",

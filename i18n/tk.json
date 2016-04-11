@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hanberke"
+			"Hanberke",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Özgerdişlerde awtomatik ewristik filtleri ulanýar",
@@ -100,7 +101,8 @@
 	"abusefilter-status": "Soňky $1 {{PLURAL:$1|hereketden|hereketden}} $2 (%$3) sanysy $4 şert çägine baryp ýetdi, $5 (%$6) sanysy bolsa häzirki açyk filtrleriň birine gabat geldi.",
 	"abusefilter-edit-subtitle": "$1 filtri redaktirlenýär",
 	"abusefilter-edit-status-label": "Statistikalar:",
-	"abusefilter-edit-status": "Bu filtr soňky $1 {{PLURAL:$1|hereketden|hereketden}} $2 (%$3) sanysyna gabat geldi.\nOrtaça alnanda, işlän wagty $4ms, we onuň şert çägi $5 sany şerti sarp edýär.",
+	"abusefilter-edit-status": "Bu filtr soňky $1 {{PLURAL:$1|hereketden|hereketden}} $2 (%$3) sanysyna gabat geldi.",
+	"abusefilter-edit-status-profile": "Bu filtr soňky $1 {{PLURAL:$1|hereketden|hereketden}} $2 (%$3) sanysyna gabat geldi.\nOrtaça alnanda, işlän wagty $4ms, we onuň şert çägi $5 sany şerti sarp edýär.",
 	"abusefilter-edit-throttled": "'''Duýduryş''': Bu filtr howpsuzlyk çäresi hökmünde awtomatik ýapyldy.\nOl hereketleriň %$1 sanysyndan artykmaç gabat gelme çägine baryp ýetdi.",
 	"abusefilter-edit-new": "Täze filtr",
 	"abusefilter-edit-save": "Filtri ýazdyr",

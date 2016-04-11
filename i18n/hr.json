@@ -5,7 +5,8 @@
 			"Ex13",
 			"MaGa",
 			"Roberta F.",
-			"SpeedyGonsales"
+			"SpeedyGonsales",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Primjenjuje automatsku heuristiku na uređivanja",
@@ -127,7 +128,8 @@
 	"abusefilter-edit-subtitle-new": "Stvaram filtar",
 	"abusefilter-edit-oldwarning": "<strong>Uređujete staru inačicu ovog filtra.\nIskazane su statistike za najnoviju inačicu filtra.\nAko spremite svoje promjene, prebrisati ćete sve promjene nastale od inačice koju upravo uređujete.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Povratak na povijest stranice ovog filtra]].",
 	"abusefilter-edit-status-label": "Statistike:",
-	"abusefilter-edit-status": "Od {{PLURAL:$1|posljednje akcije|posljednje $1 akcije|posljednjih $1 akcija}}, ovaj filtar poklopio se $2 ($3%).\nU prosjeku, njegovo radno vrijeme je $4ms, a troši  $5 {{PLURAL:$5|uvjet|uvjeta|uvjeta}} od granice.",
+	"abusefilter-edit-status": "Od {{PLURAL:$1|posljednje akcije|posljednje $1 akcije|posljednjih $1 akcija}}, ovaj filtar poklopio se $2 ($3%).",
+	"abusefilter-edit-status-profile": "Od {{PLURAL:$1|posljednje akcije|posljednje $1 akcije|posljednjih $1 akcija}}, ovaj filtar poklopio se $2 ($3%).\nU prosjeku, njegovo radno vrijeme je $4ms, a troši  $5 {{PLURAL:$5|uvjet|uvjeta|uvjeta}} od granice.",
 	"abusefilter-edit-throttled": "'''Upozorenje''': Ovaj filtar je automatski deaktiviran kao mjera sigurnosti.\nDostignuta je granicu od podudaranja s više od $1% akcija suradnika.",
 	"abusefilter-edit-new": "Novi filtar",
 	"abusefilter-edit-save": "Snimi filtar",

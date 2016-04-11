@@ -8,7 +8,8 @@
 			"Objectivesea",
 			"Tlustulimu",
 			"Tradukisto",
-			"Yekrats"
+			"Yekrats",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Aplikas aŭtomatan heŭristikon al redaktoj.",
@@ -130,7 +131,8 @@
 	"abusefilter-edit-subtitle-new": "Krei filtron",
 	"abusefilter-edit-oldwarning": "<strong>Vi redaktas malnovan version de ĉi tiu filtrilo.\nĈi tiuj statistikoj estas por la plej lasta versio de la filtrilo.\nSe vi konservus ŝanĝojn, vi anstataŭigus ĉiujn ŝanĝojn ekde la version vi redaktas.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Reiri al la historio de ĉi tiu filtrilo]].",
 	"abusefilter-edit-status-label": "Statistikoj:",
-	"abusefilter-edit-status": "El la {{PLURAL:$1|lasta 1 ago|lastaj $1 agoj}}, ĉi tiu filtrilo kongruis $2 ($3%).\nAveraĝe, ĝia plenumtempo estas $4ms, kaj ĝi konsumas $5 {{PLURAL:$5|kondiĉon|kondiĉojn}} de la kondiĉa limo.",
+	"abusefilter-edit-status": "El la {{PLURAL:$1|lasta 1 ago|lastaj $1 agoj}}, ĉi tiu filtrilo kongruis $2 ($3%).",
+	"abusefilter-edit-status-profile": "El la {{PLURAL:$1|lasta 1 ago|lastaj $1 agoj}}, ĉi tiu filtrilo kongruis $2 ($3%).\nAveraĝe, ĝia plenumtempo estas $4ms, kaj ĝi konsumas $5 {{PLURAL:$5|kondiĉon|kondiĉojn}} de la kondiĉa limo.",
 	"abusefilter-edit-throttled": "'''Averto''': Ĉi tiu filtrilo aŭtomate malebligiĝis pro sekureco. Ĝi atingis la limo kontruanta pli ol $1% de agoj.",
 	"abusefilter-edit-new": "Nova filtrilo",
 	"abusefilter-edit-save": "Konservi filtrilon",

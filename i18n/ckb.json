@@ -3,7 +3,8 @@
 		"authors": [
 			"Asoxor",
 			"Calak",
-			"Pirehelokan"
+			"Pirehelokan",
+			"Matma Rex"
 		]
 	},
 	"abuselog": "پاڵوێنەی کەڵکاوەژوو",
@@ -96,7 +97,8 @@
 	"abusefilter-edit-subtitle": "دەستکاریی پاڵوێنەی $1",
 	"abusefilter-edit-subtitle-new": "دروستکردنی پاڵوێنە",
 	"abusefilter-edit-status-label": "ئامارەکان:",
-	"abusefilter-edit-status": "لە دوایین $1 {{PLURAL:$1|کردەوە}}دا، ئەم پاڵوێنەیە لەگەڵ $2 ($3٪) گونجاوە.\nبە شێوەی ناونجی، کاتی جێبەجێبوونی $4 میلی چرکەیە و $5 {{PLURAL:$5|مەرج}} لە سنووری مەرجی بەکاربردووە.",
+	"abusefilter-edit-status": "لە دوایین $1 {{PLURAL:$1|کردەوە}}دا، ئەم پاڵوێنەیە لەگەڵ $2 ($3٪) گونجاوە.",
+	"abusefilter-edit-status-profile": "لە دوایین $1 {{PLURAL:$1|کردەوە}}دا، ئەم پاڵوێنەیە لەگەڵ $2 ($3٪) گونجاوە.\nبە شێوەی ناونجی، کاتی جێبەجێبوونی $4 میلی چرکەیە و $5 {{PLURAL:$5|مەرج}} لە سنووری مەرجی بەکاربردووە.",
 	"abusefilter-edit-throttled": "'''وشیار بە''':  بە ھۆی پارستنەوە  بە شێوەی خۆکار ڕێگە بەم پاڵوێنە گیرراوە.\nگەیشتووە بە سنووری گونجان لەگەڵ زۆرتر لە $1% ی کردارەکان.",
 	"abusefilter-edit-new": "پاڵوێنەیەکی نوێ",
 	"abusefilter-edit-save": "پاڵوێنە پاشەکەوت بکە",

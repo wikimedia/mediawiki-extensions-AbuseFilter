@@ -18,7 +18,8 @@
 			"Nivit",
 			"Ricordisamoa",
 			"Macofe",
-			"Alexmar983"
+			"Alexmar983",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Applica un'euristica automatica alle modifiche.",
@@ -144,6 +145,7 @@
 	"abusefilter-edit-oldwarning": "<strong>Si sta modificando una versione obsoleta di questo filtro.\nLe statistiche citate si riferiscono alla versione più recente del filtro.\nSalvando le modifiche verranno annullati tutti i cambiamenti apportati da questa versione in poi.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Ritorna alla cronologia del filtro]].",
 	"abusefilter-edit-status-label": "Statistiche:",
 	"abusefilter-edit-status": "Rispetto {{PLURAL:$1|all'azione più recente|alle $1 azioni più recenti}}, questo filtro ha trovato $2 {{PLURAL:$2|corrispondenza|corrispondenze}} ($3 %).",
+	"abusefilter-edit-status-profile": "Rispetto {{PLURAL:$1|all'azione più recente|alle $1 azioni più recenti}}, questo filtro ha trovato $2 {{PLURAL:$2|corrispondenza|corrispondenze}} ($3 %).\nIl suo tempo medio di esecuzione è di $4 ms, e impiega $5 {{PLURAL:$5|condizione|condizioni}} del limite di condizioni.",
 	"abusefilter-edit-throttled": "'''Attenzione''': Questo filtro è stato disattivato automaticamente come misura precauzionale.\nÈ stato raggiunto il limite massimo di corrispondenze, pari al $1% delle azioni.",
 	"abusefilter-edit-new": "Nuovo filtro",
 	"abusefilter-edit-save": "Salva filtro",

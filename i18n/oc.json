@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Cedric31"
+			"Cedric31",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Aplica d'euristicas automaticas a las modificacions",
@@ -119,7 +120,8 @@
 	"abusefilter-edit-subtitle-new": "Crear un filtre",
 	"abusefilter-edit-oldwarning": "<strong>Sètz a modificar una version anciana del filtre. Las estatisticas afichadas son per la version correnta d'aqueste. Se  salvatz vòstras modificacions, van suprimir las modificacions efectuadas ulteriorament.</strong> &bull; [[Special:AbuseFilter/history/$2|Tornar a l'istoric d'aqueste filtre]]",
 	"abusefilter-edit-status-label": "Estatisticas :",
-	"abusefilter-edit-status": "{{PLURAL:$1|Dins la darrièra accion|Demest las $1 darrièras accions}}, aqueste filtre a atench $2 ($3 %).\nEn mejana, la durada d'execucion d'aqueste filtre es de $4 ms e utiliza $5 condicion{{PLURAL:$5||s}} del limit de las condicions.",
+	"abusefilter-edit-status": "{{PLURAL:$1|Dins la darrièra accion|Demest las $1 darrièras accions}}, aqueste filtre a atench $2 ($3 %).",
+	"abusefilter-edit-status-profile": "{{PLURAL:$1|Dins la darrièra accion|Demest las $1 darrièras accions}}, aqueste filtre a atench $2 ($3 %).\nEn mejana, la durada d'execucion d'aqueste filtre es de $4 ms e utiliza $5 condicion{{PLURAL:$5||s}} del limit de las condicions.",
 	"abusefilter-edit-throttled": "'''Avertiment''' : Aqueste filtre es estat desactivat automaticament per mesura de seguretat. A atench lo limit de correspondéncia a mai de $1 % de las accions.",
 	"abusefilter-edit-new": "Filtre novèl",
 	"abusefilter-edit-save": "Salvar lo filtre",

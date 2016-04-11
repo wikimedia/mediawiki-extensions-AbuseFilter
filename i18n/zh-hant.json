@@ -27,7 +27,8 @@
 			"S8321414",
 			"LNDDYL",
 			"Zhxy 519",
-			"Cwek"
+			"Cwek",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "套用自動啟發式演算法於編輯",
@@ -153,6 +154,7 @@
 	"abusefilter-edit-oldwarning": "<strong>您正編輯舊版本的過濾器。\n統計資訊引用的是最近版本的過濾器資訊。\n若您儲存目前的修改，您將會覆蓋所有自您修訂版本之後的所有變更。</strong> &bull;\n[[Special:AbuseFilter/history/$2|返回此過濾器歷史]]。",
 	"abusefilter-edit-status-label": "統計資訊：",
 	"abusefilter-edit-status": "在最近 $1 次{{PLURAL:$1|操作}}中，此過濾器已命中 $2 ($3%) 次。",
+	"abusefilter-edit-status-profile": "在最近 $1 次操作中，此過濾器已命中 $2 ($3%) 次。\n其平均執行時間為 $4 ms，且使用了條件限制中 $5 個條件。",
 	"abusefilter-edit-throttled": "'''警告'''︰此過濾器已自動停用以策安全。\n此過濾器已超過操作命中次數限制 $1 次。",
 	"abusefilter-edit-new": "新過濾器",
 	"abusefilter-edit-save": "儲存過濾器",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Mr.Ajedrez",
-			"Xuacu"
+			"Xuacu",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Aplica heurística automática a les ediciones.",
@@ -128,6 +129,7 @@
 	"abusefilter-edit-oldwarning": "<strong>Ta editando una versión antigua d'esti filtru.\nLes estadístiques citaes son de la versión más nueva del filtru.\nSi guarda los cambios, escribirá enriba de tolos cambios dende la revisión que ta editando.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Volver al historial d'esti filtru]].",
 	"abusefilter-edit-status-label": "Estadístiques:",
 	"abusefilter-edit-status": "De {{PLURAL:$1|la última aición|les $1 últimes aiciones}}, esti filtru coincidió con $2 ($3%).",
+	"abusefilter-edit-status-profile": "De {{PLURAL:$1|la última aición|les $1 últimes aiciones}}, esti filtru coincidió con $2 ($3%).\nDe media, el so tiempu d'execución ye de $4ms, y consume {{PLURAL:$5|una condición|$5 condiciones}} de la llende de condiciones.",
 	"abusefilter-edit-throttled": "'''Avisu:''' Esti filtru desactivóse automaticamente como midía de seguridá.\nAlcanzó la llende de coincidir con más del $1% de les aiciones.",
 	"abusefilter-edit-new": "Filtru nuevu",
 	"abusefilter-edit-save": "Guardar el filtru",

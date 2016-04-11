@@ -5,7 +5,8 @@
 			"Mormegil",
 			"Teslaton",
 			"Sudo77(new)",
-			"Kusavica"
+			"Kusavica",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Vykonáva automatickú heuristiku úprav.",
@@ -128,7 +129,8 @@
 	"abusefilter-edit-subtitle-new": "Vytvorenie filtra",
 	"abusefilter-edit-oldwarning": "<strong>Upravujete starú verziu tohto filtra. Uvedené štatistiky sa týkajú najnovšej verzie filtra. Ak svoje zmeny uložíte, prepíšete všetky zmeny od revízie, ktorú upravujete.</strong> &bull; [[Special:AbuseFilter/history/$2|Vrátiť sa na históriu tohto filtra]]",
 	"abusefilter-edit-status-label": "Štatistika:",
-	"abusefilter-edit-status": "{{PLURAL:$1|Z poslednej $1 operácie|Z posledných $1 operácií}} tomuto filtru {{PLURAL:$2|zodpovedala|zodpovedali|zodpovedalo}} $2 ($3 %).\nPriemerný čas behu je $4 ms a spotrebuje $5 {{PLURAL:$5|podmienku|podmienky|podmienok}} z celkového povoleného počtu podmienok.",
+	"abusefilter-edit-status": "{{PLURAL:$1|Z poslednej $1 operácie|Z posledných $1 operácií}} tomuto filtru {{PLURAL:$2|zodpovedala|zodpovedali|zodpovedalo}} $2 ($3 %).",
+	"abusefilter-edit-status-profile": "{{PLURAL:$1|Z poslednej $1 operácie|Z posledných $1 operácií}} tomuto filtru {{PLURAL:$2|zodpovedala|zodpovedali|zodpovedalo}} $2 ($3 %).\nPriemerný čas behu je $4 ms a spotrebuje $5 {{PLURAL:$5|podmienku|podmienky|podmienok}} z celkového povoleného počtu podmienok.",
 	"abusefilter-edit-throttled": "'''Upozornenie''': V rámci bezpečnostných opatrení bol tento filter automaticky vypnutý. Dosiahol hodnotu obmedzenia $1 % operácií, ktoré mu zodpovedajú.",
 	"abusefilter-edit-new": "Nový filter",
 	"abusefilter-edit-save": "Uložiť filter",

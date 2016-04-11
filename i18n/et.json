@@ -4,7 +4,8 @@
 			"Avjoska",
 			"Morel",
 			"Oop",
-			"Pikne"
+			"Pikne",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Rakendab muudatuste juures automaatset heuristikat.",
@@ -130,6 +131,7 @@
 	"abusefilter-edit-oldwarning": "<strong>Muudad selle filtri vana versiooni.\nAllpool toodud arvandmed käivad filtri uusima versiooni kohta.\nKui oma muudatused salvestad, kirjutad üle kõik redigeeritavast redaktsioonist uuemad muudatused. </strong> &bull;\n[[Special:AbuseFilter/history/$2|Naase selle filtri ajaloo juurde]].",
 	"abusefilter-edit-status-label": "Arvandmed:",
 	"abusefilter-edit-status": "Viimasest {{PLURAL:$1|ühest toimingust|$1 toimingust}} on sellele filtrile vastanud $2 ($3%).",
+	"abusefilter-edit-status-profile": "Viimasest {{PLURAL:$1|ühest toimingust|$1 toimingust}} on sellele filtrile vastanud $2 ($3%).\nKeskmiselt on selle filtri tööaeg $4 ms ja see kasutab tingimuste ülemmäära {{PLURAL:$5|üht tingimust|$5 tingimust}}.",
 	"abusefilter-edit-throttled": "'''Hoiatus''': See filter keelati automaatselt ohutuskaalutlusel.\nSee ületas $1% toimingutele vastamise piirnormi.",
 	"abusefilter-edit-new": "Uus filter",
 	"abusefilter-edit-save": "Salvesta filter",

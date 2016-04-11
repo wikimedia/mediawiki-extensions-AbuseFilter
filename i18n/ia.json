@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"McDutchie"
+			"McDutchie",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Applica heuristicas automatic al modificationes.",
@@ -127,6 +128,7 @@
 	"abusefilter-edit-oldwarning": "<strong>Tu modifica al momento un version ancian de iste filtro.\nLe statisticas monstrate es pro le version currente del filtro.\nSi tu immagazina tu modificationes, tu superscribera tote le modificationes facite post le version que tu modifica.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Retornar al historia de iste filtro]].",
 	"abusefilter-edit-status-label": "Statisticas:",
 	"abusefilter-edit-status": "Del ultime $1 {{PLURAL:$1|action|actiones}}, iste filtro ha correspondite a $2 ($3%).",
+	"abusefilter-edit-status-profile": "Del ultime $1 {{PLURAL:$1|action|actiones}}, iste filtro ha correspondite a $2 ($3%).\nIn media, su durata de execution es $4ms, e illo consume $5 {{PLURAL:$5|condition|conditiones}} ex le limite de conditiones.",
 	"abusefilter-edit-throttled": "'''Attention:''' Iste filtro ha essite disactivate automaticamente como mesura de securitate. Illo ha attingite le limite de correspondentia a plus de $1% del actiones.",
 	"abusefilter-edit-new": "Nove filtro",
 	"abusefilter-edit-save": "Salveguardar filtro",

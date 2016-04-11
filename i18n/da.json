@@ -13,7 +13,8 @@
 			"Sarrus",
 			"Steenth",
 			"Tjernobyl",
-			"MGA73"
+			"MGA73",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Anvender automatiske heuristikker på redigeringer",
@@ -136,7 +137,8 @@
 	"abusefilter-edit-subtitle-new": "Opretter filter",
 	"abusefilter-edit-oldwarning": "<strong>Du redigerer en gammel version af dette filter.\nDen citerede statistik er for den seneste version af filteret.\nHvis du gemmer dine ændringer, overskriver du alle ændringer siden den version du redigerer.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Vend tilbage til dette filters historik]].",
 	"abusefilter-edit-status-label": "Statistik:",
-	"abusefilter-edit-status": "Af {{PLURAL:$1|den sidste handling|de sidste $1 handlinger}} har dette filter matchet $2 ($3 %).\nI gennemsnit er operationstiden $4 ms, og det optager $5 {{PLURAL:$5|tilstand|tilstande}} af tilstandsgrænsen.",
+	"abusefilter-edit-status": "Af {{PLURAL:$1|den sidste handling|de sidste $1 handlinger}} har dette filter matchet $2 ($3 %).",
+	"abusefilter-edit-status-profile": "Af {{PLURAL:$1|den sidste handling|de sidste $1 handlinger}} har dette filter matchet $2 ($3 %).\nI gennemsnit er operationstiden $4 ms, og det optager $5 {{PLURAL:$5|tilstand|tilstande}} af tilstandsgrænsen.",
 	"abusefilter-edit-throttled": "'''Advarsel''': dette filter blev automatisk deaktiveret som en sikkerhedsforanstaltning.\nDet har nået grænsen ved at matche mere end $1 % af handlingerne.",
 	"abusefilter-edit-new": "Nyt filter",
 	"abusefilter-edit-save": "Gem filter",

@@ -3,7 +3,8 @@
 		"authors": [
 			"Elisardojm",
 			"Toliño",
-			"Banjo"
+			"Banjo",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas ás edicións",
@@ -129,6 +130,7 @@
 	"abusefilter-edit-oldwarning": "<strong>Está a editar unha versión vella deste filtro.\nAs estatísticas citadas son da versión máis recente do filtro.\nSe garda os seus cambios, sobrescribirá todos os cambios desde a revisión que está editando.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Volver ao historial deste filtro]].",
 	"abusefilter-edit-status-label": "Estatísticas:",
 	"abusefilter-edit-status": "{{PLURAL:$1|Da última acción|Das $1 últimas accións}}, este filtro coincidiu con $2 (o $3%).",
+	"abusefilter-edit-status-profile": "{{PLURAL:$1|Da última acción|Das $1 últimas accións}}, este filtro coincidiu con $2 (o $3%).\nDe media, o seu tempo de execución é de $4ms, e consome {{PLURAL:$5|unha condición|$5 condicións}} do límite de condicións.",
 	"abusefilter-edit-throttled": "'''Aviso:''' Este filtro foi deshabilitado automaticamente como unha medida de seguridade. Alcanzouse o límite de  máis de $1% de coincidencias de accións.",
 	"abusefilter-edit-new": "Novo filtro",
 	"abusefilter-edit-save": "Gardar o filtro",

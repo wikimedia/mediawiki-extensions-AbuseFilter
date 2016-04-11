@@ -13,7 +13,8 @@
 			"Stigmj",
 			"Cocu",
 			"Jeblad",
-			"Chameleon222"
+			"Chameleon222",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "Legger til automatisk heuristikk til redigeringer.",
@@ -139,6 +140,7 @@
 	"abusefilter-edit-oldwarning": "<strong>Du redigerer på en gammel versjon av dette filteret. Statistikken oppgitt er for siste versjon av filteret. Hvis du lagrer dine endringer, vil du overskrive alle endringer siden den revisjonen du redigerer</strong> &bull; [[Special:AbuseFilter/history/$2|Gå tilbake til filterets historikk]]",
 	"abusefilter-edit-status-label": "Statistikk:",
 	"abusefilter-edit-status": "Av {{PLURAL:$|den siste handlingen|de siste $1 handlingene}} har dette filteret matchet $2 ($3 %).",
+	"abusefilter-edit-status-profile": "Av {{PLURAL:$|den siste handlingen|de siste $1 handlingene}} har dette filteret passet med $2 ($3%).\nKjøretiden er i gjennomsnitt på $4ms, og det bruker {{PLURAL:$5|ett vilkår|$5 vilkår}} av vilkårsgrensen.",
 	"abusefilter-edit-throttled": "'''Advarsel:''' Dette filteret ble automatisk slått av av sikkerhetsårsaker. Det nådde grensen på $1&nbsp;% av alle handlinger.",
 	"abusefilter-edit-new": "Nytt filter",
 	"abusefilter-edit-save": "Lagre filter",
