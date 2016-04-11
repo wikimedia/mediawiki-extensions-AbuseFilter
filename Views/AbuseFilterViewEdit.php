@@ -257,6 +257,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				ChangeTags::purgeTagCacheAll();
 			}
 
+			AbuseFilter::resetFilterProfile( $new_id );
+
 			$out->redirect(
 				$this->getTitle()->getLocalURL(
 					array(
@@ -391,9 +393,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			if ( $total > 0 ) {
 				$matches_percent = sprintf( '%.2f', 100 * $matches_count / $total );
+				list( $timeProfile, $condProfile ) = AbuseFilter::getFilterProfile( $filter );
 
 				$fields['abusefilter-edit-status-label'] = $this->msg( 'abusefilter-edit-status' )
-					->numParams( $total, $matches_count, $matches_percent )
+					->numParams( $total, $matches_count, $matches_percent, $timeProfile, $condProfile )
 					->escaped();
 			}
 		}
