@@ -387,17 +387,22 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		if ( $filter !== 'new' ) {
 			// Statistics
-			global $wgMemc;
+			global $wgMemc, $wgAbuseFilterProfile;
 			$matches_count = $wgMemc->get( AbuseFilter::filterMatchesKey( $filter ) );
 			$total = $wgMemc->get( AbuseFilter::filterUsedKey( $row->af_group ) );
 
 			if ( $total > 0 ) {
 				$matches_percent = sprintf( '%.2f', 100 * $matches_count / $total );
-				list( $timeProfile, $condProfile ) = AbuseFilter::getFilterProfile( $filter );
-
-				$fields['abusefilter-edit-status-label'] = $this->msg( 'abusefilter-edit-status' )
-					->numParams( $total, $matches_count, $matches_percent, $timeProfile, $condProfile )
-					->escaped();
+				if ( $wgAbuseFilterProfile ) {
+					list( $timeProfile, $condProfile ) = AbuseFilter::getFilterProfile( $filter );
+					$fields['abusefilter-edit-status-label'] = $this->msg( 'abusefilter-edit-status-profile' )
+						->numParams( $total, $matches_count, $matches_percent, $timeProfile, $condProfile )
+						->escaped();
+				} else {
+					$fields['abusefilter-edit-status-label'] = $this->msg( 'abusefilter-edit-status' )
+						->numParams( $total, $matches_count, $matches_percent )
+						->escaped();
+				}
 			}
 		}
 

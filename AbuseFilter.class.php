@@ -521,10 +521,12 @@ class AbuseFilter {
 	 * @return bool
 	 */
 	public static function checkFilter( $row, $vars, $profile = false, $prefix = '' ) {
+		global $wgAbuseFilterProfile;
+
 		$filterID = $prefix . $row->af_id;
 
 		$startConds = $startTime = null;
-		if ( $profile ) {
+		if ( $profile && $wgAbuseFilterProfile ) {
 			$startConds = self::$condCount;
 			$startTime = microtime( true );
 		}
@@ -548,7 +550,7 @@ class AbuseFilter {
 			$result = false;
 		}
 
-		if ( $profile ) {
+		if ( $profile && $wgAbuseFilterProfile ) {
 			$endTime = microtime( true );
 			$endConds = self::$condCount;
 
