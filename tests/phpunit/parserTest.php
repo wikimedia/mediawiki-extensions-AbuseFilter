@@ -123,6 +123,8 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 			array( 'a == b == c', 2 ),
 			array( 'a in b + c in d + e in f', 3 ),
 			array( 'true', 0 ),
+			array( 'a == a | c == d', 1 ),
+			array( 'a == b & c == d', 1 ),
 		);
 	}
 }
