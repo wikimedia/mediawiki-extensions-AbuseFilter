@@ -1016,7 +1016,6 @@ class AbuseFilterParser {
 	 * @param $result
 	 */
 	protected function doLevelCompares( &$result ) {
-		AbuseFilter::triggerLimiter();
 		$this->doLevelSumRels( $result );
 		$ops = array( '==', '===', '!=', '!==', '<', '>', '<=', '>=', '=' );
 		while ( $this->mCur->type == AFPToken::TOP && in_array( $this->mCur->value, $ops ) ) {
@@ -1024,6 +1023,7 @@ class AbuseFilterParser {
 			$this->move();
 			$r2 = new AFPData();
 			$this->doLevelSumRels( $r2 );
+			AbuseFilter::triggerLimiter();
 			$result = AFPData::compareOp( $result, $r2, $op );
 		}
 	}
@@ -1114,6 +1114,7 @@ class AbuseFilterParser {
 				return; // The result doesn't matter.
 			}
 
+			AbuseFilter::triggerLimiter();
 			wfProfileIn( __METHOD__ . "-$func" );
 			$result = AFPData::$func( $result, $r2, $this->mCur->pos );
 			wfProfileOut( __METHOD__ . "-$func" );
