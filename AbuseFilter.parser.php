@@ -1679,15 +1679,13 @@ class AbuseFilterParser {
 		static $replacementArray = null;
 
 		if ( is_null( $replacementArray ) ) {
-			// @codingStandardsIgnoreStart Ignore global without wg prefix.
-			global $IP;
-			// @codingStandardsIgnoreEnd
+			global $wgExtensionDirectory;
 
-			if ( is_readable( "$IP/extensions/AntiSpoof/equivset.php" ) ) {
+			if ( is_readable( "$wgExtensionDirectory/AntiSpoof/equivset.php" ) ) {
 				// Satisfy analyzer.
 				$equivset = null;
 				// Contains a map of characters in $equivset.
-				require "$IP/extensions/AntiSpoof/equivset.php";
+				require "$wgExtensionDirectory/AntiSpoof/equivset.php";
 
 				// strtr in ReplacementArray->replace() doesn't like this.
 				if ( isset( $equivset[''] ) ) {
