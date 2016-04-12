@@ -4,7 +4,8 @@
 			"Asoxor",
 			"Calak",
 			"Pirehelokan",
-			"Matma Rex"
+			"Matma Rex",
+			"Sarchia"
 		]
 	},
 	"abuselog": "پاڵوێنەی کەڵکاوەژوو",
@@ -238,5 +239,6 @@
 	"abusefilter-diff-prev": "گۆڕانکاریی کۆنتر",
 	"abusefilter-diff-next": "گۆڕانکاریی نوێتر",
 	"abusefilter-import-intro": "دەتوانی لەم پێوەندەرە بۆ ھاوردنی پاڵوێنەکان لە ویکییەکانی تردا کەڵک وەربگری.\nلە ویکیی ژێدەردا لە سەر «{{int:abusefilter-edit-export}}» لە ژێرەوەی «{{int:abusefilter-edit-tools}}» لە پێوەندەری دەستکاریدا کرتە بکە.\nدەقی ئەو بۆکسە کە دەردەکەوێ، کۆپی بکە ناو ئەم بۆکسەی ئێرەوە، پاشان لە سەر «{{int:abusefilter-import-submit}}» کرتە بکە.",
-	"abusefilter-import-submit": "ھاوردنی زانیاری"
+	"abusefilter-import-submit": "ھاوردنی زانیاری",
+	"abusefilter-group-default": "بنچینەیی"
 }
