@@ -566,14 +566,14 @@ class AbuseFilter {
 	 * @param $filter
 	 */
 	public static function resetFilterProfile( $filter ) {
-		global $wgMemc;
+		$stash = ObjectCache::getMainStashInstance();
 		$countKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'count' );
 		$totalKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'total' );
 		$condsKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'conds' );
 
-		$wgMemc->delete( $countKey );
-		$wgMemc->delete( $totalKey );
-		$wgMemc->delete( $condsKey );
+		$stash->delete( $countKey );
+		$stash->delete( $totalKey );
+		$stash->delete( $condsKey );
 	}
 
 	/**
@@ -582,25 +582,27 @@ class AbuseFilter {
 	 * @param $conds
 	 */
 	public static function recordProfilingResult( $filter, $time, $conds ) {
-		global $wgMemc;
+		// Defer updates to avoid massive (~1 second) edit time increases
+		DeferredUpdates::addCallableUpdate( function () use ( $filter, $time, $conds ) {
+			$stash = ObjectCache::getMainStashInstance();
+			$countKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'count' );
+			$totalKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'total' );
+			$condsKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'conds' );
 
-		$countKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'count' );
-		$totalKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'total' );
-		$condsKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'conds' );
+			$curCount = $stash->get( $countKey );
+			$curTotal = $stash->get( $totalKey );
+			$curConds = $stash->get( $condsKey );
 
-		$curCount = $wgMemc->get( $countKey );
-		$curTotal = $wgMemc->get( $totalKey );
-		$curConds = $wgMemc->get( $condsKey );
-
-		if ( $curCount ) {
-			$wgMemc->set( $condsKey, $curConds + $conds, 3600 );
-			$wgMemc->set( $totalKey, $curTotal + $time, 3600 );
-			$wgMemc->incr( $countKey );
-		} else {
-			$wgMemc->set( $countKey, 1, 3600 );
-			$wgMemc->set( $totalKey, $time, 3600 );
-			$wgMemc->set( $condsKey, $conds, 3600 );
-		}
+			if ( $curCount ) {
+				$stash->set( $condsKey, $curConds + $conds, 3600 );
+				$stash->set( $totalKey, $curTotal + $time, 3600 );
+				$stash->incr( $countKey );
+			} else {
+				$stash->set( $countKey, 1, 3600 );
+				$stash->set( $totalKey, $time, 3600 );
+				$stash->set( $condsKey, $conds, 3600 );
+			}
+		} );
 	}
 
 	/**
@@ -608,15 +610,14 @@ class AbuseFilter {
 	 * @return array
 	 */
 	public static function getFilterProfile( $filter ) {
-		global $wgMemc;
-
+		$stash = ObjectCache::getMainStashInstance();
 		$countKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'count' );
 		$totalKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'total' );
 		$condsKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'conds' );
 
-		$curCount = $wgMemc->get( $countKey );
-		$curTotal = $wgMemc->get( $totalKey );
-		$curConds = $wgMemc->get( $condsKey );
+		$curCount = $stash->get( $countKey );
+		$curTotal = $stash->get( $totalKey );
+		$curConds = $stash->get( $condsKey );
 
 		if ( !$curCount ) {
 			return array( 0, 0 );
@@ -1002,10 +1003,10 @@ class AbuseFilter {
 
 		wfProfileIn( __METHOD__ . '-hitstats' );
 
-		global $wgMemc;
+		$stash = ObjectCache::getMainStashInstance();
 
 		// Increment trigger counter
-		$wgMemc->incr( self::filterMatchesKey() );
+		$stash->incr( self::filterMatchesKey() );
 
 		$local_log_ids = array();
 		global $wgAbuseFilterNotifications, $wgAbuseFilterNotificationsPrivate;
@@ -1101,7 +1102,7 @@ class AbuseFilter {
 		$vars->setVar( 'local_log_ids', $local_log_ids );
 
 		// Check for emergency disabling.
-		$total = $wgMemc->get( AbuseFilter::filterUsedKey( $group ) );
+		$total = $stash->get( AbuseFilter::filterUsedKey( $group ) );
 		self::checkEmergencyDisable( $group, $logged_local_filters, $total );
 
 		wfProfileOut( __METHOD__ . '-hitstats' );
@@ -1476,20 +1477,19 @@ class AbuseFilter {
 	public static function isThrottled( $throttleId, $types, $title, $rateCount,
 		$ratePeriod, $global = false
 	) {
-		global $wgMemc;
-
+		$stash = ObjectCache::getMainStashInstance();
 		$key = self::throttleKey( $throttleId, $types, $title, $global );
-		$count = intval( $wgMemc->get( $key ) );
+		$count = intval( $stash->get( $key ) );
 
 		wfDebugLog( 'AbuseFilter', "Got value $count for throttle key $key\n" );
 
 		if ( $count > 0 ) {
-			$wgMemc->incr( $key );
+			$stash->incr( $key );
 			$count++;
 			wfDebugLog( 'AbuseFilter', "Incremented throttle key $key" );
 		} else {
 			wfDebugLog( 'AbuseFilter', "Added throttle key $key with value 1" );
-			$wgMemc->add( $key, 1, $ratePeriod );
+			$stash->add( $key, 1, $ratePeriod );
 			$count = 1;
 		}
 
@@ -1607,7 +1607,9 @@ class AbuseFilter {
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 */
 	public static function recordStats( $filters, $group = 'default' ) {
-		global $wgAbuseFilterConditionLimit, $wgMemc;
+		global $wgAbuseFilterConditionLimit;
+
+		$stash = ObjectCache::getMainStashInstance();
 
 		// Figure out if we've triggered overflows and blocks.
 		$overflow_triggered = ( self::$condCount > $wgAbuseFilterConditionLimit );
@@ -1616,28 +1618,28 @@ class AbuseFilter {
 		$overflow_key = self::filterLimitReachedKey();
 		$total_key = self::filterUsedKey( $group );
 
-		$total = $wgMemc->get( $total_key );
+		$total = $stash->get( $total_key );
 
 		$storage_period = self::$statsStoragePeriod;
 
 		if ( !$total || $total > 10000 ) {
 			// This is for if the total doesn't exist, or has gone past 10,000.
 			// Recreate all the keys at the same time, so they expire together.
-			$wgMemc->set( $total_key, 0, $storage_period );
-			$wgMemc->set( $overflow_key, 0, $storage_period );
+			$stash->set( $total_key, 0, $storage_period );
+			$stash->set( $overflow_key, 0, $storage_period );
 
 			foreach ( $filters as $filter => $matched ) {
-				$wgMemc->set( self::filterMatchesKey( $filter ), 0, $storage_period );
+				$stash->set( self::filterMatchesKey( $filter ), 0, $storage_period );
 			}
-			$wgMemc->set( self::filterMatchesKey(), 0, $storage_period );
+			$stash->set( self::filterMatchesKey(), 0, $storage_period );
 		}
 
 		// Increment total
-		$wgMemc->incr( $total_key );
+		$stash->incr( $total_key );
 
 		// Increment overflow counter, if our condition limit overflowed
 		if ( $overflow_triggered ) {
-			$wgMemc->incr( $overflow_key );
+			$stash->incr( $overflow_key );
 		}
 	}
 
@@ -1648,8 +1650,9 @@ class AbuseFilter {
 	 */
 	public static function checkEmergencyDisable( $group, $filters, $total ) {
 		global $wgAbuseFilterEmergencyDisableThreshold, $wgAbuseFilterEmergencyDisableCount,
-			   $wgAbuseFilterEmergencyDisableAge, $wgMemc;
+			   $wgAbuseFilterEmergencyDisableAge;
 
+		$stash = ObjectCache::getMainStashInstance();
 		foreach ( $filters as $filter ) {
 			// determine emergency disable values for this action
 			$emergencyDisableThreshold =
@@ -1660,13 +1663,13 @@ class AbuseFilter {
 				self::getEmergencyValue( $wgAbuseFilterEmergencyDisableAge, $group );
 
 			// Increment counter
-			$matchCount = $wgMemc->get( self::filterMatchesKey( $filter ) );
+			$matchCount = $stash->get( self::filterMatchesKey( $filter ) );
 
 			// Handle missing keys...
 			if ( !$matchCount ) {
-				$wgMemc->set( self::filterMatchesKey( $filter ), 1, self::$statsStoragePeriod );
+				$stash->set( self::filterMatchesKey( $filter ), 1, self::$statsStoragePeriod );
 			} else {
-				$wgMemc->incr( self::filterMatchesKey( $filter ) );
+				$stash->incr( self::filterMatchesKey( $filter ) );
 			}
 			$matchCount++;
 

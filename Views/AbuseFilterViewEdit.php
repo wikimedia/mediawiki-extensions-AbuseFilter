@@ -387,9 +387,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		if ( $filter !== 'new' ) {
 			// Statistics
-			global $wgMemc, $wgAbuseFilterProfile;
-			$matches_count = $wgMemc->get( AbuseFilter::filterMatchesKey( $filter ) );
-			$total = $wgMemc->get( AbuseFilter::filterUsedKey( $row->af_group ) );
+			global $wgAbuseFilterProfile;
+			$stash = ObjectCache::getMainStashInstance();
+			$matches_count = $stash->get( AbuseFilter::filterMatchesKey( $filter ) );
+			$total = $stash->get( AbuseFilter::filterUsedKey( $row->af_group ) );
 
 			if ( $total > 0 ) {
 				$matches_percent = sprintf( '%.2f', 100 * $matches_count / $total );
