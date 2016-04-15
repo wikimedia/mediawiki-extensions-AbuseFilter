@@ -253,7 +253,7 @@
 	"abusefilter-edit-builder-group-vars": "변수",
 	"abusefilter-edit-builder-vars-accountname": "계정 이름 (계정 만들 때)",
 	"abusefilter-edit-builder-vars-timestamp": "바뀐 시점의 유닉스 시간 기록",
-	"abusefilter-edit-builder-vars-action": "행위",
+	"abusefilter-edit-builder-vars-action": "동작",
 	"abusefilter-edit-builder-vars-addedlines": "편집 중 추가된 줄",
 	"abusefilter-edit-builder-vars-delta": "편집에서의 문서 크기 변화",
 	"abusefilter-edit-builder-vars-diff": "편집 전후의 차이",
