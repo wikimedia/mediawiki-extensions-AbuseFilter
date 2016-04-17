@@ -1525,21 +1525,17 @@ class AbuseFilterParser {
 			return new AFPData( AFPData::DINT, count( $args[0]->data ) );
 		}
 
-		$offset = -1;
-
 		if ( count( $args ) == 1 ) {
 			$count = count( explode( ',', $args[0]->toString() ) );
 		} else {
 			$needle = $args[0]->toString();
 			$haystack = $args[1]->toString();
 
-			$count = 0;
-
 			// Bug #60203: Keep empty parameters from causing PHP warnings
-			if ( $needle !== '' ) {
-				while ( ( $offset = strpos( $haystack, $needle, $offset + 1 ) ) !== false ) {
-					$count++;
-				}
+			if ( $needle === '' ) {
+				$count = 0;
+			} else {
+				$count = substr_count( $haystack, $needle );
 			}
 		}
 
