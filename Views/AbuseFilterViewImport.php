@@ -7,18 +7,18 @@ class AbuseFilterViewImport extends AbuseFilterView {
 			$out->addWikiMsg( 'abusefilter-edit-notallowed' );
 			return;
 		}
-
-		$out->addWikiMsg( 'abusefilter-import-intro' );
-
-		$html = Xml::textarea( 'wpImportText', '', 40, 20 );
-		$html .= Xml::submitButton(
-			$this->msg( 'abusefilter-import-submit' )->text(),
-			array( 'accesskey' => 's' )
-		);
 		$url = SpecialPage::getTitleFor( 'AbuseFilter', 'new' )->getFullURL();
 
-		$html = Xml::tags( 'form', array( 'method' => 'post', 'action' => $url ), $html );
-
-		$out->addHTML( $html );
+		$formDescriptor = array(
+			'ImportText' => array(
+				'type' => 'textarea',
+				'cols' => 200,
+			)
+		);
+		$htmlForm = new HTMLForm( $formDescriptor, $this->getContext() );
+		$htmlForm->setHeaderText( $this->msg( 'abusefilter-import-intro' ) )
+			->setSubmitTextMsg( 'abusefilter-import-submit' )
+			->setAction( $url )
+			->show();
 	}
 }
