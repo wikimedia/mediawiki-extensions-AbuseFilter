@@ -18,7 +18,8 @@
 			"Vililikku",
 			"Zache",
 			"ZeiP",
-			"Matma Rex"
+			"Matma Rex",
+			"01miki10"
 		]
 	},
 	"abusefilter-desc": "Mahdollistaa muokkauksien suodattamisen automaattisella heuristiikalla.",
@@ -301,6 +302,8 @@
 	"abusefilter-edit-builder-vars-minor-edit": "Onko muokkaus merkitty pieneksi muutokseksi vai ei",
 	"abusefilter-edit-builder-vars-file-sha1": "Tiedoston sisällön SHA1-tiiviste",
 	"abusefilter-edit-builder-vars-file-size": "Tiedoston koko tavuina",
+	"abusefilter-edit-builder-vars-file-width": "Tiedoston leveys pikseleissä",
+	"abusefilter-edit-builder-vars-file-height": "Tiedoston korkeus pikseleissä",
 	"abusefilter-filter-log": "Suodattimien viimeisimmät muutokset",
 	"abusefilter-history": "Muutoshistoria väärinkäyttösuodattimelle numero $1",
 	"abusefilter-history-foruser": "Käyttäjän $1 muokkaukset",
@@ -412,6 +415,7 @@
 	"abusefilter-import-submit": "Tuo tiedot",
 	"abusefilter-group-default": "Yleinen",
 	"abusefilter-http-error": "Tapahtui HTTP-virhe: $1.",
+	"apihelp-abusefilterchecksyntax-description": "Tarkista väärinkäyttösuodattimen syntaksi.",
 	"apihelp-abusefilterchecksyntax-example-1": "Tarkasta kelvollisen suodattimen ehtolauserakenne",
 	"apihelp-abusefilterchecksyntax-example-2": "Tarkasta epäkelvon suodattimen ehtolauserakenne"
 }

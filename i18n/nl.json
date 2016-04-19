@@ -18,7 +18,8 @@
 			"Sjoerddebruin",
 			"Trijnstel",
 			"JaapDeKleine",
-			"Matma Rex"
+			"Matma Rex",
+			"Jeleniccz"
 		]
 	},
 	"abusefilter-desc": "Voert automatisch heuristische analyse uit op bewerkingen",
@@ -302,6 +303,11 @@
 	"abusefilter-edit-builder-vars-minor-edit": "Of de bewerking wel of niet als klein gemarkeerd is",
 	"abusefilter-edit-builder-vars-file-sha1": "SHA1-hashcode van de bestandsinhoud",
 	"abusefilter-edit-builder-vars-file-size": "Grootte van het bestand in bytes",
+	"abusefilter-edit-builder-vars-file-mime": "Het MIME-type van het bestand",
+	"abusefilter-edit-builder-vars-file-mediatype": "Media-type van het bestand",
+	"abusefilter-edit-builder-vars-file-width": "Breedte van het bestand in pixels",
+	"abusefilter-edit-builder-vars-file-height": "De hoogte van het bestand in pixels",
+	"abusefilter-edit-builder-vars-file-bits-per-channel": "Bits per kleurkanaal van het bestand",
 	"abusefilter-filter-log": "Recente filterwijzigingen",
 	"abusefilter-history": "Geschiedenis voor het filter #$1",
 	"abusefilter-history-foruser": "Wijzigingen door $1",
