@@ -302,6 +302,8 @@
 	"abusefilter-edit-builder-vars-minor-edit": "Onko muokkaus merkitty pieneksi muutokseksi vai ei",
 	"abusefilter-edit-builder-vars-file-sha1": "Tiedoston sisällön SHA1-tiiviste",
 	"abusefilter-edit-builder-vars-file-size": "Tiedoston koko tavuina",
+	"abusefilter-edit-builder-vars-file-mime": "Tiedoston MIME-tyyppi",
+	"abusefilter-edit-builder-vars-file-mediatype": "Tiedoston mediatyyppi",
 	"abusefilter-edit-builder-vars-file-width": "Tiedoston leveys pikseleissä",
 	"abusefilter-edit-builder-vars-file-height": "Tiedoston korkeus pikseleissä",
 	"abusefilter-filter-log": "Suodattimien viimeisimmät muutokset",
@@ -417,5 +419,10 @@
 	"abusefilter-http-error": "Tapahtui HTTP-virhe: $1.",
 	"apihelp-abusefilterchecksyntax-description": "Tarkista väärinkäyttösuodattimen syntaksi.",
 	"apihelp-abusefilterchecksyntax-example-1": "Tarkasta kelvollisen suodattimen ehtolauserakenne",
-	"apihelp-abusefilterchecksyntax-example-2": "Tarkasta epäkelvon suodattimen ehtolauserakenne"
+	"apihelp-abusefilterchecksyntax-example-2": "Tarkasta epäkelvon suodattimen ehtolauserakenne",
+	"apihelp-abusefilterunblockautopromote-param-user": "Käyttäjän, jolta haluat poistaa eston, käyttäjänimi.",
+	"apihelp-query+abusefilters-description": "Näytä väärinkäyttösuodatinten yksityiskohdat.",
+	"apihelp-query+abusefilters-example-1": "Luetteloi käytössä olevat julkiset suodattimet",
+	"apihelp-query+abusefilters-example-2": "Näytä joitain tietoja suodattimista",
+	"apihelp-query+abuselog-example-1": "Näytä viimeisimmät lokimerkinnät"
 }
