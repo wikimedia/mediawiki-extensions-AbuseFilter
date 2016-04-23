@@ -96,34 +96,45 @@ class SpecialAbuseLog extends SpecialPage {
 	function searchForm() {
 		global $wgAbuseFilterIsCentral;
 
-		$output = Xml::element( 'legend', null, $this->msg( 'abusefilter-log-search' )->text() );
-		$fields = array();
-
-		// Search conditions
-		$fields['abusefilter-log-search-user'] =
-			Xml::input( 'wpSearchUser', 45, $this->mSearchUser );
+		$formDescriptor = array(
+			'SearchUser' => array(
+				'label-message' => 'abusefilter-log-search-user',
+				'type' => 'user',
+				'default' => $this->mSearchUser,
+				'size' => 45,
+			),
+			'SearchTitle' => array(
+				'label-message' => 'abusefilter-log-search-title',
+				'type' => 'title',
+				'default' => $this->mSearchTitle,
+				'size' => 45,
+			)
+		);
 		if ( self::canSeeDetails() ) {
-			$fields['abusefilter-log-search-filter'] =
-				Xml::input( 'wpSearchFilter', 45, $this->mSearchFilter );
+			$formDescriptor['SearchFilter'] = array(
+				'label-message' => 'abusefilter-log-search-filter',
+				'type' => 'text',
+				'default' => $this->mSearchFilter,
+				'size' => 45,
+			);
 		}
-		$fields['abusefilter-log-search-title'] =
-			Xml::input( 'wpSearchTitle', 45, $this->mSearchTitle );
-
 		if ( $wgAbuseFilterIsCentral ) {
 			// Add free form input for wiki name. Would be nice to generate
 			// a select with unique names in the db at some point.
-			$fields['abusefilter-log-search-wiki'] =
-				Xml::input( 'wpSearchWiki', 45, $this->mSearchWiki );
+			$formDescriptor['SearchWiki'] = array(
+				'label-message' => 'abusefilter-log-search-wiki',
+				'type' => 'text',
+				'default' => $this->mSearchWiki,
+				'size' => 45,
+			);
 		}
 
-		$output .= Xml::tags( 'form',
-			array( 'method' => 'get', 'action' => $this->getPageTitle()->getLocalURL() ),
-			Xml::buildForm( $fields, 'abusefilter-log-search-submit' ) .
-			Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() )
-		);
-		$output = Xml::tags( 'fieldset', null, $output );
-
-		$this->getOutput()->addHTML( $output );
+		$htmlForm = HTMLForm::factory( 'table', $formDescriptor, $this->getContext() );
+		$htmlForm->setWrapperLegendMsg( 'abusefilter-log-search' )
+			->setSubmitTextMsg( 'abusefilter-log-search-submit' )
+			->setMethod( 'get' )
+			->prepareForm()
+			->displayForm( false );
 	}
 
 	/**
