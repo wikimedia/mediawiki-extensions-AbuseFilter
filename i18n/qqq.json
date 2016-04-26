@@ -176,7 +176,7 @@
 	"abusefilter-edit-lastmod": "Field label for filter's last modified timestamp.",
 	"abusefilter-edit-lastmod-text": "This message is used on [[Special:AbuseFilter]] to indicate the last modified date, time and user for existing rules.\n\nParameters:\n* $1 - a time and date (duplicated in $3 and $4)\n* $2 - a link to a user page with a user name as link text, followed by a series of related links\n* $3 - (Optional) the date\n* $4 - (Optional) the time\n* $5 - (Optional) the username, for GENDER support",
 	"abusefilter-edit-hitcount": "Field label in edit rule form after which the number of filter hits is displayed.",
-	"abusefilter-edit-consequences": "Table header in filter version differences.",
+	"abusefilter-edit-consequences": "Shown as the header of a section on the filter editing page, showing a list of checkboxes with different action names, and as the table header on the filter version differences page. Refers to a list of actions that will be triggered when an edit matches the filter.",
 	"abusefilter-edit-action-warn": "{{doc-abusefilter-action}}",
 	"abusefilter-edit-action-disallow": "{{doc-abusefilter-action}}",
 	"abusefilter-edit-action-flag": "{{doc-abusefilter-action}}",
