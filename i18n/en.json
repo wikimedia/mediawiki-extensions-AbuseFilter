@@ -145,7 +145,7 @@
 	"abusefilter-edit-lastmod": "Filter last modified:",
 	"abusefilter-edit-lastmod-text": "$1 by $2",
 	"abusefilter-edit-hitcount": "Filter hits:",
-	"abusefilter-edit-consequences": "Actions taken when matched",
+	"abusefilter-edit-consequences": "Actions to take when matched",
 	"abusefilter-edit-action-warn": "Trigger these actions after giving the user a warning",
 	"abusefilter-edit-action-disallow": "Prevent the user from performing the action in question",
 	"abusefilter-edit-action-flag": "Flag the edit in the abuse log",
