@@ -823,7 +823,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		// Load from master to avoid unintended reversions where there's replication lag.
-		$dbr = wfGetDB( DB_MASTER );
+		$dbr = $this->getRequest()->wasPosted()
+			? wfGetDB( DB_MASTER )
+			: wfGetDB( DB_SLAVE );
 
 		// Load certain fields only. This prevents a condition seen on Wikimedia where
 		// a schema change adding a new field caused that extra field to be selected.
