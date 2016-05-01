@@ -410,7 +410,7 @@
 	"abusefilter-log-noresults": "Não foram encontrados resultados.",
 	"abusefilter-diff-title": "Diferenças entre versões",
 	"abusefilter-diff-item": "Entrada",
-	"abusefilter-diff-version": "Versão do $1 {{GENDER:$3| por}} $2",
+	"abusefilter-diff-version": "Versão de $1 {{GENDER:$3| por}} $2",
 	"abusefilter-diff-info": "Informações básicas",
 	"abusefilter-diff-pattern": "Condições do filtro",
 	"abusefilter-diff-invalid": "Não foi possível obter as versões requeridas",

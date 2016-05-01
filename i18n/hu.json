@@ -11,7 +11,8 @@
 			"Tacsipacsi",
 			"Tgr",
 			"Samat",
-			"Matma Rex"
+			"Matma Rex",
+			"Wolf Rex"
 		]
 	},
 	"abusefilter-desc": "Automatikus heurisztikát alkalmaz a szerkesztésekre.",
@@ -400,5 +401,7 @@
 	"abusefilter-import-submit": "Adatok importálása",
 	"abusefilter-group-default": "Alapértelmezett",
 	"abusefilter-http-error": "HTTP hiba történt: $1",
-	"apihelp-abusefiltercheckmatch-description": "vars, rcid vagy logid szükséges, de csak egyet lehet használni."
+	"apihelp-abusefiltercheckmatch-description": "vars, rcid vagy logid szükséges, de csak egyet lehet használni.",
+	"apihelp-query+abusefilters-example-1": "Az engedélyezett nyilvános szűrők listázása.",
+	"apihelp-query+abuselog-example-1": "Friss naplóbejegyzések mutatása"
 }
