@@ -7,6 +7,10 @@ class SpecialAbuseFilter extends SpecialPage {
 		parent::__construct( 'AbuseFilter', 'abusefilter-view' );
 	}
 
+	public function doesWrites() {
+		return true;
+	}
+
 	public function execute( $subpage ) {
 		$out = $this->getOutput();
 		$request = $this->getRequest();
