@@ -193,7 +193,7 @@
 	"abusefilter-edit-export": "ייצוא מסנן זה לאתר ויקי אחר",
 	"abusefilter-edit-syntaxok": "לא נמצאו שגיאות תחביר.",
 	"abusefilter-edit-syntaxerr": "נמצאה שגיאת תחביר: $1",
-	"abusefilter-edit-bad-tags": "תגית אחת או יותר אינה תקינה.\nתגיות צריכות להיות קצרות, והן אינן יכולות להכיל תווים מיוחדים.",
+	"abusefilter-edit-bad-tags": "תגית אחת או יותר אינה תקינה.\nתגיות צריכות להיות קצרות, והן לא יכולות להכיל תווים מיוחדים.",
 	"abusefilter-edit-notallowed": "אין לך הרשאה ליצור או לערוך מסנני השחתות",
 	"abusefilter-edit-notallowed-global": "אין לך הרשאה ליצור או לערוך מסנני השחתות גלובליים",
 	"abusefilter-edit-notallowed-global-custom-msg": "הודעות אזהרה מותאמות אישית אינן נתמכות עבור מסננים גלובליים",
