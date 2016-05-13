@@ -66,7 +66,7 @@ class AbuseFilterHooks {
 	public static function onEditFilterMergedContent( IContextSource $context, Content $content,
 		Status $status, $summary, User $user, $minoredit ) {
 
-		$text = AbuseFilter::contentToString( $content, Revision::RAW );
+		$text = AbuseFilter::contentToString( $content );
 
 		$continue = self::filterEdit( $context, $content, $text, $status, $summary, $minoredit );
 
