@@ -1,11 +1,28 @@
 <?php
 
+use MediaWiki\Auth\AuthManager;
+
 class AbuseFilterHooks {
 	public static $successful_action_vars = false;
 	/** @var WikiPage|Article|bool */
 	public static $last_edit_page = false; // make sure edit filter & edit save hooks match
 	// So far, all of the error message out-params for these hooks accept HTML.
 	// Hooray!
+
+	public static function onRegistration() {
+		global $wgDisableAuthManager, $wgAuthManagerAutoConfig;
+
+		if ( class_exists( AuthManager::class ) && !$wgDisableAuthManager ) {
+			$wgAuthManagerAutoConfig['preauth'][AbuseFilterPreAuthenticationProvider::class] = [
+				'class' => AbuseFilterPreAuthenticationProvider::class,
+				'sort' => 5, // run after normal preauth providers to keep the log cleaner
+			];
+		} else {
+			Hooks::register( 'AbortNewAccount', 'AbuseFilterHooks::onAbortNewAccount' );
+			Hooks::register( 'AbortAutoAccount', 'AbuseFilterHooks::onAbortAutoAccount' );
+		}
+
+	}
 
 	/**
 	 * Entry point for the APIEditBeforeSave hook.
@@ -373,6 +390,7 @@ class AbuseFilterHooks {
 	 * @param $message
 	 * @param $autocreate bool Indicates whether the account is created automatically.
 	 * @return bool
+	 * @deprecated AbuseFilterPreAuthenticationProvider will take over this functionality
 	 */
 	private static function checkNewAccount( $user, &$message, $autocreate ) {
 		if ( $user->getName() == wfMessage( 'abusefilter-blocker' )->inContentLanguage()->text() ) {
@@ -405,6 +423,7 @@ class AbuseFilterHooks {
 	 * @param $user User
 	 * @param $message
 	 * @return bool
+	 * @deprecated AbuseFilterPreAuthenticationProvider will take over this functionality
 	 */
 	public static function onAbortNewAccount( $user, &$message ) {
 		return self::checkNewAccount( $user, $message, false );
@@ -414,6 +433,7 @@ class AbuseFilterHooks {
 	 * @param $user User
 	 * @param $message
 	 * @return bool
+	 * @deprecated AbuseFilterPreAuthenticationProvider will take over this functionality
 	 */
 	public static function onAbortAutoAccount( $user, &$message ) {
 		// FIXME: ERROR MESSAGE IS SHOWN IN A WEIRD WAY, BEACUSE $message
