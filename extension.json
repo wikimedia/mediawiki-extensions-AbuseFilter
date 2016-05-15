@@ -1,0 +1,241 @@
+{
+	"name": "Abuse Filter",
+	"author": [
+		"Andrew Garrett",
+		"River Tarnell",
+		"Victor Vasiliev",
+		"Marius Hoch"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:AbuseFilter",
+	"descriptionmsg": "abusefilter-desc",
+	"license-name": "GPL-2.0+",
+	"type": "antispam",
+	"requires": {
+		"MediaWiki": ">= 1.25.0"
+	},
+	"AvailableRights": [
+		"abusefilter-modify",
+		"abusefilter-log-detail",
+		"abusefilter-view",
+		"abusefilter-log",
+		"abusefilter-private",
+		"abusefilter-modify-restricted",
+		"abusefilter-revert",
+		"abusefilter-view-private",
+		"abusefilter-log-private",
+		"abusefilter-hidden-log",
+		"abusefilter-hide-log",
+		"abusefilter-modify-global"
+	],
+	"SpecialPages": {
+		"AbuseLog": "SpecialAbuseLog",
+		"AbuseFilter": "SpecialAbuseFilter"
+	},
+	"LogTypes": [
+		"abusefilter"
+	],
+	"LogNames": {
+		"abusefilter": "abusefilter-log-name"
+	},
+	"LogHeaders": {
+		"abusefilter": "abusefilter-log-header"
+	},
+	"LogActions": {
+		"suppress/hide-afl": "abusefilter-logentry-suppress",
+		"suppress/unhide-afl": "abusefilter-logentry-unsuppress"
+	},
+	"LogActionsHandlers": {
+		"abusefilter/modify": [
+			"AbuseFilter",
+			"modifyActionText"
+		],
+		"abusefilter/hit": "AbuseLogHitFormatter"
+	},
+	"APIModules": {
+		"abusefilterchecksyntax": "ApiAbuseFilterCheckSyntax",
+		"abusefilterevalexpression": "ApiAbuseFilterEvalExpression",
+		"abusefilterunblockautopromote": "ApiAbuseFilterUnblockAutopromote",
+		"abusefiltercheckmatch": "ApiAbuseFilterCheckMatch"
+	},
+	"APIListModules": {
+		"abuselog": "ApiQueryAbuseLog",
+		"abusefilters": "ApiQueryAbuseFilters"
+	},
+	"MessagesDirs": {
+		"AbuseFilter": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"AbuseFilterAliases": "AbuseFilter.alias.php"
+	},
+	"AutoloadClasses": {
+		"AbuseFilter": "AbuseFilter.class.php",
+		"AbuseFilterParser": "AbuseFilter.parser.php",
+		"AbuseFilterTokenizer": "AbuseFilterTokenizer.php",
+		"AbuseFilterHooks": "AbuseFilter.hooks.php",
+		"SpecialAbuseLog": "special/SpecialAbuseLog.php",
+		"AbuseLogPager": "special/SpecialAbuseLog.php",
+		"SpecialAbuseFilter": "special/SpecialAbuseFilter.php",
+		"AbuseLogHitFormatter": "AbuseLogHitFormatter.php",
+		"AbuseFilterViewList": "Views/AbuseFilterViewList.php",
+		"AbuseFilterPager": "Views/AbuseFilterViewList.php",
+		"GlobalAbuseFilterPager": "Views/AbuseFilterViewList.php",
+		"AbuseFilterView": "Views/AbuseFilterView.php",
+		"AbuseFilterViewEdit": "Views/AbuseFilterViewEdit.php",
+		"AbuseFilterViewTools": "Views/AbuseFilterViewTools.php",
+		"AbuseFilterViewHistory": "Views/AbuseFilterViewHistory.php",
+		"AbuseFilterHistoryPager": "Views/AbuseFilterViewHistory.php",
+		"AbuseFilterViewRevert": "Views/AbuseFilterViewRevert.php",
+		"AbuseFilterViewTestBatch": "Views/AbuseFilterViewTestBatch.php",
+		"AbuseFilterViewExamine": "Views/AbuseFilterViewExamine.php",
+		"AbuseFilterExaminePager": "Views/AbuseFilterViewExamine.php",
+		"AbuseFilterChangesList": "Views/AbuseFilterView.php",
+		"AbuseFilterViewDiff": "Views/AbuseFilterViewDiff.php",
+		"TableDiffFormatterFullContext": "Views/AbuseFilterViewDiff.php",
+		"AbuseFilterViewImport": "Views/AbuseFilterViewImport.php",
+		"AbuseFilterVariableHolder": "AbuseFilterVariableHolder.php",
+		"AFComputedVariable": "AbuseFilterVariableHolder.php",
+		"AFPData": "AbuseFilter.parser.php",
+		"AFPException": "AbuseFilter.parser.php",
+		"AFPParserState": "AbuseFilter.parser.php",
+		"AFPToken": "AbuseFilter.parser.php",
+		"AFPUserVisibleException": "AbuseFilter.parser.php",
+		"ApiQueryAbuseLog": "api/ApiQueryAbuseLog.php",
+		"ApiQueryAbuseFilters": "api/ApiQueryAbuseFilters.php",
+		"ApiAbuseFilterCheckSyntax": "api/ApiAbuseFilterCheckSyntax.php",
+		"ApiAbuseFilterEvalExpression": "api/ApiAbuseFilterEvalExpression.php",
+		"ApiAbuseFilterUnblockAutopromote": "api/ApiAbuseFilterUnblockAutopromote.php",
+		"ApiAbuseFilterCheckMatch": "api/ApiAbuseFilterCheckMatch.php"
+	},
+	"ResourceModules": {
+		"ext.abuseFilter": {
+			"position": "top",
+			"styles": "ext.abuseFilter.css"
+		},
+		"ext.abuseFilter.edit": {
+			"scripts": "ext.abuseFilter.edit.js",
+			"messages": [
+				"abusefilter-edit-syntaxok",
+				"abusefilter-edit-syntaxerr",
+				"abusefilter-http-error",
+				"unknown-error"
+			],
+			"dependencies": [
+				"mediawiki.util",
+				"mediawiki.api",
+				"jquery.textSelection",
+				"jquery.spinner"
+			]
+		},
+		"ext.abuseFilter.tools": {
+			"scripts": "ext.abuseFilter.tools.js",
+			"messages": [
+				"abusefilter-reautoconfirm-notallowed",
+				"abusefilter-reautoconfirm-none",
+				"abusefilter-reautoconfirm-done",
+				"abusefilter-http-error",
+				"unknown-error"
+			],
+			"dependencies": [
+				"mediawiki.api",
+				"mediawiki.notify",
+				"user.tokens",
+				"jquery.spinner"
+			]
+		},
+		"ext.abuseFilter.examine": {
+			"scripts": "ext.abuseFilter.examine.js",
+			"messages": [
+				"abusefilter-examine-match",
+				"abusefilter-examine-nomatch",
+				"abusefilter-examine-syntaxerror",
+				"abusefilter-examine-notfound",
+				"abusefilter-mustbeeditor",
+				"abusefilter-http-error",
+				"unknown-error"
+			],
+			"dependencies": [
+				"jquery.spinner",
+				"mediawiki.api"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "modules",
+		"remoteExtPath": "AbuseFilter/modules"
+	},
+	"Hooks": {
+		"EditFilterMergedContent": "AbuseFilterHooks::onEditFilterMergedContent",
+		"GetAutoPromoteGroups": "AbuseFilterHooks::onGetAutoPromoteGroups",
+		"AbortMove": "AbuseFilterHooks::onAbortMove",
+		"MovePageCheckPermissions": "AbuseFilterHooks::onMovePageCheckPermissions",
+		"AbortNewAccount": "AbuseFilterHooks::onAbortNewAccount",
+		"AbortAutoAccount": "AbuseFilterHooks::onAbortAutoAccount",
+		"ArticleDelete": "AbuseFilterHooks::onArticleDelete",
+		"RecentChange_save": "AbuseFilterHooks::onRecentChangeSave",
+		"ListDefinedTags": "AbuseFilterHooks::onListDefinedTags",
+		"ChangeTagsListActive": "AbuseFilterHooks::onChangeTagsListActive",
+		"LoadExtensionSchemaUpdates": "AbuseFilterHooks::onLoadExtensionSchemaUpdates",
+		"ContributionsToolLinks": "AbuseFilterHooks::onContributionsToolLinks",
+		"UploadVerifyFile": "AbuseFilterHooks::onUploadVerifyFile",
+		"MakeGlobalVariablesScript": "AbuseFilterHooks::onMakeGlobalVariablesScript",
+		"ArticleSaveComplete": "AbuseFilterHooks::onArticleSaveComplete",
+		"APIEditBeforeSave": "AbuseFilterHooks::onAPIEditBeforeSave",
+		"UserMergeAccountFields": "AbuseFilterHooks::onUserMergeAccountFields",
+		"ParserOutputStashForEdit": "AbuseFilterHooks::onParserOutputStashForEdit",
+		"UnitTestsList": "AbuseFilterHooks::onUnitTestsList"
+	},
+	"config": {
+		"@doc": "see AbuseFilter.php",
+		"AbuseFilterAvailableActions": [
+			"flag",
+			"throttle",
+			"warn",
+			"disallow",
+			"blockautopromote",
+			"block",
+			"degroup",
+			"tag"
+		],
+		"AbuseFilterConditionLimit": 1000,
+		"AbuseFilterEmergencyDisableThreshold": {
+			"default": 0.05,
+			"_merge_strategy": "array_plus"
+		},
+		"AbuseFilterEmergencyDisableCount": {
+			"default": 2,
+			"_merge_strategy": "array_plus"
+		},
+		"AbuseFilterEmergencyDisableAge": {
+			"default": 86400,
+			"_merge_strategy": "array_plus"
+		},
+		"AbuseFilterParserClass": "AbuseFilterParser",
+		"AbuseFilterRestrictedActions": [
+			"block",
+			"degroup",
+			"blockautopromote",
+			"rangeblock"
+		],
+		"AbuseFilterNotifications": false,
+		"AbuseFilterNotificationsPrivate": false,
+		"AbuseFilterCentralDB": null,
+		"AbuseFilterIsCentral": false,
+		"AbuseFilterDisallowGlobalLocalBlocks": false,
+		"AbuseFilterBlockDuration": "indefinite",
+		"AbuseFilterAnonBlockDuration": null,
+		"AbuseFilterCustomActionsHandlers": [],
+		"AbuseFilterValidGroups": [
+			"default"
+		],
+		"AbuseFilterDefaultWarningMessage": {
+			"default": "abusefilter-warning",
+			"_merge_strategy": "array_plus"
+		},
+		"AbuseFilterLogIPMaxAge": 7776000,
+		"AbuseFilterProfile": false
+	},
+	"load_composer_autoloader": true,
+	"manifest_version": 1
+}
