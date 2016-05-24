@@ -40,7 +40,8 @@
 			"Macofe",
 			"Ryo567",
 			"AlvaroMolina",
-			"Matma Rex"
+			"Matma Rex",
+			"Indiralena"
 		]
 	},
 	"abusefilter-desc": "Aplicar automáticamente heurísticas para ediciones",
@@ -383,7 +384,7 @@
 	"abusefilter-revert-filter": "Filtro:",
 	"abusefilter-revert-preview-intro": "Debajo están las acciones tomadas por el filtro antiabusos que serán revertidas por esta acción. Por favor verifícalas cuidadosamente, y haz clic en \"{{int:abusefilter-revert-confirm}}\" para confirmar tu selección.",
 	"abusefilter-revert-confirm": "Confirmar",
-	"abusefilter-revert-success": "Has revertido todas las acciones tomadas por el filtro de abuso debido al [[Special:AbuseFilter/$1|filtro $2]].",
+	"abusefilter-revert-success": "Has revertido todas las acciones tomadas por el filtro antiabusos debido al [[Special:AbuseFilter/$1|filtro $2]].",
 	"abusefilter-revert-reason": "Reversión automática de todas las acciones tomadas por el filtro antiabusos debido al filtro $1.\nRazón dada: $2",
 	"abusefilter-revert-reasonfield": "Motivo:",
 	"abusefilter-test": "Pruebe un filtro contra ediciones previas",
