@@ -49,7 +49,7 @@
 	"abusefilter-log-search-submit": "Search",
 	"abusefilter-log-entry": "$1: $2 triggered an abuse filter, performing the action \"$3\" on $4.\nActions taken: $5;\nFilter description: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 triggered an abuse filter, performing the action \"$3\" on $4.\nActions taken: $5;\nFilter description: $6 ($7)",
-	"abusefilter-log-detailedentry-meta": "$1: $2 triggered $3, performing the action \"$4\" on $5.\nActions taken: $6;\nFilter description: $7 ($8)",
+	"abusefilter-log-detailedentry-meta": "$1: $2 triggered $3, {{GENDER:$9|performing}} the action \"$4\" on $5.\nActions taken: $6;\nFilter description: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "global filter $1",
 	"abusefilter-log-detailedentry-local": "filter $1",
 	"abusefilter-log-detailslink": "details",
