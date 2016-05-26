@@ -18,7 +18,8 @@
 			"Olion",
 			"DonDrakon",
 			"Piramidion",
-			"Matma Rex"
+			"Matma Rex",
+			"Максим Підліснюк"
 		]
 	},
 	"abusefilter-desc": "Застосовує до редагувань автоматичні евристики.",
@@ -36,7 +37,7 @@
 	"abusefilter-degroupreason": "Права автоматично відібрані фільтром редагувань. Опис правила: $1",
 	"abusefilter-accountreserved": "Цей обліковий запис є зарезервованим для використання фільтром редагувань.",
 	"right-abusefilter-modify": "налаштовування фільтрів зловживань",
-	"right-abusefilter-view": "перегляд фільтрів зловживань",
+	"right-abusefilter-view": "перегляд фільтрів редагувань",
 	"right-abusefilter-log": "перегляд журналу зловживань",
 	"right-abusefilter-log-detail": "перегляд детальних записів журналу зловживань",
 	"right-abusefilter-private": "перегляд приватних даних у журналі зловживань",
