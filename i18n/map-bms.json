@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"StefanusRA"
+			"StefanusRA",
+			"Mbrt"
 		]
 	},
 	"abusefilter-desc": "Terapna pamriksan heuristik otomatis nang suntingan",
 	"abusefilter": "Pangaturan saringan planggaran",
 	"abuselog": "Log planggaran",
-	"abusefilter-mustbeeditor": "Kanggo alesan kamanan, mung panganggo sing duwè hak ngowah saringan planggaran sing teyeng nganggo antarmuka kiye.",
+	"abusefilter-mustbeeditor": "Kanggo alesan kamanan, mung panganggo sing duwe hak ngowah saringan planggaran sing teyeng nggo ngowaih kiye.",
 	"abusefilter-blocker": "Saringan planggaran",
 	"abusefilter-degroupreason": "Hak akses dibedhul otomatis nang saringan planggaran.\nKatrangan aturan: $1",
 	"abusefilter-accountreserved": "Jeneng akun kiye wis dipesen nggo dienggo nang saringan planggaran.",
@@ -85,7 +86,7 @@
 	"abusefilter-enabled": "Diurubna",
 	"abusefilter-deleted": "Dibusek",
 	"abusefilter-disabled": "Dinonaktifna",
-	"abusefilter-hitcount": "$1 {{PLURAL:$1|suntingan|suntingan}}",
+	"abusefilter-hitcount": "$1 {{PLURAL:$1|wong$1|wong}}",
 	"abusefilter-new": "Gawé saringan anyar",
 	"abusefilter-return": "Mbalik ming manajemen saringan",
 	"abusefilter-status-global": "Global",
@@ -94,9 +95,10 @@
 	"abusefilter-list-options-deleted-only": "Tidokna saringan sing wis dibusek baen",
 	"abusefilter-list-options-deleted-hide": "Umpetna saringan sing wis dibusek",
 	"abusefilter-list-options-deleted-show": "Pelokna saringan sing wis dibusek",
-	"abusefilter-list-options-scope": "Tidokna saringan sekang:",
-	"abusefilter-list-options-scope-local": "Wiki lokal",
-	"abusefilter-list-options-scope-global": "Aturan global",
+	"abusefilter-list-options-scope": "Tidokna saringan:",
+	"abusefilter-list-options-scope-local": "Kur kewicaksanaan lokal",
+	"abusefilter-list-options-scope-global": "Aturane global",
+	"abusefilter-list-options-scope-all": "Kewicaksanaan lokal lan global",
 	"abusefilter-list-options-disabled": "Saringan dipateni:",
 	"abusefilter-tools-reautoconfirm-user": "Panganggo:",
 	"abusefilter-edit-new": "Saringan anyar",
@@ -106,7 +108,7 @@
 	"abusefilter-edit-hidden": "Umpetna rinciane saringan kiye sekang publik",
 	"abusefilter-edit-global": "Penyaring global",
 	"abusefilter-edit-rules": "Kahanan:",
-	"abusefilter-edit-notes": "Cathetan:\n:''(pribadi)''",
+	"abusefilter-edit-notes": "Cathetan:",
 	"abusefilter-edit-lastmod": "Saring owahan pungkasan:",
 	"abusefilter-edit-lastmod-text": "$1 nang $2",
 	"abusefilter-edit-hitcount": "Itungan saringan:",
@@ -132,6 +134,7 @@
 	"abusefilter-edit-builder-op-bool-not": "Dudu (!)",
 	"abusefilter-edit-builder-op-bool-and": "Lan (&)",
 	"abusefilter-edit-builder-op-bool-or": "Utawa (|)",
+	"abusefilter-edit-builder-group-funcs": "Fungsine",
 	"abusefilter-edit-builder-vars-article-id": "ID kaca",
 	"abusefilter-edit-builder-vars-article-ns": "Bilikjeneng kaca",
 	"abusefilter-edit-builder-vars-article-text": "Judhul kaca (ora nganggo bilikjeneng)",
