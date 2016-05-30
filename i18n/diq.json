@@ -7,7 +7,8 @@
 			"Marmase",
 			"Mirzali",
 			"Xoser",
-			"Matma Rex"
+			"Matma Rex",
+			"Kumkumuk"
 		]
 	},
 	"abusefilter-desc": "Vurnayışa rê terzê otomatik vınakari dezge keno",
@@ -263,7 +264,7 @@
 	"abusefilter-edit-builder-vars-movedto-prefixedtext": "Sernameyê ripelê destinasyonî ke neqil biyo",
 	"abusefilter-edit-builder-vars-user-editcount": "Amarê karberî bivurne",
 	"abusefilter-edit-builder-vars-user-age": "Serre hesabê karberî",
-	"abusefilter-edit-builder-vars-user-name": "Nameyê hesab ê karberî",
+	"abusefilter-edit-builder-vars-user-name": "Namey hesab dê karberi",
 	"abusefilter-edit-builder-vars-user-groups": "Grubê ke karber tedero (êyê ke tedero inan ra piya)",
 	"abusefilter-edit-builder-vars-user-blocked": "Blokeya kerberi esta çıniya",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Wextê ke adresê emaîlî konfirme biy",

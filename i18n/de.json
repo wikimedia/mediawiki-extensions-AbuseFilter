@@ -72,7 +72,7 @@
 	"abusefilter-log-search-submit": "Suchen",
 	"abusefilter-log-entry": "$1: $2 löste durch die Aktion „$3“ auf „$4“ einen Missbrauchsfilter aus.\nFilteraktion: „$5“;\nFilterbeschreibung: „$6“",
 	"abusefilter-log-entry-withdiff": "$1: $2 hat mit der Aktion „$3“ auf der Seite $4 einen Missbrauchsfilter ausgelöst.\nUnternommene Aktionen: $5;\nFilterbeschreibung: $6 ($7)",
-	"abusefilter-log-detailedentry-meta": "$1: $2 löste durch die Aktion „$4“ auf die Seite „$5“ den $3 aus.\nErgriffene Maßnahmen: $6;\nFilterbeschreibung: $7 ($8)",
+	"abusefilter-log-detailedentry-meta": "$1: $2 {{GENDER:$9|löste}} durch die Aktion „$4“ auf die Seite „$5“ den $3 aus.\nErgriffene Maßnahmen: $6;\nFilterbeschreibung: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "globalen Filter $1",
 	"abusefilter-log-detailedentry-local": "Filter $1",
 	"abusefilter-log-detailslink": "Details",
