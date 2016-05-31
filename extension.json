@@ -74,6 +74,7 @@
 		"AbuseFilterParser": "AbuseFilter.parser.php",
 		"AbuseFilterTokenizer": "AbuseFilterTokenizer.php",
 		"AbuseFilterHooks": "AbuseFilter.hooks.php",
+		"AbuseFilterPreAuthenticationProvider": "AbuseFilterPreAuthenticationProvider.php",
 		"SpecialAbuseLog": "special/SpecialAbuseLog.php",
 		"AbuseLogPager": "special/SpecialAbuseLog.php",
 		"SpecialAbuseFilter": "special/SpecialAbuseFilter.php",
@@ -165,13 +166,12 @@
 		"localBasePath": "modules",
 		"remoteExtPath": "AbuseFilter/modules"
 	},
+	"callback": "AbuseFilterHooks::onRegistration",
 	"Hooks": {
 		"EditFilterMergedContent": "AbuseFilterHooks::onEditFilterMergedContent",
 		"GetAutoPromoteGroups": "AbuseFilterHooks::onGetAutoPromoteGroups",
 		"AbortMove": "AbuseFilterHooks::onAbortMove",
 		"MovePageCheckPermissions": "AbuseFilterHooks::onMovePageCheckPermissions",
-		"AbortNewAccount": "AbuseFilterHooks::onAbortNewAccount",
-		"AbortAutoAccount": "AbuseFilterHooks::onAbortAutoAccount",
 		"ArticleDelete": "AbuseFilterHooks::onArticleDelete",
 		"RecentChange_save": "AbuseFilterHooks::onRecentChangeSave",
 		"ListDefinedTags": "AbuseFilterHooks::onListDefinedTags",
