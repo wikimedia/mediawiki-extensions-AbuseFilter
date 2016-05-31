@@ -88,7 +88,7 @@
 	"abusefilter-log-search-submit": "Buscar",
 	"abusefilter-log-entry": "$1: $2 disparó un filtro antiabusos, realizando la acción \"$3\" en $4.\nAcciones tomadas: $5;\nDescripción del filtro: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 disparó un filtro antiabuso, realizando la acción \"$3\" en $4.\nAcciones tomadas: $5;\nDescripción del filtro: $6 ($7)",
-	"abusefilter-log-detailedentry-meta": "$1: $2 disparó $3 realizando la acción \"$4\" en $5.\nAcciones tomadas: $6;\nDescripción del filtro: $7 ($8)",
+	"abusefilter-log-detailedentry-meta": "$1: $2 disparó $3 {{GENDER:$9|realizando}} la acción \"$4\" en $5.\nAcciones tomadas: $6;\nDescripción del filtro: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "filtro global $1",
 	"abusefilter-log-detailedentry-local": "filtro $1",
 	"abusefilter-log-detailslink": "detalles",

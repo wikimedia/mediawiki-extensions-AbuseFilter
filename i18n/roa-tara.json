@@ -51,7 +51,7 @@
 	"abusefilter-log-search-submit": "Cirche",
 	"abusefilter-log-entry": "$1: $2 innescate 'nu filtre de le abbuse, ca combie l'aziune \"$3\" on $4.\nAziune fatte: $5;\nDescriziune d'u filtre: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 tracciate da 'nu filtre de abbuse, combletanne l'azione \"$3\" sus a $4.\nAziune pigghiate: $5;\nDescrizione d'u filtre: $6 ($7)",
-	"abusefilter-log-detailedentry-meta": "$1: $2 innescate $3, de combiere l'aziune \"$4\" on $5.\nAziune fatte: $6;\nDescriziune d'u filtre: $7 ($8)",
+	"abusefilter-log-detailedentry-meta": "$1: $2 innescate $3, {{GENDER:$9|da fà}} l'azione \"$4\" sus a $5.\nAziune fatte: $6;\nDescriziune d'u filtre: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "filtre globale $1",
 	"abusefilter-log-detailedentry-local": "filtre $1",
 	"abusefilter-log-detailslink": "dettaglie",
