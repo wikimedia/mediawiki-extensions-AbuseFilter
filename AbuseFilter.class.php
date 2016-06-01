@@ -177,7 +177,7 @@ class AbuseFilter {
 				$msgName = $msgOverrides[$name];
 			}
 
-			$msg = wfMessage( $msgName )->parse();
+			$msg = $context->msg( $msgName )->parse();
 			$title = Title::newFromText( $page );
 
 			if ( $name == $pageType ) {
@@ -187,8 +187,8 @@ class AbuseFilter {
 			}
 		}
 
-		$linkStr = wfMessage( 'parentheses', $context->getLanguage()->pipeList( $links ) )->text();
-		$linkStr = wfMessage( 'abusefilter-topnav' )->parse() . " $linkStr";
+		$linkStr = $context->msg( 'parentheses', $context->getLanguage()->pipeList( $links ) )->text();
+		$linkStr = $context->msg( 'abusefilter-topnav' )->parse() . " $linkStr";
 
 		$linkStr = Xml::tags( 'div', array( 'class' => 'mw-abusefilter-navigation' ), $linkStr );
 
