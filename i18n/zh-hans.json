@@ -85,7 +85,7 @@
 	"abusefilter-log-search-submit": "搜索",
 	"abusefilter-log-entry": "$1：$2在$4执行操作“$3”时触发了过滤器。采取的行动：$5。过滤器说明：$6",
 	"abusefilter-log-entry-withdiff": "$1：$2在$4执行操作“$3”时触发了过滤器。\n采取的行动：$5；\n过滤器说明：$6（$7）",
-	"abusefilter-log-detailedentry-meta": "$1：$2在$5执行操作“$4”时触发了$3。采取的行动：$6；过滤器说明：$7（$8）",
+	"abusefilter-log-detailedentry-meta": "$1：$2在$5{{GENDER:$9|执行}}操作“$4”时触发了$3。采取的行动：$6；过滤器描述：$7（$8）",
 	"abusefilter-log-detailedentry-global": "全域过滤器$1",
 	"abusefilter-log-detailedentry-local": "过滤器$1",
 	"abusefilter-log-detailslink": "详情",

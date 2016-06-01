@@ -51,7 +51,7 @@
 	"abusefilter-log-search-submit": "Procurar",
 	"abusefilter-log-entry": "$1: $2 accionou un filtro de abusos, ao levar a cabo a acción \"$3\" na páxina \"$4\".\nMedidas tomadas: $5.\nDescrición do filtro: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 accionou un filtro de abusos, ao levar a cabo a acción \"$3\" na páxina \"$4\".\nMedidas tomadas: $5.\nDescrición do filtro: $6 ($7)",
-	"abusefilter-log-detailedentry-meta": "$1: $2 accionou $3, ao levar a cabo a acción \"$4\" na páxina \"$5\".\nMedidas tomadas: $6.\nDescrición do filtro: $7 ($8)",
+	"abusefilter-log-detailedentry-meta": "$1: $2 accionou $3, ao {{GENDER:$9levar}} a cabo a acción \"$4\" na páxina \"$5\".\nMedidas tomadas: $6.\nDescrición do filtro: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "filtro global $1",
 	"abusefilter-log-detailedentry-local": "filtro $1",
 	"abusefilter-log-detailslink": "detalles",
