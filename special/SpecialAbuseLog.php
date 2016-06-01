@@ -19,6 +19,10 @@ class SpecialAbuseLog extends SpecialPage {
 		parent::__construct( 'AbuseLog', 'abusefilter-log' );
 	}
 
+	public function doesWrites() {
+		return true;
+	}
+
 	public function execute( $parameter ) {
 		$out = $this->getOutput();
 		$request = $this->getRequest();
