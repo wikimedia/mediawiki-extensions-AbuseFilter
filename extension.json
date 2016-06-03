@@ -165,6 +165,7 @@
 		"localBasePath": "modules",
 		"remoteExtPath": "AbuseFilter/modules"
 	},
+	"callback": "AbuseFilterHooks::onRegistration",
 	"Hooks": {
 		"EditFilterMergedContent": "AbuseFilterHooks::onEditFilterMergedContent",
 		"GetAutoPromoteGroups": "AbuseFilterHooks::onGetAutoPromoteGroups",
@@ -188,16 +189,18 @@
 	},
 	"config": {
 		"@doc": "see AbuseFilter.php",
-		"AbuseFilterAvailableActions": [
-			"flag",
-			"throttle",
-			"warn",
-			"disallow",
-			"blockautopromote",
-			"block",
-			"degroup",
-			"tag"
-		],
+		"AbuseFilterActions": {
+			"flag": true,
+			"throttle": true,
+			"warn": true,
+			"disallow": true,
+			"blockautopromote": true,
+			"block": true,
+			"rangeblock": false,
+			"degroup": true,
+			"tag": true,
+			"_merge_strategy": "array_plus"
+		},
 		"AbuseFilterConditionLimit": 1000,
 		"AbuseFilterEmergencyDisableThreshold": {
 			"default": 0.05,
@@ -212,12 +215,18 @@
 			"_merge_strategy": "array_plus"
 		},
 		"AbuseFilterParserClass": "AbuseFilterParser",
-		"AbuseFilterRestrictedActions": [
-			"block",
-			"degroup",
-			"blockautopromote",
-			"rangeblock"
-		],
+		"AbuseFilterRestrictions": {
+			"flag": false,
+			"throttle": false,
+			"warn": false,
+			"disallow": false,
+			"blockautopromote": true,
+			"block": true,
+			"rangeblock": true,
+			"degroup": true,
+			"tag": false,
+			"_merge_strategy": "array_plus"
+		},
 		"AbuseFilterNotifications": false,
 		"AbuseFilterNotificationsPrivate": false,
 		"AbuseFilterCentralDB": null,

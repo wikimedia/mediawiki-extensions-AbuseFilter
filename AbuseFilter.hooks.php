@@ -8,6 +8,20 @@ class AbuseFilterHooks {
 	// Hooray!
 
 	/**
+	 * Called right after configuration has been loaded.
+	 */
+	public static function onRegistration() {
+		global $wgAbuseFilterAvailableActions, $wgAbuseFilterRestrictedActions;
+
+		if ( isset( $wgAbuseFilterAvailableActions ) || isset( $wgAbuseFilterRestrictedActions ) ) {
+			wfWarn( '$wgAbuseFilterAvailableActions and $wgAbuseFilterRestrictedActions have been'
+				. 'removed. Please use $wgAbuseFilterActions and $wgAbuseFilterRestrictions'
+				. 'instead. The format is the same except the action names are the keys of the'
+				. 'array and the values are booleans.' );
+		}
+	}
+
+	/**
 	 * Entry point for the APIEditBeforeSave hook.
 	 *
 	 * This is needed to give a useful error for API edits on MediaWiki before 1.25 (T34216).

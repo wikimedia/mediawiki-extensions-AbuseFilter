@@ -32,11 +32,13 @@ if ( function_exists( 'wfLoadExtension' ) ) {
 // This code is never executed.
 
 /**
- * The possible actions that can be taken by abuse filters. Additional possible actions:
- * 'rangeblock'
- * @var string[]
+ * The possible actions that can be taken by abuse filters.
+ *
+ * @var array [action name => is enabled?] At the end of setup, false values will be filtered out
  */
-$wgAbuseFilterAvailableActions = [ /* See extension.json */ ];
+$wgAbuseFilterActions = [ /* See extension.json */ ];
+
+$wgAbuseFilterAvailableActions = 'REMOVED'; // use $wgAbuseFilterActions instead
 
 /**
  * The maximum number of 'conditions' that can be used each time the filters are run against a
@@ -58,10 +60,14 @@ $wgAbuseFilterEmergencyDisableAge['default'] = 86400; // One day.
 $wgAbuseFilterParserClass = 'AbuseFilterParser';
 
 /**
- * Users must have the "abusefilter-modify-restricted" user right as well as "abusefilter-modify"
- * in order to create or modify filters which carry out these actions.
+ * Do users need "abusefilter-modify-restricted" user right as well as "abusefilter-modify"
+ * in order to create or modify filters which carry out this action?
+ *
+ * @var array action name => is restricted?
  */
-$wgAbuseFilterRestrictedActions = [ /* See extension.json */ ];
+$wgAbuseFilterRestrictions = [ /* See extension.json */ ];
+
+$wgAbuseFilterRestrictedActions = 'REMOVED'; // use $wgAbuseFilterRestrictions instead
 
 /**
  * Allows to configure the extension to send hit notifications to Special:RecentChanges or UDP.
