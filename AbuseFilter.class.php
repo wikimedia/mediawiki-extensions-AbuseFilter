@@ -866,10 +866,9 @@ class AbuseFilter {
 	 * @param $vars AbuseFilterVariableHolder
 	 * @param $title Title
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
-	 * @param User $user The user performing the action; defaults to $wgUser
 	 * @return Status
 	 */
-	public static function filterAction( $vars, $title, $group = 'default', $user = null ) {
+	public static function filterAction( $vars, $title, $group = 'default' ) {
 		global $wgUser, $wgTitle, $wgRequest;
 
 		$context = RequestContext::getMain();
@@ -878,10 +877,6 @@ class AbuseFilter {
 		$oldWgTitle = $wgTitle;
 		if ( !$wgTitle ) {
 			$wgTitle = SpecialPage::getTitleFor( 'AbuseFilter' );
-		}
-
-		if ( !$user ) {
-			$user = $wgUser;
 		}
 
 		// Add vars from extensions
@@ -911,7 +906,7 @@ class AbuseFilter {
 
 			// If $wgUser isn't safe to load (e.g. a failure during
 			// AbortAutoAccount), create a dummy anonymous user instead.
-			$user = $user->isSafeToLoad() ? $user : new User;
+			$user = $wgUser->isSafeToLoad() ? $wgUser : new User;
 
 			// Create a template
 			$log_template = array(
