@@ -338,7 +338,7 @@
 	"abusefilter-action-disallow": "Disallow",
 	"abusefilter-revert-title": "Revert all changes by filter $1",
 	"abusefilter-revert-intro": "This form allows you to revert all changes made by the abuse filter due to filter $1.\nPlease exercise care in using this tool.",
-	"abusefilter-revert-preview-item": "$1: $2 made a $3 on $4.\nActions to be reverted: $5 ($6)",
+	"abusefilter-revert-preview-item": "$1: $2 {{GENDER:$7|made}} a $3 on $4.\nActions to be reverted: $5 ($6)",
 	"abusefilter-revert-search-legend": "Select abuse filter actions to be reverted",
 	"abusefilter-revert-periodstart": "Period start:",
 	"abusefilter-revert-periodend": "Period end:",

@@ -74,7 +74,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 							array(),
 							array( 'details' => $result['id'] )
 						)
-				)->parse();
+					)->params( $result['user'] )->parse();
 				$list[] = Xml::tags( 'li', null, $msg );
 			}
 
