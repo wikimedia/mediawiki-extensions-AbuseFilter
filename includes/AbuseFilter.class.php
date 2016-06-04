@@ -2301,38 +2301,6 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $page
-	 * @param $type
-	 * @param Title $title
-	 * @param Skin $sk
-	 * @param array $args
-	 * @param bool $filterWikilinks
-	 * @return String
-	 */
-	static function modifyActionText( $page, $type, $title, $sk, $args, $filterWikilinks ) {
-		list( $history_id, $filter_id ) = $args;
-		$details_title = SpecialPage::getTitleFor(
-			'AbuseFilter',
-			"history/$filter_id/diff/prev/$history_id"
-		);
-		if ( !$filterWikilinks ) { // Plaintext? Bug 43105
-			return wfMessage(
-				'abusefilter-log-entry-modify',
-				'[[' . $title->getFullText() . ']]',
-				'[[' . $details_title->getFullText() . ']]' )->text();
-		}
-
-		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
-		$filter_link = $linkRenderer->makeLink( $title );
-
-		$details_text = wfMessage( 'abusefilter-log-detailslink' )->parse();
-		$details_link = $linkRenderer->makeLink( $details_title, new HtmlArmor( $details_text ) );
-
-		return wfMessage( 'abusefilter-log-entry-modify' )
-			->rawParams( $filter_link, $details_link )->parse();
-	}
-
-	/**
 	 * @param string $action
 	 * @param string[] $parameters
 	 * @return string

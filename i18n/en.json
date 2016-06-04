@@ -395,7 +395,7 @@
 	"abusefilter-topnav-import": "Import filter",
 	"abusefilter-log-name": "Abuse filter log",
 	"abusefilter-log-header": "This log shows a summary of changes made to filters.\nFor full details, see [[Special:AbuseFilter/history|the list]] of recent filter changes.",
-	"abusefilter-log-entry-modify": "modified $1 ($2)",
+	"abusefilter-logentry-modify": "$1 {{GENDER:$2|modified}} $4 ($5)",
 	"abusefilter-log-noresults": "No results",
 	"abusefilter-diff-title": "Differences between versions",
 	"abusefilter-diff-item": "Item",

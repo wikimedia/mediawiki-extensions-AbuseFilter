@@ -327,8 +327,15 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 
 			// Logging
-			$lp = new LogPage( 'abusefilter' );
-			$lp->addEntry( 'modify', $this->getTitle( $new_id ), '', [ $history_id, $new_id ] );
+			$logEntry = new ManualLogEntry( 'abusefilter', 'modify' );
+			$logEntry->setPerformer( $user );
+			$logEntry->setTarget( $this->getTitle( $new_id ) );
+			$logEntry->setParameters( [
+				'historyId' => $history_id,
+				'newId' => $new_id
+			] );
+			$logid = $logEntry->insert();
+			$logEntry->publish( $logid );
 
 			// Purge the tag list cache so the fetchAllTags hook applies tag changes
 			if ( isset( $actions['tag'] ) ) {

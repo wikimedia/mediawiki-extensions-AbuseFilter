@@ -45,11 +45,8 @@
 		"suppress/unhide-afl": "abusefilter-logentry-unsuppress"
 	},
 	"LogActionsHandlers": {
-		"abusefilter/modify": [
-			"AbuseFilter",
-			"modifyActionText"
-		],
-		"abusefilter/hit": "AbuseLogHitFormatter"
+		"abusefilter/hit": "AbuseLogHitFormatter",
+		"abusefilter/modify": "AbuseFilterModifyLogFormatter"
 	},
 	"APIModules": {
 		"abusefilterchecksyntax": "ApiAbuseFilterCheckSyntax",
@@ -80,6 +77,7 @@
 		"AbuseLogPager": "includes/special/SpecialAbuseLog.php",
 		"SpecialAbuseFilter": "includes/special/SpecialAbuseFilter.php",
 		"AbuseLogHitFormatter": "includes/AbuseLogHitFormatter.php",
+		"AbuseFilterModifyLogFormatter": "includes/AbuseFilterModifyLogFormatter.php",
 		"AbuseFilterViewList": "includes/Views/AbuseFilterViewList.php",
 		"AbuseFilterPager": "includes/Views/AbuseFilterViewList.php",
 		"GlobalAbuseFilterPager": "includes/Views/AbuseFilterViewList.php",

@@ -426,7 +426,7 @@
 	"abusefilter-topnav-import": "Used as link text in the navigation toolbar.\n\nThe link points to [[Special:AbuseLog]].",
 	"abusefilter-log-name": "{{doc-logpage}}",
 	"abusefilter-log-header": "Used as description on [[Special:Log/abusefilter]]",
-	"abusefilter-log-entry-modify": "Parameters:\n* $1 - a link to the filter\n* $2 - a link to the filter change details",
+	"abusefilter-logentry-modify": "Parameters:\n* $1 - a link to a user page with a user name as link text, followed by a series of related links\n* $2 - raw username, for GENDER support\n* $3 - (unused)\n* $4 - text {{msg-mw|abusefilter-log-detailedentry-local}} linked to the modified filter\n* $5 - text {{msg-mw|abusefilter-log-detailslink}} linked to the filter change details",
 	"abusefilter-log-noresults": "{{Identical|No result}}",
 	"abusefilter-diff-title": "Similar to {{msg-mw|Difference}}",
 	"abusefilter-diff-item": "{{Identical|Item}}",
