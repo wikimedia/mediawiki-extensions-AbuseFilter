@@ -569,9 +569,8 @@ class SpecialAbuseLog extends SpecialPage {
 				$pageLink,
 				$actions_taken,
 				$parsed_comments,
-				$lang->pipeList( $actionLinks ),
-				$row->afl_user_text
-			)->parse();
+				$lang->pipeList( $actionLinks )
+			)->params( $row->afl_user_text )->parse();
 		} else {
 			if ( $diffLink ) {
 				$msg = 'abusefilter-log-entry-withdiff';
