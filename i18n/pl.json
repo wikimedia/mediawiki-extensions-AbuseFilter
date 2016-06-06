@@ -70,7 +70,7 @@
 	"abusefilter-log-search-submit": "Szukaj",
 	"abusefilter-log-entry": "$1: $2 uruchomił filtr nadużyć, wykonał „$3” na $4.\nPodjęta akcja: $5.\nOpis filtru: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 uruchomił filtr nadużyć, wykonał „$3” na $4.\nPodjęta akcja: $5;\nOpis filtru: $6 ($7)",
-	"abusefilter-log-detailedentry-meta": "$1: $2 uruchomił $3, wykonał „$4” na $5.\nPodjęta akcja: $6.\nOpis filtru: $7 ($8)",
+	"abusefilter-log-detailedentry-meta": "$1: $2 {{GENDER:$9|uruchomił|uruchomił|uruchomił(a)}} $3, wykonując „$4” na $5.\nPodjęta akcja: $6;\nOpis filtru: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "filtr globalny $1",
 	"abusefilter-log-detailedentry-local": "filtr $1",
 	"abusefilter-log-detailslink": "szczegóły",
