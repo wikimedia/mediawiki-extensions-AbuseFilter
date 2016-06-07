@@ -11,7 +11,8 @@
 			"Rv77ax",
 			"C5st4wr6ch",
 			"Arifin.wijaya",
-			"Matma Rex"
+			"Matma Rex",
+			"Rachmat.Wahidi"
 		]
 	},
 	"abusefilter-desc": "Memberlakukan pemeriksaan heuristik otomatis atas kontribusi pengguna.",
@@ -58,7 +59,7 @@
 	"abusefilter-log-search-submit": "Cari",
 	"abusefilter-log-entry": "$1: $2 memicu salah satu filter penyalahgunaan, dengan melakukan \"$3\" pada $4.\nTindakan yang diambil: $5;\nKeterangan filter: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 memicu salah satu filter penyalahgunaan, dengan melakukan \"$3\" pada $4.\nTindakan yang diambil: $5;\nKeterangan filter: $6 ($7)",
-	"abusefilter-log-detailedentry-meta": "!$1: $2 memicu $3, karena melakukan \"$4\" pada $5.\nTindakan yang diambil: $6;\nKeterangan filter: $7 ($8)",
+	"abusefilter-log-detailedentry-meta": "!$1: $2 memicu $3, {{GENDER:$9|melakukan}} tindakan \"$4\" pada $5.\nTindakan yang diambil: $6;\nKeterangan filter: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "filter global $1",
 	"abusefilter-log-detailedentry-local": "filter $1",
 	"abusefilter-log-detailslink": "rincian",
