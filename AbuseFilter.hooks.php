@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Auth\AuthManager;
+
 class AbuseFilterHooks {
 	public static $successful_action_vars = false;
 	/** @var WikiPage|Article|bool */
@@ -11,13 +13,24 @@ class AbuseFilterHooks {
 	 * Called right after configuration has been loaded.
 	 */
 	public static function onRegistration() {
-		global $wgAbuseFilterAvailableActions, $wgAbuseFilterRestrictedActions;
+		global $wgAbuseFilterAvailableActions, $wgAbuseFilterRestrictedActions,
+			$wgDisableAuthManager, $wgAuthManagerAutoConfig;
 
 		if ( isset( $wgAbuseFilterAvailableActions ) || isset( $wgAbuseFilterRestrictedActions ) ) {
 			wfWarn( '$wgAbuseFilterAvailableActions and $wgAbuseFilterRestrictedActions have been'
 				. 'removed. Please use $wgAbuseFilterActions and $wgAbuseFilterRestrictions'
 				. 'instead. The format is the same except the action names are the keys of the'
 				. 'array and the values are booleans.' );
+		}
+
+		if ( class_exists( AuthManager::class ) && !$wgDisableAuthManager ) {
+			$wgAuthManagerAutoConfig['preauth'][AbuseFilterPreAuthenticationProvider::class] = [
+				'class' => AbuseFilterPreAuthenticationProvider::class,
+				'sort' => 5, // run after normal preauth providers to keep the log cleaner
+			];
+		} else {
+			Hooks::register( 'AbortNewAccount', 'AbuseFilterHooks::onAbortNewAccount' );
+			Hooks::register( 'AbortAutoAccount', 'AbuseFilterHooks::onAbortAutoAccount' );
 		}
 	}
 
@@ -387,6 +400,7 @@ class AbuseFilterHooks {
 	 * @param $message
 	 * @param $autocreate bool Indicates whether the account is created automatically.
 	 * @return bool
+	 * @deprecated AbuseFilterPreAuthenticationProvider will take over this functionality
 	 */
 	private static function checkNewAccount( $user, &$message, $autocreate ) {
 		if ( $user->getName() == wfMessage( 'abusefilter-blocker' )->inContentLanguage()->text() ) {
@@ -419,6 +433,7 @@ class AbuseFilterHooks {
 	 * @param $user User
 	 * @param $message
 	 * @return bool
+	 * @deprecated AbuseFilterPreAuthenticationProvider will take over this functionality
 	 */
 	public static function onAbortNewAccount( $user, &$message ) {
 		return self::checkNewAccount( $user, $message, false );
@@ -428,6 +443,7 @@ class AbuseFilterHooks {
 	 * @param $user User
 	 * @param $message
 	 * @return bool
+	 * @deprecated AbuseFilterPreAuthenticationProvider will take over this functionality
 	 */
 	public static function onAbortAutoAccount( $user, &$message ) {
 		// FIXME: ERROR MESSAGE IS SHOWN IN A WEIRD WAY, BEACUSE $message
