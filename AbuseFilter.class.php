@@ -705,10 +705,10 @@ class AbuseFilter {
 		);
 
 		// Categorise consequences by filter.
-		global $wgAbuseFilterRestrictedActions;
+		global $wgAbuseFilterRestrictions;
 		foreach ( $res as $row ) {
 			if ( $row->af_throttled
-				&& in_array( $row->afa_consequence, $wgAbuseFilterRestrictedActions )
+				&& !empty( $wgAbuseFilterRestrictions[$row->afa_consequence] )
 			) {
 				# Don't do the action
 			} elseif ( $row->afa_filter != $row->af_id ) {
@@ -744,7 +744,7 @@ class AbuseFilter {
 
 		$messages = array();
 
-		global $wgOut, $wgAbuseFilterDisallowGlobalLocalBlocks, $wgAbuseFilterRestrictedActions;
+		global $wgOut, $wgAbuseFilterDisallowGlobalLocalBlocks, $wgAbuseFilterRestrictions;
 		foreach ( $actionsByFilter as $filter => $actions ) {
 			// Special-case handling for warnings.
 			$parsed_public_comments = $wgOut->parseInline(
@@ -775,9 +775,7 @@ class AbuseFilter {
 			}
 
 			if ( $wgAbuseFilterDisallowGlobalLocalBlocks && $global_filter ) {
-				foreach ( $wgAbuseFilterRestrictedActions as $blockingAction ) {
-					unset( $actions[$blockingAction] );
-				}
+				$actions = array_diff_key( $actions, array_filter( $wgAbuseFilterRestrictions ) );
 			}
 
 			if ( !empty( $actions['warn'] ) ) {
@@ -812,7 +810,7 @@ class AbuseFilter {
 			}
 
 			// prevent double warnings
-			if ( count( array_intersect( array_keys( $actions ), $wgAbuseFilterRestrictedActions ) ) > 0 &&
+			if ( count( array_intersect_key( $actions, array_filter( $wgAbuseFilterRestrictions ) ) ) > 0 &&
 				!empty( $actions['disallow'] )
 			) {
 				unset( $actions['disallow'] );
@@ -1880,8 +1878,8 @@ class AbuseFilter {
 			}
 		}
 
-		global $wgAbuseFilterAvailableActions;
-		foreach ( $wgAbuseFilterAvailableActions as $action ) {
+		global $wgAbuseFilterActions;
+		foreach ( array_filter( $wgAbuseFilterActions ) as $action => $_ ) {
 			if ( !isset( $actions1[$action] ) && !isset( $actions2[$action] ) ) {
 				// They're both unset
 			} elseif ( isset( $actions1[$action] ) && isset( $actions2[$action] ) ) {

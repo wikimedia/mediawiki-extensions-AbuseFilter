@@ -84,16 +84,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 
 			// Check for restricted actions
-			global $wgAbuseFilterRestrictedActions;
-			$allActions = array_keys( array_merge(
-						array_filter( $actions ),
-						array_filter( $origActions )
-					) );
-
-			if (
-				count( array_intersect(
-						$wgAbuseFilterRestrictedActions,
-						$allActions
+			global $wgAbuseFilterRestrictions;
+			if ( count( array_intersect_key(
+						 array_filter( $wgAbuseFilterRestrictions ),
+						 array_merge(
+							 array_filter( $actions ),
+							 array_filter( $origActions )
+						 )
 				) )
 				&& !$user->isAllowed( 'abusefilter-modify-restricted' )
 			) {
@@ -166,10 +163,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 
 			// Actions
-			global $wgAbuseFilterAvailableActions;
+			global $wgAbuseFilterActions;
 			$deadActions = array();
 			$actionsRows = array();
-			foreach ( $wgAbuseFilterAvailableActions as $action ) {
+			foreach ( array_filter( $wgAbuseFilterActions ) as $action => $_ ) {
 				// Check if it's set
 				$enabled = isset( $actions[$action] ) && (bool)$actions[$action];
 
@@ -560,16 +557,18 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @return HTML text for an action editor.
 	 */
 	function buildConsequenceEditor( $row, $actions ) {
-		global $wgAbuseFilterAvailableActions;
+		global $wgAbuseFilterActions;
+
+		$enabledActions = array_filter( $wgAbuseFilterActions );
 
 		$setActions = array();
-		foreach ( $wgAbuseFilterAvailableActions as $action ) {
+		foreach ( $enabledActions as $action => $_ ) {
 			$setActions[$action] = array_key_exists( $action, $actions );
 		}
 
 		$output = '';
 
-		foreach ( $wgAbuseFilterAvailableActions as $action ) {
+		foreach ( $enabledActions as $action => $_ ) {
 			MediaWiki\suppressWarnings();
 			$params = $actions[$action]['parameters'];
 			MediaWiki\restoreWarnings();
@@ -588,9 +587,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @return string
 	 */
 	function buildConsequenceSelector( $action, $set, $parameters, $row ) {
-		global $wgAbuseFilterAvailableActions, $wgMainCacheType;
+		global $wgAbuseFilterActions, $wgMainCacheType;
 
-		if ( !in_array( $action, $wgAbuseFilterAvailableActions ) ) {
+		if ( empty( $wgAbuseFilterActions[$action] ) ) {
 			return '';
 		}
 
@@ -947,9 +946,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$row->af_global = $request->getBool( 'wpFilterGlobal' ) && $wgAbuseFilterIsCentral;
 
 			// Actions
-			global $wgAbuseFilterAvailableActions;
+			global $wgAbuseFilterActions;
 			$actions = array();
-			foreach ( $wgAbuseFilterAvailableActions as $action ) {
+			foreach ( array_filter( $wgAbuseFilterActions ) as $action => $_ ) {
 				// Check if it's set
 				$enabled = $request->getBool( 'wpFilterAction' . ucfirst( $action ) );
 
