@@ -463,7 +463,7 @@ class SpecialAbuseLog extends SpecialPage {
 			$pageLink = Linker::link( $title );
 			if ( $row->afl_rev_id ) {
 				$diffLink = Linker::link( $title,
-					wfMessage( 'abusefilter-log-diff' )->parse(), array(),
+					$this->msg( 'abusefilter-log-diff' )->parse(), array(),
 					array( 'diff' => 'prev', 'oldid' => $row->afl_rev_id ) );
 			}
 		} else {
@@ -475,7 +475,7 @@ class SpecialAbuseLog extends SpecialPage {
 					array( 'diff' => 'prev', 'oldid' => $row->afl_rev_id ) );
 
 				$diffLink = Linker::makeExternalLink( $diffUrl,
-					wfMessage( 'abusefilter-log-diff' )->parse() );
+					$this->msg( 'abusefilter-log-diff' )->parse() );
 			}
 		}
 
@@ -552,12 +552,12 @@ class SpecialAbuseLog extends SpecialPage {
 					WikiMap::getForeignURL( $wgAbuseFilterCentralDB,
 						'Special:AbuseFilter/' . $globalIndex );
 
-				$linkText = wfMessage( 'abusefilter-log-detailedentry-global' )
+				$linkText = $this->msg( 'abusefilter-log-detailedentry-global' )
 					->numParams( $globalIndex )->escaped();
 				$filterLink = Linker::makeExternalLink( $globalURL, $linkText );
 			} else {
 				$title = SpecialPage::getTitleFor( 'AbuseFilter', $row->afl_filter );
-				$linkText = wfMessage( 'abusefilter-log-detailedentry-local' )
+				$linkText = $this->msg( 'abusefilter-log-detailedentry-local' )
 					->numParams( $row->afl_filter )->escaped();
 				$filterLink = Linker::link( $title, $linkText );
 			}
@@ -646,7 +646,7 @@ class SpecialAbuseLog extends SpecialPage {
 
 class AbuseLogPager extends ReverseChronologicalPager {
 	/**
-	 * @var HtmlForm
+	 * @var SpecialAbuseLog
 	 */
 	public $mForm;
 
