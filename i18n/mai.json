@@ -74,7 +74,7 @@
 	"abusefilter-enabled": "सक्षम",
 	"abusefilter-deleted": "मेटाउ",
 	"abusefilter-disabled": "अशक्त कएल",
-	"abusefilter-hitcount": "$1 {{PLURAL:$1|हिट|हिट}}",
+	"abusefilter-hitcount": "$1 {{PLURAL:$1|हिट|हिटसभ}}",
 	"abusefilter-new": "नयाँ फ़िल्टर बनाबु",
 	"abusefilter-return": "प्रबंधन फ़िल्टर मे घुरू",
 	"abusefilter-status-global": "वैश्विक",

@@ -7,7 +7,8 @@
 			"Mousa",
 			"Koroğlu",
 			"Macofe",
-			"Matma Rex"
+			"Matma Rex",
+			"Alp Er Tunqa"
 		]
 	},
 	"abusefilter-desc": "دوزلیش‌لره ائوریستیک فیلترلرین تطبیق اولونماسینا ایمکان وئریر.",
@@ -378,7 +379,7 @@
 	"abusefilter-diff-title": "نسخه لر آراسین‌داکی فرق‌لر",
 	"abusefilter-diff-item": "آیتم",
 	"abusefilter-diff-version": "$1-نین نسخه سی، $2",
-	"abusefilter-diff-info": "اساس معلومات‌لار",
+	"abusefilter-diff-info": "اصلی ایطلاعات",
 	"abusefilter-diff-pattern": "فیلتر شرط‌لری",
 	"abusefilter-diff-invalid": "ایستدیگینیز نسخه لر آلینا بیلمیر",
 	"abusefilter-diff-backhistory": "فیلتر کئچمیشینه گئری قاییت",
