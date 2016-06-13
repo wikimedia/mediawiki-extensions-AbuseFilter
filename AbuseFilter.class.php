@@ -1,5 +1,8 @@
 <?php
 
+use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
+
 /**
  * This class contains most of the business logic of AbuseFilter. It consists of mostly
  * static functions that handle activities such as parsing edits, applying filters,
@@ -440,7 +443,7 @@ class AbuseFilter {
 	/**
 	 * Returns an associative array of filters which were tripped
 	 *
-	 * @param $vars array
+	 * @param $vars AbuseFilterVariableHolder
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 *
 	 * @return array
@@ -730,7 +733,7 @@ class AbuseFilter {
 	 *
 	 * @param $filters array
 	 * @param $title Title
-	 * @param $vars array
+	 * @param $vars AbuseFilterVariableHolder
 	 * @return Status returns the operation's status. $status->isOK() will return true if
 	 *         there were no actions taken, false otherwise. $status->getValue() will return
 	 *         an array listing the actions taken. $status-getErrors(), etc, will provide
@@ -865,9 +868,12 @@ class AbuseFilter {
 	 * @param $title Title
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @param User $user The user performing the action; defaults to $wgUser
+	 * @param string $mode Use 'execute' to run filters and log or 'stash' to only cache matches
 	 * @return Status
 	 */
-	public static function filterAction( $vars, $title, $group = 'default', $user = null ) {
+	public static function filterAction(
+		$vars, $title, $group = 'default', $user = null, $mode = 'execute'
+	) {
 		global $wgUser, $wgTitle, $wgRequest;
 
 		$context = RequestContext::getMain();
@@ -884,24 +890,44 @@ class AbuseFilter {
 
 		// Add vars from extensions
 		Hooks::run( 'AbuseFilter-filterAction', array( &$vars, $title ) );
-
-		// Set context
 		$vars->setVar( 'context', 'filter' );
 		$vars->setVar( 'timestamp', time() );
+		// Get the stash key based on the relevant "input" variables
+		$cache = ObjectCache::getLocalClusterInstance();
+		$stashKey = self::getStashKey( $cache, $vars, $group );
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$filter_matched = false;
+		if ( $mode === 'execute' ) {
+			// Check the filter edit stash results first
+			$filter_matched = $cache->get( $stashKey );
+		}
 
-		$filter_matched = self::checkAllFilters( $vars, $group );
+		$logger = LoggerFactory::getInstance( 'StashEdit' );
+		$statsd = MediaWikiServices::getInstance()->getStatsdDataFactory();
+		if ( is_array( $filter_matched ) ) {
+			$logger->info( __METHOD__ . ": cache hit for '$title' (key $stashKey)." );
+			$statsd->increment( 'abusefilter.check-stash.hit' );
+		} else {
+			$filter_matched = self::checkAllFilters( $vars, $group );
+			$logger->info( __METHOD__ . ": cache miss for '$title' (key $stashKey)." );
+			$statsd->increment( 'abusefilter.check-stash.miss' );
+		}
+
+		if ( $mode === 'stash' ) {
+			// Save the filter stash result and do nothing further
+			$cache->set( $stashKey, $filter_matched, $cache::TTL_MINUTE );
+			$logger->info( __METHOD__ . ": cache store for '$title' (key $stashKey)." );
+			$statsd->increment( 'abusefilter.check-stash.store' );
+
+			return Status::newGood();
+		}
 
 		$matched_filters = array_keys( array_filter( $filter_matched ) );
 
 		if ( count( $matched_filters ) == 0 ) {
 			$status = Status::newGood();
 		} else {
-			wfProfileIn( __METHOD__ . '-block' );
-
-			$status = self::executeFilterActions(
-				$matched_filters, $title, $vars );
+			$status = self::executeFilterActions( $matched_filters, $title, $vars );
 
 			$actions_taken = $status->value; // getValue() was introduced only in 1.20
 
@@ -915,7 +941,7 @@ class AbuseFilter {
 			$log_template = array(
 				'afl_user' => $user->getId(),
 				'afl_user_text' => $user->getName(),
-				'afl_timestamp' => $dbr->timestamp( wfTimestampNow() ),
+				'afl_timestamp' => wfGetDB( DB_SLAVE )->timestamp( wfTimestampNow() ),
 				'afl_namespace' => $title->getNamespace(),
 				'afl_title' => $title->getDBkey(),
 				'afl_ip' => $wgRequest->getIP()
@@ -927,8 +953,6 @@ class AbuseFilter {
 			}
 
 			self::addLogEntries( $actions_taken, $log_template, $action, $vars, $group );
-
-			wfProfileOut( __METHOD__ . '-block' );
 		}
 
 		// Bug 53498: If we screwed around with $wgTitle, reset it so the title
@@ -943,6 +967,33 @@ class AbuseFilter {
 		}
 
 		return $status;
+	}
+
+	/**
+	 * @param BagOStuff $cache
+	 * @param $vars AbuseFilterVariableHolder
+	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
+	 *
+	 * @return string
+	 */
+	private static function getStashKey(
+		BagOStuff $cache, AbuseFilterVariableHolder $vars, $group
+	) {
+		$inputVars = $vars->exportAllVars();
+		// Exclude noisy fields that have superficial changes
+		unset( $inputVars['old_html'] );
+		unset( $inputVars['new_html'] );
+		unset( $inputVars['user_age'] );
+		unset( $inputVars['timestamp'] );
+		ksort( $inputVars );
+		$hash = md5( serialize( $inputVars ) );
+
+		return ObjectCache::getLocalClusterInstance()->makeKey(
+			'abusefilter',
+			'check-stash',
+			$group,
+			$hash
+		);
 	}
 
 	/**

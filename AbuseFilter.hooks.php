@@ -119,8 +119,6 @@ class AbuseFilterHooks {
 	 */
 	public static function filterEdit( IContextSource $context, $content, $text,
 		Status $status, $summary, $minoredit ) {
-		// Load vars
-		$vars = new AbuseFilterVariableHolder();
 
 		$title = $context->getTitle();
 
@@ -165,24 +163,12 @@ class AbuseFilterHooks {
 			$page = null;
 		}
 
-		$vars->addHolders(
-			AbuseFilter::generateUserVars( $user ),
-			AbuseFilter::generateTitleVars( $title, 'ARTICLE' )
+		// Load vars for filters to check
+		$vars = self::newVariableHolderForEdit(
+			$user, $title, $page, $summary, $minoredit, $oldtext, $text
 		);
 
-		$vars->setVar( 'action', 'edit' );
-		$vars->setVar( 'summary', $summary );
-		$vars->setVar( 'minor_edit', $minoredit );
-
-		$vars->setVar( 'old_wikitext', $oldtext );
-		$vars->setVar( 'new_wikitext', $text );
-
-		// TODO: set old_content and new_content vars, use them
-
-		$vars->addHolders( AbuseFilter::getEditVars( $title, $page ) );
-
 		$filter_result = AbuseFilter::filterAction( $vars, $title );
-
 		if ( !$filter_result->isOK() ) {
 			$status->merge( $filter_result );
 
@@ -193,6 +179,36 @@ class AbuseFilterHooks {
 		self::$last_edit_page = $page;
 
 		return true;
+	}
+
+	/**
+	 * @param User $user
+	 * @param Title $title
+	 * @param WikiPage|null $page
+	 * @param string $summary
+	 * @param bool $minoredit
+	 * @param string $oldtext
+	 * @param string $text
+	 * @return AbuseFilterVariableHolder
+	 * @throws MWException
+	 */
+	private static function newVariableHolderForEdit(
+		User $user, Title $title, $page, $summary, $minoredit, $oldtext, $text
+	) {
+		$vars = new AbuseFilterVariableHolder();
+		$vars->addHolders(
+			AbuseFilter::generateUserVars( $user ),
+			AbuseFilter::generateTitleVars( $title, 'ARTICLE' )
+		);
+		$vars->setVar( 'action', 'edit' );
+		$vars->setVar( 'summary', $summary );
+		$vars->setVar( 'minor_edit', $minoredit );
+		$vars->setVar( 'old_wikitext', $oldtext );
+		$vars->setVar( 'new_wikitext', $text );
+		// TODO: set old_content and new_content vars, use them
+		$vars->addHolders( AbuseFilter::getEditVars( $title, $page ) );
+
+		return $vars;
 	}
 
 	/**
@@ -226,6 +242,18 @@ class AbuseFilterHooks {
 		);
 	}
 
+	/**
+	 * @param Article|WikiPage $article
+	 * @param User $user
+	 * @param string $text
+	 * @param string $summary
+	 * @param bool $minoredit
+	 * @param bool $watchthis
+	 * @param string $sectionanchor
+	 * @param integer $flags
+	 * @param Revision $revision
+	 * @return bool
+	 */
 	public static function onArticleSaveComplete(
 		&$article, &$user, $text, $summary, $minoredit, $watchthis, $sectionanchor,
 		&$flags, $revision
@@ -236,6 +264,7 @@ class AbuseFilterHooks {
 			return true;
 		}
 
+		/** @var AbuseFilterVariableHolder $vars */
 		$vars = self::$successful_action_vars;
 
 		if ( $vars->getVar( 'article_prefixedtext' )->toString() !==
@@ -372,7 +401,7 @@ class AbuseFilterHooks {
 	 * @param $user User
 	 * @param $reason string
 	 * @param $error
-	 * @param $status
+	 * @param Status $status
 	 * @return bool
 	 */
 	public static function onArticleDelete( &$article, &$user, &$reason, &$error, &$status ) {
@@ -806,11 +835,33 @@ class AbuseFilterHooks {
 	 * @param WikiPage $page
 	 * @param Content $content
 	 * @param ParserOutput $output
+	 * @param string $summary
+	 * @param User $user
 	 */
 	public static function onParserOutputStashForEdit(
-		WikiPage $page, Content $content, ParserOutput $output
+		WikiPage $page, Content $content, ParserOutput $output, $summary = '', $user = null
 	) {
-		AFComputedVariable::getLastPageAuthors( $page->getTitle() );
+		$revision = $page->getRevision();
+		if ( !$revision ) {
+			return;
+		}
+
+		$text = AbuseFilter::contentToString( $content );
+		$oldcontent = $revision->getContent( Revision::RAW );
+		$oldtext = AbuseFilter::contentToString( $oldcontent );
+		$user = $user ?: RequestContext::getMain()->getUser();
+
+		// Cache any resulting filter matches...
+		// Case A: if the edit turns out to be non-minor
+		$vars = self::newVariableHolderForEdit(
+			$user, $page->getTitle(), $page, $summary, false, $oldtext, $text
+		);
+		AbuseFilter::filterAction( $vars, $page->getTitle(), 'default', $user, 'stash' );
+		// Case B: if the edit turns out to be minor
+		$vars = self::newVariableHolderForEdit(
+			$user, $page->getTitle(), $page, $summary, true, $oldtext, $text
+		);
+		AbuseFilter::filterAction( $vars, $page->getTitle(), 'default', $user, 'stash' );
 	}
 
 	/**
