@@ -1,1 +1,1 @@
-ccnorm("aanyone") = "AANY0NE"
+ccnorm("aany0ne") = "AANYONE"
