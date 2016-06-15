@@ -68,7 +68,7 @@
 	"abusefilter-log-search-submit": "Найти",
 	"abusefilter-log-entry": "$1: $2 вызвал срабатывание фильтра злоупотреблений, действие «$3» на странице $4.\nПредпринятие меры: $5.\nОписание фильтра: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 вызвало срабатывание фильтра, было выполнено действие «$3» для $4.\nВыполнено действие: $5;\nОписание фильтра: $6 ($7)",
-	"abusefilter-log-detailedentry-meta": "$1: $2 вызвал срабатывание $3, действие «$4» на странице $5.\nПредпринятые меры: $6.\nОписание фильтра: $7 ($8)",
+	"abusefilter-log-detailedentry-meta": "$1: $2 вызвал срабатывание $3, {{GENDER:$9|выполнив}} действие «$4» на странице $5.\nПредпринятые меры: $6.\nОписание фильтра: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "глобальный фильтр $1",
 	"abusefilter-log-detailedentry-local": "фильтра $1",
 	"abusefilter-log-detailslink": "подробности",
