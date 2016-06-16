@@ -7,7 +7,7 @@ class AbuseFilterPreAuthenticationProvider extends AbstractPreAuthenticationProv
 		return $this->testUser( $user, $creator, false );
 	}
 
-	public function testUserForCreation( $user, $autocreate ) {
+	public function testUserForCreation( $user, $autocreate, array $options = [] ) {
 		// if this is not an autocreation, testForAccountCreation already handled it
 		if ( $autocreate ) {
 			return $this->testUser( $user, $user, true );
