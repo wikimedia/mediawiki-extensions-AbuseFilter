@@ -181,7 +181,6 @@
 		"UploadVerifyFile": "AbuseFilterHooks::onUploadVerifyFile",
 		"MakeGlobalVariablesScript": "AbuseFilterHooks::onMakeGlobalVariablesScript",
 		"ArticleSaveComplete": "AbuseFilterHooks::onArticleSaveComplete",
-		"APIEditBeforeSave": "AbuseFilterHooks::onAPIEditBeforeSave",
 		"UserMergeAccountFields": "AbuseFilterHooks::onUserMergeAccountFields",
 		"ParserOutputStashForEdit": "AbuseFilterHooks::onParserOutputStashForEdit",
 		"UnitTestsList": "AbuseFilterHooks::onUnitTestsList"
