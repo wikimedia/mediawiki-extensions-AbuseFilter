@@ -689,32 +689,65 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * Handler for the UploadVerifyFile hook
-	 *
-	 * @param $upload UploadBase
-	 * @param $mime
-	 * @param $error array
-	 *
+	 * @param UploadBase $upload
+	 * @param User $user
+	 * @param array $props
+	 * @param string $comment
+	 * @param string $pageText
+	 * @param array &$error
+	 * @return bool
+	 */
+	public static function onUploadVerifyUpload( UploadBase $upload, User $user,
+		array $props, $comment, $pageText, &$error
+	) {
+		return self::filterUpload( 'upload', $upload, $user, $props, $comment, $pageText, $error );
+	}
+
+	/**
+	 * @param UploadBase $upload
+	 * @param string $mime
+	 * @param array &$error
 	 * @return bool
 	 */
 	public static function onUploadVerifyFile( $upload, $mime, &$error ) {
-		global $wgUser;
+		global $wgUser, $wgVersion;
 
-		$vars = new AbuseFilterVariableHolder;
+		// On MW 1.27 and older, this is the only hook we can use, even though it's deficient.
+		// On MW 1.28 and newer, we use UploadVerifyUpload to check file uploads, and this one only
+		// to check file uploads to stash. If a filter doesn't need to check the page contents or
+		// upload comment, it can use `action='stashupload'` to provide better experience to e.g.
+		// UploadWizard (rejecting files immediately, rather than after the user adds the details).
+		$action = version_compare( $wgVersion, '1.28', '<' ) ? 'upload' : 'stashupload';
+
+		// UploadBase makes it absolutely impossible to get these out of it, even though it knows them.
+		$props = FSFile::getPropsFromPath( $upload->getTempPath() );
+
+		return self::filterUpload( $action, $upload, $wgUser, $props, null, null, $error );
+	}
+
+	/**
+	 * Implementation for UploadVerifyFile and UploadVerifyUpload hooks.
+	 *
+	 * @param string $action 'upload' or 'stashupload'
+	 * @param UploadBase $upload
+	 * @param User $user User performing the action
+	 * @param array $props File properties, as returned by FSFile::getPropsFromPath()
+	 * @param string|null $summary Upload log comment (also used as edit summary)
+	 * @param string|null $text File description page text (only used for new uploads)
+	 * @param array &$error
+	 * @return bool
+	 */
+	public static function filterUpload( $action, UploadBase $upload, User $user,
+		array $props, $summary, $text, &$error
+	) {
 		$title = $upload->getTitle();
 
-		if ( !$title ) {
-			// If there's no valid title assigned to the upload
-			// it wont proceed anyway, so no point in filtering it.
-			return true;
-		}
-
+		$vars = new AbuseFilterVariableHolder;
 		$vars->addHolders(
-			AbuseFilter::generateUserVars( $wgUser ),
+			AbuseFilter::generateUserVars( $user ),
 			AbuseFilter::generateTitleVars( $title, 'ARTICLE' )
 		);
-
-		$vars->setVar( 'ACTION', 'upload' );
+		$vars->setVar( 'ACTION', $action );
 
 		// We use the hexadecimal version of the file sha1.
 		// Use UploadBase::getTempFileSha1Base36 so that we don't have to calculate the sha1 sum again
@@ -723,13 +756,44 @@ class AbuseFilterHooks {
 		$vars->setVar( 'file_sha1', $sha1 );
 		$vars->setVar( 'file_size', $upload->getFileSize() );
 
-		// UploadBase makes it absolutely impossible to get these out of it, even though it knows them.
-		$props = FSFile::getPropsFromPath( $upload->getTempPath() );
 		$vars->setVar( 'file_mime', $props['mime'] );
 		$vars->setVar( 'file_mediatype', MimeMagic::singleton()->getMediaType( null, $props['mime'] ) );
 		$vars->setVar( 'file_width', $props['width'] );
 		$vars->setVar( 'file_height', $props['height'] );
 		$vars->setVar( 'file_bits_per_channel', $props['bits'] );
+
+		// We only have the upload comment and page text when using the UploadVerifyUpload hook
+		if ( $summary !== null && $text !== null ) {
+			// This block is adapted from self::filterEdit()
+			if ( $title->exists() ) {
+				$page = WikiPage::factory( $title );
+				$revision = $page->getRevision();
+				if ( !$revision ) {
+					return true;
+				}
+
+				$oldcontent = $revision->getContent( Revision::RAW );
+				$oldtext = AbuseFilter::contentToString( $oldcontent );
+
+				// Cache article object so we can share a parse operation
+				$articleCacheKey = $title->getNamespace() . ':' . $title->getText();
+				AFComputedVariable::$articleCache[$articleCacheKey] = $page;
+
+				// Page text is ignored for uploads when the page already exists
+				$text = $oldtext;
+			} else {
+				$page = null;
+				$oldtext = '';
+			}
+
+			// Load vars for filters to check
+			$vars->setVar( 'summary', $summary );
+			$vars->setVar( 'minor_edit', false );
+			$vars->setVar( 'old_wikitext', $oldtext );
+			$vars->setVar( 'new_wikitext', $text );
+			// TODO: set old_content and new_content vars, use them
+			$vars->addHolders( AbuseFilter::getEditVars( $title, $page ) );
+		}
 
 		$filter_result = AbuseFilter::filterAction( $vars, $title );
 
