@@ -167,16 +167,14 @@ class AbuseFilterHooks {
 	 * @return array API result
 	 */
 	public static function getEditApiResult( Status $status ) {
-		$msg = $status->getErrorsArray();
-		$msg = $msg[0];
+		$msg = $status->getErrorsArray()[0];
 
 		// Use the error message key name as error code, the first parameter is the filter description.
 		if ( $msg instanceof Message ) {
 			// For forward compatibility: In case we switch over towards using Message objects someday.
 			// (see the todo for AbuseFilter::buildStatus)
 			$code = $msg->getKey();
-			$filterDescription = $msg->getParams();
-			$filterDescription = $filterDescription[0];
+			$filterDescription = $msg->getParams()[0];
 			$warning = $msg->parse();
 		} else {
 			$code = array_shift( $msg );
@@ -590,7 +588,7 @@ class AbuseFilterHooks {
 					"$dir/db_patches/patch-afl-namespace_int.sql", true
 				) );
 			} else {
-				/**
+				/*
 				$updater->addExtensionUpdate( array(
 					 'modifyField',
 					 'abuse_filter_log',
@@ -736,8 +734,7 @@ class AbuseFilterHooks {
 		$filter_result = AbuseFilter::filterAction( $vars, $title );
 
 		if ( !$filter_result->isOK() ) {
-			$error = $filter_result->getErrorsArray();
-			$error = $error[0];
+			$error = $filter_result->getErrorsArray()[0];
 		}
 
 		return $filter_result->isOK();
