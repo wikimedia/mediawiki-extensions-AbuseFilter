@@ -66,7 +66,7 @@
 	"abusefilter-log-search-submit": "Знайти",
 	"abusefilter-log-entry": "$1: $2 запустив фільтр редагувань, виконуючи \"$3\" на сторінці $4.\nУжиті заходи: $5.\nОпис фільтру: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 запустив фільтр редагувань, виконуючи \"$3\" на сторінці $4.\nУжиті заходи: $5.\nОпис фільтру: $6 ($7)",
-	"abusefilter-log-detailedentry-meta": "$1: $2 запустив $3, виконуючи \"$4\" на сторінці \"$5\".\nВжиті заходи: $6.\nОпис фільтру: $7 ($8)",
+	"abusefilter-log-detailedentry-meta": "$1: $2 запустив $3, {{GENDER:$9|виконуючи}} «$4» на сторінці «$5».\nВжиті заходи: $6.\nОпис фільтру: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "глобальний фільтр $1",
 	"abusefilter-log-detailedentry-local": "фільтр $1",
 	"abusefilter-log-detailslink": "деталі",

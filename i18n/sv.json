@@ -75,7 +75,7 @@
 	"abusefilter-log-search-submit": "Sök",
 	"abusefilter-log-entry": "$1: $2 utlöste ett missbruksfilter genom att göra handlingen \"$3\" på $4.\nUtförd handling: $5;\nFilterbeskrivning: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 utlöste ett missbruksfilter genom att göra handlingen \"$3\" på $4.\nUtförd handling: $5;\nFilterbeskrivning: $6 ($7)",
-	"abusefilter-log-detailedentry-meta": "$1: $2 utlöste $3, genom att göra handlingen \"$4\" på $5.\nUtförd handling: $6;\nFilterbeskrivning: $7 ($8)",
+	"abusefilter-log-detailedentry-meta": "$1: $2 utlöste $3, genom att {{GENDER:$9|göra}} handlingen \"$4\" på $5.\nUtförd handling: $6;\nFilterbeskrivning: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "globalt filter $1",
 	"abusefilter-log-detailedentry-local": "filter $1",
 	"abusefilter-log-detailslink": "detaljer",

@@ -38,7 +38,7 @@
 	"right-abusefilter-modify-restricted": "שינוי מסנני השחתות עם פעולות מוגבלות",
 	"right-abusefilter-revert": "שחזור כל השינויים שבוצעו על־ידי מסנן השחתות מסוים",
 	"right-abusefilter-view-private": "צפייה במסנני השחתות שסומנו כפרטיים",
-	"right-abusefilter-log-private": "הצגת רשומות יומן של מסנני השחתות שסומנו כפרטיים",
+	"right-abusefilter-log-private": "צפייה ברשומות יומן של מסנני השחתות שסומנו כפרטיים",
 	"right-abusefilter-hide-log": "הסתרת רשומות ביומן ההשחתות",
 	"right-abusefilter-hidden-log": "צפייה ברשומות מוסתרות ביומן ההשחתות",
 	"right-abusefilter-modify-global": "יצירה ושינוי של מסנני השחתות גלובליים",
