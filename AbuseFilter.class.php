@@ -852,17 +852,12 @@ class AbuseFilter {
 	 * @param array[] $messages a list if arrays, where each array contains a message key
 	 *                followed by any message parameters.
 	 *
-	 * @todo: change this to accept Message objects. This is only possible from 1.21 onward,
-	 *        because before that, Status::fatal does not accept Message objects.
-	 *
 	 * @return Status
 	 */
 	protected static function buildStatus( array $actionsTaken, array $messages ) {
 		$status = Status::newGood( $actionsTaken );
 
 		foreach ( $messages as $msg ) {
-			// Since MW 1.21, we could just pass Message objects, but in 1.20,
-			// we still have to rely on arrays.
 			call_user_func_array( array( $status, 'fatal' ), $msg );
 		}
 

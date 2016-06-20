@@ -43,22 +43,21 @@ class AbuseFilterHooks {
 	 * @param string $summary Edit summary for page
 	 * @param User $user the user performing the edit
 	 * @param bool $minoredit whether this is a minor edit according to the user.
-	 *
-	 * @return bool
+	 * @return bool Always true
 	 */
 	public static function onEditFilterMergedContent( IContextSource $context, Content $content,
 		Status $status, $summary, User $user, $minoredit ) {
 
 		$text = AbuseFilter::contentToString( $content );
 
-		$continue = self::filterEdit( $context, $content, $text, $status, $summary, $minoredit );
+		$filterStatus = self::filterEdit( $context, $content, $text, $status, $summary, $minoredit );
 
-		if ( !$status->isOK() ) {
+		if ( !$filterStatus->isOK() ) {
 			// Produce a useful error message for API edits
-			$status->apiHookResult = self::getEditApiResult( $status );
+			$status->apiHookResult = self::getApiResult( $filterStatus );
 		}
 
-		return $continue;
+		return true;
 	}
 
 	/**
@@ -70,8 +69,7 @@ class AbuseFilterHooks {
 	 * @param Status $status Error message to return
 	 * @param string $summary Edit summary for page
 	 * @param bool $minoredit whether this is a minor edit according to the user.
-	 *
-	 * @return bool
+	 * @return Status
 	 */
 	public static function filterEdit( IContextSource $context, $content, $text,
 		Status $status, $summary, $minoredit ) {
@@ -90,7 +88,7 @@ class AbuseFilterHooks {
 			$page = $context->getWikiPage();
 			$revision = $page->getRevision();
 			if ( !$revision ) {
-				return true;
+				return Status::newGood();
 			}
 
 			$oldcontent = $revision->getContent( Revision::RAW );
@@ -103,10 +101,10 @@ class AbuseFilterHooks {
 			// Don't trigger for null edits.
 			if ( $content && isset( $oldcontent ) && $content->equals( $oldcontent ) ) {
 				// Compare Content objects if available
-				return true;
+				return Status::newGood();
 			} elseif ( strcmp( $oldtext, $text ) == 0 ) {
 				// Otherwise, compare strings
-				return true;
+				return Status::newGood();
 			}
 		} else {
 			$page = null;
@@ -121,13 +119,13 @@ class AbuseFilterHooks {
 		if ( !$filter_result->isOK() ) {
 			$status->merge( $filter_result );
 
-			return true; // re-show edit form
+			return $filter_result;
 		}
 
 		self::$successful_action_vars = $vars;
 		self::$last_edit_page = $page;
 
-		return true;
+		return Status::newGood();
 	}
 
 	/**
@@ -159,31 +157,46 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * Implementation for EditFilterMergedContent hook.
-	 *
 	 * @param Status $status Error message details
 	 * @return array API result
 	 */
-	public static function getEditApiResult( Status $status ) {
-		$msg = $status->getErrorsArray()[0];
+	private static function getApiResult( Status $status ) {
+		global $wgFullyInitialised;
 
-		// Use the error message key name as error code, the first parameter is the filter description.
-		if ( $msg instanceof Message ) {
-			// For forward compatibility: In case we switch over towards using Message objects someday.
-			// (see the todo for AbuseFilter::buildStatus)
-			$code = $msg->getKey();
-			$filterDescription = $msg->getParams()[0];
-			$warning = $msg->parse();
-		} else {
-			$code = array_shift( $msg );
-			$filterDescription = $msg[0];
-			$warning = wfMessage( $code )->params( $msg )->parse();
+		$params = $status->getErrorsArray()[0];
+		$key = array_shift( $params );
+
+		$warning = wfMessage( $key )->params( $params );
+		if ( !$wgFullyInitialised ) {
+			// This could happen for account autocreation checks
+			$warning = $warning->inContentLanguage();
 		}
 
+		$filterDescription = $params[0];
+		$filter = $params[1];
+
+		// The value is a nested structure keyed by filter id, which doesn't make sense when we only
+		// return the result from one filter. Flatten it to a plain array of actions.
+		$actionsTaken = array_values( array_unique(
+			call_user_func_array( 'array_merge', array_values( $status->getValue() ) )
+		) );
+		$code = ( $actionsTaken === [ 'warn' ] ) ? 'abusefilter-warning' : 'abusefilter-disallowed';
+
+		ApiResult::setIndexedTagName( $params, 'param' );
 		return array(
 			'code' => $code,
+			'message' => array(
+				'key' => $key,
+				'params' => $params,
+			),
+			'abusefilter' => array(
+				'id' => $filter,
+				'description' => $filterDescription,
+				'actions' => $actionsTaken,
+			),
+			// For backwards-compatibility
 			'info' => 'Hit AbuseFilter: ' . $filterDescription,
-			'warning' => $warning
+			'warning' => $warning->parse(),
 		);
 	}
 
@@ -692,7 +705,7 @@ class AbuseFilterHooks {
 	 * @param array $props
 	 * @param string $comment
 	 * @param string $pageText
-	 * @param array &$error
+	 * @param array|ApiMessage &$error
 	 * @return bool
 	 */
 	public static function onUploadVerifyUpload( UploadBase $upload, User $user,
@@ -704,7 +717,7 @@ class AbuseFilterHooks {
 	/**
 	 * @param UploadBase $upload
 	 * @param string $mime
-	 * @param array &$error
+	 * @param array|ApiMessage &$error
 	 * @return bool
 	 */
 	public static function onUploadVerifyFile( $upload, $mime, &$error ) {
@@ -732,7 +745,7 @@ class AbuseFilterHooks {
 	 * @param array $props File properties, as returned by FSFile::getPropsFromPath()
 	 * @param string|null $summary Upload log comment (also used as edit summary)
 	 * @param string|null $text File description page text (only used for new uploads)
-	 * @param array &$error
+	 * @param array|ApiMessage &$error
 	 * @return bool
 	 */
 	public static function filterUpload( $action, UploadBase $upload, User $user,
@@ -796,7 +809,13 @@ class AbuseFilterHooks {
 		$filter_result = AbuseFilter::filterAction( $vars, $title );
 
 		if ( !$filter_result->isOK() ) {
-			$error = $filter_result->getErrorsArray()[0];
+			$messageAndParams = $filter_result->getErrorsArray()[0];
+			$apiResult = self::getApiResult( $filter_result );
+			$error = ApiMessage::create(
+				$messageAndParams,
+				$apiResult['code'],
+				$apiResult
+			);
 		}
 
 		return $filter_result->isOK();
