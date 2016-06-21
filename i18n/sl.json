@@ -50,7 +50,7 @@
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Iskanje",
 	"abusefilter-log-entry": "$1: $2 je med izvajanjem dejanja »$3« na $4 sprožil(-a) filter zlorab.\nSprejeti ukrepi: $5;\nOpis filtra: $6",
-	"abusefilter-log-detailedentry-meta": "$1: $2 je med izvajanjem dejanja »$4« na $5 sprožil(-a) $3.\nSprejeti ukrepi: $6;\nOpis filtra: $7 ($8)",
+	"abusefilter-log-detailedentry-meta": "$1: $2 je med izvajanjem dejanja »$4« na $5 {{GENDER:$9|sprožil|sprožila|sprožil(-a)}} $3.\nSprejeti ukrepi: $6;\nOpis filtra: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "globalni filter $1",
 	"abusefilter-log-detailedentry-local": "filter $1",
 	"abusefilter-log-detailslink": "podrobnosti",
