@@ -586,7 +586,7 @@ class SpecialAbuseLog extends SpecialPage {
 				$actions_taken,
 				$parsed_comments,
 				$diffLink // Passing $7 to 'abusefilter-log-entry' will do nothing, as it's not used.
-			)->parse();
+			)->params( $row->afl_user_text )->parse();
 		}
 
 		if ( self::isHidden( $row ) === true ) {
