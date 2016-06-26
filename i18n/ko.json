@@ -419,7 +419,7 @@
 	"apihelp-abusefiltercheckmatch-param-logid": "검사할 최근 편집 필터 로그 번호",
 	"apihelp-abusefilterchecksyntax-description": "편집 필터의 구문을 검사합니다.",
 	"apihelp-abusefilterchecksyntax-param-filter": "구문을 검사할 전체 필터 텍스트",
-	"apihelp-abusefilterevalexpression-description": "편집 필터 을 검사합니다.",
+	"apihelp-abusefilterevalexpression-description": "편집 필터의 식을 검사합니다.",
 	"apihelp-abusefilterevalexpression-param-expression": "검사할 표현식",
 	"apihelp-abusefilterevalexpression-example-1": "간단한 표현식 검사",
 	"apihelp-abusefilterunblockautopromote-description": "편집 필터 동작으로 인해 자동 인증을 받지 못하도록 제한된 사용자의 제한을 해제합니다.",

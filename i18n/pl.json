@@ -357,7 +357,7 @@
 	"abusefilter-action-disallow": "Odrzuć",
 	"abusefilter-revert-title": "Anuluj wszystkie zmiany zrobione przez filtr $1",
 	"abusefilter-revert-intro": "Formularz pozwala anulować wszystkie zmiany zrobione przez filtr nadużyć $1.\nNależy ostrożnie korzystać z tego narzędzia.",
-	"abusefilter-revert-preview-item": "$1: $2 wykonał „$3” na $4. Działania, które zostaną anulowane: $5 ($6)",
+	"abusefilter-revert-preview-item": "$1: $2 {{GENDER:$7|wykonał|wykonała|wykonał(a)}} $3 na $4.\nDziałania, które zostaną anulowane: $5 ($6)",
 	"abusefilter-revert-search-legend": "Wybierz działania filtru nadużyć, które mają zostać anulowane",
 	"abusefilter-revert-periodstart": "Termin rozpoczęcia",
 	"abusefilter-revert-periodend": "Termin zakończenia",
