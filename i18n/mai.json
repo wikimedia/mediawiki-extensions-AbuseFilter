@@ -117,7 +117,7 @@
 	"abusefilter-edit-throttle-count": "कामसभ कs संख्याके अनुमति:",
 	"abusefilter-edit-throttle-period": "समय कs अवधि:",
 	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|सॅकेंड|सॅकेंडसभ}}",
-	"abusefilter-edit-warn-other": "अन्य संदेश",
+	"abusefilter-edit-warn-other": "अन्य सन्देश",
 	"abusefilter-edit-warn-actions": "क्रिया सभ",
 	"abusefilter-edit-warn-preview": "चुन्ल गेल सन्देश के पूर्वावलोकन करु",
 	"abusefilter-edit-warn-edit": "चुन्ल गेल सन्देश बनाबु अथवा संपादित करु",
