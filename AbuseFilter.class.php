@@ -2077,7 +2077,6 @@ class AbuseFilter {
 
 		$vars->setVar( 'ACTION', 'edit' );
 		$vars->setVar( 'SUMMARY', $row->rc_comment );
-		$vars->setVar( 'minor_edit', $row->rc_minor );
 
 		$vars->setLazyLoadVar( 'new_wikitext', 'revision-text-by-id',
 			array( 'revid' => $row->rc_this_oldid ) );

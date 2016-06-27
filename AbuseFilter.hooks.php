@@ -114,7 +114,7 @@ class AbuseFilterHooks {
 
 		// Load vars for filters to check
 		$vars = self::newVariableHolderForEdit(
-			$user, $title, $page, $summary, $minoredit, $oldtext, $text
+			$user, $title, $page, $summary, $oldtext, $text
 		);
 
 		$filter_result = AbuseFilter::filterAction( $vars, $title );
@@ -135,14 +135,13 @@ class AbuseFilterHooks {
 	 * @param Title $title
 	 * @param WikiPage|null $page
 	 * @param string $summary
-	 * @param bool $minoredit
 	 * @param string $oldtext
 	 * @param string $text
 	 * @return AbuseFilterVariableHolder
 	 * @throws MWException
 	 */
 	private static function newVariableHolderForEdit(
-		User $user, Title $title, $page, $summary, $minoredit, $oldtext, $text
+		User $user, Title $title, $page, $summary, $oldtext, $text
 	) {
 		$vars = new AbuseFilterVariableHolder();
 		$vars->addHolders(
@@ -151,7 +150,6 @@ class AbuseFilterHooks {
 		);
 		$vars->setVar( 'action', 'edit' );
 		$vars->setVar( 'summary', $summary );
-		$vars->setVar( 'minor_edit', $minoredit );
 		$vars->setVar( 'old_wikitext', $oldtext );
 		$vars->setVar( 'new_wikitext', $text );
 		// TODO: set old_content and new_content vars, use them
@@ -801,14 +799,8 @@ class AbuseFilterHooks {
 		// Do this outside the synchronous stash lock to avoid any chance of slowdown.
 		DeferredUpdates::addCallableUpdate(
 			function () use ( $user, $page, $summary, $oldtext, $text ) {
-				// Case A: if the edit turns out to be non-minor
 				$vars = self::newVariableHolderForEdit(
-					$user, $page->getTitle(), $page, $summary, false, $oldtext, $text
-				);
-				AbuseFilter::filterAction( $vars, $page->getTitle(), 'default', $user, 'stash' );
-				// Case B: if the edit turns out to be minor
-				$vars = self::newVariableHolderForEdit(
-					$user, $page->getTitle(), $page, $summary, true, $oldtext, $text
+					$user, $page->getTitle(), $page, $summary, $oldtext, $text
 				);
 				AbuseFilter::filterAction( $vars, $page->getTitle(), 'default', $user, 'stash' );
 			},

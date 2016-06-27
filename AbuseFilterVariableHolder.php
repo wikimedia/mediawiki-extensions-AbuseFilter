@@ -4,6 +4,11 @@ class AbuseFilterVariableHolder {
 
 	public static $varBlacklist = array( 'context' );
 
+	public function __construct() {
+		// Backwards-compatibility (unused now)
+		$this->setVar( 'minor_edit', false );
+	}
+
 	/**
 	 * @param $variable
 	 * @param $datum
