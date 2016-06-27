@@ -797,17 +797,23 @@ class AbuseFilterHooks {
 		$oldtext = AbuseFilter::contentToString( $oldcontent );
 		$user = $user ?: RequestContext::getMain()->getUser();
 
-		// Cache any resulting filter matches...
-		// Case A: if the edit turns out to be non-minor
-		$vars = self::newVariableHolderForEdit(
-			$user, $page->getTitle(), $page, $summary, false, $oldtext, $text
+		// Cache any resulting filter matches.
+		// Do this outside the synchronous stash lock to avoid any chance of slowdown.
+		DeferredUpdates::addCallableUpdate(
+			function () use ( $user, $page, $summary, $oldtext, $text ) {
+				// Case A: if the edit turns out to be non-minor
+				$vars = self::newVariableHolderForEdit(
+					$user, $page->getTitle(), $page, $summary, false, $oldtext, $text
+				);
+				AbuseFilter::filterAction( $vars, $page->getTitle(), 'default', $user, 'stash' );
+				// Case B: if the edit turns out to be minor
+				$vars = self::newVariableHolderForEdit(
+					$user, $page->getTitle(), $page, $summary, true, $oldtext, $text
+				);
+				AbuseFilter::filterAction( $vars, $page->getTitle(), 'default', $user, 'stash' );
+			},
+			DeferredUpdates::PRESEND
 		);
-		AbuseFilter::filterAction( $vars, $page->getTitle(), 'default', $user, 'stash' );
-		// Case B: if the edit turns out to be minor
-		$vars = self::newVariableHolderForEdit(
-			$user, $page->getTitle(), $page, $summary, true, $oldtext, $text
-		);
-		AbuseFilter::filterAction( $vars, $page->getTitle(), 'default', $user, 'stash' );
 	}
 
 	/**
