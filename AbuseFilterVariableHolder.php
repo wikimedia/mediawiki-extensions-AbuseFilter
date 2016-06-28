@@ -95,14 +95,31 @@ class AbuseFilterVariableHolder {
 	/**
 	 * Export all variables stored in this object as string
 	 *
-	 * @return array
+	 * @return string[]
 	 */
 	function exportAllVars() {
-		$allVarNames = array_keys( $this->mVars );
-		$exported = array();
-
-		foreach ( $allVarNames as $varName ) {
+		$exported = [];
+		foreach ( array_keys( $this->mVars ) as $varName ) {
 			if ( !in_array( $varName, self::$varBlacklist ) ) {
+				$exported[$varName] = $this->getVar( $varName )->toString();
+			}
+		}
+
+		return $exported;
+	}
+
+	/**
+	 * Export all non-lazy variables stored in this object as string
+	 *
+	 * @return string[]
+	 */
+	function exportNonLazyVars() {
+		$exported = [];
+		foreach ( $this->mVars as $varName => $data ) {
+			if (
+				!( $data instanceof AFComputedVariable )
+				&& !in_array( $varName, self::$varBlacklist )
+			) {
 				$exported[$varName] = $this->getVar( $varName )->toString();
 			}
 		}

@@ -979,7 +979,7 @@ class AbuseFilter {
 	private static function getStashKey(
 		BagOStuff $cache, AbuseFilterVariableHolder $vars, $group
 	) {
-		$inputVars = $vars->exportAllVars();
+		$inputVars = $vars->exportNonLazyVars();
 		// Exclude noisy fields that have superficial changes
 		unset( $inputVars['old_html'] );
 		unset( $inputVars['new_html'] );
