@@ -74,7 +74,7 @@
 	"abusefilter-log-search-wiki": "Wiki：",
 	"abusefilter-log-search-submit": "搜尋",
 	"abusefilter-log-entry": "$1：$2 執行操作 \"$3\" 於 $4 時觸發防濫用過濾器。\n採取的動作：$5；\n過濾器描述：$6",
-	"abusefilter-log-entry-withdiff": "$1：$2 執行操作 \"$3\" 於 $4 時觸發防濫用過濾器。\n採取的動作：$5；\n過濾器描述：$6 ($7)",
+	"abusefilter-log-entry-withdiff": "$1：$2 {{GENDER:$8|執行}}操作 \"$3\" 於 $4 時觸發防濫用過濾器。\n採取的動作：$5；\n過濾器描述：$6 ($7)",
 	"abusefilter-log-detailedentry-meta": "$1：$2 執行操作 \"$4\" 於 $5 時觸發 $3。\n採取的行動：$6；\n過濾器描述：$7 ($8)",
 	"abusefilter-log-detailedentry-global": "全域過濾器 $1",
 	"abusefilter-log-detailedentry-local": "過濾器 $1",
