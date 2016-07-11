@@ -179,6 +179,7 @@
 		"LoadExtensionSchemaUpdates": "AbuseFilterHooks::onLoadExtensionSchemaUpdates",
 		"ContributionsToolLinks": "AbuseFilterHooks::onContributionsToolLinks",
 		"UploadVerifyFile": "AbuseFilterHooks::onUploadVerifyFile",
+		"UploadVerifyUpload": "AbuseFilterHooks::onUploadVerifyUpload",
 		"MakeGlobalVariablesScript": "AbuseFilterHooks::onMakeGlobalVariablesScript",
 		"ArticleSaveComplete": "AbuseFilterHooks::onArticleSaveComplete",
 		"UserMergeAccountFields": "AbuseFilterHooks::onUserMergeAccountFields",
