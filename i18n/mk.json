@@ -343,7 +343,7 @@
 	"abusefilter-revert-search-legend": "Изберете ги дејствата на филтерот што треба да се отповикаат",
 	"abusefilter-revert-periodstart": "Почеток на периодот:",
 	"abusefilter-revert-periodend": "Крај на периодот:",
-	"abusefilter-revert-search": "Одбери дејства",
+	"abusefilter-revert-search": "Избор на дејства",
 	"abusefilter-revert-filter": "Филтер:",
 	"abusefilter-revert-preview-intro": "Подолу се наведени постапките на филтерот за злоупотреби кои сега ќе бидат вратени.\nПроверете ги внимателно, па стиснете на „{{int:abusefilter-revert-confirm}}“ за да го потврдите избраното.",
 	"abusefilter-revert-confirm": "Потврди",
