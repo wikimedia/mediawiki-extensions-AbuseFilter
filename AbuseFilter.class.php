@@ -881,6 +881,7 @@ class AbuseFilter {
 		$oldContextTitle = $context->getTitle();
 
 		$oldWgTitle = $wgTitle;
+
 		if ( !$wgTitle ) {
 			$wgTitle = SpecialPage::getTitleFor( 'AbuseFilter' );
 		}
@@ -1029,6 +1030,7 @@ class AbuseFilter {
 		unset( $inputVars['new_html'] );
 		unset( $inputVars['user_age'] );
 		unset( $inputVars['timestamp'] );
+		unset( $inputVars['_VIEWS'] );
 		ksort( $inputVars );
 		$hash = md5( serialize( $inputVars ) );
 
