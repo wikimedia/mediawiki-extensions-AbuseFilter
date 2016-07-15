@@ -987,7 +987,7 @@ class AbuseFilter {
 	 * @param string $id Filter ID (integer or "global-<integer>")
 	 * @return stdClass|null DB row
 	 */
-	private static function getFilter( $id ) {
+	public static function getFilter( $id ) {
 		global $wgAbuseFilterCentralDB;
 
 		if ( !isset( self::$filterCache[$id] ) ) {
