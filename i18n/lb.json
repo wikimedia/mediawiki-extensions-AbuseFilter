@@ -315,7 +315,7 @@
 	"abusefilter-action-disallow": "Net erlaben",
 	"abusefilter-revert-title": "All Ännerungen duerch de Filter $1 zrécksetzen",
 	"abusefilter-revert-intro": "Dëse Formulaire erlaabt et fir all Ännerunge vum Mëssbrauchsfilterm duerch de Filter $1 zréckzesetzen.\nBenotzt dës Funktioun w.e.g. nëmme wann Dir hir Konsequenzen ofschätze kënnt.",
-	"abusefilter-revert-preview-item": "$1: $2 huet $3 op $4 gemaach.\nAktiounen déi zréckgesat ginn: $5 ($6)",
+	"abusefilter-revert-preview-item": "$1: $2 huet $3 op $4 {{GENDER:$7|gemaach}}.\nAktiounen déi zréckgesat ginn: $5 ($6)",
 	"abusefilter-revert-search-legend": "Mëssbrauchsfilteren erauswielen déi zréckgesat solle ginn",
 	"abusefilter-revert-periodstart": "Ufank vun der Period:",
 	"abusefilter-revert-periodend": "Enn vun der Period:",
