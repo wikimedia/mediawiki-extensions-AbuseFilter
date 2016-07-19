@@ -23,7 +23,8 @@
 			"وهراني",
 			"محمد أحمد عبد الفتاح",
 			"أحمد",
-			"Matma Rex"
+			"Matma Rex",
+			"علاء"
 		]
 	},
 	"abusefilter-desc": "يطبق قواعد آلية على التعديلات.",
@@ -61,7 +62,7 @@
 	"action-abusefilter-revert": "استرجاع كل التغييرات بواسطة مرشح إساءة معطى",
 	"action-abusefilter-view-private": "اعرض مرشحات الإساءة المعلّمة كخاصة",
 	"abusefilter-log": "سجل مرشح الإساءة",
-	"abusefilter-log-summary": "هذا السجل يعرض قائمة بكل الأفعال الممسوكة بواسطة المرشحات.",
+	"abusefilter-log-summary": "هذا السجل يعرض قائمة بكل الأفعال المُكتشفة بواسطة المرشحات.",
 	"abusefilter-log-search": "بحث سجل الإساءة",
 	"abusefilter-log-search-user": "المستخدم:",
 	"abusefilter-log-search-filter": "أرقام المُرشِّح (مفصولة بخط شاقولي):",
@@ -391,7 +392,7 @@
 	"abusefilter-examine-notfound": "التغيير الذي طلبته لم يمكن إيجاده.",
 	"abusefilter-examine-incompatible": "التغيير الذي طلبته غير مدعوم بواسطة مرشح الإساءة",
 	"abusefilter-examine-noresults": "لا نتائج تم الحصول عليها لمحددات البحث التي وفرتها.",
-	"abusefilter-topnav": "'''الإبحار في مرشح الإساءة'''",
+	"abusefilter-topnav": "'''تصفح مرشح الإساءة'''",
 	"abusefilter-topnav-home": "الرئيسية",
 	"abusefilter-topnav-test": "اختبار الباتش",
 	"abusefilter-topnav-examine": "افحص التعديلات الماضية",
