@@ -10,7 +10,7 @@
 	"abusefilter-log-entry-withdiff": "$1：$2来勒$4执行操作“$3”辰光触发着过滤器。采取个动作：$5；过滤器说明：$6（$7）",
 	"abusefilter-log-detailedentry-meta": "$1：$2来勒$5{{GENDER:$9|执行}}操作“$4”辰光触发着$3。采取个动作：$6；过滤器说明：$7（$8）",
 	"abusefilter-log-hide-reason": "理由：",
-	"abusefilter-hidden": "弗公开",
+	"abusefilter-hidden": "私密",
 	"abusefilter-unhidden": "公开",
 	"abusefilter-hitcount": "$1趟触发"
 }
