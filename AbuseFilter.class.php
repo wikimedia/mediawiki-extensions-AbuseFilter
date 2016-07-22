@@ -1791,15 +1791,19 @@ class AbuseFilter {
 				// More than $wgAbuseFilterEmergencyDisableCount matches,
 				// constituting more than $emergencyDisableThreshold
 				// (a fraction) of last few edits. Disable it.
-				$method = __METHOD__;
-				$dbw = wfGetDB( DB_MASTER );
-				$dbw->onTransactionIdle( function () use ( $dbw, $filter, $method ) {
-					$dbw->update( 'abuse_filter',
-						array( 'af_throttled' => 1 ),
-						array( 'af_id' => $filter ),
-						$method
-					);
-				} );
+				DeferredUpdates::addUpdate(
+					new AutoCommitUpdate(
+						wfGetDB( DB_MASTER ),
+						__METHOD__,
+						function ( IDatabase $dbw, $fname ) use ( $filter ) {
+							$dbw->update( 'abuse_filter',
+								array( 'af_throttled' => 1 ),
+								array( 'af_id' => $filter ),
+								$fname
+							);
+						}
+					)
+				);
 			}
 		}
 	}
