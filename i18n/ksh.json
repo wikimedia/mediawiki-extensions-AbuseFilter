@@ -48,7 +48,7 @@
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Söhke!",
 	"abusefilter-log-entry": "$1: {{GENDER:$8|dä|et|dä Metmaacher|dat|de}} $2 hät met „$3“ op dä Sigg $4 \nder Meßbruchsfelter op der Plan jeroofe, un dä däät dat: $5. De Rääjel explezehrt: $6.",
-	"abusefilter-log-entry-withdiff": "$1: {{GENDER:$2|dä|et|dä Metmaacher|dat|de}} $2 hät met „$3“ op dä Sigg $4\ndä Meßbruchsfelter op der Plan jeroofe, un dä däät dat: $5. De Rääjel explezeet: ''$6'' ($7)",
+	"abusefilter-log-entry-withdiff": "$1: {{GENDER:$2|dä|et|dä Metmaacher|dat|de}} $2 hät met „$3“ op dä Sigg $4\ndä Meßbruchsfelter op der Plan jerohfe, un dä däät dat: $5.\nDe Rääjel explezeet: ''$6'' ($7){{GENDER:$8|}}",
 	"abusefilter-log-detailedentry-meta": "$1: {{GENDER:$2|dä|et|dä Metmaacher|dat|de}} $2 hät met „$4“ op dä Sigg $5\ndäm $3 jetroffe,\nun dä Felter hät: $6. De Rääjel explezeet: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "jemeinsame Felter $1 för diverse Wikis",
 	"abusefilter-log-detailedentry-local": "Meßbruchsfelter sing Rääjel $1",
