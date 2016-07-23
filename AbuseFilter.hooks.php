@@ -355,19 +355,18 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param $article Article
-	 * @param $user User
-	 * @param $reason string
-	 * @param $error
+	 * @param WikiPage $article
+	 * @param User $user
+	 * @param string $reason
+	 * @param string $error
 	 * @param Status $status
 	 * @return bool
 	 */
 	public static function onArticleDelete( &$article, &$user, &$reason, &$error, &$status ) {
 		$vars = new AbuseFilterVariableHolder;
 
-		global $wgUser;
 		$vars->addHolders(
-			AbuseFilter::generateUserVars( $wgUser ),
+			AbuseFilter::generateUserVars( $user ),
 			AbuseFilter::generateTitleVars( $article->getTitle(), 'ARTICLE' )
 		);
 
