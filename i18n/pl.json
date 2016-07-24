@@ -61,7 +61,7 @@
 	"action-abusefilter-revert": "wycofania wszystkich zmian wskazanych przez filtr nadużyć",
 	"action-abusefilter-view-private": "wyświetlenia prywatnych filtrów nadużyć",
 	"abusefilter-log": "Rejestr filtru nadużyć",
-	"abusefilter-log-summary": "Ten rejestr zawiera spis wszystkich działań wychwyconych przez filtry.",
+	"abusefilter-log-summary": "Rejestr zawierający spis wszystkich działań wychwyconych przez filtry.",
 	"abusefilter-log-search": "Szukaj w rejestrze nadużyć",
 	"abusefilter-log-search-user": "Użytkownik:",
 	"abusefilter-log-search-filter": "Identyfikatory filtru (oddzielone znakiem pionowej kreski):",
