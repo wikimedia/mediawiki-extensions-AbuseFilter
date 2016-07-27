@@ -1512,7 +1512,7 @@ class AbuseFilter {
 	/**
 	 * @param array[] $tagsByAction Map of (integer => string[])
 	 */
-	private function bufferTagsToSetByAction( array $tagsByAction ) {
+	private static function bufferTagsToSetByAction( array $tagsByAction ) {
 		foreach ( $tagsByAction as $actionID => $tags ) {
 			if ( !isset( self::$tagsToSet[$actionID] ) ) {
 				self::$tagsToSet[$actionID] = $tags;
