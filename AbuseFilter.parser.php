@@ -615,8 +615,6 @@ class AbuseFilterParser {
 
 	public static $funcCache = array();
 
-	private static $hasSmartPregMatchAll = null;
-
 	/**
 	 * Create a new instance
 	 *
@@ -626,11 +624,6 @@ class AbuseFilterParser {
 		$this->resetState();
 		if ( $vars instanceof AbuseFilterVariableHolder ) {
 			$this->mVars = $vars;
-		}
-		if ( self::$hasSmartPregMatchAll === null ) {
-			// Starting with PHP 5.4, preg_match_all() allows omitting the '$matches' argument.
-			$r = new ReflectionFunction( 'preg_match_all' );
-			self::$hasSmartPregMatchAll = $r->getNumberOfRequiredParameters() === 2;
 		}
 	}
 
@@ -1583,13 +1576,8 @@ class AbuseFilterParser {
 			$needle = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $needle );
 			$needle = "/$needle/u";
 
-			if ( self::$hasSmartPregMatchAll ) {
-				// Omit the '$matches' argument to avoid computing them, just count.
-				$count = preg_match_all( $needle, $haystack );
-			} else {
-				$matches = array();
-				$count = preg_match_all( $needle, $haystack, $matches );
-			}
+			// Omit the '$matches' argument to avoid computing them, just count.
+			$count = preg_match_all( $needle, $haystack );
 
 			if ( $count === false ) {
 				throw new AFPUserVisibleException(
