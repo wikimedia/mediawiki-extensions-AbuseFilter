@@ -410,7 +410,6 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 		$diffEngine->showDiffStyle();
 
-		// We can't use $diffEngine->generateDiffBody since it doesn't allow custom formatters
 		$diff = new Diff( $old, $new );
 		$formatter = new TableDiffFormatterFullContext();
 		$formattedDiff = $diffEngine->addHeader( $formatter->format( $diff ), '', '' );
