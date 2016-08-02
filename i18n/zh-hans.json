@@ -320,7 +320,7 @@
 	"abusefilter-edit-builder-vars-old-text-stripped": "编辑前的旧页面，去除所有标记",
 	"abusefilter-edit-builder-vars-old-links": "旧内容中的所有外部链接",
 	"abusefilter-edit-builder-vars-old-html": "编辑前的旧页面，已解析为HTML源码",
-	"abusefilter-edit-builder-vars-minor-edit": "编辑是否被标记为小修改",
+	"abusefilter-edit-builder-vars-minor-edit": "编辑是否被标记为小编辑",
 	"abusefilter-edit-builder-vars-file-sha1": "文件内容的SHA1值",
 	"abusefilter-edit-builder-vars-file-size": "文件大小，单位字节",
 	"abusefilter-edit-builder-vars-file-mime": "文件的MIME类型",
