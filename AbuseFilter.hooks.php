@@ -699,6 +699,8 @@ class AbuseFilterHooks {
 	}
 
 	/**
+	 * Filter an upload.
+	 *
 	 * @param UploadBase $upload
 	 * @param User $user
 	 * @param array $props
@@ -714,6 +716,23 @@ class AbuseFilterHooks {
 	}
 
 	/**
+	 * Filter an upload to stash. If a filter doesn't need to check the page contents or
+	 * upload comment, it can use `action='stashupload'` to provide better experience to e.g.
+	 * UploadWizard (rejecting files immediately, rather than after the user adds the details).
+	 *
+	 * @param UploadBase $upload
+	 * @param User $user
+	 * @param array $props
+	 * @param array|ApiMessage &$error
+	 * @return bool
+	 */
+	public static function onUploadStashFile( UploadBase $upload, User $user,
+		array $props, &$error
+	) {
+		return self::filterUpload( 'stashupload', $upload, $user, $props, null, null, $error );
+	}
+
+	/**
 	 * @param UploadBase $upload
 	 * @param string $mime
 	 * @param array|ApiMessage &$error
@@ -722,17 +741,17 @@ class AbuseFilterHooks {
 	public static function onUploadVerifyFile( $upload, $mime, &$error ) {
 		global $wgUser, $wgVersion;
 
-		// On MW 1.27 and older, this is the only hook we can use, even though it's deficient.
-		// On MW 1.28 and newer, we use UploadVerifyUpload to check file uploads, and this one only
-		// to check file uploads to stash. If a filter doesn't need to check the page contents or
-		// upload comment, it can use `action='stashupload'` to provide better experience to e.g.
-		// UploadWizard (rejecting files immediately, rather than after the user adds the details).
-		$action = version_compare( $wgVersion, '1.28', '<' ) ? 'upload' : 'stashupload';
+		// We only use this hook on MW 1.27 and older, as it's is the only hook we have.
+		// On MW 1.28 and newer, we use UploadVerifyUpload to check file uploads, and
+		// UploadStashFile to check file uploads to stash.
+		if ( version_compare( $wgVersion, '1.28', '>=' ) ) {
+			return;
+		}
 
 		// UploadBase makes it absolutely impossible to get these out of it, even though it knows them.
 		$props = FSFile::getPropsFromPath( $upload->getTempPath() );
 
-		return self::filterUpload( $action, $upload, $wgUser, $props, null, null, $error );
+		return self::filterUpload( 'upload', $upload, $wgUser, $props, null, null, $error );
 	}
 
 	/**
