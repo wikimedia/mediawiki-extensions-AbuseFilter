@@ -53,7 +53,7 @@
 	"abusefilter-log-search-submit": "Претражи",
 	"abusefilter-log-entry": "$1: $2 је активирао филтер, {{GENDER:$8|изводећи}} радњу „$3“ на страници $4.\nПредузете радње: $5;\nОпис филтера: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 је активирао филтер злоупотребе, {{GENDER:$8|изводећи}} радњу „$3“ на страници $4.\nПредузете радње: $5;\nОпис филтера: $6 ($7)",
-	"abusefilter-log-detailedentry-meta": "$1: $2 је активирао $3, изводећи радњу „$4“ на страници $5.\nПредузете радње: $6;\nОпис филтера: $7 ($8)",
+	"abusefilter-log-detailedentry-meta": "$1: $2 је активирао $3, {{GENDER:$9|изводећи}} радњу „$4“ на страници $5.\nПредузете радње: $6;\nОпис филтера: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "глобални филтер $1",
 	"abusefilter-log-detailedentry-local": "филтер $1",
 	"abusefilter-log-detailslink": "детаљи",
