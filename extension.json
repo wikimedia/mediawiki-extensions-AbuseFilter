@@ -183,8 +183,7 @@
 		"MakeGlobalVariablesScript": "AbuseFilterHooks::onMakeGlobalVariablesScript",
 		"ArticleSaveComplete": "AbuseFilterHooks::onArticleSaveComplete",
 		"UserMergeAccountFields": "AbuseFilterHooks::onUserMergeAccountFields",
-		"ParserOutputStashForEdit": "AbuseFilterHooks::onParserOutputStashForEdit",
-		"UnitTestsList": "AbuseFilterHooks::onUnitTestsList"
+		"ParserOutputStashForEdit": "AbuseFilterHooks::onParserOutputStashForEdit"
 	},
 	"config": {
 		"@doc": "see AbuseFilter.php",
