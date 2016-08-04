@@ -164,7 +164,7 @@
 	"abusefilter-edit-hitcount": "필터 동작 횟수:",
 	"abusefilter-edit-consequences": "필터와 일치할 때 취할 조치",
 	"abusefilter-edit-action-warn": "사용자에게 경고하고 이 행위를 중지",
-	"abusefilter-edit-action-disallow": "문제가 되는 동작을 수행하지 못하도록 막기",
+	"abusefilter-edit-action-disallow": "문제가 되는 동작을 사용자가 수행하지 못하도록 막기",
 	"abusefilter-edit-action-flag": "이 행위를 편집 필터 기록에 표시",
 	"abusefilter-edit-action-blockautopromote": "사용자의 자동 인증 상태를 해제",
 	"abusefilter-edit-action-degroup": "모든 사용자 권한을 해제",
