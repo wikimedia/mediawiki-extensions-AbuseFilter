@@ -74,6 +74,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 
 			$origActions = $newRow->mOriginalActions;
+			$wasGlobal = (bool)$newRow->mOriginalRow->af_global;
+
 			unset( $newRow->mOriginalRow );
 			unset( $newRow->mOriginalActions );
 
@@ -234,8 +236,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			$dbw->endAtomic( __METHOD__ );
 
-			// Reset Memcache if this was a global rule
-			if ( $newRow['af_global'] ) {
+			// Invalidate cache if this was a global rule
+			if ( $wasGlobal || $newRow['af_global'] ) {
 				$group = 'default';
 				if ( isset( $newRow['af_group'] ) && $newRow['af_group'] != '' ) {
 					$group = $newRow['af_group'];
