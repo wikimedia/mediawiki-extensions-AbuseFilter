@@ -180,6 +180,7 @@
 		"ContributionsToolLinks": "AbuseFilterHooks::onContributionsToolLinks",
 		"UploadVerifyFile": "AbuseFilterHooks::onUploadVerifyFile",
 		"UploadVerifyUpload": "AbuseFilterHooks::onUploadVerifyUpload",
+		"UploadStashFile": "AbuseFilterHooks::onUploadStashFile",
 		"MakeGlobalVariablesScript": "AbuseFilterHooks::onMakeGlobalVariablesScript",
 		"ArticleSaveComplete": "AbuseFilterHooks::onArticleSaveComplete",
 		"UserMergeAccountFields": "AbuseFilterHooks::onUserMergeAccountFields",
