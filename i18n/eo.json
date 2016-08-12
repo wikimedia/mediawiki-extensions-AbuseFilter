@@ -9,7 +9,8 @@
 			"Tlustulimu",
 			"Tradukisto",
 			"Yekrats",
-			"Matma Rex"
+			"Matma Rex",
+			"Robin van der Vliet"
 		]
 	},
 	"abusefilter-desc": "Aplikas aŭtomatan heŭristikon al redaktoj.",
@@ -122,7 +123,7 @@
 	"abusefilter-tools-reautoconfirm": "Restarigi aŭtomate konfirmitan statuson",
 	"abusefilter-tools-reautoconfirm-user": "Uzanto:",
 	"abusefilter-tools-reautoconfirm-submit": "Aŭtomate rekonfirmi",
-	"abusefilter-reautoconfirm-none": "Tiu uzanto ne havis {{GENDER:$1|lian|ŝian|la}} statuson pri aŭtomata konfirmado haltitan.",
+	"abusefilter-reautoconfirm-none": "Tiu uzanto ne havis {{GENDER:$1|sian}} statuson pri aŭtomata konfirmado haltitan.",
 	"abusefilter-reautoconfirm-notallowed": "Vi ne rajtas restarigi statuson de aŭtomata konfirmado",
 	"abusefilter-reautoconfirm-done": "Statuso de aŭtomata konfirmado estis restarigita",
 	"abusefilter-status": "El la lastaj $1 {{PLURAL:$1|lasta 1 ago|lastaj $1 agoj}}, $2 ($3%) atingis la kondiĉa limo de $4, kaj $5 ($6%) kongruis unu el la ŝaltataj filtriloj.",
