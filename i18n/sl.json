@@ -144,7 +144,7 @@
 	"abusefilter-edit-lastmod": "Zadnja sprememba filtra:",
 	"abusefilter-edit-lastmod-text": "dne $1 s strani $2",
 	"abusefilter-edit-hitcount": "Zadetki filtra:",
-	"abusefilter-edit-consequences": "Izvedena dejanja ob ujemanju",
+	"abusefilter-edit-consequences": "Dejanja za izvedbo ob ujemanju",
 	"abusefilter-edit-action-warn": "Sproži ta dejanja po opozoritvi uporabnika",
 	"abusefilter-edit-action-disallow": "Prepreči uporabniku izvesti vprašljivo dejanje",
 	"abusefilter-edit-action-flag": "Označi urejanje v dnevniku zlorab",

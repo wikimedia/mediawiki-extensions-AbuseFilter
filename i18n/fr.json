@@ -178,7 +178,7 @@
 	"abusefilter-edit-lastmod": "Dernière modification du filtre :",
 	"abusefilter-edit-lastmod-text": "$1 par $2",
 	"abusefilter-edit-hitcount": "Nombre de détections du filtre :",
-	"abusefilter-edit-consequences": "Actions entreprises lors de la détection",
+	"abusefilter-edit-consequences": "Actions entreprises si élément trouvé",
 	"abusefilter-edit-action-warn": "Déclencher ces actions après avoir donné un avertissement à l'utilisateur",
 	"abusefilter-edit-action-disallow": "Empêcher l'utilisateur d'effectuer l'action en question",
 	"abusefilter-edit-action-flag": "Marquer la modification dans le journal des filtres antiabus",

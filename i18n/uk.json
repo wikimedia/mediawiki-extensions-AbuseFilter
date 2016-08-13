@@ -162,7 +162,7 @@
 	"abusefilter-edit-lastmod": "Остання зміна фільтру:",
 	"abusefilter-edit-lastmod-text": "$1 користувачем $2",
 	"abusefilter-edit-hitcount": "Спрацьовувань фільтру:",
-	"abusefilter-edit-consequences": "Заходи, що вживаються при спрацьовуванні",
+	"abusefilter-edit-consequences": "Заходи, що будуть вжиті при спрацьовуванні",
 	"abusefilter-edit-action-warn": "Перед уживанням заходів видати попередження",
 	"abusefilter-edit-action-disallow": "Заборонити користувачеві виконати дію",
 	"abusefilter-edit-action-flag": "Позначити редагування в журналі зловживань",

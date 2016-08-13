@@ -139,7 +139,7 @@
 	"abusefilter-edit-lastmod": "వడపోత చివరి మార్పు:",
 	"abusefilter-edit-lastmod-text": "$1న  $2చే",
 	"abusefilter-edit-hitcount": "జల్లెడ హిట్లు:",
-	"abusefilter-edit-consequences": "జోడి కుదిరినప్పుడు తీసుకున్న చర్యలు",
+	"abusefilter-edit-consequences": "జోడి కుదిరినప్పుడు తీసుకోవాల్సిన చర్యలు",
 	"abusefilter-edit-action-warn": "వాడుకరికి ఒక హెచ్చరిక చేసాక, ఈ చర్యలను ప్రేరేపించు",
 	"abusefilter-edit-action-disallow": "వాడుకరి చేసే ఈ చర్యను నిరాకరించు",
 	"abusefilter-edit-action-degroup": "వాడుకరిని ముఖ్య అనుమతుల గుంపులన్నిటి నుండి తీసివెయ్యి",

@@ -162,7 +162,7 @@
 	"abusefilter-edit-action-flag": "לסמן את העריכה ביומן ההשחתות",
 	"abusefilter-edit-action-blockautopromote": "לשלול מהמשתמש את הרשאות המשתמש הוותיק",
 	"abusefilter-edit-action-degroup": "לשלול את כל ההרשאות של המשתמש",
-	"abusefilter-edit-action-block": "חסימת המשתמש ו/או כתובת ה־IP מעריכה",
+	"abusefilter-edit-action-block": "לחסום את המשתמש ו/או כתובת ה־IP מעריכה",
 	"abusefilter-edit-action-throttle": "לבצע פעולות רק אם המשתמש עובר מגבלה של קצב עריכות",
 	"abusefilter-edit-action-rangeblock": "לחסום את טווח ה־/16 שממנו פועל המשתמש",
 	"abusefilter-edit-action-tag": "לסמן את העריכה לבדיקה נוספת",
