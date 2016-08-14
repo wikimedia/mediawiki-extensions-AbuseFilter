@@ -166,7 +166,7 @@
 	"abusefilter-edit-lastmod": "Última modificação do filtro:",
 	"abusefilter-edit-lastmod-text": "$1 por $2",
 	"abusefilter-edit-hitcount": "Correspondências de filtros:",
-	"abusefilter-edit-consequences": "Ações tomadas quando correspondido",
+	"abusefilter-edit-consequences": "Ações a tomar quando correspondido",
 	"abusefilter-edit-action-warn": "Despoletar estas ações após emitir um aviso ao utilizador",
 	"abusefilter-edit-action-disallow": "Impedir o utilizador de realizar a ação em questão",
 	"abusefilter-edit-action-flag": "Assinalar a edição no registo de abusos",
