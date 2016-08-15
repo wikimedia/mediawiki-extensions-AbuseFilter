@@ -454,8 +454,9 @@ class SpecialAbuseLog extends SpecialPage {
 		$title = Title::makeTitle( $row->afl_namespace, $row->afl_title );
 
 		$diffLink = false;
+		$isHidden = self::isHidden( $row );
 
-		if ( self::isHidden( $row ) && !$this->canSeeHidden() ) {
+		if ( !self::canSeeHidden() && $isHidden ) {
 			return '';
 		}
 
@@ -481,8 +482,7 @@ class SpecialAbuseLog extends SpecialPage {
 
 		if ( !$row->afl_wiki ) {
 			// Local user
-			$userLink = Linker::userLink( $row->afl_user, $row->afl_user_text ) .
-				Linker::userToolLinks( $row->afl_user, $row->afl_user_text, true );
+			$userLink = self::getUserLinks( $row->afl_user, $row->afl_user_text );
 		} else {
 			$userLink = WikiMap::foreignUserLink( $row->afl_wiki, $row->afl_user_text );
 			$userLink .= ' (' . WikiMap::getWikiName( $row->afl_wiki ) . ')';
@@ -525,7 +525,7 @@ class SpecialAbuseLog extends SpecialPage {
 			}
 
 			$examineTitle = SpecialPage::getTitleFor( 'AbuseFilter', 'examine/log/' . $row->afl_id );
-			$examineLink = Linker::link(
+			$examineLink = Linker::linkKnown(
 				$examineTitle,
 				$this->msg( 'abusefilter-changeslist-examine' )->parse(),
 				array()
@@ -536,7 +536,7 @@ class SpecialAbuseLog extends SpecialPage {
 				$actionLinks[] = $diffLink;
 
 			if ( $user->isAllowed( 'abusefilter-hide-log' ) ) {
-				$hideLink = Linker::link(
+				$hideLink = Linker::linkKnown(
 					$this->getPageTitle(),
 					$this->msg( 'abusefilter-log-hidelink' )->text(),
 					array(),
@@ -559,7 +559,7 @@ class SpecialAbuseLog extends SpecialPage {
 				$title = SpecialPage::getTitleFor( 'AbuseFilter', $row->afl_filter );
 				$linkText = $this->msg( 'abusefilter-log-detailedentry-local' )
 					->numParams( $row->afl_filter )->escaped();
-				$filterLink = Linker::link( $title, $linkText );
+				$filterLink = Linker::linkKnown( $title, $linkText );
 			}
 			$description = $this->msg( 'abusefilter-log-detailedentry-meta' )->rawParams(
 				$timestamp,
@@ -588,11 +588,11 @@ class SpecialAbuseLog extends SpecialPage {
 			)->params( $row->afl_user_text )->parse();
 		}
 
-		if ( self::isHidden( $row ) === true ) {
+		if ( $isHidden === true ) {
 			$description .= ' ' .
 				$this->msg( 'abusefilter-log-hidden' )->parse();
 			$class = 'afl-hidden';
-		} elseif ( self::isHidden( $row ) === 'implicit' ) {
+		} elseif ( $isHidden === 'implicit' ) {
 			$description .= ' ' .
 				$this->msg( 'abusefilter-log-hidden-implicit' )->parse();
 		}
@@ -602,6 +602,17 @@ class SpecialAbuseLog extends SpecialPage {
 		} else {
 			return Xml::tags( 'span', isset( $class ) ? array( 'class' => $class ) : null, $description );
 		}
+	}
+
+	protected static function getUserLinks( $userId, $userName ) {
+		static $cache = array();
+
+		if ( !isset( $cache[$userName][$userId] ) ) {
+			$cache[$userName][$userId] = Linker::userLink( $userId, $userName ) .
+				Linker::userToolLinks( $userId, $userName, true );
+		}
+
+		return $cache[$userName][$userId];
 	}
 
 	/**
@@ -691,6 +702,28 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		}
 
 		return $info;
+	}
+
+	/**
+	 * @param ResultWrapper $result
+	 */
+	protected function preprocessResults( $result ) {
+		if ( $this->getNumRows() === 0 ) {
+			return;
+		}
+
+		$lb = new LinkBatch();
+		$lb->setCaller( __METHOD__ );
+		foreach ( $result as $row ) {
+			// Only for local wiki results
+			if ( !$row->afl_wiki ) {
+				$lb->add( $row->afl_namespace, $row->afl_title );
+				$lb->add( NS_USER,  $row->afl_user );
+				$lb->add( NS_USER_TALK, $row->afl_user_text );
+			}
+		}
+		$lb->execute();
+		$result->seek( 0 );
 	}
 
 	function getIndexField() {
