@@ -1,1 +1,1 @@
-norm("foo") = "F0" & norm("anyone") = "ANY0NE"
+norm("foo") = "FO" & norm("any0ne") = "ANYONE"
