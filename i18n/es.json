@@ -354,7 +354,7 @@
 	"abusefilter-history-error-hidden": "El filtro que has solicitado está oculto y no puedes ver su historial.",
 	"abusefilter-exception-unexpectedatend": "«$2» inesperado en el carácter $1.",
 	"abusefilter-exception-expectednotfound": "Se esperaba un $2 en el carácter $1 (en su lugar se encontró $3 $4).",
-	"abusefilter-exception-unrecognisedkeyword": "Palabra clave $2 no reconocida en el carácter $1",
+	"abusefilter-exception-unrecognisedkeyword": "Palabra clave $2 no reconocida en el carácter $1.",
 	"abusefilter-exception-unexpectedtoken": "Token «$3» inesperado (de tipo $2) en el carácter $1.",
 	"abusefilter-exception-unclosedstring": "Cadena no cerrada empezando en el carácter $1",
 	"abusefilter-exception-invalidoperator": "Operador no válido «$2» en el carácter $1.",
