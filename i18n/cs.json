@@ -11,7 +11,8 @@
 			"Vks",
 			"Cvanca",
 			"Urbanecm",
-			"Matma Rex"
+			"Matma Rex",
+			"Martin Urbanec"
 		]
 	},
 	"abusefilter-desc": "Podrobuje editace automatickým heuristikám",
@@ -154,7 +155,7 @@
 	"abusefilter-edit-lastmod": "Poslední změna filtru:",
 	"abusefilter-edit-lastmod-text": "$1, $2",
 	"abusefilter-edit-hitcount": "Zásahy filtru:",
-	"abusefilter-edit-consequences": "Opatření provedená při splnění podmínek",
+	"abusefilter-edit-consequences": "Opatření, která se mají provést při splnění podmínek",
 	"abusefilter-edit-action-warn": "Před provedením těchto opatření nejprve uživatele varovat",
 	"abusefilter-edit-action-disallow": "Znemožnit uživateli provést příslušnou činnost",
 	"abusefilter-edit-action-flag": "Zaznamenat činnost v protokolu zneužití",

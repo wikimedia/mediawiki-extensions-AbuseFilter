@@ -151,7 +151,7 @@
 	"abusefilter-edit-lastmod": "संपादन गाळणीचा शेवटचा फेरबदल:",
 	"abusefilter-edit-lastmod-text": "$1 द्वारा $2",
 	"abusefilter-edit-hitcount": "गाळणीने पेललेले झेल",
-	"abusefilter-edit-consequences": "अनुरुपन (मॅच) झाल्यावर कार्यवाही केली",
+	"abusefilter-edit-consequences": "अनुरुपन (मॅच) झाल्यावर करावयाची कार्यवाही",
 	"abusefilter-edit-action-warn": "सदस्यास पुर्व/सजगता सूचना देउन या क्रिया उद्युक्त करा",
 	"abusefilter-edit-action-disallow": "प्रश्नांकित कृती करण्यापासून, उपयोगकर्त्यास थांबवा",
 	"abusefilter-edit-action-flag": "संपादन गाळणी नोंदीत टिपण्यासाठी पताका लावा",
