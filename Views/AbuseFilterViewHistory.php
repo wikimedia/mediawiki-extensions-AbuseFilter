@@ -16,9 +16,9 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			$out->setPageTitle( $this->msg( 'abusefilter-filter-log' ) );
 		}
 
-		# Check perms
+		# Check perms. abusefilter-modify is a superset of abusefilter-view-private
 		if ( $filter && AbuseFilter::filterHidden( $filter )
-			&& !$this->getUser()->isAllowed( 'abusefilter-view-private' )
+			&& !$this->getUser()->isAllowedAny( array( 'abusefilter-modify', 'abusefilter-view-private' ) )
 		) {
 			$out->addWikiMsg( 'abusefilter-history-error-hidden' );
 			return;
@@ -234,7 +234,9 @@ class AbuseFilterHistoryPager extends TablePager {
 			$info['conds']['afh_filter'] = $this->mFilter;
 		}
 
-		if ( !$this->getUser()->isAllowed( 'abusefilter-view-private' ) ) {
+		if ( !$this->getUser()->isAllowedAny(
+			array( 'abusefilter-modify', 'abusefilter-view-private' ) )
+		) {
 			// Hide data the user can't see.
 			$info['conds']['af_hidden'] = 0;
 		}
