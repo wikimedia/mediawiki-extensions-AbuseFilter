@@ -147,7 +147,7 @@
 	"abusefilter-edit-lastmod": "Última modificación do filtro:",
 	"abusefilter-edit-lastmod-text": "$3 ás $4 por $2",
 	"abusefilter-edit-hitcount": "Deteccións do filtro:",
-	"abusefilter-edit-consequences": "Accións levadas a cabo na detección",
+	"abusefilter-edit-consequences": "Accións a realizar na detección",
 	"abusefilter-edit-action-warn": "Desencadear estas accións despois de darlle ao usuario un aviso",
 	"abusefilter-edit-action-disallow": "Impedir que o usuario leve a cabo a acción en cuestión",
 	"abusefilter-edit-action-flag": "Revisar a edición no rexistro de abusos",
