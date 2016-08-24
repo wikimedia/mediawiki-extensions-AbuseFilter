@@ -140,7 +140,7 @@
 	"abusefilter-edit-lastmod": "Pēdējoreiz filtrs izmainīts:",
 	"abusefilter-edit-lastmod-text": "$1 — $2",
 	"abusefilter-edit-hitcount": "Filtra trāpījumu skaits:",
-	"abusefilter-edit-consequences": "Atbilstības gadījumā veiktās darbības",
+	"abusefilter-edit-consequences": "Atbilstības gadījumā veicamās darbības",
 	"abusefilter-edit-action-warn": "Veikt šīs darbības pēc lietotāja brīdināšanas",
 	"abusefilter-edit-action-disallow": "Liegt lietotājam veikt attiecīgās darbības",
 	"abusefilter-edit-action-flag": "Atzīmēt labojumu ļaunprātīgo izmaiņu reģistrā",
