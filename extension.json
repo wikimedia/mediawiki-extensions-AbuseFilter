@@ -72,6 +72,7 @@
 	"AutoloadClasses": {
 		"AbuseFilter": "AbuseFilter.class.php",
 		"AbuseFilterParser": "AbuseFilter.parser.php",
+		"AbuseFilterCachingParser": "AbuseFilter.parser.new.php",
 		"AbuseFilterTokenizer": "AbuseFilterTokenizer.php",
 		"AbuseFilterHooks": "AbuseFilter.hooks.php",
 		"AbuseFilterPreAuthenticationProvider": "AbuseFilterPreAuthenticationProvider.php",
@@ -101,6 +102,8 @@
 		"AFPException": "AbuseFilter.parser.php",
 		"AFPParserState": "AbuseFilter.parser.php",
 		"AFPToken": "AbuseFilter.parser.php",
+		"AFPTreeNode": "AbuseFilter.parser.new.php",
+		"AFPTreeParser": "AbuseFilter.parser.new.php",
 		"AFPUserVisibleException": "AbuseFilter.parser.php",
 		"ApiQueryAbuseLog": "api/ApiQueryAbuseLog.php",
 		"ApiQueryAbuseFilters": "api/ApiQueryAbuseFilters.php",

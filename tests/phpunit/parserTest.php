@@ -38,6 +38,20 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * @return [AbuseFilterParser]
+	 */
+	static function getParsers() {
+		static $parsers = null;
+		if ( !$parsers ) {
+			$parsers = [
+				new AbuseFilterParser(),
+				new AbuseFilterCachingParser()
+			];
+		}
+		return $parsers;
+	}
+
+	/**
 	 * @dataProvider readTests
 	 */
 	public function testParser( $testName, $rule, $expected ) {
@@ -46,9 +60,10 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 			$this->markTestSkipped( 'Parser test ' . $testName . ' requires the AntiSpoof extension' );
 		}
 
-		$parser = self::getParser();
-		$actual = $parser->parse( $rule );
-		$this->assertEquals( $expected, $actual, 'Running parser test ' . $testName );
+		foreach ( self::getParsers() as $parser ) {
+			$actual = $parser->parse( $rule );
+			$this->assertEquals( $expected, $actual, 'Running parser test ' . $testName );
+		}
 	}
 
 	/**

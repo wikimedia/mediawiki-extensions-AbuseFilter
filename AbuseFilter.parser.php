@@ -613,6 +613,16 @@ class AbuseFilterParser {
 		'funcSetVar',
 	);
 
+	public static $mKeywords = array(
+		'in' => 'keywordIn',
+		'like' => 'keywordLike',
+		'matches' => 'keywordLike',
+		'contains' => 'keywordContains',
+		'rlike' => 'keywordRegex',
+		'irlike' => 'keywordRegexInsensitive',
+		'regex' => 'keywordRegex'
+	);
+
 	public static $funcCache = array();
 
 	/**
@@ -1124,17 +1134,10 @@ class AbuseFilterParser {
 	protected function doLevelSpecialWords( &$result ) {
 		$this->doLevelUnarys( $result );
 		$keyword = strtolower( $this->mCur->value );
-		$specwords = array(
-			'in' => 'keywordIn',
-			'like' => 'keywordLike',
-			'matches' => 'keywordLike',
-			'contains' => 'keywordContains',
-			'rlike' => 'keywordRegex',
-			'irlike' => 'keywordRegexInsensitive',
-			'regex' => 'keywordRegex'
-		);
-		if ( $this->mCur->type == AFPToken::TKEYWORD && in_array( $keyword, array_keys( $specwords ) ) ) {
-			$func = $specwords[$keyword];
+		if ( $this->mCur->type == AFPToken::TKEYWORD
+			&& in_array( $keyword, array_keys( self::$mKeywords ) )
+		) {
+			$func = self::$mKeywords[$keyword];
 			$this->move();
 			$r2 = new AFPData();
 			$this->doLevelUnarys( $r2 );
