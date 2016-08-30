@@ -915,13 +915,13 @@ class AbuseFilter {
 		}
 
 		if ( is_array( $filter_matched ) ) {
-			if ( $isForEdit ) {
+			if ( $isForEdit && $mode !== 'stash' ) {
 				$logger->info( __METHOD__ . ": cache hit for '$title' (key $stashKey)." );
 				$statsd->increment( 'abusefilter.check-stash.hit' );
 			}
 		} else {
 			$filter_matched = self::checkAllFilters( $vars, $group );
-			if ( $isForEdit ) {
+			if ( $isForEdit && $mode !== 'stash' ) {
 				$logger->info( __METHOD__ . ": cache miss for '$title' (key $stashKey)." );
 				$statsd->increment( 'abusefilter.check-stash.miss' );
 			}
