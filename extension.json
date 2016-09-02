@@ -167,6 +167,13 @@
 		"remoteExtPath": "AbuseFilter/modules"
 	},
 	"callback": "AbuseFilterHooks::onRegistration",
+	"GrantPermissions": {
+		"basic": {
+			"abusefilter-view": true,
+			"abusefilter-log-detail": true,
+			"abusefilter-log": true
+		}
+	},
 	"Hooks": {
 		"EditFilterMergedContent": "AbuseFilterHooks::onEditFilterMergedContent",
 		"GetAutoPromoteGroups": "AbuseFilterHooks::onGetAutoPromoteGroups",
