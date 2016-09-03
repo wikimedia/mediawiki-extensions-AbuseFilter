@@ -121,7 +121,7 @@
 	"abusefilter-reautoconfirm-none": "Le stato autoconfirmate de iste {{GENDER:$1|usator|usatrice|usator}} non ha essite suspendite.",
 	"abusefilter-reautoconfirm-notallowed": "Tu non es autorisate a restaurar le stato autonconfirmate.",
 	"abusefilter-reautoconfirm-done": "Le stato autoconfirmate del conto ha essite restaurate",
-	"abusefilter-status": "Del ultime $1 {{PLURAL:$1|action|actiones}}, $2 ($3%) ha attingite le limite de condition definite per $4. $5 ($6%) ha correspondite a un del filtros actualmente active.",
+	"abusefilter-status": "Inter le ultime $1 {{PLURAL:$1|action|actiones}}, $2 ($3%) ha attingite le limite de $4 conditiones autorisate, e $5 ($6%) ha correspondite a un del filtros actualmente active.",
 	"abusefilter-edit": "Modificar filtro anti-abuso",
 	"abusefilter-edit-subtitle": "Modification del filtro $1",
 	"abusefilter-edit-subtitle-new": "Creation de filtro",

@@ -166,7 +166,7 @@
 	"abusefilter-edit-lastmod": "Последнее изменение фильтра:",
 	"abusefilter-edit-lastmod-text": "$1 — $2",
 	"abusefilter-edit-hitcount": "Срабатываний фильтра:",
-	"abusefilter-edit-consequences": "Принимаемые меры",
+	"abusefilter-edit-consequences": "Действия, выполняемые при совпадении",
 	"abusefilter-edit-action-warn": "Принимать эти меры после предупреждения участника",
 	"abusefilter-edit-action-disallow": "Запретить участнику выполнить запрашиваемое действие",
 	"abusefilter-edit-action-flag": "Отметить правку в журнале злоупотреблений",
