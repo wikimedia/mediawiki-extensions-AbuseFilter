@@ -81,7 +81,7 @@ class AbuseFilterHooks {
 
 		$user = $context->getUser();
 
-		$oldtext = '';
+		$oldcontent = null;
 
 		if ( ( $title instanceof Title ) && $title->canExist() && $title->exists() ) {
 			// Make sure we load the latest text saved in database (bug 31656)
@@ -99,9 +99,11 @@ class AbuseFilterHooks {
 			AFComputedVariable::$articleCache[$articleCacheKey] = $page;
 
 			// Don't trigger for null edits.
-			if ( $content && isset( $oldcontent ) && $content->equals( $oldcontent ) ) {
+			if ( $content && $oldcontent ) {
 				// Compare Content objects if available
-				return Status::newGood();
+				if ( $content->equals( $oldcontent ) ) {
+					return Status::newGood();
+				}
 			} elseif ( strcmp( $oldtext, $text ) == 0 ) {
 				// Otherwise, compare strings
 				return Status::newGood();
@@ -112,7 +114,7 @@ class AbuseFilterHooks {
 
 		// Load vars for filters to check
 		$vars = self::newVariableHolderForEdit(
-			$user, $title, $page, $summary, $oldtext, $text
+			$user, $title, $page, $summary, $content, $oldcontent, $text
 		);
 
 		$filter_result = AbuseFilter::filterAction( $vars, $title );
@@ -133,13 +135,15 @@ class AbuseFilterHooks {
 	 * @param Title $title
 	 * @param WikiPage|null $page
 	 * @param string $summary
-	 * @param string $oldtext
+	 * @param Content $newcontent
+	 * @param Content|null $oldcontent
 	 * @param string $text
 	 * @return AbuseFilterVariableHolder
 	 * @throws MWException
 	 */
 	private static function newVariableHolderForEdit(
-		User $user, Title $title, $page, $summary, $oldtext, $text
+		User $user, Title $title, $page, $summary, Content $newcontent,
+		$oldcontent = null, $text
 	) {
 		$vars = new AbuseFilterVariableHolder();
 		$vars->addHolders(
@@ -148,6 +152,15 @@ class AbuseFilterHooks {
 		);
 		$vars->setVar( 'action', 'edit' );
 		$vars->setVar( 'summary', $summary );
+		if ( $oldcontent instanceof Content ) {
+			$oldmodel = $oldcontent->getModel();
+			$oldtext = AbuseFilter::contentToString( $oldcontent );
+		} else {
+			$oldmodel = '';
+			$oldtext = '';
+		}
+		$vars->setVar( 'old_content_model', $oldmodel );
+		$vars->setVar( 'new_content_model', $newcontent->getModel() );
 		$vars->setVar( 'old_wikitext', $oldtext );
 		$vars->setVar( 'new_wikitext', $text );
 		// TODO: set old_content and new_content vars, use them
@@ -900,9 +913,9 @@ class AbuseFilterHooks {
 		// Cache any resulting filter matches.
 		// Do this outside the synchronous stash lock to avoid any chance of slowdown.
 		DeferredUpdates::addCallableUpdate(
-			function () use ( $user, $page, $summary, $oldtext, $text ) {
+			function () use ( $user, $page, $summary, $content, $oldcontent, $text ) {
 				$vars = self::newVariableHolderForEdit(
-					$user, $page->getTitle(), $page, $summary, $oldtext, $text
+					$user, $page->getTitle(), $page, $summary, $content, $oldcontent, $text
 				);
 				AbuseFilter::filterAction( $vars, $page->getTitle(), 'default', $user, 'stash' );
 			},
