@@ -5,7 +5,8 @@
 			"Calak",
 			"Pirehelokan",
 			"Matma Rex",
-			"Sarchia"
+			"Sarchia",
+			"Muhammed taha"
 		]
 	},
 	"abuselog": "پاڵوێنەی کەڵکاوەژوو",
@@ -86,7 +87,7 @@
 	"abusefilter-list-options-deleted-hide": "پاڵوێنە سڕدراوەکان بشارەوە",
 	"abusefilter-list-options-deleted-show": "پاڵوێنە سڕدراوەکان لەخۆبگرەوە",
 	"abusefilter-list-options-scope": "پاڵوێنەکان نیشان بدە:",
-	"abusefilter-list-options-scope-local": "ویکیی خۆماڵی",
+	"abusefilter-list-options-scope-local": "تەنھا ڕێسا خۆماڵییەکان",
 	"abusefilter-list-options-disabled": "پاڵوێنە ناچالاکەکان:",
 	"abusefilter-list-options-hidedisabled": "پاڵوێنە ناچالاکەکان بشارەوە",
 	"abusefilter-list-options-submit": "نوێکردنەوە",
@@ -122,7 +123,7 @@
 	"abusefilter-edit-warn-actions": "کردەوەکان:",
 	"abusefilter-edit-warn-preview": "پێشبینینی پەیامی ھەڵبژێردراو نیشانبدە",
 	"abusefilter-edit-warn-edit": "پەیامی ھەڵبژێردراو دروست/دەستکاری بکە",
-	"abusefilter-edit-tag-tag": "تاگەکان بۆ چەسپاندن (ھەر کامیان لە دێڕێکدا):",
+	"abusefilter-edit-tag-tag": "[[Special:Tags|تاگەکان]] بۆ چەسپاندن (ھەر کامیان لە دێڕێکدا):",
 	"abusefilter-edit-denied": "ناتوانی وردەکارییەکانی ئەم پاڵوێنەیە ببینی، چونکوو لەبەر چاوی گشتی شاردراوەتەوە.",
 	"abusefilter-edit-main": "پارامەترەکانی پاڵوێنە",
 	"abusefilter-edit-done-subtitle": "پاڵوێنە دەستکاری کرا",
