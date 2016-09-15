@@ -683,15 +683,21 @@ class AbuseFilterHooks {
 	 * @param $id
 	 * @param $nt Title
 	 * @param $tools
+	 * @param SpecialPage|null $sp for context in newer MW versions
 	 * @return bool
 	 */
-	public static function onContributionsToolLinks( $id, $nt, &$tools ) {
-		global $wgUser;
-		if ( $wgUser->isAllowed( 'abusefilter-log' ) ) {
+	public static function onContributionsToolLinks( $id, $nt, &$tools, SpecialPage $sp = null ) {
+		if ( $sp ) {
+			$context = $sp->getContext();
+		} else {
+			// Fallback to main context
+			$context = RequestContext::getMain();
+		}
+		if ( $context->getUser()->isAllowed( 'abusefilter-log' ) ) {
 			$tools[] = Linker::link(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
-				wfMessage( 'abusefilter-log-linkoncontribs' )->text(),
-				array( 'title' => wfMessage( 'abusefilter-log-linkoncontribs-text' )->parse() ),
+				$context->msg( 'abusefilter-log-linkoncontribs' )->text(),
+				array( 'title' => $context->msg( 'abusefilter-log-linkoncontribs-text' )->parse() ),
 				array( 'wpSearchUser' => $nt->getText() )
 			);
 		}
