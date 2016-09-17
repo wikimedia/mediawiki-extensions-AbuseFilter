@@ -184,7 +184,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			null,
 			$this->msg( 'abusefilter-examine-vars', 'parseinline' )->parse()
 		);
-		$html .= AbuseFilter::buildVarDumpTable( $vars );
+		$html .= AbuseFilter::buildVarDumpTable( $vars, $this->getContext() );
 
 		$output->addHTML( $html );
 	}

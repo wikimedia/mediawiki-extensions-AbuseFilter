@@ -364,7 +364,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$output .= Xml::element( 'h3', null, $this->msg( 'abusefilter-log-details-vars' )->text() );
 
 		// Build a table.
-		$output .= AbuseFilter::buildVarDumpTable( $vars );
+		$output .= AbuseFilter::buildVarDumpTable( $vars, $this->getContext() );
 
 		if ( self::canSeePrivate() ) {
 			// Private stuff, like IPs.

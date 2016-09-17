@@ -2261,10 +2261,11 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $vars AbuseFilterVariableHolder
+	 * @param AbuseFilterVariableHolder $vars
+	 * @param IContextSource $context
 	 * @return string
 	 */
-	public static function buildVarDumpTable( $vars ) {
+	public static function buildVarDumpTable( $vars, IContextSource $context ) {
 		// Export all values
 		if ( $vars instanceof AbuseFilterVariableHolder ) {
 			$vars = $vars->exportAllVars();
@@ -2284,8 +2285,8 @@ class AbuseFilter {
 			"\n";
 
 		$header =
-			Xml::element( 'th', null, wfMessage( 'abusefilter-log-details-var' )->text() ) .
-			Xml::element( 'th', null, wfMessage( 'abusefilter-log-details-val' )->text() );
+			Xml::element( 'th', null, $context->msg( 'abusefilter-log-details-var' )->text() ) .
+			Xml::element( 'th', null, $context->msg( 'abusefilter-log-details-val' )->text() );
 		$output .= Xml::tags( 'tr', null, $header ) . "\n";
 
 		if ( !count( $vars ) ) {
@@ -2300,8 +2301,8 @@ class AbuseFilter {
 
 			if ( !empty( $variableMessageMappings[$key] ) ) {
 				$mapping = $variableMessageMappings[$key];
-				$keyDisplay = wfMessage( "abusefilter-edit-builder-vars-$mapping" )->parse() .
-					' ' . Xml::element( 'code', null, wfMessage( 'parentheses', $key )->text() );
+				$keyDisplay = $context->msg( "abusefilter-edit-builder-vars-$mapping" )->parse() .
+					' ' . Xml::element( 'code', null, $context->msg( 'parentheses', $key )->text() );
 			} else {
 				$keyDisplay = Xml::element( 'code', null, $key );
 			}
