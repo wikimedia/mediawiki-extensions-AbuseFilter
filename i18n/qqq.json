@@ -274,6 +274,8 @@
 	"abusefilter-edit-builder-vars-diff": "Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",
 	"abusefilter-edit-builder-vars-newsize": "New size of the page. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",
 	"abusefilter-edit-builder-vars-oldsize": "Old size of the page. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",
+	"abusefilter-edit-builder-vars-old-content-model": "Old content model of the page. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",
+	"abusefilter-edit-builder-vars-new-content-model": "New content model of the page. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",
 	"abusefilter-edit-builder-vars-removedlines": "Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",
 	"abusefilter-edit-builder-vars-summary": "Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",
 	"abusefilter-edit-builder-vars-article-id": "Abuse filter syntax option in a dropdown from the group {{msg-mw|Abusefilter-edit-builder-group-vars}}.\n{{Identical|Page ID}}",

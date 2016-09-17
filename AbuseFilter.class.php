@@ -91,6 +91,8 @@ class AbuseFilter {
 			'edit_diff' => 'diff',
 			'new_size' => 'newsize',
 			'old_size' => 'oldsize',
+			'new_content_model' => 'new-content-model',
+			'old_content_model' => 'old-content-model',
 			'removed_lines' => 'removedlines',
 			'summary' => 'summary',
 			'article_articleid' => 'article-id',
