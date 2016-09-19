@@ -253,6 +253,8 @@
 	"abusefilter-edit-builder-vars-diff": "פלט unified diff של השינויים שבוצעו בעריכה",
 	"abusefilter-edit-builder-vars-newsize": "גודל הדף החדש",
 	"abusefilter-edit-builder-vars-oldsize": "גודל הדף הישן",
+	"abusefilter-edit-builder-vars-old-content-model": "מודל התוכן הישן",
+	"abusefilter-edit-builder-vars-new-content-model": "מודל התוכן החדש",
 	"abusefilter-edit-builder-vars-removedlines": "שורות שהוסרו בעריכה",
 	"abusefilter-edit-builder-vars-summary": "תקציר עריכה/סיבה",
 	"abusefilter-edit-builder-vars-article-id": "מספר הדף",

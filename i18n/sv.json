@@ -268,6 +268,8 @@
 	"abusefilter-edit-builder-vars-diff": "Enhetlig skillnad av ändringar i redigering",
 	"abusefilter-edit-builder-vars-newsize": "Ny sidstorlek",
 	"abusefilter-edit-builder-vars-oldsize": "Gammal sidstorlek",
+	"abusefilter-edit-builder-vars-old-content-model": "Gammal innehållsmodell",
+	"abusefilter-edit-builder-vars-new-content-model": "Ny innehållsmodell",
 	"abusefilter-edit-builder-vars-removedlines": "Borttagna rader i redigering",
 	"abusefilter-edit-builder-vars-summary": "Redigeringssammanfattning",
 	"abusefilter-edit-builder-vars-article-id": "Sid-ID",

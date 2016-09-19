@@ -252,6 +252,8 @@
 	"abusefilter-edit-builder-vars-diff": "Unifikovaný diff změn způsobených editací",
 	"abusefilter-edit-builder-vars-newsize": "Nová velikost stránky",
 	"abusefilter-edit-builder-vars-oldsize": "Původní velikost stránky",
+	"abusefilter-edit-builder-vars-old-content-model": "Původní model obsahu",
+	"abusefilter-edit-builder-vars-new-content-model": "Nový model obsahu",
 	"abusefilter-edit-builder-vars-removedlines": "Řádky odstraněné při editaci",
 	"abusefilter-edit-builder-vars-summary": "Shrnutí editace/zdůvodnění",
 	"abusefilter-edit-builder-vars-article-id": "ID stránky",

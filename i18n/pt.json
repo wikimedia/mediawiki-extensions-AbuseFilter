@@ -23,7 +23,8 @@
 			"Vitorvicentevalente",
 			"He7d3r",
 			"Opraco",
-			"Matma Rex"
+			"Matma Rex",
+			"Mansil"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas às edições.",
@@ -263,6 +264,8 @@
 	"abusefilter-edit-builder-vars-diff": "Diferença unificada das modificações feitas pela edição",
 	"abusefilter-edit-builder-vars-newsize": "Tamanho de página novo",
 	"abusefilter-edit-builder-vars-oldsize": "Tamanho de página anterior",
+	"abusefilter-edit-builder-vars-old-content-model": "Modelo de contéudo antigo",
+	"abusefilter-edit-builder-vars-new-content-model": "Novo modelo de conteúdo",
 	"abusefilter-edit-builder-vars-removedlines": "Linhas removidas na edição",
 	"abusefilter-edit-builder-vars-summary": "Resumo ou motivo da edição",
 	"abusefilter-edit-builder-vars-article-id": "ID da página",

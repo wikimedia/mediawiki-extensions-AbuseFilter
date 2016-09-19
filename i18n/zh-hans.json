@@ -279,6 +279,8 @@
 	"abusefilter-edit-builder-vars-diff": "编辑产生的差异",
 	"abusefilter-edit-builder-vars-newsize": "新页面大小",
 	"abusefilter-edit-builder-vars-oldsize": "旧页面大小",
+	"abusefilter-edit-builder-vars-old-content-model": "旧的内容模型",
+	"abusefilter-edit-builder-vars-new-content-model": "新的内容模型",
 	"abusefilter-edit-builder-vars-removedlines": "编辑移除的行",
 	"abusefilter-edit-builder-vars-summary": "编辑摘要/原因",
 	"abusefilter-edit-builder-vars-article-id": "页面编号",

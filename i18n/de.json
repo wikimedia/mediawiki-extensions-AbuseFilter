@@ -265,6 +265,8 @@
 	"abusefilter-edit-builder-vars-diff": "Vereinigter Versionsunterschied der Bearbeitung",
 	"abusefilter-edit-builder-vars-newsize": "Neue Seitengröße",
 	"abusefilter-edit-builder-vars-oldsize": "Alte Seitengröße",
+	"abusefilter-edit-builder-vars-old-content-model": "Altes Inhaltsmodell",
+	"abusefilter-edit-builder-vars-new-content-model": "Neues Inhaltsmodell",
 	"abusefilter-edit-builder-vars-removedlines": "Durch die Bearbeitung entfernte Zeilen",
 	"abusefilter-edit-builder-vars-summary": "Zusammenfassung",
 	"abusefilter-edit-builder-vars-article-id": "Seitenkennnummer",

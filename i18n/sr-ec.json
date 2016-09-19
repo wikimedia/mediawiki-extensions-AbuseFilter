@@ -242,6 +242,8 @@
 	"abusefilter-edit-builder-vars-delta": "Промена величине у измени",
 	"abusefilter-edit-builder-vars-newsize": "Нова величина странице",
 	"abusefilter-edit-builder-vars-oldsize": "Стара величина странице",
+	"abusefilter-edit-builder-vars-old-content-model": "Стари модел садржаја",
+	"abusefilter-edit-builder-vars-new-content-model": "Нови модел садржаја",
 	"abusefilter-edit-builder-vars-removedlines": "Уклоњени редови у измени",
 	"abusefilter-edit-builder-vars-summary": "Опис/разлог измене",
 	"abusefilter-edit-builder-vars-article-id": "ID странице",

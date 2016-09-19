@@ -260,6 +260,8 @@
 	"abusefilter-edit-builder-vars-diff": "Modifiche apportate in formato unidiff",
 	"abusefilter-edit-builder-vars-newsize": "Nuova dimensione della pagina",
 	"abusefilter-edit-builder-vars-oldsize": "Vecchia dimensione della pagina",
+	"abusefilter-edit-builder-vars-old-content-model": "Vecchio modello di contenuto",
+	"abusefilter-edit-builder-vars-new-content-model": "Nuovo modello di contenuto",
 	"abusefilter-edit-builder-vars-removedlines": "Righe rimosse dalla modifica",
 	"abusefilter-edit-builder-vars-summary": "Oggetto/motivazione",
 	"abusefilter-edit-builder-vars-article-id": "ID della pagina",
