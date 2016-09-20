@@ -249,6 +249,8 @@
 	"abusefilter-edit-builder-vars-diff": "Vurnayîşê nuşte de unified diff",
 	"abusefilter-edit-builder-vars-newsize": "Ebatê pel ê newî",
 	"abusefilter-edit-builder-vars-oldsize": "Ebatê pel ê kihanî",
+	"abusefilter-edit-builder-vars-old-content-model": "Modelê zerrekiyo kehan",
+	"abusefilter-edit-builder-vars-new-content-model": "Modelê zerrekiyo newe",
 	"abusefilter-edit-builder-vars-removedlines": "Dizeyan ke nuşte de wedarne",
 	"abusefilter-edit-builder-vars-summary": "Qissayê vurnayîşî/sebeb",
 	"abusefilter-edit-builder-vars-article-id": "Nımrey pela",

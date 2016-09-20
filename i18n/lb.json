@@ -230,6 +230,8 @@
 	"abusefilter-edit-builder-vars-diff": "Gesamtënnerscheed vun den Ännerungen déi bei der Ännerung gemaach goufen",
 	"abusefilter-edit-builder-vars-newsize": "Nei Säitegréisst",
 	"abusefilter-edit-builder-vars-oldsize": "Al Säitegréisst",
+	"abusefilter-edit-builder-vars-old-content-model": "Alen Inhaltsmodell",
+	"abusefilter-edit-builder-vars-new-content-model": "Neien Inhaltsmodell",
 	"abusefilter-edit-builder-vars-removedlines": "Linnen déi der Ännerung ewechgeholl goufen",
 	"abusefilter-edit-builder-vars-summary": "Resumé/Grond vun der Ännerung",
 	"abusefilter-edit-builder-vars-article-id": "ID (Nummer) vun der Säit",
