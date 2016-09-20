@@ -46,38 +46,8 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 		);
 	}
 
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getParamDescription() {
-		return array(
-			'user' => 'Username of the user you want to unblock',
-			'token' => 'An edit token',
-		);
-	}
-
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getDescription() {
-		return 'Unblocks a user from receiving autopromotions due to an abusefilter consequence';
-	}
-
 	public function needsToken() {
 		return 'csrf';
-	}
-
-	public function getTokenSalt() {
-		return '';
-	}
-
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getExamples() {
-		return array(
-			"api.php?action=abusefilterunblockautopromote&user=Bob&token=%2B\\"
-		);
 	}
 
 	/**

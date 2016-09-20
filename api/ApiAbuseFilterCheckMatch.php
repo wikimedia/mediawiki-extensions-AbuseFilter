@@ -55,11 +55,9 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 		}
 
 		$result = array(
+			ApiResult::META_BC_BOOLS => 'result',
 			'result' => AbuseFilter::checkConditions( $params['filter'], $vars ),
 		);
-		if ( defined( 'ApiResult::META_CONTENT' ) ) {
-			$result[ApiResult::META_BC_BOOLS][] = 'result';
-		}
 
 		$this->getResult()->addValue(
 			null,
@@ -80,35 +78,6 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 			'logid' => array(
 				ApiBase::PARAM_TYPE => 'integer'
 			),
-		);
-	}
-
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getParamDescription() {
-		return array(
-			'filter' => 'The full filter text to check for a match',
-			'vars' => 'JSON encoded array of variables to test against',
-			'rcid' => 'Recent change ID to check against',
-			'logid' => 'Abuse filter log ID to check against',
-		);
-	}
-
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getDescription() {
-		return array(
-			'Check to see if an AbuseFilter matches a set of variables, edit'
-			. 'or logged AbuseFilter event.',
-			'vars, rcid or logid is required however only one may be used',
-		);
-	}
-
-	public function getExamples() {
-		return array(
-			'api.php?action=abusefiltercheckmatch&filter=!("autoconfirmed"%20in%20user_groups)&rcid=15'
 		);
 	}
 

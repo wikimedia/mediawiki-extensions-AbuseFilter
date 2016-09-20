@@ -151,11 +151,7 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 				}
 			}
 		}
-		if ( defined( 'ApiResult::META_CONTENT' ) ) {
-			$result->addIndexedTagName( array( 'query', $this->getModuleName() ), 'filter' );
-		} else {
-			$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'filter' );
-		}
+		$result->addIndexedTagName( array( 'query', $this->getModuleName() ), 'filter' );
 	}
 
 	public function getAllowedParams() {
@@ -172,10 +168,7 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 					'newer'
 				),
 				ApiBase::PARAM_DFLT => 'newer',
-				/** @todo Once support for MediaWiki < 1.25 is dropped,
-				 *  just use ApiBase::PARAM_HELP_MSG directly
-				 */
-				constant( 'ApiBase::PARAM_HELP_MSG' ) ?: '' => 'api-help-param-direction',
+				ApiBase::PARAM_HELP_MSG => 'api-help-param-direction',
 			),
 			'show' => array(
 				ApiBase::PARAM_ISMULTI => true,
@@ -211,37 +204,6 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 				),
 				ApiBase::PARAM_ISMULTI => true
 			)
-		);
-	}
-
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getParamDescription() {
-		return array(
-			'startid' => 'The filter id to start enumerating from',
-			'endid' => 'The filter id to stop enumerating at',
-			'dir' => 'The direction in which to enumerate',
-			'show' => 'Show only filters which meet these criteria',
-			'limit' => 'The maximum number of filters to list',
-			'prop' => 'Which properties to get',
-		);
-	}
-
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getDescription() {
-		return 'Show details of the abuse filters.';
-	}
-
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getExamples() {
-		return array(
-			'api.php?action=query&list=abusefilters&abfshow=enabled|!private',
-			'api.php?action=query&list=abusefilters&abfprop=id|description|pattern'
 		);
 	}
 
