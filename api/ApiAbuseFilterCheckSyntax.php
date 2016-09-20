@@ -38,34 +38,6 @@ class ApiAbuseFilterCheckSyntax extends ApiBase {
 	}
 
 	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getParamDescription() {
-		return array(
-			'filter' => 'The full filter text to check syntax on',
-		);
-	}
-
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getDescription() {
-		return array(
-			'Check syntax of an AbuseFilter filter'
-		);
-	}
-
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getExamples() {
-		return array(
-			'api.php?action=abusefilterchecksyntax&filter="foo"',
-			'api.php?action=abusefilterchecksyntax&filter="bar"%20bad_variable',
-		);
-	}
-
-	/**
 	 * @see ApiBase::getExamplesMessages()
 	 */
 	protected function getExamplesMessages() {
