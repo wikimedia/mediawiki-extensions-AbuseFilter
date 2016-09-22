@@ -248,6 +248,8 @@
 	"abusefilter-edit-builder-vars-diff": "Pakeitimo skirtumai",
 	"abusefilter-edit-builder-vars-newsize": "Naujas puslapio dydis",
 	"abusefilter-edit-builder-vars-oldsize": "Senasis puslapio dydis",
+	"abusefilter-edit-builder-vars-old-content-model": "Seno turinio modelis",
+	"abusefilter-edit-builder-vars-new-content-model": "Naujo turinio modelis",
 	"abusefilter-edit-builder-vars-removedlines": "Eilutės išmestos redaguojant",
 	"abusefilter-edit-builder-vars-summary": "Redagavimo pastaba",
 	"abusefilter-edit-builder-vars-article-id": "Puslapio ID",

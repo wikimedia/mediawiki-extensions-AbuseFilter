@@ -282,6 +282,8 @@
 	"abusefilter-edit-builder-vars-diff": "Diff unificado de cambios hechos durante la edición",
 	"abusefilter-edit-builder-vars-newsize": "Nuevo tamaño de la página",
 	"abusefilter-edit-builder-vars-oldsize": "Antiguo tamaño de la página",
+	"abusefilter-edit-builder-vars-old-content-model": "Modelo de contenido antiguo",
+	"abusefilter-edit-builder-vars-new-content-model": "Modelo de contenido nuevo",
 	"abusefilter-edit-builder-vars-removedlines": "Líneas eliminadas en la edición",
 	"abusefilter-edit-builder-vars-summary": "Resumen de edición/razón",
 	"abusefilter-edit-builder-vars-article-id": "ID de la página",

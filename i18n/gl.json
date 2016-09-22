@@ -244,6 +244,8 @@
 	"abusefilter-edit-builder-vars-diff": "Diferenzas unificadas dos cambios feitos por edición",
 	"abusefilter-edit-builder-vars-newsize": "Tamaño novo da páxina",
 	"abusefilter-edit-builder-vars-oldsize": "Tamaño vello da páxina",
+	"abusefilter-edit-builder-vars-old-content-model": "Modelo de contido antigo",
+	"abusefilter-edit-builder-vars-new-content-model": "Modelo de contido novo",
 	"abusefilter-edit-builder-vars-removedlines": "Liñas eliminadas na edición",
 	"abusefilter-edit-builder-vars-summary": "Resumo de edición/motivo",
 	"abusefilter-edit-builder-vars-article-id": "ID da páxina",

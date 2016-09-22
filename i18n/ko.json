@@ -260,6 +260,8 @@
 	"abusefilter-edit-builder-vars-diff": "편집 전후의 차이",
 	"abusefilter-edit-builder-vars-newsize": "새 문서 크기",
 	"abusefilter-edit-builder-vars-oldsize": "이전 문서 크기",
+	"abusefilter-edit-builder-vars-old-content-model": "오래된 콘텐츠 모델",
+	"abusefilter-edit-builder-vars-new-content-model": "새 콘텐츠 모델",
 	"abusefilter-edit-builder-vars-removedlines": "편집 중 제거된 줄",
 	"abusefilter-edit-builder-vars-summary": "편집 요약/이유",
 	"abusefilter-edit-builder-vars-article-id": "문서 ID",

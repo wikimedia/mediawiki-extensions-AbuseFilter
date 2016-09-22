@@ -23,7 +23,8 @@
 			"Striking Blue",
 			"Matma Rex",
 			"Mailman",
-			"Cat1987"
+			"Cat1987",
+			"Туллук"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам.",
@@ -264,6 +265,8 @@
 	"abusefilter-edit-builder-vars-diff": "Унифицированная разница изменений правки",
 	"abusefilter-edit-builder-vars-newsize": "Новый размер страницы",
 	"abusefilter-edit-builder-vars-oldsize": "Старый размер страницы",
+	"abusefilter-edit-builder-vars-old-content-model": "Модель содержимого страницы",
+	"abusefilter-edit-builder-vars-new-content-model": "Новая модель содержимого",
 	"abusefilter-edit-builder-vars-removedlines": "Удалённые строки",
 	"abusefilter-edit-builder-vars-summary": "Описание правки",
 	"abusefilter-edit-builder-vars-article-id": "ID страницы",
