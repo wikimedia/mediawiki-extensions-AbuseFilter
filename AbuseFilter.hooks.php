@@ -466,16 +466,8 @@ class AbuseFilterHooks {
 			$title->getPrefixedText(), $recentChange->mAttribs['rc_user_text'], $action
 		) );
 
-		if ( !empty( AbuseFilter::$tagsToSet[$actionID] ) ) {
-			$tags = AbuseFilter::$tagsToSet[$actionID];
-			if ( count( $tags ) ) {
-				ChangeTags::addTags(
-					$tags,
-					$recentChange->mAttribs['rc_id'],
-					$recentChange->mAttribs['rc_this_oldid'],
-					$recentChange->mAttribs['rc_logid']
-				);
-			}
+		if ( isset( AbuseFilter::$tagsToSet[$actionID] ) ) {
+			$recentChange->addTags( AbuseFilter::$tagsToSet[$actionID] );
 		}
 
 		return true;
