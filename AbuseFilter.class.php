@@ -933,7 +933,7 @@ class AbuseFilter {
 			// Save the filter stash result and do nothing further
 			$cacheData = [ 'matches' => $filter_matched, 'tags' => self::$tagsToSet ];
 			$cache->set( $stashKey, $cacheData, $cache::TTL_MINUTE );
-			$logger->info( __METHOD__ . ": cache store for '$title' (key $stashKey)." );
+			$logger->debug( __METHOD__ . ": cache store for '$title' (key $stashKey)." );
 			$statsd->increment( 'abusefilter.check-stash.store' );
 
 			return Status::newGood();
