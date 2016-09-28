@@ -238,7 +238,7 @@ class AFComputedVariable {
 	}
 
 	/**
-	 * It's like Article::prepareTextForEdit, but not for editing (old wikitext usually)
+	 * It's like Article::prepareContentForEdit, but not for editing (old wikitext usually)
 	 *
 	 *
 	 * @param string $wikitext
@@ -475,9 +475,9 @@ class AFComputedVariable {
 				if ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
 					$textVar = $parameters['wikitext-var'];
 
-					// XXX: Use prepareContentForEdit. But we need a Content object for that.
 					$new_text = $vars->getVar( $textVar )->toString();
-					$editInfo = $article->prepareTextForEdit( $new_text );
+					$content = ContentHandler::makeContent( $new_text, $article->getTitle() );
+					$editInfo = $article->prepareContentForEdit( $content );
 					if ( isset( $parameters['pst'] ) && $parameters['pst'] ) {
 						$result = $editInfo->pstContent->serialize( $editInfo->format );
 					} else {
