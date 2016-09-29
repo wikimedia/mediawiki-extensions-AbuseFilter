@@ -775,7 +775,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 	public function intEval( $code ) {
 		static $cache = null;
 		if ( !$cache ) {
-			$cache = ObjectCache::getLocalServerInstance( array(), 'hash' );
+			$cache = ObjectCache::getLocalServerInstance( 'hash' );
 		}
 
 		$tree = $cache->getWithSetCallback(
