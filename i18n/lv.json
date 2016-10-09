@@ -6,7 +6,8 @@
 			"Papuass",
 			"Nemo bis",
 			"Edgars2007",
-			"Matma Rex"
+			"Matma Rex",
+			"Silraks"
 		]
 	},
 	"abusefilter-desc": "Pielieto automātiskas heiristikas labojumiem",
@@ -358,5 +359,6 @@
 	"abusefilter-diff-backhistory": "Atpakaļ uz filtra vēsturi",
 	"abusefilter-diff-prev": "Vecāka izmaiņa",
 	"abusefilter-diff-next": "Jaunāka izmaiņa",
-	"abusefilter-import-submit": "Importēt datus"
+	"abusefilter-import-submit": "Importēt datus",
+	"abusefilter-group-default": "Noklusējuma"
 }
