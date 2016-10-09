@@ -216,18 +216,20 @@ class AbuseFilterHooks {
 	/**
 	 * @param Article|WikiPage $article
 	 * @param User $user
-	 * @param string $text
+	 * @param string $content Content
 	 * @param string $summary
 	 * @param bool $minoredit
 	 * @param bool $watchthis
 	 * @param string $sectionanchor
 	 * @param integer $flags
 	 * @param Revision $revision
+	 * @param $status Status
+	 * @param $baseRevId
 	 * @return bool
 	 */
-	public static function onArticleSaveComplete(
-		&$article, &$user, $text, $summary, $minoredit, $watchthis, $sectionanchor,
-		&$flags, $revision
+	public static function onPageContentSaveComplete(
+		&$article, &$user, $content, $summary, $minoredit, $watchthis, $sectionanchor,
+		&$flags, $revision, &$status, $baseRevId
 	) {
 		if ( !self::$successful_action_vars || !$revision ) {
 			self::$successful_action_vars = false;

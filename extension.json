@@ -192,7 +192,7 @@
 		"UploadVerifyUpload": "AbuseFilterHooks::onUploadVerifyUpload",
 		"UploadStashFile": "AbuseFilterHooks::onUploadStashFile",
 		"MakeGlobalVariablesScript": "AbuseFilterHooks::onMakeGlobalVariablesScript",
-		"ArticleSaveComplete": "AbuseFilterHooks::onArticleSaveComplete",
+		"PageContentSaveComplete": "AbuseFilterHooks::onPageContentSaveComplete",
 		"UserMergeAccountFields": "AbuseFilterHooks::onUserMergeAccountFields",
 		"ParserOutputStashForEdit": "AbuseFilterHooks::onParserOutputStashForEdit"
 	},
