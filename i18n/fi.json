@@ -258,6 +258,8 @@
 	"abusefilter-edit-builder-vars-diff": "Muokkauksessa tehtyjen muutosten yhdistetty diff-tuloste",
 	"abusefilter-edit-builder-vars-newsize": "Uuden sivun koko",
 	"abusefilter-edit-builder-vars-oldsize": "Vanhan sivun koko",
+	"abusefilter-edit-builder-vars-old-content-model": "Vanha sisältömalli",
+	"abusefilter-edit-builder-vars-new-content-model": "Uusi sisältömalli",
 	"abusefilter-edit-builder-vars-removedlines": "Muokkauksessa poistettujen rivien määrä",
 	"abusefilter-edit-builder-vars-summary": "Muokkausyhteenveto tai syy",
 	"abusefilter-edit-builder-vars-article-id": "Sivun tunnistenumero",
