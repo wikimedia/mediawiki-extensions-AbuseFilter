@@ -278,7 +278,7 @@
 	"abusefilter-edit-builder-vars-movedfrom-text": "Título da página fonte da movimentação",
 	"abusefilter-edit-builder-vars-movedfrom-prefixedtext": "Título completo da página fonte da movimentação",
 	"abusefilter-edit-builder-vars-movedto-id": "ID da página de destino da movimentação",
-	"abusefilter-edit-builder-vars-movedto-ns": "Espaço nominal da página de destino da movimentação",
+	"abusefilter-edit-builder-vars-movedto-ns": "Domínio da página de destino da movimentação",
 	"abusefilter-edit-builder-vars-movedto-text": "Título da página de destino da movimentação",
 	"abusefilter-edit-builder-vars-movedto-prefixedtext": "Título completo da página de destino da movimentação",
 	"abusefilter-edit-builder-vars-user-editcount": "Contagem de edições do utilizador",
