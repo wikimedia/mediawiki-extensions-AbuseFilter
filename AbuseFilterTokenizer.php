@@ -64,7 +64,7 @@ class AbuseFilterTokenizer {
 		static $tokenizerCache = null;
 
 		if ( !$tokenizerCache ) {
-			$tokenizerCache = ObjectCache::newAccelerator( array(), 'hash' );
+			$tokenizerCache = ObjectCache::getLocalServerInstance( 'hash' );
 		}
 
 		static $stats = null;
