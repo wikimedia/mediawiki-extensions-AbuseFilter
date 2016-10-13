@@ -82,7 +82,7 @@
 	"abusefilter-log-search-submit": "Rechercher",
 	"abusefilter-log-entry": "$1 : $2 a déclenché un filtre anti-abus, en {{GENDER:$8|effectuant}} l’action « $3 » sur $4.\nActions prises : $5 ;\nDescription du filtre : $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 a déclenché un filtre anti-abus,  {{GENDER:$8|en effectuant}} l’action « $3 » sur $4.\nAction entreprise : $5 ;\nDescription du filtre : $6 ($7)",
-	"abusefilter-log-detailedentry-meta": "$1 : $2 a déclenché le $3, {{GENDER:$9|entrainant l'}} l'action « $4 » sur $5.\nActions prises : $6 ;\nDescription du filtre : $7 ($8)",
+	"abusefilter-log-detailedentry-meta": "$1 : $2 a déclenché le $3, {{GENDER:$9|lors de}} l'action « $4 » sur $5.\nActions prises : $6 ;\nDescription du filtre : $7 ($8)",
 	"abusefilter-log-detailedentry-global": "filtre global $1",
 	"abusefilter-log-detailedentry-local": "filtre antiabus $1",
 	"abusefilter-log-detailslink": "détails",

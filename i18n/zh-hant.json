@@ -28,7 +28,8 @@
 			"LNDDYL",
 			"Zhxy 519",
 			"Cwek",
-			"Matma Rex"
+			"Matma Rex",
+			"1233thehongkonger"
 		]
 	},
 	"abusefilter-desc": "套用自動啟發式演算法於編輯",
@@ -269,6 +270,8 @@
 	"abusefilter-edit-builder-vars-diff": "編輯變更的 Unified diff",
 	"abusefilter-edit-builder-vars-newsize": "新的頁面大小",
 	"abusefilter-edit-builder-vars-oldsize": "舊的頁面大小",
+	"abusefilter-edit-builder-vars-old-content-model": "舊內容模型",
+	"abusefilter-edit-builder-vars-new-content-model": "新內容模型",
 	"abusefilter-edit-builder-vars-removedlines": "編輯移除的行數",
 	"abusefilter-edit-builder-vars-summary": "編輯摘要/原因",
 	"abusefilter-edit-builder-vars-article-id": "頁面 ID",
