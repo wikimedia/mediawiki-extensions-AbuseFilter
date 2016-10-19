@@ -260,6 +260,8 @@
 	"abusefilter-edit-builder-vars-diff": "Уніфікована різниця змін, зроблених редагуванням",
 	"abusefilter-edit-builder-vars-newsize": "Новий розмір сторінки",
 	"abusefilter-edit-builder-vars-oldsize": "Старий розмір сторінки",
+	"abusefilter-edit-builder-vars-old-content-model": "Стара модель вмісту",
+	"abusefilter-edit-builder-vars-new-content-model": "Нова модель вмісту",
 	"abusefilter-edit-builder-vars-removedlines": "Видалені рядки",
 	"abusefilter-edit-builder-vars-summary": "Опис/причина редагування",
 	"abusefilter-edit-builder-vars-article-id": "Ідентифікатор сторінки",
