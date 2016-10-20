@@ -14,7 +14,8 @@
 			"Cocu",
 			"Jeblad",
 			"Chameleon222",
-			"Matma Rex"
+			"Matma Rex",
+			"Jon Harald Søby"
 		]
 	},
 	"abusefilter-desc": "Legger til automatisk heuristikk til redigeringer.",
@@ -51,7 +52,7 @@
 	"action-abusefilter-modify-restricted": "endre redigeringsfiltere med begrensede handlinger",
 	"action-abusefilter-revert": "tilbakestille alle endringer for et gitt redigeringsfilter",
 	"action-abusefilter-view-private": "vis redigeringsfiltre merket som private",
-	"abusefilter-log": "Logg for redigeringsfilter",
+	"abusefilter-log": "Redigeringsfilterlogg",
 	"abusefilter-log-summary": "Denne loggen viser en liste over alle handlingene som filterene har fanget opp",
 	"abusefilter-log-search": "Søk i misbruksloggen",
 	"abusefilter-log-search-user": "Bruker:",
@@ -391,7 +392,7 @@
 	"abusefilter-topnav-log": "Misbrukslogg",
 	"abusefilter-topnav-tools": "Feilsøkingsverktøy",
 	"abusefilter-topnav-import": "Importer filter",
-	"abusefilter-log-name": "Logg for redigeringsfilter",
+	"abusefilter-log-name": "Redigeringsfilterlogg",
 	"abusefilter-log-header": "Denne loggen viser et sammendrag av endringer gjort i filtrene.\nFor fullstendige detaljer, se [[Special:AbuseFilter/history|listen]] over de siste filterendringene.",
 	"abusefilter-log-entry-modify": "endret $1 ($2)",
 	"abusefilter-log-noresults": "Ingen resultater",
