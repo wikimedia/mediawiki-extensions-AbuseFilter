@@ -6,7 +6,8 @@
 			"Milicevic01",
 			"Rancher",
 			"Михајло Анђелковић",
-			"Matma Rex"
+			"Matma Rex",
+			"Сербијана"
 		]
 	},
 	"abusefilter-desc": "Izvršava automatsko heurističko filtriranje izmena",
@@ -259,7 +260,7 @@
 	"abusefilter-edit-builder-vars-user-name": "Naziv korisničkog naloga",
 	"abusefilter-edit-builder-vars-user-groups": "Grupe (uključujući posredne) u kojima je korisnik",
 	"abusefilter-edit-builder-vars-user-rights": "Prava koja korisnik ima",
-	"abusefilter-edit-builder-vars-user-emailconfirm": "Vreme kada je e-adresa potvrđena",
+	"abusefilter-edit-builder-vars-user-emailconfirm": "Vreme kada je imejl adresa potvrđena",
 	"abusefilter-edit-builder-vars-recent-contributors": "Poslednjih deset korisnika, koji su doprineli strani",
 	"abusefilter-edit-builder-vars-all-links": "Sve spoljašnje veze u novom tekstu",
 	"abusefilter-edit-builder-vars-added-links": "Sve spoljašnje veze dodate u izmeni",

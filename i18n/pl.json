@@ -426,6 +426,7 @@
 	"abusefilter-http-error": "Wystąpił błąd HTTP: $1.",
 	"apihelp-abusefilterchecksyntax-description": "Sprawdź składnię filtra AbuseFilter.",
 	"apihelp-abusefilterevalexpression-param-expression": "Wyrażenie do sprawdzenia.",
+	"apihelp-abusefilterunblockautopromote-param-user": "Nazwa użytkownika, którego chcesz odblokować.",
 	"apihelp-query+abusefilters-description": "Pokaż szczegóły filtrów nadużyć.",
 	"apihelp-query+abusefilters-param-show": "Pokaż tylko filtry, które spełniają te kryteria.",
 	"apihelp-query+abusefilters-param-limit": "Maksymalna liczba filtrów do wyświetlenia.",
