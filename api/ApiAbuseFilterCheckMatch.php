@@ -55,7 +55,7 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 		}
 
 		$result = array(
-			ApiResult::META_BC_BOOLS => 'result',
+			ApiResult::META_BC_BOOLS => [ 'result' ],
 			'result' => AbuseFilter::checkConditions( $params['filter'], $vars ),
 		);
 
