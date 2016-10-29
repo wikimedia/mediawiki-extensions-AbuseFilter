@@ -382,7 +382,7 @@
 	"abusefilter-revert-periodend": "结束时间：",
 	"abusefilter-revert-search": "选择操作",
 	"abusefilter-revert-filter": "过滤器：",
-	"abusefilter-revert-preview-intro": "下面列出了本次操作将要撤销的防滥用过滤器操作。\n请仔细检查下面的各项，并点击“{{int:abusefilter-revert-confirm}}”按钮确认你的选择。",
+	"abusefilter-revert-preview-intro": "下面列出了本次操作将要撤销的防滥用过滤器操作。请仔细检查下面的各项，并点击“{{int:abusefilter-revert-confirm}}”按钮确认您的选择。",
 	"abusefilter-revert-confirm": "确认",
 	"abusefilter-revert-success": "你已经撤销了[[Special:AbuseFilter/$1|过滤器$2]]作出的所有操作。",
 	"abusefilter-revert-reason": "自动撤销了过滤器$1的所有操作，原因如下：$2",
