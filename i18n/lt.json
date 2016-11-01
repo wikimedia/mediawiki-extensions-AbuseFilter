@@ -385,7 +385,7 @@
 	"abusefilter-topnav-log": "Piktnaudžiavimų sąrašas",
 	"abusefilter-topnav-tools": "Testavimo priemonė",
 	"abusefilter-topnav-import": "Importuoti filtrą",
-	"abusefilter-log-name": "Piktnaudžiavimų filtro pakeitimai",
+	"abusefilter-log-name": "Piktnaudžiavimų filtro žurnalas",
 	"abusefilter-log-header": "Šis sąrašas rodo bendrą filtrų pakeitimo statistiką.\nVisas detales žiūrėkite filtrų naujausių pakeitimų [[Special:AbuseFilter/history|sąraše]].",
 	"abusefilter-log-entry-modify": "pakeitė $1 ($2)",
 	"abusefilter-log-noresults": "Nėra rezultatų",
