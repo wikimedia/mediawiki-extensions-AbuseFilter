@@ -70,6 +70,7 @@
 	"action-abusefilter-modify-restricted": "{{doc-action|abusefilter-modify-restricted}}",
 	"action-abusefilter-revert": "{{doc-action|abusefilter-revert}}",
 	"action-abusefilter-view-private": "{{doc-action|abusefilter-view-private}}",
+	"action-abusefilter-log-private": "{{doc-action|abusefilter-log-private}}",
 	"abusefilter-log": "Caption of [[Special:AbuseLog]]",
 	"abusefilter-log-summary": "This message is displayed at the top of the log overview page for extension AbuseFilter.",
 	"abusefilter-log-search": "Caption of a fieldset for filter definition on [[Special:AbuseLog]]",
@@ -417,5 +418,9 @@
 	"apihelp-query+abuselog-param-limit": "{{doc-apihelp-param|query+abuselog|limit}}",
 	"apihelp-query+abuselog-param-prop": "{{doc-apihelp-param|query+abuselog|prop}}",
 	"apihelp-query+abuselog-example-1": "{{doc-apihelp-example|query+abuselog}}",
-	"apihelp-query+abuselog-example-2": "{{doc-apihelp-example|query+abuselog}}"
+	"apihelp-query+abuselog-example-2": "{{doc-apihelp-example|query+abuselog}}",
+	"apierror-abusefilter-badsyntax": "{{doc-apierror}}",
+	"apierror-abusefilter-cantcheck": "{{doc-apierror}}",
+	"apierror-abusefilter-canttest": "{{doc-apierror}}",
+	"apierror-abusefilter-nosuchlogid": "{{doc-apierror}}\n\nParameters:\n* $1 - AbuseFilter log ID number."
 }

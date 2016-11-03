@@ -36,8 +36,12 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 
 	public function execute() {
 		$user = $this->getUser();
-		if ( !$user->isAllowed( 'abusefilter-view' ) ) {
-			$this->dieUsage( 'You don\'t have permission to view abuse filters', 'permissiondenied' );
+		if ( is_callable( [ $this, 'checkUserRightsAny' ] ) ) {
+			$this->checkUserRightsAny( 'abusefilter-view' );
+		} else {
+			if ( !$user->isAllowed( 'abusefilter-view' ) ) {
+				$this->dieUsage( 'You don\'t have permission to view abuse filters', 'permissiondenied' );
+			}
 		}
 
 		$params = $this->extractRequestParams();
@@ -79,12 +83,14 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 
 			/* Check for conflicting parameters. */
 			if ( ( isset( $show['enabled'] ) && isset( $show['!enabled'] ) )
-					|| ( isset( $show['deleted'] ) && isset( $show['!deleted'] ) )
-					|| ( isset( $show['private'] ) && isset( $show['!private'] ) ) ) {
-					$this->dieUsage(
-						'Incorrect parameter - mutually exclusive values may not be supplied',
-						'show'
-					);
+				|| ( isset( $show['deleted'] ) && isset( $show['!deleted'] ) )
+				|| ( isset( $show['private'] ) && isset( $show['!private'] ) )
+			) {
+				if ( is_callable( [ $this, 'dieWithError' ] ) ) {
+					$this->dieWithError( 'apierror-show' );
+				} else {
+					$this->dieUsageMsg( 'show' );
+				}
 			}
 
 			$this->addWhereIf( 'af_enabled = 0', isset( $show['!enabled'] ) );

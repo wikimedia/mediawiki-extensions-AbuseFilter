@@ -39,6 +39,7 @@
 	"action-abusefilter-modify-restricted": "modify abuse filters with restricted actions",
 	"action-abusefilter-revert": "revert all changes by a given abuse filter",
 	"action-abusefilter-view-private": "view abuse filters marked as private",
+	"action-abusefilter-log-private": "view logs of abuse filters marked as private",
 	"abusefilter-log": "Abuse filter log",
 	"abusefilter-log-summary": "This log shows a list of all actions caught by the filters.",
 	"abusefilter-log-search": "Search the abuse log",
@@ -438,5 +439,9 @@
 	"apihelp-query+abuselog-param-limit": "The maximum amount of entries to list.",
 	"apihelp-query+abuselog-param-prop": "Which properties to get.",
 	"apihelp-query+abuselog-example-1": "Show recent log entries",
-	"apihelp-query+abuselog-example-2": "Show recent log entries for [[API]]"
+	"apihelp-query+abuselog-example-2": "Show recent log entries for [[API]]",
+	"apierror-abusefilter-canttest": "You don't have permission to test abuse filters.",
+	"apierror-abusefilter-cantcheck": "You don't have permission to check syntax of abuse filters.",
+	"apierror-abusefilter-nosuchlogid": "There is no abuselog entry with the id $1.",
+	"apierror-abusefilter-badsyntax": "The filter has invalid syntax."
 }
