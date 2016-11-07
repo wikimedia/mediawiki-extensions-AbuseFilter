@@ -143,7 +143,7 @@ class AFPTreeParser {
 	// Current token handled by the parser and its position.
 	public $mCur, $mPos;
 
-	const CACHE_VERSION = 1;
+	const CACHE_VERSION = 2;
 
 	/**
 	 * Create a new instance
@@ -415,14 +415,14 @@ class AFPTreeParser {
 	protected function doLevelBoolOps() {
 		$leftOperand = $this->doLevelCompares();
 		$ops = [ '&', '|', '^' ];
-		if ( $this->mCur->type == AFPToken::TOP && in_array( $this->mCur->value, $ops ) ) {
+		while ( $this->mCur->type == AFPToken::TOP && in_array( $this->mCur->value, $ops ) ) {
 			$op = $this->mCur->value;
 			$position = $this->mPos;
 			$this->move();
 
-			$rightOperand = $this->doLevelBoolOps();
+			$rightOperand = $this->doLevelCompares();
 
-			return new AFPTreeNode(
+			$leftOperand = new AFPTreeNode(
 				AFPTreeNode::LOGIC,
 				[ $op, $leftOperand, $rightOperand ],
 				$position
