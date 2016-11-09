@@ -174,7 +174,7 @@
 	"abusefilter-edit-action-blockautopromote": "Revogar o estatuto autoconfirmado do utilizador",
 	"abusefilter-edit-action-degroup": "Remover o utilizador de todos os grupos privilegiados",
 	"abusefilter-edit-action-block": "Bloquear o utilizador e/ou endereço IP para edição",
-	"abusefilter-edit-action-throttle": "Desencadear ações só se o utilizador ultrapassar um limite de número de edições",
+	"abusefilter-edit-action-throttle": "Desencadear ações só se o utilizador ultrapassar uma frequência limite de edições",
 	"abusefilter-edit-action-rangeblock": "Bloquear o intervalo /16 do qual este utilizador provém",
 	"abusefilter-edit-action-tag": "Etiquetar a edição para revisão posterior",
 	"abusefilter-edit-throttle-count": "Número de ações que serão permitidas:",
