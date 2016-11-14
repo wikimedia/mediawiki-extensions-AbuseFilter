@@ -372,7 +372,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		// Hit count display
-		if ( !empty( $row->af_hit_count ) ) {
+		if ( !empty( $row->af_hit_count ) && $user->isAllowed( 'abusefilter-log-detail' ) ) {
 			$count_display = $this->msg( 'abusefilter-hitcount' )
 				->numParams( (int) $row->af_hit_count )->text();
 			$hitCount = $this->linkRenderer->makeKnownLink(
