@@ -414,6 +414,7 @@
 	"apihelp-query+abusefilters-description": "Rodyti piktnaudžiavimo filtrų detales.",
 	"apihelp-query+abusefilters-param-show": "Rodyti tik filtrus, kurie atitinką kriterijų.",
 	"apihelp-query+abusefilters-param-limit": "Maksimalus numeris filtrų sąraše.",
+	"apihelp-query+abusefilters-param-prop": "Kurias savybes gauti.",
 	"apihelp-query+abusefilters-example-1": "Pateikti įgalintų viešų filtrų sąrašą",
 	"apihelp-query+abusefilters-example-2": "Rodyti kai kurias detales apie filtrus",
 	"apihelp-query+abuselog-description": "Rodyti įvykius, kurie buvo sugauti vieno iš piktnaudžiavimo filtrų.",
@@ -423,6 +424,7 @@
 	"apihelp-query+abuselog-param-title": "Rodyti tik įrašus, kurie yra duotajame puslapyje.",
 	"apihelp-query+abuselog-param-filter": "Rodyti tik įrašus, kurie buvo sugauti pateiktojo filtro ID.",
 	"apihelp-query+abuselog-param-limit": "Maksimalus kiekis įrašų sąraše.",
+	"apihelp-query+abuselog-param-prop": "Kurias savybes gauti.",
 	"apihelp-query+abuselog-example-1": "Rodyti naujus žurnalo įrašus",
 	"apihelp-query+abuselog-example-2": "Rodyti naujus [[API]] žurnalo įrašus"
 }
