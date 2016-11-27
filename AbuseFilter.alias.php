@@ -75,6 +75,12 @@ $specialPageAliases['bjn'] = array(
 	'AbuseFilter' => array( 'Filter_panyalahgunaan' ),
 );
 
+/** Bengali (বাংলা) */
+$specialPageAliases['bn'] = array(
+	'AbuseLog' => array( 'অপব্যবহার_লগ' ),
+	'AbuseFilter' => array( 'অপব্যবহার_ছাঁকনি' ),
+);
+
 /** Bosnian (bosanski) */
 $specialPageAliases['bs'] = array(
 	'AbuseLog' => array( 'ZapisZloupotrebe' ),
