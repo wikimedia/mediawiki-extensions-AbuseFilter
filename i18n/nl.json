@@ -120,7 +120,7 @@
 	"abusefilter-list-options": "Opties",
 	"abusefilter-list-options-deleted": "Verwijderde filters:",
 	"abusefilter-list-options-deleted-only": "Alleen verwijderde filters weergeven",
-	"abusefilter-list-options-deleted-hide": "Verwijderde filters weergeven",
+	"abusefilter-list-options-deleted-hide": "Verwijderde filters verbergen",
 	"abusefilter-list-options-deleted-show": "Verwijderde filters opnemen",
 	"abusefilter-list-options-scope": "Filters weergeven:",
 	"abusefilter-list-options-scope-local": "Alleen lokale regels",
