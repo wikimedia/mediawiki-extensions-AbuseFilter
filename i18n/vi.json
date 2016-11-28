@@ -247,6 +247,8 @@
 	"abusefilter-edit-builder-vars-diff": "Những khác biệt thống nhất khi thay đổi do sửa đổi tạo ra",
 	"abusefilter-edit-builder-vars-newsize": "Kích cỡ trang mới",
 	"abusefilter-edit-builder-vars-oldsize": "Kích cỡ trang cũ",
+	"abusefilter-edit-builder-vars-old-content-model": "Kiểu nội dung cũ",
+	"abusefilter-edit-builder-vars-new-content-model": "Kiểu nội dung mới",
 	"abusefilter-edit-builder-vars-removedlines": "Số dòng bị xóa trong sửa đổi",
 	"abusefilter-edit-builder-vars-summary": "Tóm tắt / Lý do sửa đổi",
 	"abusefilter-edit-builder-vars-article-id": "Mã số trang",
