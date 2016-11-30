@@ -38,7 +38,8 @@
 			"NigelSoft",
 			"Duolaimi",
 			"范",
-			"Matma Rex"
+			"Matma Rex",
+			"EagerLin"
 		]
 	},
 	"abusefilter-desc": "对编辑行为自动进行条件判定",
@@ -75,7 +76,7 @@
 	"action-abusefilter-modify-restricted": "以有限的操作修改防滥用过滤器",
 	"action-abusefilter-revert": "还原指定防滥用过滤器作出的所有更改",
 	"action-abusefilter-view-private": "查看被标记为私有的防滥用过滤器",
-	"abusefilter-log": "滥用过滤器日志",
+	"abusefilter-log": "防滥用过滤器日志",
 	"abusefilter-log-summary": "本日志列出了过滤器捕捉到的所有操作。",
 	"abusefilter-log-search": "搜索滥用日志",
 	"abusefilter-log-search-user": "用户：",
@@ -372,7 +373,7 @@
 	"abusefilter-action-blockautopromote": "禁止自动授权",
 	"abusefilter-action-block": "封禁",
 	"abusefilter-action-degroup": "从用户组移除",
-	"abusefilter-action-rangeblock": "段封禁",
+	"abusefilter-action-rangeblock": "区段封禁",
 	"abusefilter-action-disallow": "阻止",
 	"abusefilter-revert-title": "撤销过滤器$1作出的所有操作",
 	"abusefilter-revert-intro": "本表格允许你撤销过滤器$1作出的所有操作。请谨慎使用此工具。",
