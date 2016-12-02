@@ -115,8 +115,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		}
 
 		$this->mNextHistoryId = $this->getNextHistoryId(
-			$this->mNewVersion['meta']['history_id'],
-			'next'
+			$this->mNewVersion['meta']['history_id']
 		);
 
 		return true;
