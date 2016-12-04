@@ -173,6 +173,7 @@ class AbuseFilter {
 		);
 
 		$links = array();
+		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
 
 		foreach ( $linkDefs as $name => $page ) {
 			// Give grep a chance to find the usages:
@@ -190,7 +191,7 @@ class AbuseFilter {
 			if ( $name == $pageType ) {
 				$links[] = Xml::tags( 'strong', null, $msg );
 			} else {
-				$links[] = Linker::link( $title, $msg );
+				$links[] = $linkRenderer->makeLink( $title, new HtmlArmor( $msg ) );
 			}
 		}
 
@@ -2350,10 +2351,11 @@ class AbuseFilter {
 				'[[' . $details_title->getFullText() . ']]' )->text();
 		}
 
-		$filter_link = Linker::link( $title );
+		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
+		$filter_link = $linkRenderer->makeLink( $title );
 
 		$details_text = wfMessage( 'abusefilter-log-detailslink' )->parse();
-		$details_link = Linker::link( $details_title, $details_text );
+		$details_link = $linkRenderer->makeLink( $details_title, new HtmlArmor( $details_text ) );
 
 		return wfMessage( 'abusefilter-log-entry-modify' )
 			->rawParams( $filter_link, $details_link )->parse();

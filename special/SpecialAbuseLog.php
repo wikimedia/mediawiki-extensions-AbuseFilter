@@ -460,11 +460,14 @@ class SpecialAbuseLog extends SpecialPage {
 			return '';
 		}
 
+		$linkRenderer = $this->getLinkRenderer();
+
 		if ( !$row->afl_wiki ) {
-			$pageLink = Linker::link( $title );
+			$pageLink = $linkRenderer->makeLink( $title );
 			if ( $row->afl_rev_id ) {
-				$diffLink = Linker::link( $title,
-					$this->msg( 'abusefilter-log-diff' )->parse(), array(),
+				$diffLink = $linkRenderer->makeLink( $title,
+					new HtmlArmor( $this->msg( 'abusefilter-log-diff' )->parse() ),
+					array(),
 					array( 'diff' => 'prev', 'oldid' => $row->afl_rev_id ) );
 			}
 		} else {
@@ -517,18 +520,17 @@ class SpecialAbuseLog extends SpecialPage {
 
 		if ( self::canSeeDetails( $row->afl_filter, $filter_hidden ) ) {
 			if ( $isListItem ) {
-				$detailsLink = Linker::linkKnown(
+				$detailsLink = $linkRenderer->makeKnownLink(
 					$this->getPageTitle( $row->afl_id ),
-					$this->msg( 'abusefilter-log-detailslink' )->escaped()
+					$this->msg( 'abusefilter-log-detailslink' )->text()
 				);
 				$actionLinks[] = $detailsLink;
 			}
 
 			$examineTitle = SpecialPage::getTitleFor( 'AbuseFilter', 'examine/log/' . $row->afl_id );
-			$examineLink = Linker::linkKnown(
+			$examineLink = $linkRenderer->makeKnownLink(
 				$examineTitle,
-				$this->msg( 'abusefilter-changeslist-examine' )->parse(),
-				array()
+				new HtmlArmor( $this->msg( 'abusefilter-changeslist-examine' )->parse() )
 			);
 			$actionLinks[] = $examineLink;
 
@@ -537,7 +539,7 @@ class SpecialAbuseLog extends SpecialPage {
 			}
 
 			if ( $user->isAllowed( 'abusefilter-hide-log' ) ) {
-				$hideLink = Linker::linkKnown(
+				$hideLink = $linkRenderer->makeKnownLink(
 					$this->getPageTitle(),
 					$this->msg( 'abusefilter-log-hidelink' )->text(),
 					array(),
@@ -559,8 +561,8 @@ class SpecialAbuseLog extends SpecialPage {
 			} else {
 				$title = SpecialPage::getTitleFor( 'AbuseFilter', $row->afl_filter );
 				$linkText = $this->msg( 'abusefilter-log-detailedentry-local' )
-					->numParams( $row->afl_filter )->escaped();
-				$filterLink = Linker::linkKnown( $title, $linkText );
+					->numParams( $row->afl_filter )->text();
+				$filterLink = $linkRenderer->makeKnownLink( $title, $linkText );
 			}
 			$description = $this->msg( 'abusefilter-log-detailedentry-meta' )->rawParams(
 				$timestamp,
