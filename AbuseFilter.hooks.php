@@ -703,7 +703,7 @@ class AbuseFilterHooks {
 		if ( $context->getUser()->isAllowed( 'abusefilter-log' ) ) {
 			$tools[] = Linker::link(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
-				$context->msg( 'abusefilter-log-linkoncontribs' )->text(),
+				$context->msg( 'abusefilter-log-linkoncontribs' )->escaped(),
 				array( 'title' => $context->msg( 'abusefilter-log-linkoncontribs-text' )->parse() ),
 				array( 'wpSearchUser' => $nt->getText() )
 			);
