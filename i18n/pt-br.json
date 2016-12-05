@@ -23,7 +23,8 @@
 			"Araceletorres",
 			"HenriqueCrang",
 			"Matma Rex",
-			"TheEduGobi"
+			"TheEduGobi",
+			"!Silent"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas às edições.",
@@ -263,6 +264,8 @@
 	"abusefilter-edit-builder-vars-diff": "Diferença unificada das modificações feitas pela edição",
 	"abusefilter-edit-builder-vars-newsize": "Tamanho de página novo",
 	"abusefilter-edit-builder-vars-oldsize": "Tamanho de página anterior",
+	"abusefilter-edit-builder-vars-old-content-model": "Modelo antigo de conteúdo",
+	"abusefilter-edit-builder-vars-new-content-model": "Novo modelo de conteúdo",
 	"abusefilter-edit-builder-vars-removedlines": "Linhas removidas na edição",
 	"abusefilter-edit-builder-vars-summary": "Resumo ou motivo da edição",
 	"abusefilter-edit-builder-vars-article-id": "ID da página",
@@ -358,7 +361,7 @@
 	"abusefilter-action-disallow": "Desautorizar",
 	"abusefilter-revert-title": "Reverter todas as alterações feitas pelo filtro $1",
 	"abusefilter-revert-intro": "Este formulário permite-lhe reverter todas as alterações feitas pelo filtro de abusos devido ao filtro $1.\nPor favor, tenha cuidado ao usar esta ferramenta.",
-	"abusefilter-revert-preview-item": "$1: $2 fez $3 em $4.\nAções a reverter: $5 ($6)",
+	"abusefilter-revert-preview-item": "$1: $2 {{GENDER:$7|fez}} $3 em $4.\nAções a reverter: $5 ($6)",
 	"abusefilter-revert-search-legend": "Selecione as ações do filtro de abusos a reverter",
 	"abusefilter-revert-periodstart": "Início do período:",
 	"abusefilter-revert-periodend": "Fim do período:",
