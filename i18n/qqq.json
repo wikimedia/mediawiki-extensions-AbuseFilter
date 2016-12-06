@@ -419,8 +419,8 @@
 	"apihelp-query+abuselog-param-prop": "{{doc-apihelp-param|query+abuselog|prop}}",
 	"apihelp-query+abuselog-example-1": "{{doc-apihelp-example|query+abuselog}}",
 	"apihelp-query+abuselog-example-2": "{{doc-apihelp-example|query+abuselog}}",
-	"apierror-abusefilter-badsyntax": "{{doc-apierror}}",
-	"apierror-abusefilter-cantcheck": "{{doc-apierror}}",
 	"apierror-abusefilter-canttest": "{{doc-apierror}}",
-	"apierror-abusefilter-nosuchlogid": "{{doc-apierror}}\n\nParameters:\n* $1 - AbuseFilter log ID number."
+	"apierror-abusefilter-cantcheck": "{{doc-apierror}}",
+	"apierror-abusefilter-nosuchlogid": "{{doc-apierror}}\n\nParameters:\n* $1 - AbuseFilter log ID number.",
+	"apierror-abusefilter-badsyntax": "{{doc-apierror}}"
 }
