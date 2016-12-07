@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Auth\AuthManager;
+use MediaWiki\MediaWikiServices;
 
 class AbuseFilterHooks {
 	public static $successful_action_vars = false;
@@ -696,13 +697,12 @@ class AbuseFilterHooks {
 	public static function onContributionsToolLinks( $id, $nt, &$tools, SpecialPage $sp = null ) {
 		if ( $sp ) {
 			$context = $sp->getContext();
-			$linkRenderer = $sp->getLinkRenderer();
 		} else {
 			// Fallback to main context
 			$context = RequestContext::getMain();
-			$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
 		}
 		if ( $context->getUser()->isAllowed( 'abusefilter-log' ) ) {
+			$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
 			$tools[] = $linkRenderer->makeLink(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
 				$context->msg( 'abusefilter-log-linkoncontribs' )->text(),
