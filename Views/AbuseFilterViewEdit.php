@@ -307,7 +307,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		if ( !$row ) {
 			$out->addWikiMsg( 'abusefilter-edit-badfilter' );
-			$out->addHTML( Linker::link( $this->getTitle(), $this->msg( 'abusefilter-return' )->text() ) );
+			$out->addHTML( $this->linkRenderer->makeLink( $this->getTitle(),
+				$this->msg( 'abusefilter-return' )->text() ) );
 			return false;
 		}
 
@@ -373,8 +374,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Hit count display
 		if ( !empty( $row->af_hit_count ) ) {
 			$count_display = $this->msg( 'abusefilter-hitcount' )
-				->numParams( (int) $row->af_hit_count )->escaped();
-			$hitCount = Linker::linkKnown(
+				->numParams( (int) $row->af_hit_count )->text();
+			$hitCount = $this->linkRenderer->makeKnownLink(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
 				$count_display,
 				array(),
@@ -474,7 +475,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		if ( $filter != 'new' && $user->isAllowed( 'abusefilter-revert' ) ) {
 			$tools .= Xml::tags(
 				'p', null,
-				Linker::link(
+				$this->linkRenderer->makeLink(
 					$this->getTitle( 'revert/' . $filter ),
 					$this->msg( 'abusefilter-edit-revert' )->text()
 				)
@@ -485,9 +486,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// Test link
 			$tools .= Xml::tags(
 				'p', null,
-				Linker::link(
+				$this->linkRenderer->makeLink(
 					$this->getTitle( "test/$filter" ),
-					$this->msg( 'abusefilter-edit-test-link' )->parse()
+					new HtmlArmor( $this->msg( 'abusefilter-edit-test-link' )->parse() )
 				)
 			);
 			// Last modification details
@@ -504,9 +505,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					$lang->time( $row->af_timestamp, true ),
 					$userName
 				)->parse();
-			$history_display = $this->msg( 'abusefilter-edit-viewhistory' )->parse();
+			$history_display = new HtmlArmor( $this->msg( 'abusefilter-edit-viewhistory' )->parse() );
 			$fields['abusefilter-edit-history'] =
-				Linker::linkKnown( $this->getTitle( 'history/' . $filter ), $history_display );
+				$this->linkRenderer->makeKnownLink( $this->getTitle( 'history/' . $filter ), $history_display );
 		}
 
 		// Add export

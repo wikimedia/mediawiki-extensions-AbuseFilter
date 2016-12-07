@@ -31,7 +31,10 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		}
 
 		foreach ( $links as $msg => $title ) {
-			$links[$msg] = Linker::link( $title, $this->msg( $msg )->parse() );
+			$links[$msg] = $this->linkRenderer->makeLink(
+				$title,
+				new HtmlArmor( $this->msg( $msg )->parse() )
+			);
 		}
 
 		$backlinks = $this->getLanguage()->pipeList( $links );
@@ -67,7 +70,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			->prepareForm()
 			->displayForm( false );
 
-		$pager = new AbuseFilterHistoryPager( $filter, $this, $user );
+		$pager = new AbuseFilterHistoryPager( $filter, $this, $user, $this->linkRenderer );
 		$table = $pager->getBody();
 
 		$out->addHTML( $pager->getNavigationBar() . $table . $pager->getNavigationBar() );
@@ -75,16 +78,20 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 }
 
 class AbuseFilterHistoryPager extends TablePager {
+
+	protected $linkRenderer;
 	/**
 	 * @param $filter
 	 * @param $page ContextSource
 	 * @param $user string User name
+	 * @param \MediaWiki\Linker\LinkRenderer $linkRenderer
 	 */
-	function __construct( $filter, $page, $user ) {
+	function __construct( $filter, $page, $user, $linkRenderer ) {
 		$this->mFilter = $filter;
 		$this->mPage = $page;
 		$this->mUser = $user;
 		$this->mDefaultDirection = true;
+		$this->linkRenderer = $linkRenderer;
 		parent::__construct( $this->mPage->getContext() );
 	}
 
@@ -124,7 +131,7 @@ class AbuseFilterHistoryPager extends TablePager {
 
 		switch ( $name ) {
 			case 'afh_filter':
-				$formatted = Linker::link(
+				$formatted = $this->linkRenderer->makeLink(
 					SpecialPage::getTitleFor( 'AbuseFilter', intval( $row->afh_filter ) ),
 					$lang->formatNum( $row->afh_filter )
 				);
@@ -132,7 +139,10 @@ class AbuseFilterHistoryPager extends TablePager {
 			case 'afh_timestamp':
 				$title = SpecialPage::getTitleFor( 'AbuseFilter',
 					'history/' . $row->afh_filter . '/item/' . $row->afh_id );
-				$formatted = Linker::link( $title, $lang->timeanddate( $row->afh_timestamp, true ) );
+				$formatted = $this->linkRenderer->makeLink(
+					$title,
+					$lang->timeanddate( $row->afh_timestamp, true )
+				);
 				break;
 			case 'afh_user_text':
 				$formatted =
@@ -164,7 +174,10 @@ class AbuseFilterHistoryPager extends TablePager {
 					// Set a link to a diff with the previous version if this isn't the first edit to the filter
 					$title = $this->mPage->getTitle(
 								'history/' . $row->afh_filter . "/diff/prev/$value" );
-					$formatted = Linker::link( $title, $this->msg( 'abusefilter-history-diff' )->parse() );
+					$formatted = $this->linkRenderer->makeLink(
+						$title,
+						new HtmlArmor( $this->msg( 'abusefilter-history-diff' )->parse() )
+					);
 				}
 				break;
 			default:

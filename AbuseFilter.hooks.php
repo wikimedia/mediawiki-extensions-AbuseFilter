@@ -696,14 +696,16 @@ class AbuseFilterHooks {
 	public static function onContributionsToolLinks( $id, $nt, &$tools, SpecialPage $sp = null ) {
 		if ( $sp ) {
 			$context = $sp->getContext();
+			$linkRenderer = $sp->getLinkRenderer();
 		} else {
 			// Fallback to main context
 			$context = RequestContext::getMain();
+			$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
 		}
 		if ( $context->getUser()->isAllowed( 'abusefilter-log' ) ) {
-			$tools[] = Linker::link(
+			$tools[] = $linkRenderer->makeLink(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
-				$context->msg( 'abusefilter-log-linkoncontribs' )->escaped(),
+				$context->msg( 'abusefilter-log-linkoncontribs' )->text(),
 				array( 'title' => $context->msg( 'abusefilter-log-linkoncontribs-text' )->parse() ),
 				array( 'wpSearchUser' => $nt->getText() )
 			);
