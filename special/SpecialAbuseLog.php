@@ -464,8 +464,9 @@ class SpecialAbuseLog extends SpecialPage {
 
 		if ( !$row->afl_wiki ) {
 			$pageLink = $linkRenderer->makeLink( $title );
-			if ( $row->afl_rev_id ) {
-				$diffLink = $linkRenderer->makeLink( $title,
+			if ( $row->afl_rev_id && $title->exists() ) {
+				$diffLink = $linkRenderer->makeKnownLink(
+					$title,
 					new HtmlArmor( $this->msg( 'abusefilter-log-diff' )->parse() ),
 					array(),
 					array( 'diff' => 'prev', 'oldid' => $row->afl_rev_id ) );
