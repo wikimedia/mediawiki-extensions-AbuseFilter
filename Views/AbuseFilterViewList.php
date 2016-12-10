@@ -246,8 +246,11 @@ class AbuseFilterPager extends TablePager {
 			'af_enabled' => 'abusefilter-list-status',
 			'af_timestamp' => 'abusefilter-list-lastmodified',
 			'af_hidden' => 'abusefilter-list-visibility',
-			'af_hit_count' => 'abusefilter-list-hitcount',
 		);
+
+		if ( $this->mPage->getUser()->isAllowed( 'abusefilter-log-detail' ) ) {
+			$headers['af_hit_count'] = 'abusefilter-list-hitcount';
+		}
 
 		global $wgAbuseFilterValidGroups;
 		if ( count( $wgAbuseFilterValidGroups ) > 1 ) {
@@ -303,8 +306,9 @@ class AbuseFilterPager extends TablePager {
 				$msg = $value ? 'abusefilter-hidden' : 'abusefilter-unhidden';
 				return $this->msg( $msg )->parse();
 			case 'af_hit_count':
-				$count_display = $this->msg( 'abusefilter-hitcount' )->numParams( $value )->parse();
 				if ( SpecialAbuseLog::canSeeDetails( $row->af_id, $row->af_hidden ) ) {
+					$count_display = $this->msg( 'abusefilter-hitcount' )
+						->numParams( $value )->parse();
 					$link = $this->linkRenderer->makeKnownLink(
 						SpecialPage::getTitleFor( 'AbuseLog' ),
 						$count_display,
