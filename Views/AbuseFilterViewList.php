@@ -359,11 +359,15 @@ class AbuseFilterPager extends TablePager {
 		$sortable_fields = array(
 			'af_id',
 			'af_enabled',
-			'af_hit_count',
 			'af_throttled',
 			'af_user_text',
-			'af_timestamp'
+			'af_timestamp',
+			'af_hidden',
+			'af_group',
 		);
+		if ( $this->mPage->getUser()->isAllowed( 'abusefilter-log-detail' ) ) {
+			$sortable_fields[] = 'af_hit_count';
+		}
 		return in_array( $name, $sortable_fields );
 	}
 }
