@@ -10,6 +10,12 @@ require_once "$IP/maintenance/Maintenance.php";
  * Adds rows missing per https://bugzilla.wikimedia.org/show_bug.cgi?id=52919
  */
 class AddMissingLoggingEntries extends Maintenance {
+	public function __construct() {
+		parent::__construct();
+
+		$this->requireExtension( 'AbuseFilter' );
+	}
+
 	public function execute() {
 		$logParams = array();
 		$afhRows = array();
