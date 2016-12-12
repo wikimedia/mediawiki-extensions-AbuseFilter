@@ -12,6 +12,8 @@ class PurgeOldLogIPData extends Maintenance {
 		parent::__construct();
 		$this->mDescription = 'Purge old IP Address data from AbuseFilter logs';
 		$this->setBatchSize( 200 );
+
+		$this->requireExtension( 'AbuseFilter' );
 	}
 
 	public function execute() {
