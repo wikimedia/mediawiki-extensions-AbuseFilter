@@ -76,6 +76,7 @@
 	"action-abusefilter-modify-restricted": "以有限的操作修改防滥用过滤器",
 	"action-abusefilter-revert": "还原指定防滥用过滤器作出的所有更改",
 	"action-abusefilter-view-private": "查看被标记为私有的防滥用过滤器",
+	"action-abusefilter-log-private": "查看标记为私有的防滥用过滤器日志",
 	"abusefilter-log": "防滥用过滤器日志",
 	"abusefilter-log-summary": "本日志列出了过滤器捕捉到的所有操作。",
 	"abusefilter-log-search": "搜索滥用日志",
@@ -475,5 +476,9 @@
 	"apihelp-query+abuselog-param-limit": "列出日志记录的最大数量。",
 	"apihelp-query+abuselog-param-prop": "要获得的属性。",
 	"apihelp-query+abuselog-example-1": "显示最近日志记录",
-	"apihelp-query+abuselog-example-2": "显示[[API]]的最近日志记录"
+	"apihelp-query+abuselog-example-2": "显示[[API]]的最近日志记录",
+	"apierror-abusefilter-canttest": "您没有权限测试防滥用过滤器。",
+	"apierror-abusefilter-cantcheck": "您没有权限检查防滥用过滤器的语法。",
+	"apierror-abusefilter-nosuchlogid": "没有id为$1的滥用日志记录。",
+	"apierror-abusefilter-badsyntax": "过滤器存在语法错误。"
 }

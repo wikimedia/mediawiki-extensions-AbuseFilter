@@ -8,7 +8,8 @@
 			"Mirzali",
 			"Xoser",
 			"Matma Rex",
-			"Kumkumuk"
+			"Kumkumuk",
+			"1917 Ekim Devrimi"
 		]
 	},
 	"abusefilter-desc": "Vurnayışa rê terzê otomatik vınakari dezge keno",
@@ -45,6 +46,7 @@
 	"action-abusefilter-modify-restricted": "filitreyê abuseyî bivurne, pê aksiyonê restrictî",
 	"action-abusefilter-revert": "vurnayîşî ke pê filitreyê abuseyî biy, inan reyna biyar",
 	"action-abusefilter-view-private": "Filitreyê abuse yê xasî  bivine",
+	"action-abusefilter-log-private": "Xısusi qeydê parzunê ke şıma nışan kerdê ena mosneno",
 	"abusefilter-log": "Rocekê filtre de peygoş kerdışan",
 	"abusefilter-log-summary": "Ena log de yew di hereket estê ke pê filitreyî tepişiyo.",
 	"abusefilter-log-search": "Bıgeyr qeydé rocekan dé nenga",
@@ -444,5 +446,9 @@
 	"apihelp-query+abuselog-param-limit": "Azami miktarê dekerdena liste ke",
 	"apihelp-query+abuselog-param-prop": "Kamci xısusiyeta ke gê no",
 	"apihelp-query+abuselog-example-1": "Qeydanê dekerdanê peyênan bıasne",
-	"apihelp-query+abuselog-example-2": "Qandé [[API]] Qeydanê dekerdanê peyênan bıasne"
+	"apihelp-query+abuselog-example-2": "Qandé [[API]] Qeydanê dekerdanê peyênan bıasne",
+	"apierror-abusefilter-canttest": "Testê qeydê nengan rê izinê şıma çıni yo.",
+	"apierror-abusefilter-cantcheck": "rêz kerdena qeydanê nengan rê izinê şıma çıni yo.",
+	"apierror-abusefilter-nosuchlogid": "Tiya ra qeydê nengan nêdebêno kamiya $1",
+	"apierror-abusefilter-badsyntax": "Ena filter de yew rêza xelat esta."
 }

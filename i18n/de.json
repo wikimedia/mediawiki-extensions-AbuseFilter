@@ -62,6 +62,7 @@
 	"action-abusefilter-modify-restricted": "Missbrauchsfilter mit privilegierten Aktionen zu bearbeiten",
 	"action-abusefilter-revert": "alle Änderungen durch einen bestimmten Missbrauchsfilter rückgängig zu machen",
 	"action-abusefilter-view-private": "Missbrauchsfilter einzusehen, die als privat markiert wurden",
+	"action-abusefilter-log-private": "Missbrauchsfilter-Logbücher anzusehen, die als privat markiert wurden",
 	"abusefilter-log": "Missbrauchsfilter-Logbuch",
 	"abusefilter-log-summary": "Dieses Logbuch zeigt eine Liste aller Aktionen, die durch einen Filter aufgefangen wurden.",
 	"abusefilter-log-search": "Missbrauchsfilter-Logbuch durchsuchen",
@@ -91,6 +92,7 @@
 	"abusefilter-log-hidden": "(Eintrag versteckt)",
 	"abusefilter-log-hidden-implicit": "(versteckt, da die Version gelöscht wurde)",
 	"abusefilter-log-cannot-see-details": "Du hast nicht die Berechtigung, Einzelheiten zur dieser Eingabe einzusehen.",
+	"abusefilter-log-nonexistent": "Ein Eintrag mit der angegebenen Kennung ist nicht vorhanden.",
 	"abusefilter-log-details-hidden": "Du kannst die Details dieses Eintrags nicht einsehen, da sie vor der Öffentlichkeit verborgen sind.",
 	"abusefilter-log-private-not-included": "Eine oder mehrere angegebene Filterkennungen sind privat. Da du nicht berechtigt bist, die Einzelheiten von privaten Filtern anzusehen, wurde nicht nach solchen Filtern gesucht.",
 	"abusefilter-log-hide-legend": "Logbucheintrag verstecken",
@@ -454,5 +456,9 @@
 	"apihelp-query+abuselog-param-limit": "Die maximale Anzahl der aufzulistenden Einträge.",
 	"apihelp-query+abuselog-param-prop": "Zurückzugebende Eigenschaften.",
 	"apihelp-query+abuselog-example-1": "Zeigt die letzten Logbucheinträge",
-	"apihelp-query+abuselog-example-2": "Zeigt die letzten Logbucheinträge für [[API]]"
+	"apihelp-query+abuselog-example-2": "Zeigt die letzten Logbucheinträge für [[API]]",
+	"apierror-abusefilter-canttest": "Du hast keine Berechtigung, Missbrauchsfilter zu testen.",
+	"apierror-abusefilter-cantcheck": "Du hast keine Berechtigung, die Syntax von Missbrauchsfiltern zu überprüfen.",
+	"apierror-abusefilter-nosuchlogid": "Es gibt keinen Missbrauchsfilter-Logbuch-Eintrag mit der Kennung $1.",
+	"apierror-abusefilter-badsyntax": "Der Filter hat eine ungültige Syntax."
 }

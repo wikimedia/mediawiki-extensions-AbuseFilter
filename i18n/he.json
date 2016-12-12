@@ -50,6 +50,7 @@
 	"action-abusefilter-modify-restricted": "לשנות מסנני השחתות עם פעולות מוגבלות",
 	"action-abusefilter-revert": "לשחזר את כל השינויים שבוצעו על־ידי מסנן השחתות מסוים",
 	"action-abusefilter-view-private": "לצפות במסנני השחתות שסומנו כפרטיים",
+	"action-abusefilter-log-private": "לצפות ביומנים של מסנני השחתות שסומנו כפרטיים",
 	"abusefilter-log": "יומן מסנן ההשחתות",
 	"abusefilter-log-summary": "יומן זה מציג רשימה של כל הפעולות שנתפסו על־ידי המסננים.",
 	"abusefilter-log-search": "חיפוש ביומן ההשחתות",
@@ -448,5 +449,8 @@
 	"apihelp-query+abuselog-param-limit": "מספר מרבי של עיולים שיהיו ברשימה.",
 	"apihelp-query+abuselog-param-prop": "אילו מאפיינים לקבל.",
 	"apihelp-query+abuselog-example-1": "להציג עיולי יומן אחרונים",
-	"apihelp-query+abuselog-example-2": "הצגת עיולי יומן אחרונים עבור [[API]]"
+	"apihelp-query+abuselog-example-2": "הצגת עיולי יומן אחרונים עבור [[API]]",
+	"apierror-abusefilter-canttest": "אין לך הרשאה לבחון מסנני השחתות.",
+	"apierror-abusefilter-cantcheck": "אין לך הרשאה לבדוק את התחביר של מסנני השחתות.",
+	"apierror-abusefilter-badsyntax": "המסנן מכיל תחביר בלתי תקין."
 }

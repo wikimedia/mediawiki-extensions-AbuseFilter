@@ -11,7 +11,7 @@
 	"abuselog": "Rexistru d'abusos",
 	"abusefilter-intro": "Bienveníu a la interfaz d'alministración de la peñera d'abusos.\nLa peñera d'abusos ye un mecanismu de software automatizáu p'aplicar heurística automática a toles aiciones.\nEsta interfaz amuesa la llista de les peñeres definíes, y permite camudales.",
 	"abusefilter-mustbeeditor": "Por razones de seguridá, solamente los usuarios con permisu pa camudar les peñeres d'abusu pueden usar esta interfaz.",
-	"abusefilter-warning": "'''Avisu''': Esta aición identificóse automáticamente como perxudicial.\nles ediciones non constructives revertiránse dafechu,\ny la repetición d'ediciones non constructives tendrá como resultáu el bloquéu de la to cuenta o direición IP.\nSi crees qu'esta aición ye constructiva, pues volver a unviala pa confirmala.\nLa descripción curtia de la regla d'abusu que s'activó cola to aición ye: $1",
+	"abusefilter-warning": "'''Avisu''': Esta aición identificóse automáticamente como perxudicial.\nLes aiciones non constructives revertiránse dafechu,\ny la repetición d'ediciones non constructives tendrá como resultáu el bloquéu de la to cuenta o direición IP.\nSi crees qu'esta aición ye constructiva, pues volver a unviala pa confirmala.\nLa descripción curtia de la regla d'abusu que s'activó cola to aición ye: $1",
 	"abusefilter-disallowed": "Esta aición identificóse automáticamente como perxudicial y, poro, nun se permite.\nSi pienses que la to aición foi constructiva, por favor, informa a un alministrador de lo que queríes facer.\nEsta ye una descripción curtia de la regla d'abusu que casa cola to aición: $1",
 	"abusefilter-blocked-display": "Esta aición identificóse automáticamente como perxudicial, y torgósete executala.\nAmás, pa protexer a {{SITENAME}}, a la to cuenta d'usuariu y toles direiciones IP asociaes se-yos torgó editar.\nSi esto asocedió por un fallu, por favor, ponte'n contautu con un alministrador.\nEquí hai una descripción curtia de la regla d'abusu que casa cola to aición: $1",
 	"abusefilter-degrouped": "Esta aición identificóse automáticamente como perxudicial.\nComo consecuencia, nun se permitió y, como se sospecha que la to cuenta ta comprometida, tolos tos permisos queden torgaos.\nSi crees qu'esto foi por un error, por favor, ponte en contautu con un burócrata apurriendo-y una esplicación d'esta aición y seique se restaurarán los tos permisos.\nEquí hai una descripción curtia de la regla d'abusu que casa cola to aición: $1",
@@ -40,6 +40,7 @@
 	"action-abusefilter-modify-restricted": "camudar les peñeres d'abusu con aiciones restrinxíes",
 	"action-abusefilter-revert": "revertir tolos cambios fechos por una determinada peñera d'abusu",
 	"action-abusefilter-view-private": "ver les peñeres d'abusu marcaes como privaes",
+	"action-abusefilter-log-private": "ver rexistros de les peñeres d'abusu marcaes como privaes",
 	"abusefilter-log": "Rexistru de la peñera d'abusos",
 	"abusefilter-log-summary": "Esti rexistru amuesa una llista de toles aiciones detectaes poles peñeres.",
 	"abusefilter-log-search": "Guetar nel rexistru d'abusos",
@@ -438,5 +439,9 @@
 	"apihelp-query+abuselog-param-limit": "La cantidá máxima d'entraes qu'apaecerán.",
 	"apihelp-query+abuselog-param-prop": "Qué propiedaes algamar.",
 	"apihelp-query+abuselog-example-1": "Amosar les entraes recientes del rexistru",
-	"apihelp-query+abuselog-example-2": "Amosar les entraes recientes del rexistru pa la [[API]]"
+	"apihelp-query+abuselog-example-2": "Amosar les entraes recientes del rexistru pa la [[API]]",
+	"apierror-abusefilter-canttest": "Nun tienes permisu pa probar peñeres d'abusu.",
+	"apierror-abusefilter-cantcheck": "Nun tienes permisu pa comprobar la sintaxis de les peñeres d'abusu.",
+	"apierror-abusefilter-nosuchlogid": "Nun hai nenguna entrada nos rexistros de les peñeres d'abusu con id $1.",
+	"apierror-abusefilter-badsyntax": "El filtru tien una sintaxis inválida."
 }

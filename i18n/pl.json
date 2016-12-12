@@ -437,5 +437,7 @@
 	"apihelp-query+abuselog-param-end": "Znacznik czasu, na którym zakończyć wyliczanie.",
 	"apihelp-query+abuselog-param-prop": "Jakie właściwości uzyskać.",
 	"apihelp-query+abuselog-example-1": "Pokaż ostatnie wpisy w rejestrze",
-	"apihelp-query+abuselog-example-2": "Pokaż ostatnie wpisy w dzienniku [[API]]"
+	"apihelp-query+abuselog-example-2": "Pokaż ostatnie wpisy w dzienniku [[API]]",
+	"apierror-abusefilter-cantcheck": "Nie masz uprawnień do sprawdzania składni filtru nadużyć.",
+	"apierror-abusefilter-badsyntax": "Filtr ma nieprawidłową składnię."
 }
