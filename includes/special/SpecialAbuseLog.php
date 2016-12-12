@@ -25,6 +25,30 @@ class SpecialAbuseLog extends SpecialPage {
 		return true;
 	}
 
+	/**
+	 * Main routine
+	 *
+	 * $parameter string is converted into the $args array, which can come in
+	 * three shapes:
+	 *
+	 * An array of size 2: only if the URL is like Special:AbuseLog/private/id
+	 * where id is the log identifier. In this case, the private details of the
+	 * log (e.g. IP address) will be shown.
+	 *
+	 * An array of size 1: either the URL is like Special:AbuseLog/id where
+	 * the id is log identifier, in which case the details of the log except for
+	 * private bits (e.g. IP address) are shown, or the URL is incomplete as in
+	 * Special:AbuseLog/private (without speciying id), in which case a warning
+	 * is shown to the user
+	 *
+	 * An array of size 0 when URL is like Special:AbuseLog or an array of size
+	 * 1 when the URL is like Special:AbuseFilter/ (i.e. without anything after
+	 * the slash). In this case, if the parameter `hide` was passed, it will be
+	 * used as the identifier of the log entry that we want to hide; otherwise,
+	 * the abuse logs are shown as a list, with a search form above the list.
+	 *
+	 * @param string $parameter URL parameters
+	 */
 	public function execute( $parameter ) {
 		$out = $this->getOutput();
 		$request = $this->getRequest();
@@ -55,21 +79,23 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$detailsid = $request->getIntOrNull( 'details' );
 		$hideid = $request->getIntOrNull( 'hide' );
+		$args = explode( '/', $parameter );
 
-		if ( $parameter ) {
-			$detailsid = $parameter;
-		}
-
-		if ( $detailsid ) {
-			$this->showDetails( $detailsid );
-		} elseif ( $hideid ) {
-			$this->showHideForm( $hideid );
+		if ( count( $args ) === 2 && $args[0] === 'private' ) {
+			$this->showPrivateDetails( $args[1] );
+		} elseif ( count( $args ) === 1 && $args[0] !== '' ) {
+			if ( $args[0] === 'private' ) {
+				$out->addWikiMsg( 'abusefilter-invalid-request-noid' );
+			} else {
+				$this->showDetails( $args[0] );
+			}
 		} else {
-			// Show the search form.
-			$this->searchForm();
-
-			// Show the log itself.
-			$this->showList();
+			if ( $hideid ) {
+				$this->showHideForm( $hideid );
+			} else {
+				$this->searchForm();
+				$this->showList();
+			}
 		}
 	}
 
@@ -391,37 +417,238 @@ class SpecialAbuseLog extends SpecialPage {
 		$output .= AbuseFilter::buildVarDumpTable( $vars, $this->getContext() );
 
 		if ( self::canSeePrivate() ) {
-			// Private stuff, like IPs.
-			$header =
-				Xml::element( 'th', null, $this->msg( 'abusefilter-log-details-var' )->text() ) .
-				Xml::element( 'th', null, $this->msg( 'abusefilter-log-details-val' )->text() );
-			$output .= Xml::element( 'h3', null, $this->msg( 'abusefilter-log-details-private' )->text() );
-			$output .=
-				Xml::openElement( 'table',
-					[
-						'class' => 'wikitable mw-abuselog-private',
-						'style' => 'width: 80%;'
-					]
-				) .
-				Xml::openElement( 'tbody' );
-			$output .= $header;
+			$formDescriptor = [
+				'Reason' => [
+					'label-message' => 'abusefilter-view-private-reason',
+					'type' => 'text',
+					'size' => 45,
+				],
+			];
 
-			// IP address
-			$output .=
-				Xml::tags( 'tr', null,
-					Xml::element( 'td',
-						[ 'style' => 'width: 30%;' ],
-						$this->msg( 'abusefilter-log-details-ip' )->text()
-					) .
-					Xml::element( 'td', null, $row->afl_ip )
-				);
+			$htmlForm = HTMLForm::factory( 'table', $formDescriptor, $this->getContext() );
+			$htmlForm->setWrapperLegendMsg( 'abusefilter-view-private' )
+				->setAction( $this->getPageTitle( 'private/' . $id )->getLocalURL() )
+				->setSubmitTextMsg( 'abusefilter-view-private-submit' )
+				->setMethod( 'post' )
+				->prepareForm();
 
-			$output .= Xml::closeElement( 'tbody' ) . Xml::closeElement( 'table' );
+			$output .= $htmlForm->getHTML( false );
 		}
 
 		$output = Xml::tags( 'fieldset', null, $output );
 
 		$out->addHTML( $output );
+	}
+
+	/**
+	 * @param string $id
+	 * @return null
+	 */
+	function showPrivateDetails( $id ) {
+		global $wgAbuseFilterPrivateLog;
+
+		$lang = $this->getLanguage();
+		$out = $this->getOutput();
+		$request = $this->getRequest();
+
+		$dbr = wfGetDB( DB_REPLICA );
+
+		$reason = $request->getText( 'wpReason' );
+
+		// Make sure it is a valid request
+		$token = $request->getVal( 'wpEditToken' );
+		if ( !$request->wasPosted() || !$this->getUser()->matchEditToken( $token ) ) {
+			$out->wrapWikiMsg( '<div class="errorbox">$1</div>',
+				[ 'abusefilter-invalid-request', $id ] );
+
+			return;
+		}
+
+		if ( !$this->checkReason( $reason ) ) {
+			$out->addWikiMsg( 'abusefilter-noreason' );
+			$this->showDetails( $id );
+			return false;
+		}
+
+		$row = $dbr->selectRow(
+			[ 'abuse_filter_log', 'abuse_filter' ],
+			[ 'afl_id', 'afl_filter', 'afl_user_text', 'afl_timestamp', 'afl_ip', 'af_id',
+				'af_public_comments', 'af_hidden' ],
+			[ 'afl_id' => $id ],
+			__METHOD__,
+			[],
+			[ 'abuse_filter' => [ 'LEFT JOIN', 'af_id=afl_filter' ] ]
+		);
+
+		if ( !$row ) {
+			$out->addWikiMsg( 'abusefilter-log-nonexistent' );
+
+			return;
+		}
+
+		if ( AbuseFilter::decodeGlobalName( $row->afl_filter ) ) {
+			$filter_hidden = null;
+		} else {
+			$filter_hidden = $row->af_hidden;
+		}
+
+		if ( !self::canSeeDetails( $row->afl_filter, $filter_hidden ) ) {
+			$out->addWikiMsg( 'abusefilter-log-cannot-see-details' );
+
+			return;
+		}
+
+		if ( !self::canSeePrivate( $row->afl_filter, $filter_hidden ) ) {
+			$out->addWikiMsg( 'abusefilter-log-cannot-see-private-details' );
+
+			return;
+		}
+
+		// Log accessing private details
+		if ( $wgAbuseFilterPrivateLog ) {
+			$user = $this->getUser();
+			self::addLogEntry( $id, $reason, $user );
+		}
+
+		// Show private details (IP).
+		$output = Xml::element(
+			'legend',
+			null,
+			$this->msg( 'abusefilter-log-details-private' )->text()
+		);
+
+		$header =
+			Xml::element( 'th', null, $this->msg( 'abusefilter-log-details-var' )->text() ) .
+			Xml::element( 'th', null, $this->msg( 'abusefilter-log-details-val' )->text() );
+
+		$output .=
+			Xml::openElement( 'table',
+				[
+					'class' => 'wikitable mw-abuselog-private',
+					'style' => 'width: 80%;'
+				]
+			) .
+			Xml::openElement( 'tbody' );
+		$output .= $header;
+
+		// Log ID
+		$linkRenderer = $this->getLinkRenderer();
+		$output .=
+			Xml::tags( 'tr', null,
+				Xml::element( 'td',
+					[ 'style' => 'width: 30%;' ],
+					$this->msg( 'abusefilter-log-details-id' )->text()
+				) .
+				Xml::openElement( 'td' ) .
+				$linkRenderer->makeKnownLink(
+					$this->getPageTitle( $row->afl_id ),
+					$lang->formatNum( $row->afl_id )
+				) .
+				Xml::closeElement( 'td' )
+			);
+
+		// Timestamp
+		$output .=
+			Xml::tags( 'tr', null,
+				Xml::element( 'td',
+					[ 'style' => 'width: 30%;' ],
+					$this->msg( 'abusefilter-edit-builder-vars-timestamp-expanded' )->text()
+				) .
+				Xml::element( 'td',
+					null,
+					$lang->timeanddate( $row->afl_timestamp, true )
+				)
+			);
+
+		// User
+		$output .=
+			Xml::tags( 'tr', null,
+				Xml::element( 'td',
+					[ 'style' => 'width: 30%;' ],
+					$this->msg( 'abusefilter-edit-builder-vars-user-name' )->text()
+				) .
+				Xml::element( 'td',
+					null,
+					$row->afl_user_text
+				)
+			);
+
+		// Filter ID
+		$output .=
+			Xml::tags( 'tr', null,
+				Xml::element( 'td',
+					[ 'style' => 'width: 30%;' ],
+					$this->msg( 'abusefilter-list-id' )->text()
+				) .
+				Xml::openElement( 'td' ) .
+				$linkRenderer->makeKnownLink(
+					SpecialPage::getTitleFor( 'AbuseFilter', $row->af_id ),
+					$lang->formatNum( $row->af_id )
+				) .
+				Xml::closeElement( 'td' )
+			);
+
+		// Filter description
+		$output .=
+			Xml::tags( 'tr', null,
+				Xml::element( 'td',
+					[ 'style' => 'width: 30%;' ],
+					$this->msg( 'abusefilter-list-public' )->text()
+				) .
+				Xml::element( 'td',
+					null,
+					$row->af_public_comments
+				)
+			);
+
+		// IP address
+		$ip = $row->afl_ip === '' ? $this->msg( 'abusefilter-log-ip-not-available' ) : $row->afl_ip;
+		$output .=
+			Xml::tags( 'tr', null,
+				Xml::element( 'td',
+					[ 'style' => 'width: 30%;' ],
+					$this->msg( 'abusefilter-log-details-ip' )->text()
+				) .
+				Xml::element( 'td', null, $ip )
+			);
+
+		$output .= Xml::closeElement( 'tbody' ) . Xml::closeElement( 'table' );
+
+		$output = Xml::tags( 'fieldset', null, $output );
+
+		$out->addHTML( $output );
+	}
+
+	/**
+	 * If specifying a reason for viewing private details of abuse log is required
+	 * then it makes sure that a reason is provided.
+	 *
+	 * @param string $reason
+	 * @return bool
+	 */
+	protected function checkReason( $reason ) {
+		global $wgAbuseFilterForceSummary;
+		return ( !$wgAbuseFilterForceSummary || strlen( $reason ) > 0 );
+	}
+
+	/**
+	 * @param int $logID int The ID of the AbuseFilter log that was accessed
+	 * @param string $reason The reason provided for accessing private details
+	 * @param User $user The user who accessed the private details
+	 * @return void
+	 */
+	public static function addLogEntry( $logID, $reason, $user ) {
+		$target = self::getTitleFor( 'AbuseLog', $logID );
+
+		$logEntry = new ManualLogEntry( 'abusefilterprivatedetails', 'access' );
+		$logEntry->setPerformer( $user );
+		$logEntry->setTarget( $target );
+		$logEntry->setParameters( [
+			'4::logid' => $logID,
+		] );
+		$logEntry->setComment( $reason );
+
+		$logEntry->insert();
 	}
 
 	/**

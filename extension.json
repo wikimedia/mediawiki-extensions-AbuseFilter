@@ -19,6 +19,7 @@
 		"abusefilter-view",
 		"abusefilter-log",
 		"abusefilter-private",
+		"abusefilter-private-log",
 		"abusefilter-modify-restricted",
 		"abusefilter-revert",
 		"abusefilter-view-private",
@@ -32,10 +33,12 @@
 		"AbuseFilter": "SpecialAbuseFilter"
 	},
 	"LogTypes": [
-		"abusefilter"
+		"abusefilter",
+		"abusefilterprivatedetails"
 	],
 	"LogNames": {
-		"abusefilter": "abusefilter-log-name"
+		"abusefilter": "abusefilter-log-name",
+		"abusefilterprivatedetails": "abusefilterprivatedetails-log-name"
 	},
 	"LogHeaders": {
 		"abusefilter": "abusefilter-log-header"
@@ -47,7 +50,8 @@
 	"LogActionsHandlers": {
 		"abusefilter/hit": "AbuseLogHitFormatter",
 		"abusefilter/modify": "AbuseFilterModifyLogFormatter",
-		"abusefilter/create": "AbuseFilterModifyLogFormatter"
+		"abusefilter/create": "AbuseFilterModifyLogFormatter",
+		"abusefilterprivatedetails/access": "LogFormatter"
 	},
 	"ActionFilteredLogs": {
 		"abusefilter": {
@@ -58,6 +62,9 @@
 				"create"
 			]
 		}
+	},
+	"LogRestrictions": {
+		"abusefilterprivatedetails": "abusefilter-private-log"
 	},
 	"APIModules": {
 		"abusefilterchecksyntax": "ApiAbuseFilterCheckSyntax",
@@ -264,7 +271,9 @@
 		"AbuseFilterRangeBlockSize" : {
 			"IPv4": 16,
 			"IPv6": 19
-		}
+		},
+		"AbuseFilterPrivateLog": false,
+		"AbuseFilterForceSummary": false
 	},
 	"load_composer_autoloader": true,
 	"manifest_version": 1
