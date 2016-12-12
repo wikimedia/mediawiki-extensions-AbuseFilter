@@ -69,6 +69,7 @@
 	"abusefilter-log-hidden": "(entry hidden)",
 	"abusefilter-log-hidden-implicit": "(hidden because revision has been deleted)",
 	"abusefilter-log-cannot-see-details": "You do not have permission to see details of this entry.",
+	"abusefilter-log-nonexistent": "An entry with the provided ID does not exist.",
 	"abusefilter-log-details-hidden": "You cannot view the details for this entry because it is hidden from public view.",
 	"abusefilter-log-private-not-included": "One or more of the filter IDs you specified are private. Because you are not allowed to view details of private filters, these filters have not been searched for.",
 	"abusefilter-log-hide-legend": "Hide log entry",

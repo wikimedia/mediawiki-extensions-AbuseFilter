@@ -307,6 +307,8 @@ class SpecialAbuseLog extends SpecialPage {
 		);
 
 		if ( !$row ) {
+			$out->addWikiMsg( 'abusefilter-log-nonexistent' );
+
 			return;
 		}
 
