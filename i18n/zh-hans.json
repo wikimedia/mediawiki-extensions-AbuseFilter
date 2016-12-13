@@ -106,6 +106,7 @@
 	"abusefilter-log-hidden": "（记录已被隐藏）",
 	"abusefilter-log-hidden-implicit": "（因为修订已被删除而隐藏）",
 	"abusefilter-log-cannot-see-details": "您没有权限去查看这个记录条目的细节。",
+	"abusefilter-log-nonexistent": "提供ID的实体不存在。",
 	"abusefilter-log-details-hidden": "你无法查看详细信息，因为此条目已被从公共范围隐藏。",
 	"abusefilter-log-private-not-included": "一个或多个您指定的过滤器ID是私有的。因为您不被允许查看私有过滤器的详情，所以这些过滤器未被寻找。",
 	"abusefilter-log-hide-legend": "隐藏日志条目",

@@ -470,5 +470,6 @@
 	"apihelp-query+abuselog-param-limit": "Le nombre maximal d’entrées à liter.",
 	"apihelp-query+abuselog-param-prop": "Quelles propriétés obtenir.",
 	"apihelp-query+abuselog-example-1": "Afficher les entrées récentes du journal",
-	"apihelp-query+abuselog-example-2": "Afficher les entrées récentes du journal pour [[API]]"
+	"apihelp-query+abuselog-example-2": "Afficher les entrées récentes du journal pour [[API]]",
+	"apierror-abusefilter-badsyntax": "Le filtre a une syntaxe non valide."
 }
