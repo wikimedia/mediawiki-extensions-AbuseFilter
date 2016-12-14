@@ -91,6 +91,7 @@
 	"abusefilter-log-hidden": "(مورد پنهان)",
 	"abusefilter-log-hidden-implicit": "(پنهان‌شده چون نسخه حذف شده است)",
 	"abusefilter-log-cannot-see-details": "برای مشاهده جزئیات این مورد دسترسی ندارید.",
+	"abusefilter-log-nonexistent": "ورودی‌ای با شناسهٔ ارائه‌شده وجود ندارد.",
 	"abusefilter-log-details-hidden": "شما نمی‌توانید جزئیات این مورد را ببینید چون از دید عموم مخفی شده‌است.",
 	"abusefilter-log-private-not-included": "یک یا چند مورد از شناسه‌های پالایه‌ای که انتخاب کرده‌اید خصوصی هستند. به این دلیل که شما مجاز به دیدن جزئیات پالایه‌های خصوصی نیستند، این فیلترها جستجو نشدند.",
 	"abusefilter-log-hide-legend": "پنهان کردن مورد در سیاهه",

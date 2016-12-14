@@ -72,6 +72,7 @@
 	"action-abusefilter-modify-restricted": "modifier les filtres antiabus avec des actions restreintes",
 	"action-abusefilter-revert": "révoquer toutes les modifications selon un filtre antiabus donné",
 	"action-abusefilter-view-private": "voir les filtres antiabus marqués comme privés",
+	"action-abusefilter-log-private": "voir les entrées du journal des filtres anti-abus marqué comme privées",
 	"abusefilter-log": "Journal des déclenchements du filtre antiabus",
 	"abusefilter-log-summary": "Ce journal affiche une liste des actions détectées par les filtres.",
 	"abusefilter-log-search": "Rechercher dans le journal des filtres antiabus",
@@ -101,6 +102,7 @@
 	"abusefilter-log-hidden": "(entrée masquée)",
 	"abusefilter-log-hidden-implicit": "(masquée car la version a été supprimée)",
 	"abusefilter-log-cannot-see-details": "Vous n'avez pas le droit de voir les détails de cette entrée.",
+	"abusefilter-log-nonexistent": "Il n’existe pas d’entrée associée à l’identifiant spécifié.",
 	"abusefilter-log-details-hidden": "Vous ne pouvez pas afficher les détails pour cette entrée parce qu'elle est cachée à la vue du public.",
 	"abusefilter-log-private-not-included": "Un ou plusieurs des IDs de filtre que vous avez spécifiés sont privés. Comme vous n’êtes pas autorisé à voir les détails des filtres privés, ces filtres n’ont pas été inclus dans la recherche.",
 	"abusefilter-log-hide-legend": "Masquer l'entrée dans les journaux",
@@ -471,5 +473,8 @@
 	"apihelp-query+abuselog-param-prop": "Quelles propriétés obtenir.",
 	"apihelp-query+abuselog-example-1": "Afficher les entrées récentes du journal",
 	"apihelp-query+abuselog-example-2": "Afficher les entrées récentes du journal pour [[API]]",
+	"apierror-abusefilter-canttest": "Vous n'avez pas la permission de tester les filtres anti-abus.",
+	"apierror-abusefilter-cantcheck": "Vous n'avez pas la permission de vérifier la syntaxe des filtres anti-abus.",
+	"apierror-abusefilter-nosuchlogid": "Il n'y a pas d'entrée dans le journal des abus avec l'identifiant $1.",
 	"apierror-abusefilter-badsyntax": "Le filtre a une syntaxe non valide."
 }
