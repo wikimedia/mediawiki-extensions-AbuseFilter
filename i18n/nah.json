@@ -2,15 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Fluence",
-			"Teòtlalili"
+			"Teòtlalili",
+			"Akapochtli"
 		]
 	},
 	"abusefilter-log-search-user": "Tlatequitiltilīlli:",
 	"abusefilter-log-search-title": "Tōcāitl:",
-	"abusefilter-log-search-submit": "Motèmòs",
+	"abusefilter-log-search-submit": "Tlatemoliztli",
 	"abusefilter-log-noactions": "ahtlein",
 	"abusefilter-log-hide-reason": "Tlèka:",
-	"abusefilter-list-edit": "Moyèktlàlìs",
+	"abusefilter-list-edit": "Tlapatlaliztli",
 	"abusefilter-edit-throttle-period": "Cāhuitl:",
 	"abusefilter-examine-title": "Tlaìxtlapaltòkâtli:",
 	"abusefilter-examine-submit": "Motèmòs",
