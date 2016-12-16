@@ -472,25 +472,27 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$fields['abusefilter-edit-flags'] = $flags;
 		$tools = '';
 
-		if ( $filter != 'new' && $user->isAllowed( 'abusefilter-revert' ) ) {
-			$tools .= Xml::tags(
-				'p', null,
-				$this->linkRenderer->makeLink(
-					$this->getTitle( 'revert/' . $filter ),
-					$this->msg( 'abusefilter-edit-revert' )->text()
-				)
-			);
-		}
-
 		if ( $filter != 'new' ) {
-			// Test link
-			$tools .= Xml::tags(
-				'p', null,
-				$this->linkRenderer->makeLink(
-					$this->getTitle( "test/$filter" ),
-					new HtmlArmor( $this->msg( 'abusefilter-edit-test-link' )->parse() )
-				)
-			);
+			if ( $user->isAllowed( 'abusefilter-revert' ) ) {
+				$tools .= Xml::tags(
+					'p', null,
+					$this->linkRenderer->makeLink(
+						$this->getTitle( "revert/$filter" ),
+						$this->msg( 'abusefilter-edit-revert' )->text()
+					)
+				);
+			}
+
+			if ( $user->isAllowed( 'abusefilter-modify' ) ) {
+				// Test link
+				$tools .= Xml::tags(
+					'p', null,
+					$this->linkRenderer->makeLink(
+						$this->getTitle( "test/$filter" ),
+						new HtmlArmor( $this->msg( 'abusefilter-edit-test-link' )->parse() )
+					)
+				);
+			}
 			// Last modification details
 			$userLink =
 				Linker::userLink( $row->af_user, $row->af_user_text ) .
