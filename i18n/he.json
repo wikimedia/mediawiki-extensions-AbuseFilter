@@ -80,6 +80,7 @@
 	"abusefilter-log-hidden": "(רשומה מוסתרת)",
 	"abusefilter-log-hidden-implicit": "(הוסתר כי הגרסה נמחקה)",
 	"abusefilter-log-cannot-see-details": "אין לך הרשאה לראות את פרטי הרשומה הזו.",
+	"abusefilter-log-nonexistent": "עיול עם המזהה שניתן אינו קיים",
 	"abusefilter-log-details-hidden": "אין באפשרותך לצפות בפרטים של רשומה זו כי היא הוסתרה מעיני הציבור.",
 	"abusefilter-log-private-not-included": "חלק ממספרי המסננים שהגדרת פרטיים. מכיוון שאין לך הרשאה להציג פרטים של מסננים פרטיים, לא נעשה חיפוש במסננים האלה.",
 	"abusefilter-log-hide-legend": "הסתרת רשומת יומן",
