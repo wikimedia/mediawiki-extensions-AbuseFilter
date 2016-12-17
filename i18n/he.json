@@ -453,5 +453,6 @@
 	"apihelp-query+abuselog-example-2": "הצגת עיולי יומן אחרונים עבור [[API]]",
 	"apierror-abusefilter-canttest": "אין לך הרשאה לבחון מסנני השחתות.",
 	"apierror-abusefilter-cantcheck": "אין לך הרשאה לבדוק את התחביר של מסנני השחתות.",
+	"apierror-abusefilter-nosuchlogid": "אין עיול ביומן ההשחתות עם המזהה $1.",
 	"apierror-abusefilter-badsyntax": "המסנן מכיל תחביר בלתי תקין."
 }
