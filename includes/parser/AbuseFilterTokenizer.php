@@ -249,3 +249,4 @@ class AbuseFilterTokenizer {
 		throw new AFPUserVisibleException( 'unclosedstring', $offset, array() );
 	}
 }
+
