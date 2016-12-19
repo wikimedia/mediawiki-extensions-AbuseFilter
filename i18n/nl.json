@@ -19,7 +19,8 @@
 			"Trijnstel",
 			"JaapDeKleine",
 			"Matma Rex",
-			"Jeleniccz"
+			"Jeleniccz",
+			"Mainframe98"
 		]
 	},
 	"abusefilter-desc": "Voert automatisch heuristische analyse uit op bewerkingen",
@@ -64,9 +65,9 @@
 	"abusefilter-log-search-title": "Paginanaam:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Zoeken",
-	"abusefilter-log-entry": "$1: $2 liet een filter afgaan bij het uitvoeren handeling \"$3\" op $4.\nGenomen maatregel: $5.\nFilterbeschrijving: $6",
-	"abusefilter-log-entry-withdiff": "$1: $2 activeerde een filter, waardoor actie \"$3\" wordt uitgevoerd op $4. \nActies uitgevoerd: $5; \nFilterbeschrijving: $6 ($7)",
-	"abusefilter-log-detailedentry-meta": "$1: $2 heeft $3 laten afgaan tijdens het uitvoeren van de handeling \"$4\" op $5.\nGenomen maatregel: $6.\nFilterbeschrijving: $7 ($8)",
+	"abusefilter-log-entry": "$1: $2 liet een filter afgaan bij het {{GENDER:$8|uitvoeren}} van de handeling \"$3\" op $4.\nGenomen maatregel: $5.\nFilterbeschrijving: $6",
+	"abusefilter-log-entry-withdiff": "$1: $2 liet een filter afgaan bij het {{GENDER:$8|uitvoeren}} van de handeling \"$3\" op $4.\nGenomen maatregel: $5.\nFilterbeschrijving: $6 ($7)",
+	"abusefilter-log-detailedentry-meta": "$1: $2 heeft $3 laten afgaan tijdens het {{GENDER:$9|uitvoeren}} van de handeling \"$4\" op $5.\nGenomen maatregel: $6.\nFilterbeschrijving: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "globale filter $1",
 	"abusefilter-log-detailedentry-local": "filter $1",
 	"abusefilter-log-detailslink": "details",
