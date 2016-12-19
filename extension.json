@@ -96,7 +96,7 @@
 		"AbuseFilterViewDiff": "Views/AbuseFilterViewDiff.php",
 		"TableDiffFormatterFullContext": "Views/AbuseFilterViewDiff.php",
 		"AbuseFilterViewImport": "Views/AbuseFilterViewImport.php",
-		"AbuseFilterVariableHolder": "includes/parser/AbuseFilterVariableHolder.php",
+		"AbuseFilterVariableHolder": "includes/AbuseFilterVariableHolder.php",
 		"AFComputedVariable": "includes/AFComputedVariable.php",
 		"AFPData": "includes/parser/AFPData.php",
 		"AFPException": "includes/parser/AFPException.php",
