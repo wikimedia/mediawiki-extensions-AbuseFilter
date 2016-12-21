@@ -1122,7 +1122,8 @@ class AbuseFilter {
 			if ( $data['afl_id'] === null ) {
 				$data['afl_id'] = $dbw->insertId();
 			}
-
+			// Give grep a chance to find the usages:
+			// logentry-abusefilter-hit
 			$entry = new ManualLogEntry( 'abusefilter', 'hit' );
 			// Construct a user object
 			$user = User::newFromId( $data['afl_user'] );

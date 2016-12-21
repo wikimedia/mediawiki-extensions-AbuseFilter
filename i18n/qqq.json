@@ -110,7 +110,7 @@
 	"abusefilter-log-hide-forbidden": "Message shown instead of a \"hide log entry\" form when not having the correct user rights.",
 	"abusefilter-logentry-suppress": "Log entry when hiding an abuse filter log entry. Parameters:\n* $1 is a link to the log ID with the log ID as description.",
 	"abusefilter-logentry-unsuppress": "Log entry when unhiding an abuse filter log entry. Parameters:\n* $1 is a link to the log ID with the log ID as description.",
-	"logentry-abusefilter-hit": "This message is for a log entry. Parameters:\n* $1 user\n* $3 link to the page, that the action that triggered the filter was made on\n* $4 link to filter\n* $5 action by user, like 'edit', 'move', 'create' etc.\n* $6 actions taken by the filter\n* $7 action details link",
+	"logentry-abusefilter-hit": "This message is for a log entry. Parameters:\n* $1 - user who performed the action\n* $2 - user who performed the action (to be used with GENDER)\n* $3 - link to the page, that the action that triggered the filter was made on\n* $4 - link to filter\n* $5 - action by user, like 'edit', 'move', 'create' etc.\n* $6 - actions taken by the filter\n* $7 - action details link",
 	"abusefilter-management": "Title of [[Special:AbuseFilter]]",
 	"abusefilter-list": "Used as HTML <code><nowiki><h2></nowiki></code> heading.\n\nFollowed by the fieldset label {{msg-mw|Abusefilter-list-options}}.",
 	"abusefilter-list-id": "Column header in abuse filter overview for the filter identifier.\n{{Identical|Filter ID}}",
