@@ -70,6 +70,7 @@
 	"abusefilter-log-hidden": "(entrada anubría)",
 	"abusefilter-log-hidden-implicit": "(anubríu porque se desanició la revisión)",
 	"abusefilter-log-cannot-see-details": "Nun tienes permisu pa ver los detalles d'esta entrada.",
+	"abusefilter-log-nonexistent": "Nun esiste nenguna entrada cola ID proporcionada.",
 	"abusefilter-log-details-hidden": "Nun pues ver los detalles d'esta entrada porque ta anubría de la vista pública.",
 	"abusefilter-log-private-not-included": "Una o más de les IDs del filtru qu'especificó ye privada. Como nun tien permisu para ver los detalles de los filtros privaos, nun se buscó ente esos filtros.",
 	"abusefilter-log-hide-legend": "Anubrir entrada del rexistru",
