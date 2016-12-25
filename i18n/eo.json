@@ -10,7 +10,8 @@
 			"Tradukisto",
 			"Yekrats",
 			"Matma Rex",
-			"Robin van der Vliet"
+			"Robin van der Vliet",
+			"Rafaneta"
 		]
 	},
 	"abusefilter-desc": "Aplikas aŭtomatan heŭristikon al redaktoj.",
@@ -266,6 +267,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Aĝo de uzula konto",
 	"abusefilter-edit-builder-vars-user-name": "Nomo de uzula konto",
 	"abusefilter-edit-builder-vars-user-groups": "Grupoj (inkluzivante implicaj) de uzanto",
+	"abusefilter-edit-builder-vars-user-rights": "Rajtoj de la uzanto",
 	"abusefilter-edit-builder-vars-user-blocked": "Ĉu uzanto estas blokita",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Tempo kiam adreso estis konfirmita",
 	"abusefilter-edit-builder-vars-recent-contributors": "Lastaj dek uzantoj kontribuantaj al la paĝo",
