@@ -453,5 +453,6 @@
 	"apihelp-query+abuselog-param-limit": "Het maximale aantal regels in de lijst.",
 	"apihelp-query+abuselog-param-prop": "Welke eigenschappen op te vragen.",
 	"apihelp-query+abuselog-example-1": "Recente logboekregels weergeven",
-	"apihelp-query+abuselog-example-2": "Recente logboekregels voor [[API]] weergeven"
+	"apihelp-query+abuselog-example-2": "Recente logboekregels voor [[API]] weergeven",
+	"apierror-abusefilter-canttest": "U hebt geen toestemming om misbruikfilters te testen."
 }

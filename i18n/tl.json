@@ -3,7 +3,8 @@
 		"authors": [
 			"AnakngAraw",
 			"Jojit fb",
-			"Matma Rex"
+			"Matma Rex",
+			"Emem.calist"
 		]
 	},
 	"abusefilter-desc": "Naghahain ng mga kusang gabay-aral/heuristiko sa mga pamamatnugot",
@@ -254,6 +255,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Edad ng akawnt ng tagagamit",
 	"abusefilter-edit-builder-vars-user-name": "Pangalan ng akawnt ng tagagamit",
 	"abusefilter-edit-builder-vars-user-groups": "Ang tagagamit ng mga pangkat (kabilang ang halata) ay nasa",
+	"abusefilter-edit-builder-vars-user-rights": "Karapatan ng isang manunulak ay",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Oras kung kailan natiyak ang adres ng e-liham",
 	"abusefilter-edit-builder-vars-recent-contributors": "Limang huling tagapag-ambag sa pahina",
 	"abusefilter-edit-builder-vars-all-links": "Lahat ng panlabas na mga kawing na nasa loob ng bagong teksto",
