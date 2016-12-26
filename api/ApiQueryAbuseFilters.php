@@ -103,7 +103,7 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 
 		$res = $this->select( __METHOD__ );
 
-		$showhidden = $user->isAllowed( 'abusefilter-modify' );
+		$showhidden = $user->isAllowedAny( 'abusefilter-modify', 'abusefilter-view-private' );
 
 		$count = 0;
 		foreach ( $res as $row ) {
