@@ -2408,14 +2408,21 @@ class AbuseFilter {
 			return '';
 		}
 
+		static $cache = [];
+		if ( isset( $cache[$filterID] ) ) {
+			return $cache[$filterID];
+		}
+
 		$fdb = wfGetDB( DB_SLAVE, [], $wgAbuseFilterCentralDB );
 
-		return $fdb->selectField(
+		$cache[$filterID] = $fdb->selectField(
 			'abuse_filter',
 			'af_public_comments',
 			[ 'af_id' => $filterID ],
 			__METHOD__
 		);
+
+		return $cache[$filterID];
 	}
 
 	/**
