@@ -263,7 +263,7 @@
 	"abusefilter-edit-builder-vars-movedto-text": "Title of move destination page",
 	"abusefilter-edit-builder-vars-movedto-prefixedtext": "Full title of move destination page",
 	"abusefilter-edit-builder-vars-user-editcount": "Edit count of the user",
-	"abusefilter-edit-builder-vars-user-age": "Age of user the account",
+	"abusefilter-edit-builder-vars-user-age": "Age of the user account",
 	"abusefilter-edit-builder-vars-user-name": "Name of the user account",
 	"abusefilter-edit-builder-vars-user-groups": "Groups (including implicit) the user is in",
 	"abusefilter-edit-builder-vars-user-rights": "Rights that the user has",
