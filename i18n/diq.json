@@ -9,7 +9,8 @@
 			"Xoser",
 			"Matma Rex",
 			"Kumkumuk",
-			"1917 Ekim Devrimi"
+			"1917 Ekim Devrimi",
+			"Gırd"
 		]
 	},
 	"abusefilter-desc": "Vurnayışa rê terzê otomatik vınakari dezge keno",
@@ -269,12 +270,12 @@
 	"abusefilter-edit-builder-vars-movedto-ns": "Cayênameyî ripelê destinasyonî ke neqil biyo",
 	"abusefilter-edit-builder-vars-movedto-text": "Sernameyê ripelê destinasyonî ke neqil biyo",
 	"abusefilter-edit-builder-vars-movedto-prefixedtext": "Sernameyê ripelê destinasyonî ke neqil biyo",
-	"abusefilter-edit-builder-vars-user-editcount": "Amarê karberî bivurne",
-	"abusefilter-edit-builder-vars-user-age": "Serre hesabê karberî",
-	"abusefilter-edit-builder-vars-user-name": "Namey hesab dê karberi",
+	"abusefilter-edit-builder-vars-user-editcount": "Amarê karberi bıvurne",
+	"abusefilter-edit-builder-vars-user-age": "Serra hesabê karberi",
+	"abusefilter-edit-builder-vars-user-name": "Namey hesabê karberi",
 	"abusefilter-edit-builder-vars-user-groups": "Grubê ke karber tedero (êyê ke tedero inan ra piya)",
-	"abusefilter-edit-builder-vars-user-rights": "Heqê ke karberi grotê",
-	"abusefilter-edit-builder-vars-user-blocked": "Blokeya kerberi esta çıniya",
+	"abusefilter-edit-builder-vars-user-rights": "Heqê ke karber wayirê inanê",
+	"abusefilter-edit-builder-vars-user-blocked": "Karber bloke bo-mebo",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Wextê ke adresê emaîlî konfirme biy",
 	"abusefilter-edit-builder-vars-recent-contributors": "Des karberê penî ser ena ripel de hebitiyê",
 	"abusefilter-edit-builder-vars-first-contributor": "İştiraka sıfti ya karberi",
