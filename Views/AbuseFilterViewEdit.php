@@ -389,8 +389,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// Statistics
 			global $wgAbuseFilterProfile;
 			$stash = ObjectCache::getMainStashInstance();
-			$matches_count = $stash->get( AbuseFilter::filterMatchesKey( $filter ) );
-			$total = $stash->get( AbuseFilter::filterUsedKey( $row->af_group ) );
+			$matches_count = (int)$stash->get( AbuseFilter::filterMatchesKey( $filter ) );
+			$total = (int)$stash->get( AbuseFilter::filterUsedKey( $row->af_group ) );
 
 			if ( $total > 0 ) {
 				$matches_percent = sprintf( '%.2f', 100 * $matches_count / $total );
