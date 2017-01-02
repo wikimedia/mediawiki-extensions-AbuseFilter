@@ -79,7 +79,7 @@
 	"abusefilter-log-hide-forbidden": "You do not have permission to hide abuse log entries.",
 	"abusefilter-logentry-suppress": "hid \"[[$1]]\"",
 	"abusefilter-logentry-unsuppress": "unhid \"[[$1]]\"",
-	"logentry-abusefilter-hit": "$1 triggered $4, performing the action \"$5\" on $3. Actions taken: $6 ($7)",
+	"logentry-abusefilter-hit": "$1 {{GENDER:$2|triggered}} $4, {{GENDER:$2|performing}} the action \"$5\" on $3. Actions taken: $6 ($7)",
 	"abusefilter-management": "Abuse filter management",
 	"abusefilter-list": "All filters",
 	"abusefilter-list-id": "Filter ID",

@@ -3,6 +3,8 @@ use MediaWiki\MediaWikiServices;
 
 /**
  * This class formats abuse log notifications.
+ *
+ * Uses logentry-abusefilter-hit
  */
 class AbuseLogHitFormatter extends LogFormatter {
 
