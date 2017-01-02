@@ -759,7 +759,7 @@ class AbuseFilter {
 				self::getFilter( $filter )->af_public_comments
 			);
 
-			$global_filter = ( preg_match( '/^global-/', $filter ) == 1 );
+			$global_filter = self::decodeGlobalName( $filter ) !== false;
 
 			// If the filter is throttled and throttling is available via object
 			// caching, check to see if the user has hit the throttle.
@@ -995,14 +995,14 @@ class AbuseFilter {
 		global $wgAbuseFilterCentralDB;
 
 		if ( !isset( self::$filterCache[$id] ) ) {
-			$m = [];
-			if ( preg_match( '/^global-(\d+)$/', $id, $m ) ) {
+			$globalIndex = self::decodeGlobalName( $id );
+			if ( $globalIndex ) {
 				// Global wiki filter
 				if ( !$wgAbuseFilterCentralDB ) {
 					return null; // not enabled
 				}
 
-				$id = $m[1];
+				$id = $globalIndex;
 				$lb = wfGetLB( $wgAbuseFilterCentralDB );
 				$dbr = $lb->getConnectionRef( DB_SLAVE, array(), $wgAbuseFilterCentralDB );
 			} else {
