@@ -16,6 +16,8 @@ class AbuseFilter {
 	private static $filterCache = [];
 
 	public static $condCount = 0;
+
+	/** @var array Map of (action ID => string[]) */
 	public static $tagsToSet = []; // FIXME: avoid global state here
 
 	public static $history_mappings = [
@@ -148,8 +150,8 @@ class AbuseFilter {
 	public static $editboxName = null;
 
 	/**
-	 * @param $context IContextSource
-	 * @param $pageType
+	 * @param IContextSource $context
+	 * @param string $pageType
 	 */
 	public static function addNavigationLinks( IContextSource $context, $pageType ) {
 		$linkDefs = [
@@ -205,7 +207,7 @@ class AbuseFilter {
 
 	/**
 	 * @static
-	 * @param  $user User
+	 * @param User $user
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function generateUserVars( $user ) {
@@ -275,7 +277,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $filter
+	 * @param string $filter
 	 * @return bool
 	 */
 	public static function filterHidden( $filter ) {
@@ -304,7 +306,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $val int
+	 * @param int $val
 	 * @throws MWException
 	 */
 	public static function triggerLimiter( $val = 1 ) {
@@ -323,8 +325,8 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $title Title
-	 * @param $prefix
+	 * @param Title|null $title
+	 * @param string $prefix
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function generateTitleVars( $title, $prefix ) {
@@ -408,9 +410,9 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $conds
-	 * @param $vars
-	 * @param $ignoreError bool
+	 * @param string $conds
+	 * @param AbuseFilterVariableHolder $vars
+	 * @param bool $ignoreError
 	 * @return bool
 	 * @throws Exception
 	 */
@@ -446,7 +448,7 @@ class AbuseFilter {
 	/**
 	 * Returns an associative array of filters which were tripped
 	 *
-	 * @param $vars AbuseFilterVariableHolder
+	 * @param AbuseFilterVariableHolder $vars
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 *
 	 * @return bool[] Map of (integer filter ID => bool)
@@ -520,10 +522,10 @@ class AbuseFilter {
 
 	/**
 	 * @static
-	 * @param $row
-	 * @param $vars
-	 * @param $profile bool
-	 * @param $prefix string
+	 * @param stdClass $row
+	 * @param AbuseFilterVariableHolder $vars
+	 * @param bool $profile
+	 * @param string $prefix
 	 * @return bool
 	 */
 	public static function checkFilter( $row, $vars, $profile = false, $prefix = '' ) {
@@ -569,7 +571,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $filter
+	 * @param int $filter
 	 */
 	public static function resetFilterProfile( $filter ) {
 		$stash = ObjectCache::getMainStashInstance();
@@ -583,9 +585,9 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $filter
-	 * @param $time
-	 * @param $conds
+	 * @param int $filter
+	 * @param float $time
+	 * @param int $conds
 	 */
 	public static function recordProfilingResult( $filter, $time, $conds ) {
 		// Defer updates to avoid massive (~1 second) edit time increases
@@ -612,7 +614,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $filter
+	 * @param string $filter
 	 * @return array
 	 */
 	public static function getFilterProfile( $filter ) {
@@ -641,7 +643,7 @@ class AbuseFilter {
 	/**
 	 * Utility function to decode global-$index to $index. Returns false if not global
 	 *
-	 * @param $filter string
+	 * @param string $filter
 	 *
 	 * @return string|bool
 	 */
@@ -654,8 +656,8 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $filters array
-	 * @return array
+	 * @param string[] $filters
+	 * @return array[]
 	 */
 	public static function getConsequencesForFilters( $filters ) {
 		$globalFilters = [];
@@ -690,10 +692,10 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $dbr DatabaseBase
-	 * @param $filters array
-	 * @param $prefix string
-	 * @return array
+	 * @param DatabaseBase $dbr
+	 * @param string[] $filters
+	 * @param string $prefix
+	 * @return array[]
 	 */
 	public static function loadConsequencesFromDB( $dbr, $filters, $prefix = '' ) {
 		$actionsByFilter = [];
@@ -734,12 +736,12 @@ class AbuseFilter {
 	/**
 	 * Executes a list of actions.
 	 *
-	 * @param $filters array
-	 * @param $title Title
-	 * @param $vars AbuseFilterVariableHolder
+	 * @param string[] $filters
+	 * @param Title $title
+	 * @param AbuseFilterVariableHolder $vars
 	 * @return Status returns the operation's status. $status->isOK() will return true if
 	 *         there were no actions taken, false otherwise. $status->getValue() will return
-	 *         an array listing the actions taken. $status-getErrors(), etc, will provide
+	 *         an array listing the actions taken. $status->getErrors() etc. will provide
 	 *         the errors and warnings to be shown to the user to explain the actions.
 	 */
 	public static function executeFilterActions( $filters, $title, $vars ) {
@@ -866,8 +868,8 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $vars AbuseFilterVariableHolder
-	 * @param $title Title
+	 * @param AbuseFilterVariableHolder $vars
+	 * @param Title $title
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @param User $user The user performing the action; defaults to $wgUser
 	 * @param string $mode Use 'execute' to run filters and log or 'stash' to only cache matches
@@ -1045,10 +1047,10 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $actions_taken
-	 * @param $log_template
-	 * @param $action
-	 * @param $vars AbuseFilterVariableHolder
+	 * @param array[] $actions_taken
+	 * @param array $log_template
+	 * @param string $action
+	 * @param AbuseFilterVariableHolder $vars
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @return mixed
 	 */
@@ -1206,10 +1208,10 @@ class AbuseFilter {
 	 * Store a var dump to External Storage or the text table
 	 * Some of this code is stolen from Revision::insertOn and friends
 	 *
-	 * @param $vars AbuseFilterVariableHolder
-	 * @param $global bool
+	 * @param AbuseFilterVariableHolder $vars
+	 * @param bool $global
 	 *
-	 * @return int
+	 * @return int|null
 	 */
 	public static function storeVarDump( $vars, $global = false ) {
 		global $wgCompressRevisions;
@@ -1327,12 +1329,12 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $action string
-	 * @param $parameters array
-	 * @param $title Title
-	 * @param $vars AbuseFilterVariableHolder
-	 * @param $rule_desc
-	 * @param $rule_number int|string
+	 * @param string $action
+	 * @param array $parameters
+	 * @param Title $title
+	 * @param AbuseFilterVariableHolder $vars
+	 * @param string $rule_desc
+	 * @param int|string $rule_number
 	 *
 	 * @return array|null a message describing the action that was taken,
 	 *         or null if no action was taken. The message is given as an array
@@ -1568,10 +1570,10 @@ class AbuseFilter {
 	/**
 	 * @param $throttleId
 	 * @param $types
-	 * @param $title
-	 * @param $rateCount
-	 * @param $ratePeriod
-	 * @param $global bool
+	 * @param Title $title
+	 * @param string $rateCount
+	 * @param string $ratePeriod
+	 * @param bool $global
 	 * @return bool
 	 */
 	public static function isThrottled( $throttleId, $types, $title, $rateCount,
@@ -1605,8 +1607,8 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $type
-	 * @param $title Title
+	 * @param string $type
+	 * @param Title $title
 	 * @return int|string
 	 */
 	public static function throttleIdentifier( $type, $title ) {
@@ -1645,10 +1647,10 @@ class AbuseFilter {
 
 	/**
 	 * @param $throttleId
-	 * @param $type
-	 * @param $title Title
-	 * @param $global bool
-	 * @return String
+	 * @param string $type
+	 * @param Title $title
+	 * @param bool $global
+	 * @return string
 	 */
 	public static function throttleKey( $throttleId, $type, $title, $global = false ) {
 		$types = explode( ',', $type );
@@ -1676,7 +1678,7 @@ class AbuseFilter {
 
 	/**
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
-	 * @return String
+	 * @return string
 	 */
 	public static function getGlobalRulesKey( $group ) {
 		global $wgAbuseFilterIsCentral, $wgAbuseFilterCentralDB;
@@ -1695,7 +1697,7 @@ class AbuseFilter {
 
 	/**
 	 * @param User $user
-	 * @return String
+	 * @return string
 	 */
 	public static function autoPromoteBlockKey( $user ) {
 		return wfMemcKey( 'abusefilter', 'block-autopromote', $user->getId() );
@@ -1703,7 +1705,7 @@ class AbuseFilter {
 
 	/**
 	 * Update statistics, and disable filters which are over-blocking.
-	 * @param $filters
+	 * @param bool[] $filters
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 */
 	public static function recordStats( $filters, $group = 'default' ) {
@@ -1745,8 +1747,8 @@ class AbuseFilter {
 
 	/**
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
-	 * @param $filters
-	 * @param $total
+	 * @param string[] $filters
+	 * @param int $total
 	 */
 	public static function checkEmergencyDisable( $group, $filters, $total ) {
 		global $wgAbuseFilterEmergencyDisableThreshold, $wgAbuseFilterEmergencyDisableCount,
@@ -1811,23 +1813,23 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @return String
+	 * @return string
 	 */
 	public static function filterLimitReachedKey() {
 		return wfMemcKey( 'abusefilter', 'stats', 'overflow' );
 	}
 
 	/**
-	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
-	 * @return String
+	 * @param string|null $group The filter's group (as defined in $wgAbuseFilterValidGroups)
+	 * @return string
 	 */
 	public static function filterUsedKey( $group = null ) {
 		return wfMemcKey( 'abusefilter', 'stats', 'total', $group );
 	}
 
 	/**
-	 * @param $filter
-	 * @return String
+	 * @param string|null $filter
+	 * @return string
 	 */
 	public static function filterMatchesKey( $filter = null ) {
 		return wfMemcKey( 'abusefilter', 'stats', 'matches', $filter );
@@ -2026,7 +2028,7 @@ class AbuseFilter {
 
 	/**
 	 * @param string $action
-	 * @return String
+	 * @return string
 	 */
 	static function getActionDisplay( $action ) {
 		// Give grep a chance to find the usages:
@@ -2154,7 +2156,7 @@ class AbuseFilter {
 
 	/**
 	 * @param Title $title
-	 * @param null|Page $page
+	 * @param Page|null $page
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function getEditVars( $title, Page $page = null ) {
@@ -2233,7 +2235,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param AbuseFilterVariableHolder|array $vars
 	 * @param IContextSource $context
 	 * @return string
 	 */
@@ -2331,9 +2333,9 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $action
-	 * @param $parameters
-	 * @return String
+	 * @param string $action
+	 * @param string[] $parameters
+	 * @return string
 	 */
 	static function formatAction( $action, $parameters ) {
 		/** @var $wgLang Language */
@@ -2350,7 +2352,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $value array
+	 * @param string $value
 	 * @return string
 	 */
 	static function formatFlags( $value ) {
@@ -2366,8 +2368,8 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $filterID
-	 * @return bool|mixed|string
+	 * @param string $filterID
+	 * @return string
 	 */
 	static function getGlobalFilterDescription( $filterID ) {
 		global $wgAbuseFilterCentralDB;
@@ -2397,7 +2399,7 @@ class AbuseFilter {
 	 * Gives either the user-specified name for a group,
 	 * or spits the input back out
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
-	 * @return String A name for that filter group, or the input.
+	 * @return string A name for that filter group, or the input.
 	 */
 	static function nameGroup( $group ) {
 		// Give grep a chance to find the usages: abusefilter-group-default
@@ -2461,7 +2463,7 @@ class AbuseFilter {
 		}
 
 		if ( is_string( $text ) ) {
-			// bug 20310
+			// T22310
 			// XXX: Is this really needed? Should we rather apply PST?
 			$text = str_replace( "\r\n", "\n", $text );
 		} else {
@@ -2475,7 +2477,7 @@ class AbuseFilter {
 	 * Get the history ID of the first change to a given filter
 	 *
 	 * @param int $filterId Filter id
-	 * @return int|bool
+	 * @return int
 	 */
 	public static function getFirstFilterChange( $filterID ) {
 		static $firstChanges = [];

@@ -318,6 +318,14 @@ class AbuseFilterHooks {
 		return true;
 	}
 
+	/**
+	 * @param Title $oldTitle
+	 * @param Title $newTitle
+	 * @param User $user
+	 * @param string $reason
+	 * @param Status $status
+	 * @return bool
+	 */
 	public static function onMovePageCheckPermissions( Title $oldTitle, Title $newTitle,
 		User $user, $reason, Status $status
 	) {
@@ -532,7 +540,7 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param array $tags
+	 * @param string[] $tags
 	 * @return bool
 	 */
 	public static function onListDefinedTags( array &$tags ) {
@@ -540,7 +548,7 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param array $tags
+	 * @param string[] $tags
 	 * @return bool
 	 */
 	public static function onChangeTagsListActive( array &$tags ) {
@@ -548,7 +556,7 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param DatabaseUpdater $updater
+	 * @param DatabaseUpdater|null $updater
 	 * @throws MWException
 	 * @return bool
 	 */
@@ -661,7 +669,7 @@ class AbuseFilterHooks {
 
 	/**
 	 * Updater callback to create the AbuseFilter user after the user tables have been updated.
-	 * @param $updater DatabaseUpdater
+	 * @param DatabaseUpdater $updater
 	 */
 	public static function createAbuseFilterUser( $updater ) {
 		$username = wfMessage( 'abusefilter-blocker' )->inContentLanguage()->text();
