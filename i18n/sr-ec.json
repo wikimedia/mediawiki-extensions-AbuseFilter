@@ -80,7 +80,7 @@
 	"abusefilter-log-hide-forbidden": "Немате дозволу да сакривате уносе у извештају злоупотребе.",
 	"abusefilter-logentry-suppress": "сакриј „[[$1]]“",
 	"abusefilter-logentry-unsuppress": "откри „[[$1]]“",
-	"logentry-abusefilter-hit": "$1 је активирао $4, изводећи радњу „$5“ на страници $3. Предузете радње: $6 ($7)",
+	"logentry-abusefilter-hit": "$1 је {{GENDER:$2|активирао|активирала}} $4, изводећи радњу „$5“ на страници $3. Предузете радње: $6 ($7)",
 	"abusefilter-management": "Управљање филтером против злоупотребе",
 	"abusefilter-list": "Сви филтери",
 	"abusefilter-list-id": "ID филтера",

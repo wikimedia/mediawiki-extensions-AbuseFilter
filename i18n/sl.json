@@ -77,7 +77,7 @@
 	"abusefilter-log-hide-forbidden": "Nimate dovoljenja za skrivanje dnevniških vnosov zlorab.",
 	"abusefilter-logentry-suppress": "je skril(-a) »[[$1]]«",
 	"abusefilter-logentry-unsuppress": "je prikazal(-a) »[[$1]]«",
-	"logentry-abusefilter-hit": "$1 je sprožil(-a) $4 z dejanjem »$5« na $3. Ukrepi: $6 ($7)",
+	"logentry-abusefilter-hit": "$1 je {{GENDER:$2|sprožil|sprožila|sprožil(-a)}} $4 z dejanjem »$5« na $3. Ukrepi: $6 ($7)",
 	"abusefilter-management": "Upravljanje filtrov zlorab",
 	"abusefilter-list": "Vsi filtri",
 	"abusefilter-list-id": "ID filtra",

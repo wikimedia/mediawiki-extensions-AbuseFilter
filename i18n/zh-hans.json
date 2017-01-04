@@ -116,7 +116,7 @@
 	"abusefilter-log-hide-forbidden": "您没有权限去隐藏此滥用记录条目。",
 	"abusefilter-logentry-suppress": "隐藏“[[$1]]”",
 	"abusefilter-logentry-unsuppress": "取消隐藏“[[$1]]”",
-	"logentry-abusefilter-hit": "$1在$3执行操作“$5”时触发了$4。采取的行动：$6（$7）",
+	"logentry-abusefilter-hit": "$1在$3{{GENDER:$2|执行}}操作“$5”时{{GENDER:$2|触发}}了$4。采取的行动：$6（$7）",
 	"abusefilter-management": "滥用过滤器管理",
 	"abusefilter-list": "所有过滤器",
 	"abusefilter-list-id": "过滤器ID",

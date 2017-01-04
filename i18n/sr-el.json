@@ -79,7 +79,7 @@
 	"abusefilter-log-hide-forbidden": "Nemate dozvolu da sakrivate unose u izveštaju zloupotrebe.",
 	"abusefilter-logentry-suppress": "sakrij „[[$1]]“",
 	"abusefilter-logentry-unsuppress": "otkri „[[$1]]“",
-	"logentry-abusefilter-hit": "$1 je aktivirao $4, izvodeći radnju „$5“ na stranici $3. Preduzete radnje: $6 ($7)",
+	"logentry-abusefilter-hit": "$1 je {{GENDER:$2|aktivirao|aktivirala}} $4, izvodeći radnju „$5“ na stranici $3. Preduzete radnje: $6 ($7)",
 	"abusefilter-management": "Upravljanje filterom protiv zloupotrebe",
 	"abusefilter-list": "Svi filteri",
 	"abusefilter-list-id": "ID filtera",

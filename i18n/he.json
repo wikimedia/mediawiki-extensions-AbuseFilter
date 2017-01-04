@@ -90,7 +90,7 @@
 	"abusefilter-log-hide-forbidden": "אין לך הרשאה להסתיר רשומות ביומן ההשחתות.",
 	"abusefilter-logentry-suppress": "\"[[$1]]\" הוסתר",
 	"abusefilter-logentry-unsuppress": "ההסתרה של \"[[$1]]\" בוטלה",
-	"logentry-abusefilter-hit": "$1 הפעיל את $4 כשביצע את הפעולה \"$5\" בדף $3. הפעולות שננקטו: $6 ($7)",
+	"logentry-abusefilter-hit": "$1 {{GENDER:$2|הפעיל|הפעילה}} את $4 {{GENDER:$2|כשביצע|כשביצעה}} את הפעולה \"$5\" בדף $3. הפעולות שננקטו: $6 ($7)",
 	"abusefilter-management": "ניהול מסנני ההשחתות",
 	"abusefilter-list": "כל המסננים",
 	"abusefilter-list-id": "מספר המסנן",

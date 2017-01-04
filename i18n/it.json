@@ -94,7 +94,7 @@
 	"abusefilter-log-hide-forbidden": "Non si dispone dei permessi necessari per nascondere le voci del registro abusi.",
 	"abusefilter-logentry-suppress": "nascosto \"[[$1]]\"",
 	"abusefilter-logentry-unsuppress": "mostrato \"[[$1]]\"",
-	"logentry-abusefilter-hit": "$1 ha attivato $4, eseguendo l'azione \"$5\" su $3. Azioni intraprese: $6 ($7)",
+	"logentry-abusefilter-hit": "$1 {{GENDER:$2|ha attivato}} $4, {{GENDER:$2|eseguendo}} l'azione \"$5\" su $3. Azioni intraprese: $6 ($7)",
 	"abusefilter-management": "Gestione del filtro anti abusi",
 	"abusefilter-list": "Tutti i filtri",
 	"abusefilter-list-id": "ID filtro",

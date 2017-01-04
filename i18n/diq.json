@@ -10,7 +10,8 @@
 			"Matma Rex",
 			"Kumkumuk",
 			"1917 Ekim Devrimi",
-			"Gırd"
+			"Gırd",
+			"Gambollar"
 		]
 	},
 	"abusefilter-desc": "Vurnayışa rê terzê otomatik vınakari dezge keno",
@@ -56,9 +57,9 @@
 	"abusefilter-log-search-title": "Sername:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Cı geyre",
-	"abusefilter-log-entry": "$1: $2 filtraya nrngan akerd, $4 de {{GENDER:$8|hereketê}} \"$3\"i kerd.\nHereket: $5;\nŞınasiya filtra: $6",
-	"abusefilter-log-entry-withdiff": "$1: $2 avrêca nenga akerda, ser $4 de {{GENDER:$8|hereketê}} \"$3\"i kerd.\nHereket: $5;\nŞılasnayışa avrê ci: $6($7)",
-	"abusefilter-log-detailedentry-meta": "$1: $2 kerd $3, ser $5 de {{GENDER:$9|hereketê}} \"$4\"i kerd.\nHereket: $6;\nŞınasiya parzumi: $7 ($8)",
+	"abusefilter-log-entry": "$1: $2 filtraya nengan akerd, $4 de {{GENDER:$8|hereketê}} \"$3\"i kerd.\nHereket: $5;\nŞınasiya filtra: $6",
+	"abusefilter-log-entry-withdiff": "$1: $2 avrêca nenga akerda, ser $4 de {{GENDER:$8|hereketê}} \"$3\"i {{GENDER:$8|kerd ser}} .\nHereket: $5;\nŞılasnayışa avrêci: $6($7)",
+	"abusefilter-log-detailedentry-meta": "$1: $2 kerd $3, ser $5 de {{GENDER:$9|hereketê}} \"$4\"i {{GENDER:$9|kerd ser }} .\nHereket: $6;\nŞınasiya parzumi: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "parzûno global $1",
 	"abusefilter-log-detailedentry-local": "filitreyê $1î",
 	"abusefilter-log-detailslink": "teferruati",
@@ -87,7 +88,7 @@
 	"abusefilter-log-hide-forbidden": "Tu ra destur cini ke logê xirabi bikefilne.",
 	"abusefilter-logentry-suppress": "\"[[$1]]\" nımneya",
 	"abusefilter-logentry-unsuppress": "Nımnayışê \"[[$1]]\" hewadeya",
-	"logentry-abusefilter-hit": "Sebebê $1'i $4 o, \"$5\" kerdo $3 ser. verkewtışê ke gêriyayê: $6 ($7)",
+	"logentry-abusefilter-hit": "Sebebê $1'i $4 {{GENDER:$2|bı}} , \"$5\" kerdo $3 {{GENDER:$2|ser}} . verkewtışê ke gêriyayê: $6 ($7)",
 	"abusefilter-management": "idarayê filitreyê abuseyî",
 	"abusefilter-list": "Parzûni pêro",
 	"abusefilter-list-id": "IDyê Filitreyî",

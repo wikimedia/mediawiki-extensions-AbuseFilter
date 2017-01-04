@@ -102,7 +102,7 @@
 	"abusefilter-log-hide-forbidden": "Du hast nicht die Berechtigung, die Einträge des Missbrauchsfilter-Logbuchs auszublenden.",
 	"abusefilter-logentry-suppress": "hat „[[$1]]“ verborgen",
 	"abusefilter-logentry-unsuppress": "hat „[[$1]]“ sichtbar gemacht",
-	"logentry-abusefilter-hit": "$1 löste beim Ausführen der Aktion „$5“ auf $3 den Filter $4 aus. Auswirkung: $6 ($7)",
+	"logentry-abusefilter-hit": "$1 {{GENDER:$2|löste}} beim Ausführen der Aktion „$5“ auf $3 den Filter $4 aus. Auswirkung: $6 ($7)",
 	"abusefilter-management": "Missbrauchsfilter-Verwaltung",
 	"abusefilter-list": "Alle Filter",
 	"abusefilter-list-id": "Filterkennung",

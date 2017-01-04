@@ -79,7 +79,7 @@
 	"abusefilter-log-hide-forbidden": "Tu non ge tène 'u permesse de scunnere le vôsce de l'achivije de le abbuse.",
 	"abusefilter-logentry-suppress": "scunne \"[[$1]]\"",
 	"abusefilter-logentry-unsuppress": "fa vedè \"[[$1]]\"",
-	"logentry-abusefilter-hit": "$1 innescate $4, eseguenne l'azione \"$5\" sus a $3. Aziune pigghiate: $6 ($7)",
+	"logentry-abusefilter-hit": "$1 {{GENDER:$2|innescate}} $4, {{GENDER:$2|eseguenne}} l'azione \"$5\" sus a $3. Aziune pigghiate: $6 ($7)",
 	"abusefilter-management": "Gestione d'u filtre de le abbuse",
 	"abusefilter-list": "Tutte le filtre",
 	"abusefilter-list-id": "ID d'u filtre",
