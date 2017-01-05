@@ -260,6 +260,8 @@
 	"abusefilter-edit-builder-vars-diff": "Unified diff van wijzigingen in bewerking",
 	"abusefilter-edit-builder-vars-newsize": "Nieuwe paginagrootte",
 	"abusefilter-edit-builder-vars-oldsize": "Oude paginagrootte",
+	"abusefilter-edit-builder-vars-old-content-model": "Oude inhoudsmodel",
+	"abusefilter-edit-builder-vars-new-content-model": "Nieuw inhoudsmodel",
 	"abusefilter-edit-builder-vars-removedlines": "Regels verwijderd in bijdrage",
 	"abusefilter-edit-builder-vars-summary": "Bewerkingssamenvatting",
 	"abusefilter-edit-builder-vars-article-id": "Pagina-ID",
