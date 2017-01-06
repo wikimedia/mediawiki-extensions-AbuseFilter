@@ -90,7 +90,7 @@
 	"abusefilter-log-hide-forbidden": "Nemáte oprávnění ke skrývání záznamů v protokolu zneužití.",
 	"abusefilter-logentry-suppress": "skryl „[[$1]]“",
 	"abusefilter-logentry-unsuppress": "odkryl „[[$1]]“",
-	"logentry-abusefilter-hit": "$1 spustil $4 při činnosti „$5“ na $3. Provedená opatření: $6 ($7)",
+	"logentry-abusefilter-hit": "$1 {{GENDER:$2|spustil|spustila|spustil(a)}} $4 při činnosti „$5“ na $3. Provedená opatření: $6 ($7)",
 	"abusefilter-management": "Správa filtrů zneužití",
 	"abusefilter-list": "Všechny filtry",
 	"abusefilter-list-id": "ID filtru",

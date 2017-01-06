@@ -47,7 +47,7 @@
 			"Fortega"
 		]
 	},
-	"abusefilter-desc": "Aplicar automáticamente heurísticas para ediciones",
+	"abusefilter-desc": "Aplica heurísticas automáticas a las ediciones",
 	"abusefilter": "Configuración del filtro antiabusos",
 	"abuselog": "Registro del filtro antiabusos",
 	"abusefilter-intro": "Te damos la bienvenida a la interfaz de administración del filtro antiabusos.\nEl filtro antiabusos es un mecanismo de software automatizado que aplica heurística a todas las acciones.\nEsta interfaz muestra una lista de filtros definidos, que pueden ser modificados.",

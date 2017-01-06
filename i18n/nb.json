@@ -92,7 +92,7 @@
 	"abusefilter-log-hide-forbidden": "Du har ikke rettigheter til å skjule\nmisbruksloggoppføringer.",
 	"abusefilter-logentry-suppress": "skjulte «[[$1]]»",
 	"abusefilter-logentry-unsuppress": "viste «[[$1]]»",
-	"logentry-abusefilter-hit": "$1 utløste $4 ved å utføre handlingen «$5» på $3. Handlinger tatt: $6 ($7)",
+	"logentry-abusefilter-hit": "$1 {{GENDER:$2|utløste}} $4 ved å utføre handlingen «$5» på $3. Handlinger tatt: $6 ($7)",
 	"abusefilter-management": "Behandling av redigeringsfilter",
 	"abusefilter-list": "Alle filtere",
 	"abusefilter-list-id": "Filter-ID",
