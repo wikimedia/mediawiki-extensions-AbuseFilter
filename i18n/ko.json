@@ -421,6 +421,8 @@
 	"apihelp-abusefiltercheckmatch-param-logid": "검사할 최근 편집 필터 로그 번호",
 	"apihelp-abusefilterchecksyntax-description": "편집 필터의 구문을 검사합니다.",
 	"apihelp-abusefilterchecksyntax-param-filter": "구문을 검사할 전체 필터 텍스트",
+	"apihelp-abusefilterchecksyntax-example-1": "유효한 필터의 문법 검사",
+	"apihelp-abusefilterchecksyntax-example-2": "유효하지 않은 필터의 문법 검사",
 	"apihelp-abusefilterevalexpression-description": "편집 필터의 식을 검사합니다.",
 	"apihelp-abusefilterevalexpression-param-expression": "검사할 표현식",
 	"apihelp-abusefilterevalexpression-example-1": "간단한 표현식 검사",
