@@ -185,7 +185,7 @@
 	"abusefilter-edit-revert": "Malfari agojn faritajn de ĉi tiu filtrilo",
 	"abusefilter-edit-tools": "Iloj:",
 	"abusefilter-edit-test-link": "Testi ĉi tiun filtrilon kontraŭ lastatempaj redaktoj",
-	"abusefilter-edit-export": "Eksporti ĉi tiun filtrilon al alia vikio",
+	"abusefilter-edit-export": "Elporti ĉi tiun filtrilon al alia vikio",
 	"abusefilter-edit-syntaxok": "Neniuj sintaksaj eraroj troviĝis.",
 	"abusefilter-edit-syntaxerr": "Sintaksa eraro troviĝis: $1",
 	"abusefilter-edit-bad-tags": "Unu aŭ pliaj de la etikedoj kiun vi specifigis ne estas valida.\nEtikedoj devas esti mallonga, kaj ili ne devas enhavi specialajn signojn.",
