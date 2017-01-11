@@ -39,6 +39,7 @@
 	"action-abusefilter-modify-restricted": "modificar le filtros anti-abuso con actiones restringite",
 	"action-abusefilter-revert": "reverter tote le modificationes facite per un filtro anti-abuso specific",
 	"action-abusefilter-view-private": "vider filtros anti-abuso marcate como private",
+	"action-abusefilter-log-private": "vider registros de filtros anti-abuso marcate como private",
 	"abusefilter-log": "Registro del filtro anti-abuso",
 	"abusefilter-log-summary": "Iste registro monstra un lista de tote le actiones attrappate per le filtros anti-abuso.",
 	"abusefilter-log-search": "Cercar in le registro de abusos",
@@ -68,6 +69,7 @@
 	"abusefilter-log-hidden": "(entrata celate)",
 	"abusefilter-log-hidden-implicit": "(celate perque le version ha essite delite)",
 	"abusefilter-log-cannot-see-details": "Tu non ha le permission de vider le detalios de iste entrata.",
+	"abusefilter-log-nonexistent": "Non existe un entrata con le ID fornite.",
 	"abusefilter-log-details-hidden": "Tu non pote vider le detalios de iste entrata, proque illo es celate al vista del publico.",
 	"abusefilter-log-private-not-included": "Un o plure IDs de filtro specificate es private. Pois que tu non es autorisate a vider le detalios de filtros private, iste filtros non ha essite cercate.",
 	"abusefilter-log-hide-legend": "Celar entrata de registro",
@@ -437,5 +439,9 @@
 	"apihelp-query+abuselog-param-limit": "Le numero maxime de entratas a listar.",
 	"apihelp-query+abuselog-param-prop": "Qual proprietates obtener.",
 	"apihelp-query+abuselog-example-1": "Monstrar entratas recente de registro",
-	"apihelp-query+abuselog-example-2": "Monstrar entratas recente de registro pro [[API]]"
+	"apihelp-query+abuselog-example-2": "Monstrar entratas recente de registro pro [[API]]",
+	"apierror-abusefilter-canttest": "Tu non ha le permission de testar le filtros anti-abuso.",
+	"apierror-abusefilter-cantcheck": "Tu non ha le permission de verificar le syntaxe de filtros anti-abuso.",
+	"apierror-abusefilter-nosuchlogid": "Il non ha un entrata con ID $1 in le registro de abusos.",
+	"apierror-abusefilter-badsyntax": "Le filtro ha un syntaxe invalide."
 }
