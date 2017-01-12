@@ -199,7 +199,12 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				}
 			}
 			if ( $fld_filter ) {
-				$entry['filter'] = $row->af_public_comments;
+				$globalIndex = AbuseFilter::decodeGlobalName( $row->afl_filter );
+				if ( $globalIndex ) {
+					$entry['filter'] = AbuseFilter::getGlobalFilterDescription( $globalIndex );
+				} else {
+					$entry['filter'] = $row->af_public_comments;
+				}
 			}
 			if ( $fld_user ) {
 				$entry['user'] = $row->afl_user_text;
