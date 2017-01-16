@@ -5,6 +5,8 @@
 			"Аль-Гимравий"
 		]
 	},
+	"abusefilter-log-hide-reason": "ГӀилла:",
 	"abusefilter-list-edit": "Хисизабизе",
-	"abusefilter-edit-action-block": "ГІахьалчи яги IP-адрес блокалда лъезе"
+	"abusefilter-edit-action-block": "ГІахьалчи яги IP-адрес блокалда лъезе",
+	"abusefilter-revert-reasonfield": "ГІилла:"
 }
