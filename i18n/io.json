@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Malafaya"
+			"Malafaya",
+			"Robin van der Vliet"
 		]
 	},
-	"abusefilter-log-search-user": "Uzanto:",
+	"abusefilter-log-search-user": "Uzero:",
 	"abusefilter-log-search-title": "Titulo:",
 	"abusefilter-log-search-submit": "Serchez",
 	"abusefilter-log-noactions": "nula",
@@ -17,7 +18,7 @@
 	"abusefilter-new": "Krear nova filtrilo",
 	"abusefilter-list-options": "Selekti",
 	"abusefilter-list-options-deleted-only": "Montrar nur filtrili efacita",
-	"abusefilter-tools-reautoconfirm-user": "Uzanto:",
+	"abusefilter-tools-reautoconfirm-user": "Uzero:",
 	"abusefilter-edit-status-label": "Statistiko:",
 	"abusefilter-edit-new": "Nova filtrilo",
 	"abusefilter-edit-save": "Registragar filtrilo",
@@ -34,17 +35,17 @@
 	"abusefilter-history-foruser": "Chanji da $1",
 	"abusefilter-history-global": "Globala",
 	"abusefilter-history-timestamp": "Tempo",
-	"abusefilter-history-user": "Uzanto",
+	"abusefilter-history-user": "Uzero",
 	"abusefilter-history-comments": "Komenti",
 	"abusefilter-history-deleted": "Efacita",
 	"abusefilter-history-filterid": "Filtrilo",
-	"abusefilter-history-select-user": "Uzanto:",
+	"abusefilter-history-select-user": "Uzero:",
 	"abusefilter-history-diff": "Chanji",
 	"abusefilter-action-degroup": "Forigar ek grupi",
 	"abusefilter-revert-filter": "Filtrilo:",
 	"abusefilter-test-submit": "Probez",
-	"abusefilter-test-user": "Chanji per uzanto:",
-	"abusefilter-examine-user": "Uzanto:",
+	"abusefilter-test-user": "Chanji per uzero:",
+	"abusefilter-examine-user": "Uzero:",
 	"abusefilter-examine-title": "titulo di pagino:",
 	"abusefilter-examine-submit": "Serchez",
 	"abusefilter-examine-test-button": "Probez filtrilo",
