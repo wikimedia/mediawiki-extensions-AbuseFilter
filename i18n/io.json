@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Malafaya",
-			"Robin van der Vliet"
+			"Robin van der Vliet",
+			"Lakaoso"
 		]
 	},
 	"abusefilter-log-search-user": "Uzero:",
@@ -49,5 +50,5 @@
 	"abusefilter-examine-title": "titulo di pagino:",
 	"abusefilter-examine-submit": "Serchez",
 	"abusefilter-examine-test-button": "Probez filtrilo",
-	"abusefilter-diff-version": "Versiono ye $1 da $2"
+	"abusefilter-diff-version": "Versiono ye $1 {{GENDER:$3|da}} $2"
 }
