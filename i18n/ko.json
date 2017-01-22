@@ -307,7 +307,7 @@
 	"abusefilter-edit-builder-vars-file-sha1": "파일 내용의 SHA1 해시",
 	"abusefilter-edit-builder-vars-file-size": "파일 크기 (바이트 단위)",
 	"abusefilter-filter-log": "최근 필터의 바뀜",
-	"abusefilter-history": "부정 행위 방지 필터 #$1에 대한 편집 역사",
+	"abusefilter-history": "편집 필터 #$1의 편집 역사",
 	"abusefilter-history-foruser": "$1의 편집",
 	"abusefilter-history-hidden": "숨겨짐",
 	"abusefilter-history-enabled": "활성화됨",

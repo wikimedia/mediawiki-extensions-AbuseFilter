@@ -11,7 +11,8 @@
 			"Yekrats",
 			"Matma Rex",
 			"Robin van der Vliet",
-			"Rafaneta"
+			"Rafaneta",
+			"Psychoslave"
 		]
 	},
 	"abusefilter-desc": "Aplikas aŭtomatan heŭristikon al redaktoj.",
@@ -394,7 +395,7 @@
 	"abusefilter-diff-backhistory": "Reiri al filtrila historio",
 	"abusefilter-diff-prev": "Pli frua ŝanĝo",
 	"abusefilter-diff-next": "Pli malfrua ŝanĝo",
-	"abusefilter-import-intro": "Vi povas uzi ĉi tiun interfacon por importi filtrilojn de aliaj vikioj.\nEn la fonta vikio, klaku \"{{int:abusefilter-edit-export}}\" sub \"{{int:abusefilter-edit-tools}}\" en la redakta interfaco.\nKopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku \"{{int:abusefilter-import-submit}}\".",
+	"abusefilter-import-intro": "Vi povas uzi ĉi tiun interfacon por enporti filtrilojn de aliaj vikioj.\nEn la fonta vikio, klaku \"{{int:abusefilter-edit-export}}\" sub \"{{int:abusefilter-edit-tools}}\" en la redakta interfaco.\nKopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "Importi datenojn",
 	"abusefilter-group-default": "Defaŭlta"
 }
