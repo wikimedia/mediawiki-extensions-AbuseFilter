@@ -439,5 +439,8 @@
 	"apihelp-query+abuselog-param-limit": "Máximo número de entradas a listar.",
 	"apihelp-query+abuselog-param-prop": "Que propiedades obter.",
 	"apihelp-query+abuselog-example-1": "Mostrar entradas recentes do rexistro",
-	"apihelp-query+abuselog-example-2": "Mostrar entradas recentes do rexistro para [[API]]"
+	"apihelp-query+abuselog-example-2": "Mostrar entradas recentes do rexistro para [[API]]",
+	"apierror-abusefilter-canttest": "Non tes permiso para probar filtros de abusos.",
+	"apierror-abusefilter-cantcheck": "Non tes permiso para comprobar a sintaxe de filtros de abusos.",
+	"apierror-abusefilter-badsyntax": "O filtro ten unha sintaxe non válida."
 }
