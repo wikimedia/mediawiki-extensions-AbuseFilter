@@ -20,7 +20,8 @@
 			"JaapDeKleine",
 			"Matma Rex",
 			"Jeleniccz",
-			"Mainframe98"
+			"Mainframe98",
+			"QZanden"
 		]
 	},
 	"abusefilter-desc": "Voert automatisch heuristische analyse uit op bewerkingen",
@@ -57,6 +58,7 @@
 	"action-abusefilter-modify-restricted": "filters met beperkte handelingen te wijzigen",
 	"action-abusefilter-revert": "alle wijzigingen door een bepaald filter terug te draaien",
 	"action-abusefilter-view-private": "als beperkt zichtbaar gemarkeerde filters te bekijken",
+	"action-abusefilter-log-private": "Logboeken weergeven van misbruikfilters die zijn gemarkeerd als privé.",
 	"abusefilter-log": "Filterlogboek",
 	"abusefilter-log-summary": "Dit logboek geeft een lijst weer van handelingen die opgevangen zijn door filters.",
 	"abusefilter-log-search": "Het filterlogboek doorzoeken",
