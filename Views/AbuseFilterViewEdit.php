@@ -315,7 +315,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$out->addSubtitle( $this->msg(
 			$filter === 'new' ? 'abusefilter-edit-subtitle-new' : 'abusefilter-edit-subtitle',
 			$this->getLanguage()->formatNum( $filter ), $history_id
-		)->text() );
+		)->parse() );
 
 		// Hide hidden filters.
 		if ( ( ( isset( $row->af_hidden ) && $row->af_hidden ) ||
@@ -402,7 +402,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				} else {
 					$fields['abusefilter-edit-status-label'] = $this->msg( 'abusefilter-edit-status' )
 						->numParams( $total, $matches_count, $matches_percent )
-						->escaped();
+						->parse();
 				}
 			}
 		}
@@ -478,7 +478,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					'p', null,
 					$this->linkRenderer->makeLink(
 						$this->getTitle( "revert/$filter" ),
-						$this->msg( 'abusefilter-edit-revert' )->text()
+						new HtmlArmor( $this->msg( 'abusefilter-edit-revert' )->parse() )
 					)
 				);
 			}
