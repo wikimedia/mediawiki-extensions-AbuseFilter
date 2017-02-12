@@ -11,7 +11,8 @@
 			"Kumkumuk",
 			"1917 Ekim Devrimi",
 			"Gırd",
-			"Gambollar"
+			"Gambollar",
+			"Asmen"
 		]
 	},
 	"abusefilter-desc": "Vurnayışa rê terzê otomatik vınakari dezge keno",
@@ -419,13 +420,13 @@
 	"apihelp-abusefiltercheckmatch-description": "Ratena Fiktrandê nengan dı têversanayış esto se, filtrey nengan de vurnayış vurnayışi kontrol kerê \n\nVurnayoğê RCID ya na LOGID eger ke icab krno se karêno",
 	"apihelp-abusefiltercheckmatch-param-filter": "Ful filtreya metini çımraravyarnayışi ke",
 	"apihelp-abusefiltercheckmatch-param-vars": "Vurnayerê kod kerdena JSON fına do test bo.",
-	"apihelp-abusefiltercheckmatch-param-rcid": "Vurnayışê peyênê ID fına çımra ravyarn",
-	"apihelp-abusefiltercheckmatch-param-logid": "Filtrey nenganê ID fına çımra ravyarn",
+	"apihelp-abusefiltercheckmatch-param-rcid": "Têverşanaene rê vırnayışê IDy'o peyên",
+	"apihelp-abusefiltercheckmatch-param-logid": "Têverşanaene rê IDy qeydê filtrey heqareti",
 	"apihelp-abusefiltercheckmatch-example-1": "Vurnayışê peyêni kamiya basit filtre de 15 ra vêşi se test ke",
 	"apihelp-abusefilterchecksyntax-description": "Filtreya nengan parzuna syntaxi çımraravyarn",
 	"apihelp-abusefilterchecksyntax-param-filter": "Ful filtreya metini çımraravyarn syntaxi",
 	"apihelp-abusefilterchecksyntax-example-1": "Filtreya ravêrdi syntaxi çım ra ravyarn",
-	"apihelp-abusefilterchecksyntax-example-2": "Nêravêrde filtri syntaxi çımra ravyarn",
+	"apihelp-abusefilterchecksyntax-example-2": "Rêzê yew filtreyo ke muteber niyo, çım ra raviyarne",
 	"apihelp-abusefilterevalexpression-description": "Erca ifadeya Filtreya nengan",
 	"apihelp-abusefilterevalexpression-param-expression": "Erceya ifadeyan",
 	"apihelp-abusefilterevalexpression-example-1": "Erca gasit ifadeyan",
