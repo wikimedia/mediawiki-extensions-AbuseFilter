@@ -150,7 +150,6 @@
 	"abusefilter-edit-consequences": "Actions to take when matched",
 	"abusefilter-edit-action-warn": "Trigger these actions after giving the user a warning",
 	"abusefilter-edit-action-disallow": "Prevent the user from performing the action in question",
-	"abusefilter-edit-action-flag": "Flag the edit in the abuse log",
 	"abusefilter-edit-action-blockautopromote": "Revoke the user's autoconfirmed status",
 	"abusefilter-edit-action-degroup": "Remove the user from all privileged groups",
 	"abusefilter-edit-action-block": "Block the user and/or IP address from editing",

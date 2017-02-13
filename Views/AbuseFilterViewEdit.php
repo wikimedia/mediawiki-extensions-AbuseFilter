@@ -651,14 +651,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						Xml::buildForm( $throttleFields )
 					);
 				return $throttleSettings;
-			case 'flag':
-				$checkbox = Xml::checkLabel(
-					$this->msg( 'abusefilter-edit-action-flag' )->text(),
-					'wpFilterActionFlag',
-					"mw-abusefilter-action-checkbox-$action",
-					true,
-					array( 'disabled' => '1', 'class' => 'mw-abusefilter-action-checkbox' ) );
-				return Xml::tags( 'p', null, $checkbox );
 			case 'warn':
 				global $wgAbuseFilterDefaultWarningMessage;
 				$output = '';
@@ -748,7 +740,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			default:
 				// Give grep a chance to find the usages:
 				// abusefilter-edit-action-warn, abusefilter-edit-action-disallow
-				// abusefilter-edit-action-flag, abusefilter-edit-action-blockautopromote
+				// abusefilter-edit-action-blockautopromote
 				// abusefilter-edit-action-degroup, abusefilter-edit-action-block
 				// abusefilter-edit-action-throttle, abusefilter-edit-action-rangeblock
 				// abusefilter-edit-action-tag
