@@ -19,7 +19,8 @@
 			"Zache",
 			"ZeiP",
 			"Matma Rex",
-			"01miki10"
+			"01miki10",
+			"Pyscowicz"
 		]
 	},
 	"abusefilter-desc": "Mahdollistaa muokkauksien suodattamisen automaattisella heuristiikalla.",
@@ -429,5 +430,6 @@
 	"apihelp-query+abusefilters-description": "Näytä väärinkäyttösuodatinten yksityiskohdat.",
 	"apihelp-query+abusefilters-example-1": "Luetteloi käytössä olevat julkiset suodattimet",
 	"apihelp-query+abusefilters-example-2": "Näytä joitain tietoja suodattimista",
-	"apihelp-query+abuselog-example-1": "Näytä viimeisimmät lokimerkinnät"
+	"apihelp-query+abuselog-example-1": "Näytä viimeisimmät lokimerkinnät",
+	"apierror-abusefilter-badsyntax": "Suodattimella on virheellinen syntaksi."
 }
