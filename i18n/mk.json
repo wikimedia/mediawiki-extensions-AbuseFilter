@@ -3,7 +3,8 @@
 		"authors": [
 			"Bjankuloski06",
 			"Brest",
-			"Matma Rex"
+			"Matma Rex",
+			"Srdjan m"
 		]
 	},
 	"abusefilter-desc": "Извршува автоматски хевристички филтрирања во уредувањата",
@@ -77,7 +78,7 @@
 	"abusefilter-log-hide-id": "ID на записот:",
 	"abusefilter-log-hide-hidden": "Скриј го записов за јавноста",
 	"abusefilter-log-hide-reason": "Причина:",
-	"abusefilter-log-hide-forbidden": "Немате дозвола да криете\nзаписи во дневникот на злоупотреби.",
+	"abusefilter-log-hide-forbidden": "Немате дозвола да криете записи во дневникот на злоупотреби.",
 	"abusefilter-logentry-suppress": "го притаи „[[$1]]“",
 	"abusefilter-logentry-unsuppress": "откриено „[[$1]]“",
 	"logentry-abusefilter-hit": "$1 го {{GENDER:$2|предизвика}} $4, {{GENDER:$2|извршувајќи}} го дејството „$5“ на $3. Извршени постапки: $6 ($7)",
