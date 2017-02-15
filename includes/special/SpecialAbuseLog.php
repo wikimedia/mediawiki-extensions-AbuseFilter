@@ -321,10 +321,12 @@ class SpecialAbuseLog extends SpecialPage {
 				$this->msg( 'colon-separator' )->inContentLanguage()->text() . $fields['reason'];
 		}
 
-		$logPage = new LogPage( 'suppress' );
 		$action = $fields['hidden'] ? 'hide-afl' : 'unhide-afl';
-
-		$logPage->addEntry( $action, $this->getPageTitle( $logid ), $reason );
+		$logEntry = new ManualLogEntry( 'suppress', $action );
+		$logEntry->setPerformer( $this->getUser() );
+		$logEntry->setTarget( $this->getPageTitle( $logid ) );
+		$logEntry->setComment( $reason );
+		$logEntry->insert();
 
 		$this->getOutput()->redirect( SpecialPage::getTitleFor( 'AbuseLog' )->getFullURL() );
 

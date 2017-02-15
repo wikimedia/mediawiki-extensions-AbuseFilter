@@ -18,7 +18,7 @@ class AbuseFilterHooks {
 	 */
 	public static function onRegistration() {
 		global $wgAbuseFilterAvailableActions, $wgAbuseFilterRestrictedActions,
-			$wgAuthManagerAutoConfig;
+			$wgAuthManagerAutoConfig, $wgActionFilteredLogs;
 
 		if ( isset( $wgAbuseFilterAvailableActions ) || isset( $wgAbuseFilterRestrictedActions ) ) {
 			wfWarn( '$wgAbuseFilterAvailableActions and $wgAbuseFilterRestrictedActions have been '
@@ -32,6 +32,12 @@ class AbuseFilterHooks {
 			// Run after normal preauth providers to keep the log cleaner
 			'sort' => 5,
 		];
+
+		$wgActionFilteredLogs['suppress'] = array_merge(
+			$wgActionFilteredLogs['suppress'],
+			// Message: log-action-filter-suppress-abuselog
+			[ 'abuselog' => [ 'hide-afl', 'unhide-afl' ] ]
+		);
 	}
 
 	/**

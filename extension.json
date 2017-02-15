@@ -67,15 +67,13 @@
 	"LogHeaders": {
 		"abusefilter": "abusefilter-log-header"
 	},
-	"LogActions": {
-		"suppress/hide-afl": "abusefilter-logentry-suppress",
-		"suppress/unhide-afl": "abusefilter-logentry-unsuppress"
-	},
 	"LogActionsHandlers": {
 		"abusefilter/hit": "AbuseLogHitFormatter",
 		"abusefilter/modify": "AbuseFilterModifyLogFormatter",
 		"abusefilter/create": "AbuseFilterModifyLogFormatter",
-		"abusefilterprivatedetails/access": "LogFormatter"
+		"abusefilterprivatedetails/access": "LogFormatter",
+		"suppress/hide-afl": "AbuseFilterSuppressLogFormatter",
+		"suppress/unhide-afl": "AbuseFilterSuppressLogFormatter"
 	},
 	"ActionFilteredLogs": {
 		"abusefilter": {
@@ -120,6 +118,7 @@
 		"SpecialAbuseFilter": "includes/special/SpecialAbuseFilter.php",
 		"AbuseLogHitFormatter": "includes/AbuseLogHitFormatter.php",
 		"AbuseFilterModifyLogFormatter": "includes/AbuseFilterModifyLogFormatter.php",
+		"AbuseFilterSuppressLogFormatter": "includes/AbuseFilterSuppressLogFormatter.php",
 		"AbuseFilterViewList": "includes/Views/AbuseFilterViewList.php",
 		"AbuseFilterPager": "includes/pagers/AbuseFilterPager.php",
 		"GlobalAbuseFilterPager": "includes/pagers/GlobalAbuseFilterPager.php",
