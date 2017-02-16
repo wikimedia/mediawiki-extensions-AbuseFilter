@@ -181,7 +181,7 @@
 	"abusefilter-edit-denied": "Ti nieşkeno detayanê ena filitre bivîne, çunkî ena filitre kamu ra nimniyayo.",
 	"abusefilter-edit-main": "Parametreyan filitre bike",
 	"abusefilter-edit-done-subtitle": "Vurnayîşî filitre bike",
-	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Timara to]] ra [[Special:AbuseFilter/$1|filtre da $3]] bıyo star",
+	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Vırnayışê şıma]] [[Special:AbuseFilter/$1|filtra $3]] rê ameyo seveknayış.",
 	"abusefilter-edit-badsyntax": "filtreya ke şıma nişane kerdo tede xetay sentaksi esta.\nwesikay arêdayoxi: <pre>$1</pre>",
 	"abusefilter-edit-restricted": "şıma nêeşkeni na filtre bıvurni çunke tede karo qedexebiyaye esto.",
 	"abusefilter-edit-viewhistory": "Tarixê ena filitre bivîne",
