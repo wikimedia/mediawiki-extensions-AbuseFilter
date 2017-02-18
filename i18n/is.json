@@ -3,7 +3,8 @@
 		"authors": [
 			"S.Örvarr.S",
 			"Snævar",
-			"Matma Rex"
+			"Matma Rex",
+			"Sveinn í Felli"
 		]
 	},
 	"abusefilter-desc": "Beitir sjálfvirkri brjóstvitsfræði á breytingar.",
@@ -145,7 +146,7 @@
 	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekúnda|sekúndur}}",
 	"abusefilter-edit-warn-message": "Kerfisskilaboð sem verða notuð til viðvörunar:",
 	"abusefilter-edit-warn-other": "Önnur skilaboð",
-	"abusefilter-edit-warn-other-label": "Nafn viðvörunar skilaboðanna:\n:''(í Meldingar nafnrýminu)''",
+	"abusefilter-edit-warn-other-label": "Nafn viðvörunarskilaboðanna:\n:''(í nafnrýminu Strengir)''",
 	"abusefilter-edit-warn-actions": "Aðgerðir:",
 	"abusefilter-edit-warn-preview": "Forskoða valin skilaboð",
 	"abusefilter-edit-warn-edit": "Stofna/Breyta völdum skilaboðum",
