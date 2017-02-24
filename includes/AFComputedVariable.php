@@ -153,9 +153,11 @@ class AFComputedVariable {
 			case 'diff':
 				$text1Var = $parameters['oldtext-var'];
 				$text2Var = $parameters['newtext-var'];
-				$text1 = $vars->getVar( $text1Var )->toString() . "\n";
-				$text2 = $vars->getVar( $text2Var )->toString() . "\n";
-				$result = wfDiff( $text1, $text2 );
+				$text1 = $vars->getVar( $text1Var )->toString();
+				$text2 = $vars->getVar( $text2Var )->toString();
+				$diffs = new Diff( explode( "\n", $text1 ), explode( "\n", $text2 ) );
+				$format = new UnifiedDiffFormatter();
+				$result = $format->format( $diffs );
 				break;
 			case 'diff-split':
 				$diff = $vars->getVar( $parameters['diff-var'] )->toString();
