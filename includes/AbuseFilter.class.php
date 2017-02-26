@@ -466,6 +466,7 @@ class AbuseFilter {
 	 */
 	public static function checkAllFilters( $vars, $group = 'default', Title $title = null ) {
 		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
+		global $wgAbuseFilterConditionLimit;
 
 		// Fetch from the database.
 		$filter_matched = [];
@@ -523,6 +524,15 @@ class AbuseFilter {
 				$filter_matched['global-' . $row->af_id] =
 					self::checkFilter( $row, $vars, $title, 'global-' );
 			}
+		}
+
+		if ( $title instanceof Title && self::$condCount > $wgAbuseFilterConditionLimit ) {
+			$actionID = implode( '-', [
+				$title->getPrefixedText(),
+				$vars->getVar( 'user_name' )->toString(),
+				$vars->getVar( 'action' )->toString()
+			] );
+			self::bufferTagsToSetByAction( [ $actionID => [ 'abusefilter-condition-limit' ] ] );
 		}
 
 		// Update statistics, and disable filters which are over-blocking.

@@ -432,6 +432,8 @@
 	"log-description-abusefilterprivatedetails": "This log shows a list of times when a user accessed the private details of an abuse log.",
 	"abusefilter-noreason": "Warning: To see the private details of this log, you must provide a reason.",
 	"abusefilter-log-ip-not-available": "Not Available",
+	"tag-abusefilter-condition-limit": "condition limit reached",
+	"tag-abusefilter-condition-limit-description": "Edits or other events that couldn't be checked by all active [[Special:AbuseFilter|abuse filters]] ([[mw:Extension:AbuseFilter/Conditions|help]]).",
 	"apihelp-abusefiltercheckmatch-description": "Check to see if an AbuseFilter matches a set of variables, editor logged AbuseFilter event.\n\nvars, rcid or logid is required however only one may be used.",
 	"apihelp-abusefiltercheckmatch-summary": "Check to see if an AbuseFilter matches a set of variables, editor logged AbuseFilter event.",
 	"apihelp-abusefiltercheckmatch-extended-description": "vars, rcid or logid is required however only one may be used.",
