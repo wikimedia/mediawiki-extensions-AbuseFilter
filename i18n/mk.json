@@ -384,7 +384,7 @@
 	"abusefilter-examine-syntaxerror": "Филтерот има неважечка синтакса",
 	"abusefilter-examine-notfound": "Побараната промена не е пронајдена.",
 	"abusefilter-examine-incompatible": "Промената која ја побаравте не е поддржана од Филтерот за злоупотреби",
-	"abusefilter-examine-noresults": "Нема пронајдено резултати за наведените параметри.",
+	"abusefilter-examine-noresults": "Нема пронајдено ставки за наведените параметри.",
 	"abusefilter-topnav": "'''Содржини на Филтерот за злоупотреби'''",
 	"abusefilter-topnav-home": "Почеток",
 	"abusefilter-topnav-test": "Групно испробување",
