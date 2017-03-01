@@ -199,7 +199,6 @@
 	"config": {
 		"@doc": "see AbuseFilter.php",
 		"AbuseFilterActions": {
-			"flag": true,
 			"throttle": true,
 			"warn": true,
 			"disallow": true,

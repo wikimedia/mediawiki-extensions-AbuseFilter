@@ -181,7 +181,6 @@
 	"abusefilter-edit-consequences": "Shown as the header of a section on the filter editing page, showing a list of checkboxes with different action names, and as the table header on the filter version differences page. Refers to a list of actions that will be triggered when an edit matches the filter.",
 	"abusefilter-edit-action-warn": "{{doc-abusefilter-action}}",
 	"abusefilter-edit-action-disallow": "{{doc-abusefilter-action}}",
-	"abusefilter-edit-action-flag": "{{doc-abusefilter-action}}",
 	"abusefilter-edit-action-blockautopromote": "{{doc-abusefilter-action}}",
 	"abusefilter-edit-action-degroup": "{{doc-abusefilter-action}}",
 	"abusefilter-edit-action-block": "{{doc-abusefilter-action}}",
