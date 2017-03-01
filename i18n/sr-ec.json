@@ -151,7 +151,6 @@
 	"abusefilter-edit-consequences": "Предузете радње при поклапању",
 	"abusefilter-edit-action-warn": "Покрени ове радње након што упозорите корисника",
 	"abusefilter-edit-action-disallow": "Спречи корисника да изврши дотичну радњу",
-	"abusefilter-edit-action-flag": "Означи измену у извештају злоупотребе",
 	"abusefilter-edit-action-blockautopromote": "Врати самопотврђени статус корисника",
 	"abusefilter-edit-action-degroup": "Уклони корисника са свих овлашћених група",
 	"abusefilter-edit-action-block": "Блокирај корисника / ИП адресу од уређивања",

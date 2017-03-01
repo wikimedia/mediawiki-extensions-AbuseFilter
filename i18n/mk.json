@@ -152,7 +152,6 @@
 	"abusefilter-edit-consequences": "Дејства што ќе се преземат при совпаѓањето",
 	"abusefilter-edit-action-warn": "Преземај ги овие мерки по предупредувањето на корисникот",
 	"abusefilter-edit-action-disallow": "Спречи г окорисникот да го изврши даденото дејство",
-	"abusefilter-edit-action-flag": "Означи го уредувањето во невникот на злоупотреби",
 	"abusefilter-edit-action-blockautopromote": "Одземи му го автопотврдениот статус на корисникот",
 	"abusefilter-edit-action-degroup": "Отстрани го корисникот од сите привилегирани групи",
 	"abusefilter-edit-action-block": "Блокирај го корисникот и/или IP-адресата од уредување",

@@ -80,7 +80,6 @@
 	"abusefilter-edit-global": "Sivana eran-tontolo",
 	"abusefilter-edit-rules": "Fepetra :",
 	"abusefilter-edit-action-disallow": "Hanakana ny mpikambana hanao ilay tao",
-	"abusefilter-edit-action-flag": "Hanamarika ilay fanovana ao amin'ny Abuse Filter",
 	"abusefilter-edit-action-blockautopromote": "Hanala ny sata « autoconfirmed » an'ilay mpikambana",
 	"abusefilter-edit-action-degroup": "Hanala ilay mpikambana ao amin'ny vondrona manan-tombontsoa",
 	"abusefilter-edit-action-block": "Hanakana ilay mpikambana sy/na adiresy IP hanoratra",
