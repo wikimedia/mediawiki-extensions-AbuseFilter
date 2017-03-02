@@ -903,7 +903,7 @@ class AbuseFilter {
 
 		// Get the stash key based on the relevant "input" variables
 		$cache = ObjectCache::getLocalClusterInstance();
-		$stashKey = self::getStashKey( $cache, $vars, $group );
+		$stashKey = self::getStashKey( $vars, $group );
 		$isForEdit = ( $vars->getVar( 'action' )->toString() === 'edit' );
 
 		$filter_matched = false;
@@ -1018,15 +1018,12 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param BagOStuff $cache
-	 * @param $vars AbuseFilterVariableHolder
+	 * @param AbuseFilterVariableHolder $vars
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 *
 	 * @return string
 	 */
-	private static function getStashKey(
-		BagOStuff $cache, AbuseFilterVariableHolder $vars, $group
-	) {
+	private static function getStashKey( AbuseFilterVariableHolder $vars, $group ) {
 		$inputVars = $vars->exportNonLazyVars();
 		// Exclude noisy fields that have superficial changes
 		unset( $inputVars['old_html'] );
