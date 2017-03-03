@@ -6,7 +6,8 @@
 			"Shinjiman",
 			"Waihorace",
 			"Wong128hk",
-			"Matma Rex"
+			"Matma Rex",
+			"Deryck Chan"
 		]
 	},
 	"abusefilter-desc": "應用自動行為到編輯",
@@ -21,7 +22,7 @@
 	"abusefilter-autopromote-blocked": "呢個動作已經自動認定咗做有害嘅，已經唔容許。\n除此之外，為咗保安理由，一啲開戶口嘅權限已經響你個戶口度拎走咗。\n一個簡明濫用條件嘅描述同你嘅動作配合嘅係: $1",
 	"abusefilter-blocker": "濫用過濾器",
 	"abusefilter-blockreason": "自動被濫用過濾器封鎖。\n配合規則嘅描述: $1",
-	"abusefilter-degroupreason": "被濫用過濾器自動拎走咗權限。\n規則描述: $1",
+	"abusefilter-degroupreason": "濫用過濾器自動拎走咗權限。 \n準則係: $1",
 	"abusefilter-accountreserved": "呢個戶口名預留畀濫用過濾器用。",
 	"right-abusefilter-modify": "改濫用過濾器",
 	"right-abusefilter-view": "睇濫用過濾器",
@@ -100,6 +101,7 @@
 	"abusefilter-reautoconfirm-notallowed": "你唔容許去恢復自動確認狀態。",
 	"abusefilter-reautoconfirm-done": "戶口嘅自動確認狀態已經恢復",
 	"abusefilter-status": "響之前$1次動作，有$2次 ($3%) 已經到咗$4次條件上限，以及有$5次 ($6%) 同其中一組而定開咗嘅過濾器配合。",
+	"abusefilter-edit": "改濫用過濾器",
 	"abusefilter-edit-subtitle": "編輯緊過濾器$1",
 	"abusefilter-edit-oldwarning": "<strong>你而家編輯緊呢個過濾器嘅舊版本。\n個統計係計響最近過本嘅過濾器度。\n如果你保存你嘅修改，你會覆蓋自從你編輯修訂嘅全部修改。</strong> &bull;\n[[Special:AbuseFilter/history/$2|返去呢個過濾器嘅歷史]]。",
 	"abusefilter-edit-status-label": "統計:",
@@ -123,7 +125,6 @@
 	"abusefilter-edit-consequences": "當配合嗰陣做嘅動作",
 	"abusefilter-edit-action-warn": "畀用戶警告之後觸發嘅動作",
 	"abusefilter-edit-action-disallow": "以問題形式防止用戶去做動作",
-	"abusefilter-edit-action-flag": "響編輯響濫用紀錄度加旗",
 	"abusefilter-edit-action-blockautopromote": "拎走用戶嘅自動確認狀態",
 	"abusefilter-edit-action-degroup": "響全部組度拎走用戶",
 	"abusefilter-edit-action-block": "封鎖用戶/IP地址，唔畀編輯",
