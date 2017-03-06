@@ -96,7 +96,7 @@
 	"abusefilter-log-noactions": "Text displayed in Special:AbuseLog when a rule was triggered, but no action was taken.\n{{Identical|None}}",
 	"abusefilter-log-details-diff": "Header for differences between two edits in log details.",
 	"abusefilter-log-linkoncontribs": "Link text added on [[Special:Contributions]] and other relevant special pages.\n{{Identical|Abuse log}}",
-	"abusefilter-log-linkoncontribs-text": "Title for link added on [[Special:Contributions]] and other relevant special pages.",
+	"abusefilter-log-linkoncontribs-text": "Title for link added on [[Special:Contributions]] and other relevant special pages. Parameters:\n* $1 is the target user name used for GENDER.",
 	"abusefilter-log-hidden": "Text for a hidden log entry.",
 	"abusefilter-log-hidden-implicit": "Explanatory text to be shown beside an abuse filter log entry if it cannot be viewed due to its corresponding revision being hidden",
 	"abusefilter-log-cannot-see-details": "Message shown instead of log row details for users without permissions to see them.",
