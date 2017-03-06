@@ -39,7 +39,8 @@
 			"Duolaimi",
 			"范",
 			"Matma Rex",
-			"EagerLin"
+			"EagerLin",
+			"Wmr"
 		]
 	},
 	"abusefilter-desc": "对编辑行为自动进行条件判定",
@@ -187,7 +188,6 @@
 	"abusefilter-edit-consequences": "当匹配时，要进行的操作",
 	"abusefilter-edit-action-warn": "向用户发出警告后触发下列操作",
 	"abusefilter-edit-action-disallow": "阻止用户进行可疑的操作",
-	"abusefilter-edit-action-flag": "在过滤日志中标记该编辑",
 	"abusefilter-edit-action-blockautopromote": "撤销用户的自动确认状态",
 	"abusefilter-edit-action-degroup": "将用户从所有权限组中移除",
 	"abusefilter-edit-action-block": "封禁进行编辑的用户和／或IP地址",
@@ -276,7 +276,7 @@
 	"abusefilter-edit-builder-group-vars": "变量",
 	"abusefilter-edit-builder-vars-accountname": "帐户（创建时）的名称",
 	"abusefilter-edit-builder-vars-timestamp": "更改的Unix时间戳",
-	"abusefilter-edit-builder-vars-action": "动作",
+	"abusefilter-edit-builder-vars-action": "操作",
 	"abusefilter-edit-builder-vars-addedlines": "编辑增加的行",
 	"abusefilter-edit-builder-vars-delta": "编辑前后的大小改变",
 	"abusefilter-edit-builder-vars-diff": "编辑产生的差异",
@@ -345,7 +345,7 @@
 	"abusefilter-history-flags": "标记",
 	"abusefilter-history-filter": "过滤器规则",
 	"abusefilter-history-comments": "注释",
-	"abusefilter-history-actions": "动作",
+	"abusefilter-history-actions": "操作",
 	"abusefilter-history-backedit": "回到过滤器编辑器",
 	"abusefilter-history-deleted": "删除",
 	"abusefilter-history-filterid": "过滤器",
