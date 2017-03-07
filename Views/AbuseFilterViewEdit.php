@@ -338,6 +338,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$readOnlyAttrib = [];
 		$cbReadOnlyAttrib = []; // For checkboxes
 
+		$styleAttrib = [ 'style' => 'width:95%' ];
+
 		if ( !$this->canEditFilter( $row ) ) {
 			$readOnlyAttrib['readonly'] = 'readonly';
 			$cbReadOnlyAttrib['disabled'] = 'disabled';
@@ -354,7 +356,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				'wpFilterDescription',
 				45,
 				isset( $row->af_public_comments ) ? $row->af_public_comments : '',
-				$readOnlyAttrib
+				array_merge( $readOnlyAttrib, $styleAttrib )
 			);
 
 		global $wgAbuseFilterValidGroups;
