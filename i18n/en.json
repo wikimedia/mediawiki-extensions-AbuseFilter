@@ -65,7 +65,7 @@
 	"abusefilter-log-noactions": "none",
 	"abusefilter-log-details-diff": "Changes made in edit",
 	"abusefilter-log-linkoncontribs": "abuse log",
-	"abusefilter-log-linkoncontribs-text": "Abuse log for this user",
+	"abusefilter-log-linkoncontribs-text": "Abuse log for {{GENDER:$1|this user}}",
 	"abusefilter-log-hidden": "(entry hidden)",
 	"abusefilter-log-hidden-implicit": "(hidden because revision has been deleted)",
 	"abusefilter-log-cannot-see-details": "You do not have permission to see details of this entry.",

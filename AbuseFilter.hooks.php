@@ -706,7 +706,8 @@ class AbuseFilterHooks {
 			$tools[] = $linkRenderer->makeLink(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
 				$context->msg( 'abusefilter-log-linkoncontribs' )->text(),
-				array( 'title' => $context->msg( 'abusefilter-log-linkoncontribs-text' )->parse() ),
+				array( 'title' => $context->msg( 'abusefilter-log-linkoncontribs-text',
+					$nt->getText() )->parse() ),
 				array( 'wpSearchUser' => $nt->getText() )
 			);
 		}
