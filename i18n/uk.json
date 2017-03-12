@@ -82,7 +82,7 @@
 	"abusefilter-log-noactions": "нема",
 	"abusefilter-log-details-diff": "Зміни, зроблені редагуванням",
 	"abusefilter-log-linkoncontribs": "журнал зловживань",
-	"abusefilter-log-linkoncontribs-text": "Журнал зловживань цього користувача",
+	"abusefilter-log-linkoncontribs-text": "Журнал зловживань {{GENDER:$1|цього користувача|цієї користувачки}}",
 	"abusefilter-log-hidden": "(запис приховано)",
 	"abusefilter-log-hidden-implicit": "(приховано, бо версію було вилучено)",
 	"abusefilter-log-cannot-see-details": "Ви не маєте дозволу на перегляд відомостей про цей запис.",

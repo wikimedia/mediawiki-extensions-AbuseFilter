@@ -103,7 +103,7 @@
 	"abusefilter-log-noactions": "无",
 	"abusefilter-log-details-diff": "编辑中的更改",
 	"abusefilter-log-linkoncontribs": "滥用日志",
-	"abusefilter-log-linkoncontribs-text": "本用户的滥用日志",
+	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|本用户}}的滥用日志",
 	"abusefilter-log-hidden": "（记录已被隐藏）",
 	"abusefilter-log-hidden-implicit": "（因为修订已被删除而隐藏）",
 	"abusefilter-log-cannot-see-details": "您没有权限去查看这个记录条目的细节。",
