@@ -122,6 +122,7 @@
 	"abusefilter-edit-lastmod-text": "$1 tərəfindən $2",
 	"abusefilter-edit-hitcount": "Filtrin işləməsi:",
 	"abusefilter-edit-throttle-count": "İcazə verilmiş fəaliyyətlərin sayı:",
+	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|saniyə|saniyə}}",
 	"abusefilter-edit-warn-other": "Digər mesaj",
 	"abusefilter-edit-warn-actions": "Fəaliyyətlər:",
 	"abusefilter-edit-done-subtitle": "Filtr düzəldilib",
