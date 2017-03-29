@@ -24,7 +24,8 @@
 			"محمد أحمد عبد الفتاح",
 			"أحمد",
 			"Matma Rex",
-			"علاء"
+			"علاء",
+			"ديفيد"
 		]
 	},
 	"abusefilter-desc": "يطبق قواعد آلية على التعديلات.",
@@ -65,7 +66,7 @@
 	"abusefilter-log-summary": "هذا السجل يعرض قائمة بكل الأفعال المُكتشفة بواسطة المرشحات.",
 	"abusefilter-log-search": "بحث سجل الإساءة",
 	"abusefilter-log-search-user": "المستخدم:",
-	"abusefilter-log-search-filter": "أرقام المُرشِّح (مفصولة بخط شاقولي):",
+	"abusefilter-log-search-filter": "أرقام المُرشِّح (مفصولة بشريط عمودي):",
 	"abusefilter-log-search-title": "العنوان:",
 	"abusefilter-log-search-wiki": "الويكي:",
 	"abusefilter-log-search-submit": "بحث",
@@ -169,7 +170,6 @@
 	"abusefilter-edit-consequences": "الأفعال المتخذة عند التطابق",
 	"abusefilter-edit-action-warn": "نفذ هذه الأفعال بعد إعطاء المستخدم تحذيرا",
 	"abusefilter-edit-action-disallow": "امنع المستخدم من عمل الفعل المقصود",
-	"abusefilter-edit-action-flag": "علم على التعديل في سجل الإساءة",
 	"abusefilter-edit-action-blockautopromote": "اسحب حالة التأكيد التلقائي من المستخدم",
 	"abusefilter-edit-action-degroup": "أزل المستخدم من كل المجموعات المميزة",
 	"abusefilter-edit-action-block": "امنع المستخدم و/أو عنوان الأيبي من التحرير",
