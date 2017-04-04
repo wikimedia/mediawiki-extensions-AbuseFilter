@@ -5,7 +5,8 @@
 			"Marinari",
 			"Vinie007",
 			"Kosovastar",
-			"Matma Rex"
+			"Matma Rex",
+			"Arianit"
 		]
 	},
 	"abusefilter-desc": "Zbaton automatikisht deduktimin e redaktimeve",
@@ -127,14 +128,13 @@
 	"abusefilter-edit-hidden": "Fsheh detajet e këtij filtri nga opinioni publik",
 	"abusefilter-edit-global": "Zbato këtë filtër në nivel global",
 	"abusefilter-edit-rules": "Kushtet:",
-	"abusefilter-edit-notes": "Shënime:\n: ' ' (private) ' '",
+	"abusefilter-edit-notes": "Shënime:",
 	"abusefilter-edit-lastmod": "Filtri i ndryshuar për herë te fundit:",
 	"abusefilter-edit-lastmod-text": "$1 nga $2",
 	"abusefilter-edit-hitcount": "Filter klikimet:",
 	"abusefilter-edit-consequences": "Veprimet e ndërmarra kur ka pasur përputhje",
 	"abusefilter-edit-action-warn": "Inico këto veprime pasi ti jetë dhënë paralajmërimi përdoruesit",
 	"abusefilter-edit-action-disallow": "Pengo përdoruesin nga kryerja e veprimit në fjalë",
-	"abusefilter-edit-action-flag": "Shenjo redaktimin në gjurmën e shpërdorimit",
 	"abusefilter-edit-action-blockautopromote": "Anulo statusin e autoconfirmimit të përdoruesit",
 	"abusefilter-edit-action-degroup": "Hiq përdoruesin nga të gjitha grupet e privilegjuara",
 	"abusefilter-edit-action-block": "Blloko përdoruesin dhe / ose IP adresën  nga redaktimi",
