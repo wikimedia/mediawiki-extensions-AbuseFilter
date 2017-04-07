@@ -24,16 +24,16 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Add default warning messages
 		$this->exposeWarningMessages();
 
-		if ( $filter == 'new' && !$user->isAllowed( 'abusefilter-modify' ) ) {
+		if ( $filter == 'new' && !$this->canEdit() ) {
 			$out->addWikiMsg( 'abusefilter-edit-notallowed' );
 			return;
 		}
 
 		$editToken = $request->getVal( 'wpEditToken' );
-		$didEdit = $this->canEdit()
-			&& $user->matchEditToken( $editToken, array( 'abusefilter', $filter ) );
+		$tokenMatches = $user->matchEditToken(
+			$editToken, array( 'abusefilter', $filter ), $request );
 
-		if ( $didEdit ) {
+		if ( $tokenMatches && $this->canEdit() ) {
 			// Check syntax
 			$syntaxerr = AbuseFilter::checkSyntax( $request->getVal( 'wpFilterRules' ) );
 			if ( $syntaxerr !== true ) {
@@ -268,6 +268,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				)
 			);
 		} else {
+			if ( $tokenMatches ) {
+				// lost rights meanwhile
+				$out->addWikiMsg( 'abusefilter-edit-notallowed' );
+			}
+
 			if ( $history_id ) {
 				$out->addWikiMsg(
 					'abusefilter-edit-oldwarning', $this->mHistoryID, $this->mFilter );
@@ -483,7 +488,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				);
 			}
 
-			if ( $user->isAllowed( 'abusefilter-modify' ) ) {
+			if ( $this->canEdit() ) {
 				// Test link
 				$tools .= Xml::tags(
 					'p', null,

@@ -35,7 +35,10 @@ abstract class AbuseFilterView extends ContextSource {
 	 * @return bool
 	 */
 	public function canEdit() {
-		return $this->getUser()->isAllowed( 'abusefilter-modify' );
+		return (
+			!$this->getUser()->isBlocked() &&
+			$this->getUser()->isAllowed( 'abusefilter-modify' )
+		);
 	}
 
 	/**
