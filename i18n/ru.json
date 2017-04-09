@@ -102,7 +102,7 @@
 	"abusefilter-log-hide-forbidden": "У вас нет разрешения на сокрытие\nзаписей журнала злоупотреблений.",
 	"abusefilter-logentry-suppress": "скрыть [[$1]]",
 	"abusefilter-logentry-unsuppress": "показать [[$1]]",
-	"logentry-abusefilter-hit": "$1 {{GENDER:$2|вызвал|вызвала}} срабатывание фильтра $4, выполняя действие «$5» на странице $3. Действия: $6 ($7)",
+	"logentry-abusefilter-hit": "$1 {{GENDER:$2|вызвал|вызвала}} срабатывание фильтра $4, выполнив действие «$5» на странице $3. Предпринятые меры: $6 ($7)",
 	"abusefilter-management": "Управление фильтром злоупотреблений",
 	"abusefilter-list": "Все фильтры",
 	"abusefilter-list-id": "ID фильтра",
