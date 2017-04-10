@@ -25,7 +25,8 @@
 			"Mailman",
 			"Cat1987",
 			"Туллук",
-			"Facenapalm"
+			"Facenapalm",
+			"Redredsonia"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -88,7 +89,7 @@
 	"abusefilter-log-noactions": "нет",
 	"abusefilter-log-details-diff": "Изменения, сделанные в правке",
 	"abusefilter-log-linkoncontribs": "журнал злоупотреблений",
-	"abusefilter-log-linkoncontribs-text": "Записи журнала злоупотреблений для этого участника",
+	"abusefilter-log-linkoncontribs-text": "Записи журнала злоупотреблений для {{GENDER:$1|этого участника|этой участницы}}",
 	"abusefilter-log-hidden": "(запись скрыта)",
 	"abusefilter-log-hidden-implicit": "(скрыто, так как правка была удалена)",
 	"abusefilter-log-cannot-see-details": "У вас нет разрешения на просмотр подробностей этой записи.",
