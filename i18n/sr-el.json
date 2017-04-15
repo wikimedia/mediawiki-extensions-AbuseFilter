@@ -346,7 +346,7 @@
 	"abusefilter-test-syntaxerr": "Filter koji ste uneli sadrži sintaksne greške.\nDa biste dobili detaljno objašnjenje kliknite na dugme „{{int:abusefilter-edit-check}}“.",
 	"abusefilter-changeslist-examine": "pregledaj",
 	"abusefilter-examine": "Ispitaj pojedinačne izmene",
-	"abusefilter-examine-intro": "Ova stranica omogućava ispitivanje promenljivih koje je generisao filtera zloupotreba za određeno uređivanje i da ih isprobate na filterima.",
+	"abusefilter-examine-intro": "Ova stranica omogućava ispitivanje promenljivih koje je generisao filter zloupotreba za određenu izmenu i isprobavanje na filterima.",
 	"abusefilter-examine-legend": "Izaberi izmene",
 	"abusefilter-examine-diff": "URL difa:",
 	"abusefilter-examine-user": "Korisnik:",
