@@ -1875,8 +1875,11 @@ class AbuseFilter {
 			}
 		}
 
-		// Promote user so it doesn't look too crazy.
-		$user->addGroup( 'sysop' );
+		// Promote user to 'sysop' so it doesn't look
+		// like an unprivileged account is blocking users
+		if ( !in_array( 'sysop', $user->getGroups() ) ) {
+			$user->addGroup( 'sysop' );
+		}
 
 		return $user;
 	}
