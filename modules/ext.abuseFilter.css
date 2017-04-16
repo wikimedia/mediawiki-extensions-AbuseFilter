@@ -8,7 +8,8 @@ table.mw-abuselog-details {
 	table-layout: fixed;
 }
 
-table.mw-abuselog-details th, table.mw-abuselog-details td {
+table.mw-abuselog-details th,
+table.mw-abuselog-details td {
 	border: 1px #aaa solid;
 	padding: 0.2em;
 }
@@ -42,26 +43,28 @@ td.mw-abuselog-var {
 	width: 30%;
 }
 
-tr.mw-abusefilter-list-disabled, tr.mw-abusefilter-list-disabled td {
-	color: #666666;
+tr.mw-abusefilter-list-disabled,
+tr.mw-abusefilter-list-disabled td {
+	color: #666;
 }
 
-tr.mw-abusefilter-list-deleted, tr.mw-abusefilter-list-deleted td {
-	color: #aaaaaa;
+tr.mw-abusefilter-list-deleted,
+tr.mw-abusefilter-list-deleted td {
+	color: #aaa;
 }
 
 .mw-abusefilter-examine-match,
 .mw-abusefilter-syntaxresult-ok,
 li.mw-abusefilter-changeslist-match {
 	/* @embed */
-	background-image: url(yes_check.png);
+	background-image: url( yes_check.png );
 }
 
 .mw-abusefilter-examine-nomatch,
 .mw-abusefilter-syntaxresult-error,
 li.mw-abusefilter-changeslist-nomatch {
 	/* @embed */
-	background-image: url(red_x.png);
+	background-image: url( red_x.png );
 }
 
 #mw-abusefilter-syntaxresult,
