@@ -24,7 +24,8 @@
 			"HenriqueCrang",
 			"Matma Rex",
 			"TheEduGobi",
-			"!Silent"
+			"!Silent",
+			"Felipe L. Ewald"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas às edições.",
@@ -87,7 +88,7 @@
 	"abusefilter-log-noactions": "nenhuma",
 	"abusefilter-log-details-diff": "Alterações feitas na edição",
 	"abusefilter-log-linkoncontribs": "registro de abusos",
-	"abusefilter-log-linkoncontribs-text": "Registro de Abuso para este usuário",
+	"abusefilter-log-linkoncontribs-text": "Registro de abuso para {{GENDER:$1|este usuário}}",
 	"abusefilter-log-hidden": "(entrada ocultada)",
 	"abusefilter-log-hidden-implicit": "(oculto porque a revisão foi eliminada)",
 	"abusefilter-log-cannot-see-details": "Você não tem permissão para ver os detalhes desta entrada.",
@@ -172,7 +173,6 @@
 	"abusefilter-edit-consequences": "Ações a serem tomadas quando correspondido",
 	"abusefilter-edit-action-warn": "Disparar estas ações após emitir um aviso ao usuário",
 	"abusefilter-edit-action-disallow": "Impedir o usuário de realizar a ação em questão",
-	"abusefilter-edit-action-flag": "Assinalar a edição no registro de abusos",
 	"abusefilter-edit-action-blockautopromote": "Revogar o estatuto autoconfirmado do usuário",
 	"abusefilter-edit-action-degroup": "Remover o usuário de todos os grupos privilegiados",
 	"abusefilter-edit-action-block": "Bloquear o usuário e/ou endereço IP para edição",
@@ -336,7 +336,7 @@
 	"abusefilter-history-select-legend": "Melhorar pesquisa",
 	"abusefilter-history-select-user": "Usuário:",
 	"abusefilter-history-select-submit": "Melhorar",
-	"abusefilter-history-diff": "Alterações",
+	"abusefilter-history-diff": "Mudanças",
 	"abusefilter-history-error-hidden": "O filtro que solicitou está ocultado e não pode ver o seu histórico.",
 	"abusefilter-exception-unexpectedatend": "“$2” inesperado na posição $1.",
 	"abusefilter-exception-expectednotfound": "Código $2, esperado na posição $1, não foi encontrado (foi encontrado $3 $4).",
