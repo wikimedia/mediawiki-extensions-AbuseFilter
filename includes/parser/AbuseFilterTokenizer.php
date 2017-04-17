@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * Tokenizer for AbuseFilter rules.
  */
@@ -70,7 +73,7 @@ class AbuseFilterTokenizer {
 		static $stats = null;
 
 		if ( !$stats ) {
-			$stats = RequestContext::getMain()->getStats();
+			$stats = MediaWikiServices::getInstance()->getStatsdDataFactory();
 		}
 
 		$cacheKey = wfGlobalCacheKey( __CLASS__, self::CACHE_VERSION, crc32( $code ) );
