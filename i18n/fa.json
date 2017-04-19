@@ -460,7 +460,7 @@
 	"apihelp-query+abuselog-param-limit": "حداکثر تعداد ورودی‌هایی که نمایش داده شود.",
 	"apihelp-query+abuselog-param-prop": "خصوصیتی که باید گرفته شود.",
 	"apihelp-query+abuselog-example-1": "نمایش سیاههٔ آخرین ورودی‌ها",
-	"apihelp-query+abuselog-example-2": "نمایش آخرین موارد سیاهه از [[API]]",
+	"apihelp-query+abuselog-example-2": "نمایش آخرین موارد سیاهه از [[رابط برنامه‌نویسی]]",
 	"apierror-abusefilter-canttest": "شما اجازهٔ آزمایش پالایه‌های خرابکاری را ندارید.",
 	"apierror-abusefilter-cantcheck": "شما اجازهٔ آزمایش نحوی پالایه‌های خرابکاری را ندارید.",
 	"apierror-abusefilter-nosuchlogid": "هیچ موردی در سیاههٔ خرابکاری با شناسهٔ $1 وجود ندارد.",
