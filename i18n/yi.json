@@ -5,7 +5,8 @@
 			"פוילישער",
 			"පසිඳු කාවින්ද",
 			"Har-wradim",
-			"Matma Rex"
+			"Matma Rex",
+			"Jiddisch"
 		]
 	},
 	"abusefilter-desc": "ווענדט אויטאמאטישע הייריסטיק צו רעדאקטירונגען",
@@ -177,6 +178,7 @@
 	"abusefilter-edit-builder-group-funcs": "פֿונקציאנען",
 	"abusefilter-edit-builder-funcs-length": "לענג פון שנורל (length)",
 	"abusefilter-edit-builder-funcs-norm": "נארמאלמזירן (norm)",
+	"abusefilter-edit-builder-funcs-ip_in_range": "געפינט זיך די IP-אדרעס אין דעם דערגרייכונג-ארט?",
 	"abusefilter-edit-builder-group-vars": "וואַריאַבלען",
 	"abusefilter-edit-builder-vars-accountname": "קאנטע נאמען (ביים שאפֿן קאנטע)",
 	"abusefilter-edit-builder-vars-timestamp": "צײַטשטעמפל פון ענדערונג אין יוניקס פֿארמאט",
