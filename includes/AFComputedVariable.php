@@ -414,7 +414,11 @@ class AFComputedVariable {
 					array( 'rev_page' => $title->getArticleID() ),
 					__METHOD__,
 					// Some pages have < 10 authors but many revisions (e.g. bot pages)
-					array( 'ORDER BY' => 'rev_timestamp DESC', 'LIMIT' => 100 )
+					array( 'ORDER BY' => 'rev_timestamp DESC',
+						'LIMIT' => 100,
+						// Force index per T116557
+						'USE INDEX' => 'page_timestamp',
+					)
 				);
 				// Get the last 10 distinct authors within this set of edits
 				$users = array();
