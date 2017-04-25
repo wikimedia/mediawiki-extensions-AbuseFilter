@@ -386,7 +386,7 @@
 	"abusefilter-topnav-import": "Süzgeci içe aktar",
 	"abusefilter-log-name": "Kötüye kullanım süzgeci günlüğü",
 	"abusefilter-log-header": "Bu günlük filtrelere yapılan değişikliklerin bir özetini gösterir.\nTam ayrıntılar için, son filtre değişiklikleri [[Special:AbuseFilter/history|listesine]] bakın.",
-	"abusefilter-log-entry-modify": "değiştirdi $1 ($2)",
+	"abusefilter-log-entry-modify": "$1 numaralı süzgeci değiştirdi ($2)",
 	"abusefilter-log-noresults": "Sonuç yok",
 	"abusefilter-diff-title": "Sürümler arasındaki farklar",
 	"abusefilter-diff-item": "Öğe",
