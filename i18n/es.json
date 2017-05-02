@@ -243,7 +243,7 @@
 	"abusefilter-edit-builder-op-comparison-lt": "Menor que (<)",
 	"abusefilter-edit-builder-op-comparison-gt": "Mayor que (>)",
 	"abusefilter-edit-builder-op-comparison-lte": "Menor o igual a (<=)",
-	"abusefilter-edit-builder-op-comparison-gte": "Mayor o igual a (>=)",
+	"abusefilter-edit-builder-op-comparison-gte": "Mayor o igual que (>=)",
 	"abusefilter-edit-builder-group-op-bool": "Operadores booleanos",
 	"abusefilter-edit-builder-op-bool-not": "No (!)",
 	"abusefilter-edit-builder-op-bool-and": "Y (&)",
