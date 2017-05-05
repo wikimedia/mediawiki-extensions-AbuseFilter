@@ -337,7 +337,7 @@
 	"abusefilter-action-blockautopromote": "Bloqueja la promoció automàtica",
 	"abusefilter-action-block": "Bloca",
 	"abusefilter-action-degroup": "Elimina dels grups",
-	"abusefilter-action-rangeblock": "Rang del bloqueig",
+	"abusefilter-action-rangeblock": "Interval del blocatge",
 	"abusefilter-action-disallow": "No permetre",
 	"abusefilter-revert-title": "Reverteix tots els canvis fets pel filtre $1",
 	"abusefilter-revert-intro": "Aquest formulari permet vostè tornar tots els canvis realitzats pel filtre d'abús a causa de filtre de  $1 .\nSi us plau, l'exercici cura en l'ús d'aquesta eina.",
