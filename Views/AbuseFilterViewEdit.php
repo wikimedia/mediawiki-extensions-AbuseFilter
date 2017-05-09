@@ -111,7 +111,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$bad = false;
 				foreach ( $actions['tag']['parameters'] as $tag ) {
 					$t = Title::makeTitleSafe( NS_MEDIAWIKI, 'tag-' . $tag );
-					if ( !$t ) {
+					if ( !$t ||
+						!ChangeTags::canCreateTag( $tag, $user )->isOK() ) {
+
 						$bad = true;
 					}
 
