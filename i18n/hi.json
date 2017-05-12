@@ -11,7 +11,8 @@
 			"Wikiuser13",
 			"संजीव कुमार",
 			"Hindustanilanguage",
-			"Matma Rex"
+			"Matma Rex",
+			"Sfic"
 		]
 	},
 	"abusefilter-desc": "संपादनों पर स्वतः शोध प्रणाली का प्रयोग लागू करता है",
@@ -155,7 +156,6 @@
 	"abusefilter-edit-consequences": "मिलान होने पर किये कार्य",
 	"abusefilter-edit-action-warn": "सदस्य को चेतावनी देने के बाद ये कार्य करें",
 	"abusefilter-edit-action-disallow": "सदस्य को फ़िल्टर द्वारा पकड़ा कार्य करने से रोकें",
-	"abusefilter-edit-action-flag": "दुरुपयोग लॉग में संपादन को चिन्हित करें",
 	"abusefilter-edit-action-blockautopromote": "सदस्य का स्वतः स्थापित अधिकार वापिस लें",
 	"abusefilter-edit-action-degroup": "सदस्य को सभी सदस्य समूहों से हटाएँ",
 	"abusefilter-edit-action-block": "सदस्य और/या आइ॰पी पते को संपादन करने से अवरोधित करें",
@@ -263,7 +263,7 @@
 	"abusefilter-edit-builder-vars-movedto-text": "स्थानांतरन स्थान पृष्ठ का शीर्षक",
 	"abusefilter-edit-builder-vars-movedto-prefixedtext": "स्थानांतरन स्थान पृष्ठ का पूर्ण शीर्षक",
 	"abusefilter-edit-builder-vars-user-editcount": "सदस्य की सम्पादन गिनती",
-	"abusefilter-edit-builder-vars-user-age": "सदस्यखाते की आयु",
+	"abusefilter-edit-builder-vars-user-age": "सदस्य खाते की आयु",
 	"abusefilter-edit-builder-vars-user-name": "सदस्यखाते का नाम",
 	"abusefilter-edit-builder-vars-user-groups": "समूह (अंतर्निहित जोड़कर) जिसमें सदस्य है",
 	"abusefilter-edit-builder-vars-user-rights": "अधिकार जो सदस्य रखता है",
