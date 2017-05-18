@@ -14,7 +14,8 @@
 			"Steenth",
 			"Tjernobyl",
 			"MGA73",
-			"Matma Rex"
+			"Matma Rex",
+			"Cgtdk"
 		]
 	},
 	"abusefilter-desc": "Anvender automatiske heuristikker på redigeringer",
@@ -55,7 +56,7 @@
 	"abusefilter-log-summary": "Denne log viser en liste over alle handlinger som filtrene har opfanget.",
 	"abusefilter-log-search": "Søg i misbrugsloggen",
 	"abusefilter-log-search-user": "Bruger:",
-	"abusefilter-log-search-filter": "Filter-ID:",
+	"abusefilter-log-search-filter": "Filter-id'er (adskil med lodrette streger):",
 	"abusefilter-log-search-title": "Titel:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Søg",
@@ -159,7 +160,6 @@
 	"abusefilter-edit-consequences": "Handlinger som udføres ved træf",
 	"abusefilter-edit-action-warn": "Udfør disse handlinger efter at have givet brugeren en advarsel",
 	"abusefilter-edit-action-disallow": "Forhindre brugeren i at udføre den ønskede handling",
-	"abusefilter-edit-action-flag": "Flag redigeringen i misbrugsloggen",
 	"abusefilter-edit-action-blockautopromote": "Fjern brugerens status som registreret bruger",
 	"abusefilter-edit-action-degroup": "Fjern brugeren fra alle priviligerede grupper",
 	"abusefilter-edit-action-block": "Bloker brugeren og/eller IP-adressen fra redigering",
