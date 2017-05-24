@@ -3,11 +3,15 @@
 		"authors": [
 			"Pyt",
 			"Snakesteuben",
-			"Robin0van0der0vliet"
+			"Robin0van0der0vliet",
+			"PiefPafPier",
+			"Robin van der Vliet"
 		]
 	},
 	"abusefilter-desc": "Fiert automatyske heuristyske analyse út op bewurkings",
-	"abusefilter": "Misbrûkfilterkonfiguraasje",
+	"abusefilter": "Ynstellings foar it misbrûkfilter",
+	"abusefilter-blocker": "Misbrûkfilter",
+	"abusefilter-accountreserved": "Dizze meidochnamme wurdt frijholden foar it misbrûkfilter.",
 	"abusefilter-log-search-user": "Meidogger:",
 	"abusefilter-log-search-title": "Titel:",
 	"abusefilter-log-search-wiki": "Wiki:",
@@ -61,6 +65,7 @@
 	"abusefilter-revert-reasonfield": "Reden:",
 	"abusefilter-examine-user": "Meidogger:",
 	"abusefilter-examine-submit": "Sykje",
+	"abusefilter-diff-title": "Ferskillen tusken ferzjes",
 	"abusefilter-group-default": "Standert",
 	"abusefilter-http-error": "Der is in HTTP-flater bard: $1."
 }
