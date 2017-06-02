@@ -187,7 +187,7 @@
 	"abusefilter-edit-builder-vars-newsize": "נייע בלאט גרייס",
 	"abusefilter-edit-builder-vars-oldsize": "אלטע בלאט גרייס",
 	"abusefilter-edit-builder-vars-removedlines": "שורות אראפגענומען בײַם רעדאקטירן",
-	"abusefilter-edit-builder-vars-summary": "רעדאקטירונג רעזומע",
+	"abusefilter-edit-builder-vars-summary": "רעדאקטירונג רעזומע/סיבה",
 	"abusefilter-edit-builder-vars-article-id": "בלאט נומער",
 	"abusefilter-edit-builder-vars-article-ns": "בלאט נאמענטייל",
 	"abusefilter-edit-builder-vars-article-text": "בלאט טיטל (אן נאמענטייל)",
@@ -212,6 +212,8 @@
 	"abusefilter-edit-builder-vars-all-links": "אלע דרויסנדיקע לינקען אין נײַעם טעקסט",
 	"abusefilter-edit-builder-vars-old-text": "אלטער בלאט וויקיטעקסט, פאר דער רעדאקטירונג",
 	"abusefilter-edit-builder-vars-new-text": "נייער בלאט וויקיטעקסט, פאר דער רעדאקטירונג",
+	"abusefilter-edit-builder-vars-restrictions-create": "שאַפֿן באַשיצונג פון דעם בלאַט",
+	"abusefilter-edit-builder-vars-restrictions-upload": "אַרויפֿלאדן באַשיצונג פון דער טעקע",
 	"abusefilter-edit-builder-vars-file-size": "גרייס פון טעקע אין בייטן",
 	"abusefilter-filter-log": "לעצטיקע פילטער ענדערונגען",
 	"abusefilter-history-foruser": "ענדערונגען פון $1",
@@ -250,6 +252,8 @@
 	"abusefilter-test-user": "ענדערונגען פֿון באניצער:",
 	"abusefilter-test-period-start": "ענדערונגען זײַט:",
 	"abusefilter-test-period-end": "ענדערונגען פֿאר:",
+	"abusefilter-test-page": "ענדערונגען צום בלאט:",
+	"abusefilter-test-shownegative": "ווייזן ענדערונגען וואס זענען נישט צוגעפאסט צום פֿילטער",
 	"abusefilter-changeslist-examine": "בודק זיין",
 	"abusefilter-examine-legend": "אויסקלויבן ענדערונגען",
 	"abusefilter-examine-user": "באַניצער:",
@@ -272,5 +276,6 @@
 	"abusefilter-diff-next": "נײַערע ענדערונג",
 	"abusefilter-import-submit": "אימפארטירן דאַטן",
 	"abusefilter-group-default": "גרונטלעך",
-	"abusefilter-http-error": "א HTTP גרײַז האט פאַסירט: $1"
+	"abusefilter-http-error": "א HTTP גרײַז האט פאַסירט: $1",
+	"apierror-abusefilter-badsyntax": "דער פֿילטער האט אומגילטיגן סינטאקס."
 }
