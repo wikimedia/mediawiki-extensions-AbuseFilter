@@ -303,7 +303,7 @@
 	"abusefilter-test-period-end": "Owahan digawé sakdurungé:",
 	"abusefilter-test-page": "Owahan digawé ing kaca:",
 	"abusefilter-test-shownegative": "Tuduhaké owahan sing cocok karo saringan",
-	"abusefilter-test-syntaxerr": "Saringan sing Sampéyan lebokaké ngalami kasalahan sintaks.\nSampéyan bisa nampa pawedharan jangkep mawa ngeklik pencètan \"Priksa Sintaks\".",
+	"abusefilter-test-syntaxerr": "Saringan sing panjenengan isèkaké kena masalah sintaksis.\nPanjenengan bisa nampa wedharan wutuh kanthi ngeklik tombol \"{{int:abusefilter-edit-check}}\".",
 	"abusefilter-changeslist-examine": "uji",
 	"abusefilter-examine": "Uji owahan individu",
 	"abusefilter-examine-intro": "Kaca iki nglilakaké Sampéyan nguji variabèl saka Saringan Planggaran kanggo sawiji owahan individu, lan jajal tumrap saringan.",

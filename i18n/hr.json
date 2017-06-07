@@ -6,7 +6,8 @@
 			"MaGa",
 			"Roberta F.",
 			"SpeedyGonsales",
-			"Matma Rex"
+			"Matma Rex",
+			"Bugoslav"
 		]
 	},
 	"abusefilter-desc": "Primjenjuje automatsku heuristiku na uređivanja",
@@ -149,7 +150,6 @@
 	"abusefilter-edit-consequences": "Radnje poduzete kod podudaranja",
 	"abusefilter-edit-action-warn": "Pokreni ove radnje nakon što upozorite suradnika",
 	"abusefilter-edit-action-disallow": "Nemoj dozvoliti suradniku izvršavanje dotične akcije",
-	"abusefilter-edit-action-flag": "Označi uređivanje u evidenciji zloporaba",
 	"abusefilter-edit-action-blockautopromote": "Opoziv autoconfirmed statusa suradnika",
 	"abusefilter-edit-action-degroup": "Ukloni suradnika sa svih privilegiranih grupa",
 	"abusefilter-edit-action-block": "Blokirajte suradnika i/ili IP adrese (onemogući im uređivanje)",
@@ -387,5 +387,6 @@
 	"abusefilter-diff-next": "Novo uređivanje",
 	"abusefilter-import-intro": "Možete rabiti ovo sučelje za uvoz filtara s drugih wikija.\nNa izvornoj wiki, kliknite na poveznicu \"{{int:abusefilter-edit-export}}\" pod \"{{int:abusefilter-edit-tools}}\" na sučelju za uređivanje.\nKopirajte tekst iz okvira koji će se pojaviti, i zalijepite ga u ovaj okvir, a zatim kliknite \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "Uvoz podataka",
-	"abusefilter-group-default": "Zadano"
+	"abusefilter-group-default": "Zadano",
+	"apierror-abusefilter-badsyntax": "Filtar nema valjanu sintaksu."
 }
