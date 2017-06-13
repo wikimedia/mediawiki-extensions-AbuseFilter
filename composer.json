@@ -11,14 +11,14 @@
 	},
 	"require-dev": {
 		"jakub-onderka/php-parallel-lint": "0.9.2",
-		"mediawiki/mediawiki-codesniffer": "0.5.1",
+		"mediawiki/mediawiki-codesniffer": "0.7.2",
 		"jakub-onderka/php-console-highlighter": "0.3.2"
 	},
 	"scripts": {
 		"fix": "phpcbf",
 		"test": [
 			"parallel-lint . --exclude extensions --exclude node_modules --exclude vendor",
-			"phpcs -p -s --ignore=extensions/AntiSpoof"
+			"phpcs -p -s"
 		]
 	}
 }

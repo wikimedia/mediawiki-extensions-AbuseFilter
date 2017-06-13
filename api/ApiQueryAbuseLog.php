@@ -139,7 +139,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				// Username normalisation
 				$params['user'] = $u->getName();
 				$userId = $u->getId();
-			} elseif( IP::isIPAddress( $params['user'] ) ) {
+			} elseif ( IP::isIPAddress( $params['user'] ) ) {
 				// It's an IP, sanitize it
 				$params['user'] = IP::sanitizeIP( $params['user'] );
 				$userId = 0;

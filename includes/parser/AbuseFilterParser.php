@@ -842,8 +842,6 @@ class AbuseFilterParser {
 		$this->mVars->setVar( $name, $value );
 	}
 
-
-
 	// Built-in functions
 
 	/**
