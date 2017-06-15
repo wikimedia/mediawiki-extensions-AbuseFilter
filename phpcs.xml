@@ -3,6 +3,9 @@
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
 		<exclude name="Generic.Arrays.DisallowLongArraySyntax.Found"/>
 	</rule>
+	<rule ref="Generic.Files.LineLength">
+		<exclude-pattern>AbuseFilter.alias.php</exclude-pattern>
+	</rule>
 	<file>.</file>
 	<arg name="extensions" value="php,php5,inc"/>
 	<arg name="encoding" value="UTF-8"/>
