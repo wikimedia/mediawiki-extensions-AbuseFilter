@@ -1,9 +1,9 @@
 <?php
 
 class AbuseFilterVariableHolder {
-	public $mVars = array();
+	public $mVars = [];
 
-	public static $varBlacklist = array( 'context' );
+	public static $varBlacklist = [ 'context' ];
 
 	public function __construct() {
 		// Backwards-compatibility (unused now)
@@ -58,7 +58,7 @@ class AbuseFilterVariableHolder {
 	 */
 	public static function merge() {
 		$newHolder = new AbuseFilterVariableHolder;
-		call_user_func_array( array( $newHolder, "addHolders" ), func_get_args() );
+		call_user_func_array( [ $newHolder, "addHolders" ], func_get_args() );
 
 		return $newHolder;
 	}
@@ -138,10 +138,10 @@ class AbuseFilterVariableHolder {
 	 * @param $includeUserVars bool Include user set variables
 	 * @return array
 	 */
-	public function dumpAllVars( $compute = array(), $includeUserVars = false ) {
+	public function dumpAllVars( $compute = [], $includeUserVars = false ) {
 		$allVarNames = array_keys( $this->mVars );
-		$exported = array();
-		$coreVariables = array();
+		$exported = [];
+		$coreVariables = [];
 
 		if ( !$includeUserVars ) {
 			// Compile a list of all variables set by the extension to be able
@@ -152,14 +152,14 @@ class AbuseFilterVariableHolder {
 			$coreVariables = array_keys( $coreVariables['vars'] );
 
 			// Title vars can have several prefixes
-			$prefixes = array( 'ARTICLE', 'MOVED_FROM', 'MOVED_TO' );
-			$titleVars = array(
+			$prefixes = [ 'ARTICLE', 'MOVED_FROM', 'MOVED_TO' ];
+			$titleVars = [
 				'_ARTICLEID',
 				'_NAMESPACE',
 				'_TEXT',
 				'_PREFIXEDTEXT',
 				'_recent_contributors'
-			);
+			];
 			foreach ( $wgRestrictionTypes as $action ) {
 				$titleVars[] = "_restrictions_$action";
 			}
@@ -202,7 +202,7 @@ class AbuseFilterVariableHolder {
 	 * cross-wiki or used for offline analysis.
 	 */
 	function computeDBVars() {
-		static $dbTypes = array(
+		static $dbTypes = [
 			'links-from-wikitext-or-database',
 			'load-recent-authors',
 			'get-page-restrictions',
@@ -212,7 +212,7 @@ class AbuseFilterVariableHolder {
 			'user-rights',
 			'revision-text-by-id',
 			'revision-text-by-timestamp'
-		);
+		];
 
 		foreach ( $this->mVars as $name => $value ) {
 			if ( $value instanceof AFComputedVariable &&

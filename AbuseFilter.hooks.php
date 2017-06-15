@@ -197,21 +197,21 @@ class AbuseFilterHooks {
 		$code = ( $actionsTaken === [ 'warn' ] ) ? 'abusefilter-warning' : 'abusefilter-disallowed';
 
 		ApiResult::setIndexedTagName( $params, 'param' );
-		return array(
+		return [
 			'code' => $code,
-			'message' => array(
+			'message' => [
 				'key' => $key,
 				'params' => $params,
-			),
-			'abusefilter' => array(
+			],
+			'abusefilter' => [
 				'id' => $filter,
 				'description' => $filterDescription,
 				'actions' => $actionsTaken,
-			),
+			],
 			// For backwards-compatibility
 			'info' => 'Hit AbuseFilter: ' . $filterDescription,
 			'warning' => $warning->parse(),
-		);
+		];
 	}
 
 	/**
@@ -259,8 +259,8 @@ class AbuseFilterHooks {
 
 			if ( count( $log_ids ) ) {
 				$dbw->update( 'abuse_filter_log',
-					array( 'afl_rev_id' => $revision->getId() ),
-					array( 'afl_id' => $log_ids ),
+					[ 'afl_rev_id' => $revision->getId() ],
+					[ 'afl_id' => $log_ids ],
 					__METHOD__
 				);
 			}
@@ -271,11 +271,11 @@ class AbuseFilterHooks {
 
 			if ( count( $log_ids ) ) {
 				global $wgAbuseFilterCentralDB;
-				$fdb = wfGetDB( DB_MASTER, array(), $wgAbuseFilterCentralDB );
+				$fdb = wfGetDB( DB_MASTER, [], $wgAbuseFilterCentralDB );
 
 				$fdb->update( 'abuse_filter_log',
-					array( 'afl_rev_id' => $revision->getId() ),
-					array( 'afl_id' => $log_ids, 'afl_wiki' => wfWikiId() ),
+					[ 'afl_rev_id' => $revision->getId() ],
+					[ 'afl_id' => $log_ids, 'afl_wiki' => wfWikiId() ],
 					__METHOD__
 				);
 			}
@@ -318,7 +318,7 @@ class AbuseFilterHooks {
 			);
 
 			if ( $blocked ) {
-				$promote = array();
+				$promote = [];
 			}
 		}
 
@@ -465,9 +465,9 @@ class AbuseFilterHooks {
 		);
 		$action = $recentChange->mAttribs['rc_log_type'] ?
 			$recentChange->mAttribs['rc_log_type'] : 'edit';
-		$actionID = implode( '-', array(
+		$actionID = implode( '-', [
 			$title->getPrefixedText(), $recentChange->mAttribs['rc_user_text'], $action
-		) );
+		] );
 
 		if ( isset( AbuseFilter::$tagsToSet[$actionID] ) ) {
 			$recentChange->addTags( AbuseFilter::$tagsToSet[$actionID] );
@@ -487,17 +487,17 @@ class AbuseFilterHooks {
 		# This is a pretty awful hack.
 		$dbr = wfGetDB( DB_SLAVE );
 
-		$where = array( 'afa_consequence' => 'tag', 'af_deleted' => false );
+		$where = [ 'afa_consequence' => 'tag', 'af_deleted' => false ];
 		if ( $enabled ) {
 			$where['af_enabled'] = true;
 		}
 		$res = $dbr->select(
-			array( 'abuse_filter_action', 'abuse_filter' ),
+			[ 'abuse_filter_action', 'abuse_filter' ],
 			'afa_parameters',
 			$where,
 			__METHOD__,
-			array(),
-			array( 'abuse_filter' => array( 'INNER JOIN', 'afa_filter=af_id' ) )
+			[],
+			[ 'abuse_filter' => [ 'INNER JOIN', 'afa_filter=af_id' ] ]
 		);
 
 		foreach ( $res as $row ) {
@@ -507,15 +507,15 @@ class AbuseFilterHooks {
 		}
 
 		if ( $wgAbuseFilterCentralDB && !$wgAbuseFilterIsCentral ) {
-			$dbr = wfGetDB( DB_SLAVE, array(), $wgAbuseFilterCentralDB );
+			$dbr = wfGetDB( DB_SLAVE, [], $wgAbuseFilterCentralDB );
 			$where['af_global'] = 1;
 			$res = $dbr->select(
-				array( 'abuse_filter_action', 'abuse_filter' ),
+				[ 'abuse_filter_action', 'abuse_filter' ],
 				'afa_parameters',
 				$where,
 				__METHOD__,
-				array(),
-				array( 'abuse_filter' => array( 'INNER JOIN', 'afa_filter=af_id' ) )
+				[],
+				[ 'abuse_filter' => [ 'INNER JOIN', 'afa_filter=af_id' ] ]
 			);
 
 			foreach ( $res as $row ) {
@@ -554,58 +554,58 @@ class AbuseFilterHooks {
 
 		if ( $updater->getDB()->getType() == 'mysql' || $updater->getDB()->getType() == 'sqlite' ) {
 			if ( $updater->getDB()->getType() == 'mysql' ) {
-				$updater->addExtensionUpdate( array( 'addTable', 'abuse_filter',
-					"$dir/abusefilter.tables.sql", true ) );
-				$updater->addExtensionUpdate( array( 'addTable', 'abuse_filter_history',
-					"$dir/db_patches/patch-abuse_filter_history.sql", true ) );
+				$updater->addExtensionUpdate( [ 'addTable', 'abuse_filter',
+					"$dir/abusefilter.tables.sql", true ] );
+				$updater->addExtensionUpdate( [ 'addTable', 'abuse_filter_history',
+					"$dir/db_patches/patch-abuse_filter_history.sql", true ] );
 			} else {
-				$updater->addExtensionUpdate( array( 'addTable', 'abuse_filter',
-					"$dir/abusefilter.tables.sqlite.sql", true ) );
-				$updater->addExtensionUpdate( array( 'addTable', 'abuse_filter_history',
-					"$dir/db_patches/patch-abuse_filter_history.sqlite.sql", true ) );
+				$updater->addExtensionUpdate( [ 'addTable', 'abuse_filter',
+					"$dir/abusefilter.tables.sqlite.sql", true ] );
+				$updater->addExtensionUpdate( [ 'addTable', 'abuse_filter_history',
+					"$dir/db_patches/patch-abuse_filter_history.sqlite.sql", true ] );
 			}
-			$updater->addExtensionUpdate( array(
+			$updater->addExtensionUpdate( [
 				'addField', 'abuse_filter_history', 'afh_changed_fields',
 				"$dir/db_patches/patch-afh_changed_fields.sql", true
-			) );
-			$updater->addExtensionUpdate( array( 'addField', 'abuse_filter', 'af_deleted',
-				"$dir/db_patches/patch-af_deleted.sql", true ) );
-			$updater->addExtensionUpdate( array( 'addField', 'abuse_filter', 'af_actions',
-				"$dir/db_patches/patch-af_actions.sql", true ) );
-			$updater->addExtensionUpdate( array( 'addField', 'abuse_filter', 'af_global',
-				"$dir/db_patches/patch-global_filters.sql", true ) );
-			$updater->addExtensionUpdate( array( 'addField', 'abuse_filter_log', 'afl_rev_id',
-				"$dir/db_patches/patch-afl_action_id.sql", true ) );
+			] );
+			$updater->addExtensionUpdate( [ 'addField', 'abuse_filter', 'af_deleted',
+				"$dir/db_patches/patch-af_deleted.sql", true ] );
+			$updater->addExtensionUpdate( [ 'addField', 'abuse_filter', 'af_actions',
+				"$dir/db_patches/patch-af_actions.sql", true ] );
+			$updater->addExtensionUpdate( [ 'addField', 'abuse_filter', 'af_global',
+				"$dir/db_patches/patch-global_filters.sql", true ] );
+			$updater->addExtensionUpdate( [ 'addField', 'abuse_filter_log', 'afl_rev_id',
+				"$dir/db_patches/patch-afl_action_id.sql", true ] );
 			if ( $updater->getDB()->getType() == 'mysql' ) {
-				$updater->addExtensionUpdate( array( 'addIndex', 'abuse_filter_log',
-					'filter_timestamp', "$dir/db_patches/patch-fix-indexes.sql", true ) );
+				$updater->addExtensionUpdate( [ 'addIndex', 'abuse_filter_log',
+					'filter_timestamp', "$dir/db_patches/patch-fix-indexes.sql", true ] );
 			} else {
-				$updater->addExtensionUpdate( array(
+				$updater->addExtensionUpdate( [
 					'addIndex', 'abuse_filter_log', 'afl_filter_timestamp',
 					"$dir/db_patches/patch-fix-indexes.sqlite.sql", true
-				) );
+				] );
 			}
 
-			$updater->addExtensionUpdate( array( 'addField', 'abuse_filter',
-				'af_group', "$dir/db_patches/patch-af_group.sql", true ) );
+			$updater->addExtensionUpdate( [ 'addField', 'abuse_filter',
+				'af_group', "$dir/db_patches/patch-af_group.sql", true ] );
 
 			if ( $updater->getDB()->getType() == 'mysql' ) {
-				$updater->addExtensionUpdate( array(
+				$updater->addExtensionUpdate( [
 					'addIndex', 'abuse_filter_log', 'wiki_timestamp',
 					"$dir/db_patches/patch-global_logging_wiki-index.sql", true
-				) );
+				] );
 			} else {
-				$updater->addExtensionUpdate( array(
+				$updater->addExtensionUpdate( [
 					'addIndex', 'abuse_filter_log', 'afl_wiki_timestamp',
 					"$dir/db_patches/patch-global_logging_wiki-index.sqlite.sql", true
-				) );
+				] );
 			}
 
 			if ( $updater->getDB()->getType() == 'mysql' ) {
-				$updater->addExtensionUpdate( array(
+				$updater->addExtensionUpdate( [
 					'modifyField', 'abuse_filter_log', 'afl_namespace',
 					"$dir/db_patches/patch-afl-namespace_int.sql", true
-				) );
+				] );
 			} else {
 				/*
 				$updater->addExtensionUpdate( array(
@@ -625,33 +625,33 @@ class AbuseFilterHooks {
 				 */
 			}
 		} elseif ( $updater->getDB()->getType() == 'postgres' ) {
-			$updater->addExtensionUpdate( array(
-				'addTable', 'abuse_filter', "$dir/abusefilter.tables.pg.sql", true ) );
-			$updater->addExtensionUpdate( array(
+			$updater->addExtensionUpdate( [
+				'addTable', 'abuse_filter', "$dir/abusefilter.tables.pg.sql", true ] );
+			$updater->addExtensionUpdate( [
 				'addTable', 'abuse_filter_history',
 				"$dir/db_patches/patch-abuse_filter_history.pg.sql", true
-			) );
-			$updater->addExtensionUpdate( array(
-				'addPgField', 'abuse_filter', 'af_actions', "TEXT NOT NULL DEFAULT ''" ) );
-			$updater->addExtensionUpdate( array(
-				'addPgField', 'abuse_filter', 'af_deleted', 'SMALLINT NOT NULL DEFAULT 0' ) );
-			$updater->addExtensionUpdate( array(
-				'addPgField', 'abuse_filter', 'af_global', 'SMALLINT NOT NULL DEFAULT 0' ) );
-			$updater->addExtensionUpdate( array(
-				'addPgField', 'abuse_filter_log', 'afl_wiki', 'TEXT' ) );
-			$updater->addExtensionUpdate( array(
-				'addPgField', 'abuse_filter_log', 'afl_deleted', 'SMALLINT' ) );
-			$updater->addExtensionUpdate( array(
-				'changeField', 'abuse_filter_log', 'afl_filter', 'TEXT', '' ) );
-			$updater->addExtensionUpdate( array(
-				'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_ip', "(afl_ip)" ) );
-			$updater->addExtensionUpdate( array(
-				'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_wiki', "(afl_wiki)" ) );
-			$updater->addExtensionUpdate( array(
-				'changeField', 'abuse_filter_log', 'afl_namespace', "INTEGER" ) );
+			] );
+			$updater->addExtensionUpdate( [
+				'addPgField', 'abuse_filter', 'af_actions', "TEXT NOT NULL DEFAULT ''" ] );
+			$updater->addExtensionUpdate( [
+				'addPgField', 'abuse_filter', 'af_deleted', 'SMALLINT NOT NULL DEFAULT 0' ] );
+			$updater->addExtensionUpdate( [
+				'addPgField', 'abuse_filter', 'af_global', 'SMALLINT NOT NULL DEFAULT 0' ] );
+			$updater->addExtensionUpdate( [
+				'addPgField', 'abuse_filter_log', 'afl_wiki', 'TEXT' ] );
+			$updater->addExtensionUpdate( [
+				'addPgField', 'abuse_filter_log', 'afl_deleted', 'SMALLINT' ] );
+			$updater->addExtensionUpdate( [
+				'changeField', 'abuse_filter_log', 'afl_filter', 'TEXT', '' ] );
+			$updater->addExtensionUpdate( [
+				'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_ip', "(afl_ip)" ] );
+			$updater->addExtensionUpdate( [
+				'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_wiki', "(afl_wiki)" ] );
+			$updater->addExtensionUpdate( [
+				'changeField', 'abuse_filter_log', 'afl_namespace', "INTEGER" ] );
 		}
 
-		$updater->addExtensionUpdate( array( array( __CLASS__, 'createAbuseFilterUser' ) ) );
+		$updater->addExtensionUpdate( [ [ __CLASS__, 'createAbuseFilterUser' ] ] );
 
 		return true;
 	}
@@ -666,7 +666,7 @@ class AbuseFilterHooks {
 
 		if ( $user && !$updater->updateRowExists( 'create abusefilter-blocker-user' ) ) {
 			if ( method_exists( 'User', 'newSystemUser' ) ) {
-				$user = User::newSystemUser( $username, array( 'steal' => true ) );
+				$user = User::newSystemUser( $username, [ 'steal' => true ] );
 			} else {
 				if ( !$user->getId() ) {
 					$user->addToDatabase();
@@ -706,9 +706,9 @@ class AbuseFilterHooks {
 			$tools[] = $linkRenderer->makeLink(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
 				$context->msg( 'abusefilter-log-linkoncontribs' )->text(),
-				array( 'title' => $context->msg( 'abusefilter-log-linkoncontribs-text',
-					$nt->getText() )->parse() ),
-				array( 'wpSearchUser' => $nt->getText() )
+				[ 'title' => $context->msg( 'abusefilter-log-linkoncontribs-text',
+					$nt->getText() )->parse() ],
+				[ 'wpSearchUser' => $nt->getText() ]
 			);
 		}
 
@@ -868,10 +868,10 @@ class AbuseFilterHooks {
 		}
 
 		if ( AbuseFilterViewExamine::$examineType !== null ) {
-			$vars['abuseFilterExamine'] = array(
+			$vars['abuseFilterExamine'] = [
 				'type' => AbuseFilterViewExamine::$examineType,
 				'id' => AbuseFilterViewExamine::$examineId,
-			);
+			];
 		}
 
 		return true;
@@ -884,9 +884,9 @@ class AbuseFilterHooks {
 	 * @return bool
 	 */
 	public static function onUserMergeAccountFields( array &$updateFields ) {
-		$updateFields[] = array( 'abuse_filter', 'af_user', 'af_user_text' );
-		$updateFields[] = array( 'abuse_filter_log', 'afl_user', 'afl_user_text' );
-		$updateFields[] = array( 'abuse_filter_history', 'afh_user', 'afh_user_text' );
+		$updateFields[] = [ 'abuse_filter', 'af_user', 'af_user_text' ];
+		$updateFields[] = [ 'abuse_filter_log', 'afl_user', 'afl_user_text' ];
+		$updateFields[] = [ 'abuse_filter_history', 'afh_user', 'afh_user_text' ];
 
 		return true;
 	}

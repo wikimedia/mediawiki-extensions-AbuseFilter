@@ -27,7 +27,7 @@ class AFPTreeParser {
 	}
 
 	public function resetState() {
-		$this->mTokens = array();
+		$this->mTokens = [];
 		$this->mPos = 0;
 	}
 
@@ -516,7 +516,7 @@ class AFPTreeParser {
 				);
 			}
 
-			$args = array();
+			$args = [];
 			do {
 				$args[] = $this->doLevelSemicolon();
 			} while ( $this->mCur->type == AFPToken::TCOMMA );
@@ -568,7 +568,7 @@ class AFPTreeParser {
 			/** @noinspection PhpMissingBreakStatementInspection */
 			case AFPToken::TSQUAREBRACKET:
 				if ( $this->mCur->value == '[' ) {
-					$list = array();
+					$list = [];
 					while ( true ) {
 						$this->move();
 						if ( $this->mCur->type == AFPToken::TSQUAREBRACKET && $this->mCur->value == ']' ) {

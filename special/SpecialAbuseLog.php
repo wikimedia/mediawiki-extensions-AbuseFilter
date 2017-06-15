@@ -42,7 +42,7 @@ class SpecialAbuseLog extends SpecialPage {
 
 		// Are we allowed?
 		$errors = $this->getPageTitle()->getUserPermissionsErrors(
-			'abusefilter-log', $this->getUser(), true, array( 'ns-specialprotected' ) );
+			'abusefilter-log', $this->getUser(), true, [ 'ns-specialprotected' ] );
 		if ( count( $errors ) ) {
 			// Go away.
 			$out->showPermissionsErrorPage( $errors, 'abusefilter-log' );
@@ -100,37 +100,37 @@ class SpecialAbuseLog extends SpecialPage {
 	function searchForm() {
 		global $wgAbuseFilterIsCentral;
 
-		$formDescriptor = array(
-			'SearchUser' => array(
+		$formDescriptor = [
+			'SearchUser' => [
 				'label-message' => 'abusefilter-log-search-user',
 				'type' => 'user',
 				'default' => $this->mSearchUser,
 				'size' => 45,
-			),
-			'SearchTitle' => array(
+			],
+			'SearchTitle' => [
 				'label-message' => 'abusefilter-log-search-title',
 				'type' => 'title',
 				'default' => $this->mSearchTitle,
 				'size' => 45,
-			)
-		);
+			]
+		];
 		if ( self::canSeeDetails() ) {
-			$formDescriptor['SearchFilter'] = array(
+			$formDescriptor['SearchFilter'] = [
 				'label-message' => 'abusefilter-log-search-filter',
 				'type' => 'text',
 				'default' => $this->mSearchFilter,
 				'size' => 45,
-			);
+			];
 		}
 		if ( $wgAbuseFilterIsCentral ) {
 			// Add free form input for wiki name. Would be nice to generate
 			// a select with unique names in the db at some point.
-			$formDescriptor['SearchWiki'] = array(
+			$formDescriptor['SearchWiki'] = [
 				'label-message' => 'abusefilter-log-search-wiki',
 				'type' => 'text',
 				'default' => $this->mSearchWiki,
 				'size' => 45,
-			);
+			];
 		}
 
 		$htmlForm = HTMLForm::factory( 'table', $formDescriptor, $this->getContext() );
@@ -155,40 +155,40 @@ class SpecialAbuseLog extends SpecialPage {
 		$dbr = wfGetDB( DB_SLAVE );
 
 		$row = $dbr->selectRow(
-			array( 'abuse_filter_log', 'abuse_filter' ),
+			[ 'abuse_filter_log', 'abuse_filter' ],
 			'*',
-			array( 'afl_id' => $id ),
+			[ 'afl_id' => $id ],
 			__METHOD__,
-			array(),
-			array( 'abuse_filter' => array( 'LEFT JOIN', 'af_id=afl_filter' ) )
+			[],
+			[ 'abuse_filter' => [ 'LEFT JOIN', 'af_id=afl_filter' ] ]
 		);
 
 		if ( !$row ) {
 			return;
 		}
 
-		$formInfo = array(
-			'logid' => array(
+		$formInfo = [
+			'logid' => [
 				'type' => 'info',
 				'default' => $id,
 				'label-message' => 'abusefilter-log-hide-id',
-			),
-			'reason' => array(
+			],
+			'reason' => [
 				'type' => 'text',
 				'label-message' => 'abusefilter-log-hide-reason',
-			),
-			'hidden' => array(
+			],
+			'hidden' => [
 				'type' => 'toggle',
 				'default' => $row->afl_deleted,
 				'label-message' => 'abusefilter-log-hide-hidden',
-			),
-		);
+			],
+		];
 
 		$form = new HTMLForm( $formInfo, $this->getContext() );
 		$form->setTitle( $this->getPageTitle() );
 		$form->setWrapperLegend( $this->msg( 'abusefilter-log-hide-legend' )->text() );
 		$form->addHiddenField( 'hide', $id );
-		$form->setSubmitCallback( array( $this, 'saveHideForm' ) );
+		$form->setSubmitCallback( [ $this, 'saveHideForm' ] );
 		$form->show();
 	}
 
@@ -203,8 +203,8 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$dbw->update(
 			'abuse_filter_log',
-			array( 'afl_deleted' => $fields['hidden'] ),
-			array( 'afl_id' => $logid ),
+			[ 'afl_deleted' => $fields['hidden'] ],
+			[ 'afl_id' => $logid ],
 			__METHOD__
 		);
 
@@ -222,7 +222,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$out = $this->getOutput();
 
 		// Generate conditions list.
-		$conds = array();
+		$conds = [];
 
 		if ( $this->mSearchUser ) {
 			$user = User::newFromName( $this->mSearchUser );
@@ -281,7 +281,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$result = $pager->getResult();
 		if ( $result && $result->numRows() !== 0 ) {
 			$out->addHTML( $pager->getNavigationBar() .
-				Xml::tags( 'ul', array( 'class' => 'plainlinks' ), $pager->getBody() ) .
+				Xml::tags( 'ul', [ 'class' => 'plainlinks' ], $pager->getBody() ) .
 				$pager->getNavigationBar() );
 		} else {
 			$out->addWikiMsg( 'abusefilter-log-noresults' );
@@ -298,12 +298,12 @@ class SpecialAbuseLog extends SpecialPage {
 		$dbr = wfGetDB( DB_SLAVE );
 
 		$row = $dbr->selectRow(
-			array( 'abuse_filter_log', 'abuse_filter' ),
+			[ 'abuse_filter_log', 'abuse_filter' ],
 			'*',
-			array( 'afl_id' => $id ),
+			[ 'afl_id' => $id ],
 			__METHOD__,
-			array(),
-			array( 'abuse_filter' => array( 'LEFT JOIN', 'af_id=afl_filter' ) )
+			[],
+			[ 'abuse_filter' => [ 'LEFT JOIN', 'af_id=afl_filter' ] ]
 		);
 
 		if ( !$row ) {
@@ -376,10 +376,10 @@ class SpecialAbuseLog extends SpecialPage {
 			$output .= Xml::element( 'h3', null, $this->msg( 'abusefilter-log-details-private' )->text() );
 			$output .=
 				Xml::openElement( 'table',
-					array(
+					[
 						'class' => 'wikitable mw-abuselog-private',
 						'style' => 'width: 80%;'
-					)
+					]
 				) .
 				Xml::openElement( 'tbody' );
 			$output .= $header;
@@ -388,7 +388,7 @@ class SpecialAbuseLog extends SpecialPage {
 			$output .=
 				Xml::tags( 'tr', null,
 					Xml::element( 'td',
-						array( 'style' => 'width: 30%;' ),
+						[ 'style' => 'width: 30%;' ],
 						$this->msg( 'abusefilter-log-details-ip' )->text()
 					) .
 					Xml::element( 'td', null, $row->afl_ip )
@@ -451,7 +451,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$user = $this->getUser();
 		$lang = $this->getLanguage();
 
-		$actionLinks = array();
+		$actionLinks = [];
 
 		$title = Title::makeTitle( $row->afl_namespace, $row->afl_title );
 
@@ -470,8 +470,8 @@ class SpecialAbuseLog extends SpecialPage {
 				$diffLink = $linkRenderer->makeKnownLink(
 					$title,
 					new HtmlArmor( $this->msg( 'abusefilter-log-diff' )->parse() ),
-					array(),
-					array( 'diff' => 'prev', 'oldid' => $row->afl_rev_id ) );
+					[],
+					[ 'diff' => 'prev', 'oldid' => $row->afl_rev_id ] );
 			}
 		} else {
 			$pageLink = WikiMap::makeForeignLink( $row->afl_wiki, $row->afl_title );
@@ -479,7 +479,7 @@ class SpecialAbuseLog extends SpecialPage {
 			if ( $row->afl_rev_id ) {
 				$diffUrl = WikiMap::getForeignURL( $row->afl_wiki, $row->afl_title );
 				$diffUrl = wfAppendQuery( $diffUrl,
-					array( 'diff' => 'prev', 'oldid' => $row->afl_rev_id ) );
+					[ 'diff' => 'prev', 'oldid' => $row->afl_rev_id ] );
 
 				$diffLink = Linker::makeExternalLink( $diffUrl,
 					$this->msg( 'abusefilter-log-diff' )->parse() );
@@ -501,7 +501,7 @@ class SpecialAbuseLog extends SpecialPage {
 			$actions_taken = $this->msg( 'abusefilter-log-noactions' )->text();
 		} else {
 			$actions = explode( ',', $actions_taken );
-			$displayActions = array();
+			$displayActions = [];
 
 			foreach ( $actions as $action ) {
 				$displayActions[] = AbuseFilter::getActionDisplay( $action );
@@ -545,8 +545,8 @@ class SpecialAbuseLog extends SpecialPage {
 				$hideLink = $linkRenderer->makeKnownLink(
 					$this->getPageTitle(),
 					$this->msg( 'abusefilter-log-hidelink' )->text(),
-					array(),
-					array( 'hide' => $row->afl_id )
+					[],
+					[ 'hide' => $row->afl_id ]
 				);
 
 				$actionLinks[] = $hideLink;
@@ -604,14 +604,14 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 
 		if ( $isListItem ) {
-			return Xml::tags( 'li', isset( $class ) ? array( 'class' => $class ) : null, $description );
+			return Xml::tags( 'li', isset( $class ) ? [ 'class' => $class ] : null, $description );
 		} else {
-			return Xml::tags( 'span', isset( $class ) ? array( 'class' => $class ) : null, $description );
+			return Xml::tags( 'span', isset( $class ) ? [ 'class' => $class ] : null, $description );
 		}
 	}
 
 	protected static function getUserLinks( $userId, $userName ) {
-		static $cache = array();
+		static $cache = [];
 
 		if ( !isset( $cache[$userName][$userId] ) ) {
 			$cache[$userName][$userId] = Linker::userLink( $userId, $userName ) .
@@ -627,11 +627,11 @@ class SpecialAbuseLog extends SpecialPage {
 	 */
 	public static function getNotDeletedCond( $db ) {
 		$deletedZeroCond = $db->makeList(
-			array( 'afl_deleted' => 0 ), LIST_AND );
+			[ 'afl_deleted' => 0 ], LIST_AND );
 		$deletedNullCond = $db->makeList(
-			array( 'afl_deleted' => null ), LIST_AND );
+			[ 'afl_deleted' => null ], LIST_AND );
 		$notDeletedCond = $db->makeList(
-			array( $deletedZeroCond, $deletedNullCond ), LIST_OR );
+			[ $deletedZeroCond, $deletedNullCond ], LIST_OR );
 
 		return $notDeletedCond;
 	}
@@ -676,7 +676,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	 * @param array $conds
 	 * @param bool $details
 	 */
-	function __construct( $form, $conds = array(), $details = false ) {
+	function __construct( $form, $conds = [], $details = false ) {
 		$this->mForm = $form;
 		$this->mConds = $conds;
 		parent::__construct();
@@ -689,18 +689,18 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	function getQueryInfo() {
 		$conds = $this->mConds;
 
-		$info = array(
-			'tables' => array( 'abuse_filter_log', 'abuse_filter' ),
+		$info = [
+			'tables' => [ 'abuse_filter_log', 'abuse_filter' ],
 			'fields' => '*',
 			'conds' => $conds,
 			'join_conds' =>
-				array( 'abuse_filter' =>
-					array(
+				[ 'abuse_filter' =>
+					[
 						'LEFT JOIN',
 						'af_id=afl_filter',
-					),
-				),
-		);
+					],
+				],
+		];
 
 		if ( !$this->mForm->canSeeHidden() ) {
 			$db = $this->mDb;

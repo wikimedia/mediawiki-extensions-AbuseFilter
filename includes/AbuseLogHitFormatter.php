@@ -42,7 +42,7 @@ class AbuseLogHitFormatter extends LogFormatter {
 			$actions_taken = $this->msg( 'abusefilter-log-noactions' );
 		} else {
 			$actions = explode( ',', $actions_taken );
-			$displayActions = array();
+			$displayActions = [];
 
 			foreach ( $actions as $action ) {
 				$displayActions[] = AbuseFilter::getActionDisplay( $action );

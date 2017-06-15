@@ -28,19 +28,19 @@ class PurgeOldLogIPData extends Maintenance {
 			$ids = $dbw->selectFieldValues(
 				'abuse_filter_log',
 				'afl_id',
-				array(
+				[
 					'afl_ip <> ""',
 					"afl_timestamp < " . $dbw->addQuotes( $dbw->timestamp( $cutoffUnix ) )
-				),
+				],
 				__METHOD__,
-				array( 'LIMIT' => $this->mBatchSize )
+				[ 'LIMIT' => $this->mBatchSize ]
 			);
 
 			if ( $ids ) {
 				$dbw->update(
 					'abuse_filter_log',
-					array( 'afl_ip' => '' ),
-					array( 'afl_id' => $ids ),
+					[ 'afl_ip' => '' ],
+					[ 'afl_id' => $ids ],
 					__METHOD__
 				);
 				$count += $dbw->affectedRows();

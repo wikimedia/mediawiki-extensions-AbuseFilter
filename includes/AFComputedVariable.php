@@ -2,8 +2,8 @@
 
 class AFComputedVariable {
 	public $mMethod, $mParameters;
-	public static $userCache = array();
-	public static $articleCache = array();
+	public static $userCache = [];
+	public static $articleCache = [];
 
 	/**
 	 * @param $method
@@ -24,7 +24,7 @@ class AFComputedVariable {
 	 * @return object
 	 */
 	function parseNonEditWikitext( $wikitext, $article ) {
-		static $cache = array();
+		static $cache = [];
 
 		$cacheKey = md5( $wikitext ) . ':' . $article->getTitle()->getPrefixedText();
 
@@ -33,7 +33,7 @@ class AFComputedVariable {
 		}
 
 		global $wgParser;
-		$edit = (object)array();
+		$edit = (object)[];
 		$options = new ParserOptions;
 		$options->setTidy( true );
 		$edit->output = $wgParser->parse( $wikitext, $article->getTitle(), $options );
@@ -63,7 +63,7 @@ class AFComputedVariable {
 		}
 
 		if ( count( self::$userCache ) > 1000 ) {
-			self::$userCache = array();
+			self::$userCache = [];
 		}
 
 		if ( $user instanceof User ) {
@@ -96,7 +96,7 @@ class AFComputedVariable {
 		}
 
 		if ( count( self::$articleCache ) > 1000 ) {
-			self::$articleCache = array();
+			self::$articleCache = [];
 		}
 
 		wfDebug( "Creating article object for $namespace:$title in cache\n" );
@@ -116,17 +116,17 @@ class AFComputedVariable {
 		// Stolen from ConfirmEdit
 		$id = $article->getId();
 		if ( !$id ) {
-			return array();
+			return [];
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
 			'externallinks',
-			array( 'el_to' ),
-			array( 'el_from' => $id ),
+			[ 'el_to' ],
+			[ 'el_from' => $id ],
 			__METHOD__
 		);
-		$links = array();
+		$links = [];
 		foreach ( $res as $row ) {
 			$links[] = $row->el_to;
 		}
@@ -144,7 +144,7 @@ class AFComputedVariable {
 		$result = null;
 
 		if ( !Hooks::run( 'AbuseFilter-interceptVariable',
-							array( $this->mMethod, $vars, $parameters, &$result ) ) ) {
+							[ $this->mMethod, $vars, $parameters, &$result ] ) ) {
 			return $result instanceof AFPData
 				? $result : AFPData::newFromPHPVar( $result );
 		}
@@ -163,7 +163,7 @@ class AFComputedVariable {
 				$diff = $vars->getVar( $parameters['diff-var'] )->toString();
 				$line_prefix = $parameters['line-prefix'];
 				$diff_lines = explode( "\n", $diff );
-				$interest_lines = array();
+				$interest_lines = [];
 				foreach ( $diff_lines as $line ) {
 					if ( substr( $line, 0, 1 ) === $line_prefix ) {
 						$interest_lines[] = substr( $line, strlen( $line_prefix ) );
@@ -218,7 +218,7 @@ class AFComputedVariable {
 					// TODO: Get links from Content object. But we don't have the content object.
 					//      And for non-text content, $wikitext is usually not going to be a valid
 					//      serialization, but rather some dummy text for filtering.
-					$links = array();
+					$links = [];
 				}
 
 				$result = $links;
@@ -321,7 +321,7 @@ class AFComputedVariable {
 				$title = Title::makeTitle( $parameters['namespace'], $parameters['title'] );
 
 				$rights = $title->getRestrictions( $action );
-				$rights = count( $rights ) ? $rights : array();
+				$rights = count( $rights ) ? $rights : [];
 				$result = $rights;
 				break;
 			case 'simple-user-accessor':
@@ -338,7 +338,7 @@ class AFComputedVariable {
 					throw new MWException( "Invalid username $user" );
 				}
 
-				$result = call_user_func( array( $obj, $method ) );
+				$result = call_user_func( [ $obj, $method ] );
 				break;
 			case 'user-age':
 				$user = $parameters['user'];
@@ -381,7 +381,7 @@ class AFComputedVariable {
 				break;
 			default:
 				if ( Hooks::run( 'AbuseFilter-computeVariable',
-									array( $this->mMethod, $vars, $parameters, &$result ) ) ) {
+									[ $this->mMethod, $vars, $parameters, &$result ] ) ) {
 					throw new AFPException( 'Unknown variable compute type ' . $this->mMethod );
 				}
 		}
@@ -396,7 +396,7 @@ class AFComputedVariable {
 	 */
 	public static function getLastPageAuthors( Title $title ) {
 		if ( !$title->exists() ) {
-			return array();
+			return [];
 		}
 
 		$cache = ObjectCache::getMainWANInstance();
@@ -411,17 +411,17 @@ class AFComputedVariable {
 				$revAuthors = $dbr->selectFieldValues(
 					'revision',
 					'rev_user_text',
-					array( 'rev_page' => $title->getArticleID() ),
+					[ 'rev_page' => $title->getArticleID() ],
 					__METHOD__,
 					// Some pages have < 10 authors but many revisions (e.g. bot pages)
-					array( 'ORDER BY' => 'rev_timestamp DESC',
+					[ 'ORDER BY' => 'rev_timestamp DESC',
 						'LIMIT' => 100,
 						// Force index per T116557
 						'USE INDEX' => 'page_timestamp',
-					)
+					]
 				);
 				// Get the last 10 distinct authors within this set of edits
-				$users = array();
+				$users = [];
 				foreach ( $revAuthors as $author ) {
 					$users[$author] = 1;
 					if ( count( $users ) >= 10 ) {

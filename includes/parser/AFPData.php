@@ -11,7 +11,7 @@ class AFPData {
 
 	// Translation table mapping shell-style wildcards to PCRE equivalents.
 	// Derived from <http://www.php.net/manual/en/function.fnmatch.php#100207>
-	private static $wildcardMap = array(
+	private static $wildcardMap = [
 		'\*' => '.*',
 		'\+' => '\+',
 		'\-' => '\-',
@@ -21,7 +21,7 @@ class AFPData {
 		'\[\!' => '[^',
 		'\\' => '\\\\',
 		'\]' => ']',
-	);
+	];
 
 	public $type;
 	public $data;
@@ -50,7 +50,7 @@ class AFPData {
 		} elseif ( is_bool( $var ) ) {
 			return new AFPData( self::DBOOL, $var );
 		} elseif ( is_array( $var ) ) {
-			$result = array();
+			$result = [];
 			foreach ( $var as $item ) {
 				$result[] = self::newFromPHPVar( $item );
 			}
@@ -118,7 +118,7 @@ class AFPData {
 			return new AFPData( self::DSTRING, strval( $orig->data ) );
 		}
 		if ( $target == self::DLIST ) {
-			return new AFPData( self::DLIST, array( $orig ) );
+			return new AFPData( self::DLIST, [ $orig ] );
 		}
 	}
 
@@ -236,7 +236,7 @@ class AFPData {
 			throw new AFPUserVisibleException(
 				'regexfailure',
 				$pos,
-				array( 'unspecified error in preg_match()', $pattern )
+				[ 'unspecified error in preg_match()', $pattern ]
 			);
 		}
 
@@ -348,7 +348,7 @@ class AFPData {
 		}
 
 		if ( $op != '*' && $b == 0 ) {
-			throw new AFPUserVisibleException( 'dividebyzero', $pos, array( $a ) );
+			throw new AFPUserVisibleException( 'dividebyzero', $pos, [ $a ] );
 		}
 
 		if ( $op == '*' ) {
@@ -413,7 +413,7 @@ class AFPData {
 				return $this->toInt();
 			case self::DLIST:
 				$input = $this->toList();
-				$output = array();
+				$output = [];
 				foreach ( $input as $item ) {
 					$output[] = $item->toNative();
 				}

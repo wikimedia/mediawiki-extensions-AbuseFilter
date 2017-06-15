@@ -34,7 +34,7 @@ class AFPUserVisibleException extends AFPException {
 		// abusefilter-exception-notlist
 		return wfMessage(
 			'abusefilter-exception-' . $this->mExceptionID,
-			array_merge( array( $this->mPosition ), $this->mParams )
+			array_merge( [ $this->mPosition ], $this->mParams )
 		);
 	}
 }

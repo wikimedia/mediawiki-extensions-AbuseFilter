@@ -126,7 +126,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				}
 
 				if ( count( self::$funcCache ) > 1000 ) {
-					self::$funcCache = array();
+					self::$funcCache = [];
 				}
 
 				return $result;
@@ -136,7 +136,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 
 				$list = $this->evalNode( $list );
 				if ( $list->type != AFPData::DLIST ) {
-					throw new AFPUserVisibleException( 'notlist', $node->position, array() );
+					throw new AFPUserVisibleException( 'notlist', $node->position, [] );
 				}
 
 				$offset = $this->evalNode( $offset )->toInt();
@@ -236,7 +236,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 
 				$list = $this->mVars->getVar( $varName );
 				if ( $list->type != AFPData::DLIST ) {
-					throw new AFPUserVisibleException( 'notlist', $node->position, array() );
+					throw new AFPUserVisibleException( 'notlist', $node->position, [] );
 				}
 
 				$offset = $this->evalNode( $offset )->toInt();
@@ -244,7 +244,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				$list = $list->toList();
 				if ( count( $list ) <= $offset ) {
 					throw new AFPUserVisibleException( 'outofbounds', $node->position,
-						array( $offset, count( $list ) ) );
+						[ $offset, count( $list ) ] );
 				}
 
 				$list[$offset] = $this->evalNode( $value );
@@ -256,7 +256,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 
 				$list = $this->mVars->getVar( $varName );
 				if ( $list->type != AFPData::DLIST ) {
-					throw new AFPUserVisibleException( 'notlist', $node->position, array() );
+					throw new AFPUserVisibleException( 'notlist', $node->position, [] );
 				}
 
 				$list = $list->toList();

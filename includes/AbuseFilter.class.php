@@ -16,9 +16,9 @@ class AbuseFilter {
 	private static $filterCache = [];
 
 	public static $condCount = 0;
-	public static $tagsToSet = array(); // FIXME: avoid global state here
+	public static $tagsToSet = []; // FIXME: avoid global state here
 
-	public static $history_mappings = array(
+	public static $history_mappings = [
 		'af_pattern' => 'afh_pattern',
 		'af_user' => 'afh_user',
 		'af_user_text' => 'afh_user_text',
@@ -28,31 +28,31 @@ class AbuseFilter {
 		'af_deleted' => 'afh_deleted',
 		'af_id' => 'afh_filter',
 		'af_group' => 'afh_group',
-	);
-	public static $builderValues = array(
-		'op-arithmetic' => array(
+	];
+	public static $builderValues = [
+		'op-arithmetic' => [
 			'+' => 'addition',
 			'-' => 'subtraction',
 			'*' => 'multiplication',
 			'/' => 'divide',
 			'%' => 'modulo',
 			'**' => 'pow'
-		),
-		'op-comparison' => array(
+		],
+		'op-comparison' => [
 			'==' => 'equal',
 			'!=' => 'notequal',
 			'<' => 'lt',
 			'>' => 'gt',
 			'<=' => 'lte',
 			'>=' => 'gte'
-		),
-		'op-bool' => array(
+		],
+		'op-bool' => [
 			'!' => 'not',
 			'&' => 'and',
 			'|' => 'or',
 			'^' => 'xor'
-		),
-		'misc' => array(
+		],
+		'misc' => [
 			'in' => 'in',
 			'contains' => 'contains',
 			'like' => 'like',
@@ -61,8 +61,8 @@ class AbuseFilter {
 			'irlike' => 'irlike',
 			'cond ? iftrue : iffalse' => 'tern',
 			'if cond then iftrue elseiffalse end' => 'cond',
-		),
-		'funcs' => array(
+		],
+		'funcs' => [
 			'length(string)' => 'length',
 			'lcase(string)' => 'lcase',
 			'ucase(string)' => 'ucase',
@@ -81,8 +81,8 @@ class AbuseFilter {
 			'str_replace(subject, search, replace)' => 'str_replace',
 			'rescape(string)' => 'rescape',
 			'set_var(var,value)' => 'set_var',
-		),
-		'vars' => array(
+		],
+		'vars' => [
 			'timestamp' => 'timestamp',
 			'accountname' => 'accountname',
 			'action' => 'action',
@@ -142,8 +142,8 @@ class AbuseFilter {
 			'file_width' => 'file-width',
 			'file_height' => 'file-height',
 			'file_bits_per_channel' => 'file-bits-per-channel',
-		),
-	);
+		],
+	];
 
 	public static $editboxName = null;
 
@@ -152,27 +152,27 @@ class AbuseFilter {
 	 * @param $pageType
 	 */
 	public static function addNavigationLinks( IContextSource $context, $pageType ) {
-		$linkDefs = array(
+		$linkDefs = [
 			'home' => 'Special:AbuseFilter',
 			'recentchanges' => 'Special:AbuseFilter/history',
 			'examine' => 'Special:AbuseFilter/examine',
 			'log' => 'Special:AbuseLog',
-		);
+		];
 
 		if ( $context->getUser()->isAllowed( 'abusefilter-modify' ) ) {
-			$linkDefs = array_merge( $linkDefs, array(
+			$linkDefs = array_merge( $linkDefs, [
 				'test' => 'Special:AbuseFilter/test',
 				'tools' => 'Special:AbuseFilter/tools',
 				'import' => 'Special:AbuseFilter/import',
-			) );
+			] );
 		}
 
 		// Save some translator work
-		$msgOverrides = array(
+		$msgOverrides = [
 			'recentchanges' => 'abusefilter-filter-log',
-		);
+		];
 
-		$links = array();
+		$links = [];
 		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
 
 		foreach ( $linkDefs as $name => $page ) {
@@ -198,7 +198,7 @@ class AbuseFilter {
 		$linkStr = $context->msg( 'parentheses', $context->getLanguage()->pipeList( $links ) )->text();
 		$linkStr = $context->msg( 'abusefilter-topnav' )->parse() . " $linkStr";
 
-		$linkStr = Xml::tags( 'div', array( 'class' => 'mw-abusefilter-navigation' ), $linkStr );
+		$linkStr = Xml::tags( 'div', [ 'class' => 'mw-abusefilter-navigation' ], $linkStr );
 
 		$context->getOutput()->setSubtitle( $linkStr );
 	}
@@ -214,7 +214,7 @@ class AbuseFilter {
 		$vars->setLazyLoadVar(
 			'user_editcount',
 			'simple-user-accessor',
-			array( 'user' => $user, 'method' => 'getEditCount' )
+			[ 'user' => $user, 'method' => 'getEditCount' ]
 		);
 
 		$vars->setVar( 'user_name', $user->getName() );
@@ -222,34 +222,34 @@ class AbuseFilter {
 		$vars->setLazyLoadVar(
 			'user_emailconfirm',
 			'simple-user-accessor',
-			array( 'user' => $user, 'method' => 'getEmailAuthenticationTimestamp' )
+			[ 'user' => $user, 'method' => 'getEmailAuthenticationTimestamp' ]
 		);
 
 		$vars->setLazyLoadVar(
 			'user_age',
 			'user-age',
-			array( 'user' => $user, 'asof' => wfTimestampNow() )
+			[ 'user' => $user, 'asof' => wfTimestampNow() ]
 		);
 
 		$vars->setLazyLoadVar(
 			'user_groups',
 			'simple-user-accessor',
-			array( 'user' => $user, 'method' => 'getEffectiveGroups' )
+			[ 'user' => $user, 'method' => 'getEffectiveGroups' ]
 		);
 
 		$vars->setLazyLoadVar(
 			'user_rights',
 			'simple-user-accessor',
-			array( 'user' => $user, 'method' => 'getRights' )
+			[ 'user' => $user, 'method' => 'getRights' ]
 		);
 
 		$vars->setLazyLoadVar(
 			'user_blocked',
 			'simple-user-accessor',
-			array( 'user' => $user, 'method' => 'isBlocked' )
+			[ 'user' => $user, 'method' => 'isBlocked' ]
 		);
 
-		Hooks::run( 'AbuseFilter-generateUserVars', array( $vars, $user ) );
+		Hooks::run( 'AbuseFilter-generateUserVars', [ $vars, $user ] );
 
 		return $vars;
 	}
@@ -269,7 +269,7 @@ class AbuseFilter {
 		if ( !$wgDisableCounters ) {
 			$realValues['vars']['article_views'] = 'article-views';
 		}
-		Hooks::run( 'AbuseFilter-builder', array( &$realValues ) );
+		Hooks::run( 'AbuseFilter-builder', [ &$realValues ] );
 
 		return $realValues;
 	}
@@ -285,7 +285,7 @@ class AbuseFilter {
 			if ( !$wgAbuseFilterCentralDB ) {
 				return false;
 			}
-			$dbr = wfGetDB( DB_SLAVE, array(), $wgAbuseFilterCentralDB );
+			$dbr = wfGetDB( DB_SLAVE, [], $wgAbuseFilterCentralDB );
 			$filter = $globalIndex;
 		} else {
 			$dbr = wfGetDB( DB_SLAVE );
@@ -296,7 +296,7 @@ class AbuseFilter {
 		$hidden = $dbr->selectField(
 			'abuse_filter',
 			'af_hidden',
-			array( 'af_id' => $filter ),
+			[ 'af_id' => $filter ],
 			__METHOD__
 		);
 
@@ -354,26 +354,26 @@ class AbuseFilter {
 		global $wgRestrictionTypes;
 		foreach ( $wgRestrictionTypes as $action ) {
 			$vars->setLazyLoadVar( "{$prefix}_restrictions_$action", 'get-page-restrictions',
-				array( 'title' => $title->getText(),
+				[ 'title' => $title->getText(),
 					'namespace' => $title->getNamespace(),
 					'action' => $action
-				)
+				]
 			);
 		}
 
 		$vars->setLazyLoadVar( "{$prefix}_recent_contributors", 'load-recent-authors',
-			array(
+			[
 				'title' => $title->getText(),
 				'namespace' => $title->getNamespace()
-			) );
+			] );
 
 		$vars->setLazyLoadVar( "{$prefix}_first_contributor", 'load-first-author',
-			array(
+			[
 				'title' => $title->getText(),
 				'namespace' => $title->getNamespace()
-			) );
+			] );
 
-		Hooks::run( 'AbuseFilter-generateTitleVars', array( $vars, $title, $prefix ) );
+		Hooks::run( 'AbuseFilter-generateTitleVars', [ $vars, $title, $prefix ] );
 
 		return $vars;
 	}
@@ -396,7 +396,7 @@ class AbuseFilter {
 	 * @param array $vars
 	 * @return string
 	 */
-	public static function evaluateExpression( $expr, $vars = array() ) {
+	public static function evaluateExpression( $expr, $vars = [] ) {
 		global $wgAbuseFilterParserClass;
 
 		if ( self::checkSyntax( $expr ) !== true ) {
@@ -457,17 +457,17 @@ class AbuseFilter {
 		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
 
 		// Fetch from the database.
-		$filter_matched = array();
+		$filter_matched = [];
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
 			'abuse_filter',
 			'*',
-			array(
+			[
 				'af_enabled' => 1,
 				'af_deleted' => 0,
 				'af_group' => $group,
-			),
+			],
 			__METHOD__
 		);
 
@@ -487,25 +487,25 @@ class AbuseFilter {
 					global $wgAbuseFilterCentralDB;
 
 					$fdb = wfGetLB( $wgAbuseFilterCentralDB )->getConnectionRef(
-						DB_SLAVE, array(), $wgAbuseFilterCentralDB
+						DB_SLAVE, [], $wgAbuseFilterCentralDB
 					);
 
 					return iterator_to_array( $fdb->select(
 						'abuse_filter',
 						'*',
-						array(
+						[
 							'af_enabled' => 1,
 							'af_deleted' => 0,
 							'af_global' => 1,
 							'af_group' => $group,
-						),
+						],
 						$fname
 					) );
 				},
-				array(
-					'checkKeys' => array( $globalRulesKey ),
+				[
+					'checkKeys' => [ $globalRulesKey ],
 					'lockTSE' => 300
-				)
+				]
 			);
 
 			foreach ( $res as $row ) {
@@ -628,7 +628,7 @@ class AbuseFilter {
 		$curConds = $stash->get( $condsKey );
 
 		if ( !$curCount ) {
-			return array( 0, 0 );
+			return [ 0, 0 ];
 		}
 
 		$timeProfile = ( $curTotal / $curCount ) * 1000; // 1000 ms in a sec
@@ -637,7 +637,7 @@ class AbuseFilter {
 		$condProfile = ( $curConds / $curCount );
 		$condProfile = round( $condProfile, 0 );
 
-		return array( $timeProfile, $condProfile );
+		return [ $timeProfile, $condProfile ];
 	}
 
 	/**
@@ -660,8 +660,8 @@ class AbuseFilter {
 	 * @return array
 	 */
 	public static function getConsequencesForFilters( $filters ) {
-		$globalFilters = array();
-		$localFilters = array();
+		$globalFilters = [];
+		$localFilters = [];
 
 		foreach ( $filters as $filter ) {
 			$globalIndex = self::decodeGlobalName( $filter );
@@ -677,14 +677,14 @@ class AbuseFilter {
 		// Load local filter info
 		$dbr = wfGetDB( DB_SLAVE );
 		// Retrieve the consequences.
-		$consequences = array();
+		$consequences = [];
 
 		if ( count( $localFilters ) ) {
 			$consequences = self::loadConsequencesFromDB( $dbr, $localFilters );
 		}
 
 		if ( count( $globalFilters ) ) {
-			$fdb = wfGetDB( DB_SLAVE, array(), $wgAbuseFilterCentralDB );
+			$fdb = wfGetDB( DB_SLAVE, [], $wgAbuseFilterCentralDB );
 			$consequences = $consequences + self::loadConsequencesFromDB( $fdb, $globalFilters, 'global-' );
 		}
 
@@ -698,18 +698,18 @@ class AbuseFilter {
 	 * @return array
 	 */
 	public static function loadConsequencesFromDB( $dbr, $filters, $prefix = '' ) {
-		$actionsByFilter = array();
+		$actionsByFilter = [];
 		foreach ( $filters as $filter ) {
-			$actionsByFilter[$prefix . $filter] = array();
+			$actionsByFilter[$prefix . $filter] = [];
 		}
 
 		$res = $dbr->select(
-			array( 'abuse_filter_action', 'abuse_filter' ),
+			[ 'abuse_filter_action', 'abuse_filter' ],
 			'*',
-			array( 'af_id' => $filters ),
+			[ 'af_id' => $filters ],
 			__METHOD__,
-			array(),
-			array( 'abuse_filter_action' => array( 'LEFT JOIN', 'afa_filter=af_id' ) )
+			[],
+			[ 'abuse_filter_action' => [ 'LEFT JOIN', 'afa_filter=af_id' ] ]
 		);
 
 		// Categorise consequences by filter.
@@ -723,10 +723,10 @@ class AbuseFilter {
 				// We probably got a NULL, as it's a LEFT JOIN.
 				// Don't add it.
 			} else {
-				$actionsByFilter[$prefix . $row->afa_filter][$row->afa_consequence] = array(
+				$actionsByFilter[$prefix . $row->afa_filter][$row->afa_consequence] = [
 					'action' => $row->afa_consequence,
 					'parameters' => explode( "\n", $row->afa_parameters )
-				);
+				];
 			}
 		}
 
@@ -748,9 +748,9 @@ class AbuseFilter {
 		global $wgMainCacheType;
 
 		$actionsByFilter = self::getConsequencesForFilters( $filters );
-		$actionsTaken = array_fill_keys( $filters, array() );
+		$actionsTaken = array_fill_keys( $filters, [] );
 
-		$messages = array();
+		$messages = [];
 
 		global $wgOut, $wgAbuseFilterDisallowGlobalLocalBlocks, $wgAbuseFilterRestrictions;
 		foreach ( $actionsByFilter as $filter => $actions ) {
@@ -805,7 +805,7 @@ class AbuseFilter {
 					} else {
 						$msg = 'abusefilter-warning';
 					}
-					$messages[] = array( $msg, $parsed_public_comments, $filter );
+					$messages[] = [ $msg, $parsed_public_comments, $filter ];
 
 					$actionsTaken[$filter][] = 'warn';
 
@@ -861,7 +861,7 @@ class AbuseFilter {
 		$status = Status::newGood( $actionsTaken );
 
 		foreach ( $messages as $msg ) {
-			call_user_func_array( array( $status, 'fatal' ), $msg );
+			call_user_func_array( [ $status, 'fatal' ], $msg );
 		}
 
 		return $status;
@@ -897,7 +897,7 @@ class AbuseFilter {
 		$statsd = MediaWikiServices::getInstance()->getStatsdDataFactory();
 
 		// Add vars from extensions
-		Hooks::run( 'AbuseFilter-filterAction', array( &$vars, $title ) );
+		Hooks::run( 'AbuseFilter-filterAction', [ &$vars, $title ] );
 		$vars->setVar( 'context', 'filter' );
 		$vars->setVar( 'timestamp', time() );
 
@@ -956,14 +956,14 @@ class AbuseFilter {
 			$user = $user->isSafeToLoad() ? $user : new User;
 
 			// Create a template
-			$log_template = array(
+			$log_template = [
 				'afl_user' => $user->getId(),
 				'afl_user_text' => $user->getName(),
 				'afl_timestamp' => wfGetDB( DB_SLAVE )->timestamp( wfTimestampNow() ),
 				'afl_namespace' => $title->getNamespace(),
 				'afl_title' => $title->getDBkey(),
 				'afl_ip' => $wgRequest->getIP()
-			);
+			];
 
 			// Hack to avoid revealing IPs of people creating accounts
 			if ( !$user->getId() && ( $action == 'createaccount' || $action == 'autocreateaccount' ) ) {
@@ -1004,7 +1004,7 @@ class AbuseFilter {
 
 				$id = $globalIndex;
 				$lb = wfGetLB( $wgAbuseFilterCentralDB );
-				$dbr = $lb->getConnectionRef( DB_SLAVE, array(), $wgAbuseFilterCentralDB );
+				$dbr = $lb->getConnectionRef( DB_SLAVE, [], $wgAbuseFilterCentralDB );
 			} else {
 				// Local wiki filter
 				$dbr = wfGetDB( DB_SLAVE );
@@ -1059,14 +1059,14 @@ class AbuseFilter {
 	) {
 		$dbw = wfGetDB( DB_MASTER );
 
-		$central_log_template = array(
+		$central_log_template = [
 			'afl_wiki' => wfWikiID(),
-		);
+		];
 
-		$log_rows = array();
-		$central_log_rows = array();
-		$logged_local_filters = array();
-		$logged_global_filters = array();
+		$log_rows = [];
+		$central_log_rows = [];
+		$logged_local_filters = [];
+		$logged_global_filters = [];
 
 		foreach ( $actions_taken as $filter => $actions ) {
 			$globalIndex = self::decodeGlobalName( $filter );
@@ -1112,7 +1112,7 @@ class AbuseFilter {
 		// Increment trigger counter
 		$stash->incr( self::filterMatchesKey() );
 
-		$local_log_ids = array();
+		$local_log_ids = [];
 		global $wgAbuseFilterNotifications, $wgAbuseFilterNotificationsPrivate;
 		foreach ( $log_rows as $data ) {
 			$data['afl_var_dump'] = $var_dump;
@@ -1129,12 +1129,12 @@ class AbuseFilter {
 			// Set action target
 			$entry->setTarget( Title::makeTitle( $data['afl_namespace'], $data['afl_title'] ) );
 			// Additional info
-			$entry->setParameters( array(
+			$entry->setParameters( [
 				'action' => $data['afl_action'],
 				'filter' => $data['afl_filter'],
 				'actions' => $data['afl_actions'],
 				'log' => $data['afl_id'],
-			) );
+			] );
 
 			// Send data to CheckUser if installed and we
 			// aren't already sending a notification to recentchanges
@@ -1162,15 +1162,15 @@ class AbuseFilter {
 			$dbw->onTransactionPreCommitOrIdle(
 				function () use ( $dbw, $logged_local_filters, $method ) {
 					$dbw->update( 'abuse_filter',
-						array( 'af_hit_count=af_hit_count+1' ),
-						array( 'af_id' => $logged_local_filters ),
+						[ 'af_hit_count=af_hit_count+1' ],
+						[ 'af_id' => $logged_local_filters ],
 						$method
 					);
 				}
 			);
 		}
 
-		$global_log_ids = array();
+		$global_log_ids = [];
 
 		// Global stuff
 		if ( count( $logged_global_filters ) ) {
@@ -1182,7 +1182,7 @@ class AbuseFilter {
 			}
 
 			global $wgAbuseFilterCentralDB;
-			$fdb = wfGetDB( DB_MASTER, array(), $wgAbuseFilterCentralDB );
+			$fdb = wfGetDB( DB_MASTER, [], $wgAbuseFilterCentralDB );
 
 			foreach ( $central_log_rows as $row ) {
 				$fdb->insert( 'abuse_filter_log', $row, __METHOD__ );
@@ -1192,8 +1192,8 @@ class AbuseFilter {
 			$fdb->onTransactionPreCommitOrIdle(
 				function () use ( $fdb, $logged_global_filters, $method ) {
 					$fdb->update( 'abuse_filter',
-						array( 'af_hit_count=af_hit_count+1' ),
-						array( 'af_id' => $logged_global_filters ),
+						[ 'af_hit_count=af_hit_count+1' ],
+						[ 'af_id' => $logged_global_filters ],
 						$method
 					);
 				}
@@ -1224,11 +1224,11 @@ class AbuseFilter {
 
 		// Get all variables yet set and compute old and new wikitext if not yet done
 		// as those are needed for the diff view on top of the abuse log pages
-		$vars = $vars->dumpAllVars( array( 'old_wikitext', 'new_wikitext' ) );
+		$vars = $vars->dumpAllVars( [ 'old_wikitext', 'new_wikitext' ] );
 
 		// Vars is an array with native PHP data types (non-objects) now
 		$text = serialize( $vars );
-		$flags = array( 'nativeDataArray' );
+		$flags = [ 'nativeDataArray' ];
 
 		if ( $wgCompressRevisions ) {
 			if ( function_exists( 'gzdeflate' ) ) {
@@ -1255,17 +1255,17 @@ class AbuseFilter {
 
 		// Store to text table
 		if ( $global ) {
-			$dbw = wfGetDB( DB_MASTER, array(), $wgAbuseFilterCentralDB );
+			$dbw = wfGetDB( DB_MASTER, [], $wgAbuseFilterCentralDB );
 		} else {
 			$dbw = wfGetDB( DB_MASTER );
 		}
 		$old_id = $dbw->nextSequenceValue( 'text_old_id_seq' );
 		$dbw->insert( 'text',
-			array(
+			[
 				'old_id' => $old_id,
 				'old_text' => $text,
 				'old_flags' => implode( ',', $flags ),
-			), __METHOD__
+			], __METHOD__
 		);
 
 		return $dbw->insertId();
@@ -1301,8 +1301,8 @@ class AbuseFilter {
 
 		$text_row = $dbr->selectRow(
 			'text',
-			array( 'old_text', 'old_flags' ),
-			array( 'old_id' => $text_id ),
+			[ 'old_text', 'old_flags' ],
+			[ 'old_id' => $text_id ],
 			__METHOD__
 		);
 
@@ -1360,14 +1360,14 @@ class AbuseFilter {
 		switch ( $action ) {
 			case 'disallow':
 				if ( strlen( $parameters[0] ) ) {
-					$message = array( $parameters[0], $rule_desc, $rule_number );
+					$message = [ $parameters[0], $rule_desc, $rule_number ];
 				} else {
 					// Generic message.
-					$message = array(
+					$message = [
 						'abusefilter-disallowed',
 						$rule_desc,
 						$rule_number
-					);
+					];
 				}
 				break;
 
@@ -1382,37 +1382,37 @@ class AbuseFilter {
 				}
 
 				self::doAbuseFilterBlock(
-					array(
+					[
 						'desc' => $rule_desc,
 						'number' => $rule_number
-					),
+					],
 					$wgUser->getName(),
 					$expiry,
 					true
 				);
 
-				$message = array(
+				$message = [
 					'abusefilter-blocked-display',
 					$rule_desc,
 					$rule_number
-				);
+				];
 				break;
 			case 'rangeblock':
 				self::doAbuseFilterBlock(
-					array(
+					[
 						'desc' => $rule_desc,
 						'number' => $rule_number
-					),
+					],
 					IP::sanitizeRange( $wgRequest->getIP() . '/16' ),
 					'1 week',
 					false
 				);
 
-				$message = array(
+				$message = [
 					'abusefilter-blocked-display',
 					$rule_desc,
 					$rule_number
-				);
+				];
 				break;
 			case 'degroup':
 				global $wgUser;
@@ -1424,11 +1424,11 @@ class AbuseFilter {
 						$wgUser->removeGroup( $group );
 					}
 
-					$message = array(
+					$message = [
 						'abusefilter-degrouped',
 						$rule_desc,
 						$rule_number
-					);
+					];
 
 					// Don't log it if there aren't any groups being removed!
 					if ( !count( $groups ) ) {
@@ -1445,10 +1445,10 @@ class AbuseFilter {
 							$rule_desc,
 							$rule_number
 						)->inContentLanguage()->text(),
-						array(
+						[
 							implode( ', ', $groups ),
 							''
-						),
+						],
 						self::getFilterUser()
 					);
 				}
@@ -1462,11 +1462,11 @@ class AbuseFilter {
 						self::autoPromoteBlockKey( $wgUser ), true, $blockPeriod
 					);
 
-					$message = array(
+					$message = [
 						'abusefilter-autopromote-blocked',
 						$rule_desc,
 						$rule_number
-					);
+					];
 				}
 				break;
 
@@ -1478,10 +1478,10 @@ class AbuseFilter {
 				// Mark with a tag on recentchanges.
 				global $wgUser;
 
-				$actionID = implode( '-', array(
+				$actionID = implode( '-', [
 					$title->getPrefixedText(), $wgUser->getName(),
 					$vars->getVar( 'ACTION' )->toString()
-				) );
+				] );
 
 				self::bufferTagsToSetByAction( [ $actionID => $parameters ] );
 				break;
@@ -1500,7 +1500,7 @@ class AbuseFilter {
 						);
 					}
 					if ( isset( $msg ) ) {
-						$message = array( $msg );
+						$message = [ $msg ];
 					}
 				} else {
 					wfDebugLog( 'AbuseFilter', "Unrecognised action $action" );
@@ -1551,11 +1551,11 @@ class AbuseFilter {
 
 		if ( $success ) {
 			// Log it only if the block was successful
-			$logParams = array();
+			$logParams = [];
 			$logParams['5::duration'] = ( $block->mExpiry === 'infinity' )
 				? 'indefinite'
 				: $expiry;
-			$flags = array( 'nocreate' );
+			$flags = [ 'nocreate' ];
 			if ( !$block->isAutoblocking() && !IP::isIPAddress( $target ) ) {
 				// Conditionally added same as SpecialBlock
 				$flags[] = 'noautoblock';
@@ -1567,8 +1567,8 @@ class AbuseFilter {
 			$logEntry->setComment( $reason );
 			$logEntry->setPerformer( $filterUser );
 			$logEntry->setParameters( $logParams );
-			$blockIds = array_merge( array( $success['id'] ), $success['autoIds'] );
-			$logEntry->setRelations( array( 'ipb_id' => $blockIds ) );
+			$blockIds = array_merge( [ $success['id'] ], $success['autoIds'] );
+			$logEntry->setRelations( [ 'ipb_id' => $blockIds ] );
 			$logEntry->publish( $logEntry->insert() );
 		}
 	}
@@ -1661,7 +1661,7 @@ class AbuseFilter {
 	public static function throttleKey( $throttleId, $type, $title, $global = false ) {
 		$types = explode( ',', $type );
 
-		$identifiers = array();
+		$identifiers = [];
 
 		foreach ( $types as $subtype ) {
 			$identifiers[] = self::throttleIdentifier( $subtype, $title );
@@ -1798,8 +1798,8 @@ class AbuseFilter {
 						__METHOD__,
 						function ( IDatabase $dbw, $fname ) use ( $filter ) {
 							$dbw->update( 'abuse_filter',
-								array( 'af_throttled' => 1 ),
-								array( 'af_id' => $filter ),
+								[ 'af_throttled' => 1 ],
+								[ 'af_id' => $filter ],
 								$fname
 							);
 						}
@@ -1847,7 +1847,7 @@ class AbuseFilter {
 	public static function getFilterUser() {
 		$username = wfMessage( 'abusefilter-blocker' )->inContentLanguage()->text();
 		if ( method_exists( 'User', 'newSystemUser' ) ) {
-			$user = User::newSystemUser( $username, array( 'steal' => true ) );
+			$user = User::newSystemUser( $username, [ 'steal' => true ] );
 		} else {
 			$user = User::newFromName( $username );
 			$user->load();
@@ -1892,13 +1892,13 @@ class AbuseFilter {
 		$canEdit = true ) {
 		global $wgOut;
 
-		$textareaAttrib = array( 'dir' => 'ltr' ); # Rules are in English
+		$textareaAttrib = [ 'dir' => 'ltr' ]; # Rules are in English
 		if ( !$canEdit ) {
 			$textareaAttrib['readonly'] = 'readonly';
 		}
 
 		global $wgUser;
-		$noTestAttrib = array();
+		$noTestAttrib = [];
 		if ( !$wgUser->isAllowed( 'abusefilter-modify' ) ) {
 			$noTestAttrib['disabled'] = 'disabled';
 			$addResultDiv = false;
@@ -1922,7 +1922,7 @@ class AbuseFilter {
 				$builder .=
 					Xml::openElement(
 						'optgroup',
-						array( 'label' => wfMessage( "abusefilter-edit-builder-group-$group" )->text() )
+						[ 'label' => wfMessage( "abusefilter-edit-builder-group-$group" )->text() ]
 					) . "\n";
 
 				foreach ( $values as $content => $name ) {
@@ -1939,22 +1939,22 @@ class AbuseFilter {
 			$rules .=
 				Xml::tags(
 					'select',
-					array( 'id' => 'wpFilterBuilder', ),
+					[ 'id' => 'wpFilterBuilder', ],
 					$builder
 				) . ' ';
 
 			// Add syntax checking
 			$rules .= Xml::element( 'input',
-				array(
+				[
 					'type' => 'button',
 					'value' => wfMessage( 'abusefilter-edit-check' )->text(),
 					'id' => 'mw-abusefilter-syntaxcheck'
-				) + $noTestAttrib );
+				] + $noTestAttrib );
 		}
 
 		if ( $addResultDiv ) {
 			$rules .= Xml::element( 'div',
-				array( 'id' => 'mw-abusefilter-syntaxresult', 'style' => 'display: none;' ),
+				[ 'id' => 'mw-abusefilter-syntaxresult', 'style' => 'display: none;' ],
 				'&#160;' );
 		}
 
@@ -1975,7 +1975,7 @@ class AbuseFilter {
 	 * @return array
 	 */
 	static function compareVersions( $version_1, $version_2 ) {
-		$compareFields = array(
+		$compareFields = [
 			'af_public_comments',
 			'af_pattern',
 			'af_comments',
@@ -1984,8 +1984,8 @@ class AbuseFilter {
 			'af_hidden',
 			'af_global',
 			'af_group',
-		);
-		$differences = array();
+		];
+		$differences = [];
 
 		list( $row1, $actions1 ) = $version_1;
 		list( $row2, $actions2 ) = $version_2;
@@ -2043,17 +2043,17 @@ class AbuseFilter {
 
 		# Process actions
 		$actions_raw = unserialize( $row->afh_actions );
-		$actions_output = array();
+		$actions_output = [];
 		if ( is_array( $actions_raw ) ) {
 			foreach ( $actions_raw as $action => $parameters ) {
-				$actions_output[$action] = array(
+				$actions_output[$action] = [
 					'action' => $action,
 					'parameters' => $parameters
-				);
+				];
 			}
 		}
 
-		return array( $af_row, $actions_output );
+		return [ $af_row, $actions_output ];
 	}
 
 	/**
@@ -2141,11 +2141,11 @@ class AbuseFilter {
 		$vars->setVar( 'SUMMARY', $row->rc_comment );
 
 		$vars->setLazyLoadVar( 'new_wikitext', 'revision-text-by-id',
-			array( 'revid' => $row->rc_this_oldid ) );
+			[ 'revid' => $row->rc_this_oldid ] );
 
 		if ( $row->rc_last_oldid ) {
 			$vars->setLazyLoadVar( 'old_wikitext', 'revision-text-by-id',
-				array( 'revid' => $row->rc_last_oldid ) );
+				[ 'revid' => $row->rc_last_oldid ] );
 		} else {
 			$vars->setVar( 'old_wikitext', '' );
 		}
@@ -2198,67 +2198,67 @@ class AbuseFilter {
 		}
 
 		$vars->setLazyLoadVar( 'edit_diff', 'diff',
-			array( 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_wikitext' ) );
+			[ 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_wikitext' ] );
 		$vars->setLazyLoadVar( 'edit_diff_pst', 'diff',
-			array( 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_pst' ) );
-		$vars->setLazyLoadVar( 'new_size', 'length', array( 'length-var' => 'new_wikitext' ) );
-		$vars->setLazyLoadVar( 'old_size', 'length', array( 'length-var' => 'old_wikitext' ) );
+			[ 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_pst' ] );
+		$vars->setLazyLoadVar( 'new_size', 'length', [ 'length-var' => 'new_wikitext' ] );
+		$vars->setLazyLoadVar( 'old_size', 'length', [ 'length-var' => 'old_wikitext' ] );
 		$vars->setLazyLoadVar( 'edit_delta', 'subtract',
-			array( 'val1-var' => 'new_size', 'val2-var' => 'old_size' ) );
+			[ 'val1-var' => 'new_size', 'val2-var' => 'old_size' ] );
 
 		// Some more specific/useful details about the changes.
 		$vars->setLazyLoadVar( 'added_lines', 'diff-split',
-			array( 'diff-var' => 'edit_diff', 'line-prefix' => '+' ) );
+			[ 'diff-var' => 'edit_diff', 'line-prefix' => '+' ] );
 		$vars->setLazyLoadVar( 'removed_lines', 'diff-split',
-			array( 'diff-var' => 'edit_diff', 'line-prefix' => '-' ) );
+			[ 'diff-var' => 'edit_diff', 'line-prefix' => '-' ] );
 		$vars->setLazyLoadVar( 'added_lines_pst', 'diff-split',
-			array( 'diff-var' => 'edit_diff_pst', 'line-prefix' => '+' ) );
+			[ 'diff-var' => 'edit_diff_pst', 'line-prefix' => '+' ] );
 
 		// Links
 		$vars->setLazyLoadVar( 'added_links', 'link-diff-added',
-			array( 'oldlink-var' => 'old_links', 'newlink-var' => 'all_links' ) );
+			[ 'oldlink-var' => 'old_links', 'newlink-var' => 'all_links' ] );
 		$vars->setLazyLoadVar( 'removed_links', 'link-diff-removed',
-			array( 'oldlink-var' => 'old_links', 'newlink-var' => 'all_links' ) );
+			[ 'oldlink-var' => 'old_links', 'newlink-var' => 'all_links' ] );
 		$vars->setLazyLoadVar( 'new_text', 'strip-html',
-			array( 'html-var' => 'new_html' ) );
+			[ 'html-var' => 'new_html' ] );
 		$vars->setLazyLoadVar( 'old_text', 'strip-html',
-			array( 'html-var' => 'old_html' ) );
+			[ 'html-var' => 'old_html' ] );
 
 		if ( $title instanceof Title ) {
 			$vars->setLazyLoadVar( 'all_links', 'links-from-wikitext',
-				array(
+				[
 					'namespace' => $title->getNamespace(),
 					'title' => $title->getText(),
 					'text-var' => 'new_wikitext',
 					'article' => $page
-				) );
+				] );
 			$vars->setLazyLoadVar( 'old_links', 'links-from-wikitext-or-database',
-				array(
+				[
 					'namespace' => $title->getNamespace(),
 					'title' => $title->getText(),
 					'text-var' => 'old_wikitext'
-				) );
+				] );
 			$vars->setLazyLoadVar( 'new_pst', 'parse-wikitext',
-				array(
+				[
 					'namespace' => $title->getNamespace(),
 					'title' => $title->getText(),
 					'wikitext-var' => 'new_wikitext',
 					'article' => $page,
 					'pst' => true,
-				) );
+				] );
 			$vars->setLazyLoadVar( 'new_html', 'parse-wikitext',
-				array(
+				[
 					'namespace' => $title->getNamespace(),
 					'title' => $title->getText(),
 					'wikitext-var' => 'new_wikitext',
 					'article' => $page
-				) );
+				] );
 			$vars->setLazyLoadVar( 'old_html', 'parse-wikitext-nonedit',
-				array(
+				[
 					'namespace' => $title->getNamespace(),
 					'title' => $title->getText(),
 					'wikitext-var' => 'old_wikitext'
-				) );
+				] );
 		}
 
 		return $vars;
@@ -2284,7 +2284,7 @@ class AbuseFilter {
 		$variableMessageMappings = $variableMessageMappings['vars'];
 
 		$output .=
-			Xml::openElement( 'table', array( 'class' => 'mw-abuselog-details' ) ) .
+			Xml::openElement( 'table', [ 'class' => 'mw-abuselog-details' ] ) .
 			Xml::openElement( 'tbody' ) .
 			"\n";
 
@@ -2314,14 +2314,14 @@ class AbuseFilter {
 			if ( is_null( $value ) ) {
 				$value = '';
 			}
-			$value = Xml::element( 'div', array( 'class' => 'mw-abuselog-var-value' ), $value, false );
+			$value = Xml::element( 'div', [ 'class' => 'mw-abuselog-var-value' ], $value, false );
 
 			$trow =
-				Xml::tags( 'td', array( 'class' => 'mw-abuselog-var' ), $keyDisplay ) .
-				Xml::tags( 'td', array( 'class' => 'mw-abuselog-var-value' ), $value );
+				Xml::tags( 'td', [ 'class' => 'mw-abuselog-var' ], $keyDisplay ) .
+				Xml::tags( 'td', [ 'class' => 'mw-abuselog-var-value' ], $value );
 			$output .=
 				Xml::tags( 'tr',
-					array( 'class' => "mw-abuselog-details-$key mw-abuselog-value" ), $trow
+					[ 'class' => "mw-abuselog-details-$key mw-abuselog-value" ], $trow
 				) . "\n";
 		}
 
@@ -2389,7 +2389,7 @@ class AbuseFilter {
 		/** @var $wgLang Language */
 		global $wgLang;
 		$flags = array_filter( explode( ',', $value ) );
-		$flags_display = array();
+		$flags_display = [];
 		foreach ( $flags as $flag ) {
 			$flags_display[] = wfMessage( "abusefilter-history-$flag" )->text();
 		}
@@ -2408,12 +2408,12 @@ class AbuseFilter {
 			return '';
 		}
 
-		$fdb = wfGetDB( DB_SLAVE, array(), $wgAbuseFilterCentralDB );
+		$fdb = wfGetDB( DB_SLAVE, [], $wgAbuseFilterCentralDB );
 
 		return $fdb->selectField(
 			'abuse_filter',
 			'af_public_comments',
-			array( 'af_id' => $filterID ),
+			[ 'af_id' => $filterID ],
 			__METHOD__
 		);
 	}
@@ -2479,7 +2479,7 @@ class AbuseFilter {
 	static function contentToString( Content $content ) {
 		$text = null;
 
-		if ( Hooks::run( 'AbuseFilter-contentToString', array( $content, &$text ) ) ) {
+		if ( Hooks::run( 'AbuseFilter-contentToString', [ $content, &$text ] ) ) {
 			$text = $content instanceof TextContent
 				? $content->getNativeData()
 				: $content->getTextForSearchIndex();
@@ -2503,18 +2503,18 @@ class AbuseFilter {
 	 * @return integer|bool
 	 */
 	public static function getFirstFilterChange( $filterID ) {
-		static $firstChanges = array();
+		static $firstChanges = [];
 
 		if ( !isset( $firstChanges[$filterID] ) ) {
 			$dbr = wfGetDB( DB_SLAVE );
 			$row = $dbr->selectRow(
 				'abuse_filter_history',
 				'afh_id',
-				array(
+				[
 					'afh_filter' => $filterID,
-				),
+				],
 				__METHOD__,
-				array( 'ORDER BY' => 'afh_timestamp ASC' )
+				[ 'ORDER BY' => 'afh_timestamp ASC' ]
 			);
 			$firstChanges[$filterID] = $row->afh_id;
 		}

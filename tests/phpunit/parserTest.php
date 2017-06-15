@@ -70,7 +70,7 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	 * @return array
 	 */
 	public function readTests() {
-		$tests = array();
+		$tests = [];
 		$testPath = __DIR__ . "/../parserTests";
 		$testFiles = glob( $testPath . "/*.t" );
 
@@ -81,11 +81,11 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 			$rule = trim( file_get_contents( $testFile ) );
 			$result = trim( file_get_contents( $resultFile ) ) == 'MATCH';
 
-			$tests[] = array(
+			$tests[] = [
 				basename( $testName ),
 				$rule,
 				$result
-			);
+			];
 		}
 
 		return $tests;
@@ -132,14 +132,14 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	 * @return array
 	 */
 	public function condCountCases() {
-		return array(
-			array( '(((a == b)))', 1 ),
-			array( 'contains_any(a, b, c)', 1 ),
-			array( 'a == b == c', 2 ),
-			array( 'a in b + c in d + e in f', 3 ),
-			array( 'true', 0 ),
-			array( 'a == a | c == d', 1 ),
-			array( 'a == b & c == d', 1 ),
-		);
+		return [
+			[ '(((a == b)))', 1 ],
+			[ 'contains_any(a, b, c)', 1 ],
+			[ 'a == b == c', 2 ],
+			[ 'a in b + c in d + e in f', 3 ],
+			[ 'true', 0 ],
+			[ 'a == a | c == d', 1 ],
+			[ 'a == b & c == d', 1 ],
+		];
 	}
 }

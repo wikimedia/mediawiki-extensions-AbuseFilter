@@ -31,12 +31,12 @@ class SpecialAbuseFilter extends SpecialPage {
 			$changedFilter = intval( $request->getVal( 'changedfilter' ) );
 			$changeId = intval( $request->getVal( 'changeid' ) );
 			$out->wrapWikiMsg( '<p class="success">$1</p>',
-				array(
+				[
 					'abusefilter-edit-done',
 					$changedFilter,
 					$changeId,
 					$this->getLanguage()->formatNum( $changedFilter )
-				)
+				]
 			);
 		}
 
