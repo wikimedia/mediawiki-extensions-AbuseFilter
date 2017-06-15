@@ -26,7 +26,7 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 			$row = $dbr->selectRow(
 				'recentchanges',
 				'*',
-				array( 'rc_id' => $params['rcid'] ),
+				[ 'rc_id' => $params['rcid'] ],
 				__METHOD__
 			);
 
@@ -44,7 +44,7 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 			$row = $dbr->selectRow(
 				'abuse_filter_log',
 				'*',
-				array( 'afl_id' => $params['logid'] ),
+				[ 'afl_id' => $params['logid'] ],
 				__METHOD__
 			);
 
@@ -70,10 +70,10 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 			}
 		}
 
-		$result = array(
+		$result = [
 			ApiResult::META_BC_BOOLS => [ 'result' ],
 			'result' => AbuseFilter::checkConditions( $params['filter'], $vars ),
-		);
+		];
 
 		$this->getResult()->addValue(
 			null,
@@ -83,27 +83,27 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 	}
 
 	public function getAllowedParams() {
-		return array(
-			'filter' => array(
+		return [
+			'filter' => [
 				ApiBase::PARAM_REQUIRED => true,
-			),
+			],
 			'vars' => null,
-			'rcid' => array(
+			'rcid' => [
 				ApiBase::PARAM_TYPE => 'integer'
-			),
-			'logid' => array(
+			],
+			'logid' => [
 				ApiBase::PARAM_TYPE => 'integer'
-			),
-		);
+			],
+		];
 	}
 
 	/**
 	 * @see ApiBase::getExamplesMessages()
 	 */
 	protected function getExamplesMessages() {
-		return array(
+		return [
 			'action=abusefiltercheckmatch&filter=!("autoconfirmed"%20in%20user_groups)&rcid=15'
 				=> 'apihelp-abusefiltercheckmatch-example-1',
-		);
+		];
 	}
 }

@@ -112,7 +112,7 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 				$this->setContinueEnumParameter( 'startid', $row->af_id );
 				break;
 			}
-			$entry = array();
+			$entry = [];
 			if ( $fld_id ) {
 				$entry['id'] = intval( $row->af_id );
 			}
@@ -150,53 +150,53 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 				}
 			}
 			if ( $entry ) {
-				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $entry );
+				$fit = $result->addValue( [ 'query', $this->getModuleName() ], null, $entry );
 				if ( !$fit ) {
 					$this->setContinueEnumParameter( 'startid', $row->af_id );
 					break;
 				}
 			}
 		}
-		$result->addIndexedTagName( array( 'query', $this->getModuleName() ), 'filter' );
+		$result->addIndexedTagName( [ 'query', $this->getModuleName() ], 'filter' );
 	}
 
 	public function getAllowedParams() {
-		return array(
-			'startid' => array(
+		return [
+			'startid' => [
 				ApiBase::PARAM_TYPE => 'integer'
-			),
-			'endid' => array(
+			],
+			'endid' => [
 				ApiBase::PARAM_TYPE => 'integer',
-			),
-			'dir' => array(
-				ApiBase::PARAM_TYPE => array(
+			],
+			'dir' => [
+				ApiBase::PARAM_TYPE => [
 					'older',
 					'newer'
-				),
+				],
 				ApiBase::PARAM_DFLT => 'newer',
 				ApiBase::PARAM_HELP_MSG => 'api-help-param-direction',
-			),
-			'show' => array(
+			],
+			'show' => [
 				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_TYPE => array(
+				ApiBase::PARAM_TYPE => [
 					'enabled',
 					'!enabled',
 					'deleted',
 					'!deleted',
 					'private',
 					'!private',
-				),
-			),
-			'limit' => array(
+				],
+			],
+			'limit' => [
 				ApiBase::PARAM_DFLT => 10,
 				ApiBase::PARAM_TYPE => 'limit',
 				ApiBase::PARAM_MIN => 1,
 				ApiBase::PARAM_MAX => ApiBase::LIMIT_BIG1,
 				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
-			),
-			'prop' => array(
+			],
+			'prop' => [
 				ApiBase::PARAM_DFLT => 'id|description|actions|status',
-				ApiBase::PARAM_TYPE => array(
+				ApiBase::PARAM_TYPE => [
 					'id',
 					'description',
 					'pattern',
@@ -207,21 +207,21 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 					'lastedittime',
 					'status',
 					'private',
-				),
+				],
 				ApiBase::PARAM_ISMULTI => true
-			)
-		);
+			]
+		];
 	}
 
 	/**
 	 * @see ApiBase::getExamplesMessages()
 	 */
 	protected function getExamplesMessages() {
-		return array(
+		return [
 			'action=query&list=abusefilters&abfshow=enabled|!private'
 				=> 'apihelp-query+abusefilters-example-1',
 			'action=query&list=abusefilters&abfprop=id|description|pattern'
 				=> 'apihelp-query+abusefilters-example-2',
-		);
+		];
 	}
 }

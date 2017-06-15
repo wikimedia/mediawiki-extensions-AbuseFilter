@@ -42,7 +42,7 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 
 		$stash->delete( $key );
 
-		$res = array( 'user' => $params['user'] );
+		$res = [ 'user' => $params['user'] ];
 		$this->getResult()->addValue( null, $this->getModuleName(), $res );
 	}
 
@@ -55,13 +55,13 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 	}
 
 	public function getAllowedParams() {
-		return array(
-			'user' => array(
+		return [
+			'user' => [
 				ApiBase::PARAM_TYPE => 'user',
 				ApiBase::PARAM_REQUIRED => true
-			),
+			],
 			'token' => null,
-		);
+		];
 	}
 
 	public function needsToken() {
@@ -72,9 +72,9 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 	 * @see ApiBase::getExamplesMessages()
 	 */
 	protected function getExamplesMessages() {
-		return array(
+		return [
 			'action=abusefilterunblockautopromote&user=Example&token=123ABC'
 				=> 'apihelp-abusefilterunblockautopromote-example-1',
-		);
+		];
 	}
 }

@@ -28,23 +28,23 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	}
 
 	function showSearch() {
-		$formDescriptor = array(
-			'SearchUser' => array(
+		$formDescriptor = [
+			'SearchUser' => [
 				'label-message' => 'abusefilter-test-user',
 				'type' => 'user',
 				'default' => $this->mSearchUser,
-			),
-			'SearchPeriodStart' => array(
+			],
+			'SearchPeriodStart' => [
 				'label-message' => 'abusefilter-test-period-start',
 				'type' => 'text',
 				'default' => $this->mSearchPeriodStart,
-			),
-			'SearchPeriodEnd' => array(
+			],
+			'SearchPeriodEnd' => [
 				'label-message' => 'abusefilter-test-period-end',
 				'type' => 'text',
 				'default' => $this->mSearchPeriodEnd,
-			),
-		);
+			],
+		];
 		$htmlForm = HTMLForm::factory( 'table', $formDescriptor, $this->getContext() );
 		$htmlForm->setWrapperLegendMsg( 'abusefilter-examine-legend' )
 			->addHiddenField( 'submit', 1 )
@@ -77,7 +77,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	function showExaminerForRC( $rcid ) {
 		// Get data
 		$dbr = wfGetDB( DB_SLAVE );
-		$row = $dbr->selectRow( 'recentchanges', '*', array( 'rc_id' => $rcid ), __METHOD__ );
+		$row = $dbr->selectRow( 'recentchanges', '*', [ 'rc_id' => $rcid ], __METHOD__ );
 		$out = $this->getOutput();
 		if ( !$row ) {
 			$out->addWikiMsg( 'abusefilter-examine-notfound' );
@@ -95,7 +95,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	function showExaminerForLogEntry( $logid ) {
 		// Get data
 		$dbr = wfGetDB( DB_SLAVE );
-		$row = $dbr->selectRow( 'abuse_filter_log', '*', array( 'afl_id' => $logid ), __METHOD__ );
+		$row = $dbr->selectRow( 'abuse_filter_log', '*', [ 'afl_id' => $logid ], __METHOD__ );
 		$out = $this->getOutput();
 
 		if ( !$row ) {
@@ -153,27 +153,27 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 				'&#160;' .
 				Xml::element(
 					'input',
-					array(
+					[
 						'type' => 'button',
 						'value' => $this->msg( 'abusefilter-test-load' )->text(),
 						'id' => 'mw-abusefilter-load'
-					)
+					]
 				);
-			$html .= Xml::tags( 'div', array( 'id' => 'mw-abusefilter-examine-editor' ), $tester );
+			$html .= Xml::tags( 'div', [ 'id' => 'mw-abusefilter-examine-editor' ], $tester );
 			$html .= Xml::tags( 'p',
 				null,
 				Xml::element( 'input',
-					array(
+					[
 						'type' => 'button',
 						'value' => $this->msg( 'abusefilter-examine-test-button' )->text(),
 						'id' => 'mw-abusefilter-examine-test'
-					)
+					]
 				) .
 				Xml::element( 'div',
-					array(
+					[
 						'id' => 'mw-abusefilter-syntaxresult',
 						'style' => 'display: none;'
-					), '&#160;'
+					], '&#160;'
 				)
 			);
 		}
@@ -224,10 +224,10 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 
 	function getQueryInfo() {
 		$dbr = wfGetDB( DB_SLAVE );
-		$conds = array(
+		$conds = [
 			'rc_user_text' => $this->mPage->mSearchUser,
 			'rc_type != ' . RC_EXTERNAL
-		);
+		];
 
 		$startTS = strtotime( $this->mPage->mSearchPeriodStart );
 		if ( $startTS ) {
@@ -239,19 +239,19 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 		}
 
 		// If one of these is true, we're abusefilter compatible.
-		$compatConds = array(
+		$compatConds = [
 			'rc_this_oldid != 0',
-			'rc_log_action' => array( 'move', 'create' ),
-		);
+			'rc_log_action' => [ 'move', 'create' ],
+		];
 
 		$conds[] = $dbr->makeList( $compatConds, LIST_OR );
 
-		$info = array(
+		$info = [
 			'tables' => 'recentchanges',
 			'fields' => '*',
 			'conds' => array_filter( $conds ),
-			'options' => array( 'ORDER BY' => 'rc_timestamp DESC' ),
-		);
+			'options' => [ 'ORDER BY' => 'rc_timestamp DESC' ],
+		];
 
 		return $info;
 	}

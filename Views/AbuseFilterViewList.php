@@ -24,7 +24,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		}
 
 		// Options.
-		$conds = array();
+		$conds = [];
 		$deleted = $request->getVal( 'deletedfilters' );
 		$hidedisabled = $request->getBool( 'hidedisabled' );
 		$defaultscope = 'all';
@@ -56,7 +56,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$this->showList( $conds, compact( 'deleted', 'hidedisabled', 'scope' ) );
 	}
 
-	function showList( $conds = array( 'af_deleted' => 0 ), $optarray = array() ) {
+	function showList( $conds = [ 'af_deleted' => 0 ], $optarray = [] ) {
 		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
 
 		$output = '';
@@ -70,7 +70,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$scope = $optarray['scope'];
 
 		# Options form
-		$fields = array();
+		$fields = [];
 		$fields['abusefilter-list-options-deleted'] =
 			Xml::radioLabel(
 				$this->msg( 'abusefilter-list-options-deleted-show' )->text(),
@@ -136,10 +136,10 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$options = Xml::buildForm( $fields, 'abusefilter-list-options-submit' );
 		$options .= Html::hidden( 'title', $this->getTitle()->getPrefixedDBkey() );
 		$options = Xml::tags( 'form',
-			array(
+			[
 				'method' => 'get',
 				'action' => $this->getTitle()->getFullURL()
-			),
+			],
 			$options
 		);
 		$options = Xml::fieldset( $this->msg( 'abusefilter-list-options' )->text(), $options );
@@ -187,7 +187,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 					$match_percent
 				)->parse();
 
-			$status = Xml::tags( 'div', array( 'class' => 'mw-abusefilter-status' ), $status );
+			$status = Xml::tags( 'div', [ 'class' => 'mw-abusefilter-status' ], $status );
 			$this->getOutput()->addHTML( $status );
 		}
 	}
@@ -212,9 +212,9 @@ class AbuseFilterPager extends TablePager {
 	}
 
 	function getQueryInfo() {
-		return array(
-			'tables' => array( 'abuse_filter' ),
-			'fields' => array(
+		return [
+			'tables' => [ 'abuse_filter' ],
+			'fields' => [
 				'af_id',
 				'af_enabled',
 				'af_deleted',
@@ -227,9 +227,9 @@ class AbuseFilterPager extends TablePager {
 				'af_user',
 				'af_actions',
 				'af_group',
-			),
+			],
 			'conds' => $this->mConds,
-		);
+		];
 	}
 
 	function getFieldNames() {
@@ -239,14 +239,14 @@ class AbuseFilterPager extends TablePager {
 			return $headers;
 		}
 
-		$headers = array(
+		$headers = [
 			'af_id' => 'abusefilter-list-id',
 			'af_public_comments' => 'abusefilter-list-public',
 			'af_actions' => 'abusefilter-list-consequences',
 			'af_enabled' => 'abusefilter-list-status',
 			'af_timestamp' => 'abusefilter-list-lastmodified',
 			'af_hidden' => 'abusefilter-list-visibility',
-		);
+		];
 
 		if ( $this->mPage->getUser()->isAllowed( 'abusefilter-log-detail' ) ) {
 			$headers['af_hit_count'] = 'abusefilter-list-hitcount';
@@ -281,13 +281,13 @@ class AbuseFilterPager extends TablePager {
 				);
 			case 'af_actions':
 				$actions = explode( ',', $value );
-				$displayActions = array();
+				$displayActions = [];
 				foreach ( $actions as $action ) {
 					$displayActions[] = AbuseFilter::getActionDisplay( $action );
 				}
 				return htmlspecialchars( $lang->commaList( $displayActions ) );
 			case 'af_enabled':
-				$statuses = array();
+				$statuses = [];
 				if ( $row->af_deleted ) {
 					$statuses[] = $this->msg( 'abusefilter-deleted' )->parse();
 				} elseif ( $row->af_enabled ) {
@@ -312,8 +312,8 @@ class AbuseFilterPager extends TablePager {
 					$link = $this->linkRenderer->makeKnownLink(
 						SpecialPage::getTitleFor( 'AbuseLog' ),
 						$count_display,
-						array(),
-						array( 'wpSearchFilter' => $row->af_id )
+						[],
+						[ 'wpSearchFilter' => $row->af_id ]
 					);
 				} else {
 					$link = "";
@@ -360,7 +360,7 @@ class AbuseFilterPager extends TablePager {
 	}
 
 	function isFieldSortable( $name ) {
-		$sortable_fields = array(
+		$sortable_fields = [
 			'af_id',
 			'af_enabled',
 			'af_throttled',
@@ -368,7 +368,7 @@ class AbuseFilterPager extends TablePager {
 			'af_timestamp',
 			'af_hidden',
 			'af_group',
-		);
+		];
 		if ( $this->mPage->getUser()->isAllowed( 'abusefilter-log-detail' ) ) {
 			$sortable_fields[] = 'af_hit_count';
 		}
@@ -383,7 +383,7 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 	function __construct( $page, $conds, $linkRenderer ) {
 		parent::__construct( $page, $conds, $linkRenderer );
 		global $wgAbuseFilterCentralDB;
-		$this->mDb = wfGetDB( DB_SLAVE, array(), $wgAbuseFilterCentralDB );
+		$this->mDb = wfGetDB( DB_SLAVE, [], $wgAbuseFilterCentralDB );
 	}
 
 	function formatValue( $name, $value ) {
@@ -397,13 +397,13 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 				return $this->getOutput()->parseInline( $value );
 			case 'af_actions':
 				$actions = explode( ',', $value );
-				$displayActions = array();
+				$displayActions = [];
 				foreach ( $actions as $action ) {
 					$displayActions[] = AbuseFilter::getActionDisplay( $action );
 				}
 				return htmlspecialchars( $lang->commaList( $displayActions ) );
 			case 'af_enabled':
-				$statuses = array();
+				$statuses = [];
 				if ( $row->af_deleted ) {
 					$statuses[] = $this->msg( 'abusefilter-deleted' )->parse();
 				} elseif ( $row->af_enabled ) {

@@ -16,13 +16,13 @@ class AbuseFilterViewTools extends AbuseFilterView {
 		if ( $user->isAllowed( 'abusefilter-modify' ) ) {
 			$eval .= Xml::tags( 'p', null,
 				Xml::element( 'input',
-				array(
+				[
 					'type' => 'button',
 					'id' => 'mw-abusefilter-submitexpr',
-					'value' => $this->msg( 'abusefilter-tools-submitexpr' )->text() )
+					'value' => $this->msg( 'abusefilter-tools-submitexpr' )->text() ]
 				)
 			);
-			$eval .= Xml::element( 'p', array( 'id' => 'mw-abusefilter-expr-result' ), ' ' );
+			$eval .= Xml::element( 'p', [ 'id' => 'mw-abusefilter-expr-result' ], ' ' );
 		}
 		$eval = Xml::fieldset( $this->msg( 'abusefilter-tools-expr' )->text(), $eval );
 		$out->addHTML( $eval );
@@ -41,11 +41,11 @@ class AbuseFilterViewTools extends AbuseFilterView {
 			$rac .= '&#160;';
 			$rac .= Xml::element(
 				'input',
-				array(
+				[
 					'type' => 'button',
 					'id' => 'mw-abusefilter-reautoconfirmsubmit',
 					'value' => $this->msg( 'abusefilter-tools-reautoconfirm-submit' )->text()
-				)
+				]
 			);
 			$rac = Xml::fieldset( $this->msg( 'abusefilter-tools-reautoconfirm' )->text(), $rac );
 			$out->addHTML( $rac );

@@ -45,7 +45,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		$show = $this->loadData();
 		$out = $this->getOutput();
 
-		$links = array();
+		$links = [];
 		if ( $this->mFilter ) {
 			$links['abusefilter-history-backedit'] = $this->getTitle( $this->mFilter );
 			$links['abusefilter-diff-backhistory'] = $this->getTitle( 'history/' . $this->mFilter );
@@ -62,7 +62,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$out->addHTML( $this->formatDiff() );
 
 			// Next and previous change links
-			$links = array();
+			$links = [];
 			if ( AbuseFilter::getFirstFilterChange( $this->mFilter ) !=
 				$this->mOldVersion['meta']['history_id']
 			) {
@@ -132,12 +132,12 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		$row = $dbr->selectRow(
 			'abuse_filter_history',
 			'afh_id',
-			array(
+			[
 				'afh_filter' => $this->mFilter,
 				'afh_id > ' . $dbr->addQuotes( $historyId ),
-			),
+			],
 			__METHOD__,
-			array( 'ORDER BY' => 'afh_timestamp ASC' )
+			[ 'ORDER BY' => 'afh_timestamp ASC' ]
 		);
 		if ( $row ) {
 			return $row->afh_id;
@@ -146,8 +146,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	}
 
 	function loadSpec( $spec, $otherSpec ) {
-		static $dependentSpecs = array( 'prev', 'next' );
-		static $cache = array();
+		static $dependentSpecs = [ 'prev', 'next' ];
+		static $cache = [];
 
 		if ( isset( $cache[$spec] ) ) {
 			return $cache[$spec];
@@ -159,16 +159,16 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$row = $dbr->selectRow(
 				'abuse_filter_history',
 				'*',
-				array( 'afh_id' => $spec, 'afh_filter' => $this->mFilter ),
+				[ 'afh_id' => $spec, 'afh_filter' => $this->mFilter ],
 				__METHOD__
 			);
 		} elseif ( $spec == 'cur' ) {
 			$row = $dbr->selectRow(
 				'abuse_filter_history',
 				'*',
-				array( 'afh_filter' => $this->mFilter ),
+				[ 'afh_filter' => $this->mFilter ],
 				__METHOD__,
-				array( 'ORDER BY' => 'afh_timestamp desc' )
+				[ 'ORDER BY' => 'afh_timestamp desc' ]
 			);
 		} elseif ( $spec == 'prev' && !in_array( $otherSpec, $dependentSpecs ) ) {
 			// cached
@@ -177,12 +177,12 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$row = $dbr->selectRow(
 				'abuse_filter_history',
 				'*',
-				array(
+				[
 					'afh_filter' => $this->mFilter,
 					'afh_id<' . $dbr->addQuotes( $other['meta']['history_id'] ),
-				),
+				],
 				__METHOD__,
-				array( 'ORDER BY' => 'afh_timestamp desc' )
+				[ 'ORDER BY' => 'afh_timestamp desc' ]
 			);
 			if ( $other && !$row ) {
 				$t = $this->getTitle(
@@ -197,12 +197,12 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$row = $dbr->selectRow(
 				'abuse_filter_history',
 				'*',
-				array(
+				[
 					'afh_filter' => $this->mFilter,
 					'afh_id>' . $dbr->addQuotes( $other['meta']['history_id'] ),
-				),
+				],
 				__METHOD__,
-				array( 'ORDER BY' => 'afh_timestamp ASC' )
+				[ 'ORDER BY' => 'afh_timestamp ASC' ]
 			);
 
 			if ( $other && !$row ) {
@@ -223,22 +223,22 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	}
 
 	function loadFromHistoryRow( $row ) {
-		return array(
-			'meta' => array(
+		return [
+			'meta' => [
 				'history_id' => $row->afh_id,
 				'modified_by' => $row->afh_user,
 				'modified_by_text' => $row->afh_user_text,
 				'modified' => $row->afh_timestamp,
-			),
-			'info' => array(
+			],
+			'info' => [
 				'description' => $row->afh_public_comments,
 				'flags' => $row->afh_flags,
 				'notes' => $row->afh_comments,
 				'group' => $row->afh_group,
-			),
+			],
 			'pattern' => $row->afh_pattern,
 			'actions' => unserialize( $row->afh_actions ),
-		);
+		];
 	}
 
 	/**
@@ -366,7 +366,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	 * @return array
 	 */
 	function stringifyActions( $actions ) {
-		$lines = array();
+		$lines = [];
 
 		ksort( $actions );
 		foreach ( $actions as $action => $parameters ) {
@@ -386,8 +386,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	 */
 	function getHeaderRow( $msg ) {
 		$html = $this->msg( $msg )->parse();
-		$html = Xml::tags( 'th', array( 'colspan' => 3 ), $html );
-		$html = Xml::tags( 'tr', array( 'class' => 'mw-abusefilter-diff-header' ), $html );
+		$html = Xml::tags( 'th', [ 'colspan' => 3 ], $html );
+		$html = Xml::tags( 'tr', [ 'class' => 'mw-abusefilter-diff-header' ], $html );
 
 		return $html;
 	}
@@ -416,7 +416,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 		return Xml::tags( 'tr', null,
 			Xml::tags( 'th', null, $this->msg( $msg )->parse() ) .
-			Xml::tags( 'td', array( 'colspan' => 2 ), $formattedDiff )
+			Xml::tags( 'td', [ 'colspan' => 2 ], $formattedDiff )
 		) . "\n";
 	}
 }

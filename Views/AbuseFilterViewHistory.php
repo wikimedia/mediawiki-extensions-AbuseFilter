@@ -25,7 +25,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		}
 
 		# Useful links
-		$links = array();
+		$links = [];
 		if ( $filter ) {
 			$links['abusefilter-history-backedit'] = $this->getTitle( $filter );
 		}
@@ -52,15 +52,15 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			);
 		}
 
-		$formDescriptor = array(
-			'user' => array(
+		$formDescriptor = [
+			'user' => [
 				'type' => 'user',
 				'name' => 'user',
 				'default' => $user,
 				'size' => '45',
 				'label-message' => 'abusefilter-history-select-user'
-			)
-		);
+			]
+		];
 
 		$htmlForm = HTMLForm::factory( 'table', $formDescriptor, $this->getContext() );
 		$htmlForm->setSubmitTextMsg( 'abusefilter-history-select-submit' )
@@ -102,18 +102,18 @@ class AbuseFilterHistoryPager extends TablePager {
 			return $headers;
 		}
 
-		$headers = array(
+		$headers = [
 			'afh_timestamp' => 'abusefilter-history-timestamp',
 			'afh_user_text' => 'abusefilter-history-user',
 			'afh_public_comments' => 'abusefilter-history-public',
 			'afh_flags' => 'abusefilter-history-flags',
 			'afh_actions' => 'abusefilter-history-actions',
 			'afh_id' => 'abusefilter-history-diff',
-		);
+		];
 
 		if ( !$this->mFilter ) {
 			// awful hack
-			$headers = array( 'afh_filter' => 'abusefilter-history-filterid' ) + $headers;
+			$headers = [ 'afh_filter' => 'abusefilter-history-filterid' ] + $headers;
 			unset( $headers['afh_comments'] );
 		}
 
@@ -186,14 +186,14 @@ class AbuseFilterHistoryPager extends TablePager {
 		}
 
 		$mappings = array_flip( AbuseFilter::$history_mappings ) +
-			array( 'afh_actions' => 'actions', 'afh_id' => 'id' );
+			[ 'afh_actions' => 'actions', 'afh_id' => 'id' ];
 		$changed = explode( ',', $row->afh_changed_fields );
 
 		$fieldChanged = false;
 		if ( $name == 'afh_flags' ) {
 			// This is a bit freaky, but it works.
 			// Basically, returns true if any of those filters are in the $changed array.
-			$filters = array( 'af_enabled', 'af_hidden', 'af_deleted', 'af_global' );
+			$filters = [ 'af_enabled', 'af_hidden', 'af_deleted', 'af_global' ];
 			if ( count( array_diff( $filters, $changed ) ) < count( $filters ) ) {
 				$fieldChanged = true;
 			}
@@ -203,7 +203,7 @@ class AbuseFilterHistoryPager extends TablePager {
 
 		if ( $fieldChanged ) {
 			$formatted = Xml::tags( 'div',
-				array( 'class' => 'mw-abusefilter-history-changed' ),
+				[ 'class' => 'mw-abusefilter-history-changed' ],
 				$formatted
 			);
 		}
@@ -212,9 +212,9 @@ class AbuseFilterHistoryPager extends TablePager {
 	}
 
 	function getQueryInfo() {
-		$info = array(
-			'tables' => array( 'abuse_filter_history', 'abuse_filter' ),
-			'fields' => array(
+		$info = [
+			'tables' => [ 'abuse_filter_history', 'abuse_filter' ],
+			'fields' => [
 				'afh_filter',
 				'afh_timestamp',
 				'afh_user_text',
@@ -228,16 +228,16 @@ class AbuseFilterHistoryPager extends TablePager {
 				'afh_pattern',
 				'afh_id',
 				'af_hidden'
-			),
-			'conds' => array(),
-			'join_conds' => array(
+			],
+			'conds' => [],
+			'join_conds' => [
 					'abuse_filter' =>
-						array(
+						[
 							'LEFT JOIN',
 							'afh_filter=af_id',
-						),
-				),
-		);
+						],
+				],
+		];
 
 		if ( $this->mUser ) {
 			$info['conds']['afh_user_text'] = $this->mUser;
@@ -266,7 +266,7 @@ class AbuseFilterHistoryPager extends TablePager {
 	}
 
 	function isFieldSortable( $name ) {
-		$sortable_fields = array( 'afh_timestamp', 'afh_user_text' );
+		$sortable_fields = [ 'afh_timestamp', 'afh_user_text' ];
 		return in_array( $name, $sortable_fields );
 	}
 

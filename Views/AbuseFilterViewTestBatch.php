@@ -35,13 +35,13 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			'&#160;' .
 			Xml::element(
 				'input',
-				array(
+				[
 					'type' => 'button',
 					'value' => $this->msg( 'abusefilter-test-load' )->text(),
 					'id' => 'mw-abusefilter-load'
-				)
+				]
 			);
-		$output = Xml::tags( 'div', array( 'id' => 'mw-abusefilter-test-editor' ), $output );
+		$output = Xml::tags( 'div', [ 'id' => 'mw-abusefilter-test-editor' ], $output );
 
 		$output .= Xml::tags( 'p', null, Xml::checkLabel(
 				 $this->msg( 'abusefilter-test-shownegative' )->text(),
@@ -49,7 +49,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		 );
 
 		// Selectory stuff
-		$selectFields = array();
+		$selectFields = [];
 		$selectFields['abusefilter-test-user'] = Xml::input( 'wpTestUser', 45, $this->mTestUser );
 		$selectFields['abusefilter-test-period-start'] =
 			Xml::input( 'wpTestPeriodStart', 45, $this->mTestPeriodStart );
@@ -62,10 +62,10 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$output .= Html::hidden( 'title', $this->getTitle( 'test' )->getPrefixedDBkey() );
 		$output = Xml::tags( 'form',
-			array(
+			[
 				'action' => $this->getTitle( 'test' )->getLocalURL(),
 				'method' => 'post'
-			),
+			],
 			$output
 		);
 
@@ -88,10 +88,10 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		}
 		$dbr = wfGetDB( DB_SLAVE );
 
-		$conds = array(
+		$conds = [
 			'rc_user_text' => $this->mTestUser,
 			'rc_type != ' . RC_EXTERNAL
-		);
+		];
 
 		if ( $this->mTestPeriodStart ) {
 			$conds[] = 'rc_timestamp >= ' .
@@ -121,7 +121,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			'*',
 			array_filter( $conds ),
 			__METHOD__,
-			array( 'LIMIT' => self::$mChangeLimit, 'ORDER BY' => 'rc_timestamp desc' )
+			[ 'LIMIT' => self::$mChangeLimit, 'ORDER BY' => 'rc_timestamp desc' ]
 		);
 
 		$counter = 1;
@@ -167,7 +167,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			$dbr = wfGetDB( DB_SLAVE );
 			$this->mFilter = $dbr->selectField( 'abuse_filter',
 				'af_pattern',
-				array( 'af_id' => $this->mParams[1] ),
+				[ 'af_id' => $this->mParams[1] ],
 				__METHOD__
 			);
 		}

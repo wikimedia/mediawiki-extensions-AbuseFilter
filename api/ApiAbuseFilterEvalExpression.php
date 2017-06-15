@@ -6,24 +6,24 @@ class ApiAbuseFilterEvalExpression extends ApiBase {
 
 		$result = AbuseFilter::evaluateExpression( $params['expression'] );
 
-		$this->getResult()->addValue( null, $this->getModuleName(), array( 'result' => $result ) );
+		$this->getResult()->addValue( null, $this->getModuleName(), [ 'result' => $result ] );
 	}
 
 	public function getAllowedParams() {
-		return array(
-			'expression' => array(
+		return [
+			'expression' => [
 				ApiBase::PARAM_REQUIRED => true,
-			),
-		);
+			],
+		];
 	}
 
 	/**
 	 * @see ApiBase::getExamplesMessages()
 	 */
 	protected function getExamplesMessages() {
-		return array(
+		return [
 			'action=abusefilterevalexpression&expression=lcase("FOO")'
 				=> 'apihelp-abusefilterevalexpression-example-1',
-		);
+		];
 	}
 }

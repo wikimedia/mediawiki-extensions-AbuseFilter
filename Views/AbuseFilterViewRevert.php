@@ -24,7 +24,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$out->setPageTitle( $this->msg( 'abusefilter-revert-title', $filter ) );
 
 		// First, the search form.
-		$searchFields = array();
+		$searchFields = [];
 		$searchFields['abusefilter-revert-filter'] =
 			Xml::element( 'strong', null, $filter );
 		$searchFields['abusefilter-revert-periodstart'] =
@@ -36,10 +36,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$searchForm =
 			Xml::tags(
 				'form',
-				array(
+				[
 					'action' => $this->getTitle( "revert/$filter" )->getLocalURL(),
 					'method' => 'post'
-				),
+				],
 				$searchForm
 			);
 		$searchForm =
@@ -54,11 +54,11 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			// Look up all of them.
 			$results = $this->doLookup();
 			$lang = $this->getLanguage();
-			$list = array();
+			$list = [];
 
 			foreach ( $results as $result ) {
 				$displayActions = array_map(
-					array( 'AbuseFilter', 'getActionDisplay' ),
+					[ 'AbuseFilter', 'getActionDisplay' ],
 					$result['actions'] );
 
 				$msg = $this->msg( 'abusefilter-revert-preview-item' )
@@ -71,8 +71,8 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 						$this->linkRenderer->makeLink(
 							SpecialPage::getTitleFor( 'AbuseLog' ),
 							$this->msg( 'abusefilter-log-detailslink' )->text(),
-							array(),
-							array( 'details' => $result['id'] )
+							[],
+							[ 'details' => $result['id'] ]
 						)
 					)->params( $result['user'] )->parse();
 				$list[] = Xml::tags( 'li', null, $msg );
@@ -94,10 +94,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				Xml::submitButton( $this->msg( 'abusefilter-revert-confirm' )->text() );
 			$confirmForm = Xml::tags(
 				'form',
-				array(
+				[
 					'action' => $this->getTitle( "revert/$filter" )->getLocalURL(),
 					'method' => 'post'
-				),
+				],
 				$confirmForm
 			);
 			$out->addHTML( $confirmForm );
@@ -109,7 +109,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$periodEnd = $this->mPeriodEnd;
 		$filter = $this->mPage->mFilter;
 
-		$conds = array( 'afl_filter' => $filter );
+		$conds = [ 'afl_filter' => $filter ];
 
 		$dbr = wfGetDB( DB_SLAVE );
 
@@ -123,7 +123,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		// Database query.
 		$res = $dbr->select( 'abuse_filter_log', '*', $conds, __METHOD__ );
 
-		$results = array();
+		$results = [];
 		foreach ( $res as $row ) {
 			// Don't revert if there was no action, or the action was global
 			if ( !$row->afl_actions || $row->afl_wiki != null ) {
@@ -131,10 +131,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			}
 
 			$actions = explode( ',', $row->afl_actions );
-			$reversibleActions = array( 'block', 'blockautopromote', 'degroup' );
+			$reversibleActions = [ 'block', 'blockautopromote', 'degroup' ];
 			$currentReversibleActions = array_intersect( $actions, $reversibleActions );
 			if ( count( $currentReversibleActions ) ) {
-				$results[] = array(
+				$results[] = [
 					'id' => $row->afl_id,
 					'actions' => $currentReversibleActions,
 					'user' => $row->afl_user_text,
@@ -143,7 +143,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 					'title' => Title::makeTitle( $row->afl_namespace, $row->afl_title ),
 					'action' => $row->afl_action,
 					'timestamp' => $row->afl_timestamp
-				);
+				];
 			}
 		}
 
@@ -223,12 +223,12 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 					array_intersect( $oldGroups, User::getImplicitGroups() )
 				);
 
-				$rows = array();
+				$rows = [];
 				foreach ( $oldGroups as $group ) {
-					$rows[] = array(
+					$rows[] = [
 						'ug_user' => $result['userid'],
 						'ug_group' => $group
-					);
+					];
 				}
 
 				// Cheat a little bit. User::addGroup repeatedly is too slow.
@@ -242,7 +242,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				}
 
 				$dbw = wfGetDB( DB_MASTER );
-				$dbw->insert( 'user_groups', $rows, __METHOD__, array( 'IGNORE' ) );
+				$dbw->insert( 'user_groups', $rows, __METHOD__, [ 'IGNORE' ] );
 				$user->invalidateCache();
 
 				$log = new LogPage( 'rights' );
@@ -252,7 +252,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 						$this->mPage->mFilter,
 						$this->mReason
 					)->inContentLanguage()->text(),
-					array( implode( ',', $currentGroups ), implode( ',', $newGroups ) )
+					[ implode( ',', $currentGroups ), implode( ',', $newGroups ) ]
 				);
 
 				return true;

@@ -85,13 +85,13 @@ class AbuseFilterChangesList extends OldChangesList {
 	 * @param $classes array
 	 */
 	public function insertExtra( &$s, &$rc, &$classes ) {
-		$examineParams = empty( $rc->examineParams ) ? array() : $rc->examineParams;
+		$examineParams = empty( $rc->examineParams ) ? [] : $rc->examineParams;
 
 		$title = SpecialPage::getTitleFor( 'AbuseFilter', 'examine/' . $rc->mAttribs['rc_id'] );
 		$examineLink = $this->linkRenderer->makeLink(
 			$title,
 			new HtmlArmor( $this->msg( 'abusefilter-changeslist-examine' )->parse() ),
-			array(),
+			[],
 			$examineParams
 		);
 
