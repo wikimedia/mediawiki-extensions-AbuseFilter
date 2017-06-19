@@ -373,6 +373,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$groupSelector->addOption( AbuseFilter::nameGroup( $group ), $group );
 			}
 
+			if ( !empty( $readOnlyAttrib ) ) {
+				$groupSelector->setAttribute( 'disabled', 'disabled' );
+			}
+
 			$fields['abusefilter-edit-group'] = $groupSelector->getHTML();
 		}
 
@@ -679,7 +683,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				}
 
 				$warnFields['abusefilter-edit-warn-message'] =
-					$this->getExistingSelector( $warnMsg );
+					$this->getExistingSelector( $warnMsg, !empty( $readOnlyAttrib ) );
 				$warnFields['abusefilter-edit-warn-other-label'] =
 					Xml::input(
 						'wpFilterWarnMessageOther',
@@ -696,20 +700,23 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						'value' => $this->msg( 'abusefilter-edit-warn-preview' )->text()
 					]
 				);
-				$editButton = Xml::element(
-					'input',
-					[
-						'type' => 'button',
-						'id' => 'mw-abusefilter-warn-edit-button',
-						'value' => $this->msg( 'abusefilter-edit-warn-edit' )->text()
-					]
-				);
+				$editButton = '';
+				if ( $this->getUser()->isAllowed( 'editinterface' ) ) {
+					$editButton .= ' ' . Xml::element(
+						'input',
+						[
+							'type' => 'button',
+							'id' => 'mw-abusefilter-warn-edit-button',
+							'value' => $this->msg( 'abusefilter-edit-warn-edit' )->text()
+						]
+					);
+				}
 				$previewHolder = Xml::element(
 					'div',
 					[ 'id' => 'mw-abusefilter-warn-preview' ], ''
 				);
 				$warnFields['abusefilter-edit-warn-actions'] =
-					Xml::tags( 'p', null, "$previewButton $editButton" ) . "\n$previewHolder";
+					Xml::tags( 'p', null, $previewButton . $editButton ) . "\n$previewHolder";
 				$output .=
 					Xml::tags(
 						'div',
@@ -766,38 +773,43 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	}
 
 	/**
-	 * @param $warnMsg
+	 * @param $warnMsg string
+	 * @param $readOnly bool
 	 * @return string
 	 */
-	function getExistingSelector( $warnMsg ) {
+	function getExistingSelector( $warnMsg, $readOnly = false ) {
 		$existingSelector = new XmlSelect(
 			'wpFilterWarnMessage',
 			'mw-abusefilter-warn-message-existing',
 			$warnMsg == 'abusefilter-warning' ? 'abusefilter-warning' : 'other'
 		);
 
-		// Find other messages.
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select(
-			'page',
-			[ 'page_title' ],
-			[
-				'page_namespace' => 8,
-				'page_title LIKE ' . $dbr->addQuotes( 'Abusefilter-warning%' )
-			],
-			__METHOD__
-		);
-
 		$existingSelector->addOption( 'abusefilter-warning' );
 
-		$lang = $this->getLanguage();
-		foreach ( $res as $row ) {
-			if ( $lang->lcfirst( $row->page_title ) == $lang->lcfirst( $warnMsg ) ) {
-				$existingSelector->setDefault( $lang->lcfirst( $warnMsg ) );
-			}
+		if ( $readOnly ) {
+			$existingSelector->setAttribute( 'disabled', 'disabled' );
+		} else {
+			// Find other messages.
+			$dbr = wfGetDB( DB_SLAVE );
+			$res = $dbr->select(
+				'page',
+				[ 'page_title' ],
+				[
+					'page_namespace' => 8,
+					'page_title LIKE ' . $dbr->addQuotes( 'Abusefilter-warning%' )
+				],
+				__METHOD__
+			);
 
-			if ( $row->page_title != 'Abusefilter-warning' ) {
-				$existingSelector->addOption( $lang->lcfirst( $row->page_title ) );
+			$lang = $this->getLanguage();
+			foreach ( $res as $row ) {
+				if ( $lang->lcfirst( $row->page_title ) == $lang->lcfirst( $warnMsg ) ) {
+					$existingSelector->setDefault( $lang->lcfirst( $warnMsg ) );
+				}
+
+				if ( $row->page_title != 'Abusefilter-warning' ) {
+					$existingSelector->addOption( $lang->lcfirst( $row->page_title ) );
+				}
 			}
 		}
 
