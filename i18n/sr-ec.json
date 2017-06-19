@@ -279,7 +279,7 @@
 	"abusefilter-edit-builder-vars-old-html": "Викитекст старе странице, рашчлањен у HTML",
 	"abusefilter-edit-builder-vars-minor-edit": "Да ли је измена била означена као мала",
 	"abusefilter-edit-builder-vars-file-sha1": "Дисперзија SHA1 садржаја датотеке",
-	"abusefilter-filter-log": "скорашње измене филтера",
+	"abusefilter-filter-log": "Скорашње измене филтера",
 	"abusefilter-history": "Историја измена филтера #$1",
 	"abusefilter-history-foruser": "Измене од $1",
 	"abusefilter-history-hidden": "Сакривено",
