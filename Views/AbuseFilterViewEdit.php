@@ -11,6 +11,75 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$this->mHistoryID = $page->mHistoryID;
 	}
 
+	/// @todo When older versions of MediaWiki are no longer
+	/// supported, remove this method and call ChangeTags::isTagNameValid directly
+	/// Because it's planned for removal, this is private.
+	/**
+	 * Check whether the characters in the tag name are valid.
+	 *
+	 * @param string $tag Tag name
+	 * @return Status
+	 */
+	private static function isTagNameValid( $tag ) {
+		if ( is_callable( 'ChangeTags::isTagNameValid' ) ) {
+			$status = ChangeTags::isTagNameValid( $tag );
+		} else {
+			// BC
+			if ( strpos( $tag, ',' ) !== false || strpos( $tag, '|' ) !== false ||
+				strpos( $tag, '/' ) !== false ||
+				!Title::makeTitleSafe( NS_MEDIAWIKI, "tag-{$tag}-description" )
+			) {
+				$status = Status::newFatal( 'abusefilter-edit-bad-tags' );
+			} else {
+				$status = Status::newGood();
+			}
+		}
+
+		return $status;
+	}
+
+	/**
+	 * Check whether a filter is allowed to use a tag
+	 *
+	 * @param string $tag Tag name
+	 * @return Status
+	 */
+	protected function isAllowedTag( $tag ) {
+		$tagNameStatus = self::isTagNameValid( $tag );
+
+		if ( !$tagNameStatus->isGood() ) {
+			return $tagNameStatus;
+		}
+
+		$tagEditor = $this->getUser();
+
+		$finalStatus = Status::newGood();
+
+		$canAddStatus =
+			ChangeTags::canAddTagsAccompanyingChange(
+				[ $tag ]
+			);
+
+		if ( $canAddStatus->isGood() ) {
+			return $finalStatus;
+		}
+
+		$alreadyDefinedTags = [];
+		AbuseFilterHooks::onListDefinedTags( $alreadyDefinedTags );
+
+		if ( in_array( $tag, $alreadyDefinedTags, true ) ) {
+			return $finalStatus;
+		}
+
+		$canCreateTagStatus = ChangeTags::canCreateTag( $tag );
+		if ( $canCreateTagStatus->isGood() ) {
+			return $finalStatus;
+		}
+
+		$finalStatus->fatal( 'abusefilter-edit-bad-tags' );
+		return $finalStatus;
+	}
+
 	function show() {
 		$user = $this->getUser();
 		$out = $this->getOutput();
@@ -108,17 +177,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			// If we've activated the 'tag' option, check the arguments for validity.
 			if ( !empty( $actions['tag'] ) ) {
-				$bad = false;
 				foreach ( $actions['tag']['parameters'] as $tag ) {
-					$t = Title::makeTitleSafe( NS_MEDIAWIKI, 'tag-' . $tag );
-					if ( !$t ) {
-						$bad = true;
-					}
+					$status = $this->isAllowedTag( $tag );
 
-					if ( $bad ) {
+					if ( !$status->isGood() ) {
 						$out->addHTML(
 							$this->buildFilterEditor(
-								$this->msg( 'abusefilter-edit-bad-tags' )->parseAsBlock(),
+								$status->getMessage()->parseAsBlock(),
 								$this->mFilter,
 								$history_id
 							)
@@ -253,7 +318,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			// Purge the tag list cache so the fetchAllTags hook applies tag changes
 			if ( isset( $actions['tag'] ) ) {
-				ChangeTags::purgeTagCacheAll();
+				AbuseFilterHooks::purgeTagCache();
 			}
 
 			AbuseFilter::resetFilterProfile( $new_id );
