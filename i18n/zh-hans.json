@@ -223,7 +223,7 @@
 	"abusefilter-edit-export": "导出此过滤器",
 	"abusefilter-edit-syntaxok": "没有检测到语法错误。",
 	"abusefilter-edit-syntaxerr": "检测到语法错误：$1",
-	"abusefilter-edit-bad-tags": "一个或更多的标签不可用。\n标签不应过长，并且不应包含任何特殊字符。",
+	"abusefilter-edit-bad-tags": "您指定的一个或更多的标签无效。标签不应过短，不应包含特殊字符，且不应被其他软件保留。尝试选择新的标签名",
 	"abusefilter-edit-notallowed": "您未被允许创建或编辑防滥用过滤器",
 	"abusefilter-edit-notallowed-global": "您未被允许创建或编辑全域防滥用过滤器",
 	"abusefilter-edit-notallowed-global-custom-msg": "对于全域过滤器，不支持自定义警告消息",

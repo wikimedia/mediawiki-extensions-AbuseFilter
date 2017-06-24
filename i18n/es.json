@@ -44,7 +44,8 @@
 			"Indiralena",
 			"Dgstranz",
 			"Sophivorus",
-			"Fortega"
+			"Fortega",
+			"Josecurioso"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas a las ediciones",
@@ -225,7 +226,7 @@
 	"abusefilter-edit-export": "Exportar este filtro a otro wiki",
 	"abusefilter-edit-syntaxok": "No se detectaron errores de sintaxis.",
 	"abusefilter-edit-syntaxerr": "Se detectó un error de sintaxis: $1",
-	"abusefilter-edit-bad-tags": "Una o más de las etiquetas que especificaste no son válidas.\nLas etiquetas deberían ser cortas, y no deberían contener caracteres especiales.",
+	"abusefilter-edit-bad-tags": "Una o más de las etiquetas que especificaste no son válidas.\nLas etiquetas deberían ser cortas, no deberían contener caracteres especiales y no deben estar reservadas por otro programa. Inténtalo con otro nombre de etiqueta",
 	"abusefilter-edit-notallowed": "No se te permite crear o editar filtros antiabusos",
 	"abusefilter-edit-notallowed-global": "No se te permite crear o editar filtros antiabusos globales",
 	"abusefilter-edit-notallowed-global-custom-msg": "Los mensajes de alerta personalizados no admiten filtros globales",
