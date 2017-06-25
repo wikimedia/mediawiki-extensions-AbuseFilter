@@ -183,7 +183,7 @@
 	"abusefilter-edit-export": "Exportar iste filtro verso un altere wiki",
 	"abusefilter-edit-syntaxok": "Nulle error de syntaxe detegite.",
 	"abusefilter-edit-syntaxerr": "Error de syntaxe detegite: $1",
-	"abusefilter-edit-bad-tags": "Un o plus del etiquettas que tu specificava non es valide.\nLe etiquettas debe esser curte, e non pote continer characteres special.",
+	"abusefilter-edit-bad-tags": "Un o plus del etiquettas que tu specificava non es valide.\nLe etiquettas debe esser curte, non debe continer characteres special, e non debe esser reservate per altere software. Essaya eliger un altere nomine de etiquetta.",
 	"abusefilter-edit-notallowed": "Tu non ha le permission de crear o modificar filtros anti-abuso.",
 	"abusefilter-edit-notallowed-global": "Tu non ha le permission de crear o modificar filtros anti-abuso global",
 	"abusefilter-edit-notallowed-global-custom-msg": "Messages de aviso personalisate non es supportate pro filtros global",
