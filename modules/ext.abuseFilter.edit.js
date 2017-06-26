@@ -188,23 +188,31 @@
 	}
 
 	/**
-	* Fetches the selected warning message for previewing
-	*/
+	 * Fetches the selected warning message for previewing
+	 */
 	function previewWarnMessage() {
-		$.get(
-			mw.config.get( 'wgScript' ), {
-				title: 'MediaWiki:' + getCurrentWarningMessage(),
-				action: 'render'
-			}
-		)
-		.done( function( messageHtml ) {
-			// Replace $1 with the description of the filter
-			messageHtml = messageHtml.replace(
-				/\$1/g,
-				mw.html.escape( $( 'input[name=wpFilterDescription]' ).val() )
-			);
-
-			$( '#mw-abusefilter-warn-preview' ).html( messageHtml );
+		var api = new mw.Api(),
+			args = [
+				$( 'input[name=wpFilterDescription]' ).val(),
+				$( '#mw-abusefilter-edit-id' ).children().last().text()
+			],
+			message = getCurrentWarningMessage();
+		api.get( {
+			action: 'query',
+			meta: 'allmessages',
+			ammessages: message,
+			amargs: args.join( '|' ),
+		} )
+		.done( function( data ) {
+			api.parse( data.query.allmessages[0]['*'], {
+				disablelimitreport: '',
+				preview: '',
+				prop: 'text',
+				title: 'MediaWiki:' + message,
+			} )
+			.done( function( html ) {
+				$( '#mw-abusefilter-warn-preview' ).html( html );
+			} );
 		} );
 	}
 

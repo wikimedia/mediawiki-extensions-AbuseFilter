@@ -128,6 +128,7 @@
 			"dependencies": [
 				"mediawiki.util",
 				"mediawiki.api",
+				"mediawiki.api.parse",
 				"jquery.textSelection",
 				"jquery.spinner"
 			]
