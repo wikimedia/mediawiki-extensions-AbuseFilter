@@ -30,7 +30,8 @@
 			"Cwek",
 			"Matma Rex",
 			"1233thehongkonger",
-			"逆襲的天邪鬼"
+			"逆襲的天邪鬼",
+			"Corainn"
 		]
 	},
 	"abusefilter-desc": "套用自動啟發式演算法於編輯",
@@ -209,7 +210,7 @@
 	"abusefilter-edit-export": "匯出此過濾器至其他 Wiki",
 	"abusefilter-edit-syntaxok": "沒有偵測到語法錯誤。",
 	"abusefilter-edit-syntaxerr": "已偵測到語法錯誤：$1",
-	"abusefilter-edit-bad-tags": "您指定的一個或多個標籤無效。\n標籤不應過長，且不可包含特殊字元。",
+	"abusefilter-edit-bad-tags": "您指定的一個或多個標籤無效。\n標籤不應過長、不可包含特殊字元，而且不應被其他軟體所保留。嘗試選擇一個新的標籤名。",
 	"abusefilter-edit-notallowed": "您沒有權限建立或編輯防濫用過濾器",
 	"abusefilter-edit-notallowed-global": "您沒有權限建立或編輯全域防濫用過濾器",
 	"abusefilter-edit-notallowed-global-custom-msg": "全域過濾器不支援使用字訂警告訊息",
