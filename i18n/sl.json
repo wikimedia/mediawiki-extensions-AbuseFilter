@@ -180,7 +180,7 @@
 	"abusefilter-edit-export": "Izvozi ta filter na drug wiki",
 	"abusefilter-edit-syntaxok": "Zaznana ni nobena skladenjska napaka.",
 	"abusefilter-edit-syntaxerr": "Zaznana je skladenjska napaka: $1",
-	"abusefilter-edit-bad-tags": "Ena ali več navedenih oznak ni veljavnih.\nOznake morajo biti kratne in ne smejo vsebovati posebnih znakov.",
+	"abusefilter-edit-bad-tags": "Ena ali več navedenih oznak ni veljavnih.\nOznake morajo biti kratke, ne smejo vsebovati posebnih znakov in ne sme jih rezervirati drugo programje. Poskusite izbrati novo ime oznake.",
 	"abusefilter-edit-notallowed": "Ustvarjanje ali urejanje filtrov zlorab vam ni dovoljeno.",
 	"abusefilter-edit-notallowed-global": "Nimate dovoljenj za ustvarjanje ali spreminjanje globalnih filtrov zlorab",
 	"abusefilter-edit-notallowed-global-custom-msg": "Opozorilna sporočila po meri niso podprta za globalne filtre",
