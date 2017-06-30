@@ -184,7 +184,7 @@
 	"abusefilter-edit-export": "Ekspordi see filter teise vikisse",
 	"abusefilter-edit-syntaxok": "Süntaksitõrkeid ei leitud.",
 	"abusefilter-edit-syntaxerr": "Leiti süntaksitõrge: $1",
-	"abusefilter-edit-bad-tags": "Mõni määratud märgistest on sobimatu.\nMärgised peaks olema lühikesed ja nad ei peaks sisaldama erimärke.",
+	"abusefilter-edit-bad-tags": "Mõni määratud märgistest on sobimatu.\nMärgised peaks olema lühikesed, nad ei peaks sisaldama erimärke ja neid ei peaks kasutama muu tarkvara. Proovi valida märgisele uus nimi.",
 	"abusefilter-edit-notallowed": "Sul pole lubatud väärtarvitusfiltreid luua ega muuta.",
 	"abusefilter-edit-notallowed-global": "Sul pole lubatud globaalseid filtreid luua ega muuta.",
 	"abusefilter-edit-notallowed-global-custom-msg": "Globaalsed filtrid ei toeta kohandatud hoiatussõnumeid.",
