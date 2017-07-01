@@ -278,7 +278,7 @@
 	"abusefilter-edit-builder-vars-user-age": "利用者アカウントの登録期間",
 	"abusefilter-edit-builder-vars-user-name": "利用者のアカウント名",
 	"abusefilter-edit-builder-vars-user-groups": "利用者が属するグループ (明示的ではないものも含む)",
-	"abusefilter-edit-builder-vars-user-rights": "ユーザーが持っている権限",
+	"abusefilter-edit-builder-vars-user-rights": "利用者が持つ権限",
 	"abusefilter-edit-builder-vars-user-blocked": "利用者がブロックされているかどうか",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "メールアドレスを確認した時刻",
 	"abusefilter-edit-builder-vars-recent-contributors": "直前10人のページへの投稿者",
