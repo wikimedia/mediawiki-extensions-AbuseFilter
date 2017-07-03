@@ -335,7 +335,7 @@
 	"abusefilter-action-disallow": "None permesse",
 	"abusefilter-revert-title": "Annulle totte le cangiaminde da 'u filtre $1",
 	"abusefilter-revert-intro": "Quiste module conzente de fà annullà totte le cangiaminde combiute da 'u filtre de le abbuse pè 'u filtre $1.\nPleSe preghe de fà attenzione jndr'à ll'ause de quiste strumènde.",
-	"abusefilter-revert-preview-item": " $1: $2 fàce 'nu $3 sus $4.\nAziune ca honne da essere reconvertite: $5 ($6)",
+	"abusefilter-revert-preview-item": " $1: $2 ha {{GENDER:$7|fatte}} 'nu $3 sus $4.\nAziune ca onne essere reconvertite: $5 ($6)",
 	"abusefilter-revert-search-legend": "Selezione le aziune de le filtre de le abbuse ca honne da essere reconvertite",
 	"abusefilter-revert-periodstart": "Inizie d'u periode:",
 	"abusefilter-revert-periodend": "Fine d'u periode:",
