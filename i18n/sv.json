@@ -207,7 +207,7 @@
 	"abusefilter-edit-export": "Exportera det här filtret till en annan wiki",
 	"abusefilter-edit-syntaxok": "Inga syntaxfel upptäcktes.",
 	"abusefilter-edit-syntaxerr": "Syntaxfel uppstod: $1",
-	"abusefilter-edit-bad-tags": "En eller flera av de märken du angav är inte giltigt. Märken skall vara korta och de får inte innehålla några specialtecken.",
+	"abusefilter-edit-bad-tags": "En eller flera av de märken du angav är inte giltigt. Märken skall vara korta och de får inte innehålla några specialtecken och de bör inte reserveras av andra programvaror. Försök att välja ett nytt märkesnamn",
 	"abusefilter-edit-notallowed": "Du har inte tillåtelse att skapa eller ändra missbruksfilter",
 	"abusefilter-edit-notallowed-global": "Du har inte tillåtelse att skapa eller ändra globala missbruksfilter",
 	"abusefilter-edit-notallowed-global-custom-msg": "Anpassade varningsmeddelanden stöds inte för globala filter",
