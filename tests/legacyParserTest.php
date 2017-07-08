@@ -3,9 +3,9 @@
  * Runs tests against the PHP parser.
  */
 
-require_once ( getenv( 'MW_INSTALL_PATH' ) !== false
+require_once getenv( 'MW_INSTALL_PATH' ) !== false
 	? getenv( 'MW_INSTALL_PATH' ) . "/maintenance/commandLine.inc"
-	: __DIR__ . '/../../../maintenance/commandLine.inc' );
+	: __DIR__ . '/../../../maintenance/commandLine.inc';
 
 $tester = new AbuseFilterParser;
 

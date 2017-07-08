@@ -157,11 +157,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// Check for restricted actions
 			global $wgAbuseFilterRestrictions;
 			if ( count( array_intersect_key(
-						 array_filter( $wgAbuseFilterRestrictions ),
-						 array_merge(
-							 array_filter( $actions ),
-							 array_filter( $origActions )
-						 )
+					array_filter( $wgAbuseFilterRestrictions ),
+					array_merge(
+						array_filter( $actions ),
+						array_filter( $origActions )
+					)
 				) )
 				&& !$user->isAllowed( 'abusefilter-modify-restricted' )
 			) {
@@ -217,11 +217,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			// T67807
 			// integer 1's & 0's might be better understood than booleans
-			$newRow['af_enabled'] = (int) $newRow['af_enabled'];
-			$newRow['af_hidden'] = (int) $newRow['af_hidden'];
-			$newRow['af_throttled'] = (int) $newRow['af_throttled'];
-			$newRow['af_deleted'] = (int) $newRow['af_deleted'];
-			$newRow['af_global'] = (int) $newRow['af_global'];
+			$newRow['af_enabled'] = (int)$newRow['af_enabled'];
+			$newRow['af_hidden'] = (int)$newRow['af_hidden'];
+			$newRow['af_throttled'] = (int)$newRow['af_throttled'];
+			$newRow['af_deleted'] = (int)$newRow['af_deleted'];
+			$newRow['af_global'] = (int)$newRow['af_global'];
 
 			$dbw->replace( 'abuse_filter', [ 'af_id' ], $newRow, __METHOD__ );
 
@@ -450,7 +450,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Hit count display
 		if ( !empty( $row->af_hit_count ) && $user->isAllowed( 'abusefilter-log-detail' ) ) {
 			$count_display = $this->msg( 'abusefilter-hitcount' )
-				->numParams( (int) $row->af_hit_count )->text();
+				->numParams( (int)$row->af_hit_count )->text();
 			$hitCount = $this->linkRenderer->makeKnownLink(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
 				$count_display,

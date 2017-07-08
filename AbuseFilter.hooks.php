@@ -49,8 +49,8 @@ class AbuseFilterHooks {
 	 * @return bool Always true
 	 */
 	public static function onEditFilterMergedContent( IContextSource $context, Content $content,
-		Status $status, $summary, User $user, $minoredit ) {
-
+		Status $status, $summary, User $user, $minoredit
+	) {
 		$text = AbuseFilter::contentToString( $content );
 
 		$filterStatus = self::filterEdit( $context, $content, $text, $status, $summary, $minoredit );
@@ -75,8 +75,8 @@ class AbuseFilterHooks {
 	 * @return Status
 	 */
 	public static function filterEdit( IContextSource $context, $content, $text,
-		Status $status, $summary, $minoredit ) {
-
+		Status $status, $summary, $minoredit
+	) {
 		$title = $context->getTitle();
 
 		self::$successful_action_vars = false;
@@ -507,7 +507,7 @@ class AbuseFilterHooks {
 
 		$tags = $cache->getWithSetCallback(
 			// Key to store the cached value under
-			$cache->makeKey( self::FETCH_ALL_TAGS_KEY, (int) $enabled ),
+			$cache->makeKey( self::FETCH_ALL_TAGS_KEY, (int)$enabled ),
 
 			// Time-to-live (in seconds)
 			$cache::TTL_MINUTE,
@@ -648,11 +648,11 @@ class AbuseFilterHooks {
 			} else {
 				/*
 				$updater->addExtensionUpdate( array(
-					 'modifyField',
-					 'abuse_filter_log',
-					 'afl_namespace',
-					 "$dir/db_patches/patch-afl-namespace_int.sqlite.sql",
-					 true
+					'modifyField',
+					'abuse_filter_log',
+					'afl_namespace',
+					"$dir/db_patches/patch-afl-namespace_int.sqlite.sql",
+					true
 				) );
 				 */
 				/* @todo Modify a column in sqlite, which do not support such

@@ -44,9 +44,9 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$output = Xml::tags( 'div', [ 'id' => 'mw-abusefilter-test-editor' ], $output );
 
 		$output .= Xml::tags( 'p', null, Xml::checkLabel(
-				 $this->msg( 'abusefilter-test-shownegative' )->text(),
-				 'wpShowNegative', 'wpShowNegative', $this->mShowNegative )
-		 );
+			$this->msg( 'abusefilter-test-shownegative' )->text(),
+			'wpShowNegative', 'wpShowNegative', $this->mShowNegative )
+		);
 
 		// Selectory stuff
 		$selectFields = [];
@@ -162,8 +162,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		if ( !$this->mFilter
 			&& count( $this->mParams ) > 1
-			&& is_numeric( $this->mParams[1] ) )
-		{
+			&& is_numeric( $this->mParams[1] )
+		) {
 			$dbr = wfGetDB( DB_SLAVE );
 			$this->mFilter = $dbr->selectField( 'abuse_filter',
 				'af_pattern',

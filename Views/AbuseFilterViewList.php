@@ -219,7 +219,7 @@ class AbuseFilterPager extends TablePager {
 				'af_enabled',
 				'af_deleted',
 				'af_global',
-			 	'af_public_comments',
+				'af_public_comments',
 				'af_hidden',
 				'af_hit_count',
 				'af_timestamp',

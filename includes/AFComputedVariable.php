@@ -207,7 +207,6 @@ class AFComputedVariable {
 					$links = $this->getLinksFromDB( $article );
 					wfDebug( "AbuseFilter: loading old links from DB\n" );
 				} elseif ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
-
 					wfDebug( "AbuseFilter: loading old links from Parser\n" );
 					$textVar = $parameters['text-var'];
 
@@ -216,8 +215,8 @@ class AFComputedVariable {
 					$links = array_keys( $editInfo->output->getExternalLinks() );
 				} else {
 					// TODO: Get links from Content object. But we don't have the content object.
-					//      And for non-text content, $wikitext is usually not going to be a valid
-					//      serialization, but rather some dummy text for filtering.
+					// And for non-text content, $wikitext is usually not going to be a valid
+					// serialization, but rather some dummy text for filtering.
 					$links = [];
 				}
 
@@ -274,7 +273,6 @@ class AFComputedVariable {
 				$textVar = $parameters['wikitext-var'];
 
 				if ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
-
 					if ( isset( $parameters['pst'] ) && $parameters['pst'] ) {
 						// $textVar is already PSTed when it's not loaded from an ongoing edit.
 						$result = $vars->getVar( $textVar )->toString();
@@ -285,8 +283,8 @@ class AFComputedVariable {
 					}
 				} else {
 					// TODO: Parser Output from Content object. But we don't have the content object.
-					//      And for non-text content, $wikitext is usually not going to be a valid
-					//      serialization, but rather some dummy text for filtering.
+					// And for non-text content, $wikitext is usually not going to be a valid
+					// serialization, but rather some dummy text for filtering.
 					$result = '';
 				}
 

@@ -1758,7 +1758,7 @@ class AbuseFilter {
 	 */
 	public static function checkEmergencyDisable( $group, $filters, $total ) {
 		global $wgAbuseFilterEmergencyDisableThreshold, $wgAbuseFilterEmergencyDisableCount,
-			   $wgAbuseFilterEmergencyDisableAge;
+			$wgAbuseFilterEmergencyDisableAge;
 
 		$stash = ObjectCache::getMainStashInstance();
 		foreach ( $filters as $filter ) {

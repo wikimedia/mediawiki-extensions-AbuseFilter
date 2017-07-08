@@ -19,8 +19,8 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			$this->showExaminerForRC( $this->mParams[1] );
 		} elseif ( count( $this->mParams ) > 2
 			&& $this->mParams[1] == 'log'
-			&& is_numeric( $this->mParams[2] ) )
-		{
+			&& is_numeric( $this->mParams[2] )
+		) {
 			$this->showExaminerForLogEntry( $this->mParams[2] );
 		} else {
 			$this->showSearch();

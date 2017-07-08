@@ -16,8 +16,8 @@ class AbuseFilterTokenizer {
 	const WHITESPACE = "\011\012\013\014\015\040";
 
 	// Order is important. The punctuation-matching regex requires that
-	//  ** comes before *, etc. They are sorted to make it easy to spot
-	//  such errors.
+	// ** comes before *, etc. They are sorted to make it easy to spot
+	// such errors.
 	public static $operators = [
 		'!==', '!=', '!',   // Inequality
 		'**', '*',          // Multiplication/exponentiation
@@ -252,4 +252,3 @@ class AbuseFilterTokenizer {
 		throw new AFPUserVisibleException( 'unclosedstring', $offset, [] );
 	}
 }
-
