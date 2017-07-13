@@ -222,12 +222,13 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 		$this->mPage = $page;
 	}
 
+	/**
+	 * @fixme this is similar to AbuseFilterViewTestBatch::doTest
+	 */
 	function getQueryInfo() {
 		$dbr = wfGetDB( DB_SLAVE );
-		$conds = [
-			'rc_user_text' => $this->mPage->mSearchUser,
-			'rc_type != ' . RC_EXTERNAL
-		];
+		$conds = [];
+		$conds['rc_user_text'] = $this->mPage->mSearchUser;
 
 		$startTS = strtotime( $this->mPage->mSearchPeriodStart );
 		if ( $startTS ) {
@@ -238,13 +239,7 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 			$conds[] = 'rc_timestamp<=' . $dbr->addQuotes( $dbr->timestamp( $endTS ) );
 		}
 
-		// If one of these is true, we're abusefilter compatible.
-		$compatConds = [
-			'rc_this_oldid != 0',
-			'rc_log_action' => [ 'move', 'create' ],
-		];
-
-		$conds[] = $dbr->makeList( $compatConds, LIST_OR );
+		$conds[] = $this->mPage->buildTestConditions( $dbr );
 
 		$info = [
 			'tables' => 'recentchanges',

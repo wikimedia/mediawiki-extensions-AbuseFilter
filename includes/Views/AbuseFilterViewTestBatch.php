@@ -78,6 +78,9 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		}
 	}
 
+	/**
+	 * @fixme this is similar to AbuseFilterExaminePager::getQueryInfo
+	 */
 	function doTest() {
 		// Quick syntax check.
 		$out = $this->getOutput();
@@ -88,10 +91,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		}
 		$dbr = wfGetDB( DB_SLAVE );
 
-		$conds = [
-			'rc_user_text' => $this->mTestUser,
-			'rc_type != ' . RC_EXTERNAL
-		];
+		$conds = [];
+		$conds['rc_user_text'] = $this->mTestUser;
 
 		if ( $this->mTestPeriodStart ) {
 			$conds[] = 'rc_timestamp >= ' .
@@ -111,6 +112,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 				return;
 			}
 		}
+
+		$conds[] = $this->buildTestConditions( $dbr );
 
 		// Get our ChangesList
 		$changesList = new AbuseFilterChangesList( $this->getSkin() );
