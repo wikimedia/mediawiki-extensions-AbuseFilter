@@ -185,7 +185,7 @@
 	"abusefilter-edit-action-disallow": "Empêcher l'utilisateur d'effectuer l'action en question",
 	"abusefilter-edit-action-blockautopromote": "Révoquer l'état autoconfirmé du compte utilisateur",
 	"abusefilter-edit-action-degroup": "Retirer l'utilisateur de tous les groupes privilégiés",
-	"abusefilter-edit-action-block": "Bloquer en écriture l'utilisateur et/ou l'adresse IP",
+	"abusefilter-edit-action-block": "Bloquer en écriture l’utilisateur ou l’adresse IP",
 	"abusefilter-edit-action-throttle": "Déclencher les actions uniquement si l'utilisateur a dépassé un taux limite",
 	"abusefilter-edit-action-rangeblock": "Bloquer la plage IP /16 d'origine de l'utilisateur.",
 	"abusefilter-edit-action-tag": "Baliser la modification pour une relecture ultérieure.",
