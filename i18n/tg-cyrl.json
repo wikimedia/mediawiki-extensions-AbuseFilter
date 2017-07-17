@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ibrahim"
+			"Ibrahim",
+			"ToJack"
 		]
 	},
 	"abusefilter-log-search-user": "Корбар:",
 	"abusefilter-log-search-title": "Унвон:",
 	"abusefilter-log-search-submit": "Ҷустуҷӯ",
 	"abusefilter-log-details-val": "Қимат",
-	"abusefilter-list-edit": "Вироиш"
+	"abusefilter-list-edit": "Вироиш",
+	"abusefilter-examine-submit": "Ҷустуҷӯ"
 }
