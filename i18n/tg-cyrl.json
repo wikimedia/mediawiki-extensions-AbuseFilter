@@ -5,10 +5,14 @@
 			"ToJack"
 		]
 	},
+	"abusefilter-warning": "'''Таваҷҷӯҳ'''. Амали зерин ба таври автоматӣ чун нохуб ҳисобида шуд. Вироишоти нолозим вогардонӣ мешавад,\nдашном ва/ё вироишоти ғайризабонӣ ба басташавии ҳисоби корбарӣ ва ё IP-адресатон меорад.\nАгар шумо боварӣ доред, ки вироишатон лозима аст, лутфан тугмаи фиристан ё захира карданро бори дигар пахш кунед. \nТавзеҳоти хурди ин қоида: $1",
 	"abusefilter-log-search-user": "Корбар:",
 	"abusefilter-log-search-title": "Унвон:",
 	"abusefilter-log-search-submit": "Ҷустуҷӯ",
 	"abusefilter-log-details-val": "Қимат",
 	"abusefilter-list-edit": "Вироиш",
-	"abusefilter-examine-submit": "Ҷустуҷӯ"
+	"abusefilter-edit-builder-vars-old-content-model": "Навъи таркибии саҳифа",
+	"abusefilter-edit-builder-vars-article-id": "Рамзи саҳифа",
+	"abusefilter-examine-submit": "Ҷустуҷӯ",
+	"abusefilter-diff-item": "Элемент"
 }
