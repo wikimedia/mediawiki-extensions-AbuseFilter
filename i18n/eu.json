@@ -10,7 +10,8 @@
 			"Unai Fdz. de Betoño",
 			"Xabier Armendaritz",
 			"පසිඳු කාවින්ද",
-			"Sator"
+			"Sator",
+			"Mikel Ibaiba"
 		]
 	},
 	"abusefilter-desc": "Edizioei heuristika automatikoa aplikatzen die",
@@ -97,6 +98,7 @@
 	"abusefilter-edit-export": "Esportatu iragazki hau beste wiki batera",
 	"abusefilter-edit-syntaxok": "Ez da sintaxi-errorerik aurkitu",
 	"abusefilter-edit-syntaxerr": "Sintaxi-errorea detektatu da: $1",
+	"abusefilter-edit-bad-tags": "Emandako etiketaren bat edo gehiago ez da baliogarria. Etiketak laburragoak izan behar dira, ezin dituzte karaktere berezirik eduki, eta beste software batek ezin izan ditu erreserbatu. Saiatu beste tiketa izen batekin",
 	"abusefilter-edit-builder-group-op-arithmetic": "Eragile aritmetikoak",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Batuketa (+)",
 	"abusefilter-edit-builder-op-arithmetic-subtraction": "Kenketa (-)",
