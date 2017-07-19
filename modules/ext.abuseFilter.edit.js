@@ -63,9 +63,8 @@
 
 		$( '#mw-abusefilter-syntaxresult' )
 			.show()
-			.removeClass( 'mw-abusefilter-syntaxresult-ok mw-abusefilter-syntaxresult-error' )
+			.attr( 'class', className )
 			.text( resultText )
-			.addClass( className )
 			.data( 'syntaxOk', syntaxOk );
 	}
 
