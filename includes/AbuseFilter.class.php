@@ -1204,7 +1204,7 @@ class AbuseFilter {
 		$vars->setVar( 'local_log_ids', $local_log_ids );
 
 		// Check for emergency disabling.
-		$total = $stash->get( AbuseFilter::filterUsedKey( $group ) );
+		$total = $stash->get( self::filterUsedKey( $group ) );
 		self::checkEmergencyDisable( $group, $logged_local_filters, $total );
 
 		wfProfileOut( __METHOD__ . '-hitstats' );
@@ -1531,7 +1531,7 @@ class AbuseFilter {
 	 * @param bool $isAutoBlock
 	 */
 	protected static function doAbuseFilterBlock( array $rule, $target, $expiry, $isAutoBlock ) {
-		$filterUser = AbuseFilter::getFilterUser();
+		$filterUser = self::getFilterUser();
 		$reason = wfMessage(
 			'abusefilter-blockreason',
 			$rule['desc'], $rule['number']
@@ -2173,9 +2173,9 @@ class AbuseFilter {
 		$newTitle = Title::newFromText( $params[0] );
 
 		$vars = AbuseFilterVariableHolder::merge(
-			AbuseFilter::generateUserVars( $user ),
-			AbuseFilter::generateTitleVars( $oldTitle, 'MOVED_FROM' ),
-			AbuseFilter::generateTitleVars( $newTitle, 'MOVED_TO' )
+			self::generateUserVars( $user ),
+			self::generateTitleVars( $oldTitle, 'MOVED_FROM' ),
+			self::generateTitleVars( $newTitle, 'MOVED_TO' )
 		);
 
 		$vars->setVar( 'SUMMARY', $row->rc_comment );
@@ -2371,9 +2371,9 @@ class AbuseFilter {
 		/** @var $wgLang Language */
 		global $wgLang;
 		if ( count( $parameters ) == 0 ) {
-			$displayAction = AbuseFilter::getActionDisplay( $action );
+			$displayAction = self::getActionDisplay( $action );
 		} else {
-			$displayAction = AbuseFilter::getActionDisplay( $action ) .
+			$displayAction = self::getActionDisplay( $action ) .
 				wfMessage( 'colon-separator' )->escaped() .
 				$wgLang->semicolonList( $parameters );
 		}
