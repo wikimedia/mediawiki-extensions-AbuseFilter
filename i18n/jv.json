@@ -338,7 +338,7 @@
 	"abusefilter-diff-info": "Informasi dhasar",
 	"abusefilter-diff-pattern": "Kahanan saringan",
 	"abusefilter-diff-invalid": "Ora bisa njupuk vèrsi sing dikarepaké",
-	"abusefilter-diff-backhistory": "Balik nyang sujarah saringan",
+	"abusefilter-diff-backhistory": "Balik nyang sajarah saringan",
 	"abusefilter-diff-prev": "Owahan luwih lawas",
 	"abusefilter-diff-next": "Owahan luwih anyar",
 	"abusefilter-import-intro": "Sampéyan bisa nganggo antarmuka iki kanggo ngimpor saringan saka wiki liya.\nNèng wiki sumber, klik \"{{int:abusefilter-edit-export}}\" sakisoré \"{{int:abusefilter-edit-tools}}\" nèng antarmuka panyuntingan.\nSalin saka kothak wedhi sing njedhul, lan tèmplèkaké nèng kothak tèks, banjur klik \"{{int:abusefilter-import-submit}}\".",
