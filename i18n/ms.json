@@ -8,7 +8,8 @@
 			"Izzudin",
 			"Kurniasan",
 			"Zamwan",
-			"Matma Rex"
+			"Matma Rex",
+			"Jeluang Terluang"
 		]
 	},
 	"abusefilter-desc": "Mengenakan heuristik automatik pada suntingan.",
@@ -134,7 +135,7 @@
 	"abusefilter-edit-oldwarning": "<strong>Anda sedang menyunting versi lama bagi penapis ini.\nStatistik yang dipetik adalah bagi versi terkini bagi penapis ini.\nJika anda menyimpan perubahan anda, anda akan membatalkan segala perubahan sejak semakan yang anda sunting itu.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Kembali ke sejarah penapis ini]].",
 	"abusefilter-edit-status-label": "Statistik:",
 	"abusefilter-edit-status": "Penapis ini telah memadani $2 ($3%) daripada $1 tindakan terkini.",
-	"abusefilter-edit-status-profile": "Penapis ini telah memadani $2 ($3%) daripada $1 tindakan terkini.\nSecara puratanya, masa berjalannya adalah $4ms, dan ia mengambil $5 syarat daripada had syarat.",
+	"abusefilter-edit-status-profile": "Penapis ini telah memadani $2 ($3%) daripada $1 tindakan terkini.\nSecara puratanya, masa berjalannya ialah $4ms, dan ia mengambil $5 syarat daripada had syarat.",
 	"abusefilter-edit-throttled": "'''Amaran''': Penapis ini telah dimatikan secara automatik sebagai langkah keselamatan.\nIa telah mencapai had pemadanan lebih $1% tindakan.",
 	"abusefilter-edit-new": "Penapis baru",
 	"abusefilter-edit-save": "Simpan penapis",
@@ -154,7 +155,6 @@
 	"abusefilter-edit-consequences": "Tindakan yang diambil apabila ada padanan",
 	"abusefilter-edit-action-warn": "Cetuskan tindakan ini selepas memberi pengguna amaran",
 	"abusefilter-edit-action-disallow": "Hindari pengguna ini daripada melakukan tindakan berkenaan",
-	"abusefilter-edit-action-flag": "Benderakan suntingan dalam log penyalahgunaan",
 	"abusefilter-edit-action-blockautopromote": "Tarik balik status sah automatik pengguna",
 	"abusefilter-edit-action-degroup": "Gugurkan pengguna ini daripada semua kumpulan istimewa",
 	"abusefilter-edit-action-block": "Sekat pengguna dan/atau alamat IP daripada menyunting",
