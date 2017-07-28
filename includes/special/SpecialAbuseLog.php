@@ -15,6 +15,8 @@ class SpecialAbuseLog extends SpecialPage {
 
 	protected $mSearchFilter;
 
+	protected $mSearchEntries;
+
 	public function __construct() {
 		parent::__construct( 'AbuseLog', 'abusefilter-log' );
 	}
@@ -95,6 +97,8 @@ class SpecialAbuseLog extends SpecialPage {
 		if ( self::canSeeDetails() ) {
 			$this->mSearchFilter = $request->getText( 'wpSearchFilter' );
 		}
+
+		$this->mSearchEntries = $request->getText( 'wpSearchEntries' );
 	}
 
 	function searchForm() {
@@ -130,6 +134,17 @@ class SpecialAbuseLog extends SpecialPage {
 				'type' => 'text',
 				'default' => $this->mSearchWiki,
 				'size' => 45,
+			];
+		}
+		if ( self::canSeeHidden() ) {
+			$formDescriptor['SearchEntries'] = [
+				'type' => 'select',
+				'label-message' => 'abusefilter-log-search-entries-label',
+				'options' => [
+					$this->msg( 'abusefilter-log-search-entries-all' )->text() => 0,
+					$this->msg( 'abusefilter-log-search-entries-hidden' )->text() => 1,
+					$this->msg( 'abusefilter-log-search-entries-visible' )->text() => 2,
+				],
 			];
 		}
 
@@ -274,6 +289,14 @@ class SpecialAbuseLog extends SpecialPage {
 		if ( $this->mSearchTitle && $searchTitle ) {
 			$conds['afl_namespace'] = $searchTitle->getNamespace();
 			$conds['afl_title'] = $searchTitle->getDBkey();
+		}
+
+		if ( self::canSeeHidden() ) {
+			if ( $this->mSearchEntries == '1' ) {
+				$conds['afl_deleted'] = 1;
+			} elseif ( $this->mSearchEntries == '2' ) {
+				$conds[] = self::getNotDeletedCond( wfGetDB( DB_SLAVE ) );
+			}
 		}
 
 		$pager = new AbuseLogPager( $this, $conds );
