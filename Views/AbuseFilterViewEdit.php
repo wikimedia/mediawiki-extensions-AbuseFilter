@@ -89,6 +89,22 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$filter = $this->mFilter;
 		$history_id = $this->mHistoryID;
+		if ( $this->mHistoryID ) {
+			$dbr = wfGetDB( DB_SLAVE );
+			$row = $dbr->selectRow(
+				'abuse_filter_history',
+				'afh_id',
+				[
+					'afh_filter' => $filter,
+				],
+				__METHOD__,
+				[ 'ORDER BY' => 'afh_timestamp DESC' ]
+			);
+			// change $history_id to null if it's current version id
+			if ( $row->afh_id === $this->mHistoryID ) {
+				$history_id = null;
+			}
+		}
 
 		// Add default warning messages
 		$this->exposeWarningMessages();
@@ -340,14 +356,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			if ( $history_id ) {
 				$out->addWikiMsg(
-					'abusefilter-edit-oldwarning', $this->mHistoryID, $this->mFilter );
+					'abusefilter-edit-oldwarning', $history_id, $filter );
 			}
 
-			$out->addHTML( $this->buildFilterEditor( null, $this->mFilter, $history_id ) );
+			$out->addHTML( $this->buildFilterEditor( null, $filter, $history_id ) );
 
 			if ( $history_id ) {
 				$out->addWikiMsg(
-					'abusefilter-edit-oldwarning', $this->mHistoryID, $this->mFilter );
+					'abusefilter-edit-oldwarning', $history_id, $filter );
 			}
 		}
 	}
