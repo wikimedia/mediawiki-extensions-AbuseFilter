@@ -109,13 +109,11 @@ class SpecialAbuseLog extends SpecialPage {
 				'label-message' => 'abusefilter-log-search-user',
 				'type' => 'user',
 				'default' => $this->mSearchUser,
-				'size' => 45,
 			],
 			'SearchTitle' => [
 				'label-message' => 'abusefilter-log-search-title',
 				'type' => 'title',
 				'default' => $this->mSearchTitle,
-				'size' => 45,
 			]
 		];
 		if ( self::canSeeDetails() ) {
@@ -123,7 +121,6 @@ class SpecialAbuseLog extends SpecialPage {
 				'label-message' => 'abusefilter-log-search-filter',
 				'type' => 'text',
 				'default' => $this->mSearchFilter,
-				'size' => 45,
 			];
 		}
 		if ( $wgAbuseFilterIsCentral ) {
@@ -133,7 +130,6 @@ class SpecialAbuseLog extends SpecialPage {
 				'label-message' => 'abusefilter-log-search-wiki',
 				'type' => 'text',
 				'default' => $this->mSearchWiki,
-				'size' => 45,
 			];
 		}
 		if ( self::canSeeHidden() ) {
@@ -148,9 +144,8 @@ class SpecialAbuseLog extends SpecialPage {
 			];
 		}
 
-		$htmlForm = HTMLForm::factory( 'table', $formDescriptor, $this->getContext() );
-		$htmlForm->setWrapperLegendMsg( 'abusefilter-log-search' )
-			->setSubmitTextMsg( 'abusefilter-log-search-submit' )
+		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() )
+			->setWrapperLegendMsg( 'abusefilter-log-search' )
 			->setMethod( 'get' )
 			->prepareForm()
 			->displayForm( false );
