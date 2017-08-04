@@ -224,10 +224,10 @@ class AbuseFilterHooks {
 	 * @param bool $minoredit
 	 * @param bool $watchthis
 	 * @param string $sectionanchor
-	 * @param integer $flags
+	 * @param int $flags
 	 * @param Revision $revision
-	 * @param $status Status
-	 * @param $baseRevId
+	 * @param Status $status
+	 * @param int $baseRevId
 	 * @return bool
 	 */
 	public static function onPageContentSaveComplete(
@@ -288,8 +288,8 @@ class AbuseFilterHooks {
 
 	/**
 	 * Check if two article objects are identical or have an identical WikiPage
-	 * @param $page1 Article|WikiPage
-	 * @param $page2 Article|WikiPage
+	 * @param Article|WikiPage $page1
+	 * @param Article|WikiPage $page2
 	 * @return bool
 	 */
 	protected static function identicalPageObjects( $page1, $page2 ) {
@@ -304,8 +304,8 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param $user
-	 * @param $promote
+	 * @param User $user
+	 * @param array $promote
 	 * @return bool
 	 */
 	public static function onGetAutoPromoteGroups( $user, &$promote ) {
@@ -346,11 +346,11 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param $oldTitle Title
-	 * @param $newTitle Title
-	 * @param $user User
-	 * @param $error
-	 * @param $reason
+	 * @param Title $oldTitle
+	 * @param Title $newTitle
+	 * @param User $user
+	 * @param string $error
+	 * @param string $reason
 	 * @return bool
 	 */
 	public static function onAbortMove( $oldTitle, $newTitle, $user, &$error, $reason ) {
@@ -400,9 +400,9 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param $user User
-	 * @param $message
-	 * @param $autocreate bool Indicates whether the account is created automatically.
+	 * @param User $user
+	 * @param string $message
+	 * @param bool $autocreate Indicates whether the account is created automatically.
 	 * @return bool
 	 * @deprecated AbuseFilterPreAuthenticationProvider will take over this functionality
 	 */
@@ -434,8 +434,8 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param $user User
-	 * @param $message
+	 * @param User $user
+	 * @param string $message
 	 * @return bool
 	 * @deprecated AbuseFilterPreAuthenticationProvider will take over this functionality
 	 */
@@ -444,8 +444,8 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param $user User
-	 * @param $message
+	 * @param User $user
+	 * @param string $message
 	 * @return bool
 	 * @deprecated AbuseFilterPreAuthenticationProvider will take over this functionality
 	 */
@@ -457,7 +457,7 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param $recentChange RecentChange
+	 * @param RecentChange $recentChange
 	 * @return bool
 	 */
 	public static function onRecentChangeSave( $recentChange ) {
@@ -584,7 +584,7 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param $updater DatabaseUpdater
+	 * @param DatabaseUpdater $updater
 	 * @throws MWException
 	 * @return bool
 	 */
@@ -728,8 +728,8 @@ class AbuseFilterHooks {
 
 	/**
 	 * @param $id
-	 * @param $nt Title
-	 * @param $tools
+	 * @param Title $nt
+	 * @param array $tools
 	 * @param SpecialPage|null $sp for context in newer MW versions
 	 * @return bool
 	 */

@@ -102,7 +102,7 @@ class AbuseFilterTokenizer {
 
 	/**
 	 * @param string $code
-	 * @param integer &$offset
+	 * @param int &$offset
 	 * @return AFPToken
 	 * @throws AFPException
 	 * @throws AFPUserVisibleException

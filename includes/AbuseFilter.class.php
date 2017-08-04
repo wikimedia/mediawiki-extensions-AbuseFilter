@@ -1698,7 +1698,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $user User
+	 * @param User $user
 	 * @return String
 	 */
 	public static function autoPromoteBlockKey( $user ) {
@@ -1878,10 +1878,10 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $rules String
-	 * @param $textName String
-	 * @param $addResultDiv Boolean
-	 * @param $canEdit Boolean
+	 * @param string $rules
+	 * @param string $textName
+	 * @param bool $addResultDiv
+	 * @param bool $canEdit
 	 * @return string
 	 */
 	static function buildEditBox( $rules, $textName = 'wpFilterRules', $addResultDiv = true,
@@ -1965,8 +1965,8 @@ class AbuseFilter {
 	 * Each version is expected to be an array( $row, $actions )
 	 * Returns an array of fields that are different.
 	 *
-	 * @param $version_1
-	 * @param $version_2
+	 * @param array $version_1
+	 * @param array $version_2
 	 *
 	 * @return array
 	 */
@@ -2013,7 +2013,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $row
+	 * @param stdClass $row
 	 * @return array
 	 */
 	static function translateFromHistory( $row ) {
@@ -2053,7 +2053,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $action string
+	 * @param string $action
 	 * @return String
 	 */
 	static function getActionDisplay( $action ) {
@@ -2068,7 +2068,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $row
+	 * @param stdClass $row
 	 * @return AbuseFilterVariableHolder|null
 	 */
 	public static function getVarsFromRCRow( $row ) {
@@ -2091,7 +2091,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $row
+	 * @param stdClass $row
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function getCreateVarsFromRCRow( $row ) {
@@ -2114,7 +2114,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $row
+	 * @param stdClass $row
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function getEditVarsFromRCRow( $row ) {
@@ -2152,7 +2152,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $row
+	 * @param stdClass $row
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function getMoveVarsFromRCRow( $row ) {
@@ -2329,10 +2329,10 @@ class AbuseFilter {
 	/**
 	 * @param $page
 	 * @param $type
-	 * @param $title Title
-	 * @param $sk Skin
-	 * @param $args array
-	 * @param $filterWikilinks bool
+	 * @param Title $title
+	 * @param Skin $sk
+	 * @param array $args
+	 * @param bool $filterWikilinks
 	 * @return String
 	 */
 	static function modifyActionText( $page, $type, $title, $sk, $args, $filterWikilinks ) {
@@ -2445,7 +2445,7 @@ class AbuseFilter {
 	 * the function returns with an empty string.
 	 *
 	 * @param Revision $revision a valid revision
-	 * @param $audience Integer: one of:
+	 * @param int $audience one of:
 	 *      Revision::FOR_PUBLIC       to be displayed to all users
 	 *      Revision::FOR_THIS_USER    to be displayed to the given user
 	 *      Revision::RAW              get the text regardless of permissions
@@ -2502,8 +2502,8 @@ class AbuseFilter {
 	/*
 	 * Get the history ID of the first change to a given filter
 	 *
-	 * @param $filterId integer: Filter id
-	 * @return integer|bool
+	 * @param int $filterId Filter id
+	 * @return int|bool
 	 */
 	public static function getFirstFilterChange( $filterID ) {
 		static $firstChanges = [];

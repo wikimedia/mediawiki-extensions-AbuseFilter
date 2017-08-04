@@ -124,8 +124,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	/**
 	 * Get the history ID of the next change
 	 *
-	 * @param $historyId Integer: History id to find next change of
-	 * @return Integer|Null: Id of the next change or null if there isn't one
+	 * @param int $historyId History id to find next change of
+	 * @return int|null Id of the next change or null if there isn't one
 	 */
 	function getNextHistoryId( $historyId ) {
 		$dbr = wfGetDB( DB_SLAVE );
@@ -242,8 +242,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	}
 
 	/**
-	 * @param $timestamp
-	 * @param $history_id
+	 * @param string $timestamp
+	 * @param int $history_id
 	 * @return string
 	 */
 	function formatVersionLink( $timestamp, $history_id ) {
@@ -362,7 +362,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	}
 
 	/**
-	 * @param $actions
+	 * @param array $actions
 	 * @return array
 	 */
 	function stringifyActions( $actions ) {
@@ -381,8 +381,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	}
 
 	/**
-	 * @param $msg
-	 * @return String
+	 * @param string $msg
+	 * @return string
 	 */
 	function getHeaderRow( $msg ) {
 		$html = $this->msg( $msg )->parse();
@@ -393,9 +393,9 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	}
 
 	/**
-	 * @param $msg
-	 * @param $old
-	 * @param $new
+	 * @param string $msg
+	 * @param array|string $old
+	 * @param array|string $new
 	 * @return string
 	 */
 	function getDiffRow( $msg, $old, $new ) {
