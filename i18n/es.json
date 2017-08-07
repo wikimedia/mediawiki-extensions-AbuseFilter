@@ -394,7 +394,7 @@
 	"abusefilter-revert-success": "Has revertido todas las acciones tomadas por el filtro antiabusos debido al [[Special:AbuseFilter/$1|filtro $2]].",
 	"abusefilter-revert-reason": "Reversión automática de todas las acciones tomadas por el filtro antiabusos debido al filtro $1.\nRazón dada: $2",
 	"abusefilter-revert-reasonfield": "Motivo:",
-	"abusefilter-test": "Pruebe un filtro contra ediciones previas",
+	"abusefilter-test": "Probar un filtro contra ediciones previas",
 	"abusefilter-test-intro": "Esta página te permite verificar un filtro introducido en la tabla de abajo contra {{PLURAL:$1|el último cambio|los últimos $1 cambios}}.\nPara cargar un filtro existente, escribe el ID del filtro dentro de la tabla debajo del texto de tabla, y pulsa en el botón «{{int:abusefilter-test-load}}».",
 	"abusefilter-test-legend": "Prueba de filtro",
 	"abusefilter-test-load-filter": "Cargar id. de filtro:",
