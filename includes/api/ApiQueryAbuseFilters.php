@@ -36,13 +36,7 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 
 	public function execute() {
 		$user = $this->getUser();
-		if ( is_callable( [ $this, 'checkUserRightsAny' ] ) ) {
-			$this->checkUserRightsAny( 'abusefilter-view' );
-		} else {
-			if ( !$user->isAllowed( 'abusefilter-view' ) ) {
-				$this->dieUsage( 'You don\'t have permission to view abuse filters', 'permissiondenied' );
-			}
-		}
+		$this->checkUserRightsAny( 'abusefilter-view' );
 
 		$params = $this->extractRequestParams();
 
@@ -86,11 +80,7 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 				|| ( isset( $show['deleted'] ) && isset( $show['!deleted'] ) )
 				|| ( isset( $show['private'] ) && isset( $show['!private'] ) )
 			) {
-				if ( is_callable( [ $this, 'dieWithError' ] ) ) {
-					$this->dieWithError( 'apierror-show' );
-				} else {
-					$this->dieUsageMsg( 'show' );
-				}
+				$this->dieWithError( 'apierror-show' );
 			}
 
 			$this->addWhereIf( 'af_enabled = 0', isset( $show['!enabled'] ) );

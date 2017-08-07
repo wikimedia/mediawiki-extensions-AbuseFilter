@@ -2,42 +2,23 @@
 
 class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 	public function execute() {
-		if ( is_callable( [ $this, 'checkUserRightsAny' ] ) ) {
-			$this->checkUserRightsAny( 'abusefilter-modify' );
-		} else {
-			if ( !$this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
-				$this->dieUsage( 'You do not have permissions to unblock autopromotion', 'permissiondenied' );
-			}
-		}
+		$this->checkUserRightsAny( 'abusefilter-modify' );
 
 		$params = $this->extractRequestParams();
 		$user = User::newFromName( $params['user'] );
 
 		if ( $user === false ) {
 			$encParamName = $this->encodeParamName( 'user' );
-			if ( is_callable( [ $this, 'dieWithError' ] ) ) {
-				$this->dieWithError(
-					[ 'apierror-baduser', $encParamName, wfEscapeWikiText( $param['user'] ) ],
-					"baduser_{$encParamName}"
-				);
-			} else {
-				$this->dieUsage(
-					"Invalid value '{$param['user']}' for user parameter $encParamName",
-					"baduser_{$encParamName}"
-				);
-			}
+			$this->dieWithError(
+				[ 'apierror-baduser', $encParamName, wfEscapeWikiText( $param['user'] ) ],
+				"baduser_{$encParamName}"
+			);
 		}
 
 		$key = AbuseFilter::autoPromoteBlockKey( $user );
 		$stash = ObjectCache::getMainStashInstance();
 		if ( !$stash->get( $key ) ) {
-			if ( is_callable( [ $this, 'dieWithError' ] ) ) {
-				$this->dieWithError( [ 'abusefilter-reautoconfirm-none', $user->getName() ], 'notsuspended' );
-			} else {
-				$msg = wfMessage( 'abusefilter-reautoconfirm-none', $user->getName() )
-					->inLanguage( 'en' )->useDatabase( false )->text();
-				$this->dieUsage( $msg, 'notsuspended' );
-			}
+			$this->dieWithError( [ 'abusefilter-reautoconfirm-none', $user->getName() ], 'notsuspended' );
 		}
 
 		$stash->delete( $key );

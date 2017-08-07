@@ -39,11 +39,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$errors = $this->getTitle()->getUserPermissionsErrors(
 			'abusefilter-log', $user, true, [ 'ns-specialprotected' ] );
 		if ( count( $errors ) ) {
-			if ( is_callable( [ $this, 'errorArrayToStatus' ] ) ) {
-				$this->dieStatus( $this->errorArrayToStatus( $errors ) );
-			} else {
-				$this->dieUsageMsg( $errors[0] );
-			}
+			$this->dieStatus( $this->errorArrayToStatus( $errors ) );
 			return;
 		}
 
@@ -164,11 +160,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		if ( !is_null( $title ) ) {
 			$titleObj = Title::newFromText( $title );
 			if ( is_null( $titleObj ) ) {
-				if ( is_callable( [ $this, 'dieWithError' ] ) ) {
-					$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $title ) ] );
-				} else {
-					$this->dieUsageMsg( [ 'invalidtitle', $title ] );
-				}
+				$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $title ) ] );
 			}
 			$this->addWhereFld( 'afl_namespace', $titleObj->getNamespace() );
 			$this->addWhereFld( 'afl_title', $titleObj->getDBkey() );

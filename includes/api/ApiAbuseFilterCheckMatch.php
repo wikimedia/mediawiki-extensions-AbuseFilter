@@ -7,11 +7,7 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 
 		// "Anti-DoS"
 		if ( !$this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
-			if ( is_callable( [ $this, 'dieWithError' ] ) ) {
-				$this->dieWithError( 'apierror-abusefilter-canttest', 'permissiondenied' );
-			} else {
-				$this->dieUsage( 'You don\'t have permission to test abuse filters', 'permissiondenied' );
-			}
+			$this->dieWithError( 'apierror-abusefilter-canttest', 'permissiondenied' );
 		}
 
 		$vars = null;
@@ -31,11 +27,7 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 			);
 
 			if ( !$row ) {
-				if ( is_callable( [ $this, 'dieWithError' ] ) ) {
-					$this->dieWithError( [ 'apierror-nosuchrcid', $params['rcid'] ] );
-				} else {
-					$this->dieUsageMsg( [ 'nosuchrcid', $params['rcid'] ] );
-				}
+				$this->dieWithError( [ 'apierror-nosuchrcid', $params['rcid'] ] );
 			}
 
 			$vars = AbuseFilter::getVarsFromRCRow( $row );
@@ -49,25 +41,14 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 			);
 
 			if ( !$row ) {
-				if ( is_callable( [ $this, 'dieWithError' ] ) ) {
-					$this->dieWithError( [ 'apierror-abusefilter-nosuchlogid', $params['logid'] ], 'nosuchlogid' );
-				} else {
-					$this->dieUsage(
-						"There is no abuselog entry with the id ``{$params['logid']}''",
-						'nosuchlogid'
-					);
-				}
+				$this->dieWithError( [ 'apierror-abusefilter-nosuchlogid', $params['logid'] ], 'nosuchlogid' );
 			}
 
 			$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
 		}
 
 		if ( AbuseFilter::checkSyntax( $params[ 'filter' ] ) !== true ) {
-			if ( is_callable( [ $this, 'dieWithError' ] ) ) {
-				$this->dieWithError( 'apierror-abusefilter-badsyntax', 'badsyntax' );
-			} else {
-				$this->dieUsage( 'The filter has invalid syntax', 'badsyntax' );
-			}
+			$this->dieWithError( 'apierror-abusefilter-badsyntax', 'badsyntax' );
 		}
 
 		$result = [
