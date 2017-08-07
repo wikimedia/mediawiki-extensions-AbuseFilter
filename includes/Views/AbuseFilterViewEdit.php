@@ -51,8 +51,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			return $tagNameStatus;
 		}
 
-		$tagEditor = $this->getUser();
-
 		$finalStatus = Status::newGood();
 
 		$canAddStatus =

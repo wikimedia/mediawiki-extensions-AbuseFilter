@@ -949,7 +949,6 @@ class AbuseFilterHooks {
 
 		$text = AbuseFilter::contentToString( $content );
 		$oldcontent = $revision->getContent( Revision::RAW );
-		$oldtext = AbuseFilter::contentToString( $oldcontent );
 		$user = $user ?: RequestContext::getMain()->getUser();
 
 		// Cache any resulting filter matches.
