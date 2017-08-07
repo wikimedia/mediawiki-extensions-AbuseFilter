@@ -277,7 +277,7 @@ class AbuseFilterHooks {
 
 				$fdb->update( 'abuse_filter_log',
 					[ 'afl_rev_id' => $revision->getId() ],
-					[ 'afl_id' => $log_ids, 'afl_wiki' => wfWikiId() ],
+					[ 'afl_id' => $log_ids, 'afl_wiki' => wfWikiID() ],
 					__METHOD__
 				);
 			}

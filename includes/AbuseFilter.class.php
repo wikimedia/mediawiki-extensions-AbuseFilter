@@ -2019,7 +2019,7 @@ class AbuseFilter {
 	static function translateFromHistory( $row ) {
 		# Translate into an abuse_filter row with some black magic.
 		# This is ever so slightly evil!
-		$af_row = new StdClass;
+		$af_row = new stdClass;
 
 		foreach ( self::$history_mappings as $af_col => $afh_col ) {
 			$af_row->$af_col = $row->$afh_col;

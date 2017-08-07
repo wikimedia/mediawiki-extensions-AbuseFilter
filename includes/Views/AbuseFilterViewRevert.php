@@ -211,7 +211,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				return true;
 			case 'blockautopromote':
 				ObjectCache::getMainStashInstance()->delete(
-					AbuseFilter::autopromoteBlockKey( User::newFromId( $result['userid'] ) )
+					AbuseFilter::autoPromoteBlockKey( User::newFromId( $result['userid'] ) )
 				);
 				return true;
 			case 'degroup':
