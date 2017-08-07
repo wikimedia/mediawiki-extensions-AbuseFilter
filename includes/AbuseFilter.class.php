@@ -1105,8 +1105,6 @@ class AbuseFilter {
 		$var_dump = self::storeVarDump( $vars );
 		$var_dump = "stored-text:$var_dump"; // To distinguish from stuff stored directly
 
-		wfProfileIn( __METHOD__ . '-hitstats' );
-
 		$stash = ObjectCache::getMainStashInstance();
 
 		// Increment trigger counter
@@ -1206,8 +1204,6 @@ class AbuseFilter {
 		// Check for emergency disabling.
 		$total = $stash->get( self::filterUsedKey( $group ) );
 		self::checkEmergencyDisable( $group, $logged_local_filters, $total );
-
-		wfProfileOut( __METHOD__ . '-hitstats' );
 	}
 
 	/**

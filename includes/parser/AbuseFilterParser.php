@@ -448,13 +448,11 @@ class AbuseFilterParser {
 
 			// We can go on quickly as either one statement with | is true or on with & is false
 			if ( ( $op == '&' && !$result->toBool() ) || ( $op == '|' && $result->toBool() ) ) {
-				wfProfileIn( __METHOD__ . '-shortcircuit' );
 				$orig = $this->mShortCircuit;
 				$this->mShortCircuit = $this->mAllowShort;
 				$this->doLevelCompares( $r2 );
 				$this->mShortCircuit = $orig;
 				$result = new AFPData( AFPData::DBOOL, $result->toBool() );
-				wfProfileOut( __METHOD__ . '-shortcircuit' );
 				continue;
 			}
 
@@ -575,9 +573,8 @@ class AbuseFilterParser {
 			}
 
 			AbuseFilter::triggerLimiter();
-			wfProfileIn( __METHOD__ . "-$func" );
+
 			$result = AFPData::$func( $result, $r2, $this->mCur->pos );
-			wfProfileOut( __METHOD__ . "-$func" );
 		}
 	}
 
@@ -677,7 +674,6 @@ class AbuseFilterParser {
 				return; // The result doesn't matter.
 			}
 
-			wfProfileIn( __METHOD__ . '-loadargs' );
 			$args = [];
 			do {
 				$r = new AFPData();
@@ -697,10 +693,6 @@ class AbuseFilterParser {
 			}
 			$this->move();
 
-			wfProfileOut( __METHOD__ . '-loadargs' );
-
-			wfProfileIn( __METHOD__ . "-$func" );
-
 			$funcHash = md5( $func . serialize( $args ) );
 
 			if ( isset( self::$funcCache[$funcHash] ) &&
@@ -715,8 +707,6 @@ class AbuseFilterParser {
 			if ( count( self::$funcCache ) > 1000 ) {
 				self::$funcCache = [];
 			}
-
-			wfProfileOut( __METHOD__ . "-$func" );
 		} else {
 			$this->doLevelAtom( $result );
 		}
