@@ -589,7 +589,7 @@ class AbuseFilterHooks {
 	 * @return bool
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
-		$dir = __DIR__;
+		$dir = dirname( __DIR__ );
 
 		if ( $updater->getDB()->getType() == 'mysql' || $updater->getDB()->getType() == 'sqlite' ) {
 			if ( $updater->getDB()->getType() == 'mysql' ) {
