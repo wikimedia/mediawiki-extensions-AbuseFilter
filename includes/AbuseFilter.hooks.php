@@ -17,7 +17,7 @@ class AbuseFilterHooks {
 	 */
 	public static function onRegistration() {
 		global $wgAbuseFilterAvailableActions, $wgAbuseFilterRestrictedActions,
-			$wgDisableAuthManager, $wgAuthManagerAutoConfig;
+			$wgAuthManagerAutoConfig;
 
 		if ( isset( $wgAbuseFilterAvailableActions ) || isset( $wgAbuseFilterRestrictedActions ) ) {
 			wfWarn( '$wgAbuseFilterAvailableActions and $wgAbuseFilterRestrictedActions have been '
@@ -26,15 +26,10 @@ class AbuseFilterHooks {
 				. 'array and the values are booleans.' );
 		}
 
-		if ( class_exists( AuthManager::class ) && !$wgDisableAuthManager ) {
-			$wgAuthManagerAutoConfig['preauth'][AbuseFilterPreAuthenticationProvider::class] = [
-				'class' => AbuseFilterPreAuthenticationProvider::class,
-				'sort' => 5, // run after normal preauth providers to keep the log cleaner
-			];
-		} else {
-			Hooks::register( 'AbortNewAccount', 'AbuseFilterHooks::onAbortNewAccount' );
-			Hooks::register( 'AbortAutoAccount', 'AbuseFilterHooks::onAbortAutoAccount' );
-		}
+		$wgAuthManagerAutoConfig['preauth'][AbuseFilterPreAuthenticationProvider::class] = [
+			'class' => AbuseFilterPreAuthenticationProvider::class,
+			'sort' => 5, // run after normal preauth providers to keep the log cleaner
+		];
 	}
 
 	/**
@@ -293,14 +288,10 @@ class AbuseFilterHooks {
 	 * @return bool
 	 */
 	protected static function identicalPageObjects( $page1, $page2 ) {
-		if ( method_exists( 'Article', 'getPage' ) ) {
-			$wpage1 = ( $page1 instanceof Article ) ? $page1->getPage() : $page1;
-			$wpage2 = ( $page2 instanceof Article ) ? $page2->getPage() : $page2;
+		$wpage1 = ( $page1 instanceof Article ) ? $page1->getPage() : $page1;
+		$wpage2 = ( $page2 instanceof Article ) ? $page2->getPage() : $page2;
 
-			return ( $wpage1 === $wpage2 );
-		} else { // b/c for before WikiPage
-			return ( $page1 === $page2 ); // should be two Article objects
-		}
+		return $wpage1 === $wpage2;
 	}
 
 	/**
@@ -343,33 +334,6 @@ class AbuseFilterHooks {
 		$status->merge( $result );
 
 		return $result->isOK();
-	}
-
-	/**
-	 * @param Title $oldTitle
-	 * @param Title $newTitle
-	 * @param User $user
-	 * @param string $error
-	 * @param string $reason
-	 * @return bool
-	 */
-	public static function onAbortMove( $oldTitle, $newTitle, $user, &$error, $reason ) {
-		global $wgUser;
-		// HACK: This is a secret userright so system actions
-		// can bypass AbuseFilter. Should not be assigned to
-		// normal users. This should be turned into a proper
-		// userright in bug 67936.
-		if ( $wgUser->isAllowed( 'abusefilter-bypass' ) ) {
-			return true;
-		}
-
-		$status = new Status();
-		self::onMovePageCheckPermissions( $oldTitle, $newTitle, $wgUser, $reason, $status );
-		if ( !$status->isOK() ) {
-			$error = $status->getHTML();
-		}
-
-		return $status->isOK();
 	}
 
 	/**
@@ -704,25 +668,7 @@ class AbuseFilterHooks {
 		$user = User::newFromName( $username );
 
 		if ( $user && !$updater->updateRowExists( 'create abusefilter-blocker-user' ) ) {
-			if ( method_exists( 'User', 'newSystemUser' ) ) {
-				$user = User::newSystemUser( $username, [ 'steal' => true ] );
-			} else {
-				if ( !$user->getId() ) {
-					$user->addToDatabase();
-					$user->saveSettings();
-					# Increment site_stats.ss_users
-					$ssu = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
-					$ssu->doUpdate();
-				} else {
-					// Sorry dude, we need this account.
-					$user->setPassword( null );
-					$user->setEmail( null );
-					$user->saveSettings();
-				}
-			}
-			$updater->insertUpdateRow( 'create abusefilter-blocker-user' );
-			# Promote user so it doesn't look too crazy.
-			$user->addGroup( 'sysop' );
+			$user = User::newSystemUser( $username, [ 'steal' => true ] );
 		}
 	}
 
@@ -730,28 +676,19 @@ class AbuseFilterHooks {
 	 * @param $id
 	 * @param Title $nt
 	 * @param array $tools
-	 * @param SpecialPage|null $sp for context in newer MW versions
-	 * @return bool
+	 * @param SpecialPage $sp for context
 	 */
-	public static function onContributionsToolLinks( $id, $nt, &$tools, SpecialPage $sp = null ) {
-		if ( $sp ) {
-			$context = $sp->getContext();
-		} else {
-			// Fallback to main context
-			$context = RequestContext::getMain();
-		}
-		if ( $context->getUser()->isAllowed( 'abusefilter-log' ) ) {
-			$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
-			$tools[] = $linkRenderer->makeLink(
+	public static function onContributionsToolLinks( $id, $nt, &$tools, SpecialPage $sp ) {
+		if ( $sp->getUser()->isAllowed( 'abusefilter-log' ) ) {
+			$linkRenderer = $sp->getLinkRenderer();
+			$tools['abuselog'] = $linkRenderer->makeLink(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
-				$context->msg( 'abusefilter-log-linkoncontribs' )->text(),
-				[ 'title' => $context->msg( 'abusefilter-log-linkoncontribs-text',
-					$nt->getText() )->parse() ],
+				$sp->msg( 'abusefilter-log-linkoncontribs' )->text(),
+				[ 'title' => $sp->msg( 'abusefilter-log-linkoncontribs-text',
+					$nt->getText() )->text() ],
 				[ 'wpSearchUser' => $nt->getText() ]
 			);
 		}
-
-		return true;
 	}
 
 	/**
@@ -789,29 +726,7 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param UploadBase $upload
-	 * @param string $mime
-	 * @param array|ApiMessage &$error
-	 * @return bool
-	 */
-	public static function onUploadVerifyFile( $upload, $mime, &$error ) {
-		global $wgUser, $wgVersion;
-
-		// We only use this hook on MW 1.27 and older, as it's is the only hook we have.
-		// On MW 1.28 and newer, we use UploadVerifyUpload to check file uploads, and
-		// UploadStashFile to check file uploads to stash.
-		if ( version_compare( $wgVersion, '1.28', '>=' ) ) {
-			return;
-		}
-
-		// UploadBase makes it absolutely impossible to get these out of it, even though it knows them.
-		$props = FSFile::getPropsFromPath( $upload->getTempPath() );
-
-		return self::filterUpload( 'upload', $upload, $wgUser, $props, null, null, $error );
-	}
-
-	/**
-	 * Implementation for UploadVerifyFile and UploadVerifyUpload hooks.
+	 * Implementation for UploadStashFile and UploadVerifyUpload hooks.
 	 *
 	 * @param string $action 'upload' or 'stashupload'
 	 * @param UploadBase $upload
