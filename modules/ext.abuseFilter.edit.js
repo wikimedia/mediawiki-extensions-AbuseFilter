@@ -39,7 +39,7 @@
 			api = new mw.Api();
 
 		$( this )
-			.attr( 'disabled', 'disabled' )
+			.prop( 'disabled', true )
 			.injectSpinner( 'abusefilter-syntaxcheck' );
 
 		api.post( {
@@ -59,7 +59,7 @@
 	 */
 	function processSyntaxResultAlways( resultText, className, syntaxOk ) {
 		$.removeSpinner( 'abusefilter-syntaxcheck' );
-		$( '#mw-abusefilter-syntaxcheck' ).removeAttr( 'disabled' );
+		$( '#mw-abusefilter-syntaxcheck' ).prop( 'disabled', false );
 
 		$( '#mw-abusefilter-syntaxresult' )
 			.show()
