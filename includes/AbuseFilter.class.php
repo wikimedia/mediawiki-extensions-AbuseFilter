@@ -341,11 +341,9 @@ class AbuseFilter {
 
 		global $wgDisableCounters;
 		if ( !$wgDisableCounters && !$title->isSpecialPage() ) {
-			// Support: MediaWiki 1.24 and earlier
-			if ( method_exists( 'WikiPage', 'getCount' ) ) {
-				$vars->setVar( $prefix . '_VIEWS', WikiPage::factory( $title )->getCount() );
-				// Support: MediaWiki 1.25+ with HitCounters extension
-			} elseif ( method_exists( 'HitCounters\HitCounters', 'getCount' ) ) {
+			// Support: HitCounters extension
+			// XXX: This should be part of the extension (T159069)
+			if ( method_exists( 'HitCounters\HitCounters', 'getCount' ) ) {
 				$vars->setVar( $prefix . '_VIEWS', HitCounters\HitCounters::getCount( $title ) );
 			}
 		}
@@ -947,7 +945,7 @@ class AbuseFilter {
 		} else {
 			$status = self::executeFilterActions( $matched_filters, $title, $vars );
 
-			$actions_taken = $status->value; // getValue() was introduced only in 1.20
+			$actions_taken = $status->getValue();
 
 			$action = $vars->getVar( 'ACTION' )->toString();
 
@@ -1136,9 +1134,7 @@ class AbuseFilter {
 
 			// Send data to CheckUser if installed and we
 			// aren't already sending a notification to recentchanges
-			// Requires MW 1.23+
 			if ( is_callable( 'CheckUserHooks::updateCheckUserData' )
-				&& is_callable( 'ManualLogEntry::getRecentChange' )
 				&& strpos( $wgAbuseFilterNotifications, 'rc' ) === false
 			) {
 				$rc = $entry->getRecentChange();
@@ -1842,31 +1838,7 @@ class AbuseFilter {
 	 */
 	public static function getFilterUser() {
 		$username = wfMessage( 'abusefilter-blocker' )->inContentLanguage()->text();
-		if ( method_exists( 'User', 'newSystemUser' ) ) {
-			$user = User::newSystemUser( $username, [ 'steal' => true ] );
-		} else {
-			$user = User::newFromName( $username );
-			$user->load();
-			if ( $user->getId() && $user->mPassword == '' ) {
-				// Already set up.
-				return $user;
-			}
-
-			// Not set up. Create it.
-			if ( !$user->getId() ) {
-				print 'Trying to create account -- user id is ' . $user->getId();
-				$user->addToDatabase();
-				$user->saveSettings();
-				// Increment site_stats.ss_users
-				$ssu = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
-				$ssu->doUpdate();
-			} else {
-				// Take over the account
-				$user->setPassword( null );
-				$user->setEmail( null );
-				$user->saveSettings();
-			}
-		}
+		$user = User::newSystemUser( $username, [ 'steal' => true ] );
 
 		// Promote user to 'sysop' so it doesn't look
 		// like an unprivileged account is blocking users

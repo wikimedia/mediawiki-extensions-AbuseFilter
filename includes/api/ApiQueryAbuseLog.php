@@ -58,23 +58,11 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$fld_hidden = isset( $prop['hidden'] );
 		$fld_revid = isset( $prop['revid'] );
 
-		if ( is_callable( [ $this, 'checkUserRightsAny' ] ) ) {
-			if ( $fld_ip ) {
-				$this->checkUserRightsAny( 'abusefilter-private' );
-			}
-			if ( $fld_details ) {
-				$this->checkUserRightsAny( 'abusefilter-log-detail' );
-			}
-		} else {
-			if ( $fld_ip && !$user->isAllowed( 'abusefilter-private' ) ) {
-				$this->dieUsage( 'You don\'t have permission to view IP addresses', 'permissiondenied' );
-			}
-			if ( $fld_details && !$user->isAllowed( 'abusefilter-log-detail' ) ) {
-				$this->dieUsage(
-					'You don\'t have permission to view detailed abuse log entries',
-					'permissiondenied'
-				);
-			}
+		if ( $fld_ip ) {
+			$this->checkUserRightsAny( 'abusefilter-private' );
+		}
+		if ( $fld_details ) {
+			$this->checkUserRightsAny( 'abusefilter-log-detail' );
 		}
 		// Match permissions for viewing events on private filters to SpecialAbuseLog (bug 42814)
 		if ( $params['filter'] &&
@@ -86,16 +74,9 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			}
 			foreach ( $params['filter'] as $filter ) {
 				if ( AbuseFilter::filterHidden( $filter ) ) {
-					if ( is_callable( [ $this, 'dieWithError' ] ) ) {
-						$this->dieWithError(
-							[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-private' ) ]
-						);
-					} else {
-						$this->dieUsage(
-							'You don\'t have permission to view log entries for private filters',
-							'permissiondenied'
-						);
-					}
+					$this->dieWithError(
+						[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-private' ) ]
+					);
 				}
 			}
 		}
