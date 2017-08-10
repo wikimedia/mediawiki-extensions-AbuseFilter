@@ -1106,34 +1106,17 @@ class AbuseFilterParser {
 	 * @return mixed
 	 */
 	protected function ccnorm( $s ) {
-		static $replacementArray = null;
-
-		if ( is_null( $replacementArray ) ) {
-			global $wgExtensionDirectory;
-
-			if ( is_readable( "$wgExtensionDirectory/AntiSpoof/equivset.php" ) ) {
-				// Satisfy analyzer.
-				$equivset = null;
-				// Contains a map of characters in $equivset.
-				require "$wgExtensionDirectory/AntiSpoof/equivset.php";
-
-				// strtr in ReplacementArray->replace() doesn't like this.
-				if ( isset( $equivset[''] ) ) {
-					unset( $equivset[''] );
-				}
-
-				$replacementArray = new ReplacementArray( $equivset );
-			} else {
-				// AntiSpoof isn't available, so just create a dummy
-				wfDebugLog(
-					'AbuseFilter',
-					"Can't compute normalized string (ccnorm) as the AntiSpoof Extension isn't installed."
-				);
-				$replacementArray = new ReplacementArray( [] );
-			}
+		if ( is_callable( 'AntiSpoof::normalizeString' ) ) {
+			$s = AntiSpoof::normalizeString( $s );
+		} else {
+			// AntiSpoof isn't available, so ignore and return same string
+			wfDebugLog(
+				'AbuseFilter',
+				"Can't compute normalized string (ccnorm) as the AntiSpoof Extension isn't installed."
+			);
 		}
 
-		return $replacementArray->replace( $s );
+		return $s;
 	}
 
 	/**
