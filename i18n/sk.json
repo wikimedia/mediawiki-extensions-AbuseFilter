@@ -6,7 +6,8 @@
 			"Teslaton",
 			"Sudo77(new)",
 			"Kusavica",
-			"Matma Rex"
+			"Matma Rex",
+			"TomášPolonec"
 		]
 	},
 	"abusefilter-desc": "Vykonáva automatickú heuristiku úprav.",
@@ -50,6 +51,8 @@
 	"abusefilter-log-search-filter": "ID filtra:",
 	"abusefilter-log-search-title": "Názov:",
 	"abusefilter-log-search-wiki": "Wiki:",
+	"abusefilter-log-search-entries-label": "Viditeľnosť:",
+	"abusefilter-log-search-entries-all": "Všetky vstupy",
 	"abusefilter-log-search-submit": "Hľadať",
 	"abusefilter-log-entry": "$1: $2 spustil filter zneužití, pri vykonávaní operácie „$3“ na $4.\nVykonané opatrenia: $5;\nPopis filtra: $6",
 	"abusefilter-log-detailedentry-meta": "$1: $2 spustil filter $3, vykonaná operácia „$4“ na $5.\nVykonané opatrenia: $6;\nPopis filtra: $7 ($8)",
