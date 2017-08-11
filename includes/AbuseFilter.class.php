@@ -1664,7 +1664,7 @@ class AbuseFilter {
 		global $wgAbuseFilterIsCentral, $wgAbuseFilterCentralDB;
 
 		if ( $global && !$wgAbuseFilterIsCentral ) {
-			list ( $globalSite, $globalPrefix ) = wfSplitWikiID( $wgAbuseFilterCentralDB );
+			list( $globalSite, $globalPrefix ) = wfSplitWikiID( $wgAbuseFilterCentralDB );
 
 			return wfForeignMemcKey(
 				$globalSite, $globalPrefix,
@@ -1682,7 +1682,7 @@ class AbuseFilter {
 		global $wgAbuseFilterIsCentral, $wgAbuseFilterCentralDB;
 
 		if ( !$wgAbuseFilterIsCentral ) {
-			list ( $globalSite, $globalPrefix ) = wfSplitWikiID( $wgAbuseFilterCentralDB );
+			list( $globalSite, $globalPrefix ) = wfSplitWikiID( $wgAbuseFilterCentralDB );
 
 			return wfForeignMemcKey(
 				$globalSite, $globalPrefix,
