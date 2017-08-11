@@ -3,7 +3,8 @@
 		"authors": [
 			"Arlin",
 			"Sahran",
-			"Matma Rex"
+			"Matma Rex",
+			"Uzdil"
 		]
 	},
 	"abusefilter-desc": "تەھرىرلەش قىلمىشىغا ئۆزلۈكىدىن شەرت ھۆكۈم قىل",
@@ -73,7 +74,7 @@
 	"abusefilter-log-hide-hidden": "بۇ تۈرنى ئاممىۋى كۆرۈنۈشتىن يوشۇر",
 	"abusefilter-log-hide-reason": "سەۋەب:",
 	"abusefilter-log-hide-forbidden": "سۈيىئىستىمال خاتىرە تۈرىنى يوشۇرۇش ھوقۇقىڭىز يوق.",
-	"abusefilter-logentry-suppress": "\"[[$1]]\" يوشۇر",
+	"abusefilter-logentry-suppress": "\"[[$1]]\" يوشۇرۇش",
 	"abusefilter-logentry-unsuppress": "\"[[$1]]\" يوشۇرما",
 	"logentry-abusefilter-hit": "$1 بولسا $4 غا تەسىر قىلىپ $3 دا \"$5\" مەشغۇلاتنى ئېلىپ باردى، مەشغۇلاتى: $6 ($7)",
 	"abusefilter-management": "سۈيىئىستىمال سۈزگۈچ باشقۇرۇش",
@@ -84,7 +85,7 @@
 	"abusefilter-list-consequences": "خۇلاسە",
 	"abusefilter-list-visibility": "كۆرۈنۈشچانلىقى",
 	"abusefilter-list-hitcount": "ئۇرۇلۇش سانى",
-	"abusefilter-list-edit": "تەھرىر",
+	"abusefilter-list-edit": "تەھرىرلەش",
 	"abusefilter-list-details": "تەپسىلاتى",
 	"abusefilter-list-limit": "ھەر بەتتىكى سانى:",
 	"abusefilter-list-lastmodified": "ئاخىرقى ئۆزگەرتىش",
@@ -101,7 +102,7 @@
 	"abusefilter-list-options": "تاللانما",
 	"abusefilter-list-options-deleted": "ئۆچۈرۈلگەن سۈزگۈچلەر:",
 	"abusefilter-list-options-deleted-only": "ئۆچۈرۈلگەن سۈزگۈچنىلا كۆرسەت",
-	"abusefilter-list-options-deleted-hide": "ئۆچۈرۈلگەن سۈزگۈچلەرنى يوشۇر",
+	"abusefilter-list-options-deleted-hide": "ئۆچۈرۈلگەن سۈزگۈچلەرنى يوشۇرۇش",
 	"abusefilter-list-options-deleted-show": "ئۆچۈرۈلگەن سۈزگۈچلەرنى ئۆز ئىچىگە ئالىدۇ",
 	"abusefilter-list-options-scope": "سۈزگۈچ كۆرسىتىش ئورنى:",
 	"abusefilter-list-options-scope-local": "يەرلىك ۋىكى",
@@ -144,7 +145,6 @@
 	"abusefilter-edit-consequences": "ماس كەلگەندىكى مەشغۇلاتلار",
 	"abusefilter-edit-action-warn": "ئىشلەتكۈچىگە ئاگاھلاندۇرۇش بەرگەندىن كېيىن تۆۋەندىكى مەشغۇلاتنى قوزغىتىدۇ",
 	"abusefilter-edit-action-disallow": "ئىشلەتكۈچىنىڭ يوچۇن مەشغۇلات قىلىشىنىڭ ئالدىنى ئالىدۇ",
-	"abusefilter-edit-action-flag": "سۈيىئىستىمال خاتىرىسىدە بۇ تەھرىرگە بەلگە سال",
 	"abusefilter-edit-action-blockautopromote": "ئىشلەتكۈچىنىڭ ئۆزلۈكىدىن جەزملەش ھالىتىدىن يېنىۋال",
 	"abusefilter-edit-action-degroup": "ئىشلەتكۈچىنى ھەممە ھوقۇق گۇرۇپپىسىدىن چىقىرىۋەت",
 	"abusefilter-edit-action-block": "تەھرىرلەش ئېلىپ بارغان ئىشلەتكۈچى ۋە ياكى IP ئادرېسنى چەكلە",
