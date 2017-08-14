@@ -415,7 +415,6 @@
 	"abusefilter-topnav-import": "Импорт фильтра",
 	"abusefilter-log-name": "Журнал фильтра злоупотреблений",
 	"abusefilter-log-header": "В этот журнал записываются описания изменений, произведённых в фильтрах.\nПодробности можно найти в [[Special:AbuseFilter/history|списке]] последних изменений фильтров.",
-	"abusefilter-log-entry-modify": "изменил $1 ($2)",
 	"abusefilter-log-noresults": "Ничего не найдено",
 	"abusefilter-diff-title": "Различия между версиями",
 	"abusefilter-diff-item": "Элемент",

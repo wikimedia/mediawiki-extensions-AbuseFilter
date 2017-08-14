@@ -386,7 +386,6 @@
 	"abusefilter-topnav-import": "Importovať filter",
 	"abusefilter-log-name": "Záznam filtra zneužití",
 	"abusefilter-log-header": "Tento záznam zobrazuje súhrn zmien filtrov.\nPodrobnosti nájdete v [[Special:AbuseFilter/history|zozname]] posledných zmien filtrov.",
-	"abusefilter-log-entry-modify": "zmenil $1 ($2)",
 	"abusefilter-log-noresults": "Žiadne výsledky",
 	"abusefilter-diff-title": "Rozdiely medzi verziami",
 	"abusefilter-diff-item": "Položka",

@@ -417,7 +417,7 @@
 	"abusefilter-topnav-import": "Filter importieren",
 	"abusefilter-log-name": "Missbrauchsfilter-Logbuch",
 	"abusefilter-log-header": "Dieses Logbuch zeigt eine Zusammenfassung der Änderungen an Filtern.\nGenauere Einzelheiten sind in [[Special:AbuseFilter/history|der Liste]] der letzten Änderungen an Filtern zu finden.",
-	"abusefilter-log-entry-modify": "änderte $1 ($2)",
+	"abusefilter-logentry-modify": "$1 {{GENDER:$2|veränderte}} $4 ($5)",
 	"abusefilter-log-noresults": "Keine Ergebnisse",
 	"abusefilter-diff-title": "Unterschied zwischen Versionen",
 	"abusefilter-diff-item": "Element",

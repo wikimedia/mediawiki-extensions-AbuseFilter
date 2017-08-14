@@ -413,7 +413,7 @@
 	"abusefilter-topnav-import": "Importera filter",
 	"abusefilter-log-name": "Missbruksfilterändringar",
 	"abusefilter-log-header": "Denna logg visar en sammanfattning av ändringar som har gjorts i filtren.\nFör fullständiga detaljer, se [[Special:AbuseFilter/history|listan]] över de senaste filterändringarna.",
-	"abusefilter-log-entry-modify": "ändrade $1 ($2)",
+	"abusefilter-logentry-modify": "$1 {{GENDER:$2|ändrade}} $4 ($5)",
 	"abusefilter-log-noresults": "Inga resultat",
 	"abusefilter-diff-title": "Differenser mellan versioner",
 	"abusefilter-diff-item": "Element",

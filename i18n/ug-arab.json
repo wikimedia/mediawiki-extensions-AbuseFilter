@@ -369,7 +369,6 @@
 	"abusefilter-topnav-import": "سۈزگۈچ ئەكىر",
 	"abusefilter-log-name": "سۈيىئىستىمال سۈزگۈچ خاتىرىسى",
 	"abusefilter-log-header": "بۇ خاتىرە سۈزگۈچ ئېلىپ بارغان ئۆزگەرتىشنىڭ ئۈزۈندىسىنى كۆرسىتىدۇ. خاتىرە تەپسىلاتىنى [[Special:AbuseFilter/history|بۇ تىزىم]]دىن سۈزگۈچنىڭ يېقىنقى ئۆزگەرتىشىدىن كۆرۈڭ.",
-	"abusefilter-log-entry-modify": "ئۆزگەرتىلدى $1 ($2)",
 	"abusefilter-log-noresults": "نەتىجە يوق",
 	"abusefilter-diff-title": "نەشرلىرى ئارىسىدىكى پەرق",
 	"abusefilter-diff-item": "تۈر",

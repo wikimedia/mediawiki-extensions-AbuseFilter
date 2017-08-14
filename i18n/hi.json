@@ -12,7 +12,8 @@
 			"संजीव कुमार",
 			"Hindustanilanguage",
 			"Matma Rex",
-			"Sfic"
+			"Sfic",
+			"Sachinkatiyar"
 		]
 	},
 	"abusefilter-desc": "संपादनों पर स्वतः शोध प्रणाली का प्रयोग लागू करता है",
@@ -379,7 +380,7 @@
 	"abusefilter-topnav-tools": "डिबगिंग उपकरण",
 	"abusefilter-topnav-import": "आयात फ़िल्टर",
 	"abusefilter-log-name": "दुरुपयोग फ़िल्टर लॉग",
-	"abusefilter-log-entry-modify": "संशोधित $1 ($2)",
+	"abusefilter-logentry-modify": "$1 {{लिंग:$2|संशोधित}} $4 ($5)",
 	"abusefilter-log-noresults": "कोई परिणाम नहीं",
 	"abusefilter-diff-title": "अवतरणों के बीच अंतर",
 	"abusefilter-diff-item": "आइटम",

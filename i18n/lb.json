@@ -366,7 +366,7 @@
 	"abusefilter-topnav-import": "Fiter importéieren",
 	"abusefilter-log-name": "Logbuch vum Mëssbrauchsfilter",
 	"abusefilter-log-header": "Dëst Logbuch weist e Resumé vun Ännerungen déi un de Filtere gemaach goufen.\nFir weider Detailer, kuckt [[Special:AbuseFilter/history|d'Lëscht]] vun de rezenten Filterännerungen.",
-	"abusefilter-log-entry-modify": "ännert $1 ($2)",
+	"abusefilter-logentry-modify": "$1 huet $4 ($5) {{GENDER:$2|geännert}} $4 ($5)",
 	"abusefilter-log-noresults": "Keng Resultater",
 	"abusefilter-diff-title": "Ënnerscheeder tëscht Versiounen",
 	"abusefilter-diff-item": "Objet",

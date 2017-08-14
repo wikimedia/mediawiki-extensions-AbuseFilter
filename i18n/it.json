@@ -19,7 +19,8 @@
 			"Ricordisamoa",
 			"Macofe",
 			"Alexmar983",
-			"Matma Rex"
+			"Matma Rex",
+			"Greis"
 		]
 	},
 	"abusefilter-desc": "Applica un'euristica automatica alle modifiche.",
@@ -63,6 +64,7 @@
 	"abusefilter-log-search-filter": "ID filtri (separati da barre verticali):",
 	"abusefilter-log-search-title": "Titolo:",
 	"abusefilter-log-search-wiki": "Wiki:",
+	"abusefilter-log-search-entries-label": "Visibilità:",
 	"abusefilter-log-search-submit": "Ricerca",
 	"abusefilter-log-entry": "$1: $2 {{GENDER:$8|ha provocato}} l'attivazione di un filtro anti abusi con l'azione \"$3\" su $4.\nAzioni intraprese: $5;\nDescrizione del filtro: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 {{GENDER:$8|ha provocato}} l'attivazione di un filtro anti abusi con l'azione \"$3\" su $4.\nAzioni intraprese: $5;\nDescrizione del filtro: $6 ($7)",
@@ -406,7 +408,6 @@
 	"abusefilter-topnav-import": "Importa filtro",
 	"abusefilter-log-name": "Filtro anti abusi",
 	"abusefilter-log-header": "Il registro mostra un riassunto delle modifiche effettuate sui filtri.\nPer i dettagli completi, consultare [[Special:AbuseFilter/history|l'elenco]] delle modifiche più recenti agli stessi.",
-	"abusefilter-log-entry-modify": "ha modificato $1 ($2)",
 	"abusefilter-log-noresults": "Nessun risultato",
 	"abusefilter-diff-title": "Differenze tra le versioni",
 	"abusefilter-diff-item": "Elemento",

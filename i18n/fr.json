@@ -427,7 +427,6 @@
 	"abusefilter-topnav-import": "Importer un filtre",
 	"abusefilter-log-name": "Journal des modifications du filtre antiabus",
 	"abusefilter-log-header": "Ce journal affiche un résumé des modifications faites aux filtres.\nPour plus de détails, voyez [[Special:AbuseFilter/history|la liste]] des modifications récentes du filtre.",
-	"abusefilter-log-entry-modify": "a modifié $1 ($2)",
 	"abusefilter-log-noresults": "Aucun résultat",
 	"abusefilter-diff-title": "Différences entre les versions",
 	"abusefilter-diff-item": "Article",

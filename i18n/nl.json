@@ -410,7 +410,6 @@
 	"abusefilter-topnav-import": "Filter importeren",
 	"abusefilter-log-name": "Filterlogboek",
 	"abusefilter-log-header": "Dit logboek geeft een overzicht van wijzigingen aan filters.\nZie de [[Special:AbuseFilter/history|lijst met recente filterwijzigingen]] voor volledige details.",
-	"abusefilter-log-entry-modify": "heeft $1 gewijzigd ($2)",
 	"abusefilter-log-noresults": "Geen resultaten",
 	"abusefilter-diff-title": "Verschillen tussen versies",
 	"abusefilter-diff-item": "Item",

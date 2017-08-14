@@ -403,7 +403,6 @@
 	"abusefilter-topnav-import": "Importer filter",
 	"abusefilter-log-name": "Redigeringsfilterlogg",
 	"abusefilter-log-header": "Denne loggen viser et sammendrag av endringer gjort i filtrene.\nFor fullstendige detaljer, se [[Special:AbuseFilter/history|listen]] over de siste filterendringene.",
-	"abusefilter-log-entry-modify": "endret $1 ($2)",
 	"abusefilter-log-noresults": "Ingen resultater",
 	"abusefilter-diff-title": "Forskjeller mellom versjoner",
 	"abusefilter-diff-item": "Element",

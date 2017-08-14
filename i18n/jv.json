@@ -330,7 +330,6 @@
 	"abusefilter-topnav-import": "Impor saringan",
 	"abusefilter-log-name": "Log saringan palanggaran",
 	"abusefilter-log-header": "Log iki nuduhaké ringkesan owah-owahan sing digawé tumrap saringan.\nKanggo rerincèn wutuhé, delengen [[Special:AbuseFilter/history|pratélan]] owah-owahan anyaré saringan.",
-	"abusefilter-log-entry-modify": "ngowah $1 ($2)",
 	"abusefilter-log-noresults": "Ora ana asilé",
 	"abusefilter-diff-title": "Prabédhan antar vèrsi",
 	"abusefilter-diff-item": "Barang",

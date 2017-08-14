@@ -433,7 +433,6 @@
 	"abusefilter-topnav-import": "Importar filtro",
 	"abusefilter-log-name": "Registro del filtro antiabusos",
 	"abusefilter-log-header": "Este registro muestra un resumen de cambios hechos a los filtros.\nPara detalles completos, ver [[Special:AbuseFilter/history|la lista]] de cambios recientes de filtros.",
-	"abusefilter-log-entry-modify": "modificó $1 ($2)",
 	"abusefilter-log-noresults": "No hay resultados",
 	"abusefilter-diff-title": "Diferencias entre versiones",
 	"abusefilter-diff-item": "Elemento",
