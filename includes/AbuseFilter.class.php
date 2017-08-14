@@ -2046,13 +2046,13 @@ class AbuseFilter {
 	 * @return AbuseFilterVariableHolder|null
 	 */
 	public static function getVarsFromRCRow( $row ) {
-		if ( $row->rc_this_oldid ) {
-			// It's an edit.
-			$vars = self::getEditVarsFromRCRow( $row );
-		} elseif ( $row->rc_log_type == 'move' ) {
+		if ( $row->rc_log_type == 'move' ) {
 			$vars = self::getMoveVarsFromRCRow( $row );
 		} elseif ( $row->rc_log_type == 'newusers' ) {
 			$vars = self::getCreateVarsFromRCRow( $row );
+		} elseif ( $row->rc_this_oldid ) {
+			// It's an edit.
+			$vars = self::getEditVarsFromRCRow( $row );
 		} else {
 			return null;
 		}
