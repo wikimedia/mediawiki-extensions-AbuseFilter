@@ -9,14 +9,14 @@ class AbuseFilterViewImport extends AbuseFilterView {
 		}
 		$url = SpecialPage::getTitleFor( 'AbuseFilter', 'new' )->getFullURL();
 
+		$out->addWikiMsg( 'abusefilter-import-intro' );
+
 		$formDescriptor = [
 			'ImportText' => [
 				'type' => 'textarea',
-				'cols' => 200,
 			]
 		];
-		$htmlForm = new HTMLForm( $formDescriptor, $this->getContext() );
-		$htmlForm->setHeaderText( $this->msg( 'abusefilter-import-intro' ) )
+		$htmlform = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() )
 			->setSubmitTextMsg( 'abusefilter-import-submit' )
 			->setAction( $url )
 			->show();
