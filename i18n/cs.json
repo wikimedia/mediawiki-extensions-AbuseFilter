@@ -401,7 +401,7 @@
 	"abusefilter-topnav-import": "Import filtru",
 	"abusefilter-log-name": "Kniha filtrů zneužití",
 	"abusefilter-log-header": "Tento protokol obsahuje přehled změn filtrů.\nÚplné podrobnosti naleznete v [[Special:AbuseFilter/history|seznamu posledních změn filtrů]].",
-	"abusefilter-log-entry-modify": "změnil $1 ($2)",
+	"abusefilter-logentry-modify": "$1 {{GENDER:$2|upravil|upravila|upravil(a)}} $4 ($5)",
 	"abusefilter-log-noresults": "Žádné výsledky",
 	"abusefilter-diff-title": "Rozdíly mezi verzemi",
 	"abusefilter-diff-item": "Položka",

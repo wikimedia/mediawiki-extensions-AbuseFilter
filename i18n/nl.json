@@ -21,7 +21,8 @@
 			"Matma Rex",
 			"Jeleniccz",
 			"Mainframe98",
-			"QZanden"
+			"QZanden",
+			"Festina90"
 		]
 	},
 	"abusefilter-desc": "Voert automatisch heuristische analyse uit op bewerkingen",
@@ -410,6 +411,7 @@
 	"abusefilter-topnav-import": "Filter importeren",
 	"abusefilter-log-name": "Filterlogboek",
 	"abusefilter-log-header": "Dit logboek geeft een overzicht van wijzigingen aan filters.\nZie de [[Special:AbuseFilter/history|lijst met recente filterwijzigingen]] voor volledige details.",
+	"abusefilter-logentry-modify": "$1 {{GESLACHT:$2|aangepast}} $4 ($5)",
 	"abusefilter-log-noresults": "Geen resultaten",
 	"abusefilter-diff-title": "Verschillen tussen versies",
 	"abusefilter-diff-item": "Item",
