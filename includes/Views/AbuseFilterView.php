@@ -1,6 +1,5 @@
 <?php
 
-use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\IDatabase;
 
 abstract class AbuseFilterView extends ContextSource {
@@ -19,7 +18,7 @@ abstract class AbuseFilterView extends ContextSource {
 		$this->mPage = $page;
 		$this->mParams = $params;
 		$this->setContext( $this->mPage->getContext() );
-		$this->linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
+		$this->linkRenderer = $page->getLinkRenderer();
 	}
 
 	/**
