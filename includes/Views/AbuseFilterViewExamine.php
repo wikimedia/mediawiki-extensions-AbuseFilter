@@ -182,7 +182,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$html .= Xml::tags(
 			'h2',
 			null,
-			$this->msg( 'abusefilter-examine-vars', 'parseinline' )->parse()
+			$this->msg( 'abusefilter-examine-vars' )->parse()
 		);
 		$html .= AbuseFilter::buildVarDumpTable( $vars, $this->getContext() );
 
