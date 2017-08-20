@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 
@@ -152,8 +153,13 @@ class AbuseFilter {
 	/**
 	 * @param IContextSource $context
 	 * @param string $pageType
+	 * @param LinkRenderer $linkRenderer
 	 */
-	public static function addNavigationLinks( IContextSource $context, $pageType ) {
+	public static function addNavigationLinks(
+		IContextSource $context,
+		$pageType,
+		LinkRenderer $linkRenderer
+	) {
 		$linkDefs = [
 			'home' => 'Special:AbuseFilter',
 			'recentchanges' => 'Special:AbuseFilter/history',
@@ -175,7 +181,6 @@ class AbuseFilter {
 		];
 
 		$links = [];
-		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
 
 		foreach ( $linkDefs as $name => $page ) {
 			// Give grep a chance to find the usages:

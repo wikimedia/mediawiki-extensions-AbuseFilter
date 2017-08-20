@@ -29,7 +29,8 @@ class SpecialAbuseLog extends SpecialPage {
 		$out = $this->getOutput();
 		$request = $this->getRequest();
 
-		AbuseFilter::addNavigationLinks( $this->getContext(), 'log' );
+		AbuseFilter::addNavigationLinks(
+			$this->getContext(), 'log', $this->getLinkRenderer() );
 
 		$this->setHeaders();
 		$this->outputHeader( 'abusefilter-log-summary' );
