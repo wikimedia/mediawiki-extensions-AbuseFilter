@@ -85,7 +85,11 @@ abstract class AbuseFilterView extends ContextSource {
 						'rc_log_type' => 'newusers',
 						'rc_log_action' => 'create'
 					], LIST_AND ),
-					// @todo: add upload and delete
+					$db->makeList( [
+						'rc_log_type' => 'delete',
+						'rc_log_action' => 'delete'
+					], LIST_AND ),
+					// @todo: add upload
 				], LIST_OR ),
 			], LIST_AND ),
 		], LIST_OR );

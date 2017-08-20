@@ -2050,6 +2050,8 @@ class AbuseFilter {
 			$vars = self::getMoveVarsFromRCRow( $row );
 		} elseif ( $row->rc_log_type == 'newusers' ) {
 			$vars = self::getCreateVarsFromRCRow( $row );
+		} elseif ( $row->rc_log_type == 'delete' ) {
+			$vars = self::getDeleteVarsFromRCRow( $row );
 		} elseif ( $row->rc_this_oldid ) {
 			// It's an edit.
 			$vars = self::getEditVarsFromRCRow( $row );
@@ -2083,6 +2085,32 @@ class AbuseFilter {
 		}
 
 		$vars->setVar( 'accountname', $name );
+
+		return $vars;
+	}
+
+	/**
+	 * @param stdClass $row
+	 * @return AbuseFilterVariableHolder
+	 */
+	public static function getDeleteVarsFromRCRow( $row ) {
+		$vars = new AbuseFilterVariableHolder;
+		$title = Title::makeTitle( $row->rc_namespace, $row->rc_title );
+
+		if ( $row->rc_user ) {
+			$user = User::newFromName( $row->rc_user_text );
+		} else {
+			$user = new User;
+			$user->setName( $row->rc_user_text );
+		}
+
+		$vars->addHolders(
+			self::generateUserVars( $user ),
+			self::generateTitleVars( $title, 'ARTICLE' )
+		);
+
+		$vars->setVar( 'ACTION', 'delete' );
+		$vars->setVar( 'SUMMARY', $row->rc_comment );
 
 		return $vars;
 	}
