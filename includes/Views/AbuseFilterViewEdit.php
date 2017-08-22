@@ -821,11 +821,42 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						Xml::buildForm( $tagFields )
 					);
 				return $output;
+			case 'block':
+				global $wgBlockAllowsUTEdit;
+				$output = '';
+				$checkbox = Xml::checkLabel(
+					$this->msg( 'abusefilter-edit-action-block' )->text(),
+					'wpFilterActionBlock',
+					"mw-abusefilter-action-checkbox-block",
+					$set,
+					[ 'class' => 'mw-abusefilter-action-checkbox' ] + $cbReadOnlyAttrib );
+				$output .= Xml::tags( 'p', null, $checkbox );
+				if ( $wgBlockAllowsUTEdit === true ) {
+					$checkbox =
+						Xml::label(
+							$this->msg( 'abusefilter-edit-block-options' ),
+							'mw-abusefilter-block-parameters'
+						) .
+						Xml::checkLabel(
+							$this->msg( 'abusefilter-edit-action-blocktalk' )->text(),
+							'wpFilterBlockTalk',
+							'mw-abusefilter-action-checkbox-blocktalk',
+							$parameters[0] == 'blocktalk',
+							[ 'class' => 'mw-abusefilter-action-checkbox' ] + $cbReadOnlyAttrib
+						);
+					$output .=
+						Xml::tags(
+							'div',
+							[ 'id' => 'mw-abusefilter-block-parameters' ],
+							$checkbox
+						);
+				}
+				return $output;
 			default:
 				// Give grep a chance to find the usages:
 				// abusefilter-edit-action-warn, abusefilter-edit-action-disallow
 				// abusefilter-edit-action-blockautopromote
-				// abusefilter-edit-action-degroup, abusefilter-edit-action-block
+				// abusefilter-edit-action-degroup
 				// abusefilter-edit-action-throttle, abusefilter-edit-action-rangeblock
 				// abusefilter-edit-action-tag
 				$message = 'abusefilter-edit-action-' . $action;
@@ -1059,6 +1090,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						}
 
 						$parameters[0] = $specMsg;
+					} elseif ( $action == 'block' ) {
+						$parameters = $request->getCheck( 'wpFilterBlockTalk' ) ?
+							[ 'blocktalk' ] : [ '' ];
 					} elseif ( $action == 'tag' ) {
 						$parameters = explode( "\n", $request->getText( 'wpFilterTags' ) );
 					}
