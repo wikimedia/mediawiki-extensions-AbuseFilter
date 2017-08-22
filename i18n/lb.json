@@ -47,6 +47,7 @@
 	"abusefilter-log-search-filter": "Nummer(ID) vum Filter (mat vertikale Strécher(|) trennen):",
 	"abusefilter-log-search-title": "Titel:",
 	"abusefilter-log-search-wiki": "Wiki:",
+	"abusefilter-log-search-entries-label": "Visibilitéit:",
 	"abusefilter-log-search-submit": "Sichen",
 	"abusefilter-log-entry": "$1: $2 huet e Mëssbrauchsfilter {{GENDER:$8|ausgeléist}}, {{GENDER:$8|bei der Aktioun}} \"$3\" op $4.\nAktioune vum Filter: $5;\nBeschreiwung vum Filter: $6",
 	"abusefilter-log-detailedentry-meta": "$1: $2 huet e Mëssbrauchsfilter $3 {{GENDER:$9|ausgeléist}}, {{GENDER:$9|bei der Aktioun}} \"$4\" op $5.\nAktioune vum Filter: $6;\nBeschreiwung vum Filter: $7 ($8)",
