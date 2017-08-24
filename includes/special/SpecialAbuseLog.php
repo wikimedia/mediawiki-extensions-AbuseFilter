@@ -146,6 +146,7 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() )
 			->setWrapperLegendMsg( 'abusefilter-log-search' )
+			->setSubmitTextMsg( 'abusefilter-log-search-submit' )
 			->setMethod( 'get' )
 			->prepareForm()
 			->displayForm( false );
