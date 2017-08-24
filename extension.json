@@ -248,7 +248,8 @@
 			"_merge_strategy": "array_plus"
 		},
 		"AbuseFilterLogIPMaxAge": 7776000,
-		"AbuseFilterProfile": false
+		"AbuseFilterProfile": false,
+		"AbuseFilterRuntimeProfile": false
 	},
 	"load_composer_autoloader": true,
 	"manifest_version": 1

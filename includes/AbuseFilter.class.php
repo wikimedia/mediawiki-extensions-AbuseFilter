@@ -878,7 +878,7 @@ class AbuseFilter {
 	public static function filterAction(
 		$vars, $title, $group = 'default', $user = null, $mode = 'execute'
 	) {
-		global $wgUser, $wgTitle, $wgRequest;
+		global $wgUser, $wgTitle, $wgRequest, $wgAbuseFilterRuntimeProfile;
 
 		$context = RequestContext::getMain();
 		$oldContextTitle = $context->getTitle();
@@ -905,6 +905,10 @@ class AbuseFilter {
 		$cache = ObjectCache::getLocalClusterInstance();
 		$stashKey = self::getStashKey( $cache, $vars, $group );
 		$isForEdit = ( $vars->getVar( 'action' )->toString() === 'edit' );
+
+		if ( $wgAbuseFilterRuntimeProfile ) {
+			$startTime = microtime( true );
+		}
 
 		$filter_matched = false;
 		if ( $mode === 'execute' && $isForEdit ) {
@@ -933,6 +937,13 @@ class AbuseFilter {
 		if ( $mode === 'stash' ) {
 			// Save the filter stash result and do nothing further
 			$cacheData = [ 'matches' => $filter_matched, 'tags' => self::$tagsToSet ];
+
+			// Add runtime metrics in cache for later use
+			if ( $wgAbuseFilterRuntimeProfile ) {
+				$cacheData['condCount'] = self::$condCount;
+				$cacheData['runtime'] = ( microtime( true ) - $startTime ) * 1000;
+			}
+
 			$cache->set( $stashKey, $cacheData, $cache::TTL_MINUTE );
 			$logger->debug( __METHOD__ . ": cache store for '$title' (key $stashKey)." );
 			$statsd->increment( 'abusefilter.check-stash.store' );
@@ -942,13 +953,24 @@ class AbuseFilter {
 
 		$matched_filters = array_keys( array_filter( $filter_matched ) );
 
+		// Save runtime metrics only on edits
+		if ( $wgAbuseFilterRuntimeProfile && $mode === 'execute' && $isForEdit ) {
+			if ( $cacheData ) {
+				$runtime = $cacheData['runtime'];
+				$condCount = $cacheData['condCount'];
+			} else {
+				$runtime = ( microtime( true ) - $startTime ) * 1000;
+				$condCount = self::$condCount;
+			}
+
+			self::recordRuntimeProfilingResult( count( $matched_filters ), $condCount, $runtime );
+		}
+
 		if ( count( $matched_filters ) == 0 ) {
 			$status = Status::newGood();
 		} else {
 			$status = self::executeFilterActions( $matched_filters, $title, $vars );
-
 			$actions_taken = $status->getValue();
-
 			$action = $vars->getVar( 'ACTION' )->toString();
 
 			// If $wgUser isn't safe to load (e.g. a failure during
@@ -980,6 +1002,7 @@ class AbuseFilter {
 		if ( $wgTitle !== $oldWgTitle ) {
 			$wgTitle = $oldWgTitle;
 		}
+
 		if ( $context->getTitle() !== $oldContextTitle && $oldContextTitle instanceof Title ) {
 			$context->setTitle( $oldContextTitle );
 		}
@@ -1743,6 +1766,22 @@ class AbuseFilter {
 		if ( $overflow_triggered ) {
 			$stash->incr( $overflow_key );
 		}
+	}
+
+	/**
+	 * Record runtime profiling data
+	 *
+	 * @param int $totalFilters
+	 * @param int $totalConditions
+	 * @param float $runtime
+	 */
+	private static function recordRuntimeProfilingResult( $totalFilters, $totalConditions, $runtime ) {
+		$keyPrefix = 'abusefilter.runtime-profile.' . wfWikiID() . '.';
+
+		$statsd = MediaWikiServices::getInstance()->getStatsdDataFactory();
+		$statsd->timing( $keyPrefix . 'runtime', $runtime );
+		$statsd->timing( $keyPrefix . 'total_filters', $totalFilters );
+		$statsd->timing( $keyPrefix . 'total_conditions', $totalConditions );
 	}
 
 	/**
