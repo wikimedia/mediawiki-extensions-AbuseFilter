@@ -117,3 +117,8 @@ $wgAbuseFilterLogIPMaxAge = 3 * 30 * 24 * 3600; // 3 months
  * Whether to record the average time taken and average number of conditions used by each filter.
  */
 $wgAbuseFilterProfile = false;
+
+/**
+ * Whether to record runtime metrics for all filters combined.
+ */
+$wgAbuseFilterRuntimeProfile = false;
