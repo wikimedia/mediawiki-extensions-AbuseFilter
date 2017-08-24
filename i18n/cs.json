@@ -55,7 +55,7 @@
 	"abusefilter-log-summary": "Tento protokol obsahuje seznam všech operací zachycených filtry.",
 	"abusefilter-log-search": "Hledat v záznamu zneužití",
 	"abusefilter-log-search-user": "Uživatel:",
-	"abusefilter-log-search-filter": "ID filtru:",
+	"abusefilter-log-search-filter": "ID filtrů (oddělte svislítky):",
 	"abusefilter-log-search-title": "Název:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Hledat",
