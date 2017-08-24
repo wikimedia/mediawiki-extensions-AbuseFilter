@@ -22,6 +22,8 @@ class SpecialAbuseLog extends SpecialPage {
 
 	protected $mSearchEntries;
 
+	protected $mSearchImpact;
+
 	public function __construct() {
 		parent::__construct( 'AbuseLog', 'abusefilter-log' );
 	}
@@ -132,6 +134,7 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 
 		$this->mSearchEntries = $request->getText( 'wpSearchEntries' );
+		$this->mSearchImpact = $request->getText( 'wpSearchImpact' );
 	}
 
 	/**
@@ -160,7 +163,16 @@ class SpecialAbuseLog extends SpecialPage {
 				'label-message' => 'abusefilter-log-search-title',
 				'type' => 'title',
 				'default' => $this->mSearchTitle,
-			]
+			],
+			'SearchImpact' => [
+				'label-message' => 'abusefilter-log-search-impact',
+				'type' => 'select',
+				'options' => [
+					$this->msg( 'abusefilter-log-search-impact-all' )->text() => 0,
+					$this->msg( 'abusefilter-log-search-impact-saved' )->text() => 1,
+					$this->msg( 'abusefilter-log-search-impact-not-saved' )->text() => 2,
+				],
+			],
 		];
 		if ( self::canSeeDetails() ) {
 			$formDescriptor['SearchFilter'] = [
@@ -347,11 +359,24 @@ class SpecialAbuseLog extends SpecialPage {
 			$conds['afl_title'] = $searchTitle->getDBkey();
 		}
 
+		$dbr = wfGetDB( DB_REPLICA );
 		if ( self::canSeeHidden() ) {
 			if ( $this->mSearchEntries == '1' ) {
 				$conds['afl_deleted'] = 1;
 			} elseif ( $this->mSearchEntries == '2' ) {
-				$conds[] = self::getNotDeletedCond( wfGetDB( DB_REPLICA ) );
+				$conds[] = self::getNotDeletedCond( $dbr );
+			}
+		}
+
+		if ( in_array( $this->mSearchImpact, [ '1', '2' ] ) ) {
+			$unsuccessfulActionConds = $dbr->makeList( [
+				'afl_rev_id' => null,
+				'afl_log_id' => null,
+			], LIST_AND );
+			if ( $this->mSearchImpact == '1' ) {
+				$conds[] = "NOT ( $unsuccessfulActionConds )";
+			} else {
+				$conds[] = $unsuccessfulActionConds;
 			}
 		}
 
