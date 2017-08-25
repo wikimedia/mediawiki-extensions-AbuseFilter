@@ -338,7 +338,7 @@
 	"abusefilter-edit-builder-vars-file-size": "Tamaño del archivo en bytes",
 	"abusefilter-edit-builder-vars-file-mime": "Tipo MIME del archivo",
 	"abusefilter-edit-builder-vars-file-mediatype": "Tipo del archivo multimedia",
-	"abusefilter-edit-builder-vars-file-width": "Ancho del archivo en píxeles",
+	"abusefilter-edit-builder-vars-file-width": "Anchura del archivo en píxeles",
 	"abusefilter-edit-builder-vars-file-height": "Altura del archivo en píxeles",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Bits por canal de color del archivo",
 	"abusefilter-filter-log": "Cambios recientes de filtros",

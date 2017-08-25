@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kandar"
+			"Kandar",
+			"Uchup19"
 		]
 	},
 	"abusefilter-log-search-user": "Pamaké:",
@@ -41,5 +42,6 @@
 	"abusefilter-edit-builder-group-funcs": "Fungsi",
 	"abusefilter-edit-builder-funcs-length": "Panjang string (length)",
 	"abusefilter-edit-builder-group-vars": "Variabel",
-	"abusefilter-edit-builder-vars-accountname": "Sandiasma (dina nyieun akun)"
+	"abusefilter-edit-builder-vars-accountname": "Sandiasma (dina nyieun akun)",
+	"abusefilter-action-degroup": "Kaluarkeun tina gorombolan"
 }
