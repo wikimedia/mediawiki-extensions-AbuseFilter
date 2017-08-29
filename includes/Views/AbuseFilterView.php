@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use Wikimedia\Rdbms\IDatabase;
 
 abstract class AbuseFilterView extends ContextSource {
 	public $mFilter, $mHistoryID, $mSubmit;
@@ -63,6 +64,34 @@ abstract class AbuseFilterView extends ContextSource {
 	}
 
 	/**
+	 * @param IDatabase $db
+	 * @return string
+	 */
+	public function buildTestConditions( IDatabase $db ) {
+		// If one of these is true, we're abusefilter compatible.
+		return $db->makeList( [
+			'rc_source' => [
+				RecentChange::SRC_EDIT,
+				RecentChange::SRC_NEW,
+			],
+			$db->makeList( [
+				'rc_source' => RecentChange::SRC_LOG,
+				$db->makeList( [
+					$db->makeList( [
+						'rc_log_type' => 'move',
+						'rc_log_action' => 'move'
+					], LIST_AND ),
+					$db->makeList( [
+						'rc_log_type' => 'newusers',
+						'rc_log_action' => 'create'
+					], LIST_AND ),
+					// @todo: add upload and delete
+				], LIST_OR ),
+			], LIST_AND ),
+		], LIST_OR );
+	}
+
+	/**
 	 * @static
 	 * @return bool
 	 */
@@ -76,6 +105,7 @@ abstract class AbuseFilterView extends ContextSource {
 
 		return $canView;
 	}
+
 }
 
 class AbuseFilterChangesList extends OldChangesList {
