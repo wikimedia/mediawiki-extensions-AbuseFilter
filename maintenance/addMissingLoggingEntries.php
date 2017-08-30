@@ -21,7 +21,7 @@ class AddMissingLoggingEntries extends Maintenance {
 		$afhRows = [];
 
 		// Find all entries in abuse_filter_history without logging entry of same timestamp
-		$afhResult = wfGetDB( DB_SLAVE, 'vslow' )->select(
+		$afhResult = wfGetDB( DB_REPLICA, 'vslow' )->select(
 			[ 'abuse_filter_history', 'logging' ],
 			[ 'afh_id', 'afh_filter', 'afh_timestamp', 'afh_user', 'afh_deleted', 'afh_user_text' ],
 			[ 'log_id IS NULL' ],
@@ -46,7 +46,7 @@ class AddMissingLoggingEntries extends Maintenance {
 			$this->error( "Nothing to do.", 1 );
 		}
 
-		$logResult = wfGetDB( DB_SLAVE )->select(
+		$logResult = wfGetDB( DB_REPLICA )->select(
 			'logging',
 			[ 'log_params' ],
 			[ 'log_type' => 'abusefilter', 'log_params' => $logParams ],

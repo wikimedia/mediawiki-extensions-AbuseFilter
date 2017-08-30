@@ -287,10 +287,10 @@ class AbuseFilter {
 			if ( !$wgAbuseFilterCentralDB ) {
 				return false;
 			}
-			$dbr = wfGetDB( DB_SLAVE, [], $wgAbuseFilterCentralDB );
+			$dbr = wfGetDB( DB_REPLICA, [], $wgAbuseFilterCentralDB );
 			$filter = $globalIndex;
 		} else {
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 		}
 		if ( $filter === 'new' ) {
 			return false;
@@ -459,7 +459,7 @@ class AbuseFilter {
 		// Fetch from the database.
 		$filter_matched = [];
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$res = $dbr->select(
 			'abuse_filter',
 			'*',
@@ -487,7 +487,7 @@ class AbuseFilter {
 					global $wgAbuseFilterCentralDB;
 
 					$fdb = wfGetLB( $wgAbuseFilterCentralDB )->getConnectionRef(
-						DB_SLAVE, [], $wgAbuseFilterCentralDB
+						DB_REPLICA, [], $wgAbuseFilterCentralDB
 					);
 
 					return iterator_to_array( $fdb->select(
@@ -675,7 +675,7 @@ class AbuseFilter {
 
 		global $wgAbuseFilterCentralDB;
 		// Load local filter info
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		// Retrieve the consequences.
 		$consequences = [];
 
@@ -684,7 +684,7 @@ class AbuseFilter {
 		}
 
 		if ( count( $globalFilters ) ) {
-			$fdb = wfGetDB( DB_SLAVE, [], $wgAbuseFilterCentralDB );
+			$fdb = wfGetDB( DB_REPLICA, [], $wgAbuseFilterCentralDB );
 			$consequences = $consequences + self::loadConsequencesFromDB( $fdb, $globalFilters, 'global-' );
 		}
 
@@ -981,7 +981,7 @@ class AbuseFilter {
 			$log_template = [
 				'afl_user' => $user->getId(),
 				'afl_user_text' => $user->getName(),
-				'afl_timestamp' => wfGetDB( DB_SLAVE )->timestamp( wfTimestampNow() ),
+				'afl_timestamp' => wfGetDB( DB_REPLICA )->timestamp( wfTimestampNow() ),
 				'afl_namespace' => $title->getNamespace(),
 				'afl_title' => $title->getDBkey(),
 				'afl_ip' => $wgRequest->getIP()
@@ -1027,10 +1027,10 @@ class AbuseFilter {
 
 				$id = $globalIndex;
 				$lb = wfGetLB( $wgAbuseFilterCentralDB );
-				$dbr = $lb->getConnectionRef( DB_SLAVE, [], $wgAbuseFilterCentralDB );
+				$dbr = $lb->getConnectionRef( DB_REPLICA, [], $wgAbuseFilterCentralDB );
 			} else {
 				// Local wiki filter
-				$dbr = wfGetDB( DB_SLAVE );
+				$dbr = wfGetDB( DB_REPLICA );
 			}
 
 			$row = $dbr->selectRow( 'abuse_filter', '*', [ 'af_id' => $id ], __METHOD__ );
@@ -1314,7 +1314,7 @@ class AbuseFilter {
 
 		$text_id = substr( $stored_dump, strlen( 'stored-text:' ) );
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		$text_row = $dbr->selectRow(
 			'text',
@@ -2418,7 +2418,7 @@ class AbuseFilter {
 			return $cache[$filterID];
 		}
 
-		$fdb = wfGetDB( DB_SLAVE, [], $wgAbuseFilterCentralDB );
+		$fdb = wfGetDB( DB_REPLICA, [], $wgAbuseFilterCentralDB );
 
 		$cache[$filterID] = $fdb->selectField(
 			'abuse_filter',
@@ -2518,7 +2518,7 @@ class AbuseFilter {
 		static $firstChanges = [];
 
 		if ( !isset( $firstChanges[$filterID] ) ) {
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			$row = $dbr->selectRow(
 				'abuse_filter_history',
 				'afh_id',

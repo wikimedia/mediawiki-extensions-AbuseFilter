@@ -89,7 +89,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			$out->addWikiMsg( 'abusefilter-test-syntaxerr' );
 			return;
 		}
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		$conds = [];
 		$conds['rc_user_text'] = $this->mTestUser;
@@ -167,7 +167,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			&& count( $this->mParams ) > 1
 			&& is_numeric( $this->mParams[1] )
 		) {
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			$this->mFilter = $dbr->selectField( 'abuse_filter',
 				'af_pattern',
 				[ 'af_id' => $this->mParams[1] ],

@@ -88,7 +88,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$filter = $this->mFilter;
 		$history_id = $this->mHistoryID;
 		if ( $this->mHistoryID ) {
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			$row = $dbr->selectRow(
 				'abuse_filter_history',
 				'afh_id',
@@ -878,7 +878,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$existingSelector->setAttribute( 'disabled', 'disabled' );
 		} else {
 			// Find other messages.
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			$res = $dbr->select(
 				'page',
 				[ 'page_title' ],
@@ -926,7 +926,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Load from master to avoid unintended reversions where there's replication lag.
 		$dbr = $this->getRequest()->wasPosted()
 			? wfGetDB( DB_MASTER )
-			: wfGetDB( DB_SLAVE );
+			: wfGetDB( DB_REPLICA );
 
 		// Load certain fields only. This prevents a condition seen on Wikimedia where
 		// a schema change adding a new field caused that extra field to be selected.
@@ -1098,7 +1098,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * Second element contains an array of abuse_filter_action rows.
 	 */
 	function loadHistoryItem( $id ) {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		// Load the row.
 		$row = $dbr->selectRow( 'abuse_filter_history',

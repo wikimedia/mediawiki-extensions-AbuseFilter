@@ -18,7 +18,7 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 				$vars->setVar( $name, $value );
 			}
 		} elseif ( $params['rcid'] ) {
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			$row = $dbr->selectRow(
 				'recentchanges',
 				'*',
@@ -32,7 +32,7 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 
 			$vars = AbuseFilter::getVarsFromRCRow( $row );
 		} elseif ( $params['logid'] ) {
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			$row = $dbr->selectRow(
 				'abuse_filter_log',
 				'*',

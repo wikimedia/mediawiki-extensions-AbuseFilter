@@ -163,7 +163,7 @@ class SpecialAbuseLog extends SpecialPage {
 			return;
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		$row = $dbr->selectRow(
 			[ 'abuse_filter_log', 'abuse_filter' ],
@@ -291,7 +291,7 @@ class SpecialAbuseLog extends SpecialPage {
 			if ( $this->mSearchEntries == '1' ) {
 				$conds['afl_deleted'] = 1;
 			} elseif ( $this->mSearchEntries == '2' ) {
-				$conds[] = self::getNotDeletedCond( wfGetDB( DB_SLAVE ) );
+				$conds[] = self::getNotDeletedCond( wfGetDB( DB_REPLICA ) );
 			}
 		}
 
@@ -314,7 +314,7 @@ class SpecialAbuseLog extends SpecialPage {
 	function showDetails( $id ) {
 		$out = $this->getOutput();
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		$row = $dbr->selectRow(
 			[ 'abuse_filter_log', 'abuse_filter' ],

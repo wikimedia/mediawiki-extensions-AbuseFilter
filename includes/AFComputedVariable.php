@@ -119,7 +119,7 @@ class AFComputedVariable {
 			return [];
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$res = $dbr->select(
 			'externallinks',
 			[ 'el_to' ],
@@ -373,7 +373,7 @@ class AFComputedVariable {
 			case 'revision-text-by-timestamp':
 				$timestamp = $parameters['timestamp'];
 				$title = Title::makeTitle( $parameters['namespace'], $parameters['title'] );
-				$dbr = wfGetDB( DB_SLAVE );
+				$dbr = wfGetDB( DB_REPLICA );
 				$rev = Revision::loadFromTimestamp( $dbr, $title, $timestamp );
 				$result = AbuseFilter::revisionToString( $rev );
 				break;
@@ -403,7 +403,7 @@ class AFComputedVariable {
 			$cache->makeKey( 'last-10-authors', 'revision', $title->getLatestRevID() ),
 			$cache::TTL_MINUTE,
 			function ( $oldValue, &$ttl, array &$setOpts ) use ( $title ) {
-				$dbr = wfGetDB( DB_SLAVE );
+				$dbr = wfGetDB( DB_REPLICA );
 				$setOpts += Database::getCacheSetOptions( $dbr );
 				// Get the last 100 edit authors with a trivial query (avoid T116557)
 				$revAuthors = $dbr->selectFieldValues(

@@ -111,7 +111,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 		$conds = [ 'afl_filter' => $filter ];
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		if ( $periodStart ) {
 			$conds[] = 'afl_timestamp>' . $dbr->addQuotes( $dbr->timestamp( $periodStart ) );

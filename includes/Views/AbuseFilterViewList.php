@@ -383,7 +383,7 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 	function __construct( $page, $conds, $linkRenderer ) {
 		parent::__construct( $page, $conds, $linkRenderer );
 		global $wgAbuseFilterCentralDB;
-		$this->mDb = wfGetDB( DB_SLAVE, [], $wgAbuseFilterCentralDB );
+		$this->mDb = wfGetDB( DB_REPLICA, [], $wgAbuseFilterCentralDB );
 	}
 
 	function formatValue( $name, $value ) {

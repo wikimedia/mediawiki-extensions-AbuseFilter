@@ -76,7 +76,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 
 	function showExaminerForRC( $rcid ) {
 		// Get data
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$row = $dbr->selectRow( 'recentchanges', '*', [ 'rc_id' => $rcid ], __METHOD__ );
 		$out = $this->getOutput();
 		if ( !$row ) {
@@ -94,7 +94,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 
 	function showExaminerForLogEntry( $logid ) {
 		// Get data
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$row = $dbr->selectRow( 'abuse_filter_log', '*', [ 'afl_id' => $logid ], __METHOD__ );
 		$out = $this->getOutput();
 
@@ -226,7 +226,7 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	 * @fixme this is similar to AbuseFilterViewTestBatch::doTest
 	 */
 	function getQueryInfo() {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$conds = [];
 		$conds['rc_user_text'] = $this->mPage->mSearchUser;
 

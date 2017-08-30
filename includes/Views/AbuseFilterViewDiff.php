@@ -128,7 +128,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	 * @return int|null Id of the next change or null if there isn't one
 	 */
 	function getNextHistoryId( $historyId ) {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$row = $dbr->selectRow(
 			'abuse_filter_history',
 			'afh_id',
@@ -153,7 +153,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			return $cache[$spec];
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$row = null;
 		if ( is_numeric( $spec ) ) {
 			$row = $dbr->selectRow(

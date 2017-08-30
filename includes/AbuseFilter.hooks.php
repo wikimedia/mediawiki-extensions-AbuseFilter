@@ -514,7 +514,7 @@ class AbuseFilterHooks {
 				}
 
 				if ( $wgAbuseFilterCentralDB && !$wgAbuseFilterIsCentral ) {
-					$dbr = wfGetDB( DB_SLAVE, [], $wgAbuseFilterCentralDB );
+					$dbr = wfGetDB( DB_REPLICA, [], $wgAbuseFilterCentralDB );
 					$where['af_global'] = 1;
 					$res = $dbr->select(
 						[ 'abuse_filter_action', 'abuse_filter' ],
