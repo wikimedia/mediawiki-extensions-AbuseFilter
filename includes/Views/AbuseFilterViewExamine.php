@@ -77,7 +77,12 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	function showExaminerForRC( $rcid ) {
 		// Get data
 		$dbr = wfGetDB( DB_REPLICA );
-		$row = $dbr->selectRow( 'recentchanges', '*', [ 'rc_id' => $rcid ], __METHOD__ );
+		$row = $dbr->selectRow(
+			'recentchanges',
+			RecentChange::selectFields(),
+			[ 'rc_id' => $rcid ],
+			__METHOD__
+		);
 		$out = $this->getOutput();
 		if ( !$row ) {
 			$out->addWikiMsg( 'abusefilter-examine-notfound' );

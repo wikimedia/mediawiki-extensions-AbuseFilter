@@ -2149,7 +2149,14 @@ class AbuseFilter {
 		);
 
 		$vars->setVar( 'ACTION', 'delete' );
-		$vars->setVar( 'SUMMARY', $row->rc_comment );
+		if ( class_exists( CommentStore::class ) ) {
+			$vars->setVar( 'SUMMARY', CommentStore::newKey( 'rc_comment' )
+				// $row comes from RecentChange::selectFields()
+				->getCommentLegacy( wfGetDB( DB_REPLICA ), $row )->text
+			);
+		} else {
+			$vars->setVar( 'SUMMARY', $row->rc_comment );
+		}
 
 		return $vars;
 	}
@@ -2175,7 +2182,14 @@ class AbuseFilter {
 		);
 
 		$vars->setVar( 'ACTION', 'edit' );
-		$vars->setVar( 'SUMMARY', $row->rc_comment );
+		if ( class_exists( CommentStore::class ) ) {
+			$vars->setVar( 'SUMMARY', CommentStore::newKey( 'rc_comment' )
+				// $row comes from RecentChange::selectFields()
+				->getCommentLegacy( wfGetDB( DB_REPLICA ), $row )->text
+			);
+		} else {
+			$vars->setVar( 'SUMMARY', $row->rc_comment );
+		}
 
 		$vars->setLazyLoadVar( 'new_wikitext', 'revision-text-by-id',
 			[ 'revid' => $row->rc_this_oldid ] );
@@ -2215,7 +2229,14 @@ class AbuseFilter {
 			self::generateTitleVars( $newTitle, 'MOVED_TO' )
 		);
 
-		$vars->setVar( 'SUMMARY', $row->rc_comment );
+		if ( class_exists( CommentStore::class ) ) {
+			$vars->setVar( 'SUMMARY', CommentStore::newKey( 'rc_comment' )
+				// $row comes from RecentChange::selectFields()
+				->getCommentLegacy( wfGetDB( DB_REPLICA ), $row )->text
+			);
+		} else {
+			$vars->setVar( 'SUMMARY', $row->rc_comment );
+		}
 		$vars->setVar( 'ACTION', 'move' );
 
 		return $vars;
