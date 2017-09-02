@@ -113,7 +113,6 @@ class AbuseFilter {
 			'article_namespace' => 'article-ns',
 			'article_text' => 'article-text',
 			'article_prefixedtext' => 'article-prefixedtext',
-			// 'article_views' => 'article-views', // May not be enabled, defined in getBuilderValues()
 			'moved_from_articleid' => 'movedfrom-id',
 			'moved_from_namespace' => 'movedfrom-ns',
 			'moved_from_text' => 'movedfrom-text',
@@ -306,10 +305,7 @@ class AbuseFilter {
 		}
 
 		$realValues = self::$builderValues;
-		global $wgDisableCounters;
-		if ( !$wgDisableCounters ) {
-			$realValues['vars']['article_views'] = 'article-views';
-		}
+
 		Hooks::run( 'AbuseFilter-builder', [ &$realValues ] );
 
 		return $realValues;
@@ -381,16 +377,6 @@ class AbuseFilter {
 		$vars->setVar( $prefix . '_NAMESPACE', $title->getNamespace() );
 		$vars->setVar( $prefix . '_TEXT', $title->getText() );
 		$vars->setVar( $prefix . '_PREFIXEDTEXT', $title->getPrefixedText() );
-
-		global $wgDisableCounters;
-		if ( !$wgDisableCounters && !$title->isSpecialPage() ) {
-			// Support: HitCounters extension
-			// XXX: This should be part of the extension (T159069)
-			if ( method_exists( 'HitCounters\HitCounters', 'getCount' ) ) {
-				/** @suppress PhanUndeclaredClassMethod Better wait for T159069 (under review) */
-				$vars->setVar( $prefix . '_VIEWS', HitCounters\HitCounters::getCount( $title ) );
-			}
-		}
 
 		global $wgRestrictionTypes;
 		foreach ( $wgRestrictionTypes as $action ) {
@@ -1225,7 +1211,6 @@ class AbuseFilter {
 		unset( $inputVars['new_html'] );
 		unset( $inputVars['user_age'] );
 		unset( $inputVars['timestamp'] );
-		unset( $inputVars['_VIEWS'] );
 		ksort( $inputVars );
 		$hash = md5( serialize( $inputVars ) );
 

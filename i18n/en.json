@@ -314,7 +314,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "Page namespace",
 	"abusefilter-edit-builder-vars-article-text": "Page title (without namespace)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Full page title",
-	"abusefilter-edit-builder-vars-article-views": "Page views",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Page ID of move source page",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Namespace of move source page",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Title of move source page",
