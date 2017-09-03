@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bunukwiki"
+			"Bunukwiki",
+			"Benel"
 		]
 	},
 	"abusefilter-log-search-submit": "kilim",
+	"abusefilter-log-noactions": "nayi’",
+	"abusefilter-edit-tools": "sakaluk：",
 	"abusefilter-topnav-home": "saayaway a belih"
 }
