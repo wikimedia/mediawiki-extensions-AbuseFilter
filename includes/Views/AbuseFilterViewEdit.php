@@ -527,18 +527,28 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		if ( isset( $row->af_throttled ) && $row->af_throttled ) {
-			global $wgAbuseFilterEmergencyDisableThreshold;
+			global $wgAbuseFilterRestrictions;
 
-			// determine emergency disable value for this action
-			$emergencyDisableThreshold = AbuseFilter::getEmergencyValue(
-				$wgAbuseFilterEmergencyDisableThreshold,
-				$row->af_group
+			$filterActions = explode( ',', $row->af_actions );
+			$throttledActions = array_intersect_key(
+				array_flip( $filterActions ),
+				array_filter( $wgAbuseFilterRestrictions )
 			);
 
-			$threshold_percent = sprintf( '%.2f', $emergencyDisableThreshold * 100 );
-			$flags .= $out->parse(
-				$this->msg( 'abusefilter-edit-throttled' )->numParams( $threshold_percent )->text()
-			);
+			if ( $throttledActions ) {
+				$throttledActions = array_map(
+					function ( $filterAction ) {
+						return $this->msg( 'abusefilter-action-' . $filterAction )->text();
+					},
+					array_keys( $throttledActions )
+				);
+
+				$flags .= $out->parse(
+					$this->msg( 'abusefilter-edit-throttled-warning' )
+						->plaintextParams( $lang->commaList( $throttledActions ) )
+						->text()
+				);
+			}
 		}
 
 		foreach ( $checkboxes as $checkboxId ) {
