@@ -121,7 +121,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$res = $dbr->select(
 			'recentchanges',
-			'*',
+			RecentChange::selectFields(),
 			array_filter( $conds ),
 			__METHOD__,
 			[ 'LIMIT' => self::$mChangeLimit, 'ORDER BY' => 'rc_timestamp desc' ]

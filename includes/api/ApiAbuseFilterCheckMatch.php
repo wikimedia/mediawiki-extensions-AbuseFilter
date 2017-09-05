@@ -21,7 +21,7 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 			$dbr = wfGetDB( DB_REPLICA );
 			$row = $dbr->selectRow(
 				'recentchanges',
-				'*',
+				RecentChange::selectFields(),
 				[ 'rc_id' => $params['rcid'] ],
 				__METHOD__
 			);
