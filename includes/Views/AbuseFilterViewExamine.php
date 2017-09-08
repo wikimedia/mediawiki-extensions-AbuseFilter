@@ -248,7 +248,7 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 
 		$info = [
 			'tables' => 'recentchanges',
-			'fields' => Revision::selectFields(),
+			'fields' => RecentChange::selectFields(),
 			'conds' => array_filter( $conds ),
 			'options' => [ 'ORDER BY' => 'rc_timestamp DESC' ],
 		];
