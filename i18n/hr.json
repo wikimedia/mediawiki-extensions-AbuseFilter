@@ -242,7 +242,7 @@
 	"abusefilter-edit-builder-funcs-set_var": "Postavi varijablu (set_var)",
 	"abusefilter-edit-builder-group-vars": "Varijable",
 	"abusefilter-edit-builder-vars-accountname": "Naziv suradničkog računa (u trenutku stvaranja računa)",
-	"abusefilter-edit-builder-vars-timestamp": "Unix \"timestamp\" vrijeme uređivanja",
+	"abusefilter-edit-builder-vars-timestamp": "Unixov vremenski pečat izmjene",
 	"abusefilter-edit-builder-vars-action": "Akcija",
 	"abusefilter-edit-builder-vars-addedlines": "Redaka dodano uređivanjem",
 	"abusefilter-edit-builder-vars-delta": "Promjena duljine stranice",
