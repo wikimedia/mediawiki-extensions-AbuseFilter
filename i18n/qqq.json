@@ -166,7 +166,7 @@
 	"abusefilter-edit-status-label": "Field label for abuse filter statistics.\n{{Identical|Statistics}}",
 	"abusefilter-edit-status": "Parameters:\n* $1 - number of actions\n* $2 - matched count\n* $3 - matched percentage",
 	"abusefilter-edit-status-profile": "Parameters:\n* $1 - number of actions\n* $2 - matched count\n* $3 - matched percentage\n* $4 - time (in milliseconds)\n* $5 - number of conditions",
-	"abusefilter-edit-throttled": "Used as warning message. Parameters:\n* $1 - threshold percentage",
+	"abusefilter-edit-throttled-warning": "Used as warning message when the filter is throttled and actions will not execute. Parameters:\n* $1 - is a string containing the actions that will not execute",
 	"abusefilter-edit-new": "Field value in case an edited filter is new.",
 	"abusefilter-edit-save": "Submit button text to save a filter.",
 	"abusefilter-edit-id": "Field label for filter identifier.\n{{Identical|Filter ID}}",
