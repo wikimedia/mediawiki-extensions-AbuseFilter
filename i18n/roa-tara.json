@@ -137,7 +137,7 @@
 	"abusefilter-edit-status-label": "Statisteche:",
 	"abusefilter-edit-status": "De le urteme $1 {{PLURAL:$1|azione|aziune}}, quiste filtre ave soddisfatte $2 ($3%).",
 	"abusefilter-edit-status-profile": "De le urteme $1 {{PLURAL:$1|aziune|aziune}}, quiste filtre hagghie iacchiute $2 ($3%).\nJndr'à medie, 'u soje timbe jè de $4ms, e conzume $5 {{PLURAL:$5|condiziune|condiziune}} d'u limite de condiziune.",
-	"abusefilter-edit-throttled": "'''Attenziune''': Quiste fltre jè state automatecamènde ddisabbiletate cumme mesure de sicurezze.\nHagghe raggiunde 'u limite de matching cchiù abbinà $1% de le aziune.",
+	"abusefilter-edit-throttled-warning": "'''Attenziò:''' Stu filtre ha state signate automaticamende cumme pericolose. Cumme mesure de securezze, le aziune seguende non ge avénene eseguite ($1). Pe piacere condrolle e [[mw:Extension:AbuseFilter/Conditions|ottimizze]] le condiziune tune pe luà sta restrizzione",
 	"abusefilter-edit-new": "Filtre nueve",
 	"abusefilter-edit-save": "Reggistre 'u filtre",
 	"abusefilter-edit-id": "ID d'u filtre:",

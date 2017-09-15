@@ -142,7 +142,7 @@
 	"abusefilter-edit-status-label": "Statistika:",
 	"abusefilter-edit-status": "Z {{PLURAL:$1|1 poslední operace|posledních $1 operací}} tomuto filtru {{PLURAL:$2|odpovídala|odpovídaly|odpovídalo}} $2 ($3 %).",
 	"abusefilter-edit-status-profile": "Z {{PLURAL:$1|1 poslední operace|posledních $1 operací}} tomuto filtru {{PLURAL:$2|odpovídala|odpovídaly|odpovídalo}} $2 ($3 %).\nPrůměrná doba běhu filtru je $4 ms, filtr potřebuje $5 z dovoleného počtu podmínek.",
-	"abusefilter-edit-throttled": "'''Upozornění''': Tento filtr byl z bezpečnostních důvodů automaticky vypnut.\nOdpovídalo mu více než dovolený limit $1 % všech operací.",
+	"abusefilter-edit-throttled-warning": "'''Varování:''' Tento filtr byl automaticky označen jako škodlivý. Z bezpečnostních důvodů nebudou vykonávány následující akce: $1. Pro odstranění tohoto omezení prosím zkontrolujte a [[mw:Extension:AbuseFilter/Conditions|optimalizujte]] podmínky.",
 	"abusefilter-edit-new": "Nový filtr",
 	"abusefilter-edit-save": "Uložit filtr",
 	"abusefilter-edit-id": "ID filtru:",

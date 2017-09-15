@@ -158,7 +158,7 @@
 	"abusefilter-edit-status-label": "Statistik:",
 	"abusefilter-edit-status": "Von {{PLURAL:$1|der letzten Aktion|den letzten $1 Aktionen}} {{PLURAL:$2|wurde eine|wurden $2}} ($3 %) von diesem Filter erkannt.",
 	"abusefilter-edit-status-profile": "Von {{PLURAL:$1|der letzten Aktion|den letzten $1 Aktionen}} {{PLURAL:$2|wurde eine|wurden $2}} ($3 %) von diesem Filter erkannt.\nIm Durchschnitt betrug die Bearbeitungszeit $4 ms und sie benötigten {{PLURAL:$5|eine Bedingung|$5 Bedingungen}} der erlaubten Höchstzahl.",
-	"abusefilter-edit-throttled": "'''Warnung''': Dieser Filter wurde sicherheitshalber automatisch deaktiviert. Er hat mehr als die definierte Obergrenze von $1 % der Aktionen erkannt.",
+	"abusefilter-edit-throttled-warning": "'''Warnung:''' Dieser Filter wurde automatisch als schädlich markiert. Aus Sicherheitsgründen werden die folgenden Aktionen nicht ausgeführt ($1). Bitte überprüfe und [[mw:Extension:AbuseFilter/Conditions|optimiere]] deine Bedingungen, um diese Beschränkung aufzuheben.",
 	"abusefilter-edit-new": "Neuer Filter",
 	"abusefilter-edit-save": "Filter speichern",
 	"abusefilter-edit-id": "Filterkennung:",

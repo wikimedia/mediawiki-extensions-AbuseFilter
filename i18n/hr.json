@@ -139,7 +139,6 @@
 	"abusefilter-edit-status-label": "Statistike:",
 	"abusefilter-edit-status": "Od {{PLURAL:$1|posljednje akcije|posljednje $1 akcije|posljednjih $1 akcija}}, ovaj se filtar poklopio s njih $2 ($3 %).",
 	"abusefilter-edit-status-profile": "Od {{PLURAL:$1|posljednje akcije|posljednje $1 akcije|posljednjih $1 akcija}}, ovaj se filtar poklopio s njih $2 ($3 %).\nU prosjeku, njegovo je vrijeme izvođenja $4 ms, a upotrijebi $5 {{PLURAL:$5|uvjet|uvjeta}} od ukupno zadanih uvjeta.",
-	"abusefilter-edit-throttled": "'''Upozorenje''': Ovaj filtar je automatski deaktiviran kao mjera sigurnosti.\nDostignuta je granicu od podudaranja s više od $1% akcija suradnika.",
 	"abusefilter-edit-new": "Novi filtar",
 	"abusefilter-edit-save": "Snimi filtar",
 	"abusefilter-edit-id": "ID filtra:",
