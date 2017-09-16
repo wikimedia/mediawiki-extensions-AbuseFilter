@@ -175,6 +175,7 @@
 	"abusefilter-edit-status-label": "统计：",
 	"abusefilter-edit-status": "在最近的$1次{{PLURAL:$1|操作}}中，有$2（$3%）次触发了本过滤器。",
 	"abusefilter-edit-status-profile": "在最后的$1次编辑中，有$2（$3%）次编辑触发了本过滤器。其平均运行时间为$4ms（毫秒），消耗了$5条限制。",
+	"abusefilter-edit-throttled-warning": "'''警告：'''该过滤器已自动标示为有害。作为安全措施，以下操作将不会执行（$1）。请复查并[[mw:Extension:AbuseFilter/Conditions|优化]]您的条件来移除该限制",
 	"abusefilter-edit-new": "新建过滤器",
 	"abusefilter-edit-save": "保存过滤器",
 	"abusefilter-edit-id": "过滤器ID：",
