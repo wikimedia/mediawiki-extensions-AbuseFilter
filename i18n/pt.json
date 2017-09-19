@@ -157,7 +157,7 @@
 	"abusefilter-edit-status-label": "Estatísticas:",
 	"abusefilter-edit-status": "{{PLURAL:$1|Da última 1 ação|Das últimas $1 ações}}, $2 ($3%) acionaram este filtro.",
 	"abusefilter-edit-status-profile": "{{PLURAL:$1|Da última 1 ação|Das últimas $1 ações}}, este filtro detetou $2 ($3%).\nEm média, o seu tempo de execução é de $4ms, e consome $5 {{PLURAL:$5|condição|condições}} do seu limite de condições.",
-	"abusefilter-edit-throttled": "'''Aviso''': Este filtro foi automaticamente desativado como medida de segurança.\nO filtro atingiu o limite de deteção de mais de $1% de ações.",
+	"abusefilter-edit-throttled-warning": "'''Aviso:''' Este filtro foi automaticamente identificado como prejudicial. Como medida de prevenção, as seguintes operações não serão executadas ($1). Para remover esta restrição reveja e [[mw:Extension:AbuseFilter/Conditions|otimize]] as suas condições, por favor",
 	"abusefilter-edit-new": "Novo filtro",
 	"abusefilter-edit-save": "Gravar filtro",
 	"abusefilter-edit-id": "ID do filtro:",
