@@ -55,7 +55,7 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	 * @dataProvider readTests
 	 */
 	public function testParser( $testName, $rule, $expected ) {
-		if ( !class_exists( 'AntiSpoof' ) && preg_match( '/(cc)?norm\(/i', $rule ) ) {
+		if ( !class_exists( 'AntiSpoof' ) && preg_match( '/(?:cc)?norm(?:\(|_)/i', $rule ) ) {
 			// The norm and ccnorm parser functions aren't working correctly without AntiSpoof
 			$this->markTestSkipped( 'Parser test ' . $testName . ' requires the AntiSpoof extension' );
 		}
