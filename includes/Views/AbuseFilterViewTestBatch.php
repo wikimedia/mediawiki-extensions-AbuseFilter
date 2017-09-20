@@ -176,15 +176,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		}
 
 		// Normalise username
-		$userTitle = Title::newFromText( $testUsername );
-
-		if ( $userTitle && $userTitle->getNamespace() == NS_USER ) {
-			$this->mTestUser = $userTitle->getText(); // Allow User:Blah syntax.
-		} elseif ( $userTitle ) {
-			// Not sure of the value of prefixedText over text, but no need to munge unnecessarily.
-			$this->mTestUser = $userTitle->getPrefixedText();
-		} else {
-			$this->mTestUser = null; // No user specified.
-		}
+		$userTitle = Title::newFromText( $testUsername, NS_USER );
+		$this->mTestUser = $userTitle ? $userTitle->getText() : null;
 	}
 }
