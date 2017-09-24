@@ -1,6 +1,5 @@
 <?php
 
-use MediaWiki\Auth\AuthManager;
 use MediaWiki\MediaWikiServices;
 
 class AbuseFilterHooks {
