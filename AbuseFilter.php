@@ -122,3 +122,8 @@ $wgAbuseFilterProfile = false;
  * Whether to record runtime metrics for all filters combined.
  */
 $wgAbuseFilterRuntimeProfile = false;
+
+/**
+ * Runtime in milliseconds before a filter is considered slow.
+ */
+$wgAbuseFilterSlowFilterRuntimeLimit = 500;

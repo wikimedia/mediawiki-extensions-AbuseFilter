@@ -450,10 +450,11 @@ class AbuseFilter {
 	 *
 	 * @param AbuseFilterVariableHolder $vars
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
+	 * @param Title|null $title
 	 *
 	 * @return bool[] Map of (integer filter ID => bool)
 	 */
-	public static function checkAllFilters( $vars, $group = 'default' ) {
+	public static function checkAllFilters( $vars, $group = 'default', Title $title = null ) {
 		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
 
 		// Fetch from the database.
@@ -472,7 +473,7 @@ class AbuseFilter {
 		);
 
 		foreach ( $res as $row ) {
-			$filter_matched[$row->af_id] = self::checkFilter( $row, $vars, true );
+			$filter_matched[$row->af_id] = self::checkFilter( $row, $vars, $title );
 		}
 
 		if ( $wgAbuseFilterCentralDB && !$wgAbuseFilterIsCentral ) {
@@ -510,7 +511,7 @@ class AbuseFilter {
 
 			foreach ( $res as $row ) {
 				$filter_matched['global-' . $row->af_id] =
-					self::checkFilter( $row, $vars, true, 'global-' );
+					self::checkFilter( $row, $vars, $title, 'global-' );
 			}
 		}
 
@@ -524,17 +525,17 @@ class AbuseFilter {
 	 * @static
 	 * @param stdClass $row
 	 * @param AbuseFilterVariableHolder $vars
-	 * @param bool $profile
+	 * @param Title|null $title
 	 * @param string $prefix
 	 * @return bool
 	 */
-	public static function checkFilter( $row, $vars, $profile = false, $prefix = '' ) {
-		global $wgAbuseFilterProfile;
+	public static function checkFilter( $row, $vars, Title $title = null, $prefix = '' ) {
+		global $wgAbuseFilterProfile, $wgAbuseFilterRuntimeProfile, $wgAbuseFilterSlowFilterRuntimeLimit;
 
 		$filterID = $prefix . $row->af_id;
 
 		$startConds = $startTime = null;
-		if ( $profile && $wgAbuseFilterProfile ) {
+		if ( $wgAbuseFilterProfile || $wgAbuseFilterRuntimeProfile ) {
 			$startConds = self::$condCount;
 			$startTime = microtime( true );
 		}
@@ -558,16 +559,46 @@ class AbuseFilter {
 			$result = false;
 		}
 
-		if ( $profile && $wgAbuseFilterProfile ) {
-			$endTime = microtime( true );
-			$endConds = self::$condCount;
+		$timeTaken = microtime( true ) - $startTime;
+		$condsUsed = self::$condCount - $startConds;
 
-			$timeTaken = $endTime - $startTime;
-			$condsUsed = $endConds - $startConds;
+		if ( $wgAbuseFilterProfile ) {
 			self::recordProfilingResult( $row->af_id, $timeTaken, $condsUsed );
 		}
 
+		$runtime = $timeTaken * 1000;
+		if ( $wgAbuseFilterRuntimeProfile && $runtime > $wgAbuseFilterSlowFilterRuntimeLimit ) {
+			self::recordSlowFilter( $filterID, $runtime, $condsUsed, $result, $title );
+		}
+
 		return $result;
+	}
+
+	/**
+	 * Logs slow filter's runtime data for later analysis
+	 *
+	 * @param string $filterId
+	 * @param float $runtime
+	 * @param int $totalConditions
+	 * @param Title|null $title
+	 */
+	private static function recordSlowFilter(
+		$filterId, $runtime, $totalConditions, $matched, Title $title = null
+	) {
+		$title = $title ? $title->getPrefixedText() : '';
+
+		$logger = LoggerFactory::getInstance( 'AbuseFilterSlow' );
+		$logger->info(
+			'Edit filter {filter_id} on {wiki} is taking longer than expected',
+			[
+				'wiki' => wfWikiID(),
+				'filter_id' => $filterId,
+				'title' => $title,
+				'runtime' => $runtime,
+				'matched' => $matched,
+				'total_conditions' => $totalConditions
+			]
+		);
 	}
 
 	/**
@@ -927,7 +958,7 @@ class AbuseFilter {
 				$statsd->increment( 'abusefilter.check-stash.hit' );
 			}
 		} else {
-			$filter_matched = self::checkAllFilters( $vars, $group );
+			$filter_matched = self::checkAllFilters( $vars, $group, $title );
 			if ( $isForEdit && $mode !== 'stash' ) {
 				$logger->info( __METHOD__ . ": cache miss for '$title' (key $stashKey)." );
 				$statsd->increment( 'abusefilter.check-stash.miss' );
