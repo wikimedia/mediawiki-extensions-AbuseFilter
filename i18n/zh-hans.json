@@ -42,7 +42,8 @@
 			"EagerLin",
 			"Wmr",
 			"逆襲的天邪鬼",
-			"WhitePhosphorus"
+			"WhitePhosphorus",
+			"A2093064"
 		]
 	},
 	"abusefilter-desc": "对编辑行为自动进行条件判定",
@@ -378,7 +379,7 @@
 	"abusefilter-action-tag": "标签",
 	"abusefilter-action-throttle": "频率控制",
 	"abusefilter-action-warn": "警告",
-	"abusefilter-action-blockautopromote": "禁止自动授权",
+	"abusefilter-action-blockautopromote": "撤销自动确认",
 	"abusefilter-action-block": "封禁",
 	"abusefilter-action-degroup": "从用户组移除",
 	"abusefilter-action-rangeblock": "区段封禁",

@@ -31,7 +31,8 @@
 			"Matma Rex",
 			"1233thehongkonger",
 			"逆襲的天邪鬼",
-			"Corainn"
+			"Corainn",
+			"A2093064"
 		]
 	},
 	"abusefilter-desc": "套用自動啟發式演算法於編輯",
@@ -158,7 +159,6 @@
 	"abusefilter-edit-status-label": "統計資訊：",
 	"abusefilter-edit-status": "在最近 $1 次{{PLURAL:$1|操作}}中，此過濾器已命中 $2 ($3%) 次。",
 	"abusefilter-edit-status-profile": "在最近 $1 次操作中，此過濾器已命中 $2 ($3%) 次。\n其平均執行時間為 $4 ms，且使用了條件限制中 $5 個條件。",
-	"abusefilter-edit-throttled": "'''警告'''︰此過濾器已自動停用以策安全。\n此過濾器已超過操作命中次數限制 $1 次。",
 	"abusefilter-edit-new": "新過濾器",
 	"abusefilter-edit-save": "儲存過濾器",
 	"abusefilter-edit-id": "過濾器 ID：",
@@ -177,7 +177,7 @@
 	"abusefilter-edit-consequences": "符合條件時採取的動作",
 	"abusefilter-edit-action-warn": "在警告使用者後才觸發這些動作",
 	"abusefilter-edit-action-disallow": "避免使用者進行可疑動作",
-	"abusefilter-edit-action-blockautopromote": "撤銷使用者自動確認狀態",
+	"abusefilter-edit-action-blockautopromote": "撤銷使用者的自動確認狀態",
 	"abusefilter-edit-action-degroup": "從所有已授權的群組中移除該使用者",
 	"abusefilter-edit-action-block": "禁止該使用者及/或 IP 位址進行編輯",
 	"abusefilter-edit-action-throttle": "僅在使用者超過頻率限制後觸發動作",
@@ -360,7 +360,7 @@
 	"abusefilter-action-tag": "標籤",
 	"abusefilter-action-throttle": "門檻值",
 	"abusefilter-action-warn": "警告",
-	"abusefilter-action-blockautopromote": "禁止自動授權",
+	"abusefilter-action-blockautopromote": "撤銷自動確認",
 	"abusefilter-action-block": "封鎖",
 	"abusefilter-action-degroup": "從使用者群組中移除",
 	"abusefilter-action-rangeblock": "範圍封鎖",
@@ -417,7 +417,6 @@
 	"abusefilter-topnav-import": "匯入過濾器",
 	"abusefilter-log-name": "修改防濫用過濾器日誌",
 	"abusefilter-log-header": "此日誌顯示了所有對過濾器所作變更摘要。\n詳細資訊請見最近過濾器變更[[Special:AbuseFilter/history|清單]]。",
-	"abusefilter-log-entry-modify": "已修改 $1 ($2)",
 	"abusefilter-log-noresults": "沒有結果",
 	"abusefilter-diff-title": "修訂版本間差異",
 	"abusefilter-diff-item": "項目",
