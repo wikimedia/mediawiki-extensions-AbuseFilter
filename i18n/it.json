@@ -20,7 +20,8 @@
 			"Macofe",
 			"Alexmar983",
 			"Matma Rex",
-			"Greis"
+			"Greis",
+			"Horcrux92"
 		]
 	},
 	"abusefilter-desc": "Applica un'euristica automatica alle modifiche.",
@@ -70,7 +71,7 @@
 	"abusefilter-log-entry-withdiff": "$1: $2 {{GENDER:$8|ha provocato}} l'attivazione di un filtro anti abusi con l'azione \"$3\" su $4.\nAzioni intraprese: $5;\nDescrizione del filtro: $6 ($7)",
 	"abusefilter-log-detailedentry-meta": "$1: $2 {{GENDER:$9|ha provocato}} l'attivazione $3 con l'azione \"$4\" su $5.\nAzioni intraprese: $6;\nDescrizione del filtro: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "filtro globale $1",
-	"abusefilter-log-detailedentry-local": "del filtro $1",
+	"abusefilter-log-detailedentry-local": "il filtro $1",
 	"abusefilter-log-detailslink": "dettagli",
 	"abusefilter-log-diff": "diff",
 	"abusefilter-log-hidelink": "regola visibilità",
@@ -148,7 +149,6 @@
 	"abusefilter-edit-status-label": "Statistiche:",
 	"abusefilter-edit-status": "Rispetto {{PLURAL:$1|all'azione più recente|alle $1 azioni più recenti}}, questo filtro ha trovato $2 {{PLURAL:$2|corrispondenza|corrispondenze}} ($3 %).",
 	"abusefilter-edit-status-profile": "Rispetto {{PLURAL:$1|all'azione più recente|alle $1 azioni più recenti}}, questo filtro ha trovato $2 {{PLURAL:$2|corrispondenza|corrispondenze}} ($3 %).\nIl suo tempo medio di esecuzione è di $4 ms, e impiega $5 {{PLURAL:$5|condizione|condizioni}} del limite di condizioni.",
-	"abusefilter-edit-throttled": "'''Attenzione''': Questo filtro è stato disattivato automaticamente come misura precauzionale.\nÈ stato raggiunto il limite massimo di corrispondenze, pari al $1% delle azioni.",
 	"abusefilter-edit-new": "Nuovo filtro",
 	"abusefilter-edit-save": "Salva filtro",
 	"abusefilter-edit-id": "ID filtro:",
@@ -408,6 +408,7 @@
 	"abusefilter-topnav-import": "Importa filtro",
 	"abusefilter-log-name": "Filtro anti abusi",
 	"abusefilter-log-header": "Il registro mostra un riassunto delle modifiche effettuate sui filtri.\nPer i dettagli completi, consultare [[Special:AbuseFilter/history|l'elenco]] delle modifiche più recenti agli stessi.",
+	"abusefilter-logentry-modify": "$1 ha modificato $4 ($5)",
 	"abusefilter-log-noresults": "Nessun risultato",
 	"abusefilter-diff-title": "Differenze tra le versioni",
 	"abusefilter-diff-item": "Elemento",
