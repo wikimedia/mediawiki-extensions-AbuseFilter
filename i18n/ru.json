@@ -26,7 +26,8 @@
 			"Cat1987",
 			"Туллук",
 			"Facenapalm",
-			"Redredsonia"
+			"Redredsonia",
+			"Putnik"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -159,7 +160,6 @@
 	"abusefilter-edit-status-label": "Статистика:",
 	"abusefilter-edit-status": "Из {{PLURAL:$1|последнего $1 действия|последних $1 действий}}, этот фильтр соответствует $2 ($3%).",
 	"abusefilter-edit-status-profile": "Из {{PLURAL:$1|последнего $1 действия|последних $1 действий}}, этот фильтр соответствует $2 ($3%).\nСреднее время его работы — $4 мс, он использует $5 {{PLURAL:$5|условие|условий|условия}} из лимита условий.",
-	"abusefilter-edit-throttled": "'''Предупреждение.''' Этот фильтр был автоматически отключён в качестве меры предосторожности. Процент его срабатываний превысил $1 % от всех действий.",
 	"abusefilter-edit-new": "Новый фильтр",
 	"abusefilter-edit-save": "Сохранить фильтр",
 	"abusefilter-edit-id": "ID фильтра:",
@@ -272,7 +272,7 @@
 	"abusefilter-edit-builder-vars-diff": "Унифицированная разница изменений правки",
 	"abusefilter-edit-builder-vars-newsize": "Новый размер страницы",
 	"abusefilter-edit-builder-vars-oldsize": "Старый размер страницы",
-	"abusefilter-edit-builder-vars-old-content-model": "Модель содержимого страницы",
+	"abusefilter-edit-builder-vars-old-content-model": "Старая модель содержимого",
 	"abusefilter-edit-builder-vars-new-content-model": "Новая модель содержимого",
 	"abusefilter-edit-builder-vars-removedlines": "Удалённые строки",
 	"abusefilter-edit-builder-vars-summary": "Описание правки",
