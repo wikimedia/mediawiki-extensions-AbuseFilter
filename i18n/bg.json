@@ -10,7 +10,8 @@
 			"පසිඳු කාවින්ද",
 			"StanProg",
 			"Vodnokon4e",
-			"Matma Rex"
+			"Matma Rex",
+			"ShockD"
 		]
 	},
 	"abusefilter-desc": "Прилага автоматични евристики към редакциите.",
@@ -393,6 +394,7 @@
 	"abusefilter-topnav-import": "Внасяне на филтър",
 	"abusefilter-log-name": "Дневник на филтъра срещу злоупотреби",
 	"abusefilter-log-header": "Този дневник показва резюме на промените, направени във филтрите. За всички подробности, вижте [[Special:AbuseFilter/history|списъка]] с последните промени по филтрите.",
+	"abusefilter-logentry-modify": "$1 {{GENDER:$2|промени}} $4 ($5)",
 	"abusefilter-log-noresults": "Няма резултати",
 	"abusefilter-diff-title": "Разлики между версиите",
 	"abusefilter-diff-item": "Елемент",
