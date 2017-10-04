@@ -29,7 +29,8 @@
 			"Marfuas",
 			"Josve05a",
 			"Matma Rex",
-			"Matěj Suchánek"
+			"Matěj Suchánek",
+			"Bengtsson96"
 		]
 	},
 	"abusefilter-desc": "Tillämpar automatiska filter på redigeringar",
@@ -156,7 +157,7 @@
 	"abusefilter-edit-status-label": "Statistik:",
 	"abusefilter-edit-status": "Av {{PLURAL:$1|den senaste handlingen|de senaste $1 handlingarna}} har detta filter matchat $2 ($3 %).",
 	"abusefilter-edit-status-profile": "Av {{PLURAL:$1|den senaste handlingen|de senaste $1 handlingarna}} har detta filter matchat $2 ($3 %). Körtiden är i genomsnitt $4 ms och filtret använder $5 {{PLURAL:$5|villkor|villkor}} av villkorsgränsen.",
-	"abusefilter-edit-throttled": "'''Varning''': Detta filter blev automatiskt avaktiverat som en säkerhetsåtgärd. Det nådde gränsen genom att utlösas av mer än $1&nbsp;% av handlingarna.",
+	"abusefilter-edit-throttled-warning": "'''Varning:''' Detta filteret flaggades automatiskt som skadligt. Föjande åtgärder kommer inte utföras av säkerhetsskäl ($1). Granska och [[mw:Extension:AbuseFilter/Conditions|optimera villkoren]] för att ta bort denna begränsning",
 	"abusefilter-edit-new": "Nytt filter",
 	"abusefilter-edit-save": "Spara filter",
 	"abusefilter-edit-id": "Filter-ID:",
