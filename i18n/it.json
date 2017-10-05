@@ -408,7 +408,7 @@
 	"abusefilter-topnav-import": "Importa filtro",
 	"abusefilter-log-name": "Filtro anti abusi",
 	"abusefilter-log-header": "Il registro mostra un riassunto delle modifiche effettuate sui filtri.\nPer i dettagli completi, consultare [[Special:AbuseFilter/history|l'elenco]] delle modifiche più recenti agli stessi.",
-	"abusefilter-logentry-modify": "$1 ha modificato $4 ($5)",
+	"abusefilter-logentry-modify": "$1 {{GENDER:$2|ha modificato}} $4 ($5)",
 	"abusefilter-log-noresults": "Nessun risultato",
 	"abusefilter-diff-title": "Differenze tra le versioni",
 	"abusefilter-diff-item": "Elemento",
