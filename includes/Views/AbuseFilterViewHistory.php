@@ -81,9 +81,9 @@ class AbuseFilterHistoryPager extends TablePager {
 
 	protected $linkRenderer;
 	/**
-	 * @param $filter
-	 * @param $page ContextSource
-	 * @param $user string User name
+	 * @param string $filter
+	 * @param ContextSource $page
+	 * @param string $user User name
 	 * @param \MediaWiki\Linker\LinkRenderer $linkRenderer
 	 */
 	function __construct( $filter, $page, $user, $linkRenderer ) {

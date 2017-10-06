@@ -80,6 +80,7 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 
 	/**
 	 * @see ApiBase::getExamplesMessages()
+	 * @return array
 	 */
 	protected function getExamplesMessages() {
 		return [

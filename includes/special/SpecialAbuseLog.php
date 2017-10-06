@@ -153,7 +153,7 @@ class SpecialAbuseLog extends SpecialPage {
 	}
 
 	/**
-	 * @param $id
+	 * @param string $id
 	 * @return mixed
 	 */
 	function showHideForm( $id ) {
@@ -204,7 +204,7 @@ class SpecialAbuseLog extends SpecialPage {
 	}
 
 	/**
-	 * @param $fields
+	 * @param array $fields
 	 * @return bool
 	 */
 	function saveHideForm( $fields ) {
@@ -308,7 +308,7 @@ class SpecialAbuseLog extends SpecialPage {
 	}
 
 	/**
-	 * @param $id
+	 * @param string $id
 	 * @return mixed
 	 */
 	function showDetails( $id ) {
@@ -422,8 +422,8 @@ class SpecialAbuseLog extends SpecialPage {
 	}
 
 	/**
-	 * @param $filter_id null
-	 * @param $filter_hidden null
+	 * @param string $filter_id
+	 * @param bool $filter_hidden
 	 * @return bool
 	 */
 	static function canSeeDetails( $filter_id = null, $filter_hidden = null ) {
@@ -462,8 +462,8 @@ class SpecialAbuseLog extends SpecialPage {
 	}
 
 	/**
-	 * @param $row
-	 * @param $isListItem bool
+	 * @param stdClass $row
+	 * @param bool $isListItem
 	 * @return String
 	 */
 	function formatRow( $row, $isListItem = true ) {
@@ -641,7 +641,7 @@ class SpecialAbuseLog extends SpecialPage {
 	}
 
 	/**
-	 * @param $db DatabaseBase
+	 * @param DatabaseBase $db
 	 * @return string
 	 */
 	public static function getNotDeletedCond( $db ) {
@@ -658,7 +658,7 @@ class SpecialAbuseLog extends SpecialPage {
 	/**
 	 * Given a log entry row, decides whether or not it can be viewed by the public.
 	 *
-	 * @param $row stdClass The abuse_filter_log row object.
+	 * @param stdClass $row The abuse_filter_log row object.
 	 *
 	 * @return Mixed true if the item is explicitly hidden, false if it is not.
 	 *    The string 'implicit' if it is hidden because the corresponding revision is hidden.

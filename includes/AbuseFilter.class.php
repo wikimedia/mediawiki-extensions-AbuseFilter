@@ -380,7 +380,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $filter
+	 * @param string $filter
 	 * @return mixed
 	 */
 	public static function checkSyntax( $filter ) {
@@ -393,7 +393,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $expr
+	 * @param string $expr
 	 * @param array $vars
 	 * @return string
 	 */
@@ -1293,7 +1293,7 @@ class AbuseFilter {
 	 * Retrieve a var dump from External Storage or the text table
 	 * Some of this code is stolen from Revision::loadText et al
 	 *
-	 * @param $stored_dump
+	 * @param string $stored_dump
 	 *
 	 * @return object|AbuseFilterVariableHolder|bool
 	 */
@@ -1592,8 +1592,8 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $throttleId
-	 * @param $types
+	 * @param string $throttleId
+	 * @param array $types
 	 * @param Title $title
 	 * @param string $rateCount
 	 * @param string $ratePeriod
@@ -1670,7 +1670,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param $throttleId
+	 * @param string $throttleId
 	 * @param string $type
 	 * @param Title $title
 	 * @param bool $global
@@ -2530,10 +2530,10 @@ class AbuseFilter {
 		return $text;
 	}
 
-	/*
+	/**
 	 * Get the history ID of the first change to a given filter
 	 *
-	 * @param int $filterId Filter id
+	 * @param int $filterID Filter id
 	 * @return int
 	 */
 	public static function getFirstFilterChange( $filterID ) {

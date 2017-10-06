@@ -229,6 +229,7 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 
 	/**
 	 * @fixme this is similar to AbuseFilterViewTestBatch::doTest
+	 * @return array
 	 */
 	function getQueryInfo() {
 		$dbr = wfGetDB( DB_REPLICA );

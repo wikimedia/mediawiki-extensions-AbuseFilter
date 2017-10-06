@@ -11,8 +11,8 @@ abstract class AbuseFilterView extends ContextSource {
 	protected $linkRenderer;
 
 	/**
-	 * @param $page SpecialAbuseFilter
-	 * @param $params array
+	 * @param SpecialAbuseFilter $page
+	 * @param array $params
 	 */
 	function __construct( $page, $params ) {
 		$this->mPage = $page;
@@ -113,9 +113,9 @@ abstract class AbuseFilterView extends ContextSource {
 
 class AbuseFilterChangesList extends OldChangesList {
 	/**
-	 * @param $s
-	 * @param $rc
-	 * @param $classes array
+	 * @param string &$s
+	 * @param RecentChange &$rc
+	 * @param array &$classes
 	 */
 	public function insertExtra( &$s, &$rc, &$classes ) {
 		$examineParams = empty( $rc->examineParams ) ? [] : $rc->examineParams;
@@ -140,7 +140,7 @@ class AbuseFilterChangesList extends OldChangesList {
 		}
 	}
 
-	// Kill rollback links.
 	public function insertRollback( &$s, &$rc ) {
+		// Kill rollback links.
 	}
 }

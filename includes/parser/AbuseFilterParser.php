@@ -57,7 +57,7 @@ class AbuseFilterParser {
 	/**
 	 * Create a new instance
 	 *
-	 * @param $vars AbuseFilterVariableHolder
+	 * @param AbuseFilterVariableHolder $vars
 	 */
 	public function __construct( $vars = null ) {
 		$this->resetState();
@@ -76,7 +76,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $filter
+	 * @param string $filter
 	 * @return array|bool
 	 */
 	public function checkSyntax( $filter ) {
@@ -95,15 +95,15 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $name
-	 * @param $value
+	 * @param string $name
+	 * @param mixed $value
 	 */
 	public function setVar( $name, $value ) {
 		$this->mVars->setVar( $name, $value );
 	}
 
 	/**
-	 * @param $vars
+	 * @param mixed $vars
 	 */
 	public function setVars( $vars ) {
 		if ( is_array( $vars ) ) {
@@ -167,7 +167,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $code
+	 * @param string $code
 	 * @return bool
 	 */
 	public function parse( $code ) {
@@ -175,7 +175,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $filter
+	 * @param string $filter
 	 * @return string
 	 */
 	public function evaluateExpression( $filter ) {
@@ -183,7 +183,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $code
+	 * @param string $code
 	 * @return AFPData
 	 */
 	function intEval( $code ) {
@@ -201,8 +201,8 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $a
-	 * @param $b
+	 * @param string $a
+	 * @param string $b
 	 * @return int
 	 */
 	static function lengthCompare( $a, $b ) {
@@ -218,7 +218,7 @@ class AbuseFilterParser {
 	/**
 	 * Handles unexpected characters after the expression
 	 *
-	 * @param $result AFPData
+	 * @param AFPData &$result
 	 * @throws AFPUserVisibleException
 	 */
 	protected function doLevelEntry( &$result ) {
@@ -234,7 +234,7 @@ class AbuseFilterParser {
 
 	/**
 	 * Handles multiple expressions
-	 * @param $result AFPData
+	 * @param AFPData &$result
 	 */
 	protected function doLevelSemicolon( &$result ) {
 		do {
@@ -248,7 +248,7 @@ class AbuseFilterParser {
 	/**
 	 * Handles multiple expressions
 	 *
-	 * @param $result AFPData
+	 * @param AFPData &$result
 	 * @throws AFPUserVisibleException
 	 */
 	protected function doLevelSet( &$result ) {
@@ -316,7 +316,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $result AFPData
+	 * @param AFPData &$result
 	 * @throws AFPUserVisibleException
 	 */
 	protected function doLevelConditions( &$result ) {
@@ -437,7 +437,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $result AFPData
+	 * @param AFPData &$result
 	 */
 	protected function doLevelBoolOps( &$result ) {
 		$this->doLevelCompares( $result );
@@ -464,7 +464,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $result
+	 * @param string &$result
 	 */
 	protected function doLevelCompares( &$result ) {
 		$this->doLevelSumRels( $result );
@@ -483,7 +483,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $result
+	 * @param string &$result
 	 */
 	protected function doLevelSumRels( &$result ) {
 		$this->doLevelMulRels( $result );
@@ -506,7 +506,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $result
+	 * @param string &$result
 	 */
 	protected function doLevelMulRels( &$result ) {
 		$this->doLevelPow( $result );
@@ -524,7 +524,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $result
+	 * @param string &$result
 	 */
 	protected function doLevelPow( &$result ) {
 		$this->doLevelBoolInvert( $result );
@@ -540,7 +540,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $result
+	 * @param string &$result
 	 */
 	protected function doLevelBoolInvert( &$result ) {
 		if ( $this->mCur->type == AFPToken::TOP && $this->mCur->value == '!' ) {
@@ -556,7 +556,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $result
+	 * @param string &$result
 	 */
 	protected function doLevelSpecialWords( &$result ) {
 		$this->doLevelUnarys( $result );
@@ -580,7 +580,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $result
+	 * @param string &$result
 	 */
 	protected function doLevelUnarys( &$result ) {
 		$op = $this->mCur->value;
@@ -599,7 +599,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $result
+	 * @param string &$result
 	 * @throws AFPUserVisibleException
 	 */
 	protected function doLevelListElements( &$result ) {
@@ -626,7 +626,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $result
+	 * @param string &$result
 	 * @throws AFPUserVisibleException
 	 */
 	protected function doLevelBraces( &$result ) {
@@ -650,7 +650,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $result
+	 * @param string &$result
 	 * @throws AFPUserVisibleException
 	 */
 	protected function doLevelFunction( &$result ) {
@@ -714,7 +714,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $result
+	 * @param string &$result
 	 * @throws AFPUserVisibleException
 	 * @return AFPData
 	 */
@@ -799,7 +799,7 @@ class AbuseFilterParser {
 	/* End of levels */
 
 	/**
-	 * @param $var
+	 * @param string $var
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -821,8 +821,8 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $name
-	 * @param $value
+	 * @param string $name
+	 * @param string $value
 	 * @throws AFPUserVisibleException
 	 */
 	protected function setUserVariable( $name, $value ) {
@@ -836,7 +836,7 @@ class AbuseFilterParser {
 	// Built-in functions
 
 	/**
-	 * @param $args
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -855,7 +855,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -874,7 +874,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -896,7 +896,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -917,7 +917,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -943,7 +943,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -978,7 +978,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 * @throws Exception
@@ -1018,7 +1018,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -1040,7 +1040,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -1061,7 +1061,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args array
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -1082,7 +1082,7 @@ class AbuseFilterParser {
 	/**
 	 * Normalize and search a string for multiple substrings
 	 *
-	 * @param $args array
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -1150,7 +1150,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $s
+	 * @param string $s
 	 * @return mixed
 	 */
 	protected static function ccnorm( $s ) {
@@ -1168,7 +1168,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $s string
+	 * @param string $s
 	 * @return array|string
 	 */
 	protected function rmspecials( $s ) {
@@ -1176,7 +1176,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $s string
+	 * @param string $s
 	 * @return array|string
 	 */
 	protected function rmdoubles( $s ) {
@@ -1184,7 +1184,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $s string
+	 * @param string $s
 	 * @return array|string
 	 */
 	protected function rmwhitespace( $s ) {
@@ -1192,7 +1192,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args array
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -1212,7 +1212,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args array
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -1232,7 +1232,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args array
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -1252,7 +1252,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args array
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -1275,7 +1275,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args array
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -1303,7 +1303,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args array
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -1340,7 +1340,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args array
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -1361,7 +1361,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args array
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -1379,7 +1379,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args array
+	 * @param array $args
 	 * @return mixed
 	 * @throws AFPUserVisibleException
 	 */
@@ -1401,7 +1401,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args array
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -1415,7 +1415,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args array
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -1429,7 +1429,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args array
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
@@ -1443,7 +1443,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param $args array
+	 * @param array $args
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */

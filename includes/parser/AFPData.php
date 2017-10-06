@@ -36,7 +36,7 @@ class AFPData {
 	}
 
 	/**
-	 * @param $var
+	 * @param mixed $var
 	 * @return AFPData
 	 * @throws AFPException
 	 */
@@ -73,8 +73,8 @@ class AFPData {
 	}
 
 	/**
-	 * @param $orig AFPData
-	 * @param $target
+	 * @param AFPData $orig
+	 * @param string $target
 	 * @return AFPData
 	 */
 	public static function castTypes( $orig, $target ) {
@@ -123,7 +123,7 @@ class AFPData {
 	}
 
 	/**
-	 * @param $value AFPData
+	 * @param AFPData $value
 	 * @return AFPData
 	 */
 	public static function boolInvert( $value ) {
@@ -131,8 +131,8 @@ class AFPData {
 	}
 
 	/**
-	 * @param $base AFPData
-	 * @param $exponent AFPData
+	 * @param AFPData $base
+	 * @param AFPData $exponent
 	 * @return AFPData
 	 */
 	public static function pow( $base, $exponent ) {
@@ -140,8 +140,8 @@ class AFPData {
 	}
 
 	/**
-	 * @param $a AFPData
-	 * @param $b AFPData
+	 * @param AFPData $a
+	 * @param AFPData $b
 	 * @return AFPData
 	 */
 	public static function keywordIn( $a, $b ) {
@@ -156,8 +156,8 @@ class AFPData {
 	}
 
 	/**
-	 * @param $a AFPData
-	 * @param $b AFPData
+	 * @param AFPData $a
+	 * @param AFPData $b
 	 * @return AFPData
 	 */
 	public static function keywordContains( $a, $b ) {
@@ -172,8 +172,8 @@ class AFPData {
 	}
 
 	/**
-	 * @param $value
-	 * @param $list
+	 * @param string $value
+	 * @param mixed $list
 	 * @return bool
 	 */
 	public static function listContains( $value, $list ) {
@@ -188,8 +188,8 @@ class AFPData {
 	}
 
 	/**
-	 * @param $d1 AFPData
-	 * @param $d2 AFPData
+	 * @param AFPData $d1
+	 * @param AFPData $d2
 	 * @return bool
 	 */
 	public static function equals( $d1, $d2 ) {
@@ -198,8 +198,8 @@ class AFPData {
 	}
 
 	/**
-	 * @param $str AFPData
-	 * @param $pattern AFPData
+	 * @param AFPData $str
+	 * @param AFPData $pattern
 	 * @return AFPData
 	 */
 	public static function keywordLike( $str, $pattern ) {
@@ -213,10 +213,10 @@ class AFPData {
 	}
 
 	/**
-	 * @param $str AFPData
-	 * @param $regex AFPData
-	 * @param $pos
-	 * @param $insensitive bool
+	 * @param AFPData $str
+	 * @param AFPData $regex
+	 * @param int $pos
+	 * @param bool $insensitive
 	 * @return AFPData
 	 * @throws Exception
 	 */
@@ -244,9 +244,9 @@ class AFPData {
 	}
 
 	/**
-	 * @param $str
-	 * @param $regex
-	 * @param $pos
+	 * @param string $str
+	 * @param string $regex
+	 * @param int $pos
 	 * @return AFPData
 	 */
 	public static function keywordRegexInsensitive( $str, $regex, $pos ) {
@@ -254,7 +254,7 @@ class AFPData {
 	}
 
 	/**
-	 * @param $data AFPData
+	 * @param AFPData $data
 	 * @return AFPData
 	 */
 	public static function unaryMinus( $data ) {
@@ -266,9 +266,9 @@ class AFPData {
 	}
 
 	/**
-	 * @param $a AFPData
-	 * @param $b AFPData
-	 * @param $op string
+	 * @param AFPData $a
+	 * @param AFPData $b
+	 * @param string $op
 	 * @return AFPData
 	 * @throws AFPException
 	 */
@@ -288,9 +288,9 @@ class AFPData {
 	}
 
 	/**
-	 * @param $a AFPData
-	 * @param $b AFPData
-	 * @param $op string
+	 * @param AFPData $a
+	 * @param AFPData $b
+	 * @param string $op
 	 * @return AFPData
 	 * @throws AFPException
 	 */
@@ -325,10 +325,10 @@ class AFPData {
 	}
 
 	/**
-	 * @param $a AFPData
-	 * @param $b AFPData
-	 * @param $op string
-	 * @param $pos
+	 * @param AFPData $a
+	 * @param AFPData $b
+	 * @param string $op
+	 * @param int $pos
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 * @throws AFPException
@@ -372,8 +372,8 @@ class AFPData {
 	}
 
 	/**
-	 * @param $a AFPData
-	 * @param $b AFPData
+	 * @param AFPData $a
+	 * @param AFPData $b
 	 * @return AFPData
 	 */
 	public static function sum( $a, $b ) {
@@ -387,8 +387,8 @@ class AFPData {
 	}
 
 	/**
-	 * @param $a AFPData
-	 * @param $b AFPData
+	 * @param AFPData $a
+	 * @param AFPData $b
 	 * @return AFPData
 	 */
 	public static function sub( $a, $b ) {

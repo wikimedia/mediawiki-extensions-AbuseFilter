@@ -185,8 +185,8 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	}
 
 	/**
-	 * @param $action string
-	 * @param $result array
+	 * @param string $action
+	 * @param array $result
 	 * @return bool
 	 * @throws MWException
 	 */

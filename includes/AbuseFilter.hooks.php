@@ -211,16 +211,16 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param Article|WikiPage $article
-	 * @param User $user
+	 * @param Article|WikiPage &$article
+	 * @param User &$user
 	 * @param string $content Content
 	 * @param string $summary
 	 * @param bool $minoredit
 	 * @param bool $watchthis
 	 * @param string $sectionanchor
-	 * @param int $flags
+	 * @param int &$flags
 	 * @param Revision $revision
-	 * @param Status $status
+	 * @param Status &$status
 	 * @param int $baseRevId
 	 * @return bool
 	 */
@@ -295,7 +295,7 @@ class AbuseFilterHooks {
 
 	/**
 	 * @param User $user
-	 * @param array $promote
+	 * @param array &$promote
 	 * @return bool
 	 */
 	public static function onGetAutoPromoteGroups( $user, &$promote ) {
@@ -344,11 +344,11 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param WikiPage $article
-	 * @param User $user
-	 * @param string $reason
-	 * @param string $error
-	 * @param Status $status
+	 * @param WikiPage &$article
+	 * @param User &$user
+	 * @param string &$reason
+	 * @param string &$error
+	 * @param Status &$status
 	 * @return bool
 	 */
 	public static function onArticleDelete( &$article, &$user, &$reason, &$error, &$status ) {
@@ -539,7 +539,7 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param string[] $tags
+	 * @param string[] &$tags
 	 * @return bool
 	 */
 	public static function onListDefinedTags( array &$tags ) {
@@ -547,7 +547,7 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param string[] $tags
+	 * @param string[] &$tags
 	 * @return bool
 	 */
 	public static function onChangeTagsListActive( array &$tags ) {
@@ -680,9 +680,9 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param $id
+	 * @param int $id
 	 * @param Title $nt
-	 * @param array $tools
+	 * @param array &$tools
 	 * @param SpecialPage $sp for context
 	 */
 	public static function onContributionsToolLinks( $id, $nt, &$tools, SpecialPage $sp ) {
@@ -820,7 +820,7 @@ class AbuseFilterHooks {
 	/**
 	 * Adds global variables to the Javascript as needed
 	 *
-	 * @param array $vars
+	 * @param array &$vars
 	 * @return bool
 	 */
 	public static function onMakeGlobalVariablesScript( array &$vars ) {
@@ -841,7 +841,7 @@ class AbuseFilterHooks {
 	/**
 	 * Tables that Extension:UserMerge needs to update
 	 *
-	 * @param array $updateFields
+	 * @param array &$updateFields
 	 * @return bool
 	 */
 	public static function onUserMergeAccountFields( array &$updateFields ) {

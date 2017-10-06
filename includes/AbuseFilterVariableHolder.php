@@ -11,8 +11,8 @@ class AbuseFilterVariableHolder {
 	}
 
 	/**
-	 * @param $variable
-	 * @param $datum
+	 * @param string $variable
+	 * @param mixed $datum
 	 */
 	function setVar( $variable, $datum ) {
 		$variable = strtolower( $variable );
@@ -24,9 +24,9 @@ class AbuseFilterVariableHolder {
 	}
 
 	/**
-	 * @param $variable
-	 * @param $method
-	 * @param $parameters
+	 * @param string $variable
+	 * @param string $method
+	 * @param array $parameters
 	 */
 	function setLazyLoadVar( $variable, $method, $parameters ) {
 		$placeholder = new AFComputedVariable( $method, $parameters );
@@ -36,7 +36,7 @@ class AbuseFilterVariableHolder {
 	/**
 	 * Get a variable from the current object
 	 *
-	 * @param $variable string
+	 * @param string $variable
 	 * @return AFPData
 	 */
 	function getVar( $variable ) {
@@ -64,7 +64,7 @@ class AbuseFilterVariableHolder {
 	}
 
 	/**
-	 * @param $addHolder
+	 * @param self $addHolder
 	 * @throws MWException
 	 * @deprecated use addHolders() instead
 	 */
@@ -134,8 +134,8 @@ class AbuseFilterVariableHolder {
 	 * either set $compute to an array with the name of the variable or set
 	 * $compute to true to compute all not yet set variables.
 	 *
-	 * @param $compute array|bool Variables we should copute if not yet set
-	 * @param $includeUserVars bool Include user set variables
+	 * @param array|bool $compute Variables we should copute if not yet set
+	 * @param bool $includeUserVars Include user set variables
 	 * @return array
 	 */
 	public function dumpAllVars( $compute = [], $includeUserVars = false ) {
@@ -190,7 +190,7 @@ class AbuseFilterVariableHolder {
 	}
 
 	/**
-	 * @param $var
+	 * @param string $var
 	 * @return bool
 	 */
 	function varIsSet( $var ) {

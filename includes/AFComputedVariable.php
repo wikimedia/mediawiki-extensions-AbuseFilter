@@ -6,8 +6,8 @@ class AFComputedVariable {
 	public static $articleCache = [];
 
 	/**
-	 * @param $method
-	 * @param $parameters
+	 * @param string $method
+	 * @param array $parameters
 	 */
 	function __construct( $method, $parameters ) {
 		$this->mMethod = $method;
@@ -47,7 +47,7 @@ class AFComputedVariable {
 	 * in case a user name is given as argument. Nowadays user objects are passed
 	 * directly but many old log entries rely on this.
 	 *
-	 * @param $user string|User
+	 * @param string|User $user
 	 * @return User
 	 */
 	static function getUserObject( $user ) {
@@ -86,8 +86,8 @@ class AFComputedVariable {
 	}
 
 	/**
-	 * @param $namespace
-	 * @param $title Title
+	 * @param int $namespace
+	 * @param Title $title
 	 * @return Article
 	 */
 	static function articleFromTitle( $namespace, $title ) {
@@ -134,7 +134,7 @@ class AFComputedVariable {
 	}
 
 	/**
-	 * @param $vars AbuseFilterVariableHolder
+	 * @param AbuseFilterVariableHolder $vars
 	 * @return AFPData|array|int|mixed|null|string
 	 * @throws MWException
 	 * @throws AFPException

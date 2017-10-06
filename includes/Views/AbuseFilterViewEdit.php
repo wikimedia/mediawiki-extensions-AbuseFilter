@@ -377,9 +377,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * Builds the full form for edit filters.
 	 * Loads data either from the database or from the HTTP request.
 	 * The request takes precedence over the database
-	 * @param $error string An error message to show above the filter box.
-	 * @param $filter int The filter ID
-	 * @param $history_id int The history ID of the filter, if applicable. Otherwise null
+	 * @param string $error An error message to show above the filter box.
+	 * @param int $filter The filter ID
+	 * @param int $history_id The history ID of the filter, if applicable. Otherwise null
 	 * @return bool|string False if there is a failure building the editor,
 	 *   otherwise the HTML text for the editor.
 	 */
@@ -663,8 +663,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 	/**
 	 * Builds the "actions" editor for a given filter.
-	 * @param $row stdClass A row from the abuse_filter table.
-	 * @param $actions Array of rows from the abuse_filter_action table
+	 * @param stdClass $row A row from the abuse_filter table.
+	 * @param array $actions Array of rows from the abuse_filter_action table
 	 *  corresponding to the abuse filter held in $row.
 	 * @return HTML text for an action editor.
 	 */
@@ -692,10 +692,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	}
 
 	/**
-	 * @param $action string The action to build an editor for
-	 * @param $set bool Whether or not the action is activated
-	 * @param $parameters array Action parameters
-	 * @param $row stdClass abuse_filter row object
+	 * @param string $action The action to build an editor for
+	 * @param bool $set Whether or not the action is activated
+	 * @param array $parameters Action parameters
+	 * @param stdClass $row abuse_filter row object
 	 * @return string
 	 */
 	function buildConsequenceSelector( $action, $set, $parameters, $row ) {
@@ -871,8 +871,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	}
 
 	/**
-	 * @param $warnMsg string
-	 * @param $readOnly bool
+	 * @param string $warnMsg
+	 * @param bool $readOnly
 	 * @return string
 	 */
 	function getExistingSelector( $warnMsg, $readOnly = false ) {
@@ -918,7 +918,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 	/**
 	 * Loads filter data from the database by ID.
-	 * @param $id int The filter's ID number
+	 * @param int $id The filter's ID number
 	 * @return array|null Either an associative array representing the filter,
 	 *  or NULL if the filter does not exist.
 	 */
@@ -991,8 +991,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * Either from the HTTP request or from the filter/history_id given.
 	 * The HTTP request always takes precedence.
 	 * Includes caching.
-	 * @param $filter int The filter ID being requested.
-	 * @param $history_id int If any, the history ID being requested.
+	 * @param int $filter The filter ID being requested.
+	 * @param int $history_id If any, the history ID being requested.
 	 * @return Array with filter data if available, otherwise null.
 	 * The first element contains the abuse_filter database row,
 	 *  the second element is an array of related abuse_filter_action rows.
@@ -1102,7 +1102,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 	/**
 	 * Loads historical data in a form that the editor can understand.
-	 * @param $id int History ID
+	 * @param int $id History ID
 	 * @return array|bool False if the history ID is not valid, otherwise array in the usual format:
 	 * First element contains the abuse_filter row (as it was).
 	 * Second element contains an array of abuse_filter_action rows.

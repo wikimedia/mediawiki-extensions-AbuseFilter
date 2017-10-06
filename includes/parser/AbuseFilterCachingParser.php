@@ -12,6 +12,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 	 * Return the generated version of the parser for cache invalidation
 	 * purposes.  Automatically tracks list of all functions and invalidates the
 	 * cache if it is changed.
+	 * @return string
 	 */
 	public static function getCacheVersion() {
 		static $version = null;
