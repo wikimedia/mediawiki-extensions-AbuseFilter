@@ -19,6 +19,7 @@ class AbuseFilterParser {
 		'bool' => 'castBool',
 		'norm' => 'funcNorm',
 		'ccnorm' => 'funcCCNorm',
+		'ccnorm_contains_any' => 'funcCCNormContainsAny',
 		'specialratio' => 'funcSpecialRatio',
 		'rmspecials' => 'funcRMSpecials',
 		'rmdoubles' => 'funcRMDoubles',
@@ -48,7 +49,7 @@ class AbuseFilterParser {
 		'contains' => 'keywordContains',
 		'rlike' => 'keywordRegex',
 		'irlike' => 'keywordRegexInsensitive',
-		'regex' => 'keywordRegex'
+		'regex' => 'keywordRegex',
 	];
 
 	public static $funcCache = [];
@@ -1074,38 +1075,85 @@ class AbuseFilterParser {
 		}
 
 		$s = array_shift( $args );
-		$s = $s->toString();
 
-		$searchStrings = [];
+		return new AFPData( AFPData::DBOOL, self::containsAny( $s, $args ) );
+	}
 
-		foreach ( $args as $arg ) {
-			$searchStrings[] = $arg->toString();
+	/**
+	 * Normalize and search a string for multiple substrings
+	 *
+	 * @param $args array
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
+	protected function funcCCNormContainsAny( $args ) {
+		if ( count( $args ) < 2 ) {
+			throw new AFPUserVisibleException(
+				'notenoughargs',
+				$this->mCur->pos,
+				[ 'ccnorm_contains_any', 2, count( $args ) ]
+			);
 		}
 
-		if ( function_exists( 'fss_prep_search' ) ) {
-			$fss = fss_prep_search( $searchStrings );
-			$result = fss_exec_search( $fss, $s );
+		$s = array_shift( $args );
 
-			$ok = is_array( $result );
+		return new AFPData( AFPData::DBOOL, self::containsAny( $s, $args, true ) );
+	}
+
+	/**
+	 * Search for substrings in a string
+	 *
+	 * Use normalize = true to make use of ccnorm and
+	 * normalize both sides of the search.
+	 *
+	 * @param AFData $string
+	 * @param AFData[] $values
+	 * @param bool $normalize
+	 *
+	 * @return bool
+	 */
+	protected static function containsAny( $string, $values, $normalize = false ) {
+		$string = $string->toString();
+
+		if ( $string == '' ) {
+			return false;
+		}
+
+		if ( $normalize ) {
+			$string = self::ccnorm( $string );
+		}
+
+		$values = array_map( function ( $val ) use ( $normalize ) {
+			$str = $val->toString();
+			if ( $normalize ) {
+				$str = AbuseFilterParser::ccnorm( $str );
+			}
+
+			return $str;
+		}, $values );
+
+		if ( function_exists( 'fss_prep_search' ) ) {
+			$fss = fss_prep_search( $values );
+			$result = fss_exec_search( $fss, $string );
+
+			return ( $result !== false );
 		} else {
-			$ok = false;
-			foreach ( $searchStrings as $needle ) {
+			foreach ( $values as $needle ) {
 				// Bug #60203: Keep empty parameters from causing PHP warnings
-				if ( $needle !== '' && strpos( $s, $needle ) !== false ) {
-					$ok = true;
-					break;
+				if ( $needle !== '' && strpos( $string, $needle ) !== false ) {
+					return true;
 				}
 			}
 		}
 
-		return new AFPData( AFPData::DBOOL, $ok );
+		return false;
 	}
 
 	/**
 	 * @param $s
 	 * @return mixed
 	 */
-	protected function ccnorm( $s ) {
+	protected static function ccnorm( $s ) {
 		if ( is_callable( 'AntiSpoof::normalizeString' ) ) {
 			$s = AntiSpoof::normalizeString( $s );
 		} else {
