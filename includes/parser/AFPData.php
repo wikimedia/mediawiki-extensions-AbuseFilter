@@ -231,7 +231,9 @@ class AFPData {
 			$pattern .= 'i';
 		}
 
+		MediaWiki\suppressWarnings();
 		$result = preg_match( $pattern, $str );
+		MediaWiki\restoreWarnings();
 		if ( $result === false ) {
 			throw new AFPUserVisibleException(
 				'regexfailure',
