@@ -236,6 +236,7 @@
 	"abusefilter-edit-builder-funcs-lcase": "המרה לאותיות קטנות (lcase)",
 	"abusefilter-edit-builder-funcs-ucase": "המרה לאותיות רישיות (ucase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "נירמול תווים מבלבלים (ccnorm)",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "לנרמל ולחפש במחרוזת תת־מחרוזות מרובות (ccnorm_contains_any)",
 	"abusefilter-edit-builder-funcs-rmdoubles": "הסרת תווים כפולים (rmdoubles)",
 	"abusefilter-edit-builder-funcs-specialratio": "תווים מיוחדים / סך כל התווים (specialratio)",
 	"abusefilter-edit-builder-funcs-norm": "נירמול (norm)",

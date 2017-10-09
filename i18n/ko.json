@@ -240,6 +240,7 @@
 	"abusefilter-edit-builder-funcs-lcase": "소문자로 변환 (lcase)",
 	"abusefilter-edit-builder-funcs-ucase": "대문자로 변환 (ucase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "혼동되는 글자를 정규화 (ccnorm)",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "문자열을 정규화하고 검색하면서 여러 개의 부스트링을 찾습니다 (ccnorm_contains_any)",
 	"abusefilter-edit-builder-funcs-rmdoubles": "중복되는 글자를 제거 (rmdoubles)",
 	"abusefilter-edit-builder-funcs-specialratio": "특수 문자 비율 (specialratio)",
 	"abusefilter-edit-builder-funcs-norm": "정규화 (norm)",

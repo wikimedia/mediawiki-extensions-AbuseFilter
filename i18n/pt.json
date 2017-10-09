@@ -246,6 +246,7 @@
 	"abusefilter-edit-builder-funcs-lcase": "Para minúscula (lcase)",
 	"abusefilter-edit-builder-funcs-ucase": "Para maiúscula (ucase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "Normalizar caracteres confundíveis (ccnorm)",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "Normalizar um texto e nele pesquisar vários subtextos (ccnorm_contains_any)",
 	"abusefilter-edit-builder-funcs-rmdoubles": "Remover caracteres duplos (rmdoubles)",
 	"abusefilter-edit-builder-funcs-specialratio": "Caracteres especiais / total de caracteres (specialratio)",
 	"abusefilter-edit-builder-funcs-norm": "Normalizar (norm)",

@@ -237,6 +237,7 @@
 	"abusefilter-edit-builder-funcs-lcase": "Gjør om til små bokstaver (lcase)",
 	"abusefilter-edit-builder-funcs-ucase": "Gjør om til store bokstaver (ucase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "Normaliser forvirrende bokstaver (ccnorm)",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "Normaliser og søk etter flere understrenger i en steng (ccnorm_contains_any)",
 	"abusefilter-edit-builder-funcs-rmdoubles": "Fjern doble bokstaver (rmdoubles)",
 	"abusefilter-edit-builder-funcs-specialratio": "Spesialbokstaver / totalt antall bokstaver (specialratio)",
 	"abusefilter-edit-builder-funcs-norm": "Normaliser (norm)",

@@ -227,6 +227,7 @@
 	"abusefilter-edit-builder-funcs-lcase": "'U cchù vasce (lcase)",
 	"abusefilter-edit-builder-funcs-ucase": "Jndr'à maiuscole (ucase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "Normalezzà le carattere ca se pòtene confonnere (ccnorm)",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "Normalizze e cirche 'na stringhe jndr'à cchiù sottostringhe (ccnorm_contains_any)",
 	"abusefilter-edit-builder-funcs-rmdoubles": "Luà le carattere doppie (rmdoubles)",
 	"abusefilter-edit-builder-funcs-specialratio": "Carattere speciale / carattere totale (specialratio)",
 	"abusefilter-edit-builder-funcs-norm": "Normalizze (norm)",

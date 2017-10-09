@@ -227,6 +227,7 @@
 	"abusefilter-edit-builder-funcs-lcase": "Со мали букви (lcase)",
 	"abusefilter-edit-builder-funcs-ucase": "Со големи букви (ucase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "Нормализирај ги знаците подлежни на забуна (ccnorm)",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "НОрмализирај и пребарај низа со повеќе поднизи (ccnorm_contains_any)",
 	"abusefilter-edit-builder-funcs-rmdoubles": "Отстрани повторени знаци (rmdoubles)",
 	"abusefilter-edit-builder-funcs-specialratio": "Посебни знаци / вкупно знаци (specialratio)",
 	"abusefilter-edit-builder-funcs-norm": "Нормализирај (norm)",

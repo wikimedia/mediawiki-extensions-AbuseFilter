@@ -247,6 +247,7 @@
 	"abusefilter-edit-builder-funcs-lcase": "In Kleinbuchstaben konvertieren (lcase)",
 	"abusefilter-edit-builder-funcs-ucase": "In Großbuchstaben konvertieren (ucase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "Verwirrende Zeichen normalisieren (ccnorm)",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "Eine Zeichenfolge für mehrere Unterzeichenfolgen normalisieren und suchen (ccnorm_contains_any)",
 	"abusefilter-edit-builder-funcs-rmdoubles": "Doppelte Zeichen entfernen (rmdoubles)",
 	"abusefilter-edit-builder-funcs-specialratio": "Sonderzeichen / Gesamtzahl der Zeichen (specialratio)",
 	"abusefilter-edit-builder-funcs-norm": "Normalisieren (norm)",

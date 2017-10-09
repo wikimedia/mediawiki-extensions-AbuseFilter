@@ -157,6 +157,7 @@
 	"abusefilter-edit-builder-misc-irlike": "সাদৃশ্যপূর্ণ রিজেক্স, কেস সেনসিটিভ (irlike)",
 	"abusefilter-edit-builder-group-funcs": "ফাংশন",
 	"abusefilter-edit-builder-funcs-length": "স্ট্রিংয়ের দৈর্ঘ্য (length)",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "একাধিক উপস্ট্রিংয়ের জন্য একটি স্ট্রিং স্বাভাবিক করুন ও অনুসন্ধান করুন (ccnorm_contains_any)",
 	"abusefilter-edit-builder-funcs-set_var": "চলক নির্ধারণ (set_var)",
 	"abusefilter-edit-builder-group-vars": "চলক",
 	"abusefilter-edit-builder-vars-accountname": "অ্যাকাউন্টের নাম (অ্যাকাউন্ট তৈরির সময়)",

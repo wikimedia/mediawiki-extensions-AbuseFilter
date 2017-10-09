@@ -257,6 +257,7 @@
 	"abusefilter-edit-builder-funcs-lcase": "Convertir en minuscules (lcase)",
 	"abusefilter-edit-builder-funcs-ucase": "Convertir en majuscules (ucase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "Normaliser les caractères prêtant à confusion (ccnorm)",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "Normaliser et rechercher une chaîne pour de multiples sous-chaînes (ccnorm_contains_any)",
 	"abusefilter-edit-builder-funcs-rmdoubles": "Enlever les caractères doubles (rmdoubles)",
 	"abusefilter-edit-builder-funcs-specialratio": "Caractères spéciaux / total des caractères (specialratio)",
 	"abusefilter-edit-builder-funcs-norm": "Normaliser (norm)",
