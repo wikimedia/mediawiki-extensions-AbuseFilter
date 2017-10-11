@@ -1,5 +1,7 @@
 <?php
 
+use Wikimedia\Equivset\Equivset;
+
 class AbuseFilterParser {
 	public $mCode, $mTokens, $mPos, $mCur, $mShortCircuit, $mAllowShort, $mLen;
 
@@ -53,6 +55,11 @@ class AbuseFilterParser {
 	];
 
 	public static $funcCache = [];
+
+	/**
+	 * @var Equivset
+	 */
+	protected static $equivset;
 
 	/**
 	 * Create a new instance
@@ -1154,17 +1161,13 @@ class AbuseFilterParser {
 	 * @return mixed
 	 */
 	protected static function ccnorm( $s ) {
-		if ( is_callable( 'AntiSpoof::normalizeString' ) ) {
-			$s = AntiSpoof::normalizeString( $s );
-		} else {
-			// AntiSpoof isn't available, so ignore and return same string
-			wfDebugLog(
-				'AbuseFilter',
-				"Can't compute normalized string (ccnorm) as the AntiSpoof Extension isn't installed."
-			);
+		// Instatiate a single version of the equivset so the data is not loaded
+		// more than once.
+		if ( !self::$equivset ) {
+			self::$equivset = new Equivset();
 		}
 
-		return $s;
+		return self::$equivset->normalize( $s );
 	}
 
 	/**
