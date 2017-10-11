@@ -43,7 +43,8 @@
 			"Wmr",
 			"逆襲的天邪鬼",
 			"WhitePhosphorus",
-			"A2093064"
+			"A2093064",
+			"NeverBehave"
 		]
 	},
 	"abusefilter-desc": "对编辑行为自动进行条件判定",
@@ -266,7 +267,7 @@
 	"abusefilter-edit-builder-funcs-lcase": "字母小写化（lcase）",
 	"abusefilter-edit-builder-funcs-ucase": "字母大写（ucase）",
 	"abusefilter-edit-builder-funcs-ccnorm": "规范化易混淆字符（ccnorm）",
-	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "为多个子链标准化及搜索字符串（ccnorm_contains_any）",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "标准化并搜索字符串的多个子字串（ccnorm_contains_any）",
 	"abusefilter-edit-builder-funcs-rmdoubles": "去除双字节字符（rmdoubles）",
 	"abusefilter-edit-builder-funcs-specialratio": "特殊字符比（specialratio）",
 	"abusefilter-edit-builder-funcs-norm": "规范化（norm）",

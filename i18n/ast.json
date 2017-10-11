@@ -225,6 +225,7 @@
 	"abusefilter-edit-builder-funcs-lcase": "A minúscules (lcase)",
 	"abusefilter-edit-builder-funcs-ucase": "A mayúscules (ucase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "Normalizar los caráuteres confusos (ccnorm)",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "Normalizar y buscar una cadena pa distintes subcadenes (ccnorm_contains_any)",
 	"abusefilter-edit-builder-funcs-rmdoubles": "Desaniciar los caráuteres dobles (rmdoubles)",
 	"abusefilter-edit-builder-funcs-specialratio": "Caráuteres especiales / caráuteres totales (specialratio)",
 	"abusefilter-edit-builder-funcs-norm": "Normalizar (norm)",
