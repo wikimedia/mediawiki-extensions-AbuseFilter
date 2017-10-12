@@ -119,12 +119,14 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$changesList = new AbuseFilterChangesList( $this->getSkin() );
 		$output = $changesList->beginRecentChangesList();
 
+		$rcQuery = RecentChange::getQueryInfo();
 		$res = $dbr->select(
-			'recentchanges',
-			RecentChange::selectFields(),
+			$rcQuery['tables'],
+			$rcQuery['fields'],
 			array_filter( $conds ),
 			__METHOD__,
-			[ 'LIMIT' => self::$mChangeLimit, 'ORDER BY' => 'rc_timestamp desc' ]
+			[ 'LIMIT' => self::$mChangeLimit, 'ORDER BY' => 'rc_timestamp desc' ],
+			$rcQuery['joins']
 		);
 
 		$counter = 1;
