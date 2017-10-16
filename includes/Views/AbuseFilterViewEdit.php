@@ -300,7 +300,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 
 			// Logging
-			$logEntry = new ManualLogEntry( 'abusefilter', 'modify' );
+			$subtype = $filter === 'new' ? 'create' : 'modify';
+			$logEntry = new ManualLogEntry( 'abusefilter', $subtype );
 			$logEntry->setPerformer( $user );
 			$logEntry->setTarget( $this->getTitle( $new_id ) );
 			$logEntry->setParameters( [

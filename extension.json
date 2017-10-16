@@ -46,7 +46,18 @@
 	},
 	"LogActionsHandlers": {
 		"abusefilter/hit": "AbuseLogHitFormatter",
-		"abusefilter/modify": "AbuseFilterModifyLogFormatter"
+		"abusefilter/modify": "AbuseFilterModifyLogFormatter",
+		"abusefilter/create": "AbuseFilterModifyLogFormatter"
+	},
+	"ActionFilteredLogs": {
+		"abusefilter": {
+			"modify": [
+				"modify"
+			],
+			"create": [
+				"create"
+			]
+		}
 	},
 	"APIModules": {
 		"abusefilterchecksyntax": "ApiAbuseFilterCheckSyntax",

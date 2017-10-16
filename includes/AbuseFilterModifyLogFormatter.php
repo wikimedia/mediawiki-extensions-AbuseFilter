@@ -6,7 +6,11 @@ class AbuseFilterModifyLogFormatter extends LogFormatter {
 	 * @return string
 	 */
 	protected function getMessageKey() {
-		return 'abusefilter-logentry-modify';
+		$subtype = $this->entry->getSubtype();
+		// Messages that can be used here:
+		// * abusefilter-logentry-create
+		// * abusefilter-logentry-modify
+		return "abusefilter-logentry-$subtype";
 	}
 
 	/**
