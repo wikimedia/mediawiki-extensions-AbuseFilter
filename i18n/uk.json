@@ -242,6 +242,7 @@
 	"abusefilter-edit-builder-funcs-lcase": "У нижній регістр (lcase)",
 	"abusefilter-edit-builder-funcs-ucase": "У верхній регістр (ucase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "Нормалізація неоднозначних символів (ccnorm)",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "Нормалізувати й здійснити пошук декількох підрядків у рядку (ccnorm_contains_any)",
 	"abusefilter-edit-builder-funcs-rmdoubles": "Вилучення подвійних символів (rmdoubles)",
 	"abusefilter-edit-builder-funcs-specialratio": "Відношення к-сті спеціальних символів до загальної к-сті символів (specialratio)",
 	"abusefilter-edit-builder-funcs-norm": "Нормалізація (norm)",

@@ -45,7 +45,8 @@
 			"Dgstranz",
 			"Sophivorus",
 			"Fortega",
-			"Josecurioso"
+			"Josecurioso",
+			"RicardoSGZ"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas a las ediciones",
@@ -178,7 +179,6 @@
 	"abusefilter-edit-status-label": "Estadísticas:",
 	"abusefilter-edit-status": "De {{PLURAL:$1|la última acción|las últimas $1 acciones}}, este filtro ha coincidido con $2 ($3 %).",
 	"abusefilter-edit-status-profile": "De {{PLURAL:$1|la última acción|las últimas acciones}}, este filtro ha coincidido con $2 ($3%).\nEn promedio, su tiempo de ejecución es de $4 ms, y consume $5 {{PLURAL:$5|condición|condiciones}} del límite de condiciones.",
-	"abusefilter-edit-throttled": "'''Advertencia''': este filtro ha sido deshabilitado automáticamente como medida de seguridad.\nEl filtro ha sobrepasado el límite de dispararse en más del $1% de las acciones.",
 	"abusefilter-edit-new": "Filtro nuevo",
 	"abusefilter-edit-save": "Guardar filtro",
 	"abusefilter-edit-id": "Identificación de filtro:",
@@ -267,6 +267,7 @@
 	"abusefilter-edit-builder-funcs-lcase": "A minúsculas (lcase)",
 	"abusefilter-edit-builder-funcs-ucase": "A mayúsculas (ucase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "Normalizar caracteres confusos (ccnorm)",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "Normaliza y busca una cadena para múltiples subcadenas (ccnorm_contains_any)",
 	"abusefilter-edit-builder-funcs-rmdoubles": "Quitar caracteres dobles (rmdoubles)",
 	"abusefilter-edit-builder-funcs-specialratio": "Caracteres especiales / caracteres totales (specialratio)",
 	"abusefilter-edit-builder-funcs-norm": "Normalizar (norm)",
