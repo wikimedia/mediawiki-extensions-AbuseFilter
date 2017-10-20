@@ -632,6 +632,11 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 	}
 
+	/**
+	 * @param int $userId
+	 * @param string $userName
+	 * @return string
+	 */
 	protected static function getUserLinks( $userId, $userName ) {
 		static $cache = [];
 
@@ -677,6 +682,9 @@ class SpecialAbuseLog extends SpecialPage {
 		return (bool)$row->afl_deleted;
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getGroupName() {
 		return 'changes';
 	}

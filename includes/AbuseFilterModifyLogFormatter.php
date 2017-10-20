@@ -2,6 +2,9 @@
 
 class AbuseFilterModifyLogFormatter extends LogFormatter {
 
+	/**
+	 * @return string
+	 */
 	protected function getMessageKey() {
 		return 'abusefilter-logentry-modify';
 	}

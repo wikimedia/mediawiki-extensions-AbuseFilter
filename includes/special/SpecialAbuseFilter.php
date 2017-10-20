@@ -125,6 +125,9 @@ class SpecialAbuseFilter extends SpecialPage {
 		$this->mFilter = $filter;
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getGroupName() {
 		return 'wiki';
 	}

@@ -1097,6 +1097,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		return AbuseFilter::translateFromHistory( $row );
 	}
 
+	/**
+	 * @return null
+	 */
 	protected function exposeWarningMessages() {
 		global $wgOut, $wgAbuseFilterDefaultWarningMessage;
 		$wgOut->addJsConfigVars(
