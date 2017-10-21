@@ -676,6 +676,9 @@ class AbuseFilterHooks {
 
 		if ( $user && !$updater->updateRowExists( 'create abusefilter-blocker-user' ) ) {
 			$user = User::newSystemUser( $username, [ 'steal' => true ] );
+			$updater->insertUpdateRow( 'create abusefilter-blocker-user' );
+			# Promote user so it doesn't look too crazy.
+			$user->addGroup( 'sysop' );
 		}
 	}
 
