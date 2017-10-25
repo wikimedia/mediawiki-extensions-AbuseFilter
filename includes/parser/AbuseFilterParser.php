@@ -1139,17 +1139,10 @@ class AbuseFilterParser {
 			return $str;
 		}, $values );
 
-		if ( function_exists( 'fss_prep_search' ) ) {
-			$fss = fss_prep_search( $values );
-			$result = fss_exec_search( $fss, $string );
-
-			return ( $result !== false );
-		} else {
-			foreach ( $values as $needle ) {
-				// Bug #60203: Keep empty parameters from causing PHP warnings
-				if ( $needle !== '' && strpos( $string, $needle ) !== false ) {
-					return true;
-				}
+		foreach ( $values as $needle ) {
+			// Bug #60203: Keep empty parameters from causing PHP warnings
+			if ( $needle !== '' && strpos( $string, $needle ) !== false ) {
+				return true;
 			}
 		}
 
