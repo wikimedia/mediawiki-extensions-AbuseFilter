@@ -235,6 +235,7 @@
 	"abusefilter-edit-builder-funcs-lcase": "Převést na malá písmena (lcase)",
 	"abusefilter-edit-builder-funcs-ucase": "Převést na velká písmena (ucase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "Normalizovat zaměnitelné znaky (ccnorm)",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "Normalizovat řetězec a hledat v něm několik podřetězců (ccnorm_contains_any)",
 	"abusefilter-edit-builder-funcs-rmdoubles": "Odstranit zdvojené znaky (rmdoubles)",
 	"abusefilter-edit-builder-funcs-specialratio": "Speciální znaky / celkem znaků (specialratio)",
 	"abusefilter-edit-builder-funcs-norm": "Normalizovat (norm)",
