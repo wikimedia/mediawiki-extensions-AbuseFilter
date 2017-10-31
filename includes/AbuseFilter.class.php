@@ -1363,11 +1363,6 @@ class AbuseFilter {
 	 * @return array|null a message describing the action that was taken,
 	 *         or null if no action was taken. The message is given as an array
 	 *         containing the message key followed by any message parameters.
-	 *
-	 * @note: Returning the message as an array instead of a Message object is
-	 *        needed for compatibility with MW 1.20: we will be constructing a
-	 *        Status object from these messages, and before 1.21, Status did
-	 *        not accept Message objects to be added directly.
 	 */
 	public static function takeConsequenceAction( $action, $parameters, $title,
 		$vars, $rule_desc, $rule_number ) {
@@ -2150,11 +2145,7 @@ class AbuseFilter {
 		);
 
 		$vars->setVar( 'ACTION', 'delete' );
-		if ( class_exists( CommentStore::class ) ) {
-			$vars->setVar( 'SUMMARY', CommentStore::newKey( 'rc_comment' )->getComment( $row )->text );
-		} else {
-			$vars->setVar( 'SUMMARY', $row->rc_comment );
-		}
+		$vars->setVar( 'SUMMARY', CommentStore::newKey( 'rc_comment' )->getComment( $row )->text );
 
 		return $vars;
 	}
@@ -2180,11 +2171,7 @@ class AbuseFilter {
 		);
 
 		$vars->setVar( 'ACTION', 'edit' );
-		if ( class_exists( CommentStore::class ) ) {
-			$vars->setVar( 'SUMMARY', CommentStore::newKey( 'rc_comment' )->getComment( $row )->text );
-		} else {
-			$vars->setVar( 'SUMMARY', $row->rc_comment );
-		}
+		$vars->setVar( 'SUMMARY', CommentStore::newKey( 'rc_comment' )->getComment( $row )->text );
 
 		$vars->setLazyLoadVar( 'new_wikitext', 'revision-text-by-id',
 			[ 'revid' => $row->rc_this_oldid ] );
@@ -2224,11 +2211,7 @@ class AbuseFilter {
 			self::generateTitleVars( $newTitle, 'MOVED_TO' )
 		);
 
-		if ( class_exists( CommentStore::class ) ) {
-			$vars->setVar( 'SUMMARY', CommentStore::newKey( 'rc_comment' )->getComment( $row )->text );
-		} else {
-			$vars->setVar( 'SUMMARY', $row->rc_comment );
-		}
+		$vars->setVar( 'SUMMARY', CommentStore::newKey( 'rc_comment' )->getComment( $row )->text );
 		$vars->setVar( 'ACTION', 'move' );
 
 		return $vars;
