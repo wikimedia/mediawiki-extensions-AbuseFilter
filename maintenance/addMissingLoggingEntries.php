@@ -67,12 +67,6 @@ class AddMissingLoggingEntries extends Maintenance {
 
 		$dbw = wfGetDB( DB_MASTER );
 
-		if ( class_exists( CommentStore::class ) ) {
-			$commentFields = CommentStore::newKey( 'log_comment' )->insert( $dbw, '' );
-		} else {
-			$commentFields = [ 'log_comment' => '' ];
-		}
-
 		$count = 0;
 		foreach ( $afhRows as $row ) {
 			if ( $count % 100 == 0 ) {
@@ -90,7 +84,7 @@ class AddMissingLoggingEntries extends Maintenance {
 					'log_params' => $row->afh_id . '\n' . $row->afh_filter,
 					'log_deleted' => $row->afh_deleted,
 					'log_user_text' => $row->afh_user_text,
-				] + $commentFields,
+				] + CommentStore::newKey( 'log_comment' )->insert( $dbw, '' ),
 				__METHOD__
 			);
 			$count++;

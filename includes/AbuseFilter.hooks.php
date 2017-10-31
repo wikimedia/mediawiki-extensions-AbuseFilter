@@ -371,63 +371,6 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param User $user
-	 * @param string $message
-	 * @param bool $autocreate Indicates whether the account is created automatically.
-	 * @return bool
-	 * @deprecated AbuseFilterPreAuthenticationProvider will take over this functionality
-	 */
-	private static function checkNewAccount( $user, &$message, $autocreate ) {
-		if ( $user->getName() == wfMessage( 'abusefilter-blocker' )->inContentLanguage()->text() ) {
-			$message = wfMessage( 'abusefilter-accountreserved' )->text();
-
-			return false;
-		}
-
-		$vars = new AbuseFilterVariableHolder;
-
-		// Add variables only for a registered user, so IP addresses of
-		// new users won't be exposed
-		global $wgUser;
-		if ( !$autocreate && $wgUser->getId() ) {
-			$vars->addHolders( AbuseFilter::generateUserVars( $wgUser ) );
-		}
-
-		$vars->setVar( 'ACTION', $autocreate ? 'autocreateaccount' : 'createaccount' );
-		$vars->setVar( 'ACCOUNTNAME', $user->getName() );
-
-		$filter_result = AbuseFilter::filterAction(
-			$vars, SpecialPage::getTitleFor( 'Userlogin' ) );
-
-		$message = $filter_result->isOK() ? '' : $filter_result->getWikiText();
-
-		return $filter_result->isOK();
-	}
-
-	/**
-	 * @param User $user
-	 * @param string $message
-	 * @return bool
-	 * @deprecated AbuseFilterPreAuthenticationProvider will take over this functionality
-	 */
-	public static function onAbortNewAccount( $user, &$message ) {
-		return self::checkNewAccount( $user, $message, false );
-	}
-
-	/**
-	 * @param User $user
-	 * @param string $message
-	 * @return bool
-	 * @deprecated AbuseFilterPreAuthenticationProvider will take over this functionality
-	 */
-	public static function onAbortAutoAccount( $user, &$message ) {
-		// FIXME: ERROR MESSAGE IS SHOWN IN A WEIRD WAY, BEACUSE $message
-		// HERE MEANS NAME OF THE MESSAGE, NOT THE TEXT OF THE MESSAGE AS
-		// IN AbortNewAccount HOOK WHICH WE CANNOT PROVIDE!
-		return self::checkNewAccount( $user, $message, true );
-	}
-
-	/**
 	 * @param RecentChange $recentChange
 	 * @return bool
 	 */

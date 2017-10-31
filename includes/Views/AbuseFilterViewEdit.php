@@ -11,33 +11,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$this->mHistoryID = $page->mHistoryID;
 	}
 
-	/// @todo When older versions of MediaWiki are no longer
-	/// supported, remove this method and call ChangeTags::isTagNameValid directly
-	/// Because it's planned for removal, this is private.
-	/**
-	 * Check whether the characters in the tag name are valid.
-	 *
-	 * @param string $tag Tag name
-	 * @return Status
-	 */
-	private static function isTagNameValid( $tag ) {
-		if ( is_callable( 'ChangeTags::isTagNameValid' ) ) {
-			$status = ChangeTags::isTagNameValid( $tag );
-		} else {
-			// BC
-			if ( strpos( $tag, ',' ) !== false || strpos( $tag, '|' ) !== false ||
-				strpos( $tag, '/' ) !== false ||
-				!Title::makeTitleSafe( NS_MEDIAWIKI, "tag-{$tag}-description" )
-			) {
-				$status = Status::newFatal( 'abusefilter-edit-bad-tags' );
-			} else {
-				$status = Status::newGood();
-			}
-		}
-
-		return $status;
-	}
-
 	/**
 	 * Check whether a filter is allowed to use a tag
 	 *
@@ -45,7 +18,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @return Status
 	 */
 	protected function isAllowedTag( $tag ) {
-		$tagNameStatus = self::isTagNameValid( $tag );
+		$tagNameStatus = ChangeTags::isTagNameValid( $tag );
 
 		if ( !$tagNameStatus->isGood() ) {
 			return $tagNameStatus;
