@@ -77,11 +77,14 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	function showExaminerForRC( $rcid ) {
 		// Get data
 		$dbr = wfGetDB( DB_REPLICA );
+		$rcQuery = RecentChange::getQueryInfo();
 		$row = $dbr->selectRow(
-			'recentchanges',
-			RecentChange::selectFields(),
+			$rcQuery['tables'],
+			$rcQuery['fields'],
 			[ 'rc_id' => $rcid ],
-			__METHOD__
+			__METHOD__,
+			[],
+			$rcQuery['joins']
 		);
 		$out = $this->getOutput();
 		if ( !$row ) {
@@ -247,11 +250,13 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 
 		$conds[] = $this->mPage->buildTestConditions( $dbr );
 
+		$rcQuery = RecentChange::getQueryInfo();
 		$info = [
-			'tables' => 'recentchanges',
-			'fields' => RecentChange::selectFields(),
+			'tables' => $rcQuery['tables'],
+			'fields' => $rcQuery['fields'],
 			'conds' => array_filter( $conds ),
 			'options' => [ 'ORDER BY' => 'rc_timestamp DESC' ],
+			'join_conds' => $rcQuery['joins'],
 		];
 
 		return $info;

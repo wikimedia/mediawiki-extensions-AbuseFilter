@@ -2187,10 +2187,7 @@ class AbuseFilter {
 
 		$vars->setVar( 'ACTION', 'delete' );
 		if ( class_exists( CommentStore::class ) ) {
-			$vars->setVar( 'SUMMARY', CommentStore::newKey( 'rc_comment' )
-				// $row comes from RecentChange::selectFields()
-				->getCommentLegacy( wfGetDB( DB_REPLICA ), $row )->text
-			);
+			$vars->setVar( 'SUMMARY', CommentStore::newKey( 'rc_comment' )->getComment( $row )->text );
 		} else {
 			$vars->setVar( 'SUMMARY', $row->rc_comment );
 		}
@@ -2220,10 +2217,7 @@ class AbuseFilter {
 
 		$vars->setVar( 'ACTION', 'edit' );
 		if ( class_exists( CommentStore::class ) ) {
-			$vars->setVar( 'SUMMARY', CommentStore::newKey( 'rc_comment' )
-				// $row comes from RecentChange::selectFields()
-				->getCommentLegacy( wfGetDB( DB_REPLICA ), $row )->text
-			);
+			$vars->setVar( 'SUMMARY', CommentStore::newKey( 'rc_comment' )->getComment( $row )->text );
 		} else {
 			$vars->setVar( 'SUMMARY', $row->rc_comment );
 		}
@@ -2267,10 +2261,7 @@ class AbuseFilter {
 		);
 
 		if ( class_exists( CommentStore::class ) ) {
-			$vars->setVar( 'SUMMARY', CommentStore::newKey( 'rc_comment' )
-				// $row comes from RecentChange::selectFields()
-				->getCommentLegacy( wfGetDB( DB_REPLICA ), $row )->text
-			);
+			$vars->setVar( 'SUMMARY', CommentStore::newKey( 'rc_comment' )->getComment( $row )->text );
 		} else {
 			$vars->setVar( 'SUMMARY', $row->rc_comment );
 		}

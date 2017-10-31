@@ -19,11 +19,14 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 			}
 		} elseif ( $params['rcid'] ) {
 			$dbr = wfGetDB( DB_REPLICA );
+			$rcQuery = RecentChange::getQueryInfo();
 			$row = $dbr->selectRow(
-				'recentchanges',
-				RecentChange::selectFields(),
+				$rcQuery['tables'],
+				$rcQuery['fields'],
 				[ 'rc_id' => $params['rcid'] ],
-				__METHOD__
+				__METHOD__,
+				[],
+				$rcQuery['joins']
 			);
 
 			if ( !$row ) {
