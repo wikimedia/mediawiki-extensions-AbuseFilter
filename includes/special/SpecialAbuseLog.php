@@ -353,7 +353,9 @@ class SpecialAbuseLog extends SpecialPage {
 		$output = Xml::element(
 			'legend',
 			null,
-			$this->msg( 'abusefilter-log-details-legend', $id )->text()
+			$this->msg( 'abusefilter-log-details-legend' )
+				->numParams( $id )
+				->text()
 		);
 		$output .= Xml::tags( 'p', null, $this->formatRow( $row, false ) );
 
