@@ -1447,12 +1447,21 @@ class AbuseFilter {
 				];
 				break;
 			case 'rangeblock':
+				global $wgAbuseFilterRangeBlockSize, $wgBlockCIDRLimit;
+
+				$ip = $wgRequest->getIP();
+				if ( IP::isIPv6( $ip ) ) {
+					$CIDRsize = max( $wgAbuseFilterRangeBlockSize['IPv6'], $wgBlockCIDRLimit['IPv6'] );
+				} else {
+					$CIDRsize = max( $wgAbuseFilterRangeBlockSize['IPv4'], $wgBlockCIDRLimit['IPv4'] );
+				}
+				$blockCIDR = $ip . '/' . $CIDRsize;
 				self::doAbuseFilterBlock(
 					[
 						'desc' => $rule_desc,
 						'number' => $rule_number
 					],
-					IP::sanitizeRange( $wgRequest->getIP() . '/16' ),
+					IP::sanitizeRange( $blockCIDR ),
 					'1 week',
 					false
 				);
