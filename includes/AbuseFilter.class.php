@@ -76,6 +76,7 @@ class AbuseFilter {
 			'norm(string)' => 'norm',
 			'count(needle,haystack)' => 'count',
 			'rcount(needle,haystack)' => 'rcount',
+			'get_matches(needle,haystack)' => 'get_matches',
 			'rmwhitespace(text)' => 'rmwhitespace',
 			'rmspecials(text)' => 'rmspecials',
 			'ip_in_range(ip, range)' => 'ip_in_range',

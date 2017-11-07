@@ -124,6 +124,7 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * Data provider for testCondCount method.
 	 * @return array
 	 */
 	public function condCountCases() {
@@ -135,6 +136,81 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 			[ 'true', 0 ],
 			[ 'a == a | c == d', 1 ],
 			[ 'a == b & c == d', 1 ],
+		];
+	}
+
+	/**
+	 * get_matches should throw an exception with an invalid number of arguments.
+	 * @expectedException AFPUserVisibleException
+	 * @covers AbuseFilterParser::funcGetMatches
+	 */
+	public function testGetMatchesInvalidArgs() {
+		$parser = self::getParser();
+		$parser->parse( "get_matches('')" );
+	}
+
+	/**
+	 * get_matches should throw an exception when given an invalid regular expression.
+	 * @expectedException AFPUserVisibleException
+	 * @covers AbuseFilterParser::funcGetMatches
+	 */
+	public function testGetMatchesInvalidRegex() {
+		$parser = self::getParser();
+		$parser->parse( "get_matches('this (should fail')" );
+	}
+
+	/**
+	 * Ensure get_matches function captures returns expected output.
+	 * @param string $needle Regex to pass to get_matches.
+	 * @param string $haystack String to run regex against.
+	 * @param string[] $expected The expected values of the matched groups.
+	 * @covers AbuseFilterParser::funcGetMatches
+	 * @dataProvider getMatchesCases
+	 */
+	public function testGetMatches( $needle, $haystack, $expected ) {
+		$parser = self::getParser();
+		$afpData = $parser->intEval( "get_matches('$needle', '$haystack')" )->data;
+
+		// Extract matches from AFPData.
+		$matches = array_map( function ( $afpDatum ) {
+			return $afpDatum->data;
+		}, $afpData );
+
+		$this->assertEquals( $expected, $matches );
+	}
+
+	/**
+	 * Data provider for get_matches method.
+	 * @return array
+	 */
+	public function getMatchesCases() {
+		return [
+			[
+				'You say (.*) \(and I say (.*)\)\.',
+				'You say hello (and I say goodbye).',
+				[
+					'You say hello (and I say goodbye).',
+					'hello',
+					'goodbye',
+				],
+			],
+			[
+				'I(?: am)? the ((walrus|egg man).*)\!',
+				'I am the egg man, I am the walrus !',
+				[
+					'I am the egg man, I am the walrus !',
+					'egg man, I am the walrus ',
+					'egg man',
+				],
+			],
+			[
+				'this (does) not match',
+				'foo bar',
+				[
+					false,
+					false,
+				],
+			],
 		];
 	}
 }

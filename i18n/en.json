@@ -231,6 +231,7 @@
 	"abusefilter-edit-builder-funcs-norm": "Normalize (norm)",
 	"abusefilter-edit-builder-funcs-count": "Number of times string X appears in string Y (count)",
 	"abusefilter-edit-builder-funcs-rcount": "Number of times regex X appears in string Y (rcount)",
+	"abusefilter-edit-builder-funcs-get_matches": "Array of regex matches within a text for each capturing group (get_matches)",
 	"abusefilter-edit-builder-funcs-rmwhitespace": "Remove whitespace (rmwhitespace)",
 	"abusefilter-edit-builder-funcs-rmspecials": "Remove special characters (rmspecials)",
 	"abusefilter-edit-builder-funcs-ip_in_range": "Is IP in range? (ip_in_range)",
