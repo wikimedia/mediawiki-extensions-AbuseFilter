@@ -395,7 +395,7 @@
 	"abusefilter-topnav-tools": "Ferramientes de depuración",
 	"abusefilter-topnav-import": "Importar un filtru",
 	"abusefilter-log-name": "Rexistru de la peñera d'abusos",
-	"abusefilter-log-header": "Esti rexistru amuesa un resume de los cambios fechos nos filtros.\nPara ver los detalles completos, visite [[Special:AbuseFilter/history|la llista]] de los cambios recién fechos nos filtros.",
+	"abusefilter-log-header": "Esti rexistru amuesa un resume de los cambios fechos nos filtros.\nPara ver los detalles completos, visita [[Special:AbuseFilter/history|la llista]] de los cambios recién fechos nos filtros.",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|cambió}} el $4 ($5)",
 	"abusefilter-log-noresults": "Nun hai resultaos",
 	"abusefilter-diff-title": "Diferencies ente versiones",
