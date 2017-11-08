@@ -33,7 +33,7 @@ class PurgeOldLogIPData extends Maintenance {
 					"afl_timestamp < " . $dbw->addQuotes( $dbw->timestamp( $cutoffUnix ) )
 				],
 				__METHOD__,
-				[ 'LIMIT' => $this->mBatchSize ]
+				[ 'LIMIT' => $this->getBatchSize() ]
 			);
 
 			if ( $ids ) {
@@ -48,7 +48,7 @@ class PurgeOldLogIPData extends Maintenance {
 
 				wfWaitForSlaves();
 			}
-		} while ( count( $ids ) >= $this->mBatchSize );
+		} while ( count( $ids ) >= $this->getBatchSize() );
 
 		$this->output( "$count rows.\n" );
 
