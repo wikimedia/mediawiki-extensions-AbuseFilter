@@ -11,7 +11,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		$filter = $this->mFilter;
 
 		if ( $filter ) {
-			$out->setPageTitle( $this->msg( 'abusefilter-history', $filter ) );
+			$out->setPageTitle( $this->msg( 'abusefilter-history' )->numParams( $filter ) );
 		} else {
 			$out->setPageTitle( $this->msg( 'abusefilter-filter-log' ) );
 		}
