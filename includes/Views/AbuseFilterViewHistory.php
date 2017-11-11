@@ -8,7 +8,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 
 	function show() {
 		$out = $this->getOutput();
-		$filter = $this->mFilter;
+		$filter = $this->getRequest()->getText( 'filter' ) ?: $this->mFilter;
 
 		if ( $filter ) {
 			$out->setPageTitle( $this->msg( 'abusefilter-history' )->numParams( $filter ) );
@@ -59,13 +59,20 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 				'default' => $user,
 				'size' => '45',
 				'label-message' => 'abusefilter-history-select-user'
-			]
+			],
+			'filter' => [
+				'type' => 'text',
+				'name' => 'filter',
+				'default' => $filter,
+				'size' => '45',
+				'label-message' => 'abusefilter-history-select-filter'
+			],
 		];
 
 		$htmlForm = HTMLForm::factory( 'table', $formDescriptor, $this->getContext() );
 		$htmlForm->setSubmitTextMsg( 'abusefilter-history-select-submit' )
 			->setWrapperLegendMsg( 'abusefilter-history-select-legend' )
-			->setAction( $this->getTitle( "history/$filter" )->getLocalURL() )
+			->setAction( $this->getTitle( 'history' )->getLocalURL() )
 			->setMethod( 'get' )
 			->prepareForm()
 			->displayForm( false );

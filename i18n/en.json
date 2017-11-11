@@ -338,6 +338,7 @@
 	"abusefilter-history-filterid": "Filter",
 	"abusefilter-history-select-legend": "Refine search",
 	"abusefilter-history-select-user": "User:",
+	"abusefilter-history-select-filter": "Filter ID:",
 	"abusefilter-history-select-submit": "Refine",
 	"abusefilter-history-diff": "Changes",
 	"abusefilter-history-error-hidden": "The filter you requested is hidden, and you cannot view its history.",

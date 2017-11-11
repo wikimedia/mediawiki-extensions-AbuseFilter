@@ -370,6 +370,7 @@
 	"abusefilter-history-filterid": "{{Identical|Filter}}",
 	"abusefilter-history-select-legend": "Used as legend on [[Special:AbuseFilter/history]]",
 	"abusefilter-history-select-user": "Used as label for the \"User\" input box. Field takes a username to filter events by.\n{{Identical|User}}",
+	"abusefilter-history-select-filter": "Used as label for the \"Filter ID\" input box. Field takes a filter id to filter events by.",
 	"abusefilter-history-select-submit": "Used as submit button on [[Special:AbuseFilter/history]]",
 	"abusefilter-history-diff": "{{Identical|Change}}",
 	"abusefilter-history-error-hidden": "Error message shown to user if the filter they are trying to view is hidden and they do not have permission to view it.",
