@@ -10,7 +10,7 @@ class AbuseFilterParser {
 	 */
 	public $mVars;
 
-	// length,lcase,ucase,ccnorm,rmdoubles,specialratio,rmspecials,norm,count
+	// length,lcase,ucase,ccnorm,rmdoubles,specialratio,rmspecials,norm,count,get_matches
 	public static $mFunctions = [
 		'lcase' => 'funcLc',
 		'ucase' => 'funcUc',
@@ -28,6 +28,7 @@ class AbuseFilterParser {
 		'rmwhitespace' => 'funcRMWhitespace',
 		'count' => 'funcCount',
 		'rcount' => 'funcRCount',
+		'get_matches' => 'funcGetMatches',
 		'ip_in_range' => 'funcIPInRange',
 		'contains_any' => 'funcContainsAny',
 		'substr' => 'funcSubstr',
@@ -193,7 +194,7 @@ class AbuseFilterParser {
 	 * @param string $code
 	 * @return AFPData
 	 */
-	function intEval( $code ) {
+	public function intEval( $code ) {
 		// Setup, resetting
 		$this->mCode = $code;
 		$this->mTokens = AbuseFilterTokenizer::tokenize( $code );
@@ -1022,6 +1023,59 @@ class AbuseFilterParser {
 		}
 
 		return new AFPData( AFPData::DINT, $count );
+	}
+
+	/**
+	 * Returns an array of matches of needle in the haystack, the first one for the whole regex,
+	 * the other ones for every capturing group.
+	 *
+	 * @param array $args
+	 * @return AFPData A list of matches.
+	 * @throws AFPUserVisibleException
+	 */
+	protected function funcGetMatches( $args ) {
+		if ( count( $args ) < 2 ) {
+			throw new AFPUserVisibleException(
+				'notenoughargs',
+				$this->mCur->pos,
+				[ 'get_matches', 2, count( $args ) ]
+			);
+		}
+		$needle = $args[0]->toString();
+		$haystack = $args[1]->toString();
+
+		// Count the amount of capturing groups in the submitted pattern.
+		// This way we can return a fixed-dimension array, much easier to manage.
+		// First, strip away escaped parentheses
+		$sanitized = preg_replace( '/(\\\\\\\\)*\\\\\(/', '', $needle );
+		// Then strip starting parentheses of non-capturing groups
+		// (also atomics, lookahead and so on, even if not every of them is supported)
+		$sanitized = preg_replace( '/\(\?/', '', $sanitized );
+		// Finally create an array of falses with dimension = # of capturing groups
+		$groupscount = substr_count( $sanitized, '(' ) + 1;
+		$falsy = array_fill( 0, $groupscount, false );
+
+		// Munge the regex by escaping slashes
+		$needle = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $needle );
+		$needle = "/$needle/u";
+
+		// Suppress and restore are here for the same reason as T177744
+		MediaWiki\suppressWarnings();
+		$check = preg_match( $needle, $haystack, $matches );
+		MediaWiki\restoreWarnings();
+
+		if ( $check === false ) {
+			throw new AFPUserVisibleException(
+				'regexfailure',
+				$this->mCur->pos,
+				[ 'unspecified error in preg_match()', $needle ]
+			);
+		}
+
+		// Returned array has non-empty positions identical to the ones returned
+		// by the third parameter of a standard preg_match call ($matches in this case).
+		// We want an union with falsy to return a fixed-dimention array.
+		return AFPData::newFromPHPVar( $matches + $falsy );
 	}
 
 	/**
