@@ -263,7 +263,7 @@
 	"abusefilter-edit-builder-funcs-rescape": "於正規表式法中的字串加上跳脫符號 (rescape)",
 	"abusefilter-edit-builder-funcs-set_var": "設定變數 (set_var)",
 	"abusefilter-edit-builder-group-vars": "變數",
-	"abusefilter-edit-builder-vars-accountname": "帳號名稱 (on account creation)",
+	"abusefilter-edit-builder-vars-accountname": "帳號（建立時）的名稱",
 	"abusefilter-edit-builder-vars-timestamp": "變更的 Unix 時間戳記",
 	"abusefilter-edit-builder-vars-action": "動作",
 	"abusefilter-edit-builder-vars-addedlines": "編輯增加的行數",
