@@ -418,7 +418,7 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 				return $lang->commaList( $statuses );
 			case 'af_hidden':
 				$msg = $value ? 'abusefilter-hidden' : 'abusefilter-unhidden';
-				return $this->msg( $msg, 'parseinline' )->parse();
+				return $this->msg( $msg )->parse();
 			case 'af_hit_count':
 				// If the rule is hidden, don't show it, even to priviledged local admins
 				if ( $row->af_hidden ) {
