@@ -1,0 +1,1 @@
+contains_all("the foo is on the bar", "foo", "is on", "bar")
