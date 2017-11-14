@@ -173,7 +173,7 @@
 	"abusefilter-edit-action-degroup": "모든 사용자 권한을 해제",
 	"abusefilter-edit-action-block": "사용자 및 IP 주소의 편집을 차단",
 	"abusefilter-edit-action-throttle": "속도 제한을 넘었을 때만 필터를 적용",
-	"abusefilter-edit-action-rangeblock": "사용자가 사용한 IP의 /16대역을 차단",
+	"abusefilter-edit-action-rangeblock": "사용자가 사용한 개별 IP 대역을 차단",
 	"abusefilter-edit-action-tag": "나중에 검토하기 위해 태그하기",
 	"abusefilter-edit-throttle-count": "허용할 동작 수:",
 	"abusefilter-edit-throttle-period": "주기:",

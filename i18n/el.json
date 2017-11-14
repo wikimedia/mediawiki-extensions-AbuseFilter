@@ -15,7 +15,8 @@
 			"Protnet",
 			"ZaDiak",
 			"Αντιγόνη",
-			"Matma Rex"
+			"Matma Rex",
+			"KATRINE1992"
 		]
 	},
 	"abusefilter-desc": "Εφαρμόζει αυτόματη ανίχνευση σε επεξεργασίες",
@@ -137,7 +138,6 @@
 	"abusefilter-edit-status-label": "Στατιστικά:",
 	"abusefilter-edit-status": "Από {{PLURAL:$1|τη $1 τελευταία ενέργεια|τις $1 τελευταίες ενέργειες}}, αυτό το φίλτρο έχει αντιστοιχίσει $2 ($3%).",
 	"abusefilter-edit-status-profile": "Από {{PLURAL:$1|τη $1 τελευταία ενέργεια|τις $1 τελευταίες ενέργειες}}, αυτό το φίλτρο έχει αντιστοιχίσει $2 ($3%).\nΣτο μέσο όρο, ο χρόνος απόκρισης της είναι $4ms, και καταναλώνει $5 {{PLURAL:$5|όρο|όρους}} από το όριο όρων.",
-	"abusefilter-edit-throttled": "'''Προειδοποίηση''': Αυτό το φίλτρο απενεργοποιήθηκε αυτόματα ως ένα μέτρο ασφαλείας.\nΈφτασε το όριο της αντιστοίχισης περισσότερο από $1% των δράσεων.",
 	"abusefilter-edit-new": "Νέο φίλτρο",
 	"abusefilter-edit-save": "Αποθήκευση φίλτρου",
 	"abusefilter-edit-id": "Ταυτότητα φίλτρου:",
@@ -156,7 +156,6 @@
 	"abusefilter-edit-consequences": "Εκτέλεση της ένεργειας όταν εντοπισθεί το αποτέλεσμα",
 	"abusefilter-edit-action-warn": "Πρόκληση τέτοιων ενεργειών αφού δοθεί στον χρήστη μια προειδοποίηση",
 	"abusefilter-edit-action-disallow": "Αποτροπή του χρήστη από την εκτέλεση της συγκεκριμένης ενέργειας",
-	"abusefilter-edit-action-flag": "Επισήμανση με σημαία αυτής της επεξεργασίας στο ιστορικό καταχρήσεων",
 	"abusefilter-edit-action-blockautopromote": "Ανάκληση της ιδιότητας αυτοεπιβεβαιωμένου χρήστη",
 	"abusefilter-edit-action-degroup": "Αφαίρεσε τον χρήστη από όλες τις ομάδες δικαιωμάτων",
 	"abusefilter-edit-action-block": "Φραγή χρήστη ή/και διεύθυνσης IP από την επεξεργασία",
@@ -232,6 +231,7 @@
 	"abusefilter-edit-builder-funcs-norm": "Κανονικοποίηση (norm)",
 	"abusefilter-edit-builder-funcs-count": "Αριθμός φορών που η συμβολοσειρά X εμφανίζεται στη συμβολοσειρά Y (count)",
 	"abusefilter-edit-builder-funcs-rcount": "Ο αριθμός των φορών που η τακτική έκφραση Χ εμφανίζεται στον ορμαθό Υ (rcount)",
+	"abusefilter-edit-builder-funcs-get_matches": "Σειρά από συνδυασμούς regex μέσα σε ένα κείμενο για κάθε ομάδα που έχει πρόσβαση σε αυτό (get_matches)",
 	"abusefilter-edit-builder-funcs-rmwhitespace": "Aφαίρεση κενού διαστήματος (rmwhitespace)",
 	"abusefilter-edit-builder-funcs-rmspecials": "Αφαίρεση ειδικών χαρακτήρων (rmspecials)",
 	"abusefilter-edit-builder-funcs-ip_in_range": "Είναι η IP εντός εμβέλειας; (ip_in_range)",
@@ -384,7 +384,6 @@
 	"abusefilter-topnav-import": "Εισαγωγή φίλτρου",
 	"abusefilter-log-name": "Ιστορικό Φίλτρου Καταχρήσεων",
 	"abusefilter-log-header": "Αυτή η καταγραφή εμφανίζει μια σύνοψη από αλλαγές που έγιναν στα φίλτρα.\nΓια πλήρεις λεπτομέρειες, δείτε [[Special:AbuseFilter/history|τη λίστα]] των πρόσφατων αλλαγών φίλτρου.",
-	"abusefilter-log-entry-modify": "τροποποιημένη $1 ($2)",
 	"abusefilter-log-noresults": "Κανένα αποτέλεσμα",
 	"abusefilter-diff-title": "Διαφορές μεταξύ των εκδόσεων",
 	"abusefilter-diff-item": "Αντικείμενο",

@@ -169,7 +169,7 @@
 	"abusefilter-edit-action-degroup": "Vyjmout uživatele ze všech skupin s vyššími oprávněními",
 	"abusefilter-edit-action-block": "Zablokovat uživatele nebo IP adresu",
 	"abusefilter-edit-action-throttle": "Provést opatření pouze při překročení dovolené četnosti",
-	"abusefilter-edit-action-rangeblock": "Zablokovat rozsah /16, do kterého patří IP adresa uživatele.",
+	"abusefilter-edit-action-rangeblock": "Zablokovat rozsah IP, do kterého patří IP adresa uživatele",
 	"abusefilter-edit-action-tag": "Označit editaci k dalšímu prověření.",
 	"abusefilter-edit-throttle-count": "Počet dovolených akcí:",
 	"abusefilter-edit-throttle-period": "Časový interval:",

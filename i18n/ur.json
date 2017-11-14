@@ -3,7 +3,8 @@
 		"authors": [
 			"පසිඳු කාවින්ද",
 			"عثمان خان شاہ",
-			"Muhammad Shuaib"
+			"Muhammad Shuaib",
+			"Zainab Meher"
 		]
 	},
 	"abusefilter": "مقطار غلط کاری کی ترتیب",
@@ -87,9 +88,9 @@
 	"abusefilter-edit-consequences": "اعمال لے لیا جب جستجو",
 	"abusefilter-edit-action-warn": "دے صارف ایک انتباہ کے بعد ان کے اعمال کو دکھانے کا محرک",
 	"abusefilter-edit-action-disallow": "ےہ سوال کارروائی سے صارف کی روک تھام",
-	"abusefilter-edit-action-flag": "پرچم کے غلط استعمال کے لاگ ان میں ترمیم کریں",
 	"abusefilter-edit-action-degroup": "تمام مراعات یافتہ طبقے کے موضوعات سے صارف حذف کریں",
 	"abusefilter-edit-action-block": "میں صارف اور/یا ترمیم سے آئی پی ایڈریس بلاک",
+	"abusefilter-edit-action-rangeblock": "متفرق آئ پی رینج کو بندکریں جس سے صارف اختراع کرتا ھے۔",
 	"abusefilter-edit-action-tag": "ٹیگ مزید کا جائزہ کے لئے ترمیم کریں",
 	"abusefilter-edit-throttle-count": "اجازت دینے کے لئے اعمال کی تعداد:",
 	"abusefilter-edit-throttle-period": "وقت کی مدت:",
@@ -112,6 +113,7 @@
 	"abusefilter-edit-builder-group-op-arithmetic": "حساب آپریٹرز",
 	"abusefilter-edit-builder-group-misc": "متفرق",
 	"abusefilter-edit-builder-group-funcs": "افعال",
+	"abusefilter-edit-builder-funcs-get_matches": "ریجکس میچ میں ہر جوڑ کے گرو کی صف آرائی متن سے ملتی ہے۔",
 	"abusefilter-edit-builder-vars-action": "کارروائی",
 	"abusefilter-edit-builder-vars-newsize": "نیا صفحہ کا سائز",
 	"abusefilter-edit-builder-vars-oldsize": "پرانے صفحہ کا سائز",
