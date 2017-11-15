@@ -59,7 +59,7 @@
 	"action-abusefilter-modify-restricted": "modificare i filtri anti abusi con le azioni riservate",
 	"action-abusefilter-revert": "ripristinare tutte le modifiche apportate da un determinato filtro anti abusi",
 	"action-abusefilter-view-private": "visualizzare i filtri anti abusi segnati come privati",
-	"action-abusefilter-log-private": "visualizzare i registri dei filtri contrassegnati come privati",
+	"action-abusefilter-log-private": "visualizzare i registri dei filtri anti abusi contrassegnati come privati",
 	"abusefilter-log": "Registro del filtro anti abusi",
 	"abusefilter-log-summary": "Questo registro mostra un elenco di tutte le azioni che hanno attivato uno o più filtri.",
 	"abusefilter-log-search": "Cerca nel registro del filtro anti abusi",
