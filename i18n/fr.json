@@ -263,7 +263,7 @@
 	"abusefilter-edit-builder-funcs-norm": "Normaliser (norm)",
 	"abusefilter-edit-builder-funcs-count": "Nombre d'occurrences de la chaîne de caractères X dans la chaîne Y (count)",
 	"abusefilter-edit-builder-funcs-rcount": "Nombre de fois que l'expression rationnelle X apparaît dans la chaîne Y (rcount)",
-	"abusefilter-edit-builder-funcs-get_matches": "Tableau de correspondance d’expressions régulières avec un texte pour chaque groupe de capture (get_matches)",
+	"abusefilter-edit-builder-funcs-get_matches": "Tableau de correspondance d’expressions rationnelles avec un texte pour chaque groupe de capture (get_matches)",
 	"abusefilter-edit-builder-funcs-rmwhitespace": "Supprimer les espaces (rmwhitespace)",
 	"abusefilter-edit-builder-funcs-rmspecials": "Supprimer les caractères spéciaux (rmspecials)",
 	"abusefilter-edit-builder-funcs-ip_in_range": "L'adresse IP est-elle dans la plage ? (ip_in_range)",
