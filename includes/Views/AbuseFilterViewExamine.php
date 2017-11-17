@@ -199,23 +199,15 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 
 	function loadParameters() {
 		$request = $this->getRequest();
-		$searchUsername = $request->getText( 'wpSearchUser' );
 		$this->mSearchPeriodStart = $request->getText( 'wpSearchPeriodStart' );
 		$this->mSearchPeriodEnd = $request->getText( 'wpSearchPeriodEnd' );
 		$this->mSubmit = $request->getCheck( 'submit' );
 		$this->mTestFilter = $request->getText( 'testfilter' );
 
 		// Normalise username
-		$userTitle = Title::newFromText( $searchUsername );
-
-		if ( $userTitle && $userTitle->getNamespace() == NS_USER ) {
-			$this->mSearchUser = $userTitle->getText(); // Allow User:Blah syntax.
-		} elseif ( $userTitle ) {
-			// Not sure of the value of prefixedText over text, but no need to munge unnecessarily.
-			$this->mSearchUser = $userTitle->getPrefixedText();
-		} else {
-			$this->mSearchUser = '';
-		}
+		$searchUsername = $request->getText( 'wpSearchUser' );
+		$userTitle = Title::newFromText( $searchUsername, NS_USER );
+		$this->mSearchUser = $userTitle ? $userTitle->getText() : '';
 	}
 }
 
