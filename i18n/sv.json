@@ -180,7 +180,7 @@
 	"abusefilter-edit-action-degroup": "Ta bort användaren från alla användargrupper",
 	"abusefilter-edit-action-block": "Blockera användaren och/eller IP-adressen från redigering",
 	"abusefilter-edit-action-throttle": "Genomför handlingar endast om användaren överstiger en limit",
-	"abusefilter-edit-action-rangeblock": "Blockera /16-intervallet varifrån användaren kommer.",
+	"abusefilter-edit-action-rangeblock": "Blockera respektive IP-intervall varifrån användaren kommer",
 	"abusefilter-edit-action-tag": "Märk redigeringen för vidare granskning.",
 	"abusefilter-edit-throttle-count": "Antal tillåtna handlingar:",
 	"abusefilter-edit-throttle-period": "Tidsperiod:",
