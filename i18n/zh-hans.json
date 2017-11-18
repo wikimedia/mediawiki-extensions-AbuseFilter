@@ -200,7 +200,7 @@
 	"abusefilter-edit-action-degroup": "将用户从所有权限组中移除",
 	"abusefilter-edit-action-block": "封禁进行编辑的用户和／或IP地址",
 	"abusefilter-edit-action-throttle": "只当用户触犯频率上限后方触发操作",
-	"abusefilter-edit-action-rangeblock": "封禁用户起始的各自IP段",
+	"abusefilter-edit-action-rangeblock": "封禁用户来源的对应IP段",
 	"abusefilter-edit-action-tag": "标记该编辑以供进一步检查",
 	"abusefilter-edit-throttle-count": "允许的操作次数：",
 	"abusefilter-edit-throttle-period": "时长：",

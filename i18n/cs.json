@@ -13,7 +13,8 @@
 			"Urbanecm",
 			"Matma Rex",
 			"Martin Urbanec",
-			"Dvorapa"
+			"Dvorapa",
+			"Danny B."
 		]
 	},
 	"abusefilter-desc": "Podrobuje editace automatickým heuristikám",
@@ -241,6 +242,7 @@
 	"abusefilter-edit-builder-funcs-norm": "Normalizovat (norm)",
 	"abusefilter-edit-builder-funcs-count": "Počet výskytů řetězce X v řetězci Y (count)",
 	"abusefilter-edit-builder-funcs-rcount": "Kolikrát se regulární výraz X vyskytuje v řetězci Y (rcount)",
+	"abusefilter-edit-builder-funcs-get_matches": "Pole shod regulárních výrazů s textem pro každou skupinu zachycení (get_matches)",
 	"abusefilter-edit-builder-funcs-rmwhitespace": "Odstranit bílé znaky (rmwhitespace)",
 	"abusefilter-edit-builder-funcs-rmspecials": "Odstranit speciální znaky (rmspecials)",
 	"abusefilter-edit-builder-funcs-ip_in_range": "Patří IP adresa do rozsahu? (ip_in_range)",
