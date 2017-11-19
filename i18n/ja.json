@@ -19,7 +19,8 @@
 			"W.CC",
 			"Sujiniku",
 			"Azeha",
-			"Matma Rex"
+			"Matma Rex",
+			"Aefgh39622"
 		]
 	},
 	"abusefilter-desc": "編集に対して、自動的な経験則を適用する",
@@ -56,6 +57,7 @@
 	"action-abusefilter-modify-restricted": "制限された操作を含む不正利用フィルターの変更",
 	"action-abusefilter-revert": "指定した不正利用フィルターによるすべての変更の差し戻し",
 	"action-abusefilter-view-private": "非公開の不正利用フィルターの閲覧",
+	"action-abusefilter-log-private": "非公開の不正利用フィルター記録の閲覧",
 	"abusefilter-log": "不正利用フィルター記録",
 	"abusefilter-log-summary": "この記録はフィルターが発動した全操作の一覧を表示しています。",
 	"abusefilter-log-search": "不正利用記録を検索",
@@ -63,6 +65,7 @@
 	"abusefilter-log-search-filter": "フィルターID (\"|\" 区切り):",
 	"abusefilter-log-search-title": "ページ名:",
 	"abusefilter-log-search-wiki": "ウィキ:",
+	"abusefilter-log-search-entries-label": "可視性:",
 	"abusefilter-log-search-entries-all": "すべての項目",
 	"abusefilter-log-search-entries-hidden": "非表示項目のみ",
 	"abusefilter-log-search-entries-visible": "表示項目のみ",
