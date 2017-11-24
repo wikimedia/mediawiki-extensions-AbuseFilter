@@ -20,7 +20,8 @@
 			"Sujiniku",
 			"Azeha",
 			"Matma Rex",
-			"Aefgh39622"
+			"Aefgh39622",
+			"Omotecho"
 		]
 	},
 	"abusefilter-desc": "編集に対して、自動的な経験則を適用する",
@@ -175,7 +176,7 @@
 	"abusefilter-edit-action-degroup": "利用者をすべての特権グループから除く",
 	"abusefilter-edit-action-block": "利用者および/またはIPアドレスを編集ブロックする",
 	"abusefilter-edit-action-throttle": "利用者が設定された速度限界を越えた場合のみ、対処操作を発動する",
-	"abusefilter-edit-action-rangeblock": "利用者の発信元を/16レンジでブロックする",
+	"abusefilter-edit-action-rangeblock": "利用者の発信元を該当する IP レンジでブロックする",
 	"abusefilter-edit-action-tag": "後で再検討するために編集にタグを付ける",
 	"abusefilter-edit-throttle-count": "許可される操作数:",
 	"abusefilter-edit-throttle-period": "期間:",
