@@ -710,7 +710,11 @@ class AbuseFilterHooks {
 		$vars->setVar( 'file_size', $upload->getFileSize() );
 
 		$vars->setVar( 'file_mime', $props['mime'] );
-		$vars->setVar( 'file_mediatype', MimeMagic::singleton()->getMediaType( null, $props['mime'] ) );
+		$vars->setVar(
+			'file_mediatype',
+			MediaWiki\MediaWikiServices::getInstance()->getMimeAnalyzer()
+				->getMediaType( null, $props['mime'] )
+		);
 		$vars->setVar( 'file_width', $props['width'] );
 		$vars->setVar( 'file_height', $props['height'] );
 		$vars->setVar( 'file_bits_per_channel', $props['bits'] );
