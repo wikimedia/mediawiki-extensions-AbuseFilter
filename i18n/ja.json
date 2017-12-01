@@ -411,6 +411,7 @@
 	"abusefilter-topnav-import": "フィルターのインポート",
 	"abusefilter-log-name": "不正利用フィルター記録",
 	"abusefilter-log-header": "この記録はフィルターに対してなされた変更の要約を表示しています。全詳細は、最近のフィルターの変更[[Special:AbuseFilter/history|一覧]]をご覧ください。",
+	"abusefilter-logentry-modify": "$1 が $4 ($5) を{{GENDER:$2|変更しました}}",
 	"abusefilter-log-noresults": "結果なし",
 	"abusefilter-diff-title": "版間での差分",
 	"abusefilter-diff-item": "項目",
