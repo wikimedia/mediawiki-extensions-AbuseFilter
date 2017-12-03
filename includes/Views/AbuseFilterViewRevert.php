@@ -20,8 +20,8 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			return;
 		}
 
-		$out->addWikiMsg( 'abusefilter-revert-intro', $filter );
-		$out->setPageTitle( $this->msg( 'abusefilter-revert-title', $filter ) );
+		$out->addWikiMsg( 'abusefilter-revert-intro', Message::numParam( $filter ) );
+		$out->setPageTitle( $this->msg( 'abusefilter-revert-title' )->numParams( $filter ) );
 
 		// First, the search form.
 		$searchFields = [];
