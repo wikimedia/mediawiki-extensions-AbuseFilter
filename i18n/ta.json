@@ -278,7 +278,6 @@
 	"abusefilter-topnav-tools": "பிழை திருத்தும் கருவிகள்",
 	"abusefilter-topnav-import": "வடிகட்டியை இறக்குமதி செய்",
 	"abusefilter-log-name": "முறைகேடு வடிகட்டிப் பதிகை",
-	"abusefilter-log-entry-modify": "$1 திருத்தப்பட்டது ($2)",
 	"abusefilter-log-noresults": "முடிவுகள் ஏதுமில்லை",
 	"abusefilter-diff-title": "பதிப்புகளுக்கிடையிலான வேறுபாடு",
 	"abusefilter-diff-item": "பொருள்",

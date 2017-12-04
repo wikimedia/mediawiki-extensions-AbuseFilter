@@ -7,7 +7,8 @@
 			"ශ්වෙත",
 			"සුරනිමල",
 			"Susith Chandira Gts",
-			"Macofe"
+			"Macofe",
+			1100100
 		]
 	},
 	"abusefilter-desc": "සංස්කරණ සඳහා ස්වයංක්‍රීය විවරණෝපයෝගී යෙදේ",
@@ -137,7 +138,6 @@
 	"abusefilter-edit-consequences": "ගැළපුණු විට සිදු කල යුතු ක්‍රියාකාරකම්",
 	"abusefilter-edit-action-warn": "පරිශීලකට අවවාද කිරීමෙන් පසු මෙම ක්‍රියාවන් පුරන්න",
 	"abusefilter-edit-action-disallow": "ප්‍රශ්න විමසීමේදී ක්‍රියාවක් සිදු කිරීමෙන් පරිශීලක වලක්වන්න.",
-	"abusefilter-edit-action-flag": "අපයෙදුම් ලඝු සටහනෙහි සංස්කරණය ධජිකරණය කරන්න",
 	"abusefilter-edit-action-blockautopromote": "පරිශීලකගේ ස්වයංතහවුරුකිරීම් තත්වය අහෝසි කරන්න",
 	"abusefilter-edit-action-degroup": "සියලුම හිමිකම් සමූහයන්ගෙන් මෙම පරිශිලකයා ඉවත් කරන්න",
 	"abusefilter-edit-action-block": "පරිශීලකගේ සහ/හෝ අයිපී ලිපිනය සංස්කරණයෙන් වාරණය කරන්න",
@@ -343,7 +343,6 @@
 	"abusefilter-topnav-import": "පෙරහන ආයාත කරන්න",
 	"abusefilter-log-name": "අපයෙදුම් පෙරහන් ලඝු සටහන",
 	"abusefilter-log-header": "පෙරහන් වෙත සිදු කරන ලද වෙනස්කම් වල සාරාංශයක් මෙම ලඝු සටහනෙන් පෙන්වයි.\nසම්පූර්ණ විස්තර සඳහා, මෑත පෙරහන් වෙනස්කම්වල [[Special:AbuseFilter/history|ලැයිස්තුව]]  බලන්න.",
-	"abusefilter-log-entry-modify": "$1 වෙනස්කරන ලදී ($2)",
 	"abusefilter-log-noresults": "ප්‍රතිඵල නොමැත",
 	"abusefilter-diff-title": "අනුවාද අතර වෙනස්කම්",
 	"abusefilter-diff-item": "අයිතමය",

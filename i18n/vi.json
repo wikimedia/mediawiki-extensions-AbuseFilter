@@ -140,7 +140,6 @@
 	"abusefilter-edit-status-label": "Thống kê:",
 	"abusefilter-edit-status": "Trong số $1 tác vụ cuối cùng, bộ lọc này đã so trùng được $2 tác vụ ($3%).",
 	"abusefilter-edit-status-profile": "Trong vòng $1 {{PLURAL:$1|tác vụ|tác vụ}} cuối, bộ lọc này đã so trùng được $2 tác vụ ($3%).\nThời gian chạy trung bình là $4ms, và sử dụng $5 {{PLURAL:$5||}} điều kiện trong giới hạn các điều kiện.",
-	"abusefilter-edit-throttled": "'''Cảnh báo''': Bộ lọc này bị tự động tắt để an toàn. Nó đã đạt đến giới hạn so trùng là hơn $1% số tác vụ.",
 	"abusefilter-edit-new": "Bộ lọc mới",
 	"abusefilter-edit-save": "Lưu bộ lọc",
 	"abusefilter-edit-id": "ID bộ lọc:",

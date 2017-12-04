@@ -67,7 +67,6 @@
 	"abusefilter-topnav-import": "filtër Import",
 	"abusefilter-log-name": "log Abuse Filter",
 	"abusefilter-log-header": "Kjo log tregon një përmbledhje të ndryshimet e bëra në filtra. Për hollësi të plota, shikoni [[Special:AbuseFilter/history|lista]] filtër të ndryshimeve të fundit.",
-	"abusefilter-log-entry-modify": "ndryshuar për herë te $1 ($2)",
 	"abusefilter-diff-title": "Dallimet midis versioneve",
 	"abusefilter-diff-item": "Artikull",
 	"abusefilter-diff-version": "Version nga $1 nga $2",

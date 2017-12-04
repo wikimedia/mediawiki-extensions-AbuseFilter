@@ -32,7 +32,6 @@
 	"abusefilter-edit-id": "Número de filtro:",
 	"abusefilter-edit-hitcount": "Los filtros alcançados:",
 	"abusefilter-edit-action-warn": "Lança el filtro dospués de dar un aviso al empleador",
-	"abusefilter-edit-action-flag": "Marca el trocamiento, en los rejjistros de filtro de contra-abusos",
 	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sêgondo|sêgondos}}",
 	"abusefilter-edit-history": "Istoria",
 	"abusefilter-edit-export": "Taxirea este filtro a un otro viki",

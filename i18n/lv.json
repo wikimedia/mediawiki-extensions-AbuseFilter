@@ -125,7 +125,6 @@
 	"abusefilter-edit-status-label": "Statistika:",
 	"abusefilter-edit-status": "No {{PLURAL:$1|pēdējām|pēdējās|pēdējām}} $1 {{PLURAL:$1|darbībām|darbības|darbībām}} šis filtrs attiecās uz $2 ($3%).",
 	"abusefilter-edit-status-profile": "No {{PLURAL:$1|pēdējām|pēdējās|pēdējām}} $1 {{PLURAL:$1|darbībām|darbības|darbībām}} šis filtrs attiecās uz $2 ($3%).\nVidēji tā darbības laiks ir $4 ms, un tas izlieto $5 {{PLURAL:$5|nosacījumus|nosacījumu|nosacījumus}} no nosacījumu limitu.",
-	"abusefilter-edit-throttled": "'''Brīdinājums''': Drošības iemeslu dēļ šis filtrs tika automātiski atslēgts.\nTas sasniedza $1% no atļauto darbību limita.",
 	"abusefilter-edit-new": "Jauns filtrs",
 	"abusefilter-edit-save": "Saglabāt filtru",
 	"abusefilter-edit-id": "Filtra ID:",

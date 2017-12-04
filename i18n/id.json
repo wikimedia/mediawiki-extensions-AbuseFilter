@@ -12,7 +12,8 @@
 			"C5st4wr6ch",
 			"Arifin.wijaya",
 			"Matma Rex",
-			"Rachmat.Wahidi"
+			"Rachmat.Wahidi",
+			"Rachmat04"
 		]
 	},
 	"abusefilter-desc": "Memberlakukan pemeriksaan heuristik otomatis atas kontribusi pengguna.",
@@ -138,7 +139,6 @@
 	"abusefilter-edit-status-label": "Statistik:",
 	"abusefilter-edit-status": "Dari $1 {{PLURAL:$1|tindakan|tindakan}} terakhir, terdapat $2 ($3%) kecocokan dengan filter ini.",
 	"abusefilter-edit-status-profile": "Dari $1 {{PLURAL:$1|tindakan|tindakan}} terakhir, terdapat $2 ($3%) kecocokan dengan filter ini.\nSecara rata-rata, waktu yang dibutuhkan adalah $4ms dan mengkonsumsi $5 {{PLURAL:$5||}}kondisi dari batas kondisi.",
-	"abusefilter-edit-throttled": "'''Peringatan''': Filter ini secara otomatis telah dinonaktifkan untuk alasan keamanan. Telah mencapai limit lebih dari $1% tindakan yang cocok.",
 	"abusefilter-edit-new": "Filter baru",
 	"abusefilter-edit-save": "Simpan filter",
 	"abusefilter-edit-id": "ID filter:",
@@ -157,7 +157,6 @@
 	"abusefilter-edit-consequences": "Tindakan yang diambil ketika mengenai sasaran",
 	"abusefilter-edit-action-warn": "Picu tindakan ini setelah memberikan peringatan kepada pengguna",
 	"abusefilter-edit-action-disallow": "Cegah pengguna melakukan tindakan yang meragukan",
-	"abusefilter-edit-action-flag": "Tandai suntingan ini dalam catatan penyalahgunaan",
 	"abusefilter-edit-action-blockautopromote": "Cabut status konfirmasi otomatis pengguna tersebut",
 	"abusefilter-edit-action-degroup": "Hapus pengguna dari semua kelompok hak-hak istimewa.",
 	"abusefilter-edit-action-block": "Blokir pengguna dan alamat IP dari menyunting",
@@ -389,7 +388,6 @@
 	"abusefilter-topnav-import": "Impor penyaring",
 	"abusefilter-log-name": "Catatan penyaringan penyalahgunaan",
 	"abusefilter-log-header": "Log ini memberikan ringkasan perubahan yang dilakukan terhadap filter.\nUntuk detail lengkap, lihat [[Special:AbuseFilter/history|daftar]] perubahan filter terbaru.",
-	"abusefilter-log-entry-modify": "pengubahan $1 ($2)",
 	"abusefilter-log-noresults": "Tidak ada hasil",
 	"abusefilter-diff-title": "Perbedaan versi",
 	"abusefilter-diff-item": "butir",

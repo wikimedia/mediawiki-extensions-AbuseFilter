@@ -153,7 +153,6 @@
 	"abusefilter-edit-status-label": "Statystyki:",
 	"abusefilter-edit-status": "{{PLURAL:$1|Dla ostatniej $1 akcji|W ostatnich $1 akcjach}} ten filtr pasował do $2 ($3%).",
 	"abusefilter-edit-status-profile": "{{PLURAL:$1|Dla ostatniej $1 akcji|W ostatnich $1 akcjach}} ten filtr pasował do $2 ($3%).\nŚredni czas wykonania wyniósł $4 ms. Wykorzystano $5 {{PLURAL:$5|warunek|warunki|warunków}} z limitu.",
-	"abusefilter-edit-throttled": "'''Uwaga''': Ten filtr został automatycznie wyłączony jako środek bezpieczeństwa. Został osiągnięty limit dopasowań na poziomie większym $1% akcji.",
 	"abusefilter-edit-new": "Nowy filtr",
 	"abusefilter-edit-save": "Zapisz filtr",
 	"abusefilter-edit-id": "ID filtru",

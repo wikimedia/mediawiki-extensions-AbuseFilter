@@ -117,7 +117,6 @@
 	"abusefilter-edit-status-label": "Statistikat:",
 	"abusefilter-edit-status": "fundit $1 {{PLURAL:$1|veprimi i|veprimet e}}, ky filtër i ka krahasuar $2 ($3%).",
 	"abusefilter-edit-status-profile": "fundit $1 {{PLURAL:$1|veprimi i|veprimet e}}, ky filtër i ka krahasuar $2 ($3%).\nMesatarisht, koha e rrjedhës është $4ms, dhe konsumon $5 {{PLURAL:$5|kusht|kushtet}} e kufirit të kushtit",
-	"abusefilter-edit-throttled": "' ' ' Kujdes ' ' ' : Ky filtër është deaktivizuar automatikisht si masë sigurie.\nKa arritur kufirin e përputhjes së më shumë se $1% veprimeve.",
 	"abusefilter-edit-new": "Filtër i ri",
 	"abusefilter-edit-save": "Ruaj filtrin",
 	"abusefilter-edit-id": "Filter ID-ja:",

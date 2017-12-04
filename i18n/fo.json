@@ -126,7 +126,6 @@
 	"abusefilter-edit-lastmod": "Filturið seinast broytt:",
 	"abusefilter-edit-lastmod-text": "$1 av $2",
 	"abusefilter-edit-hitcount": "Filturtreff:",
-	"abusefilter-edit-action-flag": "Flagga rættindina í misnýtslulogginum",
 	"abusefilter-edit-action-blockautopromote": "Tak burtur støðu brúkarans sum sjálvvirkandi váttaður brúkari",
 	"abusefilter-edit-action-degroup": "Tak brúkaran burtur frá øllum bólkum við framíhjárættindum",
 	"abusefilter-edit-action-block": "Sperra brúkaran og/ella IP adressuna, so viðkomandi ikki sleppur at skriva",
