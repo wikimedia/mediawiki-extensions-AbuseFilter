@@ -22,7 +22,8 @@
 			"Jeleniccz",
 			"Mainframe98",
 			"QZanden",
-			"Festina90"
+			"Festina90",
+			"Mar(c)"
 		]
 	},
 	"abusefilter-desc": "Voert automatisch heuristische analyse uit op bewerkingen",
@@ -30,11 +31,11 @@
 	"abuselog": "Filterlogboek",
 	"abusefilter-intro": "Dit is het beheerscherm voor bewerkingsfilters.\nHet filtersysteem past automatische heuristiek toe op alle handelingen.\nVia dit scherm worden alle ingestelde filters weergegeven en kunnen ze aangepast worden.",
 	"abusefilter-mustbeeditor": "Om veiligheidsredenen hebben alleen gebruikers met het recht om filters te wijzigen de mogelijkheid deze interface te gebruiken.",
-	"abusefilter-warning": "'''Waarschuwing:''' deze handeling is automatisch geïdentificeerd als schadelijk.\nOnconstructieve handelingen worden snel teruggedraaid, en herhaald onconstructief bewerken eindigt in een blokkade van uw gebruiker of uw IP-adres.\nAls u denkt dat deze handeling wel constructief is, bevestig uw handeling dan opnieuw.\nEen korte beschrijving van de regel op basis waarvan uw handeling is tegengehouden: $1",
+	"abusefilter-warning": "'''Waarschuwing:''' Deze handeling is automatisch als schadelijk geïdentificeerd.\nOnconstructieve handelingen worden snel teruggedraaid, en herhaald onconstructief bewerken eindigt in een blokkade van uw account of IP-adres.\nAls u denkt dat deze handeling wel constructief is, bevestig uw handeling dan opnieuw.\nEen korte beschrijving van de regel op basis waarvan uw handeling is tegengehouden: $1",
 	"abusefilter-disallowed": "Deze handeling is automatisch geïdentificeerd als schadelijk, en daarom niet toegelaten.\nAls u denkt dat uw handeling wel constructief was, rapporteer dan aan de beheerder wat u probeerde te doen.\nEen korte beschrijving van de regel op basis waarvan uw handeling is tegengehouden volgt nu: $1",
-	"abusefilter-blocked-display": "Deze handeling is automatisch geïdentificeerd als schadelijk. Daarom is deze niet uitgevoerd.\nOm {{SITENAME}} te beschermen zijn uw gebruiker en alle bijbehorende IP-adressen geblokkeerd.\nAls deze maatregel onterecht is genomen, neem dan contact op met een beheerder.\nEen korte beschrijving van de regel op basis waarvan uw bewerking is tegengehouden volgt nu: $1",
+	"abusefilter-blocked-display": "Deze handeling is automatisch geïdentificeerd als schadelijk. Daarom is deze niet uitgevoerd.\nOm {{SITENAME}} te beschermen zijn uw gebruikersaccount en alle bijbehorende IP-adressen geblokkeerd.\nAls deze maatregel onterecht is genomen, neem dan contact op met een beheerder.\nEen korte beschrijving van de regel op basis waarvan uw bewerking is tegengehouden: $1",
 	"abusefilter-degrouped": "Deze handeling is automatisch geïdentificeerd als schadelijk.\nOmdat is vastgesteld dat deze gebruiker mogelijk door iemand anders wordt misbruikt, zijn alle rechten ingetrokken.\nAls deze maatregel onterecht is genomen, neem dan contact op met een bureaucraat en licht deze handeling toe, zodat uw rechten hersteld kunnen worden.\nEen korte beschrijving van de regel op basis waarvan uw bewerking is tegengehouden volgt nu: $1",
-	"abusefilter-autopromote-blocked": "Deze handeling is automatisch geïdentificeerd als schadelijk. Daarom is deze niet uitgevoerd.\nAls aanvullende veiligheidsmaatregel zijn een aantal automatisch toegekende rechten voor uw gebruiker tijdelijk ingetrokken.\nEen korte beschrijving van de regel op basis waarvan uw bewerking is tegengehouden volgt nu: $1",
+	"abusefilter-autopromote-blocked": "Deze handeling is automatisch geïdentificeerd als schadelijk. Daarom is deze niet uitgevoerd.\nAls aanvullende veiligheidsmaatregel zijn een aantal automatisch toegekende rechten voor uw account tijdelijk ingetrokken.\nEen korte beschrijving van de regel op basis waarvan uw bewerking is tegengehouden: $1",
 	"abusefilter-blocker": "Filter",
 	"abusefilter-blockreason": "Automatisch geblokkeerd door het filter.\nBeschrijving van de regel die dit heeft veroorzaakt: $1",
 	"abusefilter-degroupreason": "Rechten zijn automatisch verwijderd door het filter. Regelbeschrijving: $1",
