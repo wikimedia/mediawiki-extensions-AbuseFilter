@@ -166,7 +166,7 @@
 	"abusefilter-edit-action-degroup": "Изключване на потребителя от всички привилегировани групи",
 	"abusefilter-edit-action-block": "Блокиране на потребителя и/или IP адреса",
 	"abusefilter-edit-action-throttle": "Изпълнение на действията само ако потребителят превиши определена честота на редакциите",
-	"abusefilter-edit-action-rangeblock": "Блокиране на /16 диапазона, към който принадлежи потребителят",
+	"abusefilter-edit-action-rangeblock": "Блокиране на съответния IP-диапазон, към който принадлежи потребителят",
 	"abusefilter-edit-action-tag": "Отбелязване на редакцията за понататъшно преглеждане",
 	"abusefilter-edit-throttle-count": "Брой позволени действия:",
 	"abusefilter-edit-throttle-period": "Период от време:",
