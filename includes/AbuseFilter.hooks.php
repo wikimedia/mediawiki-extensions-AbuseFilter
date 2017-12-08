@@ -211,7 +211,7 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param Article|WikiPage &$article
+	 * @param WikiPage &$wikiPage
 	 * @param User &$user
 	 * @param string $content Content
 	 * @param string $summary
@@ -222,10 +222,11 @@ class AbuseFilterHooks {
 	 * @param Revision $revision
 	 * @param Status &$status
 	 * @param int $baseRevId
+	 *
 	 * @return bool
 	 */
 	public static function onPageContentSaveComplete(
-		&$article, &$user, $content, $summary, $minoredit, $watchthis, $sectionanchor,
+		WikiPage &$wikiPage, &$user, $content, $summary, $minoredit, $watchthis, $sectionanchor,
 		&$flags, $revision, &$status, $baseRevId
 	) {
 		if ( !self::$successful_action_vars || !$revision ) {
@@ -238,12 +239,12 @@ class AbuseFilterHooks {
 		$vars = self::$successful_action_vars;
 
 		if ( $vars->getVar( 'article_prefixedtext' )->toString() !==
-			$article->getTitle()->getPrefixedText()
+			$wikiPage->getTitle()->getPrefixedText()
 		) {
 			return true;
 		}
 
-		if ( !self::identicalPageObjects( $article, self::$last_edit_page ) ) {
+		if ( !self::identicalPageObjects( $wikiPage, self::$last_edit_page ) ) {
 			return true; // this isn't the edit $successful_action_vars was set for
 		}
 		self::$last_edit_page = false;
