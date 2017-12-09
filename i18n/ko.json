@@ -246,6 +246,7 @@
 	"abusefilter-edit-builder-funcs-norm": "정규화 (norm)",
 	"abusefilter-edit-builder-funcs-count": "문자열 Y 안의 문자열 X의 반복 횟수 (count)",
 	"abusefilter-edit-builder-funcs-rcount": "문자열 Y 안의 정규 표현식으로 표현된 X의 반복 횟수 (rcount)",
+	"abusefilter-edit-builder-funcs-get_matches": "수집되는 각각의 그룹마다 텍스트 내에서 일치하는 정규 표현식 배열 (get_matches)",
 	"abusefilter-edit-builder-funcs-rmwhitespace": "공백 제거 (rmwhitespace)",
 	"abusefilter-edit-builder-funcs-rmspecials": "특수 문자를 제거 (rmspecials)",
 	"abusefilter-edit-builder-funcs-ip_in_range": "IP가 대역 안에 있는지 여부 (ip_in_range)",
