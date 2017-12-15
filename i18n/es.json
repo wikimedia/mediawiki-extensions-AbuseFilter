@@ -74,7 +74,7 @@
 	"right-abusefilter-log-private": "Ver las entradas del registro de filtros antiabusos marcadas como privadas",
 	"right-abusefilter-hide-log": "Ocultar entradas en el registro del filtro antiabusos",
 	"right-abusefilter-hidden-log": "Ver entradas ocultas en el registro del filtro antiabusos",
-	"right-abusefilter-modify-global": "Crear o modificar filtros globales antiabusos.",
+	"right-abusefilter-modify-global": "Crear o modificar filtros antiabusos globales.",
 	"action-abusefilter-modify": "modificar los filtros antiabusos",
 	"action-abusefilter-view": "ver los filtros antiabusos",
 	"action-abusefilter-log": "ver registro del filtro antiabusos",
