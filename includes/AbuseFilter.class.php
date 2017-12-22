@@ -3,6 +3,7 @@
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use Wikimedia\Rdbms\IDatabase;
 
 /**
  * This class contains most of the business logic of AbuseFilter. It consists of mostly
@@ -730,7 +731,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param DatabaseBase $dbr
+	 * @param IDatabase $dbr
 	 * @param string[] $filters
 	 * @param string $prefix
 	 * @return array[]

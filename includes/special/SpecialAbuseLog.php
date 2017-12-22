@@ -649,7 +649,7 @@ class SpecialAbuseLog extends SpecialPage {
 	}
 
 	/**
-	 * @param DatabaseBase $db
+	 * @param \Wikimedia\Rdbms\IDatabase $db
 	 * @return string
 	 */
 	public static function getNotDeletedCond( $db ) {
