@@ -13,7 +13,8 @@
 			"Arifin.wijaya",
 			"Matma Rex",
 			"Rachmat.Wahidi",
-			"Rachmat04"
+			"Rachmat04",
+			"Hidayatsrf"
 		]
 	},
 	"abusefilter-desc": "Memberlakukan pemeriksaan heuristik otomatis atas kontribusi pengguna.",
@@ -25,7 +26,7 @@
 	"abusefilter-disallowed": "Aksi ini secara otomatis telah diidentifikasi sebagai tindakan yang merusak,\ndan karenanya ditolak.\nJika Anda yakin bahwa suntingan anda adalah suntingan yang bermanfaat, silakan hubungi pengurus, dan informasikan apa yang sedang Anda lakukan.\nKeterangan singkat tentang peraturan penyalahgunaan yang berkaitan dengan aksi Anda adalah: $1",
 	"abusefilter-blocked-display": "Tindakan ini secara otomatis telah diidentifikasi sebagai tindakan yang merusak,\ndan sistem telah mencegah tindakan anda tersebut.\nSebagai tambahan, untuk melindungi {{SITENAME}}, akun pengguna anda dan semua alamat IP yang terkait telah diblokir.\nJika menurut anda ini terjadi karena kesalahan, silakan hubungi pengurus.\nKeterangan singkat tentang peraturan penyalahgunaan yang berkaitan dengan tindakan anda adalah: $1",
 	"abusefilter-degrouped": "Tindakan ini secara otomatis telah diidentifikasi sebagai tindakan yang merusak.\nKonsekuensinya, tindakan ini telah ditolak, dan karena akun anda dianggap mencurigakan, semua hak akses anda telah dicabut.\nJika anda yakin bahwa ini adalah kesalahan, silahkan hubungi seorang birokrat guna menjelaskan tindakan anda, dan kemungkinan hak-hak anda dapat dipulihkan.\nKeterangan singkat tentang peraturan penyalahgunaan yang berkaitan dengan tindakan anda adalah: $1",
-	"abusefilter-autopromote-blocked": "Tindakan ini secara otomatis telah diidentifikasi sebagai tindakan yang merusak, dan telah ditolak oleh sistem.\nSebagai tambahan, langkah keamanan yang dilakukan sistem, beberapa hak-hak istimewa yang biasanya diberikan bagi suatu akun yamg wajar telah dibatalkan dari akun anda.\nKeterangan singkat tentang peraturan penyalahgunaan yang berkaitan dengan tindakan anda adalah: $1",
+	"abusefilter-autopromote-blocked": "Tindakan ini secara otomatis telah diidentifikasi sebagai tindakan yang merusak, dan telah ditolak oleh sistem.\nSebagai tambahan, langkah keamanan yang dilakukan sistem, beberapa hak-hak istimewa yang biasanya diberikan bagi suatu akun yang wajar telah dibatalkan dari akun anda.\nKeterangan singkat tentang peraturan penyalahgunaan yang berkaitan dengan tindakan anda adalah: $1",
 	"abusefilter-blocker": "Filter penyalahgunaan",
 	"abusefilter-blockreason": "Diblokir secara otomatis oleh filter penyalahgunaan.\nKeterangan mengenai peraturan terkait: $1",
 	"abusefilter-degroupreason": "Hak akses telah dicabut secara otomatis oleh filter penyalahgunaan.\nKeterangan mengenai peraturan terkait: $1",
