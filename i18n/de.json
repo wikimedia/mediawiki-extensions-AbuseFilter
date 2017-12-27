@@ -437,6 +437,7 @@
 	"apihelp-abusefiltercheckmatch-param-filter": "Der vollständige Filtertext, der für einen Treffer überprüft werden soll.",
 	"apihelp-abusefiltercheckmatch-param-rcid": "Zu gegenprüfende Letzte-Änderungs-Kennung.",
 	"apihelp-abusefiltercheckmatch-param-logid": "Zu gegenprüfende Missbrauchsfilter-Logbuch-Kennung.",
+	"apihelp-abusefiltercheckmatch-example-1": "Testet, ob die Letzte-Änderungen-Kennung 15 einem einfachen Filter entspricht.",
 	"apihelp-abusefilterchecksyntax-description": "Prüft die Syntax eines Missbrauchfilters.",
 	"apihelp-abusefilterchecksyntax-summary": "Überprüft die Syntax eines Missbrauchfilters.",
 	"apihelp-abusefilterchecksyntax-example-1": "Syntax eines gültigen Filters prüfen",
