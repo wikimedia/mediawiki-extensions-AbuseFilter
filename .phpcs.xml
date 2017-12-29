@@ -5,7 +5,9 @@
 		<exclude name="MediaWiki.Commenting.FunctionComment.MissingParamComment" />
 		<exclude name="MediaWiki.Files.ClassMatchesFilename.NotMatch" />
 		<exclude name="MediaWiki.VariableAnalysis.ForbiddenGlobalVariables.ForbiddenGlobal$wgTitle" />
-		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment.NewLineComment"/>
+		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment.NewLineComment" />
+		<exclude name="Squiz.Scope.MemberVarScope.Missing" />
+		<exclude name="Squiz.Scope.MethodScope.Missing" />
 	</rule>
 	<rule ref="MediaWiki.Files.ClassMatchesFilename.WrongCase">
 		<exclude-pattern>*/maintenance/*</exclude-pattern>
