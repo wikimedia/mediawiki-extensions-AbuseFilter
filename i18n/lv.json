@@ -7,7 +7,8 @@
 			"Nemo bis",
 			"Edgars2007",
 			"Matma Rex",
-			"Silraks"
+			"Silraks",
+			"Zuiks"
 		]
 	},
 	"abusefilter-desc": "Pielieto automātiskas heiristikas labojumiem",
@@ -18,7 +19,7 @@
 	"abusefilter-warning": "'''Uzmanību''': Šī darbība automātiski tika atpazīta kā ļaunprātīga.\nNekonstruktīvi labojumi tiks nekavējoties atcelti,\nun nekaunīgu vai atkārtotu ļaunprātīgu labojumu dēļ tavs konts vai IP adrese var tikt bloķēta.\nJa tu uzskati, ka tavs labojums ir konstruktīvs, tad saglabā lapu vēlreiz, lai to apstiprinātu.\nĪss kopsavilkums noteikumam, kas saistīts ar tevis veikto darbību: $1",
 	"abusefilter-disallowed": "Šī darbība automātiski tika atpazīta kā ļaunprātīga un tāpēc tika aizliegta.\nJa tu uzskati, ka tavs labojums ir konstruktīvs, lūdzu informē administratoru par to, ko tu centies izdarīt.\nĪss kopsavilkums noteikumam, kas saistīts ar tevis veikto darbību: $1",
 	"abusefilter-blocked-display": "Šī darbība automātiski tika atpazīta kā ļaunprātīga, un tev ir aizliegts to veikt.\nTurklāt, lai aizsargātu {{SITENAME}}, ir liegti labojumi no tava konta un visām saistītajām IP adresēm.\nJa tu uzskati, ka tas ir noticis kļūdas dēļ, lūdzu sazinies ar administratoru.\nĪss kopsavilkums noteikumam, kas saistīts ar tevis veikto darbību: $1",
-	"abusefilter-degrouped": "Šī darbība automātiski tika atpazīta kā ļaunprātīga.\nLīdz ar to tā tika aizliegta un, tā kā ir aizdomas, ka jūsu konts ir apdraudēts, visas tiesības tika atceltas.\nJa tu uzskati, ka tas ir noticis kļūdas dēļ, lūdzu sazinies ar birokrātu un paskaidro šo darbību, lai atgūtu savas tiesības.\nĪss kopsavilkums noteikumam, kas saistīts ar tevis veikto darbību: $1",
+	"abusefilter-degrouped": "Šī darbība automātiski tika atpazīta kā ļaunprātīga.\nLīdz ar to tā tika aizliegta un, tā kā ir aizdomas, ka tavs konts ir apdraudēts, visas tiesības tika atceltas.\nJa tu uzskati, ka tas ir noticis kļūdas dēļ, lūdzu sazinies ar birokrātu un paskaidro šo darbību, lai atgūtu savas tiesības.\nĪss kopsavilkums noteikumam, kas saistīts ar tevis veikto darbību: $1",
 	"abusefilter-autopromote-blocked": "Šī darbība automātiski tika atpazīta kā ļaunprātīga, un tev ir aizliegts to veikt.\nTurklāt, kā drošības līdzeklis, dažas privilēģijas, kas parasti tiek piešķirtas ilgāk pastāvošiem kontiem, uz laiku ir atceltas no jūsu konta.\nĪss kopsavilkums noteikumam, kas saistīts ar tevis veikto darbību: $1",
 	"abusefilter-blocker": "Ļaunprātīgo izmantošanu filtrs",
 	"abusefilter-blockreason": "Automātiski bloķēts ar ļaunprātīgās izmantošanas filtru.\nAtbilstošā likuma apraksts: $1",
