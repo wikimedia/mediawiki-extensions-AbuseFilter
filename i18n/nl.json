@@ -208,7 +208,7 @@
 	"abusefilter-edit-export": "Dit filter exporteren naar een andere wiki",
 	"abusefilter-edit-syntaxok": "Er zijn geen syntaxisfouten gevonden.",
 	"abusefilter-edit-syntaxerr": "Er is een syntaxisfout gevonden: $1",
-	"abusefilter-edit-bad-tags": "Een of meerdere van de labels die u heeft opgegeven is niet geldig.\nLabels moeten kort zijn, mogen geen speciale tekens bevatten en mogen niet gereserveerd zijn door andere software. Kies een andere labelnaam.",
+	"abusefilter-edit-bad-tags": "Een of meerdere van de labels die u hebt opgegeven zijn niet geldig.\nLabels moeten kort zijn, mogen geen speciale tekens bevatten, en mogen niet gereserveerd zijn door andere software. Kies een andere labelnaam.",
 	"abusefilter-edit-notallowed": "U hebt geen rechten om filters aan te maken of te wijzigen",
 	"abusefilter-edit-notallowed-global": "U kunt globale misbruikfilters niet aanmaken of bewerken",
 	"abusefilter-edit-notallowed-global-custom-msg": "Aangepaste waarschuwingsberichten worden niet ondersteund voor globale filters",
