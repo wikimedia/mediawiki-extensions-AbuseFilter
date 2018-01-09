@@ -313,7 +313,7 @@
 	"abusefilter-edit-builder-vars-restrictions-upload": "Proteção de carregamento de ficheiros",
 	"abusefilter-edit-builder-vars-old-text-stripped": "Texto anterior da página, sem a formatação",
 	"abusefilter-edit-builder-vars-old-links": "Links na página, antes da edição",
-	"abusefilter-edit-builder-vars-old-html": "Texto Wiki anterior da página, convertido para HTML",
+	"abusefilter-edit-builder-vars-old-html": "Texto wiki anterior da página, convertido para HTML",
 	"abusefilter-edit-builder-vars-minor-edit": "Se a edição está marcada ou não como menor",
 	"abusefilter-edit-builder-vars-file-sha1": "Resumo criptográfico (<i>hash</i>) SHA1 do conteúdo do ficheiro",
 	"abusefilter-edit-builder-vars-file-size": "Tamanho do ficheiro em bytes",
