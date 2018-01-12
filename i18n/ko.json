@@ -21,7 +21,8 @@
 			"Matma Rex",
 			"Ykhwong",
 			"Jerrykim306",
-			"Delim"
+			"Delim",
+			"Bluemersen"
 		]
 	},
 	"abusefilter-desc": "사용자 편집을 규칙에 따라 자동으로 검사합니다",
@@ -35,7 +36,7 @@
 	"abusefilter-degrouped": "이 동작은 유해한 것으로 자동 판별되었습니다.\n따라서 동작이 불허되었으며, 계정이 비정상적으로 사용된다고 의심되어 모든 권한이 해제되었습니다.\n이것이 잘못된 판별이라고 생각되시면 사무관에게 연락하여 이 동작에 대한 설명을 제공해 주세요. 그러면 권한은 복구될 것입니다.\n문제가 되는 관련 규칙에 대한 간략한 설명은 다음과 같습니다: $1",
 	"abusefilter-autopromote-blocked": "시스템이 현재 동작에 문제가 있다고 판단하여 동작이 불허되었습니다.\n또한 보안상 이유로 사용자 계정에 부여된 일부 권한이 일시적으로 정지되었습니다.\n문제가 된 필터 규칙은 다음과 같습니다: $1",
 	"abusefilter-blocker": "편집 필터",
-	"abusefilter-blockreason": "편집 필터에 의해 자동적으로 차단되었습니다.\n일치한 규칙에 대한 설명: $1",
+	"abusefilter-blockreason": "편집 필터에 의해 자동으로 차단되었습니다.\n일치한 규칙에 대한 설명: $1",
 	"abusefilter-degroupreason": "편집 필터에 의해 자동으로 권한이 해제되었습니다.\n규칙 설명: $1",
 	"abusefilter-accountreserved": "이 계정 이름은 편집 필터가 사용하도록 지정되어 있습니다.",
 	"right-abusefilter-modify": "편집 필터 수정",
