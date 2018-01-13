@@ -24,7 +24,8 @@
 			"He7d3r",
 			"Opraco",
 			"Matma Rex",
-			"Mansil"
+			"Mansil",
+			"Athena in Wonderland"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas às edições.",
@@ -106,6 +107,9 @@
 	"abusefilter-logentry-suppress": "ocultou [[$1]]",
 	"abusefilter-logentry-unsuppress": "revelou [[$1]]",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|acionou}} o filtro $4, ao {{GENDER:$2|executar}} a operação \"$5\" em $3.\nAções tomadas: $6 ($7)",
+	"log-action-filter-abusefilter": "Tipo de alteração de filtro:",
+	"log-action-filter-abusefilter-create": "Criação de novos filtros",
+	"log-action-filter-abusefilter-modify": "Filtrar modificação",
 	"abusefilter-management": "Administração do filtro de abusos",
 	"abusefilter-list": "Todos os filtros",
 	"abusefilter-list-id": "ID do filtro",
@@ -418,6 +422,7 @@
 	"abusefilter-topnav-import": "Importar filtro",
 	"abusefilter-log-name": "Registo de filtragens de abusos",
 	"abusefilter-log-header": "Este registo mostra um resumo das alterações efetuadas a filtros.\nPara todos os detalhes, ver [[Special:AbuseFilter/history|a lista]] de alterações recentes a filtros.",
+	"abusefilter-logentry-create": "$1 {{GENDER:$2|criou}} $4 ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|modificou}} $4 ($5)",
 	"abusefilter-log-noresults": "Não foram encontrados resultados.",
 	"abusefilter-diff-title": "Diferenças entre versões",
