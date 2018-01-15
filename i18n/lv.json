@@ -76,6 +76,8 @@
 	"abusefilter-log-hide-forbidden": "Jums nav tiesību paslēpt ļaunprātīgās izmantošanas reģistra ierakstus.",
 	"abusefilter-logentry-suppress": "paslēpa \"[[$1]]\"",
 	"abusefilter-logentry-unsuppress": "parādīja \"[[$1]]\"",
+	"log-action-filter-abusefilter-create": "Jauna filtra izveide",
+	"log-action-filter-abusefilter-modify": "Filtra izmaiņa",
 	"abusefilter-management": "Ļaunprātīgās izmantošanas filtru vadība",
 	"abusefilter-list": "Visi filtri",
 	"abusefilter-list-id": "Filtra ID",
