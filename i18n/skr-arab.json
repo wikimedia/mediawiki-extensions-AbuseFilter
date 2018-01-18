@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Saraiki"
+		]
+	},
+	"abusefilter-log-search-user": "ورتݨ آلا:",
+	"abusefilter-log-search-title": "عنوان:",
+	"abusefilter-log-search-wiki": "وکی:",
+	"abusefilter-log-search-submit": "ڳولو",
+	"abusefilter-log-diff": "فرق",
+	"abusefilter-log-details-val": "قدر",
+	"abusefilter-log-noactions": "کوئی وی کائنی",
+	"abusefilter-log-hide-reason": "وجہ:",
+	"abusefilter-list": "سارے نتارے",
+	"abusefilter-list-id": "نتارے دی آئی ڈی",
+	"abusefilter-list-status": "حیثیت",
+	"abusefilter-list-public": "عوامی تفصیل",
+	"abusefilter-list-consequences": "نتیجے",
+	"abusefilter-deleted": "مٹا ݙتے",
+	"abusefilter-tools-reautoconfirm-user": "ورتݨ آلا:",
+	"abusefilter-edit-tools": "آوزار:",
+	"abusefilter-history-timestamp": "ویلا",
+	"abusefilter-history-user": "ورتݨ آلا",
+	"abusefilter-history-deleted": "مٹا ݙتے",
+	"abusefilter-history-filterid": "نتارا",
+	"abusefilter-history-select-user": "ورتݨ آلا:",
+	"abusefilter-history-diff": "تبدیلیاں",
+	"abusefilter-action-tag": "ٹیگ",
+	"abusefilter-action-warn": "خبردار",
+	"abusefilter-action-block": "پابندی لاؤ",
+	"abusefilter-revert-filter": "نتارا:",
+	"abusefilter-revert-confirm": "تصدیق",
+	"abusefilter-examine-user": "ورتݨ آلا:"
+}
