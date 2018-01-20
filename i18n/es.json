@@ -130,6 +130,7 @@
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|disparó}} $4 al {{GENDER:$2|realizar}} la acción «$5» en $3. Medidas adoptadas: $6 ($7)",
 	"log-action-filter-abusefilter": "Tipo de cambio de filtro:",
 	"log-action-filter-abusefilter-create": "Creación de filtro nuevo",
+	"log-action-filter-abusefilter-modify": "Modificación de filtro",
 	"abusefilter-management": "Administración del filtro antiabusos",
 	"abusefilter-list": "Todos los filtros",
 	"abusefilter-list-id": "Identificación de filtro",
