@@ -172,7 +172,7 @@
 	"abusefilter-reautoconfirm-none": "该用户的自动确认状态并没有被撤销过",
 	"abusefilter-reautoconfirm-notallowed": "您不被允许恢复自动确认状态。",
 	"abusefilter-reautoconfirm-done": "该账户的自动确认状态已恢复",
-	"abusefilter-status": "在最近$1次{{PLURAL:$1|操作}}中，$2（$3%）个过滤器{{PLURAL:$2|已}}达到$4的条件限制，$5（$6%）次操作{{PLURAL:$5|已}}匹配当前启用的过滤器之一。",
+	"abusefilter-status": "在最近$1次{{PLURAL:$1|操作}}中，$2（$3%）个过滤器{{PLURAL:$2|已}}达到$4次条件比较上限，$5（$6%）次操作{{PLURAL:$5|已}}匹配当前启用的过滤器之一。",
 	"abusefilter-edit": "编辑滥用过滤器",
 	"abusefilter-edit-subtitle": "编辑过滤器$1",
 	"abusefilter-edit-subtitle-new": "创建过滤器",
