@@ -25,6 +25,12 @@
  * @licence GNU GPL v2+
  * @author Marius Hoch < hoo@online.de >
  */
+
+/**
+ * @covers AbuseFilterCachingParser
+ * @covers AbuseFilterParser
+ * @covers AbuseFilterTokenizer
+ */
 class AbuseFilterParserTest extends MediaWikiTestCase {
 	/**
 	 * @return AbuseFilterParser
@@ -38,7 +44,7 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @return [AbuseFilterParser]
+	 * @return AbuseFilterParser[]
 	 */
 	static function getParsers() {
 		static $parsers = null;
