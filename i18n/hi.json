@@ -13,7 +13,8 @@
 			"Hindustanilanguage",
 			"Matma Rex",
 			"Sfic",
-			"Sachinkatiyar"
+			"Sachinkatiyar",
+			"ArmouredCyborg"
 		]
 	},
 	"abusefilter-desc": "संपादनों पर स्वतः शोध प्रणाली का प्रयोग लागू करता है",
@@ -57,6 +58,9 @@
 	"abusefilter-log-search-filter": "फ़िल्टर IDs (पाइप के साथ अलग):",
 	"abusefilter-log-search-title": "शीर्षक:",
 	"abusefilter-log-search-wiki": "विकी:",
+	"abusefilter-log-search-entries-label": "दृश्यता:",
+	"abusefilter-log-search-entries-all": "सभी प्रविष्टियां",
+	"abusefilter-log-search-entries-hidden": "केवल छुपी प्रविष्टियां",
 	"abusefilter-log-search-submit": "खोज",
 	"abusefilter-log-entry": "$1: $2 द्वारा $4 पर किये कार्य \"$3\" को दुरुपयोग फ़िल्टर ने पकड़ा।\nफ़िल्टर द्वारा उठाया गया कदम: $5;\nफ़िल्टर विवरण: $6",
 	"abusefilter-log-detailedentry-meta": "$1: $2 द्वारा $5 पर किये कार्य \"$4\" को दुरुपयोग फ़िल्टर $3 ने पकड़ा।\nफ़िल्टर द्वारा उठाया गया कदम: $6;\nफ़िल्टर विवरण: $7 ($8)",
@@ -74,7 +78,7 @@
 	"abusefilter-log-noactions": "कोई नहीं",
 	"abusefilter-log-details-diff": "सम्पादन में किये बदलाव",
 	"abusefilter-log-linkoncontribs": "दुरुपयोग लॉग",
-	"abusefilter-log-linkoncontribs-text": "इस सदस्य के लिए दुरुपयोग लॉग",
+	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|इस सदस्य}} के लिए दुरुपयोग लॉग",
 	"abusefilter-log-hidden": "(प्रविष्टि छिपी हुई)",
 	"abusefilter-log-hidden-implicit": "(प्रविष्टि छुपाई गई है क्योंकि अवतरण हटा दिया गया है)",
 	"abusefilter-log-cannot-see-details": "आपके पास इस प्रविष्टि का विस्तृत विवरण देखने की अनुमति नहीं है",
