@@ -417,7 +417,7 @@
 	"abusefilter-log-header": "Denna logg visar en sammanfattning av ändringar som har gjorts i filtren.\nFör fullständiga detaljer, se [[Special:AbuseFilter/history|listan]] över de senaste filterändringarna.",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|ändrade}} $4 ($5)",
 	"abusefilter-log-noresults": "Inga resultat",
-	"abusefilter-diff-title": "Differenser mellan versioner",
+	"abusefilter-diff-title": "Skillnader mellan versioner",
 	"abusefilter-diff-item": "Element",
 	"abusefilter-diff-version": "Version från $1 {{GENDER:$3|av}} $2",
 	"abusefilter-diff-info": "Grundläggande information",
