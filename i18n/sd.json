@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mehtab ahmed"
+			"Mehtab ahmed",
+			"Indus Asia"
 		]
 	},
 	"abuselog": "غلط-استعمال لاگ",
@@ -32,6 +33,6 @@
 	"abusefilter-topnav-examine": "پوين ترميمن کي تپاسيو",
 	"abusefilter-topnav-log": "غلط-استعمال لاگ",
 	"abusefilter-log-name": "غلط-استعمال ڇاڻي لاگ",
-	"abusefilter-log-noresults": "نتيجا ناھن",
+	"abusefilter-log-noresults": "ڪي به نتيجا ناھن",
 	"abusefilter-diff-item": "جزو"
 }
