@@ -438,6 +438,7 @@
 	"abusefilter-import-submit": "Daten importieren",
 	"abusefilter-group-default": "Standard",
 	"abusefilter-http-error": "Ein HTTP-Fehler ist aufgetreten: $1.",
+	"apihelp-abusefiltercheckmatch-extended-description": "Es ist vars, rcid oder logid erforderlich, jedoch kann nur eines verwendet werden.",
 	"apihelp-abusefiltercheckmatch-param-filter": "Der vollständige Filtertext, der für einen Treffer überprüft werden soll.",
 	"apihelp-abusefiltercheckmatch-param-vars": "JSON-kodierte Anordnung von Variablen, die gegengetestet werden sollen.",
 	"apihelp-abusefiltercheckmatch-param-rcid": "Zu gegenprüfende Letzte-Änderungs-Kennung.",
