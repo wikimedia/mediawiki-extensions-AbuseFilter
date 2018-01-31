@@ -254,7 +254,7 @@ class AbuseFilterHooks {
 			$log_ids = $vars->getVar( 'local_log_ids' )->toNative();
 			$dbw = wfGetDB( DB_MASTER );
 
-			if ( count( $log_ids ) ) {
+			if ( $log_ids !== null && count( $log_ids ) ) {
 				$dbw->update( 'abuse_filter_log',
 					[ 'afl_rev_id' => $revision->getId() ],
 					[ 'afl_id' => $log_ids ],
@@ -266,7 +266,7 @@ class AbuseFilterHooks {
 		if ( $vars->getVar( 'global_log_ids' ) ) {
 			$log_ids = $vars->getVar( 'global_log_ids' )->toNative();
 
-			if ( count( $log_ids ) ) {
+			if ( $log_ids !== null && count( $log_ids ) ) {
 				global $wgAbuseFilterCentralDB;
 				$fdb = wfGetDB( DB_MASTER, [], $wgAbuseFilterCentralDB );
 
