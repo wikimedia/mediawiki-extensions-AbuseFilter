@@ -94,6 +94,7 @@ class AbuseFilter {
 			'str_replace(subject, search, replace)' => 'str_replace',
 			'rescape(string)' => 'rescape',
 			'set_var(var,value)' => 'set_var',
+			'sanitize(string)' => 'sanitize',
 		],
 		'vars' => [
 			'timestamp' => 'timestamp',

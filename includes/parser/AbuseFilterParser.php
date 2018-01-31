@@ -41,6 +41,7 @@ class AbuseFilterParser {
 		'rescape' => 'funcStrRegexEscape',
 		'set' => 'funcSetVar',
 		'set_var' => 'funcSetVar',
+		'sanitize' => 'funcSanitize',
 	];
 
 	// Functions that affect parser state, and shouldn't be cached.
@@ -1133,6 +1134,27 @@ class AbuseFilterParser {
 
 		$s = html_entity_decode( $s, ENT_QUOTES, 'UTF-8' );
 		$s = $this->ccnorm( $s );
+
+		return new AFPData( AFPData::DSTRING, $s );
+	}
+
+	/**
+	 * @param array $args
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
+	protected function funcSanitize( $args ) {
+		if ( count( $args ) < 1 ) {
+			throw new AFPUserVisibleException(
+				'notenoughargs',
+				$this->mCur->pos,
+				[ 'sanitize', 1, count( $args ) ]
+			);
+		}
+		$s = $args[0]->toString();
+
+		$s = html_entity_decode( $s, ENT_QUOTES, 'UTF-8' );
+		$s = Sanitizer::decodeCharReferences( $s );
 
 		return new AFPData( AFPData::DSTRING, $s );
 	}
