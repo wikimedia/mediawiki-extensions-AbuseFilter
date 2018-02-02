@@ -602,7 +602,7 @@ class AbuseFilterHooks {
 			$updater->addExtensionUpdate( [
 				'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_wiki', "(afl_wiki)" ] );
 			$updater->addExtensionUpdate( [
-				'changeField', 'abuse_filter_log', 'afl_namespace', "INTEGER" ] );
+				'changeField', 'abuse_filter_log', 'afl_namespace', "INTEGER", '' ] );
 		}
 
 		$updater->addExtensionUpdate( [ [ __CLASS__, 'createAbuseFilterUser' ] ] );
