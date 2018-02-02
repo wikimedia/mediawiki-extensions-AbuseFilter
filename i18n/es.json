@@ -460,6 +460,7 @@
 	"abusefilter-group-default": "Predeterminado",
 	"abusefilter-http-error": "Se produjo un error de HTTP: $1.",
 	"apihelp-abusefiltercheckmatch-description": "Comprueba si el filtro antiabusos coincide con un conjunto de variables, evento del registro del editor antiabusos.\n\nSe necesita \"vars\", \"rcid\" o \"logid\", pero solo se utiliza uno.",
+	"apihelp-abusefiltercheckmatch-summary": "Comprobar si un filtro antiabusos coincide con un conjunto de variables, una edición o un suceso registrado del filtro antiabusos.",
 	"apihelp-abusefiltercheckmatch-extended-description": "Se requieren vars, rcid o logid, pero sólo uno puede ser usado.",
 	"apihelp-abusefiltercheckmatch-param-filter": "El texto completo que se comprobará en busca de coincidencias.",
 	"apihelp-abusefiltercheckmatch-param-vars": "Matriz JSON codificada de variables para realizar la prueba.",
