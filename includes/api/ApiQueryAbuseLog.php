@@ -35,6 +35,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 	}
 
 	public function execute() {
+		global $wgAbuseFilterIsCentral;
+
 		$user = $this->getUser();
 		$errors = $this->getTitle()->getUserPermissionsErrors(
 			'abusefilter-log', $user, true, [ 'ns-specialprotected' ] );
@@ -57,6 +59,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$fld_timestamp = isset( $prop['timestamp'] );
 		$fld_hidden = isset( $prop['hidden'] );
 		$fld_revid = isset( $prop['revid'] );
+		$fld_wiki = $wgAbuseFilterIsCentral && isset( $prop['wiki'] );
 
 		if ( $fld_ip ) {
 			$this->checkUserRightsAny( 'abusefilter-private' );
@@ -95,6 +98,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$this->addFieldsIf( 'afl_action', $fld_action );
 		$this->addFieldsIf( 'afl_var_dump', $fld_details );
 		$this->addFieldsIf( 'afl_actions', $fld_result );
+		$this->addFieldsIf( 'afl_wiki', $fld_wiki );
 
 		if ( $fld_filter ) {
 			$this->addTables( 'abuse_filter' );
@@ -136,6 +140,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 
 		$this->addWhereIf( [ 'afl_filter' => $params['filter'] ], isset( $params['filter'] ) );
 		$this->addWhereIf( $notDeletedCond, !SpecialAbuseLog::canSeeHidden( $user ) );
+		$this->addWhereIf( [ 'afl_wiki' => $params['wiki'] ],
+			$wgAbuseFilterIsCentral && isset( $params['wiki'] ) );
 
 		$title = $params['title'];
 		if ( !is_null( $title ) ) {
@@ -184,6 +190,9 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			}
 			if ( $fld_ip ) {
 				$entry['ip'] = $row->afl_ip;
+			}
+			if ( $fld_wiki ) {
+				$entry['wiki'] = $row->afl_wiki;
 			}
 			if ( $fld_title ) {
 				$title = Title::makeTitle( $row->afl_namespace, $row->afl_title );
@@ -237,7 +246,9 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 	}
 
 	public function getAllowedParams() {
-		return [
+		global $wgAbuseFilterIsCentral;
+
+		$params = [
 			'start' => [
 				ApiBase::PARAM_TYPE => 'timestamp'
 			],
@@ -255,6 +266,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			'user' => null,
 			'title' => null,
 			'filter' => [
+				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_ISMULTI => true
 			],
 			'limit' => [
@@ -282,6 +294,14 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				ApiBase::PARAM_ISMULTI => true
 			]
 		];
+		if ( $wgAbuseFilterIsCentral ) {
+			$params['wiki'] = [
+				ApiBase::PARAM_TYPE => 'string',
+			];
+			$params['prop'][ApiBase::PARAM_DFLT] .= '|wiki';
+			$params['prop'][ApiBase::PARAM_TYPE][] = 'wiki';
+		}
+		return $params;
 	}
 
 	/**
