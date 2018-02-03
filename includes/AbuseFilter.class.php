@@ -1198,7 +1198,7 @@ class AbuseFilter {
 
 			// Send data to CheckUser if installed and we
 			// aren't already sending a notification to recentchanges
-			if ( is_callable( 'CheckUserHooks::updateCheckUserData' )
+			if ( ExtensionRegistry::getInstance()->isLoaded( 'CheckUser' )
 				&& strpos( $wgAbuseFilterNotifications, 'rc' ) === false
 			) {
 				$rc = $entry->getRecentChange();
