@@ -59,7 +59,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	}
 
 	function showResults() {
-		$changesList = new AbuseFilterChangesList( $this->getSkin() );
+		$changesList = new AbuseFilterChangesList( $this->getSkin(), $this->mTestFilter );
 		$output = $changesList->beginRecentChangesList();
 		$this->mCounter = 1;
 

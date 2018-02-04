@@ -116,7 +116,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$conds[] = $this->buildTestConditions( $dbr );
 
 		// Get our ChangesList
-		$changesList = new AbuseFilterChangesList( $this->getSkin() );
+		$changesList = new AbuseFilterChangesList( $this->getSkin(), $this->mFilter );
 		$output = $changesList->beginRecentChangesList();
 
 		$rcQuery = RecentChange::getQueryInfo();
@@ -143,7 +143,6 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			if ( $result || $this->mShowNegative ) {
 				// Stash result in RC item
 				$rc = RecentChange::newFromRow( $row );
-				$rc->examineParams['testfilter'] = $this->mFilter;
 				$rc->filterResult = $result;
 				$rc->counter = $counter++;
 				$output .= $changesList->recentChangesLine( $rc, false );

@@ -4,6 +4,7 @@ class AbuseFilterViewTools extends AbuseFilterView {
 	function show() {
 		$out = $this->getOutput();
 		$user = $this->getUser();
+		$request = $this->getRequest();
 
 		if ( !$user->isAllowed( 'abusefilter-modify' ) ) {
 			$out->addWikiMsg( 'abusefilter-mustbeeditor' );
@@ -15,7 +16,7 @@ class AbuseFilterViewTools extends AbuseFilterView {
 
 		// Expression evaluator
 		$eval = '';
-		$eval .= AbuseFilter::buildEditBox( '', 'wpTestExpr' );
+		$eval .= AbuseFilter::buildEditBox( $request->getText( 'wpTestExpr' ), 'wpTestExpr' );
 
 		$eval .= Xml::tags( 'p', null,
 			Xml::element( 'input',
