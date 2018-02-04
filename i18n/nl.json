@@ -415,6 +415,7 @@
 	"abusefilter-topnav-import": "Filter importeren",
 	"abusefilter-log-name": "Filterlogboek",
 	"abusefilter-log-header": "Dit logboek geeft een overzicht van wijzigingen aan filters.\nZie de [[Special:AbuseFilter/history|lijst met recente filterwijzigingen]] voor volledige details.",
+	"abusefilter-logentry-create": "$1 heeft $4 {{GENDER:$2|aangemaakt}} ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|heeft}} $4 aangepast ($5)",
 	"abusefilter-log-noresults": "Geen resultaten",
 	"abusefilter-diff-title": "Verschillen tussen versies",
