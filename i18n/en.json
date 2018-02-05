@@ -455,6 +455,7 @@
 	"apihelp-query+abuselog-param-filter": "Show only entries that were caught by a given filter ID.",
 	"apihelp-query+abuselog-param-limit": "The maximum amount of entries to list.",
 	"apihelp-query+abuselog-param-prop": "Which properties to get.",
+	"apihelp-query+abuselog-param-wiki": "Wiki to show hits from.",
 	"apihelp-query+abuselog-example-1": "Show recent log entries",
 	"apihelp-query+abuselog-example-2": "Show recent log entries for [[API]]",
 	"apierror-abusefilter-canttest": "You don't have permission to test abuse filters.",

@@ -486,6 +486,7 @@
 	"apihelp-query+abuselog-param-filter": "{{doc-apihelp-param|query+abuselog|filter}}",
 	"apihelp-query+abuselog-param-limit": "{{doc-apihelp-param|query+abuselog|limit}}",
 	"apihelp-query+abuselog-param-prop": "{{doc-apihelp-param|query+abuselog|prop}}",
+	"apihelp-query+abuselog-param-wiki": "{{doc-apihelp-param|query+abuselog|wiki}}",
 	"apihelp-query+abuselog-example-1": "{{doc-apihelp-example|query+abuselog}}",
 	"apihelp-query+abuselog-example-2": "{{doc-apihelp-example|query+abuselog}}",
 	"apierror-abusefilter-canttest": "{{doc-apierror}}",
