@@ -38,7 +38,7 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 			$dbr = wfGetDB( DB_REPLICA );
 			$row = $dbr->selectRow(
 				'abuse_filter_log',
-				'*',
+				'afl_var_dump',
 				[ 'afl_id' => $params['logid'] ],
 				__METHOD__
 			);

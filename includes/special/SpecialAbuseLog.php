@@ -194,7 +194,7 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$row = $dbr->selectRow(
 			[ 'abuse_filter_log', 'abuse_filter' ],
-			'*',
+			'afl_deleted',
 			[ 'afl_id' => $id ],
 			__METHOD__,
 			[],

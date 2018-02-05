@@ -103,7 +103,12 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	function showExaminerForLogEntry( $logid ) {
 		// Get data
 		$dbr = wfGetDB( DB_REPLICA );
-		$row = $dbr->selectRow( 'abuse_filter_log', '*', [ 'afl_id' => $logid ], __METHOD__ );
+		$row = $dbr->selectRow(
+			'abuse_filter_log',
+			[ 'afl_filter', 'afl_deleted', 'afl_var_dump' ],
+			[ 'afl_id' => $logid ],
+			__METHOD__
+		);
 		$out = $this->getOutput();
 
 		if ( !$row ) {
