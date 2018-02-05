@@ -457,6 +457,7 @@
 	"apihelp-query+abuselog-param-filter": "Прикажи само ставки за настани фатени од дадена филтерска назнака.",
 	"apihelp-query+abuselog-param-limit": "Највеќе ставки во списоците.",
 	"apihelp-query+abuselog-param-prop": "Кои својства да се дадат.",
+	"apihelp-query+abuselog-param-wiki": "Од кое вики да се прикажуваат погодоци.",
 	"apihelp-query+abuselog-example-1": "Прикажи ги скорешните дневнички ставки",
 	"apihelp-query+abuselog-example-2": "Прикажи ги скорешните дневнички ставки за [[API|извршникот]] (API)",
 	"apierror-abusefilter-canttest": "Немате дозвола да испробувате филтри на злоупотреба.",

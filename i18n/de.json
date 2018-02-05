@@ -471,6 +471,7 @@
 	"apihelp-query+abuselog-param-filter": "Zeigt nur Einträge an, die von einer angegebenen Filterkennung erfasst wurden.",
 	"apihelp-query+abuselog-param-limit": "Die maximale Anzahl der aufzulistenden Einträge.",
 	"apihelp-query+abuselog-param-prop": "Zurückzugebende Eigenschaften.",
+	"apihelp-query+abuselog-param-wiki": "Wiki, von dem Treffer angezeigt werden sollen.",
 	"apihelp-query+abuselog-example-1": "Zeigt die letzten Logbucheinträge",
 	"apihelp-query+abuselog-example-2": "Zeigt die letzten Logbucheinträge für [[API]]",
 	"apierror-abusefilter-canttest": "Du hast keine Berechtigung, Missbrauchsfilter zu testen.",

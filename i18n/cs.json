@@ -14,7 +14,8 @@
 			"Matma Rex",
 			"Martin Urbanec",
 			"Dvorapa",
-			"Danny B."
+			"Danny B.",
+			"Ilimanaq29"
 		]
 	},
 	"abusefilter-desc": "Podrobuje editace automatickým heuristikám",
@@ -455,6 +456,7 @@
 	"apihelp-query+abuselog-param-filter": "Zobrazit pouze změny, které byly zachyceny daným filtrem.",
 	"apihelp-query+abuselog-param-limit": "Maximální počet změn k zobrazení.",
 	"apihelp-query+abuselog-param-prop": "Jaké vlastnosti získat.",
+	"apihelp-query+abuselog-param-wiki": "Hledat zobrazení formy hitů",
 	"apihelp-query+abuselog-example-1": "Zobrazit poslední záznamy protokolu",
 	"apihelp-query+abuselog-example-2": "Zobrazit poslední záznamy protokolu pro stránku [[API]]",
 	"apierror-abusefilter-canttest": "Nemáte oprávnění testovat filtry zneužití.",

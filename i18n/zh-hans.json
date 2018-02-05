@@ -497,6 +497,7 @@
 	"apihelp-query+abuselog-param-filter": "只显示被指定过滤器ID捕获过的记录。",
 	"apihelp-query+abuselog-param-limit": "列出日志记录的最大数量。",
 	"apihelp-query+abuselog-param-prop": "要获得的属性。",
+	"apihelp-query+abuselog-param-wiki": "显示触发来自的Wiki。",
 	"apihelp-query+abuselog-example-1": "显示最近日志记录",
 	"apihelp-query+abuselog-example-2": "显示[[API]]的最近日志记录",
 	"apierror-abusefilter-canttest": "您没有权限测试防滥用过滤器。",
