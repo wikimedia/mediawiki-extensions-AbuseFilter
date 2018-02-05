@@ -632,15 +632,16 @@ class AbuseFilterHooks {
 	 * @param array &$tools
 	 * @param SpecialPage $sp for context
 	 */
-	public static function onContributionsToolLinks( $id, $nt, &$tools, SpecialPage $sp ) {
-		if ( $sp->getUser()->isAllowed( 'abusefilter-log' ) ) {
+	public static function onContributionsToolLinks( $id, $nt, array &$tools, SpecialPage $sp ) {
+		$username = $nt->getText();
+		if ( $sp->getUser()->isAllowed( 'abusefilter-log' ) && !IP::isValidRange( $username ) ) {
 			$linkRenderer = $sp->getLinkRenderer();
 			$tools['abuselog'] = $linkRenderer->makeLink(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
 				$sp->msg( 'abusefilter-log-linkoncontribs' )->text(),
 				[ 'title' => $sp->msg( 'abusefilter-log-linkoncontribs-text',
-					$nt->getText() )->text() ],
-				[ 'wpSearchUser' => $nt->getText() ]
+					$username )->text() ],
+				[ 'wpSearchUser' => $username ]
 			);
 		}
 	}
