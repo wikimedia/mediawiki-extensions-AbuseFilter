@@ -498,6 +498,7 @@
 	"apihelp-query+abuselog-param-filter": "Mostrar solo entradas capturadas por un identificador de filtro determinado.",
 	"apihelp-query+abuselog-param-limit": "La cantidad máxima de entradas que aparecerán.",
 	"apihelp-query+abuselog-param-prop": "Qué propiedades se obtendrán.",
+	"apihelp-query+abuselog-param-wiki": "Wiki del cual mostrar las detecciones.",
 	"apihelp-query+abuselog-example-1": "Mostrar entradas recientes del registro",
 	"apihelp-query+abuselog-example-2": "Mostrar entradas recientes del registro para [[API]]",
 	"apierror-abusefilter-canttest": "No tienes permiso para probar filtros antiabusos.",

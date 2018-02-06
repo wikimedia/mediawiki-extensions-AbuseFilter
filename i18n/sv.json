@@ -460,6 +460,7 @@
 	"apihelp-query+abuselog-param-filter": "Visa endast poster som fångats av ett visst filter-ID.",
 	"apihelp-query+abuselog-param-limit": "Det maximala antalet poster att lista.",
 	"apihelp-query+abuselog-param-prop": "Vilka egenskaper att hämta.",
+	"apihelp-query+abuselog-param-wiki": "Wiki att visa träffar ifrån.",
 	"apihelp-query+abuselog-example-1": "Visa de senaste loggposterna",
 	"apihelp-query+abuselog-example-2": "Visa de senaste loggposterna för [[API]]"
 }
