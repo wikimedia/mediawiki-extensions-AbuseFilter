@@ -5,7 +5,7 @@
  * @author Marius Hoch <hoo@online.de>
  */
 
-( function( mw, $ ) {
+( function ( mw, $ ) {
 	'use strict';
 
 	// Filter textarea
@@ -15,7 +15,7 @@
 	/**
 	 * Returns the currently selected warning message
 	 *
-	 * @returns {string} current warning message
+	 * @return {string} current warning message
 	 */
 	function getCurrentWarningMessage() {
 		var message = $( '#mw-abusefilter-warn-message-existing' ).val();
@@ -25,29 +25,6 @@
 		}
 
 		return message;
-	}
-
-	/**
-	 * Sends the current filter text to be checked for syntax issues.
-	 *
-	 * @context HTMLElement
-	 * @param {jQuery.Event} e
-	 */
-	function doSyntaxCheck() {
-		/*jshint validthis:true */
-		var filter = $filterBox.val(),
-			api = new mw.Api();
-
-		$( this )
-			.prop( 'disabled', true )
-			.injectSpinner( 'abusefilter-syntaxcheck' );
-
-		api.post( {
-			action: 'abusefilterchecksyntax',
-			filter: filter
-		} )
-		.done( processSyntaxResult )
-		.fail( processSyntaxResultFailure );
 	}
 
 	/**
@@ -113,6 +90,28 @@
 	}
 
 	/**
+	 * Sends the current filter text to be checked for syntax issues.
+	 *
+	 * @context HTMLElement
+	 * @param {jQuery.Event} e
+	 */
+	function doSyntaxCheck() {
+		var filter = $filterBox.val(),
+			api = new mw.Api();
+
+		$( this )
+			.prop( 'disabled', true )
+			.injectSpinner( 'abusefilter-syntaxcheck' );
+
+		api.post( {
+			action: 'abusefilterchecksyntax',
+			filter: filter
+		} )
+			.done( processSyntaxResult )
+			.fail( processSyntaxResultFailure );
+	}
+
+	/**
 	 * Adds text to the filter textarea
 	 * Fired by a change event from the #wpFilterBuilder dropdown
 	 */
@@ -124,7 +123,7 @@
 		}
 
 		$filterBox.textSelection(
-			'encapsulateSelection', { 'pre': $filterBuilder.val() + ' ' }
+			'encapsulateSelection', { pre: $filterBuilder.val() + ' ' }
 		);
 		$filterBuilder.prop( 'selectedIndex', 0 );
 	}
@@ -136,7 +135,6 @@
 	 * @param {jQuery.Event} e
 	 */
 	function fetchFilter() {
-		/*jshint validthis:true */
 		var filterId = $.trim( $( '#mw-abusefilter-load-filter' ).val() ),
 			api;
 
@@ -156,14 +154,14 @@
 			abfendid: filterId,
 			abflimit: 1
 		} )
-		.always( function() {
-			$.removeSpinner( 'fetch-spinner' );
-		} )
-		.done( function( data ) {
-			if ( data.query.abusefilters[0] !== undefined ) {
-				$filterBox.val( data.query.abusefilters[0].pattern );
-			}
-		} );
+			.always( function () {
+				$.removeSpinner( 'fetch-spinner' );
+			} )
+			.done( function ( data ) {
+				if ( data.query.abusefilters[ 0 ] !== undefined ) {
+					$filterBox.val( data.query.abusefilters[ 0 ].pattern );
+				}
+			} );
 	}
 
 	/**
@@ -171,7 +169,7 @@
 	 * that don't have checked boxes
 	 */
 	function hideDeselectedActions() {
-		$( 'input.mw-abusefilter-action-checkbox' ).each( function() {
+		$( 'input.mw-abusefilter-action-checkbox' ).each( function () {
 			// mw-abusefilter-action-checkbox-{$action}
 			var action = this.id.substr( 31 ),
 				$params = $( '#mw-abusefilter-' + action + '-parameters' );
@@ -200,19 +198,19 @@
 			action: 'query',
 			meta: 'allmessages',
 			ammessages: message,
-			amargs: args.join( '|' ),
+			amargs: args.join( '|' )
 		} )
-		.done( function( data ) {
-			api.parse( data.query.allmessages[0]['*'], {
-				disablelimitreport: '',
-				preview: '',
-				prop: 'text',
-				title: 'MediaWiki:' + message,
-			} )
-			.done( function( html ) {
-				$( '#mw-abusefilter-warn-preview' ).html( html );
+			.done( function ( data ) {
+				api.parse( data.query.allmessages[ 0 ][ '*' ], {
+					disablelimitreport: '',
+					preview: '',
+					prop: 'text',
+					title: 'MediaWiki:' + message
+				} )
+					.done( function ( html ) {
+						$( '#mw-abusefilter-warn-preview' ).html( html );
+					} );
 			} );
-		} );
 	}
 
 	/**
@@ -221,7 +219,9 @@
 	function editWarnMessage() {
 		var message = getCurrentWarningMessage();
 
-		window.location = mw.config.get( 'wgScript' ) + '?title=MediaWiki:' +  mw.util.wikiUrlencode( message ) + '&action=edit&preload=MediaWiki:abusefilter-warning';
+		window.location = mw.config.get( 'wgScript' ) +
+			'?title=MediaWiki:' + mw.util.wikiUrlencode( message ) +
+			'&action=edit&preload=MediaWiki:abusefilter-warning';
 	}
 
 	/**
@@ -231,13 +231,12 @@
 	 * @param {jQuery.Event} e
 	 */
 	function onFilterGroupChange() {
-		/*jshint validthis:true */
 		var $afWarnMessageExisting, $afWarnMessageOther, newVal;
 
 		if ( !$( '#mw-abusefilter-action-warn-checkbox' ).is( ':checked' ) ) {
 			$afWarnMessageExisting = $( '#mw-abusefilter-warn-message-existing' );
 			$afWarnMessageOther = $( '#mw-abusefilter-warn-message-other' );
-			newVal = mw.config.get( 'wgAbuseFilterDefaultWarningMessage' )[$( this ).val()];
+			newVal = mw.config.get( 'wgAbuseFilterDefaultWarningMessage' )[ $( this ).val() ];
 
 			if ( $afWarnMessageExisting.find( 'option[value=\'' + newVal + '\']' ).length ) {
 				$afWarnMessageExisting.val( newVal );
@@ -281,11 +280,11 @@
 	}
 
 	// On ready initialization
-	$( document ).ready( function() {
+	$( document ).ready( function () {
 		var $exportBox = $( '#mw-abusefilter-export' );
 		$filterBox = $( '#' + mw.config.get( 'abuseFilterBoxName' ) );
 		// Hide the syntax ok message when the text changes
-		$filterBox.keyup( function() {
+		$filterBox.keyup( function () {
 			var $el = $( '#mw-abusefilter-syntaxresult' );
 
 			if ( $el.data( 'syntaxOk' ) ) {
@@ -308,10 +307,10 @@
 		$( '#mw-abusefilter-edit-group-input' ).change( onFilterGroupChange );
 
 		$( '#mw-abusefilter-export-link' ).click(
-			function( e ) {
+			function ( e ) {
 				e.preventDefault();
 				$exportBox.toggle();
 			}
 		);
 	} );
-} ( mediaWiki, jQuery ) );
+}( mediaWiki, jQuery ) );
