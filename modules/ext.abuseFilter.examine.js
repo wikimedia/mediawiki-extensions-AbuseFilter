@@ -5,42 +5,12 @@
  * @author Marius Hoch <hoo@online.de>
  */
 
-( function( mw, $ ) {
+( function ( mw, $ ) {
 	'use strict';
 
 	// Syntax result div
 	// @type {jQuery}
 	var $syntaxResult;
-
-	/**
-	 * Tests the filter against an rc event or abuse log entry.
-	 *
-	 * @context HTMLElement
-	 * @param {jQuery.Event} e
-	 */
-	function examinerTestFilter() {
-		/*jshint validthis:true */
-		var filter = $( '#wpTestFilter' ).val(),
-			examine = mw.config.get( 'abuseFilterExamine' ),
-			params = {
-				action: 'abusefiltercheckmatch',
-				filter: filter
-			},
-			api = new mw.Api();
-
-		$( this ).injectSpinner( 'filter-check' );
-
-		if ( examine.type === 'rc' ) {
-			params.rcid = examine.id;
-		} else {
-			params.logid = examine.id;
-		}
-
-		// Use post due to the rather large amount of data
-		api.post( params )
-			.done( examinerTestProcess )
-			.fail( examinerTestProcessFailure );
-	}
 
 	/**
 	 * Processes the results of the filter test
@@ -95,8 +65,37 @@
 			.show();
 	}
 
-	$( document ).ready( function() {
+	/**
+	 * Tests the filter against an rc event or abuse log entry.
+	 *
+	 * @context HTMLElement
+	 * @param {jQuery.Event} e
+	 */
+	function examinerTestFilter() {
+		var filter = $( '#wpTestFilter' ).val(),
+			examine = mw.config.get( 'abuseFilterExamine' ),
+			params = {
+				action: 'abusefiltercheckmatch',
+				filter: filter
+			},
+			api = new mw.Api();
+
+		$( this ).injectSpinner( 'filter-check' );
+
+		if ( examine.type === 'rc' ) {
+			params.rcid = examine.id;
+		} else {
+			params.logid = examine.id;
+		}
+
+		// Use post due to the rather large amount of data
+		api.post( params )
+			.done( examinerTestProcess )
+			.fail( examinerTestProcessFailure );
+	}
+
+	$( document ).ready( function () {
 		$syntaxResult = $( '#mw-abusefilter-syntaxresult' );
 		$( '#mw-abusefilter-examine-test' ).click( examinerTestFilter );
 	} );
-} ( mediaWiki, jQuery ) );
+}( mediaWiki, jQuery ) );
