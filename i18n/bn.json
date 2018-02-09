@@ -51,7 +51,7 @@
 	"abusefilter-log-details-var": "চলক",
 	"abusefilter-log-details-val": "মান",
 	"abusefilter-log-details-vars": "অ্যাকশন প্যারামিটার",
-	"abusefilter-log-details-private": "ব্যক্তিগত ডাটা",
+	"abusefilter-log-details-private": "ব্যক্তিগত লগের বিস্তারিত",
 	"abusefilter-log-details-ip": "আইপি ঠিকানা সংরক্ষন করা হচ্ছে",
 	"abusefilter-log-noactions": "কিছু নয়",
 	"abusefilter-log-details-diff": "সম্পাদনার সময় পরিবর্তিত হয়েছে",
@@ -162,6 +162,7 @@
 	"abusefilter-edit-builder-group-vars": "চলক",
 	"abusefilter-edit-builder-vars-accountname": "অ্যাকাউন্টের নাম (অ্যাকাউন্ট তৈরির সময়)",
 	"abusefilter-edit-builder-vars-timestamp": "পরিবর্তনের ইউনিক্স সময়বার্তা",
+	"abusefilter-edit-builder-vars-timestamp-expanded": "লগের সময় ও তারিখ",
 	"abusefilter-edit-builder-vars-action": "অ্যাকশন",
 	"abusefilter-edit-builder-vars-addedlines": "সম্পাদনায় লাইন যোগ করা হয়েছে",
 	"abusefilter-edit-builder-vars-delta": "সম্পাদনায় আকৃতি পরিবর্তন করা হয়েছে",
@@ -238,5 +239,6 @@
 	"abusefilter-diff-backhistory": "ফিল্টার ইতিহাসে ফিরে যান",
 	"abusefilter-import-submit": "উপাত্ত আমদানী",
 	"abusefilter-group-default": "পূর্বনির্ধারিত",
-	"abusefilter-http-error": "একটি HTTP ত্রুটি ঘটেছে: $1।"
+	"abusefilter-http-error": "একটি HTTP ত্রুটি ঘটেছে: $1।",
+	"abusefilter-log-ip-not-available": "উপলব্ধ নয়"
 }
