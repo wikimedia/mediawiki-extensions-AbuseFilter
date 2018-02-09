@@ -22,6 +22,7 @@ class AbuseFilterParser {
 		'norm' => 'funcNorm',
 		'ccnorm' => 'funcCCNorm',
 		'ccnorm_contains_any' => 'funcCCNormContainsAny',
+		'ccnorm_contains_all' => 'funcCCNormContainsAll',
 		'specialratio' => 'funcSpecialRatio',
 		'rmspecials' => 'funcRMSpecials',
 		'rmdoubles' => 'funcRMDoubles',
@@ -31,6 +32,7 @@ class AbuseFilterParser {
 		'get_matches' => 'funcGetMatches',
 		'ip_in_range' => 'funcIPInRange',
 		'contains_any' => 'funcContainsAny',
+		'contains_all' => 'funcContainsAll',
 		'substr' => 'funcSubstr',
 		'strlen' => 'funcLen',
 		'strpos' => 'funcStrPos',
@@ -974,7 +976,7 @@ class AbuseFilterParser {
 			$needle = $args[0]->toString();
 			$haystack = $args[1]->toString();
 
-			// Bug #60203: Keep empty parameters from causing PHP warnings
+			// T62203: Keep empty parameters from causing PHP warnings
 			if ( $needle === '' ) {
 				$count = 0;
 			} else {
@@ -1137,11 +1139,30 @@ class AbuseFilterParser {
 
 		$s = array_shift( $args );
 
-		return new AFPData( AFPData::DBOOL, self::containsAny( $s, $args ) );
+		return new AFPData( AFPData::DBOOL, self::contains( true, $s, $args ) );
 	}
 
 	/**
-	 * Normalize and search a string for multiple substrings
+	 * @param array $args
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
+	protected function funcContainsAll( $args ) {
+		if ( count( $args ) < 2 ) {
+			throw new AFPUserVisibleException(
+				'notenoughargs',
+				$this->mCur->pos,
+				[ 'contains_all', 2, count( $args ) ]
+			);
+		}
+
+		$s = array_shift( $args );
+
+		return new AFPData( AFPData::DBOOL, self::contains( false, $s, $args, false ) );
+	}
+
+	/**
+	 * Normalize and search a string for multiple substrings in OR mode
 	 *
 	 * @param array $args
 	 * @return AFPData
@@ -1158,24 +1179,47 @@ class AbuseFilterParser {
 
 		$s = array_shift( $args );
 
-		return new AFPData( AFPData::DBOOL, self::containsAny( $s, $args, true ) );
+		return new AFPData( AFPData::DBOOL, self::contains( true, $s, $args, true ) );
+	}
+
+	/**
+	 * Normalize and search a string for multiple substrings in AND mode
+	 *
+	 * @param array $args
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
+	protected function funcCCNormContainsAll( $args ) {
+		if ( count( $args ) < 2 ) {
+			throw new AFPUserVisibleException(
+				'notenoughargs',
+				$this->mCur->pos,
+				[ 'ccnorm_contains_all', 2, count( $args ) ]
+			);
+		}
+
+		$s = array_shift( $args );
+
+		return new AFPData( AFPData::DBOOL, self::contains( false, $s, $args, true ) );
 	}
 
 	/**
 	 * Search for substrings in a string
 	 *
+	 * Use is_any to determine wether to use logic OR (true) or AND (false).
+	 *
 	 * Use normalize = true to make use of ccnorm and
 	 * normalize both sides of the search.
 	 *
+	 * @param bool $is_any
 	 * @param AFData $string
 	 * @param AFData[] $values
 	 * @param bool $normalize
 	 *
 	 * @return bool
 	 */
-	protected static function containsAny( $string, $values, $normalize = false ) {
+	protected static function contains( $is_any = true, $string, $values, $normalize = false ) {
 		$string = $string->toString();
-
 		if ( $string == '' ) {
 			return false;
 		}
@@ -1184,23 +1228,31 @@ class AbuseFilterParser {
 			$string = self::ccnorm( $string );
 		}
 
-		$values = array_map( function ( $val ) use ( $normalize ) {
-			$str = $val->toString();
+		foreach ( $values as $needle ) {
+			$needle = $needle->toString();
 			if ( $normalize ) {
-				$str = AbuseFilterParser::ccnorm( $str );
+				$needle = self::ccnorm( $needle );
+			}
+			if ( $needle === '' ) {
+				// T62203: Keep empty parameters from causing PHP warnings
+				continue;
 			}
 
-			return $str;
-		}, $values );
-
-		foreach ( $values as $needle ) {
-			// Bug #60203: Keep empty parameters from causing PHP warnings
-			if ( $needle !== '' && strpos( $string, $needle ) !== false ) {
-				return true;
+			$is_found = strpos( $string, $needle ) !== false;
+			if ( $is_found === $is_any ) {
+				// If I'm here and it's ANY (OR) it means that something is     found.
+				// Just enough! Found!
+				// If I'm here and it's ALL (AND) it means that something isn't found.
+				// Just enough! Not found!
+				return $is_found;
 			}
 		}
 
-		return false;
+		// If I'm here and it's ANY (OR) it means that nothing     was  found:
+		// return false (because $is_any is true)
+		// If I'm here and it's ALL (AND) it means that everything were found:
+		// return true  (because $is_any is false)
+		return ! $is_any;
 	}
 
 	/**
@@ -1369,7 +1421,7 @@ class AbuseFilterParser {
 		$haystack = $args[0]->toString();
 		$needle = $args[1]->toString();
 
-		// Bug #60203: Keep empty parameters from causing PHP warnings
+		// T62203: Keep empty parameters from causing PHP warnings
 		if ( $needle === '' ) {
 			return new AFPData( AFPData::DINT, -1 );
 		}
