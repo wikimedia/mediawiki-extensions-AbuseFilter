@@ -273,6 +273,7 @@
 	"abusefilter-edit-builder-funcs-ip_in_range": "Is IP in range? (ip_in_range)",
 	"abusefilter-edit-builder-funcs-contains-any": "Search string for multiple substrings in OR mode. (contains_any)",
 	"abusefilter-edit-builder-funcs-contains-all": "Search string for multiple substrings in AND mode. (contains_all)",
+	"abusefilter-edit-builder-funcs-equals-to-any": "Check if the given string is equals to any of the following strings (equals_to_any)",
 	"abusefilter-edit-builder-funcs-substr": "Substring (substr)",
 	"abusefilter-edit-builder-funcs-strpos": "Position of substring in string (strpos)",
 	"abusefilter-edit-builder-funcs-str_replace": "Replace substring with string (str_replace)",

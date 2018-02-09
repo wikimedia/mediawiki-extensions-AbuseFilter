@@ -306,6 +306,7 @@
 	"abusefilter-edit-builder-funcs-ip_in_range": "{{doc-important|Do not translate \"'''ip_in_range'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	"abusefilter-edit-builder-funcs-contains-any": "{{doc-important|Do not translate \"'''contains_any'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	"abusefilter-edit-builder-funcs-contains-all": "{{doc-important|Do not translate \"'''contains_all'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
+	"abusefilter-edit-builder-funcs-equals-to-any": "{{doc-important|Do not translate \"'''equals_to_any'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	"abusefilter-edit-builder-funcs-substr": "{{doc-important|Do not translate \"'''substr'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	"abusefilter-edit-builder-funcs-strpos": "{{doc-important|Do not translate \"'''strpos'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	"abusefilter-edit-builder-funcs-str_replace": "{{doc-important|Do not translate \"'''str_replace'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
