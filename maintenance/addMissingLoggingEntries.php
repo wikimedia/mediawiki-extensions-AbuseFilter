@@ -14,7 +14,7 @@ class AddMissingLoggingEntries extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 
-		$this->requireExtension( 'AbuseFilter' );
+		$this->requireExtension( 'Abuse Filter' );
 	}
 
 	public function execute() {

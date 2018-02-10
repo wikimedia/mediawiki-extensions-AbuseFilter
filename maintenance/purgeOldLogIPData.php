@@ -13,7 +13,7 @@ class PurgeOldLogIPData extends Maintenance {
 		$this->mDescription = 'Purge old IP Address data from AbuseFilter logs';
 		$this->setBatchSize( 200 );
 
-		$this->requireExtension( 'AbuseFilter' );
+		$this->requireExtension( 'Abuse Filter' );
 	}
 
 	public function execute() {
