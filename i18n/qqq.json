@@ -33,7 +33,8 @@
 			"Liuxinyu970226",
 			"Legoktm",
 			"Pikne",
-			"Amire80"
+			"Amire80",
+			"Ankam"
 		]
 	},
 	"abusefilter-desc": "{{desc|name=Abuse Filter|url=https://www.mediawiki.org/wiki/Extension:AbuseFilter}}",
@@ -120,7 +121,7 @@
 	"log-action-filter-abusefilter": "{{doc-log-action-filter-action|abusefilter}}",
 	"log-action-filter-abusefilter-create": "{{doc-log-action-filter-action|abusefilter|create}}",
 	"log-action-filter-abusefilter-modify": "{{doc-log-action-filter-action|abusefilter|modify}}",
-	"logentry-abusefilterprivatedetails-access": "This message is for a log entry. Parameters:\n* $1 User who accessed the private logs\n* $2 User who accessed the priate logs (used for gender)\n* $3 The log entry of which private details were accessed",
+	"logentry-abusefilterprivatedetails-access": "This message is for a log entry. Parameters:\n* $1 User who accessed the private logs\n* $2 User who accessed the private logs (used for gender)\n* $3 The log entry of which private details were accessed",
 	"abusefilterprivatedetails-log-name": "Log name",
 	"abusefilter-management": "Title of [[Special:AbuseFilter]]",
 	"abusefilter-list": "Used as HTML <code><nowiki><h2></nowiki></code> heading.\n\nFollowed by the fieldset label {{msg-mw|Abusefilter-list-options}}.",
@@ -438,7 +439,7 @@
 	"abusefilter-topnav-import": "Used as link text in the navigation toolbar.\n\nThe link points to [[Special:AbuseLog]].",
 	"abusefilter-log-name": "{{doc-logpage}}",
 	"abusefilter-log-header": "Used as description on [[Special:Log/abusefilter]]",
-	"abusefilter-logentry-create": "Parameters:\n* $1 - a link to a user page with a user name as link text, followed by a series of related links\n* $2 - raw username, for GENDER support\n* $3 - (unused)\n* $4 - text {{msg-mw|abusefilter-log-detailedentry-local}} linked to the filter created\n* $5 - text {{msg-mw|abusefilter-log-detailslink}} linked to the filter change details",
+	"abusefilter-logentry-create": "Parameters:\n* $1 - a link to a user page with a user name as link text, followed by a series of related links\n* $2 - raw username, for GENDER support\n* $3 - (unused)\n* $4 - text {{msg-mw|abusefilter-log-detailedentry-local}} linked to the filter created\n* $5 - text {{msg-mw|abusefilter-log-detailslink}} linked to the filter change details\n{{Identical|Created}}",
 	"abusefilter-logentry-modify": "Parameters:\n* $1 - a link to a user page with a user name as link text, followed by a series of related links\n* $2 - raw username, for GENDER support\n* $3 - (unused)\n* $4 - text {{msg-mw|abusefilter-log-detailedentry-local}} linked to the modified filter\n* $5 - text {{msg-mw|abusefilter-log-detailslink}} linked to the filter change details",
 	"abusefilter-log-noresults": "{{Identical|No result}}",
 	"abusefilter-diff-title": "Similar to {{msg-mw|Difference}}",
@@ -462,7 +463,7 @@
 	"abusefilter-invalid-request-noid": "Warning shown when accessing the private details page without a log ID parameter.",
 	"log-description-abusefilterprivatedetails": "The description of the abuse filter private details access log.",
 	"abusefilter-noreason": "Warning message shown when no reasons is given to access the private details of an abuse log.",
-	"abusefilter-log-ip-not-available": "Text shown when IP address is not available.",
+	"abusefilter-log-ip-not-available": "Text shown when IP address is not available.\n{{Identical|Not available}}",
 	"apihelp-abusefiltercheckmatch-description": "{{doc-apihelp-description|abusefiltercheckmatch}}",
 	"apihelp-abusefiltercheckmatch-summary": "{{doc-apihelp-summary|abusefiltercheckmatch}}",
 	"apihelp-abusefiltercheckmatch-extended-description": "{{doc-apihelp-extended-description|abusefiltercheckmatch}}",

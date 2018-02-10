@@ -429,6 +429,8 @@
 	"abusefilter-import-submit": "Importa dati",
 	"abusefilter-group-default": "Predefinito",
 	"abusefilter-http-error": "Si è verificato un errore HTTP: $1.",
+	"abusefilter-view-private-submit": "Visualizza i dettagli privati",
+	"abusefilter-view-private": "Visualizza i dettagli privati",
 	"abusefilter-log-details-id": "ID registro",
 	"abusefilter-log-ip-not-available": "Non disponibile",
 	"apihelp-abusefilterchecksyntax-example-1": "Controlla la sintassi di un filtro valido",

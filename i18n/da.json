@@ -15,7 +15,8 @@
 			"Tjernobyl",
 			"MGA73",
 			"Matma Rex",
-			"Cgtdk"
+			"Cgtdk",
+			"Jorn Ari"
 		]
 	},
 	"abusefilter-desc": "Anvender automatiske heuristikker på redigeringer",
@@ -37,6 +38,7 @@
 	"right-abusefilter-log": "Se misbrugsloggen",
 	"right-abusefilter-log-detail": "Se detaljerede poster i misbrugsloggen",
 	"right-abusefilter-private": "Se privat information i misbrugsloggen",
+	"right-abusefilter-private-log": "Se misbrugsfiltret for private oplysningers adgangslog",
 	"right-abusefilter-modify-restricted": "Ændre misbrugsfiltre med begrænsede handlinger",
 	"right-abusefilter-revert": "Tilbagerul alle ændringer udført af et bestemt misbrugsfilter",
 	"right-abusefilter-view-private": "Se misbrugsfiltre markeret som private",
@@ -72,7 +74,7 @@
 	"abusefilter-log-details-var": "Variabel",
 	"abusefilter-log-details-val": "Værdi",
 	"abusefilter-log-details-vars": "Handlingsparametre",
-	"abusefilter-log-details-private": "Privat information",
+	"abusefilter-log-details-private": "Privat log information",
 	"abusefilter-log-details-ip": "Ophavs-IP",
 	"abusefilter-log-noactions": "ingen",
 	"abusefilter-log-details-diff": "Ændringer udført i redigeringen",
@@ -81,6 +83,7 @@
 	"abusefilter-log-hidden": "(post skjult)",
 	"abusefilter-log-hidden-implicit": "(skjult da versionen er blevet slettet)",
 	"abusefilter-log-cannot-see-details": "Du har ikke tilladelse til at se detaljer om denne post.",
+	"abusefilter-log-cannot-see-private-details": "Du har ikke tilladelse til at se private oplysninger om denne andgang",
 	"abusefilter-log-details-hidden": "Du kan ikke se detaljerne for denne post, fordi den er skjult for offentligheden",
 	"abusefilter-log-hide-legend": "Skjul loghandlig",
 	"abusefilter-log-hide-id": "Loghandlings-id:",
@@ -90,6 +93,7 @@
 	"abusefilter-logentry-suppress": "Skjulte \"[[$1]]\"",
 	"abusefilter-logentry-unsuppress": "Gjorde \"[[$1]]\" synligt for offentligheden igen",
 	"logentry-abusefilter-hit": "$1 udløste $4 med handlingen \"$5\" på $3. Tiltag: $6 ($7)",
+	"abusefilterprivatedetails-log-name": "Misbrugsfilter for private oplysningers adgangslog",
 	"abusefilter-management": "Håndtering af misbrugsfilter",
 	"abusefilter-list": "Alle filtre",
 	"abusefilter-list-id": "Filter-ID",
@@ -246,6 +250,7 @@
 	"abusefilter-edit-builder-group-vars": "Variabler",
 	"abusefilter-edit-builder-vars-accountname": "Kontonavn (on account creation)",
 	"abusefilter-edit-builder-vars-timestamp": "Unix-tidsstempel ved ændring",
+	"abusefilter-edit-builder-vars-timestamp-expanded": "Tidsstempel for loggen",
 	"abusefilter-edit-builder-vars-action": "Handling",
 	"abusefilter-edit-builder-vars-addedlines": "Linjer tilføjet i redigering",
 	"abusefilter-edit-builder-vars-delta": "Størrelse ændret i redigering",
@@ -398,5 +403,12 @@
 	"abusefilter-diff-next": "Nyere ændring",
 	"abusefilter-import-intro": "Du kan bruge denne grænseflade til at importere filtre fra andre wiki-websteder direkte.\nKlik på kilde wiki, \"{{int:abusefilter-edit-export}}\" under \"{{int:abusefilter-edit-tools}}\" i redigeringsgrænsefladen.\nKopiere fra tekstfeltet der vises, og indsætte det i denne tekstboks, og klik derefter på \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "Importer data",
-	"abusefilter-group-default": "Standard"
+	"abusefilter-group-default": "Standard",
+	"abusefilter-view-private-submit": "Se private oplysninger",
+	"abusefilter-view-private": "Se private oplysninger",
+	"abusefilter-view-private-reason": "Grund for adgang til private oplysninger:",
+	"abusefilter-log-details-id": "Log ID",
+	"log-description-abusefilterprivatedetails": "Denne log viser en liste over gange, hvor en bruger havde adgang til de private oplysninger i en misbrugslog.",
+	"abusefilter-noreason": "Advarsel: For at se de private oplysninger i denne log, skal du angive en grund.",
+	"abusefilter-log-ip-not-available": "Ikke tilgængelig."
 }
