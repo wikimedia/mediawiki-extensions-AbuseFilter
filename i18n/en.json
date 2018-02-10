@@ -233,7 +233,7 @@
 	"abusefilter-edit-builder-funcs-ucase": "To upper case (ucase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "Normalize confusable characters (ccnorm)",
 	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "Normalize and search a string for multiple substrings in OR mode (ccnorm_contains_any)",
-	"abusefilter-edit-builder-funcs-ccnorm-contains-all": "Normalize and search a string for multiple substrings in AND mode (ccnorm_contains_any)",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-all": "Normalize and search a string for multiple substrings in AND mode (ccnorm_contains_all)",
 	"abusefilter-edit-builder-funcs-rmdoubles": "Remove double-characters (rmdoubles)",
 	"abusefilter-edit-builder-funcs-specialratio": "Special characters / total characters (specialratio)",
 	"abusefilter-edit-builder-funcs-norm": "Normalize (norm)",
