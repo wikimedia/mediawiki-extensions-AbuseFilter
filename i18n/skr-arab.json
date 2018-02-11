@@ -31,5 +31,7 @@
 	"abusefilter-action-block": "پابندی لاؤ",
 	"abusefilter-revert-filter": "نتارا:",
 	"abusefilter-revert-confirm": "تصدیق",
-	"abusefilter-examine-user": "ورتݨ آلا:"
+	"abusefilter-examine-user": "ورتݨ آلا:",
+	"abusefilter-log-details-id": "لاگ آئی ڈی",
+	"abusefilter-log-ip-not-available": "دستیاب کائنی"
 }

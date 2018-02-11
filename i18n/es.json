@@ -46,7 +46,8 @@
 			"Sophivorus",
 			"Fortega",
 			"Josecurioso",
-			"RicardoSGZ"
+			"RicardoSGZ",
+			"Daimona Eaytoy"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas a las ediciones",
@@ -276,7 +277,7 @@
 	"abusefilter-edit-builder-funcs-ucase": "A mayúsculas (ucase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "Normalizar caracteres confusos (ccnorm)",
 	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "Normalizar una cadena y buscar en ella varias subcadenas en el modo OR (ccnorm_contains_any)",
-	"abusefilter-edit-builder-funcs-ccnorm-contains-all": "Normalizar una cadena y buscar en ella varias subcadenas en el modo AND (ccnorm_contains_any)",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-all": "Normalizar una cadena y buscar en ella varias subcadenas en el modo AND (ccnorm_contains_all)",
 	"abusefilter-edit-builder-funcs-rmdoubles": "Quitar caracteres dobles (rmdoubles)",
 	"abusefilter-edit-builder-funcs-specialratio": "Caracteres especiales / caracteres totales (specialratio)",
 	"abusefilter-edit-builder-funcs-norm": "Normalizar (norm)",

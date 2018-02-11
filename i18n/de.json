@@ -25,7 +25,8 @@
 			"Predatorix",
 			"Inkowik",
 			"Matma Rex",
-			"MGChecker"
+			"MGChecker",
+			"Daimona Eaytoy"
 		]
 	},
 	"abusefilter-desc": "Wendet Heuristiken automatisch auf Bearbeitungen an",
@@ -255,7 +256,7 @@
 	"abusefilter-edit-builder-funcs-ucase": "In Großbuchstaben konvertieren (ucase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "Verwirrende Zeichen normalisieren (ccnorm)",
 	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "Normalisiert und sucht in der Zeichenfolge nach mehreren Unterzeichenfolgen im OR-Modus (ccnorm_contains_any)",
-	"abusefilter-edit-builder-funcs-ccnorm-contains-all": "Normalisiert und sucht in der Zeichenfolge nach mehreren Unterzeichenfolgen im AND-Modus (ccnorm_contains_any)",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-all": "Normalisiert und sucht in der Zeichenfolge nach mehreren Unterzeichenfolgen im AND-Modus (ccnorm_contains_all)",
 	"abusefilter-edit-builder-funcs-rmdoubles": "Doppelte Zeichen entfernen (rmdoubles)",
 	"abusefilter-edit-builder-funcs-specialratio": "Sonderzeichen / Gesamtzahl der Zeichen (specialratio)",
 	"abusefilter-edit-builder-funcs-norm": "Normalisieren (norm)",
