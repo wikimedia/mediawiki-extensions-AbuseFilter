@@ -1062,9 +1062,9 @@ class AbuseFilterParser {
 		$needle = "/$needle/u";
 
 		// Suppress and restore are here for the same reason as T177744
-		MediaWiki\suppressWarnings();
+		Wikimedia\suppressWarnings();
 		$check = preg_match( $needle, $haystack, $matches );
-		MediaWiki\restoreWarnings();
+		Wikimedia\restoreWarnings();
 
 		if ( $check === false ) {
 			throw new AFPUserVisibleException(

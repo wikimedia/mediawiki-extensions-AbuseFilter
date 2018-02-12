@@ -205,9 +205,9 @@ class AFPData {
 	public static function keywordLike( $str, $pattern ) {
 		$str = $str->toString();
 		$pattern = '#^' . strtr( preg_quote( $pattern->toString(), '#' ), self::$wildcardMap ) . '$#u';
-		MediaWiki\suppressWarnings();
+		Wikimedia\suppressWarnings();
 		$result = preg_match( $pattern, $str );
-		MediaWiki\restoreWarnings();
+		Wikimedia\restoreWarnings();
 
 		return new AFPData( self::DBOOL, (bool)$result );
 	}
@@ -231,9 +231,9 @@ class AFPData {
 			$pattern .= 'i';
 		}
 
-		MediaWiki\suppressWarnings();
+		Wikimedia\suppressWarnings();
 		$result = preg_match( $pattern, $str );
-		MediaWiki\restoreWarnings();
+		Wikimedia\restoreWarnings();
 		if ( $result === false ) {
 			throw new AFPUserVisibleException(
 				'regexfailure',
