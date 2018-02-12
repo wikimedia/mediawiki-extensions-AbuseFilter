@@ -414,5 +414,6 @@
 	"abusefilter-import-intro": "يمكنك استخدام هذه الواجهة لاستيراد المرشحات من الويكيات الأخرى.\nفي الويكي المصدر، اضغط \"{{int:abusefilter-edit-export}}\" تحت \"{{int:abusefilter-edit-tools}}\" في واجهة التعديل.\nانسخ من صندوق النص الذي سيظهر، والصقه إلى صندوق النص هذا، ثم اضغط \"{{int:abusefilter-import-submit}}\",",
 	"abusefilter-import-submit": "استيراد البيانات",
 	"abusefilter-group-default": "افتراضي",
+	"abusefilter-view-private-submit": "عرض التفاصيل الخاصة",
 	"apihelp-query+abuselog-example-1": "أظهر مدخلات السجل الأخيرة"
 }
