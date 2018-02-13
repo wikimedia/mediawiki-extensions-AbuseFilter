@@ -2000,6 +2000,23 @@ class AbuseFilter {
 	}
 
 	/**
+	 * Extract values for syntax highlight
+	 *
+	 * @param bool $canEdit
+	 * @return array
+	 */
+	public static function getAceConfig( $canEdit ) {
+		$values = self::getBuilderValues();
+		$builderVariables = implode( '|', array_keys( $values['vars'] ) );
+		$builderFunctions = implode( '|', array_keys( AbuseFilterParser::$mFunctions ) );
+		return [
+			'variables' => $builderVariables,
+			'functions' => $builderFunctions,
+			'aceReadOnly' => !$canEdit
+		];
+	}
+
+	/**
 	 * @param string $rules
 	 * @param string $textName
 	 * @param bool $addResultDiv
@@ -2010,10 +2027,7 @@ class AbuseFilter {
 		$canEdit = true ) {
 		global $wgOut;
 
-		$textareaAttrib = [ 'dir' => 'ltr' ]; # Rules are in English
-		if ( !$canEdit ) {
-			$textareaAttrib['readonly'] = 'readonly';
-		}
+		$editorAttrib = [ 'dir' => 'ltr' ]; # Rules are in English
 
 		global $wgUser;
 		$noTestAttrib = [];
@@ -2023,7 +2037,36 @@ class AbuseFilter {
 		}
 
 		$rules = rtrim( $rules ) . "\n";
-		$rules = Xml::textarea( $textName, $rules, 40, 15, $textareaAttrib );
+
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'CodeEditor' ) ) {
+			$editorAttrib['name'] = 'wpAceFilterEditor';
+			$editorAttrib['id'] = 'wpAceFilterEditor';
+			$editorAttrib['class'] = 'mw-abusefilter-editor';
+
+			$switchEditor =
+				Xml::element(
+					'input',
+					[
+						'type' => 'button',
+						'value' => wfMessage( 'abusefilter-edit-switch-editor' )->text(),
+						'id' => 'mw-abusefilter-switcheditor'
+					] + $noTestAttrib
+				);
+
+			$rules = Xml::element( 'div', $editorAttrib, $rules );
+			// Dummy textarea for submitting form
+			$rules .= Xml::textarea( $textName, '', 40, 15, [ 'style' => 'display: none;' ] );
+
+			$editorConfig = self::getAceConfig( $canEdit );
+
+			// Add Ace configuration variable
+			$wgOut->addJsConfigVars( 'aceConfig', $editorConfig );
+		} else {
+			if ( !$canEdit ) {
+				$editorAttrib['readonly'] = 'readonly';
+			}
+			$rules = Xml::textarea( $textName, $rules, 40, 15, $editorAttrib );
+		}
 
 		if ( $canEdit ) {
 			$dropDown = self::getBuilderValues();
@@ -2059,15 +2102,32 @@ class AbuseFilter {
 					'select',
 					[ 'id' => 'wpFilterBuilder', ],
 					$builder
-				) . ' ';
+				);
 
-			// Add syntax checking
-			$rules .= Xml::element( 'input',
-				[
-					'type' => 'button',
-					'value' => wfMessage( 'abusefilter-edit-check' )->text(),
-					'id' => 'mw-abusefilter-syntaxcheck'
-				] + $noTestAttrib );
+			// Button for syntax check
+			$syntaxCheck =
+				Xml::element(
+					'input',
+					[
+						'type' => 'button',
+						'value' => wfMessage( 'abusefilter-edit-check' )->text(),
+						'id' => 'mw-abusefilter-syntaxcheck'
+					] + $noTestAttrib
+				);
+
+			// Button for switching editor (if Ace is used)
+			if ( isset( $switchEditor ) ) {
+				$syntaxCheck = $switchEditor . ' ' . $syntaxCheck;
+			}
+
+			$toolsContainer =
+				Xml::tags(
+					'div',
+					null,
+					$syntaxCheck
+				);
+
+			$rules .= $toolsContainer;
 		}
 
 		if ( $addResultDiv ) {
