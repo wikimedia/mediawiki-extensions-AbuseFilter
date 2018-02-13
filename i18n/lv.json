@@ -362,5 +362,6 @@
 	"abusefilter-diff-prev": "Vecāka izmaiņa",
 	"abusefilter-diff-next": "Jaunāka izmaiņa",
 	"abusefilter-import-submit": "Importēt datus",
-	"abusefilter-group-default": "Noklusējuma"
+	"abusefilter-group-default": "Noklusējuma",
+	"abusefilter-log-ip-not-available": "Nav pieejams"
 }

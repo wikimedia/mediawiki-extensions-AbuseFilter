@@ -256,7 +256,7 @@
 	"abusefilter-edit-builder-funcs-rmspecials": "Odstranit speciální znaky (rmspecials)",
 	"abusefilter-edit-builder-funcs-ip_in_range": "Patří IP adresa do rozsahu? (ip_in_range)",
 	"abusefilter-edit-builder-funcs-contains-any": "Hledat několik podřetězců v řetězci v režimu OR (contains_any)",
-	"abusefilter-edit-builder-funcs-contains-all": "Hledat řetězec pro více podřetězců v režimu AND. (contains_all)",
+	"abusefilter-edit-builder-funcs-contains-all": "Hledat v řetězci více podřetězců v režimu AND. (contains_all)",
 	"abusefilter-edit-builder-funcs-substr": "Podřetězec (substr)",
 	"abusefilter-edit-builder-funcs-strpos": "Pozice podřetězce v řetězci (strpos)",
 	"abusefilter-edit-builder-funcs-str_replace": "Nahradit podřetězec jiným řetězcem (str_replace)",
