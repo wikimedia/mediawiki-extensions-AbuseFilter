@@ -288,6 +288,7 @@
 	"abusefilter-edit-builder-funcs-rmspecials": "Eliminar caracteres especiales (rmspecials)",
 	"abusefilter-edit-builder-funcs-ip_in_range": "¿Está la IP dentro del intervalo? (ip_in_range)",
 	"abusefilter-edit-builder-funcs-contains-any": "Buscar en una cadena varias subcadenas en el modo OR. (contains_any)",
+	"abusefilter-edit-builder-funcs-contains-all": "Buscar en una cadena varias subcadenas en el modo AND. (contains_all)",
 	"abusefilter-edit-builder-funcs-substr": "Subcadena (substr)",
 	"abusefilter-edit-builder-funcs-strpos": "Posición de la subcadena en la cadena (strpos)",
 	"abusefilter-edit-builder-funcs-str_replace": "Reemplazar subcadena con una cadena (str_replace)",

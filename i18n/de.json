@@ -61,6 +61,7 @@
 	"action-abusefilter-log": "das Missbrauchsfilter-Logbuch einzusehen",
 	"action-abusefilter-log-detail": "das erweiterte Missbrauchsfilter-Logbuch einzusehen",
 	"action-abusefilter-private": "private Daten im Missbrauchsfilter-Logbuch einzusehen",
+	"action-abusefilter-private-log": "das Missbrauchsfilter-Private-Einzelheiten-Zugriffs-Logbuch anzusehen",
 	"action-abusefilter-modify-restricted": "Missbrauchsfilter mit privilegierten Aktionen zu bearbeiten",
 	"action-abusefilter-revert": "alle Änderungen durch einen bestimmten Missbrauchsfilter rückgängig zu machen",
 	"action-abusefilter-view-private": "Missbrauchsfilter einzusehen, die als privat markiert wurden",
