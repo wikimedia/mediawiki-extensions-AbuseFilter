@@ -69,6 +69,7 @@
 	"action-abusefilter-log": "{{doc-action|abusefilter-log}}",
 	"action-abusefilter-log-detail": "{{doc-action|abusefilter-log-detail}}",
 	"action-abusefilter-private": "{{doc-action|abusefilter-private}}",
+	"action-abusefilter-private-log": "{{doc-action|abusefilter-private-log}}",
 	"action-abusefilter-modify-restricted": "{{doc-action|abusefilter-modify-restricted}}",
 	"action-abusefilter-revert": "{{doc-action|abusefilter-revert}}",
 	"action-abusefilter-view-private": "{{doc-action|abusefilter-view-private}}",

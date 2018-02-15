@@ -37,6 +37,7 @@
 	"action-abusefilter-log": "view the abuse log",
 	"action-abusefilter-log-detail": "view detailed abuse log entries",
 	"action-abusefilter-private": "view private data in the abuse log",
+	"action-abusefilter-private-log": "view the AbuseFilter private details access log",
 	"action-abusefilter-modify-restricted": "modify abuse filters with restricted actions",
 	"action-abusefilter-revert": "revert all changes by a given abuse filter",
 	"action-abusefilter-view-private": "view abuse filters marked as private",
