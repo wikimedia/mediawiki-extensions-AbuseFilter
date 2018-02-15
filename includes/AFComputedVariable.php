@@ -1,5 +1,8 @@
 <?php
 
+use Wikimedia\Rdbms\Database;
+use MediaWiki\MediaWikiServices;
+
 class AFComputedVariable {
 	public $mMethod, $mParameters;
 	public static $userCache = [];
@@ -397,7 +400,7 @@ class AFComputedVariable {
 			return [];
 		}
 
-		$cache = ObjectCache::getMainWANInstance();
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 
 		return $cache->getWithSetCallback(
 			$cache->makeKey( 'last-10-authors', 'revision', $title->getLatestRevID() ),
