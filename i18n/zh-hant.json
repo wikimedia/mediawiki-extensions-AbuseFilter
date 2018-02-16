@@ -211,7 +211,7 @@
 	"abusefilter-edit-denied": "該過濾器已設為不公開，您無法檢視此過濾器的詳細資料。",
 	"abusefilter-edit-main": "過濾器參數",
 	"abusefilter-edit-done-subtitle": "已編輯過濾器",
-	"abusefilter-edit-done": "已儲存 [[Special:AbuseFilter/history/$1/diff/prev/$2|您的變更]] 至 [[Special:AbuseFilter/$1|過濾器 $3]]。",
+	"abusefilter-edit-done": "您對[[Special:AbuseFilter/$1|過濾器$3]]的[[Special:AbuseFilter/history/$1/diff/prev/$2|變更]]已儲存。",
 	"abusefilter-edit-badsyntax": "您指定的過濾器中有語法錯誤。\n語法分析器的回應為：<pre>$1</pre>",
 	"abusefilter-edit-restricted": "該過濾器包含了一個或多個已限制的動作，您無法編輯此過濾器。\n請聯絡擁有新增已限制動作權限的使用者協助您修改。",
 	"abusefilter-edit-viewhistory": "檢視此過濾器歷史",

@@ -61,6 +61,7 @@
 	"action-abusefilter-log": "ver o registro de abusos",
 	"action-abusefilter-log-detail": "ver entradas detalhadas do registro de abusos",
 	"action-abusefilter-private": "ver dados privados no registro de abusos",
+	"action-abusefilter-private-log": "ver o registo de consultas dos detalhes privados do filtro de abusos",
 	"action-abusefilter-modify-restricted": "modificar filtros de abuso com ações restritas",
 	"action-abusefilter-revert": "reverter todas as alterações feitas por um dado filtro de abuso",
 	"action-abusefilter-view-private": "ver filtros de abuso marcados como privados",

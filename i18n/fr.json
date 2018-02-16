@@ -70,6 +70,7 @@
 	"action-abusefilter-log": "voir le journal des filtres antiabus",
 	"action-abusefilter-log-detail": "voir les entrées détaillées du journal des filtres antiabus",
 	"action-abusefilter-private": "voir les données privées dans le journal des filtres antiabus",
+	"action-abusefilter-private-log": "afficher le journal des accès aux détails confidentiels de AbuseFilter",
 	"action-abusefilter-modify-restricted": "modifier les filtres antiabus avec des actions restreintes",
 	"action-abusefilter-revert": "révoquer toutes les modifications selon un filtre antiabus donné",
 	"action-abusefilter-view-private": "voir les filtres antiabus marqués comme privés",

@@ -79,6 +79,7 @@
 	"action-abusefilter-log": "查看滥用日志",
 	"action-abusefilter-log-detail": "查看详细滥用日志",
 	"action-abusefilter-private": "查看滥用日志中的私有数据",
+	"action-abusefilter-private-log": "查看防滥用过滤器私有详情访问日志",
 	"action-abusefilter-modify-restricted": "以有限的操作修改防滥用过滤器",
 	"action-abusefilter-revert": "还原指定防滥用过滤器作出的所有更改",
 	"action-abusefilter-view-private": "查看被标记为私有的防滥用过滤器",

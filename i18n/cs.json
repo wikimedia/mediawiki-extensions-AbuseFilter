@@ -50,6 +50,7 @@
 	"action-abusefilter-log": "prohlížet si protokol zneužití",
 	"action-abusefilter-log-detail": "prohlížet si podrobnosti v protokolu zneužití",
 	"action-abusefilter-private": "prohlížet si tajné údaje v protokolu zneužití",
+	"action-abusefilter-private-log": "prohlížet si záznamy přítupu k soukromým detailům filtrů zneužití",
 	"action-abusefilter-modify-restricted": "upravovat filtry zneužití s omezenými opatřeními",
 	"action-abusefilter-revert": "revertovat všechny změny provedené vybraným filtrem zneužití",
 	"action-abusefilter-view-private": "prohlížet si filtry zneužití označené jako tajné",
@@ -451,10 +452,12 @@
 	"apihelp-abusefiltercheckmatch-param-logid": "ID filtru zneužití vůči kterému chcete testovat.",
 	"apihelp-abusefiltercheckmatch-example-1": "Otestovat, zda poslední změna s ID 15 odpovídá jednoduchému filtru",
 	"apihelp-abusefilterchecksyntax-description": "Zkontrolovat syntaxi filtru zneužití.",
+	"apihelp-abusefilterchecksyntax-summary": "Zkontroluje syntaxi filtru zneužití.",
 	"apihelp-abusefilterchecksyntax-param-filter": "Plný text filtru, na kterém se zkontroluje syntaxe",
 	"apihelp-abusefilterchecksyntax-example-1": "Zkontrolovat syntaxi platného filtru",
 	"apihelp-abusefilterchecksyntax-example-2": "Zkontrolovat syntaxi neplatného filtru",
 	"apihelp-abusefilterevalexpression-description": "Vyhodnotí výraz filtru zneužití.",
+	"apihelp-abusefilterevalexpression-summary": "Vyhodnotí výraz filtru zneužití.",
 	"apihelp-abusefilterevalexpression-param-expression": "Výraz, který se má vyhodnotit.",
 	"apihelp-abusefilterevalexpression-example-1": "Vyhodnotit jednoduchý výraz",
 	"apihelp-abusefilterunblockautopromote-description": "Odblokuje uživateli možnost získat automatické povýšení zablokovanou důsledkem filtru zneužití.",
@@ -480,5 +483,6 @@
 	"apihelp-query+abuselog-example-1": "Zobrazit poslední záznamy protokolu",
 	"apihelp-query+abuselog-example-2": "Zobrazit poslední záznamy protokolu pro stránku [[API]]",
 	"apierror-abusefilter-canttest": "Nemáte oprávnění testovat filtry zneužití.",
-	"apierror-abusefilter-cantcheck": "Nemáte oprávnění kontrolovat syntaxi filtrů zneužití."
+	"apierror-abusefilter-cantcheck": "Nemáte oprávnění kontrolovat syntaxi filtrů zneužití.",
+	"apierror-abusefilter-badsyntax": "Filtr má neplatnou syntaxi."
 }
