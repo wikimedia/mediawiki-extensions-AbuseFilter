@@ -27,7 +27,8 @@
 			"Туллук",
 			"Facenapalm",
 			"Redredsonia",
-			"Putnik"
+			"Putnik",
+			"Smigles"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -301,9 +302,9 @@
 	"abusefilter-edit-builder-vars-all-links": "Все внешние ссылки в новом тексте",
 	"abusefilter-edit-builder-vars-added-links": "Все внешние ссылки, добавленные в правке",
 	"abusefilter-edit-builder-vars-removed-links": "Все внешние ссылки, удалённые в правке",
-	"abusefilter-edit-builder-vars-old-text": "Старый викитекст, до правки страницы",
-	"abusefilter-edit-builder-vars-new-text": "Новый викитекст, после правки страницы",
-	"abusefilter-edit-builder-vars-new-pst": "Викитекст новой страницы, преобразованный перед сохранением",
+	"abusefilter-edit-builder-vars-old-text": "Старый вики-текст, до правки страницы",
+	"abusefilter-edit-builder-vars-new-text": "Новый вики-текст, после правки страницы",
+	"abusefilter-edit-builder-vars-new-pst": "Вики-текст новой страницы, преобразованный перед сохранением",
 	"abusefilter-edit-builder-vars-diff-pst": "Унифицированный diff изменений в процессе редактирования, преобразованных перед сохранением",
 	"abusefilter-edit-builder-vars-addedlines-pst": "Строчки, добавленные при редактировании, преобразованные перед сохранением",
 	"abusefilter-edit-builder-vars-new-text-stripped": "Новый текст страницы, очищенный от разметки",
@@ -314,7 +315,7 @@
 	"abusefilter-edit-builder-vars-restrictions-upload": "Защита загрузки файла",
 	"abusefilter-edit-builder-vars-old-text-stripped": "Текст старой страницы, лишённый разметки",
 	"abusefilter-edit-builder-vars-old-links": "Ссылки на странице до правки",
-	"abusefilter-edit-builder-vars-old-html": "Викитекст старой страницы, преобразованный в HTML",
+	"abusefilter-edit-builder-vars-old-html": "Вики-текст старой страницы, преобразованный в HTML",
 	"abusefilter-edit-builder-vars-minor-edit": "Была ли правка отмечена как «малое изменение»",
 	"abusefilter-edit-builder-vars-file-sha1": "SHA1-хэш содержания файла",
 	"abusefilter-edit-builder-vars-file-size": "Размер файла в байтах",
