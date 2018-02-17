@@ -10,10 +10,11 @@ class AbuseFilterPager extends TablePager {
 	 */
 	protected $linkRenderer;
 
-	function __construct( $page, $conds, $linkRenderer ) {
+	function __construct( $page, $conds, $linkRenderer, $query ) {
 		$this->mPage = $page;
 		$this->mConds = $conds;
 		$this->linkRenderer = $linkRenderer;
+		$this->mQuery = $query;
 		parent::__construct( $this->mPage->getContext() );
 	}
 
@@ -24,6 +25,7 @@ class AbuseFilterPager extends TablePager {
 				'af_id',
 				'af_enabled',
 				'af_deleted',
+				'af_pattern',
 				'af_global',
 				'af_public_comments',
 				'af_hidden',
@@ -58,6 +60,10 @@ class AbuseFilterPager extends TablePager {
 			$headers['af_hit_count'] = 'abusefilter-list-hitcount';
 		}
 
+		if ( AbuseFilterView::canViewPrivate() && !empty( $this->mQuery[0] ) ) {
+			$headers['af_pattern'] = 'abusefilter-list-pattern';
+		}
+
 		global $wgAbuseFilterValidGroups;
 		if ( count( $wgAbuseFilterValidGroups ) > 1 ) {
 			$headers['af_group'] = 'abusefilter-list-group';
@@ -80,6 +86,69 @@ class AbuseFilterPager extends TablePager {
 					SpecialPage::getTitleFor( 'AbuseFilter', intval( $value ) ),
 					$lang->formatNum( intval( $value ) )
 				);
+			case 'af_pattern':
+				if ( $this->mQuery[1] === 'LIKE' ) {
+					$position = mb_strpos(
+						strtolower( $row->af_pattern ),
+						strtolower( $this->mQuery[0] ),
+						0,
+						'UTF8'
+					);
+					if ( $position === false ) {
+						// This may happen due to problems with character encoding
+						// which aren't easy to solve
+						return htmlspecialchars( mb_substr( $row->af_pattern, 0, 50, 'UTF8' ) );
+					}
+					$length = mb_strlen( $this->mQuery[0], 'UTF8' );
+				} elseif ( $this->mQuery[1] === 'RLIKE' ) {
+					$check = preg_match(
+						'/' . $this->mQuery[0] . '/',
+						$row->af_pattern,
+						$matches,
+						PREG_OFFSET_CAPTURE
+					);
+					// This may happen in case of catastrophic backtracking
+					if ( $check === false ) {
+						return htmlspecialchars( mb_substr( $row->af_pattern, 0, 50, 'UTF8' ) );
+					}
+					$length = mb_strlen( $matches[0][0], 'UTF8' );
+					$position = $matches[0][1];
+				} elseif ( $this->mQuery[1] === 'IRLIKE' ) {
+					$check = preg_match(
+						'/' . $this->mQuery[0] . '/i',
+						$row->af_pattern,
+						$matches,
+						PREG_OFFSET_CAPTURE
+					);
+					// This may happen in case of catastrophic backtracking
+					if ( $check === false ) {
+						return htmlspecialchars( mb_substr( $row->af_pattern, 0, 50, 'UTF8' ) );
+					}
+					$length = mb_strlen( $matches[0][0], 'UTF8' );
+					$position = $matches[0][1];
+				}
+				$remaining = 50 - $length;
+				if ( $remaining <= 0 ) {
+					$pattern = '<b>' .
+						htmlspecialchars( mb_substr( $row->af_pattern, 0, 50, 'UTF8' ) ) .
+						'</b>';
+				} else {
+					$minoffset = max( $position - round( $remaining / 2 ), 0 );
+					$pattern = mb_substr( $row->af_pattern, $minoffset, 50, 'UTF8' );
+					$pattern =
+						htmlspecialchars( mb_substr( $pattern, 0, $position - $minoffset, 'UTF8' ) ) .
+						'<b>' .
+						htmlspecialchars( mb_substr( $pattern, $position - $minoffset, $length, 'UTF8' ) ) .
+						'</b>' .
+						htmlspecialchars( mb_substr(
+							$pattern,
+							$position - $minoffset + $length,
+							round( $remaining / 2 ) + 1,
+							'UTF8'
+							)
+						);
+				}
+				return $pattern;
 			case 'af_public_comments':
 				return $this->linkRenderer->makeLink(
 					SpecialPage::getTitleFor( 'AbuseFilter', intval( $row->af_id ) ),
@@ -153,6 +222,10 @@ class AbuseFilterPager extends TablePager {
 
 	function getDefaultSort() {
 		return 'af_id';
+	}
+
+	function getTableClass() {
+		return 'TablePager mw-abusefilter-list-scrollable';
 	}
 
 	function getRowClass( $row ) {

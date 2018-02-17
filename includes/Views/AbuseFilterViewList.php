@@ -29,6 +29,10 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$conds = [];
 		$deleted = $request->getVal( 'deletedfilters' );
 		$hidedisabled = $request->getBool( 'hidedisabled' );
+		if ( $this->canViewPrivate() ) {
+			$querypattern = $request->getVal( 'querypattern' );
+			$searchmode = $request->getVal( 'searchoption', 'LIKE' );
+		}
 		$defaultscope = 'all';
 		if ( isset( $wgAbuseFilterCentralDB ) && !$wgAbuseFilterIsCentral ) {
 			// Show on remote wikis as default only local filters
@@ -55,7 +59,50 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$conds['af_global'] = 1;
 		}
 
-		$this->showList( $conds, compact( 'deleted', 'hidedisabled', 'scope' ) );
+		$dbr = wfGetDB( DB_REPLICA );
+
+		if ( !empty( $querypattern ) ) {
+			if ( $searchmode !== 'LIKE' ) {
+				// Check regex pattern validity
+				Wikimedia\suppressWarnings();
+				$validreg = preg_match( '/' . $querypattern . '/', null );
+				Wikimedia\restoreWarnings();
+
+				if ( $validreg === false ) {
+					$out->wrapWikiMsg(
+						'<div class="errorbox">$1</div>',
+						'abusefilter-list-regexerror'
+					);
+					$this->showList(
+						[ 'af_deleted' => 0 ],
+						compact( 'deleted', 'hidedisabled', 'querypattern', 'searchmode', 'scope' )
+					);
+					return;
+				}
+				if ( $searchmode === 'RLIKE' ) {
+					$conds[] = 'af_pattern RLIKE ' .
+						$dbr->addQuotes( $querypattern );
+				} else {
+					$conds[] = 'LOWER( CAST( af_pattern AS char ) ) RLIKE ' .
+						strtolower( $dbr->addQuotes( $querypattern ) );
+				}
+			} else {
+				// Build like query escaping tokens and encapsulating in % to search everywhere
+				$conds[] = 'LOWER( CAST( af_pattern AS char ) ) ' .
+					$dbr->buildLike(
+						$dbr->anyString(),
+						strtolower( $querypattern ),
+						$dbr->anyString()
+					);
+			}
+		}
+
+		$conds = $dbr->makeList( $conds, IDatabase::LIST_AND );
+
+		$this->showList(
+			$conds,
+			compact( 'deleted', 'hidedisabled', 'querypattern', 'searchmode', 'scope' )
+		);
 	}
 
 	function showList( $conds = [ 'af_deleted' => 0 ], $optarray = [] ) {
@@ -65,14 +112,32 @@ class AbuseFilterViewList extends AbuseFilterView {
 			Xml::element( 'h2', null, $this->msg( 'abusefilter-list' )->parse() )
 		);
 
+		if ( $this->canViewPrivate() ) {
+			$querypattern = $optarray['querypattern'];
+			$searchmode = $optarray['searchmode'];
+		} else {
+			$querypattern = '';
+			$searchmode = '';
+		}
+
 		$deleted = $optarray['deleted'];
 		$hidedisabled = $optarray['hidedisabled'];
 		$scope = $optarray['scope'];
 
 		if ( isset( $wgAbuseFilterCentralDB ) && !$wgAbuseFilterIsCentral && $scope == 'global' ) {
-			$pager = new GlobalAbuseFilterPager( $this, $conds, $this->linkRenderer );
+			$pager = new GlobalAbuseFilterPager(
+				$this,
+				$conds,
+				$this->linkRenderer,
+				[ $querypattern, $searchmode ]
+			);
 		} else {
-			$pager = new AbuseFilterPager( $this, $conds, $this->linkRenderer );
+			$pager = new AbuseFilterPager(
+				$this,
+				$conds,
+				$this->linkRenderer,
+				[ $querypattern, $searchmode ]
+			);
 		}
 
 		# Options form
@@ -120,6 +185,29 @@ class AbuseFilterViewList extends AbuseFilterView {
 			'label-message' => 'abusefilter-list-options-hidedisabled',
 			'selected' => $hidedisabled,
 		];
+
+		if ( $this->canViewPrivate() ) {
+			$formDescriptor['querypattern'] = [
+				'name' => 'querypattern',
+				'type' => 'text',
+				'label-message' => 'abusefilter-list-options-searchfield',
+				'placeholder' => $this->msg( 'abusefilter-list-options-searchpattern' )->text(),
+				'default' => $querypattern
+			];
+
+			$formDescriptor['searchoption'] = [
+				'name' => 'searchoption',
+				'type' => 'radio',
+				'flatlist' => true,
+				'label-message' => 'abusefilter-list-options-searchoptions',
+				'options-messages' => [
+					'abusefilter-list-options-search-like' => 'LIKE',
+					'abusefilter-list-options-search-rlike' => 'RLIKE',
+					'abusefilter-list-options-search-irlike' => 'IRLIKE',
+				],
+				'default' => $searchmode
+			];
+		}
 
 		$formDescriptor['limit'] = [
 			'name' => 'limit',

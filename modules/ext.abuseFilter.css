@@ -43,6 +43,12 @@ td.mw-abuselog-var {
 	width: 30%;
 }
 
+table.mw-abusefilter-list-scrollable {
+	display: block;
+	border: 0;
+	overflow-x: auto;
+}
+
 tr.mw-abusefilter-list-disabled,
 tr.mw-abusefilter-list-disabled td {
 	color: #666;
