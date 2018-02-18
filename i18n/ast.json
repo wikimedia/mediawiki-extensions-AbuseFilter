@@ -38,6 +38,7 @@
 	"action-abusefilter-log": "ver el rexistru d'abusos",
 	"action-abusefilter-log-detail": "ver los detalles de les entraes del rexistru d'abusos",
 	"action-abusefilter-private": "ver los datos privaos del rexistru d'abusos",
+	"action-abusefilter-private-log": "ver el rexistru d'accesu a detalles privaos d'AbuseFilter",
 	"action-abusefilter-modify-restricted": "camudar les peñeres d'abusu con aiciones restrinxíes",
 	"action-abusefilter-revert": "revertir tolos cambios fechos por una determinada peñera d'abusu",
 	"action-abusefilter-view-private": "ver les peñeres d'abusu marcaes como privaes",

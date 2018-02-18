@@ -344,7 +344,7 @@
 	"abusefilter-exception-unexpectedatend": "\"$2\" non previsto in corrispondenza del carattere $1.",
 	"abusefilter-exception-expectednotfound": "$2 mancante in corrispondenza del carattere $1, presente invece $3 $4.",
 	"abusefilter-exception-unrecognisedkeyword": "Parola chiave $2 sconosciuta in corrispondenza del carattere $1.",
-	"abusefilter-exception-unexpectedtoken": "Token intatteso \"$3\" (di tipo $2) in corrispondenza del carattere $1.",
+	"abusefilter-exception-unexpectedtoken": "Token inatteso \"$3\" (di tipo $2) in corrispondenza del carattere $1.",
 	"abusefilter-exception-unclosedstring": "Stringa iniziata in corrispondenza del carattere $1 non terminata.",
 	"abusefilter-exception-invalidoperator": "Operatore \"$2\" non valido in corrispondenza del carattere $1.",
 	"abusefilter-exception-unrecognisedtoken": "Token \"$2\" non riconosciuto in corrispondenza del carattere $1.",
