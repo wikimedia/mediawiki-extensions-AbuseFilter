@@ -862,6 +862,11 @@ class AbuseFilterParser {
 	protected function getVarValue( $var ) {
 		$var = strtolower( $var );
 		$builderValues = AbuseFilter::getBuilderValues();
+		$deprecatedVars = AbuseFilter::getDeprecatedVariables();
+		if ( array_key_exists( $var, $deprecatedVars ) ) {
+			wfDebug( "AbuseFilter: deprecated variable $var used." );
+			$var = $deprecatedVars[$var];
+		}
 		if ( !( array_key_exists( $var, $builderValues['vars'] )
 			|| $this->mVars->varIsSet( $var ) )
 		) {
@@ -886,9 +891,11 @@ class AbuseFilterParser {
 	 */
 	protected function setUserVariable( $name, $value ) {
 		$builderValues = AbuseFilter::getBuilderValues();
+		$deprecatedVars = AbuseFilter::getDeprecatedVariables();
 		$blacklistedValues = AbuseFilterVariableHolder::$varBlacklist;
 		if ( array_key_exists( $name, $builderValues['vars'] ) ||
 			array_key_exists( $name, AbuseFilter::$disabledVars ) ||
+			array_key_exists( $name, $deprecatedVars ) ||
 			in_array( $name, $blacklistedValues ) ) {
 			throw new AFPUserVisibleException( 'overridebuiltin', $this->mCur->pos, [ $name ] );
 		}

@@ -144,14 +144,16 @@ class AbuseFilterVariableHolder {
 
 			$coreVariables = AbuseFilter::getBuilderValues();
 			$coreVariables = array_keys( $coreVariables['vars'] );
+			$deprecatedVariables = array_keys( AbuseFilter::getDeprecatedVariables() );
+			$coreVariables = array_merge( $coreVariables, $deprecatedVariables );
 
 			// Title vars can have several prefixes
-			$prefixes = [ 'ARTICLE', 'MOVED_FROM', 'MOVED_TO' ];
+			$prefixes = [ 'MOVED_FROM', 'MOVED_TO', 'PAGE' ];
 			$titleVars = [
-				'_ARTICLEID',
+				'_ID',
 				'_NAMESPACE',
-				'_TEXT',
-				'_PREFIXEDTEXT',
+				'_TITLE',
+				'_PREFIXEDTITLE',
 				'_recent_contributors'
 			];
 			foreach ( $wgRestrictionTypes as $action ) {

@@ -109,18 +109,18 @@ class AbuseFilter {
 			'old_content_model' => 'old-content-model',
 			'removed_lines' => 'removedlines',
 			'summary' => 'summary',
-			'article_articleid' => 'article-id',
-			'article_namespace' => 'article-ns',
-			'article_text' => 'article-text',
-			'article_prefixedtext' => 'article-prefixedtext',
-			'moved_from_articleid' => 'movedfrom-id',
+			'page_id' => 'page-id',
+			'page_namespace' => 'page-ns',
+			'page_title' => 'page-title',
+			'page_prefixedtitle' => 'page-prefixedtitle',
+			'moved_from_id' => 'movedfrom-id',
 			'moved_from_namespace' => 'movedfrom-ns',
-			'moved_from_text' => 'movedfrom-text',
-			'moved_from_prefixedtext' => 'movedfrom-prefixedtext',
-			'moved_to_articleid' => 'movedto-id',
+			'moved_from_title' => 'movedfrom-title',
+			'moved_from_prefixedtitle' => 'movedfrom-prefixedtitle',
+			'moved_to_id' => 'movedto-id',
 			'moved_to_namespace' => 'movedto-ns',
-			'moved_to_text' => 'movedto-text',
-			'moved_to_prefixedtext' => 'movedto-prefixedtext',
+			'moved_to_title' => 'movedto-title',
+			'moved_to_prefixedtitle' => 'movedto-prefixedtitle',
 			'user_editcount' => 'user-editcount',
 			'user_age' => 'user-age',
 			'user_name' => 'user-name',
@@ -138,12 +138,12 @@ class AbuseFilter {
 			'added_lines_pst' => 'addedlines-pst',
 			'new_text' => 'new-text-stripped',
 			'new_html' => 'new-html',
-			'article_restrictions_edit' => 'restrictions-edit',
-			'article_restrictions_move' => 'restrictions-move',
-			'article_restrictions_create' => 'restrictions-create',
-			'article_restrictions_upload' => 'restrictions-upload',
-			'article_recent_contributors' => 'recent-contributors',
-			'article_first_contributor' => 'first-contributor',
+			'page_restrictions_edit' => 'restrictions-edit',
+			'page_restrictions_move' => 'restrictions-move',
+			'page_restrictions_create' => 'restrictions-create',
+			'page_restrictions_upload' => 'restrictions-upload',
+			'page_recent_contributors' => 'recent-contributors',
+			'page_first_contributor' => 'first-contributor',
 			'moved_from_restrictions_edit' => 'movedfrom-restrictions-edit',
 			'moved_from_restrictions_move' => 'movedfrom-restrictions-move',
 			'moved_from_restrictions_create' => 'movedfrom-restrictions-create',
@@ -172,6 +172,25 @@ class AbuseFilter {
 	public static $disabledVars = [
 		'old_text' => 'old-text-stripped',
 		'old_html' => 'old-html'
+	];
+
+	public static $deprecatedVars = [
+		'article_text' => 'page_title',
+		'article_prefixedtext' => 'page_prefixedtitle',
+		'article_namespace' => 'page_namespace',
+		'article_articleid' => 'page_id',
+		'article_restrictions_edit' => 'page_restrictions_edit',
+		'article_restrictions_move' => 'page_restrictions_move',
+		'article_restrictions_create' => 'page_restrictions_create',
+		'article_restrictions_upload' => 'page_restrictions_upload',
+		'article_recent_contributors' => 'page_recent_contributors',
+		'article_first_contributor' => 'page_first_contributor',
+		'moved_from_text' => 'moved_from_title',
+		'moved_from_prefixedtext' => 'moved_from_prefixedtitle',
+		'moved_from_articleid' => 'moved_from_id',
+		'moved_to_text' => 'moved_to_title',
+		'moved_to_prefixedtext' => 'moved_to_prefixedtitle',
+		'moved_to_articleid' => 'moved_to_id',
 	];
 
 	public static $editboxName = null;
@@ -312,6 +331,23 @@ class AbuseFilter {
 	}
 
 	/**
+	 * @return array
+	 */
+	public static function getDeprecatedVariables() {
+		static $deprecatedVars = null;
+
+		if ( $deprecatedVars ) {
+			return $deprecatedVars;
+		}
+
+		$deprecatedVars = self::$deprecatedVars;
+
+		Hooks::run( 'AbuseFilter-deprecatedVariables', [ &$deprecatedVars ] );
+
+		return $deprecatedVars;
+	}
+
+	/**
 	 * @param string $filter
 	 * @return bool
 	 */
@@ -364,19 +400,36 @@ class AbuseFilter {
 	/**
 	 * @param Title|null $title
 	 * @param string $prefix
+	 * @param bool $transition Temporary parameter to help with T173889 and to be removed afterwards
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function generateTitleVars( $title, $prefix ) {
+	public static function generateTitleVars( $title, $prefix, $transition = true ) {
 		$vars = new AbuseFilterVariableHolder;
 
 		if ( !$title ) {
 			return $vars;
 		}
 
-		$vars->setVar( $prefix . '_ARTICLEID', $title->getArticleID() );
+		// Temporary overrides for T173889, necessary because Flow (and maybe
+		// other extensions) still pass old prefix/suffix and thus fail, since
+		// hybrid variables are generated (e.g. article_prefixedtitle).
+		// Once their variables will be renamed according to the new syntax,
+		// we should get rid of these if and just use the new prefix/suffix.
+		// Right now, what we want to do is:
+		// - Use new prefix/suffix for AF's own variables (they're handled at parser level)
+		// - Use old prefix/suffix for external variables (we don't handle them)
+		$titleSuffix = 'TITLE';
+		if ( $transition && $prefix === 'BOARD' ) {
+			$titleSuffix = 'TEXT';
+		}
+		if ( $transition && $prefix === 'ARTICLE' ) {
+			$prefix = 'PAGE';
+		}
+
+		$vars->setVar( $prefix . '_ID', $title->getArticleID() );
 		$vars->setVar( $prefix . '_NAMESPACE', $title->getNamespace() );
-		$vars->setVar( $prefix . '_TEXT', $title->getText() );
-		$vars->setVar( $prefix . '_PREFIXEDTEXT', $title->getPrefixedText() );
+		$vars->setVar( $prefix . "_$titleSuffix", $title->getText() );
+		$vars->setVar( $prefix . "_PREFIXED$titleSuffix", $title->getPrefixedText() );
 
 		global $wgRestrictionTypes;
 		foreach ( $wgRestrictionTypes as $action ) {
@@ -2040,7 +2093,9 @@ class AbuseFilter {
 	 */
 	public static function getAceConfig( $canEdit ) {
 		$values = self::getBuilderValues();
-		$builderVariables = implode( '|', array_keys( $values['vars'] ) );
+		$deprecatedVars = self::getDeprecatedVariables();
+		$builderVariables = implode( '|',
+			array_keys( array_merge( $values['vars'], $deprecatedVars ) ) );
 		$builderFunctions = implode( '|', array_keys( AbuseFilterParser::$mFunctions ) );
 		// AbuseFilterTokenizer::$keywords also includes constants (true, false and null),
 		// but Ace redefines these constants afterwards so this will not be an issue
@@ -2581,7 +2636,7 @@ class AbuseFilter {
 
 		$vars->addHolders(
 			self::generateUserVars( $user ),
-			self::generateTitleVars( $title, 'ARTICLE' )
+			self::generateTitleVars( $title, 'PAGE' )
 		);
 
 		$vars->setVar( 'ACTION', 'delete' );
@@ -2607,7 +2662,7 @@ class AbuseFilter {
 
 		$vars->addHolders(
 			self::generateUserVars( $user ),
-			self::generateTitleVars( $title, 'ARTICLE' )
+			self::generateTitleVars( $title, 'PAGE' )
 		);
 
 		$vars->setVar( 'ACTION', 'edit' );
@@ -2765,9 +2820,13 @@ class AbuseFilter {
 		}
 
 		// Now, build the body of the table.
+		$deprecatedVars = self::getDeprecatedVariables();
 		foreach ( $vars as $key => $value ) {
 			$key = strtolower( $key );
 
+			if ( array_key_exists( $key, $deprecatedVars ) ) {
+				$key = $deprecatedVars[$key];
+			}
 			if ( !empty( $variableMessageMappings[$key] ) ) {
 				$mapping = $variableMessageMappings[$key];
 				$keyDisplay = $context->msg( "abusefilter-edit-builder-vars-$mapping" )->parse() .
