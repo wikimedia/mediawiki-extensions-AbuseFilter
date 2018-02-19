@@ -173,7 +173,7 @@
 	"abusefilter-edit-action-disallow": "Impedisci all'utente di effettuare l'azione in questione",
 	"abusefilter-edit-action-blockautopromote": "Revoca lo stato di autoconfirmed dell'utente",
 	"abusefilter-edit-action-degroup": "Rimuovi l'utente da tutti i gruppi privilegiati",
-	"abusefilter-edit-action-block": "Impedisci ogni ulteriore modifica all'utenza o indirizzo IP",
+	"abusefilter-edit-action-block": "Blocca l'utenza o indirizzo IP",
 	"abusefilter-edit-action-throttle": "Attiva le azioni solo se l'utente supera un limite predeterminato",
 	"abusefilter-edit-action-rangeblock": "Bloccare il rispettivo intervallo IP di origine dell'utente.",
 	"abusefilter-edit-action-tag": "Evidenzia la modifica per una verifica ulteriore.",

@@ -82,6 +82,7 @@
 	"action-abusefilter-log": "ver registro del filtro antiabusos",
 	"action-abusefilter-log-detail": "ver entradas detalladas del filtro antiabusos",
 	"action-abusefilter-private": "ver datos privados en el registro del filtro antiabusos",
+	"action-abusefilter-private-log": "ver el registro de acceso a datos privados del filtro antiabusos",
 	"action-abusefilter-modify-restricted": "modificar filtros antiabusos con acciones restringidas",
 	"action-abusefilter-revert": "revertir todos los cambios realizados por un determinado filtro antiabusos",
 	"action-abusefilter-view-private": "ver filtros antiabusos marcados como privados",
