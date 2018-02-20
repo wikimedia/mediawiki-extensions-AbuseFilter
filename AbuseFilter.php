@@ -90,9 +90,16 @@ $wgAbuseFilterIsCentral = false;
  */
 $wgAbuseFilterDisallowGlobalLocalBlocks = false;
 
-/** Block duration for logged in users */
+/**
+ * Old standard block duration for logged in users.
+ * Kept for backward compatibility after T32024.
+ */
 $wgAbuseFilterBlockDuration = 'indefinite';
-/** Block duration for anonymous users ($wgAbuseFilterBlockDuration will be used if null) */
+/**
+ * Old standard block duration for anonymous users,
+ * $wgAbuseFilterBlockDuration will be used if null.
+ * Kept for backward compatibility after T32024.
+ */
 $wgAbuseFilterAnonBlockDuration = null;
 
 /** Callback functions for custom actions */
