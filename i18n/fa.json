@@ -24,7 +24,8 @@
 			"Alirezaaa",
 			"Mehran",
 			"Hosseinblue",
-			"Matma Rex"
+			"Matma Rex",
+			"Alifakoor"
 		]
 	},
 	"abusefilter-desc": "اکتشافات خودکاری را بر روی ویرایش‌های انجام می‌دهد.",
@@ -46,6 +47,7 @@
 	"right-abusefilter-log": "مشاهدهٔ سیاههٔ خرابکاری",
 	"right-abusefilter-log-detail": "مشاهدهٔ سیاههٔ خرابکاری به همراه جزئیات",
 	"right-abusefilter-private": "مشاهدهٔ اطلاعات خصوصی در سیاههٔ خرابکاری",
+	"right-abusefilter-private-log": "نمایش جزئیات خصوصی سیاههٔ دسترسی به پالایهٔ سوءاستفاده",
 	"right-abusefilter-modify-restricted": "ویرایش پالایه‌های خرابکاری دارای اقدامات محدودکننده",
 	"right-abusefilter-revert": "واگردانی تمام تغییرات توسط یک پالایهٔ خرابکاری",
 	"right-abusefilter-view-private": "مشاهدهٔ پالایه‌های خرابکاری علامت خورده به عنوان خصوصی",
@@ -106,6 +108,9 @@
 	"abusefilter-logentry-suppress": "«[[$1]]» را پنهان کرد",
 	"abusefilter-logentry-unsuppress": "«[[$1]]» را آشکار کرد",
 	"logentry-abusefilter-hit": "$1 در حال انجام {{GENDER:$2|دادن}} عمل «$5» در  $3 $4 را فعال {{GENDER:$2|کرد}}. اقدامات صورت‌گرفته:  $6 ($7)",
+	"log-action-filter-abusefilter": "نوع تغییر پالایه",
+	"log-action-filter-abusefilter-create": "ایجاد پالایهٔ جدید",
+	"log-action-filter-abusefilter-modify": "تغییر پالایه",
 	"abusefilter-management": "مدیریت پالایهٔ خرابکاری",
 	"abusefilter-list": "تمام پالایه‌ها",
 	"abusefilter-list-id": "شناسهٔ پالایه",
@@ -430,6 +435,7 @@
 	"abusefilter-import-submit": "درون‌ریزی اطلاعات",
 	"abusefilter-group-default": "پیش‌فرض",
 	"abusefilter-http-error": "خطای اچ‌تی‌تی‌پی رخ داد: $1",
+	"abusefilter-log-ip-not-available": "موجود نیست",
 	"apihelp-abusefiltercheckmatch-description": "بررسی کنید تا ببینید اگر پالایهٔ خرابکاری با مجموعه‌ای از متغییرها، رویداد سیاههٔ پالایهٔ خرابکاری کاربر مطابق است.\n\n متغییر، شناسهٔ تغییرات اخیر یا شناسهٔ ورود مورد نیاز است، اما فقط یکی از این سه می‌تواند استفاده شود.",
 	"apihelp-abusefiltercheckmatch-summary": "بررسی کنید اگر یک پالایهٔ خرابکاری با مجموعه‌ای از متغیرها مطابقت داشت، editor logged AbuseFilter event.",
 	"apihelp-abusefiltercheckmatch-extended-description": "vars، rcid، یا logid لازم است هرچند یکی از آنها استفاده می‌شود.",
