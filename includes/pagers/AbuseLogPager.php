@@ -14,9 +14,8 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	/**
 	 * @param SpecialAbuseLog $form
 	 * @param array $conds
-	 * @param bool $details
 	 */
-	function __construct( $form, $conds = [], $details = false ) {
+	function __construct( $form, $conds = [] ) {
 		$this->mForm = $form;
 		$this->mConds = $conds;
 		parent::__construct();
