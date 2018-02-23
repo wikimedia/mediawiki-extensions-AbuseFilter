@@ -273,7 +273,8 @@
 			"IPv6": 19
 		},
 		"AbuseFilterPrivateLog": false,
-		"AbuseFilterForceSummary": false
+		"AbuseFilterForceSummary": false,
+		"AbuseFilterLogIP": true
 	},
 	"load_composer_autoloader": true,
 	"manifest_version": 1
