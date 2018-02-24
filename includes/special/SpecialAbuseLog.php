@@ -11,6 +11,11 @@ class SpecialAbuseLog extends SpecialPage {
 	 */
 	protected $mSearchTitle;
 
+	/**
+	 * @var string
+	 */
+	protected $mSearchActionTaken;
+
 	protected $mSearchWiki;
 
 	protected $mSearchFilter;
@@ -121,11 +126,25 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$this->mSearchTitle = $request->getText( 'wpSearchTitle' );
 		$this->mSearchFilter = null;
+		$this->mSearchActionTaken = $request->getText( 'wpSearchActionTaken' );
 		if ( self::canSeeDetails() ) {
 			$this->mSearchFilter = $request->getText( 'wpSearchFilter' );
 		}
 
 		$this->mSearchEntries = $request->getText( 'wpSearchEntries' );
+	}
+
+	/**
+	 * @return string[]
+	 */
+	private function getAllActions() {
+		global $wgAbuseFilterActions, $wgAbuseFilterCustomActionsHandlers;
+		return array_unique(
+			array_merge(
+				array_keys( $wgAbuseFilterActions ),
+				array_keys( $wgAbuseFilterCustomActionsHandlers )
+			)
+		);
 	}
 
 	function searchForm() {
@@ -150,6 +169,20 @@ class SpecialAbuseLog extends SpecialPage {
 				'default' => $this->mSearchFilter,
 			];
 		}
+		$options = [
+			$this->msg( 'abusefilter-log-noactions' )->text() => 'noactions',
+			$this->msg( 'abusefilter-log-search-action-taken-any' )->text() => '',
+		];
+		foreach ( $this->getAllActions() as $action ) {
+			$key = AbuseFilter::getActionDisplay( $action );
+			$options[$key] = $action;
+		}
+		ksort( $options );
+		$formDescriptor['SearchActionTaken'] = [
+			'label-message' => 'abusefilter-log-search-action-taken-label',
+			'type' => 'select',
+			'options' => $options,
+		];
 		if ( $wgAbuseFilterIsCentral ) {
 			// Add free form input for wiki name. Would be nice to generate
 			// a select with unique names in the db at some point.
@@ -319,6 +352,18 @@ class SpecialAbuseLog extends SpecialPage {
 				$conds['afl_deleted'] = 1;
 			} elseif ( $this->mSearchEntries == '2' ) {
 				$conds[] = self::getNotDeletedCond( wfGetDB( DB_REPLICA ) );
+			}
+		}
+
+		if ( $this->mSearchActionTaken ) {
+			if ( in_array( $this->mSearchActionTaken, $this->getAllActions() ) ) {
+				$actions = [ $this->mSearchActionTaken ];
+				if ( $this->mSearchActionTaken !== 'tag' ) {
+					$actions[] = "{$this->mSearchActionTaken},tag";
+				}
+				$conds['afl_actions'] = $actions;
+			} elseif ( $this->mSearchActionTaken === 'noactions' ) {
+				$conds['afl_actions'] = '';
 			}
 		}
 

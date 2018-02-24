@@ -53,6 +53,8 @@
 	"abusefilter-log-search-entries-all": "All entries",
 	"abusefilter-log-search-entries-hidden": "Hidden entries only",
 	"abusefilter-log-search-entries-visible": "Visible entries only",
+	"abusefilter-log-search-action-taken-label": "Action taken:",
+	"abusefilter-log-search-action-taken-any": "Any",
 	"abusefilter-log-search-submit": "Search",
 	"abusefilter-log-entry": "$1: $2 {{GENDER:$8|triggered}} an abuse filter, {{GENDER:$8|performing}} the action \"$3\" on $4.\nActions taken: $5;\nFilter description: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 {{GENDER:$8|triggered}} an abuse filter, {{GENDER:$8|performing}} the action \"$3\" on $4.\nActions taken: $5;\nFilter description: $6 ($7)",
