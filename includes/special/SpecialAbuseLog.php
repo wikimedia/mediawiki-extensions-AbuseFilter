@@ -174,13 +174,6 @@ class SpecialAbuseLog extends SpecialPage {
 				],
 			],
 		];
-		if ( self::canSeeDetails() ) {
-			$formDescriptor['SearchFilter'] = [
-				'label-message' => 'abusefilter-log-search-filter',
-				'type' => 'text',
-				'default' => $this->mSearchFilter,
-			];
-		}
 		$options = [
 			$this->msg( 'abusefilter-log-noactions' )->text() => 'noactions',
 			$this->msg( 'abusefilter-log-search-action-taken-any' )->text() => '',
@@ -195,15 +188,6 @@ class SpecialAbuseLog extends SpecialPage {
 			'type' => 'select',
 			'options' => $options,
 		];
-		if ( $wgAbuseFilterIsCentral ) {
-			// Add free form input for wiki name. Would be nice to generate
-			// a select with unique names in the db at some point.
-			$formDescriptor['SearchWiki'] = [
-				'label-message' => 'abusefilter-log-search-wiki',
-				'type' => 'text',
-				'default' => $this->mSearchWiki,
-			];
-		}
 		if ( self::canSeeHidden() ) {
 			$formDescriptor['SearchEntries'] = [
 				'type' => 'select',
@@ -213,6 +197,22 @@ class SpecialAbuseLog extends SpecialPage {
 					$this->msg( 'abusefilter-log-search-entries-hidden' )->text() => 1,
 					$this->msg( 'abusefilter-log-search-entries-visible' )->text() => 2,
 				],
+			];
+		}
+		if ( self::canSeeDetails() ) {
+			$formDescriptor['SearchFilter'] = [
+				'label-message' => 'abusefilter-log-search-filter',
+				'type' => 'text',
+				'default' => $this->mSearchFilter,
+			];
+		}
+		if ( $wgAbuseFilterIsCentral ) {
+			// Add free form input for wiki name. Would be nice to generate
+			// a select with unique names in the db at some point.
+			$formDescriptor['SearchWiki'] = [
+				'label-message' => 'abusefilter-log-search-wiki',
+				'type' => 'text',
+				'default' => $this->mSearchWiki,
 			];
 		}
 
