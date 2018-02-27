@@ -382,7 +382,7 @@
 	"abusefilter-topnav-test": "групно испробавање",
 	"abusefilter-topnav-examine": "испитај прошле измене",
 	"abusefilter-topnav-log": "историја злоупотребе",
-	"abusefilter-topnav-tools": "алати за дебаговање",
+	"abusefilter-topnav-tools": "Алатке за дебаговање",
 	"abusefilter-topnav-import": "увези филтер",
 	"abusefilter-log-name": "Дневник филтера против злоупотребе",
 	"abusefilter-log-header": "Овде је приказан сажетак измена начињених над филтерима.\nЗа више информација погледајте [[Special:AbuseFilter/history|преглед]] скорашњих измена.",

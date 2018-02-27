@@ -9,7 +9,8 @@
 			"Ydyashad",
 			"संतोष दहिवळ",
 			"Matma Rex",
-			"Pushkar Ekbote"
+			"Pushkar Ekbote",
+			"Sureshkhole"
 		]
 	},
 	"abusefilter-desc": "संपादन गाळणी सर्व संपादनांचा सांगितल्याप्रमाणे स्वयंशोध घेते.",
@@ -53,9 +54,12 @@
 	"abusefilter-log-search-filter": "गाळणी ओळखण (पाईप चिन्हाद्वारे(|) वेगळे केलेले):",
 	"abusefilter-log-search-title": "शीर्षक:",
 	"abusefilter-log-search-wiki": "विकि:",
+	"abusefilter-log-search-impact": "परिणाम:",
+	"abusefilter-log-search-impact-all": "सर्व क्रिया",
 	"abusefilter-log-search-impact-saved": "फक्त जतन केलेले बदल",
 	"abusefilter-log-search-impact-not-saved": "बदल जतन न करता",
 	"abusefilter-log-search-action-taken-label": "कारवाई केली",
+	"abusefilter-log-search-action-taken-any": "कुठलेही",
 	"abusefilter-log-search-submit": "शोधा",
 	"abusefilter-log-entry": "$1:$2ने संपादन गाळणी {{GENDER:$8|उद्युक्त}} केली, ज्याने $4 वर \"$3\" {{GENDER:$8|क्रिया केली}}.\nकेलेली कार्यवाही: $5;\nगाळणी वर्णन: $6",
 	"abusefilter-log-entry-withdiff": "$1:$2ने अपशब्द गाळणी कार्यान्वयित केली,त्याने $4 वर \"$3\" क्रिया घडली.\nकेलेली कार्यवाही:$5;\nगाळणी वर्णन:$6($7)",
