@@ -1441,7 +1441,8 @@ class AbuseFilter {
 					],
 					$wgUser->getName(),
 					$expiry,
-					true
+					true,
+					is_array( $parameters ) && in_array( 'blocktalk', $parameters )
 				);
 
 				$message = [
@@ -1591,8 +1592,15 @@ class AbuseFilter {
 	 * @param string $target
 	 * @param string $expiry
 	 * @param bool $isAutoBlock
+	 * @param bool $preventEditOwnUserTalk
 	 */
-	protected static function doAbuseFilterBlock( array $rule, $target, $expiry, $isAutoBlock ) {
+	protected static function doAbuseFilterBlock(
+		array $rule,
+		$target,
+		$expiry,
+		$isAutoBlock,
+		$preventEditOwnUserTalk = false
+	) {
 		$filterUser = self::getFilterUser();
 		$reason = wfMessage(
 			'abusefilter-blockreason',
@@ -1606,7 +1614,7 @@ class AbuseFilter {
 		$block->isHardblock( false );
 		$block->isAutoblocking( $isAutoBlock );
 		$block->prevents( 'createaccount', true );
-		$block->prevents( 'editownusertalk', false );
+		$block->prevents( 'editownusertalk', $preventEditOwnUserTalk );
 		$block->mExpiry = SpecialBlock::parseExpiryInput( $expiry );
 
 		$success = $block->insert();
