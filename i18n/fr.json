@@ -35,7 +35,8 @@
 			"TomT0m",
 			"Wladek92",
 			"Elfix",
-			"Matma Rex"
+			"Matma Rex",
+			"Thibaut120094"
 		]
 	},
 	"abusefilter-desc": "Applique des heuristiques automatiques aux modifications",
@@ -204,6 +205,7 @@
 	"abusefilter-edit-action-blockautopromote": "Révoquer l'état autoconfirmé du compte utilisateur",
 	"abusefilter-edit-action-degroup": "Retirer l'utilisateur de tous les groupes privilégiés",
 	"abusefilter-edit-action-block": "Bloquer en écriture l’utilisateur ou l’adresse IP",
+	"abusefilter-edit-action-blocktalk": "Empêcher l’utilisateur ou l’adresse IP de modifier sa propre page de discussion",
 	"abusefilter-edit-action-throttle": "Déclencher les actions uniquement si l'utilisateur a dépassé un taux limite",
 	"abusefilter-edit-action-rangeblock": "Bloquer la plage IP respective d’où provient l’utilisateur.",
 	"abusefilter-edit-action-tag": "Baliser la modification pour une relecture ultérieure.",
@@ -350,6 +352,7 @@
 	"abusefilter-edit-builder-vars-file-width": "Largeur du fichier en pixels",
 	"abusefilter-edit-builder-vars-file-height": "Hauteur du fichier en pixels",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Nombre de bits par canal de couleur dans le fichier",
+	"abusefilter-edit-block-options": "Options de blocage :",
 	"abusefilter-filter-log": "Modifications récentes des filtres",
 	"abusefilter-history": "Historique des modifications du filtre antiabus n° $1",
 	"abusefilter-history-foruser": "Modifications par $1",
@@ -363,7 +366,7 @@
 	"abusefilter-history-filter": "Règle du filtre",
 	"abusefilter-history-comments": "Commentaires",
 	"abusefilter-history-actions": "Actions",
-	"abusefilter-history-backedit": "Retour à la page de modification de filtre",
+	"abusefilter-history-backedit": "Retour à la page de modification du filtre",
 	"abusefilter-history-deleted": "Supprimé",
 	"abusefilter-history-filterid": "Filtre",
 	"abusefilter-history-select-legend": "Affiner la recherche",
