@@ -542,8 +542,8 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$row = $dbr->selectRow(
 			[ 'abuse_filter_log', 'abuse_filter' ],
-			[ 'afl_id', 'afl_filter', 'afl_user_text', 'afl_timestamp', 'afl_ip', 'af_id',
-				'af_public_comments', 'af_hidden' ],
+			[ 'afl_id', 'afl_filter', 'afl_user_text', 'afl_timestamp', 'af_user', 'afl_ip',
+				 'af_id', 'af_public_comments', 'af_hidden' ],
 			[ 'afl_id' => $id ],
 			__METHOD__,
 			[],
@@ -672,15 +672,45 @@ class SpecialAbuseLog extends SpecialPage {
 			);
 
 		// IP address
-		$ip = $row->afl_ip === '' ? $this->msg( 'abusefilter-log-ip-not-available' ) : $row->afl_ip;
-		$output .=
-			Xml::tags( 'tr', null,
-				Xml::element( 'td',
-					[ 'style' => 'width: 30%;' ],
-					$this->msg( 'abusefilter-log-details-ip' )->text()
-				) .
-				Xml::element( 'td', null, $ip )
-			);
+		if ( $row->afl_ip !== '' ) {
+			if ( ExtensionRegistry::getInstance()->isLoaded( 'CheckUser' ) &&
+				$this->getUser()->isAllowed( 'checkuser' ) ) {
+					$CULink = '&nbsp;&middot;&nbsp;' . $linkRenderer->makeKnownLink(
+						SpecialPage::getTitleFor(
+							'CheckUser',
+							$row->afl_ip
+						),
+						$this->msg( 'abusefilter-log-details-checkuser' )->text()
+					);
+			} else {
+				$CULink = '';
+			}
+			$output .=
+				Xml::tags( 'tr', null,
+					Xml::element( 'td',
+						[ 'style' => 'width: 30%;' ],
+						$this->msg( 'abusefilter-log-details-ip' )->text()
+					) .
+					Xml::tags(
+						'td',
+						null,
+						self::getUserLinks( $row->af_user, $row->afl_ip ) . $CULink
+					)
+				);
+		} else {
+			$output .=
+				Xml::tags( 'tr', null,
+					Xml::element( 'td',
+						[ 'style' => 'width: 30%;' ],
+						$this->msg( 'abusefilter-log-details-ip' )->text()
+					) .
+					Xml::element(
+						'td',
+						null,
+						$this->msg( 'abusefilter-log-ip-not-available' )->text()
+					)
+				);
+		}
 
 		$output .= Xml::closeElement( 'tbody' ) . Xml::closeElement( 'table' );
 

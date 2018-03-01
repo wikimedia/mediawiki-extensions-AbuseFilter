@@ -74,6 +74,7 @@
 	"abusefilter-log-details-vars": "Action parameters",
 	"abusefilter-log-details-private": "Private log details",
 	"abusefilter-log-details-ip": "Originating IP address",
+	"abusefilter-log-details-checkuser": "Check user",
 	"abusefilter-log-noactions": "none",
 	"abusefilter-log-details-diff": "Changes made in edit",
 	"abusefilter-log-linkoncontribs": "abuse log",
