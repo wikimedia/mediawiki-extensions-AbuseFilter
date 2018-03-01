@@ -381,7 +381,7 @@
 	"abusefilter-examine-user": "Потребител:",
 	"abusefilter-examine-title": "Заглавие на страницата:",
 	"abusefilter-examine-submit": "Търсене",
-	"abusefilter-examine-vars": "Променливи, генерирани с тази редакция",
+	"abusefilter-examine-vars": "Променливи, генерирани за тази редакция",
 	"abusefilter-examine-test": "Проверяване на редакцията спрямо филтър",
 	"abusefilter-examine-test-button": "Изпробване на филтъра",
 	"abusefilter-examine-match": "Филтърът сигнализира за съответствие при тази редакция.",
