@@ -438,6 +438,7 @@
 	"abusefilter-import-submit": "ייבוא הנתונים",
 	"abusefilter-group-default": "ברירת המחדל",
 	"abusefilter-http-error": "אירעה שגיאת HTTP: $1",
+	"abusefilter-log-details-id": "מזהה יומן",
 	"abusefilter-log-ip-not-available": "לא זמין",
 	"apihelp-abusefiltercheckmatch-description": "בדיקה אם מסנן ההשחתות מתאים לערכת משתנים, העורך רושם ביומן אירוע מסנן השחתות.\n\nvars‏, rcid או logid נדרש, אבל אפשר להשתמש רק באחד מהם.",
 	"apihelp-abusefiltercheckmatch-summary": "בדיקה האם מסנן השחתות מתאים לערכת משתנים, אירוע מסנן השחתות שנרשם ביומן על־די עורך.",
