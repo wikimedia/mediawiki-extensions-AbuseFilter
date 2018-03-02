@@ -521,7 +521,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					Html::warningBox(
 						$this->msg( 'abusefilter-edit-throttled-warning' )
 							->plaintextParams( $lang->commaList( $throttledActions ) )
-							->text()
+							->escaped()
 					)
 				);
 			}
