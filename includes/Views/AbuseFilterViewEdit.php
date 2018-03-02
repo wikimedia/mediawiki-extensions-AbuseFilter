@@ -518,9 +518,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				);
 
 				$flags .= $out->parse(
-					$this->msg( 'abusefilter-edit-throttled-warning' )
-						->plaintextParams( $lang->commaList( $throttledActions ) )
-						->text()
+					Html::warningBox(
+						$this->msg( 'abusefilter-edit-throttled-warning' )
+							->plaintextParams( $lang->commaList( $throttledActions ) )
+							->text()
+					)
 				);
 			}
 		}
