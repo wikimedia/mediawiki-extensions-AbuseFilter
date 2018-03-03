@@ -1577,11 +1577,15 @@ class AbuseFilter {
 	 * @param array[] $tagsByAction Map of (integer => string[])
 	 */
 	private static function bufferTagsToSetByAction( array $tagsByAction ) {
-		foreach ( $tagsByAction as $actionID => $tags ) {
-			if ( !isset( self::$tagsToSet[$actionID] ) ) {
-				self::$tagsToSet[$actionID] = $tags;
-			} else {
-				self::$tagsToSet[$actionID] = array_merge( self::$tagsToSet[$actionID], $tags );
+		global $wgAbusefilterActions;
+
+		if ( isset( $wgAbusefilterActions['tag'] ) && $wgAbusefilterActions['tag'] ) {
+			foreach ( $tagsByAction as $actionID => $tags ) {
+				if ( !isset( self::$tagsToSet[$actionID] ) ) {
+					self::$tagsToSet[$actionID] = $tags;
+				} else {
+					self::$tagsToSet[$actionID] = array_merge( self::$tagsToSet[$actionID], $tags );
+				}
 			}
 		}
 	}
