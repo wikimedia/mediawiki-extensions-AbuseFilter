@@ -344,7 +344,7 @@
 	"abusefilter-diff-title": "Версийн башхалла",
 	"abusefilter-diff-item": "Элемент",
 	"abusefilter-diff-version": "{{GENDER:$3|Декъашхочун}} $2 верси цу $1 хан",
-	"abusefilter-diff-info": "АгӀонах болу бовзам",
+	"abusefilter-diff-info": "АгӀонан хаам",
 	"abusefilter-diff-pattern": "Литтаран хьал",
 	"abusefilter-diff-invalid": "Йохуш йолу версеш схьаэца цало",
 	"abusefilter-diff-backhistory": "ЮхагӀо литтаран истори йолче",

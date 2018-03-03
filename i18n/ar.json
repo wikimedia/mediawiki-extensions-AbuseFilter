@@ -101,6 +101,7 @@
 	"abusefilter-logentry-suppress": "تم إخفاء \"[[$1]]\"",
 	"abusefilter-logentry-unsuppress": "تم إظهار \"[[$1]]\"",
 	"logentry-abusefilter-hit": "$1 أثار $4، تنفيذ الإجراء \"$5\" على $3. الإجراءات المتخذة: $6 ($7)",
+	"abusefilterprivatedetails-log-name": "سجل الوصول للتفاصيل الخاصة بمرشح الإساءة",
 	"abusefilter-management": "التحكم بمرشح الإساءة",
 	"abusefilter-list": "كل المرشحات",
 	"abusefilter-list-id": "رقم المُرشِّح",
@@ -415,5 +416,6 @@
 	"abusefilter-import-submit": "استيراد البيانات",
 	"abusefilter-group-default": "افتراضي",
 	"abusefilter-view-private-submit": "عرض التفاصيل الخاصة",
+	"log-description-abusefilterprivatedetails": "يظهر السجل قائمة بالمرات التي وصل إليها المستخدم إلى التفاصيل الخاصة لسجل الإساءة.",
 	"apihelp-query+abuselog-example-1": "أظهر مدخلات السجل الأخيرة"
 }
