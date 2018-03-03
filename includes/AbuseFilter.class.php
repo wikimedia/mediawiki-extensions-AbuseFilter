@@ -919,7 +919,7 @@ class AbuseFilter {
 	public static function filterAction(
 		$vars, $title, $group = 'default', $user = null, $mode = 'execute'
 	) {
-		global $wgUser, $wgTitle, $wgRequest, $wgAbuseFilterRuntimeProfile;
+		global $wgUser, $wgTitle, $wgRequest, $wgAbuseFilterRuntimeProfile, $wgAbuseFilterLogIP;
 
 		$context = RequestContext::getMain();
 		$oldContextTitle = $context->getTitle();
@@ -1025,7 +1025,8 @@ class AbuseFilter {
 				'afl_timestamp' => wfGetDB( DB_REPLICA )->timestamp( wfTimestampNow() ),
 				'afl_namespace' => $title->getNamespace(),
 				'afl_title' => $title->getDBkey(),
-				'afl_ip' => $wgRequest->getIP()
+				// DB field is not null, so nothing
+				'afl_ip' => ( $wgAbuseFilterLogIP ) ? $wgRequest->getIP() : ""
 			];
 
 			// Hack to avoid revealing IPs of people creating accounts

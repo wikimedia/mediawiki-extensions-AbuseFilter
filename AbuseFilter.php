@@ -127,3 +127,8 @@ $wgAbuseFilterRuntimeProfile = false;
  * Runtime in milliseconds before a filter is considered slow.
  */
 $wgAbuseFilterSlowFilterRuntimeLimit = 500;
+
+/**
+ * Whether to include IP in the abuse_filter_log
+ */
+$wgAbuseFilterLogIP = true;
