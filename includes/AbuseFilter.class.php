@@ -2069,8 +2069,11 @@ class AbuseFilter {
 				// They're both unset
 			} elseif ( isset( $actions1[$action] ) && isset( $actions2[$action] ) ) {
 				// They're both set.
+				// Double check needed, e.g. per T180194
 				if ( array_diff( $actions1[$action]['parameters'],
-					$actions2[$action]['parameters'] ) ) {
+					$actions2[$action]['parameters'] ) ||
+					array_diff( $actions2[$action]['parameters'],
+					$actions1[$action]['parameters'] ) ) {
 					// Different parameters
 					$differences[] = 'actions';
 				}
