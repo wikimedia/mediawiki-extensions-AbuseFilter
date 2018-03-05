@@ -361,6 +361,7 @@
 	"abusefilter-history-filterid": "Filtro",
 	"abusefilter-history-select-legend": "Melhorar pesquisa",
 	"abusefilter-history-select-user": "Utilizador:",
+	"abusefilter-history-select-filter": "ID do filtro:",
 	"abusefilter-history-select-submit": "Melhorar",
 	"abusefilter-history-diff": "Alterações",
 	"abusefilter-history-error-hidden": "O filtro que solicitou está ocultado e não pode ver o seu histórico.",

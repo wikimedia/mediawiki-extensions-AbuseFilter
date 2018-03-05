@@ -365,6 +365,7 @@
 	"abusefilter-history-filterid": "Filter",
 	"abusefilter-history-select-legend": "Förfina sökning",
 	"abusefilter-history-select-user": "Användare:",
+	"abusefilter-history-select-filter": "Filter-ID:",
 	"abusefilter-history-select-submit": "Förfina",
 	"abusefilter-history-diff": "Ändringar",
 	"abusefilter-history-error-hidden": "Filtret du eftersökte är dolt och du kan inte se dess historik.",

@@ -340,6 +340,7 @@
 	"abusefilter-history-filterid": "Филтер",
 	"abusefilter-history-select-legend": "Прецизирај го пребарувањето",
 	"abusefilter-history-select-user": "Корисник:",
+	"abusefilter-history-select-filter": "Назнака на филтерот:",
 	"abusefilter-history-select-submit": "Уточни",
 	"abusefilter-history-diff": "Промени",
 	"abusefilter-history-error-hidden": "Побараниот филтер е скриен, и затоа не можете да ја гледате неговата историја.",

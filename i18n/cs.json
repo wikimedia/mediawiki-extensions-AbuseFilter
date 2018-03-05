@@ -350,6 +350,7 @@
 	"abusefilter-history-filterid": "Filtr",
 	"abusefilter-history-select-legend": "Upřesnit hledání",
 	"abusefilter-history-select-user": "Uživatel:",
+	"abusefilter-history-select-filter": "ID filtru:",
 	"abusefilter-history-select-submit": "Provést",
 	"abusefilter-history-diff": "Změny",
 	"abusefilter-history-error-hidden": "Požadovaný filtr je skrytý, takže si jeho historii prohlédnout nemůžete.",

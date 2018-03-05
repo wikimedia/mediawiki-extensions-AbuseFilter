@@ -371,6 +371,7 @@
 	"abusefilter-history-filterid": "Filtre",
 	"abusefilter-history-select-legend": "Affiner la recherche",
 	"abusefilter-history-select-user": "Utilisateur :",
+	"abusefilter-history-select-filter": "ID du filtre :",
 	"abusefilter-history-select-submit": "Affiner",
 	"abusefilter-history-diff": "Changements",
 	"abusefilter-history-error-hidden": "Le filtre que vous avez demandé est caché, et vous ne pouvez pas afficher son historique.",

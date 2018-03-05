@@ -346,6 +346,7 @@
 	"abusefilter-history-filterid": "Filtro",
 	"abusefilter-history-select-legend": "Restringi la ricerca",
 	"abusefilter-history-select-user": "Utente:",
+	"abusefilter-history-select-filter": "ID filtro:",
 	"abusefilter-history-select-submit": "Restringi",
 	"abusefilter-history-diff": "Modifiche",
 	"abusefilter-history-error-hidden": "Il filtro richiesto è nascosto, non è possibile visualizzarne la cronologia.",

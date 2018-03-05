@@ -354,6 +354,7 @@
 	"abusefilter-history-filterid": "필터",
 	"abusefilter-history-select-legend": "검색 구체화",
 	"abusefilter-history-select-user": "사용자:",
+	"abusefilter-history-select-filter": "필터 ID:",
 	"abusefilter-history-select-submit": "필터",
 	"abusefilter-history-diff": "차이",
 	"abusefilter-history-error-hidden": "요청한 필터는 비공개되어 있어 필터의 역사를 볼 수 없습니다.",
