@@ -1,13 +1,27 @@
 <?php
 
 class AbuseFilterChangesList extends OldChangesList {
+
+	/**
+	 * @var string
+	 */
+	private $testFilter;
+
+	public function __construct( Skin $skin, $testFilter ) {
+		parent::__construct( $skin );
+		$this->testFilter = $testFilter;
+	}
+
 	/**
 	 * @param string &$s
 	 * @param RecentChange &$rc
-	 * @param array &$classes
+	 * @param string[] &$classes
 	 */
 	public function insertExtra( &$s, &$rc, &$classes ) {
-		$examineParams = empty( $rc->examineParams ) ? [] : $rc->examineParams;
+		$examineParams = [];
+		if ( $this->testFilter ) {
+			$examineParams['testfilter'] = $this->testFilter;
+		}
 
 		$title = SpecialPage::getTitleFor( 'AbuseFilter', 'examine/' . $rc->mAttribs['rc_id'] );
 		$examineLink = $this->linkRenderer->makeLink(
