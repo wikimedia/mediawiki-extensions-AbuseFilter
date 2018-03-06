@@ -1645,6 +1645,9 @@ class AbuseFilter {
 				// Conditionally added same as SpecialBlock
 				$flags[] = 'noautoblock';
 			}
+			if ( $preventEditOwnUserTalk === true ) {
+				$flags[] = 'nousertalk';
+			}
 			$logParams['6::flags'] = implode( ',', $flags );
 
 			$logEntry = new ManualLogEntry( 'block', 'block' );
