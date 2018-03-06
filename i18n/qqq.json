@@ -475,6 +475,8 @@
 	"log-description-abusefilterprivatedetails": "The description of the abuse filter private details access log.",
 	"abusefilter-noreason": "Warning message shown when no reasons is given to access the private details of an abuse log.",
 	"abusefilter-log-ip-not-available": "Text shown when IP address is not available.\n{{Identical|Not available}}",
+	"tag-abusefilter-condition-limit": "Change tag for edits that reached the condition limit",
+	"tag-abusefilter-condition-limit-description": "Description for \"condition limit reached\" change tag",
 	"apihelp-abusefiltercheckmatch-description": "{{doc-apihelp-description|abusefiltercheckmatch}}",
 	"apihelp-abusefiltercheckmatch-summary": "{{doc-apihelp-summary|abusefiltercheckmatch}}",
 	"apihelp-abusefiltercheckmatch-extended-description": "{{doc-apihelp-extended-description|abusefiltercheckmatch}}",

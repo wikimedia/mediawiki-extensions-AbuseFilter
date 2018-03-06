@@ -479,6 +479,8 @@ class AbuseFilterHooks {
 			}
 		);
 
+		$tags[] = 'abusefilter-condition-limit';
+
 		return true;
 	}
 
