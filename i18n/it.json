@@ -446,6 +446,8 @@
 	"abusefilter-view-private-reason": "Motivazione per visualizzare i dettagli privati:",
 	"abusefilter-log-details-id": "ID registro",
 	"abusefilter-log-ip-not-available": "Non disponibile",
+	"tag-abusefilter-condition-limit": "limite di condizioni raggiunto",
+	"tag-abusefilter-condition-limit-description": "Modifiche o altri eventi che non sono stati controllati da tutti i [[Special:AbuseFilter|filtri anti abusi]] attivi ([[mw:Extension:AbuseFilter/Conditions|aiuto]]).",
 	"apihelp-abusefilterchecksyntax-example-1": "Controlla la sintassi di un filtro valido",
 	"apihelp-abusefilterchecksyntax-example-2": "Controlla la sintassi di un filtro non valido",
 	"apihelp-abusefilterevalexpression-description": "Valuta un'espressione AbuseFilter.",

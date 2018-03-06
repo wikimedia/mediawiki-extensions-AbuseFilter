@@ -466,6 +466,8 @@
 	"log-description-abusefilterprivatedetails": "Dieses Logbuch zeigt eine Liste darüber an, wie oft ein Benutzer auf private Einzelheiten eines Missbrauchfiltereintrags zugreift.",
 	"abusefilter-noreason": "Warnung: Um die privaten Einzelheiten dieses Eintrags einzusehen, musst du einen Grund angeben.",
 	"abusefilter-log-ip-not-available": "Nicht verfügbar",
+	"tag-abusefilter-condition-limit": "Bedingungsgrenze erreicht",
+	"tag-abusefilter-condition-limit-description": "Bearbeitungen oder andere Ereignisse, die nicht von allen aktiven [[Special:AbuseFilter|Missbrauchsfiltern]] überprüft werden konnten ([[mw:Extension:AbuseFilter/Conditions|Hilfe]]).",
 	"apihelp-abusefiltercheckmatch-extended-description": "Es ist vars, rcid oder logid erforderlich, jedoch kann nur eines verwendet werden.",
 	"apihelp-abusefiltercheckmatch-param-filter": "Der vollständige Filtertext, der für einen Treffer überprüft werden soll.",
 	"apihelp-abusefiltercheckmatch-param-vars": "JSON-kodierte Anordnung von Variablen, die gegengetestet werden sollen.",

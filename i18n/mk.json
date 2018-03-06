@@ -76,6 +76,7 @@
 	"abusefilter-log-details-vars": "Параметри на дејството",
 	"abusefilter-log-details-private": "Лични дневнички податоци",
 	"abusefilter-log-details-ip": "Исходна IP-адреса",
+	"abusefilter-log-details-checkuser": "Провери корисник",
 	"abusefilter-log-noactions": "нема",
 	"abusefilter-log-details-diff": "Направени промени при уредувањето",
 	"abusefilter-log-linkoncontribs": "дневник на злоупотреби",

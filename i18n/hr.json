@@ -71,6 +71,7 @@
 	"abusefilter-log-details-vars": "Parametri postupka",
 	"abusefilter-log-details-private": "Privatni podaci",
 	"abusefilter-log-details-ip": "Izvorna IP adresa",
+	"abusefilter-log-details-checkuser": "Provjeri suradnika",
 	"abusefilter-log-noactions": "ništa",
 	"abusefilter-log-details-diff": "Promjene napravljene uređivanjem",
 	"abusefilter-log-linkoncontribs": "evidencija zloporaba",

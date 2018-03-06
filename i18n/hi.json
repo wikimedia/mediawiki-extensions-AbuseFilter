@@ -16,7 +16,8 @@
 			"Sachinkatiyar",
 			"ArmouredCyborg",
 			"Innocentbunny",
-			"Nitin1485"
+			"Nitin1485",
+			"Smtchahal"
 		]
 	},
 	"abusefilter-desc": "संपादनों पर स्वतः शोध प्रणाली का प्रयोग लागू करता है",
@@ -60,9 +61,11 @@
 	"abusefilter-log-search-filter": "फ़िल्टर IDs (पाइप के साथ अलग):",
 	"abusefilter-log-search-title": "शीर्षक:",
 	"abusefilter-log-search-wiki": "विकी:",
+	"abusefilter-log-search-impact-all": "सभी कार्य",
 	"abusefilter-log-search-entries-label": "दृश्यता:",
 	"abusefilter-log-search-entries-all": "सभी प्रविष्टियाँ",
 	"abusefilter-log-search-entries-hidden": "केवल छुपी प्रविष्टियां",
+	"abusefilter-log-search-action-taken-any": "कोई",
 	"abusefilter-log-search-submit": "खोज",
 	"abusefilter-log-entry": "$1: $2 द्वारा $4 पर किये कार्य \"$3\" को दुरुपयोग फ़िल्टर ने पकड़ा।\nफ़िल्टर द्वारा उठाया गया कदम: $5;\nफ़िल्टर विवरण: $6",
 	"abusefilter-log-detailedentry-meta": "$1: $2 द्वारा $5 पर किये कार्य \"$4\" को दुरुपयोग फ़िल्टर $3 ने पकड़ा।\nफ़िल्टर द्वारा उठाया गया कदम: $6;\nफ़िल्टर विवरण: $7 ($8)",
