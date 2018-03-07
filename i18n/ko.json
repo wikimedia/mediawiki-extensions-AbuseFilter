@@ -92,6 +92,7 @@
 	"abusefilter-log-details-vars": "명령 변수",
 	"abusefilter-log-details-private": "비공개 기록 상세 정보",
 	"abusefilter-log-details-ip": "사용자의 IP 주소",
+	"abusefilter-log-details-checkuser": "사용자 검사",
 	"abusefilter-log-noactions": "없음",
 	"abusefilter-log-details-diff": "편집에서 바뀐 내용",
 	"abusefilter-log-linkoncontribs": "편집 필터 기록",

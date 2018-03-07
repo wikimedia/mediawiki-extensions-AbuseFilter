@@ -29,7 +29,8 @@
 			"Redredsonia",
 			"Putnik",
 			"Smigles",
-			"Mouse21"
+			"Mouse21",
+			"Patrick Star"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -95,6 +96,7 @@
 	"abusefilter-log-details-vars": "Параметры действия",
 	"abusefilter-log-details-private": "Скрытые данные журнале",
 	"abusefilter-log-details-ip": "Исходящий IP-адрес",
+	"abusefilter-log-details-checkuser": "Проверить участника",
 	"abusefilter-log-noactions": "нет",
 	"abusefilter-log-details-diff": "Изменения, сделанные в правке",
 	"abusefilter-log-linkoncontribs": "журнал злоупотреблений",
@@ -192,6 +194,7 @@
 	"abusefilter-edit-action-blockautopromote": "Снять с участника статус автоподтверждения",
 	"abusefilter-edit-action-degroup": "Исключить участника из всех привилегированных групп",
 	"abusefilter-edit-action-block": "Заблокировать участника или IP-адрес",
+	"abusefilter-edit-action-blocktalk": "Блокировать пользователя и / или IP-адрес от редактирования собственной страницы обсуждения",
 	"abusefilter-edit-action-throttle": "Применять меры только если участник превышает предел",
 	"abusefilter-edit-action-rangeblock": "Блокировать соответствующий диапазон, из которого работает участник.",
 	"abusefilter-edit-action-tag": "Отметить правку для дальнейшей проверки",
@@ -339,6 +342,7 @@
 	"abusefilter-edit-builder-vars-file-width": "Ширина файла в пикселях",
 	"abusefilter-edit-builder-vars-file-height": "Высота файла в пикселях",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Глубина цвета в файле",
+	"abusefilter-edit-block-options": "Параметры блокировки:",
 	"abusefilter-filter-log": "Последние изменения фильтров",
 	"abusefilter-history": "История изменений фильтра злоупотреблений #$1",
 	"abusefilter-history-foruser": "Изменения сделанные $1",
@@ -357,6 +361,7 @@
 	"abusefilter-history-filterid": "Фильтр",
 	"abusefilter-history-select-legend": "Уточнить поиск",
 	"abusefilter-history-select-user": "Участник:",
+	"abusefilter-history-select-filter": "ID фильтра:",
 	"abusefilter-history-select-submit": "Уточнить",
 	"abusefilter-history-diff": "Изменения",
 	"abusefilter-history-error-hidden": "Запрашиваемый фильтр скрыт, вы не можете просмотреть его историю.",

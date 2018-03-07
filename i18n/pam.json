@@ -1,13 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Val2397"
+			"Val2397",
+			"Leeheonjin"
 		]
 	},
 	"abusefilter-log-search-user": "Talagamit",
 	"abusefilter-log-search-filter": "Salakan ya ing ID",
 	"abusefilter-log-search-title": "Bansag",
 	"abusefilter-log-search-wiki": "Wiki",
+	"abusefilter-log-search-action-taken-any": "Andyang sanu",
 	"abusefilter-log-search-submit": "Manintun",
 	"abusefilter-log-detailedentry-local": "Salak $1",
 	"abusefilter-log-diff": "aliwa",
