@@ -75,7 +75,7 @@
 	"abusefilter-log-detailslink": "tarkat tiedot",
 	"abusefilter-log-diff": "ero",
 	"abusefilter-log-hidelink": "säädä näkyvyyttä",
-	"abusefilter-log-details-legend": "Lokitapahtuman $1 tarkemmat tiedot",
+	"abusefilter-log-details-legend": "Tarkemmat tiedot koskien lokimerkintää $1",
 	"abusefilter-log-details-var": "Muuttuja",
 	"abusefilter-log-details-val": "Arvo",
 	"abusefilter-log-details-vars": "Toimintoparametrit",

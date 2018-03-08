@@ -445,6 +445,8 @@
 	"log-description-abusefilterprivatedetails": "Во овој дневник се прикажани навратите кога даден корисник пристапил до лични податоци во дневникот на филтерот за злоупотреби.",
 	"abusefilter-noreason": "Предупредување: За да гледате лични податоци од овој дневник, ќе мора да наведете причина.",
 	"abusefilter-log-ip-not-available": "Недостапна",
+	"tag-abusefilter-condition-limit": "достигната условната граница",
+	"tag-abusefilter-condition-limit-description": "Уредувањата или другите настани не можеа да се проверат од сите активни [[Special:AbuseFilter|филтри на злоупотреби]] ([[mw:Extension:AbuseFilter/Conditions|помош]]).",
 	"apihelp-abusefiltercheckmatch-description": "Проверете дали филтер за злоупотреби ќе најде збир променливи. Овој настан на филтерот го заведува корисникот.\n\nСе бара vars, rcid или logid (може да се употреби само едно).",
 	"apihelp-abusefiltercheckmatch-summary": "Проверете дали филтерот пронаоѓа даден збир променливи, дејство заведено од уредник.",
 	"apihelp-abusefiltercheckmatch-extended-description": "Се бара vars, rcid иили logid (може да се употреби само едно од нив).",
