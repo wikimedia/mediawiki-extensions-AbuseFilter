@@ -259,4 +259,11 @@ class AbuseFilterServices {
 	public static function getEditRevUpdater(): EditRevUpdater {
 		return MediaWikiServices::getInstance()->getService( EditRevUpdater::SERVICE_NAME );
 	}
+
+	/**
+	 * @return AbuseFilterActorMigration
+	 */
+	public static function getAbuseFilterActorMigration(): AbuseFilterActorMigration {
+		return MediaWikiServices::getInstance()->getService( AbuseFilterActorMigration::SERVICE_NAME );
+	}
 }

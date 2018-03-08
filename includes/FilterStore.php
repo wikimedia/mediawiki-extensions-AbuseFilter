@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
+use ActorMigrationBase;
 use ManualLogEntry;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
@@ -42,6 +43,9 @@ class FilterStore {
 	/** @var EmergencyCache */
 	private $emergencyCache;
 
+	/** @var ActorMigrationBase */
+	private $actorMigration;
+
 	/**
 	 * @param ConsequencesRegistry $consequencesRegistry
 	 * @param ILoadBalancer $loadBalancer
@@ -51,6 +55,7 @@ class FilterStore {
 	 * @param FilterValidator $filterValidator
 	 * @param FilterCompare $filterCompare
 	 * @param EmergencyCache $emergencyCache
+	 * @param ActorMigrationBase $actorMigration
 	 */
 	public function __construct(
 		ConsequencesRegistry $consequencesRegistry,
@@ -60,7 +65,8 @@ class FilterStore {
 		ChangeTagsManager $tagsManager,
 		FilterValidator $filterValidator,
 		FilterCompare $filterCompare,
-		EmergencyCache $emergencyCache
+		EmergencyCache $emergencyCache,
+		ActorMigrationBase $actorMigration
 	) {
 		$this->consequencesRegistry = $consequencesRegistry;
 		$this->loadBalancer = $loadBalancer;
@@ -70,6 +76,7 @@ class FilterStore {
 		$this->filterValidator = $filterValidator;
 		$this->filterCompare = $filterCompare;
 		$this->emergencyCache = $emergencyCache;
+		$this->actorMigration = $actorMigration;
 	}
 
 	/**
@@ -132,8 +139,7 @@ class FilterStore {
 
 		// Set last modifier.
 		$newRow['af_timestamp'] = $dbw->timestamp();
-		$newRow['af_user'] = $userIdentity->getId();
-		$newRow['af_user_text'] = $userIdentity->getName();
+		$newRow += $this->actorMigration->getInsertValues( $dbw, 'af_user', $userIdentity );
 
 		$isNew = $filterId === null;
 
@@ -179,7 +185,10 @@ class FilterStore {
 		$afhRow = [];
 
 		foreach ( AbuseFilter::HISTORY_MAPPINGS as $afCol => $afhCol ) {
-			$afhRow[$afhCol] = $newRow[$afCol];
+			// Some fields are expected to be missing during actor migration
+			if ( isset( $newRow[$afCol] ) ) {
+				$afhRow[$afhCol] = $newRow[$afCol];
+			}
 		}
 
 		$afhRow['afh_actions'] = serialize( $actions );
@@ -248,6 +257,7 @@ class FilterStore {
 
 	/**
 	 * @todo Perhaps add validation to ensure no null values remained.
+	 * @note For simplicity, data about the last editor are omitted.
 	 * @param Filter $filter
 	 * @return array
 	 */
@@ -264,8 +274,6 @@ class FilterStore {
 			'af_deleted' => (int)$filter->isDeleted(),
 			'af_hidden' => (int)$filter->isHidden(),
 			'af_global' => (int)$filter->isGlobal(),
-			'af_user' => $filter->getUserID(),
-			'af_user_text' => $filter->getUserName(),
 			'af_timestamp' => $filter->getTimestamp(),
 			'af_hit_count' => $filter->getHitCount(),
 			'af_throttled' => (int)$filter->isThrottled(),

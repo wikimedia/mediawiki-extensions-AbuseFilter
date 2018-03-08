@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterActorMigration;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager as PermManager;
 use MediaWiki\Extension\AbuseFilter\AbuseLogger;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
@@ -127,7 +128,8 @@ return [
 		return new FilterLookup(
 			$services->getDBLoadBalancer(),
 			$services->getMainWANObjectCache(),
-			$services->get( CentralDBManager::SERVICE_NAME )
+			$services->get( CentralDBManager::SERVICE_NAME ),
+			$services->get( AbuseFilterActorMigration::SERVICE_NAME )
 		);
 	},
 	EmergencyCache::SERVICE_NAME => static function ( MediaWikiServices $services ): EmergencyCache {
@@ -189,7 +191,8 @@ return [
 			$services->get( ChangeTagsManager::SERVICE_NAME ),
 			$services->get( FilterValidator::SERVICE_NAME ),
 			$services->get( FilterCompare::SERVICE_NAME ),
-			$services->get( EmergencyCache::SERVICE_NAME )
+			$services->get( EmergencyCache::SERVICE_NAME ),
+			$services->get( AbuseFilterActorMigration::SERVICE_NAME )
 		);
 	},
 	ConsequencesFactory::SERVICE_NAME => static function ( MediaWikiServices $services ): ConsequencesFactory {
@@ -359,6 +362,14 @@ return [
 			$services->getRevisionLookup(),
 			$services->getDBLoadBalancer(),
 			WikiMap::getCurrentWikiDbDomain()->getId()
+		);
+	},
+	AbuseFilterActorMigration::SERVICE_NAME => static function (
+		MediaWikiServices $services
+	): AbuseFilterActorMigration {
+		return new AbuseFilterActorMigration(
+			$services->getMainConfig()->get( 'AbuseFilterActorTableSchemaMigrationStage' ),
+			$services->getActorStoreFactory(),
 		);
 	},
 ];

@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
+use ActorMigrationBase;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\EmergencyCache;
@@ -34,7 +35,8 @@ class FilterStoreTest extends MediaWikiUnitTestCase {
 				$this->createMock( ChangeTagsManager::class ),
 				$this->createMock( FilterValidator::class ),
 				$this->createMock( FilterCompare::class ),
-				$this->createMock( EmergencyCache::class )
+				$this->createMock( EmergencyCache::class ),
+				$this->createMock( ActorMigrationBase::class )
 			)
 		);
 	}

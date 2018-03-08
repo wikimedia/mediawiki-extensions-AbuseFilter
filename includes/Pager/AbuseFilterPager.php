@@ -6,6 +6,7 @@ use Linker;
 use LogicException;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewList;
 use MediaWiki\Linker\LinkRenderer;
@@ -95,8 +96,9 @@ class AbuseFilterPager extends TablePager {
 	 * @return array
 	 */
 	public function getQueryInfo() {
+		$actorQuery = AbuseFilterServices::getAbuseFilterActorMigration()->getJoin( 'af_user' );
 		return [
-			'tables' => [ 'abuse_filter' ],
+			'tables' => [ 'abuse_filter' ] + $actorQuery['tables'],
 			'fields' => [
 				// All columns but af_comments
 				'af_id',
@@ -108,13 +110,12 @@ class AbuseFilterPager extends TablePager {
 				'af_hidden',
 				'af_hit_count',
 				'af_timestamp',
-				'af_user_text',
-				'af_user',
 				'af_actions',
 				'af_group',
 				'af_throttled'
-			],
+			] + $actorQuery['fields'],
 			'conds' => $this->conds,
+			'join_conds' => $actorQuery['joins'],
 		];
 	}
 

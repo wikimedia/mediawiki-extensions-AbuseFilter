@@ -96,6 +96,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		'text',
 		'image',
 		'oldimage',
+		'actor',
 	];
 
 	// phpcs:disable Generic.Files.LineLength
@@ -391,8 +392,9 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		$dbw = $this->getDb();
 		$tablePrefix = $external ? self::DB_EXTERNAL_PREFIX : '';
 		$defaultRowSection = [
-			'af_user_text' => 'FilterTester',
 			'af_user' => 0,
+			'af_user_text' => 'FilterTester',
+			'af_actor' => 1,
 			'af_timestamp' => $dbw->timestamp(),
 			'af_group' => 'default',
 			'af_comments' => '',
