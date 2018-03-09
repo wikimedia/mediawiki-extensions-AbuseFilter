@@ -105,6 +105,7 @@
 	"abusefilter-log-details-vars": "動作參數",
 	"abusefilter-log-details-private": "非公開日誌詳細資料",
 	"abusefilter-log-details-ip": "來源 IP 位址",
+	"abusefilter-log-details-checkuser": "查核使用者",
 	"abusefilter-log-noactions": "無",
 	"abusefilter-log-details-diff": "在編輯中所做的變更",
 	"abusefilter-log-linkoncontribs": "濫用日誌",
