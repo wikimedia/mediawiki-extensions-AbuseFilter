@@ -501,11 +501,11 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param DatabaseUpdater|null $updater
+	 * @param DatabaseUpdater $updater
 	 * @throws MWException
 	 * @return bool
 	 */
-	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
+	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
 		$dir = dirname( __DIR__ );
 
 		if ( $updater->getDB()->getType() == 'mysql' || $updater->getDB()->getType() == 'sqlite' ) {
