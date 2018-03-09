@@ -84,7 +84,7 @@ class AddMissingLoggingEntries extends Maintenance {
 					'log_params' => $row->afh_id . '\n' . $row->afh_filter,
 					'log_deleted' => $row->afh_deleted,
 					'log_user_text' => $row->afh_user_text,
-				] + CommentStore::newKey( 'log_comment' )->insert( $dbw, '' ),
+				] + CommentStore::getStore()->insert( $dbw, 'log_comment', '' ),
 				__METHOD__
 			);
 			$count++;
