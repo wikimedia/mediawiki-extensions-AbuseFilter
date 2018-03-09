@@ -28,6 +28,9 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	}
 
 	function showSearch() {
+		$RCMaxAge = $this->getConfig()->get( 'RCMaxAge' );
+		$min = wfTimestamp( TS_ISO_8601, time() - $RCMaxAge );
+		$max = wfTimestampNow();
 		$formDescriptor = [
 			'SearchUser' => [
 				'label-message' => 'abusefilter-test-user',
@@ -36,13 +39,17 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			],
 			'SearchPeriodStart' => [
 				'label-message' => 'abusefilter-test-period-start',
-				'type' => 'text',
+				'type' => 'datetime',
 				'default' => $this->mSearchPeriodStart,
+				'min' => $min,
+				'max' => $max,
 			],
 			'SearchPeriodEnd' => [
 				'label-message' => 'abusefilter-test-period-end',
-				'type' => 'text',
+				'type' => 'datetime',
 				'default' => $this->mSearchPeriodEnd,
+				'min' => $min,
+				'max' => $max,
 			],
 		];
 		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
