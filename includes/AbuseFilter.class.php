@@ -304,7 +304,7 @@ class AbuseFilter {
 		}
 		if ( $filter === 'new' ) {
 			return false;
-		};
+		}
 		$hidden = $dbr->selectField(
 			'abuse_filter',
 			'af_hidden',
@@ -802,6 +802,8 @@ class AbuseFilter {
 		$actionsTaken = array_fill_keys( $filters, [] );
 
 		$messages = [];
+		// Accumulator to track max block to issue
+		$maxExpiry = -1;
 
 		global $wgOut, $wgAbuseFilterDisallowGlobalLocalBlocks, $wgAbuseFilterRestrictions;
 		foreach ( $actionsByFilter as $filter => $actions ) {
@@ -876,6 +878,42 @@ class AbuseFilter {
 				unset( $actions['disallow'] );
 			}
 
+			// Find out the max expiry to issue the longest triggered block.
+			// Need to check here since methods like user->getBlock() aren't available
+			if ( !empty( $actions['block'] ) ) {
+				global $wgUser;
+				$parameters = $actions['block']['parameters'];
+
+				if ( count( $parameters ) === 3 ) {
+					// New type of filters with custom block
+					if ( $wgUser->isAnon() ) {
+						$expiry = $parameters[1];
+					} else {
+						$expiry = $parameters[2];
+					}
+				} else {
+					// Old type with fixed expiry
+					if ( $wgUser->isAnon() && $wgAbuseFilterAnonBlockDuration !== null ) {
+						// The user isn't logged in and the anon block duration
+						// doesn't default to $wgAbuseFilterBlockDuration.
+						$expiry = $wgAbuseFilterAnonBlockDuration;
+					} else {
+						$expiry = $wgAbuseFilterBlockDuration;
+					}
+				}
+
+				$currentExpiry = SpecialBlock::parseExpiryInput( $expiry );
+				if ( $currentExpiry > SpecialBlock::parseExpiryInput( $maxExpiry ) ) {
+					// Save the parameters to issue the block with
+					$maxExpiry = $expiry;
+					$blockValues = [
+						self::getFilter( $filter )->af_public_comments,
+						$filter,
+						is_array( $parameters ) && in_array( 'blocktalk', $parameters )
+					];
+				}
+			}
+
 			// Do the rest of the actions
 			foreach ( $actions as $action => $info ) {
 				$newMsg = self::takeConsequenceAction(
@@ -892,6 +930,30 @@ class AbuseFilter {
 				}
 				$actionsTaken[$filter][] = $action;
 			}
+		}
+
+		// Since every filter has been analysed, we now know what the
+		// longest block duration is, so we can issue the block if
+		// maxExpiry has been changed.
+		if ( $maxExpiry !== -1 ) {
+			self::doAbuseFilterBlock(
+				[
+					'desc' => $blockValues[0],
+					'number' => $blockValues[1]
+				],
+				$wgUser->getName(),
+				$maxExpiry,
+				true,
+				$blockValues[2]
+			);
+			$message = [
+				'abusefilter-blocked-display',
+				$blockValues[0],
+				$blockValues[1]
+			];
+			// Manually add the message. If we're here, there is one.
+			$messages[] = $message;
+			$actionsTaken[ $blockValues[1] ][] = 'block';
 		}
 
 		return self::buildStatus( $actionsTaken, $messages );
@@ -1434,34 +1496,6 @@ class AbuseFilter {
 					];
 				}
 				break;
-
-			case 'block':
-				global $wgAbuseFilterBlockDuration, $wgAbuseFilterAnonBlockDuration, $wgUser;
-				if ( $wgUser->isAnon() && $wgAbuseFilterAnonBlockDuration !== null ) {
-					// The user isn't logged in and the anon block duration
-					// doesn't default to $wgAbuseFilterBlockDuration.
-					$expiry = $wgAbuseFilterAnonBlockDuration;
-				} else {
-					$expiry = $wgAbuseFilterBlockDuration;
-				}
-
-				self::doAbuseFilterBlock(
-					[
-						'desc' => $rule_desc,
-						'number' => $rule_number
-					],
-					$wgUser->getName(),
-					$expiry,
-					true,
-					is_array( $parameters ) && in_array( 'blocktalk', $parameters )
-				);
-
-				$message = [
-					'abusefilter-blocked-display',
-					$rule_desc,
-					$rule_number
-				];
-				break;
 			case 'rangeblock':
 				global $wgAbuseFilterRangeBlockSize, $wgBlockCIDRLimit;
 
@@ -1544,6 +1578,9 @@ class AbuseFilter {
 				}
 				break;
 
+			case 'block':
+				// Do nothing, handled at the end of executeFilterActions. Here for completeness.
+				break;
 			case 'flag':
 				// Do nothing. Here for completeness.
 				break;
@@ -2449,12 +2486,27 @@ class AbuseFilter {
 	static function formatAction( $action, $parameters ) {
 		/** @var $wgLang Language */
 		global $wgLang;
-		if ( count( $parameters ) == 0 ) {
+		if ( count( $parameters ) !== 3 ) {
 			$displayAction = self::getActionDisplay( $action );
 		} else {
-			$displayAction = self::getActionDisplay( $action ) .
+			if ( $action === 'block' ) {
+				// Needs to be treated separately since the message is more complex
+				$displayAction = self::getActionDisplay( 'block' ) .
+				' ' .
+				wfMessage( 'abusefilter-block-anon' ) .
+				wfMessage( 'colon-separator' )->escaped() .
+				$wgLang->translateBlockExpiry( $parameters[1] ) .
+				wfMessage( 'comma-separator' )->escaped() .
+				$wgLang->lcfirst( self::getActionDisplay( 'block' ) ) .
+				' ' .
+				wfMessage( 'abusefilter-block-user' ) .
+				wfMessage( 'colon-separator' )->escaped() .
+				$wgLang->translateBlockExpiry( $parameters[2] );
+			} else {
+				$displayAction = self::getActionDisplay( 'block' ) .
 				wfMessage( 'colon-separator' )->escaped() .
 				$wgLang->semicolonList( $parameters );
+			}
 		}
 
 		return $displayAction;

@@ -824,7 +824,40 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					);
 				return $output;
 			case 'block':
-				global $wgBlockAllowsUTEdit;
+				global $wgBlockAllowsUTEdit, $wgAbuseFilterBlockDuration,
+					$wgAbuseFilterAnonBlockDuration;
+
+				if ( $set && count( $parameters ) === 3 ) {
+					// Both blocktalk and custom block durations available
+					$blockTalk = $parameters[0];
+					$defaultAnonDuration = $parameters[1];
+					$defaultUserDuration = $parameters[2];
+				} else {
+					if ( $set && count( $parameters ) === 1 ) {
+						// Only blocktalk available
+						$blockTalk = $parameters[0];
+					}
+					if ( $wgAbuseFilterAnonBlockDuration ) {
+						$defaultAnonDuration = $wgAbuseFilterAnonBlockDuration;
+					} else {
+						$defaultAnonDuration = $wgAbuseFilterBlockDuration;
+					}
+					$defaultUserDuration = $wgAbuseFilterBlockDuration;
+				}
+				$suggestedBlocks = SpecialBlock::getSuggestedDurations();
+				// We need to have same values since it may happen that ipblocklist
+				// and one (or both) of the global variables, both meaning infinity,
+				// use different wording. In such case, when setting the default of
+				// the dropdowns it would fail.
+				if ( wfIsInfinity( end( $suggestedBlocks ) ) ) {
+					if ( wfIsInfinity( $defaultAnonDuration ) ) {
+						$defaultAnonDuration = end( $suggestedBlocks );
+					}
+					if ( wfIsInfinity( $defaultUserDuration ) ) {
+						$defaultUserDuration = end( $suggestedBlocks );
+					}
+				}
+
 				$output = '';
 				$checkbox = Xml::checkLabel(
 					$this->msg( 'abusefilter-edit-action-block' )->text(),
@@ -834,33 +867,59 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					[ 'class' => 'mw-abusefilter-action-checkbox' ] + $cbReadOnlyAttrib );
 				$output .= Xml::tags( 'p', null, $checkbox );
 				if ( $wgBlockAllowsUTEdit === true ) {
-					$checkbox =
-						Xml::label(
-							$this->msg( 'abusefilter-edit-block-options' ),
-							'mw-abusefilter-block-parameters'
-						) .
+					$talkCheckbox =
 						Xml::checkLabel(
 							$this->msg( 'abusefilter-edit-action-blocktalk' )->text(),
 							'wpFilterBlockTalk',
 							'mw-abusefilter-action-checkbox-blocktalk',
-							$parameters[0] == 'blocktalk',
+							isset( $blockTalk ) && $blockTalk == 'blocktalk',
 							[ 'class' => 'mw-abusefilter-action-checkbox' ] + $cbReadOnlyAttrib
 						);
-					$output .=
-						Xml::tags(
-							'div',
-							[ 'id' => 'mw-abusefilter-block-parameters' ],
-							$checkbox
-						);
 				}
+
+				$anonDuration = new XmlSelect(
+					'wpBlockAnonDuration',
+					false,
+					'default'
+				);
+				$anonDuration->addOptions( $suggestedBlocks );
+
+				$userDuration = new XmlSelect(
+					'wpBlockUserDuration',
+					false,
+					'default'
+				);
+				$userDuration->addOptions( $suggestedBlocks );
+
+				// Set defaults
+				$anonDuration->setDefault( $defaultAnonDuration );
+				$userDuration->setDefault( $defaultUserDuration );
+
+				if ( !$this->canEditFilter( $row ) ) {
+					$anonDuration->setAttribute( 'disabled', 'disabled' );
+					$userDuration->setAttribute( 'disabled', 'disabled' );
+				}
+
+				$durations['abusefilter-edit-block-options'] = $talkCheckbox;
+				$durations['abusefilter-edit-block-anon-durations'] = $anonDuration->getHTML();
+				$durations['abusefilter-edit-block-user-durations'] = $userDuration->getHTML();
+
+				$rawOutput = Xml::buildForm( $durations );
+
+				$output .= Xml::tags(
+						'div',
+						[ 'id' => 'mw-abusefilter-block-parameters' ],
+						$rawOutput
+					);
+
 				return $output;
+
 			default:
 				// Give grep a chance to find the usages:
 				// abusefilter-edit-action-warn, abusefilter-edit-action-disallow
 				// abusefilter-edit-action-blockautopromote
-				// abusefilter-edit-action-degroup
-				// abusefilter-edit-action-throttle, abusefilter-edit-action-rangeblock
-				// abusefilter-edit-action-tag
+				// abusefilter-edit-action-degroup, abusefilter-edit-action-throttle
+				// abusefilter-edit-action-rangeblock, abusefilter-edit-action-tag
 				$message = 'abusefilter-edit-action-' . $action;
 				$form_field = 'wpFilterAction' . ucfirst( $action );
 				$status = $set;
@@ -1093,8 +1152,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 						$parameters[0] = $specMsg;
 					} elseif ( $action == 'block' ) {
-						$parameters = $request->getCheck( 'wpFilterBlockTalk' ) ?
-							[ 'blocktalk' ] : [ '' ];
+						$parameters[0] = $request->getCheck( 'wpFilterBlockTalk' ) ?
+							'blocktalk' : '';
+						$parameters[1] = $request->getVal( 'wpBlockAnonDuration' );
+						$parameters[2] = $request->getVal( 'wpBlockUserDuration' );
 					} elseif ( $action == 'tag' ) {
 						$parameters = explode( "\n", $request->getText( 'wpFilterTags' ) );
 					}
