@@ -18,7 +18,12 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	function getQueryInfo() {
 		$dbr = wfGetDB( DB_REPLICA );
 		$conds = [];
-		$conds['rc_user_text'] = $this->mPage->mSearchUser;
+
+		if ( (string)$this->mPage->mSearchUser !== '' ) {
+			$conds[] = ActorMigration::newMigration()->getWhere(
+				$dbr, 'rc_user', User::newFromName( $this->mPage->mSearchUser, false )
+			)['conds'];
+		}
 
 		$startTS = strtotime( $this->mPage->mSearchPeriodStart );
 		if ( $startTS ) {
