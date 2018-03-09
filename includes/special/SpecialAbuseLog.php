@@ -542,8 +542,8 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$row = $dbr->selectRow(
 			[ 'abuse_filter_log', 'abuse_filter' ],
-			[ 'afl_id', 'afl_filter', 'afl_user_text', 'afl_timestamp', 'af_user', 'afl_ip',
-				 'af_id', 'af_public_comments', 'af_hidden' ],
+			[ 'afl_id', 'afl_filter', 'afl_user_text', 'afl_timestamp', 'afl_ip', 'af_id',
+				 'af_public_comments', 'af_hidden' ],
 			[ 'afl_id' => $id ],
 			__METHOD__,
 			[],
@@ -694,7 +694,7 @@ class SpecialAbuseLog extends SpecialPage {
 					Xml::tags(
 						'td',
 						null,
-						self::getUserLinks( $row->af_user, $row->afl_ip ) . $CULink
+						self::getUserLinks( 0, $row->afl_ip ) . $CULink
 					)
 				);
 		} else {
