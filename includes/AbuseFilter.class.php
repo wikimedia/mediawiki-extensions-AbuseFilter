@@ -1625,9 +1625,8 @@ class AbuseFilter {
 	 * @param array[] $tagsByAction Map of (integer => string[])
 	 */
 	private static function bufferTagsToSetByAction( array $tagsByAction ) {
-		global $wgAbusefilterActions;
-
-		if ( isset( $wgAbusefilterActions['tag'] ) && $wgAbusefilterActions['tag'] ) {
+		global $wgAbuseFilterActions;
+		if ( isset( $wgAbuseFilterActions['tag'] ) && $wgAbuseFilterActions['tag'] ) {
 			foreach ( $tagsByAction as $actionID => $tags ) {
 				if ( !isset( self::$tagsToSet[$actionID] ) ) {
 					self::$tagsToSet[$actionID] = $tags;
