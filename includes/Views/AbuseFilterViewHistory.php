@@ -69,7 +69,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			],
 		];
 
-		$htmlForm = HTMLForm::factory( 'table', $formDescriptor, $this->getContext() );
+		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
 		$htmlForm->setSubmitTextMsg( 'abusefilter-history-select-submit' )
 			->setWrapperLegendMsg( 'abusefilter-history-select-legend' )
 			->setAction( $this->getTitle( 'history' )->getLocalURL() )

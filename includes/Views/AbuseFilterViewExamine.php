@@ -45,7 +45,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 				'default' => $this->mSearchPeriodEnd,
 			],
 		];
-		$htmlForm = HTMLForm::factory( 'table', $formDescriptor, $this->getContext() );
+		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
 		$htmlForm->setWrapperLegendMsg( 'abusefilter-examine-legend' )
 			->addHiddenField( 'submit', 1 )
 			->setSubmitTextMsg( 'abusefilter-examine-submit' )
