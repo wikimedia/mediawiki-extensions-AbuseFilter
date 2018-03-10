@@ -2259,7 +2259,7 @@ class AbuseFilter {
 		);
 
 		$vars->setVar( 'ACTION', 'delete' );
-		$vars->setVar( 'SUMMARY', CommentStore::newKey( 'rc_comment' )->getComment( $row )->text );
+		$vars->setVar( 'SUMMARY', CommentStore::getStore()->getComment( 'rc_comment', $row )->text );
 
 		return $vars;
 	}
@@ -2285,7 +2285,7 @@ class AbuseFilter {
 		);
 
 		$vars->setVar( 'ACTION', 'edit' );
-		$vars->setVar( 'SUMMARY', CommentStore::newKey( 'rc_comment' )->getComment( $row )->text );
+		$vars->setVar( 'SUMMARY', CommentStore::getStore()->getComment( 'rc_comment', $row )->text );
 
 		$vars->setLazyLoadVar( 'new_wikitext', 'revision-text-by-id',
 			[ 'revid' => $row->rc_this_oldid ] );
@@ -2325,7 +2325,7 @@ class AbuseFilter {
 			self::generateTitleVars( $newTitle, 'MOVED_TO' )
 		);
 
-		$vars->setVar( 'SUMMARY', CommentStore::newKey( 'rc_comment' )->getComment( $row )->text );
+		$vars->setVar( 'SUMMARY', CommentStore::getStore()->getComment( 'rc_comment', $row )->text );
 		$vars->setVar( 'ACTION', 'move' );
 
 		return $vars;
