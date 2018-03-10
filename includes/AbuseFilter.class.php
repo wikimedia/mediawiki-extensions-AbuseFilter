@@ -805,13 +805,11 @@ class AbuseFilter {
 		// Accumulator to track max block to issue
 		$maxExpiry = -1;
 
-		global $wgOut, $wgAbuseFilterDisallowGlobalLocalBlocks, $wgAbuseFilterRestrictions,
+		global $wgAbuseFilterDisallowGlobalLocalBlocks, $wgAbuseFilterRestrictions,
 			$wgAbuseFilterBlockDuration, $wgAbuseFilterAnonBlockDuration;
 		foreach ( $actionsByFilter as $filter => $actions ) {
 			// Special-case handling for warnings.
-			$parsed_public_comments = $wgOut->parseInline(
-				self::getFilter( $filter )->af_public_comments
-			);
+			$filter_public_comments = self::getFilter( $filter )->af_public_comments;
 
 			$global_filter = self::decodeGlobalName( $filter ) !== false;
 
@@ -859,7 +857,7 @@ class AbuseFilter {
 					} else {
 						$msg = 'abusefilter-warning';
 					}
-					$messages[] = [ $msg, $parsed_public_comments, $filter ];
+					$messages[] = [ $msg, $filter_public_comments, $filter ];
 
 					$actionsTaken[$filter][] = 'warn';
 

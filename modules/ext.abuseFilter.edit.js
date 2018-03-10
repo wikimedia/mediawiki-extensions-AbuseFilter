@@ -190,7 +190,7 @@
 	function previewWarnMessage() {
 		var api = new mw.Api(),
 			args = [
-				$( 'input[name=wpFilterDescription]' ).val(),
+				'<nowiki>' + $( 'input[name=wpFilterDescription]' ).val() + '</nowiki>',
 				$( '#mw-abusefilter-edit-id' ).children().last().text()
 			],
 			message = getCurrentWarningMessage();
