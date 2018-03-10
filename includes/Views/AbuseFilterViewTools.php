@@ -3,6 +3,7 @@
 class AbuseFilterViewTools extends AbuseFilterView {
 	function show() {
 		$out = $this->getOutput();
+		$out->enableOOUI();
 		$user = $this->getUser();
 		$request = $this->getRequest();
 
@@ -18,14 +19,13 @@ class AbuseFilterViewTools extends AbuseFilterView {
 		$eval = '';
 		$eval .= AbuseFilter::buildEditBox( $request->getText( 'wpTestExpr' ), 'wpTestExpr' );
 
-		$eval .= Xml::tags( 'p', null,
-			Xml::element( 'input',
-			[
-				'type' => 'button',
-				'id' => 'mw-abusefilter-submitexpr',
-				'value' => $this->msg( 'abusefilter-tools-submitexpr' )->text() ]
-			)
-		);
+		$eval .=
+			Xml::tags( 'p', null,
+				new OOUI\ButtonInputWidget( [
+					'label' => $this->msg( 'abusefilter-tools-submitexpr' )->text(),
+					'id' => 'mw-abusefilter-submitexpr'
+				] )
+			);
 		$eval .= Xml::element( 'p', [ 'id' => 'mw-abusefilter-expr-result' ], ' ' );
 
 		$eval = Xml::fieldset( $this->msg( 'abusefilter-tools-expr' )->text(), $eval );
@@ -34,23 +34,21 @@ class AbuseFilterViewTools extends AbuseFilterView {
 		$out->addModules( 'ext.abuseFilter.tools' );
 
 		// Hacky little box to re-enable autoconfirmed if it got disabled
-		$rac = '';
-		$rac .= Xml::inputLabel(
-			$this->msg( 'abusefilter-tools-reautoconfirm-user' )->text(),
-			'wpReAutoconfirmUser',
-			'reautoconfirm-user',
-			45
-		);
-		$rac .= '&#160;';
-		$rac .= Xml::element(
-			'input',
-			[
-				'type' => 'button',
-				'id' => 'mw-abusefilter-reautoconfirmsubmit',
-				'value' => $this->msg( 'abusefilter-tools-reautoconfirm-submit' )->text()
-			]
-		);
-		$rac = Xml::fieldset( $this->msg( 'abusefilter-tools-reautoconfirm' )->text(), $rac );
-		$out->addHTML( $rac );
+		$formDescriptor = [
+			'RestoreAutoconfirmed' => [
+				'label-message' => 'abusefilter-tools-reautoconfirm-user',
+				'type' => 'user',
+				'name' => 'wpReAutoconfirmUser',
+				'id' => 'reautoconfirm-user',
+				'infusable' => true
+			],
+		];
+		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
+		$htmlForm->setWrapperLegendMsg( 'abusefilter-tools-reautoconfirm' )
+			->setSubmitTextMsg( 'abusefilter-tools-reautoconfirm-submit' )
+			->setSubmitName( 'wpReautoconfirmSubmit' )
+			->setSubmitId( 'mw-abusefilter-reautoconfirmsubmit' )
+			->prepareForm()
+			->displayForm( false );
 	}
 }
