@@ -2502,7 +2502,7 @@ class AbuseFilter {
 				wfMessage( 'colon-separator' )->escaped() .
 				$wgLang->translateBlockExpiry( $parameters[2] );
 			} else {
-				$displayAction = self::getActionDisplay( 'block' ) .
+				$displayAction = self::getActionDisplay( $action ) .
 				wfMessage( 'colon-separator' )->escaped() .
 				$wgLang->semicolonList( $parameters );
 			}
