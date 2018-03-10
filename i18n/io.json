@@ -3,9 +3,16 @@
 		"authors": [
 			"Malafaya",
 			"Robin van der Vliet",
-			"Lakaoso"
+			"Lakaoso",
+			"Joao Xavier"
 		]
 	},
+	"abusefilter-desc": "Aplikas automatala heuristiko a la redakturi",
+	"abusefilter": "Figuro dil filtrilo di abuzo",
+	"abuselog": "Protokolo pri misuzo",
+	"abusefilter-intro": "Bonveno a la kontrol interfacio dil filtrilo di abuzi. La filtrilo di abuzo esas automatala mekanismo di softwaro qua aplikas automatala heuristiko ad omna agadi.\n\nIca interfacio montras listo pri definita filtrili, e permisas modifikar li.",
+	"abusefilter-mustbeeditor": "Por motivi di sekureso, ica interfacio povas modifikesar nur dal uzeri kun yuri por modifikar la filtrili di abuzo.",
+	"right-abusefilter-modify": "Modifikar filtrili di abuzo",
 	"abusefilter-log-search-user": "Uzero:",
 	"abusefilter-log-search-title": "Titulo:",
 	"abusefilter-log-search-submit": "Serchez",
