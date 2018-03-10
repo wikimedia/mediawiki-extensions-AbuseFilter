@@ -81,8 +81,7 @@ class AbuseFilterPager extends TablePager {
 			$headers['af_pattern'] = 'abusefilter-list-pattern';
 		}
 
-		global $wgAbuseFilterValidGroups;
-		if ( count( $wgAbuseFilterValidGroups ) > 1 ) {
+		if ( count( $this->getConfig()->get( 'AbuseFilterValidGroups' ) ) > 1 ) {
 			$headers['af_group'] = 'abusefilter-list-group';
 		}
 
@@ -197,8 +196,7 @@ class AbuseFilterPager extends TablePager {
 					$statuses[] = $this->msg( 'abusefilter-disabled' )->parse();
 				}
 
-				global $wgAbuseFilterIsCentral;
-				if ( $row->af_global && $wgAbuseFilterIsCentral ) {
+				if ( $row->af_global && $this->getConfig()->get( 'AbuseFilterIsCentral' ) ) {
 					$statuses[] = $this->msg( 'abusefilter-status-global' )->parse();
 				}
 

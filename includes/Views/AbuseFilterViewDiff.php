@@ -298,9 +298,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$oldVersion['info']['description'],
 			$newVersion['info']['description']
 		);
-		global $wgAbuseFilterValidGroups;
 		if (
-			count( $wgAbuseFilterValidGroups ) > 1 ||
+			count( $this->getConfig()->get( 'AbuseFilterValidGroups' ) ) > 1 ||
 			$oldVersion['info']['group'] != $newVersion['info']['group']
 		) {
 			$info .= $this->getDiffRow(

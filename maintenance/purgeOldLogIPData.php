@@ -20,11 +20,9 @@ class PurgeOldLogIPData extends Maintenance {
 	 * @see Maintenance:execute()
 	 */
 	public function execute() {
-		global $wgAbuseFilterLogIPMaxAge;
-
 		$this->output( "Purging old IP Address data from abuse_filter_log...\n" );
 		$dbw = wfGetDB( DB_MASTER );
-		$cutoffUnix = time() - $wgAbuseFilterLogIPMaxAge;
+		$cutoffUnix = time() - $this->getConfig()->get( 'AbuseFilterLogIPMaxAge' );
 
 		$count = 0;
 		do {

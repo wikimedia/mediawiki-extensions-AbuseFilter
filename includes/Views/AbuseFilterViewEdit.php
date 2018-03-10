@@ -58,6 +58,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$user = $this->getUser();
 		$out = $this->getOutput();
 		$request = $this->getRequest();
+		$config = $this->getConfig();
 		$out->setPageTitle( $this->msg( 'abusefilter-edit' ) );
 		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 
@@ -167,9 +168,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 
 			// Check for restricted actions
-			global $wgAbuseFilterRestrictions;
 			if ( count( array_intersect_key(
-					array_filter( $wgAbuseFilterRestrictions ),
+					array_filter( $config->get( 'AbuseFilterRestrictions' ) ),
 					array_merge(
 						array_filter( $actions ),
 						array_filter( $origActions )
@@ -244,10 +244,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 
 			// Actions
-			global $wgAbuseFilterActions;
 			$deadActions = [];
 			$actionsRows = [];
-			foreach ( array_filter( $wgAbuseFilterActions ) as $action => $_ ) {
+			foreach ( array_filter( $config->get( 'AbuseFilterActions' ) ) as $action => $_ ) {
 				// Check if it's set
 				$enabled = isset( $actions[$action] ) && (bool)$actions[$action];
 
@@ -447,8 +446,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				array_merge( $readOnlyAttrib, $styleAttrib )
 			);
 
-		global $wgAbuseFilterValidGroups;
-		if ( count( $wgAbuseFilterValidGroups ) > 1 ) {
+		$validGroups = $this->getConfig()->get( 'AbuseFilterValidGroups' );
+		if ( count( $validGroups ) > 1 ) {
 			$groupSelector = new XmlSelect(
 				'wpFilterGroup',
 				'mw-abusefilter-edit-group-input',
@@ -459,7 +458,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$groupSelector->setDefault( $row->af_group );
 			}
 
-			foreach ( $wgAbuseFilterValidGroups as $group ) {
+			foreach ( $validGroups as $group ) {
 				$groupSelector->addOption( AbuseFilter::nameGroup( $group ), $group );
 			}
 
@@ -486,14 +485,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		if ( $filter !== 'new' ) {
 			// Statistics
-			global $wgAbuseFilterProfile;
 			$stash = ObjectCache::getMainStashInstance();
 			$matches_count = (int)$stash->get( AbuseFilter::filterMatchesKey( $filter ) );
 			$total = (int)$stash->get( AbuseFilter::filterUsedKey( $row->af_group ) );
 
 			if ( $total > 0 ) {
 				$matches_percent = sprintf( '%.2f', 100 * $matches_count / $total );
-				if ( $wgAbuseFilterProfile ) {
+				if ( $this->getConfig()->get( 'AbuseFilterProfile' ) ) {
 					list( $timeProfile, $condProfile ) = AbuseFilter::getFilterProfile( $filter );
 					$fields['abusefilter-edit-status-label'] = $this->msg( 'abusefilter-edit-status-profile' )
 						->numParams( $total, $matches_count, $matches_percent, $timeProfile, $condProfile )
@@ -522,18 +520,15 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$checkboxes = [ 'hidden', 'enabled', 'deleted' ];
 		$flags = '';
 
-		global $wgAbuseFilterIsCentral;
-		if ( $wgAbuseFilterIsCentral ) {
+		if ( $this->getConfig()->get( 'AbuseFilterIsCentral' ) ) {
 			$checkboxes[] = 'global';
 		}
 
 		if ( isset( $row->af_throttled ) && $row->af_throttled ) {
-			global $wgAbuseFilterRestrictions;
-
 			$filterActions = explode( ',', $row->af_actions );
 			$throttledActions = array_intersect_key(
 				array_flip( $filterActions ),
-				array_filter( $wgAbuseFilterRestrictions )
+				array_filter( $this->getConfig()->get( 'AbuseFilterRestrictions' ) )
 			);
 
 			if ( $throttledActions ) {
@@ -672,9 +667,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @return string HTML text for an action editor.
 	 */
 	public function buildConsequenceEditor( $row, $actions ) {
-		global $wgAbuseFilterActions;
-
-		$enabledActions = array_filter( $wgAbuseFilterActions );
+		$enabledActions = array_filter(
+			$this->getConfig()->get( 'AbuseFilterActions' )
+		);
 
 		$setActions = [];
 		foreach ( $enabledActions as $action => $_ ) {
@@ -702,9 +697,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @return string
 	 */
 	public function buildConsequenceSelector( $action, $set, $parameters, $row ) {
-		global $wgAbuseFilterActions, $wgMainCacheType;
-
-		if ( empty( $wgAbuseFilterActions[$action] ) ) {
+		$config = $this->getConfig();
+		$actions = $config->get( 'AbuseFilterActions' );
+		if ( empty( $actions[$action] ) ) {
 			return '';
 		}
 
@@ -720,7 +715,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		switch ( $action ) {
 			case 'throttle':
 				// Throttling is only available via object caching
-				if ( $wgMainCacheType === CACHE_NONE ) {
+				if ( $config->get( 'MainCacheType' ) === CACHE_NONE ) {
 					return '';
 				}
 				$throttleSettings = Xml::checkLabel(
@@ -763,7 +758,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					);
 				return $throttleSettings;
 			case 'warn':
-				global $wgAbuseFilterDefaultWarningMessage;
 				$output = '';
 				$checkbox = Xml::checkLabel(
 					$this->msg( 'abusefilter-edit-action-warn' )->text(),
@@ -777,9 +771,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				} elseif (
 					$row &&
 					isset( $row->af_group ) && $row->af_group &&
-					isset( $wgAbuseFilterDefaultWarningMessage[$row->af_group] )
+					isset( $config->get( 'AbuseFilterDefaultWarningMessage' )[$row->af_group] )
 				) {
-					$warnMsg = $wgAbuseFilterDefaultWarningMessage[$row->af_group];
+					$warnMsg = $config->get( 'AbuseFilterDefaultWarningMessage' )[$row->af_group];
 				} else {
 					$warnMsg = 'abusefilter-warning';
 				}
@@ -852,9 +846,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					);
 				return $output;
 			case 'block':
-				global $wgBlockAllowsUTEdit, $wgAbuseFilterBlockDuration,
-					$wgAbuseFilterAnonBlockDuration;
-
 				if ( $set && count( $parameters ) === 3 ) {
 					// Both blocktalk and custom block durations available
 					$blockTalk = $parameters[0];
@@ -865,12 +856,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						// Only blocktalk available
 						$blockTalk = $parameters[0];
 					}
-					if ( $wgAbuseFilterAnonBlockDuration ) {
-						$defaultAnonDuration = $wgAbuseFilterAnonBlockDuration;
+					if ( $config->get( 'AbuseFilterAnonBlockDuration' ) ) {
+						$defaultAnonDuration = $config->get( 'AbuseFilterAnonBlockDuration' );
 					} else {
-						$defaultAnonDuration = $wgAbuseFilterBlockDuration;
+						$defaultAnonDuration = $config->get( 'AbuseFilterBlockDuration' );
 					}
-					$defaultUserDuration = $wgAbuseFilterBlockDuration;
+					$defaultUserDuration = $config->get( 'AbuseFilterBlockDuration' );
 				}
 				$suggestedBlocks = SpecialBlock::getSuggestedDurations();
 				$suggestedBlocks = self::normalizeBlocks( $suggestedBlocks );
@@ -883,7 +874,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					$set,
 					[ 'class' => 'mw-abusefilter-action-checkbox' ] + $cbReadOnlyAttrib );
 				$output .= Xml::tags( 'p', null, $checkbox );
-				if ( $wgBlockAllowsUTEdit === true ) {
+				if ( $config->get( 'BlockAllowsUTEdit' ) === true ) {
 					$talkCheckbox =
 						Xml::checkLabel(
 							$this->msg( 'abusefilter-edit-action-blocktalk' )->text(),
@@ -1168,13 +1159,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$row->af_deleted = $request->getBool( 'wpFilterDeleted' );
 			$row->af_enabled = $request->getBool( 'wpFilterEnabled' ) && !$row->af_deleted;
 			$row->af_hidden = $request->getBool( 'wpFilterHidden' );
-			global $wgAbuseFilterIsCentral;
-			$row->af_global = $request->getBool( 'wpFilterGlobal' ) && $wgAbuseFilterIsCentral;
+			$row->af_global = $request->getBool( 'wpFilterGlobal' )
+				&& $this->getConfig()->get( 'AbuseFilterIsCentral' );
 
 			// Actions
-			global $wgAbuseFilterActions;
 			$actions = [];
-			foreach ( array_filter( $wgAbuseFilterActions ) as $action => $_ ) {
+			foreach ( array_filter( $this->getConfig()->get( 'AbuseFilterActions' ) ) as $action => $_ ) {
 				// Check if it's set
 				$enabled = $request->getBool( 'wpFilterAction' . ucfirst( $action ) );
 
@@ -1248,10 +1238,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @return null
 	 */
 	protected function exposeWarningMessages() {
-		global $wgOut, $wgAbuseFilterDefaultWarningMessage;
-		$wgOut->addJsConfigVars(
+		$this->getOutput()->addJsConfigVars(
 			'wgAbuseFilterDefaultWarningMessage',
-			$wgAbuseFilterDefaultWarningMessage
+			$this->getConfig()->get( 'AbuseFilterDefaultWarningMessage' )
 		);
 	}
 }

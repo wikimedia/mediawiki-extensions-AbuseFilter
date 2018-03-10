@@ -8,10 +8,9 @@ class AbuseFilterViewList extends AbuseFilterView {
 	 * Shows the page
 	 */
 	public function show() {
-		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
-
 		$out = $this->getOutput();
 		$request = $this->getRequest();
+		$config = $this->getConfig();
 
 		// Status info...
 		$this->showStatus();
@@ -33,14 +32,17 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$deleted = $request->getVal( 'deletedfilters' );
 		$hidedisabled = $request->getBool( 'hidedisabled' );
 		$defaultscope = 'all';
-		if ( isset( $wgAbuseFilterCentralDB ) && !$wgAbuseFilterIsCentral ) {
+		if ( $config->has( 'AbuseFilterCentralDB' )
+				&& !$config->get( 'AbuseFilterIsCentral' ) ) {
 			// Show on remote wikis as default only local filters
 			$defaultscope = 'local';
 		}
 		$scope = $request->getVal( 'rulescope', $defaultscope );
 
-		$searchEnabled = $this->canViewPrivate() && !( isset( $wgAbuseFilterCentralDB ) &&
-			!$wgAbuseFilterIsCentral && $scope == 'global' );
+		$searchEnabled = $this->canViewPrivate() && !(
+			$config->has( 'AbuseFilterCentralDB' ) &&
+			!$config->get( 'AbuseFilterIsCentral' ) &&
+			$scope == 'global' );
 
 		if ( $searchEnabled ) {
 			$querypattern = $request->getVal( 'querypattern' );
@@ -119,8 +121,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 	 * @param array $optarray
 	 */
 	public function showList( $conds = [ 'af_deleted' => 0 ], $optarray = [] ) {
-		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
-
+		$config = $this->getConfig();
 		$this->getOutput()->addHTML(
 			Xml::element( 'h2', null, $this->msg( 'abusefilter-list' )->parse() )
 		);
@@ -139,7 +140,11 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$searchmode = '';
 		}
 
-		if ( isset( $wgAbuseFilterCentralDB ) && !$wgAbuseFilterIsCentral && $scope == 'global' ) {
+		if (
+			$config->has( 'AbuseFilterCentralDB' )
+			&& !$config->get( 'AbuseFilterIsCentral' )
+			&& $scope == 'global'
+		) {
 			$pager = new GlobalAbuseFilterPager(
 				$this,
 				$conds,
@@ -169,12 +174,12 @@ class AbuseFilterViewList extends AbuseFilterView {
 			'default' => $deleted,
 		];
 
-		if ( isset( $wgAbuseFilterCentralDB ) ) {
+		if ( $config->has( 'AbuseFilterCentralDB' ) ) {
 			$optionsMsg = [
 				'abusefilter-list-options-scope-local' => 'local',
 				'abusefilter-list-options-scope-global' => 'global',
 			];
-			if ( $wgAbuseFilterIsCentral ) {
+			if ( $config->get( 'AbuseFilterIsCentral' ) ) {
 				// For central wiki: add third scope option
 				$optionsMsg['abusefilter-list-options-scope-all'] = 'all';
 			}
@@ -253,13 +258,11 @@ class AbuseFilterViewList extends AbuseFilterView {
 	 * Show stats
 	 */
 	public function showStatus() {
-		global $wgAbuseFilterConditionLimit, $wgAbuseFilterValidGroups;
-
 		$stash = ObjectCache::getMainStashInstance();
 		$overflow_count = (int)$stash->get( AbuseFilter::filterLimitReachedKey() );
 		$match_count = (int)$stash->get( AbuseFilter::filterMatchesKey() );
 		$total_count = 0;
-		foreach ( $wgAbuseFilterValidGroups as $group ) {
+		foreach ( $this->getConfig()->get( 'AbuseFilterValidGroups' ) as $group ) {
 			$total_count += (int)$stash->get( AbuseFilter::filterUsedKey( $group ) );
 		}
 
@@ -272,7 +275,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 					$total_count,
 					$overflow_count,
 					$overflow_percent,
-					$wgAbuseFilterConditionLimit,
+					$this->getConfig()->get( 'AbuseFilterConditionLimit' ),
 					$match_count,
 					$match_percent
 				)->parse();

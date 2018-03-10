@@ -113,12 +113,10 @@ class SpecialAbuseLog extends SpecialPage {
 	 * Loads parameters from request
 	 */
 	public function loadParameters() {
-		global $wgAbuseFilterIsCentral;
-
 		$request = $this->getRequest();
 
 		$this->mSearchUser = trim( $request->getText( 'wpSearchUser' ) );
-		if ( $wgAbuseFilterIsCentral ) {
+		if ( $this->getConfig()->get( 'AbuseFilterIsCentral' ) ) {
 			$this->mSearchWiki = $request->getText( 'wpSearchWiki' );
 		}
 
@@ -148,11 +146,11 @@ class SpecialAbuseLog extends SpecialPage {
 	 * @return string[]
 	 */
 	private function getAllActions() {
-		global $wgAbuseFilterActions, $wgAbuseFilterCustomActionsHandlers;
+		$config = $this->getConfig();
 		return array_unique(
 			array_merge(
-				array_keys( $wgAbuseFilterActions ),
-				array_keys( $wgAbuseFilterCustomActionsHandlers )
+				array_keys( $config->get( 'AbuseFilterActions' ) ),
+				array_keys( $config->get( 'AbuseFilterCustomActionsHandlers' ) )
 			)
 		);
 	}
@@ -161,8 +159,6 @@ class SpecialAbuseLog extends SpecialPage {
 	 * Builds the search form
 	 */
 	public function searchForm() {
-		global $wgAbuseFilterIsCentral;
-
 		$formDescriptor = [
 			'SearchUser' => [
 				'label-message' => 'abusefilter-log-search-user',
@@ -216,7 +212,7 @@ class SpecialAbuseLog extends SpecialPage {
 				'default' => $this->mSearchFilter,
 			];
 		}
-		if ( $wgAbuseFilterIsCentral ) {
+		if ( $this->getConfig()->get( 'AbuseFilterIsCentral' ) ) {
 			// Add free form input for wiki name. Would be nice to generate
 			// a select with unique names in the db at some point.
 			$formDescriptor['SearchWiki'] = [
@@ -549,8 +545,6 @@ class SpecialAbuseLog extends SpecialPage {
 	 * @return null
 	 */
 	public function showPrivateDetails( $id ) {
-		global $wgAbuseFilterPrivateLog;
-
 		$lang = $this->getLanguage();
 		$out = $this->getOutput();
 		$request = $this->getRequest();
@@ -609,7 +603,7 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 
 		// Log accessing private details
-		if ( $wgAbuseFilterPrivateLog ) {
+		if ( $this->getConfig()->get( 'AbuseFilterPrivateLog' ) ) {
 			$user = $this->getUser();
 			self::addLogEntry( $id, $reason, $user );
 		}
@@ -761,8 +755,7 @@ class SpecialAbuseLog extends SpecialPage {
 	 * @return bool
 	 */
 	protected function checkReason( $reason ) {
-		global $wgAbuseFilterForceSummary;
-		return ( !$wgAbuseFilterForceSummary || strlen( $reason ) > 0 );
+		return ( !$this->getConfig()->get( 'AbuseFilterForceSummary' ) || strlen( $reason ) > 0 );
 	}
 
 	/**
@@ -937,11 +930,10 @@ class SpecialAbuseLog extends SpecialPage {
 			}
 
 			if ( $globalIndex ) {
-				global $wgAbuseFilterCentralDB;
-				$globalURL =
-					WikiMap::getForeignURL( $wgAbuseFilterCentralDB,
-						'Special:AbuseFilter/' . $globalIndex );
-
+				$globalURL = WikiMap::getForeignURL(
+					$this->getConfig()->get( 'AbuseFilterCentralDB' ),
+					'Special:AbuseFilter/' . $globalIndex
+				);
 				$linkText = $this->msg( 'abusefilter-log-detailedentry-global' )
 					->numParams( $globalIndex )->escaped();
 				$filterLink = Linker::makeExternalLink( $globalURL, $linkText );

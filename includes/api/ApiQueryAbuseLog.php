@@ -42,8 +42,6 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 	 * @see ApiQueryBase::execute()
 	 */
 	public function execute() {
-		global $wgAbuseFilterIsCentral;
-
 		$user = $this->getUser();
 		$errors = $this->getTitle()->getUserPermissionsErrors(
 			'abusefilter-log', $user, true, [ 'ns-specialprotected' ] );
@@ -66,7 +64,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$fld_timestamp = isset( $prop['timestamp'] );
 		$fld_hidden = isset( $prop['hidden'] );
 		$fld_revid = isset( $prop['revid'] );
-		$fld_wiki = $wgAbuseFilterIsCentral && isset( $prop['wiki'] );
+		$isCentral = $this->getConfig()->get( 'AbuseFilterIsCentral' );
+		$fld_wiki = $isCentral && isset( $prop['wiki'] );
 
 		if ( $fld_ip ) {
 			$this->checkUserRightsAny( 'abusefilter-private' );
@@ -149,7 +148,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$this->addWhereIf( $notDeletedCond, !SpecialAbuseLog::canSeeHidden() );
 		if ( isset( $params['wiki'] ) ) {
 			// 'wiki' won't be set if $wgAbuseFilterIsCentral = false
-			$this->addWhereIf( [ 'afl_wiki' => $params['wiki'] ], $wgAbuseFilterIsCentral );
+			$this->addWhereIf( [ 'afl_wiki' => $params['wiki'] ], $isCentral );
 		}
 
 		$title = $params['title'];
@@ -259,8 +258,6 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 	 * @return array
 	 */
 	public function getAllowedParams() {
-		global $wgAbuseFilterIsCentral;
-
 		$params = [
 			'start' => [
 				ApiBase::PARAM_TYPE => 'timestamp'
@@ -307,7 +304,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				ApiBase::PARAM_ISMULTI => true
 			]
 		];
-		if ( $wgAbuseFilterIsCentral ) {
+		if ( $this->getConfig()->get( 'AbuseFilterIsCentral' ) ) {
 			$params['wiki'] = [
 				ApiBase::PARAM_TYPE => 'string',
 			];
