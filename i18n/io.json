@@ -13,6 +13,7 @@
 	"abusefilter-intro": "Bonveno a la kontrol interfacio dil filtrilo di abuzi. La filtrilo di abuzo esas automatala mekanismo di softwaro qua aplikas automatala heuristiko ad omna agadi.\n\nIca interfacio montras listo pri definita filtrili, e permisas modifikar li.",
 	"abusefilter-mustbeeditor": "Por motivi di sekureso, ica interfacio povas modifikesar nur dal uzeri kun yuri por modifikar la filtrili di abuzo.",
 	"right-abusefilter-modify": "Modifikar filtrili di abuzo",
+	"right-abusefilter-view": "Vidar filtrili di misuzo",
 	"abusefilter-log-search-user": "Uzero:",
 	"abusefilter-log-search-title": "Titulo:",
 	"abusefilter-log-search-submit": "Serchez",
