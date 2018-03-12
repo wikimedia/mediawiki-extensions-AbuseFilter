@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use Wikimedia\Rdbms\Database;
 
 class AbuseFilterHooks {
 	const FETCH_ALL_TAGS_KEY = 'abusefilter-fetch-all-tags';
