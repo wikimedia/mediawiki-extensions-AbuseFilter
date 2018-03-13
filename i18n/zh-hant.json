@@ -478,6 +478,7 @@
 	"abusefilter-noreason": "警告：要查看此日誌的非公開詳細資料，您必須提供原因。",
 	"abusefilter-log-ip-not-available": "不可用",
 	"tag-abusefilter-condition-limit": "達到條件限制",
+	"tag-abusefilter-condition-limit-description": "不能被所有啟用的[[Special:AbuseFilter|防濫用過濾器]]檢查的編輯或其他日誌活動（[[mw:Extension:AbuseFilter/Conditions|幫助]]）。",
 	"apihelp-abusefiltercheckmatch-description": "檢查一組變量是否配合防濫用過濾器，編輯者會被記錄相關事件。\n\nvars、rcid或logid是必須填入的，然而只會使用其中一個。",
 	"apihelp-abusefilterchecksyntax-description": "檢查一個防濫用過濾器的語法。",
 	"apihelp-abusefilterchecksyntax-summary": "檢查一個防濫用過濾器的語法。",

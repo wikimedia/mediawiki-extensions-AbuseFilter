@@ -16,7 +16,8 @@
 			"MGA73",
 			"Matma Rex",
 			"Cgtdk",
-			"Jorn Ari"
+			"Jorn Ari",
+			"Joedalton"
 		]
 	},
 	"abusefilter-desc": "Anvender automatiske heuristikker på redigeringer",
@@ -180,6 +181,9 @@
 	"abusefilter-edit-warn-preview": "Forhåndsvis valgt meddelelse",
 	"abusefilter-edit-warn-edit": "Opret/redigér valgt meddelelse",
 	"abusefilter-edit-tag-tag": "Mærker som skal anvendes (et pr. linje):",
+	"abusefilter-edit-block-anon-durations": "Varighed på blokeringen for anonyme brugere:",
+	"abusefilter-block-anon": "anonyme brugere",
+	"abusefilter-block-user": "registrerede brugere",
 	"abusefilter-edit-denied": "Du kan ikke se detaljerne i dette filter, da det er skjult for offentligheden.",
 	"abusefilter-edit-main": "Filterparametre",
 	"abusefilter-edit-done-subtitle": "Filter redigeret",
