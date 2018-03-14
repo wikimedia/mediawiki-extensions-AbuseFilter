@@ -2485,7 +2485,8 @@ class AbuseFilter {
 	static function formatAction( $action, $parameters ) {
 		/** @var $wgLang Language */
 		global $wgLang;
-		if ( count( $parameters ) !== 3 ) {
+		if ( count( $parameters ) === 0 ||
+			( $action === 'block' && count( $parameters ) !== 3 ) ) {
 			$displayAction = self::getActionDisplay( $action );
 		} else {
 			if ( $action === 'block' ) {
