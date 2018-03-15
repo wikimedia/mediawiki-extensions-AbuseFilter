@@ -805,7 +805,8 @@ class AbuseFilter {
 		// Accumulator to track max block to issue
 		$maxExpiry = -1;
 
-		global $wgOut, $wgAbuseFilterDisallowGlobalLocalBlocks, $wgAbuseFilterRestrictions;
+		global $wgOut, $wgAbuseFilterDisallowGlobalLocalBlocks, $wgAbuseFilterRestrictions,
+			$wgAbuseFilterBlockDuration, $wgAbuseFilterAnonBlockDuration;
 		foreach ( $actionsByFilter as $filter => $actions ) {
 			// Special-case handling for warnings.
 			$parsed_public_comments = $wgOut->parseInline(
