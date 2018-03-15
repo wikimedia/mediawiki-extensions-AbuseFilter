@@ -84,6 +84,11 @@ fieldset.mw-abusefilter-edit-buttons {
 	margin-top: 1em;
 }
 
+.mw-abusefilter-load-filter-id {
+	width: 25%;
+	min-width: 250px;
+}
+
 #mw-abusefilter-syntaxresult,
 ul li.mw-abusefilter-changeslist-nomatch,
 ul li.mw-abusefilter-changeslist-match {

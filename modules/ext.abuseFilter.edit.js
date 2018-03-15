@@ -197,7 +197,7 @@
 	 * @param {jQuery.Event} e
 	 */
 	function fetchFilter() {
-		var filterId = $.trim( $( '#mw-abusefilter-load-filter' ).val() ),
+		var filterId = $.trim( $( '#mw-abusefilter-load-filter input' ).val() ),
 			api;
 
 		if ( filterId === '' ) {

@@ -80,7 +80,7 @@
 			},
 			api = new mw.Api();
 
-		$( this ).injectSpinner( 'filter-check' );
+		$( this ).injectSpinner( { id: 'filter-check', size: 'large' } );
 
 		if ( examine.type === 'rc' ) {
 			params.rcid = examine.id;

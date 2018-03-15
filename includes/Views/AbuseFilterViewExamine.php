@@ -143,6 +143,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 
 	function showExaminer( $vars ) {
 		$output = $this->getOutput();
+		$output->enableOOUI();
 
 		if ( !$vars ) {
 			$output->addWikiMsg( 'abusefilter-examine-incompatible' );
@@ -161,31 +162,13 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		if ( $this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
 			$tester = Xml::tags( 'h2', null, $this->msg( 'abusefilter-examine-test' )->parse() );
 			$tester .= AbuseFilter::buildEditBox( $this->mTestFilter, 'wpTestFilter', false );
-			$tester .=
-				"\n" .
-				Xml::inputLabel(
-					$this->msg( 'abusefilter-test-load-filter' )->text(),
-					'wpInsertFilter',
-					'mw-abusefilter-load-filter',
-					10,
-					''
-				) .
-				'&#160;' .
-				Xml::element(
-					'input',
-					[
-						'type' => 'button',
-						'value' => $this->msg( 'abusefilter-test-load' )->text(),
-						'id' => 'mw-abusefilter-load'
-					]
-				);
+			$tester .= AbuseFilter::buildFilterLoader();
 			$html .= Xml::tags( 'div', [ 'id' => 'mw-abusefilter-examine-editor' ], $tester );
 			$html .= Xml::tags( 'p',
 				null,
-				Xml::element( 'input',
+				new OOUI\ButtonInputWidget(
 					[
-						'type' => 'button',
-						'value' => $this->msg( 'abusefilter-examine-test-button' )->text(),
+						'label' => $this->msg( 'abusefilter-examine-test-button' )->text(),
 						'id' => 'mw-abusefilter-examine-test'
 					]
 				) .

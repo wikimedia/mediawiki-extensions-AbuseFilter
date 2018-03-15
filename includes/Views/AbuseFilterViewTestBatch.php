@@ -21,56 +21,75 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$out->setPageTitle( $this->msg( 'abusefilter-test' ) );
 		$out->addWikiMsg( 'abusefilter-test-intro', self::$mChangeLimit );
+		$out->enableOOUI();
 
 		$output = '';
-		$output .= AbuseFilter::buildEditBox( $this->mFilter, 'wpTestFilter' ) . "\n";
 		$output .=
-			Xml::inputLabel(
-				$this->msg( 'abusefilter-test-load-filter' )->text(),
-				'wpInsertFilter',
-				'mw-abusefilter-load-filter',
-				10,
-				''
-			) .
-			'&#160;' .
-			Xml::element(
-				'input',
-				[
-					'type' => 'button',
-					'value' => $this->msg( 'abusefilter-test-load' )->text(),
-					'id' => 'mw-abusefilter-load'
-				]
-			);
+			AbuseFilter::buildEditBox(
+				$this->mFilter,
+				'wpTestFilter',
+				true,
+				true,
+				true
+			) . "\n";
+
+		$output .= AbuseFilter::buildFilterLoader();
 		$output = Xml::tags( 'div', [ 'id' => 'mw-abusefilter-test-editor' ], $output );
 
-		$output .= Xml::tags( 'p', null, Xml::checkLabel(
-			$this->msg( 'abusefilter-test-shownegative' )->text(),
-			'wpShowNegative', 'wpShowNegative', $this->mShowNegative )
-		);
+		$RCMaxAge = $this->getConfig()->get( 'RCMaxAge' );
+		$min = wfTimestamp( TS_ISO_8601, time() - $RCMaxAge );
+		$max = wfTimestampNow();
 
-		// Selectory stuff
-		$selectFields = [];
-		$selectFields['abusefilter-test-user'] = Xml::input( 'wpTestUser', 45, $this->mTestUser );
-		$selectFields['abusefilter-test-period-start'] =
-			Xml::input( 'wpTestPeriodStart', 45, $this->mTestPeriodStart );
-		$selectFields['abusefilter-test-period-end'] =
-			Xml::input( 'wpTestPeriodEnd', 45, $this->mTestPeriodEnd );
-		$selectFields['abusefilter-test-page'] =
-			Xml::input( 'wpTestPage', 45, $this->mTestPage );
+		// Search form
+		$formFields = [];
+		$formFields['wpTestUser'] = [
+			'name' => 'wpTestUser',
+			'type' => 'user',
+			'ipallowed' => true,
+			'label-message' => 'abusefilter-test-user',
+			'default' => $this->mTestUser
+		];
+		$formFields['wpTestPeriodStart'] = [
+			'name' => 'wpTestPeriodStart',
+			'type' => 'datetime',
+			'label-message' => 'abusefilter-test-period-start',
+			'default' => $this->mTestPeriodStart,
+			'min' => $min,
+			'max' => $max
+		];
+		$formFields['wpTestPeriodEnd'] = [
+			'name' => 'wpTestPeriodEnd',
+			'type' => 'datetime',
+			'label-message' => 'abusefilter-test-period-end',
+			'default' => $this->mTestPeriodEnd,
+			'min' => $min,
+			'max' => $max
+		];
+		$formFields['wpTestPage'] = [
+			'name' => 'wpTestPage',
+			'type' => 'title',
+			'label-message' => 'abusefilter-test-page',
+			'default' => $this->mTestPage,
+			'creatable' => true
+		];
+		$formFields['wpShowNegative'] = [
+			'name' => 'wpShowNegative',
+			'type' => 'check',
+			'label-message' => 'abusefilter-test-shownegative',
+			'selected' => $this->mShowNegative
+		];
 
-		$output .= Xml::buildForm( $selectFields, 'abusefilter-test-submit' );
+		$htmlForm = HTMLForm::factory( 'ooui', $formFields, $this->getContext() )
+			->addHiddenField( 'title', $this->getTitle( 'test' )->getPrefixedDBkey() )
+			->setId( 'wpFilterForm' )
+			->setWrapperLegendMsg( 'abusefilter-list-options' )
+			->setAction( $this->getTitle( 'test' )->getLocalURL() )
+			->setSubmitTextMsg( 'abusefilter-test-submit' )
+			->setMethod( 'post' )
+			->prepareForm();
+		$htmlForm = $htmlForm->getHTML( $htmlForm );
 
-		$output .= Html::hidden( 'title', $this->getTitle( 'test' )->getPrefixedDBkey() );
-		$output = Xml::tags( 'form',
-			[
-				'action' => $this->getTitle( 'test' )->getLocalURL(),
-				'method' => 'post'
-			],
-			$output
-		);
-
-		$output = Xml::fieldset( $this->msg( 'abusefilter-test-legend' )->text(), $output );
-
+		$output = Xml::fieldset( $this->msg( 'abusefilter-test-legend' )->text(), $output . $htmlForm );
 		$out->addHTML( $output );
 
 		if ( $this->getRequest()->wasPosted() ) {

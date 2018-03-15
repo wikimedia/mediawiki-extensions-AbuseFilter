@@ -2019,10 +2019,11 @@ class AbuseFilter {
 	 * @param string $textName
 	 * @param bool $addResultDiv
 	 * @param bool $canEdit
+	 * @param bool $externalForm
 	 * @return string
 	 */
 	static function buildEditBox( $rules, $textName = 'wpFilterRules', $addResultDiv = true,
-		$canEdit = true ) {
+		$canEdit = true, $externalForm = false ) {
 		global $wgOut;
 
 		$wgOut->enableOOUI();
@@ -2051,8 +2052,15 @@ class AbuseFilter {
 				);
 
 			$rules = Xml::element( 'div', $editorAttrib, $rules );
+
 			// Dummy textarea for submitting form
-			$rules .= Xml::textarea( $textName, '', 40, 15, [ 'style' => 'display: none;' ] );
+			$textareaAttribs = [
+				'style' => 'display: none'
+			];
+			if ( $externalForm ) {
+				$textareaAttribs['form'] = 'wpFilterForm';
+			}
+			$rules .= Xml::textarea( $textName, '', 40, 15, $textareaAttribs );
 
 			$editorConfig = self::getAceConfig( $canEdit );
 
@@ -2061,6 +2069,9 @@ class AbuseFilter {
 		} else {
 			if ( !$canEdit ) {
 				$editorAttrib['readonly'] = 'readonly';
+			}
+			if ( $externalForm ) {
+				$editorAttrib['form'] = 'wpFilterForm';
 			}
 			$rules = Xml::textarea( $textName, $rules, 40, 15, $editorAttrib );
 		}
@@ -2138,6 +2149,45 @@ class AbuseFilter {
 		self::$editboxName = $textName;
 
 		return $rules;
+	}
+
+	/**
+	 * Build input and button for loading a filter
+	 *
+	 * @return string
+	 */
+	static function buildFilterLoader() {
+		$loadText =
+			new OOUI\TextInputWidget(
+				[
+					'type' => 'number',
+					'name' => 'wpInsertFilter',
+					'id' => 'mw-abusefilter-load-filter'
+				]
+			);
+		$loadButton =
+			new OOUI\ButtonInputWidget(
+				[
+					'label' => wfMessage( 'abusefilter-test-load' )->text(),
+					'id' => 'mw-abusefilter-load'
+				]
+			);
+		$loadGroup =
+			new OOUI\ActionFieldLayout(
+				$loadText,
+				$loadButton,
+				[
+					'label' => wfMessage( 'abusefilter-test-load-filter' )->text()
+				]
+			);
+		// CSS class for reducing default input field width
+		$loadDiv =
+			Xml::tags(
+				'div',
+				[ 'class' => 'mw-abusefilter-load-filter-id' ],
+				$loadGroup
+			);
+		return $loadDiv;
 	}
 
 	/**
