@@ -158,7 +158,7 @@
 
 		$( this )
 			.prop( 'disabled', true )
-			.injectSpinner( 'abusefilter-syntaxcheck' );
+			.injectSpinner( { id: 'abusefilter-syntaxcheck', size: 'large' } );
 
 		api.post( {
 			action: 'abusefilterchecksyntax',
@@ -204,7 +204,7 @@
 			return;
 		}
 
-		$( this ).injectSpinner( 'fetch-spinner' );
+		$( this ).injectSpinner( { id: 'fetch-spinner', size: 'large' } );
 
 		// We just ignore errors or unexisting filters over here
 		api = new mw.Api();

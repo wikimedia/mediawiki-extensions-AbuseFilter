@@ -80,6 +80,10 @@ div.mw-abusefilter-editor {
 	border: 1px solid #a2a9b1;
 }
 
+fieldset.mw-abusefilter-edit-buttons {
+	margin-top: 1em;
+}
+
 #mw-abusefilter-syntaxresult,
 ul li.mw-abusefilter-changeslist-nomatch,
 ul li.mw-abusefilter-changeslist-match {

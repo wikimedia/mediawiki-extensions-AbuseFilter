@@ -2025,6 +2025,7 @@ class AbuseFilter {
 		$canEdit = true ) {
 		global $wgOut;
 
+		$wgOut->enableOOUI();
 		$editorAttrib = [ 'dir' => 'ltr' ]; # Rules are in English
 
 		global $wgUser;
@@ -2042,11 +2043,9 @@ class AbuseFilter {
 			$editorAttrib['class'] = 'mw-abusefilter-editor';
 
 			$switchEditor =
-				Xml::element(
-					'input',
+				new OOUI\ButtonWidget(
 					[
-						'type' => 'button',
-						'value' => wfMessage( 'abusefilter-edit-switch-editor' )->text(),
+						'label' => wfMessage( 'abusefilter-edit-switch-editor' )->text(),
 						'id' => 'mw-abusefilter-switcheditor'
 					] + $noTestAttrib
 				);
@@ -2067,65 +2066,65 @@ class AbuseFilter {
 		}
 
 		if ( $canEdit ) {
-			$dropDown = self::getBuilderValues();
 			// Generate builder drop-down
-			$builder = '';
+			$dropDown = self::getBuilderValues();
 
-			$builder .= Xml::option( wfMessage( 'abusefilter-edit-builder-select' )->text() );
-
+			// The array needs to be rearranged to be understood by OOUI
 			foreach ( $dropDown as $group => $values ) {
 				// Give grep a chance to find the usages:
 				// abusefilter-edit-builder-group-op-arithmetic, abusefilter-edit-builder-group-op-comparison,
 				// abusefilter-edit-builder-group-op-bool, abusefilter-edit-builder-group-misc,
 				// abusefilter-edit-builder-group-funcs, abusefilter-edit-builder-group-vars
-				$builder .=
-					Xml::openElement(
-						'optgroup',
-						[ 'label' => wfMessage( "abusefilter-edit-builder-group-$group" )->text() ]
-					) . "\n";
-
+				$localisedLabel = wfMessage( "abusefilter-edit-builder-group-$group" )->text();
+				$dropDown[ $localisedLabel ] = $dropDown[ $group ];
+				unset( $dropDown[ $group ] );
+				$dropDown[ $localisedLabel ] = array_flip( $dropDown[ $localisedLabel ] );
 				foreach ( $values as $content => $name ) {
-					$builder .=
-						Xml::option(
-							wfMessage( "abusefilter-edit-builder-$group-$name" )->text(),
-							$content
-						) . "\n";
+					$localisedInnerLabel = wfMessage( "abusefilter-edit-builder-$group-$name" )->text();
+					$dropDown[ $localisedLabel ][ $localisedInnerLabel ] = $dropDown[ $localisedLabel ][ $name ];
+					unset( $dropDown[ $localisedLabel ][ $name ] );
 				}
-
-				$builder .= Xml::closeElement( 'optgroup' ) . "\n";
 			}
 
-			$rules .=
-				Xml::tags(
-					'select',
-					[ 'id' => 'wpFilterBuilder', ],
-					$builder
-				);
+			$dropDown = [ wfMessage( 'abusefilter-edit-builder-select' )->text() => 'other' ] + $dropDown;
+			$dropDown = Xml::listDropDownOptionsOoui( $dropDown );
+			$dropDown = new OOUI\DropdownInputWidget( [
+				'name' => 'wpFilterBuilder',
+				'inputId' => 'wpFilterBuilder',
+				'options' => $dropDown
+			] );
+
+			$dropDown = new OOUI\FieldLayout( $dropDown );
+			$formElements = [ $dropDown ];
 
 			// Button for syntax check
 			$syntaxCheck =
-				Xml::element(
-					'input',
+				new OOUI\ButtonWidget(
 					[
-						'type' => 'button',
-						'value' => wfMessage( 'abusefilter-edit-check' )->text(),
+						'label' => wfMessage( 'abusefilter-edit-check' )->text(),
 						'id' => 'mw-abusefilter-syntaxcheck'
 					] + $noTestAttrib
 				);
+			$group = $syntaxCheck;
 
 			// Button for switching editor (if Ace is used)
 			if ( isset( $switchEditor ) ) {
-				$syntaxCheck = $switchEditor . ' ' . $syntaxCheck;
+				$group =
+					new OOUI\Widget( [
+						'content' => new OOUI\HorizontalLayout( [
+							'items' => [ $switchEditor, $syntaxCheck ]
+						] )
+					] );
 			}
+			$group = new OOUI\FieldLayout( $group );
+			$formElements[] = $group;
 
-			$toolsContainer =
-				Xml::tags(
-					'div',
-					null,
-					$syntaxCheck
-				);
+			$fieldSet = new OOUI\FieldsetLayout( [
+				'items' => $formElements,
+				'classes' => [ 'mw-abusefilter-edit-buttons' ]
+			] );
 
-			$rules .= $toolsContainer;
+			$rules .= $fieldSet;
 		}
 
 		if ( $addResultDiv ) {
