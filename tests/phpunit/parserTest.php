@@ -19,14 +19,14 @@
  *
  * @file
  *
- * @group Test
- * @group AbuseFilter
- *
  * @licence GNU GPL v2+
  * @author Marius Hoch < hoo@online.de >
  */
 
 /**
+ * @group Test
+ * @group AbuseFilter
+ *
  * @covers AbuseFilterCachingParser
  * @covers AbuseFilterParser
  * @covers AbuseFilterTokenizer
