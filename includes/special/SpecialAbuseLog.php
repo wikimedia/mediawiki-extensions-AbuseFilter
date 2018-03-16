@@ -382,11 +382,17 @@ class SpecialAbuseLog extends SpecialPage {
 
 		if ( $this->mSearchActionTaken ) {
 			if ( in_array( $this->mSearchActionTaken, $this->getAllActions() ) ) {
-				$actions = [ $this->mSearchActionTaken ];
-				if ( $this->mSearchActionTaken !== 'tag' ) {
-					$actions[] = "{$this->mSearchActionTaken},tag";
-				}
-				$conds['afl_actions'] = $actions;
+				$list = [ 'afl_actions' => $this->mSearchActionTaken ];
+				$list[] = 'afl_actions' . $dbr->buildLike(
+					$this->mSearchActionTaken, ',', $dbr->anyString() );
+				$list[] = 'afl_actions' . $dbr->buildLike(
+					$dbr->anyString(), ',', $this->mSearchActionTaken );
+				$list[] = 'afl_actions' . $dbr->buildLike(
+					$dbr->anyString(),
+					',', $this->mSearchActionTaken, ',',
+					$dbr->anyString()
+				);
+				$conds[] = $dbr->makeList( $list, LIST_OR );
 			} elseif ( $this->mSearchActionTaken === 'noactions' ) {
 				$conds['afl_actions'] = '';
 			}
