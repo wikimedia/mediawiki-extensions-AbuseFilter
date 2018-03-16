@@ -913,6 +913,7 @@ class AbuseFilter {
 						is_array( $parameters ) && in_array( 'blocktalk', $parameters )
 					];
 				}
+				unset( $actions['block'] );
 			}
 
 			// Do the rest of the actions
