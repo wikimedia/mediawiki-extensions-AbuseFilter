@@ -409,17 +409,19 @@ class AFComputedVariable {
 				$dbr = wfGetDB( DB_REPLICA );
 				$setOpts += Database::getCacheSetOptions( $dbr );
 				// Get the last 100 edit authors with a trivial query (avoid T116557)
+				$revQuery = Revision::getQueryInfo();
 				$revAuthors = $dbr->selectFieldValues(
-					'revision',
-					'rev_user_text',
+					$revQuery['tables'],
+					$revQuery['fields']['rev_user_text'],
 					[ 'rev_page' => $title->getArticleID() ],
 					__METHOD__,
 					// Some pages have < 10 authors but many revisions (e.g. bot pages)
 					[ 'ORDER BY' => 'rev_timestamp DESC',
 						'LIMIT' => 100,
 						// Force index per T116557
-						'USE INDEX' => 'page_timestamp',
-					]
+						'USE INDEX' => [ 'revision' => 'page_timestamp' ],
+					],
+					$revQuery['joins']
 				);
 				// Get the last 10 distinct authors within this set of edits
 				$users = [];

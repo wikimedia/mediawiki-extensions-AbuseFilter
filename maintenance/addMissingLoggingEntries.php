@@ -72,19 +72,19 @@ class AddMissingLoggingEntries extends Maintenance {
 			if ( $count % 100 == 0 ) {
 				wfWaitForSlaves();
 			}
+			$user = User::newFromAnyId( $row->afh_user, $row->afh_user_text, null );
 			$dbw->insert(
 				'logging',
 				[
 					'log_type' => 'abusefilter',
 					'log_action' => 'modify',
 					'log_timestamp' => $row->afh_timestamp,
-					'log_user' => $row->afh_user,
 					'log_namespace' => -1,
 					'log_title' => SpecialPageFactory::getLocalNameFor( 'AbuseFilter' ) . '/' . $row->afh_filter,
 					'log_params' => $row->afh_id . '\n' . $row->afh_filter,
 					'log_deleted' => $row->afh_deleted,
-					'log_user_text' => $row->afh_user_text,
-				] + CommentStore::getStore()->insert( $dbw, 'log_comment', '' ),
+				] + CommentStore::getStore()->insert( $dbw, 'log_comment', '' )
+					+ ActorMigration::newMigration()->getInsertValues( $dbw, 'log_user', $user ),
 				__METHOD__
 			);
 			$count++;

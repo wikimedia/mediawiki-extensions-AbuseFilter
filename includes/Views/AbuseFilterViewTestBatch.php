@@ -92,7 +92,12 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$dbr = wfGetDB( DB_REPLICA );
 
 		$conds = [];
-		$conds['rc_user_text'] = $this->mTestUser;
+
+		if ( (string)$this->mTestUser !== '' ) {
+			$conds[] = ActorMigration::newMigration()->getWhere(
+				$dbr, 'rc_user', User::newFromName( $this->mTestUser, false )
+			)['conds'];
+		}
 
 		if ( $this->mTestPeriodStart ) {
 			$conds[] = 'rc_timestamp >= ' .

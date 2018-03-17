@@ -384,7 +384,7 @@ class AbuseFilterHooks {
 		$action = $recentChange->mAttribs['rc_log_type'] ?
 			$recentChange->mAttribs['rc_log_type'] : 'edit';
 		$actionID = implode( '-', [
-			$title->getPrefixedText(), $recentChange->mAttribs['rc_user_text'], $action
+			$title->getPrefixedText(), $recentChange->getAttribute( 'rc_user_text' ), $action
 		] );
 
 		if ( isset( AbuseFilter::$tagsToSet[$actionID] ) ) {
