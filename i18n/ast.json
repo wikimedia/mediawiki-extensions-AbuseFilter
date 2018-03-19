@@ -447,6 +447,8 @@
 	"log-description-abusefilterprivatedetails": "Esti rexistru amuesa una llista de les veces qu'un usuariu tuvo accesu a los detalles privaos d'un rexistru d'abusos.",
 	"abusefilter-noreason": "Atención: Pa ver los detalles privaos d'esti rexistru, tienes de dar un motivu.",
 	"abusefilter-log-ip-not-available": "Non disponible",
+	"tag-abusefilter-condition-limit": "aportóse a la llende de condición",
+	"tag-abusefilter-condition-limit-description": "Ediciones o otres actividaes que nun pudieron comprobase por tolos [[Special:AbuseFilter|filtros d'abusos]] activos ([[mw:Extension:AbuseFilter/Conditions|ayuda]]).",
 	"apihelp-abusefiltercheckmatch-description": "Revisa pa ver si un AbuseFilter casa con un conxuntu de variables, socesu d'editor rexistráu d'AbuseFilter.\n\nNecesítase vars, rcid o logid, anque sólo pue usase unu.",
 	"apihelp-abusefiltercheckmatch-summary": "Comprobar si un filtru d'abusos casa con un conxuntu de variables,  o socesu d'AbuseFilter rexistráu nel editor.",
 	"apihelp-abusefiltercheckmatch-extended-description": "Ríquese vars, rcid o logid, pero sólo pué usase unu d'ellos.",

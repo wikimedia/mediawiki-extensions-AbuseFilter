@@ -25,7 +25,8 @@
 			"Openbk",
 			"The Polish",
 			"InternerowyGołąb",
-			"Ankam"
+			"Ankam",
+			"Railfail536"
 		]
 	},
 	"abusefilter-desc": "Zastosowanie automatycznej heurystyki do edycji",
@@ -97,6 +98,7 @@
 	"abusefilter-log-details-vars": "Parametry akcji",
 	"abusefilter-log-details-private": "Szczegóły prywatnego rejestru",
 	"abusefilter-log-details-ip": "Użyte adresy IP",
+	"abusefilter-log-details-checkuser": "Sprawdź użytkownika",
 	"abusefilter-log-noactions": "brak",
 	"abusefilter-log-details-diff": "Wprowadzone w edycji zmiany",
 	"abusefilter-log-linkoncontribs": "rejestr nadużyć",
@@ -454,6 +456,7 @@
 	"abusefilter-http-error": "Wystąpił błąd HTTP: $1.",
 	"abusefilter-log-details-id": "ID wpisu",
 	"abusefilter-noreason": "Uwaga: aby podejrzeć poufne szczegóły tego rejestru, musisz podać powód.",
+	"abusefilter-log-ip-not-available": "Niedostępne",
 	"apihelp-abusefilterchecksyntax-description": "Sprawdź składnię filtra AbuseFilter.",
 	"apihelp-abusefilterevalexpression-param-expression": "Wyrażenie do sprawdzenia.",
 	"apihelp-abusefilterunblockautopromote-param-user": "Nazwa użytkownika, którego chcesz odblokować.",

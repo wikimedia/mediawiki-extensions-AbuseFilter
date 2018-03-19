@@ -86,6 +86,7 @@
 	"abusefilter-log-details-vars": "פרמטרים לפעולה",
 	"abusefilter-log-details-private": "נתוני יומן פרטי",
 	"abusefilter-log-details-ip": "כתובת ה־IP המקורית",
+	"abusefilter-log-details-checkuser": "בדיקת משתמש",
 	"abusefilter-log-noactions": "אין",
 	"abusefilter-log-details-diff": "שינויים שבוצעו בעריכה",
 	"abusefilter-log-linkoncontribs": "יומן מסנן ההשחתות",

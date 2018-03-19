@@ -16,7 +16,8 @@
 			"ZaDiak",
 			"Αντιγόνη",
 			"Matma Rex",
-			"KATRINE1992"
+			"KATRINE1992",
+			"Nikosgranturismogt"
 		]
 	},
 	"abusefilter-desc": "Εφαρμόζει αυτόματη ανίχνευση σε επεξεργασίες",
@@ -71,7 +72,7 @@
 	"abusefilter-log-details-var": "Μεταβλητή",
 	"abusefilter-log-details-val": "Τιμή",
 	"abusefilter-log-details-vars": "Παράμετροι ενεργειών",
-	"abusefilter-log-details-private": "Προσωπικά δεδομένα",
+	"abusefilter-log-details-private": "Ιδιωτικές λεπτομέρειες μητρώου",
 	"abusefilter-log-details-ip": "Διεύθυνση IP της προέλευσης",
 	"abusefilter-log-noactions": "καμία",
 	"abusefilter-log-details-diff": "Αλλαγές που πραγματοποιήθηκαν κατά την επεξεργασία",
