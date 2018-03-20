@@ -231,7 +231,7 @@
 	"abusefilter-edit-export": "Diesen Filter in ein anderes Wiki exportieren",
 	"abusefilter-edit-syntaxok": "Keine Syntaxfehler gefunden.",
 	"abusefilter-edit-syntaxerr": "Syntaxfehler gefunden: $1",
-	"abusefilter-edit-bad-tags": "Eine oder mehrere der angegebenen Markierungen sind nicht gültig.\nMarkierungen sollten kurz sein, keine Sonderzeichen beinhalten und nicht durch eine andere Software reserviert sein. Versuche, einen neuen Markierungsnamen auszuwählen.",
+	"abusefilter-edit-bad-tags": "Eine oder mehrere der angegebenen Markierungen sind nicht gültig.\nMarkierungen sollten kurz sein, sie dürfen keine Sonderzeichen enthalten und nicht durch eine andere Software reserviert sein. Versuche, einen neuen Markierungsnamen auszuwählen.",
 	"abusefilter-edit-notallowed": "Es ist dir nicht erlaubt, Missbrauchsfilter zu erstellen oder zu bearbeiten",
 	"abusefilter-edit-notallowed-global": "Du bist nicht berechtigt, globale Missbrauchsfilter zu erstellen oder zu verändern.",
 	"abusefilter-edit-notallowed-global-custom-msg": "Benutzerdefinierte Warnnachrichten werden für globale Filter nicht unterstützt.",

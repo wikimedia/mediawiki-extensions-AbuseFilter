@@ -57,6 +57,7 @@
 	"abusefilter-edit-builder-op-bool-and": "E (logika AND) (&)",
 	"abusefilter-edit-builder-op-bool-or": "O (Logika 'OR') (|)",
 	"abusefilter-edit-builder-funcs-ccnorm": "Normaligar konfundebla signi (ccnorm)",
+	"abusefilter-edit-builder-funcs-specialratio": "Specala signi / omna signi (specialratio)",
 	"abusefilter-filter-log": "Recenta modifiki en la filtrili",
 	"abusefilter-history-foruser": "Chanji da $1",
 	"abusefilter-history-global": "Globala",
@@ -71,7 +72,10 @@
 	"abusefilter-revert-filter": "Filtrilo:",
 	"abusefilter-test": "Probar filtrilo kontre antea redakturi",
 	"abusefilter-test-intro": "Ica pagino permisas vu probar filtrilo kontre l'antea $1 {{PLURAL:$1|modifiko|modifiki}} en la buxo adinfre.\nPor charjar existanta filtrilo, skribez la nomo dil filtrilo en la buxo infre la redakto-buxo, e pose kliktez la butono \"{{int:abusefilter-test-load}}\".",
+	"abusefilter-test-legend": "Probo di filtrili",
+	"abusefilter-test-load-filter": "Charjar filtrilo kun protokolo (ID):",
 	"abusefilter-test-submit": "Probez",
+	"abusefilter-test-load": "Charjez",
 	"abusefilter-test-user": "Chanji per uzero:",
 	"abusefilter-test-period-start": "Modifiki facita pos:",
 	"abusefilter-test-period-end": "Modifiki facita ante:",
@@ -82,6 +86,9 @@
 	"abusefilter-examine-test-button": "Probez filtrilo",
 	"abusefilter-topnav-test": "Probar grupo",
 	"abusefilter-topnav-examine": "Vidar antea redakti",
+	"abusefilter-topnav-log": "Protokolo ('log') pri misuzo",
+	"abusefilter-topnav-tools": "Utensili por 'debug'",
+	"abusefilter-topnav-import": "Importar filtrilo",
 	"abusefilter-log-header": "Ca protokolo ('log') montras rezumo di modifiki en la filtrili.\nPor plura detali, videz [[Special:AbuseFilter/history|la listo di recenta chanji en la filtrili]].",
 	"abusefilter-diff-version": "Versiono ye $1 {{GENDER:$3|da}} $2"
 }

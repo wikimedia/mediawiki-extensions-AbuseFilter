@@ -23,7 +23,8 @@
 			"Jerrykim306",
 			"Delim",
 			"Bluemersen",
-			"Tursetic"
+			"Tursetic",
+			"Garam"
 		]
 	},
 	"abusefilter-desc": "사용자 편집을 규칙에 따라 자동으로 검사합니다",
@@ -211,7 +212,7 @@
 	"abusefilter-edit-denied": "이 필터는 비공개로 설정되었기 때문에 이 필터의 자세한 사항을 볼 수 없습니다.",
 	"abusefilter-edit-main": "필터 변수",
 	"abusefilter-edit-done-subtitle": "필터 편집됨",
-	"abusefilter-edit-done": "[[Special:AbuseFilter/$1|필터 $3]]에 대한 [[Special:AbuseFilter/history/$1/diff/prev/$2|당신의 편집]]이 저장되었습니다.",
+	"abusefilter-edit-done": "[[Special:AbuseFilter/$1|필터 $3]]에서 [[Special:AbuseFilter/history/$1/diff/prev/$2|내 편집]]이 저장되었습니다.",
 	"abusefilter-edit-badsyntax": "입력된 필터에 구문 오류가 있습니다.\n파서 출력값: <pre>$1</pre>",
 	"abusefilter-edit-restricted": "이 필터는 제한된 조치를 포함하므로 편집할 수 없습니다.\n필터를 편집하려면 제한된 조치를 설정할 수 있는 권한을 가진 사용자에게 문의하십시오.",
 	"abusefilter-edit-viewhistory": "이 필터의 역사 보기",
