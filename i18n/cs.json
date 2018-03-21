@@ -220,7 +220,7 @@
 	"abusefilter-edit-export": "Export tohoto filtru pro jinou wiki",
 	"abusefilter-edit-syntaxok": "Nebyly nalezeny žádné syntaktické chyby.",
 	"abusefilter-edit-syntaxerr": "Nalezena syntaktická chyba: $1",
-	"abusefilter-edit-bad-tags": "Jedna či více uvedených značek nejsou platné.\nZnačky by měly být krátké, neměly by obsahovat žádné zvláštní znaky a neměly by být obsazené softwarem. Zkuste značce vybrat jiný název.",
+	"abusefilter-edit-bad-tags": "Jedna či více uvedených značek nejsou platné.\nZnačky by měly být krátké, nesmějí obsahovat žádné zvláštní znaky a nesmějí být obsazené softwarem. Zkuste značce vybrat jiný název.",
 	"abusefilter-edit-notallowed": "Nemáte oprávnění vytvářet nebo editovat filtry zneužití",
 	"abusefilter-edit-notallowed-global": "Nemáte oprávnění vytvářet nebo editovat globální filtry zneužití",
 	"abusefilter-edit-notallowed-global-custom-msg": "U globálních filtrů nejsou podporována vlastní varovná hlášení.",
