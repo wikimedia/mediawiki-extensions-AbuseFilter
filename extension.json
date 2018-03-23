@@ -168,7 +168,9 @@
 				"mediawiki.util",
 				"mediawiki.api",
 				"jquery.textSelection",
-				"jquery.spinner"
+				"jquery.spinner",
+				"oojs-ui-core",
+				"oojs-ui-widgets"
 			]
 		},
 		"ext.abuseFilter.tools": {

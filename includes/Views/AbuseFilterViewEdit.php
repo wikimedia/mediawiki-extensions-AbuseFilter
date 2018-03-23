@@ -144,6 +144,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Build the edit form
 		$out = $this->getOutput();
 		$out->enableOOUI();
+		$out->addJsConfigVars( 'isFilterEditor', true );
 		$lang = $this->getLanguage();
 		$user = $this->getUser();
 
@@ -186,14 +187,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		// Read-only attribute
 		$readOnlyAttrib = [];
-		// For checkboxes
-		$cbReadOnlyAttrib = [];
-
-		$styleAttrib = [ 'style' => 'width:95%' ];
 
 		if ( !$this->canEditFilter( $row ) ) {
-			$readOnlyAttrib['readonly'] = 'readonly';
-			$cbReadOnlyAttrib['disabled'] = 'disabled';
+			$readOnlyAttrib['disabled'] = 'disabled';
 		}
 
 		$fields = [];
@@ -203,34 +199,35 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$this->msg( 'abusefilter-edit-new' )->escaped() :
 				$lang->formatNum( $filter );
 		$fields['abusefilter-edit-description'] =
-			Xml::input(
-				'wpFilterDescription',
-				45,
-				$row->af_public_comments ?? '',
-				array_merge( $readOnlyAttrib, $styleAttrib )
+			new OOUI\TextInputWidget( [
+				'name' => 'wpFilterDescription',
+				'value' => $row->af_public_comments ?? ''
+				] + $readOnlyAttrib
 			);
 
 		$validGroups = $this->getConfig()->get( 'AbuseFilterValidGroups' );
 		if ( count( $validGroups ) > 1 ) {
-			$groupSelector = new XmlSelect(
-				'wpFilterGroup',
-				'mw-abusefilter-edit-group-input',
-				'default'
-			);
+			$groupSelector =
+				new OOUI\DropdownInputWidget( [
+					'name' => 'wpFilterGroup',
+					'id' => 'mw-abusefilter-edit-group-input',
+					'value' => 'default',
+					'disabled' => !empty( $readOnlyAttrib )
+				] );
 
+			$options = [];
 			if ( isset( $row->af_group ) && $row->af_group ) {
-				$groupSelector->setDefault( $row->af_group );
+				$groupSelector->setValue( $row->af_group );
 			}
 
 			foreach ( $validGroups as $group ) {
-				$groupSelector->addOption( AbuseFilter::nameGroup( $group ), $group );
+				$options += [ AbuseFilter::nameGroup( $group ) => $group ];
 			}
 
-			if ( !empty( $readOnlyAttrib ) ) {
-				$groupSelector->setAttribute( 'disabled', 'disabled' );
-			}
+			$options = Xml::listDropDownOptionsOoui( $options );
+			$groupSelector->setOptions( $options );
 
-			$fields['abusefilter-edit-group'] = $groupSelector->getHTML();
+			$fields['abusefilter-edit-group'] = $groupSelector;
 		}
 
 		// Hit count display
@@ -273,12 +270,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			'wpFilterRules',
 			true
 		);
-		$fields['abusefilter-edit-notes'] = Xml::textarea(
-			'wpFilterNotes',
-			( isset( $row->af_comments ) ? $row->af_comments . "\n" : "\n" ),
-			40, 15,
-			$readOnlyAttrib
-		);
+		$fields['abusefilter-edit-notes'] =
+			new OOUI\MultilineTextInputWidget( [
+				'name' => 'wpFilterNotes',
+				'value' => isset( $row->af_comments ) ? $row->af_comments . "\n" : "\n",
+				'rows' => 15
+				] + $readOnlyAttrib
+			);
 
 		// Build checkboxes
 		$checkboxes = [ 'hidden', 'enabled', 'deleted' ];
@@ -322,27 +320,40 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$message = "abusefilter-edit-$checkboxId";
 			$dbField = "af_$checkboxId";
 			$postVar = 'wpFilter' . ucfirst( $checkboxId );
-			$localReadOnlyAttrib = [];
+
+			$checkboxAttribs = [
+				'name' => $postVar,
+				'id' => $postVar,
+				'selected' => $row->$dbField ?? false,
+			] + $readOnlyAttrib;
+			$labelAttribs = [
+				'label' => $this->msg( $message )->text(),
+				'align' => 'inline',
+			];
 
 			if ( $checkboxId == 'global' && !$this->canEditGlobal() ) {
-				$localReadOnlyAttrib['disabled'] = 'disabled';
+				$checkboxAttribs['disabled'] = 'disabled';
 			}
 
 			// Set readonly on deleted if the filter isn't disabled
 			if ( $checkboxId == 'deleted' && $row->af_enabled == 1 ) {
-				$localReadOnlyAttrib['disabled'] = 'disabled';
+				$checkboxAttribs['disabled'] = 'disabled';
 			}
 
-			$readOnly = array_merge( $cbReadOnlyAttrib, $localReadOnlyAttrib );
+			// Add infusable where needed
+			if ( $checkboxId == 'deleted' || $checkboxId == 'enabled' ) {
+				$checkboxAttribs['infusable'] = true;
+				if ( $checkboxId == 'deleted' ) {
+					$labelAttribs['id'] = $postVar . 'Label';
+					$labelAttribs['infusable'] = true;
+				}
+			}
 
-			$checkbox = Xml::checkLabel(
-				$this->msg( $message )->text(),
-				$postVar,
-				$postVar,
-				$row->$dbField ?? false,
-				$readOnly
-			);
-			$checkbox = Xml::tags( 'p', null, $checkbox );
+			$checkbox =
+				new OOUI\FieldLayout(
+					new OOUI\CheckboxInputWidget( $checkboxAttribs ),
+					$labelAttribs
+				);
 			$flags .= $checkbox;
 		}
 
@@ -395,10 +406,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$exportText = FormatJson::encode( [ 'row' => $row, 'actions' => $actions ] );
 		$tools .= Xml::tags( 'a', [ 'href' => '#', 'id' => 'mw-abusefilter-export-link' ],
 			$this->msg( 'abusefilter-edit-export' )->parse() );
-		$tools .= Xml::element( 'textarea',
-			[ 'readonly' => 'readonly', 'id' => 'mw-abusefilter-export' ],
-			$exportText
-		);
+		$tools .=
+			new OOUI\MultilineTextInputWidget( [
+				'id' => 'mw-abusefilter-export',
+				'readOnly' => true,
+				'value' => $exportText,
+				'rows' => 10
+			] );
 
 		$fields['abusefilter-edit-tools'] = $tools;
 
@@ -410,10 +424,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		);
 
 		if ( $this->canEditFilter( $row ) ) {
-			$form .= Xml::submitButton(
-				$this->msg( 'abusefilter-edit-save' )->text(),
-				[ 'accesskey' => 's' ]
-			);
+			$form .=
+				new OOUI\ButtonInputWidget( [
+					'type' => 'submit',
+					'label' => $this->msg( 'abusefilter-edit-save' )->text(),
+					'useInputTag' => true,
+					'accesskey' => 's',
+					'flags' => [ 'progressive', 'primary' ]
+				] );
 			$form .= Html::hidden(
 				'wpEditToken',
 				$user->getEditToken( [ 'abusefilter', $filter ] )
@@ -478,12 +496,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		$readOnlyAttrib = [];
-		// For checkboxes
-		$cbReadOnlyAttrib = [];
 
 		if ( !$this->canEditFilter( $row ) ) {
-			$readOnlyAttrib['readonly'] = 'readonly';
-			$cbReadOnlyAttrib['disabled'] = 'disabled';
+			$readOnlyAttrib['disabled'] = 'disabled';
 		}
 
 		switch ( $action ) {
@@ -492,12 +507,20 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				if ( $config->get( 'MainCacheType' ) === CACHE_NONE ) {
 					return '';
 				}
-				$throttleSettings = Xml::checkLabel(
-					$this->msg( 'abusefilter-edit-action-throttle' )->text(),
-					'wpFilterActionThrottle',
-					"mw-abusefilter-action-checkbox-$action",
-					$set,
-					[ 'class' => 'mw-abusefilter-action-checkbox' ] + $cbReadOnlyAttrib );
+				$throttleSettings =
+					new OOUI\FieldLayout(
+						new OOUI\CheckboxInputWidget( [
+							'name' => 'wpFilterActionThrottle',
+							'id' => 'mw-abusefilter-action-checkbox-throttle',
+							'selected' => $set,
+							'classes' => [ 'mw-abusefilter-action-checkbox' ]
+						] + $readOnlyAttrib
+						),
+						[
+							'label' => $this->msg( 'abusefilter-edit-action-throttle' )->text(),
+							'align' => 'inline'
+						]
+					);
 				$throttleFields = [];
 
 				if ( $set ) {
@@ -506,40 +529,103 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					$throttleCount = $throttleRate[0];
 					$throttlePeriod = $throttleRate[1];
 
-					$throttleGroups = implode( "\n", array_slice( $parameters, 1 ) );
+					$throttleGroups = array_slice( $parameters, 1 );
 				} else {
 					$throttleCount = 3;
 					$throttlePeriod = 60;
 
-					$throttleGroups = "user\n";
+					$throttleGroups = [ 'user' ];
 				}
 
 				$throttleFields['abusefilter-edit-throttle-count'] =
-					Xml::input( 'wpFilterThrottleCount', 20, $throttleCount, $readOnlyAttrib );
+					new OOUI\FieldLayout(
+						new OOUI\TextInputWidget( [
+							'type' => 'number',
+							'name' => 'wpFilterThrottleCount',
+							'value' => $throttleCount
+							] + $readOnlyAttrib
+						),
+						[
+							'label' => $this->msg( 'abusefilter-edit-throttle-count' )->text()
+						]
+					);
 				$throttleFields['abusefilter-edit-throttle-period'] =
-					$this->msg( 'abusefilter-edit-throttle-seconds' )
-					->rawParams( Xml::input( 'wpFilterThrottlePeriod', 20, $throttlePeriod,
-						$readOnlyAttrib )
-					)->parse();
+					new OOUI\FieldLayout(
+						new OOUI\TextInputWidget( [
+							'type' => 'number',
+							'name' => 'wpFilterThrottlePeriod',
+							'value' => $throttlePeriod
+							] + $readOnlyAttrib
+						),
+						[
+							'label' => $this->msg( 'abusefilter-edit-throttle-period' )->text()
+						]
+					);
 				$throttleFields['abusefilter-edit-throttle-groups'] =
-					Xml::textarea( 'wpFilterThrottleGroups', $throttleGroups . "\n",
-									40, 5, $readOnlyAttrib );
+					new OOUI\FieldLayout(
+						new OOUI\CheckboxMultiselectInputWidget( [
+							'name' => 'wpFilterThrottleGroups[]',
+							'value' => $throttleGroups,
+							'options' => [
+								[
+									'data' => 'ip',
+									'label' => $this->msg( 'abusefilter-edit-throttle-ip' )->text()
+								],
+								[
+									'data' => 'user',
+									'label' => $this->msg( 'abusefilter-edit-throttle-user' )->text()
+								],
+								[
+									'data' => 'range',
+									'label' => $this->msg( 'abusefilter-edit-throttle-range' )->text()
+								],
+								[
+									'data' => 'creationdate',
+									'label' => $this->msg( 'abusefilter-edit-throttle-creationdate' )->text()
+								],
+								[
+									'data' => 'editcount',
+									'label' => $this->msg( 'abusefilter-edit-throttle-editcount' )->text()
+								],
+								[
+									'data' => 'site',
+									'label' => $this->msg( 'abusefilter-edit-throttle-site' )->text()
+								],
+								[
+									'data' => 'page',
+									'label' => $this->msg( 'abusefilter-edit-throttle-page' )->text()
+								]
+							]
+						] + $readOnlyAttrib ),
+						[
+							'label' => $this->msg( 'abusefilter-edit-throttle-groups' )->text(),
+							'align' => 'right'
+						]
+					);
 				$throttleSettings .=
 					Xml::tags(
 						'div',
 						[ 'id' => 'mw-abusefilter-throttle-parameters' ],
-						Xml::buildForm( $throttleFields )
+						new OOUI\FieldsetLayout( [ 'items' => $throttleFields ] )
 					);
 				return $throttleSettings;
 			case 'warn':
 				$output = '';
-				$checkbox = Xml::checkLabel(
-					$this->msg( 'abusefilter-edit-action-warn' )->text(),
-					'wpFilterActionWarn',
-					"mw-abusefilter-action-checkbox-$action",
-					$set,
-					[ 'class' => 'mw-abusefilter-action-checkbox' ] + $cbReadOnlyAttrib );
-				$output .= Xml::tags( 'p', null, $checkbox );
+				$checkbox =
+					new OOUI\FieldLayout(
+						new OOUI\CheckboxInputWidget( [
+							'name' => 'wpFilterActionWarn',
+							'id' => 'mw-abusefilter-action-checkbox-warn',
+							'selected' => $set,
+							'classes' => [ 'mw-abusefilter-action-checkbox' ]
+						] + $readOnlyAttrib
+						),
+						[
+							'label' => $this->msg( 'abusefilter-edit-action-warn' )->text(),
+							'align' => 'inline'
+						]
+					);
+				$output .= $checkbox;
 				if ( $set ) {
 					$warnMsg = $parameters[0];
 				} elseif (
@@ -555,44 +641,63 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$warnFields['abusefilter-edit-warn-message'] =
 					$this->getExistingSelector( $warnMsg, !empty( $readOnlyAttrib ) );
 				$warnFields['abusefilter-edit-warn-other-label'] =
-					Xml::input(
-						'wpFilterWarnMessageOther',
-						45,
-						$warnMsg,
-						[ 'id' => 'mw-abusefilter-warn-message-other' ] + $cbReadOnlyAttrib
-					);
-
-				$previewButton = Xml::element(
-					'input',
-					[
-						'type' => 'button',
-						'id' => 'mw-abusefilter-warn-preview-button',
-						'value' => $this->msg( 'abusefilter-edit-warn-preview' )->text()
-					]
-				);
-				$editButton = '';
-				if ( $this->getUser()->isAllowed( 'editinterface' ) ) {
-					$editButton .= ' ' . Xml::element(
-						'input',
+					new OOUI\FieldLayout(
+						new OOUI\TextInputWidget( [
+							'name' => 'wpFilterWarnMessageOther',
+							'value' => $warnMsg,
+							'id' => 'mw-abusefilter-warn-message-other',
+							'infusable' => true
+							] + $readOnlyAttrib
+						),
 						[
-							'type' => 'button',
-							'id' => 'mw-abusefilter-warn-edit-button',
-							'value' => $this->msg( 'abusefilter-edit-warn-edit' )->text()
+							'label' => new OOUI\HtmlSnippet(
+								$this->msg( 'abusefilter-edit-warn-other-label' )->parse()
+							)
 						]
 					);
+
+				$previewButton =
+					new OOUI\ButtonInputWidget( [
+						'label' => $this->msg( 'abusefilter-edit-warn-preview' )->text(),
+						'id' => 'mw-abusefilter-warn-preview-button',
+						'infusable' => true,
+						'flags' => 'progressive'
+						]
+					);
+
+				$buttonGroup = $previewButton;
+				if ( $this->getUser()->isAllowed( 'editinterface' ) ) {
+					$editButton =
+						new OOUI\ButtonInputWidget( [
+							'label' => $this->msg( 'abusefilter-edit-warn-edit' )->text(),
+							'id' => 'mw-abusefilter-warn-edit-button'
+							]
+						);
+					$buttonGroup =
+						new OOUI\Widget( [
+							'content' =>
+								new OOUI\HorizontalLayout( [
+									'items' => [ $previewButton, $editButton ],
+									'classes' => [
+										'mw-abusefilter-warn-preview-buttons',
+										'mw-abusefilter-javascript-tools'
+									]
+								] )
+						] );
 				}
-				$previewHolder = Xml::element(
+				$previewHolder = Xml::tags(
 					'div',
-					[ 'id' => 'mw-abusefilter-warn-preview' ], ''
+					[ 'id' => 'mw-abusefilter-warn-preview', 'style' => 'display:none' ],
+					''
 				);
-				$warnFields['abusefilter-edit-warn-actions'] =
-					Xml::tags( 'p', null, $previewButton . $editButton ) . "\n$previewHolder";
+				$warnFields['abusefilter-edit-warn-actions'] = $buttonGroup;
 				$output .=
 					Xml::tags(
 						'div',
 						[ 'id' => 'mw-abusefilter-warn-parameters' ],
-						Xml::buildForm( $warnFields )
-					);
+						new OOUI\FieldsetLayout( [ 'items' => $warnFields ] )
+					) . $previewHolder;
+
 				return $output;
 			case 'tag':
 				if ( $set ) {
@@ -602,21 +707,50 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				}
 				$output = '';
 
-				$checkbox = Xml::checkLabel(
-					$this->msg( 'abusefilter-edit-action-tag' )->text(),
-					'wpFilterActionTag',
-					"mw-abusefilter-action-checkbox-$action",
-					$set,
-					[ 'class' => 'mw-abusefilter-action-checkbox' ] + $cbReadOnlyAttrib
-				);
-				$output .= Xml::tags( 'p', null, $checkbox );
+				$checkbox =
+					new OOUI\FieldLayout(
+						new OOUI\CheckboxInputWidget( [
+							'name' => 'wpFilterActionTag',
+							'id' => 'mw-abusefilter-action-checkbox-tag',
+							'selected' => $set,
+							'classes' => [ 'mw-abusefilter-action-checkbox' ]
+						] + $readOnlyAttrib
+						),
+						[
+							'label' => $this->msg( 'abusefilter-edit-action-tag' )->text(),
+							'align' => 'inline'
+						]
+					);
+				$output .= $checkbox;
 
-				$tagFields['abusefilter-edit-tag-tag'] =
-					Xml::textarea( 'wpFilterTags', implode( "\n", $tags ), 40, 5, $readOnlyAttrib );
+				$tagConfig = [
+					'tagUsed' => $tags,
+					'tagLabel' => $this->msg( 'abusefilter-edit-tag-tag' )->parse(),
+					'tagPlaceholder' => $this->msg( 'abusefilter-edit-tag-placeholder' )->text(),
+					'tagDisabled' => $readOnlyAttrib
+				];
+				$this->getOutput()->addJsConfigVars( 'tagConfig', $tagConfig );
+
+				$hiddenTags =
+					new OOUI\FieldLayout(
+						new OOUI\MultilineTextInputWidget( [
+							'name' => 'wpFilterTags',
+							'value' => implode( ',', $tags ),
+							'rows' => 5
+						] + $readOnlyAttrib
+						),
+						[
+							'label' => new OOUI\HtmlSnippet(
+								$this->msg( 'abusefilter-edit-tag-tag' )->parse()
+							),
+							'align' => 'top',
+							'id' => 'mw-abusefilter-hidden-tags'
+						]
+					);
 				$output .=
 					Xml::tags( 'div',
 						[ 'id' => 'mw-abusefilter-tag-parameters' ],
-						Xml::buildForm( $tagFields )
+						$hiddenTags
 					);
 				return $output;
 			case 'block':
@@ -641,80 +775,107 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$suggestedBlocks = self::normalizeBlocks( $suggestedBlocks );
 
 				$output = '';
-				$checkbox = Xml::checkLabel(
-					$this->msg( 'abusefilter-edit-action-block' )->text(),
-					'wpFilterActionBlock',
-					"mw-abusefilter-action-checkbox-block",
-					$set,
-					[ 'class' => 'mw-abusefilter-action-checkbox' ] + $cbReadOnlyAttrib );
-				$output .= Xml::tags( 'p', null, $checkbox );
+				$checkbox =
+					new OOUI\FieldLayout(
+						new OOUI\CheckboxInputWidget( [
+							'name' => 'wpFilterActionBlock',
+							'id' => 'mw-abusefilter-action-checkbox-block',
+							'selected' => $set,
+							'classes' => [ 'mw-abusefilter-action-checkbox' ]
+						] + $readOnlyAttrib
+						),
+						[
+							'label' => $this->msg( 'abusefilter-edit-action-block' )->text(),
+							'align' => 'inline'
+						]
+					);
+				$output .= $checkbox;
 				if ( $config->get( 'BlockAllowsUTEdit' ) === true ) {
 					$talkCheckbox =
-						Xml::checkLabel(
-							$this->msg( 'abusefilter-edit-action-blocktalk' )->text(),
-							'wpFilterBlockTalk',
-							'mw-abusefilter-action-checkbox-blocktalk',
-							isset( $blockTalk ) && $blockTalk == 'blocktalk',
-							[ 'class' => 'mw-abusefilter-action-checkbox' ] + $cbReadOnlyAttrib
+						new OOUI\FieldLayout(
+							new OOUI\CheckboxInputWidget( [
+								'name' => 'wpFilterBlockTalk',
+								'id' => 'mw-abusefilter-action-checkbox-blocktalk',
+								'selected' => isset( $blockTalk ) && $blockTalk == 'blocktalk',
+								'classes' => [ 'mw-abusefilter-action-checkbox' ]
+							] + $readOnlyAttrib
+							),
+							[
+								'label' => $this->msg( 'abusefilter-edit-action-blocktalk' )->text(),
+								'align' => 'inline'
+							]
 						);
 				}
 
-				$anonDuration = new XmlSelect(
-					'wpBlockAnonDuration',
-					false,
-					'default'
-				);
-				$anonDuration->addOptions( $suggestedBlocks );
+				$suggestedBlocks = Xml::listDropDownOptionsOoui( $suggestedBlocks );
 
-				$userDuration = new XmlSelect(
-					'wpBlockUserDuration',
-					false,
-					'default'
-				);
-				$userDuration->addOptions( $suggestedBlocks );
+				$anonDuration =
+					new OOUI\DropdownInputWidget( [
+						'name' => 'wpBlockAnonDuration',
+						'options' => $suggestedBlocks,
+						'value' => $defaultAnonDuration,
+						'disabled' => !$this->canEditFilter( $row )
+					] );
 
-				$anonDuration->setDefault( $defaultAnonDuration );
-				$userDuration->setDefault( $defaultUserDuration );
-
-				if ( !$this->canEditFilter( $row ) ) {
-					$anonDuration->setAttribute( 'disabled', 'disabled' );
-					$userDuration->setAttribute( 'disabled', 'disabled' );
-				}
+				$userDuration =
+					new OOUI\DropdownInputWidget( [
+						'name' => 'wpBlockUserDuration',
+						'options' => $suggestedBlocks,
+						'value' => $defaultUserDuration,
+						'disabled' => !$this->canEditFilter( $row )
+					] );
 
 				if ( $config->get( 'BlockAllowsUTEdit' ) === true ) {
 					$durations['abusefilter-edit-block-options'] = $talkCheckbox;
 				}
-				$durations['abusefilter-edit-block-anon-durations'] = $anonDuration->getHTML();
-				$durations['abusefilter-edit-block-user-durations'] = $userDuration->getHTML();
-
-				$rawOutput = Xml::buildForm( $durations );
+				$durations['abusefilter-edit-block-anon-durations'] =
+					new OOUI\FieldLayout(
+						$anonDuration,
+						[
+							'label' => $this->msg( 'abusefilter-edit-block-anon-durations' )->text()
+						]
+					);
+				$durations['abusefilter-edit-block-user-durations'] =
+					new OOUI\FieldLayout(
+						$userDuration,
+						[
+							'label' => $this->msg( 'abusefilter-edit-block-user-durations' )->text()
+						]
+					);
 
 				$output .= Xml::tags(
 						'div',
 						[ 'id' => 'mw-abusefilter-block-parameters' ],
-						$rawOutput
+						new OOUI\FieldsetLayout( [ 'items' => $durations ] )
 					);
 
 				return $output;
 
 			default:
 				// Give grep a chance to find the usages:
-				// abusefilter-edit-action-warn, abusefilter-edit-action-disallow
-				// abusefilter-edit-action-blockautopromote
-				// abusefilter-edit-action-degroup, abusefilter-edit-action-throttle
-				// abusefilter-edit-action-rangeblock, abusefilter-edit-action-tag
+				// abusefilter-edit-action-disallow,
+				// abusefilter-edit-action-blockautopromote,
+				// abusefilter-edit-action-degroup,
+				// abusefilter-edit-action-rangeblock,
 				$message = 'abusefilter-edit-action-' . $action;
 				$form_field = 'wpFilterAction' . ucfirst( $action );
 				$status = $set;
 
-				$thisAction = Xml::checkLabel(
-					$this->msg( $message )->text(),
-					$form_field,
-					"mw-abusefilter-action-checkbox-$action",
-					$status,
-					[ 'class' => 'mw-abusefilter-action-checkbox' ] + $cbReadOnlyAttrib
-				);
-				$thisAction = Xml::tags( 'p', null, $thisAction );
+				$thisAction =
+					new OOUI\FieldLayout(
+						new OOUI\CheckboxInputWidget( [
+							'name' => $form_field,
+							'id' => "mw-abusefilter-action-checkbox-$action",
+							'selected' => $status,
+							'classes' => [ 'mw-abusefilter-action-checkbox' ]
+						] + $readOnlyAttrib
+						),
+						[
+							'label' => $this->msg( $message )->text(),
+							'align' => 'inline'
+						]
+					);
+				$thisAction = $thisAction;
 				return $thisAction;
 		}
 	}
@@ -725,16 +886,18 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @return string
 	 */
 	public function getExistingSelector( $warnMsg, $readOnly = false ) {
-		$existingSelector = new XmlSelect(
-			'wpFilterWarnMessage',
-			'mw-abusefilter-warn-message-existing',
-			$warnMsg == 'abusefilter-warning' ? 'abusefilter-warning' : 'other'
-		);
+		$existingSelector =
+			new OOUI\DropdownInputWidget( [
+				'name' => 'wpFilterWarnMessage',
+				'id' => 'mw-abusefilter-warn-message-existing',
+				'value' => $warnMsg == 'abusefilter-warning' ? 'abusefilter-warning' : 'other',
+				'infusable' => true
+			] );
 
-		$existingSelector->addOption( 'abusefilter-warning' );
+		$options = [ 'abusefilter-warning' => 'abusefilter-warning' ];
 
 		if ( $readOnly ) {
-			$existingSelector->setAttribute( 'disabled', 'disabled' );
+			$existingSelector->setDisabled( true );
 		} else {
 			// Find other messages.
 			$dbr = wfGetDB( DB_REPLICA );
@@ -751,18 +914,29 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$lang = $this->getLanguage();
 			foreach ( $res as $row ) {
 				if ( $lang->lcfirst( $row->page_title ) == $lang->lcfirst( $warnMsg ) ) {
-					$existingSelector->setDefault( $lang->lcfirst( $warnMsg ) );
+					$existingSelector->setValue( $lang->lcfirst( $warnMsg ) );
 				}
 
 				if ( $row->page_title != 'Abusefilter-warning' ) {
-					$existingSelector->addOption( $lang->lcfirst( $row->page_title ) );
+					$options += [ $lang->lcfirst( $row->page_title ) => $lang->lcfirst( $row->page_title ) ];
 				}
 			}
 		}
 
-		$existingSelector->addOption( $this->msg( 'abusefilter-edit-warn-other' )->text(), 'other' );
+		$options += [ $this->msg( 'abusefilter-edit-warn-other' )->text() => 'other' ];
 
-		return $existingSelector->getHTML();
+		$options = Xml::listDropDownOptionsOoui( $options );
+		$existingSelector->setOptions( $options );
+
+		$existingSelector =
+			new OOUI\FieldLayout(
+				$existingSelector,
+				[
+					'label' => $this->msg( 'abusefilter-edit-warn-message' )->text()
+				]
+			);
+
+		return $existingSelector;
 	}
 
 	/**
@@ -931,17 +1105,17 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			$row->af_group = $request->getVal( 'wpFilterGroup', 'default' );
 
-			$row->af_deleted = $request->getBool( 'wpFilterDeleted' );
-			$row->af_enabled = $request->getBool( 'wpFilterEnabled' );
-			$row->af_hidden = $request->getBool( 'wpFilterHidden' );
-			$row->af_global = $request->getBool( 'wpFilterGlobal' )
+			$row->af_deleted = $request->getCheck( 'wpFilterDeleted' );
+			$row->af_enabled = $request->getCheck( 'wpFilterEnabled' );
+			$row->af_hidden = $request->getCheck( 'wpFilterHidden' );
+			$row->af_global = $request->getCheck( 'wpFilterGlobal' )
 				&& $this->getConfig()->get( 'AbuseFilterIsCentral' );
 
 			// Actions
 			$actions = [];
 			foreach ( array_filter( $this->getConfig()->get( 'AbuseFilterActions' ) ) as $action => $_ ) {
 				// Check if it's set
-				$enabled = $request->getBool( 'wpFilterAction' . ucfirst( $action ) );
+				$enabled = $request->getCheck( 'wpFilterAction' . ucfirst( $action ) );
 
 				if ( $enabled ) {
 					$parameters = [];
@@ -950,8 +1124,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						// We need to load the parameters
 						$throttleCount = $request->getIntOrNull( 'wpFilterThrottleCount' );
 						$throttlePeriod = $request->getIntOrNull( 'wpFilterThrottlePeriod' );
-						$throttleGroups = explode( "\n",
-							trim( $request->getText( 'wpFilterThrottleGroups' ) ) );
+						$throttleGroups = $request->getArray( 'wpFilterThrottleGroups' );
 
 						$parameters[0] = $this->mFilter;
 						$parameters[1] = "$throttleCount,$throttlePeriod";
@@ -970,7 +1143,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						$parameters[1] = $request->getVal( 'wpBlockAnonDuration' );
 						$parameters[2] = $request->getVal( 'wpBlockUserDuration' );
 					} elseif ( $action == 'tag' ) {
-						$parameters = explode( "\n", trim( $request->getText( 'wpFilterTags' ) ) );
+						$parameters = explode( ',', trim( $request->getText( 'wpFilterTags' ) ) );
 					}
 
 					$thisAction = [ 'action' => $action, 'parameters' => $parameters ];
