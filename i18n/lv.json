@@ -69,7 +69,7 @@
 	"abusefilter-log-linkoncontribs-text": "Ļaunprātīgo izmaiņu reģistrs šim lietotājam",
 	"abusefilter-log-hidden": "(slēpts ieraksts)",
 	"abusefilter-log-details-hidden": "Sīkāka informācija par šo ierakstu nav publiski pieejama.",
-	"abusefilter-log-hide-legend": "Slēpt reģistra ierakstu",
+	"abusefilter-log-hide-legend": "Slēpt žurnāla ierakstu",
 	"abusefilter-log-hide-id": "Reģistra ieraksta ID:",
 	"abusefilter-log-hide-hidden": "Liegt šim ierakstam publisku redzamību",
 	"abusefilter-log-hide-reason": "Iemesls:",
