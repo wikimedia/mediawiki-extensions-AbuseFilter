@@ -2352,7 +2352,7 @@ class AbuseFilter {
 			[ 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_pst' ] );
 		$vars->setLazyLoadVar( 'new_size', 'length', [ 'length-var' => 'new_wikitext' ] );
 		$vars->setLazyLoadVar( 'old_size', 'length', [ 'length-var' => 'old_wikitext' ] );
-		$vars->setLazyLoadVar( 'edit_delta', 'subtract',
+		$vars->setLazyLoadVar( 'edit_delta', 'subtract-int',
 			[ 'val1-var' => 'new_size', 'val2-var' => 'old_size' ] );
 
 		// Some more specific/useful details about the changes.
