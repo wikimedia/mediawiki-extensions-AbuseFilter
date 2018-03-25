@@ -188,13 +188,34 @@ class AFPData {
 	}
 
 	/**
+	 * @ToDo Should we also build a proper system to compare arrays with different types?
 	 * @param AFPData $d1
 	 * @param AFPData $d2
+	 * @param bool $strict whether to also check types
 	 * @return bool
 	 */
-	public static function equals( $d1, $d2 ) {
-		return $d1->type != self::DLIST && $d2->type != self::DLIST &&
-		$d1->toString() === $d2->toString();
+	public static function equals( $d1, $d2, $strict = false ) {
+		if ( $d1->type != self::DLIST && $d2->type != self::DLIST ) {
+			$typecheck = $d1->type == $d2->type || !$strict;
+			return $typecheck && $d1->toString() === $d2->toString();
+		} elseif ( $d1->type == self::DLIST && $d2->type == self::DLIST ) {
+			$data1 = $d1->data;
+			$data2 = $d2->data;
+			if ( count( $data1 ) !== count( $data2 ) ) {
+				return false;
+			}
+			$length = count( $data1 );
+			for ( $i = 0; $i < $length; $i++ ) {
+				$result = self::equals( $data1[$i], $data2[$i], $strict );
+				if ( $result === false ) {
+					return false;
+				}
+			}
+			return true;
+		} else {
+			// Trying to compare an array to something else
+			return false;
+		}
 	}
 
 	/**
@@ -304,10 +325,10 @@ class AFPData {
 			return new AFPData( self::DBOOL, !self::equals( $a, $b ) );
 		}
 		if ( $op == '===' ) {
-			return new AFPData( self::DBOOL, $a->type == $b->type && self::equals( $a, $b ) );
+			return new AFPData( self::DBOOL, self::equals( $a, $b, true ) );
 		}
 		if ( $op == '!==' ) {
-			return new AFPData( self::DBOOL, $a->type != $b->type || !self::equals( $a, $b ) );
+			return new AFPData( self::DBOOL, !self::equals( $a, $b, true ) );
 		}
 		$a = $a->toString();
 		$b = $b->toString();
