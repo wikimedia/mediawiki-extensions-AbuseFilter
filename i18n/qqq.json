@@ -411,6 +411,7 @@
 	"abusefilter-revert-search": "Used as label on [[Special:AbuseFilter/revert]]",
 	"abusefilter-revert-filter": "{{Identical|Filter}}",
 	"abusefilter-revert-preview-intro": "Refers to {{msg-mw|Abusefilter-revert-confirm}}.",
+	"abusefilter-revert-confirm-legend": "Form fieldset for [[Special:AbuseFilter/revert]] asking the user to confirm the revert. Refers to {{msg-mw|Abusefilter-revert-confirm}}.",
 	"abusefilter-revert-confirm": "This is also used in {{msg-mw|Abusefilter-revert-preview-intro}}. When changing this message, please also remember to change that one.\n{{Identical|Confirm}}",
 	"abusefilter-revert-success": "Parameters:\n* $1 - a filter ID\n* $2 - localized filter ID",
 	"abusefilter-revert-reason": "Parameters:\n* $1 is a filter ID\n* $2 is a reason",
