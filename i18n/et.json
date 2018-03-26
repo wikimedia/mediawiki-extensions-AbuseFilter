@@ -5,7 +5,8 @@
 			"Morel",
 			"Oop",
 			"Pikne",
-			"Matma Rex"
+			"Matma Rex",
+			"Cumbril"
 		]
 	},
 	"abusefilter-desc": "Rakendab muudatuste juures automaatset heuristikat.",
@@ -408,5 +409,7 @@
 	"abusefilter-import-intro": "Selle liidese abil saad teistest vikidest filtreid importida.\nAllikvikis klõpsa redigeerimisliidese asukohas \"{{int:abusefilter-edit-tools}}\" nuppu \"{{int:abusefilter-edit-export}}\".\nKopeeri ilmuva tekstikasti sisu, kleebi see sellesse tekstikasti ja seejärel klõpsa nuppu \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "Impordi andmed",
 	"abusefilter-group-default": "Tavaline",
-	"abusefilter-http-error": "Esines HTTP-tõrge: $1."
+	"abusefilter-http-error": "Esines HTTP-tõrge: $1.",
+	"tag-abusefilter-condition-limit": "Tingimuste ülempiir käes",
+	"tag-abusefilter-condition-limit-description": "Redaktsioonid või muud sündmused, mida polnud võimalik kõigi aktiivsete [[Eri:Väärtarvitusfilter|väärtarvitusfiltritega]] kontrollida ([[mw:Extension:AbuseFilter/Conditions|spikker]])."
 }

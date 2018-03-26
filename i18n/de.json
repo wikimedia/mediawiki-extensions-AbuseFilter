@@ -26,7 +26,8 @@
 			"Inkowik",
 			"Matma Rex",
 			"MGChecker",
-			"Daimona Eaytoy"
+			"Daimona Eaytoy",
+			"ToBeFree"
 		]
 	},
 	"abusefilter-desc": "Wendet Heuristiken automatisch auf Bearbeitungen an",
@@ -480,6 +481,7 @@
 	"apihelp-abusefiltercheckmatch-example-1": "Testet, ob die Letzte-Änderungen-Kennung 15 einem einfachen Filter entspricht.",
 	"apihelp-abusefilterchecksyntax-description": "Prüft die Syntax eines Missbrauchfilters.",
 	"apihelp-abusefilterchecksyntax-summary": "Überprüft die Syntax eines Missbrauchfilters.",
+	"apihelp-abusefilterchecksyntax-param-filter": "Der vollständige Filtertext, dessen Syntax überprüft werden soll.",
 	"apihelp-abusefilterchecksyntax-example-1": "Syntax eines gültigen Filters prüfen",
 	"apihelp-abusefilterchecksyntax-example-2": "Syntax eines ungültigen Filters prüfen",
 	"apihelp-abusefilterevalexpression-description": "Evaluiert einen Missbrauchsfilter-Ausdruck.",
