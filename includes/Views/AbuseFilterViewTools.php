@@ -33,7 +33,7 @@ class AbuseFilterViewTools extends AbuseFilterView {
 					'id' => 'mw-abusefilter-submitexpr'
 				] )
 			);
-		$eval .= Xml::element( 'p', [ 'id' => 'mw-abusefilter-expr-result' ], ' ' );
+		$eval .= Xml::element( 'pre', [ 'id' => 'mw-abusefilter-expr-result' ], ' ' );
 
 		$eval = Xml::fieldset( $this->msg( 'abusefilter-tools-expr' )->text(), $eval );
 		$out->addHTML( $eval );

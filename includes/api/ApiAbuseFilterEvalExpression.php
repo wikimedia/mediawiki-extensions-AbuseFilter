@@ -12,9 +12,18 @@ class ApiAbuseFilterEvalExpression extends ApiBase {
 
 		$params = $this->extractRequestParams();
 
-		$result = AbuseFilter::evaluateExpression( $params['expression'] );
-
-		$this->getResult()->addValue( null, $this->getModuleName(), [ 'result' => $result ] );
+		$status = AbuseFilter::evaluateExpression( $params['expression'] );
+		if ( !$status->isGood() ) {
+			$this->dieWithError( $status->getErrors()[0] );
+		} else {
+			$res = $status->getValue();
+			$res = $params['prettyprint'] ? AbuseFilter::formatVar( $res ) : $res;
+			$this->getResult()->addValue(
+				null,
+				$this->getModuleName(),
+				ApiResult::addMetadataToResultVars( [ 'result' => $res ] )
+			);
+		}
 	}
 
 	/**
@@ -26,6 +35,9 @@ class ApiAbuseFilterEvalExpression extends ApiBase {
 			'expression' => [
 				ApiBase::PARAM_REQUIRED => true,
 			],
+			'prettyprint' => [
+				ApiBase::PARAM_TYPE => 'boolean'
+			]
 		];
 	}
 
@@ -37,6 +49,8 @@ class ApiAbuseFilterEvalExpression extends ApiBase {
 		return [
 			'action=abusefilterevalexpression&expression=lcase("FOO")'
 				=> 'apihelp-abusefilterevalexpression-example-1',
+			'action=abusefilterevalexpression&expression=lcase("FOO")&prettyprint=1'
+				=> 'apihelp-abusefilterevalexpression-example-2',
 		];
 	}
 }

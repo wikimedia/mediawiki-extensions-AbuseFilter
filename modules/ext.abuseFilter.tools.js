@@ -20,21 +20,32 @@
 
 		api.post( {
 			action: 'abusefilterevalexpression',
-			expression: expr
+			expression: expr,
+			prettyprint: 1
 		} )
 			.fail( function showError( error, details ) {
+				// TODO This might use api.getErrorMessage()
+				var msg;
+				if ( error === 'http' ) {
+					msg = 'abusefilter-http-error';
+				} else if ( error === 'abusefilter-tools-syntax-error' ) {
+					msg = 'abusefilter-tools-syntax-error';
+				} else {
+					msg = 'unknown-error';
+				}
 				$.removeSpinner( 'abusefilter-expr' );
 				$( '#mw-abusefilter-expr-result' )
-					.text( mw.msg(
-						error === 'http' ? 'abusefilter-http-error' : 'unknown-error',
-						details.exception
-					) );
+					// Message keys are listed above
+					// eslint-disable-next-line mediawiki/msg-doc
+					.text( mw.msg( msg, details.exception ) )
+					.addClass( 'mw-abusefilter-tools-error' );
 			} )
 			.done( function showResult( data ) {
 				$.removeSpinner( 'abusefilter-expr' );
 
 				$( '#mw-abusefilter-expr-result' )
-					.text( data.abusefilterevalexpression.result );
+					.text( data.abusefilterevalexpression.result )
+					.removeClass( 'mw-abusefilter-tools-error' );
 			} );
 	}
 

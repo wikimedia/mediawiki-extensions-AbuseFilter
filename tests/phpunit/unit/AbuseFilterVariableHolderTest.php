@@ -250,15 +250,7 @@ class AbuseFilterVariableHolderTest extends MediaWikiUnitTestCase {
 		];
 		$vars = AbuseFilterVariableHolder::newFromArray( $pairs );
 
-		$this->assertSame( $pairs, $vars->exportAllVars( true ), 'native types' );
-
-		$stringified = [
-			'foo' => '42',
-			'bar' => "bar\nbaz\n",
-			'var' => '',
-			'boo' => ''
-		];
-		$this->assertSame( $stringified, $vars->exportAllVars( false ), 'stringified' );
+		$this->assertSame( $pairs, $vars->exportAllVars() );
 	}
 
 	/**
