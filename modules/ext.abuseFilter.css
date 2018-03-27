@@ -68,8 +68,8 @@ li.mw-abusefilter-changeslist-nomatch {
 }
 
 #mw-abusefilter-syntaxresult,
-li.mw-abusefilter-changeslist-nomatch,
-li.mw-abusefilter-changeslist-match {
+ul li.mw-abusefilter-changeslist-nomatch,
+ul li.mw-abusefilter-changeslist-match {
 	/* Do not consolidate these into a "background:" rule; it will override the background-image: settings in above rulesets */
 	background-repeat: no-repeat;
 	padding-left: 25px;
