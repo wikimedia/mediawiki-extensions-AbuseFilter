@@ -14,7 +14,8 @@
 			"Sayginer",
 			"Mavrikant",
 			"Ömer Berkay",
-			"Matma Rex"
+			"Matma Rex",
+			"Diyapazon"
 		]
 	},
 	"abusefilter-desc": "Değişikliklere otomatik bulucu yöntemler uygular",
@@ -58,6 +59,9 @@
 	"abusefilter-log-search-filter": "Süzgeç kimlikleri (dikey çizgilerle ayrılmıştır):",
 	"abusefilter-log-search-title": "Başlık:",
 	"abusefilter-log-search-wiki": "Viki:",
+	"abusefilter-log-search-impact-all": "Tüm eylemler",
+	"abusefilter-log-search-impact-saved": "Yalnızca kaydedilen değişiklikler",
+	"abusefilter-log-search-impact-not-saved": "Kaydedilmiş değişiklikler olmadan",
 	"abusefilter-log-search-submit": "Ara",
 	"abusefilter-log-entry": "$1: $2 bir suistimal filtresini tetikledi, $4 sayfasında \"$3\" eylemi yapılıyor.\nYapılan eylemler: $5;\nFiltre açıklaması: $6",
 	"abusefilter-log-detailedentry-meta": "$1: $2, tetiklediği süzgeç: $3, $5 sayfasında \"$4\" eylemini yaptı.\nYapılan eylemler: $6;\nSüzgeç açıklaması: $7 ($8)",

@@ -33,7 +33,8 @@
 			"逆襲的天邪鬼",
 			"Corainn",
 			"A2093064",
-			"Laundry Machine"
+			"Laundry Machine",
+			"Kly"
 		]
 	},
 	"abusefilter-desc": "套用自動啟發式演算法於編輯",
@@ -491,6 +492,15 @@
 	"apihelp-abusefilterunblockautopromote-example-1": "還原對[[User:Example]]的自動確認撤銷",
 	"apihelp-query+abusefilters-description": "顯示防濫用過濾器的詳細資料。",
 	"apihelp-query+abusefilters-summary": "顯示防濫用過濾器的詳細資料。",
+	"apihelp-query+abusefilters-param-startid": "起始列舉的篩選 ID。",
+	"apihelp-query+abusefilters-param-endid": "終止列舉的篩選 ID。",
+	"apihelp-query+abusefilters-param-limit": "篩選能列出的最大數量。",
 	"apihelp-query+abusefilters-example-1": "列出啟用的公開過濾器",
+	"apihelp-query+abuselog-param-start": "起始列舉的時間戳記。",
+	"apihelp-query+abuselog-param-end": "終止列舉的時間戳記。",
+	"apihelp-query+abuselog-param-limit": "項目能列出的最大數量。",
+	"apihelp-query+abuselog-param-prop": "要取得的屬性。",
+	"apihelp-query+abuselog-example-1": "顯示近期的日誌項目",
+	"apihelp-query+abuselog-example-2": "顯示 [[API]] 近期的日誌項目",
 	"apierror-abusefilter-badsyntax": "此過濾器含有無效語法。"
 }
