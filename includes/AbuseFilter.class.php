@@ -2,6 +2,7 @@
 
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Session\SessionManager;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\IDatabase;
 
@@ -846,12 +847,11 @@ class AbuseFilter {
 				$warnKey = 'abusefilter-warned-' . md5( $title->getPrefixedText() ) . '-' . $filter;
 
 				// Make sure the session is started prior to using it
-				if ( session_id() === '' ) {
-					wfSetupSession();
-				}
+				$session = SessionManager::getGlobalSession();
+				$session->persist();
 
-				if ( !isset( $_SESSION[$warnKey] ) || !$_SESSION[$warnKey] ) {
-					$_SESSION[$warnKey] = true;
+				if ( !isset( $session[$warnKey] ) || !$session[$warnKey] ) {
+					$session[$warnKey] = true;
 
 					// Threaten them a little bit
 					if ( !empty( $parameters[0] ) && strlen( $parameters[0] ) ) {
@@ -866,7 +866,7 @@ class AbuseFilter {
 					continue; // Don't do anything else.
 				} else {
 					// We already warned them
-					$_SESSION[$warnKey] = false;
+					$session[$warnKey] = false;
 				}
 
 				unset( $actions['warn'] );
