@@ -275,7 +275,7 @@
 	"abusefilter-edit-builder-group-vars": "משתנים",
 	"abusefilter-edit-builder-vars-accountname": "שם החשבון (בעת יצירת חשבון)",
 	"abusefilter-edit-builder-vars-timestamp": "זמן השינוי בפורמט יוניקס",
-	"abusefilter-edit-builder-vars-timestamp-expanded": "חותמת הזמן של היומן",
+	"abusefilter-edit-builder-vars-timestamp-expanded": "תאריך ושעה של היומן",
 	"abusefilter-edit-builder-vars-action": "פעולה",
 	"abusefilter-edit-builder-vars-addedlines": "שורות שנוספו בעריכה",
 	"abusefilter-edit-builder-vars-delta": "שינוי הגודל בעריכה",
