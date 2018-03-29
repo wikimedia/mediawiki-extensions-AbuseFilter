@@ -868,11 +868,12 @@ class SpecialAbuseLog extends SpecialPage {
 
 		if ( $globalIndex ) {
 			// Pull global filter description
-			$parsed_comments =
-				$this->getOutput()->parseInline( AbuseFilter::getGlobalFilterDescription( $globalIndex ) );
+			$escaped_comments = Sanitizer::escapeHtmlAllowEntities(
+				AbuseFilter::getGlobalFilterDescription( $globalIndex ) );
 			$filter_hidden = null;
 		} else {
-			$parsed_comments = $this->getOutput()->parseInline( $row->af_public_comments );
+			$escaped_comments = Sanitizer::escapeHtmlAllowEntities(
+				$row->af_public_comments );
 			$filter_hidden = $row->af_hidden;
 		}
 
@@ -929,7 +930,7 @@ class SpecialAbuseLog extends SpecialPage {
 				$row->afl_action,
 				$pageLink,
 				$actions_taken,
-				$parsed_comments,
+				$escaped_comments,
 				$lang->pipeList( $actionLinks )
 			)->params( $row->afl_user_text )->parse();
 		} else {
@@ -944,7 +945,7 @@ class SpecialAbuseLog extends SpecialPage {
 				$row->afl_action,
 				$pageLink,
 				$actions_taken,
-				$parsed_comments,
+				$escaped_comments,
 				$diffLink // Passing $7 to 'abusefilter-log-entry' will do nothing, as it's not used.
 			)->params( $row->afl_user_text )->parse();
 		}
