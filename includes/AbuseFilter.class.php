@@ -462,10 +462,11 @@ class AbuseFilter {
 	 * @param AbuseFilterVariableHolder $vars
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @param Title|null $title
+	 * @param string $mode 'execute' for edits, 'stash' or 'log' for cached matches
 	 *
 	 * @return bool[] Map of (integer filter ID => bool)
 	 */
-	public static function checkAllFilters( $vars, $group = 'default', Title $title = null ) {
+	public static function checkAllFilters( $vars, $group = 'default', Title $title = null, $mode ) {
 		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
 		global $wgAbuseFilterConditionLimit;
 
@@ -485,7 +486,7 @@ class AbuseFilter {
 		);
 
 		foreach ( $res as $row ) {
-			$filter_matched[$row->af_id] = self::checkFilter( $row, $vars, $title );
+			$filter_matched[$row->af_id] = self::checkFilter( $row, $vars, $title, '', $mode );
 		}
 
 		if ( $wgAbuseFilterCentralDB && !$wgAbuseFilterIsCentral ) {
@@ -523,7 +524,7 @@ class AbuseFilter {
 
 			foreach ( $res as $row ) {
 				$filter_matched['global-' . $row->af_id] =
-					self::checkFilter( $row, $vars, $title, 'global-' );
+					self::checkFilter( $row, $vars, $title, 'global-', $mode );
 			}
 		}
 
@@ -536,8 +537,10 @@ class AbuseFilter {
 			self::bufferTagsToSetByAction( [ $actionID => [ 'abusefilter-condition-limit' ] ] );
 		}
 
-		// Update statistics, and disable filters which are over-blocking.
-		self::recordStats( $filter_matched, $group );
+		if ( $mode === 'execute' ) {
+			// Update statistics, and disable filters which are over-blocking.
+			self::recordStats( $filter_matched, $group );
+		}
 
 		return $filter_matched;
 	}
@@ -548,18 +551,17 @@ class AbuseFilter {
 	 * @param AbuseFilterVariableHolder $vars
 	 * @param Title|null $title
 	 * @param string $prefix
+	 * @param string $mode 'execute' for edits, 'stash' or 'log' for cached matches
 	 * @return bool
 	 */
-	public static function checkFilter( $row, $vars, Title $title = null, $prefix = '' ) {
+	public static function checkFilter( $row, $vars, Title $title = null, $prefix = '', $mode ) {
 		global $wgAbuseFilterProfile, $wgAbuseFilterRuntimeProfile, $wgAbuseFilterSlowFilterRuntimeLimit;
 
 		$filterID = $prefix . $row->af_id;
 
-		$startConds = $startTime = null;
-		if ( $wgAbuseFilterProfile || $wgAbuseFilterRuntimeProfile ) {
-			$startConds = self::$condCount;
-			$startTime = microtime( true );
-		}
+		// Record data to be used if profiling is enabled and mode is 'execute'
+		$startConds = self::$condCount;
+		$startTime = microtime( true );
 
 		// Store the row somewhere convenient
 		self::$filterCache[$filterID] = $row;
@@ -583,12 +585,13 @@ class AbuseFilter {
 		$timeTaken = microtime( true ) - $startTime;
 		$condsUsed = self::$condCount - $startConds;
 
-		if ( $wgAbuseFilterProfile ) {
+		if ( $wgAbuseFilterProfile && $mode === 'execute' ) {
 			self::recordProfilingResult( $row->af_id, $timeTaken, $condsUsed );
 		}
 
 		$runtime = $timeTaken * 1000;
-		if ( $wgAbuseFilterRuntimeProfile && $runtime > $wgAbuseFilterSlowFilterRuntimeLimit ) {
+		if ( $mode === 'execute' && $wgAbuseFilterRuntimeProfile &&
+			$runtime > $wgAbuseFilterSlowFilterRuntimeLimit ) {
 			self::recordSlowFilter( $filterID, $runtime, $condsUsed, $result, $title );
 		}
 
@@ -1040,7 +1043,7 @@ class AbuseFilter {
 				$statsd->increment( 'abusefilter.check-stash.hit' );
 			}
 		} else {
-			$filter_matched = self::checkAllFilters( $vars, $group, $title );
+			$filter_matched = self::checkAllFilters( $vars, $group, $title, $mode );
 			if ( $isForEdit && $mode !== 'stash' ) {
 				$logger->info( __METHOD__ . ": cache miss for '$title' (key $stashKey)." );
 				$statsd->increment( 'abusefilter.check-stash.miss' );
