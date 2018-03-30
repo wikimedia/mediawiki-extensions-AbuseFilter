@@ -1,8 +1,8 @@
 <?php
 
 class AbuseFilterViewRevert extends AbuseFilterView {
-	public $origPeriodStart, $origPeriodEnd, $mPeriodStart, $mPeriodEnd,
-		$mReason;
+	public $origPeriodStart, $origPeriodEnd, $mPeriodStart, $mPeriodEnd;
+	public $mReason;
 
 	function show() {
 		$lang = $this->getLanguage();

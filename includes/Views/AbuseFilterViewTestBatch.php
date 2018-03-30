@@ -4,8 +4,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	// Hard-coded for now.
 	protected static $mChangeLimit = 100;
 
-	public $mShowNegative, $mTestPeriodStart, $mTestPeriodEnd, $mTestPage,
-		$mTestUser;
+	public $mShowNegative, $mTestPeriodStart, $mTestPeriodEnd, $mTestPage;
+	public $mTestUser;
 
 	function show() {
 		$out = $this->getOutput();

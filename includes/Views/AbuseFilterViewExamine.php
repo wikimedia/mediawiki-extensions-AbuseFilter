@@ -4,8 +4,8 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	public static $examineType = null;
 	public static $examineId = null;
 
-	public $mCounter, $mSearchUser, $mSearchPeriodStart, $mSearchPeriodEnd,
-		$mTestFilter;
+	public $mCounter, $mSearchUser, $mSearchPeriodStart, $mSearchPeriodEnd;
+	public $mTestFilter;
 
 	function show() {
 		$out = $this->getOutput();
