@@ -5,6 +5,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$mReason;
 
 	function show() {
+		$lang = $this->getLanguage();
 		$filter = $this->mPage->mFilter;
 
 		$user = $this->getUser();
@@ -23,29 +24,47 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$out->addWikiMsg( 'abusefilter-revert-intro', Message::numParam( $filter ) );
 		$out->setPageTitle( $this->msg( 'abusefilter-revert-title' )->numParams( $filter ) );
 
-		// First, the search form.
-		$searchFields = [];
-		$searchFields['abusefilter-revert-filter'] =
-			Xml::element( 'strong', null, $filter );
-		$searchFields['abusefilter-revert-periodstart'] =
-			Xml::input( 'wpPeriodStart', 45, $this->origPeriodStart );
-		$searchFields['abusefilter-revert-periodend'] =
-			Xml::input( 'wpPeriodEnd', 45, $this->origPeriodEnd );
-		$searchForm = Xml::buildForm( $searchFields, 'abusefilter-revert-search' );
-		$searchForm .= "\n" . Html::hidden( 'submit', 1 );
-		$searchForm =
-			Xml::tags(
-				'form',
-				[
-					'action' => $this->getTitle( "revert/$filter" )->getLocalURL(),
-					'method' => 'post'
-				],
-				$searchForm
+		// First, the search form. Limit dates to avoid huge queries
+		$RCMaxAge = $this->getConfig()->get( 'RCMaxAge' );
+		$min = wfTimestamp( TS_ISO_8601, time() - $RCMaxAge );
+		$max = wfTimestampNow();
+		$filterLink =
+			$this->linkRenderer->makeLink(
+				SpecialPage::getTitleFor( 'AbuseFilter', intval( $filter ) ),
+				$lang->formatNum( intval( $filter ) )
 			);
-		$searchForm =
-			Xml::fieldset( $this->msg( 'abusefilter-revert-search-legend' )->text(), $searchForm );
+		$searchFields = [];
+		$searchFields['filterid'] = [
+			'type' => 'info',
+			'default' => $filterLink,
+			'raw' => true,
+			'label-message' => 'abusefilter-revert-filter'
+		];
+		$searchFields['periodstart'] = [
+			'type' => 'datetime',
+			'name' => 'wpPeriodStart',
+			'default' => $this->origPeriodStart,
+			'label-message' => 'abusefilter-revert-periodstart',
+			'min' => $min,
+			'max' => $max
+		];
+		$searchFields['periodend'] = [
+			'type' => 'datetime',
+			'name' => 'wpPeriodEnd',
+			'default' => $this->origPeriodEnd,
+			'label-message' => 'abusefilter-revert-periodend',
+			'min' => $min,
+			'max' => $max
+		];
 
-		$out->addHTML( $searchForm );
+		HTMLForm::factory( 'ooui', $searchFields, $this->getContext() )
+			->addHiddenField( 'submit', 1 )
+			->setAction( $this->getTitle( "revert/$filter" )->getLocalURL() )
+			->setWrapperLegendMsg( 'abusefilter-revert-search-legend' )
+			->setSubmitTextMsg( 'abusefilter-revert-search' )
+			->setMethod( 'post' )
+			->prepareForm()
+			->displayForm( false );
 
 		if ( $this->mSubmit ) {
 			// Add a summary of everything that will be reversed.
@@ -53,7 +72,6 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 			// Look up all of them.
 			$results = $this->doLookup();
-			$lang = $this->getLanguage();
 			$list = [];
 
 			foreach ( $results as $result ) {
@@ -81,26 +99,41 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			$out->addHTML( Xml::tags( 'ul', null, implode( "\n", $list ) ) );
 
 			// Add a button down the bottom.
-			$confirmForm =
-				Html::hidden( 'editToken', $user->getEditToken( "abusefilter-revert-$filter" ) ) .
-				Html::hidden( 'title', $this->getTitle( "revert/$filter" )->getPrefixedDBkey() ) .
-				Html::hidden( 'wpPeriodStart', $this->origPeriodStart ) .
-				Html::hidden( 'wpPeriodEnd', $this->origPeriodEnd ) .
-				Xml::inputLabel(
-					$this->msg( 'abusefilter-revert-reasonfield' )->text(),
-					'wpReason', 'wpReason', 45
-				) .
-				"\n" .
-				Xml::submitButton( $this->msg( 'abusefilter-revert-confirm' )->text() );
-			$confirmForm = Xml::tags(
-				'form',
-				[
-					'action' => $this->getTitle( "revert/$filter" )->getLocalURL(),
-					'method' => 'post'
-				],
-				$confirmForm
-			);
-			$out->addHTML( $confirmForm );
+			$confirmForm = [];
+			$confirmForm['edittoken'] = [
+				'type' => 'hidden',
+				'name' => 'editToken',
+				'default' => $user->getEditToken( "abusefilter-revert-$filter" )
+			];
+			$confirmForm['title'] = [
+				'type' => 'hidden',
+				'name' => 'title',
+				'default' => $this->getTitle( "revert/$filter" )->getPrefixedDBkey()
+			];
+			$confirmForm['wpPeriodStart'] = [
+				'type' => 'hidden',
+				'name' => 'wpPeriodStart',
+				'default' => $this->origPeriodStart
+			];
+			$confirmForm['wpPeriodEnd'] = [
+				'type' => 'hidden',
+				'name' => 'wpPeriodEnd',
+				'default' => $this->origPeriodEnd
+			];
+			$confirmForm['reason'] = [
+				'type' => 'text',
+				'label-message' => 'abusefilter-revert-reasonfield',
+				'name' => 'wpReason',
+				'id' => 'wpReason',
+			];
+			HTMLForm::factory( 'ooui', $confirmForm, $this->getContext() )
+				->setAction( $this->getTitle( "revert/$filter" )->getLocalURL() )
+				->setWrapperLegendMsg( 'abusefilter-revert-confirm-legend' )
+				->setSubmitTextMsg( 'abusefilter-revert-confirm' )
+				->setMethod( 'post' )
+				->prepareForm()
+				->displayForm( false );
+
 		}
 	}
 
@@ -175,10 +208,13 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				$this->revertAction( $action, $result );
 			}
 		}
-		$this->getOutput()->addWikiMsg(
-			'abusefilter-revert-success',
-			$filter,
-			$this->getLanguage()->formatNum( $filter )
+		$this->getOutput()->wrapWikiMsg(
+			'<p class="success">$1</p>',
+			[
+				'abusefilter-revert-success',
+				$filter,
+				$this->getLanguage()->formatNum( $filter )
+			]
 		);
 
 		return true;
