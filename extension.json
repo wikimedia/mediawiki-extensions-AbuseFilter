@@ -85,11 +85,11 @@
 		"AbuseFilterAliases": "AbuseFilter.alias.php"
 	},
 	"AutoloadClasses": {
-		"AbuseFilter": "includes/AbuseFilter.class.php",
+		"AbuseFilter": "includes/AbuseFilter.php",
 		"AbuseFilterCachingParser" : "includes/parser/AbuseFilterCachingParser.php",
 		"AbuseFilterParser": "includes/parser/AbuseFilterParser.php",
 		"AbuseFilterTokenizer": "includes/parser/AbuseFilterTokenizer.php",
-		"AbuseFilterHooks": "includes/AbuseFilter.hooks.php",
+		"AbuseFilterHooks": "includes/AbuseFilterHooks.php",
 		"AbuseFilterPreAuthenticationProvider": "includes/AbuseFilterPreAuthenticationProvider.php",
 		"SpecialAbuseLog": "includes/special/SpecialAbuseLog.php",
 		"AbuseLogPager": "includes/pagers/AbuseLogPager.php",
