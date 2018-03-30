@@ -194,7 +194,6 @@
 	"abusefilter-edit-new": "Field value in case an edited filter is new.",
 	"abusefilter-edit-save": "Submit button text to save a filter.",
 	"abusefilter-edit-id": "Field label for filter identifier.\n{{Identical|Filter ID}}",
-	"abusefilter-edit-switch-editor": "Button to switch between classic editor and Ace editor",
 	"abusefilter-edit-description": "Field label for publicly viewable abuse filter description.",
 	"abusefilter-edit-group": "\"Filter group\" a filter is in. Filters can be grouped, and only one group is run per action. The default group, \"default\", will be used in 99% of cases.",
 	"abusefilter-edit-flags": "Field label for abuse filter flags (checkboxes for \"hidden\", \"enabled\" and \"deleted\").\n{{Identical|Flag}}",

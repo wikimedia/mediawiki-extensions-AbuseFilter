@@ -162,7 +162,6 @@
 	"abusefilter-edit-new": "New filter",
 	"abusefilter-edit-save": "Save filter",
 	"abusefilter-edit-id": "Filter ID:",
-	"abusefilter-edit-switch-editor": "Switch editor",
 	"abusefilter-edit-description": "Description:\n:''(publicly viewable)''",
 	"abusefilter-edit-group": "Filter group:",
 	"abusefilter-edit-flags": "Flags:",

@@ -20,7 +20,6 @@ module.exports = function ( grunt ) {
 			all: [
 				'**/*.js',
 				'!node_modules/**',
-				'!modules/mode-abusefilter.js',
 				'!vendor/**'
 			]
 		},
@@ -28,7 +27,6 @@ module.exports = function ( grunt ) {
 			all: [
 				'**/*.css',
 				'!node_modules/**',
-				'!modules/mode-abusefilter.js',
 				'!vendor/**'
 			]
 		}
