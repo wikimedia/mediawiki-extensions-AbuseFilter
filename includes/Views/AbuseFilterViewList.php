@@ -17,10 +17,12 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 		// New filter button
 		if ( $this->canEdit() ) {
-			$title = $this->getTitle( 'new' );
-			$link = $this->linkRenderer->makeLink( $title, $this->msg( 'abusefilter-new' )->text() );
-			$links = Xml::tags( 'p', null, $link ) . "\n";
-			$out->addHTML( $links );
+			$out->enableOOUI();
+			$link = new OOUI\ButtonWidget( [
+				'label' => $this->msg( 'abusefilter-new' )->text(),
+				'href' => $this->getTitle( 'new' )->getFullURL(),
+			] );
+			$out->addHTML( $link );
 		}
 
 		// Options.
@@ -59,105 +61,87 @@ class AbuseFilterViewList extends AbuseFilterView {
 	function showList( $conds = [ 'af_deleted' => 0 ], $optarray = [] ) {
 		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
 
-		$output = '';
-		$output .= Xml::element( 'h2', null,
-			$this->msg( 'abusefilter-list' )->parse() );
-
-		$pager = new AbuseFilterPager( $this, $conds, $this->linkRenderer );
+		$this->getOutput()->addHTML(
+			Xml::element( 'h2', null, $this->msg( 'abusefilter-list' )->parse() )
+		);
 
 		$deleted = $optarray['deleted'];
 		$hidedisabled = $optarray['hidedisabled'];
 		$scope = $optarray['scope'];
 
+		if ( isset( $wgAbuseFilterCentralDB ) && !$wgAbuseFilterIsCentral && $scope == 'global' ) {
+			$pager = new GlobalAbuseFilterPager( $this, $conds, $this->linkRenderer );
+		} else {
+			$pager = new AbuseFilterPager( $this, $conds, $this->linkRenderer );
+		}
+
 		# Options form
-		$fields = [];
-		$fields['abusefilter-list-options-deleted'] =
-			Xml::radioLabel(
-				$this->msg( 'abusefilter-list-options-deleted-show' )->text(),
-				'deletedfilters',
-				'show',
-				'mw-abusefilter-deletedfilters-show',
-				$deleted == 'show'
-			) .
-			Xml::radioLabel(
-				$this->msg( 'abusefilter-list-options-deleted-hide' )->text(),
-				'deletedfilters',
-				'hide',
-				'mw-abusefilter-deletedfilters-hide',
-				$deleted == 'hide'
-			) .
-			Xml::radioLabel(
-				$this->msg( 'abusefilter-list-options-deleted-only' )->text(),
-				'deletedfilters',
-				'only',
-				'mw-abusefilter-deletedfilters-only',
-				$deleted == 'only'
-			);
+		$formDescriptor = [];
+		$formDescriptor['deletedfilters'] = [
+			'name' => 'deletedfilters',
+			'type' => 'radio',
+			'flatlist' => true,
+			'label-message' => 'abusefilter-list-options-deleted',
+			'options-messages' => [
+				'abusefilter-list-options-deleted-show' => 'show',
+				'abusefilter-list-options-deleted-hide' => 'hide',
+				'abusefilter-list-options-deleted-only' => 'only',
+			],
+			'default' => $deleted,
+		];
 
 		if ( isset( $wgAbuseFilterCentralDB ) ) {
-			$fields['abusefilter-list-options-scope'] =
-				Xml::radioLabel(
-					$this->msg( 'abusefilter-list-options-scope-local' )->text(),
-					'rulescope',
-					'local',
-					'mw-abusefilter-rulescope-local',
-					$scope == 'local'
-				) .
-				Xml::radioLabel(
-					$this->msg( 'abusefilter-list-options-scope-global' )->text(),
-					'rulescope',
-					'global',
-					'mw-abusefilter-rulescope-global',
-					$scope == 'global'
-				);
-
+			$optionsMsg = [
+				'abusefilter-list-options-scope-local' => 'local',
+				'abusefilter-list-options-scope-global' => 'global',
+			];
 			if ( $wgAbuseFilterIsCentral ) {
 				// For central wiki: add third scope option
-				$fields['abusefilter-list-options-scope'] .=
-					Xml::radioLabel(
-						$this->msg( 'abusefilter-list-options-scope-all' )->text(),
-						'rulescope',
-						'all',
-						'mw-abusefilter-rulescope-all',
-						$scope == 'all'
-				);
+				$optionsMsg['abusefilter-list-options-scope-all'] = 'all';
 			}
+			$formDescriptor['rulescope'] = [
+				'name' => 'rulescope',
+				'type' => 'radio',
+				'flatlist' => true,
+				'label-message' => 'abusefilter-list-options-scope',
+				'options-messages' => $optionsMsg,
+				'default' => $scope,
+			];
 		}
 
-		$fields['abusefilter-list-options-disabled'] =
-			Xml::checkLabel(
-				$this->msg( 'abusefilter-list-options-hidedisabled' )->text(),
-				'hidedisabled',
-				'mw-abusefilter-disabledfilters-hide',
-				$hidedisabled
-			);
-		$fields['abusefilter-list-limit'] = $pager->getLimitSelect();
+		$formDescriptor['info'] = [
+			'type' => 'info',
+			'default' => $this->msg( 'abusefilter-list-options-disabled' )->parse(),
+		];
 
-		$options = Xml::buildForm( $fields, 'abusefilter-list-options-submit' );
-		$options .= Html::hidden( 'title', $this->getTitle()->getPrefixedDBkey() );
-		$options = Xml::tags( 'form',
-			[
-				'method' => 'get',
-				'action' => $this->getTitle()->getFullURL()
-			],
-			$options
-		);
-		$options = Xml::fieldset( $this->msg( 'abusefilter-list-options' )->text(), $options );
+		$formDescriptor['hidedisabled'] = [
+			'name' => 'hidedisabled',
+			'type' => 'check',
+			'label-message' => 'abusefilter-list-options-hidedisabled',
+			'selected' => $hidedisabled,
+		];
 
-		$output .= $options;
+		$formDescriptor['limit'] = [
+			'name' => 'limit',
+			'type' => 'select',
+			'label-message' => 'abusefilter-list-limit',
+			'options' => $pager->getLimitSelectList(),
+			'default' => $pager->getLimit(),
+		];
 
-		if ( isset( $wgAbuseFilterCentralDB ) && !$wgAbuseFilterIsCentral && $scope == 'global' ) {
-			$globalPager = new GlobalAbuseFilterPager( $this, $conds, $this->linkRenderer );
-			$output .=
-				$globalPager->getNavigationBar() .
-				$globalPager->getBody() .
-				$globalPager->getNavigationBar();
-		} else {
-			$output .=
-				$pager->getNavigationBar() .
-				$pager->getBody() .
-				$pager->getNavigationBar();
-		}
+		HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() )
+			->addHiddenField( 'title', $this->getTitle()->getPrefixedDBkey() )
+			->setAction( $this->getTitle()->getFullURL() )
+			->setWrapperLegendMsg( 'abusefilter-list-options' )
+			->setSubmitTextMsg( 'abusefilter-list-options-submit' )
+			->setMethod( 'get' )
+			->prepareForm()
+			->displayForm( false );
+
+		$output =
+			$pager->getNavigationBar() .
+			$pager->getBody() .
+			$pager->getNavigationBar();
 
 		$this->getOutput()->addHTML( $output );
 	}
