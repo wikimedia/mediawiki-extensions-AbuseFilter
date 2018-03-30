@@ -4,13 +4,21 @@
  * @author John Du Hart
  * @author Marius Hoch <hoo@online.de>
  */
+/* global ace */
 
 ( function ( mw, $ ) {
 	'use strict';
 
-	// Filter textarea
+	// Filter editor for JS and jQuery handling
 	// @var {jQuery}
-	var $filterBox;
+	var $filterBox,
+		// Filter editor for Ace specific functions
+		filterEditor,
+		// Hidden textarea for submitting form
+		// @var {jQuery}
+		$plainTextBox,
+		// Bool to determine what editor to use
+		useAce = false;
 
 	/**
 	 * Returns the currently selected warning message
@@ -46,11 +54,53 @@
 	}
 
 	/**
+	 * Converts index (used in textareas) in position {row, column} for ace
+	 *
+	 * @author danyaPostfactum (https://github.com/ajaxorg/ace/issues/1162)
+	 *
+	 * @param {string} index Part of data returned from the AJAX request
+	 * @return {Object} row and column
+	 */
+	function indexToPosition( index ) {
+		var lines = filterEditor.session.getDocument().$lines,
+			newLineChar = filterEditor.session.doc.getNewLineCharacter(),
+			currentIndex = 0,
+			row, length;
+		for ( row = 0; row < lines.length; row++ ) {
+			length = filterEditor.session.getLine( row ).length;
+			if ( currentIndex + length >= index ) {
+				return {
+					row: row,
+					column: index - currentIndex
+				};
+			}
+			currentIndex += length + newLineChar.length;
+		}
+	}
+
+	/**
+	 * Switch between Ace Editor and classic textarea
+	 */
+	function switchEditor() {
+		if ( useAce ) {
+			useAce = false;
+			$filterBox.hide();
+			$plainTextBox.show();
+		} else {
+			useAce = true;
+			filterEditor.session.setValue( $plainTextBox.val() );
+			$filterBox.show();
+			$plainTextBox.hide();
+		}
+	}
+
+	/**
 	 * Takes the data retrieved in doSyntaxCheck and processes it
 	 *
 	 * @param {Object} data Data returned from the AJAX request
 	 */
 	function processSyntaxResult( data ) {
+		var position;
 		data = data.abusefilterchecksyntax;
 
 		if ( data.status === 'ok' ) {
@@ -68,9 +118,16 @@
 				false
 			);
 
-			$filterBox
-				.focus()
-				.textSelection( 'setSelection', { start: data.character } );
+			if ( useAce ) {
+				filterEditor.focus();
+				position = indexToPosition( data.character );
+				filterEditor.navigateTo( position.row, position.column );
+				filterEditor.scrollToRow( position.row );
+			} else {
+				$plainTextBox
+					.focus()
+					.textSelection( 'setSelection', { start: data.character } );
+			}
 		}
 	}
 
@@ -96,7 +153,7 @@
 	 * @param {jQuery.Event} e
 	 */
 	function doSyntaxCheck() {
-		var filter = $filterBox.val(),
+		var filter = $plainTextBox.val(),
 			api = new mw.Api();
 
 		$( this )
@@ -122,9 +179,14 @@
 			return;
 		}
 
-		$filterBox.textSelection(
-			'encapsulateSelection', { pre: $filterBuilder.val() + ' ' }
-		);
+		if ( useAce ) {
+			filterEditor.insert( $filterBuilder.val() + ' ' );
+			$plainTextBox.val( filterEditor.getSession().getValue() );
+		} else {
+			$plainTextBox.textSelection(
+				'encapsulateSelection', { pre: $filterBuilder.val() + ' ' }
+			);
+		}
 		$filterBuilder.prop( 'selectedIndex', 0 );
 	}
 
@@ -159,7 +221,10 @@
 			} )
 			.done( function ( data ) {
 				if ( data.query.abusefilters[ 0 ] !== undefined ) {
-					$filterBox.val( data.query.abusefilters[ 0 ].pattern );
+					if ( useAce ) {
+						filterEditor.setValue( data.query.abusefilters[ 0 ].pattern );
+					}
+					$plainTextBox.val( data.query.abusefilters[ 0 ].pattern );
 				}
 			} );
 	}
@@ -281,10 +346,58 @@
 
 	// On ready initialization
 	$( document ).ready( function () {
-		var $exportBox = $( '#mw-abusefilter-export' );
-		$filterBox = $( '#' + mw.config.get( 'abuseFilterBoxName' ) );
+		var basePath, readOnly,
+			$exportBox = $( '#mw-abusefilter-export' );
+
+		$plainTextBox = $( '#' + mw.config.get( 'abuseFilterBoxName' ) );
+
+		if ( $( '#wpAceFilterEditor' ).length ) {
+			// CodeEditor is installed.
+			mw.loader.using( [ 'ext.abuseFilter.ace' ] ).then( function () {
+				useAce = true;
+				$filterBox = $( '#wpAceFilterEditor' );
+
+				filterEditor = ace.edit( 'wpAceFilterEditor' );
+				filterEditor.session.setMode( 'ace/mode/abusefilter' );
+
+				// Ace setup from codeEditor extension
+				basePath = mw.config.get( 'wgExtensionAssetsPath', '' );
+				if ( basePath.slice( 0, 2 ) === '//' ) {
+					// ACE uses web workers, which have importScripts, which don't like relative links.
+					// This is a problem only when the assets are on another server, so this rewrite should suffice
+					// Protocol relative
+					basePath = window.location.protocol + basePath;
+				}
+				ace.config.set( 'basePath', basePath + '/CodeEditor/modules/ace' );
+
+				// Settings for Ace editor box
+				readOnly = mw.config.get( 'aceConfig' ).aceReadOnly;
+
+				filterEditor.setTheme( 'ace/theme/textmate' );
+				filterEditor.session.setOption( 'useWorker', false );
+				filterEditor.setReadOnly( readOnly );
+				filterEditor.$blockScrolling = Infinity;
+
+				// Copy editor in dummy textarea
+				$plainTextBox.val( filterEditor.getSession().getValue() );
+
+				// Hide the syntax ok message when the text changes and sync dummy box
+				$filterBox.keyup( function () {
+					var $el = $( '#mw-abusefilter-syntaxresult' );
+
+					if ( $el.data( 'syntaxOk' ) ) {
+						$el.hide();
+					}
+
+					$plainTextBox.val( filterEditor.getSession().getValue() );
+				} );
+
+				$( '#mw-abusefilter-switcheditor' ).click( switchEditor );
+			} );
+		}
+
 		// Hide the syntax ok message when the text changes
-		$filterBox.keyup( function () {
+		$plainTextBox.keyup( function () {
 			var $el = $( '#mw-abusefilter-syntaxresult' );
 
 			if ( $el.data( 'syntaxOk' ) ) {

@@ -179,6 +179,10 @@
 				"jquery.spinner",
 				"mediawiki.api"
 			]
+		},
+		"ext.abuseFilter.ace": {
+			"scripts": "mode-abusefilter.js",
+			"dependencies": "ext.codeEditor.ace"
 		}
 	},
 	"ResourceFileModulePaths": {

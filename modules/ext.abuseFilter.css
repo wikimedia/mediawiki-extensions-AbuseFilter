@@ -67,6 +67,13 @@ li.mw-abusefilter-changeslist-nomatch {
 	background-image: url( red_x.png );
 }
 
+div.mw-abusefilter-editor {
+	max-width: 75em;
+	height: 30em;
+	line-height: 1.5em;
+	border: 1px solid #a2a9b1;
+}
+
 #mw-abusefilter-syntaxresult,
 li.mw-abusefilter-changeslist-nomatch,
 li.mw-abusefilter-changeslist-match {
