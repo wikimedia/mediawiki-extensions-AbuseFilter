@@ -395,5 +395,7 @@
 	"abusefilter-diff-next": "Nyare endring",
 	"abusefilter-import-intro": "Du kan nytta dette grensesnittet til å importera filter frå andre wikiar.\nPå kjeldewikien trykkjer du på «{{int:abusefilter-edit-export}}» under «{{int:abusefilter-edit-tools}}» på redigeringsgrensesnittet.\nKopier frå tekstboksen som dukkar opp og lim det inn i tekstboksen her. Trykk so på «{{int:abusefilter-import-submit}}».",
 	"abusefilter-import-submit": "Importer data",
-	"abusefilter-group-default": "Standard"
+	"abusefilter-group-default": "Standard",
+	"tag-abusefilter-condition-limit": "vilkårsgrensa nådd",
+	"tag-abusefilter-condition-limit-description": "Endringar eller andre hendingar som ikkje kunne granskast av alle verksame [[Special:AbuseFilter|endringsfilter]] ([[mw:Extension:AbuseFilter/Conditions|hjelp]])."
 }

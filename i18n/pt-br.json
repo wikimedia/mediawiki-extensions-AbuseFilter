@@ -231,7 +231,7 @@
 	"abusefilter-edit-export": "Exportar este filtro para outra wiki",
 	"abusefilter-edit-syntaxok": "Nenhum erro de sintaxe foi detectado.",
 	"abusefilter-edit-syntaxerr": "Erro de sintaxe detectado: $1",
-	"abusefilter-edit-bad-tags": "Uma ou mais das etiquetas que você especificou não são válidas.\nEtiquetas devem ser curtas, não devem conter caracteres especiais e não devem ser reservadas por outros softwares. Tente escolher um novo nome de etiqueta",
+	"abusefilter-edit-bad-tags": "Uma ou mais das etiquetas que especificou não são válidas.\nAs etiquetas devem ser curtas, não podem conter caracteres especiais e não podem estar reservadas por outro programa. Tente escolher um novo nome de etiqueta.",
 	"abusefilter-edit-notallowed": "Você não tem permissão para criar ou editar filtros de abuso",
 	"abusefilter-edit-notallowed-global": "Você não está autorizada a criar ou editar filtros de abuso globais",
 	"abusefilter-edit-notallowed-global-custom-msg": "Mensagens de advertência personalizados não são suportadas por filtros globais",

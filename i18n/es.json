@@ -194,7 +194,7 @@
 	"abusefilter-edit-oldwarning": "<strong>Estás editando una versión antigua de este filtro.\nLas estadísticas citadas son para la versión más reciente del filtro.\nSi grabas tus cambios, sobrescribirás todos los cambios realizados desde la revisión que estás editando.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Volver al historial de este filtro]].",
 	"abusefilter-edit-status-label": "Estadísticas:",
 	"abusefilter-edit-status": "De {{PLURAL:$1|la última acción|las últimas $1 acciones}}, este filtro ha coincidido con $2 ($3 %).",
-	"abusefilter-edit-status-profile": "De {{PLURAL:$1|la última acción|las últimas acciones}}, este filtro ha coincidido con $2 ($3%).\nEn promedio, su tiempo de ejecución es de $4 ms, y consume $5 {{PLURAL:$5|condición|condiciones}} del límite de condiciones.",
+	"abusefilter-edit-status-profile": "De {{PLURAL:$1|la última acción|las últimas $1 acciones}}, este filtro ha coincidido con $2 ($3 %).\nEn promedio, su tiempo de ejecución es de $4 ms, y consume $5 {{PLURAL:$5|condición|condiciones}} del límite de condiciones.",
 	"abusefilter-edit-throttled-warning": "'''Atención:''' este filtro se marcó automáticamente como perjudicial. Como medida de seguridad, no se ejecutarán las acciones siguientes ($1). Revisa y [[mw:Extension:AbuseFilter/Conditions|optimiza]] las condiciones para eliminar esta restricción",
 	"abusefilter-edit-new": "Filtro nuevo",
 	"abusefilter-edit-save": "Guardar filtro",
