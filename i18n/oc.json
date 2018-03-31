@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Cedric31",
-			"Matma Rex"
+			"Matma Rex",
+			"Unuaiga"
 		]
 	},
 	"abusefilter-desc": "Aplica d'euristicas automaticas a las modificacions",
@@ -75,6 +76,7 @@
 	"abusefilter-management": "Gestion del filtre dels abuses",
 	"abusefilter-list": "Totes los filtres",
 	"abusefilter-list-id": "Filtre ID",
+	"abusefilter-list-pattern": "Motiu",
 	"abusefilter-list-status": "Estatut",
 	"abusefilter-list-public": "Descripcion publica",
 	"abusefilter-list-consequences": "Consequéncias",
@@ -104,6 +106,12 @@
 	"abusefilter-list-options-scope-global": "Règlas globalas unicament",
 	"abusefilter-list-options-disabled": "Filtres desactivats :",
 	"abusefilter-list-options-hidedisabled": "Amagar los filtres desactivats",
+	"abusefilter-list-options-searchfield": "Recèrcar dins las règlas :",
+	"abusefilter-list-options-searchpattern": "Inseratz un motiu",
+	"abusefilter-list-options-searchoptions": "Mòde de recèrca :",
+	"abusefilter-list-options-search-rlike": "Expression regulara",
+	"abusefilter-list-options-search-irlike": "Expression regulara insensibla a la caissa",
+	"abusefilter-list-regexerror": "I a agut una error pendent la recèrca. Error de sintaxi dins las expressions regularas.",
 	"abusefilter-list-options-submit": "Metre a jorn",
 	"abusefilter-tools-text": "Aquí qualques aisinas que pòdon èsser utilas dins la formulacion o lo desbugatge dels filtres d’abuses.",
 	"abusefilter-tools-expr": "Tèst d'expression",
