@@ -330,7 +330,7 @@
 	"abusefilter-revert-periodstart": "Začetek obdobja:",
 	"abusefilter-revert-periodend": "Konec obdobja:",
 	"abusefilter-revert-search": "Izberite dejanja",
-	"abusefilter-revert-filter": "Filter:",
+	"abusefilter-revert-filter": "ID filtra:",
 	"abusefilter-revert-preview-intro": "Spodaj se nahajajo dejanja filtra zlorab, ki bodo vrnjena s tem dejanjem.\nProsimo, skrbno jih preverite in kliknite »{{int:abusefilter-revert-confirm}}«, da potrdite izbiro.",
 	"abusefilter-revert-confirm": "Potrdi",
 	"abusefilter-revert-success": "Vrnili ste vsa dejanja filtra zlorab zaradi [[Special:AbuseFilter/$1|filtra $2]].",

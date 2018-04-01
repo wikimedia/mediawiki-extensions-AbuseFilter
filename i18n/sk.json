@@ -7,7 +7,8 @@
 			"Sudo77(new)",
 			"Kusavica",
 			"Matma Rex",
-			"TomášPolonec"
+			"TomášPolonec",
+			"Patriccck"
 		]
 	},
 	"abusefilter-desc": "Vykonáva automatickú heuristiku úprav.",
@@ -138,6 +139,7 @@
 	"abusefilter-edit-new": "Nový filter",
 	"abusefilter-edit-save": "Uložiť filter",
 	"abusefilter-edit-id": "ID filtra:",
+	"abusefilter-edit-switch-editor": "Prepnúť editor",
 	"abusefilter-edit-description": "Popis:\n:''(verejne viditeľný)''",
 	"abusefilter-edit-group": "Skupinový filter:",
 	"abusefilter-edit-flags": "Príznaky:",
@@ -341,7 +343,7 @@
 	"abusefilter-revert-periodstart": "Začiatok obdobia:",
 	"abusefilter-revert-periodend": "Koniec obdobia:",
 	"abusefilter-revert-search": "Vyberte operácie",
-	"abusefilter-revert-filter": "Filter:",
+	"abusefilter-revert-filter": "ID filtra:",
 	"abusefilter-revert-preview-intro": "Dolu je zoznam operácií vykonaných filtrom zneužitia, ktoré táto operácia vráti.\nProsím, pozorne ich skontrolujte a potvrďte svoj výber kliknutím na na „Potvrdiť“.",
 	"abusefilter-revert-confirm": "Potvrdiť",
 	"abusefilter-revert-success": "Vrátili ste všetky zmeny vykonané filtrom zneužitia [[Special:AbuseFilter/$1|$2]].",

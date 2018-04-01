@@ -15,7 +15,8 @@
 			"Martin Urbanec",
 			"Dvorapa",
 			"Danny B.",
-			"Ilimanaq29"
+			"Ilimanaq29",
+			"Patriccck"
 		]
 	},
 	"abusefilter-desc": "Podrobuje editace automatickým heuristikám",
@@ -167,6 +168,7 @@
 	"abusefilter-edit-new": "Nový filtr",
 	"abusefilter-edit-save": "Uložit filtr",
 	"abusefilter-edit-id": "ID filtru:",
+	"abusefilter-edit-switch-editor": "Přepnout editor",
 	"abusefilter-edit-description": "Popis:\n:''(veřejně viditelný)''",
 	"abusefilter-edit-group": "Skupina filtrů:",
 	"abusefilter-edit-flags": "Příznaky:",

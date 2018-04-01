@@ -170,6 +170,7 @@
 	"abusefilter-edit-new": "Nuovo filtro",
 	"abusefilter-edit-save": "Salva filtro",
 	"abusefilter-edit-id": "ID filtro:",
+	"abusefilter-edit-switch-editor": "Cambia editor",
 	"abusefilter-edit-description": "Descrizione:\n:''(visibile pubblicamente)''",
 	"abusefilter-edit-group": "Gruppo filtri:",
 	"abusefilter-edit-flags": "Opzioni:",

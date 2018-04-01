@@ -3,7 +3,8 @@
 		"authors": [
 			"Cedric31",
 			"Matma Rex",
-			"Unuaiga"
+			"Unuaiga",
+			"Guilhelma"
 		]
 	},
 	"abusefilter-desc": "Aplica d'euristicas automaticas a las modificacions",
@@ -133,6 +134,7 @@
 	"abusefilter-edit-new": "Filtre novèl",
 	"abusefilter-edit-save": "Salvar lo filtre",
 	"abusefilter-edit-id": "Filtre ID :",
+	"abusefilter-edit-switch-editor": "Cambiar d'editor",
 	"abusefilter-edit-description": "Descripcion :\n:''(Visibla publicament)''",
 	"abusefilter-edit-group": "Grop del filtre :",
 	"abusefilter-edit-flags": "Drapèus :",
@@ -332,6 +334,7 @@
 	"abusefilter-revert-search": "Seleccionar las accions",
 	"abusefilter-revert-filter": "Filtre :",
 	"abusefilter-revert-preview-intro": "Aquí las accions realizadas pel filtre antiabusses, que seràn revocadas per aquesta accion.\nVerificatz-las menimosament, puèi clicatz sus « {{int:abusefilter-revert-confirm}} » per validar vòstra seleccion.",
+	"abusefilter-revert-confirm-legend": "Confirmar lo retorn",
 	"abusefilter-revert-confirm": "Confirmar",
 	"abusefilter-revert-success": "Avètz revocat amb succès totas las accions entrepresas pel filtre d'abuses degut al [[Special:AbuseFilter/$1|filtre $2]]",
 	"abusefilter-revert-reason": "Revocacion automatica de totas las accions entrepresas pel filtre $1.\nRason balhada : $2",
