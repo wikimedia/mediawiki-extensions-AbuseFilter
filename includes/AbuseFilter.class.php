@@ -45,7 +45,9 @@ class AbuseFilter {
 		],
 		'op-comparison' => [
 			'==' => 'equal',
+			'===' => 'equal-strict',
 			'!=' => 'notequal',
+			'!==' => 'notequal-strict',
 			'<' => 'lt',
 			'>' => 'gt',
 			'<=' => 'lte',
