@@ -501,7 +501,7 @@ class SpecialAbuseLog extends SpecialPage {
 				],
 			];
 
-			$htmlForm = HTMLForm::factory( 'table', $formDescriptor, $this->getContext() );
+			$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
 			$htmlForm->setWrapperLegendMsg( 'abusefilter-view-private' )
 				->setAction( $this->getPageTitle( 'private/' . $id )->getLocalURL() )
 				->setSubmitTextMsg( 'abusefilter-view-private-submit' )
