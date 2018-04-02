@@ -4,7 +4,8 @@
 			"පසිඳු කාවින්ද",
 			"عثمان خان شاہ",
 			"Muhammad Shuaib",
-			"Zainab Meher"
+			"Zainab Meher",
+			"Abdulq"
 		]
 	},
 	"abusefilter": "مقطار غلط کاری کی ترتیب",
@@ -72,6 +73,10 @@
 	"abusefilter-list-options-scope": "مقطارات دکھائیں:",
 	"abusefilter-list-options-disabled": "معذور فلٹر:",
 	"abusefilter-list-options-hidedisabled": "چھپائیں فلٹر غیر فعال کر دیا",
+	"abusefilter-list-options-searchfield": "اصول کے مظابق تلاش",
+	"abusefilter-list-options-searchpattern": "نمونہ شامل کریں",
+	"abusefilter-list-options-searchoptions": "طریقہ تلاش",
+	"abusefilter-list-options-search-like": "واضح سوال",
 	"abusefilter-list-options-submit": "اپ ڈیٹ",
 	"abusefilter-tools-expr": "اظہار ٹیسٹر",
 	"abusefilter-tools-reautoconfirm-user": "صارف:",
@@ -79,6 +84,7 @@
 	"abusefilter-edit-status-label": "اعداد و شمار:",
 	"abusefilter-edit-new": "نئے فلٹر کریں",
 	"abusefilter-edit-save": "فلٹر کو محفوظ کریں",
+	"abusefilter-edit-switch-editor": "خانہ ترمیم تبدیل کریں",
 	"abusefilter-edit-group": "فلٹر گروپ:",
 	"abusefilter-edit-enabled": "اس فلٹر کو فعال",
 	"abusefilter-edit-deleted": "حذف کر کے طور پر نشان زد کریں",
@@ -158,7 +164,7 @@
 	"abusefilter-action-degroup": "گروپ سے حذف کریں",
 	"abusefilter-revert-periodend": "مدت ختم:",
 	"abusefilter-revert-search": "اعمال کا انتخاب",
-	"abusefilter-revert-filter": "فلٹر کریں:",
+	"abusefilter-revert-filter": "ٓئی ڈی فلٹر کریں:",
 	"abusefilter-revert-confirm": "اس بات کی تصدیق",
 	"abusefilter-test-submit": "ٹیسٹ",
 	"abusefilter-test-load": "بوجھ",

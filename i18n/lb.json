@@ -336,6 +336,7 @@
 	"abusefilter-revert-search": "Aktiounen auswielen",
 	"abusefilter-revert-filter": "Filter:",
 	"abusefilter-revert-preview-intro": "Hei ënnerdënner stinn déi Aktioune vum Mëssbrauchsfilter déi duerch dës Aktioun zréckgesat wäerte ginn.\nKuckt se w.e.g. genee no a klickt \"{{int:abusefilter-revert-confirm}}\" fir Är Wiel ze confirméieren.",
+	"abusefilter-revert-confirm-legend": "D'Zrécksetze confirméieren",
 	"abusefilter-revert-confirm": "Confirméieren",
 	"abusefilter-revert-success": "Dir hutt all Aktioune vum Mëssbrauchsfilter, op Grond vum [[Special:AbuseFilter/$1|Filter $2]] zréckgesat.",
 	"abusefilter-revert-reason": "All Aktioune vum Mëssbrauchsfilter opgrond vum Filter $1 zrécksetzen.\nGrond: $2",
