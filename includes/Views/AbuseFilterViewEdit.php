@@ -104,6 +104,28 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				);
 				return;
 			}
+			// Check for missing required fields (title and pattern)
+			$missing = [];
+			if ( !$request->getVal( 'wpFilterRules' ) ||
+				trim( $request->getVal( 'wpFilterRules' ) ) === '' ) {
+				$missing[] = $this->msg( 'abusefilter-edit-field-conditions' )->escaped();
+			}
+			if ( !$request->getVal( 'wpFilterDescription' ) ) {
+				$missing[] = $this->msg( 'abusefilter-edit-field-description' )->escaped();
+			}
+			if ( count( $missing ) !== 0 ) {
+				$missing = $this->getLanguage()->commaList( $missing );
+				$out->addHTML(
+					$this->buildFilterEditor(
+						$this->msg(
+							'abusefilter-edit-missingfields',
+							$missing
+						)->parseAsBlock(),
+						$filter, $history_id
+					)
+				);
+				return;
+			}
 
 			$dbw = wfGetDB( DB_MASTER );
 
@@ -491,7 +513,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$readOnlyAttrib
 		);
 
-		// Build checkboxen
+		// Build checkboxes
 		$checkboxes = [ 'hidden', 'enabled', 'deleted' ];
 		$flags = '';
 
