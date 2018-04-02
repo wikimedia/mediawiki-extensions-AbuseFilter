@@ -215,71 +215,143 @@
 		"ParserOutputStashForEdit": "AbuseFilterHooks::onParserOutputStashForEdit"
 	},
 	"config": {
-		"@doc": "see AbuseFilter.php",
 		"AbuseFilterActions": {
-			"throttle": true,
-			"warn": true,
-			"disallow": true,
-			"blockautopromote": true,
-			"block": true,
-			"rangeblock": false,
-			"degroup": true,
-			"tag": true,
-			"_merge_strategy": "array_plus"
+			"value": {
+				"throttle": true,
+				"warn": true,
+				"disallow": true,
+				"blockautopromote": true,
+				"block": true,
+				"rangeblock": false,
+				"degroup": true,
+				"tag": true
+			},
+			"_merge_strategy": "array_plus",
+			"description": "Array of enabled actions in the form [action name => is enabled?]. At the end of setup, false values will be filtered out"
 		},
-		"AbuseFilterConditionLimit": 1000,
-		"AbuseFilterParserClass": "AbuseFilterParser",
+		"AbuseFilterConditionLimit": {
+			"value": 1000,
+			"description": "The maximum number of 'conditions' that can be used each time the filters are run against a change. (More complex filters require more 'conditions')."
+		},
+		"AbuseFilterParserClass": {
+			"value": "AbuseFilterParser",
+			"description": "Class of the parser to use"
+		},
 		"AbuseFilterEmergencyDisableThreshold": {
-			"default": 0.05,
-			"_merge_strategy": "array_plus"
+			"value": {
+				"default": 0.05
+			},
+			"_merge_strategy": "array_plus",
+			"description": "Disable filters if they match more than X edits, constituting more than Y% of the last Z edits, if they have been changed in the last S seconds."
 		},
 		"AbuseFilterEmergencyDisableCount": {
-			"default": 2,
-			"_merge_strategy": "array_plus"
+			"value": {
+				"default": 2
+			},
+			"_merge_strategy": "array_plus",
+			"description": "See description for AbuseFilterEmergencyDisableThreshold"
 		},
 		"AbuseFilterEmergencyDisableAge": {
-			"default": 86400,
-			"_merge_strategy": "array_plus"
+			"value": {
+				"default": 86400
+			},
+			"_merge_strategy": "array_plus",
+			"description": "See description for AbuseFilterEmergencyDisableThreshold"
 		},
 		"AbuseFilterRestrictions": {
-			"flag": false,
-			"throttle": false,
-			"warn": false,
-			"disallow": false,
-			"blockautopromote": true,
-			"block": true,
-			"rangeblock": true,
-			"degroup": true,
-			"tag": false,
-			"_merge_strategy": "array_plus"
+			"value": {
+				"flag": false,
+				"throttle": false,
+				"warn": false,
+				"disallow": false,
+				"blockautopromote": true,
+				"block": true,
+				"rangeblock": true,
+				"degroup": true,
+				"tag": false
+			},
+			"_merge_strategy": "array_plus",
+			"description":  "Do users need 'abusefilter-modify-restricted' user right as well as 'abusefilter-modify' in order to create or modify filters which carry out this action? Array like [action name => is restricted?]"
 		},
-		"AbuseFilterNotifications": false,
-		"AbuseFilterNotificationsPrivate": false,
-		"AbuseFilterCentralDB": null,
-		"AbuseFilterIsCentral": false,
-		"AbuseFilterDisallowGlobalLocalBlocks": false,
-		"AbuseFilterBlockDuration": "indefinite",
-		"AbuseFilterAnonBlockDuration": null,
-		"AbuseFilterCustomActionsHandlers": [],
-		"AbuseFilterValidGroups": [
-			"default"
-		],
+		"AbuseFilterNotifications": {
+			"value": false,
+			"description": "Allows to configure the extension to send hit notifications to Special:RecentChanges or UDP. Available options: rc, udp, rcandudp"
+		},
+		"AbuseFilterNotificationsPrivate": {
+			"value": false,
+			"description": "Enable notifications for private filters"
+		},
+		"AbuseFilterCentralDB": {
+			"value": null,
+			"description": "Name of a database where global abuse filters will be stored in"
+		},
+		"AbuseFilterIsCentral": {
+			"value": false,
+			"description": "Set this variable to true for the wiki where global AbuseFilters are stored in"
+		},
+		"AbuseFilterDisallowGlobalLocalBlocks": {
+			"value": false,
+			"description": "Disallow centralised filters from taking actions that locally block, remove from groups, or revoke permissions"
+		},
+		"AbuseFilterBlockDuration": {
+			"value": "indefinite",
+			"description": "Old standard block duration for logged in users. Kept for backward compatibility after T32024."
+		},
+		"AbuseFilterAnonBlockDuration": {
+			"value": null,
+			"description": "Old standard block duration for anonymous users, $wgAbuseFilterBlockDuration will be used if null. Kept for backward compatibility after T32024."
+		},
+		"AbuseFilterCustomActionsHandlers": {
+			"value": [],
+			"description": "Callback functions for custom actions"
+		},
+		"AbuseFilterValidGroups": {
+			"value": [ "default" ],
+			"description": "The list of 'groups' filters can be divided into – used for applying edit filters to certain types of actions. By default there is only one group."
+		},
 		"AbuseFilterDefaultWarningMessage": {
-			"default": "abusefilter-warning",
-			"_merge_strategy": "array_plus"
+			"value": {
+				"default": "abusefilter-warning"
+			},
+			"_merge_strategy": "array_plus",
+			"description": "Default warning messages, per filter group"
 		},
-		"AbuseFilterLogIPMaxAge": 7776000,
-		"AbuseFilterProfile": false,
-		"AbuseFilterRuntimeProfile": false,
-		"AbuseFilterSlowFilterRuntimeLimit": 500,
+		"AbuseFilterLogIPMaxAge": {
+			"value": 7776000,
+			"description": "Age used as cutoff when purging old IP log data, defaults to 3 months. Used by maintenance script purgeOldLogIPData.php"
+		},
+		"AbuseFilterProfile": {
+			"value": false,
+			"description": "Whether to record the average time taken and average number of conditions used by each filter."
+		},
+		"AbuseFilterRuntimeProfile": {
+			"value": false,
+			"description": "Whether to record runtime metrics for all filters combined."
+		},
+		"AbuseFilterSlowFilterRuntimeLimit": {
+			"value": 500,
+			"description": "Runtime in milliseconds before a filter is considered slow."
+		},
 		"AbuseFilterRangeBlockSize" : {
-			"IPv4": 16,
-			"IPv6": 19
+			"value": {
+				"IPv4": 16,
+				"IPv6": 19
+			},
+			"description": "Size of the range blocked by 'rangeblock' action."
 		},
-		"AbuseFilterPrivateLog": false,
-		"AbuseFilterForceSummary": false,
-		"AbuseFilterLogIP": true
+		"AbuseFilterPrivateLog": {
+			"value": false,
+			"description": "Whether users are allowed to access private information from a filter log entry."
+		},
+		"AbuseFilterForceSummary": {
+			"value": false,
+			"description": "Whether users are forced to provide a reason for accessing private information from a filter log entry."
+		},
+		"AbuseFilterLogIP": {
+			"value": true,
+			"description": "Whether to include IP in the abuse_filter_log"
+		}
 	},
 	"load_composer_autoloader": true,
-	"manifest_version": 1
+	"manifest_version": 2
 }
