@@ -464,7 +464,7 @@ class AbuseFilter {
 	 * @param AbuseFilterVariableHolder $vars
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @param Title|null $title
-	 * @param string $mode 'execute' for edits, 'stash' or 'log' for cached matches
+	 * @param string $mode 'execute' for edits and logs, 'stash' for cached matches
 	 *
 	 * @return bool[] Map of (integer filter ID => bool)
 	 */
@@ -553,7 +553,7 @@ class AbuseFilter {
 	 * @param AbuseFilterVariableHolder $vars
 	 * @param Title|null $title
 	 * @param string $prefix
-	 * @param string $mode 'execute' for edits, 'stash' or 'log' for cached matches
+	 * @param string $mode 'execute' for edits and logs, 'stash' for cached matches
 	 * @return bool
 	 */
 	public static function checkFilter( $row, $vars, Title $title = null, $prefix = '', $mode ) {
