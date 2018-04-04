@@ -468,7 +468,12 @@ class AbuseFilter {
 	 *
 	 * @return bool[] Map of (integer filter ID => bool)
 	 */
-	public static function checkAllFilters( $vars, $group = 'default', Title $title = null, $mode ) {
+	public static function checkAllFilters(
+		$vars,
+		$group = 'default',
+		Title $title = null,
+		$mode = 'execute'
+	) {
 		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
 		global $wgAbuseFilterConditionLimit;
 
