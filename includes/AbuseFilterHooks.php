@@ -7,8 +7,8 @@ class AbuseFilterHooks {
 	const FETCH_ALL_TAGS_KEY = 'abusefilter-fetch-all-tags';
 
 	public static $successful_action_vars = false;
-	/** @var WikiPage|Article|bool */
-	public static $last_edit_page = false; // make sure edit filter & edit save hooks match
+	/** @var WikiPage|Article|bool Make sure edit filter & edit save hooks match */
+	public static $last_edit_page = false;
 	// So far, all of the error message out-params for these hooks accept HTML.
 	// Hooray!
 
@@ -28,7 +28,8 @@ class AbuseFilterHooks {
 
 		$wgAuthManagerAutoConfig['preauth'][AbuseFilterPreAuthenticationProvider::class] = [
 			'class' => AbuseFilterPreAuthenticationProvider::class,
-			'sort' => 5, // run after normal preauth providers to keep the log cleaner
+			// Run after normal preauth providers to keep the log cleaner
+			'sort' => 5,
 		];
 	}
 
@@ -246,7 +247,8 @@ class AbuseFilterHooks {
 		}
 
 		if ( !self::identicalPageObjects( $wikiPage, self::$last_edit_page ) ) {
-			return true; // this isn't the edit $successful_action_vars was set for
+			// This isn't the edit $successful_action_vars was set for
+			return true;
 		}
 		self::$last_edit_page = false;
 
@@ -436,7 +438,7 @@ class AbuseFilterHooks {
 				// Account for any snapshot/replica DB lag
 				$setOpts += Database::getCacheSetOptions( $dbr );
 
-				# This is a pretty awful hack.
+				// This is a pretty awful hack.
 
 				$where = [ 'afa_consequence' => 'tag', 'af_deleted' => false ];
 				if ( $enabled ) {
@@ -632,7 +634,7 @@ class AbuseFilterHooks {
 		if ( $user && !$updater->updateRowExists( 'create abusefilter-blocker-user' ) ) {
 			$user = User::newSystemUser( $username, [ 'steal' => true ] );
 			$updater->insertUpdateRow( 'create abusefilter-blocker-user' );
-			# Promote user so it doesn't look too crazy.
+			// Promote user so it doesn't look too crazy.
 			$user->addGroup( 'sysop' );
 		}
 	}

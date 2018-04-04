@@ -16,6 +16,9 @@ class PurgeOldLogIPData extends Maintenance {
 		$this->requireExtension( 'Abuse Filter' );
 	}
 
+	/**
+	 * @see Maintenance:execute()
+	 */
 	public function execute() {
 		global $wgAbuseFilterLogIPMaxAge;
 

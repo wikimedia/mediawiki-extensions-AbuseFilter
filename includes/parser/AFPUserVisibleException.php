@@ -12,7 +12,7 @@ class AFPUserVisibleException extends AFPException {
 	 * @param int $position
 	 * @param array $params
 	 */
-	function __construct( $exception_id, $position, $params ) {
+	public function __construct( $exception_id, $position, $params ) {
 		$this->mExceptionID = $exception_id;
 		$this->mPosition = $position;
 		$this->mParams = $params;
@@ -22,6 +22,9 @@ class AFPUserVisibleException extends AFPException {
 		parent::__construct( $msg );
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getMessageObj() {
 		// Give grep a chance to find the usages:
 		// abusefilter-exception-unexpectedatend, abusefilter-exception-expectednotfound

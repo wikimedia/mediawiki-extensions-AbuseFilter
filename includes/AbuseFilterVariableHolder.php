@@ -14,7 +14,7 @@ class AbuseFilterVariableHolder {
 	 * @param string $variable
 	 * @param mixed $datum
 	 */
-	function setVar( $variable, $datum ) {
+	public function setVar( $variable, $datum ) {
 		$variable = strtolower( $variable );
 		if ( !( $datum instanceof AFPData || $datum instanceof AFComputedVariable ) ) {
 			$datum = AFPData::newFromPHPVar( $datum );
@@ -28,7 +28,7 @@ class AbuseFilterVariableHolder {
 	 * @param string $method
 	 * @param array $parameters
 	 */
-	function setLazyLoadVar( $variable, $method, $parameters ) {
+	public function setLazyLoadVar( $variable, $method, $parameters ) {
 		$placeholder = new AFComputedVariable( $method, $parameters );
 		$this->setVar( $variable, $placeholder );
 	}
@@ -39,7 +39,7 @@ class AbuseFilterVariableHolder {
 	 * @param string $variable
 	 * @return AFPData
 	 */
-	function getVar( $variable ) {
+	public function getVar( $variable ) {
 		$variable = strtolower( $variable );
 		if ( isset( $this->mVars[$variable] ) ) {
 			if ( $this->mVars[$variable] instanceof AFComputedVariable ) {
@@ -88,7 +88,7 @@ class AbuseFilterVariableHolder {
 		}
 	}
 
-	function __wakeup() {
+	public function __wakeup() {
 		// Reset the context.
 		$this->setVar( 'context', 'stored' );
 	}
@@ -98,7 +98,7 @@ class AbuseFilterVariableHolder {
 	 *
 	 * @return string[]
 	 */
-	function exportAllVars() {
+	public function exportAllVars() {
 		$exported = [];
 		foreach ( array_keys( $this->mVars ) as $varName ) {
 			if ( !in_array( $varName, self::$varBlacklist ) ) {
@@ -114,7 +114,7 @@ class AbuseFilterVariableHolder {
 	 *
 	 * @return string[]
 	 */
-	function exportNonLazyVars() {
+	public function exportNonLazyVars() {
 		$exported = [];
 		foreach ( $this->mVars as $varName => $data ) {
 			if (
@@ -193,7 +193,7 @@ class AbuseFilterVariableHolder {
 	 * @param string $var
 	 * @return bool
 	 */
-	function varIsSet( $var ) {
+	public function varIsSet( $var ) {
 		return array_key_exists( $var, $this->mVars );
 	}
 
@@ -201,7 +201,7 @@ class AbuseFilterVariableHolder {
 	 * Compute all vars which need DB access. Useful for vars which are going to be saved
 	 * cross-wiki or used for offline analysis.
 	 */
-	function computeDBVars() {
+	public function computeDBVars() {
 		static $dbTypes = [
 			'links-from-wikitext-or-database',
 			'load-recent-authors',

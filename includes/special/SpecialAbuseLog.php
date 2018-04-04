@@ -28,6 +28,9 @@ class SpecialAbuseLog extends SpecialPage {
 		parent::__construct( 'AbuseLog', 'abusefilter-log' );
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function doesWrites() {
 		return true;
 	}
@@ -106,7 +109,10 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 	}
 
-	function loadParameters() {
+	/**
+	 * Loads parameters from request
+	 */
+	public function loadParameters() {
 		global $wgAbuseFilterIsCentral;
 
 		$request = $this->getRequest();
@@ -118,7 +124,8 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$u = User::newFromName( $this->mSearchUser );
 		if ( $u ) {
-			$this->mSearchUser = $u->getName(); // Username normalisation
+			// Username normalisation
+			$this->mSearchUser = $u->getName();
 		} elseif ( IP::isIPAddress( $this->mSearchUser ) ) {
 			// It's an IP
 			$this->mSearchUser = IP::sanitizeIP( $this->mSearchUser );
@@ -150,7 +157,10 @@ class SpecialAbuseLog extends SpecialPage {
 		);
 	}
 
-	function searchForm() {
+	/**
+	 * Builds the search form
+	 */
+	public function searchForm() {
 		global $wgAbuseFilterIsCentral;
 
 		$formDescriptor = [
@@ -228,7 +238,7 @@ class SpecialAbuseLog extends SpecialPage {
 	 * @param string $id
 	 * @return mixed
 	 */
-	function showHideForm( $id ) {
+	public function showHideForm( $id ) {
 		if ( !$this->getUser()->isAllowed( 'abusefilter-hide-log' ) ) {
 			$this->getOutput()->addWikiMsg( 'abusefilter-log-hide-forbidden' );
 
@@ -288,7 +298,7 @@ class SpecialAbuseLog extends SpecialPage {
 	 * @param array $fields
 	 * @return bool
 	 */
-	function saveHideForm( $fields ) {
+	public function saveHideForm( $fields ) {
 		$logid = $this->getRequest()->getVal( 'hide' );
 
 		$dbw = wfGetDB( DB_MASTER );
@@ -318,7 +328,10 @@ class SpecialAbuseLog extends SpecialPage {
 		return true;
 	}
 
-	function showList() {
+	/**
+	 * Shows the results list
+	 */
+	public function showList() {
 		$out = $this->getOutput();
 
 		// Generate conditions list.
@@ -431,7 +444,7 @@ class SpecialAbuseLog extends SpecialPage {
 	 * @param string $id
 	 * @return mixed
 	 */
-	function showDetails( $id ) {
+	public function showDetails( $id ) {
 		$out = $this->getOutput();
 
 		$dbr = wfGetDB( DB_REPLICA );
@@ -537,7 +550,7 @@ class SpecialAbuseLog extends SpecialPage {
 	 * @param string $id
 	 * @return null
 	 */
-	function showPrivateDetails( $id ) {
+	public function showPrivateDetails( $id ) {
 		global $wgAbuseFilterPrivateLog;
 
 		$lang = $this->getLanguage();
@@ -779,7 +792,7 @@ class SpecialAbuseLog extends SpecialPage {
 	 * @param bool $filter_hidden
 	 * @return bool
 	 */
-	static function canSeeDetails( $filter_id = null, $filter_hidden = null ) {
+	public static function canSeeDetails( $filter_id = null, $filter_hidden = null ) {
 		global $wgUser;
 
 		if ( $filter_id !== null ) {
@@ -799,7 +812,7 @@ class SpecialAbuseLog extends SpecialPage {
 	/**
 	 * @return bool
 	 */
-	static function canSeePrivate() {
+	public static function canSeePrivate() {
 		global $wgUser;
 
 		return $wgUser->isAllowed( 'abusefilter-private' );
@@ -808,7 +821,7 @@ class SpecialAbuseLog extends SpecialPage {
 	/**
 	 * @return bool
 	 */
-	static function canSeeHidden() {
+	public static function canSeeHidden() {
 		global $wgUser;
 
 		return $wgUser->isAllowed( 'abusefilter-hidden-log' );
@@ -819,7 +832,7 @@ class SpecialAbuseLog extends SpecialPage {
 	 * @param bool $isListItem
 	 * @return String
 	 */
-	function formatRow( $row, $isListItem = true ) {
+	public function formatRow( $row, $isListItem = true ) {
 		$user = $this->getUser();
 		$lang = $this->getLanguage();
 
@@ -963,7 +976,8 @@ class SpecialAbuseLog extends SpecialPage {
 				$pageLink,
 				$actions_taken,
 				$escaped_comments,
-				$diffLink // Passing $7 to 'abusefilter-log-entry' will do nothing, as it's not used.
+				// Passing $7 to 'abusefilter-log-entry' will do nothing, as it's not used.
+				$diffLink
 			)->params( $row->afl_user_text )->parse();
 		}
 

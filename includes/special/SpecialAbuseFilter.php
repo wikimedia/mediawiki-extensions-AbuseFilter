@@ -7,10 +7,16 @@ class SpecialAbuseFilter extends SpecialPage {
 		parent::__construct( 'AbuseFilter', 'abusefilter-view' );
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function doesWrites() {
 		return true;
 	}
 
+	/**
+	 * @param string|null $subpage
+	 */
 	public function execute( $subpage ) {
 		$out = $this->getOutput();
 		$request = $this->getRequest();
@@ -83,7 +89,7 @@ class SpecialAbuseFilter extends SpecialPage {
 				$view = 'AbuseFilterViewHistory';
 				$pageType = 'recentchanges';
 			} elseif ( count( $params ) == 2 ) {
-				# Second param is a filter ID
+				// Second param is a filter ID
 				$view = 'AbuseFilterViewHistory';
 				$this->mFilter = $params[1];
 			} elseif ( count( $params ) == 4 && $params[2] == 'item' ) {
@@ -116,7 +122,10 @@ class SpecialAbuseFilter extends SpecialPage {
 		$v->show();
 	}
 
-	function loadParameters( $subpage ) {
+	/**
+	 * @param string|null $subpage
+	 */
+	public function loadParameters( $subpage ) {
 		$filter = $subpage;
 
 		if ( !is_numeric( $filter ) && $filter != 'new' ) {

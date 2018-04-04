@@ -312,7 +312,8 @@ class AFPData {
 		if ( $op == '^' ) {
 			return new AFPData( self::DBOOL, $a xor $b );
 		}
-		throw new AFPException( "Invalid boolean operation: {$op}" ); // Should never happen.
+		// Should never happen.
+		throw new AFPException( "Invalid boolean operation: {$op}" );
 	}
 
 	/**
@@ -349,7 +350,8 @@ class AFPData {
 		if ( $op == '<=' ) {
 			return new AFPData( self::DBOOL, $a <= $b );
 		}
-		throw new AFPException( "Invalid comparison operation: {$op}" ); // Should never happen
+		// Should never happen
+		throw new AFPException( "Invalid comparison operation: {$op}" );
 	}
 
 	/**
@@ -491,6 +493,9 @@ class AFPData {
 		return $this->type == self::DINT ? $this->toInt() : $this->toFloat();
 	}
 
+	/**
+	 * @return array
+	 */
 	public function toList() {
 		return self::castTypes( $this, self::DLIST )->data;
 	}

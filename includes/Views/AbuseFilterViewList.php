@@ -4,7 +4,10 @@
  * The default view used in Special:AbuseFilter
  */
 class AbuseFilterViewList extends AbuseFilterView {
-	function show() {
+	/**
+	 * Shows the page
+	 */
+	public function show() {
 		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
 
 		$out = $this->getOutput();
@@ -45,10 +48,11 @@ class AbuseFilterViewList extends AbuseFilterView {
 		}
 
 		if ( $deleted == 'show' ) {
-			# Nothing
+			// Nothing
 		} elseif ( $deleted == 'only' ) {
 			$conds['af_deleted'] = 1;
-		} else { # hide, or anything else.
+		} else {
+			// hide, or anything else.
 			$conds['af_deleted'] = 0;
 			$deleted = 'hide';
 		}
@@ -107,7 +111,11 @@ class AbuseFilterViewList extends AbuseFilterView {
 		);
 	}
 
-	function showList( $conds = [ 'af_deleted' => 0 ], $optarray = [] ) {
+	/**
+	 * @param array $conds
+	 * @param array $optarray
+	 */
+	public function showList( $conds = [ 'af_deleted' => 0 ], $optarray = [] ) {
 		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
 
 		$this->getOutput()->addHTML(
@@ -143,7 +151,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 			);
 		}
 
-		# Options form
+		// Options form
 		$formDescriptor = [];
 		$formDescriptor['deletedfilters'] = [
 			'name' => 'deletedfilters',
@@ -239,7 +247,10 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$this->getOutput()->addHTML( $output );
 	}
 
-	function showStatus() {
+	/**
+	 * Show stats
+	 */
+	public function showStatus() {
 		global $wgAbuseFilterConditionLimit, $wgAbuseFilterValidGroups;
 
 		$stash = ObjectCache::getMainStashInstance();

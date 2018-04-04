@@ -5,7 +5,7 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	 * @param AbuseFilterViewExamine $page
 	 * @param AbuseFilterChangesList $changesList
 	 */
-	function __construct( $page, $changesList ) {
+	public function __construct( $page, $changesList ) {
 		parent::__construct();
 		$this->mChangesList = $changesList;
 		$this->mPage = $page;
@@ -15,7 +15,7 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	 * @fixme this is similar to AbuseFilterViewTestBatch::doTest
 	 * @return array
 	 */
-	function getQueryInfo() {
+	public function getQueryInfo() {
 		$dbr = wfGetDB( DB_REPLICA );
 		$conds = [];
 
@@ -48,22 +48,35 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 		return $info;
 	}
 
-	function formatRow( $row ) {
-		# Incompatible stuff.
+	/**
+	 * @param stdClass $row
+	 * @return string
+	 */
+	public function formatRow( $row ) {
+		// Incompatible stuff.
 		$rc = RecentChange::newFromRow( $row );
 		$rc->counter = $this->mPage->mCounter++;
 		return $this->mChangesList->recentChangesLine( $rc, false );
 	}
 
-	function getIndexField() {
+	/**
+	 * @return string
+	 */
+	public function getIndexField() {
 		return 'rc_id';
 	}
 
-	function getTitle() {
+	/**
+	 * @return Title
+	 */
+	public function getTitle() {
 		return $this->mPage->getTitle( 'examine' );
 	}
 
-	function getEmptyBody() {
+	/**
+	 * @return string
+	 */
+	public function getEmptyBody() {
 		return $this->msg( 'abusefilter-examine-noresults' )->parseAsBlock();
 	}
 }

@@ -76,6 +76,9 @@ class AbuseFilterParser {
 		}
 	}
 
+	/**
+	 * Resets the state of the parser.
+	 */
 	public function resetState() {
 		$this->mCode = '';
 		$this->mTokens = [];
@@ -215,7 +218,7 @@ class AbuseFilterParser {
 	 * @param string $b
 	 * @return int
 	 */
-	static function lengthCompare( $a, $b ) {
+	public static function lengthCompare( $a, $b ) {
 		if ( strlen( $a ) == strlen( $b ) ) {
 			return 0;
 		}
@@ -485,7 +488,8 @@ class AbuseFilterParser {
 			$r2 = new AFPData();
 			$this->doLevelSumRels( $r2 );
 			if ( $this->mShortCircuit ) {
-				break; // The result doesn't matter.
+				// The result doesn't matter.
+				break;
 			}
 			AbuseFilter::triggerLimiter();
 			$result = AFPData::compareOp( $result, $r2, $op );
@@ -504,7 +508,8 @@ class AbuseFilterParser {
 			$r2 = new AFPData();
 			$this->doLevelMulRels( $r2 );
 			if ( $this->mShortCircuit ) {
-				break; // The result doesn't matter.
+				// The result doesn't matter.
+				break;
 			}
 			if ( $op == '+' ) {
 				$result = AFPData::sum( $result, $r2 );
@@ -527,7 +532,8 @@ class AbuseFilterParser {
 			$r2 = new AFPData();
 			$this->doLevelPow( $r2 );
 			if ( $this->mShortCircuit ) {
-				break; // The result doesn't matter.
+				// The result doesn't matter.
+				break;
 			}
 			$result = AFPData::mulRel( $result, $r2, $op, $this->mCur->pos );
 		}
@@ -543,7 +549,8 @@ class AbuseFilterParser {
 			$expanent = new AFPData();
 			$this->doLevelBoolInvert( $expanent );
 			if ( $this->mShortCircuit ) {
-				break; // The result doesn't matter.
+				// The result doesn't matter.
+				break;
 			}
 			$result = AFPData::pow( $result, $expanent );
 		}
@@ -557,7 +564,8 @@ class AbuseFilterParser {
 			$this->move();
 			$this->doLevelSpecialWords( $result );
 			if ( $this->mShortCircuit ) {
-				return; // The result doesn't matter.
+				// The result doesn't matter.
+				return;
 			}
 			$result = AFPData::boolInvert( $result );
 		} else {
@@ -580,7 +588,8 @@ class AbuseFilterParser {
 			$this->doLevelUnarys( $r2 );
 
 			if ( $this->mShortCircuit ) {
-				return; // The result doesn't matter.
+				// The result doesn't matter.
+				return;
 			}
 
 			AbuseFilter::triggerLimiter();
@@ -598,7 +607,8 @@ class AbuseFilterParser {
 			$this->move();
 			$this->doLevelListElements( $result );
 			if ( $this->mShortCircuit ) {
-				return; // The result doesn't matter.
+				// The result doesn't matter.
+				return;
 			}
 			if ( $op == '-' ) {
 				$result = AFPData::unaryMinus( $result );
@@ -682,7 +692,8 @@ class AbuseFilterParser {
 				$this->skipOverBraces();
 				$this->move();
 
-				return; // The result doesn't matter.
+				// The result doesn't matter.
+				return;
 			}
 
 			$args = [];
@@ -763,10 +774,12 @@ class AbuseFilterParser {
 				}
 				break;
 			case AFPToken::TNONE:
-				return; // Handled at entry level
+				// Handled at entry level
+				return;
 			case AFPToken::TBRACE:
 				if ( $this->mCur->value == ')' ) {
-					return; // Handled at the entry level
+					// Handled at the entry level
+					return;
 				}
 			case AFPToken::TSQUAREBRACKET:
 				if ( $this->mCur->value == '[' ) {
@@ -1008,7 +1021,7 @@ class AbuseFilterParser {
 			$needle = $args[0]->toString();
 			$haystack = $args[1]->toString();
 
-			# Munge the regex
+			// Munge the regex
 			$needle = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $needle );
 			$needle = "/$needle/u";
 

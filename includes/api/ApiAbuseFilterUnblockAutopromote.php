@@ -1,6 +1,9 @@
 <?php
 
 class ApiAbuseFilterUnblockAutopromote extends ApiBase {
+	/**
+	 * @see ApiBase::execute()
+	 */
 	public function execute() {
 		$this->checkUserRightsAny( 'abusefilter-modify' );
 
@@ -27,14 +30,26 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 		$this->getResult()->addValue( null, $this->getModuleName(), $res );
 	}
 
+	/**
+	 * @see ApiBase::mustBePosted()
+	 * @return bool
+	 */
 	public function mustBePosted() {
 		return true;
 	}
 
+	/**
+	 * @see ApiBase::isWriteMode()
+	 * @return bool
+	 */
 	public function isWriteMode() {
 		return true;
 	}
 
+	/**
+	 * @see ApiBase::getAllowedParams()
+	 * @return array
+	 */
 	public function getAllowedParams() {
 		return [
 			'user' => [
@@ -45,6 +60,10 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 		];
 	}
 
+	/**
+	 * @see ApiBase::needsToken()
+	 * @return string
+	 */
 	public function needsToken() {
 		return 'csrf';
 	}

@@ -53,6 +53,11 @@ class AFPToken {
 	public $value;
 	public $pos;
 
+	/**
+	 * @param AFPToken $type
+	 * @param AFPToken $value
+	 * @param int $pos
+	 */
 	public function __construct( $type = self::TNONE, $value = null, $pos = 0 ) {
 		$this->type = $type;
 		$this->value = $value;

@@ -30,10 +30,17 @@
  * @ingroup Extensions
  */
 class ApiQueryAbuseFilters extends ApiQueryBase {
+	/**
+	 * @param ApiQuery $query
+	 * @param string $moduleName
+	 */
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'abf' );
 	}
 
+	/**
+	 * @see ApiQueryBase::execute()
+	 */
 	public function execute() {
 		$user = $this->getUser();
 		$this->checkUserRightsAny( 'abusefilter-view' );
@@ -150,6 +157,10 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 		$result->addIndexedTagName( [ 'query', $this->getModuleName() ], 'filter' );
 	}
 
+	/**
+	 * @see ApiQueryBase::getAllowedParams()
+	 * @return array
+	 */
 	public function getAllowedParams() {
 		return [
 			'startid' => [

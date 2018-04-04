@@ -90,12 +90,20 @@ class AFPTreeNode {
 	// Position used for error reporting.
 	public $position;
 
+	/**
+	 * @param string $type
+	 * @param AFPTreeNode[]|string[]|AFPToken $children
+	 * @param int $position
+	 */
 	public function __construct( $type, $children, $position ) {
 		$this->type = $type;
 		$this->children = $children;
 		$this->position = $position;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function toDebugString() {
 		return implode( "\n", $this->toDebugStringInner() );
 	}

@@ -1,7 +1,10 @@
 <?php
 
 class AbuseFilterViewTools extends AbuseFilterView {
-	function show() {
+	/**
+	 * Shows the page
+	 */
+	public function show() {
 		$out = $this->getOutput();
 		$user = $this->getUser();
 		$request = $this->getRequest();

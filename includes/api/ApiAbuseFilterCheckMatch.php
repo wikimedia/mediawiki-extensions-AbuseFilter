@@ -1,6 +1,9 @@
 <?php
 
 class ApiAbuseFilterCheckMatch extends ApiBase {
+	/**
+	 * @see ApiBase::execute
+	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
 		$this->requireOnlyOneParameter( $params, 'vars', 'rcid', 'logid' );
@@ -66,6 +69,10 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 		);
 	}
 
+	/**
+	 * @see ApiBase::getAllowedParams
+	 * @return array
+	 */
 	public function getAllowedParams() {
 		return [
 			'filter' => [

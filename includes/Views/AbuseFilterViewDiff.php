@@ -6,7 +6,10 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	public $mNextHistoryId = null;
 	public $mFilter = null;
 
-	function show() {
+	/**
+	 * Shows the page
+	 */
+	public function show() {
 		$show = $this->loadData();
 		$out = $this->getOutput();
 
@@ -59,7 +62,10 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		}
 	}
 
-	function loadData() {
+	/**
+	 * @return bool
+	 */
+	public function loadData() {
 		$oldSpec = $this->mParams[3];
 		$newSpec = $this->mParams[4];
 		$this->mFilter = $this->mParams[1];
@@ -92,7 +98,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	 * @param int $historyId History id to find next change of
 	 * @return int|null Id of the next change or null if there isn't one
 	 */
-	function getNextHistoryId( $historyId ) {
+	public function getNextHistoryId( $historyId ) {
 		$dbr = wfGetDB( DB_REPLICA );
 		$row = $dbr->selectRow(
 			'abuse_filter_history',
@@ -110,7 +116,12 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		return null;
 	}
 
-	function loadSpec( $spec, $otherSpec ) {
+	/**
+	 * @param string $spec
+	 * @param string $otherSpec
+	 * @return array|null
+	 */
+	public function loadSpec( $spec, $otherSpec ) {
 		static $dependentSpecs = [ 'prev', 'next' ];
 		static $cache = [];
 
@@ -187,7 +198,11 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		return $data;
 	}
 
-	function loadFromHistoryRow( $row ) {
+	/**
+	 * @param stdClass $row
+	 * @return array
+	 */
+	public function loadFromHistoryRow( $row ) {
 		return [
 			'meta' => [
 				'history_id' => $row->afh_id,
@@ -211,7 +226,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	 * @param int $history_id
 	 * @return string
 	 */
-	function formatVersionLink( $timestamp, $history_id ) {
+	public function formatVersionLink( $timestamp, $history_id ) {
 		$filter = $this->mFilter;
 		$text = $this->getLanguage()->timeanddate( $timestamp, true );
 		$title = $this->getTitle( "history/$filter/item/$history_id" );
@@ -224,7 +239,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	/**
 	 * @return string
 	 */
-	function formatDiff() {
+	public function formatDiff() {
 		$oldVersion = $this->mOldVersion;
 		$newVersion = $this->mNewVersion;
 
@@ -330,7 +345,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	 * @param array $actions
 	 * @return array
 	 */
-	function stringifyActions( $actions ) {
+	public function stringifyActions( $actions ) {
 		$lines = [];
 
 		ksort( $actions );
@@ -349,7 +364,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	 * @param string $msg
 	 * @return string
 	 */
-	function getHeaderRow( $msg ) {
+	public function getHeaderRow( $msg ) {
 		$html = $this->msg( $msg )->parse();
 		$html = Xml::tags( 'th', [ 'colspan' => 3 ], $html );
 		$html = Xml::tags( 'tr', [ 'class' => 'mw-abusefilter-diff-header' ], $html );
@@ -363,7 +378,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	 * @param array|string $new
 	 * @return string
 	 */
-	function getDiffRow( $msg, $old, $new ) {
+	public function getDiffRow( $msg, $old, $new ) {
 		if ( !is_array( $old ) ) {
 			$old = explode( "\n", preg_replace( "/\\\r\\\n?/", "\n", $old ) );
 		}

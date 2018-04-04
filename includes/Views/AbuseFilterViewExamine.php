@@ -7,7 +7,10 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	public $mCounter, $mSearchUser, $mSearchPeriodStart, $mSearchPeriodEnd;
 	public $mTestFilter;
 
-	function show() {
+	/**
+	 * Shows the page
+	 */
+	public function show() {
 		$out = $this->getOutput();
 		$out->setPageTitle( $this->msg( 'abusefilter-examine' ) );
 		$out->addWikiMsg( 'abusefilter-examine-intro' );
@@ -27,7 +30,10 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		}
 	}
 
-	function showSearch() {
+	/**
+	 * Shows the search form
+	 */
+	public function showSearch() {
 		$RCMaxAge = $this->getConfig()->get( 'RCMaxAge' );
 		$min = wfTimestamp( TS_ISO_8601, time() - $RCMaxAge );
 		$max = wfTimestampNow();
@@ -65,7 +71,10 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		}
 	}
 
-	function showResults() {
+	/**
+	 * Show search results
+	 */
+	public function showResults() {
 		$changesList = new AbuseFilterChangesList( $this->getSkin(), $this->mTestFilter );
 		$output = $changesList->beginRecentChangesList();
 		$this->mCounter = 1;
@@ -81,7 +90,10 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$this->getOutput()->addHTML( $output );
 	}
 
-	function showExaminerForRC( $rcid ) {
+	/**
+	 * @param int $rcid
+	 */
+	public function showExaminerForRC( $rcid ) {
 		// Get data
 		$dbr = wfGetDB( DB_REPLICA );
 		$rcQuery = RecentChange::getQueryInfo();
@@ -107,7 +119,10 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$this->showExaminer( $vars );
 	}
 
-	function showExaminerForLogEntry( $logid ) {
+	/**
+	 * @param int $logid
+	 */
+	public function showExaminerForLogEntry( $logid ) {
 		// Get data
 		$dbr = wfGetDB( DB_REPLICA );
 		$row = $dbr->selectRow(
@@ -141,7 +156,10 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$this->showExaminer( $vars );
 	}
 
-	function showExaminer( $vars ) {
+	/**
+	 * @param AbuseFilterVariableHolder|null $vars
+	 */
+	public function showExaminer( $vars ) {
 		$output = $this->getOutput();
 		$output->enableOOUI();
 
@@ -192,7 +210,10 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$output->addHTML( $html );
 	}
 
-	function loadParameters() {
+	/**
+	 * Loads parameters from request
+	 */
+	public function loadParameters() {
 		$request = $this->getRequest();
 		$this->mSearchPeriodStart = $request->getText( 'wpSearchPeriodStart' );
 		$this->mSearchPeriodEnd = $request->getText( 'wpSearchPeriodEnd' );

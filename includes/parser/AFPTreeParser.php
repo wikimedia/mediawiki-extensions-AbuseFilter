@@ -26,6 +26,9 @@ class AFPTreeParser {
 		$this->resetState();
 	}
 
+	/**
+	 * Resets the state
+	 */
 	public function resetState() {
 		$this->mTokens = [];
 		$this->mPos = 0;

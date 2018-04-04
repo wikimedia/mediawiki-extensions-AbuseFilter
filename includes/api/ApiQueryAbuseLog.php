@@ -30,10 +30,17 @@
  * @ingroup Extensions
  */
 class ApiQueryAbuseLog extends ApiQueryBase {
+	/**
+	 * @param ApiQuery $query
+	 * @param string $moduleName
+	 */
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'afl' );
 	}
 
+	/**
+	 * @see ApiQueryBase::execute()
+	 */
 	public function execute() {
 		global $wgAbuseFilterIsCentral;
 
@@ -247,6 +254,10 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$result->addIndexedTagName( [ 'query', $this->getModuleName() ], 'item' );
 	}
 
+	/**
+	 * @see ApiQueryBase::getAllowedParams()
+	 * @return array
+	 */
 	public function getAllowedParams() {
 		global $wgAbuseFilterIsCentral;
 

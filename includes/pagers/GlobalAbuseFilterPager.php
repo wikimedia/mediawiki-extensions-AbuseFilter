@@ -4,13 +4,23 @@
  * Class to build paginated filter list for wikis using global abuse filters
  */
 class GlobalAbuseFilterPager extends AbuseFilterPager {
-	function __construct( $page, $conds, $linkRenderer ) {
+	/**
+	 * @param AbuseFilterViewList $page
+	 * @param array $conds
+	 * @param LinkRenderer $linkRenderer
+	 */
+	public function __construct( $page, $conds, $linkRenderer ) {
 		parent::__construct( $page, $conds, $linkRenderer, [ '', 'LIKE' ] );
 		global $wgAbuseFilterCentralDB;
 		$this->mDb = wfGetDB( DB_REPLICA, [], $wgAbuseFilterCentralDB );
 	}
 
-	function formatValue( $name, $value ) {
+	/**
+	 * @param string $name
+	 * @param string $value
+	 * @return string
+	 */
+	public function formatValue( $name, $value ) {
 		$lang = $this->getLanguage();
 		$row = $this->mCurrentRow;
 

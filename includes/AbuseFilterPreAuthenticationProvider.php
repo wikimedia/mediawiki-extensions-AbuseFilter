@@ -3,10 +3,22 @@
 use MediaWiki\Auth\AbstractPreAuthenticationProvider;
 
 class AbuseFilterPreAuthenticationProvider extends AbstractPreAuthenticationProvider {
+	/**
+	 * @param User $user
+	 * @param User $creator
+	 * @param AuthenticationRequest[] $reqs
+	 * @return StatusValue
+	 */
 	public function testForAccountCreation( $user, $creator, array $reqs ) {
 		return $this->testUser( $user, $creator, false );
 	}
 
+	/**
+	 * @param User $user
+	 * @param bool|string $autocreate
+	 * @param array $options
+	 * @return StatusValue
+	 */
 	public function testUserForCreation( $user, $autocreate, array $options = [] ) {
 		// if this is not an autocreation, testForAccountCreation already handled it
 		if ( $autocreate ) {

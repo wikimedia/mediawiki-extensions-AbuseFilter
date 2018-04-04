@@ -17,17 +17,24 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	 * @param SpecialAbuseLog $form
 	 * @param array $conds
 	 */
-	function __construct( $form, $conds = [] ) {
+	public function __construct( $form, $conds = [] ) {
 		$this->mForm = $form;
 		$this->mConds = $conds;
 		parent::__construct();
 	}
 
-	function formatRow( $row ) {
+	/**
+	 * @param object $row
+	 * @return string
+	 */
+	public function formatRow( $row ) {
 		return $this->mForm->formatRow( $row );
 	}
 
-	function getQueryInfo() {
+	/**
+	 * @return array
+	 */
+	public function getQueryInfo() {
 		$conds = $this->mConds;
 
 		$info = [
@@ -73,7 +80,10 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		$result->seek( 0 );
 	}
 
-	function getIndexField() {
+	/**
+	 * @return string
+	 */
+	public function getIndexField() {
 		return 'afl_timestamp';
 	}
 }

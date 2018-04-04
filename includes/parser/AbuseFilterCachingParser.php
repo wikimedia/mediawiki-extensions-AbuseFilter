@@ -31,11 +31,18 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 		return $version;
 	}
 
+	/**
+	 * Resets the state of the parser
+	 */
 	public function resetState() {
 		$this->mVars = new AbuseFilterVariableHolder;
 		$this->mCur = new AFPToken();
 	}
 
+	/**
+	 * @param string $code
+	 * @return AFPData
+	 */
 	public function intEval( $code ) {
 		static $cache = null;
 		if ( !$cache ) {
@@ -183,8 +190,8 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				list( $op, $leftOperand, $rightOperand ) = $node->children;
 				$leftOperand = $this->evalNode( $leftOperand );
 				$rightOperand = $this->evalNode( $rightOperand );
-				return AFPData::mulRel( $leftOperand, $rightOperand, $op, /* FIXME */
-					0 );
+				// FIXME
+				return AFPData::mulRel( $leftOperand, $rightOperand, $op, 0 );
 
 			case AFPTreeNode::SUM_REL:
 				list( $op, $leftOperand, $rightOperand ) = $node->children;

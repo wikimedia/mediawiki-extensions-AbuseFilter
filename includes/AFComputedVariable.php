@@ -12,7 +12,7 @@ class AFComputedVariable {
 	 * @param string $method
 	 * @param array $parameters
 	 */
-	function __construct( $method, $parameters ) {
+	public function __construct( $method, $parameters ) {
 		$this->mMethod = $method;
 		$this->mParameters = $parameters;
 	}
@@ -26,7 +26,7 @@ class AFComputedVariable {
 	 *
 	 * @return object
 	 */
-	function parseNonEditWikitext( $wikitext, $article ) {
+	public function parseNonEditWikitext( $wikitext, $article ) {
 		static $cache = [];
 
 		$cacheKey = md5( $wikitext ) . ':' . $article->getTitle()->getPrefixedText();
@@ -53,7 +53,7 @@ class AFComputedVariable {
 	 * @param string|User $user
 	 * @return User
 	 */
-	static function getUserObject( $user ) {
+	public static function getUserObject( $user ) {
 		if ( $user instanceof User ) {
 			$username = $user->getName();
 		} else {
@@ -93,7 +93,7 @@ class AFComputedVariable {
 	 * @param Title $title
 	 * @return Article
 	 */
-	static function articleFromTitle( $namespace, $title ) {
+	public static function articleFromTitle( $namespace, $title ) {
 		if ( isset( self::$articleCache["$namespace:$title"] ) ) {
 			return self::$articleCache["$namespace:$title"];
 		}
@@ -115,7 +115,7 @@ class AFComputedVariable {
 	 * @param WikiPage $article
 	 * @return array
 	 */
-	static function getLinksFromDB( $article ) {
+	public static function getLinksFromDB( $article ) {
 		// Stolen from ConfirmEdit
 		$id = $article->getId();
 		if ( !$id ) {
@@ -142,7 +142,7 @@ class AFComputedVariable {
 	 * @throws MWException
 	 * @throws AFPException
 	 */
-	function compute( $vars ) {
+	public function compute( $vars ) {
 		$parameters = $this->mParameters;
 		$result = null;
 

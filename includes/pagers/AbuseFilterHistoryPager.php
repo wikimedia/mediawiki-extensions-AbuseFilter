@@ -9,7 +9,7 @@ class AbuseFilterHistoryPager extends TablePager {
 	 * @param string $user User name
 	 * @param \MediaWiki\Linker\LinkRenderer $linkRenderer
 	 */
-	function __construct( $filter, $page, $user, $linkRenderer ) {
+	public function __construct( $filter, $page, $user, $linkRenderer ) {
 		$this->mFilter = $filter;
 		$this->mPage = $page;
 		$this->mUser = $user;
@@ -18,7 +18,11 @@ class AbuseFilterHistoryPager extends TablePager {
 		parent::__construct( $this->mPage->getContext() );
 	}
 
-	function getFieldNames() {
+	/**
+	 * @see Pager::getFieldNames()
+	 * @return array
+	 */
+	public function getFieldNames() {
 		static $headers = null;
 
 		if ( !empty( $headers ) ) {
@@ -47,7 +51,12 @@ class AbuseFilterHistoryPager extends TablePager {
 		return $headers;
 	}
 
-	function formatValue( $name, $value ) {
+	/**
+	 * @param string $name
+	 * @param string $value
+	 * @return string
+	 */
+	public function formatValue( $name, $value ) {
 		$lang = $this->getLanguage();
 
 		$row = $this->mCurrentRow;
@@ -134,7 +143,10 @@ class AbuseFilterHistoryPager extends TablePager {
 		return $formatted;
 	}
 
-	function getQueryInfo() {
+	/**
+	 * @return array
+	 */
+	public function getQueryInfo() {
 		$info = [
 			'tables' => [ 'abuse_filter_history', 'abuse_filter' ],
 			'fields' => [
@@ -180,15 +192,25 @@ class AbuseFilterHistoryPager extends TablePager {
 		return $info;
 	}
 
-	function getIndexField() {
+	/**
+	 * @return string
+	 */
+	public function getIndexField() {
 		return 'afh_timestamp';
 	}
 
-	function getDefaultSort() {
+	/**
+	 * @return string
+	 */
+	public function getDefaultSort() {
 		return 'afh_timestamp';
 	}
 
-	function isFieldSortable( $name ) {
+	/**
+	 * @param string $name
+	 * @return bool
+	 */
+	public function isFieldSortable( $name ) {
 		$sortable_fields = [ 'afh_timestamp', 'afh_user_text' ];
 		return in_array( $name, $sortable_fields );
 	}
@@ -198,7 +220,7 @@ class AbuseFilterHistoryPager extends TablePager {
 	 *
 	 * @return Title
 	 */
-	function getTitle() {
+	public function getTitle() {
 		return $this->mPage->getTitle( 'history/' . $this->mFilter );
 	}
 }

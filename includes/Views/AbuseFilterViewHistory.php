@@ -1,12 +1,19 @@
 <?php
 
 class AbuseFilterViewHistory extends AbuseFilterView {
-	function __construct( $page, $params ) {
+	/**
+	 * @param SpecialAbuseFilter $page
+	 * @param array $params
+	 */
+	public function __construct( $page, $params ) {
 		parent::__construct( $page, $params );
 		$this->mFilter = $page->mFilter;
 	}
 
-	function show() {
+	/**
+	 * Shows the page
+	 */
+	public function show() {
 		$out = $this->getOutput();
 		$filter = $this->getRequest()->getText( 'filter' ) ?: $this->mFilter;
 
@@ -16,7 +23,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			$out->setPageTitle( $this->msg( 'abusefilter-filter-log' ) );
 		}
 
-		# Check perms. abusefilter-modify is a superset of abusefilter-view-private
+		// Check perms. abusefilter-modify is a superset of abusefilter-view-private
 		if ( $filter && AbuseFilter::filterHidden( $filter )
 			&& !$this->getUser()->isAllowedAny( 'abusefilter-modify', 'abusefilter-view-private' )
 		) {
@@ -24,7 +31,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			return;
 		}
 
-		# Useful links
+		// Useful links
 		$links = [];
 		if ( $filter ) {
 			$links['abusefilter-history-backedit'] = $this->getTitle( $filter );
@@ -40,14 +47,16 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		$backlinks = $this->getLanguage()->pipeList( $links );
 		$out->addHTML( Xml::tags( 'p', null, $backlinks ) );
 
-		# For user
+		// For user
 		$user = User::getCanonicalName( $this->getRequest()->getText( 'user' ), 'valid' );
 		if ( $user ) {
 			$out->addSubtitle(
 				$this->msg(
 					'abusefilter-history-foruser',
-					Linker::userLink( 1 /* We don't really need to get a user ID */, $user ),
-					$user // For GENDER
+					// We don't really need to get a user ID
+					Linker::userLink( 1, $user ),
+					// For GENDER
+					$user
 				)->text()
 			);
 		}

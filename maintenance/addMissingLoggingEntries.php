@@ -17,6 +17,9 @@ class AddMissingLoggingEntries extends Maintenance {
 		$this->requireExtension( 'Abuse Filter' );
 	}
 
+	/**
+	 * @see Maintenance::execute
+	 */
 	public function execute() {
 		$logParams = [];
 		$afhRows = [];
@@ -55,8 +58,10 @@ class AddMissingLoggingEntries extends Maintenance {
 		);
 
 		foreach ( $logResult as $row ) {
-			$params = explode( "\n", $row->log_params ); // id . '\n' . filter
-			$afhId = $params[0]; // id
+			// id . '\n' . filter
+			$params = explode( "\n", $row->log_params );
+			// id
+			$afhId = $params[0];
 			// Forget this row had any issues - it just has a different timestamp in the log
 			unset( $afhRows[$afhId] );
 		}

@@ -1,6 +1,9 @@
 <?php
 
 class ApiAbuseFilterEvalExpression extends ApiBase {
+	/**
+	 * @see ApiBase::execute()
+	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
 
@@ -9,6 +12,10 @@ class ApiAbuseFilterEvalExpression extends ApiBase {
 		$this->getResult()->addValue( null, $this->getModuleName(), [ 'result' => $result ] );
 	}
 
+	/**
+	 * @see ApiBase::getAllowedParams()
+	 * @return array
+	 */
 	public function getAllowedParams() {
 		return [
 			'expression' => [

@@ -19,15 +19,24 @@ class AbuseFilterTokenizer {
 	// ** comes before *, etc. They are sorted to make it easy to spot
 	// such errors.
 	public static $operators = [
-		'!==', '!=', '!',   // Inequality
-		'**', '*',          // Multiplication/exponentiation
-		'/', '+', '-', '%', // Other arithmetic
-		'&', '|', '^',      // Logic
-		':=',               // Setting
-		'?', ':',           // Ternery
-		'<=', '<',          // Less than
-		'>=', '>',          // Greater than
-		'===', '==', '=',   // Equality
+		// Inequality
+		'!==', '!=', '!',
+		// Multiplication/exponentiation
+		'**', '*',
+		// Other arithmetic
+		'/', '+', '-', '%',
+		// Logic
+		'&', '|', '^',
+		// Setting
+		':=',
+		// Ternary
+		'?', ':',
+		// Less than
+		'<=', '<',
+		// Greater than
+		'>=', '>',
+		// Equality
+		'===', '==', '=',
 	];
 
 	public static $punctuation = [
@@ -63,7 +72,7 @@ class AbuseFilterTokenizer {
 	 * @throws AFPException
 	 * @throws AFPUserVisibleException
 	 */
-	static function tokenize( $code ) {
+	public static function tokenize( $code ) {
 		static $tokenizerCache = null;
 
 		if ( !$tokenizerCache ) {
@@ -237,7 +246,8 @@ class AbuseFilterTokenizer {
 						if ( preg_match( '/^[0-9A-Fa-f]{2}$/', $chr ) ) {
 							$chr = base_convert( $chr, 16, 10 );
 							$token .= chr( $chr );
-							$offset += 2; # \xXX -- 2 done later
+							// \xXX -- 2 done later
+							$offset += 2;
 						} else {
 							$token .= 'x';
 						}

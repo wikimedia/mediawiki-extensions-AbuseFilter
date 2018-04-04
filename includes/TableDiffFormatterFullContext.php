@@ -13,7 +13,7 @@ class TableDiffFormatterFullContext extends TableDiffFormatter {
 	 * @param Diff $diff
 	 * @return string The formatted output.
 	 */
-	function format( $diff ) {
+	public function format( $diff ) {
 		$xlen = $ylen = 0;
 
 		// Calculate the length of the left and the right side

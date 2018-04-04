@@ -7,7 +7,10 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	public $mShowNegative, $mTestPeriodStart, $mTestPeriodEnd, $mTestPage;
 	public $mTestUser;
 
-	function show() {
+	/**
+	 * Shows the page
+	 */
+	public function show() {
 		$out = $this->getOutput();
 
 		AbuseFilter::disableConditionLimit();
@@ -100,7 +103,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	/**
 	 * @fixme this is similar to AbuseFilterExaminePager::getQueryInfo
 	 */
-	function doTest() {
+	public function doTest() {
 		// Quick syntax check.
 		$out = $this->getOutput();
 		$result = AbuseFilter::checkSyntax( $this->mFilter );
@@ -178,7 +181,10 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$out->addHTML( $output );
 	}
 
-	function loadParameters() {
+	/**
+	 * Loads parameters from request
+	 */
+	public function loadParameters() {
 		$request = $this->getRequest();
 
 		$this->mFilter = $request->getText( 'wpTestFilter' );

@@ -2,6 +2,9 @@
 
 class ApiAbuseFilterCheckSyntax extends ApiBase {
 
+	/**
+	 * @see ApiBase::execute
+	 */
 	public function execute() {
 		// "Anti-DoS"
 		if ( !$this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
@@ -26,6 +29,10 @@ class ApiAbuseFilterCheckSyntax extends ApiBase {
 		$this->getResult()->addValue( null, $this->getModuleName(), $r );
 	}
 
+	/**
+	 * @see ApiBase::getAllowedParams
+	 * @return array
+	 */
 	public function getAllowedParams() {
 		return [
 			'filter' => [

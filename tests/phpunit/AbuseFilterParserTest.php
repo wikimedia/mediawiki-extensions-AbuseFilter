@@ -35,7 +35,7 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	/**
 	 * @return AbuseFilterParser
 	 */
-	static function getParser() {
+	public static function getParser() {
 		static $parser = null;
 		if ( !$parser ) {
 			$parser = new AbuseFilterParser();
@@ -46,7 +46,7 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	/**
 	 * @return AbuseFilterParser[]
 	 */
-	static function getParsers() {
+	public static function getParsers() {
 		static $parsers = null;
 		if ( !$parsers ) {
 			$parsers = [

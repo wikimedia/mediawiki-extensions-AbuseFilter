@@ -1,7 +1,10 @@
 <?php
 
 class AbuseFilterViewImport extends AbuseFilterView {
-	function show() {
+	/**
+	 * Shows the page
+	 */
+	public function show() {
 		$out = $this->getOutput();
 		if ( !$this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
 			$out->addWikiMsg( 'abusefilter-edit-notallowed' );

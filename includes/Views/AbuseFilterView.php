@@ -14,7 +14,7 @@ abstract class AbuseFilterView extends ContextSource {
 	 * @param SpecialAbuseFilter $page
 	 * @param array $params
 	 */
-	function __construct( $page, $params ) {
+	public function __construct( $page, $params ) {
 		$this->mPage = $page;
 		$this->mParams = $params;
 		$this->setContext( $this->mPage->getContext() );
@@ -25,11 +25,14 @@ abstract class AbuseFilterView extends ContextSource {
 	 * @param string $subpage
 	 * @return Title
 	 */
-	function getTitle( $subpage = '' ) {
+	public function getTitle( $subpage = '' ) {
 		return $this->mPage->getPageTitle( $subpage );
 	}
 
-	abstract function show();
+	/**
+	 * Function to show the page
+	 */
+	abstract public function show();
 
 	/**
 	 * @return bool
@@ -98,7 +101,7 @@ abstract class AbuseFilterView extends ContextSource {
 	 * @static
 	 * @return bool
 	 */
-	static function canViewPrivate() {
+	public static function canViewPrivate() {
 		global $wgUser;
 		static $canView = null;
 

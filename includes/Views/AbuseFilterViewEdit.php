@@ -5,7 +5,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param SpecialAbuseFilter $page
 	 * @param array $params
 	 */
-	function __construct( $page, $params ) {
+	public function __construct( $page, $params ) {
 		parent::__construct( $page, $params );
 		$this->mFilter = $page->mFilter;
 		$this->mHistoryID = $page->mHistoryID;
@@ -51,7 +51,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		return $finalStatus;
 	}
 
-	function show() {
+	/**
+	 * Shows the page
+	 */
+	public function show() {
 		$user = $this->getUser();
 		$out = $this->getOutput();
 		$request = $this->getRequest();
@@ -202,7 +205,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				}
 			}
 
-			$newRow = get_object_vars( $newRow ); // Convert from object to array
+			// Convert from object to array
+			$newRow = get_object_vars( $newRow );
 
 			// Set last modifier.
 			$newRow['af_timestamp'] = $dbw->timestamp( wfTimestampNow() );
@@ -222,7 +226,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			// Reset throttled marker, if we're re-enabling it.
 			$newRow['af_throttled'] = $newRow['af_throttled'] && !$newRow['af_enabled'];
-			$newRow['af_id'] = $new_id; // ID.
+			// ID.
+			$newRow['af_id'] = $new_id;
 
 			// T67807
 			// integer 1's & 0's might be better understood than booleans
@@ -379,7 +384,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @return bool|string False if there is a failure building the editor,
 	 *   otherwise the HTML text for the editor.
 	 */
-	function buildFilterEditor( $error, $filter, $history_id = null ) {
+	public function buildFilterEditor( $error, $filter, $history_id = null ) {
 		if ( $filter === null ) {
 			return false;
 		}
@@ -418,7 +423,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		// Read-only attribute
 		$readOnlyAttrib = [];
-		$cbReadOnlyAttrib = []; // For checkboxes
+		// For checkboxes
+		$cbReadOnlyAttrib = [];
 
 		$styleAttrib = [ 'style' => 'width:95%' ];
 
@@ -666,7 +672,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 *  corresponding to the abuse filter held in $row.
 	 * @return HTML text for an action editor.
 	 */
-	function buildConsequenceEditor( $row, $actions ) {
+	public function buildConsequenceEditor( $row, $actions ) {
 		global $wgAbuseFilterActions;
 
 		$enabledActions = array_filter( $wgAbuseFilterActions );
@@ -696,7 +702,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param stdClass $row abuse_filter row object
 	 * @return string
 	 */
-	function buildConsequenceSelector( $action, $set, $parameters, $row ) {
+	public function buildConsequenceSelector( $action, $set, $parameters, $row ) {
 		global $wgAbuseFilterActions, $wgMainCacheType;
 
 		if ( empty( $wgAbuseFilterActions[$action] ) ) {
@@ -704,7 +710,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		$readOnlyAttrib = [];
-		$cbReadOnlyAttrib = []; // For checkboxes
+		// For checkboxes
+		$cbReadOnlyAttrib = [];
 
 		if ( !$this->canEditFilter( $row ) ) {
 			$readOnlyAttrib['readonly'] = 'readonly';
@@ -952,7 +959,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param bool $readOnly
 	 * @return string
 	 */
-	function getExistingSelector( $warnMsg, $readOnly = false ) {
+	public function getExistingSelector( $warnMsg, $readOnly = false ) {
 		$existingSelector = new XmlSelect(
 			'wpFilterWarnMessage',
 			'mw-abusefilter-warn-message-existing',
@@ -1030,7 +1037,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @return array|null Either an associative array representing the filter,
 	 *  or NULL if the filter does not exist.
 	 */
-	function loadFilterData( $id ) {
+	public function loadFilterData( $id ) {
 		if ( $id == 'new' ) {
 			$obj = new stdClass;
 			$obj->af_pattern = '';
@@ -1105,7 +1112,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * The first element contains the abuse_filter database row,
 	 *  the second element is an array of related abuse_filter_action rows.
 	 */
-	function loadRequest( $filter, $history_id = null ) {
+	public function loadRequest( $filter, $history_id = null ) {
 		static $row = null;
 		static $actions = null;
 		$request = $this->getRequest();
@@ -1113,7 +1120,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		if ( !is_null( $actions ) && !is_null( $row ) ) {
 			return [ $row, $actions ];
 		} elseif ( $request->wasPosted() ) {
-			# Nothing, we do it all later
+			// Nothing, we do it all later
 		} elseif ( $history_id ) {
 			return $this->loadHistoryItem( $history_id );
 		} else {
@@ -1182,7 +1189,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						$throttleGroups = explode( "\n",
 							trim( $request->getText( 'wpFilterThrottleGroups' ) ) );
 
-						$parameters[0] = $this->mFilter; // For now, anyway
+						// For now, anyway
+						$parameters[0] = $this->mFilter;
 						$parameters[1] = "$throttleCount,$throttlePeriod";
 						$parameters = array_merge( $parameters, $throttleGroups );
 					} elseif ( $action == 'warn' ) {
@@ -1220,7 +1228,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * First element contains the abuse_filter row (as it was).
 	 * Second element contains an array of abuse_filter_action rows.
 	 */
-	function loadHistoryItem( $id ) {
+	public function loadHistoryItem( $id ) {
 		$dbr = wfGetDB( DB_REPLICA );
 
 		// Load the row.

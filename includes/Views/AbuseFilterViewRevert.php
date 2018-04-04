@@ -4,7 +4,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	public $origPeriodStart, $origPeriodEnd, $mPeriodStart, $mPeriodEnd;
 	public $mReason;
 
-	function show() {
+	/**
+	 * Shows the page
+	 */
+	public function show() {
 		$lang = $this->getLanguage();
 		$filter = $this->mPage->mFilter;
 
@@ -137,7 +140,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		}
 	}
 
-	function doLookup() {
+	/**
+	 * @return array
+	 */
+	public function doLookup() {
 		$periodStart = $this->mPeriodStart;
 		$periodEnd = $this->mPeriodEnd;
 		$filter = $this->mPage->mFilter;
@@ -183,7 +189,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		return $results;
 	}
 
-	function loadParameters() {
+	/**
+	 * Loads parameters from request
+	 */
+	public function loadParameters() {
 		$request = $this->getRequest();
 
 		$this->origPeriodStart = $request->getText( 'wpPeriodStart' );
@@ -194,7 +203,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$this->mReason = $request->getVal( 'wpReason' );
 	}
 
-	function attemptRevert() {
+	/**
+	 * @return bool
+	 */
+	public function attemptRevert() {
 		$filter = $this->mPage->mFilter;
 		$token = $this->getRequest()->getVal( 'editToken' );
 		if ( !$this->getUser()->matchEditToken( $token, "abusefilter-revert-$filter" ) ) {
@@ -226,7 +238,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 * @return bool
 	 * @throws MWException
 	 */
-	function revertAction( $action, $result ) {
+	public function revertAction( $action, $result ) {
 		switch ( $action ) {
 			case 'block':
 				$block = Block::newFromTarget( $result['user'] );

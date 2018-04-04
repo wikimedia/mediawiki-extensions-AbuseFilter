@@ -7,6 +7,10 @@ class AbuseFilterChangesList extends OldChangesList {
 	 */
 	private $testFilter;
 
+	/**
+	 * @param Skin $skin
+	 * @param string $testFilter
+	 */
 	public function __construct( Skin $skin, $testFilter ) {
 		parent::__construct( $skin );
 		$this->testFilter = $testFilter;
@@ -33,7 +37,7 @@ class AbuseFilterChangesList extends OldChangesList {
 
 		$s .= ' '.$this->msg( 'parentheses' )->rawParams( $examineLink )->escaped();
 
-		# If we have a match..
+		// If we have a match...
 		if ( isset( $rc->filterResult ) ) {
 			$class = $rc->filterResult ?
 				'mw-abusefilter-changeslist-match' :
@@ -43,6 +47,10 @@ class AbuseFilterChangesList extends OldChangesList {
 		}
 	}
 
+	/**
+	 * @param string &$s
+	 * @param RecentChange &$rc
+	 */
 	public function insertRollback( &$s, &$rc ) {
 		// Kill rollback links.
 	}

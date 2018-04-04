@@ -21,7 +21,8 @@ class AbuseFilter {
 	public static $condCount = 0;
 
 	/** @var array Map of (action ID => string[]) */
-	public static $tagsToSet = []; // FIXME: avoid global state here
+	// FIXME: avoid global state here
+	public static $tagsToSet = [];
 
 	public static $history_mappings = [
 		'af_pattern' => 'afh_pattern',
@@ -110,7 +111,7 @@ class AbuseFilter {
 			'article_namespace' => 'article-ns',
 			'article_text' => 'article-text',
 			'article_prefixedtext' => 'article-prefixedtext',
-			// 'article_views' => 'article-views', # May not be enabled, defined in getBuilderValues()
+			// 'article_views' => 'article-views', // May not be enabled, defined in getBuilderValues()
 			'moved_from_articleid' => 'movedfrom-id',
 			'moved_from_namespace' => 'movedfrom-ns',
 			'moved_from_text' => 'movedfrom-text',
@@ -154,8 +155,8 @@ class AbuseFilter {
 			'moved_to_restrictions_upload' => 'movedto-restrictions-upload',
 			'moved_to_recent_contributors' => 'movedto-recent-contributors',
 			'moved_to_first_contributor' => 'movedto-first-contributor',
-			// 'old_text' => 'old-text-stripped', # Disabled, performance
-			// 'old_html' => 'old-html', # Disabled, performance
+			// 'old_text' => 'old-text-stripped', // Disabled, performance
+			// 'old_html' => 'old-html', // Disabled, performance
 			'old_links' => 'old-links',
 			'minor_edit' => 'minor-edit',
 			'file_sha1' => 'file-sha1',
@@ -344,8 +345,10 @@ class AbuseFilter {
 		}
 	}
 
+	/**
+	 * For use in batch scripts and the like
+	 */
 	public static function disableConditionLimit() {
-		// For use in batch scripts and the like
 		self::$condLimitEnabled = false;
 	}
 
@@ -591,7 +594,8 @@ class AbuseFilter {
 			self::checkConditions(
 				$pattern,
 				$vars,
-				true /* ignore errors */
+				// Ignore errors
+				true
 			)
 		) {
 			// Record match.
@@ -705,8 +709,10 @@ class AbuseFilter {
 			return [ 0, 0 ];
 		}
 
-		$timeProfile = ( $curTotal / $curCount ) * 1000; // 1000 ms in a sec
-		$timeProfile = round( $timeProfile, 2 ); // Return in ms, rounded to 2dp
+		// 1000 ms in a sec
+		$timeProfile = ( $curTotal / $curCount ) * 1000;
+		// Return in ms, rounded to 2dp
+		$timeProfile = round( $timeProfile, 2 );
 
 		$condProfile = ( $curConds / $curCount );
 		$condProfile = round( $condProfile, 0 );
@@ -792,7 +798,7 @@ class AbuseFilter {
 			if ( $row->af_throttled
 				&& !empty( $wgAbuseFilterRestrictions[$row->afa_consequence] )
 			) {
-				# Don't do the action
+				// Don't do the action
 			} elseif ( $row->afa_filter != $row->af_id ) {
 				// We probably got a NULL, as it's a LEFT JOIN.
 				// Don't add it.
@@ -883,7 +889,8 @@ class AbuseFilter {
 
 					$actionsTaken[$filter][] = 'warn';
 
-					continue; // Don't do anything else.
+					// Don't do anything else.
+					continue;
 				} else {
 					// We already warned them
 					$session[$warnKey] = false;
@@ -1158,7 +1165,8 @@ class AbuseFilter {
 			if ( $globalIndex ) {
 				// Global wiki filter
 				if ( !$wgAbuseFilterCentralDB ) {
-					return null; // not enabled
+					// Not enabled
+					return null;
 				}
 
 				$id = $globalIndex;
@@ -1262,7 +1270,8 @@ class AbuseFilter {
 
 		// Only store the var dump if we're actually going to add log rows.
 		$var_dump = self::storeVarDump( $vars );
-		$var_dump = "stored-text:$var_dump"; // To distinguish from stuff stored directly
+		// To distinguish from stuff stored directly
+		$var_dump = "stored-text:$var_dump";
 
 		$stash = ObjectCache::getMainStashInstance();
 
@@ -1587,7 +1596,8 @@ class AbuseFilter {
 			case 'blockautopromote':
 				global $wgUser;
 				if ( !$wgUser->isAnon() ) {
-					$blockPeriod = (int)mt_rand( 3 * 86400, 7 * 86400 ); // Block for 3-7 days.
+					// Block for 3-7 days.
+					$blockPeriod = (int)mt_rand( 3 * 86400, 7 * 86400 );
 					ObjectCache::getMainStashInstance()->set(
 						self::autoPromoteBlockKey( $wgUser ), true, $blockPeriod
 					);
@@ -1750,12 +1760,14 @@ class AbuseFilter {
 		if ( $count > $rateCount ) {
 			wfDebugLog( 'AbuseFilter', "Throttle $key hit value $count -- maximum is $rateCount." );
 
-			return true; // THROTTLED
+			// THROTTLED
+			return true;
 		}
 
 		wfDebugLog( 'AbuseFilter', "Throttle $key not hit!" );
 
-		return false; // NOT THROTTLED
+		// NOT THROTTLED
+		return false;
 	}
 
 	/**
@@ -2049,12 +2061,13 @@ class AbuseFilter {
 	 * @param bool $externalForm
 	 * @return string
 	 */
-	static function buildEditBox( $rules, $textName = 'wpFilterRules', $addResultDiv = true,
+	public static function buildEditBox( $rules, $textName = 'wpFilterRules', $addResultDiv = true,
 		$canEdit = true, $externalForm = false ) {
 		global $wgOut;
 
 		$wgOut->enableOOUI();
-		$editorAttrib = [ 'dir' => 'ltr' ]; # Rules are in English
+		// Rules are in English
+		$editorAttrib = [ 'dir' => 'ltr' ];
 
 		global $wgUser;
 		$noTestAttrib = [];
@@ -2183,7 +2196,7 @@ class AbuseFilter {
 	 *
 	 * @return string
 	 */
-	static function buildFilterLoader() {
+	public static function buildFilterLoader() {
 		$loadText =
 			new OOUI\TextInputWidget(
 				[
@@ -2226,7 +2239,7 @@ class AbuseFilter {
 	 *
 	 * @return array
 	 */
-	static function compareVersions( $version_1, $version_2 ) {
+	public static function compareVersions( $version_1, $version_2 ) {
 		$compareFields = [
 			'af_public_comments',
 			'af_pattern',
@@ -2275,16 +2288,16 @@ class AbuseFilter {
 	 * @param stdClass $row
 	 * @return array
 	 */
-	static function translateFromHistory( $row ) {
-		# Translate into an abuse_filter row with some black magic.
-		# This is ever so slightly evil!
+	public static function translateFromHistory( $row ) {
+		// Translate into an abuse_filter row with some black magic.
+		// This is ever so slightly evil!
 		$af_row = new stdClass;
 
 		foreach ( self::$history_mappings as $af_col => $afh_col ) {
 			$af_row->$af_col = $row->$afh_col;
 		}
 
-		# Process flags
+		// Process flags
 
 		$af_row->af_deleted = 0;
 		$af_row->af_hidden = 0;
@@ -2296,7 +2309,7 @@ class AbuseFilter {
 			$af_row->$col_name = 1;
 		}
 
-		# Process actions
+		// Process actions
 		$actions_raw = unserialize( $row->afh_actions );
 		$actions_output = [];
 		if ( is_array( $actions_raw ) ) {
@@ -2315,7 +2328,7 @@ class AbuseFilter {
 	 * @param string $action
 	 * @return string
 	 */
-	static function getActionDisplay( $action ) {
+	public static function getActionDisplay( $action ) {
 		// Give grep a chance to find the usages:
 		// abusefilter-action-tag, abusefilter-action-throttle, abusefilter-action-warn,
 		// abusefilter-action-blockautopromote, abusefilter-action-block, abusefilter-action-degroup,
@@ -2618,7 +2631,7 @@ class AbuseFilter {
 	 * @param string[] $parameters
 	 * @return string
 	 */
-	static function formatAction( $action, $parameters ) {
+	public static function formatAction( $action, $parameters ) {
 		/** @var $wgLang Language */
 		global $wgLang;
 		if ( count( $parameters ) === 0 ||
@@ -2652,7 +2665,7 @@ class AbuseFilter {
 	 * @param string $value
 	 * @return string
 	 */
-	static function formatFlags( $value ) {
+	public static function formatFlags( $value ) {
 		/** @var $wgLang Language */
 		global $wgLang;
 		$flags = array_filter( explode( ',', $value ) );
@@ -2668,7 +2681,7 @@ class AbuseFilter {
 	 * @param string $filterID
 	 * @return string
 	 */
-	static function getGlobalFilterDescription( $filterID ) {
+	public static function getGlobalFilterDescription( $filterID ) {
 		global $wgAbuseFilterCentralDB;
 
 		if ( !$wgAbuseFilterCentralDB ) {
@@ -2698,7 +2711,7 @@ class AbuseFilter {
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @return string A name for that filter group, or the input.
 	 */
-	static function nameGroup( $group ) {
+	public static function nameGroup( $group ) {
 		// Give grep a chance to find the usages: abusefilter-group-default
 		$msg = "abusefilter-group-$group";
 
@@ -2723,7 +2736,7 @@ class AbuseFilter {
 	 * @return string|null the content of the revision as some kind of string,
 	 *        or an empty string if it can not be found
 	 */
-	static function revisionToString( $revision, $audience = Revision::FOR_THIS_USER ) {
+	public static function revisionToString( $revision, $audience = Revision::FOR_THIS_USER ) {
 		if ( !$revision instanceof Revision ) {
 			return '';
 		}
@@ -2750,7 +2763,7 @@ class AbuseFilter {
 	 *
 	 * @return string a suitable string representation of the content.
 	 */
-	static function contentToString( Content $content ) {
+	public static function contentToString( Content $content ) {
 		$text = null;
 
 		if ( Hooks::run( 'AbuseFilter-contentToString', [ $content, &$text ] ) ) {

@@ -10,7 +10,13 @@ class AbuseFilterPager extends TablePager {
 	 */
 	protected $linkRenderer;
 
-	function __construct( $page, $conds, $linkRenderer, $query ) {
+	/**
+	 * @param AbuseFilterViewList $page
+	 * @param array $conds
+	 * @param LinkRenderer $linkRenderer
+	 * @param array $query
+	 */
+	public function __construct( $page, $conds, $linkRenderer, $query ) {
 		$this->mPage = $page;
 		$this->mConds = $conds;
 		$this->linkRenderer = $linkRenderer;
@@ -18,7 +24,10 @@ class AbuseFilterPager extends TablePager {
 		parent::__construct( $this->mPage->getContext() );
 	}
 
-	function getQueryInfo() {
+	/**
+	 * @return array
+	 */
+	public function getQueryInfo() {
 		return [
 			'tables' => [ 'abuse_filter' ],
 			'fields' => [
@@ -40,7 +49,11 @@ class AbuseFilterPager extends TablePager {
 		];
 	}
 
-	function getFieldNames() {
+	/**
+	 * @see Pager::getFieldNames()
+	 * @return array
+	 */
+	public function getFieldNames() {
 		static $headers = null;
 
 		if ( !empty( $headers ) ) {
@@ -76,7 +89,12 @@ class AbuseFilterPager extends TablePager {
 		return $headers;
 	}
 
-	function formatValue( $name, $value ) {
+	/**
+	 * @param string $name
+	 * @param string $value
+	 * @return string
+	 */
+	public function formatValue( $name, $value ) {
 		$lang = $this->getLanguage();
 		$row = $this->mCurrentRow;
 
@@ -220,15 +238,26 @@ class AbuseFilterPager extends TablePager {
 		}
 	}
 
-	function getDefaultSort() {
+	/**
+	 * @return string
+	 */
+	public function getDefaultSort() {
 		return 'af_id';
 	}
 
-	function getTableClass() {
+	/**
+	 * @return string
+	 */
+	public function getTableClass() {
 		return 'TablePager mw-abusefilter-list-scrollable';
 	}
 
-	function getRowClass( $row ) {
+	/**
+	 * @see TablePager::getRowClass()
+	 * @param stdClass $row
+	 * @return string
+	 */
+	public function getRowClass( $row ) {
 		if ( $row->af_enabled ) {
 			return 'mw-abusefilter-list-enabled';
 		} elseif ( $row->af_deleted ) {
@@ -238,7 +267,11 @@ class AbuseFilterPager extends TablePager {
 		}
 	}
 
-	function isFieldSortable( $name ) {
+	/**
+	 * @param string $name
+	 * @return bool
+	 */
+	public function isFieldSortable( $name ) {
 		$sortable_fields = [
 			'af_id',
 			'af_enabled',
