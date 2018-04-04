@@ -397,7 +397,7 @@
 	"abusefilter-revert-periodstart": "Начало периода:",
 	"abusefilter-revert-periodend": "Окончание периода:",
 	"abusefilter-revert-search": "Выбор действий",
-	"abusefilter-revert-filter": "Фильтр:",
+	"abusefilter-revert-filter": "ID фильтра:",
 	"abusefilter-revert-preview-intro": "Ниже приведены выполненные фильтром злоупотреблений действия, которые будут отменены.\nПожалуйста, внимательно их проверьте и нажмите «{{int:abusefilter-revert-confirm}}», чтоб подтвердить свой выбор.",
 	"abusefilter-revert-confirm": "Подтвердить",
 	"abusefilter-revert-success": "Вы откатили все действия, выполненные фильтром злоупотреблений [[Special:AbuseFilter/$1|$2]].",
