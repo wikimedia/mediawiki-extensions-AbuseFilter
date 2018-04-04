@@ -799,7 +799,7 @@ class AbuseFilter {
 			} else {
 				$actionsByFilter[$prefix . $row->afa_filter][$row->afa_consequence] = [
 					'action' => $row->afa_consequence,
-					'parameters' => explode( "\n", $row->afa_parameters )
+					'parameters' => array_filter( explode( "\n", $row->afa_parameters ) )
 				];
 			}
 		}
