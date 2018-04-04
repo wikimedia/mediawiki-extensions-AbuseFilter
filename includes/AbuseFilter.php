@@ -1844,7 +1844,7 @@ class AbuseFilter {
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 */
 	public static function recordStats( $filters, $group = 'default' ) {
-		global $wgAbuseFilterConditionLimit;
+		global $wgAbuseFilterConditionLimit, $wgAbuseFilterProfileActionsCap;
 
 		$stash = ObjectCache::getMainStashInstance();
 
@@ -1859,7 +1859,7 @@ class AbuseFilter {
 
 		$storage_period = self::$statsStoragePeriod;
 
-		if ( !$total || $total > 10000 ) {
+		if ( !$total || $total > $wgAbuseFilterProfileActionsCap ) {
 			// This is for if the total doesn't exist, or has gone past 10,000.
 			// Recreate all the keys at the same time, so they expire together.
 			$stash->set( $total_key, 0, $storage_period );

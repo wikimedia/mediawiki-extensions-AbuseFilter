@@ -332,6 +332,10 @@
 			"value": 500,
 			"description": "Runtime in milliseconds before a filter is considered slow."
 		},
+		"AbuseFilterProfileActionsCap": {
+			"value": 10000,
+			"description": "Number of action that determines when to reset profiling stats."
+		},
 		"AbuseFilterRangeBlockSize" : {
 			"value": {
 				"IPv4": 16,
