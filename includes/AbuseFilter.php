@@ -1212,7 +1212,31 @@ class AbuseFilter {
 				$log_template['afl_user_text'] = $vars->getVar( 'accountname' )->toString();
 			}
 
-			self::addLogEntries( $actions_taken, $log_template, $vars, $group );
+			// If we executed actions using the cached result, then asynchronously run
+			// checkAllFilters again in order to populate lazy variables and
+			// record profiling data, see T191430 and T176291. The reason why we need to run
+			// this function again is that we want variables from mode === 'execute' (since stash mode
+			// doesn't store lazy-loaded vars), and to record stats only once (otherwise a single
+			// action may count as 2). However, we can't guess beforehand if we'll ever run in execute mode
+			// or just end up using cache data, so this is to make sure that the last run will always be in
+			// 'execute' mode. Also, run the function as deferredupdate to avoid lags, that is the main
+			// reason for which we use cache and stash mode.
+			// @todo this is TEMPORARY. A proper solution would be to: 1-save $vars in $cacheData and
+			// reuse them; 2-move self::recordStats from checkAllFilters to this method, after the call
+			// to recordRuntimeProfilingResult (but outside the if); 3-save per-filter profiling data in
+			// stash mode. 1 and 2 are easy, but 3 isn't because per-filter profiling is handled in
+			// checkFilter, and we'd need either a new global (bad!), to change return values (worse!)
+			// or to save data in cache directly in checkFilter (quite bad because other things are
+			// saved here). I2eab2e50356eeb5224446ee2d0df9c787ae95b80 could help.
+			if ( $isForEdit && $cacheData ) {
+				DeferredUpdates::addCallableUpdate( function () use (
+					$vars, $group, $title, $actions_taken, $log_template ) {
+					self::checkAllFilters( $vars, $group, $title, 'execute' );
+					self::addLogEntries( $actions_taken, $log_template, $vars, $group );
+				} );
+			} else {
+				self::addLogEntries( $actions_taken, $log_template, $vars, $group );
+			}
 		}
 
 		return $status;
