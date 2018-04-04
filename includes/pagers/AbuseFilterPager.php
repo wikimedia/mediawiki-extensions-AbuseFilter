@@ -143,7 +143,7 @@ class AbuseFilterPager extends TablePager {
 						htmlspecialchars( mb_substr(
 							$pattern,
 							$position - $minoffset + $length,
-							round( $remaining / 2 ) + 1,
+							$remaining - ( $position - $minoffset + $length ),
 							'UTF8'
 							)
 						);
