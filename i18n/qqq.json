@@ -122,6 +122,7 @@
 	"abusefilter-log-hide-id": "Field label in form to hide a log entry.",
 	"abusefilter-log-hide-hidden": "Checkbox label in form to hide a log entry.",
 	"abusefilter-log-hide-reason": "{{Identical|Reason}}",
+	"abusefilter-log-hide-reason-other": "{{Identical|Other/additional reason}}",
 	"abusefilter-log-hide-forbidden": "Message shown instead of a \"hide log entry\" form when not having the correct user rights.",
 	"abusefilter-logentry-suppress": "Log entry when hiding an abuse filter log entry. Parameters:\n* $1 is a link to the log ID with the log ID as description.",
 	"abusefilter-logentry-unsuppress": "Log entry when unhiding an abuse filter log entry. Parameters:\n* $1 is a link to the log ID with the log ID as description.",

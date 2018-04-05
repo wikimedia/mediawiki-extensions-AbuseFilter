@@ -250,15 +250,24 @@ class SpecialAbuseLog extends SpecialPage {
 			return;
 		}
 
+		$hideReasonsOther = $this->msg( 'revdelete-reasonotherlist' )->text();
+		$hideReasons = $this->msg( 'revdelete-reason-dropdown' )->text();
+		$hideReasons = Xml::listDropDownOptions( $hideReasons, [ 'other' => $hideReasonsOther ] );
+
 		$formInfo = [
 			'logid' => [
 				'type' => 'info',
-				'default' => $id,
+				'default' => (string)$id,
 				'label-message' => 'abusefilter-log-hide-id',
+			],
+			'dropdownreason' => [
+				'type' => 'select',
+				'options' => $hideReasons,
+				'label-message' => 'abusefilter-log-hide-reason'
 			],
 			'reason' => [
 				'type' => 'text',
-				'label-message' => 'abusefilter-log-hide-reason',
+				'label-message' => 'abusefilter-log-hide-reason-other',
 			],
 			'hidden' => [
 				'type' => 'toggle',
@@ -267,12 +276,12 @@ class SpecialAbuseLog extends SpecialPage {
 			],
 		];
 
-		$form = new HTMLForm( $formInfo, $this->getContext() );
-		$form->setTitle( $this->getPageTitle() );
-		$form->setWrapperLegend( $this->msg( 'abusefilter-log-hide-legend' )->text() );
-		$form->addHiddenField( 'hide', $id );
-		$form->setSubmitCallback( [ $this, 'saveHideForm' ] );
-		$form->show();
+		HTMLForm::factory( 'ooui', $formInfo, $this->getContext() )
+			->setTitle( $this->getPageTitle() )
+			->setWrapperLegend( $this->msg( 'abusefilter-log-hide-legend' )->text() )
+			->addHiddenField( 'hide', $id )
+			->setSubmitCallback( [ $this, 'saveHideForm' ] )
+			->show();
 	}
 
 	/**
@@ -291,10 +300,18 @@ class SpecialAbuseLog extends SpecialPage {
 			__METHOD__
 		);
 
+		$reason = $fields['dropdownreason'];
+		if ( $reason === 'other' ) {
+			$reason = $fields['reason'];
+		} elseif ( $fields['reason'] !== '' ) {
+			$reason .=
+				$this->msg( 'colon-separator' )->inContentLanguage()->text() . $fields['reason'];
+		}
+
 		$logPage = new LogPage( 'suppress' );
 		$action = $fields['hidden'] ? 'hide-afl' : 'unhide-afl';
 
-		$logPage->addEntry( $action, $this->getPageTitle( $logid ), $fields['reason'] );
+		$logPage->addEntry( $action, $this->getPageTitle( $logid ), $reason );
 
 		$this->getOutput()->redirect( SpecialPage::getTitleFor( 'AbuseLog' )->getFullURL() );
 
