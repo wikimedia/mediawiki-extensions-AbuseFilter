@@ -29,16 +29,20 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$conds = [];
 		$deleted = $request->getVal( 'deletedfilters' );
 		$hidedisabled = $request->getBool( 'hidedisabled' );
-		if ( $this->canViewPrivate() ) {
-			$querypattern = $request->getVal( 'querypattern' );
-			$searchmode = $request->getVal( 'searchoption', 'LIKE' );
-		}
 		$defaultscope = 'all';
 		if ( isset( $wgAbuseFilterCentralDB ) && !$wgAbuseFilterIsCentral ) {
 			// Show on remote wikis as default only local filters
 			$defaultscope = 'local';
 		}
 		$scope = $request->getVal( 'rulescope', $defaultscope );
+
+		$searchEnabled = $this->canViewPrivate() && !( isset( $wgAbuseFilterCentralDB ) &&
+			!$wgAbuseFilterIsCentral && $scope == 'global' );
+
+		if ( $searchEnabled ) {
+			$querypattern = $request->getVal( 'querypattern' );
+			$searchmode = $request->getVal( 'searchoption', 'LIKE' );
+		}
 
 		if ( $deleted == 'show' ) {
 			# Nothing
@@ -99,7 +103,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 		$this->showList(
 			$conds,
-			compact( 'deleted', 'hidedisabled', 'querypattern', 'searchmode', 'scope' )
+			compact( 'deleted', 'hidedisabled', 'querypattern', 'searchmode', 'scope', 'searchEnabled' )
 		);
 	}
 
@@ -110,7 +114,13 @@ class AbuseFilterViewList extends AbuseFilterView {
 			Xml::element( 'h2', null, $this->msg( 'abusefilter-list' )->parse() )
 		);
 
-		if ( $this->canViewPrivate() ) {
+		$deleted = $optarray['deleted'];
+		$hidedisabled = $optarray['hidedisabled'];
+		$scope = $optarray['scope'];
+
+		$searchEnabled = $optarray['searchEnabled'];
+
+		if ( $searchEnabled ) {
 			$querypattern = $optarray['querypattern'];
 			$searchmode = $optarray['searchmode'];
 		} else {
@@ -118,16 +128,11 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$searchmode = '';
 		}
 
-		$deleted = $optarray['deleted'];
-		$hidedisabled = $optarray['hidedisabled'];
-		$scope = $optarray['scope'];
-
 		if ( isset( $wgAbuseFilterCentralDB ) && !$wgAbuseFilterIsCentral && $scope == 'global' ) {
 			$pager = new GlobalAbuseFilterPager(
 				$this,
 				$conds,
-				$this->linkRenderer,
-				[ $querypattern, $searchmode ]
+				$this->linkRenderer
 			);
 		} else {
 			$pager = new AbuseFilterPager(
@@ -184,7 +189,9 @@ class AbuseFilterViewList extends AbuseFilterView {
 			'selected' => $hidedisabled,
 		];
 
-		if ( $this->canViewPrivate() ) {
+		// ToDo: Since this is only for saving space, we should convert it
+		// to use a 'hide-if'
+		if ( $searchEnabled ) {
 			$formDescriptor['querypattern'] = [
 				'name' => 'querypattern',
 				'type' => 'text',
