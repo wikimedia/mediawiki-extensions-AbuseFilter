@@ -1,5 +1,7 @@
 <?php
 
+use Wikimedia\Rdbms\ResultWrapper;
+
 class AbuseLogPager extends ReverseChronologicalPager {
 	/**
 	 * @var SpecialAbuseLog
