@@ -2029,9 +2029,14 @@ class AbuseFilter {
 		$values = self::getBuilderValues();
 		$builderVariables = implode( '|', array_keys( $values['vars'] ) );
 		$builderFunctions = implode( '|', array_keys( AbuseFilterParser::$mFunctions ) );
+		// AbuseFilterTokenizer::$keywords also includes constants (true, false and null),
+		// but Ace redefines these constants afterwards so this will not be an issue
+		$builderKeywords = implode( '|', AbuseFilterTokenizer::$keywords );
+
 		return [
 			'variables' => $builderVariables,
 			'functions' => $builderFunctions,
+			'keywords' => $builderKeywords,
 			'aceReadOnly' => !$canEdit
 		];
 	}

@@ -6,7 +6,7 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 		TextHighlightRules = require( './text_highlight_rules' ).TextHighlightRules,
 		AFHighlightRules = function () {
 
-			var keywords = ( 'like|matches|in|rlike|regex|irlike|contains|if|then|else|end' ),
+			var keywords = ( mw.config.get( 'aceConfig' ).keywords ),
 				constants = ( 'true|false|null' ),
 				functions = ( mw.config.get( 'aceConfig' ).functions ),
 				variables = ( mw.config.get( 'aceConfig' ).variables ),
