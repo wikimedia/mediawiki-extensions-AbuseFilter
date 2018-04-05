@@ -220,6 +220,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 				'type' => 'radio',
 				'flatlist' => true,
 				'label-message' => 'abusefilter-list-options-searchoptions',
+				'hide-if' => [ '===', 'querypattern', '' ],
 				'options-messages' => [
 					'abusefilter-list-options-search-like' => 'LIKE',
 					'abusefilter-list-options-search-rlike' => 'RLIKE',
