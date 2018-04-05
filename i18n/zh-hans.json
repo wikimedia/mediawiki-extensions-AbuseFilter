@@ -132,6 +132,7 @@
 	"abusefilter-log-hide-id": "日志记录ID：",
 	"abusefilter-log-hide-hidden": "对公众隐藏此日志项目",
 	"abusefilter-log-hide-reason": "原因：",
+	"abusefilter-log-hide-reason-other": "其他/附加原因：",
 	"abusefilter-log-hide-forbidden": "您没有权限去隐藏此滥用记录条目。",
 	"abusefilter-logentry-suppress": "隐藏“[[$1]]”",
 	"abusefilter-logentry-unsuppress": "取消隐藏“[[$1]]”",

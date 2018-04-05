@@ -124,6 +124,7 @@
 	"abusefilter-log-hide-id": "Identifiant de l'entrée de journal :",
 	"abusefilter-log-hide-hidden": "Masquer cette entrée à la vue du public",
 	"abusefilter-log-hide-reason": "Motif :",
+	"abusefilter-log-hide-reason-other": "Motif autre ou supplémentaire :",
 	"abusefilter-log-hide-forbidden": "Vous n'avez pas le droit de masquer des entrées du journal des abus.",
 	"abusefilter-logentry-suppress": "a masqué [[$1]]",
 	"abusefilter-logentry-unsuppress": "a démasqué [[$1]]",

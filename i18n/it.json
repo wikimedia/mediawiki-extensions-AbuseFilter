@@ -103,6 +103,7 @@
 	"abusefilter-log-hide-id": "ID voce del registro:",
 	"abusefilter-log-hide-hidden": "Nascondere questa voce dalla visione pubblica",
 	"abusefilter-log-hide-reason": "Motivo:",
+	"abusefilter-log-hide-reason-other": "Altri motivi/dettagli:",
 	"abusefilter-log-hide-forbidden": "Non si dispone dei permessi necessari per nascondere le voci del registro abusi.",
 	"abusefilter-logentry-suppress": "ha nascosto \"[[$1]]\"",
 	"abusefilter-logentry-unsuppress": "ha reso visibile \"[[$1]]\"",

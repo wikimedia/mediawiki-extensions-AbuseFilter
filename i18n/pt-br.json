@@ -114,6 +114,7 @@
 	"abusefilter-log-hide-id": "ID da entrada:",
 	"abusefilter-log-hide-hidden": "Ocultar esta entrada da vista do público",
 	"abusefilter-log-hide-reason": "Motivo:",
+	"abusefilter-log-hide-reason-other": "Outro motivo/motivo adicional:",
 	"abusefilter-log-hide-forbidden": "Não tem permissão para ocultar\nentradas do registro de abusos.",
 	"abusefilter-logentry-suppress": "ocultou “[[$1]]”",
 	"abusefilter-logentry-unsuppress": "revelou “[[$1]]”",

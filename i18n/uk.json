@@ -19,7 +19,8 @@
 			"DonDrakon",
 			"Piramidion",
 			"Matma Rex",
-			"Максим Підліснюк"
+			"Максим Підліснюк",
+			"Avatar6"
 		]
 	},
 	"abusefilter-desc": "Застосовує до редагувань автоматичні евристики.",
@@ -157,6 +158,7 @@
 	"abusefilter-edit-save": "Зберегти фільтр",
 	"abusefilter-edit-id": "ІД фільтра:",
 	"abusefilter-edit-description": "Опис:\n:''(публічний) ''",
+	"abusefilter-edit-field-description": "опис",
 	"abusefilter-edit-group": "Група фільтру:",
 	"abusefilter-edit-flags": "Прапорці:",
 	"abusefilter-edit-enabled": "Увімкнути цей фільтр",
@@ -164,6 +166,7 @@
 	"abusefilter-edit-hidden": "Приховати деталі цього фільтру від загальнодоступного огляду",
 	"abusefilter-edit-global": "Глобальний фільтр",
 	"abusefilter-edit-rules": "Умови:",
+	"abusefilter-edit-field-conditions": "умови",
 	"abusefilter-edit-notes": "Примітки:",
 	"abusefilter-edit-lastmod": "Остання зміна фільтру:",
 	"abusefilter-edit-lastmod-text": "$1 користувачем $2",
@@ -193,6 +196,7 @@
 	"abusefilter-edit-done-subtitle": "Фільтр змінено",
 	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Ваші зміни]] на [[Special:AbuseFilter/$1|фільтр $3]] вже збережено.",
 	"abusefilter-edit-badsyntax": "У вказному вами фільтрі є синтаксична помилка.\nСинтаксичний аналізатор видав таке повідомлення: <pre>$1</pre>",
+	"abusefilter-edit-missingfields": " Наступні поля повинні бути заповнені обов'язково: $1",
 	"abusefilter-edit-restricted": "Ви не можете змінити цей фільтр, оскільки він містить одну або декілька обмежуючих дій. Будь ласка, попросіть користувача з відповідними правами змінити фільтр для вас.",
 	"abusefilter-edit-viewhistory": "Показати історію цього фільтра",
 	"abusefilter-edit-history": "Історія:",

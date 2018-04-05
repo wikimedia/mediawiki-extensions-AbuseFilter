@@ -115,6 +115,7 @@
 	"abusefilter-log-hide-id": "Logbuch-Eintrags-ID:",
 	"abusefilter-log-hide-hidden": "Diesen Eintrag vor der Öffentlichkeit verbergen",
 	"abusefilter-log-hide-reason": "Grund:",
+	"abusefilter-log-hide-reason-other": "Anderer/Zusätzlicher Grund:",
 	"abusefilter-log-hide-forbidden": "Du hast nicht die Berechtigung, die Einträge des Missbrauchsfilter-Logbuchs auszublenden.",
 	"abusefilter-logentry-suppress": "hat „[[$1]]“ verborgen",
 	"abusefilter-logentry-unsuppress": "hat „[[$1]]“ sichtbar gemacht",

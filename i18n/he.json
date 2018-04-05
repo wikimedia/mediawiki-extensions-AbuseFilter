@@ -101,6 +101,7 @@
 	"abusefilter-log-hide-id": "מספר רשומת היומן:",
 	"abusefilter-log-hide-hidden": "הסתרת רשומה זו מעיני הציבור",
 	"abusefilter-log-hide-reason": "סיבה:",
+	"abusefilter-log-hide-reason-other": "סיבה נוספת/אחרת:",
 	"abusefilter-log-hide-forbidden": "אין לך הרשאה להסתיר רשומות ביומן ההשחתות.",
 	"abusefilter-logentry-suppress": "\"[[$1]]\" הוסתר",
 	"abusefilter-logentry-unsuppress": "ההסתרה של \"[[$1]]\" בוטלה",

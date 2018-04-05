@@ -354,7 +354,7 @@
 	"abusefilter-revert-periodstart": "Начало на периода:",
 	"abusefilter-revert-periodend": "Край на периода:",
 	"abusefilter-revert-search": "Избор на действия",
-	"abusefilter-revert-filter": "Филтър:",
+	"abusefilter-revert-filter": "ID на филтъра:",
 	"abusefilter-revert-preview-intro": "По-долу е даден списък от действията, предприети от филтъра срещу злоупотреби, които ще бъдат върнати с това действие.\nМоля, внимателно ги проверете, и щракнете „{{int:abusefilter-revert-confirm}}“, за да потвърдите избора си.",
 	"abusefilter-revert-confirm": "Потвърждаване",
 	"abusefilter-revert-success": "Вие върнахте всички действия, предприети от филтъра срещу злоупотреби, поради [[Special:AbuseFilter/$1|филтър $2]].",
