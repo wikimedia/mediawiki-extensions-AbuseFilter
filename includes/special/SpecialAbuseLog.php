@@ -115,20 +115,11 @@ class SpecialAbuseLog extends SpecialPage {
 	public function loadParameters() {
 		$request = $this->getRequest();
 
-		$this->mSearchUser = trim( $request->getText( 'wpSearchUser' ) );
+		$searchUsername = trim( $request->getText( 'wpSearchUser' ) );
+		$userTitle = Title::newFromText( $searchUsername, NS_USER );
+		$this->mSearchUser = $userTitle ? $userTitle->getText() : null;
 		if ( $this->getConfig()->get( 'AbuseFilterIsCentral' ) ) {
 			$this->mSearchWiki = $request->getText( 'wpSearchWiki' );
-		}
-
-		$u = User::newFromName( $this->mSearchUser );
-		if ( $u ) {
-			// Username normalisation
-			$this->mSearchUser = $u->getName();
-		} elseif ( IP::isIPAddress( $this->mSearchUser ) ) {
-			// It's an IP
-			$this->mSearchUser = IP::sanitizeIP( $this->mSearchUser );
-		} else {
-			$this->mSearchUser = null;
 		}
 
 		$this->mSearchTitle = $request->getText( 'wpSearchTitle' );
@@ -163,6 +154,7 @@ class SpecialAbuseLog extends SpecialPage {
 			'SearchUser' => [
 				'label-message' => 'abusefilter-log-search-user',
 				'type' => 'user',
+				'ipallowed' => true,
 				'default' => $this->mSearchUser,
 			],
 			'SearchTitle' => [
