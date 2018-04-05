@@ -97,8 +97,6 @@ class AbuseFilterViewList extends AbuseFilterView {
 			}
 		}
 
-		$conds = $dbr->makeList( $conds, IDatabase::LIST_AND );
-
 		$this->showList(
 			$conds,
 			compact( 'deleted', 'hidedisabled', 'querypattern', 'searchmode', 'scope' )
