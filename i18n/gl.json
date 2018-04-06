@@ -4,7 +4,8 @@
 			"Elisardojm",
 			"Toliño",
 			"Banjo",
-			"Matma Rex"
+			"Matma Rex",
+			"Navhy"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas ás edicións",
@@ -356,7 +357,7 @@
 	"abusefilter-revert-periodstart": "Comezo do período:",
 	"abusefilter-revert-periodend": "Fin do período:",
 	"abusefilter-revert-search": "Seleccionar as accións",
-	"abusefilter-revert-filter": "Filtro:",
+	"abusefilter-revert-filter": "ID do filtro:",
 	"abusefilter-revert-preview-intro": "A continuación están as accións levadas a cabo polo filtro de abusos que serán revertidas con esta acción.\nPor favor, compróbeas con coidado e prema en \"{{int:abusefilter-revert-confirm}}\" para confirmar a súa selección.",
 	"abusefilter-revert-confirm": "Confirmar",
 	"abusefilter-revert-success": "Reverteu todas as accións feitas polo [[Special:AbuseFilter/$1|filtro de abusos $2]].",

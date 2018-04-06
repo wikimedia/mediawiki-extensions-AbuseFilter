@@ -92,6 +92,7 @@
 	"abusefilter-log-hide-id": "ID на записот:",
 	"abusefilter-log-hide-hidden": "Скриј го записов за јавноста",
 	"abusefilter-log-hide-reason": "Причина:",
+	"abusefilter-log-hide-reason-other": "Друга/дополнителна причина:",
 	"abusefilter-log-hide-forbidden": "Немате дозвола да криете записи во дневникот на злоупотреби.",
 	"abusefilter-logentry-suppress": "го притаи „[[$1]]“",
 	"abusefilter-logentry-unsuppress": "откриено „[[$1]]“",

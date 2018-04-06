@@ -110,6 +110,7 @@
 	"abusefilter-list-options-scope-all": "Локальни а, глобальни а бакъонаш",
 	"abusefilter-list-options-disabled": "ДӀадайина литтарш:",
 	"abusefilter-list-options-hidedisabled": "ДӀадайина литтарш дӀахьулданн",
+	"abusefilter-list-options-searchoptions": "Лахаран раж:",
 	"abusefilter-list-options-submit": "Карлаяккха",
 	"abusefilter-tools-text": "Кхузахь бу зулуман литтарш кепе дало гӀо деш болу гӀисрсаш.",
 	"abusefilter-tools-expr": "Гайтам хьажар",

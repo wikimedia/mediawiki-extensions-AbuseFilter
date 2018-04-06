@@ -72,6 +72,7 @@
 	"abusefilter-log-hide-id": "Identificant de l'entrada de jornal :",
 	"abusefilter-log-hide-hidden": "Amagar aquesta entrada a la vista del public",
 	"abusefilter-log-hide-reason": "Motiu :",
+	"abusefilter-log-hide-reason-other": "Autra rason / rason suplementària :",
 	"abusefilter-logentry-suppress": "a amagat [[$1]]",
 	"abusefilter-logentry-unsuppress": "a desamagat [[$1]]",
 	"abusefilter-management": "Gestion del filtre dels abuses",
