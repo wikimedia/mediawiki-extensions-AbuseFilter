@@ -1212,8 +1212,8 @@ class AbuseFilterParser {
 	 * normalize both sides of the search.
 	 *
 	 * @param bool $is_any
-	 * @param AFData $string
-	 * @param AFData[] $values
+	 * @param AFPData $string
+	 * @param AFPData[] $values
 	 * @param bool $normalize
 	 *
 	 * @return bool
