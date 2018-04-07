@@ -40,15 +40,16 @@
 	},
 	"GrantPermissions": {
 		"basic": {
-			"abusefilter-view": true,
 			"abusefilter-log": true,
-			"abusefilter-log-detail": true
+			"abusefilter-log-detail": true,
+			"abusefilter-view": true
 		},
 		"rollback": {
 			"abusefilter-revert": true
 		},
 		"viewrestrictedlogs": {
-			"abusefilter-hidden-log": true
+			"abusefilter-hidden-log": true,
+			"abusefilter-view-private": true
 		}
 	},
 	"SpecialPages": {
