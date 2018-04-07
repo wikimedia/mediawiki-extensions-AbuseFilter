@@ -114,6 +114,7 @@
 	"abusefilter-log-hide-id": "Identyfikator wpisu w rejestrze",
 	"abusefilter-log-hide-hidden": "Ukryj ten wpis przed widokiem publicznym",
 	"abusefilter-log-hide-reason": "Powód",
+	"abusefilter-log-hide-reason-other": "Inny lub dodatkowy powód:",
 	"abusefilter-log-hide-forbidden": "Nie masz uprawnień do ukrywania\nwpisów w rejestrze nadużyć.",
 	"abusefilter-logentry-suppress": "ukrył [[$1]]",
 	"abusefilter-logentry-unsuppress": "zakończył ukrywanie [[$1]]",
