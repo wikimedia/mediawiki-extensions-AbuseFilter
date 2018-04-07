@@ -405,7 +405,12 @@ class AFPData {
 		} elseif ( $a->type == self::DLIST && $b->type == self::DLIST ) {
 			return new AFPData( self::DLIST, array_merge( $a->toList(), $b->toList() ) );
 		} else {
-			return new AFPData( self::DFLOAT, $a->toFloat() + $b->toFloat() );
+			$res = $a->toNumber() + $b->toNumber();
+			if ( $res === (int)$res ) {
+				return new AFPData( self::DINT, $res );
+			} else {
+				return new AFPData( self::DFLOAT, $res );
+			}
 		}
 	}
 
@@ -415,7 +420,12 @@ class AFPData {
 	 * @return AFPData
 	 */
 	public static function sub( $a, $b ) {
-		return new AFPData( self::DFLOAT, $a->toFloat() - $b->toFloat() );
+		$res = $a->toNumber() - $b->toNumber();
+		if ( $res === (int)$res ) {
+			return new AFPData( self::DINT, $res );
+		} else {
+			return new AFPData( self::DFLOAT, $res );
+		}
 	}
 
 	/** Convert shorteners */
@@ -475,6 +485,13 @@ class AFPData {
 	 */
 	public function toInt() {
 		return self::castTypes( $this, self::DINT )->data;
+	}
+
+	/**
+	 * @return int|float
+	 */
+	public function toNumber() {
+		return $this->type == self::DINT ? $this->toInt() : $this->toFloat();
 	}
 
 	public function toList() {
