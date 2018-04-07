@@ -357,18 +357,8 @@ class AFPData {
 	 * @throws AFPException
 	 */
 	public static function mulRel( $a, $b, $op, $pos ) {
-		// Figure out the type.
-		if ( $a->type == self::DFLOAT || $b->type == self::DFLOAT ||
-			$a->toFloat() != $a->toString() || $b->toFloat() != $b->toString()
-		) {
-			$type = self::DFLOAT;
-			$a = $a->toFloat();
-			$b = $b->toFloat();
-		} else {
-			$type = self::DINT;
-			$a = $a->toInt();
-			$b = $b->toInt();
-		}
+		$a = $a->toNumber();
+		$b = $b->toNumber();
 
 		if ( $op != '*' && $b == 0 ) {
 			throw new AFPUserVisibleException( 'dividebyzero', $pos, [ $a ] );
@@ -385,10 +375,12 @@ class AFPData {
 			throw new AFPException( "Invalid multiplication-related operation: {$op}" );
 		}
 
-		if ( $type == self::DINT ) {
+		if ( $data === (int)$data ) {
 			$data = intval( $data );
+			$type = self::DINT;
 		} else {
 			$data = floatval( $data );
+			$type = self::DFLOAT;
 		}
 
 		return new AFPData( $type, $data );
