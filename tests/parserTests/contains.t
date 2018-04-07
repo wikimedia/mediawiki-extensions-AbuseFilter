@@ -1,0 +1,1 @@
+"quux" contains "ux" & ['1', 'foo'] contains '1' & !('fo obar' contains 'foo') & ['foo'] contains 'f'
