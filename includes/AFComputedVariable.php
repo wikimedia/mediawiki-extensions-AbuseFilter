@@ -154,11 +154,28 @@ class AFComputedVariable {
 
 		switch ( $this->mMethod ) {
 			case 'diff':
+				// Currently unused. Kept for backwards compatibility since it remains
+				// as mMethod for old variables. A fallthrough would instead change old results.
 				$text1Var = $parameters['oldtext-var'];
 				$text2Var = $parameters['newtext-var'];
 				$text1 = $vars->getVar( $text1Var )->toString();
 				$text2 = $vars->getVar( $text2Var )->toString();
 				$diffs = new Diff( explode( "\n", $text1 ), explode( "\n", $text2 ) );
+				$format = new UnifiedDiffFormatter();
+				$result = $format->format( $diffs );
+				break;
+			case 'diff-array':
+				// Introduced with T74329 to uniform the diff to MW's standard one.
+				// The difference with 'diff' method is noticeable when one of the
+				// $text is empty: it'll be treated as **really** empty, instead of
+				// an empty string.
+				$text1Var = $parameters['oldtext-var'];
+				$text2Var = $parameters['newtext-var'];
+				$text1 = $vars->getVar( $text1Var )->toString();
+				$text2 = $vars->getVar( $text2Var )->toString();
+				$text1 = $text1 === '' ? [] : explode( "\n", $text1 );
+				$text2 = $text2 === '' ? [] : explode( "\n", $text2 );
+				$diffs = new Diff( $text1, $text2 );
 				$format = new UnifiedDiffFormatter();
 				$result = $format->format( $diffs );
 				break;
