@@ -4,7 +4,8 @@
 			"LexArt",
 			"Тест",
 			"Mikalai Udodau",
-			"Дзяніс Тутэйшы"
+			"Дзяніс Тутэйшы",
+			"Artsiom91"
 		]
 	},
 	"abusefilter": "Настройкі фільтра злоўжыванняў",
@@ -17,6 +18,7 @@
 	"abusefilter-log-hide-reason": "Прычына:",
 	"abusefilter-list-edit": "Правіць",
 	"abusefilter-new": "Стварыць новы фільтр",
+	"abusefilter-list-options-scope-local": "Толькі лакальныя правілы",
 	"abusefilter-list-options-submit": "Абнавіць",
 	"abusefilter-edit-status-label": "Статыстыка:",
 	"abusefilter-edit-new": "Новы фільтр",
