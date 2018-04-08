@@ -179,7 +179,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		// Add test bit
 		if ( $this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
 			$tester = Xml::tags( 'h2', null, $this->msg( 'abusefilter-examine-test' )->parse() );
-			$tester .= AbuseFilter::buildEditBox( $this->mTestFilter, 'wpTestFilter', false );
+			$tester .= $this->buildEditBox( $this->mTestFilter, 'wpTestFilter', false );
 			$tester .= AbuseFilter::buildFilterLoader();
 			$html .= Xml::tags( 'div', [ 'id' => 'mw-abusefilter-examine-editor' ], $tester );
 			$html .= Xml::tags( 'p',

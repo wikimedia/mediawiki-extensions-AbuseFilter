@@ -19,7 +19,7 @@ class AbuseFilterViewTools extends AbuseFilterView {
 
 		// Expression evaluator
 		$eval = '';
-		$eval .= AbuseFilter::buildEditBox( $request->getText( 'wpTestExpr' ), 'wpTestExpr' );
+		$eval .= $this->buildEditBox( $request->getText( 'wpTestExpr' ), 'wpTestExpr' );
 
 		$eval .= Xml::tags( 'p', null,
 			Xml::element( 'input',
