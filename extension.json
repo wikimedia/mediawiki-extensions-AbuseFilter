@@ -28,6 +28,30 @@
 		"abusefilter-hide-log",
 		"abusefilter-modify-global"
 	],
+	"GroupPermissions": {
+		"*": {
+			"abusefilter-view": true,
+			"abusefilter-log": true
+		},
+		"sysop": {
+			"abusefilter-log-detail": true,
+			"abusefilter-modify": true,
+			"abusefilter-revert": true
+		}
+	},
+	"GrantPermissions": {
+		"basic": {
+			"abusefilter-view": true,
+			"abusefilter-log": true,
+			"abusefilter-log-detail": true
+		},
+		"rollback": {
+			"abusefilter-revert": true
+		},
+		"viewrestrictedlogs": {
+			"abusefilter-hidden-log": true
+		}
+	},
 	"SpecialPages": {
 		"AbuseLog": "SpecialAbuseLog",
 		"AbuseFilter": "SpecialAbuseFilter"
@@ -190,13 +214,6 @@
 		"remoteExtPath": "AbuseFilter/modules"
 	},
 	"callback": "AbuseFilterHooks::onRegistration",
-	"GrantPermissions": {
-		"basic": {
-			"abusefilter-view": true,
-			"abusefilter-log-detail": true,
-			"abusefilter-log": true
-		}
-	},
 	"Hooks": {
 		"EditFilterMergedContent": "AbuseFilterHooks::onEditFilterMergedContent",
 		"GetAutoPromoteGroups": "AbuseFilterHooks::onGetAutoPromoteGroups",
