@@ -166,7 +166,7 @@
 	"abusefilter-list-options-scope-local": "Règles locales uniquement",
 	"abusefilter-list-options-scope-global": "Règles globales uniquement",
 	"abusefilter-list-options-scope-all": "Règles locales et globales",
-	"abusefilter-list-options-disabled": "Filtres désactivés :",
+	"abusefilter-list-options-disabled": "Filtres désactivés :",
 	"abusefilter-list-options-hidedisabled": "Masquer les filtres désactivés",
 	"abusefilter-list-options-searchfield": "Rechercher dans les règles :",
 	"abusefilter-list-options-searchpattern": "Insérer un motif",

@@ -73,6 +73,7 @@
 	"abusefilter-log-hide-id": "Reģistra ieraksta ID:",
 	"abusefilter-log-hide-hidden": "Liegt šim ierakstam publisku redzamību",
 	"abusefilter-log-hide-reason": "Iemesls:",
+	"abusefilter-log-hide-reason-other": "Cits/papildu iemesls:",
 	"abusefilter-log-hide-forbidden": "Jums nav tiesību paslēpt ļaunprātīgās izmantošanas reģistra ierakstus.",
 	"abusefilter-logentry-suppress": "paslēpa \"[[$1]]\"",
 	"abusefilter-logentry-unsuppress": "parādīja \"[[$1]]\"",
