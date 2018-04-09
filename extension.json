@@ -35,8 +35,7 @@
 		},
 		"sysop": {
 			"abusefilter-log-detail": true,
-			"abusefilter-modify": true,
-			"abusefilter-revert": true
+			"abusefilter-modify": true
 		}
 	},
 	"GrantPermissions": {
