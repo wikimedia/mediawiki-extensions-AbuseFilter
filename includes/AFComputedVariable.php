@@ -364,6 +364,12 @@ class AFComputedVariable {
 				$s = $vars->getVar( $parameters['length-var'] )->toString();
 				$result = strlen( $s );
 				break;
+			case 'subtract':
+				// Currently unused, kept for backwards compatibility for old filters.
+				$v1 = $vars->getVar( $parameters['val1-var'] )->toFloat();
+				$v2 = $vars->getVar( $parameters['val2-var'] )->toFloat();
+				$result = $v1 - $v2;
+				break;
 			case 'subtract-int':
 				$v1 = $vars->getVar( $parameters['val1-var'] )->toInt();
 				$v2 = $vars->getVar( $parameters['val2-var'] )->toInt();
