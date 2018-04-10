@@ -113,6 +113,10 @@ class AbuseFilterTokenizer {
 
 		// Read past comments
 		while ( preg_match( self::COMMENT_START_RE, $code, $matches, 0, $offset ) ) {
+			if ( strpos( $code, '*/', $offset ) === false ) {
+				throw new AFPUserVisibleException(
+					'unclosedcomment', $offset, [] );
+			}
 			$offset = strpos( $code, '*/', $offset ) + 2;
 		}
 
