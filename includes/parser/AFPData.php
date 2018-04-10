@@ -136,7 +136,12 @@ class AFPData {
 	 * @return AFPData
 	 */
 	public static function pow( $base, $exponent ) {
-		return new AFPData( self::DFLOAT, pow( $base->toFloat(), $exponent->toFloat() ) );
+		$res = pow( $base->toNumber(), $exponent->toNumber() );
+		if ( $res === (int)$res ) {
+			return new AFPData( self::DINT, $res );
+		} else {
+			return new AFPData( self::DFLOAT, $res );
+		}
 	}
 
 	/**
