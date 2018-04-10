@@ -79,7 +79,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 					);
 					$this->showList(
 						[ 'af_deleted' => 0 ],
-						compact( 'deleted', 'hidedisabled', 'querypattern', 'searchmode', 'scope' )
+						compact( 'deleted', 'hidedisabled', 'querypattern', 'searchmode', 'scope', 'searchEnabled' )
 					);
 					return;
 				}
