@@ -119,12 +119,14 @@ class AbuseFilterPager extends TablePager {
 					}
 					$length = mb_strlen( $this->mQuery[0], 'UTF8' );
 				} elseif ( $this->mQuery[1] === 'RLIKE' ) {
+					Wikimedia\suppressWarnings();
 					$check = preg_match(
 						'/' . $this->mQuery[0] . '/',
 						$row->af_pattern,
 						$matches,
 						PREG_OFFSET_CAPTURE
 					);
+					Wikimedia\restoreWarnings();
 					// This may happen in case of catastrophic backtracking
 					if ( $check === false ) {
 						return htmlspecialchars( mb_substr( $row->af_pattern, 0, 50, 'UTF8' ) );
@@ -132,12 +134,14 @@ class AbuseFilterPager extends TablePager {
 					$length = mb_strlen( $matches[0][0], 'UTF8' );
 					$position = $matches[0][1];
 				} elseif ( $this->mQuery[1] === 'IRLIKE' ) {
+					Wikimedia\suppressWarnings();
 					$check = preg_match(
 						'/' . $this->mQuery[0] . '/i',
 						$row->af_pattern,
 						$matches,
 						PREG_OFFSET_CAPTURE
 					);
+					Wikimedia\restoreWarnings();
 					// This may happen in case of catastrophic backtracking
 					if ( $check === false ) {
 						return htmlspecialchars( mb_substr( $row->af_pattern, 0, 50, 'UTF8' ) );
