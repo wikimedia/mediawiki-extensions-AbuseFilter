@@ -1,1 +1,1 @@
-"foo" in "foobar" & "quux" contains "ux"
+"foo" in "foobar" & '1' in ['1', 'foo'] & !('foo' in 'fo obar') & 'f' in ['foo']
