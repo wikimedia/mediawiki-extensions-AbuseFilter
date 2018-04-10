@@ -1139,7 +1139,7 @@ class AbuseFilterParser {
 
 		$s = array_shift( $args );
 
-		return new AFPData( AFPData::DBOOL, self::contains( true, $s, $args ) );
+		return new AFPData( AFPData::DBOOL, self::contains( $s, $args, true ) );
 	}
 
 	/**
@@ -1158,7 +1158,7 @@ class AbuseFilterParser {
 
 		$s = array_shift( $args );
 
-		return new AFPData( AFPData::DBOOL, self::contains( false, $s, $args, false ) );
+		return new AFPData( AFPData::DBOOL, self::contains( $s, $args, false, false ) );
 	}
 
 	/**
@@ -1179,7 +1179,7 @@ class AbuseFilterParser {
 
 		$s = array_shift( $args );
 
-		return new AFPData( AFPData::DBOOL, self::contains( true, $s, $args, true ) );
+		return new AFPData( AFPData::DBOOL, self::contains( $s, $args, true, true ) );
 	}
 
 	/**
@@ -1200,7 +1200,7 @@ class AbuseFilterParser {
 
 		$s = array_shift( $args );
 
-		return new AFPData( AFPData::DBOOL, self::contains( false, $s, $args, true ) );
+		return new AFPData( AFPData::DBOOL, self::contains( $s, $args, false, true ) );
 	}
 
 	/**
@@ -1211,14 +1211,14 @@ class AbuseFilterParser {
 	 * Use normalize = true to make use of ccnorm and
 	 * normalize both sides of the search.
 	 *
-	 * @param bool $is_any
 	 * @param AFPData $string
 	 * @param AFPData[] $values
+	 * @param bool $is_any
 	 * @param bool $normalize
 	 *
 	 * @return bool
 	 */
-	protected static function contains( $is_any = true, $string, $values, $normalize = false ) {
+	protected static function contains( $string, $values, $is_any = true, $normalize = false ) {
 		$string = $string->toString();
 		if ( $string == '' ) {
 			return false;
