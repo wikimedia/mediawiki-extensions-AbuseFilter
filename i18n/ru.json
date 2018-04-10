@@ -31,7 +31,8 @@
 			"Smigles",
 			"Mouse21",
 			"Patrick Star",
-			"Happy13241"
+			"Happy13241",
+			"Jack who built the house"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -489,8 +490,8 @@
 	"abusefilter-diff-pattern": "Условия фильтрации",
 	"abusefilter-diff-invalid": "Не удаётся получить запрошенные версии",
 	"abusefilter-diff-backhistory": "Вернуться к истории фильтра",
-	"abusefilter-diff-prev": "Старые изменения",
-	"abusefilter-diff-next": "Новые изменения",
+	"abusefilter-diff-prev": "Предыдущая правка",
+	"abusefilter-diff-next": "Следующая правка",
 	"abusefilter-import-intro": "Вы можете использовать этот интерфейс для импорта фильтров из других вики.\nВ исходной вики, нажмите «{{int:abusefilter-edit-export}}» в разделе «{{int:abusefilter-edit-tools}}» интерфейса редактирования.\nСкопируйте содержание текстового поля, вставьте его на эту страницу и нажмите «{{int:abusefilter-import-submit}}».",
 	"abusefilter-import-submit": "Импортировать данные",
 	"abusefilter-group-default": "По умолчанию",

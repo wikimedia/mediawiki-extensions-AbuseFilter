@@ -269,7 +269,7 @@
 	"abusefilter-edit-builder-group-op-comparison": "Opérateurs de comparaison",
 	"abusefilter-edit-builder-op-comparison-equal": "Valeur égale à (==)",
 	"abusefilter-edit-builder-op-comparison-equal-strict": "Valeur et type égaux à (===)",
-	"abusefilter-edit-builder-op-comparison-notequal": "Valeur différente de (!=)",
+	"abusefilter-edit-builder-op-comparison-notequal": "Valeur non égale à (!=)",
 	"abusefilter-edit-builder-op-comparison-notequal-strict": "Valeur et type différents de (!==)",
 	"abusefilter-edit-builder-op-comparison-lt": "Inférieur à (<)",
 	"abusefilter-edit-builder-op-comparison-gt": "Supérieur à (>)",
