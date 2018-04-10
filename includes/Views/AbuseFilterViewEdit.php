@@ -867,18 +867,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					$defaultUserDuration = $wgAbuseFilterBlockDuration;
 				}
 				$suggestedBlocks = SpecialBlock::getSuggestedDurations();
-				// We need to have same values since it may happen that ipblocklist
-				// and one (or both) of the global variables, both meaning infinity,
-				// use different wording. In such case, when setting the default of
-				// the dropdowns it would fail.
-				if ( wfIsInfinity( end( $suggestedBlocks ) ) ) {
-					if ( wfIsInfinity( $defaultAnonDuration ) ) {
-						$defaultAnonDuration = end( $suggestedBlocks );
-					}
-					if ( wfIsInfinity( $defaultUserDuration ) ) {
-						$defaultUserDuration = end( $suggestedBlocks );
-					}
-				}
+				$suggestedBlocks = self::normalizeBlocks( $suggestedBlocks );
 
 				$output = '';
 				$checkbox = Xml::checkLabel(
@@ -1002,6 +991,37 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$existingSelector->addOption( $this->msg( 'abusefilter-edit-warn-other' )->text(), 'other' );
 
 		return $existingSelector->getHTML();
+	}
+
+	/**
+	 * @ToDo: Maybe we should also check if global values belong to $durations
+	 * and determine the right point to add them if missing.
+	 *
+	 * @param array $durations
+	 * @return array
+	 */
+	protected static function normalizeBlocks( $durations ) {
+		global $wgAbuseFilterBlockDuration, $wgAbuseFilterAnonBlockDuration;
+		// We need to have same values since it may happen that ipblocklist
+		// and one (or both) of the global variables use different wording
+		// for the same duration. In such case, when setting the default of
+		// the dropdowns it would fail.
+		foreach ( $durations as &$duration ) {
+			$currentDuration = SpecialBlock::parseExpiryInput( $duration );
+			$anonDuration = SpecialBlock::parseExpiryInput( $wgAbuseFilterAnonBlockDuration );
+			$userDuration = SpecialBlock::parseExpiryInput( $wgAbuseFilterBlockDuration );
+
+			if ( $duration !== $wgAbuseFilterBlockDuration &&
+				$currentDuration === $userDuration ) {
+				$duration = $wgAbuseFilterBlockDuration;
+
+			} elseif ( $duration !== $wgAbuseFilterAnonBlockDuration &&
+				$currentDuration === $anonDuration ) {
+				$duration = $wgAbuseFilterAnonBlockDuration;
+			}
+		}
+
+		return $durations;
 	}
 
 	/**
