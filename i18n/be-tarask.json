@@ -199,7 +199,7 @@
 	"abusefilter-edit-builder-op-arithmetic-pow": "Ступень (**)",
 	"abusefilter-edit-builder-group-op-comparison": "Апэратары параўнаньня",
 	"abusefilter-edit-builder-op-comparison-equal": "Значэньне, роўнае (==)",
-	"abusefilter-edit-builder-op-comparison-notequal": "Ня роўныя (!=)",
+	"abusefilter-edit-builder-op-comparison-notequal": "Значэньне, ня роўнае (!=)",
 	"abusefilter-edit-builder-op-comparison-lt": "Меней чым (<)",
 	"abusefilter-edit-builder-op-comparison-gt": "Болей чым (>)",
 	"abusefilter-edit-builder-op-comparison-lte": "Меней ці роўныя (<=)",

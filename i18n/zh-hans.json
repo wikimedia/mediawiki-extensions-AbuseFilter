@@ -431,6 +431,7 @@
 	"abusefilter-exception-overridebuiltin": "字符$1处非法覆盖内建变量“$2”。",
 	"abusefilter-exception-outofbounds": "字符$1处请求了不存在的列表项$2（列表长度 = $3）。",
 	"abusefilter-exception-notlist": "字符$1处向非数组请求了数组项。",
+	"abusefilter-exception-unclosedcomment": "字符$1处有未闭合注释。",
 	"abusefilter-action-tag": "标签",
 	"abusefilter-action-throttle": "频率控制",
 	"abusefilter-action-warn": "警告",

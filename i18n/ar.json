@@ -412,6 +412,7 @@
 	"abusefilter-exception-overridebuiltin": "تجاوز غير قانوني لمتغير موجود مسبقا \"$2\" عند الحرف $1.",
 	"abusefilter-exception-outofbounds": "طلب مدخلة قائمة غير موجودة $2 (حجم القائمة = $3) عند الحرف $1.",
 	"abusefilter-exception-notlist": "طلب مدخلة مصفوفة لغير مصفوفة عند الحرف $1.",
+	"abusefilter-exception-unclosedcomment": "تعليق غير مغلق في الحرف $1.",
 	"abusefilter-action-tag": "وسم",
 	"abusefilter-action-throttle": "حد",
 	"abusefilter-action-warn": "تحذير",

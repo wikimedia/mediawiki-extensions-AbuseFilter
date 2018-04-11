@@ -413,6 +413,7 @@
 	"abusefilter-exception-overridebuiltin": "Verbotenes Überschreiben der eingebauten Variable „$2“ an Zeichen $1.",
 	"abusefilter-exception-outofbounds": "Anforderung des nicht vorhandenen Listeneintrages $2 (Listengröße: $3) an Zeichen $1.",
 	"abusefilter-exception-notlist": "Anforderung eines Arrayelements aus einem Nicht-Array bei Zeichen „$1“.",
+	"abusefilter-exception-unclosedcomment": "Nicht abgeschlossener Kommentar bei Zeichen $1.",
 	"abusefilter-action-tag": "Markierung",
 	"abusefilter-action-throttle": "Drosseln",
 	"abusefilter-action-warn": "Warnen",

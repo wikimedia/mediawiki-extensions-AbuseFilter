@@ -422,6 +422,7 @@
 	"abusefilter-exception-overridebuiltin": "Écrasement interdit de la variable disponible par défaut « $2 » au caractère $1.",
 	"abusefilter-exception-outofbounds": "Demande de l'élément inexistant $2 (taille de la liste = $3) au caractère $1.",
 	"abusefilter-exception-notlist": "Demande d'un élément de tableau appliquée à un non-tableau au caractère $1.",
+	"abusefilter-exception-unclosedcomment": "Commentaire non fermé au caractère $1.",
 	"abusefilter-action-tag": "Baliser",
 	"abusefilter-action-throttle": "Limiter les modifications",
 	"abusefilter-action-warn": "Avertir l’utilisateur",

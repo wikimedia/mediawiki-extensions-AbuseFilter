@@ -33,6 +33,7 @@
 	"abusefilter-new": "Krear nova filtrilo",
 	"abusefilter-list-options": "Selekti",
 	"abusefilter-list-options-deleted-only": "Montrar nur filtrili efacita",
+	"abusefilter-list-options-scope-local": "Nur lokala reguli",
 	"abusefilter-tools-reautoconfirm-user": "Uzero:",
 	"abusefilter-edit-status-label": "Statistiko:",
 	"abusefilter-edit-new": "Nova filtrilo",

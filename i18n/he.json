@@ -397,6 +397,7 @@
 	"abusefilter-exception-overridebuiltin": "דריסה בלתי־תקינה של המשתנה המובנה \"$2\" בתו מספר $1.",
 	"abusefilter-exception-outofbounds": "ביקשו פריט רשימה בלתי קיים $2 (גודל הרשימה = $3) בתו מספר $1.",
 	"abusefilter-exception-notlist": "ביקשו פריט מערך מלא־מערך בתו מספר $1.",
+	"abusefilter-exception-unclosedcomment": "הערה בלתי־סגורה בתו מספר $1.",
 	"abusefilter-action-tag": "לתייג",
 	"abusefilter-action-throttle": "הגבלת תדירות פעולה",
 	"abusefilter-action-warn": "אזהרה",

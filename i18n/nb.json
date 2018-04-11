@@ -15,7 +15,8 @@
 			"Jeblad",
 			"Chameleon222",
 			"Matma Rex",
-			"Jon Harald Søby"
+			"Jon Harald Søby",
+			"Imre Eilertsen"
 		]
 	},
 	"abusefilter-desc": "Legger til automatisk heuristikk til redigeringer.",
@@ -100,6 +101,7 @@
 	"abusefilter-management": "Behandling av redigeringsfilter",
 	"abusefilter-list": "Alle filtere",
 	"abusefilter-list-id": "Filter-ID",
+	"abusefilter-list-pattern": "Mønster",
 	"abusefilter-list-status": "Status",
 	"abusefilter-list-public": "Offentlig beskrivelse",
 	"abusefilter-list-consequences": "Konsekvenser",
@@ -130,6 +132,7 @@
 	"abusefilter-list-options-scope-all": "Lokale og globale regler",
 	"abusefilter-list-options-disabled": "Deaktiverte filtre:",
 	"abusefilter-list-options-hidedisabled": "Skjul deaktiverte filtre",
+	"abusefilter-list-options-searchoptions": "Søkemodus:",
 	"abusefilter-list-options-submit": "Oppdater",
 	"abusefilter-tools-text": "Her er noen verktøy som kan være nyttige for å lage samt feilsøke redigeringsfiltere.",
 	"abusefilter-tools-expr": "Uttrykkstester",
@@ -153,6 +156,7 @@
 	"abusefilter-edit-save": "Lagre filter",
 	"abusefilter-edit-id": "Filter-ID:",
 	"abusefilter-edit-description": "Beskrivelse\n:''(vises offentlig)''",
+	"abusefilter-edit-field-description": "beskrivelse",
 	"abusefilter-edit-group": "Filtergruppe:",
 	"abusefilter-edit-flags": "Flagg:",
 	"abusefilter-edit-enabled": "Slå på dette filteret",
@@ -160,6 +164,7 @@
 	"abusefilter-edit-hidden": "Skjul detaljer om dette filteret fra offentlig visning",
 	"abusefilter-edit-global": "Globalt filter",
 	"abusefilter-edit-rules": "Regelverk:",
+	"abusefilter-edit-field-conditions": "betingelser",
 	"abusefilter-edit-notes": "Notater:",
 	"abusefilter-edit-lastmod": "Filter sist endret:",
 	"abusefilter-edit-lastmod-text": "$1 av $2",
