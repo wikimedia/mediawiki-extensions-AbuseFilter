@@ -389,6 +389,7 @@
 	"abusefilter-exception-overridebuiltin": "Illegal overriding of built-in variable \"$2\" at character $1.",
 	"abusefilter-exception-outofbounds": "Requesting non-existent list item $2 (list size = $3) at character $1.",
 	"abusefilter-exception-notlist": "Requesting array item of non-array at character $1.",
+	"abusefilter-exception-unclosedcomment": "Unclosed comment at character $1.",
 	"abusefilter-action-tag": "Tag",
 	"abusefilter-action-throttle": "Throttle",
 	"abusefilter-action-warn": "Warn",
