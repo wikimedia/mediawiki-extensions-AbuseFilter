@@ -54,31 +54,6 @@
 	}
 
 	/**
-	 * Converts index (used in textareas) in position {row, column} for ace
-	 *
-	 * @author danyaPostfactum (https://github.com/ajaxorg/ace/issues/1162)
-	 *
-	 * @param {string} index Part of data returned from the AJAX request
-	 * @return {Object} row and column
-	 */
-	function indexToPosition( index ) {
-		var lines = filterEditor.session.getDocument().$lines,
-			newLineChar = filterEditor.session.doc.getNewLineCharacter(),
-			currentIndex = 0,
-			row, length;
-		for ( row = 0; row < lines.length; row++ ) {
-			length = filterEditor.session.getLine( row ).length;
-			if ( currentIndex + length >= index ) {
-				return {
-					row: row,
-					column: index - currentIndex
-				};
-			}
-			currentIndex += length + newLineChar.length;
-		}
-	}
-
-	/**
 	 * Switch between Ace Editor and classic textarea
 	 */
 	function switchEditor() {
@@ -120,7 +95,8 @@
 
 			if ( useAce ) {
 				filterEditor.focus();
-				position = indexToPosition( data.character );
+				// Convert index (used in textareas) in position {row, column} for ace
+				position = filterEditor.session.getDocument().indexToPosition( data.character );
 				filterEditor.navigateTo( position.row, position.column );
 				filterEditor.scrollToRow( position.row );
 			} else {
