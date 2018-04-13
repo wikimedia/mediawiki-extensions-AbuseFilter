@@ -151,7 +151,7 @@
 	"abusefilter-edit-lastmod": "Ultime modification del filtro:",
 	"abusefilter-edit-lastmod-text": "$1 per $2",
 	"abusefilter-edit-hitcount": "Accessos al filtro:",
-	"abusefilter-edit-consequences": "Actiones a prender in caso de correspondentia",
+	"abusefilter-edit-consequences": "Actiones a prender si corresponde",
 	"abusefilter-edit-action-warn": "Interprender iste actiones post haber date un advertimento al usator",
 	"abusefilter-edit-action-disallow": "Impedir que le usator executa le action in question",
 	"abusefilter-edit-action-blockautopromote": "Revocar le stato autoconfirmate del usator",

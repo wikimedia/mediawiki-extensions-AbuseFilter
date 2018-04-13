@@ -344,7 +344,7 @@
 	"abusefilter-revert-periodstart": "Пачатак пэрыяду:",
 	"abusefilter-revert-periodend": "Канец пэрыяду:",
 	"abusefilter-revert-search": "Выбар дзеяньняў",
-	"abusefilter-revert-filter": "Фільтар:",
+	"abusefilter-revert-filter": "Ідэнтыфікатар фільтру:",
 	"abusefilter-revert-preview-intro": "Ніжэй знаходзяцца дзеяньні, выкананыя фільтрам злоўжываньняў, якія будуць адмененыя гэтым дзеяньнем.\nКалі ласка, праверце іх уважліва і націсьніце «{{int:abusefilter-revert-confirm}}», каб пацьвердзіць ваш выбар.",
 	"abusefilter-revert-confirm": "Пацьвердзіць",
 	"abusefilter-revert-success": "Вы адкацілі ўсе дзеяньні, выкананыя фільтрам злоўжываньняў [[Special:AbuseFilter/$1|filter $2]].",
