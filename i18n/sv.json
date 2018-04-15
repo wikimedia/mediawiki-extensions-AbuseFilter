@@ -416,6 +416,7 @@
 	"abusefilter-exception-overridebuiltin": "Ogiltig överskrivning av inbyggd variabel \"$2\" vid teckenposition $1.",
 	"abusefilter-exception-outofbounds": "Begärde icke-existerande listelement $2 (listans storkel = $3) vid teckenposition $1.",
 	"abusefilter-exception-notlist": "Begär tabellelement från en icketabell vid teckenposition $1.",
+	"abusefilter-exception-unclosedcomment": "Öppen kommentar vid tecken $1.",
 	"abusefilter-action-tag": "Tagg",
 	"abusefilter-action-throttle": "Begränsning",
 	"abusefilter-action-warn": "Varna",

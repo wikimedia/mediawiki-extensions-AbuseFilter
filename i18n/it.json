@@ -384,6 +384,7 @@
 	"abusefilter-exception-overridebuiltin": "Sovrascrittura illegale di variabile predefinita \"$2\" al carattere $1.",
 	"abusefilter-exception-outofbounds": "Richiesta di voce inesistente dell'elenco $2 (dimensione lista = $3) al carattere $1.",
 	"abusefilter-exception-notlist": "Richiesta di un elemento di array da un non array al carattere $1.",
+	"abusefilter-exception-unclosedcomment": "Commento non chiuso in corrispondenza del carattere $1.",
 	"abusefilter-action-tag": "Etichetta",
 	"abusefilter-action-throttle": "Rallenta",
 	"abusefilter-action-warn": "Avvisa",
