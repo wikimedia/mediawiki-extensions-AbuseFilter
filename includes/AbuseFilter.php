@@ -2070,16 +2070,14 @@ class AbuseFilter {
 					] + $noTestAttrib
 				);
 
-			$rules = Xml::element( 'div', $editorAttrib, $rules );
+			$rulesContainer = Xml::element( 'div', $editorAttrib, $rules );
 
-			// Dummy textarea for submitting form
-			$textareaAttribs = [
-				'style' => 'display: none'
-			];
+			// Dummy textarea for submitting form and to use in case JS is disabled
+			$textareaAttribs = [];
 			if ( $externalForm ) {
 				$textareaAttribs['form'] = 'wpFilterForm';
 			}
-			$rules .= Xml::textarea( $textName, '', 40, 15, $textareaAttribs );
+			$rulesContainer .= Xml::textarea( $textName, $rules, 40, 15, $textareaAttribs );
 
 			$editorConfig = self::getAceConfig( $canEdit );
 
@@ -2092,7 +2090,7 @@ class AbuseFilter {
 			if ( $externalForm ) {
 				$editorAttrib['form'] = 'wpFilterForm';
 			}
-			$rules = Xml::textarea( $textName, $rules, 40, 15, $editorAttrib );
+			$rulesContainer = Xml::textarea( $textName, $rules, 40, 15, $editorAttrib );
 		}
 
 		if ( $canEdit ) {
@@ -2154,11 +2152,11 @@ class AbuseFilter {
 				'classes' => [ 'mw-abusefilter-edit-buttons' ]
 			] );
 
-			$rules .= $fieldSet;
+			$rulesContainer .= $fieldSet;
 		}
 
 		if ( $addResultDiv ) {
-			$rules .= Xml::element( 'div',
+			$rulesContainer .= Xml::element( 'div',
 				[ 'id' => 'mw-abusefilter-syntaxresult', 'style' => 'display: none;' ],
 				'&#160;' );
 		}
@@ -2167,7 +2165,7 @@ class AbuseFilter {
 		$wgOut->addModules( 'ext.abuseFilter.edit' );
 		self::$editboxName = $textName;
 
-		return $rules;
+		return $rulesContainer;
 	}
 
 	/**

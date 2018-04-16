@@ -78,6 +78,7 @@ div.mw-abusefilter-editor {
 	height: 30em;
 	line-height: 1.5em;
 	border: 1px solid #a2a9b1;
+	display: none;
 }
 
 fieldset.mw-abusefilter-edit-buttons {
