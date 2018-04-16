@@ -354,7 +354,6 @@
 		if ( $( '#wpAceFilterEditor' ).length ) {
 			// CodeEditor is installed.
 			mw.loader.using( [ 'ext.abuseFilter.ace' ] ).then( function () {
-				useAce = true;
 				$filterBox = $( '#wpAceFilterEditor' );
 
 				filterEditor = ace.edit( 'wpAceFilterEditor' );
@@ -378,8 +377,8 @@
 				filterEditor.setReadOnly( readOnly );
 				filterEditor.$blockScrolling = Infinity;
 
-				// Copy editor in dummy textarea
-				$plainTextBox.val( filterEditor.getSession().getValue() );
+				// Display Ace editor
+				switchEditor();
 
 				// Hide the syntax ok message when the text changes and sync dummy box
 				$filterBox.keyup( function () {
