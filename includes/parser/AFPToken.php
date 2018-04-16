@@ -30,13 +30,13 @@
  * * BoolNeg (BN) - ! operation
  * * SpecialOperators (SO) - in and like
  * * Unarys (U) - plus and minus in cases like -5 or -(2 * +2)
- * * ListElement (LE) - list[number]
+ * * ArrayElement (AE) - array[number]
  * * Braces (B) - ( and )
  * * Functions (F)
  * * Atom (A) - return value
  */
 class AFPToken {
-	// Types of tken
+	// Types of token
 	const TNONE = 'T_NONE';
 	const TID = 'T_ID';
 	const TKEYWORD = 'T_KEYWORD';

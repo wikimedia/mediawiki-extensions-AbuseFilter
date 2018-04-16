@@ -37,7 +37,7 @@ class AFPUserVisibleException extends AFPException {
 		// abusefilter-exception-dividebyzero, abusefilter-exception-unrecognisedvar
 		// abusefilter-exception-notenoughargs, abusefilter-exception-regexfailure
 		// abusefilter-exception-overridebuiltin, abusefilter-exception-outofbounds
-		// abusefilter-exception-notlist, abusefilter-exception-unclosedcomment
+		// abusefilter-exception-notarray, abusefilter-exception-unclosedcomment
 		// abusefilter-exception-invalidiprange
 		return wfMessage(
 			'abusefilter-exception-' . $this->mExceptionID,

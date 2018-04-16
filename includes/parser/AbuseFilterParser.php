@@ -285,11 +285,11 @@ class AbuseFilterParser {
 						[ $varname ]
 					);
 				}
-				$list = $this->mVars->getVar( $varname );
-				if ( $list->type != AFPData::DLIST ) {
-					throw new AFPUserVisibleException( 'notlist', $this->mCur->pos, [] );
+				$array = $this->mVars->getVar( $varname );
+				if ( $array->type != AFPData::DARRAY ) {
+					throw new AFPUserVisibleException( 'notarray', $this->mCur->pos, [] );
 				}
-				$list = $list->toList();
+				$array = $array->toArray();
 				$this->move();
 				if ( $this->mCur->type == AFPToken::TSQUAREBRACKET && $this->mCur->value == ']' ) {
 					$idx = 'new';
@@ -303,7 +303,7 @@ class AbuseFilterParser {
 						throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos,
 							[ ']', $this->mCur->type, $this->mCur->value ] );
 					}
-					if ( count( $list ) <= $idx ) {
+					if ( count( $array ) <= $idx ) {
 						throw new AFPUserVisibleException( 'outofbounds', $this->mCur->pos,
 							[ $idx, count( $result->data ) ] );
 					}
@@ -313,11 +313,11 @@ class AbuseFilterParser {
 					$this->move();
 					$this->doLevelSet( $result );
 					if ( $idx === 'new' ) {
-						$list[] = $result;
+						$array[] = $result;
 					} else {
-						$list[$idx] = $result;
+						$array[$idx] = $result;
 					}
-					$this->setUserVariable( $varname, new AFPData( AFPData::DLIST, $list ) );
+					$this->setUserVariable( $varname, new AFPData( AFPData::DARRAY, $array ) );
 
 					return;
 				} else {
@@ -607,7 +607,7 @@ class AbuseFilterParser {
 		$op = $this->mCur->value;
 		if ( $this->mCur->type == AFPToken::TOP && ( $op == "+" || $op == "-" ) ) {
 			$this->move();
-			$this->doLevelListElements( $result );
+			$this->doLevelArrayElements( $result );
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
 				return;
@@ -616,7 +616,7 @@ class AbuseFilterParser {
 				$result = AFPData::unaryMinus( $result );
 			}
 		} else {
-			$this->doLevelListElements( $result );
+			$this->doLevelArrayElements( $result );
 		}
 	}
 
@@ -624,7 +624,7 @@ class AbuseFilterParser {
 	 * @param AFPData &$result
 	 * @throws AFPUserVisibleException
 	 */
-	protected function doLevelListElements( &$result ) {
+	protected function doLevelArrayElements( &$result ) {
 		$this->doLevelBraces( $result );
 		while ( $this->mCur->type == AFPToken::TSQUAREBRACKET && $this->mCur->value == '[' ) {
 			$idx = new AFPData();
@@ -634,14 +634,14 @@ class AbuseFilterParser {
 					[ ']', $this->mCur->type, $this->mCur->value ] );
 			}
 			$idx = $idx->toInt();
-			if ( $result->type == AFPData::DLIST ) {
+			if ( $result->type == AFPData::DARRAY ) {
 				if ( count( $result->data ) <= $idx ) {
 					throw new AFPUserVisibleException( 'outofbounds', $this->mCur->pos,
 						[ $idx, count( $result->data ) ] );
 				}
 				$result = $result->data[$idx];
 			} else {
-				throw new AFPUserVisibleException( 'notlist', $this->mCur->pos, [] );
+				throw new AFPUserVisibleException( 'notarray', $this->mCur->pos, [] );
 			}
 			$this->move();
 		}
@@ -784,7 +784,7 @@ class AbuseFilterParser {
 				}
 			case AFPToken::TSQUAREBRACKET:
 				if ( $this->mCur->value == '[' ) {
-					$list = [];
+					$array = [];
 					while ( true ) {
 						$this->move();
 						if ( $this->mCur->type == AFPToken::TSQUAREBRACKET && $this->mCur->value == ']' ) {
@@ -792,7 +792,7 @@ class AbuseFilterParser {
 						}
 						$item = new AFPData();
 						$this->doLevelSet( $item );
-						$list[] = $item;
+						$array[] = $item;
 						if ( $this->mCur->type == AFPToken::TSQUAREBRACKET && $this->mCur->value == ']' ) {
 							break;
 						}
@@ -804,7 +804,7 @@ class AbuseFilterParser {
 							);
 						}
 					}
-					$result = new AFPData( AFPData::DLIST, $list );
+					$result = new AFPData( AFPData::DARRAY, $array );
 					break;
 				}
 			default:
@@ -912,8 +912,8 @@ class AbuseFilterParser {
 				[ 'len', 2, count( $args ) ]
 			);
 		}
-		if ( $args[0]->type == AFPData::DLIST ) {
-			// Don't use toString on lists, but count
+		if ( $args[0]->type == AFPData::DARRAY ) {
+			// Don't use toString on arrays, but count
 			return new AFPData( AFPData::DINT, count( $args[0]->data ) );
 		}
 		$s = $args[0]->toString();
@@ -982,7 +982,7 @@ class AbuseFilterParser {
 			);
 		}
 
-		if ( $args[0]->type == AFPData::DLIST && count( $args ) == 1 ) {
+		if ( $args[0]->type == AFPData::DARRAY && count( $args ) == 1 ) {
 			return new AFPData( AFPData::DINT, count( $args[0]->data ) );
 		}
 
@@ -1048,7 +1048,7 @@ class AbuseFilterParser {
 	 * the other ones for every capturing group.
 	 *
 	 * @param array $args
-	 * @return AFPData A list of matches.
+	 * @return AFPData An array of matches.
 	 * @throws AFPUserVisibleException
 	 */
 	protected function funcGetMatches( $args ) {

@@ -177,7 +177,7 @@ class AFPTreeParser {
 					$value = $this->doLevelSet();
 					if ( $index === 'append' ) {
 						return new AFPTreeNode(
-							AFPTreeNode::LIST_APPEND, [ $varname, $value ], $position );
+							AFPTreeNode::ARRAY_APPEND, [ $varname, $value ], $position );
 					} else {
 						return new AFPTreeNode(
 							AFPTreeNode::INDEX_ASSIGNMENT,
@@ -441,24 +441,24 @@ class AFPTreeParser {
 		if ( $this->mCur->type == AFPToken::TOP && ( $op == "+" || $op == "-" ) ) {
 			$position = $this->mPos;
 			$this->move();
-			$argument = $this->doLevelListElements();
+			$argument = $this->doLevelArrayElements();
 			return new AFPTreeNode( AFPTreeNode::UNARY, [ $op, $argument ], $position );
 		}
-		return $this->doLevelListElements();
+		return $this->doLevelArrayElements();
 	}
 
 	/**
-	 * Handles accessing a list element by an offset.
+	 * Handles accessing an array element by an offset.
 	 *
 	 * @return AFPTreeNode
 	 * @throws AFPUserVisibleException
 	 */
-	protected function doLevelListElements() {
-		$list = $this->doLevelParenthesis();
+	protected function doLevelArrayElements() {
+		$array = $this->doLevelParenthesis();
 		while ( $this->mCur->type == AFPToken::TSQUAREBRACKET && $this->mCur->value == '[' ) {
 			$position = $this->mPos;
 			$index = $this->doLevelSemicolon();
-			$list = new AFPTreeNode( AFPTreeNode::LIST_INDEX, [ $list, $index ], $position );
+			$array = new AFPTreeNode( AFPTreeNode::ARRAY_INDEX, [ $array, $index ], $position );
 
 			if ( !( $this->mCur->type == AFPToken::TSQUAREBRACKET && $this->mCur->value == ']' ) ) {
 				throw new AFPUserVisibleException( 'expectednotfound', $this->mPos,
@@ -467,7 +467,7 @@ class AFPTreeParser {
 			$this->move();
 		}
 
-		return $list;
+		return $array;
 	}
 
 	/**
@@ -571,14 +571,14 @@ class AFPTreeParser {
 			/** @noinspection PhpMissingBreakStatementInspection */
 			case AFPToken::TSQUAREBRACKET:
 				if ( $this->mCur->value == '[' ) {
-					$list = [];
+					$array = [];
 					while ( true ) {
 						$this->move();
 						if ( $this->mCur->type == AFPToken::TSQUAREBRACKET && $this->mCur->value == ']' ) {
 							break;
 						}
 
-						$list[] = $this->doLevelSet();
+						$array[] = $this->doLevelSet();
 
 						if ( $this->mCur->type == AFPToken::TSQUAREBRACKET && $this->mCur->value == ']' ) {
 							break;
@@ -592,7 +592,7 @@ class AFPTreeParser {
 						}
 					}
 
-					$result = new AFPTreeNode( AFPTreeNode::LIST_DEFINITION, $list, $this->mPos );
+					$result = new AFPTreeNode( AFPTreeNode::ARRAY_DEFINITION, $array, $this->mPos );
 					break;
 				}
 

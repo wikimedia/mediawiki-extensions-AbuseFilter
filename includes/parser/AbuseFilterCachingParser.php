@@ -110,9 +110,9 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 					default:
 						throw new AFPException( "Unknown token provided in the ATOM node" );
 				}
-			case AFPTreeNode::LIST_DEFINITION:
+			case AFPTreeNode::ARRAY_DEFINITION:
 				$items = array_map( [ $this, 'evalNode' ], $node->children );
-				return new AFPData( AFPData::DLIST, $items );
+				return new AFPData( AFPData::DARRAY, $items );
 
 			case AFPTreeNode::FUNCTION_CALL:
 				$functionName = $node->children[0];
@@ -139,23 +139,23 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 
 				return $result;
 
-			case AFPTreeNode::LIST_INDEX:
-				list( $list, $offset ) = $node->children;
+			case AFPTreeNode::ARRAY_INDEX:
+				list( $array, $offset ) = $node->children;
 
-				$list = $this->evalNode( $list );
-				if ( $list->type != AFPData::DLIST ) {
-					throw new AFPUserVisibleException( 'notlist', $node->position, [] );
+				$array = $this->evalNode( $array );
+				if ( $array->type != AFPData::DARRAY ) {
+					throw new AFPUserVisibleException( 'notarray', $node->position, [] );
 				}
 
 				$offset = $this->evalNode( $offset )->toInt();
 
-				$list = $list->toList();
-				if ( count( $list ) <= $offset ) {
+				$array = $array->toArray();
+				if ( count( $array ) <= $offset ) {
 					throw new AFPUserVisibleException( 'outofbounds', $node->position,
-						[ $offset, count( $list ) ] );
+						[ $offset, count( $array ) ] );
 				}
 
-				return $list[$offset];
+				return $array[$offset];
 
 			case AFPTreeNode::UNARY:
 				list( $operation, $argument ) = $node->children;
@@ -242,34 +242,34 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 			case AFPTreeNode::INDEX_ASSIGNMENT:
 				list( $varName, $offset, $value ) = $node->children;
 
-				$list = $this->mVars->getVar( $varName );
-				if ( $list->type != AFPData::DLIST ) {
-					throw new AFPUserVisibleException( 'notlist', $node->position, [] );
+				$array = $this->mVars->getVar( $varName );
+				if ( $array->type != AFPData::DARRAY ) {
+					throw new AFPUserVisibleException( 'notarray', $node->position, [] );
 				}
 
 				$offset = $this->evalNode( $offset )->toInt();
 
-				$list = $list->toList();
-				if ( count( $list ) <= $offset ) {
+				$array = $array->toArray();
+				if ( count( $array ) <= $offset ) {
 					throw new AFPUserVisibleException( 'outofbounds', $node->position,
-						[ $offset, count( $list ) ] );
+						[ $offset, count( $array ) ] );
 				}
 
-				$list[$offset] = $this->evalNode( $value );
-				$this->setUserVariable( $varName, new AFPData( AFPData::DLIST, $list ) );
+				$array[$offset] = $this->evalNode( $value );
+				$this->setUserVariable( $varName, new AFPData( AFPData::DARRAY, $array ) );
 				return $value;
 
-			case AFPTreeNode::LIST_APPEND:
+			case AFPTreeNode::ARRAY_APPEND:
 				list( $varName, $value ) = $node->children;
 
-				$list = $this->mVars->getVar( $varName );
-				if ( $list->type != AFPData::DLIST ) {
-					throw new AFPUserVisibleException( 'notlist', $node->position, [] );
+				$array = $this->mVars->getVar( $varName );
+				if ( $array->type != AFPData::DARRAY ) {
+					throw new AFPUserVisibleException( 'notarray', $node->position, [] );
 				}
 
-				$list = $list->toList();
-				$list[] = $this->evalNode( $value );
-				$this->setUserVariable( $varName, new AFPData( AFPData::DLIST, $list ) );
+				$array = $array->toArray();
+				$array[] = $this->evalNode( $value );
+				$this->setUserVariable( $varName, new AFPData( AFPData::DARRAY, $array ) );
 				return $value;
 
 			case AFPTreeNode::SEMICOLON:

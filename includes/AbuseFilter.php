@@ -837,7 +837,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * Executes a list of actions.
+	 * Executes a set of actions.
 	 *
 	 * @param string[] $filters
 	 * @param Title $title
@@ -1017,7 +1017,7 @@ class AbuseFilter {
 	 *
 	 * @param array[] $actionsTaken associative array mapping each filter to the list if
 	 *                actions taken because of that filter.
-	 * @param array[] $messages a list if arrays, where each array contains a message key
+	 * @param array[] $messages a list of arrays, where each array contains a message key
 	 *                followed by any message parameters.
 	 *
 	 * @return Status

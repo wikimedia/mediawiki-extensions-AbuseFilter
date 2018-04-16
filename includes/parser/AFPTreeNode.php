@@ -15,12 +15,12 @@ class AFPTreeNode {
 	// ASSIGNMENT (formerly known as SET) is a node which is responsible for
 	// assigning values to variables.  ASSIGNMENT is a (variable name [string],
 	// value [tree node]) tuple, INDEX_ASSIGNMENT (which is used to assign
-	// values at list offsets) is a (variable name [string], index [tree node],
-	// value [tree node]) tuple, and LIST_APPEND has the form of (variable name
+	// values at array offsets) is a (variable name [string], index [tree node],
+	// value [tree node]) tuple, and ARRAY_APPEND has the form of (variable name
 	// [string], value [tree node]).
 	const ASSIGNMENT = 'ASSIGNMENT';
 	const INDEX_ASSIGNMENT = 'INDEX_ASSIGNMENT';
-	const LIST_APPEND = 'LIST_APPEND';
+	const ARRAY_APPEND = 'ARRAY_APPEND';
 
 	// CONDITIONAL represents both a ternary operator and an if-then-else-end
 	// construct.  The format is (condition, evaluated-if-true,
@@ -57,9 +57,9 @@ class AFPTreeNode {
 	// operand).
 	const UNARY = 'UNARY';
 
-	// LIST_INDEX is an operation of accessing a list by an offset.  The format
-	// is (list, offset).
-	const LIST_INDEX = 'LIST_INDEX';
+	// ARRAY_INDEX is an operation of accessing an array by an offset.  The format
+	// is (array, offset).
+	const ARRAY_INDEX = 'ARRAY_INDEX';
 
 	// Since parenthesis only manipulate precedence of the operators, they are
 	// not explicitly represented in the tree.
@@ -69,9 +69,9 @@ class AFPTreeNode {
 	// elements are the arguments.
 	const FUNCTION_CALL = 'FUNCTION_CALL';
 
-	// LIST_DEFINITION is a list literal.  The $children field contains tree
-	// nodes for the values of each of the list element used.
-	const LIST_DEFINITION = 'LIST_DEFINITION';
+	// ARRAY_DEFINITION is an array literal.  The $children field contains tree
+	// nodes for the values of each of the array element used.
+	const ARRAY_DEFINITION = 'ARRAY_DEFINITION';
 
 	// ATOM is a node representing a literal.  The only element of $children is a
 	// token corresponding to the literal.

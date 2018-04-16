@@ -399,7 +399,7 @@ class AFComputedVariable {
 
 	/**
 	 * @param Title $title
-	 * @return string[] List of the last 10 (unique) authors from $title
+	 * @return string[] Usernames of the last 10 (unique) authors from $title
 	 */
 	public static function getLastPageAuthors( Title $title ) {
 		if ( !$title->exists() ) {

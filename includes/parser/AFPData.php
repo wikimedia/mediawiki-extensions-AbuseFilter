@@ -7,7 +7,7 @@ class AFPData {
 	const DNULL = 'null';
 	const DBOOL = 'bool';
 	const DFLOAT = 'float';
-	const DLIST = 'list';
+	const DARRAY = 'array';
 
 	// Translation table mapping shell-style wildcards to PCRE equivalents.
 	// Derived from <http://www.php.net/manual/en/function.fnmatch.php#100207>
@@ -55,7 +55,7 @@ class AFPData {
 				$result[] = self::newFromPHPVar( $item );
 			}
 
-			return new AFPData( self::DLIST, $result );
+			return new AFPData( self::DARRAY, $result );
 		} elseif ( is_null( $var ) ) {
 			return new AFPData();
 		} else {
@@ -85,7 +85,7 @@ class AFPData {
 			return new AFPData();
 		}
 
-		if ( $orig->type == self::DLIST ) {
+		if ( $orig->type == self::DARRAY ) {
 			if ( $target == self::DBOOL ) {
 				return new AFPData( self::DBOOL, (bool)count( $orig->data ) );
 			}
@@ -117,8 +117,8 @@ class AFPData {
 		if ( $target == self::DSTRING ) {
 			return new AFPData( self::DSTRING, strval( $orig->data ) );
 		}
-		if ( $target == self::DLIST ) {
-			return new AFPData( self::DLIST, [ $orig ] );
+		if ( $target == self::DARRAY ) {
+			return new AFPData( self::DARRAY, [ $orig ] );
 		}
 	}
 
@@ -183,10 +183,10 @@ class AFPData {
 	 * @return bool
 	 */
 	public static function equals( $d1, $d2, $strict = false ) {
-		if ( $d1->type != self::DLIST && $d2->type != self::DLIST ) {
+		if ( $d1->type != self::DARRAY && $d2->type != self::DARRAY ) {
 			$typecheck = $d1->type == $d2->type || !$strict;
 			return $typecheck && $d1->toString() === $d2->toString();
-		} elseif ( $d1->type == self::DLIST && $d2->type == self::DLIST ) {
+		} elseif ( $d1->type == self::DARRAY && $d2->type == self::DARRAY ) {
 			$data1 = $d1->data;
 			$data2 = $d2->data;
 			if ( count( $data1 ) !== count( $data2 ) ) {
@@ -205,9 +205,9 @@ class AFPData {
 			if ( $strict ) {
 				return false;
 			}
-			if ( $d1->type == self::DLIST && count( $d1->data ) === 0 ) {
+			if ( $d1->type == self::DARRAY && count( $d1->data ) === 0 ) {
 				return ( $d2->type == self::DBOOL && $d2->toBool() == false ) || $d2->type == self::DNULL;
-			} elseif ( $d2->type == self::DLIST && count( $d2->data ) === 0 ) {
+			} elseif ( $d2->type == self::DARRAY && count( $d2->data ) === 0 ) {
 				return ( $d1->type == self::DBOOL && $d1->toBool() == false ) || $d1->type == self::DNULL;
 			} else {
 				return false;
@@ -393,8 +393,8 @@ class AFPData {
 	public static function sum( $a, $b ) {
 		if ( $a->type == self::DSTRING || $b->type == self::DSTRING ) {
 			return new AFPData( self::DSTRING, $a->toString() . $b->toString() );
-		} elseif ( $a->type == self::DLIST && $b->type == self::DLIST ) {
-			return new AFPData( self::DLIST, array_merge( $a->toList(), $b->toList() ) );
+		} elseif ( $a->type == self::DARRAY && $b->type == self::DARRAY ) {
+			return new AFPData( self::DARRAY, array_merge( $a->toArray(), $b->toArray() ) );
 		} else {
 			$res = $a->toNumber() + $b->toNumber();
 			if ( $res === (int)$res ) {
@@ -435,8 +435,8 @@ class AFPData {
 				return $this->toFloat();
 			case self::DINT:
 				return $this->toInt();
-			case self::DLIST:
-				$input = $this->toList();
+			case self::DARRAY:
+				$input = $this->toArray();
 				$output = [];
 				foreach ( $input as $item ) {
 					$output[] = $item->toNative();
@@ -488,7 +488,7 @@ class AFPData {
 	/**
 	 * @return array
 	 */
-	public function toList() {
-		return self::castTypes( $this, self::DLIST )->data;
+	public function toArray() {
+		return self::castTypes( $this, self::DARRAY )->data;
 	}
 }
