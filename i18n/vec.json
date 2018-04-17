@@ -6,7 +6,8 @@
 			"GatoSelvadego",
 			"Nemo bis",
 			"Nick1915",
-			"Matma Rex"
+			"Matma Rex",
+			"Cusolotto"
 		]
 	},
 	"abusefilter-desc": "Àplica dele eurìstiche automatiche a le modifiche.",
@@ -70,6 +71,7 @@
 	"abusefilter-log-hide-id": "ID de l'elemento:",
 	"abusefilter-log-hide-hidden": "Scondi sto elemento da la vista publica",
 	"abusefilter-log-hide-reason": "Motivassion:",
+	"abusefilter-log-hide-reason-other": "Altra motivasion:",
 	"abusefilter-log-hide-forbidden": "No te ghè el parmesso de scondar i elementi del registro dei abusi.",
 	"abusefilter-logentry-suppress": "ga sconto \"[[$1]]\"",
 	"abusefilter-logentry-unsuppress": "ga descuerto \"[[$1]]\"",
@@ -121,12 +123,14 @@
 	"abusefilter-edit-save": "Salva filtro",
 	"abusefilter-edit-id": "ID del filtro:",
 	"abusefilter-edit-description": "Descrission:\n:''(visibile publicamente)''",
+	"abusefilter-edit-field-description": "descrision",
 	"abusefilter-edit-flags": "Flag:",
 	"abusefilter-edit-enabled": "Intaca sto filtro",
 	"abusefilter-edit-deleted": "Segna come scancelà",
 	"abusefilter-edit-hidden": "Scondi i detagli de sto filtro da la vista pùblica",
 	"abusefilter-edit-global": "Àplica sto filtro globalmente",
 	"abusefilter-edit-rules": "Condission:",
+	"abusefilter-edit-field-conditions": "condisioni",
 	"abusefilter-edit-notes": "Note:\n:''(private)''",
 	"abusefilter-edit-lastmod": "Filtro modifegà l'ultima olta:",
 	"abusefilter-edit-lastmod-text": "$1 da $2",
