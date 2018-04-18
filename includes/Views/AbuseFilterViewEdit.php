@@ -679,9 +679,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$output = '';
 
 		foreach ( $enabledActions as $action => $_ ) {
-			MediaWiki\suppressWarnings();
+			Wikimedia\suppressWarnings();
 			$params = $actions[$action]['parameters'];
-			MediaWiki\restoreWarnings();
+			Wikimedia\restoreWarnings();
 			$output .= $this->buildConsequenceSelector(
 				$action, $setActions[$action], $params, $row );
 		}
