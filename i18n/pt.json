@@ -412,7 +412,7 @@
 	"abusefilter-exception-overridebuiltin": "Sobreposição ilegal da variável integrada \"$2\", na posição $1.",
 	"abusefilter-exception-outofbounds": "Foi solicitada a entrada $2 que não existe na lista (tamanho da lista = $3) na posição $1.",
 	"abusefilter-exception-notlist": "Foi solicitada uma entrada de matriz a uma não matriz, na posição $1.",
-	"abusefilter-exception-unclosedcomment": "Comentário por fechar, no caráter $1.",
+	"abusefilter-exception-unclosedcomment": "Comentário por fechar, no carácter $1.",
 	"abusefilter-action-tag": "Etiquetar",
 	"abusefilter-action-throttle": "Limitador",
 	"abusefilter-action-warn": "Avisar",
