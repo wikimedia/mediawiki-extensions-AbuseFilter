@@ -1020,16 +1020,7 @@ class AbuseFilter {
 	public static function filterAction(
 		$vars, $title, $group = 'default', $user = null, $mode = 'execute'
 	) {
-		global $wgUser, $wgTitle, $wgRequest, $wgAbuseFilterRuntimeProfile, $wgAbuseFilterLogIP;
-
-		$context = RequestContext::getMain();
-		$oldContextTitle = $context->getTitle();
-
-		$oldWgTitle = $wgTitle;
-
-		if ( !$wgTitle ) {
-			$wgTitle = SpecialPage::getTitleFor( 'AbuseFilter' );
-		}
+		global $wgUser, $wgRequest, $wgAbuseFilterRuntimeProfile, $wgAbuseFilterLogIP;
 
 		if ( !$user ) {
 			$user = $wgUser;
@@ -1136,18 +1127,6 @@ class AbuseFilter {
 			}
 
 			self::addLogEntries( $actions_taken, $log_template, $action, $vars, $group );
-		}
-
-		// Bug 53498: If we screwed around with $wgTitle, reset it so the title
-		// is correctly picked up from the request later. Do the same for the
-		// main RequestContext, because that might have picked up the bogus
-		// title from $wgTitle.
-		if ( $wgTitle !== $oldWgTitle ) {
-			$wgTitle = $oldWgTitle;
-		}
-
-		if ( $context->getTitle() !== $oldContextTitle && $oldContextTitle instanceof Title ) {
-			$context->setTitle( $oldContextTitle );
 		}
 
 		return $status;
