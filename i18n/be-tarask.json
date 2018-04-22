@@ -8,7 +8,8 @@
 			"Renessaince",
 			"Wizardist",
 			"Zedlik",
-			"Matma Rex"
+			"Matma Rex",
+			"Artsiom91"
 		]
 	},
 	"abusefilter-desc": "Прыстасоўвае аўтаматычную эўрыстыку да рэдагаваньняў.",
@@ -328,7 +329,7 @@
 	"abusefilter-exception-regexfailure": "Памылка ў рэгулярным выразе «$3» у пазыцыі $1: «$2»",
 	"abusefilter-exception-overridebuiltin": "Недазволеная перавызначэньне ўбудаванай зьменнай «$2» ў пазыцыі $1.",
 	"abusefilter-exception-outofbounds": "Запыт неіснуючага элемэнту сьпісу $2 (памер сьпісу: $3) у пазыцыі $1.",
-	"abusefilter-exception-notlist": "Запыт элемэнту масіву для аб'екту, які не зьяўляецца масівам, у пазыцыі $1.",
+	"abusefilter-exception-notlist": "Запыт элемэнту масіву для аб’екту, які не зьяўляецца масівам, у пазыцыі $1.",
 	"abusefilter-action-tag": "Метка",
 	"abusefilter-action-throttle": "Абмежаваць",
 	"abusefilter-action-warn": "Папярэдзіць",
