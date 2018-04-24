@@ -12,19 +12,29 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	public function show() {
 		$show = $this->loadData();
 		$out = $this->getOutput();
+		$out->enableOOUI();
 
 		$links = [];
 		if ( $this->mFilter ) {
-			$links['abusefilter-history-backedit'] = $this->getTitle( $this->mFilter );
-			$links['abusefilter-diff-backhistory'] = $this->getTitle( 'history/' . $this->mFilter );
+			$links['abusefilter-history-backedit'] =
+				$this->getTitle( $this->mFilter )->getFullURL();
+			$links['abusefilter-diff-backhistory'] =
+				$this->getTitle( 'history/' . $this->mFilter )->getFullURL();
 		}
 
-		foreach ( $links as $msg => $title ) {
-			$links[$msg] = $this->linkRenderer->makeLink( $title, $this->msg( $msg )->text() );
+		foreach ( $links as $msg => $href ) {
+			$links[$msg] =
+				new OOUI\ButtonWidget( [
+					'label' => $this->msg( $msg )->text(),
+					'href' => $href
+				] );
 		}
 
-		$backlinks = $this->getLanguage()->pipeList( $links );
-		$out->addHTML( Xml::tags( 'p', null, $backlinks ) );
+		$backlinks =
+			new OOUI\HorizontalLayout( [
+				'items' => $links
+			] );
+		$out->addHTML( $backlinks );
 
 		if ( $show ) {
 			$out->addHTML( $this->formatDiff() );
