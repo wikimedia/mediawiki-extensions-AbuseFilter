@@ -1203,7 +1203,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						$parameters[0] = $specMsg;
 					} elseif ( $action == 'block' ) {
 						$parameters[0] = $request->getCheck( 'wpFilterBlockTalk' ) ?
-							'blocktalk' : '';
+							'blocktalk' : 'noTalkBlockSet';
 						$parameters[1] = $request->getVal( 'wpBlockAnonDuration' );
 						$parameters[2] = $request->getVal( 'wpBlockUserDuration' );
 					} elseif ( $action == 'tag' ) {
