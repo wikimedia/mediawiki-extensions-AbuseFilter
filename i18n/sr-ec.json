@@ -30,7 +30,7 @@
 	"abusefilter-blockreason": "Блокирани сте од стране филтера против злоупотребе.\nОпис повређеног правила: $1",
 	"abusefilter-degroupreason": "Филтер је аутоматски уклонио овлашћења.\nОпис правила: $1",
 	"abusefilter-accountreserved": "Ово корисничко име је резервисано од стране филтера против злоупотребе.",
-	"right-abusefilter-modify": "Уређивање филтера против злоупотребе",
+	"right-abusefilter-modify": "уређивање филтера против злоупотребе",
 	"right-abusefilter-view": "прегледање филтера против злоупотребе",
 	"right-abusefilter-log": "прегледање извештаја злоупотребе",
 	"right-abusefilter-log-detail": "прегледање детаљних података у извештају злоупотребе",
@@ -416,5 +416,6 @@
 	"abusefilter-import-intro": "Ово корисничко окружење служи за увоз филтера са других викија.\nНа изворном викију, кликните на „{{int:abusefilter-edit-export}}“ под „{{int:abusefilter-edit-tools}}“ у уређивачком оквиру.\nКопирајте садржај из поља које се појави и налепите га у ово поље, па кликните на „{{int:abusefilter-import-submit}}“.",
 	"abusefilter-import-submit": "Увези податке",
 	"abusefilter-group-default": "Подразумевано",
-	"abusefilter-http-error": "Дошло је до HTTP грешке: $1."
+	"abusefilter-http-error": "Дошло је до HTTP грешке: $1.",
+	"tag-abusefilter-condition-limit": "достигнуто условно ограничење"
 }
