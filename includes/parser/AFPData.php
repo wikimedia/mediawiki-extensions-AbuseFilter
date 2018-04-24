@@ -193,7 +193,6 @@ class AFPData {
 	}
 
 	/**
-	 * @ToDo Should we also build a proper system to compare arrays with different types?
 	 * @param AFPData $d1
 	 * @param AFPData $d2
 	 * @param bool $strict whether to also check types
@@ -219,7 +218,16 @@ class AFPData {
 			return true;
 		} else {
 			// Trying to compare an array to something else
-			return false;
+			if ( $strict ) {
+				return false;
+			}
+			if ( $d1->type == self::DLIST && count( $d1->data ) === 0 ) {
+				return ( $d2->type == self::DBOOL && $d2->toBool() == false ) || $d2->type == self::DNULL;
+			} elseif ( $d2->type == self::DLIST && count( $d2->data ) === 0 ) {
+				return ( $d1->type == self::DBOOL && $d1->toBool() == false ) || $d1->type == self::DNULL;
+			} else {
+				return false;
+			}
 		}
 	}
 
