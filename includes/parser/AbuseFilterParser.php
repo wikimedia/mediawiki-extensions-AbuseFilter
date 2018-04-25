@@ -33,6 +33,7 @@ class AbuseFilterParser {
 		'ip_in_range' => 'funcIPInRange',
 		'contains_any' => 'funcContainsAny',
 		'contains_all' => 'funcContainsAll',
+		'equals_to_any' => 'funcEqualsToAny',
 		'substr' => 'funcSubstr',
 		'strlen' => 'funcLen',
 		'strpos' => 'funcStrPos',
@@ -1233,7 +1234,8 @@ class AbuseFilterParser {
 	 */
 	protected static function contains( $string, $values, $is_any = true, $normalize = false ) {
 		$string = $string->toString();
-		if ( $string == '' ) {
+
+		if ( $string === '' ) {
 			return false;
 		}
 
@@ -1269,11 +1271,56 @@ class AbuseFilterParser {
 	}
 
 	/**
+	 * @param array $args
+	 * @return AFPData
+	 * @throws AFPUserVisibleException
+	 */
+	protected function funcEqualsToAny( $args ) {
+		if ( count( $args ) < 2 ) {
+			throw new AFPUserVisibleException(
+				'notenoughargs',
+				$this->mCur->pos,
+				[ 'equals_to_any', 2, count( $args ) ]
+			);
+		}
+
+		$s = array_shift( $args );
+
+		return new AFPData( AFPData::DBOOL, self::equalsToAny( $s, $args ) );
+	}
+
+	/**
+	 * Check if the given string is equals to any of the following strings
+	 *
+	 * @param AFData $string
+	 * @param AFData[] $values
+	 *
+	 * @return bool
+	 */
+	protected static function equalsToAny( $string, $values ) {
+		$string = $string->toString();
+
+		if ( $string === '' ) {
+			return false;
+		}
+
+		foreach ( $values as $needle ) {
+			$needle = $needle->toString();
+
+			if ( $string === $needle ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
 	 * @param string $s
 	 * @return mixed
 	 */
 	protected static function ccnorm( $s ) {
-		// Instatiate a single version of the equivset so the data is not loaded
+		// Instantiate a single version of the equivset so the data is not loaded
 		// more than once.
 		if ( !self::$equivset ) {
 			self::$equivset = new Equivset();

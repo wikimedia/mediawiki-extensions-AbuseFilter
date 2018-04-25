@@ -1,0 +1,1 @@
+equals_to_any("foo", "bar", "foo", "pizza") & equals_to_any(15, 3, 77, 18, 15)

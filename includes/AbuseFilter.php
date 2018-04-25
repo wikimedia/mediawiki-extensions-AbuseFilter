@@ -88,6 +88,7 @@ class AbuseFilter {
 			'ip_in_range(ip, range)' => 'ip_in_range',
 			'contains_any(haystack,needle1,needle2,...)' => 'contains-any',
 			'contains_all(haystack,needle1,needle2,...)' => 'contains-all',
+			'equals_to_any(haystack,needle1,needle2,...)' => 'equals-to-any',
 			'substr(subject, offset, length)' => 'substr',
 			'strpos(haystack, needle)' => 'strpos',
 			'str_replace(subject, search, replace)' => 'str_replace',
