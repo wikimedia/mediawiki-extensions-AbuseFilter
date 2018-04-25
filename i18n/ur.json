@@ -197,5 +197,6 @@
 	"abusefilter-diff-item": "آئٹم کو",
 	"abusefilter-diff-info": "بنیادی معلومات",
 	"abusefilter-diff-pattern": "فلٹر حالات",
-	"abusefilter-group-default": "پہلے سے طے شدہ"
+	"abusefilter-group-default": "پہلے سے طے شدہ",
+	"tag-abusefilter-condition-limit": "تعداد شرائط کے حدود تک جا پہنچا"
 }
