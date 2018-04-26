@@ -15,6 +15,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 	 */
 	public function show() {
 		$out = $this->getOutput();
+		$out->enableOOUI();
 		$filter = $this->getRequest()->getText( 'filter' ) ?: $this->mFilter;
 
 		if ( $filter ) {
@@ -34,18 +35,22 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		// Useful links
 		$links = [];
 		if ( $filter ) {
-			$links['abusefilter-history-backedit'] = $this->getTitle( $filter );
+			$links['abusefilter-history-backedit'] = $this->getTitle( $filter )->getFullURL();
 		}
 
 		foreach ( $links as $msg => $title ) {
-			$links[$msg] = $this->linkRenderer->makeLink(
-				$title,
-				new HtmlArmor( $this->msg( $msg )->parse() )
-			);
+			$links[$msg] =
+				new OOUI\ButtonWidget( [
+					'label' => $this->msg( $msg )->parse(),
+					'href' => $title
+				] );
 		}
 
-		$backlinks = $this->getLanguage()->pipeList( $links );
-		$out->addHTML( Xml::tags( 'p', null, $backlinks ) );
+		$backlinks =
+			new OOUI\HorizontalLayout( [
+				'items' => $links
+			] );
+		$out->addHTML( $backlinks );
 
 		// For user
 		$user = User::getCanonicalName( $this->getRequest()->getText( 'user' ), 'valid' );
