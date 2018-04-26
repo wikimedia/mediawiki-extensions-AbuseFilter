@@ -506,11 +506,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 		}
 
-		$fields['abusefilter-edit-rules'] = AbuseFilter::buildEditBox(
+		$fields['abusefilter-edit-rules'] = $this->buildEditBox(
 			$row->af_pattern,
 			'wpFilterRules',
-			true,
-			$this->canEditFilter( $row )
+			true
 		);
 		$fields['abusefilter-edit-notes'] = Xml::textarea(
 			'wpFilterNotes',

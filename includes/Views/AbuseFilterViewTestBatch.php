@@ -28,10 +28,9 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$output = '';
 		$output .=
-			AbuseFilter::buildEditBox(
+			$this->buildEditBox(
 				$this->mFilter,
 				'wpTestFilter',
-				true,
 				true,
 				true
 			) . "\n";

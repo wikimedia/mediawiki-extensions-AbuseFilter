@@ -66,6 +66,146 @@ abstract class AbuseFilterView extends ContextSource {
 	}
 
 	/**
+	 * @param string $rules
+	 * @param string $textName
+	 * @param bool $addResultDiv
+	 * @param bool $externalForm
+	 * @return string
+	 */
+	public function buildEditBox(
+		$rules,
+		$textName = 'wpFilterRules',
+		$addResultDiv = true,
+		$externalForm = false
+	) {
+		$this->getOutput()->enableOOUI();
+
+		// Rules are in English
+		$editorAttrib = [ 'dir' => 'ltr' ];
+
+		$noTestAttrib = [];
+		if ( !$this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
+			$noTestAttrib['disabled'] = 'disabled';
+			$addResultDiv = false;
+		}
+
+		$rules = rtrim( $rules ) . "\n";
+
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'CodeEditor' ) ) {
+			$editorAttrib['name'] = 'wpAceFilterEditor';
+			$editorAttrib['id'] = 'wpAceFilterEditor';
+			$editorAttrib['class'] = 'mw-abusefilter-editor';
+
+			$switchEditor =
+				new OOUI\ButtonWidget(
+					[
+						'label' => $this->msg( 'abusefilter-edit-switch-editor' )->text(),
+						'id' => 'mw-abusefilter-switcheditor'
+					] + $noTestAttrib
+				);
+
+			$rulesContainer = Xml::element( 'div', $editorAttrib, $rules );
+
+			// Dummy textarea for submitting form and to use in case JS is disabled
+			$textareaAttribs = [
+				'style' => 'display: none'
+			];
+			if ( $externalForm ) {
+				$textareaAttribs['form'] = 'wpFilterForm';
+			}
+			$rulesContainer .= Xml::textarea( $textName, $rules, 40, 15, $textareaAttribs );
+
+			$canEdit = $this->canEdit();
+			$editorConfig = AbuseFilter::getAceConfig( $canEdit );
+
+			// Add Ace configuration variable
+			$this->getOutput()->addJsConfigVars( 'aceConfig', $editorConfig );
+		} else {
+			if ( !$canEdit ) {
+				$editorAttrib['readonly'] = 'readonly';
+			}
+			if ( $externalForm ) {
+				$editorAttrib['form'] = 'wpFilterForm';
+			}
+			$rulesContainer = Xml::textarea( $textName, $rules, 40, 15, $editorAttrib );
+		}
+
+		if ( $canEdit ) {
+			// Generate builder drop-down
+			$dropDown = AbuseFilter::getBuilderValues();
+
+			// The array needs to be rearranged to be understood by OOUI
+			foreach ( $dropDown as $group => $values ) {
+				// Give grep a chance to find the usages:
+				// abusefilter-edit-builder-group-op-arithmetic, abusefilter-edit-builder-group-op-comparison,
+				// abusefilter-edit-builder-group-op-bool, abusefilter-edit-builder-group-misc,
+				// abusefilter-edit-builder-group-funcs, abusefilter-edit-builder-group-vars
+				$localisedLabel = $this->msg( "abusefilter-edit-builder-group-$group" )->text();
+				$dropDown[ $localisedLabel ] = $dropDown[ $group ];
+				unset( $dropDown[ $group ] );
+				$dropDown[ $localisedLabel ] = array_flip( $dropDown[ $localisedLabel ] );
+				foreach ( $values as $content => $name ) {
+					$localisedInnerLabel = $this->msg( "abusefilter-edit-builder-$group-$name" )->text();
+					$dropDown[ $localisedLabel ][ $localisedInnerLabel ] = $dropDown[ $localisedLabel ][ $name ];
+					unset( $dropDown[ $localisedLabel ][ $name ] );
+				}
+			}
+
+			$dropDown = [ $this->msg( 'abusefilter-edit-builder-select' )->text() => 'other' ] + $dropDown;
+			$dropDown = Xml::listDropDownOptionsOoui( $dropDown );
+			$dropDown = new OOUI\DropdownInputWidget( [
+				'name' => 'wpFilterBuilder',
+				'inputId' => 'wpFilterBuilder',
+				'options' => $dropDown
+			] );
+
+			$dropDown = new OOUI\FieldLayout( $dropDown );
+			$formElements = [ $dropDown ];
+
+			// Button for syntax check
+			$syntaxCheck =
+				new OOUI\ButtonWidget(
+					[
+						'label' => $this->msg( 'abusefilter-edit-check' )->text(),
+						'id' => 'mw-abusefilter-syntaxcheck'
+					] + $noTestAttrib
+				);
+			$group = $syntaxCheck;
+
+			// Button for switching editor (if Ace is used)
+			if ( isset( $switchEditor ) ) {
+				$group =
+					new OOUI\Widget( [
+						'content' => new OOUI\HorizontalLayout( [
+							'items' => [ $switchEditor, $syntaxCheck ]
+						] )
+					] );
+			}
+			$group = new OOUI\FieldLayout( $group );
+			$formElements[] = $group;
+
+			$fieldSet = new OOUI\FieldsetLayout( [
+				'items' => $formElements,
+				'classes' => [ 'mw-abusefilter-edit-buttons' ]
+			] );
+
+			$rulesContainer .= $fieldSet;
+		}
+
+		if ( $addResultDiv ) {
+			$rulesContainer .= Xml::element( 'div',
+				[ 'id' => 'mw-abusefilter-syntaxresult', 'style' => 'display: none;' ],
+				'&#160;' );
+		}
+
+		// Add script
+		$this->getOutput()->addModules( 'ext.abuseFilter.edit' );
+		AbuseFilter::$editboxName = $textName;
+
+		return $rulesContainer;
+	}
+
+	/**
 	 * @param IDatabase $db
 	 * @return string
 	 */
