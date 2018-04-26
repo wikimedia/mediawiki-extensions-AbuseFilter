@@ -5,7 +5,7 @@
  * @author Marius Hoch <hoo@online.de>
  */
 
-( function ( mw, $ ) {
+( function ( mw, $, OO ) {
 	'use strict';
 
 	/**
@@ -16,7 +16,7 @@
 	function doExprSubmit() {
 		var expr = $( '#wpTestExpr' ).val(),
 			api = new mw.Api();
-		$( this ).injectSpinner( 'abusefilter-expr' );
+		$( this ).injectSpinner( { id: 'abusefilter-expr', size: 'large' } );
 
 		api.post( {
 			action: 'abusefilterevalexpression',
@@ -81,16 +81,18 @@
 	 * Submits a call to reautoconfirm a user.
 	 * @context HTMLElement
 	 * @param {jQuery.Event} e
+	 * @return {boolean}
 	 */
 	function doReautoSubmit() {
-		var name = $( '#reautoconfirm-user' ).val(),
+		var nameField = OO.ui.infuse( $( '#reautoconfirm-user' ) ),
+			name = nameField.getValue(),
 			api;
 
 		if ( name === '' ) {
-			return;
+			return false;
 		}
 
-		$( this ).injectSpinner( 'abusefilter-reautoconfirm' );
+		$( this ).injectSpinner( { id: 'abusefilter-reautoconfirm', size: 'large' } );
 
 		api = new mw.Api();
 		api.post( {
@@ -100,10 +102,11 @@
 		} )
 			.done( processReautoconfirm )
 			.fail( processReautoconfirmFailure );
+		return false;
 	}
 
 	$( document ).ready( function () {
 		$( '#mw-abusefilter-submitexpr' ).click( doExprSubmit );
 		$( '#mw-abusefilter-reautoconfirmsubmit' ).click( doReautoSubmit );
 	} );
-}( mediaWiki, jQuery ) );
+}( mediaWiki, jQuery, OO ) );
