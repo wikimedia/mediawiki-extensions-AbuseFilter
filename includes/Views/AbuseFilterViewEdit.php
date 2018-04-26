@@ -1086,7 +1086,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		foreach ( $res as $actionRow ) {
 			$thisAction = [];
 			$thisAction['action'] = $actionRow->afa_consequence;
-			$thisAction['parameters'] = explode( "\n", $actionRow->afa_parameters );
+			$thisAction['parameters'] = array_filter( explode( "\n", $actionRow->afa_parameters ) );
 
 			$actions[$actionRow->afa_consequence] = $thisAction;
 		}
@@ -1199,7 +1199,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						$parameters[1] = $request->getVal( 'wpBlockAnonDuration' );
 						$parameters[2] = $request->getVal( 'wpBlockUserDuration' );
 					} elseif ( $action == 'tag' ) {
-						$parameters = explode( "\n", $request->getText( 'wpFilterTags' ) );
+						$parameters = explode( "\n", trim( $request->getText( 'wpFilterTags' ) ) );
 					}
 
 					$thisAction = [ 'action' => $action, 'parameters' => $parameters ];
