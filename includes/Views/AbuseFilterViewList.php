@@ -77,9 +77,12 @@ class AbuseFilterViewList extends AbuseFilterView {
 				Wikimedia\restoreWarnings();
 
 				if ( $validreg === false ) {
-					$out->wrapWikiMsg(
-						'<div class="errorbox">$1</div>',
-						'abusefilter-list-regexerror'
+					$out->addHTML(
+						Xml::tags(
+							'p',
+							null,
+							Html::errorBox( $this->msg( 'abusefilter-list-regexerror' )->parse() )
+						)
 					);
 					$this->showList(
 						[ 'af_deleted' => 0 ],
