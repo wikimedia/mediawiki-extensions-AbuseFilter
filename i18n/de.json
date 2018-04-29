@@ -297,7 +297,7 @@
 	"abusefilter-edit-builder-funcs-ip_in_range": "Befindet sich die IP-Adresse im angegebenen Adressbereich? (ip_in_range)",
 	"abusefilter-edit-builder-funcs-contains-any": "Sucht in der Zeichenfolge nach mehreren Unterzeichenfolgen im OR-Modus (contains_any)",
 	"abusefilter-edit-builder-funcs-contains-all": "Sucht in der Zeichenfolge nach mehreren Unterzeichenfolgen im AND-Modus (contains_all)",
-	"abusefilter-edit-builder-funcs-equals-to-any": "Überprüfen, ob die angegebene Zeichenfolge mit einer der folgenden Zeichenfolgen übereinstimmt (equals_to_any)",
+	"abusefilter-edit-builder-funcs-equals-to-any": "Überprüfen, ob ein angegebenes Argument gleich (===) mit einem der folgenden Argumente ist (equals_to_any)",
 	"abusefilter-edit-builder-funcs-substr": "Teil-Zeichenkette (substr)",
 	"abusefilter-edit-builder-funcs-strpos": "Position der Teil-Zeichenkette in der Zeichenkette (strpos)",
 	"abusefilter-edit-builder-funcs-str_replace": "Ersetze Teil-Zeichenkette mit Zeichenkette (str_replace)",
