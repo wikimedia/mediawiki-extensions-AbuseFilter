@@ -13,7 +13,7 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 		if ( $user === false ) {
 			$encParamName = $this->encodeParamName( 'user' );
 			$this->dieWithError(
-				[ 'apierror-baduser', $encParamName, wfEscapeWikiText( $param['user'] ) ],
+				[ 'apierror-baduser', $encParamName, wfEscapeWikiText( $params['user'] ) ],
 				"baduser_{$encParamName}"
 			);
 		}

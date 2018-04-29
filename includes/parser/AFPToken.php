@@ -54,7 +54,7 @@ class AFPToken {
 	public $pos;
 
 	/**
-	 * @param AFPToken $type
+	 * @param string $type
 	 * @param AFPToken $value
 	 * @param int $pos
 	 */

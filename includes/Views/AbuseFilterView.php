@@ -3,7 +3,7 @@
 use Wikimedia\Rdbms\IDatabase;
 
 abstract class AbuseFilterView extends ContextSource {
-	public $mFilter, $mHistoryID, $mSubmit;
+	public $mFilter, $mHistoryID, $mSubmit, $mPage, $mParams;
 
 	/**
 	 * @var \MediaWiki\Linker\LinkRenderer

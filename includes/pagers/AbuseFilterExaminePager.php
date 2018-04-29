@@ -1,6 +1,8 @@
 <?php
 
 class AbuseFilterExaminePager extends ReverseChronologicalPager {
+	public $mChangesList, $mPage;
+
 	/**
 	 * @param AbuseFilterViewExamine $page
 	 * @param AbuseFilterChangesList $changesList

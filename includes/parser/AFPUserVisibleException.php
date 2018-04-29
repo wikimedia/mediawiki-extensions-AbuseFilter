@@ -3,8 +3,11 @@
 // Exceptions that we might conceivably want to report to ordinary users
 // (i.e. exceptions that don't represent bugs in the extension itself)
 class AFPUserVisibleException extends AFPException {
-	public $mExceptionId;
+	/** @var string */
+	public $mExceptionID;
+	/** @var int */
 	public $mPosition;
+	/** @var array */
 	public $mParams;
 
 	/**

@@ -71,7 +71,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 	 * Evaluate the value of the specified AST node.
 	 *
 	 * @param AFPTreeNode $node The node to evaluate.
-	 * @return AFPData
+	 * @return AFPData|AFPTreeNode|string
 	 * @throws AFPException
 	 * @throws AFPUserVisibleException
 	 * @throws MWException

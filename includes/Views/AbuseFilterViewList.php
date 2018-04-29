@@ -242,12 +242,11 @@ class AbuseFilterViewList extends AbuseFilterView {
 			->prepareForm()
 			->displayForm( false );
 
-		$output =
+		$this->getOutput()->addHTML(
 			$pager->getNavigationBar() .
 			$pager->getBody() .
-			$pager->getNavigationBar();
-
-		$this->getOutput()->addHTML( $output );
+			$pager->getNavigationBar()
+		);
 	}
 
 	/**

@@ -224,7 +224,9 @@ class AbuseFilter {
 			}
 		}
 
-		$linkStr = $context->msg( 'parentheses', $context->getLanguage()->pipeList( $links ) )->text();
+		$linkStr = $context->msg( 'parentheses' )
+			->rawParams( $context->getLanguage()->pipeList( $links ) )
+			->text();
 		$linkStr = $context->msg( 'abusefilter-topnav' )->parse() . " $linkStr";
 
 		$linkStr = Xml::tags( 'div', [ 'class' => 'mw-abusefilter-navigation' ], $linkStr );
@@ -375,6 +377,7 @@ class AbuseFilter {
 			// Support: HitCounters extension
 			// XXX: This should be part of the extension (T159069)
 			if ( method_exists( 'HitCounters\HitCounters', 'getCount' ) ) {
+				/** @suppress PhanUndeclaredClassMethod Better wait for T159069 (under review) */
 				$vars->setVar( $prefix . '_VIEWS', HitCounters\HitCounters::getCount( $title ) );
 			}
 		}
@@ -577,8 +580,15 @@ class AbuseFilter {
 	 * @param string $mode 'execute' for edits and logs, 'stash' for cached matches
 	 * @return bool
 	 */
-	public static function checkFilter( $row, $vars, Title $title = null, $prefix = '', $mode ) {
-		global $wgAbuseFilterProfile, $wgAbuseFilterRuntimeProfile, $wgAbuseFilterSlowFilterRuntimeLimit;
+	public static function checkFilter(
+		$row,
+		$vars,
+		Title $title = null,
+		$prefix = '',
+		$mode = 'execute'
+	) {
+		global $wgAbuseFilterProfile, $wgAbuseFilterRuntimeProfile,
+			$wgAbuseFilterSlowFilterRuntimeLimit;
 
 		$filterID = $prefix . $row->af_id;
 
@@ -1199,7 +1209,6 @@ class AbuseFilter {
 	 * @param string $action
 	 * @param AbuseFilterVariableHolder $vars
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
-	 * @return mixed
 	 */
 	public static function addLogEntries( $actions_taken, $log_template, $action,
 		$vars, $group = 'default'
@@ -1288,6 +1297,7 @@ class AbuseFilter {
 				&& strpos( $wgAbuseFilterNotifications, 'rc' ) === false
 			) {
 				$rc = $entry->getRecentChange();
+				/** @suppress PhanUndeclaredClassMethod Not sure how to fix. */
 				CheckUserHooks::updateCheckUserData( $rc );
 			}
 
@@ -1419,7 +1429,7 @@ class AbuseFilter {
 	 *
 	 * @param string $stored_dump
 	 *
-	 * @return object|AbuseFilterVariableHolder|bool
+	 * @return array|object|AbuseFilterVariableHolder|bool
 	 */
 	public static function loadVarDump( $stored_dump ) {
 		// Back-compat
@@ -1711,7 +1721,7 @@ class AbuseFilter {
 
 	/**
 	 * @param string $throttleId
-	 * @param array $types
+	 * @param string $types
 	 * @param Title $title
 	 * @param string $rateCount
 	 * @param string $ratePeriod
@@ -2048,7 +2058,7 @@ class AbuseFilter {
 				]
 			);
 		$loadButton =
-			new OOUI\ButtonInputWidget(
+			new OOUI\ButtonWidget(
 				[
 					'label' => wfMessage( 'abusefilter-test-load' )->text(),
 					'id' => 'mw-abusefilter-load'
@@ -2444,7 +2454,7 @@ class AbuseFilter {
 			if ( !empty( $variableMessageMappings[$key] ) ) {
 				$mapping = $variableMessageMappings[$key];
 				$keyDisplay = $context->msg( "abusefilter-edit-builder-vars-$mapping" )->parse() .
-					' ' . Xml::element( 'code', null, $context->msg( 'parentheses', $key )->text() );
+					' ' . Xml::element( 'code', null, $context->msg( 'parentheses' )->rawParams( $key )->text() );
 			} else {
 				$keyDisplay = Xml::element( 'code', null, $key );
 			}

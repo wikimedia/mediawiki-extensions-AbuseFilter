@@ -28,7 +28,7 @@ class AFPData {
 
 	/**
 	 * @param string $type
-	 * @param null $val
+	 * @param mixed $val
 	 */
 	public function __construct( $type = self::DNULL, $val = null ) {
 		$this->type = $type;
@@ -177,22 +177,6 @@ class AFPData {
 	}
 
 	/**
-	 * @param string $value
-	 * @param mixed $list
-	 * @return bool
-	 */
-	public static function listContains( $value, $list ) {
-		// Should use built-in PHP function somehow
-		foreach ( $list->data as $item ) {
-			if ( self::equals( $value, $item ) ) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	/**
 	 * @param AFPData $d1
 	 * @param AFPData $d2
 	 * @param bool $strict whether to also check types
@@ -280,8 +264,8 @@ class AFPData {
 	}
 
 	/**
-	 * @param string $str
-	 * @param string $regex
+	 * @param AFPData $str
+	 * @param AFPData $regex
 	 * @param int $pos
 	 * @return AFPData
 	 */

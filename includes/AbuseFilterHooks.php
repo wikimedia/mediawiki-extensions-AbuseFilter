@@ -6,6 +6,7 @@ use Wikimedia\Rdbms\Database;
 class AbuseFilterHooks {
 	const FETCH_ALL_TAGS_KEY = 'abusefilter-fetch-all-tags';
 
+	/** @var AbuseFilterVariableHolder|bool */
 	public static $successful_action_vars = false;
 	/** @var WikiPage|Article|bool Make sure edit filter & edit save hooks match */
 	public static $last_edit_page = false;
@@ -113,7 +114,7 @@ class AbuseFilterHooks {
 
 		// Load vars for filters to check
 		$vars = self::newVariableHolderForEdit(
-			$user, $title, $page, $summary, $content, $oldcontent, $text
+			$user, $title, $page, $summary, $content, $text, $oldcontent
 		);
 
 		$filter_result = AbuseFilter::filterAction( $vars, $title );
@@ -135,14 +136,14 @@ class AbuseFilterHooks {
 	 * @param WikiPage|null $page
 	 * @param string $summary
 	 * @param Content $newcontent
-	 * @param Content|null $oldcontent
 	 * @param string $text
+	 * @param Content|null $oldcontent
 	 * @return AbuseFilterVariableHolder
 	 * @throws MWException
 	 */
 	private static function newVariableHolderForEdit(
 		User $user, Title $title, $page, $summary, Content $newcontent,
-		$oldcontent = null, $text
+		$text, $oldcontent = null
 	) {
 		$vars = new AbuseFilterVariableHolder();
 		$vars->addHolders(
@@ -237,7 +238,7 @@ class AbuseFilterHooks {
 			return true;
 		}
 
-		/** @var AbuseFilterVariableHolder $vars */
+		/** @var AbuseFilterVariableHolder|bool $vars */
 		$vars = self::$successful_action_vars;
 
 		if ( $vars->getVar( 'article_prefixedtext' )->toString() !==
@@ -841,9 +842,9 @@ class AbuseFilterHooks {
 		// Cache any resulting filter matches.
 		// Do this outside the synchronous stash lock to avoid any chance of slowdown.
 		DeferredUpdates::addCallableUpdate(
-			function () use ( $user, $page, $summary, $content, $oldcontent, $text ) {
+			function () use ( $user, $page, $summary, $content, $text, $oldcontent ) {
 				$vars = self::newVariableHolderForEdit(
-					$user, $page->getTitle(), $page, $summary, $content, $oldcontent, $text
+					$user, $page->getTitle(), $page, $summary, $content, $text, $oldcontent
 				);
 				AbuseFilter::filterAction( $vars, $page->getTitle(), 'default', $user, 'stash' );
 			},

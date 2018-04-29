@@ -6,7 +6,8 @@
 	"license": "GPL-2.0-or-later",
 	"require": {
 		"php": ">=5.4",
-		"wikimedia/equivset": "^1.0"
+		"wikimedia/equivset": "^1.0",
+		"mediawiki/mediawiki-phan-config": "0.2.0"
 	},
 	"require-dev": {
 		"jakub-onderka/php-parallel-lint": "1.0.0",

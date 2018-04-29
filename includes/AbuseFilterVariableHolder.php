@@ -1,6 +1,7 @@
 <?php
 
 class AbuseFilterVariableHolder {
+	/** @var (AFPData|AFComputedVariable)[] */
 	public $mVars = [];
 
 	public static $varBlacklist = [ 'context' ];
@@ -43,6 +44,7 @@ class AbuseFilterVariableHolder {
 		$variable = strtolower( $variable );
 		if ( isset( $this->mVars[$variable] ) ) {
 			if ( $this->mVars[$variable] instanceof AFComputedVariable ) {
+				/** @suppress PhanUndeclaredMethod False positive */
 				$value = $this->mVars[$variable]->compute( $this );
 				$this->setVar( $variable, $value );
 				return $value;
@@ -200,6 +202,9 @@ class AbuseFilterVariableHolder {
 	/**
 	 * Compute all vars which need DB access. Useful for vars which are going to be saved
 	 * cross-wiki or used for offline analysis.
+	 *
+	 * @suppress PhanUndeclaredProperty for $value->mMethod (phan thinks $value is always AFPData)
+	 * @suppress PhanUndeclaredMethod for $value->compute (phan thinks $value is always AFPData)
 	 */
 	public function computeDBVars() {
 		static $dbTypes = [

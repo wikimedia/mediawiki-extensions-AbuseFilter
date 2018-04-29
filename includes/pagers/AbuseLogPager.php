@@ -1,6 +1,6 @@
 <?php
 
-use Wikimedia\Rdbms\ResultWrapper;
+use Wikimedia\Rdbms\IResultWrapper;
 
 class AbuseLogPager extends ReverseChronologicalPager {
 	/**
@@ -59,7 +59,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	}
 
 	/**
-	 * @param ResultWrapper $result
+	 * @param IResultWrapper $result
 	 */
 	protected function preprocessResults( $result ) {
 		if ( $this->getNumRows() === 0 ) {

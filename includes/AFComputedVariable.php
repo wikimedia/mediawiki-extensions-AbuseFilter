@@ -22,7 +22,7 @@ class AFComputedVariable {
 	 *
 	 *
 	 * @param string $wikitext
-	 * @param WikiPage $article
+	 * @param Article $article
 	 *
 	 * @return object
 	 */
@@ -112,7 +112,7 @@ class AFComputedVariable {
 	}
 
 	/**
-	 * @param WikiPage $article
+	 * @param Article $article
 	 * @return array
 	 */
 	public static function getLinksFromDB( $article ) {

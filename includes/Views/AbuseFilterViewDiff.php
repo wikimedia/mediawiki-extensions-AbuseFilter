@@ -326,8 +326,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		$info .= $this->getDiffRow(
 			'abusefilter-edit-rules',
 			$oldVersion['pattern'],
-			$newVersion['pattern'],
-			'text'
+			$newVersion['pattern']
 		);
 
 		// Actions

@@ -146,7 +146,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		}
 
 		$this->addWhereIf( [ 'afl_filter' => $params['filter'] ], isset( $params['filter'] ) );
-		$this->addWhereIf( $notDeletedCond, !SpecialAbuseLog::canSeeHidden( $user ) );
+		$this->addWhereIf( $notDeletedCond, !SpecialAbuseLog::canSeeHidden() );
 		if ( isset( $params['wiki'] ) ) {
 			// 'wiki' won't be set if $wgAbuseFilterIsCentral = false
 			$this->addWhereIf( [ 'afl_wiki' => $params['wiki'] ], $wgAbuseFilterIsCentral );
@@ -172,7 +172,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				break;
 			}
 			if ( SpecialAbuseLog::isHidden( $row ) &&
-				!SpecialAbuseLog::canSeeHidden( $user )
+				!SpecialAbuseLog::canSeeHidden()
 			) {
 				continue;
 			}

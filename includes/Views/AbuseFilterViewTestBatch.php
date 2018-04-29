@@ -88,8 +88,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			->setAction( $this->getTitle( 'test' )->getLocalURL() )
 			->setSubmitTextMsg( 'abusefilter-test-submit' )
 			->setMethod( 'post' )
-			->prepareForm();
-		$htmlForm = $htmlForm->getHTML( $htmlForm );
+			->prepareForm()
+			->getHTML( true );
 
 		$output = Xml::fieldset( $this->msg( 'abusefilter-test-legend' )->text(), $output . $htmlForm );
 		$out->addHTML( $output );
@@ -169,6 +169,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			if ( $result || $this->mShowNegative ) {
 				// Stash result in RC item
 				$rc = RecentChange::newFromRow( $row );
+				/** @suppress PhanUndeclaredProperty for $rc->filterResult, which isn't a big deal */
 				$rc->filterResult = $result;
 				$rc->counter = $counter++;
 				$output .= $changesList->recentChangesLine( $rc, false );

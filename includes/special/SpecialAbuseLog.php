@@ -226,7 +226,7 @@ class SpecialAbuseLog extends SpecialPage {
 			];
 		}
 
-		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() )
+		HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() )
 			->setWrapperLegendMsg( 'abusefilter-log-search' )
 			->setSubmitTextMsg( 'abusefilter-log-search-submit' )
 			->setMethod( 'get' )
@@ -236,7 +236,6 @@ class SpecialAbuseLog extends SpecialPage {
 
 	/**
 	 * @param string $id
-	 * @return mixed
 	 */
 	public function showHideForm( $id ) {
 		if ( !$this->getUser()->isAllowed( 'abusefilter-hide-log' ) ) {
@@ -442,7 +441,6 @@ class SpecialAbuseLog extends SpecialPage {
 
 	/**
 	 * @param string $id
-	 * @return mixed
 	 */
 	public function showDetails( $id ) {
 		$out = $this->getOutput();
@@ -604,7 +602,7 @@ class SpecialAbuseLog extends SpecialPage {
 			return;
 		}
 
-		if ( !self::canSeePrivate( $row->afl_filter, $filter_hidden ) ) {
+		if ( !self::canSeePrivate() ) {
 			$out->addWikiMsg( 'abusefilter-log-cannot-see-private-details' );
 
 			return;

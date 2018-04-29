@@ -94,8 +94,8 @@ class AbuseFilterParser {
 	 * @return array|bool
 	 */
 	public function checkSyntax( $filter ) {
+		$origAS = $this->mAllowShort;
 		try {
-			$origAS = $this->mAllowShort;
 			$this->mAllowShort = false;
 			$this->parse( $filter );
 		} catch ( AFPUserVisibleException $excep ) {
@@ -130,7 +130,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @return AFPToken
+	 * Move to the next token
 	 */
 	protected function move() {
 		list( $this->mCur, $this->mPos ) = $this->mTokens[$this->mPos];
@@ -154,7 +154,6 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @return mixed
 	 * @throws AFPUserVisibleException
 	 */
 	protected function skipOverBraces() {
@@ -478,7 +477,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param string &$result
+	 * @param AFPData &$result
 	 */
 	protected function doLevelCompares( &$result ) {
 		$this->doLevelSumRels( $result );
@@ -498,7 +497,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param string &$result
+	 * @param AFPData &$result
 	 */
 	protected function doLevelSumRels( &$result ) {
 		$this->doLevelMulRels( $result );
@@ -522,7 +521,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param string &$result
+	 * @param AFPData &$result
 	 */
 	protected function doLevelMulRels( &$result ) {
 		$this->doLevelPow( $result );
@@ -541,7 +540,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param string &$result
+	 * @param AFPData &$result
 	 */
 	protected function doLevelPow( &$result ) {
 		$this->doLevelBoolInvert( $result );
@@ -558,7 +557,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param string &$result
+	 * @param AFPData &$result
 	 */
 	protected function doLevelBoolInvert( &$result ) {
 		if ( $this->mCur->type == AFPToken::TOP && $this->mCur->value == '!' ) {
@@ -575,7 +574,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param string &$result
+	 * @param AFPData &$result
 	 */
 	protected function doLevelSpecialWords( &$result ) {
 		$this->doLevelUnarys( $result );
@@ -600,7 +599,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param string &$result
+	 * @param AFPData &$result
 	 */
 	protected function doLevelUnarys( &$result ) {
 		$op = $this->mCur->value;
@@ -620,7 +619,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param string &$result
+	 * @param AFPData &$result
 	 * @throws AFPUserVisibleException
 	 */
 	protected function doLevelListElements( &$result ) {
@@ -647,7 +646,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param string &$result
+	 * @param AFPData &$result
 	 * @throws AFPUserVisibleException
 	 */
 	protected function doLevelBraces( &$result ) {
@@ -671,7 +670,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param string &$result
+	 * @param AFPData &$result
 	 * @throws AFPUserVisibleException
 	 */
 	protected function doLevelFunction( &$result ) {
@@ -736,9 +735,8 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param string &$result
+	 * @param AFPData &$result
 	 * @throws AFPUserVisibleException
-	 * @return AFPData
 	 */
 	protected function doLevelAtom( &$result ) {
 		$tok = $this->mCur->value;
@@ -846,7 +844,7 @@ class AbuseFilterParser {
 
 	/**
 	 * @param string $name
-	 * @param string $value
+	 * @param mixed $value
 	 * @throws AFPUserVisibleException
 	 */
 	protected function setUserVariable( $name, $value ) {
@@ -1292,8 +1290,8 @@ class AbuseFilterParser {
 	/**
 	 * Check if the given string is equals to any of the following strings
 	 *
-	 * @param AFData $string
-	 * @param AFData[] $values
+	 * @param AFPData $string
+	 * @param AFPData[] $values
 	 *
 	 * @return bool
 	 */

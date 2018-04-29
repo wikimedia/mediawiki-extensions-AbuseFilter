@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Linker\LinkRenderer;
+
 /**
  * Class to build paginated filter list for wikis using global abuse filters
  */

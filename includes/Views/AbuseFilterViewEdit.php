@@ -418,7 +418,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$output = '';
 		if ( $error ) {
-			$out->addHTML( "<span class=\"error\">$error</span>" );
+			$output .= Html::errorBox( $error );
 		}
 
 		// Read-only attribute
@@ -669,7 +669,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param stdClass $row A row from the abuse_filter table.
 	 * @param array $actions Array of rows from the abuse_filter_action table
 	 *  corresponding to the abuse filter held in $row.
-	 * @return HTML text for an action editor.
+	 * @return string HTML text for an action editor.
 	 */
 	public function buildConsequenceEditor( $row, $actions ) {
 		global $wgAbuseFilterActions;

@@ -1,11 +1,12 @@
 <?php
 
 class AbuseFilterHistoryPager extends TablePager {
+	public $mFilter, $mPage, $mUser;
 
 	protected $linkRenderer;
 	/**
 	 * @param string $filter
-	 * @param ContextSource $page
+	 * @param AbuseFilterViewHistory $page
 	 * @param string $user User name
 	 * @param \MediaWiki\Linker\LinkRenderer $linkRenderer
 	 */

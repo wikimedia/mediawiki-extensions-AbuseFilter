@@ -1,14 +1,18 @@
 <?php
 
+use MediaWiki\Linker\LinkRenderer;
+
 /**
  * Class to build paginated filter list
  */
 class AbuseFilterPager extends TablePager {
 
 	/**
-	 * @var \MediaWiki\Linker\LinkRenderer
+	 * @var LinkRenderer
 	 */
 	protected $linkRenderer;
+
+	public $mPage, $mConds, $mQuery;
 
 	/**
 	 * @param AbuseFilterViewList $page
@@ -228,7 +232,8 @@ class AbuseFilterPager extends TablePager {
 					);
 				$user = $row->af_user_text;
 				return $this->msg( 'abusefilter-edit-lastmod-text' )
-					->rawParams( $lang->timeanddate( $value, true ),
+					->rawParams(
+						$lang->timeanddate( $value, true ),
 						$userLink,
 						$lang->date( $value, true ),
 						$lang->time( $value, true ),
