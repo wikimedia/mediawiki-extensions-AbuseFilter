@@ -90,6 +90,7 @@ abstract class AbuseFilterView extends ContextSource {
 		}
 
 		$rules = rtrim( $rules ) . "\n";
+		$canEdit = $this->canEdit();
 
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'CodeEditor' ) ) {
 			$editorAttrib['name'] = 'wpAceFilterEditor';
@@ -115,7 +116,6 @@ abstract class AbuseFilterView extends ContextSource {
 			}
 			$rulesContainer .= Xml::textarea( $textName, $rules, 40, 15, $textareaAttribs );
 
-			$canEdit = $this->canEdit();
 			$editorConfig = AbuseFilter::getAceConfig( $canEdit );
 
 			// Add Ace configuration variable
