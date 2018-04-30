@@ -1507,7 +1507,7 @@ class AbuseFilter {
 
 		switch ( $action ) {
 			case 'disallow':
-				if ( strlen( $parameters[0] ) ) {
+				if ( !empty( $parameters[0] ) && strlen( $parameters[0] ) ) {
 					$message = [ $parameters[0], $rule_desc, $rule_number ];
 				} else {
 					// Generic message.
