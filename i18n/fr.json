@@ -306,7 +306,7 @@
 	"abusefilter-edit-builder-funcs-ip_in_range": "L'adresse IP est-elle dans la plage ? (ip_in_range)",
 	"abusefilter-edit-builder-funcs-contains-any": "Rechercher dans une chaîne des multiples sous-chaînes avec le critère OU (contains_any).",
 	"abusefilter-edit-builder-funcs-contains-all": "Rechercher dans une chaîne des multiples sous-chaînes avec le critère ET (contains_all).",
-	"abusefilter-edit-builder-funcs-equals-to-any": "Vérifier si la chaîne donnée est égale à une des chaînes suivantes (equals_to_any).",
+	"abusefilter-edit-builder-funcs-equals-to-any": "Vérifier si un argument donné est égal (===) à l'un des arguments suivants (equals_to_any)",
 	"abusefilter-edit-builder-funcs-substr": "Sous-chaîne (substr)",
 	"abusefilter-edit-builder-funcs-strpos": "Position de la sous-chaîne dans la chaîne (strpos)",
 	"abusefilter-edit-builder-funcs-str_replace": "Remplacer la sous-chaîne par la chaîne (str_replace)",

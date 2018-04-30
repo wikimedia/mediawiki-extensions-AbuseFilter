@@ -408,6 +408,7 @@
 	"abusefilter-revert-search": "Wybierz działania",
 	"abusefilter-revert-filter": "Filtr",
 	"abusefilter-revert-preview-intro": "Poniżej znajdują się działania podjęte przez filtr nadużyć, które zostaną wycofane.\nNależy dokładnie je sprawdzić, a następnie kliknąć „{{int:abusefilter-revert-confirm}}”, aby potwierdzić decyzję.",
+	"abusefilter-revert-confirm-legend": "Potwierdź przywrócenie",
 	"abusefilter-revert-confirm": "Potwierdź",
 	"abusefilter-revert-success": "Anulowałeś wszystkie działania podjęte przez filtr nadużyć – [[Special:AbuseFilter/$1|filtr $2]].",
 	"abusefilter-revert-reason": "Automatyczne anulowanie wszystkich działań podjętych przez filtr nadużyć – filtr $1.\nPowód: $2",
