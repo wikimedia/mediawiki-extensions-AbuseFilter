@@ -413,7 +413,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		if ( ( ( isset( $row->af_hidden ) && $row->af_hidden ) ||
 				AbuseFilter::filterHidden( $filter ) )
 			&& !$this->canViewPrivate() ) {
-			return $this->msg( 'abusefilter-edit-denied' )->text();
+			return $this->msg( 'abusefilter-edit-denied' )->escaped();
 		}
 
 		$output = '';
@@ -437,7 +437,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$fields['abusefilter-edit-id'] =
 			$this->mFilter == 'new' ?
-				$this->msg( 'abusefilter-edit-new' )->text() :
+				$this->msg( 'abusefilter-edit-new' )->escaped() :
 				$lang->formatNum( $filter );
 		$fields['abusefilter-edit-description'] =
 			Xml::input(

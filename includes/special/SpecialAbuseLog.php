@@ -881,7 +881,7 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$actions_taken = $row->afl_actions;
 		if ( !strlen( trim( $actions_taken ) ) ) {
-			$actions_taken = $this->msg( 'abusefilter-log-noactions' )->text();
+			$actions_taken = $this->msg( 'abusefilter-log-noactions' )->escaped();
 		} else {
 			$actions = explode( ',', $actions_taken );
 			$displayActions = [];
