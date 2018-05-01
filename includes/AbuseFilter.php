@@ -2318,7 +2318,7 @@ class AbuseFilter {
 		// abusefilter-action-tag, abusefilter-action-throttle, abusefilter-action-warn,
 		// abusefilter-action-blockautopromote, abusefilter-action-block, abusefilter-action-degroup,
 		// abusefilter-action-rangeblock, abusefilter-action-disallow
-		$display = wfMessage( "abusefilter-action-$action" )->text();
+		$display = wfMessage( "abusefilter-action-$action" )->escaped();
 		$display = wfMessage( "abusefilter-action-$action", $display )->isDisabled() ? $action : $display;
 
 		return $display;
@@ -2639,7 +2639,7 @@ class AbuseFilter {
 			} else {
 				$displayAction = self::getActionDisplay( $action ) .
 				wfMessage( 'colon-separator' )->escaped() .
-				$wgLang->semicolonList( $parameters );
+				htmlspecialchars( $wgLang->semicolonList( $parameters ) );
 			}
 		}
 
@@ -2656,7 +2656,7 @@ class AbuseFilter {
 		$flags = array_filter( explode( ',', $value ) );
 		$flags_display = [];
 		foreach ( $flags as $flag ) {
-			$flags_display[] = wfMessage( "abusefilter-history-$flag" )->text();
+			$flags_display[] = wfMessage( "abusefilter-history-$flag" )->escaped();
 		}
 
 		return $wgLang->commaList( $flags_display );
