@@ -210,10 +210,41 @@ abstract class AbuseFilterView extends ContextSource {
 
 	/**
 	 * @param IDatabase $db
+	 * @param string|bool $action 'edit', 'move', 'createaccount', 'delete' or false for all
 	 * @return string
 	 */
-	public function buildTestConditions( IDatabase $db ) {
+	public function buildTestConditions( IDatabase $db, $action = false ) {
 		// If one of these is true, we're abusefilter compatible.
+		switch ( $action ) {
+			case 'edit':
+				return $db->makeList( [
+					// Actually, this is only one condition, but this way we get it as string
+					'rc_source' => [
+						RecentChange::SRC_EDIT,
+						RecentChange::SRC_NEW,
+					]
+				], LIST_AND );
+			case 'move':
+				return $db->makeList( [
+					'rc_source' => RecentChange::SRC_LOG,
+					'rc_log_type' => 'move',
+					'rc_log_action' => 'move'
+				], LIST_AND );
+			case 'createaccount':
+				return $db->makeList( [
+					'rc_source' => RecentChange::SRC_LOG,
+					'rc_log_type' => 'newusers',
+					'rc_log_action' => 'create'
+				], LIST_AND );
+			case 'delete':
+				return $db->makeList( [
+					'rc_source' => RecentChange::SRC_LOG,
+					'rc_log_type' => 'delete',
+					'rc_log_action' => 'delete'
+				], LIST_AND );
+			// @ToDo: case 'upload'
+		}
+
 		return $db->makeList( [
 			'rc_source' => [
 				RecentChange::SRC_EDIT,
