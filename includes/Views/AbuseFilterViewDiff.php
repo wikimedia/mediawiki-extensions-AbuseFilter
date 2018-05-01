@@ -13,6 +13,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		$show = $this->loadData();
 		$out = $this->getOutput();
 		$out->enableOOUI();
+		$out->addModuleStyles( [ 'oojs-ui.styles.icons-movement' ] );
 
 		$links = [];
 		if ( $this->mFilter ) {
@@ -38,36 +39,40 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 		if ( $show ) {
 			$out->addHTML( $this->formatDiff() );
-
 			// Next and previous change links
-			$links = [];
+			$buttons = [];
 			if ( AbuseFilter::getFirstFilterChange( $this->mFilter ) !=
 				$this->mOldVersion['meta']['history_id']
 			) {
 				// Create a "previous change" link if this isn't the first change of the given filter
-				$links[] = $this->linkRenderer->makeLink(
-					$this->getTitle(
-						'history/' . $this->mFilter . '/diff/prev/' . $this->mOldVersion['meta']['history_id']
-					),
-					$this->getLanguage()->getArrow( 'backwards' ) .
-						' ' . $this->msg( 'abusefilter-diff-prev' )->text()
-				);
+				$href = $this->getTitle(
+					'history/' . $this->mFilter . '/diff/prev/' . $this->mOldVersion['meta']['history_id']
+				)->getFullURL();
+				$buttons[] = new OOUI\ButtonWidget( [
+					'label' => $this->msg( 'abusefilter-diff-prev' )->text(),
+					'href' => $href,
+					'icon' => 'previous'
+				] );
 			}
 
 			if ( !is_null( $this->mNextHistoryId ) ) {
 				// Create a "next change" link if this isn't the last change of the given filter
-				$links[] = $this->linkRenderer->makeLink(
-					$this->getTitle(
-						'history/' . $this->mFilter . '/diff/prev/' . $this->mNextHistoryId
-					),
-					$this->msg( 'abusefilter-diff-next' )->text() .
-						' ' . $this->getLanguage()->getArrow( 'forwards' )
-				);
+				$href = $this->getTitle(
+					'history/' . $this->mFilter . '/diff/prev/' . $this->mNextHistoryId
+				)->getFullURL();
+				$buttons[] = new OOUI\ButtonWidget( [
+					'label' => $this->msg( 'abusefilter-diff-next' )->text(),
+					'href' => $href,
+					'icon' => 'next'
+				] );
 			}
 
-			if ( count( $links ) > 0 ) {
-				$backlinks = $this->getLanguage()->pipeList( $links );
-				$out->addHTML( Xml::tags( 'p', null, $backlinks ) );
+			if ( count( $buttons ) > 0 ) {
+				$buttons = new OOUI\HorizontalLayout( [
+					'items' => $buttons,
+					'classes' => [ 'mw-abusefilter-history-buttons' ]
+				] );
+				$out->addHTML( $buttons );
 			}
 		}
 	}

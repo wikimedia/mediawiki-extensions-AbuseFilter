@@ -398,9 +398,18 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		list( $row, $actions ) = $this->loadRequest( $filter, $history_id );
 
 		if ( !$row ) {
-			$out->addWikiMsg( 'abusefilter-edit-badfilter' );
-			$out->addHTML( $this->linkRenderer->makeLink( $this->getTitle(),
-				$this->msg( 'abusefilter-return' )->text() ) );
+			$out->addHTML(
+				Xml::tags(
+					'p',
+					null,
+					Html::errorBox( $this->msg( 'abusefilter-edit-badfilter' )->parse() )
+				)
+			);
+			$href = $this->getTitle()->getFullURL();
+			$btn = new OOUI\ButtonWidget( [
+					'label' => $this->msg( 'abusefilter-return' )->text(),
+					'href' => $href
+			] );
 			return false;
 		}
 
