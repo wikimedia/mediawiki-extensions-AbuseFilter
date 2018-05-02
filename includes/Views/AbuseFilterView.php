@@ -108,9 +108,7 @@ abstract class AbuseFilterView extends ContextSource {
 			$rulesContainer = Xml::element( 'div', $editorAttrib, $rules );
 
 			// Dummy textarea for submitting form and to use in case JS is disabled
-			$textareaAttribs = [
-				'style' => 'display: none'
-			];
+			$textareaAttribs = [];
 			if ( $externalForm ) {
 				$textareaAttribs['form'] = 'wpFilterForm';
 			}
