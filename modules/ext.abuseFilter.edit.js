@@ -414,6 +414,23 @@
 		$( '#wpFilterGlobal' ).change( toggleCustomMessages );
 		toggleCustomMessages();
 
+		$( '#wpFilterEnabled' ).click(
+			function () {
+				$( '#wpFilterDeleted' ).prop( 'disabled', this.checked );
+				if ( this.checked ) {
+					$( '#wpFilterDeleted' ).prop( 'checked', false );
+				}
+			}
+		);
+
+		$( '#wpFilterDeleted' ).click(
+			function () {
+				if ( this.checked ) {
+					$( '#wpFilterEnabled' ).prop( 'checked', false );
+				}
+			}
+		);
+
 		$( '#mw-abusefilter-syntaxcheck' ).click( doSyntaxCheck );
 		$( '#wpFilterBuilder' ).change( addText );
 		$( '#mw-abusefilter-edit-group-input' ).change( onFilterGroupChange );
