@@ -209,6 +209,7 @@
 	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Your changes]] to [[Special:AbuseFilter/$1|filter $3]] have been saved.",
 	"abusefilter-edit-badsyntax": "There is a syntax error in the filter you specified.\nThe output from the parser was: <pre>$1</pre>",
 	"abusefilter-edit-missingfields": "The following fields are required and must be filled: $1",
+	"abusefilter-edit-deleting-enabled": "You cannot mark an active filter as deleted.",
 	"abusefilter-edit-restricted": "You cannot edit this filter, because it contains one or more restricted actions.\nPlease ask a user with permission to add restricted actions to make the change for you.",
 	"abusefilter-edit-viewhistory": "View this filter's history",
 	"abusefilter-edit-history": "History:",

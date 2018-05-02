@@ -131,6 +131,20 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				return;
 			}
 
+			// Don't allow setting as deleted an active filter
+			if ( $request->getBool( 'wpFilterEnabled' ) == true &&
+				$request->getBool( 'wpFilterDeleted' ) == true ) {
+				$out->addHTML(
+					$this->buildFilterEditor(
+						$this->msg(
+							'abusefilter-edit-deleting-enabled'
+						)->parseAsBlock(),
+						$filter, $history_id
+					)
+				);
+				return;
+			}
+
 			$dbw = wfGetDB( DB_MASTER );
 
 			list( $newRow, $actions ) = $this->loadRequest( $filter );
@@ -558,8 +572,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$message = "abusefilter-edit-$checkboxId";
 			$dbField = "af_$checkboxId";
 			$postVar = 'wpFilter' . ucfirst( $checkboxId );
+			$cbReadOnlyAttrib = [];
 
 			if ( $checkboxId == 'global' && !$this->canEditGlobal() ) {
+				$cbReadOnlyAttrib['disabled'] = 'disabled';
+			}
+
+			// Set readonly on deleted if the filter isn't disabled
+			if ( $checkboxId == 'deleted' && $row->af_enabled == 1 ) {
 				$cbReadOnlyAttrib['disabled'] = 'disabled';
 			}
 
