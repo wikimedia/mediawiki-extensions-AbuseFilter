@@ -12,46 +12,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	}
 
 	/**
-	 * Check whether a filter is allowed to use a tag
-	 *
-	 * @param string $tag Tag name
-	 * @return Status
-	 */
-	protected function isAllowedTag( $tag ) {
-		$tagNameStatus = ChangeTags::isTagNameValid( $tag );
-
-		if ( !$tagNameStatus->isGood() ) {
-			return $tagNameStatus;
-		}
-
-		$finalStatus = Status::newGood();
-
-		$canAddStatus =
-			ChangeTags::canAddTagsAccompanyingChange(
-				[ $tag ]
-			);
-
-		if ( $canAddStatus->isGood() ) {
-			return $finalStatus;
-		}
-
-		$alreadyDefinedTags = [];
-		AbuseFilterHooks::onListDefinedTags( $alreadyDefinedTags );
-
-		if ( in_array( $tag, $alreadyDefinedTags, true ) ) {
-			return $finalStatus;
-		}
-
-		$canCreateTagStatus = ChangeTags::canCreateTag( $tag );
-		if ( $canCreateTagStatus->isGood() ) {
-			return $finalStatus;
-		}
-
-		$finalStatus->fatal( 'abusefilter-edit-bad-tags' );
-		return $finalStatus;
-	}
-
-	/**
 	 * Shows the page
 	 */
 	public function show() {
@@ -94,276 +54,40 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$editToken, [ 'abusefilter', $filter ], $request );
 
 		if ( $tokenMatches && $this->canEdit() ) {
-			// Check syntax
-			$syntaxerr = AbuseFilter::checkSyntax( $request->getVal( 'wpFilterRules' ) );
-			if ( $syntaxerr !== true ) {
-				$out->addHTML(
-					$this->buildFilterEditor(
-						$this->msg(
-							'abusefilter-edit-badsyntax',
-							[ $syntaxerr[0] ]
-						)->parseAsBlock(),
-						$filter, $history_id
-					)
-				);
-				return;
-			}
-			// Check for missing required fields (title and pattern)
-			$missing = [];
-			if ( !$request->getVal( 'wpFilterRules' ) ||
-				trim( $request->getVal( 'wpFilterRules' ) ) === '' ) {
-				$missing[] = $this->msg( 'abusefilter-edit-field-conditions' )->escaped();
-			}
-			if ( !$request->getVal( 'wpFilterDescription' ) ) {
-				$missing[] = $this->msg( 'abusefilter-edit-field-description' )->escaped();
-			}
-			if ( count( $missing ) !== 0 ) {
-				$missing = $this->getLanguage()->commaList( $missing );
-				$out->addHTML(
-					$this->buildFilterEditor(
-						$this->msg(
-							'abusefilter-edit-missingfields',
-							$missing
-						)->parseAsBlock(),
-						$filter, $history_id
-					)
-				);
-				return;
-			}
-
-			// Don't allow setting as deleted an active filter
-			if ( $request->getBool( 'wpFilterEnabled' ) == true &&
-				$request->getBool( 'wpFilterDeleted' ) == true ) {
-				$out->addHTML(
-					$this->buildFilterEditor(
-						$this->msg(
-							'abusefilter-edit-deleting-enabled'
-						)->parseAsBlock(),
-						$filter, $history_id
-					)
-				);
-				return;
-			}
-
-			$dbw = wfGetDB( DB_MASTER );
-
 			list( $newRow, $actions ) = $this->loadRequest( $filter );
-
-			$differences = AbuseFilter::compareVersions(
-				[ $newRow, $actions ],
-				[ $newRow->mOriginalRow, $newRow->mOriginalActions ]
-			);
-
-			// Don't allow adding a new global rule, or updating a
-			// rule that is currently global, without permissions.
-			if ( !$this->canEditFilter( $newRow ) || !$this->canEditFilter( $newRow->mOriginalRow ) ) {
-				$out->addWikiMsg( 'abusefilter-edit-notallowed-global' );
-				return;
-			}
-
-			// Don't allow custom messages on global rules
-			if ( $newRow->af_global == 1 &&
-				$request->getVal( 'wpFilterWarnMessage' ) !== 'abusefilter-warning'
-			) {
-				$out->addWikiMsg( 'abusefilter-edit-notallowed-global-custom-msg' );
-				return;
-			}
-
-			$origActions = $newRow->mOriginalActions;
-			$wasGlobal = (bool)$newRow->mOriginalRow->af_global;
-
-			unset( $newRow->mOriginalRow );
-			unset( $newRow->mOriginalActions );
-
-			// Check for non-changes
-			if ( !count( $differences ) ) {
-				$out->redirect( $this->getTitle()->getLocalURL() );
-				return;
-			}
-
-			// Check for restricted actions
-			if ( count( array_intersect_key(
-					array_filter( $config->get( 'AbuseFilterRestrictions' ) ),
-					array_merge(
-						array_filter( $actions ),
-						array_filter( $origActions )
-					)
-				) )
-				&& !$user->isAllowed( 'abusefilter-modify-restricted' )
-			) {
-				$out->addHTML(
-					$this->buildFilterEditor(
-						$this->msg( 'abusefilter-edit-restricted' )->parseAsBlock(),
-						$this->mFilter,
-						$history_id
-					)
-				);
-				return;
-			}
-
-			// If we've activated the 'tag' option, check the arguments for validity.
-			if ( !empty( $actions['tag'] ) ) {
-				foreach ( $actions['tag']['parameters'] as $tag ) {
-					$status = $this->isAllowedTag( $tag );
-
-					if ( !$status->isGood() ) {
-						$out->addHTML(
-							$this->buildFilterEditor(
-								$status->getMessage()->parseAsBlock(),
-								$this->mFilter,
-								$history_id
-							)
-						);
-						return;
-					}
+			$status = AbuseFilter::saveFilter( $this, $filter, $request, $newRow, $actions );
+			if ( !$status->isGood() ) {
+				$err = $status->getErrors();
+				$msg = $err[0]['message'];
+				$params = $err[0]['params'];
+				if ( $status->isOK() ) {
+					$out->addHTML(
+						$this->buildFilterEditor(
+							$this->msg( $msg, $params )->parseAsBlock(),
+							$filter,
+							$history_id
+						)
+					);
+				} else {
+					$out->addWikiMsg( $msg );
 				}
-			}
-
-			// Convert from object to array
-			$newRow = get_object_vars( $newRow );
-
-			// Set last modifier.
-			$newRow['af_timestamp'] = $dbw->timestamp( wfTimestampNow() );
-			$newRow['af_user'] = $user->getId();
-			$newRow['af_user_text'] = $user->getName();
-
-			$dbw->startAtomic( __METHOD__ );
-
-			// Insert MAIN row.
-			if ( $filter == 'new' ) {
-				$new_id = $dbw->nextSequenceValue( 'abuse_filter_af_id_seq' );
-				$is_new = true;
 			} else {
-				$new_id = $this->mFilter;
-				$is_new = false;
-			}
-
-			// Reset throttled marker, if we're re-enabling it.
-			$newRow['af_throttled'] = $newRow['af_throttled'] && !$newRow['af_enabled'];
-			// ID.
-			$newRow['af_id'] = $new_id;
-
-			// T67807
-			// integer 1's & 0's might be better understood than booleans
-			$newRow['af_enabled'] = (int)$newRow['af_enabled'];
-			$newRow['af_hidden'] = (int)$newRow['af_hidden'];
-			$newRow['af_throttled'] = (int)$newRow['af_throttled'];
-			$newRow['af_deleted'] = (int)$newRow['af_deleted'];
-			$newRow['af_global'] = (int)$newRow['af_global'];
-
-			$dbw->replace( 'abuse_filter', [ 'af_id' ], $newRow, __METHOD__ );
-
-			if ( $is_new ) {
-				$new_id = $dbw->insertId();
-			}
-
-			// Actions
-			$actionsRows = [];
-			foreach ( array_filter( $config->get( 'AbuseFilterActions' ) ) as $action => $_ ) {
-				// Check if it's set
-				$enabled = isset( $actions[$action] ) && (bool)$actions[$action];
-
-				if ( $enabled ) {
-					$parameters = $actions[$action]['parameters'];
-
-					$thisRow = [
-						'afa_filter' => $new_id,
-						'afa_consequence' => $action,
-						'afa_parameters' => implode( "\n", $parameters )
-					];
-					$actionsRows[] = $thisRow;
+				if ( $status->getValue() === false ) {
+					// No change
+					$out->redirect( $this->getTitle()->getLocalURL() );
+				} else {
+					list( $new_id, $history_id ) = $status->getValue();
+					$out->redirect(
+						$this->getTitle()->getLocalURL(
+							[
+								'result' => 'success',
+								'changedfilter' => $new_id,
+								'changeid' => $history_id,
+							]
+						)
+					);
 				}
 			}
-
-			// Create a history row
-			$afh_row = [];
-
-			foreach ( AbuseFilter::$history_mappings as $af_col => $afh_col ) {
-				$afh_row[$afh_col] = $newRow[$af_col];
-			}
-
-			// Actions
-			$displayActions = [];
-			foreach ( $actions as $action ) {
-				$displayActions[$action['action']] = $action['parameters'];
-			}
-			$afh_row['afh_actions'] = serialize( $displayActions );
-
-			$afh_row['afh_changed_fields'] = implode( ',', $differences );
-
-			// Flags
-			$flags = [];
-			if ( $newRow['af_hidden'] ) {
-				$flags[] = 'hidden';
-			}
-			if ( $newRow['af_enabled'] ) {
-				$flags[] = 'enabled';
-			}
-			if ( $newRow['af_deleted'] ) {
-				$flags[] = 'deleted';
-			}
-			if ( $newRow['af_global'] ) {
-				$flags[] = 'global';
-			}
-
-			$afh_row['afh_flags'] = implode( ',', $flags );
-
-			$afh_row['afh_filter'] = $new_id;
-			$afh_row['afh_id'] = $dbw->nextSequenceValue( 'abuse_filter_af_id_seq' );
-
-			// Do the update
-			$dbw->insert( 'abuse_filter_history', $afh_row, __METHOD__ );
-			$history_id = $dbw->insertId();
-			if ( $filter != 'new' ) {
-				$dbw->delete(
-					'abuse_filter_action',
-					[ 'afa_filter' => $filter ],
-					__METHOD__
-				);
-			}
-			$dbw->insert( 'abuse_filter_action', $actionsRows, __METHOD__ );
-
-			$dbw->endAtomic( __METHOD__ );
-
-			// Invalidate cache if this was a global rule
-			if ( $wasGlobal || $newRow['af_global'] ) {
-				$group = 'default';
-				if ( isset( $newRow['af_group'] ) && $newRow['af_group'] != '' ) {
-					$group = $newRow['af_group'];
-				}
-
-				$globalRulesKey = AbuseFilter::getGlobalRulesKey( $group );
-				ObjectCache::getMainWANInstance()->touchCheckKey( $globalRulesKey );
-			}
-
-			// Logging
-			$subtype = $filter === 'new' ? 'create' : 'modify';
-			$logEntry = new ManualLogEntry( 'abusefilter', $subtype );
-			$logEntry->setPerformer( $user );
-			$logEntry->setTarget( $this->getTitle( $new_id ) );
-			$logEntry->setParameters( [
-				'historyId' => $history_id,
-				'newId' => $new_id
-			] );
-			$logid = $logEntry->insert();
-			$logEntry->publish( $logid );
-
-			// Purge the tag list cache so the fetchAllTags hook applies tag changes
-			if ( isset( $actions['tag'] ) ) {
-				AbuseFilterHooks::purgeTagCache();
-			}
-
-			AbuseFilter::resetFilterProfile( $new_id );
-
-			$out->redirect(
-				$this->getTitle()->getLocalURL(
-					[
-						'result' => 'success',
-						'changedfilter' => $new_id,
-						'changeid' => $history_id,
-					]
-				)
-			);
 		} else {
 			if ( $tokenMatches ) {
 				// lost rights meanwhile
