@@ -118,3 +118,7 @@ ul li.mw-abusefilter-changeslist-match {
 .client-js #mw-abusefilter-export {
 	display: none;
 }
+
+.mw-abusefilter-history-buttons {
+	text-align: center;
+}

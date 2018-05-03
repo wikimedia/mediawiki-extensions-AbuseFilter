@@ -556,8 +556,13 @@ class SpecialAbuseLog extends SpecialPage {
 		// Make sure it is a valid request
 		$token = $request->getVal( 'wpEditToken' );
 		if ( !$request->wasPosted() || !$this->getUser()->matchEditToken( $token ) ) {
-			$out->wrapWikiMsg( '<div class="errorbox">$1</div>',
-				[ 'abusefilter-invalid-request', $id ] );
+			$out->addHTML(
+				Xml::tags(
+					'p',
+					null,
+					Html::errorBox( $this->msg( 'abusefilter-invalid-request' )->params( $id )->parse() )
+				)
+			);
 
 			return;
 		}
