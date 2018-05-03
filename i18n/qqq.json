@@ -152,6 +152,7 @@
 	"abusefilter-enabled": "Abuse filter status.\n{{Identical|Enabled}}",
 	"abusefilter-deleted": "Abuse filter status.\n{{Identical|Deleted}}",
 	"abusefilter-disabled": "Abuse filter status.\n{{Identical|Disabled}}",
+	"abusefilter-throttled": "Abuse filter status where some actions have been automatically disabled. See {{mw-msg|abusefilter-edit-throttled-warning}}",
 	"abusefilter-hitcount": "Indicates number of times an abuse filter was triggered. Parameters:\n* $1 is the number of hits.",
 	"abusefilter-new": "Link text for creating a new abuse filter.",
 	"abusefilter-return": "Link displayed when filtering abuse filters without results.",

@@ -59,6 +59,11 @@ tr.mw-abusefilter-list-deleted td {
 	color: #aaa;
 }
 
+tr.mw-abusefilter-list-throttled,
+tr.mw-abusefilter-list-throttled td {
+	color: #f00;
+}
+
 .mw-abusefilter-examine-match,
 .mw-abusefilter-syntaxresult-ok,
 li.mw-abusefilter-changeslist-match {
