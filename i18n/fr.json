@@ -243,6 +243,7 @@
 	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Vos modifications]] au [[Special:AbuseFilter/$1|filtre $3]] ont été enregistrées.",
 	"abusefilter-edit-badsyntax": "Le filtre que vous avez spécifié comporte une erreur de syntaxe.\nLe résultat de l'analyseur syntaxique était : <pre>$1</pre>",
 	"abusefilter-edit-missingfields": "Les champs suivants sont nécessaires et doivent être remplis : $1",
+	"abusefilter-edit-deleting-enabled": "Vous ne pouvez pas marquer un filtre actif comme supprimé.",
 	"abusefilter-edit-restricted": "Vous ne pouvez pas modifier ce filtre parce qu'il contient une ou plusieurs actions restreintes.\nDemandez à un utilisateur autorisé à ajouter des actions restreintes d'effectuer la modification pour vous.",
 	"abusefilter-edit-viewhistory": "Voir l’historique de ce filtre",
 	"abusefilter-edit-history": "Historique :",

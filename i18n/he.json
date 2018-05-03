@@ -220,6 +220,7 @@
 	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|השינויים שלך]] במסנן [[Special:AbuseFilter/$1|$3]] נשמרו.",
 	"abusefilter-edit-badsyntax": "ישנה שגיאת תחביר במסנן שציינת.\nהפלט מהמפענח הוא: <pre>$1</pre>",
 	"abusefilter-edit-missingfields": "השדות הבאים נדרשים, וחובה למלא אותם: $1",
+	"abusefilter-edit-deleting-enabled": "לא ניתן לסמן מסנן פעיל כמחוק.",
 	"abusefilter-edit-restricted": "אין באפשרותך לערוך מסנן זה, כי הוא מכיל פעולה מוגבלת אחת או יותר.\nנא לבקש ממשתמש עם הרשאה להוספת פעולות מוגבלות לבצע את השינוי עבורך.",
 	"abusefilter-edit-viewhistory": "צפייה בהיסטוריית הגרסאות של מסנן זה",
 	"abusefilter-edit-history": "היסטוריה:",
