@@ -2492,17 +2492,18 @@ class AbuseFilter {
 		} else {
 			if ( $action === 'block' ) {
 				// Needs to be treated separately since the message is more complex
-				$displayAction = self::getActionDisplay( 'block' ) .
-				' ' .
-				wfMessage( 'abusefilter-block-anon' ) .
-				wfMessage( 'colon-separator' )->escaped() .
-				$wgLang->translateBlockExpiry( $parameters[1] ) .
-				wfMessage( 'comma-separator' )->escaped() .
-				$wgLang->lcfirst( self::getActionDisplay( 'block' ) ) .
-				' ' .
-				wfMessage( 'abusefilter-block-user' ) .
-				wfMessage( 'colon-separator' )->escaped() .
-				$wgLang->translateBlockExpiry( $parameters[2] );
+				$messages = [
+					wfMessage( 'abusefilter-block-anon' )->escaped() .
+					wfMessage( 'colon-separator' )->escaped() .
+					$wgLang->translateBlockExpiry( $parameters[1] ),
+					wfMessage( 'abusefilter-block-user' )->escaped() .
+					wfMessage( 'colon-separator' )->escaped() .
+					$wgLang->translateBlockExpiry( $parameters[2] )
+				];
+				if ( $parameters[0] === 'blocktalk' ) {
+					$messages[] = wfMessage( 'abusefilter-block-talk' )->escaped();
+				}
+				$displayAction = $wgLang->commaList( $messages );
 			} else {
 				$displayAction = self::getActionDisplay( $action ) .
 				wfMessage( 'colon-separator' )->escaped() .
