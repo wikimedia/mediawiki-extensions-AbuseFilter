@@ -771,7 +771,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					}
 					$defaultUserDuration = $config->get( 'AbuseFilterBlockDuration' );
 				}
-				$suggestedBlocks = SpecialBlock::getSuggestedDurations();
+				$suggestedBlocks = SpecialBlock::getSuggestedDurations( null, false );
 				$suggestedBlocks = self::normalizeBlocks( $suggestedBlocks );
 
 				$output = '';
