@@ -258,7 +258,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 
 			// Actions
-			$deadActions = [];
 			$actionsRows = [];
 			foreach ( array_filter( $config->get( 'AbuseFilterActions' ) ) as $action => $_ ) {
 				// Check if it's set
@@ -273,8 +272,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						'afa_parameters' => implode( "\n", $parameters )
 					];
 					$actionsRows[] = $thisRow;
-				} else {
-					$deadActions[] = $action;
 				}
 			}
 
