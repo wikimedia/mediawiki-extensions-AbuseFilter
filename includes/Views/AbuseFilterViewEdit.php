@@ -934,7 +934,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					$userDuration->setAttribute( 'disabled', 'disabled' );
 				}
 
-				$durations['abusefilter-edit-block-options'] = $talkCheckbox;
+				if ( $config->get( 'BlockAllowsUTEdit' ) === true ) {
+					$durations['abusefilter-edit-block-options'] = $talkCheckbox;
+				}
 				$durations['abusefilter-edit-block-anon-durations'] = $anonDuration->getHTML();
 				$durations['abusefilter-edit-block-user-durations'] = $userDuration->getHTML();
 
