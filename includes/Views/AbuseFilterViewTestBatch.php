@@ -15,8 +15,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		AbuseFilter::disableConditionLimit();
 
-		if ( !$this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
-			$out->addWikiMsg( 'abusefilter-mustbeeditor' );
+		if ( !$this->canViewPrivate() ) {
+			$out->addWikiMsg( 'abusefilter-mustviewprivateoredit' );
 			return;
 		}
 
@@ -32,7 +32,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 				$this->mFilter,
 				'wpTestFilter',
 				true,
-				true
+				true,
+				false
 			) . "\n";
 
 		$output .= AbuseFilter::buildFilterLoader();

@@ -190,11 +190,16 @@ class AbuseFilter {
 			'log' => 'Special:AbuseLog',
 		];
 
-		if ( $context->getUser()->isAllowed( 'abusefilter-modify' ) ) {
+		if ( $context->getUser()->isAllowedAny( 'abusefilter-modify', 'abusefilter-view-private' ) ) {
 			$linkDefs = array_merge( $linkDefs, [
 				'test' => 'Special:AbuseFilter/test',
-				'tools' => 'Special:AbuseFilter/tools',
-				'import' => 'Special:AbuseFilter/import',
+				'tools' => 'Special:AbuseFilter/tools'
+			] );
+		}
+
+		if ( $context->getUser()->isAllowed( 'abusefilter-modify' ) ) {
+			$linkDefs = array_merge( $linkDefs, [
+				'import' => 'Special:AbuseFilter/import'
 			] );
 		}
 

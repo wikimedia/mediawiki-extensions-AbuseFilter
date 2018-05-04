@@ -9,7 +9,7 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 		$this->requireOnlyOneParameter( $params, 'vars', 'rcid', 'logid' );
 
 		// "Anti-DoS"
-		if ( !$this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
+		if ( !$this->getUser()->isAllowedAny( 'abusefilter-modify', 'abusefilter-view-private' ) ) {
 			$this->dieWithError( 'apierror-abusefilter-canttest', 'permissiondenied' );
 		}
 

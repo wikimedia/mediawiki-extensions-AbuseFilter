@@ -7,11 +7,10 @@ class AbuseFilterViewTools extends AbuseFilterView {
 	public function show() {
 		$out = $this->getOutput();
 		$out->enableOOUI();
-		$user = $this->getUser();
 		$request = $this->getRequest();
 
-		if ( !$user->isAllowed( 'abusefilter-modify' ) ) {
-			$out->addWikiMsg( 'abusefilter-mustbeeditor' );
+		if ( !$this->canViewPrivate() ) {
+			$out->addWikiMsg( 'abusefilter-mustviewprivateoredit' );
 			return;
 		}
 
@@ -20,7 +19,13 @@ class AbuseFilterViewTools extends AbuseFilterView {
 
 		// Expression evaluator
 		$eval = '';
-		$eval .= $this->buildEditBox( $request->getText( 'wpTestExpr' ), 'wpTestExpr' );
+		$eval .= $this->buildEditBox(
+			$request->getText( 'wpTestExpr' ),
+			'wpTestExpr',
+			true,
+			false,
+			false
+		);
 
 		$eval .=
 			Xml::tags( 'p', null,

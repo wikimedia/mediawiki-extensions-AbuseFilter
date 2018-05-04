@@ -70,13 +70,15 @@ abstract class AbuseFilterView extends ContextSource {
 	 * @param string $textName
 	 * @param bool $addResultDiv
 	 * @param bool $externalForm
+	 * @param bool $needsModifyRights
 	 * @return string
 	 */
 	public function buildEditBox(
 		$rules,
 		$textName = 'wpFilterRules',
 		$addResultDiv = true,
-		$externalForm = false
+		$externalForm = false,
+		$needsModifyRights = true
 	) {
 		$this->getOutput()->enableOOUI();
 
@@ -84,13 +86,16 @@ abstract class AbuseFilterView extends ContextSource {
 		$editorAttrib = [ 'dir' => 'ltr' ];
 
 		$noTestAttrib = [];
-		if ( !$this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
+		$isUserAllowed = $needsModifyRights ?
+			$this->getUser()->isAllowed( 'abusefilter-modify' ) :
+			$this->canViewPrivate();
+		if ( !$isUserAllowed ) {
 			$noTestAttrib['disabled'] = 'disabled';
 			$addResultDiv = false;
 		}
 
 		$rules = rtrim( $rules ) . "\n";
-		$canEdit = $this->canEdit();
+		$canEdit = $needsModifyRights ? $this->canEdit() : $this->canViewPrivate();
 
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'CodeEditor' ) ) {
 			$editorAttrib['name'] = 'wpAceFilterEditor';

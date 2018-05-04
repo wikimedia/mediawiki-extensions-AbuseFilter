@@ -195,7 +195,7 @@
 				"abusefilter-examine-nomatch",
 				"abusefilter-examine-syntaxerror",
 				"abusefilter-examine-notfound",
-				"abusefilter-mustbeeditor",
+				"abusefilter-mustviewprivateoredit",
 				"abusefilter-http-error",
 				"unknown-error"
 			],
