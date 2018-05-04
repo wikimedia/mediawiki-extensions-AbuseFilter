@@ -251,6 +251,7 @@
 	"abusefilter-edit-done": "您已成功保存您对[[Special:AbuseFilter/$1|过滤器$3]]的[[Special:AbuseFilter/history/$1/diff/prev/$2|修改]]。",
 	"abusefilter-edit-badsyntax": "您指定的过滤器中存有语法错误。解析器的输出结果为：<pre>$1</pre>",
 	"abusefilter-edit-missingfields": "需要以下字段，且均为必填项：$1",
+	"abusefilter-edit-deleting-enabled": "您不能标记应用的过滤器为已删除。",
 	"abusefilter-edit-restricted": "您无法编辑此过滤器，因为其中包含一个或多个受限操作。请寻求拥有相应权限用户的帮助，以协助您作出相应修改。",
 	"abusefilter-edit-viewhistory": "查看过滤器历史",
 	"abusefilter-edit-history": "历史：",
