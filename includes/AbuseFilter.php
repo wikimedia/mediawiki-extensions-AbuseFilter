@@ -526,7 +526,8 @@ class AbuseFilter {
 				function () use ( $group, $fname ) {
 					global $wgAbuseFilterCentralDB;
 
-					$fdb = wfGetLB( $wgAbuseFilterCentralDB )->getConnectionRef(
+					$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+					$fdb = $lbFactory->getMainLB( $wgAbuseFilterCentralDB )->getConnectionRef(
 						DB_REPLICA, [], $wgAbuseFilterCentralDB
 					);
 
@@ -1160,7 +1161,8 @@ class AbuseFilter {
 				}
 
 				$id = $globalIndex;
-				$lb = wfGetLB( $wgAbuseFilterCentralDB );
+				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+				$lb = $lbFactory->getMainLB( $wgAbuseFilterCentralDB );
 				$dbr = $lb->getConnectionRef( DB_REPLICA, [], $wgAbuseFilterCentralDB );
 			} else {
 				// Local wiki filter
