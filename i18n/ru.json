@@ -33,7 +33,8 @@
 			"Patrick Star",
 			"Happy13241",
 			"Jack who built the house",
-			"Ole Yves"
+			"Ole Yves",
+			"Katunchik"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -232,8 +233,9 @@
 	"abusefilter-edit-tag-tag": "Применяемые [[Special:Tags|метки]] (по одной на строку):",
 	"abusefilter-edit-block-anon-durations": "Длительность блокировки для анонимных пользователей:",
 	"abusefilter-edit-block-user-durations": "Длительность блокировки для зарегистрированных пользователей:",
-	"abusefilter-block-anon": "анонимные участники",
-	"abusefilter-block-user": "зарегистрированные участники",
+	"abusefilter-block-anon": "Блокировать анонимных участников",
+	"abusefilter-block-user": "блокировать зарегистрированных участников",
+	"abusefilter-block-talk": "страница обсуждения заблокирована",
 	"abusefilter-edit-denied": "Вы не можете просмотреть подробную информацию об этом фильтре, так как она скрыта от обычных участников.",
 	"abusefilter-edit-main": "Параметры фильтра",
 	"abusefilter-edit-done-subtitle": "Фильтр исправлен",

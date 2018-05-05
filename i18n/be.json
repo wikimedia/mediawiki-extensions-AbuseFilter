@@ -35,5 +35,7 @@
 	"abusefilter-history-flags": "Сцягі",
 	"abusefilter-history-comments": "Каментары",
 	"abusefilter-revert-filter": "Фільтр:",
-	"abusefilter-revert-confirm": "Пацвердзіць"
+	"abusefilter-revert-confirm": "Пацвердзіць",
+	"tag-abusefilter-condition-limit": "дасягнуты ліміт умовы",
+	"tag-abusefilter-condition-limit-description": "Парўкі або іншыя падзеі, якія не могуць быць выбраныя ніводным з актыўных [[Special:AbuseFilter|фільтраў злоўжыванняў]] ([[mw:Extension:AbuseFilter/Conditions|даведка]])."
 }

@@ -85,7 +85,7 @@
 	"abusefilter-log-search-submit": "Ricerca",
 	"abusefilter-log-entry": "$1: $2 {{GENDER:$8|ha provocato}} l'attivazione di un filtro anti abusi con l'azione \"$3\" su $4.\nAzioni intraprese: $5;\nDescrizione del filtro: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 {{GENDER:$8|ha provocato}} l'attivazione di un filtro anti abusi con l'azione \"$3\" su $4.\nAzioni intraprese: $5;\nDescrizione del filtro: $6 ($7)",
-	"abusefilter-log-detailedentry-meta": "$1: $2 {{GENDER:$9|ha provocato}} l'attivazione $3 con l'azione \"$4\" su $5.\nAzioni intraprese: $6;\nDescrizione del filtro: $7 ($8)",
+	"abusefilter-log-detailedentry-meta": "$1: $2 {{GENDER:$9|ha attivato}} $3 con l'azione \"$4\" su $5.\nAzioni intraprese: $6;\nDescrizione del filtro: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "filtro globale $1",
 	"abusefilter-log-detailedentry-local": "il filtro $1",
 	"abusefilter-log-detailslink": "dettagli",
