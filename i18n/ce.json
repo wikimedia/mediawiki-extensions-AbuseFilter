@@ -192,7 +192,7 @@
 	"abusefilter-edit-builder-op-comparison-gte": "Дуккха я нийса (>=)",
 	"abusefilter-edit-builder-group-op-bool": "Боолен оператораш",
 	"abusefilter-edit-builder-op-bool-not": "Дац (!)",
-	"abusefilter-edit-builder-op-bool-and": "А (&)",
+	"abusefilter-edit-builder-op-bool-and": ", (&)",
 	"abusefilter-edit-builder-op-bool-or": "Я (|)",
 	"abusefilter-edit-builder-op-bool-xor": "Юкъарайохурш Я (^)",
 	"abusefilter-edit-builder-group-misc": "Тайп-тайпанара",
