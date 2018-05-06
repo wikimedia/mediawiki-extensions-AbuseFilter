@@ -578,23 +578,25 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$message = "abusefilter-edit-$checkboxId";
 			$dbField = "af_$checkboxId";
 			$postVar = 'wpFilter' . ucfirst( $checkboxId );
-			$cbReadOnlyAttrib = [];
+			$localReadOnlyAttrib = [];
 
 			if ( $checkboxId == 'global' && !$this->canEditGlobal() ) {
-				$cbReadOnlyAttrib['disabled'] = 'disabled';
+				$localReadOnlyAttrib['disabled'] = 'disabled';
 			}
 
 			// Set readonly on deleted if the filter isn't disabled
 			if ( $checkboxId == 'deleted' && $row->af_enabled == 1 ) {
-				$cbReadOnlyAttrib['disabled'] = 'disabled';
+				$localReadOnlyAttrib['disabled'] = 'disabled';
 			}
+
+			$readOnly = array_merge( $cbReadOnlyAttrib, $localReadOnlyAttrib );
 
 			$checkbox = Xml::checkLabel(
 				$this->msg( $message )->text(),
 				$postVar,
 				$postVar,
 				isset( $row->$dbField ) ? $row->$dbField : false,
-				$cbReadOnlyAttrib
+				$readOnly
 			);
 			$checkbox = Xml::tags( 'p', null, $checkbox );
 			$flags .= $checkbox;
