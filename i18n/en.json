@@ -422,6 +422,7 @@
 	"abusefilter-test-submit": "Test",
 	"abusefilter-test-load": "Load",
 	"abusefilter-test-user": "Changes by user:",
+	"abusefilter-test-nobots": "Hide bot edits",
 	"abusefilter-test-period-start": "Changes made after:",
 	"abusefilter-test-period-end": "Changes made before:",
 	"abusefilter-test-page": "Changes made to page:",

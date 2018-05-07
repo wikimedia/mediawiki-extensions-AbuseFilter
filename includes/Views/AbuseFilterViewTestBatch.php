@@ -5,7 +5,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	protected static $mChangeLimit = 100;
 
 	public $mShowNegative, $mTestPeriodStart, $mTestPeriodEnd, $mTestPage;
-	public $mTestUser;
+	public $mTestUser, $mExcludeBots;
 
 	/**
 	 * Shows the page
@@ -50,6 +50,12 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			'ipallowed' => true,
 			'label-message' => 'abusefilter-test-user',
 			'default' => $this->mTestUser
+		];
+		$formFields['wpExcludeBots'] = [
+			'name' => 'wpExcludeBots',
+			'type' => 'check',
+			'label-message' => 'abusefilter-test-nobots',
+			'default' => $this->mExcludeBots
 		];
 		$formFields['wpTestPeriodStart'] = [
 			'name' => 'wpTestPeriodStart',
@@ -140,6 +146,12 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		}
 
 		$conds[] = $this->buildTestConditions( $dbr );
+		$conds = array_filter( $conds );
+
+		// To be added after filtering, otherwise it gets stripped
+		if ( $this->mExcludeBots ) {
+			$conds['rc_bot'] = 0;
+		}
 
 		// Get our ChangesList
 		$changesList = new AbuseFilterChangesList( $this->getSkin(), $this->mFilter );
@@ -149,7 +161,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$res = $dbr->select(
 			$rcQuery['tables'],
 			$rcQuery['fields'],
-			array_filter( $conds ),
+			$conds,
 			__METHOD__,
 			[ 'LIMIT' => self::$mChangeLimit, 'ORDER BY' => 'rc_timestamp desc' ],
 			$rcQuery['joins']
@@ -193,6 +205,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$this->mTestPeriodEnd = $request->getText( 'wpTestPeriodEnd' );
 		$this->mTestPeriodStart = $request->getText( 'wpTestPeriodStart' );
 		$this->mTestPage = $request->getText( 'wpTestPage' );
+		$this->mExcludeBots = $request->getBool( 'wpExcludeBots' );
 
 		if ( !$this->mFilter
 			&& count( $this->mParams ) > 1

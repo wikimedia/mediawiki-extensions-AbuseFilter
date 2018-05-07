@@ -455,6 +455,7 @@
 	"abusefilter-test-submit": "Caption of the submit button on [[Special:AbuseFilter/test]].\n{{Identical|Test}}",
 	"abusefilter-test-load": "Text on a button, and referred to in {{msg-mw|abusefilter-test-intro}}\n{{Identical|Load}}",
 	"abusefilter-test-user": "Used as label on [[Special:AbuseFilter/test]]",
+	"abusefilter-test-nobots": "Used as label on [[Special:AbuseFilter/test]]",
 	"abusefilter-test-period-start": "Used as label on [[Special:AbuseFilter/test]]",
 	"abusefilter-test-period-end": "Used as label on [[Special:AbuseFilter/test]]",
 	"abusefilter-test-page": "Used as label on [[Special:AbuseFilter/test]]",
