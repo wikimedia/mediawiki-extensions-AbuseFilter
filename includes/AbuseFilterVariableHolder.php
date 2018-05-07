@@ -4,7 +4,8 @@ class AbuseFilterVariableHolder {
 	/** @var (AFPData|AFComputedVariable)[] */
 	public $mVars = [];
 
-	public static $varBlacklist = [ 'context' ];
+	/** @var string[] Variables used to store meta-data, we'd better be safe. See T191715 */
+	public static $varBlacklist = [ 'context', 'global_log_ids', 'local_log_ids' ];
 
 	public function __construct() {
 		// Backwards-compatibility (unused now)
