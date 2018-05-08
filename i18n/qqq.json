@@ -225,6 +225,7 @@
 	"abusefilter-edit-throttle-period": "Field label for entering a time period.",
 	"abusefilter-edit-throttle-seconds": "Throttle period in seconds. Parameters:\n* $1 - a number of seconds\n{{Identical|Second}}",
 	"abusefilter-edit-throttle-groups": "Field label for properties to group throttle counts by (for example IP address and username). Throttling is the concept of limiting occurrences of a certain action in a given time frame.",
+	"abusefilter-throttle-details": "Description for Special:AbuseFilter/history with a detailed description for throttle action. Parameters:\n* $1 is the number of allowed actions, $2 is the time in seconds to use before resetting the action count, $3 is a list of throttled groups",
 	"abusefilter-edit-warn-message": "Field label for dropdown list with system messages.",
 	"abusefilter-edit-warn-other": "Option in dropdown menu to specify no item from the list should be used.",
 	"abusefilter-edit-warn-other-label": "Field label for entering a system message key to use as warning text.",

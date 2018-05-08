@@ -2506,6 +2506,13 @@ class AbuseFilter {
 					$messages[] = wfMessage( 'abusefilter-block-talk' )->escaped();
 				}
 				$displayAction = $wgLang->commaList( $messages );
+			} elseif ( $action === 'throttle' ) {
+				array_shift( $parameters );
+				list( $actions, $time ) = explode( ',', array_shift( $parameters ) );
+				$groups = $wgLang->commaList( $parameters );
+				$displayAction = self::getActionDisplay( $action ) .
+				wfMessage( 'colon-separator' )->escaped() .
+				wfMessage( 'abusefilter-throttle-details' )->params( $actions, $time, $groups )->escaped();
 			} else {
 				$displayAction = self::getActionDisplay( $action ) .
 				wfMessage( 'colon-separator' )->escaped() .
