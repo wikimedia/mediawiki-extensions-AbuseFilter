@@ -446,6 +446,7 @@
 	"abusefilter-test-submit": "Testen",
 	"abusefilter-test-load": "Laden",
 	"abusefilter-test-user": "Änderungen von Benutzer:",
+	"abusefilter-test-nobots": "Bearbeitungen von Bots ausblenden",
 	"abusefilter-test-period-start": "Änderungen nach:",
 	"abusefilter-test-period-end": "Änderungen vor:",
 	"abusefilter-test-page": "Änderungen an der Seite:",

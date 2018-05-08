@@ -455,6 +455,7 @@
 	"abusefilter-test-submit": "Tester",
 	"abusefilter-test-load": "Charger",
 	"abusefilter-test-user": "Modifications par l'utilisateur :",
+	"abusefilter-test-nobots": "Masquer les modifications faites par robot",
 	"abusefilter-test-period-start": "Changements faits après :",
 	"abusefilter-test-period-end": "Changements faits avant :",
 	"abusefilter-test-page": "Modifications apportées à la page :",

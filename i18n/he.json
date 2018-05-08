@@ -432,6 +432,7 @@
 	"abusefilter-test-submit": "בדיקה",
 	"abusefilter-test-load": "טעינה",
 	"abusefilter-test-user": "שינויים שבוצעו על־ידי המשתמש:",
+	"abusefilter-test-nobots": "הסתרת עריכות של בוטים",
 	"abusefilter-test-period-start": "שינויים שנערכו לאחר:",
 	"abusefilter-test-period-end": "שינויים שנערכו לפני:",
 	"abusefilter-test-page": "שינויים שבוצעו בדף:",

@@ -428,6 +428,7 @@
 	"abusefilter-test-submit": "Verifica",
 	"abusefilter-test-load": "Carica",
 	"abusefilter-test-user": "Cambiamenti apportati dall'utente:",
+	"abusefilter-test-nobots": "Nascondi le modifiche dei bot",
 	"abusefilter-test-period-start": "Cambiamenti successivi al:",
 	"abusefilter-test-period-end": "Cambiamenti precedenti al:",
 	"abusefilter-test-page": "Cambiamenti apportati alla pagina:",

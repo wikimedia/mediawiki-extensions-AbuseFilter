@@ -336,6 +336,7 @@
 	"abusefilter-test-submit": "Pārbaudīt",
 	"abusefilter-test-load": "Ielādēt",
 	"abusefilter-test-user": "Izmaiņas pēc lietotāja:",
+	"abusefilter-test-nobots": "Paslēpt botu labojumus",
 	"abusefilter-test-period-start": "Pēc tam veiktās izmaiņas:",
 	"abusefilter-test-period-end": "Pirms tam veiktās izmaiņas:",
 	"abusefilter-test-page": "Lapai veiktās izmaiņas:",

@@ -227,6 +227,7 @@
 	"abusefilter-revert-reasonfield": "কারণ:",
 	"abusefilter-test-submit": "পরীক্ষণ",
 	"abusefilter-test-load": "লোড",
+	"abusefilter-test-nobots": "বটের করা সম্পাদনা লুকান",
 	"abusefilter-examine-legend": "পরিবর্তন নির্বাচন",
 	"abusefilter-examine-diff": "পরিবর্তনের ইউআরএল:",
 	"abusefilter-examine-user": "ব্যবহারকারী:",
