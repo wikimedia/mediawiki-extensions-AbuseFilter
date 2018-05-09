@@ -368,6 +368,7 @@
 	"abusefilter-test-submit": "Δοκιμή",
 	"abusefilter-test-load": "Φορτώστε",
 	"abusefilter-test-user": "Αλλαγές από τον χρήστη:",
+	"abusefilter-test-nobots": "Απόκρυψη επεξεργασιών από ρομπότ",
 	"abusefilter-test-period-start": "Αλλαγές που έγιναν μετά:",
 	"abusefilter-test-period-end": "Αλλαγές που έγιναν πριν:",
 	"abusefilter-test-page": "Αλλαγές στις οποίες υποβλήθηκε η σελίδα:",

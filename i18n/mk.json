@@ -424,6 +424,7 @@
 	"abusefilter-test-submit": "Испробај",
 	"abusefilter-test-load": "Вчитај",
 	"abusefilter-test-user": "Промени од корисникот:",
+	"abusefilter-test-nobots": "Скриј ботовски уредувања",
 	"abusefilter-test-period-start": "Промени направени потоа:",
 	"abusefilter-test-period-end": "Промени напаравени пред тоа:",
 	"abusefilter-test-page": "Направени промени во страницата:",

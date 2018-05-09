@@ -168,6 +168,8 @@
 	"abusefilter-edit-warn-preview": "Priekšskatīt izvēlēto paziņojumu",
 	"abusefilter-edit-warn-edit": "Izveidot/Rediģēt izvēlēto paziņojumu",
 	"abusefilter-edit-tag-tag": "Piemērojamās iezīmes (pa vienai katrā rindiņā):",
+	"abusefilter-block-anon": "Bloķēt anonīmus lietotājus",
+	"abusefilter-block-user": "bloķēt reģistrētus lietotājus",
 	"abusefilter-edit-denied": "Sīkāka informācija par šo filtru nav publiski pieejama.",
 	"abusefilter-edit-main": "Filtra parametri",
 	"abusefilter-edit-done-subtitle": "Filtra rediģēšana pabeigta",
