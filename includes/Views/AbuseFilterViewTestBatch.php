@@ -78,7 +78,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			'type' => 'title',
 			'label-message' => 'abusefilter-test-page',
 			'default' => $this->mTestPage,
-			'creatable' => true
+			'creatable' => true,
+			'required' => false
 		];
 		$formFields['wpShowNegative'] = [
 			'name' => 'wpShowNegative',

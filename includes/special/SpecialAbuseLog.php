@@ -169,6 +169,7 @@ class SpecialAbuseLog extends SpecialPage {
 				'label-message' => 'abusefilter-log-search-title',
 				'type' => 'title',
 				'default' => $this->mSearchTitle,
+				'required' => false
 			],
 			'SearchImpact' => [
 				'label-message' => 'abusefilter-log-search-impact',
