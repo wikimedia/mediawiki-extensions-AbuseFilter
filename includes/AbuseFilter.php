@@ -2634,14 +2634,8 @@ class AbuseFilter {
 				: $content->getTextForSearchIndex();
 		}
 
-		if ( is_string( $text ) ) {
-			// T22310
-			// XXX: Is this really needed? Should we rather apply PST?
-			$text = str_replace( "\r\n", "\n", $text );
-		} else {
-			$text = '';
-		}
-
+		// T22310
+		$text = TextContent::normalizeLineEndings( (string)$text );
 		return $text;
 	}
 
