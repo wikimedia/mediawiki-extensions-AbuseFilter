@@ -455,6 +455,7 @@
 	"abusefilter-test-submit": "測試",
 	"abusefilter-test-load": "讀取",
 	"abusefilter-test-user": "變更的使用者：",
+	"abusefilter-test-nobots": "隱藏機器人編輯",
 	"abusefilter-test-period-start": "變更時間晚於：",
 	"abusefilter-test-period-end": "變更時間早於：",
 	"abusefilter-test-page": "對頁面做的變更：",

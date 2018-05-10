@@ -355,6 +355,7 @@
 	"abusefilter-test-submit": "Test",
 	"abusefilter-test-load": "Lueden",
 	"abusefilter-test-user": "Ännerunge vum Benotzer:",
+	"abusefilter-test-nobots": "Ännerunge vu Botte verstoppen",
 	"abusefilter-test-period-start": "Ännerungen nom:",
 	"abusefilter-test-period-end": "Ännerungen déi virdru gemaach goufen:",
 	"abusefilter-test-page": "Ännerungen déi op dëser Säit gemaach goufen",
