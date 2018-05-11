@@ -15,7 +15,8 @@
 			"Mavrikant",
 			"Ömer Berkay",
 			"Matma Rex",
-			"Diyapazon"
+			"Diyapazon",
+			"Hedda"
 		]
 	},
 	"abusefilter-desc": "Değişikliklere otomatik bulucu yöntemler uygular",
@@ -178,6 +179,9 @@
 	"abusefilter-edit-warn-preview": "Seçili mesajı önizle",
 	"abusefilter-edit-warn-edit": "Seçili mesajı oluştur/değiştir",
 	"abusefilter-edit-tag-tag": "Uygulanacak etiketler (her satıra bir tane):",
+	"abusefilter-block-anon": "Anonim kullanıcıları engelle",
+	"abusefilter-block-user": "kayıtlı kullanıcıları engelle",
+	"abusefilter-block-talk": "mesaj sayfası engellendi",
 	"abusefilter-edit-denied": "Bu süzgecin ayrıntılarını göremeyebilirsiniz, çünkü umumi görünümden gizlenmiş.",
 	"abusefilter-edit-main": "Süzgeç değişkenleri",
 	"abusefilter-edit-done-subtitle": "Süzgeç değiştirildi",
@@ -358,6 +362,7 @@
 	"abusefilter-test-submit": "Deneme",
 	"abusefilter-test-load": "Yükle",
 	"abusefilter-test-user": "Kullanıcının değişiklikleri:",
+	"abusefilter-test-nobots": "Bot değişikliklerini gizle",
 	"abusefilter-test-period-start": "Sonradan yapılan değişiklikler:",
 	"abusefilter-test-period-end": "Önceden yapılan değişiklikler:",
 	"abusefilter-test-page": "Sayfaya yapılan değişiklikler:",

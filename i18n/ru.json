@@ -34,7 +34,8 @@
 			"Happy13241",
 			"Jack who built the house",
 			"Ole Yves",
-			"Katunchik"
+			"Katunchik",
+			"Artsiom91"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -367,7 +368,7 @@
 	"abusefilter-edit-builder-vars-restrictions-upload": "Защита загрузки файла",
 	"abusefilter-edit-builder-vars-movedfrom-restrictions-edit": "Изменить уровень защиты страницы источника движения",
 	"abusefilter-edit-builder-vars-movedfrom-restrictions-move": "Уровень защиты от перемещения страницы источника перемещения",
-	"abusefilter-edit-builder-vars-movedfrom-restrictions-create": "Создать защиту страницы источника перемещения",
+	"abusefilter-edit-builder-vars-movedfrom-restrictions-create": "Абарона на стварэнне старонкі, якая пераносіцца",
 	"abusefilter-edit-builder-vars-movedfrom-restrictions-upload": "Загрузить защиту исходного файла перемещения",
 	"abusefilter-edit-builder-vars-movedto-restrictions-edit": "Изменить уровень защиты страницы назначения перемещения",
 	"abusefilter-edit-builder-vars-movedto-restrictions-move": "Переместить уровень защиты страницы назначения перемещения",
