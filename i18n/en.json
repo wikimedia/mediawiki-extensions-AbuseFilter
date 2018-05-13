@@ -192,7 +192,7 @@
 	"abusefilter-edit-throttle-period": "Period of time:",
 	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|second|seconds}}",
 	"abusefilter-edit-throttle-groups": "Group throttle by:\n:''(one per line, combine with commas)''",
-	"abusefilter-throttle-details": "Allow $1 actions every $2 seconds, group throttle by: $3",
+	"abusefilter-throttle-details": "Allow $1 {{PLURAL:$1|action|actions}} every $2 {{PLURAL:$2|second|seconds}}, group throttle by: $3",
 	"abusefilter-edit-warn-message": "System message to use for warning:",
 	"abusefilter-edit-warn-other": "Other message",
 	"abusefilter-edit-warn-other-label": "Page name of other message:\n:''(without MediaWiki prefix)''",
