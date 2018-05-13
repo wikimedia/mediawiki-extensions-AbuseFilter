@@ -449,6 +449,7 @@
 	"abusefilter-test-submit": "Test",
 	"abusefilter-test-load": "Ladda",
 	"abusefilter-test-user": "Ändringar av användare:",
+	"abusefilter-test-nobots": "Dölj botredigeringar",
 	"abusefilter-test-period-start": "Ändringar gjorda efter:",
 	"abusefilter-test-period-end": "Ändringar gjorda före:",
 	"abusefilter-test-page": "Ändringar på sidan:",

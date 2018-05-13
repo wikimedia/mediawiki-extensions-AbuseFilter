@@ -212,6 +212,7 @@
 	"abusefilter-edit-throttle-period": "Periodo di tempo:",
 	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|secondo|secondi}}",
 	"abusefilter-edit-throttle-groups": "Criteri di raggruppamento per il ritardo:\n:''(uno per riga oppure uniti da virgole)''",
+	"abusefilter-throttle-details": "Permetti $1 azioni ogni $2 secondi, criteri di raggruppamento: $3",
 	"abusefilter-edit-warn-message": "Messaggio di sistema da usare come avviso:",
 	"abusefilter-edit-warn-other": "Altro messaggio",
 	"abusefilter-edit-warn-other-label": "Nome della pagina per l'altro messaggio:\n:''(senza il prefisso MediaWiki)''",

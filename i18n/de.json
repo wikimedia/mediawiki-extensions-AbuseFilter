@@ -217,6 +217,7 @@
 	"abusefilter-edit-throttle-period": "Zeitraum:",
 	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|Sekunde|Sekunden}}",
 	"abusefilter-edit-throttle-groups": "Regeln für die Gruppendrossel:\n:''(eine pro Zeile, verbinden mit Kommata)''",
+	"abusefilter-throttle-details": "$1 Aktionen alle $2 Sekunden erlauben, Drosselungen gruppieren nach: $3",
 	"abusefilter-edit-warn-message": "Systemnachricht für die Warnung:",
 	"abusefilter-edit-warn-other": "Andere Systemnachricht",
 	"abusefilter-edit-warn-other-label": "Seitenname einer anderen Systemnachricht:\n:''(ohne MediaWiki-Präfix)''",

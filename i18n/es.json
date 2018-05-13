@@ -447,6 +447,7 @@
 	"abusefilter-test-submit": "Prueba",
 	"abusefilter-test-load": "Cargar",
 	"abusefilter-test-user": "Cambios por usuario:",
+	"abusefilter-test-nobots": "Ocultar ediciones de robots",
 	"abusefilter-test-period-start": "Cambios hechos después:",
 	"abusefilter-test-period-end": "Cambios hechos antes:",
 	"abusefilter-test-page": "Cambios hechos a la página:",

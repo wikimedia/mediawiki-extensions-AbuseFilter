@@ -448,7 +448,7 @@
 	"abusefilter-revert-success": "您已還原了防濫用過濾器 [[Special:AbuseFilter/$1|$2]] 所做的所有動作。",
 	"abusefilter-revert-reason": "自動還原了防濫用過濾器 $1 所做的所有動作。\n原因為：$2",
 	"abusefilter-revert-reasonfield": "原因：",
-	"abusefilter-test": "使用先前的編測試過濾器",
+	"abusefilter-test": "使用先前的編輯測試過濾器",
 	"abusefilter-test-intro": "此頁面允許您使用以下方文字框輸入的過濾器檢查最後 $1 次的變更。\n若要讀取其他已存在的過濾器，請輸入過濾器 ID 於編輯文字框下方的文字框，並點選 \"{{int:abusefilter-test-load}}\" 按鈕。",
 	"abusefilter-test-legend": "過濾器測試中",
 	"abusefilter-test-load-filter": "讀取過濾器 ID：",
