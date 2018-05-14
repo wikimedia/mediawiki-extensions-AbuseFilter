@@ -194,6 +194,7 @@
 	"abusefilter-edit-throttle-period": "Временски период:",
 	"abusefilter-edit-throttle-seconds": "{{PLURAL:$1|една секунда|$1 секунди}}",
 	"abusefilter-edit-throttle-groups": "Истисок по групи:\n:''(еден по ред, комбинирање со запирки)''",
+	"abusefilter-throttle-details": "Дозволи $1 дејства секои $2 секунди, групно наметнување од: $3",
 	"abusefilter-edit-warn-message": "Системска порака за предупредувањето:",
 	"abusefilter-edit-warn-other": "Друга порака",
 	"abusefilter-edit-warn-other-label": "Име на страница на друга порака:\n:''(без претставката MediaWiki)''",

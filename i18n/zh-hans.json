@@ -234,6 +234,7 @@
 	"abusefilter-edit-throttle-period": "时长：",
 	"abusefilter-edit-throttle-seconds": "$1{{PLURAL:$1|秒}}",
 	"abusefilter-edit-throttle-groups": "受限群组：\n:''（每行一个，且以半角逗号相连）''",
+	"abusefilter-throttle-details": "允许每$2{{PLURAL:$2|秒}}$1次{{PLURAL:$1|操作}}，受限群组：$3",
 	"abusefilter-edit-warn-message": "用作警告的系统消息：",
 	"abusefilter-edit-warn-other": "其他消息",
 	"abusefilter-edit-warn-other-label": "其他消息的页面名：\n:''（无须MediaWiki前缀）''",

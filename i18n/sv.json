@@ -220,6 +220,7 @@
 	"abusefilter-edit-throttle-period": "Tidsperiod:",
 	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekund|sekunder}}",
 	"abusefilter-edit-throttle-groups": "Gruppbegränsning på:\n:''(en per rad, kombinera med komman)''",
+	"abusefilter-throttle-details": "Tillåt $1 {{PLURAL:$1|åtgärd|åtgärder}} efter $2 {{PLURAL:$2|sekund|sekunder}}, gruppbegränsat efter: $3",
 	"abusefilter-edit-warn-message": "Systemmeddelande att använda för varning:",
 	"abusefilter-edit-warn-other": "Annat meddelande",
 	"abusefilter-edit-warn-other-label": "Sidnamn för annat meddelande:\n:''(utan MediaWiki-prefix)''",

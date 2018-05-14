@@ -203,7 +203,7 @@
 	"abusefilter-edit-throttle-period": "משך הזמן:",
 	"abusefilter-edit-throttle-seconds": "{{PLURAL:$1|שנייה אחת|$1 שניות}}",
 	"abusefilter-edit-throttle-groups": "הגבלת פעילות לפי קבוצה:\n:''(קבוצה אחת בשורה, יש לשלב עם פסיקים)''",
-	"abusefilter-throttle-details": "מאופשרות $1 פעולות בכל $2 שניות, הקבוצות המוגבלות: $3",
+	"abusefilter-throttle-details": "{{PLURAL:$1|מותרת פעולה אחת|מותרות $1 פעולות}} בכל {{PLURAL:$2|שנייה|$2 שניות}}, הקבוצות המוגבלות: $3",
 	"abusefilter-edit-warn-message": "הודעת המערכת המשמשת לאזהרה:",
 	"abusefilter-edit-warn-other": "הודעה אחרת",
 	"abusefilter-edit-warn-other-label": "שם הודעת המערכת:\n:''(ללא הקידומת \"מדיה ויקי:\")''",

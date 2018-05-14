@@ -226,6 +226,7 @@
 	"abusefilter-edit-throttle-period": "Laps de temps :",
 	"abusefilter-edit-throttle-seconds": "$1 seconde{{PLURAL:$1||s}}",
 	"abusefilter-edit-throttle-groups": "Grouper la modération par :\n: ''(un par ligne, séparé par des virgules)''",
+	"abusefilter-throttle-details": "Permettre $1 {{PLURAL:$1|une action|des actions}} toutes les {{PLURAL:$2|secondes|$2 secondes}}, en groupant les goulots par : $3",
 	"abusefilter-edit-warn-message": "Message système à utiliser pour l'avertissement :",
 	"abusefilter-edit-warn-other": "Autre message",
 	"abusefilter-edit-warn-other-label": "Nom de page d'un autre message\n: ''(sans le préfixe MediaWiki)''",
