@@ -12,7 +12,8 @@
 			"Matma Rex",
 			"Robin van der Vliet",
 			"Rafaneta",
-			"Psychoslave"
+			"Psychoslave",
+			"Lucas"
 		]
 	},
 	"abusefilter-desc": "Aplikas aŭtomatan heŭristikon al redaktoj.",
@@ -132,7 +133,7 @@
 	"abusefilter-edit": "Redakti misuzan filtrilon",
 	"abusefilter-edit-subtitle": "Redaktis filtrilon $1",
 	"abusefilter-edit-subtitle-new": "Krei filtron",
-	"abusefilter-edit-oldwarning": "<strong>Vi redaktas malnovan version de ĉi tiu filtrilo.\nĈi tiuj statistikoj estas por la plej lasta versio de la filtrilo.\nSe vi konservus ŝanĝojn, vi anstataŭigus ĉiujn ŝanĝojn ekde la version vi redaktas.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Reiri al la historio de ĉi tiu filtrilo]].",
+	"abusefilter-edit-oldwarning": "<strong>Vi redaktas malnovan version de ĉi tiu filtrilo.\nĈi tiuj statistikoj estas por la plej lasta versio de la filtrilo.\nSe vi konservos ŝanĝojn, vi anstataŭigos ĉiujn ŝanĝojn ekde la versio, kiun vi redaktas.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Reiri al la historio de ĉi tiu filtrilo]].",
 	"abusefilter-edit-status-label": "Statistikoj:",
 	"abusefilter-edit-status": "El la {{PLURAL:$1|lasta 1 ago|lastaj $1 agoj}}, ĉi tiu filtrilo kongruis $2 ($3%).",
 	"abusefilter-edit-status-profile": "El la {{PLURAL:$1|lasta 1 ago|lastaj $1 agoj}}, ĉi tiu filtrilo kongruis $2 ($3%).\nAveraĝe, ĝia plenumtempo estas $4ms, kaj ĝi konsumas $5 {{PLURAL:$5|kondiĉon|kondiĉojn}} de la kondiĉa limo.",
