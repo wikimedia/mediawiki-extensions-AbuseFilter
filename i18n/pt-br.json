@@ -216,6 +216,7 @@
 	"abusefilter-edit-throttle-period": "Período de tempo:",
 	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|segundo|segundos}}",
 	"abusefilter-edit-throttle-groups": "Agrupar limitador por:\n:''(um por linha, combinar com vírgulas)''",
+	"abusefilter-throttle-details": "Permitir $1 {{PLURAL:$1|operação|operações}} a cada $2 {{PLURAL:$2|segundo|segundos}}, agrupar o limitador por: $3",
 	"abusefilter-edit-warn-message": "Mensagem de sistema para usar como aviso:",
 	"abusefilter-edit-warn-other": "Outra mensagem",
 	"abusefilter-edit-warn-other-label": "Nome da página de outra mensagem:\n:''(sem prefixo MediaWiki)''",
