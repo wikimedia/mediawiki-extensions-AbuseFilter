@@ -15,8 +15,10 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter (
 	af_deleted tinyint(1) NOT NULL DEFAULT 0,
 	af_actions varbinary(255) NOT NULL DEFAULT '',
 	af_global tinyint(1) NOT NULL DEFAULT 0
+	af_group varbinary(64) binary NOT NULL DEFAULT 'default'
 ) /*$wgDBTableOptions*/;
 CREATE INDEX af_user ON /*$wgDBprefix*/abuse_filter (af_user);
+CREATE INDEX af_group_enabled ON /*$wgDBprefix*/abuse_filter (af_group,af_enabled,af_id);
 
 CREATE TABLE /*$wgDBprefix*/abuse_filter_action (
 	afa_filter INTEGER NOT NULL,
@@ -41,7 +43,9 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter_log (
 	afl_title varbinary(255) NOT NULL,
 	afl_wiki varbinary(64) NULL,
 	afl_deleted tinyint(1) NOT NULL DEFAULT 0,
-	afl_patrolled_by int unsigned NULL
+	afl_patrolled_by int unsigned NULL,
+ 	afl_rev_id int unsigned,
+	afl_log_id int unsigned
 ) /*$wgDBTableOptions*/;
 CREATE INDEX afl_filter_timestamp ON /*$wgDBprefix*/abuse_filter_log (afl_filter,afl_timestamp);
 CREATE INDEX afl_user_timestamp ON /*$wgDBprefix*/abuse_filter_log (afl_user,afl_user_text,afl_timestamp);
@@ -49,6 +53,8 @@ CREATE INDEX afl_timestamp ON /*$wgDBprefix*/abuse_filter_log  (afl_timestamp);
 CREATE INDEX afl_page_timestamp ON /*$wgDBprefix*/abuse_filter_log (afl_namespace, afl_title, afl_timestamp);
 CREATE INDEX afl_ip_timestamp ON /*$wgDBprefix*/abuse_filter_log (afl_ip, afl_timestamp);
 CREATE INDEX afl_wiki_timestamp ON /*$wgDBprefix*/abuse_filter_log (afl_wiki, afl_timestamp);
+CREATE INDEX afl_rev_id ON /*$wgDBprefix*/abuse_filter_log KEY (afl_rev_id);
+CREATE INDEX afl_log_id ON /*$wgDBprefix*/abuse_filter_log KEY (afl_log_id);
 
 CREATE TABLE /*$wgDBprefix*/abuse_filter_history (
 	afh_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -63,6 +69,7 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter_history (
 	afh_actions BLOB,
 	afh_deleted tinyint(1) NOT NULL DEFAULT 0,
 	afh_changed_fields varbinary(255) NOT NULL DEFAULT ''
+	afh_group varchar(64) binary NULL
 ) /*$wgDBTableOptions*/;
 CREATE INDEX afh_filter ON /*$wgDBprefix*/abuse_filter_history (afh_filter);
 CREATE INDEX afh_user ON /*$wgDBprefix*/abuse_filter_history (afh_user);
