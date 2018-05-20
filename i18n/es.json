@@ -181,6 +181,7 @@
 	"abusefilter-list-options-hidedisabled": "Ocultar filtros desactivados",
 	"abusefilter-list-options-searchpattern": "Insertar un patrón",
 	"abusefilter-list-options-searchoptions": "Modo de búsqueda:",
+	"abusefilter-list-options-search-like": "Consulta simple",
 	"abusefilter-list-options-search-rlike": "Expresión regular",
 	"abusefilter-list-options-search-irlike": "Expresión regular sin distinción de uso de mayúsculas",
 	"abusefilter-list-regexerror": "Se produjo un problema al buscar: hay un error de sintaxis en la expresión regular.",
