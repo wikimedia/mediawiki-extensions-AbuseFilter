@@ -35,7 +35,8 @@
 			"Jack who built the house",
 			"Ole Yves",
 			"Katunchik",
-			"Artsiom91"
+			"Artsiom91",
+			"Movses"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -440,7 +441,7 @@
 	"abusefilter-revert-search": "Выбор действий",
 	"abusefilter-revert-filter": "ID фильтра:",
 	"abusefilter-revert-preview-intro": "Ниже приведены выполненные фильтром злоупотреблений действия, которые будут отменены.\nПожалуйста, внимательно их проверьте и нажмите «{{int:abusefilter-revert-confirm}}», чтоб подтвердить свой выбор.",
-	"abusefilter-revert-confirm-legend": "Подтвердите возврат",
+	"abusefilter-revert-confirm-legend": "Подтвердите откат",
 	"abusefilter-revert-confirm": "Подтвердить",
 	"abusefilter-revert-success": "Вы откатили все действия, выполненные фильтром злоупотреблений [[Special:AbuseFilter/$1|$2]].",
 	"abusefilter-revert-reason": "Автоматический откат всех действий, выполненных фильтром злоупотреблений $1.\nУказанная причина: $2",
