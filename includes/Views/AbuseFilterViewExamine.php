@@ -41,6 +41,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			'SearchUser' => [
 				'label-message' => 'abusefilter-test-user',
 				'type' => 'user',
+				'ipallowed' => true,
 				'default' => $this->mSearchUser,
 			],
 			'SearchPeriodStart' => [
