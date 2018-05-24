@@ -5,7 +5,8 @@
 			"Тест",
 			"Mikalai Udodau",
 			"Дзяніс Тутэйшы",
-			"Artsiom91"
+			"Artsiom91",
+			"Movses"
 		]
 	},
 	"abusefilter-desc": "Прымяняе аўтаматычную эўрыстыку да правак.",
@@ -214,6 +215,7 @@
 	"abusefilter-edit-builder-vars-restrictions-create": "Абарона старонкі ад стварэння",
 	"abusefilter-edit-builder-vars-restrictions-upload": "Абарона файла ад загрузкі",
 	"abusefilter-edit-builder-vars-movedfrom-restrictions-move": "Узровень абароны старонкі, якая пераносіцца",
+	"abusefilter-edit-builder-vars-movedfrom-restrictions-create": "Абарона на стварэнне старонкі, якая пераносіцца",
 	"abusefilter-edit-builder-vars-movedfrom-restrictions-upload": "Ахова пры загрузцы файла, які пераносіцца",
 	"abusefilter-edit-builder-vars-movedto-restrictions-edit": "Абарона рэдагавання старонкі, куды адбываецца перанос",
 	"abusefilter-edit-builder-vars-movedto-restrictions-move": "Узровень абароны пераносу старонкі, куды адбываецца перанос",
