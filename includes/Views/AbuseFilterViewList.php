@@ -32,7 +32,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$deleted = $request->getVal( 'deletedfilters' );
 		$hidedisabled = $request->getBool( 'hidedisabled' );
 		$defaultscope = 'all';
-		if ( $config->has( 'AbuseFilterCentralDB' )
+		if ( $config->get( 'AbuseFilterCentralDB' ) !== null
 				&& !$config->get( 'AbuseFilterIsCentral' ) ) {
 			// Show on remote wikis as default only local filters
 			$defaultscope = 'local';
@@ -40,7 +40,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$scope = $request->getVal( 'rulescope', $defaultscope );
 
 		$searchEnabled = $this->canViewPrivate() && !(
-			$config->has( 'AbuseFilterCentralDB' ) &&
+			$config->get( 'AbuseFilterCentralDB' ) !== null &&
 			!$config->get( 'AbuseFilterIsCentral' ) &&
 			$scope == 'global' );
 
@@ -141,7 +141,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		}
 
 		if (
-			$config->has( 'AbuseFilterCentralDB' )
+			$config->get( 'AbuseFilterCentralDB' ) !== null
 			&& !$config->get( 'AbuseFilterIsCentral' )
 			&& $scope == 'global'
 		) {
@@ -174,7 +174,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 			'default' => $deleted,
 		];
 
-		if ( $config->has( 'AbuseFilterCentralDB' ) ) {
+		if ( $config->get( 'AbuseFilterCentralDB' ) !== null ) {
 			$optionsMsg = [
 				'abusefilter-list-options-scope-local' => 'local',
 				'abusefilter-list-options-scope-global' => 'global',
