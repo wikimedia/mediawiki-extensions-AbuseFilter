@@ -68,7 +68,7 @@ class AbuseFilterParser {
 	/**
 	 * Create a new instance
 	 *
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param AbuseFilterVariableHolder|null $vars
 	 */
 	public function __construct( $vars = null ) {
 		$this->resetState();

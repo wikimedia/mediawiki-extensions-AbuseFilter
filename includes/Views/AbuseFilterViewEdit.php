@@ -390,7 +390,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * The request takes precedence over the database
 	 * @param string $error An error message to show above the filter box.
 	 * @param int $filter The filter ID
-	 * @param int $history_id The history ID of the filter, if applicable. Otherwise null
+	 * @param int|null $history_id The history ID of the filter, if applicable. Otherwise null
 	 * @return bool|string False if there is a failure building the editor,
 	 *   otherwise the HTML text for the editor.
 	 */
@@ -1127,7 +1127,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * The HTTP request always takes precedence.
 	 * Includes caching.
 	 * @param int $filter The filter ID being requested.
-	 * @param int $history_id If any, the history ID being requested.
+	 * @param int|null $history_id If any, the history ID being requested.
 	 * @return Array with filter data if available, otherwise null.
 	 * The first element contains the abuse_filter database row,
 	 *  the second element is an array of related abuse_filter_action rows.

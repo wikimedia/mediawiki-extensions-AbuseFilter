@@ -1025,7 +1025,7 @@ class AbuseFilter {
 	 * @param AbuseFilterVariableHolder $vars
 	 * @param Title $title
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
-	 * @param User $user The user performing the action; defaults to $wgUser
+	 * @param User|null $user The user performing the action; defaults to $wgUser
 	 * @param string $mode Use 'execute' to run filters and log or 'stash' to only cache matches
 	 * @return Status
 	 */

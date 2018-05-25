@@ -55,7 +55,7 @@ class AFPToken {
 
 	/**
 	 * @param string $type
-	 * @param AFPToken $value
+	 * @param AFPToken|null $value
 	 * @param int $pos
 	 */
 	public function __construct( $type = self::TNONE, $value = null, $pos = 0 ) {

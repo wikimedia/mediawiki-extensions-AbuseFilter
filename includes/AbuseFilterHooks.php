@@ -825,7 +825,7 @@ class AbuseFilterHooks {
 	 * @param Content $content
 	 * @param ParserOutput $output
 	 * @param string $summary
-	 * @param User $user
+	 * @param User|null $user
 	 */
 	public static function onParserOutputStashForEdit(
 		WikiPage $page, Content $content, ParserOutput $output, $summary = '', $user = null

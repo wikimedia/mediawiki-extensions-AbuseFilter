@@ -777,8 +777,8 @@ class SpecialAbuseLog extends SpecialPage {
 	}
 
 	/**
-	 * @param string $filter_id
-	 * @param bool $filter_hidden
+	 * @param string|null $filter_id
+	 * @param bool|null $filter_hidden
 	 * @return bool
 	 */
 	public static function canSeeDetails( $filter_id = null, $filter_hidden = null ) {

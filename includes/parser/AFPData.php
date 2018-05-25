@@ -28,7 +28,7 @@ class AFPData {
 
 	/**
 	 * @param string $type
-	 * @param mixed $val
+	 * @param mixed|null $val
 	 */
 	public function __construct( $type = self::DNULL, $val = null ) {
 		$this->type = $type;
