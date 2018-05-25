@@ -97,6 +97,6 @@
 	"abusefilter-topnav-log": "Protokolo ('log') pri misuzo",
 	"abusefilter-topnav-tools": "Utensili por 'debug'",
 	"abusefilter-topnav-import": "Importar filtrilo",
-	"abusefilter-log-header": "Ca protokolo ('log') montras rezumo di modifiki en la filtrili.\nPor plura detali, videz [[Special:AbuseFilter/history|la listo di recenta chanji en la filtrili]].",
+	"abusefilter-log-header": "Ca protokolo ('log') montras rezumo di modifikuri en la filtrili.\nPor plusa detali, videz [[Special:AbuseFilter/history|la listo di recenta chanji en la filtrili]].",
 	"abusefilter-diff-version": "Versiono ye $1 {{GENDER:$3|da}} $2"
 }

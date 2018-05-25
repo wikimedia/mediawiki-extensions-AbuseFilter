@@ -36,7 +36,8 @@
 			"Ole Yves",
 			"Katunchik",
 			"Artsiom91",
-			"Movses"
+			"Movses",
+			"Abiyoyo"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -244,6 +245,7 @@
 	"abusefilter-edit-done": "Вы успешно сохранили [[Special:AbuseFilter/history/$1/diff/prev/$2|изменения]] в [[Special:AbuseFilter/$1|фильтре $3]].",
 	"abusefilter-edit-badsyntax": "В указанном фильтре обнаружены синтаксические ошибки. Парсер выдал следующее сообщение: <pre>$1</pre>",
 	"abusefilter-edit-missingfields": "Следующие поля обязательны и должны быть заполнены: $1",
+	"abusefilter-edit-deleting-enabled": "Вы не можете отметить активный фильтр как удалённый.",
 	"abusefilter-edit-restricted": "Вы не можете изменить этот фильтр, так как он содержит одно или несколько ограничивающих действий. Пожалуйста, попросите участника с соответствующими правами сделать требуемые изменения.",
 	"abusefilter-edit-viewhistory": "Показать историю этого фильтра",
 	"abusefilter-edit-history": "История:",
@@ -424,6 +426,7 @@
 	"abusefilter-exception-overridebuiltin": "Недопустимое переопределение встроенной переменной «$2» в позиции $1.",
 	"abusefilter-exception-outofbounds": "Запрос несуществующего элемента списка $2 (размер списка = $3) в позиции $1.",
 	"abusefilter-exception-notlist": "Запрос элемента массива для объекта, не являющемся массивом, в позиции $1.",
+	"abusefilter-exception-unclosedcomment": "Незакрытый комментарий в позиции $1",
 	"abusefilter-action-tag": "Метка",
 	"abusefilter-action-throttle": "Сужение",
 	"abusefilter-action-warn": "Предупреждение",
@@ -453,6 +456,7 @@
 	"abusefilter-test-submit": "Проверить",
 	"abusefilter-test-load": "Загрузить",
 	"abusefilter-test-user": "Изменения сделаны участником:",
+	"abusefilter-test-nobots": "Скрыть правки ботов",
 	"abusefilter-test-period-start": "Изменения сделаны после:",
 	"abusefilter-test-period-end": "Изменения сделаны до:",
 	"abusefilter-test-page": "Изменения сделаны на странице:",
@@ -511,7 +515,7 @@
 	"abusefilter-noreason": "Предупреждение. Чтобы просмотреть личные данные этого журнала, вы должны указать причину.",
 	"abusefilter-log-ip-not-available": "Не доступно",
 	"tag-abusefilter-condition-limit": "предел условия достигнут",
-	"tag-abusefilter-condition-limit-description": "Редактирование или другие события, которые не могут быть проверены всеми активными [[Special:AbuseFilter|злоупотребления фильтров]] ([[mw:Extension:AbuseFilter/Conditions|help]]).",
+	"tag-abusefilter-condition-limit-description": "Правки или другие действия, которые не могут быть проверены всеми активными [[Special:AbuseFilter|фильтрами злоупотреблений]] ([[mw:Extension:AbuseFilter/Conditions|справка]]).",
 	"apihelp-abusefiltercheckmatch-description": "Проверка, удовлетворяет ли фильтру злоупотреблений набор переменных или событие фильтра злоупотреблений, записанное редактором.\n\nПеременные vars, rcid и logid обязательны, однако только одна из них может быть использована.",
 	"apihelp-abusefiltercheckmatch-summary": "Проверка, удовлетворяет ли фильтру злоупотреблений набор переменных или событие фильтра злоупотреблений, записанное редактором.",
 	"apihelp-abusefiltercheckmatch-extended-description": "Переменные vars, rcid и logid обязательны, однако только одна из них может быть использована.",
