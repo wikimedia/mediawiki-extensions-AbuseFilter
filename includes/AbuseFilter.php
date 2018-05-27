@@ -496,6 +496,9 @@ class AbuseFilter {
 		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
 		global $wgAbuseFilterConditionLimit;
 
+		// Ensure that we start fresh, see T193374
+		self::$condCount = 0;
+
 		// Fetch from the database.
 		$filter_matched = [];
 
