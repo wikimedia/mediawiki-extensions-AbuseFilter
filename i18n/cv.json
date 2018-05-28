@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Salam",
-			"Chuvash2014"
+			"Chuvash2014",
+			"Chuvash"
 		]
 	},
 	"abusefilter-log-search-user": "Усă куракан:",
@@ -27,7 +28,7 @@
 	"abusefilter-log-hide-reason": "Сӑлтав:",
 	"abusefilter-logentry-suppress": "[[$1]] пытар",
 	"abusefilter-logentry-unsuppress": "\"[[$1]]\" кăтарт",
-	"abusefilter-list": "Мӗн пур ала",
+	"abusefilter-list": "Пĕтĕм фильтрсем",
 	"abusefilter-list-id": "Ала идентификаторӗ",
 	"abusefilter-list-status": "Лару-тӑру",
 	"abusefilter-list-public": "Пӗтӗмӗшле ӑнлантару",
@@ -43,6 +44,7 @@
 	"abusefilter-enabled": "Хускатнă",
 	"abusefilter-deleted": "Тӗплен",
 	"abusefilter-disabled": "Чарнă",
+	"abusefilter-list-options": "Параметрсем",
 	"abusefilter-tools-reautoconfirm-user": "Усă куракан:",
 	"abusefilter-edit-new": "Ҫӗнӗ ала",
 	"abusefilter-edit-save": "Алана ҫырса хур",
@@ -71,7 +73,7 @@
 	"abusefilter-edit-builder-op-bool-or": "Е (|)",
 	"abusefilter-history-user": "Хутшăнакан",
 	"abusefilter-history-deleted": "Тӗпленӗ",
-	"abusefilter-history-filterid": "Ала",
+	"abusefilter-history-filterid": "Фильтр",
 	"abusefilter-history-select-user": "Усă куракан:",
 	"abusefilter-history-diff": "Улшӑнусем",
 	"abusefilter-examine-user": "Усă куракан:",
