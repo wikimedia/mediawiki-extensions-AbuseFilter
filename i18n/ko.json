@@ -274,7 +274,7 @@
 	"abusefilter-edit-builder-misc-stringlit": "문자열 그대로 (\"\")",
 	"abusefilter-edit-builder-misc-tern": "3단 연산자 (X ? Y : Z)",
 	"abusefilter-edit-builder-misc-cond": "조건부 (if X then Y else Z)",
-	"abusefilter-edit-builder-group-funcs": "기능",
+	"abusefilter-edit-builder-group-funcs": "함수",
 	"abusefilter-edit-builder-funcs-length": "문자열 길이 (length)",
 	"abusefilter-edit-builder-funcs-lcase": "소문자로 변환 (lcase)",
 	"abusefilter-edit-builder-funcs-ucase": "대문자로 변환 (ucase)",
