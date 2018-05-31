@@ -7,6 +7,11 @@
 			"Adam-Yourist"
 		]
 	},
+	"right-abusefilter-view": "боарамал сов леладеш долча хIамай фильтрага хьажар",
+	"right-abusefilter-log": "боарамал сов леладеш долча хIамай тептарага хьажар",
+	"right-abusefilter-view-private": "боарамал сов леладеш долча хIамай къайла фильтрага хьажар",
+	"action-abusefilter-view": "боарамал сов леладеш долча хIамай фильтрага хьажар",
+	"action-abusefilter-log": "боарамал сов леладеш долча хIамай тептарага хьажар",
 	"abusefilter-log-search-user": "Доакъашхо:",
 	"abusefilter-log-search-filter": "Фильтрай ID (урагIа така хьаракаца йикъа):",
 	"abusefilter-log-search-submit": "Хьалаха",
