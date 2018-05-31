@@ -462,7 +462,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			Xml::input(
 				'wpFilterDescription',
 				45,
-				isset( $row->af_public_comments ) ? $row->af_public_comments : '',
+				$row->af_public_comments ?? '',
 				array_merge( $readOnlyAttrib, $styleAttrib )
 			);
 
@@ -595,7 +595,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$this->msg( $message )->text(),
 				$postVar,
 				$postVar,
-				isset( $row->$dbField ) ? $row->$dbField : false,
+				$row->$dbField ?? false,
 				$readOnly
 			);
 			$checkbox = Xml::tags( 'p', null, $checkbox );

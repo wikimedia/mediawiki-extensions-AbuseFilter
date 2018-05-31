@@ -1984,7 +1984,7 @@ class AbuseFilter {
 	 * @return mixed
 	 */
 	public static function getEmergencyValue( array $emergencyValue, $group ) {
-		return isset( $emergencyValue[$group] ) ? $emergencyValue[$group] : $emergencyValue['default'];
+		return $emergencyValue[$group] ?? $emergencyValue['default'];
 	}
 
 	/**

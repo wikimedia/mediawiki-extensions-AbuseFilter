@@ -161,7 +161,7 @@ class AbuseFilterTokenizer {
 		if ( preg_match( self::RADIX_RE, $code, $matches, 0, $offset ) ) {
 			$token = $matches[0];
 			$input = $matches[1];
-			$baseChar = isset( $matches[2] ) ? $matches[2] : null;
+			$baseChar = $matches[2] ?? null;
 			// Sometimes the base char gets mixed in with the rest of it because
 			// the regex targets hex, too.
 			// This mostly happens with binary
