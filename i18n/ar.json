@@ -108,7 +108,7 @@
 	"abusefilter-log-cannot-see-private-details": "ليست لديك صلاحية للاطلاع على تفاصيل خاصة لهذا الإدخال.",
 	"abusefilter-log-nonexistent": "إدخال مع معرف مقدم غير موجود.",
 	"abusefilter-log-details-hidden": "لا يمكنك رؤية تفاصيل هذا المدخل، لأنه مخفي من العرض العلني",
-	"abusefilter-log-private-not-included": "إن معرف مرشح أو أكثر مما حددت خاص. ولأنه غير مسموح لك بعرض تفاصيل المرشحات الخاصة، لم يجري البحث عن هذه المرشحات.",
+	"abusefilter-log-private-not-included": "واحد أو أكثر من مرشحات الإساءة المحددة ذو إعداداتٍ خاصة، ولأنه غير مسموحٍ لك بعرض تفاصيل المرشحات الخاصة، لم يجري البحث عن هذه المرشحات.",
 	"abusefilter-log-hide-legend": "إخفاء السجل",
 	"abusefilter-log-hide-id": "هوية مدخلة لسجل:",
 	"abusefilter-log-hide-hidden": "إخفاء هذا المدخل من العرض العلني",
