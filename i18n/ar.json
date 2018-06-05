@@ -215,6 +215,7 @@
 	"abusefilter-edit-throttle-period": "فترة من الزمن:",
 	"abusefilter-edit-throttle-seconds": "{{PLURAL:$1|أقل من ثانية|ثانية واحدة|ثانيتان|$1 ثوانٍ|$1 ثانية}}",
 	"abusefilter-edit-throttle-groups": "حد المجموعة بواسطة:\n:''(واحدة لكل سطر، ادمج بالفاصلات)''",
+	"abusefilter-throttle-details": "السماح بـ$1 {{PLURAL:$1|إجراء|إجراءات}} كل $2 {{PLURAL:$2|ثانية|ثوانٍ}}، خنق المجموعة\nبواسطة: $3",
 	"abusefilter-edit-warn-message": "رسالة النظام للاستخدام عند التحذير:",
 	"abusefilter-edit-warn-other": "رسالة أخرى",
 	"abusefilter-edit-warn-other-label": "اسم الصفحة للرسالة الأخرى:\n:''(بدون بادئة ميدياويكي)''",
