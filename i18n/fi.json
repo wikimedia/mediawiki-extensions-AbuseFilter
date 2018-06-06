@@ -112,6 +112,7 @@
 	"log-action-filter-abusefilter": "Suodattimen muutoksen tyyppi:",
 	"log-action-filter-abusefilter-create": "Uuden suodattimen luonti",
 	"log-action-filter-abusefilter-modify": "Suodattimen muokkaus",
+	"abusefilterprivatedetails-log-name": "Väärinkäyttösuodattimen yksityisen tiedon pääsyloki",
 	"abusefilter-management": "Väärinkäyttösuodattimen hallinta",
 	"abusefilter-list": "Kaikki suodattimet",
 	"abusefilter-list-id": "Suodatin nro",
