@@ -91,7 +91,8 @@ class AbuseFilterParser {
 
 	/**
 	 * @param string $filter
-	 * @return array|bool
+	 * @return true|array True when successful, otherwise a two-element array with exception message
+	 *  and character position of the syntax error
 	 */
 	public function checkSyntax( $filter ) {
 		$origAS = $this->mAllowShort;

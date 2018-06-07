@@ -412,7 +412,8 @@ class AbuseFilter {
 
 	/**
 	 * @param string $filter
-	 * @return mixed
+	 * @return true|array True when successful, otherwise a two-element array with exception message
+	 *  and character position of the syntax error
 	 */
 	public static function checkSyntax( $filter ) {
 		global $wgAbuseFilterParserClass;
