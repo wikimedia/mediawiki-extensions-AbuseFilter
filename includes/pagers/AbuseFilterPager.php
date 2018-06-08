@@ -35,6 +35,7 @@ class AbuseFilterPager extends TablePager {
 		return [
 			'tables' => [ 'abuse_filter' ],
 			'fields' => [
+				// All columns but af_comments
 				'af_id',
 				'af_enabled',
 				'af_deleted',
@@ -48,6 +49,7 @@ class AbuseFilterPager extends TablePager {
 				'af_user',
 				'af_actions',
 				'af_group',
+				'af_throttled'
 			],
 			'conds' => $this->mConds,
 		];
@@ -192,6 +194,9 @@ class AbuseFilterPager extends TablePager {
 					$statuses[] = $this->msg( 'abusefilter-deleted' )->parse();
 				} elseif ( $row->af_enabled ) {
 					$statuses[] = $this->msg( 'abusefilter-enabled' )->parse();
+					if ( $row->af_throttled ) {
+						$statuses[] = $this->msg( 'abusefilter-throttled' )->parse();
+					}
 				} else {
 					$statuses[] = $this->msg( 'abusefilter-disabled' )->parse();
 				}
@@ -266,7 +271,7 @@ class AbuseFilterPager extends TablePager {
 	 */
 	public function getRowClass( $row ) {
 		if ( $row->af_enabled ) {
-			return 'mw-abusefilter-list-enabled';
+			return $row->af_throttled ? 'mw-abusefilter-list-throttled' : 'mw-abusefilter-list-enabled';
 		} elseif ( $row->af_deleted ) {
 			return 'mw-abusefilter-list-deleted';
 		} else {
@@ -282,8 +287,6 @@ class AbuseFilterPager extends TablePager {
 		$sortable_fields = [
 			'af_id',
 			'af_enabled',
-			'af_throttled',
-			'af_user_text',
 			'af_timestamp',
 			'af_hidden',
 			'af_group',

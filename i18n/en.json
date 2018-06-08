@@ -119,6 +119,7 @@
 	"abusefilter-enabled": "Enabled",
 	"abusefilter-deleted": "Deleted",
 	"abusefilter-disabled": "Disabled",
+	"abusefilter-throttled": "throttled",
 	"abusefilter-hitcount": "$1 {{PLURAL:$1|hit|hits}}",
 	"abusefilter-new": "Create a new filter",
 	"abusefilter-return": "Return to filter management",
