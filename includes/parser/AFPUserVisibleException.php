@@ -40,7 +40,7 @@ class AFPUserVisibleException extends AFPException {
 		// abusefilter-exception-notlist, abusefilter-exception-unclosedcomment
 		return wfMessage(
 			'abusefilter-exception-' . $this->mExceptionID,
-			array_merge( [ $this->mPosition ], $this->mParams )
+			$this->mPosition, ...$this->mParams
 		);
 	}
 }

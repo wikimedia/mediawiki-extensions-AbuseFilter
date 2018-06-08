@@ -1018,7 +1018,7 @@ class AbuseFilter {
 		$status = Status::newGood( $actionsTaken );
 
 		foreach ( $messages as $msg ) {
-			call_user_func_array( [ $status, 'fatal' ], $msg );
+			$status->fatal( ...$msg );
 		}
 
 		return $status;
