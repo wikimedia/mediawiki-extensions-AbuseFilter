@@ -43,7 +43,6 @@ class AbuseFilterHooks {
 	 * @param string $summary Edit summary for page
 	 * @param User $user the user performing the edit
 	 * @param bool $minoredit whether this is a minor edit according to the user.
-	 * @return bool Always true
 	 */
 	public static function onEditFilterMergedContent( IContextSource $context, Content $content,
 		Status $status, $summary, User $user, $minoredit
@@ -56,8 +55,6 @@ class AbuseFilterHooks {
 			// Produce a useful error message for API edits
 			$status->apiHookResult = self::getApiResult( $filterStatus );
 		}
-
-		return true;
 	}
 
 	/**
@@ -225,8 +222,6 @@ class AbuseFilterHooks {
 	 * @param Revision $revision
 	 * @param Status &$status
 	 * @param int $baseRevId
-	 *
-	 * @return bool
 	 */
 	public static function onPageContentSaveComplete(
 		WikiPage &$wikiPage, &$user, $content, $summary, $minoredit, $watchthis, $sectionanchor,
@@ -234,8 +229,7 @@ class AbuseFilterHooks {
 	) {
 		if ( !self::$successful_action_vars || !$revision ) {
 			self::$successful_action_vars = false;
-
-			return true;
+			return;
 		}
 
 		/** @var AbuseFilterVariableHolder|bool $vars */
@@ -244,12 +238,12 @@ class AbuseFilterHooks {
 		if ( $vars->getVar( 'article_prefixedtext' )->toString() !==
 			$wikiPage->getTitle()->getPrefixedText()
 		) {
-			return true;
+			return;
 		}
 
 		if ( !self::identicalPageObjects( $wikiPage, self::$last_edit_page ) ) {
 			// This isn't the edit $successful_action_vars was set for
-			return true;
+			return;
 		}
 		self::$last_edit_page = false;
 
@@ -281,8 +275,6 @@ class AbuseFilterHooks {
 				);
 			}
 		}
-
-		return true;
 	}
 
 	/**
@@ -301,7 +293,6 @@ class AbuseFilterHooks {
 	/**
 	 * @param User $user
 	 * @param array &$promote
-	 * @return bool
 	 */
 	public static function onGetAutoPromoteGroups( $user, &$promote ) {
 		if ( $promote ) {
@@ -318,8 +309,6 @@ class AbuseFilterHooks {
 				$promote = [];
 			}
 		}
-
-		return true;
 	}
 
 	/**
@@ -377,7 +366,6 @@ class AbuseFilterHooks {
 
 	/**
 	 * @param RecentChange $recentChange
-	 * @return bool
 	 */
 	public static function onRecentChangeSave( $recentChange ) {
 		$title = Title::makeTitle(
@@ -393,8 +381,6 @@ class AbuseFilterHooks {
 		if ( isset( AbuseFilter::$tagsToSet[$actionID] ) ) {
 			$recentChange->addTags( AbuseFilter::$tagsToSet[$actionID] );
 		}
-
-		return true;
 	}
 
 	/**
@@ -418,7 +404,6 @@ class AbuseFilterHooks {
 	/**
 	 * @param array $tags
 	 * @param bool $enabled
-	 * @return bool
 	 */
 	private static function fetchAllTags( array &$tags, $enabled ) {
 		$services = MediaWikiServices::getInstance();
@@ -484,30 +469,25 @@ class AbuseFilterHooks {
 		);
 
 		$tags[] = 'abusefilter-condition-limit';
-
-		return true;
 	}
 
 	/**
 	 * @param string[] &$tags
-	 * @return bool
 	 */
 	public static function onListDefinedTags( array &$tags ) {
-		return self::fetchAllTags( $tags, false );
+		self::fetchAllTags( $tags, false );
 	}
 
 	/**
 	 * @param string[] &$tags
-	 * @return bool
 	 */
 	public static function onChangeTagsListActive( array &$tags ) {
-		return self::fetchAllTags( $tags, true );
+		self::fetchAllTags( $tags, true );
 	}
 
 	/**
 	 * @param DatabaseUpdater $updater
 	 * @throws MWException
-	 * @return bool
 	 */
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
 		$dir = dirname( __DIR__ );
@@ -620,8 +600,6 @@ class AbuseFilterHooks {
 		}
 
 		$updater->addExtensionUpdate( [ [ __CLASS__, 'createAbuseFilterUser' ] ] );
-
-		return true;
 	}
 
 	/**
@@ -787,7 +765,6 @@ class AbuseFilterHooks {
 	 * Adds global variables to the Javascript as needed
 	 *
 	 * @param array &$vars
-	 * @return bool
 	 */
 	public static function onMakeGlobalVariablesScript( array &$vars ) {
 		if ( isset( AbuseFilter::$editboxName ) && AbuseFilter::$editboxName !== null ) {
@@ -800,22 +777,17 @@ class AbuseFilterHooks {
 				'id' => AbuseFilterViewExamine::$examineId,
 			];
 		}
-
-		return true;
 	}
 
 	/**
 	 * Tables that Extension:UserMerge needs to update
 	 *
 	 * @param array &$updateFields
-	 * @return bool
 	 */
 	public static function onUserMergeAccountFields( array &$updateFields ) {
 		$updateFields[] = [ 'abuse_filter', 'af_user', 'af_user_text' ];
 		$updateFields[] = [ 'abuse_filter_log', 'afl_user', 'afl_user_text' ];
 		$updateFields[] = [ 'abuse_filter_history', 'afh_user', 'afh_user_text' ];
-
-		return true;
 	}
 
 	/**
