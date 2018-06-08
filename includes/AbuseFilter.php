@@ -643,6 +643,7 @@ class AbuseFilter {
 	 * @param string $filterId
 	 * @param float $runtime
 	 * @param int $totalConditions
+	 * @param bool $matched
 	 * @param Title|null $title
 	 */
 	private static function recordSlowFilter(

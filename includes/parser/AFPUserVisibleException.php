@@ -26,7 +26,7 @@ class AFPUserVisibleException extends AFPException {
 	}
 
 	/**
-	 * @return string
+	 * @return Message
 	 */
 	public function getMessageObj() {
 		// Give grep a chance to find the usages:

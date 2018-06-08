@@ -1128,7 +1128,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * Includes caching.
 	 * @param int $filter The filter ID being requested.
 	 * @param int|null $history_id If any, the history ID being requested.
-	 * @return Array with filter data if available, otherwise null.
+	 * @return array|null Array with filter data if available, otherwise null.
 	 * The first element contains the abuse_filter database row,
 	 *  the second element is an array of related abuse_filter_action rows.
 	 */
