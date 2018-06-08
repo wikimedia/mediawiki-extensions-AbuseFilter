@@ -31,6 +31,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$conds = [];
 		$deleted = $request->getVal( 'deletedfilters' );
 		$hidedisabled = $request->getBool( 'hidedisabled' );
+		$hideprivate = $request->getBool( 'hideprivate' );
 		$defaultscope = 'all';
 		if ( $config->get( 'AbuseFilterCentralDB' ) !== null
 				&& !$config->get( 'AbuseFilterIsCentral' ) ) {
@@ -62,6 +63,9 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$conds['af_deleted'] = 0;
 			$conds['af_enabled'] = 1;
 		}
+		if ( $hideprivate ) {
+			$conds['af_hidden'] = 0;
+		}
 
 		if ( $scope == 'local' ) {
 			$conds['af_global'] = 0;
@@ -88,7 +92,15 @@ class AbuseFilterViewList extends AbuseFilterView {
 					);
 					$this->showList(
 						[ 'af_deleted' => 0 ],
-						compact( 'deleted', 'hidedisabled', 'querypattern', 'searchmode', 'scope', 'searchEnabled' )
+						compact(
+							'deleted',
+							'hidedisabled',
+							'hideprivate',
+							'querypattern',
+							'searchmode',
+							'scope',
+							'searchEnabled'
+						)
 					);
 					return;
 				}
@@ -112,7 +124,15 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 		$this->showList(
 			$conds,
-			compact( 'deleted', 'hidedisabled', 'querypattern', 'searchmode', 'scope', 'searchEnabled' )
+			compact(
+				'deleted',
+				'hidedisabled',
+				'hideprivate',
+				'querypattern',
+				'searchmode',
+				'scope',
+				'searchEnabled'
+			)
 		);
 	}
 
@@ -128,6 +148,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 		$deleted = $optarray['deleted'];
 		$hidedisabled = $optarray['hidedisabled'];
+		$hideprivate = $optarray['hideprivate'];
 		$scope = $optarray['scope'];
 
 		$searchEnabled = $optarray['searchEnabled'];
@@ -193,7 +214,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 			];
 		}
 
-		$formDescriptor['info'] = [
+		$formDescriptor['infodisabled'] = [
 			'type' => 'info',
 			'default' => $this->msg( 'abusefilter-list-options-disabled' )->parse(),
 		];
@@ -203,6 +224,18 @@ class AbuseFilterViewList extends AbuseFilterView {
 			'type' => 'check',
 			'label-message' => 'abusefilter-list-options-hidedisabled',
 			'selected' => $hidedisabled,
+		];
+
+		$formDescriptor['infoprivate'] = [
+			'type' => 'info',
+			'default' => $this->msg( 'abusefilter-list-options-private' )->parse(),
+		];
+
+		$formDescriptor['hideprivate'] = [
+			'name' => 'hideprivate',
+			'type' => 'check',
+			'label-message' => 'abusefilter-list-options-hideprivate',
+			'selected' => $hideprivate,
 		];
 
 		// ToDo: Since this is only for saving space, we should convert it
