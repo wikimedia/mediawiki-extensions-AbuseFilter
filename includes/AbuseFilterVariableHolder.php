@@ -61,7 +61,7 @@ class AbuseFilterVariableHolder {
 	 */
 	public static function merge() {
 		$newHolder = new AbuseFilterVariableHolder;
-		call_user_func_array( [ $newHolder, "addHolders" ], func_get_args() );
+		$newHolder->addHolders( ...func_get_args() );
 
 		return $newHolder;
 	}

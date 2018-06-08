@@ -191,7 +191,7 @@ class AbuseFilterHooks {
 		// The value is a nested structure keyed by filter id, which doesn't make sense when we only
 		// return the result from one filter. Flatten it to a plain array of actions.
 		$actionsTaken = array_values( array_unique(
-			call_user_func_array( 'array_merge', array_values( $status->getValue() ) )
+			array_merge( ...array_values( $status->getValue() ) )
 		) );
 		$code = ( $actionsTaken === [ 'warn' ] ) ? 'abusefilter-warning' : 'abusefilter-disallowed';
 
