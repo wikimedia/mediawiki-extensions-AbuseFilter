@@ -211,21 +211,21 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param WikiPage &$wikiPage
-	 * @param User &$user
+	 * @param WikiPage $wikiPage
+	 * @param User $user
 	 * @param string $content Content
 	 * @param string $summary
 	 * @param bool $minoredit
 	 * @param bool $watchthis
 	 * @param string $sectionanchor
-	 * @param int &$flags
+	 * @param int $flags
 	 * @param Revision $revision
-	 * @param Status &$status
+	 * @param Status $status
 	 * @param int $baseRevId
 	 */
 	public static function onPageContentSaveComplete(
-		WikiPage &$wikiPage, &$user, $content, $summary, $minoredit, $watchthis, $sectionanchor,
-		&$flags, $revision, &$status, $baseRevId
+		WikiPage $wikiPage, $user, $content, $summary, $minoredit, $watchthis, $sectionanchor,
+		$flags, $revision, $status, $baseRevId
 	) {
 		if ( !self::$successful_action_vars || !$revision ) {
 			self::$successful_action_vars = false;
@@ -338,14 +338,14 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param WikiPage &$article
-	 * @param User &$user
-	 * @param string &$reason
+	 * @param WikiPage $article
+	 * @param User $user
+	 * @param string $reason
 	 * @param string &$error
-	 * @param Status &$status
+	 * @param Status $status
 	 * @return bool
 	 */
-	public static function onArticleDelete( &$article, &$user, &$reason, &$error, &$status ) {
+	public static function onArticleDelete( $article, $user, $reason, &$error, $status ) {
 		$vars = new AbuseFilterVariableHolder;
 
 		$vars->addHolders(
