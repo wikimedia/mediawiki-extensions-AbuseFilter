@@ -525,6 +525,7 @@
 	"apihelp-query+abusefilters-param-show": "이 조건을 만족하는 필터만 출력하기.",
 	"apihelp-query+abusefilters-param-limit": "열거할 필터의 최대 개수",
 	"apihelp-query+abusefilters-param-prop": "얻고자 하는 속성",
+	"apihelp-query+abuselog-param-prop": "가져올 속성입니다.",
 	"apihelp-query+abuselog-example-1": "최근 기록 보기",
 	"apihelp-query+abuselog-example-2": "[[API]]의 최근 기록 보기",
 	"apierror-abusefilter-canttest": "편집 필터를 테스트할 권한이 없습니다.",

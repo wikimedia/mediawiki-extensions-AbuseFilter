@@ -3,7 +3,8 @@
 		"authors": [
 			"Derbeth",
 			"Michawiki",
-			"Matma Rex"
+			"Matma Rex",
+			"Matěj Suchánek"
 		]
 	},
 	"abusefilter-desc": "Nałožujo awtomatisku heuristiku na změny.",
@@ -118,7 +119,7 @@
 	"abusefilter-tools-reautoconfirm": "Awtomatiski wobkšuśony status wótnowiś",
 	"abusefilter-tools-reautoconfirm-user": "Wužywaŕ:",
 	"abusefilter-tools-reautoconfirm-submit": "Znowego awtomatiski wobkšuśiś",
-	"abusefilter-reautoconfirm-none": "{{GENDER:$1Toś ten wužywaŕ||Toś tomu wužywarjeju|Toś tej wužywarce}} njejo se změnił {{GENDER:$1|jogo|jeje}} awtomatiski wobkšuśony status.",
+	"abusefilter-reautoconfirm-none": "{{GENDER:$1|Toś ten wužywaŕ||Toś tomu wužywarjeju|Toś tej wužywarce}} njejo se změnił {{GENDER:$1|jogo|jeje}} awtomatiski wobkšuśony status.",
 	"abusefilter-reautoconfirm-notallowed": "Njesmějoš awtomatiski wobkšuśony status wótnowiś",
 	"abusefilter-reautoconfirm-done": "Status awtomatiskego wobkšuśenja konta jo se wótnowił",
 	"abusefilter-status": "Ze {{PLURAL:$1|slědneje akcije|slědneju $1 akciji|slědnych $1 akcijow|slědnych $1 akcijow}} $2 ($3 %) {{PLURAL:$2|jo dojśpiła|stej dojśpiłej|su dojśpili|jo dojśpiło}} limit wuměnjenja $4 a $5 ($6 %) {{PLURAL:$5|jo wótpowědowała|stej wótpowědowałej|su wótpowědowali|jo wótpowědowało}} jadnomu z filtrow, kótarež su tuchylu zmóžnjone.",

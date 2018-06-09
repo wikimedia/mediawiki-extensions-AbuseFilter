@@ -16,7 +16,8 @@
 			"Chameleon222",
 			"Matma Rex",
 			"Jon Harald Søby",
-			"Imre Eilertsen"
+			"Imre Eilertsen",
+			"Matěj Suchánek"
 		]
 	},
 	"abusefilter-desc": "Legger til automatisk heuristikk til redigeringer.",
@@ -149,8 +150,8 @@
 	"abusefilter-edit-subtitle-new": "Oppretter filter",
 	"abusefilter-edit-oldwarning": "<strong>Du redigerer på en gammel versjon av dette filteret. Statistikken oppgitt er for siste versjon av filteret. Hvis du lagrer dine endringer, vil du overskrive alle endringer siden den revisjonen du redigerer</strong> &bull; [[Special:AbuseFilter/history/$2|Gå tilbake til filterets historikk]]",
 	"abusefilter-edit-status-label": "Statistikk:",
-	"abusefilter-edit-status": "Av {{PLURAL:$|den siste handlingen|de siste $1 handlingene}} har dette filteret matchet $2 ($3 %).",
-	"abusefilter-edit-status-profile": "Av {{PLURAL:$|den siste handlingen|de siste $1 handlingene}} har dette filteret passet med $2 ($3%).\nKjøretiden er i gjennomsnitt på $4ms, og det bruker {{PLURAL:$5|ett vilkår|$5 vilkår}} av vilkårsgrensen.",
+	"abusefilter-edit-status": "Av {{PLURAL:$1|den siste handlingen|de siste $1 handlingene}} har dette filteret matchet $2 ($3 %).",
+	"abusefilter-edit-status-profile": "Av {{PLURAL:$1|den siste handlingen|de siste $1 handlingene}} har dette filteret passet med $2 ($3%).\nKjøretiden er i gjennomsnitt på $4ms, og det bruker {{PLURAL:$5|ett vilkår|$5 vilkår}} av vilkårsgrensen.",
 	"abusefilter-edit-throttled-warning": "'''Advarsel:''' Dette filteret ble automatisk flagget som skadefullt. Av sikkerhetsårsaker vil følgende handlinger ikke bli utført ($1). Gå gjennom og [[mw:Extension:AbuseFilter/Conditions|optimer]] betingelsene for å fjerne denne begrensningen",
 	"abusefilter-edit-new": "Nytt filter",
 	"abusefilter-edit-save": "Lagre filter",
