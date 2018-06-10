@@ -1112,6 +1112,14 @@ class AbuseFilterParser {
 		$ip = $args[0]->toString();
 		$range = $args[1]->toString();
 
+		if ( !IP::isValidRange( $range ) ) {
+			throw new AFPUserVisibleException(
+				'invalidiprange',
+				$this->mCur->pos,
+				[ $range ]
+			);
+		}
+
 		$result = IP::isInRange( $ip, $range );
 
 		return new AFPData( AFPData::DBOOL, $result );
