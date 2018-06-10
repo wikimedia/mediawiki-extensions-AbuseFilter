@@ -401,6 +401,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		// Build the edit form
 		$out = $this->getOutput();
+		$out->enableOOUI();
 		$lang = $this->getLanguage();
 		$user = $this->getUser();
 
@@ -420,6 +421,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					'label' => $this->msg( 'abusefilter-return' )->text(),
 					'href' => $href
 			] );
+			$out->addHTML( $btn );
 			return false;
 		}
 
