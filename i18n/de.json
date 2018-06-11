@@ -421,6 +421,7 @@
 	"abusefilter-exception-outofbounds": "Anforderung des nicht vorhandenen Listeneintrages $2 (Listengröße: $3) an Zeichen $1.",
 	"abusefilter-exception-notlist": "Anforderung eines Arrayelements aus einem Nicht-Array bei Zeichen „$1“.",
 	"abusefilter-exception-unclosedcomment": "Nicht abgeschlossener Kommentar bei Zeichen $1.",
+	"abusefilter-exception-invalidiprange": "Ungültigen IP-Adressbereich „$2“ bei Zeichen $1 angegeben.",
 	"abusefilter-action-tag": "Markierung",
 	"abusefilter-action-throttle": "Drosseln",
 	"abusefilter-action-warn": "Warnen",

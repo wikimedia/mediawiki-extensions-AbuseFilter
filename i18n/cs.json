@@ -148,6 +148,7 @@
 	"abusefilter-list-options-scope-all": "Místní i globální pravidla",
 	"abusefilter-list-options-disabled": "Vypnuté filtry:",
 	"abusefilter-list-options-hidedisabled": "Skrýt vypnuté filtry",
+	"abusefilter-list-options-hideprivate": "Skrýt tajné filtry",
 	"abusefilter-list-options-searchfield": "Hledat v podmínkách:",
 	"abusefilter-list-options-searchpattern": "Vložte výraz",
 	"abusefilter-list-options-searchoptions": "Způsob hledání:",

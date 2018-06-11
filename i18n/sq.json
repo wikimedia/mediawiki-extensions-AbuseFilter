@@ -6,7 +6,8 @@
 			"Vinie007",
 			"Kosovastar",
 			"Matma Rex",
-			"Arianit"
+			"Arianit",
+			"Bjakupi"
 		]
 	},
 	"abusefilter-desc": "Zbaton automatikisht deduktimin e redaktimeve",
@@ -90,6 +91,7 @@
 	"abusefilter-enabled": "I Aktivizuar",
 	"abusefilter-deleted": "E Fshirë",
 	"abusefilter-disabled": "I Çaktivizuar",
+	"abusefilter-throttled": "Te gjitha te paperkthyera, te dala afati te perkthyera...",
 	"abusefilter-hitcount": "$1 {{PLURAL:$1|klikim|klikime}}",
 	"abusefilter-new": "Krijo filter të ri",
 	"abusefilter-return": "Kthehu tek filtër menaxhmenti",
@@ -100,7 +102,9 @@
 	"abusefilter-list-options-deleted-hide": "Fsheh filtrat e fshirë",
 	"abusefilter-list-options-deleted-show": "Përfshij filtra e fshirë",
 	"abusefilter-list-options-disabled": "Filtrat e deaktivizuar",
+	"abusefilter-list-options-private": "Te gjitha te pa-perkthyera qe u ka dal afati te perkthyera",
 	"abusefilter-list-options-hidedisabled": "Fsheh filtrat e deaktivizuar",
+	"abusefilter-list-options-hideprivate": "Fshehni filterat privat",
 	"abusefilter-list-options-submit": "Përditëso",
 	"abusefilter-tools-text": "Këtu janë disa mjete të cilat mund të jenë të dobishme në formulimin dhe korigjimin e kodit të filtrave të shpërdorimit",
 	"abusefilter-tools-expr": "Testues i shprehjes",
@@ -290,6 +294,7 @@
 	"abusefilter-exception-unrecognisedvar": "Variabël e panjohur $2 tek karakteri $1",
 	"abusefilter-exception-notenoughargs": "Pa argumente të mjaftueshme në funsionin $2 të thirrur tek karakteri $1.\nE pritshme $3 {{PLURAL:$3|argumenti|argumentet}}, mori $4",
 	"abusefilter-exception-regexfailure": "Gabim në shprehje të rregullt \" $3 \" tek karakterin $1 : \" $2 \"",
+	"abusefilter-exception-invalidiprange": "IP distance invalide $2 e sjellur ne karakteret $1",
 	"abusefilter-action-tag": "Etiketo",
 	"abusefilter-action-throttle": "Mbyll",
 	"abusefilter-action-warn": "Paralajmëro",
