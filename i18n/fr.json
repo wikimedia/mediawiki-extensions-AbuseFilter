@@ -153,6 +153,7 @@
 	"abusefilter-enabled": "Activé",
 	"abusefilter-deleted": "Supprimé",
 	"abusefilter-disabled": "Désactivé",
+	"abusefilter-throttled": "limité",
 	"abusefilter-hitcount": "$1 détection{{PLURAL:$1||s}}",
 	"abusefilter-new": "Créer un nouveau filtre",
 	"abusefilter-return": "Revenir à la gestion des filtres",

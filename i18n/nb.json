@@ -17,7 +17,8 @@
 			"Matma Rex",
 			"Jon Harald Søby",
 			"Imre Eilertsen",
-			"Matěj Suchánek"
+			"Matěj Suchánek",
+			"Citadell"
 		]
 	},
 	"abusefilter-desc": "Legger til automatisk heuristikk til redigeringer.",
@@ -118,6 +119,7 @@
 	"abusefilter-enabled": "Slått på",
 	"abusefilter-deleted": "Slettet",
 	"abusefilter-disabled": "Slått av",
+	"abusefilter-throttled": "begrenset",
 	"abusefilter-hitcount": "$1 {{PLURAL:$1|treff}}",
 	"abusefilter-new": "Lag et nytt filter",
 	"abusefilter-return": "Returner til filteradministrasjon",
@@ -132,7 +134,9 @@
 	"abusefilter-list-options-scope-global": "Kun globale regler",
 	"abusefilter-list-options-scope-all": "Lokale og globale regler",
 	"abusefilter-list-options-disabled": "Deaktiverte filtre:",
+	"abusefilter-list-options-private": "Private filtere:",
 	"abusefilter-list-options-hidedisabled": "Skjul deaktiverte filtre",
+	"abusefilter-list-options-hideprivate": "Skjul private filtere",
 	"abusefilter-list-options-searchoptions": "Søkemodus:",
 	"abusefilter-list-options-submit": "Oppdater",
 	"abusefilter-tools-text": "Her er noen verktøy som kan være nyttige for å lage samt feilsøke redigeringsfiltere.",

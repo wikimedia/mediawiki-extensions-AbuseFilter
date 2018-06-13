@@ -421,7 +421,7 @@
 	"abusefilter-test": "Sprawdź działanie filtru na poprzedniej edycji",
 	"abusefilter-test-intro": "Strona pozwala na sprawdzenie wybranego w polu poniżej filtru przy zastosowaniu go do {{PLURAL:$1|ostatniej edycji|ostatnich $1 edycji}}.\nAby załadować istniejący filtr, wprowadź jego ID do pola znajdującego się poniżej pola tekstowego i kliknij przycisk „{{int:abusefilter-test-load}}”.",
 	"abusefilter-test-legend": "Testowanie filtru",
-	"abusefilter-test-load-filter": "Załaduj filtr z identyfikatorem",
+	"abusefilter-test-load-filter": "Załaduj filtr o identyfikatorze:",
 	"abusefilter-test-submit": "Testuj",
 	"abusefilter-test-load": "Załaduj",
 	"abusefilter-test-user": "Zmiany wykonane przez użytkownika",
