@@ -91,8 +91,7 @@ fieldset.mw-abusefilter-edit-buttons {
 }
 
 .mw-abusefilter-load-filter-id {
-	width: 25%;
-	min-width: 250px;
+	max-width: 50em;
 }
 
 #mw-abusefilter-syntaxresult,
