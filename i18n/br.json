@@ -205,7 +205,7 @@
 	"abusefilter-edit-builder-misc-like": "Kenglot gant ar stumm (like)",
 	"abusefilter-edit-builder-misc-rlike": "Kenglot gant (rlike)",
 	"abusefilter-edit-builder-misc-irlike": "Sil gant riñvennoù aregel, hep teurel kont ouzh an doare ma 'z eo bet skrivet al lizherennoù (irlike)",
-	"abusefilter-edit-builder-misc-contains": "Ar chadenn a-gleiz a endalc'h an hini dehoù (contains)",
+	"abusefilter-edit-builder-misc-contains": "Ar chadenn a-gleiz a endalc'h an hini dehou (contains)",
 	"abusefilter-edit-builder-misc-stringlit": "Chadenn lizherennoù (\"\")",
 	"abusefilter-edit-builder-misc-tern": "Oberataer hoalad (X ? Y : Z)",
 	"abusefilter-edit-builder-misc-cond": "Amplegadek (if X then Y else Z)",
