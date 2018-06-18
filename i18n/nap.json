@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Chelin",
-			"C.R."
+			"C.R.",
+			"Ruthven"
 		]
 	},
 	"abusefilter-desc": "Appreca n'euristica automateca a 'e cagnamiente",
@@ -16,7 +17,7 @@
 	"abusefilter-blocker": "Filtro anti abbuse",
 	"abusefilter-blockreason": "Bluccato/a automaticamente 'a nu filtro 'abbuse.\nDescrizione d' 'a regola ccà: $1",
 	"abusefilter-degroupreason": "Deritte automatecamente luvate 'a 'o filtro abbuse.\nDescrizione d' 'a regola: $1",
-	"abusefilter-accountreserved": "Stu nomme 'e cunto è astipato pe ll'ausà pe' bbia d' 'o filtro abbuse.",
+	"abusefilter-accountreserved": "Sto nomme 'e cunto è astipato p' 'o filtro abbuse.",
 	"right-abusefilter-modify": "Cagna 'e filtre d'abbuse",
 	"right-abusefilter-view": "Vide 'e filtre d'abbuse",
 	"right-abusefilter-log": "Vide 'o riggistro d'abbuse",
