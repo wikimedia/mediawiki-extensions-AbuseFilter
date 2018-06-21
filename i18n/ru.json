@@ -37,7 +37,8 @@
 			"Katunchik",
 			"Artsiom91",
 			"Movses",
-			"Abiyoyo"
+			"Abiyoyo",
+			"Ping08"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -59,7 +60,7 @@
 	"right-abusefilter-log": "просмотр журнала злоупотреблений",
 	"right-abusefilter-log-detail": "просмотр подробностей в журнале фильтра злоупотреблений",
 	"right-abusefilter-private": "просмотр частных сведений в журнале злоупотреблений",
-	"right-abusefilter-private-log": "Просмотр журнала доступа к личной информации фильтр злоупотребления",
+	"right-abusefilter-private-log": "просмотр журнала доступа к личной информации фильтр злоупотребления",
 	"right-abusefilter-modify-restricted": "изменение ограничивающих фильтров злоупотреблений",
 	"right-abusefilter-revert": "откат изменений, произведённых фильтром злоупотреблений",
 	"right-abusefilter-view-private": "просмотр скрытых фильтров злоупотреблений",
