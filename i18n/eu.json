@@ -17,7 +17,6 @@
 	"abusefilter-desc": "Edizioei heuristika automatikoa aplikatzen die",
 	"abusefilter": "Gehiegikerien iragazkiaren konfigurazioa",
 	"abuselog": "Gehiegikerien erregistroa",
-	"abusefilter-mustbeeditor": "Segurtasun arrazoiak direla eta, gehiegikeria-filtroak aldatzeko eskumena duten erabiltzaileek soilik balia dezakete interfaze hau.",
 	"abusefilter-blocker": "Gehiegikeria iragazkia",
 	"right-abusefilter-modify": "Gehiegikeria iragazkiak aldatu",
 	"right-abusefilter-view": "Gehiegikeria iragazkiak ikusi",

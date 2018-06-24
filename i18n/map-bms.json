@@ -8,7 +8,6 @@
 	"abusefilter-desc": "Terapna pamriksan heuristik otomatis nang suntingan",
 	"abusefilter": "Pangaturan saringan planggaran",
 	"abuselog": "Log planggaran",
-	"abusefilter-mustbeeditor": "Kanggo alesan kamanan, mung panganggo sing duwe hak ngowah saringan planggaran sing teyeng nggo ngowaih kiye.",
 	"abusefilter-blocker": "Saringan planggaran",
 	"abusefilter-degroupreason": "Hak akses dibedhul otomatis nang saringan planggaran.\nKatrangan aturan: $1",
 	"abusefilter-accountreserved": "Jeneng akun kiye wis dipesen nggo dienggo nang saringan planggaran.",

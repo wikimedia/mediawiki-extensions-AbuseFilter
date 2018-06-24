@@ -13,7 +13,6 @@
 	"abusefilter": "Väärtarvitusfiltri häälestus",
 	"abuselog": "Väärtarvituslogi",
 	"abusefilter-intro": "Tere tulemast väärtarvitusfiltri haldamisliidesesse.\nVäärtarvitusfilter on mehhanism, mis rakendab kõigi muudatuste juures automaatset heuristikat.\nLiidesega saab vaadata määratletud filtrite loendit ja filtreid muuta.",
-	"abusefilter-mustbeeditor": "Turvalisuskaalutlusel võivad seda liidest kasutada ainult kasutajad, kellel on väärtarvitusfiltri muutmise õigus.",
 	"abusefilter-warning": "'''Hoiatus''': See toiming on automaatselt kahjulikuks arvatud.\nEbaasjalikud tegevused pööratakse kiiresti tagasi\nning korduvate ja halvimate muudatuste tagajärjel blokeeritakse su konto või IP-aadress.\nKui arvad selle toimingu asjaliku olevat, võid kinnituseks selle uuesti salvestada.\nSinu toimingule vastanud väärtarvitusfiltri reegli lühikirjeldus: $1",
 	"abusefilter-disallowed": "See toiming on automaatselt kahjulikuks arvatud ja on seetõttu keelatud.\nKui arvad toimingu asjaliku olevat, võta palun teha soovitud muudatuse asjus administraatoriga ühendust.\nSinu toimingule vastanud väärtarvitusfiltri reegli lühikirjeldus: $1",
 	"abusefilter-blocked-display": "See toiming on automaatselt kahjulikuks arvatud\nja sul ei lastud seda sooritada.\nKaitsmaks {{GRAMMAR:partitive|{{SITENAME}}}} on lisaks sellele sinu konto ja kõikide seostuvate IP-aadresside redigeerimisõigus blokeeritud.\nKui tegu on eksitusega, võta palun ühendust administraatoriga.\nSinu toimingule vastanud väärtarvitusfiltri reegli lühikirjeldus: $1",

@@ -12,7 +12,6 @@
 	"abusefilter": "Stillingar misnotkunar síunnar",
 	"abuselog": "Misnotkunarskrá",
 	"abusefilter-intro": "Velkominn í viðmót Misnotkunar síunnar.\nSían er sjálfvirkt tæki sem gerir sjálfvirkar brjóstvitsfræði athuganir á allar breytingar.\nÞetta viðmót sýnir lista yfir skilgreindar síur og leyfir breytingar á þeim.",
-	"abusefilter-mustbeeditor": "Vegna öryggisástæðna, geta eingöngu notendur með réttindi til þess að breyta þessum misnotkunar síum notað þetta viðmót.",
 	"abusefilter-warning": "'''Viðvörun:''' Þessi aðgerð hefur sjálfvirkt verið merkt sem skaðleg.\nSkaðlegar aðgerðir verða snögglega teknar til baka,\nog svívirðilegar eða síendurteknar breytingar leiða til banns á notenda eða vistfangi þínu.\nEf þú telur að þessi aðgerð sé uppbyggileg, þá mátt þú senda hana aftur til að staðfesta hana.\nStutt lýsing um misnotkunar síuna sem breyting þín passaði við er: $1",
 	"abusefilter-disallowed": "Þessi aðgerð hefur sjálfvirkt verið merkt sem skaðleg og hefur því verið hafnað.\nEf þú telur að þessi aðgerð hafi verið uppbyggileg, hafðu þá samband við möppudýr um það sem þú reyndir að gera.\nStutt lýsing um misnotkunar síuna sem breyting þín passaði við er: $1",
 	"abusefilter-blocked-display": "Þessi aðgerð hefur sjálfvirkt verið merkt sem skaðleg og því er bannað að framkvæma hana.\nAð auki, til þess að verja {{SITENAME}}, hefur notendanafn þitt og það vistfang sem þú notaðir síðast verið bannað.\nEf villa leiddi þig hingað, hafðu þá samband við möppudýr.\nStutt lýsing um misnotkunar síuna sem breyting þín passaði við er: $1",

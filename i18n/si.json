@@ -15,7 +15,6 @@
 	"abusefilter": "අනිසි පෙරහන් සැකසුම",
 	"abuselog": "අනිසි සටහන්",
 	"abusefilter-intro": "අපයෙදුම් පෙරහන් කළමනාකරණ අතුරු මුහුණතට ඔබව සාදරයෙන් පිළිගනිමු.\nThe Abuse Filter is an automated software mechanism of applying automatic heuristics to all actions.\nThis interface shows a list of defined filters, and allows them to be modified.",
-	"abusefilter-mustbeeditor": "ආරක්ෂක හේතුන් නිසා, අපයෙදුම් පෙරහන් වෙනස් කිරීමට අවසර ඇති පරිශීලකයන් පමණක් මෙම අතුරුමුහුණත භාවිතා කරන්න.",
 	"abusefilter-warning": "'''අවවාදයයි''':මෙම ක්‍රියාව හානිදායක බව ස්වයංක්‍රීයව හඳුනාගෙන ඇත.\nUnconstructive edits will be quickly reverted,\nand egregious or repeated unconstructive editing will result in your account or IP address being blocked.\nIf you believe this edit to be constructive, you may click Submit again to confirm it.\nA brief description of the abuse rule which your action matched is: $1",
 	"abusefilter-blocker": "අපයෙදුම් පෙරහන",
 	"abusefilter-blockreason": "අපයෙදුම් පෙරහන මඟින් ස්වයන්ක්‍රියව වාරණය කර ඇත.\nගැලපුණු නීතියේ විස්තරය: $1",

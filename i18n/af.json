@@ -10,7 +10,6 @@
 	"abusefilter": "Opstelling van misbruikfilter",
 	"abuselog": "Misbruiklogboek",
 	"abusefilter-intro": "Welkom by die misbruik Filter beheer jou.\nDie misbruik Filter is 'n outomatiese sagteware meganisme van die toepassing van outomatiese heuristiek aan alle aksies.\nHierdie koppelvlak toon 'n lys van gedefinieer filters, en kan hulle verander word.",
-	"abusefilter-mustbeeditor": "Vir sekuriteit kan slegs gebruikers met die reg om misbruik filters te verander gebruik van hierdie koppelvlak.",
 	"abusefilter-blocker": "Misbruikfilter",
 	"abusefilter-accountreserved": "Hierdie rekeningnaam is gereserveer vir gebruik deur die misbruikfilter.",
 	"right-abusefilter-modify": "Wysig misbruikfilters",

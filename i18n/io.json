@@ -11,7 +11,6 @@
 	"abusefilter": "Figuro dil filtrilo pri misuzo",
 	"abuselog": "Protokolo pri misuzo",
 	"abusefilter-intro": "Bonveno a la kontrol interfacio dil filtrilo di misuzo. La filtrilo di misuzo esas automatala mekanismo di softwaro qua aplikas automatala heuristiko ad omna agadi.\n\nIca interfacio* montras listo pri definita filtrili, e permisas modifikar li.",
-	"abusefilter-mustbeeditor": "Por motivi di sekureso, ica interfacio povas modifikesar nur dal uzeri kun yuri por modifikar la filtrili di misuzo.",
 	"right-abusefilter-modify": "Modifikar filtrili pri misuzo",
 	"right-abusefilter-view": "Vidar filtrili di misuzo",
 	"action-abusefilter-log-detail": "Videz detaloza registri di informi pri misuzo",

@@ -4,14 +4,14 @@
 			"Cedric31",
 			"Matma Rex",
 			"Unuaiga",
-			"Guilhelma"
+			"Guilhelma",
+			"Matěj Suchánek"
 		]
 	},
 	"abusefilter-desc": "Aplica d'euristicas automaticas a las modificacions",
 	"abusefilter": "Configuracion del filtre dels abuses",
 	"abuselog": "Jornal dels abuses",
 	"abusefilter-intro": "Benvengut(uda) dins l'interfàcia de gestion dels filtres antiabuses.\nLo filtre antiabuses es un mecanisme logicial automatizat que permet d'aplicar d'euristicas predefinidas a totas las accions.\nAquesta interfàcia presenta una lista dels filtres definits, e balha la possibilitat de los modificar.",
-	"abusefilter-mustbeeditor": "Per de rasons de seguretat, sols los utilizaires amb lo dreit de modificar los filtres antiabuses pòdon utilizar aquesta interfàcia.",
 	"abusefilter-warning": "<big>'''Avertiment'''</big> : Aquesta accion es estada identificada automaticament coma nosibla.\nLas edicions que son pas constructivas seràn rapidament anulladas,\ne la repeticion de las asinadas del meteis genre provocarà lo blocatge de vòstre compte o de vòstra adreça IP.\nSe sètz convençu{{GENDER:||t|(da)}} que vòstra modificacion es constructiva, la podètz la sometre un còp de mai per la validar.\nVaquí la descripcion brèva de la règla de l’abús qu'a detectat vòstra accion : $1",
 	"abusefilter-disallowed": "Aquesta modificacion es estada automaticament idenficada coma nusibla e, per via de consequéncia, pas permesa.\nSe sètz convençu{{GENDER:||t|(da)}} que vòstra modificacion èra constructiva, contactatz un administrator, e informatz-lo de quina accion eratz a far : $1",
 	"abusefilter-blocked-display": "Aquesta accion es estada identifcada coma nusibla automaticament, e ja sètz estat(ada) empachat(ada) de l’executar.\nEn consequéncia, per protegir {{SITENAME}}, vòstre compte d'utilizaire e totas las adreças IP son estadas blocadas en escritura.\nS'aquò es degut a una error, contactatz un administrator.\nVaquí la descripcion brèva de la règla de l’abús qu'a detectat vòstra accion : $1",
@@ -49,7 +49,7 @@
 	"abusefilter-log-search-title": "Títol :",
 	"abusefilter-log-search-wiki": "Wiki :",
 	"abusefilter-log-search-submit": "Recercar",
-	"abusefilter-log-entry": "$1 : $2 {{GENDER:$8:a desenclavat}} un filtre anti-abuses, en {{GENDER:$8|efectuant}} l'accion « $3 » sus $4.\nAccions entrepresas : $5 ;\nDescripcion del filtre : $6",
+	"abusefilter-log-entry": "$1 : $2 {{GENDER:$8|a desenclavat}} un filtre anti-abuses, en {{GENDER:$8|efectuant}} l'accion « $3 » sus $4.\nAccions entrepresas : $5 ;\nDescripcion del filtre : $6",
 	"abusefilter-log-detailedentry-meta": "$1 : $2 {{GENDER:$9|a desenclavat}} lo $3, {{GENDER:$9|en efectuant}} l'accion « $4 » sus « $5 ».\nAccions entrepresas : $6 ;\nDescripcion del filtre : $7 ($8)",
 	"abusefilter-log-detailedentry-global": "filtre global $1",
 	"abusefilter-log-detailedentry-local": "filtre $1 dels abuses",

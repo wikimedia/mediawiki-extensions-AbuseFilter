@@ -36,14 +36,14 @@
 			"Wladek92",
 			"Elfix",
 			"Matma Rex",
-			"Thibaut120094"
+			"Thibaut120094",
+			"Matěj Suchánek"
 		]
 	},
 	"abusefilter-desc": "Applique des heuristiques automatiques aux modifications",
 	"abusefilter": "Configuration du filtre antiabus",
 	"abuselog": "Journal des filtres antiabus",
 	"abusefilter-intro": "Bienvenue dans l'interface de gestion des filtres antiabus.\nLe filtre antiabus est un mécanisme logiciel automatisé qui permet d'appliquer des heuristiques prédéfinies à toutes les actions.\nCette interface présente une liste des filtres définis, et donne la possibilité de les modifier.",
-	"abusefilter-mustbeeditor": "Pour des raisons de sécurité, seuls les utilisateurs avec le droit de modifier les filtres antiabus peuvent utiliser cette interface.",
 	"abusefilter-warning": "'''Avertissement :''' cette action a été automatiquement identifiée comme nuisible.\nLes actions non constructives seront rapidement annulées et les modifications non constructives répétées ou outrageantes provoqueront le blocage de votre compte ou de votre adresse IP.\nSi vous estimez que cette action est constructive, vous pouvez la soumettre une nouvelle fois pour la confirmer.\nVoici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1",
 	"abusefilter-disallowed": "Cette action a été automatiquement identifiée comme nuisible, et a donc été empêchée.\nSi vous pensez que votre action était constructive, veuillez contacter un administrateur et l'informer de ce que vous avez essayé de faire.\nVoici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1",
 	"abusefilter-blocked-display": "Cette action a été automatiquement identifée comme nuisible\net vous avez déjà été empêché de l'exécuter.\nDe plus, pour protéger {{SITENAME}}, votre compte utilisateur et toutes les adresses IP associées ont été bloqués contre toute modification.\nSi ceci est dû à une erreur, veuillez contacter un administrateur.\nVoici une brève description de la règle de filtrage antiabus ayant détecté votre action : $1",
@@ -94,8 +94,8 @@
 	"abusefilter-log-search-action-taken-label": "Mesure prise :",
 	"abusefilter-log-search-action-taken-any": "N’importe laquelle",
 	"abusefilter-log-search-submit": "Rechercher",
-	"abusefilter-log-entry": "$1 : $2 {{GENDER:$8:a déclenché}} un filtre antiabus, en {{GENDER:$8|effectuant}} l’action « $3 » sur $4.\nActions entreprises : $5 ;\nDescription du filtre : $6",
-	"abusefilter-log-entry-withdiff": "$1: $2 {{GENDER:$8:a déclenché}} un filtre antiabus, {{GENDER:$8|en effectuant}} l’action « $3 » sur $4.\nAction entreprise : $5  ;\nDescription du filtre : $6 ($7)",
+	"abusefilter-log-entry": "$1 : $2 {{GENDER:$8|a déclenché}} un filtre antiabus, en {{GENDER:$8|effectuant}} l’action « $3 » sur $4.\nActions entreprises : $5 ;\nDescription du filtre : $6",
+	"abusefilter-log-entry-withdiff": "$1: $2 {{GENDER:$8|a déclenché}} un filtre antiabus, {{GENDER:$8|en effectuant}} l’action « $3 » sur $4.\nAction entreprise : $5  ;\nDescription du filtre : $6 ($7)",
 	"abusefilter-log-detailedentry-meta": "$1 : $2 {{GENDER:$9|a déclenché}} le $3, {{GENDER:$9|en effectuant}} l’action « $4 » sur $5.\nActions entreprises : $6 ;\nDescription du filtre : $7 ($8)",
 	"abusefilter-log-detailedentry-global": "filtre global $1",
 	"abusefilter-log-detailedentry-local": "filtre antiabus $1",

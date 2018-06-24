@@ -11,7 +11,6 @@
 	"abusefilter": "Konfiguracija filtrov zlorab",
 	"abuselog": "Dnevnik zlorab",
 	"abusefilter-intro": "Dobrodošli v vmesniku upravljanja s filtri zlorab.\nFilter zlorab je samodejni mehanizem programja, ki uporabi samodejno hevristiko za vsa dejanja.\nVmesnik prikazuje seznam določenih filtrov in omogoča, da jih spremenite.",
-	"abusefilter-mustbeeditor": "Iz varnostnih razlogov si vmesnik lahko ogledajo samo uporabniki s pravico spreminjanja filtrov zlorab.",
 	"abusefilter-warning": "'''Opozorilo:''' To dejanje je bilo samodejno zaznano kot škodljivo.\nNekoristna dejanja bodo hitro povrnjena,\nnezaslišana ali ponavljajoča nekoristna urejanja pa bodo sledila v blokado vašega računa ali IP-naslova.\nČe verjamete, da je to dejanje koristno, ga lahko ponovno potrdite.\nKratek opis pravila zlorab, ki mu je ustrezalo vaše dejanje: $1",
 	"abusefilter-disallowed": "To dejanje je bilo samodejno zaznano kot škodljivo in je zato prepovedano.\nČe verjamete, da je bilo vaše dejanje koristno, prosimo, obvestite administratorja o tem, kar ste skušali storiti.\nKratek opis pravila zlorab, ki mu je ustrezalo vaše dejanje: $1",
 	"abusefilter-blocked-display": "To dejanje je bilo samodejno prepoznano kot škodljivo\nin vam je zato bila njegova izvedba preprečena.\nPoleg tega je bilo zavoljo zaščite {{GRAMMAR:rodilnik|{{SITENAME}}}} vašemu uporabniškemu računu in vsem pripadajočim IP-naslovom preprečeno urejanje.\nČe se je to zgodilo po pomoti, se obrnite na administratorja.\nKratek opis pravila zlorab, kateremu je ustrezalo vaše dejanje: $1",

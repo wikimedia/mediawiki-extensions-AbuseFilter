@@ -9,7 +9,6 @@
 	"abusefilter": "Missbrauchsfilter-Einstellunge",
 	"abuselog": "Missbrauchsfilter-Logbuch",
 	"abusefilter-intro": "Willkomme uff der Missbrauchsfilter-Management-Oberfläch.\nDer Missbrauchsfilter ist en automatischer Mechanismus, wo automatische Heiristike uff all Ännrunge oonwenne tut.\nDie Oberfläch zeicht en List von aller definierte Filter und erlaubt das man die verännre tut.",
-	"abusefilter-mustbeeditor": "Aus Sicherheitsgründ därrfe nuar Benutzer mit dem Recht zur Ännrung von Missbrauchsfiltre die Schnittstell verwenne.",
 	"abusefilter-warning": "'''Achtung:''' Die Aktion woard als potentiell unkonstruktiv erkannt.\nSolche Beiträch werre meascht seahr schnell entfernt. In wiederholte und besonnersch schlimme Fälle weard dein Benutzerkonto bzw. dein IP-Adress gesperrt.\nWenns du meenst, dass die Aktion sinnvoll ist, kannst du se zum Beschtätiche erneit speichre.\nKoorzbeschreibung von der verletzte Rechel: $1",
 	"abusefilter-disallowed": "Die Aktion woard automatisch als schädlich erkannt und deshallrb net ausgeführt.\nWenns du denkst, dass dein Aktion konstruktiv woor, wend dich bittschön on en Administratoar und schildre ihm, was du versuchst host beizutroohn.\nKoorzbeschreibung von der verletzte Rechel: $1",
 	"abusefilter-blocked-display": "Die Aktion woard automatisch als schädlich erkannt und net ausgefeahrt.\nFerner worre dein Benutzerkonto und alle zugehöriche IP-Adresse gesperrt.\nWenns du denkst, dass es sich hier um en Fehler handelt, wend dich bittschön an en Administratoar.\nKoorzbeschreibung von der verletzte Rechel: $1",
