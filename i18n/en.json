@@ -157,6 +157,7 @@
 	"abusefilter-edit": "Editing abuse filter",
 	"abusefilter-edit-subtitle": "Editing filter $1",
 	"abusefilter-edit-subtitle-new": "Creating filter",
+	"abusefilter-edit-token-not-match": "The edit wasn't saved! Please save again.",
 	"abusefilter-edit-oldwarning": "<strong>You are editing an old version of this filter.\nThe statistics quoted are for the most recent version of the filter.\nIf you save your changes, you will overwrite all changes since the revision you are editing.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Return to this filter's history]].",
 	"abusefilter-edit-status-label": "Statistics:",
 	"abusefilter-edit-status": "Of the last $1 {{PLURAL:$1|action|actions}}, this filter has matched $2 ($3%).",
