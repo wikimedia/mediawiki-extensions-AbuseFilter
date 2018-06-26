@@ -150,6 +150,7 @@ class AbuseFilterHistoryPager extends TablePager {
 	public function getQueryInfo() {
 		$info = [
 			'tables' => [ 'abuse_filter_history', 'abuse_filter' ],
+			// All fields but afh_deleted on abuse_filter_history
 			'fields' => [
 				'afh_filter',
 				'afh_timestamp',
@@ -162,7 +163,6 @@ class AbuseFilterHistoryPager extends TablePager {
 				'afh_user',
 				'afh_changed_fields',
 				'afh_pattern',
-				'afh_id',
 				'af_hidden'
 			],
 			'conds' => [],

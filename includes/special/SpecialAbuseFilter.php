@@ -29,7 +29,6 @@ class SpecialAbuseFilter extends SpecialPage {
 		$this->loadParameters( $subpage );
 		$out->setPageTitle( $this->msg( 'abusefilter-management' ) );
 
-		// Are we allowed?
 		$this->checkPermissions();
 
 		if ( $request->getVal( 'result' ) == 'success' ) {
@@ -91,6 +90,7 @@ class SpecialAbuseFilter extends SpecialPage {
 			} elseif ( count( $params ) == 2 ) {
 				// Second param is a filter ID
 				$view = 'AbuseFilterViewHistory';
+				$pageType = 'recentchanges';
 				$this->mFilter = $params[1];
 			} elseif ( count( $params ) == 4 && $params[2] == 'item' ) {
 				$this->mFilter = $params[1];
