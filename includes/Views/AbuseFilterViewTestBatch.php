@@ -5,7 +5,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	protected static $mChangeLimit = 100;
 
 	public $mShowNegative, $mTestPeriodStart, $mTestPeriodEnd, $mTestPage;
-	public $mTestUser, $mExcludeBots;
+	public $mTestUser, $mExcludeBots, $mTestAction;
 
 	/**
 	 * Shows the page
@@ -45,6 +45,19 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		// Search form
 		$formFields = [];
+		$formFields['wpTestAction'] = [
+			'name' => 'wpTestAction',
+			'type' => 'select',
+			'label-message' => 'abusefilter-test-action',
+			'options' => [
+				$this->msg( 'abusefilter-test-search-type-all' )->text() => 0,
+				$this->msg( 'abusefilter-test-search-type-edit' )->text() => 'edit',
+				$this->msg( 'abusefilter-test-search-type-move' )->text() => 'move',
+				$this->msg( 'abusefilter-test-search-type-delete' )->text() => 'delete',
+				$this->msg( 'abusefilter-test-search-type-createaccount' )->text() => 'createaccount'
+				// @ToDo: add 'upload' once T170249 is resolved
+			]
+		];
 		$formFields['wpTestUser'] = [
 			'name' => 'wpTestUser',
 			'type' => 'user',
@@ -147,7 +160,9 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			}
 		}
 
-		$conds[] = $this->buildTestConditions( $dbr );
+		$action = $this->mTestAction != '0' ? $this->mTestAction : false;
+		$conds[] = $this->buildTestConditions( $dbr, $action );
+
 		$conds = array_filter( $conds );
 
 		// To be added after filtering, otherwise it gets stripped
@@ -208,6 +223,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$this->mTestPeriodStart = $request->getText( 'wpTestPeriodStart' );
 		$this->mTestPage = $request->getText( 'wpTestPage' );
 		$this->mExcludeBots = $request->getBool( 'wpExcludeBots' );
+		$this->mTestAction = $request->getText( 'wpTestAction' );
 
 		if ( !$this->mFilter
 			&& count( $this->mParams ) > 1
