@@ -101,7 +101,6 @@
 	"abusefilter-list-options-scope": "Zeich Filter zu:",
 	"abusefilter-list-options-scope-local": "Lokales Wiki",
 	"abusefilter-list-options-scope-global": "Globale Rechle",
-	"abusefilter-list-options-disabled": "Deaktivierte Filter:",
 	"abusefilter-list-options-hidedisabled": "Deaktivierte Filter ausblenne",
 	"abusefilter-list-options-submit": "Aktualisiere",
 	"abusefilter-tools-expr": "Expression-Tester",

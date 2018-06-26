@@ -116,7 +116,6 @@
 	"abusefilter-list-options-scope-local": "เฉพาะกฎท้องถิ่น",
 	"abusefilter-list-options-scope-global": "เฉพาะกฎทั่วโลก",
 	"abusefilter-list-options-scope-all": "กฎท้องถิ่นและทั่วโลก",
-	"abusefilter-list-options-disabled": "ตัวกรองที่ปิดใช้งาน:",
 	"abusefilter-list-options-hidedisabled": "ซ่อนตัวกรองที่ปิดใช้งาน",
 	"abusefilter-list-options-submit": "อัปเดต",
 	"abusefilter-tools-text": "นี่เป็นเครื่องมือซึ่งอาจเป็นประโยชน์ในการคิดระบบและการแก้จุดบกพร่องของตัวกรองการละเมิดกฎ",

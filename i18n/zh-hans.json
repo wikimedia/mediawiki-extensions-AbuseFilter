@@ -44,7 +44,8 @@
 			"逆襲的天邪鬼",
 			"WhitePhosphorus",
 			"A2093064",
-			"NeverBehave"
+			"NeverBehave",
+			"JerryLiu"
 		]
 	},
 	"abusefilter-desc": "对编辑行为自动进行条件判定",
@@ -174,8 +175,7 @@
 	"abusefilter-list-options-scope-local": "仅本地规则",
 	"abusefilter-list-options-scope-global": "仅全域规则",
 	"abusefilter-list-options-scope-all": "本地和全域规则",
-	"abusefilter-list-options-disabled": "已停用过滤器：",
-	"abusefilter-list-options-private": "私有过滤器：",
+	"abusefilter-list-options-further-options": "其他选项：",
 	"abusefilter-list-options-hidedisabled": "隐藏已停用过滤器",
 	"abusefilter-list-options-hideprivate": "隐藏私有过滤器",
 	"abusefilter-list-options-searchfield": "在规则内搜索：",
@@ -436,7 +436,7 @@
 	"abusefilter-exception-regexfailure": "字符$1处的正则表达式“$3”存在错误：“$2”。",
 	"abusefilter-exception-overridebuiltin": "字符$1处非法覆盖内建变量“$2”。",
 	"abusefilter-exception-outofbounds": "字符$1处请求了不存在的列表项$2（列表长度 = $3）。",
-	"abusefilter-exception-notlist": "字符$1处向非数组请求了数组项。",
+	"abusefilter-exception-notarray": "字符$1处向非数组请求了数组项。",
 	"abusefilter-exception-unclosedcomment": "字符$1处有未闭合注释。",
 	"abusefilter-exception-invalidiprange": "字符$1处提供了无效的IP地址段“$2”。",
 	"abusefilter-action-tag": "标签",
@@ -475,6 +475,8 @@
 	"abusefilter-test-shownegative": "显示不与过滤器匹配的更改",
 	"abusefilter-test-syntaxerr": "您所输入的过滤器存有语法错误。请点击“{{int:abusefilter-edit-check}}”按钮进行语法检查，并获取详细解释。",
 	"abusefilter-test-badtitle": "您输入的页面标题无效。它可能包含无法作为标题使用的一个或多个字符。",
+	"abusefilter-test-action": "操作类别",
+	"abusefilter-test-search-type-all": "所以操作",
 	"abusefilter-changeslist-examine": "检查",
 	"abusefilter-examine": "检查单独更改",
 	"abusefilter-examine-intro": "本页面允许您检查防滥用过滤器根据某次单独更改所生成的变量，并使用过滤器进行测试。",

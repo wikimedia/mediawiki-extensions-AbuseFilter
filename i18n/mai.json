@@ -87,7 +87,6 @@
 	"abusefilter-list-options-scope-local": "स्थानीय नियम सभ मात्र",
 	"abusefilter-list-options-scope-global": "ग्लोबल नियम सभ मात्र",
 	"abusefilter-list-options-scope-all": "स्थानीय आर वैश्विक नियम सभ",
-	"abusefilter-list-options-disabled": "अयोग्य फ़िल्टर",
 	"abusefilter-list-options-hidedisabled": "अयोग्य फ़िल्टर के नुकाऊ",
 	"abusefilter-list-options-submit": "अद्यतन",
 	"abusefilter-tools-expr": "अभिव्यक्ति परीक्षक",

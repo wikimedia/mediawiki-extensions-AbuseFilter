@@ -101,7 +101,6 @@
 	"abusefilter-list-options-scope-local": "Тек жергілік басқарулар",
 	"abusefilter-list-options-scope-global": "Тек ғаламдық басқарулар",
 	"abusefilter-list-options-scope-all": "Жергілік және ғаламдық басқарулар",
-	"abusefilter-list-options-disabled": "Ажыратылған сүзгіштер:",
 	"abusefilter-list-options-hidedisabled": "Ажыратылған сүзгіштерді жасыру",
 	"abusefilter-list-options-submit": "Жаңарту",
 	"abusefilter-tools-expr": "Өрнекті тексеру",

@@ -104,7 +104,6 @@
 	"abusefilter-list-options-scope-local": "স্থানীয় নিয়ম শুধুমাত্র",
 	"abusefilter-list-options-scope-global": "বৈশ্বিক নিয়ম শুধুমাত্র",
 	"abusefilter-list-options-scope-all": "স্থানীয় এবং বৈশ্বিক নিয়ম",
-	"abusefilter-list-options-disabled": "নিষ্ক্রিয় করা ছাঁকনিগুলি:",
 	"abusefilter-list-options-hidedisabled": "নিষ্ক্রিয় ছাঁকনিগুলো লুকান",
 	"abusefilter-list-options-searchoptions": "অনুসন্ধান মোড:",
 	"abusefilter-list-options-submit": "হালনাগাদ",

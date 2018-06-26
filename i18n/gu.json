@@ -78,7 +78,6 @@
 	"abusefilter-list-options-deleted-show": "દૂર કરેલ ગાળકોનો સમાવેશ કરો",
 	"abusefilter-list-options-scope-local": "ફક્ત સ્થાનિક નિયમો",
 	"abusefilter-list-options-scope-global": "ફક્ત વૈશ્વિક નિયમો",
-	"abusefilter-list-options-disabled": "અસક્રિય ગાળકો:",
 	"abusefilter-list-options-hidedisabled": "નિષ્ક્રિય ગાળકો છુપાવો",
 	"abusefilter-list-options-submit": "સુધારો",
 	"abusefilter-tools-submitexpr": "પરખો",

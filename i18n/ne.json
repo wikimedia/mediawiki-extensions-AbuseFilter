@@ -90,7 +90,6 @@
 	"abusefilter-list-options-scope-local": "स्थानीय नियम मात्र",
 	"abusefilter-list-options-scope-global": "विश्वव्यापी नियम मात्र",
 	"abusefilter-list-options-scope-all": "स्थानीय तथा विश्वव्यापी नियमहरू",
-	"abusefilter-list-options-disabled": "निस्क्रिय फिल्टरहरु",
 	"abusefilter-list-options-hidedisabled": "निस्क्रिय फिल्टरहरु लुकाउने",
 	"abusefilter-list-options-submit": "अद्यतन",
 	"abusefilter-tools-expr": "अभिव्यक्ति जाँचकी",

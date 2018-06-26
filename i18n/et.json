@@ -132,7 +132,6 @@
 	"abusefilter-list-options-scope-local": "Ainult kohalikud reeglid",
 	"abusefilter-list-options-scope-global": "Ainult globaalsed reeglid",
 	"abusefilter-list-options-scope-all": "Kohalikud ja globaalsed reeglid",
-	"abusefilter-list-options-disabled": "Keelatud filtrid:",
 	"abusefilter-list-options-hidedisabled": "Peida keelatud filtrid",
 	"abusefilter-list-options-searchfield": "Otsimine reeglitest:",
 	"abusefilter-list-options-searchpattern": "Sisesta võrdluskuju",
