@@ -724,11 +724,16 @@ class AbuseFilterParser {
 			}
 
 			$args = [];
-			do {
-				$r = new AFPData();
-				$this->doLevelSemicolon( $r );
-				$args[] = $r;
-			} while ( $this->mCur->type == AFPToken::TCOMMA );
+			$state = $this->getState();
+			$this->move();
+			if ( $this->mCur->type != AFPToken::TBRACE || $this->mCur->value != ')' ) {
+				$this->setState( $state );
+				do {
+					$r = new AFPData();
+					$this->doLevelSemicolon( $r );
+					$args[] = $r;
+				} while ( $this->mCur->type == AFPToken::TCOMMA );
+			}
 
 			if ( $this->mCur->type != AFPToken::TBRACE || $this->mCur->value != ')' ) {
 				throw new AFPUserVisibleException( 'expectednotfound',
@@ -899,11 +904,11 @@ class AbuseFilterParser {
 	 */
 	protected function funcLc( $args ) {
 		global $wgContLang;
-		if ( count( $args ) < 1 ) {
+		if ( count( $args ) === 0 ) {
 			throw new AFPUserVisibleException(
-				'notenoughargs',
+				'noparams',
 				$this->mCur->pos,
-				[ 'lc', 2, count( $args ) ]
+				[ 'lc', 1 ]
 			);
 		}
 		$s = $args[0]->toString();
@@ -918,11 +923,11 @@ class AbuseFilterParser {
 	 */
 	protected function funcUc( $args ) {
 		global $wgContLang;
-		if ( count( $args ) < 1 ) {
+		if ( count( $args ) === 0 ) {
 			throw new AFPUserVisibleException(
-				'notenoughargs',
+				'noparams',
 				$this->mCur->pos,
-				[ 'uc', 2, count( $args ) ]
+				[ 'uc', 1 ]
 			);
 		}
 		$s = $args[0]->toString();
@@ -936,11 +941,11 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function funcLen( $args ) {
-		if ( count( $args ) < 1 ) {
+		if ( count( $args ) === 0 ) {
 			throw new AFPUserVisibleException(
-				'notenoughargs',
+				'noparams',
 				$this->mCur->pos,
-				[ 'len', 2, count( $args ) ]
+				[ 'len', 1 ]
 			);
 		}
 		if ( $args[0]->type == AFPData::DARRAY ) {
@@ -957,33 +962,12 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
-	protected function funcSimpleNorm( $args ) {
-		if ( count( $args ) < 1 ) {
-			throw new AFPUserVisibleException(
-				'notenoughargs',
-				$this->mCur->pos,
-				[ 'simplenorm', 2, count( $args ) ]
-			);
-		}
-		$s = $args[0]->toString();
-
-		$s = preg_replace( '/[\d\W]+/', '', $s );
-		$s = strtolower( $s );
-
-		return new AFPData( AFPData::DSTRING, $s );
-	}
-
-	/**
-	 * @param array $args
-	 * @return AFPData
-	 * @throws AFPUserVisibleException
-	 */
 	protected function funcSpecialRatio( $args ) {
-		if ( count( $args ) < 1 ) {
+		if ( count( $args ) === 0 ) {
 			throw new AFPUserVisibleException(
-				'notenoughargs',
+				'noparams',
 				$this->mCur->pos,
-				[ 'specialratio', 1, count( $args ) ]
+				[ 'specialratio', 1 ]
 			);
 		}
 		$s = $args[0]->toString();
@@ -1005,11 +989,11 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function funcCount( $args ) {
-		if ( count( $args ) < 1 ) {
+		if ( count( $args ) === 0 ) {
 			throw new AFPUserVisibleException(
-				'notenoughargs',
+				'noparams',
 				$this->mCur->pos,
-				[ 'count', 1, count( $args ) ]
+				[ 'count', 1 ]
 			);
 		}
 
@@ -1041,11 +1025,11 @@ class AbuseFilterParser {
 	 * @throws Exception
 	 */
 	protected function funcRCount( $args ) {
-		if ( count( $args ) < 1 ) {
+		if ( count( $args ) === 0 ) {
 			throw new AFPUserVisibleException(
-				'notenoughargs',
+				'noparams',
 				$this->mCur->pos,
-				[ 'rcount', 1, count( $args ) ]
+				[ 'rcount', 1 ]
 			);
 		}
 
@@ -1166,11 +1150,11 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function funcCCNorm( $args ) {
-		if ( count( $args ) < 1 ) {
+		if ( count( $args ) === 0 ) {
 			throw new AFPUserVisibleException(
-				'notenoughargs',
+				'noparams',
 				$this->mCur->pos,
-				[ 'ccnorm', 1, count( $args ) ]
+				[ 'ccnorm', 1 ]
 			);
 		}
 		$s = $args[0]->toString();
@@ -1187,11 +1171,11 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function funcSanitize( $args ) {
-		if ( count( $args ) < 1 ) {
+		if ( count( $args ) === 0 ) {
 			throw new AFPUserVisibleException(
-				'notenoughargs',
+				'noparams',
 				$this->mCur->pos,
-				[ 'sanitize', 1, count( $args ) ]
+				[ 'sanitize', 1 ]
 			);
 		}
 		$s = $args[0]->toString();
@@ -1424,11 +1408,11 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function funcRMSpecials( $args ) {
-		if ( count( $args ) < 1 ) {
+		if ( count( $args ) === 0 ) {
 			throw new AFPUserVisibleException(
-				'notenoughargs',
+				'noparams',
 				$this->mCur->pos,
-				[ 'rmspecials', 1, count( $args ) ]
+				[ 'rmspecials', 1 ]
 			);
 		}
 		$s = $args[0]->toString();
@@ -1444,11 +1428,11 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function funcRMWhitespace( $args ) {
-		if ( count( $args ) < 1 ) {
+		if ( count( $args ) === 0 ) {
 			throw new AFPUserVisibleException(
-				'notenoughargs',
+				'noparams',
 				$this->mCur->pos,
-				[ 'rmwhitespace', 1, count( $args ) ]
+				[ 'rmwhitespace', 1 ]
 			);
 		}
 		$s = $args[0]->toString();
@@ -1464,11 +1448,11 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function funcRMDoubles( $args ) {
-		if ( count( $args ) < 1 ) {
+		if ( count( $args ) === 0 ) {
 			throw new AFPUserVisibleException(
-				'notenoughargs',
+				'noparams',
 				$this->mCur->pos,
-				[ 'rmdoubles', 1, count( $args ) ]
+				[ 'rmdoubles', 1 ]
 			);
 		}
 		$s = $args[0]->toString();
@@ -1484,11 +1468,11 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function funcNorm( $args ) {
-		if ( count( $args ) < 1 ) {
+		if ( count( $args ) === 0 ) {
 			throw new AFPUserVisibleException(
-				'notenoughargs',
+				'noparams',
 				$this->mCur->pos,
-				[ 'norm', 1, count( $args ) ]
+				[ 'norm', 1 ]
 			);
 		}
 		$s = $args[0]->toString();
@@ -1593,9 +1577,12 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function funcStrRegexEscape( $args ) {
-		if ( count( $args ) < 1 ) {
-			throw new AFPUserVisibleException( 'notenoughargs', $this->mCur->pos,
-				[ 'rescape', 1, count( $args ) ] );
+		if ( count( $args ) === 0 ) {
+			throw new AFPUserVisibleException(
+				'noparams',
+				$this->mCur->pos,
+				[ 'rescape', 1 ]
+			);
 		}
 
 		$string = $args[0]->toString();
@@ -1633,8 +1620,12 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function castString( $args ) {
-		if ( count( $args ) < 1 ) {
-			throw new AFPUserVisibleException( 'noparams', $this->mCur->pos, [ __METHOD__ ] );
+		if ( count( $args ) === 0 ) {
+			throw new AFPUserVisibleException(
+				'noparams',
+				$this->mCur->pos,
+				[ 'string', 1 ]
+			);
 		}
 		$val = $args[0];
 
@@ -1647,8 +1638,12 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function castInt( $args ) {
-		if ( count( $args ) < 1 ) {
-			throw new AFPUserVisibleException( 'noparams', $this->mCur->pos, [ __METHOD__ ] );
+		if ( count( $args ) === 0 ) {
+			throw new AFPUserVisibleException(
+				'noparams',
+				$this->mCur->pos,
+				[ 'int', 1 ]
+			);
 		}
 		$val = $args[0];
 
@@ -1661,8 +1656,12 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function castFloat( $args ) {
-		if ( count( $args ) < 1 ) {
-			throw new AFPUserVisibleException( 'noparams', $this->mCur->pos, [ __METHOD__ ] );
+		if ( count( $args ) === 0 ) {
+			throw new AFPUserVisibleException(
+				'noparams',
+				$this->mCur->pos,
+				[ 'float', 1 ]
+			);
 		}
 		$val = $args[0];
 
@@ -1675,8 +1674,12 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function castBool( $args ) {
-		if ( count( $args ) < 1 ) {
-			throw new AFPUserVisibleException( 'noparams', $this->mCur->pos, [ __METHOD__ ] );
+		if ( count( $args ) === 0 ) {
+			throw new AFPUserVisibleException(
+				'noparams',
+				$this->mCur->pos,
+				[ 'bool', 1 ]
+			);
 		}
 		$val = $args[0];
 
