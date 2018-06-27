@@ -6,18 +6,16 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 		TextHighlightRules = require( './text_highlight_rules' ).TextHighlightRules,
 		AFHighlightRules = function () {
 
-			var keywords = ( mw.config.get( 'aceConfig' ).keywords ),
+			var cfg = mw.config.get( 'aceConfig' ),
 				constants = ( 'true|false|null' ),
-				functions = ( mw.config.get( 'aceConfig' ).functions ),
-				variables = ( mw.config.get( 'aceConfig' ).variables ),
-				deprecated = ( '' ), // Template for deprecated vars, already registered within ace settings.
 				keywordMapper = this.createKeywordMapper(
 					{
-						keyword: keywords,
-						'support.function': functions,
+						keyword: cfg.keywords,
+						'support.function': cfg.functions,
 						'constant.language': constants,
-						'variable.language': variables,
-						'keyword.deprecated': deprecated
+						'variable.language': cfg.variables,
+						'invalid.deprecated': cfg.deprecated,
+						'invalid.illegal': cfg.disabled
 					},
 					'identifier'
 				),
@@ -27,7 +25,9 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 				fraction = '(?:\\.\\d+)',
 				intPart = '(?:\\d+)',
 				pointFloat = '(?:(?:' + intPart + '?' + fraction + ')|(?:' + intPart + '\\.))',
-				floatNumber = '(?:' + pointFloat + ')';
+				floatNumber = '(?:' + pointFloat + ')',
+				singleQuoteString = '\'(?:[^\\\\]|\\\\.)*?\'',
+				doubleQuoteString = '"(?:[^\\\\]|\\\\.)*?"';
 
 			this.$rules = {
 				start: [ {
@@ -35,11 +35,11 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 					regex: '\\/\\*',
 					next: 'comment'
 				}, {
-					token: 'string', // " string
-					regex: '"(?:[^\\\\]|\\\\.)*?"'
+					token: 'string',
+					regex: doubleQuoteString
 				}, {
-					token: 'string', // ' string
-					regex: '\'(?:[^\\\\]|\\\\.)*?\''
+					token: 'string',
+					regex: singleQuoteString
 				}, {
 					token: 'constant.numeric', // float
 					regex: floatNumber
@@ -48,10 +48,10 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 					regex: integer + '\\b'
 				}, {
 					token: keywordMapper,
-					regex: '[a-zA-Z_$][a-zA-Z0-9_$]*\\b'
+					regex: '[a-zA-Z_][a-zA-Z0-9_]*\\b'
 				}, {
 					token: 'keyword.operator',
-					regex: '\\+|\\-|\\*\\*|\\*|\\/|%|\\^|&|\\||<|>|<=|=>|==|!=|===|!==|:=|=|!'
+					regex: cfg.operators
 				}, {
 					token: 'paren.lparen',
 					regex: '[\\[\\(]'
