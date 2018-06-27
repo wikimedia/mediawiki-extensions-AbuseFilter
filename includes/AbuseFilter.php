@@ -157,8 +157,6 @@ class AbuseFilter {
 			'moved_to_restrictions_upload' => 'movedto-restrictions-upload',
 			'moved_to_recent_contributors' => 'movedto-recent-contributors',
 			'moved_to_first_contributor' => 'movedto-first-contributor',
-			// 'old_text' => 'old-text-stripped', // Disabled, performance
-			// 'old_html' => 'old-html', // Disabled, performance
 			'old_links' => 'old-links',
 			'minor_edit' => 'minor-edit',
 			'file_sha1' => 'file-sha1',
@@ -169,6 +167,12 @@ class AbuseFilter {
 			'file_height' => 'file-height',
 			'file_bits_per_channel' => 'file-bits-per-channel',
 		],
+	];
+
+	/** @var array Old vars which aren't in use anymore */
+	public static $disabledVars = [
+		'old_text' => 'old-text-stripped',
+		'old_html' => 'old-html'
 	];
 
 	public static $editboxName = null;
@@ -2382,8 +2386,6 @@ class AbuseFilter {
 			[ 'oldlink-var' => 'old_links', 'newlink-var' => 'all_links' ] );
 		$vars->setLazyLoadVar( 'new_text', 'strip-html',
 			[ 'html-var' => 'new_html' ] );
-		$vars->setLazyLoadVar( 'old_text', 'strip-html',
-			[ 'html-var' => 'old_html' ] );
 
 		if ( $title instanceof Title ) {
 			$vars->setLazyLoadVar( 'all_links', 'links-from-wikitext',
@@ -2413,12 +2415,6 @@ class AbuseFilter {
 					'title' => $title->getText(),
 					'wikitext-var' => 'new_wikitext',
 					'article' => $page
-				] );
-			$vars->setLazyLoadVar( 'old_html', 'parse-wikitext-nonedit',
-				[
-					'namespace' => $title->getNamespace(),
-					'title' => $title->getText(),
-					'wikitext-var' => 'old_wikitext'
 				] );
 		}
 
@@ -2466,6 +2462,10 @@ class AbuseFilter {
 
 			if ( !empty( $variableMessageMappings[$key] ) ) {
 				$mapping = $variableMessageMappings[$key];
+				$keyDisplay = $context->msg( "abusefilter-edit-builder-vars-$mapping" )->parse() .
+					' ' . Xml::element( 'code', null, $context->msg( 'parentheses' )->rawParams( $key )->text() );
+			} elseif ( !empty( self::$disabledVars[$key] ) ) {
+				$mapping = self::$disabledVars[$key];
 				$keyDisplay = $context->msg( "abusefilter-edit-builder-vars-$mapping" )->parse() .
 					' ' . Xml::element( 'code', null, $context->msg( 'parentheses' )->rawParams( $key )->text() );
 			} else {

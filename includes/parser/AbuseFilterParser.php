@@ -833,9 +833,12 @@ class AbuseFilterParser {
 		if ( !( array_key_exists( $var, $builderValues['vars'] )
 			|| $this->mVars->varIsSet( $var ) )
 		) {
+			$msg = array_key_exists( $var, AbuseFilter::$disabledVars ) ?
+				'disabledvar' :
+				'unrecognisedvar';
 			// If the variable is invalid, throw an exception
 			throw new AFPUserVisibleException(
-				'unrecognisedvar',
+				$msg,
 				$this->mCur->pos,
 				[ $var ]
 			);

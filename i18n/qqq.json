@@ -430,6 +430,7 @@
 	"abusefilter-exception-notarray": "Error message from the abuse filter parser. Parameters:\n* $1 - Position in the string",
 	"abusefilter-exception-unclosedcomment": "Error message from the abuse filter parser. Parameters:\n* $1 - Position in the string",
 	"abusefilter-exception-invalidiprange": "Error message from the abuse filter parser. Parameters:\n* $1 - Position in the string\n* $2 - String provided as an argument to a function",
+	"abusefilter-exception-disabledvar": "Error message from the abuse filter parser. Parameters:\n* $1 - Position in the string\n* $2 - Name of the disabled variable",
 	"abusefilter-action-tag": "{{doc-abusefilter-action}}\n\nThe edit or change can be 'tagged' with a particular tag, which will be shown on Recent Changes, contributions, logs, new pages, history, and everywhere else. \n\nThis is a verb in the imperative form.\n\n{{Identical|Tag}}",
 	"abusefilter-action-throttle": "{{doc-abusefilter-action}}",
 	"abusefilter-action-warn": "{{doc-abusefilter-action}}",
