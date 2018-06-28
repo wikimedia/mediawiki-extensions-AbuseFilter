@@ -153,10 +153,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$dbr = wfGetDB( DB_REPLICA );
 
 		if ( $periodStart ) {
-			$conds[] = 'afl_timestamp>' . $dbr->addQuotes( $dbr->timestamp( $periodStart ) );
+			$conds[] = 'afl_timestamp >= ' . $dbr->addQuotes( $dbr->timestamp( $periodStart ) );
 		}
 		if ( $periodEnd ) {
-			$conds[] = 'afl_timestamp<' . $dbr->addQuotes( $dbr->timestamp( $periodEnd ) );
+			$conds[] = 'afl_timestamp <= ' . $dbr->addQuotes( $dbr->timestamp( $periodEnd ) );
 		}
 
 		// Database query.
