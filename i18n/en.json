@@ -284,6 +284,7 @@
 	"abusefilter-edit-builder-funcs-str_replace": "Replace substring with string (str_replace)",
 	"abusefilter-edit-builder-funcs-rescape": "Escape string as literal in regex (rescape)",
 	"abusefilter-edit-builder-funcs-set_var": "Set variable (set_var)",
+	"abusefilter-edit-builder-funcs-sanitize": "Normalize HTML entities into unicode characters (sanitize)",
 	"abusefilter-edit-builder-group-vars": "Variables",
 	"abusefilter-edit-builder-vars-accountname": "Account name (on account creation)",
 	"abusefilter-edit-builder-vars-timestamp": "Unix timestamp of change",

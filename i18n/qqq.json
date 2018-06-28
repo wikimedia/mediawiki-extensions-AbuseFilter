@@ -317,6 +317,7 @@
 	"abusefilter-edit-builder-funcs-str_replace": "{{doc-important|Do not translate \"'''str_replace'''\".}} Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	"abusefilter-edit-builder-funcs-rescape": "{{doc-important|Do not translate \"'''rescape'''\".}}\nAbuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.\n\n\"regex\" stands for \"regular expression\".",
 	"abusefilter-edit-builder-funcs-set_var": "{{doc-important|Do not translate \"'''set_var'''\".}}\nAbuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
+	"abusefilter-edit-builder-funcs-sanitize": "{{doc-important|Do not translate \"'''sanitize'''\".}}\nAbuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-funcs}}.",
 	"abusefilter-edit-builder-group-vars": "Group entry in dropdown menu.\n{{Identical|Variable}}",
 	"abusefilter-edit-builder-vars-accountname": "This variable is used only during account creation and contains the username of the newly created account. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",
 	"abusefilter-edit-builder-vars-timestamp": "Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",
