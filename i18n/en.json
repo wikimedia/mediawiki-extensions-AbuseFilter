@@ -435,7 +435,7 @@
 	"abusefilter-test-shownegative": "Show changes that do not match the filter",
 	"abusefilter-test-syntaxerr": "The filter you entered contained a syntax error.\nYou can receive a full explanation by clicking the \"{{int:abusefilter-edit-check}}\" button.",
 	"abusefilter-test-badtitle": "The page title you entered was invalid. It may contain one or more characters that cannot be used in titles.",
-	"abusefilter-test-action": "Action type",
+	"abusefilter-test-action": "Action type:",
 	"abusefilter-test-search-type-all": "All actions",
 	"abusefilter-test-search-type-edit": "Edits",
 	"abusefilter-test-search-type-move": "Moves",
