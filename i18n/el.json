@@ -254,6 +254,7 @@
 	"abusefilter-edit-builder-funcs-strpos": "Θέση του υποορμαθού στον ορμαθό (strpos)",
 	"abusefilter-edit-builder-funcs-str_replace": "Αντικατάσταση υποορμαθού με ορμαθό (str_replace)",
 	"abusefilter-edit-builder-funcs-set_var": "Ορισμός μεταβλητής (set_var)",
+	"abusefilter-edit-builder-funcs-sanitize": "Κανονικοποίηση οντοτήτων HTML σε χαρακτήρες unicode (απολύμανση)",
 	"abusefilter-edit-builder-group-vars": "Μεταβλητές",
 	"abusefilter-edit-builder-vars-accountname": "Όνομα λογαριασμού (κατά την δημιουργία λογαριασμού)",
 	"abusefilter-edit-builder-vars-timestamp": "Χρονική σφραγίδα Unix της επεξεργασίας",

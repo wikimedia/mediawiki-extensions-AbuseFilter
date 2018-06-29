@@ -308,6 +308,7 @@
 	"abusefilter-edit-builder-funcs-str_replace": "Ersetze Teil-Zeichenkette mit Zeichenkette (str_replace)",
 	"abusefilter-edit-builder-funcs-rescape": "Escape-Zeichenfolge als Buchstabensymbol in einem regulären Ausdruck (rescape)",
 	"abusefilter-edit-builder-funcs-set_var": "Variable setzen (set_var)",
+	"abusefilter-edit-builder-funcs-sanitize": "HTML-Entitäten in Unicode-Zeichen normalisieren (sanitize)",
 	"abusefilter-edit-builder-group-vars": "Variablen",
 	"abusefilter-edit-builder-vars-accountname": "Benutzername (bei Erstellung eines Benutzerkontos)",
 	"abusefilter-edit-builder-vars-timestamp": "Zeitstempel der Änderung im Unix-Format",

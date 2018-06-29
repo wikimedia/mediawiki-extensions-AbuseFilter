@@ -294,6 +294,7 @@
 	"abusefilter-edit-builder-funcs-str_replace": "החלפת מחרוזת משנה עם מחרוזת אחרת (str_replace)",
 	"abusefilter-edit-builder-funcs-rescape": "לחלף את המחרוזת בתור מחרוזת מפורשת בביטוי רגולרי (rescape)",
 	"abusefilter-edit-builder-funcs-set_var": "הגדרת משתנה (set_var)",
+	"abusefilter-edit-builder-funcs-sanitize": "נרמול ישויות HTML לתווי יוניקוד (sanitize)",
 	"abusefilter-edit-builder-group-vars": "משתנים",
 	"abusefilter-edit-builder-vars-accountname": "שם החשבון (בעת יצירת חשבון)",
 	"abusefilter-edit-builder-vars-timestamp": "זמן השינוי בפורמט יוניקס",

@@ -318,6 +318,7 @@
 	"abusefilter-edit-builder-funcs-str_replace": "Remplacer la sous-chaîne par la chaîne (str_replace)",
 	"abusefilter-edit-builder-funcs-rescape": "Échapper la chaîne comme littérale dans l'expression rationnelle (rescape)",
 	"abusefilter-edit-builder-funcs-set_var": "Définir la variable (set_var)",
+	"abusefilter-edit-builder-funcs-sanitize": "Normaliser les entités HTML en caractères unicode (assainir)",
 	"abusefilter-edit-builder-group-vars": "Variables",
 	"abusefilter-edit-builder-vars-accountname": "Nom du compte (lors de la création du compte)",
 	"abusefilter-edit-builder-vars-timestamp": "Horodatage Unix de la modification",
