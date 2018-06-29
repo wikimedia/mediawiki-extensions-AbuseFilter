@@ -856,6 +856,7 @@ class AbuseFilterParser {
 		$builderValues = AbuseFilter::getBuilderValues();
 		$blacklistedValues = AbuseFilterVariableHolder::$varBlacklist;
 		if ( array_key_exists( $name, $builderValues['vars'] ) ||
+			array_key_exists( $name, AbuseFilter::$disabledVars ) ||
 			in_array( $name, $blacklistedValues ) ) {
 			throw new AFPUserVisibleException( 'overridebuiltin', $this->mCur->pos, [ $name ] );
 		}
