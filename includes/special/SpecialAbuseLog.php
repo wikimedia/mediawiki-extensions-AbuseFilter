@@ -6,6 +6,10 @@ class SpecialAbuseLog extends SpecialPage {
 	 */
 	protected $mSearchUser;
 
+	protected $mSearchPeriodStart;
+
+	protected $mSearchPeriodEnd;
+
 	/**
 	 * @var Title
 	 */
@@ -122,6 +126,8 @@ class SpecialAbuseLog extends SpecialPage {
 			$this->mSearchWiki = $request->getText( 'wpSearchWiki' );
 		}
 
+		$this->mSearchPeriodStart = $request->getText( 'wpSearchPeriodStart' );
+		$this->mSearchPeriodEnd = $request->getText( 'wpSearchPeriodEnd' );
 		$this->mSearchTitle = $request->getText( 'wpSearchTitle' );
 		$this->mSearchFilter = null;
 		$this->mSearchActionTaken = $request->getText( 'wpSearchActionTaken' );
@@ -156,6 +162,16 @@ class SpecialAbuseLog extends SpecialPage {
 				'type' => 'user',
 				'ipallowed' => true,
 				'default' => $this->mSearchUser,
+			],
+			'SearchPeriodStart' => [
+				'label-message' => 'abusefilter-test-period-start',
+				'type' => 'datetime',
+				'default' => $this->mSearchPeriodStart
+			],
+			'SearchPeriodEnd' => [
+				'label-message' => 'abusefilter-test-period-end',
+				'type' => 'datetime',
+				'default' => $this->mSearchPeriodEnd
 			],
 			'SearchTitle' => [
 				'label-message' => 'abusefilter-log-search-title',
@@ -337,6 +353,17 @@ class SpecialAbuseLog extends SpecialPage {
 			}
 		}
 
+		$dbr = wfGetDB( DB_REPLICA );
+		if ( $this->mSearchPeriodStart ) {
+			$conds[] = 'afl_timestamp >= ' .
+				$dbr->addQuotes( $dbr->timestamp( strtotime( $this->mSearchPeriodStart ) ) );
+		}
+
+		if ( $this->mSearchPeriodEnd ) {
+			$conds[] = 'afl_timestamp <= ' .
+				$dbr->addQuotes( $dbr->timestamp( strtotime( $this->mSearchPeriodEnd ) ) );
+		}
+
 		if ( $this->mSearchWiki ) {
 			if ( $this->mSearchWiki == wfWikiID() ) {
 				$conds['afl_wiki'] = null;
@@ -377,7 +404,6 @@ class SpecialAbuseLog extends SpecialPage {
 			$conds['afl_title'] = $searchTitle->getDBkey();
 		}
 
-		$dbr = wfGetDB( DB_REPLICA );
 		if ( self::canSeeHidden() ) {
 			if ( $this->mSearchEntries == '1' ) {
 				$conds['afl_deleted'] = 1;
