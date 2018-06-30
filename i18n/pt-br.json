@@ -308,6 +308,7 @@
 	"abusefilter-edit-builder-funcs-str_replace": "Substituir o subtexto pelo texto (str_replace)",
 	"abusefilter-edit-builder-funcs-rescape": "Sequência de escape literal na expressão regular (rescape)",
 	"abusefilter-edit-builder-funcs-set_var": "Atribuir variável (set_var)",
+	"abusefilter-edit-builder-funcs-sanitize": "Normalizar as entidades de HTML em caracteres Unicode (sanitize)",
 	"abusefilter-edit-builder-group-vars": "Variáveis",
 	"abusefilter-edit-builder-vars-accountname": "Nome de conta (na criação da conta)",
 	"abusefilter-edit-builder-vars-timestamp": "Data Unix da mudança",
