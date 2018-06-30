@@ -248,7 +248,8 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * Handles multiple expressions
+	 * Handles multiple expressions delimited by a semicolon
+	 *
 	 * @param AFPData &$result
 	 */
 	protected function doLevelSemicolon( &$result ) {
@@ -261,7 +262,7 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * Handles multiple expressions
+	 * Handles assignments (:=)
 	 *
 	 * @param AFPData &$result
 	 * @throws AFPUserVisibleException
@@ -331,6 +332,8 @@ class AbuseFilterParser {
 	}
 
 	/**
+	 * Handles conditionals: if-then-else and ternary operator
+	 *
 	 * @param AFPData &$result
 	 * @throws AFPUserVisibleException
 	 */
@@ -452,6 +455,8 @@ class AbuseFilterParser {
 	}
 
 	/**
+	 * Handles boolean operators (&, |, ^)
+	 *
 	 * @param AFPData &$result
 	 */
 	protected function doLevelBoolOps( &$result ) {
@@ -479,6 +484,8 @@ class AbuseFilterParser {
 	}
 
 	/**
+	 * Handles comparison operators
+	 *
 	 * @param AFPData &$result
 	 */
 	protected function doLevelCompares( &$result ) {
@@ -499,6 +506,8 @@ class AbuseFilterParser {
 	}
 
 	/**
+	 * Handles sum-related operations (+ and -)
+	 *
 	 * @param AFPData &$result
 	 */
 	protected function doLevelSumRels( &$result ) {
@@ -523,6 +532,8 @@ class AbuseFilterParser {
 	}
 
 	/**
+	 * Handles multiplication-related operations (*, / and %)
+	 *
 	 * @param AFPData &$result
 	 */
 	protected function doLevelMulRels( &$result ) {
@@ -542,6 +553,8 @@ class AbuseFilterParser {
 	}
 
 	/**
+	 * Handles powers (**)
+	 *
 	 * @param AFPData &$result
 	 */
 	protected function doLevelPow( &$result ) {
@@ -559,6 +572,8 @@ class AbuseFilterParser {
 	}
 
 	/**
+	 * Handles boolean inversion (!)
+	 *
 	 * @param AFPData &$result
 	 */
 	protected function doLevelBoolInvert( &$result ) {
@@ -576,6 +591,8 @@ class AbuseFilterParser {
 	}
 
 	/**
+	 * Handles keywords (in, like, rlike, contains, ...)
+	 *
 	 * @param AFPData &$result
 	 */
 	protected function doLevelSpecialWords( &$result ) {
@@ -601,6 +618,8 @@ class AbuseFilterParser {
 	}
 
 	/**
+	 * Handles unary plus and minus, like in -5 or -(2 * +2)
+	 *
 	 * @param AFPData &$result
 	 */
 	protected function doLevelUnarys( &$result ) {
@@ -621,6 +640,8 @@ class AbuseFilterParser {
 	}
 
 	/**
+	 * Handles array elements, parsing expressions like array[number]
+	 *
 	 * @param AFPData &$result
 	 * @throws AFPUserVisibleException
 	 */
@@ -648,6 +669,8 @@ class AbuseFilterParser {
 	}
 
 	/**
+	 * Handles brackets, only ( and )
+	 *
 	 * @param AFPData &$result
 	 * @throws AFPUserVisibleException
 	 */
@@ -672,6 +695,8 @@ class AbuseFilterParser {
 	}
 
 	/**
+	 * Handles functions
+	 *
 	 * @param AFPData &$result
 	 * @throws AFPUserVisibleException
 	 */
@@ -737,6 +762,8 @@ class AbuseFilterParser {
 	}
 
 	/**
+	 * Handles the return value
+	 *
 	 * @param AFPData &$result
 	 * @throws AFPUserVisibleException
 	 */

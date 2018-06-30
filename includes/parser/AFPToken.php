@@ -21,7 +21,7 @@
  * * Entry - catches unexpected characters
  * * Semicolon - ;
  * * Set - :=
- * * Conditionls (IF) - if-then-else-end, cond ? a :b
+ * * Conditionals (IF) - if-then-else-end, cond ? a :b
  * * BoolOps (BO) - &, |, ^
  * * CompOps (CO) - ==, !=, ===, !==, >, <, >=, <=
  * * SumRel (SR) - +, -
