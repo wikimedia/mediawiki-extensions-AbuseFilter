@@ -39,6 +39,8 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 		static $parser = null;
 		if ( !$parser ) {
 			$parser = new AbuseFilterParser();
+		} else {
+			$parser->resetState();
 		}
 		return $parser;
 	}
@@ -217,6 +219,326 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 					false,
 				],
 			],
+		];
+	}
+
+	/**
+	 * Base method for testing exceptions
+	 *
+	 * @param string $excep Identifier of the exception (e.g. 'unexpectedtoken')
+	 * @param string $expr The expression to test
+	 * @param string $caller The function where the exception is thrown
+	 */
+	private function exceptionTest( $excep, $expr, $caller ) {
+		$parser = self::getParser();
+		try {
+			$parser->parse( $expr );
+		} catch ( AFPUserVisibleException $e ) {
+			$this->assertEquals(
+				$excep,
+				$e->mExceptionID,
+				"Exception $excep not thrown in $caller"
+			);
+			return;
+		}
+
+		$this->fail( "Exception $excep not thrown in $caller" );
+	}
+
+	/**
+	 * Test the 'expectednotfound' exception
+	 *
+	 * @param string $expr The expression to test
+	 * @param string $caller The function where the exception is thrown
+	 * @covers AbuseFilterParser::doLevelSet
+	 * @covers AbuseFilterParser::doLevelConditions
+	 * @covers AbuseFilterParser::doLevelBraces
+	 * @covers AbuseFilterParser::doLevelFunction
+	 * @covers AbuseFilterParser::doLevelAtom
+	 * @covers AbuseFilterParser::skipOverBraces
+	 * @covers AbuseFilterParser::doLevelArrayElements
+	 * @dataProvider expectedNotFound
+	 */
+	public function testExpectedNotFoundException( $expr, $caller ) {
+		$this->exceptionTest( 'expectednotfound', $expr, $caller );
+	}
+
+	/**
+	 * Data provider for testExpectedNotFoundException.
+	 * The second parameter is the function where the exception is raised.
+	 * One expression for each throw.
+	 *
+	 * @return array
+	 */
+	public function expectedNotFound() {
+		return [
+			[ 'a:= [1,2,3]; a[1 = 4', 'doLevelSet' ],
+			[ "if 1 = 1 'foo'", 'doLevelConditions' ],
+			[ "if 1 = 1 then 'foo'", 'doLevelConditions' ],
+			[ "if 1 = 1 then 'foo' else 'bar'", 'doLevelConditions' ],
+			[ "a := 1 = 1 ? 'foo'", 'doLevelConditions' ],
+			[ '(1 = 1', 'doLevelBraces' ],
+			[ 'lcase = 3', 'doLevelFunction' ],
+			[ 'lcase( 3 = 1', 'doLevelFunction' ],
+			[ 'a := [1,2', 'doLevelAtom' ],
+			[ '1 = 1 | (', 'skipOverBraces' ],
+			[ 'a := [1,2,3]; 3 = a[5', 'doLevelArrayElements' ],
+		];
+	}
+
+	/**
+	 * Test the 'unexpectedatend' exception
+	 *
+	 * @param string $expr The expression to test
+	 * @param string $caller The function where the exception is thrown
+	 * @covers AbuseFilterParser::doLevelEntry
+	 * @dataProvider unexpectedAtEnd
+	 */
+	public function testUnexpectedAtEndException( $expr, $caller ) {
+		$this->exceptionTest( 'unexpectedatend', $expr, $caller );
+	}
+
+	/**
+	 * Data provider for testUnexpectedAtEndException
+	 * The second parameter is the function where the exception is raised.
+	 * One expression for each throw.
+	 *
+	 * @return array
+	 */
+	public function unexpectedAtEnd() {
+		return [
+			[ "'a' = 1 )", 'doLevelEntry' ],
+		];
+	}
+
+	/**
+	 * Test the 'unrecognisedvar' exception
+	 *
+	 * @param string $expr The expression to test
+	 * @param string $caller The function where the exception is thrown
+	 * @covers AbuseFilterParser::doLevelSet
+	 * @covers AbuseFilterParser::getVarValue
+	 * @dataProvider unrecognisedVar
+	 */
+	public function testUnrecognisedVarException( $expr, $caller ) {
+		$this->exceptionTest( 'unrecognisedvar', $expr, $caller );
+	}
+
+	/**
+	 * Data provider for testUnrecognisedVarException
+	 * The second parameter is the function where the exception is raised.
+	 * One expression for each throw.
+	 *
+	 * @return array
+	 */
+	public function unrecognisedVar() {
+		return [
+			[ 'a[1] := 5', 'doLevelSet' ],
+			[ 'a = 5', 'getVarValue' ],
+		];
+	}
+
+	/**
+	 * Test the 'notarray' exception
+	 *
+	 * @param string $expr The expression to test
+	 * @param string $caller The function where the exception is thrown
+	 * @covers AbuseFilterParser::doLevelSet
+	 * @covers AbuseFilterParser::doLevelArrayElements
+	 * @dataProvider notArray
+	 */
+	public function testNotArrayException( $expr, $caller ) {
+		$this->exceptionTest( 'notarray', $expr, $caller );
+	}
+
+	/**
+	 * Data provider for testNotArrayException
+	 * The second parameter is the function where the exception is raised.
+	 * One expression for each throw.
+	 *
+	 * @return array
+	 */
+	public function notArray() {
+		return [
+			[ 'a := 5; a[1] = 5', 'doLevelSet' ],
+			[ 'a := 1; 3 = a[5]', 'doLevelArrayElements' ],
+		];
+	}
+
+	/**
+	 * Test the 'outofbounds' exception
+	 *
+	 * @param string $expr The expression to test
+	 * @param string $caller The function where the exception is thrown
+	 * @covers AbuseFilterParser::doLevelSet
+	 * @covers AbuseFilterParser::doLevelArrayElements
+	 * @dataProvider outOfBounds
+	 */
+	public function testOutOfBoundsException( $expr, $caller ) {
+		$this->exceptionTest( 'outofbounds', $expr, $caller );
+	}
+
+	/**
+	 * Data provider for testOutOfBoundsException
+	 * The second parameter is the function where the exception is raised.
+	 * One expression for each throw.
+	 *
+	 * @return array
+	 */
+	public function outOfBounds() {
+		return [
+			[ 'a := [2]; a[5] = 9', 'doLevelSet' ],
+			[ 'a := [1,2,3]; 3 = a[5]', 'doLevelArrayElements' ],
+		];
+	}
+
+	/**
+	 * Test the 'unrecognisedkeyword' exception
+	 *
+	 * @param string $expr The expression to test
+	 * @param string $caller The function where the exception is thrown
+	 * @covers AbuseFilterParser::doLevelAtom
+	 * @dataProvider unrecognisedKeyword
+	 */
+	public function testUnrecognisedKeywordException( $expr, $caller ) {
+		$this->exceptionTest( 'unrecognisedkeyword', $expr, $caller );
+	}
+
+	/**
+	 * Data provider for testUnrecognisedKeywordException
+	 * The second parameter is the function where the exception is raised.
+	 * One expression for each throw.
+	 *
+	 * @return array
+	 */
+	public function unrecognisedKeyword() {
+		return [
+			[ '5 = rlike', 'doLevelAtom' ],
+		];
+	}
+
+	/**
+	 * Test the 'unexpectedtoken' exception
+	 *
+	 * @param string $expr The expression to test
+	 * @param string $caller The function where the exception is thrown
+	 * @covers AbuseFilterParser::doLevelAtom
+	 * @dataProvider unexpectedToken
+	 */
+	public function testUnexpectedTokenException( $expr, $caller ) {
+		$this->exceptionTest( 'unexpectedtoken', $expr, $caller );
+	}
+
+	/**
+	 * Data provider for testUnexpectedTokenException
+	 * The second parameter is the function where the exception is raised.
+	 * One expression for each throw.
+	 *
+	 * @return array
+	 */
+	public function unexpectedToken() {
+		return [
+			[ '1 =? 1', 'doLevelAtom' ],
+		];
+	}
+
+	/**
+	 * Test the 'disabledvar' exception
+	 *
+	 * @param string $expr The expression to test
+	 * @param string $caller The function where the exception is thrown
+	 * @covers AbuseFilterParser::getVarValue
+	 * @dataProvider disabledVar
+	 */
+	public function testDisabledVarException( $expr, $caller ) {
+		$this->exceptionTest( 'disabledvar', $expr, $caller );
+	}
+
+	/**
+	 * Data provider for testDisabledVarException
+	 * The second parameter is the function where the exception is raised.
+	 * One expression for each throw.
+	 *
+	 * @return array
+	 */
+	public function disabledVar() {
+		return [
+			[ 'old_text = 1', 'getVarValue' ],
+		];
+	}
+
+	/**
+	 * Test the 'overridebuiltin' exception
+	 *
+	 * @param string $expr The expression to test
+	 * @param string $caller The function where the exception is thrown
+	 * @covers AbuseFilterParser::setUserVariable
+	 * @dataProvider overrideBuiltin
+	 */
+	public function testOverrideBuiltinException( $expr, $caller ) {
+		$this->exceptionTest( 'overridebuiltin', $expr, $caller );
+	}
+
+	/**
+	 * Data provider for testOverrideBuiltinException
+	 * The second parameter is the function where the exception is raised.
+	 * One expression for each throw.
+	 *
+	 * @return array
+	 */
+	public function overrideBuiltin() {
+		return [
+			[ 'added_lines := 1', 'setUserVariable' ],
+		];
+	}
+
+	/**
+	 * Test the 'regexfailure' exception
+	 *
+	 * @param string $expr The expression to test
+	 * @param string $caller The function where the exception is thrown
+	 * @covers AbuseFilterParser::funcRCount
+	 * @dataProvider regexFailure
+	 */
+	public function testRegexFailureException( $expr, $caller ) {
+		$this->exceptionTest( 'regexfailure', $expr, $caller );
+	}
+
+	/**
+	 * Data provider for testRegexFailureException
+	 * The second parameter is the function where the exception is raised.
+	 * One expression for each throw.
+	 *
+	 * @return array
+	 */
+	public function regexFailure() {
+		return [
+			[ "rcount('(','a')", 'funcRCount' ],
+		];
+	}
+
+	/**
+	 * Test the 'invalidiprange' exception
+	 *
+	 * @param string $expr The expression to test
+	 * @param string $caller The function where the exception is thrown
+	 * @covers AbuseFilterParser::funcIPInRange
+	 * @dataProvider invalidIPRange
+	 */
+	public function testInvalidIPRangeException( $expr, $caller ) {
+		$this->exceptionTest( 'invalidiprange', $expr, $caller );
+	}
+
+	/**
+	 * Data provider for testInvalidIPRangeException
+	 * The second parameter is the function where the exception is raised.
+	 * One expression for each throw.
+	 *
+	 * @return array
+	 */
+	public function invalidIPRange() {
+		return [
+			[ "ip_in_range('0.0.0.0', 'lol')", 'funcIPInRange' ],
 		];
 	}
 }
