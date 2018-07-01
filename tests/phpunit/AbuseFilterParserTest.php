@@ -237,12 +237,12 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 			$this->assertEquals(
 				$excep,
 				$e->mExceptionID,
-				"Exception $excep not thrown in $caller"
+				"Exception $excep not thrown in AbuseFilterParser::$caller"
 			);
 			return;
 		}
 
-		$this->fail( "Exception $excep not thrown in $caller" );
+		$this->fail( "Exception $excep not thrown in AbuseFilterParser::$caller" );
 	}
 
 	/**
