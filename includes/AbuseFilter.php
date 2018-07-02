@@ -2100,6 +2100,315 @@ class AbuseFilter {
 	}
 
 	/**
+	 * Check whether a filter is allowed to use a tag
+	 *
+	 * @param string $tag Tag name
+	 * @return Status
+	 */
+	protected static function isAllowedTag( $tag ) {
+		$tagNameStatus = ChangeTags::isTagNameValid( $tag );
+
+		if ( !$tagNameStatus->isGood() ) {
+			return $tagNameStatus;
+		}
+
+		$finalStatus = Status::newGood();
+
+		$canAddStatus =
+			ChangeTags::canAddTagsAccompanyingChange(
+				[ $tag ]
+			);
+
+		if ( $canAddStatus->isGood() ) {
+			return $finalStatus;
+		}
+
+		$alreadyDefinedTags = [];
+		AbuseFilterHooks::onListDefinedTags( $alreadyDefinedTags );
+
+		if ( in_array( $tag, $alreadyDefinedTags, true ) ) {
+			return $finalStatus;
+		}
+
+		$canCreateTagStatus = ChangeTags::canCreateTag( $tag );
+		if ( $canCreateTagStatus->isGood() ) {
+			return $finalStatus;
+		}
+
+		$finalStatus->fatal( 'abusefilter-edit-bad-tags' );
+		return $finalStatus;
+	}
+
+	/**
+	 * Checks whether user input for the filter editing form is valid and if so saves the filter
+	 *
+	 * @param AbuseFilterViewEdit $page
+	 * @param int|string $filter
+	 * @param WebRequest $request
+	 * @param stdClass $newRow
+	 * @param array $actions
+	 * @return Status
+	 */
+	public static function saveFilter( $page, $filter, $request, $newRow, $actions ) {
+		global $wgAbuseFilterRestrictions, $wgUser, $wgLang;
+		$validationStatus = Status::newGood();
+
+		// Check syntax
+		$syntaxerr = self::checkSyntax( $request->getVal( 'wpFilterRules' ) );
+		if ( $syntaxerr !== true ) {
+			$validationStatus->error( 'abusefilter-edit-badsyntax', $syntaxerr[0] );
+			return $validationStatus;
+		}
+		// Check for missing required fields (title and pattern)
+		$missing = [];
+		if ( !$request->getVal( 'wpFilterRules' ) ||
+			trim( $request->getVal( 'wpFilterRules' ) ) === '' ) {
+			$missing[] = wfMessage( 'abusefilter-edit-field-conditions' )->escaped();
+		}
+		if ( !$request->getVal( 'wpFilterDescription' ) ) {
+			$missing[] = wfMessage( 'abusefilter-edit-field-description' )->escaped();
+		}
+		if ( count( $missing ) !== 0 ) {
+			$missing = $wgLang->commaList( $missing );
+			$validationStatus->error( 'abusefilter-edit-missingfields', $missing );
+			return $validationStatus;
+		}
+
+		// Don't allow setting as deleted an active filter
+		if ( $request->getBool( 'wpFilterEnabled' ) == true &&
+			$request->getBool( 'wpFilterDeleted' ) == true ) {
+			$validationStatus->error( 'abusefilter-edit-deleting-enabled' );
+			return $validationStatus;
+		}
+
+		// If we've activated the 'tag' option, check the arguments for validity.
+		if ( !empty( $actions['tag'] ) ) {
+			foreach ( $actions['tag']['parameters'] as $tag ) {
+				$status = self::isAllowedTag( $tag );
+
+				if ( !$status->isGood() ) {
+					$err = $status->getErrors();
+					$msg = $err[0]['message'];
+					$validationStatus->error( $msg );
+					return $validationStatus;
+				}
+			}
+		}
+
+		$differences = self::compareVersions(
+			[ $newRow, $actions ],
+			[ $newRow->mOriginalRow, $newRow->mOriginalActions ]
+		);
+
+		// Don't allow adding a new global rule, or updating a
+		// rule that is currently global, without permissions.
+		if ( !$page->canEditFilter( $newRow ) || !$page->canEditFilter( $newRow->mOriginalRow ) ) {
+			$validationStatus->fatal( 'abusefilter-edit-notallowed-global' );
+			return $validationStatus;
+		}
+
+		// Don't allow custom messages on global rules
+		if ( $newRow->af_global == 1 &&
+			$request->getVal( 'wpFilterWarnMessage' ) !== 'abusefilter-warning'
+		) {
+			$validationStatus->fatal( 'abusefilter-edit-notallowed-global-custom-msg' );
+			return $validationStatus;
+		}
+
+		$origActions = $newRow->mOriginalActions;
+		$wasGlobal = (bool)$newRow->mOriginalRow->af_global;
+
+		unset( $newRow->mOriginalRow );
+		unset( $newRow->mOriginalActions );
+
+		// Check for non-changes
+		if ( !count( $differences ) ) {
+			$validationStatus->setResult( true, false );
+			return $validationStatus;
+		}
+
+		// Check for restricted actions
+		if ( count( array_intersect_key(
+				array_filter( $wgAbuseFilterRestrictions ),
+				array_merge(
+					array_filter( $actions ),
+					array_filter( $origActions )
+				)
+			) )
+			&& !$wgUser->isAllowed( 'abusefilter-modify-restricted' )
+		) {
+			$validationStatus->error( 'abusefilter-edit-restricted' );
+			return $validationStatus;
+		}
+
+		// Everything went fine, so let's save the filter
+		list( $new_id, $history_id ) =
+			self::doSaveFilter( $newRow, $differences, $filter, $actions, $wasGlobal, $page );
+		$validationStatus->setResult( true, [ $new_id, $history_id ] );
+		return $validationStatus;
+	}
+
+	/**
+	 * Saves new filter's info to DB
+	 *
+	 * @param stdClass $newRow
+	 * @param int|string $filter
+	 * @param array $differences
+	 * @param array $actions
+	 * @param bool $wasGlobal
+	 * @param AbuseFilterViewEdit $page
+	 * @return int[] first element is new ID, second is history ID
+	 */
+	private static function doSaveFilter(
+		$newRow,
+		$differences,
+		$filter,
+		$actions,
+		$wasGlobal,
+		$page
+	) {
+		global $wgUser, $wgAbuseFilterActions;
+		$dbw = wfGetDB( DB_MASTER );
+
+		// Convert from object to array
+		$newRow = get_object_vars( $newRow );
+
+		// Set last modifier.
+		$newRow['af_timestamp'] = $dbw->timestamp( wfTimestampNow() );
+		$newRow['af_user'] = $wgUser->getId();
+		$newRow['af_user_text'] = $wgUser->getName();
+
+		$dbw->startAtomic( __METHOD__ );
+
+		// Insert MAIN row.
+		if ( $filter == 'new' ) {
+			$new_id = $dbw->nextSequenceValue( 'abuse_filter_af_id_seq' );
+			$is_new = true;
+		} else {
+			$new_id = $filter;
+			$is_new = false;
+		}
+
+		// Reset throttled marker, if we're re-enabling it.
+		$newRow['af_throttled'] = $newRow['af_throttled'] && !$newRow['af_enabled'];
+		// ID.
+		$newRow['af_id'] = $new_id;
+
+		// T67807
+		// integer 1's & 0's might be better understood than booleans
+		$newRow['af_enabled'] = (int)$newRow['af_enabled'];
+		$newRow['af_hidden'] = (int)$newRow['af_hidden'];
+		$newRow['af_throttled'] = (int)$newRow['af_throttled'];
+		$newRow['af_deleted'] = (int)$newRow['af_deleted'];
+		$newRow['af_global'] = (int)$newRow['af_global'];
+
+		$dbw->replace( 'abuse_filter', [ 'af_id' ], $newRow, __METHOD__ );
+
+		if ( $is_new ) {
+			$new_id = $dbw->insertId();
+		}
+
+		// Actions
+		$actionsRows = [];
+		foreach ( array_filter( $wgAbuseFilterActions ) as $action => $_ ) {
+			// Check if it's set
+			$enabled = isset( $actions[$action] ) && (bool)$actions[$action];
+
+			if ( $enabled ) {
+				$parameters = $actions[$action]['parameters'];
+
+				$thisRow = [
+					'afa_filter' => $new_id,
+					'afa_consequence' => $action,
+					'afa_parameters' => implode( "\n", $parameters )
+				];
+				$actionsRows[] = $thisRow;
+			}
+		}
+
+		// Create a history row
+		$afh_row = [];
+
+		foreach ( self::$history_mappings as $af_col => $afh_col ) {
+			$afh_row[$afh_col] = $newRow[$af_col];
+		}
+
+		// Actions
+		$displayActions = [];
+		foreach ( $actions as $action ) {
+			$displayActions[$action['action']] = $action['parameters'];
+		}
+		$afh_row['afh_actions'] = serialize( $displayActions );
+
+		$afh_row['afh_changed_fields'] = implode( ',', $differences );
+
+		// Flags
+		$flags = [];
+		if ( $newRow['af_hidden'] ) {
+			$flags[] = 'hidden';
+		}
+		if ( $newRow['af_enabled'] ) {
+			$flags[] = 'enabled';
+		}
+		if ( $newRow['af_deleted'] ) {
+			$flags[] = 'deleted';
+		}
+		if ( $newRow['af_global'] ) {
+			$flags[] = 'global';
+		}
+
+		$afh_row['afh_flags'] = implode( ',', $flags );
+
+		$afh_row['afh_filter'] = $new_id;
+		$afh_row['afh_id'] = $dbw->nextSequenceValue( 'abuse_filter_af_id_seq' );
+
+		// Do the update
+		$dbw->insert( 'abuse_filter_history', $afh_row, __METHOD__ );
+		$history_id = $dbw->insertId();
+		if ( $filter != 'new' ) {
+			$dbw->delete(
+				'abuse_filter_action',
+				[ 'afa_filter' => $filter ],
+				__METHOD__
+			);
+		}
+		$dbw->insert( 'abuse_filter_action', $actionsRows, __METHOD__ );
+
+		$dbw->endAtomic( __METHOD__ );
+
+		// Invalidate cache if this was a global rule
+		if ( $wasGlobal || $newRow['af_global'] ) {
+			$group = 'default';
+			if ( isset( $newRow['af_group'] ) && $newRow['af_group'] != '' ) {
+				$group = $newRow['af_group'];
+			}
+
+			$globalRulesKey = self::getGlobalRulesKey( $group );
+			ObjectCache::getMainWANInstance()->touchCheckKey( $globalRulesKey );
+		}
+
+		// Logging
+		$subtype = $filter === 'new' ? 'create' : 'modify';
+		$logEntry = new ManualLogEntry( 'abusefilter', $subtype );
+		$logEntry->setPerformer( $wgUser );
+		$logEntry->setTarget( $page->getTitle( $new_id ) );
+		$logEntry->setParameters( [
+			'historyId' => $history_id,
+			'newId' => $new_id
+		] );
+		$logid = $logEntry->insert();
+		$logEntry->publish( $logid );
+
+		// Purge the tag list cache so the fetchAllTags hook applies tag changes
+		if ( isset( $actions['tag'] ) ) {
+			AbuseFilterHooks::purgeTagCache();
+		}
+
+		self::resetFilterProfile( $new_id );
+		return [ $new_id, $history_id ];
+	}
+
+	/**
 	 * Each version is expected to be an array( $row, $actions )
 	 * Returns an array of fields that are different.
 	 *
