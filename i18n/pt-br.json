@@ -459,7 +459,7 @@
 	"abusefilter-test-shownegative": "Mostrar alterações que não correspondam ao filtro",
 	"abusefilter-test-syntaxerr": "O filtro que introduziu continha um erro de sintaxe.\nPara ver uma explicação completa clique o botão \"Verificar sintaxe\".",
 	"abusefilter-test-badtitle": "O título de página que você inseriu estava inválido. Esse deve conter um ou mais caracteres que não podem ser utilizados em títulos.",
-	"abusefilter-test-action": "Tipo de ação",
+	"abusefilter-test-action": "Tipo de ação:",
 	"abusefilter-test-search-type-all": "Todas as ações",
 	"abusefilter-test-search-type-edit": "Edições",
 	"abusefilter-test-search-type-move": "Movimentações",

@@ -26,7 +26,8 @@
 			"The Polish",
 			"InternerowyGołąb",
 			"Ankam",
-			"Railfail536"
+			"Railfail536",
+			"DeRudySoulStorm"
 		]
 	},
 	"abusefilter-desc": "Zastosowanie automatycznej heurystyki do edycji",
@@ -429,6 +430,7 @@
 	"abusefilter-test-shownegative": "Pokaż zmiany, które nie pasują do filtru",
 	"abusefilter-test-syntaxerr": "Wykryto błąd składni we wprowadzonym filtrze.\nPełne wyjaśnienie dostępne jest po kliknięciu przycisku „{{int:abusefilter-edit-check}}”.",
 	"abusefilter-test-badtitle": "Wprowadzony przez Ciebie tytuł strony jest nieprawidłowy. Zawiera jeden lub więcej znaków, które nie mogą być używane w tytułach.",
+	"abusefilter-test-action": "Rodzaj akcji:",
 	"abusefilter-changeslist-examine": "sprawdź",
 	"abusefilter-examine": "Sprawdź pojedyncze zmiany",
 	"abusefilter-examine-intro": "Strona pozwala sprawdzić zmienne utworzone przez filtr nadużyć dla każdej zmiany oraz sprawdzić ją przy pomocy filtrów.",
