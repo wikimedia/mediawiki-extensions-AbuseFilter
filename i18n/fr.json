@@ -469,7 +469,7 @@
 	"abusefilter-test-shownegative": "Afficher les modifications non prises en compte par le filtre",
 	"abusefilter-test-syntaxerr": "Le filtre que vous avez saisi contient une erreur de syntaxe.\nVous pouvez recevoir une explication complète en cliquant sur le bouton « {{int:abusefilter-edit-check}} ».",
 	"abusefilter-test-badtitle": "La titre de page que vous avez saisi n’est pas valide. Il se peut qu’il contienne un ou plusieurs caractères interdits dans les titres.",
-	"abusefilter-test-action": "Type d’action",
+	"abusefilter-test-action": "Type d’action :",
 	"abusefilter-test-search-type-all": "Toutes les actions",
 	"abusefilter-test-search-type-edit": "Modifications",
 	"abusefilter-test-search-type-move": "Déplacements",

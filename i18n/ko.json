@@ -449,6 +449,7 @@
 	"abusefilter-test-shownegative": "필터와 일치하지 않는 편집을 보이기",
 	"abusefilter-test-syntaxerr": "입력한 구문에 오류가 있습니다.\n\"{{int:abusefilter-edit-check}}\" 버튼을 누르면 자세한 설명을 받을 수 있습니다.",
 	"abusefilter-test-badtitle": "입력하신 문서 제목이 잘못되었습니다. 제목에 사용할 수 없는 하나 이상의 문자를 포함하고 있을 수 있습니다.",
+	"abusefilter-test-action": "조치 유형:",
 	"abusefilter-changeslist-examine": "검사",
 	"abusefilter-examine": "특정 편집을 검사",
 	"abusefilter-examine-intro": "이 문서에서 각각의 편집에 대해 부정 행위 방지 필터가 생성한 변수를 검사하고 필터에 대해 시험해볼 수 있습니다.",
