@@ -187,7 +187,7 @@ class AbuseFilterPager extends TablePager {
 				foreach ( $actions as $action ) {
 					$displayActions[] = AbuseFilter::getActionDisplay( $action );
 				}
-				return htmlspecialchars( $lang->commaList( $displayActions ) );
+				return $lang->commaList( $displayActions );
 			case 'af_enabled':
 				$statuses = [];
 				if ( $row->af_deleted ) {
@@ -212,7 +212,7 @@ class AbuseFilterPager extends TablePager {
 			case 'af_hit_count':
 				if ( SpecialAbuseLog::canSeeDetails( $row->af_id, $row->af_hidden ) ) {
 					$count_display = $this->msg( 'abusefilter-hitcount' )
-						->numParams( $value )->parse();
+						->numParams( $value )->text();
 					$link = $this->linkRenderer->makeKnownLink(
 						SpecialPage::getTitleFor( 'AbuseLog' ),
 						$count_display,
@@ -235,12 +235,14 @@ class AbuseFilterPager extends TablePager {
 					);
 				$user = $row->af_user_text;
 				return $this->msg( 'abusefilter-edit-lastmod-text' )
-					->rawParams(
-						$lang->timeanddate( $value, true ),
-						$userLink,
+					->params(
+						$lang->timeanddate( $value, true )
+					)->rawParams(
+						$userLink
+					)->params(
 						$lang->date( $value, true ),
 						$lang->time( $value, true ),
-						$user
+						wfEscapeWikiText( $user )
 				)->parse();
 			case 'af_group':
 				return AbuseFilter::nameGroup( $value );

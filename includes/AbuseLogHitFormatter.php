@@ -18,9 +18,11 @@ class AbuseLogHitFormatter extends LogFormatter {
 		$params = parent::getMessageParameters();
 
 		$filter_title = SpecialPage::getTitleFor( 'AbuseFilter', $entry['filter'] );
-		$filter_caption = $this->msg( 'abusefilter-log-detailedentry-local' )->params( $entry['filter'] );
+		$filter_caption = $this->msg( 'abusefilter-log-detailedentry-local' )
+			->params( $entry['filter'] )
+			->text();
 		$log_title = SpecialPage::getTitleFor( 'AbuseLog', $entry['log'] );
-		$log_caption = $this->msg( 'abusefilter-log-detailslink' );
+		$log_caption = $this->msg( 'abusefilter-log-detailslink' )->text();
 
 		$params[4] = $entry['action'];
 

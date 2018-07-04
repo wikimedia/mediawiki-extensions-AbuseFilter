@@ -37,7 +37,7 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 				foreach ( $actions as $action ) {
 					$displayActions[] = AbuseFilter::getActionDisplay( $action );
 				}
-				return htmlspecialchars( $lang->commaList( $displayActions ) );
+				return $lang->commaList( $displayActions );
 			case 'af_enabled':
 				$statuses = [];
 				if ( $row->af_deleted ) {
