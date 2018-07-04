@@ -1,6 +1,7 @@
 <?php
 
 class AbuseFilterViewEdit extends AbuseFilterView {
+	public static $mLoadedRow = null, $mLoadedActions = null;
 	/**
 	 * @param SpecialAbuseFilter $page
 	 * @param array $params
@@ -859,8 +860,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 *  the second element is an array of related abuse_filter_action rows.
 	 */
 	public function loadRequest( $filter, $history_id = null ) {
-		static $row = null;
-		static $actions = null;
+		$row = self::$mLoadedRow;
+		$actions = self::$mLoadedActions;
 		$request = $this->getRequest();
 
 		if ( !is_null( $actions ) && !is_null( $row ) ) {
@@ -913,7 +914,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$row->af_group = $request->getVal( 'wpFilterGroup', 'default' );
 
 			$row->af_deleted = $request->getBool( 'wpFilterDeleted' );
-			$row->af_enabled = $request->getBool( 'wpFilterEnabled' ) && !$row->af_deleted;
+			$row->af_enabled = $request->getBool( 'wpFilterEnabled' );
 			$row->af_hidden = $request->getBool( 'wpFilterHidden' );
 			$row->af_global = $request->getBool( 'wpFilterGlobal' )
 				&& $this->getConfig()->get( 'AbuseFilterIsCentral' );
@@ -963,6 +964,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$row->af_actions = implode( ',', array_keys( array_filter( $actions ) ) );
 
+		self::$mLoadedRow = $row;
+		self::$mLoadedActions = $actions;
 		return [ $row, $actions ];
 	}
 
