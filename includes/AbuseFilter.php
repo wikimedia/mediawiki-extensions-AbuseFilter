@@ -2150,7 +2150,6 @@ class AbuseFilter {
 	 * @return Status
 	 */
 	public static function saveFilter( $page, $filter, $request, $newRow, $actions ) {
-		global $wgAbuseFilterRestrictions, $wgUser, $wgLang;
 		$validationStatus = Status::newGood();
 
 		// Check syntax
@@ -2169,7 +2168,7 @@ class AbuseFilter {
 			$missing[] = wfMessage( 'abusefilter-edit-field-description' )->escaped();
 		}
 		if ( count( $missing ) !== 0 ) {
-			$missing = $wgLang->commaList( $missing );
+			$missing = $page->getLanguage()->commaList( $missing );
 			$validationStatus->error( 'abusefilter-edit-missingfields', $missing );
 			return $validationStatus;
 		}
@@ -2228,14 +2227,15 @@ class AbuseFilter {
 		}
 
 		// Check for restricted actions
+		$restrictions = $page->getConfig()->get( 'AbuseFilterRestrictions' );
 		if ( count( array_intersect_key(
-				array_filter( $wgAbuseFilterRestrictions ),
+				array_filter( $restrictions ),
 				array_merge(
 					array_filter( $actions ),
 					array_filter( $origActions )
 				)
 			) )
-			&& !$wgUser->isAllowed( 'abusefilter-modify-restricted' )
+			&& !$page->getUser()->isAllowed( 'abusefilter-modify-restricted' )
 		) {
 			$validationStatus->error( 'abusefilter-edit-restricted' );
 			return $validationStatus;
@@ -2267,7 +2267,7 @@ class AbuseFilter {
 		$wasGlobal,
 		$page
 	) {
-		global $wgUser, $wgAbuseFilterActions;
+		$user = $page->getUser();
 		$dbw = wfGetDB( DB_MASTER );
 
 		// Convert from object to array
@@ -2275,8 +2275,8 @@ class AbuseFilter {
 
 		// Set last modifier.
 		$newRow['af_timestamp'] = $dbw->timestamp( wfTimestampNow() );
-		$newRow['af_user'] = $wgUser->getId();
-		$newRow['af_user_text'] = $wgUser->getName();
+		$newRow['af_user'] = $user->getId();
+		$newRow['af_user_text'] = $user->getName();
 
 		$dbw->startAtomic( __METHOD__ );
 
@@ -2309,8 +2309,9 @@ class AbuseFilter {
 		}
 
 		// Actions
+		$availableActions = $page->getConfig()->get( 'AbuseFilterActions' );
 		$actionsRows = [];
-		foreach ( array_filter( $wgAbuseFilterActions ) as $action => $_ ) {
+		foreach ( array_filter( $availableActions ) as $action => $_ ) {
 			// Check if it's set
 			$enabled = isset( $actions[$action] ) && (bool)$actions[$action];
 
@@ -2390,7 +2391,7 @@ class AbuseFilter {
 		// Logging
 		$subtype = $filter === 'new' ? 'create' : 'modify';
 		$logEntry = new ManualLogEntry( 'abusefilter', $subtype );
-		$logEntry->setPerformer( $wgUser );
+		$logEntry->setPerformer( $user );
 		$logEntry->setTarget( $page->getTitle( $new_id ) );
 		$logEntry->setParameters( [
 			'historyId' => $history_id,
