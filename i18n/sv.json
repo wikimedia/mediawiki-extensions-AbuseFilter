@@ -462,7 +462,7 @@
 	"abusefilter-test-shownegative": "Visa ändringar som inte matchar filtret",
 	"abusefilter-test-syntaxerr": "Det filter du skrev in innehöll ett syntaxfel.\nDu kan se en fullständig förklaring genom att klicka på knappen \"{{int:abusefilter-edit-check}}\".",
 	"abusefilter-test-badtitle": "Sidrubriken du angett är ogiltigt. Den kan innehålla ett eller flera tecken som inte kan användas i rubriker.",
-	"abusefilter-test-action": "Handlingstyp",
+	"abusefilter-test-action": "Handlingstyp:",
 	"abusefilter-test-search-type-all": "Alla handlingar",
 	"abusefilter-test-search-type-edit": "Redigeringar",
 	"abusefilter-test-search-type-move": "Flyttningar",
