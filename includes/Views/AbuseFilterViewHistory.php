@@ -41,7 +41,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		foreach ( $links as $msg => $title ) {
 			$links[$msg] =
 				new OOUI\ButtonWidget( [
-					'label' => $this->msg( $msg )->parse(),
+					'label' => $this->msg( $msg )->text(),
 					'href' => $title
 				] );
 		}

@@ -83,12 +83,17 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 					$result['actions'] );
 
 				$msg = $this->msg( 'abusefilter-revert-preview-item' )
-					->rawParams(
-						$lang->timeanddate( $result['timestamp'], true ),
-						Linker::userLink( $result['userid'], $result['user'] ),
-						$result['action'],
-						$this->linkRenderer->makeLink( $result['title'] ),
-						$lang->commaList( $displayActions ),
+					->params(
+						$lang->timeanddate( $result['timestamp'], true )
+					)->rawParams(
+						Linker::userLink( $result['userid'], $result['user'] )
+					)->params(
+						$result['action']
+					)->rawParams(
+						$this->linkRenderer->makeLink( $result['title'] )
+					)->params(
+						$lang->commaList( $displayActions )
+					)->rawParams(
 						$this->linkRenderer->makeLink(
 							SpecialPage::getTitleFor( 'AbuseLog' ),
 							$this->msg( 'abusefilter-log-detailslink' )->text(),

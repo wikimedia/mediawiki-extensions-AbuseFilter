@@ -2512,7 +2512,9 @@ class AbuseFilter {
 		// abusefilter-action-blockautopromote, abusefilter-action-block, abusefilter-action-degroup,
 		// abusefilter-action-rangeblock, abusefilter-action-disallow
 		$display = wfMessage( "abusefilter-action-$action" )->escaped();
-		$display = wfMessage( "abusefilter-action-$action", $display )->isDisabled() ? $action : $display;
+		$display = wfMessage( "abusefilter-action-$action", $display )->isDisabled()
+			? htmlspecialchars( $action )
+			: $display;
 
 		return $display;
 	}
@@ -2836,7 +2838,7 @@ class AbuseFilter {
 			} else {
 				$displayAction = self::getActionDisplay( $action ) .
 				wfMessage( 'colon-separator' )->escaped() .
-				htmlspecialchars( $wgLang->semicolonList( $parameters ) );
+				$wgLang->semicolonList( array_map( 'htmlspecialchars', $parameters ) );
 			}
 		}
 

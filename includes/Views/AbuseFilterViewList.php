@@ -147,7 +147,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 	public function showList( $conds = [ 'af_deleted' => 0 ], $optarray = [] ) {
 		$config = $this->getConfig();
 		$this->getOutput()->addHTML(
-			Xml::element( 'h2', null, $this->msg( 'abusefilter-list' )->parse() )
+			Xml::tags( 'h2', null, $this->msg( 'abusefilter-list' )->parse() )
 		);
 
 		$deleted = $optarray['deleted'];

@@ -359,12 +359,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$userName = $row->af_user_text;
 			$fields['abusefilter-edit-lastmod'] =
 				$this->msg( 'abusefilter-edit-lastmod-text' )
-				->rawParams(
-					$lang->timeanddate( $row->af_timestamp, true ),
-					$userLink,
+				->params(
+					$lang->timeanddate( $row->af_timestamp, true )
+				)->rawParams(
+					$userLink
+				)->params(
 					$lang->date( $row->af_timestamp, true ),
 					$lang->time( $row->af_timestamp, true ),
-					$userName
+					wfEscapeWikiText( $userName )
 				)->parse();
 			$history_display = new HtmlArmor( $this->msg( 'abusefilter-edit-viewhistory' )->parse() );
 			$fields['abusefilter-edit-history'] =
