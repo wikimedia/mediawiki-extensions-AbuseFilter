@@ -2105,7 +2105,7 @@ class AbuseFilter {
 	 * @param string $tag Tag name
 	 * @return Status
 	 */
-	protected static function isAllowedTag( $tag ) {
+	public static function isAllowedTag( $tag ) {
 		$tagNameStatus = ChangeTags::isTagNameValid( $tag );
 
 		if ( !$tagNameStatus->isGood() ) {
@@ -2120,6 +2120,11 @@ class AbuseFilter {
 			);
 
 		if ( $canAddStatus->isGood() ) {
+			return $finalStatus;
+		}
+
+		if ( $tag === 'abusefilter-condition-limit' ) {
+			$finalStatus->fatal( 'abusefilter-reserved-tag' );
 			return $finalStatus;
 		}
 
