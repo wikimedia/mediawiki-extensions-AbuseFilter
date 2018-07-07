@@ -458,7 +458,7 @@
 	"abusefilter-test-shownegative": "اعرض التغييرات التي لا تطابق المرشح",
 	"abusefilter-test-syntaxerr": "المرشح الذي أدخلته يحتوي على خطأ صياغة.\nيمكنك تلقي تفسير كامل بواسطة الضغط على زر \"{{int:abusefilter-edit-check}}\" .",
 	"abusefilter-test-badtitle": "عنوان الصفحة الذي أدخلته غير صالح. قد يحتوي على حرف أو أكثر لا يمكن استخدامه في العناوين.",
-	"abusefilter-test-action": "نوع العمل",
+	"abusefilter-test-action": "نوع العمل:",
 	"abusefilter-test-search-type-all": "كل الإجراءات",
 	"abusefilter-test-search-type-edit": "التعديلات",
 	"abusefilter-test-search-type-move": "النقل",
