@@ -46,7 +46,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$this->exposeWarningMessages();
 
 		if ( $filter == 'new' && !$this->canEdit() ) {
-			$out->addWikiMsg( 'abusefilter-edit-notallowed' );
+			$out->addHTML(
+				Xml::tags(
+					'p',
+					null,
+					Html::errorBox( $this->msg( 'abusefilter-edit-notallowed' )->parse() )
+				)
+			);
 			return;
 		}
 
@@ -92,7 +98,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		} else {
 			if ( $tokenMatches ) {
 				// Lost rights meanwhile
-				$out->addWikiMsg( 'abusefilter-edit-notallowed' );
+				$out->addHTML(
+					Xml::tags(
+						'p',
+						null,
+						Html::errorBox( $this->msg( 'abusefilter-edit-notallowed' )->parse() )
+					)
+				);
 			}
 
 			if ( $history_id ) {
