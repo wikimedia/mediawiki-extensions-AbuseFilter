@@ -2124,7 +2124,7 @@ class AbuseFilter {
 		}
 
 		if ( $tag === 'abusefilter-condition-limit' ) {
-			$finalStatus->fatal( 'abusefilter-reserved-tag' );
+			$finalStatus->fatal( 'abusefilter-tag-reserved' );
 			return $finalStatus;
 		}
 
