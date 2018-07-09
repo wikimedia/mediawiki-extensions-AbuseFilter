@@ -527,6 +527,7 @@
 	"log-description-abusefilterprivatedetails": "Ce journal affiche une liste des horodatages auxquels un utilisateur a accédé aux détails confidentiels d’un journal d’abus.",
 	"abusefilter-noreason": "Avertissement : Pour voir les détails confidentiels de ce journal, vous devez indiquer un motif.",
 	"abusefilter-log-ip-not-available": "Non disponible",
+	"abusefilter-tag-reserved": "La balise <code>abusefilter-condition-limit</code> est réservée à l'usage interne du filtre anti-abus.",
 	"tag-abusefilter-condition-limit": "limite de condition atteinte",
 	"tag-abusefilter-condition-limit-description": "Modifications ou autres événements qui ne peuvent pas être vérifiés par tous les [[Special:AbuseFilter|filtres d’abus]] actifs ([[mw:Extension:AbuseFilter/Conditions|aide]]).",
 	"apihelp-abusefiltercheckmatch-description": "Cocher pour voir si un AbuseFilter correspond à un ensemble de variables, une modification, ou un événement AbuseFilter du journal.\n\nvars, rcid ou logid est obligatoire, mais un seul d’entre-eux doit être utilisé.",

@@ -520,6 +520,7 @@
 	"log-description-abusefilterprivatedetails": "Denna logg visar en lista över antalet gånger en användare får åtkomst till privata detaljer i en missbrukslogg.",
 	"abusefilter-noreason": "Varning: För att se privata detaljer i denna logg måste du ange en anledning.",
 	"abusefilter-log-ip-not-available": "Inte tillgänglig",
+	"abusefilter-tag-reserved": "Taggen <code>abusefilter-condition-limit</code> är reserverad för intern användning av AbuseFilter.",
 	"tag-abusefilter-condition-limit": "villkorsgräns är nådd",
 	"tag-abusefilter-condition-limit-description": "Redigeringar eller andra händelser som inte kunde kontrolleras av alla aktiva [[Special:AbuseFilter|missbruksfilter]] ([[mw:Extension:AbuseFilter/Conditions|hjälp]]).",
 	"apihelp-abusefiltercheckmatch-description": "Kontrollera om ett missbruksfilter matchar en grupp variabler, en redigering eller en händelse som är loggad i missbruksfiltret.\n\nvars, rcid eller logid krävs, men endast en kan användas.",

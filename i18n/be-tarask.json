@@ -286,7 +286,7 @@
 	"abusefilter-edit-builder-vars-restrictions-upload": "Абарона файла ад загрузкі",
 	"abusefilter-edit-builder-vars-old-text-stripped": "Стары зьмест старонкі, пазбаўлены ад усіх пазнакаў",
 	"abusefilter-edit-builder-vars-old-links": "Спасылкі на старонцы перад рэдагаваньнем",
-	"abusefilter-edit-builder-vars-old-html": "Стары вікі-тэкст старонкі, пераўтвораны ў фармат HTML",
+	"abusefilter-edit-builder-vars-old-html": "Стары вікітэкст старонкі, ператвораны ў фармат HTML (больш не выкарыстоўваецца)",
 	"abusefilter-edit-builder-vars-minor-edit": "Ці пазначана рэдагаваньне як дробнае",
 	"abusefilter-edit-builder-vars-file-sha1": "SHA1-хэш зьместу файлаў",
 	"abusefilter-edit-builder-vars-file-size": "Памер файлу ў байтах",

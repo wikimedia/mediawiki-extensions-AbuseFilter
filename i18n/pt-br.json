@@ -517,6 +517,7 @@
 	"log-description-abusefilterprivatedetails": "Este registro mostra uma lista de vezes em que um usuário acessou os detalhes privados de um registro de abuso.",
 	"abusefilter-noreason": "Aviso: para ver os detalhes particulares deste log, você deve fornecer um motivo.",
 	"abusefilter-log-ip-not-available": "Não disponível",
+	"abusefilter-tag-reserved": "A etiqueta <code>abusefilter-condition-limit</code> é reservado para uso interno pelo Filtro de Abuso.",
 	"tag-abusefilter-condition-limit": "limite de condições atingido",
 	"tag-abusefilter-condition-limit-description": "Edições ou outros acontecimentos que não puderam ser verificados por todos os [[Special:AbuseFilter|filtros de abuso]] ativos ([[mw:Extension:AbuseFilter/Conditions|ajuda]]).",
 	"apihelp-abusefiltercheckmatch-description": "Verificar se um filtro de abusos coincide com um conjunto de variáveis, uma edição, ou um evento do registo de abusos.\n\nÉ necessário um dos seguintes: vars, rcid ou logid (só um pode ser usado).",

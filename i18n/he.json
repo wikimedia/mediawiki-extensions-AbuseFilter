@@ -503,6 +503,7 @@
 	"log-description-abusefilterprivatedetails": "יומן זה מציג את הגישה של משתמשים לנתונים פרטיים ביומן ההשחתות.",
 	"abusefilter-noreason": "אזהרה: כדי לצפות בנתונים פרטיים ביומן הזה, יש להקליד סיבה.",
 	"abusefilter-log-ip-not-available": "לא זמין",
+	"abusefilter-tag-reserved": "התגית <code>abusefilter-condition-limit</code> שמורה לשימוש פנימי של מסנן ההשחתות.",
 	"tag-abusefilter-condition-limit": "חריגה מתנאי ההגבלה",
 	"tag-abusefilter-condition-limit-description": "עריכות או פעולות אחרות שלא ניתן היה לבדוק אותן באמצעות כל [[Special:AbuseFilter|מסנני ההשחתות]] הפעילים ([[mw:Extension:AbuseFilter/Conditions|עזרה]]).",
 	"apihelp-abusefiltercheckmatch-description": "בדיקה האם מסנן השחתות מתאים לערכת משתנים, לעריכה או לפעולה שנרשמה ביומן ההשחתות.\n\nvars‏, rcid או logid נדרש, אבל אפשר להשתמש רק באחד מהם.",
