@@ -788,6 +788,7 @@ class AbuseFilterHooks {
 		// Use UploadBase::getTempFileSha1Base36 so that we don't have to calculate the sha1 sum again
 		$sha1 = Wikimedia\base_convert( $upload->getTempFileSha1Base36(), 36, 16, 40 );
 
+		// This is the same as AbuseFilter::getUploadVarsFromRCRow, but from a different source
 		$vars->setVar( 'file_sha1', $sha1 );
 		$vars->setVar( 'file_size', $upload->getFileSize() );
 

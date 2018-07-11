@@ -54,8 +54,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 				$this->msg( 'abusefilter-test-search-type-edit' )->text() => 'edit',
 				$this->msg( 'abusefilter-test-search-type-move' )->text() => 'move',
 				$this->msg( 'abusefilter-test-search-type-delete' )->text() => 'delete',
-				$this->msg( 'abusefilter-test-search-type-createaccount' )->text() => 'createaccount'
-				// @ToDo: add 'upload' once T170249 is resolved
+				$this->msg( 'abusefilter-test-search-type-createaccount' )->text() => 'createaccount',
+				$this->msg( 'abusefilter-test-search-type-upload' )->text() => 'upload'
 			]
 		];
 		$formFields['wpTestUser'] = [
