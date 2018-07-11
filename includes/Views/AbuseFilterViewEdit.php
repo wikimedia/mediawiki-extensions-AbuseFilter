@@ -42,7 +42,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 		}
 
-		// Add default warning messages
+		// Add the default warning messages in a JS variable
 		$this->exposeWarningMessages();
 
 		if ( $filter == 'new' && !$this->canEdit() ) {
@@ -91,7 +91,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 		} else {
 			if ( $tokenMatches ) {
-				// lost rights meanwhile
+				// Lost rights meanwhile
 				$out->addWikiMsg( 'abusefilter-edit-notallowed' );
 			}
 
@@ -656,7 +656,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				);
 				$userDuration->addOptions( $suggestedBlocks );
 
-				// Set defaults
 				$anonDuration->setDefault( $defaultAnonDuration );
 				$userDuration->setDefault( $defaultUserDuration );
 
@@ -937,7 +936,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						$throttleGroups = explode( "\n",
 							trim( $request->getText( 'wpFilterThrottleGroups' ) ) );
 
-						// For now, anyway
 						$parameters[0] = $this->mFilter;
 						$parameters[1] = "$throttleCount,$throttlePeriod";
 						$parameters = array_merge( $parameters, $throttleGroups );
@@ -981,7 +979,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	public function loadHistoryItem( $id ) {
 		$dbr = wfGetDB( DB_REPLICA );
 
-		// Load the row.
 		$row = $dbr->selectRow( 'abuse_filter_history',
 			'*',
 			[ 'afh_id' => $id ],

@@ -207,7 +207,7 @@ class AbuseFilter {
 			] );
 		}
 
-		// Save some translator work
+		// Re-use the message
 		$msgOverrides = [
 			'recentchanges' => 'abusefilter-filter-log',
 		];
@@ -392,7 +392,6 @@ class AbuseFilter {
 			}
 		}
 
-		// Use restrictions.
 		global $wgRestrictionTypes;
 		foreach ( $wgRestrictionTypes as $action ) {
 			$vars->setLazyLoadVar( "{$prefix}_restrictions_$action", 'get-page-restrictions',
@@ -475,7 +474,6 @@ class AbuseFilter {
 		try {
 			$result = $parser->parse( $conds, self::$condCount );
 		} catch ( Exception $excep ) {
-			// Sigh.
 			$result = false;
 
 			wfDebugLog( 'AbuseFilter', 'AbuseFilter parser error: ' . $excep->getMessage() . "\n" );
@@ -510,13 +508,19 @@ class AbuseFilter {
 		// Ensure that we start fresh, see T193374
 		self::$condCount = 0;
 
-		// Fetch from the database.
+		// Fetch filters to check from the database.
 		$filter_matched = [];
 
 		$dbr = wfGetDB( DB_REPLICA );
+		$fields = [
+			'af_id',
+			'af_pattern',
+			'af_public_comments',
+			'af_timestamp'
+		];
 		$res = $dbr->select(
 			'abuse_filter',
-			'*',
+			$fields,
 			[
 				'af_enabled' => 1,
 				'af_deleted' => 0,
@@ -537,7 +541,7 @@ class AbuseFilter {
 			$res = ObjectCache::getMainWANInstance()->getWithSetCallback(
 				$globalRulesKey,
 				WANObjectCache::TTL_INDEFINITE,
-				function () use ( $group, $fname ) {
+				function () use ( $group, $fname, $fields ) {
 					global $wgAbuseFilterCentralDB;
 
 					$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
@@ -547,7 +551,7 @@ class AbuseFilter {
 
 					return iterator_to_array( $fdb->select(
 						'abuse_filter',
-						'*',
+						$fields,
 						[
 							'af_enabled' => 1,
 							'af_deleted' => 0,
@@ -614,7 +618,6 @@ class AbuseFilter {
 		// Store the row somewhere convenient
 		self::$filterCache[$filterID] = $row;
 
-		// Check conditions...
 		$pattern = trim( $row->af_pattern );
 		if (
 			self::checkConditions(
@@ -827,8 +830,7 @@ class AbuseFilter {
 			) {
 				// Don't do the action
 			} elseif ( $row->afa_filter != $row->af_id ) {
-				// We probably got a NULL, as it's a LEFT JOIN.
-				// Don't add it.
+				// We probably got a NULL, as it's a LEFT JOIN. Don't add it.
 			} else {
 				$actionsByFilter[$prefix . $row->afa_filter][$row->afa_consequence] = [
 					'action' => $row->afa_consequence,
@@ -926,7 +928,7 @@ class AbuseFilter {
 				unset( $actions['warn'] );
 			}
 
-			// prevent double warnings
+			// Prevent double warnings
 			if ( count( array_intersect_key( $actions, array_filter( $wgAbuseFilterRestrictions ) ) ) > 0 &&
 				!empty( $actions['disallow'] )
 			) {
@@ -1171,7 +1173,6 @@ class AbuseFilter {
 			if ( $globalIndex ) {
 				// Global wiki filter
 				if ( !$wgAbuseFilterCentralDB ) {
-					// Not enabled
 					return null;
 				}
 
@@ -1184,7 +1185,19 @@ class AbuseFilter {
 				$dbr = wfGetDB( DB_REPLICA );
 			}
 
-			$row = $dbr->selectRow( 'abuse_filter', '*', [ 'af_id' => $id ], __METHOD__ );
+			$fields = [
+				'af_id',
+				'af_pattern',
+				'af_public_comments',
+				'af_timestamp'
+			];
+
+			$row = $dbr->selectRow(
+				'abuse_filter',
+				$fields,
+				[ 'af_id' => $id ],
+				__METHOD__
+			);
 			self::$filterCache[$id] = $row ?: null;
 		}
 
@@ -1298,7 +1311,6 @@ class AbuseFilter {
 			$user = User::newFromId( $data['afl_user'] );
 			$user->setName( $data['afl_user_text'] );
 			$entry->setPerformer( $user );
-			// Set action target
 			$entry->setTarget( Title::makeTitle( $data['afl_namespace'], $data['afl_title'] ) );
 			// Additional info
 			$entry->setParameters( [
@@ -1406,7 +1418,7 @@ class AbuseFilter {
 			}
 		}
 
-		// Store to ES if applicable
+		// Store to ExternalStore if applicable
 		global $wgDefaultExternalStore, $wgAbuseFilterCentralDB;
 		if ( $wgDefaultExternalStore ) {
 			if ( $global ) {
@@ -1449,7 +1461,7 @@ class AbuseFilter {
 	 * @return array|object|AbuseFilterVariableHolder|bool
 	 */
 	public static function loadVarDump( $stored_dump ) {
-		// Back-compat
+		// Back-compact
 		if ( substr( $stored_dump, 0, strlen( 'stored-text:' ) ) !== 'stored-text:' ) {
 			$data = unserialize( $stored_dump );
 			if ( is_array( $data ) ) {
@@ -1563,7 +1575,7 @@ class AbuseFilter {
 			case 'degroup':
 				global $wgUser;
 				if ( !$wgUser->isAnon() ) {
-					// Remove all groups from the user. Ouch.
+					// Remove all groups from the user.
 					$groups = $wgUser->getGroups();
 
 					foreach ( $groups as $group ) {
@@ -1581,7 +1593,6 @@ class AbuseFilter {
 						break;
 					}
 
-					// Log it.
 					$log = new LogPage( 'rights' );
 
 					$log->addEntry( 'rights',
@@ -1887,7 +1898,6 @@ class AbuseFilter {
 		// Figure out if we've triggered overflows and blocks.
 		$overflow_triggered = ( self::$condCount > $wgAbuseFilterConditionLimit );
 
-		// Store some keys...
 		$overflow_key = self::filterLimitReachedKey();
 		$total_key = self::filterUsedKey( $group );
 
@@ -1907,7 +1917,6 @@ class AbuseFilter {
 			$stash->set( self::filterMatchesKey(), 0, $storage_period );
 		}
 
-		// Increment total
 		$stash->incr( $total_key );
 
 		// Increment overflow counter, if our condition limit overflowed
@@ -1943,7 +1952,7 @@ class AbuseFilter {
 
 		$stash = ObjectCache::getMainStashInstance();
 		foreach ( $filters as $filter ) {
-			// determine emergency disable values for this action
+			// Determine emergency disable values for this action
 			$emergencyDisableThreshold =
 				self::getEmergencyValue( $wgAbuseFilterEmergencyDisableThreshold, $group );
 			$filterEmergencyDisableCount =
@@ -2157,7 +2166,7 @@ class AbuseFilter {
 	public static function saveFilter( $page, $filter, $request, $newRow, $actions ) {
 		$validationStatus = Status::newGood();
 
-		// Check syntax
+		// Check the syntax
 		$syntaxerr = self::checkSyntax( $request->getVal( 'wpFilterRules' ) );
 		if ( $syntaxerr !== true ) {
 			$validationStatus->error( 'abusefilter-edit-badsyntax', $syntaxerr[0] );
@@ -2296,11 +2305,9 @@ class AbuseFilter {
 
 		// Reset throttled marker, if we're re-enabling it.
 		$newRow['af_throttled'] = $newRow['af_throttled'] && !$newRow['af_enabled'];
-		// ID.
 		$newRow['af_id'] = $new_id;
 
-		// T67807
-		// integer 1's & 0's might be better understood than booleans
+		// T67807: integer 1's & 0's might be better understood than booleans
 		$newRow['af_enabled'] = (int)$newRow['af_enabled'];
 		$newRow['af_hidden'] = (int)$newRow['af_hidden'];
 		$newRow['af_throttled'] = (int)$newRow['af_throttled'];
@@ -2450,8 +2457,7 @@ class AbuseFilter {
 			if ( !isset( $actions1[$action] ) && !isset( $actions2[$action] ) ) {
 				// They're both unset
 			} elseif ( isset( $actions1[$action] ) && isset( $actions2[$action] ) ) {
-				// They're both set.
-				// Double check needed, e.g. per T180194
+				// They're both set. Double check needed, e.g. per T180194
 				if ( array_diff( $actions1[$action]['parameters'],
 					$actions2[$action]['parameters'] ) ||
 					array_diff( $actions2[$action]['parameters'],
@@ -2473,8 +2479,7 @@ class AbuseFilter {
 	 * @return array
 	 */
 	public static function translateFromHistory( $row ) {
-		// Translate into an abuse_filter row with some black magic.
-		// This is ever so slightly evil!
+		// Manually translate into an abuse_filter row.
 		$af_row = new stdClass;
 
 		foreach ( self::$history_mappings as $af_col => $afh_col ) {
@@ -2482,15 +2487,16 @@ class AbuseFilter {
 		}
 
 		// Process flags
-
 		$af_row->af_deleted = 0;
 		$af_row->af_hidden = 0;
 		$af_row->af_enabled = 0;
 
-		$flags = explode( ',', $row->afh_flags );
-		foreach ( $flags as $flag ) {
-			$col_name = "af_$flag";
-			$af_row->$col_name = 1;
+		if ( $row->afh_flags !== '' ) {
+			$flags = explode( ',', $row->afh_flags );
+			foreach ( $flags as $flag ) {
+				$col_name = "af_$flag";
+				$af_row->$col_name = 1;
+			}
 		}
 
 		// Process actions

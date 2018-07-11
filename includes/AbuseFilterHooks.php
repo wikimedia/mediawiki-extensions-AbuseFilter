@@ -11,7 +11,6 @@ class AbuseFilterHooks {
 	/** @var WikiPage|Article|bool Make sure edit filter & edit save hooks match */
 	public static $last_edit_page = false;
 	// So far, all of the error message out-params for these hooks accept HTML.
-	// Hooray!
 
 	/**
 	 * Called right after configuration has been loaded.
