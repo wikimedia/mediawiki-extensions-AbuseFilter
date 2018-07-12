@@ -1596,21 +1596,21 @@ class AbuseFilter {
 						break;
 					}
 
-					$log = new LogPage( 'rights' );
-
-					$log->addEntry( 'rights',
-						$wgUser->getUserPage(),
+					$logEntry = new ManualLogEntry( 'rights', 'rights' );
+					$logEntry->setPerformer( self::getFilterUser() );
+					$logEntry->setTarget( $wgUser->getUserPage() );
+					$logEntry->setComment(
 						wfMessage(
 							'abusefilter-degroupreason',
 							$rule_desc,
 							$rule_number
-						)->inContentLanguage()->text(),
-						[
-							implode( ', ', $groups ),
-							''
-						],
-						self::getFilterUser()
+						)->inContentLanguage()->text()
 					);
+					$logEntry->setParameters( [
+						'4::oldgroups' => $groups,
+						'5::newgroups' => []
+					] );
+					$logEntry->publish( $logEntry->insert() );
 				}
 
 				break;
