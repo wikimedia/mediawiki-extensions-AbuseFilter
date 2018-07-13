@@ -135,26 +135,29 @@ abstract class AbuseFilterView extends ContextSource {
 
 		if ( $canEdit ) {
 			// Generate builder drop-down
-			$dropDown = AbuseFilter::getBuilderValues();
+			$rawDropDown = AbuseFilter::getBuilderValues();
 
-			// The array needs to be rearranged to be understood by OOUI
-			foreach ( $dropDown as $group => $values ) {
+			// The array needs to be rearranged to be understood by OOUI. It comes with the format
+			// [ group-msg-key => [ text-to-add => text-msg-key ] ] and we need it as
+			// [ group-msg => [ text-msg => text-to-add ] ]
+			// Also, the 'other' element must be the first one.
+			$dropDown = [ $this->msg( 'abusefilter-edit-builder-select' )->text() => 'other' ];
+			foreach ( $rawDropDown as $group => $values ) {
 				// Give grep a chance to find the usages:
 				// abusefilter-edit-builder-group-op-arithmetic, abusefilter-edit-builder-group-op-comparison,
 				// abusefilter-edit-builder-group-op-bool, abusefilter-edit-builder-group-misc,
 				// abusefilter-edit-builder-group-funcs, abusefilter-edit-builder-group-vars
-				$localisedLabel = $this->msg( "abusefilter-edit-builder-group-$group" )->text();
-				$dropDown[ $localisedLabel ] = $dropDown[ $group ];
-				unset( $dropDown[ $group ] );
-				$dropDown[ $localisedLabel ] = array_flip( $dropDown[ $localisedLabel ] );
-				foreach ( $values as $content => $name ) {
-					$localisedInnerLabel = $this->msg( "abusefilter-edit-builder-$group-$name" )->text();
-					$dropDown[ $localisedLabel ][ $localisedInnerLabel ] = $dropDown[ $localisedLabel ][ $name ];
-					unset( $dropDown[ $localisedLabel ][ $name ] );
-				}
+				$localisedGroup = $this->msg( "abusefilter-edit-builder-group-$group" )->text();
+				$dropDown[ $localisedGroup ] = array_flip( $values );
+				$newKeys = array_map(
+					function ( $key ) use ( $group ) {
+						return $this->msg( "abusefilter-edit-builder-$group-$key" )->text();
+					},
+					array_keys( $dropDown[ $localisedGroup ] )
+				);
+				$dropDown[ $localisedGroup ] = array_combine( $newKeys, $dropDown[ $localisedGroup ] );
 			}
 
-			$dropDown = [ $this->msg( 'abusefilter-edit-builder-select' )->text() => 'other' ] + $dropDown;
 			$dropDown = Xml::listDropDownOptionsOoui( $dropDown );
 			$dropDown = new OOUI\DropdownInputWidget( [
 				'name' => 'wpFilterBuilder',
