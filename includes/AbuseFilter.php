@@ -1577,6 +1577,9 @@ class AbuseFilter {
 				if ( !$wgUser->isAnon() ) {
 					// Remove all groups from the user.
 					$groups = $wgUser->getGroups();
+					// Make sure that the stored var dump contains user groups, since we may
+					// need them if reverting this degroup via Special:AbuseFilter/revert
+					$vars->setVar( 'user_groups', $groups );
 
 					foreach ( $groups as $group ) {
 						$wgUser->removeGroup( $group );
