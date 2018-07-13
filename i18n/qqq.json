@@ -118,6 +118,7 @@
 	"abusefilter-log-cannot-see-private-details": "Message shown instead of log row private details for users without permissions to see them.",
 	"abusefilter-log-nonexistent": "Message shown instead of log row details when the provided log ID does not exist.",
 	"abusefilter-log-details-hidden": "Message shown instead of log row details when those are hidden.",
+	"abusefilter-log-details-hidden-implicit": "Message shown instead of log row details when their associated revision is hidden.",
 	"abusefilter-log-private-not-included": "Message shown when an unauthorized user searches by ID for private filters.",
 	"abusefilter-log-hide-legend": "Legend for form to hide a log entry.",
 	"abusefilter-log-hide-id": "Field label in form to hide a log entry.",

@@ -85,7 +85,6 @@ class SpecialAbuseLog extends SpecialPage {
 		$errors = $this->getPageTitle()->getUserPermissionsErrors(
 			'abusefilter-log', $this->getUser(), true, [ 'ns-specialprotected' ] );
 		if ( count( $errors ) ) {
-			// Go away.
 			$out->showPermissionsErrorPage( $errors, 'abusefilter-log' );
 
 			return;
@@ -489,9 +488,14 @@ class SpecialAbuseLog extends SpecialPage {
 			return;
 		}
 
-		if ( self::isHidden( $row ) && !self::canSeeHidden() ) {
+		if ( self::isHidden( $row ) === true && !self::canSeeHidden() ) {
 			$out->addWikiMsg( 'abusefilter-log-details-hidden' );
 
+			return;
+		} elseif ( self::isHidden( $row ) === 'implicit' &&
+			!$this->getUser()->isAllowed( 'deletedtext' ) ) {
+			// The log is visible, but refers to a deleted revision
+			$out->addWikiMsg( 'abusefilter-log-details-hidden-implicit' );
 			return;
 		}
 
@@ -858,7 +862,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$diffLink = false;
 		$isHidden = self::isHidden( $row );
 
-		if ( !self::canSeeHidden() && $isHidden ) {
+		if ( !self::canSeeHidden() && $isHidden === true ) {
 			return '';
 		}
 

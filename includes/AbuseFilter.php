@@ -1461,7 +1461,7 @@ class AbuseFilter {
 	 * @return array|object|AbuseFilterVariableHolder|bool
 	 */
 	public static function loadVarDump( $stored_dump ) {
-		// Back-compact
+		// Backward compatibility
 		if ( substr( $stored_dump, 0, strlen( 'stored-text:' ) ) !== 'stored-text:' ) {
 			$data = unserialize( $stored_dump );
 			if ( is_array( $data ) ) {
