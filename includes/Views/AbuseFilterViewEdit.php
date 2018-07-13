@@ -105,6 +105,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						Html::errorBox( $this->msg( 'abusefilter-edit-notallowed' )->parse() )
 					)
 				);
+			} elseif ( $request->wasPosted() ) {
+				// Warn the user to re-attempt save
+				$out->addHTML(
+					Html::warningBox( $this->msg( 'abusefilter-edit-token-not-match' )->escaped() )
+				);
 			}
 
 			if ( $history_id ) {
