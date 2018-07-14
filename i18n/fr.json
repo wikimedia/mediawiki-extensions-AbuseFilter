@@ -192,6 +192,7 @@
 	"abusefilter-edit": "Modifier le filtre d'abus",
 	"abusefilter-edit-subtitle": "Modification du filtre $1",
 	"abusefilter-edit-subtitle-new": "Créer un filtre",
+	"abusefilter-edit-token-not-match": "Les modifications n'ont pas été enregistrées ! Veuillez sauvegarder à nouveau.",
 	"abusefilter-edit-oldwarning": "<strong>Vous êtes en train de modifier une ancienne version de ce filtre.\nLes statistiques affichées concernent la version la plus récente de celui-ci.\nSi vous enregistrez vos modifications, vous allez écraser tous les changements intervenus depuis la version que vous modifiez.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Revenir à l’historique de ce filtre]]",
 	"abusefilter-edit-status-label": "Statistiques :",
 	"abusefilter-edit-status": "{{PLURAL:$1|Dans la dernière action|Parmi les $1 dernières actions}}, ce filtre a été déclenché $2 fois ($3 %).",

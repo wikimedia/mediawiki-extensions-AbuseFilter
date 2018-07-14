@@ -182,6 +182,7 @@
 	"abusefilter-edit": "Missbrauchsfilter bearbeiten",
 	"abusefilter-edit-subtitle": "Bearbeite Filter $1",
 	"abusefilter-edit-subtitle-new": "Filter erstellen",
+	"abusefilter-edit-token-not-match": "Die Bearbeitung wurde nicht gespeichert! Bitte erneut versuchen.",
 	"abusefilter-edit-oldwarning": "<strong>Du bearbeitest nicht die aktuelle, sondern eine ältere Version dieses Filters. Die Statistik gilt nur für die letzte Version des Filters. Wenn du speicherst, wird diese als aktuelle Version neu gespeichert. </strong> &bull; [[Special:AbuseFilter/history/$2|Zurück zur Versionsgeschichte des Filters]]",
 	"abusefilter-edit-status-label": "Statistik:",
 	"abusefilter-edit-status": "Von {{PLURAL:$1|der letzten Aktion|den letzten $1 Aktionen}} {{PLURAL:$2|wurde eine|wurden $2}} ($3 %) von diesem Filter erkannt.",

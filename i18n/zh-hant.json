@@ -190,6 +190,7 @@
 	"abusefilter-edit": "正在編輯防濫用過濾器",
 	"abusefilter-edit-subtitle": "正在編輯過濾器 $1",
 	"abusefilter-edit-subtitle-new": "正在建立過濾器",
+	"abusefilter-edit-token-not-match": "編輯沒被儲存！請再儲存一次看看。",
 	"abusefilter-edit-oldwarning": "<strong>您正編輯舊版本的過濾器。\n統計資訊引用的是最近版本的過濾器資訊。\n若您儲存目前的修改，您將會覆蓋所有自您修訂版本之後的所有變更。</strong> &bull;\n[[Special:AbuseFilter/history/$2|返回此過濾器歷史]]。",
 	"abusefilter-edit-status-label": "統計資訊：",
 	"abusefilter-edit-status": "在最近 $1 次{{PLURAL:$1|操作}}中，此過濾器已命中 $2 ($3%) 次。",

@@ -185,6 +185,7 @@
 	"abusefilter-edit": "Redigerar missbruksfilter",
 	"abusefilter-edit-subtitle": "Redigerar filtret $1",
 	"abusefilter-edit-subtitle-new": "Skapa filter",
+	"abusefilter-edit-token-not-match": "Redigeringen sparades inte! Var god spara igen.",
 	"abusefilter-edit-oldwarning": "<strong>Du redigerar en gammal version av detta filter. Den angivna statistiken gäller den senaste versionen av filtret. Om du sparar dina ändringar kommer du att skriva över alla ändringar som gjorts efter den version du redigerar. </strong> &bull; [[Special:AbuseFilter/history/$2|Återvänd till detta filters historik]]",
 	"abusefilter-edit-status-label": "Statistik:",
 	"abusefilter-edit-status": "Av {{PLURAL:$1|den senaste handlingen|de senaste $1 handlingarna}} har detta filter matchat $2 ($3 %).",

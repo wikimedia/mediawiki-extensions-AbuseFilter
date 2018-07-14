@@ -181,6 +181,7 @@
 	"abusefilter-edit": "A editar filtro de abusos",
 	"abusefilter-edit-subtitle": "A editar o filtro $1",
 	"abusefilter-edit-subtitle-new": "A criar filtro",
+	"abusefilter-edit-token-not-match": "A edição não foi publicada! Por favor, grave novamente.",
 	"abusefilter-edit-oldwarning": "<strong>Está a editar uma versão antiga deste filtro.\nAs estatísticas transcritas são relativas à versão mais recente do filtro.\nSe gravar as suas modificações, irá sobrepor todas as modificações desde a revisão que está a editar.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Voltar ao histórico deste filtro]].",
 	"abusefilter-edit-status-label": "Estatísticas:",
 	"abusefilter-edit-status": "{{PLURAL:$1|Da última 1 ação|Das últimas $1 ações}}, $2 ($3%) acionaram este filtro.",

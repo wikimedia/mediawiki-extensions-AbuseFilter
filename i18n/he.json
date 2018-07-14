@@ -168,6 +168,7 @@
 	"abusefilter-edit": "עריכת מסנן השחתות",
 	"abusefilter-edit-subtitle": "עריכת מסנן $1",
 	"abusefilter-edit-subtitle-new": "יצירת מסנן",
+	"abusefilter-edit-token-not-match": "העריכה לא נשמרה! נא לשמור שוב.",
 	"abusefilter-edit-oldwarning": "<strong>זוהי גרסה ישנה של מסנן זה.\nהסטטיסטיקות המופיעות הן עבור הגרסה העדכנית ביותר של המסנן.\nשמירת השינויים שלך תדרוס את כל השינויים מאז הגרסה הזאת.</strong> &bull; [[Special:AbuseFilter/history/$2|חזרה להיסטוריית הגרסאות של מסנן זה]].",
 	"abusefilter-edit-status-label": "סטטיסטיקות:",
 	"abusefilter-edit-status": "מתוך {{PLURAL:$1|הפעולה האחרונה|$1 הפעולות האחרונות}}, מסנן זה התאים ל־$2 ($3%).",

@@ -194,6 +194,7 @@
 	"abusefilter-edit": "Править фильтр злоупотреблений",
 	"abusefilter-edit-subtitle": "Изменение фильтра $1",
 	"abusefilter-edit-subtitle-new": "Создание фильтра",
+	"abusefilter-edit-token-not-match": "Ваша правка не сохранена! Попробуйте ещё раз.",
 	"abusefilter-edit-oldwarning": "<strong>Вы правите старую версию фильтра. Статистика приводится для последней версии фильтра. Если вы сохраните вашу правку, то вы перезапишите сделанные ранее изменения.</strong> &bull; [[Special:AbuseFilter/history/$2|Вернуться к странице истории фильтра]]",
 	"abusefilter-edit-status-label": "Статистика:",
 	"abusefilter-edit-status": "Из {{PLURAL:$1|последнего $1 действия|последних $1 действий}}, этот фильтр соответствует $2 ($3%).",

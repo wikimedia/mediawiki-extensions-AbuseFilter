@@ -177,6 +177,7 @@
 	"abusefilter-edit": "Modifica filtro anti abusi",
 	"abusefilter-edit-subtitle": "Modifica del filtro $1",
 	"abusefilter-edit-subtitle-new": "Creazione filtro",
+	"abusefilter-edit-token-not-match": "La modifica non è stata salvata! Per favore, prova di nuovo.",
 	"abusefilter-edit-oldwarning": "<strong>Si sta modificando una versione obsoleta di questo filtro.\nLe statistiche citate si riferiscono alla versione più recente del filtro.\nSalvando le modifiche verranno annullati tutti i cambiamenti apportati da questa versione in poi.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Ritorna alla cronologia del filtro]].",
 	"abusefilter-edit-status-label": "Statistiche:",
 	"abusefilter-edit-status": "Rispetto {{PLURAL:$1|all'azione più recente|alle $1 azioni più recenti}}, questo filtro ha trovato $2 {{PLURAL:$2|corrispondenza|corrispondenze}} ($3 %).",

@@ -396,6 +396,7 @@
 	"abusefilter-exception-overridebuiltin": "Nielegalne nadpisanie wbudowanej zmiennej „$2” – znak $1.",
 	"abusefilter-exception-outofbounds": "Żądanie nieistniejącego elementu listy $2 (rozmiar listy = $3) – znak $1.",
 	"abusefilter-exception-notarray": "Żądanie elementu tablicy od zmiennej nietablicowej – znak $1.",
+	"abusefilter-exception-disabledvar": "Zmienna $2 przy znaku $1 nie jest już używana.",
 	"abusefilter-action-tag": "Znacznik",
 	"abusefilter-action-throttle": "Ogranicz",
 	"abusefilter-action-warn": "Ostrzeżenie",
