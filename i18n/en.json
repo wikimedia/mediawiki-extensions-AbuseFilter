@@ -529,6 +529,7 @@
 	"apihelp-query+abusefilters-example-2": "Show some details about filters",
 	"apihelp-query+abuselog-description": "Show events that were caught by one of the abuse filters.",
 	"apihelp-query+abuselog-summary": "Show events that were caught by one of the abuse filters.",
+	"apihelp-query+abuselog-param-logid": "Show an entry with the given log ID.",
 	"apihelp-query+abuselog-param-start": "The timestamp to start enumerating from.",
 	"apihelp-query+abuselog-param-end": "The timestamp to stop enumerating at.",
 	"apihelp-query+abuselog-param-user": "Show only entries done by a given user or IP address.",
