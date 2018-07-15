@@ -899,7 +899,11 @@ class AbuseFilter {
 
 			if ( !empty( $actions['warn'] ) ) {
 				$parameters = $actions['warn']['parameters'];
-				$warnKey = 'abusefilter-warned-' . md5( $title->getPrefixedText() ) . '-' . $filter;
+				$action = $vars->getVar( 'action' )->toString();
+				// Generate a unique key to determine whether the user has already been warned.
+				// We'll warn again if one of these changes: session, page, triggered filter or action
+				$warnKey = 'abusefilter-warned-' . md5( $title->getPrefixedText() ) .
+					'-' . $filter . '-' . $action;
 
 				// Make sure the session is started prior to using it
 				$session = SessionManager::getGlobalSession();
