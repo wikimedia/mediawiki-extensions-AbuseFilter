@@ -5,10 +5,14 @@
 			"Ninjastrikers"
 		]
 	},
+	"abuselog": "အလွဲသုံးစားပြုမှု မှတ်တမ်း",
 	"abusefilter-log-search-user": "အသုံးပြုသူ -",
 	"abusefilter-log-search-title": "ခေါင်းစဉ် :",
 	"abusefilter-log-search-submit": "ရှာဖွေရန်",
+	"abusefilter-log-details-checkuser": "စုံစမ်းစစ်ဆေးသူ",
 	"abusefilter-log-noactions": "အမည်ညွှန်းမရှိ",
+	"abusefilter-log-linkoncontribs": "အလွဲသုံးစားပြုမှု မှတ်တမ်း",
 	"abusefilter-log-hide-reason": "အ​ကြောင်း​ပြ​ချက်:",
-	"abusefilter-examine-submit": "ရှာဖွေရန်"
+	"abusefilter-examine-submit": "ရှာဖွေရန်",
+	"abusefilter-topnav-log": "အလွဲသုံးစားပြုမှု မှတ်တမ်း"
 }

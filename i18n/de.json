@@ -548,6 +548,7 @@
 	"apihelp-query+abusefilters-example-2": "Einige Einzelheiten über Filter anzeigen",
 	"apihelp-query+abuselog-description": "Ereignisse anzeigen, die von einem der Missbrauchsfilter erfasst wurden.",
 	"apihelp-query+abuselog-summary": "Zeigt Ereignisse an, die von einem der Missbrauchsfilter erfasst wurden.",
+	"apihelp-query+abuselog-param-logid": "Zeigt einen Eintrag mit der angegebenen Logbuchkennung.",
 	"apihelp-query+abuselog-param-start": "Der Zeitstempel, bei dem die Aufzählung begonnen werden soll.",
 	"apihelp-query+abuselog-param-end": "Der Zeitstempel, bei dem die Aufzählung beendet werden soll.",
 	"apihelp-query+abuselog-param-user": "Nur Einträge von einem angegebenen Benutzer oder einer IP-Adresse anzeigen.",
