@@ -297,15 +297,21 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				$dbw->insert( 'user_groups', $rows, __METHOD__, [ 'IGNORE' ] );
 				$user->invalidateCache();
 
-				$log = new LogPage( 'rights' );
-				$log->addEntry( 'rights', $user->getUserPage(),
+				$logEntry = new ManualLogEntry( 'rights', 'rights' );
+				$logEntry->setTarget( $user->getUserPage() );
+				$logEntry->setPerformer( $this->getUser() );
+				$logEntry->setComment(
 					$this->msg(
 						'abusefilter-revert-reason',
 						$this->mPage->mFilter,
 						$this->mReason
-					)->inContentLanguage()->text(),
-					[ implode( ',', $currentGroups ), implode( ',', $newGroups ) ]
+					)->inContentLanguage()->text()
 				);
+				$logEntry->setParameters( [
+					'4::oldgroups' => $currentGroups,
+					'5::newgroups' => $newGroups
+				] );
+				$logEntry->publish( $logEntry->insert() );
 
 				return true;
 		}
