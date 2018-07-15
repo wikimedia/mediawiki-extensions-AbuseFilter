@@ -383,4 +383,12 @@ class AbuseFilterPager extends TablePager {
 		}
 		return in_array( $name, $sortable_fields );
 	}
+
+	/**
+	 * @see IndexPager::getExtraSortFields
+	 * @return array
+	 */
+	public function getExtraSortFields() {
+		return [ 'af_enabled' => 'af_deleted' ];
+	}
 }
