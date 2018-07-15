@@ -1059,8 +1059,11 @@ class AbuseFilterParser {
 			$needle = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $needle );
 			$needle = "/$needle/u";
 
+			// Suppress and restore are here for the same reason as T177744
+			Wikimedia\suppressWarnings();
 			// Omit the '$matches' argument to avoid computing them, just count.
 			$count = preg_match_all( $needle, $haystack );
+			Wikimedia\restoreWarnings();
 
 			if ( $count === false ) {
 				throw new AFPUserVisibleException(
