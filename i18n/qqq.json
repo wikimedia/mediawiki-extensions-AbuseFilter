@@ -562,6 +562,7 @@
 	"apihelp-query+abusefilters-example-2": "{{doc-apihelp-example|query+abusefilters}}",
 	"apihelp-query+abuselog-description": "{{doc-apihelp-description|query+abuselog}}",
 	"apihelp-query+abuselog-summary": "{{doc-apihelp-summary|query+abuselog}}",
+	"apihelp-query+abuselog-param-logid": "{{doc-apihelp-param|query+abuselog|logid}}",
 	"apihelp-query+abuselog-param-start": "{{doc-apihelp-param|query+abuselog|start}}",
 	"apihelp-query+abuselog-param-end": "{{doc-apihelp-param|query+abuselog|end}}",
 	"apihelp-query+abuselog-param-user": "{{doc-apihelp-param|query+abuselog|user}}",

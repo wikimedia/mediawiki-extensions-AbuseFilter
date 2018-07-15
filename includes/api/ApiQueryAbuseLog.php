@@ -115,6 +115,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 
+		$this->addWhereIf( [ 'afl_id' => $params['logid'] ], isset( $params['logid'] ) );
+
 		$this->addWhereRange( 'afl_timestamp', $params['dir'], $params['start'], $params['end'] );
 
 		$db = $this->getDB();
@@ -180,10 +182,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			$entry = [];
 			if ( $fld_ids ) {
 				$entry['id'] = intval( $row->afl_id );
-				$entry['filter_id'] = '';
-				if ( $canSeeDetails ) {
-					$entry['filter_id'] = $row->afl_filter;
-				}
+				$entry['filter_id'] = $canSeeDetails ? $row->afl_filter : '';
 			}
 			if ( $fld_filter ) {
 				$globalIndex = AbuseFilter::decodeGlobalName( $row->afl_filter );
@@ -213,10 +212,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				$entry['result'] = $row->afl_actions;
 			}
 			if ( $fld_revid && !is_null( $row->afl_rev_id ) ) {
-				$entry['revid'] = '';
-				if ( $canSeeDetails ) {
-					$entry['revid'] = $row->afl_rev_id;
-				}
+				$entry['revid'] = $canSeeDetails ? $row->afl_rev_id : '';
 			}
 			if ( $fld_timestamp ) {
 				$ts = new MWTimestamp( $row->afl_timestamp );
@@ -259,6 +255,9 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 	 */
 	public function getAllowedParams() {
 		$params = [
+			'logid' => [
+				ApiBase::PARAM_TYPE => 'integer'
+			],
 			'start' => [
 				ApiBase::PARAM_TYPE => 'timestamp'
 			],
