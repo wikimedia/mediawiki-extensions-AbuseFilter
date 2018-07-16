@@ -1264,11 +1264,6 @@ class AbuseFilter {
 			// Don't log if we were only throttling.
 			if ( $thisLog['afl_actions'] != 'throttle' ) {
 				$log_rows[] = $thisLog;
-
-				if ( !$globalIndex ) {
-					$logged_local_filters[] = $filter;
-				}
-
 				// Global logging
 				if ( $globalIndex ) {
 					$title = Title::makeTitle( $thisLog['afl_namespace'], $thisLog['afl_title'] );
@@ -1279,6 +1274,8 @@ class AbuseFilter {
 
 					$central_log_rows[] = $centralLog;
 					$logged_global_filters[] = $globalIndex;
+				} else {
+					$logged_local_filters[] = $filter;
 				}
 			}
 		}
