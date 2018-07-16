@@ -361,7 +361,7 @@
 		},
 		"AbuseFilterPrivateLog": {
 			"value": false,
-			"description": "Whether users are allowed to access private information from a filter log entry."
+			"description": "Whether accessing private information from a filter log entry is logged."
 		},
 		"AbuseFilterForceSummary": {
 			"value": false,
