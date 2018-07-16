@@ -293,6 +293,13 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			'actions' => [
 				'disallow' => [],
 			]
+		],
+		21 => [
+			'af_pattern' => '1==1',
+			'af_public_comments' => 'Dangerous filter',
+			'actions' => [
+				'blockautopromote' => []
+			]
 		]
 	];
 	// phpcs:enable Generic.Files.LineLength
@@ -636,6 +643,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @return array [ expected consequences, actual consequences ]
 	 */
 	private function checkConsequences( $result, $actionParams, $consequences ) {
+		global $wgAbuseFilterRestrictions;
+
 		$expectedErrors = [];
 		$testErrorMessage = false;
 		foreach ( $consequences as $consequence => $ids ) {
@@ -705,6 +714,15 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 						break;
 					case 'throttle':
 						throw new UnexpectedValueException( 'Use self::testThrottleConsequence to test throttling' );
+					case 'blockautopromote':
+						// Aborts the hook with 'abusefilter-autopromote-blocked' error and prevent promotion.
+						$expectedErrors['blockautopromote'][] = 'abusefilter-autopromote-blocked';
+						$key = MediaWikiServices::getInstance()->getMainObjectStash()->get(
+							AbuseFilter::autoPromoteBlockKey( self::$mUser ) );
+						if ( !$key ) {
+							$testErrorMessage = "The key for blocking autopromotion wasn't set.";
+						}
+						break;
 					default:
 						throw new UnexpectedValueException( 'Consequence not recognized.' );
 				}
@@ -715,15 +733,20 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			}
 		}
 
-		// Errors have a priority order
-		$expected = $expectedErrors['warn'] ?? $expectedErrors['degroup'] ??
-			$expectedErrors['block'] ?? $expectedErrors['disallow'] ?? null;
-		if ( isset( $expectedErrors['degroup'] ) && $expected === $expectedErrors['degroup'] &&
-			isset( $expectedErrors['block'] ) ) {
-			// Degroup and block warning can be fired together
-			$expected = array_merge( $expectedErrors['degroup'], $expectedErrors['block'] );
-		} elseif ( !is_array( $expected ) ) {
-			$expected = (array)$expected;
+		if ( array_intersect_key( $expectedErrors, array_filter( $wgAbuseFilterRestrictions ) ) ) {
+			$filteredExpected = array_intersect_key(
+				$expectedErrors,
+				array_filter( $wgAbuseFilterRestrictions )
+			);
+			$expected = [];
+			foreach ( $filteredExpected as $values ) {
+				$expected = array_merge( $expected, $values );
+			}
+		} else {
+			$expected = $expectedErrors['warn'] ?? $expectedErrors['disallow'] ?? null;
+			if ( !is_array( $expected ) ) {
+				$expected = (array)$expected;
+			}
 		}
 
 		$errors = $result->getErrors();
@@ -736,6 +759,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			}
 		}
 
+		sort( $expected );
+		sort( $actual );
 		return [ $expected, $actual ];
 	}
 
@@ -908,6 +933,17 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					'summary' => 'Some summary'
 				],
 				[]
+			],
+			'Test for blockautopromote action.' => [
+				[ 21 ],
+				[
+					'action' => 'edit',
+					'target' => 'Rainbow',
+					'oldText' => '',
+					'newText' => '...',
+					'summary' => ''
+				],
+				[ 'blockautopromote' => [ 21 ] ],
 			],
 			[
 				[ 8, 10 ],

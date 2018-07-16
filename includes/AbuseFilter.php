@@ -961,6 +961,36 @@ class AbuseFilter {
 	}
 
 	/**
+	 * Unblocks autopromotion for the given user
+	 *
+	 * @param User $target
+	 * @param User $performer
+	 * @param string $msg The message to show in the log
+	 * @return bool True on success, false on failure
+	 */
+	public static function unblockAutopromote( User $target, User $performer, $msg ) {
+		$key = self::autoPromoteBlockKey( $target );
+		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
+		if ( !$stash->get( $key ) ) {
+			// Probably we already removed it
+			return false;
+		}
+		$stash->delete( $key );
+
+		$logEntry = new ManualLogEntry( 'rights', 'restoreautopromote' );
+		$logEntry->setTarget( Title::makeTitle( NS_USER, $target->getName() ) );
+		$logEntry->setComment( $msg );
+		// These parameters are unused in our message, but some parts of the code check for them
+		$logEntry->setParameters( [
+			'4::oldgroups' => [],
+			'5::newgroups' => []
+		] );
+		$logEntry->setPerformer( $performer );
+		$logEntry->publish( $logEntry->insert() );
+		return true;
+	}
+
+	/**
 	 * @param User $user
 	 * @return string
 	 */

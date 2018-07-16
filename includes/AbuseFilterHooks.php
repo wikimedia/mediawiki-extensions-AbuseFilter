@@ -38,6 +38,15 @@ class AbuseFilterHooks {
 			// Message: log-action-filter-suppress-abuselog
 			[ 'abuselog' => [ 'hide-afl', 'unhide-afl' ] ]
 		);
+		$wgActionFilteredLogs['rights'] = array_merge(
+			$wgActionFilteredLogs['rights'],
+			// Messages: log-action-filter-rights-blockautopromote,
+			// log-action-filter-rights-restoreautopromote
+			[
+				'blockautopromote' => [ 'blockautopromote' ],
+				'restoreautopromote' => [ 'restoreautopromote' ]
+			]
+		);
 	}
 
 	/**

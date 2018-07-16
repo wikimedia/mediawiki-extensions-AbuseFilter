@@ -1,7 +1,6 @@
 <?php
 
 use MediaWiki\Block\DatabaseBlock;
-use MediaWiki\MediaWikiServices;
 
 class AbuseFilterViewRevert extends AbuseFilterView {
 	/**
@@ -295,10 +294,12 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				$logEntry->publish( $logEntry->insert() );
 				return true;
 			case 'blockautopromote':
-				MediaWikiServices::getInstance()->getMainObjectStash()->delete(
-					AbuseFilter::autoPromoteBlockKey( User::newFromId( $result['userid'] ) )
-				);
-				return true;
+				$target = User::newFromId( $result['userid'] );
+				$msg = $this->msg(
+					'abusefilter-revert-reason', $this->mPage->mFilter, $this->mReason
+				)->inContentLanguage()->text();
+
+				return AbuseFilter::unblockAutopromote( $target, $this->getUser(), $msg );
 			case 'degroup':
 				// Pull the user's groups from the vars.
 				$oldGroups = $result['vars']->getVar( 'user_groups' )->toNative();
