@@ -1150,6 +1150,7 @@ class AbuseFilter {
 				'afl_timestamp' => wfGetDB( DB_REPLICA )->timestamp( wfTimestampNow() ),
 				'afl_namespace' => $title->getNamespace(),
 				'afl_title' => $title->getDBkey(),
+				'afl_action' => $action,
 				// DB field is not null, so nothing
 				'afl_ip' => ( $wgAbuseFilterLogIP ) ? $wgRequest->getIP() : ""
 			];
@@ -1159,7 +1160,7 @@ class AbuseFilter {
 				$log_template['afl_user_text'] = $vars->getVar( 'accountname' )->toString();
 			}
 
-			self::addLogEntries( $actions_taken, $log_template, $action, $vars, $group );
+			self::addLogEntries( $actions_taken, $log_template, $vars, $group );
 		}
 
 		return $status;
@@ -1240,13 +1241,10 @@ class AbuseFilter {
 	/**
 	 * @param array[] $actions_taken
 	 * @param array $log_template
-	 * @param string $action
 	 * @param AbuseFilterVariableHolder $vars
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 */
-	public static function addLogEntries( $actions_taken, $log_template, $action,
-		$vars, $group = 'default'
-	) {
+	public static function addLogEntries( $actions_taken, $log_template, $vars, $group = 'default' ) {
 		$dbw = wfGetDB( DB_MASTER );
 
 		$central_log_template = [
@@ -1262,7 +1260,6 @@ class AbuseFilter {
 			$globalIndex = self::decodeGlobalName( $filter );
 			$thisLog = $log_template;
 			$thisLog['afl_filter'] = $filter;
-			$thisLog['afl_action'] = $action;
 			$thisLog['afl_actions'] = implode( ',', $actions );
 
 			// Don't log if we were only throttling.
