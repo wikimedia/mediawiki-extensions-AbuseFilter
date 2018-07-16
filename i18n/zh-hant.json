@@ -562,6 +562,7 @@
 	"apihelp-query+abusefilters-example-2": "顯示一些關於過濾器的詳細內容。",
 	"apihelp-query+abuselog-description": "顯示由防濫用過濾器之一偵測到的事件。",
 	"apihelp-query+abuselog-summary": "顯示由防濫用過濾器之一偵測到的事件。",
+	"apihelp-query+abuselog-param-logid": "顯示帶有指定日誌 ID 的項目。",
 	"apihelp-query+abuselog-param-start": "起始列舉的時間戳記。",
 	"apihelp-query+abuselog-param-end": "終止列舉的時間戳記。",
 	"apihelp-query+abuselog-param-user": "僅顯示由指定使用者或 IP 地址所做出的項目。",

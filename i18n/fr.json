@@ -563,6 +563,7 @@
 	"apihelp-query+abusefilters-example-2": "Afficher certains détails sur les filtres.",
 	"apihelp-query+abuselog-description": "Afficher les événements détectés par l’un des filtres antiabus.",
 	"apihelp-query+abuselog-summary": "Affiche les événements capturés par un des filtres anti-abus.",
+	"apihelp-query+abuselog-param-logid": "Afficher une entrée avec l’ID de journal fourni.",
 	"apihelp-query+abuselog-param-start": "L’horodatage auquel commencer l’énumération.",
 	"apihelp-query+abuselog-param-end": "L’horodatage auquel terminer l’énumération.",
 	"apihelp-query+abuselog-param-user": "Afficher uniquement les entrées faites par un utilisateur ou une adresse IP donné.",

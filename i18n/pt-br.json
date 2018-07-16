@@ -26,7 +26,8 @@
 			"TheEduGobi",
 			"!Silent",
 			"Felipe L. Ewald",
-			"Eduardo Addad de Oliveira"
+			"Eduardo Addad de Oliveira",
+			"Pedrofariasm"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas às edições",
@@ -553,6 +554,7 @@
 	"apihelp-query+abusefilters-example-2": "Mostrar alguns detalhes sobre os filtros",
 	"apihelp-query+abuselog-description": "Mostrar os eventos que foram detectados por um dos filtros de abuso.",
 	"apihelp-query+abuselog-summary": "Mostrar os eventos que foram detectados por um dos filtros de abuso.",
+	"apihelp-query+abuselog-param-logid": "Mostre uma entrada com o log ID dado.",
 	"apihelp-query+abuselog-param-start": "O timestamp para começar a enumeração.",
 	"apihelp-query+abuselog-param-end": "O timestamp para parar a enumeração.",
 	"apihelp-query+abuselog-param-user": "Mostrar apenas as entradas feitas por um determinado usuário ou endereço IP.",

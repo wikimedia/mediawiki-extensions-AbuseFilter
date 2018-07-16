@@ -16,7 +16,8 @@
 			"Dvorapa",
 			"Danny B.",
 			"Ilimanaq29",
-			"Patriccck"
+			"Patriccck",
+			"Teslaton"
 		]
 	},
 	"abusefilter-desc": "Podrobuje editace automatickým heuristikám",
@@ -255,7 +256,7 @@
 	"abusefilter-edit-builder-op-comparison-equal": "Hodnota se rovná (==)",
 	"abusefilter-edit-builder-op-comparison-equal-strict": "Hodnota a typ se rovnají (===)",
 	"abusefilter-edit-builder-op-comparison-notequal": "Hodnota se nerovná (!=)",
-	"abusefilter-edit-builder-op-comparison-notequal-strict": "Hodnota a typs se nerovnají (!==)",
+	"abusefilter-edit-builder-op-comparison-notequal-strict": "Hodnota a typ se nerovnají (!==)",
 	"abusefilter-edit-builder-op-comparison-lt": "Menší než (<)",
 	"abusefilter-edit-builder-op-comparison-gt": "Větší než (>)",
 	"abusefilter-edit-builder-op-comparison-lte": "Menší nebo rovno (<=)",

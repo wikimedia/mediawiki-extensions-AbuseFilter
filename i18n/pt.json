@@ -552,6 +552,7 @@
 	"apihelp-query+abusefilters-example-2": "Mostrar alguns detalhes dos filtros",
 	"apihelp-query+abuselog-description": "Mostrar os eventos que foram detetados por um dos filtros de abuso.",
 	"apihelp-query+abuselog-summary": "Mostrar os eventos que foram detetados por um dos filtros de abuso.",
+	"apihelp-query+abuselog-param-logid": "Mostrar uma entrada com o identificador de registo fornecido.",
 	"apihelp-query+abuselog-param-start": "A data e hora onde começar a enumeração.",
 	"apihelp-query+abuselog-param-end": "A data e hora onde parar a enumeração.",
 	"apihelp-query+abuselog-param-user": "Mostrar só as entradas de um determinado utilizador ou endereço IP.",

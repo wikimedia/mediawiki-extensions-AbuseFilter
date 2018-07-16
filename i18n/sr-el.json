@@ -8,7 +8,8 @@
 			"Михајло Анђелковић",
 			"Matma Rex",
 			"Сербијана",
-			"Obsuser"
+			"Obsuser",
+			"Zoranzoki21"
 		]
 	},
 	"abusefilter-desc": "Izvršava automatsko heurističko filtriranje izmena",
@@ -262,7 +263,7 @@
 	"abusefilter-edit-builder-vars-all-links": "Sve spoljašnje veze u novom tekstu",
 	"abusefilter-edit-builder-vars-added-links": "Sve spoljašnje veze dodate u izmeni",
 	"abusefilter-edit-builder-vars-removed-links": "Sve spoljašnje veze uklonjene u izmeni",
-	"abusefilter-edit-builder-vars-old-text": "Vikitekst stare strane, pre izmene",
+	"abusefilter-edit-builder-vars-old-text": "Stari vikitekst pre izmene (nije više u upotrebi)",
 	"abusefilter-edit-builder-vars-new-text": "Novi vikitekst posle izmene",
 	"abusefilter-edit-builder-vars-new-text-stripped": "Tekst nove stranice, bez ikakvih obeležavanja",
 	"abusefilter-edit-builder-vars-new-html": "Raščlanjeni HTML izvor nove izmene",
@@ -270,7 +271,7 @@
 	"abusefilter-edit-builder-vars-restrictions-move": "Stepen zaštite stranice (premeštanje)",
 	"abusefilter-edit-builder-vars-old-text-stripped": "Tekst stare stranice, bez ikakvih obeležavanja",
 	"abusefilter-edit-builder-vars-old-links": "Veze na stranici, pre uređivanja",
-	"abusefilter-edit-builder-vars-old-html": "Vikitekst stare stranice, raščlanjen u HTML",
+	"abusefilter-edit-builder-vars-old-html": "Vikitekst stare stranice, raščlanjen u HTML (nije više u upotrebi)",
 	"abusefilter-edit-builder-vars-minor-edit": "Da li je izmena bila označena kao mala",
 	"abusefilter-edit-builder-vars-file-sha1": "Disperzija SHA1 sadržaja datoteke",
 	"abusefilter-filter-log": "Skorašnje izmene filtera",

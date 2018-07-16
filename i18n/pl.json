@@ -180,6 +180,7 @@
 	"abusefilter-edit": "Edytujesz filtr nadużyć",
 	"abusefilter-edit-subtitle": "Edytowanie filtru $1",
 	"abusefilter-edit-subtitle-new": "Tworzenie filtru",
+	"abusefilter-edit-token-not-match": "Edycja nie została zapisana! Zapisz ją ponownie.",
 	"abusefilter-edit-oldwarning": "<strong>Edytujesz starą wersję tego filtru. Statystyki są notowane dla najnowszej wersji filtru. Jeśli zapiszesz zmiany, zostaną nadpisane wszystkie późniejsze wersje od tej, którą edytujesz.</strong> &bull; [[Special:AbuseFilter/history/$2|Powrót do historii filtru]]",
 	"abusefilter-edit-status-label": "Statystyki:",
 	"abusefilter-edit-status": "{{PLURAL:$1|Dla ostatniej $1 akcji|W ostatnich $1 akcjach}} ten filtr pasował do $2 ($3%).",

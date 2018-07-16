@@ -561,6 +561,7 @@
 	"apihelp-query+abusefilters-example-2": "Показать дополнительную информацию о фильтрах",
 	"apihelp-query+abuselog-description": "Отображение событий, на которых сработал один из фильтров злоупотреблений.",
 	"apihelp-query+abuselog-summary": "Отображение событий, на которых сработал один из фильтров злоупотреблений.",
+	"apihelp-query+abuselog-param-logid": "Показать запись с данным ID журнала.",
 	"apihelp-query+abuselog-param-start": "Временная метка, с которой начать перечисление.",
 	"apihelp-query+abuselog-param-end": "Временная метка, на которой закончить перечисление.",
 	"apihelp-query+abuselog-param-user": "Показать только записи, связанные с данным участником или IP-адресом.",
