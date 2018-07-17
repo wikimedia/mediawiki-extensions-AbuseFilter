@@ -202,7 +202,7 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	public function intEval( $code ) {
-		// Setup, resetting
+		// Reset all class members to their default value
 		$this->mCode = $code;
 		$this->mTokens = AbuseFilterTokenizer::tokenize( $code );
 		$this->mPos = 0;
@@ -1059,9 +1059,9 @@ class AbuseFilterParser {
 			$needle = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $needle );
 			$needle = "/$needle/u";
 
-			// Suppress and restore are here for the same reason as T177744
+			// Suppress and restore needed per T177744
 			Wikimedia\suppressWarnings();
-			// Omit the '$matches' argument to avoid computing them, just count.
+
 			$count = preg_match_all( $needle, $haystack );
 			Wikimedia\restoreWarnings();
 
@@ -1320,18 +1320,15 @@ class AbuseFilterParser {
 
 			$is_found = strpos( $string, $needle ) !== false;
 			if ( $is_found === $is_any ) {
-				// If I'm here and it's ANY (OR) it means that something is     found.
-				// Just enough! Found!
-				// If I'm here and it's ALL (AND) it means that something isn't found.
-				// Just enough! Not found!
+				// If I'm here and it's ANY (OR) => something is found.
+				// If I'm here and it's ALL (AND) => nothing is found.
+				// In both cases, we've had enough.
 				return $is_found;
 			}
 		}
 
-		// If I'm here and it's ANY (OR) it means that nothing     was  found:
-		// return false (because $is_any is true)
-		// If I'm here and it's ALL (AND) it means that everything were found:
-		// return true  (because $is_any is false)
+		// If I'm here and it's ANY (OR) => nothing was found: return false ($is_any is true)
+		// If I'm here and it's ALL (AND) => everything was found: return true ($is_any is false)
 		return ! $is_any;
 	}
 
@@ -1385,8 +1382,7 @@ class AbuseFilterParser {
 	 * @return mixed
 	 */
 	protected static function ccnorm( $s ) {
-		// Instantiate a single version of the equivset so the data is not loaded
-		// more than once.
+		// Instantiate a single version of the equivset so the data is only loaded once.
 		if ( !self::$equivset ) {
 			self::$equivset = new Equivset();
 		}

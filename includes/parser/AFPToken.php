@@ -36,7 +36,6 @@
  * * Atom (A) - return value
  */
 class AFPToken {
-	// Types of token
 	const TNONE = 'T_NONE';
 	const TID = 'T_ID';
 	const TKEYWORD = 'T_KEYWORD';

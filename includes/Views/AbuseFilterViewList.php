@@ -12,7 +12,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$request = $this->getRequest();
 		$config = $this->getConfig();
 
-		// Status info...
+		// Show filter performance statistics
 		$this->showStatus();
 
 		$out->addWikiMsg( 'abusefilter-intro' );
@@ -27,7 +27,6 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$out->addHTML( $link );
 		}
 
-		// Options.
 		$conds = [];
 		$deleted = $request->getVal( 'deletedfilters' );
 		$furtherOptions = $request->getArray( 'furtheroptions', [] );
@@ -229,8 +228,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 			'default' => $furtherOptions
 		];
 
-		// ToDo: Since this is only for saving space, we should convert it
-		// to use a 'hide-if'
+		// ToDo: Since this is only for saving space, we should convert it to use a 'hide-if'
 		if ( $searchEnabled ) {
 			$formDescriptor['querypattern'] = [
 				'name' => 'querypattern',

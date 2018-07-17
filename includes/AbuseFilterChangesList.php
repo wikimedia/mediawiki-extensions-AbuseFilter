@@ -38,7 +38,7 @@ class AbuseFilterChangesList extends OldChangesList {
 
 		$s .= ' '.$this->msg( 'parentheses' )->rawParams( $examineLink )->escaped();
 
-		// If we have a match...
+		// Add CSS classes for match and not match
 		if ( isset( $rc->filterResult ) ) {
 			$class = $rc->filterResult ?
 				'mw-abusefilter-changeslist-match' :

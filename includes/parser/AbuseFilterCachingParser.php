@@ -79,8 +79,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 	public function evalNode( AFPTreeNode $node ) {
 		// A lot of AbuseFilterParser features rely on $this->mCur->pos or
 		// $this->mPos for error reporting.
-		// FIXME: this is a hack which needs to be removed when the parsers are
-		// merged.
+		// FIXME: this is a hack which needs to be removed when the parsers are merged.
 		$this->mPos = $node->position;
 		$this->mCur->pos = $node->position;
 

@@ -53,8 +53,7 @@ class AFPTreeNode {
 	// filter language.  The format is (keyword, left operand, right operand).
 	const KEYWORD_OPERATOR = 'KEYWORD_OPERATOR';
 
-	// UNARY is either unary minus or unary plus.  The format is (operator,
-	// operand).
+	// UNARY is either unary minus or unary plus.  The format is (operator, operand).
 	const UNARY = 'UNARY';
 
 	// ARRAY_INDEX is an operation of accessing an array by an offset.  The format
