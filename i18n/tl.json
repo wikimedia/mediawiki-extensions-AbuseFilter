@@ -153,7 +153,6 @@
 	"abusefilter-edit-action-tag": "Tatakan ang pagbabago para sa karagdagang pagsusuri.",
 	"abusefilter-edit-throttle-count": "Bilang ng papayagang mga kilos:",
 	"abusefilter-edit-throttle-period": "Panahong saklaw:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|segundo|mga segundo}}",
 	"abusefilter-edit-throttle-groups": "Siiling nakapangkat sa pamamagitan ng:\n:''(isa bawat guhit, pagsamahing may mga kuwit)''",
 	"abusefilter-throttle-details": "Panatilihing $1 {{PLURAL:$1|action|actions}} kada- $2 {{PLURAL:$2|second|seconds}}, sa mga grupong naitakda na: $3",
 	"abusefilter-edit-warn-message": "Mensahe ng sistemang gagamitin para sa babala:",

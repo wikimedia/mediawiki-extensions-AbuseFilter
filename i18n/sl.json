@@ -152,7 +152,6 @@
 	"abusefilter-edit-action-tag": "Označi urejanje za nadaljnji pregled",
 	"abusefilter-edit-throttle-count": "Število dovoljenih dejanj:",
 	"abusefilter-edit-throttle-period": "Časovno obdobje:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekunda|sekundi|sekunde|sekund}}",
 	"abusefilter-edit-throttle-groups": "Zaduši skupino po:\n:''(ena na vrstico, združeno z vejicami)''",
 	"abusefilter-edit-warn-message": "Sistemsko sporočilo, uporabljeno za opozorilo:",
 	"abusefilter-edit-warn-other": "Drugo sporočilo",

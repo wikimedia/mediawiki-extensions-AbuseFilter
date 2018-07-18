@@ -191,7 +191,6 @@
 	"abusefilter-edit-action-tag": "Etiquetar la edición pa revisión posterior",
 	"abusefilter-edit-throttle-count": "Númberu d'aiciones a permitir:",
 	"abusefilter-edit-throttle-period": "Periodu de tiempu:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|segundu|segundos}}",
 	"abusefilter-edit-throttle-groups": "Agrupar la regulación por:\n:''(unu por llinia, combinar con comes)''",
 	"abusefilter-throttle-details": "Permitir $1 {{PLURAL:$1|aición|aiciones}} cada {{PLURAL:$2|segundu|$2 segundos}}, regular el grupu por: $3",
 	"abusefilter-edit-warn-message": "Mensaxe del sistema a usar pal avisu:",

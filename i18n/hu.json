@@ -178,7 +178,6 @@
 	"abusefilter-edit-action-tag": "Szerkesztés felcímkézése későbbi ellenőrzésre.",
 	"abusefilter-edit-throttle-count": "Engedélyezett műveletek száma:",
 	"abusefilter-edit-throttle-period": "Időtartam:",
-	"abusefilter-edit-throttle-seconds": "{{PLURAL:$1|egy|$1}} másodperc",
 	"abusefilter-edit-throttle-groups": "Érintett csoportok:\n:''(soronként egy, csoportosítás vesszővel)''",
 	"abusefilter-edit-warn-message": "Figyelmeztetéshez használt rendszerüzenet:",
 	"abusefilter-edit-warn-other": "Más üzenet",

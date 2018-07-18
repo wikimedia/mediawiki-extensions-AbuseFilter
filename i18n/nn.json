@@ -171,7 +171,6 @@
 	"abusefilter-edit-action-tag": "Merk endringa for vidare vurdering.",
 	"abusefilter-edit-throttle-count": "Tal på tillatne handlingar:",
 	"abusefilter-edit-throttle-period": "Tidsperiode:",
-	"abusefilter-edit-throttle-seconds": "{{PLURAL:$1|eitt sekund|$1 sekund}}",
 	"abusefilter-edit-throttle-groups": "Grupper snøggleik etter:\n:''(eitt for kvar line, kombiner med komma)''",
 	"abusefilter-edit-warn-message": "Systemmelding som skal verta nytta for åtvaringar:",
 	"abusefilter-edit-warn-other": "Anna melding",

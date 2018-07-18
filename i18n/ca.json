@@ -177,7 +177,6 @@
 	"abusefilter-edit-action-tag": "Marca l'edició per a una revisió posterior",
 	"abusefilter-edit-throttle-count": "Nombre d'accions a permetre:",
 	"abusefilter-edit-throttle-period": "Període de temps:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|segon|segons}}",
 	"abusefilter-edit-throttle-groups": "Agrupar la reiteració per:\n:''(un per línia, separat per comes)''",
 	"abusefilter-edit-warn-message": "Missatge del sistema a usar com a avís:",
 	"abusefilter-edit-warn-other": "Un altre missatge",

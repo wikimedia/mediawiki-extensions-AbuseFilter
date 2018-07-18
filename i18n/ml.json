@@ -154,7 +154,6 @@
 	"abusefilter-edit-action-tag": "കൂടുതൽ സംശോധനത്തിനായി തിരുത്ത് റ്റാഗ് ചെയ്യുക",
 	"abusefilter-edit-throttle-count": "അനുവദിക്കപ്പെട്ടിരിക്കുന്ന പ്രവർത്തനങ്ങളുടെ എണ്ണം:",
 	"abusefilter-edit-throttle-period": "കാലയളവ്:",
-	"abusefilter-edit-throttle-seconds": "{{PLURAL:$1|ഒരു സെക്കന്റ്|$1 സെക്കന്റുകൾ}}",
 	"abusefilter-edit-throttle-groups": "സംഘ ത്വരകം:\n:(അർദ്ധവിരാമമുപയോഗിച്ച് യോജിപ്പിച്ച, ഒരു വരിയിൽ ഒരെണ്ണം വീതം)",
 	"abusefilter-edit-warn-message": "മുന്നറിയിപ്പിനായി ഉപയോഗിക്കുന്ന വ്യവസ്ഥാ സന്ദേശം:",
 	"abusefilter-edit-warn-other": "മറ്റു സന്ദേശം",

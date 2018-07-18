@@ -117,7 +117,6 @@
 	"abusefilter-edit-action-rangeblock": "/16-Range speere, uut dän die Benutser stamt.",
 	"abusefilter-edit-throttle-count": "Antaal toulätte Aktione:",
 	"abusefilter-edit-throttle-period": "Tiedruum:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|Sekunde|Sekunden}}",
 	"abusefilter-edit-throttle-groups": "Räägele foar ju Gruppendröisel:\n:''(een pro Riege, ferbiende mäd Kommata)''",
 	"abusefilter-edit-warn-message": "Systemättergjucht foar ju Woarskauenge:",
 	"abusefilter-edit-denied": "Du koast do Details fon disse Sieuwe nit ienkiekje, deeruum dät do ferstopped sunt",

@@ -70,7 +70,6 @@
 	"abusefilter-edit-action-tag": "Пазначыць праўку для далейшай праверкі.",
 	"abusefilter-edit-throttle-count": "Колькасць дазволеных дзеянняў:",
 	"abusefilter-edit-throttle-period": "Перыяд часу:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|секунда|секунды|секунд}}",
 	"abusefilter-edit-throttle-groups": "Звужэнне паводле груп:\n:''(па адным на радку, падзяляць коскамі)''",
 	"abusefilter-edit-warn-message": "Сістэмнае паведамленне для папярэджання:",
 	"abusefilter-edit-warn-other": "Іншае паведамленне",

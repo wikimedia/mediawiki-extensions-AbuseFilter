@@ -70,7 +70,6 @@
 	"abusefilter-edit-enabled": "Aktipan sariang ko",
 	"abusefilter-edit-lastmod-text": "$1 sampai $2",
 	"abusefilter-edit-consequences": "Nan dibuek jikok tapek",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|detik}}",
 	"abusefilter-edit-throttle-groups": "Kalompok pambateh jo:\n:''(ciek per barih, pisahan jo koma)''",
 	"abusefilter-edit-main": "Parameter sariang",
 	"abusefilter-edit-done-subtitle": "Sariang lah disuntiang",

@@ -169,7 +169,6 @@
 	"abusefilter-edit-action-tag": "Žymė pakeitimų, skirtų vėlesniam peržiūrėjimui",
 	"abusefilter-edit-throttle-count": "Leidžiamų veiksmų skaičius:",
 	"abusefilter-edit-throttle-period": "Laiko periodas:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekundė|sekundės|sekundžių}}",
 	"abusefilter-edit-throttle-groups": "Statistikos rinkimo grupė:\n:''(viena eilutėje, jungti kableliais)''",
 	"abusefilter-edit-warn-message": "Sisteminis pranešimas, kuris naudojamas perspėjimui:",
 	"abusefilter-edit-warn-other": "Kitas pranešimas",

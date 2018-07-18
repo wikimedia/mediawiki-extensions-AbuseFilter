@@ -160,7 +160,6 @@
 	"abusefilter-edit-action-tag": "Balisar la modificacion per una relectura ulteriora.",
 	"abusefilter-edit-throttle-count": "Nombre d’accions d'autorizar :",
 	"abusefilter-edit-throttle-period": "Periòde de temps :",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|segonda|segondas}}",
 	"abusefilter-edit-throttle-groups": "Grop detengut per :\n:''(un per linha, separat per de virgulas)''",
 	"abusefilter-edit-warn-message": "Messatge del sistèma d'utilizar per l'avertiment :",
 	"abusefilter-edit-warn-other": "Autre messatge",

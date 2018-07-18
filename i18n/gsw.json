@@ -151,7 +151,6 @@
 	"abusefilter-edit-action-tag": "Markier d Bearbeitig fir e speteri Iberpriefig.",
 	"abusefilter-edit-throttle-count": "Aazahl vun erlaubte Aktione:",
 	"abusefilter-edit-throttle-period": "Zytruum:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|Sekund|Sekunde}}",
 	"abusefilter-edit-throttle-groups": "Regle fir d Gruppedrossle:\n:''(eini pro Zyyle, verbinde mit Kommas)''",
 	"abusefilter-edit-warn-message": "Syschtemnochricht fir d Warnig:",
 	"abusefilter-edit-warn-other": "Anderi Nochricht",

@@ -154,7 +154,6 @@
 	"abusefilter-edit-action-tag": "İrəlidə gözdən keçirmə üçün dəyişikliyi etiketlə.",
 	"abusefilter-edit-throttle-count": "ایجازه وئریلمیش فالیت‌لرین سایی:",
 	"abusefilter-edit-throttle-period": "زامان پئریودو:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|ثانیه|ثانیه}}",
 	"abusefilter-edit-throttle-groups": "قروپ حیسه‌یه ائدن:\n:' (هر سطره بیر دنه، وئرگولله بیرلش‌دیرین)'",
 	"abusefilter-edit-warn-message": "خبردارلیق اوچون ایستیفاده ائدیلن سیستئم مئساژی:",
 	"abusefilter-edit-warn-other": "دیگر مئساژ",

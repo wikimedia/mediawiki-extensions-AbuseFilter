@@ -170,7 +170,6 @@
 	"abusefilter-edit-action-tag": "Tag de cangiaminde pè n'otre revisiune",
 	"abusefilter-edit-throttle-count": "Numere de aziune permesse:",
 	"abusefilter-edit-throttle-period": "Periode de tiembe:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|'u seconde|le seconde}}",
 	"abusefilter-edit-throttle-groups": "Gruppe throttle de:\n:''(une pè righe, combinate cu 'na virgole)''",
 	"abusefilter-edit-warn-message": "Messagge de sisteme da ausà pè l'avvise:",
 	"abusefilter-edit-warn-other": "Otre messagge",

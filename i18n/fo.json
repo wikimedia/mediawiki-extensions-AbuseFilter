@@ -128,7 +128,6 @@
 	"abusefilter-edit-action-degroup": "Tak brúkaran burtur frá øllum bólkum við framíhjárættindum",
 	"abusefilter-edit-action-block": "Sperra brúkaran og/ella IP adressuna, so viðkomandi ikki sleppur at skriva",
 	"abusefilter-edit-throttle-period": "Tíðarskeið:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekund|sekundir}}",
 	"abusefilter-edit-warn-other": "Onnur boð",
 	"abusefilter-edit-warn-actions": "Handlingar:",
 	"abusefilter-edit-warn-preview": "Forskoðan av valdu boðum",

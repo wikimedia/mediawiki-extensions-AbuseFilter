@@ -152,7 +152,6 @@
 	"abusefilter-edit-action-tag": "Билгалде нисдар кхин хьажа",
 	"abusefilter-edit-throttle-count": "Шордина динаршан дуккхалла:",
 	"abusefilter-edit-throttle-period": "Хенан дакъа:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|секунд}}",
 	"abusefilter-edit-warn-message": "ДӀахьедарна системин хаамаш:",
 	"abusefilter-edit-warn-other": "Кхин хаам",
 	"abusefilter-edit-warn-other-label": "Кхечу хааман агӀон цӀе:\n:''(MediaWiki префикс йоцуш)''",

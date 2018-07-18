@@ -178,7 +178,6 @@
 	"abusefilter-edit-action-tag": "Σήμανση της επεξεργασίας με ετικέτα για περαιτέρω επιθεώρηση",
 	"abusefilter-edit-throttle-count": "Αριθμός επιτρεπόμενων ενεργειών:",
 	"abusefilter-edit-throttle-period": "Χρονική περίοδος:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|δευτερόλεπτο|δευτερόλεπτα}}",
 	"abusefilter-edit-throttle-groups": "Εμπόδιση ομάδας από:\n:''(ένα ανά γραμμή, συνδυασμός με κόμματα)''",
 	"abusefilter-edit-warn-message": "Μήνυμα συστήματος για χρησιμοποίηση για προειδοποίηση:",
 	"abusefilter-edit-warn-other": "Άλλο μήνυμα",

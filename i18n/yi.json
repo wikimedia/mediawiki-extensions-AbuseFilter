@@ -132,7 +132,6 @@
 	"abusefilter-edit-action-tag": "מארקירן די רעדאקטירורונג פאר שפעטערער רעצענסיע",
 	"abusefilter-edit-throttle-count": "צאל ערלויבטע אקציעס:",
 	"abusefilter-edit-throttle-period": "תקופה פון צײַט:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|סעקונדע|סעקונדעס}}",
 	"abusefilter-edit-warn-message": "סיסטעם־מעלדונג פאר ווארענונג:",
 	"abusefilter-edit-warn-other": "אנדער מעלדונג",
 	"abusefilter-edit-warn-other-label": "בלאטנאמען  פון אנדער מעלדונג:\n:''(אן מעדיעוויקי פרעפיקס)''",

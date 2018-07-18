@@ -169,7 +169,6 @@
 	"abusefilter-edit-action-tag": "संपादनास, पुढील समीक्षणाकरता खूण करा",
 	"abusefilter-edit-throttle-count": "परवानगी द्यायच्या क्रियांची संख्या:",
 	"abusefilter-edit-throttle-period": "कालावधी",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|सेकंद}}",
 	"abusefilter-edit-warn-message": "पुर्व/सजगता सूचना देण्यासाठी व्यवस्था संदेश निवडा:",
 	"abusefilter-edit-warn-other": "इतर संदेश",
 	"abusefilter-edit-warn-other-label": "इतर संदेशाकरीता पृष्ठशीर्षक:\n:''(मिडियाविकि उपसर्गा शिवाय)''",

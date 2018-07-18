@@ -164,7 +164,6 @@
 	"abusefilter-edit-action-tag": "Tandai suntingan untuk ditinjau lagi nanti",
 	"abusefilter-edit-throttle-count": "Jumlah tindakan yang diizinkan:",
 	"abusefilter-edit-throttle-period": "Periode waktu:",
-	"abusefilter-edit-throttle-seconds": "{{PLURAL:$1||}}$1 detik",
 	"abusefilter-edit-throttle-groups": "Kelompokkan katup menurut:\n:''(satu per baris, kombinasi dengan koma)''",
 	"abusefilter-edit-warn-message": "Pesan sistem yang digunakan untuk memberi peringatan:",
 	"abusefilter-edit-warn-other": "Pesan lainnya",

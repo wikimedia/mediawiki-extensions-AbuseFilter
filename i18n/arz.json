@@ -130,7 +130,6 @@
 	"abusefilter-edit-action-tag": "اوسم التعديل لمراجعه أخرى.",
 	"abusefilter-edit-throttle-count": "عدد الأفعال المسموح بها:",
 	"abusefilter-edit-throttle-period": "فتره من الزمن:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|ثانية|ثانية}}",
 	"abusefilter-edit-throttle-groups": "حد المجموعه بواسطة:\n:''(واحده لكل سطر، ادمج بالفاصلات)''",
 	"abusefilter-edit-warn-message": "رساله النظام للاستخدام عند التحذير:",
 	"abusefilter-edit-warn-other": "رساله أخرى",

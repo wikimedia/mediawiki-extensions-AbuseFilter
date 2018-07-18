@@ -152,7 +152,6 @@
 	"abusefilter-edit-action-tag": "Tichëtté la modìfica per na revision adissional",
 	"abusefilter-edit-throttle-count": "Nùmer d'assion da përmëtte:",
 	"abusefilter-edit-throttle-period": "Durà ëd temp:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|second|second}}",
 	"abusefilter-edit-throttle-groups": "Argropé la moderassion për:\n:''(un për linia, separà con dle vìrgole)''",
 	"abusefilter-edit-warn-message": "Mëssagi ëd sistema da dovré për l'avis:",
 	"abusefilter-edit-warn-other": "Àutr mëssagi",

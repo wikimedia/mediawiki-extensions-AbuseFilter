@@ -131,7 +131,6 @@
 	"abusefilter-edit-action-tag": "Die Beoorbeitung für en spätre Üwerprüfung markiere.",
 	"abusefilter-edit-throttle-count": "Oonzoohl von erlaubter Aktione:",
 	"abusefilter-edit-throttle-period": "Zeitraum:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|Sekund|Sekunde}}",
 	"abusefilter-edit-throttle-groups": "Rechle für die Gruppedrossel:\n:''(ein jede Zeil, verbinne mit Kommata)''",
 	"abusefilter-edit-warn-message": "Systemnachricht für die Warnung:",
 	"abusefilter-edit-warn-other": "Andre Systemnachricht",

@@ -153,7 +153,6 @@
 	"abusefilter-edit-action-tag": "Změnu za dalšu přehladku markěrować.",
 	"abusefilter-edit-throttle-count": "Ličba dowolenych akcijow",
 	"abusefilter-edit-throttle-period": "Časowy interwal",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekunda|sekundźe|sekundy|sekundow}}",
 	"abusefilter-edit-throttle-groups": "Haćenje skupiny přez:\n:''(jedne na linku, z komami zwjazać)''",
 	"abusefilter-edit-warn-message": "Systemowa zdźělanka za warnowanje:",
 	"abusefilter-edit-warn-other": "Druha powěsć",

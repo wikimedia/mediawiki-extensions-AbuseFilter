@@ -7,7 +7,6 @@
 	"abusefilter-edit-global": "Apliko këtë filtër globalisht",
 	"abusefilter-edit-throttle-count": "Numri i veprimeve të lejojë:",
 	"abusefilter-edit-throttle-period": "Periudha kohore:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekonda|dytë}}",
 	"abusefilter-edit-throttle-groups": "Grupi mbyt nga::''(një për çdo rresht, të kombinuar me presje)''",
 	"abusefilter-edit-warn-message": "mesazh Sistemit për t'u përdorur për paralajmërim:",
 	"abusefilter-edit-warn-other": "mesazh të tjera",

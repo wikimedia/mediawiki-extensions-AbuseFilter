@@ -143,7 +143,6 @@
 	"abusefilter-edit-action-tag": "Etiketo redaktimin për shqyrtim të mëtejshëm",
 	"abusefilter-edit-throttle-count": "Numri i veprimeve për të lejuar:",
 	"abusefilter-edit-throttle-period": "Periudha kohore:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekondë|sekonda}}",
 	"abusefilter-edit-throttle-groups": "Vavula (throttle) nga:\n: ' ' (një për linjë, e kombinuar me presje) ' '",
 	"abusefilter-edit-warn-message": "Porosi e sistemit për t'u përdorur për paralajmërim:",
 	"abusefilter-edit-warn-other": "Porosi të tjera",

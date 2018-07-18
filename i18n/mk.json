@@ -192,7 +192,6 @@
 	"abusefilter-edit-action-tag": "Означи го уредувањето за понатамошна проверка",
 	"abusefilter-edit-throttle-count": "Број на дозволени дејства:",
 	"abusefilter-edit-throttle-period": "Временски период:",
-	"abusefilter-edit-throttle-seconds": "{{PLURAL:$1|една секунда|$1 секунди}}",
 	"abusefilter-edit-throttle-groups": "Истисок по групи:\n:''(еден по ред, комбинирање со запирки)''",
 	"abusefilter-throttle-details": "Дозволи $1 {{PLURAL:$1|дејство|дејства}} секои $2 {{PLURAL:$2|секунда|секунди}}, групно наметнување од: $3",
 	"abusefilter-edit-warn-message": "Системска порака за предупредувањето:",

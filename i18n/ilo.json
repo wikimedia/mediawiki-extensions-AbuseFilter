@@ -155,7 +155,6 @@
 	"abusefilter-edit-action-tag": "Ikkan ti etiketa ti inurnos para iti adu pay a panagrepaso",
 	"abusefilter-edit-throttle-count": "Bilang dagiti ipalubos a tignay:",
 	"abusefilter-edit-throttle-period": "Paset ti panawen:",
-	"abusefilter-edit-throttle-seconds": "$1 a {{PLURAL:$1|segundo|segsegundo}}",
 	"abusefilter-edit-throttle-groups": "Pinabuntog a grupo babaen ti:\n:''(maysa tunggal maysa a linia, iraman nga addaan ti koma)''",
 	"abusefilter-edit-warn-message": "Mensahe ti sistema nga usaren para iti ballaag:",
 	"abusefilter-edit-warn-other": "Sabali pay a mensahe",

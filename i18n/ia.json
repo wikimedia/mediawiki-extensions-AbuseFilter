@@ -160,7 +160,6 @@
 	"abusefilter-edit-action-tag": "Etiquettar le modification pro revision ulterior.",
 	"abusefilter-edit-throttle-count": "Numero de actiones a permitter:",
 	"abusefilter-edit-throttle-period": "Periodo de tempore:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|secunda|secundas}}",
 	"abusefilter-edit-throttle-groups": "Gruppar le limites de frequentia per:\n:''(un per linea; combinar los con commas)''",
 	"abusefilter-edit-warn-message": "Message de systema pro usar qua advertimento:",
 	"abusefilter-edit-warn-other": "Altere message",

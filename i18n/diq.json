@@ -165,7 +165,6 @@
 	"abusefilter-edit-action-tag": "Qe kontrole raverî ena vurnayîşî etiket bike",
 	"abusefilter-edit-throttle-count": "Amarê hereketan ke destur guret:",
 	"abusefilter-edit-throttle-period": "Wext:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|saniye|saniyeyan}}",
 	"abusefilter-edit-throttle-groups": ":''(her satır re yew heb, pê virgul piyawanê-piya besnê)''",
 	"abusefilter-edit-warn-message": "Mesajê sistemî ke qe îkaz kerdişî viraziyo:",
 	"abusefilter-edit-warn-other": "mesajo bin",

@@ -37,7 +37,6 @@
 	"abusefilter-edit-new": "Nije filter",
 	"abusefilter-edit-save": "Filter bewarje",
 	"abusefilter-edit-id": "Filternûmer:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekonde|sekonden}}",
 	"abusefilter-edit-history": "Skiednis:",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Optelle (+)",
 	"abusefilter-edit-builder-op-arithmetic-subtraction": "Oftrekke (-)",

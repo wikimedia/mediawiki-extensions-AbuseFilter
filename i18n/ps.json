@@ -73,7 +73,6 @@
 	"abusefilter-edit-rules": "شرطونه:",
 	"abusefilter-edit-notes": "يادونې:\n:''(شخصي)",
 	"abusefilter-edit-throttle-period": "د وخت موده:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|ثانيه|ثانيې}}",
 	"abusefilter-edit-warn-other": "بل پيغام",
 	"abusefilter-edit-warn-actions": "چارې:",
 	"abusefilter-edit-warn-edit": "ټاکلی پيغام سمول/جوړول",

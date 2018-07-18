@@ -148,7 +148,6 @@
 	"abusefilter-edit-action-tag": "Balisar lo changement por una rèvision a vegnir",
 	"abusefilter-edit-throttle-count": "Nombro d’accions ôtorisâs :",
 	"abusefilter-edit-throttle-period": "Moment :",
-	"abusefilter-edit-throttle-seconds": "$1 second{{PLURAL:$1|a|es}}",
 	"abusefilter-edit-throttle-groups": "Apondre la moderacion per :\n:''(yona per legne, sèparâ per des virgules)''",
 	"abusefilter-edit-warn-message": "Mèssâjo sistèmo a utilisar por l’avèrtissement :",
 	"abusefilter-edit-warn-other": "Ôtro mèssâjo",

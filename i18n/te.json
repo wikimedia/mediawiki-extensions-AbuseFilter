@@ -144,7 +144,6 @@
 	"abusefilter-edit-action-tag": "ఈ మార్పును సమీక్షార్థం గుర్తు పెట్టు",
 	"abusefilter-edit-throttle-count": "అనుమతించాల్సిన చర్యల సంఖ్య:",
 	"abusefilter-edit-throttle-period": "కాల వ్యవధి:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|క్షణం|క్షణాలు}}",
 	"abusefilter-edit-warn-message": "హెచ్చరికకై ఉపయోగించాల్సిన వ్యవస్థా సందేశం:",
 	"abusefilter-edit-warn-other": "ఇతర సందేశం",
 	"abusefilter-edit-warn-other-label": "ఇతర సందేశం యొక్క పేజీ పేరు:\n:''(మీడియావికీ ఉపసర్గ లేకుండా)''",

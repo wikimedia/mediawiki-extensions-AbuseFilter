@@ -53,7 +53,6 @@
 	"abusefilter-edit-enabled": "Тевс нолдавозо сувтемесь",
 	"abusefilter-edit-deleted": "Тешкстамс нардазекс",
 	"abusefilter-edit-notes": "Тешкстамот:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|секунда|секундат}}",
 	"abusefilter-edit-warn-actions": "Тевтеематне:",
 	"abusefilter-edit-warn-edit": "Шкамс/Витнемс-петнемс кочказь сёрминенть",
 	"abusefilter-edit-main": "Сувтемень параметратне",

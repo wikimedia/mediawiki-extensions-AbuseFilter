@@ -168,7 +168,6 @@
 	"abusefilter-edit-action-tag": "İleride gözden geçirme için değişikliği etiketle.",
 	"abusefilter-edit-throttle-count": "İzin verilen eylem sayısı:",
 	"abusefilter-edit-throttle-period": "Zaman periyodu:",
-	"abusefilter-edit-throttle-seconds": "$1 saniye",
 	"abusefilter-edit-throttle-groups": "Grup kısma yapan:\n:''(her satıra bir tane, virgülle birleştirin)''",
 	"abusefilter-edit-warn-message": "Uyarı için kullanılan sistem mesajı:",
 	"abusefilter-edit-warn-other": "Diğer mesaj",

@@ -155,7 +155,6 @@
 	"abusefilter-edit-action-tag": "Immarka din il-modifika għal aktar verifika",
 	"abusefilter-edit-throttle-count": "Numru ta' azzjonijiet permessi:",
 	"abusefilter-edit-throttle-period": "Perjodu ta' żmien:",
-	"abusefilter-edit-throttle-seconds": "{{PLURAL:$1|sekonda|$1 sekondi}}",
 	"abusefilter-edit-throttle-groups": "Kriterji għar-raggruppament għad-dewmien:\n:''(waħda għal kull linja, imwaħħda bil-virgoli)''",
 	"abusefilter-edit-warn-message": "Messaġġ tas-sistema li għandu jiġu wżat bħala avviż:",
 	"abusefilter-edit-warn-other": "Messaġ ieħor",

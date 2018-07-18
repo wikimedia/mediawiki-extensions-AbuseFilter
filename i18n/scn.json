@@ -154,7 +154,6 @@
 	"abusefilter-edit-action-tag": "Marca lu canciamentu comu canciamentu d'arrivìdiri megghiu",
 	"abusefilter-edit-throttle-count": "Nùmmiru d’azzioni di cunzèntiri:",
 	"abusefilter-edit-throttle-period": "Pirìudu di tempu:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|secunnu|secunni}}",
 	"abusefilter-edit-throttle-groups": "Raggruppa l'allintamenti a secunna di:\n:''(unu pi riga, cumminari chî vìrguli)''",
 	"abusefilter-edit-warn-message": "Missaggiu di sistema d'adupirari comu avvisu:",
 	"abusefilter-edit-warn-other": "Àutru missaggiu",

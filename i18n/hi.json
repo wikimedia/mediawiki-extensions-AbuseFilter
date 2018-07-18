@@ -173,7 +173,6 @@
 	"abusefilter-edit-action-tag": "समिक्षा के किए बदलाव को टैग करें",
 	"abusefilter-edit-throttle-count": "संख्या जितने कार्यों की अनुमति देनी है:",
 	"abusefilter-edit-throttle-period": "समय की अवधि:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|सॅकेंड|सॅकेंड}}",
 	"abusefilter-edit-warn-message": "चेतावनी के लिये प्रयोग किया जाने वाला अंतरफल संदेश:",
 	"abusefilter-edit-warn-other": "अन्य संदेश",
 	"abusefilter-edit-warn-other-label": "अन्य संदेश का पृष्ठ नाम:\n:''(मीडियाविकी उपसर्ग के बिना)''",

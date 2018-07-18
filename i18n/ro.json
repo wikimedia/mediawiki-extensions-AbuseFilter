@@ -166,7 +166,6 @@
 	"abusefilter-edit-action-tag": "Marchează modificarea pentru revizuire ulterioară",
 	"abusefilter-edit-throttle-count": "Număr de acțiuni permise:",
 	"abusefilter-edit-throttle-period": "Perioadă de timp:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|secundă|secunde}}",
 	"abusefilter-edit-throttle-groups": "Grupează ?throttle? după:\n:''(una pe linie, despărțite prin virgule)''",
 	"abusefilter-edit-warn-message": "Mesaj de sistem de utilizat pentru avertizare:",
 	"abusefilter-edit-warn-other": "Alt mesaj",

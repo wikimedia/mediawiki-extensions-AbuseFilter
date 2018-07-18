@@ -144,7 +144,6 @@
 	"abusefilter-edit-action-tag": "Segna la modifica par na verifica ulteriore",
 	"abusefilter-edit-throttle-count": "Nùmaro de azioni de permétar:",
 	"abusefilter-edit-throttle-period": "Perìodo de tenpo:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|secondo|secondi}}",
 	"abusefilter-edit-throttle-groups": "Criteri de ragruppamento par el ritardo:\n:''(uno par riga opure unìi da virgole)''",
 	"abusefilter-edit-warn-message": "Messajo de sistema da doparar come avertimento:",
 	"abusefilter-edit-warn-other": "Altro messajo",

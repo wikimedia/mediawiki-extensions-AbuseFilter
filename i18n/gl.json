@@ -186,7 +186,6 @@
 	"abusefilter-edit-action-tag": "Etiquetar a edición para unha revisión posterior",
 	"abusefilter-edit-throttle-count": "Número de accións a permitir:",
 	"abusefilter-edit-throttle-period": "Período de tempo:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|segundo|segundos}}",
 	"abusefilter-edit-throttle-groups": "Grupo acelerado por:\n:''(un por liña, combinar con comas)''",
 	"abusefilter-edit-warn-message": "Mensaxe do sistema a usar para a advertencia:",
 	"abusefilter-edit-warn-other": "Outra mensaxe",

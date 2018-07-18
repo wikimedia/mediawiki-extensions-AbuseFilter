@@ -215,7 +215,6 @@
 	"abusefilter-edit-action-tag": "اوسم التعديل لمراجعة أخرى.",
 	"abusefilter-edit-throttle-count": "عدد الأفعال المسموح بها:",
 	"abusefilter-edit-throttle-period": "فترة من الزمن:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|ثانية|ثوانٍ}}",
 	"abusefilter-edit-throttle-groups": "حد المجموعة بواسطة:\n:''(واحدة لكل سطر، ادمج بالفاصلات)''",
 	"abusefilter-throttle-details": "السماح بـ$1 {{PLURAL:$1|إجراء|إجراءات}} كل $2 {{PLURAL:$2|ثانية|ثوانٍ}}، خنق المجموعة\nبواسطة: $3",
 	"abusefilter-edit-warn-message": "رسالة النظام للاستخدام عند التحذير:",

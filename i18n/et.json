@@ -186,7 +186,6 @@
 	"abusefilter-edit-action-tag": "Märgista muudatus edasiseks läbivaatuseks",
 	"abusefilter-edit-throttle-count": "Lubatud toimingute määr:",
 	"abusefilter-edit-throttle-period": "Ajavahemik:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekund|sekundit}}",
 	"abusefilter-edit-throttle-groups": "Rühma määratlus:\n:''(üks rea kohta, ühenda komadega)''",
 	"abusefilter-edit-warn-message": "Hoiatusena kasutatav süsteemisõnum:",
 	"abusefilter-edit-warn-other": "Muu sõnum",

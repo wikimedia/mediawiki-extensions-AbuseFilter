@@ -120,7 +120,6 @@
 	"abusefilter-edit-hitcount": "फिल्टर गणना:",
 	"abusefilter-edit-action-degroup": "सबै विशेषाधिकार प्राप्त समूहबाट प्रयोगकर्तालाई निकाल्ने",
 	"abusefilter-edit-throttle-period": "समयावधि:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|सेकेण्ड|सेकेण्ड}}",
 	"abusefilter-edit-warn-other": "अन्य सन्देशहरू",
 	"abusefilter-edit-warn-actions": "कार्य:",
 	"abusefilter-edit-warn-preview": "छानिएको सन्देशको पूर्वावलोकन",

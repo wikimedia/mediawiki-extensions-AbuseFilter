@@ -122,7 +122,6 @@
 	"abusefilter-edit-action-tag": "Özgerdişi ýene gözden geçiriler ýaly tegle",
 	"abusefilter-edit-throttle-count": "Rugsat berlen hereketleriň sany:",
 	"abusefilter-edit-throttle-period": "Wagt periody:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekunt|sekunt}}",
 	"abusefilter-edit-throttle-groups": "Topar gysyjy:\n:''(her setire bir sany, otur bilen birleşdiriň)''",
 	"abusefilter-edit-warn-message": "Duýduryş üçin ulanylýan ulgam habarlaşygy:",
 	"abusefilter-edit-warn-other": "Başga habarlaşyk",

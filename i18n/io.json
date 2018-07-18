@@ -40,7 +40,6 @@
 	"abusefilter-edit-save": "Registragar filtrilo",
 	"abusefilter-edit-rules": "Kondicioni:",
 	"abusefilter-edit-lastmod-text": "$1 da $2",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekundo|sekundi}}",
 	"abusefilter-edit-warn-other": "Altra mesajo",
 	"abusefilter-edit-done-subtitle": "La filtrilo redaktesas",
 	"abusefilter-edit-history": "Versionaro:",

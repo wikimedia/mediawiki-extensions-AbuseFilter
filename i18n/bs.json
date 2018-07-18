@@ -158,7 +158,6 @@
 	"abusefilter-edit-action-tag": "Označi izmjenu za buduće preglede.",
 	"abusefilter-edit-throttle-count": "Broja akcija za dozvolu:",
 	"abusefilter-edit-throttle-period": "Vremenski period:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekunda|sekunde|sekundi}}",
 	"abusefilter-edit-throttle-groups": "Grupa ukočena kod:\n:''(jedan po liniji, kombiniran sa zarezima)''",
 	"abusefilter-edit-warn-message": "Sistemska poruka koja se koristi za upozorenje:",
 	"abusefilter-edit-warn-other": "ostale poruke",

@@ -212,7 +212,6 @@
 	"abusefilter-edit-action-tag": "나중에 검토하기 위해 태그하기",
 	"abusefilter-edit-throttle-count": "허용할 동작 수:",
 	"abusefilter-edit-throttle-period": "주기:",
-	"abusefilter-edit-throttle-seconds": "$1{{PLURAL:$1|초}}",
 	"abusefilter-edit-throttle-groups": "속도 제한 단위:\n:(1줄당 1개씩, 쉼표로 여러 항목 구분)",
 	"abusefilter-throttle-details": "$2{{PLURAL:$2|초}}당 {{PLURAL:$1|동작}} $1회를 허용, 속도 제한 단위: $3",
 	"abusefilter-edit-warn-message": "경고할 때 사용할 시스템 메시지:",

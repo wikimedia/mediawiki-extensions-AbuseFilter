@@ -211,7 +211,6 @@
 	"abusefilter-edit-action-tag": "این ویرایش برای بازبینی بعدی علامت‌گذاری کن",
 	"abusefilter-edit-throttle-count": "تعداد اقدامات مجاز:",
 	"abusefilter-edit-throttle-period": "تناوب زمانی:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|ثانیه|ثانیه}}",
 	"abusefilter-edit-throttle-groups": "کنترل گروه توسط:\n:''(یکی در هر سطر بنویسید، با کاما تلفیق کنید)''",
 	"abusefilter-edit-warn-message": "پیغام سامانه برای استفاده در هشدار:",
 	"abusefilter-edit-warn-other": "پیام‌های دیگر",

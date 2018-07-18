@@ -114,7 +114,6 @@
 	"abusefilter-edit-action-block": "Erabiltzailea eta/edo IP helbidea blokeatu ediziorik egin ez dezan",
 	"abusefilter-edit-throttle-count": "Baimendu beharreko ekintza kopurua",
 	"abusefilter-edit-throttle-period": "Denbora periodoa:",
-	"abusefilter-edit-throttle-seconds": "{{PLURAL:$1|segundu bat|$1 segundu}}",
 	"abusefilter-edit-warn-other": "Beste mezu bat",
 	"abusefilter-edit-warn-actions": "Ekintzak:",
 	"abusefilter-edit-warn-preview": "Hautatutako mezuaren aurrebista erakutsi",

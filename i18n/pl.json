@@ -215,7 +215,6 @@
 	"abusefilter-edit-action-tag": "Oznacz edycję do późniejszego sprawdzenia",
 	"abusefilter-edit-throttle-count": "Liczba dozwolonych akcji",
 	"abusefilter-edit-throttle-period": "Okres",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekunda|sekundy|sekund}}",
 	"abusefilter-edit-throttle-groups": "Filtruj grupy\n:''(po jednej na linię, rozdzielone przecinkami)''",
 	"abusefilter-edit-warn-message": "System wiadomości używanych do ostrzegania:",
 	"abusefilter-edit-warn-other": "Inny komunikat",

@@ -210,7 +210,6 @@
 	"abusefilter-edit-action-tag": "Позначити зміну для подальшої перевірки",
 	"abusefilter-edit-throttle-count": "Кількість дозволених дій:",
 	"abusefilter-edit-throttle-period": "Відтинок часу:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|секунда|секунди|секунд}}",
 	"abusefilter-edit-throttle-groups": "Звуження за групами:\n:''(один на рядок, з'єднання комами) ''",
 	"abusefilter-edit-warn-message": "Системне повідомлення для попереджень:",
 	"abusefilter-edit-warn-other": "Інше повідомлення",

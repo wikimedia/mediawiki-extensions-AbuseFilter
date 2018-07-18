@@ -144,7 +144,6 @@
 	"abusefilter-edit-action-tag": "ඉදිරි නිර්ක්ෂණ සඳහා සංස්කරණය ටැග් කරන්න",
 	"abusefilter-edit-throttle-count": "අවසරදෙන ක්‍රියාකාරකම් ගණන:",
 	"abusefilter-edit-throttle-period": "කාලපරිච්ඡේදය:",
-	"abusefilter-edit-throttle-seconds": "{{PLURAL:$1|තත්පර|තත්පර}} $1 ක්",
 	"abusefilter-edit-warn-message": "අවවාද සඳහා යොදාගත හැකි පද්ධති පණිවුඩය:",
 	"abusefilter-edit-warn-other": "අනිත් පණිවුඩය",
 	"abusefilter-edit-warn-other-label": "අනෙත් පණිවුඩයේ පිටු නාමය:\n:''(මාධ්‍යවිකි උපසර්ගය නොමැතිව)''",

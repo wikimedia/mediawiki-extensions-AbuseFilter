@@ -138,7 +138,6 @@
 	"abusefilter-edit-action-tag": "ଆଗକୁ ହେବାକୁ ଥିବା ସମୀକ୍ଷା ପାଇଁ ଏହି ସମ୍ପାଦନାକୁ ଚିହ୍ନିତ କରାଗଲା",
 	"abusefilter-edit-throttle-count": "ଅନୁମୋଦିତ କାମ ସଂଖ୍ୟା:",
 	"abusefilter-edit-throttle-period": "କାର୍ଯ୍ୟକାଳ:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|ସେକେଣ୍ଡ|ସେକେଣ୍ଡ}}",
 	"abusefilter-edit-throttle-groups": "ଦଳ ଗୋଳିଆଘାଣ୍ଟିଆର କାରଣ:\n:''(ଧାଡ଼ି ପ୍ରତି ଗୋଟିଏ, କମା ଦେଇ ଅଲଗା କରାଯାଇଛି)''",
 	"abusefilter-edit-warn-message": "ଚେତାବନୀ ପାଇଁ ବ୍ୟବହାର ହେବାକୁ ଥିବା ସିଷ୍ଟମ ମେସେଜ:",
 	"abusefilter-edit-warn-other": "ଭିନ୍ନ ମେସେଜ",

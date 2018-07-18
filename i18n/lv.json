@@ -157,7 +157,6 @@
 	"abusefilter-edit-action-tag": "Atzīmēt labojumu tālākai pārbaudei",
 	"abusefilter-edit-throttle-count": "Atļauto darbību skaits:",
 	"abusefilter-edit-throttle-period": "Laika periods:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekundes|sekunde|sekundes}}",
 	"abusefilter-edit-throttle-groups": "Grupēt pēc:\n:''(pa vienam katrā rindiņā, apvienot ar komatiem)''",
 	"abusefilter-edit-warn-message": "Sistēmas paziņojums, ko lietot kā brīdinājumu:",
 	"abusefilter-edit-warn-other": "Cits paziņojums",

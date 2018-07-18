@@ -143,7 +143,6 @@
 	"abusefilter-edit-action-tag": "Merkja breytinguna til frekari skoðunar",
 	"abusefilter-edit-throttle-count": "Fjöldi aðgerða sem eru leyfðir:",
 	"abusefilter-edit-throttle-period": "Tímalengd:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekúnda|sekúndur}}",
 	"abusefilter-edit-warn-message": "Kerfisskilaboð sem verða notuð til viðvörunar:",
 	"abusefilter-edit-warn-other": "Önnur skilaboð",
 	"abusefilter-edit-warn-other-label": "Nafn viðvörunarskilaboðanna:\n:''(í nafnrýminu Strengir)''",

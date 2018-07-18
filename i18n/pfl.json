@@ -151,7 +151,6 @@
 	"abusefilter-edit-action-tag": "B'awaidung fa ä schbederi Iwabrifung makiere",
 	"abusefilter-edit-throttle-count": "Õzahl vun zulässische Maßnõhme:",
 	"abusefilter-edit-throttle-period": "Zaidabschnidd:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|Sekund|Sekunde}}",
 	"abusefilter-edit-throttle-groups": "Reschle zu drossle fa die Grubb:\n:''(äni bro Zail, midm Komma vabunde)''",
 	"abusefilter-edit-warn-message": "Sischdemnochrischd fa die Waanung:",
 	"abusefilter-edit-warn-other": "Õnnare Nochrischde",

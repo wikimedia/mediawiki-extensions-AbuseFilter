@@ -28,7 +28,6 @@
 	"abusefilter-tools-reautoconfirm-user": "ਵਰਤੋਂਕਾਰ:",
 	"abusefilter-edit-notes": "ਟਿੱਪਣੀਆਂ:\n:''(ਨਿੱਜੀ}''",
 	"abusefilter-edit-throttle-period": "ਸਮੇਂ ਦੀ ਮਿਆਦ:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|ਸਕਿੰਟ}}",
 	"abusefilter-edit-warn-other": "ਹੋਰ ਸੁਨੇਹਾ",
 	"abusefilter-edit-warn-other-label": "ਹੋਰ ਸੁਨੇਹਾ ਦੇ ਸਫ਼ੇ ਦਾ ਨਾਂ:\n:''(MediaWiki ਅਗੇਤਰ ਤੋਂ ਬਗ਼ੈਰ)''",
 	"abusefilter-edit-warn-actions": "ਕਾਰਵਾਈਆਂ:",

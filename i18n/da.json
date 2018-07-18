@@ -170,7 +170,6 @@
 	"abusefilter-edit-action-tag": "Mærk redigeringen til yderligere gennemgang",
 	"abusefilter-edit-throttle-count": "Antal tilladte handlinger:",
 	"abusefilter-edit-throttle-period": "Tidsrum:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekund|sekunder}}",
 	"abusefilter-edit-throttle-groups": "Gruppebegrænsning efter:\n:''(én pr. linje, kombiner med kommaer)''",
 	"abusefilter-edit-warn-message": "Systemmeddelelse som skal bruges til advarsel:",
 	"abusefilter-edit-warn-other": "Anden meddelelse",

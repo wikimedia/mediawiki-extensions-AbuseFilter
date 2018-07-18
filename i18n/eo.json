@@ -161,7 +161,6 @@
 	"abusefilter-edit-action-tag": "Flagi la redakton por plua kontrolado",
 	"abusefilter-edit-throttle-count": "Nombro de agoj por permisigi",
 	"abusefilter-edit-throttle-period": "Tempdaŭro:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekundo|sekundoj}}",
 	"abusefilter-edit-throttle-groups": "Trafike limigi de:\n:''(po unu por linio, kombini per komoj)''",
 	"abusefilter-edit-warn-message": "Sistema mesaĝo por uzi kiel averto:",
 	"abusefilter-edit-warn-other": "Alia mesaĝo",

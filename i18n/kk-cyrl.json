@@ -138,7 +138,6 @@
 	"abusefilter-edit-action-block": "Қатысушыны және/немесе IP мекен жайды өңдеуден бұғаттау",
 	"abusefilter-edit-action-tag": "Бұдан кейінгі тексерулер үшін өңдемені белгілеу",
 	"abusefilter-edit-throttle-count": "Рұқсат етілген әрекеттер саны:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|секунд|секунд}}",
 	"abusefilter-edit-warn-message": "Ескерту үшін жүйе хабарын қолдану:",
 	"abusefilter-edit-warn-other": "Басқа хабар",
 	"abusefilter-edit-warn-other-label": "Басқа хабар бетінің аты:\n:''(МедиаУики префиксінсіз)''",

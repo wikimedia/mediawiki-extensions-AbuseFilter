@@ -135,7 +135,6 @@
 	"abusefilter-edit-action-tag": "Tandhani besutan nedya dipriksa mengko",
 	"abusefilter-edit-throttle-count": "Cacahé laku sing dililakaké:",
 	"abusefilter-edit-throttle-period": "Periode wektu:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|detik|detik}}",
 	"abusefilter-edit-throttle-groups": "Klompokaké klep miturut:\n:''(siji per larik, gabung karo koma)''",
 	"abusefilter-edit-warn-message": "Layang sistem sing dianggo kanggo pèngetan:",
 	"abusefilter-edit-warn-other": "Layang liya",

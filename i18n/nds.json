@@ -124,7 +124,6 @@
 	"abusefilter-edit-action-tag": "Ännern för genauer Ankieken kennteken.",
 	"abusefilter-edit-throttle-count": "Tall verlöövt Akschonen:",
 	"abusefilter-edit-throttle-period": "Tiedduur:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|Sekunn|Sekunnen}}",
 	"abusefilter-edit-throttle-groups": "Regeln för dat Begrenzen för de Gruppen:\n:''(een per Reeg, verbinnen mit Kommas)''",
 	"abusefilter-edit-warn-message": "Systemnaricht för Wohrschauen:",
 	"abusefilter-edit-warn-other": "Annere Naricht",

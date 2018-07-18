@@ -161,7 +161,6 @@
 	"abusefilter-edit-action-tag": "ติดป้ายกำกับการแก้ไขเพื่อทบทวนต่อไป",
 	"abusefilter-edit-throttle-count": "จำนวนการกระทำที่อนุญาต:",
 	"abusefilter-edit-throttle-period": "ช่วงเวลา:",
-	"abusefilter-edit-throttle-seconds": "$1 วินาที",
 	"abusefilter-edit-warn-message": "ข้อความระบบที่ใช้เตือน",
 	"abusefilter-edit-warn-other": "ข้อความอื่น",
 	"abusefilter-edit-warn-other-label": "ชื่อหน้าของข้อความอื่น:\n:''(โดยไม่มีคำขึ้นต้นมีเดียวิกิ)''",

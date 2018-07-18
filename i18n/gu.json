@@ -94,7 +94,6 @@
 	"abusefilter-edit-notes": "નોંધો:",
 	"abusefilter-edit-lastmod-text": "$1, $2 દ્વારા",
 	"abusefilter-edit-throttle-period": "સમયગાળો:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|સેકંડ|સેકંડો}}",
 	"abusefilter-edit-warn-other": "બીજા સંદેશ",
 	"abusefilter-edit-warn-actions": "ક્રિયાઓ:",
 	"abusefilter-edit-viewhistory": "આ ગાળકનો ઇતિહાસ જુઓ",

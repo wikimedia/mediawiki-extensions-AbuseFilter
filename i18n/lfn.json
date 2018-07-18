@@ -10,7 +10,6 @@
 	"abusefilter-log-search-title": "Titulo:",
 	"abusefilter-log-search-submit": "Xerca",
 	"abusefilter-edit-status-label": "Statistica",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|secondo|secondos}}",
 	"abusefilter-edit-history": "Istoria",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Soma (+)",
 	"abusefilter-edit-builder-op-arithmetic-subtraction": "Sutrae (-)",

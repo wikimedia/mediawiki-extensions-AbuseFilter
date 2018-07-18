@@ -178,7 +178,6 @@
 	"abusefilter-edit-action-tag": "Отбелязване на редакцията за понататъшно преглеждане",
 	"abusefilter-edit-throttle-count": "Брой позволени действия:",
 	"abusefilter-edit-throttle-period": "Период от време:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|секунда|секунди}}",
 	"abusefilter-edit-throttle-groups": "Ограничаване по групи:\n:„(по една на ред, комбинирани със запетаи)“",
 	"abusefilter-edit-warn-message": "Използвано системно съобщение за предупреждение:",
 	"abusefilter-edit-warn-other": "Друго съобщение",

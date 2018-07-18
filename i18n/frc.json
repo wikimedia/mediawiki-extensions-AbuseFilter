@@ -21,7 +21,6 @@
 	"abusefilter-tools-reautoconfirm-user": "Useur:",
 	"abusefilter-edit-flags": "Flags:",
 	"abusefilter-edit-lastmod-text": "$1 par $2",
-	"abusefilter-edit-throttle-seconds": "$1 seconde{{PLURAL:$1||s}}",
 	"abusefilter-edit-tools": "Outils:",
 	"abusefilter-edit-builder-group-op-arithmetic": "Opérateurs arithmétiques",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Addition (+)",

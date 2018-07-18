@@ -149,7 +149,6 @@
 	"abusefilter-edit-action-tag": "Кэлин бэрэбиэркэлиир курдук бэлиэтээ.",
 	"abusefilter-edit-throttle-count": "Көҥүллэммит дьайыылар ахсааннара:",
 	"abusefilter-edit-throttle-period": "Кэм далааһына:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|сөкүүндэ|сөкүүндэ}}",
 	"abusefilter-edit-throttle-groups": "Бөлөхтөрүнэн ылҕааһын:\n:''(устуруокаҕа биирдии, соппутуойунан араарыы)''",
 	"abusefilter-edit-warn-message": "Тиһилик сэрэтэр биллэриитэ:",
 	"abusefilter-edit-warn-other": "Атын сурук",

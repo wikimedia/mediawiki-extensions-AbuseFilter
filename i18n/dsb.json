@@ -154,7 +154,6 @@
 	"abusefilter-edit-action-tag": "Změnu za dalšne pśeglědanje markěrowaś.",
 	"abusefilter-edit-throttle-count": "Licba dowólonych akcijow:",
 	"abusefilter-edit-throttle-period": "Casowy interwal:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekunda|sekunźe|sekundy|sekundow}}",
 	"abusefilter-edit-throttle-groups": "Wobgranicowanje spěšnosći wobźěłanja kupki pśez:\n:''(jadna na smužku, někotare z komami)''",
 	"abusefilter-edit-warn-message": "Systemowa powěźeńka za warnowanje:",
 	"abusefilter-edit-warn-other": "Druga powěźeńka",

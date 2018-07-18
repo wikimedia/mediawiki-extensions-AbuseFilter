@@ -126,7 +126,6 @@
 	"abusefilter-edit-action-blockautopromote": "İstifadəçinin avtotəsdiqlənmiş statusunu ləğv et",
 	"abusefilter-edit-action-block": "İstifadəçini və/və ya IP ünvanı blokla",
 	"abusefilter-edit-throttle-count": "İcazə verilmiş fəaliyyətlərin sayı:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|saniyə|saniyə}}",
 	"abusefilter-edit-warn-other": "Digər mesaj",
 	"abusefilter-edit-warn-actions": "Fəaliyyətlər:",
 	"abusefilter-edit-warn-preview": "Seçilmiş bildirişə ilkin baxış",

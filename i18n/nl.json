@@ -198,7 +198,6 @@
 	"abusefilter-edit-action-tag": "De bewerking voor nadere beoordeling markeren.",
 	"abusefilter-edit-throttle-count": "Aantal toe te laten handelingen:",
 	"abusefilter-edit-throttle-period": "Tijdsduur:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|seconde|seconden}}",
 	"abusefilter-edit-throttle-groups": "Groepsbeperkingen per tijdseenheid op basis van:\n:''(één per regel, combineren met komma's)''",
 	"abusefilter-edit-warn-message": "Te gebruiken systeembericht voor waarschuwing:",
 	"abusefilter-edit-warn-other": "Ander bericht",

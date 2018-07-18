@@ -114,7 +114,6 @@
 	"abusefilter-edit-notes": "تێبینییەکان:",
 	"abusefilter-edit-lastmod": "پاڵوێنە دواجار گۆڕدراوە لە:",
 	"abusefilter-edit-lastmod-text": "$1 بەدەستی $2",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|چرکە|چرکە}}",
 	"abusefilter-edit-warn-message": "پەیامی سیستەم بۆ بەکارھێنان لە وشیارکردنەوەدا:",
 	"abusefilter-edit-warn-other": "پەیامی تر",
 	"abusefilter-edit-warn-other-label": "ناوی پەڕەی پەیامی تر:\n:''(بێ پێشگری میدیاویکی)''",

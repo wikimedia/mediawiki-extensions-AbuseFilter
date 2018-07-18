@@ -151,7 +151,6 @@
 	"abusefilter-edit-action-tag": "Balizenniñ ar c'hemm evit un adlenn a-c'houdevezh.",
 	"abusefilter-edit-throttle-count": "Niver a oberiadennoù aotreet :",
 	"abusefilter-edit-throttle-period": "Prantad amzer :",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|eilenn|eilenn}}",
 	"abusefilter-edit-throttle-groups": "Stollañ ar merañ dre :\n:''(unan dre linenn, ha dispartiet gant virgulennoù)''",
 	"abusefilter-edit-warn-message": "Kemenn reizhiad da implijout da gemenn-diwall :",
 	"abusefilter-edit-warn-other": "Kemennadenn all",

@@ -150,7 +150,6 @@
 	"abusefilter-edit-action-tag": "Позначіти едітованя про далшу перевірку",
 	"abusefilter-edit-throttle-count": "Чісло доволеных дїй:",
 	"abusefilter-edit-throttle-period": "Часовый інтервал:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|секунда|секунды|секунд}}",
 	"abusefilter-edit-throttle-groups": "Ліміты раховати оддїлено про:\n:\"(каждый рядок єден ліміт, ґрупы оддїлюйте комами)\"",
 	"abusefilter-edit-warn-message": "Сістемне повідомлїня зображене як варованя:",
 	"abusefilter-edit-warn-other": "Іншы повідомлїня",

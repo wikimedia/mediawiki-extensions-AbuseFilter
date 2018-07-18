@@ -164,7 +164,6 @@
 	"abusefilter-edit-action-tag": "Đánh dấu sửa đổi này để xem xét về sau.",
 	"abusefilter-edit-throttle-count": "Số tác vụ cho phép:",
 	"abusefilter-edit-throttle-period": "Thời gian:",
-	"abusefilter-edit-throttle-seconds": "$1 giây",
 	"abusefilter-edit-throttle-groups": "Chặn nhóm theo:\n:''(mỗi nhóm 1 dòng, kết hợp với dấu phẩy)''",
 	"abusefilter-edit-warn-message": "Thông báo hệ thống dùng để cảnh báo:",
 	"abusefilter-edit-warn-other": "Thông điệp khác",

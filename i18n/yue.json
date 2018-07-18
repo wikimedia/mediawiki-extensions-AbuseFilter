@@ -131,7 +131,6 @@
 	"abusefilter-edit-action-tag": "摘編輯再睇落去",
 	"abusefilter-edit-throttle-count": "可以容許嘅動作:",
 	"abusefilter-edit-throttle-period": "時段:",
-	"abusefilter-edit-throttle-seconds": "$1秒",
 	"abusefilter-edit-throttle-groups": "由組截住:\n:''(一行一個，用逗號組合)''",
 	"abusefilter-edit-warn-message": "用系統訊息去警告:",
 	"abusefilter-edit-warn-other": "其它訊息",

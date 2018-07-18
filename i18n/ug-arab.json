@@ -150,7 +150,6 @@
 	"abusefilter-edit-action-tag": "تېخىمۇ ئىلگىرىلەپ تەكشۈرۈش ئۈچۈن بۇ تەھرىرلەشكە بەلگە سال",
 	"abusefilter-edit-throttle-count": "يول قويۇلىدىغان مەشغۇلات قېتىم سانى:",
 	"abusefilter-edit-throttle-period": "ۋاقىت ئۇزۇنلۇقى:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|سېكۇنت|سېكۇنت}}",
 	"abusefilter-edit-throttle-groups": "چەكلىنىدىغان گۇرۇپپا:\n''(ھەر قۇرغا بىردىن، ئىنگلىزچە پەش بىلەن ئۇلىنىدۇ)'':",
 	"abusefilter-edit-warn-message": "ئاگاھلاندۇرۇشقا ئىشلىتىلىدىغان سىستېما ئۇچۇرى:",
 	"abusefilter-edit-warn-other": "باشقا ئۇچۇر",

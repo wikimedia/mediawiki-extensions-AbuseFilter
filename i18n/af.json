@@ -118,7 +118,6 @@
 	"abusefilter-edit-action-tag": "Tag die wysig vir verdere hersiening",
 	"abusefilter-edit-throttle-count": "Aantal aksies om toe te laat:",
 	"abusefilter-edit-throttle-period": "Tydperk:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekonde|sekondes}}",
 	"abusefilter-edit-warn-message": "Stelsel boodskap te gebruik vir die waarskuwing:",
 	"abusefilter-edit-warn-other": "Ander boodskap",
 	"abusefilter-edit-warn-actions": "Handelinge:",

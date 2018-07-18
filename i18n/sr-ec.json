@@ -178,7 +178,6 @@
 	"abusefilter-edit-action-tag": "Означи измену за будући преглед",
 	"abusefilter-edit-throttle-count": "Број дозвољених радњи:",
 	"abusefilter-edit-throttle-period": "Временски период:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|секунд|секунда|секунди}}",
 	"abusefilter-edit-throttle-groups": "Групно успоравање према:\n:''(један по реду, заједно са запетама)''",
 	"abusefilter-edit-warn-message": "Системска порука која ће се користити за упозорење:",
 	"abusefilter-edit-warn-other": "Остале поруке",

@@ -202,7 +202,6 @@
 	"abusefilter-edit-action-tag": "後で再検討するために編集にタグを付ける",
 	"abusefilter-edit-throttle-count": "許可される操作数:",
 	"abusefilter-edit-throttle-period": "期間:",
-	"abusefilter-edit-throttle-seconds": "$1{{PLURAL:$1|秒}}",
 	"abusefilter-edit-throttle-groups": "制限をグループ化する:\n:''(1行に1つ、複数項目はカンマ区切り)''",
 	"abusefilter-edit-warn-message": "警告に使用するシステムメッセージ:",
 	"abusefilter-edit-warn-other": "他のメッセージ",

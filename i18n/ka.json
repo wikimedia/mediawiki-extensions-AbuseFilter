@@ -152,7 +152,6 @@
 	"abusefilter-edit-action-tag": "მონიშნეთ შესწორება დამატებითი შემოწმებისთვის",
 	"abusefilter-edit-throttle-count": "ნებადართული მოქმედებების რაოდენობა:",
 	"abusefilter-edit-throttle-period": "დროის პერიოდი:",
-	"abusefilter-edit-throttle-seconds": "$1 წამი",
 	"abusefilter-edit-throttle-groups": "ჯგუფების შემცირება:\n:''(თითოსი ერთ ხაზზე, მძიმეებით შეერება)''",
 	"abusefilter-edit-warn-message": "სისტემური შტყობინება გაფრთხილებისთვის:",
 	"abusefilter-edit-warn-other": "სხვა შეტყობინება",

@@ -182,7 +182,6 @@
 	"abusefilter-edit-action-tag": "Merk endringen for videre gjennomgang.",
 	"abusefilter-edit-throttle-count": "Antall tillatte handlinger:",
 	"abusefilter-edit-throttle-period": "Tidsperiode:",
-	"abusefilter-edit-throttle-seconds": "{{PLURAL:$1|ett sekund|$1 sekund}}",
 	"abusefilter-edit-throttle-groups": "Grupper fart etter:\n:''(en på hver linje, kombiner med kommaer)''",
 	"abusefilter-edit-warn-message": "Systemmelding å bruke for advarsel:",
 	"abusefilter-edit-warn-other": "Annen melding",

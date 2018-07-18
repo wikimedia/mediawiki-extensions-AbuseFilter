@@ -160,7 +160,6 @@
 	"abusefilter-edit-action-tag": "Tag suntingan ini untuk penyemakan selanjutnya",
 	"abusefilter-edit-throttle-count": "Bilangan tindakan untuk dibenarkan:",
 	"abusefilter-edit-throttle-period": "Tempoh masa",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|saat|saat}}",
 	"abusefilter-edit-throttle-groups": "Pendikit kumpulan ikut:\n:''(satu sebaris, gabungkan dengan tanda koma)''",
 	"abusefilter-edit-warn-message": "Pesanan sistem yang digunakan untuk amaran:",
 	"abusefilter-edit-warn-other": "Pesanan lain",

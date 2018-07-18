@@ -149,7 +149,6 @@
 	"abusefilter-edit-action-tag": "Mekeer de bewèrking veur later ketraol.",
 	"abusefilter-edit-throttle-count": "Taal ven gooj henjeling:",
 	"abusefilter-edit-throttle-period": "Tiedsdoer:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|second|second}}",
 	"abusefilter-edit-throttle-groups": "Groepsbepèrking per tiedseinhed op baas ven:\n:''(eine perlien, combinere mid komma)''",
 	"abusefilter-edit-warn-message": "Te broeke systeembrich bie waarsjoeng:",
 	"abusefilter-edit-warn-other": "Anger brich",

@@ -234,7 +234,6 @@
 	"abusefilter-edit-action-tag": "Marcar la edición para una revisión posterior",
 	"abusefilter-edit-throttle-count": "Número de acciones a permitir:",
 	"abusefilter-edit-throttle-period": "Período de tiempo:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|segundo|segundos}}",
 	"abusefilter-edit-throttle-groups": "Agrupar limitador por:\n:''(uno por línea, combinar con comas)''",
 	"abusefilter-edit-warn-message": "Mensaje del sistema para usar por la advertencia:",
 	"abusefilter-edit-warn-other": "Otro mensaje",

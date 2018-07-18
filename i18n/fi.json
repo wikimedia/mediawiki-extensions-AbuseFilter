@@ -190,7 +190,6 @@
 	"abusefilter-edit-action-tag": "Merkkaa muokkaus lisätarkastelun kohteeksi",
 	"abusefilter-edit-throttle-count": "Toimintojen sallittu määrä:",
 	"abusefilter-edit-throttle-period": "Aikaväli:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|sekunti|sekuntia}}",
 	"abusefilter-edit-throttle-groups": "Ryhmän määritys:\n:''(yksi per rivi, yhdistä pilkun avulla)''",
 	"abusefilter-edit-warn-message": "Varoitukseen käytettävä järjestelmäviesti:",
 	"abusefilter-edit-warn-other": "Muu viesti",

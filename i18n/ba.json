@@ -162,7 +162,6 @@
 	"abusefilter-edit-action-tag": "Үҙгәртеүҙе артабанғы тикшереү өсөн билдәләргә",
 	"abusefilter-edit-throttle-count": "Рөхсәт ителгән ғәмәлдәр һаны:",
 	"abusefilter-edit-throttle-period": "Ваҡыт арауығы:",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|1=секунд|секунд}}",
 	"abusefilter-edit-throttle-groups": "Группалар буйынса тарайтыу:\n:''(һәр юлға берҙе, өтөрҙәр менән айырырға)''",
 	"abusefilter-edit-warn-message": "Иҫкәрмә өсөн ҡулланылған система хәбәре:",
 	"abusefilter-edit-warn-other": "Башҡа хәбәр",

@@ -101,7 +101,6 @@
 	"abusefilter-edit-lastmod-text": "$1 ដោយ $2",
 	"abusefilter-edit-action-block": "ហាមឃាត់អ្នកប្រើប្រាស់ និង/ឬអាសយដ្ឋានIPពីការកែប្រែ",
 	"abusefilter-edit-throttle-period": "រយៈពេល៖",
-	"abusefilter-edit-throttle-seconds": "$1 {{PLURAL:$1|second|វិនាទី}}",
 	"abusefilter-edit-warn-message": "សារ​ប្រព័ន្ធ​ដែល​ប្រើ​ប្រាស់​សម្រាប់​ការ​ព្រមាន​៖",
 	"abusefilter-edit-warn-other": "សារ​ផ្សេងទៀត",
 	"abusefilter-edit-warn-other-label": "ឈ្មោះ​ទំព័រ​នៃ​សារ​ដទៃ​ផ្សេង​ទៀត​៖\n៖''(ដោយ​គ្មាន​បុព្វបទ​ MediaWiki)''",
