@@ -49,6 +49,33 @@ table.mw-abusefilter-list-scrollable {
 	overflow-x: auto;
 }
 
+.client-nojs .mw-abusefilter-javascript-tools {
+	display: none;
+}
+
+#mw-abusefilter-throttle-parameters,
+#mw-abusefilter-warn-parameters,
+#mw-abusefilter-tag-parameters,
+#mw-abusefilter-block-parameters {
+	width: 50%;
+	padding-left: 3em;
+}
+
+.mw-abusefilter-warn-preview-buttons {
+	text-align: center;
+}
+
+#mw-abusefilter-warn-preview {
+	border: 1px solid #a2a9b1;
+	margin: 2em;
+	padding: 1em;
+}
+
+.client-nojs #mw-abusefilter-export-link,
+.client-js #mw-abusefilter-export {
+	display: none;
+}
+
 tr.mw-abusefilter-list-disabled,
 tr.mw-abusefilter-list-disabled td {
 	color: #666;
@@ -94,6 +121,10 @@ fieldset.mw-abusefilter-edit-buttons {
 	max-width: 50em;
 }
 
+.client-nojs .mw-abusefilter-load-filter-id {
+	display: none;
+}
+
 #mw-abusefilter-syntaxresult,
 ul li.mw-abusefilter-changeslist-nomatch,
 ul li.mw-abusefilter-changeslist-match {
@@ -116,11 +147,6 @@ ul li.mw-abusefilter-changeslist-match {
 
 #mw-abusefilter-filter-tools {
 	display: inline;
-}
-
-.client-nojs #mw-abusefilter-export-link,
-.client-js #mw-abusefilter-export {
-	display: none;
 }
 
 .mw-abusefilter-history-buttons {

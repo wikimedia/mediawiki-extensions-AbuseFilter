@@ -6,7 +6,7 @@
  */
 /* global ace */
 
-( function ( mw, $ ) {
+( function ( mw, $, OO ) {
 	'use strict';
 
 	// Filter editor for JS and jQuery handling
@@ -18,7 +18,11 @@
 		// @var {jQuery}
 		$plainTextBox,
 		// Bool to determine what editor to use
-		useAce = false;
+		useAce = false,
+		// Infused OOUI elements
+		togglePreviewButton,
+		messageExisting,
+		messageOther;
 
 	/**
 	 * Returns the currently selected warning message
@@ -26,10 +30,10 @@
 	 * @return {string} current warning message
 	 */
 	function getCurrentWarningMessage() {
-		var message = $( '#mw-abusefilter-warn-message-existing' ).val();
+		var message = messageExisting.getValue();
 
 		if ( message === 'other' ) {
-			message = $( '#mw-abusefilter-warn-message-other' ).val();
+			message = messageOther.getValue();
 		}
 
 		return message;
@@ -210,9 +214,9 @@
 	 * that don't have checked boxes
 	 */
 	function hideDeselectedActions() {
-		$( 'input.mw-abusefilter-action-checkbox' ).each( function () {
+		$( '.mw-abusefilter-action-checkbox input' ).each( function () {
 			// mw-abusefilter-action-checkbox-{$action}
-			var action = this.id.substr( 31 ),
+			var action = this.parentNode.id.substr( 31 ),
 				$params = $( '#mw-abusefilter-' + action + '-parameters' );
 
 			if ( $params.length ) {
@@ -234,24 +238,32 @@
 				'<nowiki>' + $( 'input[name=wpFilterDescription]' ).val() + '</nowiki>',
 				$( '#mw-abusefilter-edit-id' ).children().last().text()
 			],
-			message = getCurrentWarningMessage();
-		api.get( {
-			action: 'query',
-			meta: 'allmessages',
-			ammessages: message,
-			amargs: args.join( '|' )
-		} )
-			.done( function ( data ) {
-				api.parse( data.query.allmessages[ 0 ][ '*' ], {
-					disablelimitreport: '',
-					preview: '',
-					prop: 'text',
-					title: 'MediaWiki:' + message
-				} )
-					.done( function ( html ) {
-						$( '#mw-abusefilter-warn-preview' ).html( html );
-					} );
-			} );
+			message = getCurrentWarningMessage(),
+			isVisible = $( '#mw-abusefilter-warn-preview' ).is( ':visible' );
+
+		if ( !isVisible ) {
+			api.get( {
+				action: 'query',
+				meta: 'allmessages',
+				ammessages: message,
+				amargs: args.join( '|' )
+			} )
+				.done( function ( data ) {
+					api.parse( data.query.allmessages[ 0 ][ '*' ], {
+						disablelimitreport: '',
+						preview: '',
+						prop: 'text',
+						title: 'MediaWiki:' + message
+					} )
+						.done( function ( html ) {
+							$( '#mw-abusefilter-warn-preview' ).show().html( html );
+							togglePreviewButton.setFlags( { destructive: true, progressive: false } );
+						} );
+				} );
+		} else {
+			$( '#mw-abusefilter-warn-preview' ).hide();
+			togglePreviewButton.setFlags( { destructive: false, progressive: true } );
+		}
 	}
 
 	/**
@@ -266,25 +278,24 @@
 	}
 
 	/**
-	 * Called if the filter group (#mw-abusefilter-edit-group-input) is changed.
+	 * Called if the filter group (#mw-abusefilter-edit-group-input select) is changed.
 	 *
 	 * @context HTMLELement
 	 * @param {jQuery.Event} e
 	 */
 	function onFilterGroupChange() {
-		var $afWarnMessageExisting, $afWarnMessageOther, newVal;
+		var $afWarnMessageExisting, newVal;
 
 		if ( !$( '#mw-abusefilter-action-warn-checkbox' ).is( ':checked' ) ) {
-			$afWarnMessageExisting = $( '#mw-abusefilter-warn-message-existing' );
-			$afWarnMessageOther = $( '#mw-abusefilter-warn-message-other' );
+			$afWarnMessageExisting = $( '#mw-abusefilter-warn-message-existing select' );
 			newVal = mw.config.get( 'wgAbuseFilterDefaultWarningMessage' )[ $( this ).val() ];
 
 			if ( $afWarnMessageExisting.find( 'option[value=\'' + newVal + '\']' ).length ) {
 				$afWarnMessageExisting.val( newVal );
-				$afWarnMessageOther.val( '' );
+				messageOther.setValue( '' );
 			} else {
 				$afWarnMessageExisting.val( 'other' );
-				$afWarnMessageOther.val( newVal );
+				messageOther.setValue( newVal );
 			}
 		}
 	}
@@ -298,8 +309,7 @@
 
 		if ( $( '#wpFilterGlobal' ).is( ':checked' ) ) {
 			// It's a global filter, so use the default message and hide the option from the user
-			$( '#mw-abusefilter-warn-message-existing option[value="abusefilter-warning"]' )
-				.prop( 'selected', true );
+			messageExisting.setValue( 'abusefilter-warning' );
 
 			$warnOptions.hide();
 		} else {
@@ -323,7 +333,48 @@
 	// On ready initialization
 	$( document ).ready( function () {
 		var basePath, readOnly,
-			$exportBox = $( '#mw-abusefilter-export' );
+			$exportBox = $( '#mw-abusefilter-export' ),
+			isFilterEditor = mw.config.get( 'isFilterEditor' ),
+			tagConfig = mw.config.get( 'tagConfig' ),
+			$tagContainer, tagUsed, tagDisabled, tagSelector, tagField, cbEnabled, cbDeleted;
+
+		if ( isFilterEditor ) {
+			// Configure the actual editing interface
+			if ( tagConfig ) {
+				// Build the tag selector
+				$tagContainer = $( '#mw-abusefilter-tag-parameters' );
+				tagUsed = tagConfig.tagUsed;
+				tagDisabled = tagConfig.tagDisabled.length !== 0;
+				// Input field for tags
+				tagSelector =
+					new OO.ui.TagMultiselectWidget( {
+						inputPosition: 'outline',
+						allowArbitrary: true,
+						allowEditTags: true,
+						selected: tagUsed,
+						placeholder: tagConfig.tagPlaceholder,
+						disabled: tagDisabled
+					} );
+				tagField =
+					new OO.ui.FieldLayout(
+						tagSelector,
+						{
+							label: $( $.parseHTML( tagConfig.tagLabel ) ),
+							align: 'top'
+						}
+					);
+				tagSelector.on( 'change', function () {
+					$( '#mw-abusefilter-hidden-tags input' ).val( tagSelector.getValue() );
+				} );
+
+				$( '#mw-abusefilter-hidden-tags' ).hide();
+				$tagContainer.append( tagField.$element );
+			}
+
+			togglePreviewButton = OO.ui.infuse( $( '#mw-abusefilter-warn-preview-button' ) );
+			messageExisting = OO.ui.infuse( $( '#mw-abusefilter-warn-message-existing' ) );
+			messageOther = OO.ui.infuse( $( '#mw-abusefilter-warn-message-other' ) );
+		}
 
 		$plainTextBox = $( '#' + mw.config.get( 'abuseFilterBoxName' ) );
 
@@ -382,40 +433,49 @@
 
 		$( '#mw-abusefilter-load' ).click( fetchFilter );
 		$( '#mw-abusefilter-load-filter' ).keypress( onFilterKeypress );
-		$( '#mw-abusefilter-warn-preview-button' ).click( previewWarnMessage );
-		$( '#mw-abusefilter-warn-edit-button' ).click( editWarnMessage );
-		$( 'input.mw-abusefilter-action-checkbox' ).click( hideDeselectedActions );
-		hideDeselectedActions();
 
-		$( '#wpFilterGlobal' ).change( toggleCustomMessages );
-		toggleCustomMessages();
+		if ( isFilterEditor ) {
+			// Add logic for flags and consequences
+			$( '#mw-abusefilter-warn-preview-button' ).click( previewWarnMessage );
+			$( '#mw-abusefilter-warn-edit-button' ).click( editWarnMessage );
+			$( '.mw-abusefilter-action-checkbox input' ).click( hideDeselectedActions );
+			hideDeselectedActions();
 
-		$( '#wpFilterEnabled' ).click(
-			function () {
-				$( '#wpFilterDeleted' ).prop( 'disabled', this.checked );
-				if ( this.checked ) {
-					$( '#wpFilterDeleted' ).prop( 'checked', false );
+			$( '#wpFilterGlobal' ).change( toggleCustomMessages );
+			toggleCustomMessages();
+
+			cbEnabled = OO.ui.infuse( $( '#wpFilterEnabled' ) );
+			cbDeleted = OO.ui.infuse( $( '#wpFilterDeleted' ) );
+			OO.ui.infuse( $( '#wpFilterDeletedLabel' ) );
+			cbEnabled.on( 'change',
+				function () {
+					cbDeleted.setDisabled( cbEnabled.isSelected() );
+					if ( cbEnabled.isSelected() ) {
+						cbDeleted.setSelected( false );
+					}
 				}
-			}
-		);
+			);
 
-		$( '#wpFilterDeleted' ).click(
-			function () {
-				if ( this.checked ) {
-					$( '#wpFilterEnabled' ).prop( 'checked', false );
+			cbDeleted.on( 'change',
+				function () {
+					if ( cbDeleted.isSelected() ) {
+						cbEnabled.setSelected( false );
+					}
 				}
-			}
-		);
+			);
+
+			$( '#mw-abusefilter-edit-group-input select' ).change( onFilterGroupChange );
+
+			$( '#mw-abusefilter-export-link' ).click(
+				function ( e ) {
+					e.preventDefault();
+					$exportBox.toggle();
+				}
+			);
+		}
 
 		$( '#mw-abusefilter-syntaxcheck' ).click( doSyntaxCheck );
 		$( '#wpFilterBuilder' ).change( addText );
-		$( '#mw-abusefilter-edit-group-input' ).change( onFilterGroupChange );
 
-		$( '#mw-abusefilter-export-link' ).click(
-			function ( e ) {
-				e.preventDefault();
-				$exportBox.toggle();
-			}
-		);
 	} );
-}( mediaWiki, jQuery ) );
+}( mediaWiki, jQuery, OO ) );

@@ -114,6 +114,9 @@ abstract class AbuseFilterView extends ContextSource {
 
 			// Dummy textarea for submitting form and to use in case JS is disabled
 			$textareaAttribs = [];
+			if ( !$canEdit ) {
+				$textareaAttribs['readonly'] = 'readonly';
+			}
 			if ( $externalForm ) {
 				$textareaAttribs['form'] = 'wpFilterForm';
 			}
@@ -192,7 +195,7 @@ abstract class AbuseFilterView extends ContextSource {
 
 			$fieldSet = new OOUI\FieldsetLayout( [
 				'items' => $formElements,
-				'classes' => [ 'mw-abusefilter-edit-buttons' ]
+				'classes' => [ 'mw-abusefilter-edit-buttons', 'mw-abusefilter-javascript-tools' ]
 			] );
 
 			$rulesContainer .= $fieldSet;

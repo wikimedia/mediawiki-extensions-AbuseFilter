@@ -2189,8 +2189,8 @@ class AbuseFilter {
 		}
 
 		// Don't allow setting as deleted an active filter
-		if ( $request->getBool( 'wpFilterEnabled' ) == true &&
-			$request->getBool( 'wpFilterDeleted' ) == true ) {
+		if ( $request->getCheck( 'wpFilterEnabled' ) == true &&
+			$request->getCheck( 'wpFilterDeleted' ) == true ) {
 			$validationStatus->error( 'abusefilter-edit-deleting-enabled' );
 			return $validationStatus;
 		}
