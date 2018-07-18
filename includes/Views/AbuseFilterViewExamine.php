@@ -128,7 +128,12 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$dbr = wfGetDB( DB_REPLICA );
 		$row = $dbr->selectRow(
 			'abuse_filter_log',
-			[ 'afl_filter', 'afl_deleted', 'afl_var_dump' ],
+			[
+				'afl_filter',
+				'afl_deleted',
+				'afl_var_dump',
+				'afl_rev_id'
+			],
 			[ 'afl_id' => $logid ],
 			__METHOD__
 		);
@@ -152,6 +157,10 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
+		if ( SpecialAbuseLog::isHidden( $row ) && !$this->getUser()->isAllowed( 'deletedtext' ) ) {
+			$out->addWikiMsg( 'abusefilter-log-details-hidden-implicit' );
+			return;
+		}
 		$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
 		$out->addJsConfigVars( 'wgAbuseFilterVariables', $vars->dumpAllVars( true ) );
 		$this->showExaminer( $vars );
