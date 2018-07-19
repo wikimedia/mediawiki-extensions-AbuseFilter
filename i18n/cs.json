@@ -213,6 +213,7 @@
 	"abusefilter-edit-throttle-ip": "IP adresa",
 	"abusefilter-edit-throttle-user": "Uživatelský účet",
 	"abusefilter-edit-throttle-range": "Rozsah /16",
+	"abusefilter-edit-throttle-creationdate": "Serverový čas vytvoření účtu",
 	"abusefilter-edit-throttle-editcount": "Počet editací",
 	"abusefilter-edit-throttle-site": "Celý web",
 	"abusefilter-edit-throttle-page": "Stránka",

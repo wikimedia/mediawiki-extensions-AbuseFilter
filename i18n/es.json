@@ -47,7 +47,8 @@
 			"Fortega",
 			"Josecurioso",
 			"RicardoSGZ",
-			"Daimona Eaytoy"
+			"Daimona Eaytoy",
+			"Astroemi"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas a las ediciones",
@@ -235,6 +236,8 @@
 	"abusefilter-edit-throttle-count": "Número de acciones a permitir:",
 	"abusefilter-edit-throttle-period": "Período de tiempo:",
 	"abusefilter-edit-throttle-groups": "Agrupar limitador por:\n:''(uno por línea, combinar con comas)''",
+	"abusefilter-edit-throttle-user": "Cuenta de ususario",
+	"abusefilter-edit-throttle-page": "Página",
 	"abusefilter-edit-warn-message": "Mensaje del sistema para usar por la advertencia:",
 	"abusefilter-edit-warn-other": "Otro mensaje",
 	"abusefilter-edit-warn-other-label": "Nombre de página de otro mensaje:\n:''(sin prefijo MediaWiki)''",

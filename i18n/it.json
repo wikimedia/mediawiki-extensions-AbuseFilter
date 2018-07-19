@@ -218,6 +218,7 @@
 	"abusefilter-edit-throttle-ip": "Indirizzo IP",
 	"abusefilter-edit-throttle-user": "Account utente",
 	"abusefilter-edit-throttle-range": "Range /16",
+	"abusefilter-edit-throttle-creationdate": "Orario del server della creazione dell'account",
 	"abusefilter-edit-throttle-editcount": "Conteggio delle modifiche",
 	"abusefilter-edit-throttle-site": "Tutto il sito",
 	"abusefilter-edit-throttle-page": "Pagina",

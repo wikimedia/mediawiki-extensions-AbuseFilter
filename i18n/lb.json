@@ -170,6 +170,7 @@
 	"abusefilter-edit-throttle-ip": "IP-Adress",
 	"abusefilter-edit-throttle-user": "Benotzerkont",
 	"abusefilter-edit-throttle-editcount": "Zuel vun den Ännerungen",
+	"abusefilter-edit-throttle-site": "De ganzen Internetsite",
 	"abusefilter-edit-throttle-page": "Säit",
 	"abusefilter-edit-warn-message": "Systemmessage den als Warnung benotzt gëtt:",
 	"abusefilter-edit-warn-other": "Anere Systemmessage",
