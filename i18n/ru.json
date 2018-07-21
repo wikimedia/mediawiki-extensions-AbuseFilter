@@ -230,7 +230,7 @@
 	"abusefilter-edit-action-rangeblock": "Блокировать соответствующий диапазон, из которого работает участник.",
 	"abusefilter-edit-action-tag": "Отметить правку для дальнейшей проверки",
 	"abusefilter-edit-throttle-count": "Количество разрешённых действий:",
-	"abusefilter-edit-throttle-period": "Отрезок времени:",
+	"abusefilter-edit-throttle-period": "Отрезок времени (в секундах):",
 	"abusefilter-edit-throttle-groups": "Сужение по группам:\n''(по одному на строке, разделение запятыми)''",
 	"abusefilter-edit-throttle-ip": "IP-адрес",
 	"abusefilter-edit-throttle-user": "Учётная запись",
