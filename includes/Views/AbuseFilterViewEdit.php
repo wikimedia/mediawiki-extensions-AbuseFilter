@@ -952,10 +952,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// and one (or both) of the global variables use different wording
 		// for the same duration. In such case, when setting the default of
 		// the dropdowns it would fail.
+		$anonDuration = self::getAbsoluteBlockDuration( $wgAbuseFilterAnonBlockDuration );
+		$userDuration = self::getAbsoluteBlockDuration( $wgAbuseFilterBlockDuration );
 		foreach ( $durations as &$duration ) {
-			$currentDuration = SpecialBlock::parseExpiryInput( $duration );
-			$anonDuration = SpecialBlock::parseExpiryInput( $wgAbuseFilterAnonBlockDuration );
-			$userDuration = SpecialBlock::parseExpiryInput( $wgAbuseFilterBlockDuration );
+			$currentDuration = self::getAbsoluteBlockDuration( $duration );
 
 			if ( $duration !== $wgAbuseFilterBlockDuration &&
 				$currentDuration === $userDuration ) {
@@ -968,6 +968,22 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		return $durations;
+	}
+
+	/**
+	 * Converts a string duration to an absolute timestamp, i.e. unrelated to the current
+	 * time, taking into account infinity durations as well. The second parameter of
+	 * strtotime is set to 0 in order to convert the duration in seconds (instead of
+	 * a timestamp), thus making it unaffected by the execution time of the code.
+	 *
+	 * @param string $duration
+	 * @return string|int
+	 */
+	protected static function getAbsoluteBlockDuration( $duration ) {
+		if ( wfIsInfinity( $duration ) ) {
+			return 'infinity';
+		}
+		return strtotime( $duration, 0 );
 	}
 
 	/**
