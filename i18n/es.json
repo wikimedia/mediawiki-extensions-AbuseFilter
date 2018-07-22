@@ -48,7 +48,8 @@
 			"Josecurioso",
 			"RicardoSGZ",
 			"Daimona Eaytoy",
-			"Astroemi"
+			"Astroemi",
+			"Agusbou2015"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas a las ediciones",
@@ -248,7 +249,7 @@
 	"abusefilter-edit-warn-actions": "Acciones:",
 	"abusefilter-edit-warn-preview": "Previsualizar mensaje seleccionado",
 	"abusefilter-edit-warn-edit": "Crear o editar el mensaje seleccionado",
-	"abusefilter-edit-tag-tag": "[[Special:Tags|Etiquetas]] que se aplicarán (una por renglón):",
+	"abusefilter-edit-tag-tag": "[[Special:Tags|Etiquetas]] que se aplicarán:",
 	"abusefilter-edit-tag-placeholder": "Añadir etiquetas (una por una o separadas por comas)",
 	"abusefilter-edit-block-anon-durations": "Duración del bloqueo para usuarios anónimos:",
 	"abusefilter-edit-block-user-durations": "Duración del bloqueo para usuarios registrados:",
