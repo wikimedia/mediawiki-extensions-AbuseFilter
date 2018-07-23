@@ -164,7 +164,7 @@
 	"abusefilter-edit-warn-other": "Іншае паведамленьне",
 	"abusefilter-edit-warn-other-label": "Назва старонкі іншага паведамленьня:\n:''(без прасторы назваў MediaWiki)''",
 	"abusefilter-edit-warn-actions": "Дзеяньні:",
-	"abusefilter-edit-warn-preview": "Папярэдні прагляд выбранага паведамленьня",
+	"abusefilter-edit-warn-preview": "Паказаць/схаваць папярэдні прагляд абранага паведамленьня",
 	"abusefilter-edit-warn-edit": "Стварыць/рэдагаваць выбранае паведамленьне",
 	"abusefilter-edit-tag-tag": "Ужываемыя [[Special:Tags|тэгі]] (па адным на радок):",
 	"abusefilter-edit-denied": "Вы ня можаце праглядзець дэталі гэтага фільтру, таму што яны схаваныя ад агульнага прагляду.",
