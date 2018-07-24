@@ -4,7 +4,8 @@
 			"Ikiwaner",
 			"Kwisha",
 			"Lloffiwr",
-			"Stephenwanjau"
+			"Stephenwanjau",
+			"Rance"
 		]
 	},
 	"abuselog": "Kumbukumbu ya matumizi mabaya",
@@ -19,6 +20,7 @@
 	"abusefilter-log-details-val": "Thamani",
 	"abusefilter-log-details-private": "Data binafsi",
 	"abusefilter-log-noactions": "usichague",
+	"abusefilter-log-details-hidden-implicit": "Huwezi kutazama maelezo kwa ingizo hili kwa sababu ukaguzi unaohusiana na ingizo haujawekwa wazi kwa kila mtu kutazama",
 	"abusefilter-log-hide-reason": "Sababu:",
 	"abusefilter-logentry-suppress": "ilificha \"[[$1]]\"",
 	"abusefilter-logentry-unsuppress": "fichua \"[[$1]]\"",
@@ -64,8 +66,15 @@
 	"abusefilter-edit-rules": "Masharti:",
 	"abusefilter-edit-notes": "Vidokezo:",
 	"abusefilter-edit-lastmod-text": "$1 na $2",
+	"abusefilter-edit-throttle-period": "Kiwango cha muda (katika sekunde)",
+	"abusefilter-edit-throttle-ip": "Anuani ya Itifaki ya Muunganiko wa mtandao wa Kompyuta",
+	"abusefilter-edit-throttle-user": "Akaunti ya mtumiaji",
+	"abusefilter-edit-throttle-editcount": "Idadi ya hariri",
+	"abusefilter-edit-throttle-site": "Tovuti nzima",
+	"abusefilter-edit-throttle-page": "Ukurasa",
 	"abusefilter-edit-warn-other": "Ujumbe mwingine",
 	"abusefilter-edit-warn-actions": "Vitendo:",
+	"abusefilter-edit-warn-preview": "Onyesha/Ficha uhakiki wa ujumbe uliochaguliwa",
 	"abusefilter-edit-main": "Vigezo vya chujio",
 	"abusefilter-edit-done-subtitle": "Chujio imehaririwa",
 	"abusefilter-edit-done": "Umefaulu kuhifadhi mabadiliko yako kwa chujio $1.",
