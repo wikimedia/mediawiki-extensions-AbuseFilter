@@ -104,6 +104,7 @@
 	"abusefilter-log-cannot-see-details": "이 항목의 자세한 내용을 볼 권한이 없습니다.",
 	"abusefilter-log-cannot-see-private-details": "이 항목의 비공개 상세 정보를 볼 권한이 없습니다.",
 	"abusefilter-log-details-hidden": "이 항목은 비공개로 설정되었기 때문에 이 항목의 자세한 사항을 볼 수 없습니다.",
+	"abusefilter-log-details-hidden-implicit": "연결된 판이 비공개로 설정되었기 때문에 이 항목의 자세한 사항을 볼 수 없습니다.",
 	"abusefilter-log-private-not-included": "지정한 필터 ID 중 하나 이상이 비공개 필터입니다. 비공개 필터의 자세한 내용을 볼 권한이 없기 때문에 해당 필터는 검색되지 않았습니다.",
 	"abusefilter-log-hide-legend": "기록 항목 숨기기",
 	"abusefilter-log-hide-id": "기록 항목 ID:",
