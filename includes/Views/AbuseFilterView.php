@@ -278,6 +278,18 @@ abstract class AbuseFilterView extends ContextSource {
 	}
 
 	/**
+	 * @param string|int $id
+	 * @param string|null $text
+	 * @return string HTML
+	 */
+	public function getLinkToLatestDiff( $id, $text = null ) {
+		return $this->linkRenderer->makeKnownLink(
+			$this->getTitle( "history/$id/diff/prev/cur" ),
+			$text
+		);
+	}
+
+	/**
 	 * @static
 	 * @return bool
 	 */

@@ -385,17 +385,24 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$userLink =
 				Linker::userLink( $row->af_user, $row->af_user_text ) .
 				Linker::userToolLinks( $row->af_user, $row->af_user_text );
-			$userName = $row->af_user_text;
 			$fields['abusefilter-edit-lastmod'] =
 				$this->msg( 'abusefilter-edit-lastmod-text' )
-				->params(
-					$lang->timeanddate( $row->af_timestamp, true )
-				)->rawParams(
-					$userLink
+				->rawParams(
+					$this->getLinkToLatestDiff(
+						$filter,
+						$lang->timeanddate( $row->af_timestamp, true )
+					),
+					$userLink,
+					$this->getLinkToLatestDiff(
+						$filter,
+						$lang->date( $row->af_timestamp, true )
+					),
+					$this->getLinkToLatestDiff(
+						$filter,
+						$lang->time( $row->af_timestamp, true )
+					)
 				)->params(
-					$lang->date( $row->af_timestamp, true ),
-					$lang->time( $row->af_timestamp, true ),
-					wfEscapeWikiText( $userName )
+					wfEscapeWikiText( $row->af_user_text )
 				)->parse();
 			$history_display = new HtmlArmor( $this->msg( 'abusefilter-edit-viewhistory' )->parse() );
 			$fields['abusefilter-edit-history'] =

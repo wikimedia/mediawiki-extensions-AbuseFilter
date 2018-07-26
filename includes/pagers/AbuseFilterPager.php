@@ -233,16 +233,24 @@ class AbuseFilterPager extends TablePager {
 						$row->af_user,
 						$row->af_user_text
 					);
-				$user = $row->af_user_text;
+
 				return $this->msg( 'abusefilter-edit-lastmod-text' )
-					->params(
-						$lang->timeanddate( $value, true )
-					)->rawParams(
-						$userLink
+					->rawParams(
+						$this->mPage->getLinkToLatestDiff(
+							$row->af_id,
+							$lang->timeanddate( $value, true )
+						),
+						$userLink,
+						$this->mPage->getLinkToLatestDiff(
+							$row->af_id,
+							$lang->date( $value, true )
+						),
+						$this->mPage->getLinkToLatestDiff(
+							$row->af_id,
+							$lang->time( $value, true )
+						)
 					)->params(
-						$lang->date( $value, true ),
-						$lang->time( $value, true ),
-						wfEscapeWikiText( $user )
+						wfEscapeWikiText( $row->af_user_text )
 				)->parse();
 			case 'af_group':
 				return AbuseFilter::nameGroup( $value );
