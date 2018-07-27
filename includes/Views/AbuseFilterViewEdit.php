@@ -947,7 +947,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	}
 
 	/**
-	 * @ToDo: Maybe we should also check if global values belong to $durations
+	 * @todo Maybe we should also check if global values belong to $durations
 	 * and determine the right point to add them if missing.
 	 *
 	 * @param array $durations
