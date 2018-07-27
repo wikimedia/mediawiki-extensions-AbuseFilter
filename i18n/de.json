@@ -104,6 +104,8 @@
 	"abusefilter-log-details-diff": "Änderungen durch diese Bearbeitung",
 	"abusefilter-log-linkoncontribs": "Missbrauchsfilter-Logbuch",
 	"abusefilter-log-linkoncontribs-text": "Missbrauchsfilter-Logbuch für {{GENDER:$1|diesen Benutzer|diese Benutzerin}}",
+	"abusefilter-log-linkonhistory": "Missbrauchsfilter-Logbuch ansehen",
+	"abusefilter-log-linkonhistory-text": "Missbrauchsfilter-Logbuch für diese Seite ansehen",
 	"abusefilter-log-hidden": "(Eintrag versteckt)",
 	"abusefilter-log-hidden-implicit": "(versteckt, da die Version gelöscht wurde)",
 	"abusefilter-log-cannot-see-details": "Du hast nicht die Berechtigung, Einzelheiten zur dieser Eingabe einzusehen.",

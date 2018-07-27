@@ -556,5 +556,6 @@
 	"apihelp-query+abuselog-example-2": "Zobrazit poslední záznamy protokolu pro stránku [[API]]",
 	"apierror-abusefilter-canttest": "Nemáte oprávnění testovat filtry zneužití.",
 	"apierror-abusefilter-cantcheck": "Nemáte oprávnění kontrolovat syntaxi filtrů zneužití.",
+	"apierror-abusefilter-nosuchlogid": "Žádný záznam filtrů zneužití nemá id $1.",
 	"apierror-abusefilter-badsyntax": "Filtr má neplatnou syntaxi."
 }
