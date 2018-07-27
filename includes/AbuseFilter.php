@@ -2686,9 +2686,9 @@ class AbuseFilter {
 			$page = WikiPage::factory( $title );
 		}
 
-		$vars->setLazyLoadVar( 'edit_diff', 'diff',
+		$vars->setLazyLoadVar( 'edit_diff', 'diff-array',
 			[ 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_wikitext' ] );
-		$vars->setLazyLoadVar( 'edit_diff_pst', 'diff',
+		$vars->setLazyLoadVar( 'edit_diff_pst', 'diff-array',
 			[ 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_pst' ] );
 		$vars->setLazyLoadVar( 'new_size', 'length', [ 'length-var' => 'new_wikitext' ] );
 		$vars->setLazyLoadVar( 'old_size', 'length', [ 'length-var' => 'old_wikitext' ] );
