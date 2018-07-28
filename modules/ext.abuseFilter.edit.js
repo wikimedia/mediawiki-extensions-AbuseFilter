@@ -364,7 +364,7 @@
 						}
 					);
 				tagSelector.on( 'change', function () {
-					$( '#mw-abusefilter-hidden-tags input' ).val( tagSelector.getValue() );
+					$( '#mw-abusefilter-hidden-tags textarea' ).val( tagSelector.getValue() );
 				} );
 
 				$( '#mw-abusefilter-hidden-tags' ).hide();
