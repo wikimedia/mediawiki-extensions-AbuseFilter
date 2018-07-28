@@ -114,6 +114,8 @@
 	"abusefilter-log-details-diff": "Changements faits lors de la modification",
 	"abusefilter-log-linkoncontribs": "journal des abus",
 	"abusefilter-log-linkoncontribs-text": "Journal des abus de ce{{GENDER:$1|t utilisateur|tte  utilisatrice}}",
+	"abusefilter-log-linkonhistory": "voir le journal des abus",
+	"abusefilter-log-linkonhistory-text": "Voir le journal des abus pour cette page",
 	"abusefilter-log-hidden": "(entrée masquée)",
 	"abusefilter-log-hidden-implicit": "(masquée car la version a été supprimée)",
 	"abusefilter-log-cannot-see-details": "Vous n'avez pas le droit de voir les détails de cette entrée.",
