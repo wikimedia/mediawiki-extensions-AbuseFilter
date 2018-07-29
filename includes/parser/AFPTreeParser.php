@@ -415,7 +415,7 @@ class AFPTreeParser {
 		$leftOperand = $this->doLevelUnarys();
 		$keyword = strtolower( $this->mCur->value );
 		if ( $this->mCur->type == AFPToken::TKEYWORD &&
-			in_array( $keyword, array_keys( AbuseFilterParser::$mKeywords ) )
+			isset( AbuseFilterParser::$mKeywords[$keyword] )
 		) {
 			$position = $this->mPos;
 			$this->move();

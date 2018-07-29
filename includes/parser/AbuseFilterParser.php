@@ -599,7 +599,7 @@ class AbuseFilterParser {
 		$this->doLevelUnarys( $result );
 		$keyword = strtolower( $this->mCur->value );
 		if ( $this->mCur->type == AFPToken::TKEYWORD
-			&& in_array( $keyword, array_keys( self::$mKeywords ) )
+			&& isset( self::$mKeywords[$keyword] )
 		) {
 			$func = self::$mKeywords[$keyword];
 			$this->move();
