@@ -102,6 +102,8 @@
 	"abusefilter-log-details-diff": "Modifiche effettuate",
 	"abusefilter-log-linkoncontribs": "filtro anti abusi",
 	"abusefilter-log-linkoncontribs-text": "Registro del filtro anti abusi relativo a {{GENDER:$1|questo utente}}",
+	"abusefilter-log-linkonhistory": "visualizza il registro del filtro anti abusi",
+	"abusefilter-log-linkonhistory-text": "Visualizza il registro del filtro anti abusi per questa pagina",
 	"abusefilter-log-hidden": "(voce nascosta)",
 	"abusefilter-log-hidden-implicit": "(nascosto perché la versione è stata eliminata)",
 	"abusefilter-log-cannot-see-details": "Non si dispone dei permessi necessari per vedere i dettagli di questa voce del registro.",
