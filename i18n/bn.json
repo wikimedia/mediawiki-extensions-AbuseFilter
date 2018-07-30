@@ -69,6 +69,7 @@
 	"abusefilter-log-details-diff": "সম্পাদনার সময় পরিবর্তিত হয়েছে",
 	"abusefilter-log-linkoncontribs": "অপব্যবহার লগ",
 	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|এই ব্যবহারকারীর}} জন্য অপব্যবহার লগ",
+	"abusefilter-log-linkonhistory": "অপব্যবহার লগ দেখুন",
 	"abusefilter-log-hidden": "(সংযোজন লুকায়িত)",
 	"abusefilter-log-details-hidden": "আপনি এই সংযোজনটি বিস্তারিত দেখতে পারবেন না, কারণ এটি জনসাধারণের প্রদর্শনের থেকে লুকানো রয়েছে।",
 	"abusefilter-log-hide-legend": "লগ সংযোজন লুকাও",
