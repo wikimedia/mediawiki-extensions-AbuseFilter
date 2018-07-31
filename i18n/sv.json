@@ -108,6 +108,7 @@
 	"abusefilter-log-linkoncontribs": "missbrukslogg",
 	"abusefilter-log-linkoncontribs-text": "Missbrukslogg för {{GENDER:$1|den här användaren}}",
 	"abusefilter-log-linkonhistory": "visa missbrukslogg",
+	"abusefilter-log-linkonhistory-text": "Visa missbruksloggen för denna sida",
 	"abusefilter-log-hidden": "(post dold)",
 	"abusefilter-log-hidden-implicit": "(dold eftersom versionen har tagits bort)",
 	"abusefilter-log-cannot-see-details": "Du har inte behörighet att se detaljer om den här posten.",

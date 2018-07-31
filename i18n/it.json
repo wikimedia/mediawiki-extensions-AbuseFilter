@@ -205,7 +205,7 @@
 	"abusefilter-edit-lastmod-text": "$1 da parte di $2",
 	"abusefilter-edit-hitcount": "Corrispondenze per il filtro:",
 	"abusefilter-edit-consequences": "Azioni da intraprendere in caso di corrispondenza",
-	"abusefilter-edit-action-warn": "Attiva le seguenti azioni dopo aver avvisato l'utente",
+	"abusefilter-edit-action-warn": "Attiva le azioni selezionate dopo aver avvisato l'utente",
 	"abusefilter-edit-action-disallow": "Impedisci all'utente di effettuare l'azione in questione",
 	"abusefilter-edit-action-blockautopromote": "Revoca lo stato di autoconfermato dell'utente",
 	"abusefilter-edit-action-degroup": "Rimuovi l'utente da tutti i gruppi privilegiati",
