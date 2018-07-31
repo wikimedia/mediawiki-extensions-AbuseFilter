@@ -347,7 +347,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "The namespace that the page for the trigger is supposed to be in. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",
 	"abusefilter-edit-builder-vars-article-text": "Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",
-	"abusefilter-edit-builder-vars-article-views": "The number of views that the page has. May not be enabled on all wikis. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.\n{{Identical|Page view}}",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Paraphrase: The page ID of the page to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Paraphrase: Namespace of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Paraphrase: Name of the page that is to be moved. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",
