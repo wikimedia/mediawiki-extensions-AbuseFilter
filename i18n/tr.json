@@ -261,7 +261,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "Sayfa ad alanı",
 	"abusefilter-edit-builder-vars-article-text": "Sayfa başlığı (ad alanı olmadan)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Tam sayfa başlığı",
-	"abusefilter-edit-builder-vars-article-views": "Sayfa görüntülenmesi",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Kaynak taşıma sayfasının sayfa IDsi",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Kaynak taşıma sayfasının ad alanı",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Kaynak taşıma sayfası başlığı",

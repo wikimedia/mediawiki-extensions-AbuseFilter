@@ -341,7 +341,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "Sidnamnrymd",
 	"abusefilter-edit-builder-vars-article-text": "Sidtitel (utan namnrymd)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Hela sidtiteln",
-	"abusefilter-edit-builder-vars-article-views": "Sidvisningar",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Sid-ID till källsidan vid flyttning",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Namnrymd för källsidan vid flyttning",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Titel för källsidan vid flyttning",

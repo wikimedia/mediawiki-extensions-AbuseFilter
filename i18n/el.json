@@ -275,7 +275,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "Περιοχή ονομάτων της σελίδας",
 	"abusefilter-edit-builder-vars-article-text": "Όνομα σελίδας (χωρίς περιοχή ονόματος)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Πλἠρης τίτλος σελίδας",
-	"abusefilter-edit-builder-vars-article-views": "Προβολές σελίδων",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Σελίδα ταυτότητα της σελίδας προς μετακίνηση",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Χώροι ονομάτων της σελίδας-πηγής προς μετακίνηση",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Τίτλος της μετακίνηησης της σελίδας πηγής",

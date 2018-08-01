@@ -270,7 +270,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "Именно пространство на страницата",
 	"abusefilter-edit-builder-vars-article-text": "Заглавие на страницата (без именно пространство)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Пълно заглавие на страницата",
-	"abusefilter-edit-builder-vars-article-views": "Прегледи на страницата",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Идентификатор на изходната за преместването страница",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Именно пространство на изходната за преместването страница",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Заглавие на изходната за преместването страница",

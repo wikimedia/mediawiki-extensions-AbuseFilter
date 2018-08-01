@@ -331,7 +331,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "문서 이름공간",
 	"abusefilter-edit-builder-vars-article-text": "(이름공간을 뺀) 문서 제목",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "전체 문서 제목",
-	"abusefilter-edit-builder-vars-article-views": "문서 조회수",
 	"abusefilter-edit-builder-vars-movedfrom-id": "이동 전 문서의 ID",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "이동 전 문서의 이름공간",
 	"abusefilter-edit-builder-vars-movedfrom-text": "이동 전의 제목",

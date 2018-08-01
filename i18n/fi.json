@@ -284,7 +284,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "Sivun nimiavaruus",
 	"abusefilter-edit-builder-vars-article-text": "Sivun nimi (ilman nimiavaruutta)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Sivun koko nimi",
-	"abusefilter-edit-builder-vars-article-views": "Sivulatauksia",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Siirron lähdesivun tunnistenumero",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Siirron lähdesivun nimiavaruus",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Siirron lähdesivun nimi",

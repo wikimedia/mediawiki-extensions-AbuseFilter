@@ -347,7 +347,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "Пространство имён страницы",
 	"abusefilter-edit-builder-vars-article-text": "Название страницы (без пространства имён)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Полное название страницы",
-	"abusefilter-edit-builder-vars-article-views": "Просмотров страниц",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID переименовываемой страницы",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Пространство имён переименовываемой страницы",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Название переименовываемой страницы",

@@ -265,7 +265,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "Sidenamnerom",
 	"abusefilter-edit-builder-vars-article-text": "Sidetittel (utan namnerom)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Fullstendig sidetittel",
-	"abusefilter-edit-builder-vars-article-views": "Sidevisingar",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Side-ID til kjeldesida ved flytting",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Namnerom til målsida ved flytting",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Tittel til kjeldesida ved flytting",

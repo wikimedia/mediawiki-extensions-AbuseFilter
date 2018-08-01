@@ -251,7 +251,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "Espaci de noms de la pagina",
 	"abusefilter-edit-builder-vars-article-text": "Títol de la pagina (sens lo nom de l’espaci)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Títol complet de la pagina",
-	"abusefilter-edit-builder-vars-article-views": "Paginas vistas",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID de la pagina d’origina del cambiament de nom",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Nom d’espaci de nomenatge del cambiament de nom de la pagina d’origina.",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Títol del desplaçament de la pagina d’origina",

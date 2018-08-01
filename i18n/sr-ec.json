@@ -283,7 +283,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "Именски простор странице",
 	"abusefilter-edit-builder-vars-article-text": "Наслов странице (без именског простора)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Пун наслов странице",
-	"abusefilter-edit-builder-vars-article-views": "Прегледи странице",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID изворне странице премештања",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Именски простор премештене странице",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Наслов странице коју премештате",

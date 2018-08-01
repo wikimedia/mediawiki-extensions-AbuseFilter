@@ -347,7 +347,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "頁面命名空間",
 	"abusefilter-edit-builder-vars-article-text": "頁面標題 (不含命名空間)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "完整頁面標題",
-	"abusefilter-edit-builder-vars-article-views": "頁面檢視次數",
 	"abusefilter-edit-builder-vars-movedfrom-id": "移動來源頁面的頁面 ID",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "移動來源頁面的命名空間",
 	"abusefilter-edit-builder-vars-movedfrom-text": "移動來源頁面的標題",

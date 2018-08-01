@@ -348,7 +348,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "Espace de noms de la page",
 	"abusefilter-edit-builder-vars-article-text": "Titre de la page (sans l'espace de noms)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Titre complet de la page",
-	"abusefilter-edit-builder-vars-article-views": "Pages vues",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Numéro de la page d'origine à renommer",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Espace de noms de la page d'origine à renommer",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Titre de la page d'origine à renommer",

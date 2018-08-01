@@ -293,7 +293,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "ページの名前空間",
 	"abusefilter-edit-builder-vars-article-text": "ページ名 (名前空間を除く)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "完全なページ名",
-	"abusefilter-edit-builder-vars-article-views": "ページ閲覧回数",
 	"abusefilter-edit-builder-vars-movedfrom-id": "移動元のページID",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "移動元ページの名前空間",
 	"abusefilter-edit-builder-vars-movedfrom-text": "移動元のページ名",

@@ -333,7 +333,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "Namespace della pagina",
 	"abusefilter-edit-builder-vars-article-text": "Titolo della pagina (senza namespace)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Titolo completo della pagina",
-	"abusefilter-edit-builder-vars-article-views": "Visualizzazioni di pagina",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Identificativo della pagina origine dello spostamento",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Namespace della pagina origine dello spostamento",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Titolo della pagina origine dello spostamento",

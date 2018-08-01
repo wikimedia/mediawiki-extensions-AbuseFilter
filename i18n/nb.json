@@ -291,7 +291,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "Artikkelnavnerom",
 	"abusefilter-edit-builder-vars-article-text": "Artikkeltittel (uten navnerom)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Full artikkeltittel",
-	"abusefilter-edit-builder-vars-article-views": "Sidevisninger",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Artikkel-ID til kildeside ved flytting",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Navnerom til målside ved flytting",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Tittel til kildeside ved flytting",

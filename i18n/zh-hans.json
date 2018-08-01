@@ -347,7 +347,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "页面名字空间",
 	"abusefilter-edit-builder-vars-article-text": "页面标题（不含名字空间）",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "完整页面标题",
-	"abusefilter-edit-builder-vars-article-views": "页面查看次数",
 	"abusefilter-edit-builder-vars-movedfrom-id": "移动源页面的页面编号",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "移动源页面的名字空间",
 	"abusefilter-edit-builder-vars-movedfrom-text": "移动源页面的标题",

@@ -252,7 +252,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "Spatio de nomines del pagina",
 	"abusefilter-edit-builder-vars-article-text": "Titulo del pagina (sin spatio de nomines)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Titulo integre del pagina",
-	"abusefilter-edit-builder-vars-article-views": "Visitas de pagina",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID del pagina de origine del renomination",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Spatio de nomines del pagina de origine pro le renomination",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Titulo del pagina de origine pro le renomination",

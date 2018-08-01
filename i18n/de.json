@@ -338,7 +338,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "Namensraum der Seite",
 	"abusefilter-edit-builder-vars-article-text": "Titel der Seite (ohne Namensraum)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Voller Seitenname",
-	"abusefilter-edit-builder-vars-article-views": "Seitenaufrufe",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Seiten-ID der Quellseite",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Namensraum der Quellseite",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Titel der Quellseite",

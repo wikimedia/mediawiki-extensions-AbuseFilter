@@ -264,7 +264,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "Sidens navnerum",
 	"abusefilter-edit-builder-vars-article-text": "Sidetitel (uden navnerum)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Fuld sidetitel",
-	"abusefilter-edit-builder-vars-article-views": "Sidevisninger",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Side-ID på kildeside ved flytning",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Navnerum på kildeside ved flytning",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Titel på kildeside ved flytning",

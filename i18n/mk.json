@@ -316,7 +316,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "Именски простор на страницата",
 	"abusefilter-edit-builder-vars-article-text": "Наслов на страницата (без именски простор)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Полн наслов на страницата",
-	"abusefilter-edit-builder-vars-article-views": "Посети",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Назнака на страницата за преместување",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Именски простор на преименуваната страница",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Име на преименуваната страница",

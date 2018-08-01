@@ -349,7 +349,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "Espacio de nombres de la página",
 	"abusefilter-edit-builder-vars-article-text": "Título de página (sin espacio de nombres)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Título completo de la página",
-	"abusefilter-edit-builder-vars-article-views": "Vistas de la página",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID de la página fuente a trasladar",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Espacio de nombres de la página de origen que trasladar",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Título de la página original del traslado",

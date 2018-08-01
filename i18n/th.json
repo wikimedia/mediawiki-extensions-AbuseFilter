@@ -249,7 +249,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "เนมสเปซหน้า",
 	"abusefilter-edit-builder-vars-article-text": "ชื่อหน้า (ไม่มีเนมสเปซ)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "ชื่อเต็มหน้า",
-	"abusefilter-edit-builder-vars-article-views": "จำนวนการเข้าชมหน้า",
 	"abusefilter-edit-builder-vars-movedfrom-id": "หมายเลขประจำหน้าต้นทางที่เปลี่ยนชื่อ",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "เนมสเปซหน้าต้นทางที่เปลี่ยนชื่อ",
 	"abusefilter-edit-builder-vars-movedfrom-text": "ชื่อหน้าต้นทางที่เปลี่ยนชื่อ",

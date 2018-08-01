@@ -258,7 +258,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "Imenski prostor",
 	"abusefilter-edit-builder-vars-article-text": "Ime stranice (bez imenskog prostora)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Puni naslov stranice",
-	"abusefilter-edit-builder-vars-article-views": "Pregleda stranice",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID broj izvorišne stranice premještanja",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Imenski prostor premještane stranice",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Naslov stranice koju premještate",

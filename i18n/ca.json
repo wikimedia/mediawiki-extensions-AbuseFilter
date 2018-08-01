@@ -265,7 +265,6 @@
 	"abusefilter-edit-builder-vars-article-ns": "Espai de noms de la pàgina",
 	"abusefilter-edit-builder-vars-article-text": "Nom de la pàgina (sense espai de noms)",
 	"abusefilter-edit-builder-vars-article-prefixedtext": "Nom complet de la pàgina",
-	"abusefilter-edit-builder-vars-article-views": "Vistes de la pàgina",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID de la pàgina de la font del moviment",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Espai pel nom de la pàgina font a traslladar",
 	"abusefilter-edit-builder-vars-movedfrom-text": "Títol de la pàgina font del moviment",
