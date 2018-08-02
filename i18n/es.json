@@ -49,7 +49,8 @@
 			"RicardoSGZ",
 			"Daimona Eaytoy",
 			"Astroemi",
-			"Agusbou2015"
+			"Agusbou2015",
+			"Jelou"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas a las ediciones",
@@ -471,7 +472,7 @@
 	"abusefilter-test-search-type-edit": "Ediciones",
 	"abusefilter-test-search-type-move": "Traslados",
 	"abusefilter-test-search-type-delete": "Borrados",
-	"abusefilter-test-search-type-upload": "Cargas",
+	"abusefilter-test-search-type-upload": "Subidas",
 	"abusefilter-test-search-type-createaccount": "Creaciones de cuentas",
 	"abusefilter-changeslist-examine": "examinar",
 	"abusefilter-examine": "Examinar cambios individuales",

@@ -166,7 +166,7 @@
 	"abusefilter-edit-action-rangeblock": "/16-Beräich spären, aus dem dëse Benotzer kënnt.",
 	"abusefilter-edit-action-tag": "D'Ännerung fir e spéidert Nokucke markéieren",
 	"abusefilter-edit-throttle-count": "Zuel vun den erlaabten Aktiounen:",
-	"abusefilter-edit-throttle-period": "Zäitraum:",
+	"abusefilter-edit-throttle-period": "Zäitraum (a Sekonnen):",
 	"abusefilter-edit-throttle-ip": "IP-Adress",
 	"abusefilter-edit-throttle-user": "Benotzerkont",
 	"abusefilter-edit-throttle-editcount": "Zuel vun den Ännerungen",

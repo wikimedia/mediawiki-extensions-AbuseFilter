@@ -422,7 +422,7 @@
 	"abusefilter-exception-unclosedstring": "Nicht abgeschlossene Zeichenkette, beginnt bei Zeichen $1.",
 	"abusefilter-exception-invalidoperator": "Ungültiger Operator „$2“ bei Zeichen $1.",
 	"abusefilter-exception-unrecognisedtoken": "Unbekanntes Token „$2“ bei Zeichen $1.",
-	"abusefilter-exception-noparams": "Keine Parameter an Funktion „$2“ bei Zeichen $1 übergeben.",
+	"abusefilter-exception-noparams": "Keine Parameter an die Funktion „$2“ bei Zeichen $1 übergeben.\nEs {{PLURAL:$3|wird ein Argument|werden $3 Argumente}} erwartet.",
 	"abusefilter-exception-dividebyzero": "Division von $2 durch Null bei Zeichen $1.",
 	"abusefilter-exception-unrecognisedvar": "Unerkannte Variable $2 bei Zeichen $1",
 	"abusefilter-exception-notenoughargs": "Der Funktion $2 wurden an Zeichen $1 zu wenige Argumente übergeben.\nEs {{PLURAL:$3|wurde $3 Argument|wurden $3 Argumente}} erwartet, übergeben {{PLURAL:$4|wurde $4|wurden $4}}.",

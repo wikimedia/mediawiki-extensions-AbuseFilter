@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Erikoo",
-			"Ninjastrikers"
+			"Ninjastrikers",
+			"Dr Lotus Black"
 		]
 	},
 	"abuselog": "အလွဲသုံးစားပြုမှု မှတ်တမ်း",
@@ -13,6 +14,10 @@
 	"abusefilter-log-noactions": "အမည်ညွှန်းမရှိ",
 	"abusefilter-log-linkoncontribs": "အလွဲသုံးစားပြုမှု မှတ်တမ်း",
 	"abusefilter-log-hide-reason": "အ​ကြောင်း​ပြ​ချက်:",
+	"abusefilter-edit-throttle-period": "အချန်အပိုင်းအခြား (စက္ကန့်ဖြင့်):",
+	"abusefilter-edit-throttle-user": "အသုံးပြုသူ အကောင့်",
+	"abusefilter-edit-throttle-editcount": "တည်းဖြတ်မှု အရေအတွက်",
+	"abusefilter-edit-throttle-page": "စာမျက်နှာ",
 	"abusefilter-examine-submit": "ရှာဖွေရန်",
 	"abusefilter-topnav-log": "အလွဲသုံးစားပြုမှု မှတ်တမ်း"
 }

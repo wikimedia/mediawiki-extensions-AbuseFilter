@@ -432,7 +432,7 @@
 	"abusefilter-exception-unclosedstring": "Chaîne non fermée débutant au caractère $1.",
 	"abusefilter-exception-invalidoperator": "Opérateur invalide « $2 » au caractère $1.",
 	"abusefilter-exception-unrecognisedtoken": "Élément non reconnu « $2 » au caractère $1.",
-	"abusefilter-exception-noparams": "Aucun paramètre fourni pour la fonction « $2 » au caractère $1.",
+	"abusefilter-exception-noparams": "Aucun paramètre fourni pour la fonction « $2 » au caractère $1. $3 argument{{PLURAL:$3| attendu|s attendus}}.",
 	"abusefilter-exception-dividebyzero": "Division illégale de $2 par zéro au caractère $1.",
 	"abusefilter-exception-unrecognisedvar": "Variable non reconnue $2 au caractère $1",
 	"abusefilter-exception-notenoughargs": "Pas assez de paramètres pour la fonction $2 appelée au caractère $1.\n$3 {{PLURAL:$3|argument demandé|arguments demandés}}, $4 obtenu{{PLURAL:$4||s}}",
