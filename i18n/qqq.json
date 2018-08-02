@@ -431,7 +431,7 @@
 	"abusefilter-exception-unclosedstring": "Error message from the abuse filter parser.\nParameters:\n* $1 - Position in the string",
 	"abusefilter-exception-invalidoperator": "Error message from the abuse filter parser.\nParameters:\n* $1 - Position in the string\n* $2 - Invalid operator",
 	"abusefilter-exception-unrecognisedtoken": "Error message from the abuse filter parser.\nParameters:\n* $1 - Position in the string\n* $2 - Unrecognized token",
-	"abusefilter-exception-noparams": "Error message from the abuse filter parser.\nParameters:\n* $1 - Position in the string\n* $2 - Function",
+	"abusefilter-exception-noparams": "Error message from the abuse filter parser.\nParameters:\n* $1 - Position in the string\n* $2 - Function\n* $3 - the number of expected arguments",
 	"abusefilter-exception-dividebyzero": "Error message from the abuse filter parser.\nParameters:\n* $1 - Position in the string\n* $2 - AFPData (integer or float?)",
 	"abusefilter-exception-unrecognisedvar": "Error message from the abuse filter parser. Parameters:\n* $1 - Position in the string\n* $2 - Unrecognized variable",
 	"abusefilter-exception-notenoughargs": "Error message from the abuse filter parser. Parameters:\n* $1 - position in the string (numeral)\n* $2 - a function name\n* $3 - the number of expected arguments\n* $4 - the number of passed arguments (also supports PLURAL)",
