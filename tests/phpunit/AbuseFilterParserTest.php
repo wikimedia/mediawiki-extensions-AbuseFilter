@@ -541,4 +541,140 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 			[ "ip_in_range('0.0.0.0', 'lol')", 'funcIPInRange' ],
 		];
 	}
+
+	/**
+	 * Test functions which take exactly one parameters calling them
+	 *   without 0 params. They should throw a 'noparams' exception.
+	 *
+	 * @param string $func The function to test
+	 * @covers AbuseFilterParser::funcLc
+	 * @covers AbuseFilterParser::funcUc
+	 * @covers AbuseFilterParser::funcLen
+	 * @covers AbuseFilterParser::funcSpecialRatio
+	 * @covers AbuseFilterParser::funcCount
+	 * @covers AbuseFilterParser::funcRCount
+	 * @covers AbuseFilterParser::funcCCNorm
+	 * @covers AbuseFilterParser::funcSanitize
+	 * @covers AbuseFilterParser::funcRMSpecials
+	 * @covers AbuseFilterParser::funcRMWhitespace
+	 * @covers AbuseFilterParser::funcRMDoubles
+	 * @covers AbuseFilterParser::funcNorm
+	 * @covers AbuseFilterParser::funcStrRegexEscape
+	 * @covers AbuseFilterParser::castString
+	 * @covers AbuseFilterParser::castInt
+	 * @covers AbuseFilterParser::castFloat
+	 * @covers AbuseFilterParser::castBool
+	 * @dataProvider oneParamFuncs
+	 * @expectedException AFPUserVisibleException
+	 * @expectedExceptionMessageRegExp /^No parameters given to function/
+	 */
+	public function testNoParamsException( $func ) {
+		$parser = self::getParser();
+		$parser->parse( "$func()" );
+	}
+
+	/**
+	 * Data provider for testNoParamsException, returns a list of
+	 * functions taking a single parameter
+	 *
+	 * @return array
+	 */
+	public function oneParamFuncs() {
+		return [
+			[ 'lcase' ],
+			[ 'ucase' ],
+			[ 'length' ],
+			[ 'strlen' ],
+			[ 'specialratio' ],
+			[ 'count' ],
+			[ 'rcount' ],
+			[ 'ccnorm' ],
+			[ 'sanitize' ],
+			[ 'rmspecials' ],
+			[ 'rmwhitespace' ],
+			[ 'rmdoubles' ],
+			[ 'norm' ],
+			[ 'rescape' ],
+			[ 'string' ],
+			[ 'int' ],
+			[ 'float' ],
+			[ 'bool' ],
+		];
+	}
+
+	/**
+	 * Test functions taking two parameters by providing only one.
+	 *   They should throw a 'notenoughargs' exception.
+	 *
+	 * @param string $func The function to test
+	 * @covers AbuseFilterParser::funcGetMatches
+	 * @covers AbuseFilterParser::funcIPInRange
+	 * @covers AbuseFilterParser::funcContainsAny
+	 * @covers AbuseFilterParser::funcContainsAll
+	 * @covers AbuseFilterParser::funcCCNormContainsAny
+	 * @covers AbuseFilterParser::funcCCNormContainsAll
+	 * @covers AbuseFilterParser::funcEqualsToAny
+	 * @covers AbuseFilterParser::funcSubstr
+	 * @covers AbuseFilterParser::funcStrPos
+	 * @covers AbuseFilterParser::funcSetVar
+	 * @dataProvider twoParamsFuncs
+	 * @expectedException AFPUserVisibleException
+	 * @expectedExceptionMessageRegExp /^Not enough arguments to function [^ ]+ called at character \d+.\nExpected 2 arguments, got 1/
+	 */
+	public function testNotEnoughArgsExceptionTwo( $func ) {
+		$parser = self::getParser();
+		// Nevermind if the argument can't be string since we check the amount
+		// of parameters before anything else.
+		$parser->parse( "$func('foo')" );
+	}
+
+	/**
+	 * Data provider for testNotEnoughArgsExceptionTwo, returns the list of
+	 * functions taking two parameters.
+	 *
+	 * @return array
+	 */
+	public function twoParamsFuncs() {
+		return [
+			[ 'get_matches' ],
+			[ 'ip_in_range' ],
+			[ 'contains_any' ],
+			[ 'contains_all' ],
+			[ 'ccnorm_contains_any' ],
+			[ 'ccnorm_contains_all' ],
+			[ 'equals_to_any' ],
+			[ 'substr' ],
+			[ 'strpos' ],
+			[ 'set_var' ],
+		];
+	}
+
+	/**
+	 * Test functions taking three parameters by providing only two.
+	 *   They should throw a 'notenoughargs' exception.
+	 *
+	 * @param string $func The function to test
+	 * @covers AbuseFilterParser::funcStrReplace
+	 * @dataProvider threeParamsFuncs
+	 * @expectedException AFPUserVisibleException
+	 * @expectedExceptionMessageRegExp /^Not enough arguments to function [^ ]+ called at character \d+.\nExpected 3 arguments, got 2/
+	 */
+	public function testNotEnoughArgsExceptionThree( $func ) {
+		$parser = self::getParser();
+		// Nevermind if the argument can't be string since we check the amount
+		// of parameters before anything else.
+		$parser->parse( "$func('foo', 'bar')" );
+	}
+
+	/**
+	 * Data provider for testNotEnoughArgsExceptionThree, returns the list of
+	 * functions taking three parameters.
+	 *
+	 * @return array
+	 */
+	public function threeParamsFuncs() {
+		return [
+			[ 'str_replace' ],
+		];
+	}
 }
