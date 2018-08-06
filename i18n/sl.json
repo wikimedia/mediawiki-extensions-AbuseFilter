@@ -77,6 +77,7 @@
 	"abusefilter-log-details-diff": "Spremembe narejene v urejanju",
 	"abusefilter-log-linkoncontribs": "dnevnik zlorab",
 	"abusefilter-log-linkoncontribs-text": "Dnevnik zlorab {{GENDER:$1|tega uporabnika|te uporabnice}}",
+	"abusefilter-log-linkonhistory": "poglej dnevnik filtrov zlorab",
 	"abusefilter-log-hidden": "(vnos je skrit)",
 	"abusefilter-log-hidden-implicit": "(skrito, ker je redakcija izbrisana)",
 	"abusefilter-log-cannot-see-details": "Nimate dovoljenja za ogled podrobnosti tega vnosa.",

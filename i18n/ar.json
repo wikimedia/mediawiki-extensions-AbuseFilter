@@ -102,6 +102,7 @@
 	"abusefilter-log-details-diff": "التغييرات التي أجريت في التعديل",
 	"abusefilter-log-linkoncontribs": "سجل الإساءة",
 	"abusefilter-log-linkoncontribs-text": "سجل الإساءة ل{{GENDER:$1|هذا المستخدم}}",
+	"abusefilter-log-linkonhistory": "شاهد سجل الإساءة",
 	"abusefilter-log-hidden": "(السجل مخفي)",
 	"abusefilter-log-hidden-implicit": "(مخفي لأنه تم حذف مراجعة)",
 	"abusefilter-log-cannot-see-details": "ليس لديك الإذن لمعرفة تفاصيل هذا الإدخال.",

@@ -425,7 +425,7 @@
 	"abusefilter-exception-unclosedstring": "Ostängd sträng som startar vid tecken $1.",
 	"abusefilter-exception-invalidoperator": "Ogiltig operatör \"$2\" vid tecken $1.",
 	"abusefilter-exception-unrecognisedtoken": "Obekant token \"$2\" vid tecken $1.",
-	"abusefilter-exception-noparams": "Inga parametrar givna till funktion \"$2\" vid tecken $1.",
+	"abusefilter-exception-noparams": "Inga parametrar gavs i funktion \"$2\" vid tecknet $1.\n$3 {{PLURAL:$3|argument}} förväntades.",
 	"abusefilter-exception-dividebyzero": "Ogiltigt försök att dividera $2 med noll vid tecken $1.",
 	"abusefilter-exception-unrecognisedvar": "Okänd variabel $2 vid tecken $1",
 	"abusefilter-exception-notenoughargs": "Funktionen $2 anropades med för få argument vid teckenposition $1. $3 {{PLURAL:$3|argument|argument}} väntades, fick bara $4.",

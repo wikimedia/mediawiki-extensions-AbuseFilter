@@ -318,7 +318,7 @@
 	"abusefilter-exception-unclosedstring": "Незакрыты радок выразу, які пачынаецца з пазыцыі $1.",
 	"abusefilter-exception-invalidoperator": "Няслушны апэратар «$2» у пазыцыі $1.",
 	"abusefilter-exception-unrecognisedtoken": "Нераспазнаны элемэнт «$2» у пазыцыі $1.",
-	"abusefilter-exception-noparams": "Няма парамэтраў для функцыі «$2» у пазыцыі $1.",
+	"abusefilter-exception-noparams": "Няма парамэтраў для функцыі «$2» у пазыцыі $1.\n{{PLURAL:$3|Чакаўся $3 аргумэнт|Чакаліся $3 аргумэнты|Чакалася $3 аргумэнтаў}}.",
 	"abusefilter-exception-dividebyzero": "Спроба дзяленьня $2 на нуль у пазыцыі $1.",
 	"abusefilter-exception-unrecognisedvar": "Нераспазнаная зьменная $2 у пазыцыі $1",
 	"abusefilter-exception-notenoughargs": "Недастаткова аргумэнтаў для функцыі $2, якая выклікаецца ў пазыцыі $1.\nЧакаецца $3 {{PLURAL:$3|аргумэнт|аргумэнты|аргумэнтаў}}, атрымана $4",

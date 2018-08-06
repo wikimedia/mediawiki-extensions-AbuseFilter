@@ -401,7 +401,7 @@
 	"abusefilter-exception-unclosedstring": "Niezakończony ciąg znaków rozpoczynający się znakiem nr $1.",
 	"abusefilter-exception-invalidoperator": "Nieprawidłowy operator „$2”, znak nr $1.",
 	"abusefilter-exception-unrecognisedtoken": "Nierozpoznany symbol „$2”, znak nr $1.",
-	"abusefilter-exception-noparams": "Brak parametrów w wywołaniu funkcji „$2”, znak nr $1.",
+	"abusefilter-exception-noparams": "Brak parametrów dla funkcji „$2” przy znaku $1.\nOczekiwano $3 {{PLURAL:$3|argument|argumentów}}.",
 	"abusefilter-exception-dividebyzero": "Próba dzielenia $2 przez zero, znak nr $1.",
 	"abusefilter-exception-unrecognisedvar": "Nierozpoznana zmienna $2, znak nr $1.",
 	"abusefilter-exception-notenoughargs": "Zbyt mało argumentów dla funkcji $2, wywołanie – znak $1.\nOczekiwano $3 {{PLURAL:$3|argumentu|argumentów}}, użyto $4",

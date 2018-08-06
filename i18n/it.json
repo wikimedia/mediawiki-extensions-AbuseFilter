@@ -405,7 +405,7 @@
 	"abusefilter-exception-unclosedstring": "Stringa iniziata in corrispondenza del carattere $1 non terminata.",
 	"abusefilter-exception-invalidoperator": "Operatore \"$2\" non valido in corrispondenza del carattere $1.",
 	"abusefilter-exception-unrecognisedtoken": "Token \"$2\" non riconosciuto in corrispondenza del carattere $1.",
-	"abusefilter-exception-noparams": "Parametri mancanti per la funzione \"$2\" in corrispondenza del carattere $1.",
+	"abusefilter-exception-noparams": "Parametri mancanti per la funzione \"$2\" in corrispondenza del carattere $1.\n{{PLURAL:$3|Previsto un argomento|Previsti $3 argomenti}}.",
 	"abusefilter-exception-dividebyzero": "Tentativo di dividere $2 per zero in corrispondenza del carattere $1.",
 	"abusefilter-exception-unrecognisedvar": "Variabile $2 non riconosciuta in corrispondenza del carattere $1.",
 	"abusefilter-exception-notenoughargs": "Argomenti per la funzione $2 chiamata al carattere $1 non sufficienti.\n{{PLURAL:$3|Previsto $3 argomento|Previsti $3 argomenti}}, {{PLURAL:$4|ottenuto|ottenuti}} $4",

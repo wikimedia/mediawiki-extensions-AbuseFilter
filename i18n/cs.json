@@ -411,7 +411,7 @@
 	"abusefilter-exception-unclosedstring": "Řetězec začínající na pozici $1 není ukončen.",
 	"abusefilter-exception-invalidoperator": "Neplatný operátor „$2“ na pozici $1.",
 	"abusefilter-exception-unrecognisedtoken": "Neznámý element „$2“ na pozici $1.",
-	"abusefilter-exception-noparams": "Funkce „$2“ na pozici $1 potřebuje parametry.",
+	"abusefilter-exception-noparams": "Funkci „$2“ na pozici $1 nebyly předány parametry.\n{{PLURAL:$3|Očekáván jeden parametr|Očekávány $3 parametry|Očekáváno $3 parametrů}}.",
 	"abusefilter-exception-dividebyzero": "Neplatný pokus o dělení čísla $2 nulou na pozici $1.",
 	"abusefilter-exception-unrecognisedvar": "Neznámá proměnná $2 na pozici $1",
 	"abusefilter-exception-notenoughargs": "Nedostatek parametrů při volání funkce $2 na pozici $1.\n{{PLURAL:$3|Očekáván 1 parametr|Očekávány $3 parametry|Očekáváno $3 parametrů}}, volání používá $4.",

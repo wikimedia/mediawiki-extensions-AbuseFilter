@@ -17,7 +17,8 @@
 			"Matma Rex",
 			"Cgtdk",
 			"Jorn Ari",
-			"Joedalton"
+			"Joedalton",
+			"Saederup92"
 		]
 	},
 	"abusefilter-desc": "Anvender automatiske heuristikker på redigeringer",
@@ -171,6 +172,8 @@
 	"abusefilter-edit-throttle-count": "Antal tilladte handlinger:",
 	"abusefilter-edit-throttle-period": "Tidsrum:",
 	"abusefilter-edit-throttle-groups": "Gruppebegrænsning efter:\n:''(én pr. linje, kombiner med kommaer)''",
+	"abusefilter-edit-throttle-ip": "IP-adresse",
+	"abusefilter-edit-throttle-page": "Side",
 	"abusefilter-edit-warn-message": "Systemmeddelelse som skal bruges til advarsel:",
 	"abusefilter-edit-warn-other": "Anden meddelelse",
 	"abusefilter-edit-warn-other-label": "Sidenavn på anden meddelelse:\n:''(uden MediaWiki-præfiks)''",

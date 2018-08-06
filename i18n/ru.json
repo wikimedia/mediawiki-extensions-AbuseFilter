@@ -40,7 +40,9 @@
 			"Abiyoyo",
 			"Ping08",
 			"Stjn",
-			"Vlad5250"
+			"Vlad5250",
+			"MaxBioHazard",
+			"Shaleych"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -117,7 +119,7 @@
 	"abusefilter-log-details-diff": "Изменения, сделанные в правке",
 	"abusefilter-log-linkoncontribs": "журнал злоупотреблений",
 	"abusefilter-log-linkoncontribs-text": "Записи журнала злоупотреблений для {{GENDER:$1|этого участника|этой участницы}}",
-	"abusefilter-log-linkonhistory": "просмотр журнала злоупотреблений",
+	"abusefilter-log-linkonhistory": "просмотр журнала фильтров",
 	"abusefilter-log-linkonhistory-text": "Показать журналы злоупотреблений для этой страницы",
 	"abusefilter-log-hidden": "(запись скрыта)",
 	"abusefilter-log-hidden-implicit": "(скрыто, так как правка была удалена)",
@@ -431,7 +433,7 @@
 	"abusefilter-exception-unclosedstring": "Незакрытое строковое выражение, начинающееся с позиции $1.",
 	"abusefilter-exception-invalidoperator": "Ошибочный оператор «$2» в позиции $1.",
 	"abusefilter-exception-unrecognisedtoken": "Неопознанный знак «$2» в позиции $1.",
-	"abusefilter-exception-noparams": "Не указаны параметры для функции «$2» в позиции $1.",
+	"abusefilter-exception-noparams": "Не указаны параметры для функции «$2» в позиции $1. Ожидалось $3 {{PLURAL:$3|аргумент|аргумента|аргументов}}.",
 	"abusefilter-exception-dividebyzero": "Попытка деления $2 на ноль в позиции $1.",
 	"abusefilter-exception-unrecognisedvar": "Неопознанная переменная $2 в позиции $1",
 	"abusefilter-exception-notenoughargs": "Не хватает аргументов в функции $2, вызываемой в позиции $1.\nОжидается $3 {{PLURAL:$3|аргумент|аргументов|аргумента}}, {{PLURAL:$4|получен|получено}} $4",
