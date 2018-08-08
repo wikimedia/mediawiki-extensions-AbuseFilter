@@ -408,7 +408,7 @@
 	"abusefilter-exception-unclosedstring": "מחרוזת שלא נסגרה, מתחילה בתו מספר $1.",
 	"abusefilter-exception-invalidoperator": "אופרטור בלתי־תקין \"$2\" בתו מספר $1.",
 	"abusefilter-exception-unrecognisedtoken": "סימן בלתי־מזוהה \"$2\" בתו מספר $1.",
-	"abusefilter-exception-noparams": "לא ניתנו פרמטרים לפונקציה \"$2\" בתו מספר $1.",
+	"abusefilter-exception-noparams": "לא ניתנו פרמטרים לפונקציה \"$2\" בתו מספר $1.\n{{PLURAL:$3|היה אמור להיות כאן ארגומנט אחד|היו אמורים להיות כאן $3 ארגומנטים}}.",
 	"abusefilter-exception-dividebyzero": "ניסיון בלתי־חוקי לחלק את $2 באפס בתו מספר $1.",
 	"abusefilter-exception-unrecognisedvar": "משתנה בלתי־מזוהה $2 בתו מספר $1",
 	"abusefilter-exception-notenoughargs": "לא הועברו מספיק ארגומנטים לפונקציה $2 שנקראה בתו מספר $1.\nיש צורך {{PLURAL:$3|בארגומנט אחד|ב־$3 ארגומנטים}}, {{PLURAL:$4|התקבל אחד|התקבלו $4}}",

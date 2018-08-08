@@ -361,7 +361,7 @@
 	"abusefilter-exception-unclosedstring": "Åpen streng som starter ved tegn nummer $1.",
 	"abusefilter-exception-invalidoperator": "Ugyldig operator «$2» ved tegn nummer $1.",
 	"abusefilter-exception-unrecognisedtoken": "Ukjent tegn «$2» ved tegn nummer $1.",
-	"abusefilter-exception-noparams": "Ingen parametre ble gitt til funksjonen «$2» ved tegn nummer $1.",
+	"abusefilter-exception-noparams": "Ingen parametre ble gitt til funksjonen «$2» ved tegn nummer $1.\nForventet {{PLURAL:$3|ett argument|$3 argumenter}}.",
 	"abusefilter-exception-dividebyzero": "Ulovlig forsøk på å dele $2 med null ved tegn nummer $1.",
 	"abusefilter-exception-unrecognisedvar": "Ukjent variabel $2 ved tegn nummer $1.",
 	"abusefilter-exception-notenoughargs": "Funksjonskallet $2 ved tegn $1 hadde ikke nok argumenter.\nForventet {{PLURAL:$3|ett argument|$3 argumenter}}, fikk $4",

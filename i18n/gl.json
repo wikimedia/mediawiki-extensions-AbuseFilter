@@ -5,7 +5,8 @@
 			"Toliño",
 			"Banjo",
 			"Matma Rex",
-			"Navhy"
+			"Navhy",
+			"Maria zaos"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas ás edicións",
@@ -190,7 +191,7 @@
 	"abusefilter-edit-throttle-period": "Período de tempo (en segundos):",
 	"abusefilter-edit-throttle-groups": "Grupo acelerado por:\n:''(un por liña, combinar con comas)''",
 	"abusefilter-edit-throttle-ip": "Enderezo IP",
-	"abusefilter-edit-throttle-user": "Conta de usuario",
+	"abusefilter-edit-throttle-user": "Conta de usuario/a",
 	"abusefilter-edit-throttle-range": "rango /16",
 	"abusefilter-edit-throttle-page": "Páxina",
 	"abusefilter-edit-warn-message": "Mensaxe do sistema a usar para a advertencia:",
