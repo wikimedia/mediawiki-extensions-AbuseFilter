@@ -349,7 +349,7 @@
 	"abusefilter-exception-unclosedstring": "Nezaključen niz, začet pri znaku $1.",
 	"abusefilter-exception-invalidoperator": "Neveljavni operator »$2« pri znaku $1.",
 	"abusefilter-exception-unrecognisedtoken": "Neprepoznan žeton »$2« pri znaki $1.",
-	"abusefilter-exception-noparams": "Funkciji »$2«, pri znaku $1, ni bil določen noben parameter.",
+	"abusefilter-exception-noparams": "Funkciji »$2«, pri znaku $1, ni bil določen noben parameter.\nPričakovali smo $3 {{PLURAL:$3|parameter|parametra|parametre|parametrov}}.",
 	"abusefilter-exception-dividebyzero": "Nedovoljen poskus deljenja $2 z ničlo pri znaku $1.",
 	"abusefilter-exception-unrecognisedvar": "Neprepoznana spremenljivka $2 pri znaku $1.",
 	"abusefilter-exception-notenoughargs": "Funkcija $2, klicana pri znaku $1, nima dovolj parametrov.\n{{PLURAL:$3|Pričakovan je $3 parameter|Pričakovana sta $3 parametra|Pričakovani so $3 parametri|Pričakovanih je $3 parametrov}}, dobil sem jih $4",

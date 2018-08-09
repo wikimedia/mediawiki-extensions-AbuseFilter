@@ -421,7 +421,7 @@
 	"abusefilter-exception-unclosedstring": "Texto com início na posição $1, não foi fechado.",
 	"abusefilter-exception-invalidoperator": "Operador \"$2\" inválido, na posição $1.",
 	"abusefilter-exception-unrecognisedtoken": "Excerto \"$2\" não reconhecido, na posição $1.",
-	"abusefilter-exception-noparams": "Não foram fornecidos parâmetros à função \"$2\", na posição $1.",
+	"abusefilter-exception-noparams": "Não foram fornecidos parâmetros à função \"$2\", na posição $1.\n{{PLURAL:$3|Era esperado $3 argumento|Eram esperados $3 argumentos}}.",
 	"abusefilter-exception-dividebyzero": "Tentativa ilegal de dividir $2 por zero, na posição $1.",
 	"abusefilter-exception-unrecognisedvar": "Variável não reconhecida $2, na posição $1",
 	"abusefilter-exception-notenoughargs": "Argumentos insuficientes para a função $2, na posição $1.\nEsperava-se $3 {{PLURAL:$3|argumento|argumentos}}, obteve-se $4",
