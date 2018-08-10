@@ -25,7 +25,8 @@
 			"Daimona Eaytoy",
 			"Fitoschido",
 			"ArTrix",
-			"Sarah Bernabei"
+			"Sarah Bernabei",
+			"Wim b"
 		]
 	},
 	"abusefilter-desc": "Applica un'euristica automatica alle modifiche.",
@@ -108,6 +109,7 @@
 	"abusefilter-log-hidden-implicit": "(nascosto perché la versione è stata eliminata)",
 	"abusefilter-log-cannot-see-details": "Non si dispone dei permessi necessari per vedere i dettagli di questa voce del registro.",
 	"abusefilter-log-cannot-see-private-details": "Non si dispone dei permessi necessari per vedere i dettagli di questa voce del registro.",
+	"abusefilter-log-nonexistent": "Una voce con l'ID specificato non esiste.",
 	"abusefilter-log-details-hidden": "Non è possibile visualizzare i dettagli di questa voce, in quanto nascosta al pubblico.",
 	"abusefilter-log-details-hidden-implicit": "Non è possibile visualizzare i dettagli di questa voce in quanto riferita a una revisione nascosta al pubblico.",
 	"abusefilter-log-private-not-included": "Uno o più ID filtro che hai indicato sono privati. Poiché non puoi visualizzare i dettagli dei filtri privati, questi filtri non sono stati cercati.",
@@ -123,6 +125,7 @@
 	"log-action-filter-abusefilter": "Tipo di cambiamento del filtro:",
 	"log-action-filter-abusefilter-create": "Creazione di un nuovo filtro",
 	"log-action-filter-abusefilter-modify": "Modifica del filtro",
+	"abusefilterprivatedetails-log-name": "Registro di accesso ai dettagli privati del filtro anti abusi",
 	"abusefilter-management": "Gestione del filtro anti abusi",
 	"abusefilter-list": "Tutti i filtri",
 	"abusefilter-list-id": "ID filtro",
@@ -433,6 +436,7 @@
 	"abusefilter-revert-search": "Selezionare le azioni",
 	"abusefilter-revert-filter": "ID filtro:",
 	"abusefilter-revert-preview-intro": "Di seguito sono elencate le azioni effettuate dal filtro anti abusi che verranno annullate da quest'azione.\nVerificale con cura e fai clic su \"{{int:abusefilter-revert-confirm}}\" per confermare la selezione.",
+	"abusefilter-revert-confirm-legend": "onferma il ripristino",
 	"abusefilter-revert-confirm": "Conferma",
 	"abusefilter-revert-success": "Sono state annullate tutte le azioni effettuate dal [[Special:AbuseFilter/$1|filtro anti abusi $2]].",
 	"abusefilter-revert-reason": "Annullamento automatico di tutte le azioni effettuate dal filtro anti abusi $1.\nMotivo indicato: $2",
@@ -504,6 +508,8 @@
 	"abusefilter-view-private": "Visualizza i dettagli privati",
 	"abusefilter-view-private-reason": "Motivazione per visualizzare i dettagli privati:",
 	"abusefilter-log-details-id": "ID registro",
+	"abusefilter-invalid-request": "Richiesta non valida! È necessario accedere ai dettagli privati del registro tramite il modulo su [[Special:AbuseLog/$1]] e fornire una motivazione.",
+	"abusefilter-noreason": "Avviso: Per vedere i dettaglia privati di questo registro, devi fornire una motivazione.",
 	"abusefilter-log-ip-not-available": "Non disponibile",
 	"abusefilter-tag-reserved": "L'etichetta <code>abusefilter-condition-limit</code> è riservata per utilizzo interno da parte del filtro anti abusi.",
 	"tag-abusefilter-condition-limit": "limite di condizioni raggiunto",
@@ -521,5 +527,6 @@
 	"apihelp-query+abusefilters-param-prop": "Quali proprietà ottenere.",
 	"apihelp-query+abusefilters-example-1": "Elenca i filtri pubblici abilitati",
 	"apihelp-query+abusefilters-example-2": "Mostra alcuni dettagli sui filtri",
-	"apihelp-query+abuselog-param-prop": "Quali proprietà ottenere."
+	"apihelp-query+abuselog-param-prop": "Quali proprietà ottenere.",
+	"apierror-abusefilter-badsyntax": "Il filtro contiene sintassi non valida."
 }

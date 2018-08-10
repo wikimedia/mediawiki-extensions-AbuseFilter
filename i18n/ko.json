@@ -465,6 +465,7 @@
 	"abusefilter-test-search-type-move": "이동",
 	"abusefilter-test-search-type-delete": "삭제",
 	"abusefilter-test-search-type-upload": "업로드",
+	"abusefilter-test-search-type-createaccount": "계정 만들기",
 	"abusefilter-changeslist-examine": "검사",
 	"abusefilter-examine": "특정 편집을 검사",
 	"abusefilter-examine-intro": "이 문서에서 각각의 편집에 대해 부정 행위 방지 필터가 생성한 변수를 검사하고 필터에 대해 시험해볼 수 있습니다.",
