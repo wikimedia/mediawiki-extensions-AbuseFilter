@@ -436,7 +436,7 @@
 	"abusefilter-revert-search": "Selezionare le azioni",
 	"abusefilter-revert-filter": "ID filtro:",
 	"abusefilter-revert-preview-intro": "Di seguito sono elencate le azioni effettuate dal filtro anti abusi che verranno annullate da quest'azione.\nVerificale con cura e fai clic su \"{{int:abusefilter-revert-confirm}}\" per confermare la selezione.",
-	"abusefilter-revert-confirm-legend": "onferma il ripristino",
+	"abusefilter-revert-confirm-legend": "Conferma il ripristino",
 	"abusefilter-revert-confirm": "Conferma",
 	"abusefilter-revert-success": "Sono state annullate tutte le azioni effettuate dal [[Special:AbuseFilter/$1|filtro anti abusi $2]].",
 	"abusefilter-revert-reason": "Annullamento automatico di tutte le azioni effettuate dal filtro anti abusi $1.\nMotivo indicato: $2",
