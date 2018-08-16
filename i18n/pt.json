@@ -281,7 +281,7 @@
 	"abusefilter-edit-builder-op-comparison-gt": "Maior que (>)",
 	"abusefilter-edit-builder-op-comparison-lte": "Menor ou igual a (<=)",
 	"abusefilter-edit-builder-op-comparison-gte": "Maior ou igual a (>=)",
-	"abusefilter-edit-builder-group-op-bool": "Operadores booleanos",
+	"abusefilter-edit-builder-group-op-bool": "Operadores boolianos",
 	"abusefilter-edit-builder-op-bool-not": "Negação (!)",
 	"abusefilter-edit-builder-op-bool-and": "Conjunção/E (&)",
 	"abusefilter-edit-builder-op-bool-or": "Disjunção/Ou (|)",
