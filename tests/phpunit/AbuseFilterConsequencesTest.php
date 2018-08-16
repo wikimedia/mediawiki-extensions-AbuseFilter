@@ -526,8 +526,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 						// We need to take into account code execution time. 2 seconds should be enough
 						$durationCheck = abs( strtotime( $actualExpiry ) - strtotime( $expectedExpiry ) ) < 2;
 						if ( !$durationCheck ) {
-							$testErrorMessage = 'The expected block option "edittalk" options does not match '.
-								'the actual one.';
+							$testErrorMessage = "The expected block expiry ($expectedExpiry) does not " .
+								"match the actual one ($actualExpiry).";
 							break;
 						}
 
