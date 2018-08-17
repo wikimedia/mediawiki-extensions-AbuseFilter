@@ -1309,7 +1309,6 @@ class AbuseFilter {
 				&& strpos( $wgAbuseFilterNotifications, 'rc' ) === false
 			) {
 				$rc = $entry->getRecentChange();
-				/** @suppress PhanUndeclaredClassMethod Not sure how to fix. */
 				CheckUserHooks::updateCheckUserData( $rc );
 			}
 
