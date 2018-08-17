@@ -86,7 +86,7 @@
 	"abusefilter-log-details-diff": "Измене направљене при уређивању",
 	"abusefilter-log-linkoncontribs": "евиденција злоупотребе",
 	"abusefilter-log-linkoncontribs-text": "Евиденција злоупотребе {{GENDER:$1|овог корисника|ове кориснице}}",
-	"abusefilter-log-linkonhistory": "погледај евиденцију злоупотребе",
+	"abusefilter-log-linkonhistory": "евиденција злоупотребе",
 	"abusefilter-log-linkonhistory-text": "Погледајте евиденцију злоупотребе ове странице",
 	"abusefilter-log-hidden": "(унос је сакривен)",
 	"abusefilter-log-hidden-implicit": "(скривено зато што је измена обрисана)",
