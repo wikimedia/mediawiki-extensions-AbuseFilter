@@ -67,15 +67,6 @@ class AbuseFilterVariableHolder {
 	}
 
 	/**
-	 * @param self $addHolder
-	 * @throws MWException
-	 * @deprecated use addHolders() instead
-	 */
-	public function addHolder( $addHolder ) {
-		$this->addHolders( $addHolder );
-	}
-
-	/**
 	 * Merge any number of holders given as arguments into this holder.
 	 *
 	 * @throws MWException
