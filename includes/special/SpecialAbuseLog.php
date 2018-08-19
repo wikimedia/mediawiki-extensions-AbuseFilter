@@ -1055,6 +1055,11 @@ class SpecialAbuseLog extends SpecialPage {
 	 *    The string 'implicit' if it is hidden because the corresponding revision is hidden.
 	 */
 	public static function isHidden( $row ) {
+		// First, check if the entry is hidden. Since this is an oversight-level deletion,
+		// it's more important than the associated revision being deleted.
+		if ( $row->afl_deleted ) {
+			return true;
+		}
 		if ( $row->afl_rev_id ) {
 			$revision = Revision::newFromId( $row->afl_rev_id );
 			if ( $revision && $revision->getVisibility() != 0 ) {
@@ -1062,7 +1067,7 @@ class SpecialAbuseLog extends SpecialPage {
 			}
 		}
 
-		return (bool)$row->afl_deleted;
+		return false;
 	}
 
 	/**
