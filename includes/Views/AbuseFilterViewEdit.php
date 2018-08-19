@@ -744,7 +744,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 							'name' => 'wpFilterTags',
 							'value' => implode( ',', $tags ),
 							'rows' => 5,
-							'placeholder' => $this->msg( 'abusefilter-edit-tag-hidden-placeholder' )->text()
+							'placeholder' => $this->msg( 'abusefilter-edit-tag-hidden-placeholder' )->text(),
+							'infusable' => true,
+							'id' => 'mw-abusefilter-hidden-tags-field'
 						] + $readOnlyAttrib
 						),
 						[

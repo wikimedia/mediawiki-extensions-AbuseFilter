@@ -337,7 +337,8 @@
 			$exportBox = $( '#mw-abusefilter-export' ),
 			isFilterEditor = mw.config.get( 'isFilterEditor' ),
 			tagConfig = mw.config.get( 'tagConfig' ),
-			$tagContainer, tagUsed, tagDisabled, tagSelector, tagField, cbEnabled, cbDeleted;
+			$tagContainer, tagUsed, tagDisabled, tagSelector, tagField,
+			tagHiddenField, cbEnabled, cbDeleted;
 
 		if ( isFilterEditor ) {
 			// Configure the actual editing interface
@@ -364,8 +365,9 @@
 							align: 'top'
 						}
 					);
+				tagHiddenField = OO.ui.infuse( $( '#mw-abusefilter-hidden-tags-field' ) );
 				tagSelector.on( 'change', function () {
-					$( '#mw-abusefilter-hidden-tags textarea' ).val( tagSelector.getValue() );
+					tagHiddenField.setValue( tagSelector.getValue() );
 				} );
 
 				$( '#mw-abusefilter-hidden-tags' ).hide();
