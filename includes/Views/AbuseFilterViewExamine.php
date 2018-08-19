@@ -157,7 +157,8 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
-		if ( SpecialAbuseLog::isHidden( $row ) && !$this->getUser()->isAllowed( 'deletedtext' ) ) {
+		if ( SpecialAbuseLog::isHidden( $row ) === 'implicit' &&
+			!$this->getUser()->isAllowed( 'deletedtext' ) ) {
 			$out->addWikiMsg( 'abusefilter-log-details-hidden-implicit' );
 			return;
 		}
