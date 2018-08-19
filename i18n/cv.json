@@ -24,6 +24,7 @@
 	"abusefilter-log-details-ip": "Хутшӑнаканӑн IP адресӗ",
 	"abusefilter-log-noactions": "ҫук",
 	"abusefilter-log-details-diff": "Улшӑнури улӑштарӑвӗсем",
+	"abusefilter-log-linkonhistory": "фильтрсен журналне пăхмалли",
 	"abusefilter-log-hide-id": "Журнал ҫырӑвӗн идентификаторӗ:",
 	"abusefilter-log-hide-reason": "Сӑлтав:",
 	"abusefilter-logentry-suppress": "[[$1]] пытар",
