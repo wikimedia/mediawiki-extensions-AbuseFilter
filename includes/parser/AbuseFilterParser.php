@@ -159,12 +159,6 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function skipOverBraces() {
-		if ( !( $this->mCur->type == AFPToken::TBRACE && $this->mCur->value == '(' ) ||
-			!$this->mShortCircuit
-		) {
-			return;
-		}
-
 		$braces = 1;
 		while ( $this->mCur->type != AFPToken::TNONE && $braces > 0 ) {
 			$this->move();
@@ -213,19 +207,6 @@ class AbuseFilterParser {
 		$this->doLevelEntry( $result );
 
 		return $result;
-	}
-
-	/**
-	 * @param string $a
-	 * @param string $b
-	 * @return int
-	 */
-	public static function lengthCompare( $a, $b ) {
-		if ( strlen( $a ) == strlen( $b ) ) {
-			return 0;
-		}
-
-		return ( strlen( $a ) < strlen( $b ) ) ? -1 : 1;
 	}
 
 	/* Levels */
@@ -1345,10 +1326,6 @@ class AbuseFilterParser {
 	 */
 	protected static function equalsToAny( $string, $values ) {
 		$string = $string->toString();
-
-		if ( $string === '' ) {
-			return false;
-		}
 
 		foreach ( $values as $needle ) {
 			$needle = $needle->toString();

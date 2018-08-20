@@ -52,8 +52,9 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 		static $parsers = null;
 		if ( !$parsers ) {
 			$parsers = [
-				new AbuseFilterParser(),
-				new AbuseFilterCachingParser()
+				new AbuseFilterParser()
+				// @ToDo: Here we should also instantiate an AbuseFilterCachingParser as we'll have
+				// fixed its problems (T156095). Right now it may break otherwise working tests (see T201193)
 			];
 		}
 		return $parsers;
@@ -145,26 +146,6 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 			[ 'a == a | c == d', 1 ],
 			[ 'a == b & c == d', 1 ],
 		];
-	}
-
-	/**
-	 * get_matches should throw an exception with an invalid number of arguments.
-	 * @expectedException AFPUserVisibleException
-	 * @covers AbuseFilterParser::funcGetMatches
-	 */
-	public function testGetMatchesInvalidArgs() {
-		$parser = self::getParser();
-		$parser->parse( "get_matches('')" );
-	}
-
-	/**
-	 * get_matches should throw an exception when given an invalid regular expression.
-	 * @expectedException AFPUserVisibleException
-	 * @covers AbuseFilterParser::funcGetMatches
-	 */
-	public function testGetMatchesInvalidRegex() {
-		$parser = self::getParser();
-		$parser->parse( "get_matches('this (should fail')" );
 	}
 
 	/**
@@ -498,6 +479,7 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown
 	 * @covers AbuseFilterParser::funcRCount
+	 * @covers AbuseFilterParser::funcGetMatches
 	 * @dataProvider regexFailure
 	 */
 	public function testRegexFailureException( $expr, $caller ) {
@@ -514,6 +496,7 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	public function regexFailure() {
 		return [
 			[ "rcount('(','a')", 'funcRCount' ],
+			[ "get_matches('this (should fail', 'any haystack')", 'funcGetMatches' ],
 		];
 	}
 
