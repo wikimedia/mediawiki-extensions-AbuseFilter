@@ -6,6 +6,9 @@
 			"Chuvash"
 		]
 	},
+	"abuselog": "Фильтрсен журналĕ",
+	"abusefilter-log": "Фильтрсен журналĕ",
+	"abusefilter-log-search": "Фильтрсен журналĕнче шырани",
 	"abusefilter-log-search-user": "Усă куракан:",
 	"abusefilter-log-search-filter": "Ала идентификаторӗ",
 	"abusefilter-log-search-title": "Пуҫелӗк:",
@@ -25,6 +28,7 @@
 	"abusefilter-log-noactions": "ҫук",
 	"abusefilter-log-details-diff": "Улшӑнури улӑштарӑвӗсем",
 	"abusefilter-log-linkonhistory": "фильтрсен журналне пăхмалли",
+	"abusefilter-log-linkonhistory-text": "Кунăн фильтрĕсен журналĕсене пăхмалли",
 	"abusefilter-log-hide-id": "Журнал ҫырӑвӗн идентификаторӗ:",
 	"abusefilter-log-hide-reason": "Сӑлтав:",
 	"abusefilter-logentry-suppress": "[[$1]] пытар",
@@ -76,6 +80,7 @@
 	"abusefilter-edit-builder-group-funcs": "Функцисем",
 	"abusefilter-edit-builder-funcs-lcase": "Пĕчĕк буквăран (lcase)",
 	"abusefilter-edit-builder-funcs-ucase": "Пысăк буквăран (ucase)",
+	"abusefilter-filter-log": "Фильтрсен юлашки улăшăннисем",
 	"abusefilter-history-user": "Хутшăнакан",
 	"abusefilter-history-deleted": "Тӗпленӗ",
 	"abusefilter-history-filterid": "Фильтр",
@@ -83,5 +88,7 @@
 	"abusefilter-history-diff": "Улшӑнусем",
 	"abusefilter-examine-user": "Усă куракан:",
 	"abusefilter-examine-submit": "Туп",
-	"abusefilter-topnav-home": "Килелле"
+	"abusefilter-topnav-home": "Килелле",
+	"abusefilter-topnav-log": "Фильтрсен журналĕ",
+	"abusefilter-log-name": "Фильтрсен журналĕ"
 }

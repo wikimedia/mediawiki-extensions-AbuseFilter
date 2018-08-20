@@ -509,7 +509,7 @@
 	"abusefilter-view-private-reason": "Motivazione per visualizzare i dettagli privati:",
 	"abusefilter-log-details-id": "ID registro",
 	"abusefilter-invalid-request": "Richiesta non valida! È necessario accedere ai dettagli privati del registro tramite il modulo su [[Special:AbuseLog/$1]] e fornire una motivazione.",
-	"abusefilter-noreason": "Avviso: Per vedere i dettaglia privati di questo registro, devi fornire una motivazione.",
+	"abusefilter-noreason": "Avviso: per vedere i dettagli privati di questo registro, devi fornire una motivazione.",
 	"abusefilter-log-ip-not-available": "Non disponibile",
 	"abusefilter-tag-reserved": "L'etichetta <code>abusefilter-condition-limit</code> è riservata per utilizzo interno da parte del filtro anti abusi.",
 	"tag-abusefilter-condition-limit": "limite di condizioni raggiunto",
