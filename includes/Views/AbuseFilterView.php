@@ -71,6 +71,7 @@ abstract class AbuseFilterView extends ContextSource {
 	 * @param bool $addResultDiv
 	 * @param bool $externalForm
 	 * @param bool $needsModifyRights
+	 * @param-taint $rules none
 	 * @return string
 	 */
 	public function buildEditBox(
@@ -96,6 +97,7 @@ abstract class AbuseFilterView extends ContextSource {
 
 		$rules = rtrim( $rules ) . "\n";
 		$canEdit = $needsModifyRights ? $this->canEdit() : $this->canViewPrivate();
+		$switchEditor = null;
 
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'CodeEditor' ) ) {
 			$editorAttrib['name'] = 'wpAceFilterEditor';
@@ -144,32 +146,32 @@ abstract class AbuseFilterView extends ContextSource {
 			// [ group-msg-key => [ text-to-add => text-msg-key ] ] and we need it as
 			// [ group-msg => [ text-msg => text-to-add ] ]
 			// Also, the 'other' element must be the first one.
-			$dropDown = [ $this->msg( 'abusefilter-edit-builder-select' )->text() => 'other' ];
+			$dropDownOptions = [ $this->msg( 'abusefilter-edit-builder-select' )->text() => 'other' ];
 			foreach ( $rawDropDown as $group => $values ) {
 				// Give grep a chance to find the usages:
 				// abusefilter-edit-builder-group-op-arithmetic, abusefilter-edit-builder-group-op-comparison,
 				// abusefilter-edit-builder-group-op-bool, abusefilter-edit-builder-group-misc,
 				// abusefilter-edit-builder-group-funcs, abusefilter-edit-builder-group-vars
 				$localisedGroup = $this->msg( "abusefilter-edit-builder-group-$group" )->text();
-				$dropDown[ $localisedGroup ] = array_flip( $values );
+				$dropDownOptions[ $localisedGroup ] = array_flip( $values );
 				$newKeys = array_map(
 					function ( $key ) use ( $group ) {
 						return $this->msg( "abusefilter-edit-builder-$group-$key" )->text();
 					},
-					array_keys( $dropDown[ $localisedGroup ] )
+					array_keys( $dropDownOptions[ $localisedGroup ] )
 				);
-				$dropDown[ $localisedGroup ] = array_combine( $newKeys, $dropDown[ $localisedGroup ] );
+				$dropDownOptions[ $localisedGroup ] = array_combine(
+					$newKeys, $dropDownOptions[ $localisedGroup ] );
 			}
 
-			$dropDown = Xml::listDropDownOptionsOoui( $dropDown );
+			$dropDownList = Xml::listDropDownOptionsOoui( $dropDownOptions );
 			$dropDown = new OOUI\DropdownInputWidget( [
 				'name' => 'wpFilterBuilder',
 				'inputId' => 'wpFilterBuilder',
-				'options' => $dropDown
+				'options' => $dropDownList
 			] );
 
-			$dropDown = new OOUI\FieldLayout( $dropDown );
-			$formElements = [ $dropDown ];
+			$formElements = [ new OOUI\FieldLayout( $dropDown ) ];
 
 			// Button for syntax check
 			$syntaxCheck =
@@ -179,19 +181,19 @@ abstract class AbuseFilterView extends ContextSource {
 						'id' => 'mw-abusefilter-syntaxcheck'
 					] + $noTestAttrib
 				);
-			$group = $syntaxCheck;
 
 			// Button for switching editor (if Ace is used)
-			if ( isset( $switchEditor ) ) {
-				$group =
+			if ( $switchEditor !== null ) {
+				$formElements[] = new OOUI\FieldLayout(
 					new OOUI\Widget( [
 						'content' => new OOUI\HorizontalLayout( [
 							'items' => [ $switchEditor, $syntaxCheck ]
 						] )
-					] );
+					] )
+				);
+			} else {
+				$formElements[] = new OOUI\FieldLayout( $syntaxCheck );
 			}
-			$group = new OOUI\FieldLayout( $group );
-			$formElements[] = $group;
 
 			$fieldSet = new OOUI\FieldsetLayout( [
 				'items' => $formElements,

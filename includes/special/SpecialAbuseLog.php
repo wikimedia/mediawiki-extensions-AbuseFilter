@@ -521,8 +521,10 @@ class SpecialAbuseLog extends SpecialPage {
 
 			$diffEngine->showDiffStyle();
 
-			$formattedDiff = $diffEngine->generateTextDiffBody( $old_wikitext, $new_wikitext );
-			$formattedDiff = $diffEngine->addHeader( $formattedDiff, '', '' );
+			$formattedDiff = $diffEngine->addHeader(
+				$diffEngine->generateTextDiffBody( $old_wikitext, $new_wikitext ),
+				'', ''
+			);
 
 			$output .=
 				Xml::tags(
@@ -558,9 +560,7 @@ class SpecialAbuseLog extends SpecialPage {
 			$output .= $htmlForm->getHTML( false );
 		}
 
-		$output = Xml::tags( 'fieldset', null, $output );
-
-		$out->addHTML( $output );
+		$out->addHTML( Xml::tags( 'fieldset', null, $output ) );
 	}
 
 	/**
