@@ -111,67 +111,55 @@ class AbuseFilterPager extends TablePager {
 				);
 			case 'af_pattern':
 				if ( $this->mQuery[1] === 'LIKE' ) {
-					$position = mb_strpos(
-						strtolower( $row->af_pattern ),
-						strtolower( $this->mQuery[0] ),
-						0,
-						'UTF8'
-					);
+					$position = mb_stripos( $row->af_pattern, $this->mQuery[0] );
 					if ( $position === false ) {
 						// This may happen due to problems with character encoding
 						// which aren't easy to solve
-						return htmlspecialchars( mb_substr( $row->af_pattern, 0, 50, 'UTF8' ) );
+						return htmlspecialchars( mb_substr( $row->af_pattern, 0, 50 ) );
 					}
-					$length = mb_strlen( $this->mQuery[0], 'UTF8' );
-				} elseif ( $this->mQuery[1] === 'RLIKE' ) {
+					$length = mb_strlen( $this->mQuery[0] );
+				} else {
+					$regex = '/' . $this->mQuery[0] . '/u';
+					if ( $this->mQuery[1] === 'IRLIKE' ) {
+						$regex .= 'i';
+					}
+
+					$matches = [];
 					Wikimedia\suppressWarnings();
 					$check = preg_match(
-						'/' . $this->mQuery[0] . '/',
+						$regex,
 						$row->af_pattern,
-						$matches,
-						PREG_OFFSET_CAPTURE
+						$matches
 					);
 					Wikimedia\restoreWarnings();
 					// This may happen in case of catastrophic backtracking
 					if ( $check === false ) {
-						return htmlspecialchars( mb_substr( $row->af_pattern, 0, 50, 'UTF8' ) );
+						return htmlspecialchars( mb_substr( $row->af_pattern, 0, 50 ) );
 					}
-					$length = mb_strlen( $matches[0][0], 'UTF8' );
-					$position = $matches[0][1];
-				} elseif ( $this->mQuery[1] === 'IRLIKE' ) {
-					Wikimedia\suppressWarnings();
-					$check = preg_match(
-						'/' . $this->mQuery[0] . '/i',
-						$row->af_pattern,
-						$matches,
-						PREG_OFFSET_CAPTURE
-					);
-					Wikimedia\restoreWarnings();
-					// This may happen in case of catastrophic backtracking
-					if ( $check === false ) {
-						return htmlspecialchars( mb_substr( $row->af_pattern, 0, 50, 'UTF8' ) );
-					}
-					$length = mb_strlen( $matches[0][0], 'UTF8' );
-					$position = $matches[0][1];
+
+					$length = mb_strlen( $matches[0] );
+					$position = mb_strpos( $row->af_pattern, $matches[0] );
 				}
+
 				$remaining = 50 - $length;
 				if ( $remaining <= 0 ) {
+					// Truncate the filter pattern and only show the first 50 characters of the match
 					$pattern = '<b>' .
-						htmlspecialchars( mb_substr( $row->af_pattern, 0, 50, 'UTF8' ) ) .
+						htmlspecialchars( mb_substr( $row->af_pattern, $position, 50 ) ) .
 						'</b>';
 				} else {
+					// Center the snippet on the matched string
 					$minoffset = max( $position - round( $remaining / 2 ), 0 );
-					$pattern = mb_substr( $row->af_pattern, $minoffset, 50, 'UTF8' );
+					$pattern = mb_substr( $row->af_pattern, $minoffset, 50 );
 					$pattern =
-						htmlspecialchars( mb_substr( $pattern, 0, $position - $minoffset, 'UTF8' ) ) .
+						htmlspecialchars( mb_substr( $pattern, 0, $position - $minoffset ) ) .
 						'<b>' .
-						htmlspecialchars( mb_substr( $pattern, $position - $minoffset, $length, 'UTF8' ) ) .
+						htmlspecialchars( mb_substr( $pattern, $position - $minoffset, $length ) ) .
 						'</b>' .
 						htmlspecialchars( mb_substr(
 							$pattern,
 							$position - $minoffset + $length,
-							$remaining - ( $position - $minoffset + $length ),
-							'UTF8'
+							$remaining - ( $position - $minoffset + $length )
 							)
 						);
 				}
