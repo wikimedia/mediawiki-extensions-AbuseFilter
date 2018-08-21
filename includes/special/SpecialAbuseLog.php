@@ -242,8 +242,9 @@ class SpecialAbuseLog extends SpecialPage {
 	 * @param string $id
 	 */
 	public function showHideForm( $id ) {
+		$output = $this->getOutput();
 		if ( !$this->getUser()->isAllowed( 'abusefilter-hide-log' ) ) {
-			$this->getOutput()->addWikiMsg( 'abusefilter-log-hide-forbidden' );
+			$output->addWikiMsg( 'abusefilter-log-hide-forbidden' );
 
 			return;
 		}
@@ -295,6 +296,11 @@ class SpecialAbuseLog extends SpecialPage {
 			->addHiddenField( 'hide', $id )
 			->setSubmitCallback( [ $this, 'saveHideForm' ] )
 			->show();
+
+		// Show suppress log for this entry
+		$suppressLogPage = new LogPage( 'suppress' );
+		$output->addHTML( "<h2>" . $suppressLogPage->getName()->escaped() . "</h2>\n" );
+		LogEventsList::showLogExtract( $output, 'suppress', $this->getPageTitle( $id ) );
 	}
 
 	/**
