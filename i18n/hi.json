@@ -93,8 +93,6 @@
 	"abusefilter-log-hide-hidden": "इस प्रविष्टि को सार्वजनिक दृष्टि से छुपाएँ",
 	"abusefilter-log-hide-reason": "कारण:",
 	"abusefilter-log-hide-forbidden": "आपके पास दुरुपयोग लॉग प्रविष्टियाँ छुपाने की अनुमति नहीं है।",
-	"abusefilter-logentry-suppress": "\"[[$1]]\" को छुपाया",
-	"abusefilter-logentry-unsuppress": "ना छुपाएँ \"[[$1]]\"",
 	"logentry-abusefilter-hit": "$1 ने $3 पर \"$5\" किया जिसे $4 ने पकड़ा और निम्न कदम उठाया: $6 ($7)",
 	"logentry-abusefilterprivatedetails-access": "$1 $3 के व्यक्तिगत विवरण तक {{{{GENDER:$2|पहुँचा}}",
 	"abusefilter-management": "दुरुपयोग फ़िल्टर प्रबंधन",

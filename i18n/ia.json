@@ -80,8 +80,6 @@
 	"abusefilter-log-hide-hidden": "Celar iste entrata al vista del publico",
 	"abusefilter-log-hide-reason": "Motivo:",
 	"abusefilter-log-hide-forbidden": "Tu non ha le permission de celar\nentratas del registro de abusos.",
-	"abusefilter-logentry-suppress": "celava \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "revelava [[$1]]",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|ha provocate}} $4, exequente le action \"$5\" sur $3. Actiones prendite: $6 ($7)",
 	"abusefilter-management": "Gestion del filtro anti-abuso",
 	"abusefilter-list": "Tote le filtros",

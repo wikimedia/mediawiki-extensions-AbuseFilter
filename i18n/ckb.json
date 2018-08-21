@@ -58,8 +58,6 @@
 	"abusefilter-log-hide-hidden": "وردەکارییەکانی ئەم بابەتە لە بەرچاوی گشتی لا ببە",
 	"abusefilter-log-hide-reason": "هۆکار:",
 	"abusefilter-log-hide-forbidden": "ناتوانی بابەتەکانی لۆگی کەڵکاوەژوو بشارییەوە.",
-	"abusefilter-logentry-suppress": "\"[[$1]]\"ی شاردەوە",
-	"abusefilter-logentry-unsuppress": "\"[[$1]]\"ی ئاشکرا کرد",
 	"logentry-abusefilter-hit": "$1 $4ی چالاککرد، خەریکی کردەوەی «$5» لەسەر $3 بوو. کردەوەی بەڕێوەچوو: $6 ($7)",
 	"abusefilter-management": "بەڕێوەبردنی پاڵوێنەی کەڵکاوەژوو",
 	"abusefilter-list": "ھەموو پاڵوێنەکان",

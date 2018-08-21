@@ -31,8 +31,6 @@
 	"abusefilter-log-hide-hidden": "ამ ცვლილების დამალვა საზოგადოებისათვის",
 	"abusefilter-log-hide-reason": "სამანჯელი:",
 	"abusefilter-log-hide-forbidden": "თქვენ ბოროტად გამოყენების ფილტრის ჟურნალის ჩანაწერების დამალვის უფლება არა გაქვთ.",
-	"abusefilter-logentry-suppress": "\"[[$1]]\"-ის დამალვა",
-	"abusefilter-logentry-unsuppress": "\"[[$1]]\"-ის ჩვენება",
 	"abusefilter-management": "ბოროტად გამოყენების ფილტრის მართვა",
 	"abusefilter-list": "ყველა ფილტრი",
 	"abusefilter-list-id": "ფილტრის ID",

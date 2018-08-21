@@ -65,8 +65,6 @@
 	"abusefilter-log-hide-legend": "Logboekregel verbargen",
 	"abusefilter-log-hide-id": "Logboekmeldingsnummer:",
 	"abusefilter-log-hide-reason": "Reden:",
-	"abusefilter-logentry-suppress": "hef [[$1]] verbörgen",
-	"abusefilter-logentry-unsuppress": "hef [[$1]] zichtbaor emaakt",
 	"abusefilter-list": "Alle filters",
 	"abusefilter-list-id": "Filternummer",
 	"abusefilter-list-status": "Staotus",

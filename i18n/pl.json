@@ -120,8 +120,6 @@
 	"abusefilter-log-hide-reason": "Powód",
 	"abusefilter-log-hide-reason-other": "Inny lub dodatkowy powód:",
 	"abusefilter-log-hide-forbidden": "Nie masz uprawnień do ukrywania\nwpisów w rejestrze nadużyć.",
-	"abusefilter-logentry-suppress": "ukrył [[$1]]",
-	"abusefilter-logentry-unsuppress": "zakończył ukrywanie [[$1]]",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|uruchomił|uruchomiła|uruchomił(a)}} $4, {{GENDER:$2|wykonując}} „$5” na $3. Podjęte działania: $6 ($7)",
 	"log-action-filter-abusefilter": "Rodzaj zmiany filtra:",
 	"log-action-filter-abusefilter-create": "Utworzenie nowego filtra",

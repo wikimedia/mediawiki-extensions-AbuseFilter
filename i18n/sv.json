@@ -123,8 +123,6 @@
 	"abusefilter-log-hide-reason": "Orsak:",
 	"abusefilter-log-hide-reason-other": "Annan/ytterligare anledning:",
 	"abusefilter-log-hide-forbidden": "Du har inte behörighet att dölja\nmissbrukslogg-poster.",
-	"abusefilter-logentry-suppress": "dolde \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "visade \"[[$1]]\"",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|utlöste}} $4, {{GENDER:$2|utförde}} åtgärden \"$5\" på  $3. Åtgärder: $6 ($7)",
 	"log-action-filter-abusefilter": "Typ av filterändring:",
 	"log-action-filter-abusefilter-create": "Nya skapade filter",

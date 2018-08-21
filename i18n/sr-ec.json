@@ -99,8 +99,6 @@
 	"abusefilter-log-hide-reason": "Разлог:",
 	"abusefilter-log-hide-reason-other": "Други/додатни разлог:",
 	"abusefilter-log-hide-forbidden": "Немате дозволу да сакривате уносе у извештају злоупотребе.",
-	"abusefilter-logentry-suppress": "сакриј „[[$1]]“",
-	"abusefilter-logentry-unsuppress": "откри „[[$1]]“",
 	"logentry-abusefilter-hit": "$1 је {{GENDER:$2|активирао|активирала}} $4, изводећи радњу „$5“ на страници $3. Предузете радње: $6 ($7)",
 	"log-action-filter-abusefilter": "Тип промене филтера:",
 	"log-action-filter-abusefilter-create": "нови филтер",

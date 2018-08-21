@@ -64,8 +64,6 @@
 	"abusefilter-log-hide-hidden": "Fjal henda postin fyri almennum sýningum",
 	"abusefilter-log-hide-reason": "Orsøk:",
 	"abusefilter-log-hide-forbidden": "Tú hevur ikki loyvi til at fjala misnýtsluloggpostar.",
-	"abusefilter-logentry-suppress": "fjald \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "gjørdi \"[[$1]]\" sjónligt aftur",
 	"logentry-abusefilter-hit": "$1 útloysti $4, sum førir til handling \"$5\" á $3. Tiltøk sett í verk: $6 ($7)",
 	"abusefilter-management": "Stýring av misnýtslufilturi",
 	"abusefilter-list": "Øll filtur",

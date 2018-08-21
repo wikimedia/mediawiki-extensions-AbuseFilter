@@ -92,8 +92,6 @@
 	"abusefilter-log-hide-hidden": "Απόκρυψη αυτής της  εγγραφής από την κοινή θέα",
 	"abusefilter-log-hide-reason": "Αιτία:",
 	"abusefilter-log-hide-forbidden": "Δεν έχετε άδεια για να κρύψετε τις καταχωρήσεις κατάχρησης του αρχείου καταγραφής",
-	"abusefilter-logentry-suppress": "έκρυψε το \"[[$1]] \"",
-	"abusefilter-logentry-unsuppress": "αποκάλυψε \"[[$1]]\"",
 	"abusefilter-management": "Διαχείριση φίλτρου καταχρήσεων",
 	"abusefilter-list": "Όλα τα φίλτρα",
 	"abusefilter-list-id": "Ταυτότητα φίλτρου",

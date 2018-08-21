@@ -73,8 +73,6 @@
 	"abusefilter-log-hide-hidden": "Къайладаккха хӀара дӀаяздар",
 	"abusefilter-log-hide-reason": "Бахьана:",
 	"abusefilter-log-hide-forbidden": "Зуламан тептар чура дӀаяздарш къайладаха хьа бакъо яц.",
-	"abusefilter-logentry-suppress": "къайладаккха [[$1]]",
-	"abusefilter-logentry-unsuppress": "гайта [[$1]]",
 	"logentry-abusefilter-hit": "$1 {{#gender:$1|болх бола балийтина}} литтаре $4, кхочушъ дийнарг «$5» агӀона $3 чохь. Дийнарг:  $6  ($7)",
 	"abusefilter-management": "Зулам литтаран урхалла",
 	"abusefilter-list": "Дерриг литтарш",

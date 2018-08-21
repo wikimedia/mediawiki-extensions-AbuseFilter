@@ -29,8 +29,6 @@
 	"abusefilter-log-linkoncontribs": "د ورانکارۍ يادښت",
 	"abusefilter-log-linkoncontribs-text": "د دې کارن د ورانکارۍ يادښت",
 	"abusefilter-log-hide-reason": "سبب:",
-	"abusefilter-logentry-suppress": "\"[[$1]]\" پټول",
-	"abusefilter-logentry-unsuppress": "\"[[$1]]\" ناپټول",
 	"abusefilter-list": "ټول چاڼگران",
 	"abusefilter-list-id": "د چاڼگر پېژند",
 	"abusefilter-list-status": "دريځ",

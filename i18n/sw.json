@@ -22,8 +22,6 @@
 	"abusefilter-log-noactions": "usichague",
 	"abusefilter-log-details-hidden-implicit": "Huwezi kutazama maelezo kwa ingizo hili kwa sababu ukaguzi unaohusiana na ingizo haujawekwa wazi kwa kila mtu kutazama",
 	"abusefilter-log-hide-reason": "Sababu:",
-	"abusefilter-logentry-suppress": "ilificha \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "fichua \"[[$1]]\"",
 	"abusefilter-list": "Chujio zote",
 	"abusefilter-list-id": "ID ya chujio",
 	"abusefilter-list-status": "Hali",

@@ -141,8 +141,6 @@
 	"abusefilter-log-hide-reason": "Motivo:",
 	"abusefilter-log-hide-reason-other": "Otro motivo:",
 	"abusefilter-log-hide-forbidden": "No tienes permiso para ocultar entradas del registro de abusos",
-	"abusefilter-logentry-suppress": "ocultó «[[$1]]»",
-	"abusefilter-logentry-unsuppress": "reveló «[[$1]]»",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|disparó}} $4 al {{GENDER:$2|realizar}} la acción «$5» en $3. Medidas adoptadas: $6 ($7)",
 	"log-action-filter-abusefilter": "Tipo de cambio de filtro:",
 	"log-action-filter-abusefilter-create": "Creación de filtro nuevo",

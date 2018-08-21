@@ -90,8 +90,6 @@
 	"abusefilter-log-hide-hidden": "Scunnere quèste vôsce d'a viste d'u pubbleche",
 	"abusefilter-log-hide-reason": "Mutive:",
 	"abusefilter-log-hide-forbidden": "Tu non ge tène 'u permesse de scunnere le vôsce de l'achivije de le abbuse.",
-	"abusefilter-logentry-suppress": "scunne \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "fa vedè \"[[$1]]\"",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|innescate}} $4, {{GENDER:$2|eseguenne}} l'azione \"$5\" sus a $3. Aziune pigghiate: $6 ($7)",
 	"log-action-filter-abusefilter-modify": "Cangiamende d'u filtre",
 	"abusefilter-management": "Gestione d'u filtre de le abbuse",

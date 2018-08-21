@@ -66,8 +66,6 @@
 	"abusefilter-log-hide-hidden": "பொதுப் பார்வையில் இருந்து இப்பதிவை மறை",
 	"abusefilter-log-hide-reason": "காரணம்:",
 	"abusefilter-log-hide-forbidden": "முறைகேட்டுப் பதிவேட்டு உள்ளிடுகைகளை மறைக்க உரிமை இல்லை",
-	"abusefilter-logentry-suppress": "\"[[$1]]\" இன் மறைப்பு",
-	"abusefilter-logentry-unsuppress": "\"[[$1]]\" இன் மறைப்பு நீக்கல்",
 	"abusefilter-management": "முறைகேட்டு வடிகட்டி மேலாண்மை",
 	"abusefilter-list": "எல்லா வடிகட்டிகளும்",
 	"abusefilter-list-id": "வடிகட்டி எண்",

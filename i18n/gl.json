@@ -93,8 +93,6 @@
 	"abusefilter-log-hide-hidden": "Agochar esta entrada da vista pública",
 	"abusefilter-log-hide-reason": "Motivo:",
 	"abusefilter-log-hide-forbidden": "Non ten os permisos necesarios para agochar entradas do rexistro de abusos.",
-	"abusefilter-logentry-suppress": "agochou \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "descubriu \"[[$1]]\"",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|accionou}} $4, ao {{GENDER:$2|levar}} a cabo a acción \"$5\" na páxina \"$3\". Medidas tomadas: $6 ($7)",
 	"log-action-filter-abusefilter": "Tipo de cambio de filtro:",
 	"log-action-filter-abusefilter-create": "Creación de novo filtro",

@@ -72,8 +72,6 @@
 	"abusefilter-log-hide-reason": "Motivassion:",
 	"abusefilter-log-hide-reason-other": "Altra motivasion:",
 	"abusefilter-log-hide-forbidden": "No te ghè el parmesso de scondar i elementi del registro dei abusi.",
-	"abusefilter-logentry-suppress": "ga sconto \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "ga descuerto \"[[$1]]\"",
 	"abusefilter-management": "Gestion del filtro abusi",
 	"abusefilter-list": "Tuti i filtri",
 	"abusefilter-list-id": "ID del filtro",

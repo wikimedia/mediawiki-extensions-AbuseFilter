@@ -56,8 +56,6 @@
 	"abusefilter-log-hide-hidden": "Adres hierdie item uit die publieke oog",
 	"abusefilter-log-hide-reason": "Rede:",
 	"abusefilter-log-hide-forbidden": "Jy hoef nie toestemming om misbruik logitems te verberg.",
-	"abusefilter-logentry-suppress": "het [[$1]] versteek",
-	"abusefilter-logentry-unsuppress": "het [[$1]] sigbaar gemaak",
 	"abusefilter-management": "Misbruik filter bestuur",
 	"abusefilter-list": "Alle filters",
 	"abusefilter-list-id": "Filternommer",

@@ -88,8 +88,6 @@
 	"abusefilter-log-hide-reason": "Razlog:",
 	"abusefilter-log-hide-reason-other": "Drug/dodaten razlog:",
 	"abusefilter-log-hide-forbidden": "Nimate dovoljenja za skrivanje dnevniških vnosov zlorab.",
-	"abusefilter-logentry-suppress": "je skril(-a) »[[$1]]«",
-	"abusefilter-logentry-unsuppress": "je prikazal(-a) »[[$1]]«",
 	"logentry-abusefilter-hit": "$1 je {{GENDER:$2|sprožil|sprožila|sprožil(-a)}} $4 z dejanjem »$5« na $3. Ukrepi: $6 ($7)",
 	"log-action-filter-abusefilter": "Vrsta spremembe filtra:",
 	"log-action-filter-abusefilter-create": "Ustvaritev novega filtra",

@@ -71,8 +71,6 @@
 	"abusefilter-log-hide-hidden": "Fsheh këtë term nga opinioni publik",
 	"abusefilter-log-hide-reason": "Arsyeja:",
 	"abusefilter-log-hide-forbidden": "Ju nuk keni leje për të fshehur shpërdorimin e shënimeve të kyçjes.",
-	"abusefilter-logentry-suppress": "Fshehur \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "trego \"[[$1]]\"",
 	"abusefilter-management": "Shpërdoro filtër menaxhmentin",
 	"abusefilter-list": "Të gjithë filtrat",
 	"abusefilter-list-id": "Filtër ID-ja",

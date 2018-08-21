@@ -90,8 +90,6 @@
 	"abusefilter-log-hide-hidden": "Skryť túto položku pred verejnosťou",
 	"abusefilter-log-hide-reason": "Dôvod:",
 	"abusefilter-log-hide-forbidden": "Nemáte oprávnenie skrývať položky záznamu zneužití.",
-	"abusefilter-logentry-suppress": "skryl „[[$1]]“",
-	"abusefilter-logentry-unsuppress": "odkryl „[[$1]]“",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|spustil|spustila|spustil(a)}} $4, ktorý vykonal činnosť „$5“ na $3. Vykonané kroky: $6 ($7)",
 	"abusefilter-management": "Správa filtra zneužití",
 	"abusefilter-list": "Všetky filtre",

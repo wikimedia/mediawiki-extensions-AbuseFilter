@@ -92,8 +92,6 @@
 	"abusefilter-log-hide-hidden": "Sakrij ovaj zapis od javnog pristupa",
 	"abusefilter-log-hide-reason": "Razlog:",
 	"abusefilter-log-hide-forbidden": "Nemate dopuštenje za skrivanje zapisa iz evidencije zloporaba.",
-	"abusefilter-logentry-suppress": "sakrij \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "otkrij \"[[$1]]\"",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|pokrenuo|pokrenula}} je $4 {{GENDER:$2|izvršivši}} »$5« na $3. Poduzete radnje: $6 ($7)",
 	"abusefilter-management": "Upravljanje filtrima zloporaba",
 	"abusefilter-list": "Svi filtri",

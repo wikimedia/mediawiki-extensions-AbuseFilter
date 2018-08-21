@@ -117,8 +117,6 @@
 	"abusefilter-log-hide-reason": "دلیل:",
 	"abusefilter-log-hide-reason-other": "دلیل دیگر/اضافی:",
 	"abusefilter-log-hide-forbidden": "شما دسترسی لازم برای پنهان کردن موارد سیاههٔ خرابکاری را ندارید.",
-	"abusefilter-logentry-suppress": "«[[$1]]» را پنهان کرد",
-	"abusefilter-logentry-unsuppress": "«[[$1]]» را آشکار کرد",
 	"logentry-abusefilter-hit": "$1 در حال انجام {{GENDER:$2|دادن}} عمل «$5» در  $3 $4 را فعال {{GENDER:$2|کرد}}. اقدامات صورت‌گرفته:  $6 ($7)",
 	"log-action-filter-abusefilter": "نوع تغییر پالایه",
 	"log-action-filter-abusefilter-create": "ایجاد پالایهٔ جدید",

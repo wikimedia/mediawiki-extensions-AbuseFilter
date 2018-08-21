@@ -76,8 +76,6 @@
 	"abusefilter-log-hide-hidden": "Toś ten zapisk zjawnje schowaś",
 	"abusefilter-log-hide-reason": "Pśicyna:",
 	"abusefilter-log-hide-forbidden": "Njamaš pšawo zapiski znjewužywańskego protokola schowaś.",
-	"abusefilter-logentry-suppress": "jo \"[[$1]]\" schował",
-	"abusefilter-logentry-unsuppress": "jo \"[[$1]]\" pokazał",
 	"logentry-abusefilter-hit": "$1 jo pśi wuwjeźenju akcije \"$5\" na $3 $4 zapušćił. Statkowanje: $6 ($7)",
 	"abusefilter-management": "Zastojanje znjewužywańskich filtrow",
 	"abusefilter-list": "Wše filtry",

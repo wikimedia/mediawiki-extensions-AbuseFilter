@@ -128,8 +128,6 @@
 	"abusefilter-log-hide-reason": "原因：",
 	"abusefilter-log-hide-reason-other": "其它/額外的原因：",
 	"abusefilter-log-hide-forbidden": "您沒有權限隱藏濫用日誌項目。",
-	"abusefilter-logentry-suppress": "隱藏 \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "取消隱藏 \"[[$1]]\"",
 	"logentry-abusefilter-hit": "$1 於 $3 {{GENDER:$2|執行}}操作 \"$5\" {{GENDER:$2|已觸發}} $4。採取的動作：$6 ($7)",
 	"log-action-filter-abusefilter": "篩選器變更的類型：",
 	"log-action-filter-abusefilter-create": "新過濾器建立",

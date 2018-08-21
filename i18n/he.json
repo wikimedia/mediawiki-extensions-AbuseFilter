@@ -106,8 +106,6 @@
 	"abusefilter-log-hide-reason": "סיבה:",
 	"abusefilter-log-hide-reason-other": "סיבה אחרת/נוספת:",
 	"abusefilter-log-hide-forbidden": "אין לך הרשאה להסתיר רשומות ביומן ההשחתות.",
-	"abusefilter-logentry-suppress": "\"[[$1]]\" הוסתר",
-	"abusefilter-logentry-unsuppress": "ההסתרה של \"[[$1]]\" בוטלה",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|הפעיל|הפעילה}} את $4 {{GENDER:$2|כשביצע|כשביצעה}} את הפעולה \"$5\" בדף $3. הפעולות שננקטו: $6 ($7)",
 	"log-action-filter-abusefilter": "סוג שינוי המסנן:",
 	"log-action-filter-abusefilter-create": "יצירת מסנן חדש",

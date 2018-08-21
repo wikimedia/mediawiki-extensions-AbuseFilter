@@ -74,8 +74,6 @@
 	"abusefilter-log-hide-hidden": "Den Oidrach vaschdeggle",
 	"abusefilter-log-hide-reason": "Grund:",
 	"abusefilter-log-hide-forbidden": "Du hoschd kä Räschd fas vaschdeggle vun Oidräsch vum Logbuch vum Missbraisch-Siewb.",
-	"abusefilter-logentry-suppress": "Hodd „[[$1]]“ vaschdeggld",
-	"abusefilter-logentry-unsuppress": "hodd „[[$1]]“ sischdbaa gmachd",
 	"logentry-abusefilter-hit": "$1 hodd baide Maßnohm „$5“ uff $3 s'Siewb $4 ausglesd. Bassierd isch: $6 ($7)",
 	"abusefilter-management": "Vawaldung vunde Missbraisch-Siewb",
 	"abusefilter-list": "Alli Siewb",

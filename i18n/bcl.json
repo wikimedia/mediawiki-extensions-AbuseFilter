@@ -74,8 +74,6 @@
 	"abusefilter-log-hide-hidden": "Itago ining entrada sa paghiling kan publiko",
 	"abusefilter-log-hide-reason": "Rason:",
 	"abusefilter-log-hide-forbidden": "Ika mayong permiso na magtago kan mga entrada sa talaan nin abuso.",
-	"abusefilter-logentry-suppress": "ipinagtago \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "dae ipinagtago \"[[$1]]",
 	"logentry-abusefilter-hit": "$1 kiniblit an $4, pinaghihimo an aksyon na \"$5\" sa $3. Pinaghimong mga aksyon: $6 ($7)",
 	"abusefilter-management": "Pagmamaneho kan saraan nin abuso",
 	"abusefilter-list": "Gabos na mga saraan",

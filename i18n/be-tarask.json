@@ -81,8 +81,6 @@
 	"abusefilter-log-hide-hidden": "Схаваць гэты запіс ад публічнага прагляду",
 	"abusefilter-log-hide-reason": "Прычына:",
 	"abusefilter-log-hide-forbidden": "Вы ня маеце права хаваць запісы\nў журнале злоўжываньняў.",
-	"abusefilter-logentry-suppress": "схаваў «[[$1]]»",
-	"abusefilter-logentry-unsuppress": "паказаў «[[$1]]»",
 	"logentry-abusefilter-hit": "$1 {{#GENDER:$2|выклікаў|выклікала}} спрацоўваньне фільтру $4 пры выкананьні дзеяньня «$5» на старонцы $3. Прынятыя меры: $6 ($7)",
 	"abusefilter-management": "Кіраваньне фільтрам злоўжываньняў",
 	"abusefilter-list": "Усе фільтры",

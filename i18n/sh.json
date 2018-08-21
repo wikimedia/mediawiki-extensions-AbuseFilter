@@ -69,8 +69,6 @@
 	"abusefilter-log-details-hidden": "Ne možete da vidite detalje ovog filtera jer su sakriveni.",
 	"abusefilter-log-hide-reason": "Razlog:",
 	"abusefilter-log-hide-forbidden": "Nemate dozvolu da sakrivate unose u izveštaju filtera zloupotrebe.",
-	"abusefilter-logentry-suppress": "sakrij „[[$1]]“",
-	"abusefilter-logentry-unsuppress": "prikaži „[[$1]]“",
 	"abusefilter-management": "Upravljanje filterom protiv zloupotrebe",
 	"abusefilter-list": "Svi filteri",
 	"abusefilter-list-id": "ID filtera",

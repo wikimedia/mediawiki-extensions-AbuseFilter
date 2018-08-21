@@ -73,8 +73,6 @@
 	"abusefilter-log-hide-hidden": "Сховати тот запис перед публічным приступом",
 	"abusefilter-log-hide-reason": "Причіна:",
 	"abusefilter-log-hide-forbidden": "Не маєте права про схованя записів в протоколї знеужытя",
-	"abusefilter-logentry-suppress": "сховати [[$1]]",
-	"abusefilter-logentry-unsuppress": "указати [[$1]]",
 	"logentry-abusefilter-hit": "$1 {{#gender:$1|выкликав|выкликала}} спрацовованя $4, выконуючі дїю \"$5\" на $3. Учінены крокы: $6 ($7)",
 	"abusefilter-management": "Управлїня філтром едітовань",
 	"abusefilter-list": "Вшыткы філтры",

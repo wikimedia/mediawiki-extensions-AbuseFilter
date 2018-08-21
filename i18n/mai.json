@@ -54,8 +54,6 @@
 	"abusefilter-log-hide-legend": "लॉग प्रवेश नुकाऊँ",
 	"abusefilter-log-hide-id": "लॉग प्रवेश आइ॰डी:",
 	"abusefilter-log-hide-reason": "कारण:",
-	"abusefilter-logentry-suppress": "\"[[$1]]\" के नुकाएल",
-	"abusefilter-logentry-unsuppress": "नैं छुपाऊँ \"[[$1]]\"",
 	"abusefilter-management": "दुर्व्यवहार फ़िल्टर प्रबन्ध",
 	"abusefilter-list": "सभ फ़िल्टर",
 	"abusefilter-list-id": "फ़िल्टर आइ॰डी",

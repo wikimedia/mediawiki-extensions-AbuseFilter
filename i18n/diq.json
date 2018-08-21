@@ -86,8 +86,6 @@
 	"abusefilter-log-hide-hidden": "Ena vurnayişi şar ra binumne",
 	"abusefilter-log-hide-reason": "Sebeb:",
 	"abusefilter-log-hide-forbidden": "Tu ra destur cini ke logê xirabi bikefilne.",
-	"abusefilter-logentry-suppress": "\"[[$1]]\" nımneya",
-	"abusefilter-logentry-unsuppress": "Nımnayışê \"[[$1]]\" hewadeya",
 	"logentry-abusefilter-hit": "Sebebê $1'i $4 {{GENDER:$2|bı}} , \"$5\" kerdo $3 {{GENDER:$2|ser}} . verkewtışê ke gêriyayê: $6 ($7)",
 	"abusefilter-management": "idarayê filitreyê abuseyî",
 	"abusefilter-list": "Parzûni pêro",

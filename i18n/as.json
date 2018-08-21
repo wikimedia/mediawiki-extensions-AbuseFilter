@@ -40,8 +40,6 @@
 	"abusefilter-log-hide-legend": "অভিলেখ সংযোজন লুকুৱাই ৰাখক",
 	"abusefilter-log-hide-id": "অভিলেখ সংযোজনৰ আইডি:",
 	"abusefilter-log-hide-reason": "কাৰণ:",
-	"abusefilter-logentry-suppress": "\"[[$1]]\" লু্কুৱাই ৰাখক",
-	"abusefilter-logentry-unsuppress": "\"[[$1]]\" দেখুৱাওক",
 	"abusefilter-list": "সকলোৱোৰ ছেকনী",
 	"abusefilter-list-status": "স্থিতি",
 	"abusefilter-list-visibility": "দৃশ্যমান",

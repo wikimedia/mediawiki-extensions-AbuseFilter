@@ -74,8 +74,6 @@
 	"abusefilter-log-hide-hidden": "Ilemmeng daytoy a naikabil manipud iti publiko a panagkita",
 	"abusefilter-log-hide-reason": "Rason:",
 	"abusefilter-log-hide-forbidden": "Awan ti pammalubosmo nga agilemmeng kadagiti naikabil iti listaan ti panagabuso.",
-	"abusefilter-logentry-suppress": "ilemmeng \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "ipakita \"[[$1]]\"",
 	"logentry-abusefilter-hit": "Nakalbit ni $1 ti $4, a nagar-aramid ti tignay iti \"$5\" iti $3. Dagiti naaramid a tignay: $6 ($7)",
 	"abusefilter-management": "Panangasiwa ti sagat ti panagabuso",
 	"abusefilter-list": "Amin a sagat",

@@ -48,8 +48,6 @@
 	"abusefilter-log-hidden": "(દાખલો છુપાયેલ)",
 	"abusefilter-log-hide-legend": "લૉગ દાખલો છુપાવો",
 	"abusefilter-log-hide-reason": "કારણ:",
-	"abusefilter-logentry-suppress": "છૂપાવો \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "બતાવો \"[[$1]]\"",
 	"abusefilter-list": "બધાં ગળણાં",
 	"abusefilter-list-id": "ગાળક ID",
 	"abusefilter-list-status": "સ્થિતિ",

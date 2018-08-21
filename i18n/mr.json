@@ -89,8 +89,6 @@
 	"abusefilter-log-hide-hidden": "ही नोंद सार्वजनिक दृश्यतेपासून लपवा",
 	"abusefilter-log-hide-reason": "कारण:",
 	"abusefilter-log-hide-forbidden": "आपणास दुरुपयोग गाळणीच्या नोंदवहीतील नोंदी लपविण्याची परवानगी नाही.",
-	"abusefilter-logentry-suppress": "\"[[$1]]\" लपविले",
-	"abusefilter-logentry-unsuppress": "\"[[$1]]\"ला प्रगट करा",
 	"logentry-abusefilter-hit": "$3 वर \"$5\" ही क्रिया करून $1 ने $4 ला चेतविले.पुढील कार्यवाही केली: $6 ($7)",
 	"abusefilter-management": "संपादन गाळणी व्यवस्थापन",
 	"abusefilter-list": "सर्व गाळण्या",

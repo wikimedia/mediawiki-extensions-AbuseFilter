@@ -85,8 +85,6 @@
 	"abusefilter-log-hide-hidden": "Ẩn mục này khỏi công cộng",
 	"abusefilter-log-hide-reason": "Lý do:",
 	"abusefilter-log-hide-forbidden": "Bạn không có quyền ẩn mục trong nhật trình sai phạm.",
-	"abusefilter-logentry-suppress": "đã ẩn “[[$1]]”",
-	"abusefilter-logentry-unsuppress": "đã hiển thị lại [[$1]]",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2}}gây $4 khi thực hiện tác vụ “$5” tại $3, bộ lọc gây ra các tác vụ: $6 ($7)",
 	"abusefilter-management": "Quản lý bộ lọc sai phạm",
 	"abusefilter-list": "Các bộ lọc",

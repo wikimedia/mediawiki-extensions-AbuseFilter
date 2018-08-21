@@ -118,8 +118,6 @@
 	"abusefilter-log-hide-reason": "السبب:",
 	"abusefilter-log-hide-reason-other": "سبب آخر/إضافي:",
 	"abusefilter-log-hide-forbidden": "ليس لديك صلاحية لإخفاء إدخالات سجل الإساءة",
-	"abusefilter-logentry-suppress": "تم إخفاء \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "تم إظهار \"[[$1]]\"",
 	"logentry-abusefilter-hit": "$1  {{GENDER:$2|أطلق}} $4; {{GENDER:$2|مؤديا}} الفعل \"$5\" في $3، الإجراءات المتخذة: $6 ($7)",
 	"log-action-filter-abusefilter": "نوع تغيير المرشح:",
 	"log-action-filter-abusefilter-create": "إنشاء مرشح جديد",

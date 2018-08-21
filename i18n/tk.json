@@ -58,8 +58,6 @@
 	"abusefilter-log-hide-hidden": "Bu ýazgyny köpçüligiň görmeginden gizle",
 	"abusefilter-log-hide-reason": "Sebäp:",
 	"abusefilter-log-hide-forbidden": "Betniýetli ulanyş gündeliginiň ýazgylaryny gizlemäge rugsadyňyz ýok.",
-	"abusefilter-logentry-suppress": "gizle: \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "görkez: \"[[$1]]\"",
 	"abusefilter-management": "Erbet Ulanmak filtr dolandyryşy",
 	"abusefilter-list": "Ähli filtrler",
 	"abusefilter-list-id": "Filtr ID-si",

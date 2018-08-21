@@ -72,8 +72,6 @@
 	"abusefilter-log-hide-hidden": "Бу суругу аһаҕастык көрүүттэн кистээ",
 	"abusefilter-log-hide-reason": "Төрүөтэ:",
 	"abusefilter-log-hide-forbidden": "Омсо сурунаалын суруктарын кистиир быраабыҥ суох эбит.",
-	"abusefilter-logentry-suppress": "маны кистээ [[$1]]",
-	"abusefilter-logentry-unsuppress": "көстөр гын [[$1]]",
 	"abusefilter-management": "Омсо сиидэтин салайыы",
 	"abusefilter-list": "Бары сиидэлэр",
 	"abusefilter-list-id": "Сиидэ нүөмэрэ",

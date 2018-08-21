@@ -44,8 +44,6 @@
 	"abusefilter-log-details-hidden": "अस्य विवरणानि भवान् द्रष्टुं नार्हति यतः इदं सार्वजनिकवीक्षणात् गुहितम् ।",
 	"abusefilter-log-hide-hidden": "सार्वजनिकदर्शनात् अयं प्रवेशः विलोप्यताम्",
 	"abusefilter-log-hide-reason": "कारणम् :",
-	"abusefilter-logentry-suppress": "\"[[$1]]\" विलोप्यताम्",
-	"abusefilter-logentry-unsuppress": "\"[[$1]]\" न विलोप्यताम्",
 	"abusefilter-management": "दुरुपयुक्तशोधकस्य प्रबन्धनम्",
 	"abusefilter-list": "सर्वे शोधकाः",
 	"abusefilter-list-id": "शोधकस्य अभिज्ञापकम् :",

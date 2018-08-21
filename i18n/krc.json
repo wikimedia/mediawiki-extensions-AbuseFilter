@@ -15,8 +15,6 @@
 	"abusefilter-log-noactions": "джокъду",
 	"abusefilter-log-linkoncontribs": "джорукъдан чыгъыуланы журналы",
 	"abusefilter-log-hide-reason": "Чурум:",
-	"abusefilter-logentry-suppress": "[[$1]] джашыр",
-	"abusefilter-logentry-unsuppress": "[[$1]] кёгюз",
 	"abusefilter-list-id": "Фильтрни ID'си",
 	"abusefilter-list-status": "Статус",
 	"abusefilter-list-edit": "Тюрлендир",

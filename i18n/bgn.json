@@ -13,8 +13,6 @@
 	"abusefilter-log-noactions": "(هیچ‌)",
 	"abusefilter-log-hidden": "(چیهرین مورد)",
 	"abusefilter-log-hide-reason": "دلیل:",
-	"abusefilter-logentry-suppress": "«[[$1]]» ئا چیهر دات",
-	"abusefilter-logentry-unsuppress": "«[[$1]]» ئا درا کورت",
 	"abusefilter-list": "موچین فیلتران",
 	"abusefilter-list-id": "فیلتر ئی آی دی",
 	"abusefilter-list-edit": "ایڈیٹ",

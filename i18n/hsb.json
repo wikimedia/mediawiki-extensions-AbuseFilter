@@ -75,8 +75,6 @@
 	"abusefilter-log-hide-hidden": "Zapis před zjawnosću schować",
 	"abusefilter-log-hide-reason": "Přičina:",
 	"abusefilter-log-hide-forbidden": "Nimaš prawo zapiski znjewužiwanskeho protokola schować.",
-	"abusefilter-logentry-suppress": "je  \"[[$1]]\" schował",
-	"abusefilter-logentry-unsuppress": "je  \"[[$1]]\" pokazał",
 	"logentry-abusefilter-hit": "$1 je při wuwjedźenju akcije \"$5\" na $3 $4 zahibał. Skutkowanje: $6 ($7)",
 	"abusefilter-management": "Zrjadowanje znjewužiwanskich filtrow",
 	"abusefilter-list": "wšě filtry",

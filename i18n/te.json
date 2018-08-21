@@ -76,8 +76,6 @@
 	"abusefilter-log-hide-hidden": "బహిరంగ వీక్షణం నుండి ఈ పద్దుని దాచు",
 	"abusefilter-log-hide-reason": "కారణం:",
 	"abusefilter-log-hide-forbidden": "దుర్వినియోగ చిట్టా పద్దులను దాచే అనుమతి మీకు లేదు.",
-	"abusefilter-logentry-suppress": "\"[[$1]]\"ని దాచారు",
-	"abusefilter-logentry-unsuppress": "\"[[$1]]\"ని చూపించారు",
 	"logentry-abusefilter-hit": "$1, పేజీ $3 లో \"$5\" పని చేసి, $4 ను ప్రేరేపించారు. తీసుకున్న చర్య: $6 ($7)",
 	"abusefilter-management": "దుర్వినియోగ వడపోతల నిర్వహణ",
 	"abusefilter-list": "అన్ని వడపోతలు",

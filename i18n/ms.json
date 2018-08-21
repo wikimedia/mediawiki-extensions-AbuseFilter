@@ -81,8 +81,6 @@
 	"abusefilter-log-hide-hidden": "Sorokkan entri ini daripada tatapan umum",
 	"abusefilter-log-hide-reason": "Sebab:",
 	"abusefilter-log-hide-forbidden": "Anda tiada kebenaran untuk menyorokkan entri log penyalahgunaan.",
-	"abusefilter-logentry-suppress": "\"[[$1]]\" disorokkan",
-	"abusefilter-logentry-unsuppress": "\"[[$1]]\" didedahkan",
 	"logentry-abusefilter-hit": "$1 mencetuskan $4, melakukan tindakan \"$5\" pada $3. Tindakan yang diambil: $6 ($7)",
 	"abusefilter-management": "Pengurusan penapis salah guna",
 	"abusefilter-list": "Semua penapis",

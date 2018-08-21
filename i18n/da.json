@@ -91,8 +91,6 @@
 	"abusefilter-log-hide-hidden": "Skjul denne loghandling for offentligheden",
 	"abusefilter-log-hide-reason": "Årsag:",
 	"abusefilter-log-hide-forbidden": "Du har ikke rettigheder til at skjule poster i misbrugsfilteret",
-	"abusefilter-logentry-suppress": "Skjulte \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "Gjorde \"[[$1]]\" synligt for offentligheden igen",
 	"logentry-abusefilter-hit": "$1 udløste $4 med handlingen \"$5\" på $3. Tiltag: $6 ($7)",
 	"abusefilterprivatedetails-log-name": "Misbrugsfilter for private oplysningers adgangslog",
 	"abusefilter-management": "Håndtering af misbrugsfilter",

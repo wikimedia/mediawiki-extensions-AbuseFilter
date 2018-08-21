@@ -74,8 +74,6 @@
 	"abusefilter-log-hide-hidden": "Stërma sta vos da la vista pùblica",
 	"abusefilter-log-hide-reason": "Rason:",
 	"abusefilter-log-hide-forbidden": "It l'has pa ël përmess dë stërmé le vos dël registr ëd sicurëssa.",
-	"abusefilter-logentry-suppress": "stërma \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "a l'ha dëscoatà \"[[$1]]\"",
 	"logentry-abusefilter-hit": "$1 a l'ha assionà $4, an fasend l'assion \"$5\" dzora $3. Assion fàite: $6 ($7)",
 	"abusefilter-management": "Gestion dël filtr ëd sicurëssa",
 	"abusefilter-list": "Tùit ij filtr",

@@ -86,8 +86,6 @@
 	"abusefilter-log-hide-hidden": "Sembunyikan entri ini dari publik",
 	"abusefilter-log-hide-reason": "Alasan:",
 	"abusefilter-log-hide-forbidden": "Anda tidak memiliki izin untuk menyembunyikan\nentri catatan penyalahgunaan.",
-	"abusefilter-logentry-suppress": "sembunyikan [[$1]]",
-	"abusefilter-logentry-unsuppress": "jangan sembunyikan [[$1]]",
 	"logentry-abusefilter-hit": "$1 memicu $4, melakukan tindakan \"$5\" terhadap $3. Tindakan yang dilakukan: $6 ($7)",
 	"abusefilter-management": "Manajemen filter penyalahgunaan",
 	"abusefilter-list": "Semua filter",

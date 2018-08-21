@@ -69,8 +69,6 @@
 	"abusefilter-log-hide-id": "Logbuch-Eintrags-ID:",
 	"abusefilter-log-hide-hidden": "Den Eintrooch voar der Öffentlichkeit verberriche",
 	"abusefilter-log-hide-reason": "Grund:",
-	"abusefilter-logentry-suppress": "hat \"[[$1]]\" verborriche",
-	"abusefilter-logentry-unsuppress": "hot \"[[$1]]\" sichtbar gemacht",
 	"abusefilter-management": "Missbrauchsfilter-Verwaltung",
 	"abusefilter-list": "Alle Filter",
 	"abusefilter-list-id": "Filterkennung",

@@ -76,8 +76,6 @@
 	"abusefilter-log-hide-hidden": "Fela þessa færslu",
 	"abusefilter-log-hide-reason": "Ástæða:",
 	"abusefilter-log-hide-forbidden": "Þú hefur engin réttindi til að fela færslur í misnotkunar skránni",
-	"abusefilter-logentry-suppress": "faldi \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "óhaldi „[[$1]]“",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|hrundi}} af stað misnotkunar síu $4, með breytingunni \"$5\" á $3. Framkvæmdi aðgerðirnar $6 ($7)",
 	"abusefilter-management": "Stjórn misnotkunar síunnar",
 	"abusefilter-list": "Allar síur",

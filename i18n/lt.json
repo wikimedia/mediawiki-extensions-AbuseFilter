@@ -91,8 +91,6 @@
 	"abusefilter-log-hide-hidden": "Slėpti šį įrašą nuo višuo rodymo",
 	"abusefilter-log-hide-reason": "Priežastis",
 	"abusefilter-log-hide-forbidden": "Jūs neturite teisių paslėpti piktnaudžiavimo žurnalo įrašus.",
-	"abusefilter-logentry-suppress": "paslėpti \"[[ $1 ]]\"",
-	"abusefilter-logentry-unsuppress": "neslėpti \"[[$1]]\"",
 	"abusefilter-management": "Piktnaudžiavimo filtrų valdymas",
 	"abusefilter-list": "Visi filtrai",
 	"abusefilter-list-id": "Filtro ID",

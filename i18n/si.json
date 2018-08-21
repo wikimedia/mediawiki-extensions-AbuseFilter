@@ -72,8 +72,6 @@
 	"abusefilter-log-hide-hidden": "පොදු දර්ශනයෙන් මෙම ඇතුලත් කිරීම සඟවන්න",
 	"abusefilter-log-hide-reason": "හේතුව:",
 	"abusefilter-log-hide-forbidden": "අපයෙදුම් ලඝු ඇතුලත් කිරීම් සැඟවීමට ඔබ හට අවසර නොමැත.",
-	"abusefilter-logentry-suppress": "සඟ \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "නොසඟ \"[[$1]]\"",
 	"abusefilter-management": "අපයෙදුම් පෙරහන් කළමනාකරණය",
 	"abusefilter-list": "සියලු පෙරහන්",
 	"abusefilter-list-id": "පෙරනයේ නම",

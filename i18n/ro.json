@@ -87,8 +87,6 @@
 	"abusefilter-log-hide-hidden": "Ascunde această intrare afișării publice",
 	"abusefilter-log-hide-reason": "Motiv:",
 	"abusefilter-log-hide-forbidden": "Nu aveți permisiunea să ascundeți intrările din jurnalul de abuzuri.",
-	"abusefilter-logentry-suppress": "ascunde „[[$1]]”",
-	"abusefilter-logentry-unsuppress": "dezvăluie „[[$1]]”",
 	"logentry-abusefilter-hit": "$1 a declanșat $4 prin efectuarea acțiunii „$5” la $3. Acțiuni întreprinse: $6 ($7)",
 	"abusefilter-management": "Administrare filtru abuz",
 	"abusefilter-list": "Toate filtrele",

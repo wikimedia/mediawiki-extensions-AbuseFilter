@@ -77,8 +77,6 @@
 	"abusefilter-log-hide-hidden": "بو قئیده اجتماعی شکیلده باخیلمانی انگلله",
 	"abusefilter-log-hide-reason": "سبب:",
 	"abusefilter-log-hide-forbidden": "سوی-ایستیفاده ژورنالین‌داکی قئیدلری گیزلتمک هوقوقونوز یوخ‌دور.",
-	"abusefilter-logentry-suppress": "\"[[$1]]\" گیزلت",
-	"abusefilter-logentry-unsuppress": "\"[[$1]]\" گؤستر",
 	"logentry-abusefilter-hit": "$1 باعث  $4 ، ایش گورمک \" $5 \" در  $3 . اقداملار:  $6  ( $7 )",
 	"abusefilter-management": "سوی-ایستیفاده سوزگج‌لری‌نین ایداره اولونماسی",
 	"abusefilter-list": "بوتون سوزگج‌لر",

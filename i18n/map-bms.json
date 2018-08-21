@@ -64,8 +64,6 @@
 	"abusefilter-log-hide-hidden": "Umpetna entri kiye sekang publik",
 	"abusefilter-log-hide-reason": "Alesan:",
 	"abusefilter-log-hide-forbidden": "Rika ora duwe ijin nggo ngumpetna entri log planggaran.",
-	"abusefilter-logentry-suppress": "umpetna \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "tidokna \"[[$1]]\"",
 	"logentry-abusefilter-hit": "$1 ngurubna $4, nglakokna tindakan \"$5\" nang $3. Tindakan sing dijikot: $6 ($7)",
 	"abusefilter-management": "Manajemen saringan planggaran",
 	"abusefilter-list": "Kabeh saringan",

@@ -58,8 +58,6 @@
 	"abusefilter-log-hide-hidden": "सार्वजनिक रुपले हेर्न यस इन्ट्रीलाई लुकाउने",
 	"abusefilter-log-hide-reason": "कारण:",
 	"abusefilter-log-hide-forbidden": "तपाईंलाई दुरुपयोग लग इन्ट्रीहरू लुकाउने अनुमति छैन।",
-	"abusefilter-logentry-suppress": "लुकेका \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "लुकेका \"[[$1]]\"",
 	"abusefilter-management": "दुर्व्यवहार फिल्टर विन्यास",
 	"abusefilter-list": "सबै फिल्टरहरु",
 	"abusefilter-list-id": "फिल्टर परिचय:",

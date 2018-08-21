@@ -73,8 +73,6 @@
 	"abusefilter-log-hide-hidden": "Bu qeydə ictimai şəkildə baxılmanı əngəllə",
 	"abusefilter-log-hide-reason": "Səbəb:",
 	"abusefilter-log-hide-forbidden": "Təhqir jurnalındakı qeydləri gizlətmək hüququnuz yoxdur.",
-	"abusefilter-logentry-suppress": "\"[[$1]]\" gizlət",
-	"abusefilter-logentry-unsuppress": "\"[[$1]]\" göstər",
 	"abusefilter-management": "Təhqir süzgəclərinin idarə olunması",
 	"abusefilter-list": "Bütün süzgəclər",
 	"abusefilter-list-id": "Süzgəc nömrəsi",

@@ -119,8 +119,6 @@
 	"abusefilter-log-hide-reason": "Motivo:",
 	"abusefilter-log-hide-reason-other": "Outro motivo/motivo adicional:",
 	"abusefilter-log-hide-forbidden": "Não tem permissão para ocultar\nentradas do registo de abusos.",
-	"abusefilter-logentry-suppress": "ocultou [[$1]]",
-	"abusefilter-logentry-unsuppress": "revelou [[$1]]",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|acionou}} o filtro $4, ao {{GENDER:$2|executar}} a operação \"$5\" em $3.\nAções tomadas: $6 ($7)",
 	"log-action-filter-abusefilter": "Tipo de alteração de filtro:",
 	"log-action-filter-abusefilter-create": "Criação de novos filtros",

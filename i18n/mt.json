@@ -77,8 +77,6 @@
 	"abusefilter-log-hide-hidden": "Aħbi din id-daħla mid-dehra pubblika",
 	"abusefilter-log-hide-reason": "Raġuni:",
 	"abusefilter-log-hide-forbidden": "M'għandekx il-permess li taħbi daħliet tar-reġistru tal-abbużi",
-	"abusefilter-logentry-suppress": "aħbi \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "uri \"[[$1]]\"",
 	"logentry-abusefilter-hit": "$1 attiva $4, esegwixxa l-azzjoni \"$5\" fuq $3. Azzjonijiet meħuda: $6 ($7)",
 	"abusefilter-management": "Ġestjoni tal-filtru tal-abbuż",
 	"abusefilter-list": "Il-filtri kollha",

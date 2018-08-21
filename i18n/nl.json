@@ -110,8 +110,6 @@
 	"abusefilter-log-hide-reason": "Reden:",
 	"abusefilter-log-hide-reason-other": "Overige/additionele reden:",
 	"abusefilter-log-hide-forbidden": "U hebt niet de juiste rechten om meldingen in het filterlogboek te verbergen.",
-	"abusefilter-logentry-suppress": "heeft [[$1]] verborgen",
-	"abusefilter-logentry-unsuppress": "heeft [[$1]] zichtbaar gemaakt",
 	"logentry-abusefilter-hit": "$1 heeft $4 {{GENDER:$2|geactiveerd}} door de handeling \"$5\" op $3\". Uitgevoerde acties: $6 ($7)",
 	"log-action-filter-abusefilter": "Type filterwijziging:",
 	"log-action-filter-abusefilter-modify": "Filteraanpassing",

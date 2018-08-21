@@ -80,8 +80,6 @@
 	"abusefilter-log-hide-reason": "কারণ:",
 	"abusefilter-log-hide-reason-other": "অন্যান্য/অতিরিক্ত কারণ:",
 	"abusefilter-log-hide-forbidden": "আপনার অপব্যবহার লগ সংযোজন লুকানোর অধিকার নেই।",
-	"abusefilter-logentry-suppress": "\"[[$1]]\" লুকাও",
-	"abusefilter-logentry-unsuppress": "\"[[$1]]\" দেখাও",
 	"abusefilter-management": "অপব্যবহার ছাঁকনি ব্যবস্থাপনা",
 	"abusefilter-list": "সকল ছাঁকনি",
 	"abusefilter-list-id": "ছাঁকনির আইডি",

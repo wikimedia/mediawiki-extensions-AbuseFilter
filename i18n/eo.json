@@ -83,8 +83,6 @@
 	"abusefilter-log-hide-hidden": "Kaŝi ĉi tiun protokoleron de publika vido",
 	"abusefilter-log-hide-reason": "Kialo:",
 	"abusefilter-log-hide-forbidden": "Vi ne havas permeson kaŝi liniojn en la protokolo de misuzado.",
-	"abusefilter-logentry-suppress": "kaŝis \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "malkaŝis \"[[$1]]\"",
 	"logentry-abusefilter-hit": "$1 ekagis $4, farante agon \"$5\" ĉe $3. Agoj faritaj: $6 ($7)",
 	"abusefilter-management": "Administrado de filtriloj de misuzo",
 	"abusefilter-list": "Ĉiuj filtriloj",

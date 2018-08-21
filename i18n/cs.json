@@ -110,8 +110,6 @@
 	"abusefilter-log-hide-reason": "Důvod:",
 	"abusefilter-log-hide-reason-other": "Jiný/další důvod:",
 	"abusefilter-log-hide-forbidden": "Nemáte oprávnění ke skrývání záznamů v protokolu zneužití.",
-	"abusefilter-logentry-suppress": "skryl „[[$1]]“",
-	"abusefilter-logentry-unsuppress": "odkryl „[[$1]]“",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|spustil|spustila|spustil(a)}} $4 při činnosti „$5“ na $3. Provedená opatření: $6 ($7)",
 	"log-action-filter-abusefilter": "Typ změny filtru:",
 	"log-action-filter-abusefilter-create": "Vytvoření nového filtru",

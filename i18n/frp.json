@@ -72,8 +72,6 @@
 	"abusefilter-log-hide-hidden": "Cachiér cela entrâ a la vua du publico",
 	"abusefilter-log-hide-reason": "Rêson :",
 	"abusefilter-log-hide-forbidden": "Vos avéd pas la pèrmission de cachiér des entrâs du jornal des abus.",
-	"abusefilter-logentry-suppress": "at cachiê « [[$1]] »",
-	"abusefilter-logentry-unsuppress": "at montrâ « [[$1]] »",
 	"abusefilter-management": "Administracion du filtro d’abus",
 	"abusefilter-list": "Tôs los filtros",
 	"abusefilter-list-id": "Numerô du filtro",

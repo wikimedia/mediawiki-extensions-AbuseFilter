@@ -67,8 +67,6 @@
 	"abusefilter-log-hide-hidden": "Бұл жазбаны барлық қатысушыларға көрсетпеу",
 	"abusefilter-log-hide-reason": "Себебі:",
 	"abusefilter-log-hide-forbidden": "Қиянаттау журнал енгізілімдерін жасыруға рұқсатыңыз жоқ.",
-	"abusefilter-logentry-suppress": "\"[[$1]]\" дегенді жасыру",
-	"abusefilter-logentry-unsuppress": "\"[[$1]]\" дегенді жасырмау",
 	"logentry-abusefilter-hit": "$1 $4 сүзгісін шақырды, $3 бетіндегі орындалу әрекеті: «$5».\nҚолданылған шара: $6 ($7)",
 	"abusefilter-management": "Қиянаттауды сүзгілеу сүзгіш басқармасы",
 	"abusefilter-list": "Барлық сүзгіштер",

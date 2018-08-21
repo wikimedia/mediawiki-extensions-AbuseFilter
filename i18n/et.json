@@ -95,8 +95,6 @@
 	"abusefilter-log-hide-hidden": "Peida see sissekanne üldsuse eest",
 	"abusefilter-log-hide-reason": "Põhjus:",
 	"abusefilter-log-hide-forbidden": "Sul pole õigust peita väärtarvitusfiltri logisissekandeid.",
-	"abusefilter-logentry-suppress": "peitis sissekande \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "tegi nähtavaks sissekande \"[[$1]]\"",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|vallandas}} filtri $4, {{GENDER:$2|sooritades}} leheküljel $3 tegevust \"$5\". Toiming: $6 ($7)",
 	"log-action-filter-abusefilter": "Filtri muudatuse tüüp:",
 	"log-action-filter-abusefilter-create": "Uue filtri koostamine",

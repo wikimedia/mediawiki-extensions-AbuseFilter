@@ -76,8 +76,6 @@
 	"abusefilter-log-hide-hidden": "Ammuccia sta vuci dû pùbblicu",
 	"abusefilter-log-hide-reason": "Mutivu:",
 	"abusefilter-log-hide-forbidden": "Nun hai lu pirmissu d'ammucciari li vuci dû riggistru di l'abbusi.",
-	"abusefilter-logentry-suppress": "ammucciau «[[$1]]»",
-	"abusefilter-logentry-unsuppress": "ammustrau «[[$1]]»",
 	"logentry-abusefilter-hit": "$1 fici scattari $4, ntô fari l'azzioni «$5» nta $3. Misuri pigghiati: $6 ($7)",
 	"abusefilter-management": "Gistioni dû filtru anti-abbusi",
 	"abusefilter-list": "Tutti li filtri",

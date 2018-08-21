@@ -97,8 +97,6 @@
 	"abusefilter-log-hide-reason": "Причина:",
 	"abusefilter-log-hide-reason-other": "Друга/дополнителна причина:",
 	"abusefilter-log-hide-forbidden": "Немате дозвола да криете записи во дневникот на злоупотреби.",
-	"abusefilter-logentry-suppress": "го притаи „[[$1]]“",
-	"abusefilter-logentry-unsuppress": "откриено „[[$1]]“",
 	"logentry-abusefilter-hit": "$1 го {{GENDER:$2|предизвика}} $4, {{GENDER:$2|извршувајќи}} го дејството „$5“ на $3. Извршени постапки: $6 ($7)",
 	"log-action-filter-abusefilter": "Вид промена во филтерот:",
 	"log-action-filter-abusefilter-create": "Создавање на нов филтер",

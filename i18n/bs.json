@@ -80,8 +80,6 @@
 	"abusefilter-log-hide-hidden": "Sakrij ovu stavku od javnog pregleda",
 	"abusefilter-log-hide-reason": "Razlog:",
 	"abusefilter-log-hide-forbidden": "Nemate dopuštenje da sakrivate stavke zapisnika zloupotrebe.",
-	"abusefilter-logentry-suppress": "sakr [[$1]]",
-	"abusefilter-logentry-unsuppress": "otkr [[$1]]",
 	"logentry-abusefilter-hit": "$1 je {{GENDER:$2|aktivirao|aktivirala}} filter $4, izvodeći radnju \"$5\" na stranici $3. Poduzete radnje: $6 ($7)",
 	"abusefilter-management": "Upravljanje filterom protiv zloupotrebe",
 	"abusefilter-list": "Svi filteri",

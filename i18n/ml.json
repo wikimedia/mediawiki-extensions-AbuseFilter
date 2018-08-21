@@ -75,8 +75,6 @@
 	"abusefilter-log-hide-hidden": "പൊതുജനദൃഷ്ടിയിൽ നിന്ന് ഈ വിവരം മറയ്ക്കുക",
 	"abusefilter-log-hide-reason": "കാരണം:",
 	"abusefilter-log-hide-forbidden": "ദുരുപയോഗരേഖയിലെ വിവരങ്ങൾ മറയ്ക്കാനുള്ള അനുവാദം താങ്കൾക്കില്ല.",
-	"abusefilter-logentry-suppress": "മറയ്ക്കുക [[$1]]",
-	"abusefilter-logentry-unsuppress": "മറ നീക്കുക [[$1]]",
 	"logentry-abusefilter-hit": "$1 നടത്തിയ പ്രവൃത്തി $4-നെ ഉണർത്തി, $3-യിൽ \"$5\" എന്ന നടപടി എടുക്കുന്നു. എടുത്ത നടപടി: $6 ($7)",
 	"abusefilter-management": "ദുരുപയോഗ അരിപ്പ കൈകാര്യം",
 	"abusefilter-list": "എല്ലാ അരിപ്പകളും",

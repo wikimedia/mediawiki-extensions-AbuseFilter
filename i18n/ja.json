@@ -110,8 +110,6 @@
 	"abusefilter-log-hide-reason": "理由:",
 	"abusefilter-log-hide-reason-other": "その他、または追加の理由:",
 	"abusefilter-log-hide-forbidden": "不正利用記録の項目を隠す権限がありません。",
-	"abusefilter-logentry-suppress": "「[[$1]]」を非公開",
-	"abusefilter-logentry-unsuppress": "「[[$1]]」を公開",
 	"logentry-abusefilter-hit": "$1 が $3 で「$5」操作を{{GENDER:$2|行い}}、 $4 が{{GENDER:$2|作動}}しました。対処操作: $6 ($7)",
 	"log-action-filter-abusefilter": "フィルター変更の種類:",
 	"log-action-filter-abusefilter-create": "フィルターの新規作成",

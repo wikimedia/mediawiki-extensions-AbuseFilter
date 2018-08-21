@@ -112,8 +112,6 @@
 	"abusefilter-log-hide-hidden": "Piilota tämä merkintä julkiselta näkymiseltä",
 	"abusefilter-log-hide-reason": "Syy:",
 	"abusefilter-log-hide-forbidden": "Sinulla ei ole oikeutta piilottaa väärinkäyttölokin merkintöjä.",
-	"abusefilter-logentry-suppress": "piilotti merkinnän [[$1]]",
-	"abusefilter-logentry-unsuppress": "palautti merkinnän [[$1]] näkyviin",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|laukaisi}} suodattimen $4 {{GENDER:$2|suorittaessaan}} toiminnon \"$5\" kohteessa $3. Toimenpiteet: $6 ($7)",
 	"log-action-filter-abusefilter": "Suodattimen muutoksen tyyppi:",
 	"log-action-filter-abusefilter-create": "Uuden suodattimen luonti",

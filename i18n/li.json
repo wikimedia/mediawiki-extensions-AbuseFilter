@@ -84,8 +84,6 @@
 	"abusefilter-log-hide-hidden": "Verberg dees meljing",
 	"abusefilter-log-hide-reason": "Reeje:",
 	"abusefilter-log-hide-forbidden": "Doe höbs neet de juuste rechte óm meljinge in 't filterlogbook te verberge.",
-	"abusefilter-logentry-suppress": "verbórg [[$1]]",
-	"abusefilter-logentry-unsuppress": "maakde [[$1]] zichbaar",
 	"abusefilter-management": "Misbroekfilterbehieër",
 	"abusefilter-list": "Al filter",
 	"abusefilter-list-id": "Filter ID",

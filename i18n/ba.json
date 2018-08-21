@@ -83,8 +83,6 @@
 	"abusefilter-log-hide-hidden": "Был яҙманы дөйөм ҡарауҙан йәшерергә",
 	"abusefilter-log-hide-reason": "Сәбәп:",
 	"abusefilter-log-hide-forbidden": "Һеҙҙең урынһыҙ файҙаланыуҙар яҙмалары журналындағы яҙмаларҙы йәшереү хоҡуғығыҙ юҡ.",
-	"abusefilter-logentry-suppress": "\"[[$1]]\" яҙмаһын йәшерергә",
-	"abusefilter-logentry-unsuppress": "\"[[$1]]\" яҙмаһын күрһәтергә",
 	"logentry-abusefilter-hit": "$1 ҡулланыусыһы $3 битендә \"$5\" ғәмәлен эшләп $4 фильтрын хәрәкәткә килтерҙе. Башҡарылған хәрәкәт: $6 ($7)",
 	"abusefilter-management": "Урынһыҙ файҙаланыуҙар һөҙгөсө менән идара итеү",
 	"abusefilter-list": "Бар һөҙгөстәр",

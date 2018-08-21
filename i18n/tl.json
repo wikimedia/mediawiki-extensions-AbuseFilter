@@ -77,8 +77,6 @@
 	"abusefilter-log-hide-hidden": "Itago ang ipinasok na ito mula sa paningin ng madla",
 	"abusefilter-log-hide-reason": "Dahilan:",
 	"abusefilter-log-hide-forbidden": "Wala kang pahintulot na itago ang mga pagpapasok sa tala ng pang-aabuso.",
-	"abusefilter-logentry-suppress": "itinago ang \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "hindi itinago ang \"[[$1]]\"",
 	"logentry-abusefilter-hit": "Nakanti ni $1 ang $4, na nagsagawa ng kilos na \"$5\" doon sa $3. Mga kilos na ginawa: $6 ($7)",
 	"abusefilter-management": "Pamamahala ng pansala ng pang-aabuso",
 	"abusefilter-list": "Lahat ng mga pansala",

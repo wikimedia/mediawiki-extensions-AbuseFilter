@@ -73,8 +73,6 @@
 	"abusefilter-log-hide-hidden": "بۇ تۈرنى ئاممىۋى كۆرۈنۈشتىن يوشۇر",
 	"abusefilter-log-hide-reason": "سەۋەب:",
 	"abusefilter-log-hide-forbidden": "سۈيىئىستىمال خاتىرە تۈرىنى يوشۇرۇش ھوقۇقىڭىز يوق.",
-	"abusefilter-logentry-suppress": "\"[[$1]]\" يوشۇرۇش",
-	"abusefilter-logentry-unsuppress": "\"[[$1]]\" يوشۇرما",
 	"logentry-abusefilter-hit": "$1 بولسا $4 غا تەسىر قىلىپ $3 دا \"$5\" مەشغۇلاتنى ئېلىپ باردى، مەشغۇلاتى: $6 ($7)",
 	"abusefilter-management": "سۈيىئىستىمال سۈزگۈچ باشقۇرۇش",
 	"abusefilter-list": "ھەممە سۈزگۈچلەر",

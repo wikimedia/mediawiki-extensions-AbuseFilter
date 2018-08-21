@@ -112,8 +112,6 @@
 	"abusefilter-log-hide-reason": "Причина:",
 	"abusefilter-log-hide-reason-other": "Інша/додаткова причина:",
 	"abusefilter-log-hide-forbidden": "У вас немає дозволу, щоб приховувати\nзаписи журналу зловживань.",
-	"abusefilter-logentry-suppress": "сховати [[$1]]",
-	"abusefilter-logentry-unsuppress": "показати [[$1]]",
 	"logentry-abusefilter-hit": "$1 {{#GENDER:$2|викликав|викликала}} спрацьовування $4, виконуючи дію «$5» на $3. Вжиті заходи: $6 ($7)",
 	"log-action-filter-abusefilter": "Тип зміни фільтра:",
 	"log-action-filter-abusefilter-create": "Створення нового фільтра",

@@ -48,8 +48,6 @@
 	"abusefilter-log-hide-hidden": "Hanafina ity iditra ity amin'ny mason'ny vahoaka",
 	"abusefilter-log-hide-reason": "Antony :",
 	"abusefilter-log-hide-forbidden": "Tsy manana zo hanafina ny laogim-panararaotana ianao.",
-	"abusefilter-logentry-suppress": "nanitrika [ny] [[$1]]",
-	"abusefilter-logentry-unsuppress": "nanala ny fanitrihana [an'i] [[$1]]",
 	"abusefilterprivatedetails-log-name": "Antsipirihany tsiambaratelon'ny laogim-pamakian'i AbuseFilter",
 	"abusefilter-list": "Sivana rehetra",
 	"abusefilter-list-id": "Laharan'ny sivana",

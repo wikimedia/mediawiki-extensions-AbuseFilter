@@ -74,8 +74,6 @@
 	"abusefilter-log-hide-hidden": "Donn dä Enndraach vör de Öffentleschkeit vershteishe",
 	"abusefilter-log-hide-reason": "Jrond:",
 	"abusefilter-log-hide-forbidden": "Do häs nit et Rääsch, Enndrääsch em Meßbruchsfelter singem Logbooch ze versteishe",
-	"abusefilter-logentry-suppress": "hät „[[$1]]“ vershtoche",
-	"abusefilter-logentry-unsuppress": "hät „[[$1]]“ wider seeschbaa jemaat",
 	"logentry-abusefilter-hit": "{{GENDER:$1|Dä|Et}|Dä Metmaacher|De|Dat} lhät met „$5“ op dä Sigg „$3“ dä Felter $4 usjelöös, un dä hät bewirk: $6 ($7)",
 	"abusefilter-management": "Meßbruchsfellter Verwallde",
 	"abusefilter-list": "All Feltere",

@@ -65,8 +65,6 @@
 	"abusefilter-log-hide-legend": "באהאלטן לאגבוך איינגאב",
 	"abusefilter-log-hide-id": "לאגבוך איינגאב ID:",
 	"abusefilter-log-hide-reason": "אורזאַך:",
-	"abusefilter-logentry-suppress": "האט פארבארגן \"[[$1]]\"",
-	"abusefilter-logentry-unsuppress": "האט געוויזן \"[[$1]]\"",
 	"abusefilter-management": "שעדיקונג־פילטער פארוואלטונג",
 	"abusefilter-list": "אלע פֿילטערס",
 	"abusefilter-list-id": "פֿילטער נומער",
