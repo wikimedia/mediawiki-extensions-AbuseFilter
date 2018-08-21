@@ -79,7 +79,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		],
 		2 => [
 			'af_id' => 2,
-			'af_pattern' => 'action = "move" & moved_to_title contains "test"',
+			'af_pattern' => 'action = "move" & moved_to_title contains "test" & moved_to_title === moved_to_text',
 			'af_enabled' => 1,
 			'af_comments' => 'No comment',
 			'af_public_comments' => 'Mock filter for move',
@@ -99,7 +99,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		],
 		3 => [
 			'af_id' => 3,
-			'af_pattern' => 'action = "delete" & "test" in lcase(page_prefixedtitle)',
+			'af_pattern' => 'action = "delete" & "test" in lcase(page_prefixedtitle) & page_prefixedtitle === article_prefixedtext',
 			'af_enabled' => 1,
 			'af_comments' => '',
 			'af_public_comments' => 'Mock filter for delete',
@@ -114,7 +114,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		],
 		4 => [
 			'af_id' => 4,
-			'af_pattern' => 'action contains "createaccount" & accountname rlike "user"',
+			'af_pattern' => 'action contains "createaccount" & accountname rlike "user" & page_title === article_text',
 			'af_enabled' => 1,
 			'af_comments' => '1',
 			'af_public_comments' => 'Mock filter for createaccount',
@@ -257,7 +257,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		],
 		12 => [
 			'af_id' => 12,
-			'af_pattern' => 'page_title == user_name',
+			'af_pattern' => 'page_title == user_name & user_name === page_title',
 			'af_enabled' => 1,
 			'af_comments' => '',
 			'af_public_comments' => 'Mock filter for userpage',
