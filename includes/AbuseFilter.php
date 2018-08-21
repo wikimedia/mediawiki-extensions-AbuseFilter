@@ -402,36 +402,19 @@ class AbuseFilter {
 	/**
 	 * @param Title|null $title
 	 * @param string $prefix
-	 * @param bool $transition Temporary parameter to help with T173889 and to be removed afterwards
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function generateTitleVars( $title, $prefix, $transition = true ) {
+	public static function generateTitleVars( $title, $prefix ) {
 		$vars = new AbuseFilterVariableHolder;
 
 		if ( !$title ) {
 			return $vars;
 		}
 
-		// Temporary overrides for T173889, necessary because Flow (and maybe
-		// other extensions) still pass old prefix/suffix and thus fail, since
-		// hybrid variables are generated (e.g. article_prefixedtitle).
-		// Once their variables will be renamed according to the new syntax,
-		// we should get rid of these if and just use the new prefix/suffix.
-		// Right now, what we want to do is:
-		// - Use new prefix/suffix for AF's own variables (they're handled at parser level)
-		// - Use old prefix/suffix for external variables (we don't handle them)
-		$titleSuffix = 'TITLE';
-		if ( $transition && $prefix === 'BOARD' ) {
-			$titleSuffix = 'TEXT';
-		}
-		if ( $transition && $prefix === 'ARTICLE' ) {
-			$prefix = 'PAGE';
-		}
-
 		$vars->setVar( $prefix . '_ID', $title->getArticleID() );
 		$vars->setVar( $prefix . '_NAMESPACE', $title->getNamespace() );
-		$vars->setVar( $prefix . "_$titleSuffix", $title->getText() );
-		$vars->setVar( $prefix . "_PREFIXED$titleSuffix", $title->getPrefixedText() );
+		$vars->setVar( $prefix . '_TITLE', $title->getText() );
+		$vars->setVar( $prefix . '_PREFIXEDTITLE', $title->getPrefixedText() );
 
 		global $wgRestrictionTypes;
 		foreach ( $wgRestrictionTypes as $action ) {
