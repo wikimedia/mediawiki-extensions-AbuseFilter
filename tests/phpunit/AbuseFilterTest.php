@@ -229,8 +229,8 @@ class AbuseFilterTest extends MediaWikiTestCase {
 
 		$difference = abs( strtotime( $actual ) - strtotime( $computed ) );
 		$this->assertLessThanOrEqual(
-			// 2 seconds should be a good confidence interval
-			2,
+			// 10 seconds should be a good confidence interval
+			10,
 			$difference,
 			"AbuseFilter variable user_age is computed wrongly."
 		);

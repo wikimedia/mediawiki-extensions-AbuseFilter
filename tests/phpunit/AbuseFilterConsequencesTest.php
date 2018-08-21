@@ -523,8 +523,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 						// Get rid of non-numeric 'infinity' by setting it to 0
 						$actualExpiry = wfIsInfinity( $userBlock->getExpiry() ) ? 0 : $userBlock->getExpiry();
 						$expectedExpiry = wfIsInfinity( $expectedExpiry ) ? 0 : $expectedExpiry;
-						// We need to take into account code execution time. 2 seconds should be enough
-						$durationCheck = abs( strtotime( $actualExpiry ) - strtotime( $expectedExpiry ) ) < 2;
+						// We need to take into account code execution time. 10 seconds should be enough
+						$durationCheck = abs( strtotime( $actualExpiry ) - strtotime( $expectedExpiry ) ) < 10;
 						if ( !$durationCheck ) {
 							$testErrorMessage = "The expected block expiry ($expectedExpiry) does not " .
 								"match the actual one ($actualExpiry).";
