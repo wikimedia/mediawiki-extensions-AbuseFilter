@@ -28,8 +28,14 @@
  * @group AbuseFilter
  *
  * @covers AbuseFilterCachingParser
+ * @covers AFPTreeParser
+ * @covers AFPTreeNode
+ * @covers AFPParserState
  * @covers AbuseFilterParser
  * @covers AbuseFilterTokenizer
+ * @covers AFPToken
+ * @covers AFPUserVisibleException
+ * @covers AFPData
  */
 class AbuseFilterParserTest extends MediaWikiTestCase {
 	/**

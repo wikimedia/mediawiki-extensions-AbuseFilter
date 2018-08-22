@@ -27,6 +27,10 @@
  * @group AbuseFilter
  *
  * @covers AFPData
+ * @covers AbuseFilterTokenizer
+ * @covers AFPToken
+ * @covers AFPUserVisibleException
+ * @covers AbuseFilterParser
  */
 class AFPDataTest extends MediaWikiTestCase {
 	/**

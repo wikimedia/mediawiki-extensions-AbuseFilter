@@ -28,7 +28,8 @@
  * @group AbuseFilterSave
  * @group Database
  *
- * @covers AbuseFilter::saveFilter
+ * @covers AbuseFilter
+ * @covers AbuseFilterViewEdit
  */
 class AbuseFilterSaveTest extends MediaWikiTestCase {
 	protected static $mUser, $mParameters;
