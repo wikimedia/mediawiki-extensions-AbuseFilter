@@ -10,6 +10,10 @@ to add events to the AbuseFilter extension.
 'AbuseFilter-builder': Allows overwriting of the builder values returned by AbuseFilter::getBuilderValues
 &$realValues: Builder values
 
+'AbuseFilter-deprecatedVariables': Allows adding deprecated variables. If a filter uses an old variable, the parser
+will automatically translate it to the new one.
+&$deprecatedVariables: array of deprecated variables, syntax: [ 'old_name' => 'new_name' ]
+
 'AbuseFilter-computeVariable': Like AbuseFilter-interceptVariable but called if the requested method wasn't found.
 Return true to indicate that the method is known to the hook and was computed successful.
 $method: Method to generate the variable

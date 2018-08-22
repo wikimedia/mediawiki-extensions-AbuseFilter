@@ -79,7 +79,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		],
 		2 => [
 			'af_id' => 2,
-			'af_pattern' => 'action = "move" & moved_to_text contains "test"',
+			'af_pattern' => 'action = "move" & moved_to_title contains "test"',
 			'af_enabled' => 1,
 			'af_comments' => 'No comment',
 			'af_public_comments' => 'Mock filter for move',
@@ -99,7 +99,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		],
 		3 => [
 			'af_id' => 3,
-			'af_pattern' => 'action = "delete" & "test" in lcase(article_prefixedtext)',
+			'af_pattern' => 'action = "delete" & "test" in lcase(page_prefixedtitle)',
 			'af_enabled' => 1,
 			'af_comments' => '',
 			'af_public_comments' => 'Mock filter for delete',
@@ -257,7 +257,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		],
 		12 => [
 			'af_id' => 12,
-			'af_pattern' => 'article_text == user_name',
+			'af_pattern' => 'page_title == user_name',
 			'af_enabled' => 1,
 			'af_comments' => '',
 			'af_public_comments' => 'Mock filter for userpage',

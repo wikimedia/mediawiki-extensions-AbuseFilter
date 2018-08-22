@@ -151,7 +151,7 @@ class AbuseFilterHooks {
 		$vars = new AbuseFilterVariableHolder();
 		$vars->addHolders(
 			AbuseFilter::generateUserVars( $user ),
-			AbuseFilter::generateTitleVars( $title, 'ARTICLE' )
+			AbuseFilter::generateTitleVars( $title, 'PAGE' )
 		);
 		$vars->setVar( 'action', 'edit' );
 		$vars->setVar( 'summary', $summary );
@@ -241,7 +241,7 @@ class AbuseFilterHooks {
 		/** @var AbuseFilterVariableHolder|bool $vars */
 		$vars = self::$successful_action_vars;
 
-		if ( $vars->getVar( 'article_prefixedtext' )->toString() !==
+		if ( $vars->getVar( 'page_prefixedtitle' )->toString() !==
 			$wikiPage->getTitle()->getPrefixedText()
 		) {
 			return;
@@ -356,7 +356,7 @@ class AbuseFilterHooks {
 
 		$vars->addHolders(
 			AbuseFilter::generateUserVars( $user ),
-			AbuseFilter::generateTitleVars( $article->getTitle(), 'ARTICLE' )
+			AbuseFilter::generateTitleVars( $article->getTitle(), 'PAGE' )
 		);
 
 		$vars->setVar( 'SUMMARY', $reason );

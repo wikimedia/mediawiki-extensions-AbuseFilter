@@ -279,16 +279,16 @@ class AbuseFilterTest extends MediaWikiTestCase {
 		}
 		$success = true;
 		switch ( $suffix ) {
-			case '_articleid':
+			case '_id':
 				$result = self::$mTitle->getArticleID();
 				break;
 			case '_namespace':
 				$result = self::$mTitle->getNamespace();
 				break;
-			case '_text':
+			case '_title':
 				$result = self::$mTitle->getText();
 				break;
-			case '_prefixedtext':
+			case '_prefixedtitle':
 				$result = self::$mTitle->getPrefixedText();
 				break;
 			case '_restrictions_create':
@@ -423,24 +423,24 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	 */
 	public function provideTitleVars() {
 		return [
-			[ 'article', '_articleid' ],
-			[ 'article', '_namespace' ],
-			[ 'article', '_text' ],
-			[ 'article', '_prefixedtext' ],
-			[ 'article', '_restrictions_create' ],
-			[ 'article', '_restrictions_create', 'restricted' ],
-			[ 'article', '_restrictions_edit' ],
-			[ 'article', '_restrictions_edit', 'restricted' ],
-			[ 'article', '_restrictions_move' ],
-			[ 'article', '_restrictions_move', 'restricted' ],
-			[ 'article', '_restrictions_upload' ],
-			[ 'article', '_restrictions_upload', 'restricted' ],
-			[ 'article', '_first_contributor' ],
-			[ 'article', '_recent_contributors' ],
-			[ 'moved_from', '_articleid' ],
+			[ 'page', '_id' ],
+			[ 'page', '_namespace' ],
+			[ 'page', '_title' ],
+			[ 'page', '_prefixedtitle' ],
+			[ 'page', '_restrictions_create' ],
+			[ 'page', '_restrictions_create', 'restricted' ],
+			[ 'page', '_restrictions_edit' ],
+			[ 'page', '_restrictions_edit', 'restricted' ],
+			[ 'page', '_restrictions_move' ],
+			[ 'page', '_restrictions_move', 'restricted' ],
+			[ 'page', '_restrictions_upload' ],
+			[ 'page', '_restrictions_upload', 'restricted' ],
+			[ 'page', '_first_contributor' ],
+			[ 'page', '_recent_contributors' ],
+			[ 'moved_from', '_id' ],
 			[ 'moved_from', '_namespace' ],
-			[ 'moved_from', '_text' ],
-			[ 'moved_from', '_prefixedtext' ],
+			[ 'moved_from', '_title' ],
+			[ 'moved_from', '_prefixedtitle' ],
 			[ 'moved_from', '_restrictions_create' ],
 			[ 'moved_from', '_restrictions_create', 'restricted' ],
 			[ 'moved_from', '_restrictions_edit' ],
@@ -451,10 +451,10 @@ class AbuseFilterTest extends MediaWikiTestCase {
 			[ 'moved_from', '_restrictions_upload', 'restricted' ],
 			[ 'moved_from', '_first_contributor' ],
 			[ 'moved_from', '_recent_contributors' ],
-			[ 'moved_to', '_articleid' ],
+			[ 'moved_to', '_id' ],
 			[ 'moved_to', '_namespace' ],
-			[ 'moved_to', '_text' ],
-			[ 'moved_to', '_prefixedtext' ],
+			[ 'moved_to', '_title' ],
+			[ 'moved_to', '_prefixedtitle' ],
 			[ 'moved_to', '_restrictions_create' ],
 			[ 'moved_to', '_restrictions_create', 'restricted' ],
 			[ 'moved_to', '_restrictions_edit' ],
