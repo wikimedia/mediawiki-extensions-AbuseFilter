@@ -30,6 +30,7 @@
  * @covers AbuseFilterTokenizer
  * @covers AFPToken
  * @covers AFPUserVisibleException
+ * @covers AFPException
  * @covers AbuseFilterParser
  */
 class AFPDataTest extends MediaWikiTestCase {

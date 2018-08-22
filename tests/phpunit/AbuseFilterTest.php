@@ -29,6 +29,9 @@
  * @group Database
  *
  * @covers AbuseFilter
+ * @covers AFPData
+ * @covers AbuseFilterVariableHolder
+ * @covers AFComputedVariable
  */
 class AbuseFilterTest extends MediaWikiTestCase {
 	protected static $mUser, $mTitle, $mPage, $mVariables;
