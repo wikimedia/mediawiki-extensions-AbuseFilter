@@ -214,6 +214,7 @@
 	"abusefilter-edit-warn-edit": "Create/Edit selected message",
 	"abusefilter-edit-tag-tag": "[[Special:Tags|Tags]] to apply:",
 	"abusefilter-edit-tag-placeholder": "Add tags (one by one or comma separated)",
+	"abusefilter-edit-tag-hidden-placeholder": "Add tags (comma separated)",
 	"abusefilter-edit-block-anon-durations": "Block duration for anonymous users:",
 	"abusefilter-edit-block-user-durations": "Block duration for registered users:",
 	"abusefilter-block-anon": "Block anonymous users",

@@ -743,7 +743,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						new OOUI\MultilineTextInputWidget( [
 							'name' => 'wpFilterTags',
 							'value' => implode( ',', $tags ),
-							'rows' => 5
+							'rows' => 5,
+							'placeholder' => $this->msg( 'abusefilter-edit-tag-hidden-placeholder' )->text()
 						] + $readOnlyAttrib
 						),
 						[
