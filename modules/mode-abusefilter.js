@@ -1,5 +1,5 @@
 /* global ace, mw */
-ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'module', 'ace/lib/oop', 'ace/mode/text_highlight_rules' ], function ( require, exports, module ) {
+ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'module', 'ace/lib/oop', 'ace/mode/text_highlight_rules' ], function ( require, exports ) {
 	'use strict';
 
 	var oop = require( 'ace/lib/oop' ),
@@ -13,7 +13,7 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 				deprecated = ( '' ), // Template for deprecated vars, already registered within ace settings.
 				keywordMapper = this.createKeywordMapper(
 					{
-						'keyword': keywords,
+						keyword: keywords,
 						'support.function': functions,
 						'constant.language': constants,
 						'variable.language': variables,
@@ -30,7 +30,7 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 				floatNumber = '(?:' + pointFloat + ')';
 
 			this.$rules = {
-				'start': [ {
+				start: [ {
 					token: 'comment',
 					regex: '\\/\\*',
 					next: 'comment'
@@ -39,7 +39,7 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 					regex: '"(?:[^\\\\]|\\\\.)*?"'
 				}, {
 					token: 'string', // ' string
-					regex: "'(?:[^\\\\]|\\\\.)*?'"
+					regex: '\'(?:[^\\\\]|\\\\.)*?\''
 				}, {
 					token: 'constant.numeric', // float
 					regex: floatNumber
@@ -62,7 +62,7 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 					token: 'text',
 					regex: '\\s+|\\w+'
 				} ],
-				'comment': [ {
+				comment: [ {
 					token: 'comment',
 					regex: '\\*\\/',
 					next: 'start'
@@ -79,7 +79,7 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 	exports.AFHighlightRules = AFHighlightRules;
 } );
 
-ace.define( 'ace/mode/abusefilter', [ 'require', 'exports', 'module', 'ace/lib/oop', 'ace/mode/text', 'ace/mode/abusefilter_highlight_rules' ], function ( require, exports, module ) {
+ace.define( 'ace/mode/abusefilter', [ 'require', 'exports', 'module', 'ace/lib/oop', 'ace/mode/text', 'ace/mode/abusefilter_highlight_rules' ], function ( require, exports ) {
 	'use strict';
 
 	var oop = require( 'ace/lib/oop' ),
@@ -98,7 +98,7 @@ ace.define( 'ace/mode/abusefilter', [ 'require', 'exports', 'module', 'ace/lib/o
 			start: '/*',
 			end: '*/'
 		};
-		this.getNextLineIndent = function ( state, line, tab ) {
+		this.getNextLineIndent = function ( state, line ) {
 			var indent = this.$getIndent( line );
 			return indent;
 		};
