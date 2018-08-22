@@ -30,6 +30,11 @@
  * @group Database
  *
  * @covers AbuseFilter
+ * @covers AbuseFilterHooks
+ * @covers AbuseFilterParser
+ * @covers AFPData
+ * @covers AbuseFilterTokenizer
+ * @covers AFPToken
  */
 class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	protected static $mUser;

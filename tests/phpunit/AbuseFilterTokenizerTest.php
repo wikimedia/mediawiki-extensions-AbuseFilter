@@ -27,6 +27,9 @@
  * @group AbuseFilter
  *
  * @covers AbuseFilterTokenizer
+ * @covers AFPToken
+ * @covers AbuseFilterParser
+ * @covers AFPUserVisibleException
  */
 class AbuseFilterTokenizerTest extends MediaWikiTestCase {
 	/**
