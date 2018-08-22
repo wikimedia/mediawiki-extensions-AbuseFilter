@@ -162,6 +162,7 @@
 		if ( useAce ) {
 			filterEditor.insert( $filterBuilder.val() + ' ' );
 			$plainTextBox.val( filterEditor.getSession().getValue() );
+			filterEditor.focus();
 		} else {
 			$plainTextBox.textSelection(
 				'encapsulateSelection', { pre: $filterBuilder.val() + ' ' }
