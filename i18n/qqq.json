@@ -247,6 +247,7 @@
 	"abusefilter-edit-warn-edit": "Button text for actions relating to a warning message for an abuse filter.\n\nSee also:\n* {{msg-mw|Abusefilter-edit-warn-actions}}\n* {{msg-mw|Abusefilter-edit-warn-preview}}",
 	"abusefilter-edit-tag-tag": "Field label for a field in which tags can be added for a revision in case the abuse filter applies.",
 	"abusefilter-edit-tag-placeholder": "Placeholder for a field where the user may insert tags.",
+	"abusefilter-edit-tag-hidden-placeholder": "Placeholder for a field where the user may insert tags.",
 	"abusefilter-edit-block-anon-durations": "Field label for select element allowing to select block duration for anonymous users",
 	"abusefilter-edit-block-user-durations": "Field label for select element allowing to select block duration for registered users",
 	"abusefilter-block-anon": "Specification for type of block. 'Block' is a verb.\n{{Identical|Block}}",
