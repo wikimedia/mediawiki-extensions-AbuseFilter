@@ -37,10 +37,9 @@
 	"abusefilter-edit-builder-vars-oldsize": "पुलांगु पौ साइज",
 	"abusefilter-edit-builder-vars-removedlines": "सम्पादनं लिकाःगु लाइन",
 	"abusefilter-edit-builder-vars-summary": "सम्पादनया सार/कारण",
-	"abusefilter-edit-builder-vars-article-id": "पौ ID",
-	"abusefilter-edit-builder-vars-article-ns": "पौ नेमस्पेस",
-	"abusefilter-edit-builder-vars-article-text": "पौया नां (नेमस्पेस मदयेक)",
-	"abusefilter-edit-builder-vars-article-prefixedtext": "पूवंगु पौया नां",
+	"abusefilter-edit-builder-vars-page-id": "पौ ID",
+	"abusefilter-edit-builder-vars-page-ns": "पौ नेमस्पेस",
+	"abusefilter-edit-builder-vars-page-title": "पौया नां (नेमस्पेस मदयेक)",
 	"abusefilter-history-user": "छ्य्‌लामि",
 	"abusefilter-history-diff": "हिला",
 	"abusefilter-revert-reasonfield": "कारण:"

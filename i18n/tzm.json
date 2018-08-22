@@ -12,7 +12,7 @@
 	"abusefilter-edit-builder-op-arithmetic-modulo": "Modulo (%)",
 	"abusefilter-edit-builder-op-bool-and": "ⴷ (&)",
 	"abusefilter-edit-builder-op-bool-or": "ⵏⵖ (|)",
-	"abusefilter-edit-builder-vars-article-id": "ⵓⵟⵟⵓⵏ ⵏ ⵜⴰⵙⵏⴰ (ID)",
+	"abusefilter-edit-builder-vars-page-id": "ⵓⵟⵟⵓⵏ ⵏ ⵜⴰⵙⵏⴰ (ID)",
 	"abusefilter-history-timestamp": "ⴰⴽⵓⴷ",
 	"abusefilter-history-diff": "ⵉⴱⴷⴷⴻⵍⵏ",
 	"abusefilter-action-block": "ⴰⵙⴳⴷⵍ",
