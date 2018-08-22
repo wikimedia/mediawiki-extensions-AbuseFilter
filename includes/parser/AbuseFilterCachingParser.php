@@ -107,7 +107,9 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 						}
 					// Fallthrough intended
 					default:
+						// @codeCoverageIgnoreStart
 						throw new AFPException( "Unknown token provided in the ATOM node" );
+						// @codeCoverageIgnoreEnd
 				}
 			case AFPTreeNode::ARRAY_DEFINITION:
 				$items = array_map( [ $this, 'evalNode' ], $node->children );
@@ -133,7 +135,9 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				}
 
 				if ( count( self::$funcCache ) > 1000 ) {
+					// @codeCoverageIgnoreStart
 					self::$funcCache = [];
+					// @codeCoverageIgnoreEnd
 				}
 
 				return $result;
@@ -203,7 +207,9 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 					case '-':
 						return AFPData::sub( $leftOperand, $rightOperand );
 					default:
+						// @codeCoverageIgnoreStart
 						throw new AFPException( "Unknown sum-related operator: {$op}" );
+						// @codeCoverageIgnoreEnd
 				}
 
 			case AFPTreeNode::COMPARE:
@@ -242,6 +248,9 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 			case AFPTreeNode::INDEX_ASSIGNMENT:
 				list( $varName, $offset, $value ) = $node->children;
 
+				if ( !$this->mVars->varIsSet( $varName ) ) {
+					throw new AFPUserVisibleException( 'unrecognisedvar', $node->position, [ $varName ] );
+				}
 				$array = $this->mVars->getVar( $varName );
 				if ( $array->type !== AFPData::DARRAY ) {
 					throw new AFPUserVisibleException( 'notarray', $node->position, [] );
@@ -281,7 +290,9 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 
 				return $lastValue;
 			default:
+				// @codeCoverageIgnoreStart
 				throw new AFPException( "Unknown node type passed: {$node->type}" );
+				// @codeCoverageIgnoreEnd
 		}
 	}
 }

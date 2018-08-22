@@ -31,44 +31,7 @@
  * @covers AFPException
  * @covers AbuseFilterParser
  */
-class AFPDataTest extends MediaWikiTestCase {
-	/**
-	 * @return AbuseFilterParser
-	 */
-	public static function getParser() {
-		/** @var AbuseFilterParser|null The parser used for tests */
-		static $parser = null;
-		if ( !$parser ) {
-			$parser = new AbuseFilterParser();
-		} else {
-			$parser->resetState();
-		}
-		return $parser;
-	}
-
-	/**
-	 * Base method for testing exceptions
-	 *
-	 * @param string $excep Identifier of the exception (e.g. 'unexpectedtoken')
-	 * @param string $expr The expression to test
-	 * @param string $caller The function where the exception is thrown
-	 */
-	private function exceptionTest( $excep, $expr, $caller ) {
-		$parser = self::getParser();
-		try {
-			$parser->parse( $expr );
-		} catch ( AFPUserVisibleException $e ) {
-			$this->assertEquals(
-				$excep,
-				$e->mExceptionID,
-				"Exception $excep not thrown in AFPData::$caller"
-			);
-			return;
-		}
-
-		$this->fail( "Exception $excep not thrown in AFPData::$caller" );
-	}
-
+class AFPDataTest extends AbuseFilterParserTestCase {
 	/**
 	 * Test the 'regexfailure' exception
 	 *

@@ -102,11 +102,16 @@ class AFPTreeNode {
 
 	/**
 	 * @return string
+	 * @codeCoverageIgnore
 	 */
 	public function toDebugString() {
 		return implode( "\n", $this->toDebugStringInner() );
 	}
 
+	/**
+	 * @return array
+	 * @codeCoverageIgnore
+	 */
 	private function toDebugStringInner() {
 		if ( $this->type === self::ATOM ) {
 			return [ "ATOM({$this->children->type} {$this->children->value})" ];

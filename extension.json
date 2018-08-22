@@ -152,7 +152,8 @@
 		"ApiAbuseFilterUnblockAutopromote": "includes/api/ApiAbuseFilterUnblockAutopromote.php",
 		"ApiAbuseFilterCheckMatch": "includes/api/ApiAbuseFilterCheckMatch.php",
 		"NormalizeThrottleParameters": "maintenance/normalizeThrottleParameters.php",
-		"AbuseFilterConsequencesTest": "tests/phpunit/AbuseFilterConsequencesTest.php"
+		"AbuseFilterConsequencesTest": "tests/phpunit/AbuseFilterConsequencesTest.php",
+		"AbuseFilterParserTestCase": "tests/phpunit/AbuseFilterParserTestCase.php"
 	},
 	"ResourceModules": {
 		"ext.abuseFilter": {

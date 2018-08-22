@@ -747,7 +747,9 @@ class AbuseFilterParser {
 			}
 
 			if ( count( self::$funcCache ) > 1000 ) {
+				// @codeCoverageIgnoreStart
 				self::$funcCache = [];
+				// @codeCoverageIgnoreEnd
 			}
 		} else {
 			$this->doLevelAtom( $result );
