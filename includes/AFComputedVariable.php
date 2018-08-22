@@ -371,6 +371,18 @@ class AFComputedVariable {
 				$registration = $obj->getRegistration();
 				$result = wfTimestamp( TS_UNIX, $asOf ) - wfTimestampOrNull( TS_UNIX, $registration );
 				break;
+			case 'page-age':
+				$title = Title::makeTitle( $parameters['namespace'], $parameters['title'] );
+
+				$firstRevisionTime = $title->getEarliestRevTime();
+				if ( !$firstRevisionTime ) {
+					$result = 0;
+					break;
+				}
+
+				$asOf = $parameters['asof'];
+				$result = wfTimestamp( TS_UNIX, $asOf ) - wfTimestampOrNull( TS_UNIX, $firstRevisionTime );
+				break;
 			case 'user-groups':
 				// Deprecated but needed by old log entries
 				$user = $parameters['user'];

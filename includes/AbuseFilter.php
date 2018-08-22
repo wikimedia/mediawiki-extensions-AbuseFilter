@@ -113,14 +113,17 @@ class AbuseFilter {
 			'page_namespace' => 'page-ns',
 			'page_title' => 'page-title',
 			'page_prefixedtitle' => 'page-prefixedtitle',
+			'page_age' => 'page-age',
 			'moved_from_id' => 'movedfrom-id',
 			'moved_from_namespace' => 'movedfrom-ns',
 			'moved_from_title' => 'movedfrom-title',
 			'moved_from_prefixedtitle' => 'movedfrom-prefixedtitle',
+			'moved_from_age' => 'movedfrom-age',
 			'moved_to_id' => 'movedto-id',
 			'moved_to_namespace' => 'movedto-ns',
 			'moved_to_title' => 'movedto-title',
 			'moved_to_prefixedtitle' => 'movedto-prefixedtitle',
+			'moved_to_age' => 'movedto-age',
 			'user_editcount' => 'user-editcount',
 			'user_age' => 'user-age',
 			'user_name' => 'user-name',
@@ -445,6 +448,13 @@ class AbuseFilter {
 			[
 				'title' => $title->getText(),
 				'namespace' => $title->getNamespace()
+			] );
+
+		$vars->setLazyLoadVar( "{$prefix}_age", 'page-age',
+			[
+				'title' => $title->getText(),
+				'namespace' => $title->getNamespace(),
+				'asof' => wfTimestampNow()
 			] );
 
 		$vars->setLazyLoadVar( "{$prefix}_first_contributor", 'load-first-author',
