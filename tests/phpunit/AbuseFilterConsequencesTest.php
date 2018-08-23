@@ -1,4 +1,9 @@
 <?php
+
+use MediaWiki\Session\SessionManager;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Storage\NameTableAccessException;
+
 /**
  * Complete tests where filters are saved, actions are executed and the right
  *   consequences are expected to be taken
@@ -23,9 +28,6 @@
  * @license GPL-2.0-or-later
  */
 
-use MediaWiki\MediaWikiServices;
-use MediaWiki\Storage\NameTableAccessException;
-
 /**
  * @group Test
  * @group AbuseFilter
@@ -40,8 +42,14 @@ use MediaWiki\Storage\NameTableAccessException;
  * @todo Add upload actions everywhere
  */
 class AbuseFilterConsequencesTest extends MediaWikiTestCase {
-	/** @var User The user performing actions */
+	/**
+	 * @var User The user performing actions
+	 */
 	private static $mUser;
+	/**
+	 * @var \MediaWiki\Session\Session The session object to use for edits
+	 */
+	private static $mEditSession;
 
 	/**
 	 * @var array This tables will be deleted in parent::tearDown
@@ -221,6 +229,15 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			'actions' => [
 				'disallow' => []
 			]
+		],
+		16 => [
+			'af_pattern' => 'random := "adruhaoerihouhae"; added_lines contains random | ' .
+				'edit_diff_pst contains random | new_pst contains random | new_html contains random |' .
+				'1=1 | /*Superfluous condition to set a lazyLoader but not compute*/all_links contains random',
+			'af_public_comments' => 'Filter computing several non-lazy variables',
+			'actions' => [
+				'disallow' => []
+			]
 		]
 	];
 	// phpcs:enable Generic.Files.LineLength
@@ -230,6 +247,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 */
 	protected function setUp() {
 		parent::setUp();
+		self::$mEditSession = SessionManager::singleton()->getEmptySession();
 		$user = User::newFromName( 'FilteredUser' );
 		$user->addToDatabase();
 		$user->addGroup( 'sysop' );
@@ -314,15 +332,52 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * Stash the edit via API
+	 *
+	 * @param Title $title Title of the page to edit
+	 * @param string $text The new content of the page
+	 * @param string $summary The summary of the edit
+	 * @return string The status of the operation, as returned by the API.
+	 */
+	private function stashEdit( $title, $text, $summary ) {
+		$this->setMwGlobals( [ 'wgMainCacheType' => 'hash' ] );
+		$params = [
+			'action' => 'stashedit',
+			'title' => $title->getPrefixedText(),
+			'baserevid' => 0,
+			'text' => $text,
+			'summary' => $summary,
+			'contentmodel' => 'wikitext',
+			'contentformat' => 'text/x-wiki'
+		];
+
+		// Set up an API request
+		$apiContext = new ApiTestContext();
+		$params['token'] = ApiQueryTokens::getToken(
+			self::$mUser, self::$mEditSession, ApiQueryTokens::getTokenTypeSalts()[ 'csrf' ]
+		)->toString();
+		$request = new FauxRequest( $params, true, self::$mEditSession );
+		$context = $apiContext->newTestContext( $request, self::$mUser );
+		$main = new ApiMain( $context, true );
+
+		$main->execute();
+		$result = $main->getResult()->getResultData()[ 'stashedit' ];
+
+		return $result[ 'status' ];
+	}
+
+	/**
 	 * Performs an edit. Freely adapted from EditPageTest::assertEdit
 	 *
 	 * @param Title $title Title of the page to edit
 	 * @param string $oldText Old content of the page
 	 * @param string $newText The new content of the page
 	 * @param string $summary The summary of the edit
+	 * @param bool|null $fromStash Whether to stash the edit. Null means no stashing, false means
+	 *   stash the edit but don't reuse it for saving, true means stash and reuse.
 	 * @return Status
 	 */
-	private function doEdit( $title, $oldText, $newText, $summary ) {
+	private function doEdit( $title, $oldText, $newText, $summary, $fromStash = null ) {
 		$page = WikiPage::factory( $title );
 		if ( !$page->exists() ) {
 			$content = ContentHandler::makeContent( $oldText, $title );
@@ -340,7 +395,20 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			'wpMinorEdit' => false,
 			'wpWatchthis' => false
 		];
-		$req = new FauxRequest( $params, true );
+		$req = new FauxRequest( $params, true, self::$mEditSession );
+
+		if ( $fromStash !== null ) {
+			// If we want to save from stash, submit the same text
+			$stashText = $newText;
+			if ( $fromStash === false ) {
+				// Otherwise, stash some random text which won't match the actual edit
+				$stashText = md5( uniqid( rand(), true ) );
+			}
+			$stashResult = $this->stashEdit( $title, $stashText, $summary );
+			if ( $stashResult !== 'stashed' ) {
+				throw new MWException( "The edit cannot be stashed, got the following result: $stashResult" );
+			}
+		}
 
 		$article = new Article( $title );
 		$article->getContext()->setTitle( $title );
@@ -371,6 +439,16 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			case 'edit':
 				$status = $this->doEdit( $target, $params['oldText'], $params['newText'], $params['summary'] );
 				break;
+			case 'stashedit':
+				$stashStatus = $params['stashType'] === 'hit';
+				$status = $this->doEdit(
+					$target,
+					$params['oldText'],
+					$params['newText'],
+					$params['summary'],
+					$stashStatus
+				);
+				break;
 			case 'move':
 				$newTitle = isset( $params['newTitle'] )
 					? Title::newFromText( $params['newTitle'] )
@@ -397,7 +475,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				$logEntry->publish( $logid );
 				break;
 			default:
-				throw new UnexpectedValueException( 'Unrecognized action.' );
+				throw new UnexpectedValueException( 'Unrecognized action ' . $params['action'] );
 		}
 
 		// Clear cache since we'll need to retrieve some fresh data about the user
@@ -427,7 +505,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @fixme This method is pretty hacky. A clean alternative from core would be nice.
 	 */
 	private function getActionTags( $actionParams ) {
-		if ( $actionParams['action'] === 'edit' ) {
+		if ( $actionParams['action'] === 'edit' || $actionParams['action'] === 'stashedit' ) {
 			$page = WikiPage::factory( Title::newFromText( $actionParams['target'] ) );
 			$where = [ 'ct_rev_id' => $page->getLatest() ];
 		} else {
@@ -1052,7 +1130,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @dataProvider provideThrottleFilters
 	 */
 	public function testThrottle( $createIds, $actionsParams, $consequences ) {
-		$this->setMwGlobals( [ 'wgMainCacheType' => CACHE_ANYTHING ] );
+		$this->setMwGlobals( [ 'wgMainCacheType' => 'hash' ] );
 		self::createFilters( $createIds );
 		$results = self::doActions( $actionsParams );
 		$res = $this->checkThrottleConsequence( $results );
@@ -1168,7 +1246,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	public function testVarDump( $createIds, $actionParams, $usedVars ) {
 		self::createFilters( $createIds );
 		// We don't care about consequences here
-		self::doAction( $actionParams );
+		$this->doAction( $actionParams );
 
 		$dbw = wfGetDB( DB_MASTER );
 		// We just take a dump from a single filters, as they're all identical for the same action
@@ -1217,6 +1295,30 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[ 'added_lines', 'action' ]
 			],
 			[
+				[ 1, 2 ],
+				[
+					'action' => 'stashedit',
+					'target' => 'Test page',
+					'oldText' => 'Some old text for the test.',
+					'newText' => 'I like foo',
+					'summary' => 'Test AbuseFilter for edit action.',
+					'stashType' => 'hit'
+				],
+				[ 'added_lines', 'action' ]
+			],
+			[
+				[ 1, 2 ],
+				[
+					'action' => 'stashedit',
+					'target' => 'Test page',
+					'oldText' => 'Some old text for the test.',
+					'newText' => 'I like foo',
+					'summary' => 'Test AbuseFilter for edit action.',
+					'stashType' => 'miss'
+				],
+				[ 'added_lines', 'action' ]
+			],
+			[
 				[ 2 ],
 				[
 					'action' => 'move',
@@ -1244,6 +1346,30 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					'oldText' => 'What is a link?',
 					'newText' => 'A link is something like this: [[Link|]].',
 					'summary' => 'Explaining'
+				],
+				[ 'action', 'timestamp', 'added_lines_pst' ]
+			],
+			[
+				[ 2, 3, 7, 8 ],
+				[
+					'action' => 'stashedit',
+					'target' => 'Link',
+					'oldText' => 'What is a link?',
+					'newText' => 'A link is something like this: [[Link|]].',
+					'summary' => 'Explaining',
+					'stashType' => 'hit'
+				],
+				[ 'action', 'timestamp', 'added_lines_pst' ]
+			],
+			[
+				[ 2, 3, 7, 8 ],
+				[
+					'action' => 'stashedit',
+					'target' => 'Link',
+					'oldText' => 'What is a link?',
+					'newText' => 'A link is something like this: [[Link|]].',
+					'summary' => 'Explaining',
+					'stashType' => 'miss'
 				],
 				[ 'action', 'timestamp', 'added_lines_pst' ]
 			],
@@ -1286,6 +1412,240 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				],
 				[ 'action' ]
 			],
+			[
+				[ 16 ],
+				[
+					'action' => 'edit',
+					'target' => 'Random',
+					'oldText' => 'Old text',
+					'newText' => 'Some new text which will not match',
+					'summary' => 'No summary'
+				],
+				[ 'edit_diff_pst', 'new_pst', 'new_html' ]
+			],
+			[
+				[ 16 ],
+				[
+					'action' => 'stashedit',
+					'target' => 'Random',
+					'oldText' => 'Old text',
+					'newText' => 'Some new text which will not match',
+					'summary' => 'No summary',
+					'stashType' => 'miss'
+				],
+				[ 'edit_diff_pst', 'new_pst', 'new_html' ]
+			],
+			[
+				[ 16 ],
+				[
+					'action' => 'stashedit',
+					'target' => 'Random',
+					'oldText' => 'Old text',
+					'newText' => 'Some new text which will not match',
+					'summary' => 'No summary',
+					'stashType' => 'hit'
+				],
+				[ 'edit_diff_pst', 'new_pst', 'new_html' ]
+			],
 		];
+	}
+
+	/**
+	 * Same as testFilterConsequences but only for stashed edits
+	 *
+	 * @param string $type Either "hit" or "miss". The former saves the edit from stash, the second
+	 *   stashes the edit but doesn't reuse it.
+	 * @param int[] $createIds IDs of the filters to create
+	 * @param array $actionParams Details of the action we need to execute to trigger filters
+	 * @param array $consequences The consequences we're expecting
+	 * @dataProvider provideStashedEdits
+	 */
+	public function testStashedEdit( $type, $createIds, $actionParams, $consequences ) {
+		if ( $type !== 'hit' && $type !== 'miss' ) {
+			throw new InvalidArgumentException( '$type must be either "hit" or "miss"' );
+		}
+		// Add some info in actionParams identical for all tests
+		$actionParams['action'] = 'stashedit';
+		$actionParams['stashType'] = $type;
+
+		$loggerMock = new TestLogger();
+		$loggerMock->setCollect( true );
+		$this->setLogger( 'StashEdit', $loggerMock );
+
+		self::createFilters( $createIds );
+		$result = $this->doAction( $actionParams );
+
+		// Check that we stored the edit and then hit/missed the cache
+		$foundStore = false;
+		$foundHitOrMiss = false;
+		// The conversion back and forth is needed because if the wiki language is not english
+		// the given namespace has been localized and thus wouldn't match.
+		$title = Title::newFromText( $actionParams['target'] )->getPrefixedText();
+		foreach ( $loggerMock->getBuffer() as $entry ) {
+			if ( preg_match( "/AbuseFilter::filterAction: cache $type for '$title'/", $entry[1] ) ) {
+				$foundHitOrMiss = true;
+			}
+			if ( preg_match( "/AbuseFilter::filterAction: cache store for '$title'/", $entry[1] ) ) {
+				$foundStore = true;
+			}
+			if ( $foundStore && $foundHitOrMiss ) {
+				break;
+			}
+		}
+		if ( !$foundStore ) {
+			$this->fail( 'Did not store the edit in cache as expected for a stashed edit.' );
+		} elseif ( !$foundHitOrMiss ) {
+			$this->fail( "Did not $type the cache as expected for a stashed edit." );
+		}
+
+		list( $expected, $actual ) = $this->checkConsequences( $result, $actionParams, $consequences );
+
+		$expectedDisplay = implode( ', ', $expected );
+		$actualDisplay = implode( ', ', $actual );
+
+		$this->assertEquals(
+			$expected,
+			$actual,
+			"The action should have returned the following error messages: $expectedDisplay. " .
+			"Got $actualDisplay instead."
+		);
+	}
+
+	/**
+	 * Data provider for testStashedEdit
+	 *
+	 * @return array
+	 */
+	public function provideStashedEdits() {
+		$sets = [
+			[
+				[ 1, 2 ],
+				[
+					'target' => 'Test page',
+					'oldText' => 'Some old text for the test.',
+					'newText' => 'I like foo',
+					'summary' => 'Test AbuseFilter for edit action.'
+				],
+				[ 'warn'  => [ 1 ] ]
+			],
+			[
+				[ 5 ],
+				[
+					'target' => 'User:FilteredUser',
+					'oldText' => 'Hey.',
+					'newText' => 'I am a very nice user, really!',
+					'summary' => ''
+				],
+				[ 'tag' => [ 5 ] ]
+			],
+			[
+				[ 6 ],
+				[
+					'target' => 'Help:Help',
+					'oldText' => 'Some help.',
+					'newText' => 'Some help for you',
+					'summary' => 'Help! I need somebody'
+				],
+				[ 'disallow' => [ 6 ] ]
+			],
+			[
+				[ 2, 3, 7, 8 ],
+				[
+					'target' => 'Link',
+					'oldText' => 'What is a link?',
+					'newText' => 'A link is something like this: [[Link|]].',
+					'summary' => 'Explaining'
+				],
+				[ 'degroup' => [ 7 ], 'block' => [ 8 ] ]
+			],
+			[
+				[ 8, 9 ],
+				[
+					'target' => 'Whatever',
+					'oldText' => 'Whatever is whatever',
+					'newText' => 'Whatever is whatever, whatever it is. BTW, here is a [[Link|]]',
+					'summary' => 'Whatever'
+				],
+				[ 'disallow' => [ 8 ], 'block' => [ 8 ] ]
+			],
+			[
+				[ 10 ],
+				[
+					'target' => 'Buffalo',
+					'oldText' => 'Buffalo',
+					'newText' => 'Buffalo buffalo Buffalo buffalo buffalo buffalo Buffalo buffalo.',
+					'summary' => 'Buffalo!'
+				],
+				[ 'tag' => [ 10 ] ]
+			],
+			[
+				[ 1, 3, 7, 12 ],
+				[
+					'target' => 'User:FilteredUser',
+					'oldText' => '',
+					'newText' => 'A couple of lines about me...',
+					'summary' => 'My user page'
+				],
+				[ 'block' => [ 12 ], 'degroup' => [ 7, 12 ] ]
+			],
+			[
+				[ 10, 13 ],
+				[
+					'target' => 'Tyger! Tyger! Burning bright',
+					'oldText' => 'In the forests of the night',
+					'newText' => 'What immortal hand or eye',
+					'summary' => 'Could frame thy fearful symmetry?'
+				],
+				[ 'tag' => [ 10 ] ]
+			],
+			[
+				[ 14 ],
+				[
+					'target' => '0',
+					'oldText' => 'Old text',
+					'newText' => 'New text',
+					'summary' => 'Some summary'
+				],
+				[]
+			],
+			[
+				[ 8, 10 ],
+				[
+					'target' => 'Anything',
+					'oldText' => 'Bar',
+					'newText' => 'Foo',
+					'summary' => ''
+				],
+				[]
+			],
+			[
+				[ 7, 12 ],
+				[
+					'target' => 'Something',
+					'oldText' => 'Please allow me',
+					'newText' => 'to introduce myself',
+					'summary' => ''
+				],
+				[ 'degroup' => [ 7 ] ]
+			],
+			[
+				[ 13 ],
+				[
+					'target' => 'My page',
+					'oldText' => '',
+					'newText' => 'AbuseFilter will not block me',
+					'summary' => ''
+				],
+				[]
+			],
+		];
+
+		$finalSets = [];
+		foreach ( $sets as $set ) {
+			// Test both succesfully saving a stashed edit and stashing the edit but re-executing filters
+			$finalSets[] = array_merge( [ 'miss' ], $set );
+			$finalSets[] = array_merge( [ 'hit' ], $set );
+		}
+		return $finalSets;
 	}
 }
