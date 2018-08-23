@@ -584,18 +584,6 @@ class AbuseFilterHooks {
 			$updater->addExtensionUpdate( [
 				'addPgField', 'abuse_filter', 'af_global', 'SMALLINT NOT NULL DEFAULT 0' ] );
 			$updater->addExtensionUpdate( [
-				'addPgField', 'abuse_filter_log', 'afl_wiki', 'TEXT' ] );
-			$updater->addExtensionUpdate( [
-				'addPgField', 'abuse_filter_log', 'afl_deleted', 'SMALLINT' ] );
-			$updater->addExtensionUpdate( [
-				'changeField', 'abuse_filter_log', 'afl_filter', 'TEXT', '' ] );
-			$updater->addExtensionUpdate( [
-				'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_ip', "(afl_ip)" ] );
-			$updater->addExtensionUpdate( [
-				'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_wiki', "(afl_wiki)" ] );
-			$updater->addExtensionUpdate( [
-				'changeField', 'abuse_filter_log', 'afl_namespace', "INTEGER", '' ] );
-			$updater->addExtensionUpdate( [
 				'addPgField', 'abuse_filter', 'af_group', "TEXT NOT NULL DEFAULT 'default'" ] );
 			$updater->addExtensionUpdate( [
 				'addPgExtIndex', 'abuse_filter', 'abuse_filter_group_enabled_id',
@@ -603,6 +591,64 @@ class AbuseFilterHooks {
 			] );
 			$updater->addExtensionUpdate( [
 				'addPgField', 'abuse_filter_history', 'afh_group', "TEXT" ] );
+			$updater->addExtensionUpdate( [
+				'addPgField', 'abuse_filter_log', 'afl_wiki', 'TEXT' ] );
+			$updater->addExtensionUpdate( [
+				'addPgField', 'abuse_filter_log', 'afl_deleted', 'SMALLINT' ] );
+			$updater->addExtensionUpdate( [
+				'setDefault', 'abuse_filter_log', 'afl_deleted', '0' ] );
+			$updater->addExtensionUpdate( [
+				'changeNullableField', 'abuse_filter_log', 'afl_deleted', 'NOT NULL', true ] );
+			$updater->addExtensionUpdate( [
+				'addPgField', 'abuse_filter_log', 'afl_patrolled_by', 'INTEGER' ] );
+			$updater->addExtensionUpdate( [
+				'addPgField', 'abuse_filter_log', 'afl_rev_id', 'INTEGER' ] );
+			$updater->addExtensionUpdate( [
+				'addPgField', 'abuse_filter_log', 'afl_log_id', 'INTEGER' ] );
+			$updater->addExtensionUpdate( [
+				'changeField', 'abuse_filter_log', 'afl_filter', 'TEXT', '' ] );
+			$updater->addExtensionUpdate( [
+				'changeField', 'abuse_filter_log', 'afl_namespace', "INTEGER", '' ] );
+			$updater->addExtensionUpdate( [
+				'dropPgIndex', 'abuse_filter_log', 'abuse_filter_log_filter' ] );
+			$updater->addExtensionUpdate( [
+				'dropPgIndex', 'abuse_filter_log', 'abuse_filter_log_ip' ] );
+			$updater->addExtensionUpdate( [
+				'dropPgIndex', 'abuse_filter_log', 'abuse_filter_log_title' ] );
+			$updater->addExtensionUpdate( [
+				'dropPgIndex', 'abuse_filter_log', 'abuse_filter_log_user' ] );
+			$updater->addExtensionUpdate( [
+				'dropPgIndex', 'abuse_filter_log', 'abuse_filter_log_user_text' ] );
+			$updater->addExtensionUpdate( [
+				'dropPgIndex', 'abuse_filter_log', 'abuse_filter_log_wiki' ] );
+			$updater->addExtensionUpdate( [
+				'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_filter_timestamp',
+				'(afl_filter,afl_timestamp)'
+			] );
+			$updater->addExtensionUpdate( [
+				'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_user_timestamp',
+				'(afl_user,afl_user_text,afl_timestamp)'
+			] );
+			$updater->addExtensionUpdate( [
+				'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_page_timestamp',
+				'(afl_namespace,afl_title,afl_timestamp)'
+			] );
+			$updater->addExtensionUpdate( [
+				'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_ip_timestamp',
+				'(afl_ip, afl_timestamp)'
+			] );
+			$updater->addExtensionUpdate( [
+				'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_rev_id',
+				'(afl_rev_id)'
+			] );
+			$updater->addExtensionUpdate( [
+				'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_log_id',
+				'(afl_log_id)'
+			] );
+			$updater->addExtensionUpdate( [
+				'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_wiki_timestamp',
+				'(afl_wiki,afl_timestamp)'
+			] );
 		}
 
 		$updater->addExtensionUpdate( [ [ __CLASS__, 'createAbuseFilterUser' ] ] );
