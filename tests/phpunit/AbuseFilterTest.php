@@ -220,7 +220,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 
 	/**
 	 * Check that user_age is correct. Needs a separate function to take into account the
-	 *   difference between this timestamp and the one in the actual code.
+	 *   difference between timestamps due to test execution time
 	 *
 	 * @covers AbuseFilter::generateUserVars
 	 */
@@ -235,7 +235,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 			// 10 seconds should be a good confidence interval
 			10,
 			$difference,
-			"AbuseFilter variable user_age is computed wrongly."
+			"AbuseFilter variable user_age is computed wrongly. Expected: $computed, actual: $actual."
 		);
 	}
 
@@ -249,9 +249,10 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	 *   the result may be null if the requested variable doesn't exist, or false if there
 	 *   has been some other problem.
 	 */
-	private static function computeExpectedTitleVariable( $suffix, $options ) {
+	private static function computeExpectedTitleVariable( $suffix, $options = null ) {
 		self::$mTitle = Title::newFromText( 'AbuseFilter test' );
 		$page = WikiPage::factory( self::$mTitle );
+		$createdAt = microtime( true );
 		if ( $options === 'restricted' ) {
 			$action = str_replace( '_restrictions_', '', $suffix );
 			$namespace = 0;
@@ -382,6 +383,9 @@ class AbuseFilterTest extends MediaWikiTestCase {
 				}
 				$result = self::$mUser->getName();
 				break;
+			case '_age':
+				$result = microtime( true ) - $createdAt;
+				break;
 			default:
 				$success = false;
 				$result = null;
@@ -468,6 +472,47 @@ class AbuseFilterTest extends MediaWikiTestCase {
 			[ 'moved_to', '_restrictions_upload', 'restricted' ],
 			[ 'moved_to', '_first_contributor' ],
 			[ 'moved_to', '_recent_contributors' ],
+		];
+	}
+
+	/**
+	 * Check that _age variables are correct. They need a separate function to take into
+	 *   account the difference between timestamps due to test execution time
+	 *
+	 * @param string $prefix Prefix of the variable to test
+	 * @covers AbuseFilter::generateTitleVars
+	 * @dataProvider provideAgeVars
+	 */
+	public function testAgeVars( $prefix ) {
+		$varName = $prefix . '_age';
+		list( $computed, $successfully ) = self::computeExpectedTitleVariable( '_age' );
+		if ( !$successfully ) {
+			if ( $computed === null ) {
+				$this->fail( "Given unknown title-related variable $varName." );
+			} else {
+				$this->fail( "AbuseFilter variable $varName is computed wrongly." );
+			}
+		}
+
+		$variableHolder = AbuseFilter::generateTitleVars( self::$mTitle, $prefix );
+		$actual = $variableHolder->getVar( $varName )->toNative();
+		$this->assertLessThanOrEqual(
+			// 10 seconds should be a good confidence interval
+			10,
+			abs( $actual - $computed ),
+			"AbuseFilter variable $varName is computed wrongly. Expected: $computed, actual: $actual."
+		);
+	}
+
+	/**
+	 * Data provider for testAgeVars
+	 * @return array
+	 */
+	public function provideAgeVars() {
+		return [
+			[ 'page' ],
+			[ 'moved_from' ],
+			[ 'moved_to' ],
 		];
 	}
 
