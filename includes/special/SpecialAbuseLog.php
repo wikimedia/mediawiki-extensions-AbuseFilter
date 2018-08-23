@@ -18,6 +18,11 @@ class SpecialAbuseLog extends SpecialPage {
 	/**
 	 * @var string
 	 */
+	protected $mSearchAction;
+
+	/**
+	 * @var string
+	 */
 	protected $mSearchActionTaken;
 
 	protected $mSearchWiki;
@@ -129,6 +134,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$this->mSearchPeriodEnd = $request->getText( 'wpSearchPeriodEnd' );
 		$this->mSearchTitle = $request->getText( 'wpSearchTitle' );
 		$this->mSearchFilter = null;
+		$this->mSearchAction = $request->getText( 'wpSearchAction' );
 		$this->mSearchActionTaken = $request->getText( 'wpSearchActionTaken' );
 		if ( self::canSeeDetails() ) {
 			$this->mSearchFilter = $request->getText( 'wpSearchFilter' );
@@ -149,6 +155,21 @@ class SpecialAbuseLog extends SpecialPage {
 				array_keys( $config->get( 'AbuseFilterCustomActionsHandlers' ) )
 			)
 		);
+	}
+
+	/**
+	 * @return string[]
+	 */
+	private function getAllFilterableActions() {
+		return [
+			'edit',
+			'move',
+			'upload',
+			'stashupload',
+			'delete',
+			'createaccount',
+			'autocreateaccount',
+		];
 	}
 
 	/**
@@ -187,6 +208,16 @@ class SpecialAbuseLog extends SpecialPage {
 					$this->msg( 'abusefilter-log-search-impact-not-saved' )->text() => 2,
 				],
 			],
+		];
+		$filterableActions = $this->getAllFilterableActions();
+		$actions = array_combine( $filterableActions, $filterableActions );
+		$actions[ $this->msg( 'abusefilter-log-search-action-other' )->text() ] = 'other';
+		$actions[ $this->msg( 'abusefilter-log-search-action-any' )->text() ] = 'any';
+		$formDescriptor['SearchAction'] = [
+			'label-message' => 'abusefilter-log-search-action-label',
+			'type' => 'select',
+			'options' => $actions,
+			'default' => 'any',
 		];
 		$options = [
 			$this->msg( 'abusefilter-log-noactions' )->text() => 'noactions',
@@ -446,6 +477,16 @@ class SpecialAbuseLog extends SpecialPage {
 				$conds[] = $dbr->makeList( $list, LIST_OR );
 			} elseif ( $this->mSearchActionTaken === 'noactions' ) {
 				$conds['afl_actions'] = '';
+			}
+		}
+
+		if ( $this->mSearchAction ) {
+			$filterableActions = $this->getAllFilterableActions();
+			if ( in_array( $this->mSearchAction, $filterableActions ) ) {
+				$conds['afl_action'] = $this->mSearchAction;
+			} elseif ( $this->mSearchAction === 'other' ) {
+				$list = $dbr->makeList( [ 'afl_action' => $filterableActions ], LIST_OR );
+				$conds[] = "NOT ( $list )";
 			}
 		}
 
