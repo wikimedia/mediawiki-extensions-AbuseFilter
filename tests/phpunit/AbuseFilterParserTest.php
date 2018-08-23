@@ -26,6 +26,7 @@
 /**
  * @group Test
  * @group AbuseFilter
+ * @group AbuseFilterParser
  *
  * @covers AbuseFilterCachingParser
  * @covers AFPTreeParser
@@ -132,8 +133,6 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	 */
 	public function testCondCount( $rule, $expected ) {
 		$parser = self::getParser();
-		// Set some variables for convenience writing test cases
-		$parser->setVars( array_combine( range( 'a', 'f' ), range( 'a', 'f' ) ) );
 		$countBefore = AbuseFilter::$condCount;
 		$parser->parse( $rule );
 		$countAfter = AbuseFilter::$condCount;
@@ -147,13 +146,13 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	 */
 	public function condCountCases() {
 		return [
-			[ '(((a == b)))', 1 ],
-			[ 'contains_any(a, b, c)', 1 ],
-			[ 'a == b == c', 2 ],
-			[ 'a in b + c in d + e in f', 3 ],
+			[ '((("a" == "b")))', 1 ],
+			[ 'contains_any("a", "b", "c")', 1 ],
+			[ '"a" == "b" == "c"', 2 ],
+			[ '"a" in "b" + "c" in "d" + "e" in "f"', 3 ],
 			[ 'true', 0 ],
-			[ 'a == a | c == d', 1 ],
-			[ 'a == b & c == d', 1 ],
+			[ '"a" == "a" | "c" == "d"', 1 ],
+			[ '"a" == "b" & "c" == "d"', 1 ],
 		];
 	}
 

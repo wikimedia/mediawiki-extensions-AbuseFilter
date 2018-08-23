@@ -119,19 +119,6 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param mixed $vars
-	 */
-	public function setVars( $vars ) {
-		if ( is_array( $vars ) ) {
-			foreach ( $vars as $name => $var ) {
-				$this->setVar( $name, $var );
-			}
-		} elseif ( $vars instanceof AbuseFilterVariableHolder ) {
-			$this->mVars->addHolders( $vars );
-		}
-	}
-
-	/**
 	 * Move to the next token
 	 */
 	protected function move() {
