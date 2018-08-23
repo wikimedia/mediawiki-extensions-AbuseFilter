@@ -19,9 +19,7 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 					},
 					'identifier'
 				),
-				decimalInteger = '(?:(?:[1-9]\\d*)|(?:0))',
-				hexInteger = '(?:0[xX][\\dA-Fa-f]+)',
-				integer = '(?:' + decimalInteger + '|' + hexInteger + ')',
+				integer = '(?:(?:[1-9]\\d*)|(?:0))',
 				fraction = '(?:\\.\\d+)',
 				intPart = '(?:\\d+)',
 				pointFloat = '(?:(?:' + intPart + '?' + fraction + ')|(?:' + intPart + '\\.))',
@@ -41,10 +39,10 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 					token: 'string',
 					regex: singleQuoteString
 				}, {
-					token: 'constant.numeric', // float
+					token: 'constant.numeric',
 					regex: floatNumber
 				}, {
-					token: 'constant.numeric', // integer
+					token: 'constant.numeric',
 					regex: integer + '\\b'
 				}, {
 					token: keywordMapper,
