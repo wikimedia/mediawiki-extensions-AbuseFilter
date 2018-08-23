@@ -292,7 +292,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			'af_hidden' => 0,
 			'af_throttled' => 1,
 			'af_deleted' => 0,
-			'af_actions' => 'disallow,block,degroup',
+			'af_actions' => 'block,degroup',
 			'af_global' => 0,
 			'actions' => [
 				'block' => [
@@ -301,6 +301,21 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					'1 day'
 				],
 				'degroup' => []
+			]
+		],
+		14 => [
+			'af_id' => 14,
+			'af_pattern' => '5/int(article_text) == 3',
+			'af_enabled' => 1,
+			'af_comments' => '',
+			'af_public_comments' => 'Filter with a possible division by zero',
+			'af_hidden' => 0,
+			'af_throttled' => 0,
+			'af_deleted' => 0,
+			'af_actions' => 'disallow',
+			'af_global' => 0,
+			'actions' => [
+				'disallow' => []
 			]
 		]
 	];
@@ -330,7 +345,9 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				'rangeblock' => true,
 				'degroup' => true,
 				'tag' => true
-			]
+			],
+			'wgAbuseFilterRuntimeProfile' => true,
+			'wgAbuseFilterProfile' => true
 		] );
 	}
 
@@ -374,9 +391,10 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * Executes an action to filter
 	 *
 	 * @param array $params Parameters of the action
+	 * @param array $options Further options
 	 * @return Status|Status[]
 	 */
-	private static function doAction( $params ) {
+	private static function doAction( $params, $options ) {
 		$type = array_shift( $params );
 		$target = array_shift( $params );
 		$target = Title::newFromText( $target );
@@ -385,7 +403,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 
 		switch ( $type ) {
 			case 'edit':
-				if ( in_array( 'makeGoodEditFirst', $params ) ) {
+				if ( in_array( 'makeGoodEditFirst', $options ) ) {
 					$firstStatus = self::doEdit(
 						$target, $params['oldText'], $params['firstNewText'], $params['summary']
 					);
@@ -471,7 +489,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @param string $testDescription A short description of the test, used for error reporting
 	 * @param int[] $createIds IDs of the filters to create
 	 * @param array $actionParameters Details of the action we need to execute to trigger filters
-	 * @param array The consequences we're expecting
+	 * @param array $consequences The consequences we're expecting
+	 * @param array $options Further options for the test
 	 * @covers AbuseFilter
 	 * @dataProvider provideFilters
 	 */
@@ -479,19 +498,37 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		$testDescription,
 		$createIds,
 		$actionParams,
-		$consequences
+		$consequences,
+		$options
 	) {
 		global $wgLang;
 		self::createFilters( $createIds );
 
-		if ( in_array( 'makeGoodEditFirst', $actionParams ) ) {
+		if ( in_array( 'makeGoodEditFirst', $options ) ) {
 			$this->setMwGlobals( [
 				// Necessary to test throttle
 				'wgMainCacheType' => CACHE_ANYTHING
 			] );
 		}
+		if ( in_array( 'hitCondsLimit', $options ) ) {
+			$this->setMwGlobals( [
+				'wgAbuseFilterConditionLimit' => 0
+			] );
+		}
+		if ( in_array( 'hitTimeLimit', $options ) ) {
+			$this->setMwGlobals( [
+				'wgAbuseFilterSlowFilterRuntimeLimit' => 0
+			] );
+		}
+		if ( in_array( 'hitThrottleLimit', $options ) ) {
+			$this->setMwGlobals( [
+				'wgAbuseFilterEmergencyDisableCount' => [
+					'default' => 0
+				]
+			] );
+		}
 
-		$result = self::doAction( $actionParams );
+		$result = self::doAction( $actionParams, $options );
 
 		$expectedErrors = [];
 		$testErrorMessage = false;
@@ -593,6 +630,26 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			}
 		}
 
+		if ( in_array( 'hitThrottleLimit', $options ) ) {
+			$dbr = wfGetDB( DB_REPLICA );
+			$throttled = true;
+			foreach ( $createIds as $filter ) {
+				$curThrottle = $dbr->selectField(
+					'abuse_filter',
+					'af_throttled',
+					[ 'af_id' => $filter ],
+					__METHOD__
+				);
+				$throttled &= $curThrottle;
+			}
+
+			if ( !$throttled ) {
+				$expectedThrottled = $wgLang->commaList( $createIds );
+				$this->fail( 'Expected the following filters to be automatically ' .
+					"throttled: $expectedThrottled." );
+			}
+		}
+
 		// Errors have a priority order
 		$expected = $expectedErrors['warn'] ?? $expectedErrors['degroup'] ??
 			$expectedErrors['block'] ?? $expectedErrors['disallow'] ?? null;
@@ -627,11 +684,12 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 
 	/**
 	 * Data provider for creating and editing filters. For every test case, we pass
-	 *   an array with the IDs of the filters to be created (listed in self::$filters),
-	 *   an array with details of the action to execute in order to trigger the filters,
-	 *   and an array of expected consequences of the form
-	 *   [ 'consequence name' => [ IDs of the filter to take its parameters from ] ]
-	 *   Such IDs may be more than one if we have a warning that is shown twice.
+	 *   - an array with the IDs of the filters to be created (listed in self::$filters),
+	 *   - an array with details of the action to execute in order to trigger the filters,
+	 *   - an array of expected consequences of the form
+	 *       [ 'consequence name' => [ IDs of the filter to take its parameters from ] ]
+	 *       Such IDs may be more than one if we have a warning that is shown twice.
+	 *   - an array with further options for testing
 	 *
 	 * @return array
 	 */
@@ -647,7 +705,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					'newText' => 'I like foo',
 					'summary' => 'Test AbuseFilter for edit action.'
 				],
-				[ 'warn'  => [ 1 ] ]
+				[ 'warn'  => [ 1 ] ],
+				[]
 			],
 			[
 				'Basic test for "move" action.',
@@ -657,7 +716,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					'Test page',
 					'newTitle' => 'Another test page'
 				],
-				[ 'disallow'  => [ 2 ], 'block' => [ 2 ] ]
+				[ 'disallow'  => [ 2 ], 'block' => [ 2 ] ],
+				[]
 			],
 			[
 				'Basic test for "delete" action.',
@@ -666,7 +726,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					'delete',
 					'Test page'
 				],
-				[ 'degroup' => [ 3 ] ]
+				[ 'degroup' => [ 3 ] ],
+				[]
 			],
 			[
 				'Basic test for "createaccount" action.',
@@ -676,6 +737,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					null,
 					'username' => 'AnotherUser'
 				],
+				[],
 				[]
 			],
 			[
@@ -688,7 +750,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					'newText' => 'I am a very nice user, really!',
 					'summary' => ''
 				],
-				[ 'tag' => [ 5 ] ]
+				[ 'tag' => [ 5 ] ],
+				[]
 			],
 			[
 				'Test to check that the edit is disallowed.',
@@ -700,7 +763,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					'newText' => 'Some help for you',
 					'summary' => 'Help! I need somebody'
 				],
-				[ 'disallow' => [ 6 ] ]
+				[ 'disallow' => [ 6 ] ],
+				[]
 			],
 			[
 				'Test to check that degroup and block are executed together.',
@@ -712,7 +776,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					'newText' => 'A link is something like this: [[Link|]].',
 					'summary' => 'Explaining'
 				],
-				[ 'degroup' => [ 7 ], 'block' => [ 8 ] ]
+				[ 'degroup' => [ 7 ], 'block' => [ 8 ] ],
+				[]
 			],
 			[
 				'Test to check that the block duration is the longest one.',
@@ -724,7 +789,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					'newText' => 'Whatever is whatever, whatever it is. BTW, here is a [[Link|]]',
 					'summary' => 'Whatever'
 				],
-				[ 'disallow' => [ 8 ], 'block' => [ 8 ] ]
+				[ 'disallow' => [ 8 ], 'block' => [ 8 ] ],
+				[]
 			],
 			[
 				'Test to check that throttled filters only execute "safe" actions.',
@@ -736,7 +802,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					'newText' => 'Buffalo buffalo Buffalo buffalo buffalo buffalo Buffalo buffalo.',
 					'summary' => 'Buffalo!'
 				],
-				[ 'tag' => [ 10 ] ]
+				[ 'tag' => [ 10 ] ],
+				[]
 			],
 			[
 				'Test to see that throttling works well.',
@@ -744,13 +811,13 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[
 					'edit',
 					'Throttle',
-					'makeGoodEditFirst',
 					'oldText' => 'What is throttle?',
 					'firstNewText' => 'Throttle is something that should happen...',
 					'secondNewText' => '... Right now!',
 					'summary' => 'Throttle'
 				],
-				[ 'throttle' => [ 11 ], 'disallow' => [ 11 ] ]
+				[ 'throttle' => [ 11 ], 'disallow' => [ 11 ] ],
+				[ 'makeGoodEditFirst' ]
 			],
 			[
 				'Test to check that degroup and block are both executed and degroup warning is shown twice.',
@@ -762,7 +829,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					'newText' => 'A couple of lines about me...',
 					'summary' => 'My user page'
 				],
-				[ 'block' => [ 12 ], 'degroup' => [ 7, 12 ] ]
+				[ 'block' => [ 12 ], 'degroup' => [ 7, 12 ] ],
+				[]
 			],
 			[
 				'Test to check that every throttled filter only executes "safe" actions.',
@@ -774,7 +842,60 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					'newText' => 'What immortal hand or eye',
 					'summary' => 'Could frame thy fearful symmetry?'
 				],
-				[ 'tag' => [ 10 ] ]
+				[ 'tag' => [ 10 ] ],
+				[]
+			],
+			[
+				'Test to check that runtime exceptions (division by zero) are correctly handled.',
+				[ 14 ],
+				[
+					'edit',
+					'0',
+					'oldText' => 'Old text',
+					'newText' => 'New text',
+					'summary' => 'Some summary'
+				],
+				[],
+				[]
+			],
+			[
+				'Test to check that the conditions limit works.',
+				[ 8, 10 ],
+				[
+					'edit',
+					'Anything',
+					'oldText' => 'Bar',
+					'newText' => 'Foo',
+					'summary' => ''
+				],
+				[],
+				[ 'hitCondsLimit' ]
+			],
+			[
+				'Test slow executions.',
+				[ 7, 12 ],
+				[
+					'edit',
+					'Something',
+					'oldText' => 'Please allow me',
+					'newText' => 'to introduce myself',
+					'summary' => ''
+				],
+				[ 'degroup' => [ 7 ] ],
+				[ 'hitTimeLimit' ]
+			],
+			[
+				'Test throttling a dangerous filter.',
+				[ 13 ],
+				[
+					'edit',
+					'My page',
+					'oldText' => '',
+					'newText' => 'AbuseFilter will not block me',
+					'summary' => ''
+				],
+				[],
+				[ 'hitThrottleLimit' ]
 			],
 		];
 	}
