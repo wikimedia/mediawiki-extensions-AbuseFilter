@@ -3,6 +3,7 @@
 ("1234" like "12?4") &
 ("1234" like "12*") &
 ("foo" in "foobar") &
+("foobar" contains "foo") &
 ("o" in ["foo", "bar"]) &
 ("foo" regex "\w+") &
 ("a\b" regex "a\\\\b") &

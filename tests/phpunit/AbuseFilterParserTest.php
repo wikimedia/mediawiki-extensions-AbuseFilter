@@ -35,7 +35,10 @@
  * @covers AbuseFilterTokenizer
  * @covers AFPToken
  * @covers AFPUserVisibleException
+ * @covers AFPException
  * @covers AFPData
+ * @covers AbuseFilterVariableHolder
+ * @covers AFComputedVariable
  */
 class AbuseFilterParserTest extends MediaWikiTestCase {
 	/**

@@ -11,4 +11,5 @@ j := [1];
 k := ['1'];
 l := [];
 
-a == b & a === b & a != c & b != d & a == e & a !== e & f == g & f !== g & h == i & h !== i & e != i & j != 1 & k != '1' & l == false & l == null
+a == b & a === b & a != c & b != d & a == e & a !== e & f == g & f !== g & h == i & h !== i & e != i & j != 1 &
+k != '1' & l == false & l == null & l !== false & l !== null & false == l & null == l & false !== l & null !== l

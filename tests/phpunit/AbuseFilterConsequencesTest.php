@@ -35,6 +35,8 @@
  * @covers AFPData
  * @covers AbuseFilterTokenizer
  * @covers AFPToken
+ * @covers AbuseFilterVariableHolder
+ * @covers AFComputedVariable
  */
 class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	protected static $mUser;
@@ -763,7 +765,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[ 'block' => [ 12 ], 'degroup' => [ 7, 12 ] ]
 			],
 			[
-				'Test to check that every throttled filter only execute "safe" actions.',
+				'Test to check that every throttled filter only executes "safe" actions.',
 				[ 10, 13 ],
 				[
 					'edit',
