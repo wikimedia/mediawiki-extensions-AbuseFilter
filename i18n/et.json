@@ -295,6 +295,7 @@
 	"abusefilter-edit-builder-vars-page-id": "Lehekülje ID",
 	"abusefilter-edit-builder-vars-page-ns": "Lehekülje nimeruum",
 	"abusefilter-edit-builder-vars-page-title": "Lehekülje pealkiri (nimeruumita)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Lehekülje kogupealkiri",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Teisaldamise lähtelehekülje ID",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Teisaldamise lähtelehekülje nimeruum",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Teisaldamise lähtelehekülje pealkiri",

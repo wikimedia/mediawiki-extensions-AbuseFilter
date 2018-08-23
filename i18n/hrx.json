@@ -212,6 +212,7 @@
 	"abusefilter-edit-builder-vars-page-id": "Seitekennnummer",
 	"abusefilter-edit-builder-vars-page-ns": "Noomeraum von der Seit",
 	"abusefilter-edit-builder-vars-page-title": "Titel von der Seit (ohne Noomeraum)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Voller Seitenoome",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Seite-ID von der Quellseit",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Noomeraum von der Quellseit",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Titel von der Quellseit",

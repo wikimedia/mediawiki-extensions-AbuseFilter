@@ -226,6 +226,7 @@
 	"abusefilter-edit-builder-vars-page-id": "ID-ja e faqes",
 	"abusefilter-edit-builder-vars-page-ns": "Hapsira (namespace) e faqes",
 	"abusefilter-edit-builder-vars-page-title": "Titulli i faqes (pa hapsirë - namespace)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Titulli i plotë i faqes",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID faqja e burimit lëvizës të faqes",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Hapësira e burimit lëvizës të faqes",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Titulli i faqes burimore lëvizëse",

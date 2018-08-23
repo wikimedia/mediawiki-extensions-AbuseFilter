@@ -215,6 +215,7 @@
 	"abusefilter-edit-builder-vars-page-id": "هويه الصفحة",
 	"abusefilter-edit-builder-vars-page-ns": "نطاق الصفحة",
 	"abusefilter-edit-builder-vars-page-title": "عنوان الصفحه (بدون نطاق)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "عنوان الصفحه الكامل",
 	"abusefilter-edit-builder-vars-movedfrom-id": "هويه الصفحه لنقل صفحه المصدر",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "نطاق الصفحه المصدر للنقل",
 	"abusefilter-edit-builder-vars-movedfrom-title": "عنوان الصفحه المصدر للنقل",

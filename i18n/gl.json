@@ -291,6 +291,7 @@
 	"abusefilter-edit-builder-vars-page-id": "ID da páxina",
 	"abusefilter-edit-builder-vars-page-ns": "Espazo de nomes da páxina",
 	"abusefilter-edit-builder-vars-page-title": "Título da páxina (sen o espazo de nomes)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Título completo da páxina",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID da páxina que vai ser movida",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Espazo de nomes da páxina que non vai ser movida",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Título da páxina que vai ser movida",

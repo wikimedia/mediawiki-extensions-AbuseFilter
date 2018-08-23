@@ -318,6 +318,7 @@
 	"abusefilter-edit-builder-vars-page-id": "Ідентифікатор сторінки",
 	"abusefilter-edit-builder-vars-page-ns": "Простір назв сторінки",
 	"abusefilter-edit-builder-vars-page-title": "Назва сторінки (без простору назв)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Повна назва сторінки",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Ідентифікатор сторінки, що перейменовується",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Простір назв сторінки, що перейменовується",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Назва сторінки, що перейменовується",

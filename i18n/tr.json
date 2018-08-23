@@ -16,7 +16,8 @@
 			"Ömer Berkay",
 			"Matma Rex",
 			"Diyapazon",
-			"Hedda"
+			"Hedda",
+			"Rapsar"
 		]
 	},
 	"abusefilter-desc": "Değişikliklere otomatik bulucu yöntemler uygular",
@@ -80,6 +81,7 @@
 	"abusefilter-log-details-diff": "Düzenleme yapılan değişiklikler",
 	"abusefilter-log-linkoncontribs": "kötüye kullanım günlüğü",
 	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|Bu kullanıcı}} için kötüye kullanım günlüğü",
+	"abusefilter-log-linkonhistory": "istismar günlüğünü görüntüle",
 	"abusefilter-log-hidden": "(gizli girdi)",
 	"abusefilter-log-hidden-implicit": "(gizlendi çünkü revizyon silindi)",
 	"abusefilter-log-cannot-see-details": "Bu giriş detaylarını görebilmek için izniniz yok.",
@@ -258,6 +260,7 @@
 	"abusefilter-edit-builder-vars-page-id": "Sayfa IDsi",
 	"abusefilter-edit-builder-vars-page-ns": "Sayfa ad alanı",
 	"abusefilter-edit-builder-vars-page-title": "Sayfa başlığı (ad alanı olmadan)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Tam sayfa başlığı",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Kaynak taşıma sayfasının sayfa IDsi",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Kaynak taşıma sayfasının ad alanı",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Kaynak taşıma sayfası başlığı",

@@ -235,6 +235,7 @@
 	"abusefilter-edit-builder-vars-page-id": "Syten-ID",
 	"abusefilter-edit-builder-vars-page-ns": "Namensruum vu dr Syte",
 	"abusefilter-edit-builder-vars-page-title": "Titel vu dr Syte (ohni Namensruum)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Voller Sytename",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Artikel-ID vu dr Quällsyte",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Namensruum vu dr Quällsyte",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Titel vu dr Quällsyte",

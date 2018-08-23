@@ -252,6 +252,7 @@
 	"abusefilter-edit-builder-vars-page-id": "ID pagină",
 	"abusefilter-edit-builder-vars-page-ns": "Spațiul de nume al paginii",
 	"abusefilter-edit-builder-vars-page-title": "Titlul paginii (fără spațiu de nume)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Titlul complet al paginii",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID-ul paginii sursă de redenumit",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Spațiul de nume al paginii sursă de redenumit",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Titlul paginii sursă de redenumit",

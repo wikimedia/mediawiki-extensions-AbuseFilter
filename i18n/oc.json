@@ -248,6 +248,7 @@
 	"abusefilter-edit-builder-vars-page-id": "ID de la pagina",
 	"abusefilter-edit-builder-vars-page-ns": "Espaci de noms de la pagina",
 	"abusefilter-edit-builder-vars-page-title": "Títol de la pagina (sens lo nom de l’espaci)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Títol complet de la pagina",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID de la pagina d’origina del cambiament de nom",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Nom d’espaci de nomenatge del cambiament de nom de la pagina d’origina.",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Títol del desplaçament de la pagina d’origina",

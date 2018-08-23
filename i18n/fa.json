@@ -327,6 +327,7 @@
 	"abusefilter-edit-builder-vars-page-id": "شناسهٔ صفحه",
 	"abusefilter-edit-builder-vars-page-ns": "فضای نام صفحه",
 	"abusefilter-edit-builder-vars-page-title": "عنوان صفحه (بدون فضای نام)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "عنوان کامل صفحه",
 	"abusefilter-edit-builder-vars-movedfrom-id": "شناسهٔ صفحهٔ مبدأ انتقال",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "فضای نام صفحهٔ مبدأ انتقال",
 	"abusefilter-edit-builder-vars-movedfrom-title": "عنوان صفحهٔ مبدأ انتقال",

@@ -166,6 +166,7 @@
 	"abusefilter-edit-builder-vars-summary": "Aldaketaren laburpena edo arrazoia",
 	"abusefilter-edit-builder-vars-page-id": "Orriaren IDa",
 	"abusefilter-edit-builder-vars-page-ns": "Orri izen-tartea",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Orrialdearen izenburu osoa",
 	"abusefilter-edit-builder-vars-user-editcount": "Erabiltzailearen edizioen kontagailua",
 	"abusefilter-edit-builder-vars-user-age": "Lankide kontuaren adina",
 	"abusefilter-edit-builder-vars-user-name": "Lankide kontuaren izena",

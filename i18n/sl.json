@@ -283,6 +283,7 @@
 	"abusefilter-edit-builder-vars-page-id": "ID strani",
 	"abusefilter-edit-builder-vars-page-ns": "Imenski prostor strani",
 	"abusefilter-edit-builder-vars-page-title": "Naslov strani (brez imenskega prostora)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Polni naslov strani",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID izvorne strani prestavljanja",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Imenski prostor izvorne strani prestavljanja",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Naslov izvorne strani prestavljanja",

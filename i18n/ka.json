@@ -254,6 +254,7 @@
 	"abusefilter-edit-builder-vars-page-id": "გვერდის ID",
 	"abusefilter-edit-builder-vars-page-ns": "გვერდის სახელთა სივრცე",
 	"abusefilter-edit-builder-vars-page-title": "გვერდის სახელი (სახელთა სივრცეების გარეშე)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "გვერდის სრული სახელი",
 	"abusefilter-edit-builder-vars-movedfrom-id": "გადასატაქნი გვერდის ID",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "გადასატანი გვერდის სახელთა სივრცე",
 	"abusefilter-edit-builder-vars-movedfrom-title": "გადასატანი გვერდის სახელწოდენა",

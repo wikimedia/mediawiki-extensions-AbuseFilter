@@ -246,6 +246,7 @@
 	"abusefilter-edit-builder-vars-page-id": "ID stranice",
 	"abusefilter-edit-builder-vars-page-ns": "Imenski prostor stranice",
 	"abusefilter-edit-builder-vars-page-title": "Naslov stanice (without namespace)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Puni naslov stranice",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID preusmjerene izvorne stranice",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Imenski prostor izvorne stranice",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Naslov premještene izvorne stranice",

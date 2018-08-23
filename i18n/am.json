@@ -61,6 +61,7 @@
 	"abusefilter-edit-builder-vars-summary": "ማጠቃልያ / ምክንያት",
 	"abusefilter-edit-builder-vars-page-id": "የገጽ መታወቂያ",
 	"abusefilter-edit-builder-vars-page-ns": "የገጽ ክፍለ-ዊኪ",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "የገጽ ሙሉ አርዕስት",
 	"abusefilter-history-foruser": "የ$1 ለውጦች",
 	"abusefilter-history-hidden": "የተደበቀ",
 	"abusefilter-history-timestamp": "ጊዜ",

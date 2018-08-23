@@ -299,6 +299,7 @@
 	"abusefilter-edit-builder-vars-page-id": "Sivun tunnistenumero",
 	"abusefilter-edit-builder-vars-page-ns": "Sivun nimiavaruus",
 	"abusefilter-edit-builder-vars-page-title": "Sivun nimi (ilman nimiavaruutta)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Sivun koko nimi",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Siirron lähdesivun tunnistenumero",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Siirron lähdesivun nimiavaruus",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Siirron lähdesivun nimi",

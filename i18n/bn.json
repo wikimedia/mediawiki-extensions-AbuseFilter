@@ -200,6 +200,7 @@
 	"abusefilter-edit-builder-vars-page-id": "পাতার আইডি",
 	"abusefilter-edit-builder-vars-page-ns": "পাতার নামস্থান",
 	"abusefilter-edit-builder-vars-page-title": "পাতার শিরোনাম (নামস্থান ছাড়া)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "পাতার পুরো শিরোনাম",
 	"abusefilter-edit-builder-vars-movedfrom-id": "সরিয়ে নেওয়া পাতার উৎস পাতার আইডি",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "সরিয়ে নেওয়া পাতার উৎস পাতার নামস্থান",
 	"abusefilter-edit-builder-vars-movedfrom-title": "সরিয়ে নেওয়া পাতার উৎস পাতার শিরোনাম",

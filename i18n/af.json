@@ -189,6 +189,7 @@
 	"abusefilter-edit-builder-vars-page-id": "Bladsy-ID",
 	"abusefilter-edit-builder-vars-page-ns": "Bladsy se naamruimte",
 	"abusefilter-edit-builder-vars-page-title": "Blaadsynaam (sonder naamruimte)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Volledige bladsynaam",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Page ID beweging bron bladsy",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Naamruimte van die skuif bron bladsy",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Titel beweging bron bladsy",

@@ -273,6 +273,7 @@
 	"abusefilter-edit-builder-vars-page-id": "ID stránky",
 	"abusefilter-edit-builder-vars-page-ns": "Menný priestor stránky",
 	"abusefilter-edit-builder-vars-page-title": "Názov stránky (bez menného priestoru)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Úplný názov stránky",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID presúvanej stránky",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Menný priestor presúvanej stránky",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Názov presúvanej stránky",

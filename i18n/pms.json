@@ -237,6 +237,7 @@
 	"abusefilter-edit-builder-vars-page-id": "Identificativ ëd la pàgina",
 	"abusefilter-edit-builder-vars-page-ns": "Spassi nominal ëd la pàgina",
 	"abusefilter-edit-builder-vars-page-title": "Tìtol ëd la pàgina (sensa spassi nominal)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Tìtol complet ëd la pàgina",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Identificativ ëd la pàgina sorgiss da tramudé",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Spassi nominal ëd la pàgina sorgiss da tramudé",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Tìtol ëd la pàgina sorgiss da tramudé",

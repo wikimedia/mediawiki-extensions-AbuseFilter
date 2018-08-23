@@ -324,6 +324,7 @@
 	"abusefilter-edit-builder-vars-page-id": "מספר הדף",
 	"abusefilter-edit-builder-vars-page-ns": "מרחב השם של הדף",
 	"abusefilter-edit-builder-vars-page-title": "שם הדף (ללא מרחב השם)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "שם הדף המלא",
 	"abusefilter-edit-builder-vars-movedfrom-id": "המספר המזהה (ID) של דף המקור בהעברה",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "מרחב השם של דף המקור בהעברה",
 	"abusefilter-edit-builder-vars-movedfrom-title": "שם דף המקור בהעברה",

@@ -271,6 +271,7 @@
 	"abusefilter-edit-builder-vars-page-id": "ID d'a pàgene",
 	"abusefilter-edit-builder-vars-page-ns": "Namespace d'a pàgene",
 	"abusefilter-edit-builder-vars-page-title": "Nome d'a pagene (senze namespace)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Titele comblete d'a pàgene",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Pagene ID pè mòvere 'a pagene de origgene",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Namespace pè mòvere 'a pagene de origgene",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Titole pè mòvere 'a pagene de origgene",

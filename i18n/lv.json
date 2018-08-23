@@ -242,6 +242,7 @@
 	"abusefilter-edit-builder-vars-page-id": "Lapas ID",
 	"abusefilter-edit-builder-vars-page-ns": "Lapas vārdtelpa",
 	"abusefilter-edit-builder-vars-page-title": "Lapas nosaukums (bez vārdtelpas)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Pilns lapas nosaukums",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Pārvietojamās lapas ID",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Pārvietojamās lapas vārdtelpa",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Pārvietojamās lapas nosaukums",

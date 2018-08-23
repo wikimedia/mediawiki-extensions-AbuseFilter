@@ -264,6 +264,7 @@
 	"abusefilter-edit-builder-vars-page-id": "oldalazonosító",
 	"abusefilter-edit-builder-vars-page-ns": "lap névtere",
 	"abusefilter-edit-builder-vars-page-title": "lap címe (névtér nélkül)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "a lap teljes címe",
 	"abusefilter-edit-builder-vars-movedfrom-id": "átnevezésnél a forráslap azonosítója",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "átnevezésnél a forráslap névtere",
 	"abusefilter-edit-builder-vars-movedfrom-title": "átnevezésnél a forráslap címe",

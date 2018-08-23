@@ -240,6 +240,7 @@
 	"abusefilter-edit-builder-vars-page-id": "ID strony",
 	"abusefilter-edit-builder-vars-page-ns": "Mjenjowy rum strony",
 	"abusefilter-edit-builder-vars-page-title": "Titul strony (bjez mjenoweho ruma)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Dospołne mjeno strony",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID strony žórłoweje strony",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Mjenowy rum žórłoweje strony",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Titul žórłoweje strony",

@@ -227,6 +227,7 @@
 	"abusefilter-edit-builder-vars-page-id": "ID de la pàxena",
 	"abusefilter-edit-builder-vars-page-ns": "Namespace de la pàxena",
 	"abusefilter-edit-builder-vars-page-title": "Tìtolo de la pàxena (sensa namespace)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Tìtolo de la pàxena par intiero",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID de la pagina origine del spostamento",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Namespace de la pagina origine del spostamento",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Titolo de la pagina origine del spostamento",

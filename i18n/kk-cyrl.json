@@ -185,6 +185,7 @@
 	"abusefilter-edit-builder-vars-page-id": "Бет ID-і",
 	"abusefilter-edit-builder-vars-page-ns": "Бет атау кеңістігі",
 	"abusefilter-edit-builder-vars-page-title": "Беті аты (атау кеңістігінсіз)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Толық бет атауы",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Жылжытылған қайнар бетінің бет ID-і",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Жылжытылған қайнар бетінің атау кеңістігі",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Жылжытылған қайнар бетінің атауы",

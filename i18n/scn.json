@@ -241,6 +241,7 @@
 	"abusefilter-edit-builder-vars-page-id": "ID dâ pàggina",
 	"abusefilter-edit-builder-vars-page-ns": "Namespace dâ pàggina",
 	"abusefilter-edit-builder-vars-page-title": "Tìtulu dâ pàggina (senza namespace)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Tìtulu cumpletu dâ pàggina",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID dâ pàggina orìggini dû spustamentu",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Namespace dâ pàggina orìggini dû spustamentu",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Tìtulu dâ pàggina orìggini dû spustamentu",

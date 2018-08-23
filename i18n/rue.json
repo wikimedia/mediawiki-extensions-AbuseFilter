@@ -234,6 +234,7 @@
 	"abusefilter-edit-builder-vars-page-id": "ID сторінкы",
 	"abusefilter-edit-builder-vars-page-ns": "Простор назв сторінкы",
 	"abusefilter-edit-builder-vars-page-title": "Назва сторінкы (без простору назв)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Повна назва сторінкы",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID переменованой сторінкы",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Простор назв сторінкы што ся переменовавать",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Назва переменованой жрідловой сторінкы",

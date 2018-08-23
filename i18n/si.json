@@ -225,6 +225,7 @@
 	"abusefilter-edit-builder-vars-page-id": "පිටු හැඳුනුම",
 	"abusefilter-edit-builder-vars-page-ns": "පිටු නාමඅවකාශය",
 	"abusefilter-edit-builder-vars-page-title": "පිටුවේ මාතෘකාව (නාමඅවකාශයක් නොමැතිව)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "සම්පූර්ණ පිටු නාමය",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ගෙනයාම් මූලාශ්‍ර පිටුවේ පිටු හැඳුනුම",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "ගෙනයාම් මූලාශ්‍ර පිටුවේ නාමඅවකාශය",
 	"abusefilter-edit-builder-vars-movedfrom-title": "ගෙනයාම් මූලාශ්‍ර පිටුවේ මාතෘකාව",

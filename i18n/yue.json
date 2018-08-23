@@ -221,6 +221,7 @@
 	"abusefilter-edit-builder-vars-page-id": "頁ID",
 	"abusefilter-edit-builder-vars-page-ns": "頁空間名",
 	"abusefilter-edit-builder-vars-page-title": "頁名 (無空間名)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "完整頁標題",
 	"abusefilter-edit-builder-vars-movedfrom-id": "移動來源頁ID",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "移動來源頁空間名",
 	"abusefilter-edit-builder-vars-movedfrom-title": "移動來源頁標題",

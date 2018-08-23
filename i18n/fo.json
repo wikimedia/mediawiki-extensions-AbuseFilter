@@ -152,6 +152,7 @@
 	"abusefilter-edit-builder-vars-page-id": "Síðu ID",
 	"abusefilter-edit-builder-vars-page-ns": "Navnarúmið hjá síðuni",
 	"abusefilter-edit-builder-vars-page-title": "Síðuheiti (uttan navnarúm)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Alt síðuheitið",
 	"abusefilter-edit-builder-vars-user-editcount": "Tal av rættingum hjá brúkara",
 	"abusefilter-edit-builder-vars-user-age": "Kontoaldur",
 	"abusefilter-edit-builder-vars-user-name": "Navn á brúkarakonto",

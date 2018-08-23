@@ -248,6 +248,7 @@
 	"abusefilter-edit-builder-vars-page-id": "Paĝa identigo",
 	"abusefilter-edit-builder-vars-page-ns": "Paĝa nomspaco",
 	"abusefilter-edit-builder-vars-page-title": "Paĝa titolo (sen nomspaco)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Plena paĝa titolo",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Paĝa identigo de movota fonta paĝo",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Nomspaco de movada fontpaĝo",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Titolo de mova fonta paĝo",

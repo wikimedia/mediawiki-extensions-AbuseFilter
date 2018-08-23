@@ -300,6 +300,7 @@
 	"abusefilter-edit-builder-vars-page-id": "Pagina-ID",
 	"abusefilter-edit-builder-vars-page-ns": "Paginanaamruimte",
 	"abusefilter-edit-builder-vars-page-title": "Paginanaam (zonder naamruimte)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Volledige paginanaam",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Pagina-ID van de te hernoemen pagina",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Naamruimte van de te verplaatsen pagina",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Naam van de te verplaatsen pagina",

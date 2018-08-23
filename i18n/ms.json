@@ -247,6 +247,7 @@
 	"abusefilter-edit-builder-vars-page-id": "ID laman",
 	"abusefilter-edit-builder-vars-page-ns": "Ruang nama laman",
 	"abusefilter-edit-builder-vars-page-title": "Tajuk laman (tanpa ruang nama)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Tajuk penuh laman",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID laman sumber",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Ruang nama laman sumber",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Tajuk laman sumber",

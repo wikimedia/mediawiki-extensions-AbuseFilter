@@ -355,6 +355,7 @@
 	"abusefilter-edit-builder-vars-page-id": "页面编号",
 	"abusefilter-edit-builder-vars-page-ns": "页面名字空间",
 	"abusefilter-edit-builder-vars-page-title": "页面标题（不含名字空间）",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "完整页面标题",
 	"abusefilter-edit-builder-vars-movedfrom-id": "移动源页面的页面编号",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "移动源页面的名字空间",
 	"abusefilter-edit-builder-vars-movedfrom-title": "移动源页面的标题",

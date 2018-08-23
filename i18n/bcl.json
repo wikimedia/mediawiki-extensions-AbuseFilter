@@ -241,6 +241,7 @@
 	"abusefilter-edit-builder-vars-page-id": "ID kan pahina",
 	"abusefilter-edit-builder-vars-page-ns": "Pangarang espasyo kan pahina",
 	"abusefilter-edit-builder-vars-page-title": "Titulo kan Pahina (mayong pangarang espasyo)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Titulo kan Kabilogan nin pahina",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID kan pahina nin pagbalyo sa ginikanang pahina",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Espasyong-pangaran nin pagbalyo kan ginikanan",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Titulo kan pagbalyo sa ginikanang pahina",

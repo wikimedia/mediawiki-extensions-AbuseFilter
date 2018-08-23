@@ -230,6 +230,7 @@
 	"abusefilter-edit-builder-vars-page-id": "ID tal-paġna",
 	"abusefilter-edit-builder-vars-page-ns": "Spazju tal-ismijiet tal-paġna",
 	"abusefilter-edit-builder-vars-page-title": "Titlu tal-paġna (mingħajr spazju tal-ismijiet)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Isem sħiħ tal-paġna",
 	"abusefilter-edit-builder-vars-movedfrom-id": "ID tal-paġna oriġinali tat-tmexxija",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Spazju tal-ismijiet tal-paġna oriġinali tat-tmexxija",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Titlu tal-paġna oriġinali tat-tmexxija",

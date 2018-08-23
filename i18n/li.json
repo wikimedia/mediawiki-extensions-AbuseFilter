@@ -237,6 +237,7 @@
 	"abusefilter-edit-builder-vars-page-id": "Paasj ID",
 	"abusefilter-edit-builder-vars-page-ns": "Paasjnaomruumde",
 	"abusefilter-edit-builder-vars-page-title": "Paasjnaom (zónger naamruumde)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Ganse paasjnaom",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Pagina-ID venne verplaatsbere naam",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Naamruumdje venne verplaatsbere paasj",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Naom venne verplaatsber paasj",

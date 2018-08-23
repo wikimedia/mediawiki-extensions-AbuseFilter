@@ -243,6 +243,7 @@
 	"abusefilter-edit-builder-vars-page-id": "पान क्रमांक (पेज आयडी)",
 	"abusefilter-edit-builder-vars-page-ns": "पान नामविश्व",
 	"abusefilter-edit-builder-vars-page-title": "पानाचे शीर्षक (नामविश्वा शिवाय)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "पानाचे पूर्ण नाव",
 	"abusefilter-edit-builder-vars-movedfrom-id": "स्थानांतराचे स्रोत पानाची पान ओळखण",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "स्थानांतराच्या स्रोत पानाचे नामविश्व",
 	"abusefilter-edit-builder-vars-movedfrom-title": "स्थानांतराच्या स्रोत पानाचे शीर्षक",
