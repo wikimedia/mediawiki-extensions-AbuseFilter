@@ -2104,17 +2104,26 @@ class AbuseFilter {
 	public static function getAceConfig( $canEdit ) {
 		$values = self::getBuilderValues();
 		$deprecatedVars = self::getDeprecatedVariables();
-		$builderVariables = implode( '|',
-			array_keys( array_merge( $values['vars'], $deprecatedVars ) ) );
+
+		$builderVariables = implode( '|', array_keys( $values['vars'] ) );
 		$builderFunctions = implode( '|', array_keys( AbuseFilterParser::$mFunctions ) );
 		// AbuseFilterTokenizer::$keywords also includes constants (true, false and null),
 		// but Ace redefines these constants afterwards so this will not be an issue
 		$builderKeywords = implode( '|', AbuseFilterTokenizer::$keywords );
+		// Extract operators from tokenizer like we do in AbuseFilterParserTest
+		$operators = implode( '|', array_map( function ( $op ) {
+			return preg_quote( $op, '/' );
+		}, AbuseFilterTokenizer::$operators ) );
+		$deprecatedVariables = implode( '|', array_keys( $deprecatedVars ) );
+		$disabledVariables = implode( '|', array_keys( self::$disabledVars ) );
 
 		return [
 			'variables' => $builderVariables,
 			'functions' => $builderFunctions,
 			'keywords' => $builderKeywords,
+			'operators' => $operators,
+			'deprecated' => $deprecatedVariables,
+			'disabled' => $disabledVariables,
 			'aceReadOnly' => !$canEdit
 		];
 	}

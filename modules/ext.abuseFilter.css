@@ -152,3 +152,14 @@ ul li.mw-abusefilter-changeslist-match {
 .mw-abusefilter-history-buttons {
 	text-align: center;
 }
+
+/* Ace highlight customisation */
+
+span.ace_invalid.ace_deprecated {
+	color: #fe6767;
+	background-color: initial;
+}
+
+span.ace_support.ace_function {
+	color: #495dd0;
+}
