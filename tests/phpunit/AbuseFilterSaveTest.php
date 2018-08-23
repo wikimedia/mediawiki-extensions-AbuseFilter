@@ -30,6 +30,7 @@
  *
  * @covers AbuseFilter
  * @covers AbuseFilterViewEdit
+ * @covers AbuseFilterParser
  */
 class AbuseFilterSaveTest extends MediaWikiTestCase {
 	protected static $mUser, $mParameters;
