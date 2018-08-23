@@ -89,7 +89,7 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 
 			$resultFile = $testName . '.r';
 			$rule = trim( file_get_contents( $testFile ) );
-			$result = trim( file_get_contents( $resultFile ) ) == 'MATCH';
+			$result = trim( file_get_contents( $resultFile ) ) === 'MATCH';
 
 			$tests[] = [
 				basename( $testName ),
@@ -99,6 +99,34 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 		}
 
 		return $tests;
+	}
+
+	/**
+	 * Test expression evaluation
+	 *
+	 * @dataProvider provideExpressions
+	 */
+	public function testEvaluateExpression( $expr, $expected ) {
+		foreach ( self::getParsers() as $parser ) {
+			$actual = $parser->evaluateExpression( $expr );
+			$this->assertEquals( $expected, $actual );
+		}
+	}
+
+	/**
+	 * Data provider for testEvaluateExpression
+	 *
+	 * @return array
+	 */
+	public function provideExpressions() {
+		return [
+			[ '1 === 1', true ],
+			[ 'rescape( "abc* (def)" )', 'abc\* \(def\)' ],
+			[ 'str_replace( "foobarbaz", "bar", "-" )', 'foo-baz' ],
+			[ 'rmdoubles( "foobybboo" )', 'fobybo' ],
+			[ 'lcase("FÁmí")', 'fámí' ],
+			[ 'substr( "foobar", 0, 3 )', 'foo' ]
+		];
 	}
 
 	/**
