@@ -111,14 +111,6 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * @param string $name
-	 * @param mixed $value
-	 */
-	public function setVar( $name, $value ) {
-		$this->mVars->setVar( $name, $value );
-	}
-
-	/**
 	 * Move to the next token
 	 */
 	protected function move() {
