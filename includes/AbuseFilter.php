@@ -1162,7 +1162,7 @@ class AbuseFilter {
 		$vars->addHolders( self::generateStaticVars() );
 
 		$vars->forFilter = true;
-		$vars->setVar( 'timestamp', time() );
+		$vars->setVar( 'timestamp', (int)wfTimestamp( TS_UNIX ) );
 
 		// Get the stash key based on the relevant "input" variables
 		$cache = ObjectCache::getLocalClusterInstance();
@@ -2108,7 +2108,7 @@ class AbuseFilter {
 		$storage_period = self::$statsStoragePeriod;
 
 		if ( !$total || $total > $wgAbuseFilterProfileActionsCap ) {
-			// This is for if the total doesn't exist, or has gone past 10,000.
+			// This is for if the total doesn't exist, or has gone past the limit.
 			// Recreate all the keys at the same time, so they expire together.
 			$stash->set( $total_key, 0, $storage_period );
 			$stash->set( $overflow_key, 0, $storage_period );

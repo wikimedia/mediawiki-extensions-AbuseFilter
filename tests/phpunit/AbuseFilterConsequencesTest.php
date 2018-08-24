@@ -50,6 +50,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @var \MediaWiki\Session\Session The session object to use for edits
 	 */
 	private static $mEditSession;
+	/** To be used as fake timestamp in several tests */
+	const MAGIC_TIMESTAMP = 2051222400;
 
 	/**
 	 * @var array This tables will be deleted in parent::tearDown
@@ -238,7 +240,25 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			'actions' => [
 				'disallow' => []
 			]
-		]
+		],
+		17 => [
+			'af_pattern' => 'timestamp = "' . self::MAGIC_TIMESTAMP . '" | 3 = 2 | 1 = 4 | 5 = 7 | 6 = 3',
+			'af_comments' => 'This will normally consume 5 conditions, unless the timestamp is set to' .
+				'the magic value of self::MAGIC_TIMESTAMP.',
+			'af_public_comments' => 'Test with variable conditions',
+			'actions' => [
+				'tag' => [
+					'testTagProfiling'
+				]
+			]
+		],
+		18 => [
+			'af_pattern' => '1 === 1',
+			'af_public_comments' => 'Another catch-all',
+			'actions' => [
+				'tag' => [ 'lolTag' ]
+			]
+		],
 	];
 	// phpcs:enable Generic.Files.LineLength
 
@@ -1647,5 +1667,202 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			$finalSets[] = array_merge( [ 'hit' ], $set );
 		}
 		return $finalSets;
+	}
+
+	/**
+	 * Test filter profiling, both for total and per-filter stats. NOTE: This test performs several
+	 * actions for every test set, and is thus HEAVY.
+	 *
+	 * @param int[] $createIds IDs of the filters to create
+	 * @param array $actionParams Details of the action we need to execute to trigger filters
+	 * @param array $expectedGlobal Expected global stats
+	 * @param array $expectedPerFilter Expected stats for every created filter
+	 * @covers AbuseFilter::filterMatchesKey
+	 * @covers AbuseFilter::filterUsedKey
+	 * @covers AbuseFilter::filterLimitReachedKey
+	 * @covers AbuseFilter::getFilterProfile
+	 * @covers AbuseFilter::checkAllFilters
+	 * @covers AbuseFilter::recordStats
+	 * @covers AbuseFilter::checkEmergencyDisable
+	 * @dataProvider provideProfilingFilters
+	 */
+	public function testProfiling( $createIds, $actionParams, $expectedGlobal, $expectedPerFilter ) {
+		$this->setMwGlobals( [
+			'wgAbuseFilterConditionLimit' => $actionParams[ 'condsLimit' ]
+		] );
+		self::createFilters( $createIds );
+		for ( $i = 1; $i <= $actionParams['repeatAction'] - 1; $i++ ) {
+			// First make some other actions to increase stats
+			// @ToDo This doesn't works well with account creations
+			$this->doAction( $actionParams );
+			$actionParams['target'] .= $i;
+		}
+		// This is the magic value used by filter 16 to change the amount of used condition
+		MWTimestamp::setFakeTime( self::MAGIC_TIMESTAMP );
+		// We don't care about consequences here
+		$this->doAction( $actionParams );
+		MWTimestamp::setFakeTime( false );
+
+		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
+		// Global stats shown on the top of Special:AbuseFilter
+		$actualGlobalStats = [
+			'totalMatches' => $stash->get( AbuseFilter::filterMatchesKey() ),
+			'totalActions' => $stash->get( AbuseFilter::filterUsedKey( 'default' ) ),
+			'totalOverflows' => $stash->get( AbuseFilter::filterLimitReachedKey() )
+		];
+		$this->assertSame(
+			$expectedGlobal,
+			$actualGlobalStats,
+			'Global profiling stats are not computed correctly.'
+		);
+
+		// Per-filter stats shown on the top of Special:AbuseFilter/xxx
+		foreach ( $createIds as $id ) {
+			$actualStats = [
+				'matches' => $stash->get( AbuseFilter::filterMatchesKey( $id ) ),
+				'actions' => $stash->get( AbuseFilter::filterUsedKey( 'default' ) ),
+				'averageConditions' => AbuseFilter::getFilterProfile( $id )[1]
+			];
+			$this->assertSame(
+				$expectedPerFilter[ $id ],
+				$actualStats,
+				"Profiling stats are not computed correctly for filter $id."
+			);
+		}
+	}
+
+	/**
+	 * Data provider for testProfiling. We only want filters which let the edit pass, since
+	 * we'll perform multiple edits. How this test works: we repeat the action X times. For 1 to
+	 * X - 1, it would take 1 + 1 + 5 + 1 conditions, but it will overflow without checking filter
+	 * 18 (since the conds limit is 7). Then we perform the last execution using a trick that will
+	 * make filter 17 only consume 1 condition.
+	 *
+	 * @todo All these values should be more customizable, or just hardcoded in the test method.
+	 *
+	 * @return array
+	 */
+	public function provideProfilingFilters() {
+		return [
+			'Basic test for statistics recording on edit.' => [
+				[ 4, 5, 17, 18 ],
+				[
+					'action' => 'edit',
+					'target' => 'Some page',
+					'oldText' => 'Some old text',
+					'newText' => 'Some new text',
+					'summary' => 'Some summary',
+					'condsLimit' => 7,
+					'repeatAction' => 6
+				],
+				[
+					'totalMatches' => 6,
+					'totalActions' => 6,
+					'totalOverflows' => 5
+				],
+				[
+					4 => [
+						'matches' => 0,
+						'actions' => 6,
+						'averageConditions' => 1.0
+					],
+					5 => [
+						'matches' => 6,
+						'actions' => 6,
+						'averageConditions' => 1.0
+					],
+					17 => [
+						'matches' => 1,
+						'actions' => 6,
+						'averageConditions' => 4.0
+					],
+					18 => [
+						'matches' => 1,
+						'actions' => 6,
+						'averageConditions' => 1.0
+					],
+				]
+			],
+			'Test for statistics recording on a successfully stashed edit.' => [
+				[ 4, 5, 17, 18 ],
+				[
+					'action' => 'stashedit',
+					'target' => 'Some page',
+					'oldText' => 'Some old text',
+					'newText' => 'Some new text',
+					'summary' => 'Some summary',
+					'stashType' => 'hit',
+					'condsLimit' => 7,
+					'repeatAction' => 6
+				],
+				[
+					'totalMatches' => 6,
+					'totalActions' => 6,
+					'totalOverflows' => 5
+				],
+				[
+					4 => [
+						'matches' => 0,
+						'actions' => 6,
+						'averageConditions' => 1.0
+					],
+					5 => [
+						'matches' => 6,
+						'actions' => 6,
+						'averageConditions' => 1.0
+					],
+					17 => [
+						'matches' => 1,
+						'actions' => 6,
+						'averageConditions' => 4.0
+					],
+					18 => [
+						'matches' => 1,
+						'actions' => 6,
+						'averageConditions' => 1.0
+					],
+				]
+			],
+			'Test for statistics recording on an unsuccessfully stashed edit.' => [
+				[ 4, 5, 17, 18 ],
+				[
+					'action' => 'stashedit',
+					'target' => 'Some page',
+					'oldText' => 'Some old text',
+					'newText' => 'Some new text',
+					'summary' => 'Some summary',
+					'stashType' => 'miss',
+					'condsLimit' => 7,
+					'repeatAction' => 6
+				],
+				[
+					'totalMatches' => 6,
+					'totalActions' => 6,
+					'totalOverflows' => 5
+				],
+				[
+					4 => [
+						'matches' => 0,
+						'actions' => 6,
+						'averageConditions' => 1.0
+					],
+					5 => [
+						'matches' => 6,
+						'actions' => 6,
+						'averageConditions' => 1.0
+					],
+					17 => [
+						'matches' => 1,
+						'actions' => 6,
+						'averageConditions' => 4.0
+					],
+					18 => [
+						'matches' => 1,
+						'actions' => 6,
+						'averageConditions' => 1.0
+					],
+				]
+			]
+		];
 	}
 }
