@@ -151,7 +151,8 @@
 		"ApiAbuseFilterEvalExpression": "includes/api/ApiAbuseFilterEvalExpression.php",
 		"ApiAbuseFilterUnblockAutopromote": "includes/api/ApiAbuseFilterUnblockAutopromote.php",
 		"ApiAbuseFilterCheckMatch": "includes/api/ApiAbuseFilterCheckMatch.php",
-		"NormalizeThrottleParameters": "maintenance/normalizeThrottleParameters.php"
+		"NormalizeThrottleParameters": "maintenance/normalizeThrottleParameters.php",
+		"AbuseFilterConsequencesTest": "tests/phpunit/AbuseFilterConsequencesTest.php"
 	},
 	"ResourceModules": {
 		"ext.abuseFilter": {
@@ -246,7 +247,9 @@
 		"UploadStashFile": "AbuseFilterHooks::onUploadStashFile",
 		"PageContentSaveComplete": "AbuseFilterHooks::onPageContentSaveComplete",
 		"UserMergeAccountFields": "AbuseFilterHooks::onUserMergeAccountFields",
-		"ParserOutputStashForEdit": "AbuseFilterHooks::onParserOutputStashForEdit"
+		"ParserOutputStashForEdit": "AbuseFilterHooks::onParserOutputStashForEdit",
+		"UnitTestsAfterDatabaseSetup": "AbuseFilterHooks::onUnitTestsAfterDatabaseSetup",
+		"UnitTestsBeforeDatabaseTeardown": "AbuseFilterHooks::onUnitTestsBeforeDatabaseTeardown"
 	},
 	"config": {
 		"AbuseFilterActions": {
@@ -316,7 +319,7 @@
 		},
 		"AbuseFilterCentralDB": {
 			"value": null,
-			"description": "Name of a database where global abuse filters will be stored in"
+			"description": "Name of a database where global abuse filters will be stored in. To use a DB with prefixed tables, set this to \"{$databaseName}-{$prefix}\"."
 		},
 		"AbuseFilterIsCentral": {
 			"value": false,

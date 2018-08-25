@@ -52,6 +52,15 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	private static $mEditSession;
 	/** To be used as fake timestamp in several tests */
 	const MAGIC_TIMESTAMP = 2051222400;
+	/** Prefix for tables to emulate an external DB */
+	const DB_EXTERNAL_PREFIX = 'external_';
+	/** Tables to create in the external DB */
+	public static $externalTables = [
+		'abuse_filter',
+		'abuse_filter_action',
+		'abuse_filter_log',
+		'text',
+	];
 
 	/**
 	 * @var array This tables will be deleted in parent::tearDown
@@ -65,7 +74,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		'ipblocks',
 		'logging',
 		'change_tag',
-		'user'
+		'user',
+		'text'
 	];
 
 	// phpcs:disable Generic.Files.LineLength
@@ -253,14 +263,52 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			]
 		],
 		18 => [
-			'af_pattern' => '1 === 1',
-			'af_public_comments' => 'Another catch-all',
+			'af_pattern' => '1 == 1',
+			'af_public_comments' => 'Global filter',
+			'af_global' => 1,
 			'actions' => [
-				'tag' => [ 'lolTag' ]
+				'warn' => [
+					'abusefilter-warning'
+				],
+				'disallow' => []
 			]
 		],
+		19 => [
+			'af_pattern' => 'user_name === "FilteredUser"',
+			'af_public_comments' => 'Another global filter',
+			'af_global' => 1,
+			'actions' => [
+				'tag' => [
+					'globalTag'
+				]
+			]
+		],
+		20 => [
+			'af_pattern' => 'page_title === "Cellar door"',
+			'af_public_comments' => 'Yet another global filter',
+			'af_global' => 1,
+			'actions' => [
+				'disallow' => [],
+			]
+		]
 	];
 	// phpcs:enable Generic.Files.LineLength
+
+	/**
+	 * Add tables for global filters to the list of used tables
+	 *
+	 * @inheritDoc
+	 */
+	public function __construct( $name = null, array $data = [], $dataName = '' ) {
+		$prefixedTables = array_map(
+			function ( $table ) {
+				return self::DB_EXTERNAL_PREFIX . $table;
+			},
+			self::$externalTables
+		);
+		$this->tablesUsed = array_merge( $this->tablesUsed, $prefixedTables );
+		parent::__construct( $name, $data, $dataName );
+	}
 
 	/**
 	 * @see MediaWikiTestCase::setUp
@@ -276,6 +324,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			$block->delete();
 		}
 		self::$mUser = $user;
+
 		// Make sure that the config we're using is the one we're expecting
 		$this->setMwGlobals( [
 			'wgUser' => $user,
@@ -290,7 +339,10 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				'rangeblock' => true,
 				'degroup' => true,
 				'tag' => true
-			]
+			],
+			'wgAbuseFilterCentralDB' => $this->db->getDBname() . '-' . $this->dbPrefix() .
+				self::DB_EXTERNAL_PREFIX,
+			'wgAbuseFilterIsCentral' => false
 		] );
 	}
 
@@ -300,6 +352,11 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	protected function tearDown() {
 		// Paranoia: ensure no fake timestamp leftover
 		MWTimestamp::setFakeTime( false );
+		// Close the connection to the "external" database
+		$externalDBName = $this->db->getDBname() . '-' . $this->dbPrefix() . self::DB_EXTERNAL_PREFIX;
+		$db = wfGetDB( DB_MASTER, [], $externalDBName );
+		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+		$lbFactory->getMainLB( $externalDBName )->closeConnection( $db );
 		parent::tearDown();
 	}
 
@@ -307,10 +364,12 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * Creates new filters with the given ids, referred to self::$filters
 	 *
 	 * @param int[] $ids IDs of the filters to create
+	 * @param bool $external Whether to create filters in the external table
 	 */
-	private static function createFilters( $ids ) {
+	private static function createFilters( $ids, $external = false ) {
 		global $wgAbuseFilterActions;
 		$dbw = wfGetDB( DB_MASTER );
+		$tablePrefix = $external ? self::DB_EXTERNAL_PREFIX : '';
 		$defaultRowSection = [
 			'af_user_text' => 'FilterTester',
 			'af_user' => 0,
@@ -333,7 +392,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			$filter[ 'af_id' ] = $id;
 
 			$dbw->insert(
-				'abuse_filter',
+				"{$tablePrefix}abuse_filter",
 				$filter,
 				__METHOD__
 			);
@@ -353,7 +412,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			}
 
 			$dbw->insert(
-				'abuse_filter_action',
+				"{$tablePrefix}abuse_filter_action",
 				$actionsRows,
 				__METHOD__
 			);
@@ -1744,7 +1803,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * Data provider for testProfiling. We only want filters which let the edit pass, since
 	 * we'll perform multiple edits. How this test works: we repeat the action X times. For 1 to
 	 * X - 1, it would take 1 + 1 + 5 + 1 conditions, but it will overflow without checking filter
-	 * 18 (since the conds limit is 7). Then we perform the last execution using a trick that will
+	 * 19 (since the conds limit is 7). Then we perform the last execution using a trick that will
 	 * make filter 17 only consume 1 condition.
 	 *
 	 * @todo All these values should be more customizable, or just hardcoded in the test method.
@@ -1754,7 +1813,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	public function provideProfilingFilters() {
 		return [
 			'Basic test for statistics recording on edit.' => [
-				[ 4, 5, 17, 18 ],
+				[ 4, 5, 17, 19 ],
 				[
 					'action' => 'edit',
 					'target' => 'Some page',
@@ -1785,7 +1844,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 						'actions' => 6,
 						'averageConditions' => 4.0
 					],
-					18 => [
+					19 => [
 						'matches' => 1,
 						'actions' => 6,
 						'averageConditions' => 1.0
@@ -1793,7 +1852,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				]
 			],
 			'Test for statistics recording on a successfully stashed edit.' => [
-				[ 4, 5, 17, 18 ],
+				[ 4, 5, 17, 19 ],
 				[
 					'action' => 'stashedit',
 					'target' => 'Some page',
@@ -1825,7 +1884,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 						'actions' => 6,
 						'averageConditions' => 4.0
 					],
-					18 => [
+					19 => [
 						'matches' => 1,
 						'actions' => 6,
 						'averageConditions' => 1.0
@@ -1833,7 +1892,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				]
 			],
 			'Test for statistics recording on an unsuccessfully stashed edit.' => [
-				[ 4, 5, 17, 18 ],
+				[ 4, 5, 17, 19 ],
 				[
 					'action' => 'stashedit',
 					'target' => 'Some page',
@@ -1865,12 +1924,136 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 						'actions' => 6,
 						'averageConditions' => 4.0
 					],
-					18 => [
+					19 => [
 						'matches' => 1,
 						'actions' => 6,
 						'averageConditions' => 1.0
 					],
 				]
+			]
+		];
+	}
+
+	/**
+	 * Tests for global filters, defined on a central wiki and executed on another (e.g. a filter
+	 *   defined on meta but triggered on another wiki using meta's global filters).
+	 *   We emulate an external database by using different tables prefixed with
+	 *   self::DB_EXTERNAL_PREFIX
+	 *
+	 * @param int[] $createIds IDs of the filters to create
+	 * @param array $actionParams Details of the action we need to execute to trigger filters
+	 * @param array $consequences The consequences we're expecting
+	 * @dataProvider provideGlobalFilters
+	 */
+	public function testGlobalFilters( $createIds, $actionParams, $consequences ) {
+		self::createFilters( $createIds, true );
+
+		$result = $this->doAction( $actionParams );
+
+		list( $expected, $actual ) = $this->checkConsequences( $result, $actionParams, $consequences );
+
+		// First check that the filter work as expected
+		$expectedDisplay = implode( ', ', $expected );
+		$actualDisplay = implode( ', ', $actual );
+		$this->assertEquals(
+			$expected,
+			$actual,
+			"The action should have returned the following error messages: $expectedDisplay. " .
+			"Got $actualDisplay instead."
+		);
+
+		// Check that the hits were logged on the "external" DB
+		$logged = $this->db->selectFieldValues(
+			self::DB_EXTERNAL_PREFIX . 'abuse_filter_log',
+			'afl_filter',
+			[ 'afl_wiki IS NOT NULL' ],
+			__METHOD__
+		);
+		// Don't use assertSame because the DB holds strings here (T42757)
+		$this->assertEquals(
+			$createIds,
+			$logged,
+			'Some filter hits were not logged in the external DB.'
+		);
+	}
+
+	/**
+	 * Data provider for testGlobalFilters
+	 *
+	 * @return array
+	 */
+	public function provideGlobalFilters() {
+		return [
+			[
+				[ 18 ],
+				[
+					'action' => 'edit',
+					'target' => 'Global',
+					'oldText' => 'Old text',
+					'newText' => 'New text',
+					'summary' => ''
+				],
+				[ 'disallow' => [ 18 ], 'warn' => [ 18 ] ]
+			],
+			[
+				[ 19 ],
+				[
+					'action' => 'edit',
+					'target' => 'A global page',
+					'oldText' => 'Foo',
+					'newText' => 'Bar',
+					'summary' => 'Baz'
+				],
+				[ 'tag' => [ 19 ] ]
+			],
+			[
+				[ 19, 20 ],
+				[
+					'action' => 'edit',
+					'target' => 'Cellar door',
+					'oldText' => '',
+					'newText' => 'Yay, that\'s cool',
+					'summary' => 'Unit test'
+				],
+				[ 'disallow' => [ 20 ] ]
+			],
+			[
+				[ 18 ],
+				[
+					'action' => 'move',
+					'target' => 'Cellar door',
+					'newTitle' => 'Attic door'
+				],
+				[ 'warn' => [ 18 ] ]
+			],
+			[
+				[ 19, 20 ],
+				[
+					'action' => 'delete',
+					'target' => 'Cellar door',
+				],
+				[ 'disallow' => [ 20 ] ]
+			],
+			[
+				[ 19 ],
+				[
+					'action' => 'stashedit',
+					'target' => 'Cellar door',
+					'oldText' => '',
+					'newText' => 'Too many doors',
+					'summary' => '',
+					'stashType' => 'hit'
+				],
+				[ 'tag' => [ 19 ] ]
+			],
+			[
+				[ 18 ],
+				[
+					'action' => 'createaccount',
+					'target' => 'User:GlobalUser',
+					'username' => 'GlobalUser'
+				],
+				[ 'warn' => [ 18 ] ]
 			]
 		];
 	}
