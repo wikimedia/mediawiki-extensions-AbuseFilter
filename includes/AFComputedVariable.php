@@ -206,7 +206,6 @@ class AFComputedVariable {
 				if ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
 					$textVar = $parameters['text-var'];
 
-					// XXX: Use prepareContentForEdit. But we need a Content object for that.
 					$new_text = $vars->getVar( $textVar )->toString();
 					$content = ContentHandler::makeContent( $new_text, $article->getTitle() );
 					$editInfo = $article->prepareContentForEdit( $content );

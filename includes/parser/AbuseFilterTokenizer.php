@@ -259,6 +259,7 @@ class AbuseFilterTokenizer {
 				$offset += 2;
 
 			} else {
+				// Should never happen
 				$token .= $code[$offset];
 				$offset++;
 			}
