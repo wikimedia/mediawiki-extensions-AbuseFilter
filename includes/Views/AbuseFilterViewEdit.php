@@ -800,22 +800,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						]
 					);
 				$output .= $checkbox;
-				if ( $config->get( 'BlockAllowsUTEdit' ) === true ) {
-					$talkCheckbox =
-						new OOUI\FieldLayout(
-							new OOUI\CheckboxInputWidget( [
-								'name' => 'wpFilterBlockTalk',
-								'id' => 'mw-abusefilter-action-checkbox-blocktalk',
-								'selected' => isset( $blockTalk ) && $blockTalk == 'blocktalk',
-								'classes' => [ 'mw-abusefilter-action-checkbox' ]
-							] + $readOnlyAttrib
-							),
-							[
-								'label' => $this->msg( 'abusefilter-edit-action-blocktalk' )->text(),
-								'align' => 'inline'
-							]
-						);
-				}
 
 				$suggestedBlocks = Xml::listDropDownOptionsOoui( $suggestedBlocks );
 
@@ -835,17 +819,33 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						'disabled' => !$this->canEditFilter( $row )
 					] );
 
+				$blockOptions = [];
 				if ( $config->get( 'BlockAllowsUTEdit' ) === true ) {
-					$durations['abusefilter-edit-block-options'] = $talkCheckbox;
+					$talkCheckbox =
+						new OOUI\FieldLayout(
+							new OOUI\CheckboxInputWidget( [
+								'name' => 'wpFilterBlockTalk',
+								'id' => 'mw-abusefilter-action-checkbox-blocktalk',
+								'selected' => isset( $blockTalk ) && $blockTalk == 'blocktalk',
+								'classes' => [ 'mw-abusefilter-action-checkbox' ]
+							] + $readOnlyAttrib
+							),
+							[
+								'label' => $this->msg( 'abusefilter-edit-action-blocktalk' )->text(),
+								'align' => 'left'
+							]
+						);
+
+					$blockOptions['abusefilter-edit-block-options'] = $talkCheckbox;
 				}
-				$durations['abusefilter-edit-block-anon-durations'] =
+				$blockOptions['abusefilter-edit-block-anon-durations'] =
 					new OOUI\FieldLayout(
 						$anonDuration,
 						[
 							'label' => $this->msg( 'abusefilter-edit-block-anon-durations' )->text()
 						]
 					);
-				$durations['abusefilter-edit-block-user-durations'] =
+				$blockOptions['abusefilter-edit-block-user-durations'] =
 					new OOUI\FieldLayout(
 						$userDuration,
 						[
@@ -856,7 +856,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$output .= Xml::tags(
 						'div',
 						[ 'id' => 'mw-abusefilter-block-parameters' ],
-						new OOUI\FieldsetLayout( [ 'items' => $durations ] )
+						new OOUI\FieldsetLayout( [ 'items' => $blockOptions ] )
 					);
 
 				return $output;
