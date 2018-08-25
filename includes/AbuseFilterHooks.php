@@ -719,7 +719,7 @@ class AbuseFilterHooks {
 		$vars = new AbuseFilterVariableHolder;
 		$vars->addHolders(
 			AbuseFilter::generateUserVars( $user ),
-			AbuseFilter::generateTitleVars( $title, 'ARTICLE' )
+			AbuseFilter::generateTitleVars( $title, 'PAGE' )
 		);
 		$vars->setVar( 'ACTION', $action );
 
