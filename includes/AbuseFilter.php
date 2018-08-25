@@ -807,7 +807,7 @@ class AbuseFilter {
 	 * @return string|bool
 	 */
 	public static function decodeGlobalName( $filter ) {
-		if ( strpos( $filter, 'global-' ) == 0 ) {
+		if ( strpos( $filter, 'global-' ) === 0 ) {
 			return substr( $filter, strlen( 'global-' ) );
 		}
 
