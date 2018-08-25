@@ -1270,10 +1270,17 @@ class AbuseFilter {
 	) {
 		$inputVars = $vars->exportNonLazyVars();
 		// Exclude noisy fields that have superficial changes
-		unset( $inputVars['old_html'] );
-		unset( $inputVars['new_html'] );
-		unset( $inputVars['user_age'] );
-		unset( $inputVars['timestamp'] );
+		$excludedVars = [
+			'old_html' => true,
+			'new_html' => true,
+			'user_age' => true,
+			'timestamp' => true,
+			'page_age' => true,
+			'moved_from_age' => true,
+			'moved_to_age' => true
+		];
+
+		$inputVars = array_diff_key( $inputVars, $excludedVars );
 		ksort( $inputVars );
 		$hash = md5( serialize( $inputVars ) );
 
