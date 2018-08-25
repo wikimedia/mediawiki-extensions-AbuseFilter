@@ -276,6 +276,7 @@
 	"abusefilter-edit-builder-vars-page-ns": "Περιοχή ονομάτων της σελίδας",
 	"abusefilter-edit-builder-vars-page-title": "Όνομα σελίδας (χωρίς περιοχή ονόματος)",
 	"abusefilter-edit-builder-vars-page-prefixedtitle": "Πλἠρης τίτλος σελίδας",
+	"abusefilter-edit-builder-vars-page-age": "Ηλικία σελίδας (σε δευτερόλεπτα)",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Σελίδα ταυτότητα της σελίδας προς μετακίνηση",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Χώροι ονομάτων της σελίδας-πηγής προς μετακίνηση",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Τίτλος της μετακίνηησης της σελίδας πηγής",
