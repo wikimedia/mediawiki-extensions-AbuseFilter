@@ -164,7 +164,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			$conds['rc_bot'] = 0;
 		}
 
-		$action = $this->mTestAction != '0' ? $this->mTestAction : false;
+		$action = $this->mTestAction !== '0' ? $this->mTestAction : false;
 		$conds[] = $this->buildTestConditions( $dbr, $action );
 
 		// Get our ChangesList

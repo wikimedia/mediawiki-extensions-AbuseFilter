@@ -142,7 +142,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				list( $array, $offset ) = $node->children;
 
 				$array = $this->evalNode( $array );
-				if ( $array->type != AFPData::DARRAY ) {
+				if ( $array->type !== AFPData::DARRAY ) {
 					throw new AFPUserVisibleException( 'notarray', $node->position, [] );
 				}
 
@@ -159,7 +159,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 			case AFPTreeNode::UNARY:
 				list( $operation, $argument ) = $node->children;
 				$argument = $this->evalNode( $argument );
-				if ( $operation == '-' ) {
+				if ( $operation === '-' ) {
 					return AFPData::unaryMinus( $argument );
 				}
 				return $argument;
@@ -218,7 +218,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				$leftOperand = $this->evalNode( $leftOperand );
 				$value = $leftOperand->toBool();
 				// Short-circuit.
-				if ( ( !$value && $op == '&' ) || ( $value && $op == '|' ) ) {
+				if ( ( !$value && $op === '&' ) || ( $value && $op === '|' ) ) {
 					return $leftOperand;
 				}
 				$rightOperand = $this->evalNode( $rightOperand );
@@ -243,7 +243,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				list( $varName, $offset, $value ) = $node->children;
 
 				$array = $this->mVars->getVar( $varName );
-				if ( $array->type != AFPData::DARRAY ) {
+				if ( $array->type !== AFPData::DARRAY ) {
 					throw new AFPUserVisibleException( 'notarray', $node->position, [] );
 				}
 
@@ -263,7 +263,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				list( $varName, $value ) = $node->children;
 
 				$array = $this->mVars->getVar( $varName );
-				if ( $array->type != AFPData::DARRAY ) {
+				if ( $array->type !== AFPData::DARRAY ) {
 					throw new AFPUserVisibleException( 'notarray', $node->position, [] );
 				}
 

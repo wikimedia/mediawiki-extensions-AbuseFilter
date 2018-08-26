@@ -398,7 +398,7 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 
 		if ( $this->mSearchWiki ) {
-			if ( $this->mSearchWiki == wfWikiID() ) {
+			if ( $this->mSearchWiki === wfWikiID() ) {
 				$conds['afl_wiki'] = null;
 			} else {
 				$conds['afl_wiki'] = $this->mSearchWiki;
@@ -438,9 +438,9 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 
 		if ( self::canSeeHidden() ) {
-			if ( $this->mSearchEntries == '1' ) {
+			if ( $this->mSearchEntries === '1' ) {
 				$conds['afl_deleted'] = 1;
-			} elseif ( $this->mSearchEntries == '2' ) {
+			} elseif ( $this->mSearchEntries === '2' ) {
 				$conds[] = self::getNotDeletedCond( $dbr );
 			}
 		}
@@ -450,7 +450,7 @@ class SpecialAbuseLog extends SpecialPage {
 				'afl_rev_id' => null,
 				'afl_log_id' => null,
 			], LIST_AND );
-			if ( $this->mSearchImpact == '1' ) {
+			if ( $this->mSearchImpact === '1' ) {
 				$conds[] = "NOT ( $unsuccessfulActionConds )";
 			} else {
 				$conds[] = $unsuccessfulActionConds;
@@ -559,7 +559,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$out->addJsConfigVars( 'wgAbuseFilterVariables', $vars->dumpAllVars( true ) );
 
 		// Diff, if available
-		if ( $vars && $vars->getVar( 'action' )->toString() == 'edit' ) {
+		if ( $vars && $vars->getVar( 'action' )->toString() === 'edit' ) {
 			$old_wikitext = $vars->getVar( 'old_wikitext' )->toString();
 			$new_wikitext = $vars->getVar( 'new_wikitext' )->toString();
 
@@ -1107,7 +1107,7 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 		if ( $row->afl_rev_id ) {
 			$revision = Revision::newFromId( $row->afl_rev_id );
-			if ( $revision && $revision->getVisibility() != 0 ) {
+			if ( $revision && $revision->getVisibility() !== 0 ) {
 				return 'implicit';
 			}
 		}

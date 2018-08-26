@@ -250,7 +250,7 @@ class AbuseFilter {
 			$msg = $context->msg( $msgName )->parse();
 			$title = Title::newFromText( $page );
 
-			if ( $name == $pageType ) {
+			if ( $name === $pageType ) {
 				$links[] = Xml::tags( 'strong', null, $msg );
 			} else {
 				$links[] = $linkRenderer->makeLink( $title, new HtmlArmor( $msg ) );
@@ -902,7 +902,7 @@ class AbuseFilter {
 				&& !empty( $wgAbuseFilterRestrictions[$row->afa_consequence] )
 			) {
 				// Don't do the action
-			} elseif ( $row->afa_filter != $row->af_id ) {
+			} elseif ( $row->afa_filter !== $row->af_id ) {
 				// We probably got a NULL, as it's a LEFT JOIN. Don't add it.
 			} else {
 				$actionsByFilter[$prefix . $row->afa_filter][$row->afa_consequence] = [
@@ -1209,7 +1209,7 @@ class AbuseFilter {
 			self::recordRuntimeProfilingResult( count( $matched_filters ), $condCount, $runtime );
 		}
 
-		if ( count( $matched_filters ) == 0 ) {
+		if ( count( $matched_filters ) === 0 ) {
 			$status = Status::newGood();
 		} else {
 			$status = self::executeFilterActions( $matched_filters, $title, $vars, $user );
@@ -1234,7 +1234,7 @@ class AbuseFilter {
 			];
 
 			// Hack to avoid revealing IPs of people creating accounts
-			if ( !$user->getId() && ( $action == 'createaccount' || $action == 'autocreateaccount' ) ) {
+			if ( !$user->getId() && ( $action === 'createaccount' || $action === 'autocreateaccount' ) ) {
 				$log_template['afl_user_text'] = $vars->getVar( 'accountname' )->toString();
 			}
 
@@ -1388,7 +1388,7 @@ class AbuseFilter {
 			$thisLog['afl_actions'] = implode( ',', $actions );
 
 			// Don't log if we were only throttling.
-			if ( $thisLog['afl_actions'] != 'throttle' ) {
+			if ( $thisLog['afl_actions'] !== 'throttle' ) {
 				$log_rows[] = $thisLog;
 				// Global logging
 				if ( $globalIndex ) {
@@ -2409,8 +2409,7 @@ class AbuseFilter {
 		}
 
 		// Don't allow setting as deleted an active filter
-		if ( $request->getCheck( 'wpFilterEnabled' ) == true &&
-			$request->getCheck( 'wpFilterDeleted' ) == true ) {
+		if ( $request->getCheck( 'wpFilterEnabled' ) && $request->getCheck( 'wpFilterDeleted' ) ) {
 			$validationStatus->error( 'abusefilter-edit-deleting-enabled' );
 			return $validationStatus;
 		}
@@ -2535,7 +2534,7 @@ class AbuseFilter {
 		$dbw->startAtomic( __METHOD__ );
 
 		// Insert MAIN row.
-		if ( $filter == 'new' ) {
+		if ( $filter === 'new' ) {
 			$new_id = null;
 			$is_new = true;
 		} else {
@@ -2623,7 +2622,7 @@ class AbuseFilter {
 		// Do the update
 		$dbw->insert( 'abuse_filter_history', $afh_row, __METHOD__ );
 		$history_id = $dbw->insertId();
-		if ( $filter != 'new' ) {
+		if ( $filter !== 'new' ) {
 			$dbw->delete(
 				'abuse_filter_action',
 				[ 'afa_filter' => $filter ],
@@ -2637,7 +2636,7 @@ class AbuseFilter {
 		// Invalidate cache if this was a global rule
 		if ( $wasGlobal || $newRow['af_global'] ) {
 			$group = 'default';
-			if ( isset( $newRow['af_group'] ) && $newRow['af_group'] != '' ) {
+			if ( isset( $newRow['af_group'] ) && $newRow['af_group'] !== '' ) {
 				$group = $newRow['af_group'];
 			}
 
@@ -2781,11 +2780,11 @@ class AbuseFilter {
 	 * @return AbuseFilterVariableHolder|null
 	 */
 	public static function getVarsFromRCRow( $row ) {
-		if ( $row->rc_log_type == 'move' ) {
+		if ( $row->rc_log_type === 'move' ) {
 			$vars = self::getMoveVarsFromRCRow( $row );
-		} elseif ( $row->rc_log_type == 'newusers' ) {
+		} elseif ( $row->rc_log_type === 'newusers' ) {
 			$vars = self::getCreateVarsFromRCRow( $row );
-		} elseif ( $row->rc_log_type == 'delete' ) {
+		} elseif ( $row->rc_log_type === 'delete' ) {
 			$vars = self::getDeleteVarsFromRCRow( $row );
 		} elseif ( $row->rc_log_type == 'upload' ) {
 			$vars = self::getUploadVarsFromRCRow( $row );
@@ -2810,13 +2809,13 @@ class AbuseFilter {
 	public static function getCreateVarsFromRCRow( $row ) {
 		$vars = new AbuseFilterVariableHolder;
 
-		$vars->setVar( 'action', ( $row->rc_log_action == 'autocreate' ) ?
+		$vars->setVar( 'action', ( $row->rc_log_action === 'autocreate' ) ?
 			'autocreateaccount' :
 			'createaccount' );
 
 		$name = Title::makeTitle( $row->rc_namespace, $row->rc_title )->getText();
 		// Add user data if the account was created by a registered user
-		if ( $row->rc_user && $name != $row->rc_user_text ) {
+		if ( $row->rc_user && $name !== $row->rc_user_text ) {
 			$user = User::newFromName( $row->rc_user_text );
 			$vars->addHolders( self::generateUserVars( $user ) );
 		}

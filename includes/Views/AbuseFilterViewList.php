@@ -48,7 +48,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$searchEnabled = $this->canViewPrivate() && !(
 			$config->get( 'AbuseFilterCentralDB' ) !== null &&
 			!$config->get( 'AbuseFilterIsCentral' ) &&
-			$scope == 'global' );
+			$scope === 'global' );
 
 		if ( $searchEnabled ) {
 			$querypattern = $request->getVal( 'querypattern' );
@@ -58,9 +58,9 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$searchmode = '';
 		}
 
-		if ( $deleted == 'show' ) {
+		if ( $deleted === 'show' ) {
 			// Nothing
-		} elseif ( $deleted == 'only' ) {
+		} elseif ( $deleted === 'only' ) {
 			$conds['af_deleted'] = 1;
 		} else {
 			// hide, or anything else.
@@ -75,9 +75,9 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$conds['af_hidden'] = 0;
 		}
 
-		if ( $scope == 'local' ) {
+		if ( $scope === 'local' ) {
 			$conds['af_global'] = 0;
-		} elseif ( $scope == 'global' ) {
+		} elseif ( $scope === 'global' ) {
 			$conds['af_global'] = 1;
 		}
 
@@ -163,7 +163,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		if (
 			$config->get( 'AbuseFilterCentralDB' ) !== null
 			&& !$config->get( 'AbuseFilterIsCentral' )
-			&& $scope == 'global'
+			&& $scope === 'global'
 		) {
 			$pager = new GlobalAbuseFilterPager(
 				$this,

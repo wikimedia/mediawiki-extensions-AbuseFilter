@@ -166,7 +166,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 				[ 'afh_id' => $spec, 'afh_filter' => $this->mFilter ],
 				__METHOD__
 			);
-		} elseif ( $spec == 'cur' ) {
+		} elseif ( $spec === 'cur' ) {
 			$row = $dbr->selectRow(
 				'abuse_filter_history',
 				$selectFields,
@@ -174,7 +174,9 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 				__METHOD__,
 				[ 'ORDER BY' => 'afh_timestamp desc' ]
 			);
-		} elseif ( ( $spec == 'prev' || $spec == 'next' ) && !in_array( $otherSpec, $dependentSpecs ) ) {
+		} elseif ( ( $spec === 'prev' || $spec === 'next' ) &&
+			!in_array( $otherSpec, $dependentSpecs )
+		) {
 			// cached
 			$other = $this->loadSpec( $otherSpec, $spec );
 
@@ -301,7 +303,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		);
 		if (
 			count( $this->getConfig()->get( 'AbuseFilterValidGroups' ) ) > 1 ||
-			$oldVersion['info']['group'] != $newVersion['info']['group']
+			$oldVersion['info']['group'] !== $newVersion['info']['group']
 		) {
 			$info .= $this->getDiffRow(
 				'abusefilter-edit-group',
