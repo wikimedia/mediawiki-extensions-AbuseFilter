@@ -65,6 +65,7 @@
 	"abusefilter-log-search-entries-all": "Сви уноси",
 	"abusefilter-log-search-entries-hidden": "Само сакривени уноси",
 	"abusefilter-log-search-entries-visible": "Само видљиви уноси",
+	"abusefilter-log-search-action-other": "други",
 	"abusefilter-log-search-action-taken-label": "Предузета радња:",
 	"abusefilter-log-search-action-taken-any": "Било која",
 	"abusefilter-log-search-submit": "Претражи",
