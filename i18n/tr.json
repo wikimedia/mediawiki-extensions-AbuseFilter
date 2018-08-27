@@ -17,7 +17,8 @@
 			"Matma Rex",
 			"Diyapazon",
 			"Hedda",
-			"Rapsar"
+			"Rapsar",
+			"TmY e12"
 		]
 	},
 	"abusefilter-desc": "Değişikliklere otomatik bulucu yöntemler uygular",
@@ -38,6 +39,7 @@
 	"right-abusefilter-log": "Kötüye kullanım günlüğünü gör",
 	"right-abusefilter-log-detail": "Ayrıntılı suistimal girdilerini gör",
 	"right-abusefilter-private": "Kötüye kullanım günlüğündeki özel verileri gör",
+	"right-abusefilter-private-log": "AbuseFilter özel ayrıntıları erişim günlüğünü görüntüle",
 	"right-abusefilter-modify-restricted": "Kısıtlı eylemler içeren suistimal filtrelerini değiştir",
 	"right-abusefilter-revert": "Verilen bir suistimal filtresi tarafından yapılan tüm değişiklikleri geri al",
 	"right-abusefilter-view-private": "Özel olarak işaretlenmiş suistimal filtrelerini gör",
