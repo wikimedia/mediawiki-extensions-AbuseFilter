@@ -280,4 +280,13 @@ class KeywordsManager {
 	public function getVarsMappings(): array {
 		return $this->getBuilderValues()['vars'];
 	}
+
+	/**
+	 * Get a list of core variables, i.e. variables defined in AbuseFilter (ignores hooks).
+	 * You usually want to use getVarsMappings(), not this one.
+	 * @return string[]
+	 */
+	public function getCoreVariables() : array {
+		return array_keys( self::BUILDER_VALUES['vars'] );
+	}
 }

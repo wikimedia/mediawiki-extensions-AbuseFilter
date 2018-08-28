@@ -195,4 +195,13 @@ class AbuseFilterKeywordsManagerTest extends MediaWikiUnitTestCase {
 		$this->assertContainsOnly( 'string', $actual, true );
 		$this->assertContainsOnly( 'string', array_keys( $actual ), true );
 	}
+
+	/**
+	 * @covers \MediaWiki\Extension\AbuseFilter\KeywordsManager::getCoreVariables
+	 */
+	public function testGetCoreVariables() {
+		$actual = $this->getKeywordsManager()->getCoreVariables();
+		$this->assertIsArray( $actual );
+		$this->assertContainsOnly( 'string', $actual, true );
+	}
 }
