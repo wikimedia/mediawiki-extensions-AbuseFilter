@@ -8,7 +8,8 @@
 			"Edgars2007",
 			"Matma Rex",
 			"Silraks",
-			"Zuiks"
+			"Zuiks",
+			"Mailman"
 		]
 	},
 	"abusefilter-desc": "Pielieto automātiskas heiristikas labojumiem",
@@ -60,7 +61,7 @@
 	"abusefilter-log-details-var": "Mainīgais",
 	"abusefilter-log-details-val": "Vērtība",
 	"abusefilter-log-details-vars": "Darbības parametri",
-	"abusefilter-log-details-private": "Privātie dati",
+	"abusefilter-log-details-private": "Privāto datu reģistrs",
 	"abusefilter-log-details-ip": "Izcelsmes IP adrese",
 	"abusefilter-log-noactions": "nav",
 	"abusefilter-log-details-diff": "Veiktās izmaiņas",
