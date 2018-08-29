@@ -2,6 +2,7 @@
 
 use Wikimedia\Rdbms\Database;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Logger\LoggerFactory;
 
 class AFComputedVariable {
 	public $mMethod, $mParameters;
@@ -62,7 +63,8 @@ class AFComputedVariable {
 				return self::$userCache[$username];
 			}
 
-			wfDebug( "Couldn't find user $username in cache\n" );
+			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+			$logger->debug( "Couldn't find user $username in cache" );
 		}
 
 		if ( count( self::$userCache ) > 1000 ) {
@@ -102,7 +104,8 @@ class AFComputedVariable {
 			self::$articleCache = [];
 		}
 
-		wfDebug( "Creating article object for $namespace:$title in cache\n" );
+		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+		$logger->debug( "Creating article object for $namespace:$title in cache" );
 
 		// TODO: use WikiPage instead!
 		$t = Title::makeTitle( $namespace, $title );
@@ -223,11 +226,12 @@ class AFComputedVariable {
 					$parameters['title']
 				);
 
+				$logger = LoggerFactory::getInstance( 'AbuseFilter' );
 				if ( $vars->getVar( 'context' )->toString() == 'filter' ) {
 					$links = $this->getLinksFromDB( $article );
-					wfDebug( "AbuseFilter: loading old links from DB\n" );
+					$logger->debug( 'Loading old links from DB' );
 				} elseif ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
-					wfDebug( "AbuseFilter: loading old links from Parser\n" );
+					$logger->debug( 'Loading old links from Parser' );
 					$textVar = $parameters['text-var'];
 
 					$wikitext = $vars->getVar( $textVar )->toString();

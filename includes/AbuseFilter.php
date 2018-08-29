@@ -525,7 +525,8 @@ class AbuseFilter {
 		} catch ( Exception $excep ) {
 			$result = false;
 
-			wfDebugLog( 'AbuseFilter', 'AbuseFilter parser error: ' . $excep->getMessage() . "\n" );
+			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+			$logger->debug( 'AbuseFilter parser error: ' . $excep->getMessage() );
 
 			if ( !$ignoreError ) {
 				throw $excep;
@@ -1712,7 +1713,8 @@ class AbuseFilter {
 						$message = [ $msg ];
 					}
 				} else {
-					wfDebugLog( 'AbuseFilter', "Unrecognised action $action" );
+					$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+					$logger->debug( "Unrecognised action $action" );
 				}
 		}
 
@@ -1811,26 +1813,27 @@ class AbuseFilter {
 		$key = self::throttleKey( $throttleId, $types, $title, $global );
 		$count = intval( $stash->get( $key ) );
 
-		wfDebugLog( 'AbuseFilter', "Got value $count for throttle key $key\n" );
+		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+		$logger->debug( "Got value $count for throttle key $key" );
 
 		if ( $count > 0 ) {
 			$stash->incr( $key );
 			$count++;
-			wfDebugLog( 'AbuseFilter', "Incremented throttle key $key" );
+			$logger->debug( "Incremented throttle key $key" );
 		} else {
-			wfDebugLog( 'AbuseFilter', "Added throttle key $key with value 1" );
+			$logger->debug( "Added throttle key $key with value 1" );
 			$stash->add( $key, 1, $ratePeriod );
 			$count = 1;
 		}
 
 		if ( $count > $rateCount ) {
-			wfDebugLog( 'AbuseFilter', "Throttle $key hit value $count -- maximum is $rateCount." );
+			$logger->debug( "Throttle $key hit value $count -- maximum is $rateCount." );
 
 			// THROTTLED
 			return true;
 		}
 
-		wfDebugLog( 'AbuseFilter', "Throttle $key not hit!" );
+		$logger->debug( "Throttle $key not hit!" );
 
 		// NOT THROTTLED
 		return false;
