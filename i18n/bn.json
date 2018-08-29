@@ -51,6 +51,7 @@
 	"abusefilter-log-search-entries-all": "সকল ভুক্তি",
 	"abusefilter-log-search-entries-hidden": "লুকানো ভুক্তি শুধুমাত্র",
 	"abusefilter-log-search-entries-visible": "দৃশ্যমান ভুক্তি শুধুমাত্র",
+	"abusefilter-log-search-action-other": "অন্য",
 	"abusefilter-log-search-action-taken-label": "গৃহীত পদক্ষেপ:",
 	"abusefilter-log-search-action-taken-any": "যেকোন",
 	"abusefilter-log-search-submit": "অনুসন্ধান",

@@ -93,7 +93,7 @@
 	"abusefilter-log-linkonhistory": "евиденција злоупотребе",
 	"abusefilter-log-linkonhistory-text": "Погледајте евиденцију злоупотребе ове странице",
 	"abusefilter-log-hidden": "(унос је сакривен)",
-	"abusefilter-log-hidden-implicit": "(скривено јер је ревизија избрисана)",
+	"abusefilter-log-hidden-implicit": "(скривено јер је измена избрисана)",
 	"abusefilter-log-cannot-see-details": "Немате дозволу да видите детаље овог уноса.",
 	"abusefilter-log-cannot-see-private-details": "Немате дозволу да видите приватне детаље овог уноса.",
 	"abusefilter-log-nonexistent": "Унос са наведеним ID-ом не постоји.",
