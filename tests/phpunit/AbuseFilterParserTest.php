@@ -696,4 +696,49 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 			[ 'str_replace' ],
 		];
 	}
+
+	/**
+	 * Check that deprecated variables are correctly translated to the new ones with a debug notice
+	 *
+	 * @param string $old The old name of the variable
+	 * @param string $new The new name of the variable
+	 * @dataProvider provideDeprecatedVars
+	 */
+	public function testDeprecatedVars( $old, $new ) {
+		$loggerMock = new TestLogger();
+		$loggerMock->setCollect( true );
+		$this->setLogger( 'AbuseFilterDeprecatedVars', $loggerMock );
+
+		$parser = self::getParser();
+		$actual = $parser->parse( "$old === $new" );
+
+		$loggerBuffer = $loggerMock->getBuffer();
+		// Check that the use has been logged
+		$found = false;
+		foreach ( $loggerBuffer as $entry ) {
+			$check = preg_match( '/AbuseFilter: deprecated variable/', $entry[1] );
+			if ( $check ) {
+				$found = true;
+				break;
+			}
+		}
+		if ( !$found ) {
+			$this->fail( "The use of the deprecated variable $old was not logged." );
+		}
+
+		$this->assertTrue( $actual, "AbuseFilter deprecated variable $old is not parsed correctly" );
+	}
+
+	/**
+	 * Data provider for testDeprecatedVars
+	 * @return array
+	 */
+	public function provideDeprecatedVars() {
+		$deprecated = AbuseFilter::$deprecatedVars;
+		$data = [];
+		foreach ( $deprecated as $old => $new ) {
+			$data[] = [ $old, $new ];
+		}
+		return $data;
+	}
 }

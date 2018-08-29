@@ -1,6 +1,7 @@
 <?php
 
 use Wikimedia\Equivset\Equivset;
+use MediaWiki\Logger\LoggerFactory;
 
 class AbuseFilterParser {
 	public $mCode, $mTokens, $mPos, $mCur, $mShortCircuit, $mAllowShort, $mLen;
@@ -832,7 +833,8 @@ class AbuseFilterParser {
 		$builderValues = AbuseFilter::getBuilderValues();
 		$deprecatedVars = AbuseFilter::getDeprecatedVariables();
 		if ( array_key_exists( $var, $deprecatedVars ) ) {
-			wfDebug( "AbuseFilter: deprecated variable $var used." );
+			$logger = LoggerFactory::getInstance( 'AbuseFilterDeprecatedVars' );
+			$logger->debug( "AbuseFilter: deprecated variable $var used." );
 			$var = $deprecatedVars[$var];
 		}
 		if ( !( array_key_exists( $var, $builderValues['vars'] )
