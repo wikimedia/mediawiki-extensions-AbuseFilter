@@ -37,10 +37,12 @@ $title: Title object
 $vars: AbuseFilterVariableHolder
 $title: Title object
 $prefix: Variable name prefix
+$RCRow: If the variables should be generated for an RC row, this is the row. False if it's for the current action being filtered.
 
 'AbuseFilter-generateUserVars': Allows altering the variables generated for a specific user
 $vars: AbuseFilterVariableHolder
 $user: User object
+$RCRow: If the variables should be generated for an RC row, this is the row. False if it's for the current action being filtered.
 
 'AbuseFilter-generateStaticVars': Allows altering static variables, i.e. independent from page and user
 $vars: AbuseFilterVariableHolder
