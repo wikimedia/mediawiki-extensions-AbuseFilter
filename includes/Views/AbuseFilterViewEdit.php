@@ -1049,8 +1049,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		// Load the actions
 		$actions = [];
-		$res = $dbr->select( 'abuse_filter_action',
-			'*',
+		$res = $dbr->select(
+			'abuse_filter_action',
+			[ 'afa_consequence', 'afa_parameters' ],
 			[ 'afa_filter' => $id ],
 			__METHOD__
 		);

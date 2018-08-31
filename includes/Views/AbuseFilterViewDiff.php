@@ -145,18 +145,31 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		}
 
 		$dbr = wfGetDB( DB_REPLICA );
+		// All but afh_filter, afh_deleted and afh_changed_fields
+		$selectFields = [
+			'afh_id',
+			'afh_user',
+			'afh_user_text',
+			'afh_timestamp',
+			'afh_pattern',
+			'afh_comments',
+			'afh_flags',
+			'afh_public_comments',
+			'afh_actions',
+			'afh_group',
+		];
 		$row = null;
 		if ( is_numeric( $spec ) ) {
 			$row = $dbr->selectRow(
 				'abuse_filter_history',
-				'*',
+				$selectFields,
 				[ 'afh_id' => $spec, 'afh_filter' => $this->mFilter ],
 				__METHOD__
 			);
 		} elseif ( $spec == 'cur' ) {
 			$row = $dbr->selectRow(
 				'abuse_filter_history',
-				'*',
+				$selectFields,
 				[ 'afh_filter' => $this->mFilter ],
 				__METHOD__,
 				[ 'ORDER BY' => 'afh_timestamp desc' ]
@@ -167,7 +180,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 			$row = $dbr->selectRow(
 				'abuse_filter_history',
-				'*',
+				$selectFields,
 				[
 					'afh_filter' => $this->mFilter,
 					'afh_id<' . $dbr->addQuotes( $other['meta']['history_id'] ),
@@ -187,7 +200,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 			$row = $dbr->selectRow(
 				'abuse_filter_history',
-				'*',
+				$selectFields,
 				[
 					'afh_filter' => $this->mFilter,
 					'afh_id>' . $dbr->addQuotes( $other['meta']['history_id'] ),
