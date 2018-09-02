@@ -36,7 +36,7 @@ class AbuseFilterChangesList extends OldChangesList {
 			$examineParams
 		);
 
-		$s .= ' '.$this->msg( 'parentheses' )->rawParams( $examineLink )->escaped();
+		$s .= ' ' . $this->msg( 'parentheses' )->rawParams( $examineLink )->escaped();
 
 		// Add CSS classes for match and not match
 		if ( isset( $rc->filterResult ) ) {
