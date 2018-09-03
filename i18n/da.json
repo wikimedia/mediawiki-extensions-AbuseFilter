@@ -369,6 +369,7 @@
 	"abusefilter-test-page": "Ændringer udført på side:",
 	"abusefilter-test-shownegative": "Vis ændringer som ikke matcher filteret",
 	"abusefilter-test-syntaxerr": "Det filter, du angav indeholdt en fejl i syntaksen.\nDu kan modtage en fuld forklaring ved at klikke på knappen \"{{int:abusefilter-edit-check}}\".",
+	"abusefilter-test-search-type-all": "Alle handlinger",
 	"abusefilter-test-search-type-edit": "Redigeringer",
 	"abusefilter-test-search-type-move": "Flytninger",
 	"abusefilter-test-search-type-delete": "Sletninger",
