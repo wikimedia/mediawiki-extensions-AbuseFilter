@@ -411,7 +411,7 @@
 				switchEditor();
 
 				// Hide the syntax ok message when the text changes and sync dummy box
-				$filterBox.keyup( function () {
+				filterEditor.on( 'change', function () {
 					var $el = $( '#mw-abusefilter-syntaxresult' );
 
 					if ( $el.data( 'syntaxOk' ) ) {
@@ -426,7 +426,7 @@
 		}
 
 		// Hide the syntax ok message when the text changes
-		$plainTextBox.keyup( function () {
+		$plainTextBox.change( function () {
 			var $el = $( '#mw-abusefilter-syntaxresult' );
 
 			if ( $el.data( 'syntaxOk' ) ) {
