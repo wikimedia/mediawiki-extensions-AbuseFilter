@@ -2337,6 +2337,15 @@ class AbuseFilter {
 			}
 		}
 
+		// Warning and disallow message cannot be empty
+		if ( !empty( $actions['warn'] ) && $actions['warn']['parameters'][0] === '' ) {
+			$validationStatus->error( 'abusefilter-edit-invalid-warn-message' );
+			return $validationStatus;
+		} elseif ( !empty( $actions['disallow'] ) && $actions['disallow']['parameters'][0] === '' ) {
+			$validationStatus->error( 'abusefilter-edit-invalid-disallow-message' );
+			return $validationStatus;
+		}
+
 		// If 'throttle' is selected, check its parameters
 		if ( !empty( $actions['throttle'] ) ) {
 			$throttleCheck = self::checkThrottleParameters( $actions['throttle']['parameters'] );

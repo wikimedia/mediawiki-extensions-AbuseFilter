@@ -531,6 +531,44 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 						'needsOtherFilters' => false
 					]
 				]
+			],
+			[
+				[
+					'filterParameters' => [
+						'rules' => '1==1',
+						'description' => 'Empty warning message',
+						'warnEnabled' => true,
+						'warnMessage' => '',
+					],
+					'testData' => [
+						'doingWhat' => 'Trying to save a filter with empty warning message',
+						'expectedResult' => 'an error message saying that the warning message cannot be empty',
+						'expectedMessage' => 'abusefilter-edit-invalid-warn-message',
+						'shouldFail' => true,
+						'shouldBeSaved' => false,
+						'customUserGroup' => '',
+						'needsOtherFilters' => false
+					]
+				]
+			],
+			[
+				[
+					'filterParameters' => [
+						'rules' => '1==1',
+						'description' => 'Empty disallow message',
+						'disallowEnabled' => true,
+						'disallowMessage' => '',
+					],
+					'testData' => [
+						'doingWhat' => 'Trying to save a filter with empty disallow message',
+						'expectedResult' => 'an error message saying that the disallow message cannot be empty',
+						'expectedMessage' => 'abusefilter-edit-invalid-disallow-message',
+						'shouldFail' => true,
+						'shouldBeSaved' => false,
+						'customUserGroup' => '',
+						'needsOtherFilters' => false
+					]
+				]
 			]
 		];
 	}

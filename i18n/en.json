@@ -254,6 +254,8 @@
 	"abusefilter-edit-notallowed": "You are not permitted to create or edit abuse filters",
 	"abusefilter-edit-notallowed-global": "You are not permitted to create or edit global abuse filters",
 	"abusefilter-edit-notallowed-global-custom-msg": "Custom warning or disallow messages are not supported for global filters",
+	"abusefilter-edit-invalid-warn-message": "The warning message cannot be left empty.",
+	"abusefilter-edit-invalid-disallow-message": "The disallow message cannot be left empty.",
 	"abusefilter-edit-invalid-throttlecount": "The throttle action count must be a positive integer.",
 	"abusefilter-edit-invalid-throttleperiod": "The throttle period must be a positive integer.",
 	"abusefilter-edit-empty-throttlegroups": "At least one throttle group must be selected.",
