@@ -258,7 +258,9 @@
 					} )
 						.done( function ( html ) {
 							$( '#mw-abusefilter-warn-preview' ).show().html( html );
-							togglePreviewButton.setFlags( { destructive: true, progressive: false } );
+							togglePreviewButton.setFlags(
+								{ destructive: true, progressive: false }
+							);
 						} );
 				} );
 		} else {
@@ -392,9 +394,9 @@
 				// Ace setup from codeEditor extension
 				basePath = mw.config.get( 'wgExtensionAssetsPath', '' );
 				if ( basePath.slice( 0, 2 ) === '//' ) {
-					// ACE uses web workers, which have importScripts, which don't like relative links.
-					// This is a problem only when the assets are on another server, so this rewrite should suffice
-					// Protocol relative
+					// ACE uses web workers, which have importScripts, which don't like
+					// relative links. This is a problem only when the assets are on another
+					// server, so this rewrite should suffice.
 					basePath = window.location.protocol + basePath;
 				}
 				ace.config.set( 'basePath', basePath + '/CodeEditor/modules/ace' );
