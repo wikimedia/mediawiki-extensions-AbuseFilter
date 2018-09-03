@@ -74,7 +74,6 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 			case 'af_group':
 				// If this is global, local name probably doesn't exist, but try
 				return AbuseFilter::nameGroup( $value );
-				break;
 			default:
 				throw new MWException( "Unknown row type $name!" );
 		}

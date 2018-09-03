@@ -2,7 +2,6 @@
 <ruleset>
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
 		<exclude name="MediaWiki.Commenting.FunctionAnnotations.UnrecognizedAnnotation" />
-		<exclude name="Squiz.PHP.NonExecutableCode.Unreachable" />
 	</rule>
 	<rule ref="Generic.Files.LineLength">
 		<exclude-pattern>AbuseFilter\.alias\.php</exclude-pattern>

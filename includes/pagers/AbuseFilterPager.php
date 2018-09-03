@@ -254,7 +254,6 @@ class AbuseFilterPager extends TablePager {
 				)->parse();
 			case 'af_group':
 				return AbuseFilter::nameGroup( $value );
-				break;
 			default:
 				throw new MWException( "Unknown row type $name!" );
 		}
