@@ -292,7 +292,6 @@ abstract class AbuseFilterView extends ContextSource {
 	}
 
 	/**
-	 * @static
 	 * @return bool
 	 */
 	public static function canViewPrivate() {

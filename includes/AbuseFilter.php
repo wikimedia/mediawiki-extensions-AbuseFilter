@@ -266,7 +266,6 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @static
 	 * @param User $user
 	 * @return AbuseFilterVariableHolder
 	 */
@@ -640,7 +639,6 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @static
 	 * @param stdClass $row
 	 * @param AbuseFilterVariableHolder $vars
 	 * @param Title|null $title
