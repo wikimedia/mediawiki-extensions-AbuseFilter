@@ -52,7 +52,8 @@
 		} else if ( error === 'nosuchrcid' || error === 'nosuchlogid' ) {
 			msg = 'abusefilter-examine-notfound';
 		} else if ( error === 'permissiondenied' ) {
-			// The 'abusefilter-modify' or 'abusefilter-view-private' right is needed to use this API
+			// The 'abusefilter-modify' or 'abusefilter-view-private' right is needed
+			// to use this API
 			msg = 'abusefilter-mustviewprivateoredit';
 		} else if ( error === 'http' ) {
 			msg = 'abusefilter-http-error';
