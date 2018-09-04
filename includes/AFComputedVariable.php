@@ -27,7 +27,7 @@ class AFComputedVariable {
 	 *
 	 * @return object
 	 */
-	public function parseNonEditWikitext( $wikitext, $article ) {
+	public function parseNonEditWikitext( $wikitext, Article $article ) {
 		static $cache = [];
 
 		$cacheKey = md5( $wikitext ) . ':' . $article->getTitle()->getPrefixedText();
@@ -118,7 +118,7 @@ class AFComputedVariable {
 	 * @param Article $article
 	 * @return array
 	 */
-	public static function getLinksFromDB( $article ) {
+	public static function getLinksFromDB( Article $article ) {
 		// Stolen from ConfirmEdit, SimpleCaptcha::getLinksFromTracker
 		$id = $article->getId();
 		if ( !$id ) {
@@ -145,7 +145,7 @@ class AFComputedVariable {
 	 * @throws MWException
 	 * @throws AFPException
 	 */
-	public function compute( $vars ) {
+	public function compute( AbuseFilterVariableHolder $vars ) {
 		$parameters = $this->mParameters;
 		$result = null;
 
