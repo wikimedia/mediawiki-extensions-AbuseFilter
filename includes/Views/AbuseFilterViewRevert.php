@@ -164,8 +164,20 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			$conds[] = 'afl_timestamp <= ' . $dbr->addQuotes( $dbr->timestamp( $periodEnd ) );
 		}
 
-		// Database query.
-		$res = $dbr->select( 'abuse_filter_log', '*', $conds, __METHOD__ );
+		// All but afl_filter, afl_ip, afl_deleted, afl_patrolled_by, afl_rev_id and afl_log_id
+		$selectFields = [
+			'afl_id',
+			'afl_user',
+			'afl_user_text',
+			'afl_action',
+			'afl_actions',
+			'afl_var_dump',
+			'afl_timestamp',
+			'afl_namespace',
+			'afl_title',
+			'afl_wiki',
+		];
+		$res = $dbr->select( 'abuse_filter_log', $selectFields, $conds, __METHOD__ );
 
 		$results = [];
 		foreach ( $res as $row ) {
