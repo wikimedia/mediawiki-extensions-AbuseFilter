@@ -114,6 +114,7 @@
 	"abusefilter-edit-builder-vars-action": "ဆောင်ရွက်ချက်",
 	"abusefilter-edit-builder-vars-page-id": "စာမျက်နှာ အိုင်ဒီ",
 	"abusefilter-edit-builder-vars-page-prefixedtitle": "စာမျက်နှာခေါင်းစဉ် အပြည့်အစုံ",
+	"abusefilter-edit-builder-vars-page-age": "စာမျက်နှာ သက်တမ်း (စက္ကန့်ဖြင့်)",
 	"abusefilter-edit-builder-vars-user-editcount": "အသုံးပြုသူ၏ တည်းဖြတ်မှုအရေအတွက်",
 	"abusefilter-edit-builder-vars-user-age": "အသုံးပြုအကောင့်သူ၏ သက်တမ်း",
 	"abusefilter-edit-builder-vars-user-name": "အသုံးပြုသူ၏ အမည်",

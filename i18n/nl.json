@@ -196,7 +196,7 @@
 	"abusefilter-edit-action-tag": "De bewerking voor nadere beoordeling markeren.",
 	"abusefilter-edit-throttle-count": "Aantal toe te laten handelingen:",
 	"abusefilter-edit-throttle-period": "Tijdsduur (in seconden):",
-	"abusefilter-edit-throttle-groups": "Groepsbeperkingen per tijdseenheid op basis van:\n:''(één per regel, combineren met komma's)''",
+	"abusefilter-edit-throttle-groups": "Beperkingen groeperen op:",
 	"abusefilter-edit-throttle-ip": "IP-adres",
 	"abusefilter-edit-throttle-page": "Pagina",
 	"abusefilter-edit-warn-message": "Te gebruiken systeembericht voor waarschuwing:",
