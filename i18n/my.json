@@ -180,6 +180,7 @@
 	"abusefilter-topnav-tools": "အပြစ်ရှာ ကိရိယာများ",
 	"abusefilter-topnav-import": "စိစစ်မှုစနစ် တင်သွင်းရန်",
 	"abusefilter-log-name": "အလွဲသုံးစားမှု စိစစ်စနစ် မှတ်တမ်း",
+	"abusefilter-log-header": "ဤမှတ်တမ်းသည် စိစစ်မှုစနစ်ရှိ ပြုလုပ်ထားသော ပြောင်းလဲမှုများ၏ အကျဉ်းချုပ်ကို ဖော်ပြပေးသည်။ အသေးစိတ် ပြည့်စုံစွာကြည့်လိုပါက လတ်တလော စိစစ်မှု အပြောင်းအလဲများ [[Special:AbuseFilter/history|စာရင်း]]ကို ကြည့်ပါ။",
 	"abusefilter-log-noresults": "မည်သည့်ရလဒ်မှ မရှိပါ",
 	"abusefilter-diff-title": "ဗားရှင်းများကြား ကွဲပြားမှုများ",
 	"abusefilter-diff-info": "အခြေခံသတင်းအချက်အလက်",
