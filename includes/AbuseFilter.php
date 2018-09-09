@@ -2218,6 +2218,76 @@ class AbuseFilter {
 	}
 
 	/**
+	 * Validate throttle parameters
+	 *
+	 * @param array $params Throttle parameters
+	 * @return null|string Null on success, a string with the error message on failure
+	 */
+	public static function checkThrottleParameters( $params ) {
+		$throttleRate = explode( ',', $params[1] );
+		$throttleCount = $throttleRate[0];
+		$throttlePeriod = $throttleRate[1];
+		$throttleGroups = array_slice( $params, 2 );
+		$validGroups = [
+			'ip',
+			'user',
+			'range',
+			'creationdate',
+			'editcount',
+			'site',
+			'page'
+		];
+
+		$error = null;
+		if ( preg_match( '/^[1-9][0-9]*$/', $throttleCount ) === 0 ) {
+			$error = 'abusefilter-edit-invalid-throttlecount';
+		} elseif ( preg_match( '/^[1-9][0-9]*$/', $throttlePeriod ) === 0 ) {
+			$error = 'abusefilter-edit-invalid-throttleperiod';
+		} elseif ( !$throttleGroups ) {
+			$error = 'abusefilter-edit-empty-throttlegroups';
+		} else {
+			$valid = true;
+			// Groups should be unique in three ways: no direct duplicates like 'user' and 'user',
+			// no duplicated subgroups, not even shuffled ('ip,user' and 'user,ip') and no duplicates
+			// within subgroups ('user,ip,user')
+			$uniqueGroups = [];
+			$uniqueSubGroups = true;
+			// Every group should be valid, and subgroups should have valid groups inside
+			foreach ( $throttleGroups as $group ) {
+				if ( strpos( $group, ',' ) !== false ) {
+					$subGroups = explode( ',', $group );
+					if ( $subGroups !== array_unique( $subGroups ) ) {
+						$uniqueSubGroups = false;
+						break;
+					}
+					foreach ( $subGroups as $subGroup ) {
+						if ( !in_array( $subGroup, $validGroups ) ) {
+							$valid = false;
+							break 2;
+						}
+					}
+					sort( $subGroups );
+					$uniqueGroups[] = implode( ',', $subGroups );
+				} else {
+					if ( !in_array( $group, $validGroups ) ) {
+						$valid = false;
+						break;
+					}
+					$uniqueGroups[] = $group;
+				}
+			}
+
+			if ( !$valid ) {
+				$error = 'abusefilter-edit-invalid-throttlegroups';
+			} elseif ( !$uniqueSubGroups || $uniqueGroups !== array_unique( $uniqueGroups ) ) {
+				$error = 'abusefilter-edit-duplicated-throttlegroups';
+			}
+		}
+
+		return $error;
+	}
+
+	/**
 	 * Checks whether user input for the filter editing form is valid and if so saves the filter
 	 *
 	 * @param AbuseFilterViewEdit $page
@@ -2269,6 +2339,15 @@ class AbuseFilter {
 					$validationStatus->error( $msg );
 					return $validationStatus;
 				}
+			}
+		}
+
+		// If 'throttle' is selected, check its parameters
+		if ( !empty( $actions['throttle'] ) ) {
+			$throttleCheck = self::checkThrottleParameters( $actions['throttle']['parameters'] );
+			if ( $throttleCheck !== null ) {
+				$validationStatus->error( $throttleCheck );
+				return $validationStatus;
 			}
 		}
 
@@ -2918,7 +2997,40 @@ class AbuseFilter {
 			} elseif ( $action === 'throttle' ) {
 				array_shift( $parameters );
 				list( $actions, $time ) = explode( ',', array_shift( $parameters ) );
-				$groups = $wgLang->commaList( $parameters );
+
+				if ( $parameters === [ '' ] ) {
+					// Having empty groups won't happen for new filters due to validation upon saving,
+					// but old entries may have it. We'd better not show a broken message. Also,
+					// the array has an empty string inside because we haven't been passing an empty array
+					// as the default when retrieving wpFilterThrottleGroups with getArray (when it was
+					// a CheckboxMultiselect).
+					$groups = '';
+				} else {
+					// Old entries may not have unique values.
+					$throttleGroups = array_unique( $parameters );
+					// Join comma-separated groups in a commaList with a final "and", and convert to messages.
+					// Messages used here: abusefilter-throttle-ip, abusefilter-throttle-user,
+					// abusefilter-throttle-site, abusefilter-throttle-creationdate, abusefilter-throttle-editcount
+					// abusefilter-throttle-range, abusefilter-throttle-page
+					foreach ( $throttleGroups as &$val ) {
+						if ( strpos( $val, ',' ) !== false ) {
+							$subGroups = explode( ',', $val );
+							foreach ( $subGroups as &$group ) {
+								$msg = wfMessage( "abusefilter-throttle-$group" );
+								// We previously accepted literally everything in this field, so old entries
+								// may have weird stuff.
+								$group = $msg->exists() ? $msg->text() : $group;
+							}
+							unset( $group );
+							$val = $wgLang->listToText( $subGroups );
+						} else {
+							$msg = wfMessage( "abusefilter-throttle-$val" );
+							$val = $msg->exists() ? $msg->text() : $val;
+						}
+					}
+					unset( $val );
+					$groups = $wgLang->semicolonList( $throttleGroups );
+				}
 				$displayAction = self::getActionDisplay( $action ) .
 				wfMessage( 'colon-separator' )->escaped() .
 				wfMessage( 'abusefilter-throttle-details' )->params( $actions, $time, $groups )->escaped();
