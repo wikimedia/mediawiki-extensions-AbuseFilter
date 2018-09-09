@@ -2396,6 +2396,12 @@ class AbuseFilter {
 
 			if ( $enabled ) {
 				$parameters = $actions[$action]['parameters'];
+				if ( $action === 'throttle' && $parameters[0] === 'new' ) {
+					// FIXME: Do we really need to keep the filter ID inside throttle parameters?
+					// We'd save space, keep things simpler and avoid this hack. Note: if removing
+					// it, a maintenance script will be necessary to clean up the table.
+					$parameters[0] = $new_id;
+				}
 
 				$thisRow = [
 					'afa_filter' => $new_id,
