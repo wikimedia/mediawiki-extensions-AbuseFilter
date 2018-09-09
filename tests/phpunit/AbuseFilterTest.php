@@ -517,51 +517,6 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * Check that our tag validation is working properly. Note that we only need one test
-	 *   for each called function. Consistency within ChangeTags functions should be
-	 *   assured by tests in core. The test for canAddTagsAccompanyingChange and canCreateTag
-	 *   are missing because they won't actually fail, never. Resolving T173917 would
-	 *   greatly improve the situation and could help writing better tests.
-	 *
-	 * @param string $tag The tag to validate
-	 * @param string|null $error The expected error message. Null if validations should pass
-	 * @covers AbuseFilter::isAllowedTag
-	 * @dataProvider provideTags
-	 */
-	public function testIsAllowedTag( $tag, $error ) {
-		$status = AbuseFilter::isAllowedTag( $tag );
-
-		if ( !$status->isGood() ) {
-			$actualError = $status->getErrors();
-			$actualError = $actualError[0]['message'];
-		} else {
-			$actualError = null;
-			if ( $error !== null ) {
-				$this->fail( "Tag validation returned a valid status instead of the expected '$error' error." );
-			}
-		}
-
-		$this->assertSame(
-			$error,
-			$actualError,
-			"Expected message '$error', got '$actualError' while validating the tag '$tag'."
-		);
-	}
-
-	/**
-	 * Data provider for testIsAllowedTag
-	 * @return array
-	 */
-	public function provideTags() {
-		return [
-			[ 'a|b', 'tags-create-invalid-chars' ],
-			[ 'mw-undo', 'abusefilter-edit-bad-tags' ],
-			[ 'abusefilter-condition-limit', 'abusefilter-tag-reserved' ],
-			[ 'my_tag', null ],
-		];
-	}
-
-	/**
 	 * Check that version comparing works well
 	 *
 	 * @param array $firstVersion [ stdClass, array ]
