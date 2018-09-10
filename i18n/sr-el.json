@@ -125,7 +125,7 @@
 	"abusefilter-edit": "Uređivanje filtera zloupotrebe",
 	"abusefilter-edit-subtitle": "Uređujete filter $1",
 	"abusefilter-edit-subtitle-new": "Pravljenje filtera",
-	"abusefilter-edit-oldwarning": "<strong>Uređujete staro izdanje ovog filtera.\nIskazane statistike su za najnovije izdanje.\nAko sačuvate, obrisaćete sve izmene nastale od revizije koju upravo uređujete.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Nazad na istoriju ovog filtera]].",
+	"abusefilter-edit-oldwarning": "<strong>Uređujete staro izdanje ovog filtera.\nIskazane statistike su za najnovije izdanje.\nAko sačuvate, obrisaćete sve izmene nastale od izmene koju upravo uređujete.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Nazad na istoriju ovog filtera]].",
 	"abusefilter-edit-status-label": "Statistike:",
 	"abusefilter-edit-status": "Od {{PLURAL:$1|1=poslednje radnje|poslednje $1 radnje|poslednjih $1 radnji}}, ovaj filter se poklopio $2 ($3%).",
 	"abusefilter-edit-status-profile": "Od {{PLURAL:$1|poslednje radnje|poslednje $1 radnje|poslednjih $1 radnji}}, ovaj filter se poklopio $2 ($3%).\nU proseku, njegovo vreme pokretanja je $4 ms, a troši $5 {{PLURAL:$5|uslov|uslova}}.",

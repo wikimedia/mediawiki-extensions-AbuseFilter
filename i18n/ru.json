@@ -395,7 +395,7 @@
 	"abusefilter-edit-builder-vars-restrictions-move": "Уровень защиты страницы от переименований",
 	"abusefilter-edit-builder-vars-restrictions-create": "Защита от создания страницы",
 	"abusefilter-edit-builder-vars-restrictions-upload": "Защита загрузки файла",
-	"abusefilter-edit-builder-vars-movedfrom-restrictions-edit": "Уровень защиты от переименования для страницы назначения",
+	"abusefilter-edit-builder-vars-movedfrom-restrictions-edit": "Уровень защиты от редактирования для страницы-источника",
 	"abusefilter-edit-builder-vars-movedfrom-restrictions-move": "Уровень защиты от переименования для страницы-источника",
 	"abusefilter-edit-builder-vars-movedfrom-restrictions-create": "Защита от создания исходной страницы при перемещении",
 	"abusefilter-edit-builder-vars-movedfrom-restrictions-upload": "Защита при загрузке файла, который переносится",
