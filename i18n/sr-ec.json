@@ -353,7 +353,7 @@
 	"abusefilter-exception-unclosedstring": "Незатворена ниска почиње са знаком $1.",
 	"abusefilter-exception-invalidoperator": "Неисправан оператор „$2“ код знака $1.",
 	"abusefilter-exception-unrecognisedtoken": "Непрепознат токен „$2“ код знака $1.",
-	"abusefilter-exception-noparams": "Нема наведених параметара за функцију „$2“ код знака $1.\nОчекиван(о) $3 {{PLURAL:$3|аргумент|аргумената}}.",
+	"abusefilter-exception-noparams": "Нема наведених параметара за функцију „$2” код знака $1.\n{{PLURAL:$3|Очекиван $3 аргумент|Очекивано $3 аргумената}}.",
 	"abusefilter-exception-dividebyzero": "Недозвољен покушај дељења $2 с нулом код знака $1.",
 	"abusefilter-exception-unrecognisedvar": "Непрепозната променљива $2 код знака $1",
 	"abusefilter-exception-notenoughargs": "Недовољно аргумената за функцију $2 позвану на карактеру $1.\n{{PLURAL:$3|Очекивало се аргумената:}} $3, а добијено: $4",
