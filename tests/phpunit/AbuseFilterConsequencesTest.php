@@ -1765,6 +1765,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @dataProvider provideGlobalFilters
 	 */
 	public function testGlobalFilters( $createIds, $actionParams, $consequences ) {
+		global $wgAbuseFilterAflFilterMigrationStage;
+
 		$this->createFilters( $createIds, true );
 
 		$result = $this->doAction( $actionParams );
@@ -1778,17 +1780,27 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			'The error messages obtained by performing the action do not match.'
 		);
 
+		$filterFields = [];
+		if ( $wgAbuseFilterAflFilterMigrationStage & SCHEMA_COMPAT_READ_OLD ) {
+			$filterFields[] = 'afl_filter';
+		} elseif ( $wgAbuseFilterAflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
+			$filterFields[] = 'afl_filter_id';
+		}
 		// Check that the hits were logged on the "external" DB
-		$logged = $this->db->selectFieldValues(
+		$res = $this->db->select(
 			self::DB_EXTERNAL_PREFIX . 'abuse_filter_log',
-			'afl_filter',
+			$filterFields,
 			[ 'afl_wiki IS NOT NULL' ],
 			__METHOD__
 		);
+		$loggedFilters = [];
+		foreach ( $res as $row ) {
+			$loggedFilters[] = $row->afl_filter_id ?? $row->afl_filter;
+		}
 		// Don't use assertSame because the DB holds strings here (T42757)
 		$this->assertEquals(
 			$createIds,
-			$logged,
+			$loggedFilters,
 			'Some filter hits were not logged in the external DB.'
 		);
 	}

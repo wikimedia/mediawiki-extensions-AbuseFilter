@@ -29,6 +29,7 @@ use AbuseFilter;
 use ApiBase;
 use ApiQuery;
 use ApiQueryBase;
+use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\MediaWikiServices;
@@ -59,6 +60,8 @@ class QueryAbuseLog extends ApiQueryBase {
 	public function execute() {
 		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$lookup = AbuseFilterServices::getFilterLookup();
+		$aflFilterMigrationStage = $this->getConfig()->get( 'AbuseFilterAflFilterMigrationStage' );
+
 		// Same check as in SpecialAbuseLog
 		$this->checkUserRightsAny( 'abusefilter-log' );
 
@@ -82,23 +85,43 @@ class QueryAbuseLog extends ApiQueryBase {
 		if ( $fld_details ) {
 			$this->checkUserRightsAny( 'abusefilter-log-detail' );
 		}
+
+		// Map of [ [ id, global ], ... ]
+		$searchFilters = [];
 		// Match permissions for viewing events on private filters to SpecialAbuseLog (bug 42814)
-		if ( $params['filter'] && !$afPermManager->canViewPrivateFiltersLogs( $user ) ) {
-			// A specific filter parameter is set but the user isn't allowed to view all filters
+		// @todo Avoid code duplication with SpecialAbuseLog::showList, make it so that, if hidden
+		// filters are specified, we only filter them out instead of failing.
+		if ( $params['filter'] ) {
 			if ( !is_array( $params['filter'] ) ) {
 				$params['filter'] = [ $params['filter'] ];
 			}
+
+			$foundInvalid = false;
 			foreach ( $params['filter'] as $filter ) {
-				list( $filterID, $global ) = AbuseFilter::splitGlobalName( $filter );
 				try {
-					$isHidden = $lookup->getFilter( $filterID, $global )->isHidden();
-				} catch ( CentralDBNotAvailableException $_ ) {
-					$isHidden = false;
+					$searchFilters[] = AbuseFilter::splitGlobalName( $filter );
+				} catch ( InvalidArgumentException $e ) {
+					$foundInvalid = true;
+					continue;
 				}
-				if ( $isHidden ) {
-					$this->dieWithError(
-						[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-private' ) ]
-					);
+			}
+			// @phan-suppress-next-line PhanImpossibleCondition
+			if ( $foundInvalid ) {
+				// @todo Tell what the invalid IDs are
+				$this->addWarning( 'abusefilter-log-invalid-filter' );
+			}
+			if ( !$afPermManager->canViewPrivateFiltersLogs( $user ) ) {
+				foreach ( $searchFilters as [ $filterID, $global ] ) {
+					try {
+						$isHidden = $lookup->getFilter( $filterID, $global )->isHidden();
+					} catch ( CentralDBNotAvailableException $_ ) {
+						$isHidden = false;
+					}
+					if ( $isHidden ) {
+						$this->dieWithError(
+							[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-private' ) ]
+						);
+					}
 				}
 			}
 		}
@@ -109,7 +132,12 @@ class QueryAbuseLog extends ApiQueryBase {
 		$this->addFields( 'afl_timestamp' );
 		$this->addFields( 'afl_rev_id' );
 		$this->addFields( 'afl_deleted' );
-		$this->addFields( 'afl_filter' );
+		$this->addFieldsIf( 'afl_filter',
+			( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_OLD ) !== 0 );
+		$this->addFieldsIf( 'afl_filter_id',
+			( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) !== 0 );
+		$this->addFieldsIf( 'afl_global',
+			( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) !== 0 );
 		$this->addFieldsIf( 'afl_id', $fld_ids );
 		$this->addFieldsIf( 'afl_user_text', $fld_user );
 		$this->addFieldsIf( [ 'afl_namespace', 'afl_title' ], $fld_title );
@@ -121,8 +149,15 @@ class QueryAbuseLog extends ApiQueryBase {
 		if ( $fld_filter ) {
 			$this->addTables( 'abuse_filter' );
 			$this->addFields( 'af_public_comments' );
-			$this->addJoinConds( [ 'abuse_filter' => [ 'LEFT JOIN',
-				'af_id=afl_filter' ] ] );
+
+			if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
+				$join = [ 'af_id=afl_filter_id', 'afl_global' => 0 ];
+			} else {
+				// SCHEMA_COMPAT_READ_OLD
+				$join = 'af_id=afl_filter';
+			}
+
+			$this->addJoinConds( [ 'abuse_filter' => [ 'LEFT JOIN', $join ] ] );
 		}
 
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
@@ -155,10 +190,45 @@ class QueryAbuseLog extends ApiQueryBase {
 			}
 		}
 
-		if ( isset( $params['filter'] ) && $params['filter'] !== [] ) {
-			$this->addWhere( [ 'afl_filter' => $params['filter'] ] );
-		}
 		$this->addWhereIf( [ 'afl_deleted' => 0 ], !$afPermManager->canSeeHiddenLogEntries( $user ) );
+
+		if ( $searchFilters ) {
+			$conds = [];
+			// @todo Avoid code duplication with SpecialAbuseLog::showList
+			if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
+				$filterConds = [ 'local' => [], 'global' => [] ];
+				foreach ( $searchFilters as $filter ) {
+					$isGlobal = $filter[1];
+					$key = $isGlobal ? 'global' : 'local';
+					$filterConds[$key][] = $filter[0];
+				}
+				$conds = [];
+				// @phan-suppress-next-line PhanImpossibleCondition False positive
+				if ( $filterConds['local'] ) {
+					$conds[] = $this->getDB()->makeList(
+						[ 'afl_global' => 0, 'afl_filter_id' => $filterConds['local'] ],
+						LIST_AND
+					);
+				}
+				// @phan-suppress-next-line PhanImpossibleCondition False positive
+				if ( $filterConds['global'] ) {
+					$conds[] = $this->getDB()->makeList(
+						[ 'afl_global' => 1, 'afl_filter_id' => $filterConds['global'] ],
+						LIST_AND
+					);
+				}
+				$conds = $this->getDB()->makeList( $conds, LIST_OR );
+			} else {
+				// SCHEMA_COMPAT_READ_OLD
+				$names = [];
+				foreach ( $searchFilters as $filter ) {
+					$names[] = AbuseFilter::buildGlobalName( ...$filter );
+				}
+				$conds = [ 'afl_filter' => $names ];
+			}
+			$this->addWhere( $conds );
+		}
+
 		if ( isset( $params['wiki'] ) ) {
 			// 'wiki' won't be set if $wgAbuseFilterIsCentral = false
 			$this->addWhereIf( [ 'afl_wiki' => $params['wiki'] ], $isCentral );
@@ -195,14 +265,23 @@ class QueryAbuseLog extends ApiQueryBase {
 					continue;
 				}
 			}
-			list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+
+			if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
+				$filterID = $row->afl_filter_id;
+				$global = $row->afl_global;
+				$fullName = AbuseFilter::buildGlobalName( $filterID, $global );
+			} else {
+				// SCHEMA_COMPAT_READ_OLD
+				list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+				$fullName = $row->afl_filter;
+			}
 			$isHidden = $lookup->getFilter( $filterID, $global )->isHidden();
 			$canSeeDetails = $afPermManager->canSeeLogDetailsForFilter( $user, $isHidden );
 
 			$entry = [];
 			if ( $fld_ids ) {
 				$entry['id'] = intval( $row->afl_id );
-				$entry['filter_id'] = $canSeeDetails ? $row->afl_filter : '';
+				$entry['filter_id'] = $canSeeDetails ? $fullName : '';
 			}
 			if ( $fld_filter ) {
 				if ( $global ) {

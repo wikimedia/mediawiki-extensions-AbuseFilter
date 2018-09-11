@@ -191,19 +191,29 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 * @param int $logid
 	 */
 	public function showExaminerForLogEntry( $logid ) {
+		$aflFilterMigrationStage = $this->getConfig()->get( 'AbuseFilterAflFilterMigrationStage' );
 		// Get data
 		$dbr = wfGetDB( DB_REPLICA );
 		$user = $this->getUser();
 		$out = $this->getOutput();
 
+		$fields = [
+			'afl_deleted',
+			'afl_var_dump',
+			'afl_rev_id'
+		];
+
+		if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
+			$fields[] = 'afl_filter_id';
+			$fields[] = 'afl_global';
+		} else {
+			// SCHEMA_COMPAT_READ_OLD
+			$fields[] = 'afl_filter';
+		}
+
 		$row = $dbr->selectRow(
 			'abuse_filter_log',
-			[
-				'afl_filter',
-				'afl_deleted',
-				'afl_var_dump',
-				'afl_rev_id'
-			],
+			$fields,
 			[ 'afl_id' => $logid ],
 			__METHOD__
 		);
@@ -213,7 +223,13 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
-		[ $filterID, $isGlobal ] = AbuseFilter::splitGlobalName( $row->afl_filter );
+		if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
+			$filterID = $row->afl_filter_id;
+			$isGlobal = $row->afl_global;
+		} else {
+			// SCHEMA_COMPAT_READ_OLD
+			[ $filterID, $isGlobal ] = AbuseFilter::splitGlobalName( $row->afl_filter );
+		}
 		$isHidden = $this->filterLookup->getFilter( $filterID, $isGlobal )->isHidden();
 		if ( !$this->afPermManager->canSeeLogDetailsForFilter( $user, $isHidden ) ) {
 			$out->addWikiMsg( 'abusefilter-log-cannot-see-details' );

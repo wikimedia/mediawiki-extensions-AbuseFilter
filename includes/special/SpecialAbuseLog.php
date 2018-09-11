@@ -450,6 +450,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 * Shows the results list
 	 */
 	public function showList() {
+		$aflFilterMigrationStage = $this->getConfig()->get( 'AbuseFilterAflFilterMigrationStage' );
+
 		$out = $this->getOutput();
 		$user = $this->getUser();
 		$this->outputHeader( 'abusefilter-log-summary' );
@@ -515,6 +517,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 			// @phan-suppress-next-line PhanImpossibleCondition
 			if ( $foundInvalid ) {
+				// @todo Tell what the invalid IDs are
 				$out->addHTML(
 					Html::rawElement(
 						'p',
@@ -559,7 +562,33 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				return;
 			}
 
-			$conds['afl_filter'] = $searchIDs;
+			if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
+				$filterConds = [ 'local' => [], 'global' => [] ];
+				foreach ( $searchIDs as $filter ) {
+					list( $filterID, $isGlobal ) = AbuseFilter::splitGlobalName( $filter );
+					$key = $isGlobal ? 'global' : 'local';
+					$filterConds[$key][] = $filterID;
+				}
+				$filterWhere = [];
+				// @phan-suppress-next-line PhanImpossibleCondition False positive
+				if ( $filterConds['local'] ) {
+					$filterWhere[] = $dbr->makeList(
+						[ 'afl_global' => 0, 'afl_filter_id' => $filterConds['local'] ],
+						LIST_AND
+					);
+				}
+				// @phan-suppress-next-line PhanImpossibleCondition False positive
+				if ( $filterConds['global'] ) {
+					$filterWhere[] = $dbr->makeList(
+						[ 'afl_global' => 1, 'afl_filter_id' => $filterConds['global'] ],
+						LIST_AND
+					);
+				}
+				$conds[] = $dbr->makeList( $filterWhere, LIST_OR );
+			} else {
+				// SCHEMA_COMPAT_READ_OLD
+				$conds[ 'afl_filter' ] = $searchIDs;
+			}
 		}
 
 		$searchTitle = Title::newFromText( $this->mSearchTitle );
@@ -645,6 +674,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	public function showDetails( $id ) {
 		$out = $this->getOutput();
 		$user = $this->getUser();
+		$aflFilterMigrationStage = $this->getConfig()->get( 'AbuseFilterAflFilterMigrationStage' );
 
 		$pager = new AbuseLogPager(
 			$this,
@@ -673,7 +703,14 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		if ( !$row ) {
 			$error = 'abusefilter-log-nonexistent';
 		} else {
-			list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+			if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
+				$filterID = $row->afl_filter_id;
+				$global = $row->afl_global;
+			} else {
+				// SCHEMA_COMPAT_READ_OLD
+				list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+			}
+
 			if ( $global ) {
 				$filter_hidden = AbuseFilterServices::getFilterLookup()->getFilter( $filterID, $global )->isHidden();
 			} else {
@@ -817,16 +854,29 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 *  or an error and no row.
 	 */
 	public static function getPrivateDetailsRow( User $user, $id ) {
+		global $wgAbuseFilterAflFilterMigrationStage;
+
 		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$dbr = wfGetDB( DB_REPLICA );
+		$fields = [ 'afl_id', 'afl_user_text', 'afl_timestamp', 'afl_ip', 'af_id',
+			'af_public_comments', 'af_hidden' ];
+		if ( $wgAbuseFilterAflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
+			$fields[] = 'afl_filter_id';
+			$fields[] = 'afl_global';
+			$join = [ 'af_id=afl_filter_id', 'afl_global' => 0 ];
+		} else {
+			// SCHEMA_COMPAT_READ_OLD
+			$fields[] = 'afl_filter';
+			$join = 'af_id=afl_filter';
+		}
+
 		$row = $dbr->selectRow(
 			[ 'abuse_filter_log', 'abuse_filter' ],
-			[ 'afl_id', 'afl_filter', 'afl_user_text', 'afl_timestamp', 'afl_ip', 'af_id',
-				'af_public_comments', 'af_hidden' ],
+			$fields,
 			[ 'afl_id' => $id ],
 			__METHOD__,
 			[],
-			[ 'abuse_filter' => [ 'LEFT JOIN', 'af_id=afl_filter' ] ]
+			[ 'abuse_filter' => [ 'LEFT JOIN', $join ] ]
 		);
 
 		$status = Status::newGood();
@@ -835,7 +885,14 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			return $status;
 		}
 
-		list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+		if ( $wgAbuseFilterAflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
+			$filterID = $row->afl_filter_id;
+			$global = $row->afl_global;
+		} else {
+			// SCHEMA_COMPAT_READ_OLD
+			list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+		}
+
 		if ( $global ) {
 			$lookup = AbuseFilterServices::getFilterLookup();
 			$filterHidden = $lookup->getFilter( $filterID, $global )->isHidden();
@@ -1089,6 +1146,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	public function formatRow( $row, $isListItem = true ) {
 		$user = $this->getUser();
 		$lang = $this->getLanguage();
+		$aflFilterMigrationStage = $this->getConfig()->get( 'AbuseFilterAflFilterMigrationStage' );
 
 		$title = Title::makeTitle( $row->afl_namespace, $row->afl_title );
 
@@ -1169,7 +1227,13 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			$actions_taken = $lang->commaList( $displayActions );
 		}
 
-		list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+		if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
+			$filterID = $row->afl_filter_id;
+			$global = $row->afl_global;
+		} else {
+			// SCHEMA_COMPAT_READ_OLD
+			list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+		}
 
 		if ( $global ) {
 			// Pull global filter description

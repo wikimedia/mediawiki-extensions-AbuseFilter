@@ -58,7 +58,16 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	 */
 	public function getQueryInfo() {
 		$afPermManager = AbuseFilterServices::getPermissionManager();
+		$aflFilterMigrationStage = $this->getConfig()->get( 'AbuseFilterAflFilterMigrationStage' );
+
 		$conds = $this->mConds;
+
+		if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
+			$join = [ 'af_id=afl_filter_id', 'afl_global' => 0 ];
+		} else {
+			// SCHEMA_COMPAT_READ_OLD
+			$join = 'af_id=afl_filter';
+		}
 
 		$info = [
 			'tables' => [ 'abuse_filter_log', 'abuse_filter', 'revision' ],
@@ -71,7 +80,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 			'join_conds' => [
 				'abuse_filter' => [
 					'LEFT JOIN',
-					'af_id=afl_filter',
+					$join,
 				],
 				'revision' => [
 					'LEFT JOIN',
