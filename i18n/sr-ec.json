@@ -31,7 +31,7 @@
 	"abusefilter-accountreserved": "Ово корисничко име је резервисано од стране филтера против злоупотребе.",
 	"right-abusefilter-modify": "мењање филтерâ против злоупотребе",
 	"right-abusefilter-view": "прегледање филтерâ против злоупотребе",
-	"right-abusefilter-log": "прегледање евиденције злоупотребе",
+	"right-abusefilter-log": "прегледање дневника злоупотребе",
 	"right-abusefilter-log-detail": "прегледање детаљних уноса у евиденцији злоупотребе",
 	"right-abusefilter-private": "прегледање приватних података у евиденцији злоупотребе",
 	"right-abusefilter-modify-restricted": "мењање филтерâ против злоупотребе са ограниченим радњама",
