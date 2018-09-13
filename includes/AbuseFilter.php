@@ -895,12 +895,13 @@ class AbuseFilter {
 	 * @param string[] $filters
 	 * @param Title $title
 	 * @param AbuseFilterVariableHolder $vars
+	 * @param User $user
 	 * @return Status returns the operation's status. $status->isOK() will return true if
 	 *         there were no actions taken, false otherwise. $status->getValue() will return
 	 *         an array listing the actions taken. $status->getErrors() etc. will provide
 	 *         the errors and warnings to be shown to the user to explain the actions.
 	 */
-	public static function executeFilterActions( $filters, $title, $vars ) {
+	public static function executeFilterActions( $filters, $title, $vars, User $user ) {
 		global $wgMainCacheType;
 
 		$actionsByFilter = self::getConsequencesForFilters( $filters );
@@ -989,19 +990,18 @@ class AbuseFilter {
 			// Find out the max expiry to issue the longest triggered block.
 			// Need to check here since methods like user->getBlock() aren't available
 			if ( !empty( $actions['block'] ) ) {
-				global $wgUser;
 				$parameters = $actions['block']['parameters'];
 
 				if ( count( $parameters ) === 3 ) {
 					// New type of filters with custom block
-					if ( $wgUser->isAnon() ) {
+					if ( $user->isAnon() ) {
 						$expiry = $parameters[1];
 					} else {
 						$expiry = $parameters[2];
 					}
 				} else {
 					// Old type with fixed expiry
-					if ( $wgUser->isAnon() && $wgAbuseFilterAnonBlockDuration !== null ) {
+					if ( $user->isAnon() && $wgAbuseFilterAnonBlockDuration !== null ) {
 						// The user isn't logged in and the anon block duration
 						// doesn't default to $wgAbuseFilterBlockDuration.
 						$expiry = $wgAbuseFilterAnonBlockDuration;
@@ -1031,7 +1031,8 @@ class AbuseFilter {
 					$title,
 					$vars,
 					self::getFilter( $filter )->af_public_comments,
-					$filter
+					$filter,
+					$user
 				);
 
 				if ( $newMsg !== null ) {
@@ -1050,7 +1051,7 @@ class AbuseFilter {
 					'desc' => $blockValues[0],
 					'number' => $blockValues[1]
 				],
-				$wgUser->getName(),
+				$user->getName(),
 				$maxExpiry,
 				true,
 				$blockValues[2]
@@ -1093,18 +1094,14 @@ class AbuseFilter {
 	 * @param AbuseFilterVariableHolder $vars
 	 * @param Title $title
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
-	 * @param User|null $user The user performing the action; defaults to $wgUser
+	 * @param User $user The user performing the action
 	 * @param string $mode Use 'execute' to run filters and log or 'stash' to only cache matches
 	 * @return Status
 	 */
 	public static function filterAction(
-		$vars, $title, $group = 'default', $user = null, $mode = 'execute'
+		AbuseFilterVariableHolder $vars, Title $title, $group, User $user, $mode = 'execute'
 	) {
-		global $wgUser, $wgRequest, $wgAbuseFilterRuntimeProfile, $wgAbuseFilterLogIP;
-
-		if ( !$user ) {
-			$user = $wgUser;
-		}
+		global $wgRequest, $wgAbuseFilterRuntimeProfile, $wgAbuseFilterLogIP;
 
 		$logger = LoggerFactory::getInstance( 'StashEdit' );
 		$statsd = MediaWikiServices::getInstance()->getStatsdDataFactory();
@@ -1182,11 +1179,11 @@ class AbuseFilter {
 		if ( count( $matched_filters ) == 0 ) {
 			$status = Status::newGood();
 		} else {
-			$status = self::executeFilterActions( $matched_filters, $title, $vars );
+			$status = self::executeFilterActions( $matched_filters, $title, $vars, $user );
 			$actions_taken = $status->getValue();
 			$action = $vars->getVar( 'ACTION' )->toString();
 
-			// If $wgUser isn't safe to load (e.g. a failure during
+			// If $user isn't safe to load (e.g. a failure during
 			// AbortAutoAccount), create a dummy anonymous user instead.
 			$user = $user->isSafeToLoad() ? $user : new User;
 
@@ -1576,13 +1573,14 @@ class AbuseFilter {
 	 * @param AbuseFilterVariableHolder $vars
 	 * @param string $rule_desc
 	 * @param int|string $rule_number
+	 * @param User $user
 	 *
 	 * @return array|null a message describing the action that was taken,
 	 *         or null if no action was taken. The message is given as an array
 	 *         containing the message key followed by any message parameters.
 	 */
 	public static function takeConsequenceAction( $action, $parameters, $title,
-		$vars, $rule_desc, $rule_number ) {
+		$vars, $rule_desc, $rule_number, User $user ) {
 		global $wgAbuseFilterCustomActionsHandlers, $wgRequest;
 
 		$message = null;
@@ -1627,16 +1625,15 @@ class AbuseFilter {
 				];
 				break;
 			case 'degroup':
-				global $wgUser;
-				if ( !$wgUser->isAnon() ) {
+				if ( !$user->isAnon() ) {
 					// Remove all groups from the user.
-					$groups = $wgUser->getGroups();
+					$groups = $user->getGroups();
 					// Make sure that the stored var dump contains user groups, since we may
 					// need them if reverting this degroup via Special:AbuseFilter/revert
 					$vars->setVar( 'user_groups', $groups );
 
 					foreach ( $groups as $group ) {
-						$wgUser->removeGroup( $group );
+						$user->removeGroup( $group );
 					}
 
 					$message = [
@@ -1652,7 +1649,7 @@ class AbuseFilter {
 
 					$logEntry = new ManualLogEntry( 'rights', 'rights' );
 					$logEntry->setPerformer( self::getFilterUser() );
-					$logEntry->setTarget( $wgUser->getUserPage() );
+					$logEntry->setTarget( $user->getUserPage() );
 					$logEntry->setComment(
 						wfMessage(
 							'abusefilter-degroupreason',
@@ -1669,12 +1666,11 @@ class AbuseFilter {
 
 				break;
 			case 'blockautopromote':
-				global $wgUser;
-				if ( !$wgUser->isAnon() ) {
+				if ( !$user->isAnon() ) {
 					// Block for 3-7 days.
 					$blockPeriod = (int)mt_rand( 3 * 86400, 7 * 86400 );
 					ObjectCache::getMainStashInstance()->set(
-						self::autoPromoteBlockKey( $wgUser ), true, $blockPeriod
+						self::autoPromoteBlockKey( $user ), true, $blockPeriod
 					);
 
 					$message = [
@@ -1694,10 +1690,8 @@ class AbuseFilter {
 
 			case 'tag':
 				// Mark with a tag on recentchanges.
-				global $wgUser;
-
 				$actionID = implode( '-', [
-					$title->getPrefixedText(), $wgUser->getName(),
+					$title->getPrefixedText(), $user->getName(),
 					$vars->getVar( 'ACTION' )->toString()
 				] );
 

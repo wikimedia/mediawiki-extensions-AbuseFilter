@@ -120,7 +120,7 @@ class AbuseFilterHooks {
 			$user, $title, $page, $summary, $content, $text, $oldcontent
 		);
 
-		$filter_result = AbuseFilter::filterAction( $vars, $title );
+		$filter_result = AbuseFilter::filterAction( $vars, $title, 'default', $user );
 		if ( !$filter_result->isOK() ) {
 			$status->merge( $filter_result );
 
@@ -337,7 +337,7 @@ class AbuseFilterHooks {
 		$vars->setVar( 'SUMMARY', $reason );
 		$vars->setVar( 'ACTION', 'move' );
 
-		$result = AbuseFilter::filterAction( $vars, $oldTitle );
+		$result = AbuseFilter::filterAction( $vars, $oldTitle, 'default', $user );
 		$status->merge( $result );
 
 		return $result->isOK();
@@ -362,7 +362,7 @@ class AbuseFilterHooks {
 		$vars->setVar( 'SUMMARY', $reason );
 		$vars->setVar( 'ACTION', 'delete' );
 
-		$filter_result = AbuseFilter::filterAction( $vars, $article->getTitle() );
+		$filter_result = AbuseFilter::filterAction( $vars, $article->getTitle(), 'default', $user );
 
 		$status->merge( $filter_result );
 		$error = $filter_result->isOK() ? '' : $filter_result->getHTML();
@@ -820,7 +820,7 @@ class AbuseFilterHooks {
 			$vars->addHolders( AbuseFilter::getEditVars( $title, $page ) );
 		}
 
-		$filter_result = AbuseFilter::filterAction( $vars, $title );
+		$filter_result = AbuseFilter::filterAction( $vars, $title, 'default', $user );
 
 		if ( !$filter_result->isOK() ) {
 			$messageAndParams = $filter_result->getErrorsArray()[0];
