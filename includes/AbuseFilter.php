@@ -1420,7 +1420,7 @@ class AbuseFilter {
 
 			foreach ( $central_log_rows as $row ) {
 				$fdb->insert( 'abuse_filter_log', $row, __METHOD__ );
-				$global_log_ids[] = $dbw->insertId();
+				$global_log_ids[] = $fdb->insertId();
 			}
 
 			$fdb->onTransactionPreCommitOrIdle(
