@@ -525,6 +525,7 @@
 	"log-description-abusefilterprivatedetails": "Tento záznam ukazuje seznam pokusů uživatele prohlédnout si soukromé detaily protokolu zneužití.",
 	"abusefilter-noreason": "Varování: K prohlížení soukromých detailů tohoto záznamu musíte uvést důvod.",
 	"abusefilter-log-ip-not-available": "Nedostupná",
+	"abusefilter-tag-reserved": "Značka <code>abusefilter-condition-limit</code> je vyhrazena pro vnitřní potřebu filtrů zneužití.",
 	"tag-abusefilter-condition-limit": "překročen limit podmínek",
 	"tag-abusefilter-condition-limit-description": "Editace či jiné aktivity, které nebylo možné zkontrolovat všemi zapnutými [[Special:AbuseFilter|filtry zneužití]] ([[mw:Extension:AbuseFilter/Conditions|nápověda]]).",
 	"apihelp-abusefiltercheckmatch-description": "Zkontrolovat, zda filtr zneužití odpovídá sadě proměnných, editaci nebo změně zaznamenané ve filtru.\n\nJe vyžadována právě jedna z následujících možností: vars, rcid nebo logid.",
