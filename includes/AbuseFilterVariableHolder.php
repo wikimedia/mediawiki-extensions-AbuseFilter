@@ -7,6 +7,12 @@ class AbuseFilterVariableHolder {
 	/** @var string[] Variables used to store meta-data, we'd better be safe. See T191715 */
 	public static $varBlacklist = [ 'context', 'global_log_ids', 'local_log_ids' ];
 
+	/** @var int 2 is the default and means that new variables names (from T173889) should be used.
+	 *    1 means that the old ones should be used, e.g. if this object is constructed from an
+	 *    afl_var_dump which still bears old variables.
+	 */
+	public $mVarsVersion = 2;
+
 	public function __construct() {
 		// Backwards-compatibility (unused now)
 		$this->setVar( 'minor_edit', false );
@@ -43,6 +49,11 @@ class AbuseFilterVariableHolder {
 	 */
 	public function getVar( $variable ) {
 		$variable = strtolower( $variable );
+		if ( $this->mVarsVersion === 1 && in_array( $variable, AbuseFilter::getDeprecatedVariables() ) ) {
+			// Variables are stored with old names, but the parser has given us
+			// a new name. Translate it back.
+			$variable = array_search( $variable, AbuseFilter::getDeprecatedVariables() );
+		}
 		if ( isset( $this->mVars[$variable] ) ) {
 			if ( $this->mVars[$variable] instanceof AFComputedVariable ) {
 				/** @suppress PhanUndeclaredMethod False positive */

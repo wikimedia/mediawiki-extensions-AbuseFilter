@@ -1561,6 +1561,10 @@ class AbuseFilter {
 			foreach ( $vars as $key => $value ) {
 				$obj->setVar( $key, $value );
 			}
+			// If old variable names are used, make sure to keep them
+			if ( count( array_intersect_key( self::getDeprecatedVariables(), $obj->mVars ) ) !== 0 ) {
+				$obj->mVarsVersion = 1;
+			}
 		}
 
 		return $obj;
