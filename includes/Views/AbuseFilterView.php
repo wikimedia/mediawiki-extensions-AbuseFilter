@@ -242,7 +242,7 @@ abstract class AbuseFilterView extends ContextSource {
 				return $db->makeList( [
 					'rc_source' => RecentChange::SRC_LOG,
 					'rc_log_type' => 'newusers',
-					'rc_log_action' => 'create'
+					'rc_log_action' => [ 'create', 'autocreate' ]
 				], LIST_AND );
 			case 'delete':
 				return $db->makeList( [
@@ -267,7 +267,7 @@ abstract class AbuseFilterView extends ContextSource {
 					], LIST_AND ),
 					$db->makeList( [
 						'rc_log_type' => 'newusers',
-						'rc_log_action' => 'create'
+						'rc_log_action' => [ 'create', 'autocreate' ]
 					], LIST_AND ),
 					$db->makeList( [
 						'rc_log_type' => 'delete',
