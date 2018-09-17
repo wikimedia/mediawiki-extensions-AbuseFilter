@@ -4,7 +4,8 @@
 			"Dim Grits",
 			"Gazeb",
 			"Matma Rex",
-			"Matěj Suchánek"
+			"Matěj Suchánek",
+			"Vlad5250"
 		]
 	},
 	"abusefilter-desc": "Придавать автоматічны геврістікы до едітовань",
@@ -31,6 +32,7 @@
 	"right-abusefilter-log-private": "Перегляд записів журналу зловжывань, позначеных як пріватны",
 	"right-abusefilter-hide-log": "Схованя записів в протоколї знеужытя",
 	"right-abusefilter-hidden-log": "Перегляд схованых заисів в протоколї знеужываня",
+	"right-abusefilter-modify-global": "Створїня або зміна ґлобалных філтрів знеужываня",
 	"action-abusefilter-modify": "управовати філтры знеужываня",
 	"action-abusefilter-view": "перезерати філтры знеужываня",
 	"action-abusefilter-log": "перезерати протоколу знеужываня",
