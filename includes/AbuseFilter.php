@@ -483,10 +483,9 @@ class AbuseFilter {
 
 	/**
 	 * @param string $expr
-	 * @param array $vars
 	 * @return string
 	 */
-	public static function evaluateExpression( $expr, $vars = [] ) {
+	public static function evaluateExpression( $expr ) {
 		global $wgAbuseFilterParserClass;
 
 		if ( self::checkSyntax( $expr ) !== true ) {
@@ -494,7 +493,7 @@ class AbuseFilter {
 		}
 
 		/** @var $parser AbuseFilterParser */
-		$parser = new $wgAbuseFilterParserClass( $vars );
+		$parser = new $wgAbuseFilterParserClass;
 
 		return $parser->evaluateExpression( $expr );
 	}
