@@ -76,6 +76,7 @@
 	"abusefilter-log-search-entries-all": "Усі записи",
 	"abusefilter-log-search-entries-hidden": "Лише приховані записи",
 	"abusefilter-log-search-entries-visible": "Лише видимі записи",
+	"abusefilter-log-search-action-label": "Запускальна дія:",
 	"abusefilter-log-search-action-taken-label": "Вжиті заходи:",
 	"abusefilter-log-search-action-taken-any": "Будь-які",
 	"abusefilter-log-search-submit": "Знайти",
