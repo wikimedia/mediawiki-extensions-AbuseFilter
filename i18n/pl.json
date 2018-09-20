@@ -485,7 +485,7 @@
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|zmienił|zmieniła}} $4 ($5)",
 	"abusefilter-log-noresults": "Brak wyników",
 	"abusefilter-diff-title": "Różnice pomiędzy wersjami",
-	"abusefilter-diff-item": "Przedmiot",
+	"abusefilter-diff-item": "Element",
 	"abusefilter-diff-version": "Wersja z $1 autorstwa {{GENDER:$3|użytkownika|użytkowniczki}} $2",
 	"abusefilter-diff-info": "Podstawowe informacje",
 	"abusefilter-diff-pattern": "Warunki filtru",
