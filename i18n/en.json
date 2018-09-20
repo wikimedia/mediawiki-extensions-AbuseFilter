@@ -376,7 +376,6 @@
 	"abusefilter-edit-builder-vars-file-width": "Width of the file in pixels",
 	"abusefilter-edit-builder-vars-file-height": "Height of the file in pixels",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Bits per color channel of the file",
-	"abusefilter-edit-block-options": "Block options:",
 	"abusefilter-filter-log": "Recent filter changes",
 	"abusefilter-history": "Change history for Abuse Filter #$1",
 	"abusefilter-history-foruser": "Changes by $1",
