@@ -10,6 +10,9 @@ i := [['1', 2], '3'];
 j := [1];
 k := ['1'];
 l := [];
+m := 42;
+n := [0,1];
 
 a == b & a === b & a != c & b != d & a == e & a !== e & f == g & f !== g & h == i & h !== i & e != i & j != 1 &
-k != '1' & l == false & l == null & l !== false & l !== null & false == l & null == l & false !== l & null !== l
+k != '1' & l == false & l == null & l !== false & l !== null & false == l & null == l & false !== l & null !== l &
+b[5**2/((4+1)*5)] == a[43-m] & a[n[0]] === b[n[m-42]]
