@@ -118,29 +118,6 @@ class AbuseFilterHistoryPager extends TablePager {
 				break;
 		}
 
-		$mappings = array_flip( AbuseFilter::$history_mappings ) +
-			[ 'afh_actions' => 'actions', 'afh_id' => 'id' ];
-		$changed = explode( ',', $row->afh_changed_fields );
-
-		$fieldChanged = false;
-		if ( $name == 'afh_flags' ) {
-			// This is a bit freaky, but it works.
-			// Basically, returns true if any of those filters are in the $changed array.
-			$filters = [ 'af_enabled', 'af_hidden', 'af_deleted', 'af_global' ];
-			if ( count( array_diff( $filters, $changed ) ) < count( $filters ) ) {
-				$fieldChanged = true;
-			}
-		} elseif ( in_array( $mappings[$name], $changed ) ) {
-			$fieldChanged = true;
-		}
-
-		if ( $fieldChanged ) {
-			$formatted = Xml::tags( 'div',
-				[ 'class' => 'mw-abusefilter-history-changed' ],
-				$formatted
-			);
-		}
-
 		return $formatted;
 	}
 
@@ -214,6 +191,36 @@ class AbuseFilterHistoryPager extends TablePager {
 	public function isFieldSortable( $name ) {
 		$sortable_fields = [ 'afh_timestamp', 'afh_user_text' ];
 		return in_array( $name, $sortable_fields );
+	}
+
+	/**
+	 * @see TablePager::getCellAttrs
+	 *
+	 * @param string $field
+	 * @param string $value
+	 * @return array
+	 */
+	public function getCellAttrs( $field, $value ) {
+		$row = $this->mCurrentRow;
+		$mappings = array_flip( AbuseFilter::$history_mappings ) +
+			[ 'afh_actions' => 'actions', 'afh_id' => 'id' ];
+		$changed = explode( ',', $row->afh_changed_fields );
+
+		$fieldChanged = false;
+		if ( $field == 'afh_flags' ) {
+			// The field is changed if any of these filters are in the $changed array.
+			$filters = [ 'af_enabled', 'af_hidden', 'af_deleted', 'af_global' ];
+			if ( count( array_intersect( $filters, $changed ) ) ) {
+				$fieldChanged = true;
+			}
+		} elseif ( in_array( $mappings[$field], $changed ) ) {
+			$fieldChanged = true;
+		}
+
+		$class = $fieldChanged ? ' mw-abusefilter-history-changed' : '';
+		$attrs = parent::getCellAttrs( $field, $value );
+		$attrs['class'] .= $class;
+		return $attrs;
 	}
 
 	/**
