@@ -400,7 +400,6 @@
 	"abusefilter-edit-builder-vars-file-width": "Larghezza del file in pixel",
 	"abusefilter-edit-builder-vars-file-height": "Altezza del file in pixel",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Bit per canale di colore del file",
-	"abusefilter-edit-block-options": "Opzioni del blocco:",
 	"abusefilter-filter-log": "Ultime modifiche ai filtri",
 	"abusefilter-history": "Cronologia delle modifiche al filtro anti abusi n. $1",
 	"abusefilter-history-foruser": "Modifiche apportate da $1",

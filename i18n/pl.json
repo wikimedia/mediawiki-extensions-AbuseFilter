@@ -373,7 +373,6 @@
 	"abusefilter-edit-builder-vars-file-width": "Szerokość pliku w pikselach",
 	"abusefilter-edit-builder-vars-file-height": "Wysokość pliku w pikselach",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Liczba bitów na kanał kolorów pliku",
-	"abusefilter-edit-block-options": "Opcje blokowania:",
 	"abusefilter-filter-log": "Ostatnie zmiany ustawień filtru",
 	"abusefilter-history": "Historia zmian dla filtru nr $1",
 	"abusefilter-history-foruser": "Zmiany wykonane przez $1",

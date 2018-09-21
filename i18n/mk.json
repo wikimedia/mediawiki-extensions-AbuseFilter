@@ -378,7 +378,6 @@
 	"abusefilter-edit-builder-vars-file-width": "Ширина на податотеката во пиксели",
 	"abusefilter-edit-builder-vars-file-height": "Висина на податотеката во пиксели",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Битови по боен канал на податотеката",
-	"abusefilter-edit-block-options": "Можности за блокирање:",
 	"abusefilter-filter-log": "Скорешни промени во филтери",
 	"abusefilter-history": "Историја на промените во Филтерот за злоупотреби #$1",
 	"abusefilter-history-foruser": "Промени од $1",

@@ -376,7 +376,6 @@
 	"abusefilter-edit-builder-vars-file-width": "Anchor del ficheru en pixels",
 	"abusefilter-edit-builder-vars-file-height": "Altor del ficheru en pixels",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Bits per canal de color del ficheru",
-	"abusefilter-edit-block-options": "Opciones de bloquéu:",
 	"abusefilter-filter-log": "Cambios de recién nos filtros",
 	"abusefilter-history": "Historial de cambios de la peñera d'abusos #$1",
 	"abusefilter-history-foruser": "Cambios de $1",

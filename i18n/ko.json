@@ -395,7 +395,6 @@
 	"abusefilter-edit-builder-vars-file-width": "파일의 너비 (단위: 픽셀)",
 	"abusefilter-edit-builder-vars-file-height": "파일의 높이 (단위: 픽셀)",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "파일의 컬러 채널 당 비트",
-	"abusefilter-edit-block-options": "차단 옵션:",
 	"abusefilter-filter-log": "최근 필터의 바뀜",
 	"abusefilter-history": "편집 필터 #$1의 편집 역사",
 	"abusefilter-history-foruser": "$1의 편집",

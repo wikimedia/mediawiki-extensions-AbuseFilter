@@ -400,7 +400,6 @@
 	"abusefilter-edit-builder-vars-file-width": "Breite der Datei in Pixel",
 	"abusefilter-edit-builder-vars-file-height": "Höhe der Datei in Pixel",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Bits pro Farbkanal der Datei",
-	"abusefilter-edit-block-options": "Sperroptionen:",
 	"abusefilter-filter-log": "Missbrauchsfilter-Änderungen",
 	"abusefilter-history": "Versionsgeschichte für Missbrauchsfilter $1",
 	"abusefilter-history-foruser": "Änderungen von $1",

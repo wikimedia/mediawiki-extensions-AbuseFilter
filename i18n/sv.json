@@ -403,7 +403,6 @@
 	"abusefilter-edit-builder-vars-file-width": "Bredd på filen i pixlar",
 	"abusefilter-edit-builder-vars-file-height": "Höjd på filen i pixlar",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Bitar per färgkanal för filen",
-	"abusefilter-edit-block-options": "Blockeringsalternativ:",
 	"abusefilter-filter-log": "Senaste filterändringar",
 	"abusefilter-history": "Ändringshistorik för missbruksfilter #$1",
 	"abusefilter-history-foruser": "Ändringar av $1",

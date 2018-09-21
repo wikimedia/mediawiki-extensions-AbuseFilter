@@ -366,7 +366,6 @@
 	"abusefilter-edit-builder-vars-file-mediatype": "Tiedoston mediatyyppi",
 	"abusefilter-edit-builder-vars-file-width": "Tiedoston leveys pikseleissä",
 	"abusefilter-edit-builder-vars-file-height": "Tiedoston korkeus pikseleissä",
-	"abusefilter-edit-block-options": "Eston asetukset:",
 	"abusefilter-filter-log": "Suodattimien viimeisimmät muutokset",
 	"abusefilter-history": "Muutoshistoria väärinkäyttösuodattimelle numero $1",
 	"abusefilter-history-foruser": "Käyttäjän $1 muokkaukset",

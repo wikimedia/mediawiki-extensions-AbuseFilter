@@ -125,7 +125,6 @@
 	"abusefilter-edit-builder-vars-restrictions-edit": "စာမျက်နှာ၏ ကာကွယ်မှုအဆင့်ကို ပြင်ဆင်ရန်",
 	"abusefilter-edit-builder-vars-restrictions-move": "စာမျက်နှာ၏ ကာကွယ်မှုအဆင့်ကို ရွေ့ပြောင်းရန်",
 	"abusefilter-edit-builder-vars-restrictions-create": "စာမျက်နှာ၏ ကာကွယ်မှုကို ဖန်တီးရန်",
-	"abusefilter-edit-block-options": "ပိတ်ပင်မှုအတွက် ရွေးချယ်စရာများ:",
 	"abusefilter-filter-log": "လတ်တလော စိစစ်မှုစနစ် အပြောင်းအလဲများ",
 	"abusefilter-history": "အလွဲသုံးစားမှု စိစစ်စနစ် #$1 အတွက် ပြောင်းလဲမှုရာဇဝင်",
 	"abusefilter-history-foruser": "$1 အလိုက် ပြောင်းလဲမှုများ",

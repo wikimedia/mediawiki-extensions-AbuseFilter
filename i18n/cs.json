@@ -390,7 +390,6 @@
 	"abusefilter-edit-builder-vars-file-width": "Šířka souboru v pixelech",
 	"abusefilter-edit-builder-vars-file-height": "Výška souboru v pixelech",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Barevná hloubka souboru v bitech na barevný kanál",
-	"abusefilter-edit-block-options": "Nastavení zablokování:",
 	"abusefilter-filter-log": "Poslední změny filtrů",
 	"abusefilter-history": "Historie změn filtru zneužití #$1",
 	"abusefilter-history-foruser": "Změny provedené uživatelem $1",

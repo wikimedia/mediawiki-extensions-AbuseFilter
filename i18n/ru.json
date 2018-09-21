@@ -414,7 +414,6 @@
 	"abusefilter-edit-builder-vars-file-width": "Ширина файла в пикселях",
 	"abusefilter-edit-builder-vars-file-height": "Высота файла в пикселях",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Глубина цвета в файле",
-	"abusefilter-edit-block-options": "Параметры блокировки:",
 	"abusefilter-filter-log": "Последние изменения фильтров",
 	"abusefilter-history": "История изменений фильтра злоупотреблений #$1",
 	"abusefilter-history-foruser": "Изменения сделанные $1",

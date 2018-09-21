@@ -273,7 +273,6 @@
 	"abusefilter-edit-builder-vars-minor-edit": "संपादनातील बदल छोटा म्हणून दर्शविला जातो आहे अथवा नाही",
 	"abusefilter-edit-builder-vars-file-sha1": "संचिका मजकुराचा SHA1 hash",
 	"abusefilter-edit-builder-vars-file-size": "संचिकेचा आकार बाईटमध्ये",
-	"abusefilter-edit-block-options": "अडवणूकीचे पर्याय",
 	"abusefilter-filter-log": "गाळण्यांचे अलिकडील बदल",
 	"abusefilter-history": "संपादन गाळणी #$1 करिता बदलांचा इतिहास",
 	"abusefilter-history-foruser": "$1 सदस्याचे बदल",

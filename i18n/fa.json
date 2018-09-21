@@ -377,7 +377,6 @@
 	"abusefilter-edit-builder-vars-file-width": "عرض پرونده به پیکسل",
 	"abusefilter-edit-builder-vars-file-height": "ارتفاع پرونده به پیکسل",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "تعداد بیت در هر کانال رنگ پرونده",
-	"abusefilter-edit-block-options": "گزینه‌های قطع دسترسی:",
 	"abusefilter-filter-log": "تغییرات اخیر پالایه‌ها",
 	"abusefilter-history": "تاریخچهٔ تغییرهای پالایهٔ خرابکاری #$1",
 	"abusefilter-history-foruser": "تغییرات توسط $1",

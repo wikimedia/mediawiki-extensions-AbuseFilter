@@ -386,7 +386,6 @@
 	"abusefilter-edit-builder-vars-file-width": "רוחב הקובץ בפיקסלים",
 	"abusefilter-edit-builder-vars-file-height": "גובה הקובץ בפיקסלים",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "ביטים לערוץ צבע של הקובץ",
-	"abusefilter-edit-block-options": "אפשרויות חסימה:",
 	"abusefilter-filter-log": "שינויים אחרונים במסננים",
 	"abusefilter-history": "היסטוריית השינויים של מסנן ההשחתות #$1",
 	"abusefilter-history-foruser": "שינויים שבוצעו על־ידי $1",

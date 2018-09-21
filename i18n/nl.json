@@ -345,7 +345,6 @@
 	"abusefilter-edit-builder-vars-file-width": "Breedte van het bestand in pixels",
 	"abusefilter-edit-builder-vars-file-height": "De hoogte van het bestand in pixels",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Bits per kleurkanaal van het bestand",
-	"abusefilter-edit-block-options": "Blokkeringsopties:",
 	"abusefilter-filter-log": "Recente filterwijzigingen",
 	"abusefilter-history": "Geschiedenis voor het filter #$1",
 	"abusefilter-history-foruser": "Wijzigingen door $1",

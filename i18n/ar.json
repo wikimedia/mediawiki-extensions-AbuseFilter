@@ -399,7 +399,6 @@
 	"abusefilter-edit-builder-vars-file-width": "عرض الملف بالبكسل",
 	"abusefilter-edit-builder-vars-file-height": "ارتفاع الملف بالبكسل",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "بت لكل قناة لون للملف",
-	"abusefilter-edit-block-options": "خيارات المنع:",
 	"abusefilter-filter-log": "تغييرات المرشح الأخيرة",
 	"abusefilter-history": "غير التاريخ لمرشح الإساءة #$1",
 	"abusefilter-history-foruser": "تغييرات من قبل $1",

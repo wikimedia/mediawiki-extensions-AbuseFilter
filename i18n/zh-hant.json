@@ -409,7 +409,6 @@
 	"abusefilter-edit-builder-vars-file-width": "文件寬度（像素）",
 	"abusefilter-edit-builder-vars-file-height": "文件高度（像素）",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "檔案位元色板",
-	"abusefilter-edit-block-options": "封禁選項：",
 	"abusefilter-filter-log": "最近過濾器變更",
 	"abusefilter-history": "防濫用過濾器 #$1 的修訂歷史",
 	"abusefilter-history-foruser": "由 $1 所作的變更",
