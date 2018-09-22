@@ -405,8 +405,5 @@
 	"abusefilter-import-intro": "Podeu utilitzar aquesta interfície per importar filtres d'altres wikis.\nEn el wiki d'origen, feu clic a «{{int:abusefilter-edit-export}}» sota «{{int:abusefilter-edit-tools}}» en la interfície d'edició.\nCopieu del quadre de text que apareix i enganxeu-lo a aquest quadre de text, a continuació feu clic a «{{int:abusefilter-import-submit}}».",
 	"abusefilter-import-submit": "Importa dades",
 	"abusefilter-group-default": "Per defecte",
-	"abusefilter-http-error": "S’ha produït un error d’HTTP: $1.",
-	"apihelp-query+abusefilters-param-prop": "Quines propietats obtenir.",
-	"apihelp-query+abusefilters-example-1": "Llista els filtres públics habilitats",
-	"apihelp-query+abusefilters-example-2": "Mostra alguns detalls dels filtres"
+	"abusefilter-http-error": "S’ha produït un error d’HTTP: $1."
 }

@@ -374,6 +374,5 @@
 	"abusefilter-diff-next": "يىقىنقى ئۆزگەرتىشلەر",
 	"abusefilter-import-intro": "سىز بۇ ئارايۈز ئارقىلىق باشقا ۋىكىدىكى سۈزگۈچنى ئەكىرەلەيسىز. مەنبەدىن سۈزگۈچ تەھرىر ئارايۈزىنى چېكىپ \"{{int:abusefilter-edit-tools}}\" نىڭ ئاستىدىكى \"{{int:abusefilter-edit-export}}\"نى چېكىڭ. ئارقىدىن كۆرۈنگەن تېكىست قۇتىسىنىڭ مەزمۇنىنى كۆچۈرۈپ، ئاستىدىكى تېكىست قۇتىسىغا چاپلاڭ ھەمدە \"{{int:abusefilter-import-submit}}\"نى چېكىڭ.",
 	"abusefilter-import-submit": "سانلىق مەلۇمات كىرگۈزۈش",
-	"abusefilter-group-default": "كۆڭۈلدىكى",
-	"apihelp-query+abuselog-param-wiki": "ۋىكىدىن كەلگەن كۆرسىتىش ئۇچۇرى."
+	"abusefilter-group-default": "كۆڭۈلدىكى"
 }

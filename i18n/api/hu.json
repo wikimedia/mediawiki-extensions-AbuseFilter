@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dj",
+			"Wolf Rex"
+		]
+	},
+	"apihelp-abusefiltercheckmatch-description": "vars, rcid vagy logid szükséges, de csak egyet lehet használni.",
+	"apihelp-query+abusefilters-example-1": "Az engedélyezett nyilvános szűrők listázása.",
+	"apihelp-query+abuselog-example-1": "Friss naplóbejegyzések mutatása"
+}

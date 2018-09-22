@@ -400,17 +400,5 @@
 	"abusefilter-import-intro": "Puteți folosi această interfață pentru a importa filtre din alte wikiuri.\nÎn wikiul sursă, apăsați „{{int:abusefilter-edit-export}}” din „{{int:abusefilter-edit-tools}}”, în cadrul interfeței de editare.\nCopiați conținutul din caseta care apare și lipiți-l în această casetă de text, după care apăsați „{{int:abusefilter-import-submit}}”.",
 	"abusefilter-import-submit": "Importă datele",
 	"abusefilter-group-default": "Implicit",
-	"abusefilter-http-error": "A apărut o eroare HTTP: $1.",
-	"apihelp-abusefiltercheckmatch-description": "Verifică dacă filtrul de abuzuri se aplică unui se de variabile, eveniment logat de Filtrul de abuzuri.\n\nvars, rcid sau logid sunt obligatorii, dar doar una poate fi folosită.",
-	"apihelp-abusefiltercheckmatch-extended-description": "vars, rcid sau logid sunt obligatorii dar doar una poate fi folosită.",
-	"apihelp-abusefilterchecksyntax-description": "Verifică sintaxa unui filtru AbuseFilter.",
-	"apihelp-abusefilterchecksyntax-param-filter": "Textul complet al filtrului pentru care trebuie verificată sintaxa.",
-	"apihelp-abusefilterchecksyntax-example-1": "Verifică sintaxa unui filtru valid.",
-	"apihelp-abusefilterchecksyntax-example-2": "Verifică sintaxa unui filtru invalid.",
-	"apihelp-abusefilterevalexpression-description": "Evaluează valoarea unei expresii AbuseFilter.",
-	"apihelp-abusefilterevalexpression-param-expression": "Expresia de evaluat.",
-	"apihelp-abusefilterevalexpression-example-1": "Evaluează o expresie simplă",
-	"apihelp-query+abuselog-param-limit": "Numărul maxim de intrări de afișat.",
-	"apihelp-query+abuselog-param-prop": "Ce proprietăți se cer.",
-	"apierror-abusefilter-badsyntax": "Filtrul are sintaxă invalidă."
+	"abusefilter-http-error": "A apărut o eroare HTTP: $1."
 }

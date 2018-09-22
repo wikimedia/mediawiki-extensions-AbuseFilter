@@ -398,6 +398,5 @@
 	"abusefilter-import-submit": "Uvoz podataka",
 	"abusefilter-group-default": "Zadano",
 	"tag-abusefilter-condition-limit": "dostignuta granica uvjeta",
-	"tag-abusefilter-condition-limit-description": "Uređivanja ili druge radnje koje nije bilo moguće provjeriti pomoću svih aktivnih [[Special:AbuseFilter|filtara zloporaba]] ([[mw:Extension:AbuseFilter/Conditions|pomoć]]).",
-	"apierror-abusefilter-badsyntax": "Filtar nema valjanu sintaksu."
+	"tag-abusefilter-condition-limit-description": "Uređivanja ili druge radnje koje nije bilo moguće provjeriti pomoću svih aktivnih [[Special:AbuseFilter|filtara zloporaba]] ([[mw:Extension:AbuseFilter/Conditions|pomoć]])."
 }

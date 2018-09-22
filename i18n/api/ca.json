@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toniher"
+		]
+	},
+	"apihelp-query+abusefilters-param-prop": "Quines propietats obtenir.",
+	"apihelp-query+abusefilters-example-1": "Llista els filtres públics habilitats",
+	"apihelp-query+abusefilters-example-2": "Mostra alguns detalls dels filtres"
+}

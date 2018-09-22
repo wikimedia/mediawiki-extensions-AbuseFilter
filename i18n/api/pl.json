@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps",
+			"Halibutt",
+			"Railfail536",
+			"The Polish",
+			"Woytecr"
+		]
+	},
+	"apihelp-abusefilterchecksyntax-description": "Sprawdź składnię filtra AbuseFilter.",
+	"apihelp-abusefilterevalexpression-param-expression": "Wyrażenie do sprawdzenia.",
+	"apihelp-abusefilterunblockautopromote-param-user": "Nazwa użytkownika, którego chcesz odblokować.",
+	"apihelp-query+abusefilters-description": "Pokaż szczegóły filtrów nadużyć.",
+	"apihelp-query+abusefilters-summary": "Pokaż szczegóły filtrów nadużyć.",
+	"apihelp-query+abusefilters-param-show": "Pokaż tylko filtry, które spełniają te kryteria.",
+	"apihelp-query+abusefilters-param-limit": "Maksymalna liczba filtrów do wyświetlenia.",
+	"apihelp-query+abusefilters-example-1": "Lista uruchomionych filtrów publicznych",
+	"apihelp-query+abusefilters-example-2": "Pokaż szczegóły dotyczące filtrów",
+	"apihelp-query+abuselog-description": "Pokaż zdarzenia wyłapane przez jeden z filtrów nadużyć.",
+	"apihelp-query+abuselog-param-start": "Znacznik czasu, od którego zacząć wyliczanie.",
+	"apihelp-query+abuselog-param-end": "Znacznik czasu, na którym zakończyć wyliczanie.",
+	"apihelp-query+abuselog-param-prop": "Jakie właściwości uzyskać.",
+	"apihelp-query+abuselog-example-1": "Pokaż ostatnie wpisy w rejestrze",
+	"apihelp-query+abuselog-example-2": "Pokaż ostatnie wpisy w dzienniku [[API]]",
+	"apierror-abusefilter-canttest": "Nie masz uprawnień do testowania filtrów nadużyć.",
+	"apierror-abusefilter-cantcheck": "Nie masz uprawnień do sprawdzania składni filtru nadużyć.",
+	"apierror-abusefilter-badsyntax": "Filtr ma nieprawidłową składnię."
+}

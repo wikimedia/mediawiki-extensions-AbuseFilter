@@ -294,6 +294,5 @@
 	"abusefilter-group-default": "Sjálfgefið",
 	"abusefilter-http-error": "HTTP-villa kom upp: $1",
 	"abusefilter-log-details-id": "Auðkenni annáls",
-	"abusefilter-log-ip-not-available": "Ekki tiltækt",
-	"apierror-abusefilter-badsyntax": "Sían er með ranga málskipun."
+	"abusefilter-log-ip-not-available": "Ekki tiltækt"
 }

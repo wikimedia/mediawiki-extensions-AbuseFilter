@@ -396,12 +396,5 @@
 	"abusefilter-import-intro": "Һеҙ был интерфейсты башҡа вики проекттарҙан Һөҙгөстәрҙе индереү өсөн ҡуллана алаһығыҙ.\nСығанаҡ вики проектта, мөхәррирләү ҡоралының \"{{int:abusefilter-edit-tools}}\" бүлегендә \"{{int:abusefilter-edit-export}}\" төймәһенә баҫығыҙ.\nКилеп сыҡҡан юлдың эстәлеген был юлға күсерегеҙ һәм \"{{int:abusefilter-import-submit}}\" төймәһенә баҫығыҙ.",
 	"abusefilter-import-submit": "Мәғлүмәтте индерергә",
 	"abusefilter-group-default": "Ғәҙәттәге",
-	"abusefilter-http-error": "HTTP хата килеп сыҡты: $1",
-	"apihelp-abusefilterchecksyntax-description": "AbuseFilter фильтры синтаксисын тикшереү",
-	"apihelp-abusefilterunblockautopromote-param-user": "Һеҙ блокировкаһын алырға теләгән ҡатнашыусының исеме (логин).",
-	"apihelp-query+abusefilters-param-prop": "Ниндәй үҙенсәлекте мотлаҡ алырға:",
-	"apihelp-query+abuselog-param-limit": "Исемлектәге яҙмаларҙың иң ҙур күләме.",
-	"apihelp-query+abuselog-param-prop": "Ниндәй үҙенсәлектәрҙе мотлаҡ алырға:",
-	"apihelp-query+abuselog-example-1": "Журналдағы һуңғы яҙмаларҙы күрһәтергә",
-	"apihelp-query+abuselog-example-2": " [[API]] журналындағы һуңғы яҙманы күрһәтергә"
+	"abusefilter-http-error": "HTTP хата килеп сыҡты: $1"
 }

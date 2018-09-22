@@ -387,8 +387,5 @@
 	"abusefilter-import-intro": "Móžeš tutón interfejs wužiwać, zo by filtry z druhich wikijow importował.\nKlikń w žórłowym wikiju na \"{{int:abusefilter-edit-export}}\" pod \"{{int:abusefilter-edit-tools}}\" na wobdźěłowanskim interfejsu. Kopěruj z jewjaceho so tekstoweho pola do tutoho tekstoweho pola a klikń potom na \"{{int:abusefilter-import-submit}}\",",
 	"abusefilter-import-submit": "Daty importować",
 	"abusefilter-group-default": "Standard",
-	"abusefilter-http-error": "Zmylk wustupi: $1",
-	"apihelp-abusefilterchecksyntax-example-1": "Syntaksu płaćiweho filtra přepruwować",
-	"apihelp-abusefilterchecksyntax-example-2": "Syntaksu njepłaćiweho filtra přepruwować",
-	"apihelp-abusefilterunblockautopromote-param-user": "Mjeno wužiwarja, kotrehož chceš dopušćić"
+	"abusefilter-http-error": "Zmylk wustupi: $1"
 }

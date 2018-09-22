@@ -390,6 +390,5 @@
 	"abusefilter-import-intro": "Podètz utilizar aquesta interfàcia per importar de filtres en provenéncia d’autres wikis.\nSul wiki d’origina, clicatz sus « {{int:abusefilter-edit-export}} » dins « {{int:abusefilter-edit-tools}} » dempuèi l’interfàcia d’edicion.\nCopiatz l'airal de tèxte que s’aficha e empegatz-lo dins aqueste airal de tèxte, puèi clicatz sus « {{int:abusefilter-import-submit}} »,",
 	"abusefilter-import-submit": "Importar de donadas",
 	"abusefilter-group-default": "Per defaut",
-	"abusefilter-http-error": "Una error HTTP s’es produsida : $1.",
-	"apihelp-query+abusefilters-param-prop": "Quinas proprietats obténer."
+	"abusefilter-http-error": "Una error HTTP s’es produsida : $1."
 }

@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16",
+			"Chiara.Graziani1991",
+			"Daimona Eaytoy",
+			"F. Cosoleto",
+			"Ricordisamoa",
+			"Wim b"
+		]
+	},
+	"apihelp-abusefiltercheckmatch-description": "Controlla se un filtro anti abusi viene attivato da un insieme di variabili, una modifica o un evento nel registro abusi.\n\nÈ richiesto uno e un solo parametro tra vars, rcid e logid.",
+	"apihelp-abusefiltercheckmatch-summary": "Controlla se un filtro anti abusi viene attivato da un insieme di variabili, una modifica o un evento nel registro abusi.",
+	"apihelp-abusefiltercheckmatch-extended-description": "È richiesto esattamente un parametro tra vars, rcid o logid.",
+	"apihelp-abusefiltercheckmatch-param-filter": "Il testo completo del filtro da utilizzare per trovare una corrispondenza.",
+	"apihelp-abusefiltercheckmatch-param-vars": "Array in formato JSON di variabili da utilizzare per il test.",
+	"apihelp-abusefiltercheckmatch-param-rcid": "ID della modifica recente da controllare.",
+	"apihelp-abusefilterchecksyntax-example-1": "Controlla la sintassi di un filtro valido",
+	"apihelp-abusefilterchecksyntax-example-2": "Controlla la sintassi di un filtro non valido",
+	"apihelp-abusefilterevalexpression-description": "Valuta un'espressione AbuseFilter.",
+	"apihelp-abusefilterevalexpression-param-expression": "L'espressione da valutare.",
+	"apihelp-abusefilterevalexpression-example-1": "Calcolare una semplice espressione",
+	"apihelp-abusefilterunblockautopromote-param-user": "Nome utente dell'utente che vuoi sbloccare.",
+	"apihelp-query+abusefilters-param-show": "Mostra solo i filtri che soddisfano questi criteri.",
+	"apihelp-query+abusefilters-param-limit": "Il numero massimo di filtri da elencare.",
+	"apihelp-query+abusefilters-param-prop": "Quali proprietà ottenere.",
+	"apihelp-query+abusefilters-example-1": "Elenca i filtri pubblici abilitati",
+	"apihelp-query+abusefilters-example-2": "Mostra alcuni dettagli sui filtri",
+	"apihelp-query+abuselog-param-prop": "Quali proprietà ottenere.",
+	"apierror-abusefilter-badsyntax": "Il filtro contiene sintassi non valida."
+}

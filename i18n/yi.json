@@ -273,6 +273,5 @@
 	"abusefilter-diff-next": "נײַערע ענדערונג",
 	"abusefilter-import-submit": "אימפארטירן דאַטן",
 	"abusefilter-group-default": "גרונטלעך",
-	"abusefilter-http-error": "א HTTP גרײַז האט פאַסירט: $1",
-	"apierror-abusefilter-badsyntax": "דער פֿילטער האט אומגילטיגן סינטאקס."
+	"abusefilter-http-error": "א HTTP גרײַז האט פאַסירט: $1"
 }

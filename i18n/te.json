@@ -343,7 +343,5 @@
 	"abusefilter-diff-next": "కొత్త మార్పు",
 	"abusefilter-import-intro": "ఇతర వికీల నుండి వడపోతకాలను దిగుమతి చేసుకునేందుకు ఈ ఇంటరుఫేసును వాడవచ్చు.\nమూలవికీలో, ఎడిటింగ్ ఇంటరుఫేసులోని \"{{int:abusefilter-edit-tools}}\"  కింద ఉన్న \"{{int:abusefilter-edit-export}}\" ను నొక్కండి.\nఅప్పుడు కనిపించే టెక్స్టుబాక్సులో ఉన్న పాఠ్యాన్ని కాపీ చేసుకుని, దాన్ని ఈ టెక్స్టుబాక్సులో పేస్టు చెయ్యండి. ఆ తరవాత \"{{int:abusefilter-import-submit}}\" నొక్కండి.",
 	"abusefilter-import-submit": "భోగట్టాని దిగుమతించు",
-	"abusefilter-group-default": "అప్రమేయం",
-	"apihelp-query+abuselog-example-1": "ఇటీవలి చిట్టా పద్దులను చూపించు",
-	"apierror-abusefilter-canttest": "దుశ్చర్యల వడపోతలను పరీక్షించే అనుమతి మీకు లేదు."
+	"abusefilter-group-default": "అప్రమేయం"
 }

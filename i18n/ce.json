@@ -349,9 +349,5 @@
 	"abusefilter-import-intro": "ХӀокху агӀонехь хьан йиш ю кхечу вики чура литтарш импорт дан.\nДӀайолалун вики чохь  «{{int:abusefilter-edit-tools}}» чохь тӀетаӀе «{{int:abusefilter-edit-export}}».\nЧулацаман копи якхкхе хӀокху агӀона чу йилина тӀетаӀе «{{int:abusefilter-import-submit}}».",
 	"abusefilter-import-submit": "Хаамаш импорт бе",
 	"abusefilter-group-default": "Ӏадйитаран кеп",
-	"abusefilter-http-error": "Даьлла гӀалат HTTP: $1",
-	"apihelp-query+abusefilters-param-prop": "Муьлха билгалонаш оьшуш ю.",
-	"apihelp-query+abuselog-param-prop": "Муьлха билгалонаш оьшуш ю.",
-	"apihelp-query+abuselog-example-1": "Гайта тептар чура тӀеххьара дӀаяздарш",
-	"apihelp-query+abuselog-example-2": "Гайта [[API]] тептар чура тӀеххьара дӀаяздарш"
+	"abusefilter-http-error": "Даьлла гӀалат HTTP: $1"
 }

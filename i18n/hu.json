@@ -408,8 +408,5 @@
 	"abusefilter-import-intro": "Ezen a felületen más wikikben készült szűrőket lehet importálni.\nA forráswikin a „{{int:abusefilter-edit-tools}}” alatt kattints az „{{int:abusefilter-edit-export}}” gombra.\nA megjelent szövegdoboz tartalmát ebbe a szövegdobozba másold át, majd kattints az „{{int:abusefilter-import-submit}}” gombra.",
 	"abusefilter-import-submit": "Adatok importálása",
 	"abusefilter-group-default": "Alapértelmezett",
-	"abusefilter-http-error": "HTTP hiba történt: $1",
-	"apihelp-abusefiltercheckmatch-description": "vars, rcid vagy logid szükséges, de csak egyet lehet használni.",
-	"apihelp-query+abusefilters-example-1": "Az engedélyezett nyilvános szűrők listázása.",
-	"apihelp-query+abuselog-example-1": "Friss naplóbejegyzések mutatása"
+	"abusefilter-http-error": "HTTP hiba történt: $1"
 }

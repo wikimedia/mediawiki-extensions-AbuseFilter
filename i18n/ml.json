@@ -386,6 +386,5 @@
 	"abusefilter-import-intro": "മറ്റുവിക്കികളിൽ നിന്ന് അരിപ്പകൾ ഇറക്കുമതി ചെയ്യാൻ ഈ ദൃശ്യമണ്ഡലം ഉപയോഗിക്കാവുന്നതാണ്.\nസ്രോതസ്സ് വിക്കിയിലെ തിരുത്തുവാനുള്ള ദൃശ്യമണ്ഡലത്തിൽ \"{{int:abusefilter-edit-tools}}\" എന്നതിനു താഴെയുള്ള \"{{int:abusefilter-edit-export}}\" ഞെക്കുക.\nഅപ്പോൾ കിട്ടുന്ന ടെക്സ്റ്റ്ബോക്സ് പകർത്തി ഈ ടെക്സ്റ്റ്‌‌ബോക്സിൽ നൽകി, \"{{int:abusefilter-import-submit}}\" ഞെക്കുക.",
 	"abusefilter-import-submit": "വിവരങ്ങൾ ഇറക്കുമതി ചെയ്യുക",
 	"abusefilter-group-default": "സ്വതേ",
-	"abusefilter-http-error": "ഒരു എച്ച്.റ്റി.റ്റി.പി. പിഴവ് സംഭവിച്ചിരിക്കുന്നു: $1",
-	"apihelp-abusefiltercheckmatch-param-filter": "അരിപ്പയിലെ മൊത്തം എഴുത്തും ഒത്തുപോകുന്നുണ്ടോയെന്ന് പരിശോധിക്കുക."
+	"abusefilter-http-error": "ഒരു എച്ച്.റ്റി.റ്റി.പി. പിഴവ് സംഭവിച്ചിരിക്കുന്നു: $1"
 }

@@ -266,8 +266,5 @@
 	"abusefilter-diff-next": "नयाँ परिवर्तन",
 	"abusefilter-import-submit": "आँकड़ा ल्याउने",
 	"abusefilter-group-default": "पूर्वनिर्धारित",
-	"abusefilter-http-error": "एचटिटिपि त्रुटि उत्पन्न भयो: $1",
-	"apihelp-query+abuselog-param-prop": "कुन मान प्राप्त गर्ने।",
-	"apihelp-query+abuselog-example-1": "हालैका लग इन्ट्रीहरू देखाउने",
-	"apihelp-query+abuselog-example-2": "[[एपिआइ]]को लागि हालैका लग इन्ट्रीहरू देखाउने"
+	"abusefilter-http-error": "एचटिटिपि त्रुटि उत्पन्न भयो: $1"
 }

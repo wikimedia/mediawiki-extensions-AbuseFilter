@@ -191,6 +191,5 @@
 	"abusefilter-diff-prev": "ပိုဟောင်းသော ပြောင်းလဲမှု",
 	"abusefilter-diff-next": "ပိုသစ်သော ပြောင်းလဲမှု",
 	"abusefilter-group-default": "နဂိုအတိုင်း",
-	"abusefilter-log-ip-not-available": "မရရှိနိုင်ပါ",
-	"apierror-abusefilter-canttest": "အလွဲသုံးစားမှု စိစစ်စနစ်ကို စမ်းသပ်ရန် သင့်တွင် ခွင့်ပြုချက်မရှိပါ။"
+	"abusefilter-log-ip-not-available": "မရရှိနိုင်ပါ"
 }
