@@ -490,7 +490,7 @@ class AbuseFilterRunner {
 	 *         the errors and warnings to be shown to the user to explain the actions.
 	 */
 	protected function executeFilterActions( array $filters ) : Status {
-		global $wgMainCacheType, $wgAbuseFilterDisallowGlobalLocalBlocks, $wgAbuseFilterRestrictions,
+		global $wgMainCacheType, $wgAbuseFilterLocallyDisabledGlobalActions,
 			   $wgAbuseFilterBlockDuration, $wgAbuseFilterAnonBlockDuration;
 
 		$actionsByFilter = AbuseFilter::getConsequencesForFilters( $filters );
@@ -530,8 +530,11 @@ class AbuseFilterRunner {
 				}
 			}
 
-			if ( $wgAbuseFilterDisallowGlobalLocalBlocks && $isGlobalFilter ) {
-				$actions = array_diff_key( $actions, array_filter( $wgAbuseFilterRestrictions ) );
+			if ( $isGlobalFilter ) {
+				$actions = array_diff_key(
+					$actions,
+					array_filter( $wgAbuseFilterLocallyDisabledGlobalActions )
+				);
 			}
 
 			if ( !empty( $actions['warn'] ) ) {
@@ -563,9 +566,9 @@ class AbuseFilterRunner {
 				unset( $actions['warn'] );
 			}
 
-			// Prevent double warnings
-			if ( count( array_intersect_key( $actions, array_filter( $wgAbuseFilterRestrictions ) ) ) > 0 &&
-				!empty( $actions['disallow'] )
+			// Don't show the disallow message if a blocking action is executed
+			if ( count( array_intersect( array_keys( $actions ), AbuseFilter::getDangerousActions() ) ) > 0
+				&& !empty( $actions['disallow'] )
 			) {
 				unset( $actions['disallow'] );
 			}

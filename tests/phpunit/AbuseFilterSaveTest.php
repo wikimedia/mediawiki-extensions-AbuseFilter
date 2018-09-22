@@ -68,7 +68,7 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 				'default',
 				'flow'
 			],
-			'AbuseFilterRestrictions' => [
+			'AbuseFilterActionRestrictions' => [
 				'degroup' => true
 			],
 			'AbuseFilterIsCentral' => true,

@@ -70,3 +70,7 @@ $vars: AbuseFilterVariableHolder
 $title: Title object target of the action
 $user: User object performer of the action
 &$skipReasons: Array of reasons why the action should be skipped
+
+'AbuseFilterGetDangerousActions': Allows specifying custom consequences which can harm the user and prevent
+the edit from being saved.
+&$actions: Array (string[]) of dangerous actions

@@ -335,17 +335,18 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		if ( isset( $row->af_throttled ) && $row->af_throttled ) {
 			$filterActions = explode( ',', $row->af_actions );
-			$throttledActions = array_intersect_key(
-				array_flip( $filterActions ),
-				array_filter( $this->getConfig()->get( 'AbuseFilterRestrictions' ) )
+			$throttledActions = array_intersect(
+				$filterActions,
+				AbuseFilter::getDangerousActions()
 			);
 
 			if ( $throttledActions ) {
 				$throttledActions = array_map(
 					function ( $filterAction ) {
+						// TODO: This is AbuseFilter::getActionDisplay, but not escaped
 						return $this->msg( 'abusefilter-action-' . $filterAction )->text();
 					},
-					array_keys( $throttledActions )
+					$throttledActions
 				);
 
 				$flags .= Html::warningBox(

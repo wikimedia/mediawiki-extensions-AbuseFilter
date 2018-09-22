@@ -347,7 +347,7 @@
 			},
 			"description": "See description for AbuseFilterEmergencyDisableThreshold"
 		},
-		"AbuseFilterRestrictions": {
+		"AbuseFilterActionRestrictions": {
 			"value": {
 				"throttle": false,
 				"warn": false,
@@ -376,9 +376,18 @@
 			"value": false,
 			"description": "Set this variable to true for the wiki where global AbuseFilters are stored in"
 		},
-		"AbuseFilterDisallowGlobalLocalBlocks": {
-			"value": false,
-			"description": "Disallow centralised filters from taking actions that locally block, remove from groups, or revoke permissions"
+		"AbuseFilterLocallyDisabledGlobalActions": {
+			"value": {
+				"throttle": false,
+				"warn": false,
+				"disallow": false,
+				"blockautopromote": false,
+				"block": false,
+				"rangeblock": false,
+				"degroup": false,
+				"tag": false
+			},
+			"description":  "An array of actions which, if set on a global filter, will not be used for local hits of such filter (not in the central wiki). The array is [ action => will be disabled? ]."
 		},
 		"AbuseFilterBlockDuration": {
 			"value": "indefinite",
