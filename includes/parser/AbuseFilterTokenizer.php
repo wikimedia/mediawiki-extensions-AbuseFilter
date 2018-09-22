@@ -68,7 +68,7 @@ class AbuseFilterTokenizer {
 
 	/**
 	 * @param string $code
-	 * @return array
+	 * @return array[]
 	 * @throws AFPException
 	 * @throws AFPUserVisibleException
 	 */
