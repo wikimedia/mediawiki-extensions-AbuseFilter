@@ -472,7 +472,7 @@
 	"abusefilter-examine-incompatible": "Żądana zmiana nie jest obsługiwana przez filtr nadużyć",
 	"abusefilter-examine-noresults": "Nie znaleziono wyników dla zadanych przez Ciebie parametrów wyszukiwania.",
 	"abusefilter-topnav": "'''Nawigacja po filtrze nadużyć'''",
-	"abusefilter-topnav-home": "Start",
+	"abusefilter-topnav-home": "Główna",
 	"abusefilter-topnav-test": "Testowanie wsadowe",
 	"abusefilter-topnav-examine": "Skontroluj dawniejsze edycje",
 	"abusefilter-topnav-log": "Rejestr nadużyć",

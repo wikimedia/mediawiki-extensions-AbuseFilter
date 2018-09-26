@@ -101,6 +101,7 @@
 	"abusefilter-log-cannot-see-details": "Bu giriş detaylarını görebilmek için izniniz yok.",
 	"abusefilter-log-cannot-see-private-details": "Bu maddenin özel ayrıntılarını görme izniniz yok.",
 	"abusefilter-log-details-hidden": "Bu girdinin ayrıntılarını göremezsiniz çünkü herkese açık değil",
+	"abusefilter-log-details-hidden-implicit": "İlgili revizyonun silinmesi nedeniyle ayrıntılarını maalesef görüntüleyemezsiniz.",
 	"abusefilter-log-hide-legend": "Günlük girişini gizle",
 	"abusefilter-log-hide-id": "Günlük girdi numarası:",
 	"abusefilter-log-hide-hidden": "Bu girdiyi herkesin görüntülemesini engelle",
