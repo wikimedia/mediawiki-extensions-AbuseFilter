@@ -449,22 +449,61 @@ class AbuseFilterRunner {
 	 *         the errors and warnings to be shown to the user to explain the actions.
 	 */
 	protected function executeFilterActions( array $filters ) : Status {
-		global $wgAbuseFilterLocallyDisabledGlobalActions,
-			   $wgAbuseFilterBlockDuration, $wgAbuseFilterAnonBlockDuration;
-
 		$actionsByFilter = AbuseFilter::getConsequencesForFilters( $filters );
+		$actionsToTake = $this->getFilteredConsequences( $actionsByFilter );
 		$actionsTaken = array_fill_keys( $filters, [] );
 
 		$messages = [];
-		// Accumulator to track max block to issue
-		$maxExpiry = -1;
 
-		foreach ( $actionsByFilter as $filter => $actions ) {
+		foreach ( $actionsToTake as $filter => $actions ) {
 			[ $filterID, $isGlobalFilter ] = AbuseFilter::splitGlobalName( $filter );
 			$filterObj = $this->filterLookup->getFilter( $filterID, $isGlobalFilter );
 			$filterPublicComments = $filterObj->getName();
+			foreach ( $actions as $action => $info ) {
+				$newMsg = $this->takeConsequenceAction(
+					$action,
+					$info,
+					$filterPublicComments,
+					$filter
+				);
 
-			$isGlobalFilter = $filterObj->isGlobal();
+				if ( $newMsg !== null ) {
+					$messages[] = $newMsg;
+				}
+				// Don't add it if throttle limit has been reached, or if the warning has already been shown
+				if ( ( $action !== 'throttle' || !$info['throttled'] ) &&
+					( $action !== 'warn' || $info['shouldWarn'] ) ) {
+					$actionsTaken[$filter][] = $action;
+				}
+			}
+		}
+
+		return $this->buildStatus( $actionsTaken, $messages );
+	}
+
+	/**
+	 * Idempotent and pure method that, given a raw list of consequences, determines which ones
+	 * should be actually executed. Normalizations done here:
+	 * - Only keep the longest block from all filters
+	 * - For global filters, remove locally disabled actions
+	 * - For every filter with "throttle" enabled, remove other actions if the throttle counter hasn't been reached
+	 * - For every filter with "warn" enabled, remove other actions if the warning hasn't been shown
+	 * - For every filter, remove "disallow" if a blocking action will be executed
+	 * - Rewrite parameters of "block", "warn" and "throttle"
+	 *
+	 * @param array[] $actionsByFilter
+	 * @return array[]
+	 * @internal Temporary method
+	 */
+	public function getFilteredConsequences( array $actionsByFilter ) : array {
+		global $wgAbuseFilterLocallyDisabledGlobalActions,
+			   $wgAbuseFilterBlockDuration, $wgAbuseFilterAnonBlockDuration;
+
+		// Keep track of the longest block
+		$maxBlock = [ 'id' => null, 'expiry' => -1, 'blocktalk' => null ];
+
+		foreach ( $actionsByFilter as $filter => &$actions ) {
+			$isGlobalFilter = AbuseFilter::splitGlobalName( $filter )[1];
 
 			if ( $isGlobalFilter ) {
 				$actions = array_diff_key( $actions, array_filter( $wgAbuseFilterLocallyDisabledGlobalActions ) );
@@ -485,34 +524,32 @@ class AbuseFilterRunner {
 				foreach ( $parameters as $throttleType ) {
 					$hitThrottle = $this->isThrottled( $throttleId, $throttleType, $rateCount, $isGlobalFilter )
 						|| $hitThrottle;
-					$this->setThrottled( $throttleId, $throttleType, $ratePeriod, $isGlobalFilter );
 				}
 
-				unset( $actions['throttle'] );
+				$newParams = [
+					'throttled' => $hitThrottle,
+					'id' => $throttleId,
+					'types' => $parameters,
+					'period' => $ratePeriod,
+					'global' => $isGlobalFilter
+				];
+
+				$actions['throttle'] = $newParams;
 				if ( !$hitThrottle ) {
-					$actionsTaken[$filter][] = 'throttle';
+					$actions = [ 'throttle' => $actions['throttle'] ];
 					continue;
 				}
 			}
 
 			if ( isset( $actions['warn'] ) ) {
 				$parameters = $actions['warn'];
-
-				if ( $this->shouldBeWarned( $filter ) ) {
-					$this->setWarn( $filter, true );
-
-					$msg = $parameters[0] ?? 'abusefilter-warning';
-					$messages[] = [ $msg, $filterPublicComments, $filter ];
-
-					$actionsTaken[$filter][] = 'warn';
-
-					// Don't do anything else.
+				$shouldWarn = $this->shouldBeWarned( $filter );
+				$msg = $parameters[0] ?? 'abusefilter-warning';
+				$actions['warn'] = [ 'msg' => $msg, 'shouldWarn' => $shouldWarn ];
+				if ( $shouldWarn ) {
+					$actions = [ 'warn' => $actions['warn'] ];
 					continue;
-				} else {
-					$this->setWarn( $filter, false );
 				}
-
-				unset( $actions['warn'] );
 			}
 
 			// Don't show the disallow message if a blocking action is executed
@@ -522,7 +559,6 @@ class AbuseFilterRunner {
 				unset( $actions['disallow'] );
 			}
 
-			// Find out the max expiry to issue the longest triggered block.
 			if ( isset( $actions['block'] ) ) {
 				$parameters = $actions['block'];
 
@@ -544,53 +580,30 @@ class AbuseFilterRunner {
 					}
 				}
 
-				$currentExpiry = SpecialBlock::parseExpiryInput( $expiry );
-				if ( $maxExpiry === -1 || $currentExpiry > SpecialBlock::parseExpiryInput( $maxExpiry ) ) {
+				if (
+					$maxBlock['expiry'] === -1 ||
+					SpecialBlock::parseExpiryInput( $expiry ) > SpecialBlock::parseExpiryInput( $maxBlock['expiry'] )
+				) {
 					// Save the parameters to issue the block with
-					$maxExpiry = $expiry;
-					$blockValues = [
-						$filterPublicComments,
-						$filter,
-						is_array( $parameters ) && in_array( 'blocktalk', $parameters )
+					$maxBlock = [
+						'id' => $filter,
+						'expiry' => $expiry,
+						'blocktalk' => is_array( $parameters ) && in_array( 'blocktalk', $parameters )
 					];
 				}
+				// We'll re-add it later
 				unset( $actions['block'] );
 			}
+		}
+		unset( $actions );
 
-			// Do the rest of the actions
-			foreach ( $actions as $action => $info ) {
-				$newMsg = $this->takeConsequenceAction(
-					$action,
-					$info,
-					$filterPublicComments,
-					$filter
-				);
-
-				if ( $newMsg !== null ) {
-					$messages[] = $newMsg;
-				}
-				$actionsTaken[$filter][] = $action;
-			}
+		if ( $maxBlock['id'] !== null ) {
+			$id = $maxBlock['id'];
+			unset( $maxBlock['id'] );
+			$actionsByFilter[ $id ]['block'] = $maxBlock;
 		}
 
-		// Since every filter has been analysed, we now know what the
-		// longest block duration is, so we can issue the block if
-		// maxExpiry has been changed.
-		if ( $maxExpiry !== -1 ) {
-			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
-			$this->doBlock( $blockValues[0], $blockValues[1], $maxExpiry, $blockValues[2] );
-			$message = [
-				'abusefilter-blocked-display',
-				$blockValues[0],
-				$blockValues[1]
-			];
-			// Manually add the message. If we're here, there is one.
-			$messages[] = $message;
-			// @phan-suppress-next-line PhanTypeMismatchDimAssignment
-			$actionsTaken[$blockValues[1]][] = 'block';
-		}
-
-		return $this->buildStatus( $actionsTaken, $messages );
+		return $actionsByFilter;
 	}
 
 	/**
@@ -762,6 +775,29 @@ class AbuseFilterRunner {
 		$message = null;
 
 		switch ( $action ) {
+			case 'throttle':
+				foreach ( $parameters['types'] as $type ) {
+					$this->setThrottled(
+						$parameters['id'],
+						$type,
+						$parameters['period'],
+						$parameters['global']
+					);
+				}
+				break;
+			case 'warn':
+				$this->setWarn( $ruleNumber, $parameters[ 'shouldWarn' ] );
+				if ( !$parameters['shouldWarn'] ) {
+					break;
+				}
+
+				if ( isset( $parameters['msg'] ) && strlen( $parameters['msg'] ) ) {
+					$msg = $parameters['msg'];
+				} else {
+					$msg = 'abusefilter-warning';
+				}
+				$message = [ $msg, $ruleDescription, $ruleNumber ];
+				break;
 			case 'disallow':
 				$msg = $parameters[0] ?? 'abusefilter-disallowed';
 				$message = [ $msg, $ruleDescription, $ruleNumber ];
@@ -853,7 +889,12 @@ class AbuseFilterRunner {
 				break;
 
 			case 'block':
-				// Do nothing, handled at the end of executeFilterActions. Here for completeness.
+				$this->doBlock( $ruleDescription, $ruleNumber, $parameters['expiry'], $parameters['blocktalk'] );
+				$message = [
+					'abusefilter-blocked-display',
+					$ruleDescription,
+					$ruleNumber
+				];
 				break;
 
 			case 'tag':

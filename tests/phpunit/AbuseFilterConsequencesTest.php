@@ -302,7 +302,19 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				],
 				'blockautopromote' => []
 			]
-		]
+		],
+		23 => [
+			'af_pattern' => '1 === 1',
+			'af_public_comments' => 'Catch-all for warning + disallow',
+			'actions' => [
+				'warn' => [
+					'abusefilter-my-warning'
+				],
+				'disallow' => [
+					'abusefilter-my-disallow'
+				]
+			]
+		],
 	];
 	// phpcs:enable Generic.Files.LineLength
 
@@ -1217,7 +1229,104 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					]
 				],
 				[ 'disallow' => [ 11 ] ]
+			]
+		];
+	}
+
+	/**
+	 * Like self::testFilterConsequences but for warn, which deserves a special treatment.
+	 * Data provider passes parameters for a single action, which we repeat twice
+	 *
+	 * @param int[] $createIds IDs of the filters to create
+	 * @param array[] $actionParams Details of the action we need to execute to trigger filters
+	 * @param int[] $warnIDs IDs of the filters which will warn us
+	 * @param array $consequences The consequences we're expecting
+	 * @dataProvider provideWarnFilters
+	 */
+	public function testWarn( $createIds, $actionParams, $warnIDs, $consequences ) {
+		$this->createFilters( $createIds );
+		$params = [ $actionParams, $actionParams ];
+		list( $warnedStatus, $finalStatus ) = $this->doActions( $params );
+
+		list( $expectedWarn, $actualWarn ) = $this->checkConsequences(
+			$warnedStatus,
+			$actionParams,
+			[ 'warn' => $warnIDs ]
+		);
+
+		$this->assertSame(
+			$expectedWarn,
+			$actualWarn,
+			'The error messages for the first action do not match.'
+		);
+
+		list( $expectedFinal, $actualFinal ) = $this->checkConsequences(
+			$finalStatus,
+			$actionParams,
+			$consequences
+		);
+
+		$this->assertSame(
+			$expectedFinal,
+			$actualFinal,
+			'The error messages for the second action do not match.'
+		);
+	}
+
+	/**
+	 * Data provider for testWarn. For every test case, we pass
+	 *   - an array with the IDs of the filters to be created (listed in self::$filters),
+	 *   - an array with action parameters, like in self::provideFilters. This will be executed twice.
+	 *   - an array of IDs of the filter which should give a warning
+	 *   - an array of expected consequences for the last action (i.e. after throttling) of the form
+	 *       [ 'consequence name' => [ IDs of the filter to take its parameters from ] ]
+	 *       Such IDs may be more than one if we have a warning that is shown twice.
+	 *
+	 * @return array
+	 */
+	public function provideWarnFilters() {
+		return [
+			'Basic test for warning and then tag' => [
+				[ 1 ],
+				[
+					'action' => 'edit',
+					'target' => 'Foo',
+					'oldText' => 'Neutral text',
+					'newText' => 'First foo version',
+					'summary' => ''
+				],
+				[ 1 ],
+				[ 'tag' => [ 1 ] ],
 			],
+			'Basic test for warning on "move"' => [
+				[ 23 ],
+				[
+					'action' => 'move',
+					'target' => 'Test warn',
+					'newTitle' => 'Another warn test'
+				],
+				[ 23 ],
+				[ 'disallow' => [ 23 ] ]
+			],
+			'Basic test for warning on "delete"' => [
+				[ 23 ],
+				[
+					'action' => 'delete',
+					'target' => 'Warned'
+				],
+				[ 23 ],
+				[ 'disallow' => [ 23 ] ]
+			],
+			'Basic test for warning on "createaccount"' => [
+				[ 23 ],
+				[
+					'action' => 'createaccount',
+					'target' => 'User:AnotherWarnedUser',
+					'username' => 'AnotherWarnedUser'
+				],
+				[ 23 ],
+				[ 'disallow' => [ 23 ] ]
+			]
 		];
 	}
 

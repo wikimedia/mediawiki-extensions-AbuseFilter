@@ -314,4 +314,174 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 		yield 'All suppressed, not privileged' => [ $allSupp, false, false ];
 		yield 'All suppressed, privileged' => [ $allSupp, true, true ];
 	}
+
+	/**
+	 * @param array $rawConsequences A raw, unfiltered list of consequences
+	 * @param array $expected The expected, filtered list
+	 * @param Title $title
+	 * @covers AbuseFilterRunner::getFilteredConsequences
+	 * @dataProvider provideConsequences
+	 */
+	public function testGetFilteredConsequences( $rawConsequences, $expected, Title $title ) {
+		$this->setMwGlobals( [
+			'wgAbuseFilterLocallyDisabledGlobalActions' => [
+				'flag' => false,
+				'throttle' => false,
+				'warn' => false,
+				'disallow' => false,
+				'blockautopromote' => true,
+				'block' => true,
+				'rangeblock' => true,
+				'degroup' => true,
+				'tag' => false
+			],
+			'wgMainCacheType' => 'hash'
+		] );
+		$user = $this->getTestUser()->getUser();
+		$vars = AbuseFilterVariableHolder::newFromArray( [ 'action' => 'edit' ] );
+		$runner = new AbuseFilterRunner( $user, $title, $vars, 'default' );
+		$actual = $runner->getFilteredConsequences( $rawConsequences );
+
+		$this->assertEquals( $expected, $actual );
+	}
+
+	/**
+	 * Data provider for testGetFilteredConsequences
+	 * @todo Split these
+	 * @return array
+	 */
+	public function provideConsequences() {
+		$pageName = __METHOD__;
+		$title = $this->createMock( Title::class );
+		$title->method( 'getPrefixedText' )->willReturn( $pageName );
+
+		return [
+			'warn and throttle exclude other actions' => [
+				[
+					2 => [
+						'warn' => [
+							'abusefilter-warning'
+						],
+						'tag' => [
+							'some tag'
+						]
+					],
+					13 => [
+						'throttle' => [
+							'13',
+							'14,15',
+							'user'
+						],
+						'disallow' => []
+					],
+					168 => [
+						'degroup' => []
+					]
+				],
+				[
+					2 => [
+						'warn' => [
+							'msg' => 'abusefilter-warning',
+							'shouldWarn' => true
+						]
+					],
+					13 => [
+						'throttle' => [
+							'throttled' => false,
+							'id' => '13',
+							'types' => [ 'user' ],
+							'period' => 15,
+							'global' => false
+						]
+					],
+					168 => [
+						'degroup' => []
+					]
+				],
+				$title
+			],
+			'warn excludes other actions, block excludes disallow' => [
+				[
+					3 => [
+						'tag' => [
+							'some tag'
+						]
+					],
+					'global-2' => [
+						'warn' => [
+							'abusefilter-beautiful-warning'
+						],
+						'degroup' => []
+					],
+					4 => [
+						'disallow' => [],
+						'block' => [
+							'blocktalk',
+							'15 minutes',
+							'indefinite'
+						]
+					]
+				],
+				[
+					3 => [
+						'tag' => [
+							'some tag'
+						]
+					],
+					'global-2' => [
+						'warn' => [
+							'msg' => 'abusefilter-beautiful-warning',
+							'shouldWarn' => true
+						]
+					],
+					4 => [
+						'block' => [
+							'expiry' => 'indefinite',
+							'blocktalk' => true
+						]
+					]
+				],
+				$title
+			],
+			'some global actions are disabled locally, the longest block is chosen' => [
+				[
+					'global-1' => [
+						'blockautopromote' => [],
+						'block' => [
+							'blocktalk',
+							'indefinite',
+							'indefinite'
+						]
+					],
+					1 => [
+						'block' => [
+							'blocktalk',
+							'4 hours',
+							'4 hours'
+						]
+					],
+					2 => [
+						'degroup' => [],
+						'block' => [
+							'blocktalk',
+							'infinity',
+							'never'
+						]
+					]
+				],
+				[
+					'global-1' => [],
+					1 => [],
+					2 => [
+						'degroup' => [],
+						'block' => [
+							'expiry' => 'never',
+							'blocktalk' => true
+						]
+					]
+				],
+				$title
+			],
+		];
+	}
 }
