@@ -2452,12 +2452,12 @@ class AbuseFilter {
 		}
 
 		// If we've activated the 'tag' option, check the arguments for validity.
-		if ( !empty( $actions['tag'] ) ) {
-			if ( count( $actions['tag']['parameters'] ) === 0 ) {
+		if ( isset( $actions['tag'] ) ) {
+			if ( count( $actions['tag'] ) === 0 ) {
 				$validationStatus->error( 'tags-create-no-name' );
 				return $validationStatus;
 			}
-			foreach ( $actions['tag']['parameters'] as $tag ) {
+			foreach ( $actions['tag'] as $tag ) {
 				$status = self::isAllowedTag( $tag );
 
 				if ( !$status->isGood() ) {
@@ -2470,17 +2470,17 @@ class AbuseFilter {
 		}
 
 		// Warning and disallow message cannot be empty
-		if ( !empty( $actions['warn'] ) && $actions['warn']['parameters'][0] === '' ) {
+		if ( isset( $actions['warn'] ) && $actions['warn'][0] === '' ) {
 			$validationStatus->error( 'abusefilter-edit-invalid-warn-message' );
 			return $validationStatus;
-		} elseif ( !empty( $actions['disallow'] ) && $actions['disallow']['parameters'][0] === '' ) {
+		} elseif ( isset( $actions['disallow'] ) && $actions['disallow'][0] === '' ) {
 			$validationStatus->error( 'abusefilter-edit-invalid-disallow-message' );
 			return $validationStatus;
 		}
 
 		// If 'throttle' is selected, check its parameters
-		if ( !empty( $actions['throttle'] ) ) {
-			$throttleCheck = self::checkThrottleParameters( $actions['throttle']['parameters'] );
+		if ( isset( $actions['throttle'] ) ) {
+			$throttleCheck = self::checkThrottleParameters( $actions['throttle'] );
 			if ( $throttleCheck !== null ) {
 				$validationStatus->error( $throttleCheck );
 				return $validationStatus;
@@ -2524,10 +2524,7 @@ class AbuseFilter {
 		$restrictions = $page->getConfig()->get( 'AbuseFilterRestrictions' );
 		if ( count( array_intersect_key(
 				array_filter( $restrictions ),
-				array_merge(
-					array_filter( $actions ),
-					array_filter( $origActions )
-				)
+				array_merge( $actions, $origActions )
 			) )
 			&& !$page->getUser()->isAllowed( 'abusefilter-modify-restricted' )
 		) {
@@ -2604,10 +2601,10 @@ class AbuseFilter {
 		$actionsRows = [];
 		foreach ( array_filter( $availableActions ) as $action => $_ ) {
 			// Check if it's set
-			$enabled = isset( $actions[$action] ) && (bool)$actions[$action];
+			$enabled = isset( $actions[$action] );
 
 			if ( $enabled ) {
-				$parameters = $actions[$action]['parameters'];
+				$parameters = $actions[$action];
 				if ( $action === 'throttle' && $parameters[0] === 'new' ) {
 					// FIXME: Do we really need to keep the filter ID inside throttle parameters?
 					// We'd save space, keep things simpler and avoid this hack. Note: if removing
@@ -2631,11 +2628,7 @@ class AbuseFilter {
 			$afh_row[$afh_col] = $newRow[$af_col];
 		}
 
-		$displayActions = [];
-		foreach ( $actions as $action ) {
-			$displayActions[$action['action']] = $action['parameters'];
-		}
-		$afh_row['afh_actions'] = serialize( $displayActions );
+		$afh_row['afh_actions'] = serialize( $actions );
 
 		$afh_row['afh_changed_fields'] = implode( ',', $differences );
 
@@ -2740,10 +2733,8 @@ class AbuseFilter {
 				// They're both unset
 			} elseif ( isset( $actions1[$action] ) && isset( $actions2[$action] ) ) {
 				// They're both set. Double check needed, e.g. per T180194
-				if ( array_diff( $actions1[$action]['parameters'],
-					$actions2[$action]['parameters'] ) ||
-					array_diff( $actions2[$action]['parameters'],
-					$actions1[$action]['parameters'] ) ) {
+				if ( array_diff( $actions1[$action], $actions2[$action] ) ||
+					array_diff( $actions2[$action], $actions1[$action] ) ) {
 					// Different parameters
 					$differences[] = 'actions';
 				}
@@ -2782,18 +2773,10 @@ class AbuseFilter {
 		}
 
 		// Process actions
-		$actions_raw = unserialize( $row->afh_actions );
-		$actions_output = [];
-		if ( is_array( $actions_raw ) ) {
-			foreach ( $actions_raw as $action => $parameters ) {
-				$actions_output[$action] = [
-					'action' => $action,
-					'parameters' => $parameters
-				];
-			}
-		}
+		$actionsRaw = unserialize( $row->afh_actions );
+		$actionsOutput = is_array( $actionsRaw ) ? $actionsRaw : [];
 
-		return [ $af_row, $actions_output ];
+		return [ $af_row, $actionsOutput ];
 	}
 
 	/**
