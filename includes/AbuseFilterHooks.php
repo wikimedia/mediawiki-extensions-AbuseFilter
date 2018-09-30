@@ -414,6 +414,7 @@ class AbuseFilterHooks {
 	private static function fetchAllTags( array &$tags, $enabled ) {
 		$services = MediaWikiServices::getInstance();
 		$cache = $services->getMainWANObjectCache();
+		$fname = __METHOD__;
 
 		$tags = $cache->getWithSetCallback(
 			// Key to store the cached value under
@@ -423,7 +424,7 @@ class AbuseFilterHooks {
 			$cache::TTL_MINUTE,
 
 			// Function that derives the new key value
-			function ( $oldValue, &$ttl, array &$setOpts ) use ( $enabled, $tags ) {
+			function ( $oldValue, &$ttl, array &$setOpts ) use ( $enabled, $tags, $fname ) {
 				global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
 
 				$dbr = wfGetDB( DB_REPLICA );
@@ -440,7 +441,7 @@ class AbuseFilterHooks {
 					[ 'abuse_filter_action', 'abuse_filter' ],
 					'afa_parameters',
 					$where,
-					__METHOD__,
+					$fname,
 					[],
 					[ 'abuse_filter' => [ 'INNER JOIN', 'afa_filter=af_id' ] ]
 				);
@@ -458,7 +459,7 @@ class AbuseFilterHooks {
 						[ 'abuse_filter_action', 'abuse_filter' ],
 						'afa_parameters',
 						$where,
-						__METHOD__,
+						$fname,
 						[],
 						[ 'abuse_filter' => [ 'INNER JOIN', 'afa_filter=af_id' ] ]
 					);
