@@ -439,11 +439,12 @@ class AFComputedVariable {
 		}
 
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$fname = __METHOD__;
 
 		return $cache->getWithSetCallback(
 			$cache->makeKey( 'last-10-authors', 'revision', $title->getLatestRevID() ),
 			$cache::TTL_MINUTE,
-			function ( $oldValue, &$ttl, array &$setOpts ) use ( $title ) {
+			function ( $oldValue, &$ttl, array &$setOpts ) use ( $title, $fname ) {
 				$dbr = wfGetDB( DB_REPLICA );
 				$setOpts += Database::getCacheSetOptions( $dbr );
 				// Get the last 100 edit authors with a trivial query (avoid T116557)
@@ -452,7 +453,7 @@ class AFComputedVariable {
 					$revQuery['tables'],
 					$revQuery['fields']['rev_user_text'],
 					[ 'rev_page' => $title->getArticleID() ],
-					__METHOD__,
+					$fname,
 					// Some pages have < 10 authors but many revisions (e.g. bot pages)
 					[ 'ORDER BY' => 'rev_timestamp DESC',
 						'LIMIT' => 100,
