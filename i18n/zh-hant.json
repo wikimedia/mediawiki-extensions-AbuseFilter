@@ -50,7 +50,7 @@
 	"abusefilter-autopromote-blocked": "此操作已被系統自動識別為有害動作並已禁止。\n基於安全性考量，部份例行授予已建立帳號的權限將暫時從您的帳號上撤回。\n與您的操作符合的濫用規則描述為：$1",
 	"abusefilter-blocker": "防濫用過濾器",
 	"abusefilter-blockreason": "已由防濫用過濾器自動封鎖。\n符合的規則描述為︰$1",
-	"abusefilter-degroupreason": "已由防濫用過濾器自動撤銷權限。\n規則描述︰$1",
+	"abusefilter-degroupreason": "已由防濫用篩選器自動移除權限。\n規則描述︰$1",
 	"abusefilter-accountreserved": "此帳號名稱已保留給防濫用過濾器使用。",
 	"right-abusefilter-modify": "修改防濫用過濾器",
 	"right-abusefilter-view": "檢視防濫用過濾器",

@@ -451,7 +451,7 @@
 	"abusefilter-test-page": "Cambios fechos na páxina:",
 	"abusefilter-test-shownegative": "Ver los cambios que nun casen col filtru",
 	"abusefilter-test-syntaxerr": "El filtru qu'escribisti contenía un error de sintaxis.\nPues recibir una esplicación completa calcando nel botón \"{{int:abusefilter-edit-check}}\".",
-	"abusefilter-test-badtitle": "El títulu de páxina qu'escribisti nun ye válidu. Pede contener unu o más caráuteres que nun pueden usase nos títulos.",
+	"abusefilter-test-badtitle": "El títulu de páxina qu'escribisti nun ye válidu. Pue que contenga un caráuter o más que nun puen usase nos títulos.",
 	"abusefilter-test-action": "Tipu d'aición:",
 	"abusefilter-test-search-type-all": "Toles aiciones",
 	"abusefilter-test-search-type-edit": "Ediciones",
