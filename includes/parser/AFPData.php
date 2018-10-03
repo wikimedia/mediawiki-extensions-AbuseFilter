@@ -68,7 +68,7 @@ class AFPData {
 	/**
 	 * @return AFPData
 	 */
-	public function dup() {
+	private function dup() {
 		return new AFPData( $this->type, $this->data );
 	}
 
@@ -77,7 +77,7 @@ class AFPData {
 	 * @param string $target
 	 * @return AFPData
 	 */
-	public static function castTypes( $orig, $target ) {
+	public static function castTypes( AFPData $orig, $target ) {
 		if ( $orig->type == $target ) {
 			return $orig->dup();
 		}
@@ -88,14 +88,11 @@ class AFPData {
 		if ( $orig->type == self::DARRAY ) {
 			if ( $target == self::DBOOL ) {
 				return new AFPData( self::DBOOL, (bool)count( $orig->data ) );
-			}
-			if ( $target == self::DFLOAT ) {
+			} elseif ( $target == self::DFLOAT ) {
 				return new AFPData( self::DFLOAT, floatval( count( $orig->data ) ) );
-			}
-			if ( $target == self::DINT ) {
+			} elseif ( $target == self::DINT ) {
 				return new AFPData( self::DINT, intval( count( $orig->data ) ) );
-			}
-			if ( $target == self::DSTRING ) {
+			} elseif ( $target == self::DSTRING ) {
 				$s = '';
 				foreach ( $orig->data as $item ) {
 					$s .= $item->toString() . "\n";
@@ -107,17 +104,13 @@ class AFPData {
 
 		if ( $target == self::DBOOL ) {
 			return new AFPData( self::DBOOL, (bool)$orig->data );
-		}
-		if ( $target == self::DFLOAT ) {
+		} elseif ( $target == self::DFLOAT ) {
 			return new AFPData( self::DFLOAT, floatval( $orig->data ) );
-		}
-		if ( $target == self::DINT ) {
+		} elseif ( $target == self::DINT ) {
 			return new AFPData( self::DINT, intval( $orig->data ) );
-		}
-		if ( $target == self::DSTRING ) {
+		} elseif ( $target == self::DSTRING ) {
 			return new AFPData( self::DSTRING, strval( $orig->data ) );
-		}
-		if ( $target == self::DARRAY ) {
+		} elseif ( $target == self::DARRAY ) {
 			return new AFPData( self::DARRAY, [ $orig ] );
 		}
 	}
@@ -126,7 +119,7 @@ class AFPData {
 	 * @param AFPData $value
 	 * @return AFPData
 	 */
-	public static function boolInvert( $value ) {
+	public static function boolInvert( AFPData $value ) {
 		return new AFPData( self::DBOOL, !$value->toBool() );
 	}
 
@@ -135,37 +128,21 @@ class AFPData {
 	 * @param AFPData $exponent
 	 * @return AFPData
 	 */
-	public static function pow( $base, $exponent ) {
+	public static function pow( AFPData $base, AFPData $exponent ) {
 		$res = pow( $base->toNumber(), $exponent->toNumber() );
-		if ( $res === (int)$res ) {
-			return new AFPData( self::DINT, $res );
-		} else {
-			return new AFPData( self::DFLOAT, $res );
-		}
+		$type = is_int( $res ) ? self::DINT : self::DFLOAT;
+
+		return new AFPData( $type, $res );
 	}
 
 	/**
+	 * Checks if $a contains $b
+	 *
 	 * @param AFPData $a
 	 * @param AFPData $b
 	 * @return AFPData
 	 */
-	public static function keywordIn( $a, $b ) {
-		$a = $a->toString();
-		$b = $b->toString();
-
-		if ( $a == '' || $b == '' ) {
-			return new AFPData( self::DBOOL, false );
-		}
-
-		return new AFPData( self::DBOOL, strpos( $b, $a ) !== false );
-	}
-
-	/**
-	 * @param AFPData $a
-	 * @param AFPData $b
-	 * @return AFPData
-	 */
-	public static function keywordContains( $a, $b ) {
+	private static function containmentKeyword( AFPData $a, AFPData $b ) {
 		$a = $a->toString();
 		$b = $b->toString();
 
@@ -177,12 +154,30 @@ class AFPData {
 	}
 
 	/**
+	 * @param AFPData $a
+	 * @param AFPData $b
+	 * @return AFPData
+	 */
+	public static function keywordIn( AFPData $a, AFPData $b ) {
+		return self::containmentKeyword( $b, $a );
+	}
+
+	/**
+	 * @param AFPData $a
+	 * @param AFPData $b
+	 * @return AFPData
+	 */
+	public static function keywordContains( AFPData $a, AFPData $b ) {
+		return self::containmentKeyword( $a, $b );
+	}
+
+	/**
 	 * @param AFPData $d1
 	 * @param AFPData $d2
 	 * @param bool $strict whether to also check types
 	 * @return bool
 	 */
-	public static function equals( $d1, $d2, $strict = false ) {
+	private static function equals( AFPData $d1, AFPData $d2, $strict = false ) {
 		if ( $d1->type != self::DARRAY && $d2->type != self::DARRAY ) {
 			$typecheck = $d1->type == $d2->type || !$strict;
 			return $typecheck && $d1->toString() === $d2->toString();
@@ -194,8 +189,7 @@ class AFPData {
 			}
 			$length = count( $data1 );
 			for ( $i = 0; $i < $length; $i++ ) {
-				$result = self::equals( $data1[$i], $data2[$i], $strict );
-				if ( $result === false ) {
+				if ( self::equals( $data1[$i], $data2[$i], $strict ) === false ) {
 					return false;
 				}
 			}
@@ -220,7 +214,7 @@ class AFPData {
 	 * @param AFPData $pattern
 	 * @return AFPData
 	 */
-	public static function keywordLike( $str, $pattern ) {
+	public static function keywordLike( AFPData $str, AFPData $pattern ) {
 		$str = $str->toString();
 		$pattern = '#^' . strtr( preg_quote( $pattern->toString(), '#' ), self::$wildcardMap ) . '$#u';
 		Wikimedia\suppressWarnings();
@@ -238,7 +232,7 @@ class AFPData {
 	 * @return AFPData
 	 * @throws Exception
 	 */
-	public static function keywordRegex( $str, $regex, $pos, $insensitive = false ) {
+	public static function keywordRegex( AFPData $str, AFPData $regex, $pos, $insensitive = false ) {
 		$str = $str->toString();
 		$pattern = $regex->toString();
 
@@ -269,7 +263,7 @@ class AFPData {
 	 * @param int $pos
 	 * @return AFPData
 	 */
-	public static function keywordRegexInsensitive( $str, $regex, $pos ) {
+	public static function keywordRegexInsensitive( AFPData $str, AFPData $regex, $pos ) {
 		return self::keywordRegex( $str, $regex, $pos, true );
 	}
 
@@ -277,7 +271,7 @@ class AFPData {
 	 * @param AFPData $data
 	 * @return AFPData
 	 */
-	public static function unaryMinus( $data ) {
+	public static function unaryMinus( AFPData $data ) {
 		if ( $data->type == self::DINT ) {
 			return new AFPData( $data->type, -$data->toInt() );
 		} else {
@@ -292,16 +286,14 @@ class AFPData {
 	 * @return AFPData
 	 * @throws AFPException
 	 */
-	public static function boolOp( $a, $b, $op ) {
+	public static function boolOp( AFPData $a, AFPData $b, $op ) {
 		$a = $a->toBool();
 		$b = $b->toBool();
 		if ( $op == '|' ) {
 			return new AFPData( self::DBOOL, $a || $b );
-		}
-		if ( $op == '&' ) {
+		} elseif ( $op == '&' ) {
 			return new AFPData( self::DBOOL, $a && $b );
-		}
-		if ( $op == '^' ) {
+		} elseif ( $op == '^' ) {
 			return new AFPData( self::DBOOL, $a xor $b );
 		}
 		// Should never happen.
@@ -315,31 +307,26 @@ class AFPData {
 	 * @return AFPData
 	 * @throws AFPException
 	 */
-	public static function compareOp( $a, $b, $op ) {
+	public static function compareOp( AFPData $a, AFPData $b, $op ) {
 		if ( $op == '==' || $op == '=' ) {
 			return new AFPData( self::DBOOL, self::equals( $a, $b ) );
-		}
-		if ( $op == '!=' ) {
+		} elseif ( $op == '!=' ) {
 			return new AFPData( self::DBOOL, !self::equals( $a, $b ) );
-		}
-		if ( $op == '===' ) {
+		} elseif ( $op == '===' ) {
 			return new AFPData( self::DBOOL, self::equals( $a, $b, true ) );
-		}
-		if ( $op == '!==' ) {
+		} elseif ( $op == '!==' ) {
 			return new AFPData( self::DBOOL, !self::equals( $a, $b, true ) );
 		}
+
 		$a = $a->toString();
 		$b = $b->toString();
 		if ( $op == '>' ) {
 			return new AFPData( self::DBOOL, $a > $b );
-		}
-		if ( $op == '<' ) {
+		} elseif ( $op == '<' ) {
 			return new AFPData( self::DBOOL, $a < $b );
-		}
-		if ( $op == '>=' ) {
+		} elseif ( $op == '>=' ) {
 			return new AFPData( self::DBOOL, $a >= $b );
-		}
-		if ( $op == '<=' ) {
+		} elseif ( $op == '<=' ) {
 			return new AFPData( self::DBOOL, $a <= $b );
 		}
 		// Should never happen
@@ -355,7 +342,7 @@ class AFPData {
 	 * @throws AFPUserVisibleException
 	 * @throws AFPException
 	 */
-	public static function mulRel( $a, $b, $op, $pos ) {
+	public static function mulRel( AFPData $a, AFPData $b, $op, $pos ) {
 		$a = $a->toNumber();
 		$b = $b->toNumber();
 
@@ -374,7 +361,7 @@ class AFPData {
 			throw new AFPException( "Invalid multiplication-related operation: {$op}" );
 		}
 
-		if ( $data === (int)$data ) {
+		if ( is_int( $data ) ) {
 			$data = intval( $data );
 			$type = self::DINT;
 		} else {
@@ -390,18 +377,16 @@ class AFPData {
 	 * @param AFPData $b
 	 * @return AFPData
 	 */
-	public static function sum( $a, $b ) {
+	public static function sum( AFPData $a, AFPData $b ) {
 		if ( $a->type == self::DSTRING || $b->type == self::DSTRING ) {
 			return new AFPData( self::DSTRING, $a->toString() . $b->toString() );
 		} elseif ( $a->type == self::DARRAY && $b->type == self::DARRAY ) {
 			return new AFPData( self::DARRAY, array_merge( $a->toArray(), $b->toArray() ) );
 		} else {
 			$res = $a->toNumber() + $b->toNumber();
-			if ( $res === (int)$res ) {
-				return new AFPData( self::DINT, $res );
-			} else {
-				return new AFPData( self::DFLOAT, $res );
-			}
+			$type = is_int( $res ) ? self::DINT : self::DFLOAT;
+
+			return new AFPData( $type, $res );
 		}
 	}
 
@@ -410,13 +395,11 @@ class AFPData {
 	 * @param AFPData $b
 	 * @return AFPData
 	 */
-	public static function sub( $a, $b ) {
+	public static function sub( AFPData $a, AFPData $b ) {
 		$res = $a->toNumber() - $b->toNumber();
-		if ( $res === (int)$res ) {
-			return new AFPData( self::DINT, $res );
-		} else {
-			return new AFPData( self::DFLOAT, $res );
-		}
+		$type = is_int( $res ) ? self::DINT : self::DFLOAT;
+
+		return new AFPData( $type, $res );
 	}
 
 	/** Convert shorteners */
