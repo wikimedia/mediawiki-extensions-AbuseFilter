@@ -385,6 +385,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		$ep = new EditPage( $article );
 		$ep->setContextTitle( $title );
 		$ep->importFormData( $req );
+		$result = [];
 		return $ep->internalAttemptSave( $result );
 	}
 

@@ -43,7 +43,10 @@
 	 */
 	function processReautoconfirm( data ) {
 		mw.notify(
-			mw.message( 'abusefilter-reautoconfirm-done', data.abusefilterunblockautopromote.user ).toString()
+			mw.message(
+				'abusefilter-reautoconfirm-done',
+				data.abusefilterunblockautopromote.user
+			).toString()
 		);
 
 		$.removeSpinner( 'abusefilter-reautoconfirm' );

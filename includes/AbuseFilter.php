@@ -550,8 +550,7 @@ class AbuseFilter {
 		Title $title = null,
 		$mode = 'execute'
 	) {
-		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
-		global $wgAbuseFilterConditionLimit;
+		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral, $wgAbuseFilterConditionLimit;
 
 		// Ensure that we start fresh, see T193374
 		self::$condCount = 0;
@@ -1468,11 +1467,9 @@ class AbuseFilter {
 		$text = serialize( $vars );
 		$flags = [ 'nativeDataArray' ];
 
-		if ( $wgCompressRevisions ) {
-			if ( function_exists( 'gzdeflate' ) ) {
-				$text = gzdeflate( $text );
-				$flags[] = 'gzip';
-			}
+		if ( $wgCompressRevisions && function_exists( 'gzdeflate' ) ) {
+			$text = gzdeflate( $text );
+			$flags[] = 'gzip';
 		}
 
 		// Store to ExternalStore if applicable
@@ -1891,6 +1888,7 @@ class AbuseFilter {
 				$identifier = $title->getPrefixedText();
 				break;
 			default:
+				// Should never happen
 				$identifier = 0;
 		}
 

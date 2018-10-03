@@ -253,6 +253,8 @@ abstract class AbuseFilterView extends ContextSource {
 					'rc_log_action' => 'delete'
 				], LIST_AND );
 			// @ToDo: case 'upload'
+			default:
+				throw new MWException( __METHOD__ . ' called with invalid action: ' . $action );
 		}
 
 		return $db->makeList( [
