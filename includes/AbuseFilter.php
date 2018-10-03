@@ -557,16 +557,16 @@ class AbuseFilter {
 	 * Returns an associative array of filters which were tripped
 	 *
 	 * @param AbuseFilterVariableHolder $vars
+	 * @param Title $title
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
-	 * @param Title|null $title
 	 * @param string $mode 'execute' for edits and logs, 'stash' for cached matches
 	 *
 	 * @return bool[] Map of (integer filter ID => bool)
 	 */
 	public static function checkAllFilters(
 		AbuseFilterVariableHolder $vars,
+		Title $title,
 		$group = 'default',
-		Title $title = null,
 		$mode = 'execute'
 	) {
 		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral, $wgAbuseFilterConditionLimit;
@@ -639,7 +639,7 @@ class AbuseFilter {
 			}
 		}
 
-		if ( $title instanceof Title && self::$condCount > $wgAbuseFilterConditionLimit ) {
+		if ( self::$condCount > $wgAbuseFilterConditionLimit ) {
 			$action = $vars->getVar( 'action' )->toString();
 			if ( strpos( $action, 'createaccount' ) === false ) {
 				$username = $vars->getVar( 'user_name' )->toString();
@@ -664,7 +664,7 @@ class AbuseFilter {
 	/**
 	 * @param stdClass $row
 	 * @param AbuseFilterVariableHolder $vars
-	 * @param Title|null $title
+	 * @param Title $title
 	 * @param string $prefix
 	 * @param string $mode 'execute' for edits and logs, 'stash' for cached matches
 	 * @return bool
@@ -672,7 +672,7 @@ class AbuseFilter {
 	public static function checkFilter(
 		$row,
 		AbuseFilterVariableHolder $vars,
-		Title $title = null,
+		Title $title,
 		$prefix = '',
 		$mode = 'execute'
 	) {
@@ -726,20 +726,18 @@ class AbuseFilter {
 	 * @param float $runtime
 	 * @param int $totalConditions
 	 * @param bool $matched
-	 * @param Title|null $title
+	 * @param Title $title
 	 */
 	private static function recordSlowFilter(
-		$filterId, $runtime, $totalConditions, $matched, Title $title = null
+		$filterId, $runtime, $totalConditions, $matched, Title $title
 	) {
-		$title = $title ? $title->getPrefixedText() : '';
-
 		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
 		$logger->info(
 			'Edit filter {filter_id} on {wiki} is taking longer than expected',
 			[
 				'wiki' => wfWikiID(),
 				'filter_id' => $filterId,
-				'title' => $title,
+				'title' => $title->getPrefixedText(),
 				'runtime' => $runtime,
 				'matched' => $matched,
 				'total_conditions' => $totalConditions
@@ -1193,7 +1191,7 @@ class AbuseFilter {
 				$statsd->increment( 'abusefilter.check-stash.hit' );
 			}
 		} else {
-			$filter_matched = self::checkAllFilters( $vars, $group, $title, $mode );
+			$filter_matched = self::checkAllFilters( $vars, $title, $group, $mode );
 			if ( $isForEdit && $mode !== 'stash' ) {
 				$logger->debug( __METHOD__ . ": cache miss for '$title' (key $stashKey)." );
 				$statsd->increment( 'abusefilter.check-stash.miss' );
@@ -1278,7 +1276,7 @@ class AbuseFilter {
 			if ( $cacheData ) {
 				DeferredUpdates::addCallableUpdate( function () use (
 					$vars, $group, $title, $actions_taken, $log_template ) {
-					self::checkAllFilters( $vars, $group, $title, 'execute' );
+					self::checkAllFilters( $vars, $title, $group, 'execute' );
 					self::addLogEntries( $actions_taken, $log_template, $vars, $group );
 				} );
 			} else {
@@ -3025,15 +3023,15 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param Title|null $title
+	 * @param Title $title
 	 * @param Page|null $page
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function getEditVars( Title $title = null, Page $page = null ) {
+	public static function getEditVars( Title $title, Page $page = null ) {
 		$vars = new AbuseFilterVariableHolder;
 
 		// NOTE: $page may end up remaining null, e.g. if $title points to a special page.
-		if ( !$page && $title instanceof Title && $title->canExist() ) {
+		if ( !$page && $title->canExist() ) {
 			$page = WikiPage::factory( $title );
 		}
 
@@ -3062,36 +3060,34 @@ class AbuseFilter {
 		$vars->setLazyLoadVar( 'new_text', 'strip-html',
 			[ 'html-var' => 'new_html' ] );
 
-		if ( $title instanceof Title ) {
-			$vars->setLazyLoadVar( 'all_links', 'links-from-wikitext',
-				[
-					'namespace' => $title->getNamespace(),
-					'title' => $title->getText(),
-					'text-var' => 'new_wikitext',
-					'article' => $page
-				] );
-			$vars->setLazyLoadVar( 'old_links', 'links-from-wikitext-or-database',
-				[
-					'namespace' => $title->getNamespace(),
-					'title' => $title->getText(),
-					'text-var' => 'old_wikitext'
-				] );
-			$vars->setLazyLoadVar( 'new_pst', 'parse-wikitext',
-				[
-					'namespace' => $title->getNamespace(),
-					'title' => $title->getText(),
-					'wikitext-var' => 'new_wikitext',
-					'article' => $page,
-					'pst' => true,
-				] );
-			$vars->setLazyLoadVar( 'new_html', 'parse-wikitext',
-				[
-					'namespace' => $title->getNamespace(),
-					'title' => $title->getText(),
-					'wikitext-var' => 'new_wikitext',
-					'article' => $page
-				] );
-		}
+		$vars->setLazyLoadVar( 'all_links', 'links-from-wikitext',
+			[
+				'namespace' => $title->getNamespace(),
+				'title' => $title->getText(),
+				'text-var' => 'new_wikitext',
+				'article' => $page
+			] );
+		$vars->setLazyLoadVar( 'old_links', 'links-from-wikitext-or-database',
+			[
+				'namespace' => $title->getNamespace(),
+				'title' => $title->getText(),
+				'text-var' => 'old_wikitext'
+			] );
+		$vars->setLazyLoadVar( 'new_pst', 'parse-wikitext',
+			[
+				'namespace' => $title->getNamespace(),
+				'title' => $title->getText(),
+				'wikitext-var' => 'new_wikitext',
+				'article' => $page,
+				'pst' => true,
+			] );
+		$vars->setLazyLoadVar( 'new_html', 'parse-wikitext',
+			[
+				'namespace' => $title->getNamespace(),
+				'title' => $title->getText(),
+				'wikitext-var' => 'new_wikitext',
+				'article' => $page
+			] );
 
 		return $vars;
 	}

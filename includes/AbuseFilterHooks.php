@@ -83,10 +83,11 @@ class AbuseFilterHooks {
 		Status $status, $summary, $slot = SlotRecord::MAIN
 	) {
 		$title = $context->getTitle();
-		if ( !$title ) {
-			// T144265
+		if ( $title === null ) {
+			// T144265: This *should* never happen.
 			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-			$logger->warning( __METHOD__ . ' received a null title. (T144265)' );
+			$logger->warning( __METHOD__ . ' received a null title.' );
+			return Status::newGood();
 		}
 
 		self::$successful_action_vars = false;
@@ -96,7 +97,7 @@ class AbuseFilterHooks {
 
 		$oldContent = null;
 
-		if ( ( $title instanceof Title ) && $title->canExist() && $title->exists() ) {
+		if ( $title->canExist() && $title->exists() ) {
 			// Make sure we load the latest text saved in database (bug 31656)
 			$page = $context->getWikiPage();
 			$oldRevision = $page->getRevision();
@@ -775,13 +776,12 @@ class AbuseFilterHooks {
 		$props, $summary, $text, &$error
 	) {
 		$title = $upload->getTitle();
-		if ( !$title ) {
-			// T144265
+		if ( $title === null ) {
+			// T144265: This could happen for 'stashupload' if the specified title is invalid.
+			// Let UploadBase warn the user about that, and we'll filter later.
 			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-			$err = $upload->validateName()['status'];
-			$logger->warning( __METHOD__ . ' received a null title.' .
-				"Action: $action. Title error: $err. (T144265)"
-			);
+			$logger->warning( __METHOD__ . " received a null title. Action: $action." );
+			return true;
 		}
 
 		$mimeAnalyzer = MediaWikiServices::getInstance()->getMimeAnalyzer();
