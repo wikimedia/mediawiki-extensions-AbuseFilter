@@ -728,7 +728,7 @@ class AbuseFilter {
 	/**
 	 * @param int $filter
 	 */
-	public static function resetFilterProfile( $filter ) {
+	private static function resetFilterProfile( $filter ) {
 		$stash = ObjectCache::getMainStashInstance();
 		$countKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'count' );
 		$totalKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'total' );
@@ -1085,7 +1085,7 @@ class AbuseFilter {
 	 *
 	 * @return Status
 	 */
-	protected static function buildStatus( array $actionsTaken, array $messages ) {
+	private static function buildStatus( array $actionsTaken, array $messages ) {
 		$status = Status::newGood( $actionsTaken );
 
 		foreach ( $messages as $msg ) {
@@ -1763,7 +1763,7 @@ class AbuseFilter {
 	 * @param bool $isAutoBlock
 	 * @param bool $preventEditOwnUserTalk
 	 */
-	protected static function doAbuseFilterBlock(
+	private static function doAbuseFilterBlock(
 		array $rule,
 		$target,
 		$expiry,
@@ -1957,7 +1957,7 @@ class AbuseFilter {
 	 * @param bool[] $filters
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 */
-	public static function recordStats( $filters, $group = 'default' ) {
+	private static function recordStats( $filters, $group = 'default' ) {
 		global $wgAbuseFilterConditionLimit, $wgAbuseFilterProfileActionsCap;
 
 		$stash = ObjectCache::getMainStashInstance();
