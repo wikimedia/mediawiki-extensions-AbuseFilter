@@ -8,14 +8,13 @@
 ( function ( mw, $ ) {
 	'use strict';
 
-	// Syntax result div
-	// @type {jQuery}
+	// @var {jQuery} Syntax result div
 	var $syntaxResult;
 
 	/**
 	 * Processes the results of the filter test
 	 *
-	 * @param {Object} data
+	 * @param {Object} data The response of the API request
 	 */
 	function examinerTestProcess( data ) {
 		var msg, exClass;
@@ -70,7 +69,7 @@
 	 * Tests the filter against an rc event or abuse log entry.
 	 *
 	 * @context HTMLElement
-	 * @param {jQuery.Event} e
+	 * @param {jQuery.Event} e The event fired when the function is called
 	 */
 	function examinerTestFilter() {
 		var filter = $( '#wpTestFilter' ).val(),

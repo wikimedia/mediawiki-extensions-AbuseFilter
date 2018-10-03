@@ -11,7 +11,7 @@
 	/**
 	 * Submits the expression to be evaluated.
 	 * @context HTMLElement
-	 * @param {jQuery.Event} e
+	 * @param {jQuery.Event} e The event fired when the function is called
 	 */
 	function doExprSubmit() {
 		var expr = $( '#wpTestExpr' ).val(),
@@ -39,7 +39,7 @@
 	/**
 	 * Processes the result of the unblocking autopromotions for a user
 	 *
-	 * @param {Object} data
+	 * @param {Object} data The response of the API request
 	 */
 	function processReautoconfirm( data ) {
 		mw.notify(
@@ -52,8 +52,8 @@
 	/**
 	 * Processes the result of the unblocking autopromotions for a user in case of an error
 	 *
-	 * @param {string} errorCode
-	 * @param {Object} data
+	 * @param {string} errorCode Identifier of the error
+	 * @param {Object} data The response of the API request
 	 */
 	function processReautoconfirmFailure( errorCode, data ) {
 		var msg;
@@ -80,8 +80,8 @@
 	/**
 	 * Submits a call to reautoconfirm a user.
 	 * @context HTMLElement
-	 * @param {jQuery.Event} e
-	 * @return {boolean}
+	 * @param {jQuery.Event} e The event fired when the function is called
+	 * @return {boolean} False to prevent form submission
 	 */
 	function doReautoSubmit() {
 		var nameField = OO.ui.infuse( $( '#reautoconfirm-user' ) ),

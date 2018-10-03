@@ -5,7 +5,6 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 	var oop = require( 'ace/lib/oop' ),
 		TextHighlightRules = require( './text_highlight_rules' ).TextHighlightRules,
 		AFHighlightRules = function () {
-
 			var cfg = mw.config.get( 'aceConfig' ),
 				constants = ( 'true|false|null' ),
 				keywordMapper = this.createKeywordMapper(

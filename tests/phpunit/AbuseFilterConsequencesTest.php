@@ -488,7 +488,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 *
 	 * @param string $testDescription A short description of the test, used for error reporting
 	 * @param int[] $createIds IDs of the filters to create
-	 * @param array $actionParameters Details of the action we need to execute to trigger filters
+	 * @param array $actionParams Details of the action we need to execute to trigger filters
 	 * @param array $consequences The consequences we're expecting
 	 * @param array $options Further options for the test
 	 * @covers AbuseFilter

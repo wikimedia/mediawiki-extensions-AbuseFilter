@@ -130,7 +130,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * Builds the full form for edit filters.
 	 * Loads data either from the database or from the HTTP request.
 	 * The request takes precedence over the database
-	 * @param string $error An error message to show above the filter box.
+	 * @param string|null $error An error message to show above the filter box.
 	 * @param int $filter The filter ID
 	 * @param int|null $history_id The history ID of the filter, if applicable. Otherwise null
 	 * @return bool|string False if there is a failure building the editor,
@@ -493,7 +493,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param bool $set Whether or not the action is activated
 	 * @param array $parameters Action parameters
 	 * @param stdClass $row abuse_filter row object
-	 * @return string
+	 * @return string|\OOUI\FieldLayout
 	 */
 	public function buildConsequenceSelector( $action, $set, $parameters, $row ) {
 		$config = $this->getConfig();
@@ -893,7 +893,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
 	 * @param string $warnMsg
 	 * @param bool $readOnly
-	 * @return string
+	 * @return \OOUI\FieldLayout
 	 */
 	public function getExistingSelector( $warnMsg, $readOnly = false ) {
 		$existingSelector =

@@ -4,7 +4,9 @@ use Wikimedia\Equivset\Equivset;
 use MediaWiki\Logger\LoggerFactory;
 
 class AbuseFilterParser {
-	public $mCode, $mTokens, $mPos, $mCur, $mShortCircuit, $mAllowShort, $mLen;
+	public $mCode, $mTokens, $mPos, $mShortCircuit, $mAllowShort, $mLen;
+	/** @var AFPToken The current token */
+	public $mCur;
 
 	/**
 	 * @var AbuseFilterVariableHolder
@@ -428,7 +430,7 @@ class AbuseFilterParser {
 			$this->move();
 			$r2 = new AFPData();
 
-			// We can go on quickly as either one statement with | is true or on with & is false
+			// We can go on quickly as either one statement with | is true or one with & is false
 			if ( ( $op == '&' && !$result->toBool() ) || ( $op == '|' && $result->toBool() ) ) {
 				$orig = $this->mShortCircuit;
 				$this->mShortCircuit = $this->mAllowShort;
@@ -1014,7 +1016,6 @@ class AbuseFilterParser {
 
 			// Suppress and restore needed per T177744
 			Wikimedia\suppressWarnings();
-
 			$count = preg_match_all( $needle, $haystack );
 			Wikimedia\restoreWarnings();
 
@@ -1079,7 +1080,7 @@ class AbuseFilterParser {
 
 		// Returned array has non-empty positions identical to the ones returned
 		// by the third parameter of a standard preg_match call ($matches in this case).
-		// We want an union with falsy to return a fixed-dimention array.
+		// We want an union with falsy to return a fixed-dimension array.
 		return AFPData::newFromPHPVar( $matches + $falsy );
 	}
 

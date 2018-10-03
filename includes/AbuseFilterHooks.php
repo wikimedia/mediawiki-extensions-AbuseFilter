@@ -9,7 +9,7 @@ class AbuseFilterHooks {
 
 	/** @var AbuseFilterVariableHolder|bool */
 	public static $successful_action_vars = false;
-	/** @var WikiPage|Article|bool Make sure edit filter & edit save hooks match */
+	/** @var WikiPage|Article|bool|null Make sure edit filter & edit save hooks match */
 	public static $last_edit_page = false;
 	// So far, all of the error message out-params for these hooks accept HTML.
 

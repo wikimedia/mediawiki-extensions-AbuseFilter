@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Linker\LinkRenderer;
+
 class AbuseFilterHistoryPager extends TablePager {
 	public $mFilter, $mPage, $mUser;
 
@@ -8,7 +10,7 @@ class AbuseFilterHistoryPager extends TablePager {
 	 * @param string $filter
 	 * @param AbuseFilterViewHistory $page
 	 * @param string $user User name
-	 * @param \MediaWiki\Linker\LinkRenderer $linkRenderer
+	 * @param LinkRenderer $linkRenderer
 	 */
 	public function __construct( $filter, $page, $user, $linkRenderer ) {
 		$this->mFilter = $filter;

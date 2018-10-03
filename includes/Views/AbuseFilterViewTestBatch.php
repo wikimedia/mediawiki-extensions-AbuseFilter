@@ -121,7 +121,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	}
 
 	/**
-	 * @fixme this is similar to AbuseFilterExaminePager::getQueryInfo
+	 * Loads the revisions and checks the given syntax against them
 	 */
 	public function doTest() {
 		// Quick syntax check.

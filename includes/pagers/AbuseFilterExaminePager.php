@@ -14,7 +14,6 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	}
 
 	/**
-	 * @fixme this is similar to AbuseFilterViewTestBatch::doTest
 	 * @return array
 	 */
 	public function getQueryInfo() {

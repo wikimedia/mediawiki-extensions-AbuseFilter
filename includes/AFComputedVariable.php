@@ -92,7 +92,7 @@ class AFComputedVariable {
 
 	/**
 	 * @param int $namespace
-	 * @param Title $title
+	 * @param string $title
 	 * @return Article
 	 */
 	public static function articleFromTitle( $namespace, $title ) {
@@ -119,7 +119,7 @@ class AFComputedVariable {
 	 * @return array
 	 */
 	public static function getLinksFromDB( $article ) {
-		// Stolen from ConfirmEdit
+		// Stolen from ConfirmEdit, SimpleCaptcha::getLinksFromTracker
 		$id = $article->getId();
 		if ( !$id ) {
 			return [];

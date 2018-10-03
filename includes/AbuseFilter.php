@@ -918,7 +918,7 @@ class AbuseFilter {
 
 			$global_filter = self::decodeGlobalName( $filter ) !== false;
 
-			// If the filter is throttled and throttling is available via object
+			// If the filter has "throttle" enabled and throttling is available via object
 			// caching, check to see if the user has hit the throttle.
 			if ( !empty( $actions['throttle'] ) && $wgMainCacheType !== CACHE_NONE ) {
 				$parameters = $actions['throttle']['parameters'];
@@ -2749,7 +2749,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param Title $title
+	 * @param Title|null $title
 	 * @param Page|null $page
 	 * @return AbuseFilterVariableHolder
 	 */
@@ -3004,7 +3004,7 @@ class AbuseFilter {
 	 * Note also that if the revision for any reason is not an Revision
 	 * the function returns with an empty string.
 	 *
-	 * @param Revision $revision a valid revision
+	 * @param Revision|null $revision a valid revision
 	 * @param int $audience one of:
 	 *      Revision::FOR_PUBLIC       to be displayed to all users
 	 *      Revision::FOR_THIS_USER    to be displayed to the given user

@@ -9,15 +9,13 @@
 ( function ( mw, $, OO ) {
 	'use strict';
 
-	// Filter editor for JS and jQuery handling
-	// @var {jQuery}
+	// @var {jQuery} Filter editor for JS and jQuery handling
 	var $filterBox,
 		// Filter editor for Ace specific functions
 		filterEditor,
-		// Hidden textarea for submitting form
-		// @var {jQuery}
+		// @var {jQuery} Hidden textarea for submitting form
 		$plainTextBox,
-		// Bool to determine what editor to use
+		// @var {boolean} To determine what editor to use
 		useAce = false,
 		// Infused OOUI elements
 		togglePreviewButton,
@@ -42,9 +40,9 @@
 	/**
 	 * Things always needed after syntax checks
 	 *
-	 * @param {string} resultText
+	 * @param {string} resultText The message to show, telling if the syntax is valid
 	 * @param {string} className Class to add
-	 * @param {bool} syntaxOk Is the syntax ok?
+	 * @param {boolean} syntaxOk Is the syntax ok?
 	 */
 	function processSyntaxResultAlways( resultText, className, syntaxOk ) {
 		$.removeSpinner( 'abusefilter-syntaxcheck' );
@@ -130,7 +128,7 @@
 	 * Sends the current filter text to be checked for syntax issues.
 	 *
 	 * @context HTMLElement
-	 * @param {jQuery.Event} e
+	 * @param {jQuery.Event} e The event fired when the function is called
 	 */
 	function doSyntaxCheck() {
 		var filter = $plainTextBox.val(),
@@ -175,7 +173,7 @@
 	 * Fetches a filter from the API and inserts it into the filter box.
 	 *
 	 * @context HTMLElement
-	 * @param {jQuery.Event} e
+	 * @param {jQuery.Event} e The event fired when the function is called
 	 */
 	function fetchFilter() {
 		var filterId = $.trim( $( '#mw-abusefilter-load-filter input' ).val() ),
@@ -284,7 +282,7 @@
 	 * Called if the filter group (#mw-abusefilter-edit-group-input select) is changed.
 	 *
 	 * @context HTMLELement
-	 * @param {jQuery.Event} e
+	 * @param {jQuery.Event} e The event fired when the function is called
 	 */
 	function onFilterGroupChange() {
 		var $afWarnMessageExisting, newVal;
@@ -324,7 +322,7 @@
 	 * Called if the user presses a key in the load filter field
 	 *
 	 * @context HTMLELement
-	 * @param {jQuery.Event} e
+	 * @param {jQuery.Event} e The event fired when the function is called
 	 */
 	function onFilterKeypress( e ) {
 		if ( e.type === 'keypress' && e.which === 13 ) {

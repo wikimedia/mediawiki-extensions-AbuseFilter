@@ -614,7 +614,7 @@ class SpecialAbuseLog extends SpecialPage {
 
 	/**
 	 * @param string $id
-	 * @return null
+	 * @return void
 	 */
 	public function showPrivateDetails( $id ) {
 		$lang = $this->getLanguage();
@@ -642,7 +642,7 @@ class SpecialAbuseLog extends SpecialPage {
 		if ( !$this->checkReason( $reason ) ) {
 			$out->addWikiMsg( 'abusefilter-noreason' );
 			$this->showDetails( $id );
-			return false;
+			return;
 		}
 
 		$row = $dbr->selectRow(
@@ -857,7 +857,7 @@ class SpecialAbuseLog extends SpecialPage {
 
 	/**
 	 * @param string|null $filter_id
-	 * @param bool|null $filter_hidden
+	 * @param bool|int|null $filter_hidden
 	 * @return bool
 	 */
 	public static function canSeeDetails( $filter_id = null, $filter_hidden = null ) {
