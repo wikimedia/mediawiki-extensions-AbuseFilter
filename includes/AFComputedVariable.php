@@ -343,9 +343,7 @@ class AFComputedVariable {
 				$action = $parameters['action'];
 				$title = Title::makeTitle( $parameters['namespace'], $parameters['title'] );
 
-				$rights = $title->getRestrictions( $action );
-				$rights = count( $rights ) ? $rights : [];
-				$result = $rights;
+				$result = $title->getRestrictions( $action );
 				break;
 			case 'simple-user-accessor':
 				$user = $parameters['user'];

@@ -19,7 +19,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$user = $this->getUser();
 		$out = $this->getOutput();
 		$request = $this->getRequest();
-		$config = $this->getConfig();
 		$out->setPageTitle( $this->msg( 'abusefilter-edit' ) );
 		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 
@@ -62,7 +61,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		if ( $tokenMatches && $this->canEdit() ) {
 			list( $newRow, $actions ) = $this->loadRequest( $filter );
-			$status = AbuseFilter::saveFilter( $this, $filter, $request, $newRow, $actions );
+			$status = AbuseFilter::saveFilter( $this, $filter, $newRow, $actions );
 			if ( !$status->isGood() ) {
 				$err = $status->getErrors();
 				$msg = $err[0]['message'];
@@ -895,7 +894,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 							'align' => 'inline'
 						]
 					);
-				$thisAction = $thisAction;
 				return $thisAction;
 		}
 	}

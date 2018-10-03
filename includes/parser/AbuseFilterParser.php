@@ -4,7 +4,7 @@ use Wikimedia\Equivset\Equivset;
 use MediaWiki\Logger\LoggerFactory;
 
 class AbuseFilterParser {
-	public $mCode, $mTokens, $mPos, $mShortCircuit, $mAllowShort, $mLen;
+	public $mTokens, $mPos, $mShortCircuit, $mAllowShort;
 	/** @var AFPToken The current token */
 	public $mCur;
 
@@ -85,7 +85,6 @@ class AbuseFilterParser {
 	 * Resets the state of the parser.
 	 */
 	public function resetState() {
-		$this->mCode = '';
 		$this->mTokens = [];
 		$this->mVars = new AbuseFilterVariableHolder;
 		$this->mPos = 0;
@@ -102,7 +101,7 @@ class AbuseFilterParser {
 		$origAS = $this->mAllowShort;
 		try {
 			$this->mAllowShort = false;
-			$this->parse( $filter );
+			$this->intEval( $filter );
 		} catch ( AFPUserVisibleException $excep ) {
 			$this->mAllowShort = $origAS;
 
@@ -179,10 +178,8 @@ class AbuseFilterParser {
 	 */
 	public function intEval( $code ) {
 		// Reset all class members to their default value
-		$this->mCode = $code;
 		$this->mTokens = AbuseFilterTokenizer::tokenize( $code );
 		$this->mPos = 0;
-		$this->mLen = strlen( $code );
 		$this->mShortCircuit = false;
 
 		$result = new AFPData();

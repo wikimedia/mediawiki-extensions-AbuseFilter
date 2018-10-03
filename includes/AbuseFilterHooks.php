@@ -49,12 +49,10 @@ class AbuseFilterHooks {
 	public static function onEditFilterMergedContent( IContextSource $context, Content $content,
 		Status $status, $summary, User $user, $minoredit, $slot = SlotRecord::MAIN
 	) {
-		// TODO is there any real point in passing this in?
+		// @todo is there any real point in passing this in?
 		$text = AbuseFilter::contentToString( $content );
 
-		$filterStatus = self::filterEdit(
-			$context, $content, $text, $status, $summary, $minoredit, $slot
-			);
+		$filterStatus = self::filterEdit( $context, $content, $text, $status, $summary, $slot );
 
 		if ( !$filterStatus->isOK() ) {
 			// Produce a useful error message for API edits
@@ -70,12 +68,11 @@ class AbuseFilterHooks {
 	 * @param string $text new page content (subject of filtering)
 	 * @param Status $status Error message to return
 	 * @param string $summary Edit summary for page
-	 * @param bool $minoredit whether this is a minor edit according to the user.
 	 * @param string $slot slot role for the content
 	 * @return Status
 	 */
 	public static function filterEdit( IContextSource $context, $content, $text,
-		Status $status, $summary, $minoredit, $slot = SlotRecord::MAIN
+		Status $status, $summary, $slot = SlotRecord::MAIN
 	) {
 		$title = $context->getTitle();
 		if ( !$title ) {
@@ -864,7 +861,7 @@ class AbuseFilterHooks {
 	 * @param array &$vars
 	 */
 	public static function onMakeGlobalVariablesScript( array &$vars ) {
-		if ( isset( AbuseFilter::$editboxName ) && AbuseFilter::$editboxName !== null ) {
+		if ( isset( AbuseFilter::$editboxName ) ) {
 			$vars['abuseFilterBoxName'] = AbuseFilter::$editboxName;
 		}
 
