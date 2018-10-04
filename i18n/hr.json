@@ -77,7 +77,7 @@
 	"abusefilter-log-details-var": "Varijabla",
 	"abusefilter-log-details-val": "Vrijednost",
 	"abusefilter-log-details-vars": "Parametri postupka",
-	"abusefilter-log-details-private": "Privatni detalji zapisnika",
+	"abusefilter-log-details-private": "Detalji privatne evidencije",
 	"abusefilter-log-details-ip": "Izvorna IP adresa",
 	"abusefilter-log-details-checkuser": "Provjeri suradnika",
 	"abusefilter-log-noactions": "ništa",
@@ -413,7 +413,7 @@
 	"abusefilter-view-private-submit": "Vidi privatne detalje",
 	"abusefilter-view-private": "Vidi privatne detalje",
 	"abusefilter-view-private-reason": "Razlog pristupu privatnim detaljima:",
-	"abusefilter-log-details-id": "Dnevnički ID",
+	"abusefilter-log-details-id": "Evidencijski ID",
 	"abusefilter-log-ip-not-available": "Nije dostupno",
 	"tag-abusefilter-condition-limit": "dostignuta granica uvjeta",
 	"tag-abusefilter-condition-limit-description": "Uređivanja ili druge radnje koje nije bilo moguće provjeriti pomoću svih aktivnih [[Special:AbuseFilter|filtara zloporaba]] ([[mw:Extension:AbuseFilter/Conditions|pomoć]])."
