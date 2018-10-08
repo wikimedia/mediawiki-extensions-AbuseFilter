@@ -256,7 +256,7 @@ class AFPData {
 			throw new AFPUserVisibleException(
 				'regexfailure',
 				$pos,
-				[ 'unspecified error in preg_match()', $pattern ]
+				[ $pattern ]
 			);
 		}
 

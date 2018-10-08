@@ -1023,7 +1023,7 @@ class AbuseFilterParser {
 				throw new AFPUserVisibleException(
 					'regexfailure',
 					$this->mCur->pos,
-					[ 'unspecified error in preg_match_all()', $needle ]
+					[ $needle ]
 				);
 			}
 		}
@@ -1074,7 +1074,7 @@ class AbuseFilterParser {
 			throw new AFPUserVisibleException(
 				'regexfailure',
 				$this->mCur->pos,
-				[ 'unspecified error in preg_match()', $needle ]
+				[ $needle ]
 			);
 		}
 

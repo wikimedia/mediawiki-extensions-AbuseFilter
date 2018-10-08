@@ -409,7 +409,7 @@
 	"abusefilter-exception-dividebyzero": "Illegal attempt to divide $2 by zero at character $1.",
 	"abusefilter-exception-unrecognisedvar": "Unrecognized variable $2 at character $1.",
 	"abusefilter-exception-notenoughargs": "Not enough arguments to function $2 called at character $1.\nExpected $3 {{PLURAL:$3|argument|arguments}}, got $4",
-	"abusefilter-exception-regexfailure": "Error in regular expression \"$3\" at character $1: \"$2\"",
+	"abusefilter-exception-regexfailure": "Error in regular expression \"$2\" at character $1.",
 	"abusefilter-exception-overridebuiltin": "Illegal overriding of built-in variable \"$2\" at character $1.",
 	"abusefilter-exception-outofbounds": "Requesting non-existent array item $2 (array size = $3) at character $1.",
 	"abusefilter-exception-notarray": "Requesting array item of non-array at character $1.",
