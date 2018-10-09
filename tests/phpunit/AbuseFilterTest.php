@@ -154,7 +154,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 				$result = $time;
 				break;
 			case 'user_age':
-				$result = wfTimestampNow() - self::$mUser->getRegistration();
+				$result = time() - wfTimestamp( TS_UNIX, self::$mUser->getRegistration() );
 				break;
 			case 'user_groups':
 				self::$mUser->addGroup( 'intermediateFilteredUser' );
@@ -230,11 +230,10 @@ class AbuseFilterTest extends MediaWikiTestCase {
 		$variableHolder = AbuseFilter::generateUserVars( self::$mUser );
 		$actual = $variableHolder->getVar( 'user_age' )->toNative();
 
-		$difference = abs( strtotime( $actual ) - strtotime( $computed ) );
 		$this->assertLessThanOrEqual(
 			// 10 seconds should be a good confidence interval
 			10,
-			$difference,
+			abs( $actual - $computed ),
 			"AbuseFilter variable user_age is computed wrongly. Expected: $computed, actual: $actual."
 		);
 	}
