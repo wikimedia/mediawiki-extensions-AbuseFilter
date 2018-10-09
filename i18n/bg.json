@@ -11,7 +11,8 @@
 			"StanProg",
 			"Vodnokon4e",
 			"Matma Rex",
-			"ShockD"
+			"ShockD",
+			"Vlad5250"
 		]
 	},
 	"abusefilter-desc": "Прилага автоматични евристики към редакциите.",
@@ -132,7 +133,9 @@
 	"abusefilter-list-options-scope-local": "Само локални правила",
 	"abusefilter-list-options-scope-global": "Само глобални правила",
 	"abusefilter-list-options-scope-all": "Локални и глобални правила",
+	"abusefilter-list-options-further-options": "Други опции:",
 	"abusefilter-list-options-hidedisabled": "Скриване на изключените филтри",
+	"abusefilter-list-options-hideprivate": "Скриване на приватните филтри",
 	"abusefilter-list-options-searchoptions": "Режим на търсене",
 	"abusefilter-list-options-search-like": "Обикновена заявка",
 	"abusefilter-list-options-search-rlike": "Регулярен израз",
