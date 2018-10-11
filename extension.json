@@ -335,6 +335,13 @@
 			"_merge_strategy": "array_plus",
 			"description": "Default warning messages, per filter group"
 		},
+		"AbuseFilterDefaultDisallowMessage": {
+			"value": {
+				"default": "abusefilter-disallowed"
+			},
+			"description": "Default disallow messages, per filter group",
+			"_merge_strategy": "array_plus"
+		},
 		"AbuseFilterLogIPMaxAge": {
 			"value": 7776000,
 			"description": "Age used as cutoff when purging old IP log data, defaults to 3 months. Used by maintenance script purgeOldLogIPData.php"
