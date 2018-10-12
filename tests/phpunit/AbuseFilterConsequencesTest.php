@@ -166,7 +166,9 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			'af_actions' => 'disallow',
 			'af_global' => 0,
 			'actions' => [
-				'disallow' => []
+				'disallow' => [
+					'abusefilter-disallowed-really'
+				]
 			]
 		],
 		7 => [
@@ -543,11 +545,11 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				switch ( $consequence ) {
 					case 'warn':
 						// Aborts the hook with the warning message as error.
-						$expectedErrors['warn'][] = $params[0];
+						$expectedErrors['warn'][] = $params[0] ?? 'abusefilter-warning';
 						break;
 					case 'disallow':
-						// Aborts the hook with 'abusefilter-disallowed' error.
-						$expectedErrors['disallow'][] = 'abusefilter-disallowed';
+						// Aborts the hook with the disallow message error.
+						$expectedErrors['disallow'][] = $params[0] ?? 'abusefilter-disallowed';
 						break;
 					case 'block':
 						// Aborts the hook with 'abusefilter-blocked-display' error. Should block
