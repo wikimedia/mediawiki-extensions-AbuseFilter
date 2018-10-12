@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\Database;
 
@@ -70,6 +71,11 @@ class AbuseFilterHooks {
 		Status $status, $summary, $minoredit
 	) {
 		$title = $context->getTitle();
+		if ( !$title ) {
+			// T144265
+			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+			$logger->debug( __METHOD__ . ' received a null title.' );
+		}
 
 		self::$successful_action_vars = false;
 		self::$last_edit_page = false;
@@ -756,6 +762,14 @@ class AbuseFilterHooks {
 		array $props, $summary, $text, &$error
 	) {
 		$title = $upload->getTitle();
+		if ( !$title ) {
+			// T144265
+			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+			$err = $upload->validateName()['status'];
+			$logger->debug( __METHOD__ . " received an invalid title: $title." .
+				"Action: $action. Title error: $err."
+			);
+		}
 
 		$vars = new AbuseFilterVariableHolder;
 		$vars->addHolders(
