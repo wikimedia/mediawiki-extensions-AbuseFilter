@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Mehtab ahmed",
-			"Indus Asia"
+			"Indus Asia",
+			"Saraiki"
 		]
 	},
 	"abuselog": "غلط-استعمال لاگ",
@@ -25,6 +26,7 @@
 	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|ھن واپرائيندڙ}} لاءِ غلط-استعمال لاگ",
 	"abusefilter-log-hide-forbidden": "توھان کي غلط-استعمال لاگ جي داخلائن کي لڪائڻ جي اجازت ناھي.",
 	"abusefilter-edit-status-label": "انگ اکر:",
+	"abusefilter-edit-disallow-actions": "عمل",
 	"abusefilter-edit-tools": "اوزار:",
 	"abusefilter-history-diff": "تبديليون",
 	"abusefilter-revert-confirm": "پڪ ڪريو",

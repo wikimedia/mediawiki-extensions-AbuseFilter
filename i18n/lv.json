@@ -163,6 +163,7 @@
 	"abusefilter-edit-warn-actions": "Darbības:",
 	"abusefilter-edit-warn-preview": "Priekšskatīt izvēlēto paziņojumu",
 	"abusefilter-edit-warn-edit": "Izveidot/Rediģēt izvēlēto paziņojumu",
+	"abusefilter-edit-disallow-actions": "Darbības:",
 	"abusefilter-edit-tag-tag": "Piemērojamās iezīmes (pa vienai katrā rindiņā):",
 	"abusefilter-block-anon": "Bloķēt anonīmus lietotājus",
 	"abusefilter-block-user": "bloķēt reģistrētus lietotājus",

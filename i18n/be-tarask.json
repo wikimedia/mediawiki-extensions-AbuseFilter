@@ -160,7 +160,7 @@
 	"abusefilter-edit-throttle-groups": "Звужэньне па групах:",
 	"abusefilter-edit-warn-message": "Сыстэмнае паведамленьне для папярэджаньня:",
 	"abusefilter-edit-warn-other": "Іншае паведамленьне",
-	"abusefilter-edit-warn-other-label": "Назва старонкі іншага паведамленьня:\n:''(без прасторы назваў MediaWiki)''",
+	"abusefilter-edit-warn-other-label": "Назва старонкі іншага паведамленьня:\n:''(бяз прэфіксу «MediaWiki:»)''",
 	"abusefilter-edit-warn-actions": "Дзеяньні:",
 	"abusefilter-edit-warn-preview": "Паказаць/схаваць папярэдні прагляд абранага паведамленьня",
 	"abusefilter-edit-warn-edit": "Стварыць/рэдагаваць выбранае паведамленьне",
