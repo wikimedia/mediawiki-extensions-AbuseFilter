@@ -54,11 +54,15 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	 */
 	protected function setUp() {
 		parent::setUp();
+		MWTimestamp::setFakeTime( 1514700000 );
 		$user = User::newFromName( 'AnotherFilteredUser' );
 		$user->addToDatabase();
 		$user->addGroup( 'basicFilteredUser' );
 		self::$mUser = $user;
+		MWTimestamp::setFakeTime( false );
+
 		self::$mVariables = new AbuseFilterVariableHolder();
+
 		// Make sure that the config we're using is the one we're expecting
 		$this->setMwGlobals( [
 			'wgUser' => $user,
@@ -106,6 +110,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	 * @see MediaWikiTestCase::tearDown
 	 */
 	protected function tearDown() {
+		MWTimestamp::setFakeTime( false );
 		$userGroups = self::$mUser->getGroups();
 		// We want to start fresh
 		foreach ( $userGroups as $group ) {
@@ -152,9 +157,6 @@ class AbuseFilterTest extends MediaWikiTestCase {
 				$time = wfTimestampNow();
 				self::$mUser->setEmailAuthenticationTimestamp( $time );
 				$result = $time;
-				break;
-			case 'user_age':
-				$result = time() - wfTimestamp( TS_UNIX, self::$mUser->getRegistration() );
 				break;
 			case 'user_groups':
 				self::$mUser->addGroup( 'intermediateFilteredUser' );
@@ -225,16 +227,15 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	 * @covers AbuseFilter::generateUserVars
 	 */
 	public function testUserAgeVar() {
-		$computed = self::computeExpectedUserVariable( 'user_age' )[0];
-
+		// Set a fake timestamp so that execution time won't be a problem
+		MWTimestamp::setFakeTime( 1514700163 );
 		$variableHolder = AbuseFilter::generateUserVars( self::$mUser );
 		$actual = $variableHolder->getVar( 'user_age' )->toNative();
 
-		$this->assertLessThanOrEqual(
-			// 10 seconds should be a good confidence interval
-			10,
-			abs( $actual - $computed ),
-			"AbuseFilter variable user_age is computed wrongly. Expected: $computed, actual: $actual."
+		$this->assertEquals(
+			163,
+			$actual,
+			"AbuseFilter variable user_age is computed wrongly. Expected: 163, actual: $actual."
 		);
 	}
 
@@ -251,7 +252,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	private static function computeExpectedTitleVariable( $suffix, $options = null ) {
 		self::$mTitle = Title::newFromText( 'AbuseFilter test' );
 		$page = WikiPage::factory( self::$mTitle );
-		$createdAt = microtime( true );
+
 		if ( $options === 'restricted' ) {
 			$action = str_replace( '_restrictions_', '', $suffix );
 			$namespace = 0;
@@ -382,9 +383,6 @@ class AbuseFilterTest extends MediaWikiTestCase {
 				}
 				$result = self::$mUser->getName();
 				break;
-			case '_age':
-				$result = microtime( true ) - $createdAt;
-				break;
 			default:
 				$success = false;
 				$result = null;
@@ -484,22 +482,25 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	 */
 	public function testAgeVars( $prefix ) {
 		$varName = $prefix . '_age';
-		list( $computed, $successfully ) = self::computeExpectedTitleVariable( '_age' );
-		if ( !$successfully ) {
-			if ( $computed === null ) {
-				$this->fail( "Given unknown title-related variable $varName." );
-			} else {
-				$this->fail( "AbuseFilter variable $varName is computed wrongly." );
-			}
-		}
 
+		MWTimestamp::setFakeTime( 1514700000 );
+		self::$mTitle = Title::newFromText( 'AbuseFilter test' );
+		$page = WikiPage::factory( self::$mTitle );
+		$page->doEditContent(
+			new WikitextContent( 'AbuseFilter _age variables test' ),
+			'Testing page for AbuseFilter',
+			EDIT_NEW,
+			false,
+			self::$mUser
+		);
+
+		MWTimestamp::setFakeTime( 1514700123 );
 		$variableHolder = AbuseFilter::generateTitleVars( self::$mTitle, $prefix );
 		$actual = $variableHolder->getVar( $varName )->toNative();
-		$this->assertLessThanOrEqual(
-			// 10 seconds should be a good confidence interval
-			10,
-			abs( $actual - $computed ),
-			"AbuseFilter variable $varName is computed wrongly. Expected: $computed, actual: $actual."
+		$this->assertEquals(
+			123,
+			$actual,
+			"AbuseFilter variable $varName is computed wrongly. Expected: 123, actual: $actual."
 		);
 	}
 
