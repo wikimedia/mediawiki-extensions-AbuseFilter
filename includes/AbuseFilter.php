@@ -3053,11 +3053,10 @@ class AbuseFilter {
 	/**
 	 * @param string $action
 	 * @param string[] $parameters
+	 * @param Language $lang
 	 * @return string
 	 */
-	public static function formatAction( $action, $parameters ) {
-		/** @var $wgLang Language */
-		global $wgLang;
+	public static function formatAction( $action, $parameters, $lang ) {
 		if ( count( $parameters ) === 0 ||
 			( $action === 'block' && count( $parameters ) !== 3 ) ) {
 			$displayAction = self::getActionDisplay( $action );
@@ -3067,15 +3066,15 @@ class AbuseFilter {
 				$messages = [
 					wfMessage( 'abusefilter-block-anon' )->escaped() .
 					wfMessage( 'colon-separator' )->escaped() .
-					$wgLang->translateBlockExpiry( $parameters[1] ),
+					$lang->translateBlockExpiry( $parameters[1] ),
 					wfMessage( 'abusefilter-block-user' )->escaped() .
 					wfMessage( 'colon-separator' )->escaped() .
-					$wgLang->translateBlockExpiry( $parameters[2] )
+					$lang->translateBlockExpiry( $parameters[2] )
 				];
 				if ( $parameters[0] === 'blocktalk' ) {
 					$messages[] = wfMessage( 'abusefilter-block-talk' )->escaped();
 				}
-				$displayAction = $wgLang->commaList( $messages );
+				$displayAction = $lang->commaList( $messages );
 			} elseif ( $action === 'throttle' ) {
 				array_shift( $parameters );
 				list( $actions, $time ) = explode( ',', array_shift( $parameters ) );
@@ -3102,14 +3101,14 @@ class AbuseFilter {
 								$group = $msg->exists() ? $msg->text() : $group;
 							}
 							unset( $group );
-							$val = $wgLang->listToText( $subGroups );
+							$val = $lang->listToText( $subGroups );
 						} else {
 							$msg = wfMessage( "abusefilter-throttle-$val" );
 							$val = $msg->exists() ? $msg->text() : $val;
 						}
 					}
 					unset( $val );
-					$groups = $wgLang->semicolonList( $parameters );
+					$groups = $lang->semicolonList( $parameters );
 				}
 				$displayAction = self::getActionDisplay( $action ) .
 				wfMessage( 'colon-separator' )->escaped() .
@@ -3117,7 +3116,7 @@ class AbuseFilter {
 			} else {
 				$displayAction = self::getActionDisplay( $action ) .
 				wfMessage( 'colon-separator' )->escaped() .
-				$wgLang->semicolonList( array_map( 'htmlspecialchars', $parameters ) );
+				$lang->semicolonList( array_map( 'htmlspecialchars', $parameters ) );
 			}
 		}
 
@@ -3126,18 +3125,17 @@ class AbuseFilter {
 
 	/**
 	 * @param string $value
+	 * @param Language $lang
 	 * @return string
 	 */
-	public static function formatFlags( $value ) {
-		/** @var $wgLang Language */
-		global $wgLang;
+	public static function formatFlags( $value, $lang ) {
 		$flags = array_filter( explode( ',', $value ) );
 		$flags_display = [];
 		foreach ( $flags as $flag ) {
 			$flags_display[] = wfMessage( "abusefilter-history-$flag" )->escaped();
 		}
 
-		return $wgLang->commaList( $flags_display );
+		return $lang->commaList( $flags_display );
 	}
 
 	/**

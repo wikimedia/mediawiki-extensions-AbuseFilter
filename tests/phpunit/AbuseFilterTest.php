@@ -1330,7 +1330,6 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	 * @dataProvider provideEditVars
 	 */
 	public function testGetEditVars( $oldText, $newText ) {
-		global $wgLang;
 		self::$mTitle = Title::makeTitle( 0, 'AbuseFilter test' );
 		self::$mPage = WikiPage::factory( self::$mTitle );
 
@@ -1378,7 +1377,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 		$this->assertCount(
 			0,
 			$differences,
-			'The following AbuseFilter variables are computed wrongly: ' . $wgLang->commaList( $differences )
+			'The following AbuseFilter variables are computed wrongly: ' . implode( ', ', $differences )
 		);
 	}
 

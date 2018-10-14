@@ -2,6 +2,7 @@
 
 use Wikimedia\Equivset\Equivset;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
 
 class AbuseFilterParser {
 	public $mTokens, $mPos, $mShortCircuit, $mAllowShort;
@@ -899,11 +900,11 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcLc( $args ) {
-		global $wgContLang;
+		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
 		$this->checkEnoughArguments( $args, 'lc', 1 );
 		$s = $args[0]->toString();
 
-		return new AFPData( AFPData::DSTRING, $wgContLang->lc( $s ) );
+		return new AFPData( AFPData::DSTRING, $contLang->lc( $s ) );
 	}
 
 	/**
@@ -911,11 +912,11 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcUc( $args ) {
-		global $wgContLang;
+		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
 		$this->checkEnoughArguments( $args, 'uc', 1 );
 		$s = $args[0]->toString();
 
-		return new AFPData( AFPData::DSTRING, $wgContLang->uc( $s ) );
+		return new AFPData( AFPData::DSTRING, $contLang->uc( $s ) );
 	}
 
 	/**

@@ -311,8 +311,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		}
 		$info .= $this->getDiffRow(
 			'abusefilter-edit-flags',
-			AbuseFilter::formatFlags( $oldVersion['info']['flags'] ),
-			AbuseFilter::formatFlags( $newVersion['info']['flags'] )
+			AbuseFilter::formatFlags( $oldVersion['info']['flags'], $this->getLanguage() ),
+			AbuseFilter::formatFlags( $newVersion['info']['flags'], $this->getLanguage() )
 		);
 
 		$info .= $this->getDiffRow(
@@ -374,7 +374,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 		ksort( $actions );
 		foreach ( $actions as $action => $parameters ) {
-			$lines[] = AbuseFilter::formatAction( $action, $parameters );
+			$lines[] = AbuseFilter::formatAction( $action, $parameters, $this->getLanguage() );
 		}
 
 		if ( !count( $lines ) ) {
