@@ -563,35 +563,19 @@ class AbuseFilterHooks {
 					'addIndex', 'abuse_filter_log', 'wiki_timestamp',
 					"$dir/db_patches/patch-global_logging_wiki-index.sql", true
 				] );
-			} else {
-				$updater->addExtensionUpdate( [
-					'addIndex', 'abuse_filter_log', 'afl_wiki_timestamp',
-					"$dir/db_patches/patch-global_logging_wiki-index.sqlite.sql", true
-				] );
-			}
-
-			if ( $updater->getDB()->getType() == 'mysql' ) {
 				$updater->addExtensionUpdate( [
 					'modifyField', 'abuse_filter_log', 'afl_namespace',
 					"$dir/db_patches/patch-afl-namespace_int.sql", true
 				] );
 			} else {
-				/*
-				$updater->addExtensionUpdate( array(
-					'modifyField',
-					'abuse_filter_log',
-					'afl_namespace',
-					"$dir/db_patches/patch-afl-namespace_int.sqlite.sql",
-					true
-				) );
-				 */
-				/* @todo Modify a column in sqlite, which do not support such
-				 * things create backup, drop, create with new schema, copy,
-				 * drop backup or simply see
-				 * https://www.mediawiki.org/wiki/Manual:SQLite#About_SQLite :
-				 * Several extensions are known to have database update or
-				 * installation issues with SQLite: AbuseFilter, ...
-				 */
+				$updater->addExtensionUpdate( [
+					'addIndex', 'abuse_filter_log', 'afl_wiki_timestamp',
+					"$dir/db_patches/patch-global_logging_wiki-index.sqlite.sql", true
+				] );
+				$updater->addExtensionUpdate( [
+					'modifyField', 'abuse_filter_log', 'afl_namespace',
+					"$dir/db_patches/patch-afl-namespace_int.sqlite.sql", true
+				] );
 			}
 		} elseif ( $updater->getDB()->getType() == 'postgres' ) {
 			$updater->addExtensionUpdate( [
