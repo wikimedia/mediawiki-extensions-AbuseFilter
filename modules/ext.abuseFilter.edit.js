@@ -280,11 +280,12 @@
 	 */
 	function editMessage( action ) {
 		var message = getCurrentMessage( action ),
-			defaultMsg = action === 'warn' ? 'warning' : 'disallowed';
+			defaultMsg = action === 'warn' ? 'warning' : 'disallowed',
+			url = mw.config.get( 'wgScript' ) +
+				'?title=MediaWiki:' + mw.util.wikiUrlencode( message ) +
+				'&action=edit&preload=MediaWiki:abusefilter-' + defaultMsg;
 
-		window.location = mw.config.get( 'wgScript' ) +
-			'?title=MediaWiki:' + mw.util.wikiUrlencode( message ) +
-			'&action=edit&preload=MediaWiki:abusefilter-' + defaultMsg;
+		window.open( url, '_blank' );
 	}
 
 	/**
