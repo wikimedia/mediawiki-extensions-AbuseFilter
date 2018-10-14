@@ -46,7 +46,8 @@
 			"A2093064",
 			"NeverBehave",
 			"JerryLiu",
-			"夢蝶葬花"
+			"夢蝶葬花",
+			"A Chinese Wikipedian"
 		]
 	},
 	"abusefilter-desc": "对编辑行为自动进行条件判定",
@@ -259,6 +260,12 @@
 	"abusefilter-edit-warn-actions": "操作：",
 	"abusefilter-edit-warn-preview": "显示/隐藏所选消息的预览",
 	"abusefilter-edit-warn-edit": "创建／编辑所选消息",
+	"abusefilter-edit-disallow-message": "用作警告的系统消息：",
+	"abusefilter-edit-disallow-other": "其他消息",
+	"abusefilter-edit-disallow-other-label": "其他消息的页面名：\n:''（无须MediaWiki前缀）''",
+	"abusefilter-edit-disallow-actions": "操作：",
+	"abusefilter-edit-disallow-preview": "显示/隐藏所选消息的预览",
+	"abusefilter-edit-disallow-edit": "创建／编辑所选消息",
 	"abusefilter-edit-tag-tag": "要应用的[[Special:Tags|标签]]：",
 	"abusefilter-edit-tag-placeholder": "添加标签（一个一个，或是逗号分隔）",
 	"abusefilter-edit-tag-hidden-placeholder": "添加标签（逗号分隔）",

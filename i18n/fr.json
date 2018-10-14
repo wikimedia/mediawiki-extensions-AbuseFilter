@@ -449,7 +449,7 @@
 	"abusefilter-exception-dividebyzero": "Division illégale de $2 par zéro au caractère $1.",
 	"abusefilter-exception-unrecognisedvar": "Variable non reconnue $2 au caractère $1",
 	"abusefilter-exception-notenoughargs": "Pas assez de paramètres pour la fonction $2 appelée au caractère $1.\n$3 {{PLURAL:$3|argument demandé|arguments demandés}}, $4 obtenu{{PLURAL:$4||s}}",
-	"abusefilter-exception-regexfailure": "Erreur dans l'expression rationnelle « $3 » au caractère $1 : « $2 »",
+	"abusefilter-exception-regexfailure": "Erreur dans l'expression régulière « $2 » au caractère $1 .",
 	"abusefilter-exception-overridebuiltin": "Écrasement interdit de la variable disponible par défaut « $2 » au caractère $1.",
 	"abusefilter-exception-outofbounds": "Demande d’élément de tableau $2 inexistant (taille du tableau = $3) au caractère $1.",
 	"abusefilter-exception-notarray": "Demande d'un élément de tableau appliquée à un non-tableau au caractère $1.",

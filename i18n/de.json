@@ -439,7 +439,7 @@
 	"abusefilter-exception-dividebyzero": "Division von $2 durch Null bei Zeichen $1.",
 	"abusefilter-exception-unrecognisedvar": "Unerkannte Variable $2 bei Zeichen $1",
 	"abusefilter-exception-notenoughargs": "Der Funktion $2 wurden an Zeichen $1 zu wenige Argumente übergeben.\nEs {{PLURAL:$3|wurde $3 Argument|wurden $3 Argumente}} erwartet, übergeben {{PLURAL:$4|wurde $4|wurden $4}}.",
-	"abusefilter-exception-regexfailure": "Fehler im regulären Ausdruck „$3“ an Zeichen $1: „$2“",
+	"abusefilter-exception-regexfailure": "Fehler im regulären Ausdruck „$2“ an Zeichen $1.",
 	"abusefilter-exception-overridebuiltin": "Verbotenes Überschreiben der eingebauten Variable „$2“ an Zeichen $1.",
 	"abusefilter-exception-outofbounds": "Anforderung des nicht vorhandenen Anordnungseintrages $2 (Anordnungsgröße: $3) an Zeichen $1.",
 	"abusefilter-exception-notarray": "Anforderung eines Arrayelements aus einem Nicht-Array bei Zeichen „$1“.",
