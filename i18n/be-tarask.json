@@ -320,7 +320,7 @@
 	"abusefilter-exception-dividebyzero": "Спроба дзяленьня $2 на нуль у пазыцыі $1.",
 	"abusefilter-exception-unrecognisedvar": "Нераспазнаная зьменная $2 у пазыцыі $1",
 	"abusefilter-exception-notenoughargs": "Недастаткова аргумэнтаў для функцыі $2, якая выклікаецца ў пазыцыі $1.\nЧакаецца $3 {{PLURAL:$3|аргумэнт|аргумэнты|аргумэнтаў}}, атрымана $4",
-	"abusefilter-exception-regexfailure": "Памылка ў рэгулярным выразе «$3» у пазыцыі $1: «$2»",
+	"abusefilter-exception-regexfailure": "Памылка ў рэгулярным выразе «$2» у пазыцыі $1.",
 	"abusefilter-exception-overridebuiltin": "Недазволеная перавызначэньне ўбудаванай зьменнай «$2» ў пазыцыі $1.",
 	"abusefilter-exception-outofbounds": "Запыт няіснага элемэнту сьпісу $2 (памер сьпісу = $3) у пазыцыі $1.",
 	"abusefilter-exception-notarray": "Запыт элемэнту масіву для аб’екту, які не зьяўляецца масівам, у пазыцыі $1.",

@@ -383,7 +383,7 @@
 	"abusefilter-exception-dividebyzero": "Tendative illegale de scucchià $2 pè zere ad 'u carattere $1.",
 	"abusefilter-exception-unrecognisedvar": "Variabbele non recanosciute $2 ad 'u carattere $1",
 	"abusefilter-exception-notenoughargs": "Non ge stonne sufficiènde argumènde pè 'a funzune $2 chiamate ad 'u carattere $1.\nPreviste $3 {{PLURAL:$3|argumènde|argumènde}}, got $4",
-	"abusefilter-exception-regexfailure": "Errore jndr'à ll'espressiune regolare\"$3\" ad 'u carattere $1: \"$2\"",
+	"abusefilter-exception-regexfailure": "Errore jndr'à l'espressione regolare \"$2\" ad 'u carattere $1.",
 	"abusefilter-exception-overridebuiltin": "Annullamènde illegale de variabbele 'ngorporate \"$2\" ad 'u carattere $1.",
 	"abusefilter-exception-outofbounds": "Rechieste de 'na vôsce jndr'à ll'elenghe inesistende $2 (lunghezze de l'elenghe = $3) pu carattere $1.",
 	"abusefilter-exception-notarray": "Rechieste de l'elemènde serie de non serie ad 'u carattere $1.",

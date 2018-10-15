@@ -425,7 +425,7 @@
 	"abusefilter-exception-dividebyzero": "ניסיון בלתי־חוקי לחלק את $2 באפס בתו מספר $1.",
 	"abusefilter-exception-unrecognisedvar": "משתנה בלתי־מזוהה $2 בתו מספר $1",
 	"abusefilter-exception-notenoughargs": "לא הועברו מספיק ארגומנטים לפונקציה $2 שנקראה בתו מספר $1.\nיש צורך {{PLURAL:$3|בארגומנט אחד|ב־$3 ארגומנטים}}, {{PLURAL:$4|התקבל אחד|התקבלו $4}}",
-	"abusefilter-exception-regexfailure": "שגיאה בביטוי הרגולרי \"$3\" בתו מספר $1: \"$2\"",
+	"abusefilter-exception-regexfailure": "שגיאה בביטוי הרגולרי \"$2\" בתו מספר $1.",
 	"abusefilter-exception-overridebuiltin": "דריסה בלתי־תקינה של המשתנה המובנה \"$2\" בתו מספר $1.",
 	"abusefilter-exception-outofbounds": "בקשת פריט מערך בלתי קיים $2 (גודל המערך = $3) בתו מספר $1.",
 	"abusefilter-exception-notarray": "ביקשו פריט מערך מלא־מערך בתו מספר $1.",

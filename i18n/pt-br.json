@@ -440,7 +440,7 @@
 	"abusefilter-exception-dividebyzero": "Tentativa ilegal de dividir $2 por zero, na posição $1.",
 	"abusefilter-exception-unrecognisedvar": "Variável não reconhecida $2, na posição $1.",
 	"abusefilter-exception-notenoughargs": "Argumentos insuficientes para a função $2, na posição $1.\nEsperava-se $3 {{PLURAL:$3|argumento|argumentos}}, obteve-se $4",
-	"abusefilter-exception-regexfailure": "Erro na expressão regular “$3”, na posição $1: “$2”",
+	"abusefilter-exception-regexfailure": "Erro na expressão regular “$2”, na posição $1: “$1”",
 	"abusefilter-exception-overridebuiltin": "Sobreposição ilegal da variável integrada “$2”, na posição $1.",
 	"abusefilter-exception-outofbounds": "Foi solicitada a entrada $2 que não existe na matriz (tamanho da matriz = $3) na posição $1.",
 	"abusefilter-exception-notarray": "Solicitando uma entrada de matriz a uma não matriz, na posição $1.",

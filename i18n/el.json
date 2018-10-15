@@ -191,6 +191,8 @@
 	"abusefilter-edit-warn-actions": "Ενέργειες:",
 	"abusefilter-edit-warn-preview": "Προεπισκόπηση του επιλεγμένου μηνύματος",
 	"abusefilter-edit-warn-edit": "Δημιουργία/Επεξεργασία επιλεγμένων μηνυμάτων",
+	"abusefilter-edit-disallow-other": "Άλλο μήνυμα",
+	"abusefilter-edit-disallow-actions": "Ενέργειες:",
 	"abusefilter-edit-tag-tag": "Ετικέτες για να επικολληθούν (μία ανά γραμμή):",
 	"abusefilter-edit-tag-hidden-placeholder": "Προσθήκη ετικετών (το κόμμα χωρίζεται)",
 	"abusefilter-edit-denied": "Δεν μπορείτε να δείτε τις λεπτομέρειες αυτού του φίλτρου, γιατί αυτές έχουν αποκρυφθεί από τη δημόσια θέα.",

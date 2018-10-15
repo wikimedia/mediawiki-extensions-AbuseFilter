@@ -439,7 +439,7 @@
 	"abusefilter-exception-dividebyzero": "Tentativo di dividere $2 per zero in corrispondenza del carattere $1.",
 	"abusefilter-exception-unrecognisedvar": "Variabile $2 non riconosciuta in corrispondenza del carattere $1.",
 	"abusefilter-exception-notenoughargs": "Argomenti per la funzione $2 chiamata al carattere $1 non sufficienti.\n{{PLURAL:$3|Previsto $3 argomento|Previsti $3 argomenti}}, {{PLURAL:$4|ottenuto|ottenuti}} $4",
-	"abusefilter-exception-regexfailure": "Errore nell'espressione regolare \"$3\" al carattere $1: \"$2\"",
+	"abusefilter-exception-regexfailure": "Errore nell'espressione regolare \"$2\" al carattere $1.",
 	"abusefilter-exception-overridebuiltin": "Sovrascrittura illegale di variabile predefinita \"$2\" al carattere $1.",
 	"abusefilter-exception-outofbounds": "Richiesta di voce inesistente dell'array $2 (dimensione array = $3) al carattere $1.",
 	"abusefilter-exception-notarray": "Richiesta di un elemento di array da un non array al carattere $1.",

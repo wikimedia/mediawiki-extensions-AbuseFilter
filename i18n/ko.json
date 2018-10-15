@@ -437,7 +437,7 @@
 	"abusefilter-exception-dividebyzero": "$1번째 문자에서 $2를 0으로 나누려 하고 있습니다.",
 	"abusefilter-exception-unrecognisedvar": "$1번째 문자에 알 수 없는 변수 $2가 있습니다.",
 	"abusefilter-exception-notenoughargs": "$1번째 문자에서 호출한 $2 함수에 변수가 부족합니다.\n{{PLURAL:$3|변수}} $3개가 있어야 하지만 $4개가 있습니다.",
-	"abusefilter-exception-regexfailure": "$1번째 글자의 \"$3\" 정규 표현식에서 오류 발생: \"$2\"",
+	"abusefilter-exception-regexfailure": "$1번째 글자의 \"$2\" 정규 표현식에 오류가 있습니다.",
 	"abusefilter-exception-overridebuiltin": "$1번째 문자에서 소프트웨어에 내장된 변수를 덮는 \"$2\" 변수가 있습니다.",
 	"abusefilter-exception-outofbounds": "$1번째 문자에서 존재하지 않는 배열 항목 $2(배열 길이 = $3)를 요청하고 있습니다.",
 	"abusefilter-exception-notarray": "$1번째 문자에서 배열이 아닌 배열 항목을 요구하고 있습니다.",

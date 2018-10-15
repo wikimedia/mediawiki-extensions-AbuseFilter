@@ -177,6 +177,8 @@
 	"abusefilter-edit-warn-actions": "Aktiounen:",
 	"abusefilter-edit-warn-preview": "De gewielte Message kucken ouni ofzespäicheren",
 	"abusefilter-edit-warn-edit": "De gewielte Systemmessage uleeën/änneren",
+	"abusefilter-edit-disallow-other": "Anere Systemmessage",
+	"abusefilter-edit-disallow-actions": "Aktiounen:",
 	"abusefilter-edit-block-anon-durations": "Dauer vun der Spär fir anonym Benotzer:",
 	"abusefilter-edit-block-user-durations": "Dauer vun der Spär fir registréiert Benotzer:",
 	"abusefilter-block-anon": "Anonym Benotzer spären",
