@@ -48,8 +48,11 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 		return $info;
 	}
 
-	function formatRow( $row ) {
-		# Incompatible stuff.
+	/**
+	 * @param stdClass $row
+	 * @return string
+	 */
+	public function formatRow( $row ) {
 		$rc = RecentChange::newFromRow( $row );
 		$rc->counter = $this->mPage->mCounter++;
 		return $this->mChangesList->recentChangesLine( $rc, false );

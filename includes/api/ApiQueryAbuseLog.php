@@ -164,10 +164,14 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				$this->setContinueEnumParameter( 'start', $ts->getTimestamp( TS_ISO_8601 ) );
 				break;
 			}
-			if ( SpecialAbuseLog::isHidden( $row ) &&
-				!SpecialAbuseLog::canSeeHidden( $user )
-			) {
+			$hidden = SpecialAbuseLog::isHidden( $row );
+			if ( $hidden === true && !SpecialAbuseLog::canSeeHidden() ) {
 				continue;
+			} elseif ( $hidden === 'implicit' ) {
+				$rev = Revision::newFromId( $row->afl_rev_id );
+				if ( !$rev->userCan( Revision::SUPPRESSED_ALL, $user ) ) {
+					continue;
+				}
 			}
 			$canSeeDetails = SpecialAbuseLog::canSeeDetails( $row->afl_filter );
 
@@ -228,11 +232,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				}
 			}
 
-			if ( $fld_hidden ) {
-				$val = SpecialAbuseLog::isHidden( $row );
-				if ( $val ) {
-					$entry['hidden'] = $val;
-				}
+			if ( $fld_hidden && $hidden ) {
+				$entry['hidden'] = $hidden;
 			}
 
 			if ( $entry ) {

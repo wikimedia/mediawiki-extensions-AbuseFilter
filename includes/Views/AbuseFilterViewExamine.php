@@ -99,6 +99,11 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
+		if ( !ChangesList::userCan( RecentChange::newFromRow( $row ), Revision::SUPPRESSED_ALL ) ) {
+			$out->addWikiMsg( 'abusefilter-log-details-hidden-implicit' );
+			return;
+		}
+
 		self::$examineType = 'rc';
 		self::$examineId = $rcid;
 
@@ -136,6 +141,13 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
+		if ( SpecialAbuseLog::isHidden( $row ) === 'implicit' ) {
+			$rev = Revision::newFromId( $row->afl_rev_id );
+			if ( !$rev->userCan( Revision::SUPPRESSED_ALL, $this->getUser() ) ) {
+				$out->addWikiMsg( 'abusefilter-log-details-hidden-implicit' );
+				return;
+			}
+		}
 		$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
 		$out->addJsConfigVars( 'wgAbuseFilterVariables', $vars->dumpAllVars( true ) );
 		$this->showExaminer( $vars );
