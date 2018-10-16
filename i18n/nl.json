@@ -23,7 +23,8 @@
 			"Mainframe98",
 			"QZanden",
 			"Festina90",
-			"Mar(c)"
+			"Mar(c)",
+			"Kippenvlees1"
 		]
 	},
 	"abusefilter-desc": "Voert automatisch heuristische analyse uit op bewerkingen",
@@ -213,6 +214,8 @@
 	"abusefilter-edit-warn-edit": "Geselecteerd bericht aanmaken/bewerken",
 	"abusefilter-edit-disallow-other": "Ander bericht",
 	"abusefilter-edit-disallow-actions": "Handelingen:",
+	"abusefilter-edit-disallow-preview": "Toon/Verberg voorvertoning van het geselecteerde bericht",
+	"abusefilter-edit-disallow-edit": "Geselecteerd bericht aanmaken/bewerken",
 	"abusefilter-edit-tag-tag": "[[Special:Tags|Labels]] toe te passen (één per regel):",
 	"abusefilter-edit-block-anon-durations": "Blokkadeduur voor anonieme gebruikers:",
 	"abusefilter-edit-block-user-durations": "Blokkadeduur voor geregistreerde gebruikers:",

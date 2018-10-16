@@ -171,6 +171,7 @@
 	"abusefilter-edit-new": "Filtre nueve",
 	"abusefilter-edit-save": "Reggistre 'u filtre",
 	"abusefilter-edit-id": "ID d'u filtre:",
+	"abusefilter-edit-switch-editor": "Cange 'u cangiatore",
 	"abusefilter-edit-description": "Descrizione:\n:''(vesibbele pubblecamende)''",
 	"abusefilter-edit-field-description": "descrizione",
 	"abusefilter-edit-group": "Filtre de gruppe:",
@@ -217,6 +218,7 @@
 	"abusefilter-edit-disallow-edit": "Ccreje/Cange 'u messagge scacchiate",
 	"abusefilter-edit-tag-tag": "[[Special:Tags|Tag]] da applecà:",
 	"abusefilter-edit-tag-hidden-placeholder": "Aggiunge le tag (separate da le virgole)",
+	"abusefilter-block-user": "blocche le utinde reggistrate",
 	"abusefilter-edit-denied": "Non ge puè uardà le dettaglie de stu filtre, purcé jè scunnute da 'a viste d'u pubbleche.",
 	"abusefilter-edit-main": "Parametre d'u filtre",
 	"abusefilter-edit-done-subtitle": "Filtre cangiate",
@@ -421,6 +423,11 @@
 	"abusefilter-test-shownegative": "Fàce vedè sule le cangiaminde ca non ge sonde correspondende ad 'u filtre",
 	"abusefilter-test-syntaxerr": "'U filtre ca tu é mise tène 'n'errore de sindasse.\nTu pòte avè 'na spiegazione comblete ce cazze 'u pulsande \"{{int:abusefilter-edit-check}}\".",
 	"abusefilter-test-badtitle": "'U titole d'a pàgene inserite ere invalide. Jidde pò tené une o cchiù carattere ca non ge ponne essere ausate jndr'à le titole.",
+	"abusefilter-test-search-type-edit": "Cangiaminde",
+	"abusefilter-test-search-type-move": "Spustaminde",
+	"abusefilter-test-search-type-delete": "Scangellaziune",
+	"abusefilter-test-search-type-upload": "Carecaminde",
+	"abusefilter-test-search-type-createaccount": "Ccrejaziune de cunde utinde",
 	"abusefilter-changeslist-examine": "esamine",
 	"abusefilter-examine": "Esamine le cangiaminde individuale",
 	"abusefilter-examine-intro": "Quèste pagene conzente de esaminà le variabbele generate da 'u filtre de le abbuse pè 'nu cangiaminde individuale, e prove jidde condre le filtre.",
@@ -447,6 +454,7 @@
 	"abusefilter-topnav-import": "'Mbortazione d'u filtre",
 	"abusefilter-log-name": "Archivije de le filtre de le abbuse",
 	"abusefilter-log-header": "Quiste reggistre fàce vedè 'nu elenghe de cangiaminde combiute da le filtre.\nPè avè cchiù dettaglie, vide [[Special:AbuseFilter/history|'a liste]] de le cangiaminde recende d'u filtre.",
+	"abusefilter-logentry-create": "$1 {{GENDER:$2|ccrejate}} $4 ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|cangiate}} $4 ($5)",
 	"abusefilter-log-noresults": "Nisciune resultate",
 	"abusefilter-diff-title": "Differenze 'mbrà versiune",
@@ -461,5 +469,6 @@
 	"abusefilter-import-intro": "Jè possibbele ausà quèste 'nderfazze pè le filtre de 'mbortazziune da otre wiki.\nSus ad 'a wiki de origgene, cazzà \"{{int:abusefilter-edit-export}}\" sutte \"{{int:abusefilter-edit-tools}}\" sus a le 'nderfazze de le cangiaminde.\nCopià da 'a caselle de teste ce vide, e 'ngolle jidde sus a quiste cambe de teste, cchiù nnande cazze \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "'Mborte date",
 	"abusefilter-group-default": "De base",
-	"abusefilter-http-error": "Ha assute 'n'errore HTTP: $1."
+	"abusefilter-http-error": "Ha assute 'n'errore HTTP: $1.",
+	"abusefilter-view-private-submit": "'Ndruche le dettaglie private"
 }

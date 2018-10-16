@@ -4,7 +4,8 @@
 			"Bjankuloski06",
 			"Brest",
 			"Matma Rex",
-			"Srdjan m"
+			"Srdjan m",
+			"Vlad5250"
 		]
 	},
 	"abusefilter-desc": "Извршува автоматски хевристички филтрирања во уредувањата",
@@ -417,7 +418,7 @@
 	"abusefilter-exception-dividebyzero": "Недозволен обид за делење на $2 со нула кај знакот $1.",
 	"abusefilter-exception-unrecognisedvar": "Нераспознаена променлива $2 кај знакот $1",
 	"abusefilter-exception-notenoughargs": "Нема доволно аргументи за функцијата $2 повикана кај знакот $1.\nСе {{PLURAL:$3|очекуваше $3 аргумент|очекуваа $3 аргументи}}, а {{PLURAL:$4|добиен е|добиени се}} $4",
-	"abusefilter-exception-regexfailure": "Грешка во регуларниот израз „$3“ кај знакот $1: „$2“",
+	"abusefilter-exception-regexfailure": "Грешка во регуларниот израз „$2“ кај знакот $1.",
 	"abusefilter-exception-overridebuiltin": "Недозволено поклопување на вградена променлива „$2“ кај знакот $1.",
 	"abusefilter-exception-outofbounds": "Барање за непостоечка ставка во стројот $2 (големина на стројот = $3) кај знакот $1.",
 	"abusefilter-exception-notarray": "Барање на елемент од стројот за објект кој не е строј кај знакот $1.",

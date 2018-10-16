@@ -448,7 +448,7 @@
 	"abusefilter-exception-dividebyzero": "於第 $1 個字元處嘗試非法將 $2 除以 0。",
 	"abusefilter-exception-unrecognisedvar": "於第 $1 個字元處出現無法識別的變數 $2。",
 	"abusefilter-exception-notenoughargs": "於第 $1 個字元處函數 $2 未傳入足夠的參數。\n\t預期有 $3 個參數，僅使用了 $4 個",
-	"abusefilter-exception-regexfailure": "於第 $1 個字元處的正規表示法 \"$3\" 錯誤：\"$2\"。",
+	"abusefilter-exception-regexfailure": "於第 $1 個字元處的正規表示法「$2」錯誤。",
 	"abusefilter-exception-overridebuiltin": "於第 $1 個字元處非法覆蓋內建的變數 \"$2\"。",
 	"abusefilter-exception-outofbounds": "於第 $1 個字元處使用了不存在的陣列項目 $2（陣列大小 = $3）。",
 	"abusefilter-exception-notarray": "於第 $1 個字元處於非陣列中使用了陣列項目。",
