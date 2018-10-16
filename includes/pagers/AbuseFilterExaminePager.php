@@ -7,7 +7,7 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	 * @param AbuseFilterViewExamine $page
 	 * @param AbuseFilterChangesList $changesList
 	 */
-	public function __construct( $page, $changesList ) {
+	public function __construct( AbuseFilterViewExamine $page, AbuseFilterChangesList $changesList ) {
 		parent::__construct();
 		$this->mChangesList = $changesList;
 		$this->mPage = $page;

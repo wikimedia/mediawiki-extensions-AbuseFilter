@@ -11,7 +11,7 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 	 * @param array $conds
 	 * @param LinkRenderer $linkRenderer
 	 */
-	public function __construct( $page, $conds, $linkRenderer ) {
+	public function __construct( AbuseFilterViewList $page, $conds, LinkRenderer $linkRenderer ) {
 		parent::__construct( $page, $conds, $linkRenderer, [ '', 'LIKE' ] );
 		$this->mDb = wfGetDB(
 			DB_REPLICA, [], $this->getConfig()->get( 'AbuseFilterCentralDB' ) );

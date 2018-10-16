@@ -230,8 +230,8 @@ class AbuseFilterHooks {
 	 * @param int $baseRevId
 	 */
 	public static function onPageContentSaveComplete(
-		WikiPage $wikiPage, $user, $content, $summary, $minoredit, $watchthis, $sectionanchor,
-		$flags, $revision, $status, $baseRevId
+		WikiPage $wikiPage, User $user, $content, $summary, $minoredit, $watchthis, $sectionanchor,
+		$flags, Revision $revision, Status $status, $baseRevId
 	) {
 		if ( !self::$successful_action_vars || !$revision ) {
 			self::$successful_action_vars = false;
@@ -300,7 +300,7 @@ class AbuseFilterHooks {
 	 * @param User $user
 	 * @param array &$promote
 	 */
-	public static function onGetAutoPromoteGroups( $user, &$promote ) {
+	public static function onGetAutoPromoteGroups( User $user, &$promote ) {
 		if ( $promote ) {
 			$key = AbuseFilter::autoPromoteBlockKey( $user );
 			$blocked = (bool)ObjectCache::getInstance( 'hash' )->getWithSetCallback(
@@ -351,7 +351,8 @@ class AbuseFilterHooks {
 	 * @param Status $status
 	 * @return bool
 	 */
-	public static function onArticleDelete( $article, $user, $reason, &$error, $status ) {
+	public static function onArticleDelete( WikiPage $article, User $user, $reason, &$error,
+		Status $status ) {
 		$vars = new AbuseFilterVariableHolder;
 
 		$vars->addHolders(
@@ -373,7 +374,7 @@ class AbuseFilterHooks {
 	/**
 	 * @param RecentChange $recentChange
 	 */
-	public static function onRecentChangeSave( $recentChange ) {
+	public static function onRecentChangeSave( RecentChange $recentChange ) {
 		$title = Title::makeTitle(
 			$recentChange->getAttribute( 'rc_namespace' ),
 			$recentChange->getAttribute( 'rc_title' )
@@ -659,7 +660,7 @@ class AbuseFilterHooks {
 	 * Updater callback to create the AbuseFilter user after the user tables have been updated.
 	 * @param DatabaseUpdater $updater
 	 */
-	public static function createAbuseFilterUser( $updater ) {
+	public static function createAbuseFilterUser( DatabaseUpdater $updater ) {
 		$username = wfMessage( 'abusefilter-blocker' )->inContentLanguage()->text();
 		$user = User::newFromName( $username );
 
@@ -677,7 +678,7 @@ class AbuseFilterHooks {
 	 * @param array &$tools
 	 * @param SpecialPage $sp for context
 	 */
-	public static function onContributionsToolLinks( $id, $nt, array &$tools, SpecialPage $sp ) {
+	public static function onContributionsToolLinks( $id, Title $nt, array &$tools, SpecialPage $sp ) {
 		$username = $nt->getText();
 		if ( $sp->getUser()->isAllowed( 'abusefilter-log' ) && !IP::isValidRange( $username ) ) {
 			$linkRenderer = $sp->getLinkRenderer();
