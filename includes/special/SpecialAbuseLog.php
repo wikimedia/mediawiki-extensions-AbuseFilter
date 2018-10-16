@@ -541,11 +541,13 @@ class SpecialAbuseLog extends SpecialPage {
 			$out->addWikiMsg( 'abusefilter-log-details-hidden' );
 
 			return;
-		} elseif ( self::isHidden( $row ) === 'implicit' &&
-			!$this->getUser()->isAllowed( 'deletedtext' ) ) {
+		} elseif ( self::isHidden( $row ) === 'implicit' ) {
+			$rev = Revision::newFromId( $row->afl_rev_id );
 			// The log is visible, but refers to a deleted revision
-			$out->addWikiMsg( 'abusefilter-log-details-hidden-implicit' );
-			return;
+			if ( !$rev->userCan( Revision::SUPPRESSED_ALL, $this->getUser() ) ) {
+				$out->addWikiMsg( 'abusefilter-log-details-hidden-implicit' );
+				return;
+			}
 		}
 
 		$output = Xml::element(
@@ -1100,7 +1102,7 @@ class SpecialAbuseLog extends SpecialPage {
 	 *
 	 * @param stdClass $row The abuse_filter_log row object.
 	 *
-	 * @return Mixed true if the item is explicitly hidden, false if it is not.
+	 * @return bool|string true if the item is explicitly hidden, false if it is not.
 	 *    The string 'implicit' if it is hidden because the corresponding revision is hidden.
 	 */
 	public static function isHidden( $row ) {
