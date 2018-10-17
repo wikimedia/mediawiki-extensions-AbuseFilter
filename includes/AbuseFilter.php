@@ -269,7 +269,7 @@ class AbuseFilter {
 	 * @param User $user
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function generateUserVars( User $user ) {
+	public static function generateUserVars( $user ) {
 		$vars = new AbuseFilterVariableHolder;
 
 		$vars->setLazyLoadVar(
@@ -506,7 +506,7 @@ class AbuseFilter {
 	 * @throws Exception
 	 */
 	public static function checkConditions(
-		$conds, AbuseFilterVariableHolder $vars, $ignoreError = true
+		$conds, $vars, $ignoreError = true
 	) {
 		global $wgAbuseFilterParserClass;
 
@@ -545,7 +545,7 @@ class AbuseFilter {
 	 * @return bool[] Map of (integer filter ID => bool)
 	 */
 	public static function checkAllFilters(
-		AbuseFilterVariableHolder $vars,
+		$vars,
 		$group = 'default',
 		Title $title = null,
 		$mode = 'execute'
@@ -648,7 +648,7 @@ class AbuseFilter {
 	 */
 	public static function checkFilter(
 		$row,
-		AbuseFilterVariableHolder $vars,
+		$vars,
 		Title $title = null,
 		$prefix = '',
 		$mode = 'execute'
@@ -854,7 +854,7 @@ class AbuseFilter {
 	 * @param string $prefix
 	 * @return array[]
 	 */
-	public static function loadConsequencesFromDB( IDatabase $dbr, $filters, $prefix = '' ) {
+	public static function loadConsequencesFromDB( $dbr, $filters, $prefix = '' ) {
 		$actionsByFilter = [];
 		foreach ( $filters as $filter ) {
 			$actionsByFilter[$prefix . $filter] = [];
@@ -901,12 +901,7 @@ class AbuseFilter {
 	 *         an array listing the actions taken. $status->getErrors() etc. will provide
 	 *         the errors and warnings to be shown to the user to explain the actions.
 	 */
-	public static function executeFilterActions(
-		$filters,
-		Title $title,
-		AbuseFilterVariableHolder $vars,
-		User $user
-	) {
+	public static function executeFilterActions( $filters, $title, $vars, User $user ) {
 		global $wgMainCacheType;
 
 		$actionsByFilter = self::getConsequencesForFilters( $filters );
@@ -1299,12 +1294,7 @@ class AbuseFilter {
 	 * @param AbuseFilterVariableHolder $vars
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 */
-	public static function addLogEntries(
-		$actions_taken,
-		$log_template,
-		AbuseFilterVariableHolder $vars,
-		$group = 'default'
-	) {
+	public static function addLogEntries( $actions_taken, $log_template, $vars, $group = 'default' ) {
 		$dbw = wfGetDB( DB_MASTER );
 
 		$central_log_template = [
@@ -1457,7 +1447,7 @@ class AbuseFilter {
 	 *
 	 * @return int|null
 	 */
-	public static function storeVarDump( AbuseFilterVariableHolder $vars, $global = false ) {
+	public static function storeVarDump( $vars, $global = false ) {
 		global $wgCompressRevisions;
 
 		// Get all variables yet set and compute old and new wikitext if not yet done
@@ -1589,15 +1579,8 @@ class AbuseFilter {
 	 *         or null if no action was taken. The message is given as an array
 	 *         containing the message key followed by any message parameters.
 	 */
-	public static function takeConsequenceAction(
-		$action,
-		$parameters,
-		Title $title,
-		AbuseFilterVariableHolder $vars,
-		$rule_desc,
-		$rule_number,
-		User $user
-	) {
+	public static function takeConsequenceAction( $action, $parameters, $title,
+		$vars, $rule_desc, $rule_number, User $user ) {
 		global $wgAbuseFilterCustomActionsHandlers, $wgRequest;
 
 		$message = null;
@@ -1825,7 +1808,7 @@ class AbuseFilter {
 	 * @param bool $global
 	 * @return bool
 	 */
-	public static function isThrottled( $throttleId, $types, Title $title, $rateCount,
+	public static function isThrottled( $throttleId, $types, $title, $rateCount,
 		$ratePeriod, $global = false
 	) {
 		$stash = ObjectCache::getMainStashInstance();
@@ -1863,7 +1846,7 @@ class AbuseFilter {
 	 * @param Title $title
 	 * @return int|string
 	 */
-	public static function throttleIdentifier( $type, Title $title ) {
+	public static function throttleIdentifier( $type, $title ) {
 		global $wgUser, $wgRequest;
 
 		switch ( $type ) {
@@ -1904,7 +1887,7 @@ class AbuseFilter {
 	 * @param bool $global
 	 * @return string
 	 */
-	public static function throttleKey( $throttleId, $type, Title $title, $global = false ) {
+	public static function throttleKey( $throttleId, $type, $title, $global = false ) {
 		$types = explode( ',', $type );
 
 		$identifiers = [];
@@ -1951,7 +1934,7 @@ class AbuseFilter {
 	 * @param User $user
 	 * @return string
 	 */
-	public static function autoPromoteBlockKey( User $user ) {
+	public static function autoPromoteBlockKey( $user ) {
 		return wfMemcKey( 'abusefilter', 'block-autopromote', $user->getId() );
 	}
 
@@ -2244,13 +2227,7 @@ class AbuseFilter {
 	 * @param array $actions
 	 * @return Status
 	 */
-	public static function saveFilter(
-		AbuseFilterViewEdit $page,
-		$filter,
-		$request,
-		$newRow,
-		$actions
-	) {
+	public static function saveFilter( $page, $filter, $request, $newRow, $actions ) {
 		$validationStatus = Status::newGood();
 
 		// Check the syntax
@@ -2367,7 +2344,7 @@ class AbuseFilter {
 		$filter,
 		$actions,
 		$wasGlobal,
-		AbuseFilterViewEdit $page
+		$page
 	) {
 		$user = $page->getUser();
 		$dbw = wfGetDB( DB_MASTER );
@@ -2771,7 +2748,7 @@ class AbuseFilter {
 	 * @param Page|null $page
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function getEditVars( Title $title = null, Page $page = null ) {
+	public static function getEditVars( $title, Page $page = null ) {
 		$vars = new AbuseFilterVariableHolder;
 
 		// NOTE: $page may end up remaining null, e.g. if $title points to a special page.
@@ -3030,9 +3007,8 @@ class AbuseFilter {
 	 * @return string|null the content of the revision as some kind of string,
 	 *        or an empty string if it can not be found
 	 */
-	public static function revisionToString( Revision $revision = null,
-		$audience = Revision::FOR_THIS_USER ) {
-		if ( !$revision ) {
+	public static function revisionToString( $revision, $audience = Revision::FOR_THIS_USER ) {
+		if ( !$revision instanceof Revision ) {
 			return '';
 		}
 
