@@ -12,8 +12,7 @@ class AbuseFilterHistoryPager extends TablePager {
 	 * @param string $user User name
 	 * @param LinkRenderer $linkRenderer
 	 */
-	public function __construct( $filter, AbuseFilterViewHistory $page, $user,
-		LinkRenderer $linkRenderer ) {
+	public function __construct( $filter, $page, $user, $linkRenderer ) {
 		$this->mFilter = $filter;
 		$this->mPage = $page;
 		$this->mUser = $user;

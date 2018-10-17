@@ -5,7 +5,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 	 * @param SpecialAbuseFilter $page
 	 * @param array $params
 	 */
-	public function __construct( SpecialAbuseFilter $page, $params ) {
+	public function __construct( $page, $params ) {
 		parent::__construct( $page, $params );
 		$this->mFilter = $page->mFilter;
 	}

@@ -7,7 +7,7 @@ class AFPParserState {
 	 * @param AFPToken $token
 	 * @param int $pos
 	 */
-	public function __construct( AFPToken $token, $pos ) {
+	public function __construct( $token, $pos ) {
 		$this->token = $token;
 		$this->pos = $pos;
 	}
