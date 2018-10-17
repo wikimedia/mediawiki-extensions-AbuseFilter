@@ -14,7 +14,7 @@ abstract class AbuseFilterView extends ContextSource {
 	 * @param SpecialAbuseFilter $page
 	 * @param array $params
 	 */
-	public function __construct( SpecialAbuseFilter $page, $params ) {
+	public function __construct( $page, $params ) {
 		$this->mPage = $page;
 		$this->mParams = $params;
 		$this->setContext( $this->mPage->getContext() );

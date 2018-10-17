@@ -841,7 +841,7 @@ class SpecialAbuseLog extends SpecialPage {
 	 * @param User $user The user who accessed the private details
 	 * @return void
 	 */
-	public static function addLogEntry( $logID, $reason, User $user ) {
+	public static function addLogEntry( $logID, $reason, $user ) {
 		$target = self::getTitleFor( 'AbuseLog', $logID );
 
 		$logEntry = new ManualLogEntry( 'abusefilterprivatedetails', 'access' );
