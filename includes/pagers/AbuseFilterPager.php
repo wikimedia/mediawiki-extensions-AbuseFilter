@@ -20,7 +20,8 @@ class AbuseFilterPager extends TablePager {
 	 * @param LinkRenderer $linkRenderer
 	 * @param array $query
 	 */
-	public function __construct( $page, $conds, $linkRenderer, $query ) {
+	public function __construct( AbuseFilterViewList $page, $conds, LinkRenderer $linkRenderer,
+		$query ) {
 		$this->mPage = $page;
 		$this->mConds = $conds;
 		$this->linkRenderer = $linkRenderer;

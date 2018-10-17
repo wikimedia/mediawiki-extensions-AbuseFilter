@@ -23,11 +23,11 @@ class AFComputedVariable {
 	 *
 	 *
 	 * @param string $wikitext
-	 * @param Article $article
+	 * @param WikiPage $article
 	 *
 	 * @return object
 	 */
-	public function parseNonEditWikitext( $wikitext, $article ) {
+	public function parseNonEditWikitext( $wikitext, WikiPage $article ) {
 		static $cache = [];
 
 		$cacheKey = md5( $wikitext ) . ':' . $article->getTitle()->getPrefixedText();
@@ -93,9 +93,9 @@ class AFComputedVariable {
 	/**
 	 * @param int $namespace
 	 * @param string $title
-	 * @return Article
+	 * @return WikiPage
 	 */
-	public static function articleFromTitle( $namespace, $title ) {
+	public static function pageFromTitle( $namespace, $title ) {
 		if ( isset( self::$articleCache["$namespace:$title"] ) ) {
 			return self::$articleCache["$namespace:$title"];
 		}
@@ -105,20 +105,19 @@ class AFComputedVariable {
 		}
 
 		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-		$logger->debug( "Creating article object for $namespace:$title in cache" );
+		$logger->debug( "Creating wikipage object for $namespace:$title in cache" );
 
-		// TODO: use WikiPage instead!
 		$t = Title::makeTitle( $namespace, $title );
-		self::$articleCache["$namespace:$title"] = new Article( $t );
+		self::$articleCache["$namespace:$title"] = WikiPage::factory( $t );
 
 		return self::$articleCache["$namespace:$title"];
 	}
 
 	/**
-	 * @param Article $article
+	 * @param WikiPage $article
 	 * @return array
 	 */
-	public static function getLinksFromDB( $article ) {
+	public static function getLinksFromDB( WikiPage $article ) {
 		// Stolen from ConfirmEdit, SimpleCaptcha::getLinksFromTracker
 		$id = $article->getId();
 		if ( !$id ) {
@@ -145,7 +144,7 @@ class AFComputedVariable {
 	 * @throws MWException
 	 * @throws AFPException
 	 */
-	public function compute( $vars ) {
+	public function compute( AbuseFilterVariableHolder $vars ) {
 		$parameters = $this->mParameters;
 		$result = null;
 
@@ -201,7 +200,7 @@ class AFComputedVariable {
 				if ( isset( $parameters['article'] ) ) {
 					$article = $parameters['article'];
 				} else {
-					$article = self::articleFromTitle(
+					$article = self::pageFromTitle(
 						$parameters['namespace'],
 						$parameters['title']
 					);
@@ -219,8 +218,8 @@ class AFComputedVariable {
 				// Otherwise fall back to database
 			case 'links-from-wikitext-nonedit':
 			case 'links-from-wikitext-or-database':
-				// TODO: use Content object instead, if available! In any case, use WikiPage, not Article.
-				$article = self::articleFromTitle(
+				// TODO: use Content object instead, if available!
+				$article = self::pageFromTitle(
 					$parameters['namespace'],
 					$parameters['title']
 				);
@@ -268,7 +267,7 @@ class AFComputedVariable {
 				if ( isset( $parameters['article'] ) ) {
 					$article = $parameters['article'];
 				} else {
-					$article = self::articleFromTitle(
+					$article = self::pageFromTitle(
 						$parameters['namespace'],
 						$parameters['title']
 					);
@@ -291,8 +290,8 @@ class AFComputedVariable {
 				}
 				// Otherwise fall back to database
 			case 'parse-wikitext-nonedit':
-				// TODO: use Content object instead, if available! In any case, use WikiPage, not Article.
-				$article = self::articleFromTitle( $parameters['namespace'], $parameters['title'] );
+				// TODO: use Content object instead, if available!
+				$article = self::pageFromTitle( $parameters['namespace'], $parameters['title'] );
 				$textVar = $parameters['wikitext-var'];
 
 				if ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
