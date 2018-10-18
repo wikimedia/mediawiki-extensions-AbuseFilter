@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * The default view used in Special:AbuseFilter
  */
@@ -276,7 +278,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 	 * Show stats
 	 */
 	public function showStatus() {
-		$stash = ObjectCache::getMainStashInstance();
+		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
 		$overflow_count = (int)$stash->get( AbuseFilter::filterLimitReachedKey() );
 		$match_count = (int)$stash->get( AbuseFilter::filterMatchesKey() );
 		$total_count = 0;

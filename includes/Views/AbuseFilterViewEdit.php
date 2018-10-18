@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 class AbuseFilterViewEdit extends AbuseFilterView {
 	public static $mLoadedRow = null, $mLoadedActions = null;
 	/**
@@ -245,7 +247,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		if ( $filter !== 'new' ) {
 			// Statistics
-			$stash = ObjectCache::getMainStashInstance();
+			$stash = MediaWikiServices::getInstance()->getMainObjectStash();
 			$matches_count = (int)$stash->get( AbuseFilter::filterMatchesKey( $filter ) );
 			$total = (int)$stash->get( AbuseFilter::filterUsedKey( $row->af_group ) );
 
