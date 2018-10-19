@@ -166,6 +166,7 @@
 	"abusefilter-enabled": "Включён",
 	"abusefilter-deleted": "Удалён",
 	"abusefilter-disabled": "Выключен",
+	"abusefilter-throttled": "ограничен",
 	"abusefilter-hitcount": "$1 {{PLURAL:$1|срабатывание|срабатывания|срабатываний}}",
 	"abusefilter-new": "Создать новый фильтр",
 	"abusefilter-return": "Вернуться к управлению фильтрами",
