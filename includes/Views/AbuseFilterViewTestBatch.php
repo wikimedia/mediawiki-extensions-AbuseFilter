@@ -160,15 +160,12 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			}
 		}
 
-		$action = $this->mTestAction != '0' ? $this->mTestAction : false;
-		$conds[] = $this->buildTestConditions( $dbr, $action );
-
-		$conds = array_filter( $conds );
-
-		// To be added after filtering, otherwise it gets stripped
 		if ( $this->mExcludeBots ) {
 			$conds['rc_bot'] = 0;
 		}
+
+		$action = $this->mTestAction != '0' ? $this->mTestAction : false;
+		$conds[] = $this->buildTestConditions( $dbr, $action );
 
 		// Get our ChangesList
 		$changesList = new AbuseFilterChangesList( $this->getSkin(), $this->mFilter );
