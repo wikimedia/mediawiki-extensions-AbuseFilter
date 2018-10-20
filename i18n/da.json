@@ -185,6 +185,7 @@
 	"abusefilter-edit-warn-actions": "Handlinger:",
 	"abusefilter-edit-warn-preview": "Forhåndsvis valgt meddelelse",
 	"abusefilter-edit-warn-edit": "Opret/redigér valgt meddelelse",
+	"abusefilter-edit-disallow-actions": "Handlinger:",
 	"abusefilter-edit-tag-tag": "Mærker som skal anvendes (et pr. linje):",
 	"abusefilter-edit-block-anon-durations": "Varighed på blokeringen for anonyme brugere:",
 	"abusefilter-block-anon": "Bloker onyme brugere",
