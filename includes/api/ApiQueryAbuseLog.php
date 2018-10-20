@@ -97,11 +97,12 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$this->addFieldsIf( 'afl_actions', $fld_result );
 		$this->addFieldsIf( 'afl_wiki', $fld_wiki );
 
+		$db = $this->getDB();
 		if ( $fld_filter ) {
 			$this->addTables( 'abuse_filter' );
 			$this->addFields( 'af_public_comments' );
 			$this->addJoinConds( [ 'abuse_filter' => [ 'LEFT JOIN',
-					'af_id=afl_filter' ] ] );
+					$db->buildStringCast( 'af_id' ) . '=afl_filter' ] ] );
 		}
 
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
