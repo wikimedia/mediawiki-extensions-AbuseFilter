@@ -35,7 +35,15 @@
 		},
 		"sysop": {
 			"abusefilter-log-detail": true,
-			"abusefilter-modify": true
+			"abusefilter-view-private": true,
+			"abusefilter-log-private": true,
+			"abusefilter-modify": true,
+			"abusefilter-modify-restricted": true,
+			"abusefilter-revert": true
+		},
+		"suppress": {
+			"abusefilter-hidden-log": true,
+			"abusefilter-hide-log": true
 		}
 	},
 	"GrantPermissions": {
@@ -44,11 +52,12 @@
 			"abusefilter-log-detail": true,
 			"abusefilter-view": true
 		},
-		"rollback": {
-			"abusefilter-revert": true
+		"oversight": {
+			"abusefilter-hide-log": true
 		},
 		"viewrestrictedlogs": {
 			"abusefilter-hidden-log": true,
+			"abusefilter-log-private": true,
 			"abusefilter-view-private": true
 		}
 	},
@@ -261,7 +270,7 @@
 				"blockautopromote": true,
 				"block": true,
 				"rangeblock": false,
-				"degroup": true,
+				"degroup": false,
 				"tag": true
 			},
 			"_merge_strategy": "array_plus",
