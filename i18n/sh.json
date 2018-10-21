@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Kolega2357",
-			"OC Ripper"
+			"OC Ripper",
+			"BadDog"
 		]
 	},
 	"abusefilter-desc": "Dodaje automatske heuristike izmjenama.",
@@ -62,7 +63,7 @@
 	"abusefilter-log-details-ip": "Izvorna IP adresa",
 	"abusefilter-log-noactions": "Ništa",
 	"abusefilter-log-details-diff": "Izmene napravljene pri uređivanju",
-	"abusefilter-log-linkoncontribs": "Evidencija zloupotreba",
+	"abusefilter-log-linkoncontribs": "evidencija zloupotreba",
 	"abusefilter-log-linkoncontribs-text": "Izveštaj zloupotrebe ovog korisnika",
 	"abusefilter-log-hidden": "(unos je sakriven)",
 	"abusefilter-log-cannot-see-details": "Nemate ovlašćenje da vidite detalje ovog unosa.",
