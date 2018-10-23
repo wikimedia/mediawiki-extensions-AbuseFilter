@@ -34,7 +34,14 @@
  * @covers AFComputedVariable
  */
 class AbuseFilterTest extends MediaWikiTestCase {
-	protected static $mUser, $mTitle, $mPage, $mVariables;
+	/** @var User */
+	protected static $mUser;
+	/** @var Title */
+	protected static $mTitle;
+	/** @var WikiPage */
+	protected static $mPage;
+	/** @var AbuseFilterVariableHolder */
+	protected static $mVariables;
 
 	/**
 	 * @var array These tables will be deleted in parent::tearDown.
@@ -148,6 +155,8 @@ class AbuseFilterTest extends MediaWikiTestCase {
 						self::$mUser
 					);
 				}
+				// Reload to reflect deferred update
+				self::$mUser->clearInstanceCache();
 				$result = 7;
 				break;
 			case 'user_name':
