@@ -1900,15 +1900,14 @@ class AbuseFilter {
 
 		global $wgAbuseFilterIsCentral, $wgAbuseFilterCentralDB;
 
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		if ( $global && !$wgAbuseFilterIsCentral ) {
-			list( $globalSite, $globalPrefix ) = wfSplitWikiID( $wgAbuseFilterCentralDB );
-
-			return wfForeignMemcKey(
-				$globalSite, $globalPrefix,
-				'abusefilter', 'throttle', $throttleId, $type, $identifier );
+			return $cache->makeGlobalKey(
+				'abusefilter', 'throttle', $wgAbuseFilterCentralDB, $throttleId, $type, $identifier
+			);
 		}
 
-		return wfMemcKey( 'abusefilter', 'throttle', $throttleId, $type, $identifier );
+		return $cache->makeKey( 'abusefilter', 'throttle', $throttleId, $type, $identifier );
 	}
 
 	/**
@@ -1918,16 +1917,12 @@ class AbuseFilter {
 	public static function getGlobalRulesKey( $group ) {
 		global $wgAbuseFilterIsCentral, $wgAbuseFilterCentralDB;
 
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		if ( !$wgAbuseFilterIsCentral ) {
-			list( $globalSite, $globalPrefix ) = wfSplitWikiID( $wgAbuseFilterCentralDB );
-
-			return wfForeignMemcKey(
-				$globalSite, $globalPrefix,
-				'abusefilter', 'rules', $group
-			);
+			return $cache->makeGlobalKey( 'abusefilter', 'rules', $wgAbuseFilterCentralDB, $group );
 		}
 
-		return wfMemcKey( 'abusefilter', 'rules', $group );
+		return $cache->makeKey( 'abusefilter', 'rules', $group );
 	}
 
 	/**
@@ -1935,7 +1930,9 @@ class AbuseFilter {
 	 * @return string
 	 */
 	public static function autoPromoteBlockKey( $user ) {
-		return wfMemcKey( 'abusefilter', 'block-autopromote', $user->getId() );
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+
+		return $cache->makeKey( 'abusefilter', 'block-autopromote', $user->getId() );
 	}
 
 	/**
