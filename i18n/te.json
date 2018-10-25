@@ -6,7 +6,8 @@
 			"Ravichandra",
 			"Veeven",
 			"వైజాసత్య",
-			"Matma Rex"
+			"Matma Rex",
+			"Pavan santhosh.s"
 		]
 	},
 	"abusefilter": "దుర్వినియోగ వడపోతల స్వరూపణం",
@@ -147,7 +148,7 @@
 	"abusefilter-edit-throttle-period": "కాల వ్యవధి:",
 	"abusefilter-edit-warn-message": "హెచ్చరికకై ఉపయోగించాల్సిన వ్యవస్థా సందేశం:",
 	"abusefilter-edit-warn-other": "ఇతర సందేశం",
-	"abusefilter-edit-warn-other-label": "ఇతర సందేశం యొక్క పేజీ పేరు:\n:''(మీడియావికీ ఉపసర్గ లేకుండా)''",
+	"abusefilter-edit-warn-other-label": "ఇతర సందేశపు పేజీ పేరు:\n:''(\"మీడియావికీ:\" అన్న ఉపసర్గ లేకుండా)''",
 	"abusefilter-edit-warn-actions": "చర్యలు:",
 	"abusefilter-edit-warn-preview": "ఎంచుకున్న సందేశాన్ని మునుజూడండి",
 	"abusefilter-edit-warn-edit": "ఎంచుకున్న సందేశాన్ని సృష్టించండి/మార్చండి",
