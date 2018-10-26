@@ -301,12 +301,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					array_keys( $throttledActions )
 				);
 
-				$flags .= $out->parse(
-					Html::warningBox(
-						$this->msg( 'abusefilter-edit-throttled-warning' )
-							->plaintextParams( $lang->commaList( $throttledActions ) )
-							->text()
-					)
+				$flags .= Html::warningBox(
+					$this->msg( 'abusefilter-edit-throttled-warning' )
+					->plaintextParams( $lang->commaList( $throttledActions ) )
+					->parseAsBlock()
 				);
 			}
 		}
