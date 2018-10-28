@@ -10,7 +10,8 @@
 			"Octahedron80",
 			"Passawuth",
 			"Woraponboonkerd",
-			"Matma Rex"
+			"Matma Rex",
+			"Aefgh39622"
 		]
 	},
 	"abusefilter-desc": "วิเคราะห์พฤติกรรมการแก้ไขอัตโนมัติ",
@@ -72,6 +73,7 @@
 	"abusefilter-log-details-diff": "การเปลี่ยนแปลงในการแก้ไข",
 	"abusefilter-log-linkoncontribs": "ปูมการละเมิดกฎ",
 	"abusefilter-log-linkoncontribs-text": "ปูมการละเมิดกฎของผู้ใช้นี้",
+	"abusefilter-log-linkonhistory": "ดูปูมการละเมิดกฎ",
 	"abusefilter-log-hidden": "(รายการถูกซ่อนไว้)",
 	"abusefilter-log-hidden-implicit": "(ถูกซ่อนเพราะรุ่นถูกลบ)",
 	"abusefilter-log-cannot-see-details": "คุณไม่ได้รับอนุญาตให้ดูรายละเอียดของหน่วยนี้",
