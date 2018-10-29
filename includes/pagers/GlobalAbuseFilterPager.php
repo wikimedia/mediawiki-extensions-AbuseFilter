@@ -30,7 +30,7 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 			case 'af_id':
 				return $lang->formatNum( intval( $value ) );
 			case 'af_public_comments':
-				return $this->getOutput()->parseInline( $value );
+				return $this->getOutput()->parseInlineAsInterface( $value );
 			case 'af_actions':
 				$actions = explode( ',', $value );
 				$displayActions = [];
