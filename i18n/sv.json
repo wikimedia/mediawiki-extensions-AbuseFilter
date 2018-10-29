@@ -243,7 +243,7 @@
 	"abusefilter-edit-warn-actions": "Åtgärder:",
 	"abusefilter-edit-warn-preview": "Visa/dölj förhandsgranskning av valt meddelande",
 	"abusefilter-edit-warn-edit": "Skapa/redigera valt meddelande",
-	"abusefilter-edit-disallow-message": "Systemmeddelande att använda som varning:",
+	"abusefilter-edit-disallow-message": "Systemmeddelande att använda för förbjud:",
 	"abusefilter-edit-disallow-other": "Annat meddelande",
 	"abusefilter-edit-disallow-other-label": "Sidnamn för annat meddelande:\n:''(utan prefixet \"MediaWiki:\")''",
 	"abusefilter-edit-disallow-actions": "Åtgärder:",

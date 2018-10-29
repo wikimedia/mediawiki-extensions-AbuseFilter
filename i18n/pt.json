@@ -213,7 +213,7 @@
 	"abusefilter-edit-lastmod-text": "$1 por $2",
 	"abusefilter-edit-hitcount": "Deteções do filtro:",
 	"abusefilter-edit-consequences": "Ações a realizar quando acionado",
-	"abusefilter-edit-action-warn": "Desencadear estas ações após emitir um aviso ao utilizador",
+	"abusefilter-edit-action-warn": "Desencadear estas ações depois de emitir um aviso ao utilizador",
 	"abusefilter-edit-action-disallow": "Impedir o utilizador de realizar a ação em questão",
 	"abusefilter-edit-action-blockautopromote": "Revogar o estatuto autoconfirmado do utilizador",
 	"abusefilter-edit-action-degroup": "Remover o utilizador de todos os grupos privilegiados",
