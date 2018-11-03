@@ -194,7 +194,7 @@
 	"abusefilter-edit-status-profile": "من آخر $1 {{PLURAL:$1|تعديل|تعديل}}، هذا المرشح طابق $2 ($3%).\nفي المتوسط، زمن تشغيله هو $4 مللي ثانية، ويستهلك $5 {{PLURAL:$5|شرط|شرط}} من شرط الحد.",
 	"abusefilter-edit-throttled-warning": "'''تحذير:'''تم التعليم على هذا المرشح تلقائيا على أنه ضار; كتدبير أمان، لن يتم تنفيذ الإجراءات التالية ($1)، تُرجَى مراجعة و[[mw:Extension:AbuseFilter/Conditions|تحسين]] شروطك لإزالة هذا التقييد",
 	"abusefilter-edit-new": "مرشح جديد",
-	"abusefilter-edit-save": "حفظ المُرشِّح",
+	"abusefilter-edit-save": "حفظ المرشح",
 	"abusefilter-edit-id": "رقم المُرشِّح:",
 	"abusefilter-edit-switch-editor": "تبديل المحرر",
 	"abusefilter-edit-description": "الوصف:\n:''(معروض علنيًا)''",

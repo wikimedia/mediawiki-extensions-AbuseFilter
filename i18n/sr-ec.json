@@ -363,7 +363,7 @@
 	"abusefilter-exception-dividebyzero": "Недозвољен покушај дељења $2 с нулом код знака $1.",
 	"abusefilter-exception-unrecognisedvar": "Непрепозната променљива $2 код знака $1",
 	"abusefilter-exception-notenoughargs": "Недовољно аргумената за функцију $2 позвану на карактеру $1.\n{{PLURAL:$3|Очекивало се аргумената:}} $3, а добијено: $4",
-	"abusefilter-exception-regexfailure": "Грешка у регуларном изрзу „$3“ код знака $1: „$2“",
+	"abusefilter-exception-regexfailure": "Грешка у регуларном изрзу „$2” код знака $1.",
 	"abusefilter-exception-overridebuiltin": "Недозвољено мењање променљиве „$2“ на карактеру $1.",
 	"abusefilter-exception-outofbounds": "Захтевање непостојеће ставке у низу $2 (величина низа = $3) код знака $1.",
 	"abusefilter-exception-notarray": "Захтевање ставке низа за објекат који није низ код знака $1.",
