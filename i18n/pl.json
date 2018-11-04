@@ -234,6 +234,8 @@
 	"abusefilter-edit-warn-actions": "Operacje:",
 	"abusefilter-edit-warn-preview": "Pokaż/Ukryj podgląd wybranego komunikatu",
 	"abusefilter-edit-warn-edit": "Utwórz lub edytuj wybrany komunikat",
+	"abusefilter-edit-disallow-other": "Inny komunikat",
+	"abusefilter-edit-disallow-actions": "Działania:",
 	"abusefilter-edit-tag-tag": "[[Special:Tags|Znaczniki]] do zastosowania:",
 	"abusefilter-edit-tag-placeholder": "Dodaj znaczniki (jeden po drugim lub oddzielone przecinkami)",
 	"abusefilter-edit-tag-hidden-placeholder": "Dodaj znaczniki (oddzielone przecinkami)",
