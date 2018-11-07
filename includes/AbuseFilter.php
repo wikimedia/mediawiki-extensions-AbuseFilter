@@ -712,7 +712,7 @@ class AbuseFilter {
 	) {
 		$title = $title ? $title->getPrefixedText() : '';
 
-		$logger = LoggerFactory::getInstance( 'AbuseFilterSlow' );
+		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
 		$logger->info(
 			'Edit filter {filter_id} on {wiki} is taking longer than expected',
 			[
