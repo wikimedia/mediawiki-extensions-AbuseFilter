@@ -87,6 +87,7 @@
 	"abusefilter-log-linkoncontribs": "дневник на злоупотребите",
 	"abusefilter-log-linkoncontribs-text": "Дневник на злоупотребите за {{GENDER:$1|този потребител}}",
 	"abusefilter-log-linkonhistory": "преглед на филтъра срещу злоупотреби",
+	"abusefilter-log-linkonhistory-text": "Преглед на дневника на злоупотреби за страницата",
 	"abusefilter-log-hidden": "(скрит запис)",
 	"abusefilter-log-hidden-implicit": "(скрито заради изтрита версия)",
 	"abusefilter-log-cannot-see-details": "Нямате права за преглед на детайлите на този запис.",

@@ -67,6 +67,7 @@
 	"abusefilter-log-details-diff": "Зміны, зроблены при едітованю",
 	"abusefilter-log-linkoncontribs": "протокол знеужываня",
 	"abusefilter-log-linkoncontribs-text": "Протокол знеужытя про того хоснователя",
+	"abusefilter-log-linkonhistory": "перегляд протоколу знеужываня",
 	"abusefilter-log-hidden": "(схованый запис)",
 	"abusefilter-log-hidden-implicit": "(сховане, бо верзія была вылучена)",
 	"abusefilter-log-cannot-see-details": "Вы не мате дозволїня на перегляд детайлів того запису.",
