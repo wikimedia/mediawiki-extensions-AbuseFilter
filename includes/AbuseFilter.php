@@ -1099,7 +1099,7 @@ class AbuseFilter {
 	 * @return Status
 	 */
 	public static function filterAction(
-		AbuseFilterVariableHolder $vars, Title $title, $group, User $user, $mode = 'execute'
+		AbuseFilterVariableHolder $vars, $title, $group, User $user, $mode = 'execute'
 	) {
 		global $wgRequest, $wgAbuseFilterRuntimeProfile, $wgAbuseFilterLogIP;
 
