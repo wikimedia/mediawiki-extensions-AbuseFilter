@@ -13,7 +13,13 @@ use Wikimedia\Rdbms\IDatabase;
  * logging actions, etc.
  */
 class AbuseFilter {
+	/**
+	 * @var int How long to keep profiling data in cache (in seconds)
+	 */
 	public static $statsStoragePeriod = 86400;
+	/**
+	 * @var bool Whether the condition limit is enabled
+	 */
 	public static $condLimitEnabled = true;
 
 	/**
@@ -25,10 +31,15 @@ class AbuseFilter {
 	/** @var string The prefix to use for global filters */
 	const GLOBAL_FILTER_PREFIX = 'global-';
 
+	/**
+	 * @var int The amount of conditions currently used
+	 */
 	public static $condCount = 0;
 
-	/** @var array Map of (action ID => string[]) */
-	// FIXME: avoid global state here
+	/*
+	 * @var array Map of (action ID => string[])
+	 * @fixme avoid global state here
+	 */
 	public static $tagsToSet = [];
 
 	public static $history_mappings = [

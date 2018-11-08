@@ -3,7 +3,26 @@
 use Wikimedia\Rdbms\IDatabase;
 
 abstract class AbuseFilterView extends ContextSource {
-	public $mFilter, $mHistoryID, $mSubmit, $mPage, $mParams;
+	/**
+	 * @var string The ID of the current filter
+	 */
+	public $mFilter;
+	/**
+	 * @var string The history ID of the current filter
+	 */
+	public $mHistoryID;
+	/**
+	 * @var bool Whether the form was submitted
+	 */
+	public $mSubmit;
+	/**
+	 * @var SpecialAbuseFilter The related special page object
+	 */
+	public $mPage;
+	/**
+	 * @var array The parameters of the current request
+	 */
+	public $mParams;
 
 	/**
 	 * @var \MediaWiki\Linker\LinkRenderer

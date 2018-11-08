@@ -1,9 +1,21 @@
 <?php
 
 class AbuseFilterViewDiff extends AbuseFilterView {
+	/**
+	 * @var array|null The old version of the filter
+	 */
 	public $mOldVersion = null;
+	/**
+	 * @var array|null The new version of the filter
+	 */
 	public $mNewVersion = null;
+	/**
+	 * @var int|null The history ID of the next version, if any
+	 */
 	public $mNextHistoryId = null;
+	/**
+	 * @var int|null The ID of the filter
+	 */
 	public $mFilter = null;
 
 	/**

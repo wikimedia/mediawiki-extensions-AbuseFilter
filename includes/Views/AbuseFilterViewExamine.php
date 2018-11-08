@@ -1,7 +1,25 @@
 <?php
 
 class AbuseFilterViewExamine extends AbuseFilterView {
-	public $mCounter, $mSearchUser, $mSearchPeriodStart, $mSearchPeriodEnd;
+	/**
+	 * @var int Line number of the row, see RecentChange::$counter
+	 */
+	public $mCounter;
+	/**
+	 * @var string The user whose entries we're examinating
+	 */
+	public $mSearchUser;
+	/**
+	 * @var string The start time of the search period
+	 */
+	public $mSearchPeriodStart;
+	/**
+	 * @var string The end time of the search period
+	 */
+	public $mSearchPeriodEnd;
+	/**
+	 * @var string The ID of the filter we're examinating
+	 */
 	public $mTestFilter;
 
 	/**

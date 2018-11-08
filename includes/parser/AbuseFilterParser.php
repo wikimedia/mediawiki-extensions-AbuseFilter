@@ -5,16 +5,31 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 
 class AbuseFilterParser {
-	public $mTokens, $mPos, $mShortCircuit, $mAllowShort;
-	/** @var AFPToken The current token */
+	/**
+	 * @var array Contains the AFPTokens for the code being parsed
+	 */
+	public $mTokens;
+	/**
+	 * @var int The position of the current token
+	 */
+	public $mPos;
+	/**
+	 * @var bool Are we inside a short circuit evaluation?
+	 */
+	public $mShortCircuit;
+	/**
+	 * @var bool Are we allowed to use short-circuit evaluation?
+	 */
+	public $mAllowShort;
+	/**
+	 * @var AFPToken The current token
+	 */
 	public $mCur;
-
 	/**
 	 * @var AbuseFilterVariableHolder
 	 */
 	public $mVars;
 
-	// length,lcase,ucase,ccnorm,rmdoubles,specialratio,rmspecials,norm,count,get_matches
 	public static $mFunctions = [
 		'lcase' => 'funcLc',
 		'ucase' => 'funcUc',

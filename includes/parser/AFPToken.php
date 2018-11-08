@@ -48,8 +48,17 @@ class AFPToken {
 	const TCOMMA = 'T_COMMA';
 	const TSTATEMENTSEPARATOR = 'T_STATEMENT_SEPARATOR';
 
+	/**
+	 * @var string One of the T* constant from this class
+	 */
 	public $type;
+	/**
+	 * @var mixed|null The actual value of the token
+	 */
 	public $value;
+	/**
+	 * @var int The code offset where this token is found
+	 */
 	public $pos;
 
 	/**

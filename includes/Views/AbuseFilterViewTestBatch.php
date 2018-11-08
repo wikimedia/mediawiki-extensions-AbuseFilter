@@ -1,11 +1,39 @@
 <?php
 
 class AbuseFilterViewTestBatch extends AbuseFilterView {
-	// Hard-coded for now.
+	/**
+	 * @var int The limit of changes to test, hard coded for now
+	 */
 	protected static $mChangeLimit = 100;
 
-	public $mShowNegative, $mTestPeriodStart, $mTestPeriodEnd, $mTestPage;
-	public $mTestUser, $mExcludeBots, $mTestAction;
+	/**
+	 * @var bool Whether to show changes that don't trigger the specified pattern
+	 */
+	public $mShowNegative;
+	/**
+	 * @var string The start time of the lookup period
+	 */
+	public $mTestPeriodStart;
+	/**
+	 * @var string The end time of the lookup period
+	 */
+	public $mTestPeriodEnd;
+	/**
+	 * @var string The page of which edits we're interested in
+	 */
+	public $mTestPage;
+	/**
+	 * @var string The user whose actions we want to test
+	 */
+	public $mTestUser;
+	/**
+	 * @var bool Whether to exclude bot edits
+	 */
+	public $mExcludeBots;
+	/**
+	 * @var string The action (performed by the user) we want to search for
+	 */
+	public $mTestAction;
 
 	/**
 	 * Shows the page

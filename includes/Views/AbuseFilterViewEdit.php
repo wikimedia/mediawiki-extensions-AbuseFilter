@@ -1,7 +1,14 @@
 <?php
 
 class AbuseFilterViewEdit extends AbuseFilterView {
-	public static $mLoadedRow = null, $mLoadedActions = null;
+	/**
+	 * @var stdClass|null An abuse_filter row describing a filter
+	 */
+	public static $mLoadedRow = null;
+	/**
+	 * @var array|null An array of actions for the current filter
+	 */
+	public static $mLoadedActions = null;
 	/**
 	 * @param SpecialAbuseFilter $page
 	 * @param array $params

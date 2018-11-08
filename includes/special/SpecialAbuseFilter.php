@@ -1,7 +1,14 @@
 <?php
 
 class SpecialAbuseFilter extends SpecialPage {
-	public $mFilter, $mHistoryID;
+	/**
+	 * @var int|string|null The current filter
+	 */
+	public $mFilter;
+	/**
+	 * @var string|null The history ID of the current version
+	 */
+	public $mHistoryID;
 
 	public function __construct() {
 		parent::__construct( 'AbuseFilter', 'abusefilter-view' );

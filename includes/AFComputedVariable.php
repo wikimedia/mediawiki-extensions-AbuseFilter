@@ -5,8 +5,21 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Logger\LoggerFactory;
 
 class AFComputedVariable {
-	public $mMethod, $mParameters;
+	/**
+	 * @var string The method used to compute the variable
+	 */
+	public $mMethod;
+	/**
+	 * @var array Parameters to be used with the specified method
+	 */
+	public $mParameters;
+	/**
+	 * @var array Cache containing User objects already constructed
+	 */
 	public static $userCache = [];
+	/**
+	 * @var array Cache containing Page objects already constructed
+	 */
 	public static $articleCache = [];
 
 	/**
@@ -140,7 +153,7 @@ class AFComputedVariable {
 
 	/**
 	 * @param AbuseFilterVariableHolder $vars
-	 * @return AFPData|array|int|mixed|null|string
+	 * @return AFPData
 	 * @throws MWException
 	 * @throws AFPException
 	 */

@@ -2,35 +2,53 @@
 
 class SpecialAbuseLog extends SpecialPage {
 	/**
-	 * @var User
+	 * @var User The user whose AbuseLog entries are being searched
 	 */
 	protected $mSearchUser;
 
+	/**
+	 * @var string The start time of the search period
+	 */
 	protected $mSearchPeriodStart;
 
+	/**
+	 * @var string The end time of the search period
+	 */
 	protected $mSearchPeriodEnd;
 
 	/**
-	 * @var Title
+	 * @var Title The page of which AbuseLog entries are being searched
 	 */
 	protected $mSearchTitle;
 
 	/**
-	 * @var string
+	 * @var string The action performed by the user
 	 */
 	protected $mSearchAction;
 
 	/**
-	 * @var string
+	 * @var string The action taken by AbuseFilter
 	 */
 	protected $mSearchActionTaken;
 
+	/**
+	 * @var string The wiki name where we're performing the search
+	 */
 	protected $mSearchWiki;
 
+	/**
+	 * @var string|null The filter IDs we're looking for. Either a single one, or a pipe-separated list
+	 */
 	protected $mSearchFilter;
 
+	/**
+	 * @var string The visibility of entries we're interested in
+	 */
 	protected $mSearchEntries;
 
+	/**
+	 * @var string The impact of the user action, i.e. if the change has been saved
+	 */
 	protected $mSearchImpact;
 
 	/**

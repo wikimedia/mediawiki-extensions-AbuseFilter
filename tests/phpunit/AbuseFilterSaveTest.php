@@ -33,11 +33,12 @@
  * @covers AbuseFilterParser
  */
 class AbuseFilterSaveTest extends MediaWikiTestCase {
-	protected static $mUser, $mParameters;
+	/** @var User The user saving filters */
+	protected static $mUser;
+	/** @var array Parameters for the test set being executed */
+	protected static $mParameters;
 
-	/**
-	 * @var array This tables will be deleted in parent::tearDown
-	 */
+	/** @var array This tables will be deleted in parent::tearDown */
 	protected $tablesUsed = [
 		'abuse_filter',
 		'abuse_filter_action',
