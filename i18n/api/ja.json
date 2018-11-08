@@ -4,11 +4,12 @@
 			"2nd-player",
 			"Otokoume",
 			"Suyama",
-			"Yusuke1109"
+			"Yusuke1109",
+			"Shirayuki"
 		]
 	},
-	"apihelp-abusefilterchecksyntax-description": "不正利用フィルターの構文を確認してください。",
-	"apihelp-abusefilterchecksyntax-summary": "不正利用フィルターの構文を確認してください。",
+	"apihelp-abusefilterchecksyntax-description": "不正利用フィルターの構文を確認します。",
+	"apihelp-abusefilterchecksyntax-summary": "不正利用フィルターの構文を確認します。",
 	"apihelp-abusefilterevalexpression-description": "不正利用フィルターの式を評価します。",
 	"apihelp-abusefilterevalexpression-param-expression": "評価する式。",
 	"apihelp-abusefilterevalexpression-example-1": "簡単な式を評価します",
