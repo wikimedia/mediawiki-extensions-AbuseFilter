@@ -314,11 +314,14 @@ class AbuseFilterHooks {
 	 * @param Title $newTitle
 	 * @param User $user
 	 * @param string $reason
-	 * @param Status $status
-	 * @return bool
+	 * @param Status &$status
 	 */
-	public static function onMovePageCheckPermissions( Title $oldTitle, Title $newTitle,
-		User $user, $reason, Status $status
+	public static function onTitleMove(
+		Title $oldTitle,
+		Title $newTitle,
+		User $user,
+		$reason,
+		Status &$status
 	) {
 		$vars = new AbuseFilterVariableHolder;
 		$vars->addHolders(
@@ -331,8 +334,6 @@ class AbuseFilterHooks {
 
 		$result = AbuseFilter::filterAction( $vars, $oldTitle, 'default', $user );
 		$status->merge( $result );
-
-		return $result->isOK();
 	}
 
 	/**

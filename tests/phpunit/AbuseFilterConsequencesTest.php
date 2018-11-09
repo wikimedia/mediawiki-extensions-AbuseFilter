@@ -420,8 +420,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				}
 				break;
 			case 'move':
-				$move = new MovePage( $target, Title::newFromText( $params['newTitle'] ) );
-				$status = $move->checkPermissions( self::$mUser, 'AbuseFilter move test' );
+				$mp = new MovePage( $target, Title::newFromText( $params['newTitle'] ) );
+				$status = $mp->move( self::$mUser, 'AbuseFilter move test', false, [] );
 				break;
 			case 'delete':
 				$page = WikiPage::factory( $target );

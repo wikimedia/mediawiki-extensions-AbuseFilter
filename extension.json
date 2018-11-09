@@ -11,7 +11,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "antispam",
 	"requires": {
-		"MediaWiki": ">= 1.32.0"
+		"MediaWiki": ">= 1.33.0"
 	},
 	"AvailableRights": [
 		"abusefilter-modify",
@@ -231,7 +231,7 @@
 	"Hooks": {
 		"EditFilterMergedContent": "AbuseFilterHooks::onEditFilterMergedContent",
 		"GetAutoPromoteGroups": "AbuseFilterHooks::onGetAutoPromoteGroups",
-		"MovePageCheckPermissions": "AbuseFilterHooks::onMovePageCheckPermissions",
+		"TitleMove": "AbuseFilterHooks::onTitleMove",
 		"ArticleDelete": "AbuseFilterHooks::onArticleDelete",
 		"RecentChange_save": "AbuseFilterHooks::onRecentChangeSave",
 		"ListDefinedTags": "AbuseFilterHooks::onListDefinedTags",
