@@ -339,7 +339,7 @@
 	"abusefilter-exception-dividebyzero": "Ulovligt forsøg på at dividere $2 med nul ved tegn $1.",
 	"abusefilter-exception-unrecognisedvar": "Ukendt variabel $2 ved tegn $1.",
 	"abusefilter-exception-notenoughargs": "Funktionskaldet $2 ved tegn $1 havde ikke nok argumenter.\nForventede {{PLURAL:$3|et argument|$3 argumenter}}, fik $4",
-	"abusefilter-exception-regexfailure": "Fejl i det regulære udtryk \"$3\" ved tegn $1: \"$2\"",
+	"abusefilter-exception-regexfailure": "Fejl i det regulære udtryk \"$2\" ved tegn $1.",
 	"abusefilter-exception-overridebuiltin": "Ulovlig overskrivning af den indbyggede variabel \"$2\" ved tegnet $1.",
 	"abusefilter-exception-outofbounds": "Anmoder om ikke-eksisterende listeelement $2 (listens størrelse = $3) ved tegnet $1.",
 	"abusefilter-exception-notarray": "Efterspørger tabelelement fra en ikke-tabel ved tegn $1.",
