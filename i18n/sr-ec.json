@@ -175,7 +175,7 @@
 	"abusefilter-edit-deleted": "Означи као обрисан",
 	"abusefilter-edit-hidden": "Сакриј детаље овог филтера из јавног приказа",
 	"abusefilter-edit-global": "Глобални филтер",
-	"abusefilter-edit-rules": "Услови:<br/> <em>([[mw:Extension:AbuseFilter/RulesFormat|документација]])<em/>",
+	"abusefilter-edit-rules": "Услови:",
 	"abusefilter-edit-field-conditions": "услови",
 	"abusefilter-edit-notes": "Напомене:",
 	"abusefilter-edit-lastmod": "Последња измена филтера:",
