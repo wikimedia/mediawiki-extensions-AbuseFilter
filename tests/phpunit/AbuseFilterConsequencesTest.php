@@ -49,7 +49,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		'abuse_filter_action',
 		'abuse_filter_history',
 		'abuse_filter_log',
-		'page'
+		'page',
+		'ipblocks',
 	];
 
 	// Properties of the filter rows that we're not interested in changing.

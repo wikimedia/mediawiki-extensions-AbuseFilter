@@ -357,14 +357,14 @@ class AbuseFilterTest extends MediaWikiTestCase {
 					false,
 					self::$mUser
 				);
-				$mockContributors = [ 'Alice', 'Bob', 'Charlie' ];
+				$mockContributors = [ 'X>Alice', 'X>Bob', 'X>Charlie' ];
 				foreach ( $mockContributors as $user ) {
 					$page->doEditContent(
 						new WikitextContent( "AbuseFilter test, page revision by $user" ),
 						'Testing page for AbuseFilter',
 						EDIT_UPDATE,
 						false,
-						User::newFromName( $user )
+						User::newFromName( $user, false )
 					);
 				}
 				$contributors = array_reverse( $mockContributors );
@@ -380,14 +380,14 @@ class AbuseFilterTest extends MediaWikiTestCase {
 					false,
 					self::$mUser
 				);
-				$mockContributors = [ 'Alice', 'Bob', 'Charlie' ];
+				$mockContributors = [ 'X>Alice', 'X>Bob', 'X>Charlie' ];
 				foreach ( $mockContributors as $user ) {
 					$page->doEditContent(
 						new WikitextContent( "AbuseFilter test, page revision by $user" ),
 						'Testing page for AbuseFilter',
 						EDIT_UPDATE,
 						false,
-						User::newFromName( $user )
+						User::newFromName( $user, false )
 					);
 				}
 				$result = self::$mUser->getName();

@@ -455,7 +455,7 @@ class AFComputedVariable {
 					[ 'rev_page' => $title->getArticleID() ],
 					$fname,
 					// Some pages have < 10 authors but many revisions (e.g. bot pages)
-					[ 'ORDER BY' => 'rev_timestamp DESC',
+					[ 'ORDER BY' => 'rev_timestamp DESC, rev_id DESC',
 						'LIMIT' => 100,
 						// Force index per T116557
 						'USE INDEX' => [ 'revision' => 'page_timestamp' ],
