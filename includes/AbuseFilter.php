@@ -2,6 +2,7 @@
 
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Session\SessionManager;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\IDatabase;
@@ -3131,26 +3132,36 @@ class AbuseFilter {
 	 * Note also that if the revision for any reason is not an Revision
 	 * the function returns with an empty string.
 	 *
-	 * @param Revision|null $revision a valid revision
-	 * @param int $audience one of:
-	 *      Revision::FOR_PUBLIC       to be displayed to all users
-	 *      Revision::FOR_THIS_USER    to be displayed to the given user
-	 *      Revision::RAW              get the text regardless of permissions
-	 * @return string|null the content of the revision as some kind of string,
+	 * For now, this returns all the revision's slots, concatenated together.
+	 * In future, this will be replaced by a better solution. See T208769 for
+	 * discussion.
+	 *
+	 * @internal
+	 *
+	 * @param Revision|RevisionRecord|null $revision a valid revision
+	 * @param User $user the user instance to check for privileged access
+	 * @return string the content of the revision as some kind of string,
 	 *        or an empty string if it can not be found
 	 */
-	public static function revisionToString( Revision $revision = null,
-		$audience = Revision::FOR_THIS_USER ) {
-		if ( !$revision ) {
+	public static function revisionToString( $revision, User $user ) {
+		if ( $revision instanceof Revision ) {
+			$revision = $revision->getRevisionRecord();
+		}
+		if ( !$revision instanceof RevisionRecord ) {
 			return '';
 		}
 
-		$content = $revision->getContent( $audience );
-		if ( $content === null ) {
-			return '';
-		}
-		$result = self::contentToString( $content );
+		$strings = [];
 
+		foreach ( $revision->getSlotRoles() as $role ) {
+			$content = $revision->getContent( $role, RevisionRecord::FOR_THIS_USER, $user );
+			if ( $content === null ) {
+				continue;
+			}
+			$strings[$role] = self::contentToString( $content );
+		}
+
+		$result = implode( "\n\n", $strings );
 		return $result;
 	}
 
@@ -3162,6 +3173,8 @@ class AbuseFilter {
 	 *
 	 * The hook 'AbuseFilter::contentToString' can be used to override this
 	 * behavior.
+	 *
+	 * @internal
 	 *
 	 * @param Content $content
 	 *

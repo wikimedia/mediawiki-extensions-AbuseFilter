@@ -25,6 +25,10 @@ use MediaWiki\MediaWikiServices;
  * @license GPL-2.0-or-later
  */
 
+use MediaWiki\Revision\MutableRevisionRecord;
+use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Revision\SlotRecord;
+
 /**
  * @group Test
  * @group AbuseFilter
@@ -1413,4 +1417,71 @@ class AbuseFilterTest extends MediaWikiTestCase {
 			]
 		];
 	}
+
+	/**
+	 * @param RevisionRecord $rev The revision being converted
+	 * @param string $userGroup The group to assign to the test user
+	 * @param string $expected The expected textual representation of the Revision
+	 * @covers AbuseFilter::revisionToString
+	 * @dataProvider provideRevisionToString
+	 */
+	public function testRevisionToString( $rev, $userGroup, $expected ) {
+		if ( $userGroup === 'user' ) {
+			$user = $this->getTestUser()->getUser();
+		} else {
+			$user = $this->getTestUser( $userGroup )->getUser();
+		}
+
+		$actual = AbuseFilter::revisionToString( $rev, $user );
+		$this->assertSame( $expected, $actual );
+	}
+
+	/**
+	 * Data provider for testRevisionToString
+	 *
+	 * @return Generator|array
+	 */
+	public function provideRevisionToString() {
+		yield 'no revision' => [ null, RevisionRecord::FOR_PUBLIC, '' ];
+
+		$title = Title::newFromText( __METHOD__ );
+		$revRec = new MutableRevisionRecord( $title );
+		$revRec->setContent( SlotRecord::MAIN, new TextContent( 'Main slot text.' ) );
+		yield 'Revision instance' => [
+			new Revision( $revRec ),
+			'user',
+			'Main slot text.'
+		];
+
+		yield 'RevisionRecord instance' => [
+			$revRec,
+			'user',
+			'Main slot text.'
+		];
+
+		$revRec = new MutableRevisionRecord( $title );
+		$revRec->setContent( SlotRecord::MAIN, new TextContent( 'Main slot text.' ) );
+		$revRec->setContent( 'aux', new TextContent( 'Aux slot content.' ) );
+		yield 'Multi-slot' => [
+			$revRec,
+			'user',
+			"Main slot text.\n\nAux slot content."
+		];
+
+		$revRec = new MutableRevisionRecord( $title );
+		$revRec->setContent( SlotRecord::MAIN, new TextContent( 'Main slot text.' ) );
+		$revRec->setVisibility( RevisionRecord::DELETED_TEXT );
+		yield 'Suppressed revision, unprivileged' => [
+			$revRec,
+			'user',
+			''
+		];
+
+		yield 'Suppressed revision, privileged' => [
+			$revRec,
+			'sysop',
+			'Main slot text.'
+		];
+	}
+
 }

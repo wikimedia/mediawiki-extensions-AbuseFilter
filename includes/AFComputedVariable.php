@@ -145,6 +145,9 @@ class AFComputedVariable {
 	 * @throws AFPException
 	 */
 	public function compute( AbuseFilterVariableHolder $vars ) {
+		// TODO: find a way to inject the User object from hook parameters.
+		global $wgUser;
+
 		$parameters = $this->mParameters;
 		$result = null;
 
@@ -408,14 +411,14 @@ class AFComputedVariable {
 				break;
 			case 'revision-text-by-id':
 				$rev = Revision::newFromId( $parameters['revid'] );
-				$result = AbuseFilter::revisionToString( $rev );
+				$result = AbuseFilter::revisionToString( $rev, $wgUser );
 				break;
 			case 'revision-text-by-timestamp':
 				$timestamp = $parameters['timestamp'];
 				$title = Title::makeTitle( $parameters['namespace'], $parameters['title'] );
 				$dbr = wfGetDB( DB_REPLICA );
 				$rev = Revision::loadFromTimestamp( $dbr, $title, $timestamp );
-				$result = AbuseFilter::revisionToString( $rev );
+				$result = AbuseFilter::revisionToString( $rev, $wgUser );
 				break;
 			default:
 				if ( Hooks::run( 'AbuseFilter-computeVariable',
