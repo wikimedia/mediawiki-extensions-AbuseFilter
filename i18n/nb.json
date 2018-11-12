@@ -87,6 +87,7 @@
 	"abusefilter-log-details-diff": "Endringer utført i redigeringen",
 	"abusefilter-log-linkoncontribs": "misbrukslogg",
 	"abusefilter-log-linkoncontribs-text": "Misbrukslogg for denne {{GENDER:$1|brukeren}}",
+	"abusefilter-log-linkonhistory": "se endringsfilterlogg",
 	"abusefilter-log-hidden": "(oppføring skjult)",
 	"abusefilter-log-hidden-implicit": "(skjult fordi revisjonen har blitt slettet)",
 	"abusefilter-log-cannot-see-details": "Du har ikke tillatelse til å se detaljene i dette oppslaget.",
