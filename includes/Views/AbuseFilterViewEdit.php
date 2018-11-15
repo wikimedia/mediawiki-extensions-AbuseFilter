@@ -566,47 +566,36 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 							'label' => $this->msg( 'abusefilter-edit-throttle-period' )->text()
 						]
 					);
-				$throttleFields['abusefilter-edit-throttle-groups'] =
+
+				$throttleConfig = [
+					'values' => $throttleGroups,
+					'label' => $this->msg( 'abusefilter-edit-throttle-groups' )->parse(),
+					'disabled' => $readOnlyAttrib
+				];
+				$this->getOutput()->addJsConfigVars( 'throttleConfig', $throttleConfig );
+
+				$hiddenGroups =
 					new OOUI\FieldLayout(
-						new OOUI\CheckboxMultiselectInputWidget( [
-							'name' => 'wpFilterThrottleGroups[]',
-							'value' => $throttleGroups,
-							'options' => [
-								[
-									'data' => 'ip',
-									'label' => $this->msg( 'abusefilter-edit-throttle-ip' )->text()
-								],
-								[
-									'data' => 'user',
-									'label' => $this->msg( 'abusefilter-edit-throttle-user' )->text()
-								],
-								[
-									'data' => 'range',
-									'label' => $this->msg( 'abusefilter-edit-throttle-range' )->text()
-								],
-								[
-									'data' => 'creationdate',
-									'label' => $this->msg( 'abusefilter-edit-throttle-creationdate' )->text()
-								],
-								[
-									'data' => 'editcount',
-									'label' => $this->msg( 'abusefilter-edit-throttle-editcount' )->text()
-								],
-								[
-									'data' => 'site',
-									'label' => $this->msg( 'abusefilter-edit-throttle-site' )->text()
-								],
-								[
-									'data' => 'page',
-									'label' => $this->msg( 'abusefilter-edit-throttle-page' )->text()
-								]
-							]
-						] + $readOnlyAttrib ),
+						new OOUI\MultilineTextInputWidget( [
+							'name' => 'wpFilterThrottleGroups',
+							'value' => implode( "\n", $throttleGroups ),
+							'rows' => 5,
+							'placeholder' => $this->msg( 'abusefilter-edit-throttle-hidden-placeholder' )->text(),
+							'infusable' => true,
+							'id' => 'mw-abusefilter-hidden-throttle-field'
+						] + $readOnlyAttrib
+						),
 						[
-							'label' => $this->msg( 'abusefilter-edit-throttle-groups' )->text(),
-							'align' => 'right'
+							'label' => new OOUI\HtmlSnippet(
+								$this->msg( 'abusefilter-edit-throttle-groups' )->parse()
+							),
+							'align' => 'top',
+							'id' => 'mw-abusefilter-hidden-throttle'
 						]
 					);
+
+				$throttleFields['abusefilter-edit-throttle-groups'] = $hiddenGroups;
+
 				$throttleSettings .=
 					Xml::tags(
 						'div',
@@ -753,10 +742,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$output .= $checkbox;
 
 				$tagConfig = [
-					'tagUsed' => $tags,
-					'tagLabel' => $this->msg( 'abusefilter-edit-tag-tag' )->parse(),
-					'tagPlaceholder' => $this->msg( 'abusefilter-edit-tag-placeholder' )->text(),
-					'tagDisabled' => $readOnlyAttrib
+					'values' => $tags,
+					'label' => $this->msg( 'abusefilter-edit-tag-tag' )->parse(),
+					'disabled' => $readOnlyAttrib
 				];
 				$this->getOutput()->addJsConfigVars( 'tagConfig', $tagConfig );
 
@@ -768,7 +756,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 							'rows' => 5,
 							'placeholder' => $this->msg( 'abusefilter-edit-tag-hidden-placeholder' )->text(),
 							'infusable' => true,
-							'id' => 'mw-abusefilter-hidden-tags-field'
+							'id' => 'mw-abusefilter-hidden-tag-field'
 						] + $readOnlyAttrib
 						),
 						[
@@ -776,7 +764,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 								$this->msg( 'abusefilter-edit-tag-tag' )->parse()
 							),
 							'align' => 'top',
-							'id' => 'mw-abusefilter-hidden-tags'
+							'id' => 'mw-abusefilter-hidden-tag'
 						]
 					);
 				$output .=
@@ -1192,7 +1180,18 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						// We need to load the parameters
 						$throttleCount = $request->getIntOrNull( 'wpFilterThrottleCount' );
 						$throttlePeriod = $request->getIntOrNull( 'wpFilterThrottlePeriod' );
-						$throttleGroups = $request->getArray( 'wpFilterThrottleGroups' );
+						// First explode with \n, which is the delimiter used in the textarea
+						$rawGroups = explode( "\n", $request->getText( 'wpFilterThrottleGroups' ) );
+						// Trim any space, both as an actual group and inside subgroups
+						$throttleGroups = [];
+						foreach ( $rawGroups as $group ) {
+							if ( strpos( $group, ',' ) !== false ) {
+								$subGroups = explode( ',', $group );
+								$throttleGroups[] = implode( ',', array_map( 'trim', $subGroups ) );
+							} elseif ( trim( $group ) !== '' ) {
+								$throttleGroups[] = trim( $group );
+							}
+						}
 
 						$parameters[0] = $this->mFilter;
 						$parameters[1] = "$throttleCount,$throttlePeriod";

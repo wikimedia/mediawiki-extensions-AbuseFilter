@@ -150,7 +150,8 @@
 		"ApiAbuseFilterCheckSyntax": "includes/api/ApiAbuseFilterCheckSyntax.php",
 		"ApiAbuseFilterEvalExpression": "includes/api/ApiAbuseFilterEvalExpression.php",
 		"ApiAbuseFilterUnblockAutopromote": "includes/api/ApiAbuseFilterUnblockAutopromote.php",
-		"ApiAbuseFilterCheckMatch": "includes/api/ApiAbuseFilterCheckMatch.php"
+		"ApiAbuseFilterCheckMatch": "includes/api/ApiAbuseFilterCheckMatch.php",
+		"NormalizeThrottleParameters": "maintenance/normalizeThrottleParameters.php"
 	},
 	"ResourceModules": {
 		"ext.abuseFilter": {
@@ -162,6 +163,8 @@
 				"abusefilter-edit-syntaxok",
 				"abusefilter-edit-syntaxerr",
 				"abusefilter-http-error",
+				"abusefilter-edit-throttle-placeholder",
+				"abusefilter-edit-tag-placeholder",
 				"unknown-error"
 			],
 			"dependencies": [

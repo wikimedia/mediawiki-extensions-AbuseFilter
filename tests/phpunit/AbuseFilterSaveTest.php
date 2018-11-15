@@ -485,7 +485,112 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 						'needsOtherFilters' => 1
 					]
 				]
+			],
+			[
+				[
+					'filterParameters' => [
+						'rules' => '1==1',
+						'description' => 'Invalid throttle groups',
+						'notes' => 'Throttle... Again',
+						'throttleEnabled' => true,
+						'throttleCount' => 11,
+						'throttlePeriod' => 111,
+						'throttleGroups' => 'user\nfoo'
+					],
+					'testData' => [
+						'doingWhat' => 'Trying to save a filter with invalid throttle groups',
+						'expectedResult' => 'an error message saying that throttle groups are invalid',
+						'expectedMessage' => 'abusefilter-edit-invalid-throttlegroups',
+						'shouldFail' => true,
+						'shouldBeSaved' => false,
+						'customUserGroup' => '',
+						'needsOtherFilters' => false
+					]
+				]
 			]
+		];
+	}
+
+	/**
+	 * Check that our tag validation is working properly. Note that we only need one test
+	 *   for each called function. Consistency within ChangeTags functions should be
+	 *   assured by tests in core. The test for canAddTagsAccompanyingChange and canCreateTag
+	 *   are missing because they won't actually fail, never. Resolving T173917 would
+	 *   greatly improve the situation and could help writing better tests.
+	 *
+	 * @param string $tag The tag to validate
+	 * @param string|null $error The expected error message. Null if validations should pass
+	 * @covers AbuseFilter::isAllowedTag
+	 * @dataProvider provideTags
+	 */
+	public function testIsAllowedTag( $tag, $error ) {
+		$status = AbuseFilter::isAllowedTag( $tag );
+
+		if ( !$status->isGood() ) {
+			$actualError = $status->getErrors();
+			$actualError = $actualError[0]['message'];
+		} else {
+			$actualError = null;
+			if ( $error !== null ) {
+				$this->fail( "Tag validation returned a valid status instead of the expected '$error' error." );
+			}
+		}
+
+		$this->assertSame(
+			$error,
+			$actualError,
+			"Expected message '$error', got '$actualError' while validating the tag '$tag'."
+		);
+	}
+
+	/**
+	 * Data provider for testIsAllowedTag
+	 * @return array
+	 */
+	public function provideTags() {
+		return [
+			[ 'a|b', 'tags-create-invalid-chars' ],
+			[ 'mw-undo', 'abusefilter-edit-bad-tags' ],
+			[ 'abusefilter-condition-limit', 'abusefilter-tag-reserved' ],
+			[ 'my_tag', null ],
+		];
+	}
+
+	/**
+	 * Check that throttle parameters validation works fine
+	 *
+	 * @param array $params Throttle parameters
+	 * @param string|null $error The expected error message. Null if validations should pass
+	 * @covers AbuseFilter::checkThrottleParameters
+	 * @dataProvider provideThrottleParameters
+	 */
+	public function testCheckThrottleParameters( $params, $error ) {
+		$result = AbuseFilter::checkThrottleParameters( $params );
+		$this->assertSame( $error, $result, 'Throttle parameter validation does not work as expected.' );
+	}
+
+	/**
+	 * Data provider for testCheckThrottleParameters
+	 * @return array
+	 */
+	public function provideThrottleParameters() {
+		return [
+			[ [ '1', '5,23', 'user', 'ip', 'page,range', 'ip,user', 'range,ip' ], null ],
+			[ [ '1', '5.3,23', 'user', 'ip' ], 'abusefilter-edit-invalid-throttlecount' ],
+			[ [ '1', '-3,23', 'user', 'ip' ], 'abusefilter-edit-invalid-throttlecount' ],
+			[ [ '1', '5,2.3', 'user', 'ip' ], 'abusefilter-edit-invalid-throttleperiod' ],
+			[ [ '1', '4,-14', 'user', 'ip' ], 'abusefilter-edit-invalid-throttleperiod' ],
+			[ [ '1', '3,33' ], 'abusefilter-edit-empty-throttlegroups' ],
+			[ [ '1', '3,33', 'user', 'ip,foo,user' ], 'abusefilter-edit-invalid-throttlegroups' ],
+			[ [ '1', '3,33', 'foo', 'ip,user' ], 'abusefilter-edit-invalid-throttlegroups' ],
+			[ [ '1', '3,33', 'foo', 'ip,user,bar' ], 'abusefilter-edit-invalid-throttlegroups' ],
+			[ [ '1', '3,33', 'user', 'ip,page,user' ], null ],
+			[
+				[ '1', '3,33', 'ip', 'user','user,ip', 'ip,user', 'user,ip,user', 'user', 'ip,ip,user' ],
+				'abusefilter-edit-duplicated-throttlegroups'
+			],
+			[ [ '1', '3,33', 'ip,ip,user' ], 'abusefilter-edit-duplicated-throttlegroups' ],
+			[ [ '1', '3,33', 'user,ip', 'ip,user' ], 'abusefilter-edit-duplicated-throttlegroups' ],
 		];
 	}
 }

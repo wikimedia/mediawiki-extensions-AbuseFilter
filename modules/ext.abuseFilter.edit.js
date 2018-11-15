@@ -358,47 +358,68 @@
 		}
 	}
 
+	/**
+	 * Builds a TagMultiselectWidget, to be used both for throttle groups and change tags
+	 *
+	 * @param {string} action Either 'throttle' or 'tag', will be used to build element IDs
+	 * @param {Array} config The array with configuration passed from PHP code
+	 */
+	function buildSelector( action, config ) {
+		var disabled = config.disabled.length !== 0,
+			// mw-abusefilter-throttle-parameters, mw-abusefilter-tag-parameters
+			$container = $( '#mw-abusefilter-' + action + '-parameters' ),
+			// Character used to separate elements in the textarea.
+			separator = action === 'throttle' ? '\n' : ',',
+			selector, field, hiddenField;
+
+		selector =
+			new OO.ui.TagMultiselectWidget( {
+				inputPosition: 'outline',
+				allowArbitrary: true,
+				allowEditTags: true,
+				selected: config.values,
+				// abusefilter-edit-throttle-placeholder, abusefilter-edit-tag-placeholder
+				placeholder: OO.ui.msg( 'abusefilter-edit-' + action + '-placeholder' ),
+				disabled: disabled
+			} );
+		field =
+			new OO.ui.FieldLayout(
+				selector,
+				{
+					label: $( $.parseHTML( config.label ) ),
+					align: 'top'
+				}
+			);
+
+		// mw-abusefilter-hidden-throttle-field, mw-abusefilter-hidden-tag-field
+		hiddenField = OO.ui.infuse( $( '#mw-abusefilter-hidden-' + action + '-field' ) );
+		selector.on( 'change', function () {
+			hiddenField.setValue( selector.getValue().join( separator ) );
+		} );
+
+		// mw-abusefilter-hidden-throttle, mw-abusefilter-hidden-tag
+		$( '#mw-abusefilter-hidden-' + action ).hide();
+		$container.append( field.$element );
+	}
+
 	// On ready initialization
 	$( document ).ready( function () {
 		var basePath, readOnly,
 			$exportBox = $( '#mw-abusefilter-export' ),
 			isFilterEditor = mw.config.get( 'isFilterEditor' ),
 			tagConfig = mw.config.get( 'tagConfig' ),
-			$tagContainer, tagUsed, tagDisabled, tagSelector, tagField,
-			tagHiddenField, cbEnabled, cbDeleted;
+			throttleConfig = mw.config.get( 'throttleConfig' ),
+			cbEnabled, cbDeleted;
 
 		if ( isFilterEditor ) {
 			// Configure the actual editing interface
 			if ( tagConfig ) {
 				// Build the tag selector
-				$tagContainer = $( '#mw-abusefilter-tag-parameters' );
-				tagUsed = tagConfig.tagUsed;
-				tagDisabled = tagConfig.tagDisabled.length !== 0;
-				// Input field for tags
-				tagSelector =
-					new OO.ui.TagMultiselectWidget( {
-						inputPosition: 'outline',
-						allowArbitrary: true,
-						allowEditTags: true,
-						selected: tagUsed,
-						placeholder: tagConfig.tagPlaceholder,
-						disabled: tagDisabled
-					} );
-				tagField =
-					new OO.ui.FieldLayout(
-						tagSelector,
-						{
-							label: $( $.parseHTML( tagConfig.tagLabel ) ),
-							align: 'top'
-						}
-					);
-				tagHiddenField = OO.ui.infuse( $( '#mw-abusefilter-hidden-tags-field' ) );
-				tagSelector.on( 'change', function () {
-					tagHiddenField.setValue( tagSelector.getValue() );
-				} );
-
-				$( '#mw-abusefilter-hidden-tags' ).hide();
-				$tagContainer.append( tagField.$element );
+				buildSelector( 'tag', tagConfig );
+			}
+			if ( throttleConfig ) {
+				// Build the throttle groups selector
+				buildSelector( 'throttle', throttleConfig );
 			}
 
 			toggleWarnPreviewButton = OO.ui.infuse( $( '#mw-abusefilter-warn-preview-button' ) );
