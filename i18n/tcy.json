@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"VASANTH S.N."
+			"VASANTH S.N.",
+			"Ravi Mundkur"
 		]
 	},
 	"abusefilter-log-search-user": "ಬಳಕೆದಾರೆರ್:",
@@ -49,9 +50,21 @@
 	"abusefilter-edit-global": "ಜಾಗತಿಕ ಅರಿಪೆ",
 	"abusefilter-edit-rules": "ನಿಬಂಧನೆಲು:",
 	"abusefilter-edit-notes": "ಟಿಪ್ಪಣಿಲು:",
+	"abusefilter-edit-throttle-hidden-placeholder": "AND ಕೂಡಾರೆ ಅಲ್ಪವಿರಾಮ ಕೊರ್ದು, ಬೊಕ OR ಕೂಡಾರೆ ಗೆರೆಬುಡುದು",
+	"abusefilter-edit-throttle-placeholder": "AND ಕೂಡಾರೆ ಅಲ್ಪವಿರಾಮ ಕೊರ್ದು, ಬೊಕ OR ಕೂಡಾರೆ ಒಂಜಿ ಒಂಜೆ ಸೇರಾದ್",
+	"abusefilter-throttle-user": "ಬಳಕೆದಾರೆ ಖಾತೆ",
+	"abusefilter-throttle-creationdate": "ಖಾತೆ ರಚನೆ ದಿನಾಂಕ",
+	"abusefilter-throttle-editcount": "ಸಂಪಾದಿ ಲೆಕ್ಕ",
+	"abusefilter-throttle-site": "ಪೂರ್ಣ ತಾಣ",
+	"abusefilter-throttle-page": "ಪುಟ",
 	"abusefilter-edit-warn-actions": "ಕ್ರಿಯೆಕ್ಕುಲು:",
 	"abusefilter-edit-history": "ಇತಿಹಾಸೊ:",
 	"abusefilter-edit-tools": "ಉಪಕರಣೊಲು:",
+	"abusefilter-edit-invalid-throttlecount": "ಹತೋಟಿ ಕ್ರಿಯೆತ ಲೆಕ್ಕ ಧನಾತ್ಮಕ ಪೂರ್ಣಾಂಕ ಆದಿಪ್ಪೊಡು.",
+	"abusefilter-edit-invalid-throttleperiod": "ಹತೋಟಿದ ಅವಧಿ ಒಂಜಿ ಧನಾತ್ಮಕ ಪೂರ್ಣಾಂಕ ಆದಿಪ್ಪೊಡು.",
+	"abusefilter-edit-empty-throttlegroups": "ಕನಿಷ್ಟ ಒಂಜಿ ಹತೋಟಿ ಗುಂಪುನು ಆಯೊಡು.",
+	"abusefilter-edit-duplicated-throttlegroups": "ಹತೋಟಿ ಗುಂಪುಲೆಡ್ ದ್ವಿಪ್ರತಿಲು ಉಪ್ಪರೆ ಬಲ್ಲಿ.",
+	"abusefilter-edit-invalid-throttlegroups": "ವಿಸೂಚಿತ ಹತೋಟಿ ಗುಂಪುಲು ಮಾನ್ಯ ಅತ್ತ್.",
 	"abusefilter-edit-builder-op-arithmetic-addition": "ಸಂಕಲನ(+)",
 	"abusefilter-edit-builder-op-arithmetic-subtraction": "ವ್ಯವಕಲನ(-)",
 	"abusefilter-edit-builder-op-arithmetic-multiplication": "ಗುಣಾಕಾರ(*)",

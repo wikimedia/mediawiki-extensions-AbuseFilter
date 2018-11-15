@@ -153,7 +153,7 @@
 	"abusefilter-edit-throttle-groups": "Argropé la moderassion për:\n:''(un për linia, separà con dle vìrgole)''",
 	"abusefilter-edit-warn-message": "Mëssagi ëd sistema da dovré për l'avis:",
 	"abusefilter-edit-warn-other": "Àutr mëssagi",
-	"abusefilter-edit-warn-other-label": "Nòm ëd pàgina ëd n'àutr mëssagi:\n:''(sensa prefiss mediaWiki)''",
+	"abusefilter-edit-warn-other-label": "Nòm ëd pàgina ëd n'àutr mëssagi:\n:''(sensa 'l prefiss «MédiaWiki»)''",
 	"abusefilter-edit-warn-actions": "Assion:",
 	"abusefilter-edit-warn-preview": "Previsualisé ël mëssagi selessionà",
 	"abusefilter-edit-warn-edit": "Creé o modifiché ël mëssagi selessionà",
