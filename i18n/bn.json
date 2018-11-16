@@ -146,6 +146,7 @@
 	"abusefilter-edit-consequences": "মিল পাওয়া গেলে যে পদক্ষেপ নেয়া হয়েছে",
 	"abusefilter-edit-throttle-period": "সময়:",
 	"abusefilter-throttle-ip": "আইপি ঠিকানা",
+	"abusefilter-throttle-user": "ব্যবহারকারী অ্যাকাউন্ট",
 	"abusefilter-throttle-editcount": "সম্পাদনা গণনা",
 	"abusefilter-throttle-page": "পাতা",
 	"abusefilter-edit-warn-other": "অন্য বার্তা",
