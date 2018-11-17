@@ -84,7 +84,7 @@
 	"abusefilter-log-search-action-other": "أخرى",
 	"abusefilter-log-search-action-any": "أيٌ منها",
 	"abusefilter-log-search-action-taken-label": "الإجراءات المتخذة:",
-	"abusefilter-log-search-action-taken-any": "أيٌ منها",
+	"abusefilter-log-search-action-taken-any": "أي منها",
 	"abusefilter-log-search-submit": "بحث",
 	"abusefilter-log-entry": "$1: $2 {{GENDER:$8|فعل}} مرشح إساءة، {{GENDER:$8|مؤديا}} الفعل \"$3\" في $4.\nالأفعال المتخذة: $5،\nوصف المرشح: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 {{GENDER:$8|فعل}} مرشح إساءة، {{GENDER:$8|مؤديا}} الفعل \"$3\" في $4.\nالأفعال المتخذة: $5،\nوصف المرشح: $6 ($7)",
@@ -547,6 +547,6 @@
 	"abusefilter-noreason": "تحذير: لمشاهدة التفاصيل الخاصة لهذا السجل; يجب تقديم سبب.",
 	"abusefilter-log-ip-not-available": "غير متاح",
 	"abusefilter-tag-reserved": "تم حجز الوسم <code>abusefilter-condition-limit</code> للاستخدام الداخلي بواسطة مرشح الإساءة.",
-	"tag-abusefilter-condition-limit": "تم التوصل إلى حد الشرط",
+	"tag-abusefilter-condition-limit": "تم الوصول إلى حد الشرط",
 	"tag-abusefilter-condition-limit-description": "التعديلات أو الأحداث الأخرى التي لا يمكن التحقق منها من قبل جميع [[Special:AbuseFilter|مرشحات الإساءة]] النشطة ([[mw:Extension:AbuseFilter/Conditions|مساعدة]])."
 }
