@@ -26,7 +26,8 @@
 			"Hosseinblue",
 			"Matma Rex",
 			"Alifakoor",
-			"Fatemi127"
+			"Fatemi127",
+			"درفش کاویانی"
 		]
 	},
 	"abusefilter-desc": "اکتشافات خودکاری را بر روی ویرایش‌های انجام می‌دهد.",
@@ -223,9 +224,10 @@
 	"abusefilter-edit-throttle-groups": "کنترل گروه توسط:",
 	"abusefilter-throttle-ip": "نشانی آی‌پی",
 	"abusefilter-throttle-user": "حساب کاربری",
-	"abusefilter-throttle-range": "بازه /16",
+	"abusefilter-throttle-range": "بازه /۱۶",
+	"abusefilter-throttle-creationdate": "تاریخ ایجاد حساب کاربری",
 	"abusefilter-throttle-editcount": "شمارش ویرایش‌ها",
-	"abusefilter-throttle-site": "کل وب‌گاه",
+	"abusefilter-throttle-site": "همهٔ وب‌گاه",
 	"abusefilter-throttle-page": "صفحه",
 	"abusefilter-edit-warn-message": "پیغام سامانه برای استفاده در هشدار:",
 	"abusefilter-edit-warn-other": "پیام‌های دیگر",
