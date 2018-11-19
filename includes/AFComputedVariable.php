@@ -72,22 +72,17 @@ class AFComputedVariable {
 		}
 
 		if ( $user instanceof User ) {
-			self::$userCache[$username] = $user;
-			return $user;
+			$ret = $user;
+		} elseif ( IP::isIPAddress( $username ) ) {
+			$ret = new User;
+			$ret->setName( $username );
+		} else {
+			$ret = User::newFromName( $username );
+			$ret->load();
 		}
+		self::$userCache[$username] = $ret;
 
-		if ( IP::isIPAddress( $username ) ) {
-			$u = new User;
-			$u->setName( $username );
-			self::$userCache[$username] = $u;
-			return $u;
-		}
-
-		$user = User::newFromName( $username );
-		$user->load();
-		self::$userCache[$username] = $user;
-
-		return $user;
+		return $ret;
 	}
 
 	/**
