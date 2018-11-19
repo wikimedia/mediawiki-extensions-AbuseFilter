@@ -197,10 +197,10 @@
 			abfendid: filterId,
 			abflimit: 1
 		} )
-			.always( function () {
+			.always( function removeSpinner() {
 				$.removeSpinner( 'fetch-spinner' );
 			} )
-			.done( function ( data ) {
+			.done( function insertFilter( data ) {
 				if ( data.query.abusefilters[ 0 ] !== undefined ) {
 					if ( useAce ) {
 						filterEditor.setValue( data.query.abusefilters[ 0 ].pattern );
@@ -215,7 +215,7 @@
 	 * that don't have checked boxes
 	 */
 	function hideDeselectedActions() {
-		$( '.mw-abusefilter-action-checkbox input' ).each( function () {
+		$( '.mw-abusefilter-action-checkbox input' ).each( function showHideParams() {
 			// mw-abusefilter-action-checkbox-{$action}
 			var action = this.parentNode.id.substr( 31 ),
 				$params = $( '#mw-abusefilter-' + action + '-parameters' );
@@ -253,14 +253,14 @@
 				ammessages: message,
 				amargs: args.join( '|' )
 			} )
-				.done( function ( data ) {
+				.done( function parseMessage( data ) {
 					api.parse( data.query.allmessages[ 0 ][ '*' ], {
 						disablelimitreport: '',
 						preview: '',
 						prop: 'text',
 						title: 'MediaWiki:' + message
 					} )
-						.done( function ( html ) {
+						.done( function showMessage( html ) {
 							$element.show().html( html );
 							previewButton.setFlags(
 								{ destructive: true, progressive: false }
