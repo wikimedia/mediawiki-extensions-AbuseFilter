@@ -219,7 +219,7 @@
 	"abusefilter-edit-action-block": "امنع المستخدم و/أو عنوان الأيبي من التحرير",
 	"abusefilter-edit-action-blocktalk": "منع المستخدم و/أو عنوان الآيبي من تحرير صفحة نقاشهم الخاصة",
 	"abusefilter-edit-action-throttle": "نفذ الأفعال فقط إذا ما تجاوز المستخدم حد المعدل",
-	"abusefilter-edit-action-rangeblock": "امنع نطاق الآيبي المخصص الذي يأتي منه المستخدم.",
+	"abusefilter-edit-action-rangeblock": "امنع نطاق الأيبي المخصص الذي يأتي منه المستخدم",
 	"abusefilter-edit-action-tag": "اوسم التعديل لمراجعة أخرى.",
 	"abusefilter-edit-throttle-count": "عدد الأفعال المسموح بها:",
 	"abusefilter-edit-throttle-period": "الفترة الزمنية (بالثواني):",

@@ -90,7 +90,7 @@
 	"abusefilter-log-details-diff": "Промене направљене при уређивању",
 	"abusefilter-log-linkoncontribs": "дневник злоупотребе",
 	"abusefilter-log-linkoncontribs-text": "Дневник злоупотребе {{GENDER:$1|овог корисника|ове кориснице}}",
-	"abusefilter-log-linkonhistory": "прикажи дневник злоупотребе",
+	"abusefilter-log-linkonhistory": "дневник злоупотребе",
 	"abusefilter-log-linkonhistory-text": "Погледајте дневник злоупотребе ове странице",
 	"abusefilter-log-hidden": "(унос је сакривен)",
 	"abusefilter-log-hidden-implicit": "(скривено јер је измена избрисана)",
