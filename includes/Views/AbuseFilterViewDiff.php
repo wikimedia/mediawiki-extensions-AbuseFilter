@@ -174,39 +174,21 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 				__METHOD__,
 				[ 'ORDER BY' => 'afh_timestamp desc' ]
 			);
-		} elseif ( $spec == 'prev' && !in_array( $otherSpec, $dependentSpecs ) ) {
+		} elseif ( ( $spec == 'prev' || $spec == 'next' ) && !in_array( $otherSpec, $dependentSpecs ) ) {
 			// cached
 			$other = $this->loadSpec( $otherSpec, $spec );
 
+			$comparison = $spec === 'prev' ? '<' : '>';
+			$order = $spec === 'prev' ? 'DESC' : 'ASC';
 			$row = $dbr->selectRow(
 				'abuse_filter_history',
 				$selectFields,
 				[
 					'afh_filter' => $this->mFilter,
-					'afh_id<' . $dbr->addQuotes( $other['meta']['history_id'] ),
+					"afh_id $comparison" . $dbr->addQuotes( $other['meta']['history_id'] ),
 				],
 				__METHOD__,
-				[ 'ORDER BY' => 'afh_timestamp desc' ]
-			);
-			if ( $other && !$row ) {
-				$t = $this->getTitle(
-					'history/' . $this->mFilter . '/item/' . $other['meta']['history_id'] );
-				$this->getOutput()->redirect( $t->getFullURL() );
-				return null;
-			}
-		} elseif ( $spec == 'next' && !in_array( $otherSpec, $dependentSpecs ) ) {
-			// cached
-			$other = $this->loadSpec( $otherSpec, $spec );
-
-			$row = $dbr->selectRow(
-				'abuse_filter_history',
-				$selectFields,
-				[
-					'afh_filter' => $this->mFilter,
-					'afh_id>' . $dbr->addQuotes( $other['meta']['history_id'] ),
-				],
-				__METHOD__,
-				[ 'ORDER BY' => 'afh_timestamp ASC' ]
+				[ 'ORDER BY' => "afh_timestamp $order" ]
 			);
 
 			if ( $other && !$row ) {

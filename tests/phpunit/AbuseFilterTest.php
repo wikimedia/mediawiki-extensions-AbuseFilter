@@ -305,41 +305,11 @@ class AbuseFilterTest extends MediaWikiTestCase {
 				$result = self::$mTitle->getPrefixedText();
 				break;
 			case '_restrictions_create':
-				$restrictions = self::$mTitle->getRestrictions( 'create' );
-				$restrictions = count( $restrictions ) ? $restrictions : [];
-				$preliminarCheck = !( $options === 'restricted' xor count( $restrictions ) );
-				if ( $preliminarCheck ) {
-					$result = $restrictions;
-				} else {
-					$success = false;
-					$result = false;
-				}
-				break;
 			case '_restrictions_edit':
-				$restrictions = self::$mTitle->getRestrictions( 'edit' );
-				$restrictions = count( $restrictions ) ? $restrictions : [];
-				$preliminarCheck = !( $options === 'restricted' xor count( $restrictions ) );
-				if ( $preliminarCheck ) {
-					$result = $restrictions;
-				} else {
-					$success = false;
-					$result = false;
-				}
-				break;
 			case '_restrictions_move':
-				$restrictions = self::$mTitle->getRestrictions( 'move' );
-				$restrictions = count( $restrictions ) ? $restrictions : [];
-				$preliminarCheck = !( $options === 'restricted' xor count( $restrictions ) );
-				if ( $preliminarCheck ) {
-					$result = $restrictions;
-				} else {
-					$success = false;
-					$result = false;
-				}
-				break;
 			case '_restrictions_upload':
-				$restrictions = self::$mTitle->getRestrictions( 'upload' );
-				$restrictions = count( $restrictions ) ? $restrictions : [];
+				$type = str_replace( '_restrictions_', '', $suffix );
+				$restrictions = self::$mTitle->getRestrictions( $type );
 				$preliminarCheck = !( $options === 'restricted' xor count( $restrictions ) );
 				if ( $preliminarCheck ) {
 					$result = $restrictions;
