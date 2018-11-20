@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * Generic tests for utility functions in AbuseFilter
  *
@@ -1201,7 +1204,6 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	 * @return array
 	 */
 	private static function computeExpectedEditVariable( $old, $new ) {
-		global $wgParser;
 		$popts = ParserOptions::newFromUser( self::$mUser );
 		// Order matters here. Some variables rely on other ones.
 		$variables = [
@@ -1291,7 +1293,8 @@ class AbuseFilterTest extends MediaWikiTestCase {
 				case 'old_links':
 					$article = self::$mPage;
 					$popts->setTidy( true );
-					$edit = $wgParser->parse( $oldText, $article->getTitle(), $popts );
+					$parser = MediaWikiServices::getInstance()->getParser();
+					$edit = $parser->parse( $oldText, $article->getTitle(), $popts );
 					$result = array_keys( $edit->getExternalLinks() );
 					break;
 				case 'added_links':

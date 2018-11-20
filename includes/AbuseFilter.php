@@ -1106,7 +1106,7 @@ class AbuseFilter {
 	public static function filterAction(
 		AbuseFilterVariableHolder $vars, $title, $group, User $user, $mode = 'execute'
 	) {
-		global $wgRequest, $wgAbuseFilterRuntimeProfile, $wgAbuseFilterLogIP;
+		global $wgAbuseFilterRuntimeProfile, $wgAbuseFilterLogIP;
 
 		$logger = LoggerFactory::getInstance( 'StashEdit' );
 		$statsd = MediaWikiServices::getInstance()->getStatsdDataFactory();
@@ -1191,6 +1191,7 @@ class AbuseFilter {
 			// If $user isn't safe to load (e.g. a failure during
 			// AbortAutoAccount), create a dummy anonymous user instead.
 			$user = $user->isSafeToLoad() ? $user : new User;
+			$request = RequestContext::getMain()->getRequest();
 
 			// Create a template
 			$log_template = [
@@ -1201,7 +1202,7 @@ class AbuseFilter {
 				'afl_title' => $title->getDBkey(),
 				'afl_action' => $action,
 				// DB field is not null, so nothing
-				'afl_ip' => ( $wgAbuseFilterLogIP ) ? $wgRequest->getIP() : ""
+				'afl_ip' => ( $wgAbuseFilterLogIP ) ? $request->getIP() : ""
 			];
 
 			// Hack to avoid revealing IPs of people creating accounts
@@ -1598,7 +1599,7 @@ class AbuseFilter {
 		$rule_number,
 		User $user
 	) {
-		global $wgAbuseFilterCustomActionsHandlers, $wgRequest;
+		global $wgAbuseFilterCustomActionsHandlers;
 
 		$message = null;
 
@@ -1618,7 +1619,7 @@ class AbuseFilter {
 			case 'rangeblock':
 				global $wgAbuseFilterRangeBlockSize, $wgBlockCIDRLimit;
 
-				$ip = $wgRequest->getIP();
+				$ip = RequestContext::getMain()->getRequest()->getIP();
 				if ( IP::isIPv6( $ip ) ) {
 					$CIDRsize = max( $wgAbuseFilterRangeBlockSize['IPv6'], $wgBlockCIDRLimit['IPv6'] );
 				} else {
@@ -1864,17 +1865,18 @@ class AbuseFilter {
 	 * @return int|string
 	 */
 	public static function throttleIdentifier( $type, Title $title ) {
-		global $wgUser, $wgRequest;
+		global $wgUser;
+		$request = RequestContext::getMain()->getRequest();
 
 		switch ( $type ) {
 			case 'ip':
-				$identifier = $wgRequest->getIP();
+				$identifier = $request->getIP();
 				break;
 			case 'user':
 				$identifier = $wgUser->getId();
 				break;
 			case 'range':
-				$identifier = substr( IP::toHex( $wgRequest->getIP() ), 0, 4 );
+				$identifier = substr( IP::toHex( $request->getIP() ), 0, 4 );
 				break;
 			case 'creationdate':
 				$reg = $wgUser->getRegistration();

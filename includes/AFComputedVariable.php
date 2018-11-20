@@ -36,11 +36,11 @@ class AFComputedVariable {
 			return $cache[$cacheKey];
 		}
 
-		global $wgParser;
 		$edit = (object)[];
 		$options = new ParserOptions;
 		$options->setTidy( true );
-		$edit->output = $wgParser->parse( $wikitext, $article->getTitle(), $options );
+		$parser = MediaWikiServices::getInstance()->getParser();
+		$edit->output = $parser->parse( $wikitext, $article->getTitle(), $options );
 		$cache[$cacheKey] = $edit;
 
 		return $edit;
