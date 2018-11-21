@@ -196,12 +196,15 @@
 	"abusefilter-edit-action-blockautopromote": "Revoche ô state de utinde autocunfirmate",
 	"abusefilter-edit-action-degroup": "Luà l'utinde da totte le gruppe privilegiate",
 	"abusefilter-edit-action-block": "Blocche le utinde e/o le inderizze IP da l'editaziune",
+	"abusefilter-edit-action-blocktalk": "Blocche l'utende e/o l'indirizze IP de cangià 'a pàgene de le 'ngazzaminde soje",
 	"abusefilter-edit-action-throttle": "Attivà le aziune sule se l'utinde tène 'nu limite de percenduale",
 	"abusefilter-edit-action-rangeblock": "Blocche 'u rispettive 'ndervalle de IP de origgine de l'utende",
 	"abusefilter-edit-action-tag": "Tag de cangiaminde pè n'otre revisiune",
 	"abusefilter-edit-throttle-count": "Numere de aziune permesse:",
 	"abusefilter-edit-throttle-period": "Periode de tiembe (in seconde):",
 	"abusefilter-edit-throttle-groups": "Criterie de raggruppamende pe:",
+	"abusefilter-edit-throttle-hidden-placeholder": "Separe cu 'na virgole pe raggruppà in AND, e cu retuèrne a cape pe raggruppà in OR",
+	"abusefilter-edit-throttle-placeholder": "Separe cu 'na virgole pe raggruppà in AND, e mitte une a une pe raggruppà in OR",
 	"abusefilter-throttle-ip": "Indirizze IP",
 	"abusefilter-throttle-user": "cunde de l'utende",
 	"abusefilter-throttle-range": "Range /16",
@@ -483,5 +486,6 @@
 	"abusefilter-view-private": "'Ndruche le dettaglie private",
 	"abusefilter-view-private-reason": "Mutive pe 'ndrucà le dettaglie private:",
 	"abusefilter-log-details-id": "ID de l'archivije",
-	"abusefilter-log-ip-not-available": "Non disponibbile"
+	"abusefilter-log-ip-not-available": "Non disponibbile",
+	"tag-abusefilter-condition-limit": "limite de condiziune raggiunde"
 }
