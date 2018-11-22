@@ -1444,9 +1444,7 @@ class AbuseFilter {
 		$vars->setVar( 'global_log_ids', $global_log_ids );
 		$vars->setVar( 'local_log_ids', $local_log_ids );
 
-		// Check for emergency disabling.
-		$total = $stash->get( self::filterUsedKey( $group ) );
-		self::checkEmergencyDisable( $group, $logged_local_filters, $total );
+		self::checkEmergencyDisable( $group, $logged_local_filters );
 	}
 
 	/**
@@ -2011,25 +2009,24 @@ class AbuseFilter {
 	}
 
 	/**
+	 * Determine whether a filter must be throttled, i.e. its potentially dangerous
+	 *  actions must be disabled.
+	 *
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
-	 * @param string[] $filters
-	 * @param int $total
+	 * @param string[] $filters The filters to check
 	 */
-	public static function checkEmergencyDisable( $group, $filters, $total ) {
+	private static function checkEmergencyDisable( $group, $filters ) {
 		global $wgAbuseFilterEmergencyDisableThreshold, $wgAbuseFilterEmergencyDisableCount,
 			$wgAbuseFilterEmergencyDisableAge;
 
 		$stash = ObjectCache::getMainStashInstance();
-		foreach ( $filters as $filter ) {
-			// Determine emergency disable values for this action
-			$emergencyDisableThreshold =
-				self::getEmergencyValue( $wgAbuseFilterEmergencyDisableThreshold, $group );
-			$filterEmergencyDisableCount =
-				self::getEmergencyValue( $wgAbuseFilterEmergencyDisableCount, $group );
-			$emergencyDisableAge =
-				self::getEmergencyValue( $wgAbuseFilterEmergencyDisableAge, $group );
+		$totalActions = $stash->get( self::filterUsedKey( $group ) );
 
-			// Increment counter
+		foreach ( $filters as $filter ) {
+			$threshold = self::getEmergencyValue( $wgAbuseFilterEmergencyDisableThreshold, $group );
+			$hitCountLimit = self::getEmergencyValue( $wgAbuseFilterEmergencyDisableCount, $group );
+			$maxAge = self::getEmergencyValue( $wgAbuseFilterEmergencyDisableAge, $group );
+
 			$matchCount = $stash->get( self::filterMatchesKey( $filter ) );
 
 			// Handle missing keys...
@@ -2040,23 +2037,22 @@ class AbuseFilter {
 			}
 			$matchCount++;
 
-			// Figure out if the filter is subject to being deleted.
-			$filter_age = wfTimestamp( TS_UNIX, self::getFilter( $filter )->af_timestamp );
-			$throttle_exempt_time = $filter_age + $emergencyDisableAge;
+			// Figure out if the filter is subject to being throttled.
+			$filterAge = wfTimestamp( TS_UNIX, self::getFilter( $filter )->af_timestamp );
+			$exemptTime = $filterAge + $maxAge;
 
-			if ( $total && $throttle_exempt_time > time()
-				&& $matchCount > $filterEmergencyDisableCount
-				&& ( $matchCount / $total ) > $emergencyDisableThreshold
+			if ( $totalActions && $exemptTime > time() && $matchCount > $hitCountLimit &&
+				( $matchCount / $totalActions ) > $threshold
 			) {
-				// More than $wgAbuseFilterEmergencyDisableCount matches,
-				// constituting more than $emergencyDisableThreshold
-				// (a fraction) of last few edits. Disable it.
+				// More than $wgAbuseFilterEmergencyDisableCount matches, constituting more than
+				// $threshold (a fraction) of last few edits. Disable it.
 				DeferredUpdates::addUpdate(
 					new AutoCommitUpdate(
 						wfGetDB( DB_MASTER ),
 						__METHOD__,
 						function ( IDatabase $dbw, $fname ) use ( $filter ) {
-							$dbw->update( 'abuse_filter',
+							$dbw->update(
+								'abuse_filter',
 								[ 'af_throttled' => 1 ],
 								[ 'af_id' => $filter ],
 								$fname

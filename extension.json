@@ -264,7 +264,7 @@
 				"default": 0.05
 			},
 			"_merge_strategy": "array_plus",
-			"description": "Disable filters if they match more than X edits, constituting more than Y% of the last Z edits, if they have been changed in the last S seconds."
+			"description": "Disable a filter if it matches more than X actions, constituting more than Y% (e.g. 0.05 = 5%) of the last actions, and the filter has been modified in the last S seconds. X is AbuseFilterEmergencyDisableCount, Y is AbuseFilterEmergencyDisableThreshold and S is AbuseFilterEmergencyDisableAge."
 		},
 		"AbuseFilterEmergencyDisableCount": {
 			"value": {
