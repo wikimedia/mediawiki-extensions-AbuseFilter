@@ -5,7 +5,7 @@
  * @author Marius Hoch <hoo@online.de>
  */
 
-( function ( mw, $, OO ) {
+( function () {
 	'use strict';
 
 	/**
@@ -109,4 +109,4 @@
 		$( '#mw-abusefilter-submitexpr' ).click( doExprSubmit );
 		$( '#mw-abusefilter-reautoconfirmsubmit' ).click( doReautoSubmit );
 	} );
-}( mediaWiki, jQuery, OO ) );
+}() );

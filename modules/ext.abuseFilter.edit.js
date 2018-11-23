@@ -6,7 +6,7 @@
  */
 /* global ace */
 
-( function ( mw, $, OO ) {
+( function () {
 	'use strict';
 
 	// @var {jQuery} Filter editor for JS and jQuery handling
@@ -542,4 +542,4 @@
 		$( '#wpFilterBuilder' ).change( addText );
 
 	} );
-}( mediaWiki, jQuery, OO ) );
+}() );

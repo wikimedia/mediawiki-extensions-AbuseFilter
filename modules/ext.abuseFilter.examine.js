@@ -5,7 +5,7 @@
  * @author Marius Hoch <hoo@online.de>
  */
 
-( function ( mw, $ ) {
+( function () {
 	'use strict';
 
 	// @var {jQuery} Syntax result div
@@ -98,4 +98,4 @@
 		$syntaxResult = $( '#mw-abusefilter-syntaxresult' );
 		$( '#mw-abusefilter-examine-test' ).click( examinerTestFilter );
 	} );
-}( mediaWiki, jQuery ) );
+}() );
