@@ -178,7 +178,7 @@
 	 * @param {jQuery.Event} e The event fired when the function is called
 	 */
 	function fetchFilter() {
-		var filterId = $.trim( $( '#mw-abusefilter-load-filter input' ).val() ),
+		var filterId = $( '#mw-abusefilter-load-filter input' ).val().trim(),
 			api;
 
 		if ( filterId === '' ) {
