@@ -56,7 +56,6 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$fld_ids = isset( $prop['ids'] );
 		$fld_filter = isset( $prop['filter'] );
 		$fld_user = isset( $prop['user'] );
-		$fld_ip = isset( $prop['ip'] );
 		$fld_title = isset( $prop['title'] );
 		$fld_action = isset( $prop['action'] );
 		$fld_details = isset( $prop['details'] );
@@ -67,9 +66,6 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$isCentral = $this->getConfig()->get( 'AbuseFilterIsCentral' );
 		$fld_wiki = $isCentral && isset( $prop['wiki'] );
 
-		if ( $fld_ip ) {
-			$this->checkUserRightsAny( 'abusefilter-private' );
-		}
 		if ( $fld_details ) {
 			$this->checkUserRightsAny( 'abusefilter-log-detail' );
 		}
@@ -99,7 +95,6 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$this->addFields( 'afl_filter' );
 		$this->addFieldsIf( 'afl_id', $fld_ids );
 		$this->addFieldsIf( 'afl_user_text', $fld_user );
-		$this->addFieldsIf( 'afl_ip', $fld_ip );
 		$this->addFieldsIf( [ 'afl_namespace', 'afl_title' ], $fld_title );
 		$this->addFieldsIf( 'afl_action', $fld_action );
 		$this->addFieldsIf( 'afl_var_dump', $fld_details );
@@ -199,9 +194,6 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			if ( $fld_user ) {
 				$entry['user'] = $row->afl_user_text;
 			}
-			if ( $fld_ip ) {
-				$entry['ip'] = $row->afl_ip;
-			}
 			if ( $fld_wiki ) {
 				$entry['wiki'] = $row->afl_wiki;
 			}
@@ -292,7 +284,6 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 					'ids',
 					'filter',
 					'user',
-					'ip',
 					'title',
 					'action',
 					'details',
