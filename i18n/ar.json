@@ -173,7 +173,7 @@
 	"abusefilter-list-options-search-rlike": "تعبير نمطي",
 	"abusefilter-list-options-search-irlike": "تعبير نمطي غير حساس لحالة الأحرف",
 	"abusefilter-list-regexerror": "حدث خطأ أثناء البحث: خطأ في صياغة التعبير النمطي.",
-	"abusefilter-list-options-submit": "حدّث",
+	"abusefilter-list-options-submit": "تحديث",
 	"abusefilter-tools-text": "هنا بعض الأدوات التي ربما تكون مفيدة في صياغة وتصليح مرشحات الإساءة.",
 	"abusefilter-tools-expr": "مختبر التعبير",
 	"abusefilter-tools-submitexpr": "تقييم",
