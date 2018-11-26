@@ -2020,6 +2020,8 @@ class AbuseFilter {
 			$wgAbuseFilterEmergencyDisableAge;
 
 		$stash = ObjectCache::getMainStashInstance();
+		// @ToDo this is an amount between 1 and AbuseFilterProfileActionsCap, which means that the
+		// reliability of this number may strongly vary. We should instead use a fixed one.
 		$totalActions = $stash->get( self::filterUsedKey( $group ) );
 
 		foreach ( $filters as $filter ) {
@@ -2081,10 +2083,10 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param string|null $group The filter's group (as defined in $wgAbuseFilterValidGroups)
+	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @return string
 	 */
-	public static function filterUsedKey( $group = null ) {
+	public static function filterUsedKey( $group ) {
 		return wfMemcKey( 'abusefilter', 'stats', 'total', $group );
 	}
 
