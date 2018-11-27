@@ -13,7 +13,8 @@
 			"Robin van der Vliet",
 			"Rafaneta",
 			"Psychoslave",
-			"Lucas"
+			"Lucas",
+			"Surfo"
 		]
 	},
 	"abusefilter-desc": "Aplikas aŭtomatan heŭristikon al redaktoj.",
@@ -115,6 +116,7 @@
 	"abusefilter-list-options-scope-local": "Loka vikio",
 	"abusefilter-list-options-scope-global": "Ĝeneralaj reguloj",
 	"abusefilter-list-options-hidedisabled": "Kaŝi malŝaltitajn filtrilojn",
+	"abusefilter-list-regexerror": "Okazis eraro dum la serĉo. Sintaksa eraro en regula esprimo.",
 	"abusefilter-list-options-submit": "Ĝisdatigi",
 	"abusefilter-tools-text": "Jen iloj kiuj eble estos utilaj formigi kaj sencimigi misuzadajn filtrilojn.",
 	"abusefilter-tools-expr": "Esprimo-testilo",
@@ -389,5 +391,6 @@
 	"abusefilter-diff-next": "Pli malfrua ŝanĝo",
 	"abusefilter-import-intro": "Vi povas uzi ĉi tiun interfacon por enporti filtrilojn de aliaj vikioj.\nEn la fonta vikio, klaku \"{{int:abusefilter-edit-export}}\" sub \"{{int:abusefilter-edit-tools}}\" en la redakta interfaco.\nKopiu de la tekstujo kiu aperas, kaj gluu ĝin en ĉi tiun tekstujon, kaj klaku \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "Importi datenojn",
-	"abusefilter-group-default": "Defaŭlta"
+	"abusefilter-group-default": "Defaŭlta",
+	"abusefilter-http-error": "Okazis HTTP-eraro: $1."
 }
