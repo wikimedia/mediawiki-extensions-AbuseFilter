@@ -1191,7 +1191,7 @@ class AbuseFilter {
 			$log_template = [
 				'afl_user' => $user->getId(),
 				'afl_user_text' => $user->getName(),
-				'afl_timestamp' => wfGetDB( DB_REPLICA )->timestamp( wfTimestampNow() ),
+				'afl_timestamp' => wfGetDB( DB_REPLICA )->timestamp(),
 				'afl_namespace' => $title->getNamespace(),
 				'afl_title' => $title->getDBkey(),
 				'afl_action' => $action,
@@ -2432,7 +2432,7 @@ class AbuseFilter {
 		$newRow = get_object_vars( $newRow );
 
 		// Set last modifier.
-		$newRow['af_timestamp'] = $dbw->timestamp( wfTimestampNow() );
+		$newRow['af_timestamp'] = $dbw->timestamp();
 		$newRow['af_user'] = $user->getId();
 		$newRow['af_user_text'] = $user->getName();
 
@@ -3006,13 +3006,11 @@ class AbuseFilter {
 					// a CheckboxMultiselect).
 					$groups = '';
 				} else {
-					// Old entries may not have unique values.
-					$throttleGroups = array_unique( $parameters );
 					// Join comma-separated groups in a commaList with a final "and", and convert to messages.
 					// Messages used here: abusefilter-throttle-ip, abusefilter-throttle-user,
 					// abusefilter-throttle-site, abusefilter-throttle-creationdate, abusefilter-throttle-editcount
 					// abusefilter-throttle-range, abusefilter-throttle-page
-					foreach ( $throttleGroups as &$val ) {
+					foreach ( $parameters as &$val ) {
 						if ( strpos( $val, ',' ) !== false ) {
 							$subGroups = explode( ',', $val );
 							foreach ( $subGroups as &$group ) {
@@ -3029,7 +3027,7 @@ class AbuseFilter {
 						}
 					}
 					unset( $val );
-					$groups = $wgLang->semicolonList( $throttleGroups );
+					$groups = $wgLang->semicolonList( $parameters );
 				}
 				$displayAction = self::getActionDisplay( $action ) .
 				wfMessage( 'colon-separator' )->escaped() .
