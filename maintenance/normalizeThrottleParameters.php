@@ -9,8 +9,8 @@
  *   like it would with throttle disabled, we just disable it. Otherwise, since we don't know what
  *   the filter is meant to do, we just ask users to evaluate and fix every case by hand. This is
  *   highly unlikely to happen anyway. (T203585)
- * - Disables the throttle action for filters where throttle groups are empty (or only contain
- *   unknown keywords). Per T203336#4568819, in those case throttle already doesn't work. (T203584)
+ * - If throttle groups are empty (or only contain unknown keywords), ask users to fix every case
+ *   by hand. (T203584)
  *
  * @ingroup Maintenance
  */
@@ -133,7 +133,7 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 	 * @return bool
 	 */
 	public function doDBUpdates() {
-		$user = User::newSystemUser( 'AbuseFilter updater', [ 'steal' => true ] );
+		$user = AbuseFilter::getFilterUser();
 		$this->dbw = wfGetDB( DB_MASTER );
 		$dryRun = $this->hasOption( 'dry-run' );
 
@@ -155,16 +155,25 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 			$filter = $actRow->afa_filter;
 			$params = explode( "\n", $actRow->afa_parameters );
 			$rateCheck = $this->checkThrottleRate( $params[1] );
-			if ( $rateCheck === 'hand' ) {
-				$this->fail(
-					"Throttle count and period for filter $filter are malformed, probably due to extra commas. " .
-					"Please fix them by hand in the way they're meant to be, then launch the script again."
-				);
-			}
 			list( $oldGroups, $newGroups ) = $this->getNewGroups( $params );
 
-			if ( $rateCheck === 'disable' || count( $newGroups ) === 0 ) {
-				// Empty throttle groups, disable throttle for the filter
+			// If the rate is invalid or the groups are empty (or only contain invalid identifiers),
+			// it means that the throttle limit is never reached. Since we cannot guess what the
+			// filter should do, nor we want to impose a default, we ask to manually fix the problem.
+			if ( $rateCheck === 'hand' ) {
+				$this->fail(
+					"Throttle count and period for filter $filter are malformed or empty. " .
+					"Please fix them by hand in the way they're meant to be, then launch the script again."
+				);
+			} elseif ( count( $newGroups ) === 0 ) {
+				$this->fail(
+					"Throttle groups are empty for filter $filter. Please add some groups or disable " .
+					"throttling, then launch the script again."
+				);
+			}
+
+			if ( $rateCheck === 'disable' ) {
+				// Invalid rate, disable throttle for the filter
 				$deleteActionIDs[] = $actRow->afa_filter;
 			} elseif ( $oldGroups !== $newGroups ) {
 				$newParams = array_merge( array_slice( $params, 0, 2 ), $newGroups );
@@ -177,6 +186,9 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 			}
 		}
 
+		// Use the same timestamps in abuse_filter and abuse_filter_history, since this is
+		// what we do in the actual code.
+		$timestamps = [];
 		$changeActionCount = count( $changeActionIDs );
 		if ( $changeActionCount ) {
 			if ( $dryRun ) {
@@ -191,13 +203,33 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 					$newActionRows,
 					__METHOD__
 				);
+				// Touch the abuse_filter table to update the "filter last modified" field
+				$rows = $this->dbw->select(
+					'abuse_filter',
+					'*',
+					[ 'af_id' => $changeActionIDs ],
+					__METHOD__,
+					[ 'FOR UPDATE' ]
+				);
+				foreach ( $rows as $row ) {
+					$timestamps[ $row->af_id ] = $this->dbw->timestamp();
+					$newRow = [
+						'af_user' => $user->getId(),
+						'af_user_text' => $user->getName(),
+						'af_timestamp' => $timestamps[ $row->af_id ]
+					] + get_object_vars( $row );
+
+					$this->dbw->replace(
+						'abuse_filter',
+						[ 'af_id' ],
+						$newRow,
+						__METHOD__
+					);
+				}
 			}
 		}
 
 		$deleteActionCount = count( $deleteActionIDs );
-		// Use the same timestamps in abuse_filter and abuse_filter_history, since this is
-		// what we do in the actual code.
-		$timestamps = [];
 		if ( $deleteActionCount ) {
 			if ( $dryRun ) {
 				$this->output(
@@ -220,18 +252,19 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 					'abuse_filter',
 					'*',
 					[ 'af_id' => $deleteActionIDs ],
-					__METHOD__
+					__METHOD__,
+					[ 'FOR UPDATE' ]
 				);
 				foreach ( $rows as $row ) {
 					$oldActions = explode( ',', $row->af_actions );
 					$actions = array_diff( $oldActions, [ 'throttle' ] );
-					$timestamps[ $row->af_id ] = $this->dbw->timestamp( wfTimestampNow() );
+					$timestamps[ $row->af_id ] = $this->dbw->timestamp();
 					$newRow = [
 						'af_user' => $user->getId(),
 						'af_user_text' => $user->getName(),
 						'af_timestamp' => $timestamps[ $row->af_id ],
 						'af_actions' => implode( ',', $actions ),
-					] + $row;
+					] + get_object_vars( $row );
 
 					$this->dbw->replace(
 						'abuse_filter',
@@ -286,24 +319,39 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 			$actions = unserialize( $histRow->afh_actions );
 			$filter = $histRow->afh_filter;
 			$rateCheck = $this->checkThrottleRate( $actions['throttle'][1] );
+			list( $oldGroups, $newGroups ) = $this->getNewGroups( $actions['throttle'] );
+
+			// If the rate is invalid or the groups are empty (or only contain invalid identifiers),
+			// it means that the throttle limit is never reached. Since we cannot guess what the
+			// filter should do, nor we want to impose a default, we ask to manually fix the problem.
 			if ( $rateCheck === 'hand' ) {
 				$this->fail(
-					"Throttle count and period for filter $filter are malformed, probably due to extra commas. " .
+					"Throttle count and period for filter $filter are malformed or empty. " .
 					"Please fix them by hand in the way they're meant to be, then launch the script again."
 				);
+			} elseif ( count( $newGroups ) === 0 ) {
+				$this->fail(
+					"Throttle groups are empty for filter $filter. Please add some groups or disable " .
+					"throttling, then launch the script again."
+				);
 			}
-			list( $oldGroups, $newGroups ) = $this->getNewGroups( $actions['throttle'] );
+
+			$timestamp = $timestamps[ $filter ] ?? null;
+			if ( !$timestamp && !$dryRun ) {
+				// Sanity check
+				$this->fail( "The timestamp wasn't saved for filter $filter" );
+			}
 
 			$fixedRowSection = [
 				'afh_id' => $this->dbw->nextSequenceValue( 'abuse_filter_af_id_seq' ),
 				'afh_user' => $user->getId(),
 				'afh_user_text' => $user->getName(),
-				'afh_timestamp' => $timestamps[ $filter ] ?? $this->dbw->timestamp( wfTimestampNow() ),
+				'afh_timestamp' => $timestamp,
 				'afh_changed_fields' => 'actions',
 			] + get_object_vars( $histRow );
 
-			if ( $rateCheck === 'disable' || count( $newGroups ) === 0 ) {
-				// Empty throttle groups, disable throttle for the filter
+			if ( $rateCheck === 'disable' ) {
+				// Invalid rate, disable throttle for the filter
 				unset( $actions['throttle'] );
 				$newHistoryRows[] = [
 					'afh_actions' => serialize( $actions )
