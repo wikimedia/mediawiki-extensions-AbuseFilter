@@ -23,6 +23,9 @@
  * @license GPL-2.0-or-later
  */
 
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Storage\NameTableAccessException;
+
 /**
  * @group Test
  * @group AbuseFilter
@@ -587,7 +590,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 						}
 						break;
 					case 'tag':
-						// Only add tags, to be retrieved in tag_summary table.
+						// Only add tags, to be retrieved in change_tag table.
 						if ( $actionParams[1] === null ) {
 							// It's an account creation, so no tags.
 							break;
@@ -596,20 +599,28 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 						$page = WikiPage::factory( $title );
 						$revId = $page->getLatest();
 						$dbr = wfGetDB( DB_REPLICA );
-						$appliedTags = $dbr->selectField(
-							'tag_summary',
-							'ts_tags',
-							[ 'ts_rev_id' => $revId ],
+						$changeTagDefStore = MediaWikiServices::getInstance()->getChangeTagDefStore();
+						$tagIds = $dbr->selectFieldValues(
+							'change_tag',
+							'ct_tag_id',
+							[ 'ct_rev_id' => $revId ],
 							__METHOD__
 						);
-						$appliedTags = explode( ',', $appliedTags );
+						$appliedTags = [];
+						foreach ( $tagIds as $tagId ) {
+							try {
+								$appliedTags[] = $changeTagDefStore->getName( (int)$tagId );
+							} catch ( NameTableAccessException $exception ) {
+								continue;
+							}
+						}
 
-							$tagCheck = count( array_diff( $params, $appliedTags ) ) === 0;
+						$tagCheck = count( array_diff( $params, $appliedTags ) ) === 0;
 						if ( !$tagCheck ) {
 							$expectedTags = $wgLang->commaList( $params );
 							$actualTags = $wgLang->commaList( $appliedTags );
 
-								$testErrorMessage = "Expected the edit to have the following tags: $expectedTags. " .
+							$testErrorMessage = "Expected the edit to have the following tags: $expectedTags. " .
 								"Got the following instead: $actualTags.";
 						}
 						break;
