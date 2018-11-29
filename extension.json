@@ -211,6 +211,16 @@
 		"ext.abuseFilter.ace": {
 			"scripts": "mode-abusefilter.js",
 			"dependencies": "ext.codeEditor.ace"
+		},
+		"ext.abuseFilter.visualEditor": {
+			"scripts": "ve-abusefilter/ve.init.mw.AbuseFilterSaveErrorHandler.js"
+		}
+	},
+	"attributes": {
+		"VisualEditor": {
+			"PluginModules": [
+				"ext.abuseFilter.visualEditor"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
