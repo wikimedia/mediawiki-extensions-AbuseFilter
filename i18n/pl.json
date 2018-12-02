@@ -27,7 +27,8 @@
 			"InternerowyGołąb",
 			"Ankam",
 			"Railfail536",
-			"DeRudySoulStorm"
+			"DeRudySoulStorm",
+			"CiaPan"
 		]
 	},
 	"abusefilter-desc": "Zastosowanie automatycznej heurystyki do edycji",
@@ -225,6 +226,8 @@
 	"abusefilter-edit-throttle-count": "Liczba dozwolonych akcji",
 	"abusefilter-edit-throttle-period": "Okres (w sekundach):",
 	"abusefilter-edit-throttle-groups": "Grupuj przekroczenia dla:",
+	"abusefilter-edit-throttle-hidden-placeholder": "Rozdziel przecinkami aby połączyć operatorem AND (\"i\") oraz znakami końca wiersza aby połączyć operatorem OR (\"lub\")",
+	"abusefilter-edit-throttle-placeholder": "Rozdziel przecinkami aby połączyć operatorem AND (\"i\") lub wpisz w osobnych wierszach aby połączyć operatorem OR (\"lub\")",
 	"abusefilter-throttle-ip": "adresu IP",
 	"abusefilter-throttle-user": "konta użytkownika",
 	"abusefilter-throttle-range": "zakresu /16",

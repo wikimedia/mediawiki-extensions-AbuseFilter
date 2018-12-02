@@ -47,7 +47,8 @@
 			"NeverBehave",
 			"JerryLiu",
 			"夢蝶葬花",
-			"A Chinese Wikipedian"
+			"A Chinese Wikipedian",
+			"Angrydog001"
 		]
 	},
 	"abusefilter-desc": "对编辑行为自动进行条件判定",
@@ -527,7 +528,7 @@
 	"abusefilter-examine-incompatible": "防滥用过滤器不支持您请求的更改。",
 	"abusefilter-examine-noresults": "您输入的搜索参数未找到任何结果。",
 	"abusefilter-topnav": "'''滥用过滤器导航'''",
-	"abusefilter-topnav-home": "主页",
+	"abusefilter-topnav-home": "首页",
 	"abusefilter-topnav-test": "批量测试",
 	"abusefilter-topnav-examine": "检查过去的编辑",
 	"abusefilter-topnav-log": "滥用日志",
