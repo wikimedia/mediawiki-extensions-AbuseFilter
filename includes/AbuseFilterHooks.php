@@ -17,15 +17,7 @@ class AbuseFilterHooks {
 	 * Called right after configuration has been loaded.
 	 */
 	public static function onRegistration() {
-		global $wgAbuseFilterAvailableActions, $wgAbuseFilterRestrictedActions,
-			$wgAuthManagerAutoConfig, $wgActionFilteredLogs;
-
-		if ( isset( $wgAbuseFilterAvailableActions ) || isset( $wgAbuseFilterRestrictedActions ) ) {
-			wfWarn( '$wgAbuseFilterAvailableActions and $wgAbuseFilterRestrictedActions have been '
-				. 'removed. Please use $wgAbuseFilterActions and $wgAbuseFilterRestrictions '
-				. 'instead. The format is the same except the action names are the keys of the '
-				. 'array and the values are booleans.' );
-		}
+		global $wgAuthManagerAutoConfig, $wgActionFilteredLogs;
 
 		$wgAuthManagerAutoConfig['preauth'][AbuseFilterPreAuthenticationProvider::class] = [
 			'class' => AbuseFilterPreAuthenticationProvider::class,
