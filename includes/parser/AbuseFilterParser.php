@@ -1062,11 +1062,14 @@ class AbuseFilterParser {
 
 		// Count the amount of capturing groups in the submitted pattern.
 		// This way we can return a fixed-dimension array, much easier to manage.
+		// ToDo: Find a better way to do this.
 		// First, strip away escaped parentheses
 		$sanitized = preg_replace( '/(\\\\\\\\)*\\\\\(/', '', $needle );
-		// Then strip starting parentheses of non-capturing groups
-		// (also atomics, lookahead and so on, even if not every of them is supported)
-		$sanitized = preg_replace( '/\(\?/', '', $sanitized );
+		// Then strip starting parentheses of non-capturing groups, including
+		// atomics, lookaheads and so on, even if not every of them is supported.
+		$sanitized = str_replace( '(?', '', $sanitized );
+		// And also strip "(*", used with backtracking verbs like (*FAIL)
+		$sanitized = str_replace( '(*', '', $sanitized );
 		// Finally create an array of falses with dimension = # of capturing groups
 		$groupscount = substr_count( $sanitized, '(' ) + 1;
 		$falsy = array_fill( 0, $groupscount, false );
