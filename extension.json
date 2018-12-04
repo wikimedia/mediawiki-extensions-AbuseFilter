@@ -165,11 +165,13 @@
 				"abusefilter-http-error",
 				"abusefilter-edit-throttle-placeholder",
 				"abusefilter-edit-tag-placeholder",
+				"abusefilter-edit-warn-leave",
 				"unknown-error"
 			],
 			"dependencies": [
 				"mediawiki.util",
 				"mediawiki.api",
+				"mediawiki.confirmCloseWindow",
 				"jquery.textSelection",
 				"jquery.spinner",
 				"oojs-ui-core",
