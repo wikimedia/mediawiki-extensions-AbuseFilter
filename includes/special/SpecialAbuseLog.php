@@ -700,38 +700,15 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	}
 
 	/**
-	 * @param string $id
-	 * @return void
+	 * Helper function to select a row with private details and some more context
+	 * for an AbuseLog entry.
+	 *
+	 * @param int $id The ID of the log entry
+	 * @return Status A status object with the requested row stored in the value property,
+	 *  or an error and no row.
 	 */
-	public function showPrivateDetails( $id ) {
-		$lang = $this->getLanguage();
-		$out = $this->getOutput();
-		$request = $this->getRequest();
-
+	public static function getPrivateDetailsRow( $id ) {
 		$dbr = wfGetDB( DB_REPLICA );
-
-		$reason = $request->getText( 'wpReason' );
-
-		// Make sure it is a valid request
-		$token = $request->getVal( 'wpEditToken' );
-		if ( !$request->wasPosted() || !$this->getUser()->matchEditToken( $token ) ) {
-			$out->addHTML(
-				Xml::tags(
-					'p',
-					null,
-					Html::errorBox( $this->msg( 'abusefilter-invalid-request' )->params( $id )->parse() )
-				)
-			);
-
-			return;
-		}
-
-		if ( !self::checkPrivateDetailsAccessReason( $reason ) ) {
-			$out->addWikiMsg( 'abusefilter-noreason' );
-			$this->showDetails( $id );
-			return;
-		}
-
 		$row = $dbr->selectRow(
 			[ 'abuse_filter_log', 'abuse_filter' ],
 			[ 'afl_id', 'afl_filter', 'afl_user_text', 'afl_timestamp', 'afl_ip', 'af_id',
@@ -742,36 +719,34 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			[ 'abuse_filter' => [ 'LEFT JOIN', 'af_id=afl_filter' ] ]
 		);
 
-		$error = null;
+		$status = Status::newGood();
 		if ( !$row ) {
-			$error = 'abusefilter-log-nonexistent';
+			$status->fatal( 'abusefilter-log-nonexistent' );
+			return $status;
+		}
+
+		list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+		if ( $global ) {
+			$filterHidden = null;
 		} else {
-			list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
-			if ( $global ) {
-				$filter_hidden = null;
-			} else {
-				$filter_hidden = $row->af_hidden;
-			}
-
-			if ( !self::canSeeDetails( $filterID, $global, $filter_hidden ) ) {
-				$error = 'abusefilter-log-cannot-see-details';
-			} elseif ( !self::canSeePrivateDetails() ) {
-				$error = 'abusefilter-log-cannot-see-privatedetails';
-			}
+			$filterHidden = $row->af_hidden;
 		}
 
-		if ( $error ) {
-			$out->addWikiMsg( $error );
-			return;
+		if ( !self::canSeeDetails( $filterID, $global, $filterHidden ) ) {
+			$status->fatal( 'abusefilter-log-cannot-see-details' );
+			return $status;
 		}
+		$status->setResult( true, $row );
+		return $status;
+	}
 
-		// Log accessing private details
-		if ( $this->getConfig()->get( 'AbuseFilterPrivateLog' ) ) {
-			$user = $this->getUser();
-			self::addPrivateDetailsAccessLogEntry( $id, $reason, $user );
-		}
-
-		// Show private details (IP).
+	/**
+	 * Builds an HTML table with the private details for a given abuseLog entry.
+	 *
+	 * @param stdClass $row The row, as returned by self::getPrivateDetailsRow()
+	 * @return string The HTML output
+	 */
+	protected function buildPrivateDetailsTable( $row ) {
 		$output = Xml::element(
 			'legend',
 			null,
@@ -803,7 +778,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				Xml::openElement( 'td' ) .
 				$linkRenderer->makeKnownLink(
 					$this->getPageTitle( $row->afl_id ),
-					$lang->formatNum( $row->afl_id )
+					$this->getLanguage()->formatNum( $row->afl_id )
 				) .
 				Xml::closeElement( 'td' )
 			);
@@ -817,7 +792,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				) .
 				Xml::element( 'td',
 					null,
-					$lang->timeanddate( $row->afl_timestamp, true )
+					$this->getLanguage()->timeanddate( $row->afl_timestamp, true )
 				)
 			);
 
@@ -844,7 +819,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				Xml::openElement( 'td' ) .
 				$linkRenderer->makeKnownLink(
 					SpecialPage::getTitleFor( 'AbuseFilter', $row->af_id ),
-					$lang->formatNum( $row->af_id )
+					$this->getLanguage()->formatNum( $row->af_id )
 				) .
 				Xml::closeElement( 'td' )
 			);
@@ -906,8 +881,58 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$output .= Xml::closeElement( 'tbody' ) . Xml::closeElement( 'table' );
 
 		$output = Xml::tags( 'fieldset', null, $output );
+		return $output;
+	}
 
-		$out->addHTML( $output );
+	/**
+	 * @param string $id
+	 * @return void
+	 */
+	public function showPrivateDetails( $id ) {
+		$out = $this->getOutput();
+		if ( !self::canSeePrivateDetails() ) {
+			$out->addWikiMsg( 'abusefilter-log-cannot-see-private-details' );
+
+			return;
+		}
+		$request = $this->getRequest();
+
+		// Make sure it is a valid request
+		$token = $request->getVal( 'wpEditToken' );
+		if ( !$request->wasPosted() || !$this->getUser()->matchEditToken( $token ) ) {
+			$out->addHTML(
+				Xml::tags(
+					'p',
+					null,
+					Html::errorBox( $this->msg( 'abusefilter-invalid-request' )->params( $id )->parse() )
+				)
+			);
+
+			return;
+		}
+
+		$reason = $request->getText( 'wpReason' );
+		if ( !self::checkPrivateDetailsAccessReason( $reason ) ) {
+			$out->addWikiMsg( 'abusefilter-noreason' );
+			$this->showDetails( $id );
+			return;
+		}
+
+		$status = self::getPrivateDetailsRow( $id );
+		if ( !$status->isGood() ) {
+			$out->addWikiMsg( $status->getErrors()[0] );
+			return;
+		}
+		$row = $status->getValue();
+
+		// Log accessing private details
+		if ( $this->getConfig()->get( 'AbuseFilterLogPrivateDetailsAccess' ) ) {
+			self::addPrivateDetailsAccessLogEntry( $id, $reason, $this->getUser() );
+		}
+
+		// Show private details (IP).
+		$table = $this->buildPrivateDetailsTable( $row );
+		$out->addHTML( $table );
 	}
 
 	/**

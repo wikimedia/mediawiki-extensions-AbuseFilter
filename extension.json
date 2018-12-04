@@ -95,7 +95,8 @@
 		"abusefilterchecksyntax": "ApiAbuseFilterCheckSyntax",
 		"abusefilterevalexpression": "ApiAbuseFilterEvalExpression",
 		"abusefilterunblockautopromote": "ApiAbuseFilterUnblockAutopromote",
-		"abusefiltercheckmatch": "ApiAbuseFilterCheckMatch"
+		"abusefiltercheckmatch": "ApiAbuseFilterCheckMatch",
+		"abuselogprivatedetails": "ApiAbuseLogPrivateDetails"
 	},
 	"APIListModules": {
 		"abuselog": "ApiQueryAbuseLog",
@@ -157,6 +158,7 @@
 		"ApiAbuseFilterEvalExpression": "includes/api/ApiAbuseFilterEvalExpression.php",
 		"ApiAbuseFilterUnblockAutopromote": "includes/api/ApiAbuseFilterUnblockAutopromote.php",
 		"ApiAbuseFilterCheckMatch": "includes/api/ApiAbuseFilterCheckMatch.php",
+		"ApiAbuseLogPrivateDetails": "includes/api/ApiAbuseLogPrivateDetails.php",
 		"NormalizeThrottleParameters": "maintenance/normalizeThrottleParameters.php",
 		"AbuseFilterConsequencesTest": "tests/phpunit/AbuseFilterConsequencesTest.php",
 		"AbuseFilterParserTestCase": "tests/phpunit/AbuseFilterParserTestCase.php",
