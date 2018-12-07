@@ -135,11 +135,12 @@ class AbuseFilterHooks {
 			$user, $title, $page, $summary, $content, $text, $oldContent, $oldAfText
 		);
 
-		$filter_result = AbuseFilter::filterAction( $vars, $title, 'default', $user );
-		if ( !$filter_result->isOK() ) {
-			$status->merge( $filter_result );
+		$runner = new AbuseFilterRunner( $user, $title, $vars, 'default' );
+		$filterResult = $runner->run();
+		if ( !$filterResult->isOK() ) {
+			$status->merge( $filterResult );
 
-			return $filter_result;
+			return $filterResult;
 		}
 
 		self::$lastEditPage = $page;
@@ -323,7 +324,8 @@ class AbuseFilterHooks {
 		$vars->setVar( 'summary', $reason );
 		$vars->setVar( 'action', 'move' );
 
-		$result = AbuseFilter::filterAction( $vars, $oldTitle, 'default', $user );
+		$runner = new AbuseFilterRunner( $user, $oldTitle, $vars, 'default' );
+		$result = $runner->run();
 		$status->merge( $result );
 	}
 
@@ -347,12 +349,13 @@ class AbuseFilterHooks {
 		$vars->setVar( 'summary', $reason );
 		$vars->setVar( 'action', 'delete' );
 
-		$filter_result = AbuseFilter::filterAction( $vars, $article->getTitle(), 'default', $user );
+		$runner = new AbuseFilterRunner( $user, $article->getTitle(), $vars, 'default' );
+		$filterResult = $runner->run();
 
-		$status->merge( $filter_result );
-		$error = $filter_result->isOK() ? '' : $filter_result->getHTML();
+		$status->merge( $filterResult );
+		$error = $filterResult->isOK() ? '' : $filterResult->getHTML();
 
-		return $filter_result->isOK();
+		return $filterResult->isOK();
 	}
 
 	/**
@@ -811,11 +814,12 @@ class AbuseFilterHooks {
 			$vars->addHolders( AbuseFilter::getEditVars( $title, $page ) );
 		}
 
-		$filter_result = AbuseFilter::filterAction( $vars, $title, 'default', $user );
+		$runner = new AbuseFilterRunner( $user, $title, $vars, 'default' );
+		$filterResult = $runner->run();
 
-		if ( !$filter_result->isOK() ) {
-			$messageAndParams = $filter_result->getErrorsArray()[0];
-			$apiResult = self::getApiResult( $filter_result );
+		if ( !$filterResult->isOK() ) {
+			$messageAndParams = $filterResult->getErrorsArray()[0];
+			$apiResult = self::getApiResult( $filterResult );
 			$error = ApiMessage::create(
 				$messageAndParams,
 				$apiResult['code'],
@@ -823,7 +827,7 @@ class AbuseFilterHooks {
 			);
 		}
 
-		return $filter_result->isOK();
+		return $filterResult->isOK();
 	}
 
 	/**
@@ -876,7 +880,8 @@ class AbuseFilterHooks {
 				$vars = self::newVariableHolderForEdit(
 					$user, $page->getTitle(), $page, $summary, $content, $text, $oldContent, $oldAfText
 				);
-				AbuseFilter::filterAction( $vars, $page->getTitle(), 'default', $user, 'stash' );
+				$runner = new AbuseFilterRunner( $user, $page->getTitle(), $vars, 'default' );
+				$runner->runForStash();
 			},
 			DeferredUpdates::PRESEND
 		);

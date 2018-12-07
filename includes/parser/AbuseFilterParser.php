@@ -100,9 +100,9 @@ class AbuseFilterParser {
 	 *
 	 * @param AbuseFilterVariableHolder|null $vars
 	 */
-	public function __construct( $vars = null ) {
+	public function __construct( AbuseFilterVariableHolder $vars = null ) {
 		$this->resetState();
-		if ( $vars instanceof AbuseFilterVariableHolder ) {
+		if ( $vars ) {
 			$this->mVariables = $vars;
 		}
 	}
@@ -125,6 +125,7 @@ class AbuseFilterParser {
 	 * For use in batch scripts and the like
 	 *
 	 * @param bool $enable True to enable the limit, false to disable it
+	 * @codeCoverageIgnore
 	 */
 	public function toggleConditionLimit( $enable ) {
 		$this->condLimitEnabled = $enable;

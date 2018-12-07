@@ -38,9 +38,10 @@ use MediaWiki\Storage\PageEditStash;
  * @group Large
  *
  * @covers AbuseFilter
+ * @covers AbuseFilterRunner
  * @covers AbuseFilterHooks
  * @covers AbuseFilterPreAuthenticationProvider
- * @covers AbuseFilterParser::__construct
+ * @covers AbuseFilterParser
  * @todo Add upload actions everywhere
  */
 class AbuseFilterConsequencesTest extends MediaWikiTestCase {
@@ -951,7 +952,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @param array $actionParams Details of the action we need to execute to trigger filters
 	 * @covers AbuseFilterParser::getCondCount
 	 * @covers AbuseFilterParser::raiseCondCount
-	 * @covers AbuseFilter::checkAllFilters
+	 * @covers AbuseFilterRunner::checkAllFilters
 	 * @dataProvider provideFiltersNoConsequences
 	 */
 	public function testCondsLimit( $createIds, $actionParams ) {
@@ -973,8 +974,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 *
 	 * @param int[] $createIds IDs of the filters to create
 	 * @param array $actionParams Details of the action we need to execute to trigger filters
-	 * @covers AbuseFilter::checkFilter
-	 * @covers AbuseFilter::recordSlowFilter
+	 * @covers AbuseFilterRunner::checkFilter
+	 * @covers AbuseFilterRunner::recordSlowFilter
 	 * @dataProvider provideFiltersNoConsequences
 	 */
 	public function testTimeLimit( $createIds, $actionParams ) {
@@ -1087,7 +1088,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 *
 	 * @param int[] $createIds IDs of the filters to create
 	 * @param array $actionParams Details of the action we need to execute to trigger filters
-	 * @covers AbuseFilter::checkEmergencyDisable
+	 * @covers AbuseFilterRunner::checkEmergencyDisable
 	 * @dataProvider provideThrottleLimitFilters
 	 */
 	public function testThrottleLimit( $createIds, $actionParams ) {
@@ -1559,10 +1560,10 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		// the given namespace has been localized and thus wouldn't match.
 		$title = Title::newFromText( $actionParams['target'] )->getPrefixedText();
 		foreach ( $loggerMock->getBuffer() as $entry ) {
-			if ( preg_match( "/AbuseFilter::filterAction: cache $type for '$title'/", $entry[1] ) ) {
+			if ( preg_match( "/AbuseFilterRunner::logCache: cache $type for '$title'/", $entry[1] ) ) {
 				$foundHitOrMiss = true;
 			}
-			if ( preg_match( "/AbuseFilter::filterAction: cache store for '$title'/", $entry[1] ) ) {
+			if ( preg_match( "/AbuseFilterRunner::logCache: cache store for '$title'/", $entry[1] ) ) {
 				$foundStore = true;
 			}
 			if ( $foundStore && $foundHitOrMiss ) {
@@ -1738,9 +1739,9 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @covers AbuseFilter::filterUsedKey
 	 * @covers AbuseFilter::filterLimitReachedKey
 	 * @covers AbuseFilter::getFilterProfile
-	 * @covers AbuseFilter::checkAllFilters
-	 * @covers AbuseFilter::recordStats
-	 * @covers AbuseFilter::checkEmergencyDisable
+	 * @covers AbuseFilterRunner::checkAllFilters
+	 * @covers AbuseFilterRunner::recordStats
+	 * @covers AbuseFilterRunner::checkEmergencyDisable
 	 * @dataProvider provideProfilingFilters
 	 */
 	public function testProfiling( $createIds, $actionParams, $expectedGlobal, $expectedPerFilter ) {

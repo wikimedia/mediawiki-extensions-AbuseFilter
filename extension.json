@@ -115,6 +115,7 @@
 		"AbuseFilterTokenizer": "includes/parser/AbuseFilterTokenizer.php",
 		"AbuseFilterHooks": "includes/AbuseFilterHooks.php",
 		"AbuseFilterPreAuthenticationProvider": "includes/AbuseFilterPreAuthenticationProvider.php",
+		"AbuseFilterRunner": "includes/AbuseFilterRunner.php",
 		"SpecialAbuseLog": "includes/special/SpecialAbuseLog.php",
 		"AbuseLogPager": "includes/pagers/AbuseLogPager.php",
 		"SpecialAbuseFilter": "includes/special/SpecialAbuseFilter.php",
