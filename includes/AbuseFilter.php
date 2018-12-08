@@ -200,8 +200,6 @@ class AbuseFilter {
 		'moved_to_articleid' => 'moved_to_id',
 	];
 
-	public static $editboxName = null;
-
 	/**
 	 * @param IContextSource $context
 	 * @param string $pageType

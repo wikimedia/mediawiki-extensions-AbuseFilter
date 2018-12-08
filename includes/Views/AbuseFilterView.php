@@ -208,7 +208,7 @@ abstract class AbuseFilterView extends ContextSource {
 
 		// Add script
 		$this->getOutput()->addModules( 'ext.abuseFilter.edit' );
-		AbuseFilter::$editboxName = $textName;
+		$this->getOutput()->addJsConfigVars( 'abuseFilterBoxName', $textName );
 
 		return $rulesContainer;
 	}

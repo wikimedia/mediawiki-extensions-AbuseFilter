@@ -856,24 +856,6 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * Adds global variables to the Javascript as needed
-	 *
-	 * @param array &$vars
-	 */
-	public static function onMakeGlobalVariablesScript( array &$vars ) {
-		if ( isset( AbuseFilter::$editboxName ) ) {
-			$vars['abuseFilterBoxName'] = AbuseFilter::$editboxName;
-		}
-
-		if ( AbuseFilterViewExamine::$examineType !== null ) {
-			$vars['abuseFilterExamine'] = [
-				'type' => AbuseFilterViewExamine::$examineType,
-				'id' => AbuseFilterViewExamine::$examineId,
-			];
-		}
-	}
-
-	/**
 	 * Tables that Extension:UserMerge needs to update
 	 *
 	 * @param array &$updateFields
