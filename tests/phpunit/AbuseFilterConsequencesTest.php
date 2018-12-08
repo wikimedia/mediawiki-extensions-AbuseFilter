@@ -493,7 +493,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	/**
 	 * Creates new filters, execute an action and check the consequences
 	 *
-	 * @param string $testDescription A short description of the test, used for error reporting
 	 * @param int[] $createIds IDs of the filters to create
 	 * @param array $actionParams Details of the action we need to execute to trigger filters
 	 * @param array $consequences The consequences we're expecting
@@ -501,13 +500,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @covers AbuseFilter
 	 * @dataProvider provideFilters
 	 */
-	public function testFilterConsequences(
-		$testDescription,
-		$createIds,
-		$actionParams,
-		$consequences,
-		$options
-	) {
+	public function testFilterConsequences( $createIds, $actionParams, $consequences, $options ) {
 		global $wgLang;
 		self::createFilters( $createIds );
 
@@ -630,7 +623,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 						// The action was executed twice and $result is an array of two Status objects.
 						if ( !$result[0]->isGood() ) {
 							// The first one should be fine
-							$testErrorMessage = "The first edit should have been saved, being only throttled.";
+							$testErrorMessage = 'The first edit should have been saved, being only throttled.';
 							break;
 						}
 
@@ -639,7 +632,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				}
 
 				if ( $testErrorMessage ) {
-					$this->fail( "$testErrorMessage Test description: $testDescription" );
+					$this->fail( $testErrorMessage );
 				}
 			}
 		}
@@ -692,7 +685,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			$expected,
 			$actual,
 			"The edit should have returned the following error messages: $expectedDisplay. " .
-				"Got $actualDisplay instead. Test description: $testDescription"
+				"Got $actualDisplay instead."
 		);
 	}
 
@@ -709,8 +702,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 */
 	public function provideFilters() {
 		return [
-			[
-				'Basic test for "edit" action.',
+			'Basic test for "edit" action' => [
 				[ 1, 2 ],
 				[
 					'edit',
@@ -722,8 +714,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[ 'warn'  => [ 1 ] ],
 				[]
 			],
-			[
-				'Basic test for "move" action.',
+			'Basic test for "move" action' => [
 				[ 2 ],
 				[
 					'move',
@@ -733,8 +724,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[ 'disallow'  => [ 2 ], 'block' => [ 2 ] ],
 				[]
 			],
-			[
-				'Basic test for "delete" action.',
+			'Basic test for "delete" action' => [
 				[ 2, 3 ],
 				[
 					'delete',
@@ -743,8 +733,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[ 'degroup' => [ 3 ] ],
 				[]
 			],
-			[
-				'Basic test for "createaccount" action.',
+			'Basic test for "createaccount" action' => [
 				[ 1, 2, 3, 4 ],
 				[
 					'createaccount',
@@ -754,8 +743,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[],
 				[]
 			],
-			[
-				'Test to check that all tags are applied.',
+			'Test to check that all tags are applied' => [
 				[ 5 ],
 				[
 					'edit',
@@ -767,8 +755,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[ 'tag' => [ 5 ] ],
 				[]
 			],
-			[
-				'Test to check that the edit is disallowed.',
+			'Test to check that the edit is disallowed' => [
 				[ 6 ],
 				[
 					'edit',
@@ -780,8 +767,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[ 'disallow' => [ 6 ] ],
 				[]
 			],
-			[
-				'Test to check that degroup and block are executed together.',
+			'Test to check that degroup and block are executed together' => [
 				[ 2, 3, 7, 8 ],
 				[
 					'edit',
@@ -793,8 +779,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[ 'degroup' => [ 7 ], 'block' => [ 8 ] ],
 				[]
 			],
-			[
-				'Test to check that the block duration is the longest one.',
+			'Test to check that the block duration is the longer one' => [
 				[ 8, 9 ],
 				[
 					'edit',
@@ -806,8 +791,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[ 'disallow' => [ 8 ], 'block' => [ 8 ] ],
 				[]
 			],
-			[
-				'Test to check that throttled filters only execute "safe" actions.',
+			'Test to check that throttled filters only execute "safe" actions' => [
 				[ 10 ],
 				[
 					'edit',
@@ -819,8 +803,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[ 'tag' => [ 10 ] ],
 				[]
 			],
-			[
-				'Test to see that throttling works well.',
+			'Test to see that throttling works well' => [
 				[ 11 ],
 				[
 					'edit',
@@ -833,8 +816,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[ 'throttle' => [ 11 ], 'disallow' => [ 11 ] ],
 				[ 'makeGoodEditFirst' ]
 			],
-			[
-				'Test to check that degroup and block are both executed and degroup warning is shown twice.',
+			'Test to check that degroup and block are both executed and degroup warning is shown twice' => [
 				[ 1, 3, 7, 12 ],
 				[
 					'edit',
@@ -846,8 +828,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[ 'block' => [ 12 ], 'degroup' => [ 7, 12 ] ],
 				[]
 			],
-			[
-				'Test to check that every throttled filter only executes "safe" actions.',
+			'Test to check that every throttled filter only executes "safe" actions' => [
 				[ 10, 13 ],
 				[
 					'edit',
@@ -859,8 +840,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[ 'tag' => [ 10 ] ],
 				[]
 			],
-			[
-				'Test to check that runtime exceptions (division by zero) are correctly handled.',
+			'Test to check that runtime exceptions (division by zero) are correctly handled' => [
 				[ 14 ],
 				[
 					'edit',
@@ -872,8 +852,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[],
 				[]
 			],
-			[
-				'Test to check that the conditions limit works.',
+			'Test to check that the conditions limit works' => [
 				[ 8, 10 ],
 				[
 					'edit',
@@ -885,8 +864,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[],
 				[ 'hitCondsLimit' ]
 			],
-			[
-				'Test slow executions.',
+			'Test slow executions' => [
 				[ 7, 12 ],
 				[
 					'edit',
@@ -898,8 +876,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[ 'degroup' => [ 7 ] ],
 				[ 'hitTimeLimit' ]
 			],
-			[
-				'Test throttling a dangerous filter.',
+			'Test throttling a dangerous filter' => [
 				[ 13 ],
 				[
 					'edit',
