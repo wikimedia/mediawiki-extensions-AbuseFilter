@@ -132,7 +132,15 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 					$result = self::$funcCache[$funcHash];
 				} else {
 					$this->raiseCondCount();
-					$result = self::$funcCache[$funcHash] = $this->$func( $dataArgs );
+					$hasEmptyData = false;
+					foreach ( $dataArgs as $arg ) {
+						if ( $arg->type === AFPData::DNONE ) {
+							$hasEmptyData = true;
+						}
+					}
+					$result = self::$funcCache[$funcHash] = $hasEmptyData
+						? new AFPData( AFPData::DNONE )
+						: $this->$func( $dataArgs );
 				}
 
 				if ( count( self::$funcCache ) > 1000 ) {
