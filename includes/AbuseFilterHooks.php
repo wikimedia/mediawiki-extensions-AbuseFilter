@@ -11,11 +11,10 @@ use Wikimedia\Rdbms\IMaintainableDatabase;
 class AbuseFilterHooks {
 	const FETCH_ALL_TAGS_KEY = 'abusefilter-fetch-all-tags';
 
-	/** @var AbuseFilterVariableHolder|bool */
-	public static $successful_action_vars = false;
-	/** @var WikiPage|Article|bool|null Make sure edit filter & edit save hooks match */
-	public static $last_edit_page = false;
-	// So far, all of the error message out-params for these hooks accept HTML.
+	/** @var AbuseFilterVariableHolder|null */
+	private static $successfulActionVars = null;
+	/** @var WikiPage|null Make sure edit filter & edit save hooks match */
+	private static $lastEditPage = null;
 
 	/**
 	 * Called right after configuration has been loaded.
@@ -90,8 +89,8 @@ class AbuseFilterHooks {
 			return Status::newGood();
 		}
 
-		self::$successful_action_vars = false;
-		self::$last_edit_page = false;
+		self::$successfulActionVars = null;
+		self::$lastEditPage = null;
 
 		$user = $context->getUser();
 
@@ -146,8 +145,8 @@ class AbuseFilterHooks {
 			return $filter_result;
 		}
 
-		self::$successful_action_vars = $vars;
-		self::$last_edit_page = $page;
+		self::$successfulActionVars = $vars;
+		self::$lastEditPage = $page;
 
 		return Status::newGood();
 	}
@@ -251,32 +250,30 @@ class AbuseFilterHooks {
 		WikiPage $wikiPage, User $user, $content, $summary, $minoredit, $watchthis, $sectionanchor,
 		$flags, Revision $revision, Status $status, $baseRevId
 	) {
-		if ( !self::$successful_action_vars || !$revision ) {
-			self::$successful_action_vars = false;
+		if ( !self::$successfulActionVars || !$revision ) {
+			self::$successfulActionVars = null;
 			return;
 		}
 
-		/** @var AbuseFilterVariableHolder|bool $vars */
-		$vars = self::$successful_action_vars;
+		/** @var AbuseFilterVariableHolder $vars */
+		$vars = self::$successfulActionVars;
 
 		if ( $vars->getVar( 'page_prefixedtitle' )->toString() !==
-			$wikiPage->getTitle()->getPrefixedText()
+			$wikiPage->getTitle()->getPrefixedText() ||
+			$wikiPage !== self::$lastEditPage
 		) {
+			// This isn't the edit self::$successfulActionVars was set for
 			return;
 		}
 
-		if ( !self::identicalPageObjects( $wikiPage, self::$last_edit_page ) ) {
-			// This isn't the edit $successful_action_vars was set for
-			return;
-		}
-		self::$last_edit_page = false;
+		self::$lastEditPage = null;
 
 		if ( $vars->getVar( 'local_log_ids' ) ) {
 			// Now actually do our storage
 			$log_ids = $vars->getVar( 'local_log_ids' )->toNative();
-			$dbw = wfGetDB( DB_MASTER );
 
 			if ( $log_ids !== null && count( $log_ids ) ) {
+				$dbw = wfGetDB( DB_MASTER );
 				$dbw->update( 'abuse_filter_log',
 					[ 'afl_rev_id' => $revision->getId() ],
 					[ 'afl_id' => $log_ids ],
@@ -299,19 +296,6 @@ class AbuseFilterHooks {
 				);
 			}
 		}
-	}
-
-	/**
-	 * Check if two article objects are identical or have an identical WikiPage
-	 * @param Article|WikiPage $page1
-	 * @param Article|WikiPage $page2
-	 * @return bool
-	 */
-	protected static function identicalPageObjects( $page1, $page2 ) {
-		$wpage1 = ( $page1 instanceof Article ) ? $page1->getPage() : $page1;
-		$wpage2 = ( $page2 instanceof Article ) ? $page2->getPage() : $page2;
-
-		return $wpage1 === $wpage2;
 	}
 
 	/**
