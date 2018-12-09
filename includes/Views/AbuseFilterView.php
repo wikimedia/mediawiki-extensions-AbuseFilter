@@ -219,6 +219,45 @@ abstract class AbuseFilterView extends ContextSource {
 	}
 
 	/**
+	 * Build input and button for loading a filter
+	 *
+	 * @return string
+	 */
+	public function buildFilterLoader() {
+		$loadText =
+			new OOUI\TextInputWidget(
+				[
+					'type' => 'number',
+					'name' => 'wpInsertFilter',
+					'id' => 'mw-abusefilter-load-filter'
+				]
+			);
+		$loadButton =
+			new OOUI\ButtonWidget(
+				[
+					'label' => $this->msg( 'abusefilter-test-load' )->text(),
+					'id' => 'mw-abusefilter-load'
+				]
+			);
+		$loadGroup =
+			new OOUI\ActionFieldLayout(
+				$loadText,
+				$loadButton,
+				[
+					'label' => $this->msg( 'abusefilter-test-load-filter' )->text()
+				]
+			);
+		// CSS class for reducing default input field width
+		$loadDiv =
+			Xml::tags(
+				'div',
+				[ 'class' => 'mw-abusefilter-load-filter-id' ],
+				$loadGroup
+			);
+		return $loadDiv;
+	}
+
+	/**
 	 * @param IDatabase $db
 	 * @param string|bool $action 'edit', 'move', 'createaccount', 'delete' or false for all
 	 * @return string
