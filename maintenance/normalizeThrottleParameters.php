@@ -44,6 +44,11 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 	/** @var \Wikimedia\Rdbms\IDatabase $db The master database */
 	private $dbw;
 
+	/** @var array IDs of filters with invalid throttle rate */
+	private $invalidRate = [];
+	/** @var array IDs of filters with invalid throttle groups */
+	private $invalidGroups = [];
+
 	/**
 	 * Rollback the current transaction and emit a fatal error
 	 *
@@ -161,15 +166,10 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 			// it means that the throttle limit is never reached. Since we cannot guess what the
 			// filter should do, nor we want to impose a default, we ask to manually fix the problem.
 			if ( $rateCheck === 'hand' ) {
-				$this->fail(
-					"Throttle count and period for filter $filter are malformed or empty. " .
-					"Please fix them by hand in the way they're meant to be, then launch the script again."
-				);
-			} elseif ( count( $newGroups ) === 0 ) {
-				$this->fail(
-					"Throttle groups are empty for filter $filter. Please add some groups or disable " .
-					"throttling, then launch the script again."
-				);
+				$this->invalidRate[] = $filter;
+			}
+			if ( count( $newGroups ) === 0 ) {
+				$this->invalidGroups[] = $filter;
 			}
 
 			if ( $rateCheck === 'disable' ) {
@@ -190,7 +190,7 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 		// what we do in the actual code.
 		$timestamps = [];
 		$changeActionCount = count( $changeActionIDs );
-		if ( $changeActionCount ) {
+		if ( $changeActionCount && !( $this->invalidRate || $this->invalidGroups ) ) {
 			if ( $dryRun ) {
 				$this->output(
 					"normalizeThrottleParameter has found $changeActionCount rows to change in " .
@@ -230,7 +230,7 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 		}
 
 		$deleteActionCount = count( $deleteActionIDs );
-		if ( $deleteActionCount ) {
+		if ( $deleteActionCount && !( $this->invalidRate || $this->invalidGroups ) ) {
 			if ( $dryRun ) {
 				$this->output(
 					"normalizeThrottleParameter has found $deleteActionCount rows to delete in " .
@@ -325,15 +325,10 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 			// it means that the throttle limit is never reached. Since we cannot guess what the
 			// filter should do, nor we want to impose a default, we ask to manually fix the problem.
 			if ( $rateCheck === 'hand' ) {
-				$this->fail(
-					"Throttle count and period for filter $filter are malformed or empty. " .
-					"Please fix them by hand in the way they're meant to be, then launch the script again."
-				);
-			} elseif ( count( $newGroups ) === 0 ) {
-				$this->fail(
-					"Throttle groups are empty for filter $filter. Please add some groups or disable " .
-					"throttling, then launch the script again."
-				);
+				$this->invalidRate[] = $filter;
+			}
+			if ( count( $newGroups ) === 0 ) {
+				$this->invalidGroups[] = $filter;
 			}
 
 			$timestamp = $timestamps[ $filter ] ?? null;
@@ -364,6 +359,21 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 				] + $fixedRowSection;
 				$changeHistoryFilters[] = $filter;
 			}
+		}
+
+		$invalidMsg = '';
+		if ( $this->invalidRate ) {
+			$invalidMsg .= 'Throttle count and period are malformed or empty for the following filters: ' .
+				implode( ', ', $this->invalidRate ) . '. ' .
+				'Please fix them by hand in the way they\'re meant to be, then launch the script again. ';
+		}
+		if ( $this->invalidGroups ) {
+			$invalidMsg .= 'Throttle groups are empty for the following filters: ' .
+				implode( ', ', $this->invalidGroups ) . '. ' .
+				'Please add some groups or disable throttling, then launch the script again.';
+		}
+		if ( $invalidMsg ) {
+			$this->fail( $invalidMsg );
 		}
 
 		$historyCount = count( $changeHistoryFilters );
