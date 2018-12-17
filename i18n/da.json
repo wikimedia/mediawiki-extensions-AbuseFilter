@@ -18,7 +18,8 @@
 			"Cgtdk",
 			"Jorn Ari",
 			"Joedalton",
-			"Saederup92"
+			"Saederup92",
+			"Weblars"
 		]
 	},
 	"abusefilter-desc": "Anvender automatiske heuristikker på redigeringer",
@@ -86,6 +87,7 @@
 	"abusefilter-log-details-diff": "Ændringer udført i redigeringen",
 	"abusefilter-log-linkoncontribs": "misbrugslog",
 	"abusefilter-log-linkoncontribs-text": "Misbrugslog for denne bruger",
+	"abusefilter-log-linkonhistory": "vis misbrugsloggen",
 	"abusefilter-log-hidden": "(post skjult)",
 	"abusefilter-log-hidden-implicit": "(skjult da versionen er blevet slettet)",
 	"abusefilter-log-cannot-see-details": "Du har ikke tilladelse til at se detaljer om denne post.",
@@ -131,6 +133,7 @@
 	"abusefilter-list-options-scope-global": "Kun globale regler",
 	"abusefilter-list-options-scope-all": "Lokale og globale regler",
 	"abusefilter-list-options-hidedisabled": "Skjul deaktiverede filtre",
+	"abusefilter-list-options-searchpattern": "Indsæt et mønster",
 	"abusefilter-list-options-submit": "Opdatér",
 	"abusefilter-tools-text": "Her er nogle værktøjer som kan være nyttige til at formulere og fejlsøge misbrugsfiltre.",
 	"abusefilter-tools-expr": "Udtrykstester",

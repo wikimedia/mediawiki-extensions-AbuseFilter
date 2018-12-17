@@ -130,7 +130,7 @@
 	"log-action-filter-abusefilter-modify": "Modifica del filtro",
 	"log-action-filter-suppress-abuselog": "Soppressione registro abusi",
 	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|ha acceduto}} ai dettagli privati di $3",
-	"abusefilterprivatedetails-log-name": "Registro di accesso ai dettagli privati del filtro anti abusi",
+	"abusefilterprivatedetails-log-name": "Accessi ai dettagli privati del filtro anti abusi",
 	"abusefilter-management": "Gestione del filtro anti abusi",
 	"abusefilter-list": "Tutti i filtri",
 	"abusefilter-list-id": "ID filtro",

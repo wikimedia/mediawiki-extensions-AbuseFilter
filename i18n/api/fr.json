@@ -4,7 +4,8 @@
 			"Gomoko",
 			"Orlodrim",
 			"Urhixidur",
-			"Wladek92"
+			"Wladek92",
+			"Manu1400"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Cocher pour voir si un AbuseFilter correspond à un ensemble de variables, une modification, ou un événement AbuseFilter du journal.\n\nvars, rcid ou logid est obligatoire, mais un seul d’entre-eux doit être utilisé.",
@@ -28,7 +29,7 @@
 	"apihelp-abusefilterunblockautopromote-summary": "Empêche un utilisateur de recevoir des auto-promotions résultant d'un filtre anti-abus.",
 	"apihelp-abusefilterunblockautopromote-param-user": "Nom de l’utilisateur à débloquer.",
 	"apihelp-abusefilterunblockautopromote-example-1": "Supprime le blocage des promotions automatiques de statut pour [[User:Example]]",
-	"apihelp-query+abusefilters-description": "Afficher les détails des filtres antiabus.",
+	"apihelp-query+abusefilters-description": "Afficher les détails des filtres anti-abus.",
 	"apihelp-query+abusefilters-summary": "Afficher les détails des filtres anti-abus.",
 	"apihelp-query+abusefilters-param-startid": "Numéro de filtre auquel commencer l’énumération.",
 	"apihelp-query+abusefilters-param-endid": "Numéro de filtre auquel terminer l’énumération.",
