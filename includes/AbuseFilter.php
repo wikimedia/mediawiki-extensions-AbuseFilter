@@ -2091,6 +2091,19 @@ class AbuseFilter {
 		$username = wfMessage( 'abusefilter-blocker' )->inContentLanguage()->text();
 		$user = User::newSystemUser( $username, [ 'steal' => true ] );
 
+		if ( !$user ) {
+			// User name is invalid. Don't throw because this is a system message, easy
+			// to change and make wrong either by mistake or intentionally to break the site.
+			wfWarn(
+				'The AbuseFilter user\'s name is invalid. Please change it in ' .
+				'MediaWiki:abusefilter-blocker'
+			);
+			// Use the default name to avoid breaking other stuff. This should have no harm,
+			// aside from blocks temporarily attributed to another user.
+			$defaultName = wfMessage( 'abusefilter-blocker' )->inLanguage( 'en' )->text();
+			$user = User::newSystemUser( $defaultName, [ 'steal' => true ] );
+		}
+
 		// Promote user to 'sysop' so it doesn't look
 		// like an unprivileged account is blocking users
 		if ( !in_array( 'sysop', $user->getGroups() ) ) {
