@@ -28,7 +28,8 @@
 			"Ankam",
 			"Railfail536",
 			"DeRudySoulStorm",
-			"CiaPan"
+			"CiaPan",
+			"PiotrekD"
 		]
 	},
 	"abusefilter-desc": "Zastosowanie automatycznej heurystyki do edycji",
@@ -42,7 +43,7 @@
 	"abusefilter-degrouped": "Ta akcja została automatycznie zidentyfikowana jako szkodliwa.\nW związku z odrzuceniem akcji, Twojemu kontu zostały odebrane wszystkie uprawnienia, ponieważ istnieje podejrzenie, że ktoś dokonał na nie włamania.\nJeśli uważasz, że nastąpiło to przez pomyłkę, skontaktuj się z biurokratą w celu wyjaśnienia zaistniałej sytuacji, wtedy Twoje uprawnienia będą mogły zostać przywrócone.\nKrótki opis reguły nadużycia, do której Twoja akcja została dopasowana: $1",
 	"abusefilter-autopromote-blocked": "Ta akcja została automatycznie zidentyfikowana jako szkodliwa i została odrzucona.\nPonadto został zastosowany środek bezpieczeństwa w postaci czasowego odebrania automatycznie nadanych uprawnień Twojemu kontu.\nKrótki opis reguły nadużycia, do której Twoja akcja została dopasowana: $1",
 	"abusefilter-blocker": "Filtr nadużyć",
-	"abusefilter-blockreason": "Automatycznie zablokawny przez filtr nadużyć. Opis dopasowanej reguły: $1",
+	"abusefilter-blockreason": "Automatycznie zablokowany przez filtr nadużyć. Opis dopasowanej reguły: $1",
 	"abusefilter-degroupreason": "Uprawnienia automatycznie odebrane przez filtr nadużyć. Opis reguły: $1",
 	"abusefilter-accountreserved": "Ta nazwa konta jest zarezerwowana do użycia przez filtr nadużyć.",
 	"right-abusefilter-modify": "Modyfikowanie filtrów nadużyć",
