@@ -478,7 +478,7 @@ $specialPageAliases['uk'] = [
 /** Urdu (اردو) */
 $specialPageAliases['ur'] = [
 	'AbuseLog' => [ 'نوشتہ_غلط_کاری' ],
-	'AbuseFilter' => [ 'مقطار_غلط_کاری' ],
+	'AbuseFilter' => [ 'مقطر_غلط_کاری',  'مقطار_غلط_کاری' ],
 ];
 
 /** Venetian (vèneto) */
