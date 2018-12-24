@@ -445,6 +445,18 @@ $specialPageAliases['sk'] = [
 	'AbuseFilter' => [ 'FilterZneužití' ],
 ];
 
+/** Serbian Cyrillic (српски (ћирилица)) */
+$specialPageAliases['sr-ec'] = [
+	'AbuseLog' => [ 'Дневник_злоупотребе' ],
+	'AbuseFilter' => [ 'Филтер_злоупотребе' ],
+];
+
+/** Serbian Latin (srpski (latinica)) */
+$specialPageAliases['sr-el'] = [
+	'AbuseLog' => [ 'Dnevnik_zloupotrebe' ],
+	'AbuseFilter' => [ 'Filter_zloupotrebe' ],
+];
+
 /** Swedish (svenska) */
 $specialPageAliases['sv'] = [
 	'AbuseLog' => [ 'Missbrukslogg' ],
