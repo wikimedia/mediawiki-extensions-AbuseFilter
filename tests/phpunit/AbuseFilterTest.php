@@ -1321,7 +1321,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 		$vars->addHolders( AbuseFilter::getEditVars( $title, $page ) );
 
 		$actualVariables = [];
-		foreach ( array_keys( $vars->mVars ) as $varName ) {
+		foreach ( array_keys( $vars->getVars() ) as $varName ) {
 			$actualVariables[$varName] = $vars->getVar( $varName )->toNative();
 		}
 

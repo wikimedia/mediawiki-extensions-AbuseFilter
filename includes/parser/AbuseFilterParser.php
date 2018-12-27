@@ -28,7 +28,7 @@ class AbuseFilterParser {
 	/**
 	 * @var AbuseFilterVariableHolder
 	 */
-	public $mVars;
+	public $mVariables;
 
 	/**
 	 * @var int The current amount of conditions being consumed
@@ -103,7 +103,7 @@ class AbuseFilterParser {
 	public function __construct( $vars = null ) {
 		$this->resetState();
 		if ( $vars instanceof AbuseFilterVariableHolder ) {
-			$this->mVars = $vars;
+			$this->mVariables = $vars;
 		}
 	}
 
@@ -149,7 +149,7 @@ class AbuseFilterParser {
 	 */
 	public function resetState() {
 		$this->mTokens = [];
-		$this->mVars = new AbuseFilterVariableHolder;
+		$this->mVariables = new AbuseFilterVariableHolder;
 		$this->mPos = 0;
 		$this->mShortCircuit = false;
 		$this->mAllowShort = true;
@@ -314,13 +314,13 @@ class AbuseFilterParser {
 
 				return;
 			} elseif ( $this->mCur->type === AFPToken::TSQUAREBRACKET && $this->mCur->value === '[' ) {
-				if ( !$this->mVars->varIsSet( $varname ) ) {
+				if ( !$this->mVariables->varIsSet( $varname ) ) {
 					throw new AFPUserVisibleException( 'unrecognisedvar',
 						$this->mCur->pos,
 						[ $varname ]
 					);
 				}
-				$array = $this->mVars->getVar( $varname );
+				$array = $this->mVariables->getVar( $varname );
 				if ( $array->type !== AFPData::DARRAY ) {
 					throw new AFPUserVisibleException( 'notarray', $this->mCur->pos, [] );
 				}
@@ -923,7 +923,7 @@ class AbuseFilterParser {
 			$var = $deprecatedVars[$var];
 		}
 		if ( !( array_key_exists( $var, $builderValues['vars'] )
-			|| $this->mVars->varIsSet( $var ) )
+			|| $this->mVariables->varIsSet( $var ) )
 		) {
 			$msg = array_key_exists( $var, AbuseFilter::$disabledVars ) ?
 				'disabledvar' :
@@ -938,7 +938,7 @@ class AbuseFilterParser {
 				[ $var ]
 			);
 		} else {
-			return $this->mVars->getVar( $var );
+			return $this->mVariables->getVar( $var );
 		}
 	}
 
@@ -956,7 +956,7 @@ class AbuseFilterParser {
 		) {
 			throw new AFPUserVisibleException( 'overridebuiltin', $this->mCur->pos, [ $name ] );
 		}
-		$this->mVars->setVar( $name, $value );
+		$this->mVariables->setVar( $name, $value );
 	}
 
 	/**
