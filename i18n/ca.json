@@ -23,7 +23,8 @@
 			"Toniher",
 			"Macofe",
 			"Jaumeortola",
-			"Matma Rex"
+			"Matma Rex",
+			"Townie"
 		]
 	},
 	"abusefilter-desc": "Aplica heurística automàtica a les edicions",
@@ -315,7 +316,7 @@
 	"abusefilter-history-select-user": "Usuari:",
 	"abusefilter-history-select-submit": "Afina",
 	"abusefilter-history-diff": "Canvis",
-	"abusefilter-history-error-hidden": "El filtre que heu demanat s’ha amagat, i no podeu veure’n l’historial.",
+	"abusefilter-history-error-hidden": "El filtre que heu demanat s'ha amagat, i no podeu veure'n l'historial.",
 	"abusefilter-exception-unexpectedatend": "Inesperat \"$2\" al caràcter $1.",
 	"abusefilter-exception-expectednotfound": "S'esperava un  $2  a les de caràcter  $1 , que no es troba (s'ha trobat  $3   $4  en el seu lloc).",
 	"abusefilter-exception-unrecognisedkeyword": "Paraula clau no reconeguda $2 al caràcter $1 .",
