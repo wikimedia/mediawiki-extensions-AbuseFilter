@@ -1159,4 +1159,140 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			],
 		];
 	}
+
+	/**
+	 * Test storing and loading the var dump. See also AbuseFilterTest::testVarDump
+	 *
+	 * @param int[] $createIds IDs of the filters to create
+	 * @param array $actionParams Details of the action we need to execute to trigger filters
+	 * @param string[] $usedVars The variables effectively computed by filters in $createIds.
+	 *   We'll search these in the stored dump.
+	 * @covers AbuseFilter::storeVarDump
+	 * @covers AbuseFilter::loadVarDump
+	 * @covers AbuseFilterVariableHolder::dumpAllVars
+	 * @dataProvider provideFiltersAndVariables
+	 */
+	public function testVarDump( $createIds, $actionParams, $usedVars ) {
+		self::createFilters( $createIds );
+		// We don't care about consequences here
+		self::doAction( $actionParams );
+
+		$dbw = wfGetDB( DB_MASTER );
+		// We just take a dump from a single filters, as they're all identical for the same action
+		$dumpID = $dbw->selectField(
+			'abuse_filter_log',
+			'afl_var_dump',
+			'',
+			__METHOD__,
+			[ 'ORDER BY' => 'afl_timestamp DESC' ]
+		);
+
+		$vars = AbuseFilter::loadVarDump( $dumpID )->mVars;
+
+		$interestingVars = array_intersect_key( $vars, array_fill_keys( $usedVars, true ) );
+
+		sort( $usedVars );
+		ksort( $interestingVars );
+		$this->assertEquals(
+			$usedVars,
+			array_keys( $interestingVars ),
+			"The saved variables aren't the expected ones."
+		);
+		$this->assertContainsOnlyInstancesOf(
+			AFPData::class,
+			$interestingVars,
+			'Some variables have not been computed.'
+		);
+	}
+
+	/**
+	 * Data provider for testVarDump
+	 *
+	 * @return array
+	 */
+	public function provideFiltersAndVariables() {
+		return [
+			[
+				[ 1, 2 ],
+				[
+					'action' => 'edit',
+					'target' => 'Test page',
+					'oldText' => 'Some old text for the test.',
+					'newText' => 'I like foo',
+					'summary' => 'Test AbuseFilter for edit action.'
+				],
+				[ 'added_lines', 'action' ]
+			],
+			[
+				[ 2 ],
+				[
+					'action' => 'move',
+					'target' => 'Test page',
+					'newTitle' => 'Another test page'
+				],
+				[ 'action', 'moved_to_title' ]
+			],
+			[
+				[ 5 ],
+				[
+					'action' => 'edit',
+					'target' => 'User:FilteredUser',
+					'oldText' => 'Hey.',
+					'newText' => 'I am a very nice user, really!',
+					'summary' => ''
+				],
+				[ 'user_name' ]
+			],
+			[
+				[ 2, 3, 7, 8 ],
+				[
+					'action' => 'edit',
+					'target' => 'Link',
+					'oldText' => 'What is a link?',
+					'newText' => 'A link is something like this: [[Link|]].',
+					'summary' => 'Explaining'
+				],
+				[ 'action', 'timestamp', 'added_lines_pst' ]
+			],
+			[
+				[ 8, 10 ],
+				[
+					'action' => 'edit',
+					'target' => 'Anything',
+					'oldText' => 'Bar',
+					'newText' => 'Foo',
+					'summary' => ''
+				],
+				[ 'added_lines_pst' ]
+			],
+			[
+				[ 2, 3 ],
+				[
+					'action' => 'delete',
+					'target' => 'Test page'
+				],
+				[ 'action', 'page_prefixedtitle' ]
+			],
+			[
+				[ 10, 13 ],
+				[
+					'action' => 'edit',
+					'target' => 'Tyger! Tyger! Burning bright',
+					'oldText' => 'In the forests of the night',
+					'newText' => 'What immortal hand or eye',
+					'summary' => 'Could frame thy fearful symmetry?'
+				],
+				[]
+			],
+			[
+				[ 15 ],
+				[
+					'action' => 'createaccount',
+					'target' => 'User:AnotherUser',
+					'username' => 'AnotherUser'
+				],
+				[ 'action' ]
+			],
+		];
+	}
 }
