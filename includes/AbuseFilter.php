@@ -1750,7 +1750,9 @@ class AbuseFilter {
 				if ( !isset( self::$tagsToSet[$actionID] ) ) {
 					self::$tagsToSet[$actionID] = $tags;
 				} else {
-					self::$tagsToSet[$actionID] = array_merge( self::$tagsToSet[$actionID], $tags );
+					self::$tagsToSet[$actionID] = array_unique(
+						array_merge( self::$tagsToSet[$actionID], $tags )
+					);
 				}
 			}
 		}

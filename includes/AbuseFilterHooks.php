@@ -386,6 +386,7 @@ class AbuseFilterHooks {
 
 		if ( isset( AbuseFilter::$tagsToSet[$actionID] ) ) {
 			$recentChange->addTags( AbuseFilter::$tagsToSet[$actionID] );
+			unset( AbuseFilter::$tagsToSet[$actionID] );
 		}
 	}
 
