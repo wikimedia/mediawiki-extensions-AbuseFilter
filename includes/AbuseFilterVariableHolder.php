@@ -13,11 +13,6 @@ class AbuseFilterVariableHolder {
 	 */
 	public $mVarsVersion = 2;
 
-	public function __construct() {
-		// Backwards-compatibility (unused now)
-		$this->setVar( 'minor_edit', false );
-	}
-
 	/**
 	 * @param string $variable
 	 * @param mixed $datum
@@ -63,6 +58,9 @@ class AbuseFilterVariableHolder {
 			} elseif ( $this->mVars[$variable] instanceof AFPData ) {
 				return $this->mVars[$variable];
 			}
+		} elseif ( array_key_exists( $variable, AbuseFilter::$disabledVars ) ) {
+			wfWarn( "Disabled variable $variable requested. Please fix the filter as this will " .
+				"be removed soon." );
 		}
 		return new AFPData();
 	}
