@@ -144,8 +144,6 @@ class AbuseFilterVariableHolder {
 	 * @return array
 	 */
 	public function dumpAllVars( $compute = [], $includeUserVars = false ) {
-		$allVarNames = array_keys( $this->mVars );
-		$exported = [];
 		$coreVariables = [];
 
 		if ( !$includeUserVars ) {
@@ -153,34 +151,23 @@ class AbuseFilterVariableHolder {
 			// to filter user set ones by name
 			global $wgRestrictionTypes;
 
-			$coreVariables = AbuseFilter::getBuilderValues();
-			$coreVariables = array_keys( $coreVariables['vars'] );
+			$activeVariables = array_keys( AbuseFilter::getBuilderValues()['vars'] );
 			$deprecatedVariables = array_keys( AbuseFilter::getDeprecatedVariables() );
-			$coreVariables = array_merge( $coreVariables, $deprecatedVariables );
+			$coreVariables = array_merge( $activeVariables, $deprecatedVariables );
 
-			// Title vars can have several prefixes
-			$prefixes = [ 'MOVED_FROM', 'MOVED_TO', 'PAGE' ];
-			$titleVars = [
-				'_ID',
-				'_NAMESPACE',
-				'_TITLE',
-				'_PREFIXEDTITLE',
-				'_recent_contributors',
-				'_age',
-			];
+			// @todo _restrictions variables should be handled in builderValues as well.
+			$prefixes = [ 'moved_from', 'moved_to', 'page' ];
 			foreach ( $wgRestrictionTypes as $action ) {
-				$titleVars[] = "_restrictions_$action";
-			}
-
-			foreach ( $titleVars as $var ) {
 				foreach ( $prefixes as $prefix ) {
-					$coreVariables[] = $prefix . $var;
+					$coreVariables[] = "{$prefix}_restrictions_$action";
 				}
 			}
+
 			$coreVariables = array_map( 'strtolower', $coreVariables );
 		}
 
-		foreach ( $allVarNames as $varName ) {
+		$exported = [];
+		foreach ( array_keys( $this->mVars ) as $varName ) {
 			if (
 				( $includeUserVars || in_array( strtolower( $varName ), $coreVariables ) ) &&
 				// Only include variables set in the extension in case $includeUserVars is false
