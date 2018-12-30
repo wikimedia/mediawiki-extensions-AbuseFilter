@@ -469,6 +469,20 @@ class AbuseFilter {
 	}
 
 	/**
+	 * Computes all variables unrelated to title and user. In general, these variables are known
+	 * even without an ongoing action.
+	 *
+	 * @return AbuseFilterVariableHolder
+	 */
+	public static function generateStaticVars() {
+		$vars = new AbuseFilterVariableHolder();
+
+		// For now, we don't have variables to add; other extensions could.
+		Hooks::run( 'AbuseFilter-generateStaticVars', [ $vars ] );
+		return $vars;
+	}
+
+	/**
 	 * @param string $filter
 	 * @return true|array True when successful, otherwise a two-element array with exception message
 	 *  and character position of the syntax error
@@ -493,8 +507,11 @@ class AbuseFilter {
 			return 'BADSYNTAX';
 		}
 
+		// Static vars are the only ones available
+		$vars = self::generateStaticVars();
+		$vars->setVar( 'timestamp', wfTimestamp( TS_UNIX ) );
 		/** @var $parser AbuseFilterParser */
-		$parser = new $wgAbuseFilterParserClass;
+		$parser = new $wgAbuseFilterParserClass( $vars );
 
 		return $parser->evaluateExpression( $expr );
 	}
@@ -1114,6 +1131,8 @@ class AbuseFilter {
 
 		// Add vars from extensions
 		Hooks::run( 'AbuseFilter-filterAction', [ &$vars, $title ] );
+		$vars->addHolders( self::generateStaticVars() );
+
 		$vars->setVar( 'context', 'filter' );
 		$vars->setVar( 'timestamp', time() );
 
@@ -2735,6 +2754,7 @@ class AbuseFilter {
 		if ( $vars ) {
 			$vars->setVar( 'context', 'generated' );
 			$vars->setVar( 'timestamp', wfTimestamp( TS_UNIX, $row->rc_timestamp ) );
+			$vars->addHolders( self::generateStaticVars() );
 		}
 
 		return $vars;
