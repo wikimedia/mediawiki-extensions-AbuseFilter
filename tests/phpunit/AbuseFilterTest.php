@@ -533,6 +533,33 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * @covers \AbuseFilter::bufferTagsToSetByAction
+	 */
+	public function testTagsToSetWillNotContainDuplicates() {
+		$this->assertSame( [], AbuseFilter::$tagsToSet, 'precondition' );
+
+		$title = Title::newFromText( __METHOD__ );
+		$vars = new AbuseFilterVariableHolder();
+		$vars->setVar( 'ACTION', '' );
+		$user = $this->getTestUser()->getUser();
+
+		$iterations = 2;
+		while ( $iterations-- ) {
+			AbuseFilter::takeConsequenceAction(
+				'tag',
+				[ 'uniqueTag' ],
+				$title,
+				$vars,
+				'',
+				0,
+				$user
+			);
+
+			$this->assertSame( [ 'uniqueTag' ], reset( AbuseFilter::$tagsToSet ) );
+		}
+	}
+
+	/**
 	 * Check that version comparing works well
 	 *
 	 * @param array $firstVersion [ stdClass, array ]
