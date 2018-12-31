@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Logger\LoggerFactory;
+
 /**
  * Tokenizer for AbuseFilter rules.
  */
@@ -10,7 +12,7 @@ class AbuseFilterTokenizer {
 	const ID_SYMBOL_RE = '/[0-9A-Za-z_]+/A';
 	const OPERATOR_RE =
 		'/(\!\=\=|\!\=|\!|\*\*|\*|\/|\+|\-|%|&|\||\^|\:\=|\?|\:|\<\=|\<|\>\=|\>|\=\=\=|\=\=|\=)/A';
-	const RADIX_RE = '/([0-9A-Fa-f]+(?:\.\d*)?|\.\d+)([bxo])?/Au';
+	const RADIX_RE = '/([0-9A-Fa-f]+(?:\.\d*)?|\.\d+)([bxo])?(?![a-z])/Au';
 	const WHITESPACE = "\011\012\013\014\015\040";
 
 	// Order is important. The punctuation-matching regex requires that
@@ -174,6 +176,14 @@ class AbuseFilterTokenizer {
 			}
 
 			$base = $baseChar ? self::$bases[$baseChar] : 10;
+			if ( $base !== 10 ) {
+				// Our syntax is awful. Keep track of every use, and possibly change it!
+				$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+				$logger->info(
+					'Found non-decimal number. Base: {number_base}, number: {number_input}',
+					[ 'number_base' => $base, 'number_input' => $input ]
+				);
+			}
 
 			// Check against the appropriate character class for input validation
 
