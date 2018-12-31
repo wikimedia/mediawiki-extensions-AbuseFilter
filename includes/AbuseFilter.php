@@ -161,7 +161,6 @@ class AbuseFilter {
 			'moved_to_recent_contributors' => 'movedto-recent-contributors',
 			'moved_to_first_contributor' => 'movedto-first-contributor',
 			'old_links' => 'old-links',
-			'minor_edit' => 'minor-edit',
 			'file_sha1' => 'file-sha1',
 			'file_size' => 'file-size',
 			'file_mime' => 'file-mime',
@@ -175,7 +174,8 @@ class AbuseFilter {
 	/** @var array Old vars which aren't in use anymore */
 	public static $disabledVars = [
 		'old_text' => 'old-text-stripped',
-		'old_html' => 'old-html'
+		'old_html' => 'old-html',
+		'minor_edit' => 'minor-edit'
 	];
 
 	public static $deprecatedVars = [

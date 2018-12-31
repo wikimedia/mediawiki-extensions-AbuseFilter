@@ -822,7 +822,6 @@ class AbuseFilterHooks {
 
 			// Load vars for filters to check
 			$vars->setVar( 'summary', $summary );
-			$vars->setVar( 'minor_edit', false );
 			$vars->setVar( 'old_wikitext', $oldtext );
 			$vars->setVar( 'new_wikitext', $text );
 			// TODO: set old_content and new_content vars, use them
