@@ -404,7 +404,7 @@
 	"abusefilter-edit-builder-vars-old-text-stripped": "نص الصفحة القديم، منزوع منه أي تهيئة",
 	"abusefilter-edit-builder-vars-old-links": "الوصلات في الصفحة، قبل التعديل",
 	"abusefilter-edit-builder-vars-old-html": "نص الويكي للصفحة الأصلية، المحلل إلى HTML (لم يعد قيد الاستخدام)",
-	"abusefilter-edit-builder-vars-minor-edit": "ما إذا كان التعديل معلم عليه كطفيف أم لا",
+	"abusefilter-edit-builder-vars-minor-edit": "ما إذا كان التعديل معلم عليه كطفيف (لا مزيد من الاستخدام)",
 	"abusefilter-edit-builder-vars-file-sha1": "هاش SHA1 لمحتويات الملف",
 	"abusefilter-edit-builder-vars-file-size": "حجم الملف بالبايت",
 	"abusefilter-edit-builder-vars-file-mime": "نوع MIME للملف",

@@ -405,7 +405,7 @@
 	"abusefilter-edit-builder-vars-old-text-stripped": "Alter Seitentext, von jeglicher Textauszeichnung befreit",
 	"abusefilter-edit-builder-vars-old-links": "Links der Seite, vor der Bearbeitung",
 	"abusefilter-edit-builder-vars-old-html": "HTML-Quelltext der alten Version (nicht mehr in Verwendung)",
-	"abusefilter-edit-builder-vars-minor-edit": "Bearbeitung wurde als Kleinigkeit markiert",
+	"abusefilter-edit-builder-vars-minor-edit": "Ob die Bearbeitung als geringfügig markiert ist oder nicht (nicht mehr in Verwendung)",
 	"abusefilter-edit-builder-vars-file-sha1": "SHA1-Hash von Dateiinhalt",
 	"abusefilter-edit-builder-vars-file-size": "Dateigröße in Bytes",
 	"abusefilter-edit-builder-vars-file-mime": "MIME-Typ der Datei",

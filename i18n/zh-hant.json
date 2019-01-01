@@ -414,7 +414,7 @@
 	"abusefilter-edit-builder-vars-old-text-stripped": "舊頁面文字，移除所有標籤",
 	"abusefilter-edit-builder-vars-old-links": "舊內容中的所有外部連結",
 	"abusefilter-edit-builder-vars-old-html": "舊頁面 Wikitext，已解析為 HTML（已不使用）",
-	"abusefilter-edit-builder-vars-minor-edit": "是否將編輯標示為小修訂",
+	"abusefilter-edit-builder-vars-minor-edit": "是否將編輯標示為小修訂（不再使用）",
 	"abusefilter-edit-builder-vars-file-sha1": "檔案內容的 SHA1 雜湊值",
 	"abusefilter-edit-builder-vars-file-size": "文件大小（單位：位元組）",
 	"abusefilter-edit-builder-vars-file-mime": "文件的MIME類型",

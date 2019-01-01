@@ -224,6 +224,8 @@
 	"abusefilter-edit-throttle-count": "허용할 동작 수:",
 	"abusefilter-edit-throttle-period": "주기 (단위: 초):",
 	"abusefilter-edit-throttle-groups": "속도 제한 묶기 기준:",
+	"abusefilter-edit-throttle-hidden-placeholder": "AND로 병합하려면 쉼표로 구분하고, OR로 병합하려면 줄을 나누십시오",
+	"abusefilter-edit-throttle-placeholder": "AND로 병합하려면 쉼표로 구분하고, OR로 병합하려면 하나씩 추가하십시오",
 	"abusefilter-throttle-ip": "IP 주소",
 	"abusefilter-throttle-user": "사용자 계정",
 	"abusefilter-throttle-range": "/16 대역",

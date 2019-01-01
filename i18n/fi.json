@@ -371,7 +371,7 @@
 	"abusefilter-edit-builder-vars-old-text-stripped": "Sivun vanhempi teksti, riisuttuna koodimerkinnöistä",
 	"abusefilter-edit-builder-vars-old-links": "Linkit sivulla ennen muokkausta",
 	"abusefilter-edit-builder-vars-old-html": "Vanha sivun wikiteksti jäsennettynä HTML:ksi (ei enää käytössä)",
-	"abusefilter-edit-builder-vars-minor-edit": "Onko muokkaus merkitty pieneksi muutokseksi vai ei",
+	"abusefilter-edit-builder-vars-minor-edit": "Onko muokkaus merkitty pieneksi muutokseksi vai ei (ei enää käytössä)",
 	"abusefilter-edit-builder-vars-file-sha1": "Tiedoston sisällön SHA1-tiiviste",
 	"abusefilter-edit-builder-vars-file-size": "Tiedoston koko tavuina",
 	"abusefilter-edit-builder-vars-file-mime": "Tiedoston MIME-tyyppi",

@@ -390,7 +390,7 @@
 	"abusefilter-edit-builder-vars-old-text-stripped": "Původní text stránky bez všech značek",
 	"abusefilter-edit-builder-vars-old-links": "Odkazy na stránce před editací",
 	"abusefilter-edit-builder-vars-old-html": "Původní text stránky naformátovaný do HTML (už se nepoužívá)",
-	"abusefilter-edit-builder-vars-minor-edit": "Zda byla editace označena jako malá",
+	"abusefilter-edit-builder-vars-minor-edit": "Zda byla editace označena jako malá (už se nepoužívá)",
 	"abusefilter-edit-builder-vars-file-sha1": "SHA-1 otisk obsahu souboru",
 	"abusefilter-edit-builder-vars-file-size": "Velikost souboru v bajtech",
 	"abusefilter-edit-builder-vars-file-mime": "MIME typ souboru",

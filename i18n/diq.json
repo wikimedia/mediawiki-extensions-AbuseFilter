@@ -290,7 +290,7 @@
 	"abusefilter-edit-builder-vars-old-text-stripped": "Nuştêyê pel ê kihanî, te de markup çini yo",
 	"abusefilter-edit-builder-vars-old-links": "gıreyê ke pel deyi, verê vurnayişi",
 	"abusefilter-edit-builder-vars-old-html": "pelê vikimetni yo kehen, qey HTML  arêdiya",
-	"abusefilter-edit-builder-vars-minor-edit": "vurnayiş bı qıci işaret beno nê nêbeno",
+	"abusefilter-edit-builder-vars-minor-edit": "Vurnayışo qıco ke işaret bi ya zi nêbiyo (endi nêvêrrno)",
 	"abusefilter-edit-builder-vars-file-sha1": "Tedeesteyê dosya yê SHA1 hashî",
 	"abusefilter-edit-builder-vars-file-size": "Ebata bayta dosya",
 	"abusefilter-edit-builder-vars-file-mime": "MIME babeta dosya",
