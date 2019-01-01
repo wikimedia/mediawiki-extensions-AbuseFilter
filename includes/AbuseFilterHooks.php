@@ -390,11 +390,20 @@ class AbuseFilterHooks {
 			$recentChange->getAttribute( 'rc_namespace' ),
 			$recentChange->getAttribute( 'rc_title' )
 		);
-		$action = $recentChange->getAttribute( 'rc_log_type' ) ?
-			$recentChange->getAttribute( 'rc_log_type' ) : 'edit';
-		$actionID = implode( '-', [
-			$title->getPrefixedText(), $recentChange->getAttribute( 'rc_user_text' ), $action
-		] );
+
+		$logType = $recentChange->getAttribute( 'rc_log_type' ) ?: 'edit';
+		if ( $logType === 'newusers' ) {
+			$action = $recentChange->getAttribute( 'rc_log_action' ) === 'autocreate' ?
+				'autocreateaccount' :
+				'createaccount';
+		} else {
+			$action = $logType;
+		}
+		$actionID = AbuseFilter::getTaggingActionId(
+			$action,
+			$title,
+			$recentChange->getAttribute( 'rc_user_text' )
+		);
 
 		if ( isset( AbuseFilter::$tagsToSet[$actionID] ) ) {
 			$recentChange->addTags( AbuseFilter::$tagsToSet[$actionID] );

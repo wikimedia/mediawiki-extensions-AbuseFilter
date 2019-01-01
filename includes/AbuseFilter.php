@@ -622,11 +622,16 @@ class AbuseFilter {
 		}
 
 		if ( $title instanceof Title && self::$condCount > $wgAbuseFilterConditionLimit ) {
-			$actionID = implode( '-', [
-				$title->getPrefixedText(),
-				$vars->getVar( 'user_name' )->toString(),
-				$vars->getVar( 'action' )->toString()
-			] );
+			$action = $vars->getVar( 'action' )->toString();
+			if ( strpos( $action, 'createaccount' ) === false ) {
+				$username = $vars->getVar( 'user_name' )->toString();
+				$actionTitle = $title;
+			} else {
+				$username = $vars->getVar( 'accountname' )->toString();
+				$actionTitle = Title::makeTitleSafe( NS_USER, $username );
+			}
+
+			$actionID = self::getTaggingActionId( $action, $actionTitle, $username );
 			self::bufferTagsToSetByAction( [ $actionID => [ 'abusefilter-condition-limit' ] ] );
 		}
 
@@ -1237,6 +1242,24 @@ class AbuseFilter {
 			} else {
 				self::addLogEntries( $actions_taken, $log_template, $vars, $group );
 			}
+
+			if ( !$status->isGood() ) {
+				// We're going to prevent the action, so it won't have tags applied (onRecentChangeSave
+				// won't be called).
+				if ( $action == 'createaccount' || $action == 'autocreateaccount' ) {
+					$username = $vars->getVar( 'accountname' )->toString();
+					$actionTitle = Title::makeTitleSafe( NS_USER, $username );
+				} else {
+					$username = $user->getName();
+					$actionTitle = $title;
+				}
+				$actionID = self::getTaggingActionId(
+					$action,
+					$actionTitle,
+					$username
+				);
+				unset( self::$tagsToSet[$actionID] );
+			}
 		}
 
 		return $status;
@@ -1720,11 +1743,16 @@ class AbuseFilter {
 				break;
 			case 'tag':
 				// Mark with a tag on recentchanges.
-				$actionID = implode( '-', [
-					$title->getPrefixedText(), $user->getName(),
-					$vars->getVar( 'ACTION' )->toString()
-				] );
+				$userAction = $vars->getVar( 'action' )->toString();
+				if ( strpos( $userAction, 'createaccount' ) === false ) {
+					$username = $user->getName();
+					$actionTitle = $title;
+				} else {
+					$username = $vars->getVar( 'accountname' )->toString();
+					$actionTitle = Title::makeTitleSafe( NS_USER, $username );
+				}
 
+				$actionID = self::getTaggingActionId( $userAction, $actionTitle, $username );
 				self::bufferTagsToSetByAction( [ $actionID => $parameters ] );
 				break;
 			default:
@@ -1751,6 +1779,28 @@ class AbuseFilter {
 		}
 
 		return $message;
+	}
+
+	/**
+	 * Get an identifier for the given action to be used in self::$tagsToSet
+	 *
+	 * @param string $action The name of the current action, as used by AbuseFilter (e.g. 'edit'
+	 *   or 'createaccount')
+	 * @param Title $title The title where the current action is executed on. This is the user page
+	 *   for account creations.
+	 * @param string $username Of the user executing the action (as returned by User::getName()).
+	 *   For account creation, this is the name of the new account.
+	 * @return string
+	 */
+	public static function getTaggingActionId( $action, Title $title, $username ) {
+		return implode(
+			'-',
+			[
+				$title->getPrefixedText(),
+				$username,
+				$action
+			]
+		);
 	}
 
 	/**
