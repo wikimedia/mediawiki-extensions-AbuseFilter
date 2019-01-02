@@ -7,16 +7,22 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 		AFHighlightRules = function () {
 			var cfg = mw.config.get( 'aceConfig' ),
 				constants = ( 'true|false|null' ),
-				keywordMapper = this.createKeywordMapper(
+				keywords = this.createKeywordMapper(
 					{
 						keyword: cfg.keywords,
 						'support.function': cfg.functions,
-						'constant.language': constants,
+						'constant.language': constants
+					},
+					'identifier'
+				),
+				variables = this.createKeywordMapper(
+					{
 						'variable.language': cfg.variables,
 						'invalid.deprecated': cfg.deprecated,
 						'invalid.illegal': cfg.disabled
 					},
-					'identifier'
+					'identifier',
+					true
 				),
 				integer = '(?:(?:[1-9]\\d*)|(?:0))',
 				fraction = '(?:\\.\\d+)',
@@ -44,7 +50,10 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 					token: 'constant.numeric',
 					regex: integer + '\\b'
 				}, {
-					token: keywordMapper,
+					token: variables,
+					regex: '[a-zA-Z_][a-zA-Z0-9_]*\\b'
+				}, {
+					token: keywords,
 					regex: '[a-zA-Z_][a-zA-Z0-9_]*\\b'
 				}, {
 					token: 'keyword.operator',

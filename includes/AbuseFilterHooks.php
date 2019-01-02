@@ -162,7 +162,7 @@ class AbuseFilterHooks {
 		$vars = new AbuseFilterVariableHolder();
 		$vars->addHolders(
 			AbuseFilter::generateUserVars( $user ),
-			AbuseFilter::generateTitleVars( $title, 'PAGE' )
+			AbuseFilter::generateTitleVars( $title, 'page' )
 		);
 		$vars->setVar( 'action', 'edit' );
 		$vars->setVar( 'summary', $summary );
@@ -347,8 +347,8 @@ class AbuseFilterHooks {
 			AbuseFilter::generateTitleVars( $oldTitle, 'MOVED_FROM' ),
 			AbuseFilter::generateTitleVars( $newTitle, 'MOVED_TO' )
 		);
-		$vars->setVar( 'SUMMARY', $reason );
-		$vars->setVar( 'ACTION', 'move' );
+		$vars->setVar( 'summary', $reason );
+		$vars->setVar( 'action', 'move' );
 
 		$result = AbuseFilter::filterAction( $vars, $oldTitle, 'default', $user );
 		$status->merge( $result );
@@ -368,11 +368,11 @@ class AbuseFilterHooks {
 
 		$vars->addHolders(
 			AbuseFilter::generateUserVars( $user ),
-			AbuseFilter::generateTitleVars( $article->getTitle(), 'PAGE' )
+			AbuseFilter::generateTitleVars( $article->getTitle(), 'page' )
 		);
 
-		$vars->setVar( 'SUMMARY', $reason );
-		$vars->setVar( 'ACTION', 'delete' );
+		$vars->setVar( 'summary', $reason );
+		$vars->setVar( 'action', 'delete' );
 
 		$filter_result = AbuseFilter::filterAction( $vars, $article->getTitle(), 'default', $user );
 
@@ -780,9 +780,9 @@ class AbuseFilterHooks {
 		$vars = new AbuseFilterVariableHolder;
 		$vars->addHolders(
 			AbuseFilter::generateUserVars( $user ),
-			AbuseFilter::generateTitleVars( $title, 'PAGE' )
+			AbuseFilter::generateTitleVars( $title, 'page' )
 		);
-		$vars->setVar( 'ACTION', $action );
+		$vars->setVar( 'action', $action );
 
 		// We use the hexadecimal version of the file sha1.
 		// Use UploadBase::getTempFileSha1Base36 so that we don't have to calculate the sha1 sum again
