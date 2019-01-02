@@ -35,7 +35,7 @@ class AbuseFilterChangesList extends OldChangesList {
 			$examineParams['testfilter'] = $this->testFilter;
 		}
 
-		$title = SpecialPage::getTitleFor( 'AbuseFilter', 'examine/' . $rc->mAttribs['rc_id'] );
+		$title = SpecialPage::getTitleFor( 'AbuseFilter', 'examine/' . $rc->getAttribute( 'rc_id' ) );
 		$examineLink = $this->linkRenderer->makeLink(
 			$title,
 			new HtmlArmor( $this->msg( 'abusefilter-changeslist-examine' )->parse() ),
@@ -63,9 +63,9 @@ class AbuseFilterChangesList extends OldChangesList {
 	 * @param RecentChange &$rc
 	 */
 	public function insertUserRelatedLinks( &$s, &$rc ) {
-		$links = $this->getLanguage()->getDirMark() . Linker::userLink( $rc->mAttribs['rc_user'],
-				$rc->mAttribs['rc_user_text'] ) .
-				Linker::userToolLinks( $rc->mAttribs['rc_user'], $rc->mAttribs['rc_user_text'] );
+		$links = $this->getLanguage()->getDirMark() . Linker::userLink( $rc->getAttribute( 'rc_user' ),
+				$rc->getAttribute( 'rc_user_text' ) ) .
+				Linker::userToolLinks( $rc->getAttribute( 'rc_user' ), $rc->getAttribute( 'rc_user_text' ) );
 
 		if ( $this->isDeleted( $rc, Revision::DELETED_USER ) ) {
 			if ( $this->userCan( $rc, Revision::DELETED_USER ) ) {
@@ -88,13 +88,13 @@ class AbuseFilterChangesList extends OldChangesList {
 		if ( $this->isDeleted( $rc, Revision::DELETED_COMMENT ) ) {
 			if ( $this->userCan( $rc, Revision::DELETED_COMMENT ) ) {
 				return ' <span class="history-deleted">' .
-					Linker::commentBlock( $rc->mAttribs['rc_comment'], $rc->getTitle() ) . '</span>';
+					Linker::commentBlock( $rc->getAttribute( 'rc_comment' ), $rc->getTitle() ) . '</span>';
 			} else {
 				return ' <span class="history-deleted">' .
 					$this->msg( 'rev-deleted-comment' )->escaped() . '</span>';
 			}
 		} else {
-			return Linker::commentBlock( $rc->mAttribs['rc_comment'], $rc->getTitle() );
+			return Linker::commentBlock( $rc->getAttribute( 'rc_comment' ), $rc->getTitle() );
 		}
 	}
 
@@ -105,7 +105,7 @@ class AbuseFilterChangesList extends OldChangesList {
 	 * @return string
 	 */
 	public function insertLogEntry( $rc ) {
-		$formatter = LogFormatter::newFromRow( $rc->mAttribs );
+		$formatter = LogFormatter::newFromRow( $rc->getAttributes() );
 		$formatter->setContext( $this->getContext() );
 		$formatter->setAudience( LogFormatter::FOR_THIS_USER );
 		$formatter->setShowUserToolLinks( true );
