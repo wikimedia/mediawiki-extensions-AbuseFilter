@@ -402,7 +402,7 @@
 	"abusefilter-edit-builder-vars-old-text-stripped": "편집 전 마크업을 제거한 문서 내용",
 	"abusefilter-edit-builder-vars-old-links": "편집하기 전의 문서 링크",
 	"abusefilter-edit-builder-vars-old-html": "HTML로 구문 분석된 과거 문서의 위키텍스트 (더 이상 쓰이지 않음)",
-	"abusefilter-edit-builder-vars-minor-edit": "사소한 편집으로 표시할지의 여부",
+	"abusefilter-edit-builder-vars-minor-edit": "사소한 편집으로 표시할지의 여부 (더 이상 쓰이지 않음)",
 	"abusefilter-edit-builder-vars-file-sha1": "파일 내용의 SHA1 해시",
 	"abusefilter-edit-builder-vars-file-size": "파일 크기 (바이트 단위)",
 	"abusefilter-edit-builder-vars-file-mime": "파일의 MIME 타입",

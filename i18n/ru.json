@@ -414,7 +414,7 @@
 	"abusefilter-edit-builder-vars-old-text-stripped": "Текст старой страницы, лишённый разметки",
 	"abusefilter-edit-builder-vars-old-links": "Ссылки на странице до правки",
 	"abusefilter-edit-builder-vars-old-html": "Вики-текст старой страницы, преобразованный в HTML (боьше не используется)",
-	"abusefilter-edit-builder-vars-minor-edit": "Была ли правка отмечена как «малое изменение»",
+	"abusefilter-edit-builder-vars-minor-edit": "Была ли правка отмечена как «малое изменение» (больше не используется)",
 	"abusefilter-edit-builder-vars-file-sha1": "SHA1-хэш содержания файла",
 	"abusefilter-edit-builder-vars-file-size": "Размер файла в байтах",
 	"abusefilter-edit-builder-vars-file-mime": "MIME-тип файла",

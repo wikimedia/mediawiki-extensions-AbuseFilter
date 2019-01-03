@@ -408,7 +408,7 @@
 	"abusefilter-edit-builder-vars-old-text-stripped": "Gammal sidtext, med all kodning borttagen",
 	"abusefilter-edit-builder-vars-old-links": "Länkar i denna sida, före redigeringen",
 	"abusefilter-edit-builder-vars-old-html": "Gammal sidwikitext, parsad till HTML (används inte längre)",
-	"abusefilter-edit-builder-vars-minor-edit": "Huruvida redigeringen är markerad som mindre",
+	"abusefilter-edit-builder-vars-minor-edit": "Huruvida redigeringen är markerad som mindre (används inte längre)",
 	"abusefilter-edit-builder-vars-file-sha1": "SHA1-hash av filinnehållet",
 	"abusefilter-edit-builder-vars-file-size": "Storlek på filen i bytes",
 	"abusefilter-edit-builder-vars-file-mime": "MIME-typ av filen",
