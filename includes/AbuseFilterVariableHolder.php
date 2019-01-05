@@ -5,7 +5,10 @@ class AbuseFilterVariableHolder {
 	public $mVars = [];
 
 	/** @var string[] Variables used to store meta-data, we'd better be safe. See T191715 */
-	public static $varBlacklist = [ 'context', 'global_log_ids', 'local_log_ids' ];
+	public static $varBlacklist = [ 'global_log_ids', 'local_log_ids' ];
+
+	/** @var bool Whether this object is being used for an ongoing action being filtered */
+	public $forFilter = false;
 
 	/** @var int 2 is the default and means that new variables names (from T173889) should be used.
 	 *    1 means that the old ones should be used, e.g. if this object is constructed from an
@@ -89,11 +92,6 @@ class AbuseFilterVariableHolder {
 			}
 			$this->mVars = array_merge( $this->mVars, $addHolder->mVars );
 		}
-	}
-
-	public function __wakeup() {
-		// Reset the context.
-		$this->setVar( 'context', 'stored' );
 	}
 
 	/**

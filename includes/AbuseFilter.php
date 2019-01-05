@@ -1116,7 +1116,7 @@ class AbuseFilter {
 		Hooks::run( 'AbuseFilter-filterAction', [ &$vars, $title ] );
 		$vars->addHolders( self::generateStaticVars() );
 
-		$vars->setVar( 'context', 'filter' );
+		$vars->forFilter = true;
 		$vars->setVar( 'timestamp', time() );
 
 		// Get the stash key based on the relevant "input" variables
@@ -2737,7 +2737,6 @@ class AbuseFilter {
 			return null;
 		}
 		if ( $vars ) {
-			$vars->setVar( 'context', 'generated' );
 			$vars->setVar( 'timestamp', wfTimestamp( TS_UNIX, $row->rc_timestamp ) );
 			$vars->addHolders( self::generateStaticVars() );
 		}
