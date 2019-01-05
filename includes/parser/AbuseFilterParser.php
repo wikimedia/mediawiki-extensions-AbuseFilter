@@ -894,11 +894,10 @@ class AbuseFilterParser {
 	protected function setUserVariable( $name, $value ) {
 		$builderValues = AbuseFilter::getBuilderValues();
 		$deprecatedVars = AbuseFilter::getDeprecatedVariables();
-		$blacklistedValues = AbuseFilterVariableHolder::$varBlacklist;
 		if ( array_key_exists( $name, $builderValues['vars'] ) ||
 			array_key_exists( $name, AbuseFilter::$disabledVars ) ||
-			array_key_exists( $name, $deprecatedVars ) ||
-			in_array( $name, $blacklistedValues ) ) {
+			array_key_exists( $name, $deprecatedVars )
+		) {
 			throw new AFPUserVisibleException( 'overridebuiltin', $this->mCur->pos, [ $name ] );
 		}
 		$this->mVars->setVar( $name, $value );

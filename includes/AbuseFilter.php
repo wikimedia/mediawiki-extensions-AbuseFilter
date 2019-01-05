@@ -43,6 +43,12 @@ class AbuseFilter {
 	 */
 	public static $tagsToSet = [];
 
+	/**
+	 * @var array IDs of logged filters like [ page title => [ 'local' => [ids], 'global' => [ids] ] ].
+	 * @fixme avoid global state
+	 */
+	public static $logIds = [];
+
 	public static $history_mappings = [
 		'af_pattern' => 'afh_pattern',
 		'af_user' => 'afh_user',
@@ -1403,6 +1409,7 @@ class AbuseFilter {
 			'afl_wiki' => wfWikiID(),
 		];
 
+		$title = Title::makeTitle( $log_template['afl_namespace'], $log_template['afl_title'] );
 		$log_rows = [];
 		$central_log_rows = [];
 		$logged_local_filters = [];
@@ -1419,7 +1426,6 @@ class AbuseFilter {
 				$log_rows[] = $thisLog;
 				// Global logging
 				if ( $global ) {
-					$title = Title::makeTitle( $thisLog['afl_namespace'], $thisLog['afl_title'] );
 					$centralLog = $thisLog + $central_log_template;
 					$centralLog['afl_filter'] = $id;
 					$centralLog['afl_title'] = $title->getPrefixedText();
@@ -1460,7 +1466,7 @@ class AbuseFilter {
 			$user = User::newFromId( $data['afl_user'] );
 			$user->setName( $data['afl_user_text'] );
 			$entry->setPerformer( $user );
-			$entry->setTarget( Title::makeTitle( $data['afl_namespace'], $data['afl_title'] ) );
+			$entry->setTarget( $title );
 			// Additional info
 			$entry->setParameters( [
 				'action' => $data['afl_action'],
@@ -1531,8 +1537,10 @@ class AbuseFilter {
 			);
 		}
 
-		$vars->setVar( 'global_log_ids', $global_log_ids );
-		$vars->setVar( 'local_log_ids', $local_log_ids );
+		self::$logIds[ $title->getPrefixedText() ] = [
+			'local' => $local_log_ids,
+			'global' => $global_log_ids
+		];
 
 		self::checkEmergencyDisable( $group, $logged_local_filters );
 	}

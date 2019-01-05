@@ -11,8 +11,6 @@ use Wikimedia\Rdbms\IMaintainableDatabase;
 class AbuseFilterHooks {
 	const FETCH_ALL_TAGS_KEY = 'abusefilter-fetch-all-tags';
 
-	/** @var AbuseFilterVariableHolder|null */
-	private static $successfulActionVars = null;
 	/** @var WikiPage|null Make sure edit filter & edit save hooks match */
 	private static $lastEditPage = null;
 
@@ -89,7 +87,6 @@ class AbuseFilterHooks {
 			return Status::newGood();
 		}
 
-		self::$successfulActionVars = null;
 		self::$lastEditPage = null;
 
 		$user = $context->getUser();
@@ -145,7 +142,6 @@ class AbuseFilterHooks {
 			return $filter_result;
 		}
 
-		self::$successfulActionVars = $vars;
 		self::$lastEditPage = $page;
 
 		return Status::newGood();
@@ -250,51 +246,38 @@ class AbuseFilterHooks {
 		WikiPage $wikiPage, User $user, $content, $summary, $minoredit, $watchthis, $sectionanchor,
 		$flags, Revision $revision, Status $status, $baseRevId
 	) {
-		if ( !self::$successfulActionVars || !$revision ) {
-			self::$successfulActionVars = null;
-			return;
-		}
-
-		/** @var AbuseFilterVariableHolder $vars */
-		$vars = self::$successfulActionVars;
-
-		if ( $vars->getVar( 'page_prefixedtitle' )->toString() !==
-			$wikiPage->getTitle()->getPrefixedText() ||
+		$curTitle = $wikiPage->getTitle()->getPrefixedText();
+		if ( !isset( AbuseFilter::$logIds[ $curTitle ] ) || !$revision ||
 			$wikiPage !== self::$lastEditPage
 		) {
-			// This isn't the edit self::$successfulActionVars was set for
+			// This isn't the edit AbuseFilter::$logIds was set for
+			AbuseFilter::$logIds = [];
 			return;
 		}
 
 		self::$lastEditPage = null;
 
-		if ( $vars->getVar( 'local_log_ids' ) ) {
+		$logs = AbuseFilter::$logIds[ $curTitle ];
+		if ( $logs[ 'local' ] ) {
 			// Now actually do our storage
-			$log_ids = $vars->getVar( 'local_log_ids' )->toNative();
+			$dbw = wfGetDB( DB_MASTER );
 
-			if ( $log_ids !== null && count( $log_ids ) ) {
-				$dbw = wfGetDB( DB_MASTER );
-				$dbw->update( 'abuse_filter_log',
-					[ 'afl_rev_id' => $revision->getId() ],
-					[ 'afl_id' => $log_ids ],
-					__METHOD__
-				);
-			}
+			$dbw->update( 'abuse_filter_log',
+				[ 'afl_rev_id' => $revision->getId() ],
+				[ 'afl_id' => $logs['local'] ],
+				__METHOD__
+			);
 		}
 
-		if ( $vars->getVar( 'global_log_ids' ) ) {
-			$log_ids = $vars->getVar( 'global_log_ids' )->toNative();
+		if ( $logs[ 'global' ] ) {
+			global $wgAbuseFilterCentralDB;
+			$fdb = wfGetDB( DB_MASTER, [], $wgAbuseFilterCentralDB );
 
-			if ( $log_ids !== null && count( $log_ids ) ) {
-				global $wgAbuseFilterCentralDB;
-				$fdb = wfGetDB( DB_MASTER, [], $wgAbuseFilterCentralDB );
-
-				$fdb->update( 'abuse_filter_log',
-					[ 'afl_rev_id' => $revision->getId() ],
-					[ 'afl_id' => $log_ids, 'afl_wiki' => wfWikiID() ],
-					__METHOD__
-				);
-			}
+			$fdb->update( 'abuse_filter_log',
+				[ 'afl_rev_id' => $revision->getId() ],
+				[ 'afl_id' => $logs[ 'global' ], 'afl_wiki' => wfWikiID() ],
+				__METHOD__
+			);
 		}
 	}
 

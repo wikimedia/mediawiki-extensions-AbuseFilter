@@ -4,9 +4,6 @@ class AbuseFilterVariableHolder {
 	/** @var (AFPData|AFComputedVariable)[] */
 	public $mVars = [];
 
-	/** @var string[] Variables used to store meta-data, we'd better be safe. See T191715 */
-	public static $varBlacklist = [ 'global_log_ids', 'local_log_ids' ];
-
 	/** @var bool Whether this object is being used for an ongoing action being filtered */
 	public $forFilter = false;
 
@@ -103,9 +100,7 @@ class AbuseFilterVariableHolder {
 	public function exportAllVars() {
 		$exported = [];
 		foreach ( array_keys( $this->mVars ) as $varName ) {
-			if ( !in_array( $varName, self::$varBlacklist ) ) {
-				$exported[$varName] = $this->getVar( $varName )->toString();
-			}
+			$exported[$varName] = $this->getVar( $varName )->toString();
 		}
 
 		return $exported;
@@ -119,10 +114,7 @@ class AbuseFilterVariableHolder {
 	public function exportNonLazyVars() {
 		$exported = [];
 		foreach ( $this->mVars as $varName => $data ) {
-			if (
-				!( $data instanceof AFComputedVariable )
-				&& !in_array( $varName, self::$varBlacklist )
-			) {
+			if ( !( $data instanceof AFComputedVariable ) ) {
 				$exported[$varName] = $this->getVar( $varName )->toString();
 			}
 		}
@@ -169,7 +161,6 @@ class AbuseFilterVariableHolder {
 			if (
 				( $includeUserVars || in_array( strtolower( $varName ), $coreVariables ) ) &&
 				// Only include variables set in the extension in case $includeUserVars is false
-				!in_array( $varName, self::$varBlacklist ) &&
 				( $compute === true ||
 					( is_array( $compute ) && in_array( $varName, $compute ) ) ||
 					$this->mVars[$varName] instanceof AFPData
