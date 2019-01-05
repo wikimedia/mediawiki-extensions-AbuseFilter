@@ -341,7 +341,7 @@
 	"abusefilter-edit-builder-vars-old-text-stripped": "Стар текст на страницата, без форматиране",
 	"abusefilter-edit-builder-vars-old-links": "Препратки в страницата преди редакцията",
 	"abusefilter-edit-builder-vars-old-html": "Стар уикитекст, преобразуван в HTML код (вече не се използва)",
-	"abusefilter-edit-builder-vars-minor-edit": "Отбелязана ли е редакцията като малка промяна или не",
+	"abusefilter-edit-builder-vars-minor-edit": "Отбелязана ли е редакцията като малка промяна или не (извън употреба)",
 	"abusefilter-edit-builder-vars-file-sha1": "SHA1 хеш стойност на съдържанието на файла",
 	"abusefilter-edit-builder-vars-file-size": "Размер на файла в байтове",
 	"abusefilter-edit-builder-vars-file-mime": "MIME тип на файла",

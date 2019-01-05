@@ -392,7 +392,7 @@
 	"abusefilter-edit-builder-vars-old-text-stripped": "Текст старої сторінки, позбавлений розмітки",
 	"abusefilter-edit-builder-vars-old-links": "Посилання на сторінці перед редагуванням",
 	"abusefilter-edit-builder-vars-old-html": "Стара вікірозмітка сторінки, перетворена в HTML (більше не використовується)",
-	"abusefilter-edit-builder-vars-minor-edit": "Чи було редагування позначене як незначне",
+	"abusefilter-edit-builder-vars-minor-edit": "Чи було редагування позначене як незначне (більше не використовується)",
 	"abusefilter-edit-builder-vars-file-sha1": "SHA1-хеш вмісту файлу",
 	"abusefilter-edit-builder-vars-file-size": "Розмір файлу у байтах",
 	"abusefilter-edit-builder-vars-file-mime": "MIME-тип файлу",

@@ -10,7 +10,8 @@
 			"Srdjan m",
 			"Semso98",
 			"Matma Rex",
-			"BadDog"
+			"BadDog",
+			"Vlad5250"
 		]
 	},
 	"abusefilter-desc": "Dodaje automatske heuristike izmjenama.",
@@ -73,6 +74,7 @@
 	"abusefilter-log-linkoncontribs": "zapisnik zloupotrebe",
 	"abusefilter-log-linkoncontribs-text": "Zapisnik zloupotrebe za {{GENDER:$1|ovog korisnika|ovu korisnicu}}",
 	"abusefilter-log-linkonhistory": "prikaži zapisnik zloupotrebe",
+	"abusefilter-log-linkonhistory-text": "Pogledajte zapisnik zloupotrebe ove stranice",
 	"abusefilter-log-hidden": "(stavka sakrivena)",
 	"abusefilter-log-hidden-implicit": "(sakriveno jer je izmjena obrisana)",
 	"abusefilter-log-cannot-see-details": "Nemate dopuštenje da vidite detalje ovog unosa.",

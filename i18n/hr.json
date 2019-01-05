@@ -7,7 +7,8 @@
 			"Roberta F.",
 			"SpeedyGonsales",
 			"Matma Rex",
-			"Bugoslav"
+			"Bugoslav",
+			"Vlad5250"
 		]
 	},
 	"abusefilter-desc": "Primjenjuje automatsku heuristiku na uređivanja",
@@ -85,6 +86,7 @@
 	"abusefilter-log-linkoncontribs": "evidencija zloporaba",
 	"abusefilter-log-linkoncontribs-text": "Evidencija zloporaba za {{GENDER:$1|ovoga suradnika|ovu suradnicu}}",
 	"abusefilter-log-linkonhistory": "Vidi evidencije filtra zloporaba",
+	"abusefilter-log-linkonhistory-text": "Pogledajte evidencije zloupotrebe ove stranice",
 	"abusefilter-log-hidden": "(zapis je skriven)",
 	"abusefilter-log-hidden-implicit": "(skriveno jer je inačica obrisana)",
 	"abusefilter-log-cannot-see-details": "Nemate dopuštenje vidjeti potankosti ovog zapisa.",
