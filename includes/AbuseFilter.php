@@ -667,7 +667,7 @@ class AbuseFilter {
 	 * @param AbuseFilterVariableHolder $vars
 	 * @param bool $global
 	 *
-	 * @return int|null
+	 * @return int The insert ID.
 	 */
 	public static function storeVarDump( AbuseFilterVariableHolder $vars, $global = false ) {
 		global $wgCompressRevisions;
@@ -677,8 +677,8 @@ class AbuseFilter {
 		$vars = $vars->dumpAllVars( [ 'old_wikitext', 'new_wikitext' ] );
 
 		// Vars is an array with native PHP data types (non-objects) now
-		$text = serialize( $vars );
-		$flags = [ 'nativeDataArray', 'utf-8' ];
+		$text = FormatJson::encode( $vars );
+		$flags = [ 'utf-8' ];
 
 		if ( $wgCompressRevisions && function_exists( 'gzdeflate' ) ) {
 			$text = gzdeflate( $text );
@@ -693,12 +693,8 @@ class AbuseFilter {
 			} else {
 				$text = ExternalStore::insertToDefault( $text );
 			}
-			$flags[] = 'external';
 
-			if ( !$text ) {
-				// Not mission-critical, just return nothing
-				return null;
-			}
+			$flags[] = 'external';
 		}
 
 		// Store to text table
@@ -723,16 +719,27 @@ class AbuseFilter {
 	 *
 	 * @param string $stored_dump
 	 *
-	 * @return array|object|AbuseFilterVariableHolder|bool
+	 * @return AbuseFilterVariableHolder|array
 	 */
 	public static function loadVarDump( $stored_dump ) {
-		// Backward compatibility
-		if ( substr( $stored_dump, 0, strlen( 'stored-text:' ) ) !== 'stored-text:' ) {
+		// Backward compatibility for (old) blobs stored in the abuse_filter_log table
+		if ( !is_numeric( $stored_dump ) &&
+			substr( $stored_dump, 0, strlen( 'stored-text:' ) ) !== 'stored-text:' &&
+			substr( $stored_dump, 0, strlen( 'tt:' ) ) !== 'tt:'
+		) {
 			$data = unserialize( $stored_dump );
 			return is_array( $data ) ? AbuseFilterVariableHolder::newFromArray( $data ) : $data;
 		}
 
-		$text_id = substr( $stored_dump, strlen( 'stored-text:' ) );
+		if ( is_numeric( $stored_dump ) ) {
+			$text_id = (int)$stored_dump;
+		} elseif ( strpos( $stored_dump, 'stored-text:' ) !== false ) {
+			$text_id = (int)str_replace( 'stored-text:', '', $stored_dump );
+		} elseif ( strpos( $stored_dump, 'tt:' ) !== false ) {
+			$text_id = (int)str_replace( 'tt:', '', $stored_dump );
+		} else {
+			throw new LogicException( "Cannot understand format: $stored_dump" );
+		}
 
 		$dbr = wfGetDB( DB_REPLICA );
 
@@ -744,10 +751,12 @@ class AbuseFilter {
 		);
 
 		if ( !$text_row ) {
+			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+			$logger->warning( __METHOD__ . ": no text row found for input $stored_dump." );
 			return new AbuseFilterVariableHolder;
 		}
 
-		$flags = explode( ',', $text_row->old_flags );
+		$flags = $text_row->old_flags === '' ? [] : explode( ',', $text_row->old_flags );
 		$text = $text_row->old_text;
 
 		if ( in_array( 'external', $flags ) ) {
@@ -758,9 +767,17 @@ class AbuseFilter {
 			$text = gzinflate( $text );
 		}
 
-		$obj = unserialize( $text );
+		$obj = FormatJson::decode( $text, true );
+		if ( $obj === null ) {
+			// Temporary code until all rows will be JSON-encoded
+			$obj = unserialize( $text );
+		}
 
-		if ( in_array( 'nativeDataArray', $flags ) ) {
+		if ( in_array( 'nativeDataArray', $flags ) ||
+			// Temporary condition: we don't add the flag anymore, but the updateVarDump
+			// script could be still running and we cannot assume that this branch is the default.
+			( is_array( $obj ) && array_key_exists( 'action', $obj ) )
+		) {
 			$vars = $obj;
 			$obj = AbuseFilterVariableHolder::newFromArray( $vars );
 			// If old variable names are used, make sure to keep them
