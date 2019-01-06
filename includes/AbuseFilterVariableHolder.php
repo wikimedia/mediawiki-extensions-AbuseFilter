@@ -21,10 +21,8 @@ class AbuseFilterVariableHolder {
 
 	/**
 	 * @var (AFPData|AFComputedVariable)[]
-	 * @fixme This should be private, but it isn't because of T231542: there are serialized instances
-	 *  stored in the DB, and mVars wouldn't be available in HHVM after deserializing them (T213006)
 	 */
-	public $mVars = [];
+	private $mVars = [];
 
 	/** @var bool Whether this object is being used for an ongoing action being filtered */
 	public $forFilter = false;
@@ -271,10 +269,7 @@ class AbuseFilterVariableHolder {
 			'get-page-restrictions',
 			'simple-user-accessor',
 			'user-age',
-			'user-groups',
-			'user-rights',
 			'revision-text-by-id',
-			'revision-text-by-timestamp'
 		];
 
 		/** @var AFComputedVariable[] $missingVars */
@@ -287,13 +282,5 @@ class AbuseFilterVariableHolder {
 				$this->setVar( $name, $value );
 			}
 		}
-	}
-
-	/**
-	 * @fixme Back-compat hack for old objects serialized and stored in the DB.
-	 * Remove this once T213006 is done.
-	 */
-	public function __wakeup() {
-		$this->keywordsManager = AbuseFilterServices::getKeywordsManager();
 	}
 }

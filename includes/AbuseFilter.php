@@ -218,42 +218,24 @@ class AbuseFilter {
 	 * Retrieve a var dump from External Storage or the text table
 	 * Some of this code is stolen from Revision::loadText et al
 	 *
-	 * @param string $stored_dump
+	 * @param string $storedID "tt:/$id"
 	 *
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function loadVarDump( $stored_dump ) : AbuseFilterVariableHolder {
-		// Backward compatibility for (old) blobs stored in the abuse_filter_log table
-		if ( !is_numeric( $stored_dump ) &&
-			substr( $stored_dump, 0, strlen( 'stored-text:' ) ) !== 'stored-text:' &&
-			substr( $stored_dump, 0, strlen( 'tt:' ) ) !== 'tt:'
-		) {
-			$data = unserialize( $stored_dump );
-			return is_array( $data ) ? AbuseFilterVariableHolder::newFromArray( $data ) : $data;
-		}
-
-		if ( is_numeric( $stored_dump ) ) {
-			$text_id = (int)$stored_dump;
-		} elseif ( strpos( $stored_dump, 'stored-text:' ) !== false ) {
-			$text_id = (int)str_replace( 'stored-text:', '', $stored_dump );
-		} elseif ( strpos( $stored_dump, 'tt:' ) !== false ) {
-			$text_id = (int)str_replace( 'tt:', '', $stored_dump );
-		} else {
-			throw new LogicException( "Cannot understand format: $stored_dump" );
-		}
+	public static function loadVarDump( $storedID ) : AbuseFilterVariableHolder {
+		$textID = (int)str_replace( 'tt:', '', $storedID );
 
 		$dbr = wfGetDB( DB_REPLICA );
-
 		$text_row = $dbr->selectRow(
 			'text',
 			[ 'old_text', 'old_flags' ],
-			[ 'old_id' => $text_id ],
+			[ 'old_id' => $textID ],
 			__METHOD__
 		);
 
 		if ( !$text_row ) {
 			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-			$logger->warning( __METHOD__ . ": no text row found for input $stored_dump." );
+			$logger->warning( __METHOD__ . ": no text row found for input $storedID." );
 			return new AbuseFilterVariableHolder;
 		}
 
@@ -268,22 +250,9 @@ class AbuseFilter {
 			$text = gzinflate( $text );
 		}
 
-		$obj = FormatJson::decode( $text, true );
-		if ( $obj === null ) {
-			// Temporary code until all rows will be JSON-encoded
-			$obj = unserialize( $text );
-		}
-
-		if ( in_array( 'nativeDataArray', $flags ) ||
-			// Temporary condition: we don't add the flag anymore, but the updateVarDump
-			// script could be still running and we cannot assume that this branch is the default.
-			is_array( $obj )
-		) {
-			$vars = $obj;
-			$obj = AbuseFilterVariableHolder::newFromArray( $vars );
-			$obj->translateDeprecatedVars();
-		}
-
+		$vars = FormatJson::decode( $text, true );
+		$obj = AbuseFilterVariableHolder::newFromArray( $vars );
+		$obj->translateDeprecatedVars();
 		return $obj;
 	}
 

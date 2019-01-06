@@ -243,7 +243,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	/**
 	 * @param AbuseFilterVariableHolder|null $vars
 	 */
-	public function showExaminer( $vars ) {
+	public function showExaminer( ?AbuseFilterVariableHolder $vars ) {
 		$output = $this->getOutput();
 		$output->enableOOUI();
 
@@ -252,9 +252,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
-		if ( $vars instanceof AbuseFilterVariableHolder ) {
-			$vars = $vars->exportAllVars();
-		}
+		$vars = $vars->exportAllVars();
 
 		$html = '';
 

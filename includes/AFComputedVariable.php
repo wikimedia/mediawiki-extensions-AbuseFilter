@@ -191,25 +191,11 @@ class AFComputedVariable {
 		$services = MediaWikiServices::getInstance();
 		switch ( $this->mMethod ) {
 			case 'diff':
-				// Currently unused. Kept for backwards compatibility since it remains
-				// as mMethod for old variables. A fallthrough would instead change old results.
 				$text1Var = $parameters['oldtext-var'];
 				$text2Var = $parameters['newtext-var'];
 				$text1 = $vars->getVar( $text1Var )->toString();
 				$text2 = $vars->getVar( $text2Var )->toString();
-				$diffs = new Diff( explode( "\n", $text1 ), explode( "\n", $text2 ) );
-				$format = new UnifiedDiffFormatter();
-				$result = $format->format( $diffs );
-				break;
-			case 'diff-array':
-				// Introduced with T74329 to uniform the diff to MW's standard one.
-				// The difference with 'diff' method is noticeable when one of the
-				// $text is empty: it'll be treated as **really** empty, instead of
-				// an empty string.
-				$text1Var = $parameters['oldtext-var'];
-				$text2Var = $parameters['newtext-var'];
-				$text1 = $vars->getVar( $text1Var )->toString();
-				$text2 = $vars->getVar( $text2Var )->toString();
+				// T74329: if there's no text, don't return an array with the empty string
 				$text1 = $text1 === '' ? [] : explode( "\n", $text1 );
 				$text2 = $text2 === '' ? [] : explode( "\n", $text2 );
 				$diffs = new Diff( $text1, $text2 );
@@ -463,21 +449,9 @@ class AFComputedVariable {
 				$asOf = $parameters['asof'];
 				$result = (int)wfTimestamp( TS_UNIX, $asOf ) - (int)wfTimestamp( TS_UNIX, $firstRevisionTime );
 				break;
-			case 'user-groups':
-				// Deprecated but needed by old log entries
-				$user = $parameters['user'];
-				$obj = self::getUserObject( $user );
-				$result = $obj->getEffectiveGroups();
-				break;
 			case 'length':
 				$s = $vars->getVar( $parameters['length-var'] )->toString();
 				$result = strlen( $s );
-				break;
-			case 'subtract':
-				// Currently unused, kept for backwards compatibility for old filters.
-				$v1 = $vars->getVar( $parameters['val1-var'] )->toFloat();
-				$v2 = $vars->getVar( $parameters['val2-var'] )->toFloat();
-				$result = $v1 - $v2;
 				break;
 			case 'subtract-int':
 				$v1 = $vars->getVar( $parameters['val1-var'] )->toInt();
@@ -488,19 +462,6 @@ class AFComputedVariable {
 				$revRec = $services
 					->getRevisionLookup()
 					->getRevisionById( $parameters['revid'] );
-				$result = AbuseFilter::revisionToString( $revRec, $computeForUser );
-				break;
-			case 'revision-text-by-timestamp':
-				$timestamp = $parameters['timestamp'];
-				if ( $timestamp === null ) {
-					// Temporary BC for T246539#6388362
-					$result = '[Revision text not available]';
-					break;
-				}
-				$title = $this->buildTitle( $parameters['namespace'], $parameters['title'] );
-				$revRec = $services
-					->getRevisionStore()
-					->getRevisionByTimestamp( $title, $timestamp );
 				$result = AbuseFilter::revisionToString( $revRec, $computeForUser );
 				break;
 			case 'get-wiki-name':

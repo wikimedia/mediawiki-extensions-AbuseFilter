@@ -165,9 +165,9 @@ class VariableGenerator {
 	 * @return $this For chaining
 	 */
 	public function addEditVars( Title $title, WikiPage $page ) : self {
-		$this->vars->setLazyLoadVar( 'edit_diff', 'diff-array',
+		$this->vars->setLazyLoadVar( 'edit_diff', 'diff',
 			[ 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_wikitext' ] );
-		$this->vars->setLazyLoadVar( 'edit_diff_pst', 'diff-array',
+		$this->vars->setLazyLoadVar( 'edit_diff_pst', 'diff',
 			[ 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_pst' ] );
 		$this->vars->setLazyLoadVar( 'new_size', 'length', [ 'length-var' => 'new_wikitext' ] );
 		$this->vars->setLazyLoadVar( 'old_size', 'length', [ 'length-var' => 'old_wikitext' ] );

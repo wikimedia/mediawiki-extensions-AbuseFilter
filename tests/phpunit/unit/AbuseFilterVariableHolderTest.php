@@ -373,7 +373,7 @@ class AbuseFilterVariableHolderTest extends MediaWikiUnitTestCase {
 			->setMethods( [ 'compute' ] );
 
 		$nonDBMet = [ 'unknown', 'certainly-not-db' ];
-		$dbMet = [ 'page-age', 'user-rights', 'load-recent-authors' ];
+		$dbMet = [ 'page-age', 'simple-user-accessor', 'load-recent-authors' ];
 		$methods = array_merge( $nonDBMet, $dbMet );
 		$objs = [];
 		foreach ( $methods as $method ) {

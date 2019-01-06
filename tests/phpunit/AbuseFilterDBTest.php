@@ -84,7 +84,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 
 		$this->assertEquals( $expectedFlags, $flags, 'The var dump does not have the correct flags' );
 
-		$dump = AbuseFilter::loadVarDump( "stored-text:$insertID" );
+		$dump = AbuseFilter::loadVarDump( "tt:$insertID" );
 		$expected = $expectedValues ? AbuseFilterVariableHolder::newFromArray( $expectedValues ) : $holder;
 		$this->assertEquals( $expected, $dump, 'The var dump is not saved correctly' );
 	}

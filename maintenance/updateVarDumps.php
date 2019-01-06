@@ -20,6 +20,12 @@ if ( getenv( 'MW_INSTALL_PATH' ) ) {
 }
 require_once "$IP/maintenance/Maintenance.php";
 
+/**
+ * @codeCoverageIgnore
+ * This script used to be covered by a test, but it was removed: the script was single-use, so
+ * no more testing is needed. OTOH, maintaining the test was too hard because we needed to create
+ * with serialized classes, which quickly becomes unsustainable.
+ */
 class UpdateVarDumps extends LoggedUpdateMaintenance {
 	/** @var Database A connection to replica */
 	private $dbr;
