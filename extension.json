@@ -175,7 +175,8 @@
 		"ApiAbuseFilterCheckMatch": "includes/api/ApiAbuseFilterCheckMatch.php",
 		"ApiAbuseLogPrivateDetails": "includes/api/ApiAbuseLogPrivateDetails.php",
 		"NormalizeThrottleParameters": "maintenance/normalizeThrottleParameters.php",
-		"FixOldLogEntries": "maintenance/fixOldLogEntries.php"
+		"FixOldLogEntries": "maintenance/fixOldLogEntries.php",
+		"UpdateVarDumps": "maintenance/updateVarDumps.php"
 	},
 	"TestAutoloadClasses": {
 		"AbuseFilterConsequencesTest": "tests/phpunit/AbuseFilterConsequencesTest.php",
