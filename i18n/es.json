@@ -424,7 +424,7 @@
 	"abusefilter-edit-builder-vars-old-text-stripped": "Texto antiguo de la página, libre de cualquier elemento de marcado",
 	"abusefilter-edit-builder-vars-old-links": "Enlaces en la página, antes de la edición",
 	"abusefilter-edit-builder-vars-old-html": "Antiguo wikitexto de la página, analizado en HTML (ya no se usa)",
-	"abusefilter-edit-builder-vars-minor-edit": "Si la edición ha sido marcada o no como menor",
+	"abusefilter-edit-builder-vars-minor-edit": "Si la edición ha sido marcada o no como menor (ya no se utiliza)",
 	"abusefilter-edit-builder-vars-file-sha1": "Hash SHA1 del contenido del archivo",
 	"abusefilter-edit-builder-vars-file-size": "Tamaño del archivo en bytes",
 	"abusefilter-edit-builder-vars-file-mime": "Tipo MIME del archivo",
