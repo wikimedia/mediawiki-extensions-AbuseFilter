@@ -19,12 +19,51 @@ class AbuseFilterHooks {
 	 */
 	public static function onRegistration() {
 		global $wgAuthManagerAutoConfig, $wgActionFilteredLogs, $wgAbuseFilterProfile,
-			$wgAbuseFilterProfiling;
+			$wgAbuseFilterProfiling, $wgAbuseFilterPrivateLog, $wgAbuseFilterForceSummary,
+			$wgGroupPermissions;
 
 		// @todo Remove this in a future release (added in 1.33)
 		if ( isset( $wgAbuseFilterProfile ) || isset( $wgAbuseFilterProfiling ) ) {
 			wfWarn( '$wgAbuseFilterProfile and $wgAbuseFilterProfiling have been removed and ' .
 				'profiling is now enabled by default.' );
+		}
+
+		if ( isset( $wgAbuseFilterPrivateLog ) ) {
+			global $wgAbuseFilterLogPrivateDetailsAccess;
+			$wgAbuseFilterLogPrivateDetailsAccess = $wgAbuseFilterPrivateLog;
+			wfWarn( '$wgAbuseFilterPrivateLog has been renamed to $wgAbuseFilterLogPrivateDetailsAccess. ' .
+				'Please make the change in your settings; the format is identical.'
+			);
+		}
+		if ( isset( $wgAbuseFilterForceSummary ) ) {
+			global $wgAbuseFilterPrivateDetailsForceReason;
+			$wgAbuseFilterPrivateDetailsForceReason = $wgAbuseFilterForceSummary;
+			wfWarn( '$wgAbuseFilterForceSummary has been renamed to ' .
+				'$wgAbuseFilterPrivateDetailsForceReason. Please make the change in your settings; ' .
+				'the format is identical.'
+			);
+		}
+
+		$found = false;
+		foreach ( $wgGroupPermissions as &$perms ) {
+			if ( array_key_exists( 'abusefilter-private', $perms ) ) {
+				$perms['abusefilter-privatedetails'] = $perms[ 'abusefilter-private' ];
+				unset( $perms[ 'abusefilter-private' ] );
+				$found = true;
+			}
+			if ( array_key_exists( 'abusefilter-private-log', $perms ) ) {
+				$perms['abusefilter-privatedetails-log'] = $perms[ 'abusefilter-private-log' ];
+				unset( $perms[ 'abusefilter-private-log' ] );
+				$found = true;
+			}
+		}
+		unset( $perms );
+
+		if ( $found ) {
+			wfWarn( 'The group permissions "abusefilter-private-log" and "abusefilter-private" have ' .
+				'been renamed, respectively, to "abusefilter-privatedetails-log" and ' .
+				'"abusefilter-privatedetails-log". Please update the names in your settings.'
+			);
 		}
 
 		$wgAuthManagerAutoConfig['preauth'][AbuseFilterPreAuthenticationProvider::class] = [

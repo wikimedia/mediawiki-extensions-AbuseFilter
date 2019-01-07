@@ -19,8 +19,8 @@
 		"abusefilter-log-detail",
 		"abusefilter-view",
 		"abusefilter-log",
-		"abusefilter-private",
-		"abusefilter-private-log",
+		"abusefilter-privatedetails",
+		"abusefilter-privatedetails-log",
 		"abusefilter-modify-restricted",
 		"abusefilter-revert",
 		"abusefilter-view-private",
@@ -89,7 +89,7 @@
 		}
 	},
 	"LogRestrictions": {
-		"abusefilterprivatedetails": "abusefilter-private-log"
+		"abusefilterprivatedetails": "abusefilter-privatedetails-log"
 	},
 	"APIModules": {
 		"abusefilterchecksyntax": "ApiAbuseFilterCheckSyntax",
@@ -386,11 +386,11 @@
 			},
 			"description": "Size of the range blocked by 'rangeblock' action."
 		},
-		"AbuseFilterPrivateLog": {
+		"AbuseFilterLogPrivateDetailsAccess": {
 			"value": false,
 			"description": "Whether accessing private information from a filter log entry is logged."
 		},
-		"AbuseFilterForceSummary": {
+		"AbuseFilterPrivateDetailsForceReason": {
 			"value": false,
 			"description": "Whether users are forced to provide a reason for accessing private information from a filter log entry."
 		},

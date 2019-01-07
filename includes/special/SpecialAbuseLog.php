@@ -677,19 +677,19 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		// Build a table.
 		$output .= AbuseFilter::buildVarDumpTable( $vars, $this->getContext() );
 
-		if ( self::canSeePrivate() ) {
+		if ( self::canSeePrivateDetails() ) {
 			$formDescriptor = [
 				'Reason' => [
-					'label-message' => 'abusefilter-view-private-reason',
+					'label-message' => 'abusefilter-view-privatedetails-reason',
 					'type' => 'text',
 					'size' => 45,
 				],
 			];
 
 			$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
-			$htmlForm->setWrapperLegendMsg( 'abusefilter-view-private' )
+			$htmlForm->setWrapperLegendMsg( 'abusefilter-view-privatedetails-legend' )
 				->setAction( $this->getPageTitle( 'private/' . $id )->getLocalURL() )
-				->setSubmitTextMsg( 'abusefilter-view-private-submit' )
+				->setSubmitTextMsg( 'abusefilter-view-privatedetails-submit' )
 				->setMethod( 'post' )
 				->prepareForm();
 
@@ -726,7 +726,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			return;
 		}
 
-		if ( !$this->checkReason( $reason ) ) {
+		if ( !self::checkPrivateDetailsAccessReason( $reason ) ) {
 			$out->addWikiMsg( 'abusefilter-noreason' );
 			$this->showDetails( $id );
 			return;
@@ -755,8 +755,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 			if ( !self::canSeeDetails( $filterID, $global, $filter_hidden ) ) {
 				$error = 'abusefilter-log-cannot-see-details';
-			} elseif ( !self::canSeePrivate() ) {
-				$error = 'abusefilter-log-cannot-see-private-details';
+			} elseif ( !self::canSeePrivateDetails() ) {
+				$error = 'abusefilter-log-cannot-see-privatedetails';
 			}
 		}
 
@@ -768,14 +768,14 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		// Log accessing private details
 		if ( $this->getConfig()->get( 'AbuseFilterPrivateLog' ) ) {
 			$user = $this->getUser();
-			self::addLogEntry( $id, $reason, $user );
+			self::addPrivateDetailsAccessLogEntry( $id, $reason, $user );
 		}
 
 		// Show private details (IP).
 		$output = Xml::element(
 			'legend',
 			null,
-			$this->msg( 'abusefilter-log-details-private' )->text()
+			$this->msg( 'abusefilter-log-details-privatedetails' )->text()
 		);
 
 		$header =
@@ -917,8 +917,9 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 * @param string $reason
 	 * @return bool
 	 */
-	protected function checkReason( $reason ) {
-		return ( !$this->getConfig()->get( 'AbuseFilterForceSummary' ) || strlen( $reason ) > 0 );
+	public static function checkPrivateDetailsAccessReason( $reason ) {
+		global $wgAbuseFilterPrivateDetailsForceReason;
+		return ( !$wgAbuseFilterPrivateDetailsForceReason || strlen( $reason ) > 0 );
 	}
 
 	/**
@@ -927,7 +928,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 * @param User $user The user who accessed the private details
 	 * @return void
 	 */
-	public static function addLogEntry( $logID, $reason, User $user ) {
+	public static function addPrivateDetailsAccessLogEntry( $logID, $reason, User $user ) {
 		$target = self::getTitleFor( 'AbuseLog', $logID );
 
 		$logEntry = new ManualLogEntry( 'abusefilterprivatedetails', 'access' );
@@ -967,10 +968,10 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/**
 	 * @return bool
 	 */
-	public static function canSeePrivate() {
+	public static function canSeePrivateDetails() {
 		global $wgUser;
 
-		return $wgUser->isAllowed( 'abusefilter-private' );
+		return $wgUser->isAllowed( 'abusefilter-privatedetails' );
 	}
 
 	/**
