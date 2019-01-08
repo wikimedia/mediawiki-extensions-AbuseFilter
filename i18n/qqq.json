@@ -35,7 +35,8 @@
 			"Pikne",
 			"Amire80",
 			"Ankam",
-			"Daimona Eaytoy"
+			"Daimona Eaytoy",
+			"Bdijkstra"
 		]
 	},
 	"abusefilter-desc": "{{desc|name=Abuse Filter|url=https://www.mediawiki.org/wiki/Extension:AbuseFilter}}",
@@ -175,7 +176,7 @@
 	"abusefilter-list-options-scope-all": "Radio button indicating that local and global rules should be shown",
 	"abusefilter-list-options-further-options": "Field label in filter form.",
 	"abusefilter-list-options-hidedisabled": "Checkbox label in filter form.",
-	"abusefilter-list-options-hideprivate": "Checkbox label in filter form.",
+	"abusefilter-list-options-hideprivate": "Checkbox label in filter form.\n\n(Filters marked as private can only be viewed by users with either the abusefilter-modify or abusefilter-view-private permission.)",
 	"abusefilter-list-options-searchfield": "Field label in filter form.",
 	"abusefilter-list-options-searchpattern": "Text input for search pattern",
 	"abusefilter-list-options-searchoptions": "Field label in filter form.",

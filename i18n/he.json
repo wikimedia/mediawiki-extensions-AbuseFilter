@@ -391,7 +391,7 @@
 	"abusefilter-edit-builder-vars-old-text-stripped": "טקסט הדף הישן, ללא שום שפת סימון",
 	"abusefilter-edit-builder-vars-old-links": "קישורים בדף, לפני העריכה",
 	"abusefilter-edit-builder-vars-old-html": "טקסט הוויקי של הדף הישן, מפוענח ל־HTML (לא בשימוש יותר)",
-	"abusefilter-edit-builder-vars-minor-edit": "האם עריכה זו מסומנת כמשנית או לא",
+	"abusefilter-edit-builder-vars-minor-edit": "האם עריכה זו מסומנת כמשנית או לא (כבר לא בשימוש)",
 	"abusefilter-edit-builder-vars-file-sha1": "גיבוב SHA1 של תוכן הקובץ",
 	"abusefilter-edit-builder-vars-file-size": "גודל הקובץ בבתים",
 	"abusefilter-edit-builder-vars-file-mime": "סוג ה־MIME של הקובץ",
