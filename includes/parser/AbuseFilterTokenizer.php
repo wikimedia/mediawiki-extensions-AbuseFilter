@@ -90,11 +90,11 @@ class AbuseFilterTokenizer {
 		$tokens = $tokenizerCache->get( $cacheKey );
 
 		if ( $tokens ) {
-			$stats->increment( 'AbuseFilter.tokenizerCache.hit' );
+			$stats->increment( 'abusefilter.tokenizerCache.hit' );
 			return $tokens;
 		}
 
-		$stats->increment( 'AbuseFilter.tokenizerCache.miss' );
+		$stats->increment( 'abusefilter.tokenizerCache.miss' );
 		$tokens = [];
 		$curPos = 0;
 

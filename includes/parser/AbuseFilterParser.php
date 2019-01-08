@@ -837,7 +837,7 @@ class AbuseFilterParser {
 		$builderValues = AbuseFilter::getBuilderValues();
 		$deprecatedVars = AbuseFilter::getDeprecatedVariables();
 		if ( array_key_exists( $var, $deprecatedVars ) ) {
-			$logger = LoggerFactory::getInstance( 'AbuseFilterDeprecatedVars' );
+			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
 			$logger->debug( "AbuseFilter: deprecated variable $var used." );
 			$var = $deprecatedVars[$var];
 		}
