@@ -3,6 +3,8 @@
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\MutableRevisionRecord;
+use MediaWiki\Revision\SlotRecord;
 use Wikimedia\Rdbms\Database;
 
 class AbuseFilterHooks {
@@ -42,13 +44,17 @@ class AbuseFilterHooks {
 	 * @param string $summary Edit summary for page
 	 * @param User $user the user performing the edit
 	 * @param bool $minoredit whether this is a minor edit according to the user.
+	 * @param string $slot slot role for the content
 	 */
 	public static function onEditFilterMergedContent( IContextSource $context, Content $content,
-		Status $status, $summary, User $user, $minoredit
+		Status $status, $summary, User $user, $minoredit, $slot = SlotRecord::MAIN
 	) {
+		// TODO is there any real point in passing this in?
 		$text = AbuseFilter::contentToString( $content );
 
-		$filterStatus = self::filterEdit( $context, $content, $text, $status, $summary, $minoredit );
+		$filterStatus = self::filterEdit(
+			$context, $content, $text, $status, $summary, $minoredit, $slot
+			);
 
 		if ( !$filterStatus->isOK() ) {
 			// Produce a useful error message for API edits
@@ -65,10 +71,11 @@ class AbuseFilterHooks {
 	 * @param Status $status Error message to return
 	 * @param string $summary Edit summary for page
 	 * @param bool $minoredit whether this is a minor edit according to the user.
+	 * @param string $slot slot role for the content
 	 * @return Status
 	 */
 	public static function filterEdit( IContextSource $context, $content, $text,
-		Status $status, $summary, $minoredit
+		Status $status, $summary, $minoredit, $slot = SlotRecord::MAIN
 	) {
 		$title = $context->getTitle();
 		if ( !$title ) {
@@ -82,30 +89,37 @@ class AbuseFilterHooks {
 
 		$user = $context->getUser();
 
-		$oldcontent = null;
+		$oldContent = null;
 
 		if ( ( $title instanceof Title ) && $title->canExist() && $title->exists() ) {
 			// Make sure we load the latest text saved in database (bug 31656)
 			$page = $context->getWikiPage();
-			$revision = $page->getRevision();
-			if ( !$revision ) {
+			$oldRevision = $page->getRevision();
+			if ( !$oldRevision ) {
 				return Status::newGood();
 			}
 
-			$oldcontent = $revision->getContent( Revision::RAW );
-			$oldtext = AbuseFilter::contentToString( $oldcontent );
+			$oldContent = $oldRevision->getContent( Revision::RAW );
+			$oldAfText = AbuseFilter::revisionToString( $oldRevision, $user );
+
+			// XXX: Recreate what the new revision will probably be so we can get the full AF
+			// text for all slots
+			$oldRevRecord = $oldRevision->getRevisionRecord();
+			$newRevision = MutableRevisionRecord::newFromParentRevision( $oldRevRecord );
+			$newRevision->setContent( $slot, $content );
+			$text = AbuseFilter::revisionToString( $newRevision, $user );
 
 			// Cache article object so we can share a parse operation
 			$articleCacheKey = $title->getNamespace() . ':' . $title->getText();
 			AFComputedVariable::$articleCache[$articleCacheKey] = $page;
 
 			// Don't trigger for null edits.
-			if ( $content && $oldcontent ) {
+			if ( $content && $oldContent ) {
 				// Compare Content objects if available
-				if ( $content->equals( $oldcontent ) ) {
+				if ( $content->equals( $oldContent ) ) {
 					return Status::newGood();
 				}
-			} elseif ( strcmp( $oldtext, $text ) == 0 ) {
+			} elseif ( strcmp( $oldAfText, $text ) == 0 ) {
 				// Otherwise, compare strings
 				return Status::newGood();
 			}
@@ -115,7 +129,7 @@ class AbuseFilterHooks {
 
 		// Load vars for filters to check
 		$vars = self::newVariableHolderForEdit(
-			$user, $title, $page, $summary, $content, $text, $oldcontent
+			$user, $title, $page, $summary, $content, $text, $oldContent
 		);
 
 		$filter_result = AbuseFilter::filterAction( $vars, $title, 'default', $user );
