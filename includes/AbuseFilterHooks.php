@@ -125,11 +125,12 @@ class AbuseFilterHooks {
 			}
 		} else {
 			$page = null;
+			$oldAfText = '';
 		}
 
 		// Load vars for filters to check
 		$vars = self::newVariableHolderForEdit(
-			$user, $title, $page, $summary, $content, $text, $oldContent
+			$user, $title, $page, $summary, $content, $text, $oldContent, $oldAfText
 		);
 
 		$filter_result = AbuseFilter::filterAction( $vars, $title, 'default', $user );
@@ -153,12 +154,13 @@ class AbuseFilterHooks {
 	 * @param Content $newcontent
 	 * @param string $text
 	 * @param Content|null $oldcontent
+	 * @param string $oldtext (not actually ever null)
 	 * @return AbuseFilterVariableHolder
 	 * @throws MWException
 	 */
 	private static function newVariableHolderForEdit(
 		User $user, Title $title, $page, $summary, Content $newcontent,
-		$text, $oldcontent = null
+		$text, $oldcontent = null, $oldtext = null
 	) {
 		$vars = new AbuseFilterVariableHolder();
 		$vars->addHolders(
@@ -169,7 +171,6 @@ class AbuseFilterHooks {
 		$vars->setVar( 'summary', $summary );
 		if ( $oldcontent instanceof Content ) {
 			$oldmodel = $oldcontent->getModel();
-			$oldtext = AbuseFilter::contentToString( $oldcontent );
 		} else {
 			$oldmodel = '';
 			$oldtext = '';
@@ -898,21 +899,32 @@ class AbuseFilterHooks {
 	public static function onParserOutputStashForEdit(
 		WikiPage $page, Content $content, ParserOutput $output, $summary = '', $user = null
 	) {
-		$revision = $page->getRevision();
-		if ( !$revision ) {
+		$oldRevision = $page->getRevision();
+		if ( !$oldRevision ) {
 			return;
 		}
 
-		$text = AbuseFilter::contentToString( $content );
-		$oldcontent = $revision->getContent( Revision::RAW );
+		$oldContent = $oldRevision->getContent( Revision::RAW );
 		$user = $user ?: RequestContext::getMain()->getUser();
+		$oldAfText = AbuseFilter::revisionToString( $oldRevision, $user );
+
+		// XXX: This makes the assumption that this method is only ever called for the main slot.
+		// Which right now holds true, but any more fancy MCR stuff will likely break here...
+		$slot = SlotRecord::MAIN;
+
+		// XXX: Recreate what the new revision will probably be so we can get the full AF
+		// text for all slots
+		$oldRevRecord = $oldRevision->getRevisionRecord();
+		$newRevision = MutableRevisionRecord::newFromParentRevision( $oldRevRecord );
+		$newRevision->setContent( $slot, $content );
+		$text = AbuseFilter::revisionToString( $newRevision, $user );
 
 		// Cache any resulting filter matches.
 		// Do this outside the synchronous stash lock to avoid any chance of slowdown.
 		DeferredUpdates::addCallableUpdate(
-			function () use ( $user, $page, $summary, $content, $text, $oldcontent ) {
+			function () use ( $user, $page, $summary, $content, $text, $oldContent, $oldAfText ) {
 				$vars = self::newVariableHolderForEdit(
-					$user, $page->getTitle(), $page, $summary, $content, $text, $oldcontent
+					$user, $page->getTitle(), $page, $summary, $content, $text, $oldContent, $oldAfText
 				);
 				AbuseFilter::filterAction( $vars, $page->getTitle(), 'default', $user, 'stash' );
 			},
