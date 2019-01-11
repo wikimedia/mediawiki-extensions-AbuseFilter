@@ -33,6 +33,9 @@ class SpecialAbuseLog extends SpecialPage {
 
 	protected $mSearchImpact;
 
+	/**
+	 * @inheritDoc
+	 */
 	public function __construct() {
 		parent::__construct( 'AbuseLog', 'abusefilter-log' );
 	}
@@ -86,14 +89,7 @@ class SpecialAbuseLog extends SpecialPage {
 
 		$out->addModuleStyles( 'ext.abuseFilter' );
 
-		// Are we allowed?
-		$errors = $this->getPageTitle()->getUserPermissionsErrors(
-			'abusefilter-log', $this->getUser(), true, [ 'ns-specialprotected' ] );
-		if ( count( $errors ) ) {
-			$out->showPermissionsErrorPage( $errors, 'abusefilter-log' );
-
-			return;
-		}
+		$this->checkPermissions();
 
 		$hideid = $request->getIntOrNull( 'hide' );
 		$args = explode( '/', $parameter );
