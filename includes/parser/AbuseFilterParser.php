@@ -710,16 +710,18 @@ class AbuseFilterParser {
 			}
 
 			$args = [];
-			$next = $this->getNextToken();
-			if ( $next->type !== AFPToken::TBRACE || $next->value !== ')' ) {
-				do {
+			do {
+				$next = $this->getNextToken();
+				if ( $next->type !== AFPToken::TBRACE || $next->value !== ')' ) {
 					$r = new AFPData();
 					$this->doLevelSemicolon( $r );
 					$args[] = $r;
-				} while ( $this->mCur->type === AFPToken::TCOMMA );
-			} else {
-				$this->move();
-			}
+				} else {
+					$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+					$logger->debug( "Found null param for function $func" );
+					$this->move();
+				}
+			} while ( $this->mCur->type === AFPToken::TCOMMA );
 
 			if ( $this->mCur->type !== AFPToken::TBRACE || $this->mCur->value !== ')' ) {
 				throw new AFPUserVisibleException( 'expectednotfound',
