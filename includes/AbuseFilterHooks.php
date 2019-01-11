@@ -393,8 +393,8 @@ class AbuseFilterHooks {
 			$recentChange->getAttribute( 'rc_namespace' ),
 			$recentChange->getAttribute( 'rc_title' )
 		);
-		$action = $recentChange->mAttribs['rc_log_type'] ?
-			$recentChange->mAttribs['rc_log_type'] : 'edit';
+		$action = $recentChange->getAttribute( 'rc_log_type' ) ?
+			$recentChange->getAttribute( 'rc_log_type' ) : 'edit';
 		$actionID = implode( '-', [
 			$title->getPrefixedText(), $recentChange->getAttribute( 'rc_user_text' ), $action
 		] );
