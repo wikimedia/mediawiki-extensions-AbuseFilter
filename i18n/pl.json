@@ -379,7 +379,7 @@
 	"abusefilter-edit-builder-vars-old-text-stripped": "Stara treść strony pozbawiona wszystkich znaczników",
 	"abusefilter-edit-builder-vars-old-links": "Łącza na stronie przed edycją",
 	"abusefilter-edit-builder-vars-old-html": "Stary wikikod strony w formacie wiki przetworzona na HTML (wyszło z użycia)",
-	"abusefilter-edit-builder-vars-minor-edit": "Czy edycja oznaczona jest jako drobna",
+	"abusefilter-edit-builder-vars-minor-edit": "Czy edycja oznaczona jest jako drobna (ta funkcja została wyłączona z użycia)",
 	"abusefilter-edit-builder-vars-file-sha1": "Skrót SHA1 zawartości pliku",
 	"abusefilter-edit-builder-vars-file-size": "Rozmiar pliku w bajtach",
 	"abusefilter-edit-builder-vars-file-mime": "Typ MIME pliku",

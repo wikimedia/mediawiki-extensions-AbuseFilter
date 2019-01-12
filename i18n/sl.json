@@ -314,7 +314,7 @@
 	"abusefilter-edit-builder-vars-old-text-stripped": "Staro besedilo strani, z odstranjenimi oznakami",
 	"abusefilter-edit-builder-vars-old-links": "Povezave na strani, pred urejanjem",
 	"abusefilter-edit-builder-vars-old-html": "Staro wikibesedilo strani, razčlenjeno v HTML (se ne uporablja več)",
-	"abusefilter-edit-builder-vars-minor-edit": "Ali je bilo urejanje označeno kot manjše",
+	"abusefilter-edit-builder-vars-minor-edit": "Ali je bilo urejanje označeno kot manjše (se ne uporablja več)",
 	"abusefilter-edit-builder-vars-file-sha1": "Odtis SHA1 vsebine datoteke",
 	"abusefilter-edit-builder-vars-file-size": "Velikost datoteke v znakih",
 	"abusefilter-edit-builder-vars-file-height": "Višina datoteke v pikslih",

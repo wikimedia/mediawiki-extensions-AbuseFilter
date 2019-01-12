@@ -5,11 +5,17 @@
 			"Otokoume",
 			"Suyama",
 			"Yusuke1109",
-			"Shirayuki"
+			"Shirayuki",
+			"Omotecho"
 		]
 	},
+	"apihelp-abusefiltercheckmatch-param-filter": "一致チェックの対象となるフィルター文全文",
+	"apihelp-abusefiltercheckmatch-param-logid": "検査対象となる不正利用フィルターのログID",
 	"apihelp-abusefilterchecksyntax-description": "不正利用フィルターの構文を確認します。",
 	"apihelp-abusefilterchecksyntax-summary": "不正利用フィルターの構文を確認します。",
+	"apihelp-abusefilterchecksyntax-param-filter": "構文チェックの対象となるフィルター文全文",
+	"apihelp-abusefilterchecksyntax-example-1": "有効なフィルターの構文を確認",
+	"apihelp-abusefilterchecksyntax-example-2": "無効なフィルターの構文を確認",
 	"apihelp-abusefilterevalexpression-description": "不正利用フィルターの式を評価します。",
 	"apihelp-abusefilterevalexpression-param-expression": "評価する式。",
 	"apihelp-abusefilterevalexpression-example-1": "簡単な式を評価します",
