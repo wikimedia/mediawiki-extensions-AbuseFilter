@@ -46,6 +46,8 @@
 	"abusefilter-log-summary": "This log shows a list of all actions caught by the filters.",
 	"abusefilter-log-search": "Search the abuse log",
 	"abusefilter-log-search-user": "User:",
+	"abusefilter-log-search-group": "Filter group:",
+	"abusefilter-log-search-group-any": "Any",
 	"abusefilter-log-search-filter": "Filter IDs (separate with pipes):",
 	"abusefilter-log-search-title": "Title:",
 	"abusefilter-log-search-wiki": "Wiki:",

@@ -33,6 +33,9 @@ class SpecialAbuseLog extends SpecialPage {
 
 	protected $mSearchImpact;
 
+	/** @var string The filter group to search, as defined in $wgAbuseFilterValidGroups */
+	protected $mSearchGroup;
+
 	/**
 	 * @inheritDoc
 	 */
@@ -127,6 +130,9 @@ class SpecialAbuseLog extends SpecialPage {
 		$this->mSearchPeriodStart = $request->getText( 'wpSearchPeriodStart' );
 		$this->mSearchPeriodEnd = $request->getText( 'wpSearchPeriodEnd' );
 		$this->mSearchTitle = $request->getText( 'wpSearchTitle' );
+		if ( count( $this->getConfig()->get( 'AbuseFilterValidGroups' ) ) > 1 ) {
+			$this->mSearchGroup = $request->getText( 'wpSearchGroup' );
+		}
 		$this->mSearchFilter = null;
 		$this->mSearchAction = $request->getText( 'wpSearchAction' );
 		$this->mSearchActionTaken = $request->getText( 'wpSearchActionTaken' );
@@ -238,6 +244,20 @@ class SpecialAbuseLog extends SpecialPage {
 				],
 			];
 		}
+
+		$groups = $this->getConfig()->get( 'AbuseFilterValidGroups' );
+		if ( count( $groups ) > 1 ) {
+			$options = array_merge(
+				[ $this->msg( 'abusefilter-log-search-group-any' )->text() => 0 ],
+				array_combine( $groups, $groups )
+			);
+			$formDescriptor['SearchGroup'] = [
+				'label-message' => 'abusefilter-log-search-group',
+				'type' => 'select',
+				'options' => $options
+			];
+		}
+
 		if ( self::canSeeDetails() ) {
 			$formDescriptor['SearchFilter'] = [
 				'label-message' => 'abusefilter-log-search-filter',
@@ -246,7 +266,7 @@ class SpecialAbuseLog extends SpecialPage {
 			];
 		}
 		if ( $this->getConfig()->get( 'AbuseFilterIsCentral' ) ) {
-			// Add free form input for wiki name. Would be nice to generate
+			// @todo Add free form input for wiki name. Would be nice to generate
 			// a select with unique names in the db at some point.
 			$formDescriptor['SearchWiki'] = [
 				'label-message' => 'abusefilter-log-search-wiki',
@@ -405,6 +425,17 @@ class SpecialAbuseLog extends SpecialPage {
 			}
 		}
 
+		$groupFilters = [];
+		if ( $this->mSearchGroup ) {
+			$groupFilters = $dbr->selectFieldValues(
+				'abuse_filter',
+				'af_id',
+				[ 'af_group' => $this->mSearchGroup ],
+				__METHOD__
+			);
+		}
+
+		$searchFilters = [];
 		if ( $this->mSearchFilter ) {
 			$searchFilters = array_map( 'trim', explode( '|', $this->mSearchFilter ) );
 			// if a filter is hidden, users who can't view private filters should
@@ -423,12 +454,24 @@ class SpecialAbuseLog extends SpecialPage {
 					$out->addWikiMsg( 'abusefilter-log-private-not-included' );
 				}
 			}
-			if ( empty( $searchFilters ) ) {
-				$out->addWikiMsg( 'abusefilter-log-noresults' );
+		}
 
+		$searchIDs = null;
+		if ( $this->mSearchGroup && !$this->mSearchFilter ) {
+			$searchIDs = $groupFilters;
+		} elseif ( !$this->mSearchGroup && $this->mSearchFilter ) {
+			$searchIDs = $searchFilters;
+		} elseif ( $this->mSearchGroup && $this->mSearchFilter ) {
+			$searchIDs = array_intersect( $groupFilters, $searchFilters );
+		}
+
+		if ( $searchIDs !== null ) {
+			if ( !count( $searchIDs ) ) {
+				$out->addWikiMsg( 'abusefilter-log-noresults' );
 				return;
 			}
-			$conds['afl_filter'] = $searchFilters;
+
+			$conds['afl_filter'] = $searchIDs;
 		}
 
 		$searchTitle = Title::newFromText( $this->mSearchTitle );
