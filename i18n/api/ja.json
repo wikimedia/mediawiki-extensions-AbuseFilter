@@ -37,5 +37,6 @@
 	"apihelp-query+abuselog-example-2": "[[API]] の最近の記録項目を表示する",
 	"apierror-abusefilter-canttest": "不正利用フィルターをテストする権限がありません。",
 	"apierror-abusefilter-cantcheck": "不正利用フィルターの構文を確認する権限がありません。",
+	"apierror-abusefilter-nosuchlogid": "ID$1にabuselog記録はありません。",
 	"apierror-abusefilter-badsyntax": "フィルターの構文が無効です。"
 }
