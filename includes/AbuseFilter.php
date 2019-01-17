@@ -213,8 +213,13 @@ class AbuseFilter {
 			'home' => 'Special:AbuseFilter',
 			'recentchanges' => 'Special:AbuseFilter/history',
 			'examine' => 'Special:AbuseFilter/examine',
-			'log' => 'Special:AbuseLog',
 		];
+
+		if ( $context->getUser()->isAllowed( 'abusefilter-log' ) ) {
+			$linkDefs = array_merge( $linkDefs, [
+				'log' => 'Special:AbuseLog'
+			] );
+		}
 
 		if ( $context->getUser()->isAllowedAny( 'abusefilter-modify', 'abusefilter-view-private' ) ) {
 			$linkDefs = array_merge( $linkDefs, [
@@ -229,22 +234,14 @@ class AbuseFilter {
 			] );
 		}
 
-		// Re-use the message
-		$msgOverrides = [
-			'recentchanges' => 'abusefilter-filter-log',
-		];
-
 		$links = [];
 
 		foreach ( $linkDefs as $name => $page ) {
 			// Give grep a chance to find the usages:
-			// abusefilter-topnav-home, abusefilter-topnav-test, abusefilter-topnav-examine
+			// abusefilter-topnav-home, abusefilter-topnav-recentchanges, abusefilter-topnav-test,
 			// abusefilter-topnav-log, abusefilter-topnav-tools, abusefilter-topnav-import
+			// abusefilter-topnav-examine
 			$msgName = "abusefilter-topnav-$name";
-
-			if ( isset( $msgOverrides[$name] ) ) {
-				$msgName = $msgOverrides[$name];
-			}
 
 			$msg = $context->msg( $msgName )->parse();
 			$title = Title::newFromText( $page );
