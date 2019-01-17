@@ -81,7 +81,7 @@ class AbuseFilterHooks {
 		if ( !$title ) {
 			// T144265
 			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-			$logger->debug( __METHOD__ . ' received a null title.' );
+			$logger->warning( __METHOD__ . ' received a null title. (T144265)' );
 		}
 
 		self::$successful_action_vars = false;
@@ -782,8 +782,8 @@ class AbuseFilterHooks {
 			// T144265
 			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
 			$err = $upload->validateName()['status'];
-			$logger->debug( __METHOD__ . " received an invalid title: $title." .
-				"Action: $action. Title error: $err."
+			$logger->warning( __METHOD__ . ' received a null title.' .
+				"Action: $action. Title error: $err. (T144265)"
 			);
 		}
 

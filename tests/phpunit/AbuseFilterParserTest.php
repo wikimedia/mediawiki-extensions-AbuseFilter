@@ -707,7 +707,7 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	public function testDeprecatedVars( $old, $new ) {
 		$loggerMock = new TestLogger();
 		$loggerMock->setCollect( true );
-		$this->setLogger( 'AbuseFilterDeprecatedVars', $loggerMock );
+		$this->setLogger( 'AbuseFilter', $loggerMock );
 
 		$parser = self::getParser();
 		$actual = $parser->parse( "$old === $new" );

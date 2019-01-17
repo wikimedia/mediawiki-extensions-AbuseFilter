@@ -525,7 +525,7 @@ class AbuseFilter {
 			$result = false;
 
 			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-			$logger->debug( 'AbuseFilter parser error: ' . $excep->getMessage() );
+			$logger->warning( 'AbuseFilter parser error: ' . $excep->getMessage() );
 
 			if ( !$ignoreError ) {
 				throw $excep;
@@ -1141,13 +1141,13 @@ class AbuseFilter {
 
 		if ( is_array( $filter_matched ) ) {
 			if ( $isForEdit && $mode !== 'stash' ) {
-				$logger->info( __METHOD__ . ": cache hit for '$title' (key $stashKey)." );
+				$logger->debug( __METHOD__ . ": cache hit for '$title' (key $stashKey)." );
 				$statsd->increment( 'abusefilter.check-stash.hit' );
 			}
 		} else {
 			$filter_matched = self::checkAllFilters( $vars, $group, $title, $mode );
 			if ( $isForEdit && $mode !== 'stash' ) {
-				$logger->info( __METHOD__ . ": cache miss for '$title' (key $stashKey)." );
+				$logger->debug( __METHOD__ . ": cache miss for '$title' (key $stashKey)." );
 				$statsd->increment( 'abusefilter.check-stash.miss' );
 			}
 		}
@@ -1735,7 +1735,7 @@ class AbuseFilter {
 					}
 				} else {
 					$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-					$logger->debug( "Unrecognised action $action" );
+					$logger->warning( "Unrecognised action $action" );
 				}
 		}
 
