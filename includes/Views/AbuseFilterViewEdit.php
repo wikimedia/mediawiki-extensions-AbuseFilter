@@ -77,12 +77,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$msg = $err[0]['message'];
 				$params = $err[0]['params'];
 				if ( $status->isOK() ) {
-					$out->addHTML(
-						$this->buildFilterEditor(
-							$this->msg( $msg, $params )->parseAsBlock(),
-							$filter,
-							$history_id
-						)
+					$this->buildFilterEditor(
+						$this->msg( $msg, $params )->parseAsBlock(),
+						$filter,
+						$history_id
 					);
 				} else {
 					$out->addWikiMsg( $msg );
@@ -121,33 +119,21 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				);
 			}
 
-			if ( $history_id ) {
-				$out->addWikiMsg(
-					'abusefilter-edit-oldwarning', $history_id, $filter );
-			}
-
-			$out->addHTML( $this->buildFilterEditor( null, $filter, $history_id ) );
-
-			if ( $history_id ) {
-				$out->addWikiMsg(
-					'abusefilter-edit-oldwarning', $history_id, $filter );
-			}
+			$this->buildFilterEditor( null, $filter, $history_id );
 		}
 	}
 
 	/**
-	 * Builds the full form for edit filters.
+	 * Builds the full form for edit filters, adding it to the OutputPage.
 	 * Loads data either from the database or from the HTTP request.
 	 * The request takes precedence over the database
 	 * @param string|null $error An error message to show above the filter box.
 	 * @param int|string $filter The filter ID or 'new'.
 	 * @param int|null $history_id The history ID of the filter, if applicable. Otherwise null
-	 * @return bool|string False if there is a failure building the editor,
-	 *   otherwise the HTML text for the editor.
 	 */
-	public function buildFilterEditor( $error, $filter, $history_id = null ) {
+	protected function buildFilterEditor( $error, $filter, $history_id = null ) {
 		if ( $filter === null ) {
-			return false;
+			return;
 		}
 
 		// Build the edit form
@@ -174,7 +160,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					'href' => $href
 			] );
 			$out->addHTML( $btn );
-			return false;
+			return;
 		}
 
 		$out->addSubtitle( $this->msg(
@@ -183,16 +169,23 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		)->parse() );
 
 		// Hide hidden filters.
-		if ( ( ( isset( $row->af_hidden ) && $row->af_hidden ) ||
-			( $filter !== 'new' && AbuseFilter::filterHidden( $filter ) ) ) &&
-			!$this->canViewPrivate()
+		if (
+			(
+				( isset( $row->af_hidden ) && $row->af_hidden ) ||
+				( $filter !== 'new' && AbuseFilter::filterHidden( $filter ) )
+			) && !$this->canViewPrivate()
 		) {
-			return $this->msg( 'abusefilter-edit-denied' )->escaped();
+			$out->addHTML( $this->msg( 'abusefilter-edit-denied' )->escaped() );
+			return;
 		}
 
-		$output = '';
+		if ( $history_id ) {
+			$out->addWikiMsg(
+				'abusefilter-edit-oldwarning', $history_id, $filter );
+		}
+
 		if ( $error ) {
-			$output .= Html::errorBox( $error );
+			$out->addHTML( Html::errorBox( $error ) );
 		}
 
 		$readOnly = !$this->canEditFilter( $row );
@@ -454,9 +447,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$form
 		);
 
-		$output .= $form;
+		$out->addHTML( $form );
 
-		return $output;
+		if ( $history_id ) {
+			$out->addWikiMsg(
+				'abusefilter-edit-oldwarning', $history_id, $filter );
+		}
 	}
 
 	/**
