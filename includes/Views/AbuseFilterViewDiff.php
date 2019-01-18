@@ -104,18 +104,21 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			return false;
 		}
 
-		if ( AbuseFilter::filterHidden( $this->mFilter )
-			&& !AbuseFilter::canViewPrivate( $this->getUser() )
-		) {
-			$this->getOutput()->addWikiMsg( 'abusefilter-history-error-hidden' );
-			return false;
-		}
-
 		$this->mOldVersion = $this->loadSpec( $oldSpec, $newSpec );
 		$this->mNewVersion = $this->loadSpec( $newSpec, $oldSpec );
 
 		if ( $this->mOldVersion === null || $this->mNewVersion === null ) {
 			$this->getOutput()->addWikiMsg( 'abusefilter-diff-invalid' );
+			return false;
+		}
+
+		if ( !AbuseFilter::canViewPrivate( $this->getUser() ) &&
+			(
+				in_array( 'hidden', explode( ',', $this->mOldVersion['info']['flags'] ) ) ||
+				in_array( 'hidden', explode( ',', $this->mNewVersion['info']['flags'] ) )
+			)
+		) {
+			$this->getOutput()->addWikiMsg( 'abusefilter-history-error-hidden' );
 			return false;
 		}
 
