@@ -283,6 +283,7 @@
 	"abusefilter-edit-export": "Link text for link to create  filter. Accompanying label is {{msg-mw|abusefilter-edit-tools}}.\n\nUsed in:\n* {{msg-mw|Abusefilter-import-intro}}",
 	"abusefilter-edit-syntaxok": "Status message for filter test.",
 	"abusefilter-edit-syntaxerr": "Status message for filter test. Parameters:\n* $1 is the reported error.",
+	"abusefilter-edit-warn-leave": "Warning message shown when the user tries to leave the page with unsaved changes to a filter.",
 	"abusefilter-edit-bad-tags": "Status message for filter test.",
 	"abusefilter-edit-notallowed": "Error message when trying to modify a filter while not allowed.",
 	"abusefilter-edit-notallowed-global": "Error message when trying to modify a global filter while not allowed.",

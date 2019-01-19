@@ -445,7 +445,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$form = Xml::tags( 'form',
 			[
 				'action' => $this->getTitle( $filter )->getFullURL(),
-				'method' => 'post'
+				'method' => 'post',
+				'id' => 'mw-abusefilter-editing-form'
 			],
 			$form
 		);

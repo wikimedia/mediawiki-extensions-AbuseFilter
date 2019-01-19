@@ -249,6 +249,7 @@
 	"abusefilter-edit-export": "Export this filter to another wiki",
 	"abusefilter-edit-syntaxok": "No syntax errors detected.",
 	"abusefilter-edit-syntaxerr": "Syntax error detected: $1",
+	"abusefilter-edit-warn-leave": "Leaving the page will cause you to lose any change made to this filter.",
 	"abusefilter-edit-bad-tags": "One or more of the tags you specified is not valid.\nTags should be short, they must not contain special characters, and they must not be reserved by other software. Try choosing a new tag name.",
 	"abusefilter-edit-notallowed": "You are not permitted to create or edit abuse filters",
 	"abusefilter-edit-notallowed-global": "You are not permitted to create or edit global abuse filters",

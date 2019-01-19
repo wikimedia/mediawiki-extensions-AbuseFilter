@@ -359,6 +359,26 @@
 	}
 
 	/**
+	 * Warn if the user changed anything and tries to leave the window
+	 */
+	function setWarnOnLeave() {
+		var warnOnLeave,
+			$form = $( '#mw-abusefilter-editing-form' ),
+			origValues = $form.serialize();
+
+		warnOnLeave = mw.confirmCloseWindow( {
+			test: function () {
+				return $form.serialize() !== origValues;
+			},
+			message: mw.msg( 'abusefilter-edit-warn-leave' )
+		} );
+
+		$form.submit( function () {
+			warnOnLeave.release();
+		} );
+	}
+
+	/**
 	 * Builds a TagMultiselectWidget, to be used both for throttle groups and change tags
 	 *
 	 * @param {string} action Either 'throttle' or 'tag', will be used to build element IDs
@@ -428,6 +448,7 @@
 			toggleDisallowPreviewButton = OO.ui.infuse( $( '#mw-abusefilter-disallow-preview-button' ) );
 			disallowMessageExisting = OO.ui.infuse( $( '#mw-abusefilter-disallow-message-existing' ) );
 			disallowMessageOther = OO.ui.infuse( $( '#mw-abusefilter-disallow-message-other' ) );
+			setWarnOnLeave();
 		}
 
 		$plainTextBox = $( '#' + mw.config.get( 'abuseFilterBoxName' ) );
@@ -540,6 +561,5 @@
 
 		$( '#mw-abusefilter-syntaxcheck' ).click( doSyntaxCheck );
 		$( '#wpFilterBuilder' ).change( addText );
-
 	} );
 }() );
