@@ -76,11 +76,11 @@
 	/**
 	 * Takes the data retrieved in doSyntaxCheck and processes it.
 	 *
-	 * @param {Object} data Data returned from the AJAX request
+	 * @param {Object} response Data returned from the AJAX request
 	 */
-	function processSyntaxResult( data ) {
-		var position;
-		data = data.abusefilterchecksyntax;
+	function processSyntaxResult( response ) {
+		var position,
+			data = response.abusefilterchecksyntax;
 
 		if ( data.status === 'ok' ) {
 			// Successful
@@ -246,7 +246,10 @@
 			$element = $( '#mw-abusefilter-' + action + '-preview' ),
 			previewButton = action === 'warn' ? toggleWarnPreviewButton : toggleDisallowPreviewButton;
 
-		if ( !$element.is( ':visible' ) ) {
+		if ( $element.is( ':visible' ) ) {
+			$element.hide();
+			previewButton.setFlags( { destructive: false, progressive: true } );
+		} else {
 			api.get( {
 				action: 'query',
 				meta: 'allmessages',
@@ -267,9 +270,6 @@
 							);
 						} );
 				} );
-		} else {
-			$element.hide();
-			previewButton.setFlags( { destructive: false, progressive: true } );
 		}
 	}
 

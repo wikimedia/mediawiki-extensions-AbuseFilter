@@ -642,6 +642,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					$msg = $action === 'warn' ? 'abusefilter-warning' : 'abusefilter-disallowed';
 				}
 
+				$fields = [];
 				$fields["abusefilter-edit-$action-message"] =
 					$this->getExistingSelector( $msg, !empty( $readOnlyAttrib ), $action );
 				$otherFieldName = $action === 'warn' ? 'wpFilterWarnMessageOther'
