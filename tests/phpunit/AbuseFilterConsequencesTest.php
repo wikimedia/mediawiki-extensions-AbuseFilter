@@ -540,7 +540,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		foreach ( $consequences as $consequence => $ids ) {
 			foreach ( $ids as $id ) {
 				$params = self::$filters[$id]['actions'][$consequence];
-				$success = true;
 				switch ( $consequence ) {
 					case 'warn':
 						// Aborts the hook with the warning message as error.

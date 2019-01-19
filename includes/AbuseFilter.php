@@ -1697,10 +1697,6 @@ class AbuseFilter {
 			case 'block':
 				// Do nothing, handled at the end of executeFilterActions. Here for completeness.
 				break;
-			case 'flag':
-				// Do nothing. Here for completeness.
-				break;
-
 			case 'tag':
 				// Mark with a tag on recentchanges.
 				$actionID = implode( '-', [
@@ -2319,19 +2315,13 @@ class AbuseFilter {
 	 *
 	 * @param AbuseFilterViewEdit $page
 	 * @param int|string $filter
-	 * @param WebRequest $request
 	 * @param stdClass $newRow
 	 * @param array $actions
 	 * @return Status
 	 */
-	public static function saveFilter(
-		AbuseFilterViewEdit $page,
-		$filter,
-		$request,
-		$newRow,
-		$actions
-	) {
+	public static function saveFilter( AbuseFilterViewEdit $page, $filter, $newRow, $actions ) {
 		$validationStatus = Status::newGood();
+		$request = $page->getRequest();
 
 		// Check the syntax
 		$syntaxerr = self::checkSyntax( $request->getVal( 'wpFilterRules' ) );

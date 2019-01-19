@@ -98,7 +98,7 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 	 */
 	private static function getViewEdit( $filter ) {
 		$special = new SpecialAbuseFilter();
-		$context = RequestContext::getMain( self::getRequest() );
+		$context = RequestContext::getMain();
 		$context->setRequest( self::getRequest() );
 
 		$special->setContext( $context );
@@ -238,12 +238,11 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 		self::$mParameters = $args['filterParameters'] + $fixedParameters;
 		$filter = self::$mParameters['id'];
 		$viewEdit = self::getViewEdit( $filter );
-		$request = self::getRequest();
 		list( $newRow, $actions ) = $viewEdit->loadRequest( $filter );
 		self::$mParameters['rowActions'] = implode( ',', array_keys( array_filter( $actions ) ) );
 
 		// Send data for validation and saving
-		$status = AbuseFilter::saveFilter( $viewEdit, $filter, $request, $newRow, $actions );
+		$status = AbuseFilter::saveFilter( $viewEdit, $filter, $newRow, $actions );
 
 		// Must be removed for the next test
 		if ( $args['testData']['customUserGroup'] ) {

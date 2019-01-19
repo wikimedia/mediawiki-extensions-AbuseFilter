@@ -288,11 +288,11 @@ class AbuseFilterTest extends MediaWikiTestCase {
 					self::$mUser
 				);
 			}
-			$_ = false;
-			$s = $page->doUpdateRestrictions(
+			$cascade = false;
+			$page->doUpdateRestrictions(
 				[ $action => true ],
 				[ $action => 'infinity' ],
-				$_,
+				$cascade,
 				'Testing restrictions for AbuseFilter',
 				self::$mUser
 			);

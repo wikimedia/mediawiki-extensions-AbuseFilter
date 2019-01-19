@@ -95,7 +95,6 @@ class SpecialAbuseLog extends SpecialPage {
 			return;
 		}
 
-		$detailsid = $request->getIntOrNull( 'details' );
 		$hideid = $request->getIntOrNull( 'hide' );
 		$args = explode( '/', $parameter );
 

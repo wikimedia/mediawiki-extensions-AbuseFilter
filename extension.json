@@ -293,7 +293,6 @@
 		},
 		"AbuseFilterRestrictions": {
 			"value": {
-				"flag": false,
 				"throttle": false,
 				"warn": false,
 				"disallow": false,
