@@ -2009,18 +2009,15 @@ class AbuseFilter {
 	 * @param string[] $filters The filters to check
 	 */
 	private static function checkEmergencyDisable( $group, $filters ) {
-		global $wgAbuseFilterEmergencyDisableThreshold, $wgAbuseFilterEmergencyDisableCount,
-			$wgAbuseFilterEmergencyDisableAge;
-
 		$stash = ObjectCache::getMainStashInstance();
 		// @ToDo this is an amount between 1 and AbuseFilterProfileActionsCap, which means that the
 		// reliability of this number may strongly vary. We should instead use a fixed one.
 		$totalActions = $stash->get( self::filterUsedKey( $group ) );
 
 		foreach ( $filters as $filter ) {
-			$threshold = self::getEmergencyValue( $wgAbuseFilterEmergencyDisableThreshold, $group );
-			$hitCountLimit = self::getEmergencyValue( $wgAbuseFilterEmergencyDisableCount, $group );
-			$maxAge = self::getEmergencyValue( $wgAbuseFilterEmergencyDisableAge, $group );
+			$threshold = self::getEmergencyValue( 'threshold', $group );
+			$hitCountLimit = self::getEmergencyValue( 'count', $group );
+			$maxAge = self::getEmergencyValue( 'age', $group );
 
 			$matchCount = $stash->get( self::filterMatchesKey( $filter ) );
 
@@ -2060,12 +2057,29 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param array $emergencyValue
+	 * @param string $type The value to get, either "threshold", "count" or "age"
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @return mixed
 	 */
-	public static function getEmergencyValue( array $emergencyValue, $group ) {
-		return $emergencyValue[$group] ?? $emergencyValue['default'];
+	public static function getEmergencyValue( $type, $group ) {
+		switch ( $type ) {
+			case 'threshold':
+				global $wgAbuseFilterEmergencyDisableThreshold;
+				$value = $wgAbuseFilterEmergencyDisableThreshold;
+				break;
+			case 'count':
+				global $wgAbuseFilterEmergencyDisableCount;
+				$value = $wgAbuseFilterEmergencyDisableCount;
+				break;
+			case 'age':
+				global $wgAbuseFilterEmergencyDisableAge;
+				$value = $wgAbuseFilterEmergencyDisableAge;
+				break;
+			default:
+				throw new InvalidArgumentException( '$type must be either "threshold", "count" or "age"' );
+		}
+
+		return $value[$group] ?? $value['default'];
 	}
 
 	/**
