@@ -525,6 +525,7 @@
 	"abusefilter-examine-noresults": "Used as warning on [[Special:AbuseFilter/examine]]",
 	"abusefilter-topnav": "Used as header for navigation links which have the following link texts:\n* {{msg-mw|Abusefilter-topnav-home}}\n* {{msg-mw|Abusefilter-topnav-test}}\n* {{msg-mw|Abusefilter-topnav-examine}}\n* {{msg-mw|Abusefilter-topnav-log}}\n* {{msg-mw|Abusefilter-topnav-tools}}\n* {{msg-mw|Abusefilter-topnav-import}}",
 	"abusefilter-topnav-home": "Used as link text. The link points to [[Special:AbuseFilter]].\n{{Identical|Home}}",
+	"abusefilter-topnav-recentchanges": "Used as link text in the navigation toolbar. The link points to [[Special:AbuseFilter/history]].\nSee {{msg-mw|abusefilter-filter-log}}.",
 	"abusefilter-topnav-test": "Used as link text in the navigation toolbar.",
 	"abusefilter-topnav-examine": "Used as link text in the navigation toolbar.\n\nThe link points to [[Special:AbuseFilter/examine]].",
 	"abusefilter-topnav-log": "Used as link text in the navigation toolbar.\n\nThe link points to [[Special:AbuseFilter/history]].\n{{Identical|Abuse log}}",

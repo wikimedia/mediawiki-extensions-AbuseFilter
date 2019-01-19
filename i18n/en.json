@@ -491,6 +491,7 @@
 	"abusefilter-examine-noresults": "No results were found for the search parameters you provided.",
 	"abusefilter-topnav": "'''Abuse Filter navigation'''",
 	"abusefilter-topnav-home": "Home",
+	"abusefilter-topnav-recentchanges": "Recent filter changes",
 	"abusefilter-topnav-test": "Batch testing",
 	"abusefilter-topnav-examine": "Examine past edits",
 	"abusefilter-topnav-log": "Abuse log",
