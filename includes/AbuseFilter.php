@@ -16,7 +16,10 @@ class AbuseFilter {
 	public static $statsStoragePeriod = 86400;
 	public static $condLimitEnabled = true;
 
-	/** @var array Map of (filter ID => stdClass) */
+	/**
+	 * @var array [filter ID => stdClass|null] as retrieved from self::getFilter. ID could be either
+	 *   an integer or "global-<integer>"
+	 */
 	private static $filterCache = [];
 
 	public static $condCount = 0;
@@ -1217,12 +1220,13 @@ class AbuseFilter {
 
 	/**
 	 * @param string $id Filter ID (integer or "global-<integer>")
-	 * @return stdClass|null DB row
+	 * @return stdClass|null DB row on success, null on failure
 	 */
 	public static function getFilter( $id ) {
 		global $wgAbuseFilterCentralDB;
 
 		if ( !isset( self::$filterCache[$id] ) ) {
+			$filterID = $id;
 			$globalIndex = self::decodeGlobalName( $id );
 			if ( $globalIndex ) {
 				// Global wiki filter
@@ -1230,7 +1234,7 @@ class AbuseFilter {
 					return null;
 				}
 
-				$id = $globalIndex;
+				$filterID = $globalIndex;
 				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 				$lb = $lbFactory->getMainLB( $wgAbuseFilterCentralDB );
 				$dbr = $lb->getConnectionRef( DB_REPLICA, [], $wgAbuseFilterCentralDB );
@@ -1239,17 +1243,10 @@ class AbuseFilter {
 				$dbr = wfGetDB( DB_REPLICA );
 			}
 
-			$fields = [
-				'af_id',
-				'af_pattern',
-				'af_public_comments',
-				'af_timestamp'
-			];
-
 			$row = $dbr->selectRow(
 				'abuse_filter',
-				$fields,
-				[ 'af_id' => $id ],
+				'*',
+				[ 'af_id' => $filterID ],
 				__METHOD__
 			);
 			self::$filterCache[$id] = $row ?: null;
