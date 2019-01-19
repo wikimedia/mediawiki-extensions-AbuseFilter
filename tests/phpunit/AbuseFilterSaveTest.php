@@ -133,6 +133,8 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			'wpFilterWarnMessage' => self::$mParameters['warnMessage'],
 			'wpFilterWarnMessageOther' => self::$mParameters['warnMessageOther'],
 			'wpFilterActionDisallow' => self::$mParameters['disallowEnabled'],
+			'wpFilterDisallowMessage' => self::$mParameters['disallowMessage'],
+			'wpFilterDisallowMessageOther' => self::$mParameters['disallowMessageOther'],
 			'wpFilterActionBlockautopromote' => self::$mParameters['blockautopromoteEnabled'],
 			'wpFilterActionDegroup' => self::$mParameters['degroupEnabled'],
 			'wpFilterActionBlock' => self::$mParameters['blockEnabled'],
@@ -222,6 +224,8 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			'warnMessage' => 'abusefilter-warning',
 			'warnMessageOther' => '',
 			'disallowEnabled' => false,
+			'disallowMessage' => 'abusefilter-disallowed',
+			'disallowMessageOther' => '',
 			'blockautopromoteEnabled' => false,
 			'degroupEnabled' => false,
 			'blockEnabled' => false,
@@ -440,6 +444,27 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 					'testData' => [
 						'doingWhat' => 'Trying to save a global filter with a custom warn message',
 						'expectedResult' => 'an error message saying that custom warn messages ' .
+							'cannot be used for global rules',
+						'expectedMessage' => 'abusefilter-edit-notallowed-global-custom-msg',
+						'shouldFail' => true,
+						'shouldBeSaved' => false,
+						'customUserGroup' => 'filterEditorGlobal',
+						'needsOtherFilters' => false
+					]
+				]
+			],
+			[
+				[
+					'filterParameters' => [
+						'rules' => '1==1',
+						'description' => 'Global with invalid disallow message',
+						'global' => true,
+						'disallowEnabled' => true,
+						'disallowMessage' => 'abusefilter-disallowed-something',
+					],
+					'testData' => [
+						'doingWhat' => 'Trying to save a global filter with a custom disallow message',
+						'expectedResult' => 'an error message saying that custom disallow messages ' .
 							'cannot be used for global rules',
 						'expectedMessage' => 'abusefilter-edit-notallowed-global-custom-msg',
 						'shouldFail' => true,

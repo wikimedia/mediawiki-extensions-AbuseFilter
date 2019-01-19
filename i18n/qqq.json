@@ -286,7 +286,7 @@
 	"abusefilter-edit-bad-tags": "Status message for filter test.",
 	"abusefilter-edit-notallowed": "Error message when trying to modify a filter while not allowed.",
 	"abusefilter-edit-notallowed-global": "Error message when trying to modify a global filter while not allowed.",
-	"abusefilter-edit-notallowed-global-custom-msg": "Error message when trying to add a custom warning message to a global filter, which is not allowed.",
+	"abusefilter-edit-notallowed-global-custom-msg": "Error message when trying to add a custom warning or disallow message to a global filter, which is not allowed.",
 	"abusefilter-edit-invalid-throttlecount": "Error message when trying to provide an invalid action count for \"throttle\" action.",
 	"abusefilter-edit-invalid-throttleperiod": "Error message when trying to provide an invalid time period for \"throttle\" action.",
 	"abusefilter-edit-empty-throttlegroups": "Error message when trying to save a filter with \"throttle\" action enabled but no throttle groups selected.",
