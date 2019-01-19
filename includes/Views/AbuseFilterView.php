@@ -86,7 +86,7 @@ abstract class AbuseFilterView extends ContextSource {
 		$this->getOutput()->enableOOUI();
 
 		// Rules are in English
-		$editorAttrib = [ 'dir' => 'ltr' ];
+		$editorAttribs = [ 'dir' => 'ltr' ];
 
 		$noTestAttrib = [];
 		$isUserAllowed = $needsModifyRights ?
@@ -101,10 +101,14 @@ abstract class AbuseFilterView extends ContextSource {
 		$canEdit = $needsModifyRights ? $this->canEdit() : $this->canViewPrivate();
 		$switchEditor = null;
 
+		$rulesContainer = '';
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'CodeEditor' ) ) {
-			$editorAttrib['name'] = 'wpAceFilterEditor';
-			$editorAttrib['id'] = 'wpAceFilterEditor';
-			$editorAttrib['class'] = 'mw-abusefilter-editor';
+			$aceAttribs = [
+				'name' => 'wpAceFilterEditor',
+				'id' => 'wpAceFilterEditor',
+				'class' => 'mw-abusefilter-editor'
+			];
+			$attribs = array_merge( $editorAttribs, $aceAttribs );
 
 			$switchEditor =
 				new OOUI\ButtonWidget(
@@ -114,31 +118,22 @@ abstract class AbuseFilterView extends ContextSource {
 					] + $noTestAttrib
 				);
 
-			$rulesContainer = Xml::element( 'div', $editorAttrib, $rules );
-
-			// Dummy textarea for submitting form and to use in case JS is disabled
-			$textareaAttribs = [];
-			if ( !$canEdit ) {
-				$textareaAttribs['readonly'] = 'readonly';
-			}
-			if ( $externalForm ) {
-				$textareaAttribs['form'] = 'wpFilterForm';
-			}
-			$rulesContainer .= Xml::textarea( $textName, $rules, 40, 15, $textareaAttribs );
-
-			$editorConfig = AbuseFilter::getAceConfig( $canEdit );
+			$rulesContainer .= Xml::element( 'div', $attribs, $rules );
 
 			// Add Ace configuration variable
+			$editorConfig = AbuseFilter::getAceConfig( $canEdit );
 			$this->getOutput()->addJsConfigVars( 'aceConfig', $editorConfig );
-		} else {
-			if ( !$canEdit ) {
-				$editorAttrib['readonly'] = 'readonly';
-			}
-			if ( $externalForm ) {
-				$editorAttrib['form'] = 'wpFilterForm';
-			}
-			$rulesContainer = Xml::textarea( $textName, $rules, 40, 15, $editorAttrib );
 		}
+
+		// Build a dummy textarea to be used: for submitting form if CodeEditor isn't installed,
+		// and in case JS is disabled (with or without CodeEditor)
+		if ( !$canEdit ) {
+			$editorAttribs['readonly'] = 'readonly';
+		}
+		if ( $externalForm ) {
+			$editorAttribs['form'] = 'wpFilterForm';
+		}
+		$rulesContainer .= Xml::textarea( $textName, $rules, 40, 15, $editorAttribs );
 
 		if ( $canEdit ) {
 			// Generate builder drop-down
