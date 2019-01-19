@@ -2157,45 +2157,6 @@ class AbuseFilter {
 	}
 
 	/**
-	 * Build input and button for loading a filter
-	 *
-	 * @return string
-	 */
-	public static function buildFilterLoader() {
-		$loadText =
-			new OOUI\TextInputWidget(
-				[
-					'type' => 'number',
-					'name' => 'wpInsertFilter',
-					'id' => 'mw-abusefilter-load-filter'
-				]
-			);
-		$loadButton =
-			new OOUI\ButtonWidget(
-				[
-					'label' => wfMessage( 'abusefilter-test-load' )->text(),
-					'id' => 'mw-abusefilter-load'
-				]
-			);
-		$loadGroup =
-			new OOUI\ActionFieldLayout(
-				$loadText,
-				$loadButton,
-				[
-					'label' => wfMessage( 'abusefilter-test-load-filter' )->text()
-				]
-			);
-		// CSS class for reducing default input field width
-		$loadDiv =
-			Xml::tags(
-				'div',
-				[ 'class' => 'mw-abusefilter-load-filter-id' ],
-				$loadGroup
-			);
-		return $loadDiv;
-	}
-
-	/**
 	 * Check whether a filter is allowed to use a tag
 	 *
 	 * @param string $tag Tag name

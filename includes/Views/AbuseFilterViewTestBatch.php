@@ -36,7 +36,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 				false
 			) . "\n";
 
-		$output .= AbuseFilter::buildFilterLoader();
+		$output .= $this->buildFilterLoader();
 		$output = Xml::tags( 'div', [ 'id' => 'mw-abusefilter-test-editor' ], $output );
 
 		$RCMaxAge = $this->getConfig()->get( 'RCMaxAge' );
