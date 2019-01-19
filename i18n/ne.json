@@ -8,7 +8,8 @@
 			"सरोज कुमार ढकाल",
 			"बिप्लब आनन्द",
 			"राम प्रसाद जोशी",
-			"Matma Rex"
+			"Matma Rex",
+			"पर्वत सुबेदी"
 		]
 	},
 	"abusefilter-desc": "स्वचालित अनुमानित सम्पादनहरुकोनिम्ति लागु हुन्छ",
@@ -249,6 +250,7 @@
 	"abusefilter-examine-noresults": "तपाईंले खोजको निम्ति दिएका मापदण्ड अनुसार परिणाम प्राप्त भएन।",
 	"abusefilter-topnav": "'''दुर्व्यवहार फिल्टर नेभिगेसन'''",
 	"abusefilter-topnav-home": "गृह",
+	"abusefilter-topnav-recentchanges": "जर्सी",
 	"abusefilter-topnav-test": "ब्याच जाँच्ने",
 	"abusefilter-topnav-examine": "पुराना सम्पादनहरू जाँच्ने",
 	"abusefilter-topnav-log": "दुर्व्यवहार लग",
