@@ -31,7 +31,10 @@ class AbuseFilterChangesList extends OldChangesList {
 		}
 
 		$examineParams = [];
-		if ( $this->testFilter ) {
+		if ( $this->testFilter && strlen( $this->testFilter ) < 2000 ) {
+			// Since this is GETed, don't send it if it's too long to prevent broken URLs 2000 is taken from
+			// https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-
+			// in-different-browsers/417184#417184
 			$examineParams['testfilter'] = $this->testFilter;
 		}
 
