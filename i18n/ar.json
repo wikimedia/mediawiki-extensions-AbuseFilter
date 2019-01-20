@@ -272,6 +272,7 @@
 	"abusefilter-edit-export": "صدر هذا المرشح لويكي آخر",
 	"abusefilter-edit-syntaxok": "لم يُكتشف أي خطأ صياغي.",
 	"abusefilter-edit-syntaxerr": "أكشفت خطأ صياغة: $1",
+	"abusefilter-edit-warn-leave": "سيؤدي ترك الصفحة إلى فقدان أي تغيير تم إجراؤه على هذا المرشح.",
 	"abusefilter-edit-bad-tags": "واحدة أو أكثر من الوسوم التي حددتها غير صالحة،\nيجب أن تكون الوسوم قصيرة وألا تحتوي على أحرف خاصة، ويجب ألا يتم حجزها بواسطة برامج أخرى، جرب اختيار اسم وسم جديد",
 	"abusefilter-edit-notallowed": "لا يسمح لك بإنشاء أو تعديل مرشحات الإساءة",
 	"abusefilter-edit-notallowed-global": "لا يسمح لك بإنشاء أو تعديل مرشحات الإساءة الشاملة",

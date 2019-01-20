@@ -285,6 +285,7 @@
 	"abusefilter-edit-export": "Exporter ce filtre vers un autre wiki",
 	"abusefilter-edit-syntaxok": "Aucune erreur de syntaxe détectée.",
 	"abusefilter-edit-syntaxerr": "Erreur de syntaxe détectée : $1",
+	"abusefilter-edit-warn-leave": "En quittant cette page vous perdrez toute modification apportée à ce filtre.",
 	"abusefilter-edit-bad-tags": "Au moins une des balises que vous avez spécifiées n’est pas valide.\nLes balises doivent être courtes, ne pas contenir de caractères spéciaux, ni être réservées par d’autres logiciels. Essayez en choisissant un autre nom de balise",
 	"abusefilter-edit-notallowed": "Vous n'êtes pas autorisé à créer ou modifier des filtres antiabus",
 	"abusefilter-edit-notallowed-global": "Vous n'avez pas le droit de créer ou de modifier les filtres globaux d'abus",
