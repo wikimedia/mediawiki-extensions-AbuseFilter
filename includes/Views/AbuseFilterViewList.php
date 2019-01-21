@@ -53,6 +53,9 @@ class AbuseFilterViewList extends AbuseFilterView {
 		if ( $searchEnabled ) {
 			$querypattern = $request->getVal( 'querypattern' );
 			$searchmode = $request->getVal( 'searchoption', 'LIKE' );
+		} else {
+			$querypattern = '';
+			$searchmode = '';
 		}
 
 		if ( $deleted == 'show' ) {
@@ -80,7 +83,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 		$dbr = wfGetDB( DB_REPLICA );
 
-		if ( !empty( $querypattern ) ) {
+		if ( $querypattern !== '' ) {
 			if ( $searchmode !== 'LIKE' ) {
 				// Check regex pattern validity
 				Wikimedia\suppressWarnings();
@@ -152,16 +155,9 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$deleted = $optarray['deleted'];
 		$furtherOptions = $optarray['furtherOptions'];
 		$scope = $optarray['scope'];
-
 		$searchEnabled = $optarray['searchEnabled'];
-
-		if ( $searchEnabled ) {
-			$querypattern = $optarray['querypattern'];
-			$searchmode = $optarray['searchmode'];
-		} else {
-			$querypattern = '';
-			$searchmode = '';
-		}
+		$querypattern = $optarray['querypattern'];
+		$searchmode = $optarray['searchmode'];
 
 		if (
 			$config->get( 'AbuseFilterCentralDB' ) !== null
