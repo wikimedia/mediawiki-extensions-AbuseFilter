@@ -2518,7 +2518,7 @@ class AbuseFilter {
 		$afh_row['afh_flags'] = implode( ',', $flags );
 
 		$afh_row['afh_filter'] = $new_id;
-		$afh_row['afh_id'] = $dbw->nextSequenceValue( 'abuse_filter_af_id_seq' );
+		$afh_row['afh_id'] = $dbw->nextSequenceValue( 'abuse_filter_history_afh_id_seq' );
 
 		// Do the update
 		$dbw->insert( 'abuse_filter_history', $afh_row, __METHOD__ );
