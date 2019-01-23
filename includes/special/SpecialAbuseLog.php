@@ -153,13 +153,11 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			} else {
 				$this->showDetails( $args[0] );
 			}
+		} elseif ( $hideid ) {
+			$this->showHideForm( $hideid );
 		} else {
-			if ( $hideid ) {
-				$this->showHideForm( $hideid );
-			} else {
-				$this->searchForm();
-				$this->showList();
-			}
+			$this->searchForm();
+			$this->showList();
 		}
 	}
 
@@ -377,6 +375,16 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$hideReasons = Xml::listDropDownOptions( $hideReasons, [ 'other' => $hideReasonsOther ] );
 
 		$formInfo = [
+			'showorhide' => [
+				'type' => 'radio',
+				'label-message' => 'abusefilter-log-hide-set-visibility',
+				'options-messages' => [
+					'abusefilter-log-hide-show' => 'show',
+					'abusefilter-log-hide-hide' => 'hide'
+				],
+				'default' => (int)$deleted === 0 ? 'show' : 'hide',
+				'flatlist' => true
+			],
 			'logid' => [
 				'type' => 'info',
 				'default' => (string)$id,
@@ -390,11 +398,6 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			'reason' => [
 				'type' => 'text',
 				'label-message' => 'abusefilter-log-hide-reason-other',
-			],
-			'hidden' => [
-				'type' => 'toggle',
-				'default' => $deleted,
-				'label-message' => 'abusefilter-log-hide-hidden',
 			],
 		];
 
@@ -418,11 +421,12 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	public function saveHideForm( $fields ) {
 		$logid = $this->getRequest()->getVal( 'hide' );
 
+		$newValue = $fields['showorhide'] === 'hide' ? 1 : 0;
 		$dbw = wfGetDB( DB_MASTER );
 
 		$dbw->update(
 			'abuse_filter_log',
-			[ 'afl_deleted' => $fields['hidden'] ],
+			[ 'afl_deleted' => $newValue ],
 			[ 'afl_id' => $logid ],
 			__METHOD__
 		);
@@ -435,7 +439,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				$this->msg( 'colon-separator' )->inContentLanguage()->text() . $fields['reason'];
 		}
 
-		$action = $fields['hidden'] ? 'hide-afl' : 'unhide-afl';
+		$action = $fields['showorhide'] === 'hide' ? 'hide-afl' : 'unhide-afl';
 		$logEntry = new ManualLogEntry( 'suppress', $action );
 		$logEntry->setPerformer( $this->getUser() );
 		$logEntry->setTarget( $this->getPageTitle( $logid ) );
@@ -622,10 +626,18 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		);
 		$pager->doQuery();
 		$result = $pager->getResult();
+
+		$form = Xml::tags(
+			'form',
+			[
+				'method' => 'GET',
+				'action' => $this->getPageTitle()->getLocalURL()
+			],
+			Xml::tags( 'ul', [ 'class' => 'plainlinks' ], $pager->getBody() )
+		);
+
 		if ( $result && $result->numRows() !== 0 ) {
-			$out->addHTML( $pager->getNavigationBar() .
-				Xml::tags( 'ul', [ 'class' => 'plainlinks' ], $pager->getBody() ) .
-				$pager->getNavigationBar() );
+			$out->addHTML( $pager->getNavigationBar() . $form . $pager->getNavigationBar() );
 		} else {
 			$out->addWikiMsg( 'abusefilter-log-noresults' );
 		}
@@ -815,7 +827,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$row = $dbr->selectRow(
 			[ 'abuse_filter_log', 'abuse_filter' ],
 			[ 'afl_id', 'afl_filter', 'afl_user_text', 'afl_timestamp', 'afl_ip', 'af_id',
-				 'af_public_comments', 'af_hidden' ],
+				'af_public_comments', 'af_hidden' ],
 			[ 'afl_id' => $id ],
 			__METHOD__,
 			[],
