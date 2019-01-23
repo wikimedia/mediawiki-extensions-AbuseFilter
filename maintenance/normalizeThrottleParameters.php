@@ -44,11 +44,6 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 	/** @var \Wikimedia\Rdbms\IDatabase $db The master database */
 	private $dbw;
 
-	/** @var array IDs of filters with invalid throttle rate */
-	private $invalidRate = [];
-	/** @var array IDs of filters with invalid throttle groups */
-	private $invalidGroups = [];
-
 	/**
 	 * Rollback the current transaction and emit a fatal error
 	 *
@@ -79,18 +74,22 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 		$rawGroups = array_slice( $params, 2 );
 		$newGroups = [];
 		// We use a standard order to check for duplicates. This variable is not used as the actual
-		// array of groups to avoid silly changes like 'ip,user' => 'user,ip'
+		// array of groups to avoid silly changes like 'ip,user' => 'user,ip'. In this variable we also
+		// store trimmed groups, so that 'ip, user' is considered to be the same as 'ip,user', just
+		// as the actual code does. And again, we don't want to edit the filter just to strip spaces.
 		$normalizedGroups = [];
 		// Every group should be valid, and subgroups should have valid groups inside. Only keep
 		// valid (sub)groups.
 		foreach ( $rawGroups as $group ) {
+			// Groups must be lowercase.
+			$group = strtolower( $group );
 			if ( strpos( $group, ',' ) !== false ) {
 				// No duplicates in subgroups
 				$subGroups = array_unique( explode( ',', $group ) );
 				$uniqueGroup = implode( ',', $subGroups );
 				$valid = true;
 				foreach ( $subGroups as $subGroup ) {
-					if ( !in_array( $subGroup, $validGroups ) ) {
+					if ( !in_array( trim( $subGroup ), $validGroups ) ) {
 						$valid = false;
 						break;
 					}
@@ -98,11 +97,11 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 				sort( $subGroups );
 				if ( $valid && !in_array( $subGroups, $normalizedGroups ) ) {
 					$newGroups[] = $uniqueGroup;
-					$normalizedGroups[] = $subGroups;
+					$normalizedGroups[] = array_map( 'trim', $subGroups );
 				}
-			} elseif ( in_array( $group, $validGroups ) ) {
+			} elseif ( in_array( trim( $group ), $validGroups ) ) {
 				$newGroups[] = $group;
-				$normalizedGroups[] = $group;
+				$normalizedGroups[] = trim( $group );
 			}
 		}
 
@@ -113,7 +112,7 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 	}
 
 	/**
-	 * Check if throttle rate is malformed, i.e. if it has extra commas
+	 * Check if throttle rate is malformed, i.e. if it has extra commas or a part of it is empty
 	 *
 	 * @param string $rate The throttle rate as saved in the DB ("count,period")
 	 * @return string|null String with error type or null if the rate is valid
@@ -141,6 +140,8 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 		$user = AbuseFilter::getFilterUser();
 		$this->dbw = wfGetDB( DB_MASTER );
 		$dryRun = $this->hasOption( 'dry-run' );
+		$invalidRate = [];
+		$invalidGroups = [];
 
 		$this->beginTransaction( $this->dbw, __METHOD__ );
 
@@ -166,10 +167,10 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 			// it means that the throttle limit is never reached. Since we cannot guess what the
 			// filter should do, nor we want to impose a default, we ask to manually fix the problem.
 			if ( $rateCheck === 'hand' ) {
-				$this->invalidRate[] = $filter;
+				$invalidRate[] = $filter;
 			}
 			if ( count( $newGroups ) === 0 ) {
-				$this->invalidGroups[] = $filter;
+				$invalidGroups[] = $filter;
 			}
 
 			if ( $rateCheck === 'disable' ) {
@@ -190,7 +191,7 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 		// what we do in the actual code.
 		$timestamps = [];
 		$changeActionCount = count( $changeActionIDs );
-		if ( $changeActionCount && !( $this->invalidRate || $this->invalidGroups ) ) {
+		if ( $changeActionCount && !( $invalidRate || $invalidGroups ) ) {
 			if ( $dryRun ) {
 				$this->output(
 					"normalizeThrottleParameter has found $changeActionCount rows to change in " .
@@ -230,7 +231,7 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 		}
 
 		$deleteActionCount = count( $deleteActionIDs );
-		if ( $deleteActionCount && !( $this->invalidRate || $this->invalidGroups ) ) {
+		if ( $deleteActionCount && !( $invalidRate || $invalidGroups ) ) {
 			if ( $dryRun ) {
 				$this->output(
 					"normalizeThrottleParameter has found $deleteActionCount rows to delete in " .
@@ -321,20 +322,17 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 			$rateCheck = $this->checkThrottleRate( $actions['throttle'][1] );
 			list( $oldGroups, $newGroups ) = $this->getNewGroups( $actions['throttle'] );
 
-			// If the rate is invalid or the groups are empty (or only contain invalid identifiers),
-			// it means that the throttle limit is never reached. Since we cannot guess what the
-			// filter should do, nor we want to impose a default, we ask to manually fix the problem.
-			if ( $rateCheck === 'hand' ) {
-				$this->invalidRate[] = $filter;
-			}
-			if ( count( $newGroups ) === 0 ) {
-				$this->invalidGroups[] = $filter;
-			}
-
 			$timestamp = $timestamps[ $filter ] ?? null;
 			if ( !$timestamp && !$dryRun ) {
 				// Sanity check
 				$this->fail( "The timestamp wasn't saved for filter $filter" );
+			}
+
+			// If the rate is invalid or the groups are empty (or only contain invalid identifiers),
+			// it means that the throttle limit is never reached. Since we cannot guess what the
+			// filter should do, nor we want to impose a default, we ask to manually fix the problem.
+			if ( $rateCheck === 'hand' || count( $newGroups ) === 0 ) {
+				continue;
 			}
 
 			$fixedRowSection = [
@@ -362,14 +360,14 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 		}
 
 		$invalidMsg = '';
-		if ( $this->invalidRate ) {
+		if ( $invalidRate ) {
 			$invalidMsg .= 'Throttle count and period are malformed or empty for the following filters: ' .
-				implode( ', ', $this->invalidRate ) . '. ' .
+				implode( ', ', $invalidRate ) . '. ' .
 				'Please fix them by hand in the way they\'re meant to be, then launch the script again. ';
 		}
-		if ( $this->invalidGroups ) {
+		if ( $invalidGroups ) {
 			$invalidMsg .= 'Throttle groups are empty for the following filters: ' .
-				implode( ', ', $this->invalidGroups ) . '. ' .
+				implode( ', ', $invalidGroups ) . '. ' .
 				'Please add some groups or disable throttling, then launch the script again.';
 		}
 		if ( $invalidMsg ) {
