@@ -76,7 +76,6 @@ class SpecialAbuseLog extends SpecialPage {
 			$this->getContext(), 'log', $this->getLinkRenderer() );
 
 		$this->setHeaders();
-		$this->outputHeader( 'abusefilter-log-summary' );
 		$this->loadParameters();
 
 		$out->setPageTitle( $this->msg( 'abusefilter-log' ) );
@@ -374,6 +373,7 @@ class SpecialAbuseLog extends SpecialPage {
 	 */
 	public function showList() {
 		$out = $this->getOutput();
+		$this->outputHeader( 'abusefilter-log-summary' );
 
 		// Generate conditions list.
 		$conds = [];
@@ -1049,19 +1049,18 @@ class SpecialAbuseLog extends SpecialPage {
 			)->params( $row->afl_user_text )->parse();
 		}
 
+		$attribs = null;
 		if ( $isHidden === true ) {
-			$description .= ' ' .
-				$this->msg( 'abusefilter-log-hidden' )->parse();
-			$class = 'afl-hidden';
+			$attribs = [ 'class' => 'mw-abusefilter-log-hidden-entry' ];
 		} elseif ( $isHidden === 'implicit' ) {
 			$description .= ' ' .
 				$this->msg( 'abusefilter-log-hidden-implicit' )->parse();
 		}
 
 		if ( $isListItem ) {
-			return Xml::tags( 'li', isset( $class ) ? [ 'class' => $class ] : null, $description );
+			return Xml::tags( 'li', $attribs, $description );
 		} else {
-			return Xml::tags( 'span', isset( $class ) ? [ 'class' => $class ] : null, $description );
+			return Xml::tags( 'span', $attribs, $description );
 		}
 	}
 

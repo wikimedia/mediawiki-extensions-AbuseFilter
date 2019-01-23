@@ -84,7 +84,6 @@
 	"abusefilter-log-linkoncontribs-text": "Abuse log for {{GENDER:$1|this user}}",
 	"abusefilter-log-linkonhistory": "view abuse log",
 	"abusefilter-log-linkonhistory-text": "View abuse log for this page",
-	"abusefilter-log-hidden": "(entry hidden)",
 	"abusefilter-log-hidden-implicit": "(hidden because revision has been deleted)",
 	"abusefilter-log-cannot-see-details": "You do not have permission to see details of this entry.",
 	"abusefilter-log-cannot-see-private-details": "You do not have permission to see private details of this entry.",
