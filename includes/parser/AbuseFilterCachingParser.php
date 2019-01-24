@@ -147,7 +147,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				list( $array, $offset ) = $node->children;
 
 				$array = $this->evalNode( $array );
-				if ( $array->type !== AFPData::DARRAY ) {
+				if ( $array->getType() !== AFPData::DARRAY ) {
 					throw new AFPUserVisibleException( 'notarray', $node->position, [] );
 				}
 
@@ -254,7 +254,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 					throw new AFPUserVisibleException( 'unrecognisedvar', $node->position, [ $varName ] );
 				}
 				$array = $this->mVariables->getVar( $varName );
-				if ( $array->type !== AFPData::DARRAY ) {
+				if ( $array->getType() !== AFPData::DARRAY ) {
 					throw new AFPUserVisibleException( 'notarray', $node->position, [] );
 				}
 
@@ -274,7 +274,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				list( $varName, $value ) = $node->children;
 
 				$array = $this->mVariables->getVar( $varName );
-				if ( $array->type !== AFPData::DARRAY ) {
+				if ( $array->getType() !== AFPData::DARRAY ) {
 					throw new AFPUserVisibleException( 'notarray', $node->position, [] );
 				}
 

@@ -25,16 +25,32 @@ class AFPData {
 
 	/**
 	 * @var string One of the D* const from this class
+	 * @private Use $this->getType()
 	 */
 	public $type;
 	/**
 	 * @var mixed|null|AFPData[] The actual data contained in this object
+	 * @private Use $this->getData()
 	 */
 	public $data;
 
 	/**
+	 * @return string
+	 */
+	public function getType() {
+		return $this->type;
+	}
+
+	/**
+	 * @return AFPData[]|mixed|null
+	 */
+	public function getData() {
+		return $this->data;
+	}
+
+	/**
 	 * @param string $type
-	 * @param mixed|null $val
+	 * @param AFPData[]|mixed|null $val
 	 */
 	public function __construct( $type = self::DNULL, $val = null ) {
 		$this->type = $type;
