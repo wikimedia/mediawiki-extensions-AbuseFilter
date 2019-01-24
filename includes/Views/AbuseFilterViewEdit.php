@@ -247,16 +247,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			if ( $total > 0 ) {
 				$matches_percent = sprintf( '%.2f', 100 * $matches_count / $total );
-				if ( $this->getConfig()->get( 'AbuseFilterProfile' ) ) {
-					list( $timeProfile, $condProfile ) = AbuseFilter::getFilterProfile( $filter );
-					$fields['abusefilter-edit-status-label'] = $this->msg( 'abusefilter-edit-status-profile' )
-						->numParams( $total, $matches_count, $matches_percent, $timeProfile, $condProfile )
-						->escaped();
-				} else {
-					$fields['abusefilter-edit-status-label'] = $this->msg( 'abusefilter-edit-status' )
-						->numParams( $total, $matches_count, $matches_percent )
-						->parse();
-				}
+				list( $timeProfile, $condProfile ) = AbuseFilter::getFilterProfile( $filter );
+				$fields['abusefilter-edit-status-label'] = $this->msg( 'abusefilter-edit-status' )
+					->numParams( $total, $matches_count, $matches_percent, $timeProfile, $condProfile )
+					->escaped();
 			}
 		}
 

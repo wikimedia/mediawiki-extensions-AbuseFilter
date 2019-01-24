@@ -252,8 +252,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				'degroup' => true,
 				'tag' => true
 			],
-			'wgAbuseFilterRuntimeProfile' => true,
-			'wgAbuseFilterProfile' => true
+			'wgAbuseFilterRuntimeProfile' => true
 		] );
 	}
 

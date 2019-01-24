@@ -661,8 +661,7 @@ class AbuseFilter {
 		$prefix = '',
 		$mode = 'execute'
 	) {
-		global $wgAbuseFilterProfile, $wgAbuseFilterRuntimeProfile,
-			$wgAbuseFilterSlowFilterRuntimeLimit;
+		global $wgAbuseFilterRuntimeProfile, $wgAbuseFilterSlowFilterRuntimeLimit;
 
 		$filterID = $prefix . $row->af_id;
 
@@ -693,7 +692,7 @@ class AbuseFilter {
 		$timeTaken = microtime( true ) - $startTime;
 		$condsUsed = self::$condCount - $startConds;
 
-		if ( $wgAbuseFilterProfile && $mode === 'execute' ) {
+		if ( $mode === 'execute' ) {
 			self::recordProfilingResult( $row->af_id, $timeTaken, $condsUsed );
 		}
 
