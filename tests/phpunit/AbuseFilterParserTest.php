@@ -155,9 +155,9 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	public function testCondCount( $rule, $expected ) {
 		foreach ( self::getParsers() as $parser ) {
 			$parserClass = get_class( $parser );
-			$countBefore = AbuseFilter::$condCount;
+			$countBefore = $parser->getCondCount();
 			$parser->parse( $rule );
-			$countAfter = AbuseFilter::$condCount;
+			$countAfter = $parser->getCondCount();
 			$actual = $countAfter - $countBefore;
 			$this->assertEquals( $expected, $actual, "Wrong condition count for $rule with $parserClass" );
 			// Reset cache or it would compromise conditions count

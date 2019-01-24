@@ -57,9 +57,12 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 			$this->dieWithError( 'apierror-abusefilter-badsyntax', 'badsyntax' );
 		}
 
+		$parserClass = $this->getConfig()->get( 'AbuseFilterParserClass' );
+		/** @var AbuseFilterParser $parser */
+		$parser = new $parserClass( $vars );
 		$result = [
 			ApiResult::META_BC_BOOLS => [ 'result' ],
-			'result' => AbuseFilter::checkConditions( $params['filter'], $vars ),
+			'result' => AbuseFilter::checkConditions( $params['filter'], $parser ),
 		];
 
 		$this->getResult()->addValue(

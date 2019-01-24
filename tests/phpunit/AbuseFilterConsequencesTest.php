@@ -962,7 +962,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 *
 	 * @param int[] $createIds IDs of the filters to create
 	 * @param array $actionParams Details of the action we need to execute to trigger filters
-	 * @covers AbuseFilter::triggerLimiter
+	 * @covers AbuseFilterParser::getCondCount
+	 * @covers AbuseFilterParser::raiseCondCount
 	 * @covers AbuseFilter::checkAllFilters
 	 * @dataProvider provideFiltersNoConsequences
 	 */

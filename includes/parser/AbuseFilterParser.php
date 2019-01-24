@@ -30,6 +30,16 @@ class AbuseFilterParser {
 	 */
 	public $mVars;
 
+	/**
+	 * @var int The current amount of conditions being consumed
+	 */
+	protected $mCondCount;
+
+	/**
+	 * @var bool Whether the condition limit is enabled.
+	 */
+	protected $condLimitEnabled = true;
+
 	public static $mFunctions = [
 		'lcase' => 'funcLc',
 		'ucase' => 'funcUc',
@@ -98,6 +108,43 @@ class AbuseFilterParser {
 	}
 
 	/**
+	 * @return int
+	 */
+	public function getCondCount() {
+		return $this->mCondCount;
+	}
+
+	/**
+	 * Reset the conditions counter
+	 */
+	public function resetCondCount() {
+		$this->mCondCount = 0;
+	}
+
+	/**
+	 * For use in batch scripts and the like
+	 *
+	 * @param bool $enable True to enable the limit, false to disable it
+	 */
+	public function toggleConditionLimit( $enable ) {
+		$this->condLimitEnabled = $enable;
+	}
+
+	/**
+	 * @param int $val The amount to increase the conditions count of.
+	 * @throws MWException
+	 */
+	protected function raiseCondCount( $val = 1 ) {
+		global $wgAbuseFilterConditionLimit;
+
+		$this->mCondCount += $val;
+
+		if ( $this->condLimitEnabled && $this->mCondCount > $wgAbuseFilterConditionLimit ) {
+			throw new MWException( 'Condition limit reached.' );
+		}
+	}
+
+	/**
 	 * Resets the state of the parser.
 	 */
 	public function resetState() {
@@ -106,6 +153,7 @@ class AbuseFilterParser {
 		$this->mPos = 0;
 		$this->mShortCircuit = false;
 		$this->mAllowShort = true;
+		$this->mCondCount = 0;
 	}
 
 	/**
@@ -486,7 +534,7 @@ class AbuseFilterParser {
 				// The result doesn't matter.
 				break;
 			}
-			AbuseFilter::triggerLimiter();
+			$this->raiseCondCount();
 			$result = AFPData::compareOp( $result, $r2, $op );
 		}
 	}
@@ -597,7 +645,8 @@ class AbuseFilterParser {
 				return;
 			}
 
-			AbuseFilter::triggerLimiter();
+			$this->raiseCondCount();
+
 			// @phan-suppress-next-line PhanParamTooMany Not every function needs the position
 			$result = AFPData::$func( $result, $r2, $this->mCur->pos );
 		}
@@ -742,7 +791,7 @@ class AbuseFilterParser {
 			) {
 				$result = self::$funcCache[$funcHash];
 			} else {
-				AbuseFilter::triggerLimiter();
+				$this->raiseCondCount();
 				$result = self::$funcCache[$funcHash] = $this->$func( $args );
 			}
 

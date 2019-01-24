@@ -37,6 +37,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 	public function resetState() {
 		$this->mVars = new AbuseFilterVariableHolder;
 		$this->mCur = new AFPToken();
+		$this->mCondCount = 0;
 	}
 
 	/**
@@ -130,7 +131,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				) {
 					$result = self::$funcCache[$funcHash];
 				} else {
-					AbuseFilter::triggerLimiter();
+					$this->raiseCondCount();
 					$result = self::$funcCache[$funcHash] = $this->$func( $dataArgs );
 				}
 
@@ -174,7 +175,8 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				$leftOperand = $this->evalNode( $leftOperand );
 				$rightOperand = $this->evalNode( $rightOperand );
 
-				AbuseFilter::triggerLimiter();
+				$this->raiseCondCount();
+
 				// @phan-suppress-next-line PhanParamTooMany Not every function needs the position
 				$result = AFPData::$func( $leftOperand, $rightOperand, $node->position );
 
@@ -216,7 +218,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				list( $op, $leftOperand, $rightOperand ) = $node->children;
 				$leftOperand = $this->evalNode( $leftOperand );
 				$rightOperand = $this->evalNode( $rightOperand );
-				AbuseFilter::triggerLimiter();
+				$this->raiseCondCount();
 				return AFPData::compareOp( $leftOperand, $rightOperand, $op );
 
 			case AFPTreeNode::LOGIC:

@@ -41,8 +41,6 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	public function show() {
 		$out = $this->getOutput();
 
-		AbuseFilter::disableConditionLimit();
-
 		if ( !$this->canViewPrivate() ) {
 			$out->addWikiMsg( 'abusefilter-mustviewprivateoredit' );
 			return;
@@ -218,7 +216,11 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 				continue;
 			}
 
-			$result = AbuseFilter::checkConditions( $this->mFilter, $vars );
+			$parserClass = $this->getConfig()->get( 'AbuseFilterParserClass' );
+			/** @var AbuseFilterParser $parser */
+			$parser = new $parserClass( $vars );
+			$parser->toggleConditionLimit( false );
+			$result = AbuseFilter::checkConditions( $this->mFilter, $parser );
 
 			if ( $result || $this->mShowNegative ) {
 				// Stash result in RC item

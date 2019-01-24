@@ -18,10 +18,6 @@ class AbuseFilter {
 	 * @var int How long to keep profiling data in cache (in seconds)
 	 */
 	public static $statsStoragePeriod = 86400;
-	/**
-	 * @var bool Whether the condition limit is enabled
-	 */
-	public static $condLimitEnabled = true;
 
 	/**
 	 * @var array [filter ID => stdClass|null] as retrieved from self::getFilter. ID could be either
@@ -31,11 +27,6 @@ class AbuseFilter {
 
 	/** @var string The prefix to use for global filters */
 	const GLOBAL_FILTER_PREFIX = 'global-';
-
-	/**
-	 * @var int The amount of conditions currently used
-	 */
-	public static $condCount = 0;
 
 	/*
 	 * @var array Map of (action ID => string[])
@@ -401,27 +392,6 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param int $val
-	 * @throws MWException
-	 */
-	public static function triggerLimiter( $val = 1 ) {
-		self::$condCount += $val;
-
-		global $wgAbuseFilterConditionLimit;
-
-		if ( self::$condLimitEnabled && self::$condCount > $wgAbuseFilterConditionLimit ) {
-			throw new MWException( 'Condition limit reached.' );
-		}
-	}
-
-	/**
-	 * For use in batch scripts and the like
-	 */
-	public static function disableConditionLimit() {
-		self::$condLimitEnabled = false;
-	}
-
-	/**
 	 * @param Title|null $title
 	 * @param string $prefix
 	 * @param null|stdClass $rcRow If the variables should be generated for an RC row, this is the row.
@@ -524,25 +494,15 @@ class AbuseFilter {
 
 	/**
 	 * @param string $conds
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param AbuseFilterParser $parser The parser instance to use.
 	 * @param bool $ignoreError
 	 * @param string|null $filter The ID of the filter being parsed
 	 * @return bool
 	 * @throws Exception
 	 */
 	public static function checkConditions(
-		$conds, AbuseFilterVariableHolder $vars, $ignoreError = true, $filter = null
+		$conds, AbuseFilterParser $parser, $ignoreError = true, $filter = null
 	) {
-		global $wgAbuseFilterParserClass;
-
-		static $parser, $lastVars;
-
-		if ( is_null( $parser ) || $vars !== $lastVars ) {
-			/** @var $parser AbuseFilterParser */
-			$parser = new $wgAbuseFilterParserClass( $vars );
-			$lastVars = $vars;
-		}
-
 		try {
 			$result = $parser->parse( $conds );
 		} catch ( Exception $excep ) {
@@ -567,19 +527,27 @@ class AbuseFilter {
 	 * @param Title $title
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @param string $mode 'execute' for edits and logs, 'stash' for cached matches
-	 *
+	 * @param AbuseFilterParser|null $parser The parser instance to use. Do **NOT** pass this from
+	 * outside, as this parameter is temporary.
 	 * @return bool[] Map of (integer filter ID => bool)
 	 */
 	public static function checkAllFilters(
 		AbuseFilterVariableHolder $vars,
 		Title $title,
 		$group = 'default',
-		$mode = 'execute'
+		$mode = 'execute',
+		AbuseFilterParser $parser = null
 	) {
 		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral, $wgAbuseFilterConditionLimit;
 
+		if ( $parser === null ) {
+			// Temporary for back-compat
+			global $wgAbuseFilterParserClass;
+			/** @var $parser AbuseFilterParser */
+			$parser = new $wgAbuseFilterParserClass( $vars );
+		}
 		// Ensure that we start fresh, see T193374
-		self::$condCount = 0;
+		$parser->resetCondCount();
 
 		// Fetch filters to check from the database.
 		$filter_matched = [];
@@ -603,7 +571,7 @@ class AbuseFilter {
 		);
 
 		foreach ( $res as $row ) {
-			$filter_matched[$row->af_id] = self::checkFilter( $row, $vars, $title, '', $mode );
+			$filter_matched[$row->af_id] = self::checkFilter( $row, $parser, $title, '', $mode );
 		}
 
 		if ( $wgAbuseFilterCentralDB && !$wgAbuseFilterIsCentral ) {
@@ -642,11 +610,11 @@ class AbuseFilter {
 
 			foreach ( $res as $row ) {
 				$filter_matched[ self::buildGlobalName( $row->af_id ) ] =
-					self::checkFilter( $row, $vars, $title, self::GLOBAL_FILTER_PREFIX, $mode );
+					self::checkFilter( $row, $parser, $title, self::GLOBAL_FILTER_PREFIX, $mode );
 			}
 		}
 
-		if ( self::$condCount > $wgAbuseFilterConditionLimit ) {
+		if ( $parser->getCondCount() > $wgAbuseFilterConditionLimit ) {
 			$action = $vars->getVar( 'action' )->toString();
 			if ( strpos( $action, 'createaccount' ) === false ) {
 				$username = $vars->getVar( 'user_name' )->toString();
@@ -662,7 +630,7 @@ class AbuseFilter {
 
 		if ( $mode === 'execute' ) {
 			// Update statistics, and disable filters which are over-blocking.
-			self::recordStats( $filter_matched, $group );
+			self::recordStats( $filter_matched, $parser->getCondCount(), $group );
 		}
 
 		return $filter_matched;
@@ -670,7 +638,7 @@ class AbuseFilter {
 
 	/**
 	 * @param stdClass $row
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param AbuseFilterParser $parser
 	 * @param Title $title
 	 * @param string $prefix
 	 * @param string $mode 'execute' for edits and logs, 'stash' for cached matches
@@ -678,7 +646,7 @@ class AbuseFilter {
 	 */
 	public static function checkFilter(
 		$row,
-		AbuseFilterVariableHolder $vars,
+		AbuseFilterParser $parser,
 		Title $title,
 		$prefix = '',
 		$mode = 'execute'
@@ -688,7 +656,7 @@ class AbuseFilter {
 		$filterID = $prefix . $row->af_id;
 
 		// Record data to be used if profiling is enabled and mode is 'execute'
-		$startConds = self::$condCount;
+		$startConds = $parser->getCondCount();
 		$startTime = microtime( true );
 
 		// Store the row somewhere convenient
@@ -698,7 +666,7 @@ class AbuseFilter {
 		if (
 			self::checkConditions(
 				$pattern,
-				$vars,
+				$parser,
 				// Ignore errors
 				true,
 				$filterID
@@ -712,7 +680,7 @@ class AbuseFilter {
 		}
 
 		$timeTaken = microtime( true ) - $startTime;
-		$condsUsed = self::$condCount - $startConds;
+		$condsUsed = $parser->getCondCount() - $startConds;
 
 		if ( $mode === 'execute' ) {
 			self::recordProfilingResult( $row->af_id, $timeTaken, $condsUsed );
@@ -1167,7 +1135,7 @@ class AbuseFilter {
 	public static function filterAction(
 		AbuseFilterVariableHolder $vars, $title, $group, User $user, $mode = 'execute'
 	) {
-		global $wgAbuseFilterLogIP;
+		global $wgAbuseFilterLogIP, $wgAbuseFilterParserClass;
 
 		$logger = LoggerFactory::getInstance( 'StashEdit' );
 		// Bots do not use edit stashing, so avoid distorting the stats
@@ -1181,6 +1149,9 @@ class AbuseFilter {
 
 		$vars->forFilter = true;
 		$vars->setVar( 'timestamp', (int)wfTimestamp( TS_UNIX ) );
+
+		/** @var $parser AbuseFilterParser */
+		$parser = new $wgAbuseFilterParserClass( $vars );
 
 		// Get the stash key based on the relevant "input" variables
 		$cache = ObjectCache::getLocalClusterInstance();
@@ -1207,7 +1178,7 @@ class AbuseFilter {
 				$statsd->increment( 'abusefilter.check-stash.hit' );
 			}
 		} else {
-			$filter_matched = self::checkAllFilters( $vars, $title, $group, $mode );
+			$filter_matched = self::checkAllFilters( $vars, $title, $group, $mode, $parser );
 			if ( $isForEdit && $mode !== 'stash' ) {
 				$logger->debug( __METHOD__ . ": cache miss for '$title' (key $stashKey)." );
 				$statsd->increment( 'abusefilter.check-stash.miss' );
@@ -1219,7 +1190,7 @@ class AbuseFilter {
 			$cacheData = [
 				'matches' => $filter_matched,
 				'tags' => self::$tagsToSet,
-				'condCount' => self::$condCount,
+				'condCount' => $parser->getCondCount(),
 				'runtime' => ( microtime( true ) - $startTime ) * 1000
 			];
 
@@ -1238,7 +1209,7 @@ class AbuseFilter {
 				$condCount = $cacheData['condCount'];
 			} else {
 				$runtime = ( microtime( true ) - $startTime ) * 1000;
-				$condCount = self::$condCount;
+				$condCount = $parser->getCondCount();
 			}
 
 			self::recordRuntimeProfilingResult( count( $matched_filters ), $condCount, $runtime );
@@ -1291,8 +1262,8 @@ class AbuseFilter {
 			// saved here). I2eab2e50356eeb5224446ee2d0df9c787ae95b80 could help.
 			if ( $cacheData ) {
 				DeferredUpdates::addCallableUpdate( function () use (
-					$vars, $group, $title, $actions_taken, $log_template ) {
-					self::checkAllFilters( $vars, $title, $group, 'execute' );
+					$vars, $parser, $group, $title, $actions_taken, $log_template ) {
+					self::checkAllFilters( $vars, $title, $group, 'execute', $parser );
 					self::addLogEntries( $actions_taken, $log_template, $vars, $group );
 				} );
 			} else {
@@ -2108,15 +2079,16 @@ class AbuseFilter {
 	/**
 	 * Update statistics, and disable filters which are over-blocking.
 	 * @param bool[] $filters
+	 * @param int $condCount The amount of used conditions
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 */
-	private static function recordStats( $filters, $group = 'default' ) {
+	private static function recordStats( $filters, $condCount, $group = 'default' ) {
 		global $wgAbuseFilterConditionLimit, $wgAbuseFilterProfileActionsCap;
 
 		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
 
 		// Figure out if we've triggered overflows and blocks.
-		$overflow_triggered = ( self::$condCount > $wgAbuseFilterConditionLimit );
+		$overflow_triggered = ( $condCount > $wgAbuseFilterConditionLimit );
 
 		$overflow_key = self::filterLimitReachedKey();
 		$total_key = self::filterUsedKey( $group );
