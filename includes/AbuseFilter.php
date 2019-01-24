@@ -503,11 +503,12 @@ class AbuseFilter {
 	 * @param string $conds
 	 * @param AbuseFilterVariableHolder $vars
 	 * @param bool $ignoreError
+	 * @param string|null $filter The ID of the filter being parsed
 	 * @return bool
 	 * @throws Exception
 	 */
 	public static function checkConditions(
-		$conds, AbuseFilterVariableHolder $vars, $ignoreError = true
+		$conds, AbuseFilterVariableHolder $vars, $ignoreError = true, $filter = null
 	) {
 		global $wgAbuseFilterParserClass;
 
@@ -525,7 +526,8 @@ class AbuseFilter {
 			$result = false;
 
 			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-			$logger->warning( 'AbuseFilter parser error: ' . $excep->getMessage() );
+			$extraInfo = $filter !== null ? " for filter $filter" : '';
+			$logger->warning( "AbuseFilter parser error$extraInfo: " . $excep->getMessage() );
 
 			if ( !$ignoreError ) {
 				throw $excep;
@@ -676,7 +678,8 @@ class AbuseFilter {
 				$pattern,
 				$vars,
 				// Ignore errors
-				true
+				true,
+				$filterID
 			)
 		) {
 			// Record match.
