@@ -31,7 +31,8 @@
 			"Matma Rex",
 			"Matěj Suchánek",
 			"Bengtsson96",
-			"Psl85"
+			"Psl85",
+			"Nirmos (Wikimedia)"
 		]
 	},
 	"abusefilter-desc": "Tillämpar automatiska filter på redigeringar",
@@ -519,6 +520,7 @@
 	"abusefilter-examine-noresults": "Inga resultat hittades för de sökparametrar du gav.",
 	"abusefilter-topnav": "'''Navigation'''",
 	"abusefilter-topnav-home": "Huvudsida",
+	"abusefilter-topnav-recentchanges": "Senaste filterändringar",
 	"abusefilter-topnav-test": "Grupptestning",
 	"abusefilter-topnav-examine": "Granska tidigare ändringar",
 	"abusefilter-topnav-log": "Missbrukslogg",

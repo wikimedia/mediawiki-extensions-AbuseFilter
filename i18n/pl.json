@@ -277,7 +277,7 @@
 	"abusefilter-edit-bad-tags": "Co najmniej jedno ze znaczników jest niepoprawne.\nNazwy znaczników powinny być krótkie i nie mogą zawierać znaków specjalnych, oraz nie mogą być wykorzystywane przez inne oprogramowanie. Spróbuj wybrać inną nazwę dla znacznika.",
 	"abusefilter-edit-notallowed": "Nie posiadasz uprawnienia do tworzenia lub edytowania filtrów nadużyć",
 	"abusefilter-edit-notallowed-global": "Nie posiadasz uprawnienia do tworzenia lub edytowania globalnych filtrów nadużyć",
-	"abusefilter-edit-notallowed-global-custom-msg": "Niestandardowe komunikaty ostrzegawcze nie są obsługiwane przez filtry globalne",
+	"abusefilter-edit-notallowed-global-custom-msg": "Niestandardowe komunikaty ostrzegające bądź odrzucające akcje nie są obsługiwane przez filtry globalne",
 	"abusefilter-edit-builder-select": "Wybierz opcję, aby wkleić ją na pozycji kursora",
 	"abusefilter-edit-builder-group-op-arithmetic": "Operatory arytmetyczne",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Dodawanie (+)",

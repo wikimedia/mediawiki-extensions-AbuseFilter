@@ -48,7 +48,8 @@
 			"JerryLiu",
 			"夢蝶葬花",
 			"A Chinese Wikipedian",
-			"Angrydog001"
+			"Angrydog001",
+			"GoForceX"
 		]
 	},
 	"abusefilter-desc": "对编辑行为自动进行条件判定",
@@ -250,6 +251,7 @@
 	"abusefilter-throttle-ip": "IP地址",
 	"abusefilter-throttle-user": "用户账户",
 	"abusefilter-throttle-range": "/16段",
+	"abusefilter-throttle-creationdate": "账户创建时间",
 	"abusefilter-throttle-editcount": "编辑计数",
 	"abusefilter-throttle-site": "整个网站",
 	"abusefilter-throttle-page": "页面",
@@ -295,7 +297,7 @@
 	"abusefilter-edit-bad-tags": "一个或更多您指定的标签无效。标签应该较短，但不得包含特殊字符，且不得被其他软件保留。尝试选择新的标签名。",
 	"abusefilter-edit-notallowed": "您未被允许创建或编辑防滥用过滤器",
 	"abusefilter-edit-notallowed-global": "您未被允许创建或编辑全域防滥用过滤器",
-	"abusefilter-edit-notallowed-global-custom-msg": "对于全域过滤器，不支持自定义警告消息",
+	"abusefilter-edit-notallowed-global-custom-msg": "对于全域过滤器，自定义警告或者不允许的消息是不支持的",
 	"abusefilter-edit-builder-select": "选择需添加到光标处的选项",
 	"abusefilter-edit-builder-group-op-arithmetic": "算术运算符",
 	"abusefilter-edit-builder-op-arithmetic-addition": "加（+）",
@@ -460,7 +462,7 @@
 	"abusefilter-exception-dividebyzero": "字符$1处非法将$2除以零。",
 	"abusefilter-exception-unrecognisedvar": "字符$1处存在无法识别的变量$2。",
 	"abusefilter-exception-notenoughargs": "字符$1处调用的函数$2未得到足够的参数。预期有$3个参数，得到了$4个。",
-	"abusefilter-exception-regexfailure": "字符$1处的正则表达式“$3”存在错误：“$2”。",
+	"abusefilter-exception-regexfailure": "字符$1处的正则表达式“$2”存在错误。",
 	"abusefilter-exception-overridebuiltin": "字符$1处非法覆盖内建变量“$2”。",
 	"abusefilter-exception-outofbounds": "字符$1正在请求不存在的数组项$2（数组大小 = $3）。",
 	"abusefilter-exception-notarray": "字符$1正在请求非数组的数组项。",
@@ -529,6 +531,7 @@
 	"abusefilter-examine-noresults": "您输入的搜索参数未找到任何结果。",
 	"abusefilter-topnav": "'''滥用过滤器导航'''",
 	"abusefilter-topnav-home": "首页",
+	"abusefilter-topnav-recentchanges": "最近的过滤器更改",
 	"abusefilter-topnav-test": "批量测试",
 	"abusefilter-topnav-examine": "检查过去的编辑",
 	"abusefilter-topnav-log": "滥用日志",

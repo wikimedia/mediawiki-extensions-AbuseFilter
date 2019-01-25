@@ -17,7 +17,8 @@
 			"ArmouredCyborg",
 			"Innocentbunny",
 			"Nitin1485",
-			"Smtchahal"
+			"Smtchahal",
+			"Prong$31"
 		]
 	},
 	"abusefilter-desc": "संपादनों पर स्वतः शोध प्रणाली का प्रयोग लागू करता है",
@@ -77,7 +78,7 @@
 	"abusefilter-log-details-var": "प्राचल",
 	"abusefilter-log-details-val": "मूल्य",
 	"abusefilter-log-details-vars": "कार्य के प्राचल",
-	"abusefilter-log-details-private": "निजी डेटा",
+	"abusefilter-log-details-private": "निजी लॉग विवरण",
 	"abusefilter-log-details-ip": "स्रोत आइ॰पी पता",
 	"abusefilter-log-noactions": "कोई नहीं",
 	"abusefilter-log-details-diff": "सम्पादन में किये बदलाव",
@@ -170,7 +171,7 @@
 	"abusefilter-edit-action-throttle": "कदम तभी उठाएँ अगर सदस्य रेट सीमा के पार जाए",
 	"abusefilter-edit-action-tag": "समिक्षा के किए बदलाव को टैग करें",
 	"abusefilter-edit-throttle-count": "संख्या जितने कार्यों की अनुमति देनी है:",
-	"abusefilter-edit-throttle-period": "समय की अवधि:",
+	"abusefilter-edit-throttle-period": "समय की अवधि (सेकेंड में):",
 	"abusefilter-edit-warn-message": "चेतावनी के लिये प्रयोग किया जाने वाला अंतरफल संदेश:",
 	"abusefilter-edit-warn-other": "अन्य संदेश",
 	"abusefilter-edit-warn-other-label": "अन्य संदेश का पृष्ठ नाम:\n:''(मीडियाविकी उपसर्ग के बिना)''",

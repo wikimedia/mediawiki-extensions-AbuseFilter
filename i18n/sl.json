@@ -218,7 +218,7 @@
 	"abusefilter-edit-bad-tags": "Ena ali več navedenih oznak ni veljavnih.\nOznake morajo biti kratke, ne smejo vsebovati posebnih znakov in ne sme jih rezervirati drugo programje. Poskusite izbrati novo ime oznake.",
 	"abusefilter-edit-notallowed": "Ustvarjanje ali urejanje filtrov zlorab vam ni dovoljeno.",
 	"abusefilter-edit-notallowed-global": "Nimate dovoljenj za ustvarjanje ali spreminjanje globalnih filtrov zlorab",
-	"abusefilter-edit-notallowed-global-custom-msg": "Opozorilna sporočila po meri niso podprta za globalne filtre",
+	"abusefilter-edit-notallowed-global-custom-msg": "Opozorilna ali preprečitvena sporočila po meri niso podprta za globalne filtre",
 	"abusefilter-edit-builder-select": "Izberite možnost, da jo dodate na mesto kazalca",
 	"abusefilter-edit-builder-group-op-arithmetic": "Aritmetični operatorji",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Seštevanje (+)",
