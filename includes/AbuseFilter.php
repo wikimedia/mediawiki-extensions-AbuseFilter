@@ -661,7 +661,7 @@ class AbuseFilter {
 		$prefix = '',
 		$mode = 'execute'
 	) {
-		global $wgAbuseFilterRuntimeProfile, $wgAbuseFilterSlowFilterRuntimeLimit;
+		global $wgAbuseFilterSlowFilterRuntimeLimit;
 
 		$filterID = $prefix . $row->af_id;
 
@@ -697,8 +697,7 @@ class AbuseFilter {
 		}
 
 		$runtime = $timeTaken * 1000;
-		if ( $mode === 'execute' && $wgAbuseFilterRuntimeProfile &&
-			$runtime > $wgAbuseFilterSlowFilterRuntimeLimit ) {
+		if ( $mode === 'execute' && $runtime > $wgAbuseFilterSlowFilterRuntimeLimit ) {
 			self::recordSlowFilter( $filterID, $runtime, $condsUsed, $result, $title );
 		}
 
@@ -1139,7 +1138,7 @@ class AbuseFilter {
 	public static function filterAction(
 		AbuseFilterVariableHolder $vars, $title, $group, User $user, $mode = 'execute'
 	) {
-		global $wgAbuseFilterRuntimeProfile, $wgAbuseFilterLogIP;
+		global $wgAbuseFilterLogIP;
 
 		$logger = LoggerFactory::getInstance( 'StashEdit' );
 		$statsd = MediaWikiServices::getInstance()->getStatsdDataFactory();
@@ -1156,11 +1155,10 @@ class AbuseFilter {
 		$stashKey = self::getStashKey( $cache, $vars, $group );
 		$isForEdit = ( $vars->getVar( 'action' )->toString() === 'edit' );
 
-		if ( $wgAbuseFilterRuntimeProfile ) {
-			$startTime = microtime( true );
-		}
+		$startTime = microtime( true );
 
 		$filter_matched = false;
+		$cacheData = [];
 		if ( $mode === 'execute' && $isForEdit ) {
 			// Check the filter edit stash results first
 			$cacheData = $cache->get( $stashKey );
@@ -1186,13 +1184,12 @@ class AbuseFilter {
 
 		if ( $mode === 'stash' ) {
 			// Save the filter stash result and do nothing further
-			$cacheData = [ 'matches' => $filter_matched, 'tags' => self::$tagsToSet ];
-
-			// Add runtime metrics in cache for later use
-			if ( $wgAbuseFilterRuntimeProfile ) {
-				$cacheData['condCount'] = self::$condCount;
-				$cacheData['runtime'] = ( microtime( true ) - $startTime ) * 1000;
-			}
+			$cacheData = [
+				'matches' => $filter_matched,
+				'tags' => self::$tagsToSet,
+				'condCount' => self::$condCount,
+				'runtime' => ( microtime( true ) - $startTime ) * 1000
+			];
 
 			$cache->set( $stashKey, $cacheData, $cache::TTL_MINUTE );
 			$logger->debug( __METHOD__ . ": cache store for '$title' (key $stashKey)." );
@@ -1203,8 +1200,7 @@ class AbuseFilter {
 
 		$matched_filters = array_keys( array_filter( $filter_matched ) );
 
-		// Save runtime metrics only on edits
-		if ( $wgAbuseFilterRuntimeProfile && $mode === 'execute' && $isForEdit ) {
+		if ( $mode === 'execute' ) {
 			if ( $cacheData ) {
 				$runtime = $cacheData['runtime'];
 				$condCount = $cacheData['condCount'];
@@ -1261,7 +1257,7 @@ class AbuseFilter {
 			// checkFilter, and we'd need either a new global (bad!), to change return values (worse!)
 			// or to save data in cache directly in checkFilter (quite bad because other things are
 			// saved here). I2eab2e50356eeb5224446ee2d0df9c787ae95b80 could help.
-			if ( $isForEdit && $cacheData ) {
+			if ( $cacheData ) {
 				DeferredUpdates::addCallableUpdate( function () use (
 					$vars, $group, $title, $actions_taken, $log_template ) {
 					self::checkAllFilters( $vars, $group, $title, 'execute' );

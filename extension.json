@@ -360,10 +360,6 @@
 			"value": 7776000,
 			"description": "Age used as cutoff when purging old IP log data, defaults to 3 months. Used by maintenance script purgeOldLogIPData.php"
 		},
-		"AbuseFilterRuntimeProfile": {
-			"value": false,
-			"description": "Whether to record runtime metrics for all filters combined."
-		},
 		"AbuseFilterSlowFilterRuntimeLimit": {
 			"value": 500,
 			"description": "Runtime in milliseconds before a filter is considered slow."

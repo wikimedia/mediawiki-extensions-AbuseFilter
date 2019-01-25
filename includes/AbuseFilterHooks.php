@@ -20,11 +20,13 @@ class AbuseFilterHooks {
 	 * Called right after configuration has been loaded.
 	 */
 	public static function onRegistration() {
-		global $wgAuthManagerAutoConfig, $wgActionFilteredLogs, $wgAbuseFilterProfile;
+		global $wgAuthManagerAutoConfig, $wgActionFilteredLogs, $wgAbuseFilterProfile,
+			$wgAbuseFilterProfiling;
 
 		// @todo Remove this in a future release (added in 1.33)
-		if ( isset( $wgAbuseFilterProfile ) ) {
-			wfWarn( '$wgAbuseFilterProfile has been removed and profiling is now enabled by default.' );
+		if ( isset( $wgAbuseFilterProfile ) || isset( $wgAbuseFilterProfiling ) ) {
+			wfWarn( '$wgAbuseFilterProfile and $wgAbuseFilterProfiling have been removed and ' .
+				'profiling is now enabled by default.' );
 		}
 
 		$wgAuthManagerAutoConfig['preauth'][AbuseFilterPreAuthenticationProvider::class] = [
