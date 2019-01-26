@@ -40,6 +40,28 @@ class AbuseFilter {
 	 */
 	public static $logIds = [];
 
+	/**
+	 * @var string[] The FULL list of fields in the abuse_filter table
+	 * @todo Make a const once we get rid of HHVM
+	 */
+	private static $allAbuseFilterFields = [
+		'af_id',
+		'af_pattern',
+		'af_user',
+		'af_user_text',
+		'af_timestamp',
+		'af_enabled',
+		'af_comments',
+		'af_public_comments',
+		'af_hidden',
+		'af_hit_count',
+		'af_throttled',
+		'af_deleted',
+		'af_actions',
+		'af_global',
+		'af_group'
+	];
+
 	public static $history_mappings = [
 		'af_pattern' => 'afh_pattern',
 		'af_user' => 'afh_user',
@@ -549,15 +571,9 @@ class AbuseFilter {
 		$filter_matched = [];
 
 		$dbr = wfGetDB( DB_REPLICA );
-		$fields = [
-			'af_id',
-			'af_pattern',
-			'af_public_comments',
-			'af_timestamp'
-		];
 		$res = $dbr->select(
 			'abuse_filter',
-			$fields,
+			self::$allAbuseFilterFields,
 			[
 				'af_enabled' => 1,
 				'af_deleted' => 0,
@@ -578,7 +594,7 @@ class AbuseFilter {
 			$res = MediaWikiServices::getInstance()->getMainWANObjectCache()->getWithSetCallback(
 				$globalRulesKey,
 				WANObjectCache::TTL_INDEFINITE,
-				function () use ( $group, $fname, $fields ) {
+				function () use ( $group, $fname ) {
 					global $wgAbuseFilterCentralDB;
 
 					$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
@@ -588,7 +604,7 @@ class AbuseFilter {
 
 					return iterator_to_array( $fdb->select(
 						'abuse_filter',
-						$fields,
+						self::$allAbuseFilterFields,
 						[
 							'af_enabled' => 1,
 							'af_deleted' => 0,
@@ -656,7 +672,7 @@ class AbuseFilter {
 		$startTime = microtime( true );
 
 		// Store the row somewhere convenient
-		self::$filterCache[$filterID] = $row;
+		self::cacheFilter( $filterID, $row );
 
 		$pattern = trim( $row->af_pattern );
 		if (
@@ -1314,7 +1330,7 @@ class AbuseFilter {
 
 			$row = $dbr->selectRow(
 				'abuse_filter',
-				'*',
+				self::$allAbuseFilterFields,
 				[ 'af_id' => $filterID ],
 				__METHOD__
 			);
@@ -1322,6 +1338,25 @@ class AbuseFilter {
 		}
 
 		return self::$filterCache[$filter];
+	}
+
+	/**
+	 * Saves an abuse_filter row in cache
+	 * @param string $id Filter ID (integer or "<GLOBAL_FILTER_PREFIX><integer>")
+	 * @param stdClass $row A full abuse_filter row to save
+	 * @throws UnexpectedValueException if the row is not full
+	 */
+	public static function cacheFilter( $id, $row ) {
+		// Check that all fields have been passed, otherwise using self::getFilter for this
+		// row will return partial data.
+		$actual = array_keys( get_object_vars( $row ) );
+
+		if ( count( $actual ) !== count( self::$allAbuseFilterFields )
+			|| array_diff( self::$allAbuseFilterFields, $actual )
+		) {
+			throw new UnexpectedValueException( 'The specified row must be a full abuse_filter row.' );
+		}
+		self::$filterCache[$id] = $row;
 	}
 
 	/**
