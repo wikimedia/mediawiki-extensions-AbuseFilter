@@ -282,10 +282,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			case 'degroup':
 				// Pull the user's groups from the vars.
 				$oldGroups = $result['vars']->getVar( 'user_groups' )->toNative();
-				$oldGroups = array_diff(
-					$oldGroups,
-					array_intersect( $oldGroups, User::getImplicitGroups() )
-				);
+				$oldGroups = array_diff( $oldGroups, User::getImplicitGroups() );
 
 				$rows = [];
 				foreach ( $oldGroups as $group ) {
