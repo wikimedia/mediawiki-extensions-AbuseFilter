@@ -1158,6 +1158,7 @@ class AbuseFilter {
 
 		// Add vars from extensions
 		Hooks::run( 'AbuseFilter-filterAction', [ &$vars, $title ] );
+		Hooks::run( 'AbuseFilterAlterVariables', [ &$vars, $title, $user ] );
 		$vars->addHolders( self::generateStaticVars() );
 
 		$vars->forFilter = true;
