@@ -14,7 +14,8 @@
 			"Matma Rex",
 			"Rachmat.Wahidi",
 			"Rachmat04",
-			"Hidayatsrf"
+			"Hidayatsrf",
+			"J Nia30"
 		]
 	},
 	"abusefilter-desc": "Memberlakukan pemeriksaan heuristik otomatis atas kontribusi pengguna.",
@@ -57,6 +58,7 @@
 	"abusefilter-log-search-filter": "ID filter (pisahkan dengan tanda pipa):",
 	"abusefilter-log-search-title": "Judul:",
 	"abusefilter-log-search-wiki": "Wiki:",
+	"abusefilter-log-search-action-other": "Lainnya",
 	"abusefilter-log-search-submit": "Cari",
 	"abusefilter-log-entry": "$1: $2 memicu salah satu filter penyalahgunaan, dengan melakukan \"$3\" pada $4.\nTindakan yang diambil: $5;\nKeterangan filter: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 memicu salah satu filter penyalahgunaan, dengan melakukan \"$3\" pada $4.\nTindakan yang diambil: $5;\nKeterangan filter: $6 ($7)",
@@ -72,6 +74,7 @@
 	"abusefilter-log-details-vars": "Parameter tindakan",
 	"abusefilter-log-details-private": "Data pribadi",
 	"abusefilter-log-details-ip": "Alamat IP asal",
+	"abusefilter-log-details-checkuser": "Periksa pengguna",
 	"abusefilter-log-noactions": "tidak ada",
 	"abusefilter-log-details-diff": "Perubahan dalam suntingan",
 	"abusefilter-log-linkoncontribs": "catatan penyalahgunaan",
@@ -169,6 +172,7 @@
 	"abusefilter-edit-warn-actions": "Tindakan:",
 	"abusefilter-edit-warn-preview": "Pratayang pesan yang dipilih",
 	"abusefilter-edit-warn-edit": "Buat/Sunting pesan yang dipilih",
+	"abusefilter-edit-disallow-other": "Pesan lainnya",
 	"abusefilter-edit-tag-tag": "Tag yang digunakan (satu per baris):",
 	"abusefilter-edit-denied": "Anda tidak dapat melihat rincian filter ini, karena rincian filter telah disembunyikan dari publik.",
 	"abusefilter-edit-main": "Parameter filter",
@@ -395,5 +399,6 @@
 	"abusefilter-diff-next": "Perubahan terbaru",
 	"abusefilter-import-intro": "Anda dapat menggunakan antarmuka ini untuk mengimpor filter dari wiki lain.\nPada wiki asal, klik \"{{int:abusefilter-edit-export}}\" di bawah \"{{int:abusefilter-edit-tools}}\" pada antarmuka penyuntingan.\nSalin dari kotak teks yang muncul, dan tempelkan di kotak teks ini, lalu klik \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "Impor data",
-	"abusefilter-group-default": "Baku"
+	"abusefilter-group-default": "Baku",
+	"abusefilter-log-ip-not-available": "Tidak Tersedia"
 }

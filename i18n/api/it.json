@@ -28,9 +28,9 @@
 	"apihelp-query+abusefilters-example-1": "Elenca i filtri pubblici abilitati",
 	"apihelp-query+abusefilters-example-2": "Mostra alcuni dettagli sui filtri",
 	"apihelp-query+abuselog-param-end": "Il timestamp al quale interrompere l'elenco.",
-	"apihelp-query+abuselog-param-user": "Mostra solo le informazioni corrispondenti a un utente o IP indicato.",
-	"apihelp-query+abuselog-param-title": "Mostra solo le informazioni corrispondenti a una pagina indicata.",
-	"apihelp-query+abuselog-param-filter": "Mostra solo le informazioni catturate da un ID filtro indicato.",
+	"apihelp-query+abuselog-param-user": "Mostra solo le voci relative a un utente o IP indicato.",
+	"apihelp-query+abuselog-param-title": "Mostra solo le voci relative a una pagina indicata.",
+	"apihelp-query+abuselog-param-filter": "Mostra solo le voci relative al filtro con l'ID indicato.",
 	"apihelp-query+abuselog-param-prop": "Quali proprietà ottenere.",
 	"apierror-abusefilter-badsyntax": "Il filtro contiene sintassi non valida."
 }
