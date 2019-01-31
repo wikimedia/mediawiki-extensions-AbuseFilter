@@ -23,6 +23,12 @@ table.mw-abuselog-details caption {
 	font-weight: bold;
 }
 
+.mw-abusefilter-log-hidden-entry {
+	text-decoration: line-through;
+	color: #72777d;
+	font-style: italic;
+}
+
 body td.mw-abusefilter-history-changed {
 	background: #ffe0e0;
 	font-weight: bold;

@@ -118,7 +118,6 @@
 	"abusefilter-log-linkoncontribs-text": "Title for link added on [[Special:Contributions]] and other relevant special pages. Parameters:\n* $1 is the target user name used for GENDER.",
 	"abusefilter-log-linkonhistory": "Link text added to the subtitle of the revision history page.",
 	"abusefilter-log-linkonhistory-text": "Title for link added to the subtitle of the revision history page.",
-	"abusefilter-log-hidden": "Text for a hidden log entry.",
 	"abusefilter-log-hidden-implicit": "Explanatory text to be shown beside an abuse filter log entry if it cannot be viewed due to its corresponding revision being hidden",
 	"abusefilter-log-cannot-see-details": "Message shown instead of log row details for users without permissions to see them.",
 	"abusefilter-log-cannot-see-private-details": "Message shown instead of log row private details for users without permissions to see them.",
