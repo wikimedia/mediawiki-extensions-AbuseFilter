@@ -85,7 +85,6 @@
 	"abusefilter-log-linkoncontribs-text": "Rexistru d'abusos d'{{GENDER:$1|esti usuariu|esta usuaria}}",
 	"abusefilter-log-linkonhistory": "ver el rexistru d'abusos",
 	"abusefilter-log-linkonhistory-text": "Ver el rexistru d'abusos d'esta páxina",
-	"abusefilter-log-hidden": "(entrada anubría)",
 	"abusefilter-log-hidden-implicit": "(anubríu porque se desanició la revisión)",
 	"abusefilter-log-cannot-see-details": "Nun tienes permisu pa ver los detalles d'esta entrada.",
 	"abusefilter-log-cannot-see-private-details": "Nun tienes permisu pa ver los detalles privaos d'esta entrada.",

@@ -74,7 +74,6 @@
 	"abusefilter-log-details-diff": "Các thay đổi trong phiên sửa đổi",
 	"abusefilter-log-linkoncontribs": "nhật trình sai phạm",
 	"abusefilter-log-linkoncontribs-text": "Nhật trình sai phạm của {{GENDER:$1}}người dùng",
-	"abusefilter-log-hidden": "(mục ẩn)",
 	"abusefilter-log-hidden-implicit": "(ẩn vì phiên bản đã bị xóa)",
 	"abusefilter-log-cannot-see-details": "Bạn không có quyền xem chi tiết của mục này.",
 	"abusefilter-log-nonexistent": "Không có mục với ID được cung cấp.",

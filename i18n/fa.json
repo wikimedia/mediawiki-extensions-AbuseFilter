@@ -107,7 +107,6 @@
 	"abusefilter-log-linkoncontribs-text": "سیاههٔ خرابکاری‌ها برای {{GENDER:$1|این کاربر}}",
 	"abusefilter-log-linkonhistory": "مشاهدهٔ سیاههٔ خرابکاری",
 	"abusefilter-log-linkonhistory-text": "نمایش سیاههٔ خرابکاری این صفحه",
-	"abusefilter-log-hidden": "(مورد پنهان)",
 	"abusefilter-log-hidden-implicit": "(پنهان‌شده چون نسخه حذف شده است)",
 	"abusefilter-log-cannot-see-details": "برای مشاهده جزئیات این مورد دسترسی ندارید.",
 	"abusefilter-log-cannot-see-private-details": "شما اجازهٔ دیدن جزئیات خصوصی این مورد را ندارید.",

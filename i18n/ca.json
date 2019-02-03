@@ -85,7 +85,6 @@
 	"abusefilter-log-details-diff": "Canvis fets en l'edició",
 	"abusefilter-log-linkoncontribs": "registre d'abusos",
 	"abusefilter-log-linkoncontribs-text": "Registre d'abusos d'{{GENDER:$1|aquest usuari|aquesta usuària}}",
-	"abusefilter-log-hidden": "(entrada amagada)",
 	"abusefilter-log-hidden-implicit": "(ocult perquè s'ha suprimit la revisió)",
 	"abusefilter-log-cannot-see-details": "No tens permisos per veure els detalls d'aquesta entrada.",
 	"abusefilter-log-details-hidden": "No podeu veure els detalls d’aquesta entrada ja que està restringit el seu accés públic.",

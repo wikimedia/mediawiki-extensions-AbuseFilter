@@ -69,7 +69,6 @@
 	"abusefilter-log-details-diff": "Modificationes effectuate",
 	"abusefilter-log-linkoncontribs": "registro de abusos",
 	"abusefilter-log-linkoncontribs-text": "Registro del abusos de {{GENDER:$1|iste usator}}",
-	"abusefilter-log-hidden": "(entrata celate)",
 	"abusefilter-log-hidden-implicit": "(celate perque le version ha essite delite)",
 	"abusefilter-log-cannot-see-details": "Tu non ha le permission de vider le detalios de iste entrata.",
 	"abusefilter-log-nonexistent": "Non existe un entrata con le ID fornite.",

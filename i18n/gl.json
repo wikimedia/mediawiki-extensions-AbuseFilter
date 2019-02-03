@@ -85,7 +85,6 @@
 	"abusefilter-log-linkoncontribs-text": "Rexistro de abusos para {{GENDER:$1|este usuario}}",
 	"abusefilter-log-linkonhistory": "ver rexistro de abusos",
 	"abusefilter-log-linkonhistory-text": "Ver o rexistro de abusos para esta páxina",
-	"abusefilter-log-hidden": "(entrada agochada)",
 	"abusefilter-log-hidden-implicit": "(agochado porque se borrou a revisión)",
 	"abusefilter-log-cannot-see-details": "Non ten os permisos necesarios para ver os detalles desta entrada.",
 	"abusefilter-log-cannot-see-private-details": "Non ten os permisos necesarios para ver os detalles privados desta entrada.",

@@ -111,7 +111,6 @@
 	"abusefilter-log-linkoncontribs-text": "Wpisy w rejestrze nadużyć dla {{GENDER:$1|tego użytkownika|tej użytkowniczki}}",
 	"abusefilter-log-linkonhistory": "rejestr nadużyć",
 	"abusefilter-log-linkonhistory-text": "Zobacz rejestr nadużyć dla tej strony",
-	"abusefilter-log-hidden": "(wpis ukryty)",
 	"abusefilter-log-hidden-implicit": "(ukryto, ponieważ usunięto wersję)",
 	"abusefilter-log-cannot-see-details": "Nie masz uprawnień do przeglądania szczegółów tego wpisu.",
 	"abusefilter-log-cannot-see-private-details": "Nie masz uprawnień do przeglądania prywatnych szczegółów tego wpisu.",

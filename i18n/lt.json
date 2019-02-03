@@ -86,7 +86,6 @@
 	"abusefilter-log-details-diff": "Redagavimo pakeitimai",
 	"abusefilter-log-linkoncontribs": "piktnaudžiavimų sąrašas",
 	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|Šio naudotojo|Šios naudotojos}} piktnaudžiavimų sąrašas",
-	"abusefilter-log-hidden": "(paslėptas įrašas)",
 	"abusefilter-log-hidden-implicit": "(paslėpta, nes peržiūra buvo panaikinta)",
 	"abusefilter-log-cannot-see-details": "Jūs neturite teisės peržiūrėti informaciją apie šį įrašą.",
 	"abusefilter-log-details-hidden": "Negalima peržiūrėti informaciją apie šį įrašą, nes jis yra paslėptas nuo viešo peržiūrėjimo.",

@@ -68,7 +68,6 @@
 	"abusefilter-log-details-diff": "దిద్దుబాటులో చేసిన మార్పులు",
 	"abusefilter-log-linkoncontribs": "దుర్వినియోగాల చిట్టా",
 	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|ఈ వాడుకరి}} దుర్వినియోగాల చిట్టా",
-	"abusefilter-log-hidden": "(పద్దుని దాచారు)",
 	"abusefilter-log-hidden-implicit": "(కూర్పును తొలగించారు కాబట్టి, అది దాచబడింది)",
 	"abusefilter-log-cannot-see-details": "ఈ ఎంట్రీ వివరాలు చూసే అనుమతి మీకు లేదు.",
 	"abusefilter-log-details-hidden": "ఈ పద్దు యొక్క వివరాలని మీరు చూడలేరు, ఎందుకంటే దీన్ని బహిరంగ వీక్షణం నుండి దాచేసారు.",

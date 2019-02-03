@@ -87,7 +87,6 @@
 	"abusefilter-log-linkoncontribs-text": "Evidencija zloporaba za {{GENDER:$1|ovoga suradnika|ovu suradnicu}}",
 	"abusefilter-log-linkonhistory": "Vidi evidencije filtra zloporaba",
 	"abusefilter-log-linkonhistory-text": "Pogledajte evidencije zloupotrebe ove stranice",
-	"abusefilter-log-hidden": "(zapis je skriven)",
 	"abusefilter-log-hidden-implicit": "(skriveno jer je inačica obrisana)",
 	"abusefilter-log-cannot-see-details": "Nemate dopuštenje vidjeti potankosti ovog zapisa.",
 	"abusefilter-log-nonexistent": "Stavka s naznačenom identifikacijskom oznakom (ID) ne postoji.",

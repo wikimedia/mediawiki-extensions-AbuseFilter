@@ -104,7 +104,6 @@
 	"abusefilter-log-linkoncontribs-text": "Väärinkäyttöloki {{GENDER:$1|tälle käyttäjälle}}",
 	"abusefilter-log-linkonhistory": "näytä väärinkäyttöloki",
 	"abusefilter-log-linkonhistory-text": "Näytä tämän sivun väärinkäyttöloki",
-	"abusefilter-log-hidden": "(merkintä on piilotettu)",
 	"abusefilter-log-hidden-implicit": "(piilotettu, koska versio on poistettu)",
 	"abusefilter-log-cannot-see-details": "Sinulla ei ole oikeutta nähdä tämän lokimerkinnän tietoja.",
 	"abusefilter-log-cannot-see-private-details": "Sinulla ei ole lupaa tarkastella tämän lokimerkinnän yksityisiä tietoja.",

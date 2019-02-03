@@ -66,7 +66,6 @@
 	"abusefilter-log-details-diff": "Cambiaments faits dins la modificacion",
 	"abusefilter-log-linkoncontribs": "Jornal dels abuses",
 	"abusefilter-log-linkoncontribs-text": "Jornal dels abuses d'{{GENDER:$1|aqueste utilizaire|aquesta utilizaira}}",
-	"abusefilter-log-hidden": "(entrada amagada)",
 	"abusefilter-log-hidden-implicit": "(amagada perque la version es estada suprimida)",
 	"abusefilter-log-hide-legend": "Amagar l'entrada dins los jornals",
 	"abusefilter-log-hide-id": "Identificant de l'entrada de jornal :",

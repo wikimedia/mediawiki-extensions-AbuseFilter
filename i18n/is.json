@@ -67,7 +67,6 @@
 	"abusefilter-log-noactions": "engar",
 	"abusefilter-log-linkoncontribs": "misnotkunarskrá",
 	"abusefilter-log-linkoncontribs-text": "Misnotkunarskrá fyrir {{GENDER:$1|þennan notanda}}",
-	"abusefilter-log-hidden": "(falin færsla)",
 	"abusefilter-log-hidden-implicit": "(falið vegna þess að breytingum hefur verið eytt)",
 	"abusefilter-log-cannot-see-details": "Þú hefur ekki leyfi til þess að sjá atriði þessarar innfærslu.",
 	"abusefilter-log-details-hidden": "Þú getur ekki skoðað nánari upplýsingar um þessa færslu því hún er falin.",

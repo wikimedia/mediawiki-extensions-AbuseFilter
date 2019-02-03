@@ -105,7 +105,6 @@
 	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|この利用者}}の不正利用記録",
 	"abusefilter-log-linkonhistory": "編集フィルター記録を表示",
 	"abusefilter-log-linkonhistory-text": "このページの不正利用記録を表示",
-	"abusefilter-log-hidden": "(隠された項目)",
 	"abusefilter-log-hidden-implicit": "(版が削除されているため非表示)",
 	"abusefilter-log-cannot-see-details": "この項目の詳細を見る権限がありません。",
 	"abusefilter-log-cannot-see-private-details": "あなたは非公開記録を閲覧する権限がありません",

@@ -84,7 +84,6 @@
 	"abusefilter-log-details-diff": "सम्पादन में किये बदलाव",
 	"abusefilter-log-linkoncontribs": "दुरुपयोग लॉग",
 	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|इस सदस्य}} के लिए दुरुपयोग लॉग",
-	"abusefilter-log-hidden": "(प्रविष्टि छिपी हुई)",
 	"abusefilter-log-hidden-implicit": "(प्रविष्टि छुपाई गई है क्योंकि अवतरण हटा दिया गया है)",
 	"abusefilter-log-cannot-see-details": "आपके पास इस प्रविष्टि का विस्तृत विवरण देखने की अनुमति नहीं है",
 	"abusefilter-log-cannot-see-private-details": "आपको इस प्रविष्टि के निजी विवरण देखने की अनुमति नहीं है।",

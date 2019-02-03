@@ -95,7 +95,6 @@
 	"abusefilter-log-linkoncontribs-text": "A {{GENDER:$1|szerkesztő}} Vandálszűrő-naplója",
 	"abusefilter-log-linkonhistory": "Vandálszűrő-naplók megtekintése",
 	"abusefilter-log-linkonhistory-text": "A laphoz tartozó Vandálszűrő-naplók bejegyzéseinek megtekintése",
-	"abusefilter-log-hidden": "(bejegyzés elrejtve)",
 	"abusefilter-log-hidden-implicit": "(rejtett mivel a változat törölve lett)",
 	"abusefilter-log-cannot-see-details": "Nincs jogosultságod a bejegyzés részleteinek megjelenítéséhez.",
 	"abusefilter-log-cannot-see-private-details": "Nincs jogosultságod a bejegyzés privát részleteinek megjelenítéséhez.",

@@ -95,7 +95,6 @@
 	"abusefilter-log-linkoncontribs-text": "יומן ההשחתות עבור {{GENDER:$1|משתמש זה|משתמשת זו}}",
 	"abusefilter-log-linkonhistory": "הצגת יומן ההשחתות",
 	"abusefilter-log-linkonhistory-text": "הצגת יומן ההשחתות עבור דף זה",
-	"abusefilter-log-hidden": "(רשומה מוסתרת)",
 	"abusefilter-log-hidden-implicit": "(הוסתר כי הגרסה נמחקה)",
 	"abusefilter-log-cannot-see-details": "אין לך הרשאה לראות את פרטי הרשומה הזו.",
 	"abusefilter-log-cannot-see-private-details": "אין לך הרשאה לראות את הנתונים הפרטיים של הרשומה הזאת.",

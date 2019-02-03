@@ -75,7 +75,6 @@
 	"abusefilter-log-linkoncontribs-text": "Zapisnik zloupotrebe za {{GENDER:$1|ovog korisnika|ovu korisnicu}}",
 	"abusefilter-log-linkonhistory": "prikaži zapisnik zloupotrebe",
 	"abusefilter-log-linkonhistory-text": "Pogledajte zapisnik zloupotrebe ove stranice",
-	"abusefilter-log-hidden": "(stavka sakrivena)",
 	"abusefilter-log-hidden-implicit": "(sakriveno jer je izmjena obrisana)",
 	"abusefilter-log-cannot-see-details": "Nemate dopuštenje da vidite detalje ovog unosa.",
 	"abusefilter-log-details-hidden": "Možda nećete vidjeti detalje ove stavke, zato što je sakrivena za javni pregled.",

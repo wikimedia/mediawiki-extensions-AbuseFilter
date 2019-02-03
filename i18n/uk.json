@@ -103,7 +103,6 @@
 	"abusefilter-log-linkoncontribs-text": "Журнал зловживань {{GENDER:$1|цього користувача|цієї користувачки}}",
 	"abusefilter-log-linkonhistory": "журнал зловживань",
 	"abusefilter-log-linkonhistory-text": "Показати журнали зловживань для цієї сторінки",
-	"abusefilter-log-hidden": "(запис приховано)",
 	"abusefilter-log-hidden-implicit": "(приховано, бо версію було вилучено)",
 	"abusefilter-log-cannot-see-details": "Ви не маєте дозволу на перегляд відомостей про цей запис.",
 	"abusefilter-log-cannot-see-private-details": "У Вас немає прав на перегляд приватних даних для цього запису.",

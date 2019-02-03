@@ -99,7 +99,6 @@
 	"abusefilter-log-linkoncontribs-text": "Protokol zneužití pro {{GENDER:$1|tohoto uživatele|tuto uživatelku}}",
 	"abusefilter-log-linkonhistory": "zobrazit záznamy filtrů zneužití",
 	"abusefilter-log-linkonhistory-text": "Zobrazit záznamy filtrů zneužití k této stránce",
-	"abusefilter-log-hidden": "(skrytý záznam)",
 	"abusefilter-log-hidden-implicit": "(skryto, protože byla odstraněna revize)",
 	"abusefilter-log-cannot-see-details": "Nemáte oprávnění k prohlížení podrobností tohoto záznamu.",
 	"abusefilter-log-cannot-see-private-details": "Nemáte dovoleno prohlížet si soukromé detaily tohoto záznamu.",

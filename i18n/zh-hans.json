@@ -131,7 +131,6 @@
 	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|此用户}}的滥用日志",
 	"abusefilter-log-linkonhistory": "查看滥用日志",
 	"abusefilter-log-linkonhistory-text": "查看该页面的滥用日志",
-	"abusefilter-log-hidden": "（记录已被隐藏）",
 	"abusefilter-log-hidden-implicit": "（因为修订已被删除而隐藏）",
 	"abusefilter-log-cannot-see-details": "您没有权限去查看这个记录条目的细节。",
 	"abusefilter-log-cannot-see-private-details": "您没有权限查看此记录的私有详情。",

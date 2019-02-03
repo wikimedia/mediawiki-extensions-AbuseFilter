@@ -100,7 +100,6 @@
 	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|Bu kullanıcı}} için kötüye kullanım günlüğü",
 	"abusefilter-log-linkonhistory": "istismar günlüğünü görüntüle",
 	"abusefilter-log-linkonhistory-text": "Bu sayfa için kötüye kullanım günlüğünü görüntüle",
-	"abusefilter-log-hidden": "(gizli girdi)",
 	"abusefilter-log-hidden-implicit": "(gizlendi çünkü revizyon silindi)",
 	"abusefilter-log-cannot-see-details": "Bu giriş detaylarını görebilmek için izniniz yok.",
 	"abusefilter-log-cannot-see-private-details": "Bu maddenin özel ayrıntılarını görme izniniz yok.",

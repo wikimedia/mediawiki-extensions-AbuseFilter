@@ -60,6 +60,8 @@
 	"abusefilter-edit-warn-actions": "ಕ್ರಿಯೆಕ್ಕುಲು:",
 	"abusefilter-edit-history": "ಇತಿಹಾಸೊ:",
 	"abusefilter-edit-tools": "ಉಪಕರಣೊಲು:",
+	"abusefilter-edit-invalid-warn-message": "ಎಚ್ಚರಿಕೆ ಸಂದೇಶ ಖಾಲಿ ಒರಿಪಾರೆ ಆವಂದ್.",
+	"abusefilter-edit-invalid-disallow-message": "ಅಸ್ಪದದಾಂತಿನ ಸಂದೇಶ ಖಾಲಿ ಒರಿಪಾವರೆ ಆವಂದ್.",
 	"abusefilter-edit-invalid-throttlecount": "ಹತೋಟಿ ಕ್ರಿಯೆತ ಲೆಕ್ಕ ಧನಾತ್ಮಕ ಪೂರ್ಣಾಂಕ ಆದಿಪ್ಪೊಡು.",
 	"abusefilter-edit-invalid-throttleperiod": "ಹತೋಟಿದ ಅವಧಿ ಒಂಜಿ ಧನಾತ್ಮಕ ಪೂರ್ಣಾಂಕ ಆದಿಪ್ಪೊಡು.",
 	"abusefilter-edit-empty-throttlegroups": "ಕನಿಷ್ಟ ಒಂಜಿ ಹತೋಟಿ ಗುಂಪುನು ಆಯೊಡು.",

@@ -54,7 +54,6 @@
 	"abusefilter-log-details-diff": "Gwnaed newidiadau yn y golygiad",
 	"abusefilter-log-linkoncontribs": "log camddefnydd",
 	"abusefilter-log-linkoncontribs-text": "Log camddefnydd ar gyfer {{GENDER:$1|y defnyddiwr hwn}}",
-	"abusefilter-log-hidden": "(cofnod cuddiedig)",
 	"abusefilter-log-details-hidden": "Ni allwch weld manylion y cofnod hwn am ei fod wedi ei guddio o'r golwg.",
 	"abusefilter-log-hide-legend": "Cuddio cofnod log",
 	"abusefilter-log-hide-reason": "Rheswm:",

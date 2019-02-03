@@ -42,7 +42,8 @@
 			"Stjn",
 			"Vlad5250",
 			"MaxBioHazard",
-			"Shaleych"
+			"Shaleych",
+			"Athena Atterdag"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -124,7 +125,6 @@
 	"abusefilter-log-linkoncontribs-text": "Записи журнала злоупотреблений для {{GENDER:$1|этого участника|этой участницы}}",
 	"abusefilter-log-linkonhistory": "просмотр журнала фильтров",
 	"abusefilter-log-linkonhistory-text": "Показать журналы злоупотреблений для этой страницы",
-	"abusefilter-log-hidden": "(запись скрыта)",
 	"abusefilter-log-hidden-implicit": "(скрыто, так как правка была удалена)",
 	"abusefilter-log-cannot-see-details": "У вас нет разрешения на просмотр подробностей этой записи.",
 	"abusefilter-log-cannot-see-private-details": "У вас нет разрешения просматривать личные данные этой записи.",
@@ -292,6 +292,8 @@
 	"abusefilter-edit-notallowed": "У вас нет разрешения создавать или редактировать фильтры злоупотреблений",
 	"abusefilter-edit-notallowed-global": "У вас нет прав на создание или изменение глобальных фильтров злоупотреблений",
 	"abusefilter-edit-notallowed-global-custom-msg": "Глобальные фильтры не поддерживают пользовательские или запрещающие сообщения",
+	"abusefilter-edit-invalid-warn-message": "Поле для предупреждающего сообщения не может быть пустым.",
+	"abusefilter-edit-invalid-disallow-message": "Поле для сообщения об отклонении не может быть пустым.",
 	"abusefilter-edit-builder-select": "Выберите пункт для добавления",
 	"abusefilter-edit-builder-group-op-arithmetic": "Арифметические операторы",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Сложение (+)",

@@ -86,7 +86,6 @@
 	"abusefilter-log-linkoncontribs-text": "Väärtarvituslogi selle {{GENDER:$1|kasutaja}} jaoks",
 	"abusefilter-log-linkonhistory": "vaata väärtarvituslogi",
 	"abusefilter-log-linkonhistory-text": "Vaata väärtarvituslogi selle lehekülje kohta",
-	"abusefilter-log-hidden": "sissekanne peidetud",
 	"abusefilter-log-hidden-implicit": "(peidetud, sest redaktsioon on kustutatud)",
 	"abusefilter-log-cannot-see-details": "Sul pole õigust näha üksikasju selle sissekande kohta.",
 	"abusefilter-log-cannot-see-private-details": "Sul pole lubatud näha selle sissekande isiklikke üksikasju.",
