@@ -351,7 +351,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param string $filter
+	 * @param string|int $filter
 	 * @return bool
 	 */
 	public static function filterHidden( $filter ) {
@@ -808,7 +808,7 @@ class AbuseFilter {
 	/**
 	 * Utility function to decode global-$index to $index. Returns false if not global
 	 *
-	 * @param string $filter
+	 * @param string|int $filter
 	 *
 	 * @return string|bool
 	 */
