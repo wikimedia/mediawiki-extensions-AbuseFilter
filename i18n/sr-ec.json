@@ -437,7 +437,7 @@
 	"abusefilter-examine-noresults": "Нису нађени пезултати за параметре претраге које сте задали.",
 	"abusefilter-topnav": "'''Навигација по филтеру против злоупотребе'''",
 	"abusefilter-topnav-home": "почетна",
-	"abusefilter-topnav-recentchanges": "Скорашње измене филтера",
+	"abusefilter-topnav-recentchanges": "Недавне промене филтера",
 	"abusefilter-topnav-test": "групно испробавање",
 	"abusefilter-topnav-examine": "испитај прошле измене",
 	"abusefilter-topnav-log": "историја злоупотребе",

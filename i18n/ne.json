@@ -103,7 +103,7 @@
 	"abusefilter-edit-status": "विगत $1 {{PLURAL:$1|को कार्य|का कार्यहरु}}सित, $2 ($3%) मेल खान्छ।",
 	"abusefilter-edit-status-profile": "विगत $1 {{PLURAL:$1|को कार्य|का कार्यहरु}}सित, $2 ($3%) मेल खान्छ।\nऔसतमा, यसको संचालन $4ms समय छ र यसले शर्त सीमाको $5 {{PLURAL:$5|शर्त|शर्तहरु}} खपत गर्छ।",
 	"abusefilter-edit-new": "नयाँ फिल्टर",
-	"abusefilter-edit-save": "फिलटर संग्रह गर्ने",
+	"abusefilter-edit-save": "संशोधन सङ्ग्रह गर्ने",
 	"abusefilter-edit-id": "फिल्टर परिचय:",
 	"abusefilter-edit-description": "विवरण:\n:''(सार्वजनिक रुपमा देखिने)''",
 	"abusefilter-edit-group": "फिल्टर समूह:",

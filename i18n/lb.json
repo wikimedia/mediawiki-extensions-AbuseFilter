@@ -202,6 +202,7 @@
 	"abusefilter-edit-bad-tags": "Een oder méi vun den Tags déi Dir uginn hutt ass net valabel.\nTags solle kuerz sinn, an et solle keng Spezialzeechen dra sinn, a si sollen net vun anerer Software reservéiert sinn. Probéiert een aneren Numm erauszesichen",
 	"abusefilter-edit-notallowed": "Et ass Iech net erlaabt fir Mëssbrauchsfilteren unzeleeën oder z'änneren",
 	"abusefilter-edit-notallowed-global": "Dir däerft keng global Mëssbrauchsfilteren uleeën oder änneren",
+	"abusefilter-edit-invalid-warn-message": "De Warnmessage kann net eidel gelooss ginn.",
 	"abusefilter-edit-builder-select": "Wielt eng Optioun eraus fir se do anzesetzen wou de Cursor steet",
 	"abusefilter-edit-builder-group-op-arithmetic": "Arithmetesch Operateuren",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Additioun (+)",

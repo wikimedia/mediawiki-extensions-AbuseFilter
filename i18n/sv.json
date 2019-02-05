@@ -283,6 +283,8 @@
 	"abusefilter-edit-notallowed": "Du har inte tillåtelse att skapa eller ändra missbruksfilter",
 	"abusefilter-edit-notallowed-global": "Du har inte tillåtelse att skapa eller ändra globala missbruksfilter",
 	"abusefilter-edit-notallowed-global-custom-msg": "Anpassade varnings- och förbudsmeddelanden stöds inte för globala filter",
+	"abusefilter-edit-invalid-warn-message": "Varningsmeddelandet kan inte vara tomt.",
+	"abusefilter-edit-invalid-disallow-message": "Förbudsmeddelandet kan inte vara tomt.",
 	"abusefilter-edit-invalid-throttlecount": "Antalet begränsningsåtgärder måste vara ett positivt heltal.",
 	"abusefilter-edit-invalid-throttleperiod": "Begränsningsperioden måste vara ett positiv heltal.",
 	"abusefilter-edit-empty-throttlegroups": "Minst en begränsningsgrupp måste markeras.",
