@@ -579,7 +579,7 @@ class SpecialAbuseLog extends SpecialPage {
 		if ( !$row ) {
 			$error = 'abusefilter-log-nonexistent';
 		} else {
-			if ( AbuseFilter::decodeGlobalName( $row->afl_filter ) ) {
+			if ( AbuseFilter::splitGlobalName( $row->afl_filter )[1] ) {
 				$filter_hidden = null;
 			} else {
 				$filter_hidden = $row->af_hidden;
@@ -714,7 +714,7 @@ class SpecialAbuseLog extends SpecialPage {
 		if ( !$row ) {
 			$error = 'abusefilter-log-nonexistent';
 		} else {
-			if ( AbuseFilter::decodeGlobalName( $row->afl_filter ) ) {
+			if ( AbuseFilter::splitGlobalName( $row->afl_filter )[1] ) {
 				$filter_hidden = null;
 			} else {
 				$filter_hidden = $row->af_hidden;
@@ -1015,12 +1015,12 @@ class SpecialAbuseLog extends SpecialPage {
 			$actions_taken = $lang->commaList( $displayActions );
 		}
 
-		$globalIndex = AbuseFilter::decodeGlobalName( $row->afl_filter );
+		list( $id, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
 
-		if ( $globalIndex ) {
+		if ( $global ) {
 			// Pull global filter description
 			$escaped_comments = Sanitizer::escapeHtmlAllowEntities(
-				AbuseFilter::getGlobalFilterDescription( $globalIndex ) );
+				AbuseFilter::getGlobalFilterDescription( $id ) );
 			$filter_hidden = null;
 		} else {
 			$escaped_comments = Sanitizer::escapeHtmlAllowEntities(
@@ -1059,13 +1059,13 @@ class SpecialAbuseLog extends SpecialPage {
 				$actionLinks[] = $hideLink;
 			}
 
-			if ( $globalIndex ) {
+			if ( $global ) {
 				$globalURL = WikiMap::getForeignURL(
 					$this->getConfig()->get( 'AbuseFilterCentralDB' ),
-					'Special:AbuseFilter/' . $globalIndex
+					'Special:AbuseFilter/' . $id
 				);
 				$linkText = $this->msg( 'abusefilter-log-detailedentry-global' )
-					->numParams( $globalIndex )->text();
+					->numParams( $id )->text();
 				$filterLink = Linker::makeExternalLink( $globalURL, $linkText );
 			} else {
 				$title = SpecialPage::getTitleFor( 'AbuseFilter', $row->afl_filter );

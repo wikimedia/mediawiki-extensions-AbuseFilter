@@ -1560,4 +1560,42 @@ class AbuseFilterTest extends MediaWikiTestCase {
 			]
 		];
 	}
+
+	/**
+	 * @param string $name The name of a filter
+	 * @param array|null $expected If array, the expected result like [ id, isGlobal ].
+	 *   If null it means that we're expecting an exception.
+	 * @covers AbuseFilter::splitGlobalName
+	 * @dataProvider provideGlobalNames
+	 */
+	public function testSplitGlobalName( $name, $expected ) {
+		if ( $expected !== null ) {
+			$actual = AbuseFilter::splitGlobalName( $name );
+			$this->assertSame( $expected, $actual );
+		} else {
+			$this->expectException( InvalidArgumentException::class );
+			AbuseFilter::splitGlobalName( $name );
+		}
+	}
+
+	/**
+	 * Data provider for testSplitGlobalName
+	 *
+	 * @return array
+	 */
+	public function provideGlobalNames() {
+		return [
+			[ '15', [ 15, false ] ],
+			[ 15, [ 15, false ] ],
+			[ 'global-1', [ 1, true ] ],
+			[ 'new', null ],
+			[ false, null ],
+			[ 'global-15-global', null ],
+			[ 0, [ 0, false ] ],
+			[ 'global-', null ],
+			[ 'global-lol', null ],
+			[ 'global-17.2', null ],
+			[ '17,2', null ],
+		];
+	}
 }

@@ -370,19 +370,19 @@ class AbuseFilter {
 	 * @return bool
 	 */
 	public static function filterHidden( $filter ) {
-		$globalIndex = self::decodeGlobalName( $filter );
-		if ( $globalIndex ) {
+		if ( $filter === 'new' ) {
+			return false;
+		}
+		list( $id, $global ) = self::splitGlobalName( $filter );
+		if ( $global ) {
 			global $wgAbuseFilterCentralDB;
 			if ( !$wgAbuseFilterCentralDB ) {
 				return false;
 			}
 			$dbr = wfGetDB( DB_REPLICA, [], $wgAbuseFilterCentralDB );
-			$filter = $globalIndex;
+			$filter = $id;
 		} else {
 			$dbr = wfGetDB( DB_REPLICA );
-		}
-		if ( $filter === 'new' ) {
-			return false;
 		}
 		$hidden = $dbr->selectField(
 			'abuse_filter',
@@ -819,23 +819,32 @@ class AbuseFilter {
 	}
 
 	/**
-	 * Utility function to decode "<GLOBAL_FILTER_PREFIX>$index" to $index. Returns false if not global
+	 * Utility function to split "<GLOBAL_FILTER_PREFIX>$index" to an array [ $id, $global ], where
+	 * $id is $index casted to int, and $global is a boolean: true if the filter is global,
+	 * false otherwise (i.e. if the $filter === $index). Note that the $index
+	 * is always casted to int. Passing anything which isn't an integer-like value or a string
+	 * in the shape "<GLOBAL_FILTER_PREFIX>integer" will throw.
+	 * This reverses self::buildGlobalName
 	 *
 	 * @param string|int $filter
-	 *
-	 * @return string|bool
+	 * @return array
+	 * @throws InvalidArgumentException
 	 */
-	public static function decodeGlobalName( $filter ) {
-		if ( strpos( $filter, self::GLOBAL_FILTER_PREFIX ) === 0 ) {
-			return substr( $filter, strlen( self::GLOBAL_FILTER_PREFIX ) );
+	public static function splitGlobalName( $filter ) {
+		if ( preg_match( '/^' . self::GLOBAL_FILTER_PREFIX . '\d+$/', $filter ) === 1 ) {
+			$id = intval( substr( $filter, strlen( self::GLOBAL_FILTER_PREFIX ) ) );
+			return [ $id, true ];
+		} elseif ( is_numeric( $filter ) ) {
+			return [ (int)$filter, false ];
+		} else {
+			throw new InvalidArgumentException( "Invalid filter name: $filter" );
 		}
-
-		return false;
 	}
 
 	/**
 	 * Given a filter ID and a boolean indicating whether it's global, build a string like
 	 * "<GLOBAL_FILTER_PREFIX>$ID". Note that, with global = false, $id is casted to string.
+	 * This reverses self::splitGlobalName.
 	 *
 	 * @param int $id The filter ID
 	 * @param bool $global Whether the filter is global
@@ -855,10 +864,10 @@ class AbuseFilter {
 		$localFilters = [];
 
 		foreach ( $filters as $filter ) {
-			$globalIndex = self::decodeGlobalName( $filter );
+			list( $id, $global ) = self::splitGlobalName( $filter );
 
-			if ( $globalIndex ) {
-				$globalFilters[] = $globalIndex;
+			if ( $global ) {
+				$globalFilters[] = $id;
 			} else {
 				$localFilters[] = $filter;
 			}
@@ -968,7 +977,7 @@ class AbuseFilter {
 			// Special-case handling for warnings.
 			$filter_public_comments = self::getFilter( $filter )->af_public_comments;
 
-			$global_filter = self::decodeGlobalName( $filter ) !== false;
+			$global_filter = self::splitGlobalName( $filter )[1];
 
 			// If the filter has "throttle" enabled and throttling is available via object
 			// caching, check to see if the user has hit the throttle.
@@ -1307,22 +1316,20 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param string $id Filter ID (integer or "<GLOBAL_FILTER_PREFIX><integer>")
+	 * @param string $filter Filter ID (integer or "<GLOBAL_FILTER_PREFIX><integer>")
 	 * @return stdClass|null DB row on success, null on failure
 	 */
-	public static function getFilter( $id ) {
+	public static function getFilter( $filter ) {
 		global $wgAbuseFilterCentralDB;
 
-		if ( !isset( self::$filterCache[$id] ) ) {
-			$filterID = $id;
-			$globalIndex = self::decodeGlobalName( $id );
-			if ( $globalIndex ) {
+		if ( !isset( self::$filterCache[$filter] ) ) {
+			list( $id, $global ) = self::splitGlobalName( $filter );
+			if ( $global ) {
 				// Global wiki filter
 				if ( !$wgAbuseFilterCentralDB ) {
 					return null;
 				}
 
-				$filterID = $globalIndex;
 				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 				$lb = $lbFactory->getMainLB( $wgAbuseFilterCentralDB );
 				$dbr = $lb->getConnectionRef( DB_REPLICA, [], $wgAbuseFilterCentralDB );
@@ -1334,13 +1341,13 @@ class AbuseFilter {
 			$row = $dbr->selectRow(
 				'abuse_filter',
 				'*',
-				[ 'af_id' => $filterID ],
+				[ 'af_id' => $id ],
 				__METHOD__
 			);
-			self::$filterCache[$id] = $row ?: null;
+			self::$filterCache[$filter] = $row ?: null;
 		}
 
-		return self::$filterCache[$id];
+		return self::$filterCache[$filter];
 	}
 
 	/**
@@ -1402,7 +1409,7 @@ class AbuseFilter {
 		$logged_global_filters = [];
 
 		foreach ( $actions_taken as $filter => $actions ) {
-			$globalIndex = self::decodeGlobalName( $filter );
+			list( $id, $global ) = self::splitGlobalName( $filter );
 			$thisLog = $log_template;
 			$thisLog['afl_filter'] = $filter;
 			$thisLog['afl_actions'] = implode( ',', $actions );
@@ -1411,15 +1418,15 @@ class AbuseFilter {
 			if ( $thisLog['afl_actions'] !== 'throttle' ) {
 				$log_rows[] = $thisLog;
 				// Global logging
-				if ( $globalIndex ) {
+				if ( $global ) {
 					$title = Title::makeTitle( $thisLog['afl_namespace'], $thisLog['afl_title'] );
 					$centralLog = $thisLog + $central_log_template;
-					$centralLog['afl_filter'] = $globalIndex;
+					$centralLog['afl_filter'] = $id;
 					$centralLog['afl_title'] = $title->getPrefixedText();
 					$centralLog['afl_namespace'] = 0;
 
 					$central_log_rows[] = $centralLog;
-					$logged_global_filters[] = $globalIndex;
+					$logged_global_filters[] = $id;
 				} else {
 					$logged_local_filters[] = $filter;
 				}
@@ -3248,7 +3255,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param string $filterID
+	 * @param int $filterID
 	 * @return string
 	 */
 	public static function getGlobalFilterDescription( $filterID ) {
