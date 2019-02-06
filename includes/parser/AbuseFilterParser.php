@@ -1219,7 +1219,7 @@ class AbuseFilterParser {
 
 		// If I'm here and it's ANY (OR) => nothing was found: return false ($is_any is true)
 		// If I'm here and it's ALL (AND) => everything was found: return true ($is_any is false)
-		return ! $is_any;
+		return !$is_any;
 	}
 
 	/**
