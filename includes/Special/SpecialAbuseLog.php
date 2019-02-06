@@ -401,8 +401,6 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 * Shows the results list
 	 */
 	public function showList() {
-		$aflFilterMigrationStage = $this->getConfig()->get( 'AbuseFilterAflFilterMigrationStage' );
-
 		$out = $this->getOutput();
 		$user = $this->getUser();
 
@@ -519,31 +517,26 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				return;
 			}
 
-			if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
-				$filterConds = [ 'local' => [], 'global' => [] ];
-				foreach ( $searchIDs as $filter ) {
-					list( $filterID, $isGlobal ) = GlobalNameUtils::splitGlobalName( $filter );
-					$key = $isGlobal ? 'global' : 'local';
-					$filterConds[$key][] = $filterID;
-				}
-				$filterWhere = [];
-				if ( $filterConds['local'] ) {
-					$filterWhere[] = $dbr->makeList(
-						[ 'afl_global' => 0, 'afl_filter_id' => $filterConds['local'] ],
-						LIST_AND
-					);
-				}
-				if ( $filterConds['global'] ) {
-					$filterWhere[] = $dbr->makeList(
-						[ 'afl_global' => 1, 'afl_filter_id' => $filterConds['global'] ],
-						LIST_AND
-					);
-				}
-				$conds[] = $dbr->makeList( $filterWhere, LIST_OR );
-			} else {
-				// SCHEMA_COMPAT_READ_OLD
-				$conds[ 'afl_filter' ] = $searchIDs;
+			$filterConds = [ 'local' => [], 'global' => [] ];
+			foreach ( $searchIDs as $filter ) {
+				list( $filterID, $isGlobal ) = GlobalNameUtils::splitGlobalName( $filter );
+				$key = $isGlobal ? 'global' : 'local';
+				$filterConds[$key][] = $filterID;
 			}
+			$filterWhere = [];
+			if ( $filterConds['local'] ) {
+				$filterWhere[] = $dbr->makeList(
+					[ 'afl_global' => 0, 'afl_filter_id' => $filterConds['local'] ],
+					LIST_AND
+				);
+			}
+			if ( $filterConds['global'] ) {
+				$filterWhere[] = $dbr->makeList(
+					[ 'afl_global' => 1, 'afl_filter_id' => $filterConds['global'] ],
+					LIST_AND
+				);
+			}
+			$conds[] = $dbr->makeList( $filterWhere, LIST_OR );
 		}
 
 		$searchTitle = Title::newFromText( $this->mSearchTitle );
@@ -681,13 +674,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		if ( !$row ) {
 			$error = 'abusefilter-log-nonexistent';
 		} else {
-			if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
-				$filterID = $row->afl_filter_id;
-				$global = $row->afl_global;
-			} else {
-				// SCHEMA_COMPAT_READ_OLD
-				list( $filterID, $global ) = GlobalNameUtils::splitGlobalName( $row->afl_filter );
-			}
+			$filterID = $row->afl_filter_id;
+			$global = $row->afl_global;
 
 			if ( $global ) {
 				try {
@@ -810,29 +798,17 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 *  or an error and no row.
 	 */
 	public static function getPrivateDetailsRow( User $user, $id ) {
-		global $wgAbuseFilterAflFilterMigrationStage;
-
 		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$dbr = wfGetDB( DB_REPLICA );
-		$fields = [ 'afl_id', 'afl_user_text', 'afl_timestamp', 'afl_ip', 'af_id',
-			'af_public_comments', 'af_hidden' ];
-		if ( $wgAbuseFilterAflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
-			$fields[] = 'afl_filter_id';
-			$fields[] = 'afl_global';
-			$join = [ 'af_id=afl_filter_id', 'afl_global' => 0 ];
-		} else {
-			// SCHEMA_COMPAT_READ_OLD
-			$fields[] = 'afl_filter';
-			$join = 'af_id=afl_filter';
-		}
 
 		$row = $dbr->selectRow(
 			[ 'abuse_filter_log', 'abuse_filter' ],
-			$fields,
+			[ 'afl_id', 'afl_user_text', 'afl_filter_id', 'afl_global', 'afl_timestamp', 'afl_ip',
+				'af_id', 'af_public_comments', 'af_hidden' ],
 			[ 'afl_id' => $id ],
 			__METHOD__,
 			[],
-			[ 'abuse_filter' => [ 'LEFT JOIN', $join ] ]
+			[ 'abuse_filter' => [ 'LEFT JOIN', [ 'af_id=afl_filter_id', 'afl_global' => 0 ] ] ]
 		);
 
 		$status = Status::newGood();
@@ -841,13 +817,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			return $status;
 		}
 
-		if ( $wgAbuseFilterAflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
-			$filterID = $row->afl_filter_id;
-			$global = $row->afl_global;
-		} else {
-			// SCHEMA_COMPAT_READ_OLD
-			list( $filterID, $global ) = GlobalNameUtils::splitGlobalName( $row->afl_filter );
-		}
+		$filterID = $row->afl_filter_id;
+		$global = $row->afl_global;
 
 		if ( $global ) {
 			$lookup = AbuseFilterServices::getFilterLookup();

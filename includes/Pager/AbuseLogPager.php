@@ -9,7 +9,6 @@ use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
-use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Linker\LinkTarget;
@@ -89,7 +88,6 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	 * @return string
 	 */
 	public function doFormatRow( stdClass $row, bool $isListItem = true ): string {
-		$aflFilterMigrationStage = $this->getConfig()->get( 'AbuseFilterAflFilterMigrationStage' );
 		$user = $this->getUser();
 		$lang = $this->getLanguage();
 
@@ -173,13 +171,8 @@ class AbuseLogPager extends ReverseChronologicalPager {
 			$actions_taken = $lang->commaList( $displayActions );
 		}
 
-		if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
-			$filterID = $row->afl_filter_id;
-			$global = $row->afl_global;
-		} else {
-			// SCHEMA_COMPAT_READ_OLD
-			list( $filterID, $global ) = GlobalNameUtils::splitGlobalName( $row->afl_filter );
-		}
+		$filterID = $row->afl_filter_id;
+		$global = $row->afl_global;
 
 		if ( $global ) {
 			// Pull global filter description
@@ -350,16 +343,8 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	 */
 	public function getQueryInfo() {
 		$afPermManager = AbuseFilterServices::getPermissionManager();
-		$aflFilterMigrationStage = $this->getConfig()->get( 'AbuseFilterAflFilterMigrationStage' );
 
 		$conds = $this->mConds;
-
-		if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
-			$join = [ 'af_id=afl_filter_id', 'afl_global' => 0 ];
-		} else {
-			// SCHEMA_COMPAT_READ_OLD
-			$join = 'af_id=afl_filter';
-		}
 
 		$info = [
 			'tables' => [ 'abuse_filter_log', 'abuse_filter', 'revision' ],
@@ -372,7 +357,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 			'join_conds' => [
 				'abuse_filter' => [
 					'LEFT JOIN',
-					$join,
+					[ 'af_id=afl_filter_id', 'afl_global' => 0 ],
 				],
 				'revision' => [
 					'LEFT JOIN',

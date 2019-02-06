@@ -11,7 +11,6 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
-use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseFilterExaminePager;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
@@ -228,29 +227,20 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 * @param int $logid
 	 */
 	public function showExaminerForLogEntry( $logid ) {
-		$aflFilterMigrationStage = $this->getConfig()->get( 'AbuseFilterAflFilterMigrationStage' );
 		// Get data
 		$dbr = wfGetDB( DB_REPLICA );
 		$user = $this->getUser();
 		$out = $this->getOutput();
 
-		$fields = [
-			'afl_deleted',
-			'afl_var_dump',
-			'afl_rev_id'
-		];
-
-		if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
-			$fields[] = 'afl_filter_id';
-			$fields[] = 'afl_global';
-		} else {
-			// SCHEMA_COMPAT_READ_OLD
-			$fields[] = 'afl_filter';
-		}
-
 		$row = $dbr->selectRow(
 			'abuse_filter_log',
-			$fields,
+			[
+				'afl_deleted',
+				'afl_var_dump',
+				'afl_rev_id',
+				'afl_filter_id',
+				'afl_global'
+			],
 			[ 'afl_id' => $logid ],
 			__METHOD__
 		);
@@ -260,15 +250,8 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
-		if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
-			$filterID = $row->afl_filter_id;
-			$isGlobal = $row->afl_global;
-		} else {
-			// SCHEMA_COMPAT_READ_OLD
-			[ $filterID, $isGlobal ] = GlobalNameUtils::splitGlobalName( $row->afl_filter );
-		}
 		try {
-			$isHidden = $this->filterLookup->getFilter( $filterID, $isGlobal )->isHidden();
+			$isHidden = $this->filterLookup->getFilter( $row->afl_filter_id, $row->afl_global )->isHidden();
 		} catch ( CentralDBNotAvailableException $_ ) {
 			// Conservatively assume that it's hidden, like in SpecialAbuseLog
 			$isHidden = true;

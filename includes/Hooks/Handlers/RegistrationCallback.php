@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
-use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPreAuthenticationProvider;
 
 /**
@@ -16,8 +15,7 @@ class RegistrationCallback {
 		global $wgAuthManagerAutoConfig, $wgActionFilteredLogs, $wgAbuseFilterProfile,
 			   $wgAbuseFilterProfiling, $wgAbuseFilterPrivateLog, $wgAbuseFilterForceSummary,
 			   $wgGroupPermissions, $wgAbuseFilterRestrictions, $wgAbuseFilterDisallowGlobalLocalBlocks,
-			   $wgAbuseFilterActionRestrictions, $wgAbuseFilterLocallyDisabledGlobalActions,
-			   $wgAbuseFilterAflFilterMigrationStage;
+			   $wgAbuseFilterActionRestrictions, $wgAbuseFilterLocallyDisabledGlobalActions;
 
 		// @todo Remove this in a future release (added in 1.33)
 		if ( isset( $wgAbuseFilterProfile ) || isset( $wgAbuseFilterProfiling ) ) {
@@ -112,28 +110,6 @@ class RegistrationCallback {
 				'restoreautopromote' => [ 'restoreautopromote' ]
 			]
 		);
-
-		if ( strpos( $wgAbuseFilterAflFilterMigrationStage, 'Bogus value' ) !== false ) {
-			// Set the value here, because extension.json is very unfriendly towards PHP constants
-			$wgAbuseFilterAflFilterMigrationStage = SCHEMA_COMPAT_NEW;
-		}
-		$stage = $wgAbuseFilterAflFilterMigrationStage;
-		// Validation for the afl_filter migration stage, stolen from ActorMigration
-		if ( ( $stage & SCHEMA_COMPAT_WRITE_BOTH ) === 0 ) {
-			throw new InvalidArgumentException( '$stage must include a write mode' );
-		}
-		if ( ( $stage & SCHEMA_COMPAT_READ_BOTH ) === 0 ) {
-			throw new InvalidArgumentException( '$stage must include a read mode' );
-		}
-		if ( ( $stage & SCHEMA_COMPAT_READ_BOTH ) === SCHEMA_COMPAT_READ_BOTH ) {
-			throw new InvalidArgumentException( 'Cannot read both schemas' );
-		}
-		if ( ( $stage & SCHEMA_COMPAT_READ_OLD ) && !( $stage & SCHEMA_COMPAT_WRITE_OLD ) ) {
-			throw new InvalidArgumentException( 'Cannot read the old schema without also writing it' );
-		}
-		if ( ( $stage & SCHEMA_COMPAT_READ_NEW ) && !( $stage & SCHEMA_COMPAT_WRITE_NEW ) ) {
-			throw new InvalidArgumentException( 'Cannot read the new schema without also writing it' );
-		}
 	}
 
 }

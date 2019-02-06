@@ -478,10 +478,6 @@
 		"AbuseFilterLogIP": {
 			"value": true,
 			"description": "Whether to include IP in the abuse_filter_log"
-		},
-		"AbuseFilterAflFilterMigrationStage": {
-			"value": "Bogus value - set in AbuseFilterHooks::onRegistration",
-			"description": "Stage of the migration of afl_filter to afl_filter_id and afl_global. Should be one of the following (combinations of) constants: SCHEMA_COMPAT_OLD, SCHEMA_COMPAT_WRITE_BOTH | SCHEMA_COMPAT_READ_OLD, SCHEMA_COMPAT_WRITE_BOTH | SCHEMA_COMPAT_READ_NEW, SCHEMA_COMPAT_NEW. For a detailed migration guide, see https://phabricator.wikimedia.org/T220791#5496752 § Method 1."
 		}
 	},
 	"load_composer_autoloader": true,

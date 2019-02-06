@@ -31,9 +31,8 @@ CREATE INDEX afa_consequence ON /*$wgDBprefix*/abuse_filter_action (afa_conseque
 
 CREATE TABLE /*$wgDBprefix*/abuse_filter_log (
 	afl_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-	afl_filter varbinary(64) NOT NULL DEFAULT '',
-	afl_global tinyint(1) NOT NULL DEFAULT 0,
-	afl_filter_id INTEGER NOT NULL DEFAULT 0,
+	afl_global tinyint(1) NOT NULL,
+	afl_filter_id INTEGER NOT NULL,
 	afl_user BIGINT unsigned NOT NULL,
 	afl_user_text varbinary(255) NOT NULL,
 	afl_ip varbinary(255) not null,
@@ -48,7 +47,6 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter_log (
 	afl_patrolled_by int unsigned NOT NULL DEFAULT 0,
 	afl_rev_id int unsigned
 ) /*$wgDBTableOptions*/;
-CREATE INDEX afl_filter_timestamp ON /*$wgDBprefix*/abuse_filter_log (afl_filter,afl_timestamp);
 CREATE INDEX afl_filter_timestamp_full ON /*$wgDBprefix*/abuse_filter_log (afl_global,afl_filter_id,afl_timestamp);
 CREATE INDEX afl_user_timestamp ON /*$wgDBprefix*/abuse_filter_log (afl_user,afl_user_text,afl_timestamp);
 CREATE INDEX afl_timestamp ON /*$wgDBprefix*/abuse_filter_log  (afl_timestamp);

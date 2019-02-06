@@ -81,6 +81,11 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 					true
 				);
 			}
+			$updater->dropExtensionField(
+				'abuse_filter_log',
+				'afl_filter',
+				"$dir/$dbType/patch-remove-afl_filter.sql"
+			);
 		} elseif ( $dbType === 'postgres' ) {
 			$updater->addExtensionUpdate( [
 				'dropPgField', 'abuse_filter_log', 'afl_log_id' ] );
@@ -96,6 +101,18 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 			$updater->addExtensionUpdate( [
 				'addPgIndex', 'abuse_filter_log', 'abuse_filter_log_filter_timestamp_full',
 				'(afl_global, afl_filter_id, afl_timestamp)'
+			] );
+			$updater->addExtensionUpdate( [
+				'dropPgIndex', 'abuse_filter_log', 'abuse_filter_log_timestamp'
+			] );
+			$updater->addExtensionUpdate( [
+				'dropPgField', 'abuse_filter_log', 'afl_filter'
+			] );
+			$updater->addExtensionUpdate( [
+				'dropDefault', 'abuse_filter_log', 'afl_filter_id'
+			] );
+			$updater->addExtensionUpdate( [
+				'dropDefault', 'abuse_filter_log', 'afl_global'
 			] );
 		}
 

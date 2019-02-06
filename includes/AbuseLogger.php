@@ -106,8 +106,6 @@ class AbuseLogger {
 	 * @phan-return array{local:int[],global:int[]}
 	 */
 	public function addLogEntries( array $actionsTaken ): array {
-		global $wgAbuseFilterAflFilterMigrationStage;
-
 		$dbw = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
 		$logTemplate = $this->buildLogTemplate();
 		$centralLogTemplate = [
@@ -119,18 +117,11 @@ class AbuseLogger {
 		$loggedLocalFilters = [];
 		$loggedGlobalFilters = [];
 
-		$writeNewSchema = $wgAbuseFilterAflFilterMigrationStage & SCHEMA_COMPAT_WRITE_NEW;
-		$writeOldSchema = $wgAbuseFilterAflFilterMigrationStage & SCHEMA_COMPAT_WRITE_OLD;
 		foreach ( $actionsTaken as $filter => $actions ) {
 			list( $filterID, $global ) = GlobalNameUtils::splitGlobalName( $filter );
 			$thisLog = $logTemplate;
-			if ( $writeOldSchema ) {
-				$thisLog['afl_filter'] = $filter;
-			}
-			if ( $writeNewSchema ) {
-				$thisLog['afl_filter_id'] = $filterID;
-				$thisLog['afl_global'] = (int)$global;
-			}
+			$thisLog['afl_filter_id'] = $filterID;
+			$thisLog['afl_global'] = (int)$global;
 			$thisLog['afl_actions'] = implode( ',', $actions );
 
 			// Don't log if we were only throttling.
@@ -140,14 +131,8 @@ class AbuseLogger {
 				// Global logging
 				if ( $global ) {
 					$centralLog = $thisLog + $centralLogTemplate;
-					// Note that using the local stage for writing in the foreign DB is fine
-					if ( $writeOldSchema ) {
-						$centralLog['afl_filter'] = $filterID;
-					}
-					if ( $writeNewSchema ) {
-						$centralLog['afl_filter_id'] = $filterID;
-						$centralLog['afl_global'] = 0;
-					}
+					$centralLog['afl_filter_id'] = $filterID;
+					$centralLog['afl_global'] = 0;
 					$centralLog['afl_title'] = $this->title->getPrefixedText();
 					$centralLog['afl_namespace'] = 0;
 
@@ -211,9 +196,6 @@ class AbuseLogger {
 	 * @return int[]
 	 */
 	private function insertLocalLogEntries( array $logRows, IDatabase $dbw ): array {
-		global $wgAbuseFilterAflFilterMigrationStage;
-
-		$writeNewSchema = $wgAbuseFilterAflFilterMigrationStage & SCHEMA_COMPAT_WRITE_NEW;
 		$varDump = $this->varBlobStore->storeVarDump( $this->vars );
 
 		$loggedIDs = [];
@@ -229,15 +211,10 @@ class AbuseLogger {
 			$user->setName( $data['afl_user_text'] );
 			$entry->setPerformer( $user );
 			$entry->setTarget( $this->title );
-			if ( $writeNewSchema ) {
-				$filterName = GlobalNameUtils::buildGlobalName(
-					$data['afl_filter_id'],
-					$data['afl_global'] === 1
-				);
-			} else {
-				// SCHEMA_COMPAT_WRITE_OLD
-				$filterName = $data['afl_filter'];
-			}
+			$filterName = GlobalNameUtils::buildGlobalName(
+				$data['afl_filter_id'],
+				$data['afl_global'] === 1
+			);
 			// Additional info
 			$entry->setParameters( [
 				'action' => $data['afl_action'],
@@ -258,13 +235,8 @@ class AbuseLogger {
 			}
 
 			if ( $this->options->get( 'AbuseFilterNotifications' ) !== false ) {
-				if ( $writeNewSchema ) {
-					$filterID = $data['afl_filter_id'];
-					$global = $data['afl_global'];
-				} else {
-					// SCHEMA_COMPAT_WRITE_OLD
-					list( $filterID, $global ) = GlobalNameUtils::splitGlobalName( $data['afl_filter'] );
-				}
+				$filterID = $data['afl_filter_id'];
+				$global = $data['afl_global'];
 				if (
 					!$this->options->get( 'AbuseFilterNotificationsPrivate' ) &&
 					$this->filterLookup->getFilter( $filterID, $global )->isHidden()
