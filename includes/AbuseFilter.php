@@ -18,9 +18,12 @@ class AbuseFilter {
 
 	/**
 	 * @var array [filter ID => stdClass|null] as retrieved from self::getFilter. ID could be either
-	 *   an integer or "global-<integer>"
+	 *   an integer or "<GLOBAL_FILTER_PREFIX><integer>"
 	 */
 	private static $filterCache = [];
+
+	/** @var string The prefix to use for global filters */
+	const GLOBAL_FILTER_PREFIX = 'global-';
 
 	public static $condCount = 0;
 
@@ -618,8 +621,8 @@ class AbuseFilter {
 			);
 
 			foreach ( $res as $row ) {
-				$filter_matched['global-' . $row->af_id] =
-					self::checkFilter( $row, $vars, $title, 'global-', $mode );
+				$filter_matched[ self::buildGlobalName( $row->af_id ) ] =
+					self::checkFilter( $row, $vars, $title, self::GLOBAL_FILTER_PREFIX, $mode );
 			}
 		}
 
@@ -806,18 +809,31 @@ class AbuseFilter {
 	}
 
 	/**
-	 * Utility function to decode global-$index to $index. Returns false if not global
+	 * Utility function to decode "<GLOBAL_FILTER_PREFIX>$index" to $index. Returns false if not global
 	 *
 	 * @param string $filter
 	 *
 	 * @return string|bool
 	 */
 	public static function decodeGlobalName( $filter ) {
-		if ( strpos( $filter, 'global-' ) === 0 ) {
-			return substr( $filter, strlen( 'global-' ) );
+		if ( strpos( $filter, self::GLOBAL_FILTER_PREFIX ) === 0 ) {
+			return substr( $filter, strlen( self::GLOBAL_FILTER_PREFIX ) );
 		}
 
 		return false;
+	}
+
+	/**
+	 * Given a filter ID and a boolean indicating whether it's global, build a string like
+	 * "<GLOBAL_FILTER_PREFIX>$ID". Note that, with global = false, $id is casted to string.
+	 *
+	 * @param int $id The filter ID
+	 * @param bool $global Whether the filter is global
+	 * @return string
+	 */
+	public static function buildGlobalName( $id, $global = true ) {
+		$prefix = $global ? self::GLOBAL_FILTER_PREFIX : '';
+		return "$prefix$id";
 	}
 
 	/**
@@ -850,7 +866,11 @@ class AbuseFilter {
 
 		if ( count( $globalFilters ) ) {
 			$fdb = wfGetDB( DB_REPLICA, [], $wgAbuseFilterCentralDB );
-			$consequences = $consequences + self::loadConsequencesFromDB( $fdb, $globalFilters, 'global-' );
+			$consequences = $consequences + self::loadConsequencesFromDB(
+				$fdb,
+				$globalFilters,
+				self::GLOBAL_FILTER_PREFIX
+			);
 		}
 
 		return $consequences;
@@ -1269,7 +1289,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param string $id Filter ID (integer or "global-<integer>")
+	 * @param string $id Filter ID (integer or "<GLOBAL_FILTER_PREFIX><integer>")
 	 * @return stdClass|null DB row on success, null on failure
 	 */
 	public static function getFilter( $id ) {
