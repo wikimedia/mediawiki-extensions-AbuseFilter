@@ -266,7 +266,11 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			'title' => null,
 			'filter' => [
 				ApiBase::PARAM_TYPE => 'string',
-				ApiBase::PARAM_ISMULTI => true
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_HELP_MSG => [
+					'apihelp-query+abuselog-param-filter',
+					AbuseFilter::GLOBAL_FILTER_PREFIX
+				]
 			],
 			'limit' => [
 				ApiBase::PARAM_DFLT => 10,

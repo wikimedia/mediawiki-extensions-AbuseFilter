@@ -282,6 +282,8 @@ class SpecialAbuseLog extends SpecialPage {
 				'label-message' => 'abusefilter-log-search-filter',
 				'type' => 'text',
 				'default' => $this->mSearchFilter,
+				'help' => $this->msg( 'abusefilter-log-search-filter-help' )
+					->params( AbuseFilter::GLOBAL_FILTER_PREFIX )->escaped()
 			];
 		}
 		if ( $this->getConfig()->get( 'AbuseFilterIsCentral' ) ) {
