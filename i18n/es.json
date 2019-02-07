@@ -297,6 +297,7 @@
 	"abusefilter-edit-export": "Exportar este filtro a otro wiki",
 	"abusefilter-edit-syntaxok": "No se detectaron errores de sintaxis.",
 	"abusefilter-edit-syntaxerr": "Se detectó un error de sintaxis: $1",
+	"abusefilter-edit-warn-leave": "Si abandonas la página se perderá cualquier modificación realizada al filtro.",
 	"abusefilter-edit-bad-tags": "Una o más de las etiquetas que especificaste no son válidas.\nLas etiquetas deben ser breves, no deben contener caracteres especiales y no deben estar reservadas por otro programa. Prueba a elegir otro nombre de etiqueta.",
 	"abusefilter-edit-notallowed": "No se te permite crear o editar filtros antiabusos",
 	"abusefilter-edit-notallowed-global": "No se te permite crear o editar filtros antiabusos globales",
