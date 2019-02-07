@@ -264,6 +264,8 @@
 	"abusefilter-edit-notallowed": "אין לך הרשאה ליצור או לערוך מסנני השחתות",
 	"abusefilter-edit-notallowed-global": "אין לך הרשאה ליצור או לערוך מסנני השחתות גלובליים",
 	"abusefilter-edit-notallowed-global-custom-msg": "הודעות אזהרה אן איסור מותאמות אישית אינן נתמכות עבור מסננים גלובליים",
+	"abusefilter-edit-invalid-warn-message": "אי־אפשר להשאיר את הודעת האזהרה ריקה.",
+	"abusefilter-edit-invalid-disallow-message": "אי־אפשר להשאיר את הודעת המניעה ריקה.",
 	"abusefilter-edit-invalid-throttlecount": "מניין פעולות ההגבלה חייב להיות מספר שלם חיובי.",
 	"abusefilter-edit-invalid-throttleperiod": "תקופת ההגבלה צריכה להיות מספר שלם חיובי",
 	"abusefilter-edit-empty-throttlegroups": "יש לבחור לפחות קבוצת הגבלה אחת.",
