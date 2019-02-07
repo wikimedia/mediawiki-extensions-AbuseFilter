@@ -39,17 +39,13 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 	}
 
 	/**
-	 * @see ApiQueryBase::execute()
+	 * @inheritDoc
 	 */
 	public function execute() {
-		$user = $this->getUser();
-		$errors = $this->getTitle()->getUserPermissionsErrors(
-			'abusefilter-log', $user, true, [ 'ns-specialprotected' ] );
-		if ( count( $errors ) ) {
-			$this->dieStatus( $this->errorArrayToStatus( $errors ) );
-			return;
-		}
+		// Same check as in SpecialAbuseLog
+		$this->checkUserRightsAny( 'abusefilter-log' );
 
+		$user = $this->getUser();
 		$params = $this->extractRequestParams();
 
 		$prop = array_flip( $params['prop'] );
