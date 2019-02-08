@@ -42,7 +42,8 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 		'abuse_filter',
 		'abuse_filter_action',
 		'abuse_filter_history',
-		'abuse_filter_log'
+		'abuse_filter_log',
+		'user'
 	];
 
 	/**

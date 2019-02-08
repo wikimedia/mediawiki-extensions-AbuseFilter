@@ -53,7 +53,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		'page',
 		'ipblocks',
 		'logging',
-		'change_tag'
+		'change_tag',
+		'user'
 	];
 
 	// Filters that may be created, their key is the ID.

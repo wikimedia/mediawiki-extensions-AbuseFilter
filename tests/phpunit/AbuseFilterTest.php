@@ -57,6 +57,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	protected $tablesUsed = [
 		'page',
 		'page_restrictions',
+		'user',
 		'abuse_filter',
 		'abuse_filter_history',
 		'abuse_filter_log',
