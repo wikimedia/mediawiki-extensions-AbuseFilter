@@ -1,6 +1,6 @@
 <?php
 
-class SpecialAbuseFilter extends SpecialPage {
+class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 	/**
 	 * @var int|string|null The current filter
 	 */
@@ -10,15 +10,25 @@ class SpecialAbuseFilter extends SpecialPage {
 	 */
 	public $mHistoryID;
 
+	/**
+	 * @inheritDoc
+	 */
 	public function __construct() {
 		parent::__construct( 'AbuseFilter', 'abusefilter-view' );
 	}
 
 	/**
-	 * @return bool
+	 * @inheritDoc
 	 */
 	public function doesWrites() {
 		return true;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getGroupName() {
+		return 'wiki';
 	}
 
 	/**
@@ -122,8 +132,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		}
 
 		// Links at the top
-		AbuseFilter::addNavigationLinks(
-			$this->getContext(), $pageType, $this->getLinkRenderer() );
+		$this->addNavigationLinks( $pageType );
 
 		/** @var AbuseFilterView $v */
 		$v = new $view( $this, $params );
@@ -131,21 +140,12 @@ class SpecialAbuseFilter extends SpecialPage {
 	}
 
 	/**
-	 * @param string|null $subpage
+	 * @param string|null $filter
 	 */
-	public function loadParameters( $subpage ) {
-		$filter = $subpage;
-
+	public function loadParameters( $filter ) {
 		if ( !is_numeric( $filter ) && $filter !== 'new' ) {
 			$filter = $this->getRequest()->getIntOrNull( 'wpFilter' );
 		}
 		$this->mFilter = $filter;
-	}
-
-	/**
-	 * @return string
-	 */
-	protected function getGroupName() {
-		return 'wiki';
 	}
 }

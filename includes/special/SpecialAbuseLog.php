@@ -1,6 +1,6 @@
 <?php
 
-class SpecialAbuseLog extends SpecialPage {
+class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/**
 	 * @var User The user whose AbuseLog entries are being searched
 	 */
@@ -62,10 +62,17 @@ class SpecialAbuseLog extends SpecialPage {
 	}
 
 	/**
-	 * @return bool
+	 * @inheritDoc
 	 */
 	public function doesWrites() {
 		return true;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getGroupName() {
+		return 'changes';
 	}
 
 	/**
@@ -96,8 +103,7 @@ class SpecialAbuseLog extends SpecialPage {
 		$out = $this->getOutput();
 		$request = $this->getRequest();
 
-		AbuseFilter::addNavigationLinks(
-			$this->getContext(), 'log', $this->getLinkRenderer() );
+		$this->addNavigationLinks( 'log' );
 
 		$this->setHeaders();
 		$this->addHelpLink( 'Extension:AbuseFilter' );
@@ -1182,12 +1188,5 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 
 		return false;
-	}
-
-	/**
-	 * @return string
-	 */
-	protected function getGroupName() {
-		return 'changes';
 	}
 }

@@ -1,6 +1,5 @@
 <?php
 
-use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\MediaWikiServices;
@@ -232,70 +231,6 @@ class AbuseFilter {
 		'moved_to_prefixedtext' => 'moved_to_prefixedtitle',
 		'moved_to_articleid' => 'moved_to_id',
 	];
-
-	/**
-	 * @param IContextSource $context
-	 * @param string $pageType
-	 * @param LinkRenderer $linkRenderer
-	 */
-	public static function addNavigationLinks(
-		IContextSource $context,
-		$pageType,
-		LinkRenderer $linkRenderer
-	) {
-		$linkDefs = [
-			'home' => 'Special:AbuseFilter',
-			'recentchanges' => 'Special:AbuseFilter/history',
-			'examine' => 'Special:AbuseFilter/examine',
-		];
-
-		if ( $context->getUser()->isAllowed( 'abusefilter-log' ) ) {
-			$linkDefs = array_merge( $linkDefs, [
-				'log' => 'Special:AbuseLog'
-			] );
-		}
-
-		if ( $context->getUser()->isAllowedAny( 'abusefilter-modify', 'abusefilter-view-private' ) ) {
-			$linkDefs = array_merge( $linkDefs, [
-				'test' => 'Special:AbuseFilter/test',
-				'tools' => 'Special:AbuseFilter/tools'
-			] );
-		}
-
-		if ( $context->getUser()->isAllowed( 'abusefilter-modify' ) ) {
-			$linkDefs = array_merge( $linkDefs, [
-				'import' => 'Special:AbuseFilter/import'
-			] );
-		}
-
-		$links = [];
-
-		foreach ( $linkDefs as $name => $page ) {
-			// Give grep a chance to find the usages:
-			// abusefilter-topnav-home, abusefilter-topnav-recentchanges, abusefilter-topnav-test,
-			// abusefilter-topnav-log, abusefilter-topnav-tools, abusefilter-topnav-import
-			// abusefilter-topnav-examine
-			$msgName = "abusefilter-topnav-$name";
-
-			$msg = $context->msg( $msgName )->parse();
-			$title = Title::newFromText( $page );
-
-			if ( $name === $pageType ) {
-				$links[] = Xml::tags( 'strong', null, $msg );
-			} else {
-				$links[] = $linkRenderer->makeLink( $title, new HtmlArmor( $msg ) );
-			}
-		}
-
-		$linkStr = $context->msg( 'parentheses' )
-			->rawParams( $context->getLanguage()->pipeList( $links ) )
-			->text();
-		$linkStr = $context->msg( 'abusefilter-topnav' )->parse() . " $linkStr";
-
-		$linkStr = Xml::tags( 'div', [ 'class' => 'mw-abusefilter-navigation' ], $linkStr );
-
-		$context->getOutput()->setSubtitle( $linkStr );
-	}
 
 	/**
 	 * @param User $user
