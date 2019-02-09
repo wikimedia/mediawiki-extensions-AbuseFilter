@@ -110,9 +110,6 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 
 		$this->addWhereRange( 'afl_timestamp', $params['dir'], $params['start'], $params['end'] );
 
-		$db = $this->getDB();
-		$notDeletedCond = SpecialAbuseLog::getNotDeletedCond( $db );
-
 		if ( isset( $params['user'] ) ) {
 			$u = User::newFromName( $params['user'] );
 			if ( $u ) {
@@ -138,7 +135,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		}
 
 		$this->addWhereIf( [ 'afl_filter' => $params['filter'] ], isset( $params['filter'] ) );
-		$this->addWhereIf( $notDeletedCond, !SpecialAbuseLog::canSeeHidden() );
+		$this->addWhereIf( [ 'afl_deleted' => 0 ], !SpecialAbuseLog::canSeeHidden() );
 		if ( isset( $params['wiki'] ) ) {
 			// 'wiki' won't be set if $wgAbuseFilterIsCentral = false
 			$this->addWhereIf( [ 'afl_wiki' => $params['wiki'] ], $isCentral );

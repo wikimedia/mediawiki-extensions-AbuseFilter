@@ -51,8 +51,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		];
 
 		if ( !$this->mForm->canSeeHidden() ) {
-			$db = $this->mDb;
-			$info['conds'][] = SpecialAbuseLog::getNotDeletedCond( $db );
+			$info['conds']['afl_deleted'] = 0;
 		}
 
 		return $info;

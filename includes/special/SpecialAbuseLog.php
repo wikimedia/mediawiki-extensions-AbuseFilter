@@ -441,7 +441,7 @@ class SpecialAbuseLog extends SpecialPage {
 			if ( $this->mSearchEntries === '1' ) {
 				$conds['afl_deleted'] = 1;
 			} elseif ( $this->mSearchEntries === '2' ) {
-				$conds[] = self::getNotDeletedCond( $dbr );
+				$conds['afl_deleted'] = 0;
 			}
 		}
 
@@ -1074,21 +1074,6 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 
 		return $cache[$userName][$userId];
-	}
-
-	/**
-	 * @param \Wikimedia\Rdbms\IDatabase $db
-	 * @return string
-	 */
-	public static function getNotDeletedCond( $db ) {
-		$deletedZeroCond = $db->makeList(
-			[ 'afl_deleted' => 0 ], LIST_AND );
-		$deletedNullCond = $db->makeList(
-			[ 'afl_deleted' => null ], LIST_AND );
-		$notDeletedCond = $db->makeList(
-			[ $deletedZeroCond, $deletedNullCond ], LIST_OR );
-
-		return $notDeletedCond;
 	}
 
 	/**
