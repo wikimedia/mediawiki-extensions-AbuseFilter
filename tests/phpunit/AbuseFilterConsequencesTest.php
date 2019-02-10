@@ -1741,7 +1741,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @covers AbuseFilter::getFilterProfile
 	 * @covers AbuseFilterRunner::checkAllFilters
 	 * @covers AbuseFilterRunner::recordStats
-	 * @covers AbuseFilterRunner::checkEmergencyDisable
 	 * @dataProvider provideProfilingFilters
 	 */
 	public function testProfiling( $createIds, $actionParams, $expectedGlobal, $expectedPerFilter ) {
@@ -1776,10 +1775,11 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 
 		// Per-filter stats shown on the top of Special:AbuseFilter/xxx
 		foreach ( $createIds as $id ) {
+			list( $totalActions, $matches, , $conds ) = AbuseFilter::getFilterProfile( $id );
 			$actualStats = [
-				'matches' => $stash->get( AbuseFilter::filterMatchesKey( $id ) ),
-				'actions' => $stash->get( AbuseFilter::filterUsedKey( 'default' ) ),
-				'averageConditions' => AbuseFilter::getFilterProfile( $id )[1]
+				'matches' => $matches,
+				'actions' => $totalActions,
+				'averageConditions' => $conds
 			];
 			$this->assertSame(
 				$expectedPerFilter[ $id ],

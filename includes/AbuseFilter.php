@@ -591,7 +591,7 @@ class AbuseFilter {
 			$curTotalTime = $profile['total-time'];
 			$curTotalConds = $profile['total-cond'];
 		} else {
-			return [ 0, 0 ];
+			return [ 0, 0, 0, 0 ];
 		}
 
 		// 1000 ms in a sec
@@ -602,7 +602,7 @@ class AbuseFilter {
 		$condProfile = ( $curTotalConds / $curCount );
 		$condProfile = round( $condProfile, 0 );
 
-		return [ $timeProfile, $condProfile ];
+		return [ $curCount, $profile['matches'], $timeProfile, $condProfile ];
 	}
 
 	/**
@@ -1014,7 +1014,7 @@ class AbuseFilter {
 	 */
 	public static function filterProfileKey( $filter ) {
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
-		return $cache->makeKey( 'abusefilter-profile', 'v1', $filter );
+		return $cache->makeKey( 'abusefilter-profile', 'v2', $filter );
 	}
 
 	/**
@@ -1026,11 +1026,10 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param string|null $filter
 	 * @return string
 	 */
-	public static function filterMatchesKey( $filter = null ) {
-		return wfMemcKey( 'abusefilter', 'stats', 'matches', $filter );
+	public static function filterMatchesKey() {
+		return wfMemcKey( 'abusefilter', 'stats', 'matches', null );
 	}
 
 	/**

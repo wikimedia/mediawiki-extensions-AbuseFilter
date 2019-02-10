@@ -156,7 +156,7 @@ class AbuseFilterRunner {
 			$result['runtime']
 		);
 		$this->recordPerFilterProfiling( $result['profiling'] );
-		$this->recordStats( $result['matches'], $result['condCount'] );
+		$this->recordStats( $result['condCount'] );
 
 		if ( count( $matchedFilters ) === 0 ) {
 			return Status::newGood();
@@ -400,7 +400,7 @@ class AbuseFilterRunner {
 			if ( !$global ) {
 				// @todo Maybe add a parameter to recordProfilingResult to record global filters
 				// data separately (in the foreign wiki)
-				$this->recordProfilingResult( $filterID, $params['time'], $params['conds'] );
+				$this->recordProfilingResult( $filterID, $params['time'], $params['conds'], $params['result'] );
 			}
 
 			$runtime = $params['time'] * 1000;
@@ -416,10 +416,11 @@ class AbuseFilterRunner {
 	 * @param int $filter
 	 * @param float $time
 	 * @param int $conds
+	 * @param bool $matched
 	 */
-	protected function recordProfilingResult( $filter, $time, $conds ) {
+	protected function recordProfilingResult( $filter, $time, $conds, $matched ) {
 		// Defer updates to avoid massive (~1 second) edit time increases
-		DeferredUpdates::addCallableUpdate( function () use ( $filter, $time, $conds ) {
+		DeferredUpdates::addCallableUpdate( function () use ( $filter, $time, $conds, $matched ) {
 			$stash = MediaWikiServices::getInstance()->getMainObjectStash();
 			$profileKey = AbuseFilter::filterProfileKey( $filter );
 			$profile = $stash->get( $profileKey );
@@ -427,6 +428,10 @@ class AbuseFilterRunner {
 			if ( $profile !== false ) {
 				// Number of observed executions of this filter
 				$profile['count']++;
+				if ( $matched ) {
+					// Number of observed matches of this filter
+					$profile['matches']++;
+				}
 				// Total time spent on this filter from all observed executions
 				$profile['total-time'] += $time;
 				// Total number of conditions for this filter from all executions
@@ -434,6 +439,7 @@ class AbuseFilterRunner {
 			} else {
 				$profile = [
 					'count' => 1,
+					'matches' => (int)$matched,
 					'total-time' => $time,
 					'total-cond' => $conds
 				];
@@ -471,10 +477,9 @@ class AbuseFilterRunner {
 	/**
 	 * Update global statistics
 	 *
-	 * @param bool[] $filters
 	 * @param int $condsUsed The amount of used conditions
 	 */
-	protected function recordStats( array $filters, $condsUsed ) {
+	protected function recordStats( $condsUsed ) {
 		global $wgAbuseFilterConditionLimit, $wgAbuseFilterProfileActionsCap;
 
 		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
@@ -492,11 +497,6 @@ class AbuseFilterRunner {
 			$stash->set( $totalKey, 0, $storagePeriod );
 			$stash->set( $overflowKey, 0, $storagePeriod );
 
-			foreach ( array_keys( $filters ) as $filter ) {
-				// @todo This should actually reset keys for all filters, and not only the ones
-				// passed in (which are the ones returned by checkAllFilters, i.e. only enabled filters)
-				$stash->set( AbuseFilter::filterMatchesKey( $filter ), 0, $storagePeriod );
-			}
 			$stash->set( AbuseFilter::filterMatchesKey(), 0, $storagePeriod );
 		}
 
@@ -1245,15 +1245,8 @@ class AbuseFilterRunner {
 			$hitCountLimit = AbuseFilter::getEmergencyValue( 'count', $this->group );
 			$maxAge = AbuseFilter::getEmergencyValue( 'age', $this->group );
 
-			$matchCount = $stash->get( AbuseFilter::filterMatchesKey( $filter ) );
-
-			// Handle missing keys...
-			if ( !$matchCount ) {
-				$stash->set( AbuseFilter::filterMatchesKey( $filter ), 1, AbuseFilter::$statsStoragePeriod );
-			} else {
-				$stash->incr( AbuseFilter::filterMatchesKey( $filter ) );
-			}
-			$matchCount++;
+			$filterProfile = $stash->get( AbuseFilter::filterProfileKey( $filter ) );
+			$matchCount = $filterProfile['matches'] ?? 1;
 
 			// Figure out if the filter is subject to being throttled.
 			$filterAge = wfTimestamp( TS_UNIX, AbuseFilter::getFilter( $filter )->af_timestamp );
