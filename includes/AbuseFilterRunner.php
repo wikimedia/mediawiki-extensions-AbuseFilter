@@ -421,23 +421,27 @@ class AbuseFilterRunner {
 		// Defer updates to avoid massive (~1 second) edit time increases
 		DeferredUpdates::addCallableUpdate( function () use ( $filter, $time, $conds ) {
 			$stash = MediaWikiServices::getInstance()->getMainObjectStash();
-			$countKey = $stash->makeKey( 'abusefilter', 'profile', $filter, 'count' );
-			$totalKey = $stash->makeKey( 'abusefilter', 'profile', $filter, 'total' );
-			$condsKey = $stash->makeKey( 'abusefilter', 'profile', $filter, 'conds' );
+			$profileKey = AbuseFilter::filterProfileKey( $filter );
+			$profile = $stash->get( $profileKey );
 
-			$curCount = $stash->get( $countKey );
-			$curTotal = $stash->get( $totalKey );
-			$curConds = $stash->get( $condsKey );
-
-			if ( $curCount ) {
-				$stash->set( $condsKey, $curConds + $conds, 3600 );
-				$stash->set( $totalKey, $curTotal + $time, 3600 );
-				$stash->incr( $countKey );
+			if ( $profile !== false ) {
+				// Number of observed executions of this filter
+				$profile['count']++;
+				// Total time spent on this filter from all observed executions
+				$profile['total-time'] += $time;
+				// Total number of conditions for this filter from all executions
+				$profile['total-cond'] += $conds;
 			} else {
-				$stash->set( $countKey, 1, 3600 );
-				$stash->set( $totalKey, $time, 3600 );
-				$stash->set( $condsKey, $conds, 3600 );
+				$profile = [
+					'count' => 1,
+					'total-time' => $time,
+					'total-cond' => $conds
+				];
 			}
+			// Note: It is important that all key information be stored together in a single
+			// memcache entry to avoid race conditions where competing Apache instances
+			// partially overwrite the stats.
+			$stash->set( $profileKey, $profile, 3600 );
 		} );
 	}
 
