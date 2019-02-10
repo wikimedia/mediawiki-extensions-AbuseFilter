@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bjankuloski06"
+			"Bjankuloski06",
+			"Vlad5250"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Проверете дали филтер за злоупотреби ќе најде збир променливи, уредување или заведен настан во филтерот.\n\nСе бара vars, rcid или logid (може да се употреби само едно).",
@@ -13,7 +14,7 @@
 	"apihelp-abusefiltercheckmatch-param-logid": "Назнака на запис од дневникот на филтерот што треба да се провери.",
 	"apihelp-abusefiltercheckmatch-example-1": "Провери дали скорешната промена со назнака 15 ќе биде пронајдена од прост филтер.",
 	"apihelp-abusefilterchecksyntax-description": "Провери ја синтаксата на филтер за злоупотреби.",
-	"apihelp-abusefilterchecksyntax-summary": "Провери ја синтаксата на даден филтер за слоупотреби.",
+	"apihelp-abusefilterchecksyntax-summary": "Провери ја синтаксата на даден филтер за злоупотреби.",
 	"apihelp-abusefilterchecksyntax-param-filter": "Целосниот текст чија синтакса ја проверува филтерот.",
 	"apihelp-abusefilterchecksyntax-example-1": "Провери синтакса на важечки филтер",
 	"apihelp-abusefilterchecksyntax-example-2": "Провери синтакса на неважечки филтер",

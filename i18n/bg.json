@@ -388,9 +388,9 @@
 	"abusefilter-exception-overridebuiltin": "Непозволено предефиниране на вградената променлива „$2“ при знак $1.",
 	"abusefilter-exception-outofbounds": "Опит да се осъществи достъп до несъществуващ елемент $2 на масив (елементи в масива $3) при знак $1.",
 	"abusefilter-exception-notarray": "Неуспешен опит за извикане на елемент от масив при знак $1.",
-	"abusefilter-exception-unclosedcomment": "Незатворен коментар, започващ при знак $2.",
-	"abusefilter-exception-invalidiprange": "Невалиден IP диапазон \"$2\" при знак $1.",
-	"abusefilter-exception-disabledvar": "Променлива $2 при знак $1 вече не се използва.",
+	"abusefilter-exception-unclosedcomment": "Незатворен коментар, започващ при знак $1.",
+	"abusefilter-exception-invalidiprange": "Посочен е невалиден IP-диапазон „$2“ при знак $1.",
+	"abusefilter-exception-disabledvar": "Променливата $2 при знак $1 вече не се използва.",
 	"abusefilter-action-tag": "Етикет",
 	"abusefilter-action-throttle": "Ограничение",
 	"abusefilter-action-warn": "Предупреждение",
@@ -482,7 +482,7 @@
 	"abusefilter-view-private-reason": "Причина за достъп до скритите данни:",
 	"abusefilter-log-details-id": "Номер на записа",
 	"abusefilter-invalid-request": "Невалидна заявка! Трябва да осъществите достъп до непубличните записи през формуляра на [[Special:AbuseLog/$1]] и да посочите причина.",
-	"abusefilter-invalid-request-noid": "Невалидна заявка! Трябва да осъществите достъп до непубличния записи през формуляра на Дневника на злоупотребите и да посочите причина.",
+	"abusefilter-invalid-request-noid": "Невалидна заявка! Трябва да осъществите достъп до непубличните записи през формуляра на съответната страница и да посочите причина.",
 	"abusefilter-log-ip-not-available": "Недостъпен",
 	"abusefilter-tag-reserved": "Етикетът <code>abusefilter-condition-limit</code> е запазен за вътрешна обработка от филтъра на злоупотребите."
 }

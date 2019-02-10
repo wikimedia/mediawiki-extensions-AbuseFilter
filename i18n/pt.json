@@ -277,6 +277,8 @@
 	"abusefilter-edit-notallowed": "Não tem permissão para criar ou editar filtros de abuso",
 	"abusefilter-edit-notallowed-global": "Não tem permissão para criar ou editar filtros de abuso globais",
 	"abusefilter-edit-notallowed-global-custom-msg": "Mensagens personalizadas de advertência ou de falta de permissões não são suportadas nos filtros globais",
+	"abusefilter-edit-invalid-warn-message": "A mensagem de advertência não pode ser deixada vazia.",
+	"abusefilter-edit-invalid-disallow-message": "A mensagem de falta de permissões não pode ficar vazia.",
 	"abusefilter-edit-invalid-throttlecount": "O número de ações para a limitação deve ser um inteiro positivo.",
 	"abusefilter-edit-invalid-throttleperiod": "O período para a limitação deve ser um inteiro positivo.",
 	"abusefilter-edit-empty-throttlegroups": "Tem de ser selecionado pelo menos um grupo de limitação.",

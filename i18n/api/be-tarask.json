@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nerogaf",
+			"Red Winged Duck",
+			"Renessaince"
+		]
+	},
+	"apihelp-query+abusefilters-param-prop": "Якія ўласьцівасьці атрымаць.",
+	"apihelp-query+abusefilters-example-1": "Сьпіс уключаных публічных фільтраў",
+	"apihelp-query+abuselog-param-prop": "Якія ўласьцівасьці атрымаць.",
+	"apihelp-query+abuselog-example-1": "Паказаць нядаўнія запісы ў журнале",
+	"apierror-abusefilter-badsyntax": "Сынтаксычная памылка ў фільтры."
+}
