@@ -138,7 +138,7 @@
 	"abusefilter-list-options-deleted-hide": "Скриване на изтритите филтри",
 	"abusefilter-list-options-deleted-show": "Включване на изтритите филтри",
 	"abusefilter-list-options-scope": "Показване на филтри:",
-	"abusefilter-list-options-scope-local": "Само локални правила",
+	"abusefilter-list-options-scope-local": "Само местни правила",
 	"abusefilter-list-options-scope-global": "Само глобални правила",
 	"abusefilter-list-options-scope-all": "Локални и глобални правила",
 	"abusefilter-list-options-further-options": "Други опции:",

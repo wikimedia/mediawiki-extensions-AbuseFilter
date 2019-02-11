@@ -300,6 +300,8 @@
 	"abusefilter-edit-notallowed": "您未被允许创建或编辑防滥用过滤器",
 	"abusefilter-edit-notallowed-global": "您未被允许创建或编辑全域防滥用过滤器",
 	"abusefilter-edit-notallowed-global-custom-msg": "对于全域过滤器，自定义警告或者不允许的消息是不支持的",
+	"abusefilter-edit-invalid-warn-message": "警告消息不可留空。",
+	"abusefilter-edit-invalid-disallow-message": "禁止消息不可留空。",
 	"abusefilter-edit-invalid-throttlecount": "受限行动次数必须为正整数。",
 	"abusefilter-edit-invalid-throttleperiod": "受限周期必须为正整数。",
 	"abusefilter-edit-empty-throttlegroups": "至少要选择一个受限组。",

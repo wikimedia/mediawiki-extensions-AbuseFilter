@@ -25,7 +25,8 @@
 			"Festina90",
 			"Mar(c)",
 			"Kippenvlees1",
-			"Bdijkstra"
+			"Bdijkstra",
+			"Xbaked potatox"
 		]
 	},
 	"abusefilter-desc": "Voert automatisch heuristische analyse uit op bewerkingen",
@@ -195,6 +196,7 @@
 	"abusefilter-edit-hidden": "Details van dit filter niet openbaar maken",
 	"abusefilter-edit-global": "Globaal filter",
 	"abusefilter-edit-rules": "Regels:",
+	"abusefilter-edit-field-conditions": "voorwaarden",
 	"abusefilter-edit-notes": "Opmerkingen:",
 	"abusefilter-edit-lastmod": "Filter laatst aangepast:",
 	"abusefilter-edit-lastmod-text": "door $2 op $3 om $4",
@@ -310,7 +312,7 @@
 	"abusefilter-edit-builder-funcs-rmwhitespace": "Witruimte verwijderen (rmwhitespace)",
 	"abusefilter-edit-builder-funcs-rmspecials": "Speciale tekens verwijderen (rmspecials)",
 	"abusefilter-edit-builder-funcs-ip_in_range": "Bevindt het IP-adres zich in de opgegeven range? (ip_in_range)",
-	"abusefilter-edit-builder-funcs-contains-any": "Tekst doorzoeken op meerdere tekstdelen (contains_any)",
+	"abusefilter-edit-builder-funcs-contains-any": "Zoekreeks voor meerdere substrings in de OF-modus. (Contains_any)",
 	"abusefilter-edit-builder-funcs-substr": "Tekstdeel (substr)",
 	"abusefilter-edit-builder-funcs-strpos": "Plaats van het tekstdeel (strpos)",
 	"abusefilter-edit-builder-funcs-str_replace": "Tekstdeel vervangen door tekst (str_replace)",
@@ -457,6 +459,7 @@
 	"abusefilter-test-search-type-move": "Hernoemingen",
 	"abusefilter-test-search-type-delete": "Verwijderingen",
 	"abusefilter-test-search-type-upload": "Uploads",
+	"abusefilter-test-search-type-createaccount": "Account creaties",
 	"abusefilter-changeslist-examine": "onderzoeken",
 	"abusefilter-examine": "Individuele wijzigingen onderzoeken",
 	"abusefilter-examine-intro": "Via deze pagina kunt u de door het filter aangemaakte variabelen voor een individuele wijziging onderzoeken, en deze testen tegen filters.",
@@ -500,7 +503,10 @@
 	"abusefilter-import-submit": "Filtergegevens importeren",
 	"abusefilter-group-default": "Standaard",
 	"abusefilter-http-error": "Er is een HTTP-fout opgetreden: $1.",
+	"abusefilter-view-private-submit": "Privégegevens bekijken",
+	"abusefilter-view-private": "Privégegevens bekijken",
 	"abusefilter-view-private-reason": "Reden voor het opvragen van privélogboekgegevens:",
 	"abusefilter-log-details-id": "Logboekregel-ID",
+	"abusefilter-noreason": "Waarschuwing: als je de privégegevens van dit logboek wilt bekijken, moet je een reden opgeven.",
 	"abusefilter-log-ip-not-available": "Niet beschikbaar"
 }
