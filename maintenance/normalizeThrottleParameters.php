@@ -11,6 +11,10 @@
  *   highly unlikely to happen anyway. (T203585)
  * - If throttle groups are empty (or only contain unknown keywords), ask users to fix every case
  *   by hand. (T203584)
+ * - Change some edge cases of throttle parameters saved in abuse_filter_history (T215787):
+ *     - parameters = null ==> parameters = [ filterID, "0,0", 'none' ]
+ *     - at least a number missing from parameters[1] ==> insert 0 in place of the missing param
+ *     - empty groups ==> 'none' (special case, uses the message abusefilter-throttle-none)
  *
  * @ingroup Maintenance
  */
@@ -41,7 +45,7 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 		return __CLASS__;
 	}
 
-	/** @var \Wikimedia\Rdbms\IDatabase $db The master database */
+	/** @var \Wikimedia\Rdbms\Database $dbw The master database */
 	private $dbw;
 
 	/**
@@ -133,12 +137,12 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 	}
 
 	/**
-	 * @see Maintenance::doDBUpdates
-	 * @return bool
+	 * Main logic of parameters normalization
+	 *
+	 * @return int Amount of normalized rows
 	 */
-	public function doDBUpdates() {
+	protected function normalizeParameters() {
 		$user = AbuseFilter::getFilterUser();
-		$this->dbw = wfGetDB( DB_MASTER );
 		$dryRun = $this->hasOption( 'dry-run' );
 
 		// IDs of filters with invalid rate (count or period)
@@ -151,8 +155,6 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 		// a bug caused all existing throttle parameters to be wiped away, so that afa_consequence
 		// holds an empty string and (unserialize(afh_actions))['throttle'] is null.
 		$totallyEmpty = [];
-
-		$this->beginTransaction( $this->dbw, __METHOD__ );
 
 		// Only select throttle actions
 		$actionRows = $this->dbw->select(
@@ -320,8 +322,7 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 		$touchedIDs = array_merge( $changeActionIDs, $deleteActionIDs );
 		if ( count( $touchedIDs ) === 0 ) {
 			$this->output( "No throttle parameters to normalize.\n" );
-			$this->commitTransaction( $this->dbw, __METHOD__ );
-			return !$dryRun;
+			return 0;
 		}
 
 		// Create new history rows for every changed filter
@@ -396,13 +397,97 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 				);
 			}
 		}
+		return $affectedActionRows + $historyCount;
+	}
+
+	/**
+	 * Beautify empty/missing/corrupted parameters in abuse_filter_history
+	 *
+	 * @return int Amount of beautified rows
+	 */
+	protected function beautifyHistory() {
+		$dryRun = $this->hasOption( 'dry-run' );
+
+		// We need any row containing throttle, but there's no
+		// need to lock as these rows aren't changed by the actual code.
+		$likeClause = $this->dbw->buildLike(
+			$this->dbw->anyString(),
+			'throttle',
+			$this->dbw->anyString()
+		);
+		$histRows = $this->dbw->select(
+			'abuse_filter_history',
+			[ 'afh_id', 'afh_actions', 'afh_filter' ],
+			[ 'afh_actions ' . $likeClause ],
+			__METHOD__
+		);
+
+		$beautyIDs = [];
+		foreach ( $histRows as $row ) {
+			$acts = unserialize( $row->afh_actions );
+			if ( !array_key_exists( 'throttle', $acts ) ) {
+				// The LIKE clause is very raw, so this could happen
+				continue;
+			}
+
+			if ( $acts['throttle'] === null ) {
+				// Corrupted row, rebuild it (T215787)
+				$acts['throttle'] = [ $row->afh_filter, '0,0', 'none' ];
+			} elseif ( $this->checkThrottleRate( $acts['throttle'][1] ) !== null ) {
+				// Missing count, make it explicitly 0
+				$acts['throttle'][1] = preg_replace( '/^,/', '0,', $acts['throttle'][1] );
+				// Missing period, make it explicitly 0
+				$acts['throttle'][1] = preg_replace( '/,$/', ',0', $acts['throttle'][1] );
+			} elseif ( count( $acts['throttle'] ) === 2 ) {
+				// Missing groups, make them explicitly "none" (special group)
+				$acts['throttle'][] = 'none';
+			} else {
+				// Everything's fine!
+				continue;
+			}
+
+			$beautyIDs[] = $row->afh_id;
+			if ( !$dryRun ) {
+				$this->dbw->update(
+					'abuse_filter_history',
+					[ 'afh_actions' => serialize( $acts ) ],
+					[ 'afh_id' => $row->afh_id ],
+					__METHOD__
+				);
+			}
+		}
+
+		$changed = count( $beautyIDs );
+		if ( $changed ) {
+			$verb = $dryRun ? 'would beautify' : 'beautified';
+			$this->output(
+				"normalizeThrottleParameter $verb $changed rows in abuse_filter_history" .
+				" for the following history IDs: " . implode( ', ', $beautyIDs ) . "\n"
+			);
+		}
+		return $changed;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function doDBUpdates() {
+		$dryRun = $this->hasOption( 'dry-run' );
+		$this->dbw = wfGetDB( DB_MASTER );
+		$this->beginTransaction( $this->dbw, __METHOD__ );
+
+		$normalized = $this->normalizeParameters();
+		$beautified = $this->beautifyHistory();
 
 		$this->commitTransaction( $this->dbw, __METHOD__ );
-		$changed = $affectedActionRows + $historyCount;
+
+		$changed = $normalized + $beautified;
+
 		$resultMsg = $dryRun ?
 			"Throttle parameter normalization would change a total of $changed rows.\n" :
 			"Throttle parameters successfully normalized. Changed $changed rows.\n";
 		$this->output( $resultMsg );
+
 		return !$dryRun;
 	}
 }

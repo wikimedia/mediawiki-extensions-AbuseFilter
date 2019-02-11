@@ -243,6 +243,7 @@
 	"abusefilter-throttle-editcount": "Throttle option.",
 	"abusefilter-throttle-site": "Throttle option.",
 	"abusefilter-throttle-page": "Throttle option.",
+	"abusefilter-throttle-none": "Bogus throttle option, means that no options are enabled.",
 	"abusefilter-throttle-details": "Description for Special:AbuseFilter/history with a detailed description for throttle action. Parameters:\n* $1 is the number of allowed actions, $2 is the time in seconds to use before resetting the action count, $3 is a list of throttled groups",
 	"abusefilter-edit-warn-message": "Field label for dropdown list with system messages.",
 	"abusefilter-edit-warn-other": "Option in dropdown menu to specify no item from the list should be used.\n\nSee also:\n* {{msg-mw|abusefilter-edit-disallow-other}}",

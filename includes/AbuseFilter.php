@@ -3143,37 +3143,29 @@ class AbuseFilter {
 				array_shift( $parameters );
 				list( $actions, $time ) = explode( ',', array_shift( $parameters ) );
 
-				if ( $parameters === [ '' ] ) {
-					// Having empty groups won't happen for new filters due to validation upon saving,
-					// but old entries may have it. We'd better not show a broken message. Also,
-					// the array has an empty string inside because we haven't been passing an empty array
-					// as the default when retrieving wpFilterThrottleGroups with getArray (when it was
-					// a CheckboxMultiselect).
-					$groups = '';
-				} else {
-					// Join comma-separated groups in a commaList with a final "and", and convert to messages.
-					// Messages used here: abusefilter-throttle-ip, abusefilter-throttle-user,
-					// abusefilter-throttle-site, abusefilter-throttle-creationdate, abusefilter-throttle-editcount
-					// abusefilter-throttle-range, abusefilter-throttle-page
-					foreach ( $parameters as &$val ) {
-						if ( strpos( $val, ',' ) !== false ) {
-							$subGroups = explode( ',', $val );
-							foreach ( $subGroups as &$group ) {
-								$msg = wfMessage( "abusefilter-throttle-$group" );
-								// We previously accepted literally everything in this field, so old entries
-								// may have weird stuff.
-								$group = $msg->exists() ? $msg->text() : $group;
-							}
-							unset( $group );
-							$val = $lang->listToText( $subGroups );
-						} else {
-							$msg = wfMessage( "abusefilter-throttle-$val" );
-							$val = $msg->exists() ? $msg->text() : $val;
+				// Join comma-separated groups in a commaList with a final "and", and convert to messages.
+				// Messages used here: abusefilter-throttle-ip, abusefilter-throttle-user,
+				// abusefilter-throttle-site, abusefilter-throttle-creationdate, abusefilter-throttle-editcount
+				// abusefilter-throttle-range, abusefilter-throttle-page, abusefilter-throttle-none
+				foreach ( $parameters as &$val ) {
+					if ( strpos( $val, ',' ) !== false ) {
+						$subGroups = explode( ',', $val );
+						foreach ( $subGroups as &$group ) {
+							$msg = wfMessage( "abusefilter-throttle-$group" );
+							// We previously accepted literally everything in this field, so old entries
+							// may have weird stuff.
+							$group = $msg->exists() ? $msg->text() : $group;
 						}
+						unset( $group );
+						$val = $lang->listToText( $subGroups );
+					} else {
+						$msg = wfMessage( "abusefilter-throttle-$val" );
+						$val = $msg->exists() ? $msg->text() : $val;
 					}
-					unset( $val );
-					$groups = $lang->semicolonList( $parameters );
 				}
+				unset( $val );
+				$groups = $lang->semicolonList( $parameters );
+
 				$displayAction = self::getActionDisplay( $action ) .
 				wfMessage( 'colon-separator' )->escaped() .
 				wfMessage( 'abusefilter-throttle-details' )->params( $actions, $time, $groups )->escaped();
