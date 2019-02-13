@@ -16,6 +16,7 @@
 	"apihelp-abusefiltercheckmatch-param-filter": "Il testo completo del filtro da utilizzare per trovare una corrispondenza.",
 	"apihelp-abusefiltercheckmatch-param-vars": "Array in formato JSON di variabili da utilizzare per il test.",
 	"apihelp-abusefiltercheckmatch-param-rcid": "ID della modifica recente da controllare.",
+	"apihelp-abusefiltercheckmatch-param-logid": "ID del registro del filtro anti abusi da verificare.",
 	"apihelp-abusefilterchecksyntax-example-1": "Controlla la sintassi di un filtro valido",
 	"apihelp-abusefilterchecksyntax-example-2": "Controlla la sintassi di un filtro non valido",
 	"apihelp-abusefilterevalexpression-description": "Valuta un'espressione AbuseFilter.",

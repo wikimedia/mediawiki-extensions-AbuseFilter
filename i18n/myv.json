@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Botuzhaleny-sodamo"
+			"Botuzhaleny-sodamo",
+			"Rueter"
 		]
 	},
 	"abusefilter": "А тевде сувтемень аравтомась",
@@ -109,7 +110,7 @@
 	"abusefilter-action-block": "Озавтомс саймас",
 	"abusefilter-revert-periodstart": "Шкаютконть ушодомазо:",
 	"abusefilter-revert-periodend": "Шкаютконть прядомазо:",
-	"abusefilter-revert-filter": "Сувтемесь:",
+	"abusefilter-revert-filter": "ID-нь сувтемесь:",
 	"abusefilter-revert-confirm": "Кемекстамс",
 	"abusefilter-revert-reasonfield": "Тувталось:",
 	"abusefilter-test-load-filter": "Таргамс сувтементь, конань ID-зэ:",
