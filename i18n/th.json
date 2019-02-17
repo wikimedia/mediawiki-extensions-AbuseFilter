@@ -389,7 +389,7 @@
 	"abusefilter-history-select-legend": "แบ่งละเอียดการค้นหา",
 	"abusefilter-history-select-user": "ผู้ใช้:",
 	"abusefilter-history-select-submit": "แบ่งละเอียด",
-	"abusefilter-history-diff": "จำนวนการเปลี่ยนแปลง",
+	"abusefilter-history-diff": "การเปลี่ยนแปลง",
 	"abusefilter-history-error-hidden": "ตัวกรองที่คุณขอถูกซ่อน และคุณไม่สามารถดูประวัติได้",
 	"abusefilter-exception-unexpectedatend": "\"$2\" ไม่คาดหมายที่อักขระ $1",
 	"abusefilter-exception-expectednotfound": "คาดหมาย $2 ที่อักขระ $1 แต่ไม่พบ (พบ $3 $4 แทน)",
