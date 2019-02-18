@@ -264,7 +264,7 @@
 	"abusefilter-edit-bad-tags": "指定したタグには無効なものが1つ以上あります。\nタグは短くする必要があり、特殊文字を含まず、他のソフトウェアと重複してはいけません。新しいタグ名を選択してみてください。",
 	"abusefilter-edit-notallowed": "あなたは不正利用フィルターを作成または編集することが許可されていません",
 	"abusefilter-edit-notallowed-global": "あなたはグローバル不正利用フィルターを作成または編集することが許可されていません",
-	"abusefilter-edit-notallowed-global-custom-msg": "グローバルフィルターはカスタムの警告メッセージには対応していません",
+	"abusefilter-edit-notallowed-global-custom-msg": "グローバルフィルターは警告メッセージや不許可メッセージのカスタマイズには対応していません",
 	"abusefilter-edit-builder-select": "カーソルの位置に追加するものを選択",
 	"abusefilter-edit-builder-group-op-arithmetic": "算術演算子",
 	"abusefilter-edit-builder-op-arithmetic-addition": "加算 (+)",

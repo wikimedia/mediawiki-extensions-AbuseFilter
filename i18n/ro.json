@@ -12,7 +12,8 @@
 			"Silviubogan",
 			"Stelistcristi",
 			"Strainu",
-			"Matma Rex"
+			"Matma Rex",
+			"WebSourceContentRO"
 		]
 	},
 	"abusefilter-desc": "Aplică euristici automate modificărilor.",
@@ -81,6 +82,8 @@
 	"abusefilter-log-hidden-implicit": "(ascuns, deoarece versiunea a fost ștearsă)",
 	"abusefilter-log-cannot-see-details": "Nu aveți permisiunea de a vizualiza detalii despre această intrare.",
 	"abusefilter-log-details-hidden": "Nu puteți vizualiza detaliile acestei intrări, deoarece acestea nu sunt oferite publicului.",
+	"abusefilter-log-details-hidden-implicit": "Nu puteți vizualiza detaliile acestei intrări, deoarece acestea nu sunt oferite publicului.",
+	"abusefilter-log-private-not-included": "Unul sau mai multe dintre ID-urile de filtrare pe care le-ați specificat sunt private. Deoarece nu aveți permisiunea de a vedea detalii despre filtrele private, aceste filtre nu au fost căutate.",
 	"abusefilter-log-hide-legend": "Ascunde intrarea în jurnal",
 	"abusefilter-log-hide-id": "ID-ul intrării în jurnal:",
 	"abusefilter-log-hide-hidden": "Ascunde această intrare afișării publice",
@@ -170,6 +173,11 @@
 	"abusefilter-edit-warn-actions": "Acțiuni:",
 	"abusefilter-edit-warn-preview": "Previzualizați mesajul ales",
 	"abusefilter-edit-warn-edit": "Creați/Editați mesajul selectat",
+	"abusefilter-edit-disallow-message": "Mesaj de sistem care trebuie utilizat pentru a nu permite:",
+	"abusefilter-edit-disallow-other": "Alt mesaj",
+	"abusefilter-edit-disallow-other-label": "Numele paginii unui alt mesaj: :(fără prefixul \"MediaWiki:\")",
+	"abusefilter-edit-disallow-actions": "Acțiuni:",
+	"abusefilter-edit-disallow-preview": "Afișați / Ascundeți previzualizarea mesajului selectat",
 	"abusefilter-edit-tag-tag": "[[Special:Tags|Marcaje]] de aplicat (unul pe linie):",
 	"abusefilter-edit-denied": "Este posibil să nu puteți vedea detaliile acestui filtru, deoarece a fost ascuns publicului.",
 	"abusefilter-edit-main": "Parametrii filtrului",
@@ -378,6 +386,7 @@
 	"abusefilter-examine-noresults": "Niciun rezultat n-a fost găsit pentru parametrii căutarii furnizați de dvs.",
 	"abusefilter-topnav": "'''Navigare filtru abuz'''",
 	"abusefilter-topnav-home": "Acasă",
+	"abusefilter-topnav-recentchanges": "Schimbări recente ale filtrului",
 	"abusefilter-topnav-test": "Testare în serie",
 	"abusefilter-topnav-examine": "Examinare modificări din trecut",
 	"abusefilter-topnav-log": "Jurnal abuzuri",
@@ -385,6 +394,7 @@
 	"abusefilter-topnav-import": "Importă filtru",
 	"abusefilter-log-name": "Jurnal filtru abuz",
 	"abusefilter-log-header": "Acest jurnal afișează un rezumat de schimbări realizate de filtre.\nPentru informații complete, vedeți [[Special:AbuseFilter/history|lista]] cu schimbările ale filtrului recente.",
+	"abusefilter-logentry-create": "$1 {{GENDER:$2|a creat}} $4 ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|a modificat}} $4 ($5)",
 	"abusefilter-log-noresults": "Niciun rezultat",
 	"abusefilter-diff-title": "Diferențe între versiuni",
@@ -399,5 +409,6 @@
 	"abusefilter-import-intro": "Puteți folosi această interfață pentru a importa filtre din alte wikiuri.\nÎn wikiul sursă, apăsați „{{int:abusefilter-edit-export}}” din „{{int:abusefilter-edit-tools}}”, în cadrul interfeței de editare.\nCopiați conținutul din caseta care apare și lipiți-l în această casetă de text, după care apăsați „{{int:abusefilter-import-submit}}”.",
 	"abusefilter-import-submit": "Importă datele",
 	"abusefilter-group-default": "Implicit",
-	"abusefilter-http-error": "A apărut o eroare HTTP: $1."
+	"abusefilter-http-error": "A apărut o eroare HTTP: $1.",
+	"abusefilter-view-private-submit": "Vizualizare detalii private"
 }
