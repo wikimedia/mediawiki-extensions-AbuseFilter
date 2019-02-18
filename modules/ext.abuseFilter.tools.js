@@ -108,8 +108,8 @@
 		return false;
 	}
 
-	$( document ).ready( function initialize() {
-		$( '#mw-abusefilter-submitexpr' ).click( doExprSubmit );
-		$( '#mw-abusefilter-reautoconfirmsubmit' ).click( doReautoSubmit );
+	$( function initialize() {
+		$( '#mw-abusefilter-submitexpr' ).on( 'click', doExprSubmit );
+		$( '#mw-abusefilter-reautoconfirmsubmit' ).on( 'click', doReautoSubmit );
 	} );
 }() );

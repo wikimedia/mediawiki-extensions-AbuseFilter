@@ -105,7 +105,7 @@
 				filterEditor.scrollToRow( position.row );
 			} else {
 				$plainTextBox
-					.focus()
+					.trigger( 'focus' )
 					.textSelection( 'setSelection', { start: data.character } );
 			}
 		}
@@ -354,7 +354,7 @@
 	function onFilterKeypress( e ) {
 		if ( e.type === 'keypress' && e.which === 13 ) {
 			e.preventDefault();
-			$( '#mw-abusefilter-load' ).click();
+			$( '#mw-abusefilter-load' ).trigger( 'click' );
 		}
 	}
 
@@ -373,7 +373,7 @@
 			message: mw.msg( 'abusefilter-edit-warn-leave' )
 		} );
 
-		$form.submit( function () {
+		$form.on( 'submit', function () {
 			warnOnLeave.release();
 		} );
 	}
@@ -423,7 +423,7 @@
 	}
 
 	// On ready initialization
-	$( document ).ready( function () {
+	$( function () {
 		var basePath, readOnly,
 			$exportBox = $( '#mw-abusefilter-export' ),
 			isFilterEditor = mw.config.get( 'isFilterEditor' ),
@@ -493,12 +493,12 @@
 					$plainTextBox.val( filterEditor.getSession().getValue() );
 				} );
 
-				$( '#mw-abusefilter-switcheditor' ).click( switchEditor );
+				$( '#mw-abusefilter-switcheditor' ).on( 'click', switchEditor );
 			} );
 		}
 
 		// Hide the syntax ok message when the text changes
-		$plainTextBox.change( function () {
+		$plainTextBox.on( 'change', function () {
 			var $el = $( '#mw-abusefilter-syntaxresult' );
 
 			if ( $el.data( 'syntaxOk' ) ) {
@@ -506,27 +506,27 @@
 			}
 		} );
 
-		$( '#mw-abusefilter-load' ).click( fetchFilter );
-		$( '#mw-abusefilter-load-filter' ).keypress( onFilterKeypress );
+		$( '#mw-abusefilter-load' ).on( 'click', fetchFilter );
+		$( '#mw-abusefilter-load-filter' ).on( 'keypress', onFilterKeypress );
 
 		if ( isFilterEditor ) {
 			// Add logic for flags and consequences
-			$( '#mw-abusefilter-warn-preview-button' ).click(
+			$( '#mw-abusefilter-warn-preview-button' ).on( 'click',
 				function () { previewMessage( 'warn' ); }
 			);
-			$( '#mw-abusefilter-disallow-preview-button' ).click(
+			$( '#mw-abusefilter-disallow-preview-button' ).on( 'click',
 				function () { previewMessage( 'disallow' ); }
 			);
-			$( '#mw-abusefilter-warn-edit-button' ).click(
+			$( '#mw-abusefilter-warn-edit-button' ).on( 'click',
 				function () { editMessage( 'warn' ); }
 			);
-			$( '#mw-abusefilter-disallow-edit-button' ).click(
+			$( '#mw-abusefilter-disallow-edit-button' ).on( 'click',
 				function () { editMessage( 'disallow' ); }
 			);
-			$( '.mw-abusefilter-action-checkbox input' ).click( hideDeselectedActions );
+			$( '.mw-abusefilter-action-checkbox input' ).on( 'click', hideDeselectedActions );
 			hideDeselectedActions();
 
-			$( '#wpFilterGlobal' ).change( toggleCustomMessages );
+			$( '#wpFilterGlobal' ).on( 'change', toggleCustomMessages );
 			toggleCustomMessages();
 
 			cbEnabled = OO.ui.infuse( $( '#wpFilterEnabled' ) );
@@ -549,9 +549,9 @@
 				}
 			);
 
-			$( '#mw-abusefilter-edit-group-input select' ).change( onFilterGroupChange );
+			$( '#mw-abusefilter-edit-group-input select' ).on( 'change', onFilterGroupChange );
 
-			$( '#mw-abusefilter-export-link' ).click(
+			$( '#mw-abusefilter-export-link' ).on( 'click',
 				function ( e ) {
 					e.preventDefault();
 					$exportBox.toggle();
@@ -559,7 +559,7 @@
 			);
 		}
 
-		$( '#mw-abusefilter-syntaxcheck' ).click( doSyntaxCheck );
-		$( '#wpFilterBuilder' ).change( addText );
+		$( '#mw-abusefilter-syntaxcheck' ).on( 'click', doSyntaxCheck );
+		$( '#wpFilterBuilder' ).on( 'change', addText );
 	} );
 }() );
