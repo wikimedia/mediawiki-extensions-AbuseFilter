@@ -585,11 +585,13 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	 * @covers AbuseFilterParser::castFloat
 	 * @covers AbuseFilterParser::castBool
 	 * @dataProvider oneParamFuncs
-	 * @expectedException AFPUserVisibleException
-	 * @expectedExceptionMessageRegExp /^No parameters given to function/
 	 */
 	public function testNoParamsException( $func ) {
 		$parser = self::getParser();
+		$this->setExpectedException(
+			AFPUserVisibleException::class,
+			'No parameters given to function'
+		);
 		$parser->parse( "$func()" );
 	}
 
@@ -639,14 +641,19 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	 * @covers AbuseFilterParser::funcStrPos
 	 * @covers AbuseFilterParser::funcSetVar
 	 * @dataProvider twoParamsFuncs
-	 * @expectedException AFPUserVisibleException
-	 * @expectedExceptionMessageRegExp /^Not enough arguments to function [^ ]+ called at character \d+.\nExpected 2 arguments, got 1/
 	 */
 	public function testNotEnoughArgsExceptionTwo( $func ) {
 		$parser = self::getParser();
 		// Nevermind if the argument can't be string since we check the amount
 		// of parameters before anything else.
-		$parser->parse( "$func('foo')" );
+		$code = "$func('foo')";
+		$length = strlen( $code );
+		$this->setExpectedException(
+			AFPUserVisibleException::class,
+			"Not enough arguments to function $func called at character $length.\n" .
+			'Expected 2 arguments, got 1'
+		);
+		$parser->parse( $code );
 	}
 
 	/**
@@ -678,11 +685,14 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	 * @covers AbuseFilterParser::checkEnoughArguments
 	 * @covers AbuseFilterParser::funcStrReplace
 	 * @dataProvider threeParamsFuncs
-	 * @expectedException AFPUserVisibleException
-	 * @expectedExceptionMessageRegExp /^Not enough arguments to function [^ ]+ called at character \d+.\nExpected 3 arguments, got 2/
 	 */
 	public function testNotEnoughArgsExceptionThree( $func ) {
 		$parser = self::getParser();
+		$this->setExpectedException(
+			AFPUserVisibleException::class,
+			"Not enough arguments to function $func called at character 25.\n" .
+			'Expected 3 arguments, got 2'
+		);
 		// Nevermind if the argument can't be string since we check the amount
 		// of parameters before anything else.
 		$parser->parse( "$func('foo', 'bar')" );
