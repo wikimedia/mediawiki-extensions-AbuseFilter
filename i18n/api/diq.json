@@ -3,7 +3,8 @@
 		"authors": [
 			"1917 Ekim Devrimi",
 			"Asmen",
-			"Kumkumuk"
+			"Kumkumuk",
+			"Mirzali"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Ratena Fiktrandê nengan dı têversanayış esto se, filtrey nengan de vurnayış vurnayışi kontrol kerê \n\nVurnayoğê RCID ya na LOGID eger ke icab krno se karêno",
@@ -38,6 +39,7 @@
 	"apihelp-query+abuselog-param-filter": "Teyna dekerdenanê kamiya filtrande tepêştena grotışa bıvin",
 	"apihelp-query+abuselog-param-limit": "Azami miktarê dekerdena liste ke",
 	"apihelp-query+abuselog-param-prop": "Kamci xısusiyeta ke gê no",
+	"apihelp-query+abuselog-param-wiki": "Wiki ra isabetê ke bımocniyê.",
 	"apihelp-query+abuselog-example-1": "Qeydanê dekerdanê peyênan bıasne",
 	"apihelp-query+abuselog-example-2": "Qandé [[API]] Qeydanê dekerdanê peyênan bıasne",
 	"apierror-abusefilter-canttest": "Testê qeydê nengan rê izinê şıma çıni yo.",
