@@ -1871,8 +1871,8 @@ class AbuseFilter {
 		$block->mReason = $reason;
 		$block->isHardblock( false );
 		$block->isAutoblocking( $isAutoBlock );
-		$block->prevents( 'createaccount', true );
-		$block->prevents( 'editownusertalk', $preventEditOwnUserTalk );
+		$block->isCreateAccountBlocked( true );
+		$block->isUsertalkEditAllowed( !$preventEditOwnUserTalk );
 		$block->mExpiry = SpecialBlock::parseExpiryInput( $expiry );
 
 		$success = $block->insert();

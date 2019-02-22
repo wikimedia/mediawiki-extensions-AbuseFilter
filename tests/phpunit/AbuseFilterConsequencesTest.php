@@ -507,7 +507,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 						}
 
 						$shouldPreventTalkEdit = $params[0] === 'blocktalk';
-						$edittalkCheck = $userBlock->prevents( 'editownusertalk' ) === $shouldPreventTalkEdit;
+						$edittalkCheck = $userBlock->appliesToUsertalk( self::$mUser->getTalkPage() ) === $shouldPreventTalkEdit;
 						if ( !$edittalkCheck ) {
 							$testErrorMessage = 'The expected block option "edittalk" options does not ' .
 								'match the actual one.';
