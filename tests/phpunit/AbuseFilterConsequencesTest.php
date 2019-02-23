@@ -57,6 +57,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		'user'
 	];
 
+	// phpcs:disable Generic.Files.LineLength
 	// Filters that may be created, their key is the ID.
 	protected static $filters = [
 		1 => [
@@ -221,6 +222,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			]
 		]
 	];
+	// phpcs:enable Generic.Files.LineLength
 
 	/**
 	 * @see MediaWikiTestCase::setUp
@@ -365,7 +367,10 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			// For these actions, the page has to exist.
 			$page = WikiPage::factory( $target );
 			if ( !$page->exists() ) {
-				$content = ContentHandler::makeContent( 'AbuseFilter test page for action' . $params['action'], $target );
+				$content = ContentHandler::makeContent(
+					'AbuseFilter test page for action' . $params['action'],
+					$target
+				);
 				$check = $page->doEditContent( $content, 'Creating the page to test AbuseFilter.' );
 				if ( !$check->isGood() ) {
 					throw new MWException( 'Cannot create the test page.' );
@@ -473,8 +478,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * Checks that consequences are effectively taken and builds an array of expected and actual consequences which can
-	 * be compared.
+	 * Checks that consequences are effectively taken and builds an array of expected and actual
+	 * consequences which can be compared.
 	 *
 	 * @param Status $result As returned by self::doAction
 	 * @param array $actionParams As it's given by data providers
@@ -507,7 +512,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 						}
 
 						$shouldPreventTalkEdit = $params[0] === 'blocktalk';
-						$edittalkCheck = $userBlock->appliesToUsertalk( self::$mUser->getTalkPage() ) === $shouldPreventTalkEdit;
+						$edittalkCheck = $userBlock->appliesToUsertalk( self::$mUser->getTalkPage() ) ===
+							$shouldPreventTalkEdit;
 						if ( !$edittalkCheck ) {
 							$testErrorMessage = 'The expected block option "edittalk" options does not ' .
 								'match the actual one.';
@@ -802,9 +808,9 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	public function testCondsLimit( $createIds, $actionParams ) {
 		self::createFilters( $createIds );
 		$this->setMwGlobals( [ 'wgAbuseFilterConditionLimit' => 0 ] );
-		$result = $this->doAction( $actionParams );
+		$res = $this->doAction( $actionParams );
 
-		$this->assertTrue( $result->isGood(), 'The action should succeed when testing the conditions limit' );
+		$this->assertTrue( $res->isGood(), 'The action should succeed when testing the conds limit' );
 		$appliedTags = $this->getActionTags( $actionParams );
 		$this->assertContains(
 			'abusefilter-condition-limit',
@@ -957,13 +963,14 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 
 		$expectedThrottled = implode( ', ', $createIds );
 		$actualThrottled = implode( ', ', $throttled );
-		$this->assertEquals( $createIds, $throttled, "Expected the following filters to be automatically " .
-			"throttled: $expectedThrottled. The following filters are throttled instead: $actualThrottled." );
+		$this->assertEquals( $createIds, $throttled, "Expected the following filters to be " .
+			"automatically throttled: $expectedThrottled. The following are throttled instead: " .
+			"$actualThrottled." );
 	}
 
 	/**
-	 * Data provider for testThrottleLimit. Note that using filters with af_throttled = 1 in self::$filters
-	 *   makes the test case useless.
+	 * Data provider for testThrottleLimit. Note that using filters with af_throttled = 1 in
+	 * self::$filters makes the test case useless.
 	 *
 	 * @return array
 	 */
@@ -1035,7 +1042,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		$finalRes = array_pop( $results );
 		foreach ( $results as $result ) {
 			if ( !$result->isGood() ) {
-				$this->fail( 'Only the last actions should have triggered a filter; the other ones should have been allowed.' );
+				$this->fail( 'Only the last actions should have triggered a filter; the other ones ' .
+				'should have been allowed.' );
 			}
 		}
 
@@ -1072,8 +1080,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	/**
 	 * Data provider for testThrottle. For every test case, we pass
 	 *   - an array with the IDs of the filters to be created (listed in self::$filters),
-	 *   - an array of array, where every sub-array holds the details of the action to execute in order to
-	 *     trigger the filters, each one like in self::provideFilters
+	 *   - an array of array, where every sub-array holds the details of the action to execute in
+	 *       order to trigger the filters, each one like in self::provideFilters
 	 *   - an array of expected consequences for the last action (i.e. after throttling) of the form
 	 *       [ 'consequence name' => [ IDs of the filter to take its parameters from ] ]
 	 *       Such IDs may be more than one if we have a warning that is shown twice.
