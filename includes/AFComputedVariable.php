@@ -70,7 +70,7 @@ class AFComputedVariable {
 		}
 
 		if ( $user instanceof User ) {
-			$userCache[$username] = $user;
+			self::$userCache[$username] = $user;
 			return $user;
 		}
 
