@@ -2511,8 +2511,8 @@ class AbuseFilter {
 	 * Saves new filter's info to DB
 	 *
 	 * @param stdClass $newRow
-	 * @param int|string $filter
 	 * @param array $differences
+	 * @param int|string $filter
 	 * @param array $actions
 	 * @param bool $wasGlobal
 	 * @param AbuseFilterViewEdit $page
