@@ -206,9 +206,6 @@ class AbuseFilterVariableHolder {
 	/**
 	 * Compute all vars which need DB access. Useful for vars which are going to be saved
 	 * cross-wiki or used for offline analysis.
-	 *
-	 * @suppress PhanUndeclaredProperty for $value->mMethod (phan thinks $value is always AFPData)
-	 * @suppress PhanUndeclaredMethod for $value->compute (phan thinks $value is always AFPData)
 	 */
 	public function computeDBVars() {
 		static $dbTypes = [

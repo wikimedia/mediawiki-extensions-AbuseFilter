@@ -195,7 +195,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			if ( $result || $this->mShowNegative ) {
 				// Stash result in RC item
 				$rc = RecentChange::newFromRow( $row );
-				/** @suppress PhanUndeclaredProperty for $rc->filterResult, which isn't a big deal */
+				// @phan-suppress-next-line PhanUndeclaredProperty not a big deal
 				$rc->filterResult = $result;
 				$rc->counter = $counter++;
 				$output .= $changesList->recentChangesLine( $rc, false );
