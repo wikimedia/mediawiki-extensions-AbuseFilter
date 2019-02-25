@@ -39,7 +39,8 @@
 			"Thibaut120094",
 			"Matěj Suchánek",
 			"Manu1400",
-			"Alno"
+			"Alno",
+			"Od1n"
 		]
 	},
 	"abusefilter-desc": "Applique des heuristiques automatiques aux modifications",
@@ -267,7 +268,7 @@
 	"abusefilter-block-anon": "Bloquer les utilisateurs anonymes",
 	"abusefilter-block-user": "bloquer les utilisateurs enregistrés",
 	"abusefilter-block-talk": "page de discussion bloquée",
-	"abusefilter-edit-denied": "Vous ne pouvez pas voir les détails de ce filtre, parce qu’il est caché à la vue du public",
+	"abusefilter-edit-denied": "Vous ne pouvez pas voir les détails de ce filtre, parce qu’il est caché à la vue du public.",
 	"abusefilter-edit-main": "Paramètres du filtre",
 	"abusefilter-edit-done-subtitle": "Filtre modifié",
 	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Vos modifications]] au [[Special:AbuseFilter/$1|filtre $3]] ont été enregistrées.",

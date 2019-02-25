@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"ديفيد",
-			"محمد أحمد عبد الفتاح"
+			"محمد أحمد عبد الفتاح",
+			"Meno25"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "تحقق لمعرفة ما إذا كان مرشح الإساءة يطابق مجموعة من المتغيرات، تحرير حدث مرشح إساءة مسجل،\nvars أو rcid أو logid مطلوبون ولكن يمكن استخدام واحد فقط.",
@@ -40,7 +41,7 @@
 	"apihelp-query+abuselog-param-logid": "إظهار إدخال بمعرف السجل المحدد.",
 	"apihelp-query+abuselog-param-start": "الطابع الزمني لبدء تعداد منه.",
 	"apihelp-query+abuselog-param-end": "الطابع الزمني لوقف التعداد فيه.",
-	"apihelp-query+abuselog-param-user": "إظهار الإدخالات من قبل مستخدم معين أو عنوان آيبي فقط.",
+	"apihelp-query+abuselog-param-user": "إظهار الإدخالات من قبل مستخدم معين أو عنوان أيبي فقط.",
 	"apihelp-query+abuselog-param-title": "إظهار الإدخالات التي تحدث في صفحة معينة فقط.",
 	"apihelp-query+abuselog-param-filter": "إظهار الإدخالات التي تم التقاطها بواسطة معرف مرشح معين فقط.",
 	"apihelp-query+abuselog-param-limit": "الحد الأقصى لعدد الإدخالات للقائمة.",

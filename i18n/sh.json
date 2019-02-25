@@ -3,7 +3,8 @@
 		"authors": [
 			"Kolega2357",
 			"OC Ripper",
-			"BadDog"
+			"BadDog",
+			"Vlad5250"
 		]
 	},
 	"abusefilter-desc": "Dodaje automatske heuristike izmjenama.",
@@ -24,6 +25,7 @@
 	"right-abusefilter-log": "Pogledaj evidenciju zloupotrebe",
 	"right-abusefilter-log-detail": "Pogledaj detaljne unose u evidenciji zloupotrebe",
 	"right-abusefilter-private": "Pogledaj privatne podatke u evidenciji zloupotrebe.",
+	"right-abusefilter-private-log": "Pogledaj pristup osobnim dnevničkim podacima iz Filtra za zloupotrebu",
 	"right-abusefilter-modify-restricted": "Mijenjanje filtera zloupotrebe sa ograničenim akcijama",
 	"right-abusefilter-revert": "Vrati sve izmjene date od filtera zloupotreba",
 	"right-abusefilter-view-private": "Pregled filtera zloupotrebe koji su označeni kao privatni",
@@ -31,11 +33,12 @@
 	"right-abusefilter-hide-log": "Sakrij unose u evidenciji zloupotreba",
 	"right-abusefilter-hidden-log": "Pogledaj skrivene unose u evidenciji zloupotreba",
 	"right-abusefilter-modify-global": "Stvori ili promijeni globalni filter zloupotreba",
-	"action-abusefilter-modify": "Modificiraj filtere zloupotrebe",
-	"action-abusefilter-view": "Pogledaj filtere zloupotreba",
-	"action-abusefilter-log": "Pogledaj evidenciju zloupotreba",
-	"action-abusefilter-log-detail": "Vidi detaljne unose evidencije zloupotreba",
+	"action-abusefilter-modify": "promijeni filtere zloupotrebe",
+	"action-abusefilter-view": "pregledanje filtere zloupotreba",
+	"action-abusefilter-log": "pregled evidencije zloupotreba",
+	"action-abusefilter-log-detail": "pregled detaljnih unosa evidencije zloupotreba",
 	"action-abusefilter-private": "pregledanje ličnih podataka u izveštaju zloupotrebe",
+	"action-abusefilter-private-log": "pregledanje pristupa osobnim dnevničkim podacima iz Filtra za zloupotrebu",
 	"action-abusefilter-modify-restricted": "menjanje filtera protiv zloupotrebe s ograničenim radnjama",
 	"action-abusefilter-revert": "vraćanje svih izmjena koje je napravio filter protiv zloupotrebe",
 	"action-abusefilter-view-private": "pregledanje privatnih filtera protiv zloupotrebe",

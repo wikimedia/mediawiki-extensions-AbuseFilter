@@ -19,7 +19,8 @@
 			"Imre Eilertsen",
 			"Matěj Suchánek",
 			"Citadell",
-			"PeterFisk"
+			"PeterFisk",
+			"Kingu"
 		]
 	},
 	"abusefilter-desc": "Legger til automatisk heuristikk til redigeringer.",
@@ -234,6 +235,8 @@
 	"abusefilter-edit-notallowed": "Du har ikke tillatelse til å opprette eller endre redigeringsfilter",
 	"abusefilter-edit-notallowed-global": "Du har ikke tillatelse til å opprette eller endre globale redigeringsfiltre",
 	"abusefilter-edit-notallowed-global-custom-msg": "Brukerdefinerte advarsler kan ikke brukes for globale filtre",
+	"abusefilter-edit-invalid-warn-message": "Advarslelsmeldingen kan ikke stå tom.",
+	"abusefilter-edit-invalid-disallow-message": "Forbudsmeldingen kan ikke stå tom.",
 	"abusefilter-edit-builder-select": "Velg et alternativ for å legge det til på markøren",
 	"abusefilter-edit-builder-group-op-arithmetic": "Aritmetiske operatorer",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Addisjon (+)",

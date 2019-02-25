@@ -324,7 +324,7 @@
 	"abusefilter-edit-builder-misc-stringlit": "字串 (\"\")",
 	"abusefilter-edit-builder-misc-tern": "三元運算子 (X ? Y : Z)",
 	"abusefilter-edit-builder-misc-cond": "條件 (if X then Y else Z)",
-	"abusefilter-edit-builder-group-funcs": "函數",
+	"abusefilter-edit-builder-group-funcs": "函式",
 	"abusefilter-edit-builder-funcs-length": "字串長度 (length)",
 	"abusefilter-edit-builder-funcs-lcase": "轉為小寫 (lcase)",
 	"abusefilter-edit-builder-funcs-ucase": "轉為大寫 (ucase)",

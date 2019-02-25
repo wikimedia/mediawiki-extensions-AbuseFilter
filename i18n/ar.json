@@ -452,7 +452,7 @@
 	"abusefilter-exception-outofbounds": "طلب عنصر مصفوفة غير موجود $2 (حجم المصفوفة = $3) عند الحرف $1.",
 	"abusefilter-exception-notarray": "طلب مدخلة مصفوفة لغير مصفوفة عند الحرف $1.",
 	"abusefilter-exception-unclosedcomment": "تعليق غير مغلق في الحرف $1.",
-	"abusefilter-exception-invalidiprange": "نطاق عنوان آيبي غير صالح \"$2\" متوفر بالحرف $1.",
+	"abusefilter-exception-invalidiprange": "نطاق عنوان أيبي غير صالح \"$2\" متوفر بالحرف $1.",
 	"abusefilter-exception-disabledvar": "لم يعد المتغير $2 عند الحرف $1 قيد الاستخدام.",
 	"abusefilter-action-tag": "وسم",
 	"abusefilter-action-throttle": "حد",

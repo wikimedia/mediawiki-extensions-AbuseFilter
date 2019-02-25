@@ -272,6 +272,8 @@
 	"abusefilter-edit-notallowed": "У вас нема права створювати чи змінювати фільтри редагувань",
 	"abusefilter-edit-notallowed-global": "Вам не дозволено створювати чи редагувати глобальні фільтри зловживань",
 	"abusefilter-edit-notallowed-global-custom-msg": "Користувацькі повідомлення про попередження чи заборону не підтримуються для глобальних фільтрів",
+	"abusefilter-edit-invalid-warn-message": "Попереджуюче повідомлення не може залишатися порожнім.",
+	"abusefilter-edit-invalid-disallow-message": "Повідомлення заборони не може залишатися порожнім.",
 	"abusefilter-edit-invalid-throttlecount": "Число дій регулятора має бути додатним цілим числом.",
 	"abusefilter-edit-invalid-throttleperiod": "Період регулятора має бути додатним цілим числом.",
 	"abusefilter-edit-empty-throttlegroups": "Необхідно зазначити щонайменше одну групу регулятора.",
