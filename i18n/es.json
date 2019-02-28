@@ -302,6 +302,8 @@
 	"abusefilter-edit-notallowed": "No se te permite crear o editar filtros antiabusos",
 	"abusefilter-edit-notallowed-global": "No se te permite crear o editar filtros antiabusos globales",
 	"abusefilter-edit-notallowed-global-custom-msg": "Los mensajes de alerta personalizados no se admiten en los filtros globales",
+	"abusefilter-edit-invalid-warn-message": "El mensaje de alerta no puede dejarse vacío.",
+	"abusefilter-edit-invalid-disallow-message": "El mensaje de prohibición no puede dejarse vacío.",
 	"abusefilter-edit-builder-select": "Selecciona una opción para agregarla en el cursor",
 	"abusefilter-edit-builder-group-op-arithmetic": "Operadores aritméticos",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Adición (+)",
