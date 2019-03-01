@@ -4,15 +4,6 @@ use MediaWiki\MediaWikiServices;
 
 class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
-	 * @var stdClass|null An abuse_filter row describing a filter
-	 */
-	public static $mLoadedRow = null;
-	/**
-	 * @var array|null An array of actions for the current filter
-	 */
-	public static $mLoadedActions = null;
-
-	/**
 	 * @param SpecialAbuseFilter $page
 	 * @param array $params
 	 */
@@ -53,7 +44,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					'afh_filter' => $filter,
 				],
 				__METHOD__,
-				[ 'ORDER BY' => 'afh_timestamp DESC' ]
+				[ 'ORDER BY' => 'afh_id DESC' ]
 			);
 			// change $history_id to null if it's current version id
 			if ( $row->afh_id === $this->mHistoryID ) {
@@ -78,71 +69,82 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$editToken = $request->getVal( 'wpEditToken' );
 		$tokenMatches = $user->matchEditToken(
 			$editToken, [ 'abusefilter', $filter ], $request );
+		$isImport = $request->getRawVal( 'wpImportText' ) !== null;
 
-		if ( $tokenMatches && AbuseFilter::canEdit( $user ) ) {
-			list( $newRow, $actions ) = $this->loadRequest( $filter );
-			$dbw = wfGetDB( DB_MASTER );
-			$status = AbuseFilter::saveFilter( $this, $filter, $newRow, $actions, $dbw );
-			if ( !$status->isGood() ) {
-				$err = $status->getErrors();
-				$msg = $err[0]['message'];
-				$params = $err[0]['params'];
-				if ( $status->isOK() ) {
-					$this->buildFilterEditor(
-						$this->msg( $msg, $params )->parseAsBlock(),
-						$filter,
-						$history_id
-					);
-				} else {
-					$out->addWikiMsg( $msg );
-				}
-			} else {
-				if ( $status->getValue() === false ) {
-					// No change
-					$out->redirect( $this->getTitle()->getLocalURL() );
-				} else {
-					list( $new_id, $history_id ) = $status->getValue();
-					$out->redirect(
-						$this->getTitle()->getLocalURL(
-							[
-								'result' => 'success',
-								'changedfilter' => $new_id,
-								'changeid' => $history_id,
-							]
-						)
-					);
-				}
-			}
-		} else {
-			if ( $tokenMatches ) {
-				// Lost rights meanwhile
-				$out->addHTML(
-					Xml::tags(
-						'p',
-						null,
-						Html::errorBox( $this->msg( 'abusefilter-edit-notallowed' )->parse() )
-					)
-				);
-			} elseif ( $request->wasPosted() ) {
-				// Warn the user to re-attempt save
+		if ( !$request->wasPosted() || !AbuseFilter::canEdit( $user ) || !$tokenMatches || $isImport ) {
+			// Either the user is just viewing the filter, they cannot edit it, they lost the
+			// abusefilter-modify right with the page open, the token is invalid, or they're viewing
+			// the result of importing a filter
+			if ( $request->wasPosted() && !$isImport && !$tokenMatches ) {
+				// Special case for when the token has expired with the page open, warn to retry
 				$out->addHTML(
 					Html::warningBox( $this->msg( 'abusefilter-edit-token-not-match' )->escaped() )
 				);
 			}
 
-			$this->buildFilterEditor( null, $filter, $history_id );
+			$this->buildFilterEditor( null, $filter, $isImport, $history_id );
+			return;
+		}
+
+		list( $newRow, $actions ) = $this->loadRequest( $filter );
+		$dbw = wfGetDB( DB_MASTER );
+		$status = AbuseFilter::saveFilter( $this, $filter, $newRow, $actions, $dbw );
+
+		if ( !$status->isGood() ) {
+			$err = $status->getErrors();
+			$msg = $err[0]['message'];
+			$params = $err[0]['params'];
+			if ( $status->isOK() ) {
+				// Fixable error, show the editing interface
+				$this->buildFilterEditor(
+					$this->msg( $msg, $params )->parseAsBlock(),
+					$filter,
+					false,
+					$history_id,
+					$newRow,
+					$actions
+				);
+			} else {
+				// Permission-related error
+				$out->addWikiMsg( $msg );
+			}
+		} elseif ( $status->getValue() === false ) {
+			// No change
+			$out->redirect( $this->getTitle()->getLocalURL() );
+		} else {
+			// Everything went fine!
+			list( $new_id, $history_id ) = $status->getValue();
+			$out->redirect(
+				$this->getTitle()->getLocalURL(
+					[
+						'result' => 'success',
+						'changedfilter' => $new_id,
+						'changeid' => $history_id,
+					]
+				)
+			);
 		}
 	}
 
 	/**
-	 * Builds the full form for edit filters, adding it to the OutputPage.
-	 * Loads data either from the database or from the HTTP request.
-	 * The request takes precedence over the database
+	 * Builds the full form for edit filters, adding it to the OutputPage. $row and $actions can be
+	 * passed in (for instance if there was a failure during save) to avoid searching the DB.
+	 *
 	 * @param string|null $error An error message to show above the filter box.
 	 * @param int|string $filter The filter ID or 'new'.
+	 * @param bool $isImport Whether the filter is being imported
 	 * @param int|null $history_id The history ID of the filter, if applicable. Otherwise null
+	 * @param stdClass|null $row The abuse_filter row representing this filter, avoids DB lookup
+	 * @param array|null $actions Actions enabled and their parameters, avoids DB lookup
 	 */
-	protected function buildFilterEditor( $error, $filter, $history_id = null ) {
+	protected function buildFilterEditor(
+		$error,
+		$filter,
+		$isImport,
+		$history_id = null,
+		$row = null,
+		$actions = null
+	) {
 		if ( $filter === null ) {
 			return;
 		}
@@ -154,8 +156,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$lang = $this->getLanguage();
 		$user = $this->getUser();
 
-		// Load from request OR database.
-		list( $row, $actions ) = $this->loadRequest( $filter, $history_id );
+		if ( $isImport ) {
+			list( $row, $actions ) = $this->loadRequest( $filter );
+		} elseif ( !$row && !$actions ) {
+			list( $row, $actions ) = $this->loadFromDatabase( $filter, $history_id );
+		}
 
 		if (
 			!$row ||
@@ -1126,29 +1131,33 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	}
 
 	/**
-	 * Load filter data to show in the edit view.
-	 * Either from the HTTP request or from the filter/history_id given.
-	 * The HTTP request always takes precedence.
-	 * Includes caching.
+	 * Load filter data to show in the edit view from the DB.
 	 * @param int|string $filter The filter ID being requested or 'new'.
 	 * @param int|null $history_id If any, the history ID being requested.
 	 * @return array|null Array with filter data if available, otherwise null.
 	 * The first element contains the abuse_filter database row,
 	 *  the second element is an array of related abuse_filter_action rows.
 	 */
-	public function loadRequest( $filter, $history_id = null ) {
-		$row = self::$mLoadedRow;
-		$actions = self::$mLoadedActions;
-		$request = $this->getRequest();
-
-		if ( $actions !== null && $row !== null ) {
-			return [ $row, $actions ];
-		} elseif ( $request->wasPosted() ) {
-			// Nothing, we do it all later
-		} elseif ( $history_id ) {
+	public function loadFromDatabase( $filter, $history_id = null ) {
+		if ( $history_id ) {
 			return $this->loadHistoryItem( $history_id );
 		} else {
 			return $this->loadFilterData( $filter );
+		}
+	}
+
+	/**
+	 * Load data from the already-POSTed HTTP request.
+	 *
+	 * @throws BadMethodCallException If called without the request being POSTed
+	 * @param int|string $filter The filter ID being requested.
+	 * @return array
+	 */
+	public function loadRequest( $filter ): array {
+		$request = $this->getRequest();
+		if ( !$request->wasPosted() ) {
+			// Sanity
+			throw new BadMethodCallException( __METHOD__ . ' called without the request being POSTed.' );
 		}
 
 		// We need some details like last editor
@@ -1262,8 +1271,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$row->af_actions = implode( ',', array_keys( $actions ) );
 
-		self::$mLoadedRow = $row;
-		self::$mLoadedActions = $actions;
 		return [ $row, $actions ];
 	}
 

@@ -1219,7 +1219,12 @@ class AbuseFilter {
 	}
 
 	/**
-	 * Checks whether user input for the filter editing form is valid and if so saves the filter
+	 * Checks whether user input for the filter editing form is valid and if so saves the filter.
+	 * Returns a Status object which can be:
+	 *  - Good with [ new_filter_id, history_id ] as value if the filter was successfully saved
+	 *  - Good with value = false if everything went fine but the filter is unchanged
+	 *  - OK with errors if a validation error occurred
+	 *  - Fatal in case of a permission-related error
 	 *
 	 * @param ContextSource $context
 	 * @param int|string $filter

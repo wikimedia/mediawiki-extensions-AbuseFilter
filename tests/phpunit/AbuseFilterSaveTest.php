@@ -121,9 +121,6 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			->method( 'loadFilterData' )
 			->willReturn( $origValues );
 
-		// Being a static property, it's not deleted between tests
-		$viewEdit::$mLoadedRow = null;
-
 		return $viewEdit;
 	}
 
