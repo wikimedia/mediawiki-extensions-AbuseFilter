@@ -1426,7 +1426,6 @@ class AbuseFilter {
 		global $wgAbuseFilterNotifications, $wgAbuseFilterNotificationsPrivate;
 		foreach ( $log_rows as $data ) {
 			$data['afl_var_dump'] = $var_dump;
-			$data['afl_id'] = $dbw->nextSequenceValue( 'abuse_filter_log_afl_id_seq' );
 			$dbw->insert( 'abuse_filter_log', $data, __METHOD__ );
 			$local_log_ids[] = $data['afl_id'] = $dbw->insertId();
 			// Give grep a chance to find the usages:
@@ -1560,10 +1559,8 @@ class AbuseFilter {
 		} else {
 			$dbw = wfGetDB( DB_MASTER );
 		}
-		$old_id = $dbw->nextSequenceValue( 'text_old_id_seq' );
 		$dbw->insert( 'text',
 			[
-				'old_id' => $old_id,
 				'old_text' => $text,
 				'old_flags' => implode( ',', $flags ),
 			], __METHOD__
@@ -2541,7 +2538,7 @@ class AbuseFilter {
 
 		// Insert MAIN row.
 		if ( $filter == 'new' ) {
-			$new_id = $dbw->nextSequenceValue( 'abuse_filter_af_id_seq' );
+			$new_id = null;
 			$is_new = true;
 		} else {
 			$new_id = $filter;
@@ -2624,7 +2621,6 @@ class AbuseFilter {
 		$afh_row['afh_flags'] = implode( ',', $flags );
 
 		$afh_row['afh_filter'] = $new_id;
-		$afh_row['afh_id'] = $dbw->nextSequenceValue( 'abuse_filter_history_afh_id_seq' );
 
 		// Do the update
 		$dbw->insert( 'abuse_filter_history', $afh_row, __METHOD__ );
