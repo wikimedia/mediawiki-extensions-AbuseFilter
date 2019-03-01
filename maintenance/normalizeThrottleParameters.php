@@ -331,10 +331,18 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 		foreach ( $touchedIDs as $filter ) {
 			$histRow = $this->dbw->selectRow(
 				'abuse_filter_history',
-				'*',
+				[
+					'afh_filter',
+					'afh_pattern',
+					'afh_comments',
+					'afh_flags',
+					'afh_public_comments',
+					'afh_deleted',
+					'afh_group'
+				],
 				[ 'afh_filter' => $filter ],
 				__METHOD__,
-				[ 'ORDER BY' => 'afh_id', 'LOCK IN SHARE MODE' ]
+				[ 'ORDER BY' => 'afh_id DESC', 'LOCK IN SHARE MODE' ]
 			);
 
 			if ( !isset( $historyThrottleParams[ $filter ] ) ) {
@@ -357,7 +365,6 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 			}
 
 			$newHistoryRows[] = [
-				'afh_id' => $this->dbw->nextSequenceValue( 'abuse_filter_afh_id_seq' ),
 				'afh_user' => $user->getId(),
 				'afh_user_text' => $user->getName(),
 				'afh_timestamp' => $timestamp,
@@ -369,7 +376,7 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 
 		$historyCount = count( $changeHistoryFilters );
 		if ( $historyCount !== $affectedActionRows ) {
-			// Sanity: prevent unexpexted errors.
+			// Sanity: prevent unexpected errors.
 			$this->fail(
 				"The amount of affected rows isn't equal for abuse_filter_action and abuse_filter history. " .
 				"Found $affectedActionRows for the former and $historyCount for the latter."
