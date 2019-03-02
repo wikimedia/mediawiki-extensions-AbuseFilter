@@ -34,6 +34,7 @@
 	"right-abusefilter-log-private": "గోప్యము అని గుర్తించిన వడపోతల లాగ్ వివరాలు చూడడం",
 	"right-abusefilter-hide-log": "దుర్వినియోగ చిట్టా లోని పద్దులను దాచగలగడం",
 	"right-abusefilter-hidden-log": "దాచివున్న దుర్వినియోగ చిట్టా పద్దులను చూడగలగడం",
+	"right-abusefilter-modify-global": "సార్వత్రిక దుశ్చర్య వడపోతలను సృష్టించడం, సవరించడం",
 	"action-abusefilter-modify": "దుర్వినియోగ వడపోతలను మార్చడానికి",
 	"action-abusefilter-view": "దుర్వినియోగ వడపోతలను చూడడానికి",
 	"action-abusefilter-log": "దుర్వినియోగాల చిట్టాని చూడడానికి",
