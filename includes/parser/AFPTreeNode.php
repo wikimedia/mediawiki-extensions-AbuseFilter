@@ -117,6 +117,7 @@ class AFPTreeNode {
 		};
 
 		$lines = [ "{$this->type}" ];
+		// @phan-suppress-next-line PhanTypeSuspiciousNonTraversableForeach children is array here
 		foreach ( $this->children as $subnode ) {
 			if ( $subnode instanceof AFPTreeNode ) {
 				$sublines = array_map( $align, $subnode->toDebugStringInner() );

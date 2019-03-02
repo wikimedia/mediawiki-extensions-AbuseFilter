@@ -572,7 +572,7 @@ class AbuseFilterParser {
 			}
 
 			AbuseFilter::triggerLimiter();
-
+			// @phan-suppress-next-line PhanParamTooMany Not every function needs the position
 			$result = AFPData::$func( $result, $r2, $this->mCur->pos );
 		}
 	}

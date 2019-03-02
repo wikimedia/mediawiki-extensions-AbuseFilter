@@ -171,6 +171,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				$rightOperand = $this->evalNode( $rightOperand );
 
 				AbuseFilter::triggerLimiter();
+				// @phan-suppress-next-line PhanParamTooMany Not every function needs the position
 				$result = AFPData::$func( $leftOperand, $rightOperand, $node->position );
 
 				return $result;
@@ -273,6 +274,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 
 			case AFPTreeNode::SEMICOLON:
 				$lastValue = null;
+				// @phan-suppress-next-line PhanTypeSuspiciousNonTraversableForeach children is array here
 				foreach ( $node->children as $statement ) {
 					$lastValue = $this->evalNode( $statement );
 				}
