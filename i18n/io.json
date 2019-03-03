@@ -11,6 +11,7 @@
 	"abusefilter": "Figuro dil filtrilo pri misuzo",
 	"abuselog": "Protokolo pri misuzo",
 	"abusefilter-intro": "Bonveno a la kontrol interfacio dil filtrilo di misuzo. La filtrilo di misuzo esas automatala mekanismo di softwaro qua aplikas automatala heuristiko ad omna agadi.\n\nIca interfacio* montras listo pri definita filtrili, e permisas modifikar li.",
+	"abusefilter-degrouped": "Ica agado automatale identifikesis kom danjerosa.\nDo, ol ne permisesis, e pro existar suspekto pri transakto per vua konto, omna ek vua yuri revokesis.\nSe vu kredas ke to esas eroro, voluntez kontaktar burokrato ed explikar ica agado, do vua yuri restauresos.\nKurta deskripto pri la reguli kontre abuzi qua koincidas kun vua agado esas: $1.",
 	"right-abusefilter-modify": "Modifikar filtrili pri misuzo",
 	"right-abusefilter-view": "Vidar filtrili di misuzo",
 	"action-abusefilter-log-detail": "Videz detaloza registri di informi pri misuzo",
