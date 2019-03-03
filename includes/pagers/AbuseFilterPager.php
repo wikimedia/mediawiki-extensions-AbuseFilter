@@ -291,6 +291,7 @@ class AbuseFilterPager extends TablePager {
 		];
 		if ( $this->mPage->getUser()->isAllowed( 'abusefilter-log-detail' ) ) {
 			$sortable_fields[] = 'af_hit_count';
+			$sortable_fields[] = 'af_public_comments';
 		}
 		return in_array( $name, $sortable_fields );
 	}
