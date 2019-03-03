@@ -99,5 +99,5 @@ class AddMissingLoggingEntries extends Maintenance {
 	}
 }
 
-$maintClass = 'AddMissingLoggingEntries';
+$maintClass = AddMissingLoggingEntries::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

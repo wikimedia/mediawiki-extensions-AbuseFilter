@@ -58,5 +58,5 @@ class PurgeOldLogIPData extends Maintenance {
 
 }
 
-$maintClass = "PurgeOldLogIPData";
+$maintClass = PurgeOldLogIPData::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

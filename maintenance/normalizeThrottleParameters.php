@@ -400,5 +400,5 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 	}
 }
 
-$maintClass = 'NormalizeThrottleParameters';
+$maintClass = NormalizeThrottleParameters::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
