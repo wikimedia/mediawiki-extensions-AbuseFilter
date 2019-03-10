@@ -57,7 +57,7 @@
 	"action-abusefilter-view": "不正利用フィルターの閲覧",
 	"action-abusefilter-log": "不正利用記録の閲覧",
 	"action-abusefilter-log-detail": "不正利用記録の詳細項目の閲覧",
-	"action-abusefilter-private": "不正利用フィルターの非公開記録を調査",
+	"action-abusefilter-private": "不正利用フィルターの非公開記録の調査",
 	"action-abusefilter-private-log": "不正利用フィルター非公開記録の調査記録を閲覧",
 	"action-abusefilter-modify-restricted": "制限された操作を含む不正利用フィルターの変更",
 	"action-abusefilter-revert": "指定した不正利用フィルターによるすべての変更の差し戻し",

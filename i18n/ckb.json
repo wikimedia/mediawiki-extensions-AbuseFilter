@@ -225,6 +225,7 @@
 	"abusefilter-topnav-tools": "ئامرازەکانی سڕینەوەی کەموکووڕی",
 	"abusefilter-topnav-import": "ھاوردنی پاڵوێنە",
 	"abusefilter-log-name": "لۆگی پاڵوێنەی کەڵکاوەژوو",
+	"abusefilter-logentry-modify": "$1 {{GENDER:$2|دەستکاریی}} $4ی کرد ($5)",
 	"abusefilter-log-noresults": "هیچ ئەنجامێک نییە",
 	"abusefilter-diff-title": "جیاوازیی نێوان پێداچوونەوەکان",
 	"abusefilter-diff-item": "بابەت",
