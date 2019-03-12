@@ -932,7 +932,7 @@ class SpecialAbuseLog extends SpecialPage {
 					[ 'diff' => 'prev', 'oldid' => $row->afl_rev_id ] );
 
 				$diffLink = Linker::makeExternalLink( $diffUrl,
-					$this->msg( 'abusefilter-log-diff' )->parse() );
+					$this->msg( 'abusefilter-log-diff' )->text() );
 			}
 		}
 
@@ -1009,7 +1009,7 @@ class SpecialAbuseLog extends SpecialPage {
 					'Special:AbuseFilter/' . $globalIndex
 				);
 				$linkText = $this->msg( 'abusefilter-log-detailedentry-global' )
-					->numParams( $globalIndex )->escaped();
+					->numParams( $globalIndex )->text();
 				$filterLink = Linker::makeExternalLink( $globalURL, $linkText );
 			} else {
 				$title = SpecialPage::getTitleFor( 'AbuseFilter', $row->afl_filter );
