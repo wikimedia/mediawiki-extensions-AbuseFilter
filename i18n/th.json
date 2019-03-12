@@ -12,7 +12,8 @@
 			"Woraponboonkerd",
 			"Matma Rex",
 			"Aefgh39622",
-			"B20180"
+			"B20180",
+			"Geonuch"
 		]
 	},
 	"abusefilter-desc": "วิเคราะห์พฤติกรรมการแก้ไขอัตโนมัติ",
@@ -31,7 +32,7 @@
 	"abusefilter-accountreserved": "ชื่อบัญชีนี้สงวนไว้สำหรับการใช้งานโดยตัวกรองการละเมิดกฎ",
 	"right-abusefilter-modify": "แก้ไขตัวกรองการละเมิดกฎ",
 	"right-abusefilter-view": "ดูตัวกรองการละเมิดกฎ",
-	"right-abusefilter-log": "ดูรายการบันทึกการละเมิดกฎ",
+	"right-abusefilter-log": "ดูปูมการละเมิดกฎ",
 	"right-abusefilter-log-detail": "ดูหน่วยรายการบันทึกการละเมิดกฎแบบละเอียด",
 	"right-abusefilter-private": "ดูข้อมูลส่วนตัวในรายการบันทึกการละเมิดกฎ",
 	"right-abusefilter-private-log": "ดูรายการบันทึกการเข้าถึงรายละเอียดส่วนตัวของตัวกรองการละเมิดกฎ",
@@ -44,7 +45,7 @@
 	"right-abusefilter-modify-global": "สร้างหรือปรับเปลี่ยนตัวกรองการละเมิดกฎทั่วโลก",
 	"action-abusefilter-modify": "ปรับเปลี่ยนตัวกรองการละเมิดกฎ",
 	"action-abusefilter-view": "ดูตัวกรองการละเมิดกฎ",
-	"action-abusefilter-log": "ดูรายการบันทึกการละเมิดกฎ",
+	"action-abusefilter-log": "ดูปูมการละเมิดกฎ",
 	"action-abusefilter-log-detail": "ดูหน่วยรายการบันทึกการละเมิดกฎแบบละเอียด",
 	"action-abusefilter-private": "ดูข้อมูลส่วนตัวในรายการบันทึกการละเมิดกฎ",
 	"action-abusefilter-private-log": "ดูรายการบันทึกการเข้าถึงรายละเอียดส่วนตัวของตัวกรองการละเมิดกฎ",
@@ -92,7 +93,7 @@
 	"abusefilter-log-details-diff": "การเปลี่ยนแปลงในการแก้ไข",
 	"abusefilter-log-linkoncontribs": "ปูมการละเมิด",
 	"abusefilter-log-linkoncontribs-text": "ปูมการละเมิดกฎของ{{GENDER:$1|ผู้ใช้นี้}}",
-	"abusefilter-log-linkonhistory": "ดูรายการบันทึกการละเมิดกฎ",
+	"abusefilter-log-linkonhistory": "ดูปูมการละเมิดกฎ",
 	"abusefilter-log-linkonhistory-text": "ดูรายการบันทึกการละเมิดกฎสำหรับหน้านี้",
 	"abusefilter-log-hidden-implicit": "(ถูกซ่อนเนื่องจากรุ่นแก้ไขถูกลบแล้ว)",
 	"abusefilter-log-cannot-see-details": "คุณไม่มีสิทธิดูรายละเอียดของหน่วยนี้",
