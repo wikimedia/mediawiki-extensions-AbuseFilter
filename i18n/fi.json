@@ -116,6 +116,7 @@
 	"abusefilter-log-hide-id": "Lokimerkinnän tunnusnumero:",
 	"abusefilter-log-hide-hidden": "Piilota tämä merkintä julkiselta näkymiseltä",
 	"abusefilter-log-hide-reason": "Syy:",
+	"abusefilter-log-hide-reason-other": "Muu syy tai tarkennus:",
 	"abusefilter-log-hide-forbidden": "Sinulla ei ole oikeutta piilottaa väärinkäyttölokin merkintöjä.",
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|piilotti}} lokin $3",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|laukaisi}} suodattimen $4 {{GENDER:$2|suorittaessaan}} toiminnon ”$5” kohteessa $3. Toimenpiteet: $6 ($7)",
@@ -242,6 +243,7 @@
 	"abusefilter-edit-done-subtitle": "Suodatinta muokattu",
 	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Muutokset]] [[Special:AbuseFilter/$1|suodattimeen $3]] tallennettiin onnistuneesti.",
 	"abusefilter-edit-badsyntax": "Määrittämässäsi suodattimessa on syntaksivirhe.\nJäsentimen palaute: <pre>$1</pre>",
+	"abusefilter-edit-missingfields": "Seuraavat kentät ovat pakollisia ja tulee täyttää: $1",
 	"abusefilter-edit-deleting-enabled": "Et voi merkitä aktiivista suodatinta poistetuksi.",
 	"abusefilter-edit-restricted": "Et voi muuttaa tätä suodatinta, koska se sisältää yhden tai useamman rajoitetun toiminnon.\nPyydä rajoitettujen toimintojen lisäämiseen tarvittavien oikeuksien haltijalta, että tämä tekee muutoksen puolestasi.",
 	"abusefilter-edit-viewhistory": "Näytä tämän suodattimen historia",
@@ -441,6 +443,7 @@
 	"abusefilter-revert-search": "Valitse toimenpiteet",
 	"abusefilter-revert-filter": "Suodatin nro:",
 	"abusefilter-revert-preview-intro": "Alla ovat ne väärinkäyttösuodattimen suorittamat toimenpiteet, jotka peruutetaan tällä toiminnolla.\nTarkista ne huolellisesti ja paina \"{{int:abusefilter-revert-confirm}}\", niin toimenpiteet peruutetaan.",
+	"abusefilter-revert-confirm-legend": "Vahvista kumoaminen",
 	"abusefilter-revert-confirm": "Vahvista",
 	"abusefilter-revert-success": "Olet peruuttanut kaikki toimenpiteet, jotka väärinkäyttösuodatin teki [[Special:AbuseFilter/$1|suodattimen $2]] ehtojen mukaisesti.",
 	"abusefilter-revert-reason": "Kaikkien toimenpiteiden automaattinen peruuttaminen, jotka väärinkäyttösuodatin oli tehnyt suodattimen $1 ehtojen mukaisesti.\nAnnettu syy: $2",
@@ -513,7 +516,9 @@
 	"abusefilter-view-private": "Näytä yksityiskohdat",
 	"abusefilter-view-private-reason": "Syy yksityiskohtien näyttämiseen:",
 	"abusefilter-log-details-id": "Lokin tunnistenumero",
+	"abusefilter-noreason": "Varoitus: Nähdäksesi tämän lokin yksityiset tiedot sinun on annettava syy.",
 	"abusefilter-log-ip-not-available": "Ei saatavissa",
 	"abusefilter-tag-reserved": "Tämä <code>abusefilter-condition-limit</code> merkintä on varattu Väärinkäyttösuodattimen sisäiseen käyttöön.",
-	"tag-abusefilter-condition-limit": "ehtojen raja-arvo on saavutettu"
+	"tag-abusefilter-condition-limit": "ehtojen raja-arvo on saavutettu",
+	"tag-abusefilter-condition-limit-description": "Muokkaukset tai muut tapahtumat, joita ei voitu tarkistaa kaikilla aktiivisilla [[Special:AbuseFilter|väärinkäyttösuodattimilla]] ([[mw:Extension:AbuseFilter/Conditions|ohje]])."
 }
