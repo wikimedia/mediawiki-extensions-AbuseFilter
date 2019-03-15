@@ -140,7 +140,7 @@
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|a déclenché}} $4, {{GENDER:$2|en effectuant}} l’action « $5 » sur $3. Actions entreprises : $6 ($7)",
 	"log-action-filter-abusefilter": "Type de modification de filtre :",
 	"log-action-filter-abusefilter-create": "Création de nouveaux filtres",
-	"log-action-filter-abusefilter-modify": "Filtrer les modifications",
+	"log-action-filter-abusefilter-modify": "Modification de filtre",
 	"log-action-filter-suppress-abuselog": "Suppression du journal anti-abus",
 	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|a accédé}} aux détails confidentiels pour $3",
 	"abusefilterprivatedetails-log-name": "Détails confidentiels du journal d’accès de AbuseFilter",

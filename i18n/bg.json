@@ -54,7 +54,7 @@
 	"action-abusefilter-log-private": "Преглед на дневниците на означените като скрити филтри срещу злоупотреби",
 	"abusefilter-log": "Дневник на филтъра срещу злоупотреби",
 	"abusefilter-log-summary": "Този дневник показва списъка на всички действия, прехванати от филтрите.",
-	"abusefilter-log-search": "Търсене в Дневника на злоупотребите",
+	"abusefilter-log-search": "Търсене в дневника на злоупотребите",
 	"abusefilter-log-search-user": "Потребител:",
 	"abusefilter-log-search-filter": "Идентификатори на филтър (разделени с вертикална линия):",
 	"abusefilter-log-search-title": "Заглавие:",

@@ -120,7 +120,7 @@
 	"abusefilter-log-entry-unsuppress": "$1 heeft $3 {{GENDER:$2|zichtbaar}} gemaakt",
 	"logentry-abusefilter-hit": "$1 heeft $4 {{GENDER:$2|geactiveerd}} door de handeling \"$5\" op $3\". Uitgevoerde acties: $6 ($7)",
 	"log-action-filter-abusefilter": "Type filterwijziging:",
-	"log-action-filter-abusefilter-create": "Nieuw filter aangemaakt",
+	"log-action-filter-abusefilter-create": "Aanmaak nieuw filter",
 	"log-action-filter-abusefilter-modify": "Filteraanpassing",
 	"abusefilter-management": "Beheer van filters",
 	"abusefilter-list": "Alle filters",
