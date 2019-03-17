@@ -2787,6 +2787,8 @@ class AbuseFilter {
 			$vars = self::getCreateVarsFromRCRow( $row );
 		} elseif ( $row->rc_log_type == 'delete' ) {
 			$vars = self::getDeleteVarsFromRCRow( $row );
+		} elseif ( $row->rc_log_type == 'upload' ) {
+			$vars = self::getUploadVarsFromRCRow( $row );
 		} elseif ( $row->rc_this_oldid ) {
 			// It's an edit.
 			$vars = self::getEditVarsFromRCRow( $row );
@@ -2846,6 +2848,55 @@ class AbuseFilter {
 
 		$vars->setVar( 'ACTION', 'delete' );
 		$vars->setVar( 'SUMMARY', CommentStore::getStore()->getComment( 'rc_comment', $row )->text );
+
+		return $vars;
+	}
+
+	/**
+	 * @param stdClass $row
+	 * @return AbuseFilterVariableHolder
+	 */
+	public static function getUploadVarsFromRCRow( $row ) {
+		$vars = new AbuseFilterVariableHolder;
+		$title = Title::makeTitle( $row->rc_namespace, $row->rc_title );
+
+		if ( $row->rc_user ) {
+			$user = User::newFromName( $row->rc_user_text );
+		} else {
+			$user = new User;
+			$user->setName( $row->rc_user_text );
+		}
+
+		$vars->addHolders(
+			self::generateUserVars( $user ),
+			self::generateTitleVars( $title, 'ARTICLE' )
+		);
+
+		$vars->setVar( 'action', 'upload' );
+		$vars->setVar( 'summary', CommentStore::getStore()->getComment( 'rc_comment', $row )->text );
+
+		$time = LogEntryBase::extractParams( $row->rc_params )['img_timestamp'];
+		$file = wfFindFile( $title, [ 'time' => $time, 'private' => true ] );
+		if ( !$file ) {
+			// FixMe This shouldn't happen!
+			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+			$logger->debug( "Cannot find file from RC row with title $title" );
+			return $vars;
+		}
+
+		// This is the same as AbuseFilterHooks::filterUpload, but from a different source
+		$vars->setVar( 'file_sha1', Wikimedia\base_convert( $file->getSha1(), 36, 16, 40 ) );
+		$vars->setVar( 'file_size', $file->getSize() );
+
+		$vars->setVar( 'file_mime', $file->getMimeType() );
+		$vars->setVar(
+			'file_mediatype',
+			MediaWiki\MediaWikiServices::getInstance()->getMimeAnalyzer()
+				->getMediaType( null, $file->getMimeType() )
+		);
+		$vars->setVar( 'file_width', $file->getWidth() );
+		$vars->setVar( 'file_height', $file->getHeight() );
+		$vars->setVar( 'file_bits_per_channel', $file->getImageSize( $file->getLocalRefPath() )['bits'] );
 
 		return $vars;
 	}

@@ -286,10 +286,15 @@ abstract class AbuseFilterView extends ContextSource {
 					'rc_log_type' => 'delete',
 					'rc_log_action' => 'delete'
 				], LIST_AND );
+			case 'upload':
+				return $db->makeList( [
+					'rc_source' => RecentChange::SRC_LOG,
+					'rc_log_type' => 'upload',
+					'rc_log_action' => [ 'upload', 'overwrite', 'revert' ]
+				], LIST_AND );
 			case false:
 				// Done later
 				break;
-			// @ToDo: case 'upload'
 			default:
 				throw new MWException( __METHOD__ . ' called with invalid action: ' . $action );
 		}
@@ -314,7 +319,10 @@ abstract class AbuseFilterView extends ContextSource {
 						'rc_log_type' => 'delete',
 						'rc_log_action' => 'delete'
 					], LIST_AND ),
-					// @todo: add upload
+					$db->makeList( [
+						'rc_log_type' => 'upload',
+						'rc_log_action' => [ 'upload', 'overwrite', 'revert' ]
+					], LIST_AND ),
 				], LIST_OR ),
 			], LIST_AND ),
 		], LIST_OR );
