@@ -225,11 +225,9 @@ class AbuseFilter {
 
 	/**
 	 * @param string[] $filters
-	 * @param bool $legacy TEMPORARY whether to get data in legacy format
-	 * @return (string|array)[][][]|array[][]
-	 * @phan-return array<string,array<string,array{action:string,parameters:string[]}>>|array[][]
+	 * @return array[][]
 	 */
-	public static function getConsequencesForFilters( $filters, $legacy = true ) {
+	public static function getConsequencesForFilters( $filters ) {
 		$globalFilters = [];
 		$localFilters = [];
 
@@ -249,15 +247,14 @@ class AbuseFilter {
 		$consequences = [];
 
 		if ( count( $localFilters ) ) {
-			$consequences = self::loadConsequencesFromDB( $dbr, $localFilters, '', $legacy );
+			$consequences = self::loadConsequencesFromDB( $dbr, $localFilters, '' );
 		}
 
 		if ( count( $globalFilters ) ) {
 			$consequences += self::loadConsequencesFromDB(
 				AbuseFilterServices::getCentralDBManager()->getConnection( DB_REPLICA ),
 				$globalFilters,
-				self::GLOBAL_FILTER_PREFIX,
-				$legacy
+				self::GLOBAL_FILTER_PREFIX
 			);
 		}
 
@@ -268,16 +265,9 @@ class AbuseFilter {
 	 * @param IDatabase $dbr
 	 * @param string[] $filters
 	 * @param string $prefix
-	 * @param bool $legacy TEMPORARY whether to get data in legacy format
-	 * @return (string|array)[][][]|array[][]
-	 * @phan-return array<string,array<string,array{action:string,parameters:string[]}>>|array[][]
+	 * @return array[][]
 	 */
-	private static function loadConsequencesFromDB(
-		IDatabase $dbr,
-		$filters,
-		$prefix = '',
-		$legacy = true
-	) {
+	private static function loadConsequencesFromDB( IDatabase $dbr, $filters, $prefix = '' ) {
 		$actionsByFilter = [];
 		foreach ( $filters as $filter ) {
 			$actionsByFilter[$prefix . $filter] = [];
@@ -310,10 +300,8 @@ class AbuseFilter {
 				// We probably got a NULL, as it's a LEFT JOIN. Don't add it.
 				continue;
 			} else {
-				$params = array_filter( explode( "\n", $row->afa_parameters ) );
-				$actionsByFilter[$prefix . $row->afa_filter][$row->afa_consequence] = $legacy
-					? [ 'action' => $row->afa_consequence, 'parameters' => $params ]
-					: $params;
+				$actionsByFilter[$prefix . $row->afa_filter][$row->afa_consequence] =
+					array_filter( explode( "\n", $row->afa_parameters ) );
 			}
 		}
 
