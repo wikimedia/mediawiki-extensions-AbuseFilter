@@ -184,12 +184,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$output .= Html::errorBox( $error );
 		}
 
-		// Read-only attribute
-		$readOnlyAttrib = [];
-
-		if ( !$this->canEditFilter( $row ) ) {
-			$readOnlyAttrib['disabled'] = 'disabled';
-		}
+		$readOnly = !$this->canEditFilter( $row );
 
 		$fields = [];
 
@@ -200,8 +195,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$fields['abusefilter-edit-description'] =
 			new OOUI\TextInputWidget( [
 				'name' => 'wpFilterDescription',
-				'value' => $row->af_public_comments ?? ''
-				] + $readOnlyAttrib
+				'value' => $row->af_public_comments ?? '',
+				'readOnly' => $readOnly
+				]
 			);
 
 		$validGroups = $this->getConfig()->get( 'AbuseFilterValidGroups' );
@@ -211,7 +207,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					'name' => 'wpFilterGroup',
 					'id' => 'mw-abusefilter-edit-group-input',
 					'value' => 'default',
-					'disabled' => !empty( $readOnlyAttrib )
+					'disabled' => $readOnly
 				] );
 
 			$options = [];
@@ -273,8 +269,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			new OOUI\MultilineTextInputWidget( [
 				'name' => 'wpFilterNotes',
 				'value' => isset( $row->af_comments ) ? $row->af_comments . "\n" : "\n",
-				'rows' => 15
-				] + $readOnlyAttrib
+				'rows' => 15,
+				'readOnly' => $readOnly
+				]
 			);
 
 		// Build checkboxes
@@ -322,7 +319,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				'name' => $postVar,
 				'id' => $postVar,
 				'selected' => $row->$dbField ?? false,
-			] + $readOnlyAttrib;
+				'disabled' => $readOnly
+			];
 			$labelAttribs = [
 				'label' => $this->msg( $message )->text(),
 				'align' => 'inline',
@@ -500,11 +498,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			return '';
 		}
 
-		$readOnlyAttrib = [];
-
-		if ( !$this->canEditFilter( $row ) ) {
-			$readOnlyAttrib['disabled'] = 'disabled';
-		}
+		$readOnly = !$this->canEditFilter( $row );
 
 		switch ( $action ) {
 			case 'throttle':
@@ -518,8 +512,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 							'name' => 'wpFilterActionThrottle',
 							'id' => 'mw-abusefilter-action-checkbox-throttle',
 							'selected' => $set,
-							'classes' => [ 'mw-abusefilter-action-checkbox' ]
-						] + $readOnlyAttrib
+							'classes' => [ 'mw-abusefilter-action-checkbox' ],
+							'disabled' => $readOnly
+						]
 						),
 						[
 							'label' => $this->msg( 'abusefilter-edit-action-throttle' )->text(),
@@ -547,8 +542,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						new OOUI\TextInputWidget( [
 							'type' => 'number',
 							'name' => 'wpFilterThrottleCount',
-							'value' => $throttleCount
-							] + $readOnlyAttrib
+							'value' => $throttleCount,
+							'readOnly' => $readOnly
+							]
 						),
 						[
 							'label' => $this->msg( 'abusefilter-edit-throttle-count' )->text()
@@ -559,8 +555,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						new OOUI\TextInputWidget( [
 							'type' => 'number',
 							'name' => 'wpFilterThrottlePeriod',
-							'value' => $throttlePeriod
-							] + $readOnlyAttrib
+							'value' => $throttlePeriod,
+							'readOnly' => $readOnly
+							]
 						),
 						[
 							'label' => $this->msg( 'abusefilter-edit-throttle-period' )->text()
@@ -570,7 +567,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$throttleConfig = [
 					'values' => $throttleGroups,
 					'label' => $this->msg( 'abusefilter-edit-throttle-groups' )->parse(),
-					'disabled' => $readOnlyAttrib
+					'disabled' => $readOnly
 				];
 				$this->getOutput()->addJsConfigVars( 'throttleConfig', $throttleConfig );
 
@@ -582,8 +579,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 							'rows' => 5,
 							'placeholder' => $this->msg( 'abusefilter-edit-throttle-hidden-placeholder' )->text(),
 							'infusable' => true,
-							'id' => 'mw-abusefilter-hidden-throttle-field'
-						] + $readOnlyAttrib
+							'id' => 'mw-abusefilter-hidden-throttle-field',
+							'readOnly' => $readOnly
+						]
 						),
 						[
 							'label' => new OOUI\HtmlSnippet(
@@ -614,8 +612,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 							// mw-abusefilter-action-checkbox-warn, mw-abusefilter-action-checkbox-disallow
 							'id' => "mw-abusefilter-action-checkbox-$action",
 							'selected' => $set,
-							'classes' => [ 'mw-abusefilter-action-checkbox' ]
-						] + $readOnlyAttrib
+							'classes' => [ 'mw-abusefilter-action-checkbox' ],
+							'disabled' => $readOnly
+						]
 						),
 						[
 							// abusefilter-edit-action-warn, abusefilter-edit-action-disallow
@@ -644,7 +643,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 				$fields = [];
 				$fields["abusefilter-edit-$action-message"] =
-					$this->getExistingSelector( $msg, !empty( $readOnlyAttrib ), $action );
+					$this->getExistingSelector( $msg, $readOnly, $action );
 				$otherFieldName = $action === 'warn' ? 'wpFilterWarnMessageOther'
 					: 'wpFilterDisallowMessageOther';
 
@@ -655,8 +654,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 							'value' => $msg,
 							// mw-abusefilter-warn-message-other, mw-abusefilter-disallow-message-other
 							'id' => "mw-abusefilter-$action-message-other",
-							'infusable' => true
-							] + $readOnlyAttrib
+							'infusable' => true,
+							'readOnly' => $readOnly
+							]
 						),
 						[
 							'label' => new OOUI\HtmlSnippet(
@@ -732,8 +732,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 							'name' => 'wpFilterActionTag',
 							'id' => 'mw-abusefilter-action-checkbox-tag',
 							'selected' => $set,
-							'classes' => [ 'mw-abusefilter-action-checkbox' ]
-						] + $readOnlyAttrib
+							'classes' => [ 'mw-abusefilter-action-checkbox' ],
+							'disabled' => $readOnly
+						]
 						),
 						[
 							'label' => $this->msg( 'abusefilter-edit-action-tag' )->text(),
@@ -745,7 +746,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$tagConfig = [
 					'values' => $tags,
 					'label' => $this->msg( 'abusefilter-edit-tag-tag' )->parse(),
-					'disabled' => $readOnlyAttrib
+					'disabled' => $readOnly
 				];
 				$this->getOutput()->addJsConfigVars( 'tagConfig', $tagConfig );
 
@@ -757,8 +758,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 							'rows' => 5,
 							'placeholder' => $this->msg( 'abusefilter-edit-tag-hidden-placeholder' )->text(),
 							'infusable' => true,
-							'id' => 'mw-abusefilter-hidden-tag-field'
-						] + $readOnlyAttrib
+							'id' => 'mw-abusefilter-hidden-tag-field',
+							'readOnly' => $readOnly
+						]
 						),
 						[
 							'label' => new OOUI\HtmlSnippet(
@@ -802,8 +804,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 							'name' => 'wpFilterActionBlock',
 							'id' => 'mw-abusefilter-action-checkbox-block',
 							'selected' => $set,
-							'classes' => [ 'mw-abusefilter-action-checkbox' ]
-						] + $readOnlyAttrib
+							'classes' => [ 'mw-abusefilter-action-checkbox' ],
+							'disabled' => $readOnly
+						]
 						),
 						[
 							'label' => $this->msg( 'abusefilter-edit-action-block' )->text(),
@@ -838,8 +841,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 								'name' => 'wpFilterBlockTalk',
 								'id' => 'mw-abusefilter-action-checkbox-blocktalk',
 								'selected' => isset( $blockTalk ) && $blockTalk == 'blocktalk',
-								'classes' => [ 'mw-abusefilter-action-checkbox' ]
-							] + $readOnlyAttrib
+								'classes' => [ 'mw-abusefilter-action-checkbox' ],
+								'disabled' => $readOnly
+							]
 							),
 							[
 								'label' => $this->msg( 'abusefilter-edit-action-blocktalk' )->text(),
@@ -888,8 +892,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 							'name' => $form_field,
 							'id' => "mw-abusefilter-action-checkbox-$action",
 							'selected' => $status,
-							'classes' => [ 'mw-abusefilter-action-checkbox' ]
-						] + $readOnlyAttrib
+							'classes' => [ 'mw-abusefilter-action-checkbox' ],
+							'disabled' => $readOnly
+						]
 						),
 						[
 							'label' => $this->msg( $message )->text(),

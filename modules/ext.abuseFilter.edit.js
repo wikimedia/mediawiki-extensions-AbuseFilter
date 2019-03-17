@@ -385,9 +385,8 @@
 	 * @param {Array} config The array with configuration passed from PHP code
 	 */
 	function buildSelector( action, config ) {
-		var disabled = config.disabled.length !== 0,
-			// mw-abusefilter-throttle-parameters, mw-abusefilter-tag-parameters
-			$container = $( '#mw-abusefilter-' + action + '-parameters' ),
+		// mw-abusefilter-throttle-parameters, mw-abusefilter-tag-parameters
+		var $container = $( '#mw-abusefilter-' + action + '-parameters' ),
 			// Character used to separate elements in the textarea.
 			separator = action === 'throttle' ? '\n' : ',',
 			selector, field, hiddenField;
@@ -400,7 +399,7 @@
 				selected: config.values,
 				// abusefilter-edit-throttle-placeholder, abusefilter-edit-tag-placeholder
 				placeholder: OO.ui.msg( 'abusefilter-edit-' + action + '-placeholder' ),
-				disabled: disabled
+				disabled: config.disabled
 			} );
 		field =
 			new OO.ui.FieldLayout(
