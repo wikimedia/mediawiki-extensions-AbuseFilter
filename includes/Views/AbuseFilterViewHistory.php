@@ -18,7 +18,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		$out->enableOOUI();
 		$filter = $this->getRequest()->getText( 'filter' ) ?: $this->mFilter;
 		// Ensure the parameter is a valid filter ID
-		$filter = preg_match( '/^[1-9][0-9]*$/', (string)$filter ) === 0 ? null : (int)$filter;
+		$filter = (int)$filter;
 
 		if ( $filter ) {
 			$out->setPageTitle( $this->msg( 'abusefilter-history' )->numParams( $filter ) );
@@ -77,7 +77,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 				'label-message' => 'abusefilter-history-select-user'
 			],
 			'filter' => [
-				'type' => 'text',
+				'type' => 'int',
 				'name' => 'filter',
 				'default' => $filter,
 				'size' => '45',

@@ -853,7 +853,7 @@ class SpecialAbuseLog extends SpecialPage {
 	}
 
 	/**
-	 * @param string|null $filter_id
+	 * @param string|int|null $filter_id
 	 * @param bool|int|null $filter_hidden
 	 * @return bool
 	 */
