@@ -228,7 +228,7 @@ class AFComputedVariable {
 				);
 
 				$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-				if ( $vars->getVar( 'context' )->toString() == 'filter' ) {
+				if ( $vars->forFilter ) {
 					$links = $this->getLinksFromDB( $article );
 					$logger->debug( 'Loading old links from DB' );
 				} elseif ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
