@@ -481,7 +481,7 @@ class AbuseFilterParser {
 			$this->doLevelMulRels( $r2 );
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
-				break;
+				continue;
 			}
 			if ( $op == '+' ) {
 				$result = AFPData::sum( $result, $r2 );
@@ -507,7 +507,7 @@ class AbuseFilterParser {
 			$this->doLevelPow( $r2 );
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
-				break;
+				continue;
 			}
 			$result = AFPData::mulRel( $result, $r2, $op, $this->mCur->pos );
 		}
@@ -526,7 +526,7 @@ class AbuseFilterParser {
 			$this->doLevelBoolInvert( $expanent );
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
-				break;
+				continue;
 			}
 			$result = AFPData::pow( $result, $expanent );
 		}
