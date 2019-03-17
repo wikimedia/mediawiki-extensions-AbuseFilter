@@ -79,7 +79,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			'filter' => [
 				'type' => 'int',
 				'name' => 'filter',
-				'default' => $filter,
+				'default' => $filter ?: '',
 				'size' => '45',
 				'label-message' => 'abusefilter-history-select-filter'
 			],
