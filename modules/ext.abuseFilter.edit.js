@@ -389,7 +389,7 @@
 		var $container = $( '#mw-abusefilter-' + action + '-parameters' ),
 			// Character used to separate elements in the textarea.
 			separator = action === 'throttle' ? '\n' : ',',
-			selector, field, hiddenField;
+			selector, field, fieldOpts, hiddenField;
 
 		selector =
 			new OO.ui.TagMultiselectWidget( {
@@ -401,14 +401,20 @@
 				placeholder: OO.ui.msg( 'abusefilter-edit-' + action + '-placeholder' ),
 				disabled: config.disabled
 			} );
-		field =
-			new OO.ui.FieldLayout(
-				selector,
-				{
-					label: $( $.parseHTML( config.label ) ),
-					align: 'top'
-				}
-			);
+
+		fieldOpts = {
+			label: $( $.parseHTML( config.label ) ),
+			align: 'top'
+		};
+		if ( action === 'throttle' ) {
+			fieldOpts.help =
+				new OO.ui.HtmlSnippet(
+					'See <a href="https://www.mediawiki.org/wiki/Special:MyLanguage/' +
+					'Extension:AbuseFilter/Actions#Throttling" target="_blank">' +
+					'mediawiki.org</a>.' );
+		}
+
+		field = new OO.ui.FieldLayout( selector, fieldOpts );
 
 		// mw-abusefilter-hidden-throttle-field, mw-abusefilter-hidden-tag-field
 		hiddenField = OO.ui.infuse( $( '#mw-abusefilter-hidden-' + action + '-field' ) );

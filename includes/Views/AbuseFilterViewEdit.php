@@ -588,7 +588,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 								$this->msg( 'abusefilter-edit-throttle-groups' )->parse()
 							),
 							'align' => 'top',
-							'id' => 'mw-abusefilter-hidden-throttle'
+							'id' => 'mw-abusefilter-hidden-throttle',
+							'help' => new OOUI\HtmlSnippet(
+								'See <a href="https://www.mediawiki.org/wiki/Special:MyLanguage/' .
+								'Extension:AbuseFilter/Actions#Throttling" target="_blank">' .
+								'mediawiki.org</a>.'
+							),
+							'helpInline' => true
 						]
 					);
 
