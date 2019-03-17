@@ -89,7 +89,7 @@ class AbuseFilterHistoryPager extends TablePager {
 				$formatted = htmlspecialchars( $value, ENT_QUOTES, 'UTF-8', false );
 				break;
 			case 'afh_flags':
-				$formatted = AbuseFilter::formatFlags( $value );
+				$formatted = AbuseFilter::formatFlags( $value, $lang );
 				break;
 			case 'afh_actions':
 				$actions = unserialize( $value );
@@ -97,7 +97,7 @@ class AbuseFilterHistoryPager extends TablePager {
 				$display_actions = '';
 
 				foreach ( $actions as $action => $parameters ) {
-					$displayAction = AbuseFilter::formatAction( $action, $parameters );
+					$displayAction = AbuseFilter::formatAction( $action, $parameters, $lang );
 					$display_actions .= Xml::tags( 'li', null, $displayAction );
 				}
 				$display_actions = Xml::tags( 'ul', null, $display_actions );
