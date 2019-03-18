@@ -3,7 +3,8 @@
 		"authors": [
 			"Ooswesthoesbes",
 			"Pahles",
-			"Matma Rex"
+			"Matma Rex",
+			"Fitoschido"
 		]
 	},
 	"abusefilter-desc": "Veurtj automatisch heuristische analyse oet op bewerkinge",
@@ -297,7 +298,7 @@
 	"abusefilter-exception-dividebyzero": "Ongeljige poging toet deile van $2 door nul bie karakter $1.",
 	"abusefilter-exception-unrecognisedvar": "Onherkènbare variabele $2 bie karakter $1",
 	"abusefilter-exception-notenoughargs": "d'r Zeen neet zat parameters ingegaeve veur de functie $2 die is aangeropen in karakter $1.\nd'r {{PLURAL:$3|Woort eine paramaeter|Woorte $3 paramaeters}} verwach en d'r {{PLURAL:$4|is t'r eine|zeen d'r $4}} aangetróffe.",
-	"abusefilter-exception-regexfailure": "d'r Is 'n fout aangetróffen in de regulier expressie \"$3\" bie karakter $1: \"$2\"",
+	"abusefilter-exception-regexfailure": "d'r Is 'n fout aangetróffen in de regulier expressie \"$2\" bie karakter $1.",
 	"abusefilter-exception-overridebuiltin": "De ingeboewde variable \"$2\" is vervange bie karakter $1.\nDit is neet toegestange.",
 	"abusefilter-exception-outofbounds": "d'r Is getrach e lieselement ($2 bie liesgruuedje $3) op te haole det neet besteit bie karakter $1.",
 	"abusefilter-exception-notarray": "d'r Is getrach e verzamelingselement op te vraogen oet get det gein verzameling is bie karakter $1.",

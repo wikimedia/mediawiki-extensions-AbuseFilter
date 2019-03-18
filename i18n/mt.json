@@ -5,7 +5,8 @@
 			"Giangian15",
 			"Roderick Mallia",
 			"Leli Forte",
-			"Matma Rex"
+			"Matma Rex",
+			"Fitoschido"
 		]
 	},
 	"abusefilter-desc": "Tapplika ewristika awtomatika lill-modifiki",
@@ -295,7 +296,7 @@
 	"abusefilter-exception-dividebyzero": "Tentattiv li $2 jiġi diviż b'żero fil-karattru $1.",
 	"abusefilter-exception-unrecognisedvar": "Varjabbli $2 mhux magħruf fil-karattru $1.",
 	"abusefilter-exception-notenoughargs": "M'hemmx argumenti biżżejjed għall-funzjoni $2 fil-karattru $1.\n{{PLURAL:$3|Mistenni argument wieħed|Mistennija $3 argumenti}}, minflok hemm $4.",
-	"abusefilter-exception-regexfailure": "Żball fl-espressjoni regolari \"$3\" fil-karattru $1: \"$2\"",
+	"abusefilter-exception-regexfailure": "Żball fl-espressjoni regolari \"$2\" fil-karattru $1.",
 	"abusefilter-action-tag": "Tikketta",
 	"abusefilter-action-throttle": "Illimta",
 	"abusefilter-action-warn": "Avża",

@@ -20,7 +20,8 @@
 			"Matěj Suchánek",
 			"Citadell",
 			"PeterFisk",
-			"Kingu"
+			"Kingu",
+			"Fitoschido"
 		]
 	},
 	"abusefilter-desc": "Legger til automatisk heuristikk til redigeringer.",
@@ -195,10 +196,10 @@
 	"abusefilter-edit-throttle-period": "Tidsperiode:",
 	"abusefilter-edit-throttle-groups": "Grupper fart etter:\n:''(en på hver linje, kombiner med kommaer)''",
 	"abusefilter-throttle-ip": "IP-adresse",
-	"abusefilter-throttle-user": "Brukerkonto",
+	"abusefilter-throttle-user": "brukerkonto",
 	"abusefilter-throttle-editcount": "Antall redigeringer",
 	"abusefilter-throttle-site": "Hele nettstedet",
-	"abusefilter-throttle-page": "Side",
+	"abusefilter-throttle-page": "side",
 	"abusefilter-throttle-details": "Tillat $1 {{PLURAL:$1|handling|handlinger}} hvert {{PLURAL:$2|sekund|$2. sekund}}, grupper bremsing etter: $3",
 	"abusefilter-edit-warn-message": "Systemmelding å bruke for advarsel:",
 	"abusefilter-edit-warn-other": "Annen melding",

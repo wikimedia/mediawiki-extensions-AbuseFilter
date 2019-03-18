@@ -7,7 +7,8 @@
 			"Nemo bis",
 			"Nick1915",
 			"Matma Rex",
-			"Cusolotto"
+			"Cusolotto",
+			"Fitoschido"
 		]
 	},
 	"abusefilter-desc": "Àplica dele eurìstiche automatiche a le modifiche.",
@@ -287,7 +288,7 @@
 	"abusefilter-exception-dividebyzero": "Tentativo de divìdar $2 par xero al caràtere $1.",
 	"abusefilter-exception-unrecognisedvar": "Variàbile $2 mia riconossùa al caràtere $1.",
 	"abusefilter-exception-notenoughargs": "No vien passà argomenti in bisogno a la funsion $2 ciamà al caràtere $1.\nLa se speta $3 {{PLURAL:$3|argomento|argumenti}}, ghe ne riva xo $4.",
-	"abusefilter-exception-regexfailure": "Eròr al caràtere $1 de l'espression regolare \"$3\": \"$2\"",
+	"abusefilter-exception-regexfailure": "Eròr al caràtere $1 de l'espression regolare \"$2\".",
 	"abusefilter-exception-overridebuiltin": "Overriding mia valido de la variàbile built-in \"$2\" al caràtere $1.",
 	"abusefilter-exception-outofbounds": "Richiesta de voce inesistente de l'elenco $2 (dimension lista = $3) al caratere $1.",
 	"abusefilter-exception-notarray": "Richiesta de un elemento de array da un non array al caratere $1.",

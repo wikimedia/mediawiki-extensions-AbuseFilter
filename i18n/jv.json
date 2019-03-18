@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"NoiX180",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Fitoschido"
 		]
 	},
 	"abusefilter-desc": "Patrapaké pamriksan heuristik otomatis ing besutan",
@@ -263,7 +264,7 @@
 	"abusefilter-exception-dividebyzero": "Upaya ilegal mbagi $2 mawa nol ing karakter $1.",
 	"abusefilter-exception-unrecognisedvar": "Variabel $2 ora kaweruhan ing karakter $1",
 	"abusefilter-exception-notenoughargs": "Ora cukup panemu kanggo fungsi $2 kang diceluk ing karakter $1.\nDikarepaké ana $3 {{PLURAL:$3|panemu|panemu}}, nemu $4",
-	"abusefilter-exception-regexfailure": "Kasalahan ing èksprèsi biasa \"$3\" ing karakter $1: \"$2\"",
+	"abusefilter-exception-regexfailure": "Kasalahan ing èksprèsi biasa \"$2\" ing karakter $1.",
 	"abusefilter-action-tag": "Tag",
 	"abusefilter-action-throttle": "Klep panutup",
 	"abusefilter-action-warn": "Pèngetan",

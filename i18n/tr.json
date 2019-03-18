@@ -19,7 +19,8 @@
 			"Hedda",
 			"Rapsar",
 			"TmY e12",
-			"By erdo can"
+			"By erdo can",
+			"Fitoschido"
 		]
 	},
 	"abusefilter-desc": "Değişikliklere otomatik bulucu yöntemler uygular",
@@ -205,10 +206,10 @@
 	"abusefilter-edit-throttle-period": "Zaman periyodu:",
 	"abusefilter-edit-throttle-groups": "Grup kısma yapan:\n:''(her satıra bir tane, virgülle birleştirin)''",
 	"abusefilter-throttle-ip": "IP adresi",
-	"abusefilter-throttle-user": "Kullanıcı hesabı",
+	"abusefilter-throttle-user": "kullanıcı hesabı",
 	"abusefilter-throttle-editcount": "Değişiklik sayısı",
 	"abusefilter-throttle-site": "Tüm site",
-	"abusefilter-throttle-page": "Sayfa",
+	"abusefilter-throttle-page": "sayfa",
 	"abusefilter-edit-warn-message": "Uyarı için kullanılan sistem mesajı:",
 	"abusefilter-edit-warn-other": "Diğer mesaj",
 	"abusefilter-edit-warn-other-label": "Diğer mesajın sayfa adı:\n:''(MediaWiki ön eki olmadan)''",

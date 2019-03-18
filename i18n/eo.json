@@ -14,7 +14,8 @@
 			"Rafaneta",
 			"Psychoslave",
 			"Lucas",
-			"Surfo"
+			"Surfo",
+			"Fitoschido"
 		]
 	},
 	"abusefilter-desc": "Aplikas aŭtomatan heŭristikon al redaktoj.",
@@ -315,7 +316,7 @@
 	"abusefilter-exception-dividebyzero": "Malpermesita provo dividigi $2 de nulo ĉe signo $1.",
 	"abusefilter-exception-unrecognisedvar": "Nekonata variablo $2 ĉe signo $1",
 	"abusefilter-exception-notenoughargs": "Ne sufiĉaj argumentoj por funkcio $2 vokita ĉe signo $1.\nAtentis $3 {{PLURAL:$3|argumenton|argumentojn}}, ricevis $4",
-	"abusefilter-exception-regexfailure": "Eraro en regulara esprimo \"$3\" ĉe signo $1: \"$2\"",
+	"abusefilter-exception-regexfailure": "Eraro en regulara esprimo \"$2\" ĉe signo $1.",
 	"abusefilter-exception-overridebuiltin": "Malpermesita transpasado de integrita variablo \"$2\" ĉe signo $1.",
 	"abusefilter-exception-outofbounds": "Petante mankantan listeron $2 (lista grandeco = $3) ĉe signo $1.",
 	"abusefilter-exception-notarray": "Petante tabelan eron de netabelaĵo ĉe signo $1.",

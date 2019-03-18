@@ -5,7 +5,8 @@
 			"Matma Rex",
 			"Unuaiga",
 			"Guilhelma",
-			"Matěj Suchánek"
+			"Matěj Suchánek",
+			"Fitoschido"
 		]
 	},
 	"abusefilter-desc": "Aplica d'euristicas automaticas a las modificacions",
@@ -312,7 +313,7 @@
 	"abusefilter-exception-dividebyzero": "Ensag ilegal de devesir $2 per zèro al caractèr $1.",
 	"abusefilter-exception-unrecognisedvar": "Variabla pas reconeguda $2 al caractèr $1",
 	"abusefilter-exception-notenoughargs": "Pas pro de paramètres per la foncion $2 apelada al caractèr $1.\n$3 {{PLURAL:$3|argument demandat|arguments demandats}}, $4 {{PLURAL:$4|obtengut|obtenguts}}",
-	"abusefilter-exception-regexfailure": "Error dins l’expression regulara « $3 » al caractèr $1 : « $2 »",
+	"abusefilter-exception-regexfailure": "Error dins l’expression regulara « $2 » al caractèr $1.",
 	"abusefilter-exception-overridebuiltin": "Espotiment interdich de la variabla disponibla per defaut « $2 » al caractèr $1.",
 	"abusefilter-exception-outofbounds": "Demanda de l'element inexistent $2 (talha de la lista = $3) al caractèr $1.",
 	"abusefilter-exception-notarray": "Demanda d'un element dins quicòm mai qu'un tablèu al caractèr $1.",

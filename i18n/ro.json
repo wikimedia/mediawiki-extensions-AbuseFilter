@@ -13,7 +13,8 @@
 			"Stelistcristi",
 			"Strainu",
 			"Matma Rex",
-			"WebSourceContentRO"
+			"WebSourceContentRO",
+			"Fitoschido"
 		]
 	},
 	"abusefilter-desc": "Aplică euristici automate modificărilor.",
@@ -329,7 +330,7 @@
 	"abusefilter-exception-dividebyzero": "Încercare ilegală de diviziune prin zero a lui $2 la caracterul $1.",
 	"abusefilter-exception-unrecognisedvar": "Variabila $2 nerecunoscută la caracterul $1",
 	"abusefilter-exception-notenoughargs": "Parametri insuficienți pentru funcția $2 invocată la caracterul $1.\nSe {{PLURAL:$3|aștepta un argument|așteptau $3 argumente}}, {{PLURAL:$4|s-a primit|s-au primit}} $4.",
-	"abusefilter-exception-regexfailure": "Eroare în expresia regulată „$3” la caracterul $1: „$2”",
+	"abusefilter-exception-regexfailure": "Eroare în expresia regulată „$2” la caracterul $1.",
 	"abusefilter-exception-overridebuiltin": "Folosire interzisă a variabilei disponibilă implicit „$2” la caracterul $1.",
 	"abusefilter-exception-outofbounds": "Se solicită elementul $2 inexistent în listă (mărimea listei = $3) la caracterul $1",
 	"abusefilter-exception-notarray": "Se solicită un element al vectorului pentru ceva ce nu este vector la caracterul $1.",

@@ -5,7 +5,8 @@
 			"Kwisha",
 			"Lloffiwr",
 			"Stephenwanjau",
-			"Rance"
+			"Rance",
+			"Fitoschido"
 		]
 	},
 	"abuselog": "Kumbukumbu ya matumizi mabaya",
@@ -67,7 +68,7 @@
 	"abusefilter-edit-throttle-period": "Kiwango cha muda (katika sekunde)",
 	"abusefilter-edit-throttle-hidden-placeholder": "Tenganisha kwa mkato kuunganisha AND, na kuunganisha OR tenganisha kwa mistari tofauti",
 	"abusefilter-throttle-ip": "Anuani ya Itifaki ya Muunganiko wa mtandao wa Kompyuta",
-	"abusefilter-throttle-user": "Akaunti ya mtumiaji",
+	"abusefilter-throttle-user": "akaunti ya mtumiaji",
 	"abusefilter-throttle-creationdate": "Tarehe ya kutengeneza akaunti",
 	"abusefilter-throttle-editcount": "Idadi ya hariri",
 	"abusefilter-throttle-site": "Tovuti nzima",

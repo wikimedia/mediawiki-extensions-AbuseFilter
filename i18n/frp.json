@@ -4,7 +4,8 @@
 			"Cedric31",
 			"ChrisPtDe",
 			"McDutchie",
-			"Matma Rex"
+			"Matma Rex",
+			"Fitoschido"
 		]
 	},
 	"abusefilter-desc": "Aplique des heristiques ôtomatiques ux changements.",
@@ -294,7 +295,7 @@
 	"abusefilter-exception-dividebyzero": "Division ilègâla de $2 per zérô u caractèro $1.",
 	"abusefilter-exception-unrecognisedvar": "Variâbla pas recognua $2 u caractèro $1",
 	"abusefilter-exception-notenoughargs": "Pas prod de paramètres por la fonccion $2 apelâ u caractèro $1.\n$3 {{PLURAL:$3|argument demandâ|arguments demandâs}}, $4 avu{{PLURAL:$4||s}}",
-	"abusefilter-exception-regexfailure": "Èrror dens l’èxprèssion racionèla « $3 » u caractèro $1 : « $2 »",
+	"abusefilter-exception-regexfailure": "Èrror dens l’èxprèssion racionèla « $2 » u caractèro $1.",
 	"abusefilter-exception-overridebuiltin": "Ècllafâ dèfendua de la variâbla disponibla per dèfôt « $2 » u caractèro $1.",
 	"abusefilter-exception-outofbounds": "Demanda de l’èlèment pas ègzistent $2 (talye de la lista = $3) u caractèro $1.",
 	"abusefilter-exception-notarray": "Demanda d’un èlèment dens ôtra chousa qu’un tablô u caractèro $1.",

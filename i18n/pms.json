@@ -4,7 +4,8 @@
 			"Borichèt",
 			"Dragonòt",
 			"McDutchie",
-			"Matma Rex"
+			"Matma Rex",
+			"Fitoschido"
 		]
 	},
 	"abusefilter-desc": "A àplica dj'eurìstiche automàtiche a le modìfiche",
@@ -300,7 +301,7 @@
 	"abusefilter-exception-dividebyzero": "Tentativ ilegal ëd divide $2 për zero al caràter $1.",
 	"abusefilter-exception-unrecognisedvar": "Variàbil pa arconossùa $2 al caràter $1.",
 	"abusefilter-exception-notenoughargs": "Pa basta d'argoment a la funsion $2 ciamà al caràter $1.\nSpetà $3 {{PLURAL:$3|argument|argument}}, otnune $4",
-	"abusefilter-exception-regexfailure": "Eror ant l'espression regolar \"$3\" al caràter $1: \"$2\"",
+	"abusefilter-exception-regexfailure": "Eror ant l'espression regolar \"$2\" al caràter $1.",
 	"abusefilter-exception-overridebuiltin": "Coatà ëd fasson ilegal la variàbil dë stàndard \"$2\" al caràter $1.",
 	"abusefilter-exception-outofbounds": "Arcesta ëd l'element inesistent $2 ëd la lista (dimension ëd la lista = $3) al caràter $1.",
 	"abusefilter-exception-notarray": "Arcesta ëd n'element fòra ëd na tàula al caràter $1.",

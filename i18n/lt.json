@@ -13,7 +13,8 @@
 			"Vpovilaitis",
 			"Matma Rex",
 			"Manvydasz",
-			"Hugo.arg"
+			"Hugo.arg",
+			"Fitoschido"
 		]
 	},
 	"abusefilter-desc": "Pakeitimų tikrinimui naudojamas automatinis euristinis tikrinimas",
@@ -172,8 +173,8 @@
 	"abusefilter-edit-throttle-period": "Laiko tarpas (sekundėmis):",
 	"abusefilter-edit-throttle-groups": "Statistikos rinkimo grupė:\n:''(viena eilutėje, jungti kableliais)''",
 	"abusefilter-throttle-ip": "IP adresas",
-	"abusefilter-throttle-user": "Naudotojo paskyra",
-	"abusefilter-throttle-page": "Puslapis",
+	"abusefilter-throttle-user": "naudotojo paskyra",
+	"abusefilter-throttle-page": "puslapis",
 	"abusefilter-edit-warn-message": "Sisteminis pranešimas, kuris naudojamas perspėjimui:",
 	"abusefilter-edit-warn-other": "Kitas pranešimas",
 	"abusefilter-edit-warn-other-label": "Kito pranešimo puslapio vardas:\n:''(be MediaWiki priešdėlio)''",

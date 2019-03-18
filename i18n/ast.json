@@ -3,7 +3,8 @@
 		"authors": [
 			"Mr.Ajedrez",
 			"Xuacu",
-			"Matma Rex"
+			"Matma Rex",
+			"Fitoschido"
 		]
 	},
 	"abusefilter-desc": "Aplica heurística automática a les ediciones.",
@@ -201,12 +202,12 @@
 	"abusefilter-edit-throttle-count": "Númberu d'aiciones a permitir:",
 	"abusefilter-edit-throttle-period": "Periodu de tiempu (en segundos):",
 	"abusefilter-edit-throttle-groups": "Agrupar la regulación por:",
-	"abusefilter-throttle-ip": "Direición IP",
-	"abusefilter-throttle-user": "Cuenta d'usuariu",
+	"abusefilter-throttle-ip": "direición IP",
+	"abusefilter-throttle-user": "cuenta d'usuariu",
 	"abusefilter-throttle-range": "rangu /16",
 	"abusefilter-throttle-editcount": "Contador d'ediciones",
 	"abusefilter-throttle-site": "El sitiu enteru",
-	"abusefilter-throttle-page": "Páxina",
+	"abusefilter-throttle-page": "páxina",
 	"abusefilter-throttle-details": "Permitir $1 {{PLURAL:$1|aición|aiciones}} cada {{PLURAL:$2|segundu|$2 segundos}}, regular el grupu por: $3",
 	"abusefilter-edit-warn-message": "Mensaxe del sistema a usar pal avisu:",
 	"abusefilter-edit-warn-other": "Otru mensaxe",
@@ -214,6 +215,8 @@
 	"abusefilter-edit-warn-actions": "Aiciones:",
 	"abusefilter-edit-warn-preview": "Amosar/Anubrir la vista previa del mensaxe seleicionáu",
 	"abusefilter-edit-warn-edit": "Crear/Editar el mensaxe seleicionáu",
+	"abusefilter-edit-disallow-other": "Otru mensaxe",
+	"abusefilter-edit-disallow-actions": "Aiciones:",
 	"abusefilter-edit-tag-tag": "[[Special:Tags|Etiquetes]] a aplicar:",
 	"abusefilter-edit-tag-placeholder": "Añadir etiquetes (una por una o separaes por comes)",
 	"abusefilter-edit-tag-hidden-placeholder": "Añadir etiquetes (dixebraes por comes)",
@@ -407,7 +410,7 @@
 	"abusefilter-exception-dividebyzero": "Intentu illegal de dividir $2 por cero nel caráuter $1.",
 	"abusefilter-exception-unrecognisedvar": "Variable $2 non reconocida nel caráuter $1.",
 	"abusefilter-exception-notenoughargs": "Non hai argumentos abondo pa la función $2 llamada nel caráuter $1.\n\t{{PLURAL:$3|Esperabase un argumentu|Esperabense $3 argumentos}}, tienense $4",
-	"abusefilter-exception-regexfailure": "Error na espresión regular \"$3\" nel caráuter $1: \"$2\"",
+	"abusefilter-exception-regexfailure": "Error na espresión regular «$2» nel caráuter $1.",
 	"abusefilter-exception-overridebuiltin": "Anulación illegal de la variable interna \"$2\" nel caráuter $1.",
 	"abusefilter-exception-outofbounds": "Solicitando l'elementu inesistente $2 de la matriz (tamañu de la matriz = $3) nel caráuter $1.",
 	"abusefilter-exception-notarray": "Solicitando un elementu de matriz d'una non-matriz nel caráuter $1.",

@@ -17,7 +17,8 @@
 			"Αντιγόνη",
 			"Matma Rex",
 			"KATRINE1992",
-			"Nikosgranturismogt"
+			"Nikosgranturismogt",
+			"Fitoschido"
 		]
 	},
 	"abusefilter-desc": "Εφαρμόζει αυτόματη ανίχνευση σε επεξεργασίες",
@@ -343,7 +344,7 @@
 	"abusefilter-exception-dividebyzero": "Παράνομη προσπάθεια να διαχωριστεί τοe $2 μέσω μηδέν στον χαρακτήρα $1.",
 	"abusefilter-exception-unrecognisedvar": "Μη αναγνωρίσιμη μεταβλητή $2 στον χαρακτήρα $1.",
 	"abusefilter-exception-notenoughargs": "Όχι αρκετά ορίσματα στη συνάρτηση $2 που κλήθηκε στον χαρακτήρα $1.\n$3 {{PLURAL:$3|αναμενόμενο κατηγορούμενο|αναμενόμενα κατηγορούμενα}}, $4 αποκτημένα.",
-	"abusefilter-exception-regexfailure": "Σφάλμα στην κανονική έκφραση \"$3\" στον χαρακτήρα $1: \"$2\"",
+	"abusefilter-exception-regexfailure": "Σφάλμα στην κανονική έκφραση \"$2\" στον χαρακτήρα $1.",
 	"abusefilter-exception-overridebuiltin": "Παράνομη τοπική υπερκάλυψη της ενσωματωμένης μεταβλητής \"$2\" στον χαρακτήρα $1.",
 	"abusefilter-exception-outofbounds": "Η ζήτηση μη υπαρχόντων αντικειμένων λίστας $2 (μέγεθος λίστας = $3) στο χαρακτήρα $1.",
 	"abusefilter-exception-notarray": "Αίτηση για ένα αντικείμενο μέσα σε κάτι διαφορετικό από πίνακα στον χαρακτήρα $1.",

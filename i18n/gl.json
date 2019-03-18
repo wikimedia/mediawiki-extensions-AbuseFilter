@@ -6,7 +6,8 @@
 			"Banjo",
 			"Matma Rex",
 			"Navhy",
-			"Maria zaos"
+			"Maria zaos",
+			"Fitoschido"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas ás edicións",
@@ -396,7 +397,7 @@
 	"abusefilter-exception-dividebyzero": "Intento ilegal de dividir $2 entre cero no carácter $1.",
 	"abusefilter-exception-unrecognisedvar": "Variable $2 descoñecida no carácter $1",
 	"abusefilter-exception-notenoughargs": "Non hai argumentos dabondo para a función $2 chamada no carácter $1.\n{{PLURAL:$3|Agardábase o argumento|Agardábanse os argumentos}} $3, obtívose $4",
-	"abusefilter-exception-regexfailure": "Erro na expresión regular \"$3\" no carácter $1: \"$2\"",
+	"abusefilter-exception-regexfailure": "Erro na expresión regular \"$2\" no carácter $1.",
 	"abusefilter-exception-overridebuiltin": "Ignorancia ilegal da variable incorporada \"$2\" no carácter $1.",
 	"abusefilter-exception-outofbounds": "O elemento $2 solicitado da lista non existe (tamaño da lista = $3) no carácter $1.",
 	"abusefilter-exception-notarray": "Conxunto de elementos solicitados de non conxunto no carácter $1.",

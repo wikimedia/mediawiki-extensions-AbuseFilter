@@ -4,7 +4,8 @@
 			"Aushulz",
 			"Gmelfi",
 			"Pippinu",
-			"Sarvaturi"
+			"Sarvaturi",
+			"Fitoschido"
 		]
 	},
 	"abusefilter-desc": "Fa' cuntrolli autumàtici di tipu eurìsticu supra dî canciamenti",
@@ -310,7 +311,7 @@
 	"abusefilter-exception-dividebyzero": "Divisioni nun vàlida di nu $2 pi zeru ô caràttiri $1.",
 	"abusefilter-exception-unrecognisedvar": "Variàbbili scanusciuta «$2» ô caràttiri $1.",
 	"abusefilter-exception-notenoughargs": "Sunnu passati troppu picca argumenti â funzioni «$2» quannu veni chiamata ô caràttiri $1.\n\tCi nni {{PLURAL:$3|voli|vonnu}} $3, nn'havi $4",
-	"abusefilter-exception-regexfailure": "Erruri ntâ sprissioni rigulari «$3» ô caràttiri $1: «$2»",
+	"abusefilter-exception-regexfailure": "Erruri ntâ sprissioni rigulari «$2» ô caràttiri $1.",
 	"abusefilter-exception-overridebuiltin": "Suprascrittura nun cunzintuta dâ variàbbili ncurpurata «$2» ô caràttiri $1.",
 	"abusefilter-exception-outofbounds": "Veni addumannatu di na lista l'elimentu $2 ca nun esisti (lunghizza dâ lista = $3), ô caràttiri $1.",
 	"abusefilter-exception-notarray": "Veni addumannatu l’elementu dûn vitturi nta na cosa ca nun è un vitturi, ô caràttiri $1.",

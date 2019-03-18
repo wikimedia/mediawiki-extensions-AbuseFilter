@@ -3,7 +3,8 @@
 		"authors": [
 			"Joachim Mos",
 			"Slomox",
-			"Matma Rex"
+			"Matma Rex",
+			"Fitoschido"
 		]
 	},
 	"abusefilter-desc": "Föhrt automaatsch heuristische Analysen op Ännern ut",
@@ -264,7 +265,7 @@
 	"abusefilter-exception-dividebyzero": "Bi Teken $1 warrt versöcht $2 dör Null to delen.",
 	"abusefilter-exception-unrecognisedvar": "Variabel $2 bi Teken $1 nich kennt",
 	"abusefilter-exception-notenoughargs": "De Funkschoon $2 sünd bi Teken $1 to wenig Parameters övergeven worrn.\n{{PLURAL:$3|$3 Parameter|$3 Parameters}} weren verwacht, dor {{PLURAL:$4|weer $4|weren $4}}.",
-	"abusefilter-exception-regexfailure": "Fehler in’n regulären Utdruck „$3“ bi Teken $1: „$2“",
+	"abusefilter-exception-regexfailure": "Fehler in’n regulären Utdruck „$2“ bi Teken $1.",
 	"abusefilter-exception-overridebuiltin": "Verbaden Överschrieven vun inboot Variabel „$2“ bi Teken $1.",
 	"abusefilter-exception-outofbounds": "Anfeddern vun en nich vörhannen Listenindrag $2 (Listengrött: $3) bi Teken $1.",
 	"abusefilter-exception-notarray": "Anfeddern vun en Arrayelement ut en Nich-Array bi Teken „$1“.",

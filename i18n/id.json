@@ -17,7 +17,8 @@
 			"Hidayatsrf",
 			"J Nia30",
 			"Aldnonymous",
-			"Pebaryan"
+			"Pebaryan",
+			"Fitoschido"
 		]
 	},
 	"abusefilter-desc": "Memberlakukan pemeriksaan heuristik otomatis atas kontribusi pengguna.",
@@ -199,7 +200,7 @@
 	"abusefilter-edit-throttle-period": "Periode waktu (detik):",
 	"abusefilter-edit-throttle-groups": "Kelompokkan katup menurut:\n:''(satu per baris, kombinasi dengan koma)''",
 	"abusefilter-throttle-ip": "Alamat IP",
-	"abusefilter-throttle-user": "Akun pengguna",
+	"abusefilter-throttle-user": "akun pengguna",
 	"abusefilter-throttle-range": "/16 range",
 	"abusefilter-throttle-creationdate": "tanggal pembuatan akun",
 	"abusefilter-throttle-editcount": "Jumlah suntingan",

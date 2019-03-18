@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Demmy",
-			"Wikicology"
+			"Wikicology",
+			"Fitoschido"
 		]
 	},
 	"abusefilter-disallowed": "Ìgbéṣe yìí ti jẹ́ dídámọ̀ fúnrararẹ̀ bíi eléwu, bíi bẹ́ẹ̀ ó ti jẹ́ dídílọ́nà.\nTí ẹ bá nígbàgbọ́ pé àtúnṣe yín jẹ́ awúlò, ẹ jọ̀wọ́ ẹ fi tó olùmójútó kan létí ohun tí ẹ fẹ́ ṣe.\nÌjúwe ní sókí òfin ìbàjẹ́ tí ó bá ìgbéṣe yín mu ni: $1",
@@ -26,7 +27,7 @@
 	"abusefilter-edit-status-label": "Àwọn statistiki:",
 	"abusefilter-edit-deleted": "Fàlàsí bíi píparẹ́",
 	"abusefilter-edit-lastmod-text": "$1 latọwọ́ $2",
-	"abusefilter-throttle-page": "Ojú ewé",
+	"abusefilter-throttle-page": "ojú ewé",
 	"abusefilter-edit-warn-other": "Ìránṣẹ́ míràn",
 	"abusefilter-edit-warn-actions": "Àwọn ìgbéṣe:",
 	"abusefilter-edit-warn-preview": "Àkọ́yẹ̀wò ìránṣẹ́ ṣíṣàyàn",
