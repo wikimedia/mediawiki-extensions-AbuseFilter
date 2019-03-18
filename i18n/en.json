@@ -200,6 +200,8 @@
 	"abusefilter-edit-throttle-count": "Number of actions to allow:",
 	"abusefilter-edit-throttle-period": "Period of time (in seconds):",
 	"abusefilter-edit-throttle-groups": "Group throttle by:",
+	"abusefilter-edit-throttle-groups-help": "See $1.",
+	"abusefilter-edit-throttle-groups-help-text": "the documentation on mediawiki.org",
 	"abusefilter-edit-throttle-hidden-placeholder": "Split with commas to join with AND, and with linebreaks to join with OR",
 	"abusefilter-edit-throttle-placeholder": "Split with commas to join with AND, and insert one by one to join with OR",
 	"abusefilter-throttle-ip": "IP address",

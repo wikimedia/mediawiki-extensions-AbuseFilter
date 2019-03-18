@@ -564,13 +564,17 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						]
 					);
 
-				$throttleConfig = [
-					'values' => $throttleGroups,
-					'label' => $this->msg( 'abusefilter-edit-throttle-groups' )->parse(),
-					'disabled' => $readOnly
-				];
-				$this->getOutput()->addJsConfigVars( 'throttleConfig', $throttleConfig );
-
+				$groupsHelpLink = Html::element(
+					'a',
+					[
+						'href' => 'https://www.mediawiki.org/wiki/Special:MyLanguage/' .
+							'Extension:AbuseFilter/Actions#Throttling',
+						'target' => '_blank'
+					],
+					$this->msg( 'abusefilter-edit-throttle-groups-help-text' )->text()
+				);
+				$groupsHelp = $this->msg( 'abusefilter-edit-throttle-groups-help' )
+						->rawParams( $groupsHelpLink )->escaped();
 				$hiddenGroups =
 					new OOUI\FieldLayout(
 						new OOUI\MultilineTextInputWidget( [
@@ -589,16 +593,20 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 							),
 							'align' => 'top',
 							'id' => 'mw-abusefilter-hidden-throttle',
-							'help' => new OOUI\HtmlSnippet(
-								'See <a href="https://www.mediawiki.org/wiki/Special:MyLanguage/' .
-								'Extension:AbuseFilter/Actions#Throttling" target="_blank">' .
-								'mediawiki.org</a>.'
-							),
+							'help' => new OOUI\HtmlSnippet( $groupsHelp ),
 							'helpInline' => true
 						]
 					);
 
 				$throttleFields['abusefilter-edit-throttle-groups'] = $hiddenGroups;
+
+				$throttleConfig = [
+					'values' => $throttleGroups,
+					'label' => $this->msg( 'abusefilter-edit-throttle-groups' )->parse(),
+					'disabled' => $readOnly,
+					'help' => $groupsHelp
+				];
+				$this->getOutput()->addJsConfigVars( 'throttleConfig', $throttleConfig );
 
 				$throttleSettings .=
 					Xml::tags(

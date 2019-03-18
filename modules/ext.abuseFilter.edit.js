@@ -407,11 +407,7 @@
 			align: 'top'
 		};
 		if ( action === 'throttle' ) {
-			fieldOpts.help =
-				new OO.ui.HtmlSnippet(
-					'See <a href="https://www.mediawiki.org/wiki/Special:MyLanguage/' +
-					'Extension:AbuseFilter/Actions#Throttling" target="_blank">' +
-					'mediawiki.org</a>.' );
+			fieldOpts.help = new OO.ui.HtmlSnippet( config.help );
 		}
 
 		field = new OO.ui.FieldLayout( selector, fieldOpts );
