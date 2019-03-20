@@ -217,6 +217,7 @@
 	"abusefilter-edit-disallow-other": "Іншае паведамленьне",
 	"abusefilter-edit-disallow-actions": "Дзеяньні:",
 	"abusefilter-edit-tag-tag": "Ужываемыя [[Special:Tags|тэгі]]:",
+	"abusefilter-edit-tag-hidden-placeholder": "Дадаць меткі (праз коску)",
 	"abusefilter-block-anon": "Блякаваць ананімных удзельнікаў",
 	"abusefilter-block-user": "блякаваць зарэгістраваных удзельнікаў",
 	"abusefilter-block-talk": "старонка абмеркаваньня заблякаваная",
