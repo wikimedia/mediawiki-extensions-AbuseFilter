@@ -1486,7 +1486,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 		$ip = $args[0]->toString();
 		$range = $args[1]->toString();
 
-		if ( !IPUtils::isValidRange( $range ) ) {
+		if ( !IPUtils::isValidRange( $range ) && !IPUtils::isIPAddress( $range ) ) {
 			throw new AFPUserVisibleException(
 				'invalidiprange',
 				$this->mCur->pos,
