@@ -2891,12 +2891,15 @@ class AbuseFilter {
 		$vars->setVar( 'file_mime', $file->getMimeType() );
 		$vars->setVar(
 			'file_mediatype',
-			MediaWiki\MediaWikiServices::getInstance()->getMimeAnalyzer()
+			MediaWikiServices::getInstance()->getMimeAnalyzer()
 				->getMediaType( null, $file->getMimeType() )
 		);
 		$vars->setVar( 'file_width', $file->getWidth() );
 		$vars->setVar( 'file_height', $file->getHeight() );
-		$vars->setVar( 'file_bits_per_channel', $file->getImageSize( $file->getLocalRefPath() )['bits'] );
+
+		$mwProps = new MWFileProps( MediaWikiServices::getInstance()->getMimeAnalyzer() );
+		$bits = $mwProps->getPropsFromPath( $file->getLocalRefPath(), true )['bits'];
+		$vars->setVar( 'file_bits_per_channel', $bits );
 
 		return $vars;
 	}
