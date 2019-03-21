@@ -173,7 +173,8 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 		return [
 			[ '((("a" == "b")))', 1 ],
 			[ 'contains_any("a", "b", "c")', 1 ],
-			[ '"a" == "b" == "c"', 2 ],
+			[ '"a" == "b" & "b" == "c"', 1 ],
+			[ '"a" == "b" | "b" == "c"', 2 ],
 			[ '"a" in "b" + "c" in "d" + "e" in "f"', 3 ],
 			[ 'true', 0 ],
 			[ '"a" == "a" | "c" == "d"', 1 ],
@@ -640,6 +641,62 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 		$deprecated = AbuseFilter::$deprecatedVars;
 		foreach ( $deprecated as $old => $new ) {
 			yield $old => [ $old, $new ];
+		}
+	}
+
+	/**
+	 * Ensure that things like `'a' === 'b' === 'c'` or `1 < 2 < 3` are rejected, while `1 < 2 == 3`
+	 * and `1 == 2 < 3` are not. (T218906)
+	 * @param string $code Code to parse
+	 * @param bool $valid Whether $code is valid (or should throw an exception)
+	 * @dataProvider provideConsecutiveComparisons
+	 */
+	public function testDisallowConsecutiveComparisons( $code, $valid ) {
+		foreach ( self::getParsers() as $parser ) {
+			$pname = get_class( $parser );
+			$actuallyValid = true;
+			try {
+				$parser->parse( $code );
+			} catch ( AFPUserVisibleException $e ) {
+				$actuallyValid = false;
+			}
+
+			$this->assertSame(
+				$valid,
+				$actuallyValid,
+				'The code should' . ( $valid ? ' ' : ' NOT ' ) . "be parsed correctly. Parser: $pname"
+			);
+		}
+	}
+
+	/**
+	 * Data provider for testDisallowConsecutiveComparisons
+	 *
+	 * @return Generator
+	 */
+	public function provideConsecutiveComparisons() {
+		// Same as AbuseFilterParser::doLevelCompares
+		$eqOps = [ '==', '===', '!=', '!==', '=' ];
+		$ordOps = [ '<', '>', '<=', '>=' ];
+		$ops = array_merge( $eqOps, $ordOps );
+		foreach ( $ops as $op1 ) {
+			foreach ( $ops as $op2 ) {
+				$testStr = "1 $op1 3.14 $op2 -1";
+				$valid = ( in_array( $op1, $eqOps ) && in_array( $op2, $ordOps ) ) ||
+					( in_array( $op1, $ordOps ) && in_array( $op2, $eqOps ) );
+				yield $testStr => [ $testStr, $valid ];
+			}
+		}
+		// Some more cases with more than 2 comparisons
+		$extra = [
+			'1 === 1 < 3 === 0',
+			'1 === 1 < 3 === 0 < 555',
+			'1 < 3 === 0 < 555',
+			'1 < 3 === 0 < 555 !== 444',
+			'1 != 0 < 3 == 1 > 0 != 0'
+		];
+		foreach ( $extra as $case ) {
+			yield $case => [ $case, false ];
 		}
 	}
 }

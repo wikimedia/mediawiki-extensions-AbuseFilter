@@ -524,15 +524,22 @@ class AbuseFilterParser {
 	 */
 	protected function doLevelCompares( &$result ) {
 		$this->doLevelSumRels( $result );
-		$ops = [ '==', '===', '!=', '!==', '<', '>', '<=', '>=', '=' ];
-		while ( $this->mCur->type === AFPToken::TOP && in_array( $this->mCur->value, $ops ) ) {
+		$equalityOps = [ '==', '===', '!=', '!==', '=' ];
+		$orderOps = [ '<', '>', '<=', '>=' ];
+		// Only allow either a single operation, or a combination of a single equalityOps and a single
+		// orderOps. This resembles what PHP does, and allows `a < b == c` while rejecting `a < b < c`
+		$allowedOps = array_merge( $equalityOps, $orderOps );
+		while ( $this->mCur->type === AFPToken::TOP && in_array( $this->mCur->value, $allowedOps ) ) {
+			$allowedOps = in_array( $this->mCur->value, $equalityOps ) ?
+				array_diff( $allowedOps, $equalityOps ) :
+				array_diff( $allowedOps, $orderOps );
 			$op = $this->mCur->value;
 			$this->move();
 			$r2 = new AFPData();
 			$this->doLevelSumRels( $r2 );
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
-				break;
+				continue;
 			}
 			$this->raiseCondCount();
 			$result = AFPData::compareOp( $result, $r2, $op );
