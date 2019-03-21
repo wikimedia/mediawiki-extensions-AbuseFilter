@@ -2869,7 +2869,7 @@ class AbuseFilter {
 
 		$vars->addHolders(
 			self::generateUserVars( $user ),
-			self::generateTitleVars( $title, 'ARTICLE' )
+			self::generateTitleVars( $title, 'page' )
 		);
 
 		$vars->setVar( 'action', 'upload' );
