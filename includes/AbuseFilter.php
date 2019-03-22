@@ -3309,7 +3309,7 @@ class AbuseFilter {
 
 		if ( Hooks::run( 'AbuseFilter-contentToString', [ $content, &$text ] ) ) {
 			$text = $content instanceof TextContent
-				? $content->getNativeData()
+				? $content->getText()
 				: $content->getTextForSearchIndex();
 		}
 
