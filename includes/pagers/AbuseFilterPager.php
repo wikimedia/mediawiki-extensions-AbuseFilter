@@ -259,7 +259,7 @@ class AbuseFilterPager extends TablePager {
 	 * @return string
 	 */
 	public function getTableClass() {
-		return 'TablePager mw-abusefilter-list-scrollable';
+		return parent::getTableClass() . ' mw-abusefilter-list-scrollable';
 	}
 
 	/**
