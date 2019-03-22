@@ -1214,7 +1214,7 @@ class AbuseFilter {
 		} else {
 			$status = self::executeFilterActions( $matched_filters, $title, $vars, $user );
 			$actions_taken = $status->getValue();
-			$action = $vars->getVar( 'ACTION' )->toString();
+			$action = $vars->getVar( 'action' )->toString();
 
 			// If $user isn't safe to load (e.g. a failure during
 			// AbortAutoAccount), create a dummy anonymous user instead.
@@ -2810,7 +2810,7 @@ class AbuseFilter {
 	public static function getCreateVarsFromRCRow( $row ) {
 		$vars = new AbuseFilterVariableHolder;
 
-		$vars->setVar( 'ACTION', ( $row->rc_log_action == 'autocreate' ) ?
+		$vars->setVar( 'action', ( $row->rc_log_action == 'autocreate' ) ?
 			'autocreateaccount' :
 			'createaccount' );
 
@@ -2843,11 +2843,11 @@ class AbuseFilter {
 
 		$vars->addHolders(
 			self::generateUserVars( $user ),
-			self::generateTitleVars( $title, 'PAGE' )
+			self::generateTitleVars( $title, 'page' )
 		);
 
-		$vars->setVar( 'ACTION', 'delete' );
-		$vars->setVar( 'SUMMARY', CommentStore::getStore()->getComment( 'rc_comment', $row )->text );
+		$vars->setVar( 'action', 'delete' );
+		$vars->setVar( 'summary', CommentStore::getStore()->getComment( 'rc_comment', $row )->text );
 
 		return $vars;
 	}
@@ -2921,11 +2921,11 @@ class AbuseFilter {
 
 		$vars->addHolders(
 			self::generateUserVars( $user ),
-			self::generateTitleVars( $title, 'PAGE' )
+			self::generateTitleVars( $title, 'page' )
 		);
 
-		$vars->setVar( 'ACTION', 'edit' );
-		$vars->setVar( 'SUMMARY', CommentStore::getStore()->getComment( 'rc_comment', $row )->text );
+		$vars->setVar( 'action', 'edit' );
+		$vars->setVar( 'summary', CommentStore::getStore()->getComment( 'rc_comment', $row )->text );
 
 		$vars->setLazyLoadVar( 'new_wikitext', 'revision-text-by-id',
 			[ 'revid' => $row->rc_this_oldid ] );
@@ -2965,8 +2965,8 @@ class AbuseFilter {
 			self::generateTitleVars( $newTitle, 'MOVED_TO' )
 		);
 
-		$vars->setVar( 'SUMMARY', CommentStore::getStore()->getComment( 'rc_comment', $row )->text );
-		$vars->setVar( 'ACTION', 'move' );
+		$vars->setVar( 'summary', CommentStore::getStore()->getComment( 'rc_comment', $row )->text );
+		$vars->setVar( 'action', 'move' );
 
 		return $vars;
 	}
