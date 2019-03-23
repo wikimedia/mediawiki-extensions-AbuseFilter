@@ -74,7 +74,7 @@ class AddMissingLoggingEntries extends Maintenance {
 
 		$count = 0;
 		foreach ( $afhRows as $row ) {
-			if ( $count % 100 == 0 ) {
+			if ( $count % 100 === 0 ) {
 				wfWaitForSlaves();
 			}
 			$user = User::newFromAnyId( $row->afh_user, $row->afh_user_text, null );

@@ -259,7 +259,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		switch ( $action ) {
 			case 'block':
 				$block = Block::newFromTarget( $result['user'] );
-				if ( !( $block && $block->getBy() == AbuseFilter::getFilterUser()->getId() ) ) {
+				if ( !( $block && $block->getBy() === AbuseFilter::getFilterUser()->getId() ) ) {
 					// Not blocked by abuse filter
 					return false;
 				}

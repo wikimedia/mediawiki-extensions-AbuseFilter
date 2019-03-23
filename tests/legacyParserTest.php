@@ -19,7 +19,7 @@ foreach ( $tests as $test ) {
 	$result = substr( $test, 0, -2 ) . ".r";
 
 	$rule = trim( file_get_contents( $test ) );
-	$output = trim( file_get_contents( $result ) ) == 'MATCH';
+	$output = trim( file_get_contents( $result ) ) === 'MATCH';
 
 	$testname = basename( $test );
 
@@ -29,7 +29,7 @@ foreach ( $tests as $test ) {
 		$check++;
 		$actual = intval( $tester->parse( $rule ) );
 
-		if ( $actual == $output ) {
+		if ( $actual === $output ) {
 			print "-PASSED.\n";
 			$pass++;
 		} else {

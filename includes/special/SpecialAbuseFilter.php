@@ -31,7 +31,7 @@ class SpecialAbuseFilter extends SpecialPage {
 
 		$this->checkPermissions();
 
-		if ( $request->getVal( 'result' ) == 'success' ) {
+		if ( $request->getVal( 'result' ) === 'success' ) {
 			$out->setSubtitle( $this->msg( 'abusefilter-edit-done-subtitle' ) );
 			$changedFilter = intval( $request->getVal( 'changedfilter' ) );
 			$changeId = intval( $request->getVal( 'changeid' ) );
@@ -58,57 +58,57 @@ class SpecialAbuseFilter extends SpecialPage {
 		}
 		$params = array_values( $params );
 
-		if ( $subpage == 'tools' ) {
+		if ( $subpage === 'tools' ) {
 			$view = 'AbuseFilterViewTools';
 			$pageType = 'tools';
 			$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 		}
 
-		if ( count( $params ) == 2 && $params[0] == 'revert' && is_numeric( $params[1] ) ) {
+		if ( count( $params ) === 2 && $params[0] === 'revert' && is_numeric( $params[1] ) ) {
 			$this->mFilter = $params[1];
 			$view = 'AbuseFilterViewRevert';
 			$pageType = 'revert';
 		}
 
-		if ( count( $params ) && $params[0] == 'test' ) {
+		if ( count( $params ) && $params[0] === 'test' ) {
 			$view = 'AbuseFilterViewTestBatch';
 			$pageType = 'test';
 			$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 		}
 
-		if ( count( $params ) && $params[0] == 'examine' ) {
+		if ( count( $params ) && $params[0] === 'examine' ) {
 			$view = 'AbuseFilterViewExamine';
 			$pageType = 'examine';
 			$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 		}
 
-		if ( !empty( $params[0] ) && ( $params[0] == 'history' || $params[0] == 'log' ) ) {
+		if ( !empty( $params[0] ) && ( $params[0] === 'history' || $params[0] === 'log' ) ) {
 			$pageType = '';
-			if ( count( $params ) == 1 ) {
+			if ( count( $params ) === 1 ) {
 				$view = 'AbuseFilterViewHistory';
 				$pageType = 'recentchanges';
-			} elseif ( count( $params ) == 2 ) {
+			} elseif ( count( $params ) === 2 ) {
 				// Second param is a filter ID
 				$view = 'AbuseFilterViewHistory';
 				$pageType = 'recentchanges';
 				$this->mFilter = $params[1];
-			} elseif ( count( $params ) == 4 && $params[2] == 'item' ) {
+			} elseif ( count( $params ) === 4 && $params[2] === 'item' ) {
 				$this->mFilter = $params[1];
 				$this->mHistoryID = $params[3];
 				$view = 'AbuseFilterViewEdit';
-			} elseif ( count( $params ) == 5 && $params[2] == 'diff' ) {
+			} elseif ( count( $params ) === 5 && $params[2] === 'diff' ) {
 				// Special:AbuseFilter/history/<filter>/diff/<oldid>/<newid>
 				$view = 'AbuseFilterViewDiff';
 			}
 		}
 
-		if ( is_numeric( $subpage ) || $subpage == 'new' ) {
+		if ( is_numeric( $subpage ) || $subpage === 'new' ) {
 			$this->mFilter = $subpage;
 			$view = 'AbuseFilterViewEdit';
 			$pageType = 'edit';
 		}
 
-		if ( $subpage == 'import' ) {
+		if ( $subpage === 'import' ) {
 			$view = 'AbuseFilterViewImport';
 			$pageType = 'import';
 		}
@@ -128,7 +128,7 @@ class SpecialAbuseFilter extends SpecialPage {
 	public function loadParameters( $subpage ) {
 		$filter = $subpage;
 
-		if ( !is_numeric( $filter ) && $filter != 'new' ) {
+		if ( !is_numeric( $filter ) && $filter !== 'new' ) {
 			$filter = $this->getRequest()->getIntOrNull( 'wpFilter' );
 		}
 		$this->mFilter = $filter;

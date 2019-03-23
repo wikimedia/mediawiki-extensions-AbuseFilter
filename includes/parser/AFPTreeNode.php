@@ -108,7 +108,7 @@ class AFPTreeNode {
 	}
 
 	private function toDebugStringInner() {
-		if ( $this->type == self::ATOM ) {
+		if ( $this->type === self::ATOM ) {
 			return [ "ATOM({$this->children->type} {$this->children->value})" ];
 		}
 

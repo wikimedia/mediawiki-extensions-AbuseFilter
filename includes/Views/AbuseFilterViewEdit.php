@@ -44,7 +44,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Add the default warning and disallow messages in a JS variable
 		$this->exposeMessages();
 
-		if ( $filter == 'new' && !$this->canEdit() ) {
+		if ( $filter === 'new' && !$this->canEdit() ) {
 			$out->addHTML(
 				Xml::tags(
 					'p',
@@ -189,7 +189,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$fields = [];
 
 		$fields['abusefilter-edit-id'] =
-			$this->mFilter == 'new' ?
+			$this->mFilter === 'new' ?
 				$this->msg( 'abusefilter-edit-new' )->escaped() :
 				$lang->formatNum( $filter );
 		$fields['abusefilter-edit-description'] =
@@ -326,19 +326,19 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				'align' => 'inline',
 			];
 
-			if ( $checkboxId == 'global' && !$this->canEditGlobal() ) {
+			if ( $checkboxId === 'global' && !$this->canEditGlobal() ) {
 				$checkboxAttribs['disabled'] = 'disabled';
 			}
 
 			// Set readonly on deleted if the filter isn't disabled
-			if ( $checkboxId == 'deleted' && $row->af_enabled == 1 ) {
+			if ( $checkboxId === 'deleted' && $row->af_enabled == 1 ) {
 				$checkboxAttribs['disabled'] = 'disabled';
 			}
 
 			// Add infusable where needed
-			if ( $checkboxId == 'deleted' || $checkboxId == 'enabled' ) {
+			if ( $checkboxId === 'deleted' || $checkboxId === 'enabled' ) {
 				$checkboxAttribs['infusable'] = true;
-				if ( $checkboxId == 'deleted' ) {
+				if ( $checkboxId === 'deleted' ) {
 					$labelAttribs['id'] = $postVar . 'Label';
 					$labelAttribs['infusable'] = true;
 				}
@@ -355,7 +355,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$fields['abusefilter-edit-flags'] = $flags;
 		$tools = '';
 
-		if ( $filter != 'new' ) {
+		if ( $filter !== 'new' ) {
 			if ( $user->isAllowed( 'abusefilter-revert' ) ) {
 				$tools .= Xml::tags(
 					'p', null,
@@ -854,7 +854,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 							new OOUI\CheckboxInputWidget( [
 								'name' => 'wpFilterBlockTalk',
 								'id' => 'mw-abusefilter-action-checkbox-blocktalk',
-								'selected' => isset( $blockTalk ) && $blockTalk == 'blocktalk',
+								'selected' => isset( $blockTalk ) && $blockTalk === 'blocktalk',
 								'classes' => [ 'mw-abusefilter-action-checkbox' ],
 								'disabled' => $readOnly
 							]
@@ -944,7 +944,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				// mw-abusefilter-warn-message-existing, mw-abusefilter-disallow-message-existing
 				'id' => "mw-abusefilter-$formId-message-existing",
 				// abusefilter-warning, abusefilter-disallowed
-				'value' => $warnMsg == "abusefilter-$action" ? "abusefilter-$action" : 'other',
+				'value' => $warnMsg === "abusefilter-$action" ? "abusefilter-$action" : 'other',
 				'infusable' => true
 			] );
 
@@ -969,11 +969,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			$lang = $this->getLanguage();
 			foreach ( $res as $row ) {
-				if ( $lang->lcfirst( $row->page_title ) == $lang->lcfirst( $warnMsg ) ) {
+				if ( $lang->lcfirst( $row->page_title ) === $lang->lcfirst( $warnMsg ) ) {
 					$existingSelector->setValue( $lang->lcfirst( $warnMsg ) );
 				}
 
-				if ( $row->page_title != "Abusefilter-$action" ) {
+				if ( $row->page_title !== "Abusefilter-$action" ) {
 					$options += [ $lang->lcfirst( $row->page_title ) => $lang->lcfirst( $row->page_title ) ];
 				}
 			}
@@ -1051,7 +1051,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 *  or NULL if the filter does not exist.
 	 */
 	public function loadFilterData( $id ) {
-		if ( $id == 'new' ) {
+		if ( $id === 'new' ) {
 			$obj = new stdClass;
 			$obj->af_pattern = '';
 			$obj->af_enabled = 1;
@@ -1195,7 +1195,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				if ( $enabled ) {
 					$parameters = [];
 
-					if ( $action == 'throttle' ) {
+					if ( $action === 'throttle' ) {
 						// We need to load the parameters
 						$throttleCount = $request->getIntOrNull( 'wpFilterThrottleCount' );
 						$throttlePeriod = $request->getIntOrNull( 'wpFilterThrottlePeriod' );
@@ -1215,28 +1215,28 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						$parameters[0] = $this->mFilter;
 						$parameters[1] = "$throttleCount,$throttlePeriod";
 						$parameters = array_merge( $parameters, $throttleGroups );
-					} elseif ( $action == 'warn' ) {
+					} elseif ( $action === 'warn' ) {
 						$specMsg = $request->getVal( 'wpFilterWarnMessage' );
 
-						if ( $specMsg == 'other' ) {
+						if ( $specMsg === 'other' ) {
 							$specMsg = $request->getVal( 'wpFilterWarnMessageOther' );
 						}
 
 						$parameters[0] = $specMsg;
-					} elseif ( $action == 'block' ) {
+					} elseif ( $action === 'block' ) {
 						$parameters[0] = $request->getCheck( 'wpFilterBlockTalk' ) ?
 							'blocktalk' : 'noTalkBlockSet';
 						$parameters[1] = $request->getVal( 'wpBlockAnonDuration' );
 						$parameters[2] = $request->getVal( 'wpBlockUserDuration' );
-					} elseif ( $action == 'disallow' ) {
+					} elseif ( $action === 'disallow' ) {
 						$specMsg = $request->getVal( 'wpFilterDisallowMessage' );
 
-						if ( $specMsg == 'other' ) {
+						if ( $specMsg === 'other' ) {
 							$specMsg = $request->getVal( 'wpFilterDisallowMessageOther' );
 						}
 
 						$parameters[0] = $specMsg;
-					} elseif ( $action == 'tag' ) {
+					} elseif ( $action === 'tag' ) {
 						$parameters = explode( ',', trim( $request->getText( 'wpFilterTags' ) ) );
 					}
 

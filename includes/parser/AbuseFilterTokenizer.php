@@ -223,7 +223,7 @@ class AbuseFilterTokenizer {
 			if ( $addLength ) {
 				$token .= substr( $code, $offset, $addLength );
 				$offset += $addLength;
-			} elseif ( $code[$offset] == '\\' ) {
+			} elseif ( $code[$offset] === '\\' ) {
 				switch ( $code[$offset + 1] ) {
 					case '\\':
 						$token .= '\\';

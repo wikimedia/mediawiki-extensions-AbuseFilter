@@ -78,21 +78,21 @@ class AFPData {
 	 * @return AFPData
 	 */
 	public static function castTypes( AFPData $orig, $target ) {
-		if ( $orig->type == $target ) {
+		if ( $orig->type === $target ) {
 			return $orig->dup();
 		}
-		if ( $target == self::DNULL ) {
+		if ( $target === self::DNULL ) {
 			return new AFPData();
 		}
 
-		if ( $orig->type == self::DARRAY ) {
-			if ( $target == self::DBOOL ) {
+		if ( $orig->type === self::DARRAY ) {
+			if ( $target === self::DBOOL ) {
 				return new AFPData( self::DBOOL, (bool)count( $orig->data ) );
-			} elseif ( $target == self::DFLOAT ) {
+			} elseif ( $target === self::DFLOAT ) {
 				return new AFPData( self::DFLOAT, floatval( count( $orig->data ) ) );
-			} elseif ( $target == self::DINT ) {
+			} elseif ( $target === self::DINT ) {
 				return new AFPData( self::DINT, intval( count( $orig->data ) ) );
-			} elseif ( $target == self::DSTRING ) {
+			} elseif ( $target === self::DSTRING ) {
 				$s = '';
 				foreach ( $orig->data as $item ) {
 					$s .= $item->toString() . "\n";
@@ -102,15 +102,15 @@ class AFPData {
 			}
 		}
 
-		if ( $target == self::DBOOL ) {
+		if ( $target === self::DBOOL ) {
 			return new AFPData( self::DBOOL, (bool)$orig->data );
-		} elseif ( $target == self::DFLOAT ) {
+		} elseif ( $target === self::DFLOAT ) {
 			return new AFPData( self::DFLOAT, floatval( $orig->data ) );
-		} elseif ( $target == self::DINT ) {
+		} elseif ( $target === self::DINT ) {
 			return new AFPData( self::DINT, intval( $orig->data ) );
-		} elseif ( $target == self::DSTRING ) {
+		} elseif ( $target === self::DSTRING ) {
 			return new AFPData( self::DSTRING, strval( $orig->data ) );
-		} elseif ( $target == self::DARRAY ) {
+		} elseif ( $target === self::DARRAY ) {
 			return new AFPData( self::DARRAY, [ $orig ] );
 		}
 	}
@@ -146,7 +146,7 @@ class AFPData {
 		$a = $a->toString();
 		$b = $b->toString();
 
-		if ( $a == '' || $b == '' ) {
+		if ( $a === '' || $b === '' ) {
 			return new AFPData( self::DBOOL, false );
 		}
 
@@ -178,10 +178,10 @@ class AFPData {
 	 * @return bool
 	 */
 	private static function equals( AFPData $d1, AFPData $d2, $strict = false ) {
-		if ( $d1->type != self::DARRAY && $d2->type != self::DARRAY ) {
-			$typecheck = $d1->type == $d2->type || !$strict;
+		if ( $d1->type !== self::DARRAY && $d2->type !== self::DARRAY ) {
+			$typecheck = $d1->type === $d2->type || !$strict;
 			return $typecheck && $d1->toString() === $d2->toString();
-		} elseif ( $d1->type == self::DARRAY && $d2->type == self::DARRAY ) {
+		} elseif ( $d1->type === self::DARRAY && $d2->type === self::DARRAY ) {
 			$data1 = $d1->data;
 			$data2 = $d2->data;
 			if ( count( $data1 ) !== count( $data2 ) ) {
@@ -199,10 +199,10 @@ class AFPData {
 			if ( $strict ) {
 				return false;
 			}
-			if ( $d1->type == self::DARRAY && count( $d1->data ) === 0 ) {
-				return ( $d2->type == self::DBOOL && $d2->toBool() == false ) || $d2->type == self::DNULL;
-			} elseif ( $d2->type == self::DARRAY && count( $d2->data ) === 0 ) {
-				return ( $d1->type == self::DBOOL && $d1->toBool() == false ) || $d1->type == self::DNULL;
+			if ( $d1->type === self::DARRAY && count( $d1->data ) === 0 ) {
+				return ( $d2->type === self::DBOOL && $d2->toBool() === false ) || $d2->type === self::DNULL;
+			} elseif ( $d2->type === self::DARRAY && count( $d2->data ) === 0 ) {
+				return ( $d1->type === self::DBOOL && $d1->toBool() === false ) || $d1->type === self::DNULL;
 			} else {
 				return false;
 			}
@@ -272,7 +272,7 @@ class AFPData {
 	 * @return AFPData
 	 */
 	public static function unaryMinus( AFPData $data ) {
-		if ( $data->type == self::DINT ) {
+		if ( $data->type === self::DINT ) {
 			return new AFPData( $data->type, -$data->toInt() );
 		} else {
 			return new AFPData( $data->type, -$data->toFloat() );
@@ -289,11 +289,11 @@ class AFPData {
 	public static function boolOp( AFPData $a, AFPData $b, $op ) {
 		$a = $a->toBool();
 		$b = $b->toBool();
-		if ( $op == '|' ) {
+		if ( $op === '|' ) {
 			return new AFPData( self::DBOOL, $a || $b );
-		} elseif ( $op == '&' ) {
+		} elseif ( $op === '&' ) {
 			return new AFPData( self::DBOOL, $a && $b );
-		} elseif ( $op == '^' ) {
+		} elseif ( $op === '^' ) {
 			return new AFPData( self::DBOOL, $a xor $b );
 		}
 		// Should never happen.
@@ -308,25 +308,25 @@ class AFPData {
 	 * @throws AFPException
 	 */
 	public static function compareOp( AFPData $a, AFPData $b, $op ) {
-		if ( $op == '==' || $op == '=' ) {
+		if ( $op === '==' || $op === '=' ) {
 			return new AFPData( self::DBOOL, self::equals( $a, $b ) );
-		} elseif ( $op == '!=' ) {
+		} elseif ( $op === '!=' ) {
 			return new AFPData( self::DBOOL, !self::equals( $a, $b ) );
-		} elseif ( $op == '===' ) {
+		} elseif ( $op === '===' ) {
 			return new AFPData( self::DBOOL, self::equals( $a, $b, true ) );
-		} elseif ( $op == '!==' ) {
+		} elseif ( $op === '!==' ) {
 			return new AFPData( self::DBOOL, !self::equals( $a, $b, true ) );
 		}
 
 		$a = $a->toString();
 		$b = $b->toString();
-		if ( $op == '>' ) {
+		if ( $op === '>' ) {
 			return new AFPData( self::DBOOL, $a > $b );
-		} elseif ( $op == '<' ) {
+		} elseif ( $op === '<' ) {
 			return new AFPData( self::DBOOL, $a < $b );
-		} elseif ( $op == '>=' ) {
+		} elseif ( $op === '>=' ) {
 			return new AFPData( self::DBOOL, $a >= $b );
-		} elseif ( $op == '<=' ) {
+		} elseif ( $op === '<=' ) {
 			return new AFPData( self::DBOOL, $a <= $b );
 		}
 		// Should never happen
@@ -346,15 +346,15 @@ class AFPData {
 		$a = $a->toNumber();
 		$b = $b->toNumber();
 
-		if ( $op != '*' && $b == 0 ) {
+		if ( $op !== '*' && $b === 0 ) {
 			throw new AFPUserVisibleException( 'dividebyzero', $pos, [ $a ] );
 		}
 
-		if ( $op == '*' ) {
+		if ( $op === '*' ) {
 			$data = $a * $b;
-		} elseif ( $op == '/' ) {
+		} elseif ( $op === '/' ) {
 			$data = $a / $b;
-		} elseif ( $op == '%' ) {
+		} elseif ( $op === '%' ) {
 			$data = $a % $b;
 		} else {
 			// Should never happen
@@ -378,9 +378,9 @@ class AFPData {
 	 * @return AFPData
 	 */
 	public static function sum( AFPData $a, AFPData $b ) {
-		if ( $a->type == self::DSTRING || $b->type == self::DSTRING ) {
+		if ( $a->type === self::DSTRING || $b->type === self::DSTRING ) {
 			return new AFPData( self::DSTRING, $a->toString() . $b->toString() );
-		} elseif ( $a->type == self::DARRAY && $b->type == self::DARRAY ) {
+		} elseif ( $a->type === self::DARRAY && $b->type === self::DARRAY ) {
 			return new AFPData( self::DARRAY, array_merge( $a->toArray(), $b->toArray() ) );
 		} else {
 			$res = $a->toNumber() + $b->toNumber();
@@ -465,7 +465,7 @@ class AFPData {
 	 * @return int|float
 	 */
 	public function toNumber() {
-		return $this->type == self::DINT ? $this->toInt() : $this->toFloat();
+		return $this->type === self::DINT ? $this->toInt() : $this->toFloat();
 	}
 
 	/**

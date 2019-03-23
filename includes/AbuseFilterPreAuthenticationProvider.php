@@ -35,7 +35,7 @@ class AbuseFilterPreAuthenticationProvider extends AbstractPreAuthenticationProv
 	 * @return StatusValue
 	 */
 	protected function testUser( $user, $creator, $autocreate ) {
-		if ( $user->getName() == wfMessage( 'abusefilter-blocker' )->inContentLanguage()->text() ) {
+		if ( $user->getName() === wfMessage( 'abusefilter-blocker' )->inContentLanguage()->text() ) {
 			return StatusValue::newFatal( 'abusefilter-accountreserved' );
 		}
 

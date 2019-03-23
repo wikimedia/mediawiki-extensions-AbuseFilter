@@ -210,7 +210,7 @@ class AbuseFilterHistoryPager extends TablePager {
 		$changed = explode( ',', $row->afh_changed_fields );
 
 		$fieldChanged = false;
-		if ( $field == 'afh_flags' ) {
+		if ( $field === 'afh_flags' ) {
 			// The field is changed if any of these filters are in the $changed array.
 			$filters = [ 'af_enabled', 'af_hidden', 'af_deleted', 'af_global' ];
 			if ( count( array_intersect( $filters, $changed ) ) ) {

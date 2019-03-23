@@ -116,7 +116,7 @@ class AbuseFilterHooks {
 				if ( $content->equals( $oldContent ) ) {
 					return Status::newGood();
 				}
-			} elseif ( strcmp( $oldAfText, $text ) == 0 ) {
+			} elseif ( strcmp( $oldAfText, $text ) === 0 ) {
 				// Otherwise, compare strings
 				return Status::newGood();
 			}
@@ -521,8 +521,8 @@ class AbuseFilterHooks {
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
 		$dir = dirname( __DIR__ );
 
-		if ( $updater->getDB()->getType() == 'mysql' || $updater->getDB()->getType() == 'sqlite' ) {
-			if ( $updater->getDB()->getType() == 'mysql' ) {
+		if ( $updater->getDB()->getType() === 'mysql' || $updater->getDB()->getType() === 'sqlite' ) {
+			if ( $updater->getDB()->getType() === 'mysql' ) {
 				$updater->addExtensionUpdate( [ 'addTable', 'abuse_filter',
 					"$dir/abusefilter.tables.sql", true ] );
 				$updater->addExtensionUpdate( [ 'addTable', 'abuse_filter_history',
@@ -545,7 +545,7 @@ class AbuseFilterHooks {
 				"$dir/db_patches/patch-global_filters.sql", true ] );
 			$updater->addExtensionUpdate( [ 'addField', 'abuse_filter_log', 'afl_rev_id',
 				"$dir/db_patches/patch-afl_action_id.sql", true ] );
-			if ( $updater->getDB()->getType() == 'mysql' ) {
+			if ( $updater->getDB()->getType() === 'mysql' ) {
 				$updater->addExtensionUpdate( [ 'addIndex', 'abuse_filter_log',
 					'filter_timestamp', "$dir/db_patches/patch-fix-indexes.sql", true ] );
 			} else {
@@ -558,7 +558,7 @@ class AbuseFilterHooks {
 			$updater->addExtensionUpdate( [ 'addField', 'abuse_filter',
 				'af_group', "$dir/db_patches/patch-af_group.sql", true ] );
 
-			if ( $updater->getDB()->getType() == 'mysql' ) {
+			if ( $updater->getDB()->getType() === 'mysql' ) {
 				$updater->addExtensionUpdate( [
 					'addIndex', 'abuse_filter_log', 'wiki_timestamp',
 					"$dir/db_patches/patch-global_logging_wiki-index.sql", true
@@ -577,7 +577,7 @@ class AbuseFilterHooks {
 					"$dir/db_patches/patch-afl-namespace_int.sqlite.sql", true
 				] );
 			}
-		} elseif ( $updater->getDB()->getType() == 'postgres' ) {
+		} elseif ( $updater->getDB()->getType() === 'postgres' ) {
 			$updater->addExtensionUpdate( [
 				'addTable', 'abuse_filter', "$dir/abusefilter.tables.pg.sql", true ] );
 			$updater->addExtensionUpdate( [

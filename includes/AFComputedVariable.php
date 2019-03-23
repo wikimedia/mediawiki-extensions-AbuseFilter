@@ -258,10 +258,10 @@ class AFComputedVariable {
 				$oldLinks = explode( "\n", $oldLinks );
 				$newLinks = explode( "\n", $newLinks );
 
-				if ( $this->mMethod == 'link-diff-added' ) {
+				if ( $this->mMethod === 'link-diff-added' ) {
 					$result = array_diff( $newLinks, $oldLinks );
 				}
-				if ( $this->mMethod == 'link-diff-removed' ) {
+				if ( $this->mMethod === 'link-diff-removed' ) {
 					$result = array_diff( $oldLinks, $newLinks );
 				}
 				break;
@@ -366,7 +366,7 @@ class AFComputedVariable {
 				$asOf = $parameters['asof'];
 				$obj = self::getUserObject( $user );
 
-				if ( $obj->getId() == 0 ) {
+				if ( $obj->getId() === 0 ) {
 					$result = 0;
 					break;
 				}
