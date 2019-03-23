@@ -211,6 +211,8 @@
 	"abusefilter-edit-throttle-count": "מספר הפעולות המותרות:",
 	"abusefilter-edit-throttle-period": "משך הזמן (בשניות):",
 	"abusefilter-edit-throttle-groups": "הגבלת פעילות לפי קבוצה:",
+	"abusefilter-edit-throttle-groups-help": "ר' $1.",
+	"abusefilter-edit-throttle-groups-help-text": "התיעוד באתר mediawiki.org",
 	"abusefilter-edit-throttle-hidden-placeholder": "יש להפריד בפסיקים כדי לצרף עם AND, ובירידות שורה כדי לצרף עם OR",
 	"abusefilter-edit-throttle-placeholder": "יש להפריד בפסיקים כדי לצרף עם AND, ולהכניס אחד־אחד כדי לצרף עם OR",
 	"abusefilter-throttle-ip": "כתובת IP",

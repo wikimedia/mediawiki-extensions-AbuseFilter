@@ -158,6 +158,8 @@
 	"abusefilter-edit-hitcount": "ছাঁকনির হিট:",
 	"abusefilter-edit-consequences": "মিল পাওয়া গেলে যে পদক্ষেপ নেয়া হয়েছে",
 	"abusefilter-edit-throttle-period": "সময়কাল (সেকেন্ডে):",
+	"abusefilter-edit-throttle-groups-help": "$1 দেখুন।",
+	"abusefilter-edit-throttle-groups-help-text": "mediawiki.org সাইটে নথিপত্র",
 	"abusefilter-throttle-ip": "আইপি ঠিকানা",
 	"abusefilter-throttle-user": "ব্যবহারকারী অ্যাকাউন্ট",
 	"abusefilter-throttle-editcount": "সম্পাদনা গণনা",

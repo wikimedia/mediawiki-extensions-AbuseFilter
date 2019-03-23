@@ -226,6 +226,8 @@
 	"abusefilter-edit-throttle-count": "Número de ações a permitir:",
 	"abusefilter-edit-throttle-period": "Período de tempo (em segundos):",
 	"abusefilter-edit-throttle-groups": "Agrupar limitador por:",
+	"abusefilter-edit-throttle-groups-help": "Consultar $1.",
+	"abusefilter-edit-throttle-groups-help-text": "a documentação no mediawiki.org",
 	"abusefilter-edit-throttle-hidden-placeholder": "Dividir com vírgulas para se juntar ao AND, e com quebras de linha para se juntar ao OR",
 	"abusefilter-edit-throttle-placeholder": "Dividir com vírgulas para se juntar com AND e inserir um por um para ingressar com OU",
 	"abusefilter-throttle-ip": "Endereço de IP",
