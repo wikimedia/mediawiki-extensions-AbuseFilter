@@ -193,6 +193,7 @@
 	"abusefilter-edit-throttle-count": "Amarê hereketan ke destur guret:",
 	"abusefilter-edit-throttle-period": "Wext:",
 	"abusefilter-edit-throttle-groups": ":''(her satır re yew heb, pê virgul piyawanê-piya besnê)''",
+	"abusefilter-edit-throttle-groups-help": "$1 bıvêne.",
 	"abusefilter-edit-warn-message": "Mesajê sistemî ke qe îkaz kerdişî viraziyo:",
 	"abusefilter-edit-warn-other": "mesajo bin",
 	"abusefilter-edit-warn-other-label": "nameyê pelê mesaji yo binı:\n:''(wa prefixê medyawiki çinibo)''",

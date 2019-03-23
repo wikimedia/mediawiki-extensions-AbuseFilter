@@ -225,6 +225,8 @@
 	"abusefilter-edit-throttle-count": "Anzahl erlaubter Aktionen:",
 	"abusefilter-edit-throttle-period": "Zeitraum (in Sekunden):",
 	"abusefilter-edit-throttle-groups": "Drosselung gruppieren nach:",
+	"abusefilter-edit-throttle-groups-help": "Siehe $1.",
+	"abusefilter-edit-throttle-groups-help-text": "die Dokumentation auf mediawiki.org",
 	"abusefilter-edit-throttle-hidden-placeholder": "Mit Kommata trennen, um mit AND zu verbinden und mit Zeilenumbrüchen, um mit OR zu verbinden.",
 	"abusefilter-edit-throttle-placeholder": "Mit Kommata trennen, um mit AND zu verbinden und füge nacheinander ein, um mit OR zu verbinden.",
 	"abusefilter-throttle-ip": "IP-Adresse",

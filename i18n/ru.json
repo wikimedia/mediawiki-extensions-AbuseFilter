@@ -241,6 +241,7 @@
 	"abusefilter-edit-throttle-count": "Количество разрешённых действий:",
 	"abusefilter-edit-throttle-period": "Отрезок времени (в секундах):",
 	"abusefilter-edit-throttle-groups": "Сужение по группам:\n''(по одному на строке, разделение запятыми)''",
+	"abusefilter-edit-throttle-hidden-placeholder": "Разделите запятыми, чтобы соединить логическим оператором И, и переводами строк, чтобы соединить логическим оператором ИЛИ",
 	"abusefilter-throttle-ip": "IP-адрес",
 	"abusefilter-throttle-user": "учётная запись",
 	"abusefilter-throttle-range": "Диапазон /16",

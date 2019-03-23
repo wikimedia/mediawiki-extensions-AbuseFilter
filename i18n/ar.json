@@ -223,6 +223,8 @@
 	"abusefilter-edit-throttle-count": "عدد الأفعال المسموح بها:",
 	"abusefilter-edit-throttle-period": "الفترة الزمنية (بالثواني):",
 	"abusefilter-edit-throttle-groups": "خنق المجموعة بواسطة:",
+	"abusefilter-edit-throttle-groups-help": "انظر $1.",
+	"abusefilter-edit-throttle-groups-help-text": "التوثيق على mediawiki.org",
 	"abusefilter-edit-throttle-hidden-placeholder": "انقسام بفواصل للانضمام إلى AND، ومع وجود فواصل خطية للانضمام إلى OR",
 	"abusefilter-edit-throttle-placeholder": "انقسام بفواصل للانضمام إلى AND، وإدراج واحدا تلو الآخر للانضمام إلى OR",
 	"abusefilter-throttle-ip": "عنوان الآيبي",

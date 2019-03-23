@@ -5,7 +5,8 @@
 			"Dragonòt",
 			"McDutchie",
 			"Matma Rex",
-			"Fitoschido"
+			"Fitoschido",
+			"MaxSem"
 		]
 	},
 	"abusefilter-desc": "A àplica dj'eurìstiche automàtiche a le modìfiche",
@@ -206,7 +207,7 @@
 	"abusefilter-edit-builder-misc-tern": "Operador ternari ( X ? Y : Z)",
 	"abusefilter-edit-builder-misc-cond": "Condissional (if X then Y else Z)",
 	"abusefilter-edit-builder-group-funcs": "Funsion",
-	"abusefilter-edit-builder-funcs-length": "Longheur dla stringa (lenght)",
+	"abusefilter-edit-builder-funcs-length": "Longheur dla stringa (length)",
 	"abusefilter-edit-builder-funcs-lcase": "Convert a minùscol (lcase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "Normalisé ij caràter confondìbij (ccnorm)",
 	"abusefilter-edit-builder-funcs-rmdoubles": "Gavé ij caràter dobi (rmdoubles)",
