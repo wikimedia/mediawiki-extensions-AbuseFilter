@@ -901,7 +901,15 @@ class AbuseFilter {
 			if ( $row->af_throttled
 				&& !empty( $wgAbuseFilterRestrictions[$row->afa_consequence] )
 			) {
-				// Don't do the action
+				// Don't do the action, just log
+				$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+				$logger->info(
+					'Filter {filter_id} is throttled, skipping action: {action}',
+					[
+						'filter_id' => $row->af_id,
+						'action' => $row->afa_consequence
+					]
+				);
 			} elseif ( $row->afa_filter !== $row->af_id ) {
 				// We probably got a NULL, as it's a LEFT JOIN. Don't add it.
 			} else {
