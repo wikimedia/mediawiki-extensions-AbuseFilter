@@ -121,6 +121,16 @@ class AbuseFilterParser {
 	}
 
 	/**
+	 * Get the next token. This is similar to move() but doesn't change class members,
+	 *   allowing to look ahead without rolling back the state.
+	 *
+	 * @return AFPToken
+	 */
+	protected function getNextToken() {
+		return $this->mTokens[$this->mPos][0];
+	}
+
+	/**
 	 * getState() function allows parser state to be rollbacked to several tokens back
 	 * @return AFPParserState
 	 */
@@ -685,15 +695,15 @@ class AbuseFilterParser {
 			}
 
 			$args = [];
-			$state = $this->getState();
-			$this->move();
-			if ( $this->mCur->type !== AFPToken::TBRACE || $this->mCur->value !== ')' ) {
-				$this->setState( $state );
+			$next = $this->getNextToken();
+			if ( $next->type !== AFPToken::TBRACE || $next->value !== ')' ) {
 				do {
 					$r = new AFPData();
 					$this->doLevelSemicolon( $r );
 					$args[] = $r;
 				} while ( $this->mCur->type === AFPToken::TCOMMA );
+			} else {
+				$this->move();
 			}
 
 			if ( $this->mCur->type !== AFPToken::TBRACE || $this->mCur->value !== ')' ) {
@@ -738,15 +748,13 @@ class AbuseFilterParser {
 		switch ( $this->mCur->type ) {
 			case AFPToken::TID:
 				if ( $this->mShortCircuit ) {
-					$prev = $this->getState();
-					$this->move();
-					if ( $this->mCur->type === AFPToken::TSQUAREBRACKET && $this->mCur->value === '[' ) {
+					$next = $this->getNextToken();
+					if ( $next->type === AFPToken::TSQUAREBRACKET && $next->value === '[' ) {
 						// If the variable represented by $tok is an array, don't break already: $result
 						// would be null and null[idx] will throw. Instead, skip the whole element (T204841)
+						$this->move();
 						$idx = new AFPData();
 						$this->doLevelSemicolon( $idx );
-					} else {
-						$this->setState( $prev );
 					}
 					break;
 				}
