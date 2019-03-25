@@ -22,6 +22,9 @@ class AFComputedVariable {
 	 */
 	public static $articleCache = [];
 
+	/** @var float The amount of time to subtract from profiling */
+	public static $profilingExtraTime = 0;
+
 	/**
 	 * @param string $method
 	 * @param array $parameters
@@ -217,6 +220,8 @@ class AFComputedVariable {
 					);
 				}
 				if ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
+					// Shared with the edit, don't count it in profiling
+					$startTime = microtime( true );
 					$textVar = $parameters['text-var'];
 
 					$new_text = $vars->getVar( $textVar )->toString();
@@ -231,6 +236,7 @@ class AFComputedVariable {
 						$links = [];
 					}
 					$result = $links;
+					self::$profilingExtraTime += ( microtime( true ) - $startTime );
 					break;
 				}
 				// Otherwise fall back to database
@@ -291,6 +297,8 @@ class AFComputedVariable {
 					);
 				}
 				if ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
+					// Shared with the edit, don't count it in profiling
+					$startTime = microtime( true );
 					$textVar = $parameters['wikitext-var'];
 
 					$new_text = $vars->getVar( $textVar )->toString();
@@ -310,6 +318,7 @@ class AFComputedVariable {
 						// parser option, but then we can't share a parse operation with the edit, which is bad.
 						$result = preg_replace( '/<!--\s*NewPP limit report[^>]*-->\s*$/si', '', $newHTML );
 					}
+					self::$profilingExtraTime += ( microtime( true ) - $startTime );
 					break;
 				}
 				// Otherwise fall back to database

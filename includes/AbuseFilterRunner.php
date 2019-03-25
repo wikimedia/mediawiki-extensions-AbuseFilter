@@ -138,9 +138,12 @@ class AbuseFilterRunner {
 
 		if ( !$fromCache ) {
 			$startTime = microtime( true );
+			// Ensure there's no extra time leftover
+			AFComputedVariable::$profilingExtraTime = 0;
+
 			// This also updates $this->profilingData and $this->parser->mCondCount used later
 			$matches = $this->checkAllFilters();
-			$timeTaken = ( microtime( true ) - $startTime ) * 1000;
+			$timeTaken = ( microtime( true ) - $startTime - AFComputedVariable::$profilingExtraTime ) * 1000;
 			$result = [
 				'matches' => $matches,
 				'runtime' => $timeTaken,
@@ -188,13 +191,16 @@ class AbuseFilterRunner {
 		$stashKey = $this->getStashKey( $cache );
 
 		$startTime = microtime( true );
+		// Ensure there's no extra time leftover
+		AFComputedVariable::$profilingExtraTime = 0;
+
 		$matchedFilters = $this->checkAllFilters();
 		// Save the filter stash result and do nothing further
 		$cacheData = [
 			'matches' => $matchedFilters,
 			'tags' => AbuseFilter::$tagsToSet,
 			'condCount' => $this->parser->getCondCount(),
-			'runtime' => ( microtime( true ) - $startTime ) * 1000,
+			'runtime' => ( microtime( true ) - $startTime - AFComputedVariable::$profilingExtraTime ) * 1000,
 			'vars' => $this->vars->dumpAllVars(),
 			'profiling' => $this->profilingData
 		];
@@ -365,6 +371,7 @@ class AbuseFilterRunner {
 
 		$startConds = $this->parser->getCondCount();
 		$startTime = microtime( true );
+		$origExtraTime = AFComputedVariable::$profilingExtraTime;
 
 		// Store the row somewhere convenient
 		AbuseFilter::cacheFilter( $filterName, $row );
@@ -372,7 +379,8 @@ class AbuseFilterRunner {
 		$pattern = trim( $row->af_pattern );
 		$result = AbuseFilter::checkConditions( $pattern, $this->parser, true, $filterName );
 
-		$timeTaken = 1000 * ( microtime( true ) - $startTime );
+		$actualExtra = AFComputedVariable::$profilingExtraTime - $origExtraTime;
+		$timeTaken = 1000 * ( microtime( true ) - $startTime - $actualExtra );
 		$condsUsed = $this->parser->getCondCount() - $startConds;
 
 		$this->profilingData[$filterName] = [
