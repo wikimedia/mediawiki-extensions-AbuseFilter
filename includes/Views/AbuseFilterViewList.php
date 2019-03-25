@@ -23,11 +23,19 @@ class AbuseFilterViewList extends AbuseFilterView {
 		// New filter button
 		if ( AbuseFilter::canEdit( $user ) ) {
 			$out->enableOOUI();
-			$link = new OOUI\ButtonWidget( [
-				'label' => $this->msg( 'abusefilter-new' )->text(),
-				'href' => $this->getTitle( 'new' )->getFullURL(),
+			$buttons = new OOUI\HorizontalLayout( [
+				'items' => [
+					new OOUI\ButtonWidget( [
+						'label' => $this->msg( 'abusefilter-new' )->text(),
+						'href' => $this->getTitle( 'new' )->getFullURL(),
+					] ),
+					new OOUI\ButtonWidget( [
+						'label' => $this->msg( 'abusefilter-import-button' )->text(),
+						'href' => $this->getTitle( 'import' )->getFullURL(),
+					] )
+				]
 			] );
-			$out->addHTML( $link );
+			$out->addHTML( $buttons );
 		}
 
 		$conds = [];

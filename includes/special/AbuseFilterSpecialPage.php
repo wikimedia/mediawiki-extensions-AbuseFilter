@@ -35,19 +35,12 @@ abstract class AbuseFilterSpecialPage extends SpecialPage {
 			] );
 		}
 
-		if ( AbuseFilter::canEdit( $user ) ) {
-			$linkDefs = array_merge( $linkDefs, [
-				'import' => 'Special:AbuseFilter/import'
-			] );
-		}
-
 		$links = [];
 
 		foreach ( $linkDefs as $name => $page ) {
 			// Give grep a chance to find the usages:
 			// abusefilter-topnav-home, abusefilter-topnav-recentchanges, abusefilter-topnav-test,
-			// abusefilter-topnav-log, abusefilter-topnav-tools, abusefilter-topnav-import
-			// abusefilter-topnav-examine
+			// abusefilter-topnav-log, abusefilter-topnav-tools, abusefilter-topnav-examine
 			$msgName = "abusefilter-topnav-$name";
 
 			$msg = $this->msg( $msgName )->parse();
