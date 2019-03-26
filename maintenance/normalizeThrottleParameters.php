@@ -28,7 +28,7 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 	public function __construct() {
 		parent::__construct();
 
-		$this->mDescription = 'Normalize AbuseFilter throttle parameters - T203587';
+		$this->addDescription( 'Normalize AbuseFilter throttle parameters - T203587' );
 		$this->addOption( 'dry-run', 'Perform a dry run' );
 		$this->requireExtension( 'Abuse Filter' );
 	}
