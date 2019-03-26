@@ -119,7 +119,6 @@
 	"abusefilter-edit-oldwarning": "<strong>Vos éte aprés changiér una vielye vèrsion de cél filtro.\nLes statistiques montrâs regârdont la vèrsion la ples novèla de ceti.\nSe vos encartâd voutros changements, vos voléd ècllafar tôs los changements arrevâs dês la vèrsion que vos changiéd.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Tornar a l’historico de cél filtro]].",
 	"abusefilter-edit-status-label": "Statistiques :",
 	"abusefilter-edit-status": "{{PLURAL:$1|Dens la dèrriére accion|Entre-mié les $1 dèrriéres accions}}, cél filtro nen at dècelâ $2 ($3 %).",
-	"abusefilter-edit-status-profile": "{{PLURAL:$1|Dens la dèrriére accion|Entre-mié les $1 dèrriéres accions}}, cél filtro nen at dècelâ $2 ($3 %).\nEn moyena, lo temps d’ègzécucion de cél filtro est de $4 ms et pués utilise $5 condicion{{PLURAL:$5||s}} de la limita de les condicions.",
 	"abusefilter-edit-new": "Filtro novél",
 	"abusefilter-edit-save": "Encartar lo filtro",
 	"abusefilter-edit-id": "Numerô du filtro :",

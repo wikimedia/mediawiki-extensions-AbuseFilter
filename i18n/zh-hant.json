@@ -200,7 +200,6 @@
 	"abusefilter-edit-oldwarning": "<strong>您正編輯舊版本的過濾器。\n統計資訊引用的是最近版本的過濾器資訊。\n若您儲存目前的修改，您將會覆蓋所有自您修訂版本之後的所有變更。</strong> &bull;\n[[Special:AbuseFilter/history/$2|返回此過濾器歷史]]。",
 	"abusefilter-edit-status-label": "統計資訊：",
 	"abusefilter-edit-status": "在最近 $1 次{{PLURAL:$1|操作}}中，此過濾器已觸發 $2 ($3%) 次。",
-	"abusefilter-edit-status-profile": "在最近 $1 次{{PLURAL:$1|操作}}中，此過濾器已觸發 $2 ($3%) 次。\n其平均執行時間為 $4 ms，且使用了條件限制中 $5 個{{PLURAL:$5|條件}}。",
 	"abusefilter-edit-throttled-warning": "'''警告：'''該過濾器已自動標示為有害。作為安全措施，以下操作將不會執行（$1）。請複查並[[mw:Extension:AbuseFilter/Conditions|優化]]您的條件來移除該限制",
 	"abusefilter-edit-new": "新過濾器",
 	"abusefilter-edit-save": "儲存過濾器",

@@ -125,7 +125,6 @@
 	"abusefilter-edit-oldwarning": "<strong>Binabago mo ang isang lumang bersyon ng pansalang ito. Ang siniping mga estadistika ay para sa pinakakamakailang bersyon ng pansala. Kapag sinagip mo ang iyong mga pagbabago, mapapatungan mo ang lahat ng mga pagbabago magmula sa rebisyong pinapatnugutan mo.</strong> &bull; [[Special:AbuseFilter/history/$2|Bumalik sa kasaysayan ng pansalang ito]]",
 	"abusefilter-edit-status-label": "Mga estadistika:",
 	"abusefilter-edit-status": "Mula sa huling $1 na {{PLURAL:$1|kilos|mga kilos}}, tumugma ang pansalang ito sa $2 ($3%).",
-	"abusefilter-edit-status-profile": "Mula sa huling $1 na {{PLURAL:$1|kilos|mga kilos}}, tumugma ang pansalang ito sa $2 ($3%).\nSa karaniwan, ang oras ng pagtakbo nito ay $4ms, at gumugugol ng $5 na {{PLURAL:$5|kundisyon|mga kundisyon}} ng hangganan ng kundisyon.",
 	"abusefilter-edit-new": "Bagong pansala",
 	"abusefilter-edit-save": "Itala ang pansala",
 	"abusefilter-edit-id": "ID ng pansala:",

@@ -129,7 +129,6 @@
 	"abusefilter-edit-oldwarning": "<strong>Sètz a modificar una version anciana del filtre. Las estatisticas afichadas son per la version correnta d'aqueste. Se  salvatz vòstras modificacions, van suprimir las modificacions efectuadas ulteriorament.</strong> &bull; [[Special:AbuseFilter/history/$2|Tornar a l'istoric d'aqueste filtre]]",
 	"abusefilter-edit-status-label": "Estatisticas :",
 	"abusefilter-edit-status": "{{PLURAL:$1|Dins la darrièra accion|Demest las $1 darrièras accions}}, aqueste filtre a atench $2 ($3 %).",
-	"abusefilter-edit-status-profile": "{{PLURAL:$1|Dins la darrièra accion|Demest las $1 darrièras accions}}, aqueste filtre a atench $2 ($3 %).\nEn mejana, la durada d'execucion d'aqueste filtre es de $4 ms e utiliza $5 condicion{{PLURAL:$5||s}} del limit de las condicions.",
 	"abusefilter-edit-new": "Filtre novèl",
 	"abusefilter-edit-save": "Salvar lo filtre",
 	"abusefilter-edit-id": "Filtre ID :",

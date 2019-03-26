@@ -102,7 +102,6 @@
 	"abusefilter-edit-subtitle-new": "फिल्टर निर्माण हुँदै",
 	"abusefilter-edit-status-label": "तथ्याङ्कहरू:",
 	"abusefilter-edit-status": "विगत $1 {{PLURAL:$1|को कार्य|का कार्यहरु}}सित, $2 ($3%) मेल खान्छ।",
-	"abusefilter-edit-status-profile": "विगत $1 {{PLURAL:$1|को कार्य|का कार्यहरु}}सित, $2 ($3%) मेल खान्छ।\nऔसतमा, यसको संचालन $4ms समय छ र यसले शर्त सीमाको $5 {{PLURAL:$5|शर्त|शर्तहरु}} खपत गर्छ।",
 	"abusefilter-edit-new": "नयाँ फिल्टर",
 	"abusefilter-edit-save": "संशोधन सङ्ग्रह गर्ने",
 	"abusefilter-edit-id": "फिल्टर परिचय:",

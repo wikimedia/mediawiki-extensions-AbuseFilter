@@ -122,7 +122,6 @@
 	"abusefilter-edit-oldwarning": "<strong>Du duschd do õnnare alde Version vum Siewb schaffe.\nDie Schdadischdig gild bloß fa die naischd Version vum Siewb.\nWonn des do schbaischere duschd, iwaschraibschd alle Ännarunge, wu saidher gmachd worre sinn.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Zrigg zude Gschischd vum Siewb]].",
 	"abusefilter-edit-status-label": "Schdadischdig:",
 	"abusefilter-edit-status": "Vunde ledschde {{PLURAL:$1|Agzion isch|$1 Agzione sinn}} $2 ($3 %) vundem Siewb gfunne worre.",
-	"abusefilter-edit-status-profile": "Vunde ledschde {{PLURAL:$1|Agzion isch|$1 Agzione sinn}} $2 ($3 %) vundem Siewb gfunne worre.\nIm Schnidd hodda dodvu $4 ms un $5 {{PLURAL:$5|Bedingung|Bedingunge}} vunde Hegschdzahl gbrauchd.",
 	"abusefilter-edit-new": "Naije Siewb",
 	"abusefilter-edit-save": "Siewb schbaischere",
 	"abusefilter-edit-id": "Siewb-ID",

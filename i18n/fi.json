@@ -179,7 +179,6 @@
 	"abusefilter-edit-oldwarning": "<strong>Muokkaat tämän suodattimen vanhaa versiota.\nAnnetut tilastot ovat suodattimen uusimmalle versiolle.\nJos tallennat muutoksesi, tuhoat samalla kaikki tämän version jälkeen tehdyt muutokset.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Palaa suodattimen historiaan]].",
 	"abusefilter-edit-status-label": "Tilastot:",
 	"abusefilter-edit-status": "Viimeisestä $1 {{PLURAL:$1|toiminnosta}} tämä suodatin täsmäsi $2 kertaa ($3 %).",
-	"abusefilter-edit-status-profile": "Viimeisestä $1 toiminnosta tämä suodatin täsmäsi $2 kertaa ($3 %).\nKeskimäärin sen ajoaika on $4 ms, ja se kuluttaa $5 {{PLURAL:$5|ehdon|ehtoa}} ehtorajasta.",
 	"abusefilter-edit-throttled-warning": "'''Varoitus:''' Tämä suodatin merkittiin automaattisesti haitalliseksi. Turvallisuussyistä seuraavia toimintoja ei suoriteta ($1). Tarkista ja [[mw:Extension:AbuseFilter/Conditions|optimoi]] ehtosi poistaaksesi tämän rajoituksen",
 	"abusefilter-edit-new": "Uusi suodatin",
 	"abusefilter-edit-save": "Tallenna suodatin",

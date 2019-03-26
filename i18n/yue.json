@@ -107,7 +107,6 @@
 	"abusefilter-edit-oldwarning": "<strong>你而家編輯緊呢個過濾器嘅舊版本。\n個統計係計響最近過本嘅過濾器度。\n如果你保存你嘅修改，你會覆蓋自從你編輯修訂嘅全部修改。</strong> &bull;\n[[Special:AbuseFilter/history/$2|返去呢個過濾器嘅歷史]]。",
 	"abusefilter-edit-status-label": "統計:",
 	"abusefilter-edit-status": "響之前$1{{PLURAL:$1|次|次}}動作，呢個過濾器已經配合咗$2次 ($3%)。",
-	"abusefilter-edit-status-profile": "響之前$1{{PLURAL:$1|次|次}}動作，呢個過濾器已經配合咗$2次 ($3%)。\n平均，佢嘅運行時間係$4毫秒，用左$5{{PLURAL:$5|次|次}}限制。",
 	"abusefilter-edit-new": "新過濾器",
 	"abusefilter-edit-save": "保存過濾器",
 	"abusefilter-edit-id": "過濾器ID:",

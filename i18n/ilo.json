@@ -123,7 +123,6 @@
 	"abusefilter-edit-oldwarning": "<strong>Agur-urnoska iti daan a bersion ti sagat.\nDagiti estadistika a naibaga ket ti agdama a bersion ti sagat.\nNo idulinmo dagiti binaliwan, masuratamto manen amin a binaliwam manipud ti rebison nga ur-urnosem.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Agsubli idiay pakasaritaan ti sagat]].",
 	"abusefilter-edit-status-label": "Estadistika:",
 	"abusefilter-edit-status": "Iti naudi a $1 a {{PLURAL:$1|tignay|tigtignay}}, daytoy a sagat ket nakaipada iti $2 ($3%) .",
-	"abusefilter-edit-status-profile": "Iti naudi a $1 a {{PLURAL:$1|tignay|tigtignay}}, daytoy a sagat ket nakaipada iti $2 ($3%) .\nIti pagtengngaan, ti kabayag a panagandarna ket $4 ms, ken mangibus iti $5 a {{PLURAL:$5|kasasaad|kaskasaad}} iti patingga ti kasasaad.",
 	"abusefilter-edit-new": "Baro a sagat",
 	"abusefilter-edit-save": "Idulin ti sagat",
 	"abusefilter-edit-id": "ID ti sagat:",

@@ -190,7 +190,6 @@
 	"abusefilter-edit-oldwarning": "<strong>이 필터의 이전 버전을 수정하고 있습니다.\n아래의 통계는 이 필터의 최신판에 대한 것입니다.\n변경 사항을 저장하면 편집하고 있는 판 이후의 모든 변경 사항을 덮어쓰게 됩니다.</strong> &bull;\n[[Special:AbuseFilter/history/$2|이 필터의 역사로 돌아가기]].",
 	"abusefilter-edit-status-label": "통계:",
 	"abusefilter-edit-status": "최근 {{PLURAL:$1|동작}} $1개 중 $2건($3%)이 이 필터와 일치하였습니다.",
-	"abusefilter-edit-status-profile": "최근 {{PLURAL:$1|동작}} $1개 중 $2건($3%)이 이 필터와 일치하였습니다.\n평균적으로 필터의 작동 시간은 $4밀리초이며, $5만큼의 {{PLURAL:$5|부하}}가 걸리고 있습니다.",
 	"abusefilter-edit-throttled-warning": "'''경고''': 이 필터는 자동으로 유해한 것으로 표시되었습니다. 안전 장치로서 다음의 조치는 실행되지 않을 것입니다. ($1) 검토한 다음 조건을 [[mw:Extension:AbuseFilter/Conditions|최적화]]하여 이 제한을 제거하십시오.",
 	"abusefilter-edit-new": "새 필터",
 	"abusefilter-edit-save": "필터 저장하기",

@@ -193,7 +193,6 @@
 	"abusefilter-edit-oldwarning": "<strong>Edytujesz starą wersję tego filtru. Statystyki są notowane dla najnowszej wersji filtru. Jeśli zapiszesz zmiany, zostaną nadpisane wszystkie późniejsze wersje od tej, którą edytujesz.</strong> &bull; [[Special:AbuseFilter/history/$2|Powrót do historii filtru]]",
 	"abusefilter-edit-status-label": "Statystyki:",
 	"abusefilter-edit-status": "{{PLURAL:$1|Dla ostatniej $1 akcji|W ostatnich $1 akcjach}} ten filtr pasował do $2 ($3%).",
-	"abusefilter-edit-status-profile": "{{PLURAL:$1|Dla ostatniej $1 akcji|W ostatnich $1 akcjach}} ten filtr pasował do $2 ($3%).\nŚredni czas wykonania wyniósł $4 ms. Wykorzystano $5 {{PLURAL:$5|warunek|warunki|warunków}} z limitu.",
 	"abusefilter-edit-throttled-warning": "'''Uwaga:''' Ten filtr został automatyczne oznaczony jako groźny. Ze względu bezpieczeństwa, te akcje nie zostaną wykonane ($1). Przejrzyj i [[mw:Extension:AbuseFilter/Conditions|zoptymalizuj]] swoje warunki, aby usunąć to ograniczenie",
 	"abusefilter-edit-new": "Nowy filtr",
 	"abusefilter-edit-save": "Zapisz filtr",

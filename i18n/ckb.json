@@ -98,7 +98,6 @@
 	"abusefilter-edit-subtitle-new": "دروستکردنی پاڵوێنە",
 	"abusefilter-edit-status-label": "ئامارەکان:",
 	"abusefilter-edit-status": "لە دوایین $1 {{PLURAL:$1|کردەوە}}دا، ئەم پاڵوێنەیە لەگەڵ $2 ($3٪) گونجاوە.",
-	"abusefilter-edit-status-profile": "لە دوایین $1 {{PLURAL:$1|کردەوە}}دا، ئەم پاڵوێنەیە لەگەڵ $2 ($3٪) گونجاوە.\nبە شێوەی ناونجی، کاتی جێبەجێبوونی $4 میلی چرکەیە و $5 {{PLURAL:$5|مەرج}} لە سنووری مەرجی بەکاربردووە.",
 	"abusefilter-edit-new": "پاڵوێنەیەکی نوێ",
 	"abusefilter-edit-save": "پاڵوێنە پاشەکەوت بکە",
 	"abusefilter-edit-id": "پێناسەی پاڵوێنە:",

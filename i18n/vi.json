@@ -134,7 +134,6 @@
 	"abusefilter-edit-oldwarning": "<strong>Bạn đang sửa một phiên bản cũ của bộ lọc này. Thống kê được trích ở trên là cho phiên bản mới nhất của bộ lọc. Nếu bạn lưu sửa đổi, bạn sẽ hi đè lên tất cả các thay đổi được thực hiện sau phiên bản mà bạn đang sửa.</strong> &bull; [[Special:AbuseFilter/history/$2|Trở lại lịch sử bộ lọc]]",
 	"abusefilter-edit-status-label": "Thống kê:",
 	"abusefilter-edit-status": "Trong số $1 tác vụ cuối cùng, bộ lọc này đã so trùng được $2 tác vụ ($3%).",
-	"abusefilter-edit-status-profile": "Trong vòng $1 {{PLURAL:$1|tác vụ|tác vụ}} cuối, bộ lọc này đã so trùng được $2 tác vụ ($3%).\nThời gian chạy trung bình là $4ms, và sử dụng $5 {{PLURAL:$5||}} điều kiện trong giới hạn các điều kiện.",
 	"abusefilter-edit-new": "Bộ lọc mới",
 	"abusefilter-edit-save": "Lưu bộ lọc",
 	"abusefilter-edit-id": "ID bộ lọc:",

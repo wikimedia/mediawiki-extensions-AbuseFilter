@@ -8,7 +8,8 @@
 			"Kusavica",
 			"Matma Rex",
 			"TomášPolonec",
-			"Patriccck"
+			"Patriccck",
+			"Robert Važan"
 		]
 	},
 	"abusefilter-desc": "Vykonáva automatickú heuristiku úprav.",
@@ -59,6 +60,9 @@
 	"abusefilter-log-search-impact-not-saved": "Bez uložených úprav",
 	"abusefilter-log-search-entries-label": "Viditeľnosť:",
 	"abusefilter-log-search-entries-all": "Všetky vstupy",
+	"abusefilter-log-search-action-label": "Spúšťajúca akcia:",
+	"abusefilter-log-search-action-other": "Iné",
+	"abusefilter-log-search-action-any": "Všetky",
 	"abusefilter-log-search-action-taken-label": "Vykonaná akcia:",
 	"abusefilter-log-search-action-taken-any": "Všetky",
 	"abusefilter-log-search-submit": "Hľadať",
@@ -80,6 +84,7 @@
 	"abusefilter-log-details-diff": "Zmeny vykonané v úprave",
 	"abusefilter-log-linkoncontribs": "záznam zneužití",
 	"abusefilter-log-linkoncontribs-text": "Záznam zneužití tohto používateľa",
+	"abusefilter-log-linkonhistory": "zobraziť záznamy zneužití",
 	"abusefilter-log-hidden-implicit": "(položka skrytá, pretože bola odstránená revízia)",
 	"abusefilter-log-cannot-see-details": "Nemáte oprávnenie na prehliadanie podrobností tejto položky.",
 	"abusefilter-log-details-hidden": "Nemôžete si pozrieť podrobnosti tejto položky, pretože je verejnosti skrytá.",
@@ -146,7 +151,6 @@
 	"abusefilter-edit-oldwarning": "<strong>Upravujete starú verziu tohto filtra. Uvedené štatistiky sa týkajú najnovšej verzie filtra. Ak svoje zmeny uložíte, prepíšete všetky zmeny od revízie, ktorú upravujete.</strong> &bull; [[Special:AbuseFilter/history/$2|Vrátiť sa na históriu tohto filtra]]",
 	"abusefilter-edit-status-label": "Štatistika:",
 	"abusefilter-edit-status": "{{PLURAL:$1|Z poslednej $1 operácie|Z posledných $1 operácií}} tomuto filtru {{PLURAL:$2|zodpovedala|zodpovedali|zodpovedalo}} $2 ($3 %).",
-	"abusefilter-edit-status-profile": "{{PLURAL:$1|Z poslednej $1 operácie|Z posledných $1 operácií}} tomuto filtru {{PLURAL:$2|zodpovedala|zodpovedali|zodpovedalo}} $2 ($3 %).\nPriemerný čas behu je $4 ms a spotrebuje $5 {{PLURAL:$5|podmienku|podmienky|podmienok}} z celkového povoleného počtu podmienok.",
 	"abusefilter-edit-new": "Nový filter",
 	"abusefilter-edit-save": "Uložiť filter",
 	"abusefilter-edit-id": "ID filtra:",
@@ -424,6 +428,7 @@
 	"abusefilter-examine-noresults": "Nenašli sa žiadne výsledky vyhovujúce zadaným parametrom vyhľadávania.",
 	"abusefilter-topnav": "'''Navigácia Filtrom zneužití'''",
 	"abusefilter-topnav-home": "Domov",
+	"abusefilter-topnav-recentchanges": "Posledné zmeny filtrov",
 	"abusefilter-topnav-test": "Dávkové testovanie",
 	"abusefilter-topnav-examine": "Preskúmať minulé úpravy",
 	"abusefilter-topnav-log": "Záznam zneužití",

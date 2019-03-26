@@ -174,7 +174,6 @@
 	"abusefilter-edit-oldwarning": "<strong>Bu filtrenin eski bir sürümünü değiştiriyorsunuz.\nGösterilen istatistikler bu filtrenin en güncel sürümü içindir.\nEğer değişikliklerinizi kaydederseniz, değişiklik yaptığınız revizyondan itibaren tüm değişikliklerin üzerine yazacaksınız.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Bu filtrenin geçmişine geri dön]].",
 	"abusefilter-edit-status-label": "İstatistikler:",
 	"abusefilter-edit-status": "Son $1 {{PLURAL:$1|eylemde|eylemde}}, $2 eylem ($3%) oranında bu filtreyle eşleşti.",
-	"abusefilter-edit-status-profile": "Son $1 {{PLURAL:$1|eylemde|eylemde}}, $2 eylem ($3%) oranında bu filtreyle eşleşti.\nOrtalama çalışma süresi $4ms olan bu süzgeç koşul sınırının $5 koşulunu tüketiyor.",
 	"abusefilter-edit-new": "Yeni süzgeç",
 	"abusefilter-edit-save": "Süzgeci kaydet",
 	"abusefilter-edit-id": "Süzgeç kimliği:",

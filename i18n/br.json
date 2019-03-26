@@ -121,7 +121,6 @@
 	"abusefilter-edit-oldwarning": "<strong>O embann emaoc'h ur stumm kozh eus ar sil-mañ.\nAr stadegoù diskouezet a zo evit ar stumm diwezhañ eus ar sil.\nMa enrollit ho kemmoù, e flastrit holl ar c'hemmoù bet graet abaoe ar stumm emaoc'h o kemm.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Distreiñ da istor ar sil-mañ]].",
 	"abusefilter-edit-status-label": "Stadegoù :",
 	"abusefilter-edit-status": "E-barzh an {{PLURAL:$1|ober diwezhañ|$1 ober diwezhañ}}, ar sil-mañ en deus dinoet $2 ($3%).",
-	"abusefilter-edit-status-profile": "E-barzh an {{PLURAL:$1|ober diwezhañ|$1 ober diwezhañ}}, ar sil-mañ en deus dinoet $2 ($3%).\nDre geidenn, an padelezh da lañsañ anezhañ a zo $4ms, hag implijout a ra $5 {{PLURAL:$5|amplegad|amplegad}} eus termen an amplegadoù.",
 	"abusefilter-edit-new": "Sil nevez",
 	"abusefilter-edit-save": "Enrollañ ar sil",
 	"abusefilter-edit-id": "Niv. ar sil :",

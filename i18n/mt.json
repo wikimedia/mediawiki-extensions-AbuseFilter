@@ -126,7 +126,6 @@
 	"abusefilter-edit-oldwarning": "<strong>Qiegħed timmodifika verżjoni antika ta' dan il-filtru.\nL-istatistika kwotata huma għall-aktar verżjoni riċenti ta' dan il-filtru.\nJekk issalva l-modifiki tiegħek, dawn se jieħdu post dawk li huma preżenti issa.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Irritorna lejn il-kronoloġija tal-filtru]].",
 	"abusefilter-edit-status-label": "Statistika:",
 	"abusefilter-edit-status": "Mill-aħħar {{PLURAL:$1|azzjoni|$1 azzjonijiet}}, dan il-filtru sab {{PLURAL:$2|korrispondenza waħda|$2 korrispondenzi}} ($3%).",
-	"abusefilter-edit-status-profile": "Mill-aħħar {{PLURAL:$1|azzjoni|$1 azzjonijiet}}, dan il-filtru sab {{PLURAL:$2|korrispondenza waħda|$2 korrispondenzi}} ($3%).\nIl-ħin medju ta' eżekuzzjoni hu ta' $4ms, u jikkonsma {{PLURAL:$5|kundizzjoni waħda|$5 kundizzjonijiet}} tal-limitu ta' kundizzjonijiet.",
 	"abusefilter-edit-new": "Filtru ġdid",
 	"abusefilter-edit-save": "Salva l-filtru",
 	"abusefilter-edit-id": "ID tal-filtru:",

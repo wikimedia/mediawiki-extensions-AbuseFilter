@@ -165,7 +165,6 @@
 	"abusefilter-edit-oldwarning": "<strong>şıma (hê) revizyonê no filtreyi vurneni.\nnê istatiski qey na filtreya.\n.</strong> &bull;\n[[Special:AbuseFilter/history/$2|agêr hal-verinê na filtre]].",
 	"abusefilter-edit-status-label": "İstatistiki:",
 	"abusefilter-edit-status": "{{PLURAL:$1|Karo peyên|Karanê peyenan}} $1 de, karo $2 nısbetê ($3%) de nê parzûn ra piya bi be yew.",
-	"abusefilter-edit-status-profile": "{{PLURAL:$1|Karo peyên|Karanê peyenan}} $1 de, karo $2 nısbetê ($3%) de nê parzûn ra piya bi be yew.\nMudetê karê miyanêniyo ke $4ms domneno, sinorê şerti $5 qedneno.",
 	"abusefilter-edit-new": "Filtreyê newî",
 	"abusefilter-edit-save": "Parzumi qeyd ke",
 	"abusefilter-edit-id": "Kamiya parzûni:",

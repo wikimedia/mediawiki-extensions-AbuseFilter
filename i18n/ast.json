@@ -169,7 +169,6 @@
 	"abusefilter-edit-oldwarning": "<strong>Tas editando una versión antigua d'esti filtru.\nLes estadístiques citaes son de la versión más nueva del filtru.\nSi guardes los cambios, escribirás enriba de tolos cambios dende la revisión que tas editando.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Volver al historial d'esti filtru]].",
 	"abusefilter-edit-status-label": "Estadístiques:",
 	"abusefilter-edit-status": "De {{PLURAL:$1|la última aición|les $1 últimes aiciones}}, esti filtru coincidió con $2 ($3%).",
-	"abusefilter-edit-status-profile": "De {{PLURAL:$1|la última aición|les $1 últimes aiciones}}, esti filtru coincidió con $2 ($3%).\nDe media, el so tiempu d'execución ye de $4ms, y consume {{PLURAL:$5|una condición|$5 condiciones}} de la llende de condiciones.",
 	"abusefilter-edit-throttled-warning": "'''Atención:''' Esti filtru marcóse automáticamente como dañible. Como midida de seguridá, nun s'executarán les aiciones siguientes ($1). Revisa y [[mw:Extension:AbuseFilter/Conditions|ameyora]] les condiciones pa desaniciar esta torga",
 	"abusefilter-edit-new": "Filtru nuevu",
 	"abusefilter-edit-save": "Guardar el filtru",

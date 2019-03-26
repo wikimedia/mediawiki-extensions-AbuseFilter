@@ -187,7 +187,6 @@
 	"abusefilter-edit-oldwarning": "<strong>あなたはこのフィルターの古い版を編集しています。引用されている統計は最新版のフィルターのものです。あなたの変更を保存すると、あなたが編集している版以降の変更をすべて上書きしてしまいます。</strong> &bull; [[Special:AbuseFilter/history/$2|このフィルターの履歴に戻る]]",
 	"abusefilter-edit-status-label": "統計:",
 	"abusefilter-edit-status": "最近の$1{{PLURAL:$1|操作}}のうち、このフィルターは$2件($3%)に対して発動しました。",
-	"abusefilter-edit-status-profile": "最近の$1{{PLURAL:$1|操作}}のうち、このフィルターは$2件($3%)に対して発動しました。平均して、実行時間は$4ミリ秒で$5件の条件制限を消費しました。",
 	"abusefilter-edit-throttled-warning": "'''警告:''' このフィルタは自動的に有害なフラグが立てられました。安全対策として、以下のアクションは実行されません（$1）。\nこの制限を解除する条件を確認して[[mw:Extension:AbuseFilter/Conditions|最適化]]してください",
 	"abusefilter-edit-new": "新規フィルター",
 	"abusefilter-edit-save": "フィルターを保存",

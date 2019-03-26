@@ -124,7 +124,6 @@
 	"abusefilter-edit-oldwarning": "<strong>Wobźěłujoš staru wersiju toś togo filtra.\nStatistiske pódaśa su za nejnowšu wersiju filtra.\nJolic składujoš swóje změny, buźoš wše změny pśepisowaś, kótarež sy cynił wót wersije, kótaruž wobźěłujoš.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Slědk k stawiznam toś togo filtra]].",
 	"abusefilter-edit-status-label": "Statistika:",
 	"abusefilter-edit-status": "Ze {{PLURAL:$1|slědneje akcije|slědneju $1 akcijowu|slědnych $1 akcijow|slědnych $1 akcijow}} toś ten filter jo spóznał $2 ($3 %). Jogo cas wužywanja jo pśerěznje $4 ms a docynja $5 {{PLURAL:$5|wuměnjenje|wuměnjeni|wuměnjenja|wuměnjenjow}} limita wuměnjenjow.",
-	"abusefilter-edit-status-profile": "Ze {{PLURAL:$1|slědneje akcije|slědneju $1 akcijowu|slědnych $1 akcijow|slědnych $1 akcijow}} toś ten filter jo spóznał $2 ($3 %). Jogo cas wužywanja jo pśerěznje $4 ms a docynja $5 {{PLURAL:$5|wuměnjenje|wuměnjeni|wuměnjenja|wuměnjenjow}} limita wuměnjenjow.",
 	"abusefilter-edit-new": "Nowy filter",
 	"abusefilter-edit-save": "Filter składowaś",
 	"abusefilter-edit-id": "ID filtra:",

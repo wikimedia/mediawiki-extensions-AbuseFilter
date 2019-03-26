@@ -126,7 +126,6 @@
 	"abusefilter-edit-oldwarning": "<strong>Doe bis 'n aaj versie van deze filter aan 't bewirke.\nDe weergegeve sjtattestieke gelje veur de lèste versie van dit filter.\nEs de dien wieziginge opsjleis, euversjriefs te alle wieziginge die nao deze versie zeen gemaak.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Trög nao de gesjiedenis van dit filter]]",
 	"abusefilter-edit-status-label": "Euverzich:",
 	"abusefilter-edit-status": "{{PLURAL:$1|De lèste hanjeling voldeech|Van de lèste $1 hanjelinge voldege d'r $2}} aon dit filter ($3%).",
-	"abusefilter-edit-status-profile": "{{PLURAL:$1|De lèste hanjeling voldeech|Van de lèste $1 hanjelinge voldege d'r $2}} aon dit filter ($3%).\nDe gemiddelde louptied van de filtercontrole is $4ms, en deze gebroek $5 {{PLURAL:$5|conditie|condities}} van de conditielimiet.",
 	"abusefilter-edit-new": "Nuuj filter",
 	"abusefilter-edit-save": "Slaon filter op",
 	"abusefilter-edit-id": "Filternummer:",

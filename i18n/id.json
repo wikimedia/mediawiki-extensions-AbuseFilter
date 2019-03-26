@@ -168,7 +168,6 @@
 	"abusefilter-edit-oldwarning": "<strong>Anda sedang menyunting versi lama filter ini.\nStatistik yang dikutip adalah untuk versi terkini filter ini.\nJika hasil suntingan terhadap versi lama ini disimpan, maka Anda akan menimpa semua perubahan yang terjadi sejak revisi yang Anda sunting ini.</strong> &bull; [[Special:AbuseFilter/history/$2|Kembali ke versi terdahulu filter ini]]",
 	"abusefilter-edit-status-label": "Statistik:",
 	"abusefilter-edit-status": "Dari $1 {{PLURAL:$1|tindakan|tindakan}} terakhir, terdapat $2 ($3%) kecocokan dengan filter ini.",
-	"abusefilter-edit-status-profile": "Dari $1 {{PLURAL:$1|tindakan|tindakan}} terakhir, terdapat $2 ($3%) kecocokan dengan filter ini.\nSecara rata-rata, waktu yang dibutuhkan adalah $4ms dan mengkonsumsi $5 {{PLURAL:$5||}}kondisi dari batas kondisi.",
 	"abusefilter-edit-new": "Filter baru",
 	"abusefilter-edit-save": "Simpan filter",
 	"abusefilter-edit-id": "ID filter:",

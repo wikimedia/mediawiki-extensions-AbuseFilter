@@ -167,7 +167,6 @@
 	"abusefilter-edit-oldwarning": "<strong>Tu modifica al momento un version ancian de iste filtro.\nLe statisticas monstrate es pro le version currente del filtro.\nSi tu immagazina tu modificationes, tu superscribera tote le modificationes facite post le version que tu modifica.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Retornar al historia de iste filtro]].",
 	"abusefilter-edit-status-label": "Statisticas:",
 	"abusefilter-edit-status": "Del ultime $1 {{PLURAL:$1|action|actiones}}, iste filtro ha correspondite a $2 ($3%).",
-	"abusefilter-edit-status-profile": "Del ultime $1 {{PLURAL:$1|action|actiones}}, iste filtro ha correspondite a $2 ($3%).\nIn media, su durata de execution es $4ms, e illo consume $5 {{PLURAL:$5|condition|conditiones}} ex le limite de conditiones.",
 	"abusefilter-edit-throttled-warning": "'''Attention:''' Iste filtro ha essite automaticamente marcate como nocive. Como mesura de securitate, le sequente actiones non essera exequite ($1). Per favor, revide e [[mw:Extension:AbuseFilter/Conditions|optimisa]] tu conditiones pro remover this restriction",
 	"abusefilter-edit-new": "Nove filtro",
 	"abusefilter-edit-save": "Salveguardar filtro",

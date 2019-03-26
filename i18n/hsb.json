@@ -123,7 +123,6 @@
 	"abusefilter-edit-oldwarning": "<strong>Wobdźěłuješ staru wersiju tutoho filtra.\nStatistiske podaća su jenož za najnowšu wersiju filtra.\nJeli swoje změny składuješ, budźeš wšě změny wot wersije, kotruž wobdźěłuješ, přepisować.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Wróćo k stawiznam tutoho filtra]].",
 	"abusefilter-edit-status-label": "Statistika:",
 	"abusefilter-edit-status": "Z {{PLURAL:$1|poslednjeje akcije|poslednjeju $1 akcijow|poslednich $1 akcijow|poslednich $1 akcijow}} je tutón filter $2 ($3%) spóznał. Jeho přerězny běžny čas je $4 ms a spjelnja $5 {{PLURAL:$5|wuměnjenje|wuměnjeni|wuměnjenja|wuměnjenjow}} limita wuměnjenjow.",
-	"abusefilter-edit-status-profile": "Z {{PLURAL:$1|poslednjeje akcije|poslednjeju $1 akcijow|poslednich $1 akcijow|poslednich $1 akcijow}} je tutón filter $2 ($3%) spóznał. Jeho přerězny běžny čas je $4 ms a spjelnja $5 {{PLURAL:$5|wuměnjenje|wuměnjeni|wuměnjenja|wuměnjenjow}} limita wuměnjenjow.",
 	"abusefilter-edit-new": "Nowy filter",
 	"abusefilter-edit-save": "Filter składować",
 	"abusefilter-edit-id": "ID filtra:",

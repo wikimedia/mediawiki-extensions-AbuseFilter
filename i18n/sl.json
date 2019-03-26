@@ -148,7 +148,6 @@
 	"abusefilter-edit-oldwarning": "<strong>Urejate staro različico filtra.\nNavedena statistika drži za najnovejšo različico filtra.\nČe shranite svoje spremembe, boste prepisali vse spremembe od redakcije, ki jo urejate.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Vrnitev na zgodovino filtra]].",
 	"abusefilter-edit-status-label": "Statistike:",
 	"abusefilter-edit-status": "Od {{PLURAL:$1|zadnjega $1 dejanja|zadnjih $1 dejanj}} se je ta filter ujemal z/s $2 ($3 %).",
-	"abusefilter-edit-status-profile": "Od {{PLURAL:$1|zadnjega $1 dejanja|zadnjih $1 dejanj}} se je ta filter ujemal z/s $2 ($3 %).\nV povprečju je njegov čas delovanja $4 ms, porabi pa $5 {{PLURAL:$5|pogoj|pogoja|pogoje|pogojev}} omejitve pogojev.",
 	"abusefilter-edit-new": "Nov filter",
 	"abusefilter-edit-save": "Shrani filter",
 	"abusefilter-edit-id": "ID filtra:",

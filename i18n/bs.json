@@ -132,7 +132,6 @@
 	"abusefilter-edit-oldwarning": "<strong>Mijenjate staru verziju ovog filtera.\nNavedene statistike odnose se na najnoviju verziju filtera.\nAko sačuvate izmjenu obrisat ćete sve izmjene napravljene od verzije koju uređujete.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Vrati se na historiju ovog filtera]]",
 	"abusefilter-edit-status-label": "Statistike:",
 	"abusefilter-edit-status": "Od {{PLURAL:$1|posljednje $1 akcije|posljednje $1 akcije|posljednjih $1 akcija}} ovaj filter je pogođen $2 puta ($3%).",
-	"abusefilter-edit-status-profile": "Od {{PLURAL:$1|posljednje $1 akcije|posljednje $1 akcije|posljednjih $1 akcija}} ovaj filter je pogođen $2 puta ($3%). Prosječno, njegovo vrijeme pokretanja je $4ms, a utrošio je $5 {{PLURAL:$5|uvjet|uvjeta}} unutar ograničenja uvjeta.",
 	"abusefilter-edit-new": "Novi filter",
 	"abusefilter-edit-save": "Sačuvaj filter",
 	"abusefilter-edit-id": "ID filtera:",
