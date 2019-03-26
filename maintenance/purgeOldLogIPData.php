@@ -10,7 +10,7 @@ require_once "$IP/maintenance/Maintenance.php";
 class PurgeOldLogIPData extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = 'Purge old IP Address data from AbuseFilter logs';
+		$this->addDescription( 'Purge old IP Address data from AbuseFilter logs' );
 		$this->setBatchSize( 200 );
 
 		$this->requireExtension( 'Abuse Filter' );
