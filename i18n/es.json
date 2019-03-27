@@ -474,7 +474,7 @@
 	"abusefilter-exception-notarray": "Solicitando un objeto de matriz en un objeto que no es una matriz, en el carácter $1.",
 	"abusefilter-exception-unclosedcomment": "Comentario sin cerrar en el carácter $1.",
 	"abusefilter-exception-invalidiprange": "Se proporcionó un intervalo de IP no válido, «$2», en el carácter $1.",
-	"abusefilter-exception-disabledvar": "La variable $2 en el carácter $1 no se encuentra en uso.",
+	"abusefilter-exception-disabledvar": "Ya no se utiliza la variable $2 en el carácter $1.",
 	"abusefilter-action-tag": "Etiquetar",
 	"abusefilter-action-throttle": "Limitar",
 	"abusefilter-action-warn": "Advertir",

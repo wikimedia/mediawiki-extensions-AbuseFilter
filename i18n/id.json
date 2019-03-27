@@ -18,7 +18,8 @@
 			"J Nia30",
 			"Aldnonymous",
 			"Pebaryan",
-			"Fitoschido"
+			"Fitoschido",
+			"Veracious"
 		]
 	},
 	"abusefilter-desc": "Memberlakukan pemeriksaan heuristik otomatis atas kontribusi pengguna.",
@@ -223,7 +224,7 @@
 	"abusefilter-edit-done": "Anda berhasil menyimpan [[Special:AbuseFilter/history/$1/diff/prev/$2|perubahan]] [[Special:AbuseFilter/$1|filter $3]].",
 	"abusefilter-edit-badsyntax": "Terdapat kesalahan sintaksis dalam filter yang Anda masukkan. Hasil dari parser adalah:\n<pre>$1</pre>",
 	"abusefilter-edit-missingfields": "Kolom isian berikut wajib diisi: $1",
-	"abusefilter-edit-deleting-enabled": "Anda tidak dapat menandai filter aktif untuk dihapus.",
+	"abusefilter-edit-deleting-enabled": "Anda tidak dapat menandai filter aktif sebagai terhapus.",
 	"abusefilter-edit-restricted": "Anda tidak dapat menyunting filter ini, karena mengandung satu atau lebih tindakan yang dibatasi.\nMintalah kepada pengguna yang memiliki hak akses untuk menyunting tindakan yang dibatasi ini.",
 	"abusefilter-edit-viewhistory": "Lihat sejarah filter ini",
 	"abusefilter-edit-history": "Versi:",

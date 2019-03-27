@@ -124,6 +124,7 @@
 	"log-action-filter-abusefilter": "フィルター変更の種類:",
 	"log-action-filter-abusefilter-create": "フィルターの新規作成",
 	"log-action-filter-abusefilter-modify": "フィルターの変更",
+	"log-action-filter-suppress-abuselog": "不正利用記録の秘匿",
 	"logentry-abusefilterprivatedetails-access": "$1 は $3 の非公開記録を{{GENDER:$2|取得しました}}。",
 	"abusefilterprivatedetails-log-name": "不正利用フィルター非公開記録の調査記録",
 	"abusefilter-management": "不正利用フィルター管理",
