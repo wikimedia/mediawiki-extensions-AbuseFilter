@@ -165,7 +165,8 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
-		if ( !SpecialAbuseLog::canSeeDetails( $row->afl_filter ) ) {
+		list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+		if ( !SpecialAbuseLog::canSeeDetails( $filterID, $global ) ) {
 			$out->addWikiMsg( 'abusefilter-log-cannot-see-details' );
 			return;
 		}

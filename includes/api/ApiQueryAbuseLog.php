@@ -74,7 +74,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				$params['filter'] = [ $params['filter'] ];
 			}
 			foreach ( $params['filter'] as $filter ) {
-				if ( AbuseFilter::filterHidden( $filter ) ) {
+				list( $filterID, $global ) = AbuseFilter::splitGlobalName( $filter );
+				if ( AbuseFilter::filterHidden( $filterID, $global ) ) {
 					$this->dieWithError(
 						[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-private' ) ]
 					);
@@ -172,7 +173,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 					continue;
 				}
 			}
-			$canSeeDetails = SpecialAbuseLog::canSeeDetails( $row->afl_filter );
+			list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+			$canSeeDetails = SpecialAbuseLog::canSeeDetails( $filterID, $global );
 
 			$entry = [];
 			if ( $fld_ids ) {
@@ -180,7 +182,6 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				$entry['filter_id'] = $canSeeDetails ? $row->afl_filter : '';
 			}
 			if ( $fld_filter ) {
-				list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
 				if ( $global ) {
 					$entry['filter'] = AbuseFilter::getGlobalFilterDescription( $filterID );
 				} else {

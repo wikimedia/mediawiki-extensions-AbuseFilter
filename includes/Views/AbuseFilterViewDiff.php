@@ -97,6 +97,11 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		$newSpec = $this->mParams[4];
 		$this->mFilter = $this->mParams[1];
 
+		if ( !is_numeric( $this->mFilter ) ) {
+			$this->getOutput()->addWikiMsg( 'abusefilter-diff-invalid' );
+			return false;
+		}
+
 		if ( AbuseFilter::filterHidden( $this->mFilter )
 			&& !$this->getUser()->isAllowedAny( 'abusefilter-modify', 'abusefilter-view-private' )
 		) {

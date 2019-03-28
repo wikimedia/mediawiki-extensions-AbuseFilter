@@ -184,8 +184,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		// Hide hidden filters.
 		if ( ( ( isset( $row->af_hidden ) && $row->af_hidden ) ||
-				AbuseFilter::filterHidden( $filter ) )
-			&& !$this->canViewPrivate() ) {
+			( $filter !== 'new' && AbuseFilter::filterHidden( $filter ) ) ) &&
+			!$this->canViewPrivate()
+		) {
 			return $this->msg( 'abusefilter-edit-denied' )->escaped();
 		}
 
