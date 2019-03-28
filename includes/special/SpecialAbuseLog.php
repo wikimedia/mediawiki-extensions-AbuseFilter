@@ -507,10 +507,7 @@ class SpecialAbuseLog extends SpecialPage {
 		}
 
 		if ( in_array( $this->mSearchImpact, [ '1', '2' ] ) ) {
-			$unsuccessfulActionConds = $dbr->makeList( [
-				'afl_rev_id' => null,
-				'afl_log_id' => null,
-			], LIST_AND );
+			$unsuccessfulActionConds = 'afl_rev_id IS NULL';
 			if ( $this->mSearchImpact === '1' ) {
 				$conds[] = "NOT ( $unsuccessfulActionConds )";
 			} else {

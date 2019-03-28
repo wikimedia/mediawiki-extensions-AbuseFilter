@@ -47,7 +47,6 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter_log (
 	afl_deleted tinyint(1) NOT NULL DEFAULT 0,
 	afl_patrolled_by int unsigned NULL,
 	afl_rev_id int unsigned,
-	afl_log_id int unsigned,
 
 	PRIMARY KEY (afl_id),
 	KEY filter_timestamp (afl_filter,afl_timestamp),
@@ -56,7 +55,6 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter_log (
 	KEY page_timestamp (afl_namespace, afl_title, afl_timestamp),
 	KEY ip_timestamp (afl_ip, afl_timestamp),
 	KEY (afl_rev_id),
-	KEY (afl_log_id),
 	KEY wiki_timestamp (afl_wiki, afl_timestamp)
 ) /*$wgDBTableOptions*/;
 

@@ -185,7 +185,6 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			$conds[] = 'afl_timestamp <= ' . $dbr->addQuotes( $dbr->timestamp( $periodEnd ) );
 		}
 
-		// All but afl_filter, afl_ip, afl_deleted, afl_patrolled_by, afl_rev_id and afl_log_id
 		$selectFields = [
 			'afl_id',
 			'afl_user',

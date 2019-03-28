@@ -49,8 +49,7 @@ CREATE TABLE abuse_filter_log (
     afl_wiki         TEXT            NULL,
     afl_deleted      SMALLINT    NOT NULL             DEFAULT 0,
     afl_patrolled_by INTEGER         NULL,
-    afl_rev_id       INTEGER         NULL,
-    afl_log_id       INTEGER         NULL
+    afl_rev_id       INTEGER         NULL
 );
 
 CREATE INDEX abuse_filter_log_filter_timestamp ON abuse_filter_log(afl_filter,afl_timestamp);
@@ -59,7 +58,6 @@ CREATE INDEX abuse_filter_log_timestamp        ON abuse_filter_log(afl_timestamp
 CREATE INDEX abuse_filter_log_page_timestamp   ON abuse_filter_log(afl_namespace, afl_title, afl_timestamp);
 CREATE INDEX abuse_filter_log_ip_timestamp     ON abuse_filter_log(afl_ip, afl_timestamp);
 CREATE INDEX abuse_filter_log_rev_id           ON abuse_filter_log(afl_rev_id);
-CREATE INDEX abuse_filter_log_log_id           ON abuse_filter_log(afl_log_id);
 CREATE INDEX abuse_filter_log_wiki_timestamp   ON abuse_filter_log(afl_wiki, afl_timestamp);
 
 CREATE SEQUENCE abuse_filter_history_afh_id_seq;

@@ -586,8 +586,6 @@ class AbuseFilterHooks {
 			$updater->addExtensionUpdate( [
 				'addPgField', 'abuse_filter_log', 'afl_rev_id', 'INTEGER' ] );
 			$updater->addExtensionUpdate( [
-				'addPgField', 'abuse_filter_log', 'afl_log_id', 'INTEGER' ] );
-			$updater->addExtensionUpdate( [
 				'changeField', 'abuse_filter_log', 'afl_filter', 'TEXT', '' ] );
 			$updater->addExtensionUpdate( [
 				'changeField', 'abuse_filter_log', 'afl_namespace', "INTEGER", '' ] );
@@ -624,13 +622,11 @@ class AbuseFilterHooks {
 				'(afl_rev_id)'
 			] );
 			$updater->addExtensionUpdate( [
-				'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_log_id',
-				'(afl_log_id)'
-			] );
-			$updater->addExtensionUpdate( [
 				'addPgExtIndex', 'abuse_filter_log', 'abuse_filter_log_wiki_timestamp',
 				'(afl_wiki,afl_timestamp)'
 			] );
+			$updater->addExtensionUpdate( [
+				'dropPgField', 'abuse_filter_log', 'afl_log_id' ] );
 		}
 
 		$updater->addExtensionUpdate( [ [ __CLASS__, 'createAbuseFilterUser' ] ] );
