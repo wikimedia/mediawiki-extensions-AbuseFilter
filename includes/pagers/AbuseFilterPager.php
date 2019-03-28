@@ -211,7 +211,10 @@ class AbuseFilterPager extends TablePager {
 				$msg = $value ? 'abusefilter-hidden' : 'abusefilter-unhidden';
 				return $this->msg( $msg )->parse();
 			case 'af_hit_count':
-				if ( SpecialAbuseLog::canSeeDetails( $row->af_id, $row->af_hidden ) ) {
+				// Global here is used to determine whether the log entry is for an external, global
+				// filter, but all filters shown on Special:AbuseFilter are local.
+				$global = false;
+				if ( SpecialAbuseLog::canSeeDetails( $row->af_id, $global, $row->af_hidden ) ) {
 					$count_display = $this->msg( 'abusefilter-hitcount' )
 						->numParams( $value )->text();
 					$link = $this->linkRenderer->makeKnownLink(

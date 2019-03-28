@@ -363,28 +363,24 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param string|int $filter
+	 * @param int $filterID The ID of the filter
+	 * @param bool|int $global Whether the filter is global
 	 * @return bool
 	 */
-	public static function filterHidden( $filter ) {
-		if ( $filter === 'new' ) {
-			return false;
-		}
-		list( $filterID, $global ) = self::splitGlobalName( $filter );
+	public static function filterHidden( $filterID, $global = false ) {
 		if ( $global ) {
 			global $wgAbuseFilterCentralDB;
 			if ( !$wgAbuseFilterCentralDB ) {
 				return false;
 			}
 			$dbr = wfGetDB( DB_REPLICA, [], $wgAbuseFilterCentralDB );
-			$filter = $filterID;
 		} else {
 			$dbr = wfGetDB( DB_REPLICA );
 		}
 		$hidden = $dbr->selectField(
 			'abuse_filter',
 			'af_hidden',
-			[ 'af_id' => $filter ],
+			[ 'af_id' => $filterID ],
 			__METHOD__
 		);
 
@@ -823,6 +819,7 @@ class AbuseFilter {
 	 * @param int $id The filter ID
 	 * @param bool $global Whether the filter is global
 	 * @return string
+	 * @todo Calling this method should be avoided wherever possible
 	 */
 	public static function buildGlobalName( $id, $global = true ) {
 		$prefix = $global ? self::GLOBAL_FILTER_PREFIX : '';
@@ -1456,7 +1453,8 @@ class AbuseFilter {
 			}
 
 			if ( $wgAbuseFilterNotifications !== false ) {
-				if ( self::filterHidden( $data['afl_filter'] ) && !$wgAbuseFilterNotificationsPrivate ) {
+				list( $filterID, $global ) = self::splitGlobalName( $data['afl_filter'] );
+				if ( self::filterHidden( $filterID, $global ) && !$wgAbuseFilterNotificationsPrivate ) {
 					continue;
 				}
 				self::publishEntry( $dbw, $entry, $wgAbuseFilterNotifications );
