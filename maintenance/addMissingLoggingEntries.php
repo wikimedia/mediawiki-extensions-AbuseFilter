@@ -7,6 +7,8 @@ if ( getenv( 'MW_INSTALL_PATH' ) ) {
 }
 require_once "$IP/maintenance/Maintenance.php";
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * Adds rows missing per https://bugzilla.wikimedia.org/show_bug.cgi?id=52919
  */
@@ -71,11 +73,12 @@ class AddMissingLoggingEntries extends Maintenance {
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
+		$factory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 		$count = 0;
 		foreach ( $afhRows as $row ) {
 			if ( $count % 100 === 0 ) {
-				wfWaitForSlaves();
+				$factory->waitForReplication();
 			}
 			$user = User::newFromAnyId( $row->afh_user, $row->afh_user_text, null );
 			$dbw->insert(
