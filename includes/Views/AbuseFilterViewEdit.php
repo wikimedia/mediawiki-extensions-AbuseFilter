@@ -250,7 +250,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				list( $timeProfile, $condProfile ) = AbuseFilter::getFilterProfile( $filter );
 				$fields['abusefilter-edit-status-label'] = $this->msg( 'abusefilter-edit-status' )
 					->numParams( $total, $matches_count, $matches_percent, $timeProfile, $condProfile )
-					->escaped();
+					->parse();
 			}
 		}
 
