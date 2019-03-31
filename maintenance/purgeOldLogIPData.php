@@ -7,6 +7,8 @@ if ( getenv( 'MW_INSTALL_PATH' ) ) {
 }
 require_once "$IP/maintenance/Maintenance.php";
 
+use MediaWiki\MediaWikiServices;
+
 class PurgeOldLogIPData extends Maintenance {
 	public function __construct() {
 		parent::__construct();
@@ -22,6 +24,7 @@ class PurgeOldLogIPData extends Maintenance {
 	public function execute() {
 		$this->output( "Purging old IP Address data from abuse_filter_log...\n" );
 		$dbw = wfGetDB( DB_MASTER );
+		$factory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 		$cutoffUnix = time() - $this->getConfig()->get( 'AbuseFilterLogIPMaxAge' );
 
 		$count = 0;
@@ -47,7 +50,7 @@ class PurgeOldLogIPData extends Maintenance {
 				$count += $dbw->affectedRows();
 				$this->output( "$count\n" );
 
-				wfWaitForSlaves();
+				$factory->waitForReplication();
 			}
 		} while ( count( $ids ) >= $this->getBatchSize() );
 
