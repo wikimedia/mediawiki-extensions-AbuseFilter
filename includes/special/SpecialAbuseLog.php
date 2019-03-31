@@ -514,35 +514,32 @@ class SpecialAbuseLog extends SpecialPage {
 			[ 'abuse_filter' => [ 'LEFT JOIN', 'af_id=afl_filter' ] ]
 		);
 
+		$error = null;
 		if ( !$row ) {
-			$out->addWikiMsg( 'abusefilter-log-nonexistent' );
-
-			return;
-		}
-
-		if ( AbuseFilter::decodeGlobalName( $row->afl_filter ) ) {
-			$filter_hidden = null;
+			$error = 'abusefilter-log-nonexistent';
 		} else {
-			$filter_hidden = $row->af_hidden;
-		}
-
-		if ( !self::canSeeDetails( $row->afl_filter, $filter_hidden ) ) {
-			$out->addWikiMsg( 'abusefilter-log-cannot-see-details' );
-
-			return;
-		}
-
-		if ( self::isHidden( $row ) === true && !self::canSeeHidden() ) {
-			$out->addWikiMsg( 'abusefilter-log-details-hidden' );
-
-			return;
-		} elseif ( self::isHidden( $row ) === 'implicit' ) {
-			$rev = Revision::newFromId( $row->afl_rev_id );
-			// The log is visible, but refers to a deleted revision
-			if ( !$rev->userCan( Revision::SUPPRESSED_ALL, $this->getUser() ) ) {
-				$out->addWikiMsg( 'abusefilter-log-details-hidden-implicit' );
-				return;
+			if ( AbuseFilter::decodeGlobalName( $row->afl_filter ) ) {
+				$filter_hidden = null;
+			} else {
+				$filter_hidden = $row->af_hidden;
 			}
+
+			if ( !self::canSeeDetails( $row->afl_filter, $filter_hidden ) ) {
+				$error = 'abusefilter-log-cannot-see-details';
+			} elseif ( self::isHidden( $row ) === true && !self::canSeeHidden() ) {
+				$error = 'abusefilter-log-details-hidden';
+			} elseif ( self::isHidden( $row ) === 'implicit' ) {
+				$rev = Revision::newFromId( $row->afl_rev_id );
+				// The log is visible, but refers to a deleted revision
+				if ( !$rev->userCan( Revision::SUPPRESSED_ALL, $this->getUser() ) ) {
+					$error = 'abusefilter-log-details-hidden-implicit';
+				}
+			}
+		}
+
+		if ( $error ) {
+			$out->addWikiMsg( $error );
+			return;
 		}
 
 		$output = Xml::element(
@@ -652,27 +649,25 @@ class SpecialAbuseLog extends SpecialPage {
 			[ 'abuse_filter' => [ 'LEFT JOIN', 'af_id=afl_filter' ] ]
 		);
 
+		$error = null;
 		if ( !$row ) {
-			$out->addWikiMsg( 'abusefilter-log-nonexistent' );
-
-			return;
-		}
-
-		if ( AbuseFilter::decodeGlobalName( $row->afl_filter ) ) {
-			$filter_hidden = null;
+			$error = 'abusefilter-log-nonexistent';
 		} else {
-			$filter_hidden = $row->af_hidden;
+			if ( AbuseFilter::decodeGlobalName( $row->afl_filter ) ) {
+				$filter_hidden = null;
+			} else {
+				$filter_hidden = $row->af_hidden;
+			}
+
+			if ( !self::canSeeDetails( $row->afl_filter, $filter_hidden ) ) {
+				$error = 'abusefilter-log-cannot-see-details';
+			} elseif ( !self::canSeePrivate() ) {
+				$error = 'abusefilter-log-cannot-see-private-details';
+			}
 		}
 
-		if ( !self::canSeeDetails( $row->afl_filter, $filter_hidden ) ) {
-			$out->addWikiMsg( 'abusefilter-log-cannot-see-details' );
-
-			return;
-		}
-
-		if ( !self::canSeePrivate() ) {
-			$out->addWikiMsg( 'abusefilter-log-cannot-see-private-details' );
-
+		if ( $error ) {
+			$out->addWikiMsg( $error );
 			return;
 		}
 
