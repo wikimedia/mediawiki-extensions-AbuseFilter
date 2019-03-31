@@ -13,7 +13,8 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 						'support.function': cfg.functions,
 						'constant.language': constants
 					},
-					'identifier'
+					// Null as default used in isKeywordOrVariable
+					null
 				),
 				variables = this.createKeywordMapper(
 					{
@@ -24,6 +25,13 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 					'identifier',
 					true
 				),
+				isKeywordOrVariable = function ( value ) {
+					if ( keywords( value ) !== null ) {
+						return keywords( value );
+					} else {
+						return variables( value );
+					}
+				},
 				integer = '(?:(?:[1-9]\\d*)|(?:0))',
 				fraction = '(?:\\.\\d+)',
 				intPart = '(?:\\d+)',
@@ -50,10 +58,7 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 					token: 'constant.numeric',
 					regex: integer + '\\b'
 				}, {
-					token: variables,
-					regex: '[a-zA-Z_][a-zA-Z0-9_]*\\b'
-				}, {
-					token: keywords,
+					token: isKeywordOrVariable,
 					regex: '[a-zA-Z_][a-zA-Z0-9_]*\\b'
 				}, {
 					token: 'keyword.operator',
