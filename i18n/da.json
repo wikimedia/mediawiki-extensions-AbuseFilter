@@ -179,6 +179,7 @@
 	"abusefilter-edit-throttle-count": "Antal tilladte handlinger:",
 	"abusefilter-edit-throttle-period": "Tidsrum (i sekunder):",
 	"abusefilter-edit-throttle-groups": "Gruppebegrænsning efter:\n:''(én pr. linje, kombiner med kommaer)''",
+	"abusefilter-edit-throttle-groups-help": "Se $1.",
 	"abusefilter-throttle-ip": "IP-adresse",
 	"abusefilter-throttle-user": "brugerkonto",
 	"abusefilter-throttle-site": "hele siden",

@@ -10,6 +10,7 @@
 	},
 	"abusefilter-desc": "Fiert automatyske heuristyske analyse út op bewurkings",
 	"abusefilter": "Ynstellings foar it misbrûkfilter",
+	"abuselog": "Misbrûkloch",
 	"abusefilter-blocker": "Misbrûkfilter",
 	"abusefilter-accountreserved": "Dizze meidochnamme wurdt frijholden foar it misbrûkfilter.",
 	"abusefilter-log-search-user": "Meidogger:",
@@ -21,6 +22,8 @@
 	"abusefilter-log-details-var": "Fariabel",
 	"abusefilter-log-details-val": "Wearde",
 	"abusefilter-log-noactions": "gjin",
+	"abusefilter-log-linkoncontribs": "misbrûkloch",
+	"abusefilter-log-linkoncontribs-text": "It misbrûkloch foar dizze {{GENDER:$1|meidogger|meidochster}}",
 	"abusefilter-log-hide-reason": "Reden:",
 	"abusefilter-list-status": "Status",
 	"abusefilter-list-edit": "Bewurkje",
@@ -64,7 +67,9 @@
 	"abusefilter-revert-reasonfield": "Reden:",
 	"abusefilter-examine-user": "Meidogger:",
 	"abusefilter-examine-submit": "Sykje",
+	"abusefilter-topnav-log": "Misbrûkloch",
 	"abusefilter-diff-title": "Ferskillen tusken ferzjes",
 	"abusefilter-group-default": "Standert",
-	"abusefilter-http-error": "Der is in HTTP-flater bard: $1."
+	"abusefilter-http-error": "Der is in HTTP-flater bard: $1.",
+	"tag-abusefilter-condition-limit": "bepalingslimyt berikt"
 }

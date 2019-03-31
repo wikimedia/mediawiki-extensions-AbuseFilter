@@ -249,6 +249,8 @@
 	"abusefilter-edit-throttle-count": "Número de acciones a permitir:",
 	"abusefilter-edit-throttle-period": "Período (en segundos):",
 	"abusefilter-edit-throttle-groups": "Agrupar limitador por:",
+	"abusefilter-edit-throttle-groups-help": "Consulta $1.",
+	"abusefilter-edit-throttle-groups-help-text": "la documentación en mediawiki.org",
 	"abusefilter-edit-throttle-hidden-placeholder": "Separa las condiciones con comas para unirlas con AND (Y) y con saltos de línea para unirlas con OR (O)",
 	"abusefilter-edit-throttle-placeholder": "Separa las condiciones con comas para unirlas con AND (Y) e insértalas una a una para unirlas con OR (O)",
 	"abusefilter-throttle-ip": "dirección IP",

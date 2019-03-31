@@ -226,6 +226,7 @@
 	"abusefilter-edit-throttle-period": "Okres (w sekundach):",
 	"abusefilter-edit-throttle-groups": "Grupuj przekroczenia dla:",
 	"abusefilter-edit-throttle-groups-help": "Zobacz $1.",
+	"abusefilter-edit-throttle-groups-help-text": "dokumentacja na mediawiki.org",
 	"abusefilter-edit-throttle-hidden-placeholder": "Rozdziel przecinkami aby połączyć operatorem AND (\"i\") oraz znakami końca wiersza aby połączyć operatorem OR (\"lub\")",
 	"abusefilter-edit-throttle-placeholder": "Rozdziel przecinkami aby połączyć operatorem AND (\"i\") lub wpisz w osobnych wierszach aby połączyć operatorem OR (\"lub\")",
 	"abusefilter-throttle-ip": "adresu IP",

@@ -164,6 +164,7 @@
 	"abusefilter-edit-action-tag": "D'Ännerung fir e spéidert Nokucke markéieren",
 	"abusefilter-edit-throttle-count": "Zuel vun den erlaabten Aktiounen:",
 	"abusefilter-edit-throttle-period": "Zäitraum (a Sekonnen):",
+	"abusefilter-edit-throttle-groups-help": "Kuckt $1.",
 	"abusefilter-throttle-ip": "IP-Adress",
 	"abusefilter-throttle-user": "Benotzerkont",
 	"abusefilter-throttle-editcount": "Zuel vun den Ännerungen",
