@@ -11,12 +11,15 @@
 			"Xabier Armendaritz",
 			"පසිඳු කාවින්ද",
 			"Sator",
-			"Mikel Ibaiba"
+			"Mikel Ibaiba",
+			"Isabel.losaneko"
 		]
 	},
 	"abusefilter-desc": "Edizioei heuristika automatikoa aplikatzen die",
 	"abusefilter": "Gehiegikerien iragazkiaren konfigurazioa",
 	"abuselog": "Gehiegikerien erregistroa",
+	"abusefilter-intro": "Ongi etorri Abuse Filter kudeaketa interfazera. Abuse Filter akzio guztieti heuristiko automatikoak esleitzeko software automatizatua da. \nInterfazeak definituta dauden iragazkien lista bat erakusten du, eta hauek modifikatzeko aukera ematen du.",
+	"abusefilter-mustviewprivateoredit": "Segurtasun arrazoiengatik, gehiegizko erabilera iragazkiak ikusteko edo iragazkiak aldatzeko baimena daukaten erabiltzaileek erabili behar dute interfaze hau.",
 	"abusefilter-blocker": "Gehiegikeria iragazkia",
 	"right-abusefilter-modify": "Gehiegikeria iragazkiak aldatu",
 	"right-abusefilter-view": "Gehiegikeria iragazkiak ikusi",

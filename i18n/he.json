@@ -372,7 +372,7 @@
 	"abusefilter-edit-builder-vars-all-links": "כל הקישורים החיצוניים בטקסט החדש",
 	"abusefilter-edit-builder-vars-added-links": "כל הקישורים החיצוניים שנוספו בעריכה",
 	"abusefilter-edit-builder-vars-removed-links": "כל הקישורים החיצוניים שהוסרו בעריכה",
-	"abusefilter-edit-builder-vars-old-text": "טקסט הדף הישן, לפני העריכה (לא בשימוש יותר)",
+	"abusefilter-edit-builder-vars-old-text": "טקסט הדף הישן, לפני העריכה",
 	"abusefilter-edit-builder-vars-new-text": "טקסט הדף החדש, לאחר העריכה",
 	"abusefilter-edit-builder-vars-new-pst": "קוד הוויקי של הדף החדש, מומר לפני שמירה",
 	"abusefilter-edit-builder-vars-diff-pst": "הצגת השינויים שנעשו בעריכה, בצורת השוואה מאוחדת, עם התמרה לפני שמירה",

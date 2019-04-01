@@ -6,8 +6,11 @@
 			"Renessaince"
 		]
 	},
+	"apihelp-abusefiltercheckmatch-param-filter": "Паўнатэкставы фільтар для праверкі на адпаведнасьць.",
+	"apihelp-abusefilterevalexpression-param-expression": "Выраз для вылічэньня.",
 	"apihelp-query+abusefilters-param-prop": "Якія ўласьцівасьці атрымаць.",
 	"apihelp-query+abusefilters-example-1": "Сьпіс уключаных публічных фільтраў",
+	"apihelp-query+abusefilters-example-2": "Паказаць некаторыя падрабязнасьці пра фільтры",
 	"apihelp-query+abuselog-param-prop": "Якія ўласьцівасьці атрымаць.",
 	"apihelp-query+abuselog-example-1": "Паказаць нядаўнія запісы ў журнале",
 	"apierror-abusefilter-badsyntax": "Сынтаксычная памылка ў фільтры."
