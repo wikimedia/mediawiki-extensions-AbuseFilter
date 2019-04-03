@@ -2,6 +2,7 @@
 /vendor/
 node_modules/
 /composer.lock
+.eslintcache
 
 # Editors
 *.kate-swp
