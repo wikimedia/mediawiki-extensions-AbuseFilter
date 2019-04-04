@@ -377,7 +377,7 @@
 	"abusefilter-edit-builder-vars-movedto-restrictions-move": "Siirron kohdesivun siirtosuojaus",
 	"abusefilter-edit-builder-vars-movedto-restrictions-create": "Siirron kohdesivun luontisuojaus",
 	"abusefilter-edit-builder-vars-movedto-restrictions-upload": "Siirron kohdesivun tallennussuojaus",
-	"abusefilter-edit-builder-vars-old-text-stripped": "Sivun vanhempi teksti, riisuttuna koodimerkinnöistä",
+	"abusefilter-edit-builder-vars-old-text-stripped": "Sivun vanhempi teksti, riisuttuna koodimerkinnöistä (ei enää käytössä)",
 	"abusefilter-edit-builder-vars-old-links": "Linkit sivulla ennen muokkausta",
 	"abusefilter-edit-builder-vars-old-html": "Vanha sivun wikiteksti jäsennettynä HTML:ksi (ei enää käytössä)",
 	"abusefilter-edit-builder-vars-minor-edit": "Onko muokkaus merkitty pieneksi muutokseksi vai ei (ei enää käytössä)",

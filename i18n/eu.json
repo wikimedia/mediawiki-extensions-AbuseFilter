@@ -20,6 +20,8 @@
 	"abuselog": "Gehiegikerien erregistroa",
 	"abusefilter-intro": "Ongi etorri Abuse Filter kudeaketa interfazera. Abuse Filter akzio guztieti heuristiko automatikoak esleitzeko software automatizatua da. \nInterfazeak definituta dauden iragazkien lista bat erakusten du, eta hauek modifikatzeko aukera ematen du.",
 	"abusefilter-mustviewprivateoredit": "Segurtasun arrazoiengatik, gehiegizko erabilera iragazkiak ikusteko edo iragazkiak aldatzeko baimena daukaten erabiltzaileek erabili behar dute interfaze hau.",
+	"abusefilter-warning": "\"Kontuz\": Ekintza hau automatikoki arriskutsutzat identifikatu da. Konstruktiboak ez diren ekintzak lehen zeuden egoerara bueltatuko dira. Edizio iraingarriak egin dituzten kontuen IP helbideak blokeatuak izango dira. Iraingarriak diren ekintza hauek konstruktiboak direla uste baduzu, frogatu beharko duzu. Hona hemen ekintza iraingarriak izan daitezkeen deskripzio labur bat: $1",
+	"abusefilter-disallowed": "Ekintza hau automatikoki irraingarritzat identifikatu da, ondorioz ez da onartu. Ekintza hau konstruktiboa dela uste baduzu, administratzaileari abixatu. Hona hemen ekintza iraingarriak izan daitezkeen deskripzio labur bat: $1",
 	"abusefilter-blocker": "Gehiegikeria iragazkia",
 	"right-abusefilter-modify": "Gehiegikeria iragazkiak aldatu",
 	"right-abusefilter-view": "Gehiegikeria iragazkiak ikusi",

@@ -213,6 +213,8 @@
 	"abusefilter-edit-throttle-count": "Aantal toe te laten handelingen:",
 	"abusefilter-edit-throttle-period": "Tijdsduur (in seconden):",
 	"abusefilter-edit-throttle-groups": "Beperkingen groeperen op:",
+	"abusefilter-edit-throttle-groups-help": "Bekijk $1.",
+	"abusefilter-edit-throttle-groups-help-text": "de documentatie op mediawiki.org",
 	"abusefilter-throttle-ip": "IP-adres",
 	"abusefilter-throttle-user": "gebruikersaccount",
 	"abusefilter-throttle-range": "/16 bereik",
