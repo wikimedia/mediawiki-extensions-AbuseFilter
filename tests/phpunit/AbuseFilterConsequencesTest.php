@@ -388,11 +388,13 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				$status = $page->doDeleteArticleReal( 'Testing deletion in AbuseFilter' );
 				break;
 			case 'createaccount':
-				// Since creating a new account is a long task (and uses lots of code that we)
-				// don't need, avoid really creating the user, but log it in case we later need details.
 				$user = User::newFromName( $params['username'] );
 				$provider = new AbuseFilterPreAuthenticationProvider();
 				$status = $provider->testForAccountCreation( $user, $user, [] );
+
+				// A creatable username must exist to be passed to $logEntry->setPerformer(),
+				// so create the account.
+				$user->addToDatabase();
 
 				$logEntry = new \ManualLogEntry( 'newusers', 'create' );
 				$logEntry->setPerformer( $user );
