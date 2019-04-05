@@ -45,6 +45,7 @@
 	"action-abusefilter-log": "прагляд журнала злоўжываньняў",
 	"action-abusefilter-log-detail": "паказаць падрабязнасьці запісаў журналу злоўжываньняў",
 	"action-abusefilter-private": "паказаць прыватныя зьвесткі ў журнале злоўжываньняў",
+	"action-abusefilter-private-log": "прагляд журналу доступу да асабістых зьвестак фільтру злоўжываньняў",
 	"action-abusefilter-modify-restricted": "зьмяніць фільтры злоўжываньняў з абмежаванымі дзеяньнямі",
 	"action-abusefilter-revert": "скасаваць усе зьмены, зробленыя пазначаным фільтрам злоўжываньняў",
 	"action-abusefilter-view-private": "паказаць фільтры злоўжываньняў пазначаныя як прыватныя",
