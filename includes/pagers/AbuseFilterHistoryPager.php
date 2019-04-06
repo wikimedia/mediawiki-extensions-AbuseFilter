@@ -3,8 +3,22 @@
 use MediaWiki\Linker\LinkRenderer;
 
 class AbuseFilterHistoryPager extends TablePager {
-	public $mFilter, $mPage, $mUser;
+	/**
+	 * @var string The filter ID
+	 */
+	public $mFilter;
+	/**
+	 * @var AbuseFilterViewHistory The associated page
+	 */
+	public $mPage;
+	/**
+	 * @var string The user whose changes we're looking up for
+	 */
+	public $mUser;
 
+	/**
+	 * @var LinkRenderer
+	 */
 	protected $linkRenderer;
 	/**
 	 * @param int $filter

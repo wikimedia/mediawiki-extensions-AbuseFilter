@@ -23,7 +23,13 @@ class AFPData {
 		'\]' => ']',
 	];
 
+	/**
+	 * @var string One of the D* const from this class
+	 */
 	public $type;
+	/**
+	 * @var mixed|null|AFPData[] The actual data contained in this object
+	 */
 	public $data;
 
 	/**

@@ -12,7 +12,19 @@ class AbuseFilterPager extends TablePager {
 	 */
 	protected $linkRenderer;
 
-	public $mPage, $mConds, $mQuery;
+	/**
+	 * @var AbuseFilterViewList The associated page
+	 */
+	public $mPage;
+	/**
+	 * @var array Query WHERE conditions
+	 */
+	public $mConds;
+	/**
+	 * @var string[] Info used for searching patterns. The first element is the specified pattern,
+	 *   the second is the search mode (LIKE, RLIKE or IRLIKE)
+	 */
+	public $mQuery;
 
 	/**
 	 * @param AbuseFilterViewList $page

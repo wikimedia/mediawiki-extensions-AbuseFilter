@@ -38,6 +38,7 @@ class AFPDataTest extends MediaWikiTestCase {
 	 * @return AbuseFilterParser
 	 */
 	public static function getParser() {
+		/** @var AbuseFilterParser|null The parser used for tests */
 		static $parser = null;
 		if ( !$parser ) {
 			$parser = new AbuseFilterParser();

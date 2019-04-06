@@ -1,7 +1,25 @@
 <?php
 
 class AbuseFilterViewRevert extends AbuseFilterView {
-	public $origPeriodStart, $origPeriodEnd, $mPeriodStart, $mPeriodEnd;
+	/**
+	 * @var string The start time of the lookup period
+	 */
+	public $origPeriodStart;
+	/**
+	 * @var string The end time of the lookup period
+	 */
+	public $origPeriodEnd;
+	/**
+	 * @var string The same as $origPeriodStart
+	 */
+	public $mPeriodStart;
+	/**
+	 * @var string The same as $origPeriodEnd
+	 */
+	public $mPeriodEnd;
+	/**
+	 * @var string|null The reason provided for the revert
+	 */
 	public $mReason;
 
 	/**
