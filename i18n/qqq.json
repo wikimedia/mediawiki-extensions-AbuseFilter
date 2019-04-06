@@ -80,6 +80,8 @@
 	"abusefilter-log-summary": "This message is displayed at the top of the log overview page for extension AbuseFilter.",
 	"abusefilter-log-search": "Caption of a fieldset for filter definition on [[Special:AbuseLog]]",
 	"abusefilter-log-search-user": "Field label in abuse filter log page.\n{{Identical|User}}",
+	"abusefilter-log-search-group": "Field label in abuse filter log page.",
+	"abusefilter-log-search-group-any": "Option allowing to find entries from any group in abuse log.\n{{Identical|Any}}",
 	"abusefilter-log-search-filter": "Field label in abuse filter log page.",
 	"abusefilter-log-search-title": "Field label in abuse filter log page.\n{{Identical|Title}}",
 	"abusefilter-log-search-wiki": "Label for text field that allows the user to limit search results to a specific wiki, by name.\n{{Identical|Wiki}}",
