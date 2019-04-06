@@ -1,6 +1,9 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\MutableRevisionRecord;
+use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Revision\SlotRecord;
 
 /**
  * Generic tests for utility functions in AbuseFilter
@@ -25,10 +28,6 @@ use MediaWiki\MediaWikiServices;
  * @license GPL-2.0-or-later
  */
 
-use MediaWiki\Revision\MutableRevisionRecord;
-use MediaWiki\Revision\RevisionRecord;
-use MediaWiki\Revision\SlotRecord;
-
 /**
  * @group Test
  * @group AbuseFilter
@@ -41,14 +40,8 @@ use MediaWiki\Revision\SlotRecord;
  * @covers AFComputedVariable
  */
 class AbuseFilterTest extends MediaWikiTestCase {
-	/** @var User */
-	protected static $mUser;
-	/** @var Title */
-	protected static $mTitle;
-	/** @var WikiPage */
-	protected static $mPage;
-	/** @var AbuseFilterVariableHolder */
-	protected static $mVariables;
+	/** A fake timestamp to use in several time-related tests. */
+	const FAKE_TIME = 1514700000;
 
 	/**
 	 * @var array These tables will be deleted in parent::tearDown.
@@ -69,18 +62,8 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	 */
 	protected function setUp() {
 		parent::setUp();
-		MWTimestamp::setFakeTime( 1514700000 );
-		$user = User::newFromName( 'AnotherFilteredUser' );
-		$user->addToDatabase();
-		$user->addGroup( 'basicFilteredUser' );
-		self::$mUser = $user;
-		MWTimestamp::setFakeTime( false );
-
-		self::$mVariables = new AbuseFilterVariableHolder();
-
 		// Make sure that the config we're using is the one we're expecting
 		$this->setMwGlobals( [
-			'wgUser' => $user,
 			'wgRestrictionTypes' => [
 				'create',
 				'edit',
@@ -107,18 +90,6 @@ class AbuseFilterTest extends MediaWikiTestCase {
 			],
 			'wgEnableParserLimitReporting' => false
 		] );
-		$this->setGroupPermissions( [
-			'basicFilteredUser' => [
-				'abusefilter-view' => true
-			],
-			'intermediateFilteredUser' => [
-				'abusefilter-log' => true
-			],
-			'privilegedFilteredUser' => [
-				'abusefilter-private' => true,
-				'abusefilter-revert' => true
-			]
-		] );
 	}
 
 	/**
@@ -126,22 +97,18 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	 */
 	protected function tearDown() {
 		MWTimestamp::setFakeTime( false );
-		$userGroups = self::$mUser->getGroups();
-		// We want to start fresh
-		foreach ( $userGroups as $group ) {
-			self::$mUser->removeGroup( $group );
-		}
 		parent::tearDown();
 	}
 
 	/**
 	 * Given the name of a variable, naturally sets it to a determined amount
 	 *
+	 * @param User $user
 	 * @param string $var The variable name
 	 * @return array the first position is the result (mixed), the second is a boolean
 	 *   indicating whether we've been able to compute the given variable
 	 */
-	private static function computeExpectedUserVariable( $var ) {
+	private function computeExpectedUserVariable( User $user, $var ) {
 		$success = true;
 		switch ( $var ) {
 			case 'user_editcount':
@@ -152,7 +119,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 					'Testing page for AbuseFilter',
 					EDIT_NEW,
 					false,
-					self::$mUser
+					$user
 				);
 				for ( $i = 1; $i <= 7; $i++ ) {
 					$page->doEditContent(
@@ -160,32 +127,38 @@ class AbuseFilterTest extends MediaWikiTestCase {
 						'Testing page for AbuseFilter',
 						EDIT_UPDATE,
 						false,
-						self::$mUser
+						$user
 					);
 				}
 				// Reload to reflect deferred update
-				self::$mUser->clearInstanceCache();
+				$user->clearInstanceCache();
 				$result = 7;
 				break;
 			case 'user_name':
-				$result = self::$mUser->getName();
+				$result = $user->getName();
 				break;
 			case 'user_emailconfirm':
 				$time = wfTimestampNow();
-				self::$mUser->setEmailAuthenticationTimestamp( $time );
+				$user->setEmailAuthenticationTimestamp( $time );
 				$result = $time;
 				break;
 			case 'user_groups':
-				self::$mUser->addGroup( 'intermediateFilteredUser' );
-				$result = self::$mUser->getEffectiveGroups();
+				$result = $user->getEffectiveGroups();
+				$user->addGroup( 'AFTestUserGroups' );
+				array_unshift( $result, 'AFTestUserGroups' );
 				break;
 			case 'user_rights':
-				self::$mUser->addGroup( 'privilegedFilteredUser' );
-				$result = self::$mUser->getRights();
+				$rights = [ 'abusefilter-foo', 'abusefilter-bar' ];
+				$this->setGroupPermissions( [
+					'AFTestUserRights' => array_fill_keys( $rights, true )
+				] );
+				$previous = $user->getRights();
+				$user->addGroup( 'AFTestUserRights' );
+				$result = array_merge( $rights, $previous );
 				break;
 			case 'user_blocked':
 				$block = new Block();
-				$block->setTarget( self::$mUser );
+				$block->setTarget( $user );
 				$block->setBlocker( 'UTSysop' );
 				$block->mReason = 'Testing AbuseFilter variable user_blocked';
 				$block->mExpiry = 'infinity';
@@ -208,33 +181,33 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	 * @dataProvider provideUserVars
 	 */
 	public function testGenerateUserVars( $varName ) {
-		list( $computed, $successfully ) = self::computeExpectedUserVariable( $varName );
+		$user = $this->getMutableTestUser()->getUser();
+		list( $computed, $successfully ) = $this->computeExpectedUserVariable( $user, $varName );
 		if ( !$successfully ) {
 			$this->fail( "Given unknown user-related variable $varName." );
 		}
 
-		$variableHolder = AbuseFilter::generateUserVars( self::$mUser );
+		$variableHolder = AbuseFilter::generateUserVars( $user );
 		$actual = $variableHolder->getVar( $varName )->toNative();
-		$this->assertSame(
-			$computed,
-			$actual,
-			"AbuseFilter variable $varName is computed wrongly."
-		);
+		$this->assertSame( $computed, $actual );
 	}
 
 	/**
 	 * Data provider for testGenerateUserVars
-	 * @return array
+	 * @return Generator|array
 	 */
 	public function provideUserVars() {
-		return [
-			[ 'user_editcount' ],
-			[ 'user_name' ],
-			[ 'user_emailconfirm' ],
-			[ 'user_groups' ],
-			[ 'user_rights' ],
-			[ 'user_blocked' ]
+		$vars = [
+			'user_editcount',
+			'user_name',
+			'user_emailconfirm',
+			'user_groups',
+			'user_rights',
+			'user_blocked'
 		];
+		foreach ( $vars as $var ) {
+			yield $var => [ $var ];
+		}
 	}
 
 	/**
@@ -244,21 +217,22 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	 * @covers AbuseFilter::generateUserVars
 	 */
 	public function testUserAgeVar() {
+		MWTimestamp::setFakeTime( self::FAKE_TIME );
+		$user = User::newFromName( 'TestUserAge' );
+		$user->addToDatabase();
+		$expected = 163;
 		// Set a fake timestamp so that execution time won't be a problem
-		MWTimestamp::setFakeTime( 1514700163 );
-		$variableHolder = AbuseFilter::generateUserVars( self::$mUser );
+		MWTimestamp::setFakeTime( self::FAKE_TIME + $expected );
+		$variableHolder = AbuseFilter::generateUserVars( $user );
 		$actual = $variableHolder->getVar( 'user_age' )->toNative();
 
-		$this->assertEquals(
-			163,
-			$actual,
-			"AbuseFilter variable user_age is computed wrongly. Expected: 163, actual: $actual."
-		);
+		$this->assertEquals( $expected, $actual );
 	}
 
 	/**
 	 * Given the name of a variable, naturally sets it to a determined amount
 	 *
+	 * @param Title $title The title to use for computing variables
 	 * @param string $suffix The suffix of the variable
 	 * @param string|null $options Further options for the test
 	 * @return array the first position is the result (mixed), the second is a boolean
@@ -266,27 +240,18 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	 *   the result may be null if the requested variable doesn't exist, or false if there
 	 *   has been some other problem.
 	 */
-	private static function computeExpectedTitleVariable( $suffix, $options = null ) {
-		self::$mTitle = Title::newFromText( 'AbuseFilter test' );
-		$page = WikiPage::factory( self::$mTitle );
+	private function computeExpectedTitleVariable( Title $title, $suffix, $options = null ) {
+		$page = WikiPage::factory( $title );
+		$user = $this->getMutableTestUser()->getUser();
 
 		if ( $options === 'restricted' ) {
 			$action = str_replace( '_restrictions_', '', $suffix );
-			$namespace = 0;
-			if ( $action === 'upload' ) {
-				// Only files can have it
-				$namespace = 6;
-			}
-			self::$mTitle = Title::makeTitle( $namespace, 'AbuseFilter restrictions test' );
-			$page = WikiPage::factory( self::$mTitle );
 			if ( $action !== 'create' ) {
 				// To apply other restrictions, the title has to exist
 				$page->doEditContent(
 					new WikitextContent( 'AbuseFilter test for title variables' ),
 					'Testing page for AbuseFilter',
-					EDIT_NEW,
-					false,
-					self::$mUser
+					EDIT_NEW
 				);
 			}
 			$cascade = false;
@@ -295,29 +260,29 @@ class AbuseFilterTest extends MediaWikiTestCase {
 				[ $action => 'infinity' ],
 				$cascade,
 				'Testing restrictions for AbuseFilter',
-				self::$mUser
+				$user
 			);
 		}
 		$success = true;
 		switch ( $suffix ) {
 			case '_id':
-				$result = self::$mTitle->getArticleID();
+				$result = $title->getArticleID();
 				break;
 			case '_namespace':
-				$result = self::$mTitle->getNamespace();
+				$result = $title->getNamespace();
 				break;
 			case '_title':
-				$result = self::$mTitle->getText();
+				$result = $title->getText();
 				break;
 			case '_prefixedtitle':
-				$result = self::$mTitle->getPrefixedText();
+				$result = $title->getPrefixedText();
 				break;
 			case '_restrictions_create':
 			case '_restrictions_edit':
 			case '_restrictions_move':
 			case '_restrictions_upload':
 				$type = str_replace( '_restrictions_', '', $suffix );
-				$restrictions = self::$mTitle->getRestrictions( $type );
+				$restrictions = $title->getRestrictions( $type );
 				$preliminarCheck = !( $options === 'restricted' xor count( $restrictions ) );
 				if ( $preliminarCheck ) {
 					$result = $restrictions;
@@ -333,20 +298,20 @@ class AbuseFilterTest extends MediaWikiTestCase {
 					'Testing page for AbuseFilter',
 					EDIT_NEW,
 					false,
-					self::$mUser
+					$user
 				);
 				$mockContributors = [ 'X>Alice', 'X>Bob', 'X>Charlie' ];
-				foreach ( $mockContributors as $user ) {
+				foreach ( $mockContributors as $contributor ) {
 					$page->doEditContent(
-						new WikitextContent( "AbuseFilter test, page revision by $user" ),
+						new WikitextContent( "AbuseFilter test, page revision by $contributor" ),
 						'Testing page for AbuseFilter',
 						EDIT_UPDATE,
 						false,
-						User::newFromName( $user, false )
+						User::newFromName( $contributor, false )
 					);
 				}
 				$contributors = array_reverse( $mockContributors );
-				array_push( $contributors, self::$mUser->getName() );
+				array_push( $contributors, $user->getName() );
 				$result = $contributors;
 				break;
 			case '_first_contributor':
@@ -356,19 +321,19 @@ class AbuseFilterTest extends MediaWikiTestCase {
 					'Testing page for AbuseFilter',
 					EDIT_NEW,
 					false,
-					self::$mUser
+					$user
 				);
 				$mockContributors = [ 'X>Alice', 'X>Bob', 'X>Charlie' ];
-				foreach ( $mockContributors as $user ) {
+				foreach ( $mockContributors as $contributor ) {
 					$page->doEditContent(
-						new WikitextContent( "AbuseFilter test, page revision by $user" ),
+						new WikitextContent( "AbuseFilter test, page revision by $contributor" ),
 						'Testing page for AbuseFilter',
 						EDIT_UPDATE,
 						false,
-						User::newFromName( $user, false )
+						User::newFromName( $contributor, false )
 					);
 				}
-				$result = self::$mUser->getName();
+				$result = $user->getName();
 				break;
 			default:
 				$success = false;
@@ -390,8 +355,19 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	 */
 	public function testGenerateTitleVars( $prefix, $suffix, $options = null ) {
 		$varName = $prefix . $suffix;
-		list( $computed, $successfully ) = self::computeExpectedTitleVariable( $suffix, $options );
-		if ( !$successfully ) {
+		$titleNamespace = 0;
+		$titleText = 'AbuseFilter test';
+		if ( $options === 'restricted' ) {
+			// Test on a different page
+			$titleText = 'AbuseFilter restrictions test';
+			if ( str_replace( '_restrictions_', '', $suffix ) === 'upload' ) {
+				// Only files can have upload restrictions
+				$titleNamespace = 6;
+			}
+		}
+		$title = Title::makeTitle( $titleNamespace, $titleText );
+		list( $computed, $success ) = $this->computeExpectedTitleVariable( $title, $suffix, $options );
+		if ( !$success ) {
 			if ( $computed === null ) {
 				$this->fail( "Given unknown title-related variable $varName." );
 			} else {
@@ -399,64 +375,38 @@ class AbuseFilterTest extends MediaWikiTestCase {
 			}
 		}
 
-		$variableHolder = AbuseFilter::generateTitleVars( self::$mTitle, $prefix );
+		$variableHolder = AbuseFilter::generateTitleVars( $title, $prefix );
 		$actual = $variableHolder->getVar( $varName )->toNative();
-		$this->assertSame(
-			$computed,
-			$actual,
-			"AbuseFilter variable $varName is computed wrongly."
-		);
+		$this->assertSame( $computed, $actual );
 	}
 
 	/**
 	 * Data provider for testGenerateUserVars
-	 * @return array
+	 * @return Generator|array
 	 */
 	public function provideTitleVars() {
-		return [
-			[ 'page', '_id' ],
-			[ 'page', '_namespace' ],
-			[ 'page', '_title' ],
-			[ 'page', '_prefixedtitle' ],
-			[ 'page', '_restrictions_create' ],
-			[ 'page', '_restrictions_create', 'restricted' ],
-			[ 'page', '_restrictions_edit' ],
-			[ 'page', '_restrictions_edit', 'restricted' ],
-			[ 'page', '_restrictions_move' ],
-			[ 'page', '_restrictions_move', 'restricted' ],
-			[ 'page', '_restrictions_upload' ],
-			[ 'page', '_restrictions_upload', 'restricted' ],
-			[ 'page', '_first_contributor' ],
-			[ 'page', '_recent_contributors' ],
-			[ 'moved_from', '_id' ],
-			[ 'moved_from', '_namespace' ],
-			[ 'moved_from', '_title' ],
-			[ 'moved_from', '_prefixedtitle' ],
-			[ 'moved_from', '_restrictions_create' ],
-			[ 'moved_from', '_restrictions_create', 'restricted' ],
-			[ 'moved_from', '_restrictions_edit' ],
-			[ 'moved_from', '_restrictions_edit', 'restricted' ],
-			[ 'moved_from', '_restrictions_move' ],
-			[ 'moved_from', '_restrictions_move', 'restricted' ],
-			[ 'moved_from', '_restrictions_upload' ],
-			[ 'moved_from', '_restrictions_upload', 'restricted' ],
-			[ 'moved_from', '_first_contributor' ],
-			[ 'moved_from', '_recent_contributors' ],
-			[ 'moved_to', '_id' ],
-			[ 'moved_to', '_namespace' ],
-			[ 'moved_to', '_title' ],
-			[ 'moved_to', '_prefixedtitle' ],
-			[ 'moved_to', '_restrictions_create' ],
-			[ 'moved_to', '_restrictions_create', 'restricted' ],
-			[ 'moved_to', '_restrictions_edit' ],
-			[ 'moved_to', '_restrictions_edit', 'restricted' ],
-			[ 'moved_to', '_restrictions_move' ],
-			[ 'moved_to', '_restrictions_move', 'restricted' ],
-			[ 'moved_to', '_restrictions_upload' ],
-			[ 'moved_to', '_restrictions_upload', 'restricted' ],
-			[ 'moved_to', '_first_contributor' ],
-			[ 'moved_to', '_recent_contributors' ],
+		$prefixes = [ 'page', 'moved_from', 'moved_to' ];
+		$suffixes = [
+			'_id',
+			'_namespace',
+			'_title',
+			'_prefixedtitle',
+			'_restrictions_create',
+			'_restrictions_edit',
+			'_restrictions_move',
+			'_restrictions_upload',
+			'_first_contributor',
+			'_recent_contributors'
 		];
+		foreach ( $prefixes as $prefix ) {
+			foreach ( $suffixes as $suffix ) {
+				yield $prefix . $suffix => [ $prefix, $suffix ];
+				if ( strpos( $suffix, 'restrictions' ) !== false ) {
+					// Add a case where the page has the restriction
+					yield $prefix . $suffix . ', restricted' => [ $prefix, $suffix, 'restricted' ];
+				}
+			}
+		}
 	}
 
 	/**
@@ -470,37 +420,31 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	public function testAgeVars( $prefix ) {
 		$varName = $prefix . '_age';
 
-		MWTimestamp::setFakeTime( 1514700000 );
-		self::$mTitle = Title::newFromText( 'AbuseFilter test' );
-		$page = WikiPage::factory( self::$mTitle );
+		MWTimestamp::setFakeTime( self::FAKE_TIME );
+		$title = Title::newFromText( 'AbuseFilter test' );
+		$page = WikiPage::factory( $title );
 		$page->doEditContent(
 			new WikitextContent( 'AbuseFilter _age variables test' ),
 			'Testing page for AbuseFilter',
-			EDIT_NEW,
-			false,
-			self::$mUser
+			EDIT_NEW
 		);
 
-		MWTimestamp::setFakeTime( 1514700123 );
-		$variableHolder = AbuseFilter::generateTitleVars( self::$mTitle, $prefix );
+		$expected = 123;
+		MWTimestamp::setFakeTime( self::FAKE_TIME + $expected );
+		$variableHolder = AbuseFilter::generateTitleVars( $title, $prefix );
 		$actual = $variableHolder->getVar( $varName )->toNative();
-		$this->assertEquals(
-			123,
-			$actual,
-			"AbuseFilter variable $varName is computed wrongly. Expected: 123, actual: $actual."
-		);
+		$this->assertEquals( $expected, $actual );
 	}
 
 	/**
 	 * Data provider for testAgeVars
-	 * @return array
+	 * @return Generator|array
 	 */
 	public function provideAgeVars() {
-		return [
-			[ 'page' ],
-			[ 'moved_from' ],
-			[ 'moved_to' ],
-		];
+		$prefixes = [ 'page', 'moved_from', 'moved_to' ];
+		foreach ( $prefixes as $prefix ) {
+			yield "{$prefix}_age" => [ $prefix ];
+		}
 	}
 
 	/**
@@ -1203,10 +1147,17 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	 *
 	 * @param string $old The old wikitext of the page
 	 * @param string $new The new wikitext of the page
+	 * @param AbuseFilterVariableHolder &$vars The object to use to store/retrieve variables
+	 * @param WikiPage $page The page to use
 	 * @return array
 	 */
-	private static function computeExpectedEditVariable( $old, $new ) {
-		$popts = ParserOptions::newFromUser( self::$mUser );
+	private function computeExpectedEditVariable(
+		$old,
+		$new,
+		AbuseFilterVariableHolder &$vars,
+		WikiPage $page
+	) {
+		$popts = ParserOptions::newCanonical();
 		// Order matters here. Some variables rely on other ones.
 		$variables = [
 			'new_html',
@@ -1227,9 +1178,9 @@ class AbuseFilterTest extends MediaWikiTestCase {
 		];
 
 		// Set required variables
-		self::$mVariables->setVar( 'old_wikitext', $old );
-		self::$mVariables->setVar( 'new_wikitext', $new );
-		self::$mVariables->setVar( 'summary', 'Testing page for AbuseFilter' );
+		$vars->setVar( 'old_wikitext', $old );
+		$vars->setVar( 'new_wikitext', $new );
+		$vars->setVar( 'summary', 'Testing page for AbuseFilter' );
 
 		$computedVariables = [];
 		foreach ( $variables as $var ) {
@@ -1239,8 +1190,8 @@ class AbuseFilterTest extends MediaWikiTestCase {
 			$newText = $new;
 			switch ( $var ) {
 				case 'edit_diff_pst':
-					$newText = self::$mVariables->getVar( 'new_pst' )->toString();
-					// Intentional fall-through
+					$newText = $vars->getVar( 'new_pst' )->toString();
+				// Intentional fall-through
 				case 'edit_diff':
 					$diffs = new Diff( explode( "\n", $oldText ), explode( "\n", $newText ) );
 					$format = new UnifiedDiffFormatter();
@@ -1259,7 +1210,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 				case 'added_lines':
 				case 'removed_lines':
 					$diffVariable = $var === 'added_lines_pst' ? 'edit_diff_pst' : 'edit_diff';
-					$diff = self::$mVariables->getVar( $diffVariable )->toString();
+					$diff = $vars->getVar( $diffVariable )->toString();
 					$line_prefix = $var === 'removed_lines' ? '-' : '+';
 					$diff_lines = explode( "\n", $diff );
 					$interest_lines = [];
@@ -1271,14 +1222,13 @@ class AbuseFilterTest extends MediaWikiTestCase {
 					$result = $interest_lines;
 					break;
 				case 'new_text':
-					$newHtml = self::$mVariables->getVar( 'new_html' )->toString();
+					$newHtml = $vars->getVar( 'new_html' )->toString();
 					$result = StringUtils::delimiterReplace( '<', '>', '', $newHtml );
 					break;
 				case 'new_pst':
 				case 'new_html':
-					$article = self::$mPage;
-					$content = ContentHandler::makeContent( $newText, $article->getTitle() );
-					$editInfo = $article->prepareContentForEdit( $content );
+					$content = ContentHandler::makeContent( $newText, $page->getTitle() );
+					$editInfo = $page->prepareContentForEdit( $content );
 
 					if ( $var === 'new_pst' ) {
 						$result = $editInfo->pstContent->serialize( $editInfo->format );
@@ -1287,22 +1237,20 @@ class AbuseFilterTest extends MediaWikiTestCase {
 					}
 					break;
 				case 'all_links':
-					$article = self::$mPage;
-					$content = ContentHandler::makeContent( $newText, $article->getTitle() );
-					$editInfo = $article->prepareContentForEdit( $content );
+					$content = ContentHandler::makeContent( $newText, $page->getTitle() );
+					$editInfo = $page->prepareContentForEdit( $content );
 					$result = array_keys( $editInfo->output->getExternalLinks() );
 					break;
 				case 'old_links':
-					$article = self::$mPage;
 					$popts->setTidy( true );
 					$parser = MediaWikiServices::getInstance()->getParser();
-					$edit = $parser->parse( $oldText, $article->getTitle(), $popts );
+					$edit = $parser->parse( $oldText, $page->getTitle(), $popts );
 					$result = array_keys( $edit->getExternalLinks() );
 					break;
 				case 'added_links':
 				case 'removed_links':
-					$oldLinks = self::$mVariables->getVar( 'old_links' )->toString();
-					$newLinks = self::$mVariables->getVar( 'all_links' )->toString();
+					$oldLinks = $vars->getVar( 'old_links' )->toString();
+					$newLinks = $vars->getVar( 'all_links' )->toString();
 					$oldLinks = explode( "\n", $oldLinks );
 					$newLinks = explode( "\n", $newLinks );
 
@@ -1317,7 +1265,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 					$result = null;
 			}
 			$computedVariables[$var] = [ $result, $success ];
-			self::$mVariables->setVar( $var, $result );
+			$vars->setVar( $var, $result );
 		}
 		return $computedVariables;
 	}
@@ -1331,25 +1279,22 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	 * @dataProvider provideEditVars
 	 */
 	public function testGetEditVars( $oldText, $newText ) {
-		self::$mTitle = Title::makeTitle( 0, 'AbuseFilter test' );
-		self::$mPage = WikiPage::factory( self::$mTitle );
+		$title = Title::makeTitle( 0, 'AbuseFilter test' );
+		$page = WikiPage::factory( $title );
 
-		self::$mPage->doEditContent(
+		$page->doEditContent(
 			new WikitextContent( $oldText ),
 			'Creating the test page',
-			EDIT_NEW,
-			false,
-			self::$mUser
+			EDIT_NEW
 		);
-		self::$mPage->doEditContent(
+		$page->doEditContent(
 			new WikitextContent( $newText ),
 			'Testing page for AbuseFilter',
-			EDIT_UPDATE,
-			false,
-			self::$mUser
+			EDIT_UPDATE
 		);
 
-		$computeResult = self::computeExpectedEditVariable( $oldText, $newText );
+		$vars = new AbuseFilterVariableHolder();
+		$computeResult = $this->computeExpectedEditVariable( $oldText, $newText, $vars, $page );
 
 		$computedVariables = [];
 		foreach ( $computeResult as $varName => $computed ) {
@@ -1359,11 +1304,11 @@ class AbuseFilterTest extends MediaWikiTestCase {
 			$computedVariables[$varName] = $computed[0];
 		}
 
-		self::$mVariables->addHolders( AbuseFilter::getEditVars( self::$mTitle, self::$mPage ) );
+		$vars->addHolders( AbuseFilter::getEditVars( $title, $page ) );
 
 		$actualVariables = [];
-		foreach ( self::$mVariables->mVars as $varName => $_ ) {
-			$actualVariables[$varName] = self::$mVariables->getVar( $varName )->toNative();
+		foreach ( array_keys( $vars->mVars ) as $varName ) {
+			$actualVariables[$varName] = $vars->getVar( $varName )->toNative();
 		}
 
 		$differences = [];
@@ -1375,8 +1320,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 			}
 		}
 
-		$this->assertCount(
-			0,
+		$this->assertEmpty(
 			$differences,
 			'The following AbuseFilter variables are computed wrongly: ' . implode( ', ', $differences )
 		);
@@ -1391,22 +1335,22 @@ class AbuseFilterTest extends MediaWikiTestCase {
 			[
 				'[https://www.mediawiki.it/wiki/Extension:AbuseFilter AbuseFilter] test page',
 				'Adding something to compute edit variables. Here are some diacritics to make sure ' .
-					"the test behaves well with unicode: Là giù cascherò io altresì.\n名探偵コナン.\n" .
-					"[[Help:Pre Save Transform|]] should make the difference as well.\n" .
-					'Instead, [https://www.mediawiki.it this] is an external link.'
+				"the test behaves well with unicode: Là giù cascherò io altresì.\n名探偵コナン.\n" .
+				"[[Help:Pre Save Transform|]] should make the difference as well.\n" .
+				'Instead, [https://www.mediawiki.it this] is an external link.'
 			],
 			[
 				'Adding something to compute edit variables. Here are some diacritics to make sure ' .
-					"the test behaves well with unicode: Là giù cascherò io altresì.\n名探偵コナン.\n" .
-					"[[Help:Pre Save Transform|]] should make the difference as well.\n" .
-					'Instead, [https://www.mediawiki.it this] is an external link.',
+				"the test behaves well with unicode: Là giù cascherò io altresì.\n名探偵コナン.\n" .
+				"[[Help:Pre Save Transform|]] should make the difference as well.\n" .
+				'Instead, [https://www.mediawiki.it this] is an external link.',
 				'[https://www.mediawiki.it/wiki/Extension:AbuseFilter AbuseFilter] test page'
 			],
 			[
 				"A '''foo''' is not a ''bar''.",
 				"Actually, according to [http://en.wikipedia.org ''Wikipedia''], a '''''foo''''' " .
-					'is <small>more or less</small> the same as a <b>bar</b>, except that a foo is ' .
-					'usually provided together with a [[cellar door|]] to make it work<ref>Yes, really</ref>.'
+				'is <small>more or less</small> the same as a <b>bar</b>, except that a foo is ' .
+				'usually provided together with a [[cellar door|]] to make it work<ref>Yes, really</ref>.'
 			],
 			[
 				'This edit will be pretty smll',
