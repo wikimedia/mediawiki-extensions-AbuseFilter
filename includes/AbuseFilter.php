@@ -2444,6 +2444,10 @@ class AbuseFilter {
 
 		// If we've activated the 'tag' option, check the arguments for validity.
 		if ( !empty( $actions['tag'] ) ) {
+			if ( count( $actions['tag']['parameters'] ) === 0 ) {
+				$validationStatus->error( 'tags-create-no-name' );
+				return $validationStatus;
+			}
 			foreach ( $actions['tag']['parameters'] as $tag ) {
 				$status = self::isAllowedTag( $tag );
 

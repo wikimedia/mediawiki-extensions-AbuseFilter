@@ -417,6 +417,26 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			[
 				[
 					'filterParameters' => [
+						'rules' => '1!=0',
+						'description' => 'Empty tag',
+						'notes' => '',
+						'tagEnabled' => true,
+						'tagTags' => ''
+					],
+					'testData' => [
+						'doingWhat' => 'Trying to save a filter with an empty tag',
+						'expectedResult' => 'an error message saying that the tag name must be specified',
+						'expectedMessage' => 'tags-create-no-name',
+						'shouldFail' => true,
+						'shouldBeSaved' => false,
+						'customUserGroup' => '',
+						'needsOtherFilters' => false
+					]
+				]
+			],
+			[
+				[
+					'filterParameters' => [
 						'rules' => '1==1',
 						'description' => 'Global without perms',
 						'global' => true,

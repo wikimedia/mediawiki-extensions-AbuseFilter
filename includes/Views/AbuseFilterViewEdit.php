@@ -1232,6 +1232,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						$parameters[0] = $specMsg;
 					} elseif ( $action === 'tag' ) {
 						$parameters = explode( ',', trim( $request->getText( 'wpFilterTags' ) ) );
+						if ( $parameters === [ '' ] ) {
+							// Since it's not possible to manually add an empty tag, this only happens
+							// if the form is submitted without touching the tag input field.
+							// We pass an empty array so that the widget won't show an empty tag in the topbar
+							$parameters = [];
+						}
 					}
 
 					$thisAction = [ 'action' => $action, 'parameters' => $parameters ];
