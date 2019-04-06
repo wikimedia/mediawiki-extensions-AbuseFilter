@@ -1458,7 +1458,7 @@ class AbuseFilter {
 				if ( self::filterHidden( $data['afl_filter'] ) && !$wgAbuseFilterNotificationsPrivate ) {
 					continue;
 				}
-				$entry->publish( 0, $wgAbuseFilterNotifications );
+				self::publishEntry( $dbw, $entry, $wgAbuseFilterNotifications );
 			}
 		}
 
@@ -1511,6 +1511,31 @@ class AbuseFilter {
 		$vars->setVar( 'local_log_ids', $local_log_ids );
 
 		self::checkEmergencyDisable( $group, $logged_local_filters );
+	}
+
+	/**
+	 * Like LogEntry::publish, but doesn't require an ID (which we don't have) and skips the
+	 * tagging part
+	 *
+	 * @param IDatabase $dbw To cancel the callback if the log insertion fails
+	 * @param ManualLogEntry $entry
+	 * @param string $to One of 'udp', 'rc' and 'rcandudp'
+	 */
+	private static function publishEntry( IDatabase $dbw, ManualLogEntry $entry, $to ) {
+		DeferredUpdates::addCallableUpdate(
+			function () use ( $entry, $to ) {
+				$rc = $entry->getRecentChange();
+
+				if ( $to === 'rc' || $to === 'rcandudp' ) {
+					$rc->save( $rc::SEND_NONE );
+				}
+				if ( $to === 'udp' || $to === 'rcandudp' ) {
+					$rc->notifyRCFeeds();
+				}
+			},
+			DeferredUpdates::POSTSEND,
+			$dbw
+		);
 	}
 
 	/**
