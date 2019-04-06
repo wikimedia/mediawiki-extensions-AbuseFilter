@@ -346,7 +346,7 @@ class AFPData {
 		$a = $a->toNumber();
 		$b = $b->toNumber();
 
-		if ( $op !== '*' && $b === 0 ) {
+		if ( $op !== '*' && (float)$b === 0.0 ) {
 			throw new AFPUserVisibleException( 'dividebyzero', $pos, [ $a ] );
 		}
 
