@@ -61,6 +61,7 @@
 	"abusefilter-log-summary": "Denne log viser en liste over alle handlinger som filtrene har opfanget.",
 	"abusefilter-log-search": "Søg i misbrugsloggen",
 	"abusefilter-log-search-user": "Bruger:",
+	"abusefilter-log-search-group-any": "Enhver",
 	"abusefilter-log-search-filter": "Filter-id'er (adskil med lodrette streger):",
 	"abusefilter-log-search-title": "Titel:",
 	"abusefilter-log-search-wiki": "Wiki:",

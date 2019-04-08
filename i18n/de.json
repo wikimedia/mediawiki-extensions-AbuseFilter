@@ -71,6 +71,8 @@
 	"abusefilter-log-summary": "Dieses Logbuch zeigt eine Liste aller Aktionen, die durch einen Filter aufgefangen wurden.",
 	"abusefilter-log-search": "Missbrauchsfilter-Logbuch durchsuchen",
 	"abusefilter-log-search-user": "Benutzer:",
+	"abusefilter-log-search-group": "Gruppe filtern:",
+	"abusefilter-log-search-group-any": "Alle",
 	"abusefilter-log-search-filter": "Filterkennungen (durch senkrechte Striche getrennt):",
 	"abusefilter-log-search-title": "Titel:",
 	"abusefilter-log-search-wiki": "Wiki:",

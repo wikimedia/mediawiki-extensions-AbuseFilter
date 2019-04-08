@@ -358,7 +358,7 @@
 	"abusefilter-edit-builder-vars-all-links": "Kaikki ulkoiset linkit uudessa tekstissä",
 	"abusefilter-edit-builder-vars-added-links": "Kaikki muokkauksessa lisätyt ulkoiset linkit",
 	"abusefilter-edit-builder-vars-removed-links": "Kaikki muokkauksessa poistetut ulkoiset linkit",
-	"abusefilter-edit-builder-vars-old-text": "Sivun vanha wikiteksti, ennen muokkausta (ei enää käytössä)",
+	"abusefilter-edit-builder-vars-old-text": "Sivun vanha wikiteksti, ennen muokkausta",
 	"abusefilter-edit-builder-vars-new-text": "Sivun uusi wikiteksti, muokkauksen jälkeen",
 	"abusefilter-edit-builder-vars-new-pst": "Uuden sivun wikiteksti, ”pre-save transformed”",
 	"abusefilter-edit-builder-vars-diff-pst": "Yhdistetty eroavaisuus (diffi) muutoksista, jotka on tehty muokkauksessa, \"pre-save transformed\"",

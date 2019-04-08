@@ -43,7 +43,8 @@
 			"Vlad5250",
 			"MaxBioHazard",
 			"Shaleych",
-			"Athena Atterdag"
+			"Athena Atterdag",
+			"Kareyac"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -240,6 +241,7 @@
 	"abusefilter-edit-throttle-count": "Количество разрешённых действий:",
 	"abusefilter-edit-throttle-period": "Отрезок времени (в секундах):",
 	"abusefilter-edit-throttle-groups": "Сужение по группам:\n''(по одному на строке, разделение запятыми)''",
+	"abusefilter-edit-throttle-groups-help": "См. $1.",
 	"abusefilter-edit-throttle-hidden-placeholder": "Разделите запятыми, чтобы соединить логическим оператором И, и переводами строк, чтобы соединить логическим оператором ИЛИ",
 	"abusefilter-throttle-ip": "IP-адрес",
 	"abusefilter-throttle-user": "учётная запись",

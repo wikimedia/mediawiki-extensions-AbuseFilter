@@ -69,6 +69,8 @@
 	"abusefilter-log-summary": "هذا السجل يعرض قائمة بكل الأفعال المُكتشفة بواسطة المرشحات.",
 	"abusefilter-log-search": "بحث سجل الإساءة",
 	"abusefilter-log-search-user": "المستخدم:",
+	"abusefilter-log-search-group": "تصفية المجموعة:",
+	"abusefilter-log-search-group-any": "أي",
 	"abusefilter-log-search-filter": "أرقام المرشحات (مفصولة بشريط عمودي):",
 	"abusefilter-log-search-title": "العنوان:",
 	"abusefilter-log-search-wiki": "الويكي:",
