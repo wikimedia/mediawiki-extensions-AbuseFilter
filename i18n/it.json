@@ -70,7 +70,7 @@
 	"abusefilter-log-summary": "Questo registro mostra un elenco di tutte le azioni che hanno attivato uno o più filtri.",
 	"abusefilter-log-search": "Cerca nel registro del filtro anti abusi",
 	"abusefilter-log-search-user": "Utente:",
-	"abusefilter-log-search-group": "Gruppo di filtri:",
+	"abusefilter-log-search-group": "Gruppo filtri:",
 	"abusefilter-log-search-group-any": "Qualsiasi",
 	"abusefilter-log-search-filter": "ID filtri (separati da barre verticali):",
 	"abusefilter-log-search-title": "Titolo:",

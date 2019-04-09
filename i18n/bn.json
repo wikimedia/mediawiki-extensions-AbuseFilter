@@ -42,6 +42,8 @@
 	"abusefilter-log-summary": "এই লগটি ছাঁকনি দ্বারা ধরা সমস্ত কর্মের একটি তালিকা দেখায়।",
 	"abusefilter-log-search": "অপব্যবহার লগে অনুসন্ধান করুন",
 	"abusefilter-log-search-user": "ব্যবহারকারী:",
+	"abusefilter-log-search-group": "দল ছাঁকুন:",
+	"abusefilter-log-search-group-any": "যেকোন",
 	"abusefilter-log-search-filter": "ছাঁকনির আইডি (পাইপ দিয়ে আলাদা):",
 	"abusefilter-log-search-title": "শিরোনাম:",
 	"abusefilter-log-search-wiki": "উইকি:",

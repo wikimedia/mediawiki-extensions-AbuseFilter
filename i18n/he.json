@@ -57,6 +57,8 @@
 	"abusefilter-log-summary": "יומן זה מציג רשימה של כל הפעולות שנתפסו על־ידי המסננים.",
 	"abusefilter-log-search": "חיפוש ביומן ההשחתות",
 	"abusefilter-log-search-user": "משתמש:",
+	"abusefilter-log-search-group": "קבוצת מסננים:",
+	"abusefilter-log-search-group-any": "הכול",
 	"abusefilter-log-search-filter": "מספרי מסננים (מופרדים בתווי '|'):",
 	"abusefilter-log-search-title": "כותרת:",
 	"abusefilter-log-search-wiki": "אתר ויקי:",

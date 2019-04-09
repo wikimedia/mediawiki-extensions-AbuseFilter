@@ -67,6 +67,7 @@
 	"abusefilter-log-summary": "Dit logboek geeft een lijst weer van handelingen die opgevangen zijn door filters.",
 	"abusefilter-log-search": "Het filterlogboek doorzoeken",
 	"abusefilter-log-search-user": "Gebruiker:",
+	"abusefilter-log-search-group-any": "Alle",
 	"abusefilter-log-search-filter": "Filternummers (gescheiden met het teken \"|\"):",
 	"abusefilter-log-search-title": "Paginanaam:",
 	"abusefilter-log-search-wiki": "Wiki:",

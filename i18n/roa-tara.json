@@ -48,6 +48,8 @@
 	"abusefilter-log-summary": "Quiste archvije fàce vedè 'nu elenghe de totte le aziune pigghiate da le filtre.",
 	"abusefilter-log-search": "Cirche l'archivije de le abbuse",
 	"abusefilter-log-search-user": "Utende:",
+	"abusefilter-log-search-group": "Filtre de gruppe:",
+	"abusefilter-log-search-group-any": "Tutte",
 	"abusefilter-log-search-filter": "ID d'u filtre (separate da le |):",
 	"abusefilter-log-search-title": "Titele:",
 	"abusefilter-log-search-wiki": "Uicchi:",
