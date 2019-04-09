@@ -170,15 +170,15 @@ class AbuseFilter {
 			'user_rights' => 'user-rights',
 			'user_blocked' => 'user-blocked',
 			'user_emailconfirm' => 'user-emailconfirm',
-			'old_wikitext' => 'old-text',
-			'new_wikitext' => 'new-text',
+			'old_wikitext' => 'old-wikitext',
+			'new_wikitext' => 'new-wikitext',
 			'added_links' => 'added-links',
 			'removed_links' => 'removed-links',
 			'all_links' => 'all-links',
 			'new_pst' => 'new-pst',
 			'edit_diff_pst' => 'diff-pst',
 			'added_lines_pst' => 'addedlines-pst',
-			'new_text' => 'new-text-stripped',
+			'new_text' => 'new-text',
 			'new_html' => 'new-html',
 			'page_restrictions_edit' => 'restrictions-edit',
 			'page_restrictions_move' => 'restrictions-move',
@@ -211,7 +211,7 @@ class AbuseFilter {
 
 	/** @var array Old vars which aren't in use anymore */
 	public static $disabledVars = [
-		'old_text' => 'old-text-stripped',
+		'old_text' => 'old-text',
 		'old_html' => 'old-html',
 		'minor_edit' => 'minor-edit'
 	];
