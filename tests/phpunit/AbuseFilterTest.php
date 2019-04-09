@@ -251,7 +251,9 @@ class AbuseFilterTest extends MediaWikiTestCase {
 				$page->doEditContent(
 					new WikitextContent( 'AbuseFilter test for title variables' ),
 					'Testing page for AbuseFilter',
-					EDIT_NEW
+					EDIT_NEW,
+					false,
+					$user
 				);
 			}
 			$cascade = false;
@@ -426,7 +428,9 @@ class AbuseFilterTest extends MediaWikiTestCase {
 		$page->doEditContent(
 			new WikitextContent( 'AbuseFilter _age variables test' ),
 			'Testing page for AbuseFilter',
-			EDIT_NEW
+			EDIT_NEW,
+			false,
+			$this->getTestUser()->getUser()
 		);
 
 		$expected = 123;
@@ -1281,16 +1285,21 @@ class AbuseFilterTest extends MediaWikiTestCase {
 	public function testGetEditVars( $oldText, $newText ) {
 		$title = Title::makeTitle( 0, 'AbuseFilter test' );
 		$page = WikiPage::factory( $title );
+		$user = $this->getTestUser()->getUser();
 
 		$page->doEditContent(
 			new WikitextContent( $oldText ),
 			'Creating the test page',
-			EDIT_NEW
+			EDIT_NEW,
+			false,
+			$user
 		);
 		$page->doEditContent(
 			new WikitextContent( $newText ),
 			'Testing page for AbuseFilter',
-			EDIT_UPDATE
+			EDIT_UPDATE,
+			false,
+			$user
 		);
 
 		$vars = new AbuseFilterVariableHolder();
