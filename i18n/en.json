@@ -212,6 +212,7 @@
 	"abusefilter-throttle-editcount": "edit count",
 	"abusefilter-throttle-site": "whole site",
 	"abusefilter-throttle-page": "page",
+	"abusefilter-throttle-none": "(none)",
 	"abusefilter-throttle-details": "Allow $1 {{PLURAL:$1|action|actions}} every $2 {{PLURAL:$2|second|seconds}}, group throttle by: $3",
 	"abusefilter-edit-warn-message": "System message to use for warning:",
 	"abusefilter-edit-warn-other": "Other message",
