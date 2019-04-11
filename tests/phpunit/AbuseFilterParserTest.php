@@ -46,6 +46,7 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	 * @return AbuseFilterParser
 	 */
 	public static function getParser() {
+		/** @var AbuseFilterParser */
 		static $parser = null;
 		if ( !$parser ) {
 			$parser = new AbuseFilterParser();
@@ -71,43 +72,35 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * @param string $rule The rule to parse
 	 * @dataProvider readTests
 	 */
-	public function testParser( $testName, $rule, $expected ) {
+	public function testParser( $rule ) {
 		foreach ( self::getParsers() as $parser ) {
-			$actual = $parser->parse( $rule );
-			$this->assertEquals( $expected, $actual, 'Running parser test ' . $testName );
+			$this->assertTrue( $parser->parse( $rule ) );
 		}
 	}
 
 	/**
-	 * @return array
+	 * @return Generator|array
 	 */
 	public function readTests() {
-		$tests = [];
 		$testPath = __DIR__ . "/../parserTests";
 		$testFiles = glob( $testPath . "/*.t" );
 
 		foreach ( $testFiles as $testFile ) {
-			$testName = substr( $testFile, 0, -2 );
-
-			$resultFile = $testName . '.r';
+			$testName = basename( substr( $testFile, 0, -2 ) );
 			$rule = trim( file_get_contents( $testFile ) );
-			$result = trim( file_get_contents( $resultFile ) ) === 'MATCH';
 
-			$tests[] = [
-				basename( $testName ),
-				$rule,
-				$result
-			];
+			yield $testName => [ $rule ];
 		}
-
-		return $tests;
 	}
 
 	/**
 	 * Test expression evaluation
 	 *
+	 * @param string $expr The expression to evaluate
+	 * @param string $expected The expected result
 	 * @dataProvider provideExpressions
 	 */
 	public function testEvaluateExpression( $expr, $expected ) {
@@ -134,13 +127,42 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * Test empty (or almost empty) syntax and ensure it doesn't match
+	 *
+	 * @param string $code
+	 * @dataProvider provideEmptySyntax
+	 */
+	public function testEmptySyntax( $code ) {
+		foreach ( self::getParsers() as $parser ) {
+			$this->assertFalse( $parser->parse( $code ) );
+		}
+	}
+
+	/**
+	 * Data provider for testEmptySyntax
+	 *
+	 * @return array
+	 */
+	public function provideEmptySyntax() {
+		return [
+			[ '' ],
+			[ '()' ],
+			[ ';;;;' ]
+		];
+	}
+
+	/**
 	 * Ensure that AbuseFilterTokenizer::OPERATOR_RE matches the contents
 	 * and order of AbuseFilterTokenizer::$operators.
 	 */
 	public function testOperatorRe() {
-		$operatorRe = '/(' . implode( '|', array_map( function ( $op ) {
-			return preg_quote( $op, '/' );
-		}, AbuseFilterTokenizer::$operators ) ) . ')/A';
+		$quotedOps = array_map(
+			function ( $op ) {
+				return preg_quote( $op, '/' );
+			},
+			AbuseFilterTokenizer::$operators
+		);
+		$operatorRe = '/(' . implode( '|', $quotedOps ) . ')/A';
 		$this->assertEquals( $operatorRe, AbuseFilterTokenizer::OPERATOR_RE );
 	}
 
@@ -157,6 +179,8 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 	/**
 	 * Ensure the number of conditions counted for given expressions is right.
 	 *
+	 * @param string $rule The rule to parse
+	 * @param int $expected The expected amount of used conditions
 	 * @dataProvider condCountCases
 	 */
 	public function testCondCount( $rule, $expected ) {
@@ -186,6 +210,15 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 			[ '1 = 1 | 2 * 3 * 4 <= 560 | "a" = "b"', 1 ],
 			[ '1 = 0 | 2 * 3 * 4 <= 560 | "a" = "b"', 2 ],
 		];
+	}
+
+	/**
+	 * Test for T204841
+	 */
+	public function testArrayShortcircuit() {
+		$code = 'a := [false, false]; b := [false, false]; c := 42; d := [0,1];' .
+			'a[0] != false & b[1] != false & (b[5**2/(5*(4+1))] !== a[43-c] | a[d[0]] === b[d[c-41]])';
+		$this->assertFalse( self::getParser()->parse( $code ) );
 	}
 
 	/**
@@ -743,19 +776,17 @@ class AbuseFilterParserTest extends MediaWikiTestCase {
 			$this->fail( "The use of the deprecated variable $old was not logged." );
 		}
 
-		$this->assertTrue( $actual, "AbuseFilter deprecated variable $old is not parsed correctly" );
+		$this->assertTrue( $actual );
 	}
 
 	/**
 	 * Data provider for testDeprecatedVars
-	 * @return array
+	 * @return Generator|array
 	 */
 	public function provideDeprecatedVars() {
 		$deprecated = AbuseFilter::$deprecatedVars;
-		$data = [];
 		foreach ( $deprecated as $old => $new ) {
-			$data[] = [ $old, $new ];
+			yield $old => [ $old, $new ];
 		}
-		return $data;
 	}
 }
