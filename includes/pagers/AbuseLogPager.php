@@ -45,7 +45,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 				[ 'abuse_filter' =>
 					[
 						'LEFT JOIN',
-						'af_id=afl_filter',
+						$this->mDb->buildStringCast( 'af_id' ) . '=afl_filter',
 					],
 				],
 		];

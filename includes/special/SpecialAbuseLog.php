@@ -320,7 +320,7 @@ class SpecialAbuseLog extends SpecialPage {
 			[ 'afl_id' => $id ],
 			__METHOD__,
 			[],
-			[ 'abuse_filter' => [ 'LEFT JOIN', 'af_id=afl_filter' ] ]
+			[ 'abuse_filter' => [ 'LEFT JOIN', $dbr->buildStringCast( 'af_id' ) . '=afl_filter' ] ]
 		);
 
 		if ( !$row ) {
@@ -572,7 +572,7 @@ class SpecialAbuseLog extends SpecialPage {
 			[ 'afl_id' => $id ],
 			__METHOD__,
 			[],
-			[ 'abuse_filter' => [ 'LEFT JOIN', 'af_id=afl_filter' ] ]
+			[ 'abuse_filter' => [ 'LEFT JOIN', $dbr->buildStringCast( 'af_id' ) . '=afl_filter' ] ]
 		);
 
 		$error = null;
@@ -707,7 +707,7 @@ class SpecialAbuseLog extends SpecialPage {
 			[ 'afl_id' => $id ],
 			__METHOD__,
 			[],
-			[ 'abuse_filter' => [ 'LEFT JOIN', 'af_id=afl_filter' ] ]
+			[ 'abuse_filter' => [ 'LEFT JOIN', $dbr->buildStringCast( 'af_id' ) . '=afl_filter' ] ]
 		);
 
 		$error = null;
