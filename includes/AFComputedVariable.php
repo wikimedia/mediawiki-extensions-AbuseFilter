@@ -221,8 +221,15 @@ class AFComputedVariable {
 
 					$new_text = $vars->getVar( $textVar )->toString();
 					$content = ContentHandler::makeContent( $new_text, $article->getTitle() );
-					$editInfo = $article->prepareContentForEdit( $content );
-					$links = array_keys( $editInfo->output->getExternalLinks() );
+					try {
+						// @fixme TEMPORARY WORKAROUND FOR T187153
+						$editInfo = $article->prepareContentForEdit( $content );
+						$links = array_keys( $editInfo->output->getExternalLinks() );
+					} catch ( BadMethodCallException $e ) {
+						$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+						$logger->warning( 'Caught BadMethodCallException - T187153' );
+						$links = [];
+					}
 					$result = $links;
 					break;
 				}
