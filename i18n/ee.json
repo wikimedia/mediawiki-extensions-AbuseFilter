@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Enock4seth",
-			"Natsubee"
+			"Natsubee",
+			"Aguve"
 		]
 	},
 	"abusefilter-log-search-user": "Ezãla:",
@@ -16,6 +17,7 @@
 	"abusefilter-deleted": "Wo tutui",
 	"abusefilter-tools-reautoconfirm-user": "Ezãla",
 	"abusefilter-edit-status-label": "Akɔntawo",
+	"abusefilter-throttle-none": "(ɖekeo)",
 	"abusefilter-edit-warn-preview": "Kpɔ du tatia do ŋgɔ",
 	"abusefilter-edit-warn-edit": "Ŋlɔ/trɔ du tatia",
 	"abusefilter-edit-history": "Xoxoawo",

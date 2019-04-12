@@ -236,6 +236,7 @@
 	"abusefilter-throttle-editcount": "conteggio delle modifiche",
 	"abusefilter-throttle-site": "tutto il sito",
 	"abusefilter-throttle-page": "pagina",
+	"abusefilter-throttle-none": "(nessuno)",
 	"abusefilter-throttle-details": "Permetti $1 {{PLURAL:$1|azione|azioni}} ogni {{PLURAL:$2|secondo|$2 secondi}}, criteri di raggruppamento: $3",
 	"abusefilter-edit-warn-message": "Messaggio di sistema da usare come avviso:",
 	"abusefilter-edit-warn-other": "Altro messaggio",

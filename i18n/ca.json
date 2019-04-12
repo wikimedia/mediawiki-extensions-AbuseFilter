@@ -341,7 +341,7 @@
 	"abusefilter-exception-dividebyzero": "Intent il·legal per dividir $2 per zero al caràcter $1.",
 	"abusefilter-exception-unrecognisedvar": "Variable no reconeguda $2 al caràcter $1",
 	"abusefilter-exception-notenoughargs": "No hi ha prou arguments per funcionar  $2  anomenat a caràcter  $1 .\n\tEspera que  $3   {{PLURAL:$3| argument|arguments}}, got $4",
-	"abusefilter-exception-regexfailure": "Error en l'expressió regular \"$3\" al caràcter $1: \"$2\"",
+	"abusefilter-exception-regexfailure": "Error en l’expressió regular «$2» al caràcter $1.",
 	"abusefilter-exception-overridebuiltin": "Anul·lació incorrecta de la variable incorporada «$2» al caràcter $1.",
 	"abusefilter-exception-outofbounds": "S'està sol·licitant l'element inexistent llista  $2  (llista de mida =  $3 ) a les de caràcter  $1 .",
 	"abusefilter-exception-notarray": "Sol. licitant element de matriu de no-matriu a caràcter  $1 .",

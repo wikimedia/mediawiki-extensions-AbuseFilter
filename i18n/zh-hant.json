@@ -245,6 +245,7 @@
 	"abusefilter-throttle-editcount": "編輯次數",
 	"abusefilter-throttle-site": "整個站台",
 	"abusefilter-throttle-page": "頁面",
+	"abusefilter-throttle-none": "（無）",
 	"abusefilter-throttle-details": "允許每 $2 {{PLURAL:$2|秒|秒}} $1 次{{PLURAL:$1|操作|操作}}，群組受限依：$3",
 	"abusefilter-edit-warn-message": "警告用的系統訊息：",
 	"abusefilter-edit-warn-other": "其他訊息",

@@ -214,6 +214,7 @@
 	"abusefilter-throttle-editcount": "condegge de le cangiaminde",
 	"abusefilter-throttle-site": "tutte 'u site",
 	"abusefilter-throttle-page": "pàgene",
+	"abusefilter-throttle-none": "(nisciune)",
 	"abusefilter-throttle-details": "Permette $1 {{PLURAL:$1|azione|aziune}} ogne {{PLURAL:$2|seconde|$2 seconde}}, criterie de raggruppamende: $3",
 	"abusefilter-edit-warn-message": "Messagge de sisteme da ausà pè l'avvise:",
 	"abusefilter-edit-warn-other": "Otre messagge",

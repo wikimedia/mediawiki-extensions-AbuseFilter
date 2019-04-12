@@ -4,7 +4,8 @@
 			"Mr.Ajedrez",
 			"Xuacu",
 			"Matma Rex",
-			"Fitoschido"
+			"Fitoschido",
+			"Enolp"
 		]
 	},
 	"abusefilter-desc": "Aplica heurística automática a les ediciones.",
@@ -409,7 +410,7 @@
 	"abusefilter-exception-dividebyzero": "Intentu illegal de dividir $2 por cero nel caráuter $1.",
 	"abusefilter-exception-unrecognisedvar": "Variable $2 non reconocida nel caráuter $1.",
 	"abusefilter-exception-notenoughargs": "Non hai argumentos abondo pa la función $2 llamada nel caráuter $1.\n\t{{PLURAL:$3|Esperabase un argumentu|Esperabense $3 argumentos}}, tienense $4",
-	"abusefilter-exception-regexfailure": "Error na espresión regular «$2» nel caráuter $1.",
+	"abusefilter-exception-regexfailure": "Fallu na espresión regular «$2» nel caráuter $1.",
 	"abusefilter-exception-overridebuiltin": "Anulación illegal de la variable interna \"$2\" nel caráuter $1.",
 	"abusefilter-exception-outofbounds": "Solicitando l'elementu inesistente $2 de la matriz (tamañu de la matriz = $3) nel caráuter $1.",
 	"abusefilter-exception-notarray": "Solicitando un elementu de matriz d'una non-matriz nel caráuter $1.",

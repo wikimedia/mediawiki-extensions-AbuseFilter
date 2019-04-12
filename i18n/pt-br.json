@@ -238,6 +238,7 @@
 	"abusefilter-throttle-editcount": "contador de edições",
 	"abusefilter-throttle-site": "Todo o site",
 	"abusefilter-throttle-page": "página",
+	"abusefilter-throttle-none": "(nenhum)",
 	"abusefilter-throttle-details": "Permitir $1 {{PLURAL:$1|operação|operações}} a cada $2 {{PLURAL:$2|segundo|segundos}}, agrupar o limitador por: $3",
 	"abusefilter-edit-warn-message": "Mensagem de sistema para usar como aviso:",
 	"abusefilter-edit-warn-other": "Outra mensagem",

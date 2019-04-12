@@ -237,6 +237,7 @@
 	"abusefilter-throttle-editcount": "Bearbeitungszähler",
 	"abusefilter-throttle-site": "Gesamte Website",
 	"abusefilter-throttle-page": "Seite",
+	"abusefilter-throttle-none": "(keine)",
 	"abusefilter-throttle-details": "{{PLURAL:$1|Eine Aktion|$1 Aktionen}} {{PLURAL:$2|jede Sekunde|alle $2 Sekunden}} erlauben, Drosselungen gruppieren nach: $3",
 	"abusefilter-edit-warn-message": "Systemnachricht für die Warnung:",
 	"abusefilter-edit-warn-other": "Andere Systemnachricht",

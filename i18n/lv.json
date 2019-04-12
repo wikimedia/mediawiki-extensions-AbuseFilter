@@ -47,6 +47,7 @@
 	"abusefilter-log-summary": "Šis reģistrs satur sarakstu ar visām filtru konstatētajām darbībām.",
 	"abusefilter-log-search": "Meklēt ļaunprātīgo izmantošanu reģistrā",
 	"abusefilter-log-search-user": "Dalībnieks:",
+	"abusefilter-log-search-group": "Filtru grupa:",
 	"abusefilter-log-search-filter": "Filtru ID (jāatdala ar vertikālu svītru):",
 	"abusefilter-log-search-title": "Nosaukums:",
 	"abusefilter-log-search-submit": "Meklēt",

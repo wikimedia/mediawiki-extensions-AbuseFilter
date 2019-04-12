@@ -223,6 +223,7 @@
 	"abusefilter-throttle-editcount": "מספר העריכות",
 	"abusefilter-throttle-site": "כל האתר",
 	"abusefilter-throttle-page": "דף",
+	"abusefilter-throttle-none": "(לא כלום)",
 	"abusefilter-throttle-details": "{{PLURAL:$1|מותרת פעולה אחת|מותרות $1 פעולות}} בכל {{PLURAL:$2|שנייה|$2 שניות}}, הקבוצות המוגבלות: $3",
 	"abusefilter-edit-warn-message": "הודעת המערכת המשמשת לאזהרה:",
 	"abusefilter-edit-warn-other": "הודעה אחרת",
