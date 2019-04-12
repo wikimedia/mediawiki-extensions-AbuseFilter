@@ -51,6 +51,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 		'page',
 		'page_restrictions',
 		'user',
+		'text',
 		'abuse_filter',
 		'abuse_filter_history',
 		'abuse_filter_log',
@@ -1434,4 +1435,125 @@ class AbuseFilterTest extends MediaWikiTestCase {
 		];
 	}
 
+	/**
+	 * Test storing and loading the var dump. See also AbuseFilterConsequencesTest::testVarDump
+	 *
+	 * @param array $variables Map of [ name => value ] to build an AbuseFilterVariableHolder with
+	 * @covers AbuseFilter::storeVarDump
+	 * @covers AbuseFilter::loadVarDump
+	 * @covers AbuseFilterVariableHolder::dumpAllVars
+	 * @dataProvider provideVariables
+	 */
+	public function testVarDump( $variables ) {
+		global $wgCompressRevisions, $wgDefaultExternalStore;
+
+		$holder = new AbuseFilterVariableHolder();
+		foreach ( $variables as $name => $value ) {
+			$holder->setVar( $name, $value );
+		}
+		if ( array_intersect_key( AbuseFilter::getDeprecatedVariables(), $variables ) ) {
+			$holder->mVarsVersion = 1;
+		}
+
+		$insertID = AbuseFilter::storeVarDump( $holder );
+		$dbw = wfGetDB( DB_MASTER );
+
+		$flags = $dbw->selectField(
+			'text',
+			'old_flags',
+			'',
+			__METHOD__,
+			[ 'ORDER BY' => 'old_id DESC' ]
+		);
+		$this->assertNotFalse( $flags, 'The var dump has not been saved.' );
+		$flags = explode( ',', $flags );
+
+		$expectedFlags = [ 'nativeDataArray' ];
+		if ( $wgCompressRevisions ) {
+			$expectedFlags[] = 'gzip';
+		}
+		if ( $wgDefaultExternalStore ) {
+			$expectedFlags[] = 'external';
+		}
+
+		$this->assertEquals( $expectedFlags, $flags, 'The var dump does not have the correct flags' );
+
+		$dump = AbuseFilter::loadVarDump( "stored-text:$insertID" );
+		$this->assertEquals( $holder, $dump, 'The var dump is not saved correctly' );
+	}
+
+	/**
+	 * Data provider for testVarDump
+	 *
+	 * @return array
+	 */
+	public function provideVariables() {
+		return [
+			'Only basic variables' => [
+				[
+					'old_wikitext' => 'Old text',
+					'new_wikitext' => 'New text'
+				]
+			],
+			[
+				[
+					'old_wikitext' => 'Old text',
+					'new_wikitext' => 'New text',
+					'user_editcount' => 15,
+					'added_lines' => [ 'Foo', '', 'Bar' ]
+				]
+			],
+			'Deprecated variables' => [
+				[
+					'old_wikitext' => 'Old text',
+					'new_wikitext' => 'New text',
+					'article_articleid' => 11745,
+					'article_first_contributor' => 'Good guy'
+				]
+			],
+			[
+				[
+					'old_wikitext' => 'Old text',
+					'new_wikitext' => 'New text',
+					'page_title' => 'Some title',
+					'summary' => 'Fooooo'
+				]
+			],
+			[
+				[
+					'old_wikitext' => 'Old text',
+					'new_wikitext' => 'New text',
+					'all_links' => [ 'https://en.wikipedia.org' ],
+					'moved_to_id' => 156,
+					'moved_to_prefixedtitle' => 'MediaWiki:Foobar.js',
+					'new_content_model' => CONTENT_MODEL_JAVASCRIPT
+				]
+			],
+			[
+				[
+					'old_wikitext' => 'Old text',
+					'new_wikitext' => 'New text',
+					'timestamp' => 1546000295,
+					'action' => 'delete',
+					'page_namespace' => 114
+				]
+			],
+			[
+				[
+					'old_wikitext' => 'Old text',
+					'new_wikitext' => 'New text',
+					'new_html' => 'Foo <small>bar</small> <s>lol</s>.',
+					'new_pst' => '[[Link|link]] test {{blah}}.'
+				]
+			],
+			'Disabled vars' => [
+				[
+					'old_wikitext' => 'Old text',
+					'new_wikitext' => 'New text',
+					'old_html' => 'Foo <small>bar</small> <s>lol</s>.',
+					'old_text' => 'Foobar'
+				]
+			]
+		];
+	}
 }
