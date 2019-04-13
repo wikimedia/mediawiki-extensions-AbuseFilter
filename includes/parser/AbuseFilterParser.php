@@ -870,7 +870,10 @@ class AbuseFilterParser {
 				'unrecognisedvar';
 			// If the variable is invalid, throw an exception
 			throw new AFPUserVisibleException(
+				// Coverage bug
+				// @codeCoverageIgnoreStart
 				$msg,
+				// @codeCoverageIgnoreEnd
 				$this->mCur->pos,
 				[ $var ]
 			);

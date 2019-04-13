@@ -2015,7 +2015,9 @@ class AbuseFilter {
 				break;
 			default:
 				// Should never happen
+				// @codeCoverageIgnoreStart
 				$identifier = 0;
+				// @codeCoverageIgnoreEnd
 		}
 
 		return $identifier;

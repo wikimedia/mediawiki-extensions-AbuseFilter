@@ -88,7 +88,10 @@ class AFPData {
 			return $orig->dup();
 		}
 		if ( $target === self::DNULL ) {
+			// Should never happen. Actually, why is this here?
+			// @codeCoverageIgnoreStart
 			return new AFPData();
+			// @codeCoverageIgnoreEnd
 		}
 
 		if ( $orig->type === self::DARRAY ) {
@@ -116,8 +119,11 @@ class AFPData {
 			return new AFPData( self::DINT, intval( $orig->data ) );
 		} elseif ( $target === self::DSTRING ) {
 			return new AFPData( self::DSTRING, strval( $orig->data ) );
+			// We don't expose any cast-to-array method...
+			// @codeCoverageIgnoreStart
 		} elseif ( $target === self::DARRAY ) {
 			return new AFPData( self::DARRAY, [ $orig ] );
+			// @codeCoverageIgnoreEnd
 		}
 	}
 
@@ -255,7 +261,10 @@ class AFPData {
 		if ( $result === false ) {
 			throw new AFPUserVisibleException(
 				'regexfailure',
+				// Coverage bug
+				// @codeCoverageIgnoreStart
 				$pos,
+				// @codeCoverageIgnoreEnd
 				[ $pattern ]
 			);
 		}
@@ -303,7 +312,9 @@ class AFPData {
 			return new AFPData( self::DBOOL, $a xor $b );
 		}
 		// Should never happen.
+		// @codeCoverageIgnoreStart
 		throw new AFPException( "Invalid boolean operation: {$op}" );
+		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -336,7 +347,9 @@ class AFPData {
 			return new AFPData( self::DBOOL, $a <= $b );
 		}
 		// Should never happen
+		// @codeCoverageIgnoreStart
 		throw new AFPException( "Invalid comparison operation: {$op}" );
+		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -364,7 +377,9 @@ class AFPData {
 			$data = $a % $b;
 		} else {
 			// Should never happen
+			// @codeCoverageIgnoreStart
 			throw new AFPException( "Invalid multiplication-related operation: {$op}" );
+			// @codeCoverageIgnoreEnd
 		}
 
 		if ( is_int( $data ) ) {

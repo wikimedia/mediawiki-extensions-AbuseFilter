@@ -259,8 +259,10 @@ class AbuseFilterTokenizer {
 
 			} else {
 				// Should never happen
+				// @codeCoverageIgnoreStart
 				$token .= $code[$offset];
 				$offset++;
+				// @codeCoverageIgnoreEnd
 			}
 		}
 		throw new AFPUserVisibleException( 'unclosedstring', $offset, [] );
