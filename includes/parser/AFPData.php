@@ -119,12 +119,12 @@ class AFPData {
 			return new AFPData( self::DINT, intval( $orig->data ) );
 		} elseif ( $target === self::DSTRING ) {
 			return new AFPData( self::DSTRING, strval( $orig->data ) );
-			// We don't expose any cast-to-array method...
-			// @codeCoverageIgnoreStart
+		// We don't expose any cast-to-array method...
+		// @codeCoverageIgnoreStart
 		} elseif ( $target === self::DARRAY ) {
 			return new AFPData( self::DARRAY, [ $orig ] );
-			// @codeCoverageIgnoreEnd
 		}
+		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -450,7 +450,9 @@ class AFPData {
 			case self::DNULL:
 				return null;
 			default:
+				// @codeCoverageIgnoreStart
 				throw new MWException( "Unknown type" );
+				// @codeCoverageIgnoreEnd
 		}
 	}
 

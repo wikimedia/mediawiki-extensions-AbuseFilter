@@ -36,6 +36,7 @@ use MediaWiki\Storage\NameTableAccessException;
  * @covers AbuseFilter
  * @covers AbuseFilterHooks
  * @covers AbuseFilterPreAuthenticationProvider
+ * @covers AbuseFilterParser::__construct
  * @todo Add upload actions everywhere
  */
 class AbuseFilterConsequencesTest extends MediaWikiTestCase {
