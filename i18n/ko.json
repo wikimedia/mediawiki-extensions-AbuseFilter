@@ -25,7 +25,8 @@
 			"Bluemersen",
 			"Tursetic",
 			"Garam",
-			"렌즈"
+			"렌즈",
+			"Son77391"
 		]
 	},
 	"abusefilter-desc": "사용자 편집을 규칙에 따라 자동으로 검사합니다",
@@ -224,6 +225,7 @@
 	"abusefilter-edit-throttle-count": "허용할 동작 수:",
 	"abusefilter-edit-throttle-period": "주기 (단위: 초):",
 	"abusefilter-edit-throttle-groups": "속도 제한 묶기 기준:",
+	"abusefilter-edit-throttle-groups-help": "$1을 참고하십시오.",
 	"abusefilter-edit-throttle-groups-help-text": "mediawiki.org 문서",
 	"abusefilter-edit-throttle-hidden-placeholder": "AND로 병합하려면 쉼표로 구분하고, OR로 병합하려면 줄을 나누십시오",
 	"abusefilter-edit-throttle-placeholder": "AND로 병합하려면 쉼표로 구분하고, OR로 병합하려면 하나씩 추가하십시오",
@@ -280,6 +282,7 @@
 	"abusefilter-edit-notallowed-global": "전역 필터를 만들거나 편집할 권한이 없습니다.",
 	"abusefilter-edit-notallowed-global-custom-msg": "전역 필터의 경우 사용자 지정 경고 및 불허 메시지는 지원되지 않습니다",
 	"abusefilter-edit-invalid-warn-message": "경고 메시지는 비워둘 수 없습니다.",
+	"abusefilter-edit-invalid-disallow-message": "경고 메시지는 비워둘 수 없습니다.",
 	"abusefilter-edit-invalid-throttleperiod": "스로틀 기간은 양의 정수여야 합니다.",
 	"abusefilter-edit-empty-throttlegroups": "적어도 하나의 스로틀 그룹을 선택해야 합니다.",
 	"abusefilter-edit-duplicated-throttlegroups": "스로틀 그룹은 중복을 가질 수 없습니다.",

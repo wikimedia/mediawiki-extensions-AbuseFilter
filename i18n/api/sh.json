@@ -46,7 +46,7 @@
 	"apihelp-query+abuselog-param-prop": "Koja svojstva dati.",
 	"apihelp-query+abuselog-param-wiki": "Od kojog wikija se prikazuju pogodci.",
 	"apihelp-query+abuselog-example-1": "Prikaži nedavne zapisničke stavke",
-	"apihelp-query+abuselog-example-2": "Prikaži nedavne zapisničke stavke za [[API|prilog]] (API)",
+	"apihelp-query+abuselog-example-2": "Prikaži nedavne zapisničke stavke za [[API|izvršnik]] (API)",
 	"apierror-abusefilter-canttest": "Nemate dopuštenje da isprobate filtre za zlouporabu.",
 	"apierror-abusefilter-cantcheck": "Nemate dopuštenje da provjerite sintaksu filtara za zlouporabu.",
 	"apierror-abusefilter-nosuchlogid": "Nema unosa u zapisniku zlouporabe s naznakom $1.",

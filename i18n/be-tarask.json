@@ -158,6 +158,7 @@
 	"abusefilter-list-options-search-like": "Просты запыт",
 	"abusefilter-list-options-search-rlike": "Звычайны выраз",
 	"abusefilter-list-options-search-irlike": "Рэгулярны выраз, адчувальны да рэгістру",
+	"abusefilter-list-regexerror": "Падчас пошуку адбылася памылка: сынтаксычная памылка рэгулярнага выразу.",
 	"abusefilter-list-options-submit": "Абнавіць",
 	"abusefilter-tools-text": "Тут знаходзяцца інструмэнты, якія могуць быць карыснымі ў фармуляваньні і праверцы фільтраў злоўжываньняў.",
 	"abusefilter-tools-expr": "Праверка выразаў",

@@ -40,7 +40,8 @@
 			"Matěj Suchánek",
 			"Manu1400",
 			"Alno",
-			"Od1n"
+			"Od1n",
+			"Pols12"
 		]
 	},
 	"abusefilter-desc": "Applique des heuristiques automatiques aux modifications",
@@ -80,6 +81,9 @@
 	"action-abusefilter-revert": "révoquer toutes les modifications d'un filtre antiabus donné",
 	"action-abusefilter-view-private": "voir les filtres antiabus marqués comme privés",
 	"action-abusefilter-log-private": "voir les entrées du journal des filtres antiabus marqués comme privés",
+	"action-abusefilter-hide-log": "masquer des enregistrements dans le journal antiabus",
+	"action-abusefilter-hidden-log": "voir les enregistrements masqués du journal antiabus",
+	"action-abusefilter-modify-global": "créer ou modifier les filtres globaux d’abus",
 	"abusefilter-log": "Journal des déclenchements du filtre anti-abus",
 	"abusefilter-log-summary": "Ce journal affiche une liste des actions détectées par les filtres.",
 	"abusefilter-log-search": "Rechercher dans le journal des filtres antiabus",

@@ -63,6 +63,8 @@
 	"action-abusefilter-revert": "指定した不正利用フィルターによるすべての変更の差し戻し",
 	"action-abusefilter-view-private": "非公開の不正利用フィルターの閲覧",
 	"action-abusefilter-log-private": "非公開の不正利用フィルター記録の閲覧",
+	"action-abusefilter-hidden-log": "隠された不正利用記録の閲覧",
+	"action-abusefilter-modify-global": "グローバル不正利用フィルターの作成または変更",
 	"abusefilter-log": "不正利用フィルター記録",
 	"abusefilter-log-summary": "この記録はフィルターが発動した全操作の一覧を表示しています。",
 	"abusefilter-log-search": "不正利用記録を検索",
