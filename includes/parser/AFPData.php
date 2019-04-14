@@ -382,13 +382,7 @@ class AFPData {
 			// @codeCoverageIgnoreEnd
 		}
 
-		if ( is_int( $data ) ) {
-			$data = intval( $data );
-			$type = self::DINT;
-		} else {
-			$data = floatval( $data );
-			$type = self::DFLOAT;
-		}
+		$type = is_int( $data ) ? self::DINT : self::DFLOAT;
 
 		return new AFPData( $type, $data );
 	}
