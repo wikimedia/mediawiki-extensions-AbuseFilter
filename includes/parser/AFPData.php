@@ -88,10 +88,8 @@ class AFPData {
 			return $orig->dup();
 		}
 		if ( $target === self::DNULL ) {
-			// Should never happen. Actually, why is this here?
-			// @codeCoverageIgnoreStart
+			// We don't expose any method to cast to null. And, actually, should we?
 			return new AFPData();
-			// @codeCoverageIgnoreEnd
 		}
 
 		if ( $orig->type === self::DARRAY ) {
@@ -119,12 +117,11 @@ class AFPData {
 			return new AFPData( self::DINT, intval( $orig->data ) );
 		} elseif ( $target === self::DSTRING ) {
 			return new AFPData( self::DSTRING, strval( $orig->data ) );
-		// We don't expose any cast-to-array method...
-		// @codeCoverageIgnoreStart
 		} elseif ( $target === self::DARRAY ) {
+			// We don't expose any method to cast to array
 			return new AFPData( self::DARRAY, [ $orig ] );
 		}
-		// @codeCoverageIgnoreEnd
+		throw new AFPException( 'Cannot cast ' . $orig->type . " to $target." );
 	}
 
 	/**
