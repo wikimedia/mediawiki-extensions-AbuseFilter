@@ -143,4 +143,37 @@ class AbuseFilterTokenizerTest extends MediaWikiTestCase {
 			[ '"', 'readStringLiteral' ],
 		];
 	}
+
+	/**
+	 * Test that tokenized code is saved in cache
+	 *
+	 * @param string $code To be tokenized
+	 * @dataProvider provideCode
+	 */
+	public function testCaching( $code ) {
+		$cache = new HashBagOStuff();
+		$this->setService( 'LocalServerObjectCache', $cache );
+		$key = AbuseFilterTokenizer::getCacheKey( $code );
+
+		// Other tests may have already cached the same code.
+		$cache->delete( $key );
+		// Static hell makes code difficult to test...
+		AbuseFilterTokenizer::$tokenizerCache = null;
+		AbuseFilterTokenizer::tokenize( $code );
+		$this->assertNotFalse( $cache->get( $key ) );
+	}
+
+	/**
+	 * Data provider for testCaching
+	 *
+	 * @return array
+	 */
+	public function provideCode() {
+		return [
+			[ '1 === 1' ],
+			[ 'added_lines irlike "test"' ],
+			[ 'edit_delta > 57 & action === "edit"' ],
+			[ '!("confirmed") in user_groups' ]
+		];
+	}
 }
