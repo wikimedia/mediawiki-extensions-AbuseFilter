@@ -147,11 +147,12 @@ class AbuseFilterVariableHolder {
 	}
 
 	/**
+	 * @param AbuseFilterVariableHolder ...$holders
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function merge() {
+	public static function merge( AbuseFilterVariableHolder ...$holders ) {
 		$newHolder = new AbuseFilterVariableHolder;
-		$newHolder->addHolders( ...func_get_args() );
+		$newHolder->addHolders( ...$holders );
 
 		return $newHolder;
 	}
@@ -159,15 +160,10 @@ class AbuseFilterVariableHolder {
 	/**
 	 * Merge any number of holders given as arguments into this holder.
 	 *
-	 * @throws MWException
+	 * @param AbuseFilterVariableHolder ...$holders
 	 */
-	public function addHolders() {
-		$holders = func_get_args();
-
+	public function addHolders( AbuseFilterVariableHolder ...$holders ) {
 		foreach ( $holders as $addHolder ) {
-			if ( !is_object( $addHolder ) ) {
-				throw new MWException( 'Invalid argument to AbuseFilterVariableHolder::addHolders' );
-			}
 			$this->mVars = array_merge( $this->mVars, $addHolder->mVars );
 		}
 	}
