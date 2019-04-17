@@ -66,6 +66,19 @@ class AbuseFilterTokenizer {
 		'rlike', 'irlike', 'regex', 'if', 'then', 'else', 'end',
 	];
 
+	/** @var BagOStuff */
+	public static $tokenizerCache;
+
+	/**
+	 * Get a cache key used to store the tokenized code
+	 *
+	 * @param string $code Not yet tokenized
+	 * @return string
+	 */
+	public static function getCacheKey( $code ) {
+		return wfGlobalCacheKey( __CLASS__, self::CACHE_VERSION, crc32( $code ) );
+	}
+
 	/**
 	 * @param string $code
 	 * @return array[]
@@ -73,10 +86,8 @@ class AbuseFilterTokenizer {
 	 * @throws AFPUserVisibleException
 	 */
 	public static function tokenize( $code ) {
-		static $tokenizerCache = null;
-
-		if ( !$tokenizerCache ) {
-			$tokenizerCache = ObjectCache::getLocalServerInstance( 'hash' );
+		if ( !self::$tokenizerCache ) {
+			self::$tokenizerCache = ObjectCache::getLocalServerInstance( 'hash' );
 		}
 
 		static $stats = null;
@@ -85,9 +96,9 @@ class AbuseFilterTokenizer {
 			$stats = MediaWikiServices::getInstance()->getStatsdDataFactory();
 		}
 
-		$cacheKey = wfGlobalCacheKey( __CLASS__, self::CACHE_VERSION, crc32( $code ) );
+		$cacheKey = self::getCacheKey( $code );
 
-		$tokens = $tokenizerCache->get( $cacheKey );
+		$tokens = self::$tokenizerCache->get( $cacheKey );
 
 		if ( $tokens ) {
 			$stats->increment( 'abusefilter.tokenizerCache.hit' );
@@ -104,7 +115,7 @@ class AbuseFilterTokenizer {
 			$tokens[ $token->pos ] = [ $token, $curPos ];
 		} while ( $curPos !== $prevPos );
 
-		$tokenizerCache->set( $cacheKey, $tokens, 60 * 60 * 24 );
+		self::$tokenizerCache->set( $cacheKey, $tokens, 60 * 60 * 24 );
 
 		return $tokens;
 	}
