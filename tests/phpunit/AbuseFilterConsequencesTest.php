@@ -364,17 +364,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		self::$mUser->clearInstanceCache();
 		if ( $params['action'] === 'move' || $params['action'] === 'delete' ) {
 			// For these actions, the page has to exist.
-			$page = WikiPage::factory( $target );
-			if ( !$page->exists() ) {
-				$content = ContentHandler::makeContent(
-					'AbuseFilter test page for action' . $params['action'],
-					$target
-				);
-				$check = $page->doEditContent( $content, 'Creating the page to test AbuseFilter.' );
-				if ( !$check->isGood() ) {
-					throw new MWException( 'Cannot create the test page.' );
-				}
-			}
+			$page = $this->getExistingTestPage( $target );
 		}
 
 		switch ( $params['action'] ) {
@@ -382,7 +372,10 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				$status = $this->doEdit( $target, $params['oldText'], $params['newText'], $params['summary'] );
 				break;
 			case 'move':
-				$mp = new MovePage( $target, Title::newFromText( $params['newTitle'] ) );
+				$newTitle = isset( $params['newTitle'] )
+					? Title::newFromText( $params['newTitle'] )
+					: $this->getNonExistingTestPage()->getTitle();
+				$mp = new MovePage( $target, $newTitle );
 				$status = $mp->move( self::$mUser, 'AbuseFilter move test', false );
 				break;
 			case 'delete':
@@ -874,7 +867,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[
 					'action' => 'move',
 					'target' => 'Test page',
-					'newTitle' => 'Another test page'
 				]
 			],
 			[
