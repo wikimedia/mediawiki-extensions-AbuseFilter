@@ -49,7 +49,8 @@
 			"夢蝶葬花",
 			"A Chinese Wikipedian",
 			"Angrydog001",
-			"GoForceX"
+			"GoForceX",
+			"94rain"
 		]
 	},
 	"abusefilter-desc": "对编辑行为自动进行条件判定",
@@ -89,6 +90,7 @@
 	"action-abusefilter-revert": "还原指定防滥用过滤器作出的所有更改",
 	"action-abusefilter-view-private": "查看被标记为私有的防滥用过滤器",
 	"action-abusefilter-log-private": "查看标记为私有的防滥用过滤器日志",
+	"action-abusefilter-modify-global": "创建或修改全域滥用过滤器",
 	"abusefilter-log": "防滥用过滤器日志",
 	"abusefilter-log-summary": "本日志列出了过滤器捕捉到的所有操作。",
 	"abusefilter-log-search": "搜索滥用日志",

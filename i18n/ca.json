@@ -64,6 +64,7 @@
 	"abusefilter-log-summary": "Aquest registre mostra una llista de totes les accions detectades pels filtres.",
 	"abusefilter-log-search": "Cerca al registre d'abusos",
 	"abusefilter-log-search-user": "Usuari:",
+	"abusefilter-log-search-group-any": "Qualsevol",
 	"abusefilter-log-search-filter": "Identificadors de filtres (separats amb barres verticals):",
 	"abusefilter-log-search-title": "Títol:",
 	"abusefilter-log-search-wiki": "Wiki:",
