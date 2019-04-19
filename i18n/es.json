@@ -92,6 +92,7 @@
 	"action-abusefilter-revert": "revertir todos los cambios realizados por un determinado filtro antiabusos",
 	"action-abusefilter-view-private": "ver filtros antiabusos marcados como privados",
 	"action-abusefilter-log-private": "ver registros de filtros antiabusos marcados como privados",
+	"action-abusefilter-modify-global": "crear o modificar filtros antiabusos globales",
 	"abusefilter-log": "Registro del filtro antiabusos",
 	"abusefilter-log-summary": "Este registro muestra una lista de todas las acciones detectadas por los filtros.",
 	"abusefilter-log-search": "Buscar en el registro del filtro antiabusos",
