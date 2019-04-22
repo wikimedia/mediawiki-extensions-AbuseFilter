@@ -24,7 +24,8 @@
 			"Surjection",
 			"Valtlait",
 			"Rueter",
-			"Vlad5250"
+			"Vlad5250",
+			"Kyykaarme"
 		]
 	},
 	"abusefilter-desc": "Mahdollistaa muokkauksien suodattamisen automaattisella heuristiikalla.",
@@ -64,10 +65,12 @@
 	"action-abusefilter-revert": "palauttaa kaikkia muutoksia valitulla väärinkäyttösuodattimella",
 	"action-abusefilter-view-private": "nähdä niitä väärinkäyttösuodattimia, jotka on merkitty yksityisiksi",
 	"action-abusefilter-log-private": "tarkastella yksityisten väärinkäyttösuodattimien lokitietoja",
+	"action-abusefilter-modify-global": "luoda tai muokata järjestelmänlaajuisia väärinkäyttösuodattimia",
 	"abusefilter-log": "Väärinkäyttösuodattimen loki",
 	"abusefilter-log-summary": "Tämä loki näyttää luettelon kaikista suodattimiin tarttuneista toiminnoista.",
 	"abusefilter-log-search": "Etsi väärinkäyttölokista",
 	"abusefilter-log-search-user": "Käyttäjä:",
+	"abusefilter-log-search-group": "Suodatinryhmä:",
 	"abusefilter-log-search-filter": "Suodattimen numero (erota pystyviivoilla):",
 	"abusefilter-log-search-title": "Kohteen nimi:",
 	"abusefilter-log-search-wiki": "Wiki:",
@@ -219,6 +222,7 @@
 	"abusefilter-throttle-editcount": "muokkausmäärä",
 	"abusefilter-throttle-site": "koko sivusto",
 	"abusefilter-throttle-page": "sivu",
+	"abusefilter-throttle-none": "(ei mitään)",
 	"abusefilter-edit-warn-message": "Varoitukseen käytettävä järjestelmäviesti:",
 	"abusefilter-edit-warn-other": "Muu viesti",
 	"abusefilter-edit-warn-other-label": "Muun viestin sivun otsikko:\n:''(ilman \"Järjestelmäviesti:\"-etuliitettä)''",
@@ -257,6 +261,7 @@
 	"abusefilter-edit-export": "Vie tämä suodatin toiseen wikiin",
 	"abusefilter-edit-syntaxok": "Ei syntaksivirheitä havaittu.",
 	"abusefilter-edit-syntaxerr": "Syntaksivirhe havaittu: $1",
+	"abusefilter-edit-warn-leave": "Sivulta poistuminen kadottaa kaikki tähän suodattimeen tekemäsi muutokset.",
 	"abusefilter-edit-bad-tags": "Yksi tai useampi määrittämistäsi merkkauksista (tags) ei kelpaa.\nMerkkausten tulisi olla lyhyitä, niissä ei saa olla erikoismerkkejä ja ne eivät voi olla varattuna muun ohjelman käyttöön. Yritä valita uusi nimi merkkaukselle.",
 	"abusefilter-edit-notallowed": "Sinulla ei ole oikeutta luoda tai muokata väärinkäyttösuodattimia",
 	"abusefilter-edit-notallowed-global": "Sinulla ei ole oikeutta luoda tai muokata järjestelmänlaajuisia väärinkäyttösuodattimia",

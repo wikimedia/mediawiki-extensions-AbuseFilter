@@ -71,5 +71,6 @@
 	"abusefilter-diff-title": "Ferskillen tusken ferzjes",
 	"abusefilter-group-default": "Standert",
 	"abusefilter-http-error": "Der is in HTTP-flater bard: $1.",
-	"tag-abusefilter-condition-limit": "bepalingslimyt berikt"
+	"tag-abusefilter-condition-limit": "bepalingslimyt berikt",
+	"tag-abusefilter-condition-limit-description": "Bewurkings as oare barrens dy't net kontrolearre wurde koene troch alle aktive [[Special:AbuseFilter|misbrûkfilters]] ([[mw:Extension:AbuseFilter/Conditions|help]])."
 }

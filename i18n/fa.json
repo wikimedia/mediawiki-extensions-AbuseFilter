@@ -27,7 +27,8 @@
 			"Matma Rex",
 			"Alifakoor",
 			"Fatemi127",
-			"درفش کاویانی"
+			"درفش کاویانی",
+			"Alireza Ivaz"
 		]
 	},
 	"abusefilter-desc": "اکتشافات خودکاری را بر روی ویرایش‌های انجام می‌دهد.",
@@ -70,6 +71,7 @@
 	"abusefilter-log-summary": "این سیاهه فهرستی از تمام کارهایی که توسط پالایه‌ها گرفته شده را نشان می‌دهد.",
 	"abusefilter-log-search": "جستجو در سیاههٔ خرابکاری",
 	"abusefilter-log-search-user": "کاربر:",
+	"abusefilter-log-search-group": "گروه پالایه:",
 	"abusefilter-log-search-group-any": "هر کدام",
 	"abusefilter-log-search-filter": "شناسهٔ پالایه (با خط عمودی جدا کنید):",
 	"abusefilter-log-search-title": "عنوان:",
@@ -114,6 +116,7 @@
 	"abusefilter-log-cannot-see-private-details": "شما اجازهٔ دیدن جزئیات خصوصی این مورد را ندارید.",
 	"abusefilter-log-nonexistent": "ورودی‌ای با شناسهٔ ارائه‌شده وجود ندارد.",
 	"abusefilter-log-details-hidden": "شما نمی‌توانید جزئیات این مورد را ببینید چون از دید عموم مخفی شده‌است.",
+	"abusefilter-log-details-hidden-implicit": "شما نمی‌توانید جزئیات این مورد را ببینید چون از دید عموم مخفی شده‌است.",
 	"abusefilter-log-private-not-included": "یک یا چند مورد از شناسه‌های پالایه‌ای که انتخاب کرده‌اید خصوصی هستند. به این دلیل که شما مجاز به دیدن جزئیات پالایه‌های خصوصی نیستند، این فیلترها جستجو نشدند.",
 	"abusefilter-log-hide-legend": "پنهان کردن مورد در سیاهه",
 	"abusefilter-log-hide-id": "شناسه مورد در سیاهه:",

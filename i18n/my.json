@@ -112,6 +112,7 @@
 	"abusefilter-throttle-editcount": "တည်းဖြတ်မှု အရေအတွက်",
 	"abusefilter-throttle-site": "ဆိုဒ်တစ်ခုလုံး",
 	"abusefilter-throttle-page": "စာမျက်နှာ",
+	"abusefilter-throttle-none": "(ဗလာ)",
 	"abusefilter-edit-warn-other": "အခြားမက်ဆေ့",
 	"abusefilter-edit-warn-actions": "ဆောင်ရွက်ချက်များ",
 	"abusefilter-edit-main": "စိစစ်မှုစနစ် ပါရာမီတာများ",
