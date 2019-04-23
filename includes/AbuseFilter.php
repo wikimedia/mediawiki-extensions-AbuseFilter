@@ -1152,7 +1152,10 @@ class AbuseFilter {
 		global $wgAbuseFilterLogIP;
 
 		$logger = LoggerFactory::getInstance( 'StashEdit' );
-		$statsd = MediaWikiServices::getInstance()->getStatsdDataFactory();
+		// Bots do not use edit stashing, so avoid distorting the stats
+		$statsd = $user->isBot()
+			? new NullStatsdDataFactory()
+			: MediaWikiServices::getInstance()->getStatsdDataFactory();
 
 		// Add vars from extensions
 		Hooks::run( 'AbuseFilter-filterAction', [ &$vars, $title ] );
