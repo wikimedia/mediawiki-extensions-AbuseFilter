@@ -151,16 +151,23 @@ class AbuseFilterTokenizerTest extends MediaWikiTestCase {
 	 * @dataProvider provideCode
 	 */
 	public function testCaching( $code ) {
-		$cache = new HashBagOStuff();
-		$this->setService( 'LocalServerObjectCache', $cache );
-		$key = AbuseFilterTokenizer::getCacheKey( $code );
+		$cache = new WANObjectCache( [ 'cache' => new HashBagOStuff() ] );
+		$this->setService( 'MainWANObjectCache', $cache );
+
+		$key = AbuseFilterTokenizer::getCacheKey( $cache, $code );
 
 		// Other tests may have already cached the same code.
 		$cache->delete( $key );
-		// Static hell makes code difficult to test...
-		AbuseFilterTokenizer::$tokenizerCache = null;
-		AbuseFilterTokenizer::tokenize( $code );
-		$this->assertNotFalse( $cache->get( $key ) );
+		AbuseFilterTokenizer::getTokens( $code );
+		$cached = $cache->getWithSetCallback(
+			$key,
+			$cache::TTL_DAY,
+			function () {
+				return false;
+			},
+			[ 'version' => 1 ]
+		);
+		$this->assertNotFalse( $cached );
 	}
 
 	/**

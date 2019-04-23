@@ -70,7 +70,7 @@ class AFPTreeParser {
 	 * @return AFPTreeNode|null
 	 */
 	public function parse( $code ) {
-		$this->mTokens = AbuseFilterTokenizer::tokenize( $code );
+		$this->mTokens = AbuseFilterTokenizer::getTokens( $code );
 		$this->mPos = 0;
 
 		return $this->doLevelEntry();
