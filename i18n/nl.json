@@ -225,7 +225,7 @@
 	"abusefilter-throttle-site": "gehele website",
 	"abusefilter-throttle-page": "pagina",
 	"abusefilter-throttle-none": "(geen)",
-	"abusefilter-throttle-details": "Sta $1 {{PLURAL:$1|handeling|handelingen}} elke $2 {{PLURAL:$2|seconde|seconden}} toe, toepast op de groepen: $3",
+	"abusefilter-throttle-details": "Sta $1 {{PLURAL:$1|handeling|handelingen}} elke {{PLURAL:$2|seconde|$2 seconden}} toe, van toepassing op de groepen: $3",
 	"abusefilter-edit-warn-message": "Te gebruiken systeembericht voor waarschuwing:",
 	"abusefilter-edit-warn-other": "Ander bericht",
 	"abusefilter-edit-warn-other-label": "Paginanaam of ander bericht:\n:''(zonder het ''MediaWiki:'' voorvoegsel)''",
