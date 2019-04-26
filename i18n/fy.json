@@ -24,6 +24,8 @@
 	"abusefilter-log-noactions": "gjin",
 	"abusefilter-log-linkoncontribs": "misbrûkloch",
 	"abusefilter-log-linkoncontribs-text": "It misbrûkloch foar dizze {{GENDER:$1|meidogger|meidochster}}",
+	"abusefilter-log-linkonhistory": "misbrûkloch besjen",
+	"abusefilter-log-linkonhistory-text": "It misbrûkloch foar dizze side besjen",
 	"abusefilter-log-hide-reason": "Reden:",
 	"abusefilter-list-status": "Status",
 	"abusefilter-list-edit": "Bewurkje",

@@ -371,7 +371,7 @@
 	"abusefilter-edit-builder-vars-all-links": "Wszystkie linki zewnętrzne w nowych tekstach",
 	"abusefilter-edit-builder-vars-added-links": "Wszystkie linki zewnętrzne dodane w edycji",
 	"abusefilter-edit-builder-vars-removed-links": "Wszystkie linki zewnętrzne usunięte w edycji",
-	"abusefilter-edit-builder-vars-old-text": "Stary wikikod strony w formacie wiki, przed modyfikacją (wyszło z użycia)",
+	"abusefilter-edit-builder-vars-old-text": "Stary wikikod strony w formacie wiki, przed modyfikacją",
 	"abusefilter-edit-builder-vars-new-text": "Nowa treść strony w formacie wiki, po modyfikacji",
 	"abusefilter-edit-builder-vars-new-pst": "Nowa strona Wikitekstu, wstępnie zapisane przekształcone",
 	"abusefilter-edit-builder-vars-new-text-stripped": "Nowa treść strony pozbawiona wszystkich znaczników",
