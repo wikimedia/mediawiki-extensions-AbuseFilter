@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 	/**
 	 * @see ApiBase::execute()
@@ -19,7 +21,7 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 		}
 
 		$key = AbuseFilter::autoPromoteBlockKey( $user );
-		$stash = ObjectCache::getMainStashInstance();
+		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
 		if ( !$stash->get( $key ) ) {
 			$this->dieWithError( [ 'abusefilter-reautoconfirm-none', $user->getName() ], 'notsuspended' );
 		}

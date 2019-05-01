@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 class AbuseFilterViewRevert extends AbuseFilterView {
 	/**
 	 * @var string The start time of the lookup period
@@ -293,7 +295,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				$logEntry->publish( $logEntry->insert() );
 				return true;
 			case 'blockautopromote':
-				ObjectCache::getMainStashInstance()->delete(
+				MediaWikiServices::getInstance()->getMainObjectStash()->delete(
 					AbuseFilter::autoPromoteBlockKey( User::newFromId( $result['userid'] ) )
 				);
 				return true;

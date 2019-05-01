@@ -600,7 +600,7 @@ class AbuseFilter {
 			$globalRulesKey = self::getGlobalRulesKey( $group );
 
 			$fname = __METHOD__;
-			$res = ObjectCache::getMainWANInstance()->getWithSetCallback(
+			$res = MediaWikiServices::getInstance()->getMainWANObjectCache()->getWithSetCallback(
 				$globalRulesKey,
 				WANObjectCache::TTL_INDEFINITE,
 				function () use ( $group, $fname, $fields ) {
@@ -747,7 +747,7 @@ class AbuseFilter {
 	 * @param int $filter
 	 */
 	private static function resetFilterProfile( $filter ) {
-		$stash = ObjectCache::getMainStashInstance();
+		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
 		$countKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'count' );
 		$totalKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'total' );
 		$condsKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'conds' );
@@ -765,7 +765,7 @@ class AbuseFilter {
 	public static function recordProfilingResult( $filter, $time, $conds ) {
 		// Defer updates to avoid massive (~1 second) edit time increases
 		DeferredUpdates::addCallableUpdate( function () use ( $filter, $time, $conds ) {
-			$stash = ObjectCache::getMainStashInstance();
+			$stash = MediaWikiServices::getInstance()->getMainObjectStash();
 			$countKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'count' );
 			$totalKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'total' );
 			$condsKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'conds' );
@@ -791,7 +791,7 @@ class AbuseFilter {
 	 * @return array
 	 */
 	public static function getFilterProfile( $filter ) {
-		$stash = ObjectCache::getMainStashInstance();
+		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
 		$countKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'count' );
 		$totalKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'total' );
 		$condsKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'conds' );
@@ -1432,7 +1432,7 @@ class AbuseFilter {
 		// To distinguish from stuff stored directly
 		$var_dump = "stored-text:$var_dump";
 
-		$stash = ObjectCache::getMainStashInstance();
+		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
 
 		// Increment trigger counter
 		$stash->incr( self::filterMatchesKey() );
@@ -1786,7 +1786,7 @@ class AbuseFilter {
 				if ( !$user->isAnon() ) {
 					// Block for 3-7 days.
 					$blockPeriod = (int)mt_rand( 3 * 86400, 7 * 86400 );
-					ObjectCache::getMainStashInstance()->set(
+					MediaWikiServices::getInstance()->getMainObjectStash()->set(
 						self::autoPromoteBlockKey( $user ), true, $blockPeriod
 					);
 
@@ -1953,7 +1953,7 @@ class AbuseFilter {
 	public static function isThrottled( $throttleId, $types, Title $title, $rateCount,
 		$ratePeriod, $global = false
 	) {
-		$stash = ObjectCache::getMainStashInstance();
+		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
 		$key = self::throttleKey( $throttleId, $types, $title, $global );
 		$count = intval( $stash->get( $key ) );
 
@@ -2089,7 +2089,7 @@ class AbuseFilter {
 	private static function recordStats( $filters, $group = 'default' ) {
 		global $wgAbuseFilterConditionLimit, $wgAbuseFilterProfileActionsCap;
 
-		$stash = ObjectCache::getMainStashInstance();
+		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
 
 		// Figure out if we've triggered overflows and blocks.
 		$overflow_triggered = ( self::$condCount > $wgAbuseFilterConditionLimit );
@@ -2145,7 +2145,8 @@ class AbuseFilter {
 	 * @param string[] $filters The filters to check
 	 */
 	private static function checkEmergencyDisable( $group, $filters ) {
-		$stash = ObjectCache::getMainStashInstance();
+		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
+
 		// @ToDo this is an amount between 1 and AbuseFilterProfileActionsCap, which means that the
 		// reliability of this number may strongly vary. We should instead use a fixed one.
 		$totalActions = $stash->get( self::filterUsedKey( $group ) );
@@ -2689,7 +2690,7 @@ class AbuseFilter {
 			}
 
 			$globalRulesKey = self::getGlobalRulesKey( $group );
-			ObjectCache::getMainWANInstance()->touchCheckKey( $globalRulesKey );
+			MediaWikiServices::getInstance()->getMainWANObjectCache()->touchCheckKey( $globalRulesKey );
 		}
 
 		// Logging
