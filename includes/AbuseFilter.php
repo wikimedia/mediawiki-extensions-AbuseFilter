@@ -319,8 +319,8 @@ class AbuseFilter {
 
 		$vars->setLazyLoadVar(
 			'user_blocked',
-			'simple-user-accessor',
-			[ 'user' => $user, 'method' => 'isBlocked' ]
+			'user-block',
+			[ 'user' => $user ]
 		);
 
 		Hooks::run( 'AbuseFilter-generateUserVars', [ $vars, $user ] );
