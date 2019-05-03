@@ -171,6 +171,7 @@
 	"abusefilter-throttle-editcount": "Zuel vun den Ännerungen",
 	"abusefilter-throttle-site": "ganzen Internetsite",
 	"abusefilter-throttle-page": "Säit",
+	"abusefilter-throttle-none": "(keen)",
 	"abusefilter-edit-warn-message": "Systemmessage den als Warnung benotzt gëtt:",
 	"abusefilter-edit-warn-other": "Anere Systemmessage",
 	"abusefilter-edit-warn-other-label": "Säitennumm vun engem anere Systemmessage:\n:''(ouni MediaWiki-Prefix)''",
