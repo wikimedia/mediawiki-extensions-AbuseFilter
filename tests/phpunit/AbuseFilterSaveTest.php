@@ -90,6 +90,7 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 				'abusefilter-modify-global' => true,
 			]
 		] );
+		$this->overrideMwServices();
 	}
 
 	/**

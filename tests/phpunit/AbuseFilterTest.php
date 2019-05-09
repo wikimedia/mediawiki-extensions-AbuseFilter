@@ -91,6 +91,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 			],
 			'wgEnableParserLimitReporting' => false
 		] );
+		$this->overrideMwServices();
 	}
 
 	/**
@@ -153,8 +154,10 @@ class AbuseFilterTest extends MediaWikiTestCase {
 				$this->setGroupPermissions( [
 					'AFTestUserRights' => array_fill_keys( $rights, true )
 				] );
+				$this->overrideMwServices();
 				$previous = $user->getRights();
 				$user->addGroup( 'AFTestUserRights' );
+				$user->clearInstanceCache();
 				$result = array_merge( $rights, $previous );
 				break;
 			case 'user_blocked':
