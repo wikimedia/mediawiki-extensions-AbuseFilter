@@ -441,5 +441,6 @@
 	"abusefilter-import-intro": "Ti eşkeno ser ena ripel de wîkîyî binan ra filitre împort bike.\nWîkî çimeyî de bine \"{{int:abusefilter-edit-tools}}\" de \"{{int:abusefilter-edit-export}}\" klik bike.\nKutiyê nuştîşî kopye bike u ena kutiyê nuştîş rê na pa u klik bike \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "Melumatan zerre ke",
 	"abusefilter-group-default": "Hesabiyaye",
-	"abusefilter-http-error": "Yew xırabeya HTTP'i biyo: $1"
+	"abusefilter-http-error": "Yew xırabeya HTTP'i biyo: $1",
+	"tag-abusefilter-condition-limit": "reşt sinorê şerti"
 }
