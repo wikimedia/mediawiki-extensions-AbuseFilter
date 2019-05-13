@@ -229,7 +229,7 @@
 	"abusefilter-edit-notes": "Notes :",
 	"abusefilter-edit-lastmod": "Dernière modification du filtre :",
 	"abusefilter-edit-lastmod-text": "$1 par $2",
-	"abusefilter-edit-hitcount": "Nombre d'activations du filtre :",
+	"abusefilter-edit-hitcount": "Nombre de détections :",
 	"abusefilter-edit-consequences": "Actions entreprises si élément trouvé",
 	"abusefilter-edit-action-warn": "Déclencher ces actions après avoir présenté un avertissement à l'utilisateur",
 	"abusefilter-edit-action-disallow": "Empêcher l'utilisateur d'effectuer l'action en question",
