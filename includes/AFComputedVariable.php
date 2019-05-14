@@ -376,6 +376,11 @@ class AFComputedVariable {
 
 				$result = call_user_func( [ $obj, $method ] );
 				break;
+			case 'user-block':
+				// @todo Support partial blocks
+				$user = $parameters['user'];
+				$result = (bool)$user->getBlock();
+				break;
 			case 'user-age':
 				$user = $parameters['user'];
 				$asOf = $parameters['asof'];

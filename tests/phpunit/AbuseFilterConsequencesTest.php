@@ -233,8 +233,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		$user = User::newFromName( 'FilteredUser' );
 		$user->addToDatabase();
 		$user->addGroup( 'sysop' );
-		if ( $user->isBlocked() ) {
-			$block = Block::newFromTarget( $user );
+		$block = Block::newFromTarget( $user );
+		if ( $block ) {
 			$block->delete();
 		}
 		self::$mUser = $user;
