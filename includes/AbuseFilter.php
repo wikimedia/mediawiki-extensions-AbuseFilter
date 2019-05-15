@@ -2356,9 +2356,7 @@ class AbuseFilter {
 	 * @return null|string Null on success, a string with the error message on failure
 	 */
 	public static function checkThrottleParameters( $params ) {
-		$throttleRate = explode( ',', $params[1] );
-		$throttleCount = $throttleRate[0];
-		$throttlePeriod = $throttleRate[1];
+		list( $throttleCount, $throttlePeriod ) = explode( ',', $params[1], 2 );
 		$throttleGroups = array_slice( $params, 2 );
 		$validGroups = [
 			'ip',
