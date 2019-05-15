@@ -729,14 +729,14 @@ class AbuseFilterHooks {
 	 *
 	 * @param UploadBase $upload
 	 * @param User $user
-	 * @param array $props
+	 * @param array|null $props
 	 * @param string $comment
 	 * @param string $pageText
 	 * @param array|ApiMessage &$error
 	 * @return bool
 	 */
 	public static function onUploadVerifyUpload( UploadBase $upload, User $user,
-		array $props, $comment, $pageText, &$error
+		$props, $comment, $pageText, &$error
 	) {
 		return self::filterUpload( 'upload', $upload, $user, $props, $comment, $pageText, $error );
 	}
@@ -764,14 +764,14 @@ class AbuseFilterHooks {
 	 * @param string $action 'upload' or 'stashupload'
 	 * @param UploadBase $upload
 	 * @param User $user User performing the action
-	 * @param array $props File properties, as returned by FSFile::getPropsFromPath()
+	 * @param array|null $props File properties, as returned by MWFileProps::getPropsFromPath().
 	 * @param string|null $summary Upload log comment (also used as edit summary)
 	 * @param string|null $text File description page text (only used for new uploads)
 	 * @param array|ApiMessage &$error
 	 * @return bool
 	 */
 	public static function filterUpload( $action, UploadBase $upload, User $user,
-		array $props, $summary, $text, &$error
+		$props, $summary, $text, &$error
 	) {
 		$title = $upload->getTitle();
 		if ( !$title ) {
@@ -780,6 +780,14 @@ class AbuseFilterHooks {
 			$err = $upload->validateName()['status'];
 			$logger->warning( __METHOD__ . ' received a null title.' .
 				"Action: $action. Title error: $err. (T144265)"
+			);
+		}
+
+		$mimeAnalyzer = MediaWikiServices::getInstance()->getMimeAnalyzer();
+		if ( !$props ) {
+			$props = ( new MWFileProps( $mimeAnalyzer ) )->getPropsFromPath(
+				$upload->getTempPath(),
+				true
 			);
 		}
 
@@ -799,11 +807,7 @@ class AbuseFilterHooks {
 		$vars->setVar( 'file_size', $upload->getFileSize() );
 
 		$vars->setVar( 'file_mime', $props['mime'] );
-		$vars->setVar(
-			'file_mediatype',
-			MediaWiki\MediaWikiServices::getInstance()->getMimeAnalyzer()
-				->getMediaType( null, $props['mime'] )
-		);
+		$vars->setVar( 'file_mediatype', $mimeAnalyzer->getMediaType( null, $props['mime'] ) );
 		$vars->setVar( 'file_width', $props['width'] );
 		$vars->setVar( 'file_height', $props['height'] );
 		$vars->setVar( 'file_bits_per_channel', $props['bits'] );
