@@ -2608,7 +2608,6 @@ class AbuseFilter {
 			$new_id = $dbw->insertId();
 		}
 
-		// Actions
 		$availableActions = $page->getConfig()->get( 'AbuseFilterActions' );
 		$actionsRows = [];
 		foreach ( array_filter( $availableActions ) as $action => $_ ) {
@@ -2640,7 +2639,6 @@ class AbuseFilter {
 			$afh_row[$afh_col] = $newRow[$af_col];
 		}
 
-		// Actions
 		$displayActions = [];
 		foreach ( $actions as $action ) {
 			$displayActions[$action['action']] = $action['parameters'];
@@ -2649,7 +2647,6 @@ class AbuseFilter {
 
 		$afh_row['afh_changed_fields'] = implode( ',', $differences );
 
-		// Flags
 		$flags = [];
 		if ( $newRow['af_hidden'] ) {
 			$flags[] = 'hidden';

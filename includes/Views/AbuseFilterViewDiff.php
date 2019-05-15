@@ -339,7 +339,6 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$body .= $infoHeader . $info;
 		}
 
-		// Pattern
 		$patternHeader = $this->getHeaderRow( 'abusefilter-diff-pattern' );
 		$pattern = '';
 		$pattern .= $this->getDiffRow(
@@ -352,7 +351,6 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$body .= $patternHeader . $pattern;
 		}
 
-		// Actions
 		$actionsHeader = $this->getHeaderRow( 'abusefilter-edit-consequences' );
 		$actions = '';
 

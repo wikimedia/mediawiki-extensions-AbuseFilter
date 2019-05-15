@@ -1189,7 +1189,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$row->af_global = $request->getCheck( 'wpFilterGlobal' )
 				&& $this->getConfig()->get( 'AbuseFilterIsCentral' );
 
-			// Actions
 			$actions = [];
 			foreach ( array_filter( $this->getConfig()->get( 'AbuseFilterActions' ) ) as $action => $_ ) {
 				// Check if it's set
