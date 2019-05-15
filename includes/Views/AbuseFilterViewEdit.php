@@ -11,6 +11,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @var array|null An array of actions for the current filter
 	 */
 	public static $mLoadedActions = null;
+
 	/**
 	 * @param SpecialAbuseFilter $page
 	 * @param array $params
