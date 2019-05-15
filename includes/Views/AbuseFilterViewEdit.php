@@ -527,12 +527,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$throttleFields = [];
 
 				if ( $set ) {
-					array_shift( $parameters );
-					$throttleRate = explode( ',', $parameters[0] );
-					$throttleCount = $throttleRate[0];
-					$throttlePeriod = $throttleRate[1];
+					list( $throttleCount, $throttlePeriod ) = explode( ',', $parameters[1], 2 );
 
-					$throttleGroups = array_slice( $parameters, 1 );
+					$throttleGroups = array_slice( $parameters, 2 );
 				} else {
 					$throttleCount = 3;
 					$throttlePeriod = 60;
