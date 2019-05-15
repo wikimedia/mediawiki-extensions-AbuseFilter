@@ -20,6 +20,7 @@ class AbuseFilterHistoryPager extends TablePager {
 	 * @var LinkRenderer
 	 */
 	protected $linkRenderer;
+
 	/**
 	 * @param int $filter
 	 * @param AbuseFilterViewHistory $page
