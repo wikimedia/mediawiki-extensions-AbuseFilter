@@ -90,7 +90,7 @@ class SpecialAbuseLog extends SpecialPage {
 	 * used as the identifier of the log entry that we want to hide; otherwise,
 	 * the abuse logs are shown as a list, with a search form above the list.
 	 *
-	 * @param string $parameter URL parameters
+	 * @param string|null $parameter URL parameters
 	 */
 	public function execute( $parameter ) {
 		$out = $this->getOutput();
