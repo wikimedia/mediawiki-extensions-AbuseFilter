@@ -793,9 +793,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			case 'block':
 				if ( $set && count( $parameters ) === 3 ) {
 					// Both blocktalk and custom block durations available
-					$blockTalk = $parameters[0];
-					$defaultAnonDuration = $parameters[1];
-					$defaultUserDuration = $parameters[2];
+					list( $blockTalk, $defaultAnonDuration, $defaultUserDuration ) = $parameters;
 				} else {
 					if ( $set && count( $parameters ) === 1 ) {
 						// Only blocktalk available

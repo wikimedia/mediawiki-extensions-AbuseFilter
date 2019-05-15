@@ -205,8 +205,7 @@ class AbuseFilterHooks {
 			$warning = $warning->inContentLanguage();
 		}
 
-		$filterDescription = $params[0];
-		$filter = $params[1];
+		list( $filterDescription, $filter ) = $params;
 
 		// The value is a nested structure keyed by filter id, which doesn't make sense when we only
 		// return the result from one filter. Flatten it to a plain array of actions.
