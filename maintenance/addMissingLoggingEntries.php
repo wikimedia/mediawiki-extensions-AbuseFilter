@@ -61,8 +61,7 @@ class AddMissingLoggingEntries extends Maintenance {
 
 		foreach ( $logResult as $row ) {
 			// id . '\n' . filter
-			$params = explode( "\n", $row->log_params, 2 );
-			$afhId = $params[0];
+			$afhId = explode( "\n", $row->log_params, 2 )[0];
 			// Forget this row had any issues - it just has a different timestamp in the log
 			unset( $afhRows[$afhId] );
 		}
