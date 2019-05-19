@@ -295,7 +295,13 @@ class AFComputedVariable {
 
 					$new_text = $vars->getVar( $textVar )->toString();
 					$content = ContentHandler::makeContent( $new_text, $article->getTitle() );
-					$editInfo = $article->prepareContentForEdit( $content );
+					try {
+						// @fixme TEMPORARY WORKAROUND FOR T187153
+						$editInfo = $article->prepareContentForEdit( $content );
+					} catch ( BadMethodCallException $e ) {
+						$result = '';
+						break;
+					}
 					if ( isset( $parameters['pst'] ) && $parameters['pst'] ) {
 						$result = $editInfo->pstContent->serialize( $editInfo->format );
 					} else {
