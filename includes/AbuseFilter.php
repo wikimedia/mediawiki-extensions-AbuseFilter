@@ -1743,11 +1743,17 @@ class AbuseFilter {
 				break;
 			case 'degroup':
 				if ( !$user->isAnon() ) {
-					// Remove all groups from the user.
-					$groups = $user->getGroups();
-					// Make sure that the stored var dump contains user groups, since we may
-					// need them if reverting this degroup via Special:AbuseFilter/revert
-					$vars->setVar( 'user_groups', $groups );
+					// Pull the groups from the VariableHolder, so that they will always be computed.
+					// This allow us to pull the groups from the VariableHolder to undo the degroup
+					// via Special:AbuseFilter/revert.
+					$groups = $vars->getVar( 'user_groups' );
+					if ( $groups->type !== AFPData::DARRAY ) {
+						// Somehow, the variable wasn't set
+						$groups = $user->getEffectiveGroups();
+						$vars->setVar( 'user_groups', $groups );
+					} else {
+						$groups = $groups->toNative();
+					}
 
 					foreach ( $groups as $group ) {
 						$user->removeGroup( $group );

@@ -42,27 +42,28 @@ class AbuseFilterVariableHolder {
 	/**
 	 * Get a variable from the current object
 	 *
-	 * @param string $variable
+	 * @param string $varName The variable name
 	 * @return AFPData
 	 */
-	public function getVar( $variable ) {
-		$variable = strtolower( $variable );
-		if ( $this->mVarsVersion === 1 && in_array( $variable, AbuseFilter::getDeprecatedVariables() ) ) {
+	public function getVar( $varName ) {
+		$varName = strtolower( $varName );
+		if ( $this->mVarsVersion === 1 && in_array( $varName, AbuseFilter::getDeprecatedVariables() ) ) {
 			// Variables are stored with old names, but the parser has given us
 			// a new name. Translate it back.
-			$variable = array_search( $variable, AbuseFilter::getDeprecatedVariables() );
+			$varName = array_search( $varName, AbuseFilter::getDeprecatedVariables() );
 		}
-		if ( isset( $this->mVars[$variable] ) ) {
-			if ( $this->mVars[$variable] instanceof AFComputedVariable ) {
-				/** @suppress PhanUndeclaredMethod False positive */
-				$value = $this->mVars[$variable]->compute( $this );
-				$this->setVar( $variable, $value );
+		if ( isset( $this->mVars[$varName] ) ) {
+			/** @var $variable AFComputedVariable|AFPData */
+			$variable = $this->mVars[$varName];
+			if ( $variable instanceof AFComputedVariable ) {
+				$value = $variable->compute( $this );
+				$this->setVar( $varName, $value );
 				return $value;
-			} elseif ( $this->mVars[$variable] instanceof AFPData ) {
-				return $this->mVars[$variable];
+			} elseif ( $variable instanceof AFPData ) {
+				return $variable;
 			}
-		} elseif ( array_key_exists( $variable, AbuseFilter::$disabledVars ) ) {
-			wfWarn( "Disabled variable $variable requested. Please fix the filter as this will " .
+		} elseif ( array_key_exists( $varName, AbuseFilter::$disabledVars ) ) {
+			wfWarn( "Disabled variable $varName requested. Please fix the filter as this will " .
 				"be removed soon." );
 		}
 		return new AFPData();
@@ -207,10 +208,12 @@ class AbuseFilterVariableHolder {
 			'revision-text-by-timestamp'
 		];
 
-		foreach ( $this->mVars as $name => $value ) {
-			if ( $value instanceof AFComputedVariable &&
-				in_array( $value->mMethod, $dbTypes )
-			) {
+		/** @var AFComputedVariable[] $missingVars */
+		$missingVars = array_filter( $this->mVars, function ( $el ) {
+			return ( $el instanceof AFComputedVariable );
+		} );
+		foreach ( $missingVars as $name => $value ) {
+			if ( in_array( $value->mMethod, $dbTypes ) ) {
 				$value = $value->compute( $this );
 				$this->setVar( $name, $value );
 			}
