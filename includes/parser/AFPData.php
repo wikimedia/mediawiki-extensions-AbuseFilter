@@ -8,6 +8,9 @@ class AFPData {
 	const DBOOL = 'bool';
 	const DFLOAT = 'float';
 	const DARRAY = 'array';
+	// Special purpose type for non-initialized stuff
+	// @todo WIP, still equivalent to null for now
+	const DNONE = 'null';
 
 	// Translation table mapping shell-style wildcards to PCRE equivalents.
 	// Derived from <http://www.php.net/manual/en/function.fnmatch.php#100207>
@@ -36,7 +39,7 @@ class AFPData {
 	 * @param string $type
 	 * @param mixed|null $val
 	 */
-	public function __construct( $type = self::DNULL, $val = null ) {
+	public function __construct( $type = self::DNONE, $val = null ) {
 		$this->type = $type;
 		$this->data = $val;
 	}
@@ -63,7 +66,7 @@ class AFPData {
 				}
 				return new AFPData( self::DARRAY, $result );
 			case 'NULL':
-				return new AFPData();
+				return new AFPData( self::DNULL );
 			default:
 				throw new AFPException(
 					'Data type ' . gettype( $var ) . ' is not supported by AbuseFilter'
@@ -89,7 +92,7 @@ class AFPData {
 		}
 		if ( $target === self::DNULL ) {
 			// We don't expose any method to cast to null. And, actually, should we?
-			return new AFPData();
+			return new AFPData( self::DNULL );
 		}
 
 		if ( $orig->type === self::DARRAY ) {

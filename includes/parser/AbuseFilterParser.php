@@ -851,7 +851,7 @@ class AbuseFilterParser {
 				} elseif ( $tok === "false" ) {
 					$result = new AFPData( AFPData::DBOOL, false );
 				} elseif ( $tok === "null" ) {
-					$result = new AFPData();
+					$result = new AFPData( AFPData::DNULL );
 				} else {
 					throw new AFPUserVisibleException(
 						'unrecognisedkeyword',

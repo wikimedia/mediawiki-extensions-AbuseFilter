@@ -104,7 +104,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 							case "false":
 								return new AFPData( AFPData::DBOOL, false );
 							case "null":
-								return new AFPData();
+								return new AFPData( AFPData::DNULL );
 						}
 					// Fallthrough intended
 					default:
