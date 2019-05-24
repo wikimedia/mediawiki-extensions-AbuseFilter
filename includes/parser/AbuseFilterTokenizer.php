@@ -66,46 +66,44 @@ class AbuseFilterTokenizer {
 		'rlike', 'irlike', 'regex', 'if', 'then', 'else', 'end',
 	];
 
-	/** @var BagOStuff */
-	public static $tokenizerCache;
-
 	/**
 	 * Get a cache key used to store the tokenized code
 	 *
+	 * @param WANObjectCache $cache
 	 * @param string $code Not yet tokenized
 	 * @return string
+	 * @internal
 	 */
-	public static function getCacheKey( $code ) {
-		return wfGlobalCacheKey( __CLASS__, self::CACHE_VERSION, crc32( $code ) );
+	public static function getCacheKey( WANObjectCache $cache, $code ) {
+		return $cache->makeGlobalKey( __CLASS__, crc32( $code ) );
+	}
+
+	/**
+	 * Get the tokens for the given code.
+	 *
+	 * @param string $code
+	 * @return array[]
+	 */
+	public static function getTokens( $code ) {
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+
+		$tokens = $cache->getWithSetCallback(
+			self::getCacheKey( $cache, $code ),
+			$cache::TTL_DAY,
+			function ( $oldValue, &$ttl, array &$setOpts ) use ( $code ) {
+				return self::tokenize( $code );
+			},
+			[ 'version' => self::CACHE_VERSION ]
+		);
+
+		return $tokens;
 	}
 
 	/**
 	 * @param string $code
 	 * @return array[]
-	 * @throws AFPException
-	 * @throws AFPUserVisibleException
 	 */
-	public static function tokenize( $code ) {
-		if ( !self::$tokenizerCache ) {
-			self::$tokenizerCache = ObjectCache::getLocalServerInstance( 'hash' );
-		}
-
-		static $stats = null;
-
-		if ( !$stats ) {
-			$stats = MediaWikiServices::getInstance()->getStatsdDataFactory();
-		}
-
-		$cacheKey = self::getCacheKey( $code );
-
-		$tokens = self::$tokenizerCache->get( $cacheKey );
-
-		if ( $tokens ) {
-			$stats->increment( 'abusefilter.tokenizerCache.hit' );
-			return $tokens;
-		}
-
-		$stats->increment( 'abusefilter.tokenizerCache.miss' );
+	private static function tokenize( $code ) {
 		$tokens = [];
 		$curPos = 0;
 
@@ -114,8 +112,6 @@ class AbuseFilterTokenizer {
 			$token = self::nextToken( $code, $curPos );
 			$tokens[ $token->pos ] = [ $token, $curPos ];
 		} while ( $curPos !== $prevPos );
-
-		self::$tokenizerCache->set( $cacheKey, $tokens, 60 * 60 * 24 );
 
 		return $tokens;
 	}

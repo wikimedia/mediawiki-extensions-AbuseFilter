@@ -204,7 +204,7 @@ class AbuseFilterParser {
 	 */
 	public function intEval( $code ) {
 		// Reset all class members to their default value
-		$this->mTokens = AbuseFilterTokenizer::tokenize( $code );
+		$this->mTokens = AbuseFilterTokenizer::getTokens( $code );
 		$this->mPos = 0;
 		$this->mShortCircuit = false;
 
