@@ -119,4 +119,131 @@ class AFPDataTest extends MediaWikiTestCase {
 			[ '1/0.0', 'mulRel' ],
 		];
 	}
+
+	/**
+	 * @param mixed $raw
+	 * @param AFPData|null $expected If null, we expect an exception due to unsupported data type
+	 * @covers AFPData::newFromPHPVar
+	 * @dataProvider providePHPVars
+	 */
+	public function testNewFromPHPVar( $raw, $expected ) {
+		if ( $expected === null ) {
+			$this->setExpectedException( AFPException::class );
+		}
+		$this->assertEquals( $expected, AFPData::newFromPHPVar( $raw ) );
+	}
+
+	/**
+	 * Data provider for testNewFromPHPVar
+	 *
+	 * @return array
+	 */
+	public function providePHPVars() {
+		return [
+			[ 15, new AFPData( AFPData::DINT, 15 ) ],
+			[ '42', new AFPData( AFPData::DSTRING, '42' ) ],
+			[ 0.123, new AFPData( AFPData::DFLOAT, 0.123 ) ],
+			[ false, new AFPData( AFPData::DBOOL, false ) ],
+			[ true, new AFPData( AFPData::DBOOL, true ) ],
+			[ null, new AFPData() ],
+			[
+				[ 1, 'foo', [], [ null ], false ],
+				new AFPData( AFPData::DARRAY, [
+					new AFPData( AFPData::DINT, 1 ),
+					new AFPData( AFPData::DSTRING, 'foo' ),
+					new AFPData( AFPData::DARRAY, [] ),
+					new AFPData( AFPData::DARRAY, [ new AFPData() ] ),
+					new AFPData( AFPData::DBOOL, false )
+				] )
+			],
+			// Invalid data types
+			[ new stdClass, null ],
+			[ new AFPData, null ]
+		];
+	}
+
+	/**
+	 * Test casts to null and to arrays, for which we don't expose any method for use in actual
+	 * filters. Other casts are already covered in parserTests.
+	 *
+	 * @param AFPData $orig
+	 * @param string $newType One of the AFPData::D* constants
+	 * @param AFPData|null $expected If null, we expect an exception due to unsupported data type
+	 * @covers AFPData::castTypes
+	 * @dataProvider provideMissingCastTypes
+	 */
+	public function testMissingCastTypes( $orig, $newType, $expected ) {
+		if ( $expected === null ) {
+			$this->setExpectedException( AFPException::class );
+		}
+		$this->assertEquals( $expected, AFPData::castTypes( $orig, $newType ) );
+	}
+
+	/**
+	 * Data provider for testMissingCastTypes
+	 *
+	 * @return array
+	 */
+	public function provideMissingCastTypes() {
+		return [
+			[ new AFPData( AFPData::DINT, 1 ), AFPData::DNULL, new AFPData() ],
+			[ new AFPData( AFPData::DBOOL, false ), AFPData::DNULL, new AFPData() ],
+			[ new AFPData( AFPData::DSTRING, 'foo' ), AFPData::DNULL, new AFPData() ],
+			[ new AFPData( AFPData::DFLOAT, 3.14 ), AFPData::DNULL, new AFPData() ],
+			[
+				new AFPData( AFPData::DARRAY, [ new AFPData( AFPData::DSTRING, 'foo' ), new AFPData() ] ),
+				AFPData::DNULL,
+				new AFPData()
+			],
+			[
+				new AFPData( AFPData::DINT, 1 ),
+				AFPData::DARRAY,
+				new AFPData( AFPData::DARRAY, [ new AFPData( AFPData::DINT, 1 ) ] )
+			],
+			[
+				new AFPData( AFPData::DBOOL, false ),
+				AFPData::DARRAY,
+				new AFPData( AFPData::DARRAY, [ new AFPData( AFPData::DBOOL, false ) ] )
+			],
+			[
+				new AFPData( AFPData::DSTRING, 'foo' ),
+				AFPData::DARRAY,
+				new AFPData( AFPData::DARRAY, [ new AFPData( AFPData::DSTRING, 'foo' ) ] )
+			],
+			[
+				new AFPData( AFPData::DFLOAT, 3.14 ),
+				AFPData::DARRAY,
+				new AFPData( AFPData::DARRAY, [ new AFPData( AFPData::DFLOAT, 3.14 ) ] )
+			],
+			[ new AFPData(), AFPData::DARRAY, new AFPData( AFPData::DARRAY, [ new AFPData() ] ) ],
+			[ new AFPData( AFPData::DSTRING, 'foo' ), 'foobaz', null ],
+			[ new AFPData(), null, null ]
+		];
+	}
+
+	/**
+	 * Test a couple of toNative cases which aren't already covered in other tests.
+	 *
+	 * @param AFPData $orig
+	 * @param mixed $expected
+	 * @covers AFPData::toNative
+	 * @dataProvider provideMissingToNative
+	 */
+	public function testMissingToNative( $orig, $expected ) {
+		$this->assertEquals( $expected, $orig->toNative() );
+	}
+
+	/**
+	 * Data provider for testMissingToNative
+	 *
+	 * @return array
+	 */
+	public function provideMissingToNative() {
+		return [
+			[ new AFPData( AFPData::DFLOAT, 1.2345 ), 1.2345 ],
+			[ new AFPData( AFPData::DFLOAT, 0.1 ), 0.1 ],
+			[ new AFPData(), null ],
+			[ new AFPData( AFPData::DNULL, null ), null ],
+		];
+	}
 }
