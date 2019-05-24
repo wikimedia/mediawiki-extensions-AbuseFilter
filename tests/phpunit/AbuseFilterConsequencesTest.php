@@ -295,6 +295,15 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	protected function tearDown() {
+		// Paranoia: ensure no fake timestamp leftover
+		MWTimestamp::setFakeTime( false );
+		parent::tearDown();
+	}
+
+	/**
 	 * Creates new filters with the given ids, referred to self::$filters
 	 *
 	 * @param int[] $ids IDs of the filters to create
