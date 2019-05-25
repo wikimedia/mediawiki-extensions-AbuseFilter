@@ -23,10 +23,14 @@
 /**
  * @group Test
  * @group AbuseFilter
+ * @group AbuseFilterParser
  *
  * @covers AbuseFilterTokenizer
  * @covers AFPToken
  * @covers AbuseFilterParser
+ * @covers AbuseFilterCachingParser
+ * @covers AFPTreeParser
+ * @covers AFPTreeNode
  * @covers AFPUserVisibleException
  * @covers AFPException
  */

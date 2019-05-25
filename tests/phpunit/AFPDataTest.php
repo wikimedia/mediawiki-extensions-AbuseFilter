@@ -23,6 +23,7 @@
 /**
  * @group Test
  * @group AbuseFilter
+ * @group AbuseFilterParser
  *
  * @covers AFPData
  * @covers AbuseFilterTokenizer
@@ -30,6 +31,9 @@
  * @covers AFPUserVisibleException
  * @covers AFPException
  * @covers AbuseFilterParser
+ * @covers AbuseFilterCachingParser
+ * @covers AFPTreeParser
+ * @covers AFPTreeNode
  */
 class AFPDataTest extends AbuseFilterParserTestCase {
 	/**
