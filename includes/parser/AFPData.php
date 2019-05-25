@@ -47,27 +47,27 @@ class AFPData {
 	 * @throws AFPException
 	 */
 	public static function newFromPHPVar( $var ) {
-		if ( is_string( $var ) ) {
-			return new AFPData( self::DSTRING, $var );
-		} elseif ( is_int( $var ) ) {
-			return new AFPData( self::DINT, $var );
-		} elseif ( is_float( $var ) ) {
-			return new AFPData( self::DFLOAT, $var );
-		} elseif ( is_bool( $var ) ) {
-			return new AFPData( self::DBOOL, $var );
-		} elseif ( is_array( $var ) ) {
-			$result = [];
-			foreach ( $var as $item ) {
-				$result[] = self::newFromPHPVar( $item );
-			}
-
-			return new AFPData( self::DARRAY, $result );
-		} elseif ( is_null( $var ) ) {
-			return new AFPData();
-		} else {
-			throw new AFPException(
-				'Data type ' . gettype( $var ) . ' is not supported by AbuseFilter'
-			);
+		switch ( gettype( $var ) ) {
+			case 'string':
+				return new AFPData( self::DSTRING, $var );
+			case 'integer':
+				return new AFPData( self::DINT, $var );
+			case 'double':
+				return new AFPData( self::DFLOAT, $var );
+			case 'boolean':
+				return new AFPData( self::DBOOL, $var );
+			case 'array':
+				$result = [];
+				foreach ( $var as $item ) {
+					$result[] = self::newFromPHPVar( $item );
+				}
+				return new AFPData( self::DARRAY, $result );
+			case 'NULL':
+				return new AFPData();
+			default:
+				throw new AFPException(
+					'Data type ' . gettype( $var ) . ' is not supported by AbuseFilter'
+				);
 		}
 	}
 
