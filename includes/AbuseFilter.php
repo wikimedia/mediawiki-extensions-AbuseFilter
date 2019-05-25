@@ -280,9 +280,11 @@ class AbuseFilter {
 
 	/**
 	 * @param User $user
+	 * @param null|stdClass $rcRow If the variables should be generated for an RC row, this is the row.
+	 *   Null if it's for the current action being filtered.
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function generateUserVars( User $user ) {
+	public static function generateUserVars( User $user, $rcRow = null ) {
 		$vars = new AbuseFilterVariableHolder;
 
 		$vars->setLazyLoadVar(
@@ -323,7 +325,7 @@ class AbuseFilter {
 			[ 'user' => $user ]
 		);
 
-		Hooks::run( 'AbuseFilter-generateUserVars', [ $vars, $user ] );
+		Hooks::run( 'AbuseFilter-generateUserVars', [ $vars, $user, $rcRow ] );
 
 		return $vars;
 	}
@@ -415,19 +417,21 @@ class AbuseFilter {
 	/**
 	 * @param Title|null $title
 	 * @param string $prefix
+	 * @param null|stdClass $rcRow If the variables should be generated for an RC row, this is the row.
+	 *   Null if it's for the current action being filtered.
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function generateTitleVars( $title, $prefix ) {
+	public static function generateTitleVars( $title, $prefix, $rcRow = null ) {
 		$vars = new AbuseFilterVariableHolder;
 
 		if ( !$title ) {
 			return $vars;
 		}
 
-		$vars->setVar( $prefix . '_ID', $title->getArticleID() );
-		$vars->setVar( $prefix . '_NAMESPACE', $title->getNamespace() );
-		$vars->setVar( $prefix . '_TITLE', $title->getText() );
-		$vars->setVar( $prefix . '_PREFIXEDTITLE', $title->getPrefixedText() );
+		$vars->setVar( $prefix . '_id', $title->getArticleID() );
+		$vars->setVar( $prefix . '_namespace', $title->getNamespace() );
+		$vars->setVar( $prefix . '_title', $title->getText() );
+		$vars->setVar( $prefix . '_prefixedtitle', $title->getPrefixedText() );
 
 		global $wgRestrictionTypes;
 		foreach ( $wgRestrictionTypes as $action ) {
@@ -458,7 +462,7 @@ class AbuseFilter {
 				'namespace' => $title->getNamespace()
 			] );
 
-		Hooks::run( 'AbuseFilter-generateTitleVars', [ $vars, $title, $prefix ] );
+		Hooks::run( 'AbuseFilter-generateTitleVars', [ $vars, $title, $prefix, $rcRow ] );
 
 		return $vars;
 	}
@@ -2867,7 +2871,7 @@ class AbuseFilter {
 		// Add user data if the account was created by a registered user
 		if ( $row->rc_user && $name !== $row->rc_user_text ) {
 			$user = User::newFromName( $row->rc_user_text );
-			$vars->addHolders( self::generateUserVars( $user ) );
+			$vars->addHolders( self::generateUserVars( $user, $row ) );
 		}
 
 		$vars->setVar( 'accountname', $name );
@@ -2891,8 +2895,8 @@ class AbuseFilter {
 		}
 
 		$vars->addHolders(
-			self::generateUserVars( $user ),
-			self::generateTitleVars( $title, 'page' )
+			self::generateUserVars( $user, $row ),
+			self::generateTitleVars( $title, 'page', $row )
 		);
 
 		$vars->setVar( 'action', 'delete' );
@@ -2917,8 +2921,8 @@ class AbuseFilter {
 		}
 
 		$vars->addHolders(
-			self::generateUserVars( $user ),
-			self::generateTitleVars( $title, 'page' )
+			self::generateUserVars( $user, $row ),
+			self::generateTitleVars( $title, 'page', $row )
 		);
 
 		$vars->setVar( 'action', 'upload' );
@@ -2969,8 +2973,8 @@ class AbuseFilter {
 		}
 
 		$vars->addHolders(
-			self::generateUserVars( $user ),
-			self::generateTitleVars( $title, 'page' )
+			self::generateUserVars( $user, $row ),
+			self::generateTitleVars( $title, 'page', $row )
 		);
 
 		$vars->setVar( 'action', 'edit' );
@@ -3009,9 +3013,9 @@ class AbuseFilter {
 		$newTitle = Title::newFromText( $params[0] );
 
 		$vars = AbuseFilterVariableHolder::merge(
-			self::generateUserVars( $user ),
-			self::generateTitleVars( $oldTitle, 'MOVED_FROM' ),
-			self::generateTitleVars( $newTitle, 'MOVED_TO' )
+			self::generateUserVars( $user, $row ),
+			self::generateTitleVars( $oldTitle, 'moved_from', $row ),
+			self::generateTitleVars( $newTitle, 'moved_to', $row )
 		);
 
 		$vars->setVar( 'summary', CommentStore::getStore()->getComment( 'rc_comment', $row )->text );
