@@ -533,7 +533,7 @@ class AbuseFilter {
 		}
 
 		try {
-			$result = $parser->parse( $conds, self::$condCount );
+			$result = $parser->parse( $conds );
 		} catch ( Exception $excep ) {
 			$result = false;
 

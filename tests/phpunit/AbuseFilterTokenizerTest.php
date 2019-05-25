@@ -30,43 +30,7 @@
  * @covers AFPUserVisibleException
  * @covers AFPException
  */
-class AbuseFilterTokenizerTest extends MediaWikiTestCase {
-	/**
-	 * @return AbuseFilterParser
-	 */
-	public static function getParser() {
-		static $parser = null;
-		if ( !$parser ) {
-			$parser = new AbuseFilterParser();
-		} else {
-			$parser->resetState();
-		}
-		return $parser;
-	}
-
-	/**
-	 * Base method for testing exceptions
-	 *
-	 * @param string $excep Identifier of the exception (e.g. 'unexpectedtoken')
-	 * @param string $expr The expression to test
-	 * @param string $caller The function where the exception is thrown
-	 */
-	private function exceptionTest( $excep, $expr, $caller ) {
-		$parser = self::getParser();
-		try {
-			$parser->parse( $expr );
-		} catch ( AFPUserVisibleException $e ) {
-			$this->assertEquals(
-				$excep,
-				$e->mExceptionID,
-				"Exception $excep not thrown in AbuseFilterTokenizer::$caller"
-			);
-			return;
-		}
-
-		$this->fail( "Exception $excep not thrown in AbuseFilterTokenizer::$caller" );
-	}
-
+class AbuseFilterTokenizerTest extends AbuseFilterParserTestCase {
 	/**
 	 * Test the 'unclosedcomment' exception
 	 *
