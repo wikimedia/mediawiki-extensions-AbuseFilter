@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mirin"
+		]
+	},
+	"apihelp-abusefilterchecksyntax-example-1": "Kontroli sintakson de valida filtrilo",
+	"apihelp-abusefilterchecksyntax-example-2": "Kontroli sintakson de ne valida filtrilo"
+}
