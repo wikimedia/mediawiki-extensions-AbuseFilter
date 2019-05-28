@@ -117,23 +117,15 @@ class AbuseFilterTokenizerTest extends AbuseFilterParserTestCase {
 	 * @dataProvider provideCode
 	 */
 	public function testCaching( $code ) {
-		$cache = new WANObjectCache( [ 'cache' => new HashBagOStuff() ] );
-		$this->setService( 'MainWANObjectCache', $cache );
+		$cache = new HashBagOStuff();
+		$this->setService( 'LocalServerObjectCache', $cache );
 
 		$key = AbuseFilterTokenizer::getCacheKey( $cache, $code );
 
 		// Other tests may have already cached the same code.
 		$cache->delete( $key );
 		AbuseFilterTokenizer::getTokens( $code );
-		$cached = $cache->getWithSetCallback(
-			$key,
-			$cache::TTL_DAY,
-			function () {
-				return false;
-			},
-			[ 'version' => 1 ]
-		);
-		$this->assertNotFalse( $cached );
+		$this->assertNotFalse( $cache->get( $key ) );
 	}
 
 	/**
