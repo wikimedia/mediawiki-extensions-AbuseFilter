@@ -1,7 +1,5 @@
 <?php
 
-use MediaWiki\MediaWikiServices;
-
 /**
  * Tokenizer for AbuseFilter rules.
  */
@@ -69,13 +67,13 @@ class AbuseFilterTokenizer {
 	/**
 	 * Get a cache key used to store the tokenized code
 	 *
-	 * @param WANObjectCache $cache
+	 * @param BagOStuff $cache
 	 * @param string $code Not yet tokenized
 	 * @return string
 	 * @internal
 	 */
-	public static function getCacheKey( WANObjectCache $cache, $code ) {
-		return $cache->makeGlobalKey( __CLASS__, crc32( $code ) );
+	public static function getCacheKey( BagOStuff $cache, $code ) {
+		return $cache->makeGlobalKey( __CLASS__, self::CACHE_VERSION, crc32( $code ) );
 	}
 
 	/**
@@ -85,15 +83,14 @@ class AbuseFilterTokenizer {
 	 * @return array[]
 	 */
 	public static function getTokens( $code ) {
-		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$cache = ObjectCache::getLocalServerInstance( 'hash' );
 
 		$tokens = $cache->getWithSetCallback(
 			self::getCacheKey( $cache, $code ),
 			$cache::TTL_DAY,
-			function ( $oldValue, &$ttl, array &$setOpts ) use ( $code ) {
+			function () use ( $code ) {
 				return self::tokenize( $code );
-			},
-			[ 'version' => self::CACHE_VERSION ]
+			}
 		);
 
 		return $tokens;
