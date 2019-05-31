@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Session\SessionManager;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Storage\NameTableAccessException;
@@ -319,7 +320,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		$user = User::newFromName( 'FilteredUser' );
 		$user->addToDatabase();
 		$user->addGroup( 'sysop' );
-		$block = Block::newFromTarget( $user );
+		$block = DatabaseBlock::newFromTarget( $user );
 		if ( $block ) {
 			$block->delete();
 		}

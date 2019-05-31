@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Revision\RevisionRecord;
@@ -1910,7 +1911,7 @@ class AbuseFilter {
 			$rule['desc'], $rule['number']
 		)->inContentLanguage()->text();
 
-		$block = new Block();
+		$block = new DatabaseBlock();
 		$block->setTarget( $target );
 		$block->setBlocker( $filterUser );
 		$block->mReason = $reason;

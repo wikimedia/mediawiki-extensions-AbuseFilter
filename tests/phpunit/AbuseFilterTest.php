@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
@@ -161,7 +162,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 				$result = array_merge( $rights, $previous );
 				break;
 			case 'user_blocked':
-				$block = new Block();
+				$block = new DatabaseBlock();
 				$block->setTarget( $user );
 				$block->setBlocker( 'UTSysop' );
 				$block->mReason = 'Testing AbuseFilter variable user_blocked';

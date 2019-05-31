@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\MediaWikiServices;
 
 class AbuseFilterViewRevert extends AbuseFilterView {
@@ -278,7 +279,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	public function revertAction( $action, $result ) {
 		switch ( $action ) {
 			case 'block':
-				$block = Block::newFromTarget( $result['user'] );
+				$block = DatabaseBlock::newFromTarget( $result['user'] );
 				if ( !( $block && $block->getBy() === AbuseFilter::getFilterUser()->getId() ) ) {
 					// Not blocked by abuse filter
 					return false;
