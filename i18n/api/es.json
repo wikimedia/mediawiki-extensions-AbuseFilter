@@ -6,12 +6,13 @@
 			"Fitoschido",
 			"Macofe",
 			"MarcoAurelio",
-			"Ryo567"
+			"Ryo567",
+			"Agusbou2015"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Comprueba si el filtro antiabusos coincide con un conjunto de variables, una edición o un evento del registro del editor antiabusos.\n\nSe necesita \"vars\", \"rcid\" o \"logid\", pero solo se utiliza uno.",
 	"apihelp-abusefiltercheckmatch-summary": "Comprobar si un filtro antiabusos coincide con un conjunto de variables, una edición o un suceso registrado del filtro antiabusos.",
-	"apihelp-abusefiltercheckmatch-extended-description": "Se requieren vars, rcid o logid, pero sólo uno puede ser usado.",
+	"apihelp-abusefiltercheckmatch-extended-description": "Se requieren vars, rcid o logid, pero solo uno puede ser usado.",
 	"apihelp-abusefiltercheckmatch-param-filter": "El texto completo que se comprobará en busca de coincidencias.",
 	"apihelp-abusefiltercheckmatch-param-vars": "Matriz JSON codificada de variables para realizar la prueba.",
 	"apihelp-abusefiltercheckmatch-param-rcid": "Identificador del cambio reciente contra el cual verificar.",
@@ -34,8 +35,8 @@
 	"apihelp-query+abusefilters-summary": "Mostrar los detalles de los filtros antiabusos.",
 	"apihelp-query+abusefilters-param-startid": "El identificador de filtro para comenzar la enumeración.",
 	"apihelp-query+abusefilters-param-endid": "El identificador de filtro para detener la enumeración.",
-	"apihelp-query+abusefilters-param-show": "Sólo mostrar los filtros que cumplan con estos criterios.",
-	"apihelp-query+abusefilters-param-limit": "El número máximo de filtros a listar.",
+	"apihelp-query+abusefilters-param-show": "Solo mostrar los filtros que cumplan con estos criterios.",
+	"apihelp-query+abusefilters-param-limit": "El número máximo de filtros que se van a listar.",
 	"apihelp-query+abusefilters-param-prop": "Qué propiedades obtener",
 	"apihelp-query+abusefilters-example-1": "Listar los filtros públicos habilitados",
 	"apihelp-query+abusefilters-example-2": "Mostrar algunos detalles acerca de los filtros",

@@ -13,5 +13,10 @@
 	"apihelp-abusefilterevalexpression-param-expression": "La komputota esprimo.",
 	"apihelp-abusefilterevalexpression-example-1": "Komputi simplan esprimon",
 	"apihelp-abusefilterunblockautopromote-param-user": "Uzantnomo de la forbarota uzanto.",
+	"apihelp-query+abusefilters-param-prop": "Akirotajn ecojn.",
+	"apihelp-query+abusefilters-example-2": "Montri iujn detalojn pri filtriloj",
+	"apihelp-query+abuselog-param-prop": "Akirotajn ecojn.",
+	"apihelp-query+abuselog-example-1": "Montri lastatempajn protokolerojn",
+	"apihelp-query+abuselog-example-2": "Montri lastatempajn protokolerojn pri [[API]]",
 	"apierror-abusefilter-badsyntax": "La sintakso de la filtrilo ne estas valida."
 }

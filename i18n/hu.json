@@ -53,6 +53,8 @@
 	"action-abusefilter-revert": "egy adott vandálszűrő módosításainak visszavonása",
 	"action-abusefilter-view-private": "privátként megjelölt vandálszűrők megtekintése",
 	"action-abusefilter-log-private": "privátként megjelölt vandálszűrők naplóbejegyzéseinek megtekintése",
+	"action-abusefilter-hide-log": "bejegyzések elrejtése a vandálszűrő naplójában",
+	"action-abusefilter-hidden-log": "vandálszűrő naplójának rejtett bejegyzéseinek megtekintése",
 	"action-abusefilter-modify-global": "globális vandálszűrők létrehozása vagy módosítása",
 	"abusefilter-log": "Vandálszűrő-napló",
 	"abusefilter-log-summary": "Ezen a lapon láthatóak a vandálszűrők által elkapott műveletek.",
