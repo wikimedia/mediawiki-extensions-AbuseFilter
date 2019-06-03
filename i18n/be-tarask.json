@@ -525,6 +525,7 @@
 	"abusefilter-view-private": "Паказаць асабістыя падрабязнасьці",
 	"abusefilter-view-private-reason": "Прычына доступу да прыватных зьвестак:",
 	"abusefilter-log-details-id": "Ідэнтыфікатар журнала",
+	"abusefilter-noreason": "Папярэджаньне: каб праглядзець прыватныя зьвесткі гэтага журналу, вы мусіце падаць прычыну.",
 	"abusefilter-log-ip-not-available": "Недаступна",
 	"tag-abusefilter-condition-limit": "дасягнутае абмежаваньне ўмовы"
 }
