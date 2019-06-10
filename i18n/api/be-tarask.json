@@ -9,6 +9,7 @@
 	"apihelp-abusefiltercheckmatch-param-filter": "Паўнатэкставы фільтар для праверкі на адпаведнасьць.",
 	"apihelp-abusefiltercheckmatch-param-rcid": "Ідэнтыфікатар у нядаўніх зьменах, на аснове якога будзе зьдзейсьненая праверка.",
 	"apihelp-abusefilterchecksyntax-description": "Праверыць сынтаксыс асобнага фільтру злоўжываньняў.",
+	"apihelp-abusefilterchecksyntax-example-1": "Праверыць сынтаксыс дзейнага фільтру",
 	"apihelp-abusefilterevalexpression-param-expression": "Выраз для вылічэньня.",
 	"apihelp-abusefilterevalexpression-example-1": "Ацаніць просты выраз.",
 	"apihelp-abusefilterunblockautopromote-param-user": "Імя карыстальніка, якога вы жадаеце разблякаваць.",
