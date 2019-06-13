@@ -28,7 +28,8 @@
 			"Alifakoor",
 			"Fatemi127",
 			"درفش کاویانی",
-			"Alireza Ivaz"
+			"Alireza Ivaz",
+			"FarsiNevis"
 		]
 	},
 	"abusefilter-desc": "اکتشافات خودکاری را بر روی ویرایش‌های انجام می‌دهد.",
@@ -175,7 +176,7 @@
 	"abusefilter-list-options-search-rlike": "عبارت باقاعده",
 	"abusefilter-list-options-search-irlike": "عبارت باقاعده حساس به بزرگی و کوچکی حروف",
 	"abusefilter-list-regexerror": "خطایی در زمان جستجو رخ داد: خطا در ساختار عبارت با قاعده.",
-	"abusefilter-list-options-submit": "به‌روزرسانی",
+	"abusefilter-list-options-submit": "روزامدسازی",
 	"abusefilter-tools-text": "اینجا ابزارهایی برای قاعده‌مندکردن و اشکال‌زدایی پالایه‌های خرابکاری قرار دارند.",
 	"abusefilter-tools-expr": "آزمایشگر عبارت",
 	"abusefilter-tools-submitexpr": "ارزیابی",
