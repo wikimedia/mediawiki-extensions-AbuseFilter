@@ -1731,7 +1731,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 
 		$finalSets = [];
 		foreach ( $sets as $set ) {
-			// Test both succesfully saving a stashed edit and stashing the edit but re-executing filters
+			// Test both successfully saving a stashed edit and stashing the edit but re-executing filters
 			$finalSets[] = array_merge( [ 'miss' ], $set );
 			$finalSets[] = array_merge( [ 'hit' ], $set );
 		}
