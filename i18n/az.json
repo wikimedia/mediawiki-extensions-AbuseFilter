@@ -8,7 +8,8 @@
 			"Sortilegus",
 			"Vago",
 			"Vugar 1981",
-			"Wertuose"
+			"Wertuose",
+			"Toghrul Rahimli"
 		]
 	},
 	"abusefilter-desc": "Düzəlişlərə evristik filtrlərin tətbiq olunmasına imkan verir.",
@@ -66,6 +67,7 @@
 	"abusefilter-log-details-diff": "Redaktə zamanı edilən dəyişikliklər",
 	"abusefilter-log-linkoncontribs": "təhqir jurnalı",
 	"abusefilter-log-linkoncontribs-text": "Bu istifadəçi üçün təhqir jurnalındakı qeydlər",
+	"abusefilter-log-linkonhistory": "təhqir jurnalına baxmaq",
 	"abusefilter-log-details-hidden": "Bu qeydlər gizlədildiyindən, ona ətraflı baxa bilməzsiniz.",
 	"abusefilter-log-hide-legend": "Jurnaldakı qeydləri gizlət",
 	"abusefilter-log-hide-id": "Jurnaldakı qeydlərin ID-si:",
