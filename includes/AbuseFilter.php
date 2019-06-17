@@ -3371,14 +3371,14 @@ class AbuseFilter {
 	 * Get the history ID of the first change to a given filter
 	 *
 	 * @param int $filterID Filter id
-	 * @return int
+	 * @return string
 	 */
 	public static function getFirstFilterChange( $filterID ) {
 		static $firstChanges = [];
 
 		if ( !isset( $firstChanges[$filterID] ) ) {
 			$dbr = wfGetDB( DB_REPLICA );
-			$row = $dbr->selectRow(
+			$historyID = $dbr->selectField(
 				'abuse_filter_history',
 				'afh_id',
 				[
@@ -3387,7 +3387,7 @@ class AbuseFilter {
 				__METHOD__,
 				[ 'ORDER BY' => 'afh_timestamp ASC' ]
 			);
-			$firstChanges[$filterID] = $row->afh_id;
+			$firstChanges[$filterID] = $historyID;
 		}
 
 		return $firstChanges[$filterID];
