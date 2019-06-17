@@ -1015,12 +1015,12 @@ class SpecialAbuseLog extends SpecialPage {
 			$actions_taken = $lang->commaList( $displayActions );
 		}
 
-		list( $id, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+		list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
 
 		if ( $global ) {
 			// Pull global filter description
 			$escaped_comments = Sanitizer::escapeHtmlAllowEntities(
-				AbuseFilter::getGlobalFilterDescription( $id ) );
+				AbuseFilter::getGlobalFilterDescription( $filterID ) );
 			$filter_hidden = null;
 		} else {
 			$escaped_comments = Sanitizer::escapeHtmlAllowEntities(
@@ -1062,10 +1062,10 @@ class SpecialAbuseLog extends SpecialPage {
 			if ( $global ) {
 				$globalURL = WikiMap::getForeignURL(
 					$this->getConfig()->get( 'AbuseFilterCentralDB' ),
-					'Special:AbuseFilter/' . $id
+					'Special:AbuseFilter/' . $filterID
 				);
 				$linkText = $this->msg( 'abusefilter-log-detailedentry-global' )
-					->numParams( $id )->text();
+					->numParams( $filterID )->text();
 				$filterLink = Linker::makeExternalLink( $globalURL, $linkText );
 			} else {
 				$title = SpecialPage::getTitleFor( 'AbuseFilter', $row->afl_filter );

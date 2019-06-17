@@ -180,9 +180,9 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				$entry['filter_id'] = $canSeeDetails ? $row->afl_filter : '';
 			}
 			if ( $fld_filter ) {
-				list( $id, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+				list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
 				if ( $global ) {
-					$entry['filter'] = AbuseFilter::getGlobalFilterDescription( $id );
+					$entry['filter'] = AbuseFilter::getGlobalFilterDescription( $filterID );
 				} else {
 					$entry['filter'] = $row->af_public_comments;
 				}

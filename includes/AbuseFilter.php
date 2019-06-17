@@ -370,14 +370,14 @@ class AbuseFilter {
 		if ( $filter === 'new' ) {
 			return false;
 		}
-		list( $id, $global ) = self::splitGlobalName( $filter );
+		list( $filterID, $global ) = self::splitGlobalName( $filter );
 		if ( $global ) {
 			global $wgAbuseFilterCentralDB;
 			if ( !$wgAbuseFilterCentralDB ) {
 				return false;
 			}
 			$dbr = wfGetDB( DB_REPLICA, [], $wgAbuseFilterCentralDB );
-			$filter = $id;
+			$filter = $filterID;
 		} else {
 			$dbr = wfGetDB( DB_REPLICA );
 		}
@@ -838,10 +838,10 @@ class AbuseFilter {
 		$localFilters = [];
 
 		foreach ( $filters as $filter ) {
-			list( $id, $global ) = self::splitGlobalName( $filter );
+			list( $filterID, $global ) = self::splitGlobalName( $filter );
 
 			if ( $global ) {
-				$globalFilters[] = $id;
+				$globalFilters[] = $filterID;
 			} else {
 				$localFilters[] = $filter;
 			}
@@ -951,7 +951,7 @@ class AbuseFilter {
 			// Special-case handling for warnings.
 			$filter_public_comments = self::getFilter( $filter )->af_public_comments;
 
-			$global_filter = self::splitGlobalName( $filter )[1];
+			$isGlobal = self::splitGlobalName( $filter )[1];
 
 			// If the filter has "throttle" enabled and throttling is available via object
 			// caching, check to see if the user has hit the throttle.
@@ -965,7 +965,7 @@ class AbuseFilter {
 				// The rest are throttle-types.
 				foreach ( $parameters as $throttleType ) {
 					$hitThrottle = $hitThrottle || self::isThrottled(
-							$throttleId, $throttleType, $title, $rateCount, $ratePeriod, $global_filter );
+							$throttleId, $throttleType, $title, $rateCount, $ratePeriod, $isGlobal );
 				}
 
 				unset( $actions['throttle'] );
@@ -975,7 +975,7 @@ class AbuseFilter {
 				}
 			}
 
-			if ( $wgAbuseFilterDisallowGlobalLocalBlocks && $global_filter ) {
+			if ( $wgAbuseFilterDisallowGlobalLocalBlocks && $isGlobal ) {
 				$actions = array_diff_key( $actions, array_filter( $wgAbuseFilterRestrictions ) );
 			}
 
@@ -1300,7 +1300,7 @@ class AbuseFilter {
 		global $wgAbuseFilterCentralDB;
 
 		if ( !isset( self::$filterCache[$filter] ) ) {
-			list( $id, $global ) = self::splitGlobalName( $filter );
+			list( $filterID, $global ) = self::splitGlobalName( $filter );
 			if ( $global ) {
 				// Global wiki filter
 				if ( !$wgAbuseFilterCentralDB ) {
@@ -1318,7 +1318,7 @@ class AbuseFilter {
 			$row = $dbr->selectRow(
 				'abuse_filter',
 				'*',
-				[ 'af_id' => $id ],
+				[ 'af_id' => $filterID ],
 				__METHOD__
 			);
 			self::$filterCache[$filter] = $row ?: null;
@@ -1387,7 +1387,7 @@ class AbuseFilter {
 		$logged_global_filters = [];
 
 		foreach ( $actions_taken as $filter => $actions ) {
-			list( $id, $global ) = self::splitGlobalName( $filter );
+			list( $filterID, $global ) = self::splitGlobalName( $filter );
 			$thisLog = $log_template;
 			$thisLog['afl_filter'] = $filter;
 			$thisLog['afl_actions'] = implode( ',', $actions );
@@ -1398,12 +1398,12 @@ class AbuseFilter {
 				// Global logging
 				if ( $global ) {
 					$centralLog = $thisLog + $central_log_template;
-					$centralLog['afl_filter'] = $id;
+					$centralLog['afl_filter'] = $filterID;
 					$centralLog['afl_title'] = $title->getPrefixedText();
 					$centralLog['afl_namespace'] = 0;
 
 					$central_log_rows[] = $centralLog;
-					$logged_global_filters[] = $id;
+					$logged_global_filters[] = $filterID;
 				} else {
 					$logged_local_filters[] = $filter;
 				}
