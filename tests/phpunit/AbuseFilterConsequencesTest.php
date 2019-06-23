@@ -4,6 +4,7 @@ use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Session\SessionManager;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Storage\NameTableAccessException;
+use MediaWiki\Storage\PageEditStash;
 
 /**
  * Complete tests where filters are saved, actions are executed and the right
@@ -421,7 +422,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * Stash the edit via API
+	 * Stash the edit.
+	 * @todo Maybe we can just call the ParserOutputStashForEdit hook
 	 *
 	 * @param Title $title Title of the page to edit
 	 * @param string $text The new content of the page
@@ -430,29 +432,19 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 */
 	private function stashEdit( $title, $text, $summary ) {
 		$this->setMwGlobals( [ 'wgMainCacheType' => 'hash' ] );
-		$params = [
-			'action' => 'stashedit',
-			'title' => $title->getPrefixedText(),
-			'baserevid' => 0,
-			'text' => $text,
-			'summary' => $summary,
-			'contentmodel' => 'wikitext',
-			'contentformat' => 'text/x-wiki'
-		];
-
-		// Set up an API request
-		$apiContext = new ApiTestContext();
-		$params['token'] = ApiQueryTokens::getToken(
-			self::$mUser, self::$mEditSession, ApiQueryTokens::getTokenTypeSalts()[ 'csrf' ]
-		)->toString();
-		$request = new FauxRequest( $params, true, self::$mEditSession );
-		$context = $apiContext->newTestContext( $request, self::$mUser );
-		$main = new ApiMain( $context, true );
-
-		$main->execute();
-		$result = $main->getResult()->getResultData()[ 'stashedit' ];
-
-		return $result[ 'status' ];
+		$editStash = new PageEditStash(
+			new HashBagOStuff( [] ),
+			MediaWikiServices::getInstance()->getDBLoadBalancer(),
+			new Psr\Log\NullLogger(),
+			new NullStatsdDataFactory(),
+			PageEditStash::INITIATOR_USER
+		);
+		return $editStash->parseAndCache(
+			WikiPage::factory( $title ),
+			new WikitextContent( $text ),
+			self::$mUser,
+			$summary
+		);
 	}
 
 	/**
@@ -494,8 +486,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				$stashText = md5( uniqid( rand(), true ) );
 			}
 			$stashResult = $this->stashEdit( $title, $stashText, $summary );
-			if ( $stashResult !== 'stashed' ) {
-				throw new MWException( "The edit cannot be stashed, got the following result: $stashResult" );
+			if ( $stashResult !== PageEditStash::ERROR_NONE ) {
+				throw new MWException( "The edit cannot be stashed, got the following error: $stashResult" );
 			}
 		}
 
