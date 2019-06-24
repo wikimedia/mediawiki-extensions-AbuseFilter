@@ -24,7 +24,8 @@
 			"Omotecho",
 			"Yusuke1109",
 			"Suyama",
-			"Suchichi02"
+			"Suchichi02",
+			"Afaz"
 		]
 	},
 	"abusefilter-desc": "編集に対して、自動的な経験則を適用する",
@@ -70,6 +71,7 @@
 	"abusefilter-log-summary": "この記録はフィルターが発動した全操作の一覧を表示しています。",
 	"abusefilter-log-search": "不正利用記録を検索",
 	"abusefilter-log-search-user": "利用者:",
+	"abusefilter-log-search-group": "フィルターグループ:",
 	"abusefilter-log-search-group-any": "任意",
 	"abusefilter-log-search-filter": "フィルターID (\"|\" 区切り):",
 	"abusefilter-log-search-title": "ページ名:",
@@ -383,7 +385,7 @@
 	"abusefilter-edit-builder-vars-movedto-restrictions-move": "移動先ページの移動保護レベル",
 	"abusefilter-edit-builder-vars-movedto-restrictions-create": "移動先ページの保護を作成",
 	"abusefilter-edit-builder-vars-movedto-restrictions-upload": "移動先ファイルのアップロード保護",
-	"abusefilter-edit-builder-vars-old-text-stripped": "マークアップを除く古い本文",
+	"abusefilter-edit-builder-vars-old-text-stripped": "マークアップを除いた、使用されていない古い本文",
 	"abusefilter-edit-builder-vars-old-links": "編集前のページに含まれていたリンク",
 	"abusefilter-edit-builder-vars-old-html": "古いウィキテキストから生成されたHTML",
 	"abusefilter-edit-builder-vars-minor-edit": "その編集が細部の編集かどうか (廃止)",

@@ -520,7 +520,7 @@
 	"abusefilter-test-search-type-upload": "Téléversements",
 	"abusefilter-test-search-type-createaccount": "Créations de compte",
 	"abusefilter-changeslist-examine": "examiner",
-	"abusefilter-examine": "Examiner des modifications individuelles",
+	"abusefilter-examine": "Examiner les modifications individuelles",
 	"abusefilter-examine-intro": "Cette page vous permet d'examiner les variables générées pour une modification individuelle par le filtre antiabus et de les tester avec les filtres.",
 	"abusefilter-examine-legend": "Sélectionner les modifications",
 	"abusefilter-examine-diff": "URL du diff :",

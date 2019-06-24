@@ -16,7 +16,8 @@
 			"Lucas",
 			"Surfo",
 			"Fitoschido",
-			"Mirin"
+			"Mirin",
+			"Taylor"
 		]
 	},
 	"abusefilter-desc": "Aplikas aŭtomatan heŭristikon al redaktoj.",
@@ -161,6 +162,7 @@
 	"abusefilter-edit-new": "Nova filtrilo",
 	"abusefilter-edit-save": "Konservi filtrilon",
 	"abusefilter-edit-id": "Identigo de filtrilo:",
+	"abusefilter-edit-switch-editor": "Transŝalti redaktilon",
 	"abusefilter-edit-description": "Priskribo:\n:''(publike videbla)''",
 	"abusefilter-edit-field-description": "priskribo",
 	"abusefilter-edit-group": "Grupo de filtrado:",
@@ -175,12 +177,13 @@
 	"abusefilter-edit-lastmod": "Filtri laste modifitajn:",
 	"abusefilter-edit-lastmod-text": "$1 de $2",
 	"abusefilter-edit-hitcount": "Filtrilaj trafoj:",
-	"abusefilter-edit-consequences": "Agoj farotaj kiam kongrua",
+	"abusefilter-edit-consequences": "Agoj farendaj kiam kongrua",
 	"abusefilter-edit-action-warn": "Plenumi ĉi tiun agojn post averti la uzanton",
 	"abusefilter-edit-action-disallow": "Preventi la uzanton fari tian agon",
 	"abusefilter-edit-action-blockautopromote": "Maldoni la aŭtomate konfirmitan statuson de uzanto",
 	"abusefilter-edit-action-degroup": "Forigi la uzanton de ĉiuj altrajtaj grupoj",
 	"abusefilter-edit-action-block": "Forbari la uzanton kaj/aŭ IP-adreson de redaktado",
+	"abusefilter-edit-action-blocktalk": "Bloki uzanton aŭ IP-adreson de eblo redakti sian propran diskutpaĝon",
 	"abusefilter-edit-action-throttle": "Plenumi agojn nur se la uzanto atingas rapidlimon",
 	"abusefilter-edit-action-rangeblock": "Forbari la /16 intervalon kie la uzanto originas",
 	"abusefilter-edit-action-tag": "Flagi la redakton por plua kontrolado",
