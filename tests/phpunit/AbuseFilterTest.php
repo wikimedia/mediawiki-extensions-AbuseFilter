@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use PHPUnit\Framework\MockObject\MockObject;
 
 /**
@@ -113,19 +114,21 @@ class AbuseFilterTest extends MediaWikiIntegrationTestCase {
 	 * Check that the generated user-related variables are correct
 	 *
 	 * @param string $varName The name of the variable we're currently testing
-	 * @covers AbuseFilter::generateUserVars
+	 * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator::addUserVars
 	 * @dataProvider provideUserVars
 	 */
-	public function testGenerateUserVars( $varName ) {
+	public function testAddUserVars( $varName ) {
 		list( $user, $computed ) = $this->getUserAndExpectedVariable( $varName );
 
-		$variableHolder = AbuseFilter::generateUserVars( $user );
+		$variableHolder = new AbuseFilterVariableHolder();
+		$generator = new VariableGenerator( $variableHolder );
+		$variableHolder = $generator->addUserVars( $user )->getVariableHolder();
 		$actual = $variableHolder->getVar( $varName )->toNative();
 		$this->assertSame( $computed, $actual );
 	}
 
 	/**
-	 * Data provider for testGenerateUserVars
+	 * Data provider for testAddUserVars
 	 * @return Generator|array
 	 */
 	public function provideUserVars() {
@@ -224,30 +227,35 @@ class AbuseFilterTest extends MediaWikiIntegrationTestCase {
 	 * @param string $suffix The suffix of the variables we're currently testing
 	 * @param bool $restricted Used for _restrictions variable. If true,
 	 *   the tested title will have the requested restriction.
-	 * @covers AbuseFilter::generateTitleVars
+	 * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator::addTitleVars
 	 * @dataProvider provideTitleVars
 	 */
-	public function testGenerateTitleVars( $prefix, $suffix, $restricted = false ) {
+	public function testAddTitleVars( $prefix, $suffix, $restricted = false ) {
 		$varName = $prefix . $suffix;
 		list( $title, $computed ) = $this->getTitleAndExpectedVariable( $prefix, $suffix, $restricted );
 
-		$variableHolder = new AbuseFilterVariableHolder();
-		$variableHolder->addHolders( AbuseFilter::generateTitleVars( $title, $prefix ) );
-		$res = $variableHolder->getVars()[$varName];
-		if ( $res instanceof AFComputedVariable ) {
-			// @fixme Temporary hack because we still need to use DI
-			/** @var MockObject|AFComputedVariable $lazyLoader */
-			$lazyLoader = $this->getMockBuilder( AFComputedVariable::class )
-				->setMethods( [ 'buildTitle' ] )
-				->setConstructorArgs( [ $res->mMethod, $res->mParameters ] )
-				->getMock();
-			$lazyLoader->expects( $this->any() )
-				->method( 'buildTitle' )
-				->willReturn( $title );
+		$variableHolder = $this->getMockBuilder( AbuseFilterVariableHolder::class )
+			->setMethods( [ 'getLazyLoader' ] )
+			->getMock();
 
-			$res = $lazyLoader->compute( $variableHolder );
-		}
-		$actual = $res->toNative();
+		/** @var MockObject|AbuseFilterVariableHolder $variableHolder */
+		$variableHolder->expects( $this->any() )
+			->method( 'getLazyLoader' )
+			->willReturnCallback( function ( $method, $params ) use ( $title ) {
+				$lazyLoader = $this->getMockBuilder( AFComputedVariable::class )
+					->setMethods( [ 'buildTitle' ] )
+					->setConstructorArgs( [ $method, $params ] )
+					->getMock();
+
+				$lazyLoader->expects( $this->any() )
+					->method( 'buildTitle' )
+					->willReturn( $title );
+				return $lazyLoader;
+			} );
+
+		$generator = new VariableGenerator( $variableHolder );
+		$variableHolder = $generator->addTitleVars( $title, $prefix )->getVariableHolder();
+		$actual = $variableHolder->getVar( $varName )->toNative();
 		$this->assertSame( $computed, $actual );
 	}
 

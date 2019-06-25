@@ -215,7 +215,11 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$counter = 1;
 
 		foreach ( $res as $row ) {
-			$vars = RCVariableGenerator::getVarsFromRCRow( $row );
+			$vars = new AbuseFilterVariableHolder();
+			$entry = DatabaseLogEntry::newFromRow( $row );
+			'@phan-var RCDatabaseLogEntry $entry';
+			$varGenerator = new RCVariableGenerator( $vars, $entry );
+			$vars = $varGenerator->getVars();
 
 			if ( !$vars ) {
 				continue;
