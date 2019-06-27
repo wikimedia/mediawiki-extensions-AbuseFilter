@@ -354,11 +354,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	protected function tearDown() {
 		// Paranoia: ensure no fake timestamp leftover
 		MWTimestamp::setFakeTime( false );
-		// Close the connection to the "external" database
-		$externalDBName = $this->db->getDBname() . '-' . $this->dbPrefix() . self::DB_EXTERNAL_PREFIX;
-		$db = wfGetDB( DB_MASTER, [], $externalDBName );
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-		$lbFactory->getMainLB( $externalDBName )->closeConnection( $db );
 		parent::tearDown();
 	}
 

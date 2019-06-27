@@ -270,12 +270,10 @@ class AbuseFilterHooks {
 		}
 
 		if ( $logs[ 'global' ] ) {
-			global $wgAbuseFilterCentralDB;
-			$fdb = wfGetDB( DB_MASTER, [], $wgAbuseFilterCentralDB );
-
+			$fdb = AbuseFilter::getCentralDB( DB_MASTER );
 			$fdb->update( 'abuse_filter_log',
 				[ 'afl_rev_id' => $revision->getId() ],
-				[ 'afl_id' => $logs[ 'global' ], 'afl_wiki' => wfWikiID() ],
+				[ 'afl_id' => $logs['global'], 'afl_wiki' => wfWikiID() ],
 				__METHOD__
 			);
 		}
@@ -416,10 +414,8 @@ class AbuseFilterHooks {
 		$tags = $cache->getWithSetCallback(
 			// Key to store the cached value under
 			$cache->makeKey( self::FETCH_ALL_TAGS_KEY, (int)$enabled ),
-
 			// Time-to-live (in seconds)
 			$cache::TTL_MINUTE,
-
 			// Function that derives the new key value
 			function ( $oldValue, &$ttl, array &$setOpts ) use ( $enabled, $tags, $fname ) {
 				global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
@@ -450,12 +446,11 @@ class AbuseFilterHooks {
 				}
 
 				if ( $wgAbuseFilterCentralDB && !$wgAbuseFilterIsCentral ) {
-					$dbr = wfGetDB( DB_REPLICA, [], $wgAbuseFilterCentralDB );
-					$where['af_global'] = 1;
+					$dbr = AbuseFilter::getCentralDB( DB_REPLICA );
 					$res = $dbr->select(
 						[ 'abuse_filter_action', 'abuse_filter' ],
 						'afa_parameters',
-						$where,
+						[ 'af_global' => 1 ] + $where,
 						$fname,
 						[],
 						[ 'abuse_filter' => [ 'INNER JOIN', 'afa_filter=af_id' ] ]

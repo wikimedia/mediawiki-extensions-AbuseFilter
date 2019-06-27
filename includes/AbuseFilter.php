@@ -7,6 +7,7 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Session\SessionManager;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\DBError;
 
 /**
  * This class contains most of the business logic of AbuseFilter. It consists of mostly
@@ -390,15 +391,17 @@ class AbuseFilter {
 	 * @return bool
 	 */
 	public static function filterHidden( $filterID, $global = false ) {
+		global $wgAbuseFilterCentralDB;
+
 		if ( $global ) {
-			global $wgAbuseFilterCentralDB;
 			if ( !$wgAbuseFilterCentralDB ) {
 				return false;
 			}
-			$dbr = wfGetDB( DB_REPLICA, [], $wgAbuseFilterCentralDB );
+			$dbr = self::getCentralDB( DB_REPLICA );
 		} else {
 			$dbr = wfGetDB( DB_REPLICA );
 		}
+
 		$hidden = $dbr->selectField(
 			'abuse_filter',
 			'af_hidden',
@@ -595,12 +598,7 @@ class AbuseFilter {
 				$globalRulesKey,
 				WANObjectCache::TTL_INDEFINITE,
 				function () use ( $group, $fname ) {
-					global $wgAbuseFilterCentralDB;
-
-					$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-					$fdb = $lbFactory->getMainLB( $wgAbuseFilterCentralDB )->getConnectionRef(
-						DB_REPLICA, [], $wgAbuseFilterCentralDB
-					);
+					$fdb = self::getCentralDB( DB_REPLICA );
 
 					return iterator_to_array( $fdb->select(
 						'abuse_filter',
@@ -860,7 +858,6 @@ class AbuseFilter {
 			}
 		}
 
-		global $wgAbuseFilterCentralDB;
 		// Load local filter info
 		$dbr = wfGetDB( DB_REPLICA );
 		// Retrieve the consequences.
@@ -871,9 +868,8 @@ class AbuseFilter {
 		}
 
 		if ( count( $globalFilters ) ) {
-			$fdb = wfGetDB( DB_REPLICA, [], $wgAbuseFilterCentralDB );
-			$consequences = $consequences + self::loadConsequencesFromDB(
-				$fdb,
+			$consequences += self::loadConsequencesFromDB(
+				self::getCentralDB( DB_REPLICA ),
 				$globalFilters,
 				self::GLOBAL_FILTER_PREFIX
 			);
@@ -1320,10 +1316,7 @@ class AbuseFilter {
 				if ( !$wgAbuseFilterCentralDB ) {
 					return null;
 				}
-
-				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-				$lb = $lbFactory->getMainLB( $wgAbuseFilterCentralDB );
-				$dbr = $lb->getConnectionRef( DB_REPLICA, [], $wgAbuseFilterCentralDB );
+				$dbr = self::getCentralDB( DB_REPLICA );
 			} else {
 				// Local wiki filter
 				$dbr = wfGetDB( DB_REPLICA );
@@ -1523,9 +1516,7 @@ class AbuseFilter {
 				$central_log_rows[$index]['afl_var_dump'] = $global_var_dump;
 			}
 
-			global $wgAbuseFilterCentralDB;
-			$fdb = wfGetDB( DB_MASTER, [], $wgAbuseFilterCentralDB );
-
+			$fdb = self::getCentralDB( DB_MASTER );
 			foreach ( $central_log_rows as $row ) {
 				$fdb->insert( 'abuse_filter_log', $row, __METHOD__ );
 				$global_log_ids[] = $fdb->insertId();
@@ -1618,7 +1609,7 @@ class AbuseFilter {
 
 		// Store to text table
 		if ( $global ) {
-			$dbw = wfGetDB( DB_MASTER, [], $wgAbuseFilterCentralDB );
+			$dbw = self::getCentralDB( DB_MASTER );
 		} else {
 			$dbw = wfGetDB( DB_MASTER );
 		}
@@ -3284,7 +3275,7 @@ class AbuseFilter {
 			return $cache[$filterID];
 		}
 
-		$fdb = wfGetDB( DB_REPLICA, [], $wgAbuseFilterCentralDB );
+		$fdb = self::getCentralDB( DB_REPLICA );
 
 		$cache[$filterID] = $fdb->selectField(
 			'abuse_filter',
@@ -3405,5 +3396,24 @@ class AbuseFilter {
 		}
 
 		return $firstChanges[$filterID];
+	}
+
+	/**
+	 * @param int $index DB_MASTER/DB_REPLICA
+	 * @return IDatabase
+	 * @throws DBerror
+	 * @throws RuntimeException
+	 */
+	public static function getCentralDB( $index ) {
+		global $wgAbuseFilterCentralDB;
+
+		if ( !is_string( $wgAbuseFilterCentralDB ) ) {
+			throw new RuntimeException( '$wgAbuseFilterCentralDB is not configured' );
+		}
+
+		return MediaWikiServices::getInstance()
+			->getDBLoadBalancerFactory()
+			->getMainLB( $index )
+			->getConnectionRef( $index, [], $wgAbuseFilterCentralDB );
 	}
 }
