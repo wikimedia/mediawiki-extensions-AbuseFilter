@@ -441,6 +441,7 @@
 	"abusefilter-examine-noresults": "Belirtmiş olduğunuz arama parametrelerine uygun hiçbir sonuç bulunamadı.",
 	"abusefilter-topnav": "'''Kötüye Kullanım Süzgeci gezintisi'''",
 	"abusefilter-topnav-home": "Ana",
+	"abusefilter-topnav-recentchanges": "Son süzgeç değişiklikleri",
 	"abusefilter-topnav-test": "Toplu test",
 	"abusefilter-topnav-examine": "Geçmiş değişiklikleri incele",
 	"abusefilter-topnav-log": "Kötüye kullanım günlüğü",

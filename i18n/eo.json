@@ -462,6 +462,7 @@
 	"abusefilter-http-error": "Okazis HTTP-eraro: $1.",
 	"abusefilter-view-private-submit": "Vidi privatajn detalojn",
 	"abusefilter-view-private": "Vidi privatajn detalojn",
+	"abusefilter-view-private-reason": "Kialo por akiri privatajn detalojn:",
 	"abusefilter-log-details-id": "Identigilo de Protokolero",
 	"abusefilter-log-ip-not-available": "Ne Havebla"
 }

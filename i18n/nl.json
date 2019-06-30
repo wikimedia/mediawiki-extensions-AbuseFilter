@@ -63,6 +63,9 @@
 	"action-abusefilter-revert": "alle wijzigingen door een bepaald filter terug te draaien",
 	"action-abusefilter-view-private": "als beperkt zichtbaar gemarkeerde filters te bekijken",
 	"action-abusefilter-log-private": "Logboeken weergeven van misbruikfilters die zijn gemarkeerd als privé.",
+	"action-abusefilter-hide-log": "meldingen in het filterlogboek te verbergen",
+	"action-abusefilter-hidden-log": "verborgen meldingen in het filterlogboek te bekijken",
+	"action-abusefilter-modify-global": "globale misbruikfilters aan te maken of aan te passen",
 	"abusefilter-log": "Filterlogboek",
 	"abusefilter-log-summary": "Dit logboek geeft een lijst weer van handelingen die opgevangen zijn door filters.",
 	"abusefilter-log-search": "Het filterlogboek doorzoeken",
@@ -111,6 +114,7 @@
 	"abusefilter-log-cannot-see-private-details": "U hebt niet de juiste rechten om de beperkt zichbare gegevens van dit item te bekijken.",
 	"abusefilter-log-nonexistent": "Een regel met de opgegeven ID bestaat niet.",
 	"abusefilter-log-details-hidden": "U kunt de details van deze melding niet bekijken omdat deze verborgen is.",
+	"abusefilter-log-details-hidden-implicit": "U kunt de details van deze melding niet bekijken omdat de gekoppelde versie verborgen is.",
 	"abusefilter-log-private-not-included": "Een of meer van de opgegeven filter-ID's zijn persoonlijk. Omdat u de details van privéfilters niet mag zien, is er niet in deze filters gezocht.",
 	"abusefilter-log-hide-legend": "Logboekregel verbergen",
 	"abusefilter-log-hide-id": "Logboekmeldingsnummer:",
@@ -182,7 +186,7 @@
 	"abusefilter-edit-token-not-match": "De bewerking is niet opgeslagen! Probeer opnieuw op te slaan.",
 	"abusefilter-edit-oldwarning": "<strong>U bent een oude versie van dit filter aan het bewerken.\nDe weergegeven statistieken gelden voor de meest recente versie van het filter.\nAls u uw wijzigingen opslaat, overschrijft u alle wijzigingen die na deze versie zijn gemaakt.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Terug naar de geschiedenis van dit filter]]",
 	"abusefilter-edit-status-label": "Statistieken:",
-	"abusefilter-edit-status": "{{PLURAL:$1|De laatste handeling voldeed|Van de laatste $1 handelingen voldeden er $2}} aan dit filter ($3%).",
+	"abusefilter-edit-status": "{{PLURAL:$1|De laatste handeling voldeed|Van de laatste $1 handelingen voldeden er $2}} aan dit filter ($3%).\nDe gemiddelde looptijd van de filtercontrole is $4 ms, en deze gebruikt $5 {{PLURAL:$5|conditie|condities}} van de conditielimiet.",
 	"abusefilter-edit-throttled-warning": "'''Waarschuwing:''' Dit filter is automatisch gemarkeerd als schadelijk. Als veiligheidsmaatregel zijn de volgende handelingen niet uitgevoerd ($1). Controleer en [[mw:Extension:AbuseFilter/Conditions|optimaliseer]] de condities om deze limitatie te verwijderen.",
 	"abusefilter-edit-new": "Nieuw filter",
 	"abusefilter-edit-save": "Filter opslaan",
@@ -512,5 +516,6 @@
 	"abusefilter-view-private-reason": "Reden voor het opvragen van privélogboekgegevens:",
 	"abusefilter-log-details-id": "Logboekregel-ID",
 	"abusefilter-noreason": "Waarschuwing: als je de privégegevens van dit logboek wilt bekijken, moet je een reden opgeven.",
-	"abusefilter-log-ip-not-available": "Niet beschikbaar"
+	"abusefilter-log-ip-not-available": "Niet beschikbaar",
+	"tag-abusefilter-condition-limit": "conditielimiet bereikt"
 }

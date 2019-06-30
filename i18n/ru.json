@@ -45,7 +45,8 @@
 			"Shaleych",
 			"Athena Atterdag",
 			"Kareyac",
-			"DmitTrix"
+			"DmitTrix",
+			"ЛингвоЧел"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -70,7 +71,7 @@
 	"right-abusefilter-private-log": "просмотр журнала доступа к личной информации фильтров злоупотребления",
 	"right-abusefilter-modify-restricted": "Изменение ограничивающих фильтров злоупотреблений",
 	"right-abusefilter-revert": "Откат изменений, произведённых фильтром злоупотреблений",
-	"right-abusefilter-view-private": "просмотр скрытых фильтров злоупотреблений",
+	"right-abusefilter-view-private": "Просмотр частных фильтров злоупотреблений",
 	"right-abusefilter-log-private": "просмотр частных записей в журнале фильтра злоупотреблений",
 	"right-abusefilter-hide-log": "Сокрытие записей в журнале злоупотреблений",
 	"right-abusefilter-hidden-log": "Просмотр скрытых записей в журнале фильтра злоупотреблений",
@@ -250,6 +251,7 @@
 	"abusefilter-edit-throttle-groups-help": "См. $1.",
 	"abusefilter-edit-throttle-groups-help-text": "документацию на mediawiki.org",
 	"abusefilter-edit-throttle-hidden-placeholder": "Разделите запятыми, чтобы соединить логическим оператором И, и переводами строк, чтобы соединить логическим оператором ИЛИ",
+	"abusefilter-edit-throttle-placeholder": "Разделите запятыми, чтобы соединить логическим оператором AND, и переводами строк, чтобы соединить логическим оператором OR",
 	"abusefilter-throttle-ip": "IP-адрес",
 	"abusefilter-throttle-user": "учётная запись",
 	"abusefilter-throttle-range": "Диапазон /16",
