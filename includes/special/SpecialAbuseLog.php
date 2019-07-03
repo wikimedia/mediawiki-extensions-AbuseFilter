@@ -100,6 +100,7 @@ class SpecialAbuseLog extends SpecialPage {
 			$this->getContext(), 'log', $this->getLinkRenderer() );
 
 		$this->setHeaders();
+		$this->addHelpLink( 'Extension:AbuseFilter' );
 		$this->loadParameters();
 
 		$out->setPageTitle( $this->msg( 'abusefilter-log' ) );

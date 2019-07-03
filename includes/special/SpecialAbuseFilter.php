@@ -32,6 +32,7 @@ class SpecialAbuseFilter extends SpecialPage {
 		$view = 'AbuseFilterViewList';
 
 		$this->setHeaders();
+		$this->addHelpLink( 'Extension:AbuseFilter' );
 
 		$this->loadParameters( $subpage );
 		$out->setPageTitle( $this->msg( 'abusefilter-management' ) );
