@@ -548,6 +548,7 @@
 	"abusefilter-log-header": "Ce journal affiche un résumé des modifications faites aux filtres.\nPour plus de détails, voyez [[Special:AbuseFilter/history|la liste]] des modifications récentes du filtre.",
 	"abusefilter-logentry-create": "$1 a {{GENDER:$2|créé}} $4 ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|a modifié}} $4 ($5)",
+	"abusefilter-log-invalid-filter": "Certains des identificateurs de filtres indiqués ne sont pas valides.",
 	"abusefilter-log-noresults": "Aucun résultat",
 	"abusefilter-diff-title": "Différences entre les versions",
 	"abusefilter-diff-item": "Article",

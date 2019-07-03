@@ -512,6 +512,7 @@
 	"abusefilter-log-header": "Quiste reggistre fàce vedè 'nu elenghe de cangiaminde combiute da le filtre.\nPè avè cchiù dettaglie, vide [[Special:AbuseFilter/history|'a liste]] de le cangiaminde recende d'u filtre.",
 	"abusefilter-logentry-create": "$1 {{GENDER:$2|ccrejate}} $4 ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|cangiate}} $4 ($5)",
+	"abusefilter-log-invalid-filter": "Quacche valore de le ID de le filtre specificate jè invalide.",
 	"abusefilter-log-noresults": "Nisciune resultate",
 	"abusefilter-diff-title": "Differenze 'mbrà versiune",
 	"abusefilter-diff-item": "Elemende",

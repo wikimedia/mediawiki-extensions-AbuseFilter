@@ -555,6 +555,7 @@
 	"abusefilter-log-header": "Este registro muestra un resumen de los cambios realizados en los filtros.\nPara más detalles, ver [[Special:AbuseFilter/history|la lista]] de cambios recientes de filtros.",
 	"abusefilter-logentry-create": "$1 {{GENDER:$2|creó}} el $4 ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|modificó}} el $4 ($5)",
+	"abusefilter-log-invalid-filter": "Algunos de los identificadores de filtro especificados no son válidos.",
 	"abusefilter-log-noresults": "No hay resultados",
 	"abusefilter-diff-title": "Diferencias entre versiones",
 	"abusefilter-diff-item": "Elemento",

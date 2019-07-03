@@ -532,6 +532,7 @@
 	"abusefilter-log-header": "이 기록은 필터가 바뀜 기록의 요약본을 보여줍니다.\n자세한 정보는 [[Special:AbuseFilter/history|필터의 최근 바뀜]]을 참조하십시오.",
 	"abusefilter-logentry-create": "$1님이 $4 필터를 {{GENDER:$2|만들었습니다}} ($5)",
 	"abusefilter-logentry-modify": "$1님이 $4 필터를 {{GENDER:$2|수정했습니다}} ($5)",
+	"abusefilter-log-invalid-filter": "특정 필터 ID의 일부가 유효하지 않습니다.",
 	"abusefilter-log-noresults": "결과 없음",
 	"abusefilter-diff-title": "버전 사이의 차이",
 	"abusefilter-diff-item": "항목",

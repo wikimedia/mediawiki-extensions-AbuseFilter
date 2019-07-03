@@ -543,6 +543,7 @@
 	"abusefilter-log-header": "此日誌顯示了所有對過濾器所作變更摘要。\n詳細資訊請見最近過濾器變更[[Special:AbuseFilter/history|清單]]。",
 	"abusefilter-logentry-create": "$1{{GENDER:$2|建立}}了$4（$5）",
 	"abusefilter-logentry-modify": "$1{{GENDER:$2|修改了}}$4（$5）",
+	"abusefilter-log-invalid-filter": "指定的部份過濾器 ID 無效。",
 	"abusefilter-log-noresults": "沒有結果",
 	"abusefilter-diff-title": "修訂版本間差異",
 	"abusefilter-diff-item": "項目",
