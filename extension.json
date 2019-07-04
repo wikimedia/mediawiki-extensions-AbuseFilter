@@ -2,9 +2,10 @@
 	"name": "Abuse Filter",
 	"author": [
 		"Andrew Garrett",
+		"[https://www.mediawiki.org/wiki/User:Daimona_Eaytoy Daimona Eaytoy]",
+		"Marius Hoch",
 		"River Tarnell",
-		"Victor Vasiliev",
-		"Marius Hoch"
+		"Victor Vasiliev"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:AbuseFilter",
 	"descriptionmsg": "abusefilter-desc",
