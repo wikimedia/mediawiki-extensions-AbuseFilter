@@ -317,9 +317,16 @@ class AFPTreeParser {
 	 */
 	protected function doLevelCompares() {
 		$leftOperand = $this->doLevelSumRels();
-		$ops = [ '==', '===', '!=', '!==', '<', '>', '<=', '>=', '=' ];
-		while ( $this->mCur->type === AFPToken::TOP && in_array( $this->mCur->value, $ops ) ) {
+		$equalityOps = [ '==', '===', '!=', '!==', '=' ];
+		$orderOps = [ '<', '>', '<=', '>=' ];
+		// Only allow either a single operation, or a combination of a single equalityOps and a single
+		// orderOps. This resembles what PHP does, and allows `a < b == c` while rejecting `a < b < c`
+		$allowedOps = array_merge( $equalityOps, $orderOps );
+		while ( $this->mCur->type === AFPToken::TOP && in_array( $this->mCur->value, $allowedOps ) ) {
 			$op = $this->mCur->value;
+			$allowedOps = in_array( $op, $equalityOps ) ?
+				array_diff( $allowedOps, $equalityOps ) :
+				array_diff( $allowedOps, $orderOps );
 			$position = $this->mPos;
 			$this->move();
 			$rightOperand = $this->doLevelSumRels();
