@@ -596,7 +596,7 @@ class AbuseFilter {
 			$fname = __METHOD__;
 			$res = MediaWikiServices::getInstance()->getMainWANObjectCache()->getWithSetCallback(
 				$globalRulesKey,
-				WANObjectCache::TTL_INDEFINITE,
+				WANObjectCache::TTL_WEEK,
 				function () use ( $group, $fname ) {
 					$fdb = self::getCentralDB( DB_REPLICA );
 
@@ -614,7 +614,8 @@ class AbuseFilter {
 				},
 				[
 					'checkKeys' => [ $globalRulesKey ],
-					'lockTSE' => 300
+					'lockTSE' => 300,
+					'version' => 1
 				]
 			);
 
