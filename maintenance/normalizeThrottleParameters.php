@@ -333,13 +333,16 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 			$histRow = $this->dbw->selectRow(
 				'abuse_filter_history',
 				[
+					// All columns in the table, aside from afh_id that we don't need, and the
+					// ones where we're going to put something new, plus afh_actions.
 					'afh_filter',
 					'afh_pattern',
 					'afh_comments',
 					'afh_flags',
 					'afh_public_comments',
 					'afh_deleted',
-					'afh_group'
+					'afh_group',
+					'afh_actions'
 				],
 				[ 'afh_filter' => $filter ],
 				__METHOD__,
