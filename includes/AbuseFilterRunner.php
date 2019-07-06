@@ -958,27 +958,17 @@ class AbuseFilterRunner {
 				break;
 			case 'blockautopromote':
 				if ( !$this->user->isAnon() ) {
-					// Block for 5 days.
-					MediaWikiServices::getInstance()->getMainObjectStash()->set(
-						AbuseFilter::autoPromoteBlockKey( $this->user ), true, 5 * 86400
-					);
-
-					$logEntry = new ManualLogEntry( 'rights', 'blockautopromote' );
-					$logEntry->setPerformer( AbuseFilter::getFilterUser() );
-					$logEntry->setTarget( $this->user->getUserPage() );
-					// These parameters are unused in our message, but some parts of the code check for them
-					$logEntry->setParameters( [
-						'4::oldgroups' => [],
-						'5::newgroups' => []
-					] );
-					$logEntry->setComment(
+					// Block for 5 days
+					AbuseFilter::blockAutoPromote(
+						$this->user,
+						AbuseFilter::getFilterUser(),
+						5 * 86400,
 						wfMessage(
 							'abusefilter-blockautopromotereason',
 							$ruleDescription,
 							$ruleNumber
 						)->inContentLanguage()->text()
 					);
-					$logEntry->publish( $logEntry->insert() );
 
 					$message = [
 						'abusefilter-autopromote-blocked',

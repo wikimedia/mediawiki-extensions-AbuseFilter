@@ -717,9 +717,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					case 'blockautopromote':
 						// Aborts the hook with 'abusefilter-autopromote-blocked' error and prevent promotion.
 						$expectedErrors['blockautopromote'][] = 'abusefilter-autopromote-blocked';
-						$key = MediaWikiServices::getInstance()->getMainObjectStash()->get(
-							AbuseFilter::autoPromoteBlockKey( self::$mUser ) );
-						if ( !$key ) {
+						$value = AbuseFilter::getAutoPromoteBlockStatus( self::$mUser );
+						if ( !$value ) {
 							$testErrorMessage = "The key for blocking autopromotion wasn't set.";
 						}
 						break;
