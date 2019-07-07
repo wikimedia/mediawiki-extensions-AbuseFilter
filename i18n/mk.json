@@ -513,6 +513,7 @@
 	"abusefilter-log-header": "Во овој дневник е прикажан преглед на промените направени во филтрите.\nЗа сите подробности, погледајте го [[Special:AbuseFilter/history|списокот]] на скорешни промени во филтрите.",
 	"abusefilter-logentry-create": "$1 {{GENDER:$2|го создаде}} $4 ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|го измени}} $4 ($5)",
+	"abusefilter-log-invalid-filter": "Некои од наведените филтерски назнаки се неважечки.",
 	"abusefilter-log-noresults": "Нема исход",
 	"abusefilter-diff-title": "Разлики помеѓу верзиите",
 	"abusefilter-diff-item": "Елемент",

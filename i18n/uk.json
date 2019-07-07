@@ -529,6 +529,7 @@
 	"abusefilter-log-header": "У цей журнал записуються описи змін, зроблених у фільтрах.\nПодробиці можна знайти в [[Special:AbuseFilter/history|списку]] останніх змін фільтрів.",
 	"abusefilter-logentry-create": "$1 {{GENDER:$2|створив|створила}} $4 ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|змінив|змінила}} $4 ($5)",
+	"abusefilter-log-invalid-filter": "Деякі із зазначених ідентифікаторів фільтрів неприпустимі.",
 	"abusefilter-log-noresults": "Немає результатів",
 	"abusefilter-diff-title": "Різниця між версіями",
 	"abusefilter-diff-item": "Елемент",
