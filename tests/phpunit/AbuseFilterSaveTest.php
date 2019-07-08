@@ -246,7 +246,7 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 		$filter = self::$mParameters['id'];
 		$viewEdit = self::getViewEdit( $filter );
 		list( $newRow, $actions ) = $viewEdit->loadRequest( $filter );
-		self::$mParameters['rowActions'] = implode( ',', array_keys( array_filter( $actions ) ) );
+		self::$mParameters['rowActions'] = implode( ',', array_keys( $actions ) );
 
 		// Send data for validation and saving
 		$status = AbuseFilter::saveFilter( $viewEdit, $filter, $newRow, $actions );

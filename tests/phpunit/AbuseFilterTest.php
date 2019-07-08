@@ -521,10 +521,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 						'af_group' => 'default'
 					],
 					[
-						'disallow' => [
-							'action' => 'disallow',
-							'parameters' => []
-						]
+						'disallow' => []
 					]
 				],
 				[
@@ -539,10 +536,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 						'af_group' => 'flow'
 					],
 					[
-						'disallow' => [
-							'action' => 'disallow',
-							'parameters' => []
-						]
+						'disallow' => []
 					]
 				],
 				[
@@ -569,10 +563,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 						'af_group' => 'default'
 					],
 					[
-						'disallow' => [
-							'action' => 'disallow',
-							'parameters' => []
-						]
+						'disallow' => []
 					]
 				],
 				[
@@ -587,10 +578,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 						'af_group' => 'default'
 					],
 					[
-						'disallow' => [
-							'action' => 'disallow',
-							'parameters' => []
-						]
+						'disallow' => []
 					]
 				],
 				[]
@@ -608,10 +596,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 						'af_group' => 'default'
 					],
 					[
-						'disallow' => [
-							'action' => 'disallow',
-							'parameters' => []
-						]
+						'disallow' => []
 					]
 				],
 				[
@@ -626,10 +611,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 						'af_group' => 'default'
 					],
 					[
-						'degroup' => [
-							'action' => 'degroup',
-							'parameters' => []
-						]
+						'degroup' => []
 					]
 				],
 				[ 'actions' ]
@@ -647,10 +629,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 						'af_group' => 'default'
 					],
 					[
-						'disallow' => [
-							'action' => 'disallow',
-							'parameters' => []
-						]
+						'disallow' => []
 					]
 				],
 				[
@@ -665,10 +644,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 						'af_group' => 'flow'
 					],
 					[
-						'blockautopromote' => [
-							'action' => 'blockautopromote',
-							'parameters' => []
-						]
+						'blockautopromote' => []
 					]
 				],
 				[
@@ -696,10 +672,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 						'af_group' => 'default'
 					],
 					[
-						'disallow' => [
-							'action' => 'disallow',
-							'parameters' => []
-						]
+						'disallow' => []
 					]
 				],
 				[
@@ -715,10 +688,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 					],
 					[
 						'warn' => [
-							'action' => 'warn',
-							'parameters' => [
-								'abusefilter-warning'
-							]
+							'abusefilter-warning'
 						]
 					]
 				],
@@ -738,10 +708,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 					],
 					[
 						'warn' => [
-							'action' => 'warn',
-							'parameters' => [
-								'abusefilter-warning'
-							]
+							'abusefilter-warning'
 						]
 					]
 				],
@@ -757,10 +724,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 						'af_group' => 'default'
 					],
 					[
-						'disallow' => [
-							'action' => 'disallow',
-							'parameters' => []
-						]
+						'disallow' => []
 					]
 				],
 				[ 'actions' ]
@@ -779,10 +743,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 					],
 					[
 						'warn' => [
-							'action' => 'warn',
-							'parameters' => [
-								'abusefilter-warning'
-							]
+							'abusefilter-warning'
 						]
 					]
 				],
@@ -799,15 +760,9 @@ class AbuseFilterTest extends MediaWikiTestCase {
 					],
 					[
 						'warn' => [
-							'action' => 'warn',
-							'parameters' => [
-								'abusefilter-my-best-warning'
-							]
+							'abusefilter-my-best-warning'
 						],
-						'degroup' => [
-							'action' => 'degroup',
-							'parameters' => []
-						]
+						'degroup' => []
 					]
 				],
 				[ 'actions' ]
@@ -826,10 +781,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 					],
 					[
 						'warn' => [
-							'action' => 'warn',
-							'parameters' => [
-								'abusefilter-warning'
-							]
+							'abusefilter-warning'
 						]
 					]
 				],
@@ -846,10 +798,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 					],
 					[
 						'warn' => [
-							'action' => 'warn',
-							'parameters' => [
-								'abusefilter-my-best-warning'
-							]
+							'abusefilter-my-best-warning'
 						]
 					]
 				],
@@ -874,10 +823,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 					],
 					[
 						'warn' => [
-							'action' => 'warn',
-							'parameters' => [
-								'abusefilter-beautiful-warning'
-							]
+							'abusefilter-beautiful-warning'
 						]
 					]
 				],
@@ -894,10 +840,7 @@ class AbuseFilterTest extends MediaWikiTestCase {
 					],
 					[
 						'warn' => [
-							'action' => 'warn',
-							'parameters' => [
-								'abusefilter-my-best-warning'
-							]
+							'abusefilter-my-best-warning'
 						]
 					]
 				],
@@ -966,14 +909,8 @@ class AbuseFilterTest extends MediaWikiTestCase {
 						'af_enabled' => 1
 					],
 					[
-						'degroup' => [
-							'action' => 'degroup',
-							'parameters' => []
-						],
-						'disallow' => [
-							'action' => 'disallow',
-							'parameters' => []
-						]
+						'degroup' => [],
+						'disallow' => []
 					]
 				]
 			],
@@ -1014,16 +951,10 @@ class AbuseFilterTest extends MediaWikiTestCase {
 					],
 					[
 						'warn' => [
-							'action' => 'warn',
-							'parameters' => [
-								'abusefilter-warning',
-								''
-							]
+							'abusefilter-warning',
+							''
 						],
-						'disallow' => [
-							'action' => 'disallow',
-							'parameters' => []
-						]
+						'disallow' => []
 					]
 				]
 			],
@@ -1069,23 +1000,14 @@ class AbuseFilterTest extends MediaWikiTestCase {
 					],
 					[
 						'warn' => [
-							'action' => 'warn',
-							'parameters' => [
 								'abusefilter-warning',
 								''
-							]
 						],
-						'disallow' => [
-							'action' => 'disallow',
-							'parameters' => []
-						],
+						'disallow' => [],
 						'block' => [
-							'action' => 'block',
-							'parameters' => [
-								'blocktalk',
-								'8 hours',
-								'infinity'
-							]
+							'blocktalk',
+							'8 hours',
+							'infinity'
 						]
 					]
 				]
@@ -1131,19 +1053,13 @@ class AbuseFilterTest extends MediaWikiTestCase {
 					],
 					[
 						'throttle' => [
-							'action' => 'throttle',
-							'parameters' => [
-								'131',
-								'3,60',
-								'user'
-							]
+							'131',
+							'3,60',
+							'user'
 						],
 						'tag' => [
-							'action' => 'tag',
-							'parameters' => [
-								'mytag',
-								'yourtag'
-							]
+							'mytag',
+							'yourtag'
 						]
 					]
 				]

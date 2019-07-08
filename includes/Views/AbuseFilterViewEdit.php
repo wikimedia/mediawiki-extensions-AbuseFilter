@@ -479,9 +479,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$output = '';
 
 		foreach ( $enabledActions as $action => $_ ) {
-			Wikimedia\suppressWarnings();
-			$params = $actions[$action]['parameters'];
-			Wikimedia\restoreWarnings();
+			$params = $actions[$action] ?? null;
 			$output .= $this->buildConsequenceSelector(
 				$action, $setActions[$action], $params, $row );
 		}
@@ -492,7 +490,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
 	 * @param string $action The action to build an editor for
 	 * @param bool $set Whether or not the action is activated
-	 * @param array $parameters Action parameters
+	 * @param array|null $parameters Action parameters
 	 * @param stdClass $row abuse_filter row object
 	 * @return string|\OOUI\FieldLayout
 	 */
@@ -1096,7 +1094,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		// Load the actions
-		$actions = [];
 		$res = $dbr->select(
 			'abuse_filter_action',
 			[ 'afa_consequence', 'afa_parameters' ],
@@ -1104,12 +1101,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			__METHOD__
 		);
 
+		$actions = [];
 		foreach ( $res as $actionRow ) {
-			$thisAction = [];
-			$thisAction['action'] = $actionRow->afa_consequence;
-			$thisAction['parameters'] = array_filter( explode( "\n", $actionRow->afa_parameters ) );
-
-			$actions[$actionRow->afa_consequence] = $thisAction;
+			$actions[$actionRow->afa_consequence] =
+				array_filter( explode( "\n", $actionRow->afa_parameters ) );
 		}
 
 		return [ $row, $actions ];
@@ -1153,7 +1148,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$data = FormatJson::decode( $import );
 
 			$importRow = $data->row;
-			$actions = wfObjectToArray( $data->actions );
+			$actions = get_object_vars( $data->actions );
 
 			$copy = [
 				'af_public_comments',
@@ -1245,13 +1240,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						}
 					}
 
-					$thisAction = [ 'action' => $action, 'parameters' => $parameters ];
-					$actions[$action] = $thisAction;
+					$actions[$action] = $parameters;
 				}
 			}
 		}
 
-		$row->af_actions = implode( ',', array_keys( array_filter( $actions ) ) );
+		$row->af_actions = implode( ',', array_keys( $actions ) );
 
 		self::$mLoadedRow = $row;
 		self::$mLoadedActions = $actions;
