@@ -547,6 +547,13 @@ class AbuseFilterHooks {
 					"$dir/db_patches/patch-afl-namespace_int.sqlite.sql", true
 				] );
 			}
+			if ( $updater->getDB()->getType() === 'mysql' ) {
+				$updater->addExtensionUpdate( [ 'dropField', 'abuse_filter_log',
+					'afl_log_id', "$dir/db_patches/patch-drop_afl_log_id.sql", true ] );
+			} else {
+				$updater->addExtensionUpdate( [ 'dropField', 'abuse_filter_log',
+					'afl_log_id', "$dir/db_patches/patch-drop_afl_log_id.sqlite.sql", true ] );
+			}
 		} elseif ( $updater->getDB()->getType() === 'postgres' ) {
 			$updater->addExtensionUpdate( [
 				'addTable', 'abuse_filter', "$dir/abusefilter.tables.pg.sql", true ] );
