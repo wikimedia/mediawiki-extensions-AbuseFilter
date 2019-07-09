@@ -321,7 +321,7 @@ class AbuseFilterParser {
 					);
 				}
 				$array = $this->mVariables->getVar( $varname );
-				if ( $array->type !== AFPData::DARRAY ) {
+				if ( $array->getType() !== AFPData::DARRAY ) {
 					throw new AFPUserVisibleException( 'notarray', $this->mCur->pos, [] );
 				}
 				$array = $array->toArray();
@@ -340,7 +340,7 @@ class AbuseFilterParser {
 					}
 					if ( count( $array ) <= $idx ) {
 						throw new AFPUserVisibleException( 'outofbounds', $this->mCur->pos,
-							[ $idx, count( $result->data ) ] );
+							[ $idx, count( $result->getData() ) ] );
 					}
 				}
 				$this->move();
@@ -697,12 +697,12 @@ class AbuseFilterParser {
 					[ ']', $this->mCur->type, $this->mCur->value ] );
 			}
 			$idx = $idx->toInt();
-			if ( $result->type === AFPData::DARRAY ) {
-				if ( count( $result->data ) <= $idx ) {
+			if ( $result->getType() === AFPData::DARRAY ) {
+				if ( count( $result->getData() ) <= $idx ) {
 					throw new AFPUserVisibleException( 'outofbounds', $this->mCur->pos,
-						[ $idx, count( $result->data ) ] );
+						[ $idx, count( $result->getData() ) ] );
 				}
-				$result = $result->data[$idx];
+				$result = $result->getData()[$idx];
 			} else {
 				throw new AFPUserVisibleException( 'notarray', $this->mCur->pos, [] );
 			}
