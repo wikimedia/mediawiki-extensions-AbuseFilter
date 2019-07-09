@@ -3397,7 +3397,7 @@ class AbuseFilter {
 
 		return MediaWikiServices::getInstance()
 			->getDBLoadBalancerFactory()
-			->getMainLB( $index )
+			->getMainLB( $wgAbuseFilterCentralDB )
 			->getConnectionRef( $index, [], $wgAbuseFilterCentralDB );
 	}
 }
