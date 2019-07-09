@@ -1335,7 +1335,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			[ 'ORDER BY' => 'afl_timestamp DESC' ]
 		);
 
-		$vars = AbuseFilter::loadVarDump( $dumpID )->mVars;
+		$vars = AbuseFilter::loadVarDump( $dumpID )->getVars();
 
 		$interestingVars = array_intersect_key( $vars, array_fill_keys( $usedVars, true ) );
 

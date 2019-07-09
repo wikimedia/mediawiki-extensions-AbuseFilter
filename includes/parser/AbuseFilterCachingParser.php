@@ -35,7 +35,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 	 * Resets the state of the parser
 	 */
 	public function resetState() {
-		$this->mVars = new AbuseFilterVariableHolder;
+		$this->mVariables = new AbuseFilterVariableHolder;
 		$this->mCur = new AFPToken();
 		$this->mCondCount = 0;
 	}
@@ -250,10 +250,10 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 			case AFPTreeNode::INDEX_ASSIGNMENT:
 				list( $varName, $offset, $value ) = $node->children;
 
-				if ( !$this->mVars->varIsSet( $varName ) ) {
+				if ( !$this->mVariables->varIsSet( $varName ) ) {
 					throw new AFPUserVisibleException( 'unrecognisedvar', $node->position, [ $varName ] );
 				}
-				$array = $this->mVars->getVar( $varName );
+				$array = $this->mVariables->getVar( $varName );
 				if ( $array->type !== AFPData::DARRAY ) {
 					throw new AFPUserVisibleException( 'notarray', $node->position, [] );
 				}
@@ -273,7 +273,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 			case AFPTreeNode::ARRAY_APPEND:
 				list( $varName, $value ) = $node->children;
 
-				$array = $this->mVars->getVar( $varName );
+				$array = $this->mVariables->getVar( $varName );
 				if ( $array->type !== AFPData::DARRAY ) {
 					throw new AFPUserVisibleException( 'notarray', $node->position, [] );
 				}

@@ -2,7 +2,7 @@
 
 class AbuseFilterVariableHolder {
 	/** @var (AFPData|AFComputedVariable)[] */
-	public $mVars = [];
+	private $mVars = [];
 
 	/** @var bool Whether this object is being used for an ongoing action being filtered */
 	public $forFilter = false;
@@ -24,6 +24,15 @@ class AbuseFilterVariableHolder {
 		}
 
 		$this->mVars[$variable] = $datum;
+	}
+
+	/**
+	 * Get all variables stored in this object
+	 *
+	 * @return (AFPData|AFComputedVariable)[]
+	 */
+	public function getVars() {
+		return $this->mVars;
 	}
 
 	/**
