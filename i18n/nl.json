@@ -516,7 +516,7 @@
 	"abusefilter-view-private": "Privégegevens bekijken",
 	"abusefilter-view-private-reason": "Reden voor het opvragen van privélogboekgegevens:",
 	"abusefilter-log-details-id": "Logboekregel-ID",
-	"abusefilter-noreason": "Waarschuwing: als je de privégegevens van dit logboek wilt bekijken, moet je een reden opgeven.",
+	"abusefilter-noreason": "Waarschuwing: als u de privégegevens van dit logboek wilt bekijken, moet u een reden opgeven.",
 	"abusefilter-log-ip-not-available": "Niet beschikbaar",
 	"tag-abusefilter-condition-limit": "conditielimiet bereikt"
 }
