@@ -155,6 +155,11 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				list( $array, $offset ) = $node->children;
 
 				$array = $this->evalNode( $array );
+
+				if ( $array->getType() === AFPData::DNONE ) {
+					return new AFPData( AFPData::DNONE );
+				}
+
 				if ( $array->getType() !== AFPData::DARRAY ) {
 					throw new AFPUserVisibleException( 'notarray', $node->position, [] );
 				}
@@ -235,6 +240,9 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				$value = $leftOperand->toBool();
 				// Short-circuit.
 				if ( ( !$value && $op === '&' ) || ( $value && $op === '|' ) ) {
+					if ( $rightOperand instanceof AFPTreeNode ) {
+						$this->discardNode( $rightOperand );
+					}
 					return $leftOperand;
 				}
 				$rightOperand = $this->evalNode( $rightOperand );
@@ -303,6 +311,32 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				// @codeCoverageIgnoreStart
 				throw new AFPException( "Unknown node type passed: {$node->type}" );
 				// @codeCoverageIgnoreEnd
+		}
+	}
+
+	/**
+	 * Intended to be used for short-circuit. Given a node, check it and its children; if there are
+	 * assignments, execute them. T214674
+	 *
+	 * @param AFPTreeNode $node
+	 */
+	private function discardNode( AFPTreeNode $node ) {
+		if ( $node->type === AFPTreeNode::ASSIGNMENT ) {
+			$this->setUserVariable( $node->children[0], new AFPData( AFPData::DNONE ) );
+		} elseif ( $node->type === AFPTreeNode::INDEX_ASSIGNMENT ) {
+			$varName = $node->children[0];
+			if ( !$this->mVariables->varIsSet( $varName ) ) {
+				throw new AFPUserVisibleException( 'unrecognisedvar', $node->position, [ $varName ] );
+			}
+			$this->setUserVariable( $varName, new AFPData( AFPData::DNONE ) );
+		} elseif ( $node->type === AFPTreeNode::ATOM ) {
+			return;
+		}
+		// @phan-suppress-next-line PhanTypeSuspiciousNonTraversableForeach ATOM case excluded above
+		foreach ( $node->children as $child ) {
+			if ( $child instanceof AFPTreeNode ) {
+				$this->discardNode( $child );
+			}
 		}
 	}
 }
