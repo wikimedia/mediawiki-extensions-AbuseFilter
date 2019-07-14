@@ -611,8 +611,13 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 		$loggerMock->setCollect( true );
 		$this->setLogger( 'AbuseFilter', $loggerMock );
 
+		$vars = new AbuseFilterVariableHolder();
+		// Set it under the new name, and check that the old name points to it
+		$vars->setVar( $new, 'Some value' );
+
 		foreach ( self::getParsers() as $parser ) {
 			$pname = get_class( $parser );
+			$parser->setVariables( $vars );
 			$actual = $parser->parse( "$old === $new" );
 
 			$loggerBuffer = $loggerMock->getBuffer();

@@ -112,20 +112,20 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 			[ 0.123, new AFPData( AFPData::DFLOAT, 0.123 ) ],
 			[ false, new AFPData( AFPData::DBOOL, false ) ],
 			[ true, new AFPData( AFPData::DBOOL, true ) ],
-			[ null, new AFPData() ],
+			[ null, new AFPData( AFPData::DNULL ) ],
 			[
 				[ 1, 'foo', [], [ null ], false ],
 				new AFPData( AFPData::DARRAY, [
 					new AFPData( AFPData::DINT, 1 ),
 					new AFPData( AFPData::DSTRING, 'foo' ),
 					new AFPData( AFPData::DARRAY, [] ),
-					new AFPData( AFPData::DARRAY, [ new AFPData() ] ),
+					new AFPData( AFPData::DARRAY, [ new AFPData( AFPData::DNULL ) ] ),
 					new AFPData( AFPData::DBOOL, false )
 				] )
 			],
 			// Invalid data types
 			[ new stdClass, null ],
-			[ new AFPData, null ]
+			[ new AFPData( AFPData::DNONE ), null ]
 		];
 	}
 
@@ -153,14 +153,17 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 	 */
 	public function provideMissingCastTypes() {
 		return [
-			[ new AFPData( AFPData::DINT, 1 ), AFPData::DNULL, new AFPData() ],
-			[ new AFPData( AFPData::DBOOL, false ), AFPData::DNULL, new AFPData() ],
-			[ new AFPData( AFPData::DSTRING, 'foo' ), AFPData::DNULL, new AFPData() ],
-			[ new AFPData( AFPData::DFLOAT, 3.14 ), AFPData::DNULL, new AFPData() ],
+			[ new AFPData( AFPData::DINT, 1 ), AFPData::DNULL, new AFPData( AFPData::DNULL ) ],
+			[ new AFPData( AFPData::DBOOL, false ), AFPData::DNULL, new AFPData( AFPData::DNULL ) ],
+			[ new AFPData( AFPData::DSTRING, 'foo' ), AFPData::DNULL, new AFPData( AFPData::DNULL ) ],
+			[ new AFPData( AFPData::DFLOAT, 3.14 ), AFPData::DNULL, new AFPData( AFPData::DNULL ) ],
 			[
-				new AFPData( AFPData::DARRAY, [ new AFPData( AFPData::DSTRING, 'foo' ), new AFPData() ] ),
+				new AFPData( AFPData::DARRAY, [
+					new AFPData( AFPData::DSTRING, 'foo' ),
+					new AFPData( AFPData::DNULL )
+				] ),
 				AFPData::DNULL,
-				new AFPData()
+				new AFPData( AFPData::DNULL )
 			],
 			[
 				new AFPData( AFPData::DINT, 1 ),
@@ -182,9 +185,13 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 				AFPData::DARRAY,
 				new AFPData( AFPData::DARRAY, [ new AFPData( AFPData::DFLOAT, 3.14 ) ] )
 			],
-			[ new AFPData(), AFPData::DARRAY, new AFPData( AFPData::DARRAY, [ new AFPData() ] ) ],
+			[
+				new AFPData( AFPData::DNULL ),
+				AFPData::DARRAY,
+				new AFPData( AFPData::DARRAY, [ new AFPData( AFPData::DNULL ) ] )
+			],
 			[ new AFPData( AFPData::DSTRING, 'foo' ), 'foobaz', null ],
-			[ new AFPData(), null, null ]
+			[ new AFPData( AFPData::DNULL ), null, null ]
 		];
 	}
 
@@ -209,7 +216,7 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 		return [
 			[ new AFPData( AFPData::DFLOAT, 1.2345 ), 1.2345 ],
 			[ new AFPData( AFPData::DFLOAT, 0.1 ), 0.1 ],
-			[ new AFPData(), null ],
+			[ new AFPData( AFPData::DNONE ), null ],
 			[ new AFPData( AFPData::DNULL, null ), null ],
 		];
 	}

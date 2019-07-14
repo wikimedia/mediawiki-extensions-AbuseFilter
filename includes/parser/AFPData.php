@@ -9,8 +9,7 @@ class AFPData {
 	const DFLOAT = 'float';
 	const DARRAY = 'array';
 	// Special purpose type for non-initialized stuff
-	// @todo WIP, still equivalent to null for now
-	const DNONE = 'null';
+	const DNONE = 'none';
 
 	// Translation table mapping shell-style wildcards to PCRE equivalents.
 	// Derived from <http://www.php.net/manual/en/function.fnmatch.php#100207>
@@ -55,7 +54,7 @@ class AFPData {
 	 * @param string $type
 	 * @param AFPData[]|mixed|null $val
 	 */
-	public function __construct( $type = self::DNONE, $val = null ) {
+	public function __construct( $type, $val = null ) {
 		$this->type = $type;
 		$this->data = $val;
 	}
@@ -148,6 +147,9 @@ class AFPData {
 	 * @return AFPData
 	 */
 	public static function boolInvert( AFPData $value ) {
+		if ( $value->type === self::DNONE ) {
+			return new AFPData( self::DNONE );
+		}
 		return new AFPData( self::DBOOL, !$value->toBool() );
 	}
 
@@ -157,6 +159,9 @@ class AFPData {
 	 * @return AFPData
 	 */
 	public static function pow( AFPData $base, AFPData $exponent ) {
+		if ( $base->type === self::DNONE || $exponent->type === self::DNONE ) {
+			return new AFPData( self::DNONE );
+		}
 		$res = pow( $base->toNumber(), $exponent->toNumber() );
 		$type = is_int( $res ) ? self::DINT : self::DFLOAT;
 
@@ -206,7 +211,13 @@ class AFPData {
 	 * @return bool
 	 */
 	private static function equals( AFPData $d1, AFPData $d2, $strict = false ) {
-		if ( $d1->type !== self::DARRAY && $d2->type !== self::DARRAY ) {
+		if ( $d1->type === self::DNONE || $d2->type === self::DNONE ) {
+			// This could mean literally everything, and mostly happens when
+			// comparing two expressions, both built basing on some non-initialized
+			// AbuseFilter variable.
+			// We always return false, like Nan !== NaN in JS.
+			return false;
+		} elseif ( $d1->type !== self::DARRAY && $d2->type !== self::DARRAY ) {
 			$typecheck = $d1->type === $d2->type || !$strict;
 			return $typecheck && $d1->toString() === $d2->toString();
 		} elseif ( $d1->type === self::DARRAY && $d2->type === self::DARRAY ) {
@@ -303,7 +314,9 @@ class AFPData {
 	 * @return AFPData
 	 */
 	public static function unaryMinus( AFPData $data ) {
-		if ( $data->type === self::DINT ) {
+		if ( $data->type === self::DNONE ) {
+			return new AFPData( self::DNONE );
+		} elseif ( $data->type === self::DINT ) {
 			return new AFPData( $data->type, -$data->toInt() );
 		} else {
 			return new AFPData( $data->type, -$data->toFloat() );
@@ -378,6 +391,9 @@ class AFPData {
 	 * @throws AFPException
 	 */
 	public static function mulRel( AFPData $a, AFPData $b, $op, $pos ) {
+		if ( $a->type === self::DNONE || $b->type === self::DNONE ) {
+			return new AFPData( self::DNONE );
+		}
 		$a = $a->toNumber();
 		$b = $b->toNumber();
 
@@ -409,7 +425,9 @@ class AFPData {
 	 * @return AFPData
 	 */
 	public static function sum( AFPData $a, AFPData $b ) {
-		if ( $a->type === self::DSTRING || $b->type === self::DSTRING ) {
+		if ( $a->type === self::DNONE || $b->type === self::DNONE ) {
+			return new AFPData( self::DNONE );
+		} elseif ( $a->type === self::DSTRING || $b->type === self::DSTRING ) {
 			return new AFPData( self::DSTRING, $a->toString() . $b->toString() );
 		} elseif ( $a->type === self::DARRAY && $b->type === self::DARRAY ) {
 			return new AFPData( self::DARRAY, array_merge( $a->toArray(), $b->toArray() ) );
@@ -427,6 +445,9 @@ class AFPData {
 	 * @return AFPData
 	 */
 	public static function sub( AFPData $a, AFPData $b ) {
+		if ( $a->type === self::DNONE || $b->type === self::DNONE ) {
+			return new AFPData( self::DNONE );
+		}
 		$res = $a->toNumber() - $b->toNumber();
 		$type = is_int( $res ) ? self::DINT : self::DFLOAT;
 
@@ -458,6 +479,7 @@ class AFPData {
 
 				return $output;
 			case self::DNULL:
+			case self::DNONE:
 				return null;
 			default:
 				// @codeCoverageIgnoreStart
