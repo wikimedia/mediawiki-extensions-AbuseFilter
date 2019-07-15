@@ -520,6 +520,7 @@
 	"abusefilter-log-header": "יומן זה מציג סיכום של השינויים שבוצעו במסנני ההשחתות.\nלפרטים מלאים, ראו את [[Special:AbuseFilter/history|רשימת]] השינויים האחרונים במסננים.",
 	"abusefilter-logentry-create": "$1 {{GENDER:$2|יצר|יצרה}} את $4 ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|שינה|שינתה}} את $4 ($5)",
+	"abusefilter-log-invalid-filter": "חלק ממזהי המסננים שצוינו אינם תקינים.",
 	"abusefilter-log-noresults": "אין תוצאות",
 	"abusefilter-diff-title": "הבדלים בין גרסאות",
 	"abusefilter-diff-item": "פריט",
