@@ -154,7 +154,8 @@
 		"ApiAbuseFilterCheckMatch": "includes/api/ApiAbuseFilterCheckMatch.php",
 		"NormalizeThrottleParameters": "maintenance/normalizeThrottleParameters.php",
 		"AbuseFilterConsequencesTest": "tests/phpunit/AbuseFilterConsequencesTest.php",
-		"AbuseFilterParserTestCase": "tests/phpunit/AbuseFilterParserTestCase.php"
+		"AbuseFilterParserTestCase": "tests/phpunit/AbuseFilterParserTestCase.php",
+		"FixOldLogEntries": "maintenance/fixOldLogEntries.php"
 	},
 	"ResourceModules": {
 		"ext.abuseFilter": {
