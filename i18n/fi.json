@@ -468,7 +468,7 @@
 	"abusefilter-test-shownegative": "Näytä muutokset, jotka eivät täsmää suodattimen kanssa",
 	"abusefilter-test-syntaxerr": "Suodatin, jonka syötit, sisälsi syntaksivirheen.\nLisätietoja saat napsauttamalla painiketta ”{{int:abusefilter-edit-check}}”.",
 	"abusefilter-test-badtitle": "Syöttämäsi sivun nimi ei kelpaa. Siinä saattaa olla yksi tai useampia sellaisia kirjainmerkkejä, joita ei voi käyttää sivujen nimissä.",
-	"abusefilter-test-action": "Toiminnon tyyppi:",
+	"abusefilter-test-action": "Toimenpiteen tyyppi:",
 	"abusefilter-test-search-type-all": "Kaikki toimenpiteet",
 	"abusefilter-test-search-type-edit": "Muokkaukset",
 	"abusefilter-test-search-type-move": "Siirrot",
