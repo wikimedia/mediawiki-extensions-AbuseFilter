@@ -15,6 +15,7 @@ class FixOldLogEntries extends LoggedUpdateMaintenance {
 		parent::__construct();
 		$this->mDescription = 'Fix old rows in logging which hold broken log_params';
 
+		$this->addOption( 'verbose', 'Print some more debug info' );
 		$this->addOption( 'dry-run', 'Perform a dry run' );
 		$this->requireExtension( 'Abuse Filter' );
 	}
@@ -46,7 +47,7 @@ class FixOldLogEntries extends LoggedUpdateMaintenance {
 			__METHOD__
 		);
 
-		$updated = 0;
+		$updated = [];
 		foreach ( $res as $row ) {
 			$par = explode( '\n', $row->log_params );
 			if ( count( $par ) === 2 ) {
@@ -61,12 +62,18 @@ class FixOldLogEntries extends LoggedUpdateMaintenance {
 						__METHOD__
 					);
 				}
-				$updated++;
+				$updated[] = $row->log_id;
 			}
 		}
 
 		$verb = $this->hasOption( 'dry-run' ) ? 'would update' : 'updated';
-		$this->output( __CLASS__ . ": $verb $updated rows out of " . $res->numRows() . ' found rows.' );
+		$numUpd = count( $updated );
+		$this->output(
+			__CLASS__ . ": $verb $numUpd rows out of " . $res->numRows() . " rows found.\n"
+		);
+		if ( $this->hasOption( 'verbose' ) ) {
+			$this->output( 'The affected log IDs are: ' . implode( ', ', $updated ) . "\n" );
+		}
 		return !$this->hasOption( 'dry-run' );
 	}
 }
