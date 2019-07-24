@@ -15,11 +15,8 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 
 		$vars = null;
 		if ( $params['vars'] ) {
-			$vars = new AbuseFilterVariableHolder;
 			$pairs = FormatJson::decode( $params['vars'], true );
-			foreach ( $pairs as $name => $value ) {
-				$vars->setVar( $name, $value );
-			}
+			$vars = AbuseFilterVariableHolder::newFromArray( $pairs );
 		} elseif ( $params['rcid'] ) {
 			$dbr = wfGetDB( DB_REPLICA );
 			$rcQuery = RecentChange::getQueryInfo();

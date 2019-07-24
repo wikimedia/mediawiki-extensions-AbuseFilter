@@ -14,6 +14,20 @@ class AbuseFilterVariableHolder {
 	public $mVarsVersion = 2;
 
 	/**
+	 * Utility function to translate an array with shape [ varname => value ] into a self instance
+	 *
+	 * @param array $vars
+	 * @return AbuseFilterVariableHolder
+	 */
+	public static function newFromArray( array $vars ) : AbuseFilterVariableHolder {
+		$ret = new self;
+		foreach ( $vars as $var => $value ) {
+			$ret->setVar( $var, $value );
+		}
+		return $ret;
+	}
+
+	/**
 	 * @param string $variable
 	 * @param mixed $datum
 	 */

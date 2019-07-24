@@ -870,16 +870,7 @@ class AbuseFilter {
 		// Backward compatibility
 		if ( substr( $stored_dump, 0, strlen( 'stored-text:' ) ) !== 'stored-text:' ) {
 			$data = unserialize( $stored_dump );
-			if ( is_array( $data ) ) {
-				$vh = new AbuseFilterVariableHolder;
-				foreach ( $data as $name => $value ) {
-					$vh->setVar( $name, $value );
-				}
-
-				return $vh;
-			} else {
-				return $data;
-			}
+			return is_array( $data ) ? AbuseFilterVariableHolder::newFromArray( $data ) : $data;
 		}
 
 		$text_id = substr( $stored_dump, strlen( 'stored-text:' ) );
@@ -912,10 +903,7 @@ class AbuseFilter {
 
 		if ( in_array( 'nativeDataArray', $flags ) ) {
 			$vars = $obj;
-			$obj = new AbuseFilterVariableHolder();
-			foreach ( $vars as $key => $value ) {
-				$obj->setVar( $key, $value );
-			}
+			$obj = AbuseFilterVariableHolder::newFromArray( $vars );
 			// If old variable names are used, make sure to keep them
 			if ( count( array_intersect_key( self::getDeprecatedVariables(), $obj->getVars() ) ) !== 0 ) {
 				$obj->mVarsVersion = 1;
