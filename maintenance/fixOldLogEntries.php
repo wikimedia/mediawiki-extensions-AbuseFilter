@@ -71,7 +71,7 @@ class FixOldLogEntries extends LoggedUpdateMaintenance {
 		$this->output(
 			__CLASS__ . ": $verb $numUpd rows out of " . $res->numRows() . " rows found.\n"
 		);
-		if ( $this->hasOption( 'verbose' ) ) {
+		if ( $updated && $this->hasOption( 'verbose' ) ) {
 			$this->output( 'The affected log IDs are: ' . implode( ', ', $updated ) . "\n" );
 		}
 		return !$this->hasOption( 'dry-run' );
