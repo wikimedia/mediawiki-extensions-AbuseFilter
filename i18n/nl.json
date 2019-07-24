@@ -518,5 +518,6 @@
 	"abusefilter-log-details-id": "Logboekregel-ID",
 	"abusefilter-noreason": "Waarschuwing: als u de privégegevens van dit logboek wilt bekijken, moet u een reden opgeven.",
 	"abusefilter-log-ip-not-available": "Niet beschikbaar",
+	"abusefilter-tag-reserved": "Het label <code>abusefilter-condition-limit</code> is gereserveerd voor intern gebruik door AbuseFilter.",
 	"tag-abusefilter-condition-limit": "conditielimiet bereikt"
 }

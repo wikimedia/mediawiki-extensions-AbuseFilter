@@ -539,6 +539,7 @@
 	"abusefilter-log-header": "Denna logg visar en sammanfattning av ändringar som har gjorts i filtren.\nFör fullständiga detaljer, se [[Special:AbuseFilter/history|listan]] över de senaste filterändringarna.",
 	"abusefilter-logentry-create": "$1 {{GENDER:$2|skapade}} $4 ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|ändrade}} $4 ($5)",
+	"abusefilter-log-invalid-filter": "Några specificerade filter-ID:n är ogiltiga.",
 	"abusefilter-log-noresults": "Inga resultat",
 	"abusefilter-diff-title": "Skillnader mellan versioner",
 	"abusefilter-diff-item": "Element",
