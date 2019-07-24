@@ -50,8 +50,13 @@ class AbuseFilterPreAuthenticationProvider extends AbstractPreAuthenticationProv
 		$vars->setVar( 'accountname', $user->getName() );
 
 		// pass creator in explicitly to prevent recording the current user on autocreation - T135360
-		$status = AbuseFilter::filterAction( $vars, SpecialPage::getTitleFor( 'Userlogin' ),
-			'default', $creator );
+		$runner = new AbuseFilterRunner(
+			$creator,
+			SpecialPage::getTitleFor( 'Userlogin' ),
+			$vars,
+			'default'
+		);
+		$status = $runner->run();
 
 		return $status->getStatusValue();
 	}
