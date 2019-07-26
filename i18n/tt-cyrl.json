@@ -3,7 +3,8 @@
 		"authors": [
 			"Ajdar",
 			"Zahidulla",
-			"Ильнар"
+			"Ильнар",
+			"Ерней"
 		]
 	},
 	"abusefilter-desc": "Үзгәртүләргә эвристик ысуллар кулланырга мөмкинлек бирә.",
@@ -12,6 +13,7 @@
 	"abusefilter-log-linkoncontribs": "яман эшләр көндәлеге",
 	"abusefilter-status-global": "Глобаль",
 	"abusefilter-list-options-submit": "Яңарту",
+	"abusefilter-history-filterid": "Сөзгеч",
 	"abusefilter-topnav-log": "Яман эшләр көндәлеге",
 	"abusefilter-log-name": "Яман эшләр көндәлеге"
 }
