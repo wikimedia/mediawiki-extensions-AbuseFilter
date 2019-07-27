@@ -418,6 +418,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "Nuevo wikitexto de la página, aplicando transformaciones preguardado",
 	"abusefilter-edit-builder-vars-diff-pst": "Diff unificado de cambios por edición, preguardado transformado",
 	"abusefilter-edit-builder-vars-addedlines-pst": "Líneas añadidas en la edición, la edición preguardada fue transformada",
+	"abusefilter-edit-builder-vars-new-text": "Nuevo texto de página, libre de cualquier elemento de marcado",
 	"abusefilter-edit-builder-vars-new-html": "Fuente HTML analizada de la nueva revisión",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Nivel de protección para la edición de la página",
 	"abusefilter-edit-builder-vars-restrictions-move": "Nivel de protección para el traslado de la página",

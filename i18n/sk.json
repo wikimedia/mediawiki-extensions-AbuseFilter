@@ -306,6 +306,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "Nový wikitext stránky, po transformácii pred uložením",
 	"abusefilter-edit-builder-vars-diff-pst": "Zjednotený diff zmien vykonaných pri úprave, po transformácii pred uložením",
 	"abusefilter-edit-builder-vars-addedlines-pst": "Riadky pridané pri úprave, po transformácii pred uložením",
+	"abusefilter-edit-builder-vars-new-text": "Nový text stránky zbavený formátovania",
 	"abusefilter-edit-builder-vars-new-html": "Vygenerovaný HTML markup novej revízie",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Úroveň zámku stránky pre úpravy",
 	"abusefilter-edit-builder-vars-restrictions-move": "Úroveň zámku stránky pre presuny",

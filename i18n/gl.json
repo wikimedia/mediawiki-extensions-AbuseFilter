@@ -346,6 +346,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "Texto wiki novo da páxina, transformado antes de gardar",
 	"abusefilter-edit-builder-vars-diff-pst": "Diferenza unificada das modificacións feitas pola edición, transformada antes de gardar",
 	"abusefilter-edit-builder-vars-addedlines-pst": "Liñas engadidas na edición, transformadas antes de gardar",
+	"abusefilter-edit-builder-vars-new-text": "Texto novo da páxina, sen ningunha marca",
 	"abusefilter-edit-builder-vars-new-html": "Fonte HTML transformada na nova revisión",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Nivel de protección de edición da páxina",
 	"abusefilter-edit-builder-vars-restrictions-move": "Nivel de protección de traslado da páxina",

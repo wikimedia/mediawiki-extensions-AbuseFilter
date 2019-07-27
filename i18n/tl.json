@@ -264,6 +264,7 @@
 	"abusefilter-edit-builder-vars-removed-links": "Lahat ng panlabas na mga kawing na tinanggal sa loob ng pagbabago",
 	"abusefilter-edit-builder-vars-old-wikitext": "Lumang pahina ng tekstong wiki, bago ginawa ang pagbago",
 	"abusefilter-edit-builder-vars-new-wikitext": "Bagong pahina ng tekstong wiki, pagkaraan ng pagbabago",
+	"abusefilter-edit-builder-vars-new-text": "Teksto ng bagong pahina, na tinanggalan ng anumang pananda",
 	"abusefilter-edit-builder-vars-new-html": "Binanghay na pinagmulang HTML ng bagong rebisyon",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Baguhin ang antas ng pagsasanggalang ng pahina",
 	"abusefilter-edit-builder-vars-restrictions-move": "Ilipat ang antas ng pagsasanggalang ng pahina",

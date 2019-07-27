@@ -335,6 +335,7 @@
 	"abusefilter-edit-builder-vars-old-wikitext": "Стари викитекст пре измене",
 	"abusefilter-edit-builder-vars-new-wikitext": "Нови викитекст после измене",
 	"abusefilter-edit-builder-vars-addedlines-pst": "Линије додане у уређивању, трансформиране у несачуване",
+	"abusefilter-edit-builder-vars-new-text": "Текст нове странице, без икаквих обележавања",
 	"abusefilter-edit-builder-vars-new-html": "Рашчлањени HTML извор нове измене",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Ниво заштите странице (уређивање)",
 	"abusefilter-edit-builder-vars-restrictions-move": "Ниво заштите странице (премештање)",

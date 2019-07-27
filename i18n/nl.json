@@ -369,6 +369,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "Wikitext nieuwe pagina, voor opslaan getransformeerd",
 	"abusefilter-edit-builder-vars-diff-pst": "Samengevoegde verschillende van de bewerking, transformaties voor opslaan",
 	"abusefilter-edit-builder-vars-addedlines-pst": "Regels toegevoegd in bewerking, transformaties voor opslaan",
+	"abusefilter-edit-builder-vars-new-text": "Nieuwe paginatekst, ontdaan van opmaakcode",
 	"abusefilter-edit-builder-vars-new-html": "Verwerkte HTML-broncode van de nieuwe versie",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Beveiligingsniveau voor bewerken van de pagina",
 	"abusefilter-edit-builder-vars-restrictions-move": "Beveiligingsniveau voor hernoemen van de pagina",

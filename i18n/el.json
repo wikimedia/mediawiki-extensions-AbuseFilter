@@ -299,6 +299,7 @@
 	"abusefilter-edit-builder-vars-removed-links": "Όλες οι εξωτερικές συνδέσεις που αφαιρέθηκαν στην επεξεργασία",
 	"abusefilter-edit-builder-vars-old-wikitext": "Παλιό wikitext σελίδας, πριν την επεξεργασία",
 	"abusefilter-edit-builder-vars-new-wikitext": "Νέα σελίδα βικικειμένου, μετά την επεξεργασία",
+	"abusefilter-edit-builder-vars-new-text": "Νέο κείμενο σελίδας, γυμνό από κάθε σημείωση (markup)",
 	"abusefilter-edit-builder-vars-new-html": "Λεξιανάλυση της πηγής HTML της νέας αναθεώρησης",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Επεξεργασία του επιπέδου προστασίας της σελίδας",
 	"abusefilter-edit-builder-vars-restrictions-move": "Μετακίνηση του επιπέδου προστασίας της σελίδας",

@@ -284,6 +284,7 @@
 	"abusefilter-edit-builder-vars-old-wikitext": "Den gamle wikiteksten til sida, før endringa",
 	"abusefilter-edit-builder-vars-new-wikitext": "Den nye wikiteksten til sida, etter endringa",
 	"abusefilter-edit-builder-vars-new-pst": "Wikitekst for ny side, førlagringsomforma",
+	"abusefilter-edit-builder-vars-new-text": "Ny sidetekst med eventuelle markeringar fjerna",
 	"abusefilter-edit-builder-vars-new-html": "Tolka HTML-kjelde for den nye versjonen",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Vernenivå på sida",
 	"abusefilter-edit-builder-vars-restrictions-move": "Flyttervernnivå på sida",

@@ -257,6 +257,7 @@
 	"abusefilter-edit-builder-vars-removed-links": "Вшыткы екстерны одказы одстранены почас едітованя",
 	"abusefilter-edit-builder-vars-old-wikitext": "Старый вікітекст, перед едітованым сторінкы",
 	"abusefilter-edit-builder-vars-new-wikitext": "Новый вікітекст, по едітованю сторінкы",
+	"abusefilter-edit-builder-vars-new-text": "Новый текст сторінкы очіщеный од форматованя",
 	"abusefilter-edit-builder-vars-new-html": "Выґенерованый HTML код новой верзії",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Рівень замкнутя сторінкы про едітованя",
 	"abusefilter-edit-builder-vars-restrictions-move": "Рівень замкнутя сторінкы про переменованя",

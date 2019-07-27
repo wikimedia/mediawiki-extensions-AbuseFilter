@@ -397,6 +397,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "Nuovo testo sorgente della pagina, successivo alla trasformazione presalvataggio",
 	"abusefilter-edit-builder-vars-diff-pst": "Diff unificato delle modifiche apportate, successivo alla trasformazione presalvataggio",
 	"abusefilter-edit-builder-vars-addedlines-pst": "Linee aggiunte nella modifica, successivo alla trasformazione presalvataggio",
+	"abusefilter-edit-builder-vars-new-text": "Nuovo testo della pagina, con il markup rimosso",
 	"abusefilter-edit-builder-vars-new-html": "Sorgente HTML elaborato della nuova versione",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Livello di protezione della pagina per le modifiche",
 	"abusefilter-edit-builder-vars-restrictions-move": "Livello di protezione della pagina per gli spostamenti",

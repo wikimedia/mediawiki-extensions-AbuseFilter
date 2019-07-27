@@ -347,6 +347,7 @@
 	"abusefilter-edit-builder-vars-new-wikitext": "కొత్త పేజీ యొక్క వికీపాఠ్యం, మార్పు తర్వాత",
 	"abusefilter-edit-builder-vars-new-pst": "కొత్త పేజీ యొక్క వికీపాఠ్యం, భద్రపరచే ముందు ట్రాన్స్‌ఫార్మ్‌ అయ్యాక",
 	"abusefilter-edit-builder-vars-addedlines-pst": "దిద్దుబాటులో చేర్చిన లైన్లు, భద్రపరచే ముందు ట్రాన్స్‌ఫార్మ్‌ అయ్యాక",
+	"abusefilter-edit-builder-vars-new-text": "కొత్త పుట పాఠ్యం, ఏదైనా మార్కప్ ఉంటే తీసివేసి",
 	"abusefilter-edit-builder-vars-restrictions-edit": "పేజీ యొక్క మార్పుల సంరక్షణా స్థాయి",
 	"abusefilter-edit-builder-vars-restrictions-move": "పేజీ యొక్క తరలింపు సంరక్షణా స్థాయి",
 	"abusefilter-edit-builder-vars-restrictions-create": "పేజీకి రక్షణా వలయాన్ని సృష్టించండి",

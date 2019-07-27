@@ -412,6 +412,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "Вики-текст новой страницы, преобразованный перед сохранением",
 	"abusefilter-edit-builder-vars-diff-pst": "Унифицированный diff изменений в процессе редактирования, преобразованных перед сохранением",
 	"abusefilter-edit-builder-vars-addedlines-pst": "Строчки, добавленные при редактировании, преобразованные перед сохранением",
+	"abusefilter-edit-builder-vars-new-text": "Новый текст страницы, очищенный от разметки",
 	"abusefilter-edit-builder-vars-new-html": "Разобранный HTML-код новой версии",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Уровень защиты страницы от правок",
 	"abusefilter-edit-builder-vars-restrictions-move": "Уровень защиты страницы от переименований",

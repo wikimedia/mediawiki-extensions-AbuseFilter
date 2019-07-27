@@ -254,6 +254,7 @@
 	"abusefilter-edit-builder-vars-removed-links": "Уларытыы түмүгэр сотуллубут тас сигэлэр",
 	"abusefilter-edit-builder-vars-old-wikitext": "Уларытыах иннинээҕи, эргэ биики тиэкис",
 	"abusefilter-edit-builder-vars-new-wikitext": "Уларыппыт кэннэ, саҥа биики тиэкис",
+	"abusefilter-edit-builder-vars-new-text": "Анал бэлиэлэрэ (разметката) суох саҥа тиэкис",
 	"abusefilter-edit-builder-vars-new-html": "Саҥа барыл HTML-куода (parsed, разобранный)",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Сирэй уларытыыттан көмүскэлин таһыма",
 	"abusefilter-edit-builder-vars-restrictions-move": "Сирэй аатын уларытыыттан көмүскэлин таһыма",

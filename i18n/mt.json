@@ -253,6 +253,7 @@
 	"abusefilter-edit-builder-vars-old-wikitext": "Sors tal-paġna l-qadima, qabel il-modifika",
 	"abusefilter-edit-builder-vars-new-wikitext": "Sors tal-paġna l-ġdida, wara l-modifika",
 	"abusefilter-edit-builder-vars-new-pst": "Wikitest ġdid tal-paġna wara l-bidliet qabel is-sejvjar",
+	"abusefilter-edit-builder-vars-new-text": "Test ġdid tal-paġna, mingħajr ''markup''",
 	"abusefilter-edit-builder-vars-new-html": "Sors HTML analizzat tar-reviżjoni l-ġdida",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Livell ta' protezzjoni tal-paġna għall-modifiki",
 	"abusefilter-edit-builder-vars-restrictions-move": "Livell ta' prtezzjoni tal-paġna għat-tmexxija",

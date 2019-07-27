@@ -244,6 +244,7 @@
 	"abusefilter-edit-builder-vars-removed-links": "Të gjitha vegzat e jashtme (links) të larguara në redaktim",
 	"abusefilter-edit-builder-vars-old-wikitext": "Faqet e vjetra wikitext, përpara redaktimit",
 	"abusefilter-edit-builder-vars-new-wikitext": "Faqe e re wikitext, pas redaktimit",
+	"abusefilter-edit-builder-vars-new-text": "Tekst faqe e re, e zhveshur nga çdo shenjim",
 	"abusefilter-edit-builder-vars-new-html": "HTML burimi i analizuar gramatikisht nga revizioni i ri",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Redakto nivelin mbrojtës të faqes",
 	"abusefilter-edit-builder-vars-restrictions-move": "Largo nivelin mbrojtjes të faqes",

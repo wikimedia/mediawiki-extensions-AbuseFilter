@@ -234,6 +234,7 @@
 	"abusefilter-edit-builder-vars-removed-links": "كل الوصلات الخارجيه المزاله فى التعديل",
 	"abusefilter-edit-builder-vars-old-wikitext": "نص الويكى القديم للصفحه، قبل التعديل",
 	"abusefilter-edit-builder-vars-new-wikitext": "نص الويكى الجديد للصفحه، بعد التعديل",
+	"abusefilter-edit-builder-vars-new-text": "نص الصفحه الجديد، مجردا من أى تهيئة",
 	"abusefilter-edit-builder-vars-new-html": "مصدر HTML المعروض للمراجعه الجديدة",
 	"abusefilter-edit-builder-vars-restrictions-edit": "مستوى حمايه التعديل للصفحة",
 	"abusefilter-edit-builder-vars-restrictions-move": "مستوى حمايه النقل للصفحة",

@@ -392,6 +392,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "Нова сторінка вікітексту з попередньо збереженим перетворенням",
 	"abusefilter-edit-builder-vars-diff-pst": "Уніфікований diff змін у процесі редагування, перетворених перед збереженням",
 	"abusefilter-edit-builder-vars-addedlines-pst": "Рядки, додані при редагуванні, перетворені перед збереженням",
+	"abusefilter-edit-builder-vars-new-text": "Новий текст сторінки, очищений від розмітки",
 	"abusefilter-edit-builder-vars-new-html": "Проаналізований HTML-код нової версії",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Рівень захисту сторінки від редагувань",
 	"abusefilter-edit-builder-vars-restrictions-move": "Рівень захисту сторінки від перейменувань",

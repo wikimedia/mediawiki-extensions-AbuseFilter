@@ -208,6 +208,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "Вікітэкст новай старонкі, зменены перад захаваннем",
 	"abusefilter-edit-builder-vars-diff-pst": "Уніфікаваная розніца змен у праўцы, змененая перад захаваннем",
 	"abusefilter-edit-builder-vars-addedlines-pst": "Радкі, дададзеныя пры рэдагаванні, змененыя перад захаваннем",
+	"abusefilter-edit-builder-vars-new-text": "Новы тэкст старонкі, ачышчаны ад усёй разметкі",
 	"abusefilter-edit-builder-vars-new-html": "Разабраны HTML-код новай версіі",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Узровень абароны старонкі ад правак",
 	"abusefilter-edit-builder-vars-restrictions-move": "Узровень абароны старонкі ад пераносаў",

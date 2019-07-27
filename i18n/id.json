@@ -337,6 +337,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "Halaman baru teks wiki, pemindahan pra-penyimpanan",
 	"abusefilter-edit-builder-vars-diff-pst": "Perbedaan kompak dari perubahan yang dilakukan oleh suntingan, pra-simpan berubah",
 	"abusefilter-edit-builder-vars-addedlines-pst": "Baris ditambahkan dalam suntingan, pra-simpan berubah",
+	"abusefilter-edit-builder-vars-new-text": "Teks halaman baru, menghilangkan markah apa pun",
 	"abusefilter-edit-builder-vars-new-html": "Pengurai sumber HTML dari revisi baru",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Sunting tingkat pelindungan halaman",
 	"abusefilter-edit-builder-vars-restrictions-move": "buang tingkat pelindungan halaman",

@@ -246,6 +246,7 @@
 	"abusefilter-edit-builder-vars-removed-links": "Tuti i colegamenti esterni cavà da la modifica",
 	"abusefilter-edit-builder-vars-old-wikitext": "Testo sorxente vecio de la pàxena, prima de la modìfega",
 	"abusefilter-edit-builder-vars-new-wikitext": "Testo sorxente novo de la pàxena, dopo de la modìfega",
+	"abusefilter-edit-builder-vars-new-text": "Testo novo de la pagina, cavando tuto el markup",
 	"abusefilter-edit-builder-vars-new-html": "Sorxente HTML elaborà de la version nova",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Livèl de protession de la pagina par le modifiche",
 	"abusefilter-edit-builder-vars-restrictions-move": "Livèl de protession de la pagina par i spostamenti",

@@ -307,6 +307,7 @@
 	"abusefilter-edit-builder-vars-old-wikitext": "Den gamle sides wikitekst, før redigeringen",
 	"abusefilter-edit-builder-vars-new-wikitext": "Den nye sides wikitekst, efter redigeringen",
 	"abusefilter-edit-builder-vars-new-pst": "Ny side wikitekst, transformeret før den er gemt",
+	"abusefilter-edit-builder-vars-new-text": "Ny sidetekst, uden opmarkering",
 	"abusefilter-edit-builder-vars-new-html": "Tolket HTML-kildekode for den nye revision",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Beskyttelsesniveau for redigering af siden",
 	"abusefilter-edit-builder-vars-restrictions-move": "Beskyttelsesniveau for flytning af siden",

@@ -288,6 +288,7 @@
 	"abusefilter-edit-builder-vars-removed-links": "Visos išorinės nuorodos, panaikintos redaguojant",
 	"abusefilter-edit-builder-vars-old-wikitext": "Senasis puslapio wiki tekstas, prieš redagavimą",
 	"abusefilter-edit-builder-vars-new-wikitext": "Naujas puslapio wiki tekstas, po redagavimo",
+	"abusefilter-edit-builder-vars-new-text": "Naujas puslapio tekstas, išmetus visas žymas",
 	"abusefilter-edit-builder-vars-new-html": "Naujos redakcijos HTML tekstas, išskleidus šablonus",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Keistas puslapio apsaugos lygis",
 	"abusefilter-edit-builder-vars-restrictions-move": "Puslapio pervadinimo apsaugos lygis",

@@ -332,6 +332,7 @@
 	"abusefilter-edit-builder-vars-old-wikitext": "Eski sayfa vikimetni, değişiklikten önce",
 	"abusefilter-edit-builder-vars-new-wikitext": "Yeni sayfa vikimetni, değişiklikten sonra",
 	"abusefilter-edit-builder-vars-new-pst": "Yeni sayfa viki metni, ön kayıt dönüştürüldü",
+	"abusefilter-edit-builder-vars-new-text": "Yeni sayfa metni, herhangi bir biçimlendirme olmadan",
 	"abusefilter-edit-builder-vars-new-html": "Yeni revizyonun derlenmiş HTML kaynağı",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Sayfanın koruma düzeyini değiştir",
 	"abusefilter-edit-builder-vars-restrictions-move": "Sayfanın koruma düzeyini taşı",

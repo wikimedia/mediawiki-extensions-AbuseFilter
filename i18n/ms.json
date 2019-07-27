@@ -269,6 +269,7 @@
 	"abusefilter-edit-builder-vars-old-wikitext": "Teks wiki laman lama, sebelum disunting",
 	"abusefilter-edit-builder-vars-new-wikitext": "Teks wiki laman baru, selepas disunting",
 	"abusefilter-edit-builder-vars-new-pst": "Wikiteks halaman baru, prasimpan diubah",
+	"abusefilter-edit-builder-vars-new-text": "Teks laman baru tanpa sebarang penanda",
 	"abusefilter-edit-builder-vars-new-html": "Sumber HTML terhurai bagi semakan baru",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Tahap perlindungan penyuntingan laman",
 	"abusefilter-edit-builder-vars-restrictions-move": "Tahap perlindungan peralihan laman",

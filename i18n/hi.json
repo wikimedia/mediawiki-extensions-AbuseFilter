@@ -284,6 +284,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "नए पष्ठ का विकि-पाठ, सहेजने से पूर्व तबदील",
 	"abusefilter-edit-builder-vars-diff-pst": "सम्पादन से हुए बदलावों का एकत्रित अंतर, सहेजने से पूर्व तबदील",
 	"abusefilter-edit-builder-vars-addedlines-pst": "सम्पादन में वाक्य जोड़े गए, सहेजने से पूर्व तबदील",
+	"abusefilter-edit-builder-vars-new-text": "नए पृष्ठ का पाठ, किसी भी मार्क-अप से खाली",
 	"abusefilter-edit-builder-vars-new-html": "नए संशोधन के स्रोत का एचटीएमएल पार्स किया गया",
 	"abusefilter-edit-builder-vars-restrictions-edit": "पृष्ठ का सुरक्षा स्तर बदलें",
 	"abusefilter-edit-builder-vars-restrictions-move": "पृष्ठ का स्थानान्तरण सुरक्षा स्तर",

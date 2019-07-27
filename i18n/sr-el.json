@@ -265,6 +265,7 @@
 	"abusefilter-edit-builder-vars-removed-links": "Sve spoljašnje veze uklonjene u izmeni",
 	"abusefilter-edit-builder-vars-old-wikitext": "Stari vikitekst pre izmene (nije više u upotrebi)",
 	"abusefilter-edit-builder-vars-new-wikitext": "Novi vikitekst posle izmene",
+	"abusefilter-edit-builder-vars-new-text": "Tekst nove stranice, bez ikakvih obeležavanja",
 	"abusefilter-edit-builder-vars-new-html": "Raščlanjeni HTML izvor nove izmene",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Stepen zaštite stranice (uređivanje)",
 	"abusefilter-edit-builder-vars-restrictions-move": "Stepen zaštite stranice (premeštanje)",

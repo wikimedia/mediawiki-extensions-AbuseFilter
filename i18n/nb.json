@@ -330,6 +330,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "Ny side med wikitekst, transformert fra «pre-save»",
 	"abusefilter-edit-builder-vars-diff-pst": "Enhetlig diff av endringer gjort under redigering, transformert fra «pre-save»",
 	"abusefilter-edit-builder-vars-addedlines-pst": "Linjer lagt til under redigering, transformert fra «pre-save»",
+	"abusefilter-edit-builder-vars-new-text": "Ny sidetekst, uten markeringer",
 	"abusefilter-edit-builder-vars-new-html": "Tolket HTML-kode for den nye versjonen",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Beskyttelsesnivå for redigering av siden",
 	"abusefilter-edit-builder-vars-restrictions-move": "Beskyttelsesnivå for flytting av siden",

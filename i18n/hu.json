@@ -365,6 +365,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "Az új oldal wikiszövege, mentés előtti állapotba alakítva",
 	"abusefilter-edit-builder-vars-diff-pst": "A szerkesztés során történt változások Unified diffje, mentés előtti állapotba alakítva",
 	"abusefilter-edit-builder-vars-addedlines-pst": "Szerkesztés során hozzáadott sorok, mentés előtti állapotba alakítva",
+	"abusefilter-edit-builder-vars-new-text": "az új wikiszöveg, jelölőnyelv nélkül",
 	"abusefilter-edit-builder-vars-new-html": "az új változat HTML-lé alakított kódja",
 	"abusefilter-edit-builder-vars-restrictions-edit": "A lap védelmi szintje (szerkesztésnél)",
 	"abusefilter-edit-builder-vars-restrictions-move": "A lap védelmi szintje (átnevezésnél)",

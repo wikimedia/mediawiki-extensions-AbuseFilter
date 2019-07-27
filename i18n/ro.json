@@ -304,6 +304,7 @@
 	"abusefilter-edit-builder-vars-removed-links": "Toate legăturile externe șterse la modificare",
 	"abusefilter-edit-builder-vars-old-wikitext": "Textul wiki vechi, dinainte de modificare",
 	"abusefilter-edit-builder-vars-new-wikitext": "Textul wiki nou, după modificare",
+	"abusefilter-edit-builder-vars-new-text": "Textul wiki nou, fără nici un marcaj",
 	"abusefilter-edit-builder-vars-new-html": "Sursa HTML parsată a noii revizii",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Nivelul de protecție la modificare al paginii",
 	"abusefilter-edit-builder-vars-restrictions-move": "Nivelul de protecție la redenumire al paginii",

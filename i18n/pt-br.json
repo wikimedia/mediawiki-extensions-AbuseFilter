@@ -399,6 +399,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "Nova página de wiki texto, transformada antes de salvar",
 	"abusefilter-edit-builder-vars-diff-pst": "Diferenças unificadas das alterações nesta edição, transformadas antes da gravação",
 	"abusefilter-edit-builder-vars-addedlines-pst": "Linhas adicionadas na edição, transformadas antes da gravação",
+	"abusefilter-edit-builder-vars-new-text": "Nova página de texto, sem qualquer formatação",
 	"abusefilter-edit-builder-vars-new-html": "Fonte HTML analisada da nova revisão",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Nível de proteção de edição da página",
 	"abusefilter-edit-builder-vars-restrictions-move": "Nível de proteção de movimentação da página",

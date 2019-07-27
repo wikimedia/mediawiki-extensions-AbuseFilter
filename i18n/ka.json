@@ -278,6 +278,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "ახალი გვერდის ვიკიტექსტი, გარდაქმნილი შენახვამდე",
 	"abusefilter-edit-builder-vars-diff-pst": "უნიფიცირებული diff ცვლილებები რედაქტირების პროცესში, გარდაქმნილი შენახვამდე",
 	"abusefilter-edit-builder-vars-addedlines-pst": "სტრიქონები, დამატებული რედაქტირების დროს, გარდაქმნილი შენახვამდე",
+	"abusefilter-edit-builder-vars-new-text": "გვერდის ტექსტი ვიკიფიცირების გარეშე",
 	"abusefilter-edit-builder-vars-new-html": "ახალი გვერდის სხვადასხვა HTML კოდი",
 	"abusefilter-edit-builder-vars-restrictions-edit": "გვერდის შესწორებათა დაცვის დონე",
 	"abusefilter-edit-builder-vars-restrictions-move": "გვერდის გადრქმევების დაცვის დონე",

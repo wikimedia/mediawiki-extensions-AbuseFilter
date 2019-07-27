@@ -280,6 +280,7 @@
 	"abusefilter-edit-builder-vars-removed-links": "Sve vanjske poveznice uklonjene uređivanjem",
 	"abusefilter-edit-builder-vars-old-wikitext": "Sadržaj stranice prije uređivanja",
 	"abusefilter-edit-builder-vars-new-wikitext": "Novi sadržaj stranica, poslije uređivanja",
+	"abusefilter-edit-builder-vars-new-text": "Novi sadržaj stranice, bez ''markup tagova'' (HTML ili XML)",
 	"abusefilter-edit-builder-vars-new-html": "Raščlanjen HTML izvor nove revizije",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Uredi razinu zaštite stranice",
 	"abusefilter-edit-builder-vars-restrictions-move": "Premještena razina zaštite stranice",

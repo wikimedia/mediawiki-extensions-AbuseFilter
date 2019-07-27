@@ -240,6 +240,7 @@
 	"abusefilter-edit-builder-vars-removed-links": "編輯拎走咗嘅全部外連",
 	"abusefilter-edit-builder-vars-old-wikitext": "響編輯之前嘅舊頁wiki字",
 	"abusefilter-edit-builder-vars-new-wikitext": "響編輯之後嘅新頁wiki字",
+	"abusefilter-edit-builder-vars-new-text": "切咗標記嘅新頁字",
 	"abusefilter-edit-builder-vars-new-html": "新修訂處理過嘅HTML源碼",
 	"abusefilter-edit-builder-vars-restrictions-edit": "響嗰版嘅保謢等級",
 	"abusefilter-edit-builder-vars-restrictions-move": "搬嗰版嘅保謢等級",

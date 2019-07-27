@@ -352,6 +352,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "Lehekülje uus vikitekst, salvestamiseelne tekst teisendatud",
 	"abusefilter-edit-builder-vars-diff-pst": "Tehtud muudatuste ühenderinevused, salvestamiseelne tekst teisendatud",
 	"abusefilter-edit-builder-vars-addedlines-pst": "Muudatusega lisatud read, salvestamiseelne tekst teisendatud",
+	"abusefilter-edit-builder-vars-new-text": "Uus lehekülje tekst igasuguse märgistuseta",
 	"abusefilter-edit-builder-vars-new-html": "Uue redaktsiooni liigendatud HTML-lähtekood",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Lehekülje redigeerimiskaitsetase",
 	"abusefilter-edit-builder-vars-restrictions-move": "Lehekülje teisaldamiskaitsetase",

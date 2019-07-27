@@ -368,6 +368,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "Uuden sivun wikiteksti, ”pre-save transformed”",
 	"abusefilter-edit-builder-vars-diff-pst": "Yhdistetty eroavaisuus (diffi) muutoksista, jotka on tehty muokkauksessa, \"pre-save transformed\"",
 	"abusefilter-edit-builder-vars-addedlines-pst": "Muokkauksessa lisätyt rivit, \"pre-save transformed\"",
+	"abusefilter-edit-builder-vars-new-text": "Sivun uusin tekstimuoto, riisuttuna kaikista koodimerkinnöistä",
 	"abusefilter-edit-builder-vars-new-html": "Jäsennetty uuden version HTML-lähdekoodi",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Sivun muokkaussuojauksen taso",
 	"abusefilter-edit-builder-vars-restrictions-move": "Sivun siirtosuojauksen taso",

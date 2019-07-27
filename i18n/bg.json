@@ -360,6 +360,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "Нов уикитекст на страницата, преобразуван преди съхранение",
 	"abusefilter-edit-builder-vars-diff-pst": "Унифицирани разлики на промените, причинени от редакция, преобразувани преди съхранение",
 	"abusefilter-edit-builder-vars-addedlines-pst": "Редове, добавени при редактиране, преобразувани преди съхранение",
+	"abusefilter-edit-builder-vars-new-text": "Нов текст на страницата, без форматиране",
 	"abusefilter-edit-builder-vars-new-html": "Разпознат HTML код на новата редакция",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Ниво на защита срещу редактиране на страницата",
 	"abusefilter-edit-builder-vars-restrictions-move": "Ниво на защита срещу преместване на страницата",

@@ -245,6 +245,7 @@
 	"abusefilter-edit-builder-vars-removed-links": "සංස්කරණයේදී ඉවත්වූ සියලුම බාහිර සබැඳියන්",
 	"abusefilter-edit-builder-vars-old-wikitext": "පැරණි පිටුවේ විකිපාඨය, සංස්කරණයට පෙර",
 	"abusefilter-edit-builder-vars-new-wikitext": "නව පිටුවේ විකිපාඨය, සංස්කරණයට පසු",
+	"abusefilter-edit-builder-vars-new-text": "නව පිටුවේ පාඨය, ඕනෑම අධිකයකින් පැහැර ගත්තක්",
 	"abusefilter-edit-builder-vars-new-html": "නව අනුවාදයේ ව්‍යාකරණ විග්‍රහ කරන ලද HTML මූලාශ්‍රය",
 	"abusefilter-edit-builder-vars-restrictions-edit": "පිටුවේ ආරක්ෂණ මට්ටම වෙනස් කරන්න",
 	"abusefilter-edit-builder-vars-restrictions-move": "පිටුවේ ආරක්ෂණ මට්ටම ගෙනයන්න",

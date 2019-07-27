@@ -396,6 +396,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "새 문서 위키 텍스트, 변환을 미리 저장",
 	"abusefilter-edit-builder-vars-diff-pst": "편집으로 인한 바뀐 내용의 차이가 통합됨, 미리 저장 변형됨",
 	"abusefilter-edit-builder-vars-addedlines-pst": "줄이 편집 중 추가됨, 미리 저장 변형됨",
+	"abusefilter-edit-builder-vars-new-text": "편집 후 마크업을 제거한 문서 내용",
 	"abusefilter-edit-builder-vars-new-html": "편집 후의 HTML 소스",
 	"abusefilter-edit-builder-vars-restrictions-edit": "문서 편집 보호 수준",
 	"abusefilter-edit-builder-vars-restrictions-move": "문서 이동 보호 수준",

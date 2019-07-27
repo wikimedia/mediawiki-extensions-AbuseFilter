@@ -233,6 +233,7 @@
 	"abusefilter-edit-builder-vars-old-wikitext": "Alter Wikitext von der Seit, vor der Beoorbeitung",
 	"abusefilter-edit-builder-vars-new-wikitext": "Neier Wikitext von der Seit, noh der Beoorbeitung",
 	"abusefilter-edit-builder-vars-new-pst": "Neier Seitewikitext, voar dem Speichre umgewandelt",
+	"abusefilter-edit-builder-vars-new-text": "Neier Seitetext, von jechlicher Textauszeichnung befreit",
 	"abusefilter-edit-builder-vars-new-html": "Der neie Version sein HTML-Quelltext",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Beoorbeite-Schutzstuf von der Seit",
 	"abusefilter-edit-builder-vars-restrictions-move": "Verschieb der Seit sein Schutzstuf",

@@ -263,6 +263,7 @@
 	"abusefilter-edit-builder-vars-removed-links": "Visas likvidētās ārējās saites",
 	"abusefilter-edit-builder-vars-old-wikitext": "Lapas vikiteksts pirms rediģēšanas",
 	"abusefilter-edit-builder-vars-new-wikitext": "Jaunais lapas vikiteksts pēc rediģēšanas",
+	"abusefilter-edit-builder-vars-new-text": "Jaunais lapas teksts, bez marķējuma",
 	"abusefilter-edit-builder-vars-new-html": "Parsēts jaunās versijas HTML kods",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Lapas rediģēšanas aizsardzības līmenis",
 	"abusefilter-edit-builder-vars-restrictions-move": "Lapas pārvietošanas aizsardzības līmenis",

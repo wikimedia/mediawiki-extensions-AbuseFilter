@@ -321,6 +321,7 @@
 	"abusefilter-edit-builder-vars-old-wikitext": "Malnova paĝa vikiteksto, antaŭ la redakto",
 	"abusefilter-edit-builder-vars-new-wikitext": "Nova paĝo de vikiteksto, post la redakto",
 	"abusefilter-edit-builder-vars-new-pst": "Nova vikiteksto de paĝo, transformita antaŭ la konservado",
+	"abusefilter-edit-builder-vars-new-text": "Nova paĝa teksto, forviŝita de iuj marklingvaĵoj",
 	"abusefilter-edit-builder-vars-new-html": "Sintakse analizita HTML-fonto de la nova revizio",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Ŝanĝi protektnivelon de la paĝo",
 	"abusefilter-edit-builder-vars-restrictions-move": "Movprotekta nivelo de la paĝo",

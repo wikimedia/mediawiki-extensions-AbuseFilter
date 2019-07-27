@@ -269,6 +269,7 @@
 	"abusefilter-edit-builder-vars-removed-links": "Totes los ligams extèrnes levats dins la modificacion",
 	"abusefilter-edit-builder-vars-old-wikitext": "Ancian tèxte de la pagina, abans la modificacion",
 	"abusefilter-edit-builder-vars-new-wikitext": "Tèxte novèl de la pagina, aprèp la modificacion",
+	"abusefilter-edit-builder-vars-new-text": "Tèxte novèl de la pagina, sens cap de balisa",
 	"abusefilter-edit-builder-vars-new-html": "Tèxte de la version novèla transformat en HTML",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Nivèl de proteccion d'edicion de la pagina",
 	"abusefilter-edit-builder-vars-restrictions-move": "Nivèl de proteccion de cambiament de nom de la pagina",

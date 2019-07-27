@@ -376,6 +376,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "Викитекст за нова страница, претворен пред зачувување",
 	"abusefilter-edit-builder-vars-diff-pst": "Обединети разлики во уредувањето, претворени пред зачувување",
 	"abusefilter-edit-builder-vars-addedlines-pst": "Додадени редови во уредувањето, претворени пред зачувување",
+	"abusefilter-edit-builder-vars-new-text": "Нов текст на страницата, исчистен од секакви ознаки",
 	"abusefilter-edit-builder-vars-new-html": "Расчленет HTML-извор на новата преработка",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Ниво на заштита на страницата од уредувања",
 	"abusefilter-edit-builder-vars-restrictions-move": "Ниво на заштита од преместување на страницата",

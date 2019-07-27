@@ -371,6 +371,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "Wikitekst za novu stranicu, prilagođen za sačuvanje",
 	"abusefilter-edit-builder-vars-diff-pst": "Zajedničke razlike uređivanjem, prilagođene za sačuvanje",
 	"abusefilter-edit-builder-vars-addedlines-pst": "Dodani redovi u uređivanju, pretvoreni prije spremanja",
+	"abusefilter-edit-builder-vars-new-text": "Novi tekst stranice, isčišćen od ikakvih oznaki",
 	"abusefilter-edit-builder-vars-new-html": "Raščlanjeni HTML-izvor nove izmjene",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Nivo zaštite stranice (uređivanje)",
 	"abusefilter-edit-builder-vars-restrictions-move": "Nivo zaštite stranice (premještanje)",

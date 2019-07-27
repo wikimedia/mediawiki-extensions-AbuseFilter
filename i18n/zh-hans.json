@@ -422,6 +422,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "新页面维基语言，预保存转换",
 	"abusefilter-edit-builder-vars-diff-pst": "统一所有由编辑、预保存转换更改的差异",
 	"abusefilter-edit-builder-vars-addedlines-pst": "编辑中加入了行，并在保存前转换",
+	"abusefilter-edit-builder-vars-new-text": "编辑后的新页面，去除所有标记",
 	"abusefilter-edit-builder-vars-new-html": "编辑后的新页面，已解析为HTML源码",
 	"abusefilter-edit-builder-vars-restrictions-edit": "页面的编辑保护级别",
 	"abusefilter-edit-builder-vars-restrictions-move": "页面的移动保护级别",

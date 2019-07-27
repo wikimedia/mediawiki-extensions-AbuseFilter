@@ -277,6 +277,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "Mã wiki của trang mới ở dạng chuyển đổi trước khi lưu",
 	"abusefilter-edit-builder-vars-diff-pst": "Khác biệt thống nhất trong sửa đổi ở dạng chuyển đổi trước khi lưu",
 	"abusefilter-edit-builder-vars-addedlines-pst": "Số dòng được thêm trong sửa đổi ở dạng chuyển đổi trước khi lưu",
+	"abusefilter-edit-builder-vars-new-text": "Nội dung mới của trang, bỏ các mã đánh dấu",
 	"abusefilter-edit-builder-vars-new-html": "Phân tích mã HTML của phiên bản mới",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Mức khóa sửa đổi của trang",
 	"abusefilter-edit-builder-vars-restrictions-move": "Mức khóa di chuyển của trang",

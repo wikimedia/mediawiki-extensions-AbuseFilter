@@ -371,6 +371,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "保存前変換適用後の新しいウィキテキスト",
 	"abusefilter-edit-builder-vars-diff-pst": "編集による変更のUnified diff 形式差分 (pre-saveの変換前)",
 	"abusefilter-edit-builder-vars-addedlines-pst": "編集で追加された行 (pre-saveの変換前)",
+	"abusefilter-edit-builder-vars-new-text": "マークアップを除く新しい本文",
 	"abusefilter-edit-builder-vars-new-html": "新しい版のパース済みHTMLソース",
 	"abusefilter-edit-builder-vars-restrictions-edit": "ページの編集保護レベル",
 	"abusefilter-edit-builder-vars-restrictions-move": "ページの移動保護レベル",

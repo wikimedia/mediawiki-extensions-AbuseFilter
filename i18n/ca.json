@@ -298,6 +298,7 @@
 	"abusefilter-edit-builder-vars-removed-links": "Tots els enllaços externs esborrats en l'edició",
 	"abusefilter-edit-builder-vars-old-wikitext": "Wikitext anterior de la pàgina, abans de l'edició",
 	"abusefilter-edit-builder-vars-new-wikitext": "Nou text de la pàgina, després de l'edició",
+	"abusefilter-edit-builder-vars-new-text": "Nova pàgina de text, sense cap format",
 	"abusefilter-edit-builder-vars-new-html": "Font HTML analitzada de la nova revisió",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Nivell de protecció per a edicions de la pàgina",
 	"abusefilter-edit-builder-vars-restrictions-move": "Nivell de protecció per a reanomenaments de la pàgina",

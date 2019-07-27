@@ -376,6 +376,7 @@
 	"abusefilter-edit-builder-vars-old-wikitext": "Stary wikikod strony w formacie wiki, przed modyfikacją",
 	"abusefilter-edit-builder-vars-new-wikitext": "Nowa treść strony w formacie wiki, po modyfikacji",
 	"abusefilter-edit-builder-vars-new-pst": "Nowy wikikod strony, wstępnie przekształcony przed zapisaniem",
+	"abusefilter-edit-builder-vars-new-text": "Nowa treść strony pozbawiona wszystkich znaczników",
 	"abusefilter-edit-builder-vars-new-html": "Sformatowane źródło HTML nowej wersji",
 	"abusefilter-edit-builder-vars-restrictions-edit": "Stopień zabezpieczenia strony przed edycją",
 	"abusefilter-edit-builder-vars-restrictions-move": "Stopień zabezpieczenia strony przed przeniesieniem",
