@@ -92,7 +92,7 @@
 	"abusefilter-log-search-impact-saved": "僅儲存的變更",
 	"abusefilter-log-search-impact-not-saved": "未儲存的變更",
 	"abusefilter-log-search-entries-label": "可見性：",
-	"abusefilter-log-search-entries-all": "所有紀錄",
+	"abusefilter-log-search-entries-all": "所有項目",
 	"abusefilter-log-search-entries-hidden": "只顯示隱藏項目",
 	"abusefilter-log-search-entries-visible": "只顯示可見項目",
 	"abusefilter-log-search-action-label": "觸發的操作：",
