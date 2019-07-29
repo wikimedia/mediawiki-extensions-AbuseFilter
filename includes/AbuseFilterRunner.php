@@ -107,7 +107,20 @@ class AbuseFilterRunner {
 		$this->executeMode = true;
 		$this->init();
 
-		$useStash = $allowStash && $this->vars->getVar( 'action' )->toString() === 'edit';
+		$action = $this->vars->getVar( 'action' )->toString();
+
+		$skipReasons = [];
+		$shouldFilter = Hooks::run(
+			'AbuseFilterShouldFilterAction',
+			[ $this->vars, $this->title, $this->user, &$skipReasons ]
+		);
+		if ( !$shouldFilter ) {
+			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+			$logger->info( "Skipping action $action. Reasons provided: " . implode( ', ', $skipReasons ) );
+			return Status::newGood();
+		}
+
+		$useStash = $allowStash && $action === 'edit';
 
 		$startTime = microtime( true );
 
@@ -194,6 +207,16 @@ class AbuseFilterRunner {
 
 		$this->executeMode = false;
 		$this->init();
+
+		$skipReasons = [];
+		$shouldFilter = Hooks::run(
+			'AbuseFilterShouldFilterAction',
+			[ $this->vars, $this->title, $this->user, &$skipReasons ]
+		);
+		if ( !$shouldFilter ) {
+			// Don't log it yet
+			return Status::newGood();
+		}
 
 		$cache = ObjectCache::getLocalClusterInstance();
 		$stashKey = $this->getStashKey( $cache );
