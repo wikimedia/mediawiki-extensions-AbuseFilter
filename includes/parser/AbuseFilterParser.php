@@ -231,21 +231,6 @@ class AbuseFilterParser {
 				} elseif ( $this->mCur->value === ')' ) {
 					$braces--;
 				}
-			} elseif ( $this->mCur->type === AFPToken::TID ) {
-				// T214674, define variables
-				$varname = $this->mCur->value;
-				$this->move();
-				if ( $this->mCur->type === AFPToken::TOP && $this->mCur->value === ':=' ) {
-					$this->setUserVariable( $varname, new AFPData( AFPData::DNONE ) );
-				} elseif ( $this->mCur->type === AFPToken::TSQUAREBRACKET && $this->mCur->value === '[' ) {
-					if ( !$this->mVariables->varIsSet( $varname ) ) {
-						throw new AFPUserVisibleException( 'unrecognisedvar',
-							$this->mCur->pos,
-							[ $varname ]
-						);
-					}
-					$this->setUserVariable( $varname, new AFPData( AFPData::DNONE ) );
-				}
 			}
 		}
 		if ( !( $this->mCur->type === AFPToken::TBRACE && $this->mCur->value === ')' ) ) {
@@ -726,8 +711,6 @@ class AbuseFilterParser {
 						[ $idx, count( $result->getData() ) ] );
 				}
 				$result = $result->getData()[$idx];
-			} elseif ( $result->getType() === AFPData::DNONE ) {
-				$result = new AFPData( AFPData::DNONE );
 			} else {
 				throw new AFPUserVisibleException( 'notarray', $this->mCur->pos, [] );
 			}
