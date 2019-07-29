@@ -704,26 +704,4 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			yield $case => [ $case, false ];
 		}
 	}
-
-	/**
-	 * Test that code declaring a variable in a skipped brace (because of shortcircuit)
-	 * will be parsed without throwing an exception when later trying to use that var. T214674
-	 */
-	public function testVarDeclarationInSkippedBlock() {
-		$code =
-			"arr := [5]; false & (1 == 1; var := 'b'; arr[1] := 'x'; 3 < 4); var != 'b' & arr[1] != 'x'";
-
-		foreach ( self::getParsers() as $parser ) {
-			$pname = get_class( $parser );
-			try {
-				// Whether this evaluating to true makes sense is another matter.
-				$this->assertTrue(
-					$parser->parse( $code ),
-					"Parser: $pname"
-				);
-			} catch ( Exception $e ) {
-				$this->fail( "Parser: $pname\n$e" );
-			}
-		}
-	}
 }
