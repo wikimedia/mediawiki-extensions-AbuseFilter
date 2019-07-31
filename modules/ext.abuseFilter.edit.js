@@ -246,7 +246,7 @@
 			$element = $( '#mw-abusefilter-' + action + '-preview' ),
 			previewButton = action === 'warn' ? toggleWarnPreviewButton : toggleDisallowPreviewButton;
 
-		if ( $element.is( ':visible' ) ) {
+		if ( $element.css( 'display' ) !== 'none' ) {
 			$element.hide();
 			previewButton.setFlags( { destructive: false, progressive: true } );
 		} else {

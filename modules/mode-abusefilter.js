@@ -1,4 +1,4 @@
-/* global ace, mw */
+/* global ace */
 ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'module', 'ace/lib/oop', 'ace/mode/text_highlight_rules' ], function ( require, exports ) {
 	'use strict';
 
