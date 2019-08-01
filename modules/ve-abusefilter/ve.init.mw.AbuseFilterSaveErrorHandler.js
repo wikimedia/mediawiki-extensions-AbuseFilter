@@ -11,11 +11,11 @@ mw.libs.ve.targetLoader.addPlugin( function () {
 	};
 
 	ve.init.mw.AbuseFilterSaveErrorHandler.static.process = function ( data, target ) {
+		var
+			$message = $( $.parseHTML( ve.getProp( data, 'visualeditoredit', 'edit', 'warning' ) ) ),
+			isWarning = ve.getProp( data, 'visualeditoredit', 'edit', 'code' ) !== 'abusefilter-disallowed';
 		// Handle warnings/errors from Extension:AbuseFilter
-		target.showSaveError( $( $.parseHTML( ve.getProp( data, 'visualeditoredit', 'edit', 'warning' ) ) ) );
-		// Don't disable the save button. If the action is not disallowed the user may save the
-		// edit by pressing Save again. The AbuseFilter API currently has no way to distinguish
-		// between filter triggers that are and aren't disallowing the action.
+		target.showSaveError( $message, isWarning, isWarning );
 		// Emit event for tracking. TODO: This is a bad design
 		target.emit( 'saveErrorAbuseFilter' );
 	};
