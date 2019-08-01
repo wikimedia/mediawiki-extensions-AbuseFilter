@@ -51,7 +51,8 @@
 			"Angrydog001",
 			"GoForceX",
 			"94rain",
-			"佛壁灯"
+			"佛壁灯",
+			"VulpesVulpes825"
 		]
 	},
 	"abusefilter-desc": "对编辑行为自动进行条件判定",
@@ -559,6 +560,7 @@
 	"abusefilter-log-header": "本日志展示过滤器更改的摘要。详情请见最近的过滤器更改[[Special:AbuseFilter/history|列表]]。",
 	"abusefilter-logentry-create": "$1{{GENDER:$2|创建}}了$4（$5）",
 	"abusefilter-logentry-modify": "$1{{GENDER:$2|修改了}}$4（$5）",
+	"abusefilter-log-invalid-filter": "部分指定过滤器ID无效。",
 	"abusefilter-log-noresults": "没有结果",
 	"abusefilter-diff-title": "版本间的差异",
 	"abusefilter-diff-item": "项目",

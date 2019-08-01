@@ -484,6 +484,7 @@
 	"abusefilter-log-header": "Selles logis kuvatakse kokkuvõte filtrite muudatustest.\nÜksikasjad leiad hiljutiste filtrimuudatuste [[Special:AbuseFilter/history|loendist]].",
 	"abusefilter-logentry-create": "$1 {{GENDER:$2|koostas}} $4 ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|muutis}} $4 sätteid ($5)",
+	"abusefilter-log-invalid-filter": "Osa määratud filtrite identifikaatoritest on vigased.",
 	"abusefilter-log-noresults": "Tulemusi pole",
 	"abusefilter-diff-title": "Erinevused versioonide vahel",
 	"abusefilter-diff-item": "Üksus",
