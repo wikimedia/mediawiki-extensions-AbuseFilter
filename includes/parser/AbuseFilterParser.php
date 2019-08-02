@@ -231,6 +231,21 @@ class AbuseFilterParser {
 				} elseif ( $this->mCur->value === ')' ) {
 					$braces--;
 				}
+			} elseif ( $this->mCur->type === AFPToken::TID ) {
+				// T214674, define variables
+				$varname = $this->mCur->value;
+				$next = $this->getNextToken();
+				if ( $next->type === AFPToken::TOP && $next->value === ':=' ) {
+					$this->setUserVariable( $varname, new AFPData( AFPData::DNONE ) );
+				} elseif ( $next->type === AFPToken::TSQUAREBRACKET && $next->value === '[' ) {
+					if ( !$this->mVariables->varIsSet( $varname ) ) {
+						throw new AFPUserVisibleException( 'unrecognisedvar',
+							$next->pos,
+							[ $varname ]
+						);
+					}
+					$this->setUserVariable( $varname, new AFPData( AFPData::DNONE ) );
+				}
 			}
 		}
 		if ( !( $this->mCur->type === AFPToken::TBRACE && $this->mCur->value === ')' ) ) {
@@ -329,10 +344,10 @@ class AbuseFilterParser {
 					);
 				}
 				$array = $this->mVariables->getVar( $varname );
-				if ( $array->getType() !== AFPData::DARRAY ) {
+				if ( $array->getType() !== AFPData::DARRAY && $array->getType() !== AFPData::DNONE ) {
 					throw new AFPUserVisibleException( 'notarray', $this->mCur->pos, [] );
 				}
-				$array = $array->toArray();
+
 				$this->move();
 				if ( $this->mCur->type === AFPToken::TSQUAREBRACKET && $this->mCur->value === ']' ) {
 					$idx = 'new';
@@ -346,21 +361,27 @@ class AbuseFilterParser {
 						throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos,
 							[ ']', $this->mCur->type, $this->mCur->value ] );
 					}
-					if ( count( $array ) <= $idx ) {
-						throw new AFPUserVisibleException( 'outofbounds', $this->mCur->pos,
-							[ $idx, count( $result->getData() ) ] );
+					if ( $array->getType() === AFPData::DARRAY ) {
+						if ( count( $array->toArray() ) <= $idx ) {
+							throw new AFPUserVisibleException( 'outofbounds', $this->mCur->pos,
+								[ $idx, count( $result->getData() ) ] );
+						}
 					}
 				}
 				$this->move();
 				if ( $this->mCur->type === AFPToken::TOP && $this->mCur->value === ':=' ) {
 					$this->move();
 					$this->doLevelSet( $result );
-					if ( $idx === 'new' ) {
-						$array[] = $result;
-					} else {
-						$array[$idx] = $result;
+					if ( $array->getType() === AFPData::DARRAY ) {
+						// If it's a DNONE, leave it as is
+						$array = $array->toArray();
+						if ( $idx === 'new' ) {
+							$array[] = $result;
+						} else {
+							$array[$idx] = $result;
+						}
+						$this->setUserVariable( $varname, new AFPData( AFPData::DARRAY, $array ) );
 					}
-					$this->setUserVariable( $varname, new AFPData( AFPData::DARRAY, $array ) );
 
 					return;
 				} else {
@@ -660,10 +681,14 @@ class AbuseFilterParser {
 				return;
 			}
 
-			$this->raiseCondCount();
+			if ( $result->getType() === AFPData::DNONE || $r2->getType() === AFPData::DNONE ) {
+				$result = new AFPData( AFPData::DNONE );
+			} else {
+				$this->raiseCondCount();
 
-			// @phan-suppress-next-line PhanParamTooMany Not every function needs the position
-			$result = AFPData::$func( $result, $r2, $this->mCur->pos );
+				// @phan-suppress-next-line PhanParamTooMany Not every function needs the position
+				$result = AFPData::$func( $result, $r2, $this->mCur->pos );
+			}
 		}
 	}
 
@@ -711,6 +736,8 @@ class AbuseFilterParser {
 						[ $idx, count( $result->getData() ) ] );
 				}
 				$result = $result->getData()[$idx];
+			} elseif ( $result->getType() === AFPData::DNONE ) {
+				$result = new AFPData( AFPData::DNONE );
 			} else {
 				throw new AFPUserVisibleException( 'notarray', $this->mCur->pos, [] );
 			}
@@ -839,14 +866,6 @@ class AbuseFilterParser {
 		switch ( $this->mCur->type ) {
 			case AFPToken::TID:
 				if ( $this->mShortCircuit ) {
-					$next = $this->getNextToken();
-					if ( $next->type === AFPToken::TSQUAREBRACKET && $next->value === '[' ) {
-						// If the variable represented by $tok is an array, don't break already: $result
-						// would be null and null[idx] will throw. Instead, skip the whole element (T204841)
-						$this->move();
-						$idx = new AFPData( AFPData::DNONE );
-						$this->doLevelSemicolon( $idx );
-					}
 					break;
 				}
 				$var = strtolower( $tok );
