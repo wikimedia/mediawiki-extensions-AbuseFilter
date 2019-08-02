@@ -31,13 +31,21 @@ class AbuseFilterRunner {
 	 * @var string The group of filters to check (as defined in $wgAbuseFilterValidGroups)
 	 */
 	protected $group;
+
 	/**
-	 * @var bool Whether we're running in 'execute' mode, i.e. the normal mode. The other possibility
-	 *  is 'stash' mode, where we only cache filter results and do nothing further.
-	 * @private DON'T USE THIS, IT WILL BE REMOVED. Public for back-compat only. Use self::run or
-	 * self::runForStash to specify the mode.
+	 * @var array Data from per-filter profiling. Shape:
+	 *
+	 *     [
+	 *         filterID => [ 'time' => timeTaken, 'conds' => condsUsed, 'result' => result ]
+	 *     ]
+	 *
+	 * Where 'timeTaken' is in seconds, 'result' is a boolean indicating whether the filter matched
+	 * the action, and 'filterID' is "{prefix}-{ID}" ; Prefix should be empty for local
+	 * filters. In stash mode this member is saved in cache, while in execute mode it's used to
+	 * update profiling after checking all filters.
 	 */
-	public $executeMode;
+	protected $profilingData;
+
 	/**
 	 * @var AbuseFilterParser The parser instance to use to check all filters
 	 * @protected Public for back-compat only, will be made protected. self::init already handles
@@ -81,6 +89,7 @@ class AbuseFilterRunner {
 		$this->vars->forFilter = true;
 		$this->vars->setVar( 'timestamp', (int)wfTimestamp( TS_UNIX ) );
 		$this->parser = $this->getParser();
+		$this->profilingData = [];
 	}
 
 	/**
@@ -104,12 +113,9 @@ class AbuseFilterRunner {
 			throw new BadMethodCallException( 'run() was already called on this instance.' );
 		}
 		$this->executed = true;
-		$this->executeMode = true;
 		$this->init();
 
 		$useStash = $allowStash && $this->vars->getVar( 'action' )->toString() === 'edit';
-
-		$startTime = microtime( true );
 
 		$fromCache = false;
 		$result = [];
@@ -118,20 +124,28 @@ class AbuseFilterRunner {
 			if ( $cacheData !== false ) {
 				// Merge in any tags to apply to recent changes entries
 				AbuseFilter::bufferTagsToSetByAction( $cacheData['tags'] );
+				// Use cached vars (T176291) and profiling data (T191430)
+				$this->vars = AbuseFilterVariableHolder::newFromArray( $cacheData['vars'] );
 				$result = [
 					'matches' => $cacheData['matches'],
 					'runtime' => $cacheData['runtime'],
 					'condCount' => $cacheData['condCount'],
+					'profiling' => $cacheData['profiling']
 				];
 				$fromCache = true;
 			}
 		}
 
 		if ( !$fromCache ) {
+			$startTime = microtime( true );
+			// This also updates $this->profilingData and $this->parser->mCondCount used later
+			$matches = $this->checkAllFilters();
+			$timeTaken = ( microtime( true ) - $startTime ) * 1000;
 			$result = [
-				'matches' => $this->checkAllFilters(),
-				'runtime' => ( microtime( true ) - $startTime ) * 1000,
-				'condCount' => $this->parser->getCondCount()
+				'matches' => $matches,
+				'runtime' => $timeTaken,
+				'condCount' => $this->parser->getCondCount(),
+				'profiling' => $this->profilingData
 			];
 		}
 		$matchedFilters = array_keys( array_filter( $result['matches'] ) );
@@ -141,6 +155,8 @@ class AbuseFilterRunner {
 			$result['condCount'],
 			$result['runtime']
 		);
+		$this->recordPerFilterProfiling( $result['profiling'] );
+		$this->recordStats( $result['matches'], $result['condCount'] );
 
 		if ( count( $matchedFilters ) === 0 ) {
 			return Status::newGood();
@@ -149,29 +165,7 @@ class AbuseFilterRunner {
 		$status = $this->executeFilterActions( $matchedFilters );
 		$actionsTaken = $status->getValue();
 
-		// If we executed actions using the cached result, then asynchronously run
-		// checkAllFilters again in order to populate lazy variables and
-		// record profiling data, see T191430 and T176291. The reason why we need to run
-		// this function again is that we want variables from executeMode (since stash mode
-		// doesn't store lazy-loaded vars), and to record stats only once (otherwise a single
-		// action may count as 2). However, we can't guess beforehand if we'll ever run in execute mode
-		// or just end up using cache data, so this is to make sure that the last run will always be with
-		// executeMode === true. Also, run the function as deferredupdate to avoid lags, that is the main
-		// reason for which we use cache and stash mode.
-		// @todo this is TEMPORARY. A proper solution would be to: 1-save vars in cache and reuse them;
-		// 2-move self::recordStats from checkAllFilters to this method, after the call
-		// to recordRuntimeProfilingResult (but outside the if); 3-save per-filter profiling data in
-		// stash mode. 1 and 2 are easy, but 3 isn't because per-filter profiling is handled in
-		// checkFilter, and we'd need either a new global (bad!), to change return values (worse!) or to
-		// save data in cache directly in checkFilter (quite bad because other things are saved here).
-		if ( $useStash && $fromCache ) {
-			DeferredUpdates::addCallableUpdate( function () use ( $actionsTaken ) {
-				$this->checkAllFilters();
-				$this->addLogEntries( $actionsTaken );
-			} );
-		} else {
-			$this->addLogEntries( $actionsTaken );
-		}
+		$this->addLogEntries( $actionsTaken );
 
 		return $status;
 	}
@@ -192,7 +186,6 @@ class AbuseFilterRunner {
 			);
 		}
 
-		$this->executeMode = false;
 		$this->init();
 
 		$cache = ObjectCache::getLocalClusterInstance();
@@ -205,7 +198,9 @@ class AbuseFilterRunner {
 			'matches' => $matchedFilters,
 			'tags' => AbuseFilter::$tagsToSet,
 			'condCount' => $this->parser->getCondCount(),
-			'runtime' => ( microtime( true ) - $startTime ) * 1000
+			'runtime' => ( microtime( true ) - $startTime ) * 1000,
+			'vars' => $this->vars->dumpAllVars(),
+			'profiling' => $this->profilingData
 		];
 
 		$cache->set( $stashKey, $cacheData, $cache::TTL_MINUTE );
@@ -314,7 +309,7 @@ class AbuseFilterRunner {
 		);
 
 		foreach ( $res as $row ) {
-			$matchedFilters[$row->af_id] = $this->checkFilter( $row, '' );
+			$matchedFilters[$row->af_id] = $this->checkFilter( $row );
 		}
 
 		if ( $wgAbuseFilterCentralDB && !$wgAbuseFilterIsCentral ) {
@@ -349,18 +344,13 @@ class AbuseFilterRunner {
 
 			foreach ( $res as $row ) {
 				$matchedFilters[ AbuseFilter::buildGlobalName( $row->af_id ) ] =
-					$this->checkFilter( $row, AbuseFilter::GLOBAL_FILTER_PREFIX );
+					$this->checkFilter( $row, true );
 			}
 		}
 
 		if ( $this->parser->getCondCount() > $wgAbuseFilterConditionLimit ) {
 			$actionID = $this->getTaggingID();
 			AbuseFilter::bufferTagsToSetByAction( [ $actionID => [ 'abusefilter-condition-limit' ] ] );
-		}
-
-		if ( $this->executeMode ) {
-			// Update statistics, and throttle filters which are over-blocking.
-			$this->recordStats( $matchedFilters );
 		}
 
 		return $matchedFilters;
@@ -370,37 +360,54 @@ class AbuseFilterRunner {
 	 * Check the conditions of a single filter, and profile it if $this->executeMode is true
 	 *
 	 * @param stdClass $row
-	 * @param string $prefix
+	 * @param bool $global
 	 * @return bool
 	 */
-	protected function checkFilter( $row, $prefix = '' ) {
-		global $wgAbuseFilterSlowFilterRuntimeLimit;
+	protected function checkFilter( $row, $global = false ) {
+		$filterName = AbuseFilter::buildGlobalName( $row->af_id, $global );
 
-		$filterID = $prefix . $row->af_id;
-
-		// Record data to be used if executeMode is true
 		$startConds = $this->parser->getCondCount();
 		$startTime = microtime( true );
 
 		// Store the row somewhere convenient
-		AbuseFilter::cacheFilter( $filterID, $row );
+		AbuseFilter::cacheFilter( $filterName, $row );
 
 		$pattern = trim( $row->af_pattern );
-		$result = AbuseFilter::checkConditions( $pattern, $this->parser, true, $filterID );
+		$result = AbuseFilter::checkConditions( $pattern, $this->parser, true, $filterName );
 
 		$timeTaken = microtime( true ) - $startTime;
 		$condsUsed = $this->parser->getCondCount() - $startConds;
 
-		if ( $this->executeMode ) {
-			$this->recordProfilingResult( $row->af_id, $timeTaken, $condsUsed );
-
-			$runtime = $timeTaken * 1000;
-			if ( $runtime > $wgAbuseFilterSlowFilterRuntimeLimit ) {
-				$this->recordSlowFilter( $filterID, $runtime, $condsUsed, $result );
-			}
-		}
+		$this->profilingData[$filterName] = [
+			'time' => $timeTaken,
+			'conds' => $condsUsed,
+			'result' => $result
+		];
 
 		return $result;
+	}
+
+	/**
+	 * Record per-filter profiling, for all filters
+	 *
+	 * @param array $data Profiling data, as stored in $this->profilingData
+	 */
+	protected function recordPerFilterProfiling( array $data ) {
+		global $wgAbuseFilterSlowFilterRuntimeLimit;
+
+		foreach ( $data as $filterName => $params ) {
+			list( $filterID, $global ) = AbuseFilter::splitGlobalName( $filterName );
+			if ( !$global ) {
+				// @todo Maybe add a parameter to recordProfilingResult to record global filters
+				// data separately (in the foreign wiki)
+				$this->recordProfilingResult( $filterID, $params['time'], $params['conds'] );
+			}
+
+			$runtime = $params['time'] * 1000;
+			if ( $runtime > $wgAbuseFilterSlowFilterRuntimeLimit ) {
+				$this->recordSlowFilter( $filterName, $runtime, $params['conds'], $params['result'] );
+			}
+		}
 	}
 
 	/**
@@ -458,11 +465,12 @@ class AbuseFilterRunner {
 	}
 
 	/**
-	 * Update global statistics, and disable filters which are over-blocking.
+	 * Update global statistics
 	 *
 	 * @param bool[] $filters
+	 * @param int $condsUsed The amount of used conditions
 	 */
-	protected function recordStats( array $filters ) {
+	protected function recordStats( array $filters, $condsUsed ) {
 		global $wgAbuseFilterConditionLimit, $wgAbuseFilterProfileActionsCap;
 
 		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
@@ -481,6 +489,8 @@ class AbuseFilterRunner {
 			$stash->set( $overflowKey, 0, $storagePeriod );
 
 			foreach ( array_keys( $filters ) as $filter ) {
+				// @todo This should actually reset keys for all filters, and not only the ones
+				// passed in (which are the ones returned by checkAllFilters, i.e. only enabled filters)
 				$stash->set( AbuseFilter::filterMatchesKey( $filter ), 0, $storagePeriod );
 			}
 			$stash->set( AbuseFilter::filterMatchesKey(), 0, $storagePeriod );
@@ -489,13 +499,13 @@ class AbuseFilterRunner {
 		$stash->incr( $totalKey );
 
 		// Increment overflow counter, if our condition limit overflowed
-		if ( $this->parser->getCondCount() > $wgAbuseFilterConditionLimit ) {
+		if ( $condsUsed > $wgAbuseFilterConditionLimit ) {
 			$stash->incr( $overflowKey );
 		}
 	}
 
 	/**
-	 * Record runtime profiling data for all filters
+	 * Record runtime profiling data for all filters together
 	 *
 	 * @param int $totalFilters
 	 * @param int $totalConditions

@@ -562,7 +562,6 @@ class AbuseFilter {
 		$user = RequestContext::getMain()->getUser();
 
 		$runner = new AbuseFilterRunner( $user, $title, $vars, $group );
-		$runner->executeMode = $mode === 'execute';
 		$runner->parser = $parser;
 		return $runner->checkAllFilters();
 	}

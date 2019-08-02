@@ -181,13 +181,11 @@ class AbuseFilterVariableHolder {
 
 		$exported = [];
 		foreach ( array_keys( $this->mVars ) as $varName ) {
+			$computeThis = ( is_array( $compute ) && in_array( $varName, $compute ) ) || $compute === true;
 			if (
 				( $includeUserVars || in_array( strtolower( $varName ), $coreVariables ) ) &&
 				// Only include variables set in the extension in case $includeUserVars is false
-				( $compute === true ||
-					( is_array( $compute ) && in_array( $varName, $compute ) ) ||
-					$this->mVars[$varName] instanceof AFPData
-				)
+				( $computeThis || $this->mVars[$varName] instanceof AFPData )
 			) {
 				$exported[$varName] = $this->getVar( $varName )->toNative();
 			}
