@@ -160,8 +160,6 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			$countAfter = $parser->getCondCount();
 			$actual = $countAfter - $countBefore;
 			$this->assertEquals( $expected, $actual, "Wrong condition count for $rule with $parserClass" );
-			// Reset cache or it would compromise conditions count
-			$parser::$funcCache = [];
 		}
 	}
 

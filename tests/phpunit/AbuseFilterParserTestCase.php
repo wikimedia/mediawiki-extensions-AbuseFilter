@@ -41,7 +41,9 @@ abstract class AbuseFilterParserTestCase extends MediaWikiTestCase {
 		} else {
 			// Reset so that already executed tests don't influence new ones
 			$parsers[0]->resetState();
+			$parsers[0]->clearFuncCache();
 			$parsers[1]->resetState();
+			$parsers[1]->clearFuncCache();
 		}
 		return $parsers;
 	}

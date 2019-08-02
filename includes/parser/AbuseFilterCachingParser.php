@@ -9,13 +9,6 @@
  */
 class AbuseFilterCachingParser extends AbuseFilterParser {
 	/**
-	 * @inheritDoc
-	 * Redeclared because having it shared between the parser means that in parser tests,
-	 * the second parser used (usually CachingParser) has non-empty funcCache
-	 */
-	public static $funcCache = [];
-
-	/**
 	 * Return the generated version of the parser for cache invalidation
 	 * purposes.  Automatically tracks list of all functions and invalidates the
 	 * cache if it is changed.
@@ -133,10 +126,10 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				/** @noinspection PhpToStringImplementationInspection */
 				$funcHash = md5( $func . serialize( $dataArgs ) );
 
-				if ( isset( self::$funcCache[$funcHash] ) &&
+				if ( isset( $this->funcCache[$funcHash] ) &&
 					!in_array( $func, self::$ActiveFunctions )
 				) {
-					$result = self::$funcCache[$funcHash];
+					$result = $this->funcCache[$funcHash];
 				} else {
 					$this->raiseCondCount();
 					$hasEmptyData = false;
@@ -145,14 +138,14 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 							$hasEmptyData = true;
 						}
 					}
-					$result = self::$funcCache[$funcHash] = $hasEmptyData
+					$result = $this->funcCache[$funcHash] = $hasEmptyData
 						? new AFPData( AFPData::DNONE )
 						: $this->$func( $dataArgs );
 				}
 
-				if ( count( self::$funcCache ) > 1000 ) {
+				if ( count( $this->funcCache ) > 1000 ) {
 					// @codeCoverageIgnoreStart
-					self::$funcCache = [];
+					$this->clearFuncCache();
 					// @codeCoverageIgnoreEnd
 				}
 

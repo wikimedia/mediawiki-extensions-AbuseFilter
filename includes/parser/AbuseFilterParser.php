@@ -88,7 +88,10 @@ class AbuseFilterParser {
 		'regex' => 'keywordRegex',
 	];
 
-	public static $funcCache = [];
+	/**
+	 * @var array Cached results of functions
+	 */
+	protected $funcCache = [];
 
 	/**
 	 * @var Equivset
@@ -155,6 +158,13 @@ class AbuseFilterParser {
 		$this->mShortCircuit = false;
 		$this->mAllowShort = true;
 		$this->mCondCount = 0;
+	}
+
+	/**
+	 * Clears the array of cached function results
+	 */
+	public function clearFuncCache() {
+		$this->funcCache = [];
 	}
 
 	/**
@@ -828,10 +838,10 @@ class AbuseFilterParser {
 
 			$funcHash = md5( $func . serialize( $args ) );
 
-			if ( isset( self::$funcCache[$funcHash] ) &&
+			if ( isset( $this->funcCache[$funcHash] ) &&
 				!in_array( $func, self::$ActiveFunctions )
 			) {
-				$result = self::$funcCache[$funcHash];
+				$result = $this->funcCache[$funcHash];
 			} else {
 				$this->raiseCondCount();
 				$hasEmptyData = false;
@@ -840,14 +850,14 @@ class AbuseFilterParser {
 						$hasEmptyData = true;
 					}
 				}
-				$result = self::$funcCache[$funcHash] = $hasEmptyData
+				$result = $this->funcCache[$funcHash] = $hasEmptyData
 					? new AFPData( AFPData::DNONE )
 					: $this->$func( $args );
 			}
 
-			if ( count( self::$funcCache ) > 1000 ) {
+			if ( count( $this->funcCache ) > 1000 ) {
 				// @codeCoverageIgnoreStart
-				self::$funcCache = [];
+				$this->clearFuncCache();
 				// @codeCoverageIgnoreEnd
 			}
 		} else {
