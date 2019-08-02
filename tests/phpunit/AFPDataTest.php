@@ -220,4 +220,39 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 			[ new AFPData( AFPData::DNULL, null ), null ],
 		];
 	}
+
+	/**
+	 * Ensure that we don't allow DNONE in AFPData::equals
+	 *
+	 * @param AFPData $lhs
+	 * @param AFPData $lhs
+	 * @dataProvider provideDNONEEquals
+	 */
+	public function testNoDNONEEquals( $lhs, $rhs ) {
+		$this->expectException( AFPException::class );
+		AFPData::equals( $lhs, $rhs );
+	}
+
+	/**
+	 * Data provider for testNoDNONEEquals
+	 *
+	 * @return array
+	 */
+	public function provideDNONEEquals() {
+		$dnone = new AFPData( AFPData::DNONE );
+		$nonempty = new AFPData( AFPData::DSTRING, 'foo' );
+		return [
+			'left' => [ $dnone, $nonempty ],
+			'right' => [ $nonempty, $dnone ],
+			'both' => [ $dnone, $dnone ]
+		];
+	}
+
+	/**
+	 * Test that DNONE can only have null value
+	 */
+	public function testDNONERequiresNullValue() {
+		$this->expectException( InvalidArgumentException::class );
+		new AFPData( AFPData::DNONE, 'non-null' );
+	}
 }

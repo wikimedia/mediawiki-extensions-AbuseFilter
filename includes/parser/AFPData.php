@@ -55,6 +55,10 @@ class AFPData {
 	 * @param AFPData[]|mixed|null $val
 	 */
 	public function __construct( $type, $val = null ) {
+		if ( $type === self::DNONE && $val !== null ) {
+			// Sanity, and we rely on this for instance when casting a DNONE to something else
+			throw new InvalidArgumentException( 'DNONE cannot have a non-null value' );
+		}
 		$this->type = $type;
 		$this->data = $val;
 	}
@@ -209,14 +213,16 @@ class AFPData {
 	 * @param AFPData $d2
 	 * @param bool $strict whether to also check types
 	 * @return bool
+	 * @throws AFPException if $d1 or $d2 is a DNONE. This shouldn't happen, because this method
+	 *  only returns a boolean, and thus the type of the result has already been decided and cannot
+	 *  be changed to be a DNONE from here.
+	 * @internal
 	 */
-	private static function equals( AFPData $d1, AFPData $d2, $strict = false ) {
+	public static function equals( AFPData $d1, AFPData $d2, $strict = false ) {
 		if ( $d1->type === self::DNONE || $d2->type === self::DNONE ) {
-			// This could mean literally everything, and mostly happens when
-			// comparing two expressions, both built basing on some non-initialized
-			// AbuseFilter variable.
-			// We always return false, like Nan !== NaN in JS.
-			return false;
+			throw new AFPException(
+				__METHOD__ . " got a DNONE. This should be handled at a higher level"
+			);
 		} elseif ( $d1->type !== self::DARRAY && $d2->type !== self::DARRAY ) {
 			$typecheck = $d1->type === $d2->type || !$strict;
 			return $typecheck && $d1->toString() === $d2->toString();
@@ -228,6 +234,7 @@ class AFPData {
 			}
 			$length = count( $data1 );
 			for ( $i = 0; $i < $length; $i++ ) {
+				// @phan-suppress-next-line PhanTypeArraySuspiciousNullable Array type
 				if ( self::equals( $data1[$i], $data2[$i], $strict ) === false ) {
 					return false;
 				}
@@ -354,6 +361,12 @@ class AFPData {
 	 * @throws AFPException
 	 */
 	public static function compareOp( AFPData $a, AFPData $b, $op ) {
+		if ( $a->type === self::DNONE || $b->type === self::DNONE ) {
+			// This could mean literally everything, and mostly happens when
+			// comparing two expressions, both built basing on some non-initialized
+			// AbuseFilter variable.
+			return new AFPData( self::DNONE );
+		}
 		if ( $op === '==' || $op === '=' ) {
 			return new AFPData( self::DBOOL, self::equals( $a, $b ) );
 		} elseif ( $op === '!=' ) {

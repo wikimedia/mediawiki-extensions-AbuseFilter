@@ -277,6 +277,8 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 		return [
 			[ 'a[1] := 5', 'doLevelSet' ],
 			[ 'a = 5', 'getVarValue' ],
+			[ 'false & ( nonexistent[1] := 2 )', 'skipOverBraces/discardNode' ],
+			[ 'false & ( nonexistent[] := 2 )', 'skipOverBraces/discardNode' ],
 		];
 	}
 
@@ -703,5 +705,100 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 		foreach ( $extra as $case ) {
 			yield $case => [ $case, false ];
 		}
+	}
+
+	/**
+	 * Test that code declaring a variable in a skipped brace (because of shortcircuit)
+	 * will be parsed without throwing an exception when later trying to use that var. T214674
+	 *
+	 * @param string $code Code to parse
+	 * @dataProvider provideVarDeclarationInSkippedBlock
+	 */
+	public function testVarDeclarationInSkippedBlock( $code ) {
+		foreach ( self::getParsers() as $parser ) {
+			$pname = get_class( $parser );
+			try {
+				$this->assertFalse(
+					$parser->parse( $code ),
+					"Parser: $pname"
+				);
+			} catch ( Exception $e ) {
+				$this->fail( "Got exception with parser: $pname\n$e" );
+			}
+		}
+	}
+
+	/**
+	 * Data provider for testVarDeclarationInSkippedBlock
+	 * @return array
+	 */
+	public function provideVarDeclarationInSkippedBlock() {
+		return [
+			[ "x := [5]; false & (1 == 1; y := 'b'; x[1] := 'x'; 3 < 4); y != 'b' & x[1] != 'x'" ],
+			[ "(var := [1]); false & ( var[] := 'baz' ); var contains 'baz'" ],
+			[ "(var := [1]); false & ( var[1] := 'baz' ); var[1] === 'baz'" ],
+			// The following tests are to ensure that we don't get a match
+			[ "false & ( var := 'foo'; x := get_matches( var, added_lines )[1] ); x != false" ],
+			[ "false & ( var := 'foo'); var !== null" ],
+			[ "false & ( var := 'foo'); var === null" ],
+			[ "false & ( var := 'foo'); var[0] !== 123456" ],
+			[ "false & ( var := 'foo'); var[0][123] !== 123456" ],
+			// Identifier before closing skipped brace, T214674#5374757
+			[ "false & ( var := 'foo'; 'x' in var )" ],
+			[ "false & ( var := 'foo'; added_lines irlike var )" ],
+		];
+	}
+
+	/**
+	 * Tests for the AFPData::DNONE type. No exceptions should be thrown, and nothing should match.
+	 * @todo Once T198531 will be resolved, add a line to test that something like "added_lines[0]"
+	 *  doesn't throw an exception due to the array length.
+	 *
+	 * @param string $code To be parsed
+	 * @dataProvider provideDNONE
+	 */
+	public function testDNONE( $code ) {
+		foreach ( self::getParsers() as $parser ) {
+			$pname = get_class( $parser );
+			try {
+				$this->assertFalse(
+					$parser->parse( $code ),
+					"Parser: $pname"
+				);
+			} catch ( Exception $e ) {
+				$this->fail( "Got exception with parser: $pname\n$e" );
+			}
+		}
+	}
+
+	/**
+	 * Data provider for testDNONE. These bits of code must NOT match
+	 *
+	 * @return array
+	 */
+	public function provideDNONE() {
+		return [
+			[ "5 / length( new_wikitext ) !== 3 ** edit_delta & " .
+				"float( timestamp / (user_age + 0.000001) ) !== 0.0" ],
+			[ "amount := float( timestamp / user_age); amount !== 0.0 & 64 / ( amount - 0.1 ) !== -640.0" ],
+			[ "36 / ( length( user_rights ) + 0.00001 ) !== 0" ],
+			[ "!('something' in added_lines)" ],
+			[ "!(user_groups rlike 'foo')" ],
+			[ "rcount('x', rescape(page_title) ) !== 0" ],
+			[ "norm(user_name) !== rmspecials('')" ],
+			[ "-user_editcount !== 1234567890" ],
+			[ "added_lines" ],
+			[ "-new_size" ],
+			[ "new_wikitext !== null" ],
+			[ "true & user_editcount" ],
+			[ "var:= 5; added_lines contains var" ],
+			[ "false & (var := [ 1,2,3 ]); var === [ 1,2,3 ]" ],
+			[ "page_age - user_editcount !== 1234567 - page_namespace" ],
+			// Refuse to modify a DNONE offset as if it were an array
+			[ "false & (var := [ 1,2,3 ]); var[0] := true; var[0] === true" ],
+			[ "false & (var := [ 1,2,3 ]); var[] := 'baz'; 'baz' in var" ],
+			// But allow overwriting the whole variable
+			[ "false & (var := [ 1,2,3 ]); var := [4,5,6]; var !== [4,5,6]" ],
+		];
 	}
 }
