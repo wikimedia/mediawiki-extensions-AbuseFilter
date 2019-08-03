@@ -86,7 +86,7 @@ class AbuseFilterVariableHolder {
 			wfWarn( "Disabled variable $varName requested. Please fix the filter as this will " .
 				"be removed soon." );
 		}
-		return new AFPData( AFPData::DNONE );
+		return new AFPData( AFPData::DUNDEFINED );
 	}
 
 	/**

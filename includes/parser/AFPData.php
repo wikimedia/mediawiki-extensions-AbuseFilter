@@ -9,7 +9,9 @@ class AFPData {
 	const DFLOAT = 'float';
 	const DARRAY = 'array';
 	// Special purpose type for non-initialized stuff
-	const DNONE = 'none';
+	const DUNDEFINED = 'undefined';
+	// Special purpose for creating instances that will be populated later
+	const DEMPTY = 'empty';
 
 	// Translation table mapping shell-style wildcards to PCRE equivalents.
 	// Derived from <http://www.php.net/manual/en/function.fnmatch.php#100207>
@@ -55,9 +57,9 @@ class AFPData {
 	 * @param AFPData[]|mixed|null $val
 	 */
 	public function __construct( $type, $val = null ) {
-		if ( $type === self::DNONE && $val !== null ) {
-			// Sanity, and we rely on this for instance when casting a DNONE to something else
-			throw new InvalidArgumentException( 'DNONE cannot have a non-null value' );
+		if ( ( $type === self::DUNDEFINED || $type === self::DEMPTY ) && $val !== null ) {
+			// Sanity, and we rely on this for instance when casting a DUNDEFINED to something else
+			throw new InvalidArgumentException( 'DUNDEFINED cannot have a non-null value' );
 		}
 		$this->type = $type;
 		$this->data = $val;
@@ -151,8 +153,8 @@ class AFPData {
 	 * @return AFPData
 	 */
 	public static function boolInvert( AFPData $value ) {
-		if ( $value->type === self::DNONE ) {
-			return new AFPData( self::DNONE );
+		if ( $value->type === self::DUNDEFINED ) {
+			return new AFPData( self::DUNDEFINED );
 		}
 		return new AFPData( self::DBOOL, !$value->toBool() );
 	}
@@ -163,8 +165,8 @@ class AFPData {
 	 * @return AFPData
 	 */
 	public static function pow( AFPData $base, AFPData $exponent ) {
-		if ( $base->type === self::DNONE || $exponent->type === self::DNONE ) {
-			return new AFPData( self::DNONE );
+		if ( $base->type === self::DUNDEFINED || $exponent->type === self::DUNDEFINED ) {
+			return new AFPData( self::DUNDEFINED );
 		}
 		$res = pow( $base->toNumber(), $exponent->toNumber() );
 		$type = is_int( $res ) ? self::DINT : self::DFLOAT;
@@ -213,15 +215,15 @@ class AFPData {
 	 * @param AFPData $d2
 	 * @param bool $strict whether to also check types
 	 * @return bool
-	 * @throws AFPException if $d1 or $d2 is a DNONE. This shouldn't happen, because this method
+	 * @throws AFPException if $d1 or $d2 is a DUNDEFINED. This shouldn't happen, because this method
 	 *  only returns a boolean, and thus the type of the result has already been decided and cannot
-	 *  be changed to be a DNONE from here.
+	 *  be changed to be a DUNDEFINED from here.
 	 * @internal
 	 */
 	public static function equals( AFPData $d1, AFPData $d2, $strict = false ) {
-		if ( $d1->type === self::DNONE || $d2->type === self::DNONE ) {
+		if ( $d1->type === self::DUNDEFINED || $d2->type === self::DUNDEFINED ) {
 			throw new AFPException(
-				__METHOD__ . " got a DNONE. This should be handled at a higher level"
+				__METHOD__ . " got a DUNDEFINED. This should be handled at a higher level"
 			);
 		} elseif ( $d1->type !== self::DARRAY && $d2->type !== self::DARRAY ) {
 			$typecheck = $d1->type === $d2->type || !$strict;
@@ -321,8 +323,8 @@ class AFPData {
 	 * @return AFPData
 	 */
 	public static function unaryMinus( AFPData $data ) {
-		if ( $data->type === self::DNONE ) {
-			return new AFPData( self::DNONE );
+		if ( $data->type === self::DUNDEFINED ) {
+			return new AFPData( self::DUNDEFINED );
 		} elseif ( $data->type === self::DINT ) {
 			return new AFPData( $data->type, -$data->toInt() );
 		} else {
@@ -361,11 +363,8 @@ class AFPData {
 	 * @throws AFPException
 	 */
 	public static function compareOp( AFPData $a, AFPData $b, $op ) {
-		if ( $a->type === self::DNONE || $b->type === self::DNONE ) {
-			// This could mean literally everything, and mostly happens when
-			// comparing two expressions, both built basing on some non-initialized
-			// AbuseFilter variable.
-			return new AFPData( self::DNONE );
+		if ( $a->type === self::DUNDEFINED || $b->type === self::DUNDEFINED ) {
+			return new AFPData( self::DUNDEFINED );
 		}
 		if ( $op === '==' || $op === '=' ) {
 			return new AFPData( self::DBOOL, self::equals( $a, $b ) );
@@ -404,8 +403,8 @@ class AFPData {
 	 * @throws AFPException
 	 */
 	public static function mulRel( AFPData $a, AFPData $b, $op, $pos ) {
-		if ( $a->type === self::DNONE || $b->type === self::DNONE ) {
-			return new AFPData( self::DNONE );
+		if ( $a->type === self::DUNDEFINED || $b->type === self::DUNDEFINED ) {
+			return new AFPData( self::DUNDEFINED );
 		}
 		$a = $a->toNumber();
 		$b = $b->toNumber();
@@ -438,8 +437,8 @@ class AFPData {
 	 * @return AFPData
 	 */
 	public static function sum( AFPData $a, AFPData $b ) {
-		if ( $a->type === self::DNONE || $b->type === self::DNONE ) {
-			return new AFPData( self::DNONE );
+		if ( $a->type === self::DUNDEFINED || $b->type === self::DUNDEFINED ) {
+			return new AFPData( self::DUNDEFINED );
 		} elseif ( $a->type === self::DSTRING || $b->type === self::DSTRING ) {
 			return new AFPData( self::DSTRING, $a->toString() . $b->toString() );
 		} elseif ( $a->type === self::DARRAY && $b->type === self::DARRAY ) {
@@ -458,8 +457,8 @@ class AFPData {
 	 * @return AFPData
 	 */
 	public static function sub( AFPData $a, AFPData $b ) {
-		if ( $a->type === self::DNONE || $b->type === self::DNONE ) {
-			return new AFPData( self::DNONE );
+		if ( $a->type === self::DUNDEFINED || $b->type === self::DUNDEFINED ) {
+			return new AFPData( self::DUNDEFINED );
 		}
 		$res = $a->toNumber() - $b->toNumber();
 		$type = is_int( $res ) ? self::DINT : self::DFLOAT;
@@ -492,7 +491,8 @@ class AFPData {
 
 				return $output;
 			case self::DNULL:
-			case self::DNONE:
+			case self::DUNDEFINED:
+			case self::DEMPTY:
 				return null;
 			default:
 				// @codeCoverageIgnoreStart

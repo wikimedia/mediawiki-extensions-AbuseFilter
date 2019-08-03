@@ -125,7 +125,7 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 			],
 			// Invalid data types
 			[ new stdClass, null ],
-			[ new AFPData( AFPData::DNONE ), null ]
+			[ new AFPData( AFPData::DUNDEFINED ), null ]
 		];
 	}
 
@@ -216,43 +216,43 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 		return [
 			[ new AFPData( AFPData::DFLOAT, 1.2345 ), 1.2345 ],
 			[ new AFPData( AFPData::DFLOAT, 0.1 ), 0.1 ],
-			[ new AFPData( AFPData::DNONE ), null ],
+			[ new AFPData( AFPData::DUNDEFINED ), null ],
 			[ new AFPData( AFPData::DNULL, null ), null ],
 		];
 	}
 
 	/**
-	 * Ensure that we don't allow DNONE in AFPData::equals
+	 * Ensure that we don't allow DUNDEFINED in AFPData::equals
 	 *
 	 * @param AFPData $lhs
 	 * @param AFPData $lhs
-	 * @dataProvider provideDNONEEquals
+	 * @dataProvider provideDUNDEFINEDEquals
 	 */
-	public function testNoDNONEEquals( $lhs, $rhs ) {
+	public function testNoDUNDEFINEDEquals( $lhs, $rhs ) {
 		$this->expectException( AFPException::class );
 		AFPData::equals( $lhs, $rhs );
 	}
 
 	/**
-	 * Data provider for testNoDNONEEquals
+	 * Data provider for testNoDUNDEFINEDEquals
 	 *
 	 * @return array
 	 */
-	public function provideDNONEEquals() {
-		$dnone = new AFPData( AFPData::DNONE );
+	public function provideDUNDEFINEDEquals() {
+		$undefined = new AFPData( AFPData::DUNDEFINED );
 		$nonempty = new AFPData( AFPData::DSTRING, 'foo' );
 		return [
-			'left' => [ $dnone, $nonempty ],
-			'right' => [ $nonempty, $dnone ],
-			'both' => [ $dnone, $dnone ]
+			'left' => [ $undefined, $nonempty ],
+			'right' => [ $nonempty, $undefined ],
+			'both' => [ $undefined, $undefined ]
 		];
 	}
 
 	/**
-	 * Test that DNONE can only have null value
+	 * Test that DUNDEFINED can only have null value
 	 */
-	public function testDNONERequiresNullValue() {
+	public function testDUNDEFINEDRequiresNullValue() {
 		$this->expectException( InvalidArgumentException::class );
-		new AFPData( AFPData::DNONE, 'non-null' );
+		new AFPData( AFPData::DUNDEFINED, 'non-null' );
 	}
 }
