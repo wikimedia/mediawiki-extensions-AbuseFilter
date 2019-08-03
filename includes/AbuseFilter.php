@@ -571,39 +571,35 @@ class AbuseFilter {
 	 */
 	private static function resetFilterProfile( $filter ) {
 		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
-		$countKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'count' );
-		$totalKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'total' );
-		$condsKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'conds' );
+		$profileKey = self::filterProfileKey( $filter );
 
-		$stash->delete( $countKey );
-		$stash->delete( $totalKey );
-		$stash->delete( $condsKey );
+		$stash->delete( $profileKey );
 	}
 
 	/**
+	 * Retrieve per-filter statistics.
+	 *
 	 * @param string $filter
 	 * @return array
 	 */
 	public static function getFilterProfile( $filter ) {
 		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
-		$countKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'count' );
-		$totalKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'total' );
-		$condsKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'conds' );
+		$profile = $stash->get( self::filterProfileKey( $filter ) );
 
-		$curCount = $stash->get( $countKey );
-		$curTotal = $stash->get( $totalKey );
-		$curConds = $stash->get( $condsKey );
-
-		if ( !$curCount ) {
+		if ( $profile !== false ) {
+			$curCount = $profile['count'];
+			$curTotalTime = $profile['total-time'];
+			$curTotalConds = $profile['total-cond'];
+		} else {
 			return [ 0, 0 ];
 		}
 
 		// 1000 ms in a sec
-		$timeProfile = ( $curTotal / $curCount ) * 1000;
+		$timeProfile = ( $curTotalTime / $curCount ) * 1000;
 		// Return in ms, rounded to 2dp
 		$timeProfile = round( $timeProfile, 2 );
 
-		$condProfile = ( $curConds / $curCount );
+		$condProfile = ( $curTotalConds / $curCount );
 		$condProfile = round( $condProfile, 0 );
 
 		return [ $timeProfile, $condProfile ];
@@ -1008,6 +1004,17 @@ class AbuseFilter {
 	 */
 	public static function filterLimitReachedKey() {
 		return wfMemcKey( 'abusefilter', 'stats', 'overflow' );
+	}
+
+	/**
+	 * Get the memcache access key used to store per-filter profiling data.
+	 *
+	 * @param string|int $filter
+	 * @return string
+	 */
+	public static function filterProfileKey( $filter ) {
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		return $cache->makeKey( 'abusefilter-profile', 'v1', $filter );
 	}
 
 	/**
