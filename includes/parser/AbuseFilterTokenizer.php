@@ -176,18 +176,18 @@ class AbuseFilterTokenizer {
 			}
 
 			$base = $baseChar ? self::$bases[$baseChar] : 10;
-			if ( $base !== 10 ) {
-				// Our syntax is awful. Keep track of every use, and possibly change it!
-				$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-				$logger->info(
-					'Found non-decimal number. Base: {number_base}, number: {number_input}',
-					[ 'number_base' => $base, 'number_input' => $input ]
-				);
-			}
 
 			// Check against the appropriate character class for input validation
 
 			if ( preg_match( self::$baseCharsRe[$base], $input ) ) {
+				if ( $base !== 10 ) {
+					// Our syntax is awful. Keep track of every use, and possibly change it!
+					$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+					$logger->info(
+						'Found non-decimal number. Base: {number_base}, number: {number_input}',
+						[ 'number_base' => $base, 'number_input' => $input ]
+					);
+				}
 				$num = $base !== 10 ? base_convert( $input, $base, 10 ) : $input;
 				$offset += strlen( $token );
 				return ( strpos( $input, '.' ) !== false )
