@@ -274,7 +274,9 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 			case AFPTreeNode::INDEX_ASSIGNMENT:
 				list( $varName, $offset, $value ) = $node->children;
 
-				if ( !$this->mVariables->varIsSet( $varName ) ) {
+				if ( $this->isBuiltinVar( $varName ) ) {
+					throw new AFPUserVisibleException( 'overridebuiltin', $node->position, [ $varName ] );
+				} elseif ( !$this->mVariables->varIsSet( $varName ) ) {
 					throw new AFPUserVisibleException( 'unrecognisedvar', $node->position, [ $varName ] );
 				}
 				$array = $this->mVariables->getVar( $varName );
@@ -301,6 +303,12 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 
 			case AFPTreeNode::ARRAY_APPEND:
 				list( $varName, $value ) = $node->children;
+
+				if ( $this->isBuiltinVar( $varName ) ) {
+					throw new AFPUserVisibleException( 'overridebuiltin', $node->position, [ $varName ] );
+				} elseif ( !$this->mVariables->varIsSet( $varName ) ) {
+					throw new AFPUserVisibleException( 'unrecognisedvar', $node->position, [ $varName ] );
+				}
 
 				$array = $this->mVariables->getVar( $varName );
 				if ( $array->getType() !== AFPData::DUNDEFINED ) {
