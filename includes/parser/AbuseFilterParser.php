@@ -791,6 +791,7 @@ class AbuseFilterParser {
 	protected function doLevelBraces( &$result ) {
 		if ( $this->mCur->type === AFPToken::TBRACE && $this->mCur->value === '(' ) {
 			if ( $this->mShortCircuit ) {
+				$result = new AFPData( AFPData::DEMPTY );
 				$this->skipOverBraces();
 			} else {
 				$this->doLevelSemicolon( $result );
@@ -830,6 +831,7 @@ class AbuseFilterParser {
 			}
 
 			if ( $this->mShortCircuit ) {
+				$result = new AFPData( AFPData::DEMPTY );
 				$this->skipOverBraces();
 				$this->move();
 
