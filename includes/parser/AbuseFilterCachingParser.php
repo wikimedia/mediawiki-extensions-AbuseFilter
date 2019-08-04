@@ -132,14 +132,15 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 					$result = $this->funcCache[$funcHash];
 				} else {
 					$this->raiseCondCount();
-					$hasEmptyData = false;
+					$hasUndefinedArg = false;
 					foreach ( $dataArgs as $arg ) {
-						if ( $arg->type === AFPData::DNONE ) {
-							$hasEmptyData = true;
+						if ( $arg->type === AFPData::DUNDEFINED ) {
+							$hasUndefinedArg = true;
+							break;
 						}
 					}
-					$result = $this->funcCache[$funcHash] = $hasEmptyData
-						? new AFPData( AFPData::DNONE )
+					$result = $this->funcCache[$funcHash] = $hasUndefinedArg
+						? new AFPData( AFPData::DUNDEFINED )
 						: $this->$func( $dataArgs );
 				}
 
@@ -156,8 +157,8 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 
 				$array = $this->evalNode( $array );
 
-				if ( $array->getType() === AFPData::DNONE ) {
-					return new AFPData( AFPData::DNONE );
+				if ( $array->getType() === AFPData::DUNDEFINED ) {
+					return new AFPData( AFPData::DUNDEFINED );
 				}
 
 				if ( $array->getType() !== AFPData::DARRAY ) {
@@ -189,10 +190,10 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				$rightOperand = $this->evalNode( $rightOperand );
 
 				if (
-					$leftOperand->getType() === AFPData::DNONE ||
-					$rightOperand->getType() === AFPData::DNONE
+					$leftOperand->getType() === AFPData::DUNDEFINED ||
+					$rightOperand->getType() === AFPData::DUNDEFINED
 				) {
-					$result = new AFPData( AFPData::DNONE );
+					$result = new AFPData( AFPData::DUNDEFINED );
 				} else {
 					$this->raiseCondCount();
 
@@ -278,8 +279,8 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				}
 				$array = $this->mVariables->getVar( $varName );
 
-				if ( $array->getType() !== AFPData::DNONE ) {
-					// If it's a DNONE, leave it as is
+				if ( $array->getType() !== AFPData::DUNDEFINED ) {
+					// If it's a DUNDEFINED, leave it as is
 					if ( $array->getType() !== AFPData::DARRAY ) {
 						throw new AFPUserVisibleException( 'notarray', $node->position, [] );
 					}
@@ -302,8 +303,8 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				list( $varName, $value ) = $node->children;
 
 				$array = $this->mVariables->getVar( $varName );
-				if ( $array->getType() !== AFPData::DNONE ) {
-					// If it's a DNONE, leave it as is
+				if ( $array->getType() !== AFPData::DUNDEFINED ) {
+					// If it's a DUNDEFINED, leave it as is
 					if ( $array->getType() !== AFPData::DARRAY ) {
 						throw new AFPUserVisibleException( 'notarray', $node->position, [] );
 					}
@@ -337,7 +338,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 	 */
 	private function discardNode( AFPTreeNode $node ) {
 		if ( $node->type === AFPTreeNode::ASSIGNMENT ) {
-			$this->setUserVariable( $node->children[0], new AFPData( AFPData::DNONE ) );
+			$this->setUserVariable( $node->children[0], new AFPData( AFPData::DUNDEFINED ) );
 		} elseif (
 			$node->type === AFPTreeNode::INDEX_ASSIGNMENT ||
 			$node->type === AFPTreeNode::ARRAY_APPEND
@@ -346,7 +347,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 			if ( !$this->mVariables->varIsSet( $varName ) ) {
 				throw new AFPUserVisibleException( 'unrecognisedvar', $node->position, [ $varName ] );
 			}
-			$this->setUserVariable( $varName, new AFPData( AFPData::DNONE ) );
+			$this->setUserVariable( $varName, new AFPData( AFPData::DUNDEFINED ) );
 		} elseif ( $node->type === AFPTreeNode::ATOM ) {
 			return;
 		}

@@ -246,7 +246,7 @@ class AbuseFilterParser {
 				$varname = $this->mCur->value;
 				$next = $this->getNextToken();
 				if ( $next->type === AFPToken::TOP && $next->value === ':=' ) {
-					$this->setUserVariable( $varname, new AFPData( AFPData::DNONE ) );
+					$this->setUserVariable( $varname, new AFPData( AFPData::DUNDEFINED ) );
 				} elseif ( $next->type === AFPToken::TSQUAREBRACKET && $next->value === '[' ) {
 					if ( !$this->mVariables->varIsSet( $varname ) ) {
 						throw new AFPUserVisibleException( 'unrecognisedvar',
@@ -254,7 +254,7 @@ class AbuseFilterParser {
 							[ $varname ]
 						);
 					}
-					$this->setUserVariable( $varname, new AFPData( AFPData::DNONE ) );
+					$this->setUserVariable( $varname, new AFPData( AFPData::DUNDEFINED ) );
 				}
 			}
 		}
@@ -289,7 +289,7 @@ class AbuseFilterParser {
 		$this->mPos = 0;
 		$this->mShortCircuit = false;
 
-		$result = new AFPData( AFPData::DNONE );
+		$result = new AFPData( AFPData::DEMPTY );
 		$this->doLevelEntry( $result );
 
 		return $result;
@@ -354,7 +354,7 @@ class AbuseFilterParser {
 					);
 				}
 				$array = $this->mVariables->getVar( $varname );
-				if ( $array->getType() !== AFPData::DARRAY && $array->getType() !== AFPData::DNONE ) {
+				if ( $array->getType() !== AFPData::DARRAY && $array->getType() !== AFPData::DUNDEFINED ) {
 					throw new AFPUserVisibleException( 'notarray', $this->mCur->pos, [] );
 				}
 
@@ -364,7 +364,7 @@ class AbuseFilterParser {
 				} else {
 					$this->setState( $prev );
 					$this->move();
-					$idx = new AFPData( AFPData::DNONE );
+					$idx = new AFPData( AFPData::DEMPTY );
 					$this->doLevelSemicolon( $idx );
 					$idx = $idx->toInt();
 					if ( !( $this->mCur->type === AFPToken::TSQUAREBRACKET && $this->mCur->value === ']' ) ) {
@@ -383,7 +383,7 @@ class AbuseFilterParser {
 					$this->move();
 					$this->doLevelSet( $result );
 					if ( $array->getType() === AFPData::DARRAY ) {
-						// If it's a DNONE, leave it as is
+						// If it's a DUNDEFINED, leave it as is
 						$array = $array->toArray();
 						if ( $idx === 'new' ) {
 							$array[] = $result;
@@ -427,8 +427,8 @@ class AbuseFilterParser {
 			}
 			$this->move();
 
-			$r1 = new AFPData( AFPData::DNONE );
-			$r2 = new AFPData( AFPData::DNONE );
+			$r1 = new AFPData( AFPData::DEMPTY );
+			$r2 = new AFPData( AFPData::DEMPTY );
 
 			$isTrue = $result->toBool();
 
@@ -483,8 +483,8 @@ class AbuseFilterParser {
 			$this->doLevelBoolOps( $result );
 			if ( $this->mCur->type === AFPToken::TOP && $this->mCur->value === '?' ) {
 				$this->move();
-				$r1 = new AFPData( AFPData::DNONE );
-				$r2 = new AFPData( AFPData::DNONE );
+				$r1 = new AFPData( AFPData::DEMPTY );
+				$r2 = new AFPData( AFPData::DEMPTY );
 
 				$isTrue = $result->toBool();
 
@@ -538,7 +538,7 @@ class AbuseFilterParser {
 		while ( $this->mCur->type === AFPToken::TOP && in_array( $this->mCur->value, $ops ) ) {
 			$op = $this->mCur->value;
 			$this->move();
-			$r2 = new AFPData( AFPData::DNONE );
+			$r2 = new AFPData( AFPData::DEMPTY );
 
 			// We can go on quickly as either one statement with | is true or one with & is false
 			if ( ( $op === '&' && !$result->toBool() ) || ( $op === '|' && $result->toBool() ) ) {
@@ -574,7 +574,7 @@ class AbuseFilterParser {
 				array_diff( $allowedOps, $orderOps );
 			$op = $this->mCur->value;
 			$this->move();
-			$r2 = new AFPData( AFPData::DNONE );
+			$r2 = new AFPData( AFPData::DEMPTY );
 			$this->doLevelSumRels( $r2 );
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
@@ -596,7 +596,7 @@ class AbuseFilterParser {
 		while ( $this->mCur->type === AFPToken::TOP && in_array( $this->mCur->value, $ops ) ) {
 			$op = $this->mCur->value;
 			$this->move();
-			$r2 = new AFPData( AFPData::DNONE );
+			$r2 = new AFPData( AFPData::DEMPTY );
 			$this->doLevelMulRels( $r2 );
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
@@ -622,7 +622,7 @@ class AbuseFilterParser {
 		while ( $this->mCur->type === AFPToken::TOP && in_array( $this->mCur->value, $ops ) ) {
 			$op = $this->mCur->value;
 			$this->move();
-			$r2 = new AFPData( AFPData::DNONE );
+			$r2 = new AFPData( AFPData::DEMPTY );
 			$this->doLevelPow( $r2 );
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
@@ -641,7 +641,7 @@ class AbuseFilterParser {
 		$this->doLevelBoolInvert( $result );
 		while ( $this->mCur->type === AFPToken::TOP && $this->mCur->value === '**' ) {
 			$this->move();
-			$expanent = new AFPData( AFPData::DNONE );
+			$expanent = new AFPData( AFPData::DEMPTY );
 			$this->doLevelBoolInvert( $expanent );
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
@@ -683,7 +683,7 @@ class AbuseFilterParser {
 		) {
 			$func = self::$mKeywords[$keyword];
 			$this->move();
-			$r2 = new AFPData( AFPData::DNONE );
+			$r2 = new AFPData( AFPData::DEMPTY );
 			$this->doLevelUnarys( $r2 );
 
 			if ( $this->mShortCircuit ) {
@@ -691,8 +691,8 @@ class AbuseFilterParser {
 				return;
 			}
 
-			if ( $result->getType() === AFPData::DNONE || $r2->getType() === AFPData::DNONE ) {
-				$result = new AFPData( AFPData::DNONE );
+			if ( $result->getType() === AFPData::DUNDEFINED || $r2->getType() === AFPData::DUNDEFINED ) {
+				$result = new AFPData( AFPData::DUNDEFINED );
 			} else {
 				$this->raiseCondCount();
 
@@ -733,7 +733,7 @@ class AbuseFilterParser {
 	protected function doLevelArrayElements( &$result ) {
 		$this->doLevelBraces( $result );
 		while ( $this->mCur->type === AFPToken::TSQUAREBRACKET && $this->mCur->value === '[' ) {
-			$idx = new AFPData( AFPData::DNONE );
+			$idx = new AFPData( AFPData::DEMPTY );
 			$this->doLevelSemicolon( $idx );
 			if ( !( $this->mCur->type === AFPToken::TSQUAREBRACKET && $this->mCur->value === ']' ) ) {
 				throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos,
@@ -746,8 +746,8 @@ class AbuseFilterParser {
 						[ $idx, count( $result->getData() ) ] );
 				}
 				$result = $result->getData()[$idx];
-			} elseif ( $result->getType() === AFPData::DNONE ) {
-				$result = new AFPData( AFPData::DNONE );
+			} elseif ( $result->getType() === AFPData::DUNDEFINED ) {
+				$result = new AFPData( AFPData::DUNDEFINED );
 			} else {
 				throw new AFPUserVisibleException( 'notarray', $this->mCur->pos, [] );
 			}
@@ -814,7 +814,7 @@ class AbuseFilterParser {
 			do {
 				$next = $this->getNextToken();
 				if ( $next->type !== AFPToken::TBRACE || $next->value !== ')' ) {
-					$r = new AFPData( AFPData::DNONE );
+					$r = new AFPData( AFPData::DEMPTY );
 					$this->doLevelSemicolon( $r );
 					$args[] = $r;
 				} else {
@@ -844,14 +844,15 @@ class AbuseFilterParser {
 				$result = $this->funcCache[$funcHash];
 			} else {
 				$this->raiseCondCount();
-				$hasEmptyData = false;
+				$hasUndefinedArg = false;
 				foreach ( $args as $arg ) {
-					if ( $arg->type === AFPData::DNONE ) {
-						$hasEmptyData = true;
+					if ( $arg->type === AFPData::DUNDEFINED ) {
+						$hasUndefinedArg = true;
+						break;
 					}
 				}
-				$result = $this->funcCache[$funcHash] = $hasEmptyData
-					? new AFPData( AFPData::DNONE )
+				$result = $this->funcCache[$funcHash] = $hasUndefinedArg
+					? new AFPData( AFPData::DUNDEFINED )
 					: $this->$func( $args );
 			}
 
@@ -876,10 +877,11 @@ class AbuseFilterParser {
 		switch ( $this->mCur->type ) {
 			case AFPToken::TID:
 				if ( $this->mShortCircuit ) {
-					break;
+					$result = new AFPData( AFPData::DUNDEFINED );
+				} else {
+					$var = strtolower( $tok );
+					$result = $this->getVarValue( $var );
 				}
-				$var = strtolower( $tok );
-				$result = $this->getVarValue( $var );
 				break;
 			case AFPToken::TSTRING:
 				$result = new AFPData( AFPData::DSTRING, $tok );
@@ -921,7 +923,7 @@ class AbuseFilterParser {
 						if ( $this->mCur->type === AFPToken::TSQUAREBRACKET && $this->mCur->value === ']' ) {
 							break;
 						}
-						$item = new AFPData( AFPData::DNONE );
+						$item = new AFPData( AFPData::DEMPTY );
 						$this->doLevelSet( $item );
 						$array[] = $item;
 						if ( $this->mCur->type === AFPToken::TSQUAREBRACKET && $this->mCur->value === ']' ) {

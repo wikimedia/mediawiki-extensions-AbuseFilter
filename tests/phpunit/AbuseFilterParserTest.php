@@ -748,14 +748,14 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * Tests for the AFPData::DNONE type. No exceptions should be thrown, and nothing should match.
+	 * Tests for the AFPData::DUNDEFINED type. No exceptions should be thrown, and nothing should match
 	 * @todo Once T198531 will be resolved, add a line to test that something like "added_lines[0]"
 	 *  doesn't throw an exception due to the array length.
 	 *
 	 * @param string $code To be parsed
-	 * @dataProvider provideDNONE
+	 * @dataProvider provideDUNDEFINED
 	 */
-	public function testDNONE( $code ) {
+	public function testDUNDEFINED( $code ) {
 		foreach ( self::getParsers() as $parser ) {
 			$pname = get_class( $parser );
 			try {
@@ -770,11 +770,11 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * Data provider for testDNONE. These bits of code must NOT match
+	 * Data provider for testDUNDEFINED. These bits of code must NOT match
 	 *
 	 * @return array
 	 */
-	public function provideDNONE() {
+	public function provideDUNDEFINED() {
 		return [
 			[ "5 / length( new_wikitext ) !== 3 ** edit_delta & " .
 				"float( timestamp / (user_age + 0.000001) ) !== 0.0" ],
@@ -792,7 +792,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ "var:= 5; added_lines contains var" ],
 			[ "false & (var := [ 1,2,3 ]); var === [ 1,2,3 ]" ],
 			[ "page_age - user_editcount !== 1234567 - page_namespace" ],
-			// Refuse to modify a DNONE offset as if it were an array
+			// Refuse to modify a DUNDEFINED offset as if it were an array
 			[ "false & (var := [ 1,2,3 ]); var[0] := true; var[0] === true" ],
 			[ "false & (var := [ 1,2,3 ]); var[] := 'baz'; 'baz' in var" ],
 			// But allow overwriting the whole variable
