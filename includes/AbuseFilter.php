@@ -547,7 +547,7 @@ class AbuseFilter {
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @param string $mode 'execute' for edits and logs, 'stash' for cached matches
 	 * @return bool[] Map of (integer filter ID => bool)
-	 * @deprecated Since 1.33 See comment on AbuseFilterRunner::checkAllFilters
+	 * @deprecated Since 1.34 See comment on AbuseFilterRunner::checkAllFilters
 	 */
 	public static function checkAllFilters(
 		AbuseFilterVariableHolder $vars,
@@ -736,7 +736,7 @@ class AbuseFilter {
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @param User $user The user performing the action
 	 * @return Status
-	 * @deprecated Since 1.33 Build an AbuseFilterRunner instance and call run() on that.
+	 * @deprecated Since 1.34 Build an AbuseFilterRunner instance and call run() on that.
 	 */
 	public static function filterAction(
 		AbuseFilterVariableHolder $vars, Title $title, $group, User $user
