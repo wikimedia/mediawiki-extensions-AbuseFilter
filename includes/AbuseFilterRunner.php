@@ -253,7 +253,7 @@ class AbuseFilterRunner {
 			'check-stash',
 			$this->group,
 			$hash,
-			'v1'
+			'v2'
 		);
 	}
 
