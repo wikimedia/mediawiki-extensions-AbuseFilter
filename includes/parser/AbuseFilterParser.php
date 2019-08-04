@@ -347,7 +347,9 @@ class AbuseFilterParser {
 
 				return;
 			} elseif ( $this->mCur->type === AFPToken::TSQUAREBRACKET && $this->mCur->value === '[' ) {
-				if ( !$this->mVariables->varIsSet( $varname ) ) {
+				// We allow builtin variables to both check for override (e.g. added_lines[] :='x')
+				// and for T198531
+				if ( !$this->varExists( $varname ) ) {
 					throw new AFPUserVisibleException( 'unrecognisedvar',
 						$this->mCur->pos,
 						[ $varname ]
@@ -380,6 +382,10 @@ class AbuseFilterParser {
 				}
 				$this->move();
 				if ( $this->mCur->type === AFPToken::TOP && $this->mCur->value === ':=' ) {
+					if ( $this->isBuiltinVar( $varname ) ) {
+						// Ideally we should've aborted before trying to parse the index
+						throw new AFPUserVisibleException( 'overridebuiltin', $this->mCur->pos, [ $varname ] );
+					}
 					$this->move();
 					$this->doLevelSet( $result );
 					if ( $array->getType() === AFPData::DARRAY ) {
@@ -978,22 +984,33 @@ class AbuseFilterParser {
 	/* End of levels */
 
 	/**
+	 * Check whether a variable exists, being either built-in or user-defined
+	 *
+	 * @param string $varname
+	 * @return bool
+	 */
+	protected function varExists( $varname ) {
+		$builderValues = AbuseFilter::getBuilderValues();
+
+		return array_key_exists( $varname, $builderValues['vars'] ) ||
+			$this->mVariables->varIsSet( $varname );
+	}
+
+	/**
 	 * @param string $var
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
 	 */
 	protected function getVarValue( $var ) {
 		$var = strtolower( $var );
-		$builderValues = AbuseFilter::getBuilderValues();
 		$deprecatedVars = AbuseFilter::getDeprecatedVariables();
+
 		if ( array_key_exists( $var, $deprecatedVars ) ) {
 			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
 			$logger->debug( "AbuseFilter: deprecated variable $var used." );
 			$var = $deprecatedVars[$var];
 		}
-		if ( !( array_key_exists( $var, $builderValues['vars'] )
-			|| $this->mVariables->varIsSet( $var ) )
-		) {
+		if ( !$this->varExists( $var ) ) {
 			$msg = array_key_exists( $var, AbuseFilter::$disabledVars ) ?
 				'disabledvar' :
 				'unrecognisedvar';
@@ -1012,17 +1029,28 @@ class AbuseFilterParser {
 	}
 
 	/**
+	 * Check whether the given name refers to a built-in variable, including
+	 * deprecated and disabled variables.
+	 *
+	 * @param string $varname
+	 * @return bool
+	 */
+	protected function isBuiltinVar( $varname ) {
+		$builderValues = AbuseFilter::getBuilderValues();
+		$deprecatedVars = AbuseFilter::getDeprecatedVariables();
+
+		return array_key_exists( $varname, $builderValues['vars'] ) ||
+			array_key_exists( $varname, AbuseFilter::$disabledVars ) ||
+			array_key_exists( $varname, $deprecatedVars );
+	}
+
+	/**
 	 * @param string $name
 	 * @param mixed $value
 	 * @throws AFPUserVisibleException
 	 */
 	protected function setUserVariable( $name, $value ) {
-		$builderValues = AbuseFilter::getBuilderValues();
-		$deprecatedVars = AbuseFilter::getDeprecatedVariables();
-		if ( array_key_exists( $name, $builderValues['vars'] ) ||
-			array_key_exists( $name, AbuseFilter::$disabledVars ) ||
-			array_key_exists( $name, $deprecatedVars )
-		) {
+		if ( $this->isBuiltinVar( $name ) ) {
 			throw new AFPUserVisibleException( 'overridebuiltin', $this->mCur->pos, [ $name ] );
 		}
 		$this->mVariables->setVar( $name, $value );

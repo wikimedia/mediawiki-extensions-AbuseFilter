@@ -274,6 +274,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	public function unrecognisedVar() {
 		return [
 			[ 'a[1] := 5', 'doLevelSet' ],
+			[ 'a[] := 5', 'doLevelSet' ],
 			[ 'a = 5', 'getVarValue' ],
 			[ 'false & ( nonexistent[1] := 2 )', 'skipOverBraces/discardNode' ],
 			[ 'false & ( nonexistent[] := 2 )', 'skipOverBraces/discardNode' ],
@@ -426,6 +427,9 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	public function overrideBuiltin() {
 		return [
 			[ 'added_lines := 1', 'setUserVariable' ],
+			[ 'added_lines[] := 1', 'doLevelSet' ],
+			[ 'added_lines[3] := 1', 'doLevelSet' ],
+			[ 'page_id[3] := 1', 'doLevelSet' ],
 		];
 	}
 
@@ -749,8 +753,6 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 
 	/**
 	 * Tests for the AFPData::DUNDEFINED type. No exceptions should be thrown, and nothing should match
-	 * @todo Once T198531 will be resolved, add a line to test that something like "added_lines[0]"
-	 *  doesn't throw an exception due to the array length.
 	 *
 	 * @param string $code To be parsed
 	 * @dataProvider provideDUNDEFINED
@@ -786,6 +788,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ "norm(user_name) !== rmspecials('')" ],
 			[ "-user_editcount !== 1234567890" ],
 			[ "added_lines" ],
+			[ "removed_lines[0] !== 123456" ],
 			[ "-new_size" ],
 			[ "new_wikitext !== null" ],
 			[ "true & user_editcount" ],
