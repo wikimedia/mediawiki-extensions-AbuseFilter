@@ -276,29 +276,35 @@ class AbuseFilterViewList extends AbuseFilterView {
 	}
 
 	/**
-	 * Show stats
+	 * Generates a summary of filter activity using the internal statistics.
 	 */
 	public function showStatus() {
 		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
-		$overflow_count = (int)$stash->get( AbuseFilter::filterLimitReachedKey() );
-		$match_count = (int)$stash->get( AbuseFilter::filterMatchesKey() );
-		$total_count = 0;
+
+		$totalCount = 0;
+		$matchCount = 0;
+		$overflowCount = 0;
 		foreach ( $this->getConfig()->get( 'AbuseFilterValidGroups' ) as $group ) {
-			$total_count += (int)$stash->get( AbuseFilter::filterUsedKey( $group ) );
+			$profile = $stash->get( AbuseFilter::filterProfileGroupKey( $group ) );
+			if ( $profile !== false ) {
+				$totalCount += $profile[ 'total' ];
+				$overflowCount += $profile[ 'overflow' ];
+				$matchCount += $profile[ 'matches' ];
+			}
 		}
 
-		if ( $total_count > 0 ) {
-			$overflow_percent = sprintf( "%.2f", 100 * $overflow_count / $total_count );
-			$match_percent = sprintf( "%.2f", 100 * $match_count / $total_count );
+		if ( $totalCount > 0 ) {
+			$overflowPercent = round( 100 * $overflowCount / $totalCount, 2 );
+			$matchPercent = round( 100 * $matchCount / $totalCount, 2 );
 
 			$status = $this->msg( 'abusefilter-status' )
 				->numParams(
-					$total_count,
-					$overflow_count,
-					$overflow_percent,
+					$totalCount,
+					$overflowCount,
+					$overflowPercent,
 					$this->getConfig()->get( 'AbuseFilterConditionLimit' ),
-					$match_count,
-					$match_percent
+					$matchCount,
+					$matchPercent
 				)->parse();
 
 			$status = Xml::tags( 'div', [ 'class' => 'mw-abusefilter-status' ], $status );

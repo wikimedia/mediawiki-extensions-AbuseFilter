@@ -996,13 +996,6 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @return string
-	 */
-	public static function filterLimitReachedKey() {
-		return wfMemcKey( 'abusefilter', 'stats', 'overflow' );
-	}
-
-	/**
 	 * Get the memcache access key used to store per-filter profiling data.
 	 *
 	 * @param string|int $filter
@@ -1014,18 +1007,14 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
+	 * Memcache access key used to store overall profiling data for rule groups
+	 *
+	 * @param string $group
 	 * @return string
 	 */
-	public static function filterUsedKey( $group ) {
-		return wfMemcKey( 'abusefilter', 'stats', 'total', $group );
-	}
-
-	/**
-	 * @return string
-	 */
-	public static function filterMatchesKey() {
-		return wfMemcKey( 'abusefilter', 'stats', 'matches', null );
+	public static function filterProfileGroupKey( $group ) {
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		return $cache->makeKey( 'abusefilter-profile', 'group', $group );
 	}
 
 	/**
