@@ -168,10 +168,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		// Hide hidden filters.
 		if (
-			(
-				( isset( $row->af_hidden ) && $row->af_hidden ) ||
-				( $filter !== 'new' && AbuseFilter::filterHidden( $filter ) )
-			) && !$this->canViewPrivate()
+			( $row->af_hidden || ( $filter !== 'new' && AbuseFilter::filterHidden( $filter ) ) ) &&
+			!$this->canViewPrivate()
 		) {
 			$out->addHTML( $this->msg( 'abusefilter-edit-denied' )->escaped() );
 			return;
@@ -241,7 +239,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$fields['abusefilter-edit-hitcount'] = $hitCount;
 		}
 
-		if ( $filter !== 'new' ) {
+		if ( $filter !== 'new' && $row->af_enabled ) {
 			// Statistics
 			list( $totalCount, $matchesCount, $avgTime, $avgCond ) =
 				AbuseFilter::getFilterProfile( $filter );
