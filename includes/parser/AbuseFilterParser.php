@@ -545,13 +545,18 @@ class AbuseFilterParser {
 				$orig = $this->mShortCircuit;
 				$this->mShortCircuit = $this->mAllowShort;
 				$this->doLevelCompares( $r2 );
+				if ( $r2->getType() === AFPData::DEMPTY ) {
+					$this->logEmptyOperand( 'bool operand', __METHOD__ );
+				}
 				$this->mShortCircuit = $orig;
 				$result = new AFPData( AFPData::DBOOL, $result->toBool() );
 				continue;
 			}
 
 			$this->doLevelCompares( $r2 );
-
+			if ( $r2->getType() === AFPData::DEMPTY ) {
+				$this->logEmptyOperand( 'bool operand', __METHOD__ );
+			}
 			$result = AFPData::boolOp( $result, $r2, $op );
 		}
 	}
@@ -576,6 +581,9 @@ class AbuseFilterParser {
 			$this->move();
 			$r2 = new AFPData( AFPData::DEMPTY );
 			$this->doLevelSumRels( $r2 );
+			if ( $r2->getType() === AFPData::DEMPTY ) {
+				$this->logEmptyOperand( 'compare operand', __METHOD__ );
+			}
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
 				continue;
@@ -598,6 +606,9 @@ class AbuseFilterParser {
 			$this->move();
 			$r2 = new AFPData( AFPData::DEMPTY );
 			$this->doLevelMulRels( $r2 );
+			if ( $r2->getType() === AFPData::DEMPTY ) {
+				$this->logEmptyOperand( 'sum operand', __METHOD__ );
+			}
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
 				continue;
@@ -624,6 +635,9 @@ class AbuseFilterParser {
 			$this->move();
 			$r2 = new AFPData( AFPData::DEMPTY );
 			$this->doLevelPow( $r2 );
+			if ( $r2->getType() === AFPData::DEMPTY ) {
+				$this->logEmptyOperand( 'multiplication operand', __METHOD__ );
+			}
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
 				continue;
@@ -643,6 +657,9 @@ class AbuseFilterParser {
 			$this->move();
 			$expanent = new AFPData( AFPData::DEMPTY );
 			$this->doLevelBoolInvert( $expanent );
+			if ( $expanent->getType() === AFPData::DEMPTY ) {
+				$this->logEmptyOperand( 'power operand', __METHOD__ );
+			}
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
 				continue;
@@ -685,6 +702,10 @@ class AbuseFilterParser {
 			$this->move();
 			$r2 = new AFPData( AFPData::DEMPTY );
 			$this->doLevelUnarys( $r2 );
+
+			if ( $r2->getType() === AFPData::DEMPTY ) {
+				$this->logEmptyOperand( 'keyword operand', __METHOD__ );
+			}
 
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
@@ -811,18 +832,19 @@ class AbuseFilterParser {
 			}
 
 			$args = [];
-			do {
-				$next = $this->getNextToken();
-				if ( $next->type !== AFPToken::TBRACE || $next->value !== ')' ) {
+			$next = $this->getNextToken();
+			if ( $next->type !== AFPToken::TBRACE || $next->value !== ')' ) {
+				do {
 					$r = new AFPData( AFPData::DEMPTY );
 					$this->doLevelSemicolon( $r );
+					if ( $r->getType() === AFPData::DEMPTY ) {
+						$this->logEmptyOperand( 'function argument', __METHOD__ );
+					}
 					$args[] = $r;
-				} else {
-					$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-					$logger->debug( "Found null param for function $func" );
-					$this->move();
-				}
-			} while ( $this->mCur->type === AFPToken::TCOMMA );
+				} while ( $this->mCur->type === AFPToken::TCOMMA );
+			} else {
+				$this->move();
+			}
 
 			if ( $this->mCur->type !== AFPToken::TBRACE || $this->mCur->value !== ')' ) {
 				throw new AFPUserVisibleException( 'expectednotfound',
@@ -1593,5 +1615,16 @@ class AbuseFilterParser {
 	protected function castBool( $args ) {
 		$this->checkEnoughArguments( $args, 'bool', 1 );
 		return AFPData::castTypes( $args[0], AFPData::DBOOL );
+	}
+
+	/**
+	 * Log empty operands for T156096
+	 *
+	 * @param string $type Type of the empty operand
+	 * @param string $fname Method where the empty operand is found
+	 */
+	protected function logEmptyOperand( $type, $fname ) {
+		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+		$logger->info( "Empty operand of type $type at method $fname" );
 	}
 }
