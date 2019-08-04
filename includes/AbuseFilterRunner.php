@@ -375,7 +375,7 @@ class AbuseFilterRunner {
 		$pattern = trim( $row->af_pattern );
 		$result = AbuseFilter::checkConditions( $pattern, $this->parser, true, $filterName );
 
-		$timeTaken = microtime( true ) - $startTime;
+		$timeTaken = 1000 * ( microtime( true ) - $startTime );
 		$condsUsed = $this->parser->getCondCount() - $startConds;
 
 		$this->profilingData[$filterName] = [
@@ -403,9 +403,8 @@ class AbuseFilterRunner {
 				$this->recordProfilingResult( $filterID, $params['time'], $params['conds'], $params['result'] );
 			}
 
-			$runtime = $params['time'] * 1000;
-			if ( $runtime > $wgAbuseFilterSlowFilterRuntimeLimit ) {
-				$this->recordSlowFilter( $filterName, $runtime, $params['conds'], $params['result'] );
+			if ( $params['time'] > $wgAbuseFilterSlowFilterRuntimeLimit ) {
+				$this->recordSlowFilter( $filterName, $params['time'], $params['conds'], $params['result'] );
 			}
 		}
 	}
@@ -414,7 +413,7 @@ class AbuseFilterRunner {
 	 * Record per-filter profiling data
 	 *
 	 * @param int $filter
-	 * @param float $time
+	 * @param float $time Time taken, in milliseconds
 	 * @param int $conds
 	 * @param bool $matched
 	 */

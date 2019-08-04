@@ -1832,7 +1832,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					17 => [
 						'matches' => 1,
 						'actions' => 6,
-						'averageConditions' => 4.0
+						'averageConditions' => 4.3
 					],
 					19 => [
 						'matches' => 1,
@@ -1872,7 +1872,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					17 => [
 						'matches' => 1,
 						'actions' => 6,
-						'averageConditions' => 4.0
+						'averageConditions' => 4.3
 					],
 					19 => [
 						'matches' => 1,
@@ -1912,7 +1912,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					17 => [
 						'matches' => 1,
 						'actions' => 6,
-						'averageConditions' => 4.0
+						'averageConditions' => 4.3
 					],
 					19 => [
 						'matches' => 1,
