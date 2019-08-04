@@ -1,7 +1,5 @@
 <?php
 
-use MediaWiki\MediaWikiServices;
-
 class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
 	 * @var stdClass|null An abuse_filter row describing a filter
@@ -245,15 +243,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		if ( $filter !== 'new' ) {
 			// Statistics
-			$stash = MediaWikiServices::getInstance()->getMainObjectStash();
-			$matches_count = (int)$stash->get( AbuseFilter::filterMatchesKey( $filter ) );
-			$total = (int)$stash->get( AbuseFilter::filterUsedKey( $row->af_group ) );
+			list( $totalCount, $matchesCount, $avgTime, $avgCond ) =
+				AbuseFilter::getFilterProfile( $filter );
 
-			if ( $total > 0 ) {
-				$matches_percent = sprintf( '%.2f', 100 * $matches_count / $total );
-				list( $timeProfile, $condProfile ) = AbuseFilter::getFilterProfile( $filter );
+			if ( $totalCount > 0 ) {
+				$matchesPercent = round( 100 * $matchesCount / $totalCount, 2 );
 				$fields['abusefilter-edit-status-label'] = $this->msg( 'abusefilter-edit-status' )
-					->numParams( $total, $matches_count, $matches_percent, $timeProfile, $condProfile )
+					->numParams( $totalCount, $matchesCount, $matchesPercent, $avgTime, $avgCond )
 					->parse();
 			}
 		}
