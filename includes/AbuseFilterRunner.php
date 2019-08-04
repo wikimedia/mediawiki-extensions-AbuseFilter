@@ -148,15 +148,11 @@ class AbuseFilterRunner {
 				'profiling' => $this->profilingData
 			];
 		}
-		$matchedFilters = array_keys( array_filter( $result['matches'] ) );
 
-		$this->recordRuntimeProfilingResult(
-			count( $matchedFilters ),
-			$result['condCount'],
-			$result['runtime']
-		);
-		$this->recordPerFilterProfiling( $result['profiling'] );
-		$this->recordStats( $result['condCount'], $result['runtime'], (bool)$matchedFilters );
+		$matchedFilters = array_keys( array_filter( $result['matches'] ) );
+		$allFilters = array_keys( $result['matches'] );
+
+		$this->profileExecution( $result, $matchedFilters, $allFilters );
 
 		if ( count( $matchedFilters ) === 0 ) {
 			return Status::newGood();
@@ -389,6 +385,46 @@ class AbuseFilterRunner {
 	}
 
 	/**
+	 * @param array $result Result of the execution, as created in run()
+	 * @param string[] $matchedFilters
+	 * @param string[] $allFilters
+	 */
+	protected function profileExecution( array $result, array $matchedFilters, array $allFilters ) {
+		$this->checkResetProfiling( $allFilters );
+		$this->recordRuntimeProfilingResult(
+			count( $matchedFilters ),
+			$result['condCount'],
+			$result['runtime']
+		);
+		$this->recordPerFilterProfiling( $result['profiling'] );
+		$this->recordStats( $result['condCount'], $result['runtime'], (bool)$matchedFilters );
+	}
+
+	/**
+	 * Check if profiling data for all filters is lesser than the limit. If not, delete it and
+	 * also delete per-filter profiling for all filters. Note that we don't need to reset it for
+	 * disabled filters too, as their profiling data will be reset upon re-enabling anyway.
+	 *
+	 * @param array $allFilters
+	 */
+	protected function checkResetProfiling( array $allFilters ) {
+		global $wgAbuseFilterProfileActionsCap;
+
+		$profileKey = AbuseFilter::filterProfileGroupKey( $this->group );
+		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
+
+		$profile = $stash->get( $profileKey );
+		$total = $profile['total'] ?? 0;
+
+		if ( $total > $wgAbuseFilterProfileActionsCap ) {
+			$stash->delete( $profileKey );
+			foreach ( $allFilters as $filter ) {
+				AbuseFilter::resetFilterProfile( $filter );
+			}
+		}
+	}
+
+	/**
 	 * Record per-filter profiling, for all filters
 	 *
 	 * @param array $data Profiling data, as stored in $this->profilingData
@@ -490,12 +526,9 @@ class AbuseFilterRunner {
 		$stash->merge(
 			$profileKey,
 			function ( $cache, $key, $profile ) use ( $condsUsed, $totalTime, $anyMatch ) {
-				global $wgAbuseFilterConditionLimit, $wgAbuseFilterProfileActionsCap;
+				global $wgAbuseFilterConditionLimit;
 
-				if ( $profile === false || $profile['total'] > $wgAbuseFilterProfileActionsCap ) {
-					// This is for if the total doesn't exist, or has gone past $wgAbuseFilterProfileActionsCap.
-					// Recreate all the keys at the same time, so they expire together.
-
+				if ( $profile === false ) {
 					$profile = [
 						// Total number of actions observed
 						'total' => 0,
@@ -508,12 +541,6 @@ class AbuseFilterRunner {
 						// Total number of filters matched
 						'matches' => 0
 					];
-
-					// @fixme We should also call resetFilterProfile, but this isn't the right place:
-					// it should probably be done before updating any profiling data, for instance
-					// before calling recordRuntimeProfilingResult. Note that resetting
-					// it for filters passed in here is enough, as profiling for other (=disabled) filters
-					// will be reset upon re-enabling them.
 				}
 
 				$profile['total']++;

@@ -568,8 +568,9 @@ class AbuseFilter {
 
 	/**
 	 * @param int $filter
+	 * @internal
 	 */
-	private static function resetFilterProfile( $filter ) {
+	public static function resetFilterProfile( $filter ) {
 		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
 		$profileKey = self::filterProfileKey( $filter );
 
