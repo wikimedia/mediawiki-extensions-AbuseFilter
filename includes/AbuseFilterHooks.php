@@ -132,7 +132,7 @@ class AbuseFilterHooks {
 
 		// Load vars for filters to check
 		$vars = self::newVariableHolderForEdit(
-			$user, $title, $page, $summary, $content, $text, $oldContent, $oldAfText
+			$user, $title, $page, $summary, $content, $text, $oldAfText, $oldContent
 		);
 
 		$runner = new AbuseFilterRunner( $user, $title, $vars, 'default' );
@@ -155,14 +155,14 @@ class AbuseFilterHooks {
 	 * @param string $summary
 	 * @param Content $newcontent
 	 * @param string $text
+	 * @param string $oldtext
 	 * @param Content|null $oldcontent
-	 * @param string $oldtext (not actually ever null)
 	 * @return AbuseFilterVariableHolder
 	 * @throws MWException
 	 */
 	private static function newVariableHolderForEdit(
 		User $user, Title $title, $page, $summary, Content $newcontent,
-		$text, $oldcontent = null, $oldtext = null
+		$text, $oldtext, Content $oldcontent = null
 	) {
 		$vars = new AbuseFilterVariableHolder();
 		$vars->addHolders(
@@ -878,7 +878,7 @@ class AbuseFilterHooks {
 		DeferredUpdates::addCallableUpdate(
 			function () use ( $user, $page, $summary, $content, $text, $oldContent, $oldAfText ) {
 				$vars = self::newVariableHolderForEdit(
-					$user, $page->getTitle(), $page, $summary, $content, $text, $oldContent, $oldAfText
+					$user, $page->getTitle(), $page, $summary, $content, $text, $oldAfText, $oldContent
 				);
 				$runner = new AbuseFilterRunner( $user, $page->getTitle(), $vars, 'default' );
 				$runner->runForStash();
