@@ -29,6 +29,7 @@
 	"abusefilter-log-detailedentry-local": "filthru $1",
 	"abusefilter-log-detailslink": "dettàglii",
 	"abusefilter-log-diff": "diffarènzia",
+	"abusefilter-log-details-checkuser": "Verifiggà l'utenti",
 	"abusefilter-log-noactions": "nisciuna",
 	"abusefilter-log-details-diff": "Ciambamenti da chistha mudìfigga",
 	"abusefilter-log-hide-reason": "Mutibazioni:",
@@ -44,6 +45,7 @@
 	"abusefilter-list-edit": "Mudifiggà",
 	"abusefilter-list-details": "Dettàglii",
 	"abusefilter-list-group": "Gruppu di filthru",
+	"abusefilter-unhidden": "Prùbbiggu",
 	"abusefilter-enabled": "Attibu",
 	"abusefilter-deleted": "Canzilladdu",
 	"abusefilter-new": "Crià un nobu filthru",
@@ -99,5 +101,8 @@
 	"abusefilter-block-talk": "pàgina di dischussioni bruccadda",
 	"abusefilter-edit-done-subtitle": "Filthru mudifiggaddu",
 	"abusefilter-edit-history": "Cronologia:",
-	"abusefilter-edit-tools": "Isthrumenti:"
+	"abusefilter-edit-tools": "Isthrumenti:",
+	"abusefilter-edit-builder-op-comparison-lt": "Più minori di (<)",
+	"abusefilter-edit-builder-op-comparison-gt": "Più mannu di (>)",
+	"abusefilter-edit-builder-vars-action": "Azioni"
 }

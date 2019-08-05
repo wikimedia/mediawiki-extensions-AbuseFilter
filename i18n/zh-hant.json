@@ -84,7 +84,7 @@
 	"abusefilter-log-search-user": "使用者：",
 	"abusefilter-log-search-group": "過濾器群組：",
 	"abusefilter-log-search-group-any": "任何",
-	"abusefilter-log-search-filter": "過濾器 ID (以 | 符號分隔) ：",
+	"abusefilter-log-search-filter": "過濾器 ID：",
 	"abusefilter-log-search-title": "標題：",
 	"abusefilter-log-search-wiki": "Wiki：",
 	"abusefilter-log-search-impact": "影響：",

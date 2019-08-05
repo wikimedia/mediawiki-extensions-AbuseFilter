@@ -43,7 +43,7 @@
 	"apihelp-query+abuselog-param-end": "الطابع الزمني لوقف التعداد فيه.",
 	"apihelp-query+abuselog-param-user": "إظهار الإدخالات من قبل مستخدم معين أو عنوان أيبي فقط.",
 	"apihelp-query+abuselog-param-title": "إظهار الإدخالات التي تحدث في صفحة معينة فقط.",
-	"apihelp-query+abuselog-param-filter": "إظهار الإدخالات التي تم التقاطها بواسطة معرف مرشح معين فقط.",
+	"apihelp-query+abuselog-param-filter": "إظهار الإدخالات فقط التي تم اكتشافها بواسطة معرفات المرشحات المحددة، افصل بالأنابيب والبادئة بـ\"$1\" للمرشحات العالمية.",
 	"apihelp-query+abuselog-param-limit": "الحد الأقصى لعدد الإدخالات للقائمة.",
 	"apihelp-query+abuselog-param-prop": "أي خصائص للحصول عليها.",
 	"apihelp-query+abuselog-param-wiki": "ويكي لإظهار نتائج منه.",
