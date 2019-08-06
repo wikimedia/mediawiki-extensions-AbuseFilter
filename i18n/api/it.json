@@ -31,7 +31,7 @@
 	"apihelp-query+abuselog-param-end": "Il timestamp al quale interrompere l'elenco.",
 	"apihelp-query+abuselog-param-user": "Mostra solo le voci relative a un utente o IP indicato.",
 	"apihelp-query+abuselog-param-title": "Mostra solo le voci relative a una pagina indicata.",
-	"apihelp-query+abuselog-param-filter": "Mostra solo le voci relative al filtro con l'ID indicato.",
+	"apihelp-query+abuselog-param-filter": "Mostra solo le voci relative ai filtri con gli ID indicati. Separare con barre verticali, utilizzando il prefisso \"$1\" per i filtri globali.",
 	"apihelp-query+abuselog-param-prop": "Quali proprietà ottenere.",
 	"apierror-abusefilter-badsyntax": "Il filtro contiene sintassi non valida."
 }
