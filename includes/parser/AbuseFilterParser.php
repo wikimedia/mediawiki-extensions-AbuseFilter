@@ -253,7 +253,6 @@ class AbuseFilterParser {
 					$braces++;
 					$next = $this->getNextToken();
 					if ( $next->type === AFPToken::TSTRING ) {
-						// @todo Handle expressions here
 						$this->setUserVariable( $next->value, new AFPData( AFPData::DUNDEFINED ) );
 					}
 				} else {
@@ -833,7 +832,8 @@ class AbuseFilterParser {
 	 */
 	protected function doLevelFunction( &$result ) {
 		if ( $this->mCur->type === AFPToken::TID && isset( self::$mFunctions[$this->mCur->value] ) ) {
-			$func = self::$mFunctions[$this->mCur->value];
+			$fname = $this->mCur->value;
+			$func = self::$mFunctions[$fname];
 			$this->move();
 			if ( $this->mCur->type !== AFPToken::TBRACE || $this->mCur->value !== '(' ) {
 				throw new AFPUserVisibleException( 'expectednotfound',
@@ -858,6 +858,23 @@ class AbuseFilterParser {
 			$args = [];
 			$next = $this->getNextToken();
 			if ( $next->type !== AFPToken::TBRACE || $next->value !== ')' ) {
+				if ( ( $fname === 'set' || $fname === 'set_var' ) ) {
+					$state = $this->getState();
+					$this->move();
+					$next = $this->getNextToken();
+					if (
+						$this->mCur->type !== AFPToken::TSTRING ||
+						(
+							$next->type !== AFPToken::TCOMMA &&
+							// Let this fail later, when checking parameters count
+							!( $next->type === AFPToken::TBRACE && $next->value === ')' )
+						)
+					) {
+						throw new AFPUserVisibleException( 'variablevariable', $this->mCur->pos, [] );
+					} else {
+						$this->setState( $state );
+					}
+				}
 				do {
 					$r = new AFPData( AFPData::DEMPTY );
 					$this->doLevelSemicolon( $r );

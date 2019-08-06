@@ -42,6 +42,16 @@ class AFPTreeParser {
 	}
 
 	/**
+	 * Get the next token. This is similar to move() but doesn't change class members,
+	 *   allowing to look ahead without rolling back the state.
+	 *
+	 * @return AFPToken
+	 */
+	protected function getNextToken() {
+		return $this->mTokens[$this->mPos][0];
+	}
+
+	/**
 	 * getState() function allows parser state to be rollbacked to several tokens
 	 * back.
 	 *
@@ -528,6 +538,23 @@ class AFPTreeParser {
 				);
 			}
 
+			if ( ( $func === 'set' || $func === 'set_var' ) ) {
+				$state = $this->getState();
+				$this->move();
+				$next = $this->getNextToken();
+				if (
+					$this->mCur->type !== AFPToken::TSTRING ||
+					(
+						$next->type !== AFPToken::TCOMMA &&
+						// Let this fail later, when checking parameters count
+						!( $next->type === AFPToken::TBRACE && $next->value === ')' )
+					)
+				) {
+					throw new AFPUserVisibleException( 'variablevariable', $this->mPos, [] );
+				} else {
+					$this->setState( $state );
+				}
+			}
 			$args = [];
 			do {
 				$args[] = $this->doLevelSemicolon();

@@ -409,6 +409,33 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
+	 * Test the 'variablevariable' exception
+	 *
+	 * @param string $expr The expression to test
+	 * @param string $caller The function where the exception is thrown
+	 * @dataProvider variableVariable
+	 */
+	public function testVariableVariableException( $expr, $caller ) {
+		$this->exceptionTest( 'variablevariable', $expr, $caller );
+	}
+
+	/**
+	 * Data provider for testVariableVariableException
+	 * The second parameter is the function where the exception is raised.
+	 * One expression for each throw.
+	 *
+	 * @return array
+	 */
+	public function variableVariable() {
+		return [
+			[ "set( 'x' + 'y', 1 )", 'doLevelFunction' ],
+			[ "set( 'x' + page_title, 1 )", 'doLevelFunction' ],
+			[ "set( page_title, 1 )", 'doLevelFunction' ],
+			[ "set( page_title + 'x' + ( page_namespace == 0 ? 'x' : 'y' )", 'doLevelFunction' ],
+		];
+	}
+
+	/**
 	 * Test the 'overridebuiltin' exception
 	 *
 	 * @param string $expr The expression to test

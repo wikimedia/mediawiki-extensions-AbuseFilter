@@ -363,7 +363,6 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 		) {
 			$varnameNode = $node->children[1];
 			if ( $varnameNode->type === AFPTreeNode::ATOM ) {
-				// @todo Handle expressions here
 				$this->setUserVariable( $varnameNode->children->value, new AFPData( AFPData::DUNDEFINED ) );
 			}
 		} elseif ( $node->type === AFPTreeNode::ATOM ) {
