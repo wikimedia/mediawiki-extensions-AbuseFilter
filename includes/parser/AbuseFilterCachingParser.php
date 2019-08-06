@@ -356,6 +356,16 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				throw new AFPUserVisibleException( 'unrecognisedvar', $node->position, [ $varName ] );
 			}
 			$this->setUserVariable( $varName, new AFPData( AFPData::DUNDEFINED ) );
+		} elseif (
+			$node->type === AFPTreeNode::FUNCTION_CALL &&
+			in_array( $node->children[0], [ 'set', 'set_var' ] ) &&
+			isset( $node->children[1] )
+		) {
+			$varnameNode = $node->children[1];
+			if ( $varnameNode->type === AFPTreeNode::ATOM ) {
+				// @todo Handle expressions here
+				$this->setUserVariable( $varnameNode->children->value, new AFPData( AFPData::DUNDEFINED ) );
+			}
 		} elseif ( $node->type === AFPTreeNode::ATOM ) {
 			return;
 		}

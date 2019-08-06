@@ -243,18 +243,34 @@ class AbuseFilterParser {
 				}
 			} elseif ( $this->mCur->type === AFPToken::TID ) {
 				// T214674, define variables
-				$varname = $this->mCur->value;
 				$next = $this->getNextToken();
-				if ( $next->type === AFPToken::TOP && $next->value === ':=' ) {
-					$this->setUserVariable( $varname, new AFPData( AFPData::DUNDEFINED ) );
-				} elseif ( $next->type === AFPToken::TSQUAREBRACKET && $next->value === '[' ) {
-					if ( !$this->mVariables->varIsSet( $varname ) ) {
-						throw new AFPUserVisibleException( 'unrecognisedvar',
-							$next->pos,
-							[ $varname ]
-						);
+				if (
+					in_array( $this->mCur->value, [ 'set', 'set_var' ] ) &&
+					$next->type === AFPToken::TBRACE && $next->value === '('
+				) {
+					// This is for setter functions.
+					$this->move();
+					$braces++;
+					$next = $this->getNextToken();
+					if ( $next->type === AFPToken::TSTRING ) {
+						// @todo Handle expressions here
+						$this->setUserVariable( $next->value, new AFPData( AFPData::DUNDEFINED ) );
 					}
-					$this->setUserVariable( $varname, new AFPData( AFPData::DUNDEFINED ) );
+				} else {
+					// Simple assignment with :=
+					$varname = $this->mCur->value;
+					$next = $this->getNextToken();
+					if ( $next->type === AFPToken::TOP && $next->value === ':=' ) {
+						$this->setUserVariable( $varname, new AFPData( AFPData::DUNDEFINED ) );
+					} elseif ( $next->type === AFPToken::TSQUAREBRACKET && $next->value === '[' ) {
+						if ( !$this->mVariables->varIsSet( $varname ) ) {
+							throw new AFPUserVisibleException( 'unrecognisedvar',
+								$next->pos,
+								[ $varname ]
+							);
+						}
+						$this->setUserVariable( $varname, new AFPData( AFPData::DUNDEFINED ) );
+					}
 				}
 			}
 		}

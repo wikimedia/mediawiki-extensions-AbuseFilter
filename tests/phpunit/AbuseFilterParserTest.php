@@ -226,6 +226,8 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ 'a := [1,2', 'doLevelAtom' ],
 			[ '1 = 1 | (', 'skipOverBraces' ],
 			[ 'a := [1,2,3]; 3 = a[5', 'doLevelArrayElements' ],
+			// `set` is the name of a function. It's unclear whether the following should be allowed.
+			[ 'set:= 1; set contains 1', 'doLevelFunction' ],
 		];
 	}
 
@@ -739,12 +741,15 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ "x := [5]; false & (1 == 1; y := 'b'; x[1] := 'x'; 3 < 4); y != 'b' & x[1] != 'x'" ],
 			[ "(var := [1]); false & ( var[] := 'baz' ); var contains 'baz'" ],
 			[ "(var := [1]); false & ( var[1] := 'baz' ); var[1] === 'baz'" ],
+			[ "false & (set('myvar', 1)); myvar contains 1" ],
 			// The following tests are to ensure that we don't get a match
 			[ "false & ( var := 'foo'; x := get_matches( var, added_lines )[1] ); x != false" ],
 			[ "false & ( var := 'foo'); var !== null" ],
 			[ "false & ( var := 'foo'); var === null" ],
+			[ "false & (set('myvar', 'foo')); myvar === 'foo' | myvar !== 'foo'" ],
 			[ "false & ( var := 'foo'); var[0] !== 123456" ],
 			[ "false & ( var := 'foo'); var[0][123] !== 123456" ],
+			[ "false & (set('myvar', 'foo')); myvar[1][2] === 'foo' | myvar[1][2] !== 'foo'" ],
 			// Identifier before closing skipped brace, T214674#5374757
 			[ "false & ( var := 'foo'; 'x' in var )" ],
 			[ "false & ( var := 'foo'; added_lines irlike var )" ],
