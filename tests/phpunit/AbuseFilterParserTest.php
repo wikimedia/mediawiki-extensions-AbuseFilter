@@ -802,4 +802,51 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ "false & (var := [ 1,2,3 ]); var := [4,5,6]; var !== [4,5,6]" ],
 		];
 	}
+
+	/**
+	 * Test that empty operands are correctly logged. Note that this test doesn't generate coverage
+	 * *intentionally*. This is so that if the logEmptyOperand method becomes covered, there's likely
+	 * a bug somewhere in the parser.
+	 * This test is only necessary for the "basic" parser
+	 *
+	 * @param string $code
+	 * @param string $operandType
+	 * @dataProvider provideEmptyOperands
+	 */
+	public function testEmptyOperands( $code, $operandType ) {
+		/** @var PHPUnit\Framework\MockObject\MockObject|AbuseFilterParser $mock */
+		$mock = $this->getMockBuilder( AbuseFilterParser::class )
+			->setMethods( [ 'logEmptyOperand' ] )
+			->getMock();
+
+		$mock->expects( $this->once() )
+			->method( 'logEmptyOperand' )
+			->with( $operandType );
+
+		$mock->parse( $code );
+	}
+
+	/**
+	 * Data provider for testEmptyOperands
+	 *
+	 * @return array
+	 */
+	public function provideEmptyOperands() {
+		return [
+			[ '(0 |)', 'bool operand' ],
+			[ '(1 |)', 'bool operand' ],
+			[ '(0 &)', 'bool operand' ],
+			[ '(1 &)', 'bool operand' ],
+			[ '1==', 'compare operand' ],
+			[ '0<=', 'compare operand' ],
+			[ '1+', 'sum operand' ],
+			[ '0-', 'sum operand' ],
+			[ '1*', 'multiplication operand' ],
+			[ '1**', 'power operand' ],
+			[ '"string" contains', 'keyword operand' ],
+			[ '1 in', 'keyword operand' ],
+			[ "contains_any('a','b','c',)", 'function argument' ],
+			[ "get_matches('a','b','c',)", 'function argument' ]
+		];
+	}
 }
