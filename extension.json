@@ -116,6 +116,7 @@
 		"AbuseFilterHooks": "includes/AbuseFilterHooks.php",
 		"AbuseFilterPreAuthenticationProvider": "includes/AbuseFilterPreAuthenticationProvider.php",
 		"AbuseFilterRunner": "includes/AbuseFilterRunner.php",
+		"AbuseFilterSpecialPage": "includes/special/AbuseFilterSpecialPage.php",
 		"SpecialAbuseLog": "includes/special/SpecialAbuseLog.php",
 		"AbuseLogPager": "includes/pagers/AbuseLogPager.php",
 		"SpecialAbuseFilter": "includes/special/SpecialAbuseFilter.php",
