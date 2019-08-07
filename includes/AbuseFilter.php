@@ -896,6 +896,48 @@ class AbuseFilter {
 	}
 
 	/**
+	 * Gets the autopromotion block status for the given user
+	 *
+	 * @param User $target
+	 * @return int
+	 */
+	public static function getAutoPromoteBlockStatus( User $target ) {
+		$store = ObjectCache::getInstance( 'db-replicated' );
+
+		return (int)$store->get( self::autoPromoteBlockKey( $store, $target ) );
+	}
+
+	/**
+	 * Blocks autopromotion for the given user
+	 *
+	 * @param User $target
+	 * @param User $performer
+	 * @param string $msg The message to show in the log
+	 * @param int $ttl Block duration, in seconds
+	 * @return bool True on success, false on failure
+	 */
+	public static function blockAutoPromote( User $target, User $performer, $msg, $ttl ) {
+		$store = ObjectCache::getInstance( 'db-replicated' );
+		if ( !$store->set( self::autoPromoteBlockKey( $store, $target ), 1, $ttl ) ) {
+			// Failed to set key
+			return false;
+		}
+
+		$logEntry = new ManualLogEntry( 'rights', 'blockautopromote' );
+		$logEntry->setPerformer( $performer );
+		$logEntry->setTarget( $target->getUserPage() );
+		// These parameters are unused in our message, but some parts of the code check for them
+		$logEntry->setParameters( [
+			'4::oldgroups' => [],
+			'5::newgroups' => []
+		] );
+		$logEntry->setComment( $msg );
+		$logEntry->publish( $logEntry->insert() );
+
+		return true;
+	}
+
+	/**
 	 * Unblocks autopromotion for the given user
 	 *
 	 * @param User $target
@@ -904,13 +946,13 @@ class AbuseFilter {
 	 * @return bool True on success, false on failure
 	 */
 	public static function unblockAutopromote( User $target, User $performer, $msg ) {
-		$key = self::autoPromoteBlockKey( $target );
-		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
-		if ( !$stash->get( $key ) ) {
-			// Probably we already removed it
+		// Immediately expire (delete) the key, failing if it does not exist
+		$store = ObjectCache::getInstance( 'db-replicated' );
+		$expireAt = time() - $store::TTL_HOUR;
+		if ( !$store->changeTTL( self::autoPromoteBlockKey( $store, $target ), $expireAt ) ) {
+			// Key did not exist to begin with; nothing to do
 			return false;
 		}
-		$stash->delete( $key );
 
 		$logEntry = new ManualLogEntry( 'rights', 'restoreautopromote' );
 		$logEntry->setTarget( Title::makeTitle( NS_USER, $target->getName() ) );
@@ -922,17 +964,17 @@ class AbuseFilter {
 		] );
 		$logEntry->setPerformer( $performer );
 		$logEntry->publish( $logEntry->insert() );
+
 		return true;
 	}
 
 	/**
-	 * @param User $user
+	 * @param BagOStuff $store
+	 * @param User $target
 	 * @return string
 	 */
-	public static function autoPromoteBlockKey( User $user ) {
-		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
-
-		return $cache->makeKey( 'abusefilter', 'block-autopromote', $user->getId() );
+	private static function autoPromoteBlockKey( BagOStuff $store, User $target ) {
+		return $store->makeKey( 'abusefilter', 'block-autopromote', $target->getId() );
 	}
 
 	/**

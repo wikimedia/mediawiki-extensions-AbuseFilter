@@ -327,12 +327,12 @@ class AbuseFilterHooks {
 	 */
 	public static function onGetAutoPromoteGroups( User $user, &$promote ) {
 		if ( $promote ) {
-			$key = AbuseFilter::autoPromoteBlockKey( $user );
-			$blocked = (bool)ObjectCache::getInstance( 'hash' )->getWithSetCallback(
-				$key,
-				30,
-				function () use ( $key ) {
-					return (int)MediaWikiServices::getInstance()->getMainObjectStash()->get( $key );
+			$cache = ObjectCache::getInstance( 'hash' );
+			$blocked = (bool)$cache->getWithSetCallback(
+				$cache->makeKey( 'abusefilter', 'block-autopromote', $user->getId() ),
+				$cache::TTL_PROC_LONG,
+				function () use ( $user ) {
+					return AbuseFilter::getAutoPromoteBlockStatus( $user );
 				}
 			);
 
