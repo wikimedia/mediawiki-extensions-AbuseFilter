@@ -25,7 +25,8 @@
 			"Yusuke1109",
 			"Suyama",
 			"Suchichi02",
-			"Afaz"
+			"Afaz",
+			"Yuukin0248"
 		]
 	},
 	"abusefilter-desc": "編集に対して、自動的な経験則を適用する",
@@ -74,7 +75,7 @@
 	"abusefilter-log-search-user": "利用者:",
 	"abusefilter-log-search-group": "フィルターグループ:",
 	"abusefilter-log-search-group-any": "任意",
-	"abusefilter-log-search-filter": "フィルターID (\"|\" 区切り):",
+	"abusefilter-log-search-filter": "フィルターID:",
 	"abusefilter-log-search-title": "ページ名:",
 	"abusefilter-log-search-wiki": "ウィキ:",
 	"abusefilter-log-search-impact": "影響：",
@@ -187,7 +188,7 @@
 	"abusefilter-reautoconfirm-none": "その利用者は{{GENDER:$1|自動承認ステータス}}を停止されていません。",
 	"abusefilter-reautoconfirm-notallowed": "あなたは自動承認ステータスを復元することが許可されていません。",
 	"abusefilter-reautoconfirm-done": "利用者の自動承認ステータスが復元されました",
-	"abusefilter-status": "最近の$1{{PLURAL:$1|操作}}のうち、$2件($3%)が$4の条件制限に{{PLURAL:$2|達しました}}。$5件($6%)に対して、現在有効なフィルターの1つが{{PLURAL:$5|発動しました}}。",
+	"abusefilter-status": "最近の$1{{PLURAL:$1|操作}}のうち、$2件($3%)が$4の条件制限に{{PLURAL:$2|達しました}}。$5件($6%)に対して、少なくとも現在有効なフィルターの1つが{{PLURAL:$5|発動しました}}。",
 	"abusefilter-edit": "不正利用フィルターを編集中",
 	"abusefilter-edit-subtitle": "フィルター $1 を編集中",
 	"abusefilter-edit-subtitle-new": "フィルターを作成中",
@@ -233,6 +234,7 @@
 	"abusefilter-edit-throttle-placeholder": "カンマ区切りで AND 文とつなぎ、1件ずつ追加して OR 文とつなぐ。",
 	"abusefilter-throttle-ip": "IP アドレス",
 	"abusefilter-throttle-user": "利用者アカウント",
+	"abusefilter-throttle-range": "/16 レンジ",
 	"abusefilter-throttle-creationdate": "アカウント作成日付",
 	"abusefilter-throttle-editcount": "編集回数",
 	"abusefilter-throttle-site": "サイト全体",
