@@ -1,7 +1,5 @@
 <?php
 
-use MediaWiki\MediaWikiServices;
-
 class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 	/**
 	 * @see ApiBase::execute()
@@ -10,9 +8,9 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 		$this->checkUserRightsAny( 'abusefilter-modify' );
 
 		$params = $this->extractRequestParams();
-		$user = User::newFromName( $params['user'] );
+		$target = User::newFromName( $params['user'] );
 
-		if ( $user === false ) {
+		if ( $target === false ) {
 			$encParamName = $this->encodeParamName( 'user' );
 			$this->dieWithError(
 				[ 'apierror-baduser', $encParamName, wfEscapeWikiText( $params['user'] ) ],
@@ -20,16 +18,15 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 			);
 		}
 
-		$key = AbuseFilter::autoPromoteBlockKey( $user );
-		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
-		if ( !$stash->get( $key ) ) {
-			$this->dieWithError( [ 'abusefilter-reautoconfirm-none', $user->getName() ], 'notsuspended' );
+		$msg = $this->msg( 'abusefilter-tools-restoreautopromote' )->inContentLanguage()->text();
+		$res = AbuseFilter::unblockAutopromote( $target, $this->getUser(), $msg );
+
+		if ( $res === false ) {
+			$this->dieWithError( [ 'abusefilter-reautoconfirm-none', $target->getName() ], 'notsuspended' );
 		}
 
-		$stash->delete( $key );
-
-		$res = [ 'user' => $params['user'] ];
-		$this->getResult()->addValue( null, $this->getModuleName(), $res );
+		$finalResult = [ 'user' => $params['user'] ];
+		$this->getResult()->addValue( null, $this->getModuleName(), $finalResult );
 	}
 
 	/**

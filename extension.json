@@ -74,7 +74,9 @@
 		"abusefilter/create": "AbuseFilterModifyLogFormatter",
 		"abusefilterprivatedetails/access": "LogFormatter",
 		"suppress/hide-afl": "AbuseFilterSuppressLogFormatter",
-		"suppress/unhide-afl": "AbuseFilterSuppressLogFormatter"
+		"suppress/unhide-afl": "AbuseFilterSuppressLogFormatter",
+		"rights/blockautopromote": "AbuseFilterRightsLogFormatter",
+		"rights/restoreautopromote": "AbuseFilterRightsLogFormatter"
 	},
 	"ActionFilteredLogs": {
 		"abusefilter": {
@@ -123,6 +125,7 @@
 		"AbuseLogHitFormatter": "includes/AbuseLogHitFormatter.php",
 		"AbuseFilterModifyLogFormatter": "includes/AbuseFilterModifyLogFormatter.php",
 		"AbuseFilterSuppressLogFormatter": "includes/AbuseFilterSuppressLogFormatter.php",
+		"AbuseFilterRightsLogFormatter": "includes/AbuseFilterRightsLogFormatter.php",
 		"AbuseFilterViewList": "includes/Views/AbuseFilterViewList.php",
 		"AbuseFilterPager": "includes/pagers/AbuseFilterPager.php",
 		"GlobalAbuseFilterPager": "includes/pagers/GlobalAbuseFilterPager.php",
@@ -376,7 +379,7 @@
 			"value": 10000,
 			"description": "Number of action that determines when to reset profiling stats."
 		},
-		"AbuseFilterRangeBlockSize" : {
+		"AbuseFilterRangeBlockSize": {
 			"value": {
 				"IPv4": 16,
 				"IPv6": 19
