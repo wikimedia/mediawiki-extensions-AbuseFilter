@@ -75,7 +75,7 @@
 	"abusefilter-log-search-user": "사용자:",
 	"abusefilter-log-search-group": "필터 그룹:",
 	"abusefilter-log-search-group-any": "모두",
-	"abusefilter-log-search-filter": "필터 ID (파이프로 구분):",
+	"abusefilter-log-search-filter": "필터 ID:",
 	"abusefilter-log-search-title": "제목:",
 	"abusefilter-log-search-wiki": "위키:",
 	"abusefilter-log-search-impact": "결과:",

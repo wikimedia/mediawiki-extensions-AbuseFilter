@@ -10,7 +10,8 @@
 			"Wikitanvir",
 			"Aftabuzzaman",
 			"আজিজ",
-			"আফতাবুজ্জামান"
+			"আফতাবুজ্জামান",
+			"Masumrezarock100"
 		]
 	},
 	"abusefilter-desc": "সম্পাদনায় স্বয়ংক্রিয় অনুসন্ধানমূলক পদ্ধতি প্রযোজ্য।",
@@ -44,7 +45,7 @@
 	"abusefilter-log-search-user": "ব্যবহারকারী:",
 	"abusefilter-log-search-group": "দল ছাঁকুন:",
 	"abusefilter-log-search-group-any": "যেকোন",
-	"abusefilter-log-search-filter": "ছাঁকনির আইডি (পাইপ দিয়ে আলাদা):",
+	"abusefilter-log-search-filter": "ছাঁকনির আইডি:",
 	"abusefilter-log-search-title": "শিরোনাম:",
 	"abusefilter-log-search-wiki": "উইকি:",
 	"abusefilter-log-search-impact": "প্রভাব:",
