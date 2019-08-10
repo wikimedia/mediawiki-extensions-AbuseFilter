@@ -959,7 +959,7 @@ class AbuseFilterRunner {
 			case 'blockautopromote':
 				if ( !$this->user->isAnon() ) {
 					// Block for 5 days
-					AbuseFilter::blockAutoPromote(
+					$blocked = AbuseFilter::blockAutoPromote(
 						$this->user,
 						AbuseFilter::getFilterUser(),
 						5 * 86400,
@@ -970,11 +970,19 @@ class AbuseFilterRunner {
 						)->inContentLanguage()->text()
 					);
 
-					$message = [
-						'abusefilter-autopromote-blocked',
-						$ruleDescription,
-						$ruleNumber
-					];
+					if ( $blocked ) {
+						$message = [
+							'abusefilter-autopromote-blocked',
+							$ruleDescription,
+							$ruleNumber
+						];
+					} else {
+						$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+						$logger->warning(
+							'Cannot block autopromotion to {target}',
+							[ 'target' => $this->user->getName() ]
+						);
+					}
 				}
 				break;
 

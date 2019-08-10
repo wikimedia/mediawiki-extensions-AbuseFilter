@@ -367,8 +367,9 @@ class AbuseFilterHooks {
 	public static function onGetAutoPromoteGroups( User $user, &$promote ) {
 		if ( $promote ) {
 			$cache = ObjectCache::getInstance( 'hash' );
+			$key = AbuseFilter::autoPromoteBlockKey( $cache, $user );
 			$blocked = (bool)$cache->getWithSetCallback(
-				$cache->makeKey( 'abusefilter', 'block-autopromote', $user->getId() ),
+				$key,
 				$cache::TTL_PROC_LONG,
 				function () use ( $user ) {
 					return AbuseFilter::getAutoPromoteBlockStatus( $user );

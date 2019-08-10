@@ -972,8 +972,9 @@ class AbuseFilter {
 	 * @param BagOStuff $store
 	 * @param User $target
 	 * @return string
+	 * @internal
 	 */
-	private static function autoPromoteBlockKey( BagOStuff $store, User $target ) {
+	public static function autoPromoteBlockKey( BagOStuff $store, User $target ) {
 		return $store->makeKey( 'abusefilter', 'block-autopromote', $target->getId() );
 	}
 
