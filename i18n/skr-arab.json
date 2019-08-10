@@ -45,8 +45,7 @@
 	"abusefilter-revert-confirm": "تصدیق",
 	"abusefilter-test-search-type-all": "سارے کم",
 	"abusefilter-examine-user": "ورتݨ آلا:",
-	"abusefilter-view-private-submit": "ذاتی تفصیلاں ݙیکھو",
-	"abusefilter-view-private": "ذاتی تفصیلاں ݙیکھو",
+	"abusefilter-view-privatedetails-submit": "ذاتی تفصیلاں ݙیکھو",
 	"abusefilter-log-details-id": "لاگ آئی ڈی",
 	"abusefilter-log-ip-not-available": "دستیاب کائنی"
 }

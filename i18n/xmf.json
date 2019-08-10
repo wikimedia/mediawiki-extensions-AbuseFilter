@@ -16,7 +16,7 @@
 	"abusefilter-log-hidelink": "ხილვადობის დაყენება",
 	"abusefilter-log-details-var": "ცვალებადი",
 	"abusefilter-log-details-val": "მნიშვნელობა",
-	"abusefilter-log-details-private": "კერძო მონაცემი",
+	"abusefilter-log-details-privatedetails": "კერძო მონაცემი",
 	"abusefilter-log-details-ip": "გამავალი IP მისამართი",
 	"abusefilter-log-noactions": "არცერთი",
 	"abusefilter-log-details-diff": "რედაქტირებისას განხორციელებული ცვლილებები",

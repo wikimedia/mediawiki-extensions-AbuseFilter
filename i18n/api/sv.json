@@ -43,7 +43,7 @@
 	"apihelp-query+abuselog-param-end": "Tidsstämpeln att sluta räkna upp vid.",
 	"apihelp-query+abuselog-param-user": "Visa enbart poster gjorda av en viss användare eller IP-adress.",
 	"apihelp-query+abuselog-param-title": "Visa endast poster som förekommer på en viss sida.",
-	"apihelp-query+abuselog-param-filter": "Visa endast poster som fångats av ett visst filter-ID.",
+	"apihelp-query+abuselog-param-filter": "Visa endast poster som fångades av angivna filter-ID:n. Separera med vertikala linjer, inled med \"$1\" för globala filter.",
 	"apihelp-query+abuselog-param-limit": "Det maximala antalet poster att lista.",
 	"apihelp-query+abuselog-param-prop": "Vilka egenskaper att hämta.",
 	"apihelp-query+abuselog-param-wiki": "Wiki att visa träffar ifrån.",

@@ -35,7 +35,7 @@
 	"right-abusefilter-view": "Vizualizează filtrele de abuz",
 	"right-abusefilter-log": "Vizualizează jurnalul de abuzuri",
 	"right-abusefilter-log-detail": "Vizualizează intrări detaliate în jurnalul de abuzuri",
-	"right-abusefilter-private": "Vizualizează datele private din jurnalul de abuzuri",
+	"right-abusefilter-privatedetails": "Vizualizează datele private din jurnalul de abuzuri",
 	"right-abusefilter-modify-restricted": "Modifică filtrele de abuz cu acțiuni restricționate",
 	"right-abusefilter-revert": "Revine asupra tuturor modificărilor corespunzătoare unui filtru de abuz dat",
 	"right-abusefilter-view-private": "Vizualizează filtrele de abuz marcate ca private",
@@ -47,7 +47,7 @@
 	"action-abusefilter-view": "vezi filtrele de abuzare",
 	"action-abusefilter-log": "vezi jurnalul de abuzare",
 	"action-abusefilter-log-detail": "vedeți înregistrările jurnalului cu abuzuri detaliate",
-	"action-abusefilter-private": "vedeți date private în jurnalul de abuzuri",
+	"action-abusefilter-privatedetails": "vedeți date private în jurnalul de abuzuri",
 	"action-abusefilter-modify-restricted": "modificați filtrele de abuzare cu acțiuni restricționate",
 	"action-abusefilter-revert": "anulați toate modificările de la filtru de abuzare",
 	"action-abusefilter-view-private": "vezi filtrele de abuzare marcate ca private",
@@ -75,7 +75,7 @@
 	"abusefilter-log-details-var": "Variabilă",
 	"abusefilter-log-details-val": "Valoare",
 	"abusefilter-log-details-vars": "Parametrii acțiunii",
-	"abusefilter-log-details-private": "Date private",
+	"abusefilter-log-details-privatedetails": "Date private",
 	"abusefilter-log-details-ip": "Adresa IP de origine",
 	"abusefilter-log-noactions": "nimic",
 	"abusefilter-log-details-diff": "Modificări făcute în modificare",
@@ -432,5 +432,5 @@
 	"abusefilter-import-submit": "Importă datele",
 	"abusefilter-group-default": "Implicit",
 	"abusefilter-http-error": "A apărut o eroare HTTP: $1.",
-	"abusefilter-view-private-submit": "Vizualizare detalii private"
+	"abusefilter-view-privatedetails-submit": "Vizualizare detalii private"
 }
