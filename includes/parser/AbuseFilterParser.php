@@ -1701,6 +1701,13 @@ class AbuseFilterParser {
 	 */
 	protected function logEmptyOperand( $type, $fname ) {
 		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-		$logger->info( "Empty operand of type $type at method $fname" );
+		$logger->info(
+			"Empty operand of type {type} at method {fname}. Filter: {filter}",
+			[
+				'type' => $type,
+				'fname' => $fname,
+				'filter' => $this->mFilter ?? 'unavailable'
+			]
+		);
 	}
 }
