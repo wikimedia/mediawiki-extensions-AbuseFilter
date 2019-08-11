@@ -9,8 +9,18 @@ require_once "$IP/maintenance/Maintenance.php";
 /**
  * Fix old log entries with log_type = 'abusefilter' where log_params are imploded with '\n'
  * instead of "\n" (using single quotes), which causes a broken display.
+ * This was caused by the addMissingLoggingEntries script creating broken entries, see T208931
+ * and T228655.
+ * It also fixes a problem which caused addMissingLoggingEntries to insert duplicate rows foreach
+ * non-legacy entries
  */
 class FixOldLogEntries extends LoggedUpdateMaintenance {
+	/** @var bool */
+	private $dryRun;
+
+	/**
+	 * @inheritDoc
+	 */
 	public function __construct() {
 		parent::__construct();
 		$this->addDescription( 'Fix old rows in logging which hold broken log_params' );
@@ -28,9 +38,62 @@ class FixOldLogEntries extends LoggedUpdateMaintenance {
 	}
 
 	/**
-	 * @inheritDoc
+	 * This method will delete duplicated logging rows created by addMissingLoggingEntries. This
+	 * happened because the script couldn't recognize non-legacy entries, and considered them to be
+	 * absent if the script was ran after the format update. See T228655#5360754 and T228655#5408193
+	 *
+	 * @return int[] The IDs of the affected rows
 	 */
-	public function doDBUpdates() {
+	private function deleteDuplicatedRows() {
+		$dbr = wfGetDB( DB_REPLICA, 'vslow' );
+		$newFormatLike = $dbr->buildLike( $dbr->anyString(), 'historyId', $dbr->anyString() );
+		// Select all non-legacy entries
+		$res = $dbr->select(
+			'logging',
+			[ 'log_params' ],
+			[
+				'log_type' => 'abusefilter',
+				"log_params $newFormatLike"
+			],
+			__METHOD__
+		);
+
+		$legacyParams = [];
+		foreach ( $res as $row ) {
+			$params = unserialize( $row->log_params );
+			// The script always inserted duplicates with the wrong '\n'
+			$legacyParams[] = $params['historyId'] . '\n' . $params['newId'];
+		}
+
+		// Don't do a delete already, as it would have poor performance and could kill the DB
+		$deleteIDs = $dbr->selectFieldValues(
+			'logging',
+			'log_id',
+			[
+				'log_type' => 'abusefilter',
+				'log_params' => $legacyParams
+			],
+			__METHOD__
+		);
+
+		if ( !$this->dryRun ) {
+			// Note that we delete entries with legacy format, which are the ones erroneously inserted
+			// by the script.
+			wfGetDB( DB_MASTER )->delete(
+				'logging',
+				[ 'log_id' => $deleteIDs ],
+				__METHOD__
+			);
+		}
+		return $deleteIDs;
+	}
+
+	/**
+	 * Change single-quote newlines to double-quotes newlines
+	 *
+	 * @return int[] Affected log_id's
+	 */
+	private function changeNewlineType() {
 		$dbr = wfGetDB( DB_REPLICA, 'vslow' );
 		$dbw = wfGetDB( DB_MASTER );
 		$res = $dbr->select(
@@ -54,7 +117,7 @@ class FixOldLogEntries extends LoggedUpdateMaintenance {
 				// Keep the entries legacy
 				$newVal = implode( "\n", $par );
 
-				if ( !$this->hasOption( 'dry-run' ) ) {
+				if ( !$this->dryRun ) {
 					$dbw->update(
 						'logging',
 						[ 'log_params' => $newVal ],
@@ -65,16 +128,37 @@ class FixOldLogEntries extends LoggedUpdateMaintenance {
 				$updated[] = $row->log_id;
 			}
 		}
+		return $updated;
+	}
 
-		$verb = $this->hasOption( 'dry-run' ) ? 'would update' : 'updated';
+	/**
+	 * @inheritDoc
+	 */
+	public function doDBUpdates() {
+		$this->dryRun = $this->hasOption( 'dry-run' );
+
+		$deleted = $this->deleteDuplicatedRows();
+
+		$deleteVerb = $this->dryRun ? 'would delete' : 'deleted';
+		$numDel = count( $deleted );
+		$this->output(
+			__CLASS__ . " $deleteVerb $numDel rows.\n"
+		);
+		if ( $deleted && $this->hasOption( 'verbose' ) ) {
+			$this->output( 'The affected log_id\'s are: ' . implode( ', ', $deleted ) . "\n" );
+		}
+
+		$updated = $this->changeNewlineType();
+
+		$updateVerb = $this->dryRun ? 'would update' : 'updated';
 		$numUpd = count( $updated );
 		$this->output(
-			__CLASS__ . ": $verb $numUpd rows out of " . $res->numRows() . " rows found.\n"
+			__CLASS__ . " $updateVerb $numUpd rows.\n"
 		);
 		if ( $updated && $this->hasOption( 'verbose' ) ) {
-			$this->output( 'The affected log IDs are: ' . implode( ', ', $updated ) . "\n" );
+			$this->output( 'The affected log_id\'s are: ' . implode( ', ', $updated ) . "\n" );
 		}
-		return !$this->hasOption( 'dry-run' );
+		return !$this->dryRun;
 	}
 }
 
