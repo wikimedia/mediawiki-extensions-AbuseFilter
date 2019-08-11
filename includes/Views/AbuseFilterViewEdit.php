@@ -394,19 +394,19 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$history_display = new HtmlArmor( $this->msg( 'abusefilter-edit-viewhistory' )->parse() );
 			$fields['abusefilter-edit-history'] =
 				$this->linkRenderer->makeKnownLink( $this->getTitle( 'history/' . $filter ), $history_display );
-		}
 
-		// Add export
-		$exportText = FormatJson::encode( [ 'row' => $row, 'actions' => $actions ] );
-		$tools .= Xml::tags( 'a', [ 'href' => '#', 'id' => 'mw-abusefilter-export-link' ],
-			$this->msg( 'abusefilter-edit-export' )->parse() );
-		$tools .=
-			new OOUI\MultilineTextInputWidget( [
-				'id' => 'mw-abusefilter-export',
-				'readOnly' => true,
-				'value' => $exportText,
-				'rows' => 10
-			] );
+			// Add export
+			$exportText = FormatJson::encode( [ 'row' => $row, 'actions' => $actions ] );
+			$tools .= Xml::tags( 'a', [ 'href' => '#', 'id' => 'mw-abusefilter-export-link' ],
+				$this->msg( 'abusefilter-edit-export' )->parse() );
+			$tools .=
+				new OOUI\MultilineTextInputWidget( [
+					'id' => 'mw-abusefilter-export',
+					'readOnly' => true,
+					'value' => $exportText,
+					'rows' => 10
+				] );
+		}
 
 		$fields['abusefilter-edit-tools'] = $tools;
 
