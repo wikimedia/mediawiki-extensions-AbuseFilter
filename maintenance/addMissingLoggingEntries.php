@@ -10,33 +10,51 @@ require_once "$IP/maintenance/Maintenance.php";
 use MediaWiki\MediaWikiServices;
 
 /**
- * Adds rows missing per https://bugzilla.wikimedia.org/show_bug.cgi?id=52919
+ * Adds rows missing per T54919
  */
-class AddMissingLoggingEntries extends Maintenance {
+class AddMissingLoggingEntries extends LoggedUpdateMaintenance {
 	public function __construct() {
 		parent::__construct();
 
+		$this->mDescription = 'Add missing logging entries for abusefilter-modify T54919';
+		$this->addOption( 'dry-run', 'Perform a dry run' );
+		$this->addOption( 'verbose', 'Print a list of affected afh_id' );
 		$this->requireExtension( 'Abuse Filter' );
 	}
 
 	/**
-	 * @see Maintenance::execute
+	 * @inheritDoc
 	 */
-	public function execute() {
+	public function getUpdateKey() {
+		return __CLASS__;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function doDBUpdates() {
+		$dryRun = $this->hasOption( 'dry-run' );
 		$logParams = [];
 		$afhRows = [];
+		$db = wfGetDB( DB_REPLICA, 'vslow' );
 
+		$logParamsConcat = $db->buildConcat( [ 'afh_id', $db->addQuotes( "\n" ) ] );
+		$legacyParamsLike = $db->buildLike( $logParamsConcat, $db->anyString() );
+		// Non-legacy entries are a serialized array with 'newId' and 'historyId' keys
+		$newLogParamsLike = $db->buildLike( $db->anyString(), 'historyId', $db->anyString() );
 		// Find all entries in abuse_filter_history without logging entry of same timestamp
-		$afhResult = wfGetDB( DB_REPLICA, 'vslow' )->select(
+		$afhResult = $db->select(
 			[ 'abuse_filter_history', 'logging' ],
 			[ 'afh_id', 'afh_filter', 'afh_timestamp', 'afh_user', 'afh_deleted', 'afh_user_text' ],
-			[ 'log_id IS NULL' ],
+			[
+				'log_id IS NULL',
+				"NOT log_params $newLogParamsLike"
+			],
 			__METHOD__,
 			[],
 			[ 'logging' => [
 				'LEFT JOIN',
-				'afh_timestamp = log_timestamp AND ' .
-					'SUBSTRING_INDEX(log_params, \'\n\', 1) = afh_id AND log_type = \'abusefilter\''
+				"afh_timestamp = log_timestamp AND log_params $legacyParamsLike AND log_type = 'abusefilter'"
 			] ]
 		);
 
@@ -49,7 +67,8 @@ class AddMissingLoggingEntries extends Maintenance {
 		}
 
 		if ( !count( $afhRows ) ) {
-			$this->error( "Nothing to do.", 1 );
+			$this->output( "Nothing to do.\n" );
+			return !$dryRun;
 		}
 
 		$logResult = wfGetDB( DB_REPLICA )->select(
@@ -60,14 +79,24 @@ class AddMissingLoggingEntries extends Maintenance {
 		);
 
 		foreach ( $logResult as $row ) {
-			// id . '\n' . filter
+			// id . "\n" . filter
 			$afhId = explode( "\n", $row->log_params, 2 )[0];
 			// Forget this row had any issues - it just has a different timestamp in the log
 			unset( $afhRows[$afhId] );
 		}
 
 		if ( !count( $afhRows ) ) {
-			$this->error( "Nothing to do.", 1 );
+			$this->output( "Nothing to do.\n" );
+			return !$dryRun;
+		}
+
+		if ( $dryRun ) {
+			$msg = count( $afhRows ) . " rows to insert.";
+			if ( $this->hasOption( 'verbose' ) ) {
+				$msg .= " Affected IDs (afh_id):\n" . implode( ', ', array_keys( $afhRows ) );
+			}
+			$this->output( "$msg\n" );
+			return false;
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
@@ -87,7 +116,7 @@ class AddMissingLoggingEntries extends Maintenance {
 					'log_timestamp' => $row->afh_timestamp,
 					'log_namespace' => -1,
 					'log_title' => SpecialPageFactory::getLocalNameFor( 'AbuseFilter' ) . '/' . $row->afh_filter,
-					'log_params' => $row->afh_id . '\n' . $row->afh_filter,
+					'log_params' => $row->afh_id . "\n" . $row->afh_filter,
 					'log_deleted' => $row->afh_deleted,
 				] + CommentStore::getStore()->insert( $dbw, 'log_comment', '' )
 					+ ActorMigration::newMigration()->getInsertValues( $dbw, 'log_user', $user ),
@@ -96,7 +125,8 @@ class AddMissingLoggingEntries extends Maintenance {
 			$count++;
 		}
 
-		$this->output( "Inserted " . $count . " rows.\n" );
+		$this->output( "Inserted $count rows.\n" );
+		return true;
 	}
 }
 
