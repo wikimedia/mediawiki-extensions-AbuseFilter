@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Logger\LoggerFactory;
+
 class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/**
 	 * @var User The user whose AbuseLog entries are being searched
@@ -654,6 +656,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		// Diff, if available
 		if ( $vars && $row->afl_action === 'edit' ) {
+			$vars->setLogger( LoggerFactory::getInstance( 'AbuseFilter' ) );
 			$old_wikitext = $vars->getVar( 'old_wikitext' )->toString();
 			$new_wikitext = $vars->getVar( 'new_wikitext' )->toString();
 

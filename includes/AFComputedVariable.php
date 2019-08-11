@@ -170,6 +170,7 @@ class AFComputedVariable {
 		// TODO: find a way to inject the User object from hook parameters.
 		global $wgUser;
 
+		$vars->setLogger( LoggerFactory::getInstance( 'AbuseFilter' ) );
 		$parameters = $this->mParameters;
 		$result = null;
 

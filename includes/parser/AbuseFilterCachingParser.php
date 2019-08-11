@@ -281,10 +281,8 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 
 				if ( $this->isBuiltinVar( $varName ) ) {
 					throw new AFPUserVisibleException( 'overridebuiltin', $node->position, [ $varName ] );
-				} elseif ( !$this->mVariables->varIsSet( $varName ) ) {
-					throw new AFPUserVisibleException( 'unrecognisedvar', $node->position, [ $varName ] );
 				}
-				$array = $this->mVariables->getVar( $varName );
+				$array = $this->getVarValue( $varName );
 
 				$value = $this->evalNode( $value );
 				if ( $array->getType() !== AFPData::DUNDEFINED ) {
@@ -312,11 +310,9 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 
 				if ( $this->isBuiltinVar( $varName ) ) {
 					throw new AFPUserVisibleException( 'overridebuiltin', $node->position, [ $varName ] );
-				} elseif ( !$this->mVariables->varIsSet( $varName ) ) {
-					throw new AFPUserVisibleException( 'unrecognisedvar', $node->position, [ $varName ] );
 				}
 
-				$array = $this->mVariables->getVar( $varName );
+				$array = $this->getVarValue( $varName );
 				if ( $array->getType() !== AFPData::DUNDEFINED ) {
 					// If it's a DUNDEFINED, leave it as is
 					if ( $array->getType() !== AFPData::DARRAY ) {
