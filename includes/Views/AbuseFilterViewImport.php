@@ -17,6 +17,7 @@ class AbuseFilterViewImport extends AbuseFilterView {
 		$formDescriptor = [
 			'ImportText' => [
 				'type' => 'textarea',
+				'required' => true
 			]
 		];
 		HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() )
