@@ -38,6 +38,13 @@ class AbuseFilter {
 	public static $logIds = [];
 
 	/**
+	 * Duration for the blockautopromote action.
+	 * A future improvement could be to make this customizable on a per-filter basis.
+	 * @var int
+	 */
+	const BLOCKAUTOPROMOTE_DURATION = 5 * 86400;
+
+	/**
 	 * @var string[] The FULL list of fields in the abuse_filter table
 	 * @todo Make a const once we get rid of HHVM
 	 * @internal
@@ -911,23 +918,33 @@ class AbuseFilter {
 	 * Blocks autopromotion for the given user
 	 *
 	 * @param User $target
-	 * @param User $performer
 	 * @param string $msg The message to show in the log
-	 * @param int $ttl Block duration, in seconds
 	 * @return bool True on success, false on failure
 	 */
-	public static function blockAutoPromote( User $target, User $performer, $msg, $ttl ) {
+	public static function blockAutoPromote( User $target, $msg ) {
 		$store = ObjectCache::getInstance( 'db-replicated' );
-		if ( !$store->set( self::autoPromoteBlockKey( $store, $target ), 1, $ttl ) ) {
+		if ( !$store->set(
+			self::autoPromoteBlockKey( $store, $target ),
+			1,
+			self::BLOCKAUTOPROMOTE_DURATION
+		) ) {
 			// Failed to set key
+			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+			$logger->warning(
+				"Failed to block autopromotion for $target. Error: " . $store->getLastError()
+			);
 			return false;
 		}
 
 		$logEntry = new ManualLogEntry( 'rights', 'blockautopromote' );
+		$performer = self::getFilterUser();
 		$logEntry->setPerformer( $performer );
 		$logEntry->setTarget( $target->getUserPage() );
-		// These parameters are unused in our message, but some parts of the code check for them
+
+		$lang = RequestContext::getMain()->getLanguage();
 		$logEntry->setParameters( [
+			'7::duration' => $lang->formatDuration( self::BLOCKAUTOPROMOTE_DURATION ),
+			// These parameters are unused in our message, but some parts of the code check for them
 			'4::oldgroups' => [],
 			'5::newgroups' => []
 		] );

@@ -961,8 +961,6 @@ class AbuseFilterRunner {
 					// Block for 5 days
 					AbuseFilter::blockAutoPromote(
 						$this->user,
-						AbuseFilter::getFilterUser(),
-						5 * 86400,
 						wfMessage(
 							'abusefilter-blockautopromotereason',
 							$ruleDescription,
