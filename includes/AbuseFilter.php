@@ -1733,6 +1733,7 @@ class AbuseFilter {
 			self::generateUserVars( $user, $row ),
 			self::generateTitleVars( $title, 'page', $row )
 		);
+		// @todo Set old_content_model and new_content_model
 
 		$vars->setVar( 'action', 'edit' );
 		$vars->setVar( 'summary', CommentStore::getStore()->getComment( 'rc_comment', $row )->text );

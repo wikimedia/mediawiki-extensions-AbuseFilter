@@ -261,7 +261,6 @@ class AbuseFilterHooks {
 		$vars->setVar( 'new_content_model', $newcontent->getModel() );
 		$vars->setVar( 'old_wikitext', $oldtext );
 		$vars->setVar( 'new_wikitext', $text );
-		// TODO: set old_content and new_content vars, use them
 		$vars->addHolders( AbuseFilter::getEditVars( $title, $page ) );
 
 		return $vars;
