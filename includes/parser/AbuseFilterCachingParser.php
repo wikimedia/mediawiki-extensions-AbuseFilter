@@ -203,7 +203,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 					$this->raiseCondCount();
 
 					// @phan-suppress-next-line PhanParamTooMany Not every function needs the position
-					$result = AFPData::$func( $leftOperand, $rightOperand, $node->position );
+					$result = $this->$func( $leftOperand, $rightOperand, $node->position );
 				}
 
 				return $result;

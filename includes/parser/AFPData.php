@@ -13,9 +13,12 @@ class AFPData {
 	// Special purpose for creating instances that will be populated later
 	const DEMPTY = 'empty';
 
-	// Translation table mapping shell-style wildcards to PCRE equivalents.
-	// Derived from <http://www.php.net/manual/en/function.fnmatch.php#100207>
-	private static $wildcardMap = [
+	/**
+	 * Translation table mapping shell-style wildcards to PCRE equivalents.
+	 * Derived from <http://www.php.net/manual/en/function.fnmatch.php#100207>
+	 * @internal
+	 */
+	public static $wildcardMap = [
 		'\*' => '.*',
 		'\+' => '\+',
 		'\-' => '\-',
@@ -178,42 +181,6 @@ class AFPData {
 	}
 
 	/**
-	 * Checks if $a contains $b
-	 *
-	 * @param AFPData $a
-	 * @param AFPData $b
-	 * @return AFPData
-	 */
-	private static function containmentKeyword( AFPData $a, AFPData $b ) {
-		$a = $a->toString();
-		$b = $b->toString();
-
-		if ( $a === '' || $b === '' ) {
-			return new AFPData( self::DBOOL, false );
-		}
-
-		return new AFPData( self::DBOOL, strpos( $a, $b ) !== false );
-	}
-
-	/**
-	 * @param AFPData $a
-	 * @param AFPData $b
-	 * @return AFPData
-	 */
-	public static function keywordIn( AFPData $a, AFPData $b ) {
-		return self::containmentKeyword( $b, $a );
-	}
-
-	/**
-	 * @param AFPData $a
-	 * @param AFPData $b
-	 * @return AFPData
-	 */
-	public static function keywordContains( AFPData $a, AFPData $b ) {
-		return self::containmentKeyword( $a, $b );
-	}
-
-	/**
 	 * @param AFPData $d2
 	 * @param bool $strict whether to also check types
 	 * @return bool
@@ -258,67 +225,6 @@ class AFPData {
 				return false;
 			}
 		}
-	}
-
-	/**
-	 * @param AFPData $str
-	 * @param AFPData $pattern
-	 * @return AFPData
-	 */
-	public static function keywordLike( AFPData $str, AFPData $pattern ) {
-		$str = $str->toString();
-		$pattern = '#^' . strtr( preg_quote( $pattern->toString(), '#' ), self::$wildcardMap ) . '$#u';
-		Wikimedia\suppressWarnings();
-		$result = preg_match( $pattern, $str );
-		Wikimedia\restoreWarnings();
-
-		return new AFPData( self::DBOOL, (bool)$result );
-	}
-
-	/**
-	 * @param AFPData $str
-	 * @param AFPData $regex
-	 * @param int $pos
-	 * @param bool $insensitive
-	 * @return AFPData
-	 * @throws Exception
-	 */
-	public static function keywordRegex( AFPData $str, AFPData $regex, $pos, $insensitive = false ) {
-		$str = $str->toString();
-		$pattern = $regex->toString();
-
-		$pattern = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $pattern );
-		$pattern = "/$pattern/u";
-
-		if ( $insensitive ) {
-			$pattern .= 'i';
-		}
-
-		Wikimedia\suppressWarnings();
-		$result = preg_match( $pattern, $str );
-		Wikimedia\restoreWarnings();
-		if ( $result === false ) {
-			throw new AFPUserVisibleException(
-				'regexfailure',
-				// Coverage bug
-				// @codeCoverageIgnoreStart
-				$pos,
-				// @codeCoverageIgnoreEnd
-				[ $pattern ]
-			);
-		}
-
-		return new AFPData( self::DBOOL, (bool)$result );
-	}
-
-	/**
-	 * @param AFPData $str
-	 * @param AFPData $regex
-	 * @param int $pos
-	 * @return AFPData
-	 */
-	public static function keywordRegexInsensitive( AFPData $str, AFPData $regex, $pos ) {
-		return self::keywordRegex( $str, $regex, $pos, true );
 	}
 
 	/**
