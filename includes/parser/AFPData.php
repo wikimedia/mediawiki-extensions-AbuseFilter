@@ -154,26 +154,24 @@ class AFPData {
 	}
 
 	/**
-	 * @param AFPData $value
 	 * @return AFPData
 	 */
-	public static function boolInvert( AFPData $value ) {
-		if ( $value->type === self::DUNDEFINED ) {
+	public function boolInvert() {
+		if ( $this->type === self::DUNDEFINED ) {
 			return new AFPData( self::DUNDEFINED );
 		}
-		return new AFPData( self::DBOOL, !$value->toBool() );
+		return new AFPData( self::DBOOL, !$this->toBool() );
 	}
 
 	/**
-	 * @param AFPData $base
 	 * @param AFPData $exponent
 	 * @return AFPData
 	 */
-	public static function pow( AFPData $base, AFPData $exponent ) {
-		if ( $base->type === self::DUNDEFINED || $exponent->type === self::DUNDEFINED ) {
+	public function pow( AFPData $exponent ) {
+		if ( $this->type === self::DUNDEFINED || $exponent->type === self::DUNDEFINED ) {
 			return new AFPData( self::DUNDEFINED );
 		}
-		$res = pow( $base->toNumber(), $exponent->toNumber() );
+		$res = pow( $this->toNumber(), $exponent->toNumber() );
 		$type = is_int( $res ) ? self::DINT : self::DFLOAT;
 
 		return new AFPData( $type, $res );
@@ -216,25 +214,24 @@ class AFPData {
 	}
 
 	/**
-	 * @param AFPData $d1
 	 * @param AFPData $d2
 	 * @param bool $strict whether to also check types
 	 * @return bool
-	 * @throws AFPException if $d1 or $d2 is a DUNDEFINED. This shouldn't happen, because this method
+	 * @throws AFPException if $this or $d2 is a DUNDEFINED. This shouldn't happen, because this method
 	 *  only returns a boolean, and thus the type of the result has already been decided and cannot
 	 *  be changed to be a DUNDEFINED from here.
 	 * @internal
 	 */
-	public static function equals( AFPData $d1, AFPData $d2, $strict = false ) {
-		if ( $d1->type === self::DUNDEFINED || $d2->type === self::DUNDEFINED ) {
+	public function equals( AFPData $d2, $strict = false ) {
+		if ( $this->type === self::DUNDEFINED || $d2->type === self::DUNDEFINED ) {
 			throw new AFPException(
 				__METHOD__ . " got a DUNDEFINED. This should be handled at a higher level"
 			);
-		} elseif ( $d1->type !== self::DARRAY && $d2->type !== self::DARRAY ) {
-			$typecheck = $d1->type === $d2->type || !$strict;
-			return $typecheck && $d1->toString() === $d2->toString();
-		} elseif ( $d1->type === self::DARRAY && $d2->type === self::DARRAY ) {
-			$data1 = $d1->data;
+		} elseif ( $this->type !== self::DARRAY && $d2->type !== self::DARRAY ) {
+			$typecheck = $this->type === $d2->type || !$strict;
+			return $typecheck && $this->toString() === $d2->toString();
+		} elseif ( $this->type === self::DARRAY && $d2->type === self::DARRAY ) {
+			$data1 = $this->data;
 			$data2 = $d2->data;
 			if ( count( $data1 ) !== count( $data2 ) ) {
 				return false;
@@ -242,7 +239,7 @@ class AFPData {
 			$length = count( $data1 );
 			for ( $i = 0; $i < $length; $i++ ) {
 				// @phan-suppress-next-line PhanTypeArraySuspiciousNullable Array type
-				if ( self::equals( $data1[$i], $data2[$i], $strict ) === false ) {
+				if ( $data1[$i]->equals( $data2[$i], $strict ) === false ) {
 					return false;
 				}
 			}
@@ -252,10 +249,11 @@ class AFPData {
 			if ( $strict ) {
 				return false;
 			}
-			if ( $d1->type === self::DARRAY && count( $d1->data ) === 0 ) {
+			if ( $this->type === self::DARRAY && count( $this->data ) === 0 ) {
 				return ( $d2->type === self::DBOOL && $d2->toBool() === false ) || $d2->type === self::DNULL;
 			} elseif ( $d2->type === self::DARRAY && count( $d2->data ) === 0 ) {
-				return ( $d1->type === self::DBOOL && $d1->toBool() === false ) || $d1->type === self::DNULL;
+				return ( $this->type === self::DBOOL && $this->toBool() === false ) ||
+					$this->type === self::DNULL;
 			} else {
 				return false;
 			}
@@ -324,16 +322,15 @@ class AFPData {
 	}
 
 	/**
-	 * @param AFPData $data
 	 * @return AFPData
 	 */
-	public static function unaryMinus( AFPData $data ) {
-		if ( $data->type === self::DUNDEFINED ) {
+	public function unaryMinus() {
+		if ( $this->type === self::DUNDEFINED ) {
 			return new AFPData( self::DUNDEFINED );
-		} elseif ( $data->type === self::DINT ) {
-			return new AFPData( $data->type, -$data->toInt() );
+		} elseif ( $this->type === self::DINT ) {
+			return new AFPData( $this->type, -$this->toInt() );
 		} else {
-			return new AFPData( $data->type, -$data->toFloat() );
+			return new AFPData( $this->type, -$this->toFloat() );
 		}
 	}
 
@@ -373,13 +370,13 @@ class AFPData {
 			return new AFPData( self::DUNDEFINED );
 		}
 		if ( $op === '==' || $op === '=' ) {
-			return new AFPData( self::DBOOL, self::equals( $a, $b ) );
+			return new AFPData( self::DBOOL, $a->equals( $b ) );
 		} elseif ( $op === '!=' ) {
-			return new AFPData( self::DBOOL, !self::equals( $a, $b ) );
+			return new AFPData( self::DBOOL, !$a->equals( $b ) );
 		} elseif ( $op === '===' ) {
-			return new AFPData( self::DBOOL, self::equals( $a, $b, true ) );
+			return new AFPData( self::DBOOL, $a->equals( $b, true ) );
 		} elseif ( $op === '!==' ) {
-			return new AFPData( self::DBOOL, !self::equals( $a, $b, true ) );
+			return new AFPData( self::DBOOL, !$a->equals( $b, true ) );
 		}
 
 		$a = $a->toString();
@@ -438,19 +435,18 @@ class AFPData {
 	}
 
 	/**
-	 * @param AFPData $a
 	 * @param AFPData $b
 	 * @return AFPData
 	 */
-	public static function sum( AFPData $a, AFPData $b ) {
-		if ( $a->type === self::DUNDEFINED || $b->type === self::DUNDEFINED ) {
+	public function sum( AFPData $b ) {
+		if ( $this->type === self::DUNDEFINED || $b->type === self::DUNDEFINED ) {
 			return new AFPData( self::DUNDEFINED );
-		} elseif ( $a->type === self::DSTRING || $b->type === self::DSTRING ) {
-			return new AFPData( self::DSTRING, $a->toString() . $b->toString() );
-		} elseif ( $a->type === self::DARRAY && $b->type === self::DARRAY ) {
-			return new AFPData( self::DARRAY, array_merge( $a->toArray(), $b->toArray() ) );
+		} elseif ( $this->type === self::DSTRING || $b->type === self::DSTRING ) {
+			return new AFPData( self::DSTRING, $this->toString() . $b->toString() );
+		} elseif ( $this->type === self::DARRAY && $b->type === self::DARRAY ) {
+			return new AFPData( self::DARRAY, array_merge( $this->toArray(), $b->toArray() ) );
 		} else {
-			$res = $a->toNumber() + $b->toNumber();
+			$res = $this->toNumber() + $b->toNumber();
 			$type = is_int( $res ) ? self::DINT : self::DFLOAT;
 
 			return new AFPData( $type, $res );
@@ -458,15 +454,14 @@ class AFPData {
 	}
 
 	/**
-	 * @param AFPData $a
 	 * @param AFPData $b
 	 * @return AFPData
 	 */
-	public static function sub( AFPData $a, AFPData $b ) {
-		if ( $a->type === self::DUNDEFINED || $b->type === self::DUNDEFINED ) {
+	public function sub( AFPData $b ) {
+		if ( $this->type === self::DUNDEFINED || $b->type === self::DUNDEFINED ) {
 			return new AFPData( self::DUNDEFINED );
 		}
-		$res = $a->toNumber() - $b->toNumber();
+		$res = $this->toNumber() - $b->toNumber();
 		$type = is_int( $res ) ? self::DINT : self::DFLOAT;
 
 		return new AFPData( $type, $res );
