@@ -583,7 +583,7 @@ class AbuseFilterParser {
 			if ( $r2->getType() === AFPData::DEMPTY ) {
 				$this->logEmptyOperand( 'bool operand', __METHOD__ );
 			}
-			$result = AFPData::boolOp( $result, $r2, $op );
+			$result = $result->boolOp( $r2, $op );
 		}
 	}
 
@@ -615,7 +615,7 @@ class AbuseFilterParser {
 				continue;
 			}
 			$this->raiseCondCount();
-			$result = AFPData::compareOp( $result, $r2, $op );
+			$result = $result->compareOp( $r2, $op );
 		}
 	}
 
@@ -668,7 +668,7 @@ class AbuseFilterParser {
 				// The result doesn't matter.
 				continue;
 			}
-			$result = AFPData::mulRel( $result, $r2, $op, $this->mCur->pos );
+			$result = $result->mulRel( $r2, $op, $this->mCur->pos );
 		}
 	}
 
