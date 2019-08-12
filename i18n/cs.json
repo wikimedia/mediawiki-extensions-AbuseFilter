@@ -546,6 +546,7 @@
 	"abusefilter-group-default": "Výchozí",
 	"abusefilter-http-error": "Došlo k chybě HTTP: $1.",
 	"abusefilter-view-privatedetails-submit": "Zobrazit soukromé detaily",
+	"abusefilter-view-privatedetails-legend": "Zobrazit soukromé detaily",
 	"abusefilter-view-privatedetails-reason": "Důvod přístupu k soukromým detailům:",
 	"abusefilter-log-details-id": "ID protokolovacího záznamu",
 	"abusefilter-invalid-request": "Neplatný požadavek! K soukromým detailům záznamu musíte jít skrze formulář na stránce [[Special:AbuseLog/$1]] a musíte uvést důvod.",

@@ -54,7 +54,7 @@
 	"abusefilter-log-summary": "Šiame sąraše pateikiami visi veiksmai, aptikti filtrų.",
 	"abusefilter-log-search": "Ieškoti piktnaudžiavimų protokole",
 	"abusefilter-log-search-user": "Naudotojas:",
-	"abusefilter-log-search-filter": "Filtrų ID (atskirti vertikaliais brūkšniais):",
+	"abusefilter-log-search-filter": "Filtrų ID:",
 	"abusefilter-log-search-title": "Antraštė:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-impact": "Aprėptis:",
@@ -89,6 +89,7 @@
 	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|Šio naudotojo|Šios naudotojos}} piktnaudžiavimų sąrašas",
 	"abusefilter-log-hidden-implicit": "(paslėpta, nes peržiūra buvo panaikinta)",
 	"abusefilter-log-cannot-see-details": "Jūs neturite teisės peržiūrėti informaciją apie šį įrašą.",
+	"abusefilter-log-cannot-see-privatedetails": "Neturite teisių peržiūrėti šio įrašo privačių detalių.",
 	"abusefilter-log-details-hidden": "Negalima peržiūrėti informaciją apie šį įrašą, nes jis yra paslėptas nuo viešo peržiūrėjimo.",
 	"abusefilter-log-hide-legend": "Slėpti žurnalo įrašą",
 	"abusefilter-log-hide-id": "Žurnalo įrašo ID:",
@@ -413,5 +414,6 @@
 	"abusefilter-import-intro": "Galite naudoti šią sąsają importuoti filtrus iš kitų wiki.\nŠaltinio wiki, spustelėkite \"{{int:abusefilter-redaguoti-eksporto}}\" pagal \"{{int:abusefilter-įrankiai-paantraštė}}\" redagavimo sąsaja.\nKopijuoti iš teksto lauką, kad pasirodo, ir įklijuokite jį į šį teksto lauką, tada spustelėkite \"{{int:abusefilter-importo-pateikti}}\".",
 	"abusefilter-import-submit": "Importuoti duomenis",
 	"abusefilter-group-default": "Numatytasis",
-	"abusefilter-http-error": "Įvyko HTTP klaida: $1."
+	"abusefilter-http-error": "Įvyko HTTP klaida: $1.",
+	"abusefilter-view-privatedetails-legend": "Peržiūrėti privačią informaciją"
 }

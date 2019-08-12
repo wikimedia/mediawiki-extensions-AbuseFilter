@@ -512,6 +512,7 @@
 	"abusefilter-group-default": "Predefinite",
 	"abusefilter-http-error": "Un error HTTP occurreva: $1.",
 	"abusefilter-view-privatedetails-submit": "Vider detalios private",
+	"abusefilter-view-privatedetails-legend": "Vider detalios private",
 	"abusefilter-view-privatedetails-reason": "Motivo pro acceder al detalios private:",
 	"abusefilter-log-details-id": "ID de registro"
 }

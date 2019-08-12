@@ -469,6 +469,7 @@
 	"abusefilter-group-default": "Standard",
 	"abusefilter-http-error": "En HTTP-feil oppstod: $1",
 	"abusefilter-view-privatedetails-submit": "Vis private detaljer",
+	"abusefilter-view-privatedetails-legend": "Vis private detaljer",
 	"abusefilter-log-details-id": "Logg-ID",
 	"abusefilter-invalid-request": "Ugyldig forespørsel! For å få tilgang til private loggdetaljer må du gå via skjemaet på [[Special:AbuseLog/$1]] og angi en årsak.",
 	"abusefilter-log-ip-not-available": "Ikke tilgjengelig",

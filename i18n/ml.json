@@ -444,6 +444,7 @@
 	"abusefilter-group-default": "സ്വതേ",
 	"abusefilter-http-error": "ഒരു എച്ച്.റ്റി.റ്റി.പി. പിഴവ് സംഭവിച്ചിരിക്കുന്നു: $1",
 	"abusefilter-view-privatedetails-submit": "സ്വകാര്യ വിശദാംശങ്ങൾ കാണുക",
+	"abusefilter-view-privatedetails-legend": "സ്വകാര്യ വിശദാംശങ്ങൾ കാണുക",
 	"abusefilter-view-privatedetails-reason": "സ്വകാര്യ വിശദാംശങ്ങൾ എടുത്തുനോക്കുന്നതിനുള്ള കാരണം:",
 	"abusefilter-log-details-id": "രേഖയുടെ ഐ.ഡി.",
 	"abusefilter-log-ip-not-available": "ലഭ്യമല്ല",

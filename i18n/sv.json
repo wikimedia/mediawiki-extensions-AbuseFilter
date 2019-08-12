@@ -562,6 +562,7 @@
 	"abusefilter-group-default": "Standard",
 	"abusefilter-http-error": "Ett HTTP-fel uppstod: $1.",
 	"abusefilter-view-privatedetails-submit": "Visa privata detaljer",
+	"abusefilter-view-privatedetails-legend": "Visa privata detaljer",
 	"abusefilter-view-privatedetails-reason": "Anledning för att komma åt privata detaljer:",
 	"abusefilter-log-details-id": "Logg-ID",
 	"abusefilter-invalid-request": "Ogiltig begäran! Du måste få åtkomst till privata loggdetaljer via formuläret på [[Special:AbuseLog/$1]] och ange en anledning.",

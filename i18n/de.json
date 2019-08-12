@@ -550,6 +550,7 @@
 	"abusefilter-group-default": "Standard",
 	"abusefilter-http-error": "Ein HTTP-Fehler ist aufgetreten: $1.",
 	"abusefilter-view-privatedetails-submit": "Private Einzelheiten ansehen",
+	"abusefilter-view-privatedetails-legend": "Private Einzelheiten ansehen",
 	"abusefilter-view-privatedetails-reason": "Grund für den Zugriff auf private Einzelheiten:",
 	"abusefilter-log-details-id": "Logbuchkennung",
 	"abusefilter-invalid-request": "Ungültige Anfrage! Du musst auf private Logbucheinzelheiten mit dem Formular auf [[Special:AbuseLog/$1]] zugreifen und einen Grund angeben.",

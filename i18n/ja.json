@@ -531,6 +531,7 @@
 	"abusefilter-group-default": "既定",
 	"abusefilter-http-error": "HTTPエラーが発生: $1",
 	"abusefilter-view-privatedetails-submit": "非公開記録を参照",
+	"abusefilter-view-privatedetails-legend": "非公開記録を参照",
 	"abusefilter-view-privatedetails-reason": "非公開記録の調査理由",
 	"abusefilter-log-details-id": "記録ID",
 	"abusefilter-invalid-request": "無効なリクエスト! [[Special:AbuseLog/$1]]のフォームを使ってプライベートログの詳細にアクセスし、理由を提示する必要があります。",

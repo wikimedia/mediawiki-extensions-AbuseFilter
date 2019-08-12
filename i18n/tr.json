@@ -464,6 +464,7 @@
 	"abusefilter-import-submit": "Verileri içe aktar",
 	"abusefilter-group-default": "Varsayılan",
 	"abusefilter-view-privatedetails-submit": "Özel ayrıntıları görüntüle",
+	"abusefilter-view-privatedetails-legend": "Özel ayrıntıları görüntüle",
 	"abusefilter-log-details-id": "Günlük kimliği",
 	"abusefilter-log-ip-not-available": "Mevcut değil",
 	"tag-abusefilter-condition-limit": "koşul sınırına ulaşıldı"

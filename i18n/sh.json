@@ -505,6 +505,7 @@
 	"abusefilter-group-default": "Standardno",
 	"abusefilter-http-error": "Desila se greška u HTTP-u: $1.",
 	"abusefilter-view-privatedetails-submit": "Pogl. osobne podatke",
+	"abusefilter-view-privatedetails-legend": "Pogl. osobne podatke",
 	"abusefilter-view-privatedetails-reason": "Razlog pristupu osobnim podacima:",
 	"abusefilter-log-details-id": "Naznaka dnevnika",
 	"abusefilter-invalid-request": "Nevažeći zahtjev! Morate pristupiti osobnim podacima iz dnevnika putem obrasca na [[Special:AbuseLog/$1]] i navesti razlog.",

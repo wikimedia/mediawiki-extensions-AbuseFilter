@@ -522,6 +522,7 @@
 	"abusefilter-group-default": "Predetermináu",
 	"abusefilter-http-error": "Hebo un error HTTP: $1.",
 	"abusefilter-view-privatedetails-submit": "Ver detalles privaos",
+	"abusefilter-view-privatedetails-legend": "Ver detalles privaos",
 	"abusefilter-view-privatedetails-reason": "Motivu del accesu a los detalles privaos:",
 	"abusefilter-log-details-id": "ID del rexistru",
 	"abusefilter-invalid-request": "¡Solicitú inválida! Tienes de facer l'accesu a los detalles privaos del rexistru col formulariu [[Special:AbuseLog/$1]] y dar un motivu.",

@@ -513,6 +513,7 @@
 	"abusefilter-group-default": "Standaard",
 	"abusefilter-http-error": "Er is een HTTP-fout opgetreden: $1.",
 	"abusefilter-view-privatedetails-submit": "Privégegevens bekijken",
+	"abusefilter-view-privatedetails-legend": "Privégegevens bekijken",
 	"abusefilter-view-privatedetails-reason": "Reden voor het opvragen van privélogboekgegevens:",
 	"abusefilter-log-details-id": "Logboekregel-ID",
 	"abusefilter-noreason": "Waarschuwing: als u de privégegevens van dit logboek wilt bekijken, moet u een reden opgeven.",

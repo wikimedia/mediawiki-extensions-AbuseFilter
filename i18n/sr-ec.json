@@ -468,6 +468,7 @@
 	"abusefilter-group-default": "Подразумевано",
 	"abusefilter-http-error": "Дошло је до HTTP грешке: $1.",
 	"abusefilter-view-privatedetails-submit": "Погледај приватне детаље",
+	"abusefilter-view-privatedetails-legend": "Приказ приватних детаља",
 	"abusefilter-view-privatedetails-reason": "Разлог за приступање приватним детаљима:",
 	"abusefilter-log-details-id": "ID дневника",
 	"abusefilter-log-ip-not-available": "Недоступно",

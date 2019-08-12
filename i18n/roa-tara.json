@@ -529,6 +529,7 @@
 	"abusefilter-group-default": "De base",
 	"abusefilter-http-error": "Ha assute 'n'errore HTTP: $1.",
 	"abusefilter-view-privatedetails-submit": "'Ndruche le dettaglie private",
+	"abusefilter-view-privatedetails-legend": "'Ndruche le dettaglie private",
 	"abusefilter-view-privatedetails-reason": "Mutive pe 'ndrucà le dettaglie private:",
 	"abusefilter-log-details-id": "ID de l'archivije",
 	"abusefilter-invalid-request": "Richieste invalide! Jè necessarie sce sus a le dettaglie private de l'archivije ausanne 'u module sus a [[Special:AbuseLog/$1]] e dà 'nu mutive.",

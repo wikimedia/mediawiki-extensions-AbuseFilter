@@ -551,6 +551,7 @@
 	"abusefilter-group-default": "Padrão",
 	"abusefilter-http-error": "Ocorreu um erro HTTP: $1.",
 	"abusefilter-view-privatedetails-submit": "Ver detalhes privados",
+	"abusefilter-view-privatedetails-legend": "Ver detalhes privados",
 	"abusefilter-view-privatedetails-reason": "Motivo do acesso aos detalhes privados:",
 	"abusefilter-log-details-id": "Identificador do registo",
 	"abusefilter-invalid-request": "Pedido inválido! Deve aceder aos detalhes privados do registo através do formulário em [[Special:AbuseLog/$1]] e fornecer um motivo.",

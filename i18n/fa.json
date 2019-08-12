@@ -519,6 +519,7 @@
 	"abusefilter-group-default": "پیش‌فرض",
 	"abusefilter-http-error": "خطای اچ‌تی‌تی‌پی رخ داد: $1",
 	"abusefilter-view-privatedetails-submit": "نمایش جزئیات خصوصی",
+	"abusefilter-view-privatedetails-legend": "نمایش جزئیات خصوصی",
 	"abusefilter-view-privatedetails-reason": "دلیل برای دسترسی به جزئیات خصوصی:",
 	"abusefilter-log-details-id": "سیاهه شناسه",
 	"abusefilter-invalid-request": "درخواست غیرمجاز! شما باید جزئیات خصوصی پالایه را از طریق فرمی که در [[Special:AbuseLog/$1]] است درخواست کنید و دلیلی ارائه کنید.",

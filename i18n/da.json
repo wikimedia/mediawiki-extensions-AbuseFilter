@@ -443,6 +443,7 @@
 	"abusefilter-group-default": "Standard",
 	"abusefilter-http-error": "Der opstod en HTTP fejl: $1",
 	"abusefilter-view-privatedetails-submit": "Se private oplysninger",
+	"abusefilter-view-privatedetails-legend": "Se private oplysninger",
 	"abusefilter-view-privatedetails-reason": "Grund for adgang til private oplysninger:",
 	"abusefilter-log-details-id": "Log ID",
 	"log-description-abusefilterprivatedetails": "Denne log viser en liste over gange, hvor en bruger havde adgang til de private oplysninger i en misbrugslog.",
