@@ -63,9 +63,14 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 			}
 		);
 
-		return $tree
+		$res = $tree
 			? $this->evalNode( $tree )
 			: new AFPData( AFPData::DNULL, null );
+
+		if ( $res->getType() === AFPData::DUNDEFINED ) {
+			$res = new AFPData( AFPData::DBOOL, false );
+		}
+		return $res;
 	}
 
 	/**
@@ -245,7 +250,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 			case AFPTreeNode::LOGIC:
 				list( $op, $leftOperand, $rightOperand ) = $node->children;
 				$leftOperand = $this->evalNode( $leftOperand );
-				$value = $leftOperand->toBool();
+				$value = $leftOperand->getType() === AFPData::DUNDEFINED ? false : $leftOperand->toBool();
 				// Short-circuit.
 				if ( ( !$value && $op === '&' ) || ( $value && $op === '|' ) ) {
 					if ( $rightOperand instanceof AFPTreeNode ) {

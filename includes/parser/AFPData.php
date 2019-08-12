@@ -58,7 +58,7 @@ class AFPData {
 	 */
 	public function __construct( $type, $val = null ) {
 		if ( ( $type === self::DUNDEFINED || $type === self::DEMPTY ) && $val !== null ) {
-			// Sanity, and we rely on this for instance when casting a DUNDEFINED to something else
+			// Sanity
 			throw new InvalidArgumentException( 'DUNDEFINED cannot have a non-null value' );
 		}
 		$this->type = $type;
@@ -110,6 +110,11 @@ class AFPData {
 	public static function castTypes( AFPData $orig, $target ) {
 		if ( $orig->type === $target ) {
 			return $orig->dup();
+		}
+		if ( $orig->type === self::DUNDEFINED ) {
+			// This case should be handled at a higher level, to avoid implicitly relying on what
+			// this method will do for the specific case.
+			throw new AFPException( 'Refusing to cast DUNDEFINED to something else' );
 		}
 		if ( $target === self::DNULL ) {
 			// We don't expose any method to cast to null. And, actually, should we?
@@ -340,8 +345,9 @@ class AFPData {
 	 * @throws AFPException
 	 */
 	public static function boolOp( AFPData $a, AFPData $b, $op ) {
-		$a = $a->toBool();
-		$b = $b->toBool();
+		$a = $a->type === self::DUNDEFINED ? false : $a->toBool();
+		$b = $b->type === self::DUNDEFINED ? false : $b->toBool();
+
 		if ( $op === '|' ) {
 			return new AFPData( self::DBOOL, $a || $b );
 		} elseif ( $op === '&' ) {
