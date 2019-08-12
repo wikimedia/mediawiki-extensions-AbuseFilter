@@ -32,10 +32,6 @@ abstract class AbuseFilterParserTestCase extends MediaWikiTestCase {
 		if ( !$parsers ) {
 			$parsers = [
 				new AbuseFilterParser(),
-				// The following line can be removed if some tests fail only due to CachingParser:
-				// it is currently broken (T156095) and it could produce unwanted failures (T201193)
-				// @ToDo: This comment can be safely removed (making sure that a CachingParser is
-				// instantiated below) as T156095 will be resolved.
 				new AbuseFilterCachingParser()
 			];
 		} else {
