@@ -62,7 +62,7 @@ class AbuseFilterHooks {
 		if ( $found ) {
 			wfWarn( 'The group permissions "abusefilter-private-log" and "abusefilter-private" have ' .
 				'been renamed, respectively, to "abusefilter-privatedetails-log" and ' .
-				'"abusefilter-privatedetails-log". Please update the names in your settings.'
+				'"abusefilter-privatedetails". Please update the names in your settings.'
 			);
 		}
 
