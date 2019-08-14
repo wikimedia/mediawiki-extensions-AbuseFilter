@@ -114,7 +114,7 @@
 	"log-action-filter-rights-blockautopromote": "Autopromote block",
 	"log-action-filter-rights-restoreautopromote": "Autopromote restore",
 	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|accessed}} private details for $3",
-	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|blocked}} the autopromotion of {{GENDER:$4|$3}} for 5 days",
+	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|blocked}} the autopromotion of {{GENDER:$6|$3}} for a period of $7",
 	"logentry-rights-restoreautopromote": "$1 {{GENDER:$2|restored}} the autopromotion capability of {{GENDER:$4|$3}}",
 	"abusefilterprivatedetails-log-name": "AbuseFilter private details access log",
 	"abusefilter-management": "Abuse filter management",

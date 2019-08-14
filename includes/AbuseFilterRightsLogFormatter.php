@@ -3,7 +3,9 @@
 class AbuseFilterRightsLogFormatter extends LogFormatter {
 
 	/**
-	 * @return string
+	 * This method is identical to the parent, but it's redeclared to give grep a chance
+	 * to find the messages.
+	 * @inheritDoc
 	 */
 	protected function getMessageKey() {
 		$subtype = $this->entry->getSubtype();
