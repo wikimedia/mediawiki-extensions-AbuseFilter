@@ -52,7 +52,8 @@
 			"GoForceX",
 			"94rain",
 			"佛壁灯",
-			"VulpesVulpes825"
+			"VulpesVulpes825",
+			"Looong"
 		]
 	},
 	"abusefilter-desc": "对编辑行为自动进行条件判定",
@@ -159,6 +160,7 @@
 	"log-action-filter-abusefilter-create": "新过滤器创建",
 	"log-action-filter-abusefilter-modify": "过滤器修改",
 	"log-action-filter-suppress-abuselog": "滥用日志监督",
+	"log-action-filter-rights-blockautopromote": "自动升级模块",
 	"logentry-abusefilterprivatedetails-access": "$1{{GENDER:$2|访问了}}$3的私有详情",
 	"abusefilterprivatedetails-log-name": "防滥用过滤器私有详情访问日志",
 	"abusefilter-management": "滥用过滤器管理",
@@ -488,6 +490,7 @@
 	"abusefilter-exception-unclosedcomment": "字符$1处有未闭合注释。",
 	"abusefilter-exception-invalidiprange": "字符$1处提供了无效的IP地址段“$2”。",
 	"abusefilter-exception-disabledvar": "字符$1的变量$2不再继续使用。",
+	"abusefilter-exception-variablevariable": "变量 在第$1个字符位置发现变量，这是不被允许的。",
 	"abusefilter-action-tag": "标签",
 	"abusefilter-action-throttle": "频率控制",
 	"abusefilter-action-warn": "警告",
