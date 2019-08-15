@@ -76,6 +76,7 @@
 	"abusefilter-log-search-group": "필터 그룹:",
 	"abusefilter-log-search-group-any": "모두",
 	"abusefilter-log-search-filter": "필터 ID:",
+	"abusefilter-log-search-filter-help": "파이프로 구분하되, 전역 필터의 경우 \"$1\" 두문자로 구별합니다",
 	"abusefilter-log-search-title": "제목:",
 	"abusefilter-log-search-wiki": "위키:",
 	"abusefilter-log-search-impact": "결과:",

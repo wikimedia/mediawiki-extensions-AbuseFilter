@@ -507,7 +507,7 @@
 	"abusefilter-test-period-end": "變更時間早於：",
 	"abusefilter-test-page": "對頁面做的變更：",
 	"abusefilter-test-shownegative": "顯示不符合過濾器的變更",
-	"abusefilter-test-syntaxerr": "您輸入的過濾器語法錯誤。\n請點選 \"{{int:abusefilter-edit-check}}\" 按鈕取得完整說明。",
+	"abusefilter-test-syntaxerr": "您輸入的過濾器語法錯誤。請點選「{{int:abusefilter-edit-check}}」按鈕取得完整說明。",
 	"abusefilter-test-badtitle": "您輸入的頁面標題無效。它可能包含無法作為標題使用的一個或多個字元。",
 	"abusefilter-test-action": "操作類型：",
 	"abusefilter-test-search-type-all": "所有操作",

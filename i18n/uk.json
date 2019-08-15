@@ -464,6 +464,7 @@
 	"abusefilter-exception-unclosedcomment": "Незакритий коментар на позиції $1.",
 	"abusefilter-exception-invalidiprange": "Недійсний IP-діапазон «$2», поданий на позиції $1.",
 	"abusefilter-exception-disabledvar": "Змінна $2 на позиції $1 більше не використовується.",
+	"abusefilter-exception-variablevariable": "Змінні змінні не дозволені, знайдіть символ $1.",
 	"abusefilter-action-tag": "Мітка",
 	"abusefilter-action-throttle": "Звузити",
 	"abusefilter-action-warn": "Попередження",
