@@ -214,7 +214,7 @@
 	"abusefilter-reautoconfirm-none": "A {{GENDER:$1|este usuario|esta usuaria}} no se le ha suspendido su estado autoconfirmado.",
 	"abusefilter-reautoconfirm-notallowed": "No tienes autorización para restaurar el permiso autoconfirmado a los usuarios.",
 	"abusefilter-reautoconfirm-done": "El estado autoconfirmado de la cuenta ha sido restaurado",
-	"abusefilter-status": "De {{PLURAL:$1|la última acción|las últimas $1 acciones}}, $2 ($3&nbsp;%) {{PLURAL:$2|ha|han}} alcanzado el límite de $4 condiciones, y $5 ($6&nbsp;%) {{PLURAL:$5|ha|han}} coincidido con alguno de los filtros activados actualmente.",
+	"abusefilter-status": "De {{PLURAL:$1|la última acción|las últimas $1 acciones}}, $2 ($3&nbsp;%) {{PLURAL:$2|ha|han}} alcanzado el límite de $4 condiciones, y $5 ($6&nbsp;%) {{PLURAL:$5|ha|han}} coincidido con al menos alguno de los filtros activados actualmente.",
 	"abusefilter-edit": "Editar el filtro antiabusos",
 	"abusefilter-edit-subtitle": "Editando filtro $1",
 	"abusefilter-edit-subtitle-new": "Creando un filtro",

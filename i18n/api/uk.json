@@ -6,7 +6,8 @@
 			"DonDrakon",
 			"Piramidion",
 			"Ата",
-			"Movses"
+			"Movses",
+			"Vlad5250"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Перевірте, чи AbuseFilter має збіги з набором змінних, редагуванням чи подією в журналі AbuseFilter.\n\nПотрібні vars, rcid або logid, але використати можна лише один.",
@@ -52,6 +53,8 @@
 	"apihelp-query+abuselog-param-wiki": "Вікі, влучення з якої показувати.",
 	"apihelp-query+abuselog-example-1": "Показати останні записи в журналі",
 	"apihelp-query+abuselog-example-2": "Показати останні записи в журналі [[API]]",
+	"apihelp-abuselogprivatedetails-description": "Переглянути приватні деталі запису в журналі фільтра редагувань.",
+	"apihelp-abuselogprivatedetails-summary": "Переглянути приватні деталі запису в журналі фільтра редагувань.",
 	"apierror-abusefilter-canttest": "Ви не маєте дозволу тестувати фільтри зловживань.",
 	"apierror-abusefilter-cantcheck": "Ви не маєте дозволу перевіряти синтаксис фільтрів зловживань.",
 	"apierror-abusefilter-nosuchlogid": "Немає запису зловживання з id $1.",

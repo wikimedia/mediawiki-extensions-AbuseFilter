@@ -138,7 +138,7 @@
 	"log-action-filter-rights-blockautopromote": "Blocchi autopromozione",
 	"log-action-filter-rights-restoreautopromote": "Ripristini autopromozione",
 	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|ha acceduto}} ai dettagli privati di $3",
-	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|ha bloccato}} l'autopromozione di {{GENDER:$4|$3}} per 5 giorni",
+	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|ha bloccato}} l'autopromozione di {{GENDER:$4|$3}} per un periodo di $7",
 	"logentry-rights-restoreautopromote": "$1 {{GENDER:$2|ha ripristinato}} la possibilità di autopromozione di {{GENDER:$4|$3}}",
 	"abusefilterprivatedetails-log-name": "Accessi ai dettagli privati del filtro anti abusi",
 	"abusefilter-management": "Gestione del filtro anti abusi",
