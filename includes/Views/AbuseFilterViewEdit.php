@@ -14,7 +14,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param SpecialAbuseFilter $page
 	 * @param array $params
 	 */
-	public function __construct( SpecialAbuseFilter $page, $params ) {
+	public function __construct( SpecialAbuseFilter $page, array $params ) {
 		parent::__construct( $page, $params );
 		$this->mFilter = $page->mFilter;
 		$this->mHistoryID = $page->mHistoryID;
@@ -452,11 +452,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
 	 * Builds the "actions" editor for a given filter.
 	 * @param stdClass $row A row from the abuse_filter table.
-	 * @param array $actions Array of rows from the abuse_filter_action table
+	 * @param array[] $actions Array of rows from the abuse_filter_action table
 	 *  corresponding to the abuse filter held in $row.
 	 * @return string HTML text for an action editor.
 	 */
-	public function buildConsequenceEditor( $row, $actions ) {
+	private function buildConsequenceEditor( $row, array $actions ) {
 		$enabledActions = array_filter(
 			$this->getConfig()->get( 'AbuseFilterActions' )
 		);
@@ -471,7 +471,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		foreach ( $enabledActions as $action => $_ ) {
 			$params = $actions[$action] ?? null;
 			$output .= $this->buildConsequenceSelector(
-				$action, $setActions[$action], $params, $row );
+				$action, $setActions[$action], $row, $params );
 		}
 
 		return $output;
@@ -480,11 +480,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
 	 * @param string $action The action to build an editor for
 	 * @param bool $set Whether or not the action is activated
-	 * @param array|null $parameters Action parameters
 	 * @param stdClass $row abuse_filter row object
+	 * @param array|null $parameters Action parameters
 	 * @return string|\OOUI\FieldLayout
 	 */
-	public function buildConsequenceSelector( $action, $set, $parameters, $row ) {
+	private function buildConsequenceSelector( $action, $set, $row, array $parameters = null ) {
 		$config = $this->getConfig();
 		$actions = $config->get( 'AbuseFilterActions' );
 		if ( empty( $actions[$action] ) ) {
@@ -992,7 +992,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param array $durations
 	 * @return array
 	 */
-	protected static function normalizeBlocks( $durations ) {
+	protected static function normalizeBlocks( array $durations ) {
 		global $wgAbuseFilterBlockDuration, $wgAbuseFilterAnonBlockDuration;
 		// We need to have same values since it may happen that ipblocklist
 		// and one (or both) of the global variables use different wording
@@ -1138,7 +1138,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$data = FormatJson::decode( $import );
 
 			$importRow = $data->row;
-			$actions = get_object_vars( $data->actions );
+			$actions = wfObjectToArray( $data->actions );
 
 			$copy = [
 				'af_public_comments',
