@@ -20,8 +20,7 @@ class AbuseFilterViewTools extends AbuseFilterView {
 		// Expression evaluator
 		$eval = '';
 		$eval .= $this->buildEditBox(
-			$request->getText( 'wpTestExpr' ),
-			'wpTestExpr',
+			$request->getText( 'wpFilterRules' ),
 			true,
 			false,
 			false

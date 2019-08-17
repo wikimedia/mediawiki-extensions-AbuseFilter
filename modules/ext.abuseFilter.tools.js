@@ -14,7 +14,7 @@
 	 * @param {jQuery.Event} e The event fired when the function is called
 	 */
 	function doExprSubmit() {
-		var expr = $( '#wpTestExpr' ).val(),
+		var expr = $( '#wpFilterRules' ).val(),
 			api = new mw.Api();
 		$( this ).injectSpinner( { id: 'abusefilter-expr', size: 'large' } );
 

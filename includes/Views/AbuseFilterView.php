@@ -88,16 +88,14 @@ abstract class AbuseFilterView extends ContextSource {
 
 	/**
 	 * @param string $rules
-	 * @param string $textName
 	 * @param bool $addResultDiv
 	 * @param bool $externalForm
 	 * @param bool $needsModifyRights
 	 * @param-taint $rules none
 	 * @return string
 	 */
-	public function buildEditBox(
+	protected function buildEditBox(
 		$rules,
-		$textName = 'wpFilterRules',
 		$addResultDiv = true,
 		$externalForm = false,
 		$needsModifyRights = true
@@ -152,7 +150,7 @@ abstract class AbuseFilterView extends ContextSource {
 		if ( $externalForm ) {
 			$editorAttribs['form'] = 'wpFilterForm';
 		}
-		$rulesContainer .= Xml::textarea( $textName, $rules, 40, 15, $editorAttribs );
+		$rulesContainer .= Xml::textarea( 'wpFilterRules', $rules, 40, 15, $editorAttribs );
 
 		if ( $canEdit ) {
 			// Generate builder drop-down
@@ -227,7 +225,6 @@ abstract class AbuseFilterView extends ContextSource {
 
 		// Add script
 		$this->getOutput()->addModules( 'ext.abuseFilter.edit' );
-		$this->getOutput()->addJsConfigVars( 'abuseFilterBoxName', $textName );
 
 		return $rulesContainer;
 	}

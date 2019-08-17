@@ -453,7 +453,7 @@
 			setWarnOnLeave();
 		}
 
-		$plainTextBox = $( '#' + mw.config.get( 'abuseFilterBoxName' ) );
+		$plainTextBox = $( '#wpFilterRules' );
 
 		if ( $( '#wpAceFilterEditor' ).length ) {
 			// CodeEditor is installed.

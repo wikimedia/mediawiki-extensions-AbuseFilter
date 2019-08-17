@@ -254,7 +254,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$fields['abusefilter-edit-rules'] = $this->buildEditBox(
 			$row->af_pattern,
-			'wpFilterRules',
 			true
 		);
 		$fields['abusefilter-edit-notes'] =
@@ -262,9 +261,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				'name' => 'wpFilterNotes',
 				'value' => isset( $row->af_comments ) ? $row->af_comments . "\n" : "\n",
 				'rows' => 15,
-				'readOnly' => $readOnly
-				]
-			);
+				'readOnly' => $readOnly,
+				'id' => 'mw-abusefilter-notes-editor'
+			] );
 
 		// Build checkboxes
 		$checkboxes = [ 'hidden', 'enabled', 'deleted' ];
