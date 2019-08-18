@@ -63,7 +63,8 @@
 	"abusefilter-log-search-user": "ผู้ใช้:",
 	"abusefilter-log-search-group": "กลุ่มตัวกรอง:",
 	"abusefilter-log-search-group-any": "ทั้งหมด",
-	"abusefilter-log-search-filter": "หมายเลขประจำตัวกรอง (คั่นด้วยไปป์):",
+	"abusefilter-log-search-filter": "หมายเลขตัวกรอง:",
+	"abusefilter-log-search-filter-help": "คั่นด้วยไพป์ คำขึ้นต้น \"$1\" สำหรับตัวกรองทั่วโลก",
 	"abusefilter-log-search-title": "ชื่อเรื่อง:",
 	"abusefilter-log-search-wiki": "วิกิ:",
 	"abusefilter-log-search-impact": "ผลกระทบ:",
@@ -92,6 +93,7 @@
 	"abusefilter-log-details-var": "ตัวแปร",
 	"abusefilter-log-details-val": "ค่า",
 	"abusefilter-log-details-vars": "พารามิเตอร์การกระทำ",
+	"abusefilter-log-details-privatedetails": "รายละเอียดปูมลับ",
 	"abusefilter-log-details-ip": "ที่อยู่ไอพีเดิม",
 	"abusefilter-log-details-checkuser": "ตรวจสอบผู้ใช้",
 	"abusefilter-log-noactions": "ไม่มี",
@@ -520,5 +522,9 @@
 	"abusefilter-diff-prev": "การเปลี่ยนแปลงที่เก่ากว่า",
 	"abusefilter-diff-next": "การเปลี่ยนแปลงที่ใหม่กว่า",
 	"abusefilter-import-submit": "นำเข้าข้อมูล",
-	"abusefilter-group-default": "ค่าโดยปริยาย"
+	"abusefilter-group-default": "ค่าโดยปริยาย",
+	"abusefilter-view-privatedetails-submit": "ดูรายละเอียดลับ",
+	"abusefilter-view-privatedetails-legend": "ดูรายละเอียดลับ",
+	"abusefilter-view-privatedetails-reason": "เหตุผลสำหรับการเข้าถึงรายละเอียดลับ:",
+	"abusefilter-log-details-id": "หมายเลขปูม"
 }
