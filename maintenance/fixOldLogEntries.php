@@ -13,7 +13,7 @@ require_once "$IP/maintenance/Maintenance.php";
 class FixOldLogEntries extends LoggedUpdateMaintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = 'Fix old rows in logging which hold broken log_params';
+		$this->addDescription( 'Fix old rows in logging which hold broken log_params' );
 
 		$this->addOption( 'verbose', 'Print some more debug info' );
 		$this->addOption( 'dry-run', 'Perform a dry run' );
