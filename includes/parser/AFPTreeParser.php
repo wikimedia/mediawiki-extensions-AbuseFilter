@@ -118,9 +118,11 @@ class AFPTreeParser {
 			$this->move();
 			$position = $this->mPos;
 
-			if ( $this->mCur->type === AFPToken::TNONE ||
+			if (
+				$this->mCur->type === AFPToken::TNONE ||
 				( $this->mCur->type === AFPToken::TBRACE && $this->mCur->value == ')' )
 			) {
+				// Handle special cases which the other parser handled in doLevelAtom
 				break;
 			}
 
