@@ -229,7 +229,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				// Short-circuit.
 				if ( ( !$value && $op === '&' ) || ( $value && $op === '|' ) ) {
 					if ( $rightOperand instanceof AFPTreeNode ) {
-						$this->discardNode( $rightOperand );
+						$this->discardWithHoisting( $rightOperand );
 					}
 					return $leftOperand;
 				}
@@ -240,8 +240,10 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				list( $condition, $valueIfTrue, $valueIfFalse ) = $node->children;
 				$condition = $this->evalNode( $condition );
 				if ( $condition->toBool() ) {
+					$this->discardWithHoisting( $valueIfFalse );
 					return $this->evalNode( $valueIfTrue );
 				} else {
+					$this->discardWithHoisting( $valueIfTrue );
 					return $this->evalNode( $valueIfFalse );
 				}
 
@@ -319,13 +321,26 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 	}
 
 	/**
-	 * Intended to be used for short-circuit. Given a node, check it and its children; if there are
-	 * assignments, initialize the variable. T214674
+	 * Intended to be used for short-circuit as a solution for T214674.
+	 * Given a node, check it and its children; if there are assignments of non-existing variables,
+	 * hoist them. In case of index assignment or array append, the old value is always erased and
+	 * overwritten with a DUNDEFINED. This is used to allow stuff like:
+	 * false & ( var := 'foo' ); var == 2
+	 * or
+	 * if ( false ) then ( var := 'foo' ) else ( 1 ) end; var == 2
+	 * where `false` is something evaluated as false at runtime.
+	 * In the future, we may decide to always throw in those cases (for stability and parser speed),
+	 * but that's not good, at least as long as people don't have an on-wiki way to see if filters
+	 * are failing at runtime.
+	 * @todo Decide about that.
 	 *
 	 * @param AFPTreeNode $node
 	 */
-	private function discardNode( AFPTreeNode $node ) {
-		if ( $node->type === AFPTreeNode::ASSIGNMENT ) {
+	private function discardWithHoisting( AFPTreeNode $node ) {
+		if (
+			$node->type === AFPTreeNode::ASSIGNMENT &&
+			!$this->mVariables->varIsSet( $node->children[0] )
+		) {
 			$this->setUserVariable( $node->children[0], new AFPData( AFPData::DUNDEFINED ) );
 		} elseif (
 			$node->type === AFPTreeNode::INDEX_ASSIGNMENT ||
@@ -342,8 +357,13 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 			isset( $node->children[1] )
 		) {
 			$varnameNode = $node->children[1];
-			if ( $varnameNode->type === AFPTreeNode::ATOM ) {
-				$this->setUserVariable( $varnameNode->children->value, new AFPData( AFPData::DUNDEFINED ) );
+			if ( $varnameNode->type !== AFPTreeNode::ATOM ) {
+				// Shouldn't happen since variable variables are not allowed
+				throw new AFPException( "Got non-atom type {$varnameNode->type} for set_var" );
+			}
+			$varname = $varnameNode->children->value;
+			if ( !$this->mVariables->varIsSet( $varname ) ) {
+				$this->setUserVariable( $varname, new AFPData( AFPData::DUNDEFINED ) );
 			}
 		} elseif ( $node->type === AFPTreeNode::ATOM ) {
 			return;
@@ -351,7 +371,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 		// @phan-suppress-next-line PhanTypeSuspiciousNonTraversableForeach ATOM case excluded above
 		foreach ( $node->children as $child ) {
 			if ( $child instanceof AFPTreeNode ) {
-				$this->discardNode( $child );
+				$this->discardWithHoisting( $child );
 			}
 		}
 	}

@@ -236,11 +236,10 @@ class AbuseFilterParser {
 			$this->mAllowShort = false;
 			$this->intEval( $filter );
 		} catch ( AFPUserVisibleException $excep ) {
-			$this->mAllowShort = $origAS;
-
 			return [ $excep->getMessageObj()->text(), $excep->mPosition ];
+		} finally {
+			$this->mAllowShort = $origAS;
 		}
-		$this->mAllowShort = $origAS;
 
 		return true;
 	}
@@ -293,7 +292,8 @@ class AbuseFilterParser {
 					$braces--;
 				}
 			} elseif ( $this->mCur->type === AFPToken::TID ) {
-				// T214674, define variables
+				// T214674, define non-existing variables. @see docs of
+				// AbuseFilterCachingParser::discardWithHoisting for a detailed explanation of this branch
 				$next = $this->getNextToken();
 				if (
 					in_array( $this->mCur->value, [ 'set', 'set_var' ] ) &&
@@ -304,14 +304,18 @@ class AbuseFilterParser {
 					$braces++;
 					$next = $this->getNextToken();
 					if ( $next->type === AFPToken::TSTRING ) {
-						$this->setUserVariable( $next->value, new AFPData( AFPData::DUNDEFINED ) );
+						if ( !$this->mVariables->varIsSet( $next->value ) ) {
+							$this->setUserVariable( $next->value, new AFPData( AFPData::DUNDEFINED ) );
+						}
 					}
 				} else {
 					// Simple assignment with :=
 					$varname = $this->mCur->value;
 					$next = $this->getNextToken();
 					if ( $next->type === AFPToken::TOP && $next->value === ':=' ) {
-						$this->setUserVariable( $varname, new AFPData( AFPData::DUNDEFINED ) );
+						if ( !$this->mVariables->varIsSet( $varname ) ) {
+							$this->setUserVariable( $varname, new AFPData( AFPData::DUNDEFINED ) );
+						}
 					} elseif ( $next->type === AFPToken::TSQUAREBRACKET && $next->value === '[' ) {
 						if ( !$this->mVariables->varIsSet( $varname ) ) {
 							throw new AFPUserVisibleException( 'unrecognisedvar',
@@ -509,8 +513,7 @@ class AbuseFilterParser {
 			$isTrue = $result->toBool();
 
 			if ( !$isTrue ) {
-				$scOrig = $this->mShortCircuit;
-				$this->mShortCircuit = $this->mAllowShort;
+				$scOrig = wfSetVar( $this->mShortCircuit, $this->mAllowShort, true );
 			}
 			$this->doLevelConditions( $r1 );
 			if ( !$isTrue ) {
@@ -530,8 +533,7 @@ class AbuseFilterParser {
 			$this->move();
 
 			if ( $isTrue ) {
-				$scOrig = $this->mShortCircuit;
-				$this->mShortCircuit = $this->mAllowShort;
+				$scOrig = wfSetVar( $this->mShortCircuit, $this->mAllowShort, true );
 			}
 			$this->doLevelConditions( $r2 );
 			if ( $isTrue ) {
@@ -565,8 +567,7 @@ class AbuseFilterParser {
 				$isTrue = $result->toBool();
 
 				if ( !$isTrue ) {
-					$scOrig = $this->mShortCircuit;
-					$this->mShortCircuit = $this->mAllowShort;
+					$scOrig = wfSetVar( $this->mShortCircuit, $this->mAllowShort, true );
 				}
 				$this->doLevelConditions( $r1 );
 				if ( !$isTrue ) {
@@ -586,8 +587,7 @@ class AbuseFilterParser {
 				$this->move();
 
 				if ( $isTrue ) {
-					$scOrig = $this->mShortCircuit;
-					$this->mShortCircuit = $this->mAllowShort;
+					$scOrig = wfSetVar( $this->mShortCircuit, $this->mAllowShort, true );
 				}
 				$this->doLevelConditions( $r2 );
 				if ( $isTrue ) {
@@ -619,13 +619,12 @@ class AbuseFilterParser {
 
 			// We can go on quickly as either one statement with | is true or one with & is false
 			if ( ( $op === '&' && !$curVal ) || ( $op === '|' && $curVal ) ) {
-				$orig = $this->mShortCircuit;
-				$this->mShortCircuit = $this->mAllowShort;
+				$scOrig = wfSetVar( $this->mShortCircuit, $this->mAllowShort, true );
 				$this->doLevelCompares( $r2 );
 				if ( $r2->getType() === AFPData::DEMPTY ) {
 					$this->logEmptyOperand( 'bool operand', __METHOD__ );
 				}
-				$this->mShortCircuit = $orig;
+				$this->mShortCircuit = $scOrig;
 				$result = new AFPData( AFPData::DBOOL, $curVal );
 				continue;
 			}
