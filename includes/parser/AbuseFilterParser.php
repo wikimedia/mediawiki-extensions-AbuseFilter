@@ -653,10 +653,10 @@ class AbuseFilterParser {
 				continue;
 			}
 			if ( $op === '+' ) {
-				$result = AFPData::sum( $result, $r2 );
+				$result = $result->sum( $r2 );
 			}
 			if ( $op === '-' ) {
-				$result = AFPData::sub( $result, $r2 );
+				$result = $result->sub( $r2 );
 			}
 		}
 	}
@@ -703,7 +703,7 @@ class AbuseFilterParser {
 				// The result doesn't matter.
 				continue;
 			}
-			$result = AFPData::pow( $result, $expanent );
+			$result = $result->pow( $expanent );
 		}
 	}
 
@@ -720,7 +720,7 @@ class AbuseFilterParser {
 				// The result doesn't matter.
 				return;
 			}
-			$result = AFPData::boolInvert( $result );
+			$result = $result->boolInvert();
 		} else {
 			$this->doLevelSpecialWords( $result );
 		}
@@ -777,7 +777,7 @@ class AbuseFilterParser {
 				return;
 			}
 			if ( $op === '-' ) {
-				$result = AFPData::unaryMinus( $result );
+				$result = $result->unaryMinus();
 			}
 		} else {
 			$this->doLevelArrayElements( $result );

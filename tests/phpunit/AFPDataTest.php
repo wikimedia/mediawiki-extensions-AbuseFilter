@@ -230,7 +230,7 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 	 */
 	public function testNoDUNDEFINEDEquals( $lhs, $rhs ) {
 		$this->expectException( AFPException::class );
-		AFPData::equals( $lhs, $rhs );
+		$lhs->equals( $rhs );
 	}
 
 	/**

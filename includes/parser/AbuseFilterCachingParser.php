@@ -184,7 +184,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				list( $operation, $argument ) = $node->children;
 				$argument = $this->evalNode( $argument );
 				if ( $operation === '-' ) {
-					return AFPData::unaryMinus( $argument );
+					return $argument->unaryMinus();
 				}
 				return $argument;
 
@@ -210,13 +210,13 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 			case AFPTreeNode::BOOL_INVERT:
 				list( $argument ) = $node->children;
 				$argument = $this->evalNode( $argument );
-				return AFPData::boolInvert( $argument );
+				return $argument->boolInvert();
 
 			case AFPTreeNode::POW:
 				list( $base, $exponent ) = $node->children;
 				$base = $this->evalNode( $base );
 				$exponent = $this->evalNode( $exponent );
-				return AFPData::pow( $base, $exponent );
+				return $base->pow( $exponent );
 
 			case AFPTreeNode::MUL_REL:
 				list( $op, $leftOperand, $rightOperand ) = $node->children;
@@ -231,9 +231,9 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				$rightOperand = $this->evalNode( $rightOperand );
 				switch ( $op ) {
 					case '+':
-						return AFPData::sum( $leftOperand, $rightOperand );
+						return $leftOperand->sum( $rightOperand );
 					case '-':
-						return AFPData::sub( $leftOperand, $rightOperand );
+						return $leftOperand->sub( $rightOperand );
 					default:
 						// @codeCoverageIgnoreStart
 						throw new AFPException( "Unknown sum-related operator: {$op}" );
