@@ -484,6 +484,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 		return [
 			[ "rcount('(','a')", 'funcRCount' ],
 			[ "get_matches('this (should fail', 'any haystack')", 'funcGetMatches' ],
+			[ "'a' rlike '('", 'keywordRegex' ],
 		];
 	}
 

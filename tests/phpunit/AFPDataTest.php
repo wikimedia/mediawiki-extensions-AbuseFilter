@@ -37,31 +37,6 @@
  */
 class AFPDataTest extends AbuseFilterParserTestCase {
 	/**
-	 * Test the 'regexfailure' exception
-	 *
-	 * @param string $expr The expression to test
-	 * @param string $caller The function where the exception is thrown
-	 * @covers AFPData::keywordRegex
-	 * @dataProvider regexFailure
-	 */
-	public function testRegexFailureException( $expr, $caller ) {
-		$this->exceptionTest( 'regexfailure', $expr, $caller );
-	}
-
-	/**
-	 * Data provider for testRegexFailureException
-	 * The second parameter is the function where the exception is raised.
-	 * One expression for each throw.
-	 *
-	 * @return array
-	 */
-	public function regexFailure() {
-		return [
-			[ "'a' rlike '('", 'keywordRegex' ],
-		];
-	}
-
-	/**
 	 * Test the 'dividebyzero' exception
 	 *
 	 * @param string $expr The expression to test

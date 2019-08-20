@@ -757,7 +757,7 @@ class AbuseFilterParser {
 				$this->raiseCondCount();
 
 				// @phan-suppress-next-line PhanParamTooMany Not every function needs the position
-				$result = AFPData::$func( $result, $r2, $this->mCur->pos );
+				$result = $this->$func( $result, $r2, $this->mCur->pos );
 			}
 		}
 	}
@@ -1660,6 +1660,103 @@ class AbuseFilterParser {
 		$this->setUserVariable( $varName, $value );
 
 		return $value;
+	}
+
+	/**
+	 * Checks if $a contains $b
+	 *
+	 * @param AFPData $a
+	 * @param AFPData $b
+	 * @return AFPData
+	 */
+	protected function containmentKeyword( AFPData $a, AFPData $b ) {
+		$a = $a->toString();
+		$b = $b->toString();
+
+		if ( $a === '' || $b === '' ) {
+			return new AFPData( AFPData::DBOOL, false );
+		}
+
+		return new AFPData( AFPData::DBOOL, strpos( $a, $b ) !== false );
+	}
+
+	/**
+	 * @param AFPData $a
+	 * @param AFPData $b
+	 * @return AFPData
+	 */
+	protected function keywordIn( AFPData $a, AFPData $b ) {
+		return $this->containmentKeyword( $b, $a );
+	}
+
+	/**
+	 * @param AFPData $a
+	 * @param AFPData $b
+	 * @return AFPData
+	 */
+	protected function keywordContains( AFPData $a, AFPData $b ) {
+		return $this->containmentKeyword( $a, $b );
+	}
+
+	/**
+	 * @param AFPData $str
+	 * @param AFPData $pattern
+	 * @return AFPData
+	 */
+	protected function keywordLike( AFPData $str, AFPData $pattern ) {
+		$str = $str->toString();
+		$pattern = '#^' . strtr( preg_quote( $pattern->toString(), '#' ), AFPData::$wildcardMap ) . '$#u';
+		Wikimedia\suppressWarnings();
+		$result = preg_match( $pattern, $str );
+		Wikimedia\restoreWarnings();
+
+		return new AFPData( AFPData::DBOOL, (bool)$result );
+	}
+
+	/**
+	 * @param AFPData $str
+	 * @param AFPData $regex
+	 * @param int $pos
+	 * @param bool $insensitive
+	 * @return AFPData
+	 * @throws Exception
+	 */
+	protected function keywordRegex( AFPData $str, AFPData $regex, $pos, $insensitive = false ) {
+		$str = $str->toString();
+		$pattern = $regex->toString();
+
+		$pattern = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $pattern );
+		$pattern = "/$pattern/u";
+
+		if ( $insensitive ) {
+			$pattern .= 'i';
+		}
+
+		Wikimedia\suppressWarnings();
+		$result = preg_match( $pattern, $str );
+		Wikimedia\restoreWarnings();
+		if ( $result === false ) {
+			throw new AFPUserVisibleException(
+				'regexfailure',
+				// Coverage bug
+				// @codeCoverageIgnoreStart
+				$pos,
+				// @codeCoverageIgnoreEnd
+				[ $pattern ]
+			);
+		}
+
+		return new AFPData( AFPData::DBOOL, (bool)$result );
+	}
+
+	/**
+	 * @param AFPData $str
+	 * @param AFPData $regex
+	 * @param int $pos
+	 * @return AFPData
+	 */
+	protected function keywordRegexInsensitive( AFPData $str, AFPData $regex, $pos ) {
+		return $this->keywordRegex( $str, $regex, $pos, true );
 	}
 
 	/**
