@@ -557,11 +557,16 @@ class AFPTreeParser {
 					$this->setState( $state );
 				}
 			}
-			$args = [];
-			do {
-				$args[] = $this->doLevelSemicolon();
-			} while ( $this->mCur->type === AFPToken::TCOMMA );
 
+			$args = [];
+			$next = $this->getNextToken();
+			if ( $next->type !== AFPToken::TBRACE || $next->value !== ')' ) {
+				do {
+					$args[] = $this->doLevelSemicolon();
+				} while ( $this->mCur->type === AFPToken::TCOMMA );
+			} else {
+				$this->move();
+			}
 			if ( $this->mCur->type !== AFPToken::TBRACE || $this->mCur->value !== ')' ) {
 				throw new AFPUserVisibleException( 'expectednotfound',
 					$this->mPos,
@@ -572,6 +577,11 @@ class AFPTreeParser {
 					]
 				);
 			}
+			// Giving too few arguments to a function is a pretty common error. If we check it here
+			// (as well as at runtime, for OCD), we can make checkSyntax only try to build the AST, as
+			// there would be way less runtime errors. Moreover, this check will also be performed inside
+			// skipped branches, e.g. the discarded if/else branch.
+			$this->checkEnoughArguments( $args, $func );
 			$this->move();
 
 			array_unshift( $args, $func );
@@ -648,5 +658,29 @@ class AFPTreeParser {
 
 		$this->move();
 		return $result;
+	}
+
+	/**
+	 * Check that a built-in function has been provided enough arguments
+	 *
+	 * @param array $args The arguments supplied to the function
+	 * @param string $func The function name
+	 * @throws AFPUserVisibleException
+	 * @see AbuseFilterParser::checkEnoughArguments()
+	 * @todo This is a duplicate of AbuseFilter::checkEnoughArguments, and such duplication
+	 * should be avoided when merging the parsers.
+	 */
+	protected function checkEnoughArguments( $args, $func ) {
+		if ( !array_key_exists( $func, AbuseFilterParser::$minArgFunc ) ) {
+			throw new InvalidArgumentException( "$func is not a valid function." );
+		}
+		$count = AbuseFilterParser::$minArgFunc[ $func ];
+		if ( count( $args ) < $count ) {
+			throw new AFPUserVisibleException(
+				$count === 1 ? 'noparams' : 'notenoughargs',
+				$this->mCur->pos,
+				[ $func, $count, count( $args ) ]
+			);
+		}
 	}
 }

@@ -520,13 +520,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 * @dataProvider oneParamFuncs
 	 */
 	public function testNoParamsException( $func ) {
-		foreach ( self::getParsers() as $parser ) {
-			$this->setExpectedException(
-				AFPUserVisibleException::class,
-				'No parameters given to function'
-			);
-			$parser->parse( "$func()" );
-		}
+		$this->exceptionTest( 'noparams', "$func()", 'checkEnoughArguments' );
 	}
 
 	/**
@@ -566,18 +560,10 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 * @dataProvider twoParamsFuncs
 	 */
 	public function testNotEnoughArgsExceptionTwo( $func ) {
-		foreach ( self::getParsers() as $parser ) {
-			// Nevermind if the argument can't be string since we check the amount
-			// of parameters before anything else.
-			$code = "$func('foo')";
-			$length = strlen( $code );
-			$this->setExpectedException(
-				AFPUserVisibleException::class,
-				"Not enough arguments to function $func called at character $length.\n" .
-				'Expected 2 arguments, got 1'
-			);
-			$parser->parse( $code );
-		}
+		// Nevermind if the argument can't be string since we check the amount
+		// of parameters before anything else.
+		$code = "$func('foo')";
+		$this->exceptionTest( 'notenoughargs', $code, 'checkEnoughArguments' );
 	}
 
 	/**
@@ -609,16 +595,10 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 * @dataProvider threeParamsFuncs
 	 */
 	public function testNotEnoughArgsExceptionThree( $func ) {
-		foreach ( self::getParsers() as $parser ) {
-			$this->setExpectedException(
-				AFPUserVisibleException::class,
-				"Not enough arguments to function $func called at character 25.\n" .
-				'Expected 3 arguments, got 2'
-			);
-			// Nevermind if the argument can't be string since we check the amount
-			// of parameters before anything else.
-			$parser->parse( "$func('foo', 'bar')" );
-		}
+		// Nevermind if the argument can't be string since we check the amount
+		// of parameters before anything else.
+		$code = "$func('foo', 'bar')";
+		$this->exceptionTest( 'notenoughargs', $code, 'checkEnoughArguments' );
 	}
 
 	/**
@@ -630,6 +610,40 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	public function threeParamsFuncs() {
 		return [
 			[ 'str_replace' ],
+		];
+	}
+
+	/**
+	 * Check that calling a function with less arguments than required throws an exception
+	 * when inside a skipped conditional branch.
+	 *
+	 * @param string $funcCode Code for a function call
+	 * @param string $exceptionCode The ID of the expected exception
+	 * @dataProvider provideFuncsForConditional
+	 */
+	public function testCheckArgCountInConditional( $funcCode, $exceptionCode ) {
+		$code = "if ( 1==1 ) then ( 1 ) else ( $funcCode ) end;";
+		// AbuseFilterParser skips the parentheses altogether, so this is not supposed to work
+		$parser = new AbuseFilterCachingParser();
+		try {
+			$parser->parse( $code );
+			$this->fail( 'No exception was thrown.' );
+		} catch ( AFPUserVisibleException $e ) {
+			$this->assertSame( $exceptionCode, $e->mExceptionID );
+		}
+	}
+
+	/**
+	 * Data provider for testCheckArgCountInConditional
+	 * @return array
+	 */
+	public function provideFuncsForConditional() {
+		return [
+			[ 'count()', 'noparams' ],
+			[ 'bool()', 'noparams' ],
+			[ 'ip_in_range(1)', 'notenoughargs' ],
+			[ 'set_var("x")', 'notenoughargs' ],
+			[ 'str_replace("x","y")', 'notenoughargs' ]
 		];
 	}
 

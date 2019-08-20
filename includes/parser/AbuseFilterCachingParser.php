@@ -6,6 +6,11 @@
  *
  * It currently inherits AbuseFilterParser in order to avoid code duplication.
  * In future, this code will replace current AbuseFilterParser entirely.
+ *
+ * @todo Override checkSyntax and make it only try to build the AST. That would mean faster results,
+ *   and no need to mess with DUNDEFINED and the like. However, we must first try to reduce the
+ *   amount of runtime-only exceptions, and try to detect them in the AFPTreeParser instead.
+ *   Otherwise, people may be able to save a broken filter without the syntax check reporting that.
  */
 class AbuseFilterCachingParser extends AbuseFilterParser {
 	/**
@@ -125,38 +130,9 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				$functionName = $node->children[0];
 				$args = array_slice( $node->children, 1 );
 
-				$func = self::$mFunctions[$functionName];
 				$dataArgs = array_map( [ $this, 'evalNode' ], $args );
 
-				/** @noinspection PhpToStringImplementationInspection */
-				$funcHash = md5( $func . serialize( $dataArgs ) );
-
-				if ( isset( $this->funcCache[$funcHash] ) &&
-					!in_array( $func, self::$ActiveFunctions )
-				) {
-					$result = $this->funcCache[$funcHash];
-				} else {
-					$this->raiseCondCount();
-					$hasUndefinedArg = false;
-					foreach ( $dataArgs as $arg ) {
-						if ( $arg->type === AFPData::DUNDEFINED ) {
-							$hasUndefinedArg = true;
-							break;
-						}
-					}
-					$result = $this->funcCache[$funcHash] = $hasUndefinedArg
-						? new AFPData( AFPData::DUNDEFINED )
-						: $this->$func( $dataArgs );
-				}
-
-				if ( count( $this->funcCache ) > 1000 ) {
-					// @codeCoverageIgnoreStart
-					$this->clearFuncCache();
-					// @codeCoverageIgnoreEnd
-				}
-
-				return $result;
-
+				return $this->callFunc( $functionName, $dataArgs );
 			case AFPTreeNode::ARRAY_INDEX:
 				list( $array, $offset ) = $node->children;
 
