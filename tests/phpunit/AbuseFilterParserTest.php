@@ -278,8 +278,8 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ 'a[1] := 5', 'doLevelSet' ],
 			[ 'a[] := 5', 'doLevelSet' ],
 			[ 'a = 5', 'getVarValue' ],
-			[ 'false & ( nonexistent[1] := 2 )', 'skipOverBraces/discardNode' ],
-			[ 'false & ( nonexistent[] := 2 )', 'skipOverBraces/discardNode' ],
+			[ 'false & ( nonexistent[1] := 2 )', 'skipOverBraces/discardWithHoisting' ],
+			[ 'false & ( nonexistent[] := 2 )', 'skipOverBraces/discardWithHoisting' ],
 		];
 	}
 
@@ -768,7 +768,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 					$parser->parse( $code ),
 					"Parser: $pname"
 				);
-			} catch ( Exception $e ) {
+			} catch ( AFPException $e ) {
 				$this->fail( "Got exception with parser: $pname\n$e" );
 			}
 		}
@@ -795,6 +795,9 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			// Identifier before closing skipped brace, T214674#5374757
 			[ "false & ( var := 'foo'; 'x' in var )" ],
 			[ "false & ( var := 'foo'; added_lines irlike var )" ],
+			[ "false & ( if ( 1 == 1 ) then (var := 3) else (var := 4) end;); var !== 'foo'" ],
+			[ "if ( 1 === 1 ) then ( 0 ) else ( var := 1 ) end; var !== 'foo'" ],
+			[ "if ( 1=== 1 ) then (0) else ( false & ( var := 1 ) ) end; var !== 'foo'" ],
 		];
 	}
 
@@ -812,7 +815,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 					$parser->parse( $code ),
 					"Parser: $pname"
 				);
-			} catch ( Exception $e ) {
+			} catch ( AFPException $e ) {
 				$this->fail( "Got exception with parser: $pname\n$e" );
 			}
 		}
