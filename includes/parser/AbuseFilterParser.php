@@ -320,6 +320,10 @@ class AbuseFilterParser {
 		$result = new AFPData( AFPData::DEMPTY );
 		$this->doLevelEntry( $result );
 
+		if ( $result->getType() === AFPData::DUNDEFINED ) {
+			$result = new AFPData( AFPData::DBOOL, false );
+		}
+
 		return $result;
 	}
 
@@ -573,9 +577,10 @@ class AbuseFilterParser {
 			$op = $this->mCur->value;
 			$this->move();
 			$r2 = new AFPData( AFPData::DEMPTY );
+			$curVal = $result->getType() === AFPData::DUNDEFINED ? false : $result->toBool();
 
 			// We can go on quickly as either one statement with | is true or one with & is false
-			if ( ( $op === '&' && !$result->toBool() ) || ( $op === '|' && $result->toBool() ) ) {
+			if ( ( $op === '&' && !$curVal ) || ( $op === '|' && $curVal ) ) {
 				$orig = $this->mShortCircuit;
 				$this->mShortCircuit = $this->mAllowShort;
 				$this->doLevelCompares( $r2 );
@@ -583,7 +588,7 @@ class AbuseFilterParser {
 					$this->logEmptyOperand( 'bool operand', __METHOD__ );
 				}
 				$this->mShortCircuit = $orig;
-				$result = new AFPData( AFPData::DBOOL, $result->toBool() );
+				$result = new AFPData( AFPData::DBOOL, $curVal );
 				continue;
 			}
 
