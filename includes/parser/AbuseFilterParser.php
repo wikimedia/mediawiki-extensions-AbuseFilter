@@ -78,6 +78,44 @@ class AbuseFilterParser {
 		'sanitize' => 'funcSanitize',
 	];
 
+	/**
+	 * The *minimum* amount of arguments required by each function.
+	 * @var int[]
+	 * @todo Make constant once we drop HHVM support
+	 */
+	public static $minArgFunc = [
+		'lcase' => 1,
+		'ucase' => 1,
+		'length' => 1,
+		'string' => 1,
+		'int' => 1,
+		'float' => 1,
+		'bool' => 1,
+		'norm' => 1,
+		'ccnorm' => 1,
+		'ccnorm_contains_any' => 2,
+		'ccnorm_contains_all' => 2,
+		'specialratio' => 1,
+		'rmspecials' => 1,
+		'rmdoubles' => 1,
+		'rmwhitespace' => 1,
+		'count' => 1,
+		'rcount' => 1,
+		'get_matches' => 2,
+		'ip_in_range' => 2,
+		'contains_any' => 2,
+		'contains_all' => 2,
+		'equals_to_any' => 2,
+		'substr' => 2,
+		'strlen' => 1,
+		'strpos' => 2,
+		'str_replace' => 3,
+		'rescape' => 1,
+		'set' => 2,
+		'set_var' => 2,
+		'sanitize' => 1,
+	];
+
 	// Functions that affect parser state, and shouldn't be cached.
 	public static $ActiveFunctions = [
 		'funcSetVar',
@@ -851,7 +889,6 @@ class AbuseFilterParser {
 	protected function doLevelFunction( &$result ) {
 		if ( $this->mCur->type === AFPToken::TID && isset( self::$mFunctions[$this->mCur->value] ) ) {
 			$fname = $this->mCur->value;
-			$func = self::$mFunctions[$fname];
 			$this->move();
 			if ( $this->mCur->type !== AFPToken::TBRACE || $this->mCur->value !== '(' ) {
 				throw new AFPUserVisibleException( 'expectednotfound',
@@ -917,31 +954,7 @@ class AbuseFilterParser {
 			}
 			$this->move();
 
-			$funcHash = md5( $func . serialize( $args ) );
-
-			if ( isset( $this->funcCache[$funcHash] ) &&
-				!in_array( $func, self::$ActiveFunctions )
-			) {
-				$result = $this->funcCache[$funcHash];
-			} else {
-				$this->raiseCondCount();
-				$hasUndefinedArg = false;
-				foreach ( $args as $arg ) {
-					if ( $arg->type === AFPData::DUNDEFINED ) {
-						$hasUndefinedArg = true;
-						break;
-					}
-				}
-				$result = $this->funcCache[$funcHash] = $hasUndefinedArg
-					? new AFPData( AFPData::DUNDEFINED )
-					: $this->$func( $args );
-			}
-
-			if ( count( $this->funcCache ) > 1000 ) {
-				// @codeCoverageIgnoreStart
-				$this->clearFuncCache();
-				// @codeCoverageIgnoreEnd
-			}
+			$result = $this->callFunc( $fname, $args );
 		} else {
 			$this->doLevelAtom( $result );
 		}
@@ -1114,11 +1127,13 @@ class AbuseFilterParser {
 	 *
 	 * @param array $args The arguments supplied to the function
 	 * @param string $func The function name
-	 * @param int $count The amount of needed arguments. If this is 1, then the 'noparams' message
-	 *   is used. Otherwise, the message is 'notenoughargs'.
 	 * @throws AFPUserVisibleException
 	 */
-	protected function checkEnoughArguments( $args, $func, $count ) {
+	protected function checkEnoughArguments( $args, $func ) {
+		if ( !array_key_exists( $func, self::$minArgFunc ) ) {
+			throw new InvalidArgumentException( "$func is not a valid function." );
+		}
+		$count = self::$minArgFunc[ $func ];
 		if ( count( $args ) < $count ) {
 			throw new AFPUserVisibleException(
 				$count === 1 ? 'noparams' : 'notenoughargs',
@@ -1126,6 +1141,52 @@ class AbuseFilterParser {
 				[ $func, $count, count( $args ) ]
 			);
 		}
+	}
+
+	/**
+	 * Helper to call a built-in function.
+	 *
+	 * @param string $fname The name of the function as found in the filter code
+	 * @param AFPData[] $args Arguments for the function
+	 * @return AFPData The return value of the function
+	 * @throws InvalidArgumentException if given an invalid func
+	 */
+	protected function callFunc( $fname, array $args ) : AFPData {
+		if ( !array_key_exists( $fname, self::$mFunctions ) ) {
+			throw new InvalidArgumentException( "$fname is not a valid function." );
+		}
+
+		$funcHandler = self::$mFunctions[$fname];
+		$funcHash = md5( $funcHandler . serialize( $args ) );
+
+		if ( isset( $this->funcCache[$funcHash] ) &&
+			!in_array( $funcHandler, self::$ActiveFunctions )
+		) {
+			$result = $this->funcCache[$funcHash];
+		} else {
+			$this->checkEnoughArguments( $args, $fname );
+			$this->raiseCondCount();
+			$hasUndefinedArg = false;
+			foreach ( $args as $arg ) {
+				if ( $arg->type === AFPData::DUNDEFINED ) {
+					$hasUndefinedArg = true;
+					break;
+				}
+			}
+			if ( $hasUndefinedArg ) {
+				$result = new AFPData( AFPData::DUNDEFINED );
+			} else {
+				$result = $this->$funcHandler( $args );
+			}
+			$this->funcCache[$funcHash] = $result;
+		}
+
+		if ( count( $this->funcCache ) > 1000 ) {
+			// @codeCoverageIgnoreStart
+			$this->clearFuncCache();
+			// @codeCoverageIgnoreEnd
+		}
+		return $result;
 	}
 
 	// Built-in functions
@@ -1136,7 +1197,6 @@ class AbuseFilterParser {
 	 */
 	protected function funcLc( $args ) {
 		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
-		$this->checkEnoughArguments( $args, 'lc', 1 );
 		$s = $args[0]->toString();
 
 		return new AFPData( AFPData::DSTRING, $contLang->lc( $s ) );
@@ -1148,7 +1208,6 @@ class AbuseFilterParser {
 	 */
 	protected function funcUc( $args ) {
 		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
-		$this->checkEnoughArguments( $args, 'uc', 1 );
 		$s = $args[0]->toString();
 
 		return new AFPData( AFPData::DSTRING, $contLang->uc( $s ) );
@@ -1159,8 +1218,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcLen( $args ) {
-		$this->checkEnoughArguments( $args, 'len', 1 );
-
 		if ( $args[0]->type === AFPData::DARRAY ) {
 			// Don't use toString on arrays, but count
 			$val = count( $args[0]->data );
@@ -1176,7 +1233,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcSpecialRatio( $args ) {
-		$this->checkEnoughArguments( $args, 'specialratio', 1 );
 		$s = $args[0]->toString();
 
 		if ( !strlen( $s ) ) {
@@ -1195,8 +1251,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcCount( $args ) {
-		$this->checkEnoughArguments( $args, 'count', 1 );
-
 		if ( $args[0]->type === AFPData::DARRAY && count( $args ) === 1 ) {
 			return new AFPData( AFPData::DINT, count( $args[0]->data ) );
 		}
@@ -1224,8 +1278,6 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function funcRCount( $args ) {
-		$this->checkEnoughArguments( $args, 'rcount', 1 );
-
 		if ( count( $args ) === 1 ) {
 			$count = count( explode( ',', $args[0]->toString() ) );
 		} else {
@@ -1262,8 +1314,6 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function funcGetMatches( $args ) {
-		$this->checkEnoughArguments( $args, 'get_matches', 2 );
-
 		$needle = $args[0]->toString();
 		$haystack = $args[1]->toString();
 
@@ -1310,8 +1360,6 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function funcIPInRange( $args ) {
-		$this->checkEnoughArguments( $args, 'ip_in_range', 2 );
-
 		$ip = $args[0]->toString();
 		$range = $args[1]->toString();
 
@@ -1333,7 +1381,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcCCNorm( $args ) {
-		$this->checkEnoughArguments( $args, 'ccnorm', 1 );
 		$s = $args[0]->toString();
 
 		$s = html_entity_decode( $s, ENT_QUOTES, 'UTF-8' );
@@ -1347,7 +1394,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcSanitize( $args ) {
-		$this->checkEnoughArguments( $args, 'sanitize', 1 );
 		$s = $args[0]->toString();
 
 		$s = html_entity_decode( $s, ENT_QUOTES, 'UTF-8' );
@@ -1361,8 +1407,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcContainsAny( $args ) {
-		$this->checkEnoughArguments( $args, 'contains_any', 2 );
-
 		$s = array_shift( $args );
 
 		return new AFPData( AFPData::DBOOL, self::contains( $s, $args, true ) );
@@ -1373,8 +1417,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcContainsAll( $args ) {
-		$this->checkEnoughArguments( $args, 'contains_all', 2 );
-
 		$s = array_shift( $args );
 
 		return new AFPData( AFPData::DBOOL, self::contains( $s, $args, false, false ) );
@@ -1387,8 +1429,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcCCNormContainsAny( $args ) {
-		$this->checkEnoughArguments( $args, 'ccnorm_contains_any', 2 );
-
 		$s = array_shift( $args );
 
 		return new AFPData( AFPData::DBOOL, self::contains( $s, $args, true, true ) );
@@ -1401,8 +1441,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcCCNormContainsAll( $args ) {
-		$this->checkEnoughArguments( $args, 'ccnorm_contains_all', 2 );
-
 		$s = array_shift( $args );
 
 		return new AFPData( AFPData::DBOOL, self::contains( $s, $args, false, true ) );
@@ -1463,8 +1501,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcEqualsToAny( $args ) {
-		$this->checkEnoughArguments( $args, 'equals_to_any', 2 );
-
 		$s = array_shift( $args );
 
 		return new AFPData( AFPData::DBOOL, self::equalsToAny( $s, $args ) );
@@ -1534,7 +1570,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcRMSpecials( $args ) {
-		$this->checkEnoughArguments( $args, 'rmspecials', 1 );
 		$s = $args[0]->toString();
 
 		return new AFPData( AFPData::DSTRING, $this->rmspecials( $s ) );
@@ -1545,7 +1580,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcRMWhitespace( $args ) {
-		$this->checkEnoughArguments( $args, 'rmwhitespace', 1 );
 		$s = $args[0]->toString();
 
 		return new AFPData( AFPData::DSTRING, $this->rmwhitespace( $s ) );
@@ -1556,7 +1590,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcRMDoubles( $args ) {
-		$this->checkEnoughArguments( $args, 'rmdoubles', 1 );
 		$s = $args[0]->toString();
 
 		return new AFPData( AFPData::DSTRING, $this->rmdoubles( $s ) );
@@ -1567,7 +1600,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcNorm( $args ) {
-		$this->checkEnoughArguments( $args, 'norm', 1 );
 		$s = $args[0]->toString();
 
 		$s = $this->ccnorm( $s );
@@ -1583,8 +1615,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcSubstr( $args ) {
-		$this->checkEnoughArguments( $args, 'substr', 2 );
-
 		$s = $args[0]->toString();
 		$offset = $args[1]->toInt();
 		$length = isset( $args[2] ) ? $args[2]->toInt() : null;
@@ -1599,8 +1629,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcStrPos( $args ) {
-		$this->checkEnoughArguments( $args, 'strpos', 2 );
-
 		$haystack = $args[0]->toString();
 		$needle = $args[1]->toString();
 		$offset = isset( $args[2] ) ? $args[2]->toInt() : 0;
@@ -1624,8 +1652,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcStrReplace( $args ) {
-		$this->checkEnoughArguments( $args, 'str_replace', 3 );
-
 		$subject = $args[0]->toString();
 		$search = $args[1]->toString();
 		$replace = $args[2]->toString();
@@ -1638,8 +1664,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcStrRegexEscape( $args ) {
-		$this->checkEnoughArguments( $args, 'rescape', 1 );
-
 		$string = $args[0]->toString();
 
 		// preg_quote does not need the second parameter, since rlike takes
@@ -1652,8 +1676,6 @@ class AbuseFilterParser {
 	 * @return mixed
 	 */
 	protected function funcSetVar( $args ) {
-		$this->checkEnoughArguments( $args, 'set_var', 2 );
-
 		$varName = $args[0]->toString();
 		$value = $args[1];
 
@@ -1764,7 +1786,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function castString( $args ) {
-		$this->checkEnoughArguments( $args, 'string', 1 );
 		return AFPData::castTypes( $args[0], AFPData::DSTRING );
 	}
 
@@ -1773,7 +1794,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function castInt( $args ) {
-		$this->checkEnoughArguments( $args, 'int', 1 );
 		return AFPData::castTypes( $args[0], AFPData::DINT );
 	}
 
@@ -1782,7 +1802,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function castFloat( $args ) {
-		$this->checkEnoughArguments( $args, 'float', 1 );
 		return AFPData::castTypes( $args[0], AFPData::DFLOAT );
 	}
 
@@ -1791,7 +1810,6 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function castBool( $args ) {
-		$this->checkEnoughArguments( $args, 'bool', 1 );
 		return AFPData::castTypes( $args[0], AFPData::DBOOL );
 	}
 
