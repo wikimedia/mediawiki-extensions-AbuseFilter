@@ -483,7 +483,7 @@
 	"abusefilter-exception-unclosedcomment": "Commentaire non fermé au caractère $1.",
 	"abusefilter-exception-invalidiprange": "Intervalle d'adresses IP fourni invalide \"$2\" au caractère $1.",
 	"abusefilter-exception-disabledvar": "La variable $2 au caractère $1 n’est plus utilisée.",
-	"abusefilter-exception-variablevariable": "Les variables variables ne sont pas autorisées, trouvé au caractère $1.",
+	"abusefilter-exception-variablevariable": "Les variables Variable ne sont pas autorisées, trouvé au caractère $1.",
 	"abusefilter-action-tag": "Baliser",
 	"abusefilter-action-throttle": "Limiter les modifications",
 	"abusefilter-action-warn": "Avertir l’utilisateur",

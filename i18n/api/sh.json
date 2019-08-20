@@ -41,7 +41,7 @@
 	"apihelp-query+abuselog-param-end": "Na koji datum i vrijeme zaustaviti brojanje.",
 	"apihelp-query+abuselog-param-user": "Prikaži samo stavke za danog korisnika ili IP adresu.",
 	"apihelp-query+abuselog-param-title": "Prikaži samo stavke što se odnose na datu stranicu.",
-	"apihelp-query+abuselog-param-filter": "Prikaži samo stavke za događaje koje je uhvatila dana filterska naznaka.",
+	"apihelp-query+abuselog-param-filter": "Prikaži samo stavke za događaje uhvaćene danom filterskom naznakom. Odijelite pravim crtima; i prefiksom \"$1\" za globalne filtre.",
 	"apihelp-query+abuselog-param-limit": "Najviše stavki u popisima.",
 	"apihelp-query+abuselog-param-prop": "Koja svojstva dati.",
 	"apihelp-query+abuselog-param-wiki": "Od kojog wikija se prikazuju pogodci.",

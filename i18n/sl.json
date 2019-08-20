@@ -433,8 +433,8 @@
 	"abusefilter-import-intro": "Ta vmesnik lahko uporabite za uvoz filtrov iz drugih wikijev.\nNa izvornem wikiju kliknite »{{int:abusefilter-edit-export}}« pod »{{int:abusefilter-edit-tools}}« v urejevalnem vmesniku.\nNato skopirajte besedilo v prikazanem polju, prilepite ga v to polje in kliknite »{{int:abusefilter-import-submit}}«.",
 	"abusefilter-import-submit": "Uvozi podatke",
 	"abusefilter-group-default": "Privzeto",
-	"abusefilter-view-privatedetails-submit": "Prikaži zasebne podatke",
+	"abusefilter-view-privatedetails-submit": "Prikaži zasebne podrobnosti",
 	"abusefilter-view-privatedetails-legend": "Prikaži zasebne podatke",
-	"abusefilter-view-privatedetails-reason": "Razlog za dostop do zasebnih podatkov:",
+	"abusefilter-view-privatedetails-reason": "Razlog za dostop do zasebnih podrobnosti:",
 	"abusefilter-log-details-id": "ID dnevnika"
 }

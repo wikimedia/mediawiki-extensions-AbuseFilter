@@ -116,7 +116,7 @@
 	"log-action-filter-rights-blockautopromote": "Blocche de autopromozzione",
 	"log-action-filter-rights-restoreautopromote": "Repstine de autopromozzione",
 	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|ave trasute}} a le dettaglie private de $3",
-	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|ave bloccate}} l'autopromozzione de {{GENDER:$4|$3}} pe 5 sciurne",
+	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|ave bloccate}} l'autopromozzione de {{GENDER:$6|$3}} pe 'nu periode de $7",
 	"logentry-rights-restoreautopromote": "$1 {{GENDER:$2|ave repristinate}} 'a possibbeletà de autopromozzione de {{GENDER:$4|$3}}",
 	"abusefilterprivatedetails-log-name": "Archivije de le accesse a le dettaglie private de AbuseFilter",
 	"abusefilter-management": "Gestione d'u filtre de le abbuse",

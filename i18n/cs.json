@@ -128,7 +128,7 @@
 	"log-action-filter-rights-blockautopromote": "Zablokování automatického potvrzení",
 	"log-action-filter-rights-restoreautopromote": "Obnova automatického potvrzení",
 	"logentry-abusefilterprivatedetails-access": "$1 si {{GENDER:$2|prohlédl|prohlédla}} soukromé detaily k $3",
-	"logentry-rights-blockautopromote": "$1 na 5 dní {{GENDER:$2|zablokoval|zablokovala}} automatické potvrzení {{GENDER:$4|uživatele|uživatelky}} $3",
+	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|zablokoval|zablokovala}} automatické potvrzení {{GENDER:$6|uživatele|uživatelky}} $3 na dobu $7",
 	"logentry-rights-restoreautopromote": "$1 {{GENDER:$2|obnovil|obnovila}} možnost automatického potvrzení {{GENDER:$4|uživatele|uživatelky}} $3",
 	"abusefilterprivatedetails-log-name": "Kniha přístupů k soukromým detailům filtrů zneužití",
 	"abusefilter-management": "Správa filtrů zneužití",

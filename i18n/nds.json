@@ -4,7 +4,8 @@
 			"Joachim Mos",
 			"Slomox",
 			"Matma Rex",
-			"Fitoschido"
+			"Fitoschido",
+			"Servien"
 		]
 	},
 	"abusefilter-desc": "Föhrt automaatsch heuristische Analysen op Ännern ut",
@@ -38,7 +39,7 @@
 	"abusefilter-log-summary": "Dit Logbook wiest en List mit all Akschonen, bi de en Filter anslagen hett.",
 	"abusefilter-log-search": "In dat Missbruukfilter-Logbook söken",
 	"abusefilter-log-search-user": "Bruker:",
-	"abusefilter-log-search-filter": "Filter-ID:",
+	"abusefilter-log-search-filter": "Filter-ID's:",
 	"abusefilter-log-search-title": "Titel:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Söken",
