@@ -77,7 +77,7 @@ class AFPTreeParser {
 	 *
 	 * @param string $code
 	 * @throws AFPUserVisibleException
-	 * @return AFPTreeNode|null
+	 * @return AFPTreeNode|null Null only if no statements
 	 */
 	public function parse( $code ) {
 		$this->mTokens = AbuseFilterTokenizer::getTokens( $code );
