@@ -377,6 +377,7 @@ class AbuseFilterRunner {
 		AbuseFilter::cacheFilter( $filterName, $row );
 
 		$pattern = trim( $row->af_pattern );
+		$this->parser->setFilter( $filterName );
 		$result = AbuseFilter::checkConditions( $pattern, $this->parser, true, $filterName );
 
 		$actualExtra = AFComputedVariable::$profilingExtraTime - $origExtraTime;

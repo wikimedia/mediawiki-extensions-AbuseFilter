@@ -40,6 +40,11 @@ class AbuseFilterParser {
 	 */
 	protected $condLimitEnabled = true;
 
+	/**
+	 * @var string|null The ID of the filter being parsed, if available. Can also be "global-$ID"
+	 */
+	protected $mFilter;
+
 	public static $mFunctions = [
 		'lcase' => 'funcLc',
 		'ucase' => 'funcUc',
@@ -111,6 +116,13 @@ class AbuseFilterParser {
 	}
 
 	/**
+	 * @param string $filter
+	 */
+	public function setFilter( $filter ) {
+		$this->mFilter = $filter;
+	}
+
+	/**
 	 * @return int
 	 */
 	public function getCondCount() {
@@ -158,6 +170,7 @@ class AbuseFilterParser {
 		$this->mShortCircuit = false;
 		$this->mAllowShort = true;
 		$this->mCondCount = 0;
+		$this->mFilter = null;
 	}
 
 	/**
