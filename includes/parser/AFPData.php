@@ -241,14 +241,13 @@ class AFPData {
 	}
 
 	/**
-	 * @param AFPData $a
 	 * @param AFPData $b
 	 * @param string $op
 	 * @return AFPData
 	 * @throws AFPException
 	 */
-	public static function boolOp( AFPData $a, AFPData $b, $op ) {
-		$a = $a->type === self::DUNDEFINED ? false : $a->toBool();
+	public function boolOp( AFPData $b, $op ) {
+		$a = $this->type === self::DUNDEFINED ? false : $this->toBool();
 		$b = $b->type === self::DUNDEFINED ? false : $b->toBool();
 
 		if ( $op === '|' ) {
@@ -265,27 +264,26 @@ class AFPData {
 	}
 
 	/**
-	 * @param AFPData $a
 	 * @param AFPData $b
 	 * @param string $op
 	 * @return AFPData
 	 * @throws AFPException
 	 */
-	public static function compareOp( AFPData $a, AFPData $b, $op ) {
-		if ( $a->type === self::DUNDEFINED || $b->type === self::DUNDEFINED ) {
+	public function compareOp( AFPData $b, $op ) {
+		if ( $this->type === self::DUNDEFINED || $b->type === self::DUNDEFINED ) {
 			return new AFPData( self::DUNDEFINED );
 		}
 		if ( $op === '==' || $op === '=' ) {
-			return new AFPData( self::DBOOL, $a->equals( $b ) );
+			return new AFPData( self::DBOOL, $this->equals( $b ) );
 		} elseif ( $op === '!=' ) {
-			return new AFPData( self::DBOOL, !$a->equals( $b ) );
+			return new AFPData( self::DBOOL, !$this->equals( $b ) );
 		} elseif ( $op === '===' ) {
-			return new AFPData( self::DBOOL, $a->equals( $b, true ) );
+			return new AFPData( self::DBOOL, $this->equals( $b, true ) );
 		} elseif ( $op === '!==' ) {
-			return new AFPData( self::DBOOL, !$a->equals( $b, true ) );
+			return new AFPData( self::DBOOL, !$this->equals( $b, true ) );
 		}
 
-		$a = $a->toString();
+		$a = $this->toString();
 		$b = $b->toString();
 		if ( $op === '>' ) {
 			return new AFPData( self::DBOOL, $a > $b );
@@ -303,7 +301,6 @@ class AFPData {
 	}
 
 	/**
-	 * @param AFPData $a
 	 * @param AFPData $b
 	 * @param string $op
 	 * @param int $pos
@@ -311,11 +308,11 @@ class AFPData {
 	 * @throws AFPUserVisibleException
 	 * @throws AFPException
 	 */
-	public static function mulRel( AFPData $a, AFPData $b, $op, $pos ) {
-		if ( $a->type === self::DUNDEFINED || $b->type === self::DUNDEFINED ) {
+	public function mulRel( AFPData $b, $op, $pos ) {
+		if ( $this->type === self::DUNDEFINED || $b->type === self::DUNDEFINED ) {
 			return new AFPData( self::DUNDEFINED );
 		}
-		$a = $a->toNumber();
+		$a = $this->toNumber();
 		$b = $b->toNumber();
 
 		if ( $op !== '*' && (float)$b === 0.0 ) {

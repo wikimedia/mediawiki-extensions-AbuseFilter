@@ -222,8 +222,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				list( $op, $leftOperand, $rightOperand ) = $node->children;
 				$leftOperand = $this->evalNode( $leftOperand );
 				$rightOperand = $this->evalNode( $rightOperand );
-				// FIXME
-				return AFPData::mulRel( $leftOperand, $rightOperand, $op, 0 );
+				return $leftOperand->mulRel( $rightOperand, $op, $node->position );
 
 			case AFPTreeNode::SUM_REL:
 				list( $op, $leftOperand, $rightOperand ) = $node->children;
@@ -245,7 +244,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				$leftOperand = $this->evalNode( $leftOperand );
 				$rightOperand = $this->evalNode( $rightOperand );
 				$this->raiseCondCount();
-				return AFPData::compareOp( $leftOperand, $rightOperand, $op );
+				return $leftOperand->compareOp( $rightOperand, $op );
 
 			case AFPTreeNode::LOGIC:
 				list( $op, $leftOperand, $rightOperand ) = $node->children;
@@ -259,7 +258,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 					return $leftOperand;
 				}
 				$rightOperand = $this->evalNode( $rightOperand );
-				return AFPData::boolOp( $leftOperand, $rightOperand, $op );
+				return $leftOperand->boolOp( $rightOperand, $op );
 
 			case AFPTreeNode::CONDITIONAL:
 				list( $condition, $valueIfTrue, $valueIfFalse ) = $node->children;
