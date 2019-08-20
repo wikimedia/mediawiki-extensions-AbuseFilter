@@ -72,7 +72,7 @@
 	 * @param {jQuery.Event} e The event fired when the function is called
 	 */
 	function examinerTestFilter() {
-		var filter = $( '#wpTestFilter' ).val(),
+		var filter = $( '#wpFilterRules' ).val(),
 			examine = mw.config.get( 'abuseFilterExamine' ),
 			params = {
 				action: 'abusefiltercheckmatch',

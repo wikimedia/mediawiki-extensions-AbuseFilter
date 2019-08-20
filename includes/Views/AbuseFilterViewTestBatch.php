@@ -56,7 +56,6 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$output .=
 			$this->buildEditBox(
 				$this->mFilter,
-				'wpTestFilter',
 				true,
 				true,
 				false
@@ -243,7 +242,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	public function loadParameters() {
 		$request = $this->getRequest();
 
-		$this->mFilter = $request->getText( 'wpTestFilter' );
+		$this->mFilter = $request->getText( 'wpFilterRules' );
 		$this->mShowNegative = $request->getBool( 'wpShowNegative' );
 		$testUsername = $request->getText( 'wpTestUser' );
 		$this->mTestPeriodEnd = $request->getText( 'wpTestPeriodEnd' );

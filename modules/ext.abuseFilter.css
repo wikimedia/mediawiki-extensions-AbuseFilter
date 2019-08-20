@@ -113,12 +113,26 @@ li.mw-abusefilter-changeslist-nomatch {
 	background-image: url( red_x.png );
 }
 
+#mw-abusefilter-edit-rules .mw-input {
+	width: 100%; /* So that we can use relative width for mw-abusefilter-editor */
+}
+
 div.mw-abusefilter-editor {
-	max-width: 75em;
-	height: 30em;
+	width: 65%; /* Same as wpFilterRules and mw-abusefilter-notes-editor */
+	height: 30em; /* Similar to wpFilterRules */
 	line-height: 1.5em;
 	border: 1px solid #a2a9b1;
 	display: none;
+}
+
+#wpFilterRules {
+	width: 65%; /* Same as mw-abusefilter-editor */
+	height: 27em; /* Same as mw-abusefilter-editor, minus extra space */
+}
+
+#mw-abusefilter-notes-editor {
+	width: 65%; /* Same as mw-abusefilter-editor */
+	max-width: unset; /* OOUI's default of 50em is too low for this field */
 }
 
 fieldset.mw-abusefilter-edit-buttons {

@@ -214,7 +214,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		// Add test bit
 		if ( $this->canViewPrivate() ) {
 			$tester = Xml::tags( 'h2', null, $this->msg( 'abusefilter-examine-test' )->parse() );
-			$tester .= $this->buildEditBox( $this->mTestFilter, 'wpTestFilter', false, false, false );
+			$tester .= $this->buildEditBox( $this->mTestFilter, false, false, false );
 			$tester .= $this->buildFilterLoader();
 			$html .= Xml::tags( 'div', [ 'id' => 'mw-abusefilter-examine-editor' ], $tester );
 			$html .= Xml::tags( 'p',
