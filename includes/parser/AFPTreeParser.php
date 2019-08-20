@@ -236,19 +236,12 @@ class AFPTreeParser {
 
 			$valueIfTrue = $this->doLevelConditions();
 
-			if ( !( $this->mCur->type === AFPToken::TKEYWORD && $this->mCur->value === 'else' ) ) {
-				throw new AFPUserVisibleException( 'expectednotfound',
-					$this->mPos,
-					[
-						'else',
-						$this->mCur->type,
-						$this->mCur->value
-					]
-				);
+			if ( $this->mCur->type === AFPToken::TKEYWORD && $this->mCur->value === 'else' ) {
+				$this->move();
+				$valueIfFalse = $this->doLevelConditions();
+			} else {
+				$valueIfFalse = null;
 			}
-			$this->move();
-
-			$valueIfFalse = $this->doLevelConditions();
 
 			if ( !( $this->mCur->type === AFPToken::TKEYWORD && $this->mCur->value === 'end' ) ) {
 				throw new AFPUserVisibleException( 'expectednotfound',

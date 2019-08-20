@@ -240,11 +240,16 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				list( $condition, $valueIfTrue, $valueIfFalse ) = $node->children;
 				$condition = $this->evalNode( $condition );
 				if ( $condition->toBool() ) {
-					$this->discardWithHoisting( $valueIfFalse );
+					if ( $valueIfFalse !== null ) {
+						$this->discardWithHoisting( $valueIfFalse );
+					}
 					return $this->evalNode( $valueIfTrue );
 				} else {
 					$this->discardWithHoisting( $valueIfTrue );
-					return $this->evalNode( $valueIfFalse );
+					return $valueIfFalse !== null
+						? $this->evalNode( $valueIfFalse )
+						// We assume null as default if the else is missing
+						: new AFPData( AFPData::DNULL );
 				}
 
 			case AFPTreeNode::ASSIGNMENT:

@@ -23,8 +23,8 @@ class AFPTreeNode {
 	const ARRAY_APPEND = 'ARRAY_APPEND';
 
 	// CONDITIONAL represents both a ternary operator and an if-then-else-end
-	// construct.  The format is (condition, evaluated-if-true,
-	// evaluated-in-false), all tree nodes.
+	// construct.  The format is (condition, evaluated-if-true, evaluated-in-false).
+	// The first two are tree nodes, the last one can be a node, or null if there's no else.
 	const CONDITIONAL = 'CONDITIONAL';
 
 	// LOGIC is a logic operator accepted by AFPData::boolOp.  The format is

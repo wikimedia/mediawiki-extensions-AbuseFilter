@@ -57,8 +57,6 @@ false & (
 var9 := 'foo';
 if ( 1=== 1 ) then
   ( false & ( var9 := 'foobar' ) )
-else
-( 0 )
 end;
 
 var1 === 1 &
