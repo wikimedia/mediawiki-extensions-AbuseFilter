@@ -49,7 +49,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 	 * @param string $code
 	 * @return AFPData
 	 */
-	public function intEval( $code ) {
+	public function intEval( $code ) : AFPData {
 		static $cache = null;
 		if ( !$cache ) {
 			$cache = ObjectCache::getLocalServerInstance( 'hash' );
@@ -261,6 +261,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				}
 				$array = $this->mVariables->getVar( $varName );
 
+				$value = $this->evalNode( $value );
 				if ( $array->getType() !== AFPData::DUNDEFINED ) {
 					// If it's a DUNDEFINED, leave it as is
 					if ( $array->getType() !== AFPData::DARRAY ) {
@@ -275,7 +276,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 							[ $offset, count( $array ) ] );
 					}
 
-					$array[$offset] = $this->evalNode( $value );
+					$array[$offset] = $value;
 					$this->setUserVariable( $varName, new AFPData( AFPData::DARRAY, $array ) );
 				}
 
