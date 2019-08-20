@@ -508,7 +508,8 @@ class AbuseFilterParser {
 			$this->move();
 
 			$r1 = new AFPData( AFPData::DEMPTY );
-			$r2 = new AFPData( AFPData::DEMPTY );
+			// DNULL is assumed as default in case of a missing else
+			$r2 = new AFPData( AFPData::DNULL );
 
 			$isTrue = $result->toBool();
 
@@ -520,24 +521,16 @@ class AbuseFilterParser {
 				$this->mShortCircuit = $scOrig;
 			}
 
-			if ( !( $this->mCur->type === AFPToken::TKEYWORD && $this->mCur->value === 'else' ) ) {
-				throw new AFPUserVisibleException( 'expectednotfound',
-					$this->mCur->pos,
-					[
-						'else',
-						$this->mCur->type,
-						$this->mCur->value
-					]
-				);
-			}
-			$this->move();
+			if ( $this->mCur->type === AFPToken::TKEYWORD && $this->mCur->value === 'else' ) {
+				$this->move();
 
-			if ( $isTrue ) {
-				$scOrig = wfSetVar( $this->mShortCircuit, $this->mAllowShort, true );
-			}
-			$this->doLevelConditions( $r2 );
-			if ( $isTrue ) {
-				$this->mShortCircuit = $scOrig;
+				if ( $isTrue ) {
+					$scOrig = wfSetVar( $this->mShortCircuit, $this->mAllowShort, true );
+				}
+				$this->doLevelConditions( $r2 );
+				if ( $isTrue ) {
+					$this->mShortCircuit = $scOrig;
+				}
 			}
 
 			if ( !( $this->mCur->type === AFPToken::TKEYWORD && $this->mCur->value === 'end' ) ) {
