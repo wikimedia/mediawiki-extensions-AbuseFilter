@@ -62,7 +62,7 @@ class AFPData {
 	public function __construct( $type, $val = null ) {
 		if ( ( $type === self::DUNDEFINED || $type === self::DEMPTY ) && $val !== null ) {
 			// Sanity
-			throw new InvalidArgumentException( 'DUNDEFINED cannot have a non-null value' );
+			throw new InvalidArgumentException( 'DUNDEFINED and DEMPTY cannot have a non-null value' );
 		}
 		$this->type = $type;
 		$this->data = $val;
@@ -236,7 +236,8 @@ class AFPData {
 		} elseif ( $this->type === self::DINT ) {
 			return new AFPData( $this->type, -$this->toInt() );
 		} else {
-			return new AFPData( $this->type, -$this->toFloat() );
+			$type = $this->type === self::DEMPTY ? self::DNULL : $this->type;
+			return new AFPData( $type, -$this->toFloat() );
 		}
 	}
 

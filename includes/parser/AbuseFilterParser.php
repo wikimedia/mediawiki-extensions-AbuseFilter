@@ -416,7 +416,11 @@ class AbuseFilterParser {
 
 			if ( $this->mCur->type === AFPToken::TOP && $this->mCur->value === ':=' ) {
 				$this->move();
+				$checkEmpty = $result->getType() === AFPData::DEMPTY;
 				$this->doLevelSet( $result );
+				if ( $checkEmpty && $result->getType() === AFPData::DEMPTY ) {
+					$this->logEmptyOperand( 'var assignment', __METHOD__ );
+				}
 				$this->setUserVariable( $varname, $result );
 
 				return;
@@ -461,6 +465,9 @@ class AbuseFilterParser {
 						throw new AFPUserVisibleException( 'overridebuiltin', $this->mCur->pos, [ $varname ] );
 					}
 					$this->move();
+					if ( $this->mCur->type === AFPToken::TNONE ) {
+						$this->logEmptyOperand( 'array assignment', __METHOD__ );
+					}
 					$this->doLevelSet( $result );
 					if ( $array->getType() === AFPData::DARRAY ) {
 						// If it's a DUNDEFINED, leave it as is
@@ -493,7 +500,11 @@ class AbuseFilterParser {
 	protected function doLevelConditions( &$result ) {
 		if ( $this->mCur->type === AFPToken::TKEYWORD && $this->mCur->value === 'if' ) {
 			$this->move();
+			$checkEmpty = $result->getType() === AFPData::DEMPTY;
 			$this->doLevelBoolOps( $result );
+			if ( $checkEmpty && $result->getType() === AFPData::DEMPTY ) {
+				$this->logEmptyOperand( 'if condition', __METHOD__ );
+			}
 
 			if ( !( $this->mCur->type === AFPToken::TKEYWORD && $this->mCur->value === 'then' ) ) {
 				throw new AFPUserVisibleException( 'expectednotfound',
@@ -508,8 +519,7 @@ class AbuseFilterParser {
 			$this->move();
 
 			$r1 = new AFPData( AFPData::DEMPTY );
-			// DNULL is assumed as default in case of a missing else
-			$r2 = new AFPData( AFPData::DNULL );
+			$r2 = new AFPData( AFPData::DEMPTY );
 
 			$isTrue = $result->toBool();
 
@@ -517,6 +527,9 @@ class AbuseFilterParser {
 				$scOrig = wfSetVar( $this->mShortCircuit, $this->mAllowShort, true );
 			}
 			$this->doLevelConditions( $r1 );
+			if ( $r1->getType() === AFPData::DEMPTY ) {
+				$this->logEmptyOperand( 'if body', __METHOD__ );
+			}
 			if ( !$isTrue ) {
 				$this->mShortCircuit = $scOrig;
 			}
@@ -528,9 +541,15 @@ class AbuseFilterParser {
 					$scOrig = wfSetVar( $this->mShortCircuit, $this->mAllowShort, true );
 				}
 				$this->doLevelConditions( $r2 );
+				if ( $r2->getType() === AFPData::DEMPTY ) {
+					$this->logEmptyOperand( 'else body', __METHOD__ );
+				}
 				if ( $isTrue ) {
 					$this->mShortCircuit = $scOrig;
 				}
+			} else {
+				// DNULL is assumed as default in case of a missing else
+				$r2 = new AFPData( AFPData::DNULL );
 			}
 
 			if ( !( $this->mCur->type === AFPToken::TKEYWORD && $this->mCur->value === 'end' ) ) {
@@ -583,6 +602,9 @@ class AbuseFilterParser {
 					$scOrig = wfSetVar( $this->mShortCircuit, $this->mAllowShort, true );
 				}
 				$this->doLevelConditions( $r2 );
+				if ( $r2->getType() === AFPData::DEMPTY ) {
+					$this->logEmptyOperand( 'ternary else', __METHOD__ );
+				}
 				if ( $isTrue ) {
 					$this->mShortCircuit = $scOrig;
 				}
@@ -745,7 +767,11 @@ class AbuseFilterParser {
 	protected function doLevelBoolInvert( &$result ) {
 		if ( $this->mCur->type === AFPToken::TOP && $this->mCur->value === '!' ) {
 			$this->move();
+			$checkEmpty = $result->getType() === AFPData::DEMPTY;
 			$this->doLevelSpecialWords( $result );
+			if ( $checkEmpty && $result->getType() === AFPData::DEMPTY ) {
+				$this->logEmptyOperand( 'bool inversion', __METHOD__ );
+			}
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
 				return;
@@ -801,7 +827,11 @@ class AbuseFilterParser {
 		$op = $this->mCur->value;
 		if ( $this->mCur->type === AFPToken::TOP && ( $op === "+" || $op === "-" ) ) {
 			$this->move();
+			$checkEmpty = $result->getType() === AFPData::DEMPTY;
 			$this->doLevelArrayElements( $result );
+			if ( $checkEmpty && $result->getType() === AFPData::DEMPTY ) {
+				$this->logEmptyOperand( 'unary operand', __METHOD__ );
+			}
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
 				return;
@@ -853,20 +883,27 @@ class AbuseFilterParser {
 	 */
 	protected function doLevelBraces( &$result ) {
 		if ( $this->mCur->type === AFPToken::TBRACE && $this->mCur->value === '(' ) {
-			if ( $this->mShortCircuit ) {
-				$result = new AFPData( AFPData::DUNDEFINED );
-				$this->skipOverBraces();
+			$next = $this->getNextToken();
+			if ( $next->type === AFPToken::TBRACE && $next->value === ')' ) {
+				// We don't need DUNDEFINED here
+				$this->move();
+				$this->move();
 			} else {
-				$this->doLevelSemicolon( $result );
+				if ( $this->mShortCircuit ) {
+					$result = new AFPData( AFPData::DUNDEFINED );
+					$this->skipOverBraces();
+				} else {
+					$this->doLevelSemicolon( $result );
+				}
+				if ( !( $this->mCur->type === AFPToken::TBRACE && $this->mCur->value === ')' ) ) {
+					throw new AFPUserVisibleException(
+						'expectednotfound',
+						$this->mCur->pos,
+						[ ')', $this->mCur->type, $this->mCur->value ]
+					);
+				}
+				$this->move();
 			}
-			if ( !( $this->mCur->type === AFPToken::TBRACE && $this->mCur->value === ')' ) ) {
-				throw new AFPUserVisibleException(
-					'expectednotfound',
-					$this->mCur->pos,
-					[ ')', $this->mCur->type, $this->mCur->value ]
-				);
-			}
-			$this->move();
 		} else {
 			$this->doLevelFunction( $result );
 		}
