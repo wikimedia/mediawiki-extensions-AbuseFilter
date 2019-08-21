@@ -81,6 +81,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 			$cache::TTL_DAY,
 			function () use ( $code ) {
 				$parser = new AFPTreeParser();
+				$parser->setFilter( $this->mFilter );
 				return $parser->parse( $code );
 			}
 		);

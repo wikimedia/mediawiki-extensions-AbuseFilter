@@ -6,7 +6,7 @@ use MediaWiki\MediaWikiServices;
 
 class AbuseFilterParser {
 	/**
-	 * @var array Contains the AFPTokens for the code being parsed
+	 * @var array[] Contains the AFPTokens for the code being parsed
 	 */
 	public $mTokens;
 	/**
@@ -79,41 +79,41 @@ class AbuseFilterParser {
 	];
 
 	/**
-	 * The *minimum* amount of arguments required by each function.
-	 * @var int[]
+	 * The minimum and maximum amount of arguments required by each function.
+	 * @var int[][]
 	 * @todo Make constant once we drop HHVM support
 	 */
-	public static $minArgFunc = [
-		'lcase' => 1,
-		'ucase' => 1,
-		'length' => 1,
-		'string' => 1,
-		'int' => 1,
-		'float' => 1,
-		'bool' => 1,
-		'norm' => 1,
-		'ccnorm' => 1,
-		'ccnorm_contains_any' => 2,
-		'ccnorm_contains_all' => 2,
-		'specialratio' => 1,
-		'rmspecials' => 1,
-		'rmdoubles' => 1,
-		'rmwhitespace' => 1,
-		'count' => 1,
-		'rcount' => 1,
-		'get_matches' => 2,
-		'ip_in_range' => 2,
-		'contains_any' => 2,
-		'contains_all' => 2,
-		'equals_to_any' => 2,
-		'substr' => 2,
-		'strlen' => 1,
-		'strpos' => 2,
-		'str_replace' => 3,
-		'rescape' => 1,
-		'set' => 2,
-		'set_var' => 2,
-		'sanitize' => 1,
+	public static $funcArgCount = [
+		'lcase' => [ 1, 1 ],
+		'ucase' => [ 1, 1 ],
+		'length' => [ 1, 1 ],
+		'string' => [ 1, 1 ],
+		'int' => [ 1, 1 ],
+		'float' => [ 1, 1 ],
+		'bool' => [ 1, 1 ],
+		'norm' => [ 1, 1 ],
+		'ccnorm' => [ 1, 1 ],
+		'ccnorm_contains_any' => [ 2, INF ],
+		'ccnorm_contains_all' => [ 2, INF ],
+		'specialratio' => [ 1, 1 ],
+		'rmspecials' => [ 1, 1 ],
+		'rmdoubles' => [ 1, 1 ],
+		'rmwhitespace' => [ 1, 1 ],
+		'count' => [ 1, 2 ],
+		'rcount' => [ 1, 2 ],
+		'get_matches' => [ 2, 2 ],
+		'ip_in_range' => [ 2, 2 ],
+		'contains_any' => [ 2, INF ],
+		'contains_all' => [ 2, INF ],
+		'equals_to_any' => [ 2, INF ],
+		'substr' => [ 2, 3 ],
+		'strlen' => [ 1, 1 ],
+		'strpos' => [ 2, 3 ],
+		'str_replace' => [ 3, 3 ],
+		'rescape' => [ 1, 1 ],
+		'set' => [ 2, 2 ],
+		'set_var' => [ 2, 2 ],
+		'sanitize' => [ 1, 1 ],
 	];
 
 	// Functions that affect parser state, and shouldn't be cached.
@@ -1152,23 +1152,36 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * Check that a built-in function has been provided enough arguments
+	 * Check that a built-in function has been provided the right amount of arguments
 	 *
 	 * @param array $args The arguments supplied to the function
 	 * @param string $func The function name
 	 * @throws AFPUserVisibleException
 	 */
-	protected function checkEnoughArguments( $args, $func ) {
-		if ( !array_key_exists( $func, self::$minArgFunc ) ) {
+	protected function checkArgCount( $args, $func ) {
+		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+		if ( !array_key_exists( $func, self::$funcArgCount ) ) {
 			throw new InvalidArgumentException( "$func is not a valid function." );
 		}
-		$count = self::$minArgFunc[ $func ];
-		if ( count( $args ) < $count ) {
+		list( $min, $max ) = self::$funcArgCount[ $func ];
+		if ( count( $args ) < $min ) {
 			throw new AFPUserVisibleException(
-				$count === 1 ? 'noparams' : 'notenoughargs',
+				$min === 1 ? 'noparams' : 'notenoughargs',
 				$this->mCur->pos,
-				[ $func, $count, count( $args ) ]
+				[ $func, $min, count( $args ) ]
 			);
+		} elseif ( count( $args ) > $max ) {
+			$logger->warning(
+				"Too many params to $func for filter: " . ( $this->mFilter ?? 'unavailable' )
+			);
+			/*
+			 @todo Uncomment after fixing filters in WMF production
+			throw new AFPUserVisibleException(
+				'toomanyargs',
+				$this->mCur->pos,
+				[ $func, $max, count( $args ) ]
+			);
+			*/
 		}
 	}
 
@@ -1193,7 +1206,7 @@ class AbuseFilterParser {
 		) {
 			$result = $this->funcCache[$funcHash];
 		} else {
-			$this->checkEnoughArguments( $args, $fname );
+			$this->checkArgCount( $args, $fname );
 			$this->raiseCondCount();
 			$hasUndefinedArg = false;
 			foreach ( $args as $arg ) {

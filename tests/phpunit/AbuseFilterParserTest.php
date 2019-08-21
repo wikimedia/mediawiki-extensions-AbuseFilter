@@ -520,7 +520,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 * @dataProvider oneParamFuncs
 	 */
 	public function testNoParamsException( $func ) {
-		$this->exceptionTest( 'noparams', "$func()", 'checkEnoughArguments' );
+		$this->exceptionTest( 'noparams', "$func()", 'checkArgCount' );
 	}
 
 	/**
@@ -563,7 +563,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 		// Nevermind if the argument can't be string since we check the amount
 		// of parameters before anything else.
 		$code = "$func('foo')";
-		$this->exceptionTest( 'notenoughargs', $code, 'checkEnoughArguments' );
+		$this->exceptionTest( 'notenoughargs', $code, 'checkArgCount' );
 	}
 
 	/**
@@ -598,7 +598,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 		// Nevermind if the argument can't be string since we check the amount
 		// of parameters before anything else.
 		$code = "$func('foo', 'bar')";
-		$this->exceptionTest( 'notenoughargs', $code, 'checkEnoughArguments' );
+		$this->exceptionTest( 'notenoughargs', $code, 'checkArgCount' );
 	}
 
 	/**
@@ -610,6 +610,60 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	public function threeParamsFuncs() {
 		return [
 			[ 'str_replace' ],
+		];
+	}
+
+	/**
+	 * @param string $code
+	 * @dataProvider tooManyArgsFuncs
+	 */
+	public function testTooManyArgumentsException( $code ) {
+		$this->markTestSkipped( 'Waiting for filters to be fixed in WMF production' );
+		$this->exceptionTest( 'toomanyargs', $code, 'checkArgCount' );
+	}
+
+	/**
+	 * @return array
+	 */
+	public function tooManyArgsFuncs() {
+		return [
+			[ "lcase( 'a', 'b' )" ],
+			[ "norm( 'a', 'b', 'c' )" ],
+			[ "count( 'a', 'b', 'c' )" ],
+			[ "ip_in_range( 'a', 'b', 'c' )" ],
+			[ "substr( 'a', 'b', 'c', 'd' )" ],
+			[ "str_replace( 'a', 'b', 'c', 'd', 'e' )" ],
+		];
+	}
+
+	/**
+	 * @param string $func
+	 * @dataProvider variadicFuncs
+	 */
+	public function testVariadicFuncsArbitraryArgsAllowed( $func ) {
+		$argsList = str_repeat( ', "arg"', 50 );
+		$code = "$func( 'arg' $argsList )";
+		foreach ( self::getParsers() as $parser ) {
+			$pname = get_class( $parser );
+			try {
+				$parser->parse( $code );
+				$this->assertTrue( true );
+			} catch ( AFPException $e ) {
+				$this->fail( "Got exception with parser $pname.\n$e" );
+			}
+		}
+	}
+
+	/**
+	 * @return array
+	 */
+	public function variadicFuncs() {
+		return [
+			[ 'contains_any' ],
+			[ 'contains_all' ],
+			[ 'equals_to_any' ],
+			[ 'ccnorm_contains_any' ],
+			[ 'ccnorm_contains_all' ],
 		];
 	}
 
@@ -896,7 +950,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ '"string" contains', 'keyword operand' ],
 			[ '1 in', 'keyword operand' ],
 			[ "contains_any('a','b','c',)", 'function argument' ],
-			[ "get_matches('a','b','c',)", 'function argument' ],
+			[ "equals_to_any('a','b',)", 'function argument' ],
 			[ "(!)", 'bool inversion' ],
 			// `(false &!)` and `(true &!)`, originally reported in T156096,
 			// should be used in the future to test that they throw. However,

@@ -7,15 +7,28 @@
  * @file
  */
 
+use MediaWiki\Logger\LoggerFactory;
+
 /**
  * A parser that transforms the text of the filter into a parse tree.
  */
 class AFPTreeParser {
-	// The tokenized representation of the filter parsed.
+	/**
+	 * @var array[] Contains the AFPTokens for the code being parsed
+	 */
 	public $mTokens;
-
-	// Current token handled by the parser and its position.
-	public $mCur, $mPos;
+	/**
+	 * @var AFPToken The current token
+	 */
+	public $mCur;
+	/**
+	 * @var int The position of the current token
+	 */
+	public $mPos;
+	/**
+	 * @var string|null The ID of the filter being parsed, if available. Can also be "global-$ID"
+	 */
+	protected $mFilter;
 
 	const CACHE_VERSION = 2;
 
@@ -32,12 +45,20 @@ class AFPTreeParser {
 	}
 
 	/**
+	 * @param string $filter
+	 */
+	public function setFilter( $filter ) {
+		$this->mFilter = $filter;
+	}
+
+	/**
 	 * Resets the state
 	 */
 	public function resetState() {
 		$this->mTokens = [];
 		$this->mPos = 0;
 		$this->variablesNames = [];
+		$this->mFilter = null;
 	}
 
 	/**
@@ -592,7 +613,7 @@ class AFPTreeParser {
 			// (as well as at runtime, for OCD), we can make checkSyntax only try to build the AST, as
 			// there would be way less runtime errors. Moreover, this check will also be performed inside
 			// skipped branches, e.g. the discarded if/else branch.
-			$this->checkEnoughArguments( $args, $func );
+			$this->checkArgCount( $args, $func );
 			$this->move();
 
 			array_unshift( $args, $func );
@@ -672,26 +693,39 @@ class AFPTreeParser {
 	}
 
 	/**
-	 * Check that a built-in function has been provided enough arguments
+	 * Check that a built-in function has been provided the right amount of arguments
 	 *
 	 * @param array $args The arguments supplied to the function
 	 * @param string $func The function name
 	 * @throws AFPUserVisibleException
-	 * @see AbuseFilterParser::checkEnoughArguments()
+	 * @see AbuseFilterParser::checkArgCount()
 	 * @todo This is a duplicate of AbuseFilter::checkEnoughArguments, and such duplication
 	 * should be avoided when merging the parsers.
 	 */
-	protected function checkEnoughArguments( $args, $func ) {
-		if ( !array_key_exists( $func, AbuseFilterParser::$minArgFunc ) ) {
+	protected function checkArgCount( $args, $func ) {
+		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+		if ( !array_key_exists( $func, AbuseFilterParser::$funcArgCount ) ) {
 			throw new InvalidArgumentException( "$func is not a valid function." );
 		}
-		$count = AbuseFilterParser::$minArgFunc[ $func ];
-		if ( count( $args ) < $count ) {
+		list( $min, $max ) = AbuseFilterParser::$funcArgCount[ $func ];
+		if ( count( $args ) < $min ) {
 			throw new AFPUserVisibleException(
-				$count === 1 ? 'noparams' : 'notenoughargs',
+				$min === 1 ? 'noparams' : 'notenoughargs',
 				$this->mCur->pos,
-				[ $func, $count, count( $args ) ]
+				[ $func, $min, count( $args ) ]
 			);
+		} elseif ( count( $args ) > $max ) {
+			$logger->warning(
+				"Too many params to $func for filter: " . ( $this->mFilter ?? 'unavailable' )
+			);
+			/*
+			 @todo Uncomment after fixing filters in WMF production
+			throw new AFPUserVisibleException(
+				'toomanyargs',
+				$this->mCur->pos,
+				[ $func, $max, count( $args ) ]
+			);
+			*/
 		}
 	}
 }
