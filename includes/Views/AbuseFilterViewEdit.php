@@ -344,9 +344,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		$fields['abusefilter-edit-flags'] = $flags;
-		$tools = '';
 
 		if ( $filter !== 'new' ) {
+			$tools = '';
 			if ( $user->isAllowed( 'abusefilter-revert' ) ) {
 				$tools .= Xml::tags(
 					'p', null,
@@ -405,9 +405,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					'value' => $exportText,
 					'rows' => 10
 				] );
-		}
 
-		$fields['abusefilter-edit-tools'] = $tools;
+			$fields['abusefilter-edit-tools'] = $tools;
+		}
 
 		$form = Xml::buildForm( $fields );
 		$form = Xml::fieldset( $this->msg( 'abusefilter-edit-main' )->text(), $form );
