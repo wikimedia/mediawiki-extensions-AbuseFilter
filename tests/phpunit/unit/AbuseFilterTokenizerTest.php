@@ -111,20 +111,19 @@ class AbuseFilterTokenizerTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * Test that tokenized code is saved in cache
+	 * Test that tokenized code is saved in cache.
 	 *
 	 * @param string $code To be tokenized
 	 * @dataProvider provideCode
+	 * @covers AbuseFilterTokenizer::getTokens
 	 */
 	public function testCaching( $code ) {
 		$cache = new HashBagOStuff();
-		$this->setService( 'LocalServerObjectCache', $cache );
+		$tokenizer = new AbuseFilterTokenizer( $cache );
 
-		$key = AbuseFilterTokenizer::getCacheKey( $cache, $code );
+		$key = $tokenizer->getCacheKey( $code );
 
-		// Other tests may have already cached the same code.
-		$cache->delete( $key );
-		AbuseFilterTokenizer::getTokens( $code );
+		$tokenizer->getTokens( $code );
 		$this->assertNotFalse( $cache->get( $key ) );
 	}
 

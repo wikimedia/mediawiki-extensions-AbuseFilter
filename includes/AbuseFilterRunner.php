@@ -93,11 +93,11 @@ class AbuseFilterRunner {
 	}
 
 	/**
+	 * Shortcut method, so that it can be overridden in mocks.
 	 * @return AbuseFilterParser
 	 */
 	protected function getParser() : AbuseFilterParser {
-		global $wgAbuseFilterParserClass;
-		return new $wgAbuseFilterParserClass( $this->vars );
+		return AbuseFilter::getDefaultParser( $this->vars );
 	}
 
 	/**

@@ -1,8 +1,7 @@
 <?php
 
+use Psr\Log\LoggerInterface;
 use Wikimedia\Equivset\Equivset;
-use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\MediaWikiServices;
 
 class AbuseFilterParser {
 	/**
@@ -44,6 +43,19 @@ class AbuseFilterParser {
 	 * @var string|null The ID of the filter being parsed, if available. Can also be "global-$ID"
 	 */
 	protected $mFilter;
+
+	/**
+	 * @var BagOStuff Used to cache the AST (in CachingParser) and the tokens
+	 */
+	protected $cache;
+	/**
+	 * @var LoggerInterface Used for debugging
+	 */
+	protected $logger;
+	/**
+	 * @var Language Content language, used for language-dependent functions
+	 */
+	protected $contLang;
 
 	public static $mFunctions = [
 		'lcase' => 'funcLc',
@@ -144,10 +156,21 @@ class AbuseFilterParser {
 	/**
 	 * Create a new instance
 	 *
+	 * @param Language $contLang Content language, used for language-dependent function
+	 * @param BagOStuff $cache Used to cache the AST (in CachingParser) and the tokens
+	 * @param LoggerInterface $logger Used for debugging
 	 * @param AbuseFilterVariableHolder|null $vars
 	 */
-	public function __construct( AbuseFilterVariableHolder $vars = null ) {
+	public function __construct(
+		Language $contLang,
+		BagOStuff $cache,
+		LoggerInterface $logger,
+		AbuseFilterVariableHolder $vars = null
+	) {
 		$this->resetState();
+		$this->contLang = $contLang;
+		$this->cache = $cache;
+		$this->logger = $logger;
 		if ( $vars ) {
 			$this->mVariables = $vars;
 		}
@@ -158,6 +181,20 @@ class AbuseFilterParser {
 	 */
 	public function setFilter( $filter ) {
 		$this->mFilter = $filter;
+	}
+
+	/**
+	 * @param BagOStuff $cache
+	 */
+	public function setCache( BagOStuff $cache ) {
+		$this->cache = $cache;
+	}
+
+	/**
+	 * @param LoggerInterface $logger
+	 */
+	public function setLogger( LoggerInterface $logger ) {
+		$this->logger = $logger;
 	}
 
 	/**
@@ -355,7 +392,8 @@ class AbuseFilterParser {
 	 */
 	public function intEval( $code ) {
 		// Reset all class members to their default value
-		$this->mTokens = AbuseFilterTokenizer::getTokens( $code );
+		$tokenizer = new AbuseFilterTokenizer( $this->cache );
+		$this->mTokens = $tokenizer->getTokens( $code );
 		$this->mPos = 0;
 		$this->mShortCircuit = false;
 
@@ -1101,8 +1139,7 @@ class AbuseFilterParser {
 		$deprecatedVars = AbuseFilter::getDeprecatedVariables();
 
 		if ( array_key_exists( $var, $deprecatedVars ) ) {
-			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-			$logger->debug( "AbuseFilter: deprecated variable $var used." );
+			$this->logger->debug( "AbuseFilter: deprecated variable $var used." );
 			$var = $deprecatedVars[$var];
 		}
 		if ( !$this->varExists( $var ) ) {
@@ -1159,7 +1196,6 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function checkArgCount( $args, $func ) {
-		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
 		if ( !array_key_exists( $func, self::$funcArgCount ) ) {
 			throw new InvalidArgumentException( "$func is not a valid function." );
 		}
@@ -1171,7 +1207,7 @@ class AbuseFilterParser {
 				[ $func, $min, count( $args ) ]
 			);
 		} elseif ( count( $args ) > $max ) {
-			$logger->warning(
+			$this->logger->warning(
 				"Too many params to $func for filter: " . ( $this->mFilter ?? 'unavailable' )
 			);
 			/*
@@ -1238,10 +1274,9 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcLc( $args ) {
-		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
 		$s = $args[0]->toString();
 
-		return new AFPData( AFPData::DSTRING, $contLang->lc( $s ) );
+		return new AFPData( AFPData::DSTRING, $this->contLang->lc( $s ) );
 	}
 
 	/**
@@ -1249,10 +1284,9 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function funcUc( $args ) {
-		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
 		$s = $args[0]->toString();
 
-		return new AFPData( AFPData::DSTRING, $contLang->uc( $s ) );
+		return new AFPData( AFPData::DSTRING, $this->contLang->uc( $s ) );
 	}
 
 	/**
@@ -1862,8 +1896,7 @@ class AbuseFilterParser {
 	 * @param string $fname Method where the empty operand is found
 	 */
 	protected function logEmptyOperand( $type, $fname ) {
-		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-		$logger->info(
+		$this->logger->info(
 			"Empty operand of type {type} at method {fname}. Filter: {filter}",
 			[
 				'type' => $type,

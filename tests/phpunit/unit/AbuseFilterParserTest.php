@@ -21,6 +21,8 @@
  * @author Marius Hoch < hoo@online.de >
  */
 
+use Psr\Log\NullLogger;
+
 /**
  * @group Test
  * @group AbuseFilter
@@ -45,7 +47,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 * @dataProvider readTests
 	 */
 	public function testParser( $rule ) {
-		foreach ( self::getParsers() as $parser ) {
+		foreach ( $this->getParsers() as $parser ) {
 			$this->assertTrue( $parser->parse( $rule ), 'Parser used: ' . get_class( $parser ) );
 		}
 	}
@@ -54,7 +56,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 * @return Generator|array
 	 */
 	public function readTests() {
-		$testPath = __DIR__ . "/../parserTests";
+		$testPath = __DIR__ . "/../../parserTests";
 		$testFiles = glob( $testPath . "/*.t" );
 
 		foreach ( $testFiles as $testFile ) {
@@ -73,7 +75,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 * @dataProvider provideExpressions
 	 */
 	public function testEvaluateExpression( $expr, $expected ) {
-		foreach ( self::getParsers() as $parser ) {
+		foreach ( $this->getParsers() as $parser ) {
 			$actual = $parser->evaluateExpression( $expr );
 			$this->assertEquals( $expected, $actual );
 		}
@@ -102,7 +104,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 * @dataProvider provideEmptySyntax
 	 */
 	public function testEmptySyntax( $code ) {
-		foreach ( self::getParsers() as $parser ) {
+		foreach ( $this->getParsers() as $parser ) {
 			$this->assertFalse( $parser->parse( $code ) );
 		}
 	}
@@ -153,7 +155,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 * @dataProvider condCountCases
 	 */
 	public function testCondCount( $rule, $expected ) {
-		foreach ( self::getParsers() as $parser ) {
+		foreach ( $this->getParsers() as $parser ) {
 			$parserClass = get_class( $parser );
 			$countBefore = $parser->getCondCount();
 			$parser->parse( $rule );
@@ -190,7 +192,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	public function testArrayShortcircuit() {
 		$code = 'a := [false, false]; b := [false, false]; c := 42; d := [0,1];' .
 			'a[0] != false & b[1] != false & (b[5**2/(5*(4+1))] !== a[43-c] | a[d[0]] === b[d[c-41]])';
-		foreach ( self::getParsers() as $parser ) {
+		foreach ( $this->getParsers() as $parser ) {
 			$this->assertFalse( $parser->parse( $code ), 'Parser: ' . get_class( $parser ) );
 		}
 	}
@@ -662,8 +664,6 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ 'contains_any' ],
 			[ 'contains_all' ],
 			[ 'equals_to_any' ],
-			[ 'ccnorm_contains_any' ],
-			[ 'ccnorm_contains_all' ],
 		];
 	}
 
@@ -678,7 +678,12 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	public function testCheckArgCountInConditional( $funcCode, $exceptionCode ) {
 		$code = "if ( 1==1 ) then ( 1 ) else ( $funcCode ) end;";
 		// AbuseFilterParser skips the parentheses altogether, so this is not supposed to work
-		$parser = new AbuseFilterCachingParser();
+		$parser = new AbuseFilterCachingParser(
+			new LanguageEn(),
+			new EmptyBagOStuff(),
+			new NullLogger()
+		);
+		$parser->toggleConditionLimit( false );
 		try {
 			$parser->parse( $code );
 			$this->fail( 'No exception was thrown.' );
@@ -709,16 +714,15 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 * @dataProvider provideDeprecatedVars
 	 */
 	public function testDeprecatedVars( $old, $new ) {
-		$loggerMock = new TestLogger();
-		$loggerMock->setCollect( true );
-		$this->setLogger( 'AbuseFilter', $loggerMock );
-
-		$vars = new AbuseFilterVariableHolder();
 		// Set it under the new name, and check that the old name points to it
-		$vars->setVar( $new, 'Some value' );
+		$vars = AbuseFilterVariableHolder::newFromArray( [ $new => 'value' ] );
 
-		foreach ( self::getParsers() as $parser ) {
+		foreach ( $this->getParsers() as $parser ) {
 			$pname = get_class( $parser );
+			$loggerMock = new TestLogger();
+			$loggerMock->setCollect( true );
+			$parser->setLogger( $loggerMock );
+
 			$parser->setVariables( $vars );
 			$actual = $parser->parse( "$old === $new" );
 
@@ -759,7 +763,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 * @dataProvider provideConsecutiveComparisons
 	 */
 	public function testDisallowConsecutiveComparisons( $code, $valid ) {
-		foreach ( self::getParsers() as $parser ) {
+		foreach ( $this->getParsers() as $parser ) {
 			$pname = get_class( $parser );
 			$actuallyValid = true;
 			try {
@@ -815,7 +819,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 * @dataProvider provideVarDeclarationInSkippedBlock
 	 */
 	public function testVarDeclarationInSkippedBlock( $code ) {
-		foreach ( self::getParsers() as $parser ) {
+		foreach ( $this->getParsers() as $parser ) {
 			$pname = get_class( $parser );
 			try {
 				$this->assertFalse(
@@ -862,7 +866,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 * @dataProvider provideDUNDEFINED
 	 */
 	public function testDUNDEFINED( $code ) {
-		foreach ( self::getParsers() as $parser ) {
+		foreach ( $this->getParsers() as $parser ) {
 			$pname = get_class( $parser );
 			try {
 				$this->assertFalse(
@@ -920,6 +924,9 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	public function testEmptyOperands( $code, $operandType ) {
 		/** @var PHPUnit\Framework\MockObject\MockObject|AbuseFilterParser $mock */
 		$mock = $this->getMockBuilder( AbuseFilterParser::class )
+			->setConstructorArgs(
+				[ new LanguageEn(), new EmptyBagOStuff(), new NullLogger() ]
+			)
 			->setMethods( [ 'logEmptyOperand' ] )
 			->getMock();
 
@@ -927,6 +934,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			->method( 'logEmptyOperand' )
 			->with( $operandType );
 
+		$mock->toggleConditionLimit( false );
 		$mock->parse( $code );
 	}
 

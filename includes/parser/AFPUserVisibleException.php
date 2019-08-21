@@ -20,9 +20,23 @@ class AFPUserVisibleException extends AFPException {
 		$this->mPosition = $position;
 		$this->mParams = $params;
 
-		// Exception message text for logs should be in English.
-		$msg = $this->getMessageObj()->inLanguage( 'en' )->useDatabase( false )->text();
-		parent::__construct( $msg );
+		parent::__construct( $exception_id );
+	}
+
+	/**
+	 * Change the message of the exception to a localized version
+	 */
+	public function setLocalizedMessage() {
+		$this->message = $this->getMessageObj()->text();
+	}
+
+	/**
+	 * Returns the error message in English for use in logs
+	 *
+	 * @return string
+	 */
+	public function getMessageForLogs() {
+		return $this->getMessageObj()->inLanguage( 'en' )->useDatabase( false )->text();
 	}
 
 	/**

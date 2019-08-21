@@ -67,15 +67,26 @@ class AbuseFilterTokenizer {
 	];
 
 	/**
+	 * @var BagOStuff
+	 */
+	private $cache;
+
+	/**
+	 * @param BagOStuff $cache
+	 */
+	public function __construct( BagOStuff $cache ) {
+		$this->cache = $cache;
+	}
+
+	/**
 	 * Get a cache key used to store the tokenized code
 	 *
-	 * @param BagOStuff $cache
 	 * @param string $code Not yet tokenized
 	 * @return string
 	 * @internal
 	 */
-	public static function getCacheKey( BagOStuff $cache, $code ) {
-		return $cache->makeGlobalKey( __CLASS__, self::CACHE_VERSION, crc32( $code ) );
+	public function getCacheKey( $code ) {
+		return $this->cache->makeGlobalKey( __CLASS__, self::CACHE_VERSION, crc32( $code ) );
 	}
 
 	/**
@@ -84,12 +95,10 @@ class AbuseFilterTokenizer {
 	 * @param string $code
 	 * @return array[]
 	 */
-	public static function getTokens( $code ) {
-		$cache = ObjectCache::getLocalServerInstance( 'hash' );
-
-		$tokens = $cache->getWithSetCallback(
-			self::getCacheKey( $cache, $code ),
-			$cache::TTL_DAY,
+	public function getTokens( $code ) {
+		$tokens = $this->cache->getWithSetCallback(
+			$this->getCacheKey( $code ),
+			BagOStuff::TTL_DAY,
 			function () use ( $code ) {
 				return self::tokenize( $code );
 			}
@@ -122,7 +131,7 @@ class AbuseFilterTokenizer {
 	 * @throws AFPException
 	 * @throws AFPUserVisibleException
 	 */
-	protected static function nextToken( $code, &$offset ) {
+	private static function nextToken( $code, &$offset ) {
 		$matches = [];
 		$start = $offset;
 
@@ -219,7 +228,7 @@ class AbuseFilterTokenizer {
 	 * @throws AFPException
 	 * @throws AFPUserVisibleException
 	 */
-	protected static function readStringLiteral( $code, &$offset, $start ) {
+	private static function readStringLiteral( $code, &$offset, $start ) {
 		$type = $code[$offset];
 		$offset++;
 		$length = strlen( $code );

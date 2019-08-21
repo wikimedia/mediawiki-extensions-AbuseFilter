@@ -171,7 +171,7 @@
 		"ApiAbuseLogPrivateDetails": "includes/api/ApiAbuseLogPrivateDetails.php",
 		"NormalizeThrottleParameters": "maintenance/normalizeThrottleParameters.php",
 		"AbuseFilterConsequencesTest": "tests/phpunit/AbuseFilterConsequencesTest.php",
-		"AbuseFilterParserTestCase": "tests/phpunit/AbuseFilterParserTestCase.php",
+		"AbuseFilterParserTestCase": "tests/phpunit/unit/AbuseFilterParserTestCase.php",
 		"FixOldLogEntries": "maintenance/fixOldLogEntries.php"
 	},
 	"ResourceModules": {
@@ -293,7 +293,7 @@
 		},
 		"AbuseFilterParserClass": {
 			"value": "AbuseFilterParser",
-			"description": "Class of the parser to use"
+			"description": "Class of the parser to use. The only possible values are 'AbuseFilterParser' and 'AbuseFilterCachingParser' (experimental). The code should only use the wrapper AbuseFilter::getDefaultParser."
 		},
 		"AbuseFilterEmergencyDisableThreshold": {
 			"value": {

@@ -67,20 +67,15 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 	 * @return AFPSyntaxTree
 	 */
 	private function getTree( $code ) : AFPSyntaxTree {
-		static $cache = null;
-		if ( !$cache ) {
-			$cache = ObjectCache::getLocalServerInstance( 'hash' );
-		}
-
-		return $cache->getWithSetCallback(
-			$cache->makeGlobalKey(
+		return $this->cache->getWithSetCallback(
+			$this->cache->makeGlobalKey(
 				__CLASS__,
 				self::getCacheVersion(),
 				hash( 'sha256', $code )
 			),
-			$cache::TTL_DAY,
+			BagOStuff::TTL_DAY,
 			function () use ( $code ) {
-				$parser = new AFPTreeParser();
+				$parser = new AFPTreeParser( $this->cache, $this->logger );
 				$parser->setFilter( $this->mFilter );
 				return $parser->parse( $code );
 			}

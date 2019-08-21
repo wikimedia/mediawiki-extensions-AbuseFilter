@@ -7,7 +7,7 @@
  * @file
  */
 
-use MediaWiki\Logger\LoggerFactory;
+use Psr\Log\LoggerInterface;
 
 /**
  * A parser that transforms the text of the filter into a parse tree.
@@ -38,9 +38,22 @@ class AFPTreeParser {
 	private $variablesNames;
 
 	/**
-	 * Create a new instance
+	 * @var BagOStuff Used to cache tokens
 	 */
-	public function __construct() {
+	protected $cache;
+
+	/**
+	 * @var LoggerInterface Used for debugging
+	 */
+	protected $logger;
+
+	/**
+	 * @param BagOStuff $cache
+	 * @param LoggerInterface $logger Used for debugging
+	 */
+	public function __construct( BagOStuff $cache, LoggerInterface $logger ) {
+		$this->cache = $cache;
+		$this->logger = $logger;
 		$this->resetState();
 	}
 
@@ -107,7 +120,8 @@ class AFPTreeParser {
 	 * @return AFPSyntaxTree
 	 */
 	public function parse( $code ) : AFPSyntaxTree {
-		$this->mTokens = AbuseFilterTokenizer::getTokens( $code );
+		$tokenizer = new AbuseFilterTokenizer( $this->cache );
+		$this->mTokens = $tokenizer->getTokens( $code );
 		$this->mPos = 0;
 
 		return $this->buildSyntaxTree();
@@ -703,7 +717,6 @@ class AFPTreeParser {
 	 * should be avoided when merging the parsers.
 	 */
 	protected function checkArgCount( $args, $func ) {
-		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
 		if ( !array_key_exists( $func, AbuseFilterParser::$funcArgCount ) ) {
 			throw new InvalidArgumentException( "$func is not a valid function." );
 		}
@@ -715,7 +728,7 @@ class AFPTreeParser {
 				[ $func, $min, count( $args ) ]
 			);
 		} elseif ( count( $args ) > $max ) {
-			$logger->warning(
+			$this->logger->warning(
 				"Too many params to $func for filter: " . ( $this->mFilter ?? 'unavailable' )
 			);
 			/*

@@ -425,12 +425,7 @@ class AbuseFilter {
 	 *  and character position of the syntax error
 	 */
 	public static function checkSyntax( $filter ) {
-		global $wgAbuseFilterParserClass;
-
-		/** @var $parser AbuseFilterParser */
-		$parser = new $wgAbuseFilterParserClass;
-
-		return $parser->checkSyntax( $filter );
+		return self::getDefaultParser()->checkSyntax( $filter );
 	}
 
 	/**
@@ -438,8 +433,6 @@ class AbuseFilter {
 	 * @return string
 	 */
 	public static function evaluateExpression( $expr ) {
-		global $wgAbuseFilterParserClass;
-
 		if ( self::checkSyntax( $expr ) !== true ) {
 			return 'BADSYNTAX';
 		}
@@ -447,8 +440,7 @@ class AbuseFilter {
 		// Static vars are the only ones available
 		$vars = self::generateStaticVars();
 		$vars->setVar( 'timestamp', wfTimestamp( TS_UNIX ) );
-		/** @var $parser AbuseFilterParser */
-		$parser = new $wgAbuseFilterParserClass( $vars );
+		$parser = self::getDefaultParser( $vars );
 
 		return $parser->evaluateExpression( $expr );
 	}
@@ -469,9 +461,16 @@ class AbuseFilter {
 		} catch ( Exception $excep ) {
 			$result = false;
 
+			if ( $excep instanceof AFPUserVisibleException ) {
+				$msg = $excep->getMessageForLogs();
+				$excep->setLocalizedMessage();
+			} else {
+				$msg = $excep->getMessage();
+			}
+
 			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
 			$extraInfo = $filter !== null ? " for filter $filter" : '';
-			$logger->warning( "AbuseFilter parser error$extraInfo: " . $excep->getMessage() );
+			$logger->warning( "AbuseFilter parser error$extraInfo: $msg" );
 
 			if ( !$ignoreError ) {
 				throw $excep;
@@ -497,10 +496,7 @@ class AbuseFilter {
 		$group = 'default',
 		$mode = 'execute'
 	) {
-		global $wgAbuseFilterParserClass;
-
-		/** @var $parser AbuseFilterParser */
-		$parser = new $wgAbuseFilterParserClass( $vars );
+		$parser = self::getDefaultParser( $vars );
 		$user = RequestContext::getMain()->getUser();
 
 		$runner = new AbuseFilterRunner( $user, $title, $vars, $group );
@@ -2236,5 +2232,32 @@ class AbuseFilter {
 	 */
 	public static function canViewPrivate( User $user ) {
 		return $user->isAllowedAny( 'abusefilter-modify', 'abusefilter-view-private' );
+	}
+
+	/**
+	 * Get a parser instance using default options. This should mostly be intended as a wrapper
+	 * around $wgAbuseFilterParserClass and for choosing the right type of cache. It also has the
+	 * benefit of typehinting the return value, thus making IDEs and static analysis tools happier.
+	 *
+	 * @param AbuseFilterVariableHolder|null $vars
+	 * @return AbuseFilterParser
+	 * @throws InvalidArgumentException if $wgAbuseFilterParserClass is not valid
+	 */
+	public static function getDefaultParser(
+		AbuseFilterVariableHolder $vars = null
+	) : AbuseFilterParser {
+		global $wgAbuseFilterParserClass;
+
+		$allowedValues = [ AbuseFilterParser::class, AbuseFilterCachingParser::class ];
+		if ( !in_array( $wgAbuseFilterParserClass, $allowedValues ) ) {
+			throw new InvalidArgumentException(
+				"Invalid value $wgAbuseFilterParserClass for \$wgAbuseFilterParserClass."
+			);
+		}
+
+		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
+		$cache = ObjectCache::getLocalServerInstance( 'hash' );
+		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+		return new $wgAbuseFilterParserClass( $contLang, $cache, $logger, $vars );
 	}
 }

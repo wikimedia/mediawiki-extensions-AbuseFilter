@@ -215,9 +215,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 				continue;
 			}
 
-			$parserClass = $this->getConfig()->get( 'AbuseFilterParserClass' );
-			/** @var AbuseFilterParser $parser */
-			$parser = new $parserClass( $vars );
+			$parser = AbuseFilter::getDefaultParser( $vars );
 			$parser->toggleConditionLimit( false );
 			$result = AbuseFilter::checkConditions( $this->mFilter, $parser );
 

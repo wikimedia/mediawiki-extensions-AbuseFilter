@@ -23,17 +23,24 @@
 /**
  * Helper for parser-related tests
  */
-abstract class AbuseFilterParserTestCase extends MediaWikiTestCase {
+abstract class AbuseFilterParserTestCase extends MediaWikiUnitTestCase {
 	/**
 	 * @return AbuseFilterParser[]
 	 */
-	public static function getParsers() {
+	protected function getParsers() {
 		static $parsers = null;
 		if ( !$parsers ) {
-			$parsers = [
-				new AbuseFilterParser(),
-				new AbuseFilterCachingParser()
-			];
+			// We're not interested in caching or logging; tests should call respectively setCache
+			// and setLogger if they want to test any of those.
+			$contLang = new LanguageEn();
+			$cache = new EmptyBagOStuff();
+			$logger = new \Psr\Log\NullLogger();
+
+			$parser = new AbuseFilterParser( $contLang, $cache, $logger );
+			$parser->toggleConditionLimit( false );
+			$cachingParser = new AbuseFilterCachingParser( $contLang, $cache, $logger );
+			$cachingParser->toggleConditionLimit( false );
+			$parsers = [ $parser, $cachingParser ];
 		} else {
 			// Reset so that already executed tests don't influence new ones
 			$parsers[0]->resetState();
@@ -54,7 +61,7 @@ abstract class AbuseFilterParserTestCase extends MediaWikiTestCase {
 	 *  just used for debugging purposes.
 	 */
 	protected function exceptionTest( $excep, $expr, $caller ) {
-		foreach ( self::getParsers() as $parser ) {
+		foreach ( $this->getParsers() as $parser ) {
 			$pname = get_class( $parser );
 			try {
 				$parser->parse( $expr );
