@@ -814,6 +814,27 @@ class AbuseFilterHooks {
 	}
 
 	/**
+	 * @param IContextSource $context
+	 * @param LinkRenderer $linkRenderer
+	 * @param string[] &$links
+	 */
+	public static function onUndeletePageToolLinks(
+		IContextSource $context,
+		LinkRenderer $linkRenderer,
+		array &$links
+	) {
+		$user = $context->getUser();
+		if ( $user->isAllowed( 'abusefilter-log' ) ) {
+			$links[] = $linkRenderer->makeLink(
+				SpecialPage::getTitleFor( 'AbuseLog' ),
+				$context->msg( 'abusefilter-log-linkonundelete' )->text(),
+				[ 'title' => $context->msg( 'abusefilter-log-linkonundelete-text' )->text() ],
+				[ 'wpSearchTitle' => $context->getTitle()->getPrefixedText() ]
+			);
+		}
+	}
+
+	/**
 	 * Filter an upload.
 	 *
 	 * @param UploadBase $upload

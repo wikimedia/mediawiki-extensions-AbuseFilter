@@ -262,6 +262,7 @@
 		"LoadExtensionSchemaUpdates": "AbuseFilterHooks::onLoadExtensionSchemaUpdates",
 		"ContributionsToolLinks": "AbuseFilterHooks::onContributionsToolLinks",
 		"HistoryPageToolLinks": "AbuseFilterHooks::onHistoryPageToolLinks",
+		"UndeletePageToolLinks": "AbuseFilterHooks::onUndeletePageToolLinks",
 		"UploadVerifyUpload": "AbuseFilterHooks::onUploadVerifyUpload",
 		"UploadStashFile": "AbuseFilterHooks::onUploadStashFile",
 		"PageContentSaveComplete": "AbuseFilterHooks::onPageContentSaveComplete",
