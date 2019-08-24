@@ -896,7 +896,26 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ '"string" contains', 'keyword operand' ],
 			[ '1 in', 'keyword operand' ],
 			[ "contains_any('a','b','c',)", 'function argument' ],
-			[ "get_matches('a','b','c',)", 'function argument' ]
+			[ "get_matches('a','b','c',)", 'function argument' ],
+			[ "(!)", 'bool inversion' ],
+			// `(false &!)` and `(true &!)`, originally reported in T156096,
+			// should be used in the future to test that they throw. However,
+			// using them now would log twice and thus make the test fail.
+			[ "var :=", 'var assignment' ],
+			[ "var :=[];var[] :=", 'array assignment' ],
+			[ "var :=[1];var[0] :=", 'array assignment' ],
+			[ "false ? false :", 'ternary else' ],
+			[ "true ? false :", 'ternary else' ],
+			[ "-", 'unary operand' ],
+			[ "+", 'unary operand' ],
+			[ 'if () then (1) end', 'if condition' ],
+			[ 'if () then (1) else (1) end', 'if condition' ],
+			[ 'if (true) then () end', 'if body' ],
+			[ 'if (false) then () end', 'if body' ],
+			[ 'if (true) then () else (3) end', 'if body' ],
+			[ 'if (false) then () else (3) end', 'if body' ],
+			[ 'if (true) then (1) else () end', 'else body' ],
+			[ 'if (false) then (1) else () end', 'else body' ],
 		];
 	}
 }
