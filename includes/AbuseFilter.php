@@ -941,9 +941,8 @@ class AbuseFilter {
 		$logEntry->setPerformer( $performer );
 		$logEntry->setTarget( $target->getUserPage() );
 
-		$lang = RequestContext::getMain()->getLanguage();
 		$logEntry->setParameters( [
-			'7::duration' => $lang->formatDuration( self::BLOCKAUTOPROMOTE_DURATION ),
+			'7::duration' => self::BLOCKAUTOPROMOTE_DURATION,
 			// These parameters are unused in our message, but some parts of the code check for them
 			'4::oldgroups' => [],
 			'5::newgroups' => []

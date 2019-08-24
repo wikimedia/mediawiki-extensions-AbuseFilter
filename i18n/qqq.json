@@ -150,7 +150,7 @@
 	"log-action-filter-rights-blockautopromote": "{{doc-log-action-filter-action|rights|blockautopromote}}",
 	"log-action-filter-rights-restoreautopromote": "{{doc-log-action-filter-action|rights|restoreautopromote}}",
 	"logentry-abusefilterprivatedetails-access": "This message is for a log entry. Parameters:\n* $1 User who accessed the private logs\n* $2 User who accessed the private logs (used for gender)\n* $3 The log entry of which private details were accessed",
-	"logentry-rights-blockautopromote": "Message used in rights log entries when AbuseFilter delayed the autopromotion of a user. Parameters:\n* $1 The filter user\n* $2 Same as $1 but for gender support\n* $3 User whose autopromotion was delayed\n* $4 unused\n* $5 unused\n* $6 Same user as $3, but used for gender\n*$7 The period for which autopromotion has been blocked",
+	"logentry-rights-blockautopromote": "Message used in rights log entries when AbuseFilter delayed the autopromotion of a user. Parameters:\n* $1 The filter user\n* $2 Same as $1 but for gender support\n* $3 User whose autopromotion was delayed\n* $4 Same user as $3, but used for gender\n*$5 The period for which autopromotion has been blocked",
 	"logentry-rights-restoreautopromote": "Message used in rights log entries when autopromotion capability of a user. Parameters:\n* $1 The user who restored the rights\n* $2 Same as $1 but for gender support\n* $3 User whose autopromotion status was restored\n* $4 Same user as $3, but used for gender",
 	"abusefilterprivatedetails-log-name": "Log name",
 	"abusefilter-management": "Title of [[Special:AbuseFilter]]",
