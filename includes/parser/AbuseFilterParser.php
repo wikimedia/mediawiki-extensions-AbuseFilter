@@ -450,7 +450,7 @@ class AbuseFilterParser {
 					if ( $array->getType() === AFPData::DARRAY ) {
 						if ( count( $array->toArray() ) <= $idx ) {
 							throw new AFPUserVisibleException( 'outofbounds', $this->mCur->pos,
-								[ $idx, count( $result->getData() ) ] );
+								[ $idx, count( $array->getData() ) ] );
 						}
 					}
 				}
