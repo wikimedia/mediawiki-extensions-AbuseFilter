@@ -117,6 +117,8 @@
 	"abusefilter-log-linkoncontribs-text": "Registro de abuso para {{GENDER:$1|este usuário}}",
 	"abusefilter-log-linkonhistory": "ver o registro de abusos",
 	"abusefilter-log-linkonhistory-text": "Ver o registro de abusos para esta página",
+	"abusefilter-log-linkonundelete": "ver o registro de abusos",
+	"abusefilter-log-linkonundelete-text": "Ver o registro de abusos para esta página",
 	"abusefilter-log-hidden-implicit": "(oculto porque a revisão foi eliminada)",
 	"abusefilter-log-cannot-see-details": "Você não tem permissão para ver os detalhes desta entrada.",
 	"abusefilter-log-cannot-see-privatedetails": "Você não tem permissão para ver detalhes particulares desta entrada.",
