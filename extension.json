@@ -159,6 +159,7 @@
 		"AFPParserState": "includes/parser/AFPParserState.php",
 		"AFPToken": "includes/parser/AFPToken.php",
 		"AFPTreeNode": "includes/parser/AFPTreeNode.php",
+		"AFPSyntaxTree": "includes/parser/AFPSyntaxTree.php",
 		"AFPTreeParser": "includes/parser/AFPTreeParser.php",
 		"AFPUserVisibleException": "includes/parser/AFPUserVisibleException.php",
 		"ApiQueryAbuseLog": "includes/api/ApiQueryAbuseLog.php",

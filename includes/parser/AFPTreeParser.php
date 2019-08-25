@@ -20,6 +20,11 @@ class AFPTreeParser {
 	const CACHE_VERSION = 2;
 
 	/**
+	 * @var bool[] Custom variable names, set of [ name => true ]
+	 */
+	private $variablesNames;
+
+	/**
 	 * Create a new instance
 	 */
 	public function __construct() {
@@ -32,6 +37,7 @@ class AFPTreeParser {
 	public function resetState() {
 		$this->mTokens = [];
 		$this->mPos = 0;
+		$this->variablesNames = [];
 	}
 
 	/**
@@ -77,20 +83,29 @@ class AFPTreeParser {
 	 *
 	 * @param string $code
 	 * @throws AFPUserVisibleException
-	 * @return AFPTreeNode|null Null only if no statements
+	 * @return AFPSyntaxTree
 	 */
-	public function parse( $code ) {
+	public function parse( $code ) : AFPSyntaxTree {
 		$this->mTokens = AbuseFilterTokenizer::getTokens( $code );
 		$this->mPos = 0;
 
-		return $this->doLevelEntry();
+		return $this->buildSyntaxTree();
+	}
+
+	/**
+	 * @return AFPSyntaxTree
+	 */
+	public function buildSyntaxTree() : AFPSyntaxTree {
+		$root = $this->doLevelEntry();
+		$variables = array_keys( $this->variablesNames );
+		return new AFPSyntaxTree( $variables, $root );
 	}
 
 	/* Levels */
 
 	/**
 	 * Handles unexpected characters after the expression.
-	 * @return AFPTreeNode|null
+	 * @return AFPTreeNode|null Null only if no statements
 	 * @throws AFPUserVisibleException
 	 */
 	protected function doLevelEntry() {
@@ -164,6 +179,7 @@ class AFPTreeParser {
 				$position = $this->mPos;
 				$this->move();
 				$value = $this->doLevelSet();
+				$this->variablesNames[ $varname ] = true;
 
 				return new AFPTreeNode( AFPTreeNode::ASSIGNMENT, [ $varname, $value ], $position );
 			}
@@ -189,6 +205,7 @@ class AFPTreeParser {
 					$position = $this->mPos;
 					$this->move();
 					$value = $this->doLevelSet();
+					$this->variablesNames[ $varname ] = true;
 					if ( $index === 'append' ) {
 						return new AFPTreeNode(
 							AFPTreeNode::ARRAY_APPEND, [ $varname, $value ], $position );
@@ -547,6 +564,7 @@ class AFPTreeParser {
 				) {
 					throw new AFPUserVisibleException( 'variablevariable', $this->mPos, [] );
 				} else {
+					$this->variablesNames[ $this->mCur->value ] = true;
 					$this->setState( $state );
 				}
 			}

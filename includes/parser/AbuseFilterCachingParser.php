@@ -13,6 +13,8 @@
  *   Otherwise, people may be able to save a broken filter without the syntax check reporting that.
  */
 class AbuseFilterCachingParser extends AbuseFilterParser {
+	const CACHE_VERSION = 1;
+
 	/**
 	 * Return the generated version of the parser for cache invalidation
 	 * purposes.  Automatically tracks list of all functions and invalidates the
@@ -26,6 +28,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 		}
 
 		$versionKey = [
+			self::CACHE_VERSION,
 			AFPTreeParser::CACHE_VERSION,
 			AbuseFilterTokenizer::CACHE_VERSION,
 			array_keys( AbuseFilterParser::$mFunctions ),
@@ -50,12 +53,26 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 	 * @return AFPData
 	 */
 	public function intEval( $code ) : AFPData {
+		$tree = $this->getTree( $code );
+		$res = $this->evalTree( $tree );
+
+		if ( $res->getType() === AFPData::DUNDEFINED ) {
+			$res = new AFPData( AFPData::DBOOL, false );
+		}
+		return $res;
+	}
+
+	/**
+	 * @param string $code
+	 * @return AFPSyntaxTree
+	 */
+	private function getTree( $code ) : AFPSyntaxTree {
 		static $cache = null;
 		if ( !$cache ) {
 			$cache = ObjectCache::getLocalServerInstance( 'hash' );
 		}
 
-		$tree = $cache->getWithSetCallback(
+		return $cache->getWithSetCallback(
 			$cache->makeGlobalKey(
 				__CLASS__,
 				self::getCacheVersion(),
@@ -67,15 +84,20 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				return $parser->parse( $code );
 			}
 		);
+	}
 
-		$res = $tree
-			? $this->evalNode( $tree )
-			: new AFPData( AFPData::DNULL, null );
+	/**
+	 * @param AFPSyntaxTree $tree
+	 * @return AFPData
+	 */
+	private function evalTree( AFPSyntaxTree $tree ) : AFPData {
+		$root = $tree->getRoot();
 
-		if ( $res->getType() === AFPData::DUNDEFINED ) {
-			$res = new AFPData( AFPData::DBOOL, false );
+		if ( !$root ) {
+			return new AFPData( AFPData::DNULL );
 		}
-		return $res;
+
+		return $this->evalNode( $root );
 	}
 
 	/**
@@ -87,7 +109,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 * @throws MWException
 	 */
-	public function evalNode( AFPTreeNode $node ) {
+	private function evalNode( AFPTreeNode $node ) {
 		// A lot of AbuseFilterParser features rely on $this->mCur->pos or
 		// $this->mPos for error reporting.
 		// FIXME: this is a hack which needs to be removed when the parsers are merged.
