@@ -61,3 +61,10 @@ $method: Method to generate the variable
 $vars: AbuseFilterVariableHolder
 $parameters: Parameters with data to compute the value
 &$result: Result of the computation
+
+'AbuseFilterShouldFilterAction': Called before filtering an action. If the current action should not be filtered,
+return false and add a useful reason to $skipReasons.
+$vars: AbuseFilterVariableHolder
+$title: Title object target of the action
+$user: User object performer of the action
+&$skipReasons: Array of reasons why the action should be skipped
