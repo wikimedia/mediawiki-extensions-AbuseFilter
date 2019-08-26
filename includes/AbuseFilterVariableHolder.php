@@ -50,12 +50,22 @@ class AbuseFilterVariableHolder {
 	}
 
 	/**
+	 * Get a lazy loader for a variable. This method is here for testing ease
+	 * @param string $method
+	 * @param array $parameters
+	 * @return AFComputedVariable
+	 */
+	public function getLazyLoader( $method, $parameters ) {
+		return new AFComputedVariable( $method, $parameters );
+	}
+
+	/**
 	 * @param string $variable
 	 * @param string $method
 	 * @param array $parameters
 	 */
 	public function setLazyLoadVar( $variable, $method, $parameters ) {
-		$placeholder = new AFComputedVariable( $method, $parameters );
+		$placeholder = $this->getLazyLoader( $method, $parameters );
 		$this->setVar( $variable, $placeholder );
 	}
 
@@ -116,14 +126,20 @@ class AbuseFilterVariableHolder {
 	}
 
 	/**
-	 * Export all variables stored in this object as string
+	 * Export all variables stored in this object.
 	 *
-	 * @return string[]
+	 * @param bool $nativeTypes If true, variables will be exported with native types, otherwise
+	 * they'll be cast to strings.
+	 * @return array
 	 */
-	public function exportAllVars() {
+	public function exportAllVars( $nativeTypes = false ) {
 		$exported = [];
 		foreach ( array_keys( $this->mVars ) as $varName ) {
-			$exported[$varName] = $this->getVar( $varName )->toString();
+			if ( $nativeTypes ) {
+				$exported[ $varName ] = $this->getVar( $varName )->toNative();
+			} else {
+				$exported[ $varName ] = $this->getVar( $varName )->toString();
+			}
 		}
 
 		return $exported;

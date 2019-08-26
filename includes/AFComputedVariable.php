@@ -14,11 +14,11 @@ class AFComputedVariable {
 	 */
 	public $mParameters;
 	/**
-	 * @var array Cache containing User objects already constructed
+	 * @var User[] Cache containing User objects already constructed
 	 */
 	public static $userCache = [];
 	/**
-	 * @var array Cache containing Page objects already constructed
+	 * @var WikiPage[] Cache containing Page objects already constructed
 	 */
 	public static $articleCache = [];
 
@@ -106,7 +106,7 @@ class AFComputedVariable {
 	 * @param string $title
 	 * @return WikiPage
 	 */
-	public static function pageFromTitle( $namespace, $title ) {
+	public function pageFromTitle( $namespace, $title ) {
 		if ( isset( self::$articleCache["$namespace:$title"] ) ) {
 			return self::$articleCache["$namespace:$title"];
 		}
@@ -118,10 +118,21 @@ class AFComputedVariable {
 		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
 		$logger->debug( "Creating wikipage object for $namespace:$title in cache" );
 
-		$t = Title::makeTitle( $namespace, $title );
+		$t = $this->buildTitle( $namespace, $title );
 		self::$articleCache["$namespace:$title"] = WikiPage::factory( $t );
 
 		return self::$articleCache["$namespace:$title"];
+	}
+
+	/**
+	 * Mockable wrapper
+	 *
+	 * @param int $namespace
+	 * @param string $title
+	 * @return Title
+	 */
+	protected function buildTitle( $namespace, $title ) : Title {
+		return Title::makeTitle( $namespace, $title );
 	}
 
 	/**
@@ -214,7 +225,7 @@ class AFComputedVariable {
 				if ( isset( $parameters['article'] ) ) {
 					$article = $parameters['article'];
 				} else {
-					$article = self::pageFromTitle(
+					$article = $this->pageFromTitle(
 						$parameters['namespace'],
 						$parameters['title']
 					);
@@ -243,7 +254,7 @@ class AFComputedVariable {
 			case 'links-from-wikitext-nonedit':
 			case 'links-from-wikitext-or-database':
 				// TODO: use Content object instead, if available!
-				$article = self::pageFromTitle(
+				$article = $this->pageFromTitle(
 					$parameters['namespace'],
 					$parameters['title']
 				);
@@ -291,7 +302,7 @@ class AFComputedVariable {
 				if ( isset( $parameters['article'] ) ) {
 					$article = $parameters['article'];
 				} else {
-					$article = self::pageFromTitle(
+					$article = $this->pageFromTitle(
 						$parameters['namespace'],
 						$parameters['title']
 					);
@@ -324,7 +335,7 @@ class AFComputedVariable {
 				// Otherwise fall back to database
 			case 'parse-wikitext-nonedit':
 				// TODO: use Content object instead, if available!
-				$article = self::pageFromTitle( $parameters['namespace'], $parameters['title'] );
+				$article = $this->pageFromTitle( $parameters['namespace'], $parameters['title'] );
 				$textVar = $parameters['wikitext-var'];
 
 				if ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
@@ -350,7 +361,7 @@ class AFComputedVariable {
 				$result = StringUtils::delimiterReplace( '<', '>', '', $html );
 				break;
 			case 'load-recent-authors':
-				$title = Title::makeTitle( $parameters['namespace'], $parameters['title'] );
+				$title = $this->buildTitle( $parameters['namespace'], $parameters['title'] );
 				if ( !$title->exists() ) {
 					$result = '';
 					break;
@@ -359,7 +370,7 @@ class AFComputedVariable {
 				$result = self::getLastPageAuthors( $title );
 				break;
 			case 'load-first-author':
-				$title = Title::makeTitle( $parameters['namespace'], $parameters['title'] );
+				$title = $this->buildTitle( $parameters['namespace'], $parameters['title'] );
 
 				$revision = $title->getFirstRevision();
 				if ( $revision ) {
@@ -371,7 +382,7 @@ class AFComputedVariable {
 				break;
 			case 'get-page-restrictions':
 				$action = $parameters['action'];
-				$title = Title::makeTitle( $parameters['namespace'], $parameters['title'] );
+				$title = $this->buildTitle( $parameters['namespace'], $parameters['title'] );
 
 				$result = $title->getRestrictions( $action );
 				break;
@@ -410,7 +421,7 @@ class AFComputedVariable {
 				$result = wfTimestamp( TS_UNIX, $asOf ) - wfTimestampOrNull( TS_UNIX, $registration );
 				break;
 			case 'page-age':
-				$title = Title::makeTitle( $parameters['namespace'], $parameters['title'] );
+				$title = $this->buildTitle( $parameters['namespace'], $parameters['title'] );
 
 				$firstRevisionTime = $title->getEarliestRevTime();
 				if ( !$firstRevisionTime ) {
@@ -448,7 +459,7 @@ class AFComputedVariable {
 				break;
 			case 'revision-text-by-timestamp':
 				$timestamp = $parameters['timestamp'];
-				$title = Title::makeTitle( $parameters['namespace'], $parameters['title'] );
+				$title = $this->buildTitle( $parameters['namespace'], $parameters['title'] );
 				$dbr = wfGetDB( DB_REPLICA );
 				$rev = Revision::loadFromTimestamp( $dbr, $title, $timestamp );
 				$result = AbuseFilter::revisionToString( $rev, $wgUser );

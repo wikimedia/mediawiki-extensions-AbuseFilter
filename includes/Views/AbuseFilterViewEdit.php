@@ -69,7 +69,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		if ( $tokenMatches && AbuseFilter::canEdit( $user ) ) {
 			list( $newRow, $actions ) = $this->loadRequest( $filter );
-			$status = AbuseFilter::saveFilter( $this, $filter, $newRow, $actions );
+			$dbw = wfGetDB( DB_MASTER );
+			$status = AbuseFilter::saveFilter( $this, $filter, $newRow, $actions, $dbw );
 			if ( !$status->isGood() ) {
 				$err = $status->getErrors();
 				$msg = $err[0]['message'];

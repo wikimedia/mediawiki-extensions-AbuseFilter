@@ -873,16 +873,13 @@ class AbuseFilter {
 	 * @param array[] $tagsByAction Map of (integer => string[])
 	 */
 	public static function bufferTagsToSetByAction( array $tagsByAction ) {
-		global $wgAbuseFilterActions;
-		if ( isset( $wgAbuseFilterActions['tag'] ) && $wgAbuseFilterActions['tag'] ) {
-			foreach ( $tagsByAction as $actionID => $tags ) {
-				if ( !isset( self::$tagsToSet[$actionID] ) ) {
-					self::$tagsToSet[$actionID] = $tags;
-				} else {
-					self::$tagsToSet[$actionID] = array_unique(
-						array_merge( self::$tagsToSet[$actionID], $tags )
-					);
-				}
+		foreach ( $tagsByAction as $actionID => $tags ) {
+			if ( !isset( self::$tagsToSet[ $actionID ] ) ) {
+				self::$tagsToSet[ $actionID ] = $tags;
+			} else {
+				self::$tagsToSet[ $actionID ] = array_unique(
+					array_merge( self::$tagsToSet[ $actionID ], $tags )
+				);
 			}
 		}
 	}
@@ -1224,9 +1221,16 @@ class AbuseFilter {
 	 * @param int|string $filter
 	 * @param stdClass $newRow
 	 * @param array $actions
+	 * @param IDatabase $dbw DB_MASTER Where the filter should be saved
 	 * @return Status
 	 */
-	public static function saveFilter( AbuseFilterViewEdit $page, $filter, $newRow, $actions ) {
+	public static function saveFilter(
+		AbuseFilterViewEdit $page,
+		$filter,
+		$newRow,
+		$actions,
+		IDatabase $dbw
+	) {
 		$validationStatus = Status::newGood();
 		$request = $page->getRequest();
 		$user = $page->getUser();
@@ -1241,10 +1245,10 @@ class AbuseFilter {
 		$missing = [];
 		if ( !$request->getVal( 'wpFilterRules' ) ||
 			trim( $request->getVal( 'wpFilterRules' ) ) === '' ) {
-			$missing[] = wfMessage( 'abusefilter-edit-field-conditions' )->escaped();
+			$missing[] = $page->msg( 'abusefilter-edit-field-conditions' )->escaped();
 		}
 		if ( !$request->getVal( 'wpFilterDescription' ) ) {
-			$missing[] = wfMessage( 'abusefilter-edit-field-description' )->escaped();
+			$missing[] = $page->msg( 'abusefilter-edit-field-description' )->escaped();
 		}
 		if ( count( $missing ) !== 0 ) {
 			$missing = $page->getLanguage()->commaList( $missing );
@@ -1294,9 +1298,11 @@ class AbuseFilter {
 			}
 		}
 
+		$availableActions = array_keys( array_filter( $page->getConfig()->get( 'AbuseFilterActions' ) ) );
 		$differences = self::compareVersions(
 			[ $newRow, $actions ],
-			[ $newRow->mOriginalRow, $newRow->mOriginalActions ]
+			[ $newRow->mOriginalRow, $newRow->mOriginalActions ],
+			$availableActions
 		);
 
 		// Don't allow adding a new global rule, or updating a
@@ -1344,7 +1350,7 @@ class AbuseFilter {
 
 		// Everything went fine, so let's save the filter
 		list( $new_id, $history_id ) =
-			self::doSaveFilter( $newRow, $differences, $filter, $actions, $wasGlobal, $page );
+			self::doSaveFilter( $newRow, $differences, $filter, $actions, $wasGlobal, $page, $dbw );
 		$validationStatus->setResult( true, [ $new_id, $history_id ] );
 		return $validationStatus;
 	}
@@ -1358,6 +1364,7 @@ class AbuseFilter {
 	 * @param array $actions
 	 * @param bool $wasGlobal
 	 * @param AbuseFilterViewEdit $page
+	 * @param IDatabase $dbw DB_MASTER where the filter will be saved
 	 * @return int[] first element is new ID, second is history ID
 	 */
 	private static function doSaveFilter(
@@ -1366,10 +1373,10 @@ class AbuseFilter {
 		$filter,
 		$actions,
 		$wasGlobal,
-		AbuseFilterViewEdit $page
+		AbuseFilterViewEdit $page,
+		IDatabase $dbw
 	) {
 		$user = $page->getUser();
-		$dbw = wfGetDB( DB_MASTER );
 
 		// Convert from object to array
 		$newRow = get_object_vars( $newRow );
@@ -1494,7 +1501,7 @@ class AbuseFilter {
 			'historyId' => $history_id,
 			'newId' => $new_id
 		] );
-		$logid = $logEntry->insert();
+		$logid = $logEntry->insert( $dbw );
 		$logEntry->publish( $logid );
 
 		// Purge the tag list cache so the fetchAllTags hook applies tag changes
@@ -1512,10 +1519,15 @@ class AbuseFilter {
 	 *
 	 * @param array $version_1
 	 * @param array $version_2
+	 * @param string[] $availableActions All actions enabled in the AF config
 	 *
 	 * @return array
 	 */
-	public static function compareVersions( $version_1, $version_2 ) {
+	public static function compareVersions(
+		array $version_1,
+		array $version_2,
+		array $availableActions
+	) {
 		$compareFields = [
 			'af_public_comments',
 			'af_pattern',
@@ -1537,8 +1549,7 @@ class AbuseFilter {
 			}
 		}
 
-		global $wgAbuseFilterActions;
-		foreach ( array_filter( $wgAbuseFilterActions ) as $action => $_ ) {
+		foreach ( $availableActions as $action ) {
 			if ( !isset( $actions1[$action] ) && !isset( $actions2[$action] ) ) {
 				// They're both unset
 			} elseif ( isset( $actions1[$action] ) && isset( $actions2[$action] ) ) {

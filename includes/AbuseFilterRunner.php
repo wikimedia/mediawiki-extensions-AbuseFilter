@@ -109,6 +109,7 @@ class AbuseFilterRunner {
 	 * @return Status Good if no action has been taken, a fatal otherwise.
 	 */
 	public function run( $allowStash = true ) : Status {
+		global $wgAbuseFilterActions;
 		if ( $this->executed ) {
 			throw new BadMethodCallException( 'run() was already called on this instance.' );
 		}
@@ -135,8 +136,10 @@ class AbuseFilterRunner {
 		if ( $useStash ) {
 			$cacheData = $this->seekCache();
 			if ( $cacheData !== false ) {
-				// Merge in any tags to apply to recent changes entries
-				AbuseFilter::bufferTagsToSetByAction( $cacheData['tags'] );
+				if ( isset( $wgAbuseFilterActions['tag'] ) && $wgAbuseFilterActions['tag'] ) {
+					// Merge in any tags to apply to recent changes entries
+					AbuseFilter::bufferTagsToSetByAction( $cacheData['tags'] );
+				}
 				// Use cached vars (T176291) and profiling data (T191430)
 				$this->vars = AbuseFilterVariableHolder::newFromArray( $cacheData['vars'] );
 				$result = [
