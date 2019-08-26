@@ -352,7 +352,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			],
 			'wgAbuseFilterCentralDB' => $this->db->getDBname() . '-' . $this->dbPrefix() .
 				self::DB_EXTERNAL_PREFIX,
-			'wgAbuseFilterIsCentral' => false
+			'wgAbuseFilterIsCentral' => false,
+			'wgMainCacheType' => 'hash',
 		] );
 	}
 
@@ -434,7 +435,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @return string The status of the operation, as returned by the API.
 	 */
 	private function stashEdit( $title, $text, $summary ) {
-		$this->setMwGlobals( [ 'wgMainCacheType' => 'hash' ] );
 		$editStash = new PageEditStash(
 			new HashBagOStuff( [] ),
 			MediaWikiServices::getInstance()->getDBLoadBalancer(),
@@ -1243,7 +1243,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @dataProvider provideThrottleFilters
 	 */
 	public function testThrottle( $createIds, $actionsParams, $consequences ) {
-		$this->setMwGlobals( [ 'wgMainCacheType' => 'hash' ] );
 		self::createFilters( $createIds );
 		$results = self::doActions( $actionsParams );
 		$res = $this->checkThrottleConsequence( $results );
