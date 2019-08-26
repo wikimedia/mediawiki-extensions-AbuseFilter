@@ -21,7 +21,8 @@
 			"Matma Rex",
 			"Максим Підліснюк",
 			"Avatar6",
-			"Vlad5250"
+			"Vlad5250",
+			"Daimona Eaytoy"
 		]
 	},
 	"abusefilter-desc": "Застосовує до редагувань автоматичні евристики.",
@@ -133,7 +134,7 @@
 	"log-action-filter-rights-blockautopromote": "Блокування автопросування",
 	"log-action-filter-rights-restoreautopromote": "Відновлення автопросування",
 	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|отримав|отримала}} доступ до приватних даних для $3",
-	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|заблокував|заблокувала|заблокував}} автопросування для {{GENDER:$6|$3}} на $7.",
+	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|заблокував|заблокувала|заблокував}} автопросування для {{GENDER:$4|$3}} на $5.",
 	"logentry-rights-restoreautopromote": "$1 {{GENDER:$2|відновив|відновила|відновив}} автопросування для {{GENDER:$4|користувача|користувачки|}} $3.",
 	"abusefilterprivatedetails-log-name": "Журнал доступу до приватних даних фільтра редагувань",
 	"abusefilter-management": "Управління фільтрами редагувань",

@@ -26,7 +26,8 @@
 			"Mar(c)",
 			"Kippenvlees1",
 			"Bdijkstra",
-			"Xbaked potatox"
+			"Xbaked potatox",
+			"Daimona Eaytoy"
 		]
 	},
 	"abusefilter-desc": "Voert automatisch heuristische analyse uit op bewerkingen",
@@ -137,7 +138,7 @@
 	"log-action-filter-rights-blockautopromote": "Uitstellen van automatisch promoveren",
 	"log-action-filter-rights-restoreautopromote": "Herstellen van automatisch promoveren",
 	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|bekeek}} de beperkte zichtbare logboekgegevens van $3",
-	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|heeft}} het automatisch promoveren van {{GENDER:$6|$3}} met $7 uitgesteld",
+	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|heeft}} het automatisch promoveren van {{GENDER:$4|$3}} met $5 uitgesteld",
 	"logentry-rights-restoreautopromote": "$1 {{GENDER:$2|heeft}} de mogelijkheid van {{GENDER:$4|$3}} om automatisch te promoveren hersteld",
 	"abusefilterprivatedetails-log-name": "Toegangslogboek van beperkt zichtbare logboekgegevens van het misbruikfilter",
 	"abusefilter-management": "Beheer van filters",

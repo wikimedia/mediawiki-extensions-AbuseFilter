@@ -48,7 +48,8 @@
 			"DmitTrix",
 			"ЛингвоЧел",
 			"Sobloku",
-			"Dmsm"
+			"Dmsm",
+			"Daimona Eaytoy"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -162,7 +163,7 @@
 	"log-action-filter-rights-blockautopromote": "Блокировка автопродвижения",
 	"log-action-filter-rights-restoreautopromote": "Восстановление автопродвижения",
 	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|доступ к}} личные данные для $3",
-	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|заблокировал|заблокировала}} автопродвижение {{GENDER:$6|$3}} на срок $7",
+	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|заблокировал|заблокировала}} автопродвижение {{GENDER:$4|$3}} на срок $5",
 	"logentry-rights-restoreautopromote": "$1 {{GENDER:$2|восстановил|восстановила}} возможность автопродвижения {{GENDER:$4|$3}}",
 	"abusefilterprivatedetails-log-name": "Журнал доступа к конфиденциальным данным фильтр злоупотребления",
 	"abusefilter-management": "Управление фильтром злоупотреблений",

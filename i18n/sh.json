@@ -4,7 +4,8 @@
 			"Kolega2357",
 			"OC Ripper",
 			"BadDog",
-			"Vlad5250"
+			"Vlad5250",
+			"Daimona Eaytoy"
 		]
 	},
 	"abusefilter-desc": "Izvršava automatsko heurističko filtriranje u izmenama",
@@ -116,7 +117,7 @@
 	"log-action-filter-rights-blockautopromote": "Blok autounapređivanja",
 	"log-action-filter-rights-restoreautopromote": "Povratak autounapređivanja",
 	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|pristupio|pristupila}} je osobnim podacima za $3",
-	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|je blokirao|je blokirala}} autounapređivanje korisnika {{GENDER:$6|$3}} u trajanju od $7",
+	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|je blokirao|je blokirala}} autounapređivanje korisnika {{GENDER:$4|$3}} u trajanju od $5",
 	"logentry-rights-restoreautopromote": "$1 {{GENDER:$2|je povratio|je povratila}} mogućnost autounapređivanja korisnika {{GENDER:$4|$3}}",
 	"abusefilterprivatedetails-log-name": "Dnevnik pristupa osobnim podacima iz Filtra za zloupotrebu",
 	"abusefilter-management": "Upravljanje filterom protiv zloupotrebe",
