@@ -150,8 +150,7 @@
 		"ApiAbuseFilterCheckSyntax": "includes/api/ApiAbuseFilterCheckSyntax.php",
 		"ApiAbuseFilterEvalExpression": "includes/api/ApiAbuseFilterEvalExpression.php",
 		"ApiAbuseFilterUnblockAutopromote": "includes/api/ApiAbuseFilterUnblockAutopromote.php",
-		"ApiAbuseFilterCheckMatch": "includes/api/ApiAbuseFilterCheckMatch.php",
-		"NormalizeThrottleParameters": "maintenance/normalizeThrottleParameters.php"
+		"ApiAbuseFilterCheckMatch": "includes/api/ApiAbuseFilterCheckMatch.php"
 	},
 	"ResourceModules": {
 		"ext.abuseFilter": {
