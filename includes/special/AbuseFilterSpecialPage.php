@@ -10,26 +10,28 @@ abstract class AbuseFilterSpecialPage extends SpecialPage {
 	 * @param string $pageType
 	 */
 	protected function addNavigationLinks( $pageType ) {
+		$user = $this->getUser();
+
 		$linkDefs = [
 			'home' => 'Special:AbuseFilter',
 			'recentchanges' => 'Special:AbuseFilter/history',
 			'examine' => 'Special:AbuseFilter/examine',
 		];
 
-		if ( $this->getUser()->isAllowed( 'abusefilter-log' ) ) {
+		if ( $user->isAllowed( 'abusefilter-log' ) ) {
 			$linkDefs = array_merge( $linkDefs, [
 				'log' => 'Special:AbuseLog'
 			] );
 		}
 
-		if ( $this->getUser()->isAllowedAny( 'abusefilter-modify', 'abusefilter-view-private' ) ) {
+		if ( AbuseFilter::canViewPrivate( $user ) ) {
 			$linkDefs = array_merge( $linkDefs, [
 				'test' => 'Special:AbuseFilter/test',
 				'tools' => 'Special:AbuseFilter/tools'
 			] );
 		}
 
-		if ( $this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
+		if ( AbuseFilter::canEdit( $user ) ) {
 			$linkDefs = array_merge( $linkDefs, [
 				'import' => 'Special:AbuseFilter/import'
 			] );

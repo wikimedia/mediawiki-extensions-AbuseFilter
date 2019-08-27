@@ -89,7 +89,7 @@ class AbuseFilterPager extends TablePager {
 		];
 
 		$user = $this->mPage->getUser();
-		if ( $user->isAllowed( 'abusefilter-log-detail' ) ) {
+		if ( SpecialAbuseLog::canSeeDetails( $user ) ) {
 			$headers['af_hit_count'] = 'abusefilter-list-hitcount';
 		}
 
@@ -306,7 +306,7 @@ class AbuseFilterPager extends TablePager {
 			'af_hidden',
 			'af_group',
 		];
-		if ( $this->mPage->getUser()->isAllowed( 'abusefilter-log-detail' ) ) {
+		if ( SpecialAbuseLog::canSeeDetails( $this->mPage->getUser() ) ) {
 			$sortable_fields[] = 'af_hit_count';
 			$sortable_fields[] = 'af_public_comments';
 		}

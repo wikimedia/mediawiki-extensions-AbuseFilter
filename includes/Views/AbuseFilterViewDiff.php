@@ -103,7 +103,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		}
 
 		if ( AbuseFilter::filterHidden( $this->mFilter )
-			&& !$this->getUser()->isAllowedAny( 'abusefilter-modify', 'abusefilter-view-private' )
+			&& !AbuseFilter::canViewPrivate( $this->getUser() )
 		) {
 			$this->getOutput()->addWikiMsg( 'abusefilter-history-error-hidden' );
 			return false;
