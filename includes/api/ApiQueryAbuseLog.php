@@ -67,7 +67,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		}
 		// Match permissions for viewing events on private filters to SpecialAbuseLog (bug 42814)
 		if ( $params['filter'] &&
-			!( AbuseFilterView::canViewPrivate() || $user->isAllowed( 'abusefilter-log-private' ) )
+			!( AbuseFilter::canViewPrivate( $user ) || $user->isAllowed( 'abusefilter-log-private' ) )
 		) {
 			// A specific filter parameter is set but the user isn't allowed to view all filters
 			if ( !is_array( $params['filter'] ) ) {
@@ -139,7 +139,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			[ 'afl_filter' => $params['filter'] ],
 			isset( $params['filter'] ) && $params['filter'] !== []
 		);
-		$this->addWhereIf( [ 'afl_deleted' => 0 ], !SpecialAbuseLog::canSeeHidden() );
+		$this->addWhereIf( [ 'afl_deleted' => 0 ], !SpecialAbuseLog::canSeeHidden( $user ) );
 		if ( isset( $params['wiki'] ) ) {
 			// 'wiki' won't be set if $wgAbuseFilterIsCentral = false
 			$this->addWhereIf( [ 'afl_wiki' => $params['wiki'] ], $isCentral );
@@ -165,7 +165,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				break;
 			}
 			$hidden = SpecialAbuseLog::isHidden( $row );
-			if ( $hidden === true && !SpecialAbuseLog::canSeeHidden() ) {
+			if ( $hidden === true && !SpecialAbuseLog::canSeeHidden( $user ) ) {
 				continue;
 			} elseif ( $hidden === 'implicit' ) {
 				$rev = Revision::newFromId( $row->afl_rev_id );
@@ -174,7 +174,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				}
 			}
 			list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
-			$canSeeDetails = SpecialAbuseLog::canSeeDetails( $filterID, $global );
+			$canSeeDetails = SpecialAbuseLog::canSeeDetails( $user, $filterID, $global );
 
 			$entry = [];
 			if ( $fld_ids ) {

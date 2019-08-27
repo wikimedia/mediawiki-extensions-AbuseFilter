@@ -1229,6 +1229,7 @@ class AbuseFilter {
 	public static function saveFilter( AbuseFilterViewEdit $page, $filter, $newRow, $actions ) {
 		$validationStatus = Status::newGood();
 		$request = $page->getRequest();
+		$user = $page->getUser();
 
 		// Check the syntax
 		$syntaxerr = self::checkSyntax( $request->getVal( 'wpFilterRules' ) );
@@ -1300,7 +1301,10 @@ class AbuseFilter {
 
 		// Don't allow adding a new global rule, or updating a
 		// rule that is currently global, without permissions.
-		if ( !$page->canEditFilter( $newRow ) || !$page->canEditFilter( $newRow->mOriginalRow ) ) {
+		if (
+			!self::canEditFilter( $user, $newRow ) ||
+			!self::canEditFilter( $user, $newRow->mOriginalRow )
+		) {
 			$validationStatus->fatal( 'abusefilter-edit-notallowed-global' );
 			return $validationStatus;
 		}
@@ -1332,7 +1336,7 @@ class AbuseFilter {
 				array_filter( $restrictions ),
 				array_merge( $actions, $origActions )
 			) )
-			&& !$page->getUser()->isAllowed( 'abusefilter-modify-restricted' )
+			&& !$user->isAllowed( 'abusefilter-modify-restricted' )
 		) {
 			$validationStatus->error( 'abusefilter-edit-restricted' );
 			return $validationStatus;
@@ -2178,5 +2182,48 @@ class AbuseFilter {
 			->getDBLoadBalancerFactory()
 			->getMainLB( $wgAbuseFilterCentralDB )
 			->getConnectionRef( $index, [], $wgAbuseFilterCentralDB );
+	}
+
+	/**
+	 * @param User $user
+	 * @return bool
+	 */
+	public static function canEdit( User $user ) {
+		$block = $user->getBlock();
+
+		return (
+			!( $block && $block->isSitewide() ) &&
+			$user->isAllowed( 'abusefilter-modify' )
+		);
+	}
+
+	/**
+	 * @param User $user
+	 * @return bool
+	 */
+	public static function canEditGlobal( User $user ) {
+		return $user->isAllowed( 'abusefilter-modify-global' );
+	}
+
+	/**
+	 * Whether the user can edit the given filter.
+	 *
+	 * @param User $user
+	 * @param object $row Filter row
+	 * @return bool
+	 */
+	public static function canEditFilter( User $user, $row ) {
+		return (
+			self::canEdit( $user ) &&
+			!( isset( $row->af_global ) && $row->af_global == 1 && !self::canEditGlobal( $user ) )
+		);
+	}
+
+	/**
+	 * @param User $user
+	 * @return bool
+	 */
+	public static function canViewPrivate( User $user ) {
+		return $user->isAllowedAny( 'abusefilter-modify', 'abusefilter-view-private' );
 	}
 }

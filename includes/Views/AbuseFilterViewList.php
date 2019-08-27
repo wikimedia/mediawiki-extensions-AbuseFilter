@@ -13,6 +13,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$out = $this->getOutput();
 		$request = $this->getRequest();
 		$config = $this->getConfig();
+		$user = $this->getUser();
 
 		// Show filter performance statistics
 		$this->showStatus();
@@ -20,7 +21,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$out->addWikiMsg( 'abusefilter-intro' );
 
 		// New filter button
-		if ( $this->canEdit() ) {
+		if ( AbuseFilter::canEdit( $user ) ) {
 			$out->enableOOUI();
 			$link = new OOUI\ButtonWidget( [
 				'label' => $this->msg( 'abusefilter-new' )->text(),
@@ -47,7 +48,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		}
 		$scope = $request->getVal( 'rulescope', $defaultscope );
 
-		$searchEnabled = $this->canViewPrivate() && !(
+		$searchEnabled = AbuseFilter::canViewPrivate( $user ) && !(
 			$config->get( 'AbuseFilterCentralDB' ) !== null &&
 			!$config->get( 'AbuseFilterIsCentral' ) &&
 			$scope === 'global' );

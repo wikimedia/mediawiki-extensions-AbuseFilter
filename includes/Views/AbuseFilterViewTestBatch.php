@@ -41,7 +41,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	public function show() {
 		$out = $this->getOutput();
 
-		if ( !$this->canViewPrivate() ) {
+		if ( !AbuseFilter::canViewPrivate( $this->getUser() ) ) {
 			$out->addWikiMsg( 'abusefilter-mustviewprivateoredit' );
 			return;
 		}

@@ -48,7 +48,9 @@ class ApiAbuseLogPrivateDetails extends ApiBase {
 	 * @inheritDoc
 	 */
 	public function execute() {
-		if ( !SpecialAbuseLog::canSeePrivateDetails() ) {
+		$user = $this->getUser();
+
+		if ( !SpecialAbuseLog::canSeePrivateDetails( $user ) ) {
 			$this->dieWithError( 'abusefilter-log-cannot-see-private-details' );
 		}
 		$params = $this->extractRequestParams();
@@ -57,7 +59,7 @@ class ApiAbuseLogPrivateDetails extends ApiBase {
 			// Double check, in case we add some extra validation
 			$this->dieWithError( 'abusefilter-noreason' );
 		}
-		$status = SpecialAbuseLog::getPrivateDetailsRow( $params['logid'] );
+		$status = SpecialAbuseLog::getPrivateDetailsRow( $user, $params['logid'] );
 		if ( !$status->isGood() ) {
 			$this->dieWithError( $status->getErrors()[0] );
 		}
@@ -67,7 +69,7 @@ class ApiAbuseLogPrivateDetails extends ApiBase {
 			SpecialAbuseLog::addPrivateDetailsAccessLogEntry(
 				$params['logid'],
 				$params['reason'],
-				$this->getUser()
+				$user
 			);
 		}
 

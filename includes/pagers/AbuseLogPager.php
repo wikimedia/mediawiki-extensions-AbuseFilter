@@ -50,7 +50,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 				],
 		];
 
-		if ( !$this->mForm->canSeeHidden() ) {
+		if ( !$this->mForm->canSeeHidden( $this->getUser() ) ) {
 			$info['conds']['afl_deleted'] = 0;
 		}
 

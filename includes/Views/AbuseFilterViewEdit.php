@@ -52,7 +52,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Add the default warning and disallow messages in a JS variable
 		$this->exposeMessages();
 
-		if ( $filter === 'new' && !$this->canEdit() ) {
+		if ( $filter === 'new' && !AbuseFilter::canEdit( $user ) ) {
 			$out->addHTML(
 				Xml::tags(
 					'p',
@@ -67,7 +67,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$tokenMatches = $user->matchEditToken(
 			$editToken, [ 'abusefilter', $filter ], $request );
 
-		if ( $tokenMatches && $this->canEdit() ) {
+		if ( $tokenMatches && AbuseFilter::canEdit( $user ) ) {
 			list( $newRow, $actions ) = $this->loadRequest( $filter );
 			$status = AbuseFilter::saveFilter( $this, $filter, $newRow, $actions );
 			if ( !$status->isGood() ) {
@@ -169,7 +169,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Hide hidden filters.
 		if (
 			( $row->af_hidden || ( $filter !== 'new' && AbuseFilter::filterHidden( $filter ) ) ) &&
-			!$this->canViewPrivate()
+			!AbuseFilter::canViewPrivate( $user )
 		) {
 			$out->addHTML( $this->msg( 'abusefilter-edit-denied' )->escaped() );
 			return;
@@ -184,7 +184,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$out->addHTML( Html::errorBox( $error ) );
 		}
 
-		$readOnly = !$this->canEditFilter( $row );
+		$readOnly = !AbuseFilter::canEditFilter( $user, $row );
 
 		$fields = [];
 
@@ -317,7 +317,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				'align' => 'inline',
 			];
 
-			if ( $checkboxId === 'global' && !$this->canEditGlobal() ) {
+			if ( $checkboxId === 'global' && !AbuseFilter::canEditGlobal( $user ) ) {
 				$checkboxAttribs['disabled'] = 'disabled';
 			}
 
@@ -357,7 +357,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				);
 			}
 
-			if ( $this->canEdit() ) {
+			if ( AbuseFilter::canEdit( $user ) ) {
 				// Test link
 				$tools .= Xml::tags(
 					'p', null,
@@ -416,7 +416,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$this->buildConsequenceEditor( $row, $actions )
 		);
 
-		if ( $this->canEditFilter( $row ) ) {
+		if ( AbuseFilter::canEditFilter( $user, $row ) ) {
 			$form .=
 				new OOUI\ButtonInputWidget( [
 					'type' => 'submit',
@@ -485,12 +485,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 */
 	private function buildConsequenceSelector( $action, $set, $row, array $parameters = null ) {
 		$config = $this->getConfig();
+		$user = $this->getUser();
 		$actions = $config->get( 'AbuseFilterActions' );
 		if ( empty( $actions[$action] ) ) {
 			return '';
 		}
 
-		$readOnly = !$this->canEditFilter( $row );
+		$readOnly = !AbuseFilter::canEditFilter( $user, $row );
 
 		switch ( $action ) {
 			case 'throttle':
@@ -681,7 +682,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					);
 
 				$buttonGroup = $previewButton;
-				if ( $this->getUser()->isAllowed( 'editinterface' ) ) {
+				if ( $user->isAllowed( 'editinterface' ) ) {
 					$editButton =
 						new OOUI\ButtonInputWidget( [
 							// abusefilter-edit-warn-edit, abusefilter-edit-disallow-edit
@@ -823,7 +824,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						'name' => 'wpBlockAnonDuration',
 						'options' => $suggestedBlocks,
 						'value' => $defaultAnonDuration,
-						'disabled' => !$this->canEditFilter( $row )
+						'disabled' => !AbuseFilter::canEditFilter( $user, $row )
 					] );
 
 				$userDuration =
@@ -831,7 +832,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						'name' => 'wpBlockUserDuration',
 						'options' => $suggestedBlocks,
 						'value' => $defaultUserDuration,
-						'disabled' => !$this->canEditFilter( $row )
+						'disabled' => !AbuseFilter::canEditFilter( $user, $row )
 					] );
 
 				$blockOptions = [];

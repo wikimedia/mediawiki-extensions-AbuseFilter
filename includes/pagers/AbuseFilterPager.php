@@ -88,11 +88,12 @@ class AbuseFilterPager extends TablePager {
 			'af_hidden' => 'abusefilter-list-visibility',
 		];
 
-		if ( $this->mPage->getUser()->isAllowed( 'abusefilter-log-detail' ) ) {
+		$user = $this->mPage->getUser();
+		if ( $user->isAllowed( 'abusefilter-log-detail' ) ) {
 			$headers['af_hit_count'] = 'abusefilter-list-hitcount';
 		}
 
-		if ( AbuseFilterView::canViewPrivate() && !empty( $this->mQuery[0] ) ) {
+		if ( AbuseFilter::canViewPrivate( $user ) && !empty( $this->mQuery[0] ) ) {
 			$headers['af_pattern'] = 'abusefilter-list-pattern';
 		}
 
@@ -114,6 +115,7 @@ class AbuseFilterPager extends TablePager {
 	 */
 	public function formatValue( $name, $value ) {
 		$lang = $this->getLanguage();
+		$user = $this->getUser();
 		$row = $this->mCurrentRow;
 
 		switch ( $name ) {
@@ -214,7 +216,7 @@ class AbuseFilterPager extends TablePager {
 				// Global here is used to determine whether the log entry is for an external, global
 				// filter, but all filters shown on Special:AbuseFilter are local.
 				$global = false;
-				if ( SpecialAbuseLog::canSeeDetails( $row->af_id, $global, $row->af_hidden ) ) {
+				if ( SpecialAbuseLog::canSeeDetails( $user, $row->af_id, $global, $row->af_hidden ) ) {
 					$count_display = $this->msg( 'abusefilter-hitcount' )
 						->numParams( $value )->text();
 					$link = $this->linkRenderer->makeKnownLink(

@@ -147,6 +147,9 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	public function showExaminerForLogEntry( $logid ) {
 		// Get data
 		$dbr = wfGetDB( DB_REPLICA );
+		$user = $this->getUser();
+		$out = $this->getOutput();
+
 		$row = $dbr->selectRow(
 			'abuse_filter_log',
 			[
@@ -158,7 +161,6 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			[ 'afl_id' => $logid ],
 			__METHOD__
 		);
-		$out = $this->getOutput();
 
 		if ( !$row ) {
 			$out->addWikiMsg( 'abusefilter-examine-notfound' );
@@ -166,19 +168,19 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		}
 
 		list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
-		if ( !SpecialAbuseLog::canSeeDetails( $filterID, $global ) ) {
+		if ( !SpecialAbuseLog::canSeeDetails( $user, $filterID, $global ) ) {
 			$out->addWikiMsg( 'abusefilter-log-cannot-see-details' );
 			return;
 		}
 
-		if ( $row->afl_deleted && !SpecialAbuseLog::canSeeHidden() ) {
+		if ( $row->afl_deleted && !SpecialAbuseLog::canSeeHidden( $user ) ) {
 			$out->addWikiMsg( 'abusefilter-log-details-hidden' );
 			return;
 		}
 
 		if ( SpecialAbuseLog::isHidden( $row ) === 'implicit' ) {
 			$rev = Revision::newFromId( $row->afl_rev_id );
-			if ( !$rev->userCan( Revision::SUPPRESSED_ALL, $this->getUser() ) ) {
+			if ( !$rev->userCan( Revision::SUPPRESSED_ALL, $user ) ) {
 				$out->addWikiMsg( 'abusefilter-log-details-hidden-implicit' );
 				return;
 			}
@@ -212,7 +214,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$output->addModules( 'ext.abuseFilter.examine' );
 
 		// Add test bit
-		if ( $this->canViewPrivate() ) {
+		if ( AbuseFilter::canViewPrivate( $this->getUser() ) ) {
 			$tester = Xml::tags( 'h2', null, $this->msg( 'abusefilter-examine-test' )->parse() );
 			$tester .= $this->buildEditBox( $this->mTestFilter, false, false, false );
 			$tester .= $this->buildFilterLoader();

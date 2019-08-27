@@ -54,39 +54,6 @@ abstract class AbuseFilterView extends ContextSource {
 	abstract public function show();
 
 	/**
-	 * @return bool
-	 */
-	public function canEdit() {
-		$block = $this->getUser()->getBlock();
-
-		return (
-			!( $block && $block->isSitewide() ) &&
-			$this->getUser()->isAllowed( 'abusefilter-modify' )
-		);
-	}
-
-	/**
-	 * @return bool
-	 */
-	public function canEditGlobal() {
-		return $this->getUser()->isAllowed( 'abusefilter-modify-global' );
-	}
-
-	/**
-	 * Whether the user can edit the given filter.
-	 *
-	 * @param object $row Filter row
-	 *
-	 * @return bool
-	 */
-	public function canEditFilter( $row ) {
-		return (
-			$this->canEdit() &&
-			!( isset( $row->af_global ) && $row->af_global == 1 && !$this->canEditGlobal() )
-		);
-	}
-
-	/**
 	 * @param string $rules
 	 * @param bool $addResultDiv
 	 * @param bool $externalForm
@@ -101,21 +68,24 @@ abstract class AbuseFilterView extends ContextSource {
 		$needsModifyRights = true
 	) {
 		$this->getOutput()->enableOOUI();
+		$user = $this->getUser();
 
 		// Rules are in English
 		$editorAttribs = [ 'dir' => 'ltr' ];
 
 		$noTestAttrib = [];
 		$isUserAllowed = $needsModifyRights ?
-			$this->getUser()->isAllowed( 'abusefilter-modify' ) :
-			$this->canViewPrivate();
+			$user->isAllowed( 'abusefilter-modify' ) :
+			AbuseFilter::canViewPrivate( $user );
 		if ( !$isUserAllowed ) {
 			$noTestAttrib['disabled'] = 'disabled';
 			$addResultDiv = false;
 		}
 
 		$rules = rtrim( $rules ) . "\n";
-		$canEdit = $needsModifyRights ? $this->canEdit() : $this->canViewPrivate();
+		$canEdit = $needsModifyRights
+			? AbuseFilter::canEdit( $user )
+			: AbuseFilter::canViewPrivate( $user );
 		$switchEditor = null;
 
 		$rulesContainer = '';
@@ -355,19 +325,4 @@ abstract class AbuseFilterView extends ContextSource {
 			$text
 		);
 	}
-
-	/**
-	 * @return bool
-	 */
-	public static function canViewPrivate() {
-		global $wgUser;
-		static $canView = null;
-
-		if ( is_null( $canView ) ) {
-			$canView = $wgUser->isAllowedAny( 'abusefilter-modify', 'abusefilter-view-private' );
-		}
-
-		return $canView;
-	}
-
 }

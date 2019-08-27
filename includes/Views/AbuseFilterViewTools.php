@@ -9,7 +9,7 @@ class AbuseFilterViewTools extends AbuseFilterView {
 		$out->enableOOUI();
 		$request = $this->getRequest();
 
-		if ( !$this->canViewPrivate() ) {
+		if ( !AbuseFilter::canViewPrivate( $this->getUser() ) ) {
 			$out->addWikiMsg( 'abusefilter-mustviewprivateoredit' );
 			return;
 		}
