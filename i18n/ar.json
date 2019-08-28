@@ -463,6 +463,7 @@
 	"abusefilter-exception-dividebyzero": "محاولة غير قانونية لقسمة $2 على صفر عند الحرف $1.",
 	"abusefilter-exception-unrecognisedvar": "متغير غير متعرف عليه $2 عند الحرف $1",
 	"abusefilter-exception-notenoughargs": "لا محددات كافية للدالة $2 المطلوبة عند الحرف $1.\nتوقع $3 {{PLURAL:$3|محدد|محدد}}، حصل على $4",
+	"abusefilter-exception-toomanyargs": " تم استدعاءالعديد من الوسيطات للدالة $2 في الحرف $1.\nمن المتوقع بحد أقصى $3 {{PLURAL:$3|وسيط|وسائط}}، حصلت على $4",
 	"abusefilter-exception-regexfailure": "خطأ في التعبير المنتظم \"$2\" عند الحرف $1.",
 	"abusefilter-exception-overridebuiltin": "تجاوز غير قانوني لمتغير موجود مسبقا \"$2\" عند الحرف $1.",
 	"abusefilter-exception-outofbounds": "طلب عنصر مصفوفة غير موجود $2 (حجم المصفوفة = $3) عند الحرف $1.",

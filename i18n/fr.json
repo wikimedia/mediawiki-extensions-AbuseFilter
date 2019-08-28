@@ -41,7 +41,8 @@
 			"Manu1400",
 			"Alno",
 			"Od1n",
-			"Pols12"
+			"Pols12",
+			"Niridya"
 		]
 	},
 	"abusefilter-desc": "Applique des heuristiques automatiques aux modifications",
@@ -248,7 +249,7 @@
 	"abusefilter-edit-action-blocktalk": "Empêcher l’utilisateur ou l’adresse IP de modifier sa propre page de discussion",
 	"abusefilter-edit-action-throttle": "Déclencher les actions uniquement si l'utilisateur a dépassé un taux limite",
 	"abusefilter-edit-action-rangeblock": "Bloquer la plage IP respective d’où provient l’utilisateur.",
-	"abusefilter-edit-action-tag": "Baliser la modification pour une relecture ultérieure.",
+	"abusefilter-edit-action-tag": "Baliser la modification pour une relecture ultérieure",
 	"abusefilter-edit-throttle-count": "Nombre d'actions autorisées :",
 	"abusefilter-edit-throttle-period": "Laps de temps (en secondes) :",
 	"abusefilter-edit-throttle-groups": "Grouper la modération par :",
@@ -478,6 +479,7 @@
 	"abusefilter-exception-dividebyzero": "Division illégale de $2 par zéro au caractère $1.",
 	"abusefilter-exception-unrecognisedvar": "Variable non reconnue $2 au caractère $1",
 	"abusefilter-exception-notenoughargs": "Pas assez de paramètres pour la fonction $2 appelée au caractère $1.\n$3 {{PLURAL:$3|argument demandé|arguments demandés}}, $4 obtenu{{PLURAL:$4||s}}",
+	"abusefilter-exception-toomanyargs": "Trop d’arguments pour la fonction $2 appelée au caractère $1.\n$3 {{PLURAL:$3|argument|arguments}} au plus attendus, $4 obtenus",
 	"abusefilter-exception-regexfailure": "Erreur dans l'expression régulière « $2 » au caractère $1 .",
 	"abusefilter-exception-overridebuiltin": "Écrasement interdit de la variable disponible par défaut « $2 » au caractère $1.",
 	"abusefilter-exception-outofbounds": "Demande d’élément de tableau $2 inexistant (taille du tableau = $3) au caractère $1.",
@@ -583,6 +585,6 @@
 	"abusefilter-noreason": "Avertissement : Pour voir les détails confidentiels de ce journal, vous devez indiquer un motif.",
 	"abusefilter-log-ip-not-available": "Non disponible",
 	"abusefilter-tag-reserved": "La balise <code>abusefilter-condition-limit</code> est réservée à l'usage interne du filtre anti-abus.",
-	"tag-abusefilter-condition-limit": "limite de condition atteinte",
+	"tag-abusefilter-condition-limit": "Limite de condition atteinte",
 	"tag-abusefilter-condition-limit-description": "Modifications ou autres événements qui ne peuvent pas être vérifiés par tous les [[Special:AbuseFilter|filtres d’abus]] actifs ([[mw:Extension:AbuseFilter/Conditions|aide]])."
 }

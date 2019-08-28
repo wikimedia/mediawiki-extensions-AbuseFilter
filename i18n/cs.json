@@ -453,6 +453,7 @@
 	"abusefilter-exception-dividebyzero": "Neplatný pokus o dělení čísla $2 nulou na pozici $1.",
 	"abusefilter-exception-unrecognisedvar": "Neznámá proměnná $2 na pozici $1",
 	"abusefilter-exception-notenoughargs": "Nedostatek parametrů při volání funkce $2 na pozici $1.\n{{PLURAL:$3|Očekáván 1 parametr|Očekávány $3 parametry|Očekáváno $3 parametrů}}, volání používá $4.",
+	"abusefilter-exception-toomanyargs": "Nedostatek parametrů při volání funkce $2 na pozici $1.\n{{PLURAL:$3|Očekáván nejvýše 1 parametr|Očekávány nejvýše $3 parametry|Očekáváno nejvýše $3 parametrů}}, volání používá $4.",
 	"abusefilter-exception-regexfailure": "Chyba v regulárním výrazu „$2“ na pozici $1.",
 	"abusefilter-exception-overridebuiltin": "Nedovolené předefinování vestavěné proměnné „$2“ na pozici $1.",
 	"abusefilter-exception-outofbounds": "Na pozici $1 požadována neexistující $2. položka pole (velikost pole = $3).",
