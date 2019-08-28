@@ -314,7 +314,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		);
 		$this->tablesUsed = array_merge( $this->tablesUsed, $prefixedTables );
 		$this->user = User::newFromName( 'FilteredUser' );
-		$this->user->addToDatabase();
 		parent::__construct( $name, $data, $dataName );
 	}
 
@@ -325,12 +324,12 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		parent::setUp();
 		// Ensure that our user is not blocked and is a sysop (matched filters could block or
 		// degroup the user)
+		$this->user->addToDatabase();
 		$this->user->addGroup( 'sysop' );
 		$block = DatabaseBlock::newFromTarget( $this->user );
 		if ( $block ) {
 			$block->delete();
 		}
-		$this->user->addToDatabase();
 
 		// Make sure that the config we're using is the one we're expecting
 		$this->setMwGlobals( [
