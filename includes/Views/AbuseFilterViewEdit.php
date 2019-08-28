@@ -31,6 +31,16 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 
 		$filter = $this->mFilter;
+		if ( !is_numeric( $filter ) ) {
+			$out->addHTML(
+				Xml::tags(
+					'p',
+					null,
+					Html::errorBox( $this->msg( 'abusefilter-edit-badfilter' )->parse() )
+				)
+			);
+			return;
+		}
 		$history_id = $this->mHistoryID;
 		if ( $this->mHistoryID ) {
 			$dbr = wfGetDB( DB_REPLICA );
