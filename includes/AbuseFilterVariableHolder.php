@@ -1,8 +1,12 @@
 <?php
 
 class AbuseFilterVariableHolder {
-	/** @var (AFPData|AFComputedVariable)[] */
-	private $mVars = [];
+	/**
+	 * @var (AFPData|AFComputedVariable)[]
+	 * @fixme This should be private, but it isn't because of T231542: there are serialized instances
+	 *  stored in the DB, and mVars wouldn't be available in HHVM after deserializing them (T213006)
+	 */
+	public $mVars = [];
 
 	/** @var bool Whether this object is being used for an ongoing action being filtered */
 	public $forFilter = false;
