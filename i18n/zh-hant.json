@@ -123,6 +123,8 @@
 	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|此使用者}}的濫用日誌",
 	"abusefilter-log-linkonhistory": "檢視濫用日誌",
 	"abusefilter-log-linkonhistory-text": "檢視此頁面的濫用日誌",
+	"abusefilter-log-linkonundelete": "檢視濫用日誌",
+	"abusefilter-log-linkonundelete-text": "檢視此頁面的濫用日誌",
 	"abusefilter-log-hidden-implicit": "（因修訂已被刪除而隱藏）",
 	"abusefilter-log-cannot-see-details": "您沒有權限查看此項目詳細資料。",
 	"abusefilter-log-cannot-see-privatedetails": "您沒有權限查看此項目的非公開詳細資料。",

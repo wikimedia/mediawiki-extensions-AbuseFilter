@@ -106,7 +106,7 @@
 	"abusefilter-topnav-tools": "Alaik debugging",
 	"abusefilter-topnav-import": "Impor panyariang",
 	"abusefilter-log-name": "Log panyariang panyalahgunoan",
-	"abusefilter-log-header": "Log iko barisi ringkasan parubahan nan dilakukan pado panyariang.\nUntuak katarangan langkok, caliak [[Special:AbuseFilter/history|daftar]] parubahan panyariang tabaru.",
+	"abusefilter-log-header": "Log iko barisi ikhtisar parubahan nan dilakukan pado panyariang.\nUntuak katarangan langkok, caliak [[Special:AbuseFilter/history|daftar]] parubahan panyariang tabaru.",
 	"abusefilter-log-noresults": "Indak ado hasil",
 	"abusefilter-diff-title": "Pabedoan antaro versi",
 	"abusefilter-diff-item": "Item",

@@ -94,6 +94,8 @@
 	"abusefilter-log-linkoncontribs-text": "Evidencija zloupotrebe za {{GENDER:$1|ovog korisnika|ovu korisnicu}}",
 	"abusefilter-log-linkonhistory": "vidi dnevnik zloupotrebe",
 	"abusefilter-log-linkonhistory-text": "Pogledajte dnevnik zloupotrebe ove stranice",
+	"abusefilter-log-linkonundelete": "vidi dnevnik zloupotrebe",
+	"abusefilter-log-linkonundelete-text": "Pogledajte dnevnik zloupotrebe ove stranice",
 	"abusefilter-log-hidden-implicit": "(sakriveno jer je izmjena obrisana)",
 	"abusefilter-log-cannot-see-details": "Nemate ovlašćenje da vidite detalje ovog unosa.",
 	"abusefilter-log-cannot-see-privatedetails": "Nemate ovlašćenje da vidite osobni podaci u stavci.",

@@ -83,6 +83,8 @@
 	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|এই ব্যবহারকারীর}} জন্য অপব্যবহার লগ",
 	"abusefilter-log-linkonhistory": "অপব্যবহার লগ দেখুন",
 	"abusefilter-log-linkonhistory-text": "এই পাতার জন্য অপব্যবহার লগ দেখুন",
+	"abusefilter-log-linkonundelete": "অপব্যবহার লগ দেখুন",
+	"abusefilter-log-linkonundelete-text": "এই পাতার জন্য অপব্যবহার লগ দেখুন",
 	"abusefilter-log-cannot-see-details": "আপনার এই ভুক্তির বিস্তারিত দেখার অনুমতি নেই।",
 	"abusefilter-log-cannot-see-privatedetails": "আপনার এই ভুক্তির বিস্তারিত দেখার অনুমতি নেই।",
 	"abusefilter-log-details-hidden": "আপনি এই সংযোজনটি বিস্তারিত দেখতে পারবেন না, কারণ এটি জনসাধারণের প্রদর্শনের থেকে লুকানো রয়েছে।",

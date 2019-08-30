@@ -342,6 +342,7 @@
 	"abusefilter-edit-builder-group-vars": "Zmienne",
 	"abusefilter-edit-builder-vars-accountname": "Nazwa konta (on account creation)",
 	"abusefilter-edit-builder-vars-timestamp": "Unixowy znacznik czasu „timestamp” dla zmiany",
+	"abusefilter-edit-builder-vars-timestamp-expanded": "Przedział czasowy rejestru",
 	"abusefilter-edit-builder-vars-action": "Akcja",
 	"abusefilter-edit-builder-vars-addedlines": "Linie dodane podczas edycji",
 	"abusefilter-edit-builder-vars-delta": "Rozmiar zmiany podczas edycji",
