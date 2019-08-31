@@ -52,6 +52,8 @@
 	"apihelp-query+abuselog-param-wiki": "Вики, чтобы показывать хиты.",
 	"apihelp-query+abuselog-example-1": "Показать последние записи в журнале",
 	"apihelp-query+abuselog-example-2": "Показать последние записи в журнале [[API]]",
+	"apihelp-abuselogprivatedetails-description": "Просмотреть приватные данные записи журнала злоупотреблений.",
+	"apihelp-abuselogprivatedetails-summary": "Просмотреть приватные данные записи журнала злоупотреблений.",
 	"apierror-abusefilter-canttest": "У вас недостаточно прав для проверки фильтров злоупотреблений.",
 	"apierror-abusefilter-cantcheck": "У вас недостаточно прав для проверки синтаксиса фильтра злоупотреблений.",
 	"apierror-abusefilter-nosuchlogid": "Не существует записи в журнале злоупотреблений с идентификатором $1.",
