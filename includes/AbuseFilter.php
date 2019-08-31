@@ -1213,7 +1213,7 @@ class AbuseFilter {
 	/**
 	 * Checks whether user input for the filter editing form is valid and if so saves the filter
 	 *
-	 * @param AbuseFilterViewEdit $page
+	 * @param ContextSource $context
 	 * @param int|string $filter
 	 * @param stdClass $newRow
 	 * @param array $actions
@@ -1221,15 +1221,15 @@ class AbuseFilter {
 	 * @return Status
 	 */
 	public static function saveFilter(
-		AbuseFilterViewEdit $page,
+		ContextSource $context,
 		$filter,
 		$newRow,
 		$actions,
 		IDatabase $dbw
 	) {
 		$validationStatus = Status::newGood();
-		$request = $page->getRequest();
-		$user = $page->getUser();
+		$request = $context->getRequest();
+		$user = $context->getUser();
 
 		// Check the syntax
 		$syntaxerr = self::checkSyntax( $request->getVal( 'wpFilterRules' ) );
@@ -1241,13 +1241,13 @@ class AbuseFilter {
 		$missing = [];
 		if ( !$request->getVal( 'wpFilterRules' ) ||
 			trim( $request->getVal( 'wpFilterRules' ) ) === '' ) {
-			$missing[] = $page->msg( 'abusefilter-edit-field-conditions' )->escaped();
+			$missing[] = $context->msg( 'abusefilter-edit-field-conditions' )->escaped();
 		}
 		if ( !$request->getVal( 'wpFilterDescription' ) ) {
-			$missing[] = $page->msg( 'abusefilter-edit-field-description' )->escaped();
+			$missing[] = $context->msg( 'abusefilter-edit-field-description' )->escaped();
 		}
 		if ( count( $missing ) !== 0 ) {
-			$missing = $page->getLanguage()->commaList( $missing );
+			$missing = $context->getLanguage()->commaList( $missing );
 			$validationStatus->error( 'abusefilter-edit-missingfields', $missing );
 			return $validationStatus;
 		}
@@ -1294,7 +1294,9 @@ class AbuseFilter {
 			}
 		}
 
-		$availableActions = array_keys( array_filter( $page->getConfig()->get( 'AbuseFilterActions' ) ) );
+		$availableActions = array_keys(
+			array_filter( $context->getConfig()->get( 'AbuseFilterActions' ) )
+		);
 		$differences = self::compareVersions(
 			[ $newRow, $actions ],
 			[ $newRow->mOriginalRow, $newRow->mOriginalActions ],
@@ -1333,7 +1335,7 @@ class AbuseFilter {
 		}
 
 		// Check for restricted actions
-		$restrictions = $page->getConfig()->get( 'AbuseFilterRestrictions' );
+		$restrictions = $context->getConfig()->get( 'AbuseFilterRestrictions' );
 		if ( count( array_intersect_key(
 				array_filter( $restrictions ),
 				array_merge( $actions, $origActions )
@@ -1346,7 +1348,7 @@ class AbuseFilter {
 
 		// Everything went fine, so let's save the filter
 		list( $new_id, $history_id ) =
-			self::doSaveFilter( $newRow, $differences, $filter, $actions, $wasGlobal, $page, $dbw );
+			self::doSaveFilter( $newRow, $differences, $filter, $actions, $wasGlobal, $context, $dbw );
 		$validationStatus->setResult( true, [ $new_id, $history_id ] );
 		return $validationStatus;
 	}
@@ -1359,7 +1361,7 @@ class AbuseFilter {
 	 * @param int|string $filter
 	 * @param array $actions
 	 * @param bool $wasGlobal
-	 * @param AbuseFilterViewEdit $page
+	 * @param ContextSource $context
 	 * @param IDatabase $dbw DB_MASTER where the filter will be saved
 	 * @return int[] first element is new ID, second is history ID
 	 */
@@ -1369,10 +1371,10 @@ class AbuseFilter {
 		$filter,
 		$actions,
 		$wasGlobal,
-		AbuseFilterViewEdit $page,
+		ContextSource $context,
 		IDatabase $dbw
 	) {
-		$user = $page->getUser();
+		$user = $context->getUser();
 
 		// Convert from object to array
 		$newRow = get_object_vars( $newRow );
@@ -1410,7 +1412,7 @@ class AbuseFilter {
 			$new_id = $dbw->insertId();
 		}
 
-		$availableActions = $page->getConfig()->get( 'AbuseFilterActions' );
+		$availableActions = $context->getConfig()->get( 'AbuseFilterActions' );
 		$actionsRows = [];
 		foreach ( array_filter( $availableActions ) as $action => $_ ) {
 			// Check if it's set
@@ -1492,7 +1494,7 @@ class AbuseFilter {
 		$subtype = $filter === 'new' ? 'create' : 'modify';
 		$logEntry = new ManualLogEntry( 'abusefilter', $subtype );
 		$logEntry->setPerformer( $user );
-		$logEntry->setTarget( $page->getTitle( $new_id ) );
+		$logEntry->setTarget( SpecialPage::getTitleFor( SpecialAbuseFilter::PAGE_NAME, $new_id ) );
 		$logEntry->setParameters( [
 			'historyId' => $history_id,
 			'newId' => $new_id

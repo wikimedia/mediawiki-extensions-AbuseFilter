@@ -1,6 +1,7 @@
 <?php
 
 class SpecialAbuseFilter extends AbuseFilterSpecialPage {
+	const PAGE_NAME = 'AbuseFilter';
 	/**
 	 * @var int|string|null The current filter
 	 */
@@ -14,7 +15,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 	 * @inheritDoc
 	 */
 	public function __construct() {
-		parent::__construct( 'AbuseFilter', 'abusefilter-view' );
+		parent::__construct( self::PAGE_NAME, 'abusefilter-view' );
 	}
 
 	/**
