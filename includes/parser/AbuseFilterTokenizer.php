@@ -12,7 +12,9 @@ class AbuseFilterTokenizer {
 	const ID_SYMBOL_RE = '/[0-9A-Za-z_]+/A';
 	const OPERATOR_RE =
 		'/(\!\=\=|\!\=|\!|\*\*|\*|\/|\+|\-|%|&|\||\^|\:\=|\?|\:|\<\=|\<|\>\=|\>|\=\=\=|\=\=|\=)/A';
+	/** @deprecated In favour of V2 */
 	const RADIX_RE = '/([0-9A-Fa-f]+(?:\.\d*)?|\.\d+)([bxo])?(?![a-z])/Au';
+	const RADIX_RE_V2 = '/(0[xbo])?([0-9A-Fa-f]+(?:\.\d*)?|\.\d+)/Au';
 	const WHITESPACE = "\011\012\013\014\015\040";
 
 	// Order is important. The punctuation-matching regex requires that
@@ -173,6 +175,21 @@ class AbuseFilterTokenizer {
 		}
 
 		// Numbers
+		$matches2 = [];
+		if ( preg_match( self::RADIX_RE_V2, $code, $matches2, 0, $offset ) ) {
+			// Experimental new syntax for non-decimal numbers, T212730
+			list( $token, $baseChar, $input ) = $matches2;
+			$base = $baseChar ? self::$bases[$baseChar] : 10;
+			if ( $base !== 10 && preg_match( self::$baseCharsRe[$base], $input ) ) {
+				// Only report success for now
+				$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+				$logger->info(
+					'Successfully parsed a non-decimal number with new syntax. ' .
+					'Base: {number_base}, number: {number_input}',
+					[ 'number_base' => $base, 'number_input' => $input ]
+				);
+			}
+		}
 		if ( preg_match( self::RADIX_RE, $code, $matches, 0, $offset ) ) {
 			list( $token, $input ) = $matches;
 			$baseChar = $matches[2] ?? null;
@@ -190,9 +207,9 @@ class AbuseFilterTokenizer {
 
 			if ( preg_match( self::$baseCharsRe[$base], $input ) ) {
 				if ( $base !== 10 ) {
-					// Our syntax is awful. Keep track of every use, and possibly change it!
+					// Old syntax, this is deprecated
 					$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-					$logger->info(
+					$logger->warning(
 						'Found non-decimal number. Base: {number_base}, number: {number_input}',
 						[ 'number_base' => $base, 'number_input' => $input ]
 					);
