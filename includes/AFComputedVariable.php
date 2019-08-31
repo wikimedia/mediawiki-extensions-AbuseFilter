@@ -242,8 +242,14 @@ class AFComputedVariable {
 						$editInfo = $article->prepareContentForEdit( $content );
 						$links = array_keys( $editInfo->output->getExternalLinks() );
 					} catch ( BadMethodCallException $e ) {
+						// This is for HHVM
 						$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-						$logger->warning( 'Caught BadMethodCallException - T187153' );
+						$logger->warning( 'Caught BadMethodCallException, case 1 - T187153' );
+						$links = [];
+					} catch ( Error $e ) {
+						// This is for PHP7
+						$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+						$logger->warning( 'Caught Error, case 1 - T187153' );
 						$links = [];
 					}
 					$result = $links;
@@ -318,6 +324,15 @@ class AFComputedVariable {
 						// @fixme TEMPORARY WORKAROUND FOR T187153
 						$editInfo = $article->prepareContentForEdit( $content );
 					} catch ( BadMethodCallException $e ) {
+						// This is for HHVM
+						$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+						$logger->warning( 'Caught BadMethodCallException, case 2 - T187153' );
+						$result = '';
+						break;
+					} catch ( Error $e ) {
+						// This is for PHP7
+						$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+						$logger->warning( 'Caught Error, case 2 - T187153' );
 						$result = '';
 						break;
 					}
