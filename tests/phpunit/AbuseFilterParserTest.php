@@ -56,7 +56,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 * @return Generator|array
 	 */
 	public function readTests() {
-		$testPath = __DIR__ . "/../../parserTests";
+		$testPath = __DIR__ . "/../parserTests";
 		$testFiles = glob( $testPath . "/*.t" );
 
 		foreach ( $testFiles as $testFile ) {

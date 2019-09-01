@@ -23,7 +23,7 @@
 /**
  * Helper for parser-related tests
  */
-abstract class AbuseFilterParserTestCase extends MediaWikiUnitTestCase {
+abstract class AbuseFilterParserTestCase extends MediaWikiIntegrationTestCase {
 	/**
 	 * @return AbuseFilterParser[]
 	 */
