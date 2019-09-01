@@ -580,7 +580,7 @@ class AbuseFilter {
 
 	/**
 	 * @param string[] $filters
-	 * @return array[]
+	 * @return array[][]
 	 */
 	public static function getConsequencesForFilters( $filters ) {
 		$globalFilters = [];
@@ -620,7 +620,7 @@ class AbuseFilter {
 	 * @param IDatabase $dbr
 	 * @param string[] $filters
 	 * @param string $prefix
-	 * @return array[]
+	 * @return array[][]
 	 */
 	public static function loadConsequencesFromDB( IDatabase $dbr, $filters, $prefix = '' ) {
 		$actionsByFilter = [];

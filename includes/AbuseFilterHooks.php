@@ -160,7 +160,7 @@ class AbuseFilterHooks {
 			AFComputedVariable::$articleCache[$articleCacheKey] = $page;
 
 			// Don't trigger for null edits.
-			if ( $content && $oldContent ) {
+			if ( $oldContent ) {
 				// Compare Content objects if available
 				if ( $content->equals( $oldContent ) ) {
 					return null;
@@ -327,7 +327,7 @@ class AbuseFilterHooks {
 		$flags, Revision $revision, Status $status, $baseRevId
 	) {
 		$curTitle = $wikiPage->getTitle()->getPrefixedText();
-		if ( !isset( AbuseFilter::$logIds[ $curTitle ] ) || !$revision ||
+		if ( !isset( AbuseFilter::$logIds[ $curTitle ] ) ||
 			$wikiPage !== self::$lastEditPage
 		) {
 			// This isn't the edit AbuseFilter::$logIds was set for
