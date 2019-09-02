@@ -175,6 +175,7 @@ class AFComputedVariable {
 
 		if ( !Hooks::run( 'AbuseFilter-interceptVariable',
 							[ $this->mMethod, $vars, $parameters, &$result ] ) ) {
+			// @phan-suppress-next-line PhanImpossibleCondition False positive due to hook reference
 			return $result instanceof AFPData
 				? $result : AFPData::newFromPHPVar( $result );
 		}

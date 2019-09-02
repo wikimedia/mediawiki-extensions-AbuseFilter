@@ -478,6 +478,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				}
 			}
 
+			// @phan-suppress-next-line PhanImpossibleCondition
 			if ( $foundInvalid ) {
 				$out->addHTML(
 					Html::rawElement(
