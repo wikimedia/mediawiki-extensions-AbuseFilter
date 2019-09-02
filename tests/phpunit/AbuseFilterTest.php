@@ -35,7 +35,7 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @covers AbuseFilterVariableHolder
  * @covers AFComputedVariable
  */
-class AbuseFilterTest extends MediaWikiUnitTestCase {
+class AbuseFilterTest extends MediaWikiIntegrationTestCase {
 	/** A fake timestamp to use in several time-related tests. */
 	const FAKE_TIME = 1514700000;
 

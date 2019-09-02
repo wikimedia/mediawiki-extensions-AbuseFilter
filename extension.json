@@ -171,7 +171,7 @@
 		"ApiAbuseLogPrivateDetails": "includes/api/ApiAbuseLogPrivateDetails.php",
 		"NormalizeThrottleParameters": "maintenance/normalizeThrottleParameters.php",
 		"AbuseFilterConsequencesTest": "tests/phpunit/AbuseFilterConsequencesTest.php",
-		"AbuseFilterParserTestCase": "tests/phpunit/unit/AbuseFilterParserTestCase.php",
+		"AbuseFilterParserTestCase": "tests/phpunit/AbuseFilterParserTestCase.php",
 		"FixOldLogEntries": "maintenance/fixOldLogEntries.php"
 	},
 	"ResourceModules": {
