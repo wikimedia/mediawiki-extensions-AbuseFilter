@@ -1,6 +1,6 @@
 <?php
 
-use MediaWiki\Logger\LoggerFactory;
+use Psr\Log\LoggerInterface;
 
 /**
  * Tokenizer for AbuseFilter rules.
@@ -74,10 +74,17 @@ class AbuseFilterTokenizer {
 	private $cache;
 
 	/**
-	 * @param BagOStuff $cache
+	 * @var LoggerInterface
 	 */
-	public function __construct( BagOStuff $cache ) {
+	private $logger;
+
+	/**
+	 * @param BagOStuff $cache
+	 * @param LoggerInterface $logger
+	 */
+	public function __construct( BagOStuff $cache, LoggerInterface $logger ) {
 		$this->cache = $cache;
+		$this->logger = $logger;
 	}
 
 	/**
@@ -102,7 +109,7 @@ class AbuseFilterTokenizer {
 			$this->getCacheKey( $code ),
 			BagOStuff::TTL_DAY,
 			function () use ( $code ) {
-				return self::tokenize( $code );
+				return $this->tokenize( $code );
 			}
 		);
 
@@ -113,13 +120,13 @@ class AbuseFilterTokenizer {
 	 * @param string $code
 	 * @return array[]
 	 */
-	private static function tokenize( $code ) {
+	private function tokenize( $code ) {
 		$tokens = [];
 		$curPos = 0;
 
 		do {
 			$prevPos = $curPos;
-			$token = self::nextToken( $code, $curPos );
+			$token = $this->nextToken( $code, $curPos );
 			$tokens[ $token->pos ] = [ $token, $curPos ];
 		} while ( $curPos !== $prevPos );
 
@@ -133,7 +140,7 @@ class AbuseFilterTokenizer {
 	 * @throws AFPException
 	 * @throws AFPUserVisibleException
 	 */
-	private static function nextToken( $code, &$offset ) {
+	private function nextToken( $code, &$offset ) {
 		$matches = [];
 		$start = $offset;
 
@@ -182,8 +189,7 @@ class AbuseFilterTokenizer {
 			$base = $baseChar ? self::$bases[$baseChar] : 10;
 			if ( $base !== 10 && preg_match( self::$baseCharsRe[$base], $input ) ) {
 				// Only report success for now
-				$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-				$logger->info(
+				$this->logger->info(
 					'Successfully parsed a non-decimal number with new syntax. ' .
 					'Base: {number_base}, number: {number_input}',
 					[ 'number_base' => $base, 'number_input' => $input ]
@@ -208,8 +214,7 @@ class AbuseFilterTokenizer {
 			if ( preg_match( self::$baseCharsRe[$base], $input ) ) {
 				if ( $base !== 10 ) {
 					// Old syntax, this is deprecated
-					$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-					$logger->warning(
+					$this->logger->warning(
 						'Found non-decimal number. Base: {number_base}, number: {number_input}',
 						[ 'number_base' => $base, 'number_input' => $input ]
 					);

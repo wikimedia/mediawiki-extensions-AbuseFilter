@@ -20,35 +20,27 @@
  * @license GPL-2.0-or-later
  */
 
+use PHPUnit\Framework\MockObject\MockObject;
+
 /**
  * Helper for parser-related tests
  */
-abstract class AbuseFilterParserTestCase extends MediaWikiIntegrationTestCase {
+abstract class AbuseFilterParserTestCase extends MediaWikiUnitTestCase {
 	/**
 	 * @return AbuseFilterParser[]
 	 */
 	protected function getParsers() {
-		static $parsers = null;
-		if ( !$parsers ) {
-			// We're not interested in caching or logging; tests should call respectively setCache
-			// and setLogger if they want to test any of those.
-			$contLang = new LanguageEn();
-			$cache = new EmptyBagOStuff();
-			$logger = new \Psr\Log\NullLogger();
+		// We're not interested in caching or logging; tests should call respectively setCache
+		// and setLogger if they want to test any of those.
+		$contLang = $this->getLanguageMock();
+		$cache = new EmptyBagOStuff();
+		$logger = new \Psr\Log\NullLogger();
 
-			$parser = new AbuseFilterParser( $contLang, $cache, $logger );
-			$parser->toggleConditionLimit( false );
-			$cachingParser = new AbuseFilterCachingParser( $contLang, $cache, $logger );
-			$cachingParser->toggleConditionLimit( false );
-			$parsers = [ $parser, $cachingParser ];
-		} else {
-			// Reset so that already executed tests don't influence new ones
-			$parsers[0]->resetState();
-			$parsers[0]->clearFuncCache();
-			$parsers[1]->resetState();
-			$parsers[1]->clearFuncCache();
-		}
-		return $parsers;
+		$parser = new AbuseFilterParser( $contLang, $cache, $logger );
+		$parser->toggleConditionLimit( false );
+		$cachingParser = new AbuseFilterCachingParser( $contLang, $cache, $logger );
+		$cachingParser->toggleConditionLimit( false );
+		return [ $parser, $cachingParser ];
 	}
 
 	/**
@@ -76,5 +68,27 @@ abstract class AbuseFilterParserTestCase extends MediaWikiIntegrationTestCase {
 
 			$this->fail( "Exception $excep not thrown in $caller. Parser: $pname." );
 		}
+	}
+
+	/**
+	 * Get a mock of LanguageEn with only the methods we need in the parser
+	 *
+	 * @return Language|MockObject
+	 */
+	protected function getLanguageMock() {
+		$lang = $this->getMockBuilder( LanguageEn::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$lang->expects( $this->any() )
+			->method( 'uc' )
+			->willReturnCallback( function ( $x ) {
+				return mb_strtoupper( $x );
+			} );
+		$lang->expects( $this->any() )
+			->method( 'lc' )
+			->willReturnCallback( function ( $x ) {
+				return mb_strtolower( $x );
+			} );
+		return $lang;
 	}
 }

@@ -56,7 +56,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 * @return Generator|array
 	 */
 	public function readTests() {
-		$testPath = __DIR__ . "/../parserTests";
+		$testPath = __DIR__ . "/../../parserTests";
 		$testFiles = glob( $testPath . "/*.t" );
 
 		foreach ( $testFiles as $testFile ) {
@@ -679,7 +679,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 		$code = "if ( 1==1 ) then ( 1 ) else ( $funcCode ) end;";
 		// AbuseFilterParser skips the parentheses altogether, so this is not supposed to work
 		$parser = new AbuseFilterCachingParser(
-			new LanguageEn(),
+			$this->getLanguageMock(),
 			new EmptyBagOStuff(),
 			new NullLogger()
 		);
@@ -925,7 +925,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 		/** @var PHPUnit\Framework\MockObject\MockObject|AbuseFilterParser $mock */
 		$mock = $this->getMockBuilder( AbuseFilterParser::class )
 			->setConstructorArgs(
-				[ new LanguageEn(), new EmptyBagOStuff(), new NullLogger() ]
+				[ $this->getLanguageMock(), new EmptyBagOStuff(), new NullLogger() ]
 			)
 			->setMethods( [ 'logEmptyOperand' ] )
 			->getMock();

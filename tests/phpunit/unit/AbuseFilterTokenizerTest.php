@@ -119,7 +119,7 @@ class AbuseFilterTokenizerTest extends AbuseFilterParserTestCase {
 	 */
 	public function testCaching( $code ) {
 		$cache = new HashBagOStuff();
-		$tokenizer = new AbuseFilterTokenizer( $cache );
+		$tokenizer = new AbuseFilterTokenizer( $cache, new Psr\Log\NullLogger() );
 
 		$key = $tokenizer->getCacheKey( $code );
 

@@ -392,7 +392,7 @@ class AbuseFilterParser {
 	 */
 	public function intEval( $code ) {
 		// Reset all class members to their default value
-		$tokenizer = new AbuseFilterTokenizer( $this->cache );
+		$tokenizer = new AbuseFilterTokenizer( $this->cache, $this->logger );
 		$this->mTokens = $tokenizer->getTokens( $code );
 		$this->mPos = 0;
 		$this->mShortCircuit = false;

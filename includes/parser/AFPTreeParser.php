@@ -120,7 +120,7 @@ class AFPTreeParser {
 	 * @return AFPSyntaxTree
 	 */
 	public function parse( $code ) : AFPSyntaxTree {
-		$tokenizer = new AbuseFilterTokenizer( $this->cache );
+		$tokenizer = new AbuseFilterTokenizer( $this->cache, $this->logger );
 		$this->mTokens = $tokenizer->getTokens( $code );
 		$this->mPos = 0;
 
