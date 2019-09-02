@@ -75,7 +75,7 @@ abstract class AbuseFilterView extends ContextSource {
 
 		$noTestAttrib = [];
 		$isUserAllowed = $needsModifyRights ?
-			$user->isAllowed( 'abusefilter-modify' ) :
+			AbuseFilter::canEdit( $user ) :
 			AbuseFilter::canViewPrivate( $user );
 		if ( !$isUserAllowed ) {
 			$noTestAttrib['disabled'] = 'disabled';
@@ -83,9 +83,6 @@ abstract class AbuseFilterView extends ContextSource {
 		}
 
 		$rules = rtrim( $rules ) . "\n";
-		$canEdit = $needsModifyRights
-			? AbuseFilter::canEdit( $user )
-			: AbuseFilter::canViewPrivate( $user );
 		$switchEditor = null;
 
 		$rulesContainer = '';
@@ -108,13 +105,13 @@ abstract class AbuseFilterView extends ContextSource {
 			$rulesContainer .= Xml::element( 'div', $attribs, $rules );
 
 			// Add Ace configuration variable
-			$editorConfig = AbuseFilter::getAceConfig( $canEdit );
+			$editorConfig = AbuseFilter::getAceConfig( $isUserAllowed );
 			$this->getOutput()->addJsConfigVars( 'aceConfig', $editorConfig );
 		}
 
 		// Build a dummy textarea to be used: for submitting form if CodeEditor isn't installed,
 		// and in case JS is disabled (with or without CodeEditor)
-		if ( !$canEdit ) {
+		if ( !$isUserAllowed ) {
 			$editorAttribs['readonly'] = 'readonly';
 		}
 		if ( $externalForm ) {
@@ -122,7 +119,7 @@ abstract class AbuseFilterView extends ContextSource {
 		}
 		$rulesContainer .= Xml::textarea( 'wpFilterRules', $rules, 40, 15, $editorAttribs );
 
-		if ( $canEdit ) {
+		if ( $isUserAllowed ) {
 			// Generate builder drop-down
 			$rawDropDown = AbuseFilter::getBuilderValues();
 

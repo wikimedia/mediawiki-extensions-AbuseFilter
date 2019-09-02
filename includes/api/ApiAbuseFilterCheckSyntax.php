@@ -7,7 +7,7 @@ class ApiAbuseFilterCheckSyntax extends ApiBase {
 	 */
 	public function execute() {
 		// "Anti-DoS"
-		if ( !$this->getUser()->isAllowedAny( 'abusefilter-modify', 'abusefilter-view-private' ) ) {
+		if ( !AbuseFilter::canViewPrivate( $this->getUser() ) ) {
 			$this->dieWithError( 'apierror-abusefilter-cantcheck', 'permissiondenied' );
 		}
 

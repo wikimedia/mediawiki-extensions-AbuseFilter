@@ -26,9 +26,8 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			$out->setPageTitle( $this->msg( 'abusefilter-filter-log' ) );
 		}
 
-		// Check perms. abusefilter-modify is a superset of abusefilter-view-private
 		if ( $filter && AbuseFilter::filterHidden( $filter )
-			&& !$this->getUser()->isAllowedAny( 'abusefilter-modify', 'abusefilter-view-private' )
+			&& !AbuseFilter::canViewPrivate( $this->getUser() )
 		) {
 			$out->addWikiMsg( 'abusefilter-history-error-hidden' );
 			return;

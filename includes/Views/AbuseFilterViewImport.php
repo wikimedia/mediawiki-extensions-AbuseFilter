@@ -6,7 +6,7 @@ class AbuseFilterViewImport extends AbuseFilterView {
 	 */
 	public function show() {
 		$out = $this->getOutput();
-		if ( !$this->getUser()->isAllowed( 'abusefilter-modify' ) ) {
+		if ( !AbuseFilter::canEdit( $this->getUser() ) ) {
 			$out->addWikiMsg( 'abusefilter-edit-notallowed' );
 			return;
 		}

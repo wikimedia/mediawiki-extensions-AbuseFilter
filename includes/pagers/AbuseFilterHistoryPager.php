@@ -178,9 +178,7 @@ class AbuseFilterHistoryPager extends TablePager {
 			$info['conds']['afh_filter'] = $this->mFilter;
 		}
 
-		if ( !$this->getUser()->isAllowedAny(
-			'abusefilter-modify', 'abusefilter-view-private' )
-		) {
+		if ( !AbuseFilter::canViewPrivate( $this->getUser() ) ) {
 			// Hide data the user can't see.
 			$info['conds']['af_hidden'] = 0;
 		}
