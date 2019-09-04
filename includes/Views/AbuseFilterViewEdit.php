@@ -31,7 +31,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 
 		$filter = $this->mFilter;
-		if ( !is_numeric( $filter ) ) {
+		if ( !is_numeric( $filter ) && $filter !== 'new' ) {
 			$out->addHTML(
 				Xml::tags(
 					'p',
