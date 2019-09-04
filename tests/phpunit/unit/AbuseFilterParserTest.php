@@ -903,6 +903,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ "var:= 5; added_lines contains var" ],
 			[ "false & (var := [ 1,2,3 ]); var === [ 1,2,3 ]" ],
 			[ "page_age - user_editcount !== 1234567 - page_namespace" ],
+			[ "added_lines contains 'foo' ? 'foo' : false" ],
 			// Refuse to modify a DUNDEFINED offset as if it were an array
 			[ "false & (var := [ 1,2,3 ]); var[0] := true; var[0] === true" ],
 			[ "false & (var := [ 1,2,3 ]); var[] := 'baz'; 'baz' in var" ],

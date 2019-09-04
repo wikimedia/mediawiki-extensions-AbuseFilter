@@ -559,7 +559,7 @@ class AbuseFilterParser {
 			$r1 = new AFPData( AFPData::DEMPTY );
 			$r2 = new AFPData( AFPData::DEMPTY );
 
-			$isTrue = $result->toBool();
+			$isTrue = $result->getType() === AFPData::DUNDEFINED ? false : $result->toBool();
 
 			if ( !$isTrue ) {
 				$scOrig = wfSetVar( $this->mShortCircuit, $this->mAllowShort, true );
@@ -602,7 +602,8 @@ class AbuseFilterParser {
 			}
 			$this->move();
 
-			if ( $result->toBool() ) {
+			$isTrue = $result->getType() === AFPData::DUNDEFINED ? false : $result->toBool();
+			if ( $isTrue ) {
 				$result = $r1;
 			} else {
 				$result = $r2;
@@ -614,7 +615,7 @@ class AbuseFilterParser {
 				$r1 = new AFPData( AFPData::DEMPTY );
 				$r2 = new AFPData( AFPData::DEMPTY );
 
-				$isTrue = $result->toBool();
+				$isTrue = $result->getType() === AFPData::DUNDEFINED ? false : $result->toBool();
 
 				if ( !$isTrue ) {
 					$scOrig = wfSetVar( $this->mShortCircuit, $this->mAllowShort, true );

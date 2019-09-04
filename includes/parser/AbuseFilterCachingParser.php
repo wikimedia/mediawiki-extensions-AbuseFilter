@@ -257,7 +257,8 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 			case AFPTreeNode::CONDITIONAL:
 				list( $condition, $valueIfTrue, $valueIfFalse ) = $node->children;
 				$condition = $this->evalNode( $condition );
-				if ( $condition->toBool() ) {
+				$isTrue = $condition->getType() === AFPData::DUNDEFINED ? false : $condition->toBool();
+				if ( $isTrue ) {
 					if ( $valueIfFalse !== null ) {
 						$this->discardWithHoisting( $valueIfFalse );
 					}
