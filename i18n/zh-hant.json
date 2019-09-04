@@ -38,7 +38,7 @@
 			"Sanmosa"
 		]
 	},
-	"abusefilter-desc": "套用自動啟發式演算法於編輯",
+	"abusefilter-desc": "對編輯行為自動進行條件判定",
 	"abusefilter": "防濫用過濾器設定",
 	"abuselog": "濫用日誌",
 	"abusefilter-intro": "歡迎使用防濫用過濾器管理介面。防濫用過濾器是針對所有編輯動作進行自動化判斷的軟體機制。本介面包含了現有的過濾器清單並允許修改。",

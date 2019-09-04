@@ -52,7 +52,8 @@
 			"Agusbou2015",
 			"Jelou",
 			"Tiberius1701",
-			"Marcelo9987"
+			"Marcelo9987",
+			"PoLuX124"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas a las ediciones",
@@ -139,6 +140,7 @@
 	"abusefilter-log-linkoncontribs-text": "Registro del filtro antiabusos de {{GENDER:$1|este usuario|esta usuaria}}",
 	"abusefilter-log-linkonhistory": "ver registro de abusos",
 	"abusefilter-log-linkonhistory-text": "Ver el registro de abusos de esta página",
+	"abusefilter-log-linkonundelete": "ver registro de abusos",
 	"abusefilter-log-hidden-implicit": "(oculto porque se ha eliminado la revisión)",
 	"abusefilter-log-cannot-see-details": "No tienes permiso para ver los detalles de esta entrada.",
 	"abusefilter-log-cannot-see-privatedetails": "No tienes permiso para ver los detalles privados de esta entrada.",

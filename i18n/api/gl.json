@@ -3,7 +3,8 @@
 		"authors": [
 			"Banjo",
 			"Elisardojm",
-			"Navhy"
+			"Navhy",
+			"Iváns"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Revise se un AbuseFilter concorda cun conxunto de variables, evento de rexistro de editor AbuseFilter.\n\nvars, rcid ou logid se necesita aínda que só un pode ser usado.",
