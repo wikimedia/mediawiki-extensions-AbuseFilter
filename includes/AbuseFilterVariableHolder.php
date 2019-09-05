@@ -1,6 +1,17 @@
 <?php
 
+use Psr\Log\LoggerInterface;
+
 class AbuseFilterVariableHolder {
+	/**
+	 * Used in self::getVar() to determine what to do if the requested variable is missing
+	 */
+	const GET_LAX = 0;
+	const GET_STRICT = 1;
+
+	/** @var LoggerInterface */
+	private $logger;
+
 	/**
 	 * @var (AFPData|AFComputedVariable)[]
 	 * @fixme This should be private, but it isn't because of T231542: there are serialized instances
@@ -16,6 +27,20 @@ class AbuseFilterVariableHolder {
 	 *    afl_var_dump which still bears old variables.
 	 */
 	public $mVarsVersion = 2;
+
+	/**
+	 * To avoid injecting a logger directly, since it's here only temporarily.
+	 */
+	public function __construct() {
+		$this->logger = new Psr\Log\NullLogger();
+	}
+
+	/**
+	 * @param LoggerInterface $logger
+	 */
+	public function setLogger( LoggerInterface $logger ) {
+		$this->logger = $logger;
+	}
 
 	/**
 	 * Utility function to translate an array with shape [ varname => value ] into a self instance
@@ -77,16 +102,25 @@ class AbuseFilterVariableHolder {
 	 * Get a variable from the current object
 	 *
 	 * @param string $varName The variable name
+	 * @param int $flags If self::GET_STRICT is set, this will throw if
+	 *   the requested variable is not set. Otherwise it will return a DUNDEFINED AFPData.
+	 *   NOTE: For now, it will return DUNDEFINED even with GET_STRICT.
 	 * @return AFPData
 	 */
-	public function getVar( $varName ) {
+	public function getVar( $varName, $flags = self::GET_STRICT ) : AFPData {
 		$varName = strtolower( $varName );
 		if ( $this->mVarsVersion === 1 && in_array( $varName, AbuseFilter::getDeprecatedVariables() ) ) {
 			// Variables are stored with old names, but the parser has given us
 			// a new name. Translate it back.
 			$varName = array_search( $varName, AbuseFilter::getDeprecatedVariables() );
 		}
-		if ( isset( $this->mVars[$varName] ) ) {
+		if ( array_key_exists( $varName, AbuseFilter::$disabledVars ) ) {
+			$this->logger->warning(
+				"Disabled variable $varName requested. Please fix the filter as this will be removed soon."
+			);
+		}
+
+		if ( $this->varIsSet( $varName ) ) {
 			/** @var $variable AFComputedVariable|AFPData */
 			$variable = $this->mVars[$varName];
 			if ( $variable instanceof AFComputedVariable ) {
@@ -95,12 +129,18 @@ class AbuseFilterVariableHolder {
 				return $value;
 			} elseif ( $variable instanceof AFPData ) {
 				return $variable;
+			} else {
+				throw new UnexpectedValueException(
+					"Variable $varName has unexpected type " . gettype( $variable )
+				);
 			}
-		} elseif ( array_key_exists( $varName, AbuseFilter::$disabledVars ) ) {
-			wfWarn( "Disabled variable $varName requested. Please fix the filter as this will " .
-				"be removed soon." );
+		} elseif ( !( $flags & self::GET_STRICT ) ) {
+			return new AFPData( AFPData::DUNDEFINED );
+		} else {
+			$this->logger->warning( __METHOD__ . ": requested unset variable $varName in strict mode" );
+			// @todo change the line below to throw an exception in a future MW version
+			return new AFPData( AFPData::DUNDEFINED );
 		}
-		return new AFPData( AFPData::DUNDEFINED );
 	}
 
 	/**

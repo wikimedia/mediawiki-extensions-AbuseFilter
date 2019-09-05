@@ -74,6 +74,7 @@ class AbuseFilterRunner {
 		$this->user = $user;
 		$this->title = $title;
 		$this->vars = $vars;
+		$this->vars->setLogger( LoggerFactory::getInstance( 'AbuseFilter' ) );
 		$this->group = $group;
 	}
 
@@ -940,7 +941,7 @@ class AbuseFilterRunner {
 					// Pull the groups from the VariableHolder, so that they will always be computed.
 					// This allow us to pull the groups from the VariableHolder to undo the degroup
 					// via Special:AbuseFilter/revert.
-					$groups = $this->vars->getVar( 'user_groups' );
+					$groups = $this->vars->getVar( 'user_groups', AbuseFilterVariableHolder::GET_LAX );
 					if ( $groups->type !== AFPData::DARRAY ) {
 						// Somehow, the variable wasn't set
 						$groups = $this->user->getEffectiveGroups();

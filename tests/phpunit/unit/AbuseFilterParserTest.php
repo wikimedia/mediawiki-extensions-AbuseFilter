@@ -277,8 +277,8 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 */
 	public function unrecognisedVar() {
 		return [
-			[ 'a[1] := 5', 'doLevelSet' ],
-			[ 'a[] := 5', 'doLevelSet' ],
+			[ 'a[1] := 5', 'getVarValue' ],
+			[ 'a[] := 5', 'getVarValue' ],
 			[ 'a = 5', 'getVarValue' ],
 			[ 'false & ( nonexistent[1] := 2 )', 'skipOverBraces/discardWithHoisting' ],
 			[ 'false & ( nonexistent[] := 2 )', 'skipOverBraces/discardWithHoisting' ],

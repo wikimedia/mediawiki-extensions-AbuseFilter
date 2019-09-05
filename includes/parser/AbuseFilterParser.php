@@ -43,6 +43,10 @@ class AbuseFilterParser {
 	 * @var string|null The ID of the filter being parsed, if available. Can also be "global-$ID"
 	 */
 	protected $mFilter;
+	/**
+	 * @var bool Whether we can allow retrieving _builtin_ variables not included in $this->mVariables
+	 */
+	protected $allowMissingVariables = false;
 
 	/**
 	 * @var BagOStuff Used to cache the AST (in CachingParser) and the tokens
@@ -174,6 +178,7 @@ class AbuseFilterParser {
 		if ( $vars ) {
 			$this->mVariables = $vars;
 		}
+		$this->mVariables->setLogger( $logger );
 	}
 
 	/**
@@ -268,6 +273,7 @@ class AbuseFilterParser {
 	 *  and character position of the syntax error
 	 */
 	public function checkSyntax( $filter ) {
+		$this->allowMissingVariables = true;
 		$origAS = $this->mAllowShort;
 		try {
 			$this->mAllowShort = false;
@@ -276,6 +282,7 @@ class AbuseFilterParser {
 			return [ $excep->getMessageObj()->text(), $excep->mPosition ];
 		} finally {
 			$this->mAllowShort = $origAS;
+			$this->allowMissingVariables = false;
 		}
 
 		return true;
@@ -465,13 +472,7 @@ class AbuseFilterParser {
 			} elseif ( $this->mCur->type === AFPToken::TSQUAREBRACKET && $this->mCur->value === '[' ) {
 				// We allow builtin variables to both check for override (e.g. added_lines[] :='x')
 				// and for T198531
-				if ( !$this->varExists( $varname ) ) {
-					throw new AFPUserVisibleException( 'unrecognisedvar',
-						$this->mCur->pos,
-						[ $varname ]
-					);
-				}
-				$array = $this->mVariables->getVar( $varname );
+				$array = $this->getVarValue( $varname );
 				if ( $array->getType() !== AFPData::DARRAY && $array->getType() !== AFPData::DUNDEFINED ) {
 					throw new AFPUserVisibleException( 'notarray', $this->mCur->pos, [] );
 				}
@@ -1118,7 +1119,8 @@ class AbuseFilterParser {
 	/* End of levels */
 
 	/**
-	 * Check whether a variable exists, being either built-in or user-defined
+	 * Check whether a variable exists, being either built-in or user-defined. Doesn't include
+	 * disabled variables.
 	 *
 	 * @param string $varname
 	 * @return bool
@@ -1141,24 +1143,28 @@ class AbuseFilterParser {
 
 		if ( array_key_exists( $var, $deprecatedVars ) ) {
 			$this->logger->debug( "AbuseFilter: deprecated variable $var used." );
-			$var = $deprecatedVars[$var];
+			$var = $deprecatedVars[ $var ];
 		}
-		if ( !$this->varExists( $var ) ) {
-			$msg = array_key_exists( $var, AbuseFilter::$disabledVars ) ?
-				'disabledvar' :
-				'unrecognisedvar';
-			// If the variable is invalid, throw an exception
+		if ( array_key_exists( $var, AbuseFilter::$disabledVars ) ) {
 			throw new AFPUserVisibleException(
-			// Coverage bug
-			// @codeCoverageIgnoreStart
-				$msg,
-				// @codeCoverageIgnoreEnd
+				'disabledvar',
 				$this->mCur->pos,
 				[ $var ]
 			);
-		} else {
-			return $this->mVariables->getVar( $var );
 		}
+		if ( !$this->varExists( $var ) ) {
+			throw new AFPUserVisibleException(
+				'unrecognisedvar',
+				$this->mCur->pos,
+				[ $var ]
+			);
+		}
+
+		// It's a built-in, non-disabled variable (either set or unset), or a set custom variable
+		$flags = $this->allowMissingVariables
+			? AbuseFilterVariableHolder::GET_LAX
+			: AbuseFilterVariableHolder::GET_STRICT;
+		return $this->mVariables->getVar( $var, $flags );
 	}
 
 	/**
