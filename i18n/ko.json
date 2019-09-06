@@ -395,7 +395,7 @@
 	"abusefilter-edit-builder-vars-added-links": "편집 중 추가된 모든 외부 링크",
 	"abusefilter-edit-builder-vars-removed-links": "편집 중 제거된 모든 외부 링크",
 	"abusefilter-edit-builder-vars-old-wikitext": "편집 전 과거 문서의 위키텍스트",
-	"abusefilter-edit-builder-vars-new-wikitext": "편집 후 문서의 내용 (위키문법)",
+	"abusefilter-edit-builder-vars-new-wikitext": "편집 후 새 문서의 위키텍스트",
 	"abusefilter-edit-builder-vars-new-pst": "새 문서 위키 텍스트, 변환을 미리 저장",
 	"abusefilter-edit-builder-vars-diff-pst": "편집으로 인한 바뀐 내용의 차이가 통합됨, 미리 저장 변형됨",
 	"abusefilter-edit-builder-vars-addedlines-pst": "줄이 편집 중 추가됨, 미리 저장 변형됨",
