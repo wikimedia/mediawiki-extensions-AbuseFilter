@@ -958,8 +958,9 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ '1**', 'power operand' ],
 			[ '"string" contains', 'keyword operand' ],
 			[ '1 in', 'keyword operand' ],
-			[ "contains_any('a','b','c',)", 'function argument' ],
-			[ "equals_to_any('a','b',)", 'function argument' ],
+			[ "str_replace('a','b','c',)", 'function argument' ],
+			[ "count('a','b',)", 'function argument' ],
+			[ "ccnorm('a',)", 'function argument' ],
 			[ "(!)", 'bool inversion' ],
 			// `(false &!)` and `(true &!)`, originally reported in T156096,
 			// should be used in the future to test that they throw. However,
@@ -979,6 +980,81 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ 'if (false) then () else (3) end', 'if body' ],
 			[ 'if (true) then (1) else () end', 'else body' ],
 			[ 'if (false) then (1) else () end', 'else body' ],
+		];
+	}
+
+	/**
+	 * For the old parser, ensure that dangling commas for variadic functions aren't logged
+	 * @param string $code
+	 * @dataProvider provideDanglingCommasInVariargs
+	 */
+	public function testDanglingCommasInVariargsNotLogged( $code ) {
+		/** @var PHPUnit\Framework\MockObject\MockObject|AbuseFilterParser $mock */
+		$mock = $this->getMockBuilder( AbuseFilterParser::class )
+			->setConstructorArgs(
+				[ $this->getLanguageMock(), new EmptyBagOStuff(), new NullLogger() ]
+			)
+			->setMethods( [ 'logEmptyOperand' ] )
+			->getMock();
+
+		$mock->expects( $this->never() )
+			->method( 'logEmptyOperand' )
+			->with( 'function argument' );
+
+		$mock->toggleConditionLimit( false );
+		$mock->parse( $code );
+	}
+
+	/**
+	 * Ensure that the both parsers won't throw for dangling commas in variadic functions
+	 * @param string $code
+	 * @dataProvider provideDanglingCommasInVariargs
+	 */
+	public function testDanglingCommasInVariargsAreValid( $code ) {
+		foreach ( $this->getParsers() as $parser ) {
+			$pname = get_class( $parser );
+			try {
+				$parser->parse( $code );
+				$this->assertTrue( true );
+			} catch ( AFPException $e ) {
+				$this->fail( "Got exception for dangling commas with parser $pname:\n$e" );
+			}
+		}
+	}
+
+	/**
+	 * @return array
+	 */
+	public function provideDanglingCommasInVariargs() {
+		return [
+			[ "contains_any('a','b','c',)" ],
+			[ "contains_all(1,1,1,1,1,1,1,)" ],
+			[ "equals_to_any(1,'foo',)" ],
+		];
+	}
+
+	/**
+	 * Ensure that an exception is thrown where there are extra commas in function calls, which
+	 * are not the kind of allowed dangling commas.
+	 *
+	 * @param string $code
+	 * @dataProvider provideExtraCommas
+	 */
+	public function testExtraCommasNotAllowed( $code ) {
+		$this->exceptionTest( 'unexpectedtoken', $code, 'doLevelAtom' );
+	}
+
+	/**
+	 * @return array
+	 */
+	public function provideExtraCommas() {
+		return [
+			[ "norm(,,,)" ],
+			[ "str_replace(,'x','y')" ],
+			[ "contains_any(,)" ],
+			[ "contains_any(,,)" ],
+			[ "contains_any(1,2,,)" ],
+			[ "contains_any(1,2,,3,)" ],
 		];
 	}
 }

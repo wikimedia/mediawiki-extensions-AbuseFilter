@@ -1002,7 +1002,7 @@ class AbuseFilterParser {
 				do {
 					$r = new AFPData( AFPData::DEMPTY );
 					$this->doLevelSemicolon( $r );
-					if ( $r->getType() === AFPData::DEMPTY ) {
+					if ( $r->getType() === AFPData::DEMPTY && !$this->functionIsVariadic( $fname ) ) {
 						$this->logEmptyOperand( 'function argument', __METHOD__ );
 					}
 					$args[] = $r;
@@ -1911,5 +1911,17 @@ class AbuseFilterParser {
 				'filter' => $this->mFilter ?? 'unavailable'
 			]
 		);
+	}
+
+	/**
+	 * @param string $fname
+	 * @return bool
+	 * @see AFPTreeParser::functionIsVariadic
+	 */
+	protected function functionIsVariadic( $fname ) {
+		if ( !array_key_exists( $fname, self::$funcArgCount ) ) {
+			throw new InvalidArgumentException( "Function $fname is not valid" );
+		}
+		return self::$funcArgCount[$fname][1] === INF;
 	}
 }

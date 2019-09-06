@@ -608,11 +608,24 @@ class AFPTreeParser {
 			$next = $this->getNextToken();
 			if ( $next->type !== AFPToken::TBRACE || $next->value !== ')' ) {
 				do {
-					$args[] = $this->doLevelSemicolon();
+					$thisArg = $this->doLevelSemicolon();
+					if ( $thisArg === null && !$this->functionIsVariadic( $func ) ) {
+						throw new AFPUserVisibleException(
+							'unexpectedtoken',
+							$this->mPos,
+							[
+								$this->mCur->type,
+								$this->mCur->value
+							]
+						);
+					} elseif ( $thisArg !== null ) {
+						$args[] = $thisArg;
+					}
 				} while ( $this->mCur->type === AFPToken::TCOMMA );
 			} else {
 				$this->move();
 			}
+
 			if ( $this->mCur->type !== AFPToken::TBRACE || $this->mCur->value !== ')' ) {
 				throw new AFPUserVisibleException( 'expectednotfound',
 					$this->mPos,
@@ -740,5 +753,17 @@ class AFPTreeParser {
 			);
 			*/
 		}
+	}
+
+	/**
+	 * @param string $fname
+	 * @return bool
+	 * @see AbuseFilterParser::functionIsVariadic
+	 */
+	protected function functionIsVariadic( $fname ) {
+		if ( !array_key_exists( $fname, AbuseFilterParser::$funcArgCount ) ) {
+			throw new InvalidArgumentException( "Function $fname is not valid" );
+		}
+		return AbuseFilterParser::$funcArgCount[$fname][1] === INF;
 	}
 }
