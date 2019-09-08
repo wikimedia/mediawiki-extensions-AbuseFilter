@@ -46,7 +46,6 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 		$this->addHelpLink( 'Extension:AbuseFilter' );
 
 		$this->loadParameters( $subpage );
-		$out->setPageTitle( $this->msg( 'abusefilter-management' ) );
 
 		$this->checkPermissions();
 
