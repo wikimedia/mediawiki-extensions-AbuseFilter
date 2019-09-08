@@ -29,7 +29,8 @@
 			"Fatemi127",
 			"درفش کاویانی",
 			"Alireza Ivaz",
-			"FarsiNevis"
+			"FarsiNevis",
+			"Ahmad252"
 		]
 	},
 	"abusefilter-desc": "اکتشافات خودکاری را بر روی ویرایش‌های انجام می‌دهد.",
@@ -45,7 +46,7 @@
 	"abusefilter-blocker": "پالایهٔ خرابکاری",
 	"abusefilter-blockreason": "به طور خودکار توسط پالایهٔ خرابکاری بسته شد.\nتوضیح قانون مطابقت‌یافته: $1",
 	"abusefilter-degroupreason": "دسترسی کاربر به طور خودکار توسط پالایهٔ خرابکاری گرفته شد.\nتوضیح قانون: $1",
-	"abusefilter-blockautopromotereason": "تأییدشدگی خودکار برای این کاربر به تأخیر انداخته شد.\nتوضیح قاون: $1",
+	"abusefilter-blockautopromotereason": "تأییدشدگی خودکار برای این کاربر به تأخیر انداخته شد.\nتوضیح قانون: $1",
 	"abusefilter-accountreserved": "این نام کاربری برای استفاده توسط پالایهٔ خرابکاری کنار گذاشته شده‌است.",
 	"right-abusefilter-modify": "تغییر پالایهٔ خرابکاری",
 	"right-abusefilter-view": "مشاهدهٔ پالایه خرابکاری",
