@@ -111,9 +111,6 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$this->addHelpLink( 'Extension:AbuseFilter' );
 		$this->loadParameters();
 
-		$out->setPageTitle( $this->msg( 'abusefilter-log' ) );
-		$out->setRobotPolicy( "noindex,nofollow" );
-		$out->setArticleRelated( false );
 		$out->enableClientCache( false );
 
 		$out->addModuleStyles( 'ext.abuseFilter' );
