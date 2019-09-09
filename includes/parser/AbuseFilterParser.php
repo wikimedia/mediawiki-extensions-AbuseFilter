@@ -539,11 +539,7 @@ class AbuseFilterParser {
 	protected function doLevelConditions( &$result ) {
 		if ( $this->mCur->type === AFPToken::TKEYWORD && $this->mCur->value === 'if' ) {
 			$this->move();
-			$checkEmpty = $result->getType() === AFPData::DEMPTY;
 			$this->doLevelBoolOps( $result );
-			if ( $checkEmpty && $result->getType() === AFPData::DEMPTY ) {
-				$this->logEmptyOperand( 'if condition', __METHOD__ );
-			}
 
 			if ( !( $this->mCur->type === AFPToken::TKEYWORD && $this->mCur->value === 'then' ) ) {
 				throw new AFPUserVisibleException( 'expectednotfound',
@@ -566,9 +562,6 @@ class AbuseFilterParser {
 				$scOrig = wfSetVar( $this->mShortCircuit, $this->mAllowShort, true );
 			}
 			$this->doLevelConditions( $r1 );
-			if ( $r1->getType() === AFPData::DEMPTY ) {
-				$this->logEmptyOperand( 'if body', __METHOD__ );
-			}
 			if ( !$isTrue ) {
 				$this->mShortCircuit = $scOrig;
 			}
@@ -580,9 +573,6 @@ class AbuseFilterParser {
 					$scOrig = wfSetVar( $this->mShortCircuit, $this->mAllowShort, true );
 				}
 				$this->doLevelConditions( $r2 );
-				if ( $r2->getType() === AFPData::DEMPTY ) {
-					$this->logEmptyOperand( 'else body', __METHOD__ );
-				}
 				if ( $isTrue ) {
 					$this->mShortCircuit = $scOrig;
 				}
@@ -925,6 +915,7 @@ class AbuseFilterParser {
 		if ( $this->mCur->type === AFPToken::TBRACE && $this->mCur->value === '(' ) {
 			$next = $this->getNextToken();
 			if ( $next->type === AFPToken::TBRACE && $next->value === ')' ) {
+				$this->logEmptyOperand( 'parenthesized expression', __METHOD__ );
 				// We don't need DUNDEFINED here
 				$this->move();
 				$this->move();
